@@ -9,9 +9,6 @@ class Uwsgi < Package
   source_url 'https://github.com/unbit/uwsgi/archive/2.0.17.tar.gz'
   source_sha256 '3dc2e9b48db92b67bfec1badec0d3fdcc0771316486c5efa3217569da3528bf2'
 
-  binary_url({})
-  binary_sha256({})
-
   depends_on 'pcre'
 
   def self.build

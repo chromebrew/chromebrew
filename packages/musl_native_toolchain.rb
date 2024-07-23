@@ -10,13 +10,8 @@ class Musl_native_toolchain < Package
   compatibility 'all'
   source_url 'https://git.zv.io/toolchains/musl-cross-make.git'
   git_hashtag '53280e53a32202a0ee874911fc52005874db344b'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.3_armv7l/musl_native_toolchain-1.2.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.3_armv7l/musl_native_toolchain-1.2.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.3_i686/musl_native_toolchain-1.2.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.3_x86_64/musl_native_toolchain-1.2.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '71fe4ca61686a3675f7f5648fe3aae59b68f4c3c1e2678fabd215ec0f6be399e',
      armv7l: '71fe4ca61686a3675f7f5648fe3aae59b68f4c3c1e2678fabd215ec0f6be399e',
@@ -31,6 +26,7 @@ class Musl_native_toolchain < Package
 
   is_musl
   conflicts_ok
+  print_source_bashrc
 
   @archflags = ''
   @linux_ver = '4.14.275'
@@ -50,7 +46,7 @@ class Musl_native_toolchain < Package
     # Patch via discussion on musl mailing list with Rich Felker
     # working out issues on i686 Chromebooks for musl.
     # https://www.openwall.com/lists/musl/2022/02/18/1
-    @i686_broken_kernel_patch = <<~'BROKEN_KERNEL_PATCH_EOF'
+    @i686_broken_kernel_patch = <<~BROKEN_KERNEL_PATCH_EOF
       --- a/arch/i386/syscall_arch.h	2022-02-17 16:45:37.398583011 -0500
       +++ b/arch/i386/syscall_arch.h	2022-02-17 16:50:02.311265598 -0500
       @@ -9,11 +9,21 @@
@@ -194,7 +190,7 @@ class Musl_native_toolchain < Package
   end
 
   def self.install
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     system "OUTPUT=#{CREW_DEST_MUSL_PREFIX} make install"
     # Delete libc symlink made to syslibdir
     FileUtils.rm_f "#{CREW_DEST_MUSL_PREFIX}/usr/local"

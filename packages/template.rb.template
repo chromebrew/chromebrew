@@ -12,66 +12,46 @@ class Template < Package
   compatibility '' # Package architecture compatibility (eg. aarch64, armv7l, i686, x86_64 or all)
   source_url ''    # The url to the source code (eg. https://ftpmirror.gnu.org/sed/sed-4.8.tar.xz)
   source_sha256 ''
+  binary_compression 'tar.zst'
 
-  # Optional: Prebuilt binary
-  #  binary_url ({
-  #    aarch64: '',
-  #     armv7l: '',
-  #       i686: '',
-  #     x86_64: '',
-  #  })
-  #  binary_sha256 ({
-  #    aarch64: '',
-  #     armv7l: '',
-  #       i686: '',
-  #     x86_64: '',
-  #  })
-
+  # These are needed to successfully build and check for dependencies.
+  binary_sha256({
+    aarch64: '000',
+     armv7l: '000',
+       i686: '111',
+     x86_64: '222'
+  })
 
   # Register dependencies (use the following line as a basis)
   #
-  # depends_on '*'
+  # Runtime dependencies:
+  # depends_on '*' # R
+  # Build dependencies:
+  # depends_on '*' => :build
   #
 
   # Function to check if install should occur.
-  def self.preflight
-
-  end
+  def self.preflight; end
 
   # Function to perform patch operations prior to build from source.
-  def self.patch
-
-  end
+  def self.patch; end
 
   # Function to perform pre-build operations prior to build from source.
-  def self.prebuild
-
-  end
+  def self.prebuild; end
 
   # Function to perform build from source.
-  def self.build
-
-  end
+  def self.build; end
 
   # Function to perform check from source build.
   # This is executed only during `crew build`.
-  def self.check
-
-  end
+  def self.check; end
 
   # Function to perform pre-install operations prior to install for both source build and binary distribution.
-  def self.preinstall
-
-  end
+  def self.preinstall; end
 
   # Function to perform install from source build.
-  def self.install
-
-  end
-
+  def self.install; end
 
   # Function to perform post-install for both source build and binary distribution
-  def self.postinstall
-
-  end
+  def self.postinstall; end
 end

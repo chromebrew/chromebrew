@@ -3,23 +3,18 @@ require 'package'
 class Perl_xml_sax < Package
   description 'XML::SAX - Simple API for XML'
   homepage 'https://metacpan.org/pod/XML::SAX'
-  version '1.02-perl5.36'
+  version '1.02-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-SAX-1.02.tar.gz'
   source_sha256 '4506c387043aa6a77b455f00f57409f3720aa7e553495ab2535263b4ed1ea12a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax/1.02-perl5.36_armv7l/perl_xml_sax-1.02-perl5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax/1.02-perl5.36_armv7l/perl_xml_sax-1.02-perl5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax/1.02-perl5.36_i686/perl_xml_sax-1.02-perl5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax/1.02-perl5.36_x86_64/perl_xml_sax-1.02-perl5.36-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '00ed58352b250549f167f063a5c3c3005edb724093306147de57fa503fe5fb67',
-     armv7l: '00ed58352b250549f167f063a5c3c3005edb724093306147de57fa503fe5fb67',
-       i686: '267d169d06a21e6fe69298c65918db4317788af4ad090cfb629a58584d210af5',
-     x86_64: 'a0a5847eab1354572e1623b9a4e167d38230125b87b30168a8c47904863f6c25'
+    aarch64: 'dbddbf67a7c9ea789ca6eff91979bda6a134a925cb0e1d2285c83fde25f9aa10',
+     armv7l: 'dbddbf67a7c9ea789ca6eff91979bda6a134a925cb0e1d2285c83fde25f9aa10',
+       i686: '3994c3bf14ffb7ae3ef99e5e8678a648219b7984297609ea701327f8ded052ce',
+     x86_64: 'e3547948c85de5c36899160dc4e9f1fce54ac5fd8f617636dbe7a064060e876d'
   })
 
   depends_on 'perl_xml_sax_base' => :build

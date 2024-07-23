@@ -1,12 +1,12 @@
 /usr/local/include/leptonica/allheaders.h
 /usr/local/include/leptonica/alltypes.h
-/usr/local/include/leptonica/arrayaccess.h
 /usr/local/include/leptonica/array.h
 /usr/local/include/leptonica/array_internal.h
+/usr/local/include/leptonica/arrayaccess.h
 /usr/local/include/leptonica/bbuffer.h
 /usr/local/include/leptonica/bilateral.h
-/usr/local/include/leptonica/bmfdata.h
 /usr/local/include/leptonica/bmf.h
+/usr/local/include/leptonica/bmfdata.h
 /usr/local/include/leptonica/bmp.h
 /usr/local/include/leptonica/ccbord.h
 /usr/local/include/leptonica/ccbord_internal.h
@@ -34,10 +34,10 @@
 /usr/local/include/leptonica/stringcode.h
 /usr/local/include/leptonica/sudoku.h
 /usr/local/include/leptonica/watershed.h
-/usr/local/lib/cmake/leptonica/LeptonicaConfig.cmake
 /usr/local/lib/cmake/leptonica/LeptonicaConfig-version.cmake
-/usr/local/lib/cmake/leptonica/LeptonicaTargets.cmake
+/usr/local/lib/cmake/leptonica/LeptonicaConfig.cmake
 /usr/local/lib/cmake/leptonica/LeptonicaTargets-release.cmake
+/usr/local/lib/cmake/leptonica/LeptonicaTargets.cmake
 /usr/local/lib/libleptonica.so
 /usr/local/lib/libleptonica.so.6
 /usr/local/lib/libleptonica.so.6.0.0

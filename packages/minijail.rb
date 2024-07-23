@@ -11,13 +11,8 @@ class Minijail < Package
   compatibility 'all'
   source_url 'https://android.googlesource.com/platform/external/minijail.git'
   git_hashtag '81e4b0e245f6fef9a82800d3f182e73127bfa2fe'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minijail/81e4b0e2_armv7l/minijail-81e4b0e2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minijail/81e4b0e2_armv7l/minijail-81e4b0e2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minijail/81e4b0e2_i686/minijail-81e4b0e2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minijail/81e4b0e2_x86_64/minijail-81e4b0e2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4abb6b16d341150f99c59d35c2eea53e16295f7011db633f3dfe6a09a5ae7584',
      armv7l: '4abb6b16d341150f99c59d35c2eea53e16295f7011db633f3dfe6a09a5ae7584',

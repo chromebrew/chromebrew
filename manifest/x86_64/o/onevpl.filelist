@@ -6,6 +6,7 @@
 /usr/local/bin/vpl-inspect
 /usr/local/etc/modulefiles/vpl
 /usr/local/etc/vpl/vars.sh
+/usr/local/include/vpl/mfx.h
 /usr/local/include/vpl/mfxadapter.h
 /usr/local/include/vpl/mfxbrc.h
 /usr/local/include/vpl/mfxcamera.h
@@ -14,7 +15,6 @@
 /usr/local/include/vpl/mfxdispatcher.h
 /usr/local/include/vpl/mfxdispatcherprefixedfunctions.h
 /usr/local/include/vpl/mfxencodestats.h
-/usr/local/include/vpl/mfx.h
 /usr/local/include/vpl/mfximplcaps.h
 /usr/local/include/vpl/mfxjpeg.h
 /usr/local/include/vpl/mfxmvc.h
@@ -25,9 +25,9 @@
 /usr/local/include/vpl/mfxvideo++.h
 /usr/local/include/vpl/mfxvideo.h
 /usr/local/include/vpl/mfxvp8.h
-/usr/local/include/vpl/preview/legacy/mfxvideo++.h
-/usr/local/include/vpl/preview/legacy/README.txt
 /usr/local/include/vpl/preview/README.txt
+/usr/local/include/vpl/preview/legacy/README.txt
+/usr/local/include/vpl/preview/legacy/mfxvideo++.h
 /usr/local/lib64/cmake/vpl/VPLConfig.cmake
 /usr/local/lib64/cmake/vpl/VPLConfigVersion.cmake
 /usr/local/lib64/libvpl.so

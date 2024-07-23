@@ -11,13 +11,8 @@ class Go_md2man < Package
   compatibility 'all'
   source_url 'https://github.com/cpuguy83/go-md2man/archive/v2.0.2.tar.gz'
   source_sha256 '2f52e37101ea2734b02f2b54a53c74305b95b3a9a27792fdac962b5354aa3e4a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_md2man/2.0.2_armv7l/go_md2man-2.0.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_md2man/2.0.2_armv7l/go_md2man-2.0.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_md2man/2.0.2_i686/go_md2man-2.0.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_md2man/2.0.2_x86_64/go_md2man-2.0.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8751befe1a9d1dbc4c69cb44a5fc4a91c8ef6b50ad8393e9b0f62acf101e56ae',
      armv7l: '8751befe1a9d1dbc4c69cb44a5fc4a91c8ef6b50ad8393e9b0f62acf101e56ae',

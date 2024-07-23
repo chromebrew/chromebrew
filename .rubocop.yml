@@ -12,101 +12,15 @@
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.1
+  TargetRubyVersion: 3.3
   Exclude:
     - 'lib/docopt.rb'
 
 # These cops have been temporarily disabled and should be reenabled asap
-Security/Eval:
-  Enabled: false
-
-Naming/ClassAndModuleCamelCase:
-  # Disable this cop for every file in packages/
-  Enabled: false
-
-Naming/MethodParameterName:
-  Enabled: false
-
-Naming/MethodName:
-  Enabled: false
-
-Naming/VariableName:
-  Enabled: false
-
-Naming/PredicateName:
-  Enabled: false
-
-Metrics/AbcSize:
-  Enabled: false
-
-Metrics/MethodLength:
-  Enabled: false
-
-Metrics/ModuleLength:
-  Enabled: false
-
-Metrics/BlockLength:
-  Enabled: false
-
-Metrics/ClassLength:
-  Enabled: false
-
-Metrics/CyclomaticComplexity:
-  Enabled: false
-
-Metrics/PerceivedComplexity:
-  Enabled: false
-
-Metrics/BlockNesting:
-  Enabled: false
-
-Metrics/ParameterLists:
-  Enabled: false
-
-Layout/LineContinuationLeadingSpace:
-  Enabled: false
-
-Lint/EmptyBlock:
-  Enabled: false
-
-Lint/ImplicitStringConcatenation:
-  Enabled: false
-
-Lint/UnreachableCode:
-  Enabled: false
-
-Lint/DuplicateBranch:
-  Enabled: false
-
-Lint/AssignmentInCondition:
-  Enabled: false
-
-Lint/LiteralAsCondition:
-  Enabled: false
-
-Lint/UnderscorePrefixedVariableName:
-  Enabled: false
-
-Lint/EmptyWhen:
-  Enabled: false
-
-Lint/UselessAssignment:
-  Enabled: false
-
-Lint/MissingSuper:
-  Enabled: false
-
 Lint/ShadowingOuterLocalVariable:
   Enabled: false
 
 Lint/SuppressedException:
-  Enabled: false
-
-Layout/LineLength:
-  AllowedPatterns:
-    - '#'
-    - 'description'
-  # When this is reenabled, keep the AllowedPatterns configuration
   Enabled: false
 
 Layout/HashAlignment:
@@ -119,23 +33,14 @@ Layout/HashAlignment:
 
 # End temporarily disabled cops
 
-Layout/CommentIndentation:
+Layout/EmptyLineAfterGuardClause:
   Enabled: false
 
 Layout/FirstHashElementIndentation:
   Enabled: false
 # EnforcedStyle: consistent
 
-Layout/IndentationStyle:
-  EnforcedStyle: spaces
-
-Layout/SpaceInsideBlockBraces:
-  Enabled: false
-
-Layout/SpaceInsideParens:
-  Enabled: false
-
-Layout/TrailingEmptyLines:
+Layout/LineLength:
   Enabled: false
 
 Style/RedundantReturn:
@@ -156,6 +61,7 @@ Style/GuardClause:
 Style/DocumentDynamicEvalDefinition:
   Enabled: false
 
+# https://github.com/rubocop/rubocop/issues/12132
 Style/OptionalBooleanParameter:
   Enabled: false
 
@@ -180,11 +86,27 @@ Style/RedundantCapitalW:
 Style/RedundantLineContinuation:
   Enabled: false
 
+Style/RedundantStringEscape:
+  Enabled: false
+
+Metrics:
+  Enabled: false
+
 Naming/AccessorMethodName:
   Enabled: false
 
 Naming/BlockParameterName:
   Enabled: false
+
+Naming/ClassAndModuleCamelCase:
+  Exclude:
+    - 'packages/*'
+
+Naming/VariableName:
+  EnforcedStyle: snake_case
+  # Allow variable names which are in all caps (with optional numbers and underscores)
+  AllowedPatterns:
+    - '^@?[A-Z0-9_]+$'
 
 Naming/VariableNumber:
   Enabled: false

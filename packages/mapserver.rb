@@ -2,23 +2,17 @@ require 'package'
 
 class Mapserver < Package
   description 'MapServer is an Open Source platform for publishing spatial data and interactive mapping applications to the web.'
-  homepage 'http://mapserver.org/'
+  homepage 'https://mapserver.org/'
   version '8.0.0'
   license 'Boost-1.0, BSD-2, ISC, MIT and tcltk'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'http://download.osgeo.org/mapserver/mapserver-8.0.0.tar.gz'
   source_sha256 'bb7ee625eb6fdce9bd9851f83664442845d70d041e449449e88ac855e97d773c'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mapserver/8.0.0_armv7l/mapserver-8.0.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mapserver/8.0.0_armv7l/mapserver-8.0.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mapserver/8.0.0_i686/mapserver-8.0.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mapserver/8.0.0_x86_64/mapserver-8.0.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1369f2cc35af3f53ae7c3514b592b9b7dd3e6552b13f0951dbc1fb5d5d70d7c8',
      armv7l: '1369f2cc35af3f53ae7c3514b592b9b7dd3e6552b13f0951dbc1fb5d5d70d7c8',
-       i686: '75a46fd6e07754aa98c83df934e1db568049254c44d40e7749755e7ed10b8bbf',
      x86_64: '803eb10f06933eff71eea4138ad9bd81a3abb8c81d707e9df268abe12f8842f3'
   })
 
@@ -30,8 +24,8 @@ class Mapserver < Package
   depends_on 'geos'
   depends_on 'glib'
   depends_on 'harfbuzz'
-  depends_on 'libjpeg'
-  depends_on 'proj4'
+  depends_on 'libjpeg_turbo'
+  depends_on 'proj'
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R

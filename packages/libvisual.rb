@@ -8,13 +8,8 @@ class Libvisual < Package
   compatibility 'all'
   source_url 'https://github.com/Libvisual/libvisual/archive/libvisual-0.4.0.tar.gz'
   source_sha256 'c004e88ae55872b19dc651b0e465b1e57c07e75eacb1bff8a43b6ceb75671850'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvisual/0.4.0_armv7l/libvisual-0.4.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvisual/0.4.0_armv7l/libvisual-0.4.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvisual/0.4.0_i686/libvisual-0.4.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvisual/0.4.0_x86_64/libvisual-0.4.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0eb131d81f76405c634d8749a5cbd1138b722c9389156d405c1fdb05ee73fab9',
      armv7l: '0eb131d81f76405c634d8749a5cbd1138b722c9389156d405c1fdb05ee73fab9',

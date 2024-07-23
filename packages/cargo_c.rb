@@ -11,13 +11,8 @@ class Cargo_c < Package
   compatibility 'all'
   source_url 'https://github.com/lu-zero/cargo-c.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.9.13_armv7l/cargo_c-0.9.13-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.9.13_armv7l/cargo_c-0.9.13-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.9.13_i686/cargo_c-0.9.13-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.9.13_x86_64/cargo_c-0.9.13-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '21825714180d7032b34e2c74582f4002d55dccc781bbbd3ba6bce1af88d1cade',
      armv7l: '21825714180d7032b34e2c74582f4002d55dccc781bbbd3ba6bce1af88d1cade',

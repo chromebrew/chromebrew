@@ -2,19 +2,14 @@ require 'package'
 
 class Js91 < Package
   description 'Spidermonkey is a javaScript interpreter with libraries from Mozilla — Version 91'
-  @_ver = '91.4.1'
-  version @_ver
+  homepage 'https://spidermonkey.dev/'
+  version '91.4.1'
   license 'MPL-2.0'
   compatibility 'all'
-  source_url "https://archive.mozilla.org/pub/firefox/releases/#{@_ver}esr/source/firefox-#{@_ver}esr.source.tar.xz"
+  source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}esr/source/firefox-#{version}esr.source.tar.xz"
   source_sha256 '75e98daf53c5aea19d711a625d5d5e6dfdc8335965d3a19567c62f9d2961fc75'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js91/91.4.1_armv7l/js91-91.4.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js91/91.4.1_armv7l/js91-91.4.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js91/91.4.1_i686/js91-91.4.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js91/91.4.1_x86_64/js91-91.4.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '4b30eda6f946fc551ecd53012c149e7954b43eadf14004fb544c47e27200a1e5',
      armv7l: '4b30eda6f946fc551ecd53012c149e7954b43eadf14004fb544c47e27200a1e5',
@@ -24,8 +19,10 @@ class Js91 < Package
 
   depends_on 'autoconf213' => :build
   depends_on 'rust' => :build
-  depends_on 'llvm_dev16' => :build
+  depends_on 'llvm16_dev' => :build
   depends_on 'nspr'
+
+  no_upstream_update
 
   @rust_default_host = case ARCH
                        when 'aarch64', 'armv7l'

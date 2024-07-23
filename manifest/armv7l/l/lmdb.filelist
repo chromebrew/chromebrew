@@ -6,7 +6,7 @@
 /usr/local/lib/liblmdb.a
 /usr/local/lib/liblmdb.so
 /usr/local/lib/pkgconfig/lmdb.pc
-/usr/local/share/man/man1/mdb_copy.1.gz
-/usr/local/share/man/man1/mdb_dump.1.gz
-/usr/local/share/man/man1/mdb_load.1.gz
-/usr/local/share/man/man1/mdb_stat.1.gz
+/usr/local/share/man/man1/mdb_copy.1.zst
+/usr/local/share/man/man1/mdb_dump.1.zst
+/usr/local/share/man/man1/mdb_load.1.zst
+/usr/local/share/man/man1/mdb_stat.1.zst

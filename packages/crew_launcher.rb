@@ -5,11 +5,11 @@ class Crew_launcher < Package
   homepage 'https://github.com/chromebrew/crew-launcher'
   version '1.1-2'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/chromebrew/crew-launcher.git'
   git_hashtag '1.1'
 
-  depends_on 'llvm_lib16'
+  depends_on 'llvm16_lib'
   depends_on 'graphicsmagick'
 
   def self.install

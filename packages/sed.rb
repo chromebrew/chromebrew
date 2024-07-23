@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Sed < Package
+class Sed < Autotools
   description 'sed (stream editor) is a non-interactive command-line text editor.'
   homepage 'https://www.gnu.org/software/sed/'
   version '4.9'
@@ -8,35 +8,17 @@ class Sed < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/sed/sed-4.9.tar.xz'
   source_sha256 '6e226b732e1cd739464ad6862bd1a1aba42d7982922da7a53519631d24975181'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sed/4.9_armv7l/sed-4.9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sed/4.9_armv7l/sed-4.9-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sed/4.9_i686/sed-4.9-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sed/4.9_x86_64/sed-4.9-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '13f49db4006bd22a894f8c8f870635074438b1b125849ab14220e98205a6b56a',
-     armv7l: '13f49db4006bd22a894f8c8f870635074438b1b125849ab14220e98205a6b56a',
-       i686: 'b601023458812f12c08a5659d5e2033489f8a554fea17b92ea2761b909a3f863',
-     x86_64: 'b0072a360f9a1e921e183f380934b67b5203b6de2104ddfb0441080bd7954bfe'
+    aarch64: '132c549c208cb26f1770797b997163003d7d29d1cd234c6351647df201958e96',
+     armv7l: '132c549c208cb26f1770797b997163003d7d29d1cd234c6351647df201958e96',
+       i686: '02cae930c6dcfa33bab8e6f1a748c8c40be0ca14dcf66ebd59bb5f1dac89454d',
+     x86_64: 'a63c523c7433712c49f82ecddb83dccebf35e2ba6c5784fea7e5ec394e2b520a'
   })
 
-  depends_on 'acl'
+  depends_on 'acl' # R
   depends_on 'glibc' # R
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} --without-selinux"
-    system 'make'
-  end
-
-  def self.check
-    # Remove selinux tests since we're building without it.
-    system "sed -i 's,testsuite/inplace-selinux.sh ,,' Makefile"
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--without-selinux'
 end

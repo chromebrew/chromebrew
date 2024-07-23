@@ -5,10 +5,10 @@
 /usr/local/lib/libcrack.so.2
 /usr/local/lib/libcrack.so.2.9.0
 /usr/local/lib/python2.7/site-packages/_cracklib.la
+/usr/local/lib/python2.7/site-packages/_cracklib.so
 /usr/local/lib/python2.7/site-packages/cracklib.py
 /usr/local/lib/python2.7/site-packages/cracklib.pyc
 /usr/local/lib/python2.7/site-packages/cracklib.pyo
-/usr/local/lib/python2.7/site-packages/_cracklib.so
 /usr/local/lib/python2.7/site-packages/test_cracklib.py
 /usr/local/lib/python2.7/site-packages/test_cracklib.pyc
 /usr/local/lib/python2.7/site-packages/test_cracklib.pyo
@@ -17,8 +17,8 @@
 /usr/local/sbin/cracklib-packer
 /usr/local/sbin/cracklib-unpacker
 /usr/local/sbin/create-cracklib-dict
-/usr/local/share/cracklib/cracklib.magic
 /usr/local/share/cracklib/cracklib-small
+/usr/local/share/cracklib/cracklib.magic
 /usr/local/share/locale/as/LC_MESSAGES/cracklib.mo
 /usr/local/share/locale/be/LC_MESSAGES/cracklib.mo
 /usr/local/share/locale/bn_IN/LC_MESSAGES/cracklib.mo
@@ -49,8 +49,8 @@
 /usr/local/share/locale/or/LC_MESSAGES/cracklib.mo
 /usr/local/share/locale/pa/LC_MESSAGES/cracklib.mo
 /usr/local/share/locale/pl/LC_MESSAGES/cracklib.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/cracklib.mo
 /usr/local/share/locale/pt/LC_MESSAGES/cracklib.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/cracklib.mo
 /usr/local/share/locale/ru/LC_MESSAGES/cracklib.mo
 /usr/local/share/locale/sk/LC_MESSAGES/cracklib.mo
 /usr/local/share/locale/sl/LC_MESSAGES/cracklib.mo

@@ -9,8 +9,7 @@ class Cros_resize < Package
   source_url 'https://raw.githubusercontent.com/ethanmad/chromeos-resize/6b01b71f649dbf77b2e6ac932e8ad868e8272250/cros-resize.sh'
   source_sha256 '747ef80f29a94500304f23595c5edfa46edd4b4fa5a40d399b474984004e9ffe'
 
-  binary_url({})
-  binary_sha256({})
+  no_compile_needed
 
   def self.install
     system 'curl -#LO https://raw.githubusercontent.com/ethanmad/chromeos-resize/6b01b71f649dbf77b2e6ac932e8ad868e8272250/cros-resize.sh'

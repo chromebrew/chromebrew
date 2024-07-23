@@ -8,13 +8,8 @@ class Liburcu < Package
   compatibility 'all'
   source_url 'https://lttng.org/files/urcu/userspace-rcu-0.14.0.tar.bz2'
   source_sha256 'ca43bf261d4d392cff20dfae440836603bf009fce24fdc9b2697d837a2239d4f'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liburcu/0.14.0-1_armv7l/liburcu-0.14.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liburcu/0.14.0-1_armv7l/liburcu-0.14.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liburcu/0.14.0-1_i686/liburcu-0.14.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liburcu/0.14.0-1_x86_64/liburcu-0.14.0-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '90303fe8c2a4fdea90b11e31a1bd2af1ea5eb5fa7f1907d472fb8d503a644e3f',
      armv7l: '90303fe8c2a4fdea90b11e31a1bd2af1ea5eb5fa7f1907d472fb8d503a644e3f',

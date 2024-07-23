@@ -6,25 +6,20 @@ require 'package'
 class Lua < Package
   description 'Lua is a powerful, efficient, lightweight, embeddable scripting language.'
   homepage 'https://www.lua.org/'
-  @_ver = '5.4.6'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version "#{@_ver}-1"
+  version '5.4.7'
+  @_ver = version.rpartition('.')[0]
+  @_ver_no_dot = @_ver.gsub('.', '')
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.lua.org/ftp/lua-5.4.6.tar.gz'
-  source_sha256 '7d5ea1b9cb6aa0b59ca3dde1c6adcb57ef83a1ba8e5432c0ecd06bf439b3ad88'
+  source_url "https://www.lua.org/ftp/lua-#{version}.tar.gz"
+  source_sha256 '9fbf5e28ef86c69858f6d3d34eccc32e911c1a28b4120ff3e84aaa70cfbf1e30'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.6-1_armv7l/lua-5.4.6-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.6-1_armv7l/lua-5.4.6-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.6-1_i686/lua-5.4.6-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.6-1_x86_64/lua-5.4.6-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '4bafd7a8d10d40b6f583568d210e2cfafc396cb37082cdacd9fcbf09ae5d7cf2',
-     armv7l: '4bafd7a8d10d40b6f583568d210e2cfafc396cb37082cdacd9fcbf09ae5d7cf2',
-       i686: '0bfdef68df71e5f73913881db30c73eeee7867cca043ab9f3744a52552b830af',
-     x86_64: '8d97b026e1492cea3e3d35a469d881d08f79b8a6d172cbdd6121b89d2d71a86f'
+    aarch64: '87df3c6fc30357f567edaecef53ff275cd62e466336bf711aea6d632ee0d9b5d',
+     armv7l: '87df3c6fc30357f567edaecef53ff275cd62e466336bf711aea6d632ee0d9b5d',
+       i686: '389f93fdbf19a841563c3ec715b0c6d740b5fec3a0f8a1e053dbc05d755b7d8f',
+     x86_64: '2d648ab5e4dfef66fc78778b7d2f41d9fc584fa3d6b6c696e3e90848d53443a4'
   })
 
   depends_on 'glibc' # R
@@ -87,8 +82,8 @@ class Lua < Package
     FileUtils.mkdir 'lua++'
     FileUtils.cp_r @files, 'lua++'
     File.write 'lua.pc', <<~ARCH_LUA_PC_EOF
-      V=#{@_ver_prelastdot}
-      R=#{@_ver}
+      V=#{@_ver}
+      R=#{version}
 
       prefix=#{CREW_PREFIX}
       INSTALL_BIN=${prefix}/bin
@@ -123,42 +118,42 @@ class Lua < Package
             INSTALL_LIB=#{CREW_DEST_LIB_PREFIX} \
             INSTALL_MAN=#{CREW_DEST_MAN_PREFIX}/man1 \
             INSTALL_TOP=#{CREW_DEST_PREFIX} \
-            TO_LIB='liblua.a liblua.so liblua.so.#{@_ver_prelastdot} liblua.so.#{@_ver}' \
+            TO_LIB='liblua.a liblua.so liblua.so.#{@_ver} liblua.so.#{version}' \
             INSTALL_DATA='cp -d' \
             install"
     @lua_bin = %w[lua luac]
     @lua_bin.each do |bin|
       Dir.chdir("#{CREW_DEST_PREFIX}/bin") do
-        FileUtils.ln_sf bin, "#{bin}#{@_ver_prelastdot}"
+        FileUtils.ln_sf bin, "#{bin}#{@_ver}"
       end
     end
     Dir.chdir(CREW_DEST_LIB_PREFIX) do
-      FileUtils.ln_sf "liblua.so.#{@_ver}", "liblua.so.#{@_ver_prelastdot}"
+      FileUtils.ln_sf "liblua.so.#{version}", "liblua.so.#{@_ver}"
     end
-    FileUtils.install 'lua.pc', "#{CREW_DEST_LIB_PREFIX}/pkgconfig/lua#{@_ver_prelastdot.gsub('.', '')}.pc", mode: 0o644
+    FileUtils.install 'lua.pc', "#{CREW_DEST_LIB_PREFIX}/pkgconfig/lua#{@_ver_no_dot}.pc", mode: 0o644
     Dir.chdir("#{CREW_DEST_LIB_PREFIX}/pkgconfig") do
-      FileUtils.ln_sf "lua#{@_ver_prelastdot.gsub('.', '')}.pc", 'lua.pc'
-      FileUtils.ln_sf "lua#{@_ver_prelastdot.gsub('.', '')}.pc", "lua#{@_ver_prelastdot}.pc"
-      FileUtils.ln_sf "lua#{@_ver_prelastdot.gsub('.', '')}.pc", "lua-#{@_ver_prelastdot}.pc"
+      FileUtils.ln_sf "lua#{@_ver_no_dot}.pc", 'lua.pc'
+      FileUtils.ln_sf "lua#{@_ver_no_dot}.pc", "lua#{@_ver}.pc"
+      FileUtils.ln_sf "lua#{@_ver_no_dot}.pc", "lua-#{@_ver}.pc"
     end
     Dir.chdir('lua++') do
       system "make PREFIX=#{CREW_PREFIX} \
               INSTALL_LIB=#{CREW_DEST_LIB_PREFIX} \
               INSTALL_TOP=#{CREW_DEST_PREFIX} \
-              TO_LIB='liblua++.a liblua++.so liblua++.so.#{@_ver_prelastdot} liblua++.so.#{@_ver}' \
+              TO_LIB='liblua++.a liblua++.so liblua++.so.#{@_ver} liblua++.so.#{version}' \
               INSTALL_BIN=null INSTALL_INC=null INSTALL_MAN=../null \
               INSTALL_DATA='cp -d' \
               install"
     end
     Dir.chdir(CREW_DEST_LIB_PREFIX) do
-      FileUtils.ln_sf "liblua++.so.#{@_ver}", "liblua.so.#{@_ver_prelastdot}"
+      FileUtils.ln_sf "liblua++.so.#{version}", "liblua.so.#{@_ver}"
     end
-    FileUtils.install 'lua++.pc', "#{CREW_DEST_LIB_PREFIX}/pkgconfig/lua++#{@_ver_prelastdot.gsub('.', '')}.pc",
+    FileUtils.install 'lua++.pc', "#{CREW_DEST_LIB_PREFIX}/pkgconfig/lua++#{@_ver_no_dot}.pc",
                       mode: 0o644
     Dir.chdir("#{CREW_DEST_LIB_PREFIX}/pkgconfig") do
-      FileUtils.ln_sf "lua#{@_ver_prelastdot.gsub('.', '')}.pc", 'lua++.pc'
-      FileUtils.ln_sf "lua#{@_ver_prelastdot.gsub('.', '')}.pc", "lua++#{@_ver_prelastdot}.pc"
-      FileUtils.ln_sf "lua#{@_ver_prelastdot.gsub('.', '')}.pc", "lua++-#{@_ver_prelastdot}.pc"
+      FileUtils.ln_sf "lua#{@_ver_no_dot}.pc", 'lua++.pc'
+      FileUtils.ln_sf "lua#{@_ver_no_dot}.pc", "lua++#{@_ver}.pc"
+      FileUtils.ln_sf "lua#{@_ver_no_dot}.pc", "lua++-#{@_ver}.pc"
     end
   end
 end

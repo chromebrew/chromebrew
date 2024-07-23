@@ -8,13 +8,8 @@ class Keyutils < Package
   compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keyutils/1.6.3_armv7l/keyutils-1.6.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keyutils/1.6.3_armv7l/keyutils-1.6.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keyutils/1.6.3_i686/keyutils-1.6.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keyutils/1.6.3_x86_64/keyutils-1.6.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '18a3e216463811ab600854d806b41ddc87c2e07dfd05fde19ae2a84256fb591d',
      armv7l: '18a3e216463811ab600854d806b41ddc87c2e07dfd05fde19ae2a84256fb591d',

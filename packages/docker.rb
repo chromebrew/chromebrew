@@ -11,12 +11,8 @@ class Docker < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/docker/cli.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_x86_64/docker-24.0.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
      armv7l: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
@@ -24,7 +20,7 @@ class Docker < Package
   })
 
   depends_on 'bridge_utils' # L
-  depends_on 'btrfsprogs' => :build
+  depends_on 'btrfs_progs' => :build
   depends_on 'containerd' # L
   depends_on 'elogind' => :build
   depends_on 'eudev' => :build
@@ -47,11 +43,6 @@ class Docker < Package
   def self.build
     @cli_version = git_hashtag
 
-    binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_x86_64/docker-24.0.1-chromeos-x86_64.tar.zst'
-    })
     binary_sha256({
       aarch64: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
        armv7l: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
@@ -60,11 +51,6 @@ class Docker < Package
 
     @moby_version = git_hashtag
 
-    binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_x86_64/docker-24.0.1-chromeos-x86_64.tar.zst'
-    })
     binary_sha256({
       aarch64: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
        armv7l: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
@@ -74,7 +60,7 @@ class Docker < Package
     @libnetwork_version = '3f0048413d95802b9c6c836eba06bfc54f9dbd03'
     @tini_version = '0b44d3665869e46ccbac7414241b8256d6234dc4'
     @buildx_version = 'v0.10.5'
-    @gopath = `pwd`.chomp
+    @gopath = Dir.pwd
     FileUtils.mkdir_p 'src/github.com/docker'
     FileUtils.ln_s @gopath, 'src/github.com/docker/cli'
     Dir.chdir 'src/github.com/docker/cli' do

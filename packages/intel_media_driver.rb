@@ -8,10 +8,8 @@ class Intel_media_driver < Package
   compatibility 'x86_64'
   source_url 'https://github.com/intel/media-driver.git'
   git_hashtag "intel-media-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/intel_media_driver/22.6.6_x86_64/intel_media_driver-22.6.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     x86_64: '415c7263be5e0743e023f3271b1d2e0823bc645678e877965fd30fc6383ea573'
   })

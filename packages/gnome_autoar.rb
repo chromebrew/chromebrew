@@ -1,20 +1,15 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_autoar < Package
+class Gnome_autoar < Meson
   description 'Automatic archives creating and extracting library'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-autoar'
-  @_ver = '0.4.4'
-  version @_ver
+  version '0.4.4'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-autoar.git'
-  git_hashtag @_ver
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.4_armv7l/gnome_autoar-0.4.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.4_armv7l/gnome_autoar-0.4.4-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.4_x86_64/gnome_autoar-0.4.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2b2ec52490637bb52ee34c9d454ef16c7c615dce5f1704cb00c8060c04a38f73',
      armv7l: '2b2ec52490637bb52ee34c9d454ef16c7c615dce5f1704cb00c8060c04a38f73',
@@ -32,21 +27,10 @@ class Gnome_autoar < Package
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
   depends_on 'libarchive' # R
-  depends_on 'libjpeg' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'pango' # R
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R
 
   gnome
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
 end

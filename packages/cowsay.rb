@@ -8,13 +8,8 @@ class Cowsay < Package
   compatibility 'all'
   source_url 'https://github.com/tnalpgge/rank-amateur-cowsay/archive/cowsay-3.04.tar.gz'
   source_sha256 'd8b871332cfc1f0b6c16832ecca413ca0ac14d58626491a6733829e3d655878b'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cowsay/3.04-1_armv7l/cowsay-3.04-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cowsay/3.04-1_armv7l/cowsay-3.04-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cowsay/3.04-1_i686/cowsay-3.04-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cowsay/3.04-1_x86_64/cowsay-3.04-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '3cd6ecc3ce8521dd6e9d598bf72437cb5ab6982ef9d0a8eaa2d991cf57ed7bac',
      armv7l: '3cd6ecc3ce8521dd6e9d598bf72437cb5ab6982ef9d0a8eaa2d991cf57ed7bac',

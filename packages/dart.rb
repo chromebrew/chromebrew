@@ -3,25 +3,25 @@ require 'package'
 class Dart < Package
   description 'The Dart SDK is a set of tools and libraries for the Dart programming language.  You can find information about Dart online at dartlang.org.'
   homepage 'https://dart.dev'
-  @_ver = '3.0.4'
-  version @_ver
+  version '3.4.4'
   license 'BSD-3'
   compatibility 'all'
 
   source_url({
-    aarch64: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{@_ver}/sdk/dartsdk-linux-arm-release.zip",
-     armv7l: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{@_ver}/sdk/dartsdk-linux-arm-release.zip",
-       i686: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{@_ver}/sdk/dartsdk-linux-ia32-release.zip",
-     x86_64: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{@_ver}/sdk/dartsdk-linux-x64-release.zip"
+    aarch64: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{version}/sdk/dartsdk-linux-arm-release.zip",
+     armv7l: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{version}/sdk/dartsdk-linux-arm-release.zip",
+       i686: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{version}/sdk/dartsdk-linux-ia32-release.zip",
+     x86_64: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{version}/sdk/dartsdk-linux-x64-release.zip"
   })
   source_sha256({
-    aarch64: '36aebf7bf6d43574dc3f66872e1926e184dd2ef8641212240e57ab895403a967',
-     armv7l: '36aebf7bf6d43574dc3f66872e1926e184dd2ef8641212240e57ab895403a967',
-       i686: '206b978e824608710e6af3e3301269397ffdec46235fe1d602063b9a30560bde',
-     x86_64: 'fed758732d742df884d39770756eb9bd9fdb24665c24c96502a09e03a745fca5'
+    aarch64: '2ef98f20dd52440bc664d7f215ac888a40755878a0e96cd4356a8cbbf0c20b6e',
+     armv7l: '2ef98f20dd52440bc664d7f215ac888a40755878a0e96cd4356a8cbbf0c20b6e',
+       i686: 'a2ce567c7953c901af15e5ce89436d611f601bbc64f0f4a920700e9f1d61f902',
+     x86_64: '1968cc9ee12802317f9a2320165f6966cf949dc3574cac1cb91a1bc7f0de67db'
   })
 
   no_compile_needed
+  no_shrink
 
   def self.install
     dart_prefix = File.join(CREW_LIB_PREFIX, 'dart')

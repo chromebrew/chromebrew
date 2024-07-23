@@ -12,12 +12,8 @@ class Crun < Package
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/containers/crun.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crun/1.7.2-1_armv7l/crun-1.7.2-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crun/1.7.2-1_armv7l/crun-1.7.2-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crun/1.7.2-1_x86_64/crun-1.7.2-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '401dc1443e32bf8e4f53542fb08ff18194c1000ead10dca8abba9ae3613f3d07',
      armv7l: '401dc1443e32bf8e4f53542fb08ff18194c1000ead10dca8abba9ae3613f3d07',

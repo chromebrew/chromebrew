@@ -4,5 +4,6 @@
 /usr/local/lib64/mold/mold-wrapper.so
 /usr/local/libexec/mold/ld
 /usr/local/share/doc/mold/LICENSE
+/usr/local/share/doc/mold/LICENSE.third-party
 /usr/local/share/man/man1/ld.mold.1.zst
 /usr/local/share/man/man1/mold.1.zst

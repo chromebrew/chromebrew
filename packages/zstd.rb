@@ -2,30 +2,25 @@ require 'package'
 
 class Zstd < Package
   description 'Zstandard - Fast real-time compression algorithm'
-  homepage 'http://www.zstd.net'
-  version '1.5.5' # Do not use @_ver here, it will break the installer.
+  homepage 'https://facebook.github.io/zstd/'
+  version '1.5.6' # Do not use @_ver here, it will break the installer.
   license 'BSD or GPL-2'
   compatibility 'all'
   source_url 'https://github.com/facebook/zstd.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.5_armv7l/zstd-1.5.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.5_armv7l/zstd-1.5.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.5_i686/zstd-1.5.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.5_x86_64/zstd-1.5.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'dff0cc50967894c3ad9876ff05a4d77c9eab3f5addaeaab5a17a1434965d9405',
-     armv7l: 'dff0cc50967894c3ad9876ff05a4d77c9eab3f5addaeaab5a17a1434965d9405',
-       i686: 'ea977e70ac582248beacc24191173b105ab220a330d53dc8aff23003f6242d5e',
-     x86_64: '94355516d3bf8a75b4197d5c146d89ae7f1dae7f5e9042c2562c538bc48fda59'
+    aarch64: 'e0d0cccc416aa8a83c36ebe48ab6121ebca71803e587f2640bb35d726431e7d5',
+     armv7l: 'e0d0cccc416aa8a83c36ebe48ab6121ebca71803e587f2640bb35d726431e7d5',
+       i686: 'c886bd35878f11eca6db0cb00fdd9dbeb7b6b4e09d3d2a99b9c52df7218b2ddf',
+     x86_64: '364c125580c760558ff0cd96989d9661159ed85a3bbdc9f2dde42e7a3bb9479b'
   })
 
-  depends_on 'glibc' # R
   depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
 
-  no_patchelf
   no_zstd
 
   def self.build
@@ -37,13 +32,18 @@ class Zstd < Package
       -DZSTD_BUILD_CONTRIB=ON \
       -DZSTD_PROGRAMS_LINK_SHARED=OFF \
       -G Ninja"
-      system 'samu -C builddir'
+      system "#{CREW_NINJA} -C builddir"
     end
+    system 'make -C tests'
+  end
+
+  def self.check
+    system 'make -C tests check'
   end
 
   def self.install
     Dir.chdir 'build/cmake' do
-      system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+      system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     end
     # Convert symlinks to hard links in libdir.
     Dir.chdir CREW_DEST_LIB_PREFIX do

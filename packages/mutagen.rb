@@ -3,20 +3,20 @@ require 'package'
 class Mutagen < Package
   description 'Mutagen provides real-time file synchronization and flexible network forwarding, extending the reach of your existing development tools to cloud-based containers and infrastructure.'
   homepage 'https://mutagen.io/'
-  version '0.15.1'
+  version '0.17.5'
   license 'GPL-2'
   compatibility 'all'
   source_url({
-    aarch64: 'https://github.com/mutagen-io/mutagen/releases/download/v0.15.1/mutagen_linux_arm_v0.15.1.tar.gz',
-     armv7l: 'https://github.com/mutagen-io/mutagen/releases/download/v0.15.1/mutagen_linux_arm_v0.15.1.tar.gz',
-       i686: 'https://github.com/mutagen-io/mutagen/releases/download/v0.15.1/mutagen_linux_386_v0.15.1.tar.gz',
-     x86_64: 'https://github.com/mutagen-io/mutagen/releases/download/v0.15.1/mutagen_linux_amd64_v0.15.1.tar.gz'
+    aarch64: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.5/mutagen_linux_arm_v0.17.5.tar.gz',
+     armv7l: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.5/mutagen_linux_arm_v0.17.5.tar.gz',
+       i686: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.5/mutagen_linux_386_v0.17.5.tar.gz',
+     x86_64: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.5/mutagen_linux_amd64_v0.17.5.tar.gz'
   })
   source_sha256({
-    aarch64: '74e5dd5aba9129e41b788a4cca46b102f61bef11a22f63a3b7c7e73c85b8d8bb',
-     armv7l: '74e5dd5aba9129e41b788a4cca46b102f61bef11a22f63a3b7c7e73c85b8d8bb',
-       i686: 'f02be5655607541fd264d5678a7ae8e6f34c6de05b4f24c3b20bf2945c11cbc4',
-     x86_64: 'e88afa1657291697245f54abab4eda84531e785bb945e2d92dfc2aab830f7120'
+    aarch64: '96b0aac073d0ea902c1b8040ae88005dd1255bdefec01ee5a18003be7a30174c',
+     armv7l: '96b0aac073d0ea902c1b8040ae88005dd1255bdefec01ee5a18003be7a30174c',
+       i686: '0b98ef515688693c421e3794f9a767604b6868b6bcb6379b8bae70c651c9fd00',
+     x86_64: 'cabee0af590faf822cb5542437e254406b0f037df43781c02bf6eeac267911f6'
   })
 
   def self.install
@@ -29,12 +29,11 @@ class Mutagen < Package
       arch = 'amd64'
     end
     system "tar xvf mutagen-agents.tar.gz linux_#{arch}"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'mutagen', "#{CREW_DEST_PREFIX}/bin/mutagen", mode: 0o755
     FileUtils.install "linux_#{arch}", "#{CREW_DEST_PREFIX}/bin/mutagen-agent", mode: 0o755
   end
 
   def self.postinstall
-    puts "\nType 'mutagen' to get started.\n".lightblue
+    ExitMessage.add "\nType 'mutagen' to get started.\n".lightblue
   end
 end

@@ -2,19 +2,14 @@ require 'package'
 
 class Libgd < Package
   description 'GD is an open source code library for the dynamic creation of images by programmers.'
-  homepage 'https://libgd.org/'
+  homepage 'https://libgd.github.io/'
   version '2.3.3'
   license 'custom'
   compatibility 'all'
   source_url 'https://github.com/libgd/libgd.git'
   git_hashtag "gd-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.3_armv7l/libgd-2.3.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.3_armv7l/libgd-2.3.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.3_i686/libgd-2.3.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.3_x86_64/libgd-2.3.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7cf782cc8aec78168810faa2b83f66edc791820f13e6a0ffdd45c33ff7c034e9',
      armv7l: '7cf782cc8aec78168810faa2b83f66edc791820f13e6a0ffdd45c33ff7c034e9',
@@ -22,9 +17,9 @@ class Libgd < Package
      x86_64: '0e6c97f3a19ad37591c1dd8b1daa44fa34661130282ca50a697f1ab01f080a64'
   })
 
-  depends_on 'libpng'
-  depends_on 'libavif'
-  depends_on 'libheif'
+  depends_on 'libpng' => :build
+  depends_on 'libavif' => :build
+  depends_on 'libheif' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 

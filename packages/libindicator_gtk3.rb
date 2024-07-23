@@ -11,12 +11,8 @@ class Libindicator_gtk3 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://launchpad.net/libindicator/12.10/12.10.1/+download/libindicator-12.10.1.tar.gz'
   source_sha256 'b2d2e44c10313d5c9cd60db455d520f80b36dc39562df079a3f29495e8f9447f'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libindicator_gtk3/12.10.1_armv7l/libindicator_gtk3-12.10.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libindicator_gtk3/12.10.1_armv7l/libindicator_gtk3-12.10.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libindicator_gtk3/12.10.1_x86_64/libindicator_gtk3-12.10.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'fcfdbe22d476d4fdef9e740149026e867e049f2c9770c7e332206653d002752d',
      armv7l: 'fcfdbe22d476d4fdef9e740149026e867e049f2c9770c7e332206653d002752d',

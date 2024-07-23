@@ -2,19 +2,14 @@ require 'package'
 
 class Gwt < Package
   description 'Google Web Toolkit'
-  homepage 'http://www.gwtproject.org/'
+  homepage 'https://www.gwtproject.org/'
   version '2.8.2'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://storage.googleapis.com/gwt-releases/gwt-2.8.2.zip'
   source_sha256 '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gwt/2.8.2_armv7l/gwt-2.8.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gwt/2.8.2_armv7l/gwt-2.8.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gwt/2.8.2_i686/gwt-2.8.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gwt/2.8.2_x86_64/gwt-2.8.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'abb5a99c68ece5bac1c17b336fc6178ddee1b870a4e3491af31c1695a9b9d70d',
      armv7l: 'abb5a99c68ece5bac1c17b336fc6178ddee1b870a4e3491af31c1695a9b9d70d',
@@ -31,14 +26,17 @@ class Gwt < Package
     system "mkdir -p #{CREW_DEST_PREFIX}/share/gwt"
     system "cp -r . #{CREW_DEST_PREFIX}/share/gwt"
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-      system "echo '#!/bin/bash' > i18nCreator"
-      system "echo 'cd #{CREW_PREFIX}/share/gwt' >> i18nCreator"
-      system "echo './i18nCreator \"$@\"' >> i18nCreator"
-      system 'chmod +x i18nCreator'
-      system "echo '#!/bin/bash' > webAppCreator"
-      system "echo 'cd #{CREW_PREFIX}/share/gwt' >> webAppCreator"
-      system "echo './webAppCreator \"$@\"' >> webAppCreator"
-      system 'chmod +x webAppCreator'
+      File.write 'i18nCreator', <<~EOF, perm: 0o755
+        #!/bin/bash
+        cd #{CREW_PREFIX}/share/gwt
+        ./i18nCreator "$@"
+      EOF
+
+      File.write 'webAppCreator', <<~EOF, perm: 0o755
+        #!/bin/bash
+        cd #{CREW_PREFIX}/share/gwt
+        ./webAppCreator "$@"
+      EOF
     end
   end
 

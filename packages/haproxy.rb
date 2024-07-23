@@ -3,26 +3,23 @@ require 'package'
 class Haproxy < Package
   description 'The Reliable, High Performance TCP/HTTP Load Balancer.'
   homepage 'https://www.haproxy.org/'
-  version '2.0.5'
+  version '3.0.3'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url 'https://www.haproxy.org/download/2.0/src/haproxy-2.0.5.tar.gz'
-  source_sha256 '3f2e0d40af66dd6df1dc2f6055d3de106ba62836d77b4c2e497a82a4bdbc5422'
+  source_url "https://www.haproxy.org/download/3.0/src/haproxy-#{version}.tar.gz"
+  source_sha256 '39a73c187a0b00d2602cb3ffca52d1b59d90f09032734fe8c03eb2e29a7d19df'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/haproxy/2.0.5_armv7l/haproxy-2.0.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/haproxy/2.0.5_armv7l/haproxy-2.0.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/haproxy/2.0.5_i686/haproxy-2.0.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/haproxy/2.0.5_x86_64/haproxy-2.0.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '9c3580edbfa83b4f0d59aa2f6d08689a76fef634daea6bf351a8b022110a5f29',
-     armv7l: '9c3580edbfa83b4f0d59aa2f6d08689a76fef634daea6bf351a8b022110a5f29',
-       i686: 'a1c749e70a2f3a7e2c76fe52bd2fe72218532d5d20ee018c34fee0a94956f05c',
-     x86_64: '06a3eb45445289c84a91ebc03d8f5650c8cd9c8b6988cef8fa49594427d73358'
+    aarch64: '8a03a8b27b150300a1e07ea04ea2816a229e65c79d31eb8fe98b3dbe8ca40c5f',
+     armv7l: '8a03a8b27b150300a1e07ea04ea2816a229e65c79d31eb8fe98b3dbe8ca40c5f',
+       i686: '452b2779e5f74ff7187ec16cfe148db855489df9db5ed65e81cd44435544d9a4',
+     x86_64: 'dc66ae60730d8eeaefbadad6a0a0c949d650e1f3b76e9a81f8526aabb020492b'
   })
 
   depends_on 'pcre2'
+
+  no_fhs
 
   def self.build
     system 'make', 'TARGET=linux-glibc', 'USE_OPENSSL=1', 'USE_PCRE2_JIT=1', 'USE_ZLIB=1', 'DEBUG=-s'

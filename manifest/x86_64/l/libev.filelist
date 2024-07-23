@@ -1,6 +1,6 @@
-/usr/local/include/event.h
 /usr/local/include/ev++.h
 /usr/local/include/ev.h
+/usr/local/include/event.h
 /usr/local/lib64/libev.a
 /usr/local/lib64/libev.la
 /usr/local/lib64/libev.so

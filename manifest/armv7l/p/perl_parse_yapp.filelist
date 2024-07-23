@@ -1,10 +1,10 @@
 /usr/local/bin/yapp
 /usr/local/share/man/man1/yapp.1.zst
 /usr/local/share/man/man3/Parse::Yapp.3.zst
+/usr/local/share/perl5/site_perl/Parse/Yapp.pm
 /usr/local/share/perl5/site_perl/Parse/Yapp/Driver.pm
 /usr/local/share/perl5/site_perl/Parse/Yapp/Grammar.pm
 /usr/local/share/perl5/site_perl/Parse/Yapp/Lalr.pm
 /usr/local/share/perl5/site_perl/Parse/Yapp/Options.pm
 /usr/local/share/perl5/site_perl/Parse/Yapp/Output.pm
 /usr/local/share/perl5/site_perl/Parse/Yapp/Parse.pm
-/usr/local/share/perl5/site_perl/Parse/Yapp.pm

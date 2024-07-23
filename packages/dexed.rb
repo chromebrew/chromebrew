@@ -3,14 +3,14 @@ require 'package'
 class Dexed < Package
   description 'Dexed, the D Extended EDitor, is an IDE for the D programming language, its compilers, tools and libraries.'
   homepage 'https://gitlab.com/basile.b/dexed'
-  version '3.9.23'
+  version '3.9.26'
   license 'Boost Software License - Version 1.0'
   compatibility 'x86_64'
-  source_url 'https://gitlab.com/basile.b/dexed/-/releases/v3.9.23/downloads/binaries/dexed.3.9.23.linux64.zip'
-  source_sha256 '4710e21879b6b991af883306ffca64dfac2f16332f9903bb6aa006a13caeffea'
+  min_glibc '2.34'
+  source_url "https://gitlab.com/basile.b/dexed/-/releases/v#{version}/downloads/binaries/dexed.#{version}.linux64.zip"
+  source_sha256 '2d066f96f22f988f580d922c3ec886c41da0c1a74620e834969323b1fe26d8f3'
 
   depends_on 'dmd'
-  depends_on 'dub'
   depends_on 'gtk2'
   depends_on 'xdg_base'
   depends_on 'sommelier'
@@ -18,7 +18,7 @@ class Dexed < Package
   no_compile_needed
 
   def self.build
-    desktop = <<~EOF
+    File.write 'dexed.desktop', <<~EOF
       [Desktop Entry]
       Categories=Application;IDE;Development;
       Exec=dexed %f
@@ -30,25 +30,23 @@ class Dexed < Package
       Terminal=false
       Type=Application
     EOF
-    File.write('dexed.desktop', desktop)
-    paths = <<~EOF
+    File.write 'compilerspaths.txt', <<~EOF
       object TCompilersPaths
         definedAsGlobal = dmd
         pathsForCompletion = dmd
         DmdExeName = '#{CREW_PREFIX}/bin/dmd'
       end
     EOF
-    File.write('compilerspaths.txt', paths)
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/dexed"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/pixmaps"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/applications"
     FileUtils.install %w[dcd-client dcd-server dexed dscanner], "#{CREW_DEST_PREFIX}/bin", mode: 0o755
-    FileUtils.install 'libdexed-d.so', CREW_DEST_LIB_PREFIX.to_s, mode: 0o644
+    FileUtils.install 'libdexed-d.so', CREW_DEST_LIB_PREFIX, mode: 0o644
     FileUtils.install 'dexed.png', "#{CREW_DEST_PREFIX}/share/pixmaps", mode: 0o644
     FileUtils.install 'compilerspaths.txt', "#{CREW_DEST_HOME}/.config/dexed", mode: 0o644
     FileUtils.install 'dexed.desktop', "#{CREW_DEST_PREFIX}/share/applications", mode: 0o644

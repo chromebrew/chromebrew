@@ -8,13 +8,8 @@ class Aria2 < Package
   compatibility 'all'
   source_url 'https://github.com/aria2/aria2.git'
   git_hashtag "release-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aria2/1.36.0_armv7l/aria2-1.36.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aria2/1.36.0_armv7l/aria2-1.36.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aria2/1.36.0_i686/aria2-1.36.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aria2/1.36.0_x86_64/aria2-1.36.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2958e59e53018affc425e266259281492100376d3572876dae8261487a09c8bf',
      armv7l: '2958e59e53018affc425e266259281492100376d3572876dae8261487a09c8bf',

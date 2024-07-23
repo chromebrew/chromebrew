@@ -5,20 +5,14 @@ class Imlib2 < Package
   homepage 'https://sourceforge.net/projects/enlightenment/'
   version '1.9.1'
   license 'BSD'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://downloads.sourceforge.net/enlightenment/imlib2-#{version}.tar.xz"
   source_sha256 '4a224038bfffbe5d4d250c44e05f4ee5ae24dcfef8395b1677c715c58f764d43'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imlib2/1.9.1_armv7l/imlib2-1.9.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imlib2/1.9.1_armv7l/imlib2-1.9.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imlib2/1.9.1_i686/imlib2-1.9.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imlib2/1.9.1_x86_64/imlib2-1.9.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3975a861cde1bc361f8045e80b580e92585308856cdf64fb419b97be43e50e4c',
      armv7l: '3975a861cde1bc361f8045e80b580e92585308856cdf64fb419b97be43e50e4c',
-       i686: '63fbeec96d32ec29a0ab422a41f5b2f71f5429bf2440bb342d60e575f5b50d07',
      x86_64: '5a301b10f322d868e0d1a2e13b9190c95064e4f50bc7654b12e7650f9f2812ef'
   })
 
@@ -27,14 +21,14 @@ class Imlib2 < Package
   depends_on 'giflib'
   depends_on 'libid3tag'
   depends_on 'libheif'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libjxl'
   depends_on 'libtiff'
   depends_on 'libx11'
   depends_on 'libxcb'
   depends_on 'libxext'
   depends_on 'protobuf_c'
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'expat' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R

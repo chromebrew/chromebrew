@@ -8,13 +8,8 @@ class Jbigkit < Package
   compatibility 'all'
   source_url 'https://github.com/nu774/jbigkit.git'
   git_hashtag '709282d1ddcb35ab17134ea8cdda43ec2d647d2f'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1-709282d_armv7l/jbigkit-2.1-709282d-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1-709282d_armv7l/jbigkit-2.1-709282d-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1-709282d_i686/jbigkit-2.1-709282d-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1-709282d_x86_64/jbigkit-2.1-709282d-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '33d7651880ff70c07345d33a971dd5a6ecd3a630ab3dd7a35066bd0c4e1e8dcb',
      armv7l: '33d7651880ff70c07345d33a971dd5a6ecd3a630ab3dd7a35066bd0c4e1e8dcb',

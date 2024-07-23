@@ -1,5 +1,5 @@
-/usr/local/include/rtaudio/rtaudio_c.h
 /usr/local/include/rtaudio/RtAudio.h
+/usr/local/include/rtaudio/rtaudio_c.h
 /usr/local/lib/librtaudio.a
 /usr/local/lib/librtaudio.la
 /usr/local/lib/librtaudio.so

@@ -8,13 +8,8 @@ class Xorg_nouveau_driver < Package
   compatibility 'all'
   source_url 'https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.15.tar.bz2'
   source_sha256 'aede10fd395610a328697adca3434fb14e9afbd79911d6c8545cfa2c0e541d4c'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_nouveau_driver/1.0.15_armv7l/xorg_nouveau_driver-1.0.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_nouveau_driver/1.0.15_armv7l/xorg_nouveau_driver-1.0.15-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_nouveau_driver/1.0.15_i686/xorg_nouveau_driver-1.0.15-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_nouveau_driver/1.0.15_x86_64/xorg_nouveau_driver-1.0.15-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '117d2cc14d320b1cdbe5e3f792022b796779d289553a8213607b132ee442090e',
      armv7l: '117d2cc14d320b1cdbe5e3f792022b796779d289553a8213607b132ee442090e',

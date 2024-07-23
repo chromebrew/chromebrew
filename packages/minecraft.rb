@@ -18,10 +18,10 @@ class Minecraft < Package
   depends_on 'libsecret'
   depends_on 'sommelier'
 
+  no_fhs
+
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    reload_constants
-    FileUtils.mkdir_p CREW_DEST_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_PREFIX
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/minecraft-launcher", "#{CREW_DEST_PREFIX}/bin/minecraft-launcher.elf"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/.minecraft"
@@ -32,8 +32,7 @@ class Minecraft < Package
         # https://minecraft.fandom.com/wiki/Minecraft_Launcher
         HOME=#{CREW_PREFIX}/.config #{CREW_PREFIX}/bin/minecraft-launcher.elf --workDir #{CREW_PREFIX}/.config/.minecraft --tmpDir #{CREW_PREFIX}/tmp $@
       EOF
-      File.write('minecraft-launcher', @launcherscript)
-      system 'chmod +x minecraft-launcher'
+      File.write('minecraft-launcher', @launcherscript, perm: 0o755)
     end
   end
 

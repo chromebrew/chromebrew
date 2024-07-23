@@ -8,13 +8,8 @@ class Octane < Package
   compatibility 'all'
   source_url 'https://github.com/chromium/octane/archive/570ad1ccfe86e3eecba0636c8f932ac08edec517.tar.gz'
   source_sha256 'c355dd9a37df421826f3d8028d89e8c8b58faa12a49da88fa2641788f9482fe7'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/octane/2.0_armv7l/octane-2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/octane/2.0_armv7l/octane-2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/octane/2.0_i686/octane-2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/octane/2.0_x86_64/octane-2.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c195233b1d220e0905a439e631c1eca73d23631ed20f896a1d6527e64ea2b78c',
      armv7l: 'c195233b1d220e0905a439e631c1eca73d23631ed20f896a1d6527e64ea2b78c',

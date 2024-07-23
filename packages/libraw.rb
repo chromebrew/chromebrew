@@ -5,20 +5,14 @@ class Libraw < Package
   homepage 'https://www.libraw.org'
   version '0.20.2'
   license 'LGPL-2.1 and CDDL'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.libraw.org/data/LibRaw-0.20.2.tar.gz'
   source_sha256 'dc1b486c2003435733043e4e05273477326e51c3ea554c6864a4eafaff1004a6'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libraw/0.20.2_armv7l/libraw-0.20.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libraw/0.20.2_armv7l/libraw-0.20.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libraw/0.20.2_i686/libraw-0.20.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libraw/0.20.2_x86_64/libraw-0.20.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8c49ae291667a77b2656a9530f7aa3afcc5ba60849b421c122384c9be24fb80b',
      armv7l: '8c49ae291667a77b2656a9530f7aa3afcc5ba60849b421c122384c9be24fb80b',
-       i686: '1e6511483290561a5d2aaff1bc5471bb7c49409fe7588b0f60beb1441918abf4',
      x86_64: 'e73d06cfb8317be20e801930eba8b4f96c9e0d1a021594f66164972441e600d1'
   })
 
@@ -27,7 +21,7 @@ class Libraw < Package
   depends_on 'openmp'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'zlibpkg' # R
 
   def self.build

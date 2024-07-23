@@ -5,20 +5,14 @@ class Libcanberra < Package
   homepage 'http://0pointer.de/lennart/projects/libcanberra/'
   version '0.30-1'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'http://pkgs.fedoraproject.org/repo/pkgs/libcanberra/libcanberra-0.30.tar.xz/34cb7e4430afaf6f447c4ebdb9b42072/libcanberra-0.30.tar.xz'
   source_sha256 'c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcanberra/0.30-1_armv7l/libcanberra-0.30-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcanberra/0.30-1_armv7l/libcanberra-0.30-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcanberra/0.30-1_i686/libcanberra-0.30-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcanberra/0.30-1_x86_64/libcanberra-0.30-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2a8d173a95f304fdfe202184fbf842d0f5f543a273c18df91bfd52109d16d8ca',
      armv7l: '2a8d173a95f304fdfe202184fbf842d0f5f543a273c18df91bfd52109d16d8ca',
-       i686: '36b8c4286a7309c8338f142296bb5e386e92371bb8eb2758c2ee2b2d1c9ae353',
      x86_64: '8fb64b8552e9340a97fe1eaae7ca4f8326dcb4bcc534737847c9b151c3876fcf'
   })
 

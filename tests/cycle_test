@@ -7,16 +7,17 @@ require_relative '../lib/const'
 require_relative '../lib/color'
 require_relative '../lib/package'
 
-@all_pkgs = {}
+# Add >LOCAL< lib to LOAD_PATH so that packages can be loaded
+$LOAD_PATH.unshift File.join(CREW_LIB_PATH, 'lib')
 
-$LOAD_PATH.unshift '../lib'
+@all_pkgs = {}
 
 puts "Running dependency cycle tests...\n".yellow
 
 # Loads all packages
 Dir['../packages/*.rb'].each do |filename|
   name = File.basename(filename, '.rb')
-  pkg = Package.load_package(filename, name)
+  pkg = Package.load_package(filename)
   @all_pkgs[name] = pkg
 end
 
@@ -39,7 +40,7 @@ def dfs(pkg)
     end
   when nil
     @state[pkg] = :on_path
-    pkg.dependencies&.each do |name, _v|
+    pkg.dependencies&.each_key do |name|
       dfs(@all_pkgs[name]) if name != pkg.name
     end
     @state[pkg] = :visited
@@ -48,7 +49,7 @@ def dfs(pkg)
 end
 
 # Calls dfs for every path
-@all_pkgs.each do |_name, pkg|
+@all_pkgs.each_value do |pkg|
   dfs(pkg)
 end
 

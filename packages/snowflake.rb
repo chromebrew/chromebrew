@@ -7,10 +7,8 @@ class Snowflake < Package
   license 'GPL-3'
   compatibility 'x86_64'
   source_url 'SKIP'
+  binary_compression 'tpxz'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snowflake/1.0.4_x86_64/snowflake-1.0.4-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     x86_64: '4e524ad28ef440ded64cb667b188ced01d662fc8240d85be39cc7319a306e99f'
   })

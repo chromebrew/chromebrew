@@ -1,39 +1,19 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_http_request < Package
+class Perl_http_request < PERL
   description 'HTTP style request message'
   homepage 'https://metacpan.org/pod/HTTP::Request'
-  version '6.44-perl5.36'
+  version '6.46-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Message-6.44.tar.gz'
-  source_sha256 '398b647bf45aa972f432ec0111f6617742ba32fc773c6612d21f64ab4eacbca1'
+  source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Message-6.46.tar.gz'
+  source_sha256 'e27443434150d2d1259bb1e5c964429f61559b0ae34b5713090481994936e2a5'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_request/6.44-perl5.36_armv7l/perl_http_request-6.44-perl5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_request/6.44-perl5.36_armv7l/perl_http_request-6.44-perl5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_request/6.44-perl5.36_i686/perl_http_request-6.44-perl5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_request/6.44-perl5.36_x86_64/perl_http_request-6.44-perl5.36-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'fc796bc27ffc42e88718fbd65bb71fa5e7abdeb5a56f7c900b98c4d02507fb5f',
-     armv7l: 'fc796bc27ffc42e88718fbd65bb71fa5e7abdeb5a56f7c900b98c4d02507fb5f',
-       i686: 'd1758c5cff63a4c71a1177dc73eb0895aad0082bf1dd57d8df7942a5f183ce9a',
-     x86_64: 'cfdd8682a9295549b6974a346cb7ccc69421f683a9740dd498ad08d494b7a500'
+    aarch64: '0586f35dc60804921201d76639a33312b67d61e500254352fa8fc42d6b2a0da1',
+     armv7l: '0586f35dc60804921201d76639a33312b67d61e500254352fa8fc42d6b2a0da1',
+       i686: '251184391943dd3fb28cb364f66ff2d58264e0d08f3df99cd7e06fc513d9b897',
+     x86_64: '21f055b784e8515c4922098c3fa4f13e6ad5cb3c5a5d46b79109dc1ed3c86c3c'
   })
-
-  no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

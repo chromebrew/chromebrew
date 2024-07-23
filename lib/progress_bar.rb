@@ -28,7 +28,7 @@ class ProgressBar
     trap('WINCH') do
       # reset width settings after terminal resized
       # get terminal size, calculate the width of progress bar based on it
-      @terminal_h, @terminal_w = IO.console&.winsize || [25, 80]
+      @terminal_h, @terminal_w = !IO.console&.console_mode || IO.console&.winsize == [0, 0] ? [25, 80] : IO.console&.winsize
       @bar_width = @terminal_w -
                    @info_before_bar.merge(@info_after_bar).values.sum - # space that all info blocks takes
                    (@info_before_bar.merge(@info_after_bar).length * 2) # space for separator (whitespaces) between each info
@@ -89,16 +89,16 @@ class ProgressBar
         uncompleted_length = @bar_width - completed_length
 
         # print info and progress bar
-        @info_before_bar.each_pair do |varName, width|
-          printf '%*.*s  ', width, width, instance_variable_get("@#{varName}")
+        @info_before_bar.each_pair do |var_name, width|
+          printf '%*.*s  ', width, width, instance_variable_get("@#{var_name}")
         end
 
         # print progress bar with color code
         print (@bar_char * completed_length).send(*@bar_front_color),
               (@bar_char * uncompleted_length).send(*@bar_bg_color)
 
-        @info_after_bar.each_pair do |varName, width|
-          printf '  %*.*s', width, width, instance_variable_get("@#{varName}")
+        @info_after_bar.each_pair do |var_name, width|
+          printf '  %*.*s', width, width, instance_variable_get("@#{var_name}")
         end
 
         # stop when 100%

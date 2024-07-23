@@ -2,24 +2,19 @@ require 'package'
 
 class Krb5 < Package
   description 'Kerberos is a network authentication protocol.'
-  homepage 'https://web.mit.edu/kerberos'
-  version '1.20.1-1'
+  homepage 'https://web.mit.edu/kerberos/'
+  version '1.21.2'
   license 'openafs-krb5-a, BSD, MIT, OPENLDAP, BSD-2, HPND, BSD-4, ISC, RSA, CC-BY-SA-3.0 and BSD-2 or GPL-2+ )'
   compatibility 'all'
-  source_url 'https://web.mit.edu/kerberos/dist/krb5/1.20/krb5-1.20.1.tar.gz'
-  source_sha256 '704aed49b19eb5a7178b34b2873620ec299db08752d6a8574f95d41879ab8851'
+  source_url 'https://web.mit.edu/kerberos//dist/krb5/1.21/krb5-1.21.2.tar.gz'
+  source_sha256 '9560941a9d843c0243a71b17a7ac6fe31c7cebb5bce3983db79e52ae7e850491'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/krb5/1.20.1-1_armv7l/krb5-1.20.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/krb5/1.20.1-1_armv7l/krb5-1.20.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/krb5/1.20.1-1_i686/krb5-1.20.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/krb5/1.20.1-1_x86_64/krb5-1.20.1-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '80b1c0a265ce4a1ad7838189c010513aae8dd8b10578d98a8d7e56df66fc70ce',
-     armv7l: '80b1c0a265ce4a1ad7838189c010513aae8dd8b10578d98a8d7e56df66fc70ce',
-       i686: 'ed85e0ab5d700e98aa67e616b23c13734234255332cb6b51e6872238f3c2998e',
-     x86_64: 'e31008fe76d9db3740c6c874bb501cf5d716c7ceb5fe61e8f43a25b653042e8b'
+    aarch64: '3c9b9dd47e77adf9a413c6e5475017c0bb18b3498bd59985ce689c26c603098b',
+     armv7l: '3c9b9dd47e77adf9a413c6e5475017c0bb18b3498bd59985ce689c26c603098b',
+       i686: '6af0d60a68a5b63aaed64552e94e99cc9238ce4ebcf9e2bb25017c993b0e149d',
+     x86_64: 'e73598b85c21ad90e56fe48b7af09f287c3a5962a2c7c57e35dd3090ebdccd20'
   })
 
   depends_on 'ccache' => :build

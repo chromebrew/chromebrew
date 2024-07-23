@@ -2,19 +2,14 @@ require 'package'
 
 class Wavpack < Package
   description 'WavPack is a completely open audio compression format providing lossless, high-quality lossy, and a unique hybrid compression mode.'
-  homepage 'http://www.wavpack.com/'
+  homepage 'https://www.wavpack.com/'
   version '5.1.0'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/dbry/WavPack/archive/5.1.0.tar.gz'
   source_sha256 '1af7eaccbf560271013d4179d98ef6fc681a2bb3603382577eeba73d438785f4'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wavpack/5.1.0_armv7l/wavpack-5.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wavpack/5.1.0_armv7l/wavpack-5.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wavpack/5.1.0_i686/wavpack-5.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wavpack/5.1.0_x86_64/wavpack-5.1.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0de1c309b6e2ae6cad6ebf4d3c0bae4bfa46e28d37752946e560208bf873eeec',
      armv7l: '0de1c309b6e2ae6cad6ebf4d3c0bae4bfa46e28d37752946e560208bf873eeec',

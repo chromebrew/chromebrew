@@ -3,23 +3,18 @@ require 'package'
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
-  version '4.18.0'
+  version '4.20.0'
   license 'GPLv3'
   compatibility 'all'
-  source_url 'https://download.samba.org/pub/samba/stable/samba-4.18.0.tar.gz'
-  source_sha256 '70348656ef807be9c8be4465ca157cef4d99818e234253d2c684cc18b8408149'
+  source_url 'https://download.samba.org/pub/samba/stable/samba-4.20.0.tar.gz'
+  source_sha256 '02672542510ac6e5d0c91c0c14d90ab4e6ec397c709e952c6da3a6e0b4d5a42f'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.18.0_armv7l/smbclient-4.18.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.18.0_armv7l/smbclient-4.18.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.18.0_i686/smbclient-4.18.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.18.0_x86_64/smbclient-4.18.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'a38a5fad0e20363676d14560f9e05e3b1e746d23feed9e46fe95c7e02c62eb03',
-     armv7l: 'a38a5fad0e20363676d14560f9e05e3b1e746d23feed9e46fe95c7e02c62eb03',
-       i686: '816f819404ff0ef963606976e254b4a9ceaf672ddcd3ee47a6f2c0a02447b55b',
-     x86_64: '42b704298039f3b23734048f40ebfb0bd2067737de0befdbbff5b5d65b63837d'
+       i686: '2c3eb6d6b7a08694f304d325e615a4f748118e31bb02a63bd4ec1461ac16b2e8',
+    aarch64: '22e79e32614baa61de25559a853fca2aa499dccb45f45d94fd6f07f9c4ffdee4',
+     armv7l: '22e79e32614baa61de25559a853fca2aa499dccb45f45d94fd6f07f9c4ffdee4',
+     x86_64: '6946b1b22ba515afb48846add8c8bdfb5b2adfc9aac69a6680adbf2868c3453d'
   })
 
   depends_on 'acl' # R
@@ -38,6 +33,7 @@ class Smbclient < Package
   depends_on 'libbsd' # R
   depends_on 'libcap' # R
   depends_on 'libtasn1' # R
+  depends_on 'libtirpc' # R
   depends_on 'libunwind' # R
   depends_on 'liburing' => :build
   depends_on 'linux_pam' # R

@@ -1,7 +1,6 @@
 /usr/local/bin/gparted
 /usr/local/bin/gparted.elf
 /usr/local/libexec/gpartedbin
-/usr/local/share/appdata/gparted.appdata.xml
 /usr/local/share/applications/gparted.desktop
 /usr/local/share/help/C/gparted/figures/gparted_window.png
 /usr/local/share/help/C/gparted/index.docbook
@@ -76,6 +75,7 @@
 /usr/local/share/locale/hr/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/hu/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/id/LC_MESSAGES/gparted.mo
+/usr/local/share/locale/ie/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/is/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/it/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/ja/LC_MESSAGES/gparted.mo
@@ -93,16 +93,16 @@
 /usr/local/share/locale/oc/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/pa/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/pl/LC_MESSAGES/gparted.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/pt/LC_MESSAGES/gparted.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/ro/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/ru/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/rw/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/si/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/sk/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/sl/LC_MESSAGES/gparted.mo
-/usr/local/share/locale/sr@latin/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/sr/LC_MESSAGES/gparted.mo
+/usr/local/share/locale/sr@latin/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/sv/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/te/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/th/LC_MESSAGES/gparted.mo
@@ -113,3 +113,4 @@
 /usr/local/share/locale/zh_HK/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/gparted.mo
 /usr/local/share/man/man8/gparted.8.zst
+/usr/local/share/metainfo/gparted.appdata.xml

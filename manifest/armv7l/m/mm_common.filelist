@@ -1,7 +1,7 @@
 /usr/local/bin/mm-common-get
 /usr/local/bin/mm-common-prepare
-/usr/local/share/aclocal/mm-ax_cxx_compile_stdcxx_11.m4
 /usr/local/share/aclocal/mm-ax_cxx_compile_stdcxx.m4
+/usr/local/share/aclocal/mm-ax_cxx_compile_stdcxx_11.m4
 /usr/local/share/aclocal/mm-common.m4
 /usr/local/share/aclocal/mm-dietlib.m4
 /usr/local/share/aclocal/mm-doc.m4
@@ -24,11 +24,11 @@
 /usr/local/share/mm-common/build/generate-binding.py
 /usr/local/share/mm-common/doctags/libstdc++.tag
 /usr/local/share/mm-common/doctool/doc-install.pl
-/usr/local/share/mm-common/doctool/doc_install.py
 /usr/local/share/mm-common/doctool/doc-postprocess.pl
+/usr/local/share/mm-common/doctool/doc_install.py
 /usr/local/share/mm-common/doctool/doc_postprocess.py
-/usr/local/share/mm-common/doctool/doxygen.css
 /usr/local/share/mm-common/doctool/doxygen-extra.css
+/usr/local/share/mm-common/doctool/doxygen.css
 /usr/local/share/mm-common/doctool/tagfile-to-devhelp2.xsl
 /usr/local/share/pkgconfig/mm-common-libstdc++.pc
 /usr/local/share/pkgconfig/mm-common-util.pc

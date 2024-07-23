@@ -2,37 +2,26 @@ require 'package'
 
 class Icu4c < Package
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
-  homepage 'http://site.icu-project.org/'
-  version '73.1'
+  homepage 'https://icu.unicode.org/'
+  version '74.2'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/unicode-org/icu/releases/download/release-73-1/icu4c-73_1-src.tgz'
-  source_sha256 'a457431de164b4aa7eca00ed134d00dfbf88a77c6986a10ae7774fc076bb8c45'
+  source_url 'https://github.com/unicode-org/icu/releases/download/release-74-2/icu4c-74_2-src.tgz'
+  source_sha256 '68db082212a96d6f53e35d60f47d38b962e9f9d207a74cfac78029ae8ff5e08c'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/73.1_armv7l/icu4c-73.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/73.1_armv7l/icu4c-73.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/73.1_i686/icu4c-73.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/73.1_x86_64/icu4c-73.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'c7135c94dd51231686d4239d00da8fd6b1a902792ca66e32ef078eccc48093a8',
-     armv7l: 'c7135c94dd51231686d4239d00da8fd6b1a902792ca66e32ef078eccc48093a8',
-       i686: '991de36f03221b8e667442a376ba2af261e732ec9231cffceae8693a5b307dad',
-     x86_64: 'c00ba9876a12e220bb1ef837e08930b7a44c8683b1d0b70f288f968f85a7b14c'
+    aarch64: 'fe4fdd869d949f3caf863b543dd2f8b189e34b14e9c498c00f92979f8ddc0e9c',
+     armv7l: 'fe4fdd869d949f3caf863b543dd2f8b189e34b14e9c498c00f92979f8ddc0e9c',
+       i686: 'c7a47779435d14a382281dbd3208913f4cbe5ef54f391f729f74d1037942238a',
+     x86_64: 'd982bd98cb626a29bff9c6bb4a155610cad0a4239aadbdfe1e16e0acbec76b75'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build
-    FileUtils.cd('source') do
-      case ARCH
-      when 'aarch64', 'armv7l'
-        # Armhf requires sane ELF headers rather than other architectures as
-        # discussed in https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=653457
-        system "sed -e '/LDFLAGSICUDT=/cLDFLAGSICUDT=' -i config/mh-linux"
-      end
+    Dir.chdir 'source' do
       system "mold -run ./configure \
         #{CREW_OPTIONS} \
         --enable-static \
@@ -43,11 +32,11 @@ class Icu4c < Package
     end
   end
 
-  @icuver = '73'
-  @oldicuver = %w[72.1]
+  @icuver = '74.2'
+  @oldicuver = %w[73]
 
   def self.install
-    FileUtils.cd('source') do
+    Dir.chdir 'source' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
     Dir.chdir CREW_DEST_LIB_PREFIX do
@@ -69,25 +58,25 @@ class Icu4c < Package
     return if CREW_IN_CONTAINER
 
     Dir.chdir CREW_LIB_PREFIX do
-      @oldicuver = %w[72 72.1]
+      @oldicuver = %w[73.2 73 72 72.1]
       @oldicuver.each do |oldver|
         puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
-        @fileArray = []
-        @libArray = []
+        @file_array = []
+        @lib_array = []
         @nmresults = `nm  -A *.so* 2>/dev/null | grep ucol_open_#{oldver}`.chop.split(/$/).map(&:strip)
-        @nmresults.each { |fileLine| @libArray.push(fileLine.partition(':').first) }
-        @libArray.each do |f|
-          @grepresults = `grep "#{f}" #{CREW_META_PATH}*.filelist`.chomp.gsub('.filelist', '').partition(':').first.gsub(
+        @nmresults.each { |file_line| @lib_array.push(file_line.partition(':').first) }
+        @lib_array.each do |f|
+          @grepresults = `grep "#{f}" #{CREW_META_PATH}/*.filelist`.chomp.gsub('.filelist', '').partition(':').first.gsub(
             CREW_META_PATH, ''
           ).split(/$/).map(&:strip)
-          @grepresults.each { |fileLine| @fileArray.push(fileLine) }
+          @grepresults.each { |file_line| @file_array.push(file_line) }
         end
         # Mozjs contains an internal icu which will not match this version.
         # Update the following when there is a new version of mozjs.
-        @fileArray.delete_if { |item| item == 'js102' }
-        next if @fileArray.empty?
+        @file_array.delete_if { |item| item == 'js102' }
+        next if @file_array.empty?
 
-        @fileArray.uniq.sort.each do |item|
+        @file_array.uniq.sort.each do |item|
           puts item.lightred
         end
       end

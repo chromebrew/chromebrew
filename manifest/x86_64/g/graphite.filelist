@@ -8,5 +8,5 @@
 /usr/local/lib64/libgraphite2.so.3
 /usr/local/lib64/libgraphite2.so.3.2.1
 /usr/local/lib64/pkgconfig/graphite2.pc
-/usr/local/share/graphite2/graphite2.cmake
 /usr/local/share/graphite2/graphite2-release.cmake
+/usr/local/share/graphite2/graphite2.cmake

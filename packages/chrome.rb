@@ -2,21 +2,22 @@ require 'package'
 
 class Chrome < Package
   description 'Google Chrome is a fast, easy to use, and secure web browser.'
-  homepage 'https://www.google.com/chrome'
-  version '114.0.5735.133-1'
+  homepage 'https://www.google.com/chrome/'
+  version '126.0.6478.182-1'
   license 'google-chrome'
   compatibility 'x86_64'
-  source_url 'https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_114.0.5735.133-1_amd64.deb'
-  source_sha256 '6f700ff90db3a0f72ed9fb7ccbce31bd2f937366ed9b80d3ee0dafab7ba0693e'
+  min_glibc '2.29'
+  source_url "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_#{version}_amd64.deb"
+  source_sha256 '8b3cf7a0424049c235315de90472f3c3108ab3a33ead33917ab9ef2efdec0580'
 
   depends_on 'nspr'
   depends_on 'cairo'
   depends_on 'gtk3'
   depends_on 'expat'
   depends_on 'cras'
-  depends_on 'sommelier'
 
   no_compile_needed
+  no_shrink
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
@@ -26,5 +27,9 @@ class Chrome < Package
 
     FileUtils.ln_s '../share/chrome/google-chrome', "#{CREW_DEST_PREFIX}/bin/google-chrome-stable"
     FileUtils.ln_s '../share/chrome/google-chrome', "#{CREW_DEST_PREFIX}/bin/google-chrome"
+  end
+
+  def self.postinstall
+    ExitMessage.add "\nType 'google-chrome' to get started.\n".lightblue
   end
 end

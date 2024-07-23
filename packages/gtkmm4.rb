@@ -1,40 +1,38 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gtkmm4 < Package
+class Gtkmm4 < Meson
   description 'The Gtkmm4 package provides a C++ interface to GTK+ 4.'
   homepage 'https://www.gtkmm.org/'
-  version '4.0.1'
+  version '4.13.3'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url 'https://download.gnome.org/sources/gtkmm/4.0/gtkmm-4.0.1.tar.xz'
-  source_sha256 '8973d9bc7848e02cb2051e05f3ee3a4baffe2feb4af4a5487f0e3132eec03884'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/gtkmm.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm4/4.0.1_armv7l/gtkmm4-4.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm4/4.0.1_armv7l/gtkmm4-4.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm4/4.0.1_i686/gtkmm4-4.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm4/4.0.1_x86_64/gtkmm4-4.0.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '1d2640f81201631586b082735b8ad82a229ff9502233acc4ed628ba88dd46278',
-     armv7l: '1d2640f81201631586b082735b8ad82a229ff9502233acc4ed628ba88dd46278',
-       i686: '1be63d921a1b6013e1a36ef9be69d904ed7b6234c75dc24880598d290681914c',
-     x86_64: 'd6b5659e5e00d16442c9368db8c7baf610fb62f43111ed6f6cd93dfb0417fbf1'
+    aarch64: 'e434093b7c637f2eb345a040fc96e963d50c4a6dae4f9880cc07c693b892b668',
+     armv7l: 'e434093b7c637f2eb345a040fc96e963d50c4a6dae4f9880cc07c693b892b668',
+     x86_64: 'f28c87e6d05d687f3c8f354ed7dca65d4bbfaf98fc45136b054e5bee47871ef3'
   })
 
-  depends_on 'atkmm'
-  depends_on 'gtk4'
-  depends_on 'pangomm'
-  depends_on 'cairomm'
+  depends_on 'cairomm_1_16' # R
+  depends_on 'cairo' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glibmm_2_68' # R
+  depends_on 'glib' # R
+  depends_on 'gobject_introspection' => :build
+  depends_on 'graphene' # R
+  depends_on 'gtk4' # R
+  depends_on 'libsigcplusplus3' # R
+  depends_on 'pangomm_2_48' # R
+  depends_on 'mm_common' => :build
+  depends_on 'vulkan_headers' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
+  gnome
+  no_upstream_update
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dbuild-documentation=false'
 end

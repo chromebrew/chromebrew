@@ -1,25 +1,20 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Curl < Package
+class Curl < Autotools
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  version '8.1.2'
+  version '8.8.0'
   license 'curl'
   compatibility 'all'
-  source_url 'https://curl.se/download/curl-8.1.2.tar.xz'
-  source_sha256 '31b1118eb8bfd43cd95d9a3f146f814ff874f6ed3999b29d94f4d1e7dbac5ef6'
+  source_url 'https://curl.se/download/curl-8.8.0.tar.xz'
+  source_sha256 '0f58bb95fc330c8a46eeb3df5701b0d90c9d9bfcc42bd1cd08791d12551d4400'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.2_armv7l/curl-8.1.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.2_armv7l/curl-8.1.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.2_i686/curl-8.1.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.2_x86_64/curl-8.1.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'f61797ea0812422a343bb2de6d6be68ae4391630ea8552c9b6f93eb3021ce282',
-     armv7l: 'f61797ea0812422a343bb2de6d6be68ae4391630ea8552c9b6f93eb3021ce282',
-       i686: 'c72d008177000b151c28095477feae0d75056f76f97b20a687c6c02dbd610985',
-     x86_64: '4b664fdab78743015c37fbc11af00e34991097137ca955869629a77bd023822d'
+    aarch64: 'ea52214cfedebed8ac6de38de9934df891ebf5a110184b65f753478e644a40c8',
+     armv7l: 'ea52214cfedebed8ac6de38de9934df891ebf5a110184b65f753478e644a40c8',
+       i686: '095cd0acc9355d9c7dfe0903d5303f1b171677cf546b2ec9ac8fe1322ba894d0',
+     x86_64: '1a2f0d2357b3c5c3df5f89349d7419454fba77434390c199e6ac82d324c57956'
   })
 
   depends_on 'brotli' # R
@@ -40,11 +35,7 @@ class Curl < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  def self.build
-    system '[ -x configure ] || autoreconf -fvi'
-    system 'filefix'
-    system "mold -run ./configure #{CREW_OPTIONS} \
-      --disable-maintainer-mode \
+  configure_options "--disable-maintainer-mode \
       --enable-ares \
       --enable-ipv6 \
       --enable-ldap \
@@ -56,10 +47,4 @@ class Curl < Package
       --with-openssl \
       --without-gnutls \
       --without-librtmp"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

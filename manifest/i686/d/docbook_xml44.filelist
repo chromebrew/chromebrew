@@ -6,6 +6,7 @@
 /usr/local/share/xml/docbook/xml-dtd-4.4/dbpoolx.mod
 /usr/local/share/xml/docbook/xml-dtd-4.4/docbook.cat
 /usr/local/share/xml/docbook/xml-dtd-4.4/docbookx.dtd
+/usr/local/share/xml/docbook/xml-dtd-4.4/ent/README
 /usr/local/share/xml/docbook/xml-dtd-4.4/ent/isoamsa.ent
 /usr/local/share/xml/docbook/xml-dtd-4.4/ent/isoamsb.ent
 /usr/local/share/xml/docbook/xml-dtd-4.4/ent/isoamsc.ent
@@ -25,6 +26,5 @@
 /usr/local/share/xml/docbook/xml-dtd-4.4/ent/isonum.ent
 /usr/local/share/xml/docbook/xml-dtd-4.4/ent/isopub.ent
 /usr/local/share/xml/docbook/xml-dtd-4.4/ent/isotech.ent
-/usr/local/share/xml/docbook/xml-dtd-4.4/ent/README
 /usr/local/share/xml/docbook/xml-dtd-4.4/htmltblx.mod
 /usr/local/share/xml/docbook/xml-dtd-4.4/soextblx.dtd

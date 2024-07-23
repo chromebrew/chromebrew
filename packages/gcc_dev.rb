@@ -2,27 +2,34 @@ require 'package'
 require_relative 'gcc_build'
 
 class Gcc_dev < Package
-  description 'The GNU Compiler Collection: Everything except libgcc'
+  description 'The GNU Compiler Collection: Everything (excepting libraries aside from libgccjit)'
   homepage Gcc_build.homepage
-  version '13.1.0' # Do not use @_ver here, it will break the installer.
+  version "14.1.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
   license Gcc_build.license
-  # When upgrading gcc_build, be sure to upgrade gcc_lib and gcc_dev in tandem.
-  puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version != Gcc_build.version.to_s
+  # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
+  puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_dev/13.1.0_armv7l/gcc_dev-13.1.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_dev/13.1.0_armv7l/gcc_dev-13.1.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_dev/13.1.0_i686/gcc_dev-13.1.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_dev/13.1.0_x86_64/gcc_dev-13.1.0-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: '12169c998f12d1117a90252ebdf49f3139d1a22c58474db202a86f24060d285b',
-     armv7l: '12169c998f12d1117a90252ebdf49f3139d1a22c58474db202a86f24060d285b',
-       i686: '072646bcb2d26baed67c80357367cadb30aef30523b6b39c2984cdf4761c0a86',
-     x86_64: 'c9eb15813b74fa9393da20d38b30aab61c14079adb052e4cc7e98e73fa61a04a'
-  })
+  case LIBC_VERSION
+  when '2.23'
+    binary_sha256({
+         i686: '68823c2d372559b5ba9e304529bd01f24ccf7c0a71a14824d048b2d323643257'
+    })
+  when '2.27', '2.32', '2.33', '2.35'
+    binary_sha256({
+      aarch64: 'f649c41a0d2fbfb5077068319d6dd8cca84b4047d409213b8f32623dff4e2bbd',
+       armv7l: 'f649c41a0d2fbfb5077068319d6dd8cca84b4047d409213b8f32623dff4e2bbd',
+       x86_64: 'fb235557844b33ada4de312d2f4709319ffe900c5b62a5fc4b54a06f517aa32c'
+    })
+  when '2.37'
+    binary_sha256({
+      aarch64: '258cd5814cee743dd20f58a9eba503d9ad825123c47b4ca53ad0fa86d50ce38b',
+       armv7l: '258cd5814cee743dd20f58a9eba503d9ad825123c47b4ca53ad0fa86d50ce38b',
+       x86_64: 'd287e0279881675ae404ebdb4e99bcdb89297263e257e4a2a4b0b6b4e9876059'
+    })
+  end
 
   depends_on 'gcc_build' => :build
   depends_on 'gcc_lib' # R
@@ -35,6 +42,10 @@ class Gcc_dev < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
+  no_shrink
+  no_source_build
+  no_strip
+
   def self.install
     puts 'Installing Gcc_build to pull files for build...'.lightblue
     @filelist_path = File.join(CREW_META_PATH, 'gcc_build.filelist')
@@ -42,9 +53,9 @@ class Gcc_dev < Package
     @filelist = File.readlines(@filelist_path, chomp: true).sort
 
     @filelist.each do |filename|
-      next if filename.include?('.so') && filename.include?('libgcc_s')
+      next if filename.include?('.so') && !filename.include?('libgccjit')
 
-      @destpath = "#{CREW_DEST_DIR.chomp('/')}#{filename}"
+      @destpath = File.join(CREW_DEST_DIR, filename)
       @filename_target = File.realpath(filename)
       FileUtils.install @filename_target, @destpath
     end

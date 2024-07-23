@@ -8,13 +8,8 @@ class Libvorbis < Package
   license 'BSD'
   source_url 'https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.xz'
   source_sha256 'b33cc4934322bcbf6efcbacf49e3ca01aadbea4114ec9589d1b1e9d20f72954b'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvorbis/1.3.7_armv7l/libvorbis-1.3.7-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvorbis/1.3.7_armv7l/libvorbis-1.3.7-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvorbis/1.3.7_i686/libvorbis-1.3.7-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvorbis/1.3.7_x86_64/libvorbis-1.3.7-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'd7887b0f9a491d6b9b1e6d0998988c71a398dd0734a8cdc3a9a8973acaa1e5e0',
       armv7l: 'd7887b0f9a491d6b9b1e6d0998988c71a398dd0734a8cdc3a9a8973acaa1e5e0',

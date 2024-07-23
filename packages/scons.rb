@@ -8,13 +8,8 @@ class Scons < Package
   compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/scons/scons-3.0.5.tar.gz'
   source_sha256 'df676f23dc6d4bfa384fc389d95dcd21ab907e6349d4c848958ba4befb73c73e'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scons/3.0.5_armv7l/scons-3.0.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scons/3.0.5_armv7l/scons-3.0.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scons/3.0.5_i686/scons-3.0.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scons/3.0.5_x86_64/scons-3.0.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e4498f5a89565452fee2f035af1a9ea37e7c36862c0d8cb3d2e3702faaea3abb',
      armv7l: 'e4498f5a89565452fee2f035af1a9ea37e7c36862c0d8cb3d2e3702faaea3abb',

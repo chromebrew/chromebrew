@@ -5,16 +5,6 @@
 /usr/local/lib64/libnftables.so.1
 /usr/local/lib64/libnftables.so.1.1.0
 /usr/local/lib64/pkgconfig/libnftables.pc
-/usr/local/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/EGG-INFO/dependency_links.txt
-/usr/local/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/EGG-INFO/not-zip-safe
-/usr/local/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/EGG-INFO/PKG-INFO
-/usr/local/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/EGG-INFO/SOURCES.txt
-/usr/local/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/EGG-INFO/top_level.txt
-/usr/local/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/nftables/__init__.py
-/usr/local/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/nftables/nftables.py
-/usr/local/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/nftables/__pycache__/__init__.cpython-311.pyc
-/usr/local/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/nftables/__pycache__/nftables.cpython-311.pyc
-/usr/local/lib/python3.11/site-packages/nftables-0.1-py3.11.egg/nftables/schema.json
 /usr/local/sbin/nft
 /usr/local/share/doc/nftables/examples/ct_helpers.nft
 /usr/local/share/doc/nftables/examples/load_balancing.nft

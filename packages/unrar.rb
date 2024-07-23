@@ -2,30 +2,28 @@ require 'package'
 
 class Unrar < Package
   description 'UnRAR is a powerful archive extractor.'
-  homepage 'http://www.rarlab.com/'
-  version '5.6.3'
+  homepage 'https://www.rarlab.com/'
+  version '7.0.9'
   license 'unRAR'
   compatibility 'all'
-  source_url 'https://www.rarlab.com/rar/unrarsrc-5.6.3.tar.gz'
-  source_sha256 'c590e70a745d840ae9b9f05ba6c449438838c8280d76ce796a26b3fcd0a1972e'
+  source_url 'https://www.rarlab.com/rar/unrarsrc-7.0.9.tar.gz'
+  source_sha256 '505c13f9e4c54c01546f2e29b2fcc2d7fabc856a060b81e5cdfe6012a9198326'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unrar/5.6.3_armv7l/unrar-5.6.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unrar/5.6.3_armv7l/unrar-5.6.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unrar/5.6.3_i686/unrar-5.6.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unrar/5.6.3_x86_64/unrar-5.6.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'ebf07529e4586d9494a41e0c0bc08d9c45b706a953ed9dc224b93e67f6b26cab',
-     armv7l: 'ebf07529e4586d9494a41e0c0bc08d9c45b706a953ed9dc224b93e67f6b26cab',
-       i686: '352da95a4126086f58fb69ae4aa4301f5464d52ac7c0d527e0434aaa6c846bee',
-     x86_64: 'ff5bc1b1c1b2f04cfc69b42345df16cac2bfc4be64a15016825e7980b4f5683f'
+    aarch64: 'f6af65b842dd3eaf120f6755ec8675dad7176125397bc20740bc5d983ed5d5d3',
+     armv7l: 'f6af65b842dd3eaf120f6755ec8675dad7176125397bc20740bc5d983ed5d5d3',
+       i686: 'ed4d4a78f65259128efcb55053f13af58c03604b024335a85027d19c60c2feb6',
+     x86_64: '445e829e51aadc90ebddca48301c12dca0f7d23ea0bc0a2f266a376311bd90cc'
   })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
   def self.build
     # force to compile in sequential since unrar Makefile doesn't work in parallel
-    system 'make', '-j1', 'all'
-    system 'make', '-j1', 'lib'
+    system "CPPFLAGS='-fPIC' make -j1 all"
+    system "CPPFLAGS='-fPIC' make -j1 lib"
   end
 
   def self.install

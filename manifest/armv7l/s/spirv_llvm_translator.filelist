@@ -1,0 +1,7 @@
+/usr/local/bin/llvm-spirv
+/usr/local/include/LLVMSPIRVLib/LLVMSPIRVExtensions.inc
+/usr/local/include/LLVMSPIRVLib/LLVMSPIRVLib.h
+/usr/local/include/LLVMSPIRVLib/LLVMSPIRVOpts.h
+/usr/local/lib/libLLVMSPIRVLib.so
+/usr/local/lib/libLLVMSPIRVLib.so.18.1
+/usr/local/lib/pkgconfig/LLVMSPIRVLib.pc

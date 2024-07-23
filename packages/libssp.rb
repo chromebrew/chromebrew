@@ -1,32 +1,40 @@
 require 'package'
+require_relative 'gcc_build'
 
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version '12.2.1-b80a690'
+  version "14.1.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
+  # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
+  puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag 'b80a690673272919896ee5939250e50d882f2418'
+  git_hashtag "releases/gcc-#{version.split('-').first}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.2.1-b80a690_armv7l/libssp-12.2.1-b80a690-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.2.1-b80a690_armv7l/libssp-12.2.1-b80a690-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.2.1-b80a690_i686/libssp-12.2.1-b80a690-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.2.1-b80a690_x86_64/libssp-12.2.1-b80a690-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: '3776481deeb8dde51144ddf76be645b6a5935d0fc8b8ed72a4371887eb54c78b',
-     armv7l: '3776481deeb8dde51144ddf76be645b6a5935d0fc8b8ed72a4371887eb54c78b',
-       i686: '1031c6b3d3b917c59674fcfb89d36e800d4e4671dfed387b930992cf0ad53484',
-     x86_64: 'f9889ae9a6f85730a203793f891c7152cf6e548d0fd012929bd719230157ee97'
-  })
+  case LIBC_VERSION
+  when '2.23'
+    binary_sha256({
+         i686: 'f1e548a41f577f4865675e8b280fb949c7a10459980b652d24b80d7f86e673a5'
+    })
+  when '2.27', '2.32', '2.33', '2.35'
+    binary_sha256({
+      aarch64: '2b8d8b39ae8ad8e4ec938279b4a23468e7dc7f56c8c3f692f700a0d49f557855',
+       armv7l: '2b8d8b39ae8ad8e4ec938279b4a23468e7dc7f56c8c3f692f700a0d49f557855',
+       x86_64: '2471f3db91744ff93b97fae23e11167ef7f6bc88b51c0fad35c548e76175dbba'
+    })
+  when '2.37'
+    binary_sha256({
+      aarch64: 'abe1a6d16f4915676186a0bebb009d55ca5ac9e1bb59eb3c9e33e40bd13f10c1',
+       armv7l: 'abe1a6d16f4915676186a0bebb009d55ca5ac9e1bb59eb3c9e33e40bd13f10c1',
+       x86_64: '5c0ff4a2b81e1e3492289c81f1630c8f71e8cb7153fbd2848aac31166d53b667'
+    })
+  end
 
-  # depends_on 'ccache' => :build
+  depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' # R
-
-  patchelf
 
   @gcc_name = 'libssp'
 

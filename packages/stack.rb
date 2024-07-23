@@ -3,45 +3,42 @@ require 'package'
 class Stack < Package
   description 'The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.'
   homepage 'https://docs.haskellstack.org/'
-  @_ver = '2.9.3'
-  version @_ver
+  version '2.15.7'
   license 'BSD'
-  compatibility 'all'
-  source_url "https://github.com/commercialhaskell/stack/releases/download/v#{@_ver}/stack-#{@_ver}-linux-x86_64.tar.gz"
-  source_sha256 '938f689dc45e2693ab1ca3ea215790b3786dfd531dcf6c0bf40842c24e579ae9'
+  compatibility 'x86_64'
+  source_url "https://github.com/commercialhaskell/stack/releases/download/v#{version}/stack-#{version}-linux-x86_64-bin"
+  source_sha256 '70fdbbcb368275673fb8ce8a3d1c1c907b239454b900c87220743f1998e47a1c'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.9.3_armv7l/stack-2.9.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.9.3_armv7l/stack-2.9.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.9.3_i686/stack-2.9.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.9.3_x86_64/stack-2.9.3-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: '3551e29cf348081a27f2e598133b9a9a4498a0e0e4b7a098dd0e4b583ccfc7c9',
-     armv7l: '3551e29cf348081a27f2e598133b9a9a4498a0e0e4b7a098dd0e4b583ccfc7c9',
-       i686: '6df32dce7ba7c5509f93a6b4951a8e1f5cb3e6892f8a402efbe3c46b0d208f15',
-     x86_64: 'd6b30d5262a17ed264eec11dc5076cc16ab5810c25dc3c04bb9f3ba6e75cfd33'
-  })
+  no_compile_needed
+  no_shrink
 
   def self.install
+    FileUtils.install "stack-#{version}-linux-#{ARCH}-bin", "#{CREW_DEST_PREFIX}/bin/stack", mode: 0o755
+
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.stack"
-    system "install -Dm755 stack #{CREW_DEST_PREFIX}/bin/stack"
-    system "echo 'local-bin-path: #{CREW_PREFIX}/bin' > #{CREW_DEST_HOME}/.stack/config.yaml"
-    system "echo 'local-programs-path: #{CREW_PREFIX}/share/stack' >> #{CREW_DEST_HOME}/.stack/config.yaml"
+    File.write "#{CREW_DEST_HOME}/.stack/config.yaml", <<~EOF
+      local-bin-path: #{CREW_PREFIX}/bin
+      local-programs-path: #{CREW_PREFIX}/share/stack
+    EOF
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
-    @env = <<~EOF
+    File.write "#{CREW_DEST_PREFIX}/etc/bash.d/10-stack", <<~EOF
       # Haskell stack bash completion
       eval "$(stack --bash-completion-script stack)"
     EOF
-    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/stack", @env)
   end
 
   def self.remove
-    puts
-    puts 'To completely uninstall stack, execute the following:'.lightblue
-    puts "rm -rf #{CREW_PREFIX}/share/stack".lightblue
-    puts 'rm -rf ~/.stack'.lightblue
-    puts
+    config_dir = "#{CREW_PREFIX}/share/stack"
+    if Dir.exist? config_dir
+      print "Would you like to remove the #{config_dir} directory? [y/N] "
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
+        FileUtils.rm_rf config_dir
+        puts "#{config_dir} removed.".lightgreen
+      else
+        puts "#{config_dir} saved.".lightgreen
+      end
+    end
   end
 end

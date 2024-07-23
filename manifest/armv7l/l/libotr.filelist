@@ -12,8 +12,8 @@
 /usr/local/include/libotr/instag.h
 /usr/local/include/libotr/mem.h
 /usr/local/include/libotr/message.h
-/usr/local/include/libotr/privkey.h
 /usr/local/include/libotr/privkey-t.h
+/usr/local/include/libotr/privkey.h
 /usr/local/include/libotr/proto.h
 /usr/local/include/libotr/serial.h
 /usr/local/include/libotr/sm.h

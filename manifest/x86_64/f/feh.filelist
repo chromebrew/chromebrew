@@ -2,12 +2,12 @@
 /usr/local/share/applications/feh.desktop
 /usr/local/share/doc/feh/AUTHORS
 /usr/local/share/doc/feh/ChangeLog
+/usr/local/share/doc/feh/README.md
+/usr/local/share/doc/feh/TODO
 /usr/local/share/doc/feh/examples/buttons
 /usr/local/share/doc/feh/examples/find-lowres
 /usr/local/share/doc/feh/examples/keys
 /usr/local/share/doc/feh/examples/themes
-/usr/local/share/doc/feh/README.md
-/usr/local/share/doc/feh/TODO
 /usr/local/share/feh/fonts/black.style
 /usr/local/share/feh/fonts/menu.style
 /usr/local/share/feh/fonts/yudit.ttf

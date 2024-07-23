@@ -4,6 +4,6 @@
 /usr/local/lib64/libndp.la
 /usr/local/lib64/libndp.so
 /usr/local/lib64/libndp.so.0
-/usr/local/lib64/libndp.so.0.1.1
+/usr/local/lib64/libndp.so.0.3.0
 /usr/local/lib64/pkgconfig/libndp.pc
-/usr/local/share/man/man8/ndptool.8.gz
+/usr/local/share/man/man8/ndptool.8.zst

@@ -3,11 +3,11 @@ require_relative 'imagemagick6'
 require_relative 'imagemagick7'
 
 class Imagemagick < Package
-  description Imagemagick7.description.to_s
-  homepage Imagemagick7.homepage.to_s
+  description Imagemagick7.description
+  homepage Imagemagick7.homepage
   version "#{Imagemagick6.version}-#{Imagemagick7.version}"
-  license Imagemagick7.license.to_s
-  compatibility Imagemagick7.compatibility.to_s
+  license Imagemagick7.license
+  compatibility Imagemagick7.compatibility
 
   is_fake
 
@@ -20,7 +20,7 @@ class Imagemagick < Package
       puts "  7 = ImageMagick #{Imagemagick7.version}"
       puts '  0 = Cancel'
 
-      while version = $stdin.gets.chomp.downcase
+      while (version = $stdin.gets.chomp.downcase)
         case version
         when '6'
           depends_on 'imagemagick6'
@@ -30,7 +30,6 @@ class Imagemagick < Package
           break
         when '0'
           abort
-          break
         else
           puts '  Please select from one of the options or enter 0 to cancel.'
         end

@@ -8,13 +8,8 @@ class Rav1e < Package
   compatibility 'all'
   source_url 'https://github.com/xiph/rav1e.git'
   git_hashtag 'p20220927'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rav1e/0.5.1-p20220927_armv7l/rav1e-0.5.1-p20220927-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rav1e/0.5.1-p20220927_armv7l/rav1e-0.5.1-p20220927-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rav1e/0.5.1-p20220927_i686/rav1e-0.5.1-p20220927-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rav1e/0.5.1-p20220927_x86_64/rav1e-0.5.1-p20220927-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1a25d78f87f3f361cdfd4e1c98c0bea454a96bd73744b2a004d7a58b1ecfb6f0',
      armv7l: '1a25d78f87f3f361cdfd4e1c98c0bea454a96bd73744b2a004d7a58b1ecfb6f0',

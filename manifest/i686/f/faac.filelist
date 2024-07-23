@@ -1,6 +1,6 @@
 /usr/local/bin/faac
-/usr/local/include/faaccfg.h
 /usr/local/include/faac.h
+/usr/local/include/faaccfg.h
 /usr/local/lib/libfaac.a
 /usr/local/lib/libfaac.la
 /usr/local/lib/libfaac.so

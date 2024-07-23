@@ -1,26 +1,19 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libsoup < Package
+class Libsoup < Meson
   description 'libsoup is an HTTP client/server library for GNOME.'
   homepage 'https://wiki.gnome.org/Projects/libsoup'
-  @_ver = '3.4.1'
-  version @_ver
+  version '3.4.4'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/libsoup.git'
-  git_hashtag @_ver
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup/3.4.1_armv7l/libsoup-3.4.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup/3.4.1_armv7l/libsoup-3.4.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup/3.4.1_i686/libsoup-3.4.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup/3.4.1_x86_64/libsoup-3.4.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'cc98bf1ea4739fde2b7fdf2c9d90c8d072294955907354a518456c22968da689',
-     armv7l: 'cc98bf1ea4739fde2b7fdf2c9d90c8d072294955907354a518456c22968da689',
-       i686: '61a01150af6fd7d6a1343f94b50237dba373ef80a7c0661651930e01f66a5191',
-     x86_64: '8279f8edabc965a590b260fcc34543b0f25b66a4746e3dd89befcd4b0046b91b'
+    aarch64: 'bb6057694da2fdf4a5d66544e2af3cdba7fd4f85ef7d9ab515df0cd59a1c0e7c',
+     armv7l: 'bb6057694da2fdf4a5d66544e2af3cdba7fd4f85ef7d9ab515df0cd59a1c0e7c',
+     x86_64: '3123c0f5ac768e957b0a234f9ab7834cfb117394f1e74a1ca8355e888f597ac9'
   })
 
   depends_on 'brotli' # R
@@ -34,6 +27,7 @@ class Libsoup < Package
   depends_on 'libnghttp2' # R
   depends_on 'libpsl' # R
   depends_on 'libsoup2' # This way we make sure packages which need the older libsoup-2.4 library get it too.
+  depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_smartypants' => :build
   depends_on 'sqlite' # R
   depends_on 'vala' => :build
@@ -41,17 +35,7 @@ class Libsoup < Package
 
   gnome
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-      -Dtests=false \
+  meson_options '-Dtests=false \
       -Dsysprof=disabled \
-      -Dintrospection=enabled \
-      builddir"
-    system 'meson configure builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+      -Dintrospection=enabled'
 end

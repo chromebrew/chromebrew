@@ -2,24 +2,18 @@ require 'package'
 
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
-  homepage 'https://www.x.org'
-  version '21.1.7'
+  homepage 'https://www.x.org/wiki/'
+  version '21.1.12'
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
   git_hashtag "xorg-server-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.7_armv7l/xorg_server-21.1.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.7_armv7l/xorg_server-21.1.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.7_i686/xorg_server-21.1.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.7_x86_64/xorg_server-21.1.7-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'd42c06ceb209fb5fb76efbafddd71d9d70fbf22b1a26eed272260c568df24d59',
-     armv7l: 'd42c06ceb209fb5fb76efbafddd71d9d70fbf22b1a26eed272260c568df24d59',
-       i686: '30050665805c5ff827611a2e5e20ca7a2d7da17c95474f3cb488dcac6686f85f',
-     x86_64: '28d7c2d8632c1dd232cc3847c3161ea494ef8b86108bedc1b69da6d4daf5d782'
+    aarch64: 'df55489c47e3ab85f8253ea1114530cdd49fcff45a68c70fe8ad63e76c787e40',
+     armv7l: 'df55489c47e3ab85f8253ea1114530cdd49fcff45a68c70fe8ad63e76c787e40',
+     x86_64: 'f1aa3b47ed6933b023a75ab53e9daee937047282cc7802c0f8c7bcbb6a8ef086'
   })
 
   depends_on 'dbus' # R
@@ -43,7 +37,6 @@ class Xorg_server < Package
   depends_on 'libxcvt' # R
   depends_on 'libxdmcp' # R
   depends_on 'libxext' # R
-  depends_on 'libxfont' => :build
   depends_on 'libxfont2' # R
   depends_on 'libxfont' # R
   depends_on 'libxkbcommon' => :build
@@ -54,23 +47,14 @@ class Xorg_server < Package
   depends_on 'mesa' # R
   depends_on 'pixman' # R
   depends_on 'xcb_util_cursor' => :build
+  depends_on 'xcb_util_image' # R
+  depends_on 'xcb_util_keysyms' # R
   depends_on 'xcb_util' # R
+  depends_on 'xcb_util_renderutil' # R
+  depends_on 'xcb_util_wm' # R
   depends_on 'xcb_util_xrm' => :build
   depends_on 'xkbcomp' => :build
   depends_on 'xorg_proto' => :build
-  depends_on 'xcb_util_image' # R
-  depends_on 'xcb_util_keysyms' # R
-  depends_on 'xcb_util_renderutil' # R
-  depends_on 'xcb_util_wm' # R
-
-  case ARCH
-  when 'armv7l', 'aarch64'
-    @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
-  when 'i686'
-    @peer_cmd_prefix = '/lib/ld-linux.so.2'
-  when 'x86_64'
-    @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
-  end
 
   def self.build
     system 'meson setup build'

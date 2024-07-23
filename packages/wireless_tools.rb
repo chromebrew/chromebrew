@@ -8,13 +8,8 @@ class Wireless_tools < Package
   compatibility 'all'
   source_url 'https://github.com/HewlettPackard/wireless-tools/archive/v29.tar.gz'
   source_sha256 '69c5face9ac9d3273042436408a9a057d3416a814253dedeaaef210fcbc42d40'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireless_tools/2.9_armv7l/wireless_tools-2.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireless_tools/2.9_armv7l/wireless_tools-2.9-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireless_tools/2.9_i686/wireless_tools-2.9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireless_tools/2.9_x86_64/wireless_tools-2.9-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'df298e3972dea2f49eec0009fcd651196da3c63430fc1f4e7e0773d6f1a2d4bf',
      armv7l: 'df298e3972dea2f49eec0009fcd651196da3c63430fc1f4e7e0773d6f1a2d4bf',

@@ -1,35 +1,21 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Xorg_proto < Package
+class Xorg_proto < Meson
   description 'The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system.'
-  homepage 'https://www.x.org/'
-  version '2022.2'
+  homepage 'https://www.x.org/wiki/'
+  version '2024.1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/proto/xorgproto.git'
   git_hashtag "xorgproto-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2022.2_armv7l/xorg_proto-2022.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2022.2_armv7l/xorg_proto-2022.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2022.2_i686/xorg_proto-2022.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2022.2_x86_64/xorg_proto-2022.2-chromeos-x86_64.tar.zst'
-  })
+  conflicts_ok # conflicts with glproto
+
   binary_sha256({
-    aarch64: '4f29c3f12e684e8e3de289a0ca8810e763ddb96c3bf3a686baf0392d4d8ced66',
-     armv7l: '4f29c3f12e684e8e3de289a0ca8810e763ddb96c3bf3a686baf0392d4d8ced66',
-       i686: '0592845ac3053d91b8158bd186c629d2a0b372a95b5d0e30c06b71a5fffe4e95',
-     x86_64: '21802c99d382be50f69e613dee68e25821b6a09ba4b6833309899c76dce9789f'
+    aarch64: '5a3f2d896b21282b35e80fe8c04cced52a3c6767ed2b7f6c1dd507ddb59f94a9',
+     armv7l: '5a3f2d896b21282b35e80fe8c04cced52a3c6767ed2b7f6c1dd507ddb59f94a9',
+       i686: 'c4f617dd65aeb7853a7c3fb44641ed443255b33e1f5416ca7acf180b3659aa57',
+     x86_64: '4691a9ad052fa497074ddad44efb96d4cd8e1c1e10dc41be2820ac53c210899c'
   })
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
 end

@@ -2,23 +2,17 @@ require 'package'
 
 class Freeglut < Package
   description 'FreeGLUT is a free and open-source alternative to the OpenGL Utility Toolkit (GLUT) library.'
-  homepage 'http://freeglut.sourceforge.net/'
+  homepage 'https://freeglut.sourceforge.net/'
   version '3.2.1'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://downloads.sourceforge.net/project/freeglut/freeglut/3.2.1/freeglut-3.2.1.tar.gz'
   source_sha256 'd4000e02102acaf259998c870e25214739d1f16f67f99cb35e4f46841399da68'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeglut/3.2.1_armv7l/freeglut-3.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeglut/3.2.1_armv7l/freeglut-3.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeglut/3.2.1_i686/freeglut-3.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeglut/3.2.1_x86_64/freeglut-3.2.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '49c22c36b1c02bd9ea8b439e05ce83d25ff2b0bec96da91366f57500abaafc57',
      armv7l: '49c22c36b1c02bd9ea8b439e05ce83d25ff2b0bec96da91366f57500abaafc57',
-       i686: '7df49b8ae79cbb1db19a01ba656c652d04a19a236f749ef1246190e8c1b04a68',
      x86_64: 'f834844fb8a0afb528d602513bef51306afcba74f8361707f28d052d8e28d4d7'
   })
 

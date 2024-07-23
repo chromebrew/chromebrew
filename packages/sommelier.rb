@@ -3,21 +3,17 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20230217-2-llvm16'
+  version '20240607-llvm18'
   license 'BSD-Google'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
-  git_hashtag '12dee310949503318478f82357d4fc5d2a3f3ef4'
+  git_hashtag 'a65f3009b2b7b55639760db376581ec146df3210'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2-llvm16_armv7l/sommelier-20230217-2-llvm16-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2-llvm16_armv7l/sommelier-20230217-2-llvm16-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2-llvm16_x86_64/sommelier-20230217-2-llvm16-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'b4ec217aed0572fd004ca5be6330a99e7c380f43e3340280f4eaee584088670d',
-     armv7l: 'b4ec217aed0572fd004ca5be6330a99e7c380f43e3340280f4eaee584088670d',
-     x86_64: '7c0fd4b04a1e4a201db27641672bf95d25cb9baaf674c2805419c23f2e8acc0b'
+    aarch64: '299245574363952883e97d4ace5ce5b6bd090caf2e85c5475326d8da25c1cb0e',
+     armv7l: '299245574363952883e97d4ace5ce5b6bd090caf2e85c5475326d8da25c1cb0e',
+     x86_64: 'f1e5d9b797321caf508695db95406b9d78c88f4c28015791771fceb2f6a3ab6b'
   })
 
   depends_on 'gcc_lib' # R
@@ -28,11 +24,13 @@ class Sommelier < Package
   depends_on 'libxcvt'
   depends_on 'libxfixes' => :build
   depends_on 'libxkbcommon' # R
-  depends_on 'llvm_lib16' # R Note that this may need rebuilds for newer llvm versions.
+  depends_on 'llvm18_dev' => :build
+  depends_on 'llvm18_lib' # R Note that this may need rebuilds for newer llvm versions.
   depends_on 'mesa' # R
   depends_on 'pixman' # R
   depends_on 'procps' # for pgrep in wrapper script
   depends_on 'psmisc' # L
+  depends_on 'py3_jinja2' => :build
   depends_on 'wayland' # R
   depends_on 'wayland_info' # L
   depends_on 'xauth' # L
@@ -43,6 +41,7 @@ class Sommelier < Package
   depends_on 'xwayland' # L
 
   no_shrink
+  print_source_bashrc
 
   def self.preflight
     return if File.socket?('/var/run/chrome/wayland-0') || CREW_IN_CONTAINER
@@ -54,20 +53,20 @@ class Sommelier < Package
     # This patch fixes:
     #   wl_registry@2: error 0: invalid version for global xdg_wm_base (41): have 1, wanted 3
     #   sommelier.elf: ../sommelier-window.cc:412: void sl_window_update(struct sl_window *): Assertion `ctx->xdg_shell' failed.
-    patch = <<~EOF
-      diff -Nur a/sommelier.cc b/sommelier.cc
-      --- a/sommelier.cc      2023-02-17 20:55:44.591868511 +0800
-      +++ b/sommelier.cc      2023-02-17 22:21:11.221142302 +0800
-      @@ -88,6 +88,8 @@
-       #define MIN_AURA_SHELL_VERSION 6
-       #define MAX_AURA_SHELL_VERSION 38
+    sommelier_patch = <<~'SOMMELIER_PATCH_EOF'
+      diff -Npaur a/sommelier.cc b/sommelier.cc
+      --- a/sommelier.cc	2024-03-07 16:44:13.513582795 -0500
+      +++ b/sommelier.cc	2024-03-07 16:46:42.699788185 -0500
+      @@ -108,6 +108,8 @@ struct sl_data_source {
+
+       static const char STEAM_APP_CLASS_PREFIX[] = "steam_app_";
 
       +char xdg_shell_interface[20] = "xdg_wm_base";
       +
        int sl_open_wayland_socket(const char* socket_name,
                                   struct sockaddr_un* addr,
                                   int* lock_fd,
-      @@ -616,7 +618,7 @@
+      @@ -592,7 +594,7 @@ void sl_registry_handler(void* data,
              data_device_manager->host_global =
                  sl_data_device_manager_global_create(ctx);
            }
@@ -76,33 +75,32 @@ class Sommelier < Package
            struct sl_xdg_shell* xdg_shell =
                static_cast<sl_xdg_shell*>(malloc(sizeof(struct sl_xdg_shell)));
            assert(xdg_shell);
-      @@ -3793,6 +3795,8 @@
+      @@ -4014,6 +4016,8 @@ int real_main(int argc, char** argv) {
              ctx.use_virtgpu_channel = true;
            } else if (strstr(arg, "--noop-driver") == arg) {
              noop_driver = true;
       +    } else if (strstr(arg, "--xdg-shell-v6") == arg) {
       +      strcpy(xdg_shell_interface, "zxdg_shell_v6");
-       #ifdef PERFETTO_TRACING
-           } else if (strstr(arg, "--trace-filename") == arg) {
-             ctx.trace_filename = sl_arg_value(arg);
-      diff -Nur a/sommelier.h b/sommelier.h
-      --- a/sommelier.h       2023-02-17 20:55:44.591868511 +0800
-      +++ b/sommelier.h       2023-02-17 22:20:37.052140477 +0800
-      @@ -21,8 +21,8 @@
-       #include "weak-resource-ptr.h"  // NOLINT(build/include_directory)
+           } else if (strstr(arg, "--stable-scaling") == arg) {
+             ctx.stable_scaling = true;
+           } else if (strstr(arg, "--viewport-resize") == arg) {
+      diff -Npaur a/sommelier.h b/sommelier.h
+      --- a/sommelier.h	2024-03-07 16:44:17.017540640 -0500
+      +++ b/sommelier.h	2024-03-07 16:48:46.286301715 -0500
+      @@ -22,7 +22,8 @@
+       #include "weak-resource-ptr.h"          // NOLINT(build/include_directory)
 
        #define SOMMELIER_VERSION "0.20"
-      -#define XDG_SHELL_VERSION 3u
       -#define APPLICATION_ID_FORMAT_PREFIX "org.chromium.guest_os.%s"
       +#define XDG_SHELL_VERSION 1u
       +#define APPLICATION_ID_FORMAT_PREFIX "org.chromebrew.%s"
-       #define NATIVE_WAYLAND_APPLICATION_ID_FORMAT \\
+       #define NATIVE_WAYLAND_APPLICATION_ID_FORMAT \
          APPLICATION_ID_FORMAT_PREFIX ".wayland.%s"
-    EOF
+    SOMMELIER_PATCH_EOF
 
     Dir.chdir 'vm_tools/sommelier' do
-      File.write('patch', patch)
-      system 'patch -p1 < patch'
+      File.write('sommelier.patch', sommelier_patch)
+      system 'patch -p1 -i sommelier.patch'
     end
   end
 
@@ -119,6 +117,7 @@ class Sommelier < Package
       system <<~BUILD
         env CC=clang CXX=clang++ \
           mold -run meson setup #{CREW_MESON_OPTIONS.gsub('-ffat-lto-objects', '')} \
+          -Dcommit_loop_fix=true \
           -Db_asneeded=false \
           -Db_lto=true \
           -Db_lto_mode=thin \
@@ -129,7 +128,7 @@ class Sommelier < Package
           builddir
       BUILD
 
-      system 'meson configure builddir'
+      system 'meson configure --no-pager builddir'
       system "mold -run #{CREW_NINJA} -C builddir"
 
       FileUtils.mkdir_p 'builddir'
@@ -362,10 +361,10 @@ class Sommelier < Package
             # Set default SCALE to 1 if unset.
             SCALE=${SCALE:-1}
             # Allow overriding environment variables before starting sommelier daemon.
-            [ -f "$HOME/.sommelier.env" ] && source ~/.sommelier.env 2>> #{CREW_PREFIX}/var/log/sommelier.log
+            [ -f "#{CREW_PREFIX}/.config/.sommelier.env" ] && source #{CREW_PREFIX}/.config/.sommelier.env 2>> #{CREW_PREFIX}/var/log/sommelier.log
             set +a
             echo -e "\e[1;33m""Sommelier SCALE is set to \e[1;32m"${SCALE}"\e[1;33m"."\e[0m"
-            echo -e "\e[1;33m""SCALE may be manually set in ~/.sommelier.env .""\e[0m"
+            echo -e "\e[1;33m""SCALE may be manually set in #{CREW_PREFIX}/.config/.sommelier.env .""\e[0m"
             #{CREW_PREFIX}/sbin/sommelierd &>/dev/null &
           fi
           wait=3
@@ -451,7 +450,7 @@ class Sommelier < Package
   end
 
   def self.postinstall
-    # all tasks are done by sommelier.env now
+    # all tasks are done by #{CREW_PREFIX}/.config/sommelier.env now
     @now = Time.now.strftime('%Y%m%d%H%M')
     FileUtils.cp "#{HOME}/.bashrc", "#{HOME}/.bashrc.#{@now}"
     system "sed -i '/[sS]ommelier/d' #{HOME}/.bashrc"
@@ -459,34 +458,40 @@ class Sommelier < Package
     if FileUtils.identical?("#{HOME}/.bashrc", "#{HOME}/.bashrc.#{@now}")
       FileUtils.rm "#{HOME}/.bashrc.#{@now}"
     else
-      puts <<~EOT0.lightblue
+      ExitMessage.add <<~EOT0.lightblue
 
-        Removed old sommelier environment variables in ~/.bashrc.
-        A backup of the original is stored in ~/.bashrc.#{@now}
-        To complete the installation, execute the following:
-        source ~/.bashrc
+        Removed old sommelier environment variables in: ~/.bashrc
+        A backup of the original is stored in: ~/.bashrc.#{@now}
       EOT0
     end
 
-    FileUtils.touch "#{HOME}/.sommelier.env" unless File.exist? "#{HOME}/.sommelier.env"
-    puts <<~EOT1.lightblue
+    unless File.exist? "#{CREW_PREFIX}/.config/.sommelier.env"
+      FileUtils.mkdir_p "#{CREW_PREFIX}/.config"
+      if File.exist? "#{HOME}/.sommelier.env"
+        FileUtils.cp "#{HOME}/.sommelier.env", "#{CREW_PREFIX}/.config/.sommelier.env"
+        ExitMessage.add <<~EOT0.lightblue
 
-      The default environment is stored in #{CREW_PREFIX}/etc/env.d/sommelier.
-    EOT1
+          Overrides of the default sommelier configuration must now be stored in:
+          #{CREW_PREFIX}/.config/.sommelier.env
+        EOT0
+      else
+        FileUtils.touch "#{CREW_PREFIX}/.config/.sommelier.env"
+      end
+    end
 
-    puts <<~EOT2.orange
+    ExitMessage.add <<~EOT1.lightblue
+
+      The default sommelier configuration is stored in: #{CREW_PREFIX}/etc/env.d/sommelier
       DO NOT EDIT THIS FILE SINCE UPDATES WILL OVERWRITE YOUR CHANGES.
-    EOT2
-    puts <<~EOT1.lightblue
-      To override environment variables set above, edit ~/.sommelier.env instead.
-      Information about those environment variables may be found on the
+      To override the default sommelier configuration, edit: #{CREW_PREFIX}/.config/.sommelier.env
+      Information about the sommelier configuration environment variables may be found on the
       Chromebrew wiki: https://github.com/chromebrew/chromebrew/wiki
 
       To start the sommelier daemon, run 'startsommelier'
       To stop the sommelier daemon, run 'stopsommelier'
       To restart the sommelier daemon, run 'restartsommelier'
     EOT1
-    puts <<~EOT2.orange
+    ExitMessage.add <<~EOT2.orange
       Please be aware that gui applications may not work without the
       sommelier daemon running.
 
@@ -498,11 +503,13 @@ class Sommelier < Package
 
       Please open a github issue at
       https://github.com/chromebrew/chromebrew/issues/new/choose
-      with the output of both
-       readlink -f "/sys/class/drm/renderD129/device/driver"
+      with the output of
+       readlink -f '/sys/class/drm/renderD129/device/driver'
       and
-       readlink -f "/sys/class/drm/renderD128/device/driver"
-      if sommelier does not start properly on your arm ChromeOS device.
+       readlink -f '/sys/class/drm/renderD128/device/driver'
+      and
+       tail #{CREW_PREFIX}/var/log/sommelier.log
+      if sommelier does not start properly on your ChromeOS device.
     EOT2
   end
 end

@@ -3,18 +3,12 @@ require 'package'
 class Go_tools < Package
   description 'Developer tools for the Go programming language'
   homepage 'https://github.com/golang/tools'
-  @_ver = '0.6.6'
-  version @_ver
+  version '0.6.6'
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_tools/0.6.6_armv7l/go_tools-0.6.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_tools/0.6.6_armv7l/go_tools-0.6.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_tools/0.6.6_i686/go_tools-0.6.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_tools/0.6.6_x86_64/go_tools-0.6.6-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '5c938388e815f2d03343301f391640a1cbc11fac3b31e20fc74b77c0963723df',
      armv7l: '5c938388e815f2d03343301f391640a1cbc11fac3b31e20fc74b77c0963723df',
@@ -26,7 +20,7 @@ class Go_tools < Package
 
   def self.install
     @git_dir = 'go_tools_git'
-    @git_hash = "gopls/v#{@_ver}"
+    @git_hash = "gopls/v#{version}"
     @git_url = 'https://github.com/golang/tools/'
     FileUtils.rm_rf(@git_dir)
     FileUtils.mkdir_p(@git_dir)

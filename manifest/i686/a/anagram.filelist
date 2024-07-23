@@ -1,5 +1,5 @@
 /usr/local/bin/anagram
-/usr/local/share/anagram/bin/anagram
+/usr/local/share/anagram/bin
 /usr/local/share/anagram/crossword.txt
 /usr/local/share/anagram/wordlist.bin
-/usr/local/share/man/man1/anagram.1.gz
+/usr/local/share/man/man1/anagram.1.zst

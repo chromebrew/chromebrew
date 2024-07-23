@@ -8,13 +8,8 @@ class Hashpipe < Package
   compatibility 'all'
   source_url 'https://git.zx2c4.com/hashpipe/snapshot/hashpipe-dc11b6262f4717e61e55760cb2bd637ff1c0f6a9.tar.xz'
   source_sha256 '6b3931d7c46332be2a6c07f94f91924065ba7988edd2e8a471123c77d3c614f6'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hashpipe/1.0-1_armv7l/hashpipe-1.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hashpipe/1.0-1_armv7l/hashpipe-1.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hashpipe/1.0-1_i686/hashpipe-1.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hashpipe/1.0-1_x86_64/hashpipe-1.0-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c852b3c8c35151b359f94c71505132a865da8bdb710345431b24c46a3ba6931b',
      armv7l: 'c852b3c8c35151b359f94c71505132a865da8bdb710345431b24c46a3ba6931b',
@@ -23,7 +18,7 @@ class Hashpipe < Package
   })
 
   def self.patch
-    @hashpipe_patch = <<~'HASHPIPE_PATCHEOF'
+    @hashpipe_patch = <<~HASHPIPE_PATCHEOF
       diff -Npaur orig/hashpipe.c new/hashpipe.c
       --- orig/hashpipe.c	2021-04-08 14:56:27.657272292 -0400
       +++ new/hashpipe.c	2021-04-08 15:11:20.398253126 -0400

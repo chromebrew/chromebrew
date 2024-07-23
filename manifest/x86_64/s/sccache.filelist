@@ -1,1 +1,7 @@
+/usr/local/bin/restartsccache
 /usr/local/bin/sccache
+/usr/local/bin/sccache-dist
+/usr/local/bin/startsccache
+/usr/local/bin/stopsccache
+/usr/local/etc/bash.d/sccache
+/usr/local/etc/env.d/00-sccache

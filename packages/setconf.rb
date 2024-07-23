@@ -11,13 +11,8 @@ class Setconf < Package
   license 'GPL2'
   source_url "https://setconf.roboticoverlords.org/setconf-#{version}.tar.xz"
   source_sha256 '19315574540b3181fec31a4059b9e058381e0192317f153d181e7e7e2aa84d86'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/setconf/0.7.7_armv7l/setconf-0.7.7-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/setconf/0.7.7_armv7l/setconf-0.7.7-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/setconf/0.7.7_i686/setconf-0.7.7-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/setconf/0.7.7_x86_64/setconf-0.7.7-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'd8106e68200d60bd648b24cf982e38e4a02b4ef06fc4f59b861925f1259e4788',
      armv7l: 'd8106e68200d60bd648b24cf982e38e4a02b4ef06fc4f59b861925f1259e4788',

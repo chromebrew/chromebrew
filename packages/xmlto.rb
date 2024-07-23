@@ -8,13 +8,8 @@ class Xmlto < Package
   compatibility 'all'
   source_url 'https://releases.pagure.org/xmlto/xmlto-0.0.28.tar.bz2'
   source_sha256 '1130df3a7957eb9f6f0d29e4aa1c75732a7dfb6d639be013859b5c7ec5421276'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlto/0.0.28_armv7l/xmlto-0.0.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlto/0.0.28_armv7l/xmlto-0.0.28-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlto/0.0.28_i686/xmlto-0.0.28-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlto/0.0.28_x86_64/xmlto-0.0.28-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8f03c0544caa110a2af91afdf9b5a0b88b5e6ee2799cf4710cbe200b8bcf58a3',
      armv7l: '8f03c0544caa110a2af91afdf9b5a0b88b5e6ee2799cf4710cbe200b8bcf58a3',

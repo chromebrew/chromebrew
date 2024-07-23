@@ -8,18 +8,13 @@ class Perl_text_unidecode < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SB/SBURKE/Text-Unidecode-1.30.tar.gz'
   source_sha256 '6c24f14ddc1d20e26161c207b73ca184eed2ef57f08b5fb2ee196e6e2e88b1c6'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-perl-5.36_armv7l/perl_text_unidecode-1.30-perl-5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-perl-5.36_armv7l/perl_text_unidecode-1.30-perl-5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-perl-5.36_i686/perl_text_unidecode-1.30-perl-5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-perl-5.36_x86_64/perl_text_unidecode-1.30-perl-5.36-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'ecfa8e0ed890718428d85991af35a66d697183921e17700142822155f3920df0',
-     armv7l: 'ecfa8e0ed890718428d85991af35a66d697183921e17700142822155f3920df0',
-       i686: '67d8385f2ea0c3be3e7096be54caca940758cc91d18bfb564876bdaac95b8c62',
-     x86_64: '1801ecff3570deca2fe22ecc47364a36c4a5a03765cea70e9c8820f8f925d4be'
+    aarch64: '3298054323f1c4c8ba6c7e8bf12513f5394d74664959d90be527ec12bb3ce9fc',
+     armv7l: '3298054323f1c4c8ba6c7e8bf12513f5394d74664959d90be527ec12bb3ce9fc',
+       i686: '739b90f1d239a5d1eb5ac8949649125462d133c353b0c688199d681d47a2d922',
+     x86_64: '73acad8fd9058958876da07ab4fe6825ab8a6e86ce443fbcf0a79ea71721a94d'
   })
 
   def self.prebuild

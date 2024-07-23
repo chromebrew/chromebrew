@@ -56,9 +56,9 @@
 /usr/local/share/man/man3/pipeline_new_commands.3.gz
 /usr/local/share/man/man3/pipeline_new_commandv.3.gz
 /usr/local/share/man/man3/pipeline_peek.3.gz
-/usr/local/share/man/man3/pipeline_peekline.3.gz
 /usr/local/share/man/man3/pipeline_peek_size.3.gz
 /usr/local/share/man/man3/pipeline_peek_skip.3.gz
+/usr/local/share/man/man3/pipeline_peekline.3.gz
 /usr/local/share/man/man3/pipeline_pump.3.gz
 /usr/local/share/man/man3/pipeline_read.3.gz
 /usr/local/share/man/man3/pipeline_readline.3.gz

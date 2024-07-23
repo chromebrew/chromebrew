@@ -5,20 +5,14 @@ class Feh < Package
   homepage 'https://feh.finalrewind.org/'
   version '3.6.3'
   license 'feh'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://feh.finalrewind.org/feh-#{version}.tar.bz2"
   source_sha256 '437420f37f11614e008d066e2a3bdefcfc78144c8212998b2bacdd5d21ea23b4'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/feh/3.6.3_armv7l/feh-3.6.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/feh/3.6.3_armv7l/feh-3.6.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/feh/3.6.3_i686/feh-3.6.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/feh/3.6.3_x86_64/feh-3.6.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '396e94fde7cc62de565076329fc8e197daa257e15e8804dcc24d602d6399f07c',
      armv7l: '396e94fde7cc62de565076329fc8e197daa257e15e8804dcc24d602d6399f07c',
-       i686: '29950c19c3f81a31c318e5525310e21de75bc0bc93950f35a00f67d53981f272',
      x86_64: '5cc0e413b32dadd731173e3dd3aabbc97788cd27903f1b4d5f8c61cb8b181356'
   })
 

@@ -2,23 +2,17 @@ require 'package'
 
 class Devil < Package
   description 'Library for reading several different image formats'
-  homepage 'http://openil.sourceforge.net/'
+  homepage 'https://openil.sourceforge.net/'
   version '1.8.0-6f3d5e9'
   license 'LGPL-2.1'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/DentonW/DevIL.git'
   git_hashtag '6f3d5e9bc5d173f56060fc8e14bed35c8edcfdcc'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_armv7l/devil-1.8.0-6f3d5e9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_armv7l/devil-1.8.0-6f3d5e9-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_i686/devil-1.8.0-6f3d5e9-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_x86_64/devil-1.8.0-6f3d5e9-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd14bd70a075ad1602a3850451a91c15f91346f5af5fd99bf4f0054c24595498a',
      armv7l: 'd14bd70a075ad1602a3850451a91c15f91346f5af5fd99bf4f0054c24595498a',
-       i686: '893a086ba8c9d0bb286bc1ee024f30e8b3dd851dd64053ab2aba744d6585f51e',
      x86_64: '494336d49fee91201c74574356a2bf5c1e5bdc6e5d15bcc03decb99210286664'
   })
 
@@ -27,7 +21,7 @@ class Devil < Package
   depends_on 'jasper'
   depends_on 'lcms'
   depends_on 'libglu'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libtiff'
   depends_on 'libxi'
@@ -41,7 +35,7 @@ class Devil < Package
   def self.patch
     system "find -type f -exec sed -i 's,DESTINATION lib,DESTINATION lib#{CREW_LIB_SUFFIX},g' {} +"
     # As per https://github.com/DentonW/DevIL/pull/102
-    @jasper_patch = <<~'JASPER_PATCH'
+    @jasper_patch = <<~JASPER_PATCH
       diff -NPaur a/DevIL/CMakeLists.txt b/DevIL/CMakeLists.txt
       --- a/DevIL/CMakeLists.txt	2022-10-04 19:42:15.952513098 -0400
       +++ b/DevIL/CMakeLists.txt	2022-10-04 19:51:20.745032984 -0400

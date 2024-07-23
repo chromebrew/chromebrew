@@ -4,18 +4,18 @@ class MutableMatrix < Matrix
   public :'[]='
 end
 
-# Returns the edit distance between strings a and b
+# Returns the edit distance between strings string1 and string12
 # https://en.wikipedia.org/wiki/Edit_distance
-def edit_distance(a, b)
+def edit_distance(string1, string2)
   # memo is the matrix for dynamic programming
   # memo[i, j] = the edit distance between the
-  # prefixes of a and b of size i and j.
-  memo = MutableMatrix.zero(a.size + 1, b.size + 1)
-  a.size.times { |i| memo[i + 1, 0] = i + 1 }
-  b.size.times { |j| memo[0, j + 1] = j + 1 }
-  a.size.times do |i|
-    b.size.times do |j|
-      memo[i + 1, j + 1] = if a[i] == b[j]
+  # prefixes of string1 and string2 of size i and j.
+  memo = MutableMatrix.zero(string1.size + 1, string2.size + 1)
+  string1.size.times { |i| memo[i + 1, 0] = i + 1 }
+  string2.size.times { |j| memo[0, j + 1] = j + 1 }
+  string1.size.times do |i|
+    string2.size.times do |j|
+      memo[i + 1, j + 1] = if string1[i] == string2[j]
                              memo[i, j]
                            else
                              [
@@ -27,5 +27,5 @@ def edit_distance(a, b)
     end
   end
 
-  return memo[a.size, b.size]
+  return memo[string1.size, string2.size]
 end

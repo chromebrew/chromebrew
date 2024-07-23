@@ -8,13 +8,8 @@ class Ed < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/ed/ed-1.15.tar.lz'
   source_sha256 'ad4489c0ad7a108c514262da28e6c2a426946fb408a3977ef1ed34308bdfd174'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ed/1.15_armv7l/ed-1.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ed/1.15_armv7l/ed-1.15-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ed/1.15_i686/ed-1.15-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ed/1.15_x86_64/ed-1.15-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7191a1f8ade2fc029dc0d82783dbcbc2e6176af3cd779756c21e10ca32cd146f',
      armv7l: '7191a1f8ade2fc029dc0d82783dbcbc2e6176af3cd779756c21e10ca32cd146f',

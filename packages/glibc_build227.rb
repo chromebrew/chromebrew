@@ -5,25 +5,23 @@ class Glibc_build227 < Package
   homepage 'https://www.gnu.org/software/libc/'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
+  binary_compression 'tar.xz'
 
   depends_on 'gawk' => :build
+  depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
   depends_on 'libidn2' => :build
   depends_on 'texinfo' => :build
   depends_on 'hashpipe' => :build
 
-  no_env_options
   conflicts_ok
+  no_env_options
+  no_upstream_update
 
   @libc_version = LIBC_VERSION
   version '2.27-1'
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
   source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27_armv7l/glibc-2.27-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27_armv7l/glibc-2.27-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27_x86_64/glibc-2.27-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
      armv7l: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
@@ -31,8 +29,8 @@ class Glibc_build227 < Package
   })
 
   def self.patch
-      # Patch to avoid old ld issue on glibc 2.23 by using ld configure
-      # portion from https://github.com/bminor/glibc/blob/master/configure
+    # Patch to avoid old ld issue on glibc 2.23 by using ld configure
+    # portion from https://github.com/bminor/glibc/blob/master/configure
     @glibc_223_i686_patch = <<~'GLIBC_223_HEREDOC'
       --- a/configure	2021-12-22 11:42:36.689574968 -0500
       +++ b/configure	2021-12-22 11:58:43.052504544 -0500
@@ -229,7 +227,7 @@ class Glibc_build227 < Package
     Dir.chdir 'glibc_build' do
       # gold linker does not work for glibc 2.23, and maybe others.
       FileUtils.mkdir_p 'binutils'
-      @binutils = File.readlines("#{CREW_META_PATH}binutils.filelist")
+      @binutils = File.readlines(File.join(CREW_META_PATH, 'binutils.filelist'))
       @binutils.each do |bin|
         FileUtils.cp bin.chomp, "binutils/#{File.basename(bin.chomp)}" if bin['/bin/']
       end

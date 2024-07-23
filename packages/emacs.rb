@@ -3,27 +3,21 @@ require 'package'
 class Emacs < Package
   description 'An extensible, customizable, free/libre text editor - and more.'
   homepage 'http://www.gnu.org/software/emacs/'
-  version '28.2'
+  version '29.1'
   license 'GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2'
-  compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/emacs/emacs-28.2.tar.xz'
-  source_sha256 'ee21182233ef3232dc97b486af2d86e14042dbb65bbc535df562c3a858232488'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://ftpmirror.gnu.org/emacs/emacs-29.1.tar.xz'
+  source_sha256 'd2f881a5cc231e2f5a03e86f4584b0438f83edd7598a09d24a21bd8d003e2e01'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/28.2_armv7l/emacs-28.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/28.2_armv7l/emacs-28.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/28.2_i686/emacs-28.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/28.2_x86_64/emacs-28.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '75da5d9c23128eb2044521a7ac32ec7555cbc0701c8deaf3f1c3e468754a06b9',
-     armv7l: '75da5d9c23128eb2044521a7ac32ec7555cbc0701c8deaf3f1c3e468754a06b9',
-       i686: '07db3ae8c5b1c955e5f135219205e3676ad594918a2aa3bebdce1f40d872c78a',
-     x86_64: 'd8141d6c94e921252618ae06dd3f27a8f581f4bfe5fb8f244233e3aef5124777'
+    aarch64: '6ae43bf5c3b04727fd8c2879b94605ce8d3a79c5cbed32c76fd2ec0a55a34ee2',
+     armv7l: '6ae43bf5c3b04727fd8c2879b94605ce8d3a79c5cbed32c76fd2ec0a55a34ee2',
+     x86_64: '54767b9f97dae52ee3b6ad63494a1a02b7d9c8f539ad15dc91ef49a4f939c2eb'
   })
 
   depends_on 'lcms'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'acl' # R
   depends_on 'alsa_lib' # R
   depends_on 'dbus' # R
@@ -35,6 +29,7 @@ class Emacs < Package
   depends_on 'libxml2' # R
   depends_on 'ncurses' # R
   depends_on 'zlibpkg' # R
+  depends_on 'sqlite' # R
 
   def self.build
     system "./configure \

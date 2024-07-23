@@ -1,37 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gvim < Package
+class Gvim < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)'
-  homepage 'http://www.vim.org/'
-  version '9.0.1145'
+  homepage 'https://www.vim.org/'
+  version '9.1.0568'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.0.1145_armv7l/gvim-9.0.1145-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.0.1145_armv7l/gvim-9.0.1145-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.0.1145_i686/gvim-9.0.1145-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.0.1145_x86_64/gvim-9.0.1145-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'd8edb31697fd1e5f229f4e6cd508fbc63dc8a6c6eb48cdf38f4e5f058b9a2aa4',
-     armv7l: 'd8edb31697fd1e5f229f4e6cd508fbc63dc8a6c6eb48cdf38f4e5f058b9a2aa4',
-       i686: '61bc60db3c6ec2c9ecc3f6805880858f35be16037846cd4cd3d16608c6c35d86',
-     x86_64: '0e83d2ea39503b2e2214a800a9c6008b81f27fde3d24318ec05c5ec04f4a5e75'
+    aarch64: 'd2a0631395b4340f9cc8a37f46e4275ab7cf84e8328341545ce92b4ce8da2e68',
+     armv7l: 'd2a0631395b4340f9cc8a37f46e4275ab7cf84e8328341545ce92b4ce8da2e68',
+     x86_64: 'c19d8b60e6a6d7456eccc78d0fe889a10942f97892e0751c9badc16fa03739cc'
   })
 
-  depends_on 'vim_runtime'
-  depends_on 'gtk3'
-  depends_on 'sommelier'
   depends_on 'acl' # R
+  depends_on 'cairo' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gpm' # R
-  depends_on 'gtk2' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz'
   depends_on 'libice' # R
   depends_on 'libsm' # R
   depends_on 'libsodium' # R
@@ -39,6 +32,7 @@ class Gvim < Package
   depends_on 'libxt' # R
   depends_on 'ncurses' # R
   depends_on 'pango' # R
+  depends_on 'vim_runtime' # R
 
   def self.preflight
     vim = `which #{CREW_PREFIX}/bin/vim 2> /dev/null`.chomp
@@ -55,31 +49,26 @@ class Gvim < Package
     end
   end
 
-  def self.build
-    system '[ -x configure ] || autoreconf -fvi'
-    system "./configure \
-      #{CREW_OPTIONS} \
-      --localstatedir=#{CREW_PREFIX}/var/lib/vim \
-      --with-features=huge \
-      --with-compiledby='Chromebrew' \
-      --enable-gpm \
-      --enable-acl \
-      --with-x=yes \
-      --enable-gnome-check \
-      --enable-multibyte \
-      --enable-cscope \
-      --enable-netbeans \
-      --enable-perlinterp=dynamic \
-      --enable-pythoninterp=dynamic \
-      --enable-python3interp=dynamic \
-      --enable-rubyinterp=dynamic \
-      --enable-luainterp=dynamic \
-      --enable-tclinterp=dynamic \
-      --disable-canberra \
-      --disable-selinux \
-      --disable-nls"
-    system 'make'
-  end
+  configure_options "--localstatedir=#{CREW_PREFIX}/var/lib/vim \
+    --disable-canberra \
+    --disable-nls \
+    --disable-selinux \
+    --enable-acl \
+    --enable-cscope \
+    --enable-gnome-check \
+    --enable-gpm \
+    --enable-gui=gtk3 \
+    --enable-luainterp=dynamic \
+    --enable-multibyte \
+    --enable-netbeans \
+    --enable-perlinterp=dynamic \
+    --enable-python3interp=dynamic \
+    --enable-pythoninterp=dynamic \
+    --enable-rubyinterp=dynamic \
+    --enable-tclinterp=dynamic \
+    --with-compiledby='Chromebrew' \
+    --with-features=huge \
+    --with-x=yes"
 
   def self.install
     system 'make', "VIMRCLOC=#{CREW_PREFIX}/etc", "DESTDIR=#{CREW_DEST_DIR}", 'install'

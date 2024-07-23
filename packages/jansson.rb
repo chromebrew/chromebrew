@@ -2,20 +2,14 @@ require 'package'
 
 class Jansson < Package
   description 'Jansson is a C library for encoding, decoding and manipulating JSON data.'
-  homepage 'http://www.digip.org/jansson/'
-  @_ver = '2.13.1'
-  version @_ver
+  homepage 'https://github.com/akheron/jansson'
+  version '2.13.1'
   license 'MIT'
   compatibility 'all'
-  source_url "https://github.com/akheron/jansson/archive/v#{@_ver}.tar.gz"
+  source_url "https://github.com/akheron/jansson/archive/v#{version}.tar.gz"
   source_sha256 'f22901582138e3203959c9257cf83eba9929ac41d7be4a42557213a22ebcc7a0'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jansson/2.13.1_armv7l/jansson-2.13.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jansson/2.13.1_armv7l/jansson-2.13.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jansson/2.13.1_i686/jansson-2.13.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jansson/2.13.1_x86_64/jansson-2.13.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '934cd7813f9a0c8ad07c967f0d65de05a545d697cc10c6a270c09e6dbbdf30df',
      armv7l: '934cd7813f9a0c8ad07c967f0d65de05a545d697cc10c6a270c09e6dbbdf30df',

@@ -2,19 +2,14 @@ require 'package'
 
 class Bitpocket < Package
   description '"DIY Dropbox" or "2-way directory (r)sync with proper deletion"'
-  homepage 'https://github.com/sickill/bitpocket'
+  homepage 'https://github.com/ku1ik/bitpocket'
   version '0.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/sickill/bitpocket/archive/v0.2.tar.gz'
+  source_url 'https://github.com/ku1ik/bitpocket/archive/v0.2.tar.gz'
   source_sha256 'f3952374a1139465700f9122d7a929227be5cdeb681679cbe00bb93658adbd1f'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bitpocket/0.2_armv7l/bitpocket-0.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bitpocket/0.2_armv7l/bitpocket-0.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bitpocket/0.2_i686/bitpocket-0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bitpocket/0.2_x86_64/bitpocket-0.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7b94a65b172e2c93a8a35bd6c6642d61023b0c91ab9f2ba9a8db7f7dca9c150e',
      armv7l: '7b94a65b172e2c93a8a35bd6c6642d61023b0c91ab9f2ba9a8db7f7dca9c150e',

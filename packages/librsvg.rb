@@ -1,25 +1,19 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Librsvg < Package
+class Librsvg < Autotools
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  version '2.56.0-59d5d83'
+  version '2.57.2'
   license 'LGPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
-  git_hashtag '59d5d832be20c37f301ccf4d0de2e0004d49bd86'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0-59d5d83_armv7l/librsvg-2.56.0-59d5d83-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0-59d5d83_armv7l/librsvg-2.56.0-59d5d83-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0-59d5d83_i686/librsvg-2.56.0-59d5d83-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0-59d5d83_x86_64/librsvg-2.56.0-59d5d83-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'fa8525eccd9577796f53fdb62118a004abdbb75d69bbf50c98abf37ab6598022',
-     armv7l: 'fa8525eccd9577796f53fdb62118a004abdbb75d69bbf50c98abf37ab6598022',
-       i686: '147942d68517190deaedfe3a69b6ff6e70c5f4aa7725d0aa6aa704d19dc98b23',
-     x86_64: '7cf6e73193d51fe89715bcaffd7fa30eace1eda3ee94b7bff06f819035376bc5'
+    aarch64: '7e6aac5bc990a85aa112c6843c9c6b486b2d8386aebbaeb1a5ba4bf193cc83f4',
+     armv7l: '7e6aac5bc990a85aa112c6843c9c6b486b2d8386aebbaeb1a5ba4bf193cc83f4',
+     x86_64: 'a8ebeac12cc8d9c5f37b239b0ebb56e584f4589d341814fb35ad6eab232767a0'
   })
 
   depends_on 'cairo' # R
@@ -35,7 +29,7 @@ class Librsvg < Package
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
   depends_on 'libcroco' => :build
-  depends_on 'libjpeg' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'libpng' # R
   depends_on 'libxml2' # R
   depends_on 'pango' # R
@@ -47,24 +41,7 @@ class Librsvg < Package
 
   gnome
 
-  def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system "mold -run ./configure \
-      #{CREW_OPTIONS} \
-      --enable-introspection=yes \
+  configure_options '--enable-introspection=yes \
       --enable-vala=yes \
-      --enable-pixbuf-loader"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
-
-  def self.postinstall
-    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-
-    system 'gdk-pixbuf-query-loaders',
-           '--update-cache'
-  end
+      --enable-pixbuf-loader'
 end

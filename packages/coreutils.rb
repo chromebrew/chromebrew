@@ -1,29 +1,28 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Coreutils < Package
+class Coreutils < Autotools
   description 'The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system.'
   homepage 'https://www.gnu.org/software/coreutils/coreutils.html'
-  version '9.2'
+  version '9.5'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gnu/coreutils/coreutils-9.2.tar.xz'
-  source_sha256 '6885ff47b9cdb211de47d368c17853f406daaf98b148aaecdf10de29cc04b0b3'
+  source_url 'https://ftpmirror.gnu.org/coreutils/coreutils-9.5.tar.xz'
+  source_sha256 'cd328edeac92f6a665de9f323c93b712af1858bc2e0d88f3f7100469470a1b8a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.2_armv7l/coreutils-9.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.2_armv7l/coreutils-9.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.2_i686/coreutils-9.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.2_x86_64/coreutils-9.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '39540783dbce98b48122fdba187de6a14622fdeec7bc6ceffe399e280379ec4f',
-     armv7l: '39540783dbce98b48122fdba187de6a14622fdeec7bc6ceffe399e280379ec4f',
-       i686: '0745b0227a7f39f3958403cb116974a11189dccc6953a23e2919768e83f769ee',
-     x86_64: 'c6c2bd27e42c071f17bf7499618a6c4defc24ec2b72aebc3c6ccb0e864bf3948'
+    aarch64: '589080263eeed8575d1efe1ec994816c7b74228890d225824454aebec12ae70d',
+     armv7l: '589080263eeed8575d1efe1ec994816c7b74228890d225824454aebec12ae70d',
+       i686: '24181cda251f24af6b3b4760e1fb8f25f08c1e0e7aa8fe10dfeaa5c17e74f8d2',
+     x86_64: '954e7e7006f3640edbda07c4553d162efd3cc9c22566fb430e4eade322d07e4e'
   })
 
+  depends_on 'acl' # R
+  depends_on 'attr' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'libcap' # R
-  no_patchelf
+  depends_on 'openssl' # R
 
   def self.preflight
     %w[uutils_coreutils].each do |cutils|
@@ -36,7 +35,9 @@ class Coreutils < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    year2038 = ARCH == 'x86_64' ? '' : ' --disable-year2038'
+    options = CREW_OPTIONS + year2038
+    system "./configure #{options}"
     system 'make'
     arch = <<~EOF
       #!/bin/bash
@@ -54,4 +55,7 @@ class Coreutils < Package
       FileUtils.rm %w[kill uptime]
     end
   end
+
+  # FAIL: tests/tail/inotify-dir-recreate.sh
+  # run_tests
 end

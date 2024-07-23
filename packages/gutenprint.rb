@@ -2,19 +2,14 @@ require 'package'
 
 class Gutenprint < Package
   description 'High quality drivers for Canon, Epson, Lexmark, Sony, Olympus, and PCL printers for use with CUPS and GIMP.'
-  homepage 'http://gimp-print.sourceforge.net/'
+  homepage 'https://gimp-print.sourceforge.io/'
   version '5.3.3'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/gimp-print/gutenprint-5.3/5.3.3/gutenprint-5.3.3.tar.xz'
   source_sha256 '7279ecbc8e67d1858c53cb24e423ea1be98e214872006b79e6e03650dd54a072'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gutenprint/5.3.3_armv7l/gutenprint-5.3.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gutenprint/5.3.3_armv7l/gutenprint-5.3.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gutenprint/5.3.3_i686/gutenprint-5.3.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gutenprint/5.3.3_x86_64/gutenprint-5.3.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '881b8199d6167bcf0a8008cff249e6bf2a792d1711d10a302e7e853e2fecfb2f',
      armv7l: '881b8199d6167bcf0a8008cff249e6bf2a792d1711d10a302e7e853e2fecfb2f',

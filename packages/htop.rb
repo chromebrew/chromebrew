@@ -8,13 +8,8 @@ class Htop < Package
   compatibility 'all'
   source_url 'https://github.com/htop-dev/htop/archive/refs/tags/3.2.2.tar.gz'
   source_sha256 '3829c742a835a0426db41bb039d1b976420c21ec65e93b35cd9bfd2d57f44ac8'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/htop/3.2.2_armv7l/htop-3.2.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/htop/3.2.2_armv7l/htop-3.2.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/htop/3.2.2_i686/htop-3.2.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/htop/3.2.2_x86_64/htop-3.2.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd1a46af7a625b50a304fcaecedcbc8204297b53519bd3ead8ba044e4c31686c4',
      armv7l: 'd1a46af7a625b50a304fcaecedcbc8204297b53519bd3ead8ba044e4c31686c4',

@@ -4,8 +4,8 @@
 /usr/local/share/yelp-xsl/xslt/common/css/core.css.tmpl
 /usr/local/share/yelp-xsl/xslt/common/css/docbook.css.tmpl
 /usr/local/share/yelp-xsl/xslt/common/css/elements.css.tmpl
-/usr/local/share/yelp-xsl/xslt/common/css/mallard.css.tmpl
 /usr/local/share/yelp-xsl/xslt/common/css/mallard-editor.css.tmpl
+/usr/local/share/yelp-xsl/xslt/common/css/mallard.css.tmpl
 /usr/local/share/yelp-xsl/xslt/common/css/syntax.css.tmpl
 /usr/local/share/yelp-xsl/xslt/common/domains/yelp-xsl.xml
 /usr/local/share/yelp-xsl/xslt/common/html.xsl

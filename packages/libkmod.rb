@@ -8,13 +8,8 @@ class Libkmod < Package
   compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libkmod/29_armv7l/libkmod-29-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libkmod/29_armv7l/libkmod-29-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libkmod/29_i686/libkmod-29-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libkmod/29_x86_64/libkmod-29-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '40fe9af2580dbc280c5c8b44f9dccbd4869cdb439eeee510bc26468f2652fa32',
      armv7l: '40fe9af2580dbc280c5c8b44f9dccbd4869cdb439eeee510bc26468f2652fa32',

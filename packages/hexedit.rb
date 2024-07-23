@@ -8,13 +8,8 @@ class Hexedit < Package
   compatibility 'all'
   source_url 'http://rigaux.org/hexedit-1.2.13.src.tgz'
   source_sha256 '6a126da30a77f5c0b08038aa7a881d910e3b65d13767fb54c58c983963b88dd7'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hexedit/1.2.13_armv7l/hexedit-1.2.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hexedit/1.2.13_armv7l/hexedit-1.2.13-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hexedit/1.2.13_i686/hexedit-1.2.13-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hexedit/1.2.13_x86_64/hexedit-1.2.13-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f241f818b97690420d56e6efac8126e637ccaaac6adbea877ba31a846f56f4c0',
      armv7l: 'f241f818b97690420d56e6efac8126e637ccaaac6adbea877ba31a846f56f4c0',

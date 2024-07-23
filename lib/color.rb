@@ -13,7 +13,7 @@ class String
          cyan: 36,
     lightgray: 37,
 
-    # colors with bold varient available
+           # colors with bold varient available
            gray: { normal: 90, bold: 30 },
        lightred: { normal: 91, bold: 31 },
      lightgreen: { normal: 92, bold: 32 },

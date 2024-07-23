@@ -8,13 +8,8 @@ class Ksh < Package
   compatibility 'all'
   source_url 'https://github.com/att/ast/releases/download/2020.0.0/ksh-2020.0.0.tar.xz'
   source_sha256 '3d6287f9ad13132bf8e57a8eac512b36a63ccce2b1e4531d7a946c5bf2375c63'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ksh/2020.0.0_armv7l/ksh-2020.0.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ksh/2020.0.0_armv7l/ksh-2020.0.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ksh/2020.0.0_i686/ksh-2020.0.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ksh/2020.0.0_x86_64/ksh-2020.0.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2df5c324eef4a6233cc73bbe9621a06b6934c8414a0e5bd6884d4a17bd62188e',
      armv7l: '2df5c324eef4a6233cc73bbe9621a06b6934c8414a0e5bd6884d4a17bd62188e',

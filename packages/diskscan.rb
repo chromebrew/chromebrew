@@ -8,13 +8,8 @@ class Diskscan < Package
   compatibility 'all'
   source_url 'https://github.com/baruch/diskscan/archive/0.20.tar.gz'
   source_sha256 '86038b3eb45fd4b2485a4ffba1949c68bea66f13a4c991265e3d527f022ed966'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diskscan/0.20_armv7l/diskscan-0.20-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diskscan/0.20_armv7l/diskscan-0.20-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diskscan/0.20_i686/diskscan-0.20-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diskscan/0.20_x86_64/diskscan-0.20-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '018a45cad7c7409280a44bbc59ca464cde36eb687d0795ed978d5a69dee93683',
      armv7l: '018a45cad7c7409280a44bbc59ca464cde36eb687d0795ed978d5a69dee93683',

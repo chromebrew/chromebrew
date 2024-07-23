@@ -2,19 +2,14 @@ require 'package'
 
 class Libxslt < Package
   description 'Libxslt is the XSLT C library developed for the GNOME project.'
-  homepage 'http://xmlsoft.org/libxslt/'
+  homepage 'https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home'
   version '1.1.34'
   license 'MIT'
   compatibility 'all'
   source_url 'http://xmlsoft.org/sources/libxslt-1.1.34.tar.gz'
   source_sha256 '98b1bd46d6792925ad2dfe9a87452ea2adebf69dcb9919ffd55bf926a7f93f7f'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_armv7l/libxslt-1.1.34-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_armv7l/libxslt-1.1.34-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_i686/libxslt-1.1.34-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_x86_64/libxslt-1.1.34-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'df33590a8edfc86f29fada7d5b44e5914651259015e8df726603a2ffdc23bd42',
      armv7l: 'df33590a8edfc86f29fada7d5b44e5914651259015e8df726603a2ffdc23bd42',
@@ -22,9 +17,12 @@ class Libxslt < Package
      x86_64: '2ead1e30cb028f2f299056f8eea5bfb318f7346c6a65cfa4a891672560ed26bc'
   })
 
-  depends_on 'py3_libxml2'
-  depends_on 'libgcrypt'
-  depends_on 'docbook_xsl'
+  depends_on 'docbook_xsl' => :build
+  depends_on 'glibc' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libgpgerror' # R
+  depends_on 'libxml2' # R
+  depends_on 'py3_libxml2' => :build
 
   def self.build
     system './configure',

@@ -3,23 +3,18 @@ require 'package'
 class Perl_yaml_tiny < Package
   description 'YAML::Tiny - Read/Write YAML files with as little code as possible'
   homepage 'https://metacpan.org/pod/YAML::Tiny'
-  version '1.74-perl5.36'
+  version '1.74-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/YAML-Tiny-1.74.tar.gz'
   source_sha256 '7b38ca9f5d3ce24230a6b8bdc1f47f5b2db348e7f7f9666c26f5955636e33d6c'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_yaml_tiny/1.74-perl5.36_armv7l/perl_yaml_tiny-1.74-perl5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_yaml_tiny/1.74-perl5.36_armv7l/perl_yaml_tiny-1.74-perl5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_yaml_tiny/1.74-perl5.36_i686/perl_yaml_tiny-1.74-perl5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_yaml_tiny/1.74-perl5.36_x86_64/perl_yaml_tiny-1.74-perl5.36-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '8803771c4db5385ae6eddff81d6ef55a78e024927c44139814275a8ce0d1099c',
-     armv7l: '8803771c4db5385ae6eddff81d6ef55a78e024927c44139814275a8ce0d1099c',
-       i686: 'f8b41f905d949495a5b945d1d9a39fb8613d845a4acab42e050665e6dedfcaf2',
-     x86_64: '161e30d9f48bf91dbc4402a3d0566e58c1d747b4a7887521bde715270bc2a51e'
+    aarch64: '843dcc510bfb6029e46133e4d3a5580f4a8e39ee232ff3de1ecdd59220ae505a',
+     armv7l: '843dcc510bfb6029e46133e4d3a5580f4a8e39ee232ff3de1ecdd59220ae505a',
+       i686: '1c8bfca914a68e0ea8a265d8b7c9d20e6572de269622c14a9c79290ff86acaeb',
+     x86_64: 'c8130dcd6ce06f910d28b95d9f9ef690b64d6747b23c6267e9447c43b58a02fc'
   })
 
   def self.prebuild

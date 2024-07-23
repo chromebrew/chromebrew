@@ -4,11 +4,10 @@
 /usr/local/doc/sgml-common-0.6.3/html/index.html
 /usr/local/doc/sgml-common-0.6.3/html/install-catalog.html
 /usr/local/doc/sgml-common-0.6.3/html/introduction.html
-/usr/local/etc/sgml/sgml.conf
 /usr/local/etc/sgml/sgml-docbook.cat
 /usr/local/etc/sgml/sgml-ent.cat
+/usr/local/etc/sgml/sgml.conf
 /usr/local/share/man/man8/install-catalog.8.gz
-/usr/local/share/sgml/sgml-iso-entities-8879.1986/catalog
 /usr/local/share/sgml/sgml-iso-entities-8879.1986/ISOamsa.ent
 /usr/local/share/sgml/sgml-iso-entities-8879.1986/ISOamsb.ent
 /usr/local/share/sgml/sgml-iso-entities-8879.1986/ISOamsc.ent
@@ -28,8 +27,7 @@
 /usr/local/share/sgml/sgml-iso-entities-8879.1986/ISOnum.ent
 /usr/local/share/sgml/sgml-iso-entities-8879.1986/ISOpub.ent
 /usr/local/share/sgml/sgml-iso-entities-8879.1986/ISOtech.ent
-/usr/local/share/sgml/xml.dcl
-/usr/local/share/sgml/xml-iso-entities-8879.1986/catalog
+/usr/local/share/sgml/sgml-iso-entities-8879.1986/catalog
 /usr/local/share/sgml/xml-iso-entities-8879.1986/ISOamsa.ent
 /usr/local/share/sgml/xml-iso-entities-8879.1986/ISOamsb.ent
 /usr/local/share/sgml/xml-iso-entities-8879.1986/ISOamsc.ent
@@ -49,3 +47,5 @@
 /usr/local/share/sgml/xml-iso-entities-8879.1986/ISOnum.ent
 /usr/local/share/sgml/xml-iso-entities-8879.1986/ISOpub.ent
 /usr/local/share/sgml/xml-iso-entities-8879.1986/ISOtech.ent
+/usr/local/share/sgml/xml-iso-entities-8879.1986/catalog
+/usr/local/share/sgml/xml.dcl

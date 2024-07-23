@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Yelp_tools < Package
+class Yelp_tools < Meson
   description 'yelp-tools is a collection of scripts and build utilities to help create, manage, and publish documentation for Yelp and the web'
   homepage 'https://github.com/GNOME/yelp-tools'
   version '42.1'
@@ -8,13 +8,8 @@ class Yelp_tools < Package
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/yelp-tools/-/archive/#{version}/yelp-tools-#{version}.tar.bz2"
   source_sha256 '40aadae0c6f0af41f90bcaba532d20b5b401476d64b2650aa419ef6264c00ecd'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_tools/42.1_armv7l/yelp_tools-42.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_tools/42.1_armv7l/yelp_tools-42.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_tools/42.1_i686/yelp_tools-42.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_tools/42.1_x86_64/yelp_tools-42.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '70792bf80c6bb3f66c959acdad595a2ff08fef8de990e41b700f74d0ae6a931e',
      armv7l: '70792bf80c6bb3f66c959acdad595a2ff08fef8de990e41b700f74d0ae6a931e',
@@ -26,18 +21,9 @@ class Yelp_tools < Package
   depends_on 'libxslt'
   depends_on 'py3_lxml'
 
+  gnome
+
   def self.patch
     system "sed -i 's,/usr/bin/python3,#{CREW_PREFIX}/bin/python3,g' tools/*.in"
-  end
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure builddir'
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

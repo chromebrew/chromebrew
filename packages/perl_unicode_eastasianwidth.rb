@@ -3,23 +3,18 @@ require 'package'
 class Perl_unicode_eastasianwidth < Package
   description 'Perl Unicode::EastAsianWidth - East Asian Width properties.'
   homepage 'https://metacpan.org/pod/Unicode::EastAsianWidth'
-  version '12.0-perl5.36'
+  version '12.0-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/Unicode-EastAsianWidth-12.0.tar.gz'
   source_sha256 '2a5bfd926c4fe5f77e6137da2c31ac2545282ae5fec6e9af0fdd403555a90ff4'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_eastasianwidth/12.0-perl5.36_armv7l/perl_unicode_eastasianwidth-12.0-perl5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_eastasianwidth/12.0-perl5.36_armv7l/perl_unicode_eastasianwidth-12.0-perl5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_eastasianwidth/12.0-perl5.36_i686/perl_unicode_eastasianwidth-12.0-perl5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_eastasianwidth/12.0-perl5.36_x86_64/perl_unicode_eastasianwidth-12.0-perl5.36-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'fffb5ae93e047955c1d23884d57096d2ddc89421a3618b6e01eec821a8932aa4',
-     armv7l: 'fffb5ae93e047955c1d23884d57096d2ddc89421a3618b6e01eec821a8932aa4',
-       i686: 'de7609f68c9554ae6f24089862d5adc56d7024608888170431a98d3d8724876d',
-     x86_64: 'e2e72c7e9624ba4f97190fbfa038dd3c7dbb1636ab2c31e56ed8af0c86d78746'
+    aarch64: 'f1603d9ec54f0360c78df76f7188b431467b2fe800be97f01c32ecca860a87f8',
+     armv7l: 'f1603d9ec54f0360c78df76f7188b431467b2fe800be97f01c32ecca860a87f8',
+       i686: 'ee94f24739538c1b0b50c25bff3aec171c51077d40750f1f178812b5564e75b1',
+     x86_64: '1d45396a77ad9abb31b63e23f1b012c3dafadaca944b454c642760a18a200d24'
   })
 
   def self.prebuild

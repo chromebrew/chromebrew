@@ -3,19 +3,13 @@ require 'package'
 class Symlinks < Package
   description 'scan/change symbolic links'
   homepage 'https://metadata.ftp-master.debian.org/changelogs//main/s/symlinks/symlinks_1.4-4_copyright'
-  @_ver = '1.4-4'
-  version @_ver
+  version '1.4-4'
   license 'symlinks'
   compatibility 'all'
-  source_url "https://salsa.debian.org/debian/symlinks/-/archive/debian/#{@_ver}/symlinks-debian-#{@_ver}.tar.bz2"
+  source_url "https://salsa.debian.org/debian/symlinks/-/archive/debian/#{version}/symlinks-debian-#{version}.tar.bz2"
   source_sha256 'f4469a9f366ccfaa7273b1f78bd540b8a6fa96f8b2b81a95d131944fb77efdd4'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/symlinks/1.4-4_armv7l/symlinks-1.4-4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/symlinks/1.4-4_armv7l/symlinks-1.4-4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/symlinks/1.4-4_i686/symlinks-1.4-4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/symlinks/1.4-4_x86_64/symlinks-1.4-4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'def477d27a14a689d5fc900c640779e5edd24ff2cc00cd9eff7950f101c4f4c1',
      armv7l: 'def477d27a14a689d5fc900c640779e5edd24ff2cc00cd9eff7950f101c4f4c1',

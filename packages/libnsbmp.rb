@@ -8,13 +8,8 @@ class Libnsbmp < Package
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/libs/releases/libnsbmp-0.1.6-src.tar.gz'
   source_sha256 '79c49365f860ed451bfc4109eddec8de3e9b7ce5a3be069596bd2aa19279324f'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsbmp/0.1.6_armv7l/libnsbmp-0.1.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsbmp/0.1.6_armv7l/libnsbmp-0.1.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsbmp/0.1.6_i686/libnsbmp-0.1.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsbmp/0.1.6_x86_64/libnsbmp-0.1.6-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '19a2adc9830d6831ca4f3449f50dcd5ac06843b69030fb584a2f4394a3d7dee8',
      armv7l: '19a2adc9830d6831ca4f3449f50dcd5ac06843b69030fb584a2f4394a3d7dee8',

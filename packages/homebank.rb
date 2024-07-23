@@ -2,23 +2,17 @@ require 'package'
 
 class Homebank < Package
   description 'HomeBank is a free software that will assist you to manage your personal accounting.'
-  homepage 'http://homebank.free.fr/en/index.php'
+  homepage 'https://www.gethomebank.org/en/index.php'
   version '5.4.3'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'http://homebank.free.fr/public/homebank-5.4.3.tar.gz'
   source_sha256 '9222d7ed7cc44fcfff3f1fe20935a1b7fe91bb4d9f90003cb3c6f3b893298d0b'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/homebank/5.4.3_armv7l/homebank-5.4.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/homebank/5.4.3_armv7l/homebank-5.4.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/homebank/5.4.3_i686/homebank-5.4.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/homebank/5.4.3_x86_64/homebank-5.4.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9d0b46459cfd423490481d5e136a1adcdd5c0e7f4de21f789e6d12285f88208b',
      armv7l: '9d0b46459cfd423490481d5e136a1adcdd5c0e7f4de21f789e6d12285f88208b',
-       i686: 'cecfc9b0b8e6952ab81ab38213c648a4c475843b264f55fa0067163a533108e9',
      x86_64: 'c8d1b25d778c7bfbecc9b2704e1e5d166213be5d6fe760c624f1adf86df327de'
   })
 

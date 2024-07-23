@@ -8,13 +8,8 @@ class Libtool < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libtool/libtool-2.4.7.tar.xz'
   source_sha256 '4f7f217f057ce655ff22559ad221a0fd8ef84ad1fc5fcb6990cecc333aa1635d'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtool/2.4.7_armv7l/libtool-2.4.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtool/2.4.7_armv7l/libtool-2.4.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtool/2.4.7_i686/libtool-2.4.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtool/2.4.7_x86_64/libtool-2.4.7-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '5b4596b096e34beaabac8011062b977b15fc20da158c9a12288a453c310fdc48',
      armv7l: '5b4596b096e34beaabac8011062b977b15fc20da158c9a12288a453c310fdc48',

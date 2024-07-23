@@ -3,23 +3,18 @@ require 'package'
 class Nano < Package
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  version '7.2'
+  version '8.1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://nano-editor.org/dist/v7/nano-7.2.tar.xz'
-  source_sha256 '86f3442768bd2873cec693f83cdf80b4b444ad3cc14760b74361474fc87a4526'
+  source_url "https://nano-editor.org/dist/v8/nano-#{version}.tar.xz"
+  source_sha256 '93b3e3e9155ae389fe9ccf9cb7ab380eac29602835ba3077b22f64d0f0cbe8cb'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/7.2_armv7l/nano-7.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/7.2_armv7l/nano-7.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/7.2_i686/nano-7.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/7.2_x86_64/nano-7.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '8e2fb30ca3fb61a64aae2e93d7320e07feb3b38838e39e3a2b5ffa5462034002',
-     armv7l: '8e2fb30ca3fb61a64aae2e93d7320e07feb3b38838e39e3a2b5ffa5462034002',
-       i686: '32aee8fa703ffe9b01e53f2ba1c839bef2b7cefdeacf3471475afa27b7d5003d',
-     x86_64: 'fddc8a4be84f736f549bf480c84ee8259e4b00e2a88913ca1fe36c404d613a3e'
+    aarch64: '2486bc2e3e290458805a2c55eaf6649bd0e242ec699bbc424f3aae095b5da44d',
+     armv7l: '2486bc2e3e290458805a2c55eaf6649bd0e242ec699bbc424f3aae095b5da44d',
+       i686: 'd3acd202efabcd04785d3ad6e982bcaa8a2f372d5b1341818c27fa1412583912',
+     x86_64: '7ecab2c4d4815ae73044fdf5c9375aad2c06fbee2fe0dcd56cab86d8435e60d2'
   })
 
   depends_on 'filecmd' # R
@@ -73,8 +68,6 @@ class Nano < Package
   end
 
   def self.postinstall
-    puts
-    puts 'Personal configuration file is located in $HOME/.nanorc'.lightblue
-    puts
+    ExitMessage.add "\nPersonal configuration file is located in #{HOME}/.nanorc.\n".lightblue
   end
 end

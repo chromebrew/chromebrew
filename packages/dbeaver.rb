@@ -3,19 +3,21 @@ require 'package'
 class Dbeaver < Package
   description 'Free Universal Database Tool'
   homepage 'https://dbeaver.io'
-  version '22.0.0'
+  version '24.1.2'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url({
-    x86_64: 'https://github.com/dbeaver/dbeaver/releases/download/22.0.0/dbeaver-ce-22.0.0-linux.gtk.x86_64.tar.gz'
+    x86_64: "https://github.com/dbeaver/dbeaver/releases/download/#{version}/dbeaver-ce-#{version}-linux.gtk.x86_64.tar.gz"
   })
   source_sha256({
-    x86_64: '32d701a4d1fc74e0b220a26202e2adc2774d57c1330a35c3ce2eb16c7450a7c4'
+    x86_64: '816f1abc95166d9353882ebb29ff3e24cbfc58584618835f30c13160393a437e'
   })
 
   depends_on 'gtk3'
   depends_on 'xdg_base'
   depends_on 'sommelier'
+
+  no_compile_needed
 
   def self.patch
     system "sed -i 's,/usr/share/dbeaver-ce,#{CREW_PREFIX}/share/dbeaver,g' dbeaver-ce.desktop"
@@ -35,7 +37,7 @@ class Dbeaver < Package
   end
 
   def self.postinstall
-    puts "\nType 'dbeaver' to get started.\n".lightblue
+    ExitMessage.add "\nType 'dbeaver' to get started.\n"
   end
 
   def self.remove
@@ -45,7 +47,7 @@ class Dbeaver < Package
       case $stdin.gets.chomp.downcase
       when 'y', 'yes'
         FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightred
+        puts "#{config_dir} removed.".lightgreen
       else
         puts "#{config_dir} saved.".lightgreen
       end

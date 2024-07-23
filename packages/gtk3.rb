@@ -1,24 +1,19 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gtk3 < Package
+class Gtk3 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
-  homepage 'https://developer.gnome.org/gtk3/3.0/'
-  @_ver = '3.24.37'
-  version @_ver
+  homepage 'https://docs.gtk.org/gtk3/'
+  version '3.24.41'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
-  git_hashtag @_ver
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.37_armv7l/gtk3-3.24.37-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.37_armv7l/gtk3-3.24.37-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.37_x86_64/gtk3-3.24.37-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '3dbf8f2b97f1ea7e0b58bfd07a95be8d8288674a92e084f26688b9e8233d96bc',
-     armv7l: '3dbf8f2b97f1ea7e0b58bfd07a95be8d8288674a92e084f26688b9e8233d96bc',
-     x86_64: 'ef6decef4d5d47c29a99777af6fc20ac9f9fcc3490a0974e512569cd3f75dc9c'
+    aarch64: '3760322a4d9bf7d8ca10e49a8b67d7222550e69f24b8b6188bcdcdb378b2dbbd',
+     armv7l: '3760322a4d9bf7d8ca10e49a8b67d7222550e69f24b8b6188bcdcdb378b2dbbd',
+     x86_64: 'dbb3e25dd81f9b9315448915a8b62bddb92ae62de28a21c17fa5e235e62e4277'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -36,7 +31,7 @@ class Gtk3 < Package
   depends_on 'ghostscript' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gnome_icon_theme' # L
+  # depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' => :build # Do we need this?
   depends_on 'graphite' => :build # Do we need this?
@@ -46,8 +41,8 @@ class Gtk3 < Package
   depends_on 'json_glib' => :build
   depends_on 'libdeflate' => :build # Do we need this?
   depends_on 'libepoxy' # R
-  depends_on 'libjpeg' => :build # Do we need this?
-  depends_on 'librsvg' => :build
+  depends_on 'libjpeg_turbo' => :build # Do we need this?
+  depends_on 'librsvg' # L
   depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
   depends_on 'libx11' # R
@@ -63,14 +58,18 @@ class Gtk3 < Package
   depends_on 'mesa' => :build
   depends_on 'pango' # R
   depends_on 'rest' => :build
+  depends_on 'shaderc' => :build
   depends_on 'shared_mime_info' # L
   depends_on 'sommelier' # L
   depends_on 'valgrind' => :build
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' => :build
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
 
   gnome
   no_fhs
+  no_upstream_update
 
   def self.patch
     # Use locally build subprojects
@@ -87,7 +86,7 @@ class Gtk3 < Package
       -Dexamples=false \
       -Dgtk_doc=false \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
     @gtk3settings = <<~GTK3_CONFIG_HEREDOC
       [Settings]

@@ -3,19 +3,13 @@ require 'package'
 class Busybox < Package
   description 'BusyBox combines tiny versions of many common UNIX utilities into a single small executable.'
   homepage 'https://busybox.net/'
-  @_ver = '1.36.0'
-  version @_ver
+  version '1.36.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://busybox.net/downloads/busybox-#{@_ver}.tar.bz2"
+  source_url "https://busybox.net/downloads/busybox-#{version}.tar.bz2"
   source_sha256 '542750c8af7cb2630e201780b4f99f3dcceeb06f505b479ec68241c1e6af61a5'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/busybox/1.36.0_armv7l/busybox-1.36.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/busybox/1.36.0_armv7l/busybox-1.36.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/busybox/1.36.0_i686/busybox-1.36.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/busybox/1.36.0_x86_64/busybox-1.36.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6f5f08cfdf0d8ff167066ae7d7d9a2b51a33206b057ea5e0d5a478c2bcc91dc0',
      armv7l: '6f5f08cfdf0d8ff167066ae7d7d9a2b51a33206b057ea5e0d5a478c2bcc91dc0',

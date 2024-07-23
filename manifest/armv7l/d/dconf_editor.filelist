@@ -41,8 +41,8 @@
 /usr/local/share/locale/is/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/it/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/ja/LC_MESSAGES/dconf-editor.mo
-/usr/local/share/locale/kab/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/ka/LC_MESSAGES/dconf-editor.mo
+/usr/local/share/locale/kab/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/kk/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/ko/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/lt/LC_MESSAGES/dconf-editor.mo
@@ -56,14 +56,14 @@
 /usr/local/share/locale/oc/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/pa/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/pl/LC_MESSAGES/dconf-editor.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/pt/LC_MESSAGES/dconf-editor.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/ro/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/ru/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/sk/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/sl/LC_MESSAGES/dconf-editor.mo
-/usr/local/share/locale/sr@latin/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/sr/LC_MESSAGES/dconf-editor.mo
+/usr/local/share/locale/sr@latin/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/sv/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/ta/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/te/LC_MESSAGES/dconf-editor.mo
@@ -76,5 +76,5 @@
 /usr/local/share/locale/zh_CN/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/dconf-editor.mo
-/usr/local/share/man/man1/dconf-editor.1.gz
+/usr/local/share/man/man1/dconf-editor.1.zst
 /usr/local/share/metainfo/ca.desrt.dconf-editor.appdata.xml

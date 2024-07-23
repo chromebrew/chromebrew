@@ -9,12 +9,12 @@
 /usr/local/include/parted/parted.h
 /usr/local/include/parted/timer.h
 /usr/local/include/parted/unit.h
-/usr/local/lib/libparted.a
 /usr/local/lib/libparted-fs-resize.a
 /usr/local/lib/libparted-fs-resize.la
 /usr/local/lib/libparted-fs-resize.so
 /usr/local/lib/libparted-fs-resize.so.0
 /usr/local/lib/libparted-fs-resize.so.0.0.5
+/usr/local/lib/libparted.a
 /usr/local/lib/libparted.la
 /usr/local/lib/libparted.so
 /usr/local/lib/libparted.so.2
@@ -41,8 +41,8 @@
 /usr/local/share/locale/nl/LC_MESSAGES/parted.mo
 /usr/local/share/locale/nn/LC_MESSAGES/parted.mo
 /usr/local/share/locale/pl/LC_MESSAGES/parted.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/parted.mo
 /usr/local/share/locale/pt/LC_MESSAGES/parted.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/parted.mo
 /usr/local/share/locale/ro/LC_MESSAGES/parted.mo
 /usr/local/share/locale/ru/LC_MESSAGES/parted.mo
 /usr/local/share/locale/rw/LC_MESSAGES/parted.mo

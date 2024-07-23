@@ -1,34 +1,38 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_nibbles < Package
+class Gnome_nibbles < Meson
   description 'snake game, up to four players'
   homepage 'https://wiki.gnome.org/Apps/Nibbles'
-  @_commit = '62964e9256fcac616109af874dbb2bd8342a9853'
-  version "3.38.2+git+#{@_commit[0..8]}"
-  license 'GPL-3+ and CC-BY-SA-3.0'
-  compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gnome-nibbles/-/archive/#{@_commit}/gnome-nibbles-#{@_commit}.tar.gz"
-  source_sha256 'ebf93903d36ae939f9ae56f47bc0dea151a60dfe2c63962af84c517ef1d7aba4'
+  version '4.0.3'
+  license 'GPL-3+'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-nibbles.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  depends_on 'clutter_gtk'
-  depends_on 'gsound'
-  depends_on 'librsvg'
-  depends_on 'libgnome_games_support'
-  depends_on 'wayland'
+  binary_sha256({
+    aarch64: 'fd2904863d68384f2ba9b0b91b4ca3b973fd641a153dc942a9678565d1c56f21',
+     armv7l: 'fd2904863d68384f2ba9b0b91b4ca3b973fd641a153dc942a9678565d1c56f21',
+     x86_64: '3b68f82b64471b8fd51fe3cd744f7b9e6102ad993fc4bccb45416fb3f1be2ca2'
+  })
 
-  def self.build
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
+  depends_on 'clutter_gtk' => :build
+  depends_on 'desktop_file_utils' => :build
+  depends_on 'gsound' => :build
+  depends_on 'libgnome_games_support2' => :build
+  depends_on 'librsvg' => :build
+  depends_on 'vala' => :build
+  depends_on 'wayland' => :build
+  depends_on 'cairo' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'gsound' # R
+  depends_on 'gtk4' # R
+  depends_on 'libgee' # R
+  depends_on 'libgnome_games_support2' # R
+  depends_on 'pango' # R
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
-
-  def self.postinstall
-    system 'update-mime-database', "#{CREW_PREFIX}/share/mime"
-    system 'gdk-pixbuf-query-loaders', '--update-cache'
-    system 'glib-compile-schemas', "#{CREW_PREFIX}/share/glib-2.0/schemas"
-  end
+  gnome
 end

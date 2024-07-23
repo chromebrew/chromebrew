@@ -2,19 +2,14 @@ require 'package'
 
 class Fribidi < Package
   description 'GNU FriBidi is an implementation of the Unicode Bidirectional Algorithm (bidi).'
-  homepage 'https://www.fribidi.org/'
+  homepage 'https://github.com/fribidi/fribidi'
   version '1.0.12'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/fribidi/fribidi/archive/v1.0.12.tar.gz'
   source_sha256 '2e9e859876571f03567ac91e5ed3b5308791f31cda083408c2b60fa1fe00a39d'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fribidi/1.0.12_armv7l/fribidi-1.0.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fribidi/1.0.12_armv7l/fribidi-1.0.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fribidi/1.0.12_i686/fribidi-1.0.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fribidi/1.0.12_x86_64/fribidi-1.0.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '13c899b89cde0b3c30a83999333748373fa343dd49e1add72f19484a98d9a9c1',
      armv7l: '13c899b89cde0b3c30a83999333748373fa343dd49e1add72f19484a98d9a9c1',
@@ -30,7 +25,7 @@ class Fribidi < Package
       -Ddocs=false \
       -Dtests=false \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -v -C builddir'
   end
 

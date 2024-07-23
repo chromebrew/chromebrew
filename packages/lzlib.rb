@@ -8,13 +8,8 @@ class Lzlib < Package
   compatibility 'all'
   source_url 'https://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-1.13.tar.lz'
   source_sha256 'dde6bd5b32535f17b28c9ac24b66607e0250506ac1432a4112ca3c73f5d662c3'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzlib/1.13_armv7l/lzlib-1.13-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzlib/1.13_armv7l/lzlib-1.13-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzlib/1.13_i686/lzlib-1.13-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzlib/1.13_x86_64/lzlib-1.13-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '46a6b8e451aba864ef2fea40b97288fa04a3cf69a90bfe0aed5a6d3eaa4bc33e',
      armv7l: '46a6b8e451aba864ef2fea40b97288fa04a3cf69a90bfe0aed5a6d3eaa4bc33e',

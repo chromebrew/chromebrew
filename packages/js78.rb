@@ -2,19 +2,14 @@ require 'package'
 
 class Js78 < Package
   description 'Spidermonkey is a javaScript interpreter with libraries from Mozilla — Version 78'
-  @_ver = '78.7.0'
-  version @_ver
+  homepage 'https://spidermonkey.dev/'
+  version '78.7.0'
   license 'MPL-2.0'
   compatibility 'all'
-  source_url "https://archive.mozilla.org/pub/firefox/releases/#{@_ver}esr/source/firefox-#{@_ver}esr.source.tar.xz"
+  source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}esr/source/firefox-#{version}esr.source.tar.xz"
   source_sha256 '1aa041db28cd742e93d663a9da8defd33040b38d8b9470350538473251621643'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js78/78.7.0_armv7l/js78-78.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js78/78.7.0_armv7l/js78-78.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js78/78.7.0_i686/js78-78.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js78/78.7.0_x86_64/js78-78.7.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'bf8e6afa9277745bad6e9d4f16f86e4b5bb41357ef502c9776968d0a4ecbe008',
      armv7l: 'bf8e6afa9277745bad6e9d4f16f86e4b5bb41357ef502c9776968d0a4ecbe008',
@@ -24,8 +19,10 @@ class Js78 < Package
 
   depends_on 'autoconf213' => :build
   depends_on 'rust' => :build
-  depends_on 'llvm_dev16' => :build
+  depends_on 'llvm16_dev' => :build
   depends_on 'nspr'
+
+  no_upstream_update
 
   @rust_default_host = case ARCH
                        when 'aarch64', 'armv7l'

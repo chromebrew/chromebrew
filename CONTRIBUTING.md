@@ -1,7 +1,7 @@
 # Contributing
 
 **Are you wondering how you can get started?** You can learn how from this *free* series
-[How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
+[How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github).
 
 ## Prerequisites
 
@@ -102,3 +102,11 @@ If the package is a dependency for another package, test commands of the other p
 ## Learn more
 
 - Visit the [wiki](https://github.com/chromebrew/chromebrew/wiki)
+
+## Pre-commit hooks.
+
+Chromebrew has pre-commit hooks to catch errors before they make it to CI.
+
+To install them, run `pre-commit install` in the root of the repository.
+
+You will first need to install the pre-commit tool, which can be done via `crew install py3_pre_commit` on ChromeOS.

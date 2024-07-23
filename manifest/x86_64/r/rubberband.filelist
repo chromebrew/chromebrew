@@ -1,6 +1,6 @@
 /usr/local/bin/rubberband
-/usr/local/include/rubberband/rubberband-c.h
 /usr/local/include/rubberband/RubberBandStretcher.h
+/usr/local/include/rubberband/rubberband-c.h
 /usr/local/lib64/ladspa/ladspa-rubberband.cat
 /usr/local/lib64/ladspa/ladspa-rubberband.so
 /usr/local/lib64/librubberband.a

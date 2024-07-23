@@ -1,10 +1,10 @@
 /home/chronos/user/.swatchdogrc
 /usr/local/bin/swatchdog
 /usr/local/lib/perl5/5.26.1/x86_64-linux/perllocal.pod
-/usr/local/lib/perl5/site_perl/5.26.1/auto/Swatchdog/Actions/autosplit.ix
 /usr/local/lib/perl5/site_perl/5.26.1/Swatchdog/Actions.pm
 /usr/local/lib/perl5/site_perl/5.26.1/Swatchdog/Threshold.pm
 /usr/local/lib/perl5/site_perl/5.26.1/Swatchdog/Throttle.pm
+/usr/local/lib/perl5/site_perl/5.26.1/auto/Swatchdog/Actions/autosplit.ix
 /usr/local/lib/perl5/site_perl/5.26.1/x86_64-linux/auto/swatchdog/.packlist
 /usr/local/share/man/man1/swatchdog.1.gz
 /usr/local/share/man/man3/Swatchdog::Actions.3.gz

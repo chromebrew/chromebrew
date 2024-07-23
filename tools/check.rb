@@ -175,10 +175,6 @@ task :automake do
                 rest: '| sort -t. -k 1,1nr -k 2,2nr -k 3,3nr -k 4,4nr | head -1'
 end
 
-desc 'Check for new version of autossh'
-task :autossh do
-end
-
 desc 'Check for new version of aws'
 task :aws do
   check_version pkg_name: 'aws',
@@ -414,10 +410,6 @@ task :gawk do
                 url: 'http://ftp.gnu.org/gnu/gawk/',
                 pattern: '\\-([\\d.]+)\\.tar\\.xz<',
                 rest: '| sort -t. -k 1,1nr -k 2,2nr -k 3,3nr -k 4,4nr | head -1'
-end
-
-desc 'Check for new version of gcc'
-task :gcc do
 end
 
 desc 'Check for new version of gdal'
@@ -1018,10 +1010,6 @@ task :postgres do
                 rest: '| sort -t. -k 1,1nr -k 2,2nr -k 3,3nr -k 4,4nr | head -1'
 end
 
-desc 'Check for new version of powerline_fonts'
-task :powerline_fonts do
-end
-
 desc 'Check for new version of powerstat'
 task :powerstat do
   check_version pkg_name: 'powerstat',
@@ -1044,10 +1032,6 @@ task :pv do
                 url: 'http://www.ivarch.com/programs/pv.shtml',
                 pattern: 'Current version: ([\\d.]+)',
                 rest: ''
-end
-
-desc 'Check for new version of pwgen'
-task :pwgen do
 end
 
 desc 'Check for new version of python27'
@@ -1258,10 +1242,6 @@ task :unrar do
                 url: 'http://www.rarlab.com/rar_add.htm',
                 pattern: 'unrarsrc\\-([\\d.]+)\\.tar\\.gz',
                 rest: ''
-end
-
-desc 'Check for new version of unzip'
-task :unzip do
 end
 
 desc 'Check for new version of vifm'

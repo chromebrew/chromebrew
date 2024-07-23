@@ -1,8 +1,8 @@
 /usr/local/include/libdbusmenu-glib-0.4/libdbusmenu-glib/client.h
 /usr/local/include/libdbusmenu-glib-0.4/libdbusmenu-glib/dbusmenu-glib.h
 /usr/local/include/libdbusmenu-glib-0.4/libdbusmenu-glib/enum-types.h
-/usr/local/include/libdbusmenu-glib-0.4/libdbusmenu-glib/menuitem.h
 /usr/local/include/libdbusmenu-glib-0.4/libdbusmenu-glib/menuitem-proxy.h
+/usr/local/include/libdbusmenu-glib-0.4/libdbusmenu-glib/menuitem.h
 /usr/local/include/libdbusmenu-glib-0.4/libdbusmenu-glib/server.h
 /usr/local/include/libdbusmenu-glib-0.4/libdbusmenu-glib/types.h
 /usr/local/include/libdbusmenu-glib-0.4/libdbusmenu-jsonloader/json-loader.h
@@ -11,9 +11,6 @@
 /usr/local/include/libdbusmenu-gtk3-0.4/libdbusmenu-gtk/menu.h
 /usr/local/include/libdbusmenu-gtk3-0.4/libdbusmenu-gtk/menuitem.h
 /usr/local/include/libdbusmenu-gtk3-0.4/libdbusmenu-gtk/parser.h
-/usr/local/libexec/dbusmenu-bench
-/usr/local/libexec/dbusmenu-dumper
-/usr/local/libexec/dbusmenu-testapp
 /usr/local/lib/girepository-1.0/Dbusmenu-0.4.typelib
 /usr/local/lib/girepository-1.0/DbusmenuGtk3-0.4.typelib
 /usr/local/lib/libdbusmenu-glib.a
@@ -34,8 +31,11 @@
 /usr/local/lib/pkgconfig/dbusmenu-glib-0.4.pc
 /usr/local/lib/pkgconfig/dbusmenu-gtk3-0.4.pc
 /usr/local/lib/pkgconfig/dbusmenu-jsonloader-0.4.pc
-/usr/local/share/doc/libdbusmenu/examples/glib-server-nomenu.c
+/usr/local/libexec/dbusmenu-bench
+/usr/local/libexec/dbusmenu-dumper
+/usr/local/libexec/dbusmenu-testapp
 /usr/local/share/doc/libdbusmenu/README.dbusmenu-bench
+/usr/local/share/doc/libdbusmenu/examples/glib-server-nomenu.c
 /usr/local/share/gir-1.0/Dbusmenu-0.4.gir
 /usr/local/share/gir-1.0/DbusmenuGtk3-0.4.gir
 /usr/local/share/libdbusmenu/json/test-gtk-label.json

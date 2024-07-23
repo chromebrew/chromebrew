@@ -9,10 +9,10 @@
 /usr/local/share/man/man3/Alien::Package::Rpm.3.gz
 /usr/local/share/man/man3/Alien::Package::Slp.3.gz
 /usr/local/share/man/man3/Alien::Package::Tgz.3.gz
+/usr/local/share/perl5/site_perl/Alien/Package.pm
 /usr/local/share/perl5/site_perl/Alien/Package/Deb.pm
 /usr/local/share/perl5/site_perl/Alien/Package/Lsb.pm
 /usr/local/share/perl5/site_perl/Alien/Package/Pkg.pm
-/usr/local/share/perl5/site_perl/Alien/Package.pm
 /usr/local/share/perl5/site_perl/Alien/Package/Rpm.pm
 /usr/local/share/perl5/site_perl/Alien/Package/Slp.pm
 /usr/local/share/perl5/site_perl/Alien/Package/Tgz.pm

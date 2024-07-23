@@ -1,33 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Patchelf < Package
+class Patchelf < Autotools
   description 'PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables.'
-  homepage 'http://nixos.org/patchelf.html'
-  version '0.17.2'
+  homepage 'https://github.com/NixOS/patchelf'
+  version '0.18.0'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/NixOS/patchelf.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.17.2_armv7l/patchelf-0.17.2-chromeos-armv7l.tar.zst',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.17.2_armv7l/patchelf-0.17.2-chromeos-armv7l.tar.zst',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.17.2_i686/patchelf-0.17.2-chromeos-i686.tar.zst',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.17.2_x86_64/patchelf-0.17.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-     aarch64: 'd3b21500b8727dc9372dd42f21c24e346634cb4aa972fbc4653832c08cb9e64d',
-      armv7l: 'd3b21500b8727dc9372dd42f21c24e346634cb4aa972fbc4653832c08cb9e64d',
-        i686: '6175e787dee232ce9120e86dbb5b578c2662959f92ff8e51efb2efdd8d52d915',
-      x86_64: 'ce1fc5eb4f3ba8bf99fab4f4c3b4c9ca2cd2a93c504c0ac0928318b8cdafaeab'
+     aarch64: '56fbe54307a6a7db9933c8e4d7b2d3c92836afd7c1c67d036a7a40d19b5a85ef',
+      armv7l: '56fbe54307a6a7db9933c8e4d7b2d3c92836afd7c1c67d036a7a40d19b5a85ef',
+        i686: '3602b232577da2b67aba8ae9069995909d38e8fb0efca5db0909df44e24e7c9e',
+      x86_64: 'a75cf598e6498555c867d1a462ef78a43f1fe8f9ca3a147f3aab33336ca90f78'
   })
 
   no_env_options
 
-  def self.build
-    system './bootstrap.sh'
-    system "LDFLAGS='-flto=auto -static' ./configure #{CREW_OPTIONS}"
-    system 'make'
+  pre_configure_options "LDFLAGS='-flto=auto -static' "
+
+  def self.patch
+    # Allocate PHT & SHT at the end of the *.elf file
+    downloader 'https://github.com/NixOS/patchelf/pull/544.patch', 'dbb0a0626e933e7368aaa84536bdb9cf46d4d05565e7fb5a9643154ec70c8ba1'
+    system 'patch -Np1 -i 544.patch'
   end
 
   def self.check
@@ -37,9 +34,5 @@ class Patchelf < Package
       system 'make clean'
     end
     system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

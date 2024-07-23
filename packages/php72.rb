@@ -2,30 +2,24 @@ require 'package'
 
 class Php72 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
-  homepage 'http://www.php.net/'
+  homepage 'https://www.php.net/'
   @_ver = '7.2.34'
   version "#{@_ver}-2"
   license 'PHP-3.01'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.php.net/distributions/php-7.2.34.tar.xz'
   source_sha256 '409e11bc6a2c18707dfc44bc61c820ddfd81e17481470f3405ee7822d8379903'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-2_armv7l/php72-7.2.34-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-2_armv7l/php72-7.2.34-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-2_i686/php72-7.2.34-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-2_x86_64/php72-7.2.34-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'aa82eeacd83183c4efe99abb1f3b75601dba24eecea68a57a8a37613a3dc2614',
      armv7l: 'aa82eeacd83183c4efe99abb1f3b75601dba24eecea68a57a8a37613a3dc2614',
-       i686: '5d0770534aff60ecb57d99b1ed8ecf2b13058a06f7056162541c1e370dbb1334',
      x86_64: '40c16a7e5635c5c2a9bd6f41b9db894237147c02d6c5b8d7175c0a97639eea5c'
   })
 
   depends_on 'libgcrypt'
   depends_on 'libiconv'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'curl'
@@ -35,6 +29,8 @@ class Php72 < Package
   depends_on 're2c'
   depends_on 'tidy'
   depends_on 'unixodbc'
+
+  no_fhs
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
@@ -104,13 +100,7 @@ class Php72 < Package
     system 'make'
   end
 
-  def self.check
-    # system 'make', 'test'
-  end
-
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/log"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"

@@ -2,19 +2,14 @@ require 'package'
 
 class Js102 < Package
   description 'Spidermonkey is a javaScript interpreter with libraries from Mozilla — Version 102'
-  @_ver = '102.4.0'
-  version @_ver
+  homepage 'https://spidermonkey.dev/'
+  version '102.4.0'
   license 'MPL-2.0'
   compatibility 'all'
-  source_url "https://archive.mozilla.org/pub/firefox/releases/#{@_ver}esr/source/firefox-#{@_ver}esr.source.tar.xz"
+  source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}esr/source/firefox-#{version}esr.source.tar.xz"
   source_sha256 'e79f0ddd4914dfbff61c5eea7ff28ad2dd12ecfbf3d63a41dab57d50171d904e'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.4.0_armv7l/js102-102.4.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.4.0_armv7l/js102-102.4.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.4.0_i686/js102-102.4.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.4.0_x86_64/js102-102.4.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'cdebffea9ebee4e43ae1c1b3e69f8fa1f573fef22fb16a138da9ebb590c23f45',
      armv7l: 'cdebffea9ebee4e43ae1c1b3e69f8fa1f573fef22fb16a138da9ebb590c23f45',
@@ -27,13 +22,15 @@ class Js102 < Package
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libnotify' => :build
-  depends_on 'llvm_dev16' => :build
+  depends_on 'llvm18_dev' => :build
   depends_on 'ncurses' # R
   depends_on 'nspr'
   depends_on 'nss' # R
   depends_on 'readline' # R
   depends_on 'rust' => :build
   depends_on 'zlibpkg' # R
+
+  no_upstream_update
 
   @rust_default_host = case ARCH
                        when 'aarch64', 'armv7l'
@@ -54,7 +51,7 @@ class Js102 < Package
     return unless ARCH == 'i686'
 
     # https://bugzilla.mozilla.org/show_bug.cgi?id=1729459#c25
-    @math_x86_patch = <<~'PATCH_EOF'
+    @math_x86_patch = <<~PATCH_EOF
       diff --git a/modules/fdlibm/src/math_private.h b/modules/fdlibm/src/math_private.h
       index 51d79f9c2ec59..fafd7d6fc1e0d 100644
       --- a/modules/fdlibm/src/math_private.h

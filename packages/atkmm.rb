@@ -1,25 +1,19 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Atkmm < Package
+class Atkmm < Meson
   description 'Atkmm is the official C++ interface for the ATK accessibility toolkit library.'
   homepage 'https://www.gtkmm.org/'
-  version '2.36.2'
+  version '2.36.3'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/atkmm.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.36.2_armv7l/atkmm-2.36.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.36.2_armv7l/atkmm-2.36.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.36.2_i686/atkmm-2.36.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.36.2_x86_64/atkmm-2.36.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '049d1efb8c411ac36328983605a54d54e3bc45587aa3ac9157f4b629be75f720',
-     armv7l: '049d1efb8c411ac36328983605a54d54e3bc45587aa3ac9157f4b629be75f720',
-       i686: '4ceaac05ebc9ae13009b10103249356131e260b7ce8ed3a3e57ad91f73f174e2',
-     x86_64: 'ffe420ab3a9f104326cdb232bf5326767b07e4b5ecbc9af73909e53692b5c685'
+    aarch64: '9224b82b6db207ebcb652edeb5403eec1be918f7b395d449c2b4a6bd04298a37',
+     armv7l: '9224b82b6db207ebcb652edeb5403eec1be918f7b395d449c2b4a6bd04298a37',
+     x86_64: 'a31362204e6e24f6f808389b62868f690b9377185c979dcbdadf737293d4c306'
   })
 
   depends_on 'at_spi2_core' # R
@@ -31,15 +25,5 @@ class Atkmm < Package
 
   gnome
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dbuild-documentation=false \
-    builddir"
-    system 'meson configure builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options '-Dbuild-documentation=false'
 end

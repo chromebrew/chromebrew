@@ -1,45 +1,20 @@
 # Adapted from Arch Linux ruby-rubocop PKGBUILD at:
 # https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=ruby-rubocop
 
-require 'package'
+require 'buildsystems/ruby'
 
-class Ruby_rubocop < Package
+class Ruby_rubocop < RUBY
   description 'A Ruby static code analyzer and formatter'
   homepage 'https://rubocop.org'
-  version '1.49.0-ruby-3.2'
+  version '1.63.2-ruby-3.3'
+  license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml'
-  source_sha256 'cb65065787f428b6872637fcd2d5b7bc59d25f2a11ffc88834007646148f8af8'
+  source_url 'SKIP'
 
   depends_on 'libyaml'
-  depends_on 'ruby'
   depends_on 'xdg_base'
 
-  no_fhs
+  conflicts_ok
   no_compile_needed
-
-  def self.install
-    FileUtils.install '.rubocop.yml', "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml", mode: 0o644
-  end
-
-  def self.postinstall
-    @gem_name = name.sub('ruby_', '')
-    system "gem install -N #{@gem_name}", exception: false
-
-    puts "Chromebrew rubocop config file was installed at #{CREW_PREFIX}/.config/rubocop/config.yml".lightblue
-    puts 'This can be overridden by a ~/.rubocop.yml'.lightblue
-  end
-
-  def self.remove
-    @gem_name = name.sub('ruby_', '')
-    @gems_deps = `gem dependency ^#{@gem_name}\$ | awk '{print \$1}'`.chomp
-    # Delete the first line and convert to an array.
-    @gems = @gems_deps.split("\n").drop(1).append(@gem_name)
-    # bundler never gets uninstalled, though gem dependency lists it for
-    # every package, so delete it from the list.
-    @gems.delete('bundler')
-    @gems.each do |gem|
-      system "gem uninstall -Dx --force --abort-on-dependent #{gem}", exception: false
-    end
-  end
+  no_fhs
 end

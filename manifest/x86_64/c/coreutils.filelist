@@ -167,10 +167,10 @@
 /usr/local/share/locale/nl/LC_TIME/coreutils.mo
 /usr/local/share/locale/pl/LC_MESSAGES/coreutils.mo
 /usr/local/share/locale/pl/LC_TIME/coreutils.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/coreutils.mo
-/usr/local/share/locale/pt_BR/LC_TIME/coreutils.mo
 /usr/local/share/locale/pt/LC_MESSAGES/coreutils.mo
 /usr/local/share/locale/pt/LC_TIME/coreutils.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/coreutils.mo
+/usr/local/share/locale/pt_BR/LC_TIME/coreutils.mo
 /usr/local/share/locale/ro/LC_MESSAGES/coreutils.mo
 /usr/local/share/locale/ro/LC_TIME/coreutils.mo
 /usr/local/share/locale/ru/LC_MESSAGES/coreutils.mo
@@ -183,6 +183,8 @@
 /usr/local/share/locale/sr/LC_TIME/coreutils.mo
 /usr/local/share/locale/sv/LC_MESSAGES/coreutils.mo
 /usr/local/share/locale/sv/LC_TIME/coreutils.mo
+/usr/local/share/locale/ta/LC_MESSAGES/coreutils.mo
+/usr/local/share/locale/ta/LC_TIME/coreutils.mo
 /usr/local/share/locale/tr/LC_MESSAGES/coreutils.mo
 /usr/local/share/locale/tr/LC_TIME/coreutils.mo
 /usr/local/share/locale/uk/LC_MESSAGES/coreutils.mo

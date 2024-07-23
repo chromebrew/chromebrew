@@ -1,70 +1,33 @@
-### list of all tools
+# Tools
 
-Tools to build pre-build binary easy.
+This directory contains a number of tools used to assist in the development of Chromebrew.
 
- - Makefile
- - build.sh
- - genpkgname.sh
+## Check for packages needing updates
 
-Tools to upload and update URL in package files.
+These are a collection of scripts and files used to detect if packages need an update.
+Coverage is spotty, and the majority of packages are unsuppported.
 
- - chkfrog.sh
- - upfrog.sh
- - upload_github_release.sh
+- `check.rb`
+- `check_updates.sh`
+- `compare_packages.sh`
+- `core_packages.txt`
+- `packages.yaml`
 
-Tools to check URL or SHA stuff from packages files.
+## Add missing dependencies to packages
 
- - create_sha_list.sh
- - create_url_list.sh
+This script adds missing dependencies to packages by checking their library dependencies and what crew package provides them.
 
-Obsolete tools to create package.  Now, we use `crew build`.
+- `getrealdeps.sh`
 
- - create_package.sh
+## Upload package binaries to GitLab
 
-### Usage of Makefile
+This script uploads built packages to GitLab, where we currently host precompiled binaries.
 
-Make working directory on your Chromebook and copy files there.
-Then, performs `make` there.
+- `gl.sh`
 
-```
-$ mkdir /usr/local/work
-$ cd /usr/local/work
-$ cp your-path-for-original-tool-directory/{Makefile,build.sh,genpkgname.sh} .
-$ make -k
-```
+## Valid licenses for packages
 
-### Usage of upfrog.sh
+This file contains guidance on formatting conventions for what to put in the license field of packages.
+There is also a rough list of what licenses are used, although this is incomplete and a little outdated.
 
-First, compile jfrog CLI from `https://www.jfrog.com/getcli/`.  Then, set it up.
-After that, copy compiled pre-built binary to `release/$ARCH`.
-
-```
-$ ./tools/upfrog.sh pango-1.40.9
-[Info] Verifying repository chromebrew exists...
-[Info] Verifying package pango exists...
-[Info] Verifying version 1.40.9 exists...
-[Info] Creating version...
-[Info] Created version 1.40.9.
-[Info] Collecting files for upload:. Done.
-[Info] [Thread 2] Uploading artifact: release/x86_64/pango-1.40.9-chromeos-x86_64.tar.xz
-[Info] [Thread 0] Uploading artifact: release/armv7l/pango-1.40.9-chromeos-armv7l.tar.xz
-[Info] [Thread 1] Uploading artifact: release/i686/pango-1.40.9-chromeos-i686.tar.xz
-[Info] Uploaded 3 artifacts.
-[Info] Publishing version...
-[Info] Published version 1.40.9, details:
-{
-  "files": 3
-}
-```
-
-### Usage of chkfrog.sh
-
-Copy compiled pre-built binary's SHA256 files to `release/$ARCH`.
-
-```
-$ ./tools/chkfrog.sh pango
-pango 1.40.9
-https://dl.bintray.com/chromebrew/chromebrew/pango-1.40.9-chromeos-x86_64.tar.xz : c90a74dcba01ac1731aca5879b5b54dc9e1c49c3f61ec5f2861384db2bafa4eb
-https://dl.bintray.com/chromebrew/chromebrew/pango-1.40.9-chromeos-i686.tar.xz : c24290af6d40c9fe1b9797942941e5a181533574188678b8f1f6f6a9ea319ba4
-https://dl.bintray.com/chromebrew/chromebrew/pango-1.40.9-chromeos-armv7l.tar.xz : 60fb01a75558724abfbd879cef6877fca2ca17d802abeca7c487bb9d8b75a08c
-```
+- `licenses.txt`

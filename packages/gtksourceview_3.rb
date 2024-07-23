@@ -1,20 +1,15 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gtksourceview_3 < Package
+class Gtksourceview_3 < Autotools
   description 'Source code editing widget'
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
   version '3.24.11'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.11.tar.xz'
   source_sha256 '691b074a37b2a307f7f48edc5b8c7afa7301709be56378ccf9cc9735909077fd'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_3/3.24.11_armv7l/gtksourceview_3-3.24.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_3/3.24.11_armv7l/gtksourceview_3-3.24.11-chromeos-armv7l.tar.xz',
-     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_3/3.24.11_i686/gtksourceview_3-3.24.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_3/3.24.11_x86_64/gtksourceview_3-3.24.11-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '66c81231c2866221935586f1230a5be8df66685bbe29cc9c44063a0d5999dc5b',
      armv7l: '66c81231c2866221935586f1230a5be8df66685bbe29cc9c44063a0d5999dc5b',
@@ -43,12 +38,8 @@ class Gtksourceview_3 < Package
   depends_on 'vulkan_icd_loader' => :build
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} --enable-glade-catalog --enable-gtk-doc --disable-gtk-doc-html"
-    system 'make'
-  end
+  gnome
+  no_upstream_update
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--enable-glade-catalog --enable-gtk-doc --disable-gtk-doc-html'
 end

@@ -9,8 +9,7 @@ class Lsb_release < Package
   source_url 'https://downloads.sourceforge.net/project/lsb/lsb_release/1.4/lsb-release-1.4.tar.gz'
   source_sha256 '99321288f8d62e7a1d485b7c6bdccf06766fb8ca603c6195806e4457fdf17172'
 
-  binary_url({})
-  binary_sha256({})
+  no_compile_needed
 
   depends_on 'help2man'
   depends_on 'make'

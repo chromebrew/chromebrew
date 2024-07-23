@@ -8,7 +8,7 @@ class Gdk_base < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'wayland_info'
+  depends_on 'wayland_info' # L
 
   no_compile_needed
 

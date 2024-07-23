@@ -8,13 +8,8 @@ class Openlibm < Package
   compatibility 'all'
   source_url 'https://github.com/JuliaMath/openlibm/archive/v0.7.0.tar.gz'
   source_sha256 '1699f773198018b55b12631db9c1801fe3ed191e618a1ee1be743f4570ae06a3'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openlibm/0.7.0_armv7l/openlibm-0.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openlibm/0.7.0_armv7l/openlibm-0.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openlibm/0.7.0_i686/openlibm-0.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openlibm/0.7.0_x86_64/openlibm-0.7.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '3c314f643ea1c940681fb6d504e397af0908235d9b2bce463351ffc47d064e80',
      armv7l: '3c314f643ea1c940681fb6d504e397af0908235d9b2bce463351ffc47d064e80',

@@ -14,8 +14,8 @@
 /usr/local/share/locale/de/LC_MESSAGES/wdiff.mo
 /usr/local/share/locale/el/LC_MESSAGES/wdiff-gnulib.mo
 /usr/local/share/locale/en@boldquot/LC_MESSAGES/wdiff.mo
-/usr/local/share/locale/en_GB/LC_MESSAGES/wdiff.mo
 /usr/local/share/locale/en@quot/LC_MESSAGES/wdiff.mo
+/usr/local/share/locale/en_GB/LC_MESSAGES/wdiff.mo
 /usr/local/share/locale/eo/LC_MESSAGES/wdiff-gnulib.mo
 /usr/local/share/locale/es/LC_MESSAGES/wdiff-gnulib.mo
 /usr/local/share/locale/es/LC_MESSAGES/wdiff.mo
@@ -45,9 +45,9 @@
 /usr/local/share/locale/nl/LC_MESSAGES/wdiff.mo
 /usr/local/share/locale/pl/LC_MESSAGES/wdiff-gnulib.mo
 /usr/local/share/locale/pl/LC_MESSAGES/wdiff.mo
+/usr/local/share/locale/pt/LC_MESSAGES/wdiff-gnulib.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/wdiff-gnulib.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/wdiff.mo
-/usr/local/share/locale/pt/LC_MESSAGES/wdiff-gnulib.mo
 /usr/local/share/locale/ro/LC_MESSAGES/wdiff-gnulib.mo
 /usr/local/share/locale/ro/LC_MESSAGES/wdiff.mo
 /usr/local/share/locale/ru/LC_MESSAGES/wdiff-gnulib.mo

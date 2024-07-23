@@ -5,20 +5,14 @@ class Oneko < Package
   homepage 'http://www.daidouji.com/oneko/'
   version '1.2.sakura.6'
   license 'public-domain'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://httpredir.debian.org/debian/pool/main/o/oneko/oneko_1.2.sakura.6.orig.tar.gz'
   source_sha256 'd89cee8b81cdb40ef23b3457c9a7fe1b0ff130081b21a41ec6c41cda01391d25'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oneko/1.2.sakura.6_armv7l/oneko-1.2.sakura.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oneko/1.2.sakura.6_armv7l/oneko-1.2.sakura.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oneko/1.2.sakura.6_i686/oneko-1.2.sakura.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oneko/1.2.sakura.6_x86_64/oneko-1.2.sakura.6-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '18128ddab7d13999c43c4fa2ce24fdd15a9bcd4541a815ad8c19f9154d006db8',
      armv7l: '18128ddab7d13999c43c4fa2ce24fdd15a9bcd4541a815ad8c19f9154d006db8',
-       i686: '68469cb17415e9088f966a3b6551b52dcfcd15f3cec905e91fa4c7eca16dc3a0',
      x86_64: 'abcfe89e40fb13c5df22abcbae616892d9f9917ef931520a80dbbd067bb0775d'
   })
 
@@ -27,7 +21,7 @@ class Oneko < Package
   depends_on 'sommelier'
   depends_on 'imake' => :build
   depends_on 'xorg_cf_files' => :build
-  depends_on 'gcc_libmakedep' => :build
+  depends_on 'gccmakedep' => :build
 
   def self.patch
     # Download extra sources

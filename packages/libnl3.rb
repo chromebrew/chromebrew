@@ -1,44 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libnl3 < Package
+class Libnl3 < Autotools
   description 'libnl is a library for applications dealing with netlink sockets.'
-  homepage 'http://www.infradead.org/~tgr/libnl/'
-  version '3.7.0'
+  homepage 'https://github.com/thom311/libnl'
+  version '3.9.0-5248e1a'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/thom311/libnl.git'
-  git_hashtag "libnl#{version.gsub('.', '_')}"
+  git_hashtag '5248e1a45576617b349465997822cef34cbc5053'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.7.0_armv7l/libnl3-3.7.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.7.0_armv7l/libnl3-3.7.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.7.0_i686/libnl3-3.7.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.7.0_x86_64/libnl3-3.7.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '6eb8a20bc0ff41d8a61116f92eb6426e6f085ce219b2af19ab99ac3d6a9d745e',
-     armv7l: '6eb8a20bc0ff41d8a61116f92eb6426e6f085ce219b2af19ab99ac3d6a9d745e',
-       i686: '123e2b875eb3a25373ba275c79fdfacf877fa0871a522e456715049c3c0f142d',
-     x86_64: 'de4409d700e3335d43d63acb1d50ff29e0827a28766075704ba54170d7858967'
+    aarch64: '83355357cf4755c47348e8db7528e345a36de0dfa3d734e1141dc632e5970973',
+     armv7l: '83355357cf4755c47348e8db7528e345a36de0dfa3d734e1141dc632e5970973',
+       i686: '8f9373822534eea9fec8cbdea8b4dac53b94920aae8abc4c9f19264fff0130a3',
+     x86_64: '455ffa9f7ba341a84989c0e36546918d671ef61013ddb171264601cc058abe1d'
   })
 
+  # depends_on 'check' => :build
   depends_on 'glibc' # R
 
-  def self.build
-    system 'autoupdate'
-    system './autogen.sh'
-    system "./configure #{CREW_OPTIONS} \
-              --enable-cli \
-              --enable-pthreads \
-              --disable-debug"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
+  configure_options '--disable-debug'
+  # https://github.com/thom311/libnl/issues/393
+  # run_tests
 end

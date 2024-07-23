@@ -1,29 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Vim_runtime < Package
+class Vim_runtime < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
-  homepage 'http://www.vim.org/'
-  version '9.0.1145'
+  homepage 'https://www.vim.org/'
+  version '9.1.0568'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1145_armv7l/vim_runtime-9.0.1145-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1145_armv7l/vim_runtime-9.0.1145-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1145_i686/vim_runtime-9.0.1145-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1145_x86_64/vim_runtime-9.0.1145-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'abf07f7472d5f2ecd2694d3251da5dc28f9c261fea289087ae8d8ae95aa07bbc',
-     armv7l: 'abf07f7472d5f2ecd2694d3251da5dc28f9c261fea289087ae8d8ae95aa07bbc',
-       i686: '0f80a4d523325e3e4b1dd3a16533f71bc56873d4e234534b71ce042e5312cd33',
-     x86_64: '010794241e8435eb04170737ccae9f8ad22878f49ee642f611361a58e967e590'
+    aarch64: 'c6c9e42b80ca65c021aa386c2737dd2f5338fb642a9b6d00b6bf24f43815a87e',
+     armv7l: 'c6c9e42b80ca65c021aa386c2737dd2f5338fb642a9b6d00b6bf24f43815a87e',
+       i686: '153e4f1a05c9bf12321ec3a5db4b1aaa5b8ef421f39957581b03ea384692e37d',
+     x86_64: '940ff81cdda2254dc4db3fbd1450a29df13823684d766d401fce2d38fb480abc'
   })
 
-  depends_on 'gpm'
-  depends_on 'libsodium'
+  depends_on 'gpm' # R
+  depends_on 'libsodium' # R
+  depends_on 'termcap' # R
 
   def self.patch
     # set the system-wide vimrc path
@@ -35,31 +31,25 @@ class Vim_runtime < Package
     end
   end
 
-  def self.build
-    system '[ -x configure ] || autoreconf -fvi'
-    system "./configure \
-      #{CREW_OPTIONS} \
-      --localstatedir=#{CREW_PREFIX}/var/lib/vim \
-      --with-features=huge \
-      --with-compiledby='Chromebrew' \
-      --enable-gpm \
-      --enable-acl \
-      --with-x=no \
-      --disable-gui \
-      --enable-multibyte \
-      --enable-cscope \
-      --enable-netbeans \
-      --enable-perlinterp=dynamic \
-      --enable-pythoninterp=dynamic \
-      --enable-python3interp=dynamic \
-      --enable-rubyinterp=dynamic \
-      --enable-luainterp=dynamic \
-      --enable-tclinterp=dynamic \
-      --disable-canberra \
-      --disable-selinux \
-      --disable-nls"
-    system 'make'
-  end
+  configure_options "--localstatedir=#{CREW_PREFIX}/var/lib/vim \
+    --with-features=huge \
+    --with-compiledby='Chromebrew' \
+    --enable-gpm \
+    --enable-acl \
+    --with-x=no \
+    --disable-gui \
+    --enable-multibyte \
+    --enable-cscope \
+    --enable-netbeans \
+    --enable-perlinterp=dynamic \
+    --enable-pythoninterp=dynamic \
+    --enable-python3interp=dynamic \
+    --enable-rubyinterp=dynamic \
+    --enable-luainterp=dynamic \
+    --enable-tclinterp=dynamic \
+    --disable-canberra \
+    --disable-selinux \
+    --disable-nls"
 
   def self.install
     @vim_version = version.rpartition('.')[0].sub('.', '')

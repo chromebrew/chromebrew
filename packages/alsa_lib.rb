@@ -1,27 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Alsa_lib < Package
+class Alsa_lib < Autotools
   description 'The Advanced Linux Sound Architecture (ALSA) provides audio and MIDI functionality to the Linux operating system.'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
-  version '1.2.9'
+  version '1.2.12-py3.12'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://github.com/alsa-project/alsa-lib/archive/v#{version}.tar.gz"
-  source_sha256 '95bbac3c04e7a722439e0c282232881e8657562ae55a90b85e58a8f5aa140ac0'
+  compatibility 'all'
+  source_url "https://github.com/alsa-project/alsa-lib/archive/v#{version.split('-').first}.tar.gz"
+  source_sha256 'f067dbba9376e5bbbb417b77751d2a9f2f277c54fb3a2b5c023cc2c7dfb4e3c1'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.9_armv7l/alsa_lib-1.2.9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.9_armv7l/alsa_lib-1.2.9-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.9_x86_64/alsa_lib-1.2.9-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'f872050fc0f77633fe2d6860328ec13e7bc43a3c3e4de41bf8daefa68fe6f91e',
-     armv7l: 'f872050fc0f77633fe2d6860328ec13e7bc43a3c3e4de41bf8daefa68fe6f91e',
-     x86_64: '58437d5b0c77fb495e4f354c7b19c73dd98b8aff781cb7ea83e4339b36ba2b88'
+    aarch64: '1409d8a119ee28fb2b9e6cd789ef86e17034a9331e0f0bde0db3a06af102d156',
+     armv7l: '1409d8a119ee28fb2b9e6cd789ef86e17034a9331e0f0bde0db3a06af102d156',
+       i686: '45fc80421c2e3220a540ff0b534578506e43f54e4ca8561b9ff93888f528d70c',
+     x86_64: '241d2bee8a74d9446ed29765a00300e0b60d4b1b778ae28040902c24c50bdf3d'
   })
 
-  depends_on 'python3' # L
   depends_on 'glibc' # R
+  depends_on 'python3' # L
 
   def self.build
     @py_ver = `python -c "import sys; version = '.'.join(map(str, sys.version_info[:2])) ; print(version)"`.chomp
@@ -32,9 +29,5 @@ class Alsa_lib < Package
        --with-pythonlibs=-lpython#{@py_ver} \
        --with-pythonincludes=-I#{CREW_PREFIX}/include/python#{@py_ver}"
     system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

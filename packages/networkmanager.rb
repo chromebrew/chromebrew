@@ -1,77 +1,68 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Networkmanager < Package
+class Networkmanager < Meson
   description 'Network connection manager and user applications'
   homepage 'https://wiki.gnome.org/Projects/NetworkManager'
-  @_ver = '1.42.2'
-  version @_ver
+  version '1.48.2'
   license 'GPL-2+ and LGPL-2.1+'
-  compatibility 'aarch64,armv7l,x86_64'
-  source_url "https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/#{@_ver}/NetworkManager#{@_ver}.tar.bz2"
-  source_sha256 '939a27acb0520efc4af3bb7a7dac1e85c34a4b8bbec2f59e2247baf93ac81403'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/networkmanager/1.42.2_armv7l/networkmanager-1.42.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/networkmanager/1.42.2_armv7l/networkmanager-1.42.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/networkmanager/1.42.2_x86_64/networkmanager-1.42.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'cbabb7283021aca5027e28dc36e957464c14ae7496eb098bb4a6fe0a43712f9c',
-     armv7l: 'cbabb7283021aca5027e28dc36e957464c14ae7496eb098bb4a6fe0a43712f9c',
-     x86_64: '5a48bb9db96022e23cbdb2e76e20a7c009c3700d7cfa208552b3aec2e1b62259'
+    aarch64: 'be676e425aeda5e4a57548abace507d4a14f64c402462c6f4d6a216f043e6b8b',
+     armv7l: 'be676e425aeda5e4a57548abace507d4a14f64c402462c6f4d6a216f043e6b8b',
+     x86_64: '707282a14ff7e04a90467676982d21593c6f315e428466162756d31070d97437'
   })
 
-  depends_on 'gobject_introspection'
-  depends_on 'gtk_doc'
+  depends_on 'curl' # R
+  depends_on 'elogind' # R
+  depends_on 'eudev' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
-  depends_on 'modemmanager'
-  depends_on 'libndp'
-  depends_on 'jansson'
-  depends_on 'nss'
-  depends_on 'vala'
-  depends_on 'elogind'
-  depends_on 'libnewt'
-  depends_on 'mobile_broadband_provider_info'
-  # depends_on 'ccache' => :build
+  depends_on 'jansson' # R
+  depends_on 'libndp' # R
+  depends_on 'libnewt' # R
+  depends_on 'libpsl' # R
+  depends_on 'mobile_broadband_provider_info' => :build
+  depends_on 'modemmanager' # R
+  depends_on 'nss' # R
+  depends_on 'readline' # R
+  depends_on 'vala' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      --default-library=both \
-      -Ddbus_conf_dir=#{CREW_PREFIX}/share/dbus-1/system.d \
-      -Dsystem_ca_path=#{CREW_PREFIX}/etc/ssl/certs \
-      -Dpolkit_agent_helper_1=#{CREW_LIB_PREFIX}/polkit-1/polkit-agent-helper-1 \
-      -Dsession_tracking_consolekit=false \
-      -Dsession_tracking=elogind \
-      -Dsuspend_resume=elogind \
-      -Dsystemdsystemunitdir=no \
-      -Dsystemd_journal=false \
-      -Dmodify_system=true \
-      -Dppp=false \
-      -Dselinux=false \
-      -Diwd=false \
-      -Dteamdctl=false \
-      -Dnm_cloud_setup=true \
-      -Dbluez5_dun=false \
-      -Dlibaudit=no \
-      -Debpf=true \
-      -Dwifi=true \
-      -Dwext=true \
-      -Dconfig_plugins_default=keyfile \
-      -Dnetconfig=no \
-      -Dconfig_dns_rc_manager_default=symlink \
-      -Ddhcpcd=no \
-      -Dvapi=true \
-      -Ddocs=false \
-      -Dmore_asserts=no \
-      -Dmore_logging=false \
-      -Dqt=false \
-      builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir -k 0 && ninja -C builddir'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options "--default-library=both \
+    -Ddbus_conf_dir=#{CREW_PREFIX}/share/dbus-1/system.d \
+    -Dsystem_ca_path=#{CREW_PREFIX}/etc/ssl/certs \
+    -Dpolkit_agent_helper_1=#{CREW_LIB_PREFIX}/polkit-1/polkit-agent-helper-1 \
+    -Dsession_tracking_consolekit=false \
+    -Dsession_tracking=elogind \
+    -Dsuspend_resume=elogind \
+    -Dsystemdsystemunitdir=no \
+    -Dsystemd_journal=false \
+    -Dmodify_system=true \
+    -Dppp=false \
+    -Dselinux=false \
+    -Diwd=false \
+    -Dteamdctl=false \
+    -Dnm_cloud_setup=true \
+    -Dbluez5_dun=false \
+    -Dlibaudit=no \
+    -Debpf=true \
+    -Dwifi=true \
+    -Dwext=true \
+    -Dconfig_plugins_default=keyfile \
+    -Dnetconfig=no \
+    -Dconfig_dns_rc_manager_default=symlink \
+    -Ddhcpcd=no \
+    -Dvapi=true \
+    -Ddocs=false \
+    -Dmore_asserts=no \
+    -Dmore_logging=false \
+    -Dqt=false"
 end

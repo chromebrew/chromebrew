@@ -3,23 +3,18 @@ require 'package'
 class Perl_date_manip < Package
   description 'Date::Manip - Date manipulation routines'
   homepage 'https://metacpan.org/pod/Date::Manip'
-  version '6.91-perl5.36'
+  version '6.95-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/S/SB/SBECK/Date-Manip-6.91.tar.gz'
-  source_sha256 '6bd9cb47e82ba91fdba4022ef358149d81e8453f52ca54f49faac2696210c479'
+  source_url 'https://cpan.metacpan.org/authors/id/S/SB/SBECK/Date-Manip-6.95.tar.gz'
+  source_sha256 '92383832311f22083f55d03c8dae8f4bcc387cd902624e5ef9ac680f144cbd4c'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.91-perl5.36_armv7l/perl_date_manip-6.91-perl5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.91-perl5.36_armv7l/perl_date_manip-6.91-perl5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.91-perl5.36_i686/perl_date_manip-6.91-perl5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.91-perl5.36_x86_64/perl_date_manip-6.91-perl5.36-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'bb494888bca9031449a0f01676e9f3e091d11a92e6a59d69ce594d1f93ef1469',
-     armv7l: 'bb494888bca9031449a0f01676e9f3e091d11a92e6a59d69ce594d1f93ef1469',
-       i686: '8641f7ec4d130d254c81c6d2401cdd1a945a3e3a5adf06684c737f5d6c956df2',
-     x86_64: '415754d100f572be59a2fb0225a8941fc864045e39a7c363c5a0641121b1e187'
+    aarch64: '164bb060096d6e83c9eda3da9c847cce65fe7940708f19ccc1cdd5a7393934b2',
+     armv7l: '164bb060096d6e83c9eda3da9c847cce65fe7940708f19ccc1cdd5a7393934b2',
+       i686: '7823bb0d905f6839848903257606892a9fb3400f705121527554bb197200ce19',
+     x86_64: 'b79a4d0a655d2a384be4beccc3979f6ec509b4833e44fc3c4535433be89713d5'
   })
 
   def self.prebuild

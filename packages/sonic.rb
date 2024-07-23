@@ -8,13 +8,8 @@ class Sonic < Package
   compatibility 'all'
   source_url 'https://github.com/espeak-ng/sonic/archive/refs/tags/release-0.2.0.tar.gz'
   source_sha256 'c7827ce576838467590ffa1f935fbe1049e896dfed6c515cf569ad3779c24085'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sonic/0.2.0_armv7l/sonic-0.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sonic/0.2.0_armv7l/sonic-0.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sonic/0.2.0_i686/sonic-0.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sonic/0.2.0_x86_64/sonic-0.2.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '14ff70ffe97368d3f5297229da2eb228ea1f298c0d35611462957a3ac67a4a79',
      armv7l: '14ff70ffe97368d3f5297229da2eb228ea1f298c0d35611462957a3ac67a4a79',

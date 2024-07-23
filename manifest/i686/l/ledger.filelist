@@ -12,8 +12,8 @@
 /usr/local/include/ledger/draft.h
 /usr/local/include/ledger/emacs.h
 /usr/local/include/ledger/error.h
-/usr/local/include/ledger/exprbase.h
 /usr/local/include/ledger/expr.h
+/usr/local/include/ledger/exprbase.h
 /usr/local/include/ledger/filters.h
 /usr/local/include/ledger/flags.h
 /usr/local/include/ledger/format.h

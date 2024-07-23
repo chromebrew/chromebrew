@@ -5,25 +5,23 @@ require 'package'
 
 class Lmdb < Package
   description 'Symas Lightning Memory-Mapped Database'
-  homepage 'https://symas.com/mdb'
-  version '0.9.29'
+  homepage 'https://www.symas.com/mdb'
+  version '0.9.32'
   license 'OpenLDAP Public License'
   compatibility 'all'
   source_url "https://git.openldap.org/openldap/openldap/-/archive/LMDB_#{version}/openldap-LMDB_#{version}.tar.gz"
-  source_sha256 'd4c668167a2d703ef91db733b4069b8b74dbc374405855be6626b45e2a7e2dd3'
+  source_sha256 '70d553f80968f5117f2f3d4d7f0b89cb8fb69dadc35131263a2499bb58f7d015'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lmdb/0.9.29_armv7l/lmdb-0.9.29-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lmdb/0.9.29_armv7l/lmdb-0.9.29-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lmdb/0.9.29_i686/lmdb-0.9.29-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lmdb/0.9.29_x86_64/lmdb-0.9.29-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '0459de4035dccce3ab4e8ca3b7ee061447d530fbb526e97c20c143e7688dc7a7',
-     armv7l: '0459de4035dccce3ab4e8ca3b7ee061447d530fbb526e97c20c143e7688dc7a7',
-       i686: '8489cc379f9fd20c638b753c8218750f496ef10364897cef6ef9c7121fd1e127',
-     x86_64: '8209022816c95b209a720ba22897064a86f7e6a44006b148c20681a1eba658eb'
+    aarch64: '321830d5af7e98f3f302a915866dd81183102c7b7c911298e32c82aebedaa00b',
+     armv7l: '321830d5af7e98f3f302a915866dd81183102c7b7c911298e32c82aebedaa00b',
+       i686: '81275127275f8d4faa718dc28d4f2fd894394d94005f99474699bd49c3f81aac',
+     x86_64: '4c23c5666baf7c2c488d1eb5f50dcaaa1eb137b5dd394778d1eaf44c714dfd90'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'gcc_lib' # R
 
   def self.patch
     system "sed -i 's,libdir = $(exec_prefix)/lib,libdir = $(exec_prefix)/lib#{CREW_LIB_SUFFIX},g' libraries/liblmdb/Makefile"
@@ -38,14 +36,14 @@ class Lmdb < Package
     @lmdb_pc = <<~LMDB_PC_EOF
       prefix=#{CREW_PREFIX}
       libdir=#{CREW_LIB_PREFIX}
-      includedir=\${prefix}/include
+      includedir=${prefix}/include
 
       Name: liblmdb
       Description: Lightning Memory-Mapped Database
       URL: https://symas.com/products/lightning-memory-mapped-database/
       Version: #{version}
-      Libs: -L\${libdir} -llmdb
-      Cflags: -I\${includedir}
+      Libs: -L${libdir} -llmdb
+      Cflags: -I${includedir}
     LMDB_PC_EOF
   end
 

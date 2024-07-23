@@ -2,23 +2,17 @@ require 'package'
 
 class Libxv < Package
   description 'X.org X Window System video extension library'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.0.12'
   license 'X11'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxv.git'
   git_hashtag "libXv-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxv/1.0.12_armv7l/libxv-1.0.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxv/1.0.12_armv7l/libxv-1.0.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxv/1.0.12_i686/libxv-1.0.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxv/1.0.12_x86_64/libxv-1.0.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4e5f88214475460f9bd909012086c1a57b833168aca923fbab396abaf0589be4',
      armv7l: '4e5f88214475460f9bd909012086c1a57b833168aca923fbab396abaf0589be4',
-       i686: 'dd6099a25f76a939900986088134d79bd052f8cf5606a4bd2830cc2cf89b5fe5',
      x86_64: 'cddf3a775a03649be663cd00d605461f4d7eb4975630cf4cebee4d65b7828b06'
   })
 

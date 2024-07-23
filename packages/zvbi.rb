@@ -1,42 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Zvbi < Package
-  description 'The Zapping VBI library, in short ZVBI, provides functions to capture and decode VBI data.'
-  homepage 'http://zapping.sourceforge.net/ZVBI/'
-  version '0.2.35-2'
-  license 'GPL-2 and LGPL-2'
+class Zvbi < Autotools
+  description 'VBI capture and decoding library.'
+  homepage 'https://github.com/zapping-vbi/zvbi'
+  version '0.2.42-ae74ae51'
+  license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/zapping/zvbi/0.2.35/zvbi-0.2.35.tar.bz2'
-  source_sha256 'fc883c34111a487c4a783f91b1b2bb5610d8d8e58dcba80c7ab31e67e4765318'
+  source_url 'https://github.com/zapping-vbi/zvbi.git'
+  git_hashtag 'ae74ae513714f81b9b8abdb12e1b235d16fad74e'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35-2_armv7l/zvbi-0.2.35-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35-2_armv7l/zvbi-0.2.35-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35-2_i686/zvbi-0.2.35-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35-2_x86_64/zvbi-0.2.35-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '8540c8bf13aa2b9e8df2e1652d11d54c3eee1cc94aa8f282d9f1fa9d72fbf61f',
-     armv7l: '8540c8bf13aa2b9e8df2e1652d11d54c3eee1cc94aa8f282d9f1fa9d72fbf61f',
-       i686: 'bc08d5d03f44f8db298e76fa5dd25328d06e6d88914ea1944092d4dfdc1eb2c2',
-     x86_64: '1646789cf7bae04f328d2000d5a40829798f9aa6a0955cd2b7ce41aa84a56a1d'
+    aarch64: '5d6a9b7b4005a7cc607d7dbc5b0173c271146f87f1e8d0e9879e1e5f78f56922',
+     armv7l: '5d6a9b7b4005a7cc607d7dbc5b0173c271146f87f1e8d0e9879e1e5f78f56922',
+       i686: '1b3f4e46881f830c9fd037975d013709ebf606dce98ac5127eca42139aa19045',
+     x86_64: '0d57eb9ffae5774b6eac49cf7bb9dfa398561d7c87a95be7527e38f7f4b08db8'
   })
 
-  depends_on 'harfbuzz'
-
-  def self.patch
-    system 'filefix'
-    # png.h path isn't found for build properly
-    @png_h_path = `crew whatprovides png.h | grep "png.h$" | awk '{print $2}'`.chomp.gsub("#{CREW_PREFIX}/include/", '')
-    system "sed -i 's,png.h,#{@png_h_path},g' src/exp-gfx.c"
-  end
-
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'libpng'
 end

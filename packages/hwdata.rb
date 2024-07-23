@@ -11,13 +11,8 @@ class Hwdata < Package
   compatibility 'all'
   source_url 'https://github.com/vcrhonek/hwdata.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hwdata/0.364_armv7l/hwdata-0.364-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hwdata/0.364_armv7l/hwdata-0.364-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hwdata/0.364_i686/hwdata-0.364-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hwdata/0.364_x86_64/hwdata-0.364-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2c7eda3e087119c16dadfaaacb8114b8876b62f65af3a32da36450fb165b0a26',
      armv7l: '2c7eda3e087119c16dadfaaacb8114b8876b62f65af3a32da36450fb165b0a26',

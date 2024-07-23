@@ -44,9 +44,9 @@
 /usr/local/share/man/man3/keyctl_revoke.3.gz
 /usr/local/share/man/man3/keyctl_search.3.gz
 /usr/local/share/man/man3/keyctl_session_to_parent.3.gz
-/usr/local/share/man/man3/keyctl_setperm.3.gz
 /usr/local/share/man/man3/keyctl_set_reqkey_keyring.3.gz
 /usr/local/share/man/man3/keyctl_set_timeout.3.gz
+/usr/local/share/man/man3/keyctl_setperm.3.gz
 /usr/local/share/man/man3/keyctl_unlink.3.gz
 /usr/local/share/man/man3/keyctl_update.3.gz
 /usr/local/share/man/man3/keyctl_watch_key.3.gz

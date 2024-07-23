@@ -8,13 +8,8 @@ class Dehtml < Package
   compatibility 'all'
   source_url 'http://www.moria.de/~michael/dehtml/dehtml-1.8.tar.gz'
   source_sha256 'a00e86643b0aa73861e9d8d619a80370f0f99519d34ce12459fab77f5f6b5bde'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dehtml/1.8_armv7l/dehtml-1.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dehtml/1.8_armv7l/dehtml-1.8-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dehtml/1.8_i686/dehtml-1.8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dehtml/1.8_x86_64/dehtml-1.8-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '01a111714310dcf69cbdc0cc132ce03151742939708911dabe9b6af5ec9c5c5b',
      armv7l: '01a111714310dcf69cbdc0cc132ce03151742939708911dabe9b6af5ec9c5c5b',

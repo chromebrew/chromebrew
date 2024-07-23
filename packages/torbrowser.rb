@@ -3,15 +3,18 @@ require 'package'
 class Torbrowser < Package
   description "'The Onion Router' browser"
   homepage 'https://www.torproject.org/'
-  version '12.0.3'
+  version '13.0.15'
   license 'BSD, custom, MPL-2.0 and MIT'
   compatibility 'x86_64'
-  source_url 'https://dist.torproject.org/torbrowser/12.0.3/tor-browser-linux64-12.0.3_ALL.tar.xz'
-  source_sha256 '6ce198fd17700fa3bb408b8e881c3b3959d97e9ba6186b28ea1c0c249c0dda0d'
+  source_url "https://dist.torproject.org/torbrowser/#{version}/tor-browser-linux-x86_64-#{version}.tar.xz"
+  source_sha256 '7b6605acfce57bdb3f8f7faec458e82b9dfca4b575bb56b8903e95f116aaa4e5'
 
   depends_on 'gtk3'
   depends_on 'gdk_base'
-  depends_on 'sommelier'
+
+  no_compile_needed
+  no_shrink
+  print_source_bashrc
 
   def self.build
     tor = <<~EOF
@@ -35,8 +38,6 @@ class Torbrowser < Package
   end
 
   def self.postinstall
-    puts "\nTo finish the installation, execute the following:".lightblue
-    puts 'source ~/.bashrc'.lightblue
     print "\nSet Tor as your default browser? [Y/n]: "
     case $stdin.gets.chomp.downcase
     when '', 'y', 'yes'

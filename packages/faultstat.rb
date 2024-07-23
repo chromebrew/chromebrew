@@ -8,13 +8,8 @@ class Faultstat < Package
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/faultstat/faultstat-0.01.01.tar.xz'
   source_sha256 '81218818fe7498411797289bdd0967e82665d2065407be8b5335eaf2959b8991'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faultstat/0.01.01_armv7l/faultstat-0.01.01-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faultstat/0.01.01_armv7l/faultstat-0.01.01-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faultstat/0.01.01_i686/faultstat-0.01.01-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faultstat/0.01.01_x86_64/faultstat-0.01.01-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '4e77ced9098ba0ceefd750295c6dfa4bd032136d62dd5ca8b80252e9307206c5',
      armv7l: '4e77ced9098ba0ceefd750295c6dfa4bd032136d62dd5ca8b80252e9307206c5',

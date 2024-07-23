@@ -2,23 +2,17 @@ require 'package'
 
 class Libxp < Package
   description 'x print service extension library'
-  homepage 'https://xorg.freedesktop.org'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.4'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.x.org/releases/individual/lib/libXp-1.0.4.tar.xz'
   source_sha256 '1f19e3b8e82a34a8fd9889a7d9af0abe8588cb03fb57c37c569634cf3b9df1a4'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxp/1.0.4_armv7l/libxp-1.0.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxp/1.0.4_armv7l/libxp-1.0.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxp/1.0.4_i686/libxp-1.0.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxp/1.0.4_x86_64/libxp-1.0.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '33ccc7a386d8f0486d019b94ee9b64752294680a6bafe6e4ab27888a0ca243ff',
      armv7l: '33ccc7a386d8f0486d019b94ee9b64752294680a6bafe6e4ab27888a0ca243ff',
-       i686: 'e521d3715463b7c64987ec5a19bd54e8c7e06668b8333e38f8e052f0f6f103a7',
      x86_64: '5c9937164f3a122b1af881da8eafa563a1220d3d2ac450730bc356952ea1a672'
   })
 

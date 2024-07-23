@@ -2,24 +2,19 @@ require 'package'
 
 class Expat < Package
   description 'James Clark\'s Expat XML parser library in C.'
-  homepage 'https://sourceforge.net/projects/expat/'
-  version '2.5.0'
+  homepage 'https://github.com/libexpat/libexpat'
+  version '2.6.2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/libexpat/libexpat.git'
   git_hashtag "R_#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.5.0_armv7l/expat-2.5.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.5.0_armv7l/expat-2.5.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.5.0_i686/expat-2.5.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.5.0_x86_64/expat-2.5.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'b77d23f30cca02e40219c8ad5982c6f6201e986bf01111f74d28807d13942278',
-     armv7l: 'b77d23f30cca02e40219c8ad5982c6f6201e986bf01111f74d28807d13942278',
-       i686: '70030f04579c9a59340570f824ba7f6ac14b8863f5e9201f58186844df8dcd50',
-     x86_64: 'e1560b5789384bc4a6f83d4a9e8b803d00b552f894f9843b2955ec3a81648211'
+    aarch64: '05ab05cd431d91d40d7b5d328ecc9eeb16b794585d47e8250d0e7cba463731a7',
+     armv7l: '05ab05cd431d91d40d7b5d328ecc9eeb16b794585d47e8250d0e7cba463731a7',
+       i686: '3595fcfc0f2fa0501a69cb57823fb5a100540725dd519b444389bcfa431187e1',
+     x86_64: 'c3d018812a6434a6e0639be52434a3a45bdab4defd511c12d7c3c65c9434976e'
   })
 
   depends_on 'glibc' # R
@@ -27,6 +22,7 @@ class Expat < Package
   def self.build
     Dir.chdir('expat') do
       system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
+          -DEXPAT_BUILD_EXAMPLES=OFF \
           -DBUILD_SHARED_LIBS=ON \
           -Wno-dev \
           -G Ninja"

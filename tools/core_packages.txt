@@ -5,7 +5,7 @@ automake
 binutils
 bison
 brotli
-bz2
+bzip2
 ca_certificates
 c_ares
 cmake
@@ -34,6 +34,7 @@ gcc_lib
 gdbm
 gettext
 git
+git_mestrelion_tools
 glib
 glibc
 gmp
@@ -94,7 +95,7 @@ make
 mandb
 manpages
 mawk
-meson
+mesonbuild
 mold
 most
 mpc
@@ -147,7 +148,6 @@ shared_mime_info
 shellcheck
 slang
 sqlite
-symlinks
 texinfo
 trousers
 uchardet
@@ -162,4 +162,5 @@ xxhash
 xzutils
 zip
 zlibpkg
+zoneinfo
 zstd

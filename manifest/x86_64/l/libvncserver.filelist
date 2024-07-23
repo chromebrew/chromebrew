@@ -1,14 +1,14 @@
 /usr/local/include/rfb/keysym.h
+/usr/local/include/rfb/rfb.h
 /usr/local/include/rfb/rfbclient.h
 /usr/local/include/rfb/rfbconfig.h
-/usr/local/include/rfb/rfb.h
 /usr/local/include/rfb/rfbproto.h
 /usr/local/include/rfb/rfbregion.h
 /usr/local/include/rfb/threading.h
 /usr/local/lib64/cmake/LibVNCServer/LibVNCServerConfig.cmake
 /usr/local/lib64/cmake/LibVNCServer/LibVNCServerConfigVersion.cmake
-/usr/local/lib64/cmake/LibVNCServer/LibVNCServerTargets.cmake
 /usr/local/lib64/cmake/LibVNCServer/LibVNCServerTargets-release.cmake
+/usr/local/lib64/cmake/LibVNCServer/LibVNCServerTargets.cmake
 /usr/local/lib64/libvncclient.so
 /usr/local/lib64/libvncclient.so.0.9.14
 /usr/local/lib64/libvncclient.so.1

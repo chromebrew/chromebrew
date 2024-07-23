@@ -1,39 +1,21 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_locale_messages < Package
+class Perl_locale_messages < PERL
   description 'Perl Locale::Messages - Gettext Like Message Retrieval'
   homepage 'https://metacpan.org/pod/Locale::Messages'
-  version '1.33-perl5.36'
+  version '1.33-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.33.tar.gz'
   source_sha256 '5126eda9ccd0eeb10db82ddef63cbcaf7dbd771e78cc0fb110cc3b5a6b8679e7'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.33-perl5.36_armv7l/perl_locale_messages-1.33-perl5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.33-perl5.36_armv7l/perl_locale_messages-1.33-perl5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.33-perl5.36_i686/perl_locale_messages-1.33-perl5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.33-perl5.36_x86_64/perl_locale_messages-1.33-perl5.36-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'b7dfeefeb3b49098f7bcd87bbde7b34bdf5468c66d66b8418b0acd0fb093ec12',
-     armv7l: 'b7dfeefeb3b49098f7bcd87bbde7b34bdf5468c66d66b8418b0acd0fb093ec12',
-       i686: '0e40a1d342ec6e7ab26f74235b08628cec94189d046edb064c386340f63afe56',
-     x86_64: '2a1ce4d3247864cd53fc1a8328b45cdad997a515a2521f27f9fd8acc792b2372'
+    aarch64: 'ff088e008cdc967d93286fa262306b19d32bbf6cdb256e068e8fdd511b43a2c4',
+     armv7l: 'ff088e008cdc967d93286fa262306b19d32bbf6cdb256e068e8fdd511b43a2c4',
+       i686: 'd796d414d2de50d83bd33a776e591d7a99e79f358076eb58dc03a967f4a6fcab',
+     x86_64: '2e2fea24b1c4f625d0294198277494f66464d85dbd9d8cbe5c88aba9647fb147'
   })
 
   depends_on 'glibc' # R
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

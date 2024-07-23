@@ -1,8 +1,8 @@
 /usr/local/bin/vpxdec
 /usr/local/bin/vpxenc
+/usr/local/include/vpx/vp8.h
 /usr/local/include/vpx/vp8cx.h
 /usr/local/include/vpx/vp8dx.h
-/usr/local/include/vpx/vp8.h
 /usr/local/include/vpx/vpx_codec.h
 /usr/local/include/vpx/vpx_decoder.h
 /usr/local/include/vpx/vpx_encoder.h
@@ -12,7 +12,7 @@
 /usr/local/include/vpx/vpx_integer.h
 /usr/local/lib/libvpx.a
 /usr/local/lib/libvpx.so
-/usr/local/lib/libvpx.so.6
-/usr/local/lib/libvpx.so.6.3
-/usr/local/lib/libvpx.so.6.3.0
+/usr/local/lib/libvpx.so.8
+/usr/local/lib/libvpx.so.8.0
+/usr/local/lib/libvpx.so.8.0.1
 /usr/local/lib/pkgconfig/vpx.pc

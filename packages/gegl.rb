@@ -1,23 +1,19 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gegl < Package
+class Gegl < Meson
   description 'GEGL (Generic Graphics Library) is a data flow based image processing framework, providing floating point processing and non-destructive image processing capabilities to GNU Image Manipulation Program and other projects.'
-  homepage 'http://gegl.org/'
-  version '0.4.44'
+  homepage 'https://gegl.org/'
+  version '0.4.48'
   license 'GPL-3+ and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://download.gimp.org/pub/gegl/0.4/gegl-0.4.44.tar.xz'
-  source_sha256 '0a4cdb41635e406a0849cd0d3f03caf7d97cab8aa13d28707d532d0089d56126'
+  source_url 'https://download.gimp.org/pub/gegl/0.4/gegl-0.4.48.tar.xz'
+  source_sha256 '418c26d94be8805d7d98f6de0c6825ca26bd74fcacb6c188da47533d9ee28247'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.44_armv7l/gegl-0.4.44-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.44_armv7l/gegl-0.4.44-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.44_x86_64/gegl-0.4.44-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'fbf703399b6c122d4de162c6c74927deb4b5274503de128828982de360e880fd',
-     armv7l: 'fbf703399b6c122d4de162c6c74927deb4b5274503de128828982de360e880fd',
-     x86_64: '40d68501c59aef4d1f3e2e6852b4d5aca02dc9d0630e1adb589d2896675c1607'
+    aarch64: 'ddc725eabc4d6c7f66e34590c625f9f20e2ecd7fa3ab3964787195c649e40688',
+     armv7l: 'ddc725eabc4d6c7f66e34590c625f9f20e2ecd7fa3ab3964787195c649e40688',
+     x86_64: '09e34df60b8b9d1907149997fb7b7a29d775f035d090f92cbbcabedf65f8c249'
   })
 
   depends_on 'asciidoc' => :build
@@ -32,11 +28,10 @@ class Gegl < Package
   depends_on 'glib' # R
   depends_on 'graphviz' => :build # for dot
   depends_on 'harfbuzz' # R
-  depends_on 'ilmbase' # R
   depends_on 'jasper' # R
   depends_on 'json_glib' # R
   depends_on 'lcms' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'librsvg' # R
   depends_on 'libsdl2' # R
@@ -50,16 +45,6 @@ class Gegl < Package
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-      -Dlibjpeg=enabled \
-      -Dlibpng=enabled \
-    builddir"
-    system 'meson configure builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options '-Dlibjpeg=enabled \
+      -Dlibpng=enabled'
 end

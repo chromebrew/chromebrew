@@ -2,33 +2,27 @@ require 'package'
 
 class Irrlicht < Package
   description 'An open source realtime 3D engine written in C++ — Libraries and headers'
-  homepage 'http://irrlicht.sourceforge.net/'
+  homepage 'https://irrlicht.sourceforge.io/'
   version '1.8.5'
   license 'ZLIB'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://downloads.sourceforge.net/irrlicht/irrlicht-1.8.5.zip'
   source_sha256 'effb7beed3985099ce2315a959c639b4973aac8210f61e354475a84105944f3d'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/irrlicht/1.8.5_armv7l/irrlicht-1.8.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/irrlicht/1.8.5_armv7l/irrlicht-1.8.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/irrlicht/1.8.5_i686/irrlicht-1.8.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/irrlicht/1.8.5_x86_64/irrlicht-1.8.5-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6d0e198597e15bb4e9606803abfd3981e259fa4146c9aeb51c407d3b1ef41686',
      armv7l: '6d0e198597e15bb4e9606803abfd3981e259fa4146c9aeb51c407d3b1ef41686',
-       i686: '8c1332d73f73efeff230e86250d796a7daf4a8d696f782ba6823cee79f7f3c60',
      x86_64: 'fb72b83979027060249a52e0ec38f0d92e1ae7b04c836230baa744eb967316fd'
   })
 
   depends_on 'libxrandr'
   depends_on 'libglvnd'
   depends_on 'libxxf86vm'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'dos2unix' => :build
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'mesa' # R
@@ -60,13 +54,13 @@ class Irrlicht < Package
   end
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/irrlicht"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/libexec/irrlicht"
     FileUtils.cp Dir.glob('include/*'), "#{CREW_DEST_PREFIX}/include/irrlicht"
-    FileUtils.cp 'lib/Linux/libIrrlicht.a', CREW_DEST_LIB_PREFIX.to_s
-    FileUtils.cp 'lib/Linux/libIrrlicht.so.1.8.5', CREW_DEST_LIB_PREFIX.to_s
-    Dir.chdir CREW_DEST_LIB_PREFIX.to_s do
+    FileUtils.cp 'lib/Linux/libIrrlicht.a', CREW_DEST_LIB_PREFIX
+    FileUtils.cp 'lib/Linux/libIrrlicht.so.1.8.5', CREW_DEST_LIB_PREFIX
+    Dir.chdir CREW_DEST_LIB_PREFIX do
       FileUtils.symlink 'libIrrlicht.so.1.8.5', 'libIrrlicht.so.1.8'
       FileUtils.symlink 'libIrrlicht.so.1.8.5', 'libIrrlicht.so'
     end

@@ -12,8 +12,8 @@
 /usr/local/sbin/tracert6
 /usr/local/share/locale/cs/LC_MESSAGES/ndisc6.mo
 /usr/local/share/locale/de/LC_MESSAGES/ndisc6.mo
-/usr/local/share/locale/en_GB/LC_MESSAGES/ndisc6.mo
 /usr/local/share/locale/en/LC_MESSAGES/ndisc6.mo
+/usr/local/share/locale/en_GB/LC_MESSAGES/ndisc6.mo
 /usr/local/share/locale/fr/LC_MESSAGES/ndisc6.mo
 /usr/local/share/locale/sv/LC_MESSAGES/ndisc6.mo
 /usr/local/share/man/man1/addr2name.1.gz

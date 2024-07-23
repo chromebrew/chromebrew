@@ -1,77 +1,35 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Polkit < Package
+class Polkit < Meson
   description 'Application development toolkit for controlling system-wide privileges'
-  homepage 'https://www.freedesktop.org/wiki/Software/polkit/'
-  version '0.120-a2bf5c'
+  homepage 'https://github.com/polkit-org/polkit'
+  version '124-eafbf7d'
   license 'LGPL-2'
-  compatibility 'all'
-  source_url 'https://gitlab.freedesktop.org/polkit/polkit.git'
-  git_hashtag 'a2bf5c9c83b6ae46cbd5c779d3055bff81ded683'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/polkit-org/polkit.git'
+  git_hashtag 'eafbf7ded1b1b0424fb7da16c32629e43c71af27'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/polkit/0.120-a2bf5c_armv7l/polkit-0.120-a2bf5c-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/polkit/0.120-a2bf5c_armv7l/polkit-0.120-a2bf5c-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/polkit/0.120-a2bf5c_i686/polkit-0.120-a2bf5c-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/polkit/0.120-a2bf5c_x86_64/polkit-0.120-a2bf5c-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '64f33f2ac0ab70d6aef5e1678bd83a5dbd9487ae50641402ffc5bd049409b4bf',
-     armv7l: '64f33f2ac0ab70d6aef5e1678bd83a5dbd9487ae50641402ffc5bd049409b4bf',
-       i686: 'd36368005afc56910018fbba79b8292aed5802db7fc8d9e6f593a3b81988292e',
-     x86_64: '7b775cbb16b44bde17a539955b33e14f97146ba10237ebeb01ec2ea700acafc7'
+    aarch64: '619ae1856a98ffaf5aa0fa4e81b21f5b73b2e0db3f25d30d8f26c1b535b50980',
+     armv7l: '619ae1856a98ffaf5aa0fa4e81b21f5b73b2e0db3f25d30d8f26c1b535b50980',
+     x86_64: 'bdc6e6282b546beb5188347e7b5a0956367fbd85a5859bdfbed5cfbd2cc8c6e3'
   })
 
   depends_on 'duktape'
   depends_on 'elogind'
-  depends_on 'gtk_doc' => :build
+  depends_on 'expat'
+  depends_on 'glib'
   depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'linux_pam' # R
 
   def self.patch
-    # Fix meson 0.60+ compatibility
-    # https://gitlab.freedesktop.org/polkit/polkit/-/merge_requests/99
-    @polkit_meson_patch = <<~'POLKIT_MESON_PATCH_HEREDOC'
-      diff --git a/actions/meson.build b/actions/meson.build
-      index 2abaaf3..1e3f370 100644
-      --- a/actions/meson.build
-      +++ b/actions/meson.build
-      @@ -1,7 +1,6 @@
-       policy = 'org.freedesktop.policykit.policy'
-
-       i18n.merge_file(
-      -  policy,
-         input: policy + '.in',
-         output: '@BASENAME@',
-         po_dir: po_dir,
-      diff --git a/src/examples/meson.build b/src/examples/meson.build
-      index c6305ab..8c18de5 100644
-      --- a/src/examples/meson.build
-      +++ b/src/examples/meson.build
-      @@ -1,7 +1,6 @@
-       policy = 'org.freedesktop.policykit.examples.pkexec.policy'
-
-       i18n.merge_file(
-      -  policy,
-         input: policy + '.in',
-         output: '@BASENAME@',
-         po_dir: po_dir,
-    POLKIT_MESON_PATCH_HEREDOC
-    File.write('99.patch', @polkit_meson_patch)
-    system 'patch -F3 -Np1 -i 99.patch'
+    # meson: do not depend on systemd
+    downloader 'https://patch-diff.githubusercontent.com/raw/polkit-org/polkit/pull/471.patch', '50641d00cb837f1a97623dd0ad3d49d810ef977fcef6ef10cd88b61b64650ede'
+    system 'git apply 471.patch'
   end
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dsession_tracking=libelogind \
-    -Dsystemdsystemunitdir=#{CREW_PREFIX}/etc/elogind/ \
-    -Djs_engine=duktape \
-    -Dos_type=gentoo \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options "-Dsession_tracking=elogind -Dsystemdsystemunitdir=#{CREW_PREFIX}/etc/elogind"
+  run_tests
 end

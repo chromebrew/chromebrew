@@ -8,13 +8,8 @@ class Fetch < Package
   compatibility 'all'
   source_url 'https://github.com/jrmarino/fetch-freebsd.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fetch/12.0.10_armv7l/fetch-12.0.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fetch/12.0.10_armv7l/fetch-12.0.10-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fetch/12.0.10_i686/fetch-12.0.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fetch/12.0.10_x86_64/fetch-12.0.10-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'cf7304b9e2227a67de69305f7652cf47e8902ab88711115e3abc5b4a1e3dfd48',
      armv7l: 'cf7304b9e2227a67de69305f7652cf47e8902ab88711115e3abc5b4a1e3dfd48',

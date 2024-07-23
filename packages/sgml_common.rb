@@ -10,13 +10,8 @@ class Sgml_common < Package
   compatibility 'all'
   source_url 'https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/sgml-common-0.6.3.tgz'
   source_sha256 '7dc418c1d361123ffc5e45d61f1b97257940a8eb35d0bfbbc493381cc5b1f959'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sgml_common/0.6.3_armv7l/sgml_common-0.6.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sgml_common/0.6.3_armv7l/sgml_common-0.6.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sgml_common/0.6.3_i686/sgml_common-0.6.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sgml_common/0.6.3_x86_64/sgml_common-0.6.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '18ff17ac8af52e6e6790564c49155d5c2e8e05583d514744af1e30502d4a79b8',
      armv7l: '18ff17ac8af52e6e6790564c49155d5c2e8e05583d514744af1e30502d4a79b8',

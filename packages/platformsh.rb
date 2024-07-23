@@ -3,16 +3,21 @@ require 'package'
 class Platformsh < Package
   description 'The unified tool for managing your Platform.sh services from the command line.'
   homepage 'https://docs.platform.sh/overview/cli.html'
-  version '4.4.0'
+  version '5.0.16'
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://github.com/platformsh/legacy-cli/releases/download/v4.4.0/platform.phar'
-  source_sha256 '22f5eaa2ee35a6688584a86db8846371e0076438873c76098b3e9fb2549c8e54'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://github.com/platformsh/cli/releases/download/#{version}/platform_#{version}_linux_amd64.tar.gz"
+  source_sha256 '67d18fbefc0d3f615d3d4b8590334f0ca4fb3e9f87eb2991beb4e23dca287b77'
 
-  depends_on 'php81' unless File.exist? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
+
+  no_compile_needed
+  no_shrink
+  print_source_bashrc
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.install 'platform.phar', "#{CREW_DEST_PREFIX}/bin/platform", mode: 0o755
+    FileUtils.install 'platform', "#{CREW_DEST_PREFIX}/bin/platform", mode: 0o755
+    FileUtils.install 'completion/bash/platform.bash', "#{CREW_DEST_PREFIX}/etc/bash.d/platform.bash", mode: 0o644
+    FileUtils.install 'completion/bash/upsun.bash', "#{CREW_DEST_PREFIX}/etc/bash.d/upsun.bash", mode: 0o644
   end
 end

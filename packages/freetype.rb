@@ -1,56 +1,36 @@
-require 'package'
-# build order: harfbuzz => freetype => fontconfig => pango
+require 'buildsystems/meson'
+# build order: harfbuzz => freetype => fontconfig => cairo => pango
 
-class Freetype < Package
+class Freetype < Meson
   description 'FreeType is a freely available software library to render fonts.'
-  homepage 'https://www.freetype.org/'
-  @_ver = '2.13.0' # Update freetype in harfbuzz when updating freetype
-  version "#{@_ver}-1" # Update freetype in harfbuzz when updating freetype
+  homepage 'https://freetype.org/'
+  version '2.13.2' # Update freetype in harfbuzz when updating freetype
   license 'FTL or GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/freetype/freetype.git'
-  git_hashtag "VER-#{@_ver.tr('.', '-')}"
+  git_hashtag "VER-#{version.tr('.', '-')}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.13.0-1_armv7l/freetype-2.13.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.13.0-1_armv7l/freetype-2.13.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.13.0-1_i686/freetype-2.13.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.13.0-1_x86_64/freetype-2.13.0-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '5dfea8476173a297a87f2c697a661fe79395b7d65179fbd5079c456a22052571',
-     armv7l: '5dfea8476173a297a87f2c697a661fe79395b7d65179fbd5079c456a22052571',
-       i686: '08ec3e9ef14be4aff807b56b6ad416a42107009c048256a89a630a64b9876a6a',
-     x86_64: 'a67976b71b703e33708410238d4c987ed7a37d4033f12515dfea01ecdb2fcb0b'
+    aarch64: '1910229405d27c90a8dabeba5be6ea3884bdf5bfe48a6a1978a7a40af7879246',
+     armv7l: '1910229405d27c90a8dabeba5be6ea3884bdf5bfe48a6a1978a7a40af7879246',
+     x86_64: '8136147b106facdb16d82bdf3683615d68da9fd8735cab9d8a47e7c564520eae'
   })
 
-  depends_on 'brotli'
-  depends_on 'bz2'
-  depends_on 'expat'
-  depends_on 'gcc_lib'
-  depends_on 'glib'
-  depends_on 'graphite'
-  depends_on 'harfbuzz'
-  # depends_on 'librsvg'
-  depends_on 'pcre'
-  depends_on 'zlibpkg'
+  depends_on 'brotli' # R
+  depends_on 'bzip2' # R
+  depends_on 'expat' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glib' => :build
   depends_on 'glibc' # R
+  depends_on 'graphite' => :build
+  depends_on 'harfbuzz' # R
   depends_on 'libpng' # R
-  depends_on 'py3_docwriter'
+  depends_on 'pcre' => :build
+  depends_on 'py3_docwriter' => :build
+  depends_on 'zlibpkg' # R
 
-  # to avoid resetting mold usage
-  no_env_options
-  # This overwrites the freetype in harfbuzz, which have
-  # epicircular dependencies on each other.
-  conflicts_ok # allowed to overwrite harfbuzz
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      -Dharfbuzz=enabled \
-      builddir"
-    system 'meson configure builddir'
-    system 'samu -C builddir'
-  end
+  meson_options '-Dharfbuzz=enabled'
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
@@ -112,32 +92,5 @@ class Freetype < Package
       libdir='#{CREW_LIB_PREFIX}'
     LIBTOOLEOF
     File.write("#{CREW_DEST_LIB_PREFIX}/#{@libname}.la", @libtool_file)
-  end
-
-  def self.postinstall
-    # make sure to delete downloaded files
-    system "find #{CREW_BREW_DIR}/* -name freetype*.tar -exec rm -rf {} +"
-    # This should become a function.
-    # check for conflicts with other installed files
-    @override_allowed = %w[fontconfig harfbuzz]
-    puts 'Checking for conflicts with files from installed packages...'
-    conflicts = []
-    conflictscmd = `grep --exclude #{CREW_META_PATH}#{name}.filelist -Fxf #{CREW_META_PATH}#{name}.filelist #{CREW_META_PATH}*.filelist`
-    conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
-    conflicts.reject!(&:empty?)
-    unless conflicts.empty?
-      if conflicts_ok?
-        puts 'Handling conflict with the same file in another package.'.orange
-      else
-        puts 'Error: There is a conflict with the same file in another package.'.lightred
-        @_errors = 1
-      end
-      conflicts.each do |conflict|
-        conflict.each do |thisconflict|
-          singleconflict = thisconflict.split(':', -1)
-          system "sed -i '\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist" if @override_allowed.include?(singleconflict[0])
-        end
-      end
-    end
   end
 end

@@ -8,13 +8,8 @@ class Beav < Package
   compatibility 'all'
   source_url 'https://httpredir.debian.org/debian/pool/main/b/beav/beav_1.40.orig.tar.gz'
   source_sha256 '7ad905e4124bf105ca0e213d8212bed231559825ac11588794b9be7a91399ddc'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/beav/1.40-18-1_armv7l/beav-1.40-18-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/beav/1.40-18-1_armv7l/beav-1.40-18-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/beav/1.40-18-1_i686/beav-1.40-18-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/beav/1.40-18-1_x86_64/beav-1.40-18-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '5cc00778439b0fc1a73085ce7d0b32c9c755720bcd0d74a21fa8c317280e25f1',
      armv7l: '5cc00778439b0fc1a73085ce7d0b32c9c755720bcd0d74a21fa8c317280e25f1',

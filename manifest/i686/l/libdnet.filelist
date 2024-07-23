@@ -1,14 +1,14 @@
 /usr/local/bin/dnet-config
+/usr/local/include/dnet.h
 /usr/local/include/dnet/addr.h
 /usr/local/include/dnet/arp.h
 /usr/local/include/dnet/blob.h
 /usr/local/include/dnet/eth.h
 /usr/local/include/dnet/fw.h
-/usr/local/include/dnet.h
 /usr/local/include/dnet/icmp.h
 /usr/local/include/dnet/intf.h
-/usr/local/include/dnet/ip6.h
 /usr/local/include/dnet/ip.h
+/usr/local/include/dnet/ip6.h
 /usr/local/include/dnet/ndisc.h
 /usr/local/include/dnet/os.h
 /usr/local/include/dnet/rand.h

@@ -2,23 +2,20 @@ require 'package'
 
 class Balena_etcher < Package
   description 'Flash OS images to SD cards & USB drives, safely and easily.'
-  homepage 'https://www.balena.io/etcher/'
-  @_ver = '1.18.6'
-  version @_ver
+  homepage 'https://etcher.balena.io'
+  version '1.19.21'
   license 'Apache-2.0'
   compatibility 'x86_64'
 
   source_url({
-    x86_64: "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balenaEtcher-#{@_ver}-x64.AppImage"
+    x86_64: "https://github.com/balena-io/etcher/releases/download/v#{version}/balenaEtcher-#{version}-x64.AppImage"
   })
 
   source_sha256({
-    x86_64: 'a21e64e6709c8741a5283d915c4acfa89643a901ceb9e7589d7a50b29a74f4d9'
+    x86_64: '747873eef72bac966ee2b59746dc1c22dd94bc54e166bb4a1f3f47daa5761fad'
   })
 
-  no_compile_needed
-
-  depends_on 'gtk2'
+  depends_on 'gtk3'
   depends_on 'freetype'
   depends_on 'cairo'
   depends_on 'xzutils'
@@ -30,6 +27,10 @@ class Balena_etcher < Package
   depends_on 'gsettings_desktop_schemas'
   depends_on 'xhost'
   depends_on 'sommelier'
+
+  gnome
+  no_compile_needed
+  no_shrink
 
   def self.build
     @etcher = <<~EOF

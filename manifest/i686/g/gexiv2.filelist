@@ -1,5 +1,4 @@
 /usr/local/include/gexiv2/gexiv2-enums.h
-/usr/local/include/gexiv2/gexiv2.h
 /usr/local/include/gexiv2/gexiv2-log.h
 /usr/local/include/gexiv2/gexiv2-managed-stream.h
 /usr/local/include/gexiv2/gexiv2-metadata.h
@@ -7,6 +6,7 @@
 /usr/local/include/gexiv2/gexiv2-preview-properties.h
 /usr/local/include/gexiv2/gexiv2-startup.h
 /usr/local/include/gexiv2/gexiv2-version.h
+/usr/local/include/gexiv2/gexiv2.h
 /usr/local/lib/girepository-1.0/GExiv2-0.10.typelib
 /usr/local/lib/libgexiv2.so
 /usr/local/lib/libgexiv2.so.2

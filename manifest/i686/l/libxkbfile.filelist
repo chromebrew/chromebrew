@@ -2,8 +2,8 @@
 /usr/local/include/X11/extensions/XKBconfig.h
 /usr/local/include/X11/extensions/XKBfile.h
 /usr/local/include/X11/extensions/XKBrules.h
-/usr/local/include/X11/extensions/XKMformat.h
 /usr/local/include/X11/extensions/XKM.h
+/usr/local/include/X11/extensions/XKMformat.h
 /usr/local/lib/libxkbfile.a
 /usr/local/lib/libxkbfile.la
 /usr/local/lib/libxkbfile.so

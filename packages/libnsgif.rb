@@ -8,13 +8,8 @@ class Libnsgif < Package
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/libs/releases/libnsgif-0.2.1-src.tar.gz'
   source_sha256 '9eaea534cd70b53c5aaf45317ae957701685a6b4a88dbe34ed26f4faae879a4b'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsgif/0.2.1_armv7l/libnsgif-0.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsgif/0.2.1_armv7l/libnsgif-0.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsgif/0.2.1_i686/libnsgif-0.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsgif/0.2.1_x86_64/libnsgif-0.2.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'd5157c5ebd4efe5049238558b3613306d2c8390bcf52a5c09b0132a225890756',
      armv7l: 'd5157c5ebd4efe5049238558b3613306d2c8390bcf52a5c09b0132a225890756',

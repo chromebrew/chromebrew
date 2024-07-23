@@ -4,9 +4,9 @@ require_relative 'util_linux'
 class Libuuid < Package
   description 'Portable UUID C library. Bundled with util_linux.'
   homepage 'https://sourceforge.net/projects/libuuid/'
-  version Util_linux.version.to_s
-  license Util_linux.license.to_s
-  compatibility Util_linux.compatibility.to_s
+  version Util_linux.version
+  license Util_linux.license
+  compatibility Util_linux.compatibility
 
   is_fake
 

@@ -1,55 +1,47 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Dbus < Package
+class Dbus < Meson
   description 'D-Bus is a message bus system, a simple way for applications to talk to one another.'
   homepage 'https://www.freedesktop.org/wiki/Software/dbus/'
-  version '1.15.4'
+  version '1.15.9-e277bf9'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/dbus/dbus.git'
-  git_hashtag "dbus-#{version}"
+  git_hashtag 'e277bf9070fa76712c6f113fbccc7c3b107297dd'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus/1.15.4_armv7l/dbus-1.15.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus/1.15.4_armv7l/dbus-1.15.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus/1.15.4_i686/dbus-1.15.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus/1.15.4_x86_64/dbus-1.15.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '3e8cb13e7c1e6bb23067f0def5eb33c1fb042b99eac3654a2a02a64cd52d5f59',
-     armv7l: '3e8cb13e7c1e6bb23067f0def5eb33c1fb042b99eac3654a2a02a64cd52d5f59',
-       i686: 'd48d4149c92bef9981515ce47a4491123013b855147290f358126e18d1e5d4b7',
-     x86_64: 'fc1c818d773ece8193082dca1203878e8382a3fb17d7c6cd32a1f29d9f4788e4'
+       i686: '64873de4af66f26fc9be1afc93d38e8c725f7e12bf6ee80c81b9ad508f527303',
+    aarch64: 'c471c04d20149c1c32c98de34f30960c3e924a2bec35010b954bd15a10d08306',
+     armv7l: 'c471c04d20149c1c32c98de34f30960c3e924a2bec35010b954bd15a10d08306',
+     x86_64: '252cf6fc37542d9f956f72109e546002e3729cc3c60428114d02b66354e89b55'
   })
 
-  depends_on 'libice' => :build
-  depends_on 'libsm' => :build
   depends_on 'expat' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'libx11' # R
+  depends_on 'libice' => :build unless ARCH == 'i686'
+  depends_on 'libsm' => :build unless ARCH == 'i686'
+  depends_on 'libx11' unless ARCH == 'i686' # R
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-      -Dapparmor=disabled \
-      -Ddbus_session_bus_listen_address=unix:tmpdir=/tmp \
+  print_source_bashrc
+
+  meson_options "-Dapparmor=disabled \
+      -Ddbus_session_bus_listen_address='unix:path=/var/run/dbus/system_bus_socket' \
       -Ddoxygen_docs=disabled \
       -Dlibaudit=disabled \
       -Dlaunchd=disabled \
       -Dxml_docs=disabled \
-      -Druntime_dir=/var \
+      -Druntime_dir=/var/run \
       -Dsystemd=disabled \
-      -Dx11_autolaunch=enabled \
-       builddir"
-    system 'meson configure builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
+      -Dx11_autolaunch=#{ARCH == 'i686' ? 'disabled' : 'enabled'}"
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @dbusconfigenv = <<~DBUSCONFIGEOF
       # Dbus settings
+      [[ -d '/var/run/dbus' ]] || ( sudo mkdir -p /var/run/dbus && sudo chown chronos /var/run/dbus )
+      dbus-uuidgen --ensure
       DBUS_SYSTEM_BUS_ADDRESS='unix:path=/var/run/dbus/system_bus_socket'
       [[ "$DBUS_SESSION_BUS_ADDRESS"=="disabled:" ]] && unset DBUS_SESSION_BUS_ADDRESS
       if [ -z "${DBUS_SESSION_BUS_ADDRESS}" ]; then
@@ -59,7 +51,8 @@ class Dbus < Package
       fi
       dbus-update-activation-environment --all
     DBUSCONFIGEOF
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/dbus", @dbusconfigenv)
+    File.write('env.d_dbus', @dbusconfigenv)
+    FileUtils.install 'env.d_dbus', "#{CREW_DEST_PREFIX}/etc/env.d/dbus", mode: 0o644
   end
 
   def self.postinstall

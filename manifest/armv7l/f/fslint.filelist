@@ -20,9 +20,9 @@
 /usr/local/bin/supprt/getffp
 /usr/local/bin/supprt/getfpf
 /usr/local/bin/supprt/md5sum_approx
+/usr/local/bin/supprt/rmlint/fix_ws.sh
 /usr/local/bin/supprt/rmlint/fixdup
 /usr/local/bin/supprt/rmlint/fixdup.sh
-/usr/local/bin/supprt/rmlint/fix_ws.sh
 /usr/local/bin/supprt/rmlint/merge_hardlinks
 /usr/local/bin/supprt/rmlint/view_ws.sh
 /usr/local/bin/zipdir

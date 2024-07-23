@@ -3,23 +3,18 @@ require 'package'
 class Perl_xml_simple < Package
   description 'XML::Simple - An API for simple XML files'
   homepage 'https://metacpan.org/pod/XML::Simple'
-  version '2.25-perl5.36'
+  version '2.25-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz'
   source_sha256 '531fddaebea2416743eb5c4fdfab028f502123d9a220405a4100e68fc480dbf8'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.36_armv7l/perl_xml_simple-2.25-perl5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.36_armv7l/perl_xml_simple-2.25-perl5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.36_i686/perl_xml_simple-2.25-perl5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.36_x86_64/perl_xml_simple-2.25-perl5.36-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '410ccdb5826bcb467594300ff1cdceeb44646f506ae325b75d077c1351fd3fc2',
-     armv7l: '410ccdb5826bcb467594300ff1cdceeb44646f506ae325b75d077c1351fd3fc2',
-       i686: '45dae7fafa2b946f59c18ebb62e7cdd760ccfe1a6ef2b73f8381d2b50a05d64a',
-     x86_64: '28e2460023ca11cd1c496a4a411ada0f3bce447aaa18a776a14f34d736a28997'
+    aarch64: '9945ac5a1564a81c70fd0d3e59aa84164616e7ce638fe2ead1436cfdf9935c11',
+     armv7l: '9945ac5a1564a81c70fd0d3e59aa84164616e7ce638fe2ead1436cfdf9935c11',
+       i686: 'ea1c3c4b8331b4fbaf5e57353404301bc160df27e42d99e350291edd63f388cc',
+     x86_64: '9f60918ddee247e80de73be7cc35ea93350ef2ae867d6bbcff00f1361125aaa2'
   })
 
   depends_on 'perl_xml_parser' => :build

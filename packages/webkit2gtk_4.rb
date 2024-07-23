@@ -3,22 +3,22 @@ require 'package'
 class Webkit2gtk_4 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.40.1'
+  version '2.42.1'
   license 'LGPL-2+ and BSD-2'
-  compatibility 'x86_64'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.40.1.tar.xz'
-  source_sha256 '64e526984f8cd2161ef03ae949af99c002ff333d615e6386b460164a3c1b7ef6'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.42.1.tar.xz'
+  source_sha256 '6f41fac9989d3ee51c08c48de1d439cdeddecbc757e34b6180987d99b16d2499'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.40.1_x86_64/webkit2gtk_4-2.40.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    x86_64: '40a29011b49180f39a1b5cc759791ef73e936054d99f05c8fed7d028a5d32813'
+    aarch64: 'dfc34529afd99bd8c619757b4b3d7b837b819a8554fe291f5e936b09ed447133',
+     armv7l: 'dfc34529afd99bd8c619757b4b3d7b837b819a8554fe291f5e936b09ed447133',
+     x86_64: '6349949a24e1fbae37cb576454602287e136efb305ac7cd506a0ae84c6d26d98'
   })
 
   depends_on 'at_spi2_core' # R
   depends_on 'cairo'
-  # depends_on 'ccache' => :build
+  depends_on 'ccache' => :build
   depends_on 'dav1d'
   depends_on 'enchant' # R
   depends_on 'fontconfig'
@@ -42,7 +42,7 @@ class Webkit2gtk_4 < Package
   depends_on 'libgcrypt' # R
   depends_on 'libglvnd' # R
   depends_on 'libgpgerror' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
   depends_on 'libnotify'
   depends_on 'libpng' # R
@@ -92,13 +92,13 @@ class Webkit2gtk_4 < Package
       # WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-nonnull)
       # endif ()
 
-      #+    # This triggers warnings in wtf/Packed.h, a header that is included in many places. It does not
-      #+    # respect ignore warning pragmas and we cannot easily suppress it for all affected files.
-      #+    # https://bugs.webkit.org/show_bug.cgi?id=226557
-      #+    if (CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND ${CMAKE_CXX_COMPILER_VERSION} VERSION_GREATER_EQUAL "11.0")
-      #+        WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-stringop-overread)
-      #+    endif ()
-      #+
+      # +    # This triggers warnings in wtf/Packed.h, a header that is included in many places. It does not
+      # +    # respect ignore warning pragmas and we cannot easily suppress it for all affected files.
+      # +    # https://bugs.webkit.org/show_bug.cgi?id=226557
+      # +    if (CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND ${CMAKE_CXX_COMPILER_VERSION} VERSION_GREATER_EQUAL "11.0")
+      # +        WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-stringop-overread)
+      # +    endif ()
+      # +
       ## -Wexpansion-to-defined produces false positives with GCC but not Clang
       ## https://bugs.webkit.org/show_bug.cgi?id=167643#c13
       # if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
@@ -136,7 +136,7 @@ class Webkit2gtk_4 < Package
 
   def self.build
     # This builds webkit2gtk4 (which uses gtk3 and libsoup2)
-    @workdir = `pwd`.chomp
+    @workdir = Dir.pwd
     # Bubblewrap sandbox breaks on epiphany with
     # bwrap: Can't make symlink at /var/run: File exists
     # LDFLAGS from debian: -Wl,--no-keep-memory
@@ -161,7 +161,7 @@ class Webkit2gtk_4 < Package
             -DUSER_AGENT_BRANDING='Chromebrew'"
     end
     @counter = 1
-    @counter_max = 5
+    @counter_max = 20
     loop do
       break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
 

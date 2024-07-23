@@ -2,24 +2,17 @@ require 'package'
 
 class Libvips < Package
   description 'A fast image processing library with low memory needs'
-  homepage 'https://libvips.github.io/libvips/'
-  @_ver = '8.10.6-beta2'
-  version @_ver
+  homepage 'https://www.libvips.org/'
+  version '8.10.6-beta2'
   license 'LGPL-2.1'
-  compatibility 'all'
-  source_url "https://github.com/libvips/libvips/archive/v#{@_ver}.tar.gz"
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://github.com/libvips/libvips/archive/v#{version}.tar.gz"
   source_sha256 'b2412f580ba83129d55e57a73c7c4fdb53e60a39c48910acc5f0d80518deb7a5'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvips/8.10.6-beta2_armv7l/libvips-8.10.6-beta2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvips/8.10.6-beta2_armv7l/libvips-8.10.6-beta2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvips/8.10.6-beta2_i686/libvips-8.10.6-beta2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvips/8.10.6-beta2_x86_64/libvips-8.10.6-beta2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2d95674bfc951f232315ea0e93311d5982b9975c76f7f8d092f8d3fcfe6810b6',
      armv7l: '2d95674bfc951f232315ea0e93311d5982b9975c76f7f8d092f8d3fcfe6810b6',
-       i686: '4bf07840cb30a398201160d0004530b909c48c691d21eb4bc35b2a4081c86f27',
      x86_64: '3d2244043e9fd70c3a7429e98c825243cadac0e613a3c5443ee3a243721d8815'
   })
 

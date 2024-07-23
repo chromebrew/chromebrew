@@ -2,11 +2,11 @@ require 'package'
 require_relative 'libxss'
 
 class Libxscrnsaver < Package
-  description Libxss.description.to_s
-  homepage Libxss.homepage.to_s
-  version Libxss.version.to_s
-  license Libxss.license.to_s
-  compatibility Libxss.compatibility.to_s
+  description Libxss.description
+  homepage Libxss.homepage
+  version Libxss.version
+  license Libxss.license
+  compatibility Libxss.compatibility
 
   is_fake
 

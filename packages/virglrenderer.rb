@@ -5,15 +5,11 @@ class Virglrenderer < Package
   homepage 'https://virgil3d.github.io/'
   version '0.9.1-486d891'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/virgl/virglrenderer.git'
   git_hashtag '486d891a9242d978cef6bb5ae80d0d9b6aa420c8'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/virglrenderer/0.9.1-486d891_armv7l/virglrenderer-0.9.1-486d891-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/virglrenderer/0.9.1-486d891_armv7l/virglrenderer-0.9.1-486d891-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/virglrenderer/0.9.1-486d891_x86_64/virglrenderer-0.9.1-486d891-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '662b56e9402ba14b88877a5d05ee968f7912236115fc489228da21bf79802495',
      armv7l: '662b56e9402ba14b88877a5d05ee968f7912236115fc489228da21bf79802495',
@@ -43,7 +39,7 @@ class Virglrenderer < Package
       -Drender-server-worker=minijail \
       -Dvideo=true \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

@@ -5,16 +5,11 @@ class Curtail < Package
   homepage 'https://github.com/Huluti/Curtail'
   version '1.3.0'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/Huluti/Curtail/archive/1.3.0.tar.gz'
   source_sha256 '56859211b1b147aec677a00295e524b6beabcdf415938db1bd8ca4dae79409cf'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curtail/1.3.0_armv7l/curtail-1.3.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curtail/1.3.0_armv7l/curtail-1.3.0-chromeos-armv7l.tar.zst',
-      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curtail/1.3.0_i686/curtail-1.3.0-chromeos-i686.tar.zst',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curtail/1.3.0_x86_64/curtail-1.3.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6d5947e652598d3e7aac80193bbb5a51e3b4bd2678ed8ed1f459e63b68c74da0',
      armv7l: '6d5947e652598d3e7aac80193bbb5a51e3b4bd2678ed8ed1f459e63b68c74da0',
@@ -27,8 +22,6 @@ class Curtail < Package
   depends_on 'pngquant'
   depends_on 'jpegoptim'
   depends_on 'libwebp'
-
-  gnome
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} build"

@@ -3,23 +3,18 @@ require 'package'
 class Perl_pod_parser < Package
   description 'Perl Pod::Parser - base class for creating POD filters and translators'
   homepage 'https://metacpan.org/pod/Pod::Parser'
-  version '1.66-perl5.36'
+  version '1.67-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.66.tar.gz'
-  source_sha256 '22928a7bffe61b452c05bbbb8f5216d4b9cf9fe2a849b776c25500d24d20df7c'
+  source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.67.tar.gz'
+  source_sha256 '5deccbf55d750ce65588cd211c1a03fa1ef3aaa15d1ac2b8d85383a42c1427ea'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.66-perl5.36_armv7l/perl_pod_parser-1.66-perl5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.66-perl5.36_armv7l/perl_pod_parser-1.66-perl5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.66-perl5.36_i686/perl_pod_parser-1.66-perl5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.66-perl5.36_x86_64/perl_pod_parser-1.66-perl5.36-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '3536772cd99d5a8aa6d92131d3d1905259ddf8b63e26f5a65c74029c2cc26328',
-     armv7l: '3536772cd99d5a8aa6d92131d3d1905259ddf8b63e26f5a65c74029c2cc26328',
-       i686: 'b4daf273402c5f29ba5727625e8a4659e1042f55e5b07c782f8a873df6e70ddb',
-     x86_64: '2a649edda3da6ded476499a548db57120576ca51123d417f22f2ff95ec8845d1'
+    aarch64: '3c6f74bb9c0c26489cb439eafac7eee329d67705030602508e1b8c71772ceeb2',
+     armv7l: '3c6f74bb9c0c26489cb439eafac7eee329d67705030602508e1b8c71772ceeb2',
+       i686: '89276cec5f6f47284346a22a284f4638d9e87cbbf70da8b86bf2c0313a3990ef',
+     x86_64: 'e1e81a36e19337176855749dd5858e2ed6c7947f3e875de16a4657806afe6dbd'
   })
 
   def self.prebuild

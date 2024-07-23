@@ -1,51 +1,39 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Glib < Package
+class Glib < Meson
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
-  homepage 'https://developer.gnome.org/glib'
-  @_ver = '2.76.2'
-  version @_ver
+  homepage 'https://docs.gtk.org/glib/'
+  version '2.80.0'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'
-  git_hashtag @_ver
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.76.2_armv7l/glib-2.76.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.76.2_armv7l/glib-2.76.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.76.2_i686/glib-2.76.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.76.2_x86_64/glib-2.76.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '618131b5da6636c5425072b53f6ad06ac20ae7b490fc7e53338eb013065e6a7f',
-     armv7l: '618131b5da6636c5425072b53f6ad06ac20ae7b490fc7e53338eb013065e6a7f',
-       i686: '395166d4edbea1454bb96e9f3219d854fe3fada815460a2325f3690f6bd7ea9f',
-     x86_64: '09532329c05bc5cadca4860d44de3a7c12930d18857396d1eeef4cc4fc61c17c'
+    aarch64: '873ece37b177e99afc33e0aeb078f84753194a055330ea6db3f7d45720cf705f',
+     armv7l: '873ece37b177e99afc33e0aeb078f84753194a055330ea6db3f7d45720cf705f',
+       i686: '8d5c84282eb479f7afeb1e312866fcc6eca37ee2a1aba578d8a554e66cf6a3e2',
+     x86_64: '69ccb81979e4d8837289f11d2142878c9823b4386128c78ef5f251284b20954e'
   })
 
   depends_on 'elfutils' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gobject_introspection' unless ARCH == 'i686' # L
   depends_on 'libffi' # R
-  depends_on 'pcre' # R
+  depends_on 'pcre2' # R
   depends_on 'py3_pygments' => :build
   depends_on 'shared_mime_info' # L
   depends_on 'util_linux' # R
   depends_on 'zlibpkg' # R
-  depends_on 'pcre2' # R
-  depends_on 'gcc_lib' # R
 
-  no_strip if %w[aarch64 armv7l].include? ARCH
   gnome
+  no_strip if %w[aarch64 armv7l].include? ARCH
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS.gsub('strip=true', 'strip=false')} \
-    -Dselinux=disabled \
+  meson_options '-Dselinux=disabled \
     -Dsysprof=disabled \
-    -Dman=false \
-    -Dtests=false \
-    builddir"
-    system 'meson configure builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
+    -Dman-pages=disabled \
+    -Dtests=false'
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"

@@ -21,6 +21,7 @@
 /usr/local/share/musl/bin/xzgrep
 /usr/local/share/musl/bin/xzless
 /usr/local/share/musl/bin/xzmore
+/usr/local/share/musl/include/lzma.h
 /usr/local/share/musl/include/lzma/base.h
 /usr/local/share/musl/include/lzma/bcj.h
 /usr/local/share/musl/include/lzma/block.h
@@ -28,7 +29,6 @@
 /usr/local/share/musl/include/lzma/container.h
 /usr/local/share/musl/include/lzma/delta.h
 /usr/local/share/musl/include/lzma/filter.h
-/usr/local/share/musl/include/lzma.h
 /usr/local/share/musl/include/lzma/hardware.h
 /usr/local/share/musl/include/lzma/index.h
 /usr/local/share/musl/include/lzma/index_hash.h

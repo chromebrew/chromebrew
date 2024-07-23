@@ -33,8 +33,8 @@
 /usr/local/lib64/libprocps.so.8.0.2
 /usr/local/lib64/pkgconfig/libprocps.pc
 /usr/local/sbin/sysctl
-/usr/local/share/doc/procps-ng/bugs.md
 /usr/local/share/doc/procps-ng/FAQ
+/usr/local/share/doc/procps-ng/bugs.md
 /usr/local/share/locale/de/LC_MESSAGES/procps-ng.mo
 /usr/local/share/locale/fr/LC_MESSAGES/procps-ng.mo
 /usr/local/share/locale/pl/LC_MESSAGES/procps-ng.mo

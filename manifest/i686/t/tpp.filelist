@@ -1,14 +1,16 @@
 /usr/local/bin/tpp
 /usr/local/share/doc/tpp/CHANGES
-/usr/local/share/doc/tpp/contrib/tpp-mode.el
-/usr/local/share/doc/tpp/contrib/tpp.vim
 /usr/local/share/doc/tpp/COPYING
 /usr/local/share/doc/tpp/DESIGN
+/usr/local/share/doc/tpp/README
+/usr/local/share/doc/tpp/THANKS
+/usr/local/share/doc/tpp/contrib/tpp-mode.el
+/usr/local/share/doc/tpp/contrib/tpp.vim
 /usr/local/share/doc/tpp/examples/ac-am.tpp
 /usr/local/share/doc/tpp/examples/align-footer.tpp
 /usr/local/share/doc/tpp/examples/bold.tpp
-/usr/local/share/doc/tpp/examples/colors2.tpp
 /usr/local/share/doc/tpp/examples/colors.tpp
+/usr/local/share/doc/tpp/examples/colors2.tpp
 /usr/local/share/doc/tpp/examples/debian-packaging.tpp
 /usr/local/share/doc/tpp/examples/exec.tpp
 /usr/local/share/doc/tpp/examples/horline.tpp
@@ -21,6 +23,4 @@
 /usr/local/share/doc/tpp/examples/test.tpp
 /usr/local/share/doc/tpp/examples/tpp-features.tpp
 /usr/local/share/doc/tpp/examples/wrap.tpp
-/usr/local/share/doc/tpp/README
-/usr/local/share/doc/tpp/THANKS
 /usr/local/share/man/man1/tpp.1.gz

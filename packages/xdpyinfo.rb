@@ -5,23 +5,17 @@ require 'package'
 
 class Xdpyinfo < Package
   description 'Display information utility for X'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.3.3'
   license 'MIT-with-advertising'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xdpyinfo.git'
   git_hashtag "xdpyinfo-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdpyinfo/1.3.3_armv7l/xdpyinfo-1.3.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdpyinfo/1.3.3_armv7l/xdpyinfo-1.3.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdpyinfo/1.3.3_i686/xdpyinfo-1.3.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdpyinfo/1.3.3_x86_64/xdpyinfo-1.3.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6041d86f4823e1dd0918d920124ef79eebfa2f7496947d3171a8f58d09358b33',
      armv7l: '6041d86f4823e1dd0918d920124ef79eebfa2f7496947d3171a8f58d09358b33',
-       i686: '95f969d2ad43b575c2d7d0eaa87b06200699e4b2923ff35f12e03ccc84797ccd',
      x86_64: '50a3cd0a5276633ef0b5d825a76fb90fa5f10d5790ed9a394eb900924d44d667'
   })
 

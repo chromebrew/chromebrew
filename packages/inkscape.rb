@@ -1,35 +1,30 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Inkscape < Package
+class Inkscape < CMake
   description 'Inkscape is a professional vector graphics editor for Windows, Mac OS X and Linux.'
   homepage 'https://inkscape.org/'
-  version '1.2.2'
+  version '1.3.2'
   license 'GPL-2 and LGPL-2.1'
-  compatibility 'all'
-  source_url 'https://inkscape.org/gallery/item/37360/inkscape-1.2.2.tar.xz'
-  source_sha256 'a0c7fd0d03c0a21535e648ef301dcf80dd7cfc1f3545e51065fbf1ba3ee8a5c4'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://media.inkscape.org/dl/resources/file/inkscape-1.3.2.tar.xz'
+  source_sha256 'dbd1844dc443fe5e10d3e9a887144e5fb7223852fff191cfb5ef7adeab0e086b'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2_armv7l/inkscape-1.2.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2_armv7l/inkscape-1.2.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2_i686/inkscape-1.2.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2_x86_64/inkscape-1.2.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'c4ef578261aa1fcea6cbaae949671af0146402ff3d872a769296c671df07c101',
-     armv7l: 'c4ef578261aa1fcea6cbaae949671af0146402ff3d872a769296c671df07c101',
-       i686: 'f0e8eade7b45ccd509a65f6e0e4847fccfbaed568355592a2099e63c32888307',
-     x86_64: '529c95134104b67575d8282fe254d2266cd584cb9063604ddb0fc7f28f57eacc'
+    aarch64: '66c2c48729a8dce69f8842ef98ea13d9b647ec73023ebafbc1123d53248ac325',
+     armv7l: '66c2c48729a8dce69f8842ef98ea13d9b647ec73023ebafbc1123d53248ac325',
+     x86_64: '1c28df91667910fd81fad3c2849fe6edef318a49ca8188e8c743780bdc2e211c'
   })
 
-  depends_on 'atkmm' # R
+  depends_on 'atkmm16' # R
   depends_on 'at_spi2_core' # R
   depends_on 'bdwgc' # R
   depends_on 'boost' # R
-  depends_on 'cairo' => :build
   depends_on 'cairomm_1_0' # R
+  depends_on 'cairo' # R
   depends_on 'double_conversion' # R
   depends_on 'enchant' # R
+  depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
@@ -41,13 +36,16 @@ class Inkscape < Package
   depends_on 'gspell' # R
   depends_on 'gtk3' # R
   depends_on 'gtkmm3' # R
+  depends_on 'gtksourceview_4' # R
   depends_on 'gtksourceview' => :build
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme'
+  depends_on 'jemalloc' => :build
   depends_on 'lcms' # R
   depends_on 'libcdr' # R
+  depends_on 'libepoxy' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'librevenge' # R
   depends_on 'libsigcplusplus' # R
@@ -59,28 +57,29 @@ class Inkscape < Package
   depends_on 'libxext' # R
   depends_on 'libxml2' # R
   depends_on 'libxslt' # R
-  depends_on 'llvm_lib16' => :build
+  depends_on 'llvm16_lib' => :build
   depends_on 'pangomm_1_4' # R
   depends_on 'pango' # R
   depends_on 'poppler' # R
   depends_on 'popt' => :build
   depends_on 'potrace' # R
+  depends_on 'py3_cython' => :build
   depends_on 'readline' # R
-  depends_on 'sommelier' => :build
-  depends_on 'xdg_base' => :build
+  depends_on 'xdg_base' # R
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-            -DWITH_IMAGE_MAGICK=OFF \
+  gnome
+
+  cmake_options '-DWITH_IMAGE_MAGICK=OFF \
             -DWITH_INTERNAL_2GEOM=ON \
             -DWITH_MANPAGE_COMPRESSION=OFF \
-            -DWITH_X11=ON \
-            -G Ninja"
-    system 'samu -C builddir'
-  end
+            -DWITH_X11=ON'
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+  def self.patch
+    downloader 'https://gitlab.archlinux.org/archlinux/packaging/packages/inkscape/-/raw/main/inkscape-1.3.2-poppler-24.03.patch?ref_type=heads&inline=false', '499bc0bd0d8600b597220f463034d5e132e69c7833108d6b766445e70e9c82ed', 'poppler.patch'
+    system 'patch -p1 -i poppler.patch'
+    # libxml compatibility patch
+    downloader 'https://gitlab.com/inkscape/inkscape/-/merge_requests/6089.patch', 'edc55ad0771b604c63737524fc5928a35334db04d6479e395801635d5f6dfc1f'
+    system 'patch -p1 -i 6089.patch'
   end
 end

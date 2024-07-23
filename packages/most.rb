@@ -8,13 +8,8 @@ class Most < Package
   compatibility 'all'
   source_url "https://www.jedsoft.org/releases/most/most-#{version}.tar.gz"
   source_sha256 '9455aeb8f826fa8385c850dc22bf0f22cf9069b3c3423fba4bf2c6f6226d9903'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.2.0_armv7l/most-5.2.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.2.0_armv7l/most-5.2.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.2.0_i686/most-5.2.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.2.0_x86_64/most-5.2.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6689e97e303c8e6ab015a54dcc518e8f3aaafb67c3d7c4921a1fdebaf112c3c4',
      armv7l: '6689e97e303c8e6ab015a54dcc518e8f3aaafb67c3d7c4921a1fdebaf112c3c4',

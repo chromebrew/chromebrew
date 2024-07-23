@@ -3,19 +3,13 @@ require 'package'
 class Musl_curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  @_ver = '7.84.0'
-  version @_ver
+  version '7.84.0'
   license 'curl'
   compatibility 'all'
-  source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
+  source_url "https://curl.se/download/curl-#{version}.tar.xz"
   source_sha256 '2d118b43f547bfe5bae806d8d47b4e596ea5b25a6c1f080aef49fbcd817c5db8'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.84.0_armv7l/musl_curl-7.84.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.84.0_armv7l/musl_curl-7.84.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.84.0_i686/musl_curl-7.84.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.84.0_x86_64/musl_curl-7.84.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2c21d0bbc43fd965743a37b49bb53663e510df3940e00b83cd6fd0f91e0ae085',
      armv7l: '2c21d0bbc43fd965743a37b49bb53663e510df3940e00b83cd6fd0f91e0ae085',
@@ -39,6 +33,7 @@ class Musl_curl < Package
   is_musl
   is_static
   patchelf
+  print_source_bashrc
 
   def self.patch
     # Fix arm build error

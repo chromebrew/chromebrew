@@ -11,12 +11,8 @@ class Iproute2 < Package
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.1.0.tar.xz'
   source_sha256 '5ce12a0fec6b212725ef218735941b2dab76244db7e72646a76021b0537b43ab'
+  binary_compression 'tar.zst'
 
-  binary_url({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iproute2/6.1.0_armv7l/iproute2-6.1.0-chromeos-armv7l.tar.zst',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iproute2/6.1.0_armv7l/iproute2-6.1.0-chromeos-armv7l.tar.zst',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iproute2/6.1.0_x86_64/iproute2-6.1.0-chromeos-x86_64.tar.zst'
-    })
   binary_sha256({
      aarch64: '5f7277867d9fb2192273a7defb083dbe4dfb2dc7e0afc65049418a8c5c0bebef',
       armv7l: '5f7277867d9fb2192273a7defb083dbe4dfb2dc7e0afc65049418a8c5c0bebef',

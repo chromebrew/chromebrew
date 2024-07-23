@@ -1,35 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libpcap < Package
+class Libpcap < Autotools
   description 'A portable C/C++ library for network traffic capture.'
   homepage 'https://www.tcpdump.org/'
-  version '1.10.0'
+  version '1.10.4'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://www.tcpdump.org/release/libpcap-1.10.0.tar.gz'
-  source_sha256 '8d12b42623eeefee872f123bd0dc85d535b00df4d42e865f993c40f7bfc92b1e'
+  source_url 'https://github.com/the-tcpdump-group/libpcap.git'
+  git_hashtag "libpcap-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.10.0_armv7l/libpcap-1.10.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.10.0_armv7l/libpcap-1.10.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.10.0_i686/libpcap-1.10.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.10.0_x86_64/libpcap-1.10.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '3ec810c7c9ddc2e2d684cae52dcc69375b786f18b4f53086dc70a3b794a4a759',
-     armv7l: '3ec810c7c9ddc2e2d684cae52dcc69375b786f18b4f53086dc70a3b794a4a759',
-       i686: '967dcedbb55c15c68c232692a76b4a9e4a7d1accbed443c3bcc30fda952ea6ad',
-     x86_64: '8afeecd5018fe6d0bb4958e08d8359ee7abd09d48633d575ac2a241ccbdbee96'
+    aarch64: 'aea00d0732f23ac5927668c9348c17d99fc065647a8eb1febbb9f72b7e5bb5d8',
+     armv7l: 'aea00d0732f23ac5927668c9348c17d99fc065647a8eb1febbb9f72b7e5bb5d8',
+       i686: '2c1df45643e3609a583eb7ce95e0d670c742486525e3420e216bbf461c79b395',
+     x86_64: '404e78f6713ad6f6e0d2fa665a80a689c165ac59248e19c5fe5638ddc5bac943'
   })
 
   depends_on 'libnl3'
-
-  def self.build
-    system "CFLAGS='-I#{CREW_PREFIX}/include/libnl3 -flto=auto -fuse-ld=gold' ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

@@ -1,10 +1,10 @@
-/usr/local/include/ini.h
 /usr/local/include/INIReader.h
-/usr/local/lib64/libinih.a
-/usr/local/lib64/libinih.so
-/usr/local/lib64/libinih.so.0
+/usr/local/include/ini.h
 /usr/local/lib64/libINIReader.a
 /usr/local/lib64/libINIReader.so
 /usr/local/lib64/libINIReader.so.0
-/usr/local/lib64/pkgconfig/inih.pc
+/usr/local/lib64/libinih.a
+/usr/local/lib64/libinih.so
+/usr/local/lib64/libinih.so.0
 /usr/local/lib64/pkgconfig/INIReader.pc
+/usr/local/lib64/pkgconfig/inih.pc
