@@ -15,7 +15,6 @@
 /usr/local/lib/libhandle.so
 /usr/local/lib/libhandle.so.1
 /usr/local/lib/libhandle.so.1.0.3
-/usr/local/lib/xfsprogs/xfs_scrub_all.cron
 /usr/local/sbin/fsck.xfs
 /usr/local/sbin/mkfs.xfs
 /usr/local/sbin/xfs_admin
@@ -107,3 +106,4 @@
 /usr/local/share/xfsprogs/mkfs/lts_5.4.conf
 /usr/local/share/xfsprogs/mkfs/lts_6.1.conf
 /usr/local/share/xfsprogs/mkfs/lts_6.6.conf
+/usr/local/share/xfsprogs/xfs_scrub_all.cron
