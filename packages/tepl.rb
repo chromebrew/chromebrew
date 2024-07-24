@@ -1,6 +1,6 @@
 require 'package'
-require_relative 'tepl_5'
-require_relative 'tepl_6'
+Package.load_package("#{__dir__}/tepl_5.rb")
+Package.load_package("#{__dir__}/tepl_6.rb")
 
 class Tepl < Package
   description Tepl_5.description

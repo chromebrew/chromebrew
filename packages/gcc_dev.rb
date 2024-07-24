@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'gcc_build'
+Package.load_package("#{__dir__}/gcc_build.rb")
 
 class Gcc_dev < Package
   description 'The GNU Compiler Collection: Everything (excepting libraries aside from libgccjit)'

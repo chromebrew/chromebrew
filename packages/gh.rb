@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'github_cli'
+Package.load_package("#{__dir__}/github_cli.rb")
 
 class Gh < Package
   description Github_cli.description

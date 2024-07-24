@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'tilp2'
+Package.load_package("#{__dir__}/tilp2.rb")
 
 class Tilp < Package
   description Tilp2.description

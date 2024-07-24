@@ -1,7 +1,7 @@
 require 'buildsystems/meson'
-require_relative 'cairo'
-require_relative 'fontconfig'
-require_relative 'freetype'
+Package.load_package("#{__dir__}/cairo.rb")
+Package.load_package("#{__dir__}/fontconfig.rb")
+Package.load_package("#{__dir__}/freetype.rb")
 # build order: harfbuzz => freetype => fontconfig => cairo => pango
 
 class Harfbuzz < Meson

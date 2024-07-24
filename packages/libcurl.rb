@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'curl'
+Package.load_package("#{__dir__}/curl.rb")
 
 class Libcurl < Package
   description Curl.description
