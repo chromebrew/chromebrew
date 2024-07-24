@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.49.7'
+CREW_VERSION = '1.49.8'
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -217,9 +217,6 @@ CREW_OPTIONS = <<~OPT.chomp
   --libdir=#{CREW_LIB_PREFIX} \
   --mandir=#{CREW_MAN_PREFIX} \
   --disable-dependency-tracking \
-  --build=#{CREW_TARGET} \
-  --host=#{CREW_TARGET} \
-  --target=#{CREW_TARGET} \
   --program-prefix='' \
   --program-suffix=''
 OPT
