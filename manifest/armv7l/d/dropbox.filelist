@@ -1,7 +1,7 @@
 /usr/local/bin/dropbox
-/usr/local/lib64/nautilus/extensions-4/libnautilus-dropbox.a
-/usr/local/lib64/nautilus/extensions-4/libnautilus-dropbox.la
-/usr/local/lib64/nautilus/extensions-4/libnautilus-dropbox.so
+/usr/local/lib/nautilus/extensions-4/libnautilus-dropbox.a
+/usr/local/lib/nautilus/extensions-4/libnautilus-dropbox.la
+/usr/local/lib/nautilus/extensions-4/libnautilus-dropbox.so
 /usr/local/share/applications/dropbox.desktop
 /usr/local/share/icons/hicolor/16x16/apps/dropbox.png
 /usr/local/share/icons/hicolor/22x22/apps/dropbox.png
