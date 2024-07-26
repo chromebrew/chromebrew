@@ -22,7 +22,7 @@ class Get_iplayer < Package
   depends_on 'ffmpeg'
   depends_on 'atomicparsley'
   depends_on 'libxml2'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
 
   def self.build; end
 

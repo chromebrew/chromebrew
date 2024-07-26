@@ -29,7 +29,7 @@ class Llvm18_dev < Package
   depends_on 'llvm18_lib' # R
   depends_on 'ncurses' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_shrink

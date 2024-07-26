@@ -22,7 +22,7 @@ class Libxml2 < CMake
   depends_on 'icu4c' # R
   depends_on 'ncurses' # R
   depends_on 'readline' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

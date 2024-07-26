@@ -34,7 +34,7 @@ class Libtiff < Package
   depends_on 'mesa' => :build unless ARCH == 'i686'
   depends_on 'wget2' => :build
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   gnome

@@ -39,7 +39,7 @@ class R < Autotools
   depends_on 'tk' # R
   depends_on 'xdg_utils' => :build
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   configure_options '--enable-R-shlib \
            --with-x'

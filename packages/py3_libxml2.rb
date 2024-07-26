@@ -23,7 +23,7 @@ class Py3_libxml2 < Package
   depends_on 'libxslt' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'python3' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system 'autoreconf -fiv'

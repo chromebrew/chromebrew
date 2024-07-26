@@ -32,5 +32,5 @@ class Libvisio < Autotools
   depends_on 'libwpd' => :build
   depends_on 'libwpg' => :build
   depends_on 'libxml2' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 end

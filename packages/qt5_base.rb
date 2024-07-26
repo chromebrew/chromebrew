@@ -65,7 +65,7 @@ class Qt5_base < Package
   depends_on 'xcb_util_renderutil' # R
   depends_on 'xcb_util_wm' # R
   depends_on 'xcb_util_xrm' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.build

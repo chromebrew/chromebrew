@@ -18,7 +18,7 @@ class Tcl < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_lto
 

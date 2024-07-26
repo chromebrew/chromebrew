@@ -20,7 +20,7 @@ class Slang < Package
   depends_on 'glibc' # R
   depends_on 'libpng' # R
   depends_on 'pcre' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'gcc_lib' # R
 
   def self.build

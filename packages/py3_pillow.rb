@@ -20,7 +20,7 @@ class Py3_pillow < Pip
   depends_on 'py3_lxml'
   depends_on 'py3_xlsxwriter'
   depends_on 'python3' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_compile_needed
 end

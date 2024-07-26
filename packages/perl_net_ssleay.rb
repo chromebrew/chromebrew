@@ -19,5 +19,5 @@ class Perl_net_ssleay < PERL
 
   depends_on 'glibc' # R
   depends_on 'openssl' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 end

@@ -161,6 +161,6 @@ xmlcatmgr
 xxhash
 xzutils
 zip
-zlibpkg
+zlib
 zoneinfo
 zstd

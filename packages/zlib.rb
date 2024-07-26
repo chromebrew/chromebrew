@@ -1,10 +1,10 @@
 require 'buildsystems/cmake'
 
-class Zlibpkg < CMake
+class Zlib < CMake
   description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
-  homepage 'https://www.zlib.net/'
+  homepage 'https://zlib.net'
   version '1.3.1' # Do not use @_ver here, it will break the installer.
-  # When upgrading zlibpkg, be sure to upgrade minizip in tandem.
+  # When upgrading zlib, be sure to upgrade minizip in tandem.
   # The following breaks the installer script.
   # puts "#{self} version differs from Minizip version #{Minizip.version}".orange if @_ver != Minizip.version
   license 'zlib'

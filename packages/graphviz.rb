@@ -34,7 +34,7 @@ class Graphviz < CMake
   depends_on 'libxrender' # R
   depends_on 'pango' # R
   depends_on 'qt5_base' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.install
     # There is a library error only when installing dot using the following command.

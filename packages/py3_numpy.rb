@@ -24,7 +24,7 @@ class Py3_numpy < Pip
   depends_on 'py3_cython' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'python3' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   pre_configure_options CREW_ENV_OPTIONS.gsub('mold', 'gold')
 end

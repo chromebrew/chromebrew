@@ -22,5 +22,5 @@ class Swig < Autotools
   depends_on 'glibc' # R
   depends_on 'pcre' => :build
   depends_on 'pcre2' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 end

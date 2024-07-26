@@ -38,7 +38,7 @@ class Gspell < Autotools
   depends_on 'ncurses' => :build
   depends_on 'pango' # R
   depends_on 'vala' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 end
