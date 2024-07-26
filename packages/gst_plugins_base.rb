@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'gstreamer'
+Package.load_package("#{__dir__}/gstreamer.rb")
 
 class Gst_plugins_base < Package
   description 'An essential, exemplary set of elements for GStreamer'

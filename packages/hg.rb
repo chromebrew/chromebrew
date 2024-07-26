@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'py3_mercurial'
+Package.load_package("#{__dir__}/py3_mercurial.rb")
 
 class Hg < Package
   description Py3_mercurial.description

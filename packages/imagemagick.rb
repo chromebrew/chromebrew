@@ -1,6 +1,6 @@
 require 'package'
-require_relative 'imagemagick6'
-require_relative 'imagemagick7'
+Package.load_package("#{__dir__}/imagemagick6.rb")
+Package.load_package("#{__dir__}/imagemagick7.rb")
 
 class Imagemagick < Package
   description Imagemagick7.description

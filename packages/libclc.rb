@@ -2,7 +2,7 @@
 # https://github.com/archlinux/svntogit-packages/raw/packages/libclc/trunk/PKGBUILD
 
 require 'package'
-require_relative 'llvm18_build'
+Package.load_package("#{__dir__}/llvm18_build.rb")
 
 class Libclc < Package
   description 'Library requirements of the OpenCL C programming language'

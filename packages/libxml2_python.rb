@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'py3_libxml2'
+Package.load_package("#{__dir__}/py3_libxml2.rb")
 
 class Libxml2_python < Package
   description Py3_libxml2.description

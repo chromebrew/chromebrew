@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'ruby_asciidoctor'
+Package.load_package("#{__dir__}/ruby_asciidoctor.rb")
 
 class Asciidoctor < Package
   description Ruby_asciidoctor.description

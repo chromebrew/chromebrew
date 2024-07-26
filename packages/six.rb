@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'py3_six'
+Package.load_package("#{__dir__}/py3_six.rb")
 
 class Six < Package
   description Py3_six.description
