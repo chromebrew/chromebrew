@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libx11 < Autotools
   description 'C interface to the X window system'
   homepage 'https://x.org/wiki/'
-  version '1.8.7'
+  version '1.8.10'
   license 'X11'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libx11.git'
@@ -11,9 +11,9 @@ class Libx11 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a5e7b10f0a4931a057e6583e254a58abf3230bab91f39d5b64fd027d1d102639',
-     armv7l: 'a5e7b10f0a4931a057e6583e254a58abf3230bab91f39d5b64fd027d1d102639',
-     x86_64: 'c089d6bf6eb3715240f02aacb87064f85aa2c03448dc9e34c18495f62ccd5e9a'
+    aarch64: '3e992951cf49ed047e4ef45e45b87b640e5aafed4a0614543d7c6957613dd463',
+     armv7l: '3e992951cf49ed047e4ef45e45b87b640e5aafed4a0614543d7c6957613dd463',
+     x86_64: '55c2d33cc673cec976f9f628204da0f02e83a92aae0936a42a231df81d5dd05c'
   })
 
   depends_on 'glibc' # R
