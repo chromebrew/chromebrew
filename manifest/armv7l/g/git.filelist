@@ -121,6 +121,7 @@
 /usr/local/libexec/git-core/git-rebase
 /usr/local/libexec/git-core/git-receive-pack
 /usr/local/libexec/git-core/git-reflog
+/usr/local/libexec/git-core/git-refs
 /usr/local/libexec/git-core/git-remote
 /usr/local/libexec/git-core/git-remote-ext
 /usr/local/libexec/git-core/git-remote-fd
