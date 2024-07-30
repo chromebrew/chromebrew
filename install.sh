@@ -267,7 +267,7 @@ function extract_install () {
 function update_device_json () {
   cd "${CREW_CONFIG_PATH}"
   echo_intra "Adding new information on ${1} to device.json..."
-  new_info=$(jq --arg name "$1" --arg version "$2" --arg sha256 "$3" '.installed_packages |= . + [{"name": $name, "version": $version, "binary_sha256": $sha256}]' device.json)
+  new_info=$(jq --arg name "$1" --arg version "$2" --arg sha256 "$3" '.installed_packages |= . + [{"name": $name, "version": $version, "sha256": $sha256}]' device.json)
   cat <<< "${new_info}" > device.json
 }
 
