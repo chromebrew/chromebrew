@@ -3,24 +3,24 @@ require 'buildsystems/qmake'
 class Qt5_webglplugin < Qmake
   description 'Qt WebGL Plugin'
   homepage 'https://www.qt.io/'
-  version '5.15.11-ddcff45'
+  version 'kde-5.15.14-3681356'
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtwebglplugin.git'
-  git_hashtag 'ddcff45e8f2ca9f229017b3ded62327d2fb50af2' # from kde/5.15 branch
+  git_hashtag '3681356904277e055759693551357e7e488d1be9'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2a67893a4fe472bf40f8bbb4ec36e682c50c1a371d677507e911fa35de59afc6',
-     armv7l: '2a67893a4fe472bf40f8bbb4ec36e682c50c1a371d677507e911fa35de59afc6',
-     x86_64: 'd2e2af42f3b8e1f2ece5a2ace99b2a9d476add5914d11aef835a3d9408212a2c'
+    aarch64: '532403093f52af6a53c464e785dc6730ae24f28b9b205e6fd59e6cad10334e12',
+     armv7l: '532403093f52af6a53c464e785dc6730ae24f28b9b205e6fd59e6cad10334e12',
+     x86_64: '965c20c9d3bc3335a58ffcb7fb7a72affd1b4c04681d6200240a2e175d6afbb7'
   })
 
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libglvnd' # R
   depends_on 'qt5_base' # R
