@@ -1,39 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class F2fs_tools < Package
+class F2fs_tools < Autotools
   description 'Tools for Flash-Friendly File System F2FS'
   homepage 'https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/about/'
-  version '1.14.0'
+  version '1.16.0'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-#{version}.tar.gz"
-  source_sha256 '619263d4e2022152a1472c1d912eaae104f20bd227ce0bb9d41d1d6608094bd1'
-  binary_compression 'tar.xz'
+  source_url 'https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '68b0d173285b156e90e7b8ef1283c0ce5b3b6b7273161baa7db8dc6a331d4e4a',
-      armv7l: '68b0d173285b156e90e7b8ef1283c0ce5b3b6b7273161baa7db8dc6a331d4e4a',
-        i686: '356f89bcbcc2fc12a91cfd7e63d86042cfd194554d34921c18b3c302e7277713',
-      x86_64: '133257b9d9544223b40995c810154f806697ace336e4ef5ed6e51e29811d2aab'
+    aarch64: 'afdb0486fb90ffae2dfd3e1c9d04af56c128accf35976e28e63cad76a67f014a',
+     armv7l: 'afdb0486fb90ffae2dfd3e1c9d04af56c128accf35976e28e63cad76a67f014a',
+       i686: 'e174d3d66e6696cbdae864ee8ab72db32a04becc60e33d66c15ab0e819599c94',
+     x86_64: '9b046f6b7fb6bdc5001b2e0362c15e1af0306b3b5f20158295e4680e2ac95593'
   })
 
+  depends_on 'lz4' # R
+  depends_on 'lzo'
   depends_on 'util_linux'
 
-  def self.patch
-    # /usr/bin/sg_write_buffer is provided in sg3_utils"
-    system "sed -i '/sg_write_buffer/d' tools/Makefile.am"
-  end
-
-  def self.build
-    system 'autoreconf -fi'
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --sbindir=#{CREW_PREFIX}/bin"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} sbindir=#{CREW_PREFIX}/bin install"
-  end
+  configure_options '--without-selinux'
 end
