@@ -23,15 +23,16 @@ class Gcc_build < Package
     })
   when '2.37'
     binary_sha256({
-      aarch64: '1a84028dcfc7b5a6e5a281a6684470ca9d6cb8fd83688d59505464f80d4f7180',
-       armv7l: '1a84028dcfc7b5a6e5a281a6684470ca9d6cb8fd83688d59505464f80d4f7180',
-       x86_64: '88aa03f986b1c3528ae155b0b5e886437b526a04e070fcd0dbf43a2684db01ac'
+      aarch64: '313fefb47070e7c3327628083552ceb253834e46a730bf8913497821ca34d626',
+       armv7l: '313fefb47070e7c3327628083552ceb253834e46a730bf8913497821ca34d626',
+       x86_64: 'd20b4cf318296405c4c6dc36078d9ccd68a090fd510e9fbb84f0bba55e77d2ff'
     })
   end
 
   depends_on 'binutils' => :build
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl' # R
