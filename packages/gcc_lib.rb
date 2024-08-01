@@ -25,13 +25,14 @@ class Gcc_lib < Package
     })
   when '2.37'
     binary_sha256({
-      aarch64: 'aede35bafb5eec105327e8663c06b409e4f13ad662e8e6e472f35fe715dda49c',
-       armv7l: 'aede35bafb5eec105327e8663c06b409e4f13ad662e8e6e472f35fe715dda49c',
-       x86_64: '0ecf2f8513b209d2f0ee098a3c9dba904d697e23b497e28fef90d07e9ba94277'
+      aarch64: '98ff61c1fd0d398658b08eaf84141deaa7a6d7b2f0fde5081c583234c0b70448',
+       armv7l: '98ff61c1fd0d398658b08eaf84141deaa7a6d7b2f0fde5081c583234c0b70448',
+       x86_64: '902d07004020783387b436eaf5f9fb9b9a22da608a73486328871396212f503d'
     })
   end
 
   depends_on 'gcc_build' => :build
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
 
   no_shrink

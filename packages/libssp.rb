@@ -26,15 +26,16 @@ class Libssp < Package
     })
   when '2.37'
     binary_sha256({
-      aarch64: 'abe1a6d16f4915676186a0bebb009d55ca5ac9e1bb59eb3c9e33e40bd13f10c1',
-       armv7l: 'abe1a6d16f4915676186a0bebb009d55ca5ac9e1bb59eb3c9e33e40bd13f10c1',
-       x86_64: '5c0ff4a2b81e1e3492289c81f1630c8f71e8cb7153fbd2848aac31166d53b667'
+      aarch64: '80428580f3ff02c0b8aa0b65ec64626e906b59d754851f289210360686bdb8d1',
+       armv7l: '80428580f3ff02c0b8aa0b65ec64626e906b59d754851f289210360686bdb8d1',
+       x86_64: '69114b1e6bcd208d14305e39de47e32aa8781af96f2ad3cced8333fb2d602ec3'
     })
   end
 
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' # R
+  depends_on 'glibc_lib' # R
 
   @gcc_name = 'libssp'
 

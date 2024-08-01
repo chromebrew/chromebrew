@@ -25,14 +25,15 @@ class Gcc_dev < Package
     })
   when '2.37'
     binary_sha256({
-      aarch64: '258cd5814cee743dd20f58a9eba503d9ad825123c47b4ca53ad0fa86d50ce38b',
-       armv7l: '258cd5814cee743dd20f58a9eba503d9ad825123c47b4ca53ad0fa86d50ce38b',
-       x86_64: 'd287e0279881675ae404ebdb4e99bcdb89297263e257e4a2a4b0b6b4e9876059'
+      aarch64: 'b78b3c593c74cc1f88cfacc0c59c0312780aed0652b63366f7691dffb3c2383f',
+       armv7l: 'b78b3c593c74cc1f88cfacc0c59c0312780aed0652b63366f7691dffb3c2383f',
+       x86_64: '2f73cca16717175052cb2dbe47d26b2e8ca7f07c48f84b7ee78ee4efa4dda41d'
     })
   end
 
   depends_on 'gcc_build' => :build
   depends_on 'gcc_lib' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl' # R
