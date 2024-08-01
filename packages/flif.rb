@@ -3,21 +3,25 @@ require 'package'
 class Flif < Package
   description 'FLIF is a novel lossless image format which outperforms PNG, lossless WebP, lossless BPG, lossless JPEG2000, and lossless JPEG XR in terms of compression ratio.'
   homepage 'https://flif.info/'
-  version '0.3'
+  version '0.4'
   license 'LGPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/FLIF-hub/FLIF/archive/v0.3.tar.gz'
-  source_sha256 'aa02a62974d78f8109cff21ecb6d805f1d23b05b2db7189cfdf1f0d97ff89498'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/FLIF-hub/FLIF.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '64f447f5fe90b8075259e6bf427387b7baa64a6d0dd7bbc49c05325bc20cf882',
-     armv7l: '64f447f5fe90b8075259e6bf427387b7baa64a6d0dd7bbc49c05325bc20cf882',
-     x86_64: 'd07dff394d43d90cb2e9270be4886f9d922020cb5c65e566785dce5422759b2f'
+    aarch64: '6519ef5d2153c6cf3fc8afefba83d2cf91e5b574475aea741b9eab98fbaebc8a',
+     armv7l: '6519ef5d2153c6cf3fc8afefba83d2cf91e5b574475aea741b9eab98fbaebc8a',
+     x86_64: '34b5622953ad3e7595fc416270deed8882964e4addde5916bae110cff01ae6fb'
   })
 
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libpng' # R
   depends_on 'libsdl2'
 
+  # Upstream has stopped development, so there's no real reason to try and upstream these.
   def self.patch
     system "sed -i 's,\$(PREFIX)/lib,#{CREW_DEST_LIB_PREFIX},g' src/Makefile"
     system "sed -i 's,export LD_LIBRARY_PATH,#export LD_LIBRARY_PATH,' src/Makefile"
