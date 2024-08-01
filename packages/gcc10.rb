@@ -50,6 +50,9 @@ class Gcc10 < Package
 
   def self.build
     @gcc_global_opts = <<~OPT.chomp
+      --build=#{CREW_TARGET} \
+      --host=#{CREW_TARGET} \
+      --target=#{CREW_TARGET} \
       --disable-bootstrap \
       --disable-install-libiberty \
       --disable-libmpx \

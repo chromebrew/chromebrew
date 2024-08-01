@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Gcc_lib < Package
   description 'GCC shared libs except libgccjit'
   homepage Gcc_build.homepage
-  version "14.1.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
+  version "14.2.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
@@ -15,13 +15,13 @@ class Gcc_lib < Package
   case LIBC_VERSION
   when '2.23'
     binary_sha256({
-         i686: '192f52beaa24ebbf3e1ae1787c9f12c75ad59e7f7885729d90b7c40b1177d796'
+         i686: '4f82296584a31339ea3d6212403cd844cab0e2c150878239c04211112be80181'
     })
   when '2.27', '2.32', '2.33', '2.35'
     binary_sha256({
-      aarch64: '82d95874bc0326967b821420afec5d809c2b883be10bca5798314a4490b11622',
-       armv7l: '82d95874bc0326967b821420afec5d809c2b883be10bca5798314a4490b11622',
-       x86_64: '3fd1626fa6f4fafe3ce4fceba5b9d0311132d754135c7545a29a042dc3fb91e3'
+      aarch64: '6ebddcef4b4ad7f7baf54c9f1e4912906ca36424d39e9ef3cda40466c8028b36',
+       armv7l: '6ebddcef4b4ad7f7baf54c9f1e4912906ca36424d39e9ef3cda40466c8028b36',
+       x86_64: 'c14b82e8240bc5db1a6634fc33d9405386be19af182f6364e7a318bc9f2714f8'
     })
   when '2.37'
     binary_sha256({

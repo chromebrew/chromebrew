@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version "14.1.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
+  version "14.2.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
@@ -16,13 +16,13 @@ class Libssp < Package
   case LIBC_VERSION
   when '2.23'
     binary_sha256({
-         i686: 'f1e548a41f577f4865675e8b280fb949c7a10459980b652d24b80d7f86e673a5'
+         i686: '482ada83ade66f12de9370a91e3b48bde523248fa870d4729d4644b2115c8e04'
     })
   when '2.27', '2.32', '2.33', '2.35'
     binary_sha256({
-      aarch64: '2b8d8b39ae8ad8e4ec938279b4a23468e7dc7f56c8c3f692f700a0d49f557855',
-       armv7l: '2b8d8b39ae8ad8e4ec938279b4a23468e7dc7f56c8c3f692f700a0d49f557855',
-       x86_64: '2471f3db91744ff93b97fae23e11167ef7f6bc88b51c0fad35c548e76175dbba'
+      aarch64: 'ed9b5e88ce0beb9862ee9ed4d75751ee7bf198bd5cb1916aa4508e57dd760b41',
+       armv7l: 'ed9b5e88ce0beb9862ee9ed4d75751ee7bf198bd5cb1916aa4508e57dd760b41',
+       x86_64: 'd10e99018633679a1503175da5e3b1aaab83f3da9e845d95ffa5450dbb191f9b'
     })
   when '2.37'
     binary_sha256({
@@ -38,9 +38,11 @@ class Libssp < Package
 
   @gcc_name = 'libssp'
 
-  @gcc_global_opts = '--disable-libmpx \
+  @gcc_global_opts = "--build=#{CREW_TARGET} \
+  --host=#{CREW_TARGET} \
+  --target=#{CREW_TARGET} \
+  --disable-libmpx \
   --disable-install-libiberty \
-  --disable-libssp \
   --disable-multilib \
   --disable-werror \
   --enable-cet=auto \
@@ -64,7 +66,7 @@ class Libssp < Package
   --with-mpfr \
   --with-pic \
   --with-system-libunwind \
-  --with-system-zlib'
+  --with-system-zlib"
 
   @cflags = '-fPIC -pipe'
   @cxxflags = '-fPIC -pipe'
