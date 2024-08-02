@@ -7291,6 +7291,11 @@ url: https://gitlab.com/rastersoft/devedeng/-/tags
 activity: low
 ---
 kind: url
+name: py3_dool
+url: https://github.com/scottchiefbaker/dool
+activity: low
+---
+kind: url
 name: py3_editables
 url: https://github.com/pfmoore/editables/tags
 activity: medium
