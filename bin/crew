@@ -1458,7 +1458,7 @@ def print_deps_tree(args)
   puts tree_view
 end
 
-def upload(pkg_name = nil)
+def upload(pkg_name = nil, pkg_version = nil)
   abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV.fetch('GITLAB_TOKEN', nil).nil?
 
   packages = pkg_name
@@ -1480,9 +1480,9 @@ def upload(pkg_name = nil)
     %w[x86_64 i686 armv7l].each do |arch|
       release_dir = "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}"
       pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
-      new_tarfile = Dir["#{release_dir}/#{package}-*-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
+      new_tarfile = Dir["#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
       if new_tarfile.nil?
-        puts "#{release_dir}/#{package}-#-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
+        puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
         next
       end
       if binary_compression_set.nil?
@@ -1856,7 +1856,7 @@ def upload_command(args)
   upload if args['<name>'].empty?
   args['<name>'].each do |name|
     search name
-    upload name if @pkg.name
+    upload(name, @pkg.version) if @pkg.name
   end
 end
 
