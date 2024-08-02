@@ -17,7 +17,7 @@ class Libxpm < Autotools
   })
 
   depends_on 'libx11'
-  depends_on 'util_macros'
+  depends_on 'xorg_macros'
   depends_on 'gettext'
   depends_on 'glibc' # R
   depends_on 'libbsd' # R

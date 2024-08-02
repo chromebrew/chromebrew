@@ -17,7 +17,7 @@ class Font_util < Package
      x86_64: '56739db34fb689edc5b5aea0c360c3ffdb12aec9e9bccfbd557d7c2c27542d47'
   })
 
-  depends_on 'util_macros'
+  depends_on 'xorg_macros'
 
   def self.build
     system "./configure #{CREW_OPTIONS}"

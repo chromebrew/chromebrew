@@ -45,7 +45,7 @@ class Buildessential < Package
   depends_on 'libtool'
   depends_on 'patch'
   depends_on 'sed'
-  depends_on 'util_macros'
+  depends_on 'xorg_macros'
   depends_on 'valgrind'
 
   # build documentation

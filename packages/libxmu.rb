@@ -28,7 +28,7 @@ class Libxmu < Package
   depends_on 'libxext' # R
   depends_on 'libxt' # R
   depends_on 'util_linux' # R
-  depends_on 'util_macros' => :build
+  depends_on 'xorg_macros' => :build
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
