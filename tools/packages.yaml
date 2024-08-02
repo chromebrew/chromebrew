@@ -9686,6 +9686,11 @@ url: https://pwmt.org/projects/zathura-pdf-poppler/download/
 activity: low
 ---
 kind: url
+name: zed
+url: https://github.com/zed-industries/zed/releases
+activity: high
+---
+kind: url
 name: zenity
 url: https://deb.debian.org/debian/pool/main/z/zenity/
 activity: low
