@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Cmake < CMake
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.30.1'
+  version '3.30.2'
   license 'CMake'
   compatibility 'all'
   source_url 'https://github.com/Kitware/CMake.git'
@@ -11,10 +11,10 @@ class Cmake < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bb5a41c355700949e510a83a99c021d8257a72d883e23d48f381c4e8619ac1f6',
-     armv7l: 'bb5a41c355700949e510a83a99c021d8257a72d883e23d48f381c4e8619ac1f6',
-       i686: '6715231b5cf6f4fd05a857450bf7b0a15851bc7f833f45a1ab738cba4003b4ad',
-     x86_64: 'a3eb056e1a518882f7a5bf385f7cc69b2266158a6b78d5b5c4b104d1e652fba1'
+    aarch64: 'aedc68bc0e6d9dcf324ef09d1d823dd385558c2c4191a4b6e8981b33b5c9aa5b',
+     armv7l: 'aedc68bc0e6d9dcf324ef09d1d823dd385558c2c4191a4b6e8981b33b5c9aa5b',
+       i686: 'f94b24c8d31bf62fc1c40c238c19e6ea8f9bcbac73138dbe25910e4c71eaa775',
+     x86_64: '5920eb0898999cd1801f1ce8b84ebfd7866154b96689e17b5a21ccfe8c07d5cd'
   })
 
   depends_on 'bzip2' => :build
@@ -34,8 +34,19 @@ class Cmake < CMake
   depends_on 'zlib' # R
   depends_on 'zstd' => :build
 
-  cmake_options '-DCMAKE_USE_SYSTEM_LIBRARIES=ON \
-     -DBUILD_QtDialog=NO'
+  def self.prebuild
+    @current_installed_cmake_major_version = `cmake --version | head -n 1 | awk '{print \$3}'`.chomp.split('.').reverse[1..2].reverse.join('.')
+    @new_cmake_major_version = version.split('.').reverse[1..2].reverse.join('.')
+    # Only do tests on major version changes.
+    @cmake_testing = @current_installed_cmake_major_version != @new_cmake_major_version
+    puts 'Build testing will be skipped since this is not a major version change from the existing cmake.'.orange unless @cmake_testing
+  end
+
+  cmake_options "-DCMake_BUILD_LTO=ON \
+     -DCMAKE_USE_SYSTEM_LIBRARIES=ON \
+     -DCMAKE_USE_SYSTEM_LIBARCHIVE=ON \
+     -DBUILD_TESTING=#{@cmake_testing ? 'YES' : 'NO'} \
+     -DBUILD_QtDialog=NO"
 
   # Failed tests:
   # BundleUtilities (armv7l,x86_64)
@@ -44,8 +55,7 @@ class Cmake < CMake
   # CMakeLib.testDebuggerNamedPipe-Script (armv7l,i686,x86_64)
   # RunCMake.CMakeRelease (armv7l,i686,x86_64)
   def self.check
-    @current_installed_cmake = `cmake --version | head -n 1 | awk '{print \$3}'`.chomp
-    return if @current_installed_cmake == version
+    return unless @cmake_testing
 
     system "#{CREW_NINJA} -C builddir test || true"
   end
