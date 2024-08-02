@@ -1,31 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Font_bh_ttf < Package
+class Font_bh_ttf < Autotools
   description 'Standard Bigelow and Holmes TrueType fonts'
-  homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.0.3'
+  homepage 'https://gitlab.freedesktop.org/xorg/font/bh-ttf'
+  version '1.0.4'
   license 'bh-luxi'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://www.x.org/releases/individual/font/font-bh-ttf-1.0.3.tar.bz2'
-  source_sha256 '1b4bea63271b4db0726b5b52c97994c3313b6023510349226908090501abd25f'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.freedesktop.org/xorg/font/bh-ttf.git'
+  git_hashtag "font-bh-ttf-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fcb876e84a386eea475d5f9f9533c3f689e90ce16b8329495a24f28a698b29fa',
-     armv7l: 'fcb876e84a386eea475d5f9f9533c3f689e90ce16b8329495a24f28a698b29fa',
-     x86_64: '6418dc920fcde48ed1bc5d914321a0be756f127d4b532e44f4482180e52cc01f'
+    aarch64: '4782f6ee51e308549bf33d9a24c4ea835dc64290a88c2aea7f25215c6dc842b0',
+     armv7l: '4782f6ee51e308549bf33d9a24c4ea835dc64290a88c2aea7f25215c6dc842b0',
+     x86_64: '35a96b54cbd548c336a946024591b8a289841610235d2936bb6143defe3e1f6d'
   })
 
   depends_on 'bdftopcf'
   depends_on 'font_util'
   depends_on 'mkfontscale'
-
-  def self.build
-    system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  depends_on 'xorg_macros' => :build
 end
