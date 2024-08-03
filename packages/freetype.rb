@@ -4,17 +4,17 @@ require 'buildsystems/meson'
 class Freetype < Meson
   description 'FreeType is a freely available software library to render fonts.'
   homepage 'https://freetype.org/'
-  version '2.13.2' # Update freetype in harfbuzz when updating freetype
+  version '2.13.2-1' # Update freetype in harfbuzz when updating freetype
   license 'FTL or GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/freetype/freetype.git'
-  git_hashtag "VER-#{version.tr('.', '-')}"
+  git_hashtag "VER-#{version.split('-').first.tr('.', '-')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1910229405d27c90a8dabeba5be6ea3884bdf5bfe48a6a1978a7a40af7879246',
-     armv7l: '1910229405d27c90a8dabeba5be6ea3884bdf5bfe48a6a1978a7a40af7879246',
-     x86_64: '8136147b106facdb16d82bdf3683615d68da9fd8735cab9d8a47e7c564520eae'
+    aarch64: '958e0cac92d47841889a468d33ac48237131ccde495953634a130e69399f1ed8',
+     armv7l: '958e0cac92d47841889a468d33ac48237131ccde495953634a130e69399f1ed8',
+     x86_64: 'fdc286d7ea8b83d6100b1c77a3fca43f6bbc7bc5f0a6fc627e7e1dd502f78389'
   })
 
   depends_on 'brotli' # R
