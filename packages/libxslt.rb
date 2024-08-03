@@ -1,20 +1,20 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxslt < Package
+class Libxslt < Autotools
   description 'Libxslt is the XSLT C library developed for the GNOME project.'
   homepage 'https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home'
-  version '1.1.34'
+  version '1.1.42'
   license 'MIT'
   compatibility 'all'
-  source_url 'http://xmlsoft.org/sources/libxslt-1.1.34.tar.gz'
-  source_sha256 '98b1bd46d6792925ad2dfe9a87452ea2adebf69dcb9919ffd55bf926a7f93f7f'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.gnome.org/GNOME/libxslt.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'df33590a8edfc86f29fada7d5b44e5914651259015e8df726603a2ffdc23bd42',
-     armv7l: 'df33590a8edfc86f29fada7d5b44e5914651259015e8df726603a2ffdc23bd42',
-       i686: 'd201b063ce46e40d354c3e89472aafd54fa524bd57e70b6ab03219e4f165bd93',
-     x86_64: '2ead1e30cb028f2f299056f8eea5bfb318f7346c6a65cfa4a891672560ed26bc'
+    aarch64: '68f4c8281e74d9aa4c2bf239b7594b0e9387b9939b0dedfa7f4eedc997967989',
+     armv7l: '68f4c8281e74d9aa4c2bf239b7594b0e9387b9939b0dedfa7f4eedc997967989',
+       i686: '9db4d4820596eeba61bc9a716fb8c6890e730d56da506855ce8d6cddff8b7d48',
+     x86_64: '88a5cf436936c419189bcb2cc19b4bb1c1077f8f70d7e8048e687866c150ab17'
   })
 
   depends_on 'docbook_xsl' => :build
@@ -22,17 +22,8 @@ class Libxslt < Package
   depends_on 'libgcrypt' # R
   depends_on 'libgpg_error' # R
   depends_on 'libxml2' # R
-  depends_on 'py3_libxml2' => :build
+  depends_on 'icu4c' # R
+  depends_on 'libxml2_autotools' # R
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-static'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--disable-static'
 end
