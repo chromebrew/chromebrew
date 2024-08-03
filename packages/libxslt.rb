@@ -11,10 +11,10 @@ class Libxslt < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7fd36a5455ade3ab19e3248f4efafe4d2cf40729494b6800fa13f2f7cc792c72',
-     armv7l: '7fd36a5455ade3ab19e3248f4efafe4d2cf40729494b6800fa13f2f7cc792c72',
-       i686: 'f8c7eb6ada8b628ede3a904e47cf4b58619af770045b241f6c121b0194e97fcf',
-     x86_64: '84dcb3813c0197bb8284b0d8915d4d17440c4626b52d2c010552f32c8a71bf38'
+    aarch64: '1aa45b119290663ec6bccf541425e47294ea0117bec4f830b2d82d44fb5ec078',
+     armv7l: '1aa45b119290663ec6bccf541425e47294ea0117bec4f830b2d82d44fb5ec078',
+       i686: '7dfbfd500ba728ae0a55a41293e5b6ed202edf5948c3b31fd6ee335177f73423',
+     x86_64: 'af7874aa559a2c665c6755c12b04658bc70e2a1c6641194caea58b8267c8156d'
   })
 
   depends_on 'docbook_xsl' => :build
