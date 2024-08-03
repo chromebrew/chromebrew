@@ -20,6 +20,7 @@ class Libarchive < Autotools
   depends_on 'acl' # R
   depends_on 'attr' # R
   depends_on 'bzip2' # R
+  depends_on 'expat' # R
   depends_on 'gcc_lib' => :build
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
@@ -29,8 +30,6 @@ class Libarchive < Autotools
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'expat' # R
-  depends_on 'libxml2_autotools' # R
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

@@ -23,7 +23,6 @@ class Gettext < Autotools
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libunistring' # R
-  depends_on 'libxml2_autotools' # R
   depends_on 'libxml2' # R
   depends_on 'ncurses' # R
   depends_on 'openjdk8' => :build

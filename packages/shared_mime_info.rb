@@ -22,7 +22,6 @@ class Shared_mime_info < Meson
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'icu4c' # R
-  depends_on 'libxml2_autotools' # R
   depends_on 'libxml2' # R
   depends_on 'xmlto' => :build
 
