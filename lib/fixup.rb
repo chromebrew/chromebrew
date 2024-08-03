@@ -34,6 +34,7 @@ pkg_update_arr = [
   { pkg_name: 'btrfsprogs', pkg_rename: 'btrfs_progs', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'bz2', pkg_rename: 'bzip2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'bz3', pkg_rename: 'bzip3', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'chrome', pkg_rename: 'google_chrome', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'codium', pkg_rename: 'vscodium', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'dstat', pkg_rename: 'py3_dool', pkg_deprecated: nil, comments: 'Following upstream rename.' },
   { pkg_name: 'epydoc', pkg_rename: nil, pkg_deprecated: true, comments: 'Abandoned upstream, only supports Python 2.' },
