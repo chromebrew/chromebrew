@@ -25,7 +25,7 @@ class Xorg_xeyes < Package
   depends_on 'libxmu'
   depends_on 'libxrender'
   depends_on 'libxi'
-  depends_on 'util_macros' => :build
+  depends_on 'xorg_macros' => :build
   depends_on 'libxfixes' => :build
   depends_on 'glibc' # R
   depends_on 'libxcb' # R

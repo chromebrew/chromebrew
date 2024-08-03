@@ -17,7 +17,7 @@ class Xbitmaps < Package
      x86_64: '161b342836f77df11606c5fa965b38912022d108569313d504a0bc5d1bce4c16'
   })
 
-  depends_on 'util_macros' => :build
+  depends_on 'xorg_macros' => :build
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"

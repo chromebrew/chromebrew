@@ -1,31 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Font_isas_misc < Package
+class Font_isas_misc < Autotools
   description '72dpi PCF versions of the Chinese Song Ti fonts'
-  homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.0.3'
+  homepage 'https://gitlab.freedesktop.org/xorg/font/isas-misc'
+  version '1.0.4'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://www.x.org/releases/individual/font/font-isas-misc-1.0.3.tar.bz2'
-  source_sha256 '5824ab4b485951107dd245b8f7717d2822f1a6dbf6cea98f1ac7f49905c0a867'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.freedesktop.org/xorg/font/isas-misc.git'
+  git_hashtag "font-isas-misc-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '853abfd7c65dd75187f6137b6fba9154cb02f86e1c1d02c7375b89345a3682de',
-     armv7l: '853abfd7c65dd75187f6137b6fba9154cb02f86e1c1d02c7375b89345a3682de',
-     x86_64: 'af96111a02b892867c225abc24a44b2f56df766efdd7ff6e6e8a6825b9296f6a'
+    aarch64: 'f853fe754a8eecad25c634cc6e79f01bc7f262a2fe2b6b2f1478da42ff50f22d',
+     armv7l: 'f853fe754a8eecad25c634cc6e79f01bc7f262a2fe2b6b2f1478da42ff50f22d',
+     x86_64: '52b63203c3f199b7cab057b3fc8b674cf3a2fd80244f8dbd9a9a699385174838'
   })
 
   depends_on 'bdftopcf'
   depends_on 'font_util'
   depends_on 'mkfontscale'
-
-  def self.build
-    system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  depends_on 'xorg_macros' => :build
 end

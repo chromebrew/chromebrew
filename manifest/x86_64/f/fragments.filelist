@@ -5,6 +5,8 @@
 /usr/local/share/glib-2.0/schemas/de.haeckerfelix.Fragments.gschema.xml
 /usr/local/share/icons/hicolor/scalable/apps/de.haeckerfelix.Fragments.svg
 /usr/local/share/icons/hicolor/symbolic/apps/de.haeckerfelix.Fragments-symbolic.svg
+/usr/local/share/locale/be/LC_MESSAGES/fragments.mo
+/usr/local/share/locale/bg/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/ca/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/cs/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/da/LC_MESSAGES/fragments.mo
@@ -14,11 +16,13 @@
 /usr/local/share/locale/eo/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/es/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/eu/LC_MESSAGES/fragments.mo
+/usr/local/share/locale/fa/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/fi/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/fr/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/fur/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/gl/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/he/LC_MESSAGES/fragments.mo
+/usr/local/share/locale/hi/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/hr/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/hu/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/id/LC_MESSAGES/fragments.mo

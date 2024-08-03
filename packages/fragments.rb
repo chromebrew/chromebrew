@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Fragments < Meson
   description 'Fragments is an easy to use BitTorrent client for the GNOME desktop environment.'
   homepage 'https://gitlab.gnome.org/World/Fragments'
-  version '2.1.1'
+  version '3.0.1'
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/World/Fragments.git'
@@ -11,9 +11,9 @@ class Fragments < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '33e98a3b0d123ceca18cd75b6dbff51d2954d68e4dbc22f58bb029db2ad47d8b',
-     armv7l: '33e98a3b0d123ceca18cd75b6dbff51d2954d68e4dbc22f58bb029db2ad47d8b',
-     x86_64: 'c6f41d839e093bb7a70c23d2cce442814aed0d31b5468b7032b00b2fc93bb39e'
+    aarch64: '25d0efa28dd021a0e720f619504ba2e27dedc05bdc3da2b4210dc8cb5c4d97ed',
+     armv7l: '25d0efa28dd021a0e720f619504ba2e27dedc05bdc3da2b4210dc8cb5c4d97ed',
+     x86_64: '7cb18718258f6b20b31f65e61f072609e13bc79c7fe6b7efd7722222d2ae34fd'
   })
 
   depends_on 'appstream' => :build
