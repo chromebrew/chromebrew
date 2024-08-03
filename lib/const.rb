@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.49.6'
+CREW_VERSION = '1.49.9'
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -40,7 +40,7 @@ else
   HOME = File.join(CREW_PREFIX, Dir.home)
 end
 
-CREW_ESSENTIAL_PACKAGES = %w[gcc_lib glibc gmp ruby zlibpkg zstd]
+CREW_ESSENTIAL_PACKAGES = %w[gcc_lib glibc gmp ruby zlib zstd]
 
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', '0').eql?('1')
 
@@ -217,9 +217,6 @@ CREW_OPTIONS = <<~OPT.chomp
   --libdir=#{CREW_LIB_PREFIX} \
   --mandir=#{CREW_MAN_PREFIX} \
   --disable-dependency-tracking \
-  --build=#{CREW_TARGET} \
-  --host=#{CREW_TARGET} \
-  --target=#{CREW_TARGET} \
   --program-prefix='' \
   --program-suffix=''
 OPT

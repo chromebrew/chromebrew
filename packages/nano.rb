@@ -20,7 +20,7 @@ class Nano < Package
   depends_on 'filecmd' # R
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "mold -run \

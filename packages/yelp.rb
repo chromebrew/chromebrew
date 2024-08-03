@@ -40,7 +40,7 @@ class Yelp < Autotools
   depends_on 'xorg_server' => :build
   depends_on 'xzutils' # R
   depends_on 'yelp_xsl' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

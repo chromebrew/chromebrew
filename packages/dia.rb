@@ -37,7 +37,7 @@ class Dia < Meson
   depends_on 'py3_six' => :build
   depends_on 'python3' # R
   depends_on 'swig1' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

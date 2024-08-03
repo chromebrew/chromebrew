@@ -15,6 +15,5 @@
 /usr/local/share/feh/images/feh.svg
 /usr/local/share/feh/images/menubg_default.png
 /usr/local/share/icons/hicolor/48x48/apps/feh.png
-/usr/local/share/icons/hicolor/icon-theme.cache
 /usr/local/share/icons/hicolor/scalable/apps/feh.svg
-/usr/local/share/man/man1/feh.1.gz
+/usr/local/share/man/man1/feh.1.zst

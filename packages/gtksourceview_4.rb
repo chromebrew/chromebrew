@@ -34,7 +34,7 @@ class Gtksourceview_4 < Meson
   depends_on 'vulkan_icd_loader'
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
   no_upstream_update

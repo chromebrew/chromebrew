@@ -48,7 +48,7 @@ class Evolution_data_server < CMake
   depends_on 'vulkan_icd_loader' # R
   depends_on 'webkit2gtk_4_1' # R
   depends_on 'webkitgtk_6' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

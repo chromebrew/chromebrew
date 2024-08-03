@@ -32,7 +32,7 @@ class Mapserver < Package
   depends_on 'libpng' # R
   depends_on 'libxml2' # R
   depends_on 'protobuf_c' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     Dir.mkdir 'builddir'

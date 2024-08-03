@@ -36,7 +36,7 @@ class Gtksourceview_3 < Autotools
   depends_on 'pango' # R
   depends_on 'vala' => :build
   depends_on 'vulkan_icd_loader' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
   no_upstream_update

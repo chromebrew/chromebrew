@@ -25,7 +25,7 @@ class Cups < Package
   depends_on 'llvm18_dev' => :build if %w[armv7l aarch64].include?(ARCH)
   depends_on 'openssl' # R
   depends_on 'psmisc' # L
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_env_options
   no_fhs

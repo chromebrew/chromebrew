@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'youtube_dl'
+Package.load_package("#{__dir__}/youtube_dl.rb")
 
 class Youtubedl < Package
   description Youtube_dl.description

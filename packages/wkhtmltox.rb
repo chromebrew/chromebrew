@@ -18,7 +18,7 @@ class Wkhtmltox < Package
   depends_on 'libx11' # R
   depends_on 'libxext' # R
   depends_on 'libxrender' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_PREFIX

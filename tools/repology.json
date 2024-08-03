@@ -75,7 +75,7 @@
     "name": "acquia_cli",
     "description": "Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.",
     "homepage": "https://github.com/acquia/cli",
-    "version": "2.27.0",
+    "version": "2.28.1",
     "license": "GPL-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -259,7 +259,7 @@
     "name": "angle_grinder",
     "description": "Slice and dice logs on the command line",
     "homepage": "https://github.com/rcoh/angle-grinder",
-    "version": "0.19.2",
+    "version": "0.19.4",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -275,7 +275,7 @@
     "name": "ansifilter",
     "description": "Ansifilter parses common ANSI codes to remove them or to convert them to another colored text file format (HTML, TeX, LaTeX, RTF, Pango or BBCode).",
     "homepage": "http://andre-simon.de/doku/ansifilter/en/ansifilter.php",
-    "version": "2.10",
+    "version": "2.20",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -355,7 +355,7 @@
     "name": "apr",
     "description": "The mission of the Apache Portable Runtime (APR) project is to create and maintain software libraries that provide a predictable and consistent interface to underlying platform-specific implementations.  APR is the base portability library.",
     "homepage": "https://apr.apache.org/",
-    "version": "1.7.4",
+    "version": "1.7.4-1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -611,7 +611,7 @@
     "name": "audacity",
     "description": "Audacity is the world's most popular audio editing and recording app",
     "homepage": "https://www.audacityteam.org/",
-    "version": "3.6.0",
+    "version": "3.6.1",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
@@ -728,18 +728,18 @@
     "compatibility": "all"
   },
   {
-    "name": "aws_cli",
-    "description": "Universal Command Line Interface for Amazon Web Services",
-    "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.32.114",
-    "license": "Apache-2.0",
-    "compatibility": "all"
-  },
-  {
     "name": "aws_shell",
     "description": "An integrated shell for working with the AWS CLI.",
     "homepage": "https://github.com/awslabs/aws-shell",
     "version": "0.2.1",
+    "license": "Apache-2.0",
+    "compatibility": "all"
+  },
+  {
+    "name": "awscli",
+    "description": "Universal Command Line Interface for Amazon Web Services",
+    "homepage": "https://github.com/aws/aws-cli",
+    "version": "1.33.27",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -843,7 +843,7 @@
     "name": "bashdb",
     "description": "The Bash Debugger Project is a source-code debugger for bash that follows the gdb command syntax.",
     "homepage": "https://bashdb.sourceforge.net/",
-    "version": "5.0-1.1.2-abac",
+    "version": "5.0-1.1.2-1f1118d",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -963,7 +963,7 @@
     "name": "bind",
     "description": "BIND is open source software that enables you to publish your Domain Name System (DNS) information on the Internet, and to resolve DNS queries for your users.",
     "homepage": "https://www.isc.org/bind/",
-    "version": "9.18.21",
+    "version": "9.20.0",
     "license": "Apache-2.0, BSD, BSD-2, GPL-2, HPND, ISC and MPL-2.0",
     "compatibility": "all"
   },
@@ -1067,7 +1067,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.67.134",
+    "version": "1.68.128",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1451,7 +1451,7 @@
     "name": "chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "126.0.6478.182-1",
+    "version": "127.0.6533.72-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -2035,7 +2035,7 @@
     "name": "curl",
     "description": "Command line tool and library for transferring data with URLs.",
     "homepage": "https://curl.se/",
-    "version": "8.8.0",
+    "version": "8.9.0",
     "license": "curl",
     "compatibility": "all"
   },
@@ -2555,7 +2555,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "126.0.2592.87-1",
+    "version": "127.0.2651.74-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -3011,7 +3011,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "128.0",
+    "version": "128.0.3",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3019,7 +3019,7 @@
     "name": "firejail",
     "description": "Firejail is a SUID program that reduces the risk of security breaches by restricting the running environment of untrusted applications\n  by using Linux namespaces and seccomp-bpf.",
     "homepage": "https://firejail.wordpress.com",
-    "version": "0.9.54",
+    "version": "0.9.72-60ea220",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -3379,7 +3379,7 @@
     "name": "fpc",
     "description": "Free Pascal is a 32, 64 and 16 bit professional Pascal compiler.",
     "homepage": "https://www.freepascal.org/",
-    "version": "3.2.2",
+    "version": "3.2.3",
     "license": "GPL-2 and LGPL-2.1-with-linking-exception",
     "compatibility": "all"
   },
@@ -3442,7 +3442,7 @@
   {
     "name": "freetds",
     "description": "FreeTDS is a set of libraries for Unix and Linux that allows your programs to natively talk to Microsoft SQL Server and Sybase databases.",
-    "homepage": "http://www.freetds.org/",
+    "homepage": "https://www.freetds.org/",
     "version": "1.2.18",
     "license": "GPL-2",
     "compatibility": "all"
@@ -3627,7 +3627,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "484.0.0",
+    "version": "485.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -5187,7 +5187,7 @@
     "name": "httpd",
     "description": "The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows.",
     "homepage": "https://httpd.apache.org/",
-    "version": "2.4.39",
+    "version": "2.4.62",
     "license": "GPL-2+",
     "compatibility": "all"
   },
@@ -8147,7 +8147,7 @@
     "name": "liburcu",
     "description": "Userspace RCU (read-copy-update) library.",
     "homepage": "https://liburcu.org/",
-    "version": "0.14.0-1",
+    "version": "0.14.0-2",
     "license": "LGPLv2.1",
     "compatibility": "all"
   },
@@ -9442,7 +9442,7 @@
   {
     "name": "minizip",
     "description": "Minizip is a simple package to zip/unzip files, from zlib.",
-    "homepage": "https://www.zlib.net/",
+    "homepage": "https://zlib.net",
     "version": "1.3.1",
     "license": "zlib",
     "compatibility": "all"
@@ -10291,7 +10291,7 @@
     "name": "networkmanager",
     "description": "Network connection manager and user applications",
     "homepage": "https://wiki.gnome.org/Projects/NetworkManager",
-    "version": "1.48.2",
+    "version": "1.48.6",
     "license": "GPL-2+ and LGPL-2.1+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -10323,7 +10323,7 @@
     "name": "nginx",
     "description": "nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.",
     "homepage": "http://nginx.org/",
-    "version": "1.19.6",
+    "version": "1.26.1",
     "license": "BSD-2, BSD, SSLeay, MIT, GPL-2 and GPL-2+",
     "compatibility": "all"
   },
@@ -11931,7 +11931,7 @@
     "name": "powershell",
     "description": "Powershell is a cross-platform, task-based command-line shell and scripting language that helps rapidly automate tasks that manage operating systems and processes",
     "homepage": "https://learn.microsoft.com/en-us/powershell/",
-    "version": "7.4.3",
+    "version": "7.4.4",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -12770,7 +12770,7 @@
   {
     "name": "py3_minidb",
     "description": "Minidb is a simple SQLite3-based store for Python objects.",
-    "homepage": "http://thp.io/2010/minidb/",
+    "homepage": "https://thp.io/2010/minidb/",
     "version": "2.0.5",
     "license": "ISC",
     "compatibility": "all"
@@ -14219,7 +14219,7 @@
     "name": "rust",
     "description": "Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.",
     "homepage": "https://www.rust-lang.org/",
-    "version": "1.79.0",
+    "version": "1.80.0",
     "license": "Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -14530,7 +14530,7 @@
   {
     "name": "shhmsg",
     "description": "C-functions for error messages, verbose messages and 'normal' messages in terminal-based programs.",
-    "homepage": "http://shh.thathost.com/pub-unix/#sshmsg",
+    "homepage": "https://shh.thathost.com/pub-unix/#sshmsg",
     "version": "1.4.2-2",
     "license": "Artistic",
     "compatibility": "all"
@@ -14538,7 +14538,7 @@
   {
     "name": "shhopt",
     "description": "C-functions for parsing command line options, both traditional one-character options, and GNU'ish --long-options.",
-    "homepage": "http://shh.thathost.com/pub-unix/#sshopt",
+    "homepage": "https://shh.thathost.com/pub-unix/#sshopt",
     "version": "1.1.7-2",
     "license": "Artistic",
     "compatibility": "all"
@@ -14595,7 +14595,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.16.0",
+    "version": "7.17.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -14992,6 +14992,14 @@
     "compatibility": "all"
   },
   {
+    "name": "stacer",
+    "description": "Stacer is an open source system optimizer and application monitor",
+    "homepage": "https://oguzhaninan.github.io/Stacer-Web/",
+    "version": "1.1.0",
+    "license": "GPL-3",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "stack",
     "description": "The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.",
     "homepage": "https://docs.haskellstack.org/",
@@ -15003,7 +15011,7 @@
     "name": "starship",
     "description": "Cross-shell prompt for astronauts",
     "homepage": "https://starship.rs",
-    "version": "1.19.0",
+    "version": "1.20.0",
     "license": "ISC",
     "compatibility": "all"
   },
@@ -16739,9 +16747,9 @@
     "name": "xfsprogs",
     "description": "XFS filesystem utilities",
     "homepage": "https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/",
-    "version": "6.5.0",
+    "version": "6.9.0",
     "license": "LGPL-2.1",
-    "compatibility": "all"
+    "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "xhost",
@@ -17200,9 +17208,9 @@
     "compatibility": "all"
   },
   {
-    "name": "zlibpkg",
+    "name": "zlib",
     "description": "zlib is a massively spiffy yet delicately unobtrusive compression library.",
-    "homepage": "https://www.zlib.net/",
+    "homepage": "https://zlib.net",
     "version": "1.3.1",
     "license": "zlib",
     "compatibility": "all"

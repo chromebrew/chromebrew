@@ -5726,6 +5726,11 @@ url: https://github.com/mesonbuild/meson/releases
 activity: high
 ---
 kind: url
+name: metadata_cleaner
+url: https://gitlab.com/rmnvgr/metadata-cleaner/-/tags
+activity: low
+---
+kind: url
 name: metasploit
 url: https://github.com/rapid7/metasploit-framework/releases
 activity: high
@@ -7286,6 +7291,11 @@ url: https://gitlab.com/rastersoft/devedeng/-/tags
 activity: low
 ---
 kind: url
+name: py3_dool
+url: https://github.com/scottchiefbaker/dool
+activity: low
+---
+kind: url
 name: py3_editables
 url: https://github.com/pfmoore/editables/tags
 activity: medium
@@ -7314,6 +7324,11 @@ kind: url
 name: py3_lxml
 url: https://github.com/lxml/lxml/releases
 activity: high
+---
+kind: url
+name: py3_mat2
+url: https://0xacab.org/jvoisin/mat2/-/tags
+activity: low
 ---
 kind: url
 name: py3_mercurial
@@ -9669,6 +9684,11 @@ kind: url
 name: zathura_poppler_pdf
 url: https://pwmt.org/projects/zathura-pdf-poppler/download/
 activity: low
+---
+kind: url
+name: zed
+url: https://github.com/zed-industries/zed/releases
+activity: high
 ---
 kind: url
 name: zenity

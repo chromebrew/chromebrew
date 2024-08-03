@@ -3,18 +3,17 @@ require 'package'
 class Xfsprogs < Package
   description 'XFS filesystem utilities'
   homepage 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/'
-  version '6.5.0'
+  version '6.9.0'
   license 'LGPL-2.1'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '11346e490774fd09e12b234d71a487ed3ac3686d57814b0ef90cfb33d0b6c145',
-     armv7l: '11346e490774fd09e12b234d71a487ed3ac3686d57814b0ef90cfb33d0b6c145',
-       i686: '8dc50a04c13a40f2d6bc663af487b3003bc27f0800be2d39847658f18894b66c',
-     x86_64: '9c6c7e554f35bb08a13e2d1ff31b032f6da0080238f1db00c2871584e6b80c37'
+    aarch64: 'de01befdf6802bf679cec210aeb79a3f2b3996570ee000482deef5ece4a6bc1a',
+     armv7l: 'de01befdf6802bf679cec210aeb79a3f2b3996570ee000482deef5ece4a6bc1a',
+     x86_64: 'ecf25239f220b2507926d43db68cbcf5a280106d40a0f72ecabe9272dec5c2a8'
   })
 
   depends_on 'gcc_lib' # R

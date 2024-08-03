@@ -2,7 +2,7 @@ require 'package'
 
 class Freetds < Package
   description 'FreeTDS is a set of libraries for Unix and Linux that allows your programs to natively talk to Microsoft SQL Server and Sybase databases.'
-  homepage 'http://www.freetds.org/'
+  homepage 'https://www.freetds.org/'
   version '1.2.18'
   license 'GPL-2'
   compatibility 'all'

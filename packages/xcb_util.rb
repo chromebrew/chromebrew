@@ -18,7 +18,7 @@ class Xcb_util < Package
   })
 
   depends_on 'libxcb'
-  depends_on 'util_macros'
+  depends_on 'xorg_macros'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"

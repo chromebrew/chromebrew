@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'glibc_build237'
+Package.load_package("#{__dir__}/glibc_build237.rb")
 
 class Glibc_lib237 < Package
   description 'glibc libraries'

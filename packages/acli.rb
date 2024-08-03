@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'acquia_cli'
+Package.load_package("#{__dir__}/acquia_cli.rb")
 
 class Acli < Package
   description Acquia_cli.description

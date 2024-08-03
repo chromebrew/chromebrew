@@ -28,7 +28,7 @@ class Gnome_docking_library < Autotools
   depends_on 'icu4c' # R
   depends_on 'libxml2' # R
   depends_on 'pango' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 end

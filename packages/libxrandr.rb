@@ -19,7 +19,7 @@ class Libxrandr < Package
 
   depends_on 'libxext'
   depends_on 'libxrender'
-  depends_on 'util_macros' => :build
+  depends_on 'xorg_macros' => :build
   depends_on 'xorg_proto' => :build
   depends_on 'glibc' # R
   depends_on 'libbsd' # R

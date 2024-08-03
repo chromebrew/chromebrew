@@ -2,7 +2,7 @@ require 'package'
 
 class Shhmsg < Package
   description 'C-functions for error messages, verbose messages and \'normal\' messages in terminal-based programs.'
-  homepage 'http://shh.thathost.com/pub-unix/#sshmsg'
+  homepage 'https://shh.thathost.com/pub-unix/#sshmsg'
   version '1.4.2-2'
   license 'Artistic'
   compatibility 'all'

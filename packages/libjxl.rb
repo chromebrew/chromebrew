@@ -38,7 +38,7 @@ class Libjxl < Package
   depends_on 'openexr' # R
   depends_on 'pango' => :build
   depends_on 'xdg_utils' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_env_options
 

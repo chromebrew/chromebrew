@@ -44,7 +44,7 @@ class Jellyfin_media_player < Package
   depends_on 'qt5_x11extras' # R
   depends_on 'shaderc' # L
   depends_on 'sommelier' # L
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system "sed -i 's/gold/#{CREW_LINKER}/g' CMakeModules/CompilerFlags.cmake"

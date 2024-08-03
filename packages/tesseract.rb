@@ -56,7 +56,7 @@ class Tesseract < CMake
   depends_on 'openssl' => :build
   depends_on 'pango' # R
   depends_on 'xzutils' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' => :build
 
   git_fetchtags

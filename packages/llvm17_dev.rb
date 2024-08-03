@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'llvm17_build'
+Package.load_package("#{__dir__}/llvm17_build.rb")
 
 class Llvm17_dev < Package
   description 'LLVM: Everything except libLLVM & llvm-strip'
@@ -29,7 +29,7 @@ class Llvm17_dev < Package
   depends_on 'llvm17_lib' # R
   depends_on 'ncurses' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_shrink

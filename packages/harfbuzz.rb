@@ -1,7 +1,7 @@
 require 'buildsystems/meson'
-require_relative 'cairo'
-require_relative 'fontconfig'
-require_relative 'freetype'
+Package.load_package("#{__dir__}/cairo.rb")
+Package.load_package("#{__dir__}/fontconfig.rb")
+Package.load_package("#{__dir__}/freetype.rb")
 # build order: harfbuzz => freetype => fontconfig => cairo => pango
 
 class Harfbuzz < Meson
@@ -44,7 +44,7 @@ class Harfbuzz < Meson
   depends_on 'patchelf' => :build
   depends_on 'pcre' => :build
   depends_on 'pixman' # R Needed for cairo subproject.
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   # provides freetype (sans harfbuzz), ragel, and a non-x11 cairo stub
 

@@ -1,31 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Font_mutt_misc < Package
+class Font_mutt_misc < Autotools
   description '100dpi PCF versions of the ClearlyU fonts'
-  homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.0.3'
+  homepage 'https://gitlab.freedesktop.org/xorg/font/mutt-misc'
+  version '1.0.4'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://www.x.org/releases/individual/font/font-mutt-misc-1.0.3.tar.bz2'
-  source_sha256 'bd5f7adb34367c197773a9801df5bce7b019664941900b2a31fbfe1ff2830f8f'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.freedesktop.org/xorg/font/mutt-misc.git'
+  git_hashtag "font-mutt-misc-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5a0bcf47ee4af1c9f15feb3e463f37558240558fc145e046f23c6ada4acb4a9b',
-     armv7l: '5a0bcf47ee4af1c9f15feb3e463f37558240558fc145e046f23c6ada4acb4a9b',
-     x86_64: '318656cca427983462ba4777ce2f7104bbe843a58c2d5610888f33e462f0eda9'
+    aarch64: 'be5e31d4e84b6dc098327963f8175d71a3e2ee90eb67bbfe5b5b70ddb2e80338',
+     armv7l: 'be5e31d4e84b6dc098327963f8175d71a3e2ee90eb67bbfe5b5b70ddb2e80338',
+     x86_64: '9b0a25a23a9ed9e5007c32c0693982d9446f5213b5888b0967bdb20457a9a4a9'
   })
 
   depends_on 'bdftopcf'
   depends_on 'font_util'
   depends_on 'mkfontscale'
-
-  def self.build
-    system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  depends_on 'xorg_macros' => :build
 end

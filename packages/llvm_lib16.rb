@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'llvm16_build'
+Package.load_package("#{__dir__}/llvm16_build.rb")
 
 class Llvm_lib16 < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'

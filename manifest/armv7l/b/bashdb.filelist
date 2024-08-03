@@ -150,6 +150,5 @@
 /usr/local/share/bashdb/lib/unescape.sh
 /usr/local/share/bashdb/lib/validate.sh
 /usr/local/share/bashdb/set-d-vars.sh
-/usr/local/share/info/bashdb.info.gz
-/usr/local/share/info/dir.gz
-/usr/local/share/man/man1/bashdb.1.gz
+/usr/local/share/info/bashdb.info.zst
+/usr/local/share/man/man1/bashdb.1.zst

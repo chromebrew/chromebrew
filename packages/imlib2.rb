@@ -48,7 +48,7 @@ class Imlib2 < Package
   depends_on 'openjpeg' # R
   depends_on 'pango' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.build

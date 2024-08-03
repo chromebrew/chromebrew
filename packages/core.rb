@@ -83,6 +83,6 @@ class Core < Package
   depends_on 'xzutils'
   depends_on 'xxhash'
   depends_on 'zip'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
   depends_on 'zstd'
 end

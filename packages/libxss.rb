@@ -24,7 +24,7 @@ class Libxss < Package
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
   depends_on 'libxext' # R
-  depends_on 'util_macros' => :build
+  depends_on 'xorg_macros' => :build
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

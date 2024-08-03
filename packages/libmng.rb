@@ -20,7 +20,7 @@ class Libmng < Autotools
   depends_on 'lcms'
   depends_on 'libjpeg_turbo'
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 end

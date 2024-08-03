@@ -92,7 +92,7 @@ class Shotcut < Package
   depends_on 'xcb_util' # R
   depends_on 'xzutils' # R
   depends_on 'zimg' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.build

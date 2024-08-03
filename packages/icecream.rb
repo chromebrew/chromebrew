@@ -38,7 +38,7 @@ class Icecream < Package
   depends_on 'perl_xml_sax_base' => :build
   depends_on 'perl_xml_sax' => :build
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.patch
