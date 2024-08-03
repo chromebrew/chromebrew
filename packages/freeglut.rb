@@ -1,29 +1,20 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Freeglut < Package
+class Freeglut < CMake
   description 'FreeGLUT is a free and open-source alternative to the OpenGL Utility Toolkit (GLUT) library.'
   homepage 'https://freeglut.sourceforge.net/'
-  version '3.2.1'
+  version '3.6.0'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://downloads.sourceforge.net/project/freeglut/freeglut/3.2.1/freeglut-3.2.1.tar.gz'
-  source_sha256 'd4000e02102acaf259998c870e25214739d1f16f67f99cb35e4f46841399da68'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/freeglut/freeglut.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '49c22c36b1c02bd9ea8b439e05ce83d25ff2b0bec96da91366f57500abaafc57',
-     armv7l: '49c22c36b1c02bd9ea8b439e05ce83d25ff2b0bec96da91366f57500abaafc57',
-     x86_64: 'f834844fb8a0afb528d602513bef51306afcba74f8361707f28d052d8e28d4d7'
+    aarch64: '7326dbfdaad596eb354a0b94d1007e688fb91e17b168931fcc8f68545da0d0f5',
+     armv7l: '7326dbfdaad596eb354a0b94d1007e688fb91e17b168931fcc8f68545da0d0f5',
+     x86_64: 'ba04cdbe7992fb0253178ed0cae5a1ddf39a05800c78e8ae42b41e7b7f8d7173'
   })
 
   depends_on 'libglu'
-
-  def self.build
-    system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_BUILD_TYPE=release"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
