@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Whatsapp < Package
+class Whatsapp_for_linux < Cmake
   description 'An unofficial WhatsApp desktop application for Linux.'
   homepage 'https://github.com/eneshecan/whatsapp-for-linux'
-  version '1.6.3'
+  version '1.6.5'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/eneshecan/whatsapp-for-linux.git'
@@ -15,13 +15,4 @@ class Whatsapp < Package
   depends_on 'libayatana_appindicator'
   depends_on 'libcanberra'
   depends_on 'hunspell'
-
-  def self.build
-    system "cmake -G ninja -B builddir #{CREW_CMAKE_OPTIONS}"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
 end
