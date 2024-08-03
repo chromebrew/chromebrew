@@ -11,7 +11,7 @@ class Libspiro < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: 'efbea45ee35af7dfc07638377d1b7501ab385bb8fa868b77f9af09abbb638056',
      armv7l: 'efbea45ee35af7dfc07638377d1b7501ab385bb8fa868b77f9af09abbb638056',
        i686: '098a3eaa0ae145c76d8acd3a06ad5a7838e3e478058c9b7c95e3d4a9f5f108f3',
      x86_64: '5ad57ae880ddbf05cc340bc782b59e50c645a23d930225e56c960950ac757611'
