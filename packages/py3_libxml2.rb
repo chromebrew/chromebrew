@@ -7,20 +7,19 @@ class Py3_libxml2 < Package
   version Libxml2.version
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libxml2.git'
-  git_hashtag "v#{version.split('-').first}"
+  source_url Libxml2.source_url
+  git_hashtag Libxml2.git_hashtag
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3fc4a5d2cbd677523bcfc481277547344f8d17074b540782dc2b7dedf240cad8',
-     armv7l: '3fc4a5d2cbd677523bcfc481277547344f8d17074b540782dc2b7dedf240cad8',
-       i686: 'ecf7103a0b3df76ade67ad7cc612a2e0a458546ec2c9fdb827f54180fd74166d',
-     x86_64: 'b428aafd46c329ae5073343c766c10624fdbc8139ad969b3fb6bf42d7e7cb39f'
+    aarch64: '8c23226248f7607cd21ce80117a40f3468f066e0d8748cf4183c4fff6fe5ddea',
+     armv7l: '8c23226248f7607cd21ce80117a40f3468f066e0d8748cf4183c4fff6fe5ddea',
+       i686: 'fef4655b6f08152a29da01e5daf78d8d39e49a44941b59452983ec45241abfb0',
+     x86_64: '49e28b37dc9ce0ba6c2efbdcea1ce85b8b600db7e54fc223a85a7eb6701d137e'
   })
 
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
-  depends_on 'libxslt' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'python3' # R
   depends_on 'zlib' # R
