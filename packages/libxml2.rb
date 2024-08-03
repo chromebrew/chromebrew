@@ -1,9 +1,9 @@
-require 'buildsystems/meson'
+require 'buildsystems/cmake'
 
-class Libxml2 < Meson
+class Libxml2 < CMake
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
-  version '2.13.3-icu75.1-py3.12'
+  version '2.13.3-icu75.1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libxml2.git'
@@ -11,20 +11,16 @@ class Libxml2 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ed6719091e241de334d67de44006a4683483a018ce912fe76389de239566c96e',
-     armv7l: 'ed6719091e241de334d67de44006a4683483a018ce912fe76389de239566c96e',
-       i686: '6d9f77da138bfc2ccc92a53246f26f0986ed4242e0e60dd4ee6a9bc3cd641246',
-     x86_64: '9ed3970a54a0275e356f95c77912059ba15936de6dfa669e148f297de51a5e41'
+    aarch64: '7a39a86ec3fdbf16dd1102463d82b00eed1581e3dc284535a50cef00faf7819d',
+     armv7l: '7a39a86ec3fdbf16dd1102463d82b00eed1581e3dc284535a50cef00faf7819d',
+       i686: 'd2bf36872b3467a43b52764340e701efc711ebf6ffd64225346657a0b8d14eaf',
+     x86_64: '4e001b646c3d74ac82bf2af4fcfc33fe164011fd95a5e2ebde7514b026aef535'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
-  depends_on 'libxml2_autotools' => :build
-  depends_on 'libxslt' => :build
   depends_on 'ncurses' # R
-  depends_on 'py3_setuptools' => :build
-  depends_on 'python3' # R
   depends_on 'readline' # R
   depends_on 'zlib' # R
 
@@ -39,8 +35,9 @@ class Libxml2 < Meson
     FileUtils.rm 'test/ebcdic_566012.xml'
   end
 
-  meson_options '-Dicu=enabled \
-    -Dlzma=disabled'
+  cmake_options '-DLIBXML2_WITH_PYTHON=OFF \
+    -DLIBXML2_WITH_LZMA=OFF \
+    -DLIBXML2_WITH_ICU=ON'
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"

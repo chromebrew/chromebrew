@@ -9,15 +9,15 @@ class Libxml2_autotools < Autotools
   version Libxml2.version
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libxml2.git'
-  git_hashtag "v#{version.split('-').first}"
+  source_url Libxml2.source_url
+  git_hashtag Libxml2.git_hashtag
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '318ef22e12bc93c300449c98e2303b13f6f0eaeec92731df69fb7b6a91b6811b',
-     armv7l: '318ef22e12bc93c300449c98e2303b13f6f0eaeec92731df69fb7b6a91b6811b',
-       i686: '92a0aa4bd4a09eb7097eb093bfcee6cbf3121316d116a6cb3c359481819bb71a',
-     x86_64: '1cb9f3913d3e95deea3c3be31424f8802246a083ea3995f797e74a92c0d13d78'
+    aarch64: '4c09610ce86270d217ba4eefebee41b10fcce17c68a2e594e008ab4964c1a591',
+     armv7l: '4c09610ce86270d217ba4eefebee41b10fcce17c68a2e594e008ab4964c1a591',
+       i686: '3f680048525a86d159de286f9b8509295df5316c22a37cb95abc86c050cc22df',
+     x86_64: 'a96b4e07d84494e485dac0751af571e6cf37258514956195b9ad4e6095df01b0'
   })
 
   depends_on 'gcc_lib' # R
