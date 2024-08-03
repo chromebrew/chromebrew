@@ -3,11 +3,12 @@ require 'package'
 class Spotify < Package
   description 'Slack is a messaging app for business that connects people to the information they need.'
   homepage 'https://slack.com/'
-  version '1.2.11.916'
+  @full_ver = '1.2.42.290.g242057a2'
+  version @full_ver.partition('.g')[0]
   license 'Proprietary'
   compatibility 'x86_64'
-  source_url 'http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.2.11.916.geb595a67_amd64.deb'
-  source_sha256 '472bf841451c219320f1ca038915f52bd4afdf7a1c979571d6ed541ca5e26d51'
+  source_url "http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_#{@full_ver}_amd64.deb"
+  source_sha256 'a379463bcd3e18da7117287facb991c66ed9393dcf24e2e5d8fd17682d1a4f8f'
 
   # extracted from spotify-client .deb archive
   depends_on 'alsa_lib'  # libasound2
