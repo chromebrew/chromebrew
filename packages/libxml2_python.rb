@@ -1,5 +1,5 @@
 require 'package'
-Package.load_package("#{__dir__}/py3_libxml2.rb")
+Package.load_package("#{__dir__}/libxml2.rb")
 
 class Libxml2_python < Package
   description Py3_libxml2.description
@@ -10,5 +10,5 @@ class Libxml2_python < Package
 
   is_fake
 
-  depends_on 'py3_libxml2'
+  depends_on 'libxml2'
 end
