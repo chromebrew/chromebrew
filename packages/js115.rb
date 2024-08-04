@@ -92,7 +92,7 @@ class Js115 < Package
             RUSTUP_HOME='#{CREW_PREFIX}/share/rustup' \
             CARGO_HOME='#{CREW_PREFIX}/share/cargo' \
             LDFLAGS='-lreadline -ltinfo' \
-            MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system \
+            MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip \
             MOZCONFIG=../.mozconfig \
             ../mach build"
     end
