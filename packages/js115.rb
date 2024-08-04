@@ -29,11 +29,8 @@ class Js115 < Package
   depends_on 'ncurses' # R
   depends_on 'nspr'
   depends_on 'nss' # R
-  depends_on 'py3_cfgv' => :build
-  depends_on 'py3_identify' => :buuld
-  depends_on 'py3_nodeenv' => :build
+  depends_on 'py3_pre_commit' => :build
   depends_on 'py3_pycairo' => :build
-  depends_on 'py3_virtualenv' => :build
   depends_on 'readline' # R
   depends_on 'rust' => :build
   depends_on 'zlib' # R

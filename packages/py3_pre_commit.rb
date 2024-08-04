@@ -16,6 +16,11 @@ class Py3_pre_commit < Pip
      x86_64: '6b13ce2d264adcd5261c8a7f75ce84b7b9c24548379c42f3a18e9d0f7c10dfe2'
   })
 
+  depends_on 'py3_cfgv'
+  depends_on 'py3_identify'
+  depends_on 'py3_nodeenv'
+  depends_on 'py3_pyyaml' # L
+  depends_on 'py3_virtualenv'
   depends_on 'python3'
 
   no_source_build
