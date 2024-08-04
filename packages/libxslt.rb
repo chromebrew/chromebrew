@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Libxslt < CMake
   description 'Libxslt is the XSLT C library developed for the GNOME project.'
   homepage 'https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home'
-  version '1.1.42'
+  version '1.1.42-icu75.1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libxslt.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1aa45b119290663ec6bccf541425e47294ea0117bec4f830b2d82d44fb5ec078',
-     armv7l: '1aa45b119290663ec6bccf541425e47294ea0117bec4f830b2d82d44fb5ec078',
-       i686: '7dfbfd500ba728ae0a55a41293e5b6ed202edf5948c3b31fd6ee335177f73423',
-     x86_64: 'af7874aa559a2c665c6755c12b04658bc70e2a1c6641194caea58b8267c8156d'
+    aarch64: '79a84b35213937c568b715b859049a1d4555f989ba1379a7328e106c385ea502',
+     armv7l: '79a84b35213937c568b715b859049a1d4555f989ba1379a7328e106c385ea502',
+       i686: '086d2c221318809d333c9424ee7714843975ecedab93efd2b7fed3254cc0b731',
+     x86_64: '57ea96a35e54f1c0c26645e847e1ccfdef098ab0a6fa86f825748f0817e1a010'
   })
 
   depends_on 'docbook_xsl' => :build
