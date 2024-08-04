@@ -10,9 +10,9 @@ class Xmlto < Autotools
   git_hashtag version
   binary_compression 'tar.zst'
 
-  depends_on 'docbook_xml' => :build
+  depends_on 'docbook_xml' # L
   depends_on 'glibc' # R
-  depends_on 'libxslt' # L
+  depends_on 'libxslt' => :build
 
   binary_sha256({
     aarch64: '84648d642bf518c5255965623656899ae24fdf07dc78f57f4b69e8f594a30ada',
