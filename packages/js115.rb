@@ -27,7 +27,7 @@ class Js115 < Package
   depends_on 'libnotify' => :build
   depends_on 'llvm18_dev' => :build
   depends_on 'ncurses' # R
-  depends_on 'nspr'
+  depends_on 'nss'
   depends_on 'nss' # R
   depends_on 'py3_pre_commit' => :build
   depends_on 'py3_pycairo' => :build

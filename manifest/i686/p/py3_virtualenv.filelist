@@ -2,7 +2,10 @@
 /usr/local/lib/python3.12/site-packages/virtualenv-20.26.3.dist-info/INSTALLER
 /usr/local/lib/python3.12/site-packages/virtualenv-20.26.3.dist-info/METADATA
 /usr/local/lib/python3.12/site-packages/virtualenv-20.26.3.dist-info/RECORD
+<<<<<<< HEAD
 /usr/local/lib/python3.12/site-packages/virtualenv-20.26.3.dist-info/REQUESTED
+=======
+>>>>>>> b85a8d8da (python updates)
 /usr/local/lib/python3.12/site-packages/virtualenv-20.26.3.dist-info/WHEEL
 /usr/local/lib/python3.12/site-packages/virtualenv-20.26.3.dist-info/entry_points.txt
 /usr/local/lib/python3.12/site-packages/virtualenv-20.26.3.dist-info/licenses/LICENSE

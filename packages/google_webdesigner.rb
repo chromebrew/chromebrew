@@ -9,7 +9,7 @@ class Google_webdesigner < Package
   source_url 'https://dl.google.com/linux/webdesigner/deb/pool/main/g/google-webdesigner/google-webdesigner_14.0.1.0-1_amd64.deb'
   source_sha256 'c22385674a38b5693f8933fb09c61ae6d8f861cadad96d390d94549787d0ec97'
 
-  depends_on 'nspr'
+  depends_on 'nss'
   depends_on 'cairo'
   depends_on 'gtk3'
   depends_on 'expat'
