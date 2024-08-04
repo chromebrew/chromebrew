@@ -1067,7 +1067,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.68.128",
+    "version": "1.68.134",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1448,14 +1448,6 @@
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
-    "name": "chrome",
-    "description": "Google Chrome is a fast, easy to use, and secure web browser.",
-    "homepage": "https://www.google.com/chrome/",
-    "version": "127.0.6533.72-1",
-    "license": "google-chrome",
-    "compatibility": "x86_64"
-  },
-  {
     "name": "chromebrew_scripts",
     "description": "Useful bash utility scripts for Chrome/Chromium OS systems.",
     "homepage": "https://github.com/uberhacker/chromebrew-scripts",
@@ -1635,7 +1627,7 @@
     "name": "cmake",
     "description": "CMake is an open-source, cross-platform family of tools designed to build, test and package software.",
     "homepage": "https://cmake.org/",
-    "version": "3.30.1",
+    "version": "3.30.2",
     "license": "CMake",
     "compatibility": "all"
   },
@@ -2035,7 +2027,7 @@
     "name": "curl",
     "description": "Command line tool and library for transferring data with URLs.",
     "homepage": "https://curl.se/",
-    "version": "8.9.0",
+    "version": "8.9.1",
     "license": "curl",
     "compatibility": "all"
   },
@@ -2275,7 +2267,7 @@
     "name": "difftastic",
     "description": "Difftastic is a structural diff tool that compares files based on their syntax.",
     "homepage": "https://github.com/Wilfred/difftastic",
-    "version": "0.52.0",
+    "version": "0.60.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -2459,9 +2451,9 @@
     "name": "dropbox",
     "description": "Dropbox simplifies the way you create, share and collaborate.  Bring your photos, docs, and videos anywhere and keep your files safe.",
     "homepage": "https://www.dropbox.com/",
-    "version": "48.4.58",
-    "license": "Dropbox-TOS",
-    "compatibility": "i686,x86_64"
+    "version": "2024.04.17",
+    "license": "GPL3+",
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "dropbox_uploader",
@@ -2478,14 +2470,6 @@
     "version": "0.18.0",
     "license": "Apache License, Version 2.0",
     "compatibility": "x86_64"
-  },
-  {
-    "name": "dstat",
-    "description": "Dstat is a versatile replacement for vmstat, iostat, netstat and ifstat.",
-    "homepage": "http://dag.wiee.rs/home-made/dstat/",
-    "version": "0.7.3",
-    "license": "GPL-2",
-    "compatibility": "all"
   },
   {
     "name": "dtc",
@@ -2539,7 +2523,7 @@
     "name": "ecasound",
     "description": "Ecasound is a software package designed for multitrack audio processing.",
     "homepage": "https://ecasound.seul.org/ecasound/",
-    "version": "1.0.21",
+    "version": "2.9.3",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -2555,7 +2539,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "127.0.2651.74-1",
+    "version": "127.0.2651.86-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2686,14 +2670,6 @@
     "version": "43.1",
     "license": "GPL",
     "compatibility": "x86_64 aarch64 armv7l"
-  },
-  {
-    "name": "epydoc",
-    "description": "Epydoc is a tool for generating API documentation for Python modules, based on their docstrings.",
-    "homepage": "https://epydoc.sourceforge.net/",
-    "version": "3.0.1",
-    "license": "MIT",
-    "compatibility": "all"
   },
   {
     "name": "erlang",
@@ -2827,7 +2803,7 @@
     "name": "f2fs_tools",
     "description": "Tools for Flash-Friendly File System F2FS",
     "homepage": "https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/about/",
-    "version": "1.14.0",
+    "version": "1.16.0",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -2850,16 +2826,16 @@
   {
     "name": "faad2",
     "description": "Freeware Advanced Audio (AAC) Decoder",
-    "homepage": "https://faac.sourceforge.net/",
-    "version": "2.10.1",
-    "license": "GPL2 custom",
+    "homepage": "https://sourceforge.net/projects/faac/",
+    "version": "2.11.1",
+    "license": "GPL2",
     "compatibility": "all"
   },
   {
     "name": "fakeroot",
     "description": "Run a command in an environment faking root privileges for file manipulation.",
     "homepage": "https://wiki.debian.org/FakeRoot",
-    "version": "1.25.3",
+    "version": "1.35.1",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -2890,8 +2866,8 @@
   {
     "name": "faultstat",
     "description": "Faultstat measures page fault activity and swap utilization of processes",
-    "homepage": "https://kernel.ubuntu.com/~cking/faultstat/",
-    "version": "0.01.01",
+    "homepage": "https://github.com/ColinIanKing/faultstat",
+    "version": "0.01.11",
     "license": "GPL-2+",
     "compatibility": "all"
   },
@@ -2899,7 +2875,7 @@
     "name": "fcft",
     "description": "Simple library for font loading and glyph rasterization using FontConfig, FreeType and pixman.",
     "homepage": "https://codeberg.org/dnkl/fcft",
-    "version": "2.5.1",
+    "version": "3.1.8",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2915,8 +2891,8 @@
     "name": "feh",
     "description": "feh is an X11 image viewer aimed mostly at console users.",
     "homepage": "https://feh.finalrewind.org/",
-    "version": "3.6.3",
-    "license": "feh",
+    "version": "3.10.3",
+    "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
@@ -2930,8 +2906,8 @@
   {
     "name": "fetch",
     "description": "FreeBSD Fetch retrieves files by URL.",
-    "homepage": "https://github.com/jrmarino/fetch-freebsd/",
-    "version": "12.0.10",
+    "homepage": "https://github.com/jrmarino/fetch-freebsd",
+    "version": "12.0.11",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -2995,7 +2971,7 @@
     "name": "finch",
     "description": "Finch is a chat program which lets you log in to accounts on multiple chat networks simultaneously.",
     "homepage": "https://pidgin.im/",
-    "version": "2.12.0-1",
+    "version": "2.14.13",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -3027,7 +3003,7 @@
     "name": "fish",
     "description": "fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family.",
     "homepage": "https://fishshell.com/",
-    "version": "3.6.1",
+    "version": "3.7.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -3051,7 +3027,7 @@
     "name": "flatseal",
     "description": "Flatseal is a graphical utility to review and modify permissions from your Flatpak applications.",
     "homepage": "https://github.com/tchx84/Flatseal/",
-    "version": "1.7.5",
+    "version": "2.2.0",
     "license": "GPL-3+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3067,7 +3043,7 @@
     "name": "flif",
     "description": "FLIF is a novel lossless image format which outperforms PNG, lossless WebP, lossless BPG, lossless JPEG2000, and lossless JPEG XR in terms of compression ratio.",
     "homepage": "https://flif.info/",
-    "version": "0.3",
+    "version": "0.4",
     "license": "LGPL-3+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3098,8 +3074,8 @@
   {
     "name": "fnotifystat",
     "description": "Fnotifystat is a program that dumps the file system activity in a given period of time.",
-    "homepage": "https://kernel.ubuntu.com/~cking/fnotifystat/",
-    "version": "0.02.02",
+    "homepage": "https://github.com/ColinIanKing/fnotifystat",
+    "version": "0.03.00",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -3107,7 +3083,7 @@
     "name": "foliate",
     "description": "A simple and modern GTK eBook reader",
     "homepage": "https://johnfactotum.github.io/foliate/",
-    "version": "2.6.4",
+    "version": "3.1.1",
     "license": "GPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3115,184 +3091,184 @@
     "name": "folks",
     "description": "Library to aggregates people into metacontacts",
     "homepage": "https://wiki.gnome.org/Projects/Folks",
-    "version": "0.15.7",
+    "version": "0.15.9",
     "license": "LGPL-2.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_adobe_100dpi",
     "description": "Standard 100dpi Adobe PCF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
-    "license": "custom",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/adobe-100dpi",
+    "version": "1.0.4",
+    "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_adobe_75dpi",
     "description": "Standard 75pi Adobe PCF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
-    "license": "custom",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/adobe-75dpi",
+    "version": "1.0.4",
+    "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_adobe_utopia_100dpi",
     "description": "100dpi Adobe Utopia PCF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.4",
-    "license": "custom",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/adobe-utopia-100dpi",
+    "version": "1.0.5",
+    "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_adobe_utopia_75dpi",
-    "description": "100dpi Adobe Utopia PCF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.4",
-    "license": "custom",
+    "description": "75dpi Adobe Utopia PCF fonts",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/adobe-utopia-75dpi",
+    "version": "1.0.5",
+    "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_adobe_utopia_type1",
     "description": "Adobe Utopia Type1 fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.4",
-    "license": "custom",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/adobe-utopia-type1",
+    "version": "1.0.5",
+    "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_bh_100dpi",
     "description": "Standard 100dpi Bigelow and Holmes PCF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/bh-100dpi",
+    "version": "1.0.4",
     "license": "public-domain",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_bh_75dpi",
     "description": "Standard 75dpi Bigelow and Holmes PCF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/bh-75dpi",
+    "version": "1.0.4",
     "license": "public-domain",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_bh_lucidatypewriter_100dpi",
     "description": "100dpi Bigelow and Holmes Lucida Typewriter PCF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/bh-lucidatypewriter-100dpi",
+    "version": "1.0.4",
     "license": "public-domain",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_bh_lucidatypewriter_75dpi",
     "description": "75dpi Bigelow and Holmes Lucida Typewriter PCF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/bh-lucidatypewriter-75dpi",
+    "version": "1.0.4",
     "license": "public-domain",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_bh_ttf",
     "description": "Standard Bigelow and Holmes TrueType fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/bh-ttf",
+    "version": "1.0.4",
     "license": "bh-luxi",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_bh_type1",
     "description": "Standard Bigelow and Holmes Type1 fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/bh-type1",
+    "version": "1.0.4",
     "license": "bh-luxi",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_bitstream_100dpi",
     "description": "Standard 100dpi Bitstream PCF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/bitstream-100dpi",
+    "version": "1.0.4",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_bitstream_75dpi",
-    "description": "Standard 100dpi Bitstream PCF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "description": "Standard 75dpi Bitstream PCF fonts",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/bitstream-75dpi",
+    "version": "1.0.4",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_bitstream_type1",
     "description": "Standard Type1 Bitstream PCF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/bitstream-type1",
+    "version": "1.0.4",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_cursor_misc",
     "description": "Standard X11 cursors in PCF format",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/cursor-misc",
+    "version": "1.0.4",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_daewoo_misc",
     "description": "Daewoo Gothic PCF format",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/daewoo-misc",
+    "version": "1.0.4",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_dec_misc",
     "description": "DEC cursor and session PCF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/dec-misc",
+    "version": "1.0.4",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_isas_misc",
     "description": "72dpi PCF versions of the Chinese Song Ti fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/isas-misc",
+    "version": "1.0.4",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_jis_misc",
     "description": "78dpi PCF versions of the Japanese fixed fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/jis-misc",
+    "version": "1.0.4",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_misc_misc",
     "description": "Standard X11 fixed PCF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.1.2",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/misc-misc",
+    "version": "1.1.3",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_mutt_misc",
     "description": "100dpi PCF versions of the ClearlyU fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.0.3",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/mutt-misc",
+    "version": "1.0.4",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "font_util",
     "description": "Tools for truncating and subseting of ISO10646-1 BDF fonts",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.3.2",
-    "license": "custom",
+    "homepage": "https://gitlab.freedesktop.org/xorg/font/util",
+    "version": "1.4.1",
+    "license": "MIT",
     "compatibility": "all"
   },
   {
@@ -3307,7 +3283,7 @@
     "name": "fontforge",
     "description": "Free (libre) font editor for Windows, Mac OS X and GNU+Linux",
     "homepage": "https://fontforge.org/",
-    "version": "20170731",
+    "version": "20230101",
     "license": "BSD and GPL-3+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3315,7 +3291,7 @@
     "name": "foot",
     "description": "Wayland terminal emulator - fast, lightweight and minimalistic",
     "homepage": "https://codeberg.org/dnkl/foot",
-    "version": "1.15.0",
+    "version": "1.18.0",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3338,8 +3314,8 @@
   {
     "name": "forkstat",
     "description": "Forkstat is a program that logs process fork(), exec() and exit() activity.",
-    "homepage": "https://kernel.ubuntu.com/~cking/forkstat/",
-    "version": "0.02.10",
+    "homepage": "https://github.com/ColinIanKing/forkstat",
+    "version": "0.03.02",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -3363,7 +3339,7 @@
     "name": "fossil",
     "description": "Fossil is a simple, high-reliability, distributed software configuration management system",
     "homepage": "https://fossil-scm.org/home/doc/trunk/www/index.wiki",
-    "version": "2.6",
+    "version": "2.24",
     "license": "BSD-2",
     "compatibility": "all"
   },
@@ -3387,7 +3363,7 @@
     "name": "fragments",
     "description": "Fragments is an easy to use BitTorrent client for the GNOME desktop environment.",
     "homepage": "https://gitlab.gnome.org/World/Fragments",
-    "version": "2.1.1",
+    "version": "3.0.1",
     "license": "GPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3419,7 +3395,7 @@
     "name": "freeglut",
     "description": "FreeGLUT is a free and open-source alternative to the OpenGL Utility Toolkit (GLUT) library.",
     "homepage": "https://freeglut.sourceforge.net/",
-    "version": "3.2.1",
+    "version": "3.6.0",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3595,7 +3571,7 @@
     "name": "gcc_build",
     "description": "The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.",
     "homepage": "https://www.gnu.org/software/gcc/",
-    "version": "14.1.0",
+    "version": "14.2.0",
     "license": "GPL-3, LGPL-3, libgcc, FDL-1.2",
     "compatibility": "all"
   },
@@ -3603,7 +3579,7 @@
     "name": "gcc_dev",
     "description": "The GNU Compiler Collection: Everything (excepting libraries aside from libgccjit)",
     "homepage": "https://www.gnu.org/software/gcc/",
-    "version": "14.1.0",
+    "version": "14.2.0",
     "license": "GPL-3, LGPL-3, libgcc, FDL-1.2",
     "compatibility": "all"
   },
@@ -3611,7 +3587,7 @@
     "name": "gcc_lib",
     "description": "GCC shared libs except libgccjit",
     "homepage": "https://www.gnu.org/software/gcc/",
-    "version": "14.1.0",
+    "version": "14.2.0",
     "license": "GPL-3, LGPL-3, libgcc, FDL-1.2",
     "compatibility": "all"
   },
@@ -3627,7 +3603,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "485.0.0",
+    "version": "486.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -3915,7 +3891,7 @@
     "name": "git",
     "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
     "homepage": "https://git-scm.com/",
-    "version": "2.45.2",
+    "version": "2.46.0",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -3939,7 +3915,7 @@
     "name": "github_cli",
     "description": "Official Github CLI tool",
     "homepage": "https://cli.github.com/",
-    "version": "2.52.0",
+    "version": "2.54.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -3995,7 +3971,7 @@
     "name": "glab",
     "description": "A GitLab CLI tool bringing GitLab to your command line",
     "homepage": "https://gitlab.com/gitlab-org/cli",
-    "version": "1.43.0",
+    "version": "1.45.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4520,6 +4496,30 @@
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
+    "name": "google_chrome",
+    "description": "Google Chrome is a fast, easy to use, and secure web browser.",
+    "homepage": "https://www.google.com/chrome/",
+    "version": "127.0.6533.88-1",
+    "license": "google-chrome",
+    "compatibility": "x86_64"
+  },
+  {
+    "name": "google_chrome_beta",
+    "description": "Google Chrome is a fast, easy to use, and secure web browser. (Beta Channel)",
+    "homepage": "https://www.google.com/chrome/",
+    "version": "128.0.6613.18-1",
+    "license": "google-chrome",
+    "compatibility": "x86_64"
+  },
+  {
+    "name": "google_chrome_unstable",
+    "description": "Google Chrome is a fast, easy to use, and secure web browser. (Dev Channel)",
+    "homepage": "https://www.google.com/chrome/",
+    "version": "129.0.6628.3-1",
+    "license": "google-chrome",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "google_webdesigner",
     "description": "Google Web Designer",
     "homepage": "https://webdesigner.withgoogle.com/",
@@ -4939,7 +4939,7 @@
     "name": "gvim",
     "description": "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)",
     "homepage": "https://www.vim.org/",
-    "version": "9.1.0568",
+    "version": "9.1.0636",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -5358,14 +5358,6 @@
     "version": "1.25-1",
     "license": "MIT",
     "compatibility": "x86_64"
-  },
-  {
-    "name": "imagemagick6",
-    "description": "Use ImageMagick to create, edit, compose, or convert bitmap images.",
-    "homepage": "http://www.imagemagick.org/script/index.php",
-    "version": "6.9.13-1",
-    "license": "imagemagick",
-    "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "imagemagick7",
@@ -6184,14 +6176,6 @@
     "compatibility": "all"
   },
   {
-    "name": "libaudiofile",
-    "description": "The Audio File Library is a C-based library for reading and writing audio files in many common formats.",
-    "homepage": "https://audiofile.68k.org/",
-    "version": "b62c90",
-    "license": "LGPL-2.1",
-    "compatibility": "all"
-  },
-  {
     "name": "libavc1394",
     "description": "libavc1394 is a programming interface for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set.",
     "homepage": "https://sourceforge.net/projects/libavc1394/",
@@ -6934,6 +6918,14 @@
     "version": "2.30.3",
     "license": "LGPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
+  },
+  {
+    "name": "libgnt",
+    "description": "GNT is an ncurses toolkit for creating text-mode graphical user interfaces in a fast and easy way.",
+    "homepage": "https://keep.imfreedom.org/libgnt/libgnt",
+    "version": "2.14.3",
+    "license": "GPL-2+",
+    "compatibility": "all"
   },
   {
     "name": "libgpgerror",
@@ -7944,6 +7936,14 @@
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
+    "name": "libspiro",
+    "description": "LibSpiro is an adaptation of Spiro formula and functions into a sharable library",
+    "homepage": "https://github.com/fontforge/libspiro",
+    "version": "20221101",
+    "license": "GPL3+",
+    "compatibility": "all"
+  },
+  {
     "name": "libspng",
     "description": "libspng is a C library for reading and writing Portable Network Graphics (PNG) format files with a focus on security and ease of use.",
     "homepage": "https://libspng.org",
@@ -7971,7 +7971,7 @@
     "name": "libssp",
     "description": "Libssp is a part of the GCC toolkit.",
     "homepage": "https://gcc.gnu.org/",
-    "version": "14.1.0",
+    "version": "14.2.0",
     "license": "GPL-3, LGPL-3, libgcc, FDL-1.2",
     "compatibility": "all"
   },
@@ -8379,7 +8379,7 @@
     "name": "libx11",
     "description": "C interface to the X window system",
     "homepage": "https://x.org/wiki/",
-    "version": "1.8.7",
+    "version": "1.8.10",
     "license": "X11",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -8755,7 +8755,7 @@
     "name": "links",
     "description": "Links is a lynx-like text WWW browser with tables and frames.",
     "homepage": "http://links.twibright.com/",
-    "version": "2.28",
+    "version": "2.30",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -9331,7 +9331,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "24.1.4",
+    "version": "24.1.5",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -9347,9 +9347,17 @@
     "name": "mesonbuild",
     "description": "Meson is an open source build system meant to be both extremely fast and user friendly.",
     "homepage": "https://mesonbuild.com/",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "license": "Apache-2.0",
     "compatibility": "all"
+  },
+  {
+    "name": "metadata_cleaner",
+    "description": "Python GTK application to view and clean metadata in files, using mat2",
+    "homepage": "https://metadatacleaner.romainvigier.fr/",
+    "version": "2.5.6",
+    "license": "GPL-3",
+    "compatibility": "x86_64"
   },
   {
     "name": "metasploit",
@@ -10795,7 +10803,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "112.0.5197.30",
+    "version": "112.0.5197.39",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -12448,6 +12456,14 @@
     "compatibility": "all"
   },
   {
+    "name": "py3_dool",
+    "description": "Dool is a command line tool to monitor many aspects of your system: CPU, Memory, Network, Load Average, etc.",
+    "homepage": "https://github.com/scottchiefbaker/dool",
+    "version": "1.3.2",
+    "license": "GPL3+",
+    "compatibility": "all"
+  },
+  {
     "name": "py3_ebooklib",
     "description": "Ebooklib is a Python E-book library for handling books in EPUB2/EPUB3 format.",
     "homepage": "https://docs.sourcefabric.org/projects/ebooklib/",
@@ -12760,10 +12776,18 @@
     "compatibility": "all"
   },
   {
+    "name": "py3_mat2",
+    "description": "A handy tool to trash your metadata",
+    "homepage": "https://0xacab.org/jvoisin/mat2",
+    "version": "0.13.4",
+    "license": "MIT",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "py3_mercurial",
     "description": "Mercurial is a free, distributed source control management tool. It efficiently handles projects of any size and offers an easy and intuitive interface.",
     "homepage": "https://www.mercurial-scm.org/",
-    "version": "6.7.4",
+    "version": "6.8.1",
     "license": "GPL-2+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13651,15 +13675,15 @@
     "name": "qt5_base",
     "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
     "homepage": "https://code.qt.io/cgit/qt/qtbase",
-    "version": "5.15.11-ea7a183",
-    "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3",
+    "version": "kde-5.15.14-9f9a56d",
+    "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "qt5_charts",
     "description": "Qt Charts",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.11-e17308d",
+    "version": "kde-5.15.14-7315c48",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13667,7 +13691,7 @@
     "name": "qt5_declarative",
     "description": "Provides QML and Quick declaratives.",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.11-1b0e366",
+    "version": "kde-5.15.14-50c8def",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13675,7 +13699,7 @@
     "name": "qt5_imageformats",
     "description": "Qt Image Formats",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.11-b22bf4d",
+    "version": "kde-5.15.14-4e4f5fc",
     "license": "GPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13683,7 +13707,7 @@
     "name": "qt5_location",
     "description": "Qt Location and Positioning",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.11-48a17e8",
+    "version": "kde-5.15.14-3beb9c8",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13691,7 +13715,7 @@
     "name": "qt5_multimedia",
     "description": "Qt Multimedia",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.11-f587b18",
+    "version": "kde-5.15.14-53069c9",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13699,7 +13723,7 @@
     "name": "qt5_networkauth",
     "description": "Qt Network Authentication",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.11-lts-lgpl",
+    "version": "kde-5.15.14-28180f2",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13707,7 +13731,7 @@
     "name": "qt5_quickcontrols",
     "description": "Reusable Qt Quick based UI controls to create classic desktop-style user interfaces",
     "homepage": "https://www.qt.io",
-    "version": "5.15.11-dcc9055",
+    "version": "kde-5.15.14-9325659",
     "license": "GPL3 LGPL3 FDL custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13715,7 +13739,7 @@
     "name": "qt5_script",
     "description": "Qt Script Tools",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.15",
+    "version": "5.15.17",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13723,7 +13747,7 @@
     "name": "qt5_serialport",
     "description": "Qt Serial Port",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.11-3380465",
+    "version": "kde-5.15.14-34c19c6",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13731,7 +13755,7 @@
     "name": "qt5_svg",
     "description": "Provides classes for displaying the contents of SVG files.",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.11-7d6e373",
+    "version": "kde-5.15.14-690128b",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13739,7 +13763,7 @@
     "name": "qt5_tools",
     "description": "Qt Tools",
     "homepage": "https://github.com/qt/qttools",
-    "version": "5.15.11-38ae810",
+    "version": "kde-5.15.14-f82ed36",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13747,7 +13771,7 @@
     "name": "qt5_wayland",
     "description": "Qt Wayland",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.11-4de268c",
+    "version": "kde-5.15.14-11e099c",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13755,7 +13779,7 @@
     "name": "qt5_webchannel",
     "description": "Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients",
     "homepage": "https://www.qt.io",
-    "version": "5.15.11-f84887c-1",
+    "version": "kde-5.15.14-fca8308",
     "license": "GPL3 LGPL3 FDL custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13771,7 +13795,7 @@
     "name": "qt5_webglplugin",
     "description": "Qt WebGL Plugin",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.11-ddcff45",
+    "version": "kde-5.15.14-3681356",
     "license": "GPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13779,7 +13803,7 @@
     "name": "qt5_websockets",
     "description": "Qt Websockets",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.11-d41bb9f",
+    "version": "kde-5.15.14-dbbdc64",
     "license": "GPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13787,7 +13811,7 @@
     "name": "qt5_x11extras",
     "description": "Provides classes for developing for the X11 platform.",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.11-5fb2e06",
+    "version": "kde-5.15.14-6c3605f",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13795,7 +13819,7 @@
     "name": "qt5_xmlpatterns",
     "description": "Qt XML Patterns",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.11-lts-lgpl",
+    "version": "kde-5.15.14-087f6f3",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -14595,7 +14619,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.17.0",
+    "version": "7.18.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -15299,7 +15323,7 @@
     "name": "telegram",
     "description": "Telegram is a messaging app with a focus on speed and security, it's super-fast, simple and free.",
     "homepage": "https://telegram.org/",
-    "version": "5.2.3",
+    "version": "5.3.0",
     "license": "BSD, LGPL-2+ and GPL-3-with-openssl-exception",
     "compatibility": "x86_64"
   },
@@ -15355,7 +15379,7 @@
     "name": "terraform",
     "description": "Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.",
     "homepage": "https://www.terraform.io/",
-    "version": "1.9.2",
+    "version": "1.9.3",
     "license": "Apache-2.0, BSD-2, BSD-4, ECL-2.0, imagemagick, ISC, JSON, MIT, MIT-with-advertising, MPL-2.0 and unicode",
     "compatibility": "all"
   },
@@ -15531,7 +15555,7 @@
     "name": "tllist",
     "description": "A typed linked list C header file only library",
     "homepage": "https://codeberg.org/dnkl/tllist",
-    "version": "1.0.5",
+    "version": "1.1.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15867,7 +15891,7 @@
     "name": "upx",
     "description": "Extendable, high-performance executable packer for several executable formats",
     "homepage": "https://github.com/upx/upx",
-    "version": "4.2.3",
+    "version": "4.2.4",
     "license": "custom GPL2",
     "compatibility": "all"
   },
@@ -15917,14 +15941,6 @@
     "homepage": "https://www.kernel.org/pub/linux/utils/util-linux/",
     "version": "2.40.2",
     "license": "GPL-2, LGPL-2.1, BSD-4, MIT and public-domain",
-    "compatibility": "all"
-  },
-  {
-    "name": "util_macros",
-    "description": "The util-macros package contains the m4 macros used by all of the Xorg packages",
-    "homepage": "https://www.linuxfromscratch.org/blfs/view/svn/util-macros.html",
-    "version": "1.19.3",
-    "license": "MIT",
     "compatibility": "all"
   },
   {
@@ -16059,7 +16075,7 @@
     "name": "vim",
     "description": "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.",
     "homepage": "https://www.vim.org/",
-    "version": "9.1.0568",
+    "version": "9.1.0636",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -16067,7 +16083,7 @@
     "name": "vim_runtime",
     "description": "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)",
     "homepage": "https://www.vim.org/",
-    "version": "9.1.0568",
+    "version": "9.1.0636",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -16083,7 +16099,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "6.8.3381.48-1",
+    "version": "6.8.3381.50-1",
     "license": "Vivaldi",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -16872,6 +16888,14 @@
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
+    "name": "xorg_macros",
+    "description": "GNU autoconf macros shared across X.Org projects",
+    "homepage": "https://gitlab.freedesktop.org/xorg/util/macros",
+    "version": "1.20.1",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
     "name": "xorg_nouveau_driver",
     "description": "The Xorg Nouveau Driver package contains the X.Org Video Driver for NVidia Cards including RIVA TNT, RIVA TNT2, GeForce 256, QUADRO, GeForce2, QUADRO2, GeForce3, QUADRO DDC, nForce, nForce2, GeForce4, QUADRO4, GeForce FX, QUADRO FX, GeForce 6XXX and GeForce 7xxx chipsets.",
     "homepage": "https://01.org/linuxgraphics/",
@@ -17158,6 +17182,14 @@
     "version": "0.3.1",
     "license": "BSD-3",
     "compatibility": "x86_64 aarch64 armv7l"
+  },
+  {
+    "name": "zed",
+    "description": "Zed is a high-performance, multiplayer code editor",
+    "homepage": "https://zed.dev/",
+    "version": "0.146.5",
+    "license": "GPL-3, AGPL-3, Apache-2.0",
+    "compatibility": "x86_64"
   },
   {
     "name": "zenity",
