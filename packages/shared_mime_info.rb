@@ -3,18 +3,18 @@ require 'buildsystems/meson'
 class Shared_mime_info < Meson
   description 'The shared-mime-info package contains the core database of common types and the update-mime-database command used to extend it.'
   homepage 'https://freedesktop.org/wiki/Software/shared-mime-info/'
-  version '2.4'
+  version '2.4-icu75.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xdg/shared-mime-info.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '457f70c2f07f2cd69f271ae1725bb316d610ae2d795ba1360c7cab90ab655d31',
-     armv7l: '457f70c2f07f2cd69f271ae1725bb316d610ae2d795ba1360c7cab90ab655d31',
-       i686: '7dac326254618b28f4b9c9d324aa568919b2246e14fed40985fd5f7a452535e4',
-     x86_64: '409a154e6913afae52b524b0d91ff8e6f0b5b71af4200324cccdba6c9b36f723'
+    aarch64: 'bfe13f241a7ed68d6dc8121d92c8d639dd7257cc4bc5880d63fc81ab380c4241',
+     armv7l: 'bfe13f241a7ed68d6dc8121d92c8d639dd7257cc4bc5880d63fc81ab380c4241',
+       i686: '37ab32faf04eb17cdb9c1e2c1bdfa38017eaaa5a620331c7487db72f3683bec6',
+     x86_64: '670616572e7fb982ba18cbdab595638c359f978a03aaa560ae9b4118b818e9d3'
   })
 
   depends_on 'gcc_lib' # R
