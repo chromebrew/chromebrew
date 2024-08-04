@@ -120,4 +120,27 @@ class PackageUtilsTest < Minitest::Test
     end
     assert_equal('4444444444444444444444444444444444444444444444444444444444444444', PackageUtils.get_sha256(pkg, build_from_source: true))
   end
+
+  def test_get_clean_python_version
+    assert_equal('1.2.3', PackageUtils.get_clean_version('1.2.3-py3.12'))
+  end
+
+  def test_get_clean_perl_version
+    assert_equal('0.004.2', PackageUtils.get_clean_version('0.004.2-perl5.40'))
+  end
+
+  def test_get_clean_llvm_version
+    assert_equal('72.93', PackageUtils.get_clean_version('72.93-llvm18'))
+  end
+
+  def test_get_clean_glibc_version
+    assert_equal('9.5.18', PackageUtils.get_clean_version('9.5.18-glibc2.39'))
+  end
+
+  def test_get_clean_git_version
+    assert_equal('0.0.7', PackageUtils.get_clean_version('0.0.7-8ab26so'))
+    assert_equal('8.2.4-2', PackageUtils.get_clean_version('8.2.4-2-zh725k9'))
+    assert_equal('579-4', PackageUtils.get_clean_version('579-4-1628457'))
+    assert_equal('2.1.5-20220429', PackageUtils.get_clean_version('2.1.5-20220429'))
+  end
 end

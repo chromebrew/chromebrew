@@ -16,6 +16,7 @@ $LOAD_PATH.unshift '../lib'
 
 require_relative '../lib/color'
 require_relative '../lib/package'
+require_relative '../lib/package_utils'
 
 def get_version(name, homepage)
   anitya_id = get_anitya_id(name, homepage)
@@ -122,16 +123,16 @@ if filelist.length.positive?
     end
 
     # Bail out if we arent verbose and so dont want to print packages that are up to date.
-    next if Libversion.version_compare2(pkg.version, upstream_version) >= 0 && !verbose
+    next if Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) >= 0 && !verbose
     # Print the package name.
     print pkg.name.ljust(35)
     # Print the package update status.
-    if Libversion.version_compare2(pkg.version, upstream_version) >= 0
+    if Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) >= 0
       print 'uptodate'.ljust(20).lightgreen
-    elsif Libversion.version_compare2(pkg.version, upstream_version) == -1
+    elsif Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) == -1
       print 'outdated'.ljust(20).yellow
     end
     # Print the package versions.
-    puts pkg.version.ljust(20) + upstream_version
+    puts PackageUtils.get_clean_version(pkg.version).ljust(20) + upstream_version
   end
 end

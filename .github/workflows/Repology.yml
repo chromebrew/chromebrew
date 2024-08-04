@@ -18,6 +18,7 @@ jobs:
       - name: Generate repology.json
         env:
           CREW_KERNEL_VERSION: 5.1
+          LIBC_VERSION: 2.37
         run: |
           ruby -Ctools json.rb
       - name: Create Pull Request
