@@ -1,6 +1,6 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_nodeenv < Python
+class Py3_nodeenv < Pip
   description 'Tool to create isolated node.js environments.'
   homepage 'https://github.com/ekalinin/nodeenv'
   @_ver = '1.8.0'
