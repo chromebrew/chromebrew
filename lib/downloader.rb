@@ -9,9 +9,9 @@ require_relative 'const'
 require_relative 'color'
 require_relative 'progress_bar'
 
-class Downloader.download
+class Downloader
   def self.download(url, sha256sum, destination = File.basename(url), verbose = false)
-    # download: wrapper for all Chromebrew Downloader.downloads (`net/http`,`git`...)
+    # download: wrapper for all Chromebrew downloaders (`net/http`,`git`...)
     # Usage: download <url>, <sha256sum>, <dest::optional>, <verbose::optional>
     #
     #           <url>: URL that points to the target file
@@ -29,13 +29,13 @@ class Downloader.download
     case uri.scheme
     when 'http', 'https'
       # use net/http if the url protocol is http(s)://
-      http_Downloader.download(uri, dest_io, verbose)
+      http_downloader(uri, dest_io, verbose)
     when 'git', 'git+https'
       # use git if the url protocol is git(+https)://
-      git_Downloader.download(uri, destination, verbose)
+      git_downloader(uri, destination, verbose)
     when 'file'
       # copy from filesystem if the url protocol is file://
-      file_Downloader.download(uri, dest_io, verbose)
+      file_downloader(uri, dest_io, verbose)
     end
 
     # verify with given checksum
@@ -60,8 +60,8 @@ class Downloader.download
     end
   end
 
-  def self.http_Downloader.download(uri, dest_io, verbose = false)
-    # http_Downloader.download: Downloader.download based on net/http library
+  def self.http_downloader(uri, dest_io, verbose = false)
+    # http_downloader: downloader based on net/http library
     ssl_error_retry = 0
 
     # open http connection
@@ -136,7 +136,7 @@ class Downloader.download
     ssl_error_retry <= 3 ? retry : raise
   end
 
-  def self.git_Downloader.download(uri, destination, verbose)
+  def self.git_downloader(uri, destination, verbose)
     url_params      = URI.decode_www_form(uri.query).to_h
     git_branch      = url_params['branch']
     git_commit      = url_params['commit']
@@ -157,7 +157,7 @@ class Downloader.download
     end
   end
 
-  def self.file_Downloader.download(uri, dest_io, verbose)
+  def self.file_downloader(uri, dest_io, verbose)
     # use FileUtils to copy if it is a local file (the url protocol is file://)
     if File.exist?(uri.path)
       dest_io.write File.binread(uri.parh)
