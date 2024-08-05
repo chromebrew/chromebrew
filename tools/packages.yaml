@@ -5956,6 +5956,11 @@ url: https://github.com/flok99/multitail/releases
 activity: none
 ---
 kind: url
+name: multy
+url: https://github.com/multycloud/multy/releases
+activity: low
+---
+kind: url
 name: muparser
 url: https://github.com/beltoforion/muparser/releases
 activity: low
