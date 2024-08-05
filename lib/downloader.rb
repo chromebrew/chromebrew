@@ -79,7 +79,7 @@ class Downloader
           redirect_uri.scheme ||= uri.scheme
           redirect_uri.host   ||= uri.host
 
-          return send(__method__, redirect_uri, filename, verbose)
+          return send(__method__, redirect_uri, expected_sha, dest_io, verbose)
         else
           abort "Download failed with error #{response.code}: #{response.msg}".lightred
         end
