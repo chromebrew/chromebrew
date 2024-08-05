@@ -66,7 +66,7 @@ class Downloader
 
     # open http connection
     Net::HTTP.start(uri.host, uri.port, {
-      max_retries: CREW_Downloader.download_RETRY,
+      max_retries: CREW_DOWNLOADER_RETRY,
           use_ssl: uri.scheme.eql?('https'),
       min_version: :TLS1_2,
           ca_file: SSL_CERT_FILE,
