@@ -139,14 +139,11 @@ class Downloader
     git_hashtag   = url_params['hashtag']
     no_submodules = url_params['no_submodules'].eql?('1')
 
-    # remove url parameters before passing to git
-    uri.query = ''
-
     FileUtils.mkdir_p destination
     Dir.chdir(destination) do
       system 'git', 'init'
       system 'git', 'config', 'advice.detachedHead', 'false' # suppress "You are in 'detached HEAD' state" warning
-      system 'git', 'remote', 'add', 'origin', uri
+      system 'git', 'remote', 'add', 'origin', uri.rpartition('?')[0]
       system 'git', 'fetch', 'origin', (git_hashtag || git_branch)
       system 'git', 'checkout', 'FETCH_HEAD'
       system 'git', 'submodule', 'update', '--init', '--recursive' unless no_submodules
