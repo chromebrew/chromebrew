@@ -1,21 +1,20 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_pyicu < Python
+class Py3_pyicu < Pip
   description 'PyICU is a Python extension wrapping the ICU C++ API.'
   homepage 'https://pyicu.org/'
-  @_ver = '2.11'
-  version "#{@_ver}-py3.12"
+  version '2.13.1-icu75.1-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.pyicu.org/main/pyicu.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd243b8816553c5445c02292bc1f54f3cc4cea42c44d8718f6ec52f1ceeacd147',
-     armv7l: 'd243b8816553c5445c02292bc1f54f3cc4cea42c44d8718f6ec52f1ceeacd147',
-       i686: '7823270efeb41822ba1b393f2ff01c05fcd0c2347993125cfc5afb1e76f9b978',
-     x86_64: 'd9e0708f07bebe04073a36ac927243a79a9bdd2cd76aba58e5564302b34cc75e'
+    aarch64: '932a8593f6cbd175a7a022c3d8a4cece0e99a62ce0b58c1f0a400055e6b00420',
+     armv7l: '932a8593f6cbd175a7a022c3d8a4cece0e99a62ce0b58c1f0a400055e6b00420',
+       i686: 'ab655db1f070b700cd8d47363a186a87922dea1f6a77dda8602cf9b0d15ad30a',
+     x86_64: '79d0f9f55ed714d5082593ce58d502ca4ff876198e08f79c736fa2732e2ea948'
   })
 
   depends_on 'python3' => :build
