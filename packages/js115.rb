@@ -53,7 +53,7 @@ class Js115 < Package
       ac_add_options --disable-strip
       ac_add_options --enable-application=js
       ac_add_options --enable-hardening
-      ac_add_options --enable-linker=lld
+      ac_add_options --enable-linker=#{CREW_LINKER}
       ac_add_options --enable-optimize
       ac_add_options --enable-readline
       ac_add_options --enable-release
