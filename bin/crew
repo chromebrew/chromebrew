@@ -544,7 +544,7 @@ def download
 
       # Download via git
       uri.query = "hashtag=#{@pkg.git_hashtag}&branch=#{@pkg.git_branch}"
-      Downloader.git_downloader(uri, 'SKIP', @extract_dir)
+      Downloader.git_downloader(uri, @extract_dir)
       puts 'Repository downloaded.'.lightgreen
 
       # Stow file in cache if requested and cache is writable.
