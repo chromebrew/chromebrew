@@ -144,12 +144,12 @@ class Downloader
 
     FileUtils.mkdir_p destination
     Dir.chdir(destination) do
-      system %w[git init]
-      system %w[git config advice.detachedHead false] # suppress "You are in 'detached HEAD' state" warning
-      system %W[git add remote origin #{uri}]
-      system %W[git fetch origin #{git_hashtag || git_branch}]
-      system %w[git checkout FETCH_HEAD]
-      system %w[git submodule update --init --recursive] unless no_submodules
+      system 'git', 'init'
+      system 'git', 'config', 'advice.detachedHead', 'false' # suppress "You are in 'detached HEAD' state" warning
+      system 'git', 'add', 'remote', 'origin', uri
+      system 'git', 'fetch', 'origin', (git_hashtag || git_branch)
+      system 'git', 'checkout', 'FETCH_HEAD'
+      system 'git', 'submodule', 'update', '--init', '--recursive' unless no_submodules
     end
   end
 
