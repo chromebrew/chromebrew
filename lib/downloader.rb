@@ -39,6 +39,9 @@ class Downloader
     end
 
     unless %w[git git+https].include?(uri.scheme)
+      # close file IO on download completed
+      dest_io.close
+
       # return file content if destination is '-'
       if dest == '-'
         # read underlying string from StringIO
@@ -118,9 +121,9 @@ class Downloader
           progress_bar_thread.join
         end
 
-        unless sha256sum.casecmp?('SKIP')
+        unless expected_sha.casecmp?('SKIP')
           sha256sum = sha256sum_calculator.hexdigest
-          checksum_mismatch(sha256sum, expected_sha) unless expected_sha.eql?(sha256sum)
+          checksum_mismatch(expected_sha, sha256sum) unless expected_sha.eql?(sha256sum)
         end
       end
     end
