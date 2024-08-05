@@ -42,8 +42,13 @@ class PackageUtils
       next unless packages[i]['name'] == pkg.name
       package_id = packages[i]['id']
     end
+    # Return dummy URL if we weren't able to find the package ID, so that the CREW_CACHE_ENABLED hack to test packages without uploading them still works.
+    # When we're doing that, we're calling download knowing that there isn't an actual file to download, but relying on CREW_CACHE_ENABLED to save us before we get there.
+    return "https://gitlab.com/api/v4/projects/26210301/packages/generic/#{pkg.name}/#{pkg.version}_#{ARCH}/#{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression}" if package_id.zero?
     # List all the package files for that package ID.
     package_files = JSON.parse(Net::HTTP.get(URI("https://gitlab.com/api/v4/projects/26210301/packages/#{package_id}/package_files")))
+    # Bail out if we weren't actually able to find a package.
+    return if package_files.is_a?(Hash) && package_files['message'] == '404 Not found'
     # Loop over each result until we find a matching file_sha256 to our binary_sha256.
     (0..package_files.count - 1).each do |i|
       next unless package_files[i]['file_sha256'] == pkg.binary_sha256[ARCH.to_sym]

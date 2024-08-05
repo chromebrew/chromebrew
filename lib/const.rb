@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.45.0'
+CREW_VERSION = '1.45.1'
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
