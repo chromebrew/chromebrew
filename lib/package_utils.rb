@@ -30,4 +30,21 @@ class PackageUtils
       return pkg.source_sha256
     end
   end
+
+  def self.get_clean_version(pkg_version)
+    # Trim kde- suffixes in qt5 packages so nothing else gets confused.
+    pkg_version.delete_prefix!('kde-')
+    # Delete -py3.12, futureproofed until Python 4
+    pkg_version.gsub!(/-py3\.\d{2}/, '')
+    # Delete -perl 5.40, futureproofed until Perl 5.100
+    pkg_version.gsub!(/-perl5\.\d{2}/, '')
+    # Delete -llvm18, futureproofed until llvm 100
+    pkg_version.gsub!(/-llvm\d{2}/, '')
+    # Delete -glibc2.39, or whatever the system glibc is.
+    pkg_version.delete_suffix!("-glibc#{LIBC_VERSION}")
+    # Delete git version tags (1.2.4-qnd73k6), avoiding overmatching and hitting things that arent git hashtags.
+    pkg_version.gsub!(/-[\w]{7}$/, '')
+
+    return pkg_version
+  end
 end
