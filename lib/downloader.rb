@@ -143,7 +143,7 @@ class Downloader
     Dir.chdir(destination) do
       system 'git', 'init'
       system 'git', 'config', 'advice.detachedHead', 'false' # suppress "You are in 'detached HEAD' state" warning
-      system 'git', 'remote', 'add', 'origin', uri.rpartition('?')[0]
+      system 'git', 'remote', 'add', 'origin', uri.to_s.rpartition('?')[0]
       system 'git', 'fetch', 'origin', (git_hashtag || git_branch)
       system 'git', 'checkout', 'FETCH_HEAD'
       system 'git', 'submodule', 'update', '--init', '--recursive' unless no_submodules
