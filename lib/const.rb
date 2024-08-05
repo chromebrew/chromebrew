@@ -128,15 +128,8 @@ CHROMEOS_RELEASE = \
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
 CREW_DISABLE_MVDIR = ENV.fetch('CREW_DISABLE_MVDIR', '0').eql?('1')
 
-# If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
-CREW_USE_CURL = ENV.fetch('CREW_USE_CURL', '0').eql?('1')
-
-# Use an external Downloader.download instead of net/http if CREW_Downloader.download is set, see lib/Downloader.download.rb for more info
-# About the format of the CREW_Downloader.download variable, see line 130-133 in lib/Downloader.download.rb
-CREW_Downloader.download = ENV.fetch('CREW_Downloader.download', nil)
-
-# Downloader.download maximum retry count
-CREW_Downloader.download_RETRY = ENV.fetch('CREW_Downloader.download_RETRY', 3).to_i
+# Downloader maximum retry count
+CREW_DOWNLOADER_RETRY = ENV.fetch('CREW_DOWNLOADER_RETRY', 3).to_i
 
 # show download progress bar or not (only applied when using the default ruby Downloader.download)
 CREW_HIDE_PROGBAR = ENV.fetch('CREW_HIDE_PROGBAR', '0').eql?('1')
