@@ -29,13 +29,13 @@ class Downloader
     case uri.scheme
     when 'http', 'https'
       # use net/http if the url protocol is http(s)://
-      http_downloader(uri, dest_io, verbose)
+      http_downloader(uri, sha256sum, dest_io, verbose)
     when 'git', 'git+https'
       # use git if the url protocol is git(+https)://
       git_downloader(uri, destination, verbose)
     when 'file'
       # copy from filesystem if the url protocol is file://
-      file_downloader(uri, dest_io, verbose)
+      file_downloader(uri, sha256sum, dest_io, verbose)
     end
 
     unless %w[git git+https].include?(uri.scheme)
