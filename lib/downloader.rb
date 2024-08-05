@@ -38,31 +38,19 @@ class Downloader
       file_downloader(uri, dest_io, verbose)
     end
 
-    # verify with given checksum
-    calc_sha256sum = Digest::SHA256.hexdigest(File.read(filename))
-
-    unless sha256sum.casecmp('SKIP') || calc_sha256sum.eql?(sha256sum)
-      FileUtils.rm_f filename
-
-      warn 'Checksum mismatch :/ Try again?'.lightred, '', <<~EOT
-                              Filename: #{filename.lightblue}
-            Expected checksum (SHA256): #{sha256sum.green}
-          Calculated checksum (SHA256): #{calc_sha256sum.red}
-      EOT
-
-      exit 2
-    end
-
-    # return file content if destination is '-'
-    if %w[git git+https].none?(uri.scheme) && dest == '-'
-      # read underlying string from StringIO
-      return dest_io.string
+    unless %w[git git+https].include?(uri.scheme)
+      # return file content if destination is '-'
+      if dest == '-'
+        # read underlying string from StringIO
+        return dest_io.string
+      end
     end
   end
 
-  def self.http_downloader(uri, dest_io, verbose = false)
+  def self.http_downloader(uri, expected_sha, dest_io, verbose = false)
     # http_downloader: downloader based on net/http library
-    ssl_error_retry = 0
+    ssl_error_retry      = 0
+    sha256sum_calculator = Digest::SHA256.new
 
     # open http connection
     Net::HTTP.start(uri.host, uri.port, {
@@ -115,18 +103,24 @@ class Downloader
 
         progress_bar_thread = progress_bar.show # print progress bar
 
-        # read file chunks from server, write it to filesystem
+        # read file chunks from server, write it to filesystem/memory
         begin
           response.read_body do |chunk|
             downloaded_size += chunk.size # record downloaded size, used for showing progress bar
             progress_bar.set_downloaded_size(downloaded_size, invalid_size_error: false) if file_size.positive?
 
-            dest_io.write(chunk) # write to file
+            sha256sum_calculator.update(chunk) # pass chunk to checksum calculator
+            dest_io.write(chunk)               # write to file
           end
         ensure
           # stop progress bar, wait for it to terminate
           progress_bar.progress_bar_showing = false
           progress_bar_thread.join
+        end
+
+        unless sha256sum.casecmp?('SKIP')
+          sha256sum = sha256sum_calculator.hexdigest
+          checksum_mismatch(sha256sum, expected_sha) unless expected_sha.eql?(sha256sum)
         end
       end
     end
@@ -157,12 +151,27 @@ class Downloader
     end
   end
 
-  def self.file_downloader(uri, dest_io, verbose)
+  def self.file_downloader(uri, expected_sha, dest_io, verbose)
     # use FileUtils to copy if it is a local file (the url protocol is file://)
     if File.exist?(uri.path)
+      file_content = File.binread(uri.path)
+      sha256sum    = Digest::SHA256.hexdigest(file_content)
+
+      checksum_mismatch(expected_sha, sha256sum) unless expected_sha.casecmp?('SKIP')
       dest_io.write File.binread(uri.parh)
     else
       abort "#{uri.path}: File not found :/".lightred
     end
+  end
+
+  private_class_method
+
+  def self.checksum_mismatch(expected, calculated)
+    warn 'Checksum mismatch :/ Try again?'.lightred, '', <<~EOT
+          Expected checksum (SHA256): #{expected.green}
+        Calculated checksum (SHA256): #{calculated.red}
+    EOT
+
+    exit 2
   end
 end
