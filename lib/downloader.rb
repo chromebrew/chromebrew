@@ -133,11 +133,13 @@ class Downloader
     ssl_error_retry <= 3 ? retry : raise
   end
 
-  def self.git_downloader(uri, destination, verbose)
+  def self.git_downloader(uri, destination, verbose = false)
     url_params    = URI.decode_www_form(uri.query).to_h
     git_branch    = url_params['branch']
     git_hashtag   = url_params['hashtag']
     no_submodules = url_params['no_submodules'].eql?('1')
+
+    uri.scheme = 'https' if uri.scheme == 'git+https'
 
     FileUtils.mkdir_p destination
     Dir.chdir(destination) do
@@ -150,7 +152,7 @@ class Downloader
     end
   end
 
-  def self.file_downloader(uri, expected_sha, dest_io, verbose)
+  def self.file_downloader(uri, expected_sha, dest_io, verbose = false)
     # use FileUtils to copy if it is a local file (the url protocol is file://)
     if File.exist?(uri.path)
       file_content = File.binread(uri.path)
