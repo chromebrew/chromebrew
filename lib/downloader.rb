@@ -10,7 +10,7 @@ require_relative 'color'
 require_relative 'progress_bar'
 
 class Downloader
-  def self.download(url, sha256sum, destination = File.basename(url), verbose = false)
+  def self.download(url, sha256sum = 'SKIP', destination = File.basename(url), verbose = false)
     # download: wrapper for all Chromebrew downloaders (`net/http`,`git`...)
     # Usage: download <url>, <sha256sum>, <dest::optional>, <verbose::optional>
     #
@@ -43,7 +43,7 @@ class Downloader
       dest_io.close
 
       # return file content if destination is '-'
-      if dest == '-'
+      if destination == '-'
         # read underlying string from StringIO
         return dest_io.string
       end
@@ -134,11 +134,10 @@ class Downloader
   end
 
   def self.git_downloader(uri, destination, verbose)
-    url_params      = URI.decode_www_form(uri.query).to_h
-    git_branch      = url_params['branch']
-    git_commit      = url_params['commit']
-    git_tag         = url_params['tag']
-    init_submodules = url_params['submodules'].eql?('1')
+    url_params    = URI.decode_www_form(uri.query).to_h
+    git_branch    = url_params['branch']
+    git_hashtag   = url_params['hashtag']
+    no_submodules = url_params['no_submodules'].eql?('1')
 
     # remove url parameters before passing to git
     uri.query = ''
@@ -148,9 +147,9 @@ class Downloader
       system %w[git init]
       system %w[git config advice.detachedHead false] # suppress "You are in 'detached HEAD' state" warning
       system %W[git add remote origin #{uri}]
-      system %W[git fetch origin #{git_commit || git_tag || git_branch}]
+      system %W[git fetch origin #{git_hashtag || git_branch}]
       system %w[git checkout FETCH_HEAD]
-      system %w[git submodule update --init] if init_submodules # also download git submodules if specified
+      system %w[git submodule update --init --recursive] unless no_submodules
     end
   end
 
