@@ -39,9 +39,9 @@ jobs:
               ruby ../tests/buildsystem_test $file ; \
             done ) || true ) && \
             cd ~ && \
-            git clone --depth=1 --branch=${{ github.head_ref }} ${{ github.event.pull_request.head.repo.clone_url }} build_test && \
+            git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
             cd build_test && \
-            crew build -f packages/hello_world_chromebrew.rb"
+            yes | CREW_CACHE_ENABLED=1 crew build -f packages/hello_world_chromebrew.rb"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
         # This is not the best way to do things, a matrix would certainly be better.
@@ -62,6 +62,6 @@ jobs:
               ruby ../tests/buildsystem_test $file ; \
             done ) || true ) && \
             cd ~ && \
-            git clone --depth=1 --branch=${{ github.head_ref }} ${{ github.event.pull_request.head.repo.clone_url }} build_test && \
+            git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
             cd build_test && \
-            crew build -f packages/hello_world_chromebrew.rb"
+            yes | CREW_CACHE_ENABLED=1 crew build -f packages/hello_world_chromebrew.rb"
