@@ -420,8 +420,6 @@ def download
 
   uri = URI.parse url
   filename = File.basename(uri.path)
-  # # If we're downloading a binary, reset the filename to what it would have been if we didn't download from the API.
-  filename = "#{@pkg.name}-#{@pkg.version}-chromeos-#{ARCH}.#{@pkg.binary_compression}" if filename.eql?('download')
   sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
   @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
