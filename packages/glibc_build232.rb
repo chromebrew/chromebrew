@@ -299,7 +299,7 @@ class Glibc_build232 < Package
            exception: false
     FileUtils.mv "#{CREW_LIB_PREFIX}/locale/locale-archive", "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
     unless File.file?('')
-      downloader "https://raw.githubusercontent.com/bminor/glibc/release/#{@crew_libc_version}/master/intl/locale.alias",
+      Downloader.download "https://raw.githubusercontent.com/bminor/glibc/release/#{@crew_libc_version}/master/intl/locale.alias",
                  'SKIP', "#{CREW_PREFIX}/share/locale/locale.alias"
     end
     if @opt_verbose

@@ -29,9 +29,9 @@ class Glibc_build237 < Package
   def self.patch
     FileUtils.mkdir 'fedora'
     # Patch to enable build-local-archive
-    downloader 'https://src.fedoraproject.org/rpms/glibc/raw/f30/f/glibc-fedora-locarchive.patch', '0acccf57d8c6e7de82871c61ccb845f7a1ae13ae1fbc65995d347de8367c7bb1'
+    Downloader.download 'https://src.fedoraproject.org/rpms/glibc/raw/f30/f/glibc-fedora-locarchive.patch', '0acccf57d8c6e7de82871c61ccb845f7a1ae13ae1fbc65995d347de8367c7bb1'
     system 'patch -Np1 -i glibc-fedora-locarchive.patch'
-    downloader 'https://src.fedoraproject.org/rpms/glibc/raw/f30/f/build-locale-archive.c', '6834e8b8f2a987bf8adfd265c0e01665f102c7115db94b99ec36376b68e9d3fa', 'fedora/build-locale-archive.c'
+    Downloader.download 'https://src.fedoraproject.org/rpms/glibc/raw/f30/f/build-locale-archive.c', '6834e8b8f2a987bf8adfd265c0e01665f102c7115db94b99ec36376b68e9d3fa', 'fedora/build-locale-archive.c'
     system "sed -i 's,/lib/locale,/lib#{CREW_LIB_SUFFIX}/locale,g' fedora/build-locale-archive.c"
     system "sed -i 's,/usr/sbin/tzdata-update,/bin/true,g' fedora/build-locale-archive.c"
     system "sed -i 's,verbose,locale_verbose,g' fedora/build-locale-archive.c"
@@ -285,7 +285,7 @@ class Glibc_build237 < Package
            exception: false
     FileUtils.mv "#{CREW_LIB_PREFIX}/locale/locale-archive", "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
     unless File.file?('')
-      downloader "https://raw.githubusercontent.com/bminor/glibc/release/#{@libc_version}/master/intl/locale.alias",
+      Downloader.download "https://raw.githubusercontent.com/bminor/glibc/release/#{@libc_version}/master/intl/locale.alias",
                  'SKIP', "#{CREW_PREFIX}/share/locale/locale.alias"
     end
     if CREW_VERBOSE

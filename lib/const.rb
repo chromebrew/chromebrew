@@ -131,17 +131,17 @@ CREW_DISABLE_MVDIR = ENV.fetch('CREW_DISABLE_MVDIR', '0').eql?('1')
 # If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
 CREW_USE_CURL = ENV.fetch('CREW_USE_CURL', '0').eql?('1')
 
-# Use an external downloader instead of net/http if CREW_DOWNLOADER is set, see lib/downloader.rb for more info
-# About the format of the CREW_DOWNLOADER variable, see line 130-133 in lib/downloader.rb
-CREW_DOWNLOADER = ENV.fetch('CREW_DOWNLOADER', nil)
+# Use an external Downloader.download instead of net/http if CREW_Downloader.download is set, see lib/Downloader.download.rb for more info
+# About the format of the CREW_Downloader.download variable, see line 130-133 in lib/Downloader.download.rb
+CREW_Downloader.download = ENV.fetch('CREW_Downloader.download', nil)
 
-# Downloader maximum retry count
-CREW_DOWNLOADER_RETRY = ENV.fetch('CREW_DOWNLOADER_RETRY', 3).to_i
+# Downloader.download maximum retry count
+CREW_Downloader.download_RETRY = ENV.fetch('CREW_Downloader.download_RETRY', 3).to_i
 
-# show download progress bar or not (only applied when using the default ruby downloader)
+# show download progress bar or not (only applied when using the default ruby Downloader.download)
 CREW_HIDE_PROGBAR = ENV.fetch('CREW_HIDE_PROGBAR', '0').eql?('1')
 
-# set certificate file location for lib/downloader.rb
+# set certificate file location for lib/Downloader.download.rb
 SSL_CERT_FILE = \
   if ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
     ENV['SSL_CERT_FILE']

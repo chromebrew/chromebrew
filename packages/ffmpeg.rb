@@ -102,7 +102,7 @@ class Ffmpeg < Package
 
   def self.patch
     # Needed for qtwebengine compatibility.
-    downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/ffmpeg/trunk/add-av_stream_get_first_dts-for-chromium.patch',
+    Downloader.download 'https://github.com/archlinux/svntogit-packages/raw/packages/ffmpeg/trunk/add-av_stream_get_first_dts-for-chromium.patch',
                '57e26caced5a1382cb639235f9555fc50e45e7bf8333f7c9ae3d49b3241d3f77'
     system 'patch -Np1 -i add-av_stream_get_first_dts-for-chromium.patch'
   end

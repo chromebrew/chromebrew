@@ -19,7 +19,7 @@ class Foot < Meson
   def self.patch
     # threads.h was introduced in glibc 2.28. This is a workaround for pre-M92 systems.
     return unless LIBC_VERSION < '2.28'
-    downloader 'https://raw.githubusercontent.com/jtsiomb/c11threads/3b0ee4127ff8e8d954d183c9acc06be9e32aecf2/c11threads.h', '9b8a21dc65ed4891eb4c469adaaa94955b365009b6b8d1858bd91378b0157865', 'threads.h'
+    Downloader.download 'https://raw.githubusercontent.com/jtsiomb/c11threads/3b0ee4127ff8e8d954d183c9acc06be9e32aecf2/c11threads.h', '9b8a21dc65ed4891eb4c469adaaa94955b365009b6b8d1858bd91378b0157865', 'threads.h'
     FileUtils.cp('threads.h', 'tests')
   end
 

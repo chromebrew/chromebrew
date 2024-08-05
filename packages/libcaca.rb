@@ -39,10 +39,10 @@ class Libcaca < Package
   depends_on 'zlib' # R
 
   def self.patch
-    downloader 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/66.patch',
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/66.patch',
                'd8a8f7347c5cb7b1f63ef4ef112d7fecd9d39d1703f27fccfab10709fc284d51'
     system 'patch -Np1 -i 66.patch'
-    downloader 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/70.patch',
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/70.patch',
                '173778700c92338a7b6d9f139053574359dd28829c8cdf8418df81632e002b6a'
     system 'patch -Np1 -i 70.patch'
   end

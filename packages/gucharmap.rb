@@ -33,8 +33,8 @@ class Gucharmap < Meson
   no_lto
 
   def self.prebuild
-    downloader "https://www.unicode.org/Public/zipped/#{Unicode_character_database.version}/Unihan.zip", 'SKIP', '/tmp/Unihan.zip'
-    downloader "https://www.unicode.org/Public/zipped/#{Unicode_character_database.version}/UCD.zip", 'SKIP', '/tmp/UCD.zip'
+    Downloader.download "https://www.unicode.org/Public/zipped/#{Unicode_character_database.version}/Unihan.zip", 'SKIP', '/tmp/Unihan.zip'
+    Downloader.download "https://www.unicode.org/Public/zipped/#{Unicode_character_database.version}/UCD.zip", 'SKIP', '/tmp/UCD.zip'
     Dir.chdir '/tmp' do
       system 'unzip UCD.zip'
     end

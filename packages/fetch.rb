@@ -20,7 +20,7 @@ class Fetch < CMake
   depends_on 'openssl'
 
   def self.patch
-    downloader 'https://patch-diff.githubusercontent.com/raw/jrmarino/fetch-freebsd/pull/6.patch', 'd872cae4f979c563be3659657a323ce444a469167733712a2e96f578ff9d7427'
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/jrmarino/fetch-freebsd/pull/6.patch', 'd872cae4f979c563be3659657a323ce444a469167733712a2e96f578ff9d7427'
     system 'git apply 6.patch'
   end
 

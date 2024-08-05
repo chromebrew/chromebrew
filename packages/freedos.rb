@@ -27,7 +27,7 @@ class Freedos < Package
 
     # See https://opensource.com/article/17/10/run-dos-applications-linux.
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/dosfiles"
-    downloader 'https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.2/FD12CD.iso', '6c7f6aad72ab16c592e879367d1ed463047e3b7c94e1828e1ddadb680d461bc3'
+    Downloader.download 'https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.2/FD12CD.iso', '6c7f6aad72ab16c592e879367d1ed463047e3b7c94e1828e1ddadb680d461bc3'
     system "qemu-img create freedos.img #{mb}M"
     system 'qemu-system-i386 -m 16 -k en-us -rtc base=localtime -soundhw all -device cirrus-vga -display gtk -hda freedos.img -cdrom FD12CD.iso -boot order=d'
     system "echo '#!/bin/bash' > freedos"

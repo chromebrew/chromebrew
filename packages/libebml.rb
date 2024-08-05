@@ -18,7 +18,7 @@ class Libebml < Package
   })
 
   def self.patch
-    downloader 'https://salsa.debian.org/multimedia-team/libebml/-/raw/master/debian/patches/0001-include-appropriate-header-files-for-std-numeric_lim.patch',
+    Downloader.download 'https://salsa.debian.org/multimedia-team/libebml/-/raw/master/debian/patches/0001-include-appropriate-header-files-for-std-numeric_lim.patch',
                'e0662dddd31ffcc0581bbba25de707fe881e556eef540522eb9b7956cb3cd32c'
 
     system 'patch -Np1 -i 0001-include-appropriate-header-files-for-std-numeric_lim.patch'

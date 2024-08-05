@@ -19,7 +19,7 @@ class Fontforge < CMake
   # https://github.com/fontforge/fontforge/issues/5251
   def self.patch
     # Fix errors in French and Italian translations
-    downloader 'https://patch-diff.githubusercontent.com/raw/fontforge/fontforge/pull/5257.patch', '91a2836b4ae8a572ad0cc9b867cf9313b64adbb094d416e8ba17535fc8b839b3'
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/fontforge/fontforge/pull/5257.patch', '91a2836b4ae8a572ad0cc9b867cf9313b64adbb094d416e8ba17535fc8b839b3'
     system 'git apply 5257.patch'
   end
 

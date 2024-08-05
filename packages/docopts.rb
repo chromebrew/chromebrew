@@ -25,7 +25,7 @@ class Docopts < Package
 
   def self.patch
     # build: replace deploy.sh with goreleaser
-    downloader 'https://patch-diff.githubusercontent.com/raw/docopt/docopts/pull/65.patch', 'b464038dd631d4d25c5541303f525c3d7d59d95236f6e6e55589ec459c3219ab'
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/docopt/docopts/pull/65.patch', 'b464038dd631d4d25c5541303f525c3d7d59d95236f6e6e55589ec459c3219ab'
     system 'git apply 65.patch'
   end
 

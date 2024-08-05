@@ -32,7 +32,7 @@ require_relative '../lib/const'
 require_relative '../lib/crewlog'
 require_relative '../lib/deb_utils'
 require_relative '../lib/docopt'
-require_relative '../lib/downloader'
+require_relative '../lib/Downloader.download'
 require_relative '../lib/gnome'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
@@ -444,7 +444,7 @@ def download
 
   Dir.chdir CREW_BREW_DIR do
     case File.basename(filename)
-    # Sources that download with our internal downloader
+    # Sources that download with our internal Downloader.download
     when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
@@ -479,7 +479,7 @@ def download
         end
       end
       # Download file if not cached.
-      downloader url, sha256sum, filename, CREW_VERBOSE
+      Downloader.download url, sha256sum, filename, CREW_VERBOSE
 
       puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
       # Stow file in cache if requested, if file is not from cache,
@@ -502,7 +502,7 @@ def download
     else
       unless git # We don't want to download a git repository as a file.
         Dir.mkdir @extract_dir
-        downloader url, sha256sum, filename, CREW_VERBOSE
+        Downloader.download url, sha256sum, filename, CREW_VERBOSE
 
         puts "#{filename}: File downloaded.".lightgreen
 

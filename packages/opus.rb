@@ -22,7 +22,7 @@ class Opus < Package
 
   def self.patch
     # See https://github.com/xiph/opus/issues/273
-    downloader 'https://patch-diff.githubusercontent.com/raw/xiph/opus/pull/267.patch',
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/xiph/opus/pull/267.patch',
                '39bcf3085978f1c113f6e2c60f39ccff638d2f5e1e0192ca603883e35632997c'
     system 'patch -Np1 -i 267.patch'
   end

@@ -24,7 +24,7 @@ class Flex < Autotools
   configure_options '--with-pic --disable-static --enable-shared'
 
   def self.patch
-    downloader 'https://gitlab.archlinux.org/archlinux/packaging/packages/flex/-/raw/main/flex-pie.patch?ref_type=heads&inline=false',
+    Downloader.download 'https://gitlab.archlinux.org/archlinux/packaging/packages/flex/-/raw/main/flex-pie.patch?ref_type=heads&inline=false',
                '20f3cce6b0ea6ab67a902a46b89c292b959994dedcbe6ee5d187f9bba1408b0e', 'flex-pie.patch'
     system 'patch -p1 -i flex-pie.patch'
     system 'autoreconf -fiv'

@@ -23,7 +23,7 @@ class Patchelf < Autotools
 
   def self.patch
     # Allocate PHT & SHT at the end of the *.elf file
-    downloader 'https://github.com/NixOS/patchelf/pull/544.patch', 'dbb0a0626e933e7368aaa84536bdb9cf46d4d05565e7fb5a9643154ec70c8ba1'
+    Downloader.download 'https://github.com/NixOS/patchelf/pull/544.patch', 'dbb0a0626e933e7368aaa84536bdb9cf46d4d05565e7fb5a9643154ec70c8ba1'
     system 'patch -Np1 -i 544.patch'
   end
 

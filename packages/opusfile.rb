@@ -28,10 +28,10 @@ class Opusfile < Package
   git_fetchtags
 
   def self.patch
-    downloader 'https://github.com/xiph/opusfile/pull/35.patch',
+    Downloader.download 'https://github.com/xiph/opusfile/pull/35.patch',
                '0dfb34854a044625e6150d7571f48620c5faf9c13e72568980caa4cb20ea283f'
     system 'patch -Np1 -i 35.patch'
-    downloader 'https://github.com/xiph/opusfile/pull/40.patch',
+    Downloader.download 'https://github.com/xiph/opusfile/pull/40.patch',
                '3600361b3894194a4f89f4c3f6614d6f97a0787d6dbe2235d47625e730ed03ec'
     system 'patch -Np1 -i 40.patch'
   end

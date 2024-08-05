@@ -25,7 +25,7 @@ class Ninja < CMake
 
   def self.patch
     puts 'Patching to update status on edge finish.'.orange
-    downloader 'https://patch-diff.githubusercontent.com/raw/ninja-build/ninja/pull/2312.patch',
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/ninja-build/ninja/pull/2312.patch',
                '09608df70838e8af1a4dab69f735da071699cb10af2336dfe22f92451edbe886'
     system 'patch -F 3 -p1 -i 2312.patch'
   end

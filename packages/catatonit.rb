@@ -21,9 +21,9 @@ class Catatonit < Package
   })
 
   def self.patch
-    downloader 'https://github.com/openSUSE/catatonit/commit/99bb9048f532257f3a2c3856cfa19fe957ab6cec.patch',
+    Downloader.download 'https://github.com/openSUSE/catatonit/commit/99bb9048f532257f3a2c3856cfa19fe957ab6cec.patch',
                '93e0429aa58cecea6cf2a8727bcc53e6eca90da63305a24c4f826b5e31c90d1a'
-    downloader 'https://patch-diff.githubusercontent.com/raw/openSUSE/catatonit/pull/24.patch',
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/openSUSE/catatonit/pull/24.patch',
                '101f6483b5f9d66c91c098bd125b17dd7da0b9ca7b01bd0e7c721bd075cd71bd'
     system 'patch -Np1 -i 99bb9048f532257f3a2c3856cfa19fe957ab6cec.patch'
     system 'patch -Np1 -i 24.patch'

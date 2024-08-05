@@ -23,8 +23,8 @@ class Alsa_utils < Autotools
   depends_on 'ncurses' # R
 
   def self.patch
-    downloader 'https://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess', 'SKIP'
-    downloader 'https://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.sub', 'SKIP'
+    Downloader.download 'https://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess', 'SKIP'
+    Downloader.download 'https://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.sub', 'SKIP'
     system 'autoreconf -fiv'
   end
 end

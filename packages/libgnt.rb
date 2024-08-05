@@ -23,7 +23,7 @@ class Libgnt < Meson
 
   def self.patch
     # Use panel_window instead of directly accessing the struct member
-    downloader 'https://keep.imfreedom.org/libgnt/libgnt/raw-rev/2da723f790d6', '6cb459fb35b9142390b6c3ea6af5ea031cb69b3f4248cba7e50ff32d51107ef0'
+    Downloader.download 'https://keep.imfreedom.org/libgnt/libgnt/raw-rev/2da723f790d6', '6cb459fb35b9142390b6c3ea6af5ea031cb69b3f4248cba7e50ff32d51107ef0'
     system 'git apply 2da723f790d6'
 
     # A proper fix to this should probably be upstreamed, given that most distros patch this ncurses check somehow.

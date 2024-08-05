@@ -35,7 +35,7 @@ class Antlr4 < Package
   end
 
   def self.install
-    downloader "https://www.antlr.org/download/antlr-#{@_ver}-complete.jar",
+    Downloader.download "https://www.antlr.org/download/antlr-#{@_ver}-complete.jar",
                '88f18a2bfac0dde1009eda5c7dce358a52877faef7868f56223a5bcc15329e43'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/antlr"

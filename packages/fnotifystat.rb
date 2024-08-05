@@ -19,7 +19,7 @@ class Fnotifystat < Package
 
   def self.patch
     # Add support for overriding installation prefix in Makefile
-    downloader 'https://patch-diff.githubusercontent.com/raw/ColinIanKing/fnotifystat/pull/2.patch', '6107417f16740bd0c4fcb94da52f04768e9987591a5cd6497be3368fd89a62c3'
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/ColinIanKing/fnotifystat/pull/2.patch', '6107417f16740bd0c4fcb94da52f04768e9987591a5cd6497be3368fd89a62c3'
     system 'git apply 2.patch'
   end
 

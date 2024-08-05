@@ -12,7 +12,7 @@ class Apktool < Package
   depends_on 'openjdk8'
 
   def self.install
-    downloader "https://github.com/iBotPeaches/Apktool/releases/download/v#{version}/apktool_#{version}.jar",
+    Downloader.download "https://github.com/iBotPeaches/Apktool/releases/download/v#{version}/apktool_#{version}.jar",
                'c11b5eb518d9ac2ab18e959cbe087499079072b04d567cdcae5ceb447f9a7e7d', 'apktool.jar'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'apktool.jar', "#{CREW_DEST_PREFIX}/bin", mode: 0o644

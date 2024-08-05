@@ -19,11 +19,11 @@ class Ecasound < Autotools
 
   def self.patch
     # Allow building as shared library
-    downloader 'https://patch-diff.githubusercontent.com/raw/kaivehmanen/ecasound/pull/4.patch', 'a5caeb1dfe580f1e338dddd849ed18f7ce3a32f83c5ea63297e4cbaeadc3088b'
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/kaivehmanen/ecasound/pull/4.patch', 'a5caeb1dfe580f1e338dddd849ed18f7ce3a32f83c5ea63297e4cbaeadc3088b'
     system 'git apply 4.patch'
 
     # build: Use PKG_CHECK_MODULES to find readline
-    downloader 'https://patch-diff.githubusercontent.com/raw/kaivehmanen/ecasound/pull/6.patch', '11aa2f31665172c3ab98e136f021e55e6c2e7b11e0fc5e05e9ea449e3d32af8b'
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/kaivehmanen/ecasound/pull/6.patch', '11aa2f31665172c3ab98e136f021e55e6c2e7b11e0fc5e05e9ea449e3d32af8b'
     system 'git apply 6.patch'
   end
 

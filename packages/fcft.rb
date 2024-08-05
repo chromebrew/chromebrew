@@ -25,7 +25,7 @@ class Fcft < Meson
 
   def self.patch
     # threads.h was introduced in glibc 2.28. This is a workaround for pre-M92 systems.
-    downloader 'https://github.com/jtsiomb/c11threads/raw/19abeee43272002301ddece2f7d5df37394bb54f/c11threads.h', 'c945fd352449174d3b6107c715b622206ebb81694ac23239637439d78e33ee5a', 'threads.h' if LIBC_VERSION < '2.28'
+    Downloader.download 'https://github.com/jtsiomb/c11threads/raw/19abeee43272002301ddece2f7d5df37394bb54f/c11threads.h', 'c945fd352449174d3b6107c715b622206ebb81694ac23239637439d78e33ee5a', 'threads.h' if LIBC_VERSION < '2.28'
   end
 
   meson_options '-Drun-shaping=enabled'

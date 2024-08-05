@@ -29,7 +29,7 @@ class Tmate < Autotools
 
   def self.patch
     # Patch for msgpack_c 6.x
-    downloader 'https://github.com/tmate-io/tmate/pull/281.patch', '9f4f315a92b959606d42d672cf8c7312afaf4a93fba6c0e21bfee0b84e2d4667'
+    Downloader.download 'https://github.com/tmate-io/tmate/pull/281.patch', '9f4f315a92b959606d42d672cf8c7312afaf4a93fba6c0e21bfee0b84e2d4667'
     system 'patch -p1 -i 281.patch'
   end
 

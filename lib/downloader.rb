@@ -9,17 +9,17 @@ require_relative 'const'
 require_relative 'color'
 require_relative 'progress_bar'
 
-class Downloader
-  def self.downloader(url, sha256sum, destination = File.basename(url), verbose = false)
-    # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
-    # Usage: downloader <url>, <sha256sum>, <dest::optional>, <verbose::optional>
+class Downloader.download
+  def self.download(url, sha256sum, destination = File.basename(url), verbose = false)
+    # download: wrapper for all Chromebrew Downloader.downloads (`net/http`,`git`...)
+    # Usage: download <url>, <sha256sum>, <dest::optional>, <verbose::optional>
     #
     #           <url>: URL that points to the target file
     #     <sha256sum>: SHA256 checksum, verify downloaded file with given checksum
     #   <destination>: (Optional) Output destination
     #       <verbose>: (Optional) Verbose output
     #
-    puts "downloader(#{url}, #{sha256sum}, #{filename}, #{verbose})" if verbose
+    puts "Downloader.download(#{url}, #{sha256sum}, #{filename}, #{verbose})" if verbose
     uri = URI(url)
 
     unless %w[git git+https].include?(uri.scheme)
@@ -29,13 +29,13 @@ class Downloader
     case uri.scheme
     when 'http', 'https'
       # use net/http if the url protocol is http(s)://
-      http_downloader(uri, dest_io, verbose)
+      http_Downloader.download(uri, dest_io, verbose)
     when 'git', 'git+https'
       # use git if the url protocol is git(+https)://
-      git_downloader(uri, destination, verbose)
+      git_Downloader.download(uri, destination, verbose)
     when 'file'
       # copy from filesystem if the url protocol is file://
-      file_downloader(uri, dest_io, verbose)
+      file_Downloader.download(uri, dest_io, verbose)
     end
 
     # verify with given checksum
@@ -60,13 +60,13 @@ class Downloader
     end
   end
 
-  def self.http_downloader(uri, dest_io, verbose = false)
-    # http_downloader: Downloader based on net/http library
+  def self.http_Downloader.download(uri, dest_io, verbose = false)
+    # http_Downloader.download: Downloader.download based on net/http library
     ssl_error_retry = 0
 
     # open http connection
     Net::HTTP.start(uri.host, uri.port, {
-      max_retries: CREW_DOWNLOADER_RETRY,
+      max_retries: CREW_Downloader.download_RETRY,
           use_ssl: uri.scheme.eql?('https'),
       min_version: :TLS1_2,
           ca_file: SSL_CERT_FILE,
@@ -136,7 +136,7 @@ class Downloader
     ssl_error_retry <= 3 ? retry : raise
   end
 
-  def self.git_downloader(uri, destination, verbose)
+  def self.git_Downloader.download(uri, destination, verbose)
     url_params      = URI.decode_www_form(uri.query).to_h
     git_branch      = url_params['branch']
     git_commit      = url_params['commit']
@@ -157,7 +157,7 @@ class Downloader
     end
   end
 
-  def self.file_downloader(uri, dest_io, verbose)
+  def self.file_Downloader.download(uri, dest_io, verbose)
     # use FileUtils to copy if it is a local file (the url protocol is file://)
     if File.exist?(uri.path)
       dest_io.write File.binread(uri.parh)
