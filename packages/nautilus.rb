@@ -6,16 +6,17 @@ require 'buildsystems/meson'
 class Nautilus < Meson
   description 'Default file manager for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Files'
-  version '46.rc'
+  version '46.2'
   license 'GPLv3'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.37'
   source_url 'https://gitlab.gnome.org/GNOME/nautilus.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd608f85f6be5ac19407ef71df3f6e398bb6fd0a412a935063b8464cb7fcf6a55',
-     armv7l: 'd608f85f6be5ac19407ef71df3f6e398bb6fd0a412a935063b8464cb7fcf6a55',
+    aarch64: 'a9108646b99aa5f1ed6a82fc6c841791eddddfaabebae08064e7dbcfb2d28ef7',
+     armv7l: 'a9108646b99aa5f1ed6a82fc6c841791eddddfaabebae08064e7dbcfb2d28ef7',
      x86_64: '5867de4e7b37bd255dcc087700866c36b465249549a718666c6cd834cbf7fe2a'
   })
 
@@ -28,12 +29,12 @@ class Nautilus < Meson
   depends_on 'gcc_lib' => :build
   depends_on 'gdk_pixbuf' # R
   depends_on 'gexiv2' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gnome_autoar' # R
   depends_on 'gnome_desktop' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'graphene' => :build
   depends_on 'graphene' # R
   depends_on 'gstreamer' # R
   depends_on 'gtk3' => :build
@@ -49,9 +50,8 @@ class Nautilus < Meson
   depends_on 'libjpeg_turbo' => :build
   depends_on 'libportal' # R
   depends_on 'libxml2' => :build
-  depends_on 'pango' => :build
-  depends_on 'pango' # R
   depends_on 'localsearch' => :build
+  depends_on 'pango' # R
   depends_on 'tinysparql' # R
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build

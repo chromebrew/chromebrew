@@ -12,8 +12,8 @@ class Tinysparql < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f3f8f29edc37a90de375a4c803684f059ab66ee291bc6dc0f80394d3a678d1a0',
-     armv7l: 'f3f8f29edc37a90de375a4c803684f059ab66ee291bc6dc0f80394d3a678d1a0',
+    aarch64: '42c62d693cc7d5b435d05a5d61b39339d5a1dfec645e031dac8b0d0358b73a4c',
+     armv7l: '42c62d693cc7d5b435d05a5d61b39339d5a1dfec645e031dac8b0d0358b73a4c',
      x86_64: '26e3149df2d260e96f70c11e5f0e2b7aaed38fbc6545df7cd9a8262b161dfac1'
   })
 

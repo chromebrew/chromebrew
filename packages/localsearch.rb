@@ -12,8 +12,8 @@ class Localsearch < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fdc3d16188f3438d9af21fe4b321caa44143530ef775a655754f55e39940f989',
-     armv7l: 'fdc3d16188f3438d9af21fe4b321caa44143530ef775a655754f55e39940f989',
+    aarch64: 'ee07d7ac54e1e98360299f1deb15c754cc9bb826eae128e002e8f0fa4af730de',
+     armv7l: 'ee07d7ac54e1e98360299f1deb15c754cc9bb826eae128e002e8f0fa4af730de',
      x86_64: '1486965568cb0e533eb87078efc3e6621b8553b8823ac054dd05f8d051bd0baa'
   })
 
@@ -22,7 +22,7 @@ class Localsearch < Meson
   depends_on 'gcc_lib' => :build
   depends_on 'gexiv2' # R
   depends_on 'giflib' # R
-  depends_on 'glibc_lib' => :build
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gstreamer' # R
@@ -43,8 +43,9 @@ class Localsearch < Meson
 
   gnome
 
-  meson_options "-Ddbus_services_dir=#{CREW_PREFIX}/share/dbus-1/services/ \
-      -Dbattery_detection=none \
+  meson_options "-Dbattery_detection=none \
+      -Ddbus_services_dir=#{CREW_PREFIX}/share/dbus-1/services/ \
+      -Dlandlock=disabled \
       -Dman=false \
       -Dsystemd_user_services=false"
 end
