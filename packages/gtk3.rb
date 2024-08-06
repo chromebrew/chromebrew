@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk3 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://docs.gtk.org/gtk3/'
-  version '3.24.41'
+  version '3.24.42'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk3 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3760322a4d9bf7d8ca10e49a8b67d7222550e69f24b8b6188bcdcdb378b2dbbd',
-     armv7l: '3760322a4d9bf7d8ca10e49a8b67d7222550e69f24b8b6188bcdcdb378b2dbbd',
-     x86_64: 'dbb3e25dd81f9b9315448915a8b62bddb92ae62de28a21c17fa5e235e62e4277'
+    aarch64: 'e5235420bc26f24f91ee5b5d1f4c5e5088abe4d95b60f0461a38ed00a3ffddc2',
+     armv7l: 'e5235420bc26f24f91ee5b5d1f4c5e5088abe4d95b60f0461a38ed00a3ffddc2',
+     x86_64: '82137a4436122b01483137fe772724df66f1cdebe3b2a6ba03c0204d96d6230b'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -55,6 +55,7 @@ class Gtk3 < Meson
   depends_on 'libxi' # R
   depends_on 'libxkbcommon' # R
   depends_on 'libxrandr' # R
+  depends_on 'libxrender' # R
   depends_on 'mesa' => :build
   depends_on 'pango' # R
   depends_on 'rest' => :build
