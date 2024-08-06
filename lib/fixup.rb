@@ -82,6 +82,8 @@ pkg_update_arr = [
   { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'ruby_debug', pkg_rename: nil, pkg_deprecated: true, comments: 'Integrated into ruby package.' },
+  { pkg_name: 'tracker3', pkg_rename: 'tinysparql', pkg_deprecated: nil, comments: 'Renamed upstream.' },
+  { pkg_name: 'tracker3_miners', pkg_rename: 'localsearch', pkg_deprecated: nil, comments: 'Renamed upstream.' },
   { pkg_name: 'util_macros', pkg_rename: 'xorg_macros', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'wget', pkg_rename: 'wget2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'zlibpkg', pkg_rename: 'zlib', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' }
