@@ -10,7 +10,7 @@
 /usr/local/include/srt/version.h
 /usr/local/lib64/libsrt.a
 /usr/local/lib64/libsrt.so
-/usr/local/lib64/libsrt.so.1.4
-/usr/local/lib64/libsrt.so.1.4.3
+/usr/local/lib64/libsrt.so.1.5
+/usr/local/lib64/libsrt.so.1.5.3
 /usr/local/lib64/pkgconfig/haisrt.pc
 /usr/local/lib64/pkgconfig/srt.pc
