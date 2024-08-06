@@ -51,8 +51,8 @@ class Nautilus < Meson
   depends_on 'libxml2' => :build
   depends_on 'pango' => :build
   depends_on 'pango' # R
-  depends_on 'tracker3_miners' => :build
-  depends_on 'tracker3' # R
+  depends_on 'localsearch' => :build
+  depends_on 'tinysparql' # R
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
 
