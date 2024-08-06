@@ -8,12 +8,15 @@
 /usr/local/bin/imlib2_test
 /usr/local/bin/imlib2_view
 /usr/local/include/Imlib2.h
+/usr/local/include/Imlib2_Loader.h
 /usr/local/lib/imlib2/filters/bumpmap.la
 /usr/local/lib/imlib2/filters/bumpmap.so
 /usr/local/lib/imlib2/filters/colormod.la
 /usr/local/lib/imlib2/filters/colormod.so
 /usr/local/lib/imlib2/filters/testfilter.la
 /usr/local/lib/imlib2/filters/testfilter.so
+/usr/local/lib/imlib2/loaders/ani.la
+/usr/local/lib/imlib2/loaders/ani.so
 /usr/local/lib/imlib2/loaders/argb.la
 /usr/local/lib/imlib2/loaders/argb.so
 /usr/local/lib/imlib2/loaders/bmp.la
@@ -24,6 +27,8 @@
 /usr/local/lib/imlib2/loaders/ff.so
 /usr/local/lib/imlib2/loaders/gif.la
 /usr/local/lib/imlib2/loaders/gif.so
+/usr/local/lib/imlib2/loaders/heif.la
+/usr/local/lib/imlib2/loaders/heif.so
 /usr/local/lib/imlib2/loaders/ico.la
 /usr/local/lib/imlib2/loaders/ico.so
 /usr/local/lib/imlib2/loaders/j2k.la
@@ -40,6 +45,8 @@
 /usr/local/lib/imlib2/loaders/png.so
 /usr/local/lib/imlib2/loaders/pnm.la
 /usr/local/lib/imlib2/loaders/pnm.so
+/usr/local/lib/imlib2/loaders/qoi.la
+/usr/local/lib/imlib2/loaders/qoi.so
 /usr/local/lib/imlib2/loaders/svg.la
 /usr/local/lib/imlib2/loaders/svg.so
 /usr/local/lib/imlib2/loaders/tga.la
@@ -58,7 +65,7 @@
 /usr/local/lib/libImlib2.la
 /usr/local/lib/libImlib2.so
 /usr/local/lib/libImlib2.so.1
-/usr/local/lib/libImlib2.so.1.9.1
+/usr/local/lib/libImlib2.so.1.12.3
 /usr/local/lib/pkgconfig/imlib2.pc
 /usr/local/share/imlib2/data/fonts/cinema.ttf
 /usr/local/share/imlib2/data/fonts/grunge.ttf
@@ -82,3 +89,4 @@
 /usr/local/share/imlib2/data/images/sh3.png
 /usr/local/share/imlib2/data/images/stop.png
 /usr/local/share/imlib2/data/images/tnt.png
+/usr/local/share/imlib2/rgb.txt
