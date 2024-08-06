@@ -6,18 +6,18 @@ require 'buildsystems/autotools'
 class Libvisio < Autotools
   description 'Library providing ability to interpret and import visio diagrams'
   homepage 'https://wiki.documentfoundation.org/DLP/Libraries/libvisio'
-  version '0.1.7-2'
+  version '0.1.7-aac02f9-icu75.1'
   license 'LGPL'
   compatibility 'all'
-  source_url 'https://dev-www.libreoffice.org/src/libvisio/libvisio-0.1.7.tar.xz'
-  source_sha256 '8faf8df870cb27b09a787a1959d6c646faa44d0d8ab151883df408b7166bea4c'
+  source_url 'https://git.libreoffice.org/libvisio'
+  git_hashtag 'aac02f9141fcaf0acc1bce2ff6a5c2e9618f9235'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '881a0996ae47fc7f1402972814298d56a8f1d5e5d94b8c65f3d02a0a120d23d3',
-     armv7l: '881a0996ae47fc7f1402972814298d56a8f1d5e5d94b8c65f3d02a0a120d23d3',
-       i686: '51dc3a8c3c3e003423abcf95e2fe1306ef47e75e2311ed96aa747833e02c1ea3',
-     x86_64: '576f1a0274289b8ec2c4204af563e71e238824c2d03a2ff521077c90be6f7cb8'
+    aarch64: '32476941af3b6807de3e4086570718b6027d6acc9037a2f2e936511600b2005d',
+     armv7l: '32476941af3b6807de3e4086570718b6027d6acc9037a2f2e936511600b2005d',
+       i686: '3de266981909ae345bc768e3a53e00c35b2f38c9d645d2b7190fd9de8e47895b',
+     x86_64: 'a8e7e743e6499ce1625efb26bf1cd2af06fb7a3cbcf28ffb085e9439f987c6ae'
   })
 
   depends_on 'boost' => :build
