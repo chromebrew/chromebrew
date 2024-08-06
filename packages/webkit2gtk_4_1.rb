@@ -43,7 +43,7 @@ class Webkit2gtk_4_1 < Package
   depends_on 'libepoxy' # R
   depends_on 'libgcrypt' # R
   depends_on 'libglvnd' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
   depends_on 'libnotify'

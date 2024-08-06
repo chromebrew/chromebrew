@@ -8,9 +8,9 @@
 /usr/local/lib/libraw1394.la
 /usr/local/lib/libraw1394.so
 /usr/local/lib/libraw1394.so.11
-/usr/local/lib/libraw1394.so.11.0.1
+/usr/local/lib/libraw1394.so.11.1.0
 /usr/local/lib/pkgconfig/libraw1394.pc
-/usr/local/share/man/man1/dumpiso.1.gz
-/usr/local/share/man/man1/sendiso.1.gz
-/usr/local/share/man/man1/testlibraw.1.gz
-/usr/local/share/man/man5/isodump.5.gz
+/usr/local/share/man/man1/dumpiso.1.zst
+/usr/local/share/man/man1/sendiso.1.zst
+/usr/local/share/man/man1/testlibraw.1.zst
+/usr/local/share/man/man5/isodump.5.zst

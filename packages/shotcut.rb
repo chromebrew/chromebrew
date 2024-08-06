@@ -41,7 +41,7 @@ class Shotcut < Package
   depends_on 'libepoxy' # R
   depends_on 'libgcrypt' # R
   depends_on 'libglvnd' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libice' # R
   depends_on 'libinput' # R
   depends_on 'libmp3lame' # R

@@ -29,7 +29,7 @@ class Yelp < Autotools
   depends_on 'icu4c' # R
   depends_on 'itstool' => :build
   depends_on 'libgcrypt' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libhandy' # R
   depends_on 'libsoup' # R
   depends_on 'libxml2' # R

@@ -1,31 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Rgb < Package
+class Rgb < Autotools
   description 'X color name database'
   homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.0.6-1'
-  license 'custom'
-  compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/app/rgb-1.0.6.tar.bz2'
-  source_sha256 'bbca7c6aa59939b9f6a0fb9fff15dfd62176420ffd4ae30c8d92a6a125fbe6b0'
-  binary_compression 'tar.xz'
+  version '1.1.0'
+  license 'MIT'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://gitlab.freedesktop.org/xorg/app/rgb.git'
+  git_hashtag "rgb-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '27166ea52928b8accc832ec1487f7a93cd25db22920a990d81c612a4b32ebc96',
-     armv7l: '27166ea52928b8accc832ec1487f7a93cd25db22920a990d81c612a4b32ebc96',
-       i686: '4af3c2ad090fc4a3bb80e574338452b26d6893e2f2185ce8bdc6f6ce73b2824d',
-     x86_64: '5921f6f8cf98c4a7ff6760921a4a3b3092bb875caf3baea4b5f4e515d837edcc'
+    aarch64: '83955fe52361625e21dd9a7d97a9b43f5c83fe2a3b07946bab59ebe89e2692b5',
+     armv7l: '83955fe52361625e21dd9a7d97a9b43f5c83fe2a3b07946bab59ebe89e2692b5',
+     x86_64: '9da27cdae896ec53d23bfe370687dc15181cdad0e16e1c96a1b5498d71c301fd'
   })
 
   depends_on 'xorg_proto' => :build
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'xorg_macros' => :build
 end

@@ -20,7 +20,7 @@ class Gmime < Autotools
   depends_on 'glib' # R
   depends_on 'gpgme' # R
   depends_on 'libassuan' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libidn2' # R
   depends_on 'libunistring' # R
   depends_on 'vala' => :build
