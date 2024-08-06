@@ -6,11 +6,13 @@ require 'package'
 class Js115 < Package
   description 'JavaScript interpreter and libraries - Version 115'
   homepage 'https://spidermonkey.dev/'
-  version '115.13.0-icu75.1'
+  version '115.8.0'
+  # version '115.13.0-icu75.1'
   license 'MPL-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{version.split('-').first}esr/source/firefox-#{version.split('-').first}esr.source.tar.xz"
-  source_sha256 '3fa20d1897100684d2560a193a48d4a413f31e61f2ed134713d607c5f30d5d5c'
+  source_sha256 'af8086f23efc8492d286671f6035b1a915de6f4ed5c7897e40be0e1cb6b895ea'
+  # source_sha256 '3fa20d1897100684d2560a193a48d4a413f31e61f2ed134713d607c5f30d5d5c'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -87,7 +89,7 @@ class Js115 < Package
       system "CFLAGS='-fcf-protection=none' \
             CXXFLAGS='-fcf-protection=none' \
             CC=gcc CXX=g++ \
-            LD=mold \
+            LD=#{CREW_LINKER} \
             RUSTFLAGS='-Clto=thin' \
             RUSTUP_HOME='#{CREW_PREFIX}/share/rustup' \
             CARGO_HOME='#{CREW_PREFIX}/share/cargo' \

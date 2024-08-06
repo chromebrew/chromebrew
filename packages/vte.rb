@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Vte < Meson
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  version '0.75.92'
+  version '0.77.91-icu75.1'
   license 'LGPL-2+ and GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -25,7 +25,7 @@ class Vte < Meson
   depends_on 'glib' # R
   depends_on 'gnutls' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'graphene' => :build
+  depends_on 'graphene' # R
   depends_on 'gtk3' # R
   depends_on 'gtk4' # R
   depends_on 'harfbuzz' # R
@@ -46,4 +46,8 @@ class Vte < Meson
       -Dgtk4=true \
       -Dgir=false \
       -Dvapi=false'
+
+  def self.patch
+    system "sed -i 's,/usr/bin/python3,#{CREW_PREFIX}/bin/python3,' src/minifont-coverage.py"
+  end
 end
