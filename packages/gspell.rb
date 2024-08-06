@@ -1,19 +1,19 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Gspell < Autotools
+class Gspell < Meson
   description 'a flexible API to implement the spell checking in a GTK+ application'
   homepage 'https://wiki.gnome.org/Projects/gspell'
-  version '1.12.2-87b8146'
+  version '1.13.1-icu75.1'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gspell.git'
-  git_hashtag '87b8146864a130bc1c85c57baa211df160ae564c'
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'eb9f5a0b0d0dd27050ec4d953c648cc87c47610ca19968eebfedc699e417e998',
-     armv7l: 'eb9f5a0b0d0dd27050ec4d953c648cc87c47610ca19968eebfedc699e417e998',
-     x86_64: '3350a5e32bfe4783f680aa54091072f2955824f1271de4336678d519a02c947c'
+    aarch64: '6ac757e5b1395d38c5c0e71c73520221da80ba1eece3e1b9a193af908ca32fae',
+     armv7l: '6ac757e5b1395d38c5c0e71c73520221da80ba1eece3e1b9a193af908ca32fae',
+     x86_64: '1bd1ceda2c88ffb2885beba6cec7583e0efb16e4478d9be67b7e4e630461123c'
   })
 
   depends_on 'aspell' => :build
@@ -28,7 +28,6 @@ class Gspell < Autotools
   depends_on 'gobject_introspection' => :build
   depends_on 'graphite' => :build
   depends_on 'gtk3' # R
-  depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
   depends_on 'hunspell' # L
   depends_on 'icu4c' # R
@@ -41,4 +40,6 @@ class Gspell < Autotools
   depends_on 'zlib' # R
 
   gnome
+
+  meson_options '-Dgtk_doc=false -Dtests=false'
 end
