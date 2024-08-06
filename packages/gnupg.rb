@@ -22,7 +22,7 @@ class Gnupg < Autotools
   depends_on 'gnutls' # R
   depends_on 'libassuan' # R
   depends_on 'libgcrypt' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libksba' # R
   depends_on 'libusb' # R
   depends_on 'libxtrans' => :build

@@ -30,7 +30,7 @@ class Wireshark < CMake
   depends_on 'krb5' # R
   depends_on 'libcap' # R
   depends_on 'libgcrypt' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libmaxminddb' # R
   depends_on 'libnghttp2' # R
   depends_on 'libnl3' # R

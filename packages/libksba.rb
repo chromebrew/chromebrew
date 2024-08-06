@@ -19,7 +19,7 @@ class Libksba < Package
 
   depends_on 'npth' => :build
   depends_on 'glibc' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS}"

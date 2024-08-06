@@ -20,7 +20,7 @@ class Libxslt < Package
   depends_on 'docbook_xsl' => :build
   depends_on 'glibc' # R
   depends_on 'libgcrypt' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libxml2' # R
   depends_on 'py3_libxml2' => :build
 
