@@ -3,12 +3,12 @@ require 'package'
 class Openjdk22 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
-  version '22.0.1'
+  version '22.0.2'
   license 'GPL-2'
   compatibility 'x86_64'
   # Visit https://www.azul.com/downloads/?package=jdk#zulu to download the binary.
-  source_url 'https://cdn.azul.com/zulu/bin/zulu22.30.13-ca-jdk22.0.1-linux_x64.tar.gz'
-  source_sha256 '993d91062c631d10508475f7b112724fa8136704ec1412d5cc1f93ddda1eddb0'
+  source_url 'https://cdn.azul.com/zulu/bin/zulu22.32.15-ca-jdk22.0.2-linux_x64.tar.gz'
+  source_sha256 'd48c661239200f9507480f91f99285794f9e484786c605015bc5bf0e19eb6613'
 
   no_compile_needed
   no_shrink
