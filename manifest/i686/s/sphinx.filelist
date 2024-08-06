@@ -2,13 +2,13 @@
 /usr/local/bin/sphinx-autogen
 /usr/local/bin/sphinx-build
 /usr/local/bin/sphinx-quickstart
-/usr/local/lib/python3.12/site-packages/sphinx-7.4.5.dist-info/INSTALLER
-/usr/local/lib/python3.12/site-packages/sphinx-7.4.5.dist-info/LICENSE.rst
-/usr/local/lib/python3.12/site-packages/sphinx-7.4.5.dist-info/METADATA
-/usr/local/lib/python3.12/site-packages/sphinx-7.4.5.dist-info/RECORD
-/usr/local/lib/python3.12/site-packages/sphinx-7.4.5.dist-info/REQUESTED
-/usr/local/lib/python3.12/site-packages/sphinx-7.4.5.dist-info/WHEEL
-/usr/local/lib/python3.12/site-packages/sphinx-7.4.5.dist-info/entry_points.txt
+/usr/local/lib/python3.12/site-packages/sphinx-8.0.2.dist-info/INSTALLER
+/usr/local/lib/python3.12/site-packages/sphinx-8.0.2.dist-info/LICENSE.rst
+/usr/local/lib/python3.12/site-packages/sphinx-8.0.2.dist-info/METADATA
+/usr/local/lib/python3.12/site-packages/sphinx-8.0.2.dist-info/RECORD
+/usr/local/lib/python3.12/site-packages/sphinx-8.0.2.dist-info/REQUESTED
+/usr/local/lib/python3.12/site-packages/sphinx-8.0.2.dist-info/WHEEL
+/usr/local/lib/python3.12/site-packages/sphinx-8.0.2.dist-info/entry_points.txt
 /usr/local/lib/python3.12/site-packages/sphinx/__init__.py
 /usr/local/lib/python3.12/site-packages/sphinx/__main__.py
 /usr/local/lib/python3.12/site-packages/sphinx/__pycache__/__init__.cpython-312.pyc
@@ -548,10 +548,8 @@
 /usr/local/lib/python3.12/site-packages/sphinx/templates/latex/sphinxmessages.sty.jinja
 /usr/local/lib/python3.12/site-packages/sphinx/templates/latex/tabular.tex.jinja
 /usr/local/lib/python3.12/site-packages/sphinx/templates/latex/tabulary.tex.jinja
-/usr/local/lib/python3.12/site-packages/sphinx/templates/quickstart/Makefile.jinja
 /usr/local/lib/python3.12/site-packages/sphinx/templates/quickstart/Makefile.new.jinja
 /usr/local/lib/python3.12/site-packages/sphinx/templates/quickstart/conf.py.jinja
-/usr/local/lib/python3.12/site-packages/sphinx/templates/quickstart/make.bat.jinja
 /usr/local/lib/python3.12/site-packages/sphinx/templates/quickstart/make.bat.new.jinja
 /usr/local/lib/python3.12/site-packages/sphinx/templates/quickstart/root_doc.rst.jinja
 /usr/local/lib/python3.12/site-packages/sphinx/templates/texinfo/Makefile
@@ -711,6 +709,7 @@
 /usr/local/lib/python3.12/site-packages/sphinx/util/__pycache__/__init__.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/sphinx/util/__pycache__/_io.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/sphinx/util/__pycache__/_pathlib.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/sphinx/util/__pycache__/_timestamps.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/sphinx/util/__pycache__/build_phase.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/sphinx/util/__pycache__/cfamily.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/sphinx/util/__pycache__/console.cpython-312.pyc
@@ -742,6 +741,7 @@
 /usr/local/lib/python3.12/site-packages/sphinx/util/__pycache__/typing.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/sphinx/util/_io.py
 /usr/local/lib/python3.12/site-packages/sphinx/util/_pathlib.py
+/usr/local/lib/python3.12/site-packages/sphinx/util/_timestamps.py
 /usr/local/lib/python3.12/site-packages/sphinx/util/build_phase.py
 /usr/local/lib/python3.12/site-packages/sphinx/util/cfamily.py
 /usr/local/lib/python3.12/site-packages/sphinx/util/console.py
