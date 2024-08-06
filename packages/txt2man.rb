@@ -2,31 +2,26 @@ require 'package'
 
 class Txt2man < Package
   description 'Txt2man converts flat ASCII text to man page format.'
-  homepage 'http://mvertes.free.fr/'
-  version '1.5.6-1'
+  homepage 'https://github.com/mvertes/txt2man'
+  version '1.7.1'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://mvertes.free.fr/download/txt2man-1.5.6.tar.gz'
-  source_sha256 '984825c5fd0cb3495160bf3277f327078081a8dc219dc466509e307ec9a2b52a'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/mvertes/txt2man.git'
+  git_hashtag "txt2man-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0b6b3292d3f543f885b9aa8bfa91e0ffc25c539e73f412604077855bc2c8f5d7',
-     armv7l: '0b6b3292d3f543f885b9aa8bfa91e0ffc25c539e73f412604077855bc2c8f5d7',
-       i686: '188870876c03bdd218e4a7bbd542dd5006d961a2bd8640714a8981b8d89d2532',
-     x86_64: 'e0776d50fcdc817d6646b9424029ab244bcfcfaa4a16c209bfb7b29bb5e14dab'
+    aarch64: '088f022b2a91fcd9c1126a99b087478d66946bac6a6d5d420fa7c68b97728c53',
+     armv7l: '088f022b2a91fcd9c1126a99b087478d66946bac6a6d5d420fa7c68b97728c53',
+       i686: '5085b7da6a41d4813e27a621222b5ceafb6bc2c7f08edf93c892c5dc1580a1e4',
+     x86_64: '7f5ba97362f6b1bcdf61add2867acac9163f8d7b7d06141c52eb4db7d430bda2'
   })
 
   def self.build
-    system 'gzip -9 *.1'
+    system 'make', "prefix=#{CREW_PREFIX}"
   end
 
   def self.install
-    system "install -Dm755 bookman #{CREW_DEST_PREFIX}/bin/bookman"
-    system "install -Dm755 src2man #{CREW_DEST_PREFIX}/bin/src2man"
-    system "install -Dm755 txt2man #{CREW_DEST_PREFIX}/bin/txt2man"
-    system "install -Dm644 bookman.1.gz #{CREW_DEST_PREFIX}/man/man1/bookman.1.gz"
-    system "install -Dm644 src2man.1.gz #{CREW_DEST_PREFIX}/man/man1/src2man.1.gz"
-    system "install -Dm644 txt2man.1.gz #{CREW_DEST_PREFIX}/man/man1/txt2man.1.gz"
+    system 'make', "prefix=#{CREW_DEST_PREFIX}", 'install'
   end
 end
