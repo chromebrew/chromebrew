@@ -3,17 +3,17 @@ require 'buildsystems/autotools'
 class Yelp < Autotools
   description 'Get help with GNOME'
   homepage 'https://wiki.gnome.org/Apps/Yelp'
-  version '42.2'
+  version '42.2-icu75.1'
   license 'GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/yelp.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c8da5f26d6abe29c64093dc18a9a218e1e8b7a3b3b9ea31a4195d7493f1d1508',
-     armv7l: 'c8da5f26d6abe29c64093dc18a9a218e1e8b7a3b3b9ea31a4195d7493f1d1508',
-     x86_64: 'bdbd52b3ca8c5e795fdc0943c002beab2032bde20e9a4ebf1372dbb5fbf88481'
+    aarch64: '9e83dbae9ce30e16e0edd3fb170ab73d9e864561016356563bc5cfd8f56986ad',
+     armv7l: '9e83dbae9ce30e16e0edd3fb170ab73d9e864561016356563bc5cfd8f56986ad',
+     x86_64: '2f75e70e9bd8805acfe88a79e186ccc942e8910e75040f21d7aa92928a50fe18'
   })
 
   depends_on 'appstream_glib' => :build
