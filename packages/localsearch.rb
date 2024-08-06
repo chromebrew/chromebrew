@@ -1,16 +1,14 @@
-# Adapted from Arch Linux tracker3-miners PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/tracker3-miners/trunk/PKGBUILD
-
 require 'buildsystems/meson'
 
-class Tracker3_miners < Meson
+class Localsearch < Meson
   description 'Collection of data extractors for Tracker/Nepomuk'
   homepage 'https://wiki.gnome.org/Projects/Tracker'
-  version '3.6.2'
+  version '3.7.3-icu75.1'
   license 'GPLv2+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://gitlab.gnome.org/GNOME/tracker-miners.git'
-  git_hashtag version
+  min_glibc '2.37'
+  source_url 'https://gitlab.gnome.org/GNOME/localsearch.git'
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -39,7 +37,7 @@ class Tracker3_miners < Meson
   depends_on 'libtiff' # R
   depends_on 'libxml2' # R
   depends_on 'poppler' # R
-  depends_on 'tracker3' # R
+  depends_on 'tinysparql' # R
   depends_on 'util_linux' # R
   depends_on 'vala' => :build
 
