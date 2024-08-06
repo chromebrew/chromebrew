@@ -3765,6 +3765,11 @@ url: https://get.videolan.org/libaacs/
 activity: low
 ---
 kind: url
+name: libabigail
+url: https://sourceware.org/git/?p=libabigail.git;a=tags
+activity: medium
+---
+kind: url
 name: libadwaita
 url: https://gitlab.gnome.org/exalm/libadwaita/
 activity: high

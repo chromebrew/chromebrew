@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Sphinx < Pip
   description 'Sphinx is a tool that makes it easy to create intelligent and beautiful documentation.'
   homepage 'https://www.sphinx-doc.org/'
-  version '7.4.5-py3.12'
+  version '8.0.2-py3.12'
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
