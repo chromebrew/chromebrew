@@ -17,7 +17,7 @@ class Libdbusmenu_gtk3 < Autotools
   binary_sha256({
     aarch64: '81541bf0bd0c873b702691e2c9ac27a89c02ab0518af08ece2e8d1016a921549',
      armv7l: '81541bf0bd0c873b702691e2c9ac27a89c02ab0518af08ece2e8d1016a921549',
-     x86_64: '15883cf528411d88b1ddfed31cc34432ef405fb0ebaedd436861ccc70a3510ec'
+     x86_64: 'bfb26200b3b33fa3f13bd01325f38d2b46d1b4631a8545de3c3f760883e175cd'
   })
 
   depends_on 'at_spi2_core' # R
