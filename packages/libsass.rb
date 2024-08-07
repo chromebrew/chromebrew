@@ -11,9 +11,12 @@ class Libsass < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'da6e45c3477ba90ecf8a21b4594cd3354d4d092044f331eb10a5a1eb72950ca5',
-     armv7l: 'da6e45c3477ba90ecf8a21b4594cd3354d4d092044f331eb10a5a1eb72950ca5',
-    i686: '4cf9b50d8ebbb48b9e3645665bcf128c09308b6aed6fca21d2bb6d07ed9959de',
-  x86_64: 'af2364ca0715f59677cdc1c2b82264ea34640e1b4ce18eb1ab2b38ffa1f366d5'
+    aarch64: '54edb65b75e405ab734f847204f8b1ccfb583064afffb2698db29d4ec5573da1',
+     armv7l: '54edb65b75e405ab734f847204f8b1ccfb583064afffb2698db29d4ec5573da1',
+    i686: '0782e46f2985d8d7b5e5d3d6da925a86e4a326da305b8b2a6054ff7afd92516f',
+  x86_64: 'cd346d8a6208d342781864cfdfaebafccf06a1491c72b385b34d12cccb43d146'
   })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 end
