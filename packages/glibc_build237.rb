@@ -267,65 +267,78 @@ class Glibc_build237 < Package
   end
 
   def self.postinstall
+    # Handle broken system glibc affecting system glibc and libm.so.6 on newer x86_64 ChromeOS milestones.
     if (ARCH == 'x86_64') && (LIBC_VERSION.to_f >= 2.35)
       FileUtils.cp "/#{ARCH_LIB}/libc.so.6", File.join(CREW_LIB_PREFIX, 'libc.so.6.system') and FileUtils.mv File.join(CREW_LIB_PREFIX, 'libc.so.6.system'), File.join(CREW_LIB_PREFIX, 'libc.so.6')
+      abort("patchelf is needed. Please run: 'crew install patchelf ; crew postinstall #{name}'") unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
       # Link the system libc.so.6 to also require our renamed libC.so.6
       # which provides the float128 functions strtof128, strfromf128,
       # and __strtof128_nan.
-      @libc_patch_libraries = %w[libc.so.6]
-      Dir.chdir(CREW_LIB_PREFIX) do
-        @libc_patch_libraries.each do |lib|
-          system "patchelf --add-needed libC.so.6 #{lib}" unless Kernel.system "patchelf --print-needed #{lib} | grep -q libC.so.6"
-        end
-      end
-    end
-    return if ARCH == 'x86_64'
+      @libc_patch_libraries = %w[libc.so.6 libm.so.6]
+      @libc_patch_libraries.delete_if { |lib| !File.file?(File.join(CREW_LIB_PREFIX, lib)) }
+      @libc_patch_libraries.delete_if { |lib| Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, lib)} | grep -q libC.so.6" }
 
-    if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
-      @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
-      @libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
-      puts "Package glibc version is #{@libc_version}.".lightblue
-    else
-      @libc_version = LIBC_VERSION
-    end
-    @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
-                    libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
-                    libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
-                    libthread_db libresolv librlv librt libthread_db-1.0 libutil]
-    @libraries -= ['libpthread'] if @libc_version.to_f >= 2.35
-    Dir.chdir CREW_LIB_PREFIX do
-      puts "System glibc version is #{@libc_version}.".lightblue
-      puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
-      case ARCH
-      when 'aarch64', 'armv7l'
-        FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
-      when 'i686'
-        FileUtils.ln_sf "/lib/ld-#{@libc_version}.so", 'ld-linux-i686.so.2'
-        # newer x86_64 ChromeOS glibc lacks strtof128, strfromf128
-        # and __strtof128_nan
-        # when 'x86_64'
-        #   FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2'
-      end
-      @libraries.each do |lib|
-        # Reject entries which aren't libraries ending in .so, and which aren't files.
-        Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          @filetype = `file #{f}`.chomp
-          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
+      return if @libc_patch_libraries.empty?
+
+      if File.file?(File.join(CREW_LIB_PREFIX, 'libC.so.6'))
+        Dir.chdir(CREW_LIB_PREFIX) do
+          @libc_patch_libraries.each do |lib|
+            Kernel.system "patchelf --add-needed libC.so.6 #{lib}" and Kernel.system "patchelf --remove-needed libc.so.6 #{lib}"
+            puts "#{lib} patched for use with Chromebrew's glibc.".lightgreen
           end
         end
-        # Reject entries which aren't libraries ending in .so, and which aren't files.
-        # Reject text files such as libc.so because they points to files like
-        # libc_nonshared.a, which are not provided by ChromeOS
-        Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          @filetype = `file #{f}`.chomp
-          puts "f: #{@filetype}" if @opt_verbose
-          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
-          elsif @opt_verbose
-            puts "#{f} excluded because #{@filetype}"
+      else
+        abort('The Chromebrew libC.so.6 was not found. Please reinstall glibc.')
+      end
+    end
+
+    unless ARCH == 'x86_64'
+      if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
+        @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
+        @libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
+        puts "Package glibc version is #{@libc_version}.".lightblue
+      else
+        @libc_version = LIBC_VERSION
+      end
+      @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
+                      libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
+                      libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
+                      libthread_db libresolv librlv librt libthread_db-1.0 libutil]
+      @libraries -= ['libpthread'] if @libc_version.to_f >= 2.35
+      Dir.chdir CREW_LIB_PREFIX do
+        puts "System glibc version is #{@libc_version}.".lightblue
+        puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
+        case ARCH
+        when 'aarch64', 'armv7l'
+          FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
+        when 'i686'
+          FileUtils.ln_sf "/lib/ld-#{@libc_version}.so", 'ld-linux-i686.so.2'
+          # newer x86_64 ChromeOS glibc lacks strtof128, strfromf128
+          # and __strtof128_nan
+          # when 'x86_64'
+          #   FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2'
+        end
+        @libraries.each do |lib|
+          # Reject entries which aren't libraries ending in .so, and which aren't files.
+          Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
+            @filetype = `file #{f}`.chomp
+            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
+              g = File.basename(f)
+              FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
+            end
+          end
+          # Reject entries which aren't libraries ending in .so, and which aren't files.
+          # Reject text files such as libc.so because they points to files like
+          # libc_nonshared.a, which are not provided by ChromeOS
+          Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
+            @filetype = `file #{f}`.chomp
+            puts "f: #{@filetype}" if @opt_verbose
+            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
+              g = File.basename(f)
+              FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
+            elsif @opt_verbose
+              puts "#{f} excluded because #{@filetype}"
+            end
           end
         end
       end
