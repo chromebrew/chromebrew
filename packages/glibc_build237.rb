@@ -13,8 +13,8 @@ class Glibc_build237 < Package
   git_hashtag 'glibc-2.37'
 
   binary_sha256({
-    aarch64: '4d2718f997423acc813921e23d8ed0bf83b67ab4c76f2512ac5a1f5ab58d502c',
-     armv7l: '4d2718f997423acc813921e23d8ed0bf83b67ab4c76f2512ac5a1f5ab58d502c',
+    aarch64: '124b16886187ef7cb1ca226aac5e314d046336e0648abd6ed6edae429aa76ef5',
+     armv7l: '124b16886187ef7cb1ca226aac5e314d046336e0648abd6ed6edae429aa76ef5',
      x86_64: '890a2ba75346498bb20165d55ee2d91bcb57d8c65df485029a5b8a20a5f73c19'
   })
 
@@ -197,7 +197,7 @@ class Glibc_build237 < Package
         puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
         case ARCH
         when 'aarch64', 'armv7l'
-          FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3.system'
+          FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
         when 'i686'
           FileUtils.ln_sf "/lib/ld-#{@libc_version}.so", 'ld-linux-i686.so.2'
           # newer x86_64 ChromeOS glibc lacks strtof128, strfromf128
@@ -205,48 +205,50 @@ class Glibc_build237 < Package
           # when 'x86_64'
           #   FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2.system'
         end
-        # Save our copy of libc.so.6
-        FileUtils.mv File.join(CREW_DEST_LIB_PREFIX, 'libc.so.6'), File.join(CREW_DEST_LIB_PREFIX, 'libC.so.6')
+        if ARCH == 'x86_64'
+          # Save our copy of libc.so.6
+          FileUtils.mv File.join(CREW_DEST_LIB_PREFIX, 'libc.so.6'), File.join(CREW_DEST_LIB_PREFIX, 'libC.so.6')
 
-        # Make a symlink to the system libc.so.6, which will require patchelf run on it in the postinstall.
-        FileUtils.ln_sf "/#{ARCH_LIB}/libc.so.6", 'libc.so.6'
+          # Make a symlink to the system libc.so.6, which will require patchelf run on it in the postinstall.
+          FileUtils.ln_sf "/#{ARCH_LIB}/libc.so.6", 'libc.so.6'
 
-        ## Also save our copy of libm.so.6 since it has the float128 functions.
-        # @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
-        # libdl libmemusage libmvec libnsl libnss_compat libnss_db
-        # libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
-        # libthread_db libresolv librlv librt libthread_db-1.0 libutil]
-        # @libraries -= ['libpthread'] if @libc_version.to_f >= 2.35
-        # @libraries.each do |lib|
-        ## Reject entries which aren't libraries ending in .so, and which aren't files.
-        # Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-        # @filetype = `file #{f}`.chomp
-        # next unless ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-        # g = File.basename(f)
-        # FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-        # Dir.chdir(CREW_DEST_LIB_PREFIX) do
-        # FileUtils.ln_sf f.to_s, g.to_s
-        # end
-        # end
-        ## Reject entries which aren't libraries ending in .so, and which aren't files.
-        ## Reject text files such as libc.so because they points to files like
-        ## libc_nonshared.a, which are not provided by ChromeOS
-        # Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-        # @filetype = `file #{f}`.chomp
-        # puts "f: #{@filetype}" if @opt_verbose
-        # if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-        # g = File.basename(f)
-        # FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
-        # elsif @opt_verbose
-        # puts "#{f} excluded because #{@filetype}"
-        # end
-        # end
-        # Link our libm to also require our renamed libC.so.6
-        # which provides the float128 functions strtof128, strfromf128,
-        # and __strtof128_nan.
-        @libc_patch_libraries = %w[libm.so.6]
-        @libc_patch_libraries.each do |lib|
-          system "patchelf --replace-needed libc.so.6 libC.so.6 #{lib}"
+          ## Also save our copy of libm.so.6 since it has the float128 functions.
+          # @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
+          # libdl libmemusage libmvec libnsl libnss_compat libnss_db
+          # libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
+          # libthread_db libresolv librlv librt libthread_db-1.0 libutil]
+          # @libraries -= ['libpthread'] if @libc_version.to_f >= 2.35
+          # @libraries.each do |lib|
+          ## Reject entries which aren't libraries ending in .so, and which aren't files.
+          # Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
+          # @filetype = `file #{f}`.chomp
+          # next unless ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
+          # g = File.basename(f)
+          # FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
+          # Dir.chdir(CREW_DEST_LIB_PREFIX) do
+          # FileUtils.ln_sf f.to_s, g.to_s
+          # end
+          # end
+          ## Reject entries which aren't libraries ending in .so, and which aren't files.
+          ## Reject text files such as libc.so because they points to files like
+          ## libc_nonshared.a, which are not provided by ChromeOS
+          # Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
+          # @filetype = `file #{f}`.chomp
+          # puts "f: #{@filetype}" if @opt_verbose
+          # if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
+          # g = File.basename(f)
+          # FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
+          # elsif @opt_verbose
+          # puts "#{f} excluded because #{@filetype}"
+          # end
+          # end
+          # Link our libm to also require our renamed libC.so.6
+          # which provides the float128 functions strtof128, strfromf128,
+          # and __strtof128_nan.
+          @libc_patch_libraries = %w[libm.so.6]
+          @libc_patch_libraries.each do |lib|
+            system "patchelf --replace-needed libc.so.6 libC.so.6 #{lib}"
+          end
         end
       end
     end

@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Mysql < CMake
   description "MySQL Community Edition is a freely downloadable version of the world's most popular open source database"
   homepage 'https://www.mysql.com/'
-  version '8.4.0'
+  version '8.4.2-icu75.1'
   license 'GPL-2'
   compatibility 'x86_64' # Only 64-bit platforms are supported, so this will work on aarch64 userspaces once those are supported.
-  source_url 'https://cdn.mysql.com/Downloads/MySQL-8.4/mysql-8.4.0.tar.gz'
-  source_sha256 '47a5433fcdd639db836b99e1b5459c2b813cbdad23ff2b5dd4ad27f792ba918e'
+  source_url 'https://cdn.mysql.com/Downloads/MySQL-8.4/mysql-8.4.2.tar.gz'
+  source_sha256 '5657a78dc86bf0bf2227e0b05f8de5a2c447a816a112ffa26fa70083bcbe9814'
   binary_compression 'tar.zst'
 
   binary_sha256({

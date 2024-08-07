@@ -746,9 +746,11 @@
 /usr/local/lib/gconv/libKSC.so
 /usr/local/lib/gcrt1.o
 /usr/local/lib/ld-linux-armhf.so.3
+/usr/local/lib/ld-linux-armhf.so.3.system
 /usr/local/lib/libBrokenLocale.a
 /usr/local/lib/libBrokenLocale.so
 /usr/local/lib/libBrokenLocale.so.1
+/usr/local/lib/libC.so.6
 /usr/local/lib/libanl.a
 /usr/local/lib/libanl.so
 /usr/local/lib/libanl.so.1
@@ -769,7 +771,6 @@
 /usr/local/lib/libm.so.6
 /usr/local/lib/libmcheck.a
 /usr/local/lib/libmemusage.so
-/usr/local/lib/libnsl.so.2
 /usr/local/lib/libnss_compat.so
 /usr/local/lib/libnss_compat.so.2
 /usr/local/lib/libnss_db.so
