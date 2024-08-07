@@ -44,6 +44,8 @@ class PackageUtils
     pkg_version.delete_suffix!("-glibc#{LIBC_VERSION}")
     # Delete git version tags (1.2.4-qnd73k6), avoiding overmatching and hitting things that arent git hashtags.
     pkg_version.gsub!(/-[\w]{7}$/, '')
+    # Delete -icu75.1, futureproofed until icu 100
+    pkg_version.gsub!(/-icu\d{2}\.\d/, '')
 
     return pkg_version
   end
