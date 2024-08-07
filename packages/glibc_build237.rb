@@ -191,7 +191,6 @@ class Glibc_build237 < Package
         system "install -Dt #{CREW_DEST_PREFIX}/bin -m755 build-locale-archive"
         system "make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales || make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales"
       end
-      return if ARCH == 'x86_64'
 
       Dir.chdir CREW_DEST_LIB_PREFIX do
         puts "System glibc version is #{LIBC_VERSION}.".lightblue
@@ -212,43 +211,42 @@ class Glibc_build237 < Package
         # Make a symlink to the system libc.so.6, which will require patchelf run on it in the postinstall.
         FileUtils.ln_sf "/#{ARCH_LIB}/libc.so.6", 'libc.so.6'
 
-        # Also save our copy of libm.so.6 since it has the float128 functions.
-        @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
-                        libdl libmemusage libmvec libnsl libnss_compat libnss_db
-                        libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
-                        libthread_db libresolv librlv librt libthread_db-1.0 libutil]
-        @libraries -= ['libpthread'] if @libc_version.to_f >= 2.35
-        @libraries.each do |lib|
-          # Reject entries which aren't libraries ending in .so, and which aren't files.
-          Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-            @filetype = `file #{f}`.chomp
-            next unless ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-            Dir.chdir(CREW_DEST_LIB_PREFIX) do
-              FileUtils.ln_sf f.to_s, g.to_s
-            end
-          end
-          # Reject entries which aren't libraries ending in .so, and which aren't files.
-          # Reject text files such as libc.so because they points to files like
-          # libc_nonshared.a, which are not provided by ChromeOS
-          Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-            @filetype = `file #{f}`.chomp
-            puts "f: #{@filetype}" if @opt_verbose
-            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-              g = File.basename(f)
-              FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
-            elsif @opt_verbose
-              puts "#{f} excluded because #{@filetype}"
-            end
-          end
-          # Link our libm to also require our renamed libC.so.6
-          # which provides the float128 functions strtof128, strfromf128,
-          # and __strtof128_nan.
-          @libc_patch_libraries = %w[libm.so.6]
-          @libc_patch_libraries.each do |lib|
-            system "patchelf --replace-needed libc.so.6 libC.so.6 #{lib}"
-          end
+        ## Also save our copy of libm.so.6 since it has the float128 functions.
+        # @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
+        # libdl libmemusage libmvec libnsl libnss_compat libnss_db
+        # libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
+        # libthread_db libresolv librlv librt libthread_db-1.0 libutil]
+        # @libraries -= ['libpthread'] if @libc_version.to_f >= 2.35
+        # @libraries.each do |lib|
+        ## Reject entries which aren't libraries ending in .so, and which aren't files.
+        # Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
+        # @filetype = `file #{f}`.chomp
+        # next unless ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
+        # g = File.basename(f)
+        # FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
+        # Dir.chdir(CREW_DEST_LIB_PREFIX) do
+        # FileUtils.ln_sf f.to_s, g.to_s
+        # end
+        # end
+        ## Reject entries which aren't libraries ending in .so, and which aren't files.
+        ## Reject text files such as libc.so because they points to files like
+        ## libc_nonshared.a, which are not provided by ChromeOS
+        # Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
+        # @filetype = `file #{f}`.chomp
+        # puts "f: #{@filetype}" if @opt_verbose
+        # if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
+        # g = File.basename(f)
+        # FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
+        # elsif @opt_verbose
+        # puts "#{f} excluded because #{@filetype}"
+        # end
+        # end
+        # Link our libm to also require our renamed libC.so.6
+        # which provides the float128 functions strtof128, strfromf128,
+        # and __strtof128_nan.
+        @libc_patch_libraries = %w[libm.so.6]
+        @libc_patch_libraries.each do |lib|
+          system "patchelf --replace-needed libc.so.6 libC.so.6 #{lib}"
         end
       end
     end
