@@ -21,7 +21,7 @@ class Nodebrew < Package
   print_source_bashrc
 
   def self.patch
-    downloader 'https://patch-diff.githubusercontent.com/raw/hokaccha/nodebrew/pull/75.patch', '80f3e43cb92cdf1ea71db675c34987fcd059fc3af3d45094573c3a7d33759213'
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/hokaccha/nodebrew/pull/75.patch', '80f3e43cb92cdf1ea71db675c34987fcd059fc3af3d45094573c3a7d33759213'
     system 'patch -p1 -i 75.patch'
   end
 

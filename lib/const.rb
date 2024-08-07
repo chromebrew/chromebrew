@@ -128,20 +128,13 @@ CHROMEOS_RELEASE = \
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
 CREW_DISABLE_MVDIR = ENV.fetch('CREW_DISABLE_MVDIR', '0').eql?('1')
 
-# If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
-CREW_USE_CURL = ENV.fetch('CREW_USE_CURL', '0').eql?('1')
-
-# Use an external downloader instead of net/http if CREW_DOWNLOADER is set, see lib/downloader.rb for more info
-# About the format of the CREW_DOWNLOADER variable, see line 130-133 in lib/downloader.rb
-CREW_DOWNLOADER = ENV.fetch('CREW_DOWNLOADER', nil)
-
 # Downloader maximum retry count
 CREW_DOWNLOADER_RETRY = ENV.fetch('CREW_DOWNLOADER_RETRY', 3).to_i
 
-# show download progress bar or not (only applied when using the default ruby downloader)
+# show download progress bar or not (only applied when using the default ruby Downloader.download)
 CREW_HIDE_PROGBAR = ENV.fetch('CREW_HIDE_PROGBAR', '0').eql?('1')
 
-# set certificate file location for lib/downloader.rb
+# set certificate file location for lib/Downloader.download.rb
 SSL_CERT_FILE = \
   if ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
     ENV['SSL_CERT_FILE']

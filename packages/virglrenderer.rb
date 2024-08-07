@@ -27,7 +27,7 @@ class Virglrenderer < Package
     # pre-M92 systems.
     return unless LIBC_VERSION < '2.28'
 
-    downloader 'https://github.com/jtsiomb/c11threads/raw/a0158141b42ebe7a75aaf139e119e82453469125/c11threads.h',
+    Downloader.download 'https://github.com/jtsiomb/c11threads/raw/a0158141b42ebe7a75aaf139e119e82453469125/c11threads.h',
                'c945fd352449174d3b6107c715b622206ebb81694ac23239637439d78e33ee5a', 'threads.h'
   end
 

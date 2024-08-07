@@ -1,7 +1,7 @@
 require 'package'
 
 class Clipgrab < Package
-  description 'A friendly downloader for YouTube and other sites'
+  description 'A friendly Downloader.download for YouTube and other sites'
   homepage 'https://clipgrab.org/'
   version '3.9.10'
   license 'GPL-3'

@@ -23,7 +23,7 @@ class Libmetalink < Package
   depends_on 'zlib' # R
 
   def self.patch
-    downloader 'https://launchpadlibrarian.net/380798344/0001-fix-covscan-issues.patch',
+    Downloader.download 'https://launchpadlibrarian.net/380798344/0001-fix-covscan-issues.patch',
                'd236dfa0d4a1938a40ff2ce4dd348c42b74ad68807df0f1b6ea69c11725fd9cf'
     system 'patch -Np1 -i 0001-fix-covscan-issues.patch'
     system 'filefix'

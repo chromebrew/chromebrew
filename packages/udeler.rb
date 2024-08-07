@@ -2,11 +2,11 @@ require 'package'
 
 class Udeler < Package
   description 'A desktop application for downloading Udemy courses'
-  homepage 'https://github.com/FaisalUmair/udemy-downloader-gui'
+  homepage 'https://github.com/FaisalUmair/udemy-Downloader.download-gui'
   version '1.8.2'
   license 'MIT'
   compatibility 'x86_64'
-  source_url 'https://github.com/FaisalUmair/udemy-downloader-gui/releases/download/v1.8.2/Udeler-1.8.2-linux-x86_x64.AppImage'
+  source_url 'https://github.com/FaisalUmair/udemy-Downloader.download-gui/releases/download/v1.8.2/Udeler-1.8.2-linux-x86_x64.AppImage'
   source_sha256 'b6c1001d25f12661e4c20c84274d7987ce7c6b5b78bdef5ca72aa0f6f82c4c44'
 
   no_compile_needed

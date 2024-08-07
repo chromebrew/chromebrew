@@ -52,10 +52,10 @@ class Blender < CMake
   def self.patch
     # These fixes haven't made their way to a release yet, so we just patch them in.
     # [PATCH] Use set_and_warn_dependency to disable WITH_MOD_OCEANSIM if WITH_FFTW3 is disabled.
-    downloader 'https://projects.blender.org/blender/blender/commit/0a74065a1995ef5423b3e073f53328d664b43b05.patch', '8a2f9739c716822a94c94894cf32b4ed8d87809b38a8c53d6288f5f2ce8490f1'
+    Downloader.download 'https://projects.blender.org/blender/blender/commit/0a74065a1995ef5423b3e073f53328d664b43b05.patch', '8a2f9739c716822a94c94894cf32b4ed8d87809b38a8c53d6288f5f2ce8490f1'
     system 'patch -Np1 -i 0a74065a1995ef5423b3e073f53328d664b43b05.patch'
     # [PATCH] Unbreak lite-build WITH_GMP enabled
-    downloader 'https://projects.blender.org/blender/blender/commit/861536b24c866d09857ea4b92717f822da4bc75e.patch', 'c7b6560da9062aa984aba3b67212d4694cbd3ec4a72dc6cae3b3d01a43ed0b5a'
+    Downloader.download 'https://projects.blender.org/blender/blender/commit/861536b24c866d09857ea4b92717f822da4bc75e.patch', 'c7b6560da9062aa984aba3b67212d4694cbd3ec4a72dc6cae3b3d01a43ed0b5a'
     system 'patch -Np1 -i 861536b24c866d09857ea4b92717f822da4bc75e.patch'
   end
 

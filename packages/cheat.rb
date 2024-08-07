@@ -22,7 +22,7 @@ class Cheat < Package
       url = 'https://github.com/cheat/cheat/releases/download/4.2.3/cheat-linux-amd64.gz'
       sha256 = '899e7d88d9441b9a32034b0c4b6761157e7977131932a2abc13a382794e7ea6c'
     end
-    downloader url, sha256, 'cheat.gz'
+    Downloader.download url, sha256, 'cheat.gz'
     Zlib::GzipReader.open('cheat.gz') { |gz| File.write('cheat', gz.read) }
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'cheat', "#{CREW_DEST_PREFIX}/bin/cheat", mode: 0o755

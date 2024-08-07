@@ -64,7 +64,7 @@ class Ibus < Autotools
 
   def self.prebuild
     unless File.exist?('engine/denylist.txt')
-      downloader "https://github.com/ibus/ibus/raw/#{version}/engine/denylist.txt",
+      Downloader.download "https://github.com/ibus/ibus/raw/#{version}/engine/denylist.txt",
                  '8589b87200d2e7dbf8a413129270d678e83b727bb5b7f8607e62cb9e40d2fdf1'
     end
   end

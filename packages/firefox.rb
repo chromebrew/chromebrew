@@ -82,7 +82,7 @@ class Firefox < Package
       FileUtils.mv 'default128.png', "#{icon_base_path}/128x128/apps/firefox.png"
     end
     # The following image is needed for crew-launcher which requires a minimum icon size of 144x144.
-    downloader 'https://files.softicons.com/download/application-icons/round-app-icons-by-ampeross/png/256x256/Mozilla.png',
+    Downloader.download 'https://files.softicons.com/download/application-icons/round-app-icons-by-ampeross/png/256x256/Mozilla.png',
                '994e780ada1456c26b077a9f97186aefbc90be5c57e66366b1bca32df0c14c4e'
     FileUtils.mv 'Mozilla.png', "#{icon_base_path}/256x256/apps/firefox.png"
   end

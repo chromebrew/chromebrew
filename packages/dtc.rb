@@ -25,7 +25,7 @@ class Dtc < Package
   depends_on 'python3' => :build
 
   def self.patch
-    downloader 'https://github.com/archlinux/svntogit-community/raw/packages/dtc/trunk/python310.patch',
+    Downloader.download 'https://github.com/archlinux/svntogit-community/raw/packages/dtc/trunk/python310.patch',
                '767b6931887018a1dd7d41bfebebd16ab78a35de06a5689f530e376ab8c6b037'
     system 'patch -Np1 -i python310.patch'
     system "sed -i 's/-Werror//' Makefile"

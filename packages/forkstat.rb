@@ -18,7 +18,7 @@ class Forkstat < Package
   })
 
   def self.patch
-    downloader 'https://patch-diff.githubusercontent.com/raw/ColinIanKing/forkstat/pull/10.patch', '22d70a02a3529011c4e9fa2d11cef0037c4729ca661229254287a51c0e6ac0b6'
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/ColinIanKing/forkstat/pull/10.patch', '22d70a02a3529011c4e9fa2d11cef0037c4729ca661229254287a51c0e6ac0b6'
     system 'git apply 10.patch'
   end
 

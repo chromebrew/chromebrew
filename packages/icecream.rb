@@ -42,7 +42,7 @@ class Icecream < Package
   depends_on 'zstd' # R
 
   def self.patch
-    downloader 'https://aur.archlinux.org/cgit/aur.git/plain/icecream.conf?h=icecream',
+    Downloader.download 'https://aur.archlinux.org/cgit/aur.git/plain/icecream.conf?h=icecream',
                '4c1b993761600955a2be53e945a698638ef861a513258956d8aac0e0f8df3dfe', 'icecream.conf'
     system "sed -i 's,/var,#{CREW_PREFIX}/var,g' icecream.conf"
   end

@@ -39,10 +39,10 @@ class Musl_curl < Package
     # Fix arm build error
     # easy_lock.h:56:7: error: implicit declaration of function 'sched_yield' [-Werror=implicit-function-declaration]
     # via https://github.com/curl/curl/pull/9054 & https://github.com/curl/curl/pull/9056
-    downloader 'https://github.com/curl/curl/commit/e2e7f54b7bea521fa8373095d0f43261a720cda0.patch',
+    Downloader.download 'https://github.com/curl/curl/commit/e2e7f54b7bea521fa8373095d0f43261a720cda0.patch',
                '9b011c957cedcc089b53399f31328b1ebb7ec87dd5eeefd1f83c7fc8741405a0'
     system 'patch -p1 -i e2e7f54b7bea521fa8373095d0f43261a720cda0.patch'
-    downloader 'https://github.com/curl/curl/commit/5a1a892565443fa4145888c6150da65c9a33d15c.patch',
+    Downloader.download 'https://github.com/curl/curl/commit/5a1a892565443fa4145888c6150da65c9a33d15c.patch',
                '9a83b1b8b7fa3f6951bf890d6af7bc37c830d0741849d8b1e98acfb5dbdaf563'
     system 'patch -p1 -i 5a1a892565443fa4145888c6150da65c9a33d15c.patch'
   end

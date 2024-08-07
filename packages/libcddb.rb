@@ -22,10 +22,10 @@ class Libcddb < Package
   depends_on 'glibc' # R
 
   def self.patch
-    downloader 'https://sources.debian.org/data/main/libc/libcddb/1.3.2-7/debian/patches/0001-Switch-default-server-to-gnudb.org.patch',
+    Downloader.download 'https://sources.debian.org/data/main/libc/libcddb/1.3.2-7/debian/patches/0001-Switch-default-server-to-gnudb.org.patch',
                '3ee8610efa71322adb9095405da11b56386ac2c5825f976a84410c6270e59149'
     system 'patch -Np1 -i 0001-Switch-default-server-to-gnudb.org.patch'
-    downloader 'https://sources.debian.org/data/main/libc/libcddb/1.3.2-7/debian/patches/0002-Disable-use-SIGALRM-for-DNS-lookup-timeout.patch',
+    Downloader.download 'https://sources.debian.org/data/main/libc/libcddb/1.3.2-7/debian/patches/0002-Disable-use-SIGALRM-for-DNS-lookup-timeout.patch',
                'cba6d6008b569e59b381623642c4fdde0fe8177d0063238b22a367e389cbdeb5'
     system 'patch -Np1 -i 0002-Disable-use-SIGALRM-for-DNS-lookup-timeout.patch'
   end

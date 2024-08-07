@@ -27,7 +27,7 @@ class Bash < Autotools
   def self.patch
     (1..@_patchlevel).each do |patch|
       patchfile = "bash52-#{patch.to_s.rjust(3, '0')}"
-      downloader "https://mirrors.kernel.org/gnu/bash/bash-5.2-patches/#{patchfile}", 'SKIP'
+      Downloader.download "https://mirrors.kernel.org/gnu/bash/bash-5.2-patches/#{patchfile}", 'SKIP'
       puts "Applying bash #{@_ver} patch #{patch}...".orange
       system "patch -Np0 -i #{patchfile}"
     end

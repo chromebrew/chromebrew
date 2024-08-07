@@ -59,7 +59,7 @@ class Qtcreator < Package
     system "echo '    }' >> qt-installer-script.qs"
     system "echo '    gui.clickButton(buttons.FinishButton);' >> qt-installer-script.qs"
     system "echo '}' >> qt-installer-script.qs"
-    downloader 'https://download.qt.io/archive/online_installers/4.6/qt-unified-linux-x64-4.6.1-online.run', '11f8e9307a31d283b7ad80050e9d43c1e94dbc2ea283eb6fa9d051549f2bbccb'
+    Downloader.download 'https://download.qt.io/archive/online_installers/4.6/qt-unified-linux-x64-4.6.1-online.run', '11f8e9307a31d283b7ad80050e9d43c1e94dbc2ea283eb6fa9d051549f2bbccb'
     FileUtils.install 'qt-unified-linux-x64-4.6.1-online.run', "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-4.6.1-online.run", mode: 0o755
     system "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-4.6.1-online.run --script qt-installer-script.qs"
     FileUtils.rm_f "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-4.6.1-online.run"

@@ -41,7 +41,7 @@ class P7zip_gui < Package
     patches.each do |url, sha256sum|
       patch_filename = File.basename(url)
 
-      downloader url, sha256sum, patch_filename
+      Downloader.download url, sha256sum, patch_filename
 
       system 'patch', '-p1', '-i', patch_filename
     end

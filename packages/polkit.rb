@@ -26,7 +26,7 @@ class Polkit < Meson
 
   def self.patch
     # meson: do not depend on systemd
-    downloader 'https://patch-diff.githubusercontent.com/raw/polkit-org/polkit/pull/471.patch', '50641d00cb837f1a97623dd0ad3d49d810ef977fcef6ef10cd88b61b64650ede'
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/polkit-org/polkit/pull/471.patch', '50641d00cb837f1a97623dd0ad3d49d810ef977fcef6ef10cd88b61b64650ede'
     system 'git apply 471.patch'
   end
 

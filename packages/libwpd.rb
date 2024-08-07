@@ -27,7 +27,7 @@ class Libwpd < Package
   depends_on 'zlib' # R
 
   def self.patch
-    downloader 'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/libwpd/trunk/libwpd-gcc11.patch',
+    Downloader.download 'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/libwpd/trunk/libwpd-gcc11.patch',
                '7612c36e5e16df2b786fc4c905f096a6e7d600aade292e91950607bfbfba6c32'
     system 'patch -Np1 -i libwpd-gcc11.patch'
   end

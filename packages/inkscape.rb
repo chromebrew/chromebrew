@@ -76,10 +76,10 @@ class Inkscape < CMake
             -DWITH_X11=ON'
 
   def self.patch
-    downloader 'https://gitlab.archlinux.org/archlinux/packaging/packages/inkscape/-/raw/main/inkscape-1.3.2-poppler-24.03.patch?ref_type=heads&inline=false', '499bc0bd0d8600b597220f463034d5e132e69c7833108d6b766445e70e9c82ed', 'poppler.patch'
+    Downloader.download 'https://gitlab.archlinux.org/archlinux/packaging/packages/inkscape/-/raw/main/inkscape-1.3.2-poppler-24.03.patch?ref_type=heads&inline=false', '499bc0bd0d8600b597220f463034d5e132e69c7833108d6b766445e70e9c82ed', 'poppler.patch'
     system 'patch -p1 -i poppler.patch'
     # libxml compatibility patch
-    downloader 'https://gitlab.com/inkscape/inkscape/-/merge_requests/6089.patch', 'edc55ad0771b604c63737524fc5928a35334db04d6479e395801635d5f6dfc1f'
+    Downloader.download 'https://gitlab.com/inkscape/inkscape/-/merge_requests/6089.patch', 'edc55ad0771b604c63737524fc5928a35334db04d6479e395801635d5f6dfc1f'
     system 'patch -p1 -i 6089.patch'
   end
 end

@@ -24,9 +24,9 @@ class Itstool < Autotools
   depends_on 'python3' => :build
 
   def self.patch
-    downloader 'https://github.com/itstool/itstool/pull/49.patch', '72dff21156c4fce530cc73862df889c01c79b5b0503d6d38767e1da08b2d4713'
+    Downloader.download 'https://github.com/itstool/itstool/pull/49.patch', '72dff21156c4fce530cc73862df889c01c79b5b0503d6d38767e1da08b2d4713'
     system 'patch -p1 -i 49.patch'
-    downloader 'https://github.com/itstool/itstool/pull/51.patch', '4e64a2e884f9d4cbc493732fcbde9f1d5bed534f9a66330bbcc1cbeb54808c1e'
+    Downloader.download 'https://github.com/itstool/itstool/pull/51.patch', '4e64a2e884f9d4cbc493732fcbde9f1d5bed534f9a66330bbcc1cbeb54808c1e'
     system 'patch -p1 -i 51.patch'
     if ARCH == 'i686'
       system "sed -i 's,@PYTHON@,#{CREW_PREFIX}/bin/env -S @PYTHON@,' itstool.in"

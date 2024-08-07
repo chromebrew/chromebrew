@@ -23,7 +23,7 @@ class Docbook_xsl < Package
   depends_on 'xmlcatmgr'
 
   def self.patch
-    downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/docbook-xsl/trunk/765567_non-recursive_string_subst.patch',
+    Downloader.download 'https://github.com/archlinux/svntogit-packages/raw/packages/docbook-xsl/trunk/765567_non-recursive_string_subst.patch',
                '193ec26dcb37bdf12037ed4ea98d68bd550500c8e96b719685d76d7096c3f9b3'
     system 'patch -Np2 -i 765567_non-recursive_string_subst.patch'
   end

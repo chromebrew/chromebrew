@@ -76,10 +76,10 @@ class Qt5_webengine < Package
 
   def self.patch
     # Patches from lfs: https://www.linuxfromscratch.org/blfs/view/svn/x/qtwebengine.html
-    downloader 'https://www.linuxfromscratch.org/patches/blfs/svn/qtwebengine-5.15.15-build_fixes-1.patch',
+    Downloader.download 'https://www.linuxfromscratch.org/patches/blfs/svn/qtwebengine-5.15.15-build_fixes-1.patch',
                'a9e248414302b6fbd19e0404142e5ad082fb4a45eaf6f96d1b847a7b4bf8e1bd'
     system 'patch -Np1 -i qtwebengine-5.15.15-build_fixes-1.patch'
-    downloader 'https://www.linuxfromscratch.org/patches/blfs/svn/qtwebengine-5.15.15-ffmpeg5_fixes-1.patch',
+    Downloader.download 'https://www.linuxfromscratch.org/patches/blfs/svn/qtwebengine-5.15.15-ffmpeg5_fixes-1.patch',
                '9f45c97d2aeb99ba8eea90cdd3b380c03218ca4d4c88e356f622e094971dd34a'
     system 'patch -Np1 -i qtwebengine-5.15.15-ffmpeg5_fixes-1.patch'
     # Further Python3 patches

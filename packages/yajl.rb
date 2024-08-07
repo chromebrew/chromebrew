@@ -21,11 +21,11 @@ class Yajl < Package
 
   def self.patch
     # Fix CVE-2022-24795
-    downloader 'https://patch-diff.githubusercontent.com/raw/lloyd/yajl/pull/242.patch',
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/lloyd/yajl/pull/242.patch',
                '28cf573e61ad5d442dc3ea23912e1d1a3a714c6f20a647304fbd5a886b457f29'
     system 'patch -Np1 -i 242.patch'
     #  Fixes incorrect lower bound for integers
-    downloader 'https://patch-diff.githubusercontent.com/raw/lloyd/yajl/pull/251.patch',
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/lloyd/yajl/pull/251.patch',
                '24b6928e87f388f633b51b98025c15ca6cd40c4cd388278cbb98bd06c64be719'
     system 'patch -Np1 -i 251.patch'
   end

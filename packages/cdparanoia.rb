@@ -25,7 +25,7 @@ class Cdparanoia < Package
   no_lto
 
   def self.patch
-    downloader 'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/cdparanoia/trunk/gcc.patch',
+    Downloader.download 'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/cdparanoia/trunk/gcc.patch',
                '9a3f3802856e96080fb30562a10899ef3378723e85f289fa29619b21d6051575'
     system 'patch -Np0 -i gcc.patch'
   end

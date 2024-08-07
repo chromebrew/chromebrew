@@ -18,7 +18,7 @@ class Cunit < Package
   })
 
   def self.patch
-    downloader 'https://httpredir.debian.org/debian/pool/main/c/cunit/cunit_2.1-3-dfsg-2.4.debian.tar.xz', 'e7a09a24c7db0e2aa9feb444fe38957286ebfc63b355c308957794f064b5881d'
+    Downloader.download 'https://httpredir.debian.org/debian/pool/main/c/cunit/cunit_2.1-3-dfsg-2.4.debian.tar.xz', 'e7a09a24c7db0e2aa9feb444fe38957286ebfc63b355c308957794f064b5881d'
 
     system 'tar xf cunit_2.1-3-dfsg-2.4.debian.tar.xz'
 

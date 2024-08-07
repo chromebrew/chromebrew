@@ -108,12 +108,12 @@ class Webkitgtk_6 < Package
       # File.write('gcc.patch', @gcc_patch)
       # system 'patch -Np1 -F 10 -i gcc.patch'
       # Patch from https://github.com/WebKit/WebKit/pull/1233
-      # downloader 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/1233.diff',
+      # Downloader.download 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/1233.diff',
       #           '70c990ced72c5551b01c9d7c72da7900d609d0f7891e7b99ab132ac1b4aa33ea'
       # system "sed -i 's,data.pixels->bytes(),data.pixels->data(),' 1233.diff"
       # system 'patch -Np1 -F 10 -i 1233.diff'
       # Patch from https://github.com/WebKit/WebKit/pull/2926
-      # downloader 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/2926.diff',
+      # Downloader.download 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/2926.diff',
       # '26a8d5a9dd9d61865645158681b766e13cf05b3ed07f30bebb79ff73259d0664'
       # system "sed -i '22,63d' 2926.diff"
       # system 'patch -Np1 -F 10 -i 2926.diff'

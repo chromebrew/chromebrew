@@ -21,7 +21,7 @@ class Faultstat < Package
 
   def self.patch
     # Add support for overriding installation prefix in Makefile
-    downloader 'https://patch-diff.githubusercontent.com/raw/ColinIanKing/faultstat/pull/6.patch', 'fe1c1faf89908646f32ece035ff74330560f34b1f0f236f9888d7f04df609210'
+    Downloader.download 'https://patch-diff.githubusercontent.com/raw/ColinIanKing/faultstat/pull/6.patch', 'fe1c1faf89908646f32ece035ff74330560f34b1f0f236f9888d7f04df609210'
     system 'git apply 6.patch'
   end
 

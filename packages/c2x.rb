@@ -16,7 +16,7 @@ class C2x < Package
   no_compile_needed
 
   def self.build
-    downloader 'http://www.goedeke.net/c2x-cmd/c2x-wizard.tar.gz',
+    Downloader.download 'http://www.goedeke.net/c2x-cmd/c2x-wizard.tar.gz',
                'fec56819942443ada715ee3483cb705bedea783158522213411b5fb8b6143f62'
     system 'tar xvf c2x-wizard.tar.gz'
     FileUtils.rm %w[c2x-wizard.tar.gz c2x-wizard.sh]

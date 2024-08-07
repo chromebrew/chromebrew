@@ -32,7 +32,7 @@ class Clutter < Autotools
   depends_on 'xdg_base'
 
   def self.patch
-    downloader 'https://raw.githubusercontent.com/void-linux/void-packages/master/srcpkgs/clutter/patches/clutter-x11-startup-error.patch', '8370bf0cf624c638edbd309d7dfc3922d726242312d7f217facff69135f56187'
+    Downloader.download 'https://raw.githubusercontent.com/void-linux/void-packages/master/srcpkgs/clutter/patches/clutter-x11-startup-error.patch', '8370bf0cf624c638edbd309d7dfc3922d726242312d7f217facff69135f56187'
     system 'patch -Np1 -i clutter-x11-startup-error.patch'
   end
 

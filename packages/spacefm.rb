@@ -35,23 +35,23 @@ class Spacefm < Package
 
   def self.patch
     # GCC 10.1+ Fixes
-    downloader 'https://github.com/IgnorantGuru/spacefm/pull/772.patch',
+    Downloader.download 'https://github.com/IgnorantGuru/spacefm/pull/772.patch',
                '737cc5f72911bcd00160260a4cd481d6fbc498f443870cbb1a7df779568e985b'
     system 'patch -Np1 -i 772.patch', exception: false
     # Configure.ac: Use POSIX compatible substitutions that are not specific to bash.
-    downloader 'https://github.com/IgnorantGuru/spacefm/pull/813.patch',
+    Downloader.download 'https://github.com/IgnorantGuru/spacefm/pull/813.patch',
                '87866ba5ff33233971ba0a31a5faddd09e31c46f4d694f4150af2e5ccefe0cf5'
     system 'patch -Np1 -i 813.patch'
     # add missing include to sys/sysmacros.h for 'major' and 'minor'
-    downloader 'https://github.com/IgnorantGuru/spacefm/pull/781.patch',
+    Downloader.download 'https://github.com/IgnorantGuru/spacefm/pull/781.patch',
                '1b00ecbb371488f966030eb6f711957480f9c5462cdf2721103574c58958dffd'
     system 'patch -Np1 -i 781.patch'
     # fix activating items with no focused item
-    downloader 'https://github.com/IgnorantGuru/spacefm/pull/749.patch',
+    Downloader.download 'https://github.com/IgnorantGuru/spacefm/pull/749.patch',
                'e263ab364fb812016d0364c3d66ddddef4f70c069facbeec208b39ea159b75df'
     system 'patch -Np1 -i 749.patch'
     # Avoid X-specific calls under Wayland
-    downloader 'https://github.com/IgnorantGuru/spacefm/pull/801.patch',
+    Downloader.download 'https://github.com/IgnorantGuru/spacefm/pull/801.patch',
                '1cd00a6ac01792e381c5fbf8d9f2eb78ac908a59760d947a070a5efe73ccabe7'
     system 'patch -Np1 -i 801.patch'
   end
