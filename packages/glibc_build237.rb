@@ -270,7 +270,7 @@ class Glibc_build237 < Package
 
   def self.postinstall
     if (ARCH == 'x86_64') && (LIBC_VERSION.to_f >= 2.35)
-      FileUtils.cp_f "/#{ARCH_LIB}/libc.so.6", File.join(CREW_LIB_PREFIX, 'libc.so.6')
+      FileUtils.cp "/#{ARCH_LIB}/libc.so.6", File.join(CREW_LIB_PREFIX, 'libc.so.6')
       # Link the system libc.so.6 to also require our renamed libC.so.6
       # which provides the float128 functions strtof128, strfromf128,
       # and __strtof128_nan.

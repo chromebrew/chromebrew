@@ -1,4 +1,4 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
 class Py3_pyyaml < Pip
   description 'PyYAML is a YAML parser and emitter for Python.'
@@ -11,11 +11,13 @@ class Py3_pyyaml < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bbc7b4b957aeface6608ead58485471925135277349e95b199c86af4c0a4b8a6',
-     armv7l: 'bbc7b4b957aeface6608ead58485471925135277349e95b199c86af4c0a4b8a6',
-       i686: 'd3aea082e6209a30b56ae96634d92db119daf8536a5a3f050219b90c5426264c',
-     x86_64: '3bedebe429f6ec3710043f45798815264c31b46325a79c3e96cfeb225ed7d0f1'
+    aarch64: '2215ad3e68ae779056258955c89d1a466e88312460ef608ea406d13b3e61780a',
+     armv7l: '2215ad3e68ae779056258955c89d1a466e88312460ef608ea406d13b3e61780a',
+       i686: 'ad0733204a5bb9fb168eb2164a0576a56d97cf7d5027a5226af404f49481fbcd',
+     x86_64: '1565ef6f148ff8c7c5578dc81a76f551f12e4f3b8e53d1aec8d0e4eda4196ee7'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'libyaml' # R
   depends_on 'python3' => :build
 end
