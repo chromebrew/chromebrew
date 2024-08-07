@@ -3,17 +3,17 @@ require 'package'
 class Graphicsmagick < Package
   description 'GraphicsMagick is the swiss army knife of image processing.'
   homepage 'http://www.graphicsmagick.org/'
-  version '1.3.40'
+  version '1.3.43-icu75.1'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/1.3.40/GraphicsMagick-1.3.40.tar.zst'
-  source_sha256 '1c86bc8cdcfb7daa6d34940e1bccf82c201a27ecdcc65e8bb1089a4da6f2cfcc'
+  source_url 'https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/1.3.43/GraphicsMagick-1.3.43.tar.xz'
+  source_sha256 '2b88580732cd7e409d9e22c6116238bef4ae06fcda11451bf33d259f9cbf399f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '37e665f7b389b8f7a27cff67f10efbd5210e19e2f5bbe45167c6b11e2cd85eff',
-     armv7l: '37e665f7b389b8f7a27cff67f10efbd5210e19e2f5bbe45167c6b11e2cd85eff',
-     x86_64: 'a63ecd56ae08387fbd9d8db5817ab7a358d5894f8901f859d51609f513a87601'
+    aarch64: 'aeff59b26a27af04fd89485d29b4375be3b526eaebef964a22ec8c027082467e',
+     armv7l: 'aeff59b26a27af04fd89485d29b4375be3b526eaebef964a22ec8c027082467e',
+     x86_64: 'd10dba42f7cdf317ef437c4fdd6500d7cce82eb1fc56e9596e1a494f3b13cda1'
   })
 
   depends_on 'brotli' # R

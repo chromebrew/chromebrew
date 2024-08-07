@@ -15,7 +15,7 @@ class Glibc_build237 < Package
   binary_sha256({
     aarch64: '4d2718f997423acc813921e23d8ed0bf83b67ab4c76f2512ac5a1f5ab58d502c',
      armv7l: '4d2718f997423acc813921e23d8ed0bf83b67ab4c76f2512ac5a1f5ab58d502c',
-     x86_64: 'e59b8f66d6d6b3254924d345a9805b2c94ed81c1ce8466b87192f8a1da266a34'
+     x86_64: '890a2ba75346498bb20165d55ee2d91bcb57d8c65df485029a5b8a20a5f73c19'
   })
 
   depends_on 'gawk' => :build
@@ -268,14 +268,14 @@ class Glibc_build237 < Package
 
   def self.postinstall
     if (ARCH == 'x86_64') && (LIBC_VERSION.to_f >= 2.35)
-      FileUtils.cp "/#{ARCH_LIB}/libc.so.6", File.join(CREW_LIB_PREFIX, 'libc.so.6')
+      FileUtils.cp "/#{ARCH_LIB}/libc.so.6", File.join(CREW_LIB_PREFIX, 'libc.so.6.system') and FileUtils.mv File.join(CREW_LIB_PREFIX, 'libc.so.6.system'), File.join(CREW_LIB_PREFIX, 'libc.so.6')
       # Link the system libc.so.6 to also require our renamed libC.so.6
       # which provides the float128 functions strtof128, strfromf128,
       # and __strtof128_nan.
       @libc_patch_libraries = %w[libc.so.6]
       Dir.chdir(CREW_LIB_PREFIX) do
         @libc_patch_libraries.each do |lib|
-          system "patchelf --add-needed libC.so.6 #{lib}" unless system "patchelf --print-needed #{lib} | grep -q libC.so.6"
+          system "patchelf --add-needed libC.so.6 #{lib}" unless Kernel.system "patchelf --print-needed #{lib} | grep -q libC.so.6"
         end
       end
     end
