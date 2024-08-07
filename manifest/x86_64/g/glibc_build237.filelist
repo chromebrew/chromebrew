@@ -764,7 +764,6 @@
 /usr/local/lib64/libc.a
 /usr/local/lib64/libc.so
 /usr/local/lib64/libc.so.6
-/usr/local/lib64/libc.so.chromebrew-test
 /usr/local/lib64/libc_malloc_debug.so
 /usr/local/lib64/libc_malloc_debug.so.0
 /usr/local/lib64/libc_nonshared.a
