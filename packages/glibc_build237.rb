@@ -175,7 +175,8 @@ class Glibc_build237 < Package
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-    system "sed 's,/usr/#{ARCH_LIB}/libc_nonshared.a,#{CREW_LIB_PREFIX}/libc_nonshared.a,g' /usr/#{ARCH_LIB}/libc.so > #{CREW_DEST_LIB_PREFIX}/libc.so"
+    # system "sed 's,/usr/#{ARCH_LIB}/libc_nonshared.a,#{CREW_LIB_PREFIX}/libc_nonshared.a,g' /usr/#{ARCH_LIB}/libc.so > #{CREW_DEST_LIB_PREFIX}/libc.so"
+    system "sed 's,/usr/#{ARCH_LIB}/libc_nonshared.a,#{CREW_LIB_PREFIX}/libc_nonshared.a,g' /usr/#{ARCH_LIB}/libc.so > #{CREW_DEST_LIB_PREFIX}/libc.so.chromebrew-test"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
     Dir.chdir 'glibc_build' do
       system 'touch', "#{CREW_DEST_PREFIX}/etc/ld.so.conf"
