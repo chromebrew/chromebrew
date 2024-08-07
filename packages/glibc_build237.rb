@@ -13,8 +13,8 @@ class Glibc_build237 < Package
   git_hashtag 'glibc-2.37'
 
   binary_sha256({
-    aarch64: '124b16886187ef7cb1ca226aac5e314d046336e0648abd6ed6edae429aa76ef5',
-     armv7l: '124b16886187ef7cb1ca226aac5e314d046336e0648abd6ed6edae429aa76ef5',
+    aarch64: 'fffbe32d69e3d972c9c845e8fa244159d7ac8b82ae9f07206c7189b20e3457c8',
+     armv7l: 'fffbe32d69e3d972c9c845e8fa244159d7ac8b82ae9f07206c7189b20e3457c8',
      x86_64: '890a2ba75346498bb20165d55ee2d91bcb57d8c65df485029a5b8a20a5f73c19'
   })
 
@@ -22,8 +22,6 @@ class Glibc_build237 < Package
   depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
   depends_on 'libidn2' => :build
   depends_on 'texinfo' => :build
-  depends_on 'glibc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'patchelf' # L
 
   conflicts_ok

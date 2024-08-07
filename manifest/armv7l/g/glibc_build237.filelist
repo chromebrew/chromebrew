@@ -746,11 +746,9 @@
 /usr/local/lib/gconv/libKSC.so
 /usr/local/lib/gcrt1.o
 /usr/local/lib/ld-linux-armhf.so.3
-/usr/local/lib/ld-linux-armhf.so.3.system
 /usr/local/lib/libBrokenLocale.a
 /usr/local/lib/libBrokenLocale.so
 /usr/local/lib/libBrokenLocale.so.1
-/usr/local/lib/libC.so.6
 /usr/local/lib/libanl.a
 /usr/local/lib/libanl.so
 /usr/local/lib/libanl.so.1
