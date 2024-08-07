@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Gnome_text_editor < Meson
   description 'GNOME Text Editor'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-text-editor'
-  version '46.0'
+  version '47.beta'
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-text-editor.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({

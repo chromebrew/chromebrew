@@ -32,7 +32,6 @@
 /usr/local/lib/pkgconfig/dbusmenu-gtk3-0.4.pc
 /usr/local/lib/pkgconfig/dbusmenu-jsonloader-0.4.pc
 /usr/local/libexec/dbusmenu-bench
-/usr/local/libexec/dbusmenu-dumper
 /usr/local/libexec/dbusmenu-testapp
 /usr/local/share/doc/libdbusmenu/README.dbusmenu-bench
 /usr/local/share/doc/libdbusmenu/examples/glib-server-nomenu.c

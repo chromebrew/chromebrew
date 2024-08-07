@@ -1,45 +1,48 @@
 # Adapted from Arch Linux libdbusmenu PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/libdbusmenu/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Libdbusmenu_gtk3 < Package
+class Libdbusmenu_gtk3 < Autotools
   description 'Library for passing menus over DBus'
   homepage 'https://launchpad.net/libdbusmenu'
-  version '16.04.0'
+  @ubuntu_version = '18.10.20180917~bzr492+repack1-3.1ubuntu5'
+  version '18.10.20180917-bcafbd2'
   license 'GPL3 LGPL2.1 LGPL3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://git.launchpad.net/ubuntu/+source/libdbusmenu'
-  git_hashtag 'a3658f1208c31b1fb03b71af6e49c01119ba52fd'
-  binary_compression 'tpxz'
+  git_hashtag 'bcafbd2190848570fd57bb5f81d9f9bca119365f'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1b83ca1cf073b97d68d5f3a69dc587b7bb9019ed85c64c3186a66586f943eb7d',
-     armv7l: '1b83ca1cf073b97d68d5f3a69dc587b7bb9019ed85c64c3186a66586f943eb7d',
+    aarch64: '81541bf0bd0c873b702691e2c9ac27a89c02ab0518af08ece2e8d1016a921549',
+     armv7l: '81541bf0bd0c873b702691e2c9ac27a89c02ab0518af08ece2e8d1016a921549',
      x86_64: '15883cf528411d88b1ddfed31cc34432ef405fb0ebaedd436861ccc70a3510ec'
   })
 
-  depends_on 'gnome_common'
-  depends_on 'gobject_introspection'
-  depends_on 'gtk2'
-  depends_on 'gtk3'
-  depends_on 'intltool'
-  depends_on 'vala'
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gnome_common' => :build
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'intltool' => :build
+  depends_on 'json_glib' # R
+  depends_on 'pango' # R
+  depends_on 'vala' => :build
+  depends_on 'zlib' # R
+
+  configure_options '--disable-dumper --disable-scrollkeeper --disable-gtk-doc --enable-introspection --with-gtk=3'
 
   def self.patch
-    system 'NOCONFIGURE=1 ./autogen.sh'
-  end
-
-  def self.build
-    system "#{CREW_ENV_OPTIONS.sub("CFLAGS='", "CFLAGS='-Wno-deprecated-declarations ")} \
-    ./configure \
-    #{CREW_OPTIONS} \
-    --localstatedir=#{CREW_PREFIX}/var \
-    --sysconfdir=#{CREW_PREFIX}/etc \
-    --with-gtk=3"
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    downloader "http://archive.ubuntu.com/ubuntu/pool/main/libd/libdbusmenu/libdbusmenu_#{@ubuntu_version}.debian.tar.xz", '2d00f79281340516f326468efee0e75651f0926834ce2671195f7a6b5945b314'
+    FileUtils.mkdir 'ubuntu_patches'
+    system "tar fx libdbusmenu_#{@ubuntu_version}.debian.tar.xz -C ubuntu_patches"
+    Dir['ubuntu_patches/debian/patches/000*'].each do |patch|
+      system "patch -Np1 -i #{patch}"
+    end
   end
 end

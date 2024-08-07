@@ -1,14 +1,13 @@
 require 'buildsystems/python'
 
-class Py3_pyyaml < Python
+class Py3_pyyaml < Pip
   description 'PyYAML is a YAML parser and emitter for Python.'
   homepage 'https://pyyaml.org/'
-  @_ver = '6.0.1'
-  version "#{@_ver}-py3.12"
+  version '6.0.2-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/yaml/pyyaml.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({

@@ -15,7 +15,7 @@ class Glibc_build237 < Package
   binary_sha256({
     aarch64: '4d2718f997423acc813921e23d8ed0bf83b67ab4c76f2512ac5a1f5ab58d502c',
      armv7l: '4d2718f997423acc813921e23d8ed0bf83b67ab4c76f2512ac5a1f5ab58d502c',
-     x86_64: '779a2e264600a452e2754fa70f3e188682d2c1404191c5d293edf1b52bc1d42b'
+     x86_64: 'e59b8f66d6d6b3254924d345a9805b2c94ed81c1ce8466b87192f8a1da266a34'
   })
 
   depends_on 'gawk' => :build
@@ -24,6 +24,7 @@ class Glibc_build237 < Package
   depends_on 'texinfo' => :build
   depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'patchelf' # L
 
   conflicts_ok
   no_env_options
@@ -42,9 +43,19 @@ class Glibc_build237 < Package
 
     @googlesource_branch = 'release-R128-15964.B'
     system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
-    # Maybe this is the source of our problems. This may keep
-    # strfromf128, __strtof128_nan, from being available in glibc.
+    # We need to avoid this patch to preserve float128. Otherwise strtof128,
+    # strfromf128, and __strtof128_nan, are not available in our glibc.
+    # This still requires hackery to avoid issues, as handled below by
+    # renaming our libc.so.6 to libC.so.6 and using patchelf to add
+    # needs for our libm.so.6 as well as the system provided libc.so.6.
+    # gcc_lib's stdc++.so.6 also needs to be told to need our glibc's
+    # renamed libC.so.6. Additionally, packages on these systems need to
+    # be built with CREW_LINKER_FLAGS=' /usr/local/lib64/libC.so.6 ' set.
+    #
     FileUtils.rm 'googlesource/sys-libs/glibc/files/local/glibc-2.37/0003-Disable-float128-support-for-x86_64-x86.patch'
+    # Please submit suggestions for less hacky workarounds.
+    #
+
     Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.37/*.patch').each do |patch|
       puts "patch -Np1 < #{patch} || true" if @opt_verbose
       system "patch -Np1 -F 10 -i #{patch} || true"
@@ -166,8 +177,7 @@ class Glibc_build237 < Package
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-    # system "sed 's,/usr/#{ARCH_LIB}/libc_nonshared.a,#{CREW_LIB_PREFIX}/libc_nonshared.a,g' /usr/#{ARCH_LIB}/libc.so > #{CREW_DEST_LIB_PREFIX}/libc.so"
-    system "sed 's,/usr/#{ARCH_LIB}/libc_nonshared.a,#{CREW_LIB_PREFIX}/libc_nonshared.a,g' /usr/#{ARCH_LIB}/libc.so > #{CREW_DEST_LIB_PREFIX}/libc.so.chromebrew-test"
+    system "sed 's,/usr/#{ARCH_LIB}/libc_nonshared.a,#{CREW_LIB_PREFIX}/libc_nonshared.a,g' /usr/#{ARCH_LIB}/libc.so > #{CREW_DEST_LIB_PREFIX}/libc.so"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
     Dir.chdir 'glibc_build' do
       system 'touch', "#{CREW_DEST_PREFIX}/etc/ld.so.conf"
@@ -196,8 +206,15 @@ class Glibc_build237 < Package
           # when 'x86_64'
           #   FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2.system'
         end
+        # Save our copy of libc.so.6
+        FileUtils.mv File.join(CREW_DEST_LIB_PREFIX, 'libc.so.6'), File.join(CREW_DEST_LIB_PREFIX, 'libC.so.6')
+
+        # Make a symlink to the system libc.so.6, which will require patchelf run on it in the postinstall.
+        FileUtils.ln_sf "/#{ARCH_LIB}/libc.so.6", 'libc.so.6'
+
+        # Also save our copy of libm.so.6 since it has the float128 functions.
         @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
-                        libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
+                        libdl libmemusage libmvec libnsl libnss_compat libnss_db
                         libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                         libthread_db libresolv librlv librt libthread_db-1.0 libutil]
         @libraries -= ['libpthread'] if @libc_version.to_f >= 2.35
@@ -225,6 +242,13 @@ class Glibc_build237 < Package
               puts "#{f} excluded because #{@filetype}"
             end
           end
+          # Link our libm to also require our renamed libC.so.6
+          # which provides the float128 functions strtof128, strfromf128,
+          # and __strtof128_nan.
+          @libc_patch_libraries = %w[libm.so.6]
+          @libc_patch_libraries.each do |lib|
+            system "patchelf --replace-needed libc.so.6 libC.so.6 #{lib}"
+          end
         end
       end
     end
@@ -245,6 +269,18 @@ class Glibc_build237 < Package
   end
 
   def self.postinstall
+    if (ARCH == 'x86_64') && (LIBC_VERSION.to_f >= 2.35)
+      FileUtils.cp_f "/#{ARCH_LIB}/libc.so.6", File.join(CREW_LIB_PREFIX, 'libc.so.6')
+      # Link the system libc.so.6 to also require our renamed libC.so.6
+      # which provides the float128 functions strtof128, strfromf128,
+      # and __strtof128_nan.
+      @libc_patch_libraries = %w[libc.so.6]
+      Dir.chdir(CREW_LIB_PREFIX) do
+        @libc_patch_libraries.each do |lib|
+          system "patchelf --add-needed libC.so.6 #{lib}" unless system "patchelf --print-needed #{lib} | grep -q libC.so.6"
+        end
+      end
+    end
     return if ARCH == 'x86_64'
 
     if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
