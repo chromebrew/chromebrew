@@ -17,7 +17,7 @@ class Nautilus < Meson
   binary_sha256({
     aarch64: 'a9108646b99aa5f1ed6a82fc6c841791eddddfaabebae08064e7dbcfb2d28ef7',
      armv7l: 'a9108646b99aa5f1ed6a82fc6c841791eddddfaabebae08064e7dbcfb2d28ef7',
-     x86_64: '5867de4e7b37bd255dcc087700866c36b465249549a718666c6cd834cbf7fe2a'
+     x86_64: '760d0a5029e887e93f849db2440b5b149dd7499e21b213b9ddc95ba7b997bfe5'
   })
 
   depends_on 'appstream' => :build

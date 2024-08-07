@@ -14,7 +14,7 @@ class Localsearch < Meson
   binary_sha256({
     aarch64: 'ee07d7ac54e1e98360299f1deb15c754cc9bb826eae128e002e8f0fa4af730de',
      armv7l: 'ee07d7ac54e1e98360299f1deb15c754cc9bb826eae128e002e8f0fa4af730de',
-     x86_64: '1486965568cb0e533eb87078efc3e6621b8553b8823ac054dd05f8d051bd0baa'
+     x86_64: 'ce85968eb93fe979aed0276475ed12ade0a0e1e99b182a32f01f6b644e9b25be'
   })
 
   depends_on 'asciidoc' => :build
