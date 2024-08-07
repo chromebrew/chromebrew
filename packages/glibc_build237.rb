@@ -6,21 +6,24 @@ class Glibc_build237 < Package
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
   binary_compression 'tar.zst'
-  @libc_version = LIBC_VERSION
-  version '2.37'
+  # @libc_version = LIBC_VERSION
+  @libc_version = '2.37'
+  version '2.37-1'
   source_url 'https://github.com/bminor/glibc.git'
   git_hashtag 'glibc-2.37'
 
   binary_sha256({
-    aarch64: 'd9cac82b17d463b98caf5c29e143775d3aeed29df3851207ad930d9c5b4c391b',
-     armv7l: 'd9cac82b17d463b98caf5c29e143775d3aeed29df3851207ad930d9c5b4c391b',
-     x86_64: '07754223434ad59930ebca10f0adbd390700ebd93a43853b183ed30f0a0a33ca'
+    aarch64: '4d2718f997423acc813921e23d8ed0bf83b67ab4c76f2512ac5a1f5ab58d502c',
+     armv7l: '4d2718f997423acc813921e23d8ed0bf83b67ab4c76f2512ac5a1f5ab58d502c',
+     x86_64: '779a2e264600a452e2754fa70f3e188682d2c1404191c5d293edf1b52bc1d42b'
   })
 
   depends_on 'gawk' => :build
   depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
   depends_on 'libidn2' => :build
   depends_on 'texinfo' => :build
+  depends_on 'glibc_lib' # R
+  depends_on 'glibc' # R
 
   conflicts_ok
   no_env_options
@@ -37,8 +40,11 @@ class Glibc_build237 < Package
     system "sed -i 's,verbose,locale_verbose,g' fedora/build-locale-archive.c"
     system "sed -i 's,be_quiet,locale_be_quiet,g' fedora/build-locale-archive.c"
 
-    @googlesource_branch = 'release-R123-15786.B'
+    @googlesource_branch = 'release-R128-15964.B'
     system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
+    # Maybe this is the source of our problems. This may keep
+    # strfromf128, __strtof128_nan, from being available in glibc.
+    FileUtils.rm 'googlesource/sys-libs/glibc/files/local/glibc-2.37/0003-Disable-float128-support-for-x86_64-x86.patch'
     Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.37/*.patch').each do |patch|
       puts "patch -Np1 < #{patch} || true" if @opt_verbose
       system "patch -Np1 -F 10 -i #{patch} || true"
@@ -98,10 +104,11 @@ class Glibc_build237 < Package
           system "sed -i 's,install-symbolic-link,/bin/true,g' ../Makefile"
           system "sed -i 's,symbolic-link-prog := $(elf-objpfx)sln,symbolic-link-prog := /bin/true,g' ../Makerules"
         when 'x86_64'
+          # https://source.chromium.org/chromiumos/_/chromium/chromiumos/overlays/chromiumos-overlay/+/a73162d56fd689b26812282c3f9bc4f2b5a67530:sys-libs/glibc/glibc-2.37.ebuild
           File.write('configparms', "slibdir=#{CREW_LIB_PREFIX}", mode: 'a+')
           system "CFLAGS='-fuse-ld=mold -pipe -O2 -fipa-pta \
           -fno-semantic-interposition -falign-functions=32 \
-          -fdevirtualize-at-ltrans' \
+          -fdevirtualize-at-ltrans -mstackrealign' \
             ../configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
@@ -159,7 +166,8 @@ class Glibc_build237 < Package
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-    system "sed 's,/usr/#{ARCH_LIB}/libc_nonshared.a,#{CREW_LIB_PREFIX}/libc_nonshared.a,g' /usr/#{ARCH_LIB}/libc.so > #{CREW_DEST_LIB_PREFIX}/libc.so"
+    # system "sed 's,/usr/#{ARCH_LIB}/libc_nonshared.a,#{CREW_LIB_PREFIX}/libc_nonshared.a,g' /usr/#{ARCH_LIB}/libc.so > #{CREW_DEST_LIB_PREFIX}/libc.so"
+    system "sed 's,/usr/#{ARCH_LIB}/libc_nonshared.a,#{CREW_LIB_PREFIX}/libc_nonshared.a,g' /usr/#{ARCH_LIB}/libc.so > #{CREW_DEST_LIB_PREFIX}/libc.so.chromebrew-test"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
     Dir.chdir 'glibc_build' do
       system 'touch', "#{CREW_DEST_PREFIX}/etc/ld.so.conf"
@@ -171,18 +179,22 @@ class Glibc_build237 < Package
       end
       if @libc_version.to_f >= 2.32
         system "install -Dt #{CREW_DEST_PREFIX}/bin -m755 build-locale-archive"
-        system "make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales"
+        system "make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales || make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales"
       end
+      return if ARCH == 'x86_64'
+
       Dir.chdir CREW_DEST_LIB_PREFIX do
         puts "System glibc version is #{LIBC_VERSION}.".lightblue
         puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
         case ARCH
         when 'aarch64', 'armv7l'
-          FileUtils.ln_sf "/lib/ld-#{@libc_version}.so", 'ld-linux-armhf.so.3'
+          FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3.system'
         when 'i686'
           FileUtils.ln_sf "/lib/ld-#{@libc_version}.so", 'ld-linux-i686.so.2'
-        when 'x86_64'
-          FileUtils.ln_sf "/lib64/ld-#{@libc_version}.so", 'ld-linux-x86-64.so.2'
+          # newer x86_64 ChromeOS glibc lacks strtof128, strfromf128
+          # and __strtof128_nan
+          # when 'x86_64'
+          #   FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2.system'
         end
         @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
                         libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
@@ -193,9 +205,11 @@ class Glibc_build237 < Package
           # Reject entries which aren't libraries ending in .so, and which aren't files.
           Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
             @filetype = `file #{f}`.chomp
-            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-              g = File.basename(f)
-              FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
+            next unless ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
+            g = File.basename(f)
+            FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
+            Dir.chdir(CREW_DEST_LIB_PREFIX) do
+              FileUtils.ln_sf f.to_s, g.to_s
             end
           end
           # Reject entries which aren't libraries ending in .so, and which aren't files.
@@ -216,7 +230,7 @@ class Glibc_build237 < Package
     end
     # Only save libnsl.so.2, since libnsl.so.1 is provided by perl
     # For this to work, build on a M107 or newer container.
-    FileUtils.cp File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2"
+    FileUtils.cp File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2" if LIBC_VERSION.to_f >= 2.35
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"
 
@@ -231,6 +245,8 @@ class Glibc_build237 < Package
   end
 
   def self.postinstall
+    return if ARCH == 'x86_64'
+
     if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
       @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
       @libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
@@ -251,8 +267,10 @@ class Glibc_build237 < Package
         FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
       when 'i686'
         FileUtils.ln_sf "/lib/ld-#{@libc_version}.so", 'ld-linux-i686.so.2'
-      when 'x86_64'
-        FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2'
+        # newer x86_64 ChromeOS glibc lacks strtof128, strfromf128
+        # and __strtof128_nan
+        # when 'x86_64'
+        #   FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2'
       end
       @libraries.each do |lib|
         # Reject entries which aren't libraries ending in .so, and which aren't files.
