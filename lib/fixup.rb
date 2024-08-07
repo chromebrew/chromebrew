@@ -194,7 +194,7 @@ FileUtils.rm "#{CREW_PACKAGES_PATH}/pagerenv" if File.file?("#{CREW_PACKAGES_PAT
 
 # Handle broken system glibc affecting gcc_lib on newer x86_64 ChromeOS milestones.
 if (ARCH == 'x86_64') && (LIBC_VERSION.to_f >= 2.35)
-  abort("patchelf is needed. Please run: 'crew install patchelf'") unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
+  abort("patchelf is needed. Please run: 'crew install patchelf && crew update'") unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
   # Link the system libc.so.6 to also require our renamed libC.so.6
   # which provides the float128 functions strtof128, strfromf128,
   # and __strtof128_nan.
