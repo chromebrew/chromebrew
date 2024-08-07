@@ -305,6 +305,8 @@ class Glibc_build237 < Package
                       libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                       libthread_db libresolv librlv librt libthread_db-1.0 libutil]
       @libraries -= ['libpthread'] if @libc_version.to_f >= 2.35
+      @libraries -= ['libc'] if (@libc_version.to_f >= 2.35) && Kernel.system("patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libc.so.6')} | grep -q libC.so.6")
+      @libraries -= ['libm'] if (@libc_version.to_f >= 2.35) && Kernel.system("patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libm.so.6')} | grep -q libC.so.6")
       Dir.chdir CREW_LIB_PREFIX do
         puts "System glibc version is #{@libc_version}.".lightblue
         puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
@@ -322,10 +324,11 @@ class Glibc_build237 < Package
           # Reject entries which aren't libraries ending in .so, and which aren't files.
           Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
             @filetype = `file #{f}`.chomp
-            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-              g = File.basename(f)
-              FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
-            end
+            next unless ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
+            g = File.basename(f)
+            next if Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, g)} | grep -q libC.so.6"
+
+            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
           end
           # Reject entries which aren't libraries ending in .so, and which aren't files.
           # Reject text files such as libc.so because they points to files like
@@ -335,6 +338,8 @@ class Glibc_build237 < Package
             puts "f: #{@filetype}" if @opt_verbose
             if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
               g = File.basename(f)
+              next if Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, g)} | grep -q libC.so.6"
+
               FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
             elsif @opt_verbose
               puts "#{f} excluded because #{@filetype}"
