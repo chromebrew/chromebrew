@@ -243,8 +243,8 @@ class Glibc_build237 < Package
           # Link our libm to also require our renamed libC.so.6
           # which provides the float128 functions strtof128, strfromf128,
           # and __strtof128_nan.
-          @libc_patch_libraries = %w[libm.so.6]
-          @libc_patch_libraries.each do |lib|
+          libc_patch_libraries = %w[libm.so.6]
+          libc_patch_libraries.each do |lib|
             system "patchelf --replace-needed libc.so.6 libC.so.6 #{lib}"
           end
         end
@@ -274,15 +274,15 @@ class Glibc_build237 < Package
       # Link the system libc.so.6 to also require our renamed libC.so.6
       # which provides the float128 functions strtof128, strfromf128,
       # and __strtof128_nan.
-      @libc_patch_libraries = %w[libc.so.6 libm.so.6 libstdc++.so.6]
-      @libc_patch_libraries.delete_if { |lib| !File.file?(File.join(CREW_LIB_PREFIX, lib)) }
-      @libc_patch_libraries.delete_if { |lib| Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, lib)} | grep -q libC.so.6" }
+      libc_patch_libraries = %w[libc.so.6 libm.so.6 libstdc++.so.6]
+      libc_patch_libraries.delete_if { |lib| !File.file?(File.join(CREW_LIB_PREFIX, lib)) }
+      libc_patch_libraries.delete_if { |lib| Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, lib)} | grep -q libC.so.6" }
 
-      return if @libc_patch_libraries.empty?
+      return if libc_patch_libraries.empty?
 
       if File.file?(File.join(CREW_LIB_PREFIX, 'libC.so.6'))
         Dir.chdir(CREW_LIB_PREFIX) do
-          @libc_patch_libraries.each do |lib|
+          libc_patch_libraries.each do |lib|
             Kernel.system "patchelf --add-needed libC.so.6 #{lib}" and Kernel.system "patchelf --remove-needed libc.so.6 #{lib}"
             puts "#{lib} patched for use with Chromebrew's glibc.".lightgreen
           end
