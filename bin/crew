@@ -600,7 +600,11 @@ def unpack(meta)
         system 'unzip', (CREW_VERBOSE ? '-v' : '-qq'), '-d', @extract_dir, meta[:filename], exception: true
       when /\.(tar(\.(gz|bz2|xz|lzma|lz))?|tgz|tbz|txz|tpxz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
-        system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
+        if Kernel.system('zstd --help 2>/dev/null| grep -q lzma', %i[out err] => File::NULL)
+          system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
+        else
+          system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
+        end
       when /\.tar\.zst$/i
         puts "Unpacking archive using 'tar', this may take a while..."
         system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
