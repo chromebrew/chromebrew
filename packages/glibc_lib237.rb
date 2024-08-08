@@ -42,8 +42,8 @@ class Glibc_lib237 < Package
     end
     # Symlinks to system libraries.
     glibc_libs = %w[libanl.so.1 libc_malloc_debug.so.0 libc.so.6 libdl.so.2 libm.so.6
-                     libmvec.so.1 libnss_dns.so.2 libnss_files.so.2 libpthread.so.0
-                     libresolv.so.2 librt.so.1 libthread_db.so.1 libutil.so.1]
+                    libmvec.so.1 libnss_dns.so.2 libnss_files.so.2 libpthread.so.0
+                    libresolv.so.2 librt.so.1 libthread_db.so.1 libutil.so.1]
     glibc_libs -= ['libc.so.6'] if Kernel.system("patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libc.so.6')} | grep -q libC.so.6")
     glibc_libs -= ['libm.so.6'] if Kernel.system("patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libm.so.6')} | grep -q libC.so.6")
 
@@ -57,14 +57,14 @@ class Glibc_lib237 < Package
   end
 
   def self.postinstall
-    if (ARCH == 'x86_64') && (LIBC_VERSION.to_f >= 2.35)
+    if (ARCH == 'x86_64') && (LIBC_VERSION >= 2.35)
       FileUtils.cp "/#{ARCH_LIB}/libc.so.6", File.join(CREW_LIB_PREFIX, 'libc.so.6.system') and FileUtils.mv File.join(CREW_LIB_PREFIX, 'libc.so.6.system'), File.join(CREW_LIB_PREFIX, 'libc.so.6') unless Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libc.so.6')} | grep -q libC.so.6"
       puts "patchelf is needed. Please run: 'crew install patchelf ; crew postinstall #{name}'".lightred unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
       # Link the system libc.so.6 to also require our renamed libC.so.6
       # which provides the float128 functions strtof128, strfromf128,
       # and __strtof128_nan.
       libc_patch_libraries = %w[libc.so.6 libm.so.6 libstdc++.so.6]
-      libc_patch_libraries.delete_if { |lib| !File.file?(File.join(CREW_LIB_PREFIX, lib)) }
+      libc_patch_libraries.keep_if { |lib| File.file?(File.join(CREW_LIB_PREFIX, lib)) }
       libc_patch_libraries.delete_if { |lib| Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, lib)} | grep -q libC.so.6" }
 
       return if libc_patch_libraries.empty?
