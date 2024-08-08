@@ -1284,13 +1284,10 @@ def install
   end
 
   # Add to installed packages list in devices.json, but remove first if it is already there.
-  if PackageUtils.installed?(@pkg.name)
-    crewlog "Removing package #{@pkg.name} from device.json since a version is already marked as installed."
-    @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name }
-  end
   crewlog "Adding package #{@pkg.name} to device.json."
-  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
+  @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name } and @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
   save_json(@device)
+  crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if Kernel.system 'which jq', %i[out err] => File::NULL
 end
 
 def resolve_dependencies_and_build

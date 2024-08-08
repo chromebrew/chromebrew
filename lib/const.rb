@@ -176,7 +176,7 @@ when 'x86_64'
 end
 
 CREW_LINKER = ENV.fetch('CREW_LINKER', 'mold')
-CREW_GLIBC_OVERRIDE_LINKER_FLAGS = (ARCH == 'x86_64' && LIBC_VERSION.to_f >= 2.35) ? " #{File.join(CREW_LIB_PREFIX, 'libC.so.6')} " : ''
+CREW_GLIBC_OVERRIDE_LINKER_FLAGS = ARCH == 'x86_64' && LIBC_VERSION.to_f >= 2.35 ? " #{File.join(CREW_LIB_PREFIX, 'libC.so.6')} " : ''
 CREW_LINKER_FLAGS = ENV.fetch('CREW_LINKER_FLAGS', CREW_GLIBC_OVERRIDE_LINKER_FLAGS)
 
 CREW_CORE_FLAGS           = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
