@@ -166,7 +166,7 @@ find "${CREW_LIB_PATH}" -mindepth 1 -delete
 # Download the chromebrew repository.
 curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-BOOTSTRAP_PACKAGES='lz4 zlib zstd xzutils crew_mvdir ruby git ca_certificates libyaml openssl'
+BOOTSTRAP_PACKAGES='lz4 zlib xzutils zstd crew_mvdir ruby git ca_certificates libyaml openssl'
 
 # Older i686 systems.
 [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' gcc_lib'
