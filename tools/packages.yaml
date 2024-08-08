@@ -5461,6 +5461,11 @@ url: https://github.com/tstack/lnav/releases
 activity: high
 ---
 kind: url
+name: localsearch
+url: https://gitlab.gnome.org/GNOME/localsearch/-/tags
+activity: high
+---
+kind: url
 name: log4c
 url: https://sourceforge.net/projects/log4c/files/log4c/
 activity: none
@@ -7301,6 +7306,11 @@ url: https://github.com/python-hyper/brotlicffi/tags
 activity: low
 ---
 kind: url
+name: py3_cfgv
+url: https://github.com/asottile/cfgv/tags
+activity: low
+---
+kind: url
 name: py3_devedeng
 url: https://gitlab.com/rastersoft/devedeng/-/tags
 activity: low
@@ -7333,6 +7343,11 @@ activity: medium
 kind: url
 name: py3_hatchling
 url: https://github.com/pypa/hatch/releases
+activity: medium
+---
+kind: url
+name: py3_identify
+url: https://github.com/pre-commit/identify/tags
 activity: medium
 ---
 kind: url
@@ -8681,6 +8696,11 @@ url: https://distro.ibiblio.org/tinycorelinux/downloads.html
 activity: medium
 ---
 kind: url
+name: tinysparql
+url: https://gitlab.gnome.org/GNOME/tinysparql/-/tags
+activity: high
+---
+kind: url
 name: tk
 url: https://sourceforge.net/projects/tcl/files/Tcl/
 activity: low
@@ -8734,16 +8754,6 @@ kind: url
 name: traceroute
 url: https://sourceforge.net/projects/traceroute/files/traceroute/
 activity: none
----
-kind: url
-name: tracker3
-url: https://gitlab.gnome.org/GNOME/tracker/-/tags
-activity: high
----
-kind: url
-name: tracker3_miners
-url: https://gitlab.gnome.org/GNOME/tracker-miners/-/tags
-activity: high
 ---
 kind: url
 name: translate_shell
