@@ -251,7 +251,7 @@ function extract_install () {
 
     # Extract and install.
     echo_intra "Extracting ${1} ..."
-    if [[ "${2##*.}" == "zst" ]] || zstd --help | grep -q lzma; then
+    if [[ "${2##*.}" == "zst" ]] || zstd --help 2>/dev/null| grep -q lzma; then
       tar -I zstd -xpf ../"${2}"
     else
       tar xpf ../"${2}"
