@@ -41,13 +41,13 @@ class Glibc_lib237 < Package
       FileUtils.install @filename_target, @destpath
     end
     # Symlinks to system libraries.
-    @glibc_libs = %w[libanl.so.1 libc_malloc_debug.so.0 libc.so.6 libdl.so.2 libm.so.6
+    glibc_libs = %w[libanl.so.1 libc_malloc_debug.so.0 libc.so.6 libdl.so.2 libm.so.6
                      libmvec.so.1 libnss_dns.so.2 libnss_files.so.2 libpthread.so.0
                      libresolv.so.2 librt.so.1 libthread_db.so.1 libutil.so.1]
-    @glibc_libs -= ['libc.so.6'] if Kernel.system("patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libc.so.6')} | grep -q libC.so.6")
-    @glibc_libs -= ['libm.so.6'] if Kernel.system("patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libm.so.6')} | grep -q libC.so.6")
+    glibc_libs -= ['libc.so.6'] if Kernel.system("patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libc.so.6')} | grep -q libC.so.6")
+    glibc_libs -= ['libm.so.6'] if Kernel.system("patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libm.so.6')} | grep -q libC.so.6")
 
-    @glibc_libs.each do |lib|
+    glibc_libs.each do |lib|
       if ARCH == 'x86_64'
         puts "skipping symlink of system/#{ARCH_LIB}/#{lib} into #{CREW_DEST_LIB_PREFIX}/#{lib}...".orange
       else
