@@ -6,8 +6,8 @@ class Webkitgtk_6 < Package
   version '2.44.2-icu75.1'
   license 'LGPL-2+ and BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.42.1.tar.xz'
-  source_sha256 '6f41fac9989d3ee51c08c48de1d439cdeddecbc757e34b6180987d99b16d2499'
+  source_url "https://webkitgtk.org/releases/webkitgtk-#{version.split('-').first}.tar.xz"
+  source_sha256 '523f42c8ff24832add17631f6eaafe8f9303afe316ef1a7e1844b952a7f7521b'
   binary_compression 'tar.zst'
 
   binary_sha256({
