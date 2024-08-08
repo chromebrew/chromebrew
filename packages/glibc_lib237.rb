@@ -57,7 +57,7 @@ class Glibc_lib237 < Package
   end
 
   def self.postinstall
-    if (ARCH == 'x86_64') && (LIBC_VERSION >= 2.35)
+    if (ARCH == 'x86_64') && (LIBC_VERSION.to_f >= 2.35)
       FileUtils.cp "/#{ARCH_LIB}/libc.so.6", File.join(CREW_LIB_PREFIX, 'libc.so.6.system') and FileUtils.mv File.join(CREW_LIB_PREFIX, 'libc.so.6.system'), File.join(CREW_LIB_PREFIX, 'libc.so.6') unless Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libc.so.6')} | grep -q libC.so.6"
       puts "patchelf is needed. Please run: 'crew install patchelf ; crew postinstall #{name}'".lightred unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
       # Link the system libc.so.6 to also require our renamed libC.so.6

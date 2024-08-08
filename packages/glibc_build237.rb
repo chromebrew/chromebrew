@@ -252,7 +252,7 @@ class Glibc_build237 < Package
     end
     # Only save libnsl.so.2, since libnsl.so.1 is provided by perl
     # For this to work, build on a M107 or newer container.
-    FileUtils.cp File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2" if LIBC_VERSION >= 2.35
+    FileUtils.cp File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2" if LIBC_VERSION.to_f >= 2.35
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"
 
@@ -268,7 +268,7 @@ class Glibc_build237 < Package
 
   def self.postinstall
     # Handle broken system glibc affecting system glibc and libm.so.6 on newer x86_64 ChromeOS milestones.
-    if (ARCH == 'x86_64') && (LIBC_VERSION >= 2.35)
+    if (ARCH == 'x86_64') && (LIBC_VERSION.to_f >= 2.35)
       FileUtils.cp "/#{ARCH_LIB}/libc.so.6", File.join(CREW_LIB_PREFIX, 'libc.so.6.system') and FileUtils.mv File.join(CREW_LIB_PREFIX, 'libc.so.6.system'), File.join(CREW_LIB_PREFIX, 'libc.so.6')
       puts "patchelf is needed. Please run: 'crew install patchelf ; crew postinstall #{name}'".lightred unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
       # Link the system libc.so.6 to also require our renamed libC.so.6
