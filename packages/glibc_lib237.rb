@@ -30,7 +30,7 @@ class Glibc_lib237 < Package
   def self.install
     puts 'Installing Glibc_build237 to pull files for build...'.lightblue
     @filelist_path = File.join(CREW_META_PATH, 'glibc_build237.filelist')
-    abort 'File list for Glibc_build237 does not exist!'.lightred unless File.file?(@filelist_path)
+    abort 'File list for Glibc_build237 does not exist! Please run: crew reinstall glibc_build237'.lightred unless File.file?(@filelist_path)
     @filelist = File.readlines(@filelist_path, chomp: true).sort
 
     @filelist.each do |filename|
@@ -40,24 +40,29 @@ class Glibc_lib237 < Package
       @filename_target = File.realpath(filename)
       FileUtils.install @filename_target, @destpath
     end
-    # Symlinks to system libraries.
+
+    if ARCH == 'x86_64'
+      puts 'Skipping creating symlinks from system Glibc libraries...'.orange
+      return
+    end
+
+    # Create symlinks to system glibc libraries.
     glibc_libs = %w[libanl.so.1 libc_malloc_debug.so.0 libc.so.6 libdl.so.2 libm.so.6
                     libmvec.so.1 libnss_dns.so.2 libnss_files.so.2 libpthread.so.0
                     libresolv.so.2 librt.so.1 libthread_db.so.1 libutil.so.1]
-    glibc_libs -= ['libc.so.6'] if Kernel.system("patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libc.so.6')} | grep -q libC.so.6")
-    glibc_libs -= ['libm.so.6'] if Kernel.system("patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libm.so.6')} | grep -q libC.so.6")
 
     glibc_libs.each do |lib|
-      if ARCH == 'x86_64'
-        puts "skipping symlink of system/#{ARCH_LIB}/#{lib} into #{CREW_DEST_LIB_PREFIX}/#{lib}...".orange
-      else
-        FileUtils.ln_sf "/#{ARCH_LIB}/#{lib}", "#{CREW_DEST_LIB_PREFIX}/#{lib}"
-      end
+      # Do not replace libraries that have been patched for our glibc libC.so.6.
+      next if Kernel.system("patchelf --print-needed #{File.join(CREW_LIB_PREFIX, lib)} | grep -q libC.so.6")
+
+      puts "Creating symlink of system Glibc's /#{ARCH_LIB}/#{lib} into #{CREW_DEST_LIB_PREFIX}/#{lib}...".orange
+      FileUtils.ln_sf "/#{ARCH_LIB}/#{lib}", "#{CREW_DEST_LIB_PREFIX}/#{lib}"
     end
   end
 
   def self.postinstall
     if (ARCH == 'x86_64') && (LIBC_VERSION.to_f >= 2.35)
+      # Overwrite our libc.so.6 with the system glibc libc.so.6, and then use patchelf to link it to ours.
       FileUtils.cp "/#{ARCH_LIB}/libc.so.6", File.join(CREW_LIB_PREFIX, 'libc.so.6.system') and FileUtils.mv File.join(CREW_LIB_PREFIX, 'libc.so.6.system'), File.join(CREW_LIB_PREFIX, 'libc.so.6') unless Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libc.so.6')} | grep -q libC.so.6"
       puts "patchelf is needed. Please run: 'crew install patchelf ; crew postinstall #{name}'".lightred unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
       # Link the system libc.so.6 to also require our renamed libC.so.6
