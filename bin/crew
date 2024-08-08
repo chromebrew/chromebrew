@@ -246,7 +246,7 @@ def cache_build
       FileUtils.mv "#{build_cachefile}.sha256", "#{build_cachefile}.sha256.bak", force: true if File.file?("#{build_cachefile}.sha256")
       Dir.chdir(CREW_BREW_DIR) do
         system "tar c#{@verbose} #{pkg_build_dirname} \
-        | nice -n 20 #{CREW_PREFIX}/bin/zstd -c  --ultra --fast -f -o #{build_cachefile} -"
+        | nice -n 20 zstd -c  --ultra --fast -f -o #{build_cachefile} -"
       end
     end
     system "sha256sum #{build_cachefile} > #{build_cachefile}.sha256"
@@ -568,7 +568,7 @@ def download
           # because some builds will use that information.
           system "tar c#{@verbose} \
             $(find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
-            nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - >  \
+            nice -n 20 zstd -c -T0 --ultra -20 - >  \
             #{cachefile}"
         end
         system 'sha256sum', cachefile, out: "#{cachefile}.sha256"
@@ -1341,10 +1341,7 @@ end
 
 def archive_package(crew_archive_dest)
   # Check to see that there is a working zstd
-  if File.file?("#{CREW_PREFIX}/bin/zstd")
-    crew_prefix_zstd_available = File.file?("#{CREW_PREFIX}/bin/zstd") ? true : nil
-  end
-  if @pkg.no_zstd? || !crew_prefix_zstd_available
+  if @pkg.no_zstd? || !Kernel.system 'which zstd', %i[out err] => File::NULL
     puts 'Using xz to compress package. This may take some time.'.lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
@@ -1358,10 +1355,8 @@ def archive_package(crew_archive_dest)
       # decompression speed over compression speed.
       # See https://lists.archlinux.org/pipermail/arch-dev-public/2019-March/029542.html
       # Use nice so that user can (possibly) do other things during compression.
-      if crew_prefix_zstd_available
-        puts 'Using standard zstd'.lightblue if CREW_VERBOSE
-        system "tar c#{@verbose} * | nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
-      end
+      puts 'Using standard zstd'.lightblue if CREW_VERBOSE
+      system "tar c#{@verbose} * | nice -n 20 zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
     end
   end
   system "sha256sum #{crew_archive_dest}/#{pkg_name} > #{crew_archive_dest}/#{pkg_name}.sha256"
