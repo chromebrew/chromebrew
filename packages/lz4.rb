@@ -6,8 +6,8 @@ class Lz4 < Package
   version '1.10.0'
   license 'BSD-2 and GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/lz4/lz4/archive/v1.10.0.tar.gz'
-  source_sha256 '537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b'
+  source_url "https://github.com/lz4/lz4.git"
+  git_hashtag "v#{version}"
   binary_compression 'tar.xz'
 
   binary_sha256({
