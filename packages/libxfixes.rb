@@ -2,7 +2,7 @@ require 'package'
 
 class Libxfixes < Package
   description 'library for the X window system'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '6.0.0'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'

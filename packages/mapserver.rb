@@ -2,7 +2,7 @@ require 'package'
 
 class Mapserver < Package
   description 'MapServer is an Open Source platform for publishing spatial data and interactive mapping applications to the web.'
-  homepage 'http://mapserver.org/'
+  homepage 'https://mapserver.org/'
   version '8.0.0'
   license 'Boost-1.0, BSD-2, ISC, MIT and tcltk'
   compatibility 'x86_64 aarch64 armv7l'
@@ -32,7 +32,7 @@ class Mapserver < Package
   depends_on 'libpng' # R
   depends_on 'libxml2' # R
   depends_on 'protobuf_c' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     Dir.mkdir 'builddir'

@@ -2,7 +2,7 @@ require 'package'
 
 class Shhopt < Package
   description 'C-functions for parsing command line options, both traditional one-character options, and GNU\'ish --long-options.'
-  homepage 'http://shh.thathost.com/pub-unix/#sshopt'
+  homepage 'https://shh.thathost.com/pub-unix/#sshopt'
   version '1.1.7-2'
   license 'Artistic'
   compatibility 'all'

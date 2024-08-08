@@ -16,12 +16,12 @@ class Py3_azure_cli < Pip
   no_compile_needed
   print_source_bashrc
 
-  pip_install_extras <<~EXTRAS_EOF
+  pip_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
     @azureenv = <<~AZUREEOF
       # Microsoft Azure CLI bash completion
       source #{CREW_PREFIX}/bin/az.completion.sh
     AZUREEOF
     File.write("#{CREW_DEST_PREFIX}/etc/bash.d/az", @azureenv)
-  EXTRAS_EOF
+  end
 end

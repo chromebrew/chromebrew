@@ -3,7 +3,7 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version "14.1.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
+  version "14.2.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
@@ -13,32 +13,33 @@ class Gcc_build < Package
   case LIBC_VERSION
   when '2.23'
     binary_sha256({
-         i686: '0850517263680419c1ae4152ba8237a5ee1d40651b31832f211ed450df94999c'
+         i686: '95b0aacd75c8ab2ba559b2992f0c7d1e13230cb22f1622cd282df6df3e53e7c0'
     })
   when '2.27', '2.32', '2.33', '2.35'
     binary_sha256({
-      aarch64: 'c53f34ca91bf3eee1ac207b4054c41928da311bf4fa55f8595cc21f1285d398d',
-       armv7l: 'c53f34ca91bf3eee1ac207b4054c41928da311bf4fa55f8595cc21f1285d398d',
-       x86_64: '387c1b91fb0fa7d939744a42bbf836ea8e47b005a325e7012a937c8f0fb9ec7f'
+      aarch64: 'c70348c4c2953e8a24ce2efc713ef1d628902c3e01f9ab9fa2a421851ecbb4e1',
+       armv7l: 'c70348c4c2953e8a24ce2efc713ef1d628902c3e01f9ab9fa2a421851ecbb4e1',
+       x86_64: '762557dbd47282a08f84c2dc5d0c2706c571ed2dc7ac17e527d92139d39b36c6'
     })
   when '2.37'
     binary_sha256({
-      aarch64: '1a84028dcfc7b5a6e5a281a6684470ca9d6cb8fd83688d59505464f80d4f7180',
-       armv7l: '1a84028dcfc7b5a6e5a281a6684470ca9d6cb8fd83688d59505464f80d4f7180',
-       x86_64: '88aa03f986b1c3528ae155b0b5e886437b526a04e070fcd0dbf43a2684db01ac'
+      aarch64: '313fefb47070e7c3327628083552ceb253834e46a730bf8913497821ca34d626',
+       armv7l: '313fefb47070e7c3327628083552ceb253834e46a730bf8913497821ca34d626',
+       x86_64: 'd20b4cf318296405c4c6dc36078d9ccd68a090fd510e9fbb84f0bba55e77d2ff'
     })
   end
 
   depends_on 'binutils' => :build
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl' # R
   depends_on 'libssp' # L
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_env_options
@@ -88,6 +89,9 @@ class Gcc_build < Package
 
   def self.build
     @gcc_global_opts = <<~OPT.chomp
+      --build=#{CREW_TARGET} \
+      --host=#{CREW_TARGET} \
+      --target=#{CREW_TARGET} \
       --disable-bootstrap \
       --disable-install-libiberty \
       --disable-libmpx \

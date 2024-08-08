@@ -438,7 +438,7 @@ def download
     puts 'No precompiled binary available for your platform, downloading source...'
   end
 
-  git = uri.scheme.eql?('git')
+  git = true unless @pkg.git_hashtag.to_s.empty?
 
   Dir.chdir CREW_BREW_DIR do
     case File.basename(filename)
@@ -497,15 +497,15 @@ def download
 
     when /^SKIP$/i
       Dir.mkdir @extract_dir
-    when /\.git$/i # Source URLs which end with .git are git sources.
-      git = true
     else
-      Dir.mkdir @extract_dir
-      downloader url, sha256sum, filename, CREW_VERBOSE
+      unless git # We don't want to download a git repository as a file.
+        Dir.mkdir @extract_dir
+        downloader url, sha256sum, filename, CREW_VERBOSE
 
-      puts "#{filename}: File downloaded.".lightgreen
+        puts "#{filename}: File downloaded.".lightgreen
 
-      FileUtils.mv filename, "#{@extract_dir}/#{filename}"
+        FileUtils.mv filename, "#{@extract_dir}/#{filename}"
+      end
     end
 
     # Handle git sources.
@@ -547,7 +547,7 @@ def download
           system 'git config advice.detachedHead false'
           system 'git config init.defaultBranch master'
           system "git remote add origin #{@pkg.source_url}", exception: true
-          system "git fetch --depth 1 origin #{@pkg.git_hashtag}", exception: true
+          system "git fetch #{'--depth 1' unless @pkg.git_clone_deep?} origin #{@pkg.git_hashtag}", exception: true
           system 'git checkout FETCH_HEAD'
         else
           # Leave a message because this step can be slow.
@@ -558,7 +558,6 @@ def download
         end
         system 'git submodule update --init --recursive' unless @pkg.no_git_submodules?
         system 'git fetch --tags', exception: true if @pkg.git_fetchtags?
-        system "git fetch origin #{@pkg.git_hashtag}", exception: true if @pkg.git_clone_deep?
         puts 'Repository downloaded.'.lightgreen
       end
       # Stow file in cache if requested and cache is writable.
@@ -1459,7 +1458,7 @@ def print_deps_tree(args)
   puts tree_view
 end
 
-def upload(pkg_name = nil)
+def upload(pkg_name = nil, pkg_version = nil)
   abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV.fetch('GITLAB_TOKEN', nil).nil?
 
   packages = pkg_name
@@ -1481,9 +1480,9 @@ def upload(pkg_name = nil)
     %w[x86_64 i686 armv7l].each do |arch|
       release_dir = "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}"
       pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
-      new_tarfile = Dir["#{release_dir}/#{package}-*-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
+      new_tarfile = Dir["#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
       if new_tarfile.nil?
-        puts "#{release_dir}/#{package}-#-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
+        puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
         next
       end
       if binary_compression_set.nil?
@@ -1857,7 +1856,7 @@ def upload_command(args)
   upload if args['<name>'].empty?
   args['<name>'].each do |name|
     search name
-    upload name if @pkg.name
+    upload(name, @pkg.version) if @pkg.name
   end
 end
 

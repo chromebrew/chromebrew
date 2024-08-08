@@ -34,7 +34,7 @@ class Postgresql < Package
   depends_on 'python3' # R
   depends_on 'readline' # R
   depends_on 'tcl' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   print_source_bashrc

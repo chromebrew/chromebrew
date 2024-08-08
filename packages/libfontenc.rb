@@ -2,7 +2,7 @@ require 'package'
 
 class Libfontenc < Package
   description 'Fontenc Library from X.org'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.1.7'
   license 'MIT'
   compatibility 'all'
@@ -19,7 +19,7 @@ class Libfontenc < Package
 
   depends_on 'xorg_proto'
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

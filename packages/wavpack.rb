@@ -2,7 +2,7 @@ require 'package'
 
 class Wavpack < Package
   description 'WavPack is a completely open audio compression format providing lossless, high-quality lossy, and a unique hybrid compression mode.'
-  homepage 'http://www.wavpack.com/'
+  homepage 'https://www.wavpack.com/'
   version '5.1.0'
   license 'BSD'
   compatibility 'all'

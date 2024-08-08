@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Sqlite < Autotools
   description 'SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.'
-  homepage 'http://www.sqlite.org/'
+  homepage 'https://www.sqlite.org/'
   version '3.46.0'
   license 'public-domain'
   compatibility 'all'
@@ -20,7 +20,7 @@ class Sqlite < Autotools
   depends_on 'glibc' # R
   depends_on 'libedit' # R
   depends_on 'readline' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'ncurses' # R
 
   configure_options '--enable-shared \

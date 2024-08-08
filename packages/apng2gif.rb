@@ -21,7 +21,6 @@ class Apng2gif < Package
   depends_on 'help2man' => :build
 
   def self.patch
-    system "sed -i 's:CC         = gcc:CC         = #{CREW_TARGET}-gcc:' Makefile"
     system "sed -i 's:CFLAGS     = -Wall -pedantic:CFLAGS     = -Wall -pedantic #{CREW_COMMON_FLAGS}:' Makefile"
     system "sed -i 's:CFLAGS_OPT = -O2:CFLAGS_OPT =:' Makefile"
     # zlib is unused, remove the header and library link

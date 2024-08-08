@@ -1,10 +1,10 @@
 require 'package'
-require_relative 'gcc_build'
+Package.load_package("#{__dir__}/gcc_build.rb")
 
 class Gcc_dev < Package
   description 'The GNU Compiler Collection: Everything (excepting libraries aside from libgccjit)'
   homepage Gcc_build.homepage
-  version "14.1.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
+  version "14.2.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
@@ -15,31 +15,32 @@ class Gcc_dev < Package
   case LIBC_VERSION
   when '2.23'
     binary_sha256({
-         i686: '68823c2d372559b5ba9e304529bd01f24ccf7c0a71a14824d048b2d323643257'
+         i686: '77a2ba61cc2529d8dff15e03f10c736fb807f6ce1c112fea71d6050f5005d43a'
     })
   when '2.27', '2.32', '2.33', '2.35'
     binary_sha256({
-      aarch64: 'f649c41a0d2fbfb5077068319d6dd8cca84b4047d409213b8f32623dff4e2bbd',
-       armv7l: 'f649c41a0d2fbfb5077068319d6dd8cca84b4047d409213b8f32623dff4e2bbd',
-       x86_64: 'fb235557844b33ada4de312d2f4709319ffe900c5b62a5fc4b54a06f517aa32c'
+      aarch64: '3e0d4ca3bc9488f04b22e7ea895fdd5af54b120d00b816cae0bb0c09c78c897b',
+       armv7l: '3e0d4ca3bc9488f04b22e7ea895fdd5af54b120d00b816cae0bb0c09c78c897b',
+       x86_64: 'd17ad49fd409e1bc1f850c4415832afac45f31cef999949aeb60b21611b66ddf'
     })
   when '2.37'
     binary_sha256({
-      aarch64: '258cd5814cee743dd20f58a9eba503d9ad825123c47b4ca53ad0fa86d50ce38b',
-       armv7l: '258cd5814cee743dd20f58a9eba503d9ad825123c47b4ca53ad0fa86d50ce38b',
-       x86_64: 'd287e0279881675ae404ebdb4e99bcdb89297263e257e4a2a4b0b6b4e9876059'
+      aarch64: 'b78b3c593c74cc1f88cfacc0c59c0312780aed0652b63366f7691dffb3c2383f',
+       armv7l: 'b78b3c593c74cc1f88cfacc0c59c0312780aed0652b63366f7691dffb3c2383f',
+       x86_64: '2f73cca16717175052cb2dbe47d26b2e8ca7f07c48f84b7ee78ee4efa4dda41d'
     })
   end
 
   depends_on 'gcc_build' => :build
   depends_on 'gcc_lib' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl' # R
   depends_on 'libssp' # L
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_shrink

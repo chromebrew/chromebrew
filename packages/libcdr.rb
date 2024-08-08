@@ -29,5 +29,5 @@ class Libcdr < Autotools
   depends_on 'lcms' # R
   depends_on 'librevenge' # R
   depends_on 'libwpg' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 end

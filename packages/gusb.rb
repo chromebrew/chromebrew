@@ -2,7 +2,7 @@ require 'package'
 
 class Gusb < Package
   description 'LibGUsb is a GObject wrapper for libusb1'
-  homepage 'https://www.openhub.net/p/gusb'
+  homepage 'https://openhub.net/p/gusb'
   version '0.3.5'
   license 'LGPL-2.1+'
   compatibility 'all'

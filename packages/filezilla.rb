@@ -40,7 +40,7 @@ class Filezilla < Package
   depends_on 'wxwidgets' # R
   depends_on 'xcb_util' => :build
   depends_on 'xdg_utils' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   print_source_bashrc
 

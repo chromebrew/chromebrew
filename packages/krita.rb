@@ -2,13 +2,13 @@ require 'package'
 
 class Krita < Package
   description 'A generic image manipulation/painting application in the style of Photoshop or GIMP.'
-  homepage 'https://krita.org/en'
-  version '5.2.2'
+  homepage 'https://krita.org/en/'
+  version '5.2.3'
   license 'GPL-3'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://download.kde.org/stable/krita/#{version}/krita-#{version}-x86_64.appimage"
-  source_sha256 'b69297bcbf916595c14e8585e2dc9fea35c992b416d721d3bdb5558de2405be0'
+  source_sha256 'c91ce1810931171c11054e2277c21efc97cf9d73dc39da1239f6dc1462d19c8b'
 
   depends_on 'gtk3'
   depends_on 'gdk_base'

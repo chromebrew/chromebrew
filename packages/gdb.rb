@@ -6,18 +6,18 @@ require 'buildsystems/autotools'
 class Gdb < Autotools
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version '14.2-py3.12'
+  version '15.1-gcc14-py3.12'
   license 'GPL3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gnu/gdb/gdb-14.2.tar.xz'
-  source_sha256 '2d4dd8061d8ded12b6c63f55e45344881e8226105f4d2a9b234040efa5ce7772'
+  source_url "https://ftpmirror.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
+  source_sha256 '38254eacd4572134bca9c5a5aa4d4ca564cbbd30c369d881f733fb6b903354f2'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2cc54b085cf44964eeb9e7659e149eca4fd46591a045d99dc0176b0f119b77eb',
-     armv7l: '2cc54b085cf44964eeb9e7659e149eca4fd46591a045d99dc0176b0f119b77eb',
-       i686: '66d38230ff86d7558ebeb66e9f2106a3e51c5d4456c5708acd30ef57481cf8e3',
-     x86_64: '3fe3456bd566d259f84c360ec77739fc519fc55abb354f0dc046d968060573ac'
+    aarch64: '32437749840bdb8001a61853f7092535b65a691e68626ced4187ab18ca4c0a86',
+     armv7l: '32437749840bdb8001a61853f7092535b65a691e68626ced4187ab18ca4c0a86',
+       i686: '931ad01906fb397904974c1df160866e08ca44fab46b35f403d744d5bb40b980',
+     x86_64: 'afbdb2d178c49ccdc9f638bbc4e73af2cfe22d7d0e41552996a2adf616624395'
   })
 
   depends_on 'binutils' # R
@@ -32,9 +32,10 @@ class Gdb < Autotools
   depends_on 'python3' # R
   depends_on 'readline' # R
   depends_on 'source_highlight' # R
+  depends_on 'texinfo' => :build
   depends_on 'xxhash' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   conflicts_ok # binutils conflicts

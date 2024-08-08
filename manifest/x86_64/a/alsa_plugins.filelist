@@ -21,6 +21,8 @@
 /usr/local/lib64/alsa-lib/libasound_module_ctl_pulse.so
 /usr/local/lib64/alsa-lib/libasound_module_pcm_a52.la
 /usr/local/lib64/alsa-lib/libasound_module_pcm_a52.so
+/usr/local/lib64/alsa-lib/libasound_module_pcm_aaf.la
+/usr/local/lib64/alsa-lib/libasound_module_pcm_aaf.so
 /usr/local/lib64/alsa-lib/libasound_module_pcm_jack.la
 /usr/local/lib64/alsa-lib/libasound_module_pcm_jack.so
 /usr/local/lib64/alsa-lib/libasound_module_pcm_oss.la

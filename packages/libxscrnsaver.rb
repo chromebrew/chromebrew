@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'libxss'
+Package.load_package("#{__dir__}/libxss.rb")
 
 class Libxscrnsaver < Package
   description Libxss.description

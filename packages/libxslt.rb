@@ -2,7 +2,7 @@ require 'package'
 
 class Libxslt < Package
   description 'Libxslt is the XSLT C library developed for the GNOME project.'
-  homepage 'http://xmlsoft.org/libxslt/'
+  homepage 'https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home'
   version '1.1.34'
   license 'MIT'
   compatibility 'all'
@@ -20,7 +20,7 @@ class Libxslt < Package
   depends_on 'docbook_xsl' => :build
   depends_on 'glibc' # R
   depends_on 'libgcrypt' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libxml2' # R
   depends_on 'py3_libxml2' => :build
 

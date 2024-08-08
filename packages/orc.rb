@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'gstreamer'
+Package.load_package("#{__dir__}/gstreamer.rb")
 
 class Orc < Package
   description 'Optimized Inner Loop Runtime Compiler. Bundled with gstreamer.'

@@ -2,7 +2,7 @@ require 'package'
 
 class Libvpx < Package
   description 'VP8/VP9 Codec SDK'
-  homepage 'http://www.webmproject.org/code/'
+  homepage 'https://www.webmproject.org/code/'
   version '1.13.1'
   license 'BSD'
   compatibility 'all'

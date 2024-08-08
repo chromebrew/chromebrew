@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Ciano < Meson
   description 'A multimedia file converter focused on simplicity.'
-  homepage 'https://robertsanseries.github.io/ciano'
+  homepage 'https://robertsanseries.github.io/ciano/'
   version '0.2.4'
   license 'GPL-3.0'
   compatibility 'x86_64 aarch64 armv7l'
@@ -30,10 +30,10 @@ class Ciano < Meson
   depends_on 'pango' # R
   depends_on 'vala'
 
-  meson_install_extras <<~EOF
+  meson_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s "#{CREW_PREFIX}/bin/com.github.robertsanseries.ciano", "#{CREW_DEST_PREFIX}/bin/ciano"
-  EOF
+  end
 
   def self.postinstall
     ExitMessage.add "\nType 'ciano' to get started.\n".lightblue

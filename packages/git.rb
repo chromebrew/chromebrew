@@ -3,18 +3,18 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.45.2' # Do not use @_ver here, it will break the installer.
+  version '2.46.0' # Do not use @_ver here, it will break the installer.
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.45.2.tar.xz'
-  source_sha256 '51bfe87eb1c02fed1484051875365eeab229831d30d0cec5d89a14f9e40e9adb'
+  source_url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-#{version}.tar.xz"
+  source_sha256 '7f123462a28b7ca3ebe2607485f7168554c2b10dfc155c7ec46300666ac27f95'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fe8db63afdf238d52c85247e02f96c4ec5ce87f3261d5859af50cb0724ccbd56',
-     armv7l: 'fe8db63afdf238d52c85247e02f96c4ec5ce87f3261d5859af50cb0724ccbd56',
-       i686: '12d9fcecf4ed4d8e86b91a058a60d2cbf2f75585cfc24ffd1655042d132c138d',
-     x86_64: '81ce638926071604d8559b0d8cd02ce90c4a75e7a7c61d0033e7b8e602b82e91'
+    aarch64: 'e8284efe6c433054d58c2c1a0e5a512c2a3a3020be0ce803e7007c32bebaf572',
+     armv7l: 'e8284efe6c433054d58c2c1a0e5a512c2a3a3020be0ce803e7007c32bebaf572',
+       i686: 'e1f3e6920899ffaab14b69504cfd67be1ab8df43b99702c3bf7a4355ad21cdfe',
+     x86_64: 'dc957c5b49a5880526248fe9c4a54d17ab158057802b85c17c6458cb78c68c66'
   })
 
   depends_on 'ca_certificates' => :build
@@ -23,7 +23,7 @@ class Git < Package
   depends_on 'glibc' # R
   depends_on 'libunistring' # R
   depends_on 'pcre2' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   print_source_bashrc
 

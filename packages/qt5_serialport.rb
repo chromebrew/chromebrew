@@ -3,17 +3,17 @@ require 'buildsystems/qmake'
 class Qt5_serialport < Qmake
   description 'Qt Serial Port'
   homepage 'https://www.qt.io/'
-  version '5.15.11-3380465'
+  version 'kde-5.15.14-34c19c6'
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtserialport.git'
-  git_hashtag '3380465d5d4977326616c5e57789a81681be650e' # from kde/5.15 branch
+  git_hashtag '34c19c6441cd440dc65b59ae7670eadf099d51f8'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'eb2c1d0a8d43064df1d9fcde90fa5391a4623b6ccd6c59eac009ddc951af6d9e',
-     armv7l: 'eb2c1d0a8d43064df1d9fcde90fa5391a4623b6ccd6c59eac009ddc951af6d9e',
-     x86_64: 'f0044c04788d6de615d606a812a133b9ed7e6e7361ae1e8a3ddbce7a066e7216'
+    aarch64: '3d00882c466b0be4caaf8518107f3d89dd8ef7cd57c37c9462a2f14180a922a8',
+     armv7l: '3d00882c466b0be4caaf8518107f3d89dd8ef7cd57c37c9462a2f14180a922a8',
+     x86_64: 'b841d5f05caaeacb4cec4d66a678732aa6f743a4519ddb820227e0262ed988e3'
   })
 
   depends_on 'eudev' # R

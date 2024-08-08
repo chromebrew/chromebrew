@@ -3,12 +3,12 @@ require 'package'
 class Signal_desktop < Package
   description 'Private Messenger for Windows, Mac, and Linux'
   homepage 'https://signal.org/'
-  version '7.15.0'
+  version '7.19.0'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://updates.signal.org/desktop/apt/pool/s/signal-desktop/signal-desktop_#{version}_amd64.deb"
-  source_sha256 '520595c4b3aaba5fd7b0cfbed426a2efeb248c1c907c60cef200550c936ffedc'
+  source_sha256 '94ef0638273f2f858ef9a3d1eaa4a7dc7425a9e081eade6958010d45739385d2'
 
   no_compile_needed
   no_shrink
@@ -34,6 +34,6 @@ class Signal_desktop < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'signal-desktop' to get started.\n".lightblue
+    ExitMessage.add "\nType 'signal-desktop' to get started.\n"
   end
 end

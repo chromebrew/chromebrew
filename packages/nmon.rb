@@ -2,7 +2,7 @@ require 'package'
 
 class Nmon < Package
   description "nmon is short for Nigel's performance MONitor for Linux"
-  homepage 'http://nmon.sourceforge.net/pmwiki.php'
+  homepage 'https://nmon.sourceforge.io/pmwiki.php'
   version '16g'
   license 'GPL-3'
   compatibility 'all'

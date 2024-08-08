@@ -2,25 +2,27 @@ require 'package'
 
 class Quakespasm < Package
   description 'A modern, cross-platform Quake game engine based on FitzQuake.'
-  homepage 'http://quakespasm.sourceforge.net'
-  version '0.93.1-1'
+  homepage 'https://quakespasm.sourceforge.net/'
+  version '0.96.3'
   license 'GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-0.93.1.tgz'
-  source_sha256 'ed3ee6ba7e3d9454c7620757cc166e13d892f1167c7b74bef4f067e350d835ae'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/sezero/quakespasm.git'
+  git_hashtag "quakespasm-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a75901d94ad4475d297ddd09ec4f32b75c7b6d1120f5fdfb5d18e068d7517824',
-     armv7l: 'a75901d94ad4475d297ddd09ec4f32b75c7b6d1120f5fdfb5d18e068d7517824',
-     x86_64: '16afe97af889bd2c5c4f8e4c835fd044c3313f76e91bb584f27a44740c454e17'
+    aarch64: 'e46794e2cb5bfef0891dda236c6e75c55618f2c45ed3c40ef5a3fd95b042ebeb',
+     armv7l: 'e46794e2cb5bfef0891dda236c6e75c55618f2c45ed3c40ef5a3fd95b042ebeb',
+     x86_64: 'bef7e500ee5a3aaf21e943740987f88855ca07daad51b652f50141d3a423bd4f'
   })
 
+  depends_on 'freeglut'
   depends_on 'libglu'
+  depends_on 'libglvnd' # R
+  depends_on 'libmad'
+  depends_on 'libogg' # R
   depends_on 'libsdl'
   depends_on 'libvorbis'
-  depends_on 'libmad'
-  depends_on 'freeglut'
 
   def self.build
     Dir.chdir('Quake') do

@@ -2,7 +2,7 @@ require 'package'
 
 class Libxft < Package
   description 'X.org X FreeType interface library'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '2.3.7'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
@@ -20,7 +20,7 @@ class Libxft < Package
   depends_on 'harfbuzz' # R
   depends_on 'libx11' # R
   depends_on 'libxrender' # R
-  depends_on 'util_macros' => :build
+  depends_on 'xorg_macros' => :build
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

@@ -2,7 +2,7 @@ require 'package'
 
 class Musl_zstd < Package
   description 'Zstandard - Fast real-time compression algorithm'
-  homepage 'http://www.zstd.net'
+  homepage 'https://facebook.github.io/zstd/'
   version '1.5.4'
   license 'BSD or GPL-2'
   compatibility 'all'

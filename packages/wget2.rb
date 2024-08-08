@@ -31,7 +31,7 @@ class Wget2 < Autotools
   depends_on 'pcre2' # R
   depends_on 'util_linux' => :build
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   configure_options '--enable-year2038 \

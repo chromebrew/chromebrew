@@ -2,11 +2,11 @@ require 'package'
 
 class Mpfr < Package
   description 'The MPFR library is a C library for multiple-precision floating-point computations with correct rounding.'
-  homepage 'http://www.mpfr.org/'
+  homepage 'https://www.mpfr.org/'
   version '4.1.0'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'http://www.mpfr.org/mpfr-current/mpfr-4.1.0.tar.xz'
+  source_url 'https://www.mpfr.org/mpfr-current/mpfr-4.1.0.tar.xz'
   source_sha256 '0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f'
   binary_compression 'tar.xz'
 

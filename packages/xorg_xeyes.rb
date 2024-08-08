@@ -5,7 +5,7 @@ require 'package'
 
 class Xorg_xeyes < Package
   description 'Follow the mouse/SHAPE extension X demo'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.2.0'
   license 'X11'
   compatibility 'x86_64 aarch64 armv7l'
@@ -25,7 +25,7 @@ class Xorg_xeyes < Package
   depends_on 'libxmu'
   depends_on 'libxrender'
   depends_on 'libxi'
-  depends_on 'util_macros' => :build
+  depends_on 'xorg_macros' => :build
   depends_on 'libxfixes' => :build
   depends_on 'glibc' # R
   depends_on 'libxcb' # R

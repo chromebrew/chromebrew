@@ -30,10 +30,14 @@ pkg_update_arr = [
   { pkg_name: 'aprutil', pkg_rename: 'apr_util', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'arpscan', pkg_rename: 'arp_scan', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'aws', pkg_rename: 'aws_cli', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'aws_cli', pkg_rename: 'awscli', pkg_deprecated: nil, comments: 'Renamed to match pip package name.' },
   { pkg_name: 'btrfsprogs', pkg_rename: 'btrfs_progs', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'bz2', pkg_rename: 'bzip2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'bz3', pkg_rename: 'bzip3', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'chrome', pkg_rename: 'google_chrome', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'codium', pkg_rename: 'vscodium', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'dstat', pkg_rename: 'py3_dool', pkg_deprecated: nil, comments: 'Following upstream rename.' },
+  { pkg_name: 'epydoc', pkg_rename: nil, pkg_deprecated: true, comments: 'Abandoned upstream, only supports Python 2.' },
   { pkg_name: 'ffcall', pkg_rename: 'libffcall', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'git_prompt', pkg_rename: nil, pkg_deprecated: true, comments: 'Integrated into git package.' },
   { pkg_name: 'gnome_session', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd.' },
@@ -41,9 +45,13 @@ pkg_update_arr = [
   { pkg_name: 'gnome_shell', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd.' },
   { pkg_name: 'gnome_tweaks', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd in dep package gnome_settings_daemon.' },
   { pkg_name: 'ilmbase', pkg_rename: nil, pkg_deprecated: true, comments: 'Included in openexr.' },
+  { pkg_name: 'imagemagick6', pkg_rename: nil, pkg_deprecated: true, comments: nil },
+  { pkg_name: 'imagemagick', pkg_rename: nil, pkg_deprecated: true, comments: nil },
   { pkg_name: 'js91', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced by newer versions of js.' },
   { pkg_name: 'jsonc', pkg_rename: 'json_c', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'libaudiofile', pkg_rename: nil, pkg_deprecated: true, comments: 'Inactive upstream with applicable CVEs' },
   { pkg_name: 'libcurl', pkg_rename: 'curl', pkg_deprecated: nil, comments: nil },
+  { pkg_name: 'libgpgerror', pkg_rename: 'libgpg_error', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libjpeg', pkg_rename: 'libjpeg_turbo', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libmfx', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture' },
   { pkg_name: 'linter', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced with py3_pre_commit.' },
@@ -74,7 +82,9 @@ pkg_update_arr = [
   { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'ruby_debug', pkg_rename: nil, pkg_deprecated: true, comments: 'Integrated into ruby package.' },
-  { pkg_name: 'wget', pkg_rename: 'wget2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' }
+  { pkg_name: 'util_macros', pkg_rename: 'xorg_macros', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'wget', pkg_rename: 'wget2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'zlibpkg', pkg_rename: 'zlib', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' }
 ]
 
 pkg_update_arr.each do |pkg|

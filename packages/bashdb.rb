@@ -1,53 +1,48 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Bashdb < Package
+class Bashdb < Autotools
   description 'The Bash Debugger Project is a source-code debugger for bash that follows the gdb command syntax.'
   homepage 'https://bashdb.sourceforge.net/'
-  version '5.0-1.1.2-abac'
+  version '5.0-1.1.2-1f1118d'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'SKIP'
-  binary_compression 'tar.xz'
+  source_url 'https://git.code.sf.net/p/bashdb/code'
+  git_hashtag '1f1118dd73f3d3d450d2b644b5b871d545ea0473'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e94ee67c7eb1e025301f2ab16f5588a1903816fccb6b965e83e28e8a4e13c146',
-     armv7l: 'e94ee67c7eb1e025301f2ab16f5588a1903816fccb6b965e83e28e8a4e13c146',
-       i686: '2642a9fcf547fda5b85ce5472f2637f897b92e162b0955e6113080047895f99e',
-     x86_64: '83b0ce54ea38ea941dba8bdbb5ef5f41884fa6abb5faaed5eae00064989f5ae3'
+    aarch64: 'ed1f102778d653fca7f36933c0e7b0be6170c23b356613fccc3b4b772f134ed5',
+     armv7l: 'ed1f102778d653fca7f36933c0e7b0be6170c23b356613fccc3b4b772f134ed5',
+       i686: '70302e22dd1b703ed550c3a15366449f7a9e42b7c62a5cf370e598bf6dc64a17',
+     x86_64: '468e44a71a027b55dba4f996b5f4b7e548282933d30356f55a3c7ee1b89cdbcd'
   })
+
+  def self.patch
+    # There is no way to programatically get the plaintext diff from a sourceforge pr, so we embed https://sourceforge.net/p/bashdb/code/merge-requests/11/ here.
+    File.write '11.patch', <<~EOF
+      diff --git a/configure.ac b/configure.ac
+      index 71cf2b7..eb59941 100644
+      --- a/configure.ac
+      +++ b/configure.ac
+      @@ -107,7 +107,7 @@ bash_version=`$SH_PROG --version`
+       [bash_minor=`$SH_PROG -c 'echo ${BASH_VERSINFO[1]}'`]
+       bash_5_or_greater=no
+       case "${bash_major}.${bash_minor}" in
+      -  'OK_BASH_VERS' | '5.0' | '5.1')
+      +  'OK_BASH_VERS' | '5.0' | '5.1' | '5.2')
+           bash_5_or_greater=yes
+           ;;
+         *)
+    EOF
+    system 'git apply 11.patch'
+  end
 
   depends_on 'bash'
   depends_on 'texinfo' => :build
 
-  def self.build
-    # No releases yet for Bash 5.1 compatible bashdb, so need git version.
-    # Turn off git warnings.
-    system 'git config --global advice.detachedHead false'
-    system 'git config --global init.defaultBranch main'
-    @git_dir = 'bashdb_git'
-    @git_hash = 'abac8ee0db03a62d9dc360640e9e5b9648a8fc12'
-    @git_url = 'https://git.code.sf.net/p/bashdb/code'
-    FileUtils.rm_rf(@git_dir)
-    FileUtils.mkdir_p(@git_dir)
-    Dir.chdir @git_dir do
-      system 'git init'
-      system "git remote add origin #{@git_url}"
-      system "git fetch --depth 1 origin #{@git_hash}"
-      system 'git checkout FETCH_HEAD'
-      system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-      system './configure --help'
-      system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-        LDFLAGS='-flto=auto' \
-        ./configure \
-        #{CREW_OPTIONS} \
-        --with-bash=#{CREW_PREFIX}/bin/bash \
-        --disable-dependency-tracking"
-    end
-  end
-
-  def self.install
-    Dir.chdir @git_dir do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  # Setting --with-dbg-main works, but looking at configure.ac reveals that collaboration with upstream is probably required
+  # i.e. why does setting a variable described as "location of dbg-main.sh" to the location of bashdb-main.inc fix things?
+  # It seems like DBGR_MAIN is confused with BASHDB_MAIN, among other things.
+  configure_options "--with-dbg-main=#{CREW_PREFIX}/share/bashdb-main.inc --with-bash=#{CREW_PREFIX}/bin/bash"
+  run_tests
 end

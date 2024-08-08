@@ -2,7 +2,7 @@ require 'package'
 
 class Llvm17_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
-  homepage 'http://llvm.org/'
+  homepage 'https://llvm.org/'
   version '17.0.6'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -30,7 +30,7 @@ class Llvm17_build < Package
   depends_on 'py3_pygments' => :build
   depends_on 'py3_pyyaml' => :build
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_env_options
@@ -208,7 +208,7 @@ class Llvm17_build < Package
     puts 'To avoid the repeated use of switch options,'.lightblue
     puts "try the wrapper scripts 'clc' or 'clc++'.".lightblue
     puts
-    puts 'For more information, see http://llvm.org/pubs/2008-10-04-ACAT-LLVM-Intro.pdf'.lightblue
+    puts 'For more information, see https://llvm.org/pubs/2008-10-04-ACAT-LLVM-Intro.pdf'.lightblue
     puts
   end
 end

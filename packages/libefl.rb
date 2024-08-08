@@ -4,7 +4,7 @@ require 'package'
 
 class Libefl < Package
   description 'Enlightenment Foundation Libraries'
-  homepage 'https://enlightenment.org'
+  homepage 'https://www.enlightenment.org/'
   version '1.26.3'
   license 'BSD, BSD-2, BSD-3, LGPL-2.1, GPL-2, freetype, MIT, Apache-2.0' # Needs verifiying
   compatibility 'x86_64 aarch64 armv7l'
@@ -75,7 +75,7 @@ class Libefl < Package
   depends_on 'libxkbcommon' # R
   depends_on 'libxtst' # R
   depends_on 'util_linux' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

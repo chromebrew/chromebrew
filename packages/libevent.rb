@@ -2,7 +2,7 @@ require 'buildsystems/cmake'
 
 class Libevent < CMake
   description 'The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached.'
-  homepage 'http://libevent.org/'
+  homepage 'https://libevent.org/'
   version '2.2-64decd4'
   license 'BSD'
   compatibility 'all'

@@ -30,6 +30,6 @@ class Python < Package
       puts "Python install options being used: #{PY3_INSTALLER_OPTIONS}".orange
       system "MAKEFLAGS=-j#{CREW_NPROC} python3 -m installer #{PY3_INSTALLER_OPTIONS}"
     end
-    eval @python_install_extras if @python_install_extras
+    @python_install_extras&.call
   end
 end

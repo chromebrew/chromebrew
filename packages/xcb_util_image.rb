@@ -2,7 +2,7 @@ require 'package'
 
 class Xcb_util_image < Package
   description 'The xcb-util-image package provides additional extensions to the XCB library.'
-  homepage 'http://xcb.freedesktop.org'
+  homepage 'https://xcb.freedesktop.org/'
   version '0.4.0-1'
   compatibility 'all'
   license 'MIT-with-advertising'

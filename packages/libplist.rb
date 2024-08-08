@@ -2,7 +2,7 @@ require 'package'
 
 class Libplist < Package
   description 'A library to handle Apple Property List format'
-  homepage 'http://www.libimobiledevice.org/'
+  homepage 'https://libimobiledevice.org/'
   version '2.2.0'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'

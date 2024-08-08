@@ -17,11 +17,11 @@ class Py3_devedeng < Python
 
   no_compile_needed
 
-  python_install_extras <<~EOF
+  python_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s "#{CREW_PREFIX}/bin/devede_ng.py", "#{CREW_DEST_PREFIX}/bin/devede"
     FileUtils.ln_s "#{CREW_PREFIX}/bin/copy_files_verbose.py", "#{CREW_DEST_PREFIX}/bin/copy_files_verbose"
-  EOF
+  end
 
   def self.postinstall
     ExitMessage.add "Type 'devede' to get started.".lightblue

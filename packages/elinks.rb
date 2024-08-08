@@ -27,7 +27,7 @@ class Elinks < Meson
   depends_on 'lzip' => :build
   depends_on 'openssl' # R
   depends_on 'tre' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   meson_options '-Dcgi=true \
     -D256-colors=true \

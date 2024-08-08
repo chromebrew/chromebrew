@@ -17,7 +17,7 @@ class Libassuan < Package
      x86_64: '9db3d46f74bf1446748f29165a163ee2c87bfcc6b7074b060fb8221146be85ec'
   })
 
-  depends_on 'libgpgerror'
+  depends_on 'libgpg_error'
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

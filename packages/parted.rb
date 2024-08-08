@@ -2,7 +2,7 @@ require 'package'
 
 class Parted < Package
   description 'Create, destroy, resize, check, copy partitions and file systems.'
-  homepage 'https://www.gnu.org/software/parted'
+  homepage 'https://www.gnu.org/software/parted/'
   version '3.6'
   license 'GPL-3'
   compatibility 'all'

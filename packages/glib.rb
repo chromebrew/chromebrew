@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Glib < Meson
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
-  homepage 'https://developer.gnome.org/glib'
+  homepage 'https://docs.gtk.org/glib/'
   version '2.80.0'
   license 'LGPL-2.1'
   compatibility 'all'
@@ -25,7 +25,7 @@ class Glib < Meson
   depends_on 'py3_pygments' => :build
   depends_on 'shared_mime_info' # L
   depends_on 'util_linux' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
   no_strip if %w[aarch64 armv7l].include? ARCH

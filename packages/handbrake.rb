@@ -57,7 +57,7 @@ class Handbrake < Package
   depends_on 'wayland_protocols' => :build
   depends_on 'xcb_util' => :build
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_lto
 

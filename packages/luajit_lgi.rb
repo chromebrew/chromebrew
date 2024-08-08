@@ -5,7 +5,7 @@ require 'package'
 
 class Luajit_lgi < Package
   description 'Lua bindings for gnome/gobject using gobject-introspection library'
-  homepage 'https://github.com/pavouk/lgi'
+  homepage 'https://github.com/lgi-devs/lgi'
   version '0.9.2'
   license 'custom:MIT'
   compatibility 'x86_64 aarch64 armv7l'

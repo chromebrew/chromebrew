@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version '24.1.2-llvm18'
+  version '24.1.5-llvm18'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -11,9 +11,9 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '64c62cdadc421d21d76e236179f8fb27ec87a2d945ee926cad39946d5de19fa4',
-     armv7l: '64c62cdadc421d21d76e236179f8fb27ec87a2d945ee926cad39946d5de19fa4',
-     x86_64: '0345ab430fb19e076b276a89e23fb9b155b4fb4f634897a754fa53320f195f73'
+    aarch64: 'f3148e24427181e0c0a9e1e043ff2cd20927d1b391abd625fa4a0108ebc1e717',
+     armv7l: 'f3148e24427181e0c0a9e1e043ff2cd20927d1b391abd625fa4a0108ebc1e717',
+     x86_64: 'e16ce6731e7da1d3e95013886250d149322703a796617490c31be19b9d2dda44'
   })
 
   depends_on 'elfutils' # R
@@ -56,7 +56,7 @@ class Mesa < Meson
   depends_on 'wayland_protocols' => :build
   depends_on 'wayland' # R
   depends_on 'xcb_util_keysyms' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \

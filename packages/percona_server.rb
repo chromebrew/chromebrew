@@ -2,7 +2,7 @@ require 'package'
 
 class Percona_server < Package
   description 'Percona Server for MySQL® is a free, fully compatible, enhanced, open source drop-in replacement for MySQL that provides superior performance, scalability and instrumentation.'
-  homepage 'https://www.percona.com/software/mysql-database/percona-server'
+  homepage 'https://www.percona.com/mysql/software/percona-server-for-mysql'
   version '5.7.20-19'
   license 'GPL-2'
   compatibility 'all'

@@ -1,31 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Font_bitstream_type1 < Package
+class Font_bitstream_type1 < Autotools
   description 'Standard Type1 Bitstream PCF fonts'
-  homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.0.3'
+  homepage 'https://gitlab.freedesktop.org/xorg/font/bitstream-type1'
+  version '1.0.4'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://www.x.org/releases/individual/font/font-bitstream-type1-1.0.3.tar.bz2'
-  source_sha256 'c6ea0569adad2c577f140328dc3302e729cb1b1ea90cd0025caf380625f8a688'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.freedesktop.org/xorg/font/bitstream-type1.git'
+  git_hashtag "font-bitstream-type1-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a5aeadbd5238efa090053c1adef4b0a07dc95c0d819ce94b978ea5df8bdb9605',
-     armv7l: 'a5aeadbd5238efa090053c1adef4b0a07dc95c0d819ce94b978ea5df8bdb9605',
-     x86_64: '90f9e02e3631424df3ab89b4b2bcb69e3825654e4eb4538ceac382da9a83fa60'
+    aarch64: 'd6b810f366388122a659b115b8b04fe71bf9695ee6677148dfdec9e0e26c63d5',
+     armv7l: 'd6b810f366388122a659b115b8b04fe71bf9695ee6677148dfdec9e0e26c63d5',
+     x86_64: '961bd01a0be8a44a121c433b9398be56637c1e1685096ac30d880140ec484fc8'
   })
 
   depends_on 'bdftopcf'
   depends_on 'font_util'
   depends_on 'mkfontscale'
-
-  def self.build
-    system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  depends_on 'xorg_macros' => :build
 end

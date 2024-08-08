@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.49.3'
+CREW_VERSION = '1.49.9'
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -10,10 +10,17 @@ KERN_ARCH = Etc.uname[:machine]
 # Read and parse processor information from /proc/cpuinfo
 CPUINFO = File.readlines('/proc/cpuinfo').map { |line| line.chomp.split(/\t+: /) if line.include?("\t") }.compact.to_h
 
-# We report aarch64 machines as armv7l for now, as we treat them as if they were armv7l.
+# We report aarch64 & armv8l machines as armv7l for now, as we treat
+# them as if they were armv7l.
 # When we have proper aarch64 support, remove this.
 # Also, we allow ARCH to be changed via the ARCH environment variable.
-ARCH = KERN_ARCH.eql?('aarch64') ? 'armv7l' : ENV.fetch('ARCH', KERN_ARCH)
+ARCH = ENV.fetch('ARCH') do |_name|
+  case KERN_ARCH
+  when 'aarch64', 'armv8l'
+    'armv7l'
+  else KERN_ARCH
+  end
+end
 
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
@@ -33,7 +40,7 @@ else
   HOME = File.join(CREW_PREFIX, Dir.home)
 end
 
-CREW_ESSENTIAL_PACKAGES = %w[gcc_lib glibc gmp ruby zlibpkg zstd]
+CREW_ESSENTIAL_PACKAGES = %w[gcc_lib glibc gmp ruby zlib zstd]
 
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', '0').eql?('1')
 
@@ -210,9 +217,6 @@ CREW_OPTIONS = <<~OPT.chomp
   --libdir=#{CREW_LIB_PREFIX} \
   --mandir=#{CREW_MAN_PREFIX} \
   --disable-dependency-tracking \
-  --build=#{CREW_TARGET} \
-  --host=#{CREW_TARGET} \
-  --target=#{CREW_TARGET} \
   --program-prefix='' \
   --program-suffix=''
 OPT

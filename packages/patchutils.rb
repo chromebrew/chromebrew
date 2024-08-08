@@ -2,7 +2,7 @@ require 'package'
 
 class Patchutils < Package
   description 'Patchutils is a small collection of programs that operate on patch files.'
-  homepage 'http://cyberelk.net/tim/patchutils/'
+  homepage 'http://cyberelk.net/tim/software/patchutils/'
   version '0.3.4'
   license 'GPL-2'
   compatibility 'all'

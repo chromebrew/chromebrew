@@ -2,7 +2,7 @@ require 'package'
 
 class Xinit < Package
   description 'The xinit package contains a usable script to start the xserver.'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.4.2'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'

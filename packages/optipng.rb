@@ -2,7 +2,7 @@ require 'package'
 
 class Optipng < Package
   description 'OptiPNG is a PNG optimizer that recompresses image files to a smaller size, without losing any information.'
-  homepage 'http://optipng.sourceforge.net/'
+  homepage 'https://optipng.sourceforge.net/'
   version '0.7.7'
   license 'ZLIB'
   compatibility 'all'

@@ -2,7 +2,7 @@ require 'package'
 
 class Selenium_server_standalone < Package
   description 'Selenium is a set of different software tools each with a different approach to supporting test automation.'
-  homepage 'https://www.seleniumhq.org/'
+  homepage 'https://www.selenium.dev/'
   version '3.11.0'
   license 'Apache-2.0'
   compatibility 'all'

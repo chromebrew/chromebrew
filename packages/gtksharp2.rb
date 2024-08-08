@@ -2,7 +2,7 @@ require 'package'
 
 class Gtksharp2 < Package
   description 'GTK2 bindings for mono'
-  homepage 'https://www.mono-project.com/GtkSharp'
+  homepage 'https://www.mono-project.com/GtkSharp/'
   version '2.12.45'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'

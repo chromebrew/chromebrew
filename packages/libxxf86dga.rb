@@ -2,7 +2,7 @@ require 'package'
 
 class Libxxf86dga < Package
   description 'X.org the client library for the XFree86-DGA extension'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.1.6'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'

@@ -2,7 +2,7 @@ require 'package'
 
 class Libxrandr < Package
   description 'X.org X Resize, Rotate and Reflection extension library'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   @_ver = '1.5.2'
   version "#{@_ver}-2"
   license 'MIT'
@@ -19,7 +19,7 @@ class Libxrandr < Package
 
   depends_on 'libxext'
   depends_on 'libxrender'
-  depends_on 'util_macros' => :build
+  depends_on 'xorg_macros' => :build
   depends_on 'xorg_proto' => :build
   depends_on 'glibc' # R
   depends_on 'libbsd' # R

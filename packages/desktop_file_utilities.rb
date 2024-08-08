@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'desktop_file_utils'
+Package.load_package("#{__dir__}/desktop_file_utils.rb")
 
 class Desktop_file_utilities < Package
   description Desktop_file_utils.description

@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Libbsd < Autotools
   description 'This library provides useful functions commonly found on BSD systems, and lacking on others like GNU systems, thus making it easier to port projects with strong BSD origins, without needing to embed the same code over and over again on each project.'
-  homepage 'https://libbsd.freedesktop.org/wiki'
+  homepage 'https://libbsd.freedesktop.org/wiki/'
   version '0.11.8'
   license 'BSD, BSD-2, BSD-4, ISC'
   compatibility 'all'

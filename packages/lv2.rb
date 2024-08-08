@@ -5,7 +5,7 @@ require 'buildsystems/meson'
 
 class Lv2 < Meson
   description 'Plugin standard for audio systems'
-  homepage 'http://lv2plug.in/'
+  homepage 'https://lv2plug.in/'
   version '1.18.10'
   license 'ISC License'
   compatibility 'all'

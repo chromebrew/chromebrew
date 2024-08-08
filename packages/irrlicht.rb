@@ -2,7 +2,7 @@ require 'package'
 
 class Irrlicht < Package
   description 'An open source realtime 3D engine written in C++ — Libraries and headers'
-  homepage 'http://irrlicht.sourceforge.net/'
+  homepage 'https://irrlicht.sourceforge.io/'
   version '1.8.5'
   license 'ZLIB'
   compatibility 'x86_64 aarch64 armv7l'
@@ -26,7 +26,7 @@ class Irrlicht < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'mesa' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system 'curl -#LO https://dev.gentoo.org/~mgorny/dist/irrlicht-1.8.4-patchset.tar.bz2'

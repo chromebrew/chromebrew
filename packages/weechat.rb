@@ -2,7 +2,7 @@ require 'package'
 
 class Weechat < Package
   description 'WeeChat is a fast, light and extensible chat client.'
-  homepage 'http://www.weechat.org/'
+  homepage 'https://weechat.org/'
   version '2.1'
   license 'GPL-3'
   compatibility 'all'

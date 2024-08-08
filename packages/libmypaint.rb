@@ -2,7 +2,7 @@ require 'package'
 
 class Libmypaint < Package
   description 'Libmypaint is MyPaint\'s brushstroke rendering code, in a form that can be used by other programs.'
-  homepage 'http://mypaint.org/'
+  homepage 'https://mypaint.app/'
   @_ver = '1.6.1'
   version "#{@_ver}-1"
   license 'ISC'

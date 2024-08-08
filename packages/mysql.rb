@@ -24,7 +24,7 @@ class Mysql < CMake
   depends_on 'protobuf'
   depends_on 'rapidjson'
   depends_on 'rpcsvc_proto'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
   depends_on 'zstd'
   depends_on 'gcc_lib' # R
   depends_on 'glibc_lib' # R

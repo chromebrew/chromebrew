@@ -119,7 +119,7 @@ class Gstreamer < Meson
   depends_on 'wavpack' # R
   depends_on 'wayland' # R
   depends_on 'webrtc_audio_processing' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zvbi' # R
 
   gnome

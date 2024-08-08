@@ -2,7 +2,7 @@ require 'package'
 
 class Rendercheck < Package
   description 'rendercheck is a program to test a Render extension implementation against separate calculations of expected output.'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.5'
   license 'MIT'
   compatibility 'all'

@@ -1,6 +1,6 @@
 require 'package'
-require_relative 'glibmm_2_4'
-require_relative 'glibmm_2_68'
+Package.load_package("#{__dir__}/glibmm_2_4.rb")
+Package.load_package("#{__dir__}/glibmm_2_68.rb")
 
 class Glibmm < Package
   description Glibmm_2_4.description

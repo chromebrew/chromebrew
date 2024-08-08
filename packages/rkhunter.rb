@@ -2,7 +2,7 @@ require 'package'
 
 class Rkhunter < Package
   description 'Rootkit Hunter, security monitoring and analyzing tool for POSIX compliant systems.'
-  homepage 'http://rkhunter.sourceforge.net/'
+  homepage 'https://rkhunter.sourceforge.net/'
   version '1.4.6-1'
   license 'GPL-2'
   compatibility 'all'

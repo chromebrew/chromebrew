@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Libsm < Autotools
   description 'X.org X Session Management Library'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.2.4-5edd20b'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'

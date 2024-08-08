@@ -2,7 +2,7 @@ require 'package'
 
 class Intel_media_sdk < Package
   description 'API to access hardware-accelerated video on Intel Gen graphics hardware platforms'
-  homepage 'https://software.intel.com/en-us/media-sdk/'
+  homepage 'https://www.intel.com/content/www/us/en/developer/articles/tool/media-sdk.html'
   version '20.5.1'
   license 'MIT'
   compatibility 'x86_64'

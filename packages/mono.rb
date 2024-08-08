@@ -2,7 +2,7 @@ require 'package'
 
 class Mono < Package
   description 'Mono is a software platform designed to allow developers to easily create cross platform applications part of the .NET Foundation.'
-  homepage 'http://www.mono-project.com/'
+  homepage 'https://www.mono-project.com/'
   version '6.12.0.122'
   license 'MIT, LGPL-2.1, GPL-2, BSD-4, NPL-1.1, Ms-PL, GPL-3-with-linking-exception and IDPL'
   compatibility 'x86_64 aarch64 armv7l'

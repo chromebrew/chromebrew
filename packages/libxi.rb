@@ -2,7 +2,7 @@ require 'package'
 
 class Libxi < Package
   description 'X.org libXi Client library for XInput'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '1.7.10'
   license 'MIT and custom'
   compatibility 'x86_64 aarch64 armv7l'

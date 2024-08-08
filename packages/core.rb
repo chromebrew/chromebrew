@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '2.4'
+  version '2.5'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -66,6 +66,7 @@ class Core < Package
   depends_on 'nettle'
   depends_on 'openldap'
   depends_on 'openssl'
+  depends_on 'patchelf'
   depends_on 'p11kit'
   depends_on 'pcre'
   depends_on 'pcre2'
@@ -83,6 +84,6 @@ class Core < Package
   depends_on 'xzutils'
   depends_on 'xxhash'
   depends_on 'zip'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
   depends_on 'zstd'
 end

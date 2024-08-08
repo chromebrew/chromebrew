@@ -2,9 +2,6 @@
 /usr/local/bin/pkcheck
 /usr/local/bin/pkexec
 /usr/local/bin/pkttyagent
-/usr/local/etc/elogind/polkit.service
-/usr/local/etc/pam.d/polkit-1
-/usr/local/etc/polkit-1/rules.d/50-default.rules
 /usr/local/include/polkit-1/polkit/polkit.h
 /usr/local/include/polkit-1/polkit/polkitactiondescription.h
 /usr/local/include/polkit-1/polkit/polkitauthority.h
@@ -33,6 +30,7 @@
 /usr/local/include/polkit-1/polkitagent/polkitagentsession.h
 /usr/local/include/polkit-1/polkitagent/polkitagenttextlistener.h
 /usr/local/include/polkit-1/polkitagent/polkitagenttypes.h
+/usr/local/lib/pam.d/polkit-1
 /usr/local/lib/polkit-1/polkit-agent-helper-1
 /usr/local/lib/polkit-1/polkitd
 /usr/local/lib64/girepository-1.0/Polkit-1.0.typelib
@@ -54,15 +52,19 @@
 /usr/local/share/locale/cs/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/da/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/de/LC_MESSAGES/polkit-1.mo
+/usr/local/share/locale/hi/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/hr/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/hu/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/id/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/it/LC_MESSAGES/polkit-1.mo
+/usr/local/share/locale/ka/LC_MESSAGES/polkit-1.mo
+/usr/local/share/locale/nl/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/nn/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/pl/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/pt/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/ro/LC_MESSAGES/polkit-1.mo
+/usr/local/share/locale/ru/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/sk/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/sv/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/tr/LC_MESSAGES/polkit-1.mo
@@ -70,3 +72,5 @@
 /usr/local/share/locale/zh_CN/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/polkit-1.mo
 /usr/local/share/polkit-1/actions/org.freedesktop.policykit.policy
+/usr/local/share/polkit-1/policyconfig-1.dtd
+/usr/local/share/polkit-1/rules.d/50-default.rules

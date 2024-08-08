@@ -2,7 +2,7 @@ require 'package'
 
 class Trousers < Package
   description 'The open-source TCG Software Stack.'
-  homepage 'http://trousers.sourceforge.net/'
+  homepage 'https://trousers.sourceforge.net/'
   @_ver = '0.3.15'
   version "#{@_ver}-2"
   license 'CPL-1.0 and GPL-2'

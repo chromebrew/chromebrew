@@ -5,7 +5,7 @@ require 'package'
 
 class Protobuf < Package
   description 'Protocol Buffers - Googles data interchange format'
-  homepage 'https://developers.google.com/protocol-buffers/'
+  homepage 'https://protobuf.dev'
   version '21.12'
   license 'BSD'
   compatibility 'all'
@@ -22,7 +22,7 @@ class Protobuf < Package
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     FileUtils.mkdir('builddir')

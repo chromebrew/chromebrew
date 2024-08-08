@@ -5,7 +5,7 @@ require 'buildsystems/meson'
 
 class Libmediaart < Meson
   description 'Library tasked with managing, extracting and handling media art caches'
-  homepage 'https://git.gnome.org/browse/libmediaart'
+  homepage 'https://gitlab.gnome.org/GNOME/libmediaart'
   version '1.9.6'
   license 'LGPL'
   compatibility 'all'

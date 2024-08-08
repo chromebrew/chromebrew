@@ -2,7 +2,7 @@ require 'package'
 
 class Xkeyboard_config < Package
   description 'The non-arch keyboard configuration database for X Window.'
-  homepage 'http://www.freedesktop.org/wiki/Software/XKeyboardConfig'
+  homepage 'https://www.freedesktop.org/wiki/Software/XKeyboardConfig/'
   compatibility 'x86_64 aarch64 armv7l'
   version '2.29'
   license 'MIT'

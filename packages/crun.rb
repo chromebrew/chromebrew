@@ -26,7 +26,7 @@ class Crun < Package
   depends_on 'libbpf' => :build
   depends_on 'libcap' # R
   depends_on 'libgcrypt' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libseccomp' # R
   depends_on 'yajl' # R
 

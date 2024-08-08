@@ -2,7 +2,7 @@ require 'package'
 
 class Giflib < Package
   description 'giflib is a library for reading and writing gif images.'
-  homepage 'http://giflib.sourceforge.net/'
+  homepage 'https://giflib.sourceforge.net/'
   version '5.2.2'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'

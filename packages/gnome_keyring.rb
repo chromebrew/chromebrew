@@ -30,13 +30,13 @@ class Gnome_keyring < Autotools
   depends_on 'libcap_ng' # R
   depends_on 'libeconf' # R
   depends_on 'libgcrypt' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libxslt' => :build
   depends_on 'linux_pam' # R
   depends_on 'openssh' => :build
   depends_on 'p11kit' # R
   depends_on 'pango' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

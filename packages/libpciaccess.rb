@@ -2,7 +2,7 @@ require 'package'
 
 class Libpciaccess < Package
   description 'Generic PCI access library'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '0.17'
   license 'MIT'
   compatibility 'all'

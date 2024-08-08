@@ -2,7 +2,7 @@ require 'package'
 
 class Gnuplot < Package
   description 'Gnuplot is a portable command-line driven graphing utility'
-  homepage 'http://gnuplot.sourceforge.net/'
+  homepage 'https://gnuplot.sourceforge.net/'
   version '5.2.6'
   license 'gnuplot'
   compatibility 'x86_64 aarch64 armv7l'

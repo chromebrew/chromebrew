@@ -2,7 +2,7 @@ require 'package'
 
 class Netbeans < Package
   description 'Apache NetBeans IDE is free open source software to quickly and easily develop desktop, mobile, and web applications with Java, JavaScript, HTML5, PHP, C/C++ and more.'
-  homepage 'https://netbeans.org/'
+  homepage 'https://netbeans.apache.org/front/main/index.html'
   version '22'
   license 'Apache-2.0, custom, EPL-1.0, W3C, MIT, BSD, MPL-1.0, CC-BY-3.0, CDDL and CDDL-1.1'
   compatibility 'x86_64 aarch64 armv7l'

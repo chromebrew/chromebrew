@@ -95,7 +95,7 @@ class Ffmpeg < Package
   depends_on 'xzutils' # R
   depends_on 'zeromq' # R
   depends_on 'zimg' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zvbi' # R
 
   no_env_options if %w[aarch64 armv7l].include? ARCH

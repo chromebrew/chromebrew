@@ -22,6 +22,6 @@ class Py3_lxml < Pip
   depends_on 'libxslt' # R
   depends_on 'py3_cython' => :build
   depends_on 'python3' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   no_source_build
 end

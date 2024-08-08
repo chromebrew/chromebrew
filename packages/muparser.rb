@@ -2,8 +2,8 @@ require 'package'
 
 class Muparser < Package
   description 'muParser is an extensible high performance math expression parser library written in C++.'
-  homepage 'http://beltoforion.de/article.php?a=muparser'
-  version '2.6.1'
+  homepage 'https://beltoforion.de/article.php?a=muparser'
+  version '2.2.6.1'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/beltoforion/muparser/archive/v2.2.6.1.tar.gz'

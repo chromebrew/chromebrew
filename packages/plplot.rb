@@ -2,7 +2,7 @@ require 'package'
 
 class Plplot < Package
   description 'PLplot is a cross-platform software package for creating scientific plots'
-  homepage 'http://plplot.sourceforge.net/'
+  homepage 'https://plplot.sourceforge.net/'
   version '5.15.0'
   license 'LGPL-2'
   compatibility 'x86_64 aarch64 armv7l'

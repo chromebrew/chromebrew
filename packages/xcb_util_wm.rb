@@ -2,7 +2,7 @@ require 'package'
 
 class Xcb_util_wm < Package
   description 'The xcb-util-wm package contains libraries which provide client and window-manager helpers for EWMH and ICCCM.'
-  homepage 'http://xcb.freedesktop.org'
+  homepage 'https://xcb.freedesktop.org/'
   version '0.4.1-1'
   compatibility 'all'
   license 'MIT-with-advertising'

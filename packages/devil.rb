@@ -29,7 +29,7 @@ class Devil < Package
   depends_on 'mesa'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'libglvnd' # R
 
   def self.patch

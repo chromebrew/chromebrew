@@ -2,7 +2,7 @@ require 'package'
 
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
-  homepage 'http://www.php.net/'
+  homepage 'https://www.php.net/'
   version '7.4.33-1'
   license 'PHP-3.01'
   compatibility 'x86_64 aarch64 armv7l'
@@ -37,7 +37,7 @@ class Php74 < Package
   depends_on 'libedit' # R
   depends_on 'libffi' # R
   depends_on 'libgcrypt'
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libidn2' # R
   depends_on 'libjpeg_turbo'
   depends_on 'libnghttp2' # R
@@ -61,7 +61,7 @@ class Php74 < Package
   depends_on 'sqlite' # R
   depends_on 'tidy'
   depends_on 'unixodbc'
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_fhs

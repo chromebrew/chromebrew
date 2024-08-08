@@ -2,7 +2,7 @@ require 'package'
 
 class Traceroute < Package
   description 'Traceroute tracks the route packets taken from an IP network on their way to a given host.'
-  homepage 'http://traceroute.sourceforge.net/'
+  homepage 'https://traceroute.sourceforge.net/'
   version '2.1.4'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'

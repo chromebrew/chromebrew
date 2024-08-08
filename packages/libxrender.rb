@@ -2,7 +2,7 @@ require 'package'
 
 class Libxrender < Package
   description 'X Rendering Extension client library.'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '0.9.11'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'

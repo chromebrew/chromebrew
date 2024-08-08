@@ -965,6 +965,11 @@ url: https://github.com/clibs/clib/releases
 activity: low
 ---
 kind: url
+name: clickhouse
+url: https://github.com/ClickHouse/ClickHouse/releases
+activity: high
+---
+kind: url
 name: clipgrab
 url: https://clipgrab.org/
 activity: none
@@ -5726,6 +5731,11 @@ url: https://github.com/mesonbuild/meson/releases
 activity: high
 ---
 kind: url
+name: metadata_cleaner
+url: https://gitlab.com/rmnvgr/metadata-cleaner/-/tags
+activity: low
+---
+kind: url
 name: metasploit
 url: https://github.com/rapid7/metasploit-framework/releases
 activity: high
@@ -5949,6 +5959,11 @@ kind: url
 name: multitail
 url: https://github.com/flok99/multitail/releases
 activity: none
+---
+kind: url
+name: multy
+url: https://github.com/multycloud/multy/releases
+activity: low
 ---
 kind: url
 name: muparser
@@ -7286,6 +7301,11 @@ url: https://gitlab.com/rastersoft/devedeng/-/tags
 activity: low
 ---
 kind: url
+name: py3_dool
+url: https://github.com/scottchiefbaker/dool
+activity: low
+---
+kind: url
 name: py3_editables
 url: https://github.com/pfmoore/editables/tags
 activity: medium
@@ -7314,6 +7334,11 @@ kind: url
 name: py3_lxml
 url: https://github.com/lxml/lxml/releases
 activity: high
+---
+kind: url
+name: py3_mat2
+url: https://0xacab.org/jvoisin/mat2/-/tags
+activity: low
 ---
 kind: url
 name: py3_mercurial
@@ -8136,6 +8161,11 @@ url: http://kernel.ubuntu.com/~cking/tarballs/smemstat
 activity: medium
 ---
 kind: url
+name: smplayer
+url: https://github.com/smplayer-dev/smplayer/releases
+activity: medium
+---
+kind: url
 name: snappy
 url: https://github.com/google/snappy/releases
 activity: high
@@ -8319,6 +8349,11 @@ kind: url
 name: sshuttle
 url: https://github.com/sshuttle/sshuttle/releases
 activity: low
+---
+kind: url
+name: stacer
+url: https://github.com/oguzhaninan/Stacer/releases
+activity: none
 ---
 kind: url
 name: stack
@@ -9659,6 +9694,11 @@ kind: url
 name: zathura_poppler_pdf
 url: https://pwmt.org/projects/zathura-pdf-poppler/download/
 activity: low
+---
+kind: url
+name: zed
+url: https://github.com/zed-industries/zed/releases
+activity: high
 ---
 kind: url
 name: zenity

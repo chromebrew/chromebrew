@@ -5,7 +5,7 @@ require 'package'
 
 class P7zip_gui < Package
   description 'Graphic user interface (alpha quality) for the 7-zip file archiver'
-  homepage 'http://p7zip.sourceforge.net/'
+  homepage 'https://p7zip.sourceforge.net/'
   version '16.02'
   license 'LGPL-2.1 and unRAR'
   compatibility 'x86_64 aarch64 armv7l'

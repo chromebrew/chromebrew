@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Libxpm < Autotools
   description 'X.org X Pixmap Library'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '3.5.17'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
@@ -17,7 +17,7 @@ class Libxpm < Autotools
   })
 
   depends_on 'libx11'
-  depends_on 'util_macros'
+  depends_on 'xorg_macros'
   depends_on 'gettext'
   depends_on 'glibc' # R
   depends_on 'libbsd' # R

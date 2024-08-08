@@ -43,7 +43,7 @@ class Webkitgtk_6 < Package
   depends_on 'libepoxy' # R
   depends_on 'libgcrypt' # R
   depends_on 'libglvnd' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
   depends_on 'libnotify'
@@ -74,7 +74,7 @@ class Webkitgtk_6 < Package
   depends_on 'wayland' # R
   depends_on 'woff2' # R
   depends_on 'wpebackend_fdo' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_env_options
 

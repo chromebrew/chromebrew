@@ -29,7 +29,7 @@ class Cairo < Meson
   depends_on 'lzo' # R
   depends_on 'mesa' => :build
   depends_on 'pixman' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   conflicts_ok # because this overwrites the limited cairo from harfbuzz
 

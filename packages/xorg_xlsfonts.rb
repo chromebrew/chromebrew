@@ -5,7 +5,7 @@ require 'package'
 
 class Xorg_xlsfonts < Package
   description 'List available X fonts'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.7'
   license 'X11'
   compatibility 'x86_64 aarch64 armv7l'
@@ -21,7 +21,7 @@ class Xorg_xlsfonts < Package
 
   depends_on 'glibc' # R
   depends_on 'libx11' # R
-  depends_on 'util_macros' => ':build'
+  depends_on 'xorg_macros' => ':build'
 
   def self.build
     system "./configure #{CREW_OPTIONS}"

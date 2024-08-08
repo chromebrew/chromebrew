@@ -66,7 +66,7 @@ class Mpv < Meson
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
   depends_on 'zimg' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     # Wayland is disabled because mpv has moved to

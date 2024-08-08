@@ -2,7 +2,7 @@ require 'package'
 
 class Unicode_cldr < Package
   description 'Unicode Common Locale Data Repository'
-  homepage 'http://cldr.unicode.org/'
+  homepage 'https://cldr.unicode.org/'
   version '44.1'
   license 'unicode'
   compatibility 'all'

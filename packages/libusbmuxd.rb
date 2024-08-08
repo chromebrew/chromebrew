@@ -2,7 +2,7 @@ require 'package'
 
 class Libusbmuxd < Package
   description 'USB Multiplex Daemon'
-  homepage 'http://www.libimobiledevice.org/'
+  homepage 'https://libimobiledevice.org/'
   version '2.0.2'
   license 'GPL-2+ and LGPL-2.1+'
   compatibility 'all'

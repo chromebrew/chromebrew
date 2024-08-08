@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Weston < Meson
   description 'Weston is the reference implementation of a Wayland compositor, and a useful compositor in its own right.'
-  homepage 'http://wayland.freedesktop.org'
+  homepage 'https://wayland.freedesktop.org'
   version '13.0.0'
   license 'MIT and CC-BY-SA-3.0'
   compatibility 'x86_64 aarch64 armv7l'
@@ -57,7 +57,7 @@ class Weston < Meson
   depends_on 'wayland' # R
   depends_on 'xcb_util_cursor' => :build
   depends_on 'xdg_base' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   meson_options "-Dbackend-default=wayland \
         -Dbackend-drm=true \

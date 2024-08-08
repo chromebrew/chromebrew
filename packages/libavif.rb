@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libavif < CMake
   description 'Library for encoding and decoding .avif files'
   homepage 'https://github.com/AOMediaCodec/libavif'
-  version '1.0.4'
+  version '1.1.0'
   license 'BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/AOMediaCodec/libavif.git'
@@ -11,9 +11,9 @@ class Libavif < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '201cd0bb7b76838dee1c00c007df295cda6da1b4882391b38d36341495e59861',
-     armv7l: '201cd0bb7b76838dee1c00c007df295cda6da1b4882391b38d36341495e59861',
-     x86_64: 'f171c132ed9429f7338b78b92df4fdb134855f78346bf883c03419d7a8d76057'
+    aarch64: 'a6632560338310f3909f141763e886af378a1671329d10f9bfd22310c596d50c',
+     armv7l: 'a6632560338310f3909f141763e886af378a1671329d10f9bfd22310c596d50c',
+     x86_64: '2f81bae4159dae77502f9c0c573e5b9a16156640a8c0eb23f93b5769c1c3b969'
   })
 
   depends_on 'dav1d' # R
@@ -33,7 +33,7 @@ class Libavif < CMake
   depends_on 'pkgconf' => :build
   depends_on 'rav1e' # R
   depends_on 'svt_av1' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

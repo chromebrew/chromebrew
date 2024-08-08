@@ -5,7 +5,7 @@ require 'package'
 
 class Libcec < Package
   description 'Pulse-Eights libcec for the Pulse-Eight USB-CEC adapter'
-  homepage 'http://libcec.pulse-eight.com/'
+  homepage 'https://libcec.pulse-eight.com/'
   version '6.0.2'
   license 'GPL'
   compatibility 'aarch64 armv7l x86_64' # Not kernel compatible w/ i686 kernel.

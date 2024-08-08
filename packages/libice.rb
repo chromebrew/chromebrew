@@ -2,7 +2,7 @@ require 'package'
 
 class Libice < Package
   description 'X.org X Inter Client Exchange Library'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.1.0'
   license 'X11'
   compatibility 'all'

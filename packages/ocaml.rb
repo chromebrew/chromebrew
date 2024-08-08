@@ -2,7 +2,7 @@ require 'package'
 
 class Ocaml < Package
   description 'OCaml is an industrial strength programming language supporting functional, imperative and object-oriented styles'
-  homepage 'http://ocaml.org/'
+  homepage 'https://ocaml.org/'
   version '4.14.1'
   license 'LGPL-2.1'
   compatibility 'all'

@@ -2,7 +2,7 @@ require 'package'
 
 class Ttf2pt1 < Package
   description 'Converter of various scalable font formats (most notably TTF) and of the bitmapped BDF format into PostScript Type 1 fonts and metrics (.pfa, .pfb, .afm).'
-  homepage 'http://ttf2pt1.sourceforge.net/'
+  homepage 'https://ttf2pt1.sourceforge.net/'
   version '3.4.4'
   license 'ttf2pt1'
   compatibility 'all'

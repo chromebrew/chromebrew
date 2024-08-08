@@ -2,7 +2,7 @@ require 'package'
 
 class Libmediainfo < Package
   description 'MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files.'
-  homepage 'http://mediaarea.net/en/MediaInfo'
+  homepage 'https://mediaarea.net/en/MediaInfo'
   version '24.04'
   license 'BSD-2'
   compatibility 'all'
@@ -19,7 +19,7 @@ class Libmediainfo < Package
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     # Fix /usr/bin/file: No such file or directory

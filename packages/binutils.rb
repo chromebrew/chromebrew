@@ -5,26 +5,25 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  @_ver = '2.42'
-  version @_ver
+  version '2.43-gcc14'
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.bz2"
-  source_sha256 'aa54850ebda5064c72cd4ec2d9b056c294252991486350d9a97ab2a6dfdfaf12'
+  source_url "https://ftpmirror.gnu.org/binutils/binutils-#{version.split('-').first}.tar.bz2"
+  source_sha256 'fed3c3077f0df7a4a1aa47b080b8c53277593ccbb4e5e78b73ffb4e3f265e750'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b688741aec17c9bc006b9767265b266a1422ff03664541db64dd4e26308b664d',
-     armv7l: 'b688741aec17c9bc006b9767265b266a1422ff03664541db64dd4e26308b664d',
-       i686: '94b5f0aba999a5a7858a5a0a33b76b5bd2e6fbb651f73d6b0d2ac8f1572c1083',
-     x86_64: '59b5edbada9bbfd6485e1bc20cea5aa243a6a5a9ca05b142be31713becd37a25'
+    aarch64: '2495535e6fb7b8d8ed7eadd4072192cd14526f0edb111b57968aa6fc43b93a00',
+     armv7l: '2495535e6fb7b8d8ed7eadd4072192cd14526f0edb111b57968aa6fc43b93a00',
+       i686: 'd31cfcbf745167c12d286284bc46d72c56a4e43c22fa0d27c39458ec0355c88e',
+     x86_64: '2c7087344bd4eee7df8402b6a69f4e2d043163298eb37ff68b1a74dc7324dbae'
   })
-  binary_compression 'tar.zst'
 
   depends_on 'elfutils' # R
   depends_on 'flex' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.prebuild

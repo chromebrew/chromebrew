@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Imagemagick7 < Autotools
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  @_ver = '7.1.1-23'
-  version "#{@_ver}-perl5.38"
+  version '7.1.1-35-perl5.40'
   license 'imagemagick'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/ImageMagick/ImageMagick.git'
-  git_hashtag @_ver
+  # The imagemagick7 version always has a dash in it.
+  git_hashtag version.reverse.split('-', 2).collect(&:reverse).reverse.first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fefbb13329799de2d4d62eca465c7fd5ac086386cc1e35d0b362605041e9b598',
-     armv7l: 'fefbb13329799de2d4d62eca465c7fd5ac086386cc1e35d0b362605041e9b598',
-     x86_64: '7c0a0c4340d25380efd0fabe2eb92c2b87ce49141b79cf696aaf7be9fc187ecc'
+    aarch64: 'b7146f1123cd6ae450a71d10b530aa83c8ae1f3a0f96d6d972093a032cdcc840',
+     armv7l: 'b7146f1123cd6ae450a71d10b530aa83c8ae1f3a0f96d6d972093a032cdcc840',
+     x86_64: '06912529a92089de5a8c3c84321fceb2dd53ce53850f142742cff2375b4c43c8'
   })
 
   depends_on 'bzip2' # R
@@ -62,7 +62,7 @@ class Imagemagick7 < Autotools
   depends_on 'pango' # R
   depends_on 'util_linux' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_upstream_update

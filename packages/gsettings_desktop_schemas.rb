@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Gsettings_desktop_schemas < Meson
   description 'Collection of GSettings schemas for GNOME desktop.'
-  homepage 'https://git.gnome.org/browse/gsettings-desktop-schemas'
+  homepage 'https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas'
   version '46.rc'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'

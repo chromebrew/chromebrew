@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Libtirpc < Autotools
   description 'Libtirpc is a port of Suns Transport-Independent RPC library to Linux.'
-  homepage 'https://sourceforge.net/projects/libtirpc'
+  homepage 'https://sourceforge.net/projects/libtirpc/'
   version '1.3.4'
   license 'GPL-2'
   compatibility 'all'

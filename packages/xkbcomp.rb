@@ -2,7 +2,7 @@ require 'package'
 
 class Xkbcomp < Package
   description 'Compile XKB keyboard'
-  homepage 'https://xorg.freedesktop.org'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.4.4'
   license 'ISC, MIT and custom'
   compatibility 'x86_64 aarch64 armv7l'

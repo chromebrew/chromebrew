@@ -2,7 +2,7 @@ require 'package'
 
 class Xcb_util < Package
   description 'The xcb-util package provides additional extensions to the XCB library.'
-  homepage 'http://xcb.freedesktop.org'
+  homepage 'https://xcb.freedesktop.org/'
   version '0.4.0-1'
   compatibility 'all'
   license 'MIT-with-advertising'
@@ -18,7 +18,7 @@ class Xcb_util < Package
   })
 
   depends_on 'libxcb'
-  depends_on 'util_macros'
+  depends_on 'xorg_macros'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"

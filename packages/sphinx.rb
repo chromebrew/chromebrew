@@ -3,8 +3,7 @@ require 'buildsystems/pip'
 class Sphinx < Pip
   description 'Sphinx is a tool that makes it easy to create intelligent and beautiful documentation.'
   homepage 'https://www.sphinx-doc.org/'
-  @_ver = '7.3.7'
-  version "#{@_ver}-py3.12"
+  version '7.4.5-py3.12'
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
@@ -25,5 +24,6 @@ class Sphinx < Pip
   depends_on 'py3_packaging'
   depends_on 'py3_snowballstemmer'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

@@ -2,7 +2,7 @@ require 'package'
 
 class Zstd < Package
   description 'Zstandard - Fast real-time compression algorithm'
-  homepage 'http://www.zstd.net'
+  homepage 'https://facebook.github.io/zstd/'
   version '1.5.6' # Do not use @_ver here, it will break the installer.
   license 'BSD or GPL-2'
   compatibility 'all'
@@ -19,7 +19,7 @@ class Zstd < Package
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_zstd
 
