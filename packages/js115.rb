@@ -7,7 +7,7 @@ class Js115 < Package
   description 'JavaScript interpreter and libraries - Version 115'
   homepage 'https://spidermonkey.dev/'
   version '115.8.0'
-  # version '115.13.0-icu75.1'
+  # version '115.13.0'
   license 'MPL-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{version.split('-').first}esr/source/firefox-#{version.split('-').first}esr.source.tar.xz"
@@ -66,20 +66,21 @@ class Js115 < Package
       ac_add_options --with-intl-api
       ac_add_options --with-system-nspr
       ac_add_options --with-system-zlib
+      ac_add_options --without-system-icu
       mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj
     MOZCONFIG_EOF
     File.write('.mozconfig', @mozconfig)
-    if %w[armv7l aarch64].include?(ARCH)
-      # see https://bugzilla.mozilla.org/show_bug.cgi?id=1786621
-      open('.mozconfig', 'a') do |f|
-        f.puts 'ac_add_options --with-system-icu'
-      end
-    else
-      open('.mozconfig', 'a') do |f|
-        f.puts 'ac_add_options --enable-rust-simd'
-        f.puts 'ac_add_options --without-system-icu'
-      end
-    end
+    #if %w[armv7l aarch64].include?(ARCH)
+    #  # see https://bugzilla.mozilla.org/show_bug.cgi?id=1786621
+    #  open('.mozconfig', 'a') do |f|
+    #    f.puts 'ac_add_options --without-system-icu'
+    #  end
+    #else
+    #  open('.mozconfig', 'a') do |f|
+    #    f.puts 'ac_add_options --enable-rust-simd'
+    #    f.puts 'ac_add_options --without-system-icu'
+    #  end
+    #end
     FileUtils.mkdir_p 'obj'
     Dir.chdir 'obj' do
       # error: Cannot set `RUSTC_BOOTSTRAP=1` from build script of `packed_simd v0.3.4 (https://github.com/hsivonen/packed_simd?rev=0917fe780032a6bbb23d71be545f9c1834128d75#0917fe78)`.
