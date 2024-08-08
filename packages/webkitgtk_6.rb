@@ -146,11 +146,10 @@ class Webkitgtk_6 < Package
       @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
       system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' \
           cmake -B builddir -G Ninja \
-          #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('mold', 'gold').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
+          #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('-DCMAKE_LINKER_TYPE=MOLD', '').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
           -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
           -DENABLE_DOCUMENTATION=OFF \
-          -DENABLE_GLES2=OFF \
           -DENABLE_JOURNALD_LOG=OFF \
           -DENABLE_GAMEPAD=OFF \
           -DENABLE_MINIBROWSER=ON \
