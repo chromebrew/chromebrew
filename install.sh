@@ -166,10 +166,10 @@ find "${CREW_LIB_PATH}" -mindepth 1 -delete
 # Download the chromebrew repository.
 curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-BOOTSTRAP_PACKAGES='zstd crew_mvdir ruby git ca_certificates libyaml openssl'
+BOOTSTRAP_PACKAGES='zstd lz4 xzutils zlib crew_mvdir ruby git ca_certificates libyaml openssl'
 
 # Older i686 systems.
-[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' zlib gcc_lib'
+[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' gcc_lib'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   # shellcheck disable=SC2231
@@ -251,8 +251,7 @@ function extract_install () {
 
     # Extract and install.
     echo_intra "Extracting ${1} ..."
-    # This could be avoided if our zstd was compiled with lzma support.
-    if [[ "${2##*.}" == "zst" ]]; then
+    if [[ "${2##*.}" == "zst" ]] || zstd --help | grep -q lzma; then
       tar -I zstd -xpf ../"${2}"
     else
       tar xpf ../"${2}"
