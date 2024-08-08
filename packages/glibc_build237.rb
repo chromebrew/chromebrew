@@ -274,7 +274,7 @@ class Glibc_build237 < Package
       # Link the system libc.so.6 to also require our renamed libC.so.6
       # which provides the float128 functions strtof128, strfromf128,
       # and __strtof128_nan.
-      @libc_patch_libraries = %w[libc.so.6 libm.so.6]
+      @libc_patch_libraries = %w[libc.so.6 libm.so.6 libstdc++.so.6]
       @libc_patch_libraries.delete_if { |lib| !File.file?(File.join(CREW_LIB_PREFIX, lib)) }
       @libc_patch_libraries.delete_if { |lib| Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, lib)} | grep -q libC.so.6" }
 
