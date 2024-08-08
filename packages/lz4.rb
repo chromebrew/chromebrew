@@ -17,8 +17,8 @@ class Lz4 < Package
      x86_64: '6e07a8d095f778015b2e30681f3d17e37bbd33b13c52f1ae2468e3f90a85cffd'
   })
 
-  no_zstd
   depends_on 'glibc' # R
+  no_zstd
 
   def self.build
     system 'make', "PREFIX=#{CREW_PREFIX}"
