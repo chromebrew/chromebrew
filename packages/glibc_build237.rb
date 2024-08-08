@@ -270,11 +270,11 @@ class Glibc_build237 < Package
     # Handle broken system glibc affecting system glibc and libm.so.6 on newer x86_64 ChromeOS milestones.
     if (ARCH == 'x86_64') && (LIBC_VERSION.to_f >= 2.35)
       FileUtils.cp "/#{ARCH_LIB}/libc.so.6", File.join(CREW_LIB_PREFIX, 'libc.so.6.system') and FileUtils.mv File.join(CREW_LIB_PREFIX, 'libc.so.6.system'), File.join(CREW_LIB_PREFIX, 'libc.so.6')
-      abort("patchelf is needed. Please run: 'crew install patchelf ; crew postinstall #{name}'") unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
+      puts "patchelf is needed. Please run: 'crew install patchelf ; crew postinstall #{name}'".lightred unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
       # Link the system libc.so.6 to also require our renamed libC.so.6
       # which provides the float128 functions strtof128, strfromf128,
       # and __strtof128_nan.
-      @libc_patch_libraries = %w[libc.so.6 libm.so.6]
+      @libc_patch_libraries = %w[libc.so.6 libm.so.6 libstdc++.so.6]
       @libc_patch_libraries.delete_if { |lib| !File.file?(File.join(CREW_LIB_PREFIX, lib)) }
       @libc_patch_libraries.delete_if { |lib| Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, lib)} | grep -q libC.so.6" }
 
@@ -287,8 +287,6 @@ class Glibc_build237 < Package
             puts "#{lib} patched for use with Chromebrew's glibc.".lightgreen
           end
         end
-      else
-        abort('The Chromebrew libC.so.6 was not found. Please reinstall glibc.')
       end
     end
 
