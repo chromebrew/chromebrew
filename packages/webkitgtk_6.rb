@@ -39,6 +39,7 @@ class Webkitgtk_6 < Package
   depends_on 'icu4c' # R
   depends_on 'lcms' # R
   depends_on 'libavif' # R
+  depends_on 'libbacktrace' => :build
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
   depends_on 'libgcrypt' # R
