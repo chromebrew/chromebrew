@@ -211,7 +211,5 @@ if (ARCH == 'x86_64') && (LIBC_VERSION.to_f >= 2.35)
         puts "#{lib} patched for use with Chromebrew's glibc.".lightgreen
       end
     end
-  else
-    abort('The Chromebrew libC.so.6 was not found. Please reinstall glibc.')
   end
 end
