@@ -6,6 +6,7 @@ class Mysql < CMake
   version '8.4.2-icu75.1'
   license 'GPL-2'
   compatibility 'x86_64' # Only 64-bit platforms are supported, so this will work on aarch64 userspaces once those are supported.
+  min_glibc '2.37'
   source_url 'https://cdn.mysql.com/Downloads/MySQL-8.4/mysql-8.4.2.tar.gz'
   source_sha256 '5657a78dc86bf0bf2227e0b05f8de5a2c447a816a112ffa26fa70083bcbe9814'
   binary_compression 'tar.zst'
@@ -14,21 +15,21 @@ class Mysql < CMake
      x86_64: '5ce6d8be4a2660d05b7ec4892b09f17a7236881fcc34f9756c6102c5d2539791'
   })
 
-  depends_on 'boost'
-  depends_on 'icu4c'
-  depends_on 'libcyrussasl'
-  depends_on 'libedit'
-  depends_on 'lz4'
-  depends_on 'openldap'
-  depends_on 'openssl'
-  depends_on 'protobuf'
-  depends_on 'rapidjson'
-  depends_on 'rpcsvc_proto'
-  depends_on 'zlib'
-  depends_on 'zstd'
+  depends_on 'boost' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc_lib' # R
+  depends_on 'icu4c' => :build
+  depends_on 'libcyrussasl' => :build
+  depends_on 'libedit' # R
   depends_on 'libtirpc' # R
+  depends_on 'lz4' # R
+  depends_on 'openldap' => :build
+  depends_on 'openssl' # R
+  depends_on 'protobuf' # R
+  depends_on 'rapidjson' => :build
+  depends_on 'rpcsvc_proto' => :build
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
