@@ -672,14 +672,15 @@ def build_and_preconfigure(target_dir)
       abort 'There was a build error.'.lightred
     end
     @pkg.in_build = false
-    build_end_time = Time.now.to_i
-    build_time_elapsed = build_end_time - build_start_time
-    puts "Build time for #{@pkg.name} was #{build_time_elapsed} seconds. Please ask for #{ARCH} binaries to be generated for #{@pkg.name}.".lightpurple if build_time_elapsed > 60
     # wipe crew destdir
     FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: @fileutils_verbose
     puts 'Preconfiguring package...'
     cache_build if CREW_CACHE_BUILD
     @pkg.install
+    build_end_time = Time.now.to_i
+    build_time_elapsed = build_end_time - build_start_time
+    crewlog "Build & install time for #{@pkg.name} was #{build_time_elapsed} seconds."
+    puts "Build & install time for #{@pkg.name} was #{build_time_elapsed} seconds. Please ask for #{ARCH} binaries to be generated for #{@pkg.name}.".lightpurple if build_time_elapsed > 60
   end
 end
 
