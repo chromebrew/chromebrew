@@ -3,11 +3,11 @@ require 'package'
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
-  version '4.20.0'
+  version '4.20.4-icu75.1'
   license 'GPLv3'
   compatibility 'all'
-  source_url 'https://download.samba.org/pub/samba/stable/samba-4.20.0.tar.gz'
-  source_sha256 '02672542510ac6e5d0c91c0c14d90ab4e6ec397c709e952c6da3a6e0b4d5a42f'
+  source_url "https://download.samba.org/pub/samba/stable/samba-#{version.split('-').first}.tar.gz"
+  source_sha256 '3a92e97eaeb345b6b32232f503e14d34f03a7aa64c451fe8c258a11bbda908e5'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -23,6 +23,7 @@ class Smbclient < Package
   depends_on 'cups' => :build
   depends_on 'docbook_xsl' => :build
   depends_on 'gcc_lib' # R
+  depends_on 'gdb' => :build
   depends_on 'glibc' # R
   depends_on 'gnutls' # R
   depends_on 'gpgme' => :build
