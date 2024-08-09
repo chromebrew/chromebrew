@@ -1,3 +1,4 @@
+# Build failure reported at https://github.com/FreeRDP/FreeRDP/issues/10466
 require 'buildsystems/cmake'
 
 class Freerdp < CMake
