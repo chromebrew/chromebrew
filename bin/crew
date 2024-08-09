@@ -655,6 +655,7 @@ def build_and_preconfigure(target_dir)
       load File.join(CREW_LIB_PATH, 'lib/musl.rb').to_s if @pkg.is_musl?
     end
 
+    build_start_time = Time.now.to_i
     @pkg.in_build = true
     unless @pkg.cached_build
       @pkg.patch
@@ -671,6 +672,9 @@ def build_and_preconfigure(target_dir)
       abort 'There was a build error.'.lightred
     end
     @pkg.in_build = false
+    build_end_time = Time.now.to_i
+    build_time_elapsed = build_end_time - build_start_time
+    puts "Build time for #{@pkg.name} was #{build_time_elapsed} seconds. Please ask for #{ARCH} binaries to be generated for #{@pkg.name}.".lightpurple if build_time_elapsed > 60
     # wipe crew destdir
     FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: @fileutils_verbose
     puts 'Preconfiguring package...'
