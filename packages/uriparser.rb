@@ -14,11 +14,13 @@ class Uriparser < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8053c28c9944acbe7ff867f50c13a1b6411cf4c16a2e3cf236cdea8515076b21',
-     armv7l: '8053c28c9944acbe7ff867f50c13a1b6411cf4c16a2e3cf236cdea8515076b21',
-       i686: '9c11d9d2255fd8c430ddb15fa303f016c0968e1744831d259712d62035f13314',
-     x86_64: 'f0d7c6dafc7530d0e447f4b3cae715c1d82988ef7eb5745614b5ead57e21e648'
+    aarch64: '77d22fae268c12a31a2eba2c037cb3718f1dfb004e9531a8c9ad879b68490080',
+     armv7l: '77d22fae268c12a31a2eba2c037cb3718f1dfb004e9531a8c9ad879b68490080',
+       i686: 'ee7edb28aad6c6e8882cf4c1a06de299e339daca3c55ebab879103a1ace6204d',
+     x86_64: 'e2771905c7ee1a98801a6b0c970800a86c04cc1a931643b861cf267c06a62a1c'
   })
+
+  depends_on 'glibc' # R
 
   cmake_options '-DURIPARSER_BUILD_DOCS=OFF \
     -DURIPARSER_BUILD_TESTS=OFF'
