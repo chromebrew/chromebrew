@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Tesseract < CMake
   description 'A neural net (LSTM) based OCR engine which is focused on line recognition & an older OCR engine which recognizes character patterns.'
   homepage 'https://github.com/tesseract-ocr/tesseract'
-  version '5.3.3'
+  version '5.4.1-icu75.1'
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/tesseract-ocr/tesseract.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -63,5 +63,6 @@ class Tesseract < CMake
 
   cmake_options "-DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
-        -DENABLE_LTO=ON"
+        -DENABLE_LTO=ON \
+        -DUSE_SYSTEM_ICU=ON"
 end
