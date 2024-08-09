@@ -11,9 +11,9 @@ class Tesseract < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd8c0cca3421fca5743be7ab327ee071397069669f1f18720cfdc23ee3aa19457',
-     armv7l: 'd8c0cca3421fca5743be7ab327ee071397069669f1f18720cfdc23ee3aa19457',
-     x86_64: '29ae9b0d29c8959b42e53d5676c5c29b815dc74eb92e7b814e7cf390265a5957'
+    aarch64: '8594813df34ba63b51026dd0b4c5b0322d03edbbbb23759164f093d44e7a0aca',
+     armv7l: '8594813df34ba63b51026dd0b4c5b0322d03edbbbb23759164f093d44e7a0aca',
+     x86_64: '0e11215ea37e12710713a2f1c6967485ebdb09ca771f84287cce7a4030cd7d9b'
   })
 
   depends_on 'acl' => :build
