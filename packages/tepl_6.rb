@@ -2,12 +2,12 @@ require 'buildsystems/meson'
 
 class Tepl_6 < Meson
   description 'Library that eases the development of GtkSourceView-based text editors and IDEs'
-  homepage 'https://github.com/gedit-technology/libgedit-tepl'
-  version '6.8.0'
+  homepage 'https://gitlab.gnome.org/World/gedit/libgedit-tepl'
+  version '6.10.0-icu75.1'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/gedit-technology/libgedit-tepl.git'
-  git_hashtag version
+  source_url 'https://gitlab.gnome.org/World/gedit/libgedit-tepl.git'
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
