@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Libmbedtls < CMake
   description 'An open source, portable, easy to use, readable and flexible SSL library'
   homepage 'https://www.trustedfirmware.org/projects/mbed-tls/'
-  version '3.4.1'
+  version '3.6.0'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/ARMmbed/mbedtls/archive/v3.4.1.tar.gz'
-  source_sha256 'a420fcf7103e54e775c383e3751729b8fb2dcd087f6165befd13f28315f754f5'
+  source_url 'https://github.com/ARMmbed/mbedtls.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -18,7 +18,7 @@ class Libmbedtls < CMake
   })
 
   depends_on 'glibc' # R
+  run_tests
 
-  cmake_options '-DUSE_SHARED_MBEDTLS_LIBRARY=ON \
-                 -DENABLE_ZLIB_SUPPORT=ON'
+  cmake_options '-DUSE_SHARED_MBEDTLS_LIBRARY=ON'
 end
