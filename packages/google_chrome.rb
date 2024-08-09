@@ -11,7 +11,7 @@ class Google_chrome < Package
   source_url "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-#{@update_channel}/google-chrome-#{@update_channel}_#{@version}_amd64.deb"
   source_sha256 'a4c18b49a8b80bf5e27c5911994a13446ff77444c62575a125b7b0b5bfeccd58'
 
-  depends_on 'nspr'
+  depends_on 'nss'
   depends_on 'cairo'
   depends_on 'gtk3'
   depends_on 'expat'

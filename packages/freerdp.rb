@@ -1,13 +1,14 @@
-require 'package'
+# Build failure reported at https://github.com/FreeRDP/FreeRDP/issues/10466
+require 'buildsystems/cmake'
 
-class Freerdp < Package
+class Freerdp < CMake
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
-  version '2.10.0-2a72946'
+  version '3.7.0-icu75.1'
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/FreeRDP/FreeRDP.git'
-  git_hashtag '2a72946d18d813daffa574b26c686c3df479a447'
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -31,11 +32,13 @@ class Freerdp < Package
   depends_on 'gstreamer' => :build
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
+  depends_on 'json_c' => :build
   depends_on 'krb5' # R
+  depends_on 'libbacktrace' => :build
   depends_on 'libfdk_aac' => :build
   depends_on 'libjpeg_turbo' # R
+  depends_on 'libmbedtls' => :build
   depends_on 'libmp3lame' # R
-  depends_on 'libsdl2' # R
   depends_on 'libsoxr' # R
   depends_on 'libusb' # R
   depends_on 'libx11' # R
@@ -55,16 +58,19 @@ class Freerdp < Package
   depends_on 'openh264' # R
   depends_on 'openssl' # R
   depends_on 'pulseaudio' # R
+  # depends_on 'sdl2_image' => :build
+  depends_on 'sdl2_ttf' => :build
+  depends_on 'sdl3' => :build
+  depends_on 'sdl3_ttf' => :build
   depends_on 'sommelier' # L
+  depends_on 'uriparser' => :build
   depends_on 'wayland' # R
+  depends_on 'webkit2gtk_4_1' => :build
   depends_on 'xdg_base' # L
   depends_on 'xmlto' => :build
   depends_on 'xprop' => :build
 
-  def self.build
-    system "env GSS_ROOT_FLAVOUR=MIT \
-        mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-        -DCMAKE_SKIP_INSTALL_RPATH=ON \
+  cmake_options "-DCMAKE_SKIP_INSTALL_RPATH=ON \
         -DDOCBOOKXSL_DIR=#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.2 \
         -DWITH_CAIRO=ON \
         -DWITH_CHANNELS=ON \
@@ -79,20 +85,14 @@ class Freerdp < Package
         -DWITH_JPEG=ON \
         -DWITH_LAME=ON \
         -DWITH_LIBSYSTEMD=OFF \
+        -DWITH_MBEDTLS=ON \
         -DWITH_OPENH264=ON \
         -DWITH_PULSE=ON \
         -DWITH_SERVER=ON \
         -DWITH_SOXR=ON \
         -DWITH_SWSCALE=ON \
-        -DWITH_WAYLAND=ON \
-        -Wno-dev \
-        -G Ninja"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+        -DUSE_UNWIND=OFF \
+        -DWITH_WAYLAND=ON"
 
   def self.postinstall
     puts

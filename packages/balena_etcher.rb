@@ -20,7 +20,7 @@ class Balena_etcher < Package
   depends_on 'cairo'
   depends_on 'xzutils'
   depends_on 'libnotify'
-  depends_on 'nspr'
+  depends_on 'nss'
   depends_on 'libgconf'
   depends_on 'libxss'
   depends_on 'libcom_err'

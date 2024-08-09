@@ -3,17 +3,17 @@ require 'buildsystems/autotools'
 class R < Autotools
   description 'R is a free software environment for statistical computing and graphics.'
   homepage 'https://www.r-project.org/'
-  version '4.3.2'
+  version '4.4.1-icu75.1'
   license 'GPL-2 or GPL-3 and LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://cran.r-project.org/src/base/R-4/R-4.3.2.tar.gz'
-  source_sha256 'b3f5760ac2eee8026a3f0eefcb25b47723d978038eee8e844762094c860c452a'
+  source_url 'https://cran.r-project.org/src/base/R-4/R-4.4.1.tar.gz'
+  source_sha256 'b4cb675deaaeb7299d3b265d218cde43f192951ce5b89b7bb1a5148a36b2d94d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd6907d92580d0ca488c5dcfc7c274b09aed94d3fd1ff500442f7101616c1cf6d',
-     armv7l: 'd6907d92580d0ca488c5dcfc7c274b09aed94d3fd1ff500442f7101616c1cf6d',
-     x86_64: 'def76c5bcfd0f929fe5579e4de4850276c4c359fb1b4e6a1375de63717d5a9a2'
+    aarch64: '535ad3443e5f34b8a08359322672f3d7d09ba2582e381bda1606503c6a1cbcf7',
+     armv7l: '535ad3443e5f34b8a08359322672f3d7d09ba2582e381bda1606503c6a1cbcf7',
+     x86_64: '48a56c97776b110335d43319e429f75731ec6e200c26e2f87677cdf77e1026dd'
   })
 
   depends_on 'bzip2' # R
@@ -23,6 +23,7 @@ class R < Autotools
   depends_on 'glib' # R
   depends_on 'icu4c' # R
   depends_on 'lapack' # R
+  depends_on 'libdeflate' # R
   depends_on 'libice' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R

@@ -1,5 +1,6 @@
 /usr/local/include/libadwaita-1/adw-about-dialog.h
 /usr/local/include/libadwaita-1/adw-about-window.h
+/usr/local/include/libadwaita-1/adw-accent-color.h
 /usr/local/include/libadwaita-1/adw-action-row.h
 /usr/local/include/libadwaita-1/adw-alert-dialog.h
 /usr/local/include/libadwaita-1/adw-animation-target.h
@@ -10,9 +11,11 @@
 /usr/local/include/libadwaita-1/adw-avatar.h
 /usr/local/include/libadwaita-1/adw-banner.h
 /usr/local/include/libadwaita-1/adw-bin.h
+/usr/local/include/libadwaita-1/adw-bottom-sheet.h
 /usr/local/include/libadwaita-1/adw-breakpoint-bin.h
 /usr/local/include/libadwaita-1/adw-breakpoint.h
 /usr/local/include/libadwaita-1/adw-button-content.h
+/usr/local/include/libadwaita-1/adw-button-row.h
 /usr/local/include/libadwaita-1/adw-carousel-indicator-dots.h
 /usr/local/include/libadwaita-1/adw-carousel-indicator-lines.h
 /usr/local/include/libadwaita-1/adw-carousel.h
@@ -29,10 +32,13 @@
 /usr/local/include/libadwaita-1/adw-flap.h
 /usr/local/include/libadwaita-1/adw-fold-threshold-policy.h
 /usr/local/include/libadwaita-1/adw-header-bar.h
+/usr/local/include/libadwaita-1/adw-layout-slot.h
+/usr/local/include/libadwaita-1/adw-layout.h
 /usr/local/include/libadwaita-1/adw-leaflet.h
 /usr/local/include/libadwaita-1/adw-length-unit.h
 /usr/local/include/libadwaita-1/adw-main.h
 /usr/local/include/libadwaita-1/adw-message-dialog.h
+/usr/local/include/libadwaita-1/adw-multi-layout-view.h
 /usr/local/include/libadwaita-1/adw-navigation-direction.h
 /usr/local/include/libadwaita-1/adw-navigation-split-view.h
 /usr/local/include/libadwaita-1/adw-navigation-view.h
@@ -44,6 +50,8 @@
 /usr/local/include/libadwaita-1/adw-preferences-row.h
 /usr/local/include/libadwaita-1/adw-preferences-window.h
 /usr/local/include/libadwaita-1/adw-spin-row.h
+/usr/local/include/libadwaita-1/adw-spinner-paintable.h
+/usr/local/include/libadwaita-1/adw-spinner.h
 /usr/local/include/libadwaita-1/adw-split-button.h
 /usr/local/include/libadwaita-1/adw-spring-animation.h
 /usr/local/include/libadwaita-1/adw-spring-params.h
@@ -108,6 +116,7 @@
 /usr/local/share/locale/ne/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/nl/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/oc/LC_MESSAGES/libadwaita.mo
+/usr/local/share/locale/pa/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/pl/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/pt/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/libadwaita.mo

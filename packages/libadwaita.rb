@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libadwaita < Meson
   description 'Library of GNOME-specific UI patterns, replacing libhandy for GTK4'
   homepage 'https://gitlab.gnome.org/GNOME/libadwaita/'
-  version '1.5.0'
+  version '1.6.beta'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/libadwaita.git'
@@ -11,9 +11,9 @@ class Libadwaita < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9b3faec205030705a0c057d3acf659f381d8ca350a0742c197e26d8b5f35e57f',
-     armv7l: '9b3faec205030705a0c057d3acf659f381d8ca350a0742c197e26d8b5f35e57f',
-     x86_64: '8016af17106412697616c1af4159be10c66ff0b4d15bc303048bbc4f3a1885eb'
+    aarch64: '986ab05714ec676db239846ec08a81ba6a7f6696b6726478b04655435ae3908b',
+     armv7l: '986ab05714ec676db239846ec08a81ba6a7f6696b6726478b04655435ae3908b',
+     x86_64: '9843c177eefacd1e5eb9bf08e7323d9131c243285bc31a01776664c52de8d2f7'
   })
 
   depends_on 'appstream' # R

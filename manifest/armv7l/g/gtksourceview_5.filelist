@@ -69,6 +69,7 @@
 /usr/local/share/gtksourceview-5/language-specs/awk.lang
 /usr/local/share/gtksourceview-5/language-specs/bennugd.lang
 /usr/local/share/gtksourceview-5/language-specs/bibtex.lang
+/usr/local/share/gtksourceview-5/language-specs/blueprint.lang
 /usr/local/share/gtksourceview-5/language-specs/bluespec.lang
 /usr/local/share/gtksourceview-5/language-specs/boo.lang
 /usr/local/share/gtksourceview-5/language-specs/c.lang
@@ -97,6 +98,7 @@
 /usr/local/share/gtksourceview-5/language-specs/dtd.lang
 /usr/local/share/gtksourceview-5/language-specs/dtl.lang
 /usr/local/share/gtksourceview-5/language-specs/eiffel.lang
+/usr/local/share/gtksourceview-5/language-specs/elixir.lang
 /usr/local/share/gtksourceview-5/language-specs/erb-html.lang
 /usr/local/share/gtksourceview-5/language-specs/erb-js.lang
 /usr/local/share/gtksourceview-5/language-specs/erb.lang
@@ -165,6 +167,7 @@
 /usr/local/share/gtksourceview-5/language-specs/mxml.lang
 /usr/local/share/gtksourceview-5/language-specs/nemerle.lang
 /usr/local/share/gtksourceview-5/language-specs/netrexx.lang
+/usr/local/share/gtksourceview-5/language-specs/nix.lang
 /usr/local/share/gtksourceview-5/language-specs/nsis.lang
 /usr/local/share/gtksourceview-5/language-specs/objc.lang
 /usr/local/share/gtksourceview-5/language-specs/objj.lang
@@ -186,6 +189,7 @@
 /usr/local/share/gtksourceview-5/language-specs/puppet.lang
 /usr/local/share/gtksourceview-5/language-specs/python.lang
 /usr/local/share/gtksourceview-5/language-specs/python3.lang
+/usr/local/share/gtksourceview-5/language-specs/reasonml.lang
 /usr/local/share/gtksourceview-5/language-specs/rpmspec.lang
 /usr/local/share/gtksourceview-5/language-specs/rst.lang
 /usr/local/share/gtksourceview-5/language-specs/ruby.lang
@@ -210,6 +214,7 @@
 /usr/local/share/gtksourceview-5/language-specs/terraform.lang
 /usr/local/share/gtksourceview-5/language-specs/texinfo.lang
 /usr/local/share/gtksourceview-5/language-specs/thrift.lang
+/usr/local/share/gtksourceview-5/language-specs/todotxt.lang
 /usr/local/share/gtksourceview-5/language-specs/toml.lang
 /usr/local/share/gtksourceview-5/language-specs/twig.lang
 /usr/local/share/gtksourceview-5/language-specs/typescript-js-expressions.lang
@@ -226,6 +231,7 @@
 /usr/local/share/gtksourceview-5/language-specs/vbnet.lang
 /usr/local/share/gtksourceview-5/language-specs/verilog.lang
 /usr/local/share/gtksourceview-5/language-specs/vhdl.lang
+/usr/local/share/gtksourceview-5/language-specs/wren.lang
 /usr/local/share/gtksourceview-5/language-specs/xml.lang
 /usr/local/share/gtksourceview-5/language-specs/xslt.lang
 /usr/local/share/gtksourceview-5/language-specs/yacc.lang
@@ -298,10 +304,12 @@
 /usr/local/share/locale/hr/LC_MESSAGES/gtksourceview-5.mo
 /usr/local/share/locale/hu/LC_MESSAGES/gtksourceview-5.mo
 /usr/local/share/locale/id/LC_MESSAGES/gtksourceview-5.mo
+/usr/local/share/locale/ie/LC_MESSAGES/gtksourceview-5.mo
 /usr/local/share/locale/is/LC_MESSAGES/gtksourceview-5.mo
 /usr/local/share/locale/it/LC_MESSAGES/gtksourceview-5.mo
 /usr/local/share/locale/ja/LC_MESSAGES/gtksourceview-5.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gtksourceview-5.mo
+/usr/local/share/locale/kab/LC_MESSAGES/gtksourceview-5.mo
 /usr/local/share/locale/kk/LC_MESSAGES/gtksourceview-5.mo
 /usr/local/share/locale/kn/LC_MESSAGES/gtksourceview-5.mo
 /usr/local/share/locale/ko/LC_MESSAGES/gtksourceview-5.mo

@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.15.2'
+  version '4.15.4'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fc59001b24b696939b8c9e4bce743fcd7df2cc0f1c3652d0bcf9c076c950e898',
-     armv7l: 'fc59001b24b696939b8c9e4bce743fcd7df2cc0f1c3652d0bcf9c076c950e898',
-     x86_64: 'ca4cf382aeb6da6ab3fb3b3084de3b043655bde325cf8c0904c00c20483c3f9a'
+    aarch64: '24afa2516f6bbbd290735f58c1cdbdcea63f832423f88abf5b0bae1bc1343f4e',
+     armv7l: '24afa2516f6bbbd290735f58c1cdbdcea63f832423f88abf5b0bae1bc1343f4e',
+     x86_64: '11dd98f1d841007c830e9a2fe9b8fe98f105db0070a0de585f64a081c154ed21'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -60,6 +60,7 @@ class Gtk4 < Meson
   depends_on 'libxrender' # R
   depends_on 'mesa' => :build
   depends_on 'pango' # R
+  depends_on 'py3_docutils' => :build
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_pygments' => :build
   depends_on 'sassc' => :build

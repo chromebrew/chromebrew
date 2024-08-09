@@ -82,6 +82,8 @@ pkg_update_arr = [
   { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'ruby_debug', pkg_rename: nil, pkg_deprecated: true, comments: 'Integrated into ruby package.' },
+  { pkg_name: 'tracker3', pkg_rename: 'tinysparql', pkg_deprecated: nil, comments: 'Renamed upstream.' },
+  { pkg_name: 'tracker3_miners', pkg_rename: 'localsearch', pkg_deprecated: nil, comments: 'Renamed upstream.' },
   { pkg_name: 'util_macros', pkg_rename: 'xorg_macros', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'wget', pkg_rename: 'wget2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'zlibpkg', pkg_rename: 'zlib', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' }
@@ -189,3 +191,25 @@ end
 
 # Remove pagerenv tmp file in CREW_PACKAGES_PATH if it exists
 FileUtils.rm "#{CREW_PACKAGES_PATH}/pagerenv" if File.file?("#{CREW_PACKAGES_PATH}/pagerenv")
+
+# Handle broken system glibc affecting gcc_lib on newer x86_64 ChromeOS milestones.
+if (ARCH == 'x86_64') && (LIBC_VERSION.to_f >= 2.35)
+  abort("patchelf is needed. Please run: 'crew install patchelf && crew update'") unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
+  # Link the system libc.so.6 to also require our renamed libC.so.6
+  # which provides the float128 functions strtof128, strfromf128,
+  # and __strtof128_nan.
+  libc_patch_libraries = %w[libstdc++.so.6]
+  libc_patch_libraries.delete_if { |lib| !File.file?(File.join(CREW_LIB_PREFIX, lib)) }
+  libc_patch_libraries.delete_if { |lib| Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, lib)} | grep -q libC.so.6" }
+
+  return if libc_patch_libraries.empty?
+
+  if File.file?(File.join(CREW_LIB_PREFIX, 'libC.so.6'))
+    Dir.chdir(CREW_LIB_PREFIX) do
+      libc_patch_libraries.each do |lib|
+        Kernel.system "patchelf --add-needed libC.so.6 #{lib}" and Kernel.system "patchelf --remove-needed libc.so.6 #{lib}"
+        puts "#{lib} patched for use with Chromebrew's glibc.".lightgreen
+      end
+    end
+  end
+end

@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Appstream < Meson
   description 'Provides a standard for creating app stores across distributions'
   homepage 'https://www.freedesktop.org/wiki/Distributions/AppStream/'
-  version '1.0.2'
+  version '1.0.3'
   license 'GPL'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/ximion/appstream.git'
@@ -14,9 +14,9 @@ class Appstream < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '72b90361542d1439be11816b6cc5f1b2259d3ab873a863499539b0cf65fd721a',
-     armv7l: '72b90361542d1439be11816b6cc5f1b2259d3ab873a863499539b0cf65fd721a',
-     x86_64: 'ed9f5df75ed2f6cda18c1a104ab2242dd83306f262d35cfd3808ce4661ca63e7'
+    aarch64: '1b507f791833e4d60dd494cf1fbea2cffe203373aed8063383956361e7f0f1d1',
+     armv7l: '1b507f791833e4d60dd494cf1fbea2cffe203373aed8063383956361e7f0f1d1',
+     x86_64: '23f37368bd8055286db5ff9dd7b1d7acd538896fc24a6bc0ef90ebb469b52c7e'
   })
 
   depends_on 'cairo' # R

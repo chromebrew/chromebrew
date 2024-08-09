@@ -9,7 +9,7 @@
 /usr/local/lib/libvisio-0.1.la
 /usr/local/lib/libvisio-0.1.so
 /usr/local/lib/libvisio-0.1.so.1
-/usr/local/lib/libvisio-0.1.so.1.0.7
+/usr/local/lib/libvisio-0.1.so.1.0.8
 /usr/local/lib/pkgconfig/libvisio-0.1.pc
 /usr/local/share/doc/libvisio/html/VDXParser_8cpp.html
 /usr/local/share/doc/libvisio/html/VDXParser_8h.html
@@ -325,6 +325,7 @@
 /usr/local/share/doc/libvisio/html/dir_c85d3e3c5052e9ad9ce18c6863244a25.html
 /usr/local/share/doc/libvisio/html/dir_dbd43e63c223a2e9a266a1fcf5cbb056.html
 /usr/local/share/doc/libvisio/html/doxygen.css
+/usr/local/share/doc/libvisio/html/doxygen_crawl.html
 /usr/local/share/doc/libvisio/html/files.html
 /usr/local/share/doc/libvisio/html/functions.html
 /usr/local/share/doc/libvisio/html/functions_a.html
