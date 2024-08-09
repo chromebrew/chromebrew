@@ -53,6 +53,7 @@ class Tesseract < CMake
   depends_on 'lz4' => :build
   depends_on 'openjpeg' # R
   depends_on 'openldap' => :build
+  depends_on 'openmp' => :build
   depends_on 'openssl' => :build
   depends_on 'pango' # R
   depends_on 'xzutils' => :build
@@ -64,5 +65,7 @@ class Tesseract < CMake
   cmake_options "-DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
         -DENABLE_LTO=ON \
+        -DENABLE_NATIVE=ON \
+        -DOPENMP_BUILD=ON \
         -DUSE_SYSTEM_ICU=ON"
 end
