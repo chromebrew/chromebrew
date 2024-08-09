@@ -12,9 +12,9 @@ class Smbclient < Package
 
   binary_sha256({
        i686: '2c3eb6d6b7a08694f304d325e615a4f748118e31bb02a63bd4ec1461ac16b2e8',
-    aarch64: '22e79e32614baa61de25559a853fca2aa499dccb45f45d94fd6f07f9c4ffdee4',
-     armv7l: '22e79e32614baa61de25559a853fca2aa499dccb45f45d94fd6f07f9c4ffdee4',
-     x86_64: '6946b1b22ba515afb48846add8c8bdfb5b2adfc9aac69a6680adbf2868c3453d'
+    aarch64: 'f161a7f955ecca54425add1cfd6683eabb204c15c9fd77894abe33f5546ac30f',
+     armv7l: 'f161a7f955ecca54425add1cfd6683eabb204c15c9fd77894abe33f5546ac30f',
+     x86_64: '0d52fa1f276bd5ec3ac28b4b6e132a33c4401f247a65c81626c53cfffdc25db1'
   })
 
   depends_on 'acl' # R
@@ -39,6 +39,7 @@ class Smbclient < Package
   depends_on 'liburing' => :build
   depends_on 'linux_pam' # R
   depends_on 'lmdb' => :build
+  depends_on 'ncurses' # R
   depends_on 'openldap' # R
   depends_on 'perl_json' => :build
   depends_on 'perl_parse_yapp' => :build
