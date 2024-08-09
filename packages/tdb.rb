@@ -3,11 +3,10 @@ require 'package'
 class Tdb < Package
   description 'tdb is a simple database API for sharing structures between parts of Samba'
   homepage 'https://tdb.samba.org/'
-  @_ver = '1.4.10'
-  version "#{@_ver}-py3.12"
+  version "1.4.12-py3.12"
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://www.samba.org/ftp/tdb/tdb-#{@_ver}.tar.gz"
+  source_url "https://www.samba.org/ftp/tdb/tdb-#{version.split('-').first}.tar.gz"
   source_sha256 '02338e33c16c21c9e29571cef523e76b2b708636254f6f30c6cf195d48c62daf'
   binary_compression 'tar.zst'
 
