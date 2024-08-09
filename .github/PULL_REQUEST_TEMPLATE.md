@@ -29,7 +29,7 @@ Tested & Working properly:
 - [ ] `i686`
 - [ ] `armv7l` <!-- (reasons why it doesn't) -->
 ##
-- [ ] No File List Changes
+- [ ] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_
 ##
 ### Run the following to get this pull request's changes locally for testing.
 ```bash
