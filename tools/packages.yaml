@@ -8942,7 +8942,7 @@ activity: low
 ---
 kind: url
 name: uriparser
-url:https://github.com/uriparser/uriparser/releases/
+url: https://github.com/uriparser/uriparser/releases/
 activity: low
 ---
 kind: url
