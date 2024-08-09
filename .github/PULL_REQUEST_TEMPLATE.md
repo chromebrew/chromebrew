@@ -18,14 +18,23 @@ Please link issues and other pull requests connected to this one.
 ## Additional information
 <!-- Mention things we might need to know. Like: -->
 
-Works properly:
-- [x] `x86_64`
+##
+Builds:
+- [ ] `x86_64`
+- [ ] `i686`
+- [ ] `armv7l`
+##
+Tested & Working properly:
+- [ ] `x86_64`
 - [ ] `i686`
 - [ ] `armv7l` <!-- (reasons why it doesn't) -->
-
+##
+- [ ] No File List Changes
+##
 ### Run the following to get this pull request's changes locally for testing.
 ```bash
-CREW_REPO=https://github.com/<Please_enter_the_name_of_your_repo>/chromebrew.git CREW_BRANCH=<Please_enter_the_branch_name_for_this_PR> crew update
+CREW_REPO=https://github.com/<Please_enter_the_name_of_your_repo>/chromebrew.git CREW_BRANCH=<Please_enter_the_branch_name_for_this_PR> crew update \
+&& yes | crew upgrade
 ```
 
 <!--
