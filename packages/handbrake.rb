@@ -3,9 +3,10 @@ require 'package'
 class Handbrake < Package
   description 'HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.'
   homepage 'https://handbrake.fr/'
-  version '1.8.0'
+  version '1.8.1'
   license 'GPL-2'
   compatibility 'x86_64'
+  min_glibc '2.37'
   source_url 'https://github.com/HandBrake/HandBrake.git'
   git_hashtag version
   binary_compression 'tar.zst'

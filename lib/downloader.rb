@@ -60,8 +60,9 @@ def downloader(url, sha256sum, filename = File.basename(url), verbose = false)
 
   unless (sha256sum =~ /^SKIP$/i) || (calc_sha256sum == sha256sum)
     if CREW_FORCE
-      puts "Updating checksum for #{filename} from #{sha256sum} to #{calc_sha256sum} in #{CREW_LOCAL_REPO_ROOT}/packages/#{self.name}.rb .".lightblue
-      system "sed -i 's/#{sha256sum}/#{calc_sha256sum}/' #{CREW_LOCAL_REPO_ROOT}/packages/#{self.name}.rb"
+      pkg_name = @pkg_name.empty? ? self.name : @pkg_name
+      puts "Updating checksum for #{filename} from #{sha256sum} to #{calc_sha256sum} in #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb .".lightblue
+      system "sed -i 's/#{sha256sum}/#{calc_sha256sum}/' #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb"
     else
       FileUtils.rm_f filename
 
