@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '2.5'
+  version '2.6'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -17,6 +17,7 @@ class Core < Package
   depends_on 'ca_certificates'
   depends_on 'crew_mvdir'
   depends_on 'crew_profile_base'
+  depends_on 'crew_sudo' if CHROMEOS_RELEASE.to_i > 116
   depends_on 'e2fsprogs'
   depends_on 'elfutils'
   depends_on 'expat'
