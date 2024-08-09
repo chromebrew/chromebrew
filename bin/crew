@@ -656,6 +656,7 @@ def build_and_preconfigure(target_dir)
     end
 
     build_start_time = Time.now.to_i
+
     @pkg.in_build = true
     unless @pkg.cached_build
       @pkg.patch
@@ -677,10 +678,26 @@ def build_and_preconfigure(target_dir)
     puts 'Preconfiguring package...'
     cache_build if CREW_CACHE_BUILD
     @pkg.install
+
     build_end_time = Time.now.to_i
     build_time_elapsed = build_end_time - build_start_time
-    crewlog "Build & install time for #{@pkg.name} was #{build_time_elapsed} seconds."
-    puts "Build & install time for #{@pkg.name} was #{build_time_elapsed} seconds. Please ask for #{ARCH} binaries to be generated for #{@pkg.name}.".lightpurple if build_time_elapsed > 60
+    build_time_hours = build_time_elapsed / 3600
+    build_time_minutes = build_time_elapsed / 60 % 60
+    build_time_seconds = build_time_elapsed % 60
+    build_time_hour_string = if build_time_hours.zero?
+                               ''
+                             else
+                               "#{build_time_hours} hr#{build_time_hours > 1 ? 's, ' : ', '}"
+                             end
+    build_time_minutes_string = if build_time_minutes.zero?
+                                  build_time_hour_string.empty? ? '' : "#{build_time_minutes} min, "
+                                else
+                                  "#{build_time_minutes} min, "
+                                end
+    build_time_seconds_string = "#{build_time_seconds} second#{build_time_seconds > 1 ? 's' : ''}"
+    build_time_elapsed_string = build_time_hour_string + build_time_minutes_string + build_time_seconds_string
+    crewlog "Build & install for #{@pkg.name} took #{build_time_elapsed_string}."
+    puts "Build & install for #{@pkg.name} took #{build_time_elapsed_string}. Please ask for #{ARCH} binaries to be generated for #{@pkg.name}.".lightpurple if build_time_elapsed > 60
   end
 end
 

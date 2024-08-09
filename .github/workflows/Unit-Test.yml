@@ -64,4 +64,4 @@ jobs:
             cd ~ && \
             git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
             cd build_test && \
-            yes | CREW_CACHE_ENABLED=1 crew build -f packages/hello_world_chromebrew.rb"
+            yes | CREW_CACHE_ENABLED=1 crew build -vf packages/hello_world_chromebrew.rb"
