@@ -94,6 +94,12 @@ class Freerdp < CMake
         -DUSE_UNWIND=OFF \
         -DWITH_WAYLAND=ON"
 
+  def self.patch
+    # GCC 14 compatibility patch.
+    downloader 'https://patch-diff.githubusercontent.com/raw/FreeRDP/FreeRDP/pull/10330.diff', 'asasasa'
+    system 'patch -Np1 -i 10330.diff'
+  end
+
   def self.postinstall
     puts
     puts 'To test this package, try the following command to connect to the Windows server at https://www.secure-od.com/:'.lightblue
