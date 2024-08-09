@@ -4222,12 +4222,17 @@ activity: low
 ---
 kind: url
 name: libgedit_amtk
-url: https://github.com/gedit-technology/libgedit-amtk/releases
+url: https://gitlab.gnome.org/World/gedit/libgedit-amtk/-/tags
+activity: medium
+---
+kind: url
+name: libgedit_gfls
+url: https://gitlab.gnome.org/World/gedit/libgedit-gfls/-/tags
 activity: medium
 ---
 kind: url
 name: libgedit_gtksourceview
-url: https://github.com/gedit-technology/libgedit-gtksourceview/releases
+url: https://gitlab.gnome.org/World/gedit/libgedit-gtksourceview/-/tags
 activity: medium
 ---
 kind: url
