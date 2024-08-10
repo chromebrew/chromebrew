@@ -328,7 +328,6 @@ echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than
 # splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}.
 # shellcheck disable=SC2086
-#crew postinstall ${BOOTSTRAP_PACKAGES}
 for i in ${BOOTSTRAP_PACKAGES}
 do
   echo_info "Doing postinstall for $i"
