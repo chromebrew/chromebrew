@@ -7861,6 +7861,11 @@ url: https://rubygems.org/gems/glib2
 activity: medium
 ---
 kind: url
+name: ruby_highline
+url: https://github.com/JEG2/highline/tags
+activity: low
+---
+kind: url
 name: ruby_mdl
 url: https://github.com/markdownlint/markdownlint/tags
 activity: low

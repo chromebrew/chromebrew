@@ -1541,7 +1541,16 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compres
       new_url = "#{base_url}/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
       token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
       if `curl -sI #{new_url}`.lines.first.split[1] == '200'
-        abort "#{new_tarfile} has already been uploaded. Please change the #{package} package version from #{new_version} and try again.".lightred
+        begin
+          gem 'highline'
+        rescue Gem::LoadError
+          puts ' -> install gem highline...'
+          Gem.install('highline')
+          gem 'highline'
+        end
+        require 'highline/import'
+        puts "#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try agaim.".lightred
+        abort 'Will NOT overwite the existing upload.'.lightred unless agree('Do you want to overwrite the existing upload instead? ').lightpurple
       else
         puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
         output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
