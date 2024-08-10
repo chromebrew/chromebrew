@@ -39,6 +39,7 @@ if CREW_DEBUG
     gem 'pry-byebug'
   end
   require 'pry-byebug'
+  # Debugging starts here when enabled.
   binding.pry
 end
 
