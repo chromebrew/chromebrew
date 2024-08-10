@@ -1,5 +1,3 @@
-# Note that this needs a source_url that isn't git since this is
-# downloaded before git is available.
 require 'package'
 
 class Crew_sudo < Package
