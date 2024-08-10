@@ -1493,6 +1493,7 @@ def print_deps_tree(args)
 end
 
 def upload(pkg_name = nil, pkg_version = nil)
+  abort "\nPackage to be uploaded was not specified.\n".lightred if pkg_name.nil?
   abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV.fetch('GITLAB_TOKEN', nil).nil?
 
   packages = pkg_name
