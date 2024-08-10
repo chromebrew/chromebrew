@@ -1,5 +1,3 @@
-# Note that this needs a source_url that isn't git since this is
-# downloaded before git is available.
 require 'package'
 
 class Crew_sudo < Package
@@ -8,10 +6,15 @@ class Crew_sudo < Package
   version '1.1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/chromebrew/crew-sudo/archive/refs/tags/v1.1.tar.gz'
-  source_sha256 'f71d6a24bc6d1271a7ebbe255a53d08f55fd95d2430d9c14b8d10f82f29c610f'
+  source_url 'https://github.com/chromebrew/crew-sudo.git'
+  git_hashtag "v#{@version}"
+  binary_compression 'tar.zst'
 
-  no_compile_needed
+  binary_sha256({
+    aarch64: '6a5b7f96712d98010636cc8801d1251ad4b2bb66abd3606f86b2caf6c687baf9',
+     armv7l: '6a5b7f96712d98010636cc8801d1251ad4b2bb66abd3606f86b2caf6c687baf9',
+     x86_64: '6b7a5b5482541fd79b9ae7ae88d6296f914a3884a5f57fb55704d56194086718'
+  })
 
   def self.install
     system({ 'CREW_DEST_PREFIX' => CREW_DEST_PREFIX }, './install.sh')
