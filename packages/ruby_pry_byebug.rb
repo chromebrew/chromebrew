@@ -29,7 +29,7 @@ class Ruby_pry_byebug < RUBY
   def self.remove
     config_file = "#{HOME}/.pryrc"
     if File.file? config_file
-      print "Would you like to remove the #{self.name} config file: #{config_file}? [y/N] "
+      print "Would you like to remove the #{name} config file: #{config_file}? [y/N] "
       case $stdin.gets.chomp.downcase
       when 'y', 'yes'
         FileUtils.rm_rf config_file
@@ -39,5 +39,4 @@ class Ruby_pry_byebug < RUBY
       end
     end
   end
-
 end
