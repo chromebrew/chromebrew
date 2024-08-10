@@ -29,6 +29,19 @@ require_relative '../commands/sysinfo'
 require_relative '../commands/whatprovides'
 require_relative '../lib/color'
 require_relative '../lib/const'
+
+if CREW_DEBUG
+  begin
+    gem 'pry-byebug'
+  rescue Gem::LoadError
+    puts ' -> install gem pry-byebug for debugging...'
+    Gem.install('pry-byebug')
+    gem 'pry-byebug'
+  end
+  require 'pry-byebug'
+  binding.pry
+end
+
 require_relative '../lib/crewlog'
 require_relative '../lib/deb_utils'
 require_relative '../lib/docopt'

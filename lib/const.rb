@@ -91,6 +91,7 @@ CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache"
 CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', '0').eql?('1')
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', '0').eql?('1')
 
+CREW_DEBUG   = ARGV.intersect?(%w[-D --debug])
 CREW_FORCE   = ARGV.intersect?(%w[-f --force])
 CREW_VERBOSE = ARGV.intersect?(%w[-v --verbose])
 
@@ -335,6 +336,7 @@ CREW_DOCOPT = <<~DOCOPT
     -v --verbose             Show extra information.
     -V --version             Display the crew version.
     -h --help                Show this screen.
+    -D --debug               Enable debugging.
 
   version #{CREW_VERSION}
 DOCOPT
