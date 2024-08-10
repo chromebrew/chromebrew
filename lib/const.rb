@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.49.9'
+CREW_VERSION = '1.50.0'
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -40,7 +40,7 @@ else
   HOME = File.join(CREW_PREFIX, Dir.home)
 end
 
-CREW_ESSENTIAL_PACKAGES = %w[gcc_lib glibc gmp ruby zlib zstd]
+CREW_ESSENTIAL_PACKAGES = %w[gcc_lib glibc gmp lz4 ruby xzutils zlib zstd]
 
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', '0').eql?('1')
 
@@ -175,8 +175,9 @@ when 'x86_64'
   CREW_ARCH_FLAGS = CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '' : CREW_ARCH_FLAGS_OVERRIDE
 end
 
-CREW_LINKER       = ENV.fetch('CREW_LINKER', 'mold')
-CREW_LINKER_FLAGS = ENV.fetch('CREW_LINKER_FLAGS', '')
+CREW_LINKER = ENV.fetch('CREW_LINKER', 'mold')
+CREW_GLIBC_OVERRIDE_LINKER_FLAGS = ARCH == 'x86_64' && LIBC_VERSION.to_f >= 2.35 ? " #{File.join(CREW_LIB_PREFIX, 'libC.so.6')} " : ''
+CREW_LINKER_FLAGS = ENV.fetch('CREW_LINKER_FLAGS', CREW_GLIBC_OVERRIDE_LINKER_FLAGS)
 
 CREW_CORE_FLAGS           = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
 CREW_COMMON_FLAGS         = "#{CREW_CORE_FLAGS} -flto=auto"

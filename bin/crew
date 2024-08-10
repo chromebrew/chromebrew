@@ -246,7 +246,7 @@ def cache_build
       FileUtils.mv "#{build_cachefile}.sha256", "#{build_cachefile}.sha256.bak", force: true if File.file?("#{build_cachefile}.sha256")
       Dir.chdir(CREW_BREW_DIR) do
         system "tar c#{@verbose} #{pkg_build_dirname} \
-        | nice -n 20 #{CREW_PREFIX}/bin/zstd -c  --ultra --fast -f -o #{build_cachefile} -"
+        | nice -n 20 zstd -c  --ultra --fast -f -o #{build_cachefile} -"
       end
     end
     system "sha256sum #{build_cachefile} > #{build_cachefile}.sha256"
@@ -568,7 +568,7 @@ def download
           # because some builds will use that information.
           system "tar c#{@verbose} \
             $(find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
-            nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - >  \
+            nice -n 20 zstd -c -T0 --ultra -20 - >  \
             #{cachefile}"
         end
         system 'sha256sum', cachefile, out: "#{cachefile}.sha256"
@@ -598,9 +598,16 @@ def unpack(meta)
       when /\.zip$/i
         puts "Unpacking archive using 'unzip', this may take a while..."
         system 'unzip', (CREW_VERBOSE ? '-v' : '-qq'), '-d', @extract_dir, meta[:filename], exception: true
-      when /\.(tar(\.(gz|bz2|xz|lzma|lz))?|tgz|tbz|txz|tpxz)$/i
+      when /\.(tar(\.bz2)?|tbz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
         system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
+      when /\.(tar(\.(gz|xz|lzma|lz))?|tgz|txz|tpxz)$/i
+        puts "Unpacking archive using 'tar', this may take a while..."
+        if Kernel.system('zstd --help 2>/dev/null| grep -q lzma', %i[out err] => File::NULL)
+          system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
+        else
+          system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
+        end
       when /\.tar\.zst$/i
         puts "Unpacking archive using 'tar', this may take a while..."
         system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
@@ -1277,13 +1284,10 @@ def install
   end
 
   # Add to installed packages list in devices.json, but remove first if it is already there.
-  if PackageUtils.installed?(@pkg.name)
-    crewlog "Removing package #{@pkg.name} from device.json since a version is already marked as installed."
-    @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name }
-  end
   crewlog "Adding package #{@pkg.name} to device.json."
-  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
+  @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name } and @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
   save_json(@device)
+  crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if Kernel.system 'which jq', %i[out err] => File::NULL
 end
 
 def resolve_dependencies_and_build
@@ -1340,11 +1344,8 @@ def build_package(crew_archive_dest)
 end
 
 def archive_package(crew_archive_dest)
-  # Check to see that there is a working zstd
-  if File.file?("#{CREW_PREFIX}/bin/zstd")
-    crew_prefix_zstd_available = File.file?("#{CREW_PREFIX}/bin/zstd") ? true : nil
-  end
-  if @pkg.no_zstd? || !crew_prefix_zstd_available
+  # Only use zstd if it is available.
+  if @pkg.no_zstd? || !Kernel.system('which zstd', %i[out err] => File::NULL)
     puts 'Using xz to compress package. This may take some time.'.lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
@@ -1358,10 +1359,7 @@ def archive_package(crew_archive_dest)
       # decompression speed over compression speed.
       # See https://lists.archlinux.org/pipermail/arch-dev-public/2019-March/029542.html
       # Use nice so that user can (possibly) do other things during compression.
-      if crew_prefix_zstd_available
-        puts 'Using standard zstd'.lightblue if CREW_VERBOSE
-        system "tar c#{@verbose} * | nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
-      end
+      system "tar c#{@verbose} * | nice -n 20 zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
     end
   end
   system "sha256sum #{crew_archive_dest}/#{pkg_name} > #{crew_archive_dest}/#{pkg_name}.sha256"

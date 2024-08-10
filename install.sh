@@ -166,10 +166,10 @@ find "${CREW_LIB_PATH}" -mindepth 1 -delete
 # Download the chromebrew repository.
 curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-BOOTSTRAP_PACKAGES='zstd crew_mvdir ruby git ca_certificates libyaml openssl'
+BOOTSTRAP_PACKAGES='lz4 zlib xzutils zstd crew_mvdir ruby git ca_certificates libyaml openssl'
 
 # Older i686 systems.
-[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' zlib gcc_lib'
+[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' gcc_lib'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   # shellcheck disable=SC2231
@@ -251,8 +251,7 @@ function extract_install () {
 
     # Extract and install.
     echo_intra "Extracting ${1} ..."
-    # This could be avoided if our zstd was compiled with lzma support.
-    if [[ "${2##*.}" == "zst" ]]; then
+    if [[ "${2##*.}" == "zst" ]] || zstd --help 2>/dev/null| grep -q lzma; then
       tar -I zstd -xpf ../"${2}"
     else
       tar xpf ../"${2}"
@@ -272,6 +271,12 @@ function update_device_json () {
 }
 
 echo_info "Downloading Bootstrap packages...\n"
+
+# Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
+# x86_64, and the mandb postinstall doesn't fail in newer arm
+# containers.
+echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}" >> "$CREW_PREFIX"/etc/env.d/00-library
+export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
 
 # Extract, install and register packages.
 for package in $BOOTSTRAP_PACKAGES; do
@@ -304,12 +309,6 @@ echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
 echo_out "Set up and synchronize local package repo..."
-
-# Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
-# x86_64, and the mandb postinstall doesn't fail in newer arm
-# containers.
-echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}" >> "$CREW_PREFIX"/etc/env.d/00-library
-export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
