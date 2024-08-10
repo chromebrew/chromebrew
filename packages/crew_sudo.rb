@@ -1,3 +1,5 @@
+# Note that this needs a source_url that isn't git since this is
+# downloaded before git is available.
 require 'package'
 
 class Crew_sudo < Package
@@ -6,9 +8,8 @@ class Crew_sudo < Package
   version '1.1'
   license 'GPL-3'
   compatibility 'all'
-
-  source_url 'https://github.com/chromebrew/crew-sudo.git'
-  git_hashtag "v#{@version}"
+  source_url 'https://github.com/chromebrew/crew-sudo/archive/refs/tags/v1.1.tar.gz'
+  source_sha256 'f71d6a24bc6d1271a7ebbe255a53d08f55fd95d2430d9c14b8d10f82f29c610f'
 
   no_compile_needed
 

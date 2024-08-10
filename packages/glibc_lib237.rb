@@ -77,7 +77,9 @@ class Glibc_lib237 < Package
       if File.file?(File.join(CREW_LIB_PREFIX, 'libC.so.6'))
         Dir.chdir(CREW_LIB_PREFIX) do
           libc_patch_libraries.each do |lib|
-            Kernel.system "patchelf --add-needed libC.so.6 #{lib}" and Kernel.system "patchelf --remove-needed libc.so.6 #{lib}"
+            FileUtils.cp lib, "#{lib}.tmp"
+            Kernel.system "patchelf --add-needed libC.so.6 #{lib}.tmp" and Kernel.system "patchelf --remove-needed libc.so.6 #{lib}.tmp"
+            FileUtils.mv "#{lib}.tmp", lib
             puts "#{lib} patched for use with Chromebrew's glibc.".lightgreen
           end
         end
