@@ -247,13 +247,6 @@ class Glibc_build237 < Package
           libc_patch_libraries.each do |lib|
             system "patchelf --replace-needed libc.so.6 libC.so.6 #{lib}"
           end
-          # Link our libm to also require our renamed libC.so.6
-          # which provides the float128 functions strtof128, strfromf128,
-          # and __strtof128_nan.
-          @libc_patch_libraries = %w[libm.so.6]
-          @libc_patch_libraries.each do |lib|
-            system "patchelf --replace-needed libc.so.6 libC.so.6 #{lib}"
-          end
         end
       end
     end
