@@ -1492,22 +1492,13 @@ def print_deps_tree(args)
   puts tree_view
 end
 
-def upload(pkg_name = nil, pkg_version = nil)
+def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compression = nil)
   abort "\nPackage to be uploaded was not specified.\n".lightred if pkg_name.nil?
-  abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV.fetch('GITLAB_TOKEN', nil).nil?
+  abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if gitlab_token.nil?
 
   packages = pkg_name
-  binary_compression_set = nil
-  gitlab_token = ENV.fetch('GITLAB_TOKEN', nil)
-  base_url = 'https://gitlab.com/api/v4/projects/26210301/packages/generic'
 
-  if pkg_name.nil?
-    %w[.tar.xz .tar.zst].each do |ext|
-      packages += `find #{CREW_LOCAL_REPO_ROOT}/release/*/*#{ext} -exec basename -s #{ext} {} + | cut -d- -f1 | LC_ALL=C sort | uniq | xargs`
-      packages += ' '
-    end
-    abort 'No package binaries found.'.lightred if packages.empty?
-  end
+  base_url = 'https://gitlab.com/api/v4/projects/26210301/packages/generic'
 
   packages.strip!
 
@@ -1515,12 +1506,16 @@ def upload(pkg_name = nil, pkg_version = nil)
     %w[x86_64 i686 armv7l].each do |arch|
       release_dir = "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}"
       pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
-      new_tarfile = Dir["#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
-      if new_tarfile.nil?
+      new_tarfile = if binary_compression.nil?
+                      Dir["#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
+                    else
+                      "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
+                    end
+      if new_tarfile.nil? || !File.file?(new_tarfile)
         puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
         next
       end
-      if binary_compression_set.nil?
+      if binary_compression.nil?
         ext = File.extname(new_tarfile)
         puts "Setting binary compression in #{pkg_file}..."
         # Add binary compression setting, and add the line if it doesn't exist.
@@ -1536,7 +1531,6 @@ def upload(pkg_name = nil, pkg_version = nil)
         else
           puts "Unable to tell where to add \"binary_compression 'tar#{ext}'\" to #{pkg_file}. Please add it and manually.".lightblue
         end
-        binary_compression_set = 1
       end
       puts "Package: #{package}, Arch: #{arch}".yellow
       puts 'Generating sha256sum ...'
@@ -1888,10 +1882,11 @@ end
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_source)
 
 def upload_command(args)
+  gitlab_token = ENV.fetch('GITLAB_TOKEN', nil)
   upload if args['<name>'].empty?
   args['<name>'].each do |name|
     search name
-    upload(name, @pkg.version) if @pkg.name
+    upload(name, @pkg.version, gitlab_token, @pkg.binary_compression)
   end
 end
 
