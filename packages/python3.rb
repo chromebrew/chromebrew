@@ -6,7 +6,7 @@ class Python3 < Package
   version '3.12.5'
   license 'PSF-2.0'
   compatibility 'all'
-  source_url "https://www.python.org/ftp/python/#{version}/Python-#{version.split('-').first}.tar.xz"
+  source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
   source_sha256 'fa8a2e12c5e620b09f53e65bcd87550d2e5a1e2e04bf8ba991dcc55113876397'
   binary_compression 'tar.zst'
 

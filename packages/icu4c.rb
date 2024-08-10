@@ -31,8 +31,7 @@ class Icu4c < Package
     end
   end
 
-  @icuver = '75.1'
-  @oldicuver = %w[74]
+  @oldicuver = %w[version.split('.').first.to_i - 1]
 
   def self.install
     Dir.chdir 'source' do
@@ -41,12 +40,12 @@ class Icu4c < Package
     Dir.chdir CREW_DEST_LIB_PREFIX do
       @oldicuver.each do |oldver|
         # Backwards compatibility symlinks (which may not work - see postinstall.)
-        FileUtils.ln_sf "libicudata.so.#{@icuver}", "libicudata.so.#{oldver}"
-        FileUtils.ln_sf "libicui18n.so.#{@icuver}", "libicui18n.so.#{oldver}"
-        FileUtils.ln_sf "libicuio.so.#{@icuver}", "libicuio.so.#{oldver}"
-        FileUtils.ln_sf "libicutest.so.#{@icuver}", "libicutest.so.#{oldver}"
-        FileUtils.ln_sf "libicutu.so.#{@icuver}", "libicutu.so.#{oldver}"
-        FileUtils.ln_sf "libicuuc.so.#{@icuver}", "libicuuc.so.#{oldver}"
+        FileUtils.ln_sf "libicudata.so.#{version}", "libicudata.so.#{oldver}"
+        FileUtils.ln_sf "libicui18n.so.#{version}", "libicui18n.so.#{oldver}"
+        FileUtils.ln_sf "libicuio.so.#{version}", "libicuio.so.#{oldver}"
+        FileUtils.ln_sf "libicutest.so.#{version}", "libicutest.so.#{oldver}"
+        FileUtils.ln_sf "libicutu.so.#{version}", "libicutu.so.#{oldver}"
+        FileUtils.ln_sf "libicuuc.so.#{version}", "libicuuc.so.#{oldver}"
       end
     end
   end

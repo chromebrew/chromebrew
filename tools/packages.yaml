@@ -7866,6 +7866,11 @@ url: https://github.com/markdownlint/markdownlint/tags
 activity: low
 ---
 kind: url
+name: ruby_pry_byebug
+url: https://github.com/deivid-rodriguez/pry-byebug/releases
+activity: low
+---
+kind: url
 name: ruby_rubocop
 url: https://github.com/rubocop/rubocop/releases
 activity: medium
