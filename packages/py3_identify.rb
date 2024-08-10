@@ -11,5 +11,4 @@ class Py3_identify < Pip
   depends_on 'python3' => :build
 
   no_compile_needed
-
 end

@@ -3,12 +3,11 @@ require 'buildsystems/python'
 class Py3_pyproject_hooks < Python
   description 'This package contains wrappers to call hooks on build backends for pyproject.toml -based projects'
   homepage 'https://pyproject-hooks.readthedocs.io/'
-  @_ver = '1.0.0'
-  version "#{@_ver}-py3.12"
+  version '1.0.0-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/pyproject-hooks.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({

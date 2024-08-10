@@ -3,12 +3,11 @@ require 'buildsystems/python'
 class Py3_setuptools < Python
   description 'Setuptools is the python build system from the Python Packaging Authority.'
   homepage 'https://setuptools.readthedocs.io/'
-  @_ver = '72.1.0'
-  version "#{@_ver}-py3.12"
+  version '72.1.0-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/setuptools.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({

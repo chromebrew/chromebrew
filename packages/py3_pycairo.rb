@@ -3,12 +3,11 @@ require 'buildsystems/python'
 class Py3_pycairo < Python
   description 'Pycairo is a provides bindings for the cairo graphics library.'
   homepage 'https://cairographics.org/pycairo/'
-  @_ver = '1.25.0'
-  version "#{@_ver}-py3.12"
+  version '1.25.0-py3.12'
   license 'LGPL-2.1 or MPL-1.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/pygobject/pycairo.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({

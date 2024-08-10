@@ -3,12 +3,11 @@ require 'buildsystems/python'
 class Py3_six < Python
   description 'Six is a Python 2 and 3 compatibility library.'
   homepage 'https://six.readthedocs.io/'
-  @_ver = '1.16.0'
-  version "#{@_ver}-py3.12"
+  version '1.16.0-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/benjaminp/six.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({

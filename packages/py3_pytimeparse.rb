@@ -3,12 +3,11 @@ require 'buildsystems/python'
 class Py3_pytimeparse < Python
   description 'Pytimeparse is a small Python module to parse various kinds of time expressions. '
   homepage 'https://github.com/wroberts/pytimeparse/'
-  @_ver = '1.1.8'
-  version "#{@_ver}-py3.12"
+  version '1.1.8-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/wroberts/pytimeparse.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({

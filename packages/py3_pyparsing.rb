@@ -3,12 +3,11 @@ require 'buildsystems/python'
 class Py3_pyparsing < Python
   description 'The pyparsing module is an alternative approach to creating and executing simple grammars, vs. the traditional lex/yacc approach, or the use of regular expressions.'
   homepage 'https://github.com/pyparsing/pyparsing/'
-  @_ver = '3.1.1'
-  version "#{@_ver}-py3.12"
+  version '3.1.1-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pyparsing/pyparsing.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({

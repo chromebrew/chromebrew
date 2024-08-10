@@ -17,11 +17,11 @@ class Py3_pre_commit < Pip
   })
 
   depends_on 'py3_cfgv'
-  depends_on 'py3_identify'
-  depends_on 'py3_nodeenv'
+  depends_on 'py3_identify' # L
+  depends_on 'py3_nodeenv' # L
   depends_on 'py3_pyyaml' # L
-  depends_on 'py3_virtualenv'
-  depends_on 'python3'
+  depends_on 'py3_virtualenv' # L
+  depends_on 'python3' # R
 
   no_source_build
 

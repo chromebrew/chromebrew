@@ -11,5 +11,4 @@ class Py3_cfgv < Pip
   depends_on 'python3' => :build
 
   no_compile_needed
-
 end

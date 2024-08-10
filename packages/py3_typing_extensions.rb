@@ -3,12 +3,11 @@ require 'package'
 class Py3_typing_extensions < Package
   description 'Backported and Experimental Type Hints for Python 3.5+'
   homepage 'https://github.com/python/typing/tree/master/typing_extensions'
-  @_ver = '4.2.0'
-  version "#{@_ver}-py3.12"
+  version '4.2.0-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/python/typing.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
