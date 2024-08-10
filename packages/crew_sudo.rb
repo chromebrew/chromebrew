@@ -11,13 +11,14 @@ class Crew_sudo < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6a5b7f96712d98010636cc8801d1251ad4b2bb66abd3606f86b2caf6c687baf9',
-     armv7l: '6a5b7f96712d98010636cc8801d1251ad4b2bb66abd3606f86b2caf6c687baf9',
-     x86_64: '6b7a5b5482541fd79b9ae7ae88d6296f914a3884a5f57fb55704d56194086718'
+    aarch64: '978c7fad9ecd7f1e3917843f94b709e2b15b62a4dea0327375eda17a75e38ecc',
+     armv7l: '978c7fad9ecd7f1e3917843f94b709e2b15b62a4dea0327375eda17a75e38ecc',
+     x86_64: '486cc1227bed448edfeb828f78c3776290a5a553fbcffb6e76d4df87c1ffc4d6'
   })
 
   def self.install
     system({ 'CREW_DEST_PREFIX' => CREW_DEST_PREFIX }, './install.sh')
+    FileUtils.rm_rf File.join(CREW_DEST_PREFIX, 'lib/crew-sudo/.git')
   end
 
   def self.postinstall
