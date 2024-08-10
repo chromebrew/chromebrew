@@ -5,7 +5,7 @@ class Crew_sudo < Package
   homepage 'https://github.com/chromebrew/crew-sudo'
   version '1.1'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/chromebrew/crew-sudo.git'
   git_hashtag "v#{@version}"
   binary_compression 'tar.zst'
