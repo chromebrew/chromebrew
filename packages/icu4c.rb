@@ -3,18 +3,18 @@ require 'package'
 class Icu4c < Package
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
   homepage 'https://icu.unicode.org/'
-  version '74.2'
+  version '75.1'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/unicode-org/icu/releases/download/release-74-2/icu4c-74_2-src.tgz'
-  source_sha256 '68db082212a96d6f53e35d60f47d38b962e9f9d207a74cfac78029ae8ff5e08c'
+  source_url 'https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-src.tgz'
+  source_sha256 'cb968df3e4d2e87e8b11c49a5d01c787bd13b9545280fc6642f826527618caef'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fe4fdd869d949f3caf863b543dd2f8b189e34b14e9c498c00f92979f8ddc0e9c',
-     armv7l: 'fe4fdd869d949f3caf863b543dd2f8b189e34b14e9c498c00f92979f8ddc0e9c',
-       i686: 'c7a47779435d14a382281dbd3208913f4cbe5ef54f391f729f74d1037942238a',
-     x86_64: 'd982bd98cb626a29bff9c6bb4a155610cad0a4239aadbdfe1e16e0acbec76b75'
+    aarch64: '2ff2ed4760529e3611a51211876c17df5c9acc5a689cd35cb5a98ce0c4c1f714',
+     armv7l: '2ff2ed4760529e3611a51211876c17df5c9acc5a689cd35cb5a98ce0c4c1f714',
+       i686: '3bab33be0214ced3080b895c615ee8f9bf3b98e191701be0917c2e02c783c26f',
+     x86_64: '83e81c0d8bb9981034d6d63755ac0e9ae833d9544cbc07e32d242e98cf3d30db'
   })
 
   depends_on 'gcc_lib' # R
@@ -24,7 +24,6 @@ class Icu4c < Package
     Dir.chdir 'source' do
       system "mold -run ./configure \
         #{CREW_OPTIONS} \
-        --enable-static \
         --enable-shared \
         --disable-samples \
         --disable-tests"
@@ -32,8 +31,7 @@ class Icu4c < Package
     end
   end
 
-  @icuver = '74.2'
-  @oldicuver = %w[73]
+  @oldicuver = %w[version.split('.').first.to_i - 1]
 
   def self.install
     Dir.chdir 'source' do
@@ -42,12 +40,12 @@ class Icu4c < Package
     Dir.chdir CREW_DEST_LIB_PREFIX do
       @oldicuver.each do |oldver|
         # Backwards compatibility symlinks (which may not work - see postinstall.)
-        FileUtils.ln_sf "libicudata.so.#{@icuver}", "libicudata.so.#{oldver}"
-        FileUtils.ln_sf "libicui18n.so.#{@icuver}", "libicui18n.so.#{oldver}"
-        FileUtils.ln_sf "libicuio.so.#{@icuver}", "libicuio.so.#{oldver}"
-        FileUtils.ln_sf "libicutest.so.#{@icuver}", "libicutest.so.#{oldver}"
-        FileUtils.ln_sf "libicutu.so.#{@icuver}", "libicutu.so.#{oldver}"
-        FileUtils.ln_sf "libicuuc.so.#{@icuver}", "libicuuc.so.#{oldver}"
+        FileUtils.ln_sf "libicudata.so.#{version}", "libicudata.so.#{oldver}"
+        FileUtils.ln_sf "libicui18n.so.#{version}", "libicui18n.so.#{oldver}"
+        FileUtils.ln_sf "libicuio.so.#{version}", "libicuio.so.#{oldver}"
+        FileUtils.ln_sf "libicutest.so.#{version}", "libicutest.so.#{oldver}"
+        FileUtils.ln_sf "libicutu.so.#{version}", "libicutu.so.#{oldver}"
+        FileUtils.ln_sf "libicuuc.so.#{version}", "libicuuc.so.#{oldver}"
       end
     end
   end
@@ -58,7 +56,7 @@ class Icu4c < Package
     return if CREW_IN_CONTAINER
 
     Dir.chdir CREW_LIB_PREFIX do
-      @oldicuver = %w[73.2 73 72 72.1]
+      @oldicuver = %w[74.2 73.2 73 72 72.1]
       @oldicuver.each do |oldver|
         puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
         @file_array = []
@@ -73,7 +71,7 @@ class Icu4c < Package
         end
         # Mozjs contains an internal icu which will not match this version.
         # Update the following when there is a new version of mozjs.
-        @file_array.delete_if { |item| item == 'js102' }
+        @file_array.delete_if { |item| item == 'js115' }
         next if @file_array.empty?
 
         @file_array.uniq.sort.each do |item|

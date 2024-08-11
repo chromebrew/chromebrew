@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libmetalink < Package
+class Libmetalink < Autotools
   description 'libmetalink is a Metalink library written in C language.'
   homepage 'https://launchpad.net/libmetalink/'
-  version '0.1.3-4'
+  version '0.1.3-icu75.1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://launchpad.net/libmetalink/trunk/libmetalink-0.1.3/+download/libmetalink-0.1.3.tar.xz'
@@ -11,10 +11,10 @@ class Libmetalink < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8bd31fde06e46219af5b677ba5c9b07a08791ac55e54210c5cffab26388765ae',
-     armv7l: '8bd31fde06e46219af5b677ba5c9b07a08791ac55e54210c5cffab26388765ae',
-       i686: 'bd310b53a21259a255b889a5bd45aa8be2e37fb27fa46e7335e5301e5527ded2',
-     x86_64: '8310e4105b2420764bad16dc53886172f7fe1bd80a87c2b22df3c4781db76077'
+    aarch64: '42cb115a3b2c323130bc34433ebfc14e63242a702fa0f28bda714564b22d0267',
+     armv7l: '42cb115a3b2c323130bc34433ebfc14e63242a702fa0f28bda714564b22d0267',
+       i686: 'c1b46a162c5ffbdc8f619161a71783510b481384376338d6dafcb32f7228baa4',
+     x86_64: '4295610c625ae49b93d8d98e7614b4c9fd3c664ca305720f0e34b99bfabde420'
   })
 
   depends_on 'glibc' # R
@@ -26,21 +26,8 @@ class Libmetalink < Package
     downloader 'https://launchpadlibrarian.net/380798344/0001-fix-covscan-issues.patch',
                'd236dfa0d4a1938a40ff2ce4dd348c42b74ad68807df0f1b6ea69c11725fd9cf'
     system 'patch -Np1 -i 0001-fix-covscan-issues.patch'
-    system 'filefix'
   end
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} \
-      --with-libxml2 \
-      --without-libexpat"
-    system 'make'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--with-libxml2 \
+      --without-libexpat'
 end

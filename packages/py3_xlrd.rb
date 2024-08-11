@@ -3,12 +3,11 @@ require 'buildsystems/python'
 class Py3_xlrd < Python
   description 'XLRD is a library to extract data from Microsoft Excel (tm) spreadsheet files.'
   homepage 'https://xlrd.readthedocs.io/'
-  @_ver = '2.0.1'
-  version "#{@_ver}-py3.12"
+  version '2.0.1-py3.12'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/python-excel/xlrd.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({

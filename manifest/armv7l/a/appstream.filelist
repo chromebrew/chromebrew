@@ -55,9 +55,9 @@
 /usr/local/lib/girepository-1.0/AppStreamCompose-1.0.typelib
 /usr/local/lib/libappstream-compose.so
 /usr/local/lib/libappstream-compose.so.0
-/usr/local/lib/libappstream-compose.so.1.0.2
+/usr/local/lib/libappstream-compose.so.1.0.3
 /usr/local/lib/libappstream.so
-/usr/local/lib/libappstream.so.1.0.2
+/usr/local/lib/libappstream.so.1.0.3
 /usr/local/lib/libappstream.so.5
 /usr/local/lib/pkgconfig/appstream-compose.pc
 /usr/local/lib/pkgconfig/appstream.pc
@@ -1201,6 +1201,7 @@
 /usr/local/share/locale/hi/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/hr/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/hu/LC_MESSAGES/appstream.mo
+/usr/local/share/locale/ia/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/id/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/it/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/ja/LC_MESSAGES/appstream.mo

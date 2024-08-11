@@ -6,24 +6,24 @@ require 'package'
 class Ldb < Package
   description 'Schema-less, ldap like, API and database'
   homepage 'https://ldb.samba.org/'
-  @_ver = '2.9.0'
-  version "#{@_ver}-py3.12"
+  version '2.9.1-py3.12'
   license 'GPLv3'
   compatibility 'all'
-  source_url "https://samba.org/ftp/ldb/ldb-#{@_ver}.tar.gz"
+  source_url "https://samba.org/ftp/ldb/ldb-#{version.split('-').first}.tar.gz"
   source_sha256 '105aaff71ad881a7faeb582fd416ae28221b6fde338fff82828065062c2507a5'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4f355683fe450dbb30a34904ee85abef2d7895907897f03133f74a853100c6f0',
-     armv7l: '4f355683fe450dbb30a34904ee85abef2d7895907897f03133f74a853100c6f0',
-       i686: '6af6a1202c85b38cab2fdeb47138f7c124b17c7639dff3cbac10bfff15fc4c76',
-     x86_64: '1c1743b78c2b12a9f69d287bc2fbcc127d91111286a25cd2e35090039e8245df'
+    aarch64: '78ec3789e72251b4439325dac0c5ce6137e5787df52cfdadd591d9ccafba7382',
+     armv7l: '78ec3789e72251b4439325dac0c5ce6137e5787df52cfdadd591d9ccafba7382',
+       i686: '41a64479efa5a4e84eb760a5a099a5aee385709097306b84b6335bffaeb223d7',
+     x86_64: '48f44065d72deb20771736cfbfe802fe668736a01ec776c8a710d8ba12db09b0'
   })
 
   depends_on 'cmocka' => :build
   depends_on 'docbook_xsl' => :build
   depends_on 'gcc_lib' # R
+  depends_on 'gdb' => :build
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
   depends_on 'libxcrypt' => :build

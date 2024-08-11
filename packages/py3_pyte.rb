@@ -3,12 +3,11 @@ require 'buildsystems/python'
 class Py3_pyte < Python
   description 'PyTE is a Simple VTXXX-compatible terminal emulator.'
   homepage 'https://github.com/selectel/pyte/'
-  @_ver = '0.8.1'
-  version "#{@_ver}-py3.12"
+  version '0.8.1-py3.12'
   license 'LGPL-3'
   compatibility 'all'
   source_url 'https://github.com/selectel/pyte.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({

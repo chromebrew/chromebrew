@@ -29,6 +29,20 @@ require_relative '../commands/sysinfo'
 require_relative '../commands/whatprovides'
 require_relative '../lib/color'
 require_relative '../lib/const'
+
+if CREW_DEBUG
+  begin
+    gem 'pry-byebug'
+  rescue Gem::LoadError
+    puts ' -> install gem pry-byebug for debugging...'
+    Gem.install('pry-byebug')
+    gem 'pry-byebug'
+  end
+  require 'pry-byebug'
+  # Debugging starts here when enabled.
+  binding.pry
+end
+
 require_relative '../lib/crewlog'
 require_relative '../lib/deb_utils'
 require_relative '../lib/docopt'
@@ -655,6 +669,8 @@ def build_and_preconfigure(target_dir)
       load File.join(CREW_LIB_PATH, 'lib/musl.rb').to_s if @pkg.is_musl?
     end
 
+    build_start_time = Time.now.to_i
+
     @pkg.in_build = true
     unless @pkg.cached_build
       @pkg.patch
@@ -676,6 +692,26 @@ def build_and_preconfigure(target_dir)
     puts 'Preconfiguring package...'
     cache_build if CREW_CACHE_BUILD
     @pkg.install
+
+    build_end_time = Time.now.to_i
+    build_time_elapsed = build_end_time - build_start_time
+    build_time_hours = build_time_elapsed / 3600
+    build_time_minutes = build_time_elapsed / 60 % 60
+    build_time_seconds = build_time_elapsed % 60
+    build_time_hour_string = if build_time_hours.zero?
+                               ''
+                             else
+                               "#{build_time_hours} hr#{build_time_hours > 1 ? 's, ' : ', '}"
+                             end
+    build_time_minutes_string = if build_time_minutes.zero?
+                                  build_time_hour_string.empty? ? '' : "#{build_time_minutes} min, "
+                                else
+                                  "#{build_time_minutes} min, "
+                                end
+    build_time_seconds_string = "#{build_time_seconds} second#{build_time_seconds > 1 ? 's' : ''}"
+    build_time_elapsed_string = build_time_hour_string + build_time_minutes_string + build_time_seconds_string
+    crewlog "Build & install for #{@pkg.name} took #{build_time_elapsed_string}."
+    puts "Build & install for #{@pkg.name} took #{build_time_elapsed_string}. Please ask for #{ARCH} binaries to be generated for #{@pkg.name}.".lightpurple if build_time_elapsed > 60
   end
 end
 
@@ -1456,21 +1492,13 @@ def print_deps_tree(args)
   puts tree_view
 end
 
-def upload(pkg_name = nil, pkg_version = nil)
-  abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV.fetch('GITLAB_TOKEN', nil).nil?
+def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compression = nil)
+  abort "\nPackage to be uploaded was not specified.\n".lightred if pkg_name.nil?
+  abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if gitlab_token.nil?
 
   packages = pkg_name
-  binary_compression_set = nil
-  gitlab_token = ENV.fetch('GITLAB_TOKEN', nil)
-  base_url = 'https://gitlab.com/api/v4/projects/26210301/packages/generic'
 
-  if pkg_name.nil?
-    %w[.tar.xz .tar.zst].each do |ext|
-      packages += `find #{CREW_LOCAL_REPO_ROOT}/release/*/*#{ext} -exec basename -s #{ext} {} + | cut -d- -f1 | LC_ALL=C sort | uniq | xargs`
-      packages += ' '
-    end
-    abort 'No package binaries found.'.lightred if packages.empty?
-  end
+  base_url = 'https://gitlab.com/api/v4/projects/26210301/packages/generic'
 
   packages.strip!
 
@@ -1478,12 +1506,16 @@ def upload(pkg_name = nil, pkg_version = nil)
     %w[x86_64 i686 armv7l].each do |arch|
       release_dir = "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}"
       pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
-      new_tarfile = Dir["#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
-      if new_tarfile.nil?
+      new_tarfile = if binary_compression.nil?
+                      Dir["#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
+                    else
+                      "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
+                    end
+      if new_tarfile.nil? || !File.file?(new_tarfile)
         puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
         next
       end
-      if binary_compression_set.nil?
+      if binary_compression.nil?
         ext = File.extname(new_tarfile)
         puts "Setting binary compression in #{pkg_file}..."
         # Add binary compression setting, and add the line if it doesn't exist.
@@ -1499,7 +1531,6 @@ def upload(pkg_name = nil, pkg_version = nil)
         else
           puts "Unable to tell where to add \"binary_compression 'tar#{ext}'\" to #{pkg_file}. Please add it and manually.".lightblue
         end
-        binary_compression_set = 1
       end
       puts "Package: #{package}, Arch: #{arch}".yellow
       puts 'Generating sha256sum ...'
@@ -1509,25 +1540,38 @@ def upload(pkg_name = nil, pkg_version = nil)
       new_version = noname.split('-chromeos').first
       new_url = "#{base_url}/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
       token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
-      puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
-      output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
-      if output.include?('201 Created')
-        puts "curl -Ls #{new_url} | sha256sum" if CREW_VERBOSE
-        upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
-        if upstream_sha256 == new_sha256
-          puts output.lightgreen
-        else
-          if CREW_VERBOSE
-            puts "expected sha256 hash=#{new_sha256}"
-            puts "upstream sha256 hash=#{upstream_sha256}"
+      if `curl -sI #{new_url}`.lines.first.split[1] == '200'
+        begin
+          gem 'highline'
+        rescue Gem::LoadError
+          puts ' -> install gem highline...'
+          Gem.install('highline')
+          gem 'highline'
+        end
+        require 'highline/import'
+        puts "#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try agaim.".lightred
+        abort 'Will NOT overwite the existing upload.'.lightred unless agree('Do you want to overwrite the existing upload instead? ').lightpurple
+      else
+        puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
+        output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
+        if output.include?('201 Created')
+          puts "curl -Ls #{new_url} | sha256sum" if CREW_VERBOSE
+          upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
+          if upstream_sha256 == new_sha256
+            puts output.lightgreen
+          else
+            if CREW_VERBOSE
+              puts "expected sha256 hash=#{new_sha256}"
+              puts "upstream sha256 hash=#{upstream_sha256}"
+            end
+            puts "#{output}. Checksum mismatch. Skipping binary_sha256 update in #{pkg_file}...".lightred
+            next
           end
-          puts "#{output}. Checksum mismatch. Skipping binary_sha256 update in #{pkg_file}...".lightred
+        else
+          puts output.lightred
+          puts "#{output}. Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
           next
         end
-      else
-        puts output.lightred
-        puts "#{output}. Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
-        next
       end
       old_sha256 = `grep -m 1 #{arch}: #{pkg_file} 2> /dev/null`.chomp
       if old_sha256.empty?
@@ -1851,10 +1895,11 @@ end
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_source)
 
 def upload_command(args)
+  gitlab_token = ENV.fetch('GITLAB_TOKEN', nil)
   upload if args['<name>'].empty?
   args['<name>'].each do |name|
     search name
-    upload(name, @pkg.version) if @pkg.name
+    upload(name, @pkg.version, gitlab_token, @pkg.binary_compression)
   end
 end
 

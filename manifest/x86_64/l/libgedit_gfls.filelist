@@ -1,0 +1,12 @@
+/usr/local/include/libgedit-gfls-1/gfls/gfls-enum-types.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-init.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-input-stream.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-loader-basic.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-unsaved-document-titles.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-utf8.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls.h
+/usr/local/lib64/girepository-1.0/Gfls-1.typelib
+/usr/local/lib64/libgedit-gfls-1.so
+/usr/local/lib64/libgedit-gfls-1.so.0
+/usr/local/lib64/pkgconfig/libgedit-gfls-1.pc
+/usr/local/share/gir-1.0/Gfls-1.gir

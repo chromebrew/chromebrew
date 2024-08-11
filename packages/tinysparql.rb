@@ -1,27 +1,26 @@
-# Adapted from Arch Linux tracker3 PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/tracker3/trunk/PKGBUILD
-
 require 'buildsystems/meson'
 
-class Tracker3 < Meson
-  description 'Desktop-neutral user information store, search tool and indexer'
-  homepage 'https://wiki.gnome.org/Projects/Tracker'
-  version '3.6.0'
+class Tinysparql < Meson
+  description 'Low-footprint RDF triple store library with SPARQL 1.1 interface'
+  homepage 'https://gitlab.gnome.org/GNOME/tinysparql'
+  version '3.7.3-icu75.1'
   license 'GPLv2+'
   compatibility 'x86_64 aarch64 armv7l'
-  min_glibc '2.35'
-  source_url 'https://gitlab.gnome.org/GNOME/tracker.git'
-  git_hashtag version
+  min_glibc '2.37'
+  source_url 'https://gitlab.gnome.org/GNOME/tinysparql.git'
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7c61e7b8d0fb1be446a2c2db2060ff1b9a4349531d7df6cde4e91a1ec69ea4ec',
-     armv7l: '7c61e7b8d0fb1be446a2c2db2060ff1b9a4349531d7df6cde4e91a1ec69ea4ec',
-     x86_64: '26e3149df2d260e96f70c11e5f0e2b7aaed38fbc6545df7cd9a8262b161dfac1'
+    aarch64: '42c62d693cc7d5b435d05a5d61b39339d5a1dfec645e031dac8b0d0358b73a4c',
+     armv7l: '42c62d693cc7d5b435d05a5d61b39339d5a1dfec645e031dac8b0d0358b73a4c',
+     x86_64: '8ca12cb7bd12ce282e2cf036b7cd15011663886a47d0b24b4d1af5209cea3926'
   })
 
   depends_on 'asciidoc' => :build
+  depends_on 'avahi' # R
   depends_on 'docbook_xml' => :build
+  depends_on 'dbus' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc_lib' # R
   depends_on 'glibc' # R

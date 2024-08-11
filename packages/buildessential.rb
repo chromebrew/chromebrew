@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.33'
+  version '1.34'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -171,6 +171,10 @@ class Buildessential < Package
   depends_on 'ruby_rubocop'
   # Add ruby_concurrent_ruby
   depends_on 'ruby_concurrent_ruby'
+  # For use in ruby prompts.
+  depends_on 'ruby_highline'
+  # For crew debugging.
+  depends_on 'ruby_pry_byebug' if CREW_IN_CONTAINER
 
   # Code quality
   depends_on 'py3_pre_commit'

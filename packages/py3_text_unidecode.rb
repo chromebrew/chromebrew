@@ -3,12 +3,11 @@ require 'buildsystems/python'
 class Py3_text_unidecode < Python
   description 'Text-unicode is the most basic Text::Unidecode port.'
   homepage 'https://github.com/kmike/text-unidecode/'
-  @_ver = '1.3'
-  version "#{@_ver}-py3.12"
+  version '1.3-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/kmike/text-unidecode.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({

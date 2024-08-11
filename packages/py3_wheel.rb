@@ -3,12 +3,11 @@ require 'buildsystems/python'
 class Py3_wheel < Python
   description 'Wheel is the binary package format for python.'
   homepage 'https://wheel.readthedocs.io/'
-  @_ver = '0.41.2'
-  version "#{@_ver}-py3.12"
+  version '0.41.2-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/wheel.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({

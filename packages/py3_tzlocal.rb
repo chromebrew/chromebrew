@@ -3,8 +3,7 @@ require 'buildsystems/pip'
 class Py3_tzlocal < Pip
   description 'Tzlocal provides tzinfo object for the local timezone.'
   homepage 'https://github.com/regebro/tzlocal/'
-  @_ver = '4.1'
-  version "#{@_ver}-py3.12"
+  version '4.1-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

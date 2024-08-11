@@ -3,12 +3,11 @@ require 'buildsystems/python'
 class Py3_dateutil < Python
   description 'Dateutil provides extensions to the standard Python datetime module.'
   homepage 'https://dateutil.readthedocs.io/'
-  @_ver = '2.8.2'
-  version "#{@_ver}-py3.12"
+  version '2.8.2-py3.12'
   license 'BSD-3 and Apache-2.0 or BSD-3'
   compatibility 'all'
   source_url 'https://github.com/dateutil/dateutil.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({

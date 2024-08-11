@@ -20,6 +20,10 @@ AllCops:
 Lint/ShadowingOuterLocalVariable:
   Enabled: false
 
+Lint/Debugger:
+  DebuggerMethods:
+    Pry: ~
+
 Lint/SuppressedException:
   Enabled: false
 

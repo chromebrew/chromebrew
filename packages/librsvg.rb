@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Librsvg < Autotools
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  version '2.57.2'
+  version '2.58.2-icu75.1'
   license 'LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({

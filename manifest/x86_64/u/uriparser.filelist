@@ -1,0 +1,15 @@
+/usr/local/bin/uriparse
+/usr/local/include/uriparser/Uri.h
+/usr/local/include/uriparser/UriBase.h
+/usr/local/include/uriparser/UriDefsAnsi.h
+/usr/local/include/uriparser/UriDefsConfig.h
+/usr/local/include/uriparser/UriDefsUnicode.h
+/usr/local/include/uriparser/UriIp4.h
+/usr/local/lib64/cmake/uriparser-0.9.8/uriparser-config-version.cmake
+/usr/local/lib64/cmake/uriparser-0.9.8/uriparser-config.cmake
+/usr/local/lib64/cmake/uriparser-0.9.8/uriparser-release.cmake
+/usr/local/lib64/cmake/uriparser-0.9.8/uriparser.cmake
+/usr/local/lib64/liburiparser.so
+/usr/local/lib64/liburiparser.so.1
+/usr/local/lib64/liburiparser.so.1.0.31
+/usr/local/lib64/pkgconfig/liburiparser.pc

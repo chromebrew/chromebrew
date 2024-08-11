@@ -3,8 +3,7 @@ require 'buildsystems/pip'
 class Py3_ruff < Pip
   description 'An extremely fast Python linter, written in Rust.'
   homepage 'https://docs.astral.sh/ruff'
-  @_ver = '0.1.3'
-  version "#{@_ver}-py3.12"
+  version '0.1.3-py3.12'
   license 'GPL-2.0'
   compatibility 'all'
   source_url 'SKIP'

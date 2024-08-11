@@ -17,7 +17,7 @@ class Ttf_hanazono < Package
     @_ttf_fonts_dir = "#{CREW_DEST_PREFIX}/share/fonts/TTF"
     FileUtils.mkdir_p @_ttf_fonts_dir
     %w[HanaMinA HanaMinB].each fontfile do
-      FileUtils.install 'HanaMinA.ttf' "#{@_ttf_fonts_dir}/#{fontfile}.ttf"
+      FileUtils.install "HanaMinA.ttf#{@_ttf_fonts_dir}/#{fontfile}.ttf"
     end
   end
 end

@@ -59,9 +59,12 @@ def downloader(url, sha256sum, filename = File.basename(url), verbose = false)
   calc_sha256sum = Digest::SHA256.hexdigest(File.read(filename))
 
   unless (sha256sum =~ /^SKIP$/i) || (calc_sha256sum == sha256sum)
-    if @opt_force
-      puts "Updating checksum for #{filename} from #{sha256sum} to #{calc_sha256sum} in #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb .".lightblue
-      system "sed -i 's/#{sha256sum}/#{calc_sha256sum}/' #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb"
+    if CREW_FORCE
+      pkg_name = @pkg_name.empty? ? name : @pkg_name
+      puts "Updating checksum for #{filename}".lightblue
+      puts "from #{sha256sum} to #{calc_sha256sum}".lightblue
+      puts "in #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb .".lightblue
+      system "sed -i 's/#{sha256sum}/#{calc_sha256sum}/' #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb"
     else
       FileUtils.rm_f filename
 
