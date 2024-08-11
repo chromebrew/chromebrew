@@ -2,13 +2,14 @@
 require 'uri'
 require 'digest/sha2'
 begin
-  require 'json'
+  gem 'json'
 rescue LoadError
   # The json gem can break when upgrading from a much older version of ruby.
-  puts ' -> install gem json'
+  puts ' -> install json gem'
   Gem.install('json')
-  require 'json'
+  gem 'json'
 end
+require 'json'
 require 'fileutils'
 require 'tmpdir'
 begin
@@ -34,7 +35,7 @@ if CREW_DEBUG
   begin
     gem 'pry-byebug'
   rescue Gem::LoadError
-    puts ' -> install gem pry-byebug for debugging...'
+    puts ' -> install pry-byebug gem for debugging...'
     Gem.install('pry-byebug')
     gem 'pry-byebug'
   end
@@ -42,6 +43,16 @@ if CREW_DEBUG
   # Debugging starts here when enabled.
   binding.pry
 end
+
+# The highline gem is used for ruby prompts.
+begin
+  gem 'highline'
+rescue Gem::LoadError
+  puts ' -> install gem highline...'
+  Gem.install('highline')
+  gem 'highline'
+end
+require 'highline/import'
 
 require_relative '../lib/crewlog'
 require_relative '../lib/deb_utils'
@@ -1230,18 +1241,10 @@ def resolve_dependencies
 
   if @opt_force
     puts 'Proceeding with dependency package installation...'.orange
+  elsif agree('Do you agree? ')
+    puts 'Proceeding...'
   else
-    print 'Do you agree? [Y/n] '
-    response = $stdin.gets.chomp.downcase
-    case response
-    when 'n', 'no'
-      abort 'No changes made.'
-    when '', 'y', 'yes'
-      puts 'Proceeding...'
-    else
-      puts "I don't understand `#{response}`. :(".lightred
-      abort 'No changes made.'
-    end
+    abort 'No changes made.'
   end
 
   @dependencies.each do |dep|
@@ -1541,15 +1544,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compres
       new_url = "#{base_url}/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
       token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
       if `curl -sI #{new_url}`.lines.first.split[1] == '200'
-        begin
-          gem 'highline'
-        rescue Gem::LoadError
-          puts ' -> install gem highline...'
-          Gem.install('highline')
-          gem 'highline'
-        end
-        require 'highline/import'
-        puts "#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try agaim.".lightred
+        puts "\n#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again\n.".lightred
         abort 'Will NOT overwite the existing upload.'.lightred unless agree('Do you want to overwrite the existing upload instead? ').lightpurple
       else
         puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
@@ -1643,17 +1638,10 @@ def copy_package(pkg_name, prompt_msg = '')
     # This pulls the operation from the calling function
     operation = caller_locations(1, 2)[1].to_s.split[3].split('_')[0]
     puts prompt_msg.yellow
-    print "\nWould you like to copy #{pkg_name}.rb to crew and start the #{operation}? [Y/n] ".yellow
-    response = $stdin.gets.chomp.downcase
-    case response
-    when 'n', 'no'
-      puts "#{operation.capitalize} skipped."
-      next_pkg = true
-    when '', 'y', 'yes'
+    if agree("\nWould you like to copy #{pkg_name}.rb to crew and start the #{operation}?  ").yellow
       FileUtils.cp pkg_file, "#{CREW_PACKAGES_PATH}/"
       puts "\nCopied #{pkg_file} to #{CREW_PACKAGES_PATH}.\n".lightgreen
     else
-      puts "I don't understand `#{response}`. :(".lightred
       puts "#{operation.capitalize} skipped."
       next_pkg = true
     end
