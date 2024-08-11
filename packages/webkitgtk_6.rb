@@ -12,8 +12,8 @@ class Webkitgtk_6 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '53c442de2db8f52ed203fc6a9d3417382ec0d5d1e0531ba6f0531156c006174e',
-     armv7l: '53c442de2db8f52ed203fc6a9d3417382ec0d5d1e0531ba6f0531156c006174e',
+    aarch64: '85ed089e4dc72c58ec3630ccfb7cfe2be614c5c4f3a49c367acd1d36ea34e0b1',
+     armv7l: '85ed089e4dc72c58ec3630ccfb7cfe2be614c5c4f3a49c367acd1d36ea34e0b1',
      x86_64: '9415fcdeb2cd5e21c20b3149825074f8c3c46aef39906882198429eb73902f1a'
   })
 
@@ -27,6 +27,7 @@ class Webkitgtk_6 < Package
   depends_on 'gcc10' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
@@ -41,6 +42,7 @@ class Webkitgtk_6 < Package
   depends_on 'lcms' # R
   depends_on 'libavif' # R
   depends_on 'libbacktrace' => :build
+  depends_on 'libbacktrace' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
   depends_on 'libgcrypt' # R

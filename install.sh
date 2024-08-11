@@ -270,6 +270,21 @@ function update_device_json () {
   cat <<< "${new_info}" > device.json
 }
 
+function install_ruby_gem () {
+  rubymajorversion=$(ruby -e "puts RUBY_VERSION.slice(/(?:.*(?=\.))/)")
+  echo_info 'Updating RubyGems...'
+  gem update -N --system
+  for gem in "$@"; do
+    ruby_gem="${gem}"
+    echo_intra "Installing ${ruby_gem} gem..."
+    gem install -N "${ruby_gem}" --conservative
+    gem_version="$(gem list "${ruby_gem}" | grep "${ruby_gem}" | awk '{print $2}' | tr -d '()')"
+    json_gem_version="${gem_version}-ruby-${rubymajorversion}"
+    update_device_json "ruby_${ruby_gem//-/_}" "${json_gem_version}" ""
+    echo_success "${ruby_gem^} gem installed."
+  done
+}
+
 echo_info "Downloading Bootstrap packages...\n"
 
 # Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
@@ -312,18 +327,12 @@ echo_out "Set up and synchronize local package repo..."
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
-# Install activesupport gem for ruby
 echo_info 'Installing essential ruby gems.'
-gem update -N --system
-# activesupport is only used at exit.
-#gem install -N activesupport --conservative
-# concurrent-ruby is only used for def shrink_dir
-#gem install -N concurrent-ruby --conservative
-gem install -N highline --conservative
-update_device_json "ruby_highline" "`gem list 'highline' | grep highline | awk '{print $2}' | tr -d '()'`-ruby" "null"
-
-# Since we downloaded the package repo, just update package compatibility information.
-crew update compatible
+BOOTSTRAP_GEMS='activesupport concurrent-ruby highline'
+# Due to a bug in crew where it accepts spaces in package files names rather than
+# splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}.
+# shellcheck disable=SC2086
+install_ruby_gem $BOOTSTRAP_GEMS
 
 echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core
@@ -332,7 +341,7 @@ echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than
 # splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}.
 # shellcheck disable=SC2086
-for i in ${BOOTSTRAP_PACKAGES}
+for i in ${BOOTSTRAP_PACKAGES} ${BOOTSTRAP_GEMS}
 do
   echo_info "Doing postinstall for $i"
   crew postinstall $i || echo_error "Postinstall for $i failed."

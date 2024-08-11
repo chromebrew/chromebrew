@@ -1534,31 +1534,34 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compres
       new_version = noname.split('-chromeos').first
       new_url = "#{base_url}/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
       token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
+
       if `curl -sI #{new_url}`.lines.first.split[1] == '200'
-        puts "\n#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again\n.".lightred
+        puts "\n#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
         require_gem('highline/import')
-        abort 'Will NOT overwite the existing upload.'.lightred unless agree('Do you want to overwrite the existing upload instead? ').lightpurple
-      else
-        puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
-        output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
-        if output.include?('201 Created')
-          puts "curl -Ls #{new_url} | sha256sum" if CREW_VERBOSE
-          upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
-          if upstream_sha256 == new_sha256
-            puts output.lightgreen
-          else
-            if CREW_VERBOSE
-              puts "expected sha256 hash=#{new_sha256}"
-              puts "upstream sha256 hash=#{upstream_sha256}"
-            end
-            puts "#{output}. Checksum mismatch. Skipping binary_sha256 update in #{pkg_file}...".lightred
-            next
-          end
-        else
-          puts output.lightred
-          puts "#{output}. Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
+        unless agree('Do you want to overwrite the existing upload instead? ')
+          puts 'Will NOT overwite the existing upload.'.lightred
           next
         end
+      end
+      puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
+      output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
+      if output.include?('201 Created')
+        puts "curl -Ls #{new_url} | sha256sum" if CREW_VERBOSE
+        upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
+        if upstream_sha256 == new_sha256
+          puts output.lightgreen
+        else
+          if CREW_VERBOSE
+            puts "expected sha256 hash=#{new_sha256}"
+            puts "upstream sha256 hash=#{upstream_sha256}"
+          end
+          puts "#{output}. Checksum mismatch. Skipping binary_sha256 update in #{pkg_file}...".lightred
+          next
+        end
+      else
+        puts output.lightred
+        puts "#{output}. Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
+        next
       end
       old_sha256 = `grep -m 1 #{arch}: #{pkg_file} 2> /dev/null`.chomp
       if old_sha256.empty?
