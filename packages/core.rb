@@ -79,6 +79,8 @@ class Core < Package
   depends_on 'rtmpdump'
   depends_on 'ruby'
   # For use in ruby prompts.
+  depends_on 'ruby_activesupport'
+  depends_on 'ruby_concurrent_ruby'
   depends_on 'ruby_highline'
   depends_on 'slang'
   depends_on 'sqlite'

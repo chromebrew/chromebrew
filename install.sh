@@ -315,8 +315,12 @@ echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 # Install activesupport gem for ruby
 echo_info 'Installing essential ruby gems.'
 gem update -N --system
-gem install -N activesupport --conservative
-gem install -N concurrent-ruby --conservative
+# activesupport is only used at exit.
+#gem install -N activesupport --conservative
+# concurrent-ruby is only used for def shrink_dir
+#gem install -N concurrent-ruby --conservative
+gem install -N highline --conservative
+update_device_json "ruby_highline" "`gem list 'highline' | grep highline | awk '{print $2}' | tr -d '()'`-ruby" "null"
 
 # Since we downloaded the package repo, just update package compatibility information.
 crew update compatible
