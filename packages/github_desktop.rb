@@ -3,19 +3,19 @@ require 'package'
 class Github_desktop < Package
   description 'GitHub Desktop is an open source Electron-based GitHub app'
   homepage 'https://desktop.github.com/'
-  version '3.4.2-RC1'
+  version '3.4.3-linux1'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.29'
   source_url({
-    aarch64: 'https://github.com/shiftkey/desktop/releases/download/release-3.4.2-linux1/GitHubDesktop-linux-armv7l-3.4.2-linux1.AppImage',
-     armv7l: 'https://github.com/shiftkey/desktop/releases/download/release-3.4.2-linux1/GitHubDesktop-linux-armv7l-3.4.2-linux1.AppImage',
-     x86_64: 'https://github.com/shiftkey/desktop/releases/download/release-3.4.2-linux1/GitHubDesktop-linux-x86_64-3.4.2-linux1.AppImage'
+    aarch64: "https://github.com/shiftkey/desktop/releases/download/release-#{version}/GitHubDesktop-linux-armv7l-#{version}.AppImage",
+     armv7l: "https://github.com/shiftkey/desktop/releases/download/release-#{version}/GitHubDesktop-linux-armv7l-#{version}.AppImage",
+     x86_64: "https://github.com/shiftkey/desktop/releases/download/release-#{version}/GitHubDesktop-linux-x86_64-#{version}.AppImage"
   })
   source_sha256({
-    aarch64: '73a46b16bf8921a0037c17105e673d7414c5f53788916bf52b7f6299c3c4d26d',
-     armv7l: '73a46b16bf8921a0037c17105e673d7414c5f53788916bf52b7f6299c3c4d26d',
-     x86_64: 'a323ef799e342ebb015c21e82989f51671bfddd652e23821b8ce1032d93fbde0'
+    aarch64: '82f66728d77ea66bcd9ed6cdb24787daa8ee2e6eeed0a11f4e8c5a0ea01ee8b8',
+     armv7l: '82f66728d77ea66bcd9ed6cdb24787daa8ee2e6eeed0a11f4e8c5a0ea01ee8b8',
+     x86_64: 'ee16174d1ae3f39cd856cfdf8e9ad2015568b99746966c95825b61e9bb5d6bdf'
   })
 
   depends_on 'at_spi2_core'
@@ -44,7 +44,7 @@ class Github_desktop < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'github-desktop' to get started.\n".lightblue
+    ExitMessage.add "\nType 'github-desktop' to get started.\n"
   end
 
   def self.remove
