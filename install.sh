@@ -285,7 +285,7 @@ function install_ruby_gem () {
     crew_gem_package="ruby_${ruby_gem//-/_}"
     update_device_json "${crew_gem_package}" "${json_gem_version}" ""
     echo_success "${ruby_gem^} gem installed."
-    BOOTSTRAP_PACKAGES+=" ${crew_gem_package} "
+    BOOTSTRAP_PACKAGES+=" ${crew_gem_package}"
   done
 }
 
@@ -329,7 +329,7 @@ ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
-echo_info 'Installing essential ruby gems...\n'
+echo_info "Installing essential ruby gems...\n"
 BOOTSTRAP_GEMS='activesupport concurrent-ruby highline'
 # shellcheck disable=SC2086
 install_ruby_gem ${BOOTSTRAP_GEMS}

@@ -1543,7 +1543,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compres
         puts "\n#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
         require_gem('highline/import')
         unless agree('Do you want to overwrite the existing upload instead? ')
-          puts 'Will NOT overwite the existing upload.'.lightred
+          puts 'Will NOT overwite the existing upload.'.orange
           next
         end
       end
