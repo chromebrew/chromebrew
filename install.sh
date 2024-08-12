@@ -280,7 +280,7 @@ function install_ruby_gem () {
     ruby_gem="${gem}"
     echo_intra "Installing ${ruby_gem} gem..."
     gem install -N "${ruby_gem}" --conservative
-    gem_version="$(gem list "${ruby_gem}" | grep "${ruby_gem}" | awk '{print $2}' | tr -d '()')"
+    gem_version="$(ruby -e "gem('${ruby_gem}')" -e "puts Gem.loaded_specs['${ruby_gem}'].version.to_s")"
     json_gem_version="${gem_version}-ruby-${rubymajorversion}"
     crew_gem_package="ruby_${ruby_gem//-/_}"
     update_device_json "${crew_gem_package}" "${json_gem_version}" ""

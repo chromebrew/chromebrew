@@ -12,7 +12,7 @@ class RUBY < Package
     # version is in the form '(gem version)-ruby-(ruby version)'.
     # For example, name 'Ruby_awesome' and version '1.0.0-ruby-3.3'.
     @gem_name = name.sub('ruby_', '').sub('_', '-')
-    # We ignore @gem_ver and just install the current version of the gem.
+    # We only report if @gem_ver is different than the current version reported by gem.
     @gem_ver = version.split('-', 2).first
     @ruby_ver = version.split('-', 3).last
     if Kernel.system "gem list -i \"^#{@gem_name}\$\""
@@ -20,6 +20,9 @@ class RUBY < Package
       system "yes | gem uninstall -a #{@gem_name}", exception: false
     end
     system "gem install -i #{CREW_DEST_LIB_PREFIX}/ruby/gems/#{@ruby_ver}.0 -n #{CREW_DEST_PREFIX}/bin -N #{@gem_name}", exception: false
+    @real_gem_ver = Gem.latest_spec_for(@gem_name).version.to_s
+    puts "Note that #{name}.rb suggests that #{@gem_name} version is #{@gem_ver}.\nHowever, gem reports that the installed version is #{@real_gem_ver}.".orange if Gem::Version.new(@real_gem_ver.to_s) >= Gem::Version.new(@gem_ver.to_s)
+
     @ruby_install_extras&.call
   end
 end
