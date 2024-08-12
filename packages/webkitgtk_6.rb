@@ -41,7 +41,6 @@ class Webkitgtk_6 < Package
   depends_on 'icu4c' # R
   depends_on 'lcms' # R
   depends_on 'libavif' # R
-  depends_on 'libbacktrace' => :build
   depends_on 'libbacktrace' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
@@ -53,8 +52,7 @@ class Webkitgtk_6 < Package
   depends_on 'libnotify'
   depends_on 'libpng' # R
   depends_on 'libsecret' # R
-  depends_on 'libsoup'
-  depends_on 'libsoup2' # R
+  depends_on 'libsoup' # R
   depends_on 'libtasn1' # R
   depends_on 'libwebp' # R
   depends_on 'libwpe' # R
