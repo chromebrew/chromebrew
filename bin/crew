@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
-require 'uri'
-require 'digest/sha2'
+require_relative '../lib/color'
+# Disallow sudo
+abort 'Chromebrew should not be run as root.'.lightred if Process.uid.zero?
 def require_gem(gem_name_and_require = nil)
   # Allow only loading gems when needed.
   return if gem_name_and_require.nil?
@@ -9,7 +10,7 @@ def require_gem(gem_name_and_require = nil)
   begin
     gem gem_name
   rescue LoadError
-    puts " -> install #{gem_name} gem"
+    puts " -> install #{gem_name} gem".orange
     Gem.install(gem_name)
     gem gem_name
   end
@@ -18,6 +19,9 @@ def require_gem(gem_name_and_require = nil)
 end
 # The json gem can break when upgrading from a much older version of ruby.
 require_gem('json')
+require_gem('highline/import')
+require 'uri'
+require 'digest/sha2'
 require 'fileutils'
 require 'tmpdir'
 begin
@@ -36,9 +40,7 @@ require_relative '../commands/remove'
 require_relative '../commands/search'
 require_relative '../commands/sysinfo'
 require_relative '../commands/whatprovides'
-require_relative '../lib/color'
 require_relative '../lib/const'
-
 if CREW_DEBUG
   require_gem 'pry-byebug'
   # Debugging starts here when enabled.
@@ -47,7 +49,6 @@ if CREW_DEBUG
   # --debug flag.
   binding.pry
 end
-
 require_relative '../lib/crewlog'
 require_relative '../lib/deb_utils'
 require_relative '../lib/docopt'
@@ -56,9 +57,6 @@ require_relative '../lib/gnome'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
 require_relative '../lib/util'
-
-# Disallow sudo
-abort 'Chromebrew should not be run as root.'.lightred if Process.uid.zero?
 
 # Add lib to LOAD_PATH
 $LOAD_PATH << File.join(CREW_LIB_PATH, 'lib')
@@ -1233,7 +1231,6 @@ def resolve_dependencies
 
   puts @dependencies.join(' ')
 
-  require_gem('highline/import')
   if @opt_force
     puts 'Proceeding with dependency package installation...'.orange
   elsif agree('Do you agree? ')
@@ -1541,7 +1538,6 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compres
 
       if `curl -sI #{new_url}`.lines.first.split[1] == '200'
         puts "\n#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
-        require_gem('highline/import')
         unless agree('Do you want to overwrite the existing upload instead? ')
           puts 'Will NOT overwite the existing upload.'.orange
           next
@@ -1637,7 +1633,6 @@ def copy_package(pkg_name, prompt_msg = '')
     # This pulls the operation from the calling function
     operation = caller_locations(1, 2)[1].to_s.split[3].split('_')[0]
     puts prompt_msg.yellow
-    require_gem('highline/import')
     if agree("\nWould you like to copy #{pkg_name}.rb to crew and start the #{operation}?  ")
       FileUtils.cp pkg_file, "#{CREW_PACKAGES_PATH}/"
       puts "\nCopied #{pkg_file} to #{CREW_PACKAGES_PATH}.\n".lightgreen
