@@ -3,12 +3,12 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '129.0'
+  version '129.0.1'
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'x86_64'
   min_glibc '2.35'
   source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.bz2"
-  source_sha256 '878a042f49ee34314bde9ca70a0f93c0941c247c72f17b87d904024bef2b27ad'
+  source_sha256 'fa1a0409640a2e6fe2adcddbed5caa412e6dc9f38ca788eb78800f9e309f5b29'
 
   depends_on 'at_spi2_core'
   depends_on 'cairo'
@@ -98,6 +98,6 @@ class Firefox < Package
     else
       puts 'No change has been made.'.orange
     end
-    puts "\nType 'firefox' to get started.\n".lightblue
+    ExitMessage.add "\nType 'firefox' to get started.\n"
   end
 end
