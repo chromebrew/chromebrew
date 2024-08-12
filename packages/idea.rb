@@ -34,7 +34,7 @@ class Idea < Package
     ExitMessage.add "Type 'idea' to get started."
   end
 
-  def self.remove
+  def self.postremove
     print 'Would you like to remove the config directories? [y/N] '
     response = $stdin.gets.chomp.downcase
     config_dirs = ["#{CREW_PREFIX}/.config/JetBrains/.IdeaIC2022.3", "#{HOME}/.IdeaIC2022.3"]

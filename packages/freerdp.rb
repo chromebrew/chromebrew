@@ -1,4 +1,3 @@
-# Build failure reported at https://github.com/FreeRDP/FreeRDP/issues/10466
 require 'buildsystems/cmake'
 
 class Freerdp < CMake
@@ -37,8 +36,8 @@ class Freerdp < CMake
   depends_on 'libbacktrace' => :build
   depends_on 'libfdk_aac' => :build
   depends_on 'libjpeg_turbo' # R
-  depends_on 'libmbedtls' => :build
   depends_on 'libmp3lame' # R
+  depends_on 'libsdl2' # R
   depends_on 'libsoxr' # R
   depends_on 'libusb' # R
   depends_on 'libx11' # R
@@ -60,8 +59,8 @@ class Freerdp < CMake
   depends_on 'pulseaudio' # R
   # depends_on 'sdl2_image' => :build
   depends_on 'sdl2_ttf' => :build
-  depends_on 'sdl3' => :build
-  depends_on 'sdl3_ttf' => :build
+  # depends_on 'sdl3' => :build
+  # depends_on 'sdl3_ttf' => :build
   depends_on 'sommelier' # L
   depends_on 'uriparser' => :build
   depends_on 'wayland' # R
@@ -85,7 +84,7 @@ class Freerdp < CMake
         -DWITH_JPEG=ON \
         -DWITH_LAME=ON \
         -DWITH_LIBSYSTEMD=OFF \
-        -DWITH_MBEDTLS=ON \
+        -DWITH_MBEDTLS=OFF \
         -DWITH_OPENH264=ON \
         -DWITH_PULSE=ON \
         -DWITH_SERVER=ON \

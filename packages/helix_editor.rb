@@ -82,7 +82,7 @@ class Helix_editor < Package
     end
   end
 
-  def self.remove
+  def self.postremove
     # If the user added configuration files in @helix_runtime_dir, remove them if desired
     ask_to_remove_user_defined_config_files_in @helix_runtime_dir if Dir.exist? @helix_runtime_dir
     # If the user added a configuration dir in HOME, remove it if desired

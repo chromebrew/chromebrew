@@ -119,7 +119,7 @@ class Pkgsrc < Package
     puts
   end
 
-  def self.remove
+  def self.postremove
     puts
     puts 'To completely remove pkgsrc and all packages, execute the following:'.lightblue
     puts "rm -rf #{CREW_PREFIX}/pkg #{CREW_PREFIX}/pkgsrc".lightblue

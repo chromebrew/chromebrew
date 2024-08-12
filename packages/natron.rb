@@ -33,7 +33,7 @@ class Natron < Package
     puts "\nType 'natron' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.Natron"
     if Dir.exist? config_dir
       print "Would you like to remove the config directory #{config_dir}? [y/N] "

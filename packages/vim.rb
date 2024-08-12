@@ -106,7 +106,7 @@ class Vim < Autotools
     puts 'Default vi set to vim.'.lightgreen
   end
 
-  def self.remove
+  def self.postremove
     # Remove vi symlink if it is to vim.
     return unless File.symlink?("#{CREW_PREFIX}/bin/vi") && (File.readlink("#{CREW_PREFIX}/bin/vi") == "#{CREW_PREFIX}/bin/vim")
 

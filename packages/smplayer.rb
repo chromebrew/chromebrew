@@ -51,7 +51,7 @@ class Smplayer < Package
     EOM
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{CREW_PREFIX}/.config/smplayer"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "

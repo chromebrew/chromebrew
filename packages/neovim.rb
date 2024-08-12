@@ -65,7 +65,7 @@ class Neovim < CMake
     # system 'cpanm Neovim::Ext'
   end
 
-  def self.remove
+  def self.postremove
     @gem_name = name
     @gems_deps = `gem dependency ^#{@gem_name}\$ | awk '{print \$1}'`.chomp
     # Delete the first line and convert to an array.

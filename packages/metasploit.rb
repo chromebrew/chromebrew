@@ -35,7 +35,7 @@ class Metasploit < Package
     end
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.msf4"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "

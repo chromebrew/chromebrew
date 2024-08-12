@@ -38,7 +38,7 @@ class Snowflake < Package
     puts "\nType 'snowflake' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/snowflake-ssh"
     if Dir.exist? config_dir
       puts 'WARNING: This will remove all saved ssh sessions!'.orange

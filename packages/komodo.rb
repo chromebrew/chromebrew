@@ -23,7 +23,7 @@ class Komodo < Package
     system "./install.sh -I #{CREW_DEST_PREFIX}"
   end
 
-  def self.remove
+  def self.postremove
     print 'Would you like to remove the config directories? [y/N] '
     response = $stdin.gets.chomp.downcase
     config_dirs = ["#{HOME}/.komodoide", "#{HOME}/.activestate"]

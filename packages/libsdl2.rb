@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libsdl2 < CMake
   description 'Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.'
   homepage 'http://www.libsdl.org'
-  version '2.30.0'
+  version '2.30.6'
   license 'ZLIB'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/libsdl-org/SDL.git'

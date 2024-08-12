@@ -12,7 +12,7 @@ class Ruby_pry < RUBY
   conflicts_ok
   no_compile_needed
 
-  def self.postinstall
+  ruby_install_extras do
     File.write "#{HOME}/.pryrc", <<~PRY_DEBUG_EOF
       if defined?(PryByebug)
         Pry.commands.alias_command 'c', 'continue'
@@ -27,7 +27,7 @@ class Ruby_pry < RUBY
     PRY_DEBUG_EOF
   end
 
-  def self.remove
+  def self.postremove
     config_file = "#{HOME}/.pryrc"
     if File.file? config_file
       if agree("Would you like to remove the #{name} config file: #{config_file}? ")

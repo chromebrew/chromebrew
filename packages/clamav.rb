@@ -58,7 +58,7 @@ class Clamav < Package
     puts "#{CREW_PREFIX}/etc/clamav/freshclam.conf\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{CREW_PREFIX}/share/clamav"
     if Dir.exist? config_dir
       puts 'WARNING: This will remove the clamav database!'.orange

@@ -34,7 +34,7 @@ class Zed < Package
     ExitMessage.add "\nType 'zed' to get started.\n"
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{CREW_PREFIX}/.config/zed"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "

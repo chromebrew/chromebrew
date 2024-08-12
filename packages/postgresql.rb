@@ -101,7 +101,7 @@ class Postgresql < Package
     puts "To configure, edit #{CREW_PREFIX}/etc/env.d/postgres".lightblue
   end
 
-  def self.remove
+  def self.postremove
     if Dir.exist? PGDATA
       puts 'WARNING: This will delete all databases!'.orange
       print "Would you like to remove #{PGDATA}? [y/N] "

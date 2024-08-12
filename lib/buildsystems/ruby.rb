@@ -15,11 +15,7 @@ class RUBY < Package
     # We only report if @gem_ver is different than the current version reported by gem.
     @gem_ver = version.split('-', 2).first.to_s
     @ruby_ver = version.split('-', 3).last.to_s
-    if Kernel.system "gem list -i \"^#{@gem_name}\$\""
-      puts "Uninstalling #{@gem_name} before updating. It's ok if this fails.".orange
-      system "yes | gem uninstall -a #{@gem_name}", exception: false
-    end
-    system "gem install -i #{CREW_DEST_LIB_PREFIX}/ruby/gems/#{@ruby_ver}.0 -n #{CREW_DEST_PREFIX}/bin -N #{@gem_name}", exception: false
+    system "gem install -N #{@gem_name} --conservative"
     @ruby_install_extras&.call
 
     @remote_gem_ver = Gem.latest_spec_for(@gem_name).version.to_s

@@ -2,7 +2,7 @@
 require_relative '../lib/color'
 # Disallow sudo
 abort 'Chromebrew should not be run as root.'.lightred if Process.uid.zero?
-def require_gem(gem_name_and_require = nil)
+def require_gem(gem_name_and_require = nil, require_override = nil)
   # Allow only loading gems when needed.
   return if gem_name_and_require.nil?
 
@@ -14,16 +14,21 @@ def require_gem(gem_name_and_require = nil)
     Gem.install(gem_name)
     gem gem_name
   end
-  requires = gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
+  requires = if require_override.nil?
+               gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
+             else
+               require_override
+             end
   require requires
 end
 # The json gem can break when upgrading from a much older version of ruby.
 require_gem('json')
 require_gem('highline/import')
-require 'uri'
+require_gem('activesupport', 'active_support/core_ext/object/blank')
 require 'digest/sha2'
 require 'fileutils'
 require 'tmpdir'
+require 'uri'
 begin
   require_relative '../commands/const'
 rescue LoadError
@@ -41,14 +46,11 @@ require_relative '../commands/search'
 require_relative '../commands/sysinfo'
 require_relative '../commands/whatprovides'
 require_relative '../lib/const'
-if CREW_DEBUG
-  require_gem 'pry-byebug'
-  # Debugging starts here when enabled.
-  # Add this line anywhere as a breakpoint.
-  # Debugging is started by passing crew a
-  # --debug flag.
-  binding.pry
-end
+require_gem 'pry-byebug' if CREW_DEBUG
+# Debugging starts at the following breakpoint when enabled via crew
+# being started with a --debug flag.
+# The following line can be used anywhere as a breakpoint.
+binding.pry if CREW_DEBUG
 require_relative '../lib/crewlog'
 require_relative '../lib/deb_utils'
 require_relative '../lib/docopt'
@@ -135,14 +137,6 @@ class ExitMessage
 end
 
 at_exit do
-  begin
-    gem 'activesupport'
-  rescue Gem::LoadError
-    puts ' -> install gem activesupport'
-    Gem.install('activesupport')
-    gem 'activesupport'
-  end
-  require 'active_support/core_ext/object/blank'
   GnomePostinstall.run unless GnomePostinstall.gnome_packages.blank?
 
   # Print exit messages.
@@ -288,6 +282,11 @@ def update
     system 'git-restore-mtime -sq 2>/dev/null', exception: true if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
   end
 
+  # Only update gems once a week.
+  if Time.now.to_i - @last_update_check > 604800
+    puts 'Updating RubyGems.'.orange
+    system 'gem update -N --system'
+  end
   puts 'Package lists, crew, and library updated.'
 
   # Do any fixups necessary after crew has updated from git.
@@ -329,6 +328,8 @@ def update
   else
     puts 'Your software is up to date.'.lightgreen
   end
+  @device.store('last_update_check', Time.now.to_i)
+  save_json(@device)
 end
 
 def upgrade(*pkgs, build_from_source: false)
@@ -713,8 +714,7 @@ def build_and_preconfigure(target_dir)
                                 end
     build_time_seconds_string = "#{build_time_seconds} second#{build_time_seconds > 1 ? 's' : ''}"
     build_time_elapsed_string = build_time_hour_string + build_time_minutes_string + build_time_seconds_string
-    crewlog "Build & install for #{@pkg.name} took #{build_time_elapsed_string}."
-    puts "Build & install for #{@pkg.name} took #{build_time_elapsed_string}. Please ask for #{ARCH} binaries to be generated for #{@pkg.name}.".lightpurple if build_time_elapsed > 60
+    crewlog "Build for #{@pkg.name} took #{build_time_elapsed_string}."
   end
 end
 
@@ -1263,7 +1263,12 @@ def install
     return
   end
 
-  unless @pkg.is_fake?
+  install_start_time = Time.now.to_i
+
+  if @pkg.is_fake? || @pkg.name.start_with?('ruby_')
+    # use CREW_DEST_DIR
+    dest_dir = CREW_DEST_DIR
+  else
     meta = download
     target_dir = unpack meta
     if meta[:source]
@@ -1306,13 +1311,37 @@ def install
     pre_install dest_dir
 
     # perform install process
-    install_package dest_dir
+    if @pkg.name.start_with?('ruby_')
+      @pkg.install
+    else
+      install_package dest_dir
+    end
 
     unless (@resolve_dependencies_and_install == 1) || (@resolve_dependencies_and_build == 1)
       # perform post-install process
       post_install
     end
   end
+
+  install_end_time = Time.now.to_i
+  install_time_elapsed = install_end_time - install_start_time
+  install_time_hours = install_time_elapsed / 3600
+  install_time_minutes = install_time_elapsed / 60 % 60
+  install_time_seconds = install_time_elapsed % 60
+  install_time_hour_string = if install_time_hours.zero?
+                               ''
+                             else
+                               "#{install_time_hours} hr#{install_time_hours > 1 ? 's, ' : ', '}"
+                             end
+  install_time_minutes_string = if install_time_minutes.zero?
+                                  install_time_hour_string.empty? ? '' : "#{install_time_minutes} min, "
+                                else
+                                  "#{install_time_minutes} min, "
+                                end
+  install_time_seconds_string = "#{install_time_seconds} second#{install_time_seconds > 1 ? 's' : ''}"
+  install_time_elapsed_string = install_time_hour_string + install_time_minutes_string + install_time_seconds_string
+  crewlog "Build & install for #{@pkg.name} took #{install_time_elapsed_string}."
+  puts "Build & install for #{@pkg.name} took #{install_time_elapsed_string}. Please ask for #{ARCH} binaries to be generated for #{@pkg.name}.".lightpurple if install_time_elapsed > 60
 
   # Add to installed packages list in devices.json, but remove first if it is already there.
   crewlog "Adding package #{@pkg.name} to device.json."
@@ -1905,5 +1934,16 @@ Signal.trap('INT') do
 end
 
 load_json
+if @device[:last_update_check].blank?
+  @device.store('last_update_check', '0')
+  @last_update_check = 0
+  save_json(@device)
+else
+  @last_update_check = @device[:last_update_check]
+  crewlog("last_update_check is #{@last_update_check}, Time.now.to_i is #{Time.now.to_i}")
+  # Only notify if there hasn't been an update in a week.
+  puts "Please run 'crew update'. It has been more than a week since it was last updated.".lightpurple if Time.now.to_i - @last_update_check > 604800
+end
 command_name = args.select { |k, v| v && command?(k) }.keys[0]
+crewlog("command_name_command is #{command_name}_command and args are #{args}")
 send("#{command_name}_command", args)

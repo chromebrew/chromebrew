@@ -171,8 +171,7 @@ class Buildessential < Package
   depends_on 'ruby_rubocop'
   # Add ruby_concurrent_ruby
   depends_on 'ruby_concurrent_ruby'
-  # For crew debugging.
-  depends_on 'ruby_pry_byebug' if CREW_IN_CONTAINER
+  depends_on 'ruby_pry_byebug'
 
   # Code quality
   depends_on 'py3_pre_commit'

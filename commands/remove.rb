@@ -22,6 +22,15 @@ class Command
     # Perform any operations required prior to package removal.
     pkg.preremove
 
+    # Use gem to first try to remove gems...
+    if pkg.name.start_with?('ruby_')
+      @gem_name = pkg.name.sub('ruby_', '').sub('_', '-')
+      if Kernel.system "gem list -i \"^#{@gem_name}\$\""
+        puts "Uninstalling #{@gem_name} before updating. It's ok if this fails.".orange
+        system "gem uninstall -aIx --abort-on-dependent #{@gem_name}", exception: false
+      end
+    end
+
     # Remove the files and directories installed by the package.
     unless pkg.is_fake?
       Dir.chdir CREW_CONFIG_PATH do
@@ -61,7 +70,7 @@ class Command
     save_json(device_json)
 
     # Perform any operations required after package removal.
-    pkg.remove
+    pkg.postremove
 
     puts "#{pkg.name} removed!".lightgreen
   end

@@ -60,7 +60,7 @@ class Gcloud < Package
     puts "source ~/.bashrc && gcloud init\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     print 'Would you like to remove the config directories? [y/N] '
     response = $stdin.gets.chomp.downcase
     config_dirs = ["#{HOME}/.config/gcloud", "#{CREW_PREFIX}/share/gcloud"]
