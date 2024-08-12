@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
 require 'uri'
 require 'digest/sha2'
-def require_gem(gem_require = nil)
-  return if gem_require.nil?
+def require_gem(gem_name_and_require = nil)
+  # Allow only loading gems when needed.
+  return if gem_name_and_require.nil?
 
-  gem_name = gem_require.split('/')[0]
+  gem_name = gem_name_and_require.split('/')[0]
   begin
     gem gem_name
   rescue LoadError
@@ -12,7 +13,7 @@ def require_gem(gem_require = nil)
     Gem.install(gem_name)
     gem gem_name
   end
-  requires = gem_require.split('/')[1].nil? ? gem_require.split('/')[0] : gem_require
+  requires = gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
   require requires
 end
 # The json gem can break when upgrading from a much older version of ruby.
@@ -41,6 +42,9 @@ require_relative '../lib/const'
 if CREW_DEBUG
   require_gem 'pry-byebug'
   # Debugging starts here when enabled.
+  # Add this line anywhere as a breakpoint.
+  # Debugging is started by passing crew a
+  # --debug flag.
   binding.pry
 end
 

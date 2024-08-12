@@ -163,6 +163,8 @@ crew_folders="bin cache doc docbook include lib/crew/packages lib$LIB_SUFFIX lib
 # Remove old git config directories if they exist.
 find "${CREW_LIB_PATH}" -mindepth 1 -delete
 
+echo_out 'Set up the local package repo...'
+
 # Download the chromebrew repository.
 curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
@@ -272,7 +274,7 @@ function update_device_json () {
 
 function install_ruby_gem () {
   rubymajorversion=$(ruby -e "puts RUBY_VERSION.slice(/(?:.*(?=\.))/)")
-  echo_info 'Updating RubyGems...'
+  echo_info 'Updating RubyGems.'
   gem update -N --system
   for gem in "$@"; do
     ruby_gem="${gem}"
@@ -280,8 +282,10 @@ function install_ruby_gem () {
     gem install -N "${ruby_gem}" --conservative
     gem_version="$(gem list "${ruby_gem}" | grep "${ruby_gem}" | awk '{print $2}' | tr -d '()')"
     json_gem_version="${gem_version}-ruby-${rubymajorversion}"
-    update_device_json "ruby_${ruby_gem//-/_}" "${json_gem_version}" ""
+    crew_gem_package="ruby_${ruby_gem//-/_}"
+    update_device_json "${crew_gem_package}" "${json_gem_version}" ""
     echo_success "${ruby_gem^} gem installed."
+    BOOTSTRAP_PACKAGES+=" ${crew_gem_package} "
   done
 }
 
@@ -323,16 +327,12 @@ sudo ldconfig &> /tmp/crew_ldconfig || true
 echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
-echo_out "Set up and synchronize local package repo..."
-
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
-echo_info 'Installing essential ruby gems.'
+echo_info 'Installing essential ruby gems...\n'
 BOOTSTRAP_GEMS='activesupport concurrent-ruby highline'
-# Due to a bug in crew where it accepts spaces in package files names rather than
-# splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}.
 # shellcheck disable=SC2086
-install_ruby_gem $BOOTSTRAP_GEMS
+install_ruby_gem ${BOOTSTRAP_GEMS}
 
 echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core
@@ -341,7 +341,7 @@ echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than
 # splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}.
 # shellcheck disable=SC2086
-for i in ${BOOTSTRAP_PACKAGES} ${BOOTSTRAP_GEMS}
+for i in ${BOOTSTRAP_PACKAGES}
 do
   echo_info "Doing postinstall for $i"
   crew postinstall $i || echo_error "Postinstall for $i failed."
