@@ -52,7 +52,7 @@ class Bluefish < Package
     system "update-mime-database #{CREW_PREFIX}/share/mime"
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.bluefish"
     if Dir.exist? config_dir
       puts 'WARNING: This will remove all bluefish config!'.orange

@@ -13,7 +13,7 @@ class Py3_codespell < Pip
 
   no_compile_needed
 
-  def self.remove
+  def self.postremove
     @python_ver = "python#{`python3 -V`[/\d.\d+/]}"
     # Remove data, __pycache__ and tests directories.
     FileUtils.rm_rf "#{CREW_PREFIX}/lib/#{@python_ver}/site-packages/codespell_lib"

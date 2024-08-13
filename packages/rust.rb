@@ -82,7 +82,7 @@ class Rust < Package
     system 'rustup default stable'
   end
 
-  def self.remove
+  def self.postremove
     config_dirs = %W[#{HOME}/.rustup #{CREW_PREFIX}/share/rustup #{HOME}/.cargo #{CREW_PREFIX}/share/cargo]
     print config_dirs
     print "\nWould you like to remove the config directories above? [y/N] "

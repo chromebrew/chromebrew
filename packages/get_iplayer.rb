@@ -37,7 +37,7 @@ class Get_iplayer < Package
     end
   end
 
-  def self.remove
+  def self.postremove
     @cpan_deps = ['LWP', 'XML::LibXML', 'Mojolicious', 'CGI']
     @cpan_deps.each do |dep|
       system "cpanm --uninstall #{dep}"

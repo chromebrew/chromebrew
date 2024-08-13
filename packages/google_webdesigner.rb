@@ -32,7 +32,7 @@ class Google_webdesigner < Package
     ExitMessage.add "\nType 'webdesigner' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.local/share/google-web-designer"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "

@@ -64,7 +64,7 @@ class Vivaldi < Package
     system "#{CREW_PREFIX}/share/vivaldi/update-ffmpeg", '--user'
   end
 
-  def self.remove
+  def self.postremove
     Dir.chdir(CREW_PREFIX) do
       FileUtils.rm_rf ["#{HOME}/.local/lib/vivaldi", '.config/vivaldi', '.cache/vivaldi', '.config/share/.vivaldi_reporting_data']
     end

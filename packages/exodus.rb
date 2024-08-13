@@ -28,7 +28,7 @@ class Exodus < Package
     ExitMessage.add "\nType 'exodus' to get started.\n"
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{CREW_PREFIX}/.config/Exodus"
     if Dir.exist? config_dir
       puts 'WARNING: This will remove all Exodus data!'.orange

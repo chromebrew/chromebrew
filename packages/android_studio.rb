@@ -35,7 +35,7 @@ class Android_studio < Package
     puts "\nTo start using Android Studio, type `studio`.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     print 'Would you like to remove the config directories? [y/N] '
     response = $stdin.gets.chomp.downcase
     config_dirs = ["#{HOME}/.android", "#{HOME}/Android"]

@@ -55,7 +55,7 @@ class Opam < Package
             && opam option --global depext=false --root=#{@OPAMROOT} -y"
   end
 
-  def self.remove
+  def self.postremove
     return unless Dir.exist? @OPAMROOT
 
     puts

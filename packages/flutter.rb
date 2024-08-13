@@ -31,7 +31,7 @@ class Flutter < Package
     ExitMessage.add "\nType 'flutter' to get started.\n"
   end
 
-  def self.remove
+  def self.postremove
     print 'Would you like to remove the config directories? [y/N] '
     response = $stdin.gets.chomp.downcase
     config_dirs = ["#{HOME}/.flutter", "#{CREW_PREFIX}/share/flutter"]

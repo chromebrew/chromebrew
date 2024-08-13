@@ -27,7 +27,7 @@ class Netbeans < Package
     puts "\nType 'netbeans' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.netbeans"
     if Dir.exist? config_dir
       print "Would you like to remove the config directory #{config_dir}? [y/N] "

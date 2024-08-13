@@ -1,5 +1,6 @@
-require 'io/console'
+require 'active_support/core_ext/object/blank'
 require 'digest/sha2'
+require 'io/console'
 require 'uri'
 require_relative 'const'
 require_relative 'color'
@@ -60,7 +61,7 @@ def downloader(url, sha256sum, filename = File.basename(url), verbose = false)
 
   unless (sha256sum =~ /^SKIP$/i) || (calc_sha256sum == sha256sum)
     if CREW_FORCE
-      pkg_name = @pkg_name.empty? ? name : @pkg_name
+      pkg_name = @pkg_name.blank? ? name : @pkg_name
       puts "Updating checksum for #{filename}".lightblue
       puts "from #{sha256sum} to #{calc_sha256sum}".lightblue
       puts "in #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb .".lightblue

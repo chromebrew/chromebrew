@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '2.6'
+  version '2.7'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -78,6 +78,12 @@ class Core < Package
   depends_on 'readline'
   depends_on 'rtmpdump'
   depends_on 'ruby'
+  depends_on 'ruby_activesupport'
+  depends_on 'ruby_concurrent_ruby'
+  # For use in ruby prompts.
+  depends_on 'ruby_highline'
+  # This contains the debugger config files.
+  depends_on 'ruby_pry'
   depends_on 'slang'
   depends_on 'sqlite'
   depends_on 'uchardet'

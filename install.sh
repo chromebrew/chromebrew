@@ -163,6 +163,8 @@ crew_folders="bin cache doc docbook include lib/crew/packages lib$LIB_SUFFIX lib
 # Remove old git config directories if they exist.
 find "${CREW_LIB_PATH}" -mindepth 1 -delete
 
+echo_out 'Set up the local package repo...'
+
 # Download the chromebrew repository.
 curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
@@ -270,6 +272,23 @@ function update_device_json () {
   cat <<< "${new_info}" > device.json
 }
 
+function install_ruby_gem () {
+  rubymajorversion=$(ruby -e "puts RUBY_VERSION.slice(/(?:.*(?=\.))/)")
+  echo_info 'Updating RubyGems.'
+  gem update -N --system
+  for gem in "$@"; do
+    ruby_gem="${gem}"
+    echo_intra "Installing ${ruby_gem} gem..."
+    gem install -N "${ruby_gem}" --conservative
+    gem_version="$(ruby -e "gem('${ruby_gem}')" -e "puts Gem.loaded_specs['${ruby_gem}'].version.to_s")"
+    json_gem_version="${gem_version}-ruby-${rubymajorversion}"
+    crew_gem_package="ruby_${ruby_gem//-/_}"
+    update_device_json "${crew_gem_package}" "${json_gem_version}" ""
+    echo_success "${ruby_gem^} gem installed."
+    BOOTSTRAP_PACKAGES+=" ${crew_gem_package}"
+  done
+}
+
 echo_info "Downloading Bootstrap packages...\n"
 
 # Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
@@ -308,18 +327,12 @@ sudo ldconfig &> /tmp/crew_ldconfig || true
 echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
-echo_out "Set up and synchronize local package repo..."
-
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
-# Install activesupport gem for ruby
-echo_info 'Installing essential ruby gems.'
-gem update -N --system
-gem install -N activesupport --conservative
-gem install -N concurrent-ruby --conservative
-
-# Since we downloaded the package repo, just update package compatibility information.
-crew update compatible
+echo_info "Installing essential ruby gems...\n"
+BOOTSTRAP_GEMS='activesupport concurrent-ruby highline'
+# shellcheck disable=SC2086
+install_ruby_gem ${BOOTSTRAP_GEMS}
 
 echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core

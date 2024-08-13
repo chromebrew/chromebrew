@@ -63,7 +63,7 @@ class Mysql < CMake
     puts
   end
 
-  def self.remove
+  def self.postremove
     if Dir.exist?("#{CREW_PREFIX}/var/mysql")
       puts "\nWARNING: This will delete all your databases!".orange
       print "Would you like to remove #{CREW_PREFIX}/var/mysql? [y/N] "

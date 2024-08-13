@@ -35,7 +35,7 @@ class Dosbox < Package
     puts
   end
 
-  def self.remove
+  def self.postremove
     print 'Would you like to remove the config directory? [y/N] '
     response = $stdin.gets.chomp.downcase
     config_dir = "#{HOME}/.dosbox"

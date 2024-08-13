@@ -1,5 +1,25 @@
 # lib/fixup.rb
 # Add fixups to be run during crew update here.
+def require_gem(gem_name_and_require = nil, require_override = nil)
+  # Allow only loading gems when needed.
+  return if gem_name_and_require.nil?
+
+  gem_name = gem_name_and_require.split('/')[0]
+  begin
+    gem gem_name
+  rescue LoadError
+    puts " -> install #{gem_name} gem".orange
+    Gem.install(gem_name)
+    gem gem_name
+  end
+  requires = if require_override.nil?
+               gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
+             else
+               require_override
+             end
+  require requires
+end
+require_gem('highline/import')
 
 CREW_VERBOSE = ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
 
@@ -156,15 +176,13 @@ pkg_update_arr.each do |pkg|
   next if pkg[:pkg_deprecated].to_s.empty?
   puts "#{pkg[:pkg_name].capitalize} is deprecated and should be removed.".lightpurple
   puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".lightpurple unless pkg[:comments].to_s.empty?
-  print "\nWould you like to remove deprecated package #{pkg[:pkg_name].capitalize}? [y/N] "
-  case $stdin.gets.chomp.downcase
-  when 'y', 'yes'
+  if agree("\nWould you like to remove deprecated package #{pkg[:pkg_name].capitalize}? ")
     # Create a minimal Package object and pass it to Command.remove
     pkg_object = Package
     pkg_object.instance_eval do
       self.name = pkg[:pkg_name]
       def self.preremove; end
-      def self.remove; end
+      def self.postremove; end
     end
     Command.remove(pkg_object, CREW_VERBOSE)
   else

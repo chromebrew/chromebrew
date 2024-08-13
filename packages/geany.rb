@@ -62,7 +62,7 @@ class Geany < Package
     system "gtk-update-icon-cache #{CREW_PREFIX}/share/icons/hicolor -f"
   end
 
-  def self.remove
+  def self.postremove
     config_dirs = ["#{HOME}/.config/geany", "#{@xdg_config_home}/geany"]
     config_dirs.each do |config_dir|
       next unless Dir.exist? config_dir

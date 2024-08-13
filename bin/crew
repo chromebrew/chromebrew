@@ -1,16 +1,34 @@
 #!/usr/bin/env ruby
-require 'uri'
-require 'digest/sha2'
-begin
-  require 'json'
-rescue LoadError
-  # The json gem can break when upgrading from a much older version of ruby.
-  puts ' -> install gem json'
-  Gem.install('json')
-  require 'json'
+require_relative '../lib/color'
+# Disallow sudo
+abort 'Chromebrew should not be run as root.'.lightred if Process.uid.zero?
+def require_gem(gem_name_and_require = nil, require_override = nil)
+  # Allow only loading gems when needed.
+  return if gem_name_and_require.nil?
+
+  gem_name = gem_name_and_require.split('/')[0]
+  begin
+    gem gem_name
+  rescue LoadError
+    puts " -> install #{gem_name} gem".orange
+    Gem.install(gem_name)
+    gem gem_name
+  end
+  requires = if require_override.nil?
+               gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
+             else
+               require_override
+             end
+  require requires
 end
+# The json gem can break when upgrading from a much older version of ruby.
+require_gem('json')
+require_gem('highline/import')
+require_gem('activesupport', 'active_support/core_ext/object/blank')
+require 'digest/sha2'
 require 'fileutils'
 require 'tmpdir'
+require 'uri'
 begin
   require_relative '../commands/const'
 rescue LoadError
@@ -27,22 +45,12 @@ require_relative '../commands/remove'
 require_relative '../commands/search'
 require_relative '../commands/sysinfo'
 require_relative '../commands/whatprovides'
-require_relative '../lib/color'
 require_relative '../lib/const'
-
-if CREW_DEBUG
-  begin
-    gem 'pry-byebug'
-  rescue Gem::LoadError
-    puts ' -> install gem pry-byebug for debugging...'
-    Gem.install('pry-byebug')
-    gem 'pry-byebug'
-  end
-  require 'pry-byebug'
-  # Debugging starts here when enabled.
-  binding.pry
-end
-
+require_gem 'pry-byebug' if CREW_DEBUG
+# Debugging starts at the following breakpoint when enabled via crew
+# being started with a --debug flag.
+# The following line can be used anywhere as a breakpoint.
+binding.pry if CREW_DEBUG
 require_relative '../lib/crewlog'
 require_relative '../lib/deb_utils'
 require_relative '../lib/docopt'
@@ -51,9 +59,6 @@ require_relative '../lib/gnome'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
 require_relative '../lib/util'
-
-# Disallow sudo
-abort 'Chromebrew should not be run as root.'.lightred if Process.uid.zero?
 
 # Add lib to LOAD_PATH
 $LOAD_PATH << File.join(CREW_LIB_PATH, 'lib')
@@ -132,14 +137,6 @@ class ExitMessage
 end
 
 at_exit do
-  begin
-    gem 'activesupport'
-  rescue Gem::LoadError
-    puts ' -> install gem activesupport'
-    Gem.install('activesupport')
-    gem 'activesupport'
-  end
-  require 'active_support/core_ext/object/blank'
   GnomePostinstall.run unless GnomePostinstall.gnome_packages.blank?
 
   # Print exit messages.
@@ -285,6 +282,10 @@ def update
     system 'git-restore-mtime -sq 2>/dev/null', exception: true if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
   end
 
+  if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
+    puts 'Updating RubyGems.'.orange
+    system 'gem update -N --system'
+  end
   puts 'Package lists, crew, and library updated.'
 
   # Do any fixups necessary after crew has updated from git.
@@ -694,24 +695,8 @@ def build_and_preconfigure(target_dir)
     @pkg.install
 
     build_end_time = Time.now.to_i
-    build_time_elapsed = build_end_time - build_start_time
-    build_time_hours = build_time_elapsed / 3600
-    build_time_minutes = build_time_elapsed / 60 % 60
-    build_time_seconds = build_time_elapsed % 60
-    build_time_hour_string = if build_time_hours.zero?
-                               ''
-                             else
-                               "#{build_time_hours} hr#{build_time_hours > 1 ? 's, ' : ', '}"
-                             end
-    build_time_minutes_string = if build_time_minutes.zero?
-                                  build_time_hour_string.empty? ? '' : "#{build_time_minutes} min, "
-                                else
-                                  "#{build_time_minutes} min, "
-                                end
-    build_time_seconds_string = "#{build_time_seconds} second#{build_time_seconds > 1 ? 's' : ''}"
-    build_time_elapsed_string = build_time_hour_string + build_time_minutes_string + build_time_seconds_string
-    crewlog "Build & install for #{@pkg.name} took #{build_time_elapsed_string}."
-    puts "Build & install for #{@pkg.name} took #{build_time_elapsed_string}. Please ask for #{ARCH} binaries to be generated for #{@pkg.name}.".lightpurple if build_time_elapsed > 60
+
+    crewlog "Build for #{@pkg.name} took #{time_difference(build_start_time, build_end_time)}."
   end
 end
 
@@ -1055,6 +1040,27 @@ def shrink_dir(dir)
   end
 end
 
+def time_difference(start_time = nil, end_time = nil)
+  return 'ERROR' if start_time.nil? || end_time.nil?
+
+  time_elapsed = end_time.to_i - start_time.to_i
+  time_hours = time_elapsed / 3600
+  time_minutes = time_elapsed / 60 % 60
+  time_seconds = time_elapsed % 60
+  time_hour_string = if time_hours.zero?
+                       ''
+                     else
+                       "#{time_hours} hr#{time_hours > 1 ? 's, ' : ', '}"
+                     end
+  time_minutes_string = if time_minutes.zero?
+                          time_hour_string.empty? ? '' : "#{time_minutes} min, "
+                        else
+                          "#{time_minutes} min, "
+                        end
+  time_seconds_string = "#{time_seconds} second#{time_seconds == 1 ? '' : 's'}"
+  return time_hour_string + time_minutes_string + time_seconds_string
+end
+
 def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/local')))
   if Dir.exist?(src)
     if File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR
@@ -1230,18 +1236,10 @@ def resolve_dependencies
 
   if @opt_force
     puts 'Proceeding with dependency package installation...'.orange
+  elsif agree('Do you agree? ')
+    puts 'Proceeding...'
   else
-    print 'Do you agree? [Y/n] '
-    response = $stdin.gets.chomp.downcase
-    case response
-    when 'n', 'no'
-      abort 'No changes made.'
-    when '', 'y', 'yes'
-      puts 'Proceeding...'
-    else
-      puts "I don't understand `#{response}`. :(".lightred
-      abort 'No changes made.'
-    end
+    abort 'No changes made.'
   end
 
   @dependencies.each do |dep|
@@ -1268,7 +1266,12 @@ def install
     return
   end
 
-  unless @pkg.is_fake?
+  install_start_time = Time.now.to_i
+
+  if @pkg.is_fake? || @pkg.name.start_with?('ruby_')
+    # use CREW_DEST_DIR
+    dest_dir = CREW_DEST_DIR
+  else
     meta = download
     target_dir = unpack meta
     if meta[:source]
@@ -1311,13 +1314,23 @@ def install
     pre_install dest_dir
 
     # perform install process
-    install_package dest_dir
+    if @pkg.name.start_with?('ruby_')
+      @pkg.install
+    else
+      install_package dest_dir
+    end
 
     unless (@resolve_dependencies_and_install == 1) || (@resolve_dependencies_and_build == 1)
       # perform post-install process
       post_install
     end
   end
+
+  install_end_time = Time.now.to_i
+
+  install_time_elapsed_string = time_difference(install_start_time, install_end_time)
+  crewlog "Build & install for #{@pkg.name} took #{install_time_elapsed_string}."
+  puts "Build & install for #{@pkg.name} took #{install_time_elapsed_string}. Please ask for #{ARCH} binaries to be generated for #{@pkg.name}.".lightpurple if (install_start_time - install_end_time) > 60
 
   # Add to installed packages list in devices.json, but remove first if it is already there.
   crewlog "Adding package #{@pkg.name} to device.json."
@@ -1540,38 +1553,33 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compres
       new_version = noname.split('-chromeos').first
       new_url = "#{base_url}/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
       token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
+
       if `curl -sI #{new_url}`.lines.first.split[1] == '200'
-        begin
-          gem 'highline'
-        rescue Gem::LoadError
-          puts ' -> install gem highline...'
-          Gem.install('highline')
-          gem 'highline'
-        end
-        require 'highline/import'
-        puts "#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try agaim.".lightred
-        abort 'Will NOT overwite the existing upload.'.lightred unless agree('Do you want to overwrite the existing upload instead? ').lightpurple
-      else
-        puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
-        output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
-        if output.include?('201 Created')
-          puts "curl -Ls #{new_url} | sha256sum" if CREW_VERBOSE
-          upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
-          if upstream_sha256 == new_sha256
-            puts output.lightgreen
-          else
-            if CREW_VERBOSE
-              puts "expected sha256 hash=#{new_sha256}"
-              puts "upstream sha256 hash=#{upstream_sha256}"
-            end
-            puts "#{output}. Checksum mismatch. Skipping binary_sha256 update in #{pkg_file}...".lightred
-            next
-          end
-        else
-          puts output.lightred
-          puts "#{output}. Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
+        puts "\n#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
+        unless agree('Do you want to overwrite the existing upload instead? ')
+          puts 'Will NOT overwite the existing upload.'.orange
           next
         end
+      end
+      puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
+      output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
+      if output.include?('201 Created')
+        puts "curl -Ls #{new_url} | sha256sum" if CREW_VERBOSE
+        upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
+        if upstream_sha256 == new_sha256
+          puts output.lightgreen
+        else
+          if CREW_VERBOSE
+            puts "expected sha256 hash=#{new_sha256}"
+            puts "upstream sha256 hash=#{upstream_sha256}"
+          end
+          puts "#{output}. Checksum mismatch. Skipping binary_sha256 update in #{pkg_file}...".lightred
+          next
+        end
+      else
+        puts output.lightred
+        puts "#{output}. Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
+        next
       end
       old_sha256 = `grep -m 1 #{arch}: #{pkg_file} 2> /dev/null`.chomp
       if old_sha256.empty?
@@ -1643,17 +1651,10 @@ def copy_package(pkg_name, prompt_msg = '')
     # This pulls the operation from the calling function
     operation = caller_locations(1, 2)[1].to_s.split[3].split('_')[0]
     puts prompt_msg.yellow
-    print "\nWould you like to copy #{pkg_name}.rb to crew and start the #{operation}? [Y/n] ".yellow
-    response = $stdin.gets.chomp.downcase
-    case response
-    when 'n', 'no'
-      puts "#{operation.capitalize} skipped."
-      next_pkg = true
-    when '', 'y', 'yes'
+    if agree("\nWould you like to copy #{pkg_name}.rb to crew and start the #{operation}?  ")
       FileUtils.cp pkg_file, "#{CREW_PACKAGES_PATH}/"
       puts "\nCopied #{pkg_file} to #{CREW_PACKAGES_PATH}.\n".lightgreen
     else
-      puts "I don't understand `#{response}`. :(".lightred
       puts "#{operation.capitalize} skipped."
       next_pkg = true
     end
@@ -1922,5 +1923,10 @@ Signal.trap('INT') do
 end
 
 load_json
+
+@last_update_check = `stat -c %Y #{File.join(CREW_LIB_PATH, '.git/FETCH_HEAD')}`.chomp.to_i
+@last_update_check = @last_update_check.blank? ? 0 : @last_update_check
+crewlog("The last update was #{time_difference(@last_update_check, Time.now.to_i)} ago.")
+puts "It has been more than #{CREW_UPDATE_CHECK_INTERVAL} day#{CREW_UPDATE_CHECK_INTERVAL < 2 ? '' : 's'} since crew was last updated. Please run 'crew update'".lightpurple if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
 command_name = args.select { |k, v| v && command?(k) }.keys[0]
 send("#{command_name}_command", args)

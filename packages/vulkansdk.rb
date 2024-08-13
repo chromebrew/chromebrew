@@ -60,7 +60,7 @@ class Vulkansdk < Package
     ExitMessage.add "\nSee https://github.com/KhronosGroup/Vulkan-Guide.".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dirs = ["#{HOME}/.local/share/vulkan", "#{HOME}/VulkanSDK"]
     config_dirs.each do |config_dir|
       next unless Dir.exist? config_dir

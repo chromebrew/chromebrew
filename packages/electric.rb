@@ -33,7 +33,7 @@ class Electric < Package
     puts "\nType 'electric' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     log_file = "#{HOME}/electric.log"
     if File.exist? log_file
       print "Would you like to remove #{log_file}? [y/N] "

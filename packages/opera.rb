@@ -51,7 +51,7 @@ class Opera < Package
     ExitMessage.add "\nType 'opera' to get started.\n"
   end
 
-  def self.remove
+  def self.postremove
     Dir.chdir("#{CREW_PREFIX}/bin") do
       if File.exist?('x-www-browser') && File.symlink?('x-www-browser') && \
          (File.realpath('x-www-browser') == "#{CREW_PREFIX}/share/x86_64-linux-gnu/opera/opera")

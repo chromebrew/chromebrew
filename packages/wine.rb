@@ -96,7 +96,7 @@ class Wine < Package
     ExitMessage.add 'To run an application with wine, type `wine path/to/myexecutable.exe` or `wine path/to/myinstaller.msi`.'.lightblue
   end
 
-  def self.remove
+  def self.postremove
     @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
     @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
     config_dirs = ["#{HOME}/.wine", "#{@xdg_config_home}/.wine"]

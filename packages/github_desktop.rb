@@ -47,7 +47,7 @@ class Github_desktop < Package
     ExitMessage.add "\nType 'github-desktop' to get started.\n"
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{CREW_PREFIX}/.config/GitHub\ Desktop"
     if Dir.exist? config_dir.to_s
       puts config_dir

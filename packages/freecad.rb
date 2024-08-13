@@ -41,7 +41,7 @@ class Freecad < Package
     ExitMessage.add "\nType 'freecad' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.FreeCAD"
     if Dir.exist? config_dir.to_s
       print "\nWould you like to remove #{config_dir}? [y/N] "

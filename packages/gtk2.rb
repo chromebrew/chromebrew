@@ -71,7 +71,7 @@ class Gtk2 < Package
     end
   end
 
-  def self.remove
+  def self.postremove
     FileUtils.rm "#{CREW_PREFIX}/bin/gtk-update-icon-cache" if File.symlink? "#{CREW_PREFIX}/bin/gtk-update-icon-cache"
   end
 end
