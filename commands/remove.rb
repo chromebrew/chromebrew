@@ -34,17 +34,25 @@ class Command
     # Remove the files and directories installed by the package.
     unless pkg.is_fake?
       Dir.chdir CREW_CONFIG_PATH do
-        # Remove all files installed by the package.
+        # Remove all files installed by the package unless the file
+        # exists in another installed package.
         flist = File.join(CREW_META_PATH, "#{pkg.name}.filelist")
         if File.file?(flist)
-          File.foreach(flist, chomp: true) do |line|
-            next unless line.start_with?(CREW_PREFIX)
-            if system("grep --exclude #{pkg.name}.filelist -Fxq '#{line}' ./meta/*.filelist")
-              puts "#{line} is in another package. It will not be removed during the removal of #{pkg.name}.".orange
-            else
-              puts "Removing file #{line}".yellow if verbose
-              FileUtils.remove_file line, exception: false
-            end
+          package_files = []
+          package_files << `grep -h ^#{CREW_PREFIX} #{flist}`.split("\n")
+          all_other_files = []
+          all_other_files << `grep -h --exclude=*build_*\\|*_build* ^#{CREW_PREFIX} #{CREW_META_PATH}/*.filelist`.split("\n")
+
+          unique_to_package_files = package_files - all_other_files
+          package_files_that_overlap = all_other_files & package_files
+
+          unless package_files_that_overlap.empty?
+            puts "The following file(s) are in other packages. They will not be deleted during the removal of #{pkg.name}.".orange
+            puts package_files_that_overlap.to_s.orange
+          end
+          unique_to_package_files.flatten.each do |file|
+            puts "Removing file #{file}".yellow if CREW_VERBOSE
+            FileUtils.remove_file file, exception: false
           end
           FileUtils.remove_file flist
         end
