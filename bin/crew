@@ -282,8 +282,7 @@ def update
     system 'git-restore-mtime -sq 2>/dev/null', exception: true if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
   end
 
-  # Only update gems once a week.
-  if Time.now.to_i - @last_update_check > 604800
+  if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
     puts 'Updating RubyGems.'.orange
     system 'gem update -N --system'
   end
@@ -1941,7 +1940,7 @@ if @device[:last_update_check].blank?
 else
   @last_update_check = @device[:last_update_check]
   crewlog("last_update_check is #{@last_update_check}, Time.now.to_i is #{Time.now.to_i}")
-  puts "It has been more than a week since crew was last updated. Please run 'crew update'".lightpurple if Time.now.to_i - @last_update_check > 604800
+  puts "It has been more than #{CREW_UPDATE_CHECK_INTERVAL} day#{CREW_UPDATE_CHECK_INTERVAL < 2 ? '' : 's'} since crew was last updated. Please run 'crew update'".lightpurple if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
 end
 command_name = args.select { |k, v| v && command?(k) }.keys[0]
 send("#{command_name}_command", args)

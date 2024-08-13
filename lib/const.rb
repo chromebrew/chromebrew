@@ -130,6 +130,9 @@ CHROMEOS_RELEASE = \
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
 CREW_DISABLE_MVDIR = ENV.fetch('CREW_DISABLE_MVDIR', '0').eql?('1')
 
+# Days between crew prompting to run 'crew update' and doing gem updates.
+CREW_UPDATE_CHECK_INTERVAL = 7
+
 # If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
 CREW_USE_CURL = ENV.fetch('CREW_USE_CURL', '0').eql?('1')
 
