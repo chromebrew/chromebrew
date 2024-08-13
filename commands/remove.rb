@@ -41,7 +41,7 @@ class Command
           package_files = []
           package_files << `grep -h ^#{CREW_PREFIX} #{flist}`.split("\n")
           all_other_files = []
-          all_other_files << `grep -h --exclude=*build_*\\|*_build* ^#{CREW_PREFIX} #{CREW_META_PATH}/*.filelist`.split("\n")
+          all_other_files << `grep -h --exclude #{pkg.name}.filelist ^#{CREW_PREFIX} #{CREW_META_PATH}/*.filelist`.split("\n")
 
           unique_to_package_files = package_files - all_other_files
           package_files_that_overlap = all_other_files & package_files
