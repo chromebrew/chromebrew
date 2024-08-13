@@ -199,7 +199,7 @@ fi
 cd "${CREW_CONFIG_PATH}"
 echo_info "\nCreating device.json."
 jq --arg key0 'architecture' --arg value0 "${ARCH}" \
-  --arg key1 'last_update_check' --arg value1 "`date +%s`" \
+  --arg key1 'last_update_check' --arg value1 "$(date +%s)" \
   --arg key2 'installed_packages' \
   '. | .[$key0]=$value0 | .[$key1]=$value1 | .[$key2]=[]' <<<'{}' > device.json
 
