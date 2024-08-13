@@ -697,23 +697,8 @@ def build_and_preconfigure(target_dir)
     @pkg.install
 
     build_end_time = Time.now.to_i
-    build_time_elapsed = build_end_time - build_start_time
-    build_time_hours = build_time_elapsed / 3600
-    build_time_minutes = build_time_elapsed / 60 % 60
-    build_time_seconds = build_time_elapsed % 60
-    build_time_hour_string = if build_time_hours.zero?
-                               ''
-                             else
-                               "#{build_time_hours} hr#{build_time_hours > 1 ? 's, ' : ', '}"
-                             end
-    build_time_minutes_string = if build_time_minutes.zero?
-                                  build_time_hour_string.empty? ? '' : "#{build_time_minutes} min, "
-                                else
-                                  "#{build_time_minutes} min, "
-                                end
-    build_time_seconds_string = "#{build_time_seconds} second#{build_time_seconds > 1 ? 's' : ''}"
-    build_time_elapsed_string = build_time_hour_string + build_time_minutes_string + build_time_seconds_string
-    crewlog "Build for #{@pkg.name} took #{build_time_elapsed_string}."
+
+    crewlog "Build for #{@pkg.name} took #{time_difference(build_start_time, build_end_time)}."
   end
 end
 
@@ -1057,6 +1042,27 @@ def shrink_dir(dir)
   end
 end
 
+def time_difference(start_time = nil, end_time = nil)
+  return 'ERROR' if start_time.nil? || end_time.nil?
+
+  time_elapsed = end_time - start_time
+  time_hours = time_elapsed / 3600
+  time_minutes = time_elapsed / 60 % 60
+  time_seconds = time_elapsed % 60
+  time_hour_string = if time_hours.zero?
+                       ''
+                     else
+                       "#{time_hours} hr#{time_hours > 1 ? 's, ' : ', '}"
+                     end
+  time_minutes_string = if time_minutes.zero?
+                          time_hour_string.empty? ? '' : "#{time_minutes} min, "
+                        else
+                          "#{time_minutes} min, "
+                        end
+  time_seconds_string = "#{time_seconds} second#{time_seconds == 1 ? '' : 's'}"
+  return time_hour_string + time_minutes_string + time_seconds_string
+end
+
 def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/local')))
   if Dir.exist?(src)
     if File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR
@@ -1323,24 +1329,10 @@ def install
   end
 
   install_end_time = Time.now.to_i
-  install_time_elapsed = install_end_time - install_start_time
-  install_time_hours = install_time_elapsed / 3600
-  install_time_minutes = install_time_elapsed / 60 % 60
-  install_time_seconds = install_time_elapsed % 60
-  install_time_hour_string = if install_time_hours.zero?
-                               ''
-                             else
-                               "#{install_time_hours} hr#{install_time_hours > 1 ? 's, ' : ', '}"
-                             end
-  install_time_minutes_string = if install_time_minutes.zero?
-                                  install_time_hour_string.empty? ? '' : "#{install_time_minutes} min, "
-                                else
-                                  "#{install_time_minutes} min, "
-                                end
-  install_time_seconds_string = "#{install_time_seconds} second#{install_time_seconds > 1 ? 's' : ''}"
-  install_time_elapsed_string = install_time_hour_string + install_time_minutes_string + install_time_seconds_string
+
+  install_time_elapsed_string = time_difference(install_start_time, install_end_time)
   crewlog "Build & install for #{@pkg.name} took #{install_time_elapsed_string}."
-  puts "Build & install for #{@pkg.name} took #{install_time_elapsed_string}. Please ask for #{ARCH} binaries to be generated for #{@pkg.name}.".lightpurple if install_time_elapsed > 60
+  puts "Build & install for #{@pkg.name} took #{install_time_elapsed_string}. Please ask for #{ARCH} binaries to be generated for #{@pkg.name}.".lightpurple if (install_start_time - install_end_time) > 60
 
   # Add to installed packages list in devices.json, but remove first if it is already there.
   crewlog "Adding package #{@pkg.name} to device.json."
@@ -1939,7 +1931,7 @@ if @device[:last_update_check].blank?
   save_json(@device)
 else
   @last_update_check = @device[:last_update_check]
-  crewlog("last_update_check is #{@last_update_check}, Time.now.to_i is #{Time.now.to_i}")
+  crewlog("The last update was #{time_difference(@last_update_check, Time.now.to_i)} ago.")
   puts "It has been more than #{CREW_UPDATE_CHECK_INTERVAL} day#{CREW_UPDATE_CHECK_INTERVAL < 2 ? '' : 's'} since crew was last updated. Please run 'crew update'".lightpurple if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
 end
 command_name = args.select { |k, v| v && command?(k) }.keys[0]
