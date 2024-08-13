@@ -176,6 +176,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/apphub/consts.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/apphub/discovered_services.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/apphub/discovered_workloads.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/apphub/locations.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/apphub/operations.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/apphub/service_projects.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/apphub/utils.py
@@ -556,6 +557,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/entry_group.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/entry_type.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/environment.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/governance_rule.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/lake.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/task.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/util.py
@@ -1629,6 +1631,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_firewall_policies/convert_terraform.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_firewall_policies/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_firewall_policies/secure_tags_utils.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_profiles/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_profiles/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_troubleshooter.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/networks/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/networks/flags.py
@@ -2666,6 +2670,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/recommender/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/redis/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/redis/cluster_util.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/redis/clusters_ccr_util.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/redis/clusters_reschedule_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/redis/clusters_update_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/redis/instances_create_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/redis/instances_describe_util.py
@@ -4309,6 +4315,10 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/iam/v2beta/iam_v2beta_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/iam/v2beta/iam_v2beta_messages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/iam/v2beta/resources.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/iam/v3/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/iam/v3/iam_v3_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/iam/v3/iam_v3_messages.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/iam/v3/resources.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/iam/v3alpha/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/iam/v3alpha/iam_v3alpha_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/iam/v3alpha/iam_v3alpha_messages.py
@@ -5291,6 +5301,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/AuthenticationPolicy.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/AuthorizationConfig.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/Backend.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendCustomMetric.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendService.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceAppEngineBackend.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceCdnPolicy.yaml
@@ -5302,12 +5313,17 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceHAPolicy.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceHAPolicyLeader.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceHAPolicyLeaderNetworkEndpoint.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceHttpCookie.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceIAP.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceIAPOAuth2ClientInfo.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceLocalityLoadBalancingPolicyConfig.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceLocalityLoadBalancingPolicyConfigPolicy.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceLogConfig.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceNetworkPassThroughLbTrafficPolicy.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceTlsSettings.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceTlsSettingsSubjectAltName.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/BackendServiceUsedBy.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/CacheKeyPolicy.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/compute/alpha/CallCredentials.yaml
@@ -6708,6 +6724,9 @@
 /usr/local/share/gcloud/lib/surface/apphub/discovered_workloads/find_unregistered.py
 /usr/local/share/gcloud/lib/surface/apphub/discovered_workloads/list.py
 /usr/local/share/gcloud/lib/surface/apphub/discovered_workloads/lookup.py
+/usr/local/share/gcloud/lib/surface/apphub/locations/__init__.py
+/usr/local/share/gcloud/lib/surface/apphub/locations/describe.py
+/usr/local/share/gcloud/lib/surface/apphub/locations/list.py
 /usr/local/share/gcloud/lib/surface/apphub/operations/__init__.py
 /usr/local/share/gcloud/lib/surface/apphub/operations/describe.py
 /usr/local/share/gcloud/lib/surface/apphub/operations/list.py
@@ -7340,6 +7359,7 @@
 /usr/local/share/gcloud/lib/surface/certificate_manager/issuance_configs/delete.yaml
 /usr/local/share/gcloud/lib/surface/certificate_manager/issuance_configs/describe.yaml
 /usr/local/share/gcloud/lib/surface/certificate_manager/issuance_configs/list.yaml
+/usr/local/share/gcloud/lib/surface/certificate_manager/issuance_configs/update.yaml
 /usr/local/share/gcloud/lib/surface/certificate_manager/maps/__init__.py
 /usr/local/share/gcloud/lib/surface/certificate_manager/maps/create.py
 /usr/local/share/gcloud/lib/surface/certificate_manager/maps/delete.py
@@ -9229,6 +9249,8 @@
 /usr/local/share/gcloud/lib/surface/dataplex/environments/sessions/list.yaml
 /usr/local/share/gcloud/lib/surface/dataplex/environments/set_iam_policy.py
 /usr/local/share/gcloud/lib/surface/dataplex/environments/update.py
+/usr/local/share/gcloud/lib/surface/dataplex/governance_rules/__init__.py
+/usr/local/share/gcloud/lib/surface/dataplex/governance_rules/list.yaml
 /usr/local/share/gcloud/lib/surface/dataplex/lakes/__init__.py
 /usr/local/share/gcloud/lib/surface/dataplex/lakes/actions/__init__.py
 /usr/local/share/gcloud/lib/surface/dataplex/lakes/actions/list.yaml
@@ -11480,10 +11502,12 @@
 /usr/local/share/gcloud/lib/surface/network_security/secure_service_edge/gateways/remove_app_network.yaml
 /usr/local/share/gcloud/lib/surface/network_security/secure_service_edge/partner/__init__.py
 /usr/local/share/gcloud/lib/surface/network_security/secure_service_edge/partner/environments/__init__.py
+/usr/local/share/gcloud/lib/surface/network_security/secure_service_edge/partner/environments/add_dns_peering_zone.yaml
 /usr/local/share/gcloud/lib/surface/network_security/secure_service_edge/partner/environments/create.yaml
 /usr/local/share/gcloud/lib/surface/network_security/secure_service_edge/partner/environments/delete.yaml
 /usr/local/share/gcloud/lib/surface/network_security/secure_service_edge/partner/environments/describe.yaml
 /usr/local/share/gcloud/lib/surface/network_security/secure_service_edge/partner/environments/list.yaml
+/usr/local/share/gcloud/lib/surface/network_security/secure_service_edge/partner/environments/remove_dns_peering_zone.yaml
 /usr/local/share/gcloud/lib/surface/network_security/secure_service_edge/partner/gateway_references/__init__.py
 /usr/local/share/gcloud/lib/surface/network_security/secure_service_edge/partner/gateway_references/describe.yaml
 /usr/local/share/gcloud/lib/surface/network_security/secure_service_edge/partner/gateway_references/list.yaml
@@ -12115,8 +12139,12 @@
 /usr/local/share/gcloud/lib/surface/redis/clusters/create.yaml
 /usr/local/share/gcloud/lib/surface/redis/clusters/delete.yaml
 /usr/local/share/gcloud/lib/surface/redis/clusters/describe.yaml
+/usr/local/share/gcloud/lib/surface/redis/clusters/detach.yaml
+/usr/local/share/gcloud/lib/surface/redis/clusters/detach_secondaries.yaml
 /usr/local/share/gcloud/lib/surface/redis/clusters/get_cluster_certificate_authority.yaml
 /usr/local/share/gcloud/lib/surface/redis/clusters/list.yaml
+/usr/local/share/gcloud/lib/surface/redis/clusters/reschedule_maintenance.yaml
+/usr/local/share/gcloud/lib/surface/redis/clusters/switchover.yaml
 /usr/local/share/gcloud/lib/surface/redis/clusters/update.yaml
 /usr/local/share/gcloud/lib/surface/redis/instances/__init__.py
 /usr/local/share/gcloud/lib/surface/redis/instances/config/__init__.py
@@ -12444,6 +12472,8 @@
 /usr/local/share/gcloud/lib/surface/scc/posture_deployments/update.yaml
 /usr/local/share/gcloud/lib/surface/scc/posture_operations/__init__.py
 /usr/local/share/gcloud/lib/surface/scc/posture_operations/describe.yaml
+/usr/local/share/gcloud/lib/surface/scc/posture_predictions/__init__.py
+/usr/local/share/gcloud/lib/surface/scc/posture_predictions/create.yaml
 /usr/local/share/gcloud/lib/surface/scc/posture_templates/__init__.py
 /usr/local/share/gcloud/lib/surface/scc/posture_templates/describe.yaml
 /usr/local/share/gcloud/lib/surface/scc/posture_templates/list.yaml
@@ -18693,6 +18723,7 @@
 /usr/local/share/gcloud/platform/bq/clients/client_data_transfer.py
 /usr/local/share/gcloud/platform/bq/clients/client_dataset.py
 /usr/local/share/gcloud/platform/bq/clients/client_job.py
+/usr/local/share/gcloud/platform/bq/clients/client_project.py
 /usr/local/share/gcloud/platform/bq/clients/client_reservation.py
 /usr/local/share/gcloud/platform/bq/clients/client_routine.py
 /usr/local/share/gcloud/platform/bq/clients/client_row_access_policy.py
@@ -18709,6 +18740,7 @@
 /usr/local/share/gcloud/platform/bq/frontend/command_delete.py
 /usr/local/share/gcloud/platform/bq/frontend/command_extract.py
 /usr/local/share/gcloud/platform/bq/frontend/command_info.py
+/usr/local/share/gcloud/platform/bq/frontend/command_init.py
 /usr/local/share/gcloud/platform/bq/frontend/command_list.py
 /usr/local/share/gcloud/platform/bq/frontend/command_load.py
 /usr/local/share/gcloud/platform/bq/frontend/command_make.py
