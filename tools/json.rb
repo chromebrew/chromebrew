@@ -16,7 +16,7 @@ Dir.glob('../packages/*.rb').each do |filename|
   pkg = Package.load_package(filename)
   # Skip fake packages.
   next if pkg.is_fake?
-  output << { name: File.basename(filename, '.rb'), description: pkg.description, homepage: pkg.homepage, version: PackageUtils.get_clean_version(pkg.version), license: pkg.license, compatibility: pkg.compatibility }
+  output << { name: File.basename(filename, '.rb'), description: pkg.description, homepage: pkg.homepage, version: PackageUtils.get_clean_version(+pkg.version), license: pkg.license, compatibility: pkg.compatibility }
 end
 
 File.write('repology.json', JSON.pretty_generate(output))
