@@ -1941,9 +1941,7 @@ if @device[:last_update_check].blank?
 else
   @last_update_check = @device[:last_update_check]
   crewlog("last_update_check is #{@last_update_check}, Time.now.to_i is #{Time.now.to_i}")
-  # Only notify if there hasn't been an update in a week.
-  puts "Please run 'crew update'. It has been more than a week since it was last updated.".lightpurple if Time.now.to_i - @last_update_check > 604800
+  puts "It has been more than a week since crew was last updated. Please run 'crew update'".lightpurple if Time.now.to_i - @last_update_check > 604800
 end
 command_name = args.select { |k, v| v && command?(k) }.keys[0]
-crewlog("command_name_command is #{command_name}_command and args are #{args}")
 send("#{command_name}_command", args)

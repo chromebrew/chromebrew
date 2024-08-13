@@ -13,11 +13,12 @@ class Freerdp < CMake
   binary_sha256({
     aarch64: '59532eb9a6cbc636926b798088d83b54ab7054a5f93686658378e8fdc031ac41',
      armv7l: '59532eb9a6cbc636926b798088d83b54ab7054a5f93686658378e8fdc031ac41',
-     x86_64: '4e61c5d31c9a17b97b0df22310c35bf2c28faba67556c2f94cd53519aebd9e5f'
+     x86_64: '5799a7bc56b81a511d49f6cd7502489ee67b52126d5f03cce64a1f120d8d1d80'
   })
 
   depends_on 'alsa_lib' # R
-  depends_on 'cairo' => :build
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
   depends_on 'cjson' # R
   depends_on 'cups' # R
   depends_on 'e2fsprogs' # R
@@ -26,18 +27,24 @@ class Freerdp < CMake
   depends_on 'ffmpeg' # R
   depends_on 'fuse3' # R
   depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gsm' # R
   depends_on 'gstreamer' => :build
+  depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
-  depends_on 'json_c' => :build
+  depends_on 'json_c' # R
   depends_on 'krb5' # R
   depends_on 'libbacktrace' => :build
   depends_on 'libfdk_aac' => :build
+  depends_on 'libice' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libmp3lame' # R
   depends_on 'libsdl2' # R
+  depends_on 'libsm' # R
+  depends_on 'libsoup' # R
   depends_on 'libsoxr' # R
   depends_on 'libusb' # R
   depends_on 'libx11' # R
@@ -56,18 +63,17 @@ class Freerdp < CMake
   depends_on 'linux_pam' # R
   depends_on 'openh264' # R
   depends_on 'openssl' # R
+  depends_on 'pango' # R
   depends_on 'pulseaudio' # R
-  # depends_on 'sdl2_image' => :build
-  depends_on 'sdl2_ttf' => :build
-  # depends_on 'sdl3' => :build
-  # depends_on 'sdl3_ttf' => :build
+  depends_on 'sdl2_ttf' # R
   depends_on 'sommelier' # L
-  depends_on 'uriparser' => :build
+  depends_on 'uriparser' # R
   depends_on 'wayland' # R
-  depends_on 'webkit2gtk_4_1' => :build
+  depends_on 'webkit2gtk_4_1' # R
   depends_on 'xdg_base' # L
   depends_on 'xmlto' => :build
   depends_on 'xprop' => :build
+  depends_on 'zlib' # R
 
   cmake_options "-DCMAKE_SKIP_INSTALL_RPATH=ON \
         -DDOCBOOKXSL_DIR=#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.2 \

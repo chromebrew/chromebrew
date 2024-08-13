@@ -16,6 +16,8 @@ class RUBY < Package
     @gem_ver = version.split('-', 2).first.to_s
     @ruby_ver = version.split('-', 3).last.to_s
     system "gem install -N #{@gem_name} --conservative"
+    gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
+    system "gem contents #{@gem_name} > #{gem_filelist_path}"
     @ruby_install_extras&.call
 
     @remote_gem_ver = Gem.latest_spec_for(@gem_name).version.to_s
