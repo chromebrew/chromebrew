@@ -327,8 +327,6 @@ def update
   else
     puts 'Your software is up to date.'.lightgreen
   end
-  @device.store('last_update_check', Time.now.to_i)
-  save_json(@device)
 end
 
 def upgrade(*pkgs, build_from_source: false)
@@ -1045,7 +1043,7 @@ end
 def time_difference(start_time = nil, end_time = nil)
   return 'ERROR' if start_time.nil? || end_time.nil?
 
-  time_elapsed = end_time - start_time
+  time_elapsed = end_time.to_i - start_time.to_i
   time_hours = time_elapsed / 3600
   time_minutes = time_elapsed / 60 % 60
   time_seconds = time_elapsed % 60
@@ -1925,14 +1923,10 @@ Signal.trap('INT') do
 end
 
 load_json
-if @device[:last_update_check].blank?
-  @device.store('last_update_check', '0')
-  @last_update_check = 0
-  save_json(@device)
-else
-  @last_update_check = @device[:last_update_check]
-  crewlog("The last update was #{time_difference(@last_update_check, Time.now.to_i)} ago.")
-  puts "It has been more than #{CREW_UPDATE_CHECK_INTERVAL} day#{CREW_UPDATE_CHECK_INTERVAL < 2 ? '' : 's'} since crew was last updated. Please run 'crew update'".lightpurple if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
-end
+
+@last_update_check = `stat -c %Y #{File.join(CREW_LIB_PATH, '.git/FETCH_HEAD')}`.chomp.to_i
+@last_update_check = @last_update_check.blank? ? 0 : @last_update_check
+crewlog("The last update was #{time_difference(@last_update_check, Time.now.to_i)} ago.")
+puts "It has been more than #{CREW_UPDATE_CHECK_INTERVAL} day#{CREW_UPDATE_CHECK_INTERVAL < 2 ? '' : 's'} since crew was last updated. Please run 'crew update'".lightpurple if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
 command_name = args.select { |k, v| v && command?(k) }.keys[0]
 send("#{command_name}_command", args)
