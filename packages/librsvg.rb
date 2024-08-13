@@ -11,7 +11,7 @@ class Librsvg < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7e6aac5bc990a85aa112c6843c9c6b486b2d8386aebbaeb1a5ba4bf193cc83f4',
+    aarch64: '59dafc0bb05dafb25e81da2aad87b9f37f4da703503fac40efdcc4667937f018',
      armv7l: '59dafc0bb05dafb25e81da2aad87b9f37f4da703503fac40efdcc4667937f018',
      x86_64: '5301c32f54d047e3684bbd9b1aa3bb4555c700397ad129928112a8eeb7966736'
   })
