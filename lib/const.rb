@@ -40,6 +40,8 @@ else
   HOME = File.join(CREW_PREFIX, Dir.home)
 end
 
+CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 /usr/local/bin/ruby`.scan(/\t([^ ]+)/).flatten + %w[libzstd.so.1 libstdc++.so.6]
+
 CREW_ESSENTIAL_PACKAGES = %w[gcc_lib glibc gmp lz4 ruby xzutils zlib zstd]
 
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', '0').eql?('1')

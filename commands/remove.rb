@@ -34,25 +34,29 @@ class Command
     # Remove the files and directories installed by the package.
     unless pkg.is_fake?
       Dir.chdir CREW_CONFIG_PATH do
-        # Remove all files installed by the package unless the file
-        # exists in another installed package.
+        # Remove all files installed by the package in CREW_PREFIX and
+        # HOME unless the file exists in another installed package.
         flist = File.join(CREW_META_PATH, "#{pkg.name}.filelist")
         if File.file?(flist)
           package_files = []
-          package_files << `grep -h ^#{CREW_PREFIX} #{flist}`.split("\n")
+          package_files << `grep -h "^#{CREW_PREFIX}\\|^#{HOME}" #{flist}`.split("\n")
           all_other_files = []
-          all_other_files << `grep -h --exclude #{pkg.name}.filelist ^#{CREW_PREFIX} #{CREW_META_PATH}/*.filelist`.split("\n")
+          all_other_files << `grep -h --exclude #{pkg.name}.filelist "^#{CREW_PREFIX}\\|^#{HOME}" #{CREW_META_PATH}/*.filelist`.split("\n")
 
           unique_to_package_files = package_files - all_other_files
           package_files_that_overlap = all_other_files & package_files
 
-          unless package_files_that_overlap.empty?
+          unless package_files_that_overlap.flatten.empty?
             puts "The following file(s) are in other packages. They will not be deleted during the removal of #{pkg.name}.".orange
-            puts package_files_that_overlap.to_s.orange
+            puts package_files_that_overlap.flatten.to_s.orange
           end
           unique_to_package_files.flatten.each do |file|
-            puts "Removing file #{file}".yellow if CREW_VERBOSE
-            FileUtils.remove_file file, exception: false
+            if CREW_ESSENTIAL_FILES.include?('file')
+              crewlog("Skipping CREW_ESSENTIAL_FILE #{file}")
+            else
+              puts "Removing file #{file}".yellow if CREW_VERBOSE
+              FileUtils.remove_file file, exception: false
+            end
           end
           FileUtils.remove_file flist
         end
