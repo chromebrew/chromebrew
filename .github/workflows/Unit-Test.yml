@@ -44,7 +44,7 @@ jobs:
             for pkg in \${CHANGED_PACKAGES}; \
               do \
             export all_compatible_packages=\$(crew list -d compatible) && \
-            if \$(echo \${all_compatible_packages} | grep \${pkg}); then ;\
+            if \$(echo \${all_compatible_packages} | grep ^\${pkg}\$); then ;\
             echo \"Testing install of compatible package \${pkg}\"; \
             yes | time crew install \${pkg} && \
             yes | time crew remove \${pkg}; \
