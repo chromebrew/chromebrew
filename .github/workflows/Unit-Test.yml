@@ -24,12 +24,9 @@ jobs:
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
         run: |
-            echo "ALL_CHANGED_FILES is ${ALL_CHANGED_FILES}" && \
-            export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES#packages/} | tr -d '.rb' | sort)" \
-            echo "CHANGED_PACKAGES is ${CHANGED_PACKAGES}" \
             sudo docker run --rm \
             -e ALL_CHANGED_FILES="${ALL_CHANGED_FILES}" \
-            -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
+            -e CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES#packages/} | tr -d '.rb' | sort)" \
             -t satmandu/crewbuild:m90-x86_64 \
             sudo -i -u chronos /bin/bash -c \
             "set -e && \
