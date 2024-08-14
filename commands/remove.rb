@@ -49,8 +49,8 @@ class Command
           package_files_that_overlap = all_other_files.flatten & package_files.flatten
 
           unless package_files_that_overlap.flatten.empty?
-            puts "The following file(s) are in other packages. They will not be deleted during the removal of #{pkg.name}.".orange
-            puts package_files_that_overlap.flatten.to_s.orange
+            puts "The following file(s) in other packages will not be deleted during the removal of #{pkg.name}:".orange
+            puts package_files_that_overlap.join("\n").orange
           end
           unique_to_package_files.flatten.each do |file|
             if CREW_ESSENTIAL_FILES.include?(File.basename(file))
