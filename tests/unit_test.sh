@@ -1,5 +1,6 @@
 #!/bin/bash -e
 # This is for use as a Github CI Pull Request Unit Test.
+cd /usr/local/lib/crew/packages/
 yes | crew upgrade
 yes | crew install vim
 yes | crew remove vim
