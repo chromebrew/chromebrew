@@ -35,12 +35,15 @@ jobs:
             ruby ../tests/commands/help.rb && \
             ruby ../tests/commands/prop.rb && \
             ( [[ -v ALL_CHANGED_FILES ]] && [[ -n ALL_CHANGED_FILES ]] && \
-            for pkg in $(comm -12 <(crew list -d compatible | sort) <(echo ${ALL_CHANGED_FILES} | tr -d packages/ | tr -d '.rb' | sort) | tr -s \"\n\" ' ') ; \
+            export changed_packages=$(echo ${ALL_CHANGED_FILES#packages/} | tr -d '.rb' | sort) ;\
+            [[ -n ${changed_packages-} ]] && (
+            export compatible_packages=$(comm -12 <(crew list -d compatible | sort) <(echo ${changed_packages}) | tr -s \"\n\" ' ') ; \
+            [[ -n ${compatible_packages-} ]] && (for pkg in ${compatible_packages} ;\
             do \
             echo \"Testing install of compatible package ${pkg}\"; \
             yes | time crew install ${pkg}; \
             yes | time crew remove ${pkg}; \
-            done && \
+            done ) || true && \
             for file in ${ALL_CHANGED_FILES}; do
               ruby ../tests/prop_test $file && \
               ruby ../tests/buildsystem_test $file ; \
