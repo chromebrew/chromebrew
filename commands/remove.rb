@@ -19,6 +19,13 @@ class Command
       return
     end
 
+    # List dependencies of packages in CREW_ESSENTIAL_PACKAGES
+    essential_deps = ''
+    CREW_ESSENTIAL_PACKAGES.each do |pkg|
+      essential_deps += Package.load_package("#{pkg}.rb").get_deps_list
+    end
+    puts "essential_deps are #{essential_deps}".orange
+
     # Perform any operations required prior to package removal.
     pkg.preremove
 
