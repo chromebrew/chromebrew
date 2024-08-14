@@ -1303,7 +1303,7 @@ def install
 
   # remove it just before the file copy
   if @pkg.in_upgrade
-    puts 'Removing since upgrade or reinstall...'
+    puts 'Attempting removal since this is an upgrade or reinstall...'
     Command.remove(@pkg, CREW_VERBOSE)
   end
 
