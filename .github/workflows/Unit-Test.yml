@@ -29,7 +29,7 @@ jobs:
             echo "CHANGED_PACKAGES is ${CHANGED_PACKAGES}" \
             sudo docker run --rm \
             -e ALL_CHANGED_FILES="${ALL_CHANGED_FILES}" \
-            -e CHANGED_PACKAGES="$(CHANGED_PACKAGES}" \
+            -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
             -t satmandu/crewbuild:m90-x86_64 \
             sudo -i -u chronos /bin/bash -c \
             "set -e && \
