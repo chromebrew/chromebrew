@@ -24,7 +24,12 @@ jobs:
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
         run: |
-            sudo docker run --rm -t satmandu/crewbuild:m90-x86_64 sudo -i -u chronos /bin/bash -c "set -e && \
+            sudo docker run --rm \
+            -e ALL_CHANGED_FILES="${ALL_CHANGED_FILES}" \
+            -e CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES#packages/} | tr -d '.rb' | sort)" \
+            -t satmandu/crewbuild:m90-x86_64 \
+            sudo -i -u chronos /bin/bash -c \
+            "set -e && \
             echo \"CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}\" && \
             echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
             CREW_REPO=${{ github.event.pull_request.head.repo.clone_url }} CREW_BRANCH=${{ github.head_ref }} crew update && \
@@ -35,21 +40,19 @@ jobs:
             ruby ../tests/commands/help.rb && \
             ruby ../tests/commands/prop.rb && \
             ( [[ -v ALL_CHANGED_FILES ]] && [[ -n ALL_CHANGED_FILES ]] && \
-            export changed_packages=$(echo ${ALL_CHANGED_FILES#packages/} | tr -d '.rb' | sort) ;\
-            [[ -n ${changed_packages-} ]] && ( \
-            for pkg in ${changed_packages}; \
+            [[ -n \${CHANGED_PACKAGES-} ]] && ( \
+            for pkg in \${CHANGED_PACKAGES}; \
               do \
-            export all_compatible_packages=$(crew list -d compatible) ;\
-            if $(echo ${all_compatible_packages} | grep ${pkg}); then ;\
-            (echo \"Testing install of compatible package ${pkg}\"; \
-            yes | time crew install ${pkg} && \
-            yes | time crew remove ${pkg}; \
-            fi ;\
-            done ) && \
+            export all_compatible_packages=\$(crew list -d compatible) && \
+            if \$(echo \${all_compatible_packages} | grep \${pkg}); then ;\
+            echo \"Testing install of compatible package \${pkg}\"; \
+            yes | time crew install \${pkg} && \
+            yes | time crew remove \${pkg}; \
+            fi ) && \
             for file in ${ALL_CHANGED_FILES}; do
-              ruby ../tests/prop_test $file && \
-              ruby ../tests/buildsystem_test $file ; \
-            done )) && \
+              ruby ../tests/prop_test \$file && \
+              ruby ../tests/buildsystem_test \$file ; \
+            done ) && \
             cd ~ && \
             git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
             cd build_test && \
