@@ -35,7 +35,9 @@ class Command
     unless pkg.is_fake?
       Dir.chdir CREW_CONFIG_PATH do
         # Remove all files installed by the package in CREW_PREFIX and
-        # HOME unless the file exists in another installed package.
+        # HOME unless the file exists in another installed package, or
+        # if the file is part of CREW_ESSENTIAL_FILES, as that has files
+        # not covered by CREW_ESSENTIAL_PACKAGES.
         flist = File.join(CREW_META_PATH, "#{pkg.name}.filelist")
         if File.file?(flist)
           package_files = []
@@ -51,7 +53,7 @@ class Command
             puts package_files_that_overlap.flatten.to_s.orange
           end
           unique_to_package_files.flatten.each do |file|
-            if CREW_ESSENTIAL_FILES.include?('file')
+            if CREW_ESSENTIAL_FILES.include?(File.basename(file))
               crewlog("Skipping CREW_ESSENTIAL_FILE #{file}")
             else
               puts "Removing file #{file}".yellow if CREW_VERBOSE
