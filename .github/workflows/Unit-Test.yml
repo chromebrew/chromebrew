@@ -20,9 +20,9 @@ jobs:
       - name: List all changed package files
         uses: tj-actions/changed-files@v44
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
+      - name: Unit Tests (x86_64)
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
-      - name: Unit Tests (x86_64)
         run: |
             sudo docker run --rm -t satmandu/crewbuild:m90-x86_64 sudo -i -u chronos /bin/bash -c "
             echo \"CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}\" && \
