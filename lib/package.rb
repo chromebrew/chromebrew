@@ -36,7 +36,7 @@ class Package
     pkg_name = File.basename(pkg_file, '.rb')
     class_name = pkg_name.capitalize
 
-    # read and eval package script under 'Package' class, using the
+    # Read and eval package script under 'Package' class, using the
     # newest file available.
     pkg_file = ["#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb", "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
 
@@ -51,9 +51,9 @@ class Package
   end
 
   def self.dependencies
-    # We need instance variable in derived class, so not define it here,
-    # base class.  Instead of define it, we initialize it in a function
-    # called from derived classees.
+    # We need instance variable in derived class, so do not define it here,
+    # base class.  Instead of defining it, we initialize it in a function
+    # called from derived classes.
     @dependencies ||= {}
   end
 
@@ -79,14 +79,14 @@ class Package
     #
     @checked_list ||= {} # create @checked_list placeholder if not exist
 
-    # add current package to @checked_list for preventing extra checks
+    # Add current package to @checked_list for preventing extra checks.
     @checked_list.merge!({ pkg_name => pkg_tags })
 
     pkg_obj = load_package(File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"))
     is_source = pkg_obj.source?(ARCH.to_sym) or pkg_obj.build_from_source
     deps = pkg_obj.dependencies
 
-    # append buildessential to deps if building from source is needed/specified
+    # Append buildessential to deps if building from source is needed/specified.
     if ((include_build_deps == true) || ((include_build_deps == 'auto') && is_source)) && \
        !pkg_obj.no_compile_needed? && \
        !exclude_buildessential && \
@@ -95,30 +95,30 @@ class Package
       deps = { 'buildessential' => [[:build]] }.merge(deps)
     end
 
-    # parse dependencies recursively
+    # Parse dependencies recursively.
     expanded_deps = deps.uniq.map do |dep, (dep_tags, ver_check)|
-      # check build dependencies only if building from source is needed/specified
+      # Check build dependencies only if building from source is needed/specified.
       # Do not recursively find :build based build dependencies.
       next unless (include_build_deps == true && @crew_current_package == pkg_obj.name) || \
                   ((include_build_deps == 'auto') && is_source && @crew_current_package == pkg_obj.name) || \
                   !dep_tags.include?(:build)
 
-      # overwrite tags if parent dependency is a build dependency
+      # Overwrite tags if parent dependency is a build dependency.
       # (for build dependencies highlighting)
       tags = pkg_tags.include?(:build) ? pkg_tags : dep_tags
 
       if @checked_list.keys.none?(dep)
-        # check dependency by calling this function recursively
+        # Check dependency by calling this function recursively.
         next \
           send(
             __method__, dep, pkg_tags: tags, ver_check:, include_self: true, top_level: false,
             hash:, return_attr:, include_build_deps:, highlight_build_deps:, exclude_buildessential:
           )
       elsif hash && top_level
-        # will be dropped here if current dependency is already checked and #{top_level} is set to true
+        # Will be dropped here if current dependency is already checked and #{top_level} is set to true.
         #
-        # the '+' symbol tell `print_deps_tree` (`bin/crew`) to color this package as "satisfied dependency"
-        # the '*' symbol tell `print_deps_tree` (`bin/crew`) to color this package as "build dependency"
+        # The '+' symbol tell `print_deps_tree` (`bin/crew`) to color this package as a "satisfied dependency".
+        # The '*' symbol tell `print_deps_tree` (`bin/crew`) to color this package as a "build dependency".
         if highlight_build_deps && tags.include?(:build)
           next { "+*#{dep}*+" => [] }
         elsif highlight_build_deps
@@ -130,21 +130,21 @@ class Package
     end.compact
 
     if hash
-      # the '*' symbol tell `print_deps_tree` (`bin/crew`) to color this package as "build dependency"
+      # The '*' symbol tell `print_deps_tree` (`bin/crew`) to color this package as a "build dependency".
       if highlight_build_deps && pkg_tags.include?(:build)
         return { "*#{pkg_name}*" => expanded_deps }
       else
         return { pkg_name => expanded_deps }
       end
     elsif include_self
-      # return pkg_name itself if this function is called as a recursive loop (see `expanded_deps`)
+      # Return pkg_name itself if this function is called as a recursive loop (see `expanded_deps`).
       if return_attr
         return [expanded_deps, { pkg_name => [pkg_tags, ver_check] }].flatten
       else
         return [expanded_deps, pkg_name].flatten
       end
     else
-      # if this function is called outside of this function, return parsed dependencies only
+      # If this function is called outside of this function, return parsed dependencies only.
       return expanded_deps.flatten
     end
   end
@@ -154,30 +154,30 @@ class Package
     ver_check = nil
     dep_tags  = []
 
-    # add element in "[ name, [ tag1, tag2, ... ] ]" format
+    # Add element in "[ name, [ tag1, tag2, ... ] ]" format.
     if dependency.is_a?(Hash)
-      # parse "depends_on name => <tags: Symbol|Array>"
+      # Parse "depends_on name => <tags: Symbol|Array>".
       dep_name, tags = dependency.first
 
-      # convert `tags` to array in case `tags` is a symbol
+      # Convert `tags` to array in case `tags` is a symbol.
       dep_tags += [tags].flatten
     else
-      # parse "depends_on name"
+      # Parse "depends_on name".
       dep_name = dependency
     end
 
-    # process dependency version range if specified
+    # Process dependency version range if specified.
     # example:
     #   depends_on name, '>= 1.0'
     #
-    # operator can be '>=', '==', '<=', '<', '>'
+    # Operators can be: '>=', '==', '<=', '<', or '>'
     if ver_range
       operator, target_ver = ver_range.split(' ', 2)
 
       # lambda for comparing the given range with installed version
       ver_check = lambda do |installed_ver|
         unless Gem::Version.new(installed_ver).send(operator.to_sym, Gem::Version.new(target_ver))
-          # print error if the range is not fulfilled
+          # Print error if the range is not fulfilled.
           warn <<~EOT.lightred
             Package #{name} depends on '#{dep_name}' (#{operator} #{target_ver}), however version '#{installed_ver}' is currently installed :/
 
@@ -206,33 +206,33 @@ class Package
     # Replace CREW_ARCH_FLAGS if @arch_flags_override is true.
     @crew_env_options_hash = @arch_flags_override ? @crew_env_options_hash.each { |k, v| @crew_env_options_hash[k] = v.gsub(CREW_ARCH_FLAGS, CREW_ARCH_FLAGS_OVERRIDE) } : @crew_env_options_hash
 
-    # add "-j#" argument to "make" at compile-time, if necessary
+    # Add "-j#" argument to "make" at compile-time, if necessary.
 
     # Order of precedence to assign the number of threads:
     # 1. The value of '-j#' from the package make argument
     # 2. The value of ENV["CREW_NPROC"]
     # 3. The value of `nproc`.strip
-    # See lib/const.rb for more details
+    # See lib/const.rb for more details.
 
-    # add exception option to opt_args
+    # Add exception option to opt_args.
     opt_args.merge!(exception: true) unless opt_args.key?(:exception)
 
-    # extract env hash
+    # Extract env hash.
     if args[0].is_a?(Hash)
       env = @crew_env_options_hash.merge(args[0])
-      args.delete_at(0) # remove env hash from args array
+      args.delete_at(0) # Remove env hash from args array.
     else
       env = @crew_env_options_hash
     end
 
-    cmd_args        = args # after removing the env hash, all remaining args must be command args
+    cmd_args        = args # After removing the env hash, all remaining args must be command args.
     make_threads    = CREW_NPROC
     modded_make_cmd = false
 
-    # append -j placeholder to `make` commands only if '-j#' does not exist
+    # Append -j placeholder to `make` commands only if '-j#' does not exist.
     unless cmd_args.grep(/-j[[:space:]]?[0-9]+/).any?
       if cmd_args.size == 1
-        # involve a shell if the command is passed in one single string
+        # Involve a shell if the command is passed in one single string.
         cmd_args        = ['bash', '-c', cmd_args[0].sub(/^(make)\b/, '\\1 <<<CREW_NPROC>>>')]
         modded_make_cmd = true
       elsif cmd_args[0] == 'make'
@@ -243,23 +243,23 @@ class Package
 
     begin
       if modded_make_cmd
-        # replace placeholder with '-j#' arg and execute the actual command
+        # Replace placeholder with '-j#' arg and execute the actual command.
         Kernel.system(env, *cmd_args.map { |arg| arg.sub('<<<CREW_NPROC>>>', "-j#{make_threads}") }, **opt_args)
       else
         Kernel.system(env, *cmd_args, **opt_args)
       end
     rescue RuntimeError => e
       if modded_make_cmd && make_threads != 1
-        # retry with single thread if command is `make` and is modified by crew
+        # Retry with single thread if command is `make` and is modified by crew.
         warn "Command \"#{cmd_args.map { |arg| arg.sub('<<<CREW_NPROC>>>', "-j#{make_threads}") }.join(' ')}\" failed, retrying with \"-j1\"...".yellow
         make_threads = 1
         retry
       else
-        # exit with error
+        # Exit with error.
         raise e
       end
     rescue StandardError => e
-      # print failed line number and error message
+      # Print failed line number and error message.
       puts "#{e.backtrace[1]}: #{e.message}".orange
       raise InstallError, "`#{env.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')} #{cmd_args.join(' ')}` exited with #{$CHILD_STATUS.exitstatus}".lightred
     end
