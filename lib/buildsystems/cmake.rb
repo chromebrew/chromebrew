@@ -1,7 +1,7 @@
 require 'package'
 
 class CMake < Package
-  property :cmake_options, :pre_cmake_options
+  property :cmake_options, :pre_cmake_options, :cmake_build_extras, :cmake_install_extras
 
   def self.build
     puts "Additional cmake_options being used: #{@pre_cmake_options.nil? ? '<no pre_cmake_options>' : @pre_cmake_options} #{@cmake_options.nil? ? '<no cmake_options>' : @cmake_options}".orange
@@ -9,10 +9,12 @@ class CMake < Package
     @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run' : ''
     system "#{@pre_cmake_options} #{@mold_linker_prefix_cmd} cmake -B builddir -G Ninja #{@crew_cmake_options} #{@cmake_options}"
     system "#{CREW_NINJA} -C builddir"
+    @cmake_build_extras&.call
   end
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+    @cmake_install_extras&.call
   end
 
   def self.check
