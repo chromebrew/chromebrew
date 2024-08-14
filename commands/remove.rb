@@ -45,8 +45,8 @@ class Command
           all_other_files = []
           all_other_files << `grep -h --exclude #{pkg.name}.filelist "^#{CREW_PREFIX}\\|^#{HOME}" #{CREW_META_PATH}/*.filelist`.split("\n")
 
-          unique_to_package_files = package_files - all_other_files
-          package_files_that_overlap = all_other_files & package_files
+          unique_to_package_files = package_files.flatten - all_other_files.flatten
+          package_files_that_overlap = all_other_files.flatten & package_files.flatten
 
           unless package_files_that_overlap.flatten.empty?
             puts "The following file(s) are in other packages. They will not be deleted during the removal of #{pkg.name}.".orange
