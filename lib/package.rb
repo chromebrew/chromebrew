@@ -38,7 +38,7 @@ class Package
 
     # Read and eval package script under 'Package' class, using the
     # newest file available.
-    pkg_file = CREW_LOCAL_REPO_ROOT.empty? ? "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb" : ["#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb", "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
+    pkg_file = File.file?("#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb") ? ["#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb", "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) } : "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb"
 
     class_eval(File.read(pkg_file, encoding: Encoding::UTF_8), pkg_file) unless const_defined?("Package::#{class_name}")
 
