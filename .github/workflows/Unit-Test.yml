@@ -37,6 +37,7 @@ jobs:
         uses: docker/setup-qemu-action@v3
         # This is not the best way to do things, a matrix would certainly be better.
       - name: Unit Tests (armv7l)
+        env:
           ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
         run: |
             sudo docker run --rm \
