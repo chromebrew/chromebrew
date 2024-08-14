@@ -13,18 +13,21 @@ class Command
       return
     end
 
-    # Don't remove any of the packages ruby (and thus crew) needs to run.
-    if CREW_ESSENTIAL_PACKAGES.include?(pkg.name)
-      puts "Refusing to remove essential package #{pkg.name}.".lightred
+    # Determine dependencies of packages in CREW_ESSENTIAL_PACKAGES, as
+    # those are needed for ruby and crew to run, and thus should not be
+    # removed.
+    essential_deps = CREW_ESSENTIAL_PACKAGES.map do |pkg|
+      Package.load_package("#{pkg}.rb").get_deps_list
+    end
+    essential_deps.flatten!.uniq!
+    if essential_deps.include?(pkg.name)
+      puts %(
+      #{pkg.name.capitalize} is considered an essential package needed for
+      Chromebrew to function and thus cannot be removed.
+      ).lightred
+
       return
     end
-
-    # List dependencies of packages in CREW_ESSENTIAL_PACKAGES
-    essential_deps = ''
-    CREW_ESSENTIAL_PACKAGES.each do |pkg|
-      essential_deps += Package.load_package("#{pkg}.rb").get_deps_list
-    end
-    puts "essential_deps are #{essential_deps}".orange
 
     # Perform any operations required prior to package removal.
     pkg.preremove
@@ -42,30 +45,45 @@ class Command
     unless pkg.is_fake?
       Dir.chdir CREW_CONFIG_PATH do
         # Remove all files installed by the package in CREW_PREFIX and
-        # HOME unless the file exists in another installed package, or
-        # if the file is part of CREW_ESSENTIAL_FILES, as that has files
-        # not covered by CREW_ESSENTIAL_PACKAGES.
+        # HOME.
+        # Exceptions:
+        # 1. The file exists in another installed package.
+        # 2. The file is in one of the filelists for packages in
+        # CREW_ESSENTIAL_FILES, or a dependendent package of
+        # CREW_ESSENTIAL_PACKAGES.
         flist = File.join(CREW_META_PATH, "#{pkg.name}.filelist")
         if File.file?(flist)
-          package_files = []
-          package_files << `grep -h "^#{CREW_PREFIX}\\|^#{HOME}" #{flist}`.split("\n")
-          all_other_files = []
-          all_other_files << `grep -h --exclude #{pkg.name}.filelist "^#{CREW_PREFIX}\\|^#{HOME}" #{CREW_META_PATH}/*.filelist`.split("\n")
+          # When searching for files to delete we exclude the files from
+          # all packages and dependent packages of CREW_ESSENTIAL_PACKAGES.
+          essential_deps_exclude_froms = essential_deps.map { |i| File.file?("#{File.join(CREW_META_PATH, i.to_s)}.filelist") ? "--exclude-from=#{File.join(CREW_META_PATH, i.to_s)}.filelist" : '' }.join(' ')
 
-          unique_to_package_files = package_files.flatten - all_other_files.flatten
-          package_files_that_overlap = all_other_files.flatten & package_files.flatten
+          # When making a list of all files from crew filelists we again
+          # ignore all files from packages and dependent packages of
+          # CREW_ESSENTIAL_PACKAGES.
+          essential_deps_excludes = essential_deps.map { |i| File.file?("#{File.join(CREW_META_PATH, i.to_s)}.filelist") ? "--exclude=#{File.join(CREW_META_PATH, i.to_s)}.filelist" : '' }.join(' ')
 
-          unless package_files_that_overlap.flatten.empty?
+          package_files_cmd = "grep -h #{essential_deps_exclude_froms} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{flist}"
+          package_files = `#{package_files_cmd}`.split("\n").map(&:to_s)
+          package_files.uniq!
+          package_files.sort!
+          all_other_files_cmd = "grep -h --exclude #{pkg.name}.filelist #{essential_deps_excludes} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{CREW_META_PATH}/*.filelist"
+          all_other_files = `#{all_other_files_cmd}`.split("\n").map(&:to_s)
+          all_other_files.uniq!
+          all_other_files.sort!
+
+          # We want the difference of these arrays.
+          unique_to_package_files = package_files - all_other_files
+
+          # We want the intersection of these arrays.
+          package_files_that_overlap = all_other_files & package_files
+
+          unless package_files_that_overlap.empty?
             puts "The following file(s) in other packages will not be deleted during the removal of #{pkg.name}:".orange
             puts package_files_that_overlap.join("\n").orange
           end
-          unique_to_package_files.flatten.each do |file|
-            if CREW_ESSENTIAL_FILES.include?(File.basename(file))
-              crewlog("Skipping CREW_ESSENTIAL_FILE #{file}")
-            else
-              puts "Removing file #{file}".yellow if CREW_VERBOSE
-              FileUtils.remove_file file, exception: false
-            end
+          unique_to_package_files.each do |file|
+            puts "Removing file #{file}".yellow if CREW_VERBOSE
+            FileUtils.remove_file file, exception: false
           end
           FileUtils.remove_file flist
         end

@@ -36,7 +36,10 @@ class Package
     pkg_name = File.basename(pkg_file, '.rb')
     class_name = pkg_name.capitalize
 
-    # read and eval package script under 'Package' class
+    # read and eval package script under 'Package' class, using the
+    # newest file available.
+    pkg_file = ["#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb", "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
+
     class_eval(File.read(pkg_file, encoding: Encoding::UTF_8), pkg_file) unless const_defined?("Package::#{class_name}")
 
     pkg_obj = const_get(class_name)
