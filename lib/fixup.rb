@@ -39,8 +39,8 @@ Dir.chdir CREW_LIB_PATH do
 end
 
 # Set git timeout values for situations where GitHub is down.
-  system 'git config --global http.lowSpeedLimit 1000' if `git config --local http.lowSpeedLimit`.empty?
-  system 'git config --global http.lowSpeedTime 5' if `git config --local http.lowSpeedTime`.empty?
+system 'git config --global http.lowSpeedLimit 1000' if `git config --local http.lowSpeedLimit`.empty?
+system 'git config --global http.lowSpeedTime 5' if `git config --local http.lowSpeedTime`.empty?
 
 # Rename the binary_sha256 variable to sha256 in the device.json file
 system(" sed -i 's/binary_sha256/sha256/g' #{File.join(CREW_CONFIG_PATH, 'device.json')}")
