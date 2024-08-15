@@ -24,10 +24,12 @@ jobs:
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
         run: |
+            echo "ALL_CHANGED FILES is ${ALL_CHANGED_FILES}." && \
+            export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES#packages/} | tr -d '.rb' | sort)" && \
             sudo docker run --rm \
             -e ALL_CHANGED_FILES="${ALL_CHANGED_FILES}" \
-            -e CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES#packages/} | tr -d '.rb' | sort)" \
-            -it satmandu/crewbuild:m90-x86_64 \
+            -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
+            -i satmandu/crewbuild:m90-x86_64 \
             sudo -i -u chronos /bin/bash -c \
             "echo \"CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}\" && \
             echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
