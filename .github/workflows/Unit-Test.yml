@@ -28,10 +28,8 @@ jobs:
             export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES#packages/} | tr -d '.rb' | sort)" && \
             echo "CHANGED PACKAGES is ${CHANGED_PACKAGES}." && \
             sudo docker run --rm \
-            -e ALL_CHANGED_FILES="${ALL_CHANGED_FILES}" \
-            -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
-            -i satmandu/crewbuild:m90-x86_64 \
-            sudo -i -u chronos /bin/bash -x -c " \
+            --platform linux/amd64 -i satmandu/crewbuild:nocturne-x86_64.m90 \
+            sudo -i -u chronos /bin/bash -c " \
             export ALL_CHANGED_FILES=\"${ALL_CHANGED_FILES}\" && \
             export CHANGED_PACKAGES=\"${CHANGED_PACKAGES}\" && \
             echo \"CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}\" && \
@@ -52,7 +50,7 @@ jobs:
             -e ALL_CHANGED_FILES="${ALL_CHANGED_FILES}" \
             -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
             sudo docker run --rm \
-            --platform linux/arm/v7 -t satmandu/crewbuild:m91-armv7l \
+            --platform linux/arm/v7 -t satmandu/crewbuild:fievel-armv7l.m91 \
             sudo -i -u chronos /bin/bash -x -c " \
             export ALL_CHANGED_FILES=\"${ALL_CHANGED_FILES}\" && \
             export CHANGED_PACKAGES=\"${CHANGED_PACKAGES}\" && \

@@ -1,7 +1,7 @@
 #!/bin/bash -e
 # This is for use as a Github CI Pull Request Unit Test.
 echo "ALL_CHANGED FILES is ${ALL_CHANGED_FILES}."
-echo "CHANGED PACKAGES is ${CHANGED_PACKAGES}."
+echo "CHANGED_PACKAGES is ${CHANGED_PACKAGES}."
 cd /usr/local/lib/crew/packages/
 yes | crew upgrade
 yes | crew install vim
@@ -9,22 +9,27 @@ yes | crew remove vim
 ruby ../tests/commands/const.rb
 ruby ../tests/commands/help.rb
 ruby ../tests/commands/prop.rb
-[[ -v $ALL_CHANGED_FILES ]] && [[ -n $ALL_CHANGED_FILES ]] && (
-  [[ -n ${CHANGED_PACKAGES-} ]] && \
-    (
+if [[ -n ${ALL_CHANGED_FILES-} ]]; then
+  # for file in ${ALL_CHANGED_FILES}; do
+    # ruby ../tests/prop_test "$file"
+    # ruby ../tests/buildsystem_test "$file"
+  # done
+  if [[ -n ${CHANGED_PACKAGES-} ]]; then
     all_compatible_packages=$(crew list -d compatible)
     for pkg in ${CHANGED_PACKAGES}
       do
-    if echo "${all_compatible_packages}" | grep "^${pkg}$"; then
-      echo "Testing install of compatible package ${pkg}"
-      yes | time crew install "${pkg}"
-      yes | time crew remove "${pkg}"
-    fi
-    done) && \
-  for file in ${ALL_CHANGED_FILES}; do
-    ruby ../tests/prop_test "$file"
-    ruby ../tests/buildsystem_test "$file"
-  done )
+      # Only check packages compatible with the architecture
+      # being run on.
+      if echo "${all_compatible_packages}" | grep "^${pkg}$"; then
+        ruby ../tests/prop_test "${pkg}"
+        ruby ../tests/buildsystem_test "${pkg}"
+        echo "Testing install/removal of compatible package ${pkg}."
+        yes | time crew install "${pkg}"
+        yes | time crew remove "${pkg}"
+      fi
+    done
+  fi
+fi
 cd ~
 git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test
 cd build_test
