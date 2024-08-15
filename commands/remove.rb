@@ -18,23 +18,16 @@ class Command
     # their dependencies, as those are needed for ruby and crew to run,
     # and thus should not be removed.
     essential_deps = CREW_ESSENTIAL_PACKAGES.flat_map { |essential_pkg| Package.load_package("#{essential_pkg}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort
-    essential_deps2 = essential_deps
-    loops = 0
-    until loops == 5
-      essential_deps = essential_deps2.flat_map { |essential_pkg| Package.load_package("#{essential_pkg}.rb").get_deps_list }.push(*essential_deps).uniq.sort
-
-      break if essential_deps == essential_deps2
-      essential_deps2 = essential_deps
-      loops += 1
-    end
 
     if essential_deps.include?(pkg.name)
+      return if Package.load_package("#{pkg.name}.rb").in_upgrade
+
       puts <<~ESSENTIAL_PACKAGE_WARNING_EOF.gsub(/^(?=\w)/, '  ').lightred
         #{pkg.name.capitalize} is considered an essential package needed for
         Chromebrew to function and thus cannot be removed.
       ESSENTIAL_PACKAGE_WARNING_EOF
 
-      return
+      exit 1
     end
 
     # Perform any operations required prior to package removal.
