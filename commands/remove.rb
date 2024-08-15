@@ -1,6 +1,7 @@
 require 'fileutils'
 require 'json'
 require_relative '../lib/const'
+require_relative '../lib/package'
 require_relative '../lib/package_utils'
 
 class Command
@@ -16,11 +17,9 @@ class Command
     # Determine dependencies of packages in CREW_ESSENTIAL_PACKAGES, as
     # those are needed for ruby and crew to run, and thus should not be
     # removed.
-    essential_deps = CREW_ESSENTIAL_PACKAGES.flat_map.uniq do |pkg|
-      Package.load_package("#{pkg}.rb").get_deps_list
-    end
+    essential_deps = CREW_ESSENTIAL_PACKAGES.flat_map { |essential_pkg| Package.load_package("#{essential_pkg}.rb").get_deps_list }.uniq
     if essential_deps.include?(pkg.name)
-      puts <<~ESSENTIAL_PACKAGE_WARNING_EOF.lightred
+      puts <<~ESSENTIAL_PACKAGE_WARNING_EOF.gsub(/^(?=\w)/, '  ').lightred
         #{pkg.name.capitalize} is considered an essential package needed for
         Chromebrew to function and thus cannot be removed.
       ESSENTIAL_PACKAGE_WARNING_EOF
