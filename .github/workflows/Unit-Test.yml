@@ -28,10 +28,10 @@ jobs:
             echo "ALL_CHANGED FILES is/are ${ALL_CHANGED_FILES}." && \
             export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES} | sed -e 's,packages/,,g' -e 's,\.rb,,g' | sort)" && \
             echo "CHANGED PACKAGES is/are ${CHANGED_PACKAGES}." && \
-            export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do echo $(grep -l \"compatibility.*all\|x86_64\" packages/$p.rb); done | xargs)" && \
-            echo "PR #${PR_NUMBER} has these x86_64 packages: ${X86_64_PACKAGES}" && \
-            export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do echo $(grep -l \"compatibility.*all\|armv7l\" packages/$p.rb); done | xargs)" && \
-            echo "PR #${PR_NUMBER} has these ARMv7L packages: ${ARMV7L_PACKAGES}" && \
+            export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|x86_64" packages/$p.rb && echo $p; done | xargs)" && \
+            echo "PR #${PR_NUMBER} has these x86_64 compatible packages: ${X86_64_PACKAGES}" && \
+            export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|armv7l" packages/$p.rb && echo $p; done | xargs)" && \
+            echo "PR #${PR_NUMBER} has these ARMv7L compatible packages: ${ARMV7L_PACKAGES}" && \
             sudo docker run --rm \
             --platform linux/amd64 -i satmandu/crewbuild:nocturne-x86_64.m90 \
             sudo -i -u chronos /bin/bash -c " \
@@ -52,10 +52,10 @@ jobs:
             echo "ALL_CHANGED FILES is/are ${ALL_CHANGED_FILES}." && \
             export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES} | sed -e 's,packages/,,g' -e 's,\.rb,,g' | sort)" && \
             echo "CHANGED PACKAGES is/are ${CHANGED_PACKAGES}." && \
-            export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do echo $(grep -l \"compatibility.*all\|x86_64\" packages/$p.rb); done | xargs)" && \
-            echo "PR #${PR_NUMBER} has these x86_64 packages: ${X86_64_PACKAGES}" && \
-            export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do echo $(grep -l \"compatibility.*all\|armv7l\" packages/$p.rb); done | xargs)" && \
-            echo "PR #${PR_NUMBER} has these ARMv7L packages: ${ARMV7L_PACKAGES}" && \
+            export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|x86_64" packages/$p.rb && echo $p; done | xargs)" && \
+            echo "PR #${PR_NUMBER} has these x86_64 compatible packages: ${X86_64_PACKAGES}" && \
+            export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|armv7l" packages/$p.rb && echo $p; done | xargs)" && \
+            echo "PR #${PR_NUMBER} has these ARMv7L compatible packages: ${ARMV7L_PACKAGES}" && \
             [[ $ARMV7L_PACKAGES ]] || exit 0 && \
             sudo docker run --rm \
             --platform linux/arm/v7 -t satmandu/crewbuild:fievel-armv7l.m91 \
