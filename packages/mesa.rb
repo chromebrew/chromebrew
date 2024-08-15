@@ -73,8 +73,7 @@ class Mesa < Meson
     -Dvulkan-drivers='#{ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'}' \
     -Dvideo-codecs='all'"
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  meson_install_extras do
     # The following are hacks to keep sommelier from complaining.
     Dir.chdir("#{CREW_DEST_LIB_PREFIX}/dri") do
       FileUtils.ln_s '.', 'tls' unless File.exist?('tls')
