@@ -25,7 +25,7 @@ jobs:
           ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
         run: |
             echo "ALL_CHANGED FILES is ${ALL_CHANGED_FILES}." && \
-            export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES#packages/} | tr -d '.rb' | sort)" && \
+            export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES} | sed -e 's,packages/,,g' -e 's,\.rb,,g' | sort)" && \
             echo "CHANGED PACKAGES is ${CHANGED_PACKAGES}." && \
             export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do echo $(grep -l \"compatibility.*all\|x86_64\" packages/$p.rb); done | xargs)" && \
             export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do echo $(grep -l \"compatibility.*all\|armv7l\" packages/$p.rb); done | xargs)" && \
@@ -46,7 +46,7 @@ jobs:
           ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
         run: |
             echo "ALL_CHANGED FILES is ${ALL_CHANGED_FILES}." && \
-            export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES#packages/} | tr -d '.rb' | sort)" && \
+            export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES} | sed -e 's,packages/,,g' -e 's,\.rb,,g' | sort)" && \
             echo "CHANGED PACKAGES is ${CHANGED_PACKAGES}." && \
             export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do echo $(grep -l \"compatibility.*all\|x86_64\" packages/$p.rb); done | xargs)" && \
             export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do echo $(grep -l \"compatibility.*all\|armv7l\" packages/$p.rb); done | xargs)" && \
