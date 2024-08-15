@@ -24,11 +24,11 @@ jobs:
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
         run: |
-            echo "pwd is $(pwd)" && \
-            ls -aFl && \
             echo "ALL_CHANGED FILES is ${ALL_CHANGED_FILES}." && \
             export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES#packages/} | tr -d '.rb' | sort)" && \
             echo "CHANGED PACKAGES is ${CHANGED_PACKAGES}." && \
+            export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do echo $(grep -l \"compatibility.*all\|x86_64\" packages/$p.rb); done | xargs)" && \
+            export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do echo $(grep -l \"compatibility.*all\|armv7l\" packages/$p.rb); done | xargs)" && \
             sudo docker run --rm \
             --platform linux/amd64 -i satmandu/crewbuild:nocturne-x86_64.m90 \
             sudo -i -u chronos /bin/bash -c " \
@@ -48,6 +48,9 @@ jobs:
             echo "ALL_CHANGED FILES is ${ALL_CHANGED_FILES}." && \
             export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES#packages/} | tr -d '.rb' | sort)" && \
             echo "CHANGED PACKAGES is ${CHANGED_PACKAGES}." && \
+            export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do echo $(grep -l \"compatibility.*all\|x86_64\" packages/$p.rb); done | xargs)" && \
+            export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do echo $(grep -l \"compatibility.*all\|armv7l\" packages/$p.rb); done | xargs)" && \
+            [[ $ARMV7L_PACKAGES ]] || exit 0 && \
             sudo docker run --rm \
             --platform linux/arm/v7 -t satmandu/crewbuild:fievel-armv7l.m91 \
             sudo -i -u chronos /bin/bash -x -c " \
