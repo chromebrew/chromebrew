@@ -24,6 +24,8 @@ jobs:
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
         run: |
+            echo "pwd is $(pwd)" && \
+            ls -aFl && \
             echo "ALL_CHANGED FILES is ${ALL_CHANGED_FILES}." && \
             export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES#packages/} | tr -d '.rb' | sort)" && \
             echo "CHANGED PACKAGES is ${CHANGED_PACKAGES}." && \
