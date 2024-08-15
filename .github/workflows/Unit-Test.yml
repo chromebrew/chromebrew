@@ -31,8 +31,8 @@ jobs:
             -e ALL_CHANGED_FILES="${ALL_CHANGED_FILES}" \
             -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
             -i satmandu/crewbuild:m90-x86_64 \
-            sudo -i -u chronos /bin/bash -c \
-            "export ALL_CHANGED_FILES=\"${ALL_CHANGED_FILES}\" && \
+            sudo -i -u chronos /bin/bash -x -c " \
+            export ALL_CHANGED_FILES=\"${ALL_CHANGED_FILES}\" && \
             export CHANGED_PACKAGES=\"${CHANGED_PACKAGES}\" \
             echo \"CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}\" && \
             echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
@@ -53,8 +53,8 @@ jobs:
             -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
             sudo docker run --rm \
             --platform linux/arm/v7 -t satmandu/crewbuild:m91-armv7l \
-            sudo -i -u chronos /bin/bash -c \
-            "export ALL_CHANGED_FILES=\"${ALL_CHANGED_FILES}\" && \
+            sudo -i -u chronos /bin/bash -x -c " \
+            export ALL_CHANGED_FILES=\"${ALL_CHANGED_FILES}\" && \
             export CHANGED_PACKAGES=\"${CHANGED_PACKAGES}\" \
             echo \"CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}\" && \
             echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
