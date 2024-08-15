@@ -14,10 +14,20 @@ class Command
       return
     end
 
-    # Determine dependencies of packages in CREW_ESSENTIAL_PACKAGES, as
-    # those are needed for ruby and crew to run, and thus should not be
-    # removed.
-    essential_deps = CREW_ESSENTIAL_PACKAGES.flat_map { |essential_pkg| Package.load_package("#{essential_pkg}.rb").get_deps_list }.uniq
+    # Determine dependencies of packages in CREW_ESSENTIAL_PACKAGES and
+    # their dependencies, as those are needed for ruby and crew to run,
+    # and thus should not be removed.
+    essential_deps = CREW_ESSENTIAL_PACKAGES.flat_map { |essential_pkg| Package.load_package("#{essential_pkg}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort
+    essential_deps2 = essential_deps
+    loops = 0
+    until loops == 5
+      essential_deps = essential_deps2.flat_map { |essential_pkg| Package.load_package("#{essential_pkg}.rb").get_deps_list }.push(*essential_deps).uniq.sort
+
+      break if essential_deps == essential_deps2
+      essential_deps2 = essential_deps
+      loops += 1
+    end
+
     if essential_deps.include?(pkg.name)
       puts <<~ESSENTIAL_PACKAGE_WARNING_EOF.gsub(/^(?=\w)/, '  ').lightred
         #{pkg.name.capitalize} is considered an essential package needed for
