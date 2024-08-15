@@ -69,3 +69,9 @@
 /usr/local/lib/pkgconfig/libdrm_radeon.pc
 /usr/local/lib/pkgconfig/libdrm_vc4.pc
 /usr/local/share/libdrm/amdgpu.ids
+/usr/local/share/man/man3/drmAvailable.3.zst
+/usr/local/share/man/man3/drmHandleEvent.3.zst
+/usr/local/share/man/man3/drmModeGetResources.3.zst
+/usr/local/share/man/man7/drm-kms.7.zst
+/usr/local/share/man/man7/drm-memory.7.zst
+/usr/local/share/man/man7/drm.7.zst
