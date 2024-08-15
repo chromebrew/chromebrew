@@ -16,15 +16,14 @@ class Command
     # Determine dependencies of packages in CREW_ESSENTIAL_PACKAGES, as
     # those are needed for ruby and crew to run, and thus should not be
     # removed.
-    essential_deps = CREW_ESSENTIAL_PACKAGES.map do |pkg|
+    essential_deps = CREW_ESSENTIAL_PACKAGES.flat_map.uniq do |pkg|
       Package.load_package("#{pkg}.rb").get_deps_list
     end
-    essential_deps.flatten!.uniq!
     if essential_deps.include?(pkg.name)
-      puts %(
-      #{pkg.name.capitalize} is considered an essential package needed for
-      Chromebrew to function and thus cannot be removed.
-      ).lightred
+      puts <<~ESSENTIAL_PACKAGE_WARNING_EOF.lightred
+        #{pkg.name.capitalize} is considered an essential package needed for
+        Chromebrew to function and thus cannot be removed.
+      ESSENTIAL_PACKAGE_WARNING_EOF
 
       return
     end
@@ -63,13 +62,9 @@ class Command
           essential_deps_excludes = essential_deps.map { |i| File.file?("#{File.join(CREW_META_PATH, i.to_s)}.filelist") ? "--exclude=#{File.join(CREW_META_PATH, i.to_s)}.filelist" : '' }.join(' ')
 
           package_files_cmd = "grep -h #{essential_deps_exclude_froms} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{flist}"
-          package_files = `#{package_files_cmd}`.split("\n").map(&:to_s)
-          package_files.uniq!
-          package_files.sort!
+          package_files = `#{package_files_cmd}`.split("\n").uniq.sort
           all_other_files_cmd = "grep -h --exclude #{pkg.name}.filelist #{essential_deps_excludes} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{CREW_META_PATH}/*.filelist"
-          all_other_files = `#{all_other_files_cmd}`.split("\n").map(&:to_s)
-          all_other_files.uniq!
-          all_other_files.sort!
+          all_other_files = `#{all_other_files_cmd}`.split("\n").uniq.sort
 
           # We want the difference of these arrays.
           unique_to_package_files = package_files - all_other_files
