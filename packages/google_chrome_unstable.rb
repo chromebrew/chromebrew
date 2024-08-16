@@ -7,7 +7,7 @@ class Google_chrome_unstable < Package
   version '129.0.6628.3-1'
   license 'google-chrome'
   compatibility 'x86_64'
-  min_glibc '2.25'
+  min_glibc '2.28'
   source_url "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-#{@update_channel}/google-chrome-#{@update_channel}_#{@version}_amd64.deb"
   source_sha256 '04ecad6568443416e347833cd9733b9866bb5b0465e34a93d6442eb75bc51d26'
 
