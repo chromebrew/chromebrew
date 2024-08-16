@@ -2,7 +2,7 @@ require 'fileutils'
 require 'package'
 
 class Autotools < Package
-  property :configure_options, :pre_configure_options, :install_extras
+  property :configure_options, :pre_configure_options, :build_extras, :install_extras
 
   def self.build
     unless File.file?('Makefile') && CREW_CACHE_BUILD
@@ -27,6 +27,7 @@ class Autotools < Package
       system "#{@pre_configure_options} #{@mold_linker_prefix_cmd}./configure #{CREW_OPTIONS} #{@configure_options}"
     end
     system 'make'
+    @build_extras&.call
   end
 
   def self.install

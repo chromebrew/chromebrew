@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.15.4'
+  version '4.15.5'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '24afa2516f6bbbd290735f58c1cdbdcea63f832423f88abf5b0bae1bc1343f4e',
-     armv7l: '24afa2516f6bbbd290735f58c1cdbdcea63f832423f88abf5b0bae1bc1343f4e',
-     x86_64: '11dd98f1d841007c830e9a2fe9b8fe98f105db0070a0de585f64a081c154ed21'
+    aarch64: '5d67fcdbe9b84b41ec4df666ec7e94f632b8582df939adef91325f871ae0fca2',
+     armv7l: '5d67fcdbe9b84b41ec4df666ec7e94f632b8582df939adef91325f871ae0fca2',
+     x86_64: '7efdc475f5ede9b6921a9e33408fea25dd1267d9ca9320c26c358d0406b13b33'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -85,11 +85,10 @@ class Gtk4 < Meson
     end
   end
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-      -Dbroadway-backend=true \
+  meson_options '-Dbroadway-backend=true \
       -Dbuild-demos=false \
       -Dbuild-examples=false \
+      -Dbuild-tests=false \
       -Dbuild-testsuite=false \
       -Dcloudproviders=enabled \
       -Dgraphene:default_library=both \
@@ -98,10 +97,9 @@ class Gtk4 < Meson
       -Dmedia-gstreamer=disabled \
       -Dmutest:default_library=both \
       -Dprint-cups=auto \
-      -Dvulkan=enabled \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
+      -Dvulkan=enabled'
+
+  meson_build_extras do
     File.write 'gtk4settings', <<~GTK4_CONFIG_HEREDOC
       [Settings]
       gtk-icon-theme-name = Adwaita
@@ -110,9 +108,8 @@ class Gtk4 < Meson
     GTK4_CONFIG_HEREDOC
   end
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    @xdg_config_dest_home = "#{CREW_DEST_PREFIX}/.config"
-    FileUtils.install 'gtk4settings', "#{@xdg_config_dest_home}/gtk-4.0/settings.ini", mode: 0o644
+  meson_install_extras do
+    xdg_config_dest_home = File.join(CREW_DEST_PREFIX, '.config')
+    FileUtils.install 'gtk4settings', "#{xdg_config_dest_home}/gtk-4.0/settings.ini", mode: 0o644
   end
 end

@@ -32,10 +32,14 @@ if File.exist?("#{CREW_PREFIX}/etc/env.d/00-path") && File.exist?("#{CREW_PREFIX
   FileUtils.rm "#{CREW_PREFIX}/etc/env.d/path"
 end
 
-# Set new sparse-checkout paths for commands directory
 Dir.chdir CREW_LIB_PATH do
+  # Set new sparse-checkout paths for commands directory
   system 'git sparse-checkout add commands'
   system 'git sparse-checkout reapply'
+
+  # Set git timeout values for situations where GitHub is down.
+  system 'git config --local http.lowSpeedLimit 1000' if `git config --local http.lowSpeedLimit`.empty?
+  system 'git config --local http.lowSpeedTime 5' if `git config --local http.lowSpeedTime`.empty?
 end
 
 # Rename the binary_sha256 variable to sha256 in the device.json file

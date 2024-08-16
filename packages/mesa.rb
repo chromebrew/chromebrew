@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version '24.1.5-llvm18'
+  version '24.2.0-llvm18'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -11,9 +11,9 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f3148e24427181e0c0a9e1e043ff2cd20927d1b391abd625fa4a0108ebc1e717',
-     armv7l: 'f3148e24427181e0c0a9e1e043ff2cd20927d1b391abd625fa4a0108ebc1e717',
-     x86_64: 'e16ce6731e7da1d3e95013886250d149322703a796617490c31be19b9d2dda44'
+    aarch64: '2187c4e1be27af6163d4be9685ca1ea4a968fcc8630afb9f47fe46c805332d5d',
+     armv7l: '2187c4e1be27af6163d4be9685ca1ea4a968fcc8630afb9f47fe46c805332d5d',
+     x86_64: '811ea7963e98b9c82494ec4c3e69c34ed65592b98e5fa85aea610ba2941b2028'
   })
 
   depends_on 'elfutils' # R
@@ -73,8 +73,7 @@ class Mesa < Meson
     -Dvulkan-drivers='#{ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'}' \
     -Dvideo-codecs='all'"
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  meson_install_extras do
     # The following are hacks to keep sommelier from complaining.
     Dir.chdir("#{CREW_DEST_LIB_PREFIX}/dri") do
       FileUtils.ln_s '.', 'tls' unless File.exist?('tls')

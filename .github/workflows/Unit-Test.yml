@@ -13,55 +13,56 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
       - name: Get all changed package files
         id: changed-ruby-files
-        uses: tj-actions/changed-files@v44
+        uses: tj-actions/changed-files@v44.5.7
         with:
           files: |
              packages/*.rb
       - name: List all changed package files
-        uses: tj-actions/changed-files@v44
+        uses: tj-actions/changed-files@v44.5.7
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
+      - name: Unit Tests (x86_64)
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
-      - name: Unit Tests (x86_64)
         run: |
-            sudo docker run --rm -t satmandu/crewbuild:m90-x86_64 sudo -i -u chronos /bin/bash -c "
+            export PR_NUMBER="${{ github.event.pull_request.number || github.event.issue.number }}" && \
+            echo "ALL_CHANGED FILES is/are ${ALL_CHANGED_FILES}." && \
+            export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES} | sed -e 's,packages/,,g' -e 's,\.rb,,g' | sort)" && \
+            echo "CHANGED PACKAGES is/are ${CHANGED_PACKAGES}." && \
+            export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|x86_64" packages/$p.rb && echo $p; done | xargs)" && \
+            echo "PR #${PR_NUMBER} has these x86_64 compatible packages: ${X86_64_PACKAGES}" && \
+            export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|armv7l" packages/$p.rb && echo $p; done | xargs)" && \
+            echo "PR #${PR_NUMBER} has these ARMv7L compatible packages: ${ARMV7L_PACKAGES}" && \
+            sudo docker run --rm \
+            --platform linux/amd64 -i satmandu/crewbuild:nocturne-x86_64.m90 \
+            sudo -i -u chronos /bin/bash -c " \
+            export ALL_CHANGED_FILES=\"${ALL_CHANGED_FILES}\" && \
+            export CHANGED_PACKAGES=\"${CHANGED_PACKAGES}\" && \
             echo \"CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}\" && \
             echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
             CREW_REPO=${{ github.event.pull_request.head.repo.clone_url }} CREW_BRANCH=${{ github.head_ref }} crew update && \
-            yes | crew upgrade && \
-            yes | crew install vim && \
-            yes | crew remove vim && \
-            ruby ../tests/commands/const.rb && \
-            ruby ../tests/commands/help.rb && \
-            ruby ../tests/commands/prop.rb && \
-            ( [[ -v ALL_CHANGED_FILES ]] && [[ -n ALL_CHANGED_FILES ]] && ( for file in ${ALL_CHANGED_FILES}; do
-              ruby ../tests/prop_test $file && \
-              ruby ../tests/buildsystem_test $file ; \
-            done ) || true ) && \
-            cd ~ && \
-            git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
-            cd build_test && \
-            yes | CREW_CACHE_ENABLED=1 crew build -vf packages/hello_world_chromebrew.rb"
+            /usr/local/lib/crew/tests/unit_test.sh"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
         # This is not the best way to do things, a matrix would certainly be better.
       - name: Unit Tests (armv7l)
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
         run: |
-            sudo docker run --platform linux/arm/v7 --rm -t satmandu/crewbuild:m91-armv7l sudo -i -u chronos /bin/bash -c "
+            export PR_NUMBER="${{ github.event.pull_request.number || github.event.issue.number }}" && \
+            echo "ALL_CHANGED FILES is/are ${ALL_CHANGED_FILES}." && \
+            export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES} | sed -e 's,packages/,,g' -e 's,\.rb,,g' | sort)" && \
+            echo "CHANGED PACKAGES is/are ${CHANGED_PACKAGES}." && \
+            export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|x86_64" packages/$p.rb && echo $p; done | xargs)" && \
+            echo "PR #${PR_NUMBER} has these x86_64 compatible packages: ${X86_64_PACKAGES}" && \
+            export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|armv7l" packages/$p.rb && echo $p; done | xargs)" && \
+            echo "PR #${PR_NUMBER} has these ARMv7L compatible packages: ${ARMV7L_PACKAGES}" && \
+            [[ $ARMV7L_PACKAGES ]] || exit 0 && \
+            sudo docker run --rm \
+            --platform linux/arm/v7 -t satmandu/crewbuild:fievel-armv7l.m91 \
+            sudo -i -u chronos /bin/bash -x -c " \
+            export ALL_CHANGED_FILES=\"${ALL_CHANGED_FILES}\" && \
+            export CHANGED_PACKAGES=\"${CHANGED_PACKAGES}\" && \
             echo \"CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}\" && \
             echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
             CREW_REPO=${{ github.event.pull_request.head.repo.clone_url }} CREW_BRANCH=${{ github.head_ref }} crew update && \
-            yes | crew upgrade && \
-            yes | crew install vim && \
-            yes | crew remove vim && \
-            ruby ../tests/commands/const.rb && \
-            ruby ../tests/commands/help.rb && \
-            ruby ../tests/commands/prop.rb && \
-            ( [[ -v ALL_CHANGED_FILES ]] && [[ -n ALL_CHANGED_FILES ]] && ( for file in ${ALL_CHANGED_FILES}; do
-              ruby ../tests/prop_test $file && \
-              ruby ../tests/buildsystem_test $file ; \
-            done ) || true ) && \
-            cd ~ && \
-            git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
-            cd build_test && \
-            yes | CREW_CACHE_ENABLED=1 crew build -f packages/hello_world_chromebrew.rb"
+            /usr/local/lib/crew/tests/unit_test.sh"
