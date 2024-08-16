@@ -13,12 +13,12 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
       - name: Get all changed package files
         id: changed-ruby-files
-        uses: tj-actions/changed-files@v44
+        uses: tj-actions/changed-files@v44.5.7
         with:
           files: |
              packages/*.rb
       - name: List all changed package files
-        uses: tj-actions/changed-files@v44
+        uses: tj-actions/changed-files@v44.5.7
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
       - name: Unit Tests (x86_64)
         env:
