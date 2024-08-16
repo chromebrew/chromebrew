@@ -66,7 +66,7 @@ class Command
           package_files_cmd = "grep -h #{essential_deps_exclude_froms} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{flist}"
           package_files = `grep -h #{essential_deps_exclude_froms} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{flist}`.split("\n").uniq.sort
           all_other_files_cmd = "grep -h --exclude #{pkg.name}.filelist #{essential_deps_excludes} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{CREW_META_PATH}/*.filelist"
-          all_other_files = `grep -h --exclude #{pkg.name}.filelist #{essential_deps_excludes} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{CREW_META_PATH}/*.filelist"`.split("\n").uniq.sort
+          all_other_files = `grep -h --exclude #{pkg.name}.filelist #{essential_deps_excludes} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{CREW_META_PATH}/*.filelist`.split("\n").uniq.sort
 
           # We want the difference of these arrays.
           unique_to_package_files = package_files - all_other_files
