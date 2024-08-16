@@ -9,6 +9,7 @@ yes | crew remove vim
 ruby ../tests/commands/const.rb
 ruby ../tests/commands/help.rb
 ruby ../tests/commands/prop.rb
+ruby ../tests/commands/remove.rb
 if [[ -n ${ALL_CHANGED_FILES-} ]]; then
   # for file in ${ALL_CHANGED_FILES}; do
     # ruby ../tests/prop_test "$file"
