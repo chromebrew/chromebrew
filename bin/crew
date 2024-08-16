@@ -205,7 +205,7 @@ def set_package(pkg_path)
 end
 
 def generate_compatible
-  puts 'Generating compatible packages...'.orange if CREW_VERBOSE
+  puts 'Determining package compatibility...'.orange if CREW_VERBOSE
   @device[:compatible_packages] = []
   Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     pkg_name = File.basename filename, '.rb'
@@ -223,11 +223,15 @@ def generate_compatible
       puts "#{pkg_name} is not a compatible package.".lightred
     end
   end
+  puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
+  @device[:essential_deps] = []
+  @device[:essential_deps].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
+  crewlog "Essential packages: #{@device[:essential_deps]}"
   File.open(File.join(CREW_CONFIG_PATH, 'device.json'), 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
-  puts 'Generating compatible packages done.'.orange if CREW_VERBOSE
+  puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
 end
 
 def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), silent: false)

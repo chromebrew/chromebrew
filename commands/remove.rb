@@ -18,7 +18,7 @@ class Command
     # their dependencies, as those are needed for ruby and crew to run,
     # and thus should not be removed.
     # essential_deps = recursive_deps(CREW_ESSENTIAL_PACKAGES)
-    essential_deps = Package.essential_recursive_deps
+    essential_deps = device_json[:essential_deps]
     crewlog "Essential Deps are #{essential_deps}."
     if essential_deps.include?(pkg.name)
       return if pkg.in_upgrade

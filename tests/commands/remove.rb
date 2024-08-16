@@ -14,10 +14,10 @@ String.use_color = false
 def load_json
   # load_json(): (re)load device.json
   json_path = File.join(CREW_CONFIG_PATH, 'device.json')
-  @device   = JSON.load_file(json_path, symbolize_names: true)
+  device_json   = JSON.load_file(json_path, symbolize_names: true)
 
   # symbolize also values
-  @device.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
+  device_json.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
 end
 
 def save_json(json_object)
@@ -36,12 +36,12 @@ end
 
 class RemoveCommandTest < Minitest::Test
   def test_remove_essential_package
-    essential_deps = Package.essential_recursive_deps
-    puts "Essential deps have been determined to be #{essential_deps}."
-    @random_essential_package = essential_deps[rand(0...(essential_deps.length - 1))]
+    essential_deps = device_json[:essential_deps]
+    puts "Essential depependency packages: #{essential_deps}."
+    random_essential_package = essential_deps[rand(0...(essential_deps.length - 1))]
 
-    expected_output = "#{@random_essential_package.capitalize} is considered an essential package needed for."
-    name = @random_essential_package
+    expected_output = "#{random_essential_package.capitalize} is considered an essential package needed for"
+    name = random_essential_package
     pkg = Package.load_package("#{name}.rb")
     puts "Testing removal of essential package #{name}, which SHOULD fail."
     assert_output(/^#{Regexp.escape(expected_output.chomp)}!/, nil) do
