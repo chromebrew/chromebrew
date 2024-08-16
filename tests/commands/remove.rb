@@ -45,7 +45,7 @@ class RemoveCommandTest < Minitest::Test
     pkg = Package.load_package("#{name}.rb")
     puts "Testing removal of essential package #{name}, which SHOULD fail."
     assert_output(/^#{Regexp.escape(expected_output.chomp)}!/, nil) do
-      Command.remove(pkg.name, true)
+      Command.remove(pkg, true)
     end
   end
 
@@ -57,7 +57,7 @@ class RemoveCommandTest < Minitest::Test
     EOT
     assert_output(/^#{Regexp.escape(expected_output.chomp)}!/, nil) do
       system "crew install #{name} &>/dev/null", out: File::NULL
-      Command.remove(pkg.name, true)
+      Command.remove(pkg, true)
     end
   end
 end
