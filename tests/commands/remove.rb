@@ -11,32 +11,11 @@ $LOAD_PATH << File.join(CREW_LIB_PATH, 'lib')
 
 String.use_color = false
 
-def load_json
-  # load_json(): (re)load device.json
-  json_path = File.join(CREW_CONFIG_PATH, 'device.json')
-  device_json   = JSON.load_file(json_path, symbolize_names: true)
-
-  # symbolize also values
-  device_json.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
-end
-
-def save_json(json_object)
-  crewlog 'Saving device.json...'
-  begin
-    File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
-  rescue StandardError
-    puts 'Error writing updated packages json file!'.lightred
-    abort
-  end
-
-  # Copy over original if the write to the tmp file succeeds.
-  FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
-  load_json
-end
+device_json = PackageUtils.load_json
+essential_deps = device_json[:essential_deps]
 
 class RemoveCommandTest < Minitest::Test
   def test_remove_essential_package
-    essential_deps = device_json[:essential_deps]
     puts "Essential depependency packages: #{essential_deps}."
     random_essential_package = essential_deps[rand(0...(essential_deps.length - 1))]
 
@@ -56,7 +35,7 @@ class RemoveCommandTest < Minitest::Test
       #{name} removed
     EOT
     assert_output(/^#{Regexp.escape(expected_output.chomp)}!/, nil) do
-      system "crew install #{name} &>/dev/null", out: File::NULL
+      system "crew install #{name} &>/dev/null", out: File::NULL unless PackageUtils.installed?(name)
       Command.remove(pkg, true)
     end
   end

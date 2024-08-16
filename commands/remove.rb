@@ -6,7 +6,7 @@ require_relative '../lib/package_utils'
 
 class Command
   def self.remove(pkg, verbose)
-    device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+    device_json = PackageUtils.load_json
 
     # Make sure the package is actually installed before we attempt to remove it.
     unless PackageUtils.installed?(pkg.name)
@@ -99,10 +99,10 @@ class Command
 
     # Remove the package from the list of installed packages in device.json.
     puts "Removing package #{pkg.name} from device.json".yellow if verbose
-    device_json['installed_packages'].delete_if { |entry| entry['name'] == pkg.name }
+    device_json[:installed_packages].delete_if { |entry| entry[:name] == pkg.name }
 
     # Update device.json with our changes.
-    save_json(device_json)
+    PackageUtils.save_json(device_json)
 
     # Perform any operations required after package removal.
     pkg.postremove
