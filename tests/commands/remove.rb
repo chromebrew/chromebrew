@@ -38,7 +38,7 @@ class RemoveCommandTest < Minitest::Test
       #{name} removed
     EOT
     assert_output(/^#{Regexp.escape(expected_output.chomp)}!/, nil) do
-      ( system "crew install #{name} &>/dev/null", out: File::NULL unless PackageUtils.installed?(name) ) and Command.remove(pkg, true)
+      (system "crew install #{name} &>/dev/null", out: File::NULL unless PackageUtils.installed?(name)) and Command.remove(pkg, true)
     end
   end
 end
