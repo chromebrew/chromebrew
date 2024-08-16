@@ -27,7 +27,7 @@ class Command
         Chromebrew to function and thus cannot be removed.
       ESSENTIAL_PACKAGE_WARNING_EOF
 
-      exit 1
+      return
     end
 
     # Perform any operations required prior to package removal.
@@ -64,9 +64,9 @@ class Command
           essential_deps_excludes = essential_deps.map { |i| File.file?("#{File.join(CREW_META_PATH, i.to_s)}.filelist") ? "--exclude=#{File.join(CREW_META_PATH, i.to_s)}.filelist" : '' }.join(' ')
 
           package_files_cmd = "grep -h #{essential_deps_exclude_froms} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{flist}"
-          package_files = `#{package_files_cmd}`.split("\n").uniq.sort
+          package_files = `grep -h #{essential_deps_exclude_froms} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{flist}`.split("\n").uniq.sort
           all_other_files_cmd = "grep -h --exclude #{pkg.name}.filelist #{essential_deps_excludes} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{CREW_META_PATH}/*.filelist"
-          all_other_files = `#{all_other_files_cmd}`.split("\n").uniq.sort
+          all_other_files = `grep -h --exclude #{pkg.name}.filelist #{essential_deps_excludes} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{CREW_META_PATH}/*.filelist"`.split("\n").uniq.sort
 
           # We want the difference of these arrays.
           unique_to_package_files = package_files - all_other_files
