@@ -42,21 +42,22 @@ class RemoveCommandTest < Minitest::Test
 
     expected_output = "#{@random_essential_package.capitalize} is considered an essential package needed for."
     name = @random_essential_package
+    pkg = Package.load_package("#{name}.rb")
     puts "Testing removal of essential package #{name}, which SHOULD fail."
     assert_output(/^#{Regexp.escape(expected_output.chomp)}!/, nil) do
-      Command.remove(Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")), true)
+      Command.remove(pkg.name, true)
     end
   end
 
   def test_remove_normal_package
     name = 'xxd_standalone'
-
+    pkg = Package.load_package("#{name}.rb")
     expected_output = <<~EOT
       #{name} removed
     EOT
     assert_output(/^#{Regexp.escape(expected_output.chomp)}!/, nil) do
       system "crew install #{name} &>/dev/null", out: File::NULL
-      Command.remove(Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")), true)
+      Command.remove(pkg.name, true)
     end
   end
 end

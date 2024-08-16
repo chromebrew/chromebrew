@@ -4,11 +4,6 @@ require_relative '../lib/const'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
 
-def recursive_deps(list_of_pkgs)
-  # This only recurses one level.
-  return list_of_pkgs.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*list_of_pkgs).uniq.sort
-end
-
 class Command
   def self.remove(pkg, verbose)
     device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
@@ -26,7 +21,7 @@ class Command
     essential_deps = Package.essential_recursive_deps
     crewlog "Essential Deps are #{essential_deps}."
     if essential_deps.include?(pkg.name)
-      return if Package.load_package("#{pkg.name}.rb").in_upgrade
+      return if pkg.in_upgrade
 
       puts <<~ESSENTIAL_PACKAGE_WARNING_EOF.gsub(/^(?=\w)/, '  ').lightred
         #{pkg.name.capitalize} is considered an essential package needed for
