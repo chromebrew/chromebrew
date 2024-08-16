@@ -18,8 +18,7 @@ class PackageUtils
 
     # Copy over original if the write to the tmp file succeeds.
     FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
-    json_object = load_json
-end
+  end
 
   def self.installed?(pkg_name)
     return load_json[:installed_packages].any? { |elem| elem[:name] == pkg_name }
