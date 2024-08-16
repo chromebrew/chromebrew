@@ -34,9 +34,15 @@ def save_json(json_object)
   load_json
 end
 
+def recursive_deps(list_of_pkgs)
+  # This only recurses one level.
+  return list_of_pkgs.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*list_of_pkgs).uniq.sort
+end
+
 class RemoveCommandTest < Minitest::Test
   def test_remove_essential_command
-    essential_deps = CREW_ESSENTIAL_PACKAGES.flat_map { |essential_pkg| Package.load_package("#{essential_pkg}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort
+    essential_deps = recursive_deps(CREW_ESSENTIAL_PACKAGES)
+    puts "Essential deps have been determined to be #{essential_deps}."
     @random_essential_package = essential_deps[rand(0...(essential_deps.length - 1))]
 
     expected_output = "#{@random_essential_package.capitalize} is considered an essential package needed for."
@@ -49,12 +55,12 @@ class RemoveCommandTest < Minitest::Test
 
   def test_remove_normal_package
     name = 'xxd_standalone'
-    system "crew install #{name} &>/dev/null", out: File::NULL
 
     expected_output = <<~EOT
       #{name} removed
     EOT
     assert_output(/^#{Regexp.escape(expected_output.chomp)}!/, nil) do
+      system "crew install #{name} &>/dev/null", out: File::NULL
       Command.remove(Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")), true)
     end
   end

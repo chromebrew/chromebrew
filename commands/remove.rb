@@ -4,6 +4,11 @@ require_relative '../lib/const'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
 
+def recursive_deps(list_of_pkgs)
+  # This only recurses one level.
+  return list_of_pkgs.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*list_of_pkgs).uniq.sort
+end
+
 class Command
   def self.remove(pkg, verbose)
     device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
@@ -17,8 +22,8 @@ class Command
     # Determine dependencies of packages in CREW_ESSENTIAL_PACKAGES and
     # their dependencies, as those are needed for ruby and crew to run,
     # and thus should not be removed.
-    essential_deps = CREW_ESSENTIAL_PACKAGES.flat_map { |essential_pkg| Package.load_package("#{essential_pkg}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort
-
+    # essential_deps = CREW_ESSENTIAL_PACKAGES.flat_map { |essential_pkg| Package.load_package("#{essential_pkg}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort
+    essential_deps = recursive_deps(CREW_ESSENTIAL_PACKAGES)
     if essential_deps.include?(pkg.name)
       return if Package.load_package("#{pkg.name}.rb").in_upgrade
 
@@ -63,9 +68,7 @@ class Command
           # CREW_ESSENTIAL_PACKAGES.
           essential_deps_excludes = essential_deps.map { |i| File.file?("#{File.join(CREW_META_PATH, i.to_s)}.filelist") ? "--exclude=#{File.join(CREW_META_PATH, i.to_s)}.filelist" : '' }.join(' ')
 
-          package_files_cmd = "grep -h #{essential_deps_exclude_froms} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{flist}"
           package_files = `grep -h #{essential_deps_exclude_froms} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{flist}`.split("\n").uniq.sort
-          all_other_files_cmd = "grep -h --exclude #{pkg.name}.filelist #{essential_deps_excludes} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{CREW_META_PATH}/*.filelist"
           all_other_files = `grep -h --exclude #{pkg.name}.filelist #{essential_deps_excludes} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{CREW_META_PATH}/*.filelist`.split("\n").uniq.sort
 
           # We want the difference of these arrays.
