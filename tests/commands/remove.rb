@@ -36,8 +36,9 @@ class RemoveCommandTest < Minitest::Test
       #{name} removed
     EOT
     assert_output(/^#{Regexp.escape(expected_output.chomp)}!/, nil) do
-      until device_json = PackageUtils.load_json && PackageUtils.installed?(name)
+      until PackageUtils.installed?(name)
         system "crew install -d #{name} &>/dev/null", out: File::NULL
+        sleep 2
       end
       Command.remove(pkg, true)
     end
