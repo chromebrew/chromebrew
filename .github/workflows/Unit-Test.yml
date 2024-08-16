@@ -28,7 +28,7 @@ jobs:
             echo "ALL_CHANGED FILES is/are ${ALL_CHANGED_FILES}." && \
             export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES} | sed -e 's,packages/,,g' -e 's,\.rb,,g' | sort)" && \
             echo "CHANGED PACKAGES is/are ${CHANGED_PACKAGES}." && \
-            export SAME_GLIBC_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do if ! grep -q min_glibc packages/$i.rb; then echo $i ; else grep min_glibc packages/$i.rb | tr -d \"'\" | awk '{exit $2 < 2.27}' || echo $i ; fi ; done | xargs)" && \
+            export SAME_GLIBC_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do if ! grep -q min_glibc packages/$i.rb; then echo $i ; else grep min_glibc packages/$i.rb | tr -d \' | awk '{exit $2 < 2.27}' || echo $i ; fi ; done | xargs)" && \
             echo "PR #${PR_NUMBER} has these Glibc 2.27 compatible packages: ${SAME_GLIBC_PACKAGES}" && \
             [[ $SAME_GLIBC_PACKAGES ]] || exit 0 && \
             export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|x86_64" packages/${p}.rb && echo ${p}; done | xargs)" && \
@@ -55,7 +55,7 @@ jobs:
             echo "ALL_CHANGED FILES is/are ${ALL_CHANGED_FILES}." && \
             export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES} | sed -e 's,packages/,,g' -e 's,\.rb,,g' | sort)" && \
             echo "CHANGED PACKAGES is/are ${CHANGED_PACKAGES}." && \
-            export SAME_GLIBC_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do if ! grep -q min_glibc packages/$i.rb; then echo $i ; else grep min_glibc packages/$i.rb | tr -d \"'\" | awk '{exit $2 < 2.27}' || echo $i ; fi ; done | xargs)" && \
+            export SAME_GLIBC_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do if ! grep -q min_glibc packages/$i.rb; then echo $i ; else grep min_glibc packages/$i.rb | tr -d \' | awk '{exit $2 < 2.27}' || echo $i ; fi ; done | xargs)" && \
             echo "PR #${PR_NUMBER} has these Glibc 2.27 compatible packages: ${SAME_GLIBC_PACKAGES}" && \
             [[ $SAME_GLIBC_PACKAGES ]] || exit 0 && \
             export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|x86_64" packages/${p}.rb && echo ${p}; done | xargs)" && \
