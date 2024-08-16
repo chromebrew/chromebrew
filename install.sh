@@ -359,8 +359,8 @@ else
   # Make the git default branch error messages go away.
   git config --global init.defaultBranch main
   # Help handle situations where GitHub is down.
-  git config --global http.lowSpeedLimit 1000
-  git config --global http.lowSpeedTime 5
+  git config http.lowSpeedLimit 1000
+  git config http.lowSpeedTime 5
 
   # Setup the folder with git information.
   git init --ref-format=reftable
