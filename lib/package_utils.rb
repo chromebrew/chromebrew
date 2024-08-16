@@ -4,7 +4,7 @@ require_relative 'crewlog'
 
 class PackageUtils
   def self.load_json
-    return JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json')).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
+    return JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
   end
 
   def self.save_json(json_object)
@@ -18,12 +18,11 @@ class PackageUtils
 
     # Copy over original if the write to the tmp file succeeds.
     FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
-    load_json
+    json_object = load_json
 end
 
   def self.installed?(pkg_name)
-    device_json = load_json
-    return device_json[:installed_packages].any? { |elem| elem[:name] == pkg_name }
+    return load_json[:installed_packages].any? { |elem| elem[:name] == pkg_name }
   end
 
   def self.compatible?(pkg)

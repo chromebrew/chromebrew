@@ -227,10 +227,7 @@ def generate_compatible
   @device[:essential_deps] = []
   @device[:essential_deps].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
   crewlog "Essential packages: #{@device[:essential_deps]}"
-  File.open(File.join(CREW_CONFIG_PATH, 'device.json'), 'w') do |file|
-    output = JSON.parse @device.to_json
-    file.write JSON.pretty_generate(output)
-  end
+  PackageUtils.save_json(@device)
   puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
 end
 
@@ -719,7 +716,7 @@ def pre_install(dest_dir)
     @pkg.preinstall
     # Reload device.json in case preinstall modified it via
     # running 'crew remove packages...'
-    load_json
+    @device = PackageUtils.load_json
   end
 end
 
@@ -1339,7 +1336,7 @@ def install
   # Add to installed packages list in devices.json, but remove first if it is already there.
   crewlog "Adding package #{@pkg.name} to device.json."
   @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name } and @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
-  save_json(@device)
+  PackageUtils.save_json(@device)
   crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if Kernel.system 'which jq', %i[out err] => File::NULL
 end
 
@@ -1926,7 +1923,7 @@ Signal.trap('INT') do
   exit 1
 end
 
-load_json
+@device = PackageUtils.load_json
 
 @last_update_check = Dir["#{CREW_LIB_PATH}/{.git/FETCH_HEAD,lib/const.rb}"].compact.map { |i| File.mtime(i).utc.to_i }.max
 crewlog("The last update was #{time_difference(@last_update_check, Time.now.to_i)} ago.")
