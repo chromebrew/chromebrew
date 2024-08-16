@@ -195,6 +195,15 @@ class Package
   def self.binary?(architecture) = !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
   def self.source?(architecture) = !(binary?(architecture) || is_fake?)
 
+  def self.recursive_deps(list_of_pkgs)
+    # This only recurses one level.
+    return list_of_pkgs.flat_map { |i| load_package("#{i}.rb").get_deps_list }.push(*list_of_pkgs).uniq.sort
+  end
+
+  def self.essential_recursive_deps
+    return recursive_deps(CREW_ESSENTIAL_PACKAGES)
+  end
+
   def self.system(*args, **opt_args)
     @crew_env_options_hash = if no_env_options?
                                { 'CREW_DISABLE_ENV_OPTIONS' => '1' }

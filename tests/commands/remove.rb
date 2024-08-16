@@ -41,7 +41,7 @@ end
 
 class RemoveCommandTest < Minitest::Test
   def test_remove_essential_command
-    essential_deps = recursive_deps(CREW_ESSENTIAL_PACKAGES)
+    essential_deps = Package.essential_recursive_deps
     puts "Essential deps have been determined to be #{essential_deps}."
     @random_essential_package = essential_deps[rand(0...(essential_deps.length - 1))]
 

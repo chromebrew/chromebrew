@@ -22,8 +22,9 @@ class Command
     # Determine dependencies of packages in CREW_ESSENTIAL_PACKAGES and
     # their dependencies, as those are needed for ruby and crew to run,
     # and thus should not be removed.
-    # essential_deps = CREW_ESSENTIAL_PACKAGES.flat_map { |essential_pkg| Package.load_package("#{essential_pkg}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort
-    essential_deps = recursive_deps(CREW_ESSENTIAL_PACKAGES)
+    # essential_deps = recursive_deps(CREW_ESSENTIAL_PACKAGES)
+    essential_deps = Package.essential_recursive_deps
+    crewlog "Essential Deps are #{essential_deps}."
     if essential_deps.include?(pkg.name)
       return if Package.load_package("#{pkg.name}.rb").in_upgrade
 
