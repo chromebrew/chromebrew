@@ -34,20 +34,15 @@ def save_json(json_object)
   load_json
 end
 
-def recursive_deps(list_of_pkgs)
-  # This only recurses one level.
-  return list_of_pkgs.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*list_of_pkgs).uniq.sort
-end
-
 class RemoveCommandTest < Minitest::Test
-  def test_remove_essential_command
+  def test_remove_essential_package
     essential_deps = Package.essential_recursive_deps
     puts "Essential deps have been determined to be #{essential_deps}."
     @random_essential_package = essential_deps[rand(0...(essential_deps.length - 1))]
 
     expected_output = "#{@random_essential_package.capitalize} is considered an essential package needed for."
     name = @random_essential_package
-    puts "Testing removal of essential package #{name}."
+    puts "Testing removal of essential package #{name}, which SHOULD fail."
     assert_output(/^#{Regexp.escape(expected_output.chomp)}!/, nil) do
       Command.remove(Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")), true)
     end
