@@ -1,14 +1,11 @@
 require 'minitest/autorun'
-require 'json'
 require_relative '../../commands/remove'
-require_relative '../../commands/search'
-require_relative '../../lib/const'
-require_relative '../../lib/package'
 require_relative '../../lib/package_utils'
 
 # Add lib to LOAD_PATH
 $LOAD_PATH << File.join(CREW_LIB_PATH, 'lib')
 
+# This is needed to force --no-color mode.
 String.use_color = false
 
 class RemoveCommandTest < Minitest::Test
