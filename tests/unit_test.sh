@@ -8,6 +8,7 @@ yes | crew install vim
 yes | crew remove vim
 ruby ../tests/commands/const.rb
 ruby ../tests/commands/help.rb
+ruby ../tests/commands/list.rb
 ruby ../tests/commands/prop.rb
 ruby ../tests/commands/remove.rb
 ruby ../tests/lib/docopt.rb
@@ -27,6 +28,7 @@ if [[ -n ${ALL_CHANGED_FILES-} ]]; then
         ruby ../tests/buildsystem_test "${pkg}"
         echo "Testing install/removal of compatible package ${pkg}."
         yes | time crew install "${pkg}"
+        # Removal of essential packages is expected to fail.
         if [[ $(crew list -d essential) == *"${pkg}"* ]]; then
          yes | time crew remove "${pkg}" || true
         else
