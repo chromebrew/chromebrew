@@ -152,20 +152,20 @@ class Package
 
   def self.print_deps_tree(args)
     warn 'Walking through dependencies recursively, this may take a while...', ''
-  
+
     # dep_hash: Hash object returned by @pkg.get_deps_list
     dep_hash = get_deps_list(hash: true, include_build_deps: args['--include-build-deps'] || 'auto', exclude_buildessential: args['--exclude-buildessential'])
-  
+
     # convert returned hash to json and format it
     json_view = JSON.pretty_generate(dep_hash)
-  
+
     # convert formatted json string to tree structure
     tree_view = json_view.gsub(/\{\s*/m, '└─────').gsub(/[\[\]{},":]/, '').gsub(/^\s*$\n/, '').gsub(/\s*$/, '')
-  
+
     # add pipe char to connect endpoints and starting points, improve readability
     # find the horizontal location of all arrow symbols
     index_with_pipe_char = tree_view.lines.map { |line| line.index('└') }.compact.uniq
-  
+
     # determine whatever a pipe char should be added according to the horizontal location of arrow symbols
     tree_view = tree_view.lines.each_with_index.map do |line, line_i|
       index_with_pipe_char.each do |char_i|
@@ -173,12 +173,12 @@ class Package
         # (used to determine if the starting point and endpoint are in same branch, use pipe char to connect them if true)
         next_arrow_line_offset = tree_view.lines[line_i..].index { |l| l[char_i] == '└' }
         have_line_with_non_empty_char = tree_view.lines[line_i + 1..line_i + next_arrow_line_offset.to_i - 1].any? { |l| l[char_i].nil? or l[char_i] =~ /\S/ }
-  
+
         line[char_i] = '│' if next_arrow_line_offset && (line[char_i] == ' ') && !have_line_with_non_empty_char
       end
       next line
     end.join
-  
+
     # replace arrow symbols with a tee symbol on branch intersection
     tree_view = tree_view.lines.each_with_index.map do |line, line_i|
       # orig_arrow_index_connecter: the horizontal location of the arrow symbol used to connect parent branch
@@ -201,14 +201,14 @@ class Package
       # └───┬─chrome
       #     └─────buildessential
       orig_arrow_index_newbranch = orig_arrow_index_connecter + 4
-  
+
       # if the char under the processing arrow symbol (orig_arrow_index_connecter) is also arrow or pipe, change the processing char to tee symbol
       line[orig_arrow_index_connecter] = '├' if orig_arrow_index_connecter && tree_view.lines[line_i + 1].to_s[orig_arrow_index_connecter] =~ (/[└│]/)
       # if the char under the processing arrow symbol (orig_arrow_index_newbranch) is also arrow or pipe, change the processing char to tee symbol
       line[orig_arrow_index_newbranch] = '┬' if orig_arrow_index_newbranch && tree_view.lines[line_i + 1].to_s[orig_arrow_index_newbranch] =~ (/[└├]/)
       next line # return modified line
     end.join
-  
+
     if String.use_color
       puts <<~EOT, ''
         \e[45m \e[0m: satisfied dependency
@@ -216,12 +216,12 @@ class Package
         \e[47m \e[0m: runtime dependency
       EOT
       # (the first string in each #{} is used for commenting only, will not be included in output)
-  
+
       # replace special symbols returned by @pkg.get_deps_list to actual color code
       tree_view.gsub!(/\*(.+)\*/, '\1'.lightcyan)
       tree_view.gsub!(/\+(.+)\+/, "\e[45m\\1\e[0m")
     end
-  
+
     puts tree_view
   end
 
