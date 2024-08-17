@@ -37,15 +37,19 @@ jobs:
             export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|armv7l" packages/${p}.rb && echo ${p}; done | xargs)" && \
             echo "PR #${PR_NUMBER} has these ARMv7L compatible packages: ${ARMV7L_PACKAGES}" && \
             if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]] ; then x86_64_CONTAINER="satmandu/crewbuild:hatch-x86_64.m126"; else x86_64_CONTAINER="satmandu/crewbuild:nocturne-x86_64.m90"; fi &&\
-            sudo docker run --rm \
-            --platform linux/amd64 -i ${x86_64_CONTAINER} \
-            sudo -i -u chronos /bin/bash -c " \
-            export ALL_CHANGED_FILES=\"${ALL_CHANGED_FILES}\" && \
-            export CHANGED_PACKAGES=\"${CHANGED_PACKAGES}\" && \
-            echo \"CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}\" && \
-            echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
+            export container_cmdline="/usr/bin/sudo -u chronos LD_LIBRARY_PATH=/usr/local/lib64:/lib64 /usr/local/bin/bash -c \"export ALL_CHANGED_FILES='${ALL_CHANGED_FILES}' && \
+            export CHANGED_PACKAGES='${CHANGED_PACKAGES}' && \
+            echo 'ALL_CHANGED FILES is/are ${ALL_CHANGED_FILES}.' && \
+            echo 'CHANGED PACKAGES is/are ${CHANGED_PACKAGES}.' && \
+            echo 'CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}' && \
+            echo 'CREW_BRANCH is ${{ github.head_ref }}' && \
             CREW_REPO=${{ github.event.pull_request.head.repo.clone_url }} CREW_BRANCH=${{ github.head_ref }} crew update && \
-            /usr/local/lib/crew/tests/unit_test.sh"
+            /usr/local/lib/crew/tests/unit_test.sh\"" && \
+            echo $container_cmdline && \
+            sudo docker run --rm \
+            --platform linux/amd64 \
+            -i ${x86_64_CONTAINER} \
+            /bin/bash -c "$container_cmdline"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3.2.0
         # This is not the best way to do things, a matrix would certainly be better.
@@ -67,12 +71,16 @@ jobs:
             echo "PR #${PR_NUMBER} has these ARMv7L compatible packages: ${ARMV7L_PACKAGES}" && \
             [[ $ARMV7L_PACKAGES ]] || exit 0 && \
             if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]] ; then armv7l_CONTAINER="satmandu/crewbuild:strongbad-armv7l.m126"; else armv7l_CONTAINER="satmandu/crewbuild:fievel-armv7l.m91"; fi &&\
-            sudo docker run --rm \
-            --platform linux/arm/v7 -t ${armv7l_CONTAINER} \
-            sudo -i -u chronos /bin/bash -x -c " \
-            export ALL_CHANGED_FILES=\"${ALL_CHANGED_FILES}\" && \
-            export CHANGED_PACKAGES=\"${CHANGED_PACKAGES}\" && \
-            echo \"CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}\" && \
-            echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
+            export container_cmdline="/usr/bin/sudo -u chronos LD_LIBRARY_PATH=/usr/lib:/lib /usr/local/bin/bash -c \"export ALL_CHANGED_FILES='${ALL_CHANGED_FILES}' && \
+            export CHANGED_PACKAGES='${CHANGED_PACKAGES}' && \
+            echo 'ALL_CHANGED FILES is/are ${ALL_CHANGED_FILES}.' && \
+            echo 'CHANGED PACKAGES is/are ${CHANGED_PACKAGES}.' && \
+            echo 'CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}' && \
+            echo 'CREW_BRANCH is ${{ github.head_ref }}' && \
             CREW_REPO=${{ github.event.pull_request.head.repo.clone_url }} CREW_BRANCH=${{ github.head_ref }} crew update && \
-            /usr/local/lib/crew/tests/unit_test.sh"
+            /usr/local/lib/crew/tests/unit_test.sh\"" && \
+            echo $container_cmdline && \
+            sudo docker run --rm \
+            --platform linux/arm/v7 \
+            -i ${armv7l_CONTAINER} \
+            /bin/bash -c "$container_cmdline"
