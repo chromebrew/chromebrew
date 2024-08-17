@@ -25,9 +25,9 @@ jobs:
           ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
         run: |
             export PR_NUMBER="${{ github.event.pull_request.number || github.event.issue.number }}" && \
-            echo "ALL_CHANGED FILES is/are ${ALL_CHANGED_FILES}." && \
+            echo "ALL_CHANGED FILES: ${ALL_CHANGED_FILES}." && \
             export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES} | sed -e 's,packages/,,g' -e 's,\.rb,,g' | sort)" && \
-            echo "CHANGED PACKAGES is/are ${CHANGED_PACKAGES}." && \
+            echo "CHANGED PACKAGES: ${CHANGED_PACKAGES}." && \
             export GLIBC_227_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do if ! grep -q min_glibc packages/$i.rb; then echo $i ; else grep min_glibc packages/$i.rb | tr -d \' | awk '{exit $2 < 2.27}' || echo $i ; fi ; done | xargs)" && \
             echo "PR #${PR_NUMBER} has these Glibc 2.27 compatible packages: ${GLIBC_227_COMPATIBLE_PACKAGES}" && \
             export GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/$i.rb | tr -d \' | awk '{exit $2 < 2.37}' || echo $i ; done | xargs)" && \
@@ -39,8 +39,8 @@ jobs:
             if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]] ; then x86_64_CONTAINER="satmandu/crewbuild:hatch-x86_64.m126"; else x86_64_CONTAINER="satmandu/crewbuild:nocturne-x86_64.m90"; fi &&\
             export container_cmdline="/usr/bin/sudo -u chronos LD_LIBRARY_PATH=/usr/local/lib64:/lib64 /usr/local/bin/bash -c \"export ALL_CHANGED_FILES='${ALL_CHANGED_FILES}' && \
             export CHANGED_PACKAGES='${CHANGED_PACKAGES}' && \
-            echo 'ALL_CHANGED FILES is/are ${ALL_CHANGED_FILES}.' && \
-            echo 'CHANGED PACKAGES is/are ${CHANGED_PACKAGES}.' && \
+            echo 'ALL_CHANGED FILES: ${ALL_CHANGED_FILES}.' && \
+            echo 'CHANGED PACKAGES: ${CHANGED_PACKAGES}.' && \
             echo 'CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}' && \
             echo 'CREW_BRANCH is ${{ github.head_ref }}' && \
             CREW_REPO=${{ github.event.pull_request.head.repo.clone_url }} CREW_BRANCH=${{ github.head_ref }} crew update && \
@@ -58,9 +58,9 @@ jobs:
           ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
         run: |
             export PR_NUMBER="${{ github.event.pull_request.number || github.event.issue.number }}" && \
-            echo "ALL_CHANGED FILES is/are ${ALL_CHANGED_FILES}." && \
+            echo "ALL_CHANGED FILES: ${ALL_CHANGED_FILES}." && \
             export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES} | sed -e 's,packages/,,g' -e 's,\.rb,,g' | sort)" && \
-            echo "CHANGED PACKAGES is/are ${CHANGED_PACKAGES}." && \
+            echo "CHANGED PACKAGES: ${CHANGED_PACKAGES}." && \
             export GLIBC_227_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do if ! grep -q min_glibc packages/$i.rb; then echo $i ; else grep min_glibc packages/$i.rb | tr -d \' | awk '{exit $2 < 2.27}' || echo $i ; fi ; done | xargs)" && \
             echo "PR #${PR_NUMBER} has these Glibc 2.27 compatible packages: ${GLIBC_227_COMPATIBLE_PACKAGES}" && \
             export GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/$i.rb | tr -d \' | awk '{exit $2 < 2.37}' || echo $i ; done | xargs)" && \
@@ -73,8 +73,8 @@ jobs:
             if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]] ; then armv7l_CONTAINER="satmandu/crewbuild:strongbad-armv7l.m126"; else armv7l_CONTAINER="satmandu/crewbuild:fievel-armv7l.m91"; fi &&\
             export container_cmdline="/usr/bin/sudo -u chronos LD_LIBRARY_PATH=/usr/lib:/lib /usr/local/bin/bash -c \"export ALL_CHANGED_FILES='${ALL_CHANGED_FILES}' && \
             export CHANGED_PACKAGES='${CHANGED_PACKAGES}' && \
-            echo 'ALL_CHANGED FILES is/are ${ALL_CHANGED_FILES}.' && \
-            echo 'CHANGED PACKAGES is/are ${CHANGED_PACKAGES}.' && \
+            echo 'ALL_CHANGED FILES: ${ALL_CHANGED_FILES}.' && \
+            echo 'CHANGED PACKAGES: ${CHANGED_PACKAGES}.' && \
             echo 'CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}' && \
             echo 'CREW_BRANCH is ${{ github.head_ref }}' && \
             CREW_REPO=${{ github.event.pull_request.head.repo.clone_url }} CREW_BRANCH=${{ github.head_ref }} crew update && \

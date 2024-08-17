@@ -83,6 +83,7 @@ fi
 # Chromebrew directories.
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
 CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
+CREW_META_PATH="${CREW_CONFIG_PATH}/meta"
 CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 : "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
@@ -261,8 +262,8 @@ function extract_install () {
 
     echo_intra "Installing ${1} ..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
-    mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
-    mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
+    mv ./dlist "${CREW_META_PATH}/${1}.directorylist"
+    mv ./filelist "${CREW_META_PATH}/${1}.filelist"
 }
 
 function update_device_json () {
@@ -278,12 +279,15 @@ function install_ruby_gem () {
   gem update -N --system
   for gem in "$@"; do
     ruby_gem="${gem}"
-    echo_intra "Installing ${ruby_gem} gem..."
+    echo_intra "Installing ${ruby_gem^} gem..."
     gem install -N "${ruby_gem}" --conservative
     gem_version="$(ruby -e "gem('${ruby_gem}')" -e "puts Gem.loaded_specs['${ruby_gem}'].version.to_s")"
     json_gem_version="${gem_version}-ruby-${rubymajorversion}"
     crew_gem_package="ruby_${ruby_gem//-/_}"
     update_device_json "${crew_gem_package}" "${json_gem_version}" ""
+    gem_filelist_path="${CREW_META_PATH}/${crew_gem_package}.filelist"
+    echo_intra "Saving ${ruby_gem^} filelist..."
+    gem contents "${ruby_gem}" > "${gem_filelist_path}"
     echo_success "${ruby_gem^} gem installed."
     BOOTSTRAP_PACKAGES+=" ${crew_gem_package}"
   done
@@ -358,13 +362,14 @@ else
 
   # Make the git default branch error messages go away.
   git config --global init.defaultBranch main
-  # Help handle situations where GitHub is down.
-  git config --local http.lowSpeedLimit 1000
-  git config --local http.lowSpeedTime 5
 
   # Setup the folder with git information.
   git init --ref-format=reftable
   git remote add origin "https://github.com/${OWNER}/${REPO}"
+
+  # Help handle situations where GitHub is down.
+  git config --local http.lowSpeedLimit 1000
+  git config --local http.lowSpeedTime 5
 
   # Checkout, overwriting local files.
   git fetch --all

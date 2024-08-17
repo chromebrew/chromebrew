@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.50.3'
+CREW_VERSION = '1.50.4'
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -307,25 +307,25 @@ CREW_DOCOPT = <<~DOCOPT
 
   Usage:
     crew build [options] [-k|--keep] [-v|--verbose] <name> ...
-    crew check [-V|--version] [-v|--verbose] <name> ...
-    crew const [-v|--verbose] [<name> ...]
+    crew check [options] [-V|--version] [-v|--verbose] <name> ...
+    crew const [options] [-v|--verbose] [<name> ...]
     crew deps [options] [--deep] [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] [-v|--verbose] <name> ...
     crew download [options] [-s|--source] [-v|--verbose] <name> ...
-    crew files <name> ...
-    crew help [<command>] [-v|--verbose] [<subcommand>]
+    crew files [options] <name> ...
+    crew help [options] [<command>] [-v|--verbose] [<subcommand>]
     crew install [options] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
-    crew list [options] [-v|--verbose] (available|installed|compatible|incompatible)
+    crew list [options] [-v|--verbose] (available|compatible|incompatible|essential|installed)
     crew postinstall [options] [-v|--verbose] <name> ...
-    crew prop [<property>]
+    crew prop [options] [<property>]
     crew reinstall [options] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
-    crew remove [-v|--verbose] <name> ...
-    crew search [-v|--verbose] <name> ...
-    crew sysinfo [-v|--verbose]
-    crew test [-v|--verbose] [<name> ...]
+    crew remove [options] [-v|--verbose] <name> ...
+    crew search [options] [-v|--verbose] <name> ...
+    crew sysinfo [options] [-v|--verbose]
+    crew test [options] [-v|--verbose] [<name> ...]
     crew update [options] [-v|--verbose] [<compatible>]
     crew upgrade [options] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-v|--verbose] [<name> ...]
-    crew whatprovides <pattern> ...
+    crew whatprovides [options] <pattern> ...
 
     -b --include-build-deps  Include build dependencies in output.
     -t --tree                Print dependencies in a tree-structure format.
@@ -340,8 +340,6 @@ CREW_DOCOPT = <<~DOCOPT
     -V --version             Display the crew version.
     -h --help                Show this screen.
     -D --debug               Enable debugging.
-
-  version #{CREW_VERSION}
 DOCOPT
 
 # All available crew commands.

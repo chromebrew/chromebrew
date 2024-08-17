@@ -143,29 +143,6 @@ at_exit do
   ExitMessage.print
 end
 
-def load_json
-  # load_json(): (re)load device.json
-  json_path = File.join(CREW_CONFIG_PATH, 'device.json')
-  @device   = JSON.load_file(json_path, symbolize_names: true)
-
-  # symbolize also values
-  @device.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
-end
-
-def save_json(json_object)
-  crewlog 'Saving device.json...'
-  begin
-    File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
-  rescue StandardError
-    puts 'Error writing updated packages json file!'.lightred
-    abort
-  end
-
-  # Copy over original if the write to the tmp file succeeds.
-  FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
-  load_json
-end
-
 def print_current_package(extra = false)
   status = if PackageUtils.installed?(@pkg.name)
              :installed
@@ -205,7 +182,7 @@ def set_package(pkg_path)
 end
 
 def generate_compatible
-  puts 'Generating compatible packages...'.orange if CREW_VERBOSE
+  puts 'Determining package compatibility...'.orange if CREW_VERBOSE
   @device[:compatible_packages] = []
   Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     pkg_name = File.basename filename, '.rb'
@@ -223,11 +200,12 @@ def generate_compatible
       puts "#{pkg_name} is not a compatible package.".lightred
     end
   end
-  File.open(File.join(CREW_CONFIG_PATH, 'device.json'), 'w') do |file|
-    output = JSON.parse @device.to_json
-    file.write JSON.pretty_generate(output)
-  end
-  puts 'Generating compatible packages done.'.orange if CREW_VERBOSE
+  puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
+  @device[:essential_deps] = []
+  @device[:essential_deps].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
+  crewlog "Essential packages: #{@device[:essential_deps]}"
+  PackageUtils.save_json(@device)
+  puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
 end
 
 def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), silent: false)
@@ -715,7 +693,7 @@ def pre_install(dest_dir)
     @pkg.preinstall
     # Reload device.json in case preinstall modified it via
     # running 'crew remove packages...'
-    load_json
+    @device = PackageUtils.load_json
   end
 end
 
@@ -1303,7 +1281,7 @@ def install
 
   # remove it just before the file copy
   if @pkg.in_upgrade
-    puts 'Removing since upgrade or reinstall...'
+    puts 'Attempting removal since this is an upgrade or reinstall...'
     Command.remove(@pkg, CREW_VERBOSE)
   end
 
@@ -1335,7 +1313,7 @@ def install
   # Add to installed packages list in devices.json, but remove first if it is already there.
   crewlog "Adding package #{@pkg.name} to device.json."
   @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name } and @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
-  save_json(@device)
+  PackageUtils.save_json(@device)
   crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if Kernel.system 'which jq', %i[out err] => File::NULL
 end
 
@@ -1428,81 +1406,6 @@ def archive_package(crew_archive_dest)
       resolve_dependencies_and_install
     end
   end
-end
-
-def print_deps_tree(args)
-  warn 'Walking through dependencies recursively, this may take a while...', ''
-
-  # dep_hash: Hash object returned by @pkg.get_deps_list
-  dep_hash = @pkg.get_deps_list(hash: true, include_build_deps: args['--include-build-deps'] || 'auto', exclude_buildessential: args['--exclude-buildessential'])
-
-  # convert returned hash to json and format it
-  json_view = JSON.pretty_generate(dep_hash)
-
-  # convert formatted json string to tree structure
-  tree_view = json_view.gsub(/\{\s*/m, '└─────').gsub(/[\[\]{},":]/, '').gsub(/^\s*$\n/, '').gsub(/\s*$/, '')
-
-  # add pipe char to connect endpoints and starting points, improve readability
-  # find the horizontal location of all arrow symbols
-  index_with_pipe_char = tree_view.lines.map { |line| line.index('└') }.compact.uniq
-
-  # determine whatever a pipe char should be added according to the horizontal location of arrow symbols
-  tree_view = tree_view.lines.each_with_index.map do |line, line_i|
-    index_with_pipe_char.each do |char_i|
-      # check if there have any non-space char (pkg_names) between starting point ([line_i][char_i]) and endpoint vertically ([next_arrow_line_offset][char_i])
-      # (used to determine if the starting point and endpoint are in same branch, use pipe char to connect them if true)
-      next_arrow_line_offset = tree_view.lines[line_i..].index { |l| l[char_i] == '└' }
-      have_line_with_non_empty_char = tree_view.lines[line_i + 1..line_i + next_arrow_line_offset.to_i - 1].any? { |l| l[char_i].nil? or l[char_i] =~ /\S/ }
-
-      line[char_i] = '│' if next_arrow_line_offset && (line[char_i] == ' ') && !have_line_with_non_empty_char
-    end
-    next line
-  end.join
-
-  # replace arrow symbols with a tee symbol on branch intersection
-  tree_view = tree_view.lines.each_with_index.map do |line, line_i|
-    # orig_arrow_index_connecter: the horizontal location of the arrow symbol used to connect parent branch
-    #
-    # example:
-    # └───┬─chrome
-    #     └─────buildessential
-    #     ^
-    orig_arrow_index_connecter = line.index('└')
-    # orig_arrow_index_newbranch: the horizontal location of the "box drawing char" symbol MIGHT be
-    #                             required to convert to tee char in order to connect child branch,
-    #                             located at 3 chars later of orig_arrow_index_connecter
-    #
-    # example:
-    #     v
-    # └─────chrome
-    #     └─────buildessential
-    #
-    # which might need to be convert to:
-    # └───┬─chrome
-    #     └─────buildessential
-    orig_arrow_index_newbranch = orig_arrow_index_connecter + 4
-
-    # if the char under the processing arrow symbol (orig_arrow_index_connecter) is also arrow or pipe, change the processing char to tee symbol
-    line[orig_arrow_index_connecter] = '├' if orig_arrow_index_connecter && tree_view.lines[line_i + 1].to_s[orig_arrow_index_connecter] =~ (/[└│]/)
-    # if the char under the processing arrow symbol (orig_arrow_index_newbranch) is also arrow or pipe, change the processing char to tee symbol
-    line[orig_arrow_index_newbranch] = '┬' if orig_arrow_index_newbranch && tree_view.lines[line_i + 1].to_s[orig_arrow_index_newbranch] =~ (/[└├]/)
-    next line # return modified line
-  end.join
-
-  if String.use_color
-    puts <<~EOT, ''
-      \e[45m \e[0m: satisfied dependency
-      \e[46m \e[0m: build dependency
-      \e[47m \e[0m: runtime dependency
-    EOT
-    # (the first string in each #{} is used for commenting only, will not be included in output)
-
-    # replace special symbols returned by @pkg.get_deps_list to actual color code
-    tree_view.gsub!(/\*(.+)\*/, '\1'.lightcyan)
-    tree_view.gsub!(/\+(.+)\+/, "\e[45m\\1\e[0m")
-  end
-
-  puts tree_view
 end
 
 def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compression = nil)
@@ -1751,7 +1654,7 @@ def deps_command(args)
 
     if args['--tree']
       # call `print_deps_tree` (print dependency tree) if --tree is specified
-      print_deps_tree(args)
+      @pkg.print_deps_tree(args)
     elsif args['--deep']
       system "#{CREW_LIB_PATH}/tools/getrealdeps.rb #{name}"
     else
@@ -1806,7 +1709,7 @@ def install_command(args)
 end
 
 def list_command(args)
-  Command.list(args['available'], args['installed'], args['compatible'], args['incompatible'], CREW_VERBOSE)
+  Command.list(args['available'], args['compatible'], args['incompatible'], args['essential'], args['installed'], CREW_VERBOSE)
 end
 
 def postinstall_command(args)
@@ -1922,9 +1825,9 @@ Signal.trap('INT') do
   exit 1
 end
 
-load_json
+@device = PackageUtils.load_json
 
-@last_update_check = File.file?(File.join(CREW_LIB_PATH, '.git/FETCH_HEAD')) ? `stat -c %Y #{File.join(CREW_LIB_PATH, '.git/FETCH_HEAD')}`.chomp.to_i : `stat -c %Y #{File.join(CREW_LIB_PATH, 'lib/const.rb')}`.chomp.to_i
+@last_update_check = Dir["#{CREW_LIB_PATH}/{.git/FETCH_HEAD,lib/const.rb}"].compact.map { |i| File.mtime(i).utc.to_i }.max
 crewlog("The last update was #{time_difference(@last_update_check, Time.now.to_i)} ago.")
 puts "It has been more than #{CREW_UPDATE_CHECK_INTERVAL} day#{CREW_UPDATE_CHECK_INTERVAL < 2 ? '' : 's'} since crew was last updated. Please run 'crew update'".lightpurple if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
 command_name = args.select { |k, v| v && command?(k) }.keys[0]
