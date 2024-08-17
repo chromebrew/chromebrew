@@ -18,7 +18,8 @@ class RemoveCommandTest < Minitest::Test
     puts <<~ESSENTIAL_PACKAGE_REMOVAL_TEST_EOF
 
       Testing the removal of essential package #{@random_essential_package_name}, which was picked at random from one the essential packages: #{essential_deps.join(', ')}
-      This should fail.
+      (This should fail.)
+
     ESSENTIAL_PACKAGE_REMOVAL_TEST_EOF
     @random_essential_pkg = Package.load_package("#{@random_essential_package_name}.rb")
 
@@ -26,18 +27,21 @@ class RemoveCommandTest < Minitest::Test
     puts <<~NORMAL_PACKAGE_REMOVAL_TEST_EOF
 
       Testing the removal of normal package #{@normal_package_name}.
-      This should succeed.
+      (This should succeed.)
+
     NORMAL_PACKAGE_REMOVAL_TEST_EOF
     @normal_pkg = Package.load_package("#{@normal_package_name}.rb")
   end
 
   def test_remove_essential_package
-    expected_output = %(  #{@random_essential_package_name.capitalize} is considered an essential package needed for
-  Chromebrew to function and thus cannot be removed.
-)
-    assert_output(expected_output, nil) do
-      Command.remove(@random_essential_pkg, true)
-    end
+    # expected_output = %(  #{@random_essential_package_name.capitalize} is considered an essential package needed for
+    # Chromebrew to function and thus cannot be removed.
+    # )
+    # assert_output(expected_output, nil) do
+    # Command.remove(@random_essential_pkg, true)
+    # end
+
+    assert_raises(SystemExit) { Command.remove(@random_essential_pkg, true) }
   end
 
   def test_remove_normal_package

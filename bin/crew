@@ -1784,7 +1784,7 @@ def install_command(args)
 end
 
 def list_command(args)
-  Command.list(args['available'], args['installed'], args['compatible'], args['incompatible'], CREW_VERBOSE)
+  Command.list(args['available'], args['compatible'], args['incompatible'], args['essential'], args['installed'], CREW_VERBOSE)
 end
 
 def postinstall_command(args)

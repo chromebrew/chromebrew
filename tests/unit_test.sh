@@ -27,7 +27,11 @@ if [[ -n ${ALL_CHANGED_FILES-} ]]; then
         ruby ../tests/buildsystem_test "${pkg}"
         echo "Testing install/removal of compatible package ${pkg}."
         yes | time crew install "${pkg}"
-        yes | time crew remove "${pkg}"
+        if [[ $(crew list -d essential) == *"${pkg}"* ]]; then
+         yes | time crew remove "${pkg}" || true
+        else
+         yes | time crew remove "${pkg}"
+        fi
       fi
     done
   fi

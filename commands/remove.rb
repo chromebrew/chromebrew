@@ -28,7 +28,9 @@ class Command
         Chromebrew to function and thus cannot be removed.
       ESSENTIAL_PACKAGE_WARNING_EOF
 
-      return
+      # Exit with failure if attempt to remove an essential package
+      # is made.
+      exit 1
     end
 
     # Perform any operations required prior to package removal.
