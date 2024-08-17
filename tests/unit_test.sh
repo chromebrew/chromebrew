@@ -1,7 +1,7 @@
 #!/bin/bash -e
 # This is for use as a Github CI Pull Request Unit Test.
-echo "ALL_CHANGED FILES is/are ${ALL_CHANGED_FILES}."
-echo "CHANGED_PACKAGES is/are ${CHANGED_PACKAGES}."
+echo "ALL_CHANGED FILES: ${ALL_CHANGED_FILES}."
+echo "CHANGED_PACKAGES: ${CHANGED_PACKAGES}."
 cd /usr/local/lib/crew/packages/
 yes | crew upgrade
 yes | crew install vim
