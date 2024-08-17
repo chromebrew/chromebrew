@@ -1,5 +1,4 @@
 require 'fileutils'
-require 'json'
 require_relative '../lib/const'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
