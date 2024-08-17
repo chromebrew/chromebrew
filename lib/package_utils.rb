@@ -25,7 +25,7 @@ class PackageUtils
   end
 
   def self.compatible?(pkg)
-    return pkg.compatibility.casecmp?('all') || pkg.compatibility.include?(ARCH)
+    return (pkg.compatibility.casecmp?('all') || pkg.compatibility.include?(ARCH)) && (pkg.min_glibc.nil? ? true : (pkg.min_glibc <= LIBC_VERSION))
   end
 
   def self.get_url(pkg, build_from_source: false)
