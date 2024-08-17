@@ -7,7 +7,7 @@ class Google_chrome_beta < Package
   version '128.0.6613.18-1'
   license 'google-chrome'
   compatibility 'x86_64'
-  min_glibc '2.25'
+  min_glibc '2.28'
   source_url "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-#{@update_channel}/google-chrome-#{@update_channel}_#{@version}_amd64.deb"
   source_sha256 'ca9bce2d3c8b6b2e092f28a73af01e7d95de093108ab40609e0390d0dd1a4ba3'
 
