@@ -25,7 +25,7 @@ fi
 # Reject crostini.
 if [[ -d /opt/google/cros-containers && "${CREW_FORCE_INSTALL}" != '1' ]]; then
   echo_error "Crostini containers are not supported by Chromebrew :/"
-  echo_info "Run 'CREW_FORCE_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)' to perform install anyway"
+  echo_info "Run 'CREW_FORCE_INSTALL=1 bash <(curl -Ls git.io/vddgY) && . ~/.bashrc' to perform install anyway"
   exit 1
 fi
 
@@ -33,7 +33,7 @@ fi
 if [ -f /etc/lsb-release ]; then
   if [[ ! "$(< /etc/lsb-release)" =~ CHROMEOS_RELEASE_TRACK=stable-channel$'\n' && "${CREW_FORCE_INSTALL}" != '1' ]]; then
     echo_error "The beta, dev, and canary channel are unsupported by Chromebrew."
-    echo_info "Run 'CREW_FORCE_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)' to perform install anyway."
+    echo_info "Run 'CREW_FORCE_INSTALL=1 bash <(curl -Ls git.io/vddgY) && . ~/.bashrc' to perform install anyway."
     exit 1
   fi
   export "$(grep CHROMEOS_RELEASE_CHROME_MILESTONE /etc/lsb-release)"
@@ -114,7 +114,7 @@ LIBC_VERSION=$(/lib"$LIB_SUFFIX"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo 
 if grep -s "fma4" /proc/cpuinfo ; then
   echo_info "Notice: You are running an AMD StoneyRidge device; due to some bugs some packages may fail with a segmentation fault and need to be rebuilt."
   echo_info "If this happens, please report them to: https://github.com/chromebrew/chromebrew/issues"
-  echo_info "If the install fails, try running 'CREW_AMD_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)'"
+  echo_info "If the install fails, try running 'CREW_AMD_INSTALL=1 bash <(curl -Ls git.io/vddgY) && . ~/.bashrc'"
   if [ "${CREW_AMD_INSTALL}" == "1" ]; then
     # Otherwise one may get segfaults during install on stoneyridge devices.
     # See https://github.com/chromebrew/chromebrew/issues/8823
