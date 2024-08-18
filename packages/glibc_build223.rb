@@ -4,7 +4,7 @@ class Glibc_build223 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-  compatibility 'all'
+  compatibility 'i686'
   binary_compression 'tar.zst'
 
   depends_on 'gawk' => :build

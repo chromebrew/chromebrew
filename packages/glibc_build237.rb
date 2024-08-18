@@ -4,7 +4,7 @@ class Glibc_build237 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   binary_compression 'tar.zst'
   # @libc_version = LIBC_VERSION
   @libc_version = '2.37'
