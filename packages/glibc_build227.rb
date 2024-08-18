@@ -3,9 +3,21 @@ require 'package'
 class Glibc_build227 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
+  version '2.27-1'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
+  @libc_version = LIBC_VERSION
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc version.split('-').first
+  max_glibc version.split('-').first
+  source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
+  source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
   binary_compression 'tar.xz'
+
+  binary_sha256({
+    aarch64: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
+     armv7l: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
+     x86_64: '5fe94642dbbf900d22b715021c73ac1a601b81517f0da1e7413f0af8fbea7997'
+  })
 
   depends_on 'gawk' => :build
   depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
@@ -16,17 +28,6 @@ class Glibc_build227 < Package
   conflicts_ok
   no_env_options
   no_upstream_update
-
-  @libc_version = LIBC_VERSION
-  version '2.27-1'
-  source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
-  source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
-
-  binary_sha256({
-    aarch64: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
-     armv7l: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
-     x86_64: '5fe94642dbbf900d22b715021c73ac1a601b81517f0da1e7413f0af8fbea7997'
-  })
 
   def self.patch
     # Patch to avoid old ld issue on glibc 2.23 by using ld configure

@@ -3,14 +3,16 @@ require 'package'
 class Glibc_build237 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
+  version '2.37-1'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-  compatibility 'x86_64 aarch64 armv7l'
-  binary_compression 'tar.zst'
   # @libc_version = LIBC_VERSION
   @libc_version = '2.37'
-  version '2.37-1'
+  compatibility 'x86_64 aarch64 armv7l'
+  min_glibc version.split('-').first
+  max_glibc version.split('-').first
   source_url 'https://github.com/bminor/glibc.git'
   git_hashtag 'glibc-2.37'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'fffbe32d69e3d972c9c845e8fa244159d7ac8b82ae9f07206c7189b20e3457c8',

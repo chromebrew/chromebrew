@@ -7,6 +7,8 @@ class Glibc_lib237 < Package
   version '2.37-patchelf1' # Do not use @_ver here, it will break the installer.
   license Glibc_build237.license
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc version.split('-').first
+  max_glibc version.split('-').first
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
