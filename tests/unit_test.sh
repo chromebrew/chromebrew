@@ -25,7 +25,7 @@ if [[ -n ${ALL_CHANGED_FILES-} ]]; then
       # being run on.
       if echo "${all_compatible_packages}" | grep "^${pkg}$"; then
         ruby ../tests/prop_test "${pkg}"
-        ruby ../tests/buildsysOtem_test "${pkg}"
+        ruby ../tests/buildsystem_test "${pkg}"
         echo "Testing install/removal of compatible package ${pkg}."
         yes | time crew install "${pkg}"
         # Removal of essential packages is expected to fail.
