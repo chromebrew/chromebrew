@@ -1616,7 +1616,7 @@ def build_command(args)
       resolve_dependencies_and_build
     else
       puts 'Unable to build a fake package. Skipping build.'.lightred if @pkg.is_fake?
-      puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping build.".lightred unless PackageUtils.compatible?(@pkg)
+      puts "Package #{@pkg.name} is not compatible with your device. Skipping build.".lightred unless PackageUtils.compatible?(@pkg)
       puts 'Unable to build without source. Skipping build.'.lightred unless @pkg.source?(ARCH) && @pkg.source_url.to_s.upcase != 'SKIP'
       puts 'Compile not needed. Skipping build.'.lightred if @pkg.no_compile_needed?
     end
