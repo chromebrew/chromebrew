@@ -25,7 +25,15 @@ class PackageUtils
   end
 
   def self.compatible?(pkg)
-    return (pkg.compatibility.casecmp?('all') || pkg.compatibility.include?(ARCH)) && (pkg.min_glibc.nil? || (pkg.min_glibc <= LIBC_VERSION))
+    return (pkg.compatibility.casecmp?('all') || pkg.compatibility.include?(ARCH)) && (pkg.min_glibc.nil? || (pkg.min_glibc <= LIBC_VERSION)) && (pkg.max_glibc.nil? || (pkg.max_glibc >= LIBC_VERSION))
+  end
+
+  def self.incompatible_reason(pkg)
+    reason = []
+    reason.push "#{pkg.name.capitalize} is not compatible with #{ARCH}." if pkg.compatibility.casecmp?('all') || pkg.compatibility.include?(ARCH)
+    reason.push "ChromeOS is currently running glibc #{LIBC_VERSION}, but the minimum version for #{pkg.name} is #{pkg.min_glibc}." if !pkg.min_glibc.nil? && (pkg.min_glibc >= LIBC_VERSION)
+    reason.push "ChromeOS is currently running glibc #{LIBC_VERSION}, but the maximum version for #{pkg.name} is #{pkg.min_glibc}." if !pkg.max_glibc.nil? && (pkg.max_glibc.to_s <= LIBC_VERSION)
+    return reason
   end
 
   def self.get_url(pkg, build_from_source: false)
