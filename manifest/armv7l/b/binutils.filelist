@@ -105,7 +105,7 @@
 /usr/local/lib/ldscripts/armelfb_linux_eabi.xwer
 /usr/local/lib/ldscripts/stamp
 /usr/local/lib/libbfd-2.39.50.so
-/usr/local/lib/libbfd-2.43.so
+/usr/local/lib/libbfd-2.43.1.so
 /usr/local/lib/libbfd.a
 /usr/local/lib/libbfd.la
 /usr/local/lib/libbfd.so
@@ -121,7 +121,7 @@
 /usr/local/lib/libctf.so.0.0.0
 /usr/local/lib/libiberty.a
 /usr/local/lib/libopcodes-2.39.50.so
-/usr/local/lib/libopcodes-2.43.so
+/usr/local/lib/libopcodes-2.43.1.so
 /usr/local/lib/libopcodes.a
 /usr/local/lib/libopcodes.la
 /usr/local/lib/libopcodes.so
