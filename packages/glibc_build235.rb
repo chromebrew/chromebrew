@@ -22,7 +22,7 @@ class Glibc_build235 < Package
      armv7l: '928b60200126cb0d69401bc5124a9a4e7b2294b54a1046c6f88caa45d7be32b9',
      x86_64: 'e7977a6ad811776fbb8c3d54e11e408a5f9ffeee8b3d8bb666255695b3fc20d6'
   })
-  
+
   depends_on 'gawk' => :build
   depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
   depends_on 'libidn2' => :build

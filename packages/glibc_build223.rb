@@ -26,7 +26,6 @@ class Glibc_build223 < Package
   no_env_options
   no_upstream_update
 
-
   def self.patch
     # Patch to avoid old ld issue on glibc 2.23 by using ld configure
     # portion from https://github.com/bminor/glibc/blob/master/configure
