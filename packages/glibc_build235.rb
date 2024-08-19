@@ -3,9 +3,25 @@ require 'package'
 class Glibc_build235 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
+  version '2.35-1'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-  compatibility 'all'
+  @libc_version = LIBC_VERSION
+  compatibility 'x86_64 aarch64 armv7l'
+  min_glibc version.split('-').first
+  max_glibc version.split('-').first
+  # Use current glibc 2.35 stable branch commit, which avoids
+  # compilation failures, from https://github.com/bminor/glibc/tree/release/2.35/master
+  source_url 'https://github.com/bminor/glibc/archive/757d9a6306cee9e96d7a4d1d11c8d69763c6eecf.zip'
+  source_sha256 '75d6586a89a8c03b434ef7fa1b4b02b007287fc9a6b8148a84e97d6ed039872d'
+  # source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.35.tar.xz'
+  # source_sha256 '5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e'
   binary_compression 'tar.zst'
+
+  binary_sha256({
+    aarch64: '928b60200126cb0d69401bc5124a9a4e7b2294b54a1046c6f88caa45d7be32b9',
+     armv7l: '928b60200126cb0d69401bc5124a9a4e7b2294b54a1046c6f88caa45d7be32b9',
+     x86_64: 'e7977a6ad811776fbb8c3d54e11e408a5f9ffeee8b3d8bb666255695b3fc20d6'
+  })
 
   depends_on 'gawk' => :build
   depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
@@ -16,21 +32,6 @@ class Glibc_build235 < Package
   conflicts_ok
   no_env_options
   no_upstream_update
-
-  @libc_version = LIBC_VERSION
-  version '2.35-1'
-  # Use current glibc 2.35 stable branch commit, which avoids
-  # compilation failures, from https://github.com/bminor/glibc/tree/release/2.35/master
-  source_url 'https://github.com/bminor/glibc/archive/757d9a6306cee9e96d7a4d1d11c8d69763c6eecf.zip'
-  source_sha256 '75d6586a89a8c03b434ef7fa1b4b02b007287fc9a6b8148a84e97d6ed039872d'
-  # source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.35.tar.xz'
-  # source_sha256 '5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e'
-
-  binary_sha256({
-    aarch64: '928b60200126cb0d69401bc5124a9a4e7b2294b54a1046c6f88caa45d7be32b9',
-     armv7l: '928b60200126cb0d69401bc5124a9a4e7b2294b54a1046c6f88caa45d7be32b9',
-     x86_64: 'e7977a6ad811776fbb8c3d54e11e408a5f9ffeee8b3d8bb666255695b3fc20d6'
-  })
 
   def self.patch
     FileUtils.mkdir 'fedora'

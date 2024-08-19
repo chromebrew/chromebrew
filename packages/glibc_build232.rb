@@ -3,9 +3,21 @@ require 'package'
 class Glibc_build232 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
+  version '2.32-3'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-  compatibility 'all'
+  @libc_version = LIBC_VERSION
+  compatibility 'x86_64 aarch64 armv7l'
+  min_glibc version.split('-').first
+  max_glibc version.split('-').first
+  source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.32.tar.xz'
+  source_sha256 '1627ea54f5a1a8467032563393e0901077626dc66f37f10ee6363bb722222836'
   binary_compression 'tar.zst'
+
+  binary_sha256({
+    aarch64: '3fd6ddb5c4a5e6c53b08562a6aeb24e36a664b58c6bfd0742918a873e19f0c9d',
+     armv7l: '3fd6ddb5c4a5e6c53b08562a6aeb24e36a664b58c6bfd0742918a873e19f0c9d',
+     x86_64: '815e075b94cfd66723222f7cbadfbb5c09e1c8fd40fff01b5970bf32d759908a'
+  })
 
   depends_on 'gawk' => :build
   depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
@@ -16,17 +28,6 @@ class Glibc_build232 < Package
   conflicts_ok
   no_env_options
   no_upstream_update
-
-  @libc_version = LIBC_VERSION
-  version '2.32-3'
-  source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.32.tar.xz'
-  source_sha256 '1627ea54f5a1a8467032563393e0901077626dc66f37f10ee6363bb722222836'
-
-  binary_sha256({
-    aarch64: '3fd6ddb5c4a5e6c53b08562a6aeb24e36a664b58c6bfd0742918a873e19f0c9d',
-     armv7l: '3fd6ddb5c4a5e6c53b08562a6aeb24e36a664b58c6bfd0742918a873e19f0c9d',
-     x86_64: '815e075b94cfd66723222f7cbadfbb5c09e1c8fd40fff01b5970bf32d759908a'
-  })
 
   def self.patch
     FileUtils.mkdir 'fedora'

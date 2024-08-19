@@ -87,7 +87,7 @@ Where available commands are:
 | files        | display installed files of package(s) |
 | help         | get information about command usage |
 | install      | install package(s) along with dependencies after prompting for confirmation |
-| list         | available, installed, compatible or incompatible packages |
+| list         | available, compatible, incompatible, essential, installed packages |
 | postinstall  | display postinstall messages of package(s) |
 | prop         | display all package boolean properties |
 | reinstall    | remove and install package(s) |
