@@ -3,28 +3,28 @@ require 'package'
 class Glibc_build223 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
+  version '2.23-6'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-  compatibility 'all'
+  @libc_version = LIBC_VERSION
+  compatibility 'i686'
+  min_glibc version.split('-').first
+  max_glibc version.split('-').first
+  source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
+  source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
   binary_compression 'tar.zst'
+
+  binary_sha256({
+    i686: 'f40aa662009999330bd1be1feb6c64efbe663a7a308973dc7c5a2b41c1faaf6b'
+  })
 
   depends_on 'gawk' => :build
   depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
   depends_on 'libidn2' => :build
   depends_on 'texinfo' => :build
   depends_on 'hashpipe' => :build
-
   conflicts_ok
   no_env_options
   no_upstream_update
-
-  @libc_version = LIBC_VERSION
-  version '2.23-6'
-  source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
-  source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
-
-  binary_sha256({
-    i686: 'f40aa662009999330bd1be1feb6c64efbe663a7a308973dc7c5a2b41c1faaf6b'
-  })
 
   def self.patch
     # Patch to avoid old ld issue on glibc 2.23 by using ld configure

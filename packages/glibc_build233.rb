@@ -3,30 +3,30 @@ require 'package'
 class Glibc_build233 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
-  license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-  compatibility 'all'
-  binary_compression 'tar.zst'
-
-  depends_on 'gawk' => :build
-  depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
-  depends_on 'libidn2' => :build
-  depends_on 'texinfo' => :build
-  depends_on 'hashpipe' => :build
-
-  conflicts_ok
-  no_env_options
-  no_upstream_update
-
-  @libc_version = LIBC_VERSION
   version '2.33-3'
+  license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
+  @libc_version = LIBC_VERSION
+  compatibility 'x86_64 aarch64 armv7l'
+  min_glibc version.split('-').first
+  max_glibc version.split('-').first
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.33.tar.xz'
   source_sha256 '2e2556000e105dbd57f0b6b2a32ff2cf173bde4f0d85dffccfd8b7e51a0677ff'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '11a3e7ba5eec18c325afa80bc869b4f8cc1fcbfef78ddf25e1b1e278679203a4',
      armv7l: '11a3e7ba5eec18c325afa80bc869b4f8cc1fcbfef78ddf25e1b1e278679203a4',
      x86_64: '3edde53b5ab8b577604b127c141042f4572b8972b7081abcda2e86778d1974a9'
   })
+
+  depends_on 'gawk' => :build
+  depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
+  depends_on 'libidn2' => :build
+  depends_on 'texinfo' => :build
+  depends_on 'hashpipe' => :build
+  conflicts_ok
+  no_env_options
+  no_upstream_update
 
   def self.patch
     FileUtils.mkdir 'fedora'

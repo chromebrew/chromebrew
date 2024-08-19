@@ -34,6 +34,8 @@ if [[ -n ${ALL_CHANGED_FILES-} ]]; then
         else
          yes | time crew remove "${pkg}"
         fi
+      else
+        echo "${pkg^} is not compatible."
       fi
     done
   fi

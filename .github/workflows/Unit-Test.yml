@@ -29,9 +29,9 @@ jobs:
             export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES} | sed -e 's,packages/,,g' -e 's,\.rb,,g' | sort)" && \
             echo "CHANGED PACKAGES: ${CHANGED_PACKAGES}." && \
             export GLIBC_227_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do if ! grep -q min_glibc packages/$i.rb; then echo $i ; else grep min_glibc packages/$i.rb | tr -d \' | awk '{exit $2 < 2.27}' || echo $i ; fi ; done | xargs)" && \
-            echo "PR #${PR_NUMBER} has these Glibc 2.27 compatible packages: ${GLIBC_227_COMPATIBLE_PACKAGES}" && \
+            echo "PR #${PR_NUMBER} has these possibly Glibc 2.27 compatible packages: ${GLIBC_227_COMPATIBLE_PACKAGES}" && \
             export GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/$i.rb | tr -d \' | awk '{exit $2 < 2.37}' || echo $i ; done | xargs)" && \
-            echo "PR #${PR_NUMBER} has these Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}" && \
+            echo "PR #${PR_NUMBER} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}" && \
             export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|x86_64" packages/${p}.rb && echo ${p}; done | xargs)" && \
             echo "PR #${PR_NUMBER} has these x86_64 compatible packages: ${X86_64_PACKAGES}" && \
             export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|armv7l" packages/${p}.rb && echo ${p}; done | xargs)" && \
@@ -62,16 +62,16 @@ jobs:
             export CHANGED_PACKAGES="$(echo ${ALL_CHANGED_FILES} | sed -e 's,packages/,,g' -e 's,\.rb,,g' | sort)" && \
             echo "CHANGED PACKAGES: ${CHANGED_PACKAGES}." && \
             export GLIBC_227_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do if ! grep -q min_glibc packages/$i.rb; then echo $i ; else grep min_glibc packages/$i.rb | tr -d \' | awk '{exit $2 < 2.27}' || echo $i ; fi ; done | xargs)" && \
-            echo "PR #${PR_NUMBER} has these Glibc 2.27 compatible packages: ${GLIBC_227_COMPATIBLE_PACKAGES}" && \
+            echo "PR #${PR_NUMBER} has these possibly Glibc 2.27 compatible packages: ${GLIBC_227_COMPATIBLE_PACKAGES}" && \
             export GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/$i.rb | tr -d \' | awk '{exit $2 < 2.37}' || echo $i ; done | xargs)" && \
-            echo "PR #${PR_NUMBER} has these Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}" && \
+            echo "PR #${PR_NUMBER} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}" && \
             export X86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|x86_64" packages/${p}.rb && echo ${p}; done | xargs)" && \
             echo "PR #${PR_NUMBER} has these x86_64 compatible packages: ${X86_64_PACKAGES}" && \
             export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility.*all\|armv7l" packages/${p}.rb && echo ${p}; done | xargs)" && \
             echo "PR #${PR_NUMBER} has these ARMv7L compatible packages: ${ARMV7L_PACKAGES}" && \
             [[ $ARMV7L_PACKAGES ]] || exit 0 && \
             if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]] ; then armv7l_CONTAINER="satmandu/crewbuild:strongbad-armv7l.m126"; else armv7l_CONTAINER="satmandu/crewbuild:fievel-armv7l.m91"; fi &&\
-            export container_cmdline="/usr/bin/sudo -u chronos LD_LIBRARY_PATH=/usr/lib:/lib /usr/local/bin/bash -c \"export ALL_CHANGED_FILES='${ALL_CHANGED_FILES}' && \
+            export container_cmdline="/usr/bin/sudo -u chronos LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:/lib /usr/local/bin/bash -c \"export ALL_CHANGED_FILES='${ALL_CHANGED_FILES}' && \
             export CHANGED_PACKAGES='${CHANGED_PACKAGES}' && \
             echo 'ALL_CHANGED FILES: ${ALL_CHANGED_FILES}.' && \
             echo 'CHANGED PACKAGES: ${CHANGED_PACKAGES}.' && \

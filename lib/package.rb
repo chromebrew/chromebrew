@@ -12,7 +12,7 @@ class Package
 
   property :description, :homepage, :version, :license, :compatibility,
            :binary_compression, :binary_url, :binary_sha256, :source_url, :source_sha256,
-           :git_branch, :git_hashtag, :min_glibc
+           :git_branch, :git_hashtag, :max_glibc, :min_glibc
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
