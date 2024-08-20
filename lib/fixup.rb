@@ -1,5 +1,12 @@
+#!/usr/bin/env ruby
 # lib/fixup.rb
 # Add fixups to be run during crew update here.
+require 'etc'
+require 'json'
+require_relative 'color'
+require_relative 'package'
+require_relative 'package_utils'
+
 def require_gem(gem_name_and_require = nil, require_override = nil)
   # Allow only loading gems when needed.
   return if gem_name_and_require.nil?
@@ -21,7 +28,27 @@ def require_gem(gem_name_and_require = nil, require_override = nil)
 end
 require_gem('highline/import')
 
+# All needed constants & variables should be defined here in case they
+# have not yet been loaded or or fixup is being run standalone.
+
 CREW_VERBOSE = ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
+
+HOME = '/home/chronos/user' unless defined?(HOME)
+CREW_PREFIX = '/usr/local' unless defined?(CREW_PREFIX)
+CREW_LIB_PATH = File.join(CREW_PREFIX, 'lib/crew') unless defined?(CREW_LIB_PATH)
+CREW_CONFIG_PATH = File.join(CREW_PREFIX, 'etc/crew') unless defined?(CREW_CONFIG_PATH)
+CREW_META_PATH = File.join(CREW_CONFIG_PATH, 'meta') unless defined?(CREW_CONFIG_PATH)
+# via git log --reverse --oneline lib/const.rb | head -n 1
+CREW_CONST_GIT_COMMIT = '72d807aac' unless defined?(CREW_CONST_GIT_COMMIT)
+CREW_REPO   = 'https://github.com/chromebrew/chromebrew.git' unless defined?(CREW_REPO)
+CREW_BRANCH = 'master' unless defined?(CREW_BRANCH)
+unless defined?(ARCH)
+  KERN_ARCH = Etc.uname[:machine] unless defined? KERN_ARCH
+  ARCH = %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH
+end
+LIBC_VERSION = Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last unless defined?(LIBC_VERSION)
+CREW_PACKAGES_PATH = File.join(CREW_LIB_PATH, 'packages') unless defined?(CREW_PACKAGES_PATH)
+@device = PackageUtils.load_json unless defined? @device
 
 # remove deprecated directory
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
@@ -156,8 +183,7 @@ pkg_update_arr.each do |pkg|
         next x
       end
       File.write "#{CREW_CONFIG_PATH}/device.json.new", JSON.pretty_generate(JSON.parse(@device.to_json))
-      @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json.new", symbolize_names: true)
-      @device.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
+      @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json.new'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
       raise StandardError, 'Failed to replace pkg name...'.lightred unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_rename] }
       # Ok to write working device.json
       File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
@@ -169,8 +195,7 @@ pkg_update_arr.each do |pkg|
       FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.bak", "#{CREW_CONFIG_PATH}/device.json"
     end
     # Reload json file.
-    @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
-    @device.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
+    @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
     # Ok to remove backup and temporary json files.
     FileUtils.rm_f "#{CREW_CONFIG_PATH}/device.json.bak"
     FileUtils.rm_f "#{CREW_CONFIG_PATH}/device.json.new"
@@ -198,14 +223,7 @@ end
 # is different from the git commit of the potentially updated const.rb
 # loaded here after a git pull.
 
-# Handle case of const.rb not yet defining CREW_CONST_GIT_COMMIT.
-CREW_CONST_GIT_COMMIT = '0000' unless defined?(CREW_CONST_GIT_COMMIT)
-
-Dir.chdir CREW_LIB_PATH do
-  @new_const_git_commit = `git log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.chomp.split.first
-end
-
-unless @new_const_git_commit == CREW_CONST_GIT_COMMIT
+unless `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first == CREW_CONST_GIT_COMMIT
   puts 'Restarting crew update since there is an updated crew version.'.lightcyan
   puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if CREW_VERBOSE
   exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
@@ -215,8 +233,8 @@ end
 FileUtils.rm "#{CREW_PACKAGES_PATH}/pagerenv" if File.file?("#{CREW_PACKAGES_PATH}/pagerenv")
 
 # Handle broken system glibc affecting gcc_lib on newer x86_64 ChromeOS milestones.
-if (ARCH == 'x86_64') && (LIBC_VERSION.to_f >= 2.36)
-  abort("patchelf is needed. Please run: 'crew install patchelf && crew update'") unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
+if (ARCH == 'x86_64') && (LIBC_VERSION >= '2.36')
+  abort("patchelf is needed. Please run: 'crew update && crew install patchelf && crew update'") unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
   # Link the system libc.so.6 to also require our renamed libC.so.6
   # which provides the float128 functions strtof128, strfromf128,
   # and __strtof128_nan.

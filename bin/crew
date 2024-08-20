@@ -249,8 +249,28 @@ end
 def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkg_name
 
-  # update package lists
+  # update crew from git.
   Dir.chdir(CREW_LIB_PATH) do
+    # Fix git checkout if .git is missing.
+    unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
+      # Run git setup commands from install.sh
+      Dir.chdir(CREW_LIB_PATH) do
+        # Setup the dir with git information.
+        `git init --ref-format=reftable`
+        `git remote add origin #{CREW_REPO}`
+
+        # Help handle situations where GitHub is down.
+        `git config --local http.lowSpeedLimit 1000`
+        `git config --local http.lowSpeedTime 5`
+
+        # Checkout, overwriting local files.
+        `git fetch --all`
+        `git checkout -f master`
+
+        `git reset --hard origin/#{CREW_BRANCH}`
+      end
+    end
+
     # Set sparse-checkout folders.
     system "git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools"
     system 'git sparse-checkout reapply'
