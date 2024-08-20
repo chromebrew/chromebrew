@@ -213,26 +213,10 @@ class Glibc_build237 < Package
           FileUtils.ln_sf "/#{ARCH_LIB}/libc.so.6", 'libc.so.6'
 
           ## Also save our copy of libm.so.6 since it has the float128 functions.
-          # @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
-          # libdl libmemusage libmvec libnsl libnss_compat libnss_db
-          # libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
-          # libthread_db libresolv librlv librt libthread_db-1.0 libutil]
-          # @libraries -= ['libpthread'] if @libc_version.to_f >= 2.35
-          # @libraries.each do |lib|
-          ## Reject entries which aren't libraries ending in .so, and which aren't files.
-          # Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          # @filetype = `file #{f}`.chomp
-          # next unless ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-          # g = File.basename(f)
-          # FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-          # Dir.chdir(CREW_DEST_LIB_PREFIX) do
-          # FileUtils.ln_sf f.to_s, g.to_s
-          # end
-          # end
           ## Reject entries which aren't libraries ending in .so, and which aren't files.
           ## Reject text files such as libc.so because they points to files like
           ## libc_nonshared.a, which are not provided by ChromeOS
-          # Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
+          # Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.reject { |f| File.directory?(f) }.each do |f|
           # @filetype = `file #{f}`.chomp
           # puts "f: #{@filetype}" if @opt_verbose
           # if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
@@ -254,7 +238,7 @@ class Glibc_build237 < Package
     end
     # Only save libnsl.so.2, since libnsl.so.1 is provided by perl
     # For this to work, build on a M107 or newer container.
-    FileUtils.cp File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2" if LIBC_VERSION.to_f >= 2.35
+    FileUtils.ln_sf File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2" if LIBC_VERSION.to_f >= 2.35
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"
 
@@ -294,6 +278,7 @@ class Glibc_build237 < Package
 
     unless ARCH == 'x86_64'
       if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
+        FileUtils.chmod 'u=wrx', "#{CREW_LIB_PREFIX}/libc.so.6"
         @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
         @libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
         puts "Package glibc version is #{@libc_version}.".lightblue
@@ -313,27 +298,12 @@ class Glibc_build237 < Package
         case ARCH
         when 'aarch64', 'armv7l'
           FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
-        when 'i686'
-          FileUtils.ln_sf "/lib/ld-#{@libc_version}.so", 'ld-linux-i686.so.2'
-          # newer x86_64 ChromeOS glibc lacks strtof128, strfromf128
-          # and __strtof128_nan
-          # when 'x86_64'
-          #   FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2'
         end
         @libraries.each do |lib|
           # Reject entries which aren't libraries ending in .so, and which aren't files.
-          Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-            @filetype = `file #{f}`.chomp
-            next unless ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            next if Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, g)} | grep -q libC.so.6"
-
-            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
-          end
-          # Reject entries which aren't libraries ending in .so, and which aren't files.
           # Reject text files such as libc.so because they points to files like
           # libc_nonshared.a, which are not provided by ChromeOS
-          Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
+          Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.reject { |f| File.directory?(f) }.each do |f|
             @filetype = `file #{f}`.chomp
             puts "f: #{@filetype}" if @opt_verbose
             if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
@@ -348,7 +318,7 @@ class Glibc_build237 < Package
         end
       end
     end
-    return unless @libc_version.to_f >= 2.32 && Gem::Version.new(CREW_KERNEL_VERSION.to_s) >= Gem::Version.new('5.10')
+    return unless @libc_version.to_f > 2.32 && Gem::Version.new(CREW_KERNEL_VERSION.to_s) >= Gem::Version.new('5.10')
 
     puts 'Paring locales to a minimal set.'.lightblue
     system 'localedef --list-archive | grep -v -i -e ^en -e ^cs -e ^de -e ^es -e ^fa -e ^fe -e ^it -e ^ja -e ^ru -e ^tr -e ^zh -e ^C| xargs localedef --delete-from-archive',
