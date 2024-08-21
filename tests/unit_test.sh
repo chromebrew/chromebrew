@@ -13,10 +13,6 @@ ruby ../tests/commands/prop.rb
 ruby ../tests/commands/remove.rb
 ruby ../tests/lib/docopt.rb
 if [[ -n ${ALL_CHANGED_FILES-} ]]; then
-  # for file in ${ALL_CHANGED_FILES}; do
-    # ruby ../tests/prop_test "$file"
-    # ruby ../tests/buildsystem_test "$file"
-  # done
   if [[ -n ${CHANGED_PACKAGES-} ]]; then
     all_compatible_packages=$(crew list -d compatible)
     all_installed_packages=$(crew list -d installed)
@@ -27,16 +23,19 @@ if [[ -n ${ALL_CHANGED_FILES-} ]]; then
       if echo "${all_compatible_packages}" | grep "^${pkg}$"; then
         ruby ../tests/prop_test "${pkg}"
         ruby ../tests/buildsystem_test "${pkg}"
-        echo "Testing install/removal of compatible package ${pkg}."
         if echo "${all_installed_packages}" | grep "^${pkg}$"; then
+          echo "Testing reinstall of ${pkg}."
           yes | time crew reinstall "${pkg}"
         else
+          echo "Testing install of ${pkg}."
           yes | time crew install "${pkg}"
         fi
         # Removal of essential packages is expected to fail.
         if [[ $(crew list -d essential) == *"${pkg}"* ]]; then
+         echo "Testing removal of essential package ${pkg}."
          yes | time crew remove "${pkg}" || true
         else
+         echo "Testing removal of ${pkg}."
          yes | time crew remove "${pkg}"
         fi
       else
