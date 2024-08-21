@@ -5,6 +5,26 @@ require_relative 'color'
 require_relative 'package_helpers'
 require_relative 'selector'
 
+def require_gem(gem_name_and_require = nil, require_override = nil)
+  # Allow only loading gems when needed.
+  return if gem_name_and_require.nil?
+
+  gem_name = gem_name_and_require.split('/')[0]
+  begin
+    gem gem_name
+  rescue LoadError
+    puts " -> install #{gem_name} gem".orange
+    Gem.install(gem_name)
+    gem gem_name
+  end
+  requires = if require_override.nil?
+               gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
+             else
+               require_override
+             end
+  require requires
+end
+
 class Package
   boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
                    :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules, :no_links, :no_lto, :no_patchelf,
@@ -29,6 +49,21 @@ class Package
 
   class << self
     attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
+  end
+
+  def self.agree_with_default(yes_or_no_question, character = nil, default:)
+    require_gem('highline')
+    answer_type = ->(yn) { yn.downcase[0] == 'y' || (yn.empty? && default.downcase[0] == 'y') }
+
+    HighLine.ask(yes_or_no_question, answer_type) do |q|
+      q.validate                 = /\A(?:y(?:es)?|no?|)\Z/i
+      q.responses[:not_valid]    = 'Please enter "yes" or "no".'
+      q.responses[:ask_on_error] = :question
+      q.character                = character
+      q.completion               = %w[yes no]
+
+      yield q if block_given?
+    end
   end
 
   def self.load_package(pkg_file)
