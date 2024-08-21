@@ -3,18 +3,18 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  version '3.3.1' # Do not use @_ver here, it will break the installer.
+  version '3.3.2-ed16083' # Do not use @_ver here, it will break the installer.
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://www.openssl.org/source/openssl-3.3.1.tar.gz'
-  source_sha256 '777cd596284c883375a2a7a11bf5d2786fc5413255efab20c50d6ffe6d020b7e'
+  source_url 'https://github.com/openssl/openssl.git'
+  git_hashtag 'ed16083728a0ab73b87cef58e23ea5490e6e73cc'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9ca024bbac19008bca681c90358fc268720c713c980aab9ac51c9ac20891664b',
-     armv7l: '9ca024bbac19008bca681c90358fc268720c713c980aab9ac51c9ac20891664b',
-       i686: '139874f4228b62473bef4ec401e789f2fea7135afe1533f4519bd4c56c43e5c0',
-     x86_64: '01cb6b7f786ab02203ac8ec53b557317c4289e831aaf2e6c494bacec4322be74'
+    aarch64: '2ccf77f60e73fd60a93838395ae9bc239448a8f155c3f7e2d79928663041db9c',
+     armv7l: '2ccf77f60e73fd60a93838395ae9bc239448a8f155c3f7e2d79928663041db9c',
+       i686: '111b9f963d8b23c27f1c1f5be123637f9fbfbe1b7652fdcacf835e532b32efbf',
+     x86_64: 'b1d2926444a1091e9b41f119f1bfe189b91140743cf9db1c8539450d864978f0'
   })
 
   depends_on 'ccache' => :build
@@ -47,7 +47,7 @@ class Openssl < Package
       CFLAGS=\"#{@ARCH_C_LTO_FLAGS}\" CXXFLAGS=\"#{@ARCH_CXX_LTO_FLAGS}\" \
       LDFLAGS=\"#{@ARCH_LDFLAGS}\" \
       mold -run ./Configure --prefix=#{CREW_PREFIX} \
-      --libdir=#{CREW_LIB_PREFIX} \
+      --libdir=#{ARCH_LIB} \
       --openssldir=#{CREW_PREFIX}/etc/ssl \
       #{@openssl_configure_target} #{@no_tests_target}"
     system 'make'
