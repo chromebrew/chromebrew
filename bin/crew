@@ -255,7 +255,7 @@ def update
     unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
       puts 'Fixing Chromebrew system git repo clone...'.orange
       # Run git setup commands from install.sh
-      system(<<~GIT_REPAIR_COMMAND, %i[out err] => File::NULL)
+      system(<<~GIT_REPAIR_COMMANDS, %i[out err] => File::NULL)
         cd #{CREW_LIB_PATH}
         # Make the git default branch error messages go away.
         git config --global init.defaultBranch main
@@ -269,15 +269,17 @@ def update
         git fetch --all
         git checkout -f master
         git reset --hard origin/#{CREW_BRANCH}
-      GIT_REPAIR_COMMAND
+      GIT_REPAIR_COMMANDS
     end
 
-    # Set sparse-checkout folders.
-    system "git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools"
-    system 'git sparse-checkout reapply'
-
-    system "git fetch #{CREW_REPO} #{CREW_BRANCH}", exception: true
-    system 'git reset --hard FETCH_HEAD', exception: true
+    system(<<~GIT_UPDATE_COMMANDS, exception: true)
+      cd #{CREW_LIB_PATH}
+      # Set sparse-checkout folders.
+      system git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools
+      system git sparse-checkout reapply
+      system git fetch #{CREW_REPO} #{CREW_BRANCH}
+      system git reset --hard FETCH_HEAD
+    GIT_UPDATE_COMMANDS
     system 'git-restore-mtime -sq 2>/dev/null', exception: true if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
   end
 
