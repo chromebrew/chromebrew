@@ -274,11 +274,11 @@ def update
 
     system(<<~GIT_UPDATE_COMMANDS, exception: true)
       cd #{CREW_LIB_PATH}
-      # Set sparse-checkout folders.
-      system git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools
-      system git sparse-checkout reapply
-      system git fetch #{CREW_REPO} #{CREW_BRANCH}
-      system git reset --hard FETCH_HEAD
+       # Set sparse-checkout folders.
+       git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools
+       git sparse-checkout reapply
+       git fetch #{CREW_REPO} #{CREW_BRANCH}
+       git reset --hard FETCH_HEAD
     GIT_UPDATE_COMMANDS
     system 'git-restore-mtime -sq 2>/dev/null', exception: true if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
   end
