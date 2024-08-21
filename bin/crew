@@ -253,6 +253,7 @@ def update
   Dir.chdir(CREW_LIB_PATH) do
     # Fix git checkout if .git is missing.
     unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
+      puts 'Fixing Chromebrew system git repo clone...'.orange
       # Run git setup commands from install.sh
       Dir.chdir(CREW_LIB_PATH) do
         # Make the git default branch error messages go away.
@@ -264,8 +265,8 @@ def update
         `git config --local http.lowSpeedLimit 1000`
         `git config --local http.lowSpeedTime 5`
         # Checkout, overwriting local files.
-        `git fetch --all`
-        `git checkout -f master`
+        system 'git fetch --all', %i[out err] => File::NULL
+        system 'git checkout -f master', %i[out err] => File::NULL
         `git reset --hard origin/#{CREW_BRANCH}`
       end
     end
