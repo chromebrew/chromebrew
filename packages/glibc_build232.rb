@@ -203,15 +203,8 @@ class Glibc_build232 < Package
           # Reject entries which aren't libraries ending in .so, and which aren't files.
           # Reject text files such as libc.so because they points to files like
           # libc_nonshared.a, which are not provided by ChromeOS
-          Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.reject { |f| File.directory?(f) }.each do |f|
-            @filetype = `file #{f}`.chomp
-            puts "f: #{@filetype}" if @opt_verbose
-            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-              g = File.basename(f)
-              FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
-            elsif @opt_verbose
-              puts "#{f} excluded because #{@filetype}"
-            end
+          Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.select { |i| ['shared object', 'symbolic link'].any? { |j| `file #{i}`.chomp.include? j } }.each do |k|
+            FileUtils.ln_sf k, File.join(CREW_DEST_LIB_PREFIX, File.basename(k))
           end
         end
       end
@@ -258,15 +251,8 @@ class Glibc_build232 < Package
         # Reject entries which aren't libraries ending in .so, and which aren't files.
         # Reject text files such as libc.so because they points to files like
         # libc_nonshared.a, which are not provided by ChromeOS
-        Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.reject { |f| File.directory?(f) }.each do |f|
-          @filetype = `file #{f}`.chomp
-          puts "f: #{@filetype}" if @opt_verbose
-          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
-          elsif @opt_verbose
-            puts "#{f} excluded because #{@filetype}"
-          end
+        Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.select { |i| ['shared object', 'symbolic link'].any? { |j| `file #{i}`.chomp.include? j } }.each do |k|
+          FileUtils.ln_sf k, File.join(CREW_LIB_PREFIX, File.basename(k))
         end
       end
     end
