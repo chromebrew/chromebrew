@@ -35,7 +35,7 @@ class Stellarium < CMake
   def self.postremove
     config_file = "#{HOME}/.stellarium"
     if File.file? config_file
-      if Package.agree_with_default("Would you like to remove the #{name} config file: #{config_file}?", true, default: 'y')
+      if Package.agree_with_default("Would you like to remove the #{name} config file: #{config_file} (YES/no)?", true, default: 'y')
         FileUtils.rm_rf config_file
         puts "#{config_file} removed.".lightgreen
       else
