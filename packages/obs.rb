@@ -20,7 +20,7 @@ class Obs < Package
   depends_on 'jansson'
   depends_on 'libmbedtls'
   depends_on 'luajit'
-  depends_on 'qtsvg'
+  depends_on 'qt5_svg'
   depends_on 'qtx11extras'
   depends_on 'v4l_utils'
   depends_on 'xdg_base'

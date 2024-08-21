@@ -22,7 +22,7 @@ class Plplot < Package
   depends_on 'ocaml'
   depends_on 'pango'
   depends_on 'qhull'
-  depends_on 'qtsvg'
+  depends_on 'qt5_svg'
   depends_on 'swig'
   depends_on 'tk'
   depends_on 'wxwidgets'
