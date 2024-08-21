@@ -16,7 +16,7 @@ class Plplot < Package
      x86_64: '6aa2d9509f13283391d604ae0e3d9ff501f0ccf3a527ac0fe6e584d20d2f30a0'
   })
 
-  depends_on 'jdk8'
+  depends_on 'openjdk8'
   depends_on 'libharu'
   depends_on 'lua'
   depends_on 'ocaml'
