@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Plplot < Package
+class Plplot < CMake
   description 'PLplot is a cross-platform software package for creating scientific plots'
   homepage 'https://plplot.sourceforge.net/'
   version '5.15.0'
@@ -16,10 +16,10 @@ class Plplot < Package
      x86_64: '6aa2d9509f13283391d604ae0e3d9ff501f0ccf3a527ac0fe6e584d20d2f30a0'
   })
 
-  depends_on 'openjdk8'
   depends_on 'libharu'
   depends_on 'lua'
   depends_on 'ocaml'
+  depends_on 'openjdk8'
   depends_on 'pango'
   depends_on 'qhull'
   depends_on 'qt5_svg'
@@ -27,29 +27,5 @@ class Plplot < Package
   depends_on 'tk'
   depends_on 'wxwidgets'
 
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system 'cmake',
-             '-DBUILD_TEST=ON',
-             '-DENABLE_DYNDRIVERS=OFF',
-             '-DUSE_INCRTCL_VERSION_4=ON',
-             "-DLIB_DIR=#{CREW_LIB_PREFIX}",
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             '..'
-      system 'make'
-    end
-  end
-
-  def self.check
-    Dir.chdir 'build' do
-      # system 'ctest'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  cmake_options '-DBUILD_TEST=ON -DENABLE_DYNDRIVERS=OFF -DUSE_INCRTCL_VERSION_4=ON'
 end
