@@ -23,10 +23,6 @@ class Glibc_dev235 < Package
 
   no_upstream_update
 
-  def self.preflight
-    abort 'Glibc_lib requires glibc = 2.35.' unless Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.35')
-  end
-
   def self.install
     puts 'Installing Glibc_build to pull files for build...'.lightblue
     @filelist_path = File.join(CREW_META_PATH, 'glibc_build235.filelist')

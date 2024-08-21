@@ -249,14 +249,37 @@ end
 def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkg_name
 
-  # update package lists
+  # update crew from git.
   Dir.chdir(CREW_LIB_PATH) do
-    # Set sparse-checkout folders.
-    system "git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools"
-    system 'git sparse-checkout reapply'
+    # Fix git checkout if .git is missing.
+    unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
+      puts 'Fixing Chromebrew system git repo clone...'.orange
+      # Run git setup commands from install.sh
+      system(<<~GIT_REPAIR_COMMANDS, %i[out err] => File::NULL)
+        cd #{CREW_LIB_PATH}
+        # Make the git default branch error messages go away.
+        git config --global init.defaultBranch main
+        # Setup the dir with git information.
+        git init --ref-format=reftable
+        git remote add origin #{CREW_REPO}
+        # Help handle situations where GitHub is down.
+        git config --local http.lowSpeedLimit 1000
+        git config --local http.lowSpeedTime 5
+        # Checkout, overwriting local files.
+        git fetch --all
+        git checkout -f master
+        git reset --hard origin/#{CREW_BRANCH}
+      GIT_REPAIR_COMMANDS
+    end
 
-    system "git fetch #{CREW_REPO} #{CREW_BRANCH}", exception: true
-    system 'git reset --hard FETCH_HEAD', exception: true
+    system(<<~GIT_UPDATE_COMMANDS, exception: true)
+      cd #{CREW_LIB_PATH}
+       # Set sparse-checkout folders.
+       git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools
+       git sparse-checkout reapply
+       git fetch #{CREW_REPO} #{CREW_BRANCH}
+       git reset --hard FETCH_HEAD
+    GIT_UPDATE_COMMANDS
     system 'git-restore-mtime -sq 2>/dev/null', exception: true if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
   end
 

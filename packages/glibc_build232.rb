@@ -3,7 +3,7 @@ require 'package'
 class Glibc_build232 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
-  version '2.32-3'
+  version '2.32-4'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   @libc_version = LIBC_VERSION
   compatibility 'x86_64 aarch64 armv7l'
@@ -14,9 +14,9 @@ class Glibc_build232 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3fd6ddb5c4a5e6c53b08562a6aeb24e36a664b58c6bfd0742918a873e19f0c9d',
-     armv7l: '3fd6ddb5c4a5e6c53b08562a6aeb24e36a664b58c6bfd0742918a873e19f0c9d',
-     x86_64: '815e075b94cfd66723222f7cbadfbb5c09e1c8fd40fff01b5970bf32d759908a'
+    aarch64: '2ab295e7c338288bf5fa6cb7b76c0039e452c7dab379744342a7bac1d26a300b',
+     armv7l: '2ab295e7c338288bf5fa6cb7b76c0039e452c7dab379744342a7bac1d26a300b',
+     x86_64: '37870ec860096ce1081b87b8155e4ad38ff5979d2baf4e367d8087aa4e1ce603'
   })
 
   depends_on 'gawk' => :build
@@ -24,6 +24,7 @@ class Glibc_build232 < Package
   depends_on 'libidn2' => :build
   depends_on 'texinfo' => :build
   depends_on 'hashpipe' => :build
+  # depends_on 'libtirpc' # R
 
   conflicts_ok
   no_env_options
@@ -159,7 +160,7 @@ class Glibc_build232 < Package
           "
       end
       system "make PARALLELMFLAGS='-j #{CREW_NPROC}' || make || make PARALLELMFLAGS='-j 1'"
-      if @libc_version.to_f >= 2.32
+      if Gem::Version.new(@libc_version.to_s) >= Gem::Version.new('2.32')
         system "gcc -Os -g -static -o build-locale-archive ../fedora/build-locale-archive.c \
           ../glibc_build/locale/locarchive.o \
           ../glibc_build/locale/md5.o \
@@ -180,12 +181,8 @@ class Glibc_build232 < Package
       case ARCH
       when 'aarch64', 'armv7l'
         system "make -j1 DESTDIR=#{CREW_DEST_DIR} install || true" # "sln elf/symlink.list" fails on armv7l
-      when 'i686', 'x86_64'
+      when 'x86_64'
         system "make -j1 DESTDIR=#{CREW_DEST_DIR} install"
-      end
-      if @libc_version.to_f >= 2.32
-        system "install -Dt #{CREW_DEST_PREFIX}/bin -m755 build-locale-archive"
-        system "make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales"
       end
       Dir.chdir CREW_DEST_LIB_PREFIX do
         puts "System glibc version is #{LIBC_VERSION}.".lightblue
@@ -193,11 +190,9 @@ class Glibc_build232 < Package
         @crew_libc_version = @libc_version
         case ARCH
         when 'aarch64', 'armv7l'
-          FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-armhf.so.3'
-        when 'i686'
-          FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-i686.so.2'
+          FileUtils.ln_sf File.realpath('/lib/ld-linux-armhf.so.3'), 'ld-linux-armhf.so.3'
         when 'x86_64'
-          FileUtils.ln_sf "/lib64/ld-#{@crew_libc_version}.so", 'ld-linux-x86-64.so.2'
+          FileUtils.ln_sf File.realpath('/lib64/ld-linux-x86-64.so.2'), 'ld-linux-x86-64.so.2'
         end
         @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
                         libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
@@ -206,32 +201,16 @@ class Glibc_build232 < Package
         @libraries -= ['libpthread'] if @crew_libc_version.to_f >= 2.35
         @libraries.each do |lib|
           # Reject entries which aren't libraries ending in .so, and which aren't files.
-          Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-            @filetype = `file #{f}`.chomp
-            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-              g = File.basename(f)
-              FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
-            end
-          end
-          # Reject entries which aren't libraries ending in .so, and which aren't files.
           # Reject text files such as libc.so because they points to files like
           # libc_nonshared.a, which are not provided by ChromeOS
-          Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-            @filetype = `file #{f}`.chomp
-            puts "f: #{@filetype}" if @opt_verbose
-            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-              g = File.basename(f)
-              FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
-            elsif @opt_verbose
-              puts "#{f} excluded because #{@filetype}"
-            end
+          Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.select { |i| ['shared object', 'symbolic link'].any? { |j| `file #{i}`.chomp.include? j } }.each do |k|
+            FileUtils.ln_sf k, File.join(CREW_DEST_LIB_PREFIX, File.basename(k))
           end
         end
       end
     end
     # Only save libnsl.so.2, since libnsl.so.1 is provided by perl
-    # For this to work, build on a M107 or newer container.
-    FileUtils.cp File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2"
+    FileUtils.ln_sf File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"
 
@@ -247,6 +226,7 @@ class Glibc_build232 < Package
 
   def self.postinstall
     if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
+      FileUtils.chmod 'u=wrx', "#{CREW_LIB_PREFIX}/libc.so.6"
       @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
       @crew_libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
       puts "Package glibc version is #{@crew_libc_version}.".lightblue
@@ -257,81 +237,24 @@ class Glibc_build232 < Package
                     libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
                     libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                     libthread_db libresolv librlv librt libthread_db-1.0 libutil]
-    @libraries -= ['libpthread'] if @crew_libc_version.to_f >= 2.35
+    @libraries -= ['libpthread'] if Gem::Version.new(@libc_version.to_s) >= Gem::Version.new('2.35')
     Dir.chdir CREW_LIB_PREFIX do
       puts "System glibc version is #{@crew_libc_version}.".lightblue
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
       case ARCH
       when 'aarch64', 'armv7l'
-        FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
-      when 'i686'
-        FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-i686.so.2'
+        FileUtils.ln_sf File.realpath('/lib/ld-linux-armhf.so.3'), 'ld-linux-armhf.so.3'
       when 'x86_64'
-        FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2'
+        FileUtils.ln_sf File.realpath('/lib64/ld-linux-x86-64.so.2'), 'ld-linux-x86-64.so.2'
       end
       @libraries.each do |lib|
         # Reject entries which aren't libraries ending in .so, and which aren't files.
-        Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          @filetype = `file #{f}`.chomp
-          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
-          end
-        end
-        # Reject entries which aren't libraries ending in .so, and which aren't files.
         # Reject text files such as libc.so because they points to files like
         # libc_nonshared.a, which are not provided by ChromeOS
-        Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          @filetype = `file #{f}`.chomp
-          puts "f: #{@filetype}" if @opt_verbose
-          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
-          elsif @opt_verbose
-            puts "#{f} excluded because #{@filetype}"
-          end
+        Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.select { |i| ['shared object', 'symbolic link'].any? { |j| `file #{i}`.chomp.include? j } }.each do |k|
+          FileUtils.ln_sf k, File.join(CREW_LIB_PREFIX, File.basename(k))
         end
       end
-    end
-    return unless @libc_version.to_f >= 2.32 && Gem::Version.new(CREW_KERNEL_VERSION.to_s) >= Gem::Version.new('5.10')
-
-    puts 'Paring locales to a minimal set.'.lightblue
-    system 'localedef --list-archive | grep -v -i -e ^en -e ^cs -e ^de -e ^es -e ^fa -e ^fe -e ^it -e ^ja -e ^ru -e ^tr -e ^zh -e ^C| xargs localedef --delete-from-archive',
-           exception: false
-    FileUtils.mv "#{CREW_LIB_PREFIX}/locale/locale-archive", "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
-    unless File.file?('')
-      downloader "https://raw.githubusercontent.com/bminor/glibc/release/#{@crew_libc_version}/master/intl/locale.alias",
-                 'SKIP', "#{CREW_PREFIX}/share/locale/locale.alias"
-    end
-    if @opt_verbose
-      system 'build-locale-archive'
-    else
-      system 'build-locale-archive', %i[out err] => File::NULL
-    end
-    FileUtils.rm "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
-    # minimum set of locales -> #{CREW_LIB_PREFIX}/locale/locale-archive
-    # We just whitelist certain locales and delete everything else like other distributions do, e.g.
-    # for dir in locale i18n; do
-    # find #{CREW_PREFIX}/usr/share/${dir} -mindepth  1 -maxdepth 1 -type d -not \( -name "${KEEPLANG}" -o -name POSIX \) -exec rm -rf {} +
-    # done
-    # This is the array of locales to save:
-    @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh]
-    @localedirs = %W[#{CREW_PREFIX}/share/locale #{CREW_PREFIX}/share/i18n/locales]
-    @filelist = File.readlines("#{CREW_META_PATH}/glibc_build232.filelist")
-    @localedirs.each do |localedir|
-      Dir.chdir localedir do
-        Dir['*'].each do |f|
-          next if @locales.any? { |s| File.basename(f).include?(s) }
-
-          FileUtils.rm_f f
-          @fpath = "#{localedir}/#{f}"
-          @filelist.reject! { |e| e.include?(@fpath) }
-        end
-      end
-    end
-    puts 'Updating glibc package filelist...'.lightblue
-    File.open("#{CREW_META_PATH}/glibc_build232.filelist", 'w+') do |f|
-      f.puts(@filelist)
     end
   end
 end
