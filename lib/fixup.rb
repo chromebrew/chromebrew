@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 # lib/fixup.rb
 # Add fixups to be run during crew update here.
 require 'etc'
