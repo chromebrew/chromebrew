@@ -19,6 +19,7 @@ if [[ -n ${ALL_CHANGED_FILES-} ]]; then
   # done
   if [[ -n ${CHANGED_PACKAGES-} ]]; then
     all_compatible_packages=$(crew list -d compatible)
+    all_installed_packages=$(crew list -d installed)
     for pkg in ${CHANGED_PACKAGES}
       do
       # Only check packages compatible with the architecture
@@ -27,7 +28,11 @@ if [[ -n ${ALL_CHANGED_FILES-} ]]; then
         ruby ../tests/prop_test "${pkg}"
         ruby ../tests/buildsystem_test "${pkg}"
         echo "Testing install/removal of compatible package ${pkg}."
-        yes | time crew install "${pkg}"
+        if echo "${all_installed_packages}" | grep "^${pkg}$"; then
+          yes | time crew reinstall "${pkg}"
+        else
+          yes | time crew install "${pkg}"
+        fi
         # Removal of essential packages is expected to fail.
         if [[ $(crew list -d essential) == *"${pkg}"* ]]; then
          yes | time crew remove "${pkg}" || true
