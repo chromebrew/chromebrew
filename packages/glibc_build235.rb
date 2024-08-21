@@ -59,7 +59,7 @@ class Glibc_build235 < Package
   def self.build
     FileUtils.mkdir_p 'glibc_build'
     Dir.chdir 'glibc_build' do
-      if @libc_version.to_f >= 2.32
+      if Gem::Version.new(@libc_version.to_s) >= Gem::Version.new('2.32')
         # Optimization flags from https://github.com/InBetweenNames/gentooLTO
         case ARCH
         when 'armv7l', 'aarch64'
@@ -153,7 +153,7 @@ class Glibc_build235 < Package
         end
       end
       system "make PARALLELMFLAGS='-j #{CREW_NPROC}' || make || make PARALLELMFLAGS='-j 1'"
-      if @libc_version.to_f >= 2.32
+      if Gem::Version.new(@libc_version.to_s) >= Gem::Version.new('2.32')
         system "gcc -Os -g -static -o build-locale-archive ../fedora/build-locale-archive.c \
           ../glibc_build/locale/locarchive.o \
           ../glibc_build/locale/md5.o \
@@ -177,7 +177,7 @@ class Glibc_build235 < Package
       when 'x86_64'
         system "make -j1 DESTDIR=#{CREW_DEST_DIR} install"
       end
-      if @libc_version.to_f > 2.32
+      if Gem::Version.new(@libc_version.to_s) > Gem::Version.new('2.32')
         system "install -Dt #{CREW_DEST_PREFIX}/bin -m755 build-locale-archive"
         system "make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales"
       end
@@ -235,7 +235,7 @@ class Glibc_build235 < Package
                     libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
                     libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                     libthread_db libresolv librlv librt libthread_db-1.0 libutil]
-    @libraries -= ['libpthread'] if @crew_libc_version.to_f >= 2.35
+    @libraries -= ['libpthread'] if Gem::Version.new(@libc_version.to_s) >= Gem::Version.new('2.35')
     Dir.chdir CREW_LIB_PREFIX do
       puts "System glibc version is #{@crew_libc_version}.".lightblue
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
@@ -254,7 +254,7 @@ class Glibc_build235 < Package
         end
       end
     end
-    return unless @libc_version.to_f > 2.32 && Gem::Version.new(CREW_KERNEL_VERSION.to_s) >= Gem::Version.new('5.10')
+    return unless Gem::Version.new(@libc_version.to_s) > Gem::Version.new('2.32') && Gem::Version.new(CREW_KERNEL_VERSION.to_s) >= Gem::Version.new('5.10')
 
     puts 'Paring locales to a minimal set.'.lightblue
     system 'localedef --list-archive | grep -v -i -e ^en -e ^cs -e ^de -e ^es -e ^fa -e ^fe -e ^it -e ^ja -e ^ru -e ^tr -e ^zh -e ^C| xargs localedef --delete-from-archive',

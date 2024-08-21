@@ -160,7 +160,7 @@ class Glibc_build232 < Package
           "
       end
       system "make PARALLELMFLAGS='-j #{CREW_NPROC}' || make || make PARALLELMFLAGS='-j 1'"
-      if @libc_version.to_f >= 2.32
+      if Gem::Version.new(@libc_version.to_s) >= Gem::Version.new('2.32')
         system "gcc -Os -g -static -o build-locale-archive ../fedora/build-locale-archive.c \
           ../glibc_build/locale/locarchive.o \
           ../glibc_build/locale/md5.o \
@@ -237,7 +237,7 @@ class Glibc_build232 < Package
                     libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
                     libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                     libthread_db libresolv librlv librt libthread_db-1.0 libutil]
-    @libraries -= ['libpthread'] if @crew_libc_version.to_f >= 2.35
+    @libraries -= ['libpthread'] if Gem::Version.new(@libc_version.to_s) >= Gem::Version.new('2.35')
     Dir.chdir CREW_LIB_PREFIX do
       puts "System glibc version is #{@crew_libc_version}.".lightblue
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue

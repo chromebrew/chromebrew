@@ -158,7 +158,7 @@ class Glibc_build233 < Package
           "
       end
       system "make PARALLELMFLAGS='-j #{CREW_NPROC}' || make || make PARALLELMFLAGS='-j 1'"
-      if @libc_version.to_f > 2.32
+      if Gem::Version.new(@libc_version.to_s) > Gem::Version.new('2.32')
         system "gcc -Os -g -static -o build-locale-archive ../fedora/build-locale-archive.c \
           ../glibc_build/locale/locarchive.o \
           ../glibc_build/locale/md5.o \
@@ -182,7 +182,7 @@ class Glibc_build233 < Package
       when 'x86_64'
         system "make -j1 DESTDIR=#{CREW_DEST_DIR} install"
       end
-      if @libc_version.to_f > 2.32
+      if Gem::Version.new(@libc_version.to_s) > Gem::Version.new('2.32')
         system "install -Dt #{CREW_DEST_PREFIX}/bin -m755 build-locale-archive"
         system "make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales"
       end
@@ -259,7 +259,7 @@ class Glibc_build233 < Package
         end
       end
     end
-    return unless @libc_version.to_f > 2.32 && Gem::Version.new(CREW_KERNEL_VERSION.to_s) >= Gem::Version.new('5.10')
+    return unless Gem::Version.new(@libc_version.to_s) > Gem::Version.new('2.32') && Gem::Version.new(CREW_KERNEL_VERSION.to_s) >= Gem::Version.new('5.10')
 
     puts 'Paring locales to a minimal set.'.lightblue
     system 'localedef --list-archive | grep -v -i -e ^en -e ^cs -e ^de -e ^es -e ^fa -e ^fe -e ^it -e ^ja -e ^ru -e ^tr -e ^zh -e ^C| xargs localedef --delete-from-archive',
