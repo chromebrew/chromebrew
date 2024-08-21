@@ -255,18 +255,17 @@ def update
     unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
       # Run git setup commands from install.sh
       Dir.chdir(CREW_LIB_PATH) do
+        # Make the git default branch error messages go away.
+        `git config --global init.defaultBranch main`
         # Setup the dir with git information.
         `git init --ref-format=reftable`
         `git remote add origin #{CREW_REPO}`
-
         # Help handle situations where GitHub is down.
         `git config --local http.lowSpeedLimit 1000`
         `git config --local http.lowSpeedTime 5`
-
         # Checkout, overwriting local files.
         `git fetch --all`
         `git checkout -f master`
-
         `git reset --hard origin/#{CREW_BRANCH}`
       end
     end
