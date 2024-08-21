@@ -6,6 +6,7 @@ class Qbittorrent < CMake
   version '4.6.6'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.37'
   source_url 'https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-4.6.6/qbittorrent-4.6.6.tar.xz'
   source_sha256 '5f9f3e0b89861e8bae1894656f8b8f76feddb3c92e228065c8173632af6e544e'
   binary_compression 'tar.zst'
