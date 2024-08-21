@@ -29,7 +29,7 @@ end
 require_gem('highline/import')
 
 # All needed constants & variables should be defined here in case they
-# have not yet been loaded or or fixup is being run standalone.
+# have not yet been loaded or fixup is being run standalone.
 
 CREW_VERBOSE = ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
 
