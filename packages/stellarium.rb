@@ -6,6 +6,7 @@ class Stellarium < CMake
   version '24.2'
   license 'GPL-2.0'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.37'
   source_url 'https://github.com/Stellarium/stellarium.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
