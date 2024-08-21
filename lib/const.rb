@@ -79,7 +79,7 @@ CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 
 # The following is used in fixup.rb to determine if crew update needs to
 # be run again.
-CREW_CONST_GIT_COMMIT = `git -C #{CREW_LIB_PATH} log -n1 --oneline lib/const.rb`.split.first
+CREW_CONST_GIT_COMMIT = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{__FILE__} 2> /dev/null`.split.first
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX      = File.join(CREW_PREFIX, '/share/musl/')
