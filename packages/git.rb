@@ -11,10 +11,10 @@ class Git < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e8284efe6c433054d58c2c1a0e5a512c2a3a3020be0ce803e7007c32bebaf572',
-     armv7l: 'e8284efe6c433054d58c2c1a0e5a512c2a3a3020be0ce803e7007c32bebaf572',
-       i686: 'e1f3e6920899ffaab14b69504cfd67be1ab8df43b99702c3bf7a4355ad21cdfe',
-     x86_64: 'dc957c5b49a5880526248fe9c4a54d17ab158057802b85c17c6458cb78c68c66'
+    aarch64: 'a75eae1e96d4a9319e284afc682b7b68b50ec060e9ab518785df3c2a6ded5410',
+     armv7l: 'a75eae1e96d4a9319e284afc682b7b68b50ec060e9ab518785df3c2a6ded5410',
+       i686: '19e86f61ad78449fb1df678067ad38716430dd58767c953f2a3bac0cf632cc8a',
+     x86_64: 'fa26980dce128e72383fadbe3b0feedd6969e93f9cc1e9d461cc31ddf8ca9bcd'
   })
 
   depends_on 'ca_certificates' => :build
@@ -62,8 +62,8 @@ class Git < CMake
       GIT_PS1_DESCRIBE_STYLE=default
       GIT_PS1_SHOWCOLORHINTS=yes
 
-      # Add LIBC_VERSION set in crew_profile_base to prompt if in a
-      # container.
+      # Add LIBC_VERSION and CHROMEOS_RELEASE_CHROME_MILESTONE set in
+      # crew_profile_base to prompt if in a container.
       if [[ -e /.dockerenv ]] && [ -n "${LIBC_VERSION+1}" ] && [ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE+1}" ]; then
         PS1='\\[\\033[1;34m\\]\\u@\\H:$LIBC_VERSION M$CHROMEOS_RELEASE_CHROME_MILESTONE \\[\\033[1;33m\\]\\w \\[\\033[1;31m\\]$(__git_ps1 "(%s)")\\[\\033[0m\\]\\$ '
       else
