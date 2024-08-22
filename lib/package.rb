@@ -66,14 +66,19 @@ class Package
     attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
   end
 
-  def self.agree_to_remove(config_file = nil)
-    if File.file? config_file
-      if agree_with_default("Would you like to remove the config file: #{config_file} (YES/no)?", true, default: 'y')
-        FileUtils.rm_rf config_file
-        puts "#{config_file} removed.".lightgreen
-      else
-        puts "#{config_file} saved.".lightgreen
-      end
+  def self.agree_to_remove(config_object = nil)
+    if File.file? config_object
+      identifier = 'file'
+    elsif File.directory? config_object
+      identifier = 'directory'
+    else
+      abort "Cannot identify #{config_object}.".lightred
+    end
+    if agree_with_default("Would you like to remove the config #{identifier}: #{config_object} (YES/no)?", true, default: 'y')
+      FileUtils.rm_rf config_object
+      puts "#{config_object} removed.".lightgreen
+    else
+      puts "#{config_object} saved.".lightgreen
     end
   end
 
