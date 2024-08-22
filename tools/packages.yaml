@@ -6251,6 +6251,11 @@ url: https://github.com/l3ib/nitrogen/releases
 activity: none
 ---
 kind: url
+name: nlopt
+url: https://github.com/stevengj/nlopt/releases
+activity: low
+---
+kind: url
 name: nmap
 url: https://nmap.org/dist
 activity: low
