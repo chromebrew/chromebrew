@@ -10,9 +10,7 @@ class Gcc_dev < Package
                         case ARCH
                         when 'i686'
                           '2.23'
-                        when 'x86_64'
-                          '2.27'
-                        when 'aarch64', 'armv7l'
+                        when 'x86_64', 'aarch64', 'armv7l'
                           '2.27'
                         end
                       end
