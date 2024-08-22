@@ -25,7 +25,8 @@ def require_gem(gem_name_and_require = nil, require_override = nil)
   require requires
 end
 
-def agree_with_default(yes_or_no_question, character = nil, default:)
+def agree_with_default(yes_or_no_question_msg, character = nil, default:)
+  yes_or_no_question = yes_or_no_question_msg.lightpurple
   require_gem('highline')
   answer_type = ->(yn) { yn.downcase[0] == 'y' || (yn.empty? && default.downcase[0] == 'y') }
 
@@ -66,15 +67,28 @@ class Package
     attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
   end
 
-  def self.agree_to_remove(config_file = nil)
-    if File.file? config_file
-      if agree_with_default("Would you like to remove the #{name} config file: #{config_file} (YES/no)?", true, default: 'y')
-        FileUtils.rm_rf config_file
-        puts "#{config_file} removed.".lightgreen
-      else
-        puts "#{config_file} saved.".lightgreen
-      end
+  def self.agree_to_remove(config_object = nil)
+    if File.file? config_object
+      identifier = 'file'
+    elsif File.directory? config_object
+      identifier = 'directory'
+    else
+      abort "Cannot identify #{config_object}.".lightred
     end
+    if agree_with_default("Would you like to remove the config #{identifier}: #{config_object} (YES/no)?", true, default: 'y')
+      FileUtils.rm_rf config_object
+      puts "#{config_object} removed.".lightgreen
+    else
+      puts "#{config_object} saved.".lightgreen
+    end
+  end
+
+  def self.agree_default_no(message = nil)
+    return agree_with_default("#{message} (yes/NO)?", true, default: 'n')
+  end
+
+  def self.agree_default_yes(message = nil)
+    return agree_with_default("#{message} (YES/no)?", true, default: 'y')
   end
 
   def self.load_package(pkg_file)
