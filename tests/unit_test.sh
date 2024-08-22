@@ -4,6 +4,10 @@ echo "ALL_CHANGED FILES: ${ALL_CHANGED_FILES}."
 echo "CHANGED_PACKAGES: ${CHANGED_PACKAGES}."
 cd /usr/local/lib/crew/packages/
 yes | crew upgrade
+(cd ~ && \
+git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
+cd build_test && \
+yes | CREW_CACHE_ENABLED=1 crew build -vf packages/hello_world_chromebrew.rb)
 yes | crew install vim
 yes | crew remove vim
 ruby ../tests/commands/const.rb
@@ -44,7 +48,3 @@ if [[ -n ${ALL_CHANGED_FILES-} ]]; then
     done
   fi
 fi
-cd ~
-git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test
-cd build_test
-yes | CREW_CACHE_ENABLED=1 crew build -vf packages/hello_world_chromebrew.rb
