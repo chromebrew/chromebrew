@@ -4,7 +4,19 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version "14.2.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
+  @gcc_libc_version = if %w[2.23 2.27 2.32 2.33 2.35 2.37].any? { |i| LIBC_VERSION.include? i }
+                        LIBC_VERSION
+                      else
+                        case ARCH
+                        when 'i686'
+                          '2.23'
+                        when 'x86_64'
+                          '2.27'
+                        when 'aarch64', 'armv7l'
+                          '2.27'
+                        end
+                      end
+  version "14.2.0-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
@@ -13,7 +25,7 @@ class Libssp < Package
   git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
-  case LIBC_VERSION
+  case @gcc_libc_version
   when '2.23'
     binary_sha256({
          i686: '482ada83ade66f12de9370a91e3b48bde523248fa870d4729d4644b2115c8e04'

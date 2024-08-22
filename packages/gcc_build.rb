@@ -3,14 +3,26 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version "14.2.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
+  @gcc_libc_version = if %w[2.23 2.27 2.32 2.33 2.35 2.37].any? { |i| LIBC_VERSION.include? i }
+                        LIBC_VERSION
+                      else
+                        case ARCH
+                        when 'i686'
+                          '2.23'
+                        when 'x86_64'
+                          '2.27'
+                        when 'aarch64', 'armv7l'
+                          '2.27'
+                        end
+                      end
+  version "14.2.0-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
   git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
-  case LIBC_VERSION
+  case @gcc_libc_version
   when '2.23'
     binary_sha256({
          i686: '95b0aacd75c8ab2ba559b2992f0c7d1e13230cb22f1622cd282df6df3e53e7c0'
@@ -342,7 +354,7 @@ class Gcc_build < Package
 
   def self.postinstall
     # remove any previous gcc packages
-    @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
+    @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
 
     installed_gcc = @device[:installed_packages].select { |pkg| pkg[:name] =~ /^gcc\d+$/ }
 
