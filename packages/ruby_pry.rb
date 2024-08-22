@@ -28,14 +28,6 @@ class Ruby_pry < RUBY
   end
 
   def self.postremove
-    config_file = "#{HOME}/.pryrc"
-    if File.file? config_file
-      if agree("Would you like to remove the #{name} config file: #{config_file}? ")
-        FileUtils.rm_rf config_file
-        puts "#{config_file} removed.".lightgreen
-      else
-        puts "#{config_file} saved.".lightgreen
-      end
-    end
+    Package.agree_to_remove("#{HOME}/.pryrc")
   end
 end
