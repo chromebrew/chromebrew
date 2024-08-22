@@ -99,6 +99,6 @@ class Git < CMake
     return unless File.directory?("#{CREW_PREFIX}/lib/crew/.git")
 
     puts 'Running git garbage collection...'.lightblue
-    system 'git gc', chdir: "#{CREW_PREFIX}/lib/crew", exception: false
+    system 'git gc', chdir: CREW_LIB_PATH, exception: false
   end
 end
