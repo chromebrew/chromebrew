@@ -23,7 +23,6 @@ def require_gem(gem_name_and_require = nil, require_override = nil)
 end
 # The json gem can break when upgrading from a much older version of ruby.
 require_gem('json')
-require_gem('highline/import')
 require_gem('activesupport', 'active_support/core_ext/object/blank')
 require 'digest/sha2'
 require 'fileutils'
@@ -1477,7 +1476,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compres
 
       if `curl -sI #{new_url}`.lines.first.split[1] == '200'
         puts "\n#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
-        unless agree('Do you want to overwrite the existing upload instead? ')
+        unless Package.agree_default_no('Do you want to overwrite the existing upload instead')
           puts 'Will NOT overwite the existing upload.'.orange
           next
         end
@@ -1572,7 +1571,7 @@ def copy_package(pkg_name, prompt_msg = '')
     # This pulls the operation from the calling function
     operation = caller_locations(1, 2)[1].to_s.split[3].split('_')[0]
     puts prompt_msg.yellow
-    if agree("\nWould you like to copy #{pkg_name}.rb to crew and start the #{operation}?  ")
+    if Package.agree_default_yes("\nWould you like to copy #{pkg_name}.rb to crew and start the #{operation}")
       FileUtils.cp pkg_file, "#{CREW_PACKAGES_PATH}/"
       puts "\nCopied #{pkg_file} to #{CREW_PACKAGES_PATH}.\n".lightgreen
     else
