@@ -1,7 +1,7 @@
 require 'package'
 
 class Python < Package
-  property :python_build_options, :python_install_options, :python_build_extras, :python_install_extras, :no_svem
+  property :no_svem, :python_build_extras, :python_build_options, :python_build_relative_dir, :python_install_extras, :python_install_options
 
   attr_accessor :python_build_relative_dir
 
