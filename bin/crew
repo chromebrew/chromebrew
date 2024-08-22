@@ -1234,9 +1234,7 @@ def resolve_dependencies
 
   if @opt_force
     puts 'Proceeding with dependency package installation...'.orange
-  elsif agree('Do you agree? ')
-    puts 'Proceeding...'
-  else
+  elsif !Package.agree_default_yes('Proceed')
     abort 'No changes made.'
   end
 

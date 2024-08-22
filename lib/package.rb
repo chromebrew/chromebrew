@@ -68,13 +68,17 @@ class Package
 
   def self.agree_to_remove(config_file = nil)
     if File.file? config_file
-      if agree_with_default("Would you like to remove the #{name} config file: #{config_file} (YES/no)?", true, default: 'y')
+      if agree_with_default("Would you like to remove the config file: #{config_file} (YES/no)?", true, default: 'y')
         FileUtils.rm_rf config_file
         puts "#{config_file} removed.".lightgreen
       else
         puts "#{config_file} saved.".lightgreen
       end
     end
+  end
+
+  def self.agree_default_yes(message = nil)
+    return agree_with_default("#{message} (YES/no)?", true, default: 'y')
   end
 
   def self.load_package(pkg_file)
