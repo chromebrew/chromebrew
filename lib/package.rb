@@ -25,6 +25,21 @@ def require_gem(gem_name_and_require = nil, require_override = nil)
   require requires
 end
 
+def agree_with_default(yes_or_no_question, character = nil, default:)
+  require_gem('highline')
+  answer_type = ->(yn) { yn.downcase[0] == 'y' || (yn.empty? && default.downcase[0] == 'y') }
+
+  HighLine.ask(yes_or_no_question, answer_type) do |q|
+    q.validate                 = /\A(?:y(?:es)?|no?|)\Z/i
+    q.responses[:not_valid]    = 'Please enter "yes" or "no".'
+    q.responses[:ask_on_error] = :question
+    q.character                = character
+    q.completion               = %w[yes no]
+
+    yield q if block_given?
+  end
+end
+
 class Package
   boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
                    :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules, :no_links, :no_lto, :no_patchelf,
@@ -51,18 +66,14 @@ class Package
     attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
   end
 
-  def self.agree_with_default(yes_or_no_question, character = nil, default:)
-    require_gem('highline')
-    answer_type = ->(yn) { yn.downcase[0] == 'y' || (yn.empty? && default.downcase[0] == 'y') }
-
-    HighLine.ask(yes_or_no_question, answer_type) do |q|
-      q.validate                 = /\A(?:y(?:es)?|no?|)\Z/i
-      q.responses[:not_valid]    = 'Please enter "yes" or "no".'
-      q.responses[:ask_on_error] = :question
-      q.character                = character
-      q.completion               = %w[yes no]
-
-      yield q if block_given?
+  def self.agree_to_remove(config_file = nil)
+    if File.file? config_file
+      if agree_with_default("Would you like to remove the #{name} config file: #{config_file} (YES/no)?", true, default: 'y')
+        FileUtils.rm_rf config_file
+        puts "#{config_file} removed.".lightgreen
+      else
+        puts "#{config_file} saved.".lightgreen
+      end
     end
   end
 
