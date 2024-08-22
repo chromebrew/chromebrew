@@ -77,6 +77,10 @@ class Package
     end
   end
 
+  def self.agree_default_no(message = nil)
+    return agree_with_default("#{message} (yes/NO)?", true, default: 'n')
+  end
+
   def self.agree_default_yes(message = nil)
     return agree_with_default("#{message} (YES/no)?", true, default: 'y')
   end
