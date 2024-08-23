@@ -4,7 +4,12 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Gcc_dev < Package
   description 'The GNU Compiler Collection: Everything (excepting libraries aside from libgccjit)'
   homepage Gcc_build.homepage
-  version "14.2.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
+  @gcc_libc_version = if %w[2.23 2.27 2.32 2.33 2.35 2.37].any? { |i| LIBC_VERSION.include? i }
+                        LIBC_VERSION
+                      else
+                        ARCH.eql?('i686') ? '2.23' : '2.27'
+                      end
+  version "14.2.0-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
@@ -12,7 +17,7 @@ class Gcc_dev < Package
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  case LIBC_VERSION
+  case @gcc_libc_version
   when '2.23'
     binary_sha256({
          i686: '77a2ba61cc2529d8dff15e03f10c736fb807f6ce1c112fea71d6050f5005d43a'
