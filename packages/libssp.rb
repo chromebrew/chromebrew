@@ -7,12 +7,7 @@ class Libssp < Package
   @gcc_libc_version = if %w[2.23 2.27 2.32 2.33 2.35 2.37].any? { |i| LIBC_VERSION.include? i }
                         LIBC_VERSION
                       else
-                        case ARCH
-                        when 'i686'
-                          '2.23'
-                        when 'x86_64', 'aarch64', 'armv7l'
-                          '2.27'
-                        end
+                        ARCH.eql?('i686') ? '2.23' : '2.27'
                       end
   version "14.2.0-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
