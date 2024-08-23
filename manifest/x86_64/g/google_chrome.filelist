@@ -4,6 +4,8 @@
 /usr/local/share/chrome/CHROME_VERSION_EXTRA
 /usr/local/share/chrome/MEIPreload/manifest.json
 /usr/local/share/chrome/MEIPreload/preloaded_data.pb
+/usr/local/share/chrome/PrivacySandboxAttestationsPreloaded/manifest.json
+/usr/local/share/chrome/PrivacySandboxAttestationsPreloaded/privacy-sandbox-attestations.dat
 /usr/local/share/chrome/WidevineCdm/LICENSE
 /usr/local/share/chrome/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so
 /usr/local/share/chrome/WidevineCdm/manifest.json
