@@ -22,7 +22,7 @@ class RemoveCommandTest < Minitest::Test
     @random_essential_pkg = Package.load_package("#{@random_essential_package_name}.rb")
 
     @package_with_essential_file = 'gcc_build'
-    @essential_file = File.join(CREW_LIB_PREFIX,'libstdc++.so.6')
+    @essential_file = File.join(CREW_LIB_PREFIX, 'libstdc++.so.6')
     puts <<~PACKAGE_WITH_ESSENTIAL_FILE_REMOVAL_TEST_EOF
 
       Testing the removal of package #{@package_with_essential_file}.
