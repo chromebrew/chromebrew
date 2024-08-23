@@ -3,7 +3,7 @@ require 'package'
 class Handbrake < Package
   description 'HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.'
   homepage 'https://handbrake.fr/'
-  version '1.8.1'
+  version '1.8.2'
   license 'GPL-2'
   compatibility 'x86_64'
   min_glibc '2.37'
@@ -12,7 +12,7 @@ class Handbrake < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '8d64386da999ddee0aac087d2b7275062e59cc37acb06a8504ab0290492eb46b'
+    x86_64: '7da9a4ce810f30c1128cf80e808d0136051a5dfca4e851671474aca993384278'
   })
 
   depends_on 'at_spi2_core' # R
@@ -25,8 +25,10 @@ class Handbrake < Package
   depends_on 'fribidi' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'graphene' # R
   depends_on 'gstreamer' # R
   depends_on 'gtk4' # R
   depends_on 'harfbuzz' # R
@@ -34,6 +36,7 @@ class Handbrake < Package
   depends_on 'intel_media_sdk'
   depends_on 'jansson' # R
   depends_on 'libass' # R
+  depends_on 'libdrm' # R
   depends_on 'libdvdcss'
   depends_on 'libgudev' # R
   depends_on 'libjpeg_turbo' # R
@@ -52,9 +55,11 @@ class Handbrake < Package
   depends_on 'onevpl' # R
   depends_on 'opus' # R
   depends_on 'pango' # R
+  depends_on 'rust' => :build
   depends_on 'speex' # R
   depends_on 'util_linux' # R
   depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland_protocols' => :build
   depends_on 'xcb_util' => :build
   depends_on 'xzutils' # R
@@ -67,17 +72,15 @@ class Handbrake < Package
     # with a libtool error.
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libfribidi.la", "#{CREW_PREFIX}/lib/"
 
-    unless Dir.exist? 'x86_64-cros-linux-gnu'
-      system "LDFLAGS+=' -L #{CREW_LIB_PREFIX}' ./configure #{CREW_OPTIONS} \
-        --enable-x265 \
-        --enable-numa \
-        --enable-fdk-aac \
-        --enable-qsv \
-        --no-harden \
-        --force"
-    end
-    FileUtils.mkdir_p 'x86_64-cros-linux-gnu/contrib/lib/pkgconfig'
-    Dir.chdir('x86_64-cros-linux-gnu/contrib/lib/pkgconfig') do
+    system "LDFLAGS+=' -L #{CREW_LIB_PREFIX}' ./configure #{CREW_OPTIONS} \
+      --enable-x265 \
+      --enable-numa \
+      --enable-fdk-aac \
+      --enable-qsv \
+      --no-harden \
+      --force"
+    FileUtils.mkdir_p 'build/contrib/lib/pkgconfig'
+    Dir.chdir('build/contrib/lib/pkgconfig') do
       @handbrake_libs = %w[glib-2.0 fribidi harfbuzz freetype2]
       @handbrake_libs.each do |f|
         next if File.file?("#{f}.pc")
@@ -85,14 +88,14 @@ class Handbrake < Package
         FileUtils.ln_sf "#{CREW_LIB_PREFIX}/pkgconfig/#{f}.pc", "#{f}.pc"
       end
     end
-    system 'make -C x86_64-cros-linux-gnu || make -j1 -C x86_64-cros-linux-gnu'
+    system 'make -C build || make -j1 -C build'
 
     # Remove temporarily created symlink for libfribidi.la.
     FileUtils.rm_f "#{CREW_PREFIX}/lib/libfribidi.la"
   end
 
   def self.install
-    Dir.chdir 'x86_64-cros-linux-gnu' do
+    Dir.chdir 'build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
