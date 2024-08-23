@@ -31,30 +31,30 @@ jobs:
             echo "NON_PKG_CHANGED_FILES=$(echo "${{ steps.non-pkg-changed-files.outputs.all_changed_files }}" | xargs)" >> $GITHUB_ENV
       - name: Determine glibc and architecture package compatibility
         run: |
-            # If a package doesnt have a min_glibc value, or if its below 2.27, add it to the list
+            # If a package doesnt have a min_glibc value, or if its below 2.27, add it to GLIBC_227_COMPATIBLE_PACKAGES
             export GLIBC_227_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do if grep -q min_glibc packages/${i}.rb; then grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.27}' || echo ${i} ; else echo ${i} ; fi ; done | xargs)"
             [[ ${GLIBC_227_COMPATIBLE_PACKAGES} ]] && echo "GLIBC_227_COMPATIBLE_PACKAGES=${GLIBC_227_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
             [[ ${GLIBC_227_COMPATIBLE_PACKAGES} ]] && echo "PR #${{ github.event.pull_request.number }} has these possibly Glibc 2.27 compatible packages: ${GLIBC_227_COMPATIBLE_PACKAGES}"
 
             # If a package doesnt have a min_glibc value, or if its below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES
-            export GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/$i.rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo $i ; done | xargs)"
+            export GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo ${i} ; done | xargs)"
             [[ ${GLIBC_237_COMPATIBLE_PACKAGES} ]] && echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
             [[ ${GLIBC_237_COMPATIBLE_PACKAGES} ]] && echo "PR #${{ github.event.pull_request.number }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
 
             # If a package has a compatibility of 'all' or one that includes 'x86_64', add it to the list.
-            export x86_64_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility 'all'\|compatibility '.*x86_64.*'" packages/${p}.rb && echo ${p}; done | xargs)"
-            [[ $x86_64_PACKAGES ]] && echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> $GITHUB_ENV
-            [[ $x86_64_PACKAGES ]] && echo "PR #${{ github.event.pull_request.number }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
+            export x86_64_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q \"compatibility.*all\|x86_64\" packages/${i}.rb && echo ${i}; done | xargs)"
+            [[ ${x86_64_PACKAGES} ]] && echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> $GITHUB_ENV
+            [[ ${x86_64_PACKAGES} ]] && echo "PR #${{ github.event.pull_request.number }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
 
             # If a package has a compatibility of 'all' or one that includes 'armv7l', add it to the list.
-            export ARMV7L_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q \"compatibility.*all\|armv7l\" packages/${p}.rb && echo ${p}; done | xargs)"
+            export ARMV7L_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q \"compatibility.*all\|armv7l\" packages/${i}.rb && echo ${i}; done | xargs)"
             [[ ${ARMV7L_PACKAGES} ]] && echo "ARMV7L_PACKAGES=${ARMV7L_PACKAGES}" >> $GITHUB_ENV
             [[ ${ARMV7L_PACKAGES} ]] && echo "PR #${{ github.event.pull_request.number }} has these armv7l compatible packages: ${ARMV7L_PACKAGES}"
 
             # If a package has a compatibility of 'all' or one that includes 'i686', add it to the list.
-            export i686_PACKAGES="$(for p in ${CHANGED_PACKAGES}; do grep -q "compatibility 'all'\|compatibility '.*i686.*'" packages/${p}.rb && echo ${p}; done | xargs)"
-            [[ $i686_PACKAGES ]] && echo "i686_PACKAGES=${i686_PACKAGES}" >> $GITHUB_ENV
-            [[ $i686_PACKAGES ]] && echo "PR #${{ github.event.pull_request.number }} has these i686 compatible packages: ${i686_PACKAGES}"
+            export i686_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q \"compatibility.*all\|i686\" packages/${i}.rb && echo ${i}; done | xargs)"
+            [[ ${i686_PACKAGES} ]] && echo "i686_PACKAGES=${i686_PACKAGES}" >> $GITHUB_ENV
+            [[ ${i686_PACKAGES} ]] && echo "PR #${{ github.event.pull_request.number }} has these i686 compatible packages: ${i686_PACKAGES}"
       - name: Export target docker container to github context
         env:
           TARGET_ARCH: ${{ matrix.arch }}
