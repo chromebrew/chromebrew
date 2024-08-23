@@ -74,7 +74,7 @@ jobs:
             esac
       - name: Run unit tests
         run: |
-             if [[ -z ${NON_PKG_CHANGED_FILES} ]] && [[ $PLATFORM == 'linux/arm/v7' ]] && [ -n "${ARMV7L_PACKAGES+1}" ]; then
+             if [[ -z ${NON_PKG_CHANGED_FILES} ]] && [[ $PLATFORM == 'linux/arm/v7' ]] && [[ -z ${ARMV7L_PACKAGES} ]]; then
                # Run the arm container if there are non-package changed files,
                # but otherwise do not run the arm container if there are no packages compatible with armv7l.
                exit 0
