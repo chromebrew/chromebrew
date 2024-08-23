@@ -104,6 +104,9 @@ class Handbrake < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nTo get started, type 'ghb'.\n\nType 'hb' for the command line.\n".lightblue
+    ExitMessage.add <<~EOT1.lightblue
+      To get started, type 'ghb'.
+      Type 'hb' for the command line.
+    EOT1
   end
 end
