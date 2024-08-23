@@ -60,13 +60,8 @@ class Command
           # all packages and dependent packages of CREW_ESSENTIAL_PACKAGES.
           essential_deps_exclude_froms = essential_deps.map { |i| File.file?("#{File.join(CREW_META_PATH, i.to_s)}.filelist") ? "--exclude-from=#{File.join(CREW_META_PATH, i.to_s)}.filelist" : '' }.join(' ')
 
-          # When making a list of all files from crew filelists we again
-          # ignore all files from packages and dependent packages of
-          # CREW_ESSENTIAL_PACKAGES.
-          essential_deps_excludes = essential_deps.map { |i| File.file?("#{File.join(CREW_META_PATH, i.to_s)}.filelist") ? "--exclude=#{File.join(CREW_META_PATH, i.to_s)}.filelist" : '' }.join(' ')
-
           package_files = `grep -h #{essential_deps_exclude_froms} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{flist}`.split("\n").uniq.sort
-          all_other_files = `grep -h --exclude #{pkg.name}.filelist #{essential_deps_excludes} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{CREW_META_PATH}/*.filelist`.split("\n").uniq.sort
+          all_other_files = `grep -h --exclude #{pkg.name}.filelist \"^#{CREW_PREFIX}\\|^#{HOME}\" #{CREW_META_PATH}/*.filelist`.split("\n").uniq.sort
 
           # We want the difference of these arrays.
           unique_to_package_files = package_files - all_other_files
