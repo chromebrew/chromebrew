@@ -5,6 +5,6 @@
 Dir['ruby_*.rb'].each do |package|
   gem_name = package.gsub('.rb', '').gsub('ruby_', '').gsub('_', '-')
   gem_version = Gem.latest_spec_for(gem_name).version.to_s
-  puts "Updating #{gem_name} package file to #{gem_version}"
+  puts "Updating #{gem_name} package file #{package} to #{gem_version}"
   system "sed -i \"s,.*version.*,\ \ version '#{gem_version}-ruby-#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}',\" #{package}"
 end
