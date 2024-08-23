@@ -1,5 +1,5 @@
 require_relative '../lib/const'
-require_relative '../lib/convert_size'
+require_relative '../lib/misc_functions'
 require_relative '../lib/package_utils'
 
 class Command
@@ -41,6 +41,6 @@ class Command
     # Print the filelist, the total number of files, and the total size of those files.
     puts filelist
     puts "\nTotal found: #{filelist.count}".lightgreen
-    puts "Disk usage: #{human_size(size)}".lightgreen
+    puts "Disk usage: #{MiscFunctions.human_size(size)}".lightgreen
   end
 end

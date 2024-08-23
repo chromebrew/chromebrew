@@ -4,7 +4,7 @@ require 'etc'
 require 'json'
 require_relative 'color'
 require_relative 'package'
-require_relative 'package_utils'
+require_relative 'convenience_functions'
 
 # All needed constants & variables should be defined here in case they
 # have not yet been loaded or fixup is being run standalone.
@@ -26,7 +26,7 @@ unless defined?(ARCH)
 end
 LIBC_VERSION = Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last unless defined?(LIBC_VERSION)
 CREW_PACKAGES_PATH = File.join(CREW_LIB_PATH, 'packages') unless defined?(CREW_PACKAGES_PATH)
-@device = PackageUtils.load_json unless defined? @device
+@device = ConvenienceFunctions.load_symbolized_json unless defined? @device
 
 # remove deprecated directory
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
