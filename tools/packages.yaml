@@ -8956,6 +8956,11 @@ url: https://gitlab.freedesktop.org/upower/upower/-/tags
 activity: none
 ---
 kind: url
+name: upscayl
+url: https://github.com/upscayl/upscayl/releases
+activity: medium
+---
+kind: url
 name: upx
 url: https://github.com/upx/upx/releases/
 activity: low
