@@ -24,6 +24,7 @@ end
 # The json gem can break when upgrading from a much older version of ruby.
 require_gem('json')
 require_gem('activesupport', 'active_support/core_ext/object/blank')
+require_gem('highline')
 require 'digest/sha2'
 require 'fileutils'
 require 'tmpdir'

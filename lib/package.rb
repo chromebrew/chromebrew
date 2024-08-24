@@ -27,7 +27,6 @@ end
 
 def agree_with_default(yes_or_no_question_msg, character = nil, default:)
   yes_or_no_question = yes_or_no_question_msg.lightpurple
-  require_gem('highline')
   answer_type = ->(yn) { yn.downcase[0] == 'y' || (yn.empty? && default.downcase[0] == 'y') }
 
   HighLine.ask(yes_or_no_question, answer_type) do |q|
