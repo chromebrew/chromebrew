@@ -304,7 +304,7 @@ export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
 # Extract, install and register packages.
 for package in $BOOTSTRAP_PACKAGES; do
   cd "${CREW_LIB_PATH}/packages"
-  version=$(grep "\ \ version" "${package}.rb" | head -n 1 | sed "s/#{LIBC_VERSION}/$LIBC_VERSION/g" | awk '{print substr($2,2,length($2)-2)}')
+  version=$(grep "\ \ version" "${package}.rb" | head -n 1 | sed "s/#{LIBC_VERSION}/$LIBC_VERSION/g" | sed "s/#{@gcc_libc_version}/$LIBC_VERSION/g" | awk '{print substr($2,2,length($2)-2)}')
   binary_compression=$(sed -n "s/.*binary_compression '\([^']*\)'.*/\1/p" "${package}.rb")
   if [[ -z "$binary_compression" ]]; then
     binary_compression='tar.zst'
