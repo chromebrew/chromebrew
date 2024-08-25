@@ -782,6 +782,7 @@
 /usr/local/lib64/libmvec.a
 /usr/local/lib64/libmvec.so
 /usr/local/lib64/libmvec.so.1
+/usr/local/lib64/libnsl.so.2
 /usr/local/lib64/libnss_compat.so
 /usr/local/lib64/libnss_compat.so.2
 /usr/local/lib64/libnss_db.so

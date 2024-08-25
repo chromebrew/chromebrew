@@ -3,7 +3,7 @@ require 'package'
 class Glibc_build237 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
-  version '2.37-1'
+  version '2.37-2'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   # @libc_version = LIBC_VERSION
   @libc_version = '2.37'
@@ -11,13 +11,15 @@ class Glibc_build237 < Package
   min_glibc version.split('-').first
   max_glibc version.split('-').first
   source_url 'https://github.com/bminor/glibc.git'
-  git_hashtag 'glibc-2.37'
+  # git_hashtag 'glibc-2.37'
+  # From the release/2.37/master/ branch...
+  git_hashtag 'f82e0922de82ccee60c15d5ffd9e7165ced00a83'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fffbe32d69e3d972c9c845e8fa244159d7ac8b82ae9f07206c7189b20e3457c8',
-     armv7l: 'fffbe32d69e3d972c9c845e8fa244159d7ac8b82ae9f07206c7189b20e3457c8',
-     x86_64: '890a2ba75346498bb20165d55ee2d91bcb57d8c65df485029a5b8a20a5f73c19'
+    aarch64: '9dce882f2cbd7fbcdbd53e8d3b88dc61b06d95c4241d6ec4c544ffd07d759003',
+     armv7l: '9dce882f2cbd7fbcdbd53e8d3b88dc61b06d95c4241d6ec4c544ffd07d759003',
+     x86_64: '6ab65374921fda5a6ed4f9e3e25a0f09d8676570bfc184513d20949236b90ce2'
   })
 
   depends_on 'gawk' => :build
@@ -28,6 +30,8 @@ class Glibc_build237 < Package
 
   conflicts_ok
   no_env_options
+  # strip breaks libc.so.6
+  no_strip
   no_upstream_update
 
   def self.patch
@@ -41,7 +45,15 @@ class Glibc_build237 < Package
     system "sed -i 's,verbose,locale_verbose,g' fedora/build-locale-archive.c"
     system "sed -i 's,be_quiet,locale_be_quiet,g' fedora/build-locale-archive.c"
 
-    @googlesource_branch = 'release-R128-15964.B'
+    # Reverse Fix name space violation in fortify wrappers (bug 32052)
+    # https://github.com/bminor/glibc/commit/6e642a47fa483f1f571a7ca68d8f6517b259cd21
+    # It causes this error:
+    # ../wcsmbs/bits/wchar2.h:248:10: error: implicit declaration of function ‘__vswprintf_alias’; did you mean ‘__swprintf_alias’? [-Wimplicit-function-declaration]
+    downloader 'https://github.com/bminor/glibc/commit/6e642a47fa483f1f571a7ca68d8f6517b259cd21.diff', '6e9fd773c1ad1be331ea2a6d81452bc2e97f6e70942a670c98fd07d356f76dc9'
+    puts 'Reversing patch: Fix name space violation in fortify wrappers (bug 32052)'
+    system 'patch -Np1 -R -i 6e642a47fa483f1f571a7ca68d8f6517b259cd21.diff'
+
+    @googlesource_branch = 'release-R129-16002.B'
     system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
     # We need to avoid this patch to preserve float128. Otherwise strtof128,
     # strfromf128, and __strtof128_nan, are not available in our glibc.
@@ -60,6 +72,28 @@ class Glibc_build237 < Package
       puts "patch -Np1 < #{patch} || true" if @opt_verbose
       system "patch -Np1 -F 10 -i #{patch} || true"
     end
+    return unless Gem::Version.new(@libc_version.to_s) > Gem::Version.new('2.32')
+
+    # These are the only locales we want.
+    @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh].to_set
+    puts 'Paring locales to a minimal set before build.'.lightblue
+    # FileUtils.cp 'localedata/Makefile', 'localedata/Makefile.bak'
+    FileUtils.cp 'localedata/SUPPORTED', 'localedata/SUPPORTED.bak'
+    Dir['localedata/{*.in,locales/*}'].compact.each do |f|
+      g = File.basename(f).gsub(/.UTF-8.*.in/, '').gsub(/.ISO-8859-.*.in/, '')
+      h = g.gsub(/_.*/, '')
+      locale_test = [g, h].uniq
+      # Just check to see if the set difference is smaller than the
+      # original set of locales.
+      if (@locales - locale_test).length < @locales.length
+        puts "Saving locale: #{f}"
+      else
+        FileUtils.rm(f)
+        system "sed -i -r '/^[[:space:]]#{g}.*(UTF-8|ISO-8859-).*\\\\/d' localedata/Makefile", exception: false
+        system "sed -i -r '/^#{g}.*(UTF-8|ISO-8859-).*\\\\/d' localedata/SUPPORTED", exception: false
+      end
+    end
+    # system 'diff -Npaur localedata/SUPPORTED.bak localedata/SUPPORTED'
   end
 
   def self.build
@@ -198,156 +232,97 @@ class Glibc_build237 < Package
         case ARCH
         when 'aarch64', 'armv7l'
           FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
-        when 'i686'
-          FileUtils.ln_sf "/lib/ld-#{@libc_version}.so", 'ld-linux-i686.so.2'
-          # newer x86_64 ChromeOS glibc lacks strtof128, strfromf128
-          # and __strtof128_nan
-          # when 'x86_64'
-          #   FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2.system'
+        when 'x86_64'
+          FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2'
+          FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-lsb-x86-64.so.3'
         end
-        if ARCH == 'x86_64'
+        # newer x86_64 ChromeOS glibc lacks strtof128, strfromf128
+        # and __strtof128_nan
+        if ARCH == 'x86_64' && Gem::Version.new(@libc_version.to_s) >= Gem::Version.new('2.37')
           # Save our copy of libc.so.6
-          FileUtils.mv File.join(CREW_DEST_LIB_PREFIX, 'libc.so.6'), File.join(CREW_DEST_LIB_PREFIX, 'libC.so.6')
+          FileUtils.cp File.join(CREW_DEST_LIB_PREFIX, 'libc.so.6'), File.join(CREW_DEST_LIB_PREFIX, 'libC.so.6')
+          FileUtils.cp "/#{ARCH_LIB}/libc.so.6", File.join(CREW_DEST_LIB_PREFIX, 'libc.so.6.tmp')
+          # Patching the running libc.so.6 breaks.
+          Kernel.system 'patchelf --add-needed libC.so.6 libc.so.6.tmp'
+          FileUtils.cp File.join(CREW_DEST_LIB_PREFIX, 'libc.so.6.tmp'), File.join(CREW_DEST_LIB_PREFIX, 'libc.so.6')
+          FileUtils.rm File.join(CREW_DEST_LIB_PREFIX, 'libc.so.6.tmp')
 
-          # Make a symlink to the system libc.so.6, which will require patchelf run on it in the postinstall.
-          FileUtils.ln_sf "/#{ARCH_LIB}/libc.so.6", 'libc.so.6'
+          # Copy over the system lib[c,m].so.6
+          # FileUtils.cp "/#{ARCH_LIB}/libc.so.6", File.join(CREW_DEST_LIB_PREFIX, 'libc.so.6')
+          # FileUtils.cp "/#{ARCH_LIB}/libm.so.6", File.join(CREW_DEST_LIB_PREFIX, 'libm.so.6')
 
-          ## Also save our copy of libm.so.6 since it has the float128 functions.
-          ## Reject entries which aren't libraries ending in .so, and which aren't files.
-          ## Reject text files such as libc.so because they points to files like
-          ## libc_nonshared.a, which are not provided by ChromeOS
-          # Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.reject { |f| File.directory?(f) }.each do |f|
-          # @filetype = `file #{f}`.chomp
-          # puts "f: #{@filetype}" if @opt_verbose
-          # if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-          # g = File.basename(f)
-          # FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
-          # elsif @opt_verbose
-          # puts "#{f} excluded because #{@filetype}"
-          # end
-          # end
           # Link our libm to also require our renamed libC.so.6
           # which provides the float128 functions strtof128, strfromf128,
           # and __strtof128_nan.
           libc_patch_libraries = %w[libm.so.6]
           libc_patch_libraries.each do |lib|
-            system "patchelf --replace-needed libc.so.6 libC.so.6 #{lib}"
+            FileUtils.cp lib, "#{lib}.tmp"
+            Kernel.system "patchelf --add-needed libC.so.6 #{lib}.tmp"
+            Kernel.system "patchelf --remove-needed libc.so.6 #{lib}.tmp", exception: false
+            FileUtils.mv lib, "#{lib}.old"
+            FileUtils.cp "#{lib}.tmp", lib
+            FileUtils.rm "#{lib}.tmp"
+            FileUtils.rm "#{lib}.old"
+            puts "#{lib} patched for use with Chromebrew's glibc.".lightgreen
+          end
+        end
+        @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
+                        libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
+                        libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
+                        libthread_db libresolv librlv librt libthread_db-1.0 libutil]
+        @libraries -= ['libpthread'] if Gem::Version.new(@libc_version.to_s) >= Gem::Version.new('2.37')
+        @libraries -= ['libc'] if Gem::Version.new(@libc_version.to_s) >= Gem::Version.new('2.37') && ARCH == 'x86_64'
+        # Also save our copy of libm.so.6 since it has the float128 functions
+        @libraries -= ['libm'] if Gem::Version.new(@libc_version.to_s) >= Gem::Version.new('2.37') && ARCH == 'x86_64'
+
+        @libraries.each do |lib|
+          # Reject entries which aren't libraries ending in .so, and which aren't files.
+          # Reject text files such as libc.so because they points to files like
+          # libc_nonshared.a, which are not provided by ChromeOS
+          Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.reject { |f| File.directory?(f) }.each do |f|
+            @filetype = `file #{f}`.chomp
+            puts "f: #{@filetype}" if @opt_verbose
+            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
+              g = File.basename(f)
+              FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
+            elsif @opt_verbose
+              puts "#{f} excluded because #{@filetype}"
+            end
           end
         end
       end
     end
     # Only save libnsl.so.2, since libnsl.so.1 is provided by perl
     # For this to work, build on a M107 or newer container.
-    FileUtils.ln_sf File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2" if LIBC_VERSION.to_f >= 2.35
+    FileUtils.ln_sf File.realpath("/#{ARCH_LIB}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2" if LIBC_VERSION.to_f >= 2.35
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"
 
     # Remove libmount.so since it conflicts with the one from util_linux.
     FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/libmount.so*")
-  end
 
-  def self.check
-    # Dir.chdir 'glibc_build' do
-    #   system 'make -j1 check'
-    # end
+    locale_keeps = @locales.map { |i| "-e ^#{i}" }.join(' ')
+
+    system "localedef --list-archive --prefix=#{CREW_DEST_PREFIX}| grep -v -i #{locale_keeps}| xargs localedef --delete-from-archive --prefix=#{CREW_DEST_PREFIX}",
+           exception: false
   end
 
   def self.postinstall
-    # Handle broken system glibc affecting system glibc and libm.so.6 on newer x86_64 ChromeOS milestones.
-    if (ARCH == 'x86_64') && Gem::Version.new(LIBC_VERSION.to_s) >= Gem::Version.new('2.35')
-      FileUtils.cp "/#{ARCH_LIB}/libc.so.6", File.join(CREW_LIB_PREFIX, 'libc.so.6.system') and FileUtils.mv File.join(CREW_LIB_PREFIX, 'libc.so.6.system'), File.join(CREW_LIB_PREFIX, 'libc.so.6')
-      puts "patchelf is needed. Please run: 'crew install patchelf ; crew postinstall #{name}'".lightred unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
-      # Link the system libc.so.6 to also require our renamed libC.so.6
-      # which provides the float128 functions strtof128, strfromf128,
-      # and __strtof128_nan.
-      libc_patch_libraries = %w[libc.so.6 libm.so.6 libstdc++.so.6]
-      libc_patch_libraries.keep_if { |lib| File.file?(File.join(CREW_LIB_PREFIX, lib)) }
-      libc_patch_libraries.delete_if { |lib| Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, lib)} | grep -q libC.so.6" }
-
-      return if libc_patch_libraries.empty?
-
-      if File.file?(File.join(CREW_LIB_PREFIX, 'libC.so.6'))
-        Dir.chdir(CREW_LIB_PREFIX) do
-          libc_patch_libraries.each do |lib|
-            Kernel.system "patchelf --add-needed libC.so.6 #{lib}" and Kernel.system "patchelf --remove-needed libc.so.6 #{lib}"
-            puts "#{lib} patched for use with Chromebrew's glibc.".lightgreen
-          end
-        end
-      end
-    end
-
-    unless ARCH == 'x86_64'
-      if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
-        FileUtils.chmod 'u=wrx', "#{CREW_LIB_PREFIX}/libc.so.6"
-        @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
-        @libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
-        puts "Package glibc version is #{@libc_version}.".lightblue
-      else
-        @libc_version = LIBC_VERSION
-      end
-      @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
-                      libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
-                      libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
-                      libthread_db libresolv librlv librt libthread_db-1.0 libutil]
-      @libraries -= ['libpthread'] if Gem::Version.new(@libc_version.to_s) > Gem::Version.new('2.35')
-      @libraries -= ['libc'] if Gem::Version.new(@libc_version.to_s) > Gem::Version.new('2.35') && Kernel.system("patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libc.so.6')} | grep -q libC.so.6")
-      @libraries -= ['libm'] if Gem::Version.new(@libc_version.to_s) > Gem::Version.new('2.35') && Kernel.system("patchelf --print-needed #{File.join(CREW_LIB_PREFIX, 'libm.so.6')} | grep -q libC.so.6")
-      Dir.chdir CREW_LIB_PREFIX do
-        puts "System glibc version is #{@libc_version}.".lightblue
-        puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
-        case ARCH
-        when 'aarch64', 'armv7l'
-          FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
-        end
-        @libraries.each do |lib|
-          # Reject entries which aren't libraries ending in .so, and which aren't files.
-          # Reject text files such as libc.so because they points to files like
-          # libc_nonshared.a, which are not provided by ChromeOS
-          Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.select { |i| ['shared object', 'symbolic link'].any? { |j| `file #{i}`.chomp.include? j } }.each do |k|
-            FileUtils.ln_sf k, File.join(CREW_LIB_PREFIX, File.basename(k))
-          end
-        end
-      end
-    end
     return unless Gem::Version.new(@libc_version.to_s) > Gem::Version.new('2.32') && Gem::Version.new(CREW_KERNEL_VERSION.to_s) >= Gem::Version.new('5.10')
 
-    puts 'Paring locales to a minimal set.'.lightblue
-    system 'localedef --list-archive | grep -v -i -e ^en -e ^cs -e ^de -e ^es -e ^fa -e ^fe -e ^it -e ^ja -e ^ru -e ^tr -e ^zh -e ^C| xargs localedef --delete-from-archive',
-           exception: false
     FileUtils.mv "#{CREW_LIB_PREFIX}/locale/locale-archive", "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
-    unless File.file?('')
-      downloader "https://raw.githubusercontent.com/bminor/glibc/release/#{@libc_version}/master/intl/locale.alias",
-                 'SKIP', "#{CREW_PREFIX}/share/locale/locale.alias"
-    end
-    if CREW_VERBOSE
-      system 'build-locale-archive'
-    else
-      system 'build-locale-archive', %i[out err] => File::NULL
-    end
-    FileUtils.rm "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
+    downloader "https://raw.githubusercontent.com/bminor/glibc/release/#{@libc_version}/master/intl/locale.alias",
+               'SKIP', "#{CREW_PREFIX}/share/locale/locale.alias"
     # minimum set of locales -> #{CREW_LIB_PREFIX}/locale/locale-archive
     # We just whitelist certain locales and delete everything else like other distributions do, e.g.
     # for dir in locale i18n; do
     # find #{CREW_PREFIX}/usr/share/${dir} -mindepth  1 -maxdepth 1 -type d -not \( -name "${KEEPLANG}" -o -name POSIX \) -exec rm -rf {} +
     # done
-    # This is the array of locales to save:
-    @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh]
-    @localedirs = %W[#{CREW_PREFIX}/share/locale #{CREW_PREFIX}/share/i18n/locales]
-    @filelist = File.readlines("#{CREW_META_PATH}/glibc_build237.filelist")
-    @localedirs.each do |localedir|
-      Dir.chdir localedir do
-        Dir['*'].each do |f|
-          next if @locales.any? { |s| File.basename(f).include?(s) }
-
-          FileUtils.rm_f f
-          @fpath = "#{localedir}/#{f}"
-          @filelist.reject! { |e| e.include?(@fpath) }
-        end
-      end
+    if CREW_VERBOSE
+      system "build-locale-archive --install-langs=#{@locales.join(':')}"
+    else
+      system "build-locale-archive --install-langs=#{@locales.join(':')}", %i[out err] => File::NULL
     end
-    puts 'Updating glibc package filelist...'.lightblue
-    File.open("#{CREW_META_PATH}/glibc_build237.filelist", 'w+') do |f|
-      f.puts(@filelist)
-    end
+    FileUtils.rm "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
   end
 end
