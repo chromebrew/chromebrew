@@ -24,7 +24,6 @@ end
 require_gem('highline')
 # The json gem can break when upgrading from a much older version of ruby.
 require_gem('json')
-require_gem('activesupport', 'active_support/core_ext/object/blank')
 require 'digest/sha2'
 require 'fileutils'
 require 'tmpdir'
@@ -137,7 +136,7 @@ class ExitMessage
 end
 
 at_exit do
-  GnomePostinstall.run unless GnomePostinstall.gnome_packages.blank?
+  GnomePostinstall.run unless GnomePostinstall.gnome_packages.empty?
 
   # Print exit messages.
   ExitMessage.print

@@ -78,12 +78,12 @@ class Core < Package
   depends_on 'readline'
   depends_on 'rtmpdump'
   depends_on 'ruby'
-  depends_on 'ruby_activesupport'
+  # For use in simultaneous upx compression.
   depends_on 'ruby_concurrent_ruby'
   # For use in ruby prompts.
   depends_on 'ruby_highline'
   # This contains the debugger config files.
-  depends_on 'ruby_pry'
+  depends_on 'ruby_pry' if CREW_DEBUG
   depends_on 'slang'
   depends_on 'sqlite'
   depends_on 'uchardet'

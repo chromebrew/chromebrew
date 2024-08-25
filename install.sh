@@ -334,7 +334,7 @@ ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
 echo_info "Installing essential ruby gems...\n"
-BOOTSTRAP_GEMS='activesupport concurrent-ruby highline'
+BOOTSTRAP_GEMS='concurrent-ruby highline'
 # shellcheck disable=SC2086
 install_ruby_gem ${BOOTSTRAP_GEMS}
 
