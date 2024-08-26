@@ -11,10 +11,10 @@ class Icu4c < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2ff2ed4760529e3611a51211876c17df5c9acc5a689cd35cb5a98ce0c4c1f714',
-     armv7l: '2ff2ed4760529e3611a51211876c17df5c9acc5a689cd35cb5a98ce0c4c1f714',
-       i686: '3bab33be0214ced3080b895c615ee8f9bf3b98e191701be0917c2e02c783c26f',
-     x86_64: '83e81c0d8bb9981034d6d63755ac0e9ae833d9544cbc07e32d242e98cf3d30db'
+    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
   })
 
   depends_on 'gcc_lib' # R
