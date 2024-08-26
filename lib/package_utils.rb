@@ -1,27 +1,12 @@
+# lib/package_utils.rb
+# Utility functions that take either a package object or a component of a package object as primary input.
 require 'json'
 require_relative 'const'
-require_relative 'crewlog'
 
 class PackageUtils
-  def self.load_json
-    return JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
-  end
-
-  def self.save_json(json_object)
-    crewlog 'Saving device.json...'
-    begin
-      File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
-    rescue StandardError
-      puts 'Error writing updated packages json file!'.lightred
-      abort
-    end
-
-    # Copy over original if the write to the tmp file succeeds.
-    FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
-  end
-
   def self.installed?(pkg_name)
-    return load_json[:installed_packages].any? { |elem| elem[:name] == pkg_name }
+    device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+    return device_json['installed_packages'].any? { |elem| elem['name'] == pkg_name }
   end
 
   def self.compatible?(pkg)

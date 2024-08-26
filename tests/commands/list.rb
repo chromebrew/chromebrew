@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require_relative '../../commands/list'
-require_relative '../../lib/package_utils'
+require_relative '../../lib/convenience_functions'
 
 # Add lib to LOAD_PATH
 $LOAD_PATH << File.join(CREW_LIB_PATH, 'lib')
@@ -9,7 +9,7 @@ String.use_color = false
 
 class ListCommandTest < Minitest::Test
   def setup
-    @essential_deps = PackageUtils.load_json[:essential_deps].join("\n") + "\n".to_s
+    @essential_deps = ConvenienceFunctions.load_symbolized_json[:essential_deps].join("\n") + "\n".to_s
   end
 
   def test_list_essential_deps

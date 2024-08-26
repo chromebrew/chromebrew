@@ -1,11 +1,12 @@
 require 'fileutils'
 require_relative '../lib/const'
+require_relative '../lib/convenience_functions'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
 
 class Command
   def self.remove(pkg, verbose)
-    device_json = PackageUtils.load_json
+    device_json = ConvenienceFunctions.load_symbolized_json
 
     # Make sure the package is actually installed before we attempt to remove it.
     unless PackageUtils.installed?(pkg.name)
@@ -98,7 +99,7 @@ class Command
     device_json[:installed_packages].delete_if { |entry| entry[:name] == pkg.name }
 
     # Update device.json with our changes.
-    PackageUtils.save_json(device_json)
+    ConvenienceFunctions.save_json(device_json)
 
     # Perform any operations required after package removal.
     pkg.postremove
