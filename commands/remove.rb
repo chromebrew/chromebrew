@@ -1,5 +1,6 @@
 require 'fileutils'
 require_relative '../lib/const'
+load '../lib/const.rb' if CREW_ESSENTIAL_PACKAGES.blank?
 require_relative '../lib/convenience_functions'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
@@ -18,7 +19,10 @@ class Command
     # their dependencies, as those are needed for ruby and crew to run,
     # and thus should not be removed.
     # essential_deps = recursive_deps(CREW_ESSENTIAL_PACKAGES)
-    abort "Please run: 'crew update compatible'".lightred if device_json[:essential_deps].nil?
+    if device_json[:essential_deps].nil?
+      `crew update compatible`.lightred
+      device_json = ConvenienceFunctions.load_symbolized_json
+    end
 
     essential_deps = device_json[:essential_deps].to_set
     crewlog "Essential Deps are #{essential_deps}."
