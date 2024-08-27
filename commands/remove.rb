@@ -1,9 +1,29 @@
 require 'fileutils'
 require_relative '../lib/const'
-load '../lib/const.rb' if CREW_ESSENTIAL_PACKAGES.blank?
 require_relative '../lib/convenience_functions'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
+def require_gem(gem_name_and_require = nil, require_override = nil)
+  # Allow only loading gems when needed.
+  return if gem_name_and_require.nil?
+
+  gem_name = gem_name_and_require.split('/')[0]
+  begin
+    gem gem_name
+  rescue LoadError
+    puts " -> install #{gem_name} gem".orange
+    Gem.install(gem_name)
+    gem gem_name
+  end
+  requires = if require_override.nil?
+               gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
+             else
+               require_override
+             end
+  require requires
+end
+require_gem('activesupport', 'active_support/core_ext/object/blank')
+load '../lib/const.rb' unless defined? CREW_ESSENTIAL_PACKAGES
 
 class Command
   def self.remove(pkg, verbose)
@@ -19,8 +39,8 @@ class Command
     # their dependencies, as those are needed for ruby and crew to run,
     # and thus should not be removed.
     # essential_deps = recursive_deps(CREW_ESSENTIAL_PACKAGES)
-    if device_json[:essential_deps].nil?
-      `crew update compatible`.lightred
+    if device_json[:essential_deps].blank?
+      `crew update compatible`
       device_json = ConvenienceFunctions.load_symbolized_json
     end
 
