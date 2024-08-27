@@ -5,20 +5,8 @@ class Python < Package
 
   attr_accessor :python_build_relative_dir
 
-  def initialize
-    super
-    @python_build_relative_dir = '.'
-  end
-
   def self.build
-    # @required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
-    # @pip_list = `pip list --exclude pip`
-    # @required_pip_modules.each do |pip_pkg|
-    #  unless @pip_list.include?(pip_pkg)
-    #    puts "Installing #{pip_pkg} using pip..."
-    #    system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
-    #  end
-    # end
+    @python_build_relative_dir ||= '.'
     Dir.chdir(@python_build_relative_dir) do
       if File.file?('setup.py')
         puts "Python build options being used: #{PY3_SETUP_BUILD_OPTIONS} #{@python_build_options}".orange
