@@ -28,29 +28,27 @@ require_gem('highline')
 # All needed constants & variables should be defined here in case they
 # have not yet been loaded or fixup is being run standalone.
 
-CREW_VERBOSE = ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
+CREW_VERBOSE ||= ARGV.intersect?(%w[-v --verbose])
 
-HOME = '/home/chronos/user' unless defined?(HOME)
-CREW_PREFIX = '/usr/local' unless defined?(CREW_PREFIX)
-CREW_LIB_PATH = File.join(CREW_PREFIX, 'lib/crew') unless defined?(CREW_LIB_PATH)
+HOME ||= '/home/chronos/user'
+CREW_PREFIX ||= '/usr/local'
+CREW_LIB_PATH ||= File.join(CREW_PREFIX, 'lib/crew')
 
 load "#{CREW_LIB_PATH}/lib/const.rb"
 load "#{CREW_LIB_PATH}/lib/package.rb"
 load "#{CREW_LIB_PATH}/lib/convenience_functions.rb"
 
-CREW_CONFIG_PATH = File.join(CREW_PREFIX, 'etc/crew') unless defined?(CREW_CONFIG_PATH)
-CREW_META_PATH = File.join(CREW_CONFIG_PATH, 'meta') unless defined?(CREW_CONFIG_PATH)
+CREW_CONFIG_PATH ||= File.join(CREW_PREFIX, 'etc/crew')
+CREW_META_PATH ||= File.join(CREW_CONFIG_PATH, 'meta')
 # via git log --reverse --oneline lib/const.rb | head -n 1
-CREW_CONST_GIT_COMMIT = '72d807aac' unless defined?(CREW_CONST_GIT_COMMIT)
-CREW_REPO   = 'https://github.com/chromebrew/chromebrew.git' unless defined?(CREW_REPO)
-CREW_BRANCH = 'master' unless defined?(CREW_BRANCH)
-unless defined?(ARCH)
-  KERN_ARCH = Etc.uname[:machine] unless defined? KERN_ARCH
-  ARCH = %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH
-end
-LIBC_VERSION = Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last unless defined?(LIBC_VERSION)
-CREW_PACKAGES_PATH = File.join(CREW_LIB_PATH, 'packages') unless defined?(CREW_PACKAGES_PATH)
-@device = ConvenienceFunctions.load_symbolized_json unless defined? @device
+CREW_CONST_GIT_COMMIT ||= '72d807aac'
+CREW_REPO   ||= 'https://github.com/chromebrew/chromebrew.git'
+CREW_BRANCH ||= 'master'
+KERN_ARCH ||= Etc.uname[:machine]
+ARCH ||= %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH
+LIBC_VERSION ||= Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last
+CREW_PACKAGES_PATH ||= File.join(CREW_LIB_PATH, 'packages')
+@device ||= ConvenienceFunctions.load_symbolized_json
 
 # remove deprecated directory
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"

@@ -24,6 +24,10 @@ Lint/Debugger:
   DebuggerMethods:
     Pry: ~
 
+# Need to allow reloading const.rb from fixup.rb
+Lint/OrAssignmentToConstant:
+  Enabled: false
+
 Lint/SuppressedException:
   Enabled: false
 
