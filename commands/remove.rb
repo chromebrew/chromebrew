@@ -40,7 +40,10 @@ class Command
     # and thus should not be removed.
     # essential_deps = recursive_deps(CREW_ESSENTIAL_PACKAGES)
     if device_json[:essential_deps].blank?
-      `crew update compatible`
+      unless `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first == CREW_CONST_GIT_COMMIT
+        puts 'Running crew update compatible to determine essential dependencies.'.lightcyan
+        Kernel.system 'crew update compatible'
+      end
       device_json = ConvenienceFunctions.load_symbolized_json
     end
 
