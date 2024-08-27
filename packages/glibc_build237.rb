@@ -17,9 +17,9 @@ class Glibc_build237 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9dce882f2cbd7fbcdbd53e8d3b88dc61b06d95c4241d6ec4c544ffd07d759003',
-     armv7l: '9dce882f2cbd7fbcdbd53e8d3b88dc61b06d95c4241d6ec4c544ffd07d759003',
-     x86_64: '6ab65374921fda5a6ed4f9e3e25a0f09d8676570bfc184513d20949236b90ce2'
+    aarch64: '41389ad4ecc6183fca15e2335e20b1617585ea068eed0e280d05dec5aebd9e10',
+     armv7l: '41389ad4ecc6183fca15e2335e20b1617585ea068eed0e280d05dec5aebd9e10',
+     x86_64: '476d322fca4f023479303c2a39e638d1bfaf12b78693e3b3a96dbece93a76df2'
   })
 
   depends_on 'gawk' => :build
@@ -77,8 +77,9 @@ class Glibc_build237 < Package
     # These are the only locales we want.
     @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh].to_set
     puts 'Paring locales to a minimal set before build.'.lightblue
-    # FileUtils.cp 'localedata/Makefile', 'localedata/Makefile.bak'
-    FileUtils.cp 'localedata/SUPPORTED', 'localedata/SUPPORTED.bak'
+
+    localetypes = `awk -F '/' '{print $2}' localedata/SUPPORTED | sort -u | awk '{print $1}'`.split.flat_map(&:split)
+    localetypes_sed = localetypes.join('|')
     Dir['localedata/{*.in,locales/*}'].compact.each do |f|
       g = File.basename(f).gsub(/.UTF-8.*.in/, '').gsub(/.ISO-8859-.*.in/, '')
       h = g.gsub(/_.*/, '')
@@ -88,12 +89,11 @@ class Glibc_build237 < Package
       if (@locales - locale_test).length < @locales.length
         puts "Saving locale: #{f}"
       else
-        FileUtils.rm(f)
-        system "sed -i -r '/^[[:space:]]#{g}.*(UTF-8|ISO-8859-).*\\\\/d' localedata/Makefile", exception: false
-        system "sed -i -r '/^#{g}.*(UTF-8|ISO-8859-).*\\\\/d' localedata/SUPPORTED", exception: false
+        # FileUtils.rm(f)
+        system "sed -i -r '/^[[:space:]]#{g}.*(#{localetypes_sed}).*\\\\/d' localedata/Makefile", exception: false
+        system "sed -i -r '/^#{g}.*(#{localetypes_sed}).*\\\\/d' localedata/SUPPORTED", exception: false
       end
     end
-    # system 'diff -Npaur localedata/SUPPORTED.bak localedata/SUPPORTED'
   end
 
   def self.build
@@ -254,6 +254,7 @@ class Glibc_build237 < Package
           # Link our libm to also require our renamed libC.so.6
           # which provides the float128 functions strtof128, strfromf128,
           # and __strtof128_nan.
+          # For some reason handling libc.so.6 here isn't working.
           libc_patch_libraries = %w[libm.so.6]
           libc_patch_libraries.each do |lib|
             FileUtils.cp lib, "#{lib}.tmp"
