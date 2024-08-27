@@ -18,11 +18,8 @@ class Command
     # their dependencies, as those are needed for ruby and crew to run,
     # and thus should not be removed.
     # essential_deps = recursive_deps(CREW_ESSENTIAL_PACKAGES)
-    if device_json[:essential_deps].nil?
-      # The proper way to handle this would be to invoke crew's generate_compatible
-      device_json[:essential_deps] = []
-      device_json[:essential_deps].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
-    end
+    abort "Please run: 'crew update compatible'".lightred if device_json[:essential_deps].nil?
+
     essential_deps = device_json[:essential_deps].to_set
     crewlog "Essential Deps are #{essential_deps}."
     if essential_deps.include?(pkg.name)
