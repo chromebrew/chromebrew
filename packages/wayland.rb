@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Wayland < Meson
   description 'Wayland is intended as a simpler replacement for X, easier to develop and maintain.'
   homepage 'https://wayland.freedesktop.org'
-  version '1.23.0-icu75.1'
+  version '1.23.1-icu75.1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/wayland/wayland.git'
@@ -11,10 +11,10 @@ class Wayland < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '00866e69c544d72ba85c3345ff2c1704f7764da2fecb740a5cca93d8f7b6b886',
-     armv7l: '00866e69c544d72ba85c3345ff2c1704f7764da2fecb740a5cca93d8f7b6b886',
-       i686: '19a50a7d696f6ef4bac35ce845b6ec5b15ce31bcd593bfd5a192509871cd8f92',
-     x86_64: 'b55d4d2c9dfcf2fafac5bf7c5cbc395de8fa057bb7bc748c906116cb4a4e5a81'
+    aarch64: 'b6f79f1d26cf93d9effaa46756a2319f4ca8680e02cb23d897d08a9b84c63c6a',
+     armv7l: 'b6f79f1d26cf93d9effaa46756a2319f4ca8680e02cb23d897d08a9b84c63c6a',
+       i686: 'a0a324eea67718aeffa1fcd050626088cafffd02bd24e1b5f111cdc2f54bc48e',
+     x86_64: 'c53a3cc2c8bad1f6c49a7f0c4865d9493522611012bcb66ef9bd0dec333f8030'
   })
 
   depends_on 'expat' # R
