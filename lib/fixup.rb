@@ -3,8 +3,6 @@
 require 'etc'
 require 'json'
 require_relative 'color'
-require_relative 'package'
-require_relative 'convenience_functions'
 
 def require_gem(gem_name_and_require = nil, require_override = nil)
   # Allow only loading gems when needed.
@@ -35,6 +33,11 @@ CREW_VERBOSE = ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
 HOME = '/home/chronos/user' unless defined?(HOME)
 CREW_PREFIX = '/usr/local' unless defined?(CREW_PREFIX)
 CREW_LIB_PATH = File.join(CREW_PREFIX, 'lib/crew') unless defined?(CREW_LIB_PATH)
+
+load "#{CREW_LIB_PATH}/lib/const.rb"
+load "#{CREW_LIB_PATH}/lib/package.rb"
+load "#{CREW_LIB_PATH}/lib/convenience_functions.rb"
+
 CREW_CONFIG_PATH = File.join(CREW_PREFIX, 'etc/crew') unless defined?(CREW_CONFIG_PATH)
 CREW_META_PATH = File.join(CREW_CONFIG_PATH, 'meta') unless defined?(CREW_CONFIG_PATH)
 # via git log --reverse --oneline lib/const.rb | head -n 1
