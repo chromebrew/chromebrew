@@ -3,38 +3,34 @@ require 'package'
 class Libstemmer < Package
   description 'Snowball Stemming Algorithms'
   homepage 'https://snowballstem.org/'
-  version '78c149'
+  version '2.2.0'
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/zvelo/libstemmer/archive/78c149a3a6f262a35c7f7351d3f77b725fc646cf.tar.gz'
-  source_sha256 '9bbd1bd2b7829f6bdafba97667fc795b3a80785c2285a5b73c3006b0bf3db688'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/snowballstem/snowball.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '854bc6cb2855c76b052d49fc8ac0c2dbc3766fede27ba6eac71846eef85f9351',
-     armv7l: '854bc6cb2855c76b052d49fc8ac0c2dbc3766fede27ba6eac71846eef85f9351',
-       i686: 'aa04ec939e77fcce2cbbad9498f6d13c4ccd351bfef9540fa9ef9c13c467ba94',
-     x86_64: '687765fc1f522249eef1d40b85f5a5cab1483be44710af5ba37ae9f324d16c0a'
+    aarch64: '2d882999ed5e010b974e3abb6023619ba7a879351ec8f5b6cd830f4988042cf1',
+     armv7l: '2d882999ed5e010b974e3abb6023619ba7a879351ec8f5b6cd830f4988042cf1',
+       i686: '2b1c100854db9c1030182f9e5bf02182152b5826c719509b0bb9587f8181a297',
+     x86_64: '9f5b021924d96941bc8ac9a93ecb56d06b4d4ee5cd6707eaeb98f51a5fe4bce7'
   })
 
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system 'cmake',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             '-DCMAKE_BUILD_TYPE=Release',
-             '-DBUILD_SHARED_LIBS=ON',
-             '..'
-      system 'make'
-    end
+  # https://github.com/snowballstem/snowball/issues/34
+  def self.patch
+    # [PATCH] update of #42 used to package for alpine linux
+    downloader 'https://patch-diff.githubusercontent.com/raw/snowballstem/snowball/pull/160.patch', '141e1251c10d3d2b7d668415abcc5c90662e5415921355c8a5b9916fb1ec00ba'
+    system 'git apply 160.patch'
   end
 
+  def self.build
+    system 'make'
+  end
+
+  # https://github.com/snowballstem/snowball/issues/189
   def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-    Dir.chdir CREW_DEST_PREFIX do
-      FileUtils.mv 'lib', 'lib64' if ARCH == 'x86_64'
-    end
+    FileUtils.install 'include/libstemmer.h', "#{CREW_DEST_PREFIX}/include/libstemmer.h", mode: 0o644
+    FileUtils.install %w[libstemmer.so libstemmer.so.2 libstemmer.so.2.2.0], CREW_DEST_LIB_PREFIX, mode: 0o644
   end
 end
