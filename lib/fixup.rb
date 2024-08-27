@@ -28,7 +28,7 @@ require_gem('highline')
 # All needed constants & variables should be defined here in case they
 # have not yet been loaded or fixup is being run standalone.
 
-CREW_VERBOSE ||= ARGV.intersect?(%w[-v --verbose])
+CREW_VERBOSE ||= ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
 
 HOME ||= '/home/chronos/user'
 CREW_PREFIX ||= '/usr/local'
