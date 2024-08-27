@@ -3,8 +3,6 @@ require 'package'
 class CMake < Package
   property :cmake_build_extras, :cmake_build_relative_dir, :cmake_install_extras, :cmake_options, :pre_cmake_options
 
-  attr_accessor :cmake_build_relative_dir
-
   def self.build
     @cmake_build_relative_dir ||= '.'
     @crew_cmake_options = @no_lto ? CREW_CMAKE_FNO_LTO_OPTIONS : CREW_CMAKE_OPTIONS
