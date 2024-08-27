@@ -128,13 +128,13 @@ CHROMEOS_RELEASE ||= \
   end
 
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
-CREW_DISABLE_MVDIR ||= ENV.fetch('CREW_DISABLE_MVDIR', '0').eql?('1')
+CREW_DISABLE_MVDIR ||= ENV.fetch('CREW_DISABLE_MVDIR', false)
 
 # Days between crew prompting to run 'crew update' and doing gem updates.
 CREW_UPDATE_CHECK_INTERVAL ||= ENV.fetch('CREW_UPDATE_CHECK_INTERVAL', 7).to_i
 
 # If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
-CREW_USE_CURL ||= ENV.fetch('CREW_USE_CURL', '0').eql?('1')
+CREW_USE_CURL ||= ENV.fetch('CREW_USE_CURL', false)
 
 # Use an external downloader instead of net/http if CREW_DOWNLOADER is set, see lib/downloader.rb for more info
 # About the format of the CREW_DOWNLOADER variable, see line 130-133 in lib/downloader.rb
@@ -144,7 +144,7 @@ CREW_DOWNLOADER ||= ENV.fetch('CREW_DOWNLOADER', nil)
 CREW_DOWNLOADER_RETRY ||= ENV.fetch('CREW_DOWNLOADER_RETRY', 3).to_i
 
 # show download progress bar or not (only applied when using the default ruby downloader)
-CREW_HIDE_PROGBAR ||= ENV.fetch('CREW_HIDE_PROGBAR', '0').eql?('1')
+CREW_HIDE_PROGBAR ||= ENV.fetch('CREW_HIDE_PROGBAR', false)
 
 # set certificate file location for lib/downloader.rb
 SSL_CERT_FILE ||= \
