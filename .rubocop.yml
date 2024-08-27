@@ -26,7 +26,9 @@ Lint/Debugger:
 
 # Need to allow reloading const.rb from fixup.rb
 Lint/OrAssignmentToConstant:
-  Enabled: false
+  Exclude:
+    - 'lib/const.rb'
+    - 'lib/fixup.rb'
 
 Lint/SuppressedException:
   Enabled: false
