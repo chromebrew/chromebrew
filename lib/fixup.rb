@@ -72,7 +72,7 @@ if fixup_json['essential_deps'].nil?
   puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
   fixup_json['essential_deps'] = []
   fixup_json['essential_deps'].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
-  crewlog "Essential packages: #{fixup_json[essential_deps]}"
+  crewlog "Essential packages: #{fixup_json['essential_deps']}"
   ConvenienceFunctions.save_json(fixup_json)
   puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
 end
