@@ -231,22 +231,23 @@ end
 # Handle deprecated package deletions.
 installed_fixup_packages.each do |fixup_pkg|
   working_pkg = pkg_update_arr.select { |i| i[:pkg_name] == fixup_pkg }
-  pkg_to_del = working_pkg[0][:pkg_deprecated]
-  next unless pkg_to_del
+  delete_package = working_pkg[0][:pkg_deprecated]
+  next unless delete_package
 
+  pkg_name = working_pkg[0][:pkg_name]
   comments = working_pkg[0][:comments]
-  puts "#{pkg_to_del.capitalize} is deprecated and should be removed. #{comments.nil? ? '' : "(#{comments})"}".lightpurple
-  if Package.agree_default_yes("\nWould you like to remove deprecated package #{pkg_to_del.capitalize}")
+  puts "#{pkg_name.capitalize} is deprecated and should be removed. #{comments.nil? ? '' : "(#{comments})"}".lightpurple
+  if Package.agree_default_yes("\nWould you like to remove deprecated package #{pkg_name.capitalize}")
     # Create a minimal Package object and pass it to Command.remove
     pkg_object = Package
     pkg_object.instance_eval do
-      self.name = pkg_to_del
+      self.name = pkg_name
       def self.preremove; end
       def self.postremove; end
     end
     Command.remove(pkg_object, CREW_VERBOSE)
   else
-    puts "#{pkg_to_del.capitalize} not removed.".lightblue
+    puts "#{pkg_name.capitalize} not removed.".lightblue
   end
 end
 
