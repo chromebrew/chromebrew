@@ -6,7 +6,7 @@ class Meson < Package
   def self.build
     @crew_meson_options = @no_lto ? CREW_MESON_OPTIONS.sub('-Db_lto=true', '-Db_lto=false') : CREW_MESON_OPTIONS
     @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run' : ''
-    puts "Additional meson options being used:".orange
+    puts 'Additional meson options being used:'.orange
     method_list = methods.grep(/meson_/).delete_if { |i| send(i).blank? }
     method_list.each do |method|
       puts "#{method}: #{send method}".orange

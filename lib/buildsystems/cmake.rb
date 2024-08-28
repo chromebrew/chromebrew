@@ -6,7 +6,7 @@ class CMake < Package
   def self.build
     @cmake_build_relative_dir ||= '.'
     @crew_cmake_options = @no_lto ? CREW_CMAKE_FNO_LTO_OPTIONS : CREW_CMAKE_OPTIONS
-    puts "Additional cmake options being used:".orange
+    puts 'Additional cmake options being used:'.orange
     method_list = methods.grep(/cmake_/).delete_if { |i| send(i).blank? }
     method_list.each do |method|
       puts "#{method}: #{send method}".orange
