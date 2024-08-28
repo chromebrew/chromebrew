@@ -209,11 +209,8 @@ installed_fixup_packages.each do |fixup_pkg|
   # marked as installed in device.json then rename and edit device.json .
   FileUtils.mv old_filelist, new_filelist
   FileUtils.mv old_directorylist, new_directorylist
-  fixup_json['installed_packages'].map do |x|
-    x['name'] = pkg_rename if x['name'] == pkg_name
-    puts "#{pkg_name.capitalize} renamed to #{pkg_rename.capitalize}".lightgreen
-    next x
-  end
+  rename_hash = fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }
+  rename_hash['name'] = 'pkg_rename'
   @installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
 end
 
