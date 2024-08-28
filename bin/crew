@@ -183,7 +183,7 @@ end
 
 def generate_compatible
   puts 'Determining package compatibility...'.orange if CREW_VERBOSE
-  @device[:compatible_packages] = []
+  @device['compatible_packages'] = []
   Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     pkg_name = File.basename filename, '.rb'
     begin
@@ -195,15 +195,15 @@ def generate_compatible
     if PackageUtils.compatible?(@pkg)
       # add to compatible packages
       puts "Adding #{pkg_name} #{@pkg.version} to compatible packages.".lightgreen if CREW_VERBOSE
-      @device[:compatible_packages].push(name: @pkg.name)
+      @device['compatible_packages'].push(name: @pkg.name)
     elsif CREW_VERBOSE
       puts "#{pkg_name} is not a compatible package.".lightred
     end
   end
   puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
-  @device[:essential_deps] = []
-  @device[:essential_deps].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
-  crewlog "Essential packages: #{@device[:essential_deps]}"
+  @device['essential_deps'] = []
+  @device['essential_deps'].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
+  crewlog "Essential packages: #{@device['essential_deps']}"
   ConvenienceFunctions.save_json(@device)
   puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
 end
@@ -222,7 +222,7 @@ def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), 
 end
 
 def cache_build
-  build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
+  build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device['architecture']}.tar.zst")
   if CREW_CACHE_ENABLED && File.writable?(CREW_CACHE_DIR)
     puts 'Caching build dir...'
     pkg_build_dirname_absolute = File.join(CREW_BREW_DIR, @extract_dir)
@@ -297,7 +297,7 @@ def update
   puts 'Checking for package updates...'
 
   can_be_updated = 0
-  @device[:installed_packages].each do |package|
+  @device['installed_packages'].each do |package|
     search package[:name], silent: true
     unless @pkg
       puts "Package file for #{package[:name]} not found. :(".lightred if CREW_VERBOSE
@@ -346,9 +346,9 @@ def upgrade(*pkgs, build_from_source: false)
     end
 
     pkg_ver_latest     = Package.load_package(pkg_file).version
-    pkg_ver_installed  = @device[:installed_packages].select { |pkg| pkg[:name] == pkg_name } [0][:version]
+    pkg_ver_installed  = @device['installed_packages'].select { |pkg| pkg[:name] == pkg_name } [0][:version]
     pkg_hash_latest    = PackageUtils.get_sha256(Package.load_package(pkg_file))
-    pkg_hash_installed = @device[:installed_packages].select { |pkg| pkg[:name] == pkg_name } [0][:sha256]
+    pkg_hash_installed = @device['installed_packages'].select { |pkg| pkg[:name] == pkg_name } [0][:sha256]
 
     return pkg_hash_latest != pkg_hash_installed unless !pkg_hash_installed || pkg_hash_latest.to_s.empty? || Package.load_package(pkg_file).is_fake?
     return pkg_ver_latest != pkg_ver_installed
@@ -364,7 +364,7 @@ def upgrade(*pkgs, build_from_source: false)
     end
   else
     # check for all packages if no package name provided
-    @device[:installed_packages].each do |pkg|
+    @device['installed_packages'].each do |pkg|
       pkg_file = File.join(CREW_PACKAGES_PATH, "#{pkg[:name]}.rb")
       to_be_upgraded << pkg[:name] if check_update_avail.call(pkg_file)
     end
@@ -431,18 +431,18 @@ end
 
 def download
   url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
-  source = @pkg.source?(@device[:architecture])
+  source = @pkg.source?(@device['architecture'])
 
   uri = URI.parse url
   filename = File.basename(uri.path)
   sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
   @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
-  build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
+  build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device['architecture']}.tar.zst")
   return { source:, filename: } if CREW_CACHE_BUILD && File.file?(build_cachefile)
 
   if !url
-    abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
+    abort "No precompiled binary or source is available for #{@device['architecture']}.".lightred
   elsif @pkg.build_from_source
     puts 'Downloading source...'
   elsif !source
@@ -599,7 +599,7 @@ def unpack(meta)
   Dir.chdir CREW_BREW_DIR do
     FileUtils.mkdir_p @extract_dir, verbose: @fileutils_verbose
 
-    build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
+    build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device['architecture']}.tar.zst")
     if CREW_CACHE_BUILD && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && (system "cd #{CREW_CACHE_DIR} && sha256sum -c #{build_cachefile}.sha256")
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{build_cachefile}".lightgreen
@@ -1166,7 +1166,7 @@ def resolve_dependencies
   # compare dependency version with required range (if installed)
   @dependencies.each do |dep|
     dep_name = dep.keys[0]
-    dep_info = @device[:installed_packages].select { |pkg| pkg[:name] == dep_name } [0]
+    dep_info = @device['installed_packages'].select { |pkg| pkg[:name] == dep_name } [0]
 
     # skip if dependency is not installed
     next unless dep_info
@@ -1188,7 +1188,7 @@ def resolve_dependencies
     abort "Some dependencies e.g., #{dep}, are not compatible with your device architecture (#{ARCH}). Unable to continue.".lightred unless PackageUtils.compatible?(Package.load_package("#{CREW_PACKAGES_PATH}/#{dep}.rb"))
   end
   # leave only not installed packages in dependencies
-  @dependencies.reject! { |dep_name| @device[:installed_packages].any? { |pkg| pkg[:name] == dep_name } }
+  @dependencies.reject! { |dep_name| @device['installed_packages'].any? { |pkg| pkg[:name] == dep_name } }
 
   # run preflight check for dependencies
   @dependencies.each do |dep_name|
@@ -1303,7 +1303,7 @@ def install
 
   # Add to installed packages list in devices.json, but remove first if it is already there.
   crewlog "Adding package #{@pkg.name} to device.json."
-  @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name } and @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
+  @device['installed_packages'].delete_if { |entry| entry[:name] == @pkg.name } and @device['installed_packages'].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
   ConvenienceFunctions.save_json(@device)
   crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if Kernel.system 'which jq', %i[out err] => File::NULL
 end
@@ -1365,13 +1365,13 @@ def archive_package(crew_archive_dest)
   # Only use zstd if it is available.
   if @pkg.no_zstd? || !Kernel.system('which zstd', %i[out err] => File::NULL)
     puts 'Using xz to compress package. This may take some time.'.lightblue
-    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
+    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device['architecture']}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
       system "tar c#{@verbose}Jf #{crew_archive_dest}/#{pkg_name} *"
     end
   else
     puts 'Using zstd to compress package. This may take some time.'.lightblue
-    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.zst"
+    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device['architecture']}.tar.zst"
     Dir.chdir CREW_DEST_DIR do
       # Using same zstd compression options as Arch, which privilege
       # decompression speed over compression speed.
@@ -1681,7 +1681,7 @@ def install_command(args)
     @pkg_name = name
     # Exit early if package is already installed. This prevents the
     # postinstall from being run for an already installed package.
-    if @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg_name }
+    if @device['installed_packages'].any? { |pkg| pkg[:name] == @pkg_name }
       puts "Package #{@pkg_name} already installed, skipping...".lightgreen
       next
     end
@@ -1708,7 +1708,7 @@ def postinstall_command(args)
   args['<name>'].each do |name|
     @pkg_name = name
     search @pkg_name, silent: true
-    if @device[:installed_packages].any? { |elem| elem[:name] == @pkg_name }
+    if @device['installed_packages'].any? { |elem| elem[:name] == @pkg_name }
       @pkg.postinstall
     else
       puts "Package #{@pkg_name} is not installed. :(".lightred
@@ -1817,7 +1817,8 @@ Signal.trap('INT') do
   exit 1
 end
 
-@device = ConvenienceFunctions.load_symbolized_json
+@device = ConvenienceFunctions.load_json
+@installed_packages = PackageUtils.generate_installed_packages
 
 @last_update_check = Dir["#{CREW_LIB_PATH}/{.git/FETCH_HEAD,lib/const.rb}"].compact.map { |i| File.mtime(i).utc.to_i }.max
 crewlog("The last update was #{MiscFunctions.time_difference(@last_update_check, Time.now.to_i)} ago.")

@@ -64,9 +64,9 @@ def keep_keys(arr, keeper_keys)
   keepers = keeper_keys.to_set
   arr.map { |h| h.select { |k, _| keepers.include?(k) } }
 end
-# Use installed_packages.include(pkg_name) to determine if a package is
+# Use @installed_packages.include?(pkg_name) to determine if a package is
 # installed.
-installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
+@installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
 
 if fixup_json['essential_deps'].nil?
   puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
@@ -168,11 +168,11 @@ pkg_update_arr = [
 ].to_set
 
 fixup_pkgs = pkg_update_arr.to_set { |h| h[:pkg_name] }
-installed_packages & fixup_pkgs
+installed_fixup_packages = @installed_packages & fixup_pkgs
 
 # Handle package renames.
 renamed_packages = false
-installed_fixup.packages.each do |fixup_pkg|
+installed_fixup_packages.each do |fixup_pkg|
   working_pkg = pkg_update_arr.select { |i| i[:pkg_name] == fixup_pkg }
   pkg_name = working_pkg[0][:pkg_name]
   pkg_rename = working_pkg[0][:pkg_rename]
@@ -188,11 +188,12 @@ installed_fixup.packages.each do |fixup_pkg|
   old_directorylist = File.join(CREW_META_PATH, "#{pkg_name}.directorylist")
   new_directorylist = File.join(CREW_META_PATH, "#{pkg_rename}.directorylist")
   # Handle case of new package already installed.
-  if installed_packages.include?(pkg_rename)
+  if @installed_packages.include?(pkg_rename)
     puts "Renamed #{pkg_rename.capitalize} is already installed. Deleting old package (#{pkg_rename.capitalize}) information...".lightblue
     FileUtils.rm_f old_filelist
     FileUtils.rm_f old_directorylist
-    fixup_json[installed_packages].delete_if { |elem| elem[:name] == pkg_name }
+    fixup_json['installed_packages'].delete_if { |elem| elem[:name] == pkg_name }
+    @installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
     next
   end
   # Handle case of package needing to be replaced.
@@ -213,6 +214,7 @@ installed_fixup.packages.each do |fixup_pkg|
     puts "#{pkg_name.capitalize} renamed to #{pkg_rename.capitalize}".lightgreen
     next x
   end
+  @installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
 end
 
 if renamed_packages
@@ -227,7 +229,7 @@ if renamed_packages
 end
 
 # Handle deprecated package deletions.
-installed_fixup.packages.each do |fixup_pkg|
+installed_fixup_packages.each do |fixup_pkg|
   working_pkg = pkg_update_arr.select { |i| i[:pkg_name] == fixup_pkg }
   pkg_to_del = working_pkg[0][:pkg_deprecated]
   next unless pkg_to_del

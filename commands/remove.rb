@@ -27,7 +27,7 @@ load '../lib/const.rb' unless defined? CREW_ESSENTIAL_PACKAGES
 
 class Command
   def self.remove(pkg, verbose)
-    device_json = ConvenienceFunctions.load_symbolized_json
+    device_json = ConvenienceFunctions.load_json
 
     # Make sure the package is actually installed before we attempt to remove it.
     unless PackageUtils.installed?(pkg.name)
@@ -39,15 +39,15 @@ class Command
     # their dependencies, as those are needed for ruby and crew to run,
     # and thus should not be removed.
     # essential_deps = recursive_deps(CREW_ESSENTIAL_PACKAGES)
-    if device_json[:essential_deps].blank?
+    if device_json['essential_deps'].blank?
       unless `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first == CREW_CONST_GIT_COMMIT
         puts 'Running crew update compatible to determine essential dependencies.'.lightcyan
         Kernel.system 'crew update compatible'
       end
-      device_json = ConvenienceFunctions.load_symbolized_json
+      device_json = ConvenienceFunctions.load_json
     end
 
-    essential_deps = device_json[:essential_deps].to_set
+    essential_deps = device_json['essential_deps'].to_set
     crewlog "Essential Deps are #{essential_deps}."
     if essential_deps.include?(pkg.name)
       return if pkg.in_upgrade
@@ -125,10 +125,11 @@ class Command
 
     # Remove the package from the list of installed packages in device.json.
     puts "Removing package #{pkg.name} from device.json".yellow if verbose
-    device_json[:installed_packages].delete_if { |entry| entry[:name] == pkg.name }
+    device_json['installed_packages'].delete_if { |entry| entry[name] == pkg.name }
 
     # Update device.json with our changes.
     ConvenienceFunctions.save_json(device_json)
+    @installed_packages = PackageUtils.generate_installed_packages
 
     # Perform any operations required after package removal.
     pkg.postremove
