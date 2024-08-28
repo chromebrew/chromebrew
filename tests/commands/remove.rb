@@ -73,7 +73,7 @@ class RemoveCommandTest < Minitest::Test
         system "crew install -d #{@normal_package_name}", %i[out err] => File::NULL
         sleep 2
       end
-      Command.remove(@normal_pkg, true)
+      Command.remove(@normal_pkg, true) && `crew list installed -d #{@normal_package_name}`.chomp
     end
   end
 end

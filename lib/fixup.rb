@@ -30,7 +30,6 @@ require_gem('highline')
 
 CREW_VERBOSE ||= ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
 
-HOME ||= '/home/chronos/user'
 CREW_PREFIX ||= '/usr/local'
 CREW_LIB_PATH ||= File.join(CREW_PREFIX, 'lib/crew')
 
@@ -44,11 +43,39 @@ CREW_META_PATH ||= File.join(CREW_CONFIG_PATH, 'meta')
 CREW_CONST_GIT_COMMIT ||= '72d807aac'
 CREW_REPO   ||= 'https://github.com/chromebrew/chromebrew.git'
 CREW_BRANCH ||= 'master'
+
+# Restart crew update as quickly as possibnle if the git commit of
+# const.rb loaded in const.rb is different from the git commit of the
+# potentially updated const.rb loaded here after a git pull.
+
+unless `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first == CREW_CONST_GIT_COMMIT
+  puts 'Restarting crew update since there is an updated crew version.'.lightcyan
+  puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if CREW_VERBOSE
+  exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
+end
+
 KERN_ARCH ||= Etc.uname[:machine]
 ARCH ||= %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH
 LIBC_VERSION ||= Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last
 CREW_PACKAGES_PATH ||= File.join(CREW_LIB_PATH, 'packages')
-@device ||= ConvenienceFunctions.load_symbolized_json
+
+fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+def keep_keys(arr, keeper_keys)
+  keepers = keeper_keys.to_set
+  arr.map { |h| h.select { |k, _| keepers.include?(k) } }
+end
+# Use installed_packages.include(pkg_name) to determine if a package is
+# installed.
+installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
+
+if fixup_json['essential_deps'].nil?
+  puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
+  fixup_json['essential_deps'] = []
+  fixup_json['essential_deps'].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
+  crewlog "Essential packages: #{fixup_json[essential_deps]}"
+  ConvenienceFunctions.save_json(fixup_json)
+  puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
+end
 
 # remove deprecated directory
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
@@ -138,95 +165,87 @@ pkg_update_arr = [
   { pkg_name: 'util_macros', pkg_rename: 'xorg_macros', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'wget', pkg_rename: 'wget2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'zlibpkg', pkg_rename: 'zlib', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' }
-]
+].to_set
 
-pkg_update_arr.each do |pkg|
-  next unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_name] }
+fixup_pkgs = pkg_update_arr.to_set { |h| h[:pkg_name] }
+installed_packages & fixup_pkgs
 
-  puts "\n#{pkg[:pkg_name].capitalize} found in package fixup list".lightcyan
+# Handle package renames.
+renamed_packages = false
+installed_fixup.packages.each do |fixup_pkg|
+  working_pkg = pkg_update_arr.select { |i| i[:pkg_name] == fixup_pkg }
+  pkg_name = working_pkg[0][:pkg_name]
+  pkg_rename = working_pkg[0][:pkg_rename]
+  next unless pkg_rename
 
-  # Package rename.
-  unless pkg[:pkg_rename].to_s.empty?
-    puts "#{pkg[:pkg_name].capitalize} has been renamed to #{pkg[:pkg_rename].capitalize}".lightpurple
-    puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".lightpurple unless pkg[:comments].to_s.empty?
+  renamed_packages = true
+  comments = working_pkg[0][:comments]
+  renamed_packages = true
+  puts "#{pkg_name.capitalize} has been renamed to #{pkg_rename.capitalize}. #{comments.nil? ? '' : "(#{comments})"}".lightpurple
 
-    old_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_name]}.filelist")
-    new_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_rename]}.filelist")
-    old_directorylist = File.join(CREW_META_PATH, "#{pkg[:pkg_name]}.directorylist")
-    new_directorylist = File.join(CREW_META_PATH, "#{pkg[:pkg_rename]}.directorylist")
-    # Handle case of new package already installed.
-    if @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_rename] }
-      puts "Renamed #{pkg[:pkg_rename].capitalize} is already installed. Deleting old package (#{pkg[:pkg_rename].capitalize}) information...".lightblue
-      FileUtils.rm_f old_filelist
-      FileUtils.rm_f old_directorylist
-      @device[:installed_packages].delete_if { |elem| elem[:name] == pkg[:pkg_name] }
-      File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
-      next
-    end
-    # Handle case of package needing to be replaced.
-    if File.file?(new_filelist)
-      puts "new filelist for #{pkg[:pkg_rename].capitalize} already exists!"
-      next
-    end
-    if File.file?(new_directorylist)
-      puts "new directorylist for #{pkg[:pkg_rename].capitalize} already exists!"
-      next
-    end
-    # If new filelist or directorylist do not exist and new package is not
-    # marked as installed in device.json then rename and edit device.json .
-    begin
-      FileUtils.cp "#{CREW_CONFIG_PATH}/device.json", "#{CREW_CONFIG_PATH}/device.json.bak"
-      FileUtils.mv old_filelist, new_filelist
-      FileUtils.mv old_directorylist, new_directorylist
-      @device[:installed_packages].map do |x|
-        x[:name] = pkg[:pkg_rename] if x[:name] == pkg[:pkg_name]
-        next x
-      end
-      File.write "#{CREW_CONFIG_PATH}/device.json.new", JSON.pretty_generate(JSON.parse(@device.to_json))
-      @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json.new'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
-      raise StandardError, 'Failed to replace pkg name...'.lightred unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_rename] }
-      # Ok to write working device.json
-      File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
-      puts "#{pkg[:pkg_name].capitalize} renamed to #{pkg[:pkg_rename].capitalize}".lightgreen
-    rescue StandardError
-      puts 'Restoring old filelist, directorylist, and device.json...'.lightred
-      FileUtils.mv new_filelist, old_filelist
-      FileUtils.mv new_directorylist, old_directorylist
-      FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.bak", "#{CREW_CONFIG_PATH}/device.json"
-    end
-    # Reload json file.
-    @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
-    # Ok to remove backup and temporary json files.
-    FileUtils.rm_f "#{CREW_CONFIG_PATH}/device.json.bak"
-    FileUtils.rm_f "#{CREW_CONFIG_PATH}/device.json.new"
+  old_filelist = File.join(CREW_META_PATH, "#{pkg_name}.filelist")
+  new_filelist = File.join(CREW_META_PATH, "#{pkg_rename}.filelist")
+  old_directorylist = File.join(CREW_META_PATH, "#{pkg_name}.directorylist")
+  new_directorylist = File.join(CREW_META_PATH, "#{pkg_rename}.directorylist")
+  # Handle case of new package already installed.
+  if installed_packages.include?(pkg_rename)
+    puts "Renamed #{pkg_rename.capitalize} is already installed. Deleting old package (#{pkg_rename.capitalize}) information...".lightblue
+    FileUtils.rm_f old_filelist
+    FileUtils.rm_f old_directorylist
+    fixup_json[installed_packages].delete_if { |elem| elem[:name] == pkg_name }
+    next
   end
+  # Handle case of package needing to be replaced.
+  if File.file?(new_filelist)
+    puts "new filelist for #{pkg_rename.capitalize} already exists!"
+    next
+  end
+  if File.file?(new_directorylist)
+    puts "new directorylist for #{pkg_rename.capitalize} already exists!"
+    next
+  end
+  # If new filelist or directorylist do not exist and new package is not
+  # marked as installed in device.json then rename and edit device.json .
+  FileUtils.mv old_filelist, new_filelist
+  FileUtils.mv old_directorylist, new_directorylist
+  fixup_json[installed_packages].map do |x|
+    x[name] = pkg_rename if x[name] == pkg_name
+    puts "#{pkg_name.capitalize} renamed to #{pkg_rename.capitalize}".lightgreen
+    next x
+  end
+end
 
-  # Deprecated package deletion.
-  next if pkg[:pkg_deprecated].to_s.empty?
-  puts "#{pkg[:pkg_name].capitalize} is deprecated and should be removed.".lightpurple
-  puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".lightpurple unless pkg[:comments].to_s.empty?
-  if Package.agree_default_yes("\nWould you like to remove deprecated package #{pkg[:pkg_name].capitalize}")
+if renamed_packages
+  FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json'), File.join(CREW_CONFIG_PATH, 'device.json.bak')
+  File.write File.join(CREW_CONFIG_PATH, 'device.json.new'), JSON.pretty_generate(JSON.parse(fixup_json.to_json))
+  FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json.new'), File.join(CREW_CONFIG_PATH, 'device.json')
+  # Reload json file.
+  fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+  # Ok to remove backup and temporary json files.
+  FileUtils.rm_f File.join(CREW_CONFIG_PATH, 'device.json.bak')
+  FileUtils.rm_f File.join(CREW_CONFIG_PATH, 'device.json.new')
+end
+
+# Handle deprecated package deletions.
+installed_fixup.packages.each do |fixup_pkg|
+  working_pkg = pkg_update_arr.select { |i| i[:pkg_name] == fixup_pkg }
+  pkg_to_del = working_pkg[0][:pkg_deprecated]
+  next unless pkg_to_del
+
+  comments = working_pkg[0][:comments]
+  puts "#{pkg_to_del.capitalize} is deprecated and should be removed. #{comments.nil? ? '' : "(#{comments})"}".lightpurple
+  if Package.agree_default_yes("\nWould you like to remove deprecated package #{pkg_to_del.capitalize}")
     # Create a minimal Package object and pass it to Command.remove
     pkg_object = Package
     pkg_object.instance_eval do
-      self.name = pkg[:pkg_name]
+      self.name = pkg_to_del
       def self.preremove; end
       def self.postremove; end
     end
     Command.remove(pkg_object, CREW_VERBOSE)
   else
-    puts "#{pkg[:pkg_name].capitalize} not removed.".lightblue
+    puts "#{pkg_to_del.capitalize} not removed.".lightblue
   end
-end
-
-# Restart crew update if the git commit of const.rb loaded in const.rb
-# is different from the git commit of the potentially updated const.rb
-# loaded here after a git pull.
-
-unless `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first == CREW_CONST_GIT_COMMIT
-  puts 'Restarting crew update since there is an updated crew version.'.lightcyan
-  puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if CREW_VERBOSE
-  exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
 end
 
 # Remove pagerenv tmp file in CREW_PACKAGES_PATH if it exists
