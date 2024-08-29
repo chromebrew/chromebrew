@@ -1,12 +1,13 @@
 require 'fileutils'
+require 'json'
 require_relative '../lib/const'
 require_relative '../lib/convenience_functions'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
 
 class Command
-  def self.remove(pkg, verbose)
-    device_json = ConvenienceFunctions.load_symbolized_json
+  def self.remove(pkg, verbose = CREW_VERBOSE)
+    device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
 
     # Make sure the package is actually installed before we attempt to remove it.
     unless PackageUtils.installed?(pkg.name)
@@ -75,7 +76,7 @@ class Command
             puts package_files_that_overlap.join("\n").orange
           end
           unique_to_package_files.each do |file|
-            puts "Removing file #{file}".yellow if CREW_VERBOSE
+            puts "Removing file #{file}".yellow if verbose
             FileUtils.remove_file file, exception: false
           end
           FileUtils.remove_file flist
@@ -99,7 +100,14 @@ class Command
     device_json[:installed_packages].delete_if { |entry| entry[:name] == pkg.name }
 
     # Update device.json with our changes.
-    ConvenienceFunctions.save_json(device_json)
+    # ConvenienceFunctions.save_json(device_json)
+    File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(device_json.to_json))
+    device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+    def keep_keys(arr, keeper_keys)
+      keepers = keeper_keys.to_set
+      arr.map { |h| h.select { |k, _| keepers.include?(k) } }
+    end
+    abort "#{pkg.name} json deletion failed!".lightred unless keep_keys(device_json['installed_packages'], ['name']).flat_map(&:values).to_set.include?(pkg.name)
 
     # Perform any operations required after package removal.
     pkg.postremove

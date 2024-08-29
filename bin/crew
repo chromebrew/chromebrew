@@ -1273,7 +1273,7 @@ def install
   # remove it just before the file copy
   if @pkg.in_upgrade
     puts 'Attempting removal since this is an upgrade or reinstall...'
-    Command.remove(@pkg, CREW_VERBOSE)
+    Command.remove(@pkg)
   end
 
   if @pkg.is_fake?
@@ -1742,7 +1742,7 @@ end
 def remove_command(args)
   args['<name>'].each do |name|
     search name
-    Command.remove(@pkg, CREW_VERBOSE)
+    Command.remove(@pkg)
   end
 end
 
