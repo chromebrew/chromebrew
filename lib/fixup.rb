@@ -60,14 +60,14 @@ ARCH ||= %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH
 LIBC_VERSION ||= Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last
 CREW_PACKAGES_PATH ||= File.join(CREW_LIB_PATH, 'packages')
 
-fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+@fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
 def keep_keys(arr, keeper_keys)
   keepers = keeper_keys.to_set
   arr.map { |h| h.select { |k, _| keepers.include?(k) } }
 end
 # Use @installed_packages.include?(pkg_name) to determine if a package is
 # installed.
-@installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
+@installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
 
 def save_json(json_object)
   crewlog 'Saving device.json...'
@@ -84,9 +84,9 @@ end
 def refresh_crew_json
   if defined?(@device)
     @device = if @device['architecture'].nil?
-                JSON.parse(fixup_json.to_json, symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
+                JSON.parse(@fixup_json.to_json, symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
               else
-                JSON.parse(fixup_json.to_json)
+                JSON.parse(@fixup_json.to_json)
               end
   end
 end
@@ -100,9 +100,9 @@ def save_essential_deps(json_object)
   puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
 end
 
-if fixup_json['essential_deps'].nil?
+if @fixup_json['essential_deps'].nil?
   crewlog('saving essential deps because nil')
-  save_essential_deps(fixup_json)
+  save_essential_deps(@fixup_json)
 end
 # remove deprecated directory
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
@@ -219,13 +219,13 @@ installed_fixup_packages.each do |fixup_pkg|
     puts "Renamed #{pkg_rename.capitalize} is already installed. Deleting old package (#{pkg_rename.capitalize}) information...".lightblue
     FileUtils.rm_f old_filelist
     FileUtils.rm_f old_directorylist
-    fixup_json['installed_packages'].delete_if { |elem| elem[:name] == pkg_name }
-    @installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
-    if fixup_json['essential_deps'].include?(pkg_rename)
+    @fixup_json['installed_packages'].delete_if { |elem| elem[:name] == pkg_name }
+    @installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
+    if @fixup_json['essential_deps'].include?(pkg_rename)
       crewlog("Running save_essential_deps because essential deps contained #{pkg_name}")
-      save_essential_deps(fixup_json)
-      save_json(fixup_json)
-      fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+      save_essential_deps(@fixup_json)
+      save_json(@fixup_json)
+      @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
     end
     next
   end
@@ -242,22 +242,22 @@ installed_fixup_packages.each do |fixup_pkg|
   # marked as installed in device.json then rename and edit device.json .
   FileUtils.mv old_filelist, new_filelist
   FileUtils.mv old_directorylist, new_directorylist
-  fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }
-  fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
-  fixup_json['compatible_packages'].find { |h| h['name'] == pkg_name }
-  fixup_json['compatible_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
-  save_json(fixup_json)
-  if fixup_json['essential_deps'].include?(pkg_rename)
-    save_essential_deps(fixup_json)
-    save_json(fixup_json)
-    fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+  @fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }
+  @fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
+  @fixup_json['compatible_packages'].find { |h| h['name'] == pkg_name }
+  @fixup_json['compatible_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
+  save_json(@fixup_json)
+  if @fixup_json['essential_deps'].include?(pkg_rename)
+    save_essential_deps(@fixup_json)
+    save_json(@fixup_json)
+    @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
   end
-  save_json(fixup_json)
+  save_json(@fixup_json)
 end
 
 if renamed_packages
-  @installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
-  save_json(fixup_json)
+  @installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
+  save_json(@fixup_json)
 end
 
 # Handle deprecated package deletions.
