@@ -104,7 +104,7 @@ if @fixup_json['essential_deps'].nil?
   crewlog('saving essential deps because nil')
   save_essential_deps(@fixup_json)
 else
-  puts "Essential packages: #{json_object['essential_deps']}"
+  puts "Essential packages: #{@fixup_json['essential_deps']}"
 end
 # remove deprecated directory
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
