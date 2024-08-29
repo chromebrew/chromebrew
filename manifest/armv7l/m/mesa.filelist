@@ -59,6 +59,7 @@
 /usr/local/lib/dri/virtio_gpu_drv_video.so
 /usr/local/lib/dri/vkms_dri.so
 /usr/local/lib/dri/vmwgfx_dri.so
+/usr/local/lib/dri/zink_dri.so
 /usr/local/lib/dri/zynqmp-dpsub_dri.so
 /usr/local/lib/gbm/tls/pvr_gbm.so
 /usr/local/lib/libEGL_mesa.so
@@ -67,7 +68,7 @@
 /usr/local/lib/libGLX_mesa.so
 /usr/local/lib/libGLX_mesa.so.0
 /usr/local/lib/libGLX_mesa.so.0.0.0
-/usr/local/lib/libgallium-24.2.0.so
+/usr/local/lib/libgallium-24.2.1.so
 /usr/local/lib/libgbm.so
 /usr/local/lib/libgbm.so.1
 /usr/local/lib/libgbm.so.1.0.0
