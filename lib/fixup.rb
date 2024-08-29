@@ -82,13 +82,12 @@ def save_json(json_object)
 end
 
 def refresh_crew_json
-  save_json(fixup_json)
   if defined?(@device)
-    if @device['architecture'].nil?
-      @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
-    else
-      @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-    end
+    @device = if @device['architecture'].nil?
+                JSON.parse(fixup_json.to_json, symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
+              else
+                JSON.parse(fixup_json.to_json)
+              end
   end
 end
 
@@ -102,7 +101,7 @@ def save_essential_deps(json_object)
 end
 
 if fixup_json['essential_deps'].nil?
-  crewlog("saving essential deps because nil")
+  crewlog('saving essential deps because nil')
   save_essential_deps(fixup_json)
 end
 # remove deprecated directory
