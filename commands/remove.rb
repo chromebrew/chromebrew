@@ -107,7 +107,10 @@ class Command
       keepers = keeper_keys.to_set
       arr.map { |h| h.select { |k, _| keepers.include?(k) } }
     end
-    abort "#{pkg.name} json deletion failed!".lightred unless keep_keys(device_json['installed_packages'], ['name']).flat_map(&:values).to_set.include?(pkg.name)
+    if !keep_keys(device_json['installed_packages'], ['name']).flat_map(&:values).to_set.include?(pkg.name)
+      system "crew list installed | grep #{pkg.name}".lightred
+      abort "#{pkg.name} json deletion failed!".lightred
+    end
 
     # Perform any operations required after package removal.
     pkg.postremove
