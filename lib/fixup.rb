@@ -81,6 +81,17 @@ def save_json(json_object)
   FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
 end
 
+def refresh_crew_json
+  save_json(fixup_json)
+  if defined?(@device)
+    if @device['architecture'].nil?
+      @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
+    else
+      @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+    end
+  end
+end
+
 def save_essential_deps(json_object)
   puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
   json_object['essential_deps'] ||= []
@@ -251,6 +262,7 @@ if renamed_packages
 end
 
 # Handle deprecated package deletions.
+refresh_crew_json
 installed_fixup_packages.each do |fixup_pkg|
   working_pkg = pkg_update_arr.select { |i| i[:pkg_name] == fixup_pkg }
   delete_package = working_pkg[0][:pkg_deprecated]
@@ -302,10 +314,4 @@ if (ARCH == 'x86_64') && (Gem::Version.new(LIBC_VERSION.to_s) >= Gem::Version.ne
   end
 end
 # Reload @device with the appropriate symbolized or nonsymbolized json load.
-if defined?(@device)
-  if @device['architecture'].nil?
-    @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
-  else
-    @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-  end
-end
+refresh_crew_json
