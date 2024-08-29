@@ -37,7 +37,7 @@ CREW_LIB_PATH ||= File.join(CREW_PREFIX, 'lib/crew')
 load "#{CREW_LIB_PATH}/lib/const.rb"
 load "#{CREW_LIB_PATH}/lib/package.rb"
 load "#{CREW_LIB_PATH}/lib/convenience_functions.rb"
-
+binding.pry if CREW_DEBUG
 CREW_CONFIG_PATH ||= File.join(CREW_PREFIX, 'etc/crew')
 CREW_META_PATH ||= File.join(CREW_CONFIG_PATH, 'meta')
 # via git log --reverse --oneline lib/const.rb | head -n 1
