@@ -286,6 +286,8 @@ installed_fixup_packages.each do |fixup_pkg|
     puts "#{pkg_name.capitalize} not removed.".lightblue
   end
 end
+# Reload json after all fixups are done, as there may have been external changes.
+@fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
 
 # Remove pagerenv tmp file in CREW_PACKAGES_PATH if it exists
 FileUtils.rm "#{CREW_PACKAGES_PATH}/pagerenv" if File.file?("#{CREW_PACKAGES_PATH}/pagerenv")
