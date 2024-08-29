@@ -19,7 +19,7 @@ class Command
     # their dependencies, as those are needed for ruby and crew to run,
     # and thus should not be removed.
     # essential_deps = recursive_deps(CREW_ESSENTIAL_PACKAGES)
-    essential_deps = device_json[:essential_deps]
+    essential_deps = device_json['essential_deps']
     crewlog "Essential Deps are #{essential_deps}."
     if essential_deps.include?(pkg.name)
       return if pkg.in_upgrade
@@ -97,7 +97,7 @@ class Command
 
     # Remove the package from the list of installed packages in device.json.
     puts "Removing package #{pkg.name} from device.json".yellow if verbose
-    device_json[:installed_packages].delete_if { |entry| entry[:name] == pkg.name }
+    device_json['installed_packages'].delete_if { |entry| entry['name'] == pkg.name }
 
     # Update device.json with our changes.
     # ConvenienceFunctions.save_json(device_json)
