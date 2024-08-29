@@ -68,18 +68,28 @@ end
 # installed.
 @installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
 
+def save_json(json_object)
+  crewlog 'Saving device.json...'
+  begin
+    File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
+  rescue StandardError
+    puts 'Error writing updated packages json file!'.lightred
+    abort
+  end
+  # Copy over original if the write to the tmp file succeeds.
+  FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
+end
+
 def save_essential_deps(json_object)
   puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
   json_object['essential_deps'] = []
   json_object['essential_deps'].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
   crewlog "Essential packages: #{json_object['essential_deps']}"
-  File.write File.join(CREW_CONFIG_PATH, 'device.json'), JSON.pretty_generate(JSON.parse(json_object.to_json))
+  save_json(json_object)
   puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
 end
-if fixup_json['essential_deps'].nil?
-  save_essential_deps(fixup_json)
-  fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-end
+
+save_essential_deps(fixup_json) if fixup_json['essential_deps'].nil?
 
 # remove deprecated directory
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
@@ -222,18 +232,12 @@ installed_fixup_packages.each do |fixup_pkg|
     save_essential_deps(fixup_json)
     fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
   end
+  save_json(fixup_json)
 end
 
 if renamed_packages
   @installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
-  FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json'), File.join(CREW_CONFIG_PATH, 'device.json.bak')
-  File.write File.join(CREW_CONFIG_PATH, 'device.json.new'), JSON.pretty_generate(JSON.parse(fixup_json.to_json))
-  FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json.new'), File.join(CREW_CONFIG_PATH, 'device.json')
-  # Reload json file.
-  fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-  # Ok to remove backup and temporary json files.
-  FileUtils.rm_f File.join(CREW_CONFIG_PATH, 'device.json.bak')
-  FileUtils.rm_f File.join(CREW_CONFIG_PATH, 'device.json.new')
+  save_json(fixup_json)
 end
 
 # Handle deprecated package deletions.

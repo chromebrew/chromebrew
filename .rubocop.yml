@@ -11,10 +11,10 @@
 # See https://docs.rubocop.org/rubocop/configuration
 
 AllCops:
-  NewCops: enable
-  TargetRubyVersion: 3.3
   Exclude:
     - 'lib/docopt.rb'
+  NewCops: enable
+  TargetRubyVersion: 3.3
 
 # These cops have been temporarily disabled and should be reenabled asap
 Lint/ShadowingOuterLocalVariable:
