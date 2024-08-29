@@ -49,8 +49,10 @@ CREW_CPU_VENDOR ||= CPUINFO['vendor_id']
 # The cpuinfo vendor_id may not exist on non-x86 platforms, or when a
 # container is virtualized on non-x86 platforms. Default to
 # CREW_IS_INTEL for x86 architectures.
-CREW_IS_AMD   ||= CREW_CPU_VENDOR.eql?('AuthenticAMD').nil? unless defined?(CREW_IS_AMD)
-CREW_IS_INTEL ||= %w[x86_64 i686].include?(ARCH) && %w[unknown GenuineIntel].include?(CREW_CPU_VENDOR)
+if %w[x86_64 i686].include?(ARCH)
+  CREW_IS_AMD ||= CREW_CPU_VENDOR.eql?('AuthenticAMD').nil? unless defined?(CREW_IS_AMD)
+  CREW_IS_INTEL ||= %w[unknown GenuineIntel].include?(CREW_CPU_VENDOR) unless defined?(CREW_IS_INTEL)
+end
 
 # Use sane minimal defaults if in container and no override specified.
 CREW_KERNEL_VERSION ||= \
