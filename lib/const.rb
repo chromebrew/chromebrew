@@ -52,6 +52,9 @@ CREW_CPU_VENDOR ||= CPUINFO['vendor_id']
 if %w[x86_64 i686].include?(ARCH)
   CREW_IS_AMD ||= CREW_CPU_VENDOR.eql?('AuthenticAMD').nil? unless defined?(CREW_IS_AMD)
   CREW_IS_INTEL ||= %w[unknown GenuineIntel].include?(CREW_CPU_VENDOR) unless defined?(CREW_IS_INTEL)
+else
+  CREW_IS_AMD ||= nil
+  CREW_IS_INTEL ||= nil
 end
 
 # Use sane minimal defaults if in container and no override specified.
