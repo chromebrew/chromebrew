@@ -307,4 +307,5 @@ if defined?(@device)
     @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
   else
     @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+  end
 end
