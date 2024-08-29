@@ -210,6 +210,7 @@ installed_fixup_packages.each do |fixup_pkg|
     @installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
     if fixup_json['essential_deps'].include?(pkg_rename)
       save_essential_deps(fixup_json)
+      save_json(fixup_json)
       fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
     end
     next
@@ -228,8 +229,10 @@ installed_fixup_packages.each do |fixup_pkg|
   FileUtils.mv old_filelist, new_filelist
   FileUtils.mv old_directorylist, new_directorylist
   fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
+  save_json(fixup_json)
   if fixup_json['essential_deps'].include?(pkg_rename)
     save_essential_deps(fixup_json)
+    save_json(fixup_json)
     fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
   end
   save_json(fixup_json)
