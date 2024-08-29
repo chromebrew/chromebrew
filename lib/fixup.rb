@@ -183,7 +183,6 @@ pkg_update_arr = [
   { pkg_name: 'wget', pkg_rename: 'wget2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'zlibpkg', pkg_rename: 'zlib', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' }
 ].to_set
-binding.pry if CREW_DEBUG
 
 fixup_pkgs = pkg_update_arr.to_set { |h| h[:pkg_name] }
 installed_fixup_packages = @installed_packages & fixup_pkgs
@@ -301,4 +300,11 @@ if (ARCH == 'x86_64') && (Gem::Version.new(LIBC_VERSION.to_s) >= Gem::Version.ne
       end
     end
   end
+end
+# Reload @device with the appropriate symbolized or nonsymbolized json load.
+if defined?(@device)
+  if @device['architecture'].nil?
+    @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
+  else
+    @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
 end
