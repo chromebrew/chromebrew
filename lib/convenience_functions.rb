@@ -9,10 +9,6 @@ class ConvenienceFunctions
     return JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
   end
 
-  def self.load_json
-    return JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-  end
-
   def self.save_json(json_object)
     crewlog 'Saving device.json...'
     begin

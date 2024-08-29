@@ -3,20 +3,10 @@
 require 'json'
 require_relative 'const'
 
-def keep_keys(arr, keeper_keys)
-  keepers = keeper_keys.to_set
-  arr.map { |h| h.select { |k, _| keepers.include?(k) } }
-end
-
 class PackageUtils
-  def self.generate_installed_packages
-    device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-    return keep_keys(device_json['installed_packages'], ['name']).flat_map(&:values).to_set
-  end
-
   def self.installed?(pkg_name)
-    @installed_packages ||= generate_installed_packages
-    return @installed_packages.include?(pkg_name)
+    device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+    return device_json['installed_packages'].any? { |elem| elem['name'] == pkg_name }
   end
 
   def self.compatible?(pkg)
