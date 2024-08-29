@@ -68,13 +68,17 @@ end
 # installed.
 @installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
 
-if fixup_json['essential_deps'].nil?
+def save_essential_deps(json_object)
   puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
-  fixup_json['essential_deps'] = []
-  fixup_json['essential_deps'].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
-  crewlog "Essential packages: #{fixup_json['essential_deps']}"
-  ConvenienceFunctions.save_json(fixup_json)
+  json_object['essential_deps'] = []
+  json_object['essential_deps'].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
+  crewlog "Essential packages: #{json_object['essential_deps']}"
+  File.write File.join(CREW_CONFIG_PATH, 'device.json'), JSON.pretty_generate(JSON.parse(json_object.to_json))
   puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
+end
+if fixup_json['essential_deps'].nil?
+  save_essential_deps(fixup_json)
+  fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
 end
 
 # remove deprecated directory
@@ -194,6 +198,10 @@ installed_fixup_packages.each do |fixup_pkg|
     FileUtils.rm_f old_directorylist
     fixup_json['installed_packages'].delete_if { |elem| elem[:name] == pkg_name }
     @installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
+    if fixup_json['essential_deps'].include?(pkg_rename)
+      save_essential_deps(fixup_json)
+      fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+    end
     next
   end
   # Handle case of package needing to be replaced.
@@ -209,12 +217,15 @@ installed_fixup_packages.each do |fixup_pkg|
   # marked as installed in device.json then rename and edit device.json .
   FileUtils.mv old_filelist, new_filelist
   FileUtils.mv old_directorylist, new_directorylist
-  rename_hash = fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }
-  rename_hash['name'] = 'pkg_rename'
-  @installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
+  fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
+  if fixup_json['essential_deps'].include?(pkg_rename)
+    save_essential_deps(fixup_json)
+    fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+  end
 end
 
 if renamed_packages
+  @installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
   FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json'), File.join(CREW_CONFIG_PATH, 'device.json.bak')
   File.write File.join(CREW_CONFIG_PATH, 'device.json.new'), JSON.pretty_generate(JSON.parse(fixup_json.to_json))
   FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json.new'), File.join(CREW_CONFIG_PATH, 'device.json')
