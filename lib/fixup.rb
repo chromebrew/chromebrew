@@ -37,7 +37,7 @@ CREW_LIB_PATH ||= File.join(CREW_PREFIX, 'lib/crew')
 load "#{CREW_LIB_PATH}/lib/const.rb"
 load "#{CREW_LIB_PATH}/lib/package.rb"
 load "#{CREW_LIB_PATH}/lib/convenience_functions.rb"
-binding.pry if CREW_DEBUG
+
 CREW_CONFIG_PATH ||= File.join(CREW_PREFIX, 'etc/crew')
 CREW_META_PATH ||= File.join(CREW_CONFIG_PATH, 'meta')
 # via git log --reverse --oneline lib/const.rb | head -n 1
@@ -83,15 +83,17 @@ end
 
 def save_essential_deps(json_object)
   puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
-  json_object['essential_deps'] = []
+  json_object['essential_deps'] ||= []
   json_object['essential_deps'].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
   crewlog "Essential packages: #{json_object['essential_deps']}"
   save_json(json_object)
   puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
 end
 
-save_essential_deps(fixup_json) if fixup_json['essential_deps'].nil?
-
+if fixup_json['essential_deps'].nil?
+  crewlog("saving essential deps because nil")
+  save_essential_deps(fixup_json)
+end
 # remove deprecated directory
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
 
@@ -181,6 +183,7 @@ pkg_update_arr = [
   { pkg_name: 'wget', pkg_rename: 'wget2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'zlibpkg', pkg_rename: 'zlib', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' }
 ].to_set
+binding.pry if CREW_DEBUG
 
 fixup_pkgs = pkg_update_arr.to_set { |h| h[:pkg_name] }
 installed_fixup_packages = @installed_packages & fixup_pkgs
@@ -210,6 +213,7 @@ installed_fixup_packages.each do |fixup_pkg|
     fixup_json['installed_packages'].delete_if { |elem| elem[:name] == pkg_name }
     @installed_packages = keep_keys(fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
     if fixup_json['essential_deps'].include?(pkg_rename)
+      crewlog("Running save_essential_deps because essential deps contained #{pkg_name}")
       save_essential_deps(fixup_json)
       save_json(fixup_json)
       fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
