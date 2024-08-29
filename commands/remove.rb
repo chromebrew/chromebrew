@@ -100,20 +100,16 @@ class Command
     device_json['installed_packages'].delete_if { |entry| entry['name'] == pkg.name }
 
     # Update device.json with our changes.
-    # ConvenienceFunctions.save_json(device_json)
-    File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(device_json.to_json))
+    ConvenienceFunctions.save_json(device_json)
+    # File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(device_json.to_json))
     device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
     def keep_keys(arr, keeper_keys)
       keepers = keeper_keys.to_set
       arr.map { |h| h.select { |k, _| keepers.include?(k) } }
     end
-    if !keep_keys(device_json['installed_packages'], ['name']).flat_map(&:values).to_set.include?(pkg.name)
-      system "crew list installed | grep #{pkg.name}".lightred
-      abort "#{pkg.name} json deletion failed!".lightred
-    else
-      puts "There should be no output here:"
-      system "crew list installed | grep #{pkg.name}".lightred
-    end
+    puts 'There should be no output here:'
+    system "crew list installed -d | grep #{pkg.name}".lightred
+    abort "#{pkg.name} json deletion failed!".lightred unless keep_keys(device_json['installed_packages'], ['name']).flat_map(&:values).to_set.include?(pkg.name)
 
     # Perform any operations required after package removal.
     pkg.postremove
