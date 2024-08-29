@@ -3,6 +3,7 @@
 require 'etc'
 require 'json'
 require_relative 'color'
+require_relative 'package'
 
 def require_gem(gem_name_and_require = nil, require_override = nil)
   # Allow only loading gems when needed.
@@ -228,7 +229,10 @@ installed_fixup_packages.each do |fixup_pkg|
   # marked as installed in device.json then rename and edit device.json .
   FileUtils.mv old_filelist, new_filelist
   FileUtils.mv old_directorylist, new_directorylist
+  fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }
   fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
+  fixup_json['compatible_packages'].find { |h| h['name'] == pkg_name }
+  fixup_json['compatible_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
   save_json(fixup_json)
   if fixup_json['essential_deps'].include?(pkg_rename)
     save_essential_deps(fixup_json)
