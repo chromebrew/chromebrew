@@ -50,7 +50,7 @@ class RemoveCommandTest < Minitest::Test
     # Command.remove(@random_essential_pkg, true)
     # end
 
-    assert_raises(SystemExit) { Command.remove(@random_essential_pkg, true) }
+    assert_raises(SystemExit) { Command.remove(@random_essential_pkg) }
   end
 
   def test_remove_package_with_essential_file
@@ -73,7 +73,7 @@ class RemoveCommandTest < Minitest::Test
         system "crew install -d #{@normal_package_name}", %i[out err] => File::NULL
         sleep 2
       end
-      Command.remove(@normal_pkg, true) && `crew list installed -d #{@normal_package_name}`.chomp
+      Command.remove(@normal_pkg, true)
     end
   end
 end
