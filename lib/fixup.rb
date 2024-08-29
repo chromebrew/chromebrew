@@ -97,14 +97,13 @@ def save_essential_deps(json_object)
   json_object['essential_deps'].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
   crewlog "Essential packages: #{json_object['essential_deps']}"
   save_json(json_object)
+  refresh_crew_json
   puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
 end
 
 if @fixup_json['essential_deps'].nil?
   crewlog('saving essential deps because nil')
   save_essential_deps(@fixup_json)
-else
-  puts "Essential packages: #{@fixup_json['essential_deps']}"
 end
 # remove deprecated directory
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
@@ -226,8 +225,8 @@ installed_fixup_packages.each do |fixup_pkg|
     if @fixup_json['essential_deps'].include?(pkg_rename)
       crewlog("Running save_essential_deps because essential deps contained #{pkg_name}")
       save_essential_deps(@fixup_json)
-      save_json(@fixup_json)
-      @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+      ## save_json(@fixup_json)
+      ## @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
     end
     next
   end
@@ -241,34 +240,35 @@ installed_fixup_packages.each do |fixup_pkg|
     next
   end
   # If new filelist or directorylist do not exist and new package is not
-  # marked as installed in device.json then rename and edit device.json .
+  # marked as installed in device.json then rename and edit json.
   FileUtils.mv old_filelist, new_filelist
   FileUtils.mv old_directorylist, new_directorylist
   @fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }
   @fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
   @fixup_json['compatible_packages'].find { |h| h['name'] == pkg_name }
   @fixup_json['compatible_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
-  save_json(@fixup_json)
-  if @fixup_json['essential_deps'].include?(pkg_rename)
-    save_essential_deps(@fixup_json)
-    save_json(@fixup_json)
-    @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-  end
-  save_json(@fixup_json)
+  ## save_json(@fixup_json)
+  ## next unless @fixup_json['essential_deps'].include?(pkg_rename)
+  ## save_essential_deps(@fixup_json)
+  ## save_json(@fixup_json)
+  ## @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+  ## save_json(@fixup_json)
 end
 
 if renamed_packages
   @installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
   save_json(@fixup_json)
+  refresh_crew_json
 end
 
 # Handle deprecated package deletions.
-refresh_crew_json
+deprecate_packages = false
 installed_fixup_packages.each do |fixup_pkg|
   working_pkg = pkg_update_arr.select { |i| i[:pkg_name] == fixup_pkg }
   delete_package = working_pkg[0][:pkg_deprecated]
   next unless delete_package
 
+  deprecate_packages = true
   pkg_name = working_pkg[0][:pkg_name]
   comments = working_pkg[0][:comments]
   puts "#{pkg_name.capitalize} is deprecated and should be removed. #{comments.nil? ? '' : "(#{comments})"}".lightpurple
@@ -280,14 +280,17 @@ installed_fixup_packages.each do |fixup_pkg|
       def self.preremove; end
       def self.postremove; end
     end
-    puts "Essential packages before remove: #{@fixup_json['essential_deps']}"
     Command.remove(pkg_object, CREW_VERBOSE)
   else
     puts "#{pkg_name.capitalize} not removed.".lightblue
   end
 end
-# Reload json after all fixups are done, as there may have been external changes.
-@fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+# Reload json after all external fixups are done, as there may have been external changes.
+if deprecate_packages
+  @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json')) if deprecate_packages
+  @installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
+  refresh_crew_json
+end
 
 # Remove pagerenv tmp file in CREW_PACKAGES_PATH if it exists
 FileUtils.rm "#{CREW_PACKAGES_PATH}/pagerenv" if File.file?("#{CREW_PACKAGES_PATH}/pagerenv")
@@ -317,5 +320,6 @@ if (ARCH == 'x86_64') && (Gem::Version.new(LIBC_VERSION.to_s) >= Gem::Version.ne
     end
   end
 end
-# Reload @device with the appropriate symbolized or nonsymbolized json load.
+
+# Reload @device with the appropriate symbolized or nonsymbolized json load before we exit fixup.
 refresh_crew_json
