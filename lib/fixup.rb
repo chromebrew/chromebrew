@@ -103,6 +103,8 @@ end
 if @fixup_json['essential_deps'].nil?
   crewlog('saving essential deps because nil')
   save_essential_deps(@fixup_json)
+else
+  puts "Essential packages: #{json_object['essential_deps']}"
 end
 # remove deprecated directory
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
@@ -278,6 +280,7 @@ installed_fixup_packages.each do |fixup_pkg|
       def self.preremove; end
       def self.postremove; end
     end
+    puts "Essential packages before remove: #{@fixup_json['essential_deps']}"
     Command.remove(pkg_object, CREW_VERBOSE)
   else
     puts "#{pkg_name.capitalize} not removed.".lightblue
