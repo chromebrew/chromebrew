@@ -5,11 +5,6 @@ require_relative '../lib/convenience_functions'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
 
-def keep_keys(arr, keeper_keys)
-  keepers = keeper_keys.to_set
-  arr.map { |h| h.select { |k, _| keepers.include?(k) } }
-end
-
 class Command
   def self.remove(pkg, verbose = CREW_VERBOSE)
     device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
@@ -106,12 +101,6 @@ class Command
 
     # Update device.json with our changes.
     ConvenienceFunctions.save_json(device_json)
-    # File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(device_json.to_json))
-    device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-
-    puts 'There should be no output here:'
-    system "crew list installed -d | grep #{pkg.name}".lightred
-    abort "#{pkg.name} json deletion failed!".lightred unless keep_keys(device_json['installed_packages'], ['name']).flat_map(&:values).to_set.include?(pkg.name)
 
     # Perform any operations required after package removal.
     pkg.postremove
