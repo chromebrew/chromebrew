@@ -110,6 +110,9 @@ class Command
     if !keep_keys(device_json['installed_packages'], ['name']).flat_map(&:values).to_set.include?(pkg.name)
       system "crew list installed | grep #{pkg.name}".lightred
       abort "#{pkg.name} json deletion failed!".lightred
+    else
+      puts "There should be no output here:"
+      system "crew list installed | grep #{pkg.name}".lightred
     end
 
     # Perform any operations required after package removal.
