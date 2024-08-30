@@ -1,7 +1,6 @@
 require 'minitest/autorun'
 require_relative '../../commands/remove'
 require_relative '../../lib/const'
-require_relative '../../lib/convenience_functions'
 require_relative '../../lib/package_utils'
 
 # Add lib to LOAD_PATH
@@ -12,11 +11,10 @@ String.use_color = false
 
 class RemoveCommandTest < Minitest::Test
   def setup
-    essential_deps = ConvenienceFunctions.load_symbolized_json[:essential_deps]
-    @random_essential_package_name = essential_deps[rand(0...(essential_deps.length - 1))]
+    @random_essential_package_name = CREW_ESSENTIAL_PACKAGES.sample
     puts <<~ESSENTIAL_PACKAGE_REMOVAL_TEST_EOF
 
-      Testing the removal of essential package #{@random_essential_package_name}, which was picked at random from one the essential packages: #{essential_deps.join(', ')}
+      Testing the removal of essential package #{@random_essential_package_name}, which was picked at random from one the essential packages: #{CREW_ESSENTIAL_PACKAGES.join(', ')}
       (This should fail.)
 
     ESSENTIAL_PACKAGE_REMOVAL_TEST_EOF

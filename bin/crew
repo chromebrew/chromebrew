@@ -43,6 +43,7 @@ require_relative '../commands/prop'
 require_relative '../commands/remove'
 require_relative '../commands/search'
 require_relative '../commands/sysinfo'
+require_relative '../commands/update'
 require_relative '../commands/whatprovides'
 require_relative '../lib/const'
 require_gem 'pry-byebug' if CREW_DEBUG
@@ -180,33 +181,6 @@ def set_package(pkg_path)
   @pkg.build_from_source = true if @opt_recursive
 end
 
-def generate_compatible
-  puts 'Determining package compatibility...'.orange if CREW_VERBOSE
-  @device[:compatible_packages] = []
-  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
-    pkg_name = File.basename filename, '.rb'
-    begin
-      set_package filename
-    rescue StandardError => e
-      puts "Error with #{pkg_name}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
-    end
-    puts "Checking #{pkg_name} for compatibility.".orange if CREW_VERBOSE
-    if PackageUtils.compatible?(@pkg)
-      # add to compatible packages
-      puts "Adding #{pkg_name} #{@pkg.version} to compatible packages.".lightgreen if CREW_VERBOSE
-      @device[:compatible_packages].push(name: @pkg.name)
-    elsif CREW_VERBOSE
-      puts "#{pkg_name} is not a compatible package.".lightred
-    end
-  end
-  puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
-  @device[:essential_deps] = []
-  @device[:essential_deps].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
-  crewlog "Essential packages: #{@device[:essential_deps]}"
-  ConvenienceFunctions.save_json(@device)
-  puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
-end
-
 def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), silent: false)
   begin
     return set_package(pkg_path) if File.file?(pkg_path)
@@ -242,89 +216,6 @@ def cache_build
   else
     puts 'CREW_CACHE_ENABLED is not set.'.orange unless CREW_CACHE_ENABLED
     puts 'CREW_CACHE_DIR is not writable.'.lightred unless File.writable?(CREW_CACHE_DIR)
-  end
-end
-
-def update
-  abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkg_name
-
-  unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
-    puts 'Fixing Chromebrew system git repo clone...'.orange
-    system(<<~GIT_REPAIR_COMMANDS, chdir: CREW_LIB_PATH, %i[out err] => File::NULL)
-      ## Run the git setup commands used in install.sh.
-      # Make the git default branch error messages go away.
-      git config --global init.defaultBranch main
-      # Setup the dir with git information.
-      git init --ref-format=reftable
-      git remote add origin #{CREW_REPO}
-      # Help handle situations where GitHub is down.
-      git config --local http.lowSpeedLimit 1000
-      git config --local http.lowSpeedTime 5
-      # Checkout, overwriting local files.
-      git fetch --all
-      git checkout -f master
-      git reset --hard origin/#{CREW_BRANCH}
-    GIT_REPAIR_COMMANDS
-  end
-
-  system(<<~GIT_UPDATE_COMMANDS, chdir: CREW_LIB_PATH, exception: true)
-    ## Update crew from git.
-    # Set sparse-checkout folders.
-    git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools
-    git sparse-checkout reapply
-    git fetch #{CREW_REPO} #{CREW_BRANCH}
-    git reset --hard FETCH_HEAD
-  GIT_UPDATE_COMMANDS
-  system(<<~GIT_RESTORE_MTIME_COMMAND, chdir: CREW_LIB_PATH, exception: true) if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
-    # Set the mtime on each file in git to the date the file was added,
-    # not to the date of the last git pull.
-    git-restore-mtime -sq 2>/dev/null
-  GIT_RESTORE_MTIME_COMMAND
-
-  if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
-    puts 'Updating RubyGems.'.orange
-    system 'gem update -N --system'
-  end
-  puts 'Package lists, crew, and library updated.'
-
-  # Do any fixups necessary after crew has updated from git.
-  load "#{CREW_LIB_PATH}/lib/fixup.rb"
-
-  # update compatible packages
-  generate_compatible
-  # check for outdated installed packages
-  puts 'Checking for package updates...'
-
-  can_be_updated = 0
-  @device[:installed_packages].each do |package|
-    search package[:name], silent: true
-    unless @pkg
-      puts "Package file for #{package[:name]} not found. :(".lightred if CREW_VERBOSE
-      next
-    end
-    different_version = (package[:version] != @pkg.version)
-    has_sha = !(PackageUtils.get_sha256(@pkg).to_s.empty? || package[:sha256].to_s.empty?)
-    different_sha = has_sha && package[:sha256] != PackageUtils.get_sha256(@pkg)
-
-    can_be_updated += 1 if different_version || different_sha
-
-    if different_version && !different_sha && has_sha
-      unless @pkg.no_compile_needed?
-        can_be_updated -= 1
-        puts "#{@pkg.name} has a version change but does not have updated binaries".yellow
-      end
-    elsif different_version
-      puts "#{@pkg.name} could be updated from #{package[:version]} to #{@pkg.version}"
-    elsif !different_version && different_sha
-      puts "#{@pkg.name} could be updated (rebuild)"
-    end
-  end
-
-  if can_be_updated.positive?
-    puts "\n#{can_be_updated} packages can be updated."
-    puts 'Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages.'
-  else
-    puts 'Your software is up to date.'.lightgreen
   end
 end
 
@@ -1779,12 +1670,8 @@ def test_command(args)
   end
 end
 
-def update_command(args)
-  if args['<compatible>']
-    generate_compatible
-  else
-    update
-  end
+def update_command(_args)
+  Command.update(@last_update_check)
 end
 
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_source)

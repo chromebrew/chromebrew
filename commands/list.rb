@@ -34,7 +34,7 @@ class Command
         puts pkg_name.lightred unless PackageUtils.compatible?(pkg)
       end
     elsif essential
-      puts device_json[:essential_deps].join("\n")
+      puts CREW_ESSENTIAL_PACKAGES.join("\n")
     elsif installed
       if verbose
         installed_packages['======='] = '======='
