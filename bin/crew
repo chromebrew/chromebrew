@@ -612,10 +612,10 @@ def unpack(meta)
       when /\.zip$/i
         puts "Unpacking archive using 'unzip', this may take a while..."
         system 'unzip', (CREW_VERBOSE ? '-v' : '-qq'), '-d', @extract_dir, meta[:filename], exception: true
-      when /\.(tar(\.bz2)?|tbz)$/i
+      when /\.(tar(\.(bz2|lz|lzma))?|tbz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
         system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
-      when /\.(tar(\.(gz|xz|lzma|lz))?|tgz|txz|tpxz)$/i
+      when /\.(tar(\.(gz|xz))?|tgz|txz|tpxz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
         if Kernel.system('zstd --help 2>/dev/null| grep -q lzma', %i[out err] => File::NULL)
           system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
