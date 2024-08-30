@@ -18,7 +18,7 @@ class Docbook_xsl_nons < Package
   })
 
   # depends_on 'ant' => :build # (If building from non-release source)
-  # depends_on 'graphicsmagick' => :build # (If building from non-release source - but note that this isn't available on i686) 
+  # depends_on 'graphicsmagick' => :build # (If building from non-release source - but note that this isn't available on i686)
   depends_on 'docbook_xml'
   depends_on 'libxml2' => :build
   depends_on 'xmlcatmgr'
