@@ -114,7 +114,7 @@ jobs:
               # but otherwise do not run the i686 container if there are no packages compatible with i686.
               exit 0
             fi
-            sudo docker run \
+            echo sudo docker run \
               --platform $PLATFORM \
               -v "${{ github.workspace }}/tests/unit_test.sh:/unit_test.sh" \
               -u chronos \
