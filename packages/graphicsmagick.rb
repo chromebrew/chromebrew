@@ -6,6 +6,7 @@ class Graphicsmagick < Package
   version '1.3.45-icu75.1'
   license 'MIT'
   compatibility 'all'
+  min_glibc (%w[x86_64 aarch64 armv7l].include?(ARCH) ? '2.37' : '2.23').to_s
   source_url 'https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/1.3.45/GraphicsMagick-1.3.45.tar.xz'
   source_sha256 'dcea5167414f7c805557de2d7a47a9b3147bcbf617b91f5f0f4afe5e6543026b'
   binary_compression 'tar.zst'
