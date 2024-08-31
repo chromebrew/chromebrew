@@ -7001,6 +7001,11 @@ url: https://cpan.metacpan.org/authors/id/G/GR/GRANTM/
 activity: none
 ---
 kind: url
+name: perl_xml_xpath
+url: https://metacpan.org/pod/XML::XPath
+activity: low
+---
+kind: url
 name: perl_yaml_tiny
 url: https://metacpan.org/pod/YAML::Tiny
 activity: none
