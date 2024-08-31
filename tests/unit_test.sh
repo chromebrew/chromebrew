@@ -15,6 +15,7 @@ ruby ../tests/commands/help.rb
 ruby ../tests/commands/list.rb
 ruby ../tests/commands/prop.rb
 ruby ../tests/commands/remove.rb
+ruby ../tests/commands/whatprovides.rb
 ruby ../tests/lib/docopt.rb
 if [[ -n ${CHANGED_PACKAGES-} ]]; then
   all_compatible_packages=$(crew list -d compatible)
