@@ -3,11 +3,11 @@ require 'package'
 class Graphicsmagick < Package
   description 'GraphicsMagick is the swiss army knife of image processing.'
   homepage 'http://www.graphicsmagick.org/'
-  version '1.3.43-icu75.1'
+  version '1.3.45-icu75.1'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/1.3.43/GraphicsMagick-1.3.43.tar.xz'
-  source_sha256 '2b88580732cd7e409d9e22c6116238bef4ae06fcda11451bf33d259f9cbf399f'
+  compatibility 'all'
+  source_url 'https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/1.3.45/GraphicsMagick-1.3.45.tar.xz'
+  source_sha256 'dcea5167414f7c805557de2d7a47a9b3147bcbf617b91f5f0f4afe5e6543026b'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -18,35 +18,35 @@ class Graphicsmagick < Package
 
   depends_on 'brotli' # R
   depends_on 'bzip2' # R
-  depends_on 'freetype' # R
+  depends_on 'freetype' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'gcc_lib' # R
-  depends_on 'ghostscript' => :build
+  depends_on 'ghostscript' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'glibc' # R
-  depends_on 'harfbuzz' # R
+  depends_on 'harfbuzz' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'highway' # R
   depends_on 'icu4c' # R
-  depends_on 'jasper' # R
+  depends_on 'jasper' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'jbigkit' # R
   depends_on 'lcms' # R
   depends_on 'libbsd' # R
-  depends_on 'libde265' # R
+  depends_on 'libde265' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'libdeflate' # R
-  depends_on 'libheif' # R
+  depends_on 'libheif' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'libice' # R
   depends_on 'libjpeg_turbo' # R
-  depends_on 'libjxl' # R
+  depends_on 'libjxl' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'libmd' # R
   depends_on 'libpng' # R
-  depends_on 'libsm' # R
+  depends_on 'libsm' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'libtiff' # R
   depends_on 'libtool' # R
-  depends_on 'libwebp' # R
-  depends_on 'libwmf' # R
-  depends_on 'libx11' # R
+  depends_on 'libwebp' if %w[x86_64 aarch64 armv7l].include?(ARCH)
+  depends_on 'libwmf' if %w[x86_64 aarch64 armv7l].include?(ARCH)
+  depends_on 'libx11' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
-  depends_on 'libxext' # R
+  depends_on 'libxext' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'libxml2' # R
   depends_on 'msttcorefonts' # L
   depends_on 'py3_docutils' => :build
@@ -67,7 +67,7 @@ class Graphicsmagick < Package
       --enable-static=no \
       --with-modules \
       --with-perl \
-      --with-x \
+      #{%w[x86_64 aarch64 armv7l].include?(ARCH) ? '--with-x' : ''} \
       --with-xml"
     system 'make'
   end
