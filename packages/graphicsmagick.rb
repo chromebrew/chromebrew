@@ -12,9 +12,9 @@ class Graphicsmagick < Package
 
   binary_sha256({
        i686: '3e03732df5107a6c8617b785baae64d477ead57553087fafa31de0822d7f06fc',
-    aarch64: 'aeff59b26a27af04fd89485d29b4375be3b526eaebef964a22ec8c027082467e',
-     armv7l: 'aeff59b26a27af04fd89485d29b4375be3b526eaebef964a22ec8c027082467e',
-     x86_64: 'd10dba42f7cdf317ef437c4fdd6500d7cce82eb1fc56e9596e1a494f3b13cda1'
+    aarch64: 'd43124fbe8d5b9d83baee6a6f414de0cfebf3c8ece98b988bb1e4b15af70bb7d',
+     armv7l: 'd43124fbe8d5b9d83baee6a6f414de0cfebf3c8ece98b988bb1e4b15af70bb7d',
+     x86_64: '36081e952cf6c73855cf4b59770bf5b89ecfed1fe9f4f9a16105d8ebbd5b8113'
   })
 
   depends_on 'brotli' # R
@@ -55,6 +55,7 @@ class Graphicsmagick < Package
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
+  depends_on 'glibc_lib' # R
 
   no_env_options
 
@@ -114,7 +115,7 @@ class Graphicsmagick < Package
       # Directory that this library needs to be installed in:
       libdir='#{CREW_LIB_PREFIX}'
     LIBTOOLEOF
-    File.write("#{CREW_LIB_PREFIX}/#{@libname}.la", @libtool_file)
+    File.write("#{CREW_LIB_PREFIX}/#{@libname}.la", @libtool_file) unless File.file?("#{CREW_LIB_PREFIX}/#{@libname}.la")
   end
 
   def self.build
