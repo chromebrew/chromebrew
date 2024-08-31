@@ -50,7 +50,7 @@ class RemoveCommandTest < Minitest::Test
     # Command.remove(@random_essential_pkg, true)
     # end
 
-    assert_raises(SystemExit) { Command.remove(@random_essential_pkg, true) }
+    assert_raises(SystemExit) { Command.remove(@random_essential_pkg) }
   end
 
   def test_remove_package_with_essential_file

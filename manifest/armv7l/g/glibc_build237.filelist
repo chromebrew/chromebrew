@@ -769,6 +769,7 @@
 /usr/local/lib/libm.so.6
 /usr/local/lib/libmcheck.a
 /usr/local/lib/libmemusage.so
+/usr/local/lib/libnsl.so.2
 /usr/local/lib/libnss_compat.so
 /usr/local/lib/libnss_compat.so.2
 /usr/local/lib/libnss_db.so

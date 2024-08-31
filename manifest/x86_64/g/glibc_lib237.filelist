@@ -273,6 +273,7 @@
 /usr/local/lib64/gconv/libJISX0213.so
 /usr/local/lib64/gconv/libKSC.so
 /usr/local/lib64/ld-linux-x86-64.so.2
+/usr/local/lib64/ld-lsb-x86-64.so.3
 /usr/local/lib64/libBrokenLocale.so
 /usr/local/lib64/libBrokenLocale.so.1
 /usr/local/lib64/libC.so.6
@@ -284,12 +285,16 @@
 /usr/local/lib64/libc_malloc_debug.so.0
 /usr/local/lib64/libcrypt.so
 /usr/local/lib64/libcrypt.so.1
+/usr/local/lib64/libcrypt.so.1.1.0
+/usr/local/lib64/libcrypt.so.2
+/usr/local/lib64/libcrypt.so.2.0.0
 /usr/local/lib64/libdl.so.2
 /usr/local/lib64/libm.so
 /usr/local/lib64/libm.so.6
 /usr/local/lib64/libmemusage.so
 /usr/local/lib64/libmvec.so
 /usr/local/lib64/libmvec.so.1
+/usr/local/lib64/libnsl.so.2
 /usr/local/lib64/libnss_compat.so
 /usr/local/lib64/libnss_compat.so.2
 /usr/local/lib64/libnss_db.so

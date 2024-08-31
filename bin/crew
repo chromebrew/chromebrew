@@ -21,6 +21,7 @@ def require_gem(gem_name_and_require = nil, require_override = nil)
              end
   require requires
 end
+require_gem('highline')
 # The json gem can break when upgrading from a much older version of ruby.
 require_gem('json')
 require_gem('activesupport', 'active_support/core_ext/object/blank')
@@ -1272,7 +1273,7 @@ def install
   # remove it just before the file copy
   if @pkg.in_upgrade
     puts 'Attempting removal since this is an upgrade or reinstall...'
-    Command.remove(@pkg, CREW_VERBOSE)
+    Command.remove(@pkg)
   end
 
   if @pkg.is_fake?
@@ -1741,7 +1742,7 @@ end
 def remove_command(args)
   args['<name>'].each do |name|
     search name
-    Command.remove(@pkg, CREW_VERBOSE)
+    Command.remove(@pkg)
   end
 end
 

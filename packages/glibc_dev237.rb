@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/glibc_build237.rb")
 class Glibc_dev237 < Package
   description 'glibc: everything except what is in glibc_lib'
   homepage Glibc_build237.homepage
-  version '2.37-patchelf1'
+  version '2.37-patchelf2'
   license Glibc_build237.license
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc version.split('-').first
@@ -13,9 +13,9 @@ class Glibc_dev237 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fc071b97e0eaa0e1e9b6bdad4ab378112dbef849453fbf3bc4e10e22260b1841',
-     armv7l: 'fc071b97e0eaa0e1e9b6bdad4ab378112dbef849453fbf3bc4e10e22260b1841',
-     x86_64: '72b99a7f86687958639d0935d686260f50afc45e0209ff717bbd42e4ef9d7bfb'
+    aarch64: 'd30575a011326b56ff235078aeb881c2a3d24619cb1697f7eed9b71bd9a33b42',
+     armv7l: 'd30575a011326b56ff235078aeb881c2a3d24619cb1697f7eed9b71bd9a33b42',
+     x86_64: '9689db1bfc8580b61409cc9b23591c1560b3651a2f1474815aab301611866553'
   })
 
   depends_on 'glibc_build237' => :build
@@ -24,6 +24,7 @@ class Glibc_dev237 < Package
   conflicts_ok
   no_shrink
   no_source_build
+  no_strip
   no_upstream_update
 
   def self.install

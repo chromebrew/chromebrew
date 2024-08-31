@@ -754,6 +754,7 @@
 /usr/local/lib64/gcrt1.o
 /usr/local/lib64/grcrt1.o
 /usr/local/lib64/ld-linux-x86-64.so.2
+/usr/local/lib64/ld-lsb-x86-64.so.3
 /usr/local/lib64/libBrokenLocale.a
 /usr/local/lib64/libBrokenLocale.so
 /usr/local/lib64/libBrokenLocale.so.1
@@ -770,6 +771,9 @@
 /usr/local/lib64/libcrypt.a
 /usr/local/lib64/libcrypt.so
 /usr/local/lib64/libcrypt.so.1
+/usr/local/lib64/libcrypt.so.1.1.0
+/usr/local/lib64/libcrypt.so.2
+/usr/local/lib64/libcrypt.so.2.0.0
 /usr/local/lib64/libdl.a
 /usr/local/lib64/libdl.so.2
 /usr/local/lib64/libg.a
@@ -782,6 +786,7 @@
 /usr/local/lib64/libmvec.a
 /usr/local/lib64/libmvec.so
 /usr/local/lib64/libmvec.so.1
+/usr/local/lib64/libnsl.so.2
 /usr/local/lib64/libnss_compat.so
 /usr/local/lib64/libnss_compat.so.2
 /usr/local/lib64/libnss_db.so

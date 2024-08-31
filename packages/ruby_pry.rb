@@ -1,5 +1,4 @@
 require 'buildsystems/ruby'
-require 'highline/import'
 
 class Ruby_pry < RUBY
   description 'Pry is a runtime developer console and IRB alternative with powerful introspection capabilities.'
