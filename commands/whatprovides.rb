@@ -4,7 +4,7 @@ require_relative '../lib/package_utils'
 
 class Command
   def self.whatprovides(regex)
-    matched_list = `grep -R "#{regex}" #{CREW_LIB_PATH}/manifest/#{ARCH}`.lines(chomp: true).flat_map do |result|
+    matched_list = `grep -ER "#{regex}" #{CREW_LIB_PATH}/manifest/#{ARCH}`.lines(chomp: true).flat_map do |result|
       filelist, matched_file = result.split(':', 2)
       pkg_name = File.basename(filelist, '.filelist')
       pkg_name_status = File.file?(File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb")) ? pkg_name : nil
