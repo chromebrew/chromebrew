@@ -19,3 +19,17 @@ class WhatprovidesCommandTest < Minitest::Test
     end
   end
 end
+
+class WhatprovidesRegexTest < Minitest::Test
+  def test_whatprovides_regex
+    expected_output = <<~TEST_EOF
+      crew_profile_base: /usr/local/etc/bash.d/0-stub
+
+      Total found: 1
+    TEST_EOF
+    assert_output(expected_output, nil) do
+      # Command.whatprovides(regex)
+      Command.whatprovides('bash.d/[0-9]+\-stub$')
+    end
+  end
+end
