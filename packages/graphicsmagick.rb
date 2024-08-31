@@ -18,37 +18,40 @@ class Graphicsmagick < Package
      x86_64: '36081e952cf6c73855cf4b59770bf5b89ecfed1fe9f4f9a16105d8ebbd5b8113'
   })
 
+  if %w[x86_64 aarch64 armv7l].include?(ARCH)
+    depends_on 'freetype'
+    depends_on 'ghostscript'
+    depends_on 'harfbuzz'
+    depends_on 'jasper'
+    depends_on 'libde265'
+    depends_on 'libdeflate' # R
+    depends_on 'libheif'
+    depends_on 'libjxl'
+    depends_on 'libsm'
+    depends_on 'libwebp'
+    depends_on 'libwmf'
+    depends_on 'libx11'
+    depends_on 'libxext'
+  end
   depends_on 'brotli' # R
   depends_on 'bzip2' # R
-  depends_on 'freetype' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'gcc_lib' # R
-  depends_on 'ghostscript' if %w[x86_64 aarch64 armv7l].include?(ARCH)
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'harfbuzz' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'highway' # R
   depends_on 'icu4c' # R
-  depends_on 'jasper' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'jbigkit' # R
   depends_on 'lcms' # R
   depends_on 'libbsd' # R
-  depends_on 'libde265' if %w[x86_64 aarch64 armv7l].include?(ARCH)
-  depends_on 'libdeflate' # R
-  depends_on 'libheif' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'libice' # R
   depends_on 'libjpeg_turbo' # R
-  depends_on 'libjxl' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'libmd' # R
   depends_on 'libpng' # R
-  depends_on 'libsm' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'libtiff' # R
   depends_on 'libtool' # R
-  depends_on 'libwebp' if %w[x86_64 aarch64 armv7l].include?(ARCH)
-  depends_on 'libwmf' if %w[x86_64 aarch64 armv7l].include?(ARCH)
-  depends_on 'libx11' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
-  depends_on 'libxext' if %w[x86_64 aarch64 armv7l].include?(ARCH)
   depends_on 'libxml2' # R
   depends_on 'msttcorefonts' # L
   depends_on 'py3_docutils' => :build
@@ -56,7 +59,6 @@ class Graphicsmagick < Package
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'glibc_lib' # R
 
   no_env_options
 
