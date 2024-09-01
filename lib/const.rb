@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.51.6' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.51.7' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -45,7 +45,7 @@ CREW_ESSENTIAL_PACKAGES ||= %w[gcc_lib glibc gmp lz4 ruby xzutils zlib zstd]
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false)
 
-CREW_CPU_VENDOR ||= CPUINFO['vendor_id']
+CREW_CPU_VENDOR ||= CPUINFO['vendor_id'] unless defined?(CREW_CPU_VENDOR)
 # The cpuinfo vendor_id may not exist on non-x86 platforms, or when a
 # container is virtualized on non-x86 platforms. Default to
 # CREW_IS_INTEL for x86 architectures.
@@ -53,8 +53,8 @@ if %w[x86_64 i686].include?(ARCH)
   CREW_IS_AMD ||= CREW_CPU_VENDOR.eql?('AuthenticAMD').nil? unless defined?(CREW_IS_AMD)
   CREW_IS_INTEL ||= %w[unknown GenuineIntel].include?(CREW_CPU_VENDOR) unless defined?(CREW_IS_INTEL)
 else
-  CREW_IS_AMD ||= nil
-  CREW_IS_INTEL ||= nil
+  CREW_IS_AMD ||= nil unless defined?(CREW_IS_AMD)
+  CREW_IS_INTEL ||= nil unless defined?(CREW_IS_INTEL)
 end
 
 # Use sane minimal defaults if in container and no override specified.
