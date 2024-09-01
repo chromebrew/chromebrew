@@ -3,22 +3,21 @@ require 'buildsystems/cmake'
 class Mysql < CMake
   description "MySQL Community Edition is a freely downloadable version of the world's most popular open source database"
   homepage 'https://www.mysql.com/'
-  version '8.4.2-icu75.1'
+  version '9.0.1'
   license 'GPL-2'
   compatibility 'x86_64' # Only 64-bit platforms are supported, so this will work on aarch64 userspaces once those are supported.
-  min_glibc '2.37'
-  source_url 'https://cdn.mysql.com/Downloads/MySQL-8.4/mysql-8.4.2.tar.gz'
-  source_sha256 '5657a78dc86bf0bf2227e0b05f8de5a2c447a816a112ffa26fa70083bcbe9814'
+  source_url 'https://github.com/mysql/mysql-server.git'
+  git_hashtag "mysql-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '5ce6d8be4a2660d05b7ec4892b09f17a7236881fcc34f9756c6102c5d2539791'
+     x86_64: '78f197a0cc31d6657bc682cbbb5be958326872eef0b35d93d7633f59646265d8'
   })
 
   depends_on 'boost' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc_lib' # R
-  depends_on 'icu4c' => :build
+  depends_on 'icu4c', '== 75.1'
   depends_on 'libcyrussasl' => :build
   depends_on 'libedit' # R
   depends_on 'libtirpc' # R
@@ -30,14 +29,6 @@ class Mysql < CMake
   depends_on 'rpcsvc_proto' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
-    File.write "#{CREW_DEST_PREFIX}/etc/bash.d/01-mysql", <<~EOF
-      [ -x #{CREW_PREFIX}/bin/mysql.server ] && #{CREW_PREFIX}/bin/mysql.server start
-    EOF
-  end
 
   def self.postinstall
     FileUtils.mkdir_p "#{CREW_PREFIX}/var/mysql/data"
@@ -93,4 +84,10 @@ class Mysql < CMake
         -DWITH_UNIT_TESTS=OFF" # Since we don't currently run the tests, there's no point in building them.
   # 52/136 Test  #52: merge_small_tests ..................................***Failed   62.42 sec
   # run_tests
+  cmake_install_extras do
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
+    File.write "#{CREW_DEST_PREFIX}/etc/bash.d/01-mysql", <<~EOF
+      [ -x #{CREW_PREFIX}/bin/mysql.server ] && #{CREW_PREFIX}/bin/mysql.server start
+    EOF
+  end
 end
