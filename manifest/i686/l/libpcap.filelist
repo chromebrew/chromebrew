@@ -20,7 +20,7 @@
 /usr/local/lib/libpcap.a
 /usr/local/lib/libpcap.so
 /usr/local/lib/libpcap.so.1
-/usr/local/lib/libpcap.so.1.10.4
+/usr/local/lib/libpcap.so.1.10.5
 /usr/local/lib/pkgconfig/libpcap.pc
 /usr/local/share/man/man1/pcap-config.1.zst
 /usr/local/share/man/man3/pcap.3pcap.zst
