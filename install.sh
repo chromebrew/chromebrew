@@ -338,6 +338,8 @@ BOOTSTRAP_GEMS='activesupport concurrent-ruby highline'
 # shellcheck disable=SC2086
 install_ruby_gem ${BOOTSTRAP_GEMS}
 
+# This is needed for SSL env variables to be populated so ruby doesn't
+# complain about missing certs, resulting in failed https connections.
 echo_info "Installing crew_profile_base...\n"
 yes | crew install crew_profile_base
 source ~/.bashrc
