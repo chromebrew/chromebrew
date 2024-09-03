@@ -34,6 +34,9 @@ class Glibc_build237 < Package
   no_strip
   no_upstream_update
 
+  # These are the only locales we want.
+  @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh].to_set
+
   def self.patch
     FileUtils.mkdir 'fedora'
     # Patch to enable build-local-archive
@@ -320,9 +323,9 @@ class Glibc_build237 < Package
     # find #{CREW_PREFIX}/usr/share/${dir} -mindepth  1 -maxdepth 1 -type d -not \( -name "${KEEPLANG}" -o -name POSIX \) -exec rm -rf {} +
     # done
     if CREW_VERBOSE
-      system "build-locale-archive --install-langs=#{@locales.join(':')}"
+      system "build-locale-archive --install-langs=#{@locales.join(':')}", exception: false
     else
-      system "build-locale-archive --install-langs=#{@locales.join(':')}", %i[out err] => File::NULL
+      system "build-locale-archive --install-langs=#{@locales.join(':')}", %i[out err] => File::NULL, exception: false
     end
     FileUtils.rm "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
   end
