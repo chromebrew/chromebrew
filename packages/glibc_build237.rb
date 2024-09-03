@@ -320,9 +320,9 @@ class Glibc_build237 < Package
     # find #{CREW_PREFIX}/usr/share/${dir} -mindepth  1 -maxdepth 1 -type d -not \( -name "${KEEPLANG}" -o -name POSIX \) -exec rm -rf {} +
     # done
     if CREW_VERBOSE
-      system "build-locale-archive --install-langs=#{@locales.join(':')}"
+      system "build-locale-archive --install-langs=#{@locales.join(':')}", exception: false
     else
-      system "build-locale-archive --install-langs=#{@locales.join(':')}", %i[out err] => File::NULL
+      system "build-locale-archive --install-langs=#{@locales.join(':')}", %i[out err] => File::NULL, exception: false
     end
     FileUtils.rm "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
   end
