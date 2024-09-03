@@ -34,6 +34,9 @@ class Glibc_build237 < Package
   no_strip
   no_upstream_update
 
+  # These are the only locales we want.
+  @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh].to_set
+
   def self.patch
     FileUtils.mkdir 'fedora'
     # Patch to enable build-local-archive
