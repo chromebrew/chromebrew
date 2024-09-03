@@ -89,7 +89,7 @@ CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 if defined?(CREW_CONST_GIT_COMMIT)
   CREW_CONST_GIT_COMMIT = @git_commit if @git_commit != CREW_CONST_GIT_COMMIT
 else
-  CREW_CONST_GIT_COMMIT ||= @git_commit
+  CREW_CONST_GIT_COMMIT ||= @git_commit unless defined?(CREW_CONST_GIT_COMMIT)
 end
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility

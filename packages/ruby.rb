@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.3.4' # Do not use @_ver here, it will break the installer.
+  version '3.3.5' # Do not use @_ver here, it will break the installer.
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
@@ -11,10 +11,10 @@ class Ruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'efba6d8ccb68d3447d1282b0a859d258d0c9a83a028557a368ff4d1fd127b30c',
-     armv7l: 'efba6d8ccb68d3447d1282b0a859d258d0c9a83a028557a368ff4d1fd127b30c',
-       i686: '40b5e188bf7d513f3a08b460bde654b2d25101e90b75b0ca18ea313a65a7e7dc',
-     x86_64: 'e22dccaa0dec9e90562ca16552a9369ecacf2f9706eee139fd3fdb80cd72167e'
+    aarch64: '9ad018a5a3f263bdeb9e548c42613a7e894aba6b8d9941e2c6e9c9f54fb84ee0',
+     armv7l: '9ad018a5a3f263bdeb9e548c42613a7e894aba6b8d9941e2c6e9c9f54fb84ee0',
+       i686: 'b62c49e3d8c8e70bcd81fec5708a848a254385c74d788c9cf8225190b660ba97',
+     x86_64: 'ea3fffee782c2e8c4f755eed36e865a2cb8ae346728f820a32df1e21be147b62'
   })
 
   depends_on 'ca_certificates' # L
