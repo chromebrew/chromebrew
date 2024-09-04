@@ -7401,6 +7401,11 @@ url: https://github.com/pre-commit/pre-commit/releases
 activity: medium
 ---
 kind: url
+name: py3_pygobject
+url: https://gitlab.gnome.org/GNOME/pygobject/tags
+activity: high
+---
+kind: url
 name: py3_pylint
 url: https://github.com/pylint-dev/pylint/releases
 activity: high
@@ -7464,11 +7469,6 @@ kind: url
 name: pyconfigure
 url: https://ftpmirror.gnu.org/pyconfigure/
 activity: none
----
-kind: url
-name: pygobject
-url: https://gitlab.gnome.org/GNOME/pygobject/tags
-activity: high
 ---
 kind: url
 name: pygobject2
