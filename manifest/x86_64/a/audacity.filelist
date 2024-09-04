@@ -323,7 +323,7 @@
 /usr/local/share/audacity/plug-ins/equalabel.ny
 /usr/local/share/audacity/plug-ins/highpass.ny
 /usr/local/share/audacity/plug-ins/label-sounds.ny
-/usr/local/share/audacity/plug-ins/limiter.ny
+/usr/local/share/audacity/plug-ins/legacy-limiter.ny
 /usr/local/share/audacity/plug-ins/lowpass.ny
 /usr/local/share/audacity/plug-ins/noisegate.ny
 /usr/local/share/audacity/plug-ins/notch.ny
