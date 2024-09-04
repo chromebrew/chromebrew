@@ -1,12 +1,9 @@
-# Adapted from Arch Linux wlroots PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/wlroots/trunk/PKGBUILD
+require 'buildsystems/meson'
 
-require 'package'
-
-class Wlroots < Package
+class Wlroots < Meson
   description 'Modular Wayland compositor library'
   homepage 'https://gitlab.freedesktop.org/wlroots/wlroots'
-  version '0.16.1'
+  version '0.18.0'
   license 'MIT'
   compatibility 'aarch64, armv7l, x86_64'
   source_url 'https://gitlab.freedesktop.org/wlroots/wlroots.git'
@@ -14,9 +11,9 @@ class Wlroots < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0722ae885c1a247b03319bfb9092d9bd429209fe7b4cec3ff26276904d7b7e34',
-     armv7l: '0722ae885c1a247b03319bfb9092d9bd429209fe7b4cec3ff26276904d7b7e34',
-     x86_64: 'e06e99287393b51a5cfde4adf5fc81eaf22cb67d7aae762cd864d907c22c6209'
+    aarch64: '9f4b54300f317f3d3a5b931d1d653e9f6d3e42cd19ccfc2012ef96c6fc6727f4',
+     armv7l: '9f4b54300f317f3d3a5b931d1d653e9f6d3e42cd19ccfc2012ef96c6fc6727f4',
+     x86_64: '853aa4007613473416064052dd64a55c187eb9bfde0f511e26879cb543e2f341'
   })
 
   depends_on 'eudev' # R
@@ -34,17 +31,5 @@ class Wlroots < Package
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
   depends_on 'xcb_util_wm' # R
-  depends_on 'xwayland' # L
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      -Dxwayland=enabled \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  depends_on 'xwayland'
 end
