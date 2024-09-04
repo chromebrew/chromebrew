@@ -1,20 +1,19 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Pygobject < Python
+class Py3_pygobject < Pip
   description 'PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.'
   homepage 'https://pygobject.gnome.org/'
-  @_ver = '3.44.2'
-  version "#{@_ver}-py3.12"
+  version '3.48.2-py3.12'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/pygobject.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4151689b78c1ed1417be8750710016a6380cbaba071e7f654a52196bd3c0366f',
-     armv7l: '4151689b78c1ed1417be8750710016a6380cbaba071e7f654a52196bd3c0366f',
-     x86_64: '6f9d0d03cf9e4ee58d255a9ade73023c2ec1dc1b4a10a26dbe6210c2af5decd4'
+    aarch64: '9c20d1c394f4c35bf3fad8cd0e015734dd48b227762f23fd53b059d5acf5e060',
+     armv7l: '9c20d1c394f4c35bf3fad8cd0e015734dd48b227762f23fd53b059d5acf5e060',
+     x86_64: '052613b256000800d203abcc5dfa1704fbfa85755acc7a3f818b7e625d51bf10'
   })
 
   depends_on 'cairo' # R

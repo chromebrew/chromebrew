@@ -172,6 +172,7 @@ pkg_update_arr = [
   { pkg_name: 'pkgconfig', pkg_rename: 'pkg_config', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'postgres', pkg_rename: 'postgresql', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'proj4', pkg_rename: 'proj', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'pygobject', pkg_rename: 'py3_pygobject', pkg_deprecated: nil, comments: 'Renamed to use pip packaging.' },
   { pkg_name: 'qtbase', pkg_rename: 'qt5_base', pkg_deprecated: nil, comments: 'Qt packages renamed to qt5_*' },
   { pkg_name: 'qtcharts', pkg_rename: 'qt5_charts', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'qtchooser', pkg_rename: nil, pkg_deprecated: true, comments: "Doesn't work for newer Qt versions." },
