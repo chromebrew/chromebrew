@@ -78,7 +78,7 @@ class Gimp < Meson
   depends_on 'poppler' # R
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_pycairo' # L
-  depends_on 'pygobject' # L
+  depends_on 'py3_pygobject' # L
   depends_on 'pygtk' => :build
   depends_on 'shared_mime_info' => :build
   depends_on 'vala' => :build

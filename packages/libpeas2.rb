@@ -26,7 +26,7 @@ class Libpeas2 < Meson
   depends_on 'luajit_lgi' => :build
   depends_on 'luajit' # R
   depends_on 'py3_gi_docgen' => :build
-  depends_on 'pygobject' => :build
+  depends_on 'py3_pygobject' => :build
   depends_on 'python3' # R
   depends_on 'vala' => :build
 

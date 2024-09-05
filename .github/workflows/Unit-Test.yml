@@ -120,6 +120,7 @@ jobs:
               -u chronos \
               -e CHANGED_PACKAGES="$CHANGED_PACKAGES" \
               -e LD_LIBRARY_PATH="/usr/local/lib$LIB_SUFFIX" \
+              -e GCONV_PATH="/usr/local/lib$LIB_SUFFIX/gconv" \
               -e CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}" \
               -e CREW_BRANCH="${{ github.head_ref }}" \
               "satmandu/crewbuild:$CONTAINER" \
