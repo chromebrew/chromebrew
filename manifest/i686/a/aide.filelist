@@ -1,6 +1,3 @@
 /usr/local/bin/aide
-/usr/local/etc/aide.conf
-/usr/local/etc/doc/aide.db
-/usr/local/man/man5/aide.conf.5.gz
-/usr/local/share/man/man1/aide.1.gz
-/usr/local/share/man/man5/aide.conf.5.gz
+/usr/local/share/man/man1/aide.1.zst
+/usr/local/share/man/man5/aide.conf.5.zst
