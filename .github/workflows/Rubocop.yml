@@ -13,3 +13,4 @@ jobs:
         uses: reviewdog/action-rubocop@v2
         with:
           fail_on_error: true
+          filter_mode: nofilter
