@@ -30,7 +30,7 @@ class Libgweather < Meson
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_pylint' => :build
   depends_on 'py3_smartypants' => :build
-  depends_on 'pygobject' => :build
+  depends_on 'py3_pygobject' => :build
 
   gnome
 

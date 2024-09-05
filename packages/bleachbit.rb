@@ -16,7 +16,7 @@ class Bleachbit < Package
      x86_64: '9fce1a604d77059c43980dae5cbe13c3779b88e9e58ab164e49223ec3901c7cf'
   })
 
-  depends_on 'pygobject'
+  depends_on 'py3_pygobject'
   depends_on 'gtk3'
   depends_on 'sommelier'
   depends_on 'py3_mock' => :build # for checks

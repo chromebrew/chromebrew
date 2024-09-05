@@ -27,7 +27,7 @@ class Glade < Meson
   depends_on 'harfbuzz' # R
   depends_on 'libxml2' # R
   depends_on 'pango' # R
-  depends_on 'pygobject' => :build
+  depends_on 'py3_pygobject' => :build
   depends_on 'python3' # R
 
   gnome

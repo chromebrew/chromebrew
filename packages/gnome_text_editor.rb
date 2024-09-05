@@ -41,7 +41,7 @@ class Gnome_text_editor < Meson
   depends_on 'pango' # R
   depends_on 'pcre2' # R
   depends_on 'pcre' => :build
-  depends_on 'pygobject' => :build
+  depends_on 'py3_pygobject' => :build
   depends_on 'sassc' => :build
   depends_on 'vala' => :build
   depends_on 'vulkan_icd_loader' # R

@@ -33,7 +33,7 @@ class Tinysparql < Meson
   depends_on 'libsoup' # R
   depends_on 'libstemmer' # R
   depends_on 'libxml2' # R
-  depends_on 'pygobject' => :build
+  depends_on 'py3_pygobject' => :build
   depends_on 'sqlite' # R
   depends_on 'util_linux' => :build
   depends_on 'vala' => :build

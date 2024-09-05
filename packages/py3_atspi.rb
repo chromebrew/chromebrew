@@ -20,7 +20,7 @@ class Py3_atspi < Autotools
      x86_64: 'd055212318d6d767727c4ef4b8ce3c8e2e9ebf753136b22d1e4bb0200b66985e'
   })
 
-  depends_on 'pygobject'
+  depends_on 'py3_pygobject'
   depends_on 'at_spi2_core'
   depends_on 'python3' => :build
 end

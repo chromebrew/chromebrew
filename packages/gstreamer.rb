@@ -102,7 +102,7 @@ class Gstreamer < Meson
   depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
   depends_on 'py3_setuptools' => :build
-  depends_on 'pygobject' # R
+  depends_on 'py3_pygobject' # R
   depends_on 'python3' # R
   depends_on 'qt5_base' => :build # otherwise this becomes circular
   depends_on 'qt5_declarative' => :build # otherwise this becomes circular

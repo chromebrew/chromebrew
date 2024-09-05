@@ -12,7 +12,7 @@ class Py3_devedeng < Python
 
   depends_on 'python3' => :build
   depends_on 'py3_pycairo'
-  depends_on 'pygobject'
+  depends_on 'py3_pygobject'
   depends_on 'gtk3'
 
   no_compile_needed

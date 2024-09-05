@@ -15,7 +15,7 @@ class Metadata_cleaner < Meson
   depends_on 'libadwaita' # R
   depends_on 'mesonbuild' => :build
   depends_on 'py3_mat2' # R
-  depends_on 'pygobject' # R
+  depends_on 'py3_pygobject' # R
   depends_on 'python3' # R
 
   no_compile_needed

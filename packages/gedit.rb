@@ -33,7 +33,7 @@ class Gedit < Meson
   depends_on 'libpeas' # R
   depends_on 'pango' # R
   depends_on 'py3_lxml' => :build
-  depends_on 'pygobject' => :build
+  depends_on 'py3_pygobject' => :build
   depends_on 'tepl_6' # R
   depends_on 'vala' => :build
   depends_on 'yelp_tools' => :build
