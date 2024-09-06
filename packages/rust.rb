@@ -3,7 +3,7 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.80.1'
+  version '1.81.0'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
@@ -11,10 +11,10 @@ class Rust < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dddd3ad05f1c92a5e788d2e83219cad0336b87177ee4c6c41a63e28e7c3722bf',
-     armv7l: 'dddd3ad05f1c92a5e788d2e83219cad0336b87177ee4c6c41a63e28e7c3722bf',
-       i686: '30637e188e61f575bdd34f4d235d613c3854056794bea7e2e7900e08c7db7307',
-     x86_64: '78eb825b60ba03c2ff08fc98c7c6555c85f3295c905eb290d57eff4c36d530ce'
+    aarch64: 'a331329b3d2a8de67e367bff29106173b49fd7a81bac2049607934cd2c55a46a',
+     armv7l: 'a331329b3d2a8de67e367bff29106173b49fd7a81bac2049607934cd2c55a46a',
+       i686: '8ef4d22474532efdf22a754109d753389d4ecdd7cb79df82bbeaf8946183d7d9',
+     x86_64: '1ebb15df01b82c8ce80c2d7c5bb987e9a41e95bd3c4a0f62eff49f61dbd563d9'
   })
 
   depends_on 'gcc_lib' # R
