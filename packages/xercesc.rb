@@ -1,34 +1,41 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xercesc < Package
+class Xercesc < Autotools
   description 'Xerces-C++ is a validating XML parser written in a portable subset of C++.'
   homepage 'https://xerces.apache.org/xerces-c/'
-  version '3.2.3'
+  version '3.2.5'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://downloads.apache.org/xerces/c/3/sources/xerces-c-3.2.3.tar.xz'
-  source_sha256 '12fc99a9fc1d1a79bd0e927b8b5637a576d6656f45b0d5e70ee3694d379cc149'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/apache/xerces-c.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7ee70737c8d3fe7d21a9e3cf3f27abebcf9b663da95b4aa24e9862c9c707fe4c',
-     armv7l: '7ee70737c8d3fe7d21a9e3cf3f27abebcf9b663da95b4aa24e9862c9c707fe4c',
-       i686: '8cad0d974c6c6966fbc7e0d039fcab63a07eccd4e2435fadd748b4fbce2e5cc4',
-     x86_64: 'd1a0c7fd791b712963ea851792e8253474ec0ba5683d631ce0b0ac981e90762e'
+    aarch64: 'f8b2b89232b64109e16cb378545adbc29d60a80ac141dc58ee303a83c5f5db4e',
+     armv7l: 'f8b2b89232b64109e16cb378545adbc29d60a80ac141dc58ee303a83c5f5db4e',
+       i686: '1573698c5fa1871953d6fe90bfa4cc613a71dde7bd1a63c36d83c184e5911ca5',
+     x86_64: 'f1a1409f5fdcb3670d4f05c6fb500c554a871c073c478f51283de0d0ef993b8a'
   })
 
+  depends_on 'brotli' # R
+  depends_on 'c_ares' # R
   depends_on 'curl'
+  depends_on 'e2fsprogs' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'icu4c' # R
+  depends_on 'krb5' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libidn2' # R
+  depends_on 'libnghttp2' # R
+  depends_on 'libpsl' # R
+  depends_on 'libssh' # R
+  depends_on 'libtirpc' # R
+  depends_on 'libunistring' # R
+  depends_on 'openldap' # R
+  depends_on 'openssl' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode',
-           '--disable-static'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--disable-static'
 end
