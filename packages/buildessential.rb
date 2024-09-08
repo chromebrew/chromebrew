@@ -166,6 +166,8 @@ class Buildessential < Package
   depends_on 'zstd'
 
   # Ruby gems
+  # Needed for irb
+  depends_on 'ruby_debug'
   # Add rubocop for linting packages. (This also installs the
   # rubocop config file.)
   depends_on 'ruby_rubocop'
