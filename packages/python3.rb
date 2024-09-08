@@ -7,14 +7,14 @@ class Python3 < Package
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 'fa8a2e12c5e620b09f53e65bcd87550d2e5a1e2e04bf8ba991dcc55113876397'
+  source_sha256 '1999658298cf2fb837dffed8ff3c033ef0c98ef20cf73c5d5f66bed5ab89697c'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cf157b5e1e437ede3c57b68ca6c24ddc684e6bbcfa8b8fe20439226487429893',
-     armv7l: 'cf157b5e1e437ede3c57b68ca6c24ddc684e6bbcfa8b8fe20439226487429893',
-       i686: 'e4496c85ceb4dda9621ed519921d11eee43bdb1e06cc872913a981ba7167a03f',
-     x86_64: 'b66100c8964759d31c6339de2bd5eac586a59c8caf51fbf326ddd8c077484366'
+    aarch64: '85df5cadf8cbb04698c3befe0bdcc8010e46e8aa51ebcf69dab8f298151a3feb',
+     armv7l: '85df5cadf8cbb04698c3befe0bdcc8010e46e8aa51ebcf69dab8f298151a3feb',
+       i686: '6ac42600df7756eb34c93046f561196808556f53dcf2e633d5aab15d2ca8d382',
+     x86_64: '9f6ddb59083d921353eca0c119f95d8a8c8c52ac4211a069afd98e8b45dad5e6'
   })
 
   depends_on 'autoconf_archive' => :build
