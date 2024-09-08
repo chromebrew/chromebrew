@@ -75,7 +75,7 @@
     "name": "acquia_cli",
     "description": "Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.",
     "homepage": "https://github.com/acquia/cli",
-    "version": "2.29.0",
+    "version": "2.29.2",
     "license": "GPL-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -139,7 +139,7 @@
     "name": "aide",
     "description": "Advanced Intrusion Detection Environment",
     "homepage": "https://aide.github.io",
-    "version": "0.15.1",
+    "version": "0.18.8",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -267,7 +267,7 @@
     "name": "ansible",
     "description": "Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.",
     "homepage": "https://www.ansible.com/",
-    "version": "2.11.6",
+    "version": "2.17.3",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -491,7 +491,7 @@
     "name": "aspell",
     "description": "GNU Aspell is a Free and Open Source spell checker designed to eventually replace Ispell.",
     "homepage": "http://aspell.net/",
-    "version": "0.60.8",
+    "version": "0.60.8.1",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -611,7 +611,7 @@
     "name": "audacity",
     "description": "Audacity is the world's most popular audio editing and recording app",
     "homepage": "https://www.audacityteam.org/",
-    "version": "3.6.1",
+    "version": "3.6.2",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
@@ -747,7 +747,7 @@
     "name": "axel",
     "description": "Light command line download accelerator for Linux and Unix",
     "homepage": "https://github.com/axel-download-accelerator/axel",
-    "version": "2.17.6",
+    "version": "2.17.14",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -787,9 +787,9 @@
     "name": "bacula",
     "description": "Bacula is a set of computer programs that permits the system administrator to manage backup, recovery, and verification of computer data across a network of computers of different kinds.",
     "homepage": "https://www.bacula.org/",
-    "version": "9.4.2",
+    "version": "15.0.2",
     "license": "AGPL-3",
-    "compatibility": "x86_64 aarch64 armv7l"
+    "compatibility": "x86_64"
   },
   {
     "name": "balena_etcher",
@@ -1067,7 +1067,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.69.160",
+    "version": "1.69.162",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1227,7 +1227,7 @@
     "name": "cage",
     "description": "A kiosk compositor for Wayland",
     "homepage": "https://www.hjdskes.nl/projects/cage/",
-    "version": "0.1.6",
+    "version": "0.1.5",
     "license": "MIT",
     "compatibility": "aarch64, armv7l, x86_64"
   },
@@ -1395,7 +1395,7 @@
     "name": "chafa",
     "description": "Image-to-text converter supporting a wide range of symbols and palettes, transparency, animations, etc.",
     "homepage": "https://hpjansson.org/chafa/",
-    "version": "cf15d59",
+    "version": "1.14.2",
     "license": "LGPL",
     "compatibility": "all"
   },
@@ -1433,9 +1433,9 @@
   },
   {
     "name": "chicken",
-    "description": "CHICKEN is practical and portable scheme system.",
+    "description": "CHICKEN is a practical and portable scheme system.",
     "homepage": "https://code.call-cc.org/",
-    "version": "5.1.0",
+    "version": "5.4.0",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -1715,7 +1715,7 @@
     "name": "colord",
     "description": "colord is a system service that makes it easy to manage, install and generate color profiles to accurately color manage input and output devices.",
     "homepage": "https://www.freedesktop.org/software/colord/",
-    "version": "1.4.5",
+    "version": "1.4.7",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -1747,7 +1747,7 @@
     "name": "composer",
     "description": "Dependency Manager for PHP",
     "homepage": "https://getcomposer.org/",
-    "version": "2.7.8",
+    "version": "2.7.9",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2547,7 +2547,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "128.0.2739.54-1",
+    "version": "128.0.2739.67-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2931,7 +2931,7 @@
     "name": "ffmpegthumbnailer",
     "description": "FFmpegthumbnailer is a lightweight video thumbnailer that can be used by file managers to create thumbnails for your video files.",
     "homepage": "https://github.com/dirkvdb/ffmpegthumbnailer",
-    "version": "2.2.3-e0bf01d-1",
+    "version": "2.2.2",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2995,7 +2995,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "129.0.2",
+    "version": "130.0",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3611,7 +3611,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "489.0.0",
+    "version": "491.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -3979,7 +3979,7 @@
     "name": "glab",
     "description": "A GitLab CLI tool bringing GitLab to your command line",
     "homepage": "https://gitlab.com/gitlab-org/cli",
-    "version": "1.45.0",
+    "version": "1.46.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4227,7 +4227,7 @@
     "name": "gn",
     "description": "GN is a meta-build system that generates build files for Ninja.",
     "homepage": "https://gn.googlesource.com/gn/",
-    "version": "dca877f",
+    "version": "b2afae1",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -4451,7 +4451,7 @@
     "name": "go",
     "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "homepage": "https://go.dev",
-    "version": "1.22.5",
+    "version": "1.23.0",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -4507,7 +4507,7 @@
     "name": "gobject_introspection",
     "description": "GObject introspection is a middleware layer between C libraries (using GObject) and language bindings.",
     "homepage": "https://wiki.gnome.org/action/show/Projects/GObjectIntrospection",
-    "version": "1.80.1",
+    "version": "1.81.4",
     "license": "LGPL-2+ and GPL-2+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -4515,7 +4515,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "128.0.6613.113-1",
+    "version": "128.0.6613.119-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -4579,7 +4579,7 @@
     "name": "gperf",
     "description": "GNU gperf is a perfect hash function generator.",
     "homepage": "https://www.gnu.org/software/gperf/",
-    "version": "3.2",
+    "version": "3.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -4771,7 +4771,7 @@
     "name": "gstreamer",
     "description": "GStreamer is a library for constructing graphs of media-handling components.",
     "homepage": "https://gstreamer.freedesktop.org/",
-    "version": "1.24.0",
+    "version": "1.24.7",
     "license": "LGPL-2+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -4803,7 +4803,7 @@
     "name": "gtk4",
     "description": "GTK+ is a multi-platform toolkit for creating graphical user interfaces.",
     "homepage": "https://developer.gnome.org/gtk4/",
-    "version": "4.15.5",
+    "version": "4.15.6",
     "license": "LGPL-2.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -5886,14 +5886,6 @@
     "version": "1.6.3",
     "license": "GPL-2.0",
     "compatibility": "all"
-  },
-  {
-    "name": "komodo",
-    "description": "Komodo IDE is a great editor if you're looking for something powerful, yet simple.",
-    "homepage": "https://www.activestate.com/products/komodo-ide/",
-    "version": "12.0.1-91869",
-    "license": "ActiveState® Platform EULA",
-    "compatibility": "x86_64"
   },
   {
     "name": "kore",
@@ -7587,7 +7579,7 @@
     "name": "libpcap",
     "description": "A portable C/C++ library for network traffic capture.",
     "homepage": "https://www.tcpdump.org/",
-    "version": "1.10.4",
+    "version": "1.10.5",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -9379,7 +9371,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "24.2.1",
+    "version": "24.2.2",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -10075,7 +10067,7 @@
     "name": "mysql",
     "description": "MySQL Community Edition is a freely downloadable version of the world's most popular open source database",
     "homepage": "https://www.mysql.com/",
-    "version": "8.4.2",
+    "version": "9.0.1",
     "license": "GPL-2",
     "compatibility": "x86_64"
   },
@@ -10099,7 +10091,7 @@
     "name": "nano",
     "description": "Nano's ANOther editor, an enhanced free Pico clone.",
     "homepage": "https://www.nano-editor.org/",
-    "version": "8.1",
+    "version": "8.2",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -10867,7 +10859,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "113.0.5230.47",
+    "version": "113.0.5230.62",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -11208,28 +11200,12 @@
     "compatibility": "all"
   },
   {
-    "name": "percona_boost",
-    "description": "Boost provides free peer-reviewed portable C++ source libraries.",
-    "homepage": "https://www.boost.org/",
-    "version": "1.59.0",
-    "license": "Boost-1.0",
-    "compatibility": "all"
-  },
-  {
-    "name": "percona_server",
-    "description": "Percona Server for MySQL® is a free, fully compatible, enhanced, open source drop-in replacement for MySQL that provides superior performance, scalability and instrumentation.",
-    "homepage": "https://www.percona.com/mysql/software/percona-server-for-mysql",
-    "version": "5.7.20-19",
-    "license": "GPL-2",
-    "compatibility": "all"
-  },
-  {
     "name": "percona_toolkit",
-    "description": "Percona Toolkit is a collection of advanced open source command-line tools, developed and used by the Percona technical staff, that are engineered to perform a variety of MySQL®, MongoB® and system tasks that are too difficult or complex to perform manually.",
+    "description": "Percona Toolkit is a collection of advanced command-line tools used by Percona support staff to perform a variety of MySQL and system tasks that are too difficult or complex to perform manually.",
     "homepage": "https://www.percona.com/percona-toolkit",
-    "version": "3.0.7",
-    "license": "GPL-2 or Artistic",
-    "compatibility": "all"
+    "version": "3.6.0",
+    "license": "GPL-2",
+    "compatibility": "x86_64"
   },
   {
     "name": "perf",
@@ -13136,6 +13112,14 @@
     "compatibility": "all"
   },
   {
+    "name": "py3_pygobject",
+    "description": "PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.",
+    "homepage": "https://pygobject.gnome.org/",
+    "version": "3.48.2",
+    "license": "LGPL-2.1+",
+    "compatibility": "x86_64 aarch64 armv7l"
+  },
+  {
     "name": "py3_pyicu",
     "description": "PyICU is a Python extension wrapping the ICU C++ API.",
     "homepage": "https://pyicu.org/",
@@ -13299,7 +13283,7 @@
     "name": "py3_setuptools",
     "description": "Setuptools is the python build system from the Python Packaging Authority.",
     "homepage": "https://setuptools.readthedocs.io/",
-    "version": "72.1.0",
+    "version": "74.1.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13648,14 +13632,6 @@
     "compatibility": "all"
   },
   {
-    "name": "pygobject",
-    "description": "PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.",
-    "homepage": "https://pygobject.gnome.org/",
-    "version": "3.44.2",
-    "license": "LGPL-2.1+",
-    "compatibility": "x86_64 aarch64 armv7l"
-  },
-  {
     "name": "pygobject2",
     "description": "PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.",
     "homepage": "https://pygobject.gnome.org/",
@@ -13685,14 +13661,6 @@
     "homepage": "https://www.python.org/",
     "version": "3.12.5",
     "license": "PSF-2.0",
-    "compatibility": "all"
-  },
-  {
-    "name": "q",
-    "description": "q is a command line tool that allows direct execution of SQL-like queries on CSVs/TSVs (and any other tabular text files).",
-    "homepage": "http://harelba.github.io/q/",
-    "version": "1.7.1",
-    "license": "GPL-3",
     "compatibility": "all"
   },
   {
@@ -14195,7 +14163,7 @@
     "name": "rpcsvc_proto",
     "description": "rpcsvc protocol definitions from glibc",
     "homepage": "https://github.com/thkukuk/rpcsvc-proto",
-    "version": "1.4.4",
+    "version": "1.4.4-1",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -14243,7 +14211,7 @@
     "name": "ruby",
     "description": "Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.",
     "homepage": "https://www.ruby-lang.org/en/",
-    "version": "3.3.4",
+    "version": "3.3.5",
     "license": "Ruby-BSD and BSD-2",
     "compatibility": "all"
   },
@@ -14355,7 +14323,7 @@
     "name": "rust",
     "description": "Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.",
     "homepage": "https://www.rust-lang.org/",
-    "version": "1.80.1",
+    "version": "1.81.0",
     "license": "Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -14755,7 +14723,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.22.2",
+    "version": "7.23.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -14835,7 +14803,7 @@
     "name": "smem",
     "description": "A Linux memory reporting tool that uses proportional set size.",
     "homepage": "https://www.selenic.com/smem/",
-    "version": "1.4",
+    "version": "1.5",
     "license": "GPL-2+",
     "compatibility": "all"
   },
@@ -15059,7 +15027,7 @@
     "name": "sqlmap",
     "description": "sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.",
     "homepage": "https://sqlmap.org/",
-    "version": "1.4.2",
+    "version": "1.8.8",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -15411,7 +15379,7 @@
     "name": "tcpdump",
     "description": "A powerful command-line packet analyzer.",
     "homepage": "https://www.tcpdump.org/",
-    "version": "4.99.4",
+    "version": "4.99.5",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -16115,9 +16083,9 @@
     "name": "v4l_utils",
     "description": "The v4l-utils are a series of packages for handling media devices.",
     "homepage": "https://www.linuxtv.org/wiki/index.php/V4l-utils",
-    "version": "1.22.1",
+    "version": "1.28.1",
     "license": "GPL-2+ and LGPL-2.1+",
-    "compatibility": "x86_64 aarch64 armv7l"
+    "compatibility": "all"
   },
   {
     "name": "vagrant",
@@ -16243,7 +16211,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "6.9.3447.37-1",
+    "version": "6.9.3447.41-1",
     "license": "Vivaldi",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -16499,7 +16467,7 @@
     "name": "weechat",
     "description": "WeeChat is a fast, light and extensible chat client.",
     "homepage": "https://weechat.org/",
-    "version": "2.1",
+    "version": "4.4.1",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -16611,7 +16579,7 @@
     "name": "wlroots",
     "description": "Modular Wayland compositor library",
     "homepage": "https://gitlab.freedesktop.org/wlroots/wlroots",
-    "version": "0.16.1",
+    "version": "0.18.0",
     "license": "MIT",
     "compatibility": "aarch64, armv7l, x86_64"
   },
