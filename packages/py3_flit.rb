@@ -3,7 +3,6 @@ require 'buildsystems/pip'
 class Py3_flit < Pip
   description 'Flit provides simplified packaging of Python modules.'
   homepage 'https://flit.pypa.io/'
-  @_ver = '3.7.1'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'

@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_slugify < Python
+class Py3_slugify < Pip
   description 'Python-slugify returns unicode slugs.'
   homepage 'https://github.com/un33k/python-slugify/'
-  @_ver = '8.0.1'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/un33k/python-slugify.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

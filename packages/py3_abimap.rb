@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_abimap < Python
+class Py3_abimap < Pip
   description 'A helper for library maintainers to use symbol versioning'
   homepage 'https://github.com/ansasaki/abimap'
-  @_ver = '0.3.2'
   version "#{@_ver}-py3.12"
   license 'BSD-2'
   compatibility 'all'
-  source_url 'https://github.com/ansasaki/abimap.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

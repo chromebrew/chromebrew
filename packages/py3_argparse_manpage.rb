@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_argparse_manpage < Python
+class Py3_argparse_manpage < Pip
   description 'Automatically build man-pages for your Python project.'
   homepage 'https://github.com/praiskup/argparse-manpage'
-  @_ver = '4.5'
   version "#{@_ver}-py3.12"
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/praiskup/argparse-manpage.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

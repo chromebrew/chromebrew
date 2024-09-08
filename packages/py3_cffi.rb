@@ -3,7 +3,6 @@ require 'buildsystems/pip'
 class Py3_cffi < Pip
   description 'C Foreign Function Interface for Python calling C code.'
   homepage 'https://cffi.readthedocs.io/'
-  @_ver = '1.16.0'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'

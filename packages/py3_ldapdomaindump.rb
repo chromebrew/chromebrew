@@ -3,7 +3,6 @@ require 'buildsystems/pip'
 class Py3_ldapdomaindump < Pip
   description 'LDAPDomainDump uses LDAP to dump active directory information.'
   homepage 'https://github.com/dirkjanm/ldapdomaindump/'
-  @_ver = '0.9.3'
   version "#{@_ver}-py3.12"
   license 'LGPL-3'
   compatibility 'all'

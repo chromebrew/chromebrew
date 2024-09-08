@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_markdown < Python
+class Py3_markdown < Pip
   description 'Markdown is a Python implementation of Markdown.'
   homepage 'https://python-markdown.github.io/'
-  @_ver = '3.4.4'
   version "#{@_ver}-py3.12"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/Python-Markdown/markdown.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

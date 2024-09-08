@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_dbfread < Python
+class Py3_dbfread < Pip
   description 'DBFread reads DBF Files with Python.'
   homepage 'https://dbfread.readthedocs.io/'
-  @_ver = '2.0.7'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/olemb/dbfread.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

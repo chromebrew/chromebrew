@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_olefile < Python
+class Py3_olefile < Pip
   description 'Olefile is a Python package to parse, read and write Microsoft OLE2 files.'
   homepage 'https://www.decalage.info/python/olefileio/'
-  @_ver = '0.46'
   version "#{@_ver}-py3.12"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/decalage2/olefile.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

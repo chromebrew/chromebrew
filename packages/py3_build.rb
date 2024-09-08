@@ -3,7 +3,6 @@ require 'buildsystems/pip'
 class Py3_build < Pip
   description 'Python build is a simple, correct PEP 517 build frontend.'
   homepage 'https://pypa-build.readthedocs.io/'
-  @_ver = '1.0.3'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'

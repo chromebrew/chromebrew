@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_pep517 < Python
+class Py3_pep517 < Pip
   description 'Python PEP517 is an API to call PEP 517 hooks for building Python packages '
   homepage 'https://pep517.readthedocs.io/'
-  @_ver = '1.0.0'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/pypa/pyproject-hooks.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

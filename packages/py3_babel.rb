@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_babel < Python
+class Py3_babel < Pip
   description 'Babel is an integrated collection of utilities that assist in internationalizing and localizing Python applications.'
   homepage 'https://babel.pocoo.org/'
-  @_ver = '2.13.0'
   version "#{@_ver}-py3.12"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/python-babel/babel.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

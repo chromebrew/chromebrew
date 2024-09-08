@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_argcomplete < Python
+class Py3_argcomplete < Pip
   description 'Argcomplete provides bash completion for argparse.'
   homepage 'https://kislyuk.github.io/argcomplete/'
-  @_ver = '3.1.2'
   version "#{@_ver}-py3.12"
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/kislyuk/argcomplete.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

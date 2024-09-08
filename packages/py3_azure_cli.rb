@@ -3,7 +3,6 @@ require 'buildsystems/pip'
 class Py3_azure_cli < Pip
   description 'Next generation multi-platform command line experience for Azure.'
   homepage 'https://pypi.org/project/azure-cli/'
-  @_ver = '2.53.1'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'

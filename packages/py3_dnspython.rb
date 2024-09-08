@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_dnspython < Python
+class Py3_dnspython < Pip
   description 'DNSPython is a DNS toolkit.'
   homepage 'https://www.dnspython.org/'
-  @_ver = '2.4.2'
   version "#{@_ver}-py3.12"
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/rthalley/dnspython.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

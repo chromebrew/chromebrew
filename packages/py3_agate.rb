@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_agate < Python
+class Py3_agate < Pip
   description 'Agate is a data analysis library that is optimized for humans instead of machines.'
   homepage 'https://agate.readthedocs.io/'
-  @_ver = '1.7.1'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/wireservice/agate.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

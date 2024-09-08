@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_alabaster < Python
+class Py3_alabaster < Pip
   description 'Alabaster is a configurable sidebar-enabled Sphinx theme.'
   homepage 'https://alabaster.readthedocs.io/'
-  @_ver = '0.7.13'
   version "#{@_ver}-py3.12"
   license 'BSD' # License is BSD-style, might be BSD-3?
   compatibility 'all'
-  source_url 'https://github.com/bitprophet/alabaster.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

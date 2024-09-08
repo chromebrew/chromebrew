@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_attrs < Python
+class Py3_attrs < Pip
   description 'Attrs removes the need to implement object protocols in classes.'
   homepage 'https://www.attrs.org/'
-  @_ver = '23.1.0'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/python-attrs/attrs.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

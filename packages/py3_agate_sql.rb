@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_agate_sql < Python
+class Py3_agate_sql < Pip
   description 'Agate-sql adds SQL read/write support to agate.'
   homepage 'https://agate-sql.readthedocs.org/'
-  @_ver = '0.6.0'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/wireservice/agate-sql.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

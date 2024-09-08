@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_arrow < Python
+class Py3_arrow < Pip
   description 'Arrow is a Python library that offers a sensible and human-friendly approach to creating, manipulating, formatting and converting dates, times and timestamps.'
   homepage 'https://arrow.readthedocs.io/'
-  @_ver = '1.3.0'
   version "#{@_ver}-py3.12"
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/arrow-py/arrow.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

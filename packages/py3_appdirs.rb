@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_appdirs < Python
+class Py3_appdirs < Pip
   description 'Appdirs is a small Python module for determining appropriate platform-specific directories.'
   homepage 'https://github.com/ActiveState/appdirs/'
-  @_ver = '1.4.4'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/ActiveState/appdirs.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

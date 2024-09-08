@@ -3,12 +3,11 @@ require 'buildsystems/python'
 class Py3_devedeng < Python
   description 'DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD)'
   homepage 'https://www.rastersoft.com/programas/devede.html'
-  @_ver = '4.18.0'
-  version "#{@_ver}-py3.12"
+  version "4.18.0-py3.12"
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.com/rastersoft/devedeng.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
 
   depends_on 'python3' => :build
   depends_on 'py3_pycairo'

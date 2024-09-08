@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_isodate < Python
+class Py3_isodate < Pip
   description 'ISOdate is an ISO 8601 date/time/duration parser and formatter.'
   homepage 'https://github.com/gweis/isodate/'
-  @_ver = '0.6.1'
   version "#{@_ver}-py3.12"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/gweis/isodate.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

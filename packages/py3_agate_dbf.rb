@@ -1,14 +1,12 @@
 require 'buildsystems/python'
 
-class Py3_agate_dfb < Python
+class Py3_agate_dbf < Python
   description 'Agate-dbf adds read support for DBF files to agate.'
   homepage 'https://agate-dbf.readthedocs.org/'
-  @_ver = '0.2.2'
-  version "#{@_ver}-py3.12"
+  version "0.2.2-py3.12"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/wireservice/agate-dbf.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

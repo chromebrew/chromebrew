@@ -3,7 +3,6 @@ require 'buildsystems/pip'
 class Py3_impacket < Pip
   description 'Impacket provides network protocols constructors and dissectors.'
   homepage 'https://www.secureauth.com/labs/open-source-tools/impacket/'
-  @_ver = '0.9.23'
   version "#{@_ver}-py3.12"
   license 'Apache-2.0-with-impacket-modifications'
   compatibility 'all'

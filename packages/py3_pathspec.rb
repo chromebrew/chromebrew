@@ -1,14 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_pathspec < Python
+class Py3_pathspec < Pip
   description 'Path specification is a utility library for gitignore style pattern matching of file paths.'
   homepage 'https://github.com/cpburnz/python-pathspec'
-  @_ver = '0.11.2'
   version "#{@_ver}-py3.12"
   license 'MPL-2.0'
   compatibility 'all'
-  source_url 'https://github.com/cpburnz/python-pathspec.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

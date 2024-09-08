@@ -3,7 +3,6 @@ require 'buildsystems/pip'
 class Py3_hatchling < Pip
   description 'The extensible, standards compliant build backend used by Hatch.'
   homepage 'https://hatch.pypa.io/latest'
-  @_ver = '1.18.0'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'

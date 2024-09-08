@@ -21,7 +21,7 @@ class Py3_typing_extensions < Package
 
   def self.build
     Dir.chdir 'typing_extensions' do
-      system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
+      system "SETUPTOOLS_SCM_PRETEND_VERSION=#{version.split('-')} python3 -m build #{PY3_BUILD_OPTIONS}"
     end
   end
 
