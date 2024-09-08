@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# update_ruby_gem_packages version 1.0 (for Chromebrew)
+# update_ruby_gem_packages version 1.1 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in packages dir: ../tools/update_ruby_gem_packages.rb
 Dir['ruby_*.rb'].each do |package|
