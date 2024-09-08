@@ -7,7 +7,7 @@ class Py3_setuptools < Python
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/setuptools.git'
-  git_hashtag "v#{version.split('-').first}"
+  version '74.1.2-py3.12'
   binary_compression 'tar.zst'
 
   binary_sha256({

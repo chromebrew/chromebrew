@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_magic < Pip
   description 'Magic is a python wrapper for libmagic.'
   homepage 'https://github.com/ahupp/python-magic/'
-  version "#{@_ver}-py3.12"
+  version '0.1-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

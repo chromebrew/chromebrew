@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_numpy < Pip
   description 'NumPy is the fundamental package for array computing with Python.'
   homepage 'https://numpy.org/'
-  version "#{@_ver}-py3.12"
+  version '2.1.1-py3.12'
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'

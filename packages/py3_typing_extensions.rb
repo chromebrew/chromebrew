@@ -3,11 +3,11 @@ require 'package'
 class Py3_typing_extensions < Package
   description 'Backported and Experimental Type Hints for Python 3.5+'
   homepage 'https://github.com/python/typing/tree/master/typing_extensions'
-  version '4.2.0-py3.12'
+  version '4.12.2-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/python/typing.git'
-  git_hashtag version.split('-').first
+  version '4.12.2-py3.12'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -21,7 +21,7 @@ class Py3_typing_extensions < Package
 
   def self.build
     Dir.chdir 'typing_extensions' do
-      system "SETUPTOOLS_SCM_PRETEND_VERSION=#{version.split('-')} python3 -m build #{PY3_BUILD_OPTIONS}"
+  version '4.12.2-py3.12'
     end
   end
 

@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_cython < Pip
   description 'The Cython language makes writing C extensions for the Python language as easy as Python itself.'
   homepage 'https://cython.org/'
-  version "#{@_ver}-py3.12"
+  version '3.0.11-py3.12'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'

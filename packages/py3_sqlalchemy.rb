@@ -3,11 +3,11 @@ require 'buildsystems/python'
 class Py3_sqlalchemy < Python
   description 'SQLalchemy is a database toolkit for Python.'
   homepage 'https://sqlalchemy.org'
-  version '2.0.21-py3.12'
+  version '2.0.34-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/sqlalchemy/sqlalchemy.git'
-  git_hashtag "rel_#{version.split('-').first.gsub('.', '_')}"
+  version '2.0.34-py3.12'
   binary_compression 'tar.zst'
 
   binary_sha256({

@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_hatch_vcs < Pip
   description 'A plugin for Hatch that uses your preferred version control system.'
   homepage 'https://github.com/ofek/hatch-vcs'
-  version "#{@_ver}-py3.12"
+  version '0.4.0-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

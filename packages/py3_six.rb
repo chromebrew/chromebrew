@@ -7,7 +7,7 @@ class Py3_six < Python
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/benjaminp/six.git'
-  git_hashtag version.split('-').first
+  version '1.16.0-py3.12'
   binary_compression 'tar.zst'
 
   binary_sha256({

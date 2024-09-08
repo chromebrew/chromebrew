@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_openpyxl < Pip
   description 'Openpyxl is a Python library to read/write Excel 2010 xlsx/xlsm files.'
   homepage 'https://openpyxl.readthedocs.io/'
-  version "#{@_ver}-py3.12"
+  version '3.1.5-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

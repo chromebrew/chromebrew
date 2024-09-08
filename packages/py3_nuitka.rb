@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_nuitka < Pip
   description 'Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.'
   homepage 'https://nuitka.net/'
-  version "#{@_ver}-py3.12"
+  version '2.4.8-py3.12'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'

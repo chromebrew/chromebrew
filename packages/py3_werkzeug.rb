@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_werkzeug < Pip
   description 'Werkzeug is a comprehensive WSGI web application library.'
   homepage 'https://palletsprojects.com/p/werkzeug/'
-  version '2.0.2-py3.12'
+  version '3.0.4-py3.12'
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'

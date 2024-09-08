@@ -13,5 +13,10 @@ Dir['py3_*.rb'].each do |package|
     next
   end
   puts "Updating #{pip_name} package file #{package} to #{pip_version}"
-  system "sed -i \"s,.*version.*,\ \ version '#{pip_version}-#{py_ver}',\" #{package}"
+  if pip_name == 'pyicu'
+    icu_ver = `uconv -V`.chomp.split[3]
+    system "sed -i \"s,^\ \ version\ .*,\ \ version '#{pip_version}-icu#{icu_ver}-py#{py_ver}',\" #{package}"
+  else
+    system "sed -i \"s,^\ \ version\ .*,\ \ version '#{pip_version}-py#{py_ver}',\" #{package}"
+  end
 end

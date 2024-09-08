@@ -6,8 +6,7 @@ class Py3_pyicu < Pip
   version '2.13.1-icu75.1-py3.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.pyicu.org/main/pyicu.git'
-  git_hashtag "v#{version.split('-').first}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

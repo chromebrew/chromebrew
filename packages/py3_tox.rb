@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_tox < Pip
   description 'Command line driven CI frontend and development task automation tool.'
   homepage 'https://tox.readthedocs.io/'
-  version '3.24.4-py3.12'
+  version '4.18.1-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

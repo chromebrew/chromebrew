@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_imapclient < Pip
   description 'IMAPclient is an easy-to-use, complete IMAP client library.'
   homepage 'https://imapclient.readthedocs.io/'
-  version "#{@_ver}-py3.12"
+  version '3.0.1-py3.12'
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'

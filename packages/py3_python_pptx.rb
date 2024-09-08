@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_python_pptx < Pip
   description 'Python PPTX generates and manipulates Open XML PowerPoint files.'
   homepage 'https://github.com/scanny/python-pptx/'
-  version '0.6.21-py3.12'
+  version '1.0.2-py3.12'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'SKIP'

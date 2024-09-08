@@ -7,7 +7,7 @@ class Py3_xlrd < Python
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/python-excel/xlrd.git'
-  git_hashtag version.split('-').first
+  version '2.0.1-py3.12'
   binary_compression 'tar.zst'
 
   binary_sha256({

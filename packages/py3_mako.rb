@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_mako < Pip
   description 'Mako is a super fast templating language.'
   homepage 'https://www.makotemplates.org/'
-  version "#{@_ver}-py3.12"
+  version '1.3.5-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

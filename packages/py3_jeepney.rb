@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_jeepney < Pip
   description 'Jeepney is a low-level, pure Python DBus protocol wrapper.'
   homepage 'https://gitlab.com/takluyver/jeepney/'
-  version "#{@_ver}-py3.12"
+  version '0.8.0-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

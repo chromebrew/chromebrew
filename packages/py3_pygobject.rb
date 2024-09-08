@@ -6,8 +6,7 @@ class Py3_pygobject < Pip
   version '3.48.2-py3.12'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://gitlab.gnome.org/GNOME/pygobject.git'
-  git_hashtag version.split('-').first
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({

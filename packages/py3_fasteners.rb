@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_fasteners < Pip
   description 'Fasteners provides useful locks for python programs.'
   homepage 'https://github.com/harlowja/fasteners/'
-  version "#{@_ver}-py3.12"
+  version '0.19-py3.12'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'

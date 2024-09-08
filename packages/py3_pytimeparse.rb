@@ -7,7 +7,7 @@ class Py3_pytimeparse < Python
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/wroberts/pytimeparse.git'
-  git_hashtag version.split('-').first
+  version '1.1.8-py3.12'
   binary_compression 'tar.zst'
 
   binary_sha256({

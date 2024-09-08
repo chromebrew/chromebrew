@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_docx2txt < Pip
   description 'Docx2txt is a pure python based utility to extract text and images from docx files.'
   homepage 'https://github.com/ankushshah89/python-docx2txt/'
-  version "#{@_ver}-py3.12"
+  version '0.8-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

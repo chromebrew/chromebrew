@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_importlib_metadata < Pip
   description 'Importlib metadata reads metadata from Python packages.'
   homepage 'https://github.com/python/importlib_metadata/'
-  version "#{@_ver}-py3.12"
+  version '8.4.0-py3.12'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
