@@ -10,5 +10,4 @@ class Ruby_debug < RUBY
 
   conflicts_ok
   no_compile_needed
-
 end
