@@ -9,12 +9,6 @@ class Py3_python_dateutil < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: 'aab33e006e88c24a9a27329eaa60cdb902d51fe22e5d32da0e82e0325791449f',
-     armv7l: 'aab33e006e88c24a9a27329eaa60cdb902d51fe22e5d32da0e82e0325791449f',
-       i686: '9c0f9502226cdf9c8ef077fad9299ec500a4f888abcbd6f901076d59ead159f8',
-     x86_64: 'a743bbcc6597bf685529a3f2d06c93a18bdc799c042a753f8ede909316b61066'
-  })
 
   depends_on 'python3' => :build
 end

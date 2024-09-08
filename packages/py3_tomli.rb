@@ -9,12 +9,6 @@ class Py3_tomli < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: '35692904b29b433587a5e52cb4f128624d9df8ede7020777860b9296917d62ff',
-     armv7l: '35692904b29b433587a5e52cb4f128624d9df8ede7020777860b9296917d62ff',
-       i686: 'c8e83f1e16cd0e1c2b0e322361963b40e6ba32bfaf59aa342557768bee5fe4a1',
-     x86_64: '09bcd13b118d79e12eb097525d90555fb7180883db0c6cb91bf0264f8bc0b09b'
-  })
 
   depends_on 'python3'
   depends_on 'py3_flit_core'

@@ -9,12 +9,6 @@ class Py3_appdirs < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: '330c36c0015c417d95cb1f27c13e8c588077875ae333fd9b89d0a17aae10bb32',
-     armv7l: '330c36c0015c417d95cb1f27c13e8c588077875ae333fd9b89d0a17aae10bb32',
-       i686: '169b9bc778f9a3631b609cfe8bcb5fa8d12a3dd0b939b08050d9b6af615c473d',
-     x86_64: '8d0042dc4f89e59b7a8400dd3dd87a159c59b4e695751e67defcc5a1dac974a8'
-  })
 
   depends_on 'python3' => :build
 

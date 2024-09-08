@@ -10,12 +10,6 @@ class Py3_pyte < Python
   version '0.8.2-py3.12'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: '8dbdf94590e87358c841721e9fd75bf1806e0749d27472daa5ce36a294334190',
-     armv7l: '8dbdf94590e87358c841721e9fd75bf1806e0749d27472daa5ce36a294334190',
-       i686: 'd07194c7076360c9d404a8f3c5831f378bcbdf1b6fcde157018a401c47bd81bb',
-     x86_64: '05155f30c75f0155bfc4f1c332acb858771c3c164632eb5cb35965c3d8b39d38'
-  })
 
   depends_on 'py3_wcwidth'
   depends_on 'python3' => :build

@@ -9,12 +9,6 @@ class Py3_olefile < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: 'f0ddd04f4d7ee129cff58de6321cdea56c1789f61daa62439e8d6674384ca717',
-     armv7l: 'f0ddd04f4d7ee129cff58de6321cdea56c1789f61daa62439e8d6674384ca717',
-       i686: '1751c5717502d897abcecffb981d5346ac8fe3105a26d3949efbddf850e5dc08',
-     x86_64: '6b199cf2204839a60e5c5442b4a43a4d8db5ab9d56dc5223dfa38c39a39a24fb'
-  })
 
   depends_on 'python3' => :build
 end

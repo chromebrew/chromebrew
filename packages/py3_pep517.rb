@@ -9,12 +9,6 @@ class Py3_pep517 < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: '62cf60f52ab472c3818994551df107cacf3ed117385bc6424a1b983284db92fb',
-     armv7l: '62cf60f52ab472c3818994551df107cacf3ed117385bc6424a1b983284db92fb',
-       i686: '4b405040cd88a26963f2593471afeec33b84549c66e019ef824ffe9995baf497',
-     x86_64: 'de410a43722cbac887a4a4a0b5f7a6bb311b059ff6462930cb795da07f0217c3'
-  })
 
   depends_on 'python3'
   depends_on 'py3_tomli'

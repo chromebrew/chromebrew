@@ -9,12 +9,6 @@ class Py3_alabaster < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: 'ab679526f7f0bad267d8f4dd03c3c2cab94bef7111cf8ecdd6b00db91c51e738',
-     armv7l: 'ab679526f7f0bad267d8f4dd03c3c2cab94bef7111cf8ecdd6b00db91c51e738',
-       i686: '0d22ad3826e6080ff23b2d6d469f9451322a16a0c10df923bbd1818ce737bc11',
-     x86_64: '6d9c2f7fe045eb5721d4e5e148dcafc6c0103153350bc150c778e3797cbdf171'
-  })
 
   depends_on 'python3' => :build
 end
