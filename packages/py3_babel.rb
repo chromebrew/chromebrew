@@ -9,13 +9,6 @@ class Py3_babel < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: '104eec74ce764321b0c1473feacfa7a50450030d0d02e58ca8e276ab6c4e7e9d',
-     armv7l: '104eec74ce764321b0c1473feacfa7a50450030d0d02e58ca8e276ab6c4e7e9d',
-       i686: '361db2fdc8629ce1021aa173fbc77e0365b064bef530ef732fd45770ad34ce6f',
-     x86_64: '3446c44e604c229916c2118e47a7054ec93868f411e15f7cd83eb5cbcf4c575f'
-  })
-
   depends_on 'py3_pytz'
   depends_on 'python3' => :build
 end
