@@ -10,6 +10,5 @@ class Py3_wcwidth < Python
   version '0.2.13-py3.12'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3' => :build
 end

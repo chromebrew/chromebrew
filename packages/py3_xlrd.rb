@@ -10,6 +10,5 @@ class Py3_xlrd < Python
   version '2.0.1-py3.12'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3' => :build
 end

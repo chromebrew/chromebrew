@@ -9,7 +9,6 @@ class Py3_pre_commit < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-
   depends_on 'py3_cfgv'
   depends_on 'py3_identify' # L
   depends_on 'py3_nodeenv' # L

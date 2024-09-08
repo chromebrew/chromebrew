@@ -9,7 +9,6 @@ class Py3_tomli < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3'
   depends_on 'py3_flit_core'
 end

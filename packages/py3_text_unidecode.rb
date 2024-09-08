@@ -10,6 +10,5 @@ class Py3_text_unidecode < Python
   version '1.3-py3.12'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3' => :build
 end

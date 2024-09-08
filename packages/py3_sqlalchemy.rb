@@ -10,7 +10,6 @@ class Py3_sqlalchemy < Python
   version '2.0.34-py3.12'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3' => :build
   depends_on 'glibc' # R
 end

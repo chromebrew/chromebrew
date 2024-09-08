@@ -10,7 +10,6 @@ class Py3_pyte < Python
   version '0.8.2-py3.12'
   binary_compression 'tar.zst'
 
-
   depends_on 'py3_wcwidth'
   depends_on 'python3' => :build
 end

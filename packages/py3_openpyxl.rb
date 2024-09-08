@@ -9,7 +9,6 @@ class Py3_openpyxl < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-
   depends_on 'py3_et_xmlfile'
   depends_on 'python3' => :build
 end

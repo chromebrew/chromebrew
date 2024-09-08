@@ -10,7 +10,6 @@ class Py3_setuptools < Python
   version '74.1.2-py3.12'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3'
   depends_on 'py3_packaging'
 

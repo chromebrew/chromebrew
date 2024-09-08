@@ -10,7 +10,6 @@ class Py3_pycairo < Python
   version '1.27.0-py3.12'
   binary_compression 'tar.zst'
 
-
   depends_on 'cairo'
   depends_on 'libxxf86vm'
   depends_on 'libxrender'

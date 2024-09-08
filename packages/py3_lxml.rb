@@ -9,7 +9,6 @@ class Py3_lxml < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
   depends_on 'libxslt' # R

@@ -9,7 +9,6 @@ class Py3_mercurial < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-
   no_source_build
 
   depends_on 'buildessential' => :build

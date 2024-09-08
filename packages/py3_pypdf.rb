@@ -10,6 +10,5 @@ class Py3_pypdf < Python
   version '4.3.1-py3.12'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3'
 end

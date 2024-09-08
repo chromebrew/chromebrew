@@ -8,6 +8,5 @@ class Py3_parsedatetime < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3' => :build
 end

@@ -9,7 +9,6 @@ class Py3_attrs < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3' => :build
   depends_on 'py3_hatchling' => :build
   depends_on 'py3_hatch_vcs' => :build

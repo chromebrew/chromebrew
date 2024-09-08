@@ -10,6 +10,5 @@ class Py3_six < Python
   version '1.16.0-py3.12'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3' => :build
 end

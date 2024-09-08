@@ -11,7 +11,6 @@ class Py3_libxml2 < Package
   git_hashtag Libxml2.git_hashtag
   binary_compression 'tar.zst'
 
-
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
   depends_on 'py3_setuptools' => :build

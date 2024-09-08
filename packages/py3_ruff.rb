@@ -9,7 +9,6 @@ class Py3_ruff < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'python3'

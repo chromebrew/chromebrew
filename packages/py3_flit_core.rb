@@ -9,6 +9,5 @@ class Py3_flit_core < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3'
 end

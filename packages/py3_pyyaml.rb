@@ -10,7 +10,6 @@ class Py3_pyyaml < Pip
   version '6.0.2-py3.12'
   binary_compression 'tar.zst'
 
-
   depends_on 'glibc' # R
   depends_on 'libyaml' # R
   depends_on 'python3' => :build

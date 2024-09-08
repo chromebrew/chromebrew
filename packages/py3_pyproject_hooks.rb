@@ -10,7 +10,6 @@ class Py3_pyproject_hooks < Python
   version '1.1.0-py3.12'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3'
   depends_on 'py3_tomli'
 end

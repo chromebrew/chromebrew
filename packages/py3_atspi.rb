@@ -13,7 +13,6 @@ class Py3_atspi < Autotools
   git_hashtag "PYATSPI_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
-
   depends_on 'py3_pygobject'
   depends_on 'at_spi2_core'
   depends_on 'python3' => :build

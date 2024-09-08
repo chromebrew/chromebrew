@@ -7,4 +7,5 @@ class Py3_unsupported_python < Pip
   license 'GPL-3+'
   compatibility 'all'
   source_url 'SKIP'
-
+  binary_compression 'tar.zst'
+end

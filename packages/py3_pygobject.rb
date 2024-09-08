@@ -9,7 +9,6 @@ class Py3_pygobject < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-
   depends_on 'cairo' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R

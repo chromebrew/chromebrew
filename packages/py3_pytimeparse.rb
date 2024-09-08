@@ -10,6 +10,5 @@ class Py3_pytimeparse < Python
   version '1.1.8-py3.12'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3' => :build
 end

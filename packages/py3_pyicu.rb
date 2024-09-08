@@ -9,7 +9,6 @@ class Py3_pyicu < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-
   depends_on 'python3' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
