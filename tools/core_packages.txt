@@ -2,6 +2,8 @@ acl
 attr
 autoconf
 automake
+bash
+bash_completion
 binutils
 bison
 brotli
@@ -37,6 +39,7 @@ git
 git_mestrelion_tools
 glib
 glibc
+glibc_lib
 gmp
 gnu_time
 gnutls
@@ -61,11 +64,13 @@ libeconf
 libedit
 libffi
 libgcrypt
+libgpg_error
 libgpgerror
 libidn2
 libmetalink
 libmicrohttpd
 libnghttp2
+libnsl
 libpipeline
 libpng
 libpsl
@@ -80,6 +85,7 @@ libtool
 libunbound
 libunistring
 libuv
+libversion
 libxml2
 libxslt
 libyaml
@@ -92,7 +98,7 @@ lzip
 lzlib
 m4
 make
-mandb
+man_db
 manpages
 mawk
 mesonbuild
@@ -137,9 +143,12 @@ rdfind
 readline
 rtmpdump
 ruby
+ruby_activesupport
 ruby_concurrent_ruby
 ruby_debug
+ruby_highline
 ruby_mdl
+ruby_pry
 ruby_rubocop
 ruby_yaml_lint
 samurai
