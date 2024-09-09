@@ -26,7 +26,7 @@ class Pip < Package
       @py_pkg_deps.each do |pip_dep|
         @cleaned_py_dep = pip_dep[/[^;]+/]
         puts "——Installing: #{@cleaned_py_dep}".gray
-        system "python3 -s -m pip install -U \"#{@cleaned_py_dep}\" | grep -v 'Requirement already satisfied'", exception: false
+        system "python3 -s -m pip install --ignore-installed -U \"#{@cleaned_py_dep}\" | grep -v 'Requirement already satisfied'", exception: false
       end
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
