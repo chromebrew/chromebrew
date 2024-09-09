@@ -2,8 +2,10 @@
 # update_python_pip_packages version 1.0 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in packages dir: ../tools/update_python_pip_packages.rb
+require 'parallel'
+
 py_ver = `python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp
-Dir['py3_*.rb'].each do |package|
+Parallel.map(Dir['py3_*.rb']) do |package|
   pip_name = package.gsub('.rb', '').gsub('py3_', '').gsub('_', '-')
   pip_version = `python -m pip index versions #{pip_name} 2>/dev/null | head -n 1 | awk '{print $2}'`.chomp.delete('()')
   puts "#{pip_name} version is #{pip_version}"
