@@ -18,7 +18,7 @@ class S3cmd < Package
   })
 
   depends_on 'py3_python_dateutil'
-  depends_on 'py3_magic'
+  depends_on 'py3_python_magic'
   depends_on 'python3' => :build
 
   def self.build
