@@ -175,6 +175,7 @@ pkg_update_arr = [
   { pkg_name: 'py3_appdirs', pkg_rename: 'py3_platformdirs', pkg_deprecated: nil, comments: 'Replaced upstream.' },
   { pkg_name: 'py3_agate_dfb', pkg_rename: 'py3_agate_dbf', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
   { pkg_name: 'py3_dateutil', pkg_rename: 'py3_python_dateutil', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
+  { pkg_name: 'py3_magic', pkg_rename: 'py3_python_magic', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
   { pkg_name: 'py3_pptx', pkg_rename: 'py3_python_pptx', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
   { pkg_name: 'pygobject', pkg_rename: 'py3_pygobject', pkg_deprecated: nil, comments: 'Renamed to use pip packaging.' },
   { pkg_name: 'q', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer suitable for packaging.' },

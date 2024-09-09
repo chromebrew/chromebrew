@@ -2,6 +2,7 @@ Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 require 'json'
 require 'package'
+require 'package_utils'
 require_relative '../const'
 
 class Pip < Package
@@ -11,6 +12,7 @@ class Pip < Package
     puts 'Checking for pip updates'.orange if CREW_VERBOSE
     system "python3 -s -m pip install -U pip | grep -v 'Requirement already satisfied'", exception: false
     @py_pkg = name.gsub('py3_', '')
+    @py_pkg_version = PackageUtils.get_clean_version(version)
     puts "Checking for #{@py_pkg} python dependencies...".orange if CREW_VERBOSE
     @py_pkg_pypi = `curl -Ls https://pypi.org/pypi/#{@py_pkg}/json`.chomp
     @py_pkg_pypi_hash = JSON.parse(@py_pkg_pypi)
@@ -31,7 +33,7 @@ class Pip < Package
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
     puts "Additional pre_configure_options being used: #{@pre_configure_options.nil? ? '<no pre_configure_options>' : @pre_configure_options}".orange
-    system "MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python -s -m pip install --ignore-installed -U \"#{@py_pkg}\" | grep -v 'Requirement already satisfied'", exception: false
+    system "MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python -s -m pip install --ignore-installed -U \"#{@py_pkg}==#{@py_pkg_version}\" | grep -v 'Requirement already satisfied'", exception: false
     @pip_files = `python3 -s -m pip show -f #{@py_pkg}`.chomp
     @pip_files_base = @pip_files[/(?<=Location: ).*/, 0].concat('/')
     @pip_files_lines = @pip_files[/(?<=Files:\n)[\W|\w]*/, 0].split
