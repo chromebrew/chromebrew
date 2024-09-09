@@ -44,10 +44,7 @@ CREW_BRANCH ||= 'master'
 # Restart crew update as quickly as possible if the git commit of
 # const.rb loaded from crew before a git pull is different from the git
 # commit of the potentially updated const.rb after a git pull.
-
-puts "fixup: @crew_const_git_commit is #{@crew_const_git_commit}"
 current_crew_const_git_commit = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
-puts "fixup: current_crew_const_git_commit is #{current_crew_const_git_commit}"
 unless current_crew_const_git_commit == @crew_const_git_commit
   puts 'Restarting crew update since there is an updated crew version.'.lightcyan
   puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if CREW_VERBOSE
