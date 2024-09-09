@@ -1,13 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_zcmds < Python
+class Py3_zcmds < Pip
   description 'Cross platform(ish) productivity commands written in python'
   homepage 'https://github.com/zackees/zcmds'
   version '1.4.100-py3.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/zackees/zcmds.git'
-  git_hashtag '1c396504a1756b220d028115defc1b87f584eed3'
+  source_url 'SKIP'
 
   no_compile_needed
 end

@@ -1,13 +1,12 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_sqlalchemy < Python
+class Py3_sqlalchemy < Pip
   description 'SQLalchemy is a database toolkit for Python.'
   homepage 'https://sqlalchemy.org'
   version '2.0.34-py3.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/sqlalchemy/sqlalchemy.git'
-  version '2.0.34-py3.12'
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   depends_on 'python3' => :build
