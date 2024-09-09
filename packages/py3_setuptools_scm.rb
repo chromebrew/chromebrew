@@ -10,4 +10,6 @@ class Py3_setuptools_scm < Pip
 
   depends_on 'py3_packaging'
   depends_on 'py3_tomli'
+
+  no_source_build
 end

@@ -11,4 +11,6 @@ class Py3_sqlalchemy < Pip
 
   depends_on 'python3' => :build
   depends_on 'glibc' # R
+
+  no_source_build
 end

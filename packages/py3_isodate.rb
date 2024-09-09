@@ -11,4 +11,6 @@ class Py3_isodate < Pip
 
   depends_on 'py3_six'
   depends_on 'python3' => :build
+
+  no_source_build
 end

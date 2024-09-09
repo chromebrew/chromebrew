@@ -9,6 +9,7 @@ class Py3_websockets < Pip
   source_url 'SKIP'
 
   depends_on 'python3' # L
+  depends_on 'glibc' # R
 
   no_source_build
 end

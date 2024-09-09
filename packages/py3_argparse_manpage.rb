@@ -10,4 +10,6 @@ class Py3_argparse_manpage < Pip
   binary_compression 'tar.zst'
 
   depends_on 'python3'
+
+  no_source_build
 end

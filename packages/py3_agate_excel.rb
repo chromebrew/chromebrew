@@ -14,4 +14,6 @@ class Py3_agate_excel < Pip
   depends_on 'py3_olefile'
   depends_on 'py3_agate'
   depends_on 'python3' => :build
+
+  no_source_build
 end

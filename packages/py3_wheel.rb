@@ -11,4 +11,6 @@ class Py3_wheel < Pip
 
   depends_on 'python3'
   depends_on 'py3_packaging'
+
+  no_source_build
 end

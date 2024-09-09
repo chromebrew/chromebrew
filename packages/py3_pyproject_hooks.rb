@@ -11,4 +11,6 @@ class Py3_pyproject_hooks < Pip
 
   depends_on 'python3'
   depends_on 'py3_tomli'
+
+  no_source_build
 end

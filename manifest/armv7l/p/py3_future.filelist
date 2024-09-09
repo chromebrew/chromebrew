@@ -1,13 +1,13 @@
 /usr/local/bin/futurize
 /usr/local/bin/pasteurize
-/usr/local/lib/python3.12/site-packages/future-0.18.3.dist-info/INSTALLER
-/usr/local/lib/python3.12/site-packages/future-0.18.3.dist-info/LICENSE.txt
-/usr/local/lib/python3.12/site-packages/future-0.18.3.dist-info/METADATA
-/usr/local/lib/python3.12/site-packages/future-0.18.3.dist-info/RECORD
-/usr/local/lib/python3.12/site-packages/future-0.18.3.dist-info/REQUESTED
-/usr/local/lib/python3.12/site-packages/future-0.18.3.dist-info/WHEEL
-/usr/local/lib/python3.12/site-packages/future-0.18.3.dist-info/entry_points.txt
-/usr/local/lib/python3.12/site-packages/future-0.18.3.dist-info/top_level.txt
+/usr/local/lib/python3.12/site-packages/future-1.0.0.dist-info/INSTALLER
+/usr/local/lib/python3.12/site-packages/future-1.0.0.dist-info/LICENSE.txt
+/usr/local/lib/python3.12/site-packages/future-1.0.0.dist-info/METADATA
+/usr/local/lib/python3.12/site-packages/future-1.0.0.dist-info/RECORD
+/usr/local/lib/python3.12/site-packages/future-1.0.0.dist-info/REQUESTED
+/usr/local/lib/python3.12/site-packages/future-1.0.0.dist-info/WHEEL
+/usr/local/lib/python3.12/site-packages/future-1.0.0.dist-info/entry_points.txt
+/usr/local/lib/python3.12/site-packages/future-1.0.0.dist-info/top_level.txt
 /usr/local/lib/python3.12/site-packages/future/__init__.py
 /usr/local/lib/python3.12/site-packages/future/__pycache__/__init__.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/future/backports/__init__.py
@@ -162,6 +162,7 @@
 /usr/local/lib/python3.12/site-packages/future/moves/__pycache__/configparser.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/future/moves/__pycache__/copyreg.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/future/moves/__pycache__/itertools.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/future/moves/__pycache__/multiprocessing.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/future/moves/__pycache__/pickle.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/future/moves/__pycache__/queue.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/future/moves/__pycache__/reprlib.cpython-312.pyc
@@ -201,6 +202,7 @@
 /usr/local/lib/python3.12/site-packages/future/moves/http/cookies.py
 /usr/local/lib/python3.12/site-packages/future/moves/http/server.py
 /usr/local/lib/python3.12/site-packages/future/moves/itertools.py
+/usr/local/lib/python3.12/site-packages/future/moves/multiprocessing.py
 /usr/local/lib/python3.12/site-packages/future/moves/pickle.py
 /usr/local/lib/python3.12/site-packages/future/moves/queue.py
 /usr/local/lib/python3.12/site-packages/future/moves/reprlib.py

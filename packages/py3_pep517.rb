@@ -11,4 +11,6 @@ class Py3_pep517 < Pip
 
   depends_on 'python3'
   depends_on 'py3_tomli'
+
+  no_source_build
 end

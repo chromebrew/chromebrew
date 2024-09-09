@@ -7,4 +7,6 @@ class Py3_mock < Pip
   license 'BSD-2'
   compatibility 'all'
   source_url 'SKIP'
+
+  no_source_build
 end

@@ -9,6 +9,11 @@ class Pip < Package
   property :pip_install_extras, :pre_configure_options
 
   def self.install
+    # Make sure Chromebrew pypi variables are set:
+    Kernel.system 'pip config --user set local.index-url https://gitlab.com/api/v4/projects/26210301/packages/pypi/simple' unless `pip config get local.index-url`.chomp == 'https://gitlab.com/api/v4/projects/26210301/packages/pypi/simple'
+    Kernel.system 'pip config --user set local.extra-index-url https://pypi.org/simple' unless `pip config get local.extra-index-url`.chomp == 'https://pypi.org/simple'
+    Kernel.system 'pip config --user set local.trusted-host gitlab.com' unless `pip config get local.trusted-host`.chomp == 'gitlab.com'
+
     puts 'Checking for pip updates'.orange if CREW_VERBOSE
     system "python3 -s -m pip install -U pip | grep -v 'Requirement already satisfied'", exception: false
     @py_pkg = name.gsub('py3_', '')

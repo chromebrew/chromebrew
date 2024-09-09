@@ -12,4 +12,6 @@ class Py3_agate_sql < Pip
   depends_on 'py3_agate'
   depends_on 'py3_sqlalchemy'
   depends_on 'python3' => :build
+
+  no_source_build
 end

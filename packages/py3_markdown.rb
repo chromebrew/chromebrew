@@ -10,4 +10,6 @@ class Py3_markdown < Pip
   binary_compression 'tar.zst'
 
   depends_on 'python3'
+
+  no_source_build
 end

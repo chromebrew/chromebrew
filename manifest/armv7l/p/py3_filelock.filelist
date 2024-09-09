@@ -1,9 +1,9 @@
-/usr/local/lib/python3.12/site-packages/filelock-3.13.1.dist-info/INSTALLER
-/usr/local/lib/python3.12/site-packages/filelock-3.13.1.dist-info/METADATA
-/usr/local/lib/python3.12/site-packages/filelock-3.13.1.dist-info/RECORD
-/usr/local/lib/python3.12/site-packages/filelock-3.13.1.dist-info/REQUESTED
-/usr/local/lib/python3.12/site-packages/filelock-3.13.1.dist-info/WHEEL
-/usr/local/lib/python3.12/site-packages/filelock-3.13.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.12/site-packages/filelock-3.16.0.dist-info/INSTALLER
+/usr/local/lib/python3.12/site-packages/filelock-3.16.0.dist-info/METADATA
+/usr/local/lib/python3.12/site-packages/filelock-3.16.0.dist-info/RECORD
+/usr/local/lib/python3.12/site-packages/filelock-3.16.0.dist-info/REQUESTED
+/usr/local/lib/python3.12/site-packages/filelock-3.16.0.dist-info/WHEEL
+/usr/local/lib/python3.12/site-packages/filelock-3.16.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.12/site-packages/filelock/__init__.py
 /usr/local/lib/python3.12/site-packages/filelock/__pycache__/__init__.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/filelock/__pycache__/_api.cpython-312.pyc
@@ -12,6 +12,7 @@
 /usr/local/lib/python3.12/site-packages/filelock/__pycache__/_unix.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/filelock/__pycache__/_util.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/filelock/__pycache__/_windows.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/filelock/__pycache__/asyncio.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/filelock/__pycache__/version.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/filelock/_api.py
 /usr/local/lib/python3.12/site-packages/filelock/_error.py
@@ -19,5 +20,6 @@
 /usr/local/lib/python3.12/site-packages/filelock/_unix.py
 /usr/local/lib/python3.12/site-packages/filelock/_util.py
 /usr/local/lib/python3.12/site-packages/filelock/_windows.py
+/usr/local/lib/python3.12/site-packages/filelock/asyncio.py
 /usr/local/lib/python3.12/site-packages/filelock/py.typed
 /usr/local/lib/python3.12/site-packages/filelock/version.py

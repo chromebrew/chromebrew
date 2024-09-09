@@ -11,4 +11,6 @@ class Py3_slugify < Pip
 
   depends_on 'py3_text_unidecode'
   depends_on 'python3' => :build
+
+  no_source_build
 end

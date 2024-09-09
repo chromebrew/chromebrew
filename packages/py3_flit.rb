@@ -12,4 +12,6 @@ class Py3_flit < Pip
   depends_on 'py3_flit_core'
   depends_on 'py3_tomli'
   depends_on 'py3_tomli_w'
+
+  no_source_build
 end

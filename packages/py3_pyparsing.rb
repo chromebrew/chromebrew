@@ -11,4 +11,6 @@ class Py3_pyparsing < Pip
 
   depends_on 'python3'
   depends_on 'py3_flit_core'
+
+  no_source_build
 end

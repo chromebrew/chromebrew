@@ -10,4 +10,6 @@ class Py3_et_xmlfile < Pip
   binary_compression 'tar.zst'
 
   depends_on 'python3' => :build
+
+  no_source_build
 end

@@ -12,4 +12,6 @@ class Py3_attrs < Pip
   depends_on 'python3' => :build
   depends_on 'py3_hatchling' => :build
   depends_on 'py3_hatch_vcs' => :build
+
+  no_source_build
 end

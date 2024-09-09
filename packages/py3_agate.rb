@@ -18,4 +18,6 @@ class Py3_agate < Pip
   depends_on 'py3_leather'
   depends_on 'py3_parsedatetime'
   depends_on 'python3' => :build
+
+  no_source_build
 end
