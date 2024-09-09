@@ -15,7 +15,11 @@ class RUBY < Package
     # We only report if @gem_ver is different than the current version reported by gem.
     @gem_ver = version.split('-', 2).first.to_s
     @ruby_ver = version.split('-', 3).last.to_s
-    system "gem install -N #{@gem_name} --conservative"
+    if Kernel.system "gem list -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
+      system "gem update -N #{@gem_name} --conservative"
+    else
+      system "gem install -N #{@gem_name} --conservative"
+    end
     gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
     system "gem contents #{@gem_name} > #{gem_filelist_path}"
     @ruby_install_extras&.call

@@ -1233,7 +1233,7 @@ def resolve_dependencies
 end
 
 def install
-  if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name)
+  if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name) && !@pkg.name.start_with?('ruby_')
     puts "Package #{@pkg.name} already installed, skipping...".lightgreen
     return
   end
@@ -1677,7 +1677,7 @@ def install_command(args)
     @pkg_name = name
     # Exit early if package is already installed. This prevents the
     # postinstall from being run for an already installed package.
-    if @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg_name }
+    if !@pkg_name.start_with?('ruby_') && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg_name }
       puts "Package #{@pkg_name} already installed, skipping...".lightgreen
       next
     end
