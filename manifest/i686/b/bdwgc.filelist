@@ -21,10 +21,10 @@
 /usr/local/lib/cmake/bdwgc/BDWgcTargets.cmake
 /usr/local/lib/libcord.so
 /usr/local/lib/libcord.so.1
-/usr/local/lib/libcord.so.1.5.0
+/usr/local/lib/libcord.so.1.5.1
 /usr/local/lib/libgc.so
 /usr/local/lib/libgc.so.1
-/usr/local/lib/libgc.so.1.5.2
+/usr/local/lib/libgc.so.1.5.4
 /usr/local/lib/pkgconfig/bdw-gc.pc
 /usr/local/share/doc/gc/AUTHORS
 /usr/local/share/doc/gc/README.DGUX386
