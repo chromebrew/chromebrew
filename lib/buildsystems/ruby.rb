@@ -20,6 +20,7 @@ class RUBY < Package
     else
       system "gem install -N #{@gem_name} --conservative"
     end
+    system "gem cleanup #{@gem_name}"
     gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
     system "gem contents #{@gem_name} > #{gem_filelist_path}"
     @ruby_install_extras&.call
