@@ -6,7 +6,7 @@ class Py3_typing_extensions < Pip
   version '4.12.2-py3.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/python/typing.git'
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   depends_on 'python3' => :build
