@@ -10,5 +10,4 @@ class Py3_platformdirs < Pip
   binary_compression 'tar.zst'
 
   depends_on 'python3' => :build
-
 end
