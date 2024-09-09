@@ -10,7 +10,7 @@ class Py3_codespell < Pip
 
   depends_on 'python3'
 
-  no_compile_needed
+  no_source_build
 
   def self.postremove
     @python_ver = "python#{`python3 -V`[/\d.\d+/]}"

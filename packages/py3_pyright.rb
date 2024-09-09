@@ -12,5 +12,5 @@ class Py3_pyright < Pip
   depends_on 'python3'
   depends_on 'py3_nodeenv'
 
-  no_compile_needed
+  no_source_build
 end

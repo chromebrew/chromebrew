@@ -12,7 +12,7 @@ class Py3_azure_cli < Pip
   depends_on 'py3_cryptography'
   depends_on 'rust' => :build
 
-  no_compile_needed
+  no_source_build
   print_source_bashrc
 
   pip_install_extras do

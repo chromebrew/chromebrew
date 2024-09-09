@@ -10,5 +10,5 @@ class Py3_pybind11 < Pip
 
   depends_on 'python3'
 
-  no_compile_needed
+  no_source_build
 end

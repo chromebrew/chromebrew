@@ -13,5 +13,5 @@ class Py3_ldapdomaindump < Pip
   depends_on 'py3_ldap3'
   depends_on 'python3' => :build
 
-  no_compile_needed
+  no_source_build
 end

@@ -21,5 +21,5 @@ class Py3_pillow < Pip
   depends_on 'python3' => :build
   depends_on 'zlib' # R
 
-  no_compile_needed
+  no_source_build
 end

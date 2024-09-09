@@ -10,5 +10,5 @@ class Py3_pyasn1 < Pip
 
   depends_on 'python3' => :build
 
-  no_compile_needed
+  no_source_build
 end

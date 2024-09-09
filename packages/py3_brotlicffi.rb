@@ -14,5 +14,5 @@ class Py3_brotlicffi < Pip
   depends_on 'py3_cffi'
   depends_on 'python3' # L
 
-  no_compile_needed
+  no_source_build
 end

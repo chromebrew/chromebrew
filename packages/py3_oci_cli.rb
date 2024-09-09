@@ -1,14 +1,13 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Oci_cli < Package
+class Py3_oci_cli < Pip
   description 'Command Line Interface for Oracle Cloud Infrastructure'
   homepage 'https://github.com/oracle/oci-cli/'
-  version '3.1.2'
+  version '3.47.0'
   license 'UPL-1.0'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/oracle/oci-cli.git'
-  git_hashtag "v#{version}"
-  binary_compression 'tpxz'
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'e34f28f7fd938279f2c4b4d2ea3089c1080f3f17960de056ccaba8e358a623c3',
@@ -32,11 +31,5 @@ class Oci_cli < Package
   depends_on 'py3_oci'
   depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

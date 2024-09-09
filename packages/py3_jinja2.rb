@@ -11,5 +11,5 @@ class Py3_jinja2 < Pip
   depends_on 'py3_markupsafe'
   depends_on 'python3' => :build
 
-  no_compile_needed
+  no_source_build
 end

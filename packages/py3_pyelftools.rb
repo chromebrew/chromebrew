@@ -11,5 +11,5 @@ class Py3_pyelftools < Pip
   depends_on 'glibc' # R
   depends_on 'python3' # R
 
-  no_compile_needed
+  no_source_build
 end

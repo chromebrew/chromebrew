@@ -13,5 +13,5 @@ class Py3_terminaltables < Pip
   depends_on 'py3_python_dateutil'
   depends_on 'python3' => :build
 
-  no_compile_needed
+  no_source_build
 end

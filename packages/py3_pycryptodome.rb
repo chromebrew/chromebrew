@@ -11,5 +11,5 @@ class Py3_pycryptodome < Pip
   depends_on 'glibc' # R
   depends_on 'python3' => :build
 
-  no_compile_needed
+  no_source_build
 end

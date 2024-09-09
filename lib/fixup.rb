@@ -170,6 +170,7 @@ pkg_update_arr = [
   { pkg_name: 'meson', pkg_rename: 'mesonbuild', pkg_deprecated: nil, comments: 'Renamed to avoid conflict with buildsystems/meson.' },
   { pkg_name: 'moonbuggy', pkg_rename: 'moon_buggy', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'nping', pkg_rename: nil, pkg_deprecated: true, comments: 'Removed to avoid conflict with nmap.' },
+  { pkg_name: 'oci_cli', pkg_rename: 'py3_oci_cli', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
   { pkg_name: 'percona_boost', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced by regular boost.' },
   { pkg_name: 'percona_server', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced by mysql.' },
   { pkg_name: 'pkgconfig', pkg_rename: 'pkg_config', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },

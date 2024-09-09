@@ -12,5 +12,5 @@ class Py3_yamllint < Pip
   depends_on 'py3_pyyaml'
   depends_on 'python3' => :build
 
-  no_compile_needed
+  no_source_build
 end

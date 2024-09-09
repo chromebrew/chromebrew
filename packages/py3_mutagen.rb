@@ -10,5 +10,5 @@ class Py3_mutagen < Pip
 
   depends_on 'python3' # L
 
-  no_compile_needed
+  no_source_build
 end

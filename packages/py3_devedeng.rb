@@ -14,7 +14,7 @@ class Py3_devedeng < Python
   depends_on 'py3_pygobject'
   depends_on 'gtk3'
 
-  no_compile_needed
+  no_source_build
 
   python_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"

@@ -8,5 +8,5 @@ class Py3_zcmds < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  no_compile_needed
+  no_source_build
 end

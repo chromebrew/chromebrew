@@ -13,5 +13,5 @@ class Py3_extract_msg < Pip
   depends_on 'py3_tzlocal'
   depends_on 'python3' => :build
 
-  no_compile_needed
+  no_source_build
 end

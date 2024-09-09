@@ -13,5 +13,5 @@ class Py3_pylint < Pip
 
   depends_on 'python3' # R
 
-  no_compile_needed
+  no_source_build
 end

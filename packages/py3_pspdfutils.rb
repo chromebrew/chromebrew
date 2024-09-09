@@ -10,5 +10,5 @@ class Py3_pspdfutils < Pip
 
   depends_on 'libpaper'
 
-  no_compile_needed
+  no_source_build
 end

@@ -13,5 +13,5 @@ class Py3_sphinx_rtd_theme < Pip
 
   depends_on 'python3'
   depends_on 'sphinx' # R
-  no_compile_needed
+  no_source_build
 end
