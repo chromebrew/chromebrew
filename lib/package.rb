@@ -101,8 +101,11 @@ class Package
     # newest file available.
     pkg_file = Dir["{#{CREW_LOCAL_REPO_ROOT}/packages,#{CREW_PACKAGES_PATH}}/#{pkg_name}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
 
-    class_eval(File.read(pkg_file, encoding: Encoding::UTF_8), pkg_file) unless const_defined?("Package::#{class_name}")
-
+    begin
+      class_eval(File.read(pkg_file, encoding: Encoding::UTF_8), pkg_file) unless const_defined?("Package::#{class_name}")
+    rescue TypeError
+      abort "Package file for #{pkg_name} not found.".lightred
+    end
     pkg_obj = const_get(class_name)
     pkg_obj.name = pkg_name
 
