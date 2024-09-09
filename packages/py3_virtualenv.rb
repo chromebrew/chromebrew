@@ -8,8 +8,8 @@ class Py3_virtualenv < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'py3_appdirs'
   depends_on 'py3_distlib'
+  depends_on 'py3_platformdirs'
   depends_on 'py3_six'
   depends_on 'python3' => :build
 

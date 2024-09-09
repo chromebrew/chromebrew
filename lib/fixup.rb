@@ -172,6 +172,7 @@ pkg_update_arr = [
   { pkg_name: 'pkgconfig', pkg_rename: 'pkg_config', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'postgres', pkg_rename: 'postgresql', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'proj4', pkg_rename: 'proj', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'py3_appdirs', pkg_rename: 'py3_platformdirs', pkg_deprecated: nil, comments: 'Replaced upstream.' },
   { pkg_name: 'py3_agate_dfb', pkg_rename: 'py3_agate_dbf', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
   { pkg_name: 'py3_dateutil', pkg_rename: 'py3_python_dateutil', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
   { pkg_name: 'py3_pptx', pkg_rename: 'py3_python_pptx', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
