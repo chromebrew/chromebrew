@@ -249,6 +249,10 @@ end
 def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkg_name
 
+  # The following is used in fixup.rb to determine if crew update needs to
+  # be run again.
+  @crew_const_git_commit = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{__FILE__} 2> /dev/null`.split.first
+
   unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
     puts 'Fixing Chromebrew system git repo clone...'.orange
     system(<<~GIT_REPAIR_COMMANDS, chdir: CREW_LIB_PATH, %i[out err] => File::NULL)

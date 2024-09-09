@@ -34,26 +34,26 @@ CREW_VERBOSE ||= ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
 CREW_PREFIX ||= '/usr/local'
 CREW_LIB_PATH ||= File.join(CREW_PREFIX, 'lib/crew')
 
-load "#{CREW_LIB_PATH}/lib/const.rb"
-load "#{CREW_LIB_PATH}/lib/package.rb"
-load "#{CREW_LIB_PATH}/lib/convenience_functions.rb"
-
 CREW_CONFIG_PATH ||= File.join(CREW_PREFIX, 'etc/crew')
 CREW_META_PATH ||= File.join(CREW_CONFIG_PATH, 'meta')
 # via git log --reverse --oneline lib/const.rb | head -n 1
-CREW_CONST_GIT_COMMIT ||= '72d807aac'
+@crew_const_git_commit ||= '72d807aac'
 CREW_REPO   ||= 'https://github.com/chromebrew/chromebrew.git'
 CREW_BRANCH ||= 'master'
 
-# Restart crew update as quickly as possibnle if the git commit of
-# const.rb loaded in const.rb is different from the git commit of the
-# potentially updated const.rb loaded here after a git pull.
+# Restart crew update as quickly as possible if the git commit of
+# const.rb loaded from crew before a git pull is different from the git
+# commit of the potentially updated const.rb after a git pull.
 
-unless `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first == CREW_CONST_GIT_COMMIT
+unless `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first == @crew_const_git_commit
   puts 'Restarting crew update since there is an updated crew version.'.lightcyan
   puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if CREW_VERBOSE
   exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
 end
+
+load "#{CREW_LIB_PATH}/lib/const.rb"
+load "#{CREW_LIB_PATH}/lib/package.rb"
+load "#{CREW_LIB_PATH}/lib/convenience_functions.rb"
 
 KERN_ARCH ||= Etc.uname[:machine]
 ARCH ||= %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH

@@ -83,15 +83,6 @@ CREW_DEST_MAN_PREFIX  ||= File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2> /dev/null`.chomp
 CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 
-# The following is used in fixup.rb to determine if crew update needs to
-# be run again.
-@git_commit = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{__FILE__} 2> /dev/null`.split.first
-if defined?(CREW_CONST_GIT_COMMIT)
-  CREW_CONST_GIT_COMMIT = @git_commit if @git_commit != CREW_CONST_GIT_COMMIT
-else
-  CREW_CONST_GIT_COMMIT ||= @git_commit unless defined?(CREW_CONST_GIT_COMMIT)
-end
-
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX      ||= File.join(CREW_PREFIX, '/share/musl/')
 CREW_DEST_MUSL_PREFIX ||= File.join(CREW_DEST_DIR, CREW_MUSL_PREFIX)
