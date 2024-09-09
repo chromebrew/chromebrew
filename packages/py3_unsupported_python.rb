@@ -8,4 +8,8 @@ class Py3_unsupported_python < Pip
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
+
+  no_compile_needed
+
+  pre_configure_options 'ALLOW_UNSUPPORTED_PYTHON=3.12'
 end
