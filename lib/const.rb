@@ -135,7 +135,7 @@ CREW_NOT_SHRINK_ARCHIVE              ||= ENV.fetch('CREW_NOT_SHRINK_ARCHIVE', fa
 CREW_REPO   ||= ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git') unless defined?(CRE_REPO)
 CREW_BRANCH ||= ENV.fetch('CREW_BRANCH', 'master') unless defined?(CREW_BRANCH)
 
-USER ||= Etc.getlogin
+USER ||= Etc.getlogin unless defined?(USER)
 
 unless defined?(CHROMEOS_RELEASE)
   CHROMEOS_RELEASE = \
