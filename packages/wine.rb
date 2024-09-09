@@ -58,7 +58,7 @@ class Wine < Package
     FileUtils.mkdir_p 'wine64-build'
     Dir.chdir 'wine64-build' do
       unless File.file?('Makefile')
-        system "../configure #{CREW_OPTIONS} \
+        system "../configure #{CREW_CONFIGURE_OPTIONS} \
           --enable-win64 \
           --disable-maintainer-mode \
           --with-gstreamer \

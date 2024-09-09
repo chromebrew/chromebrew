@@ -47,7 +47,7 @@ class Gtksharp2 < Package
   def self.build
     system "CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'
       LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --disable-maintainer-mode"
     system 'make'
   end

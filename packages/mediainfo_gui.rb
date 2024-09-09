@@ -25,7 +25,7 @@ class Mediainfo_gui < Package
   end
 
   def self.build
-    system "./GUI_Compile.sh #{CREW_OPTIONS}"
+    system "./GUI_Compile.sh #{CREW_CONFIGURE_OPTIONS}"
   end
 
   def self.install

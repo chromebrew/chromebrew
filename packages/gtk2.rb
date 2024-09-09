@@ -52,7 +52,7 @@ class Gtk2 < Package
 
   def self.build
     system "#{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS} --with-gdktarget=x11"
+      ./configure #{CREW_CONFIGURE_OPTIONS} --with-gdktarget=x11"
     system 'make'
   end
 

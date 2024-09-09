@@ -22,7 +22,7 @@ class E2fsprogs < Package
   depends_on 'util_linux' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}\
+    system "./configure #{CREW_CONFIGURE_OPTIONS}\
       --enable-elf-shlibs \
       --enable-lto \
       --disable-libblkid \

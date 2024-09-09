@@ -18,7 +18,7 @@ class Lzlib < Package
   })
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --enable-shared"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --enable-shared"
     system 'make'
   end
 

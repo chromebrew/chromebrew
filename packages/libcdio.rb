@@ -20,7 +20,7 @@ class Libcdio < Package
   depends_on 'libcddb'
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
               --without-cdda-player \
               --enable-cxx \
               --disable-cpp-progs \

@@ -23,7 +23,7 @@ class Gdbm < Package
 
   def self.build
     system "mold -run ./configure \
-      #{CREW_OPTIONS}"
+      #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

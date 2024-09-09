@@ -18,7 +18,7 @@ class Ndisc6 < Package
   })
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-suid-install"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-suid-install"
     system 'make'
   end
 

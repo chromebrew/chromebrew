@@ -24,7 +24,7 @@ class Libusbmuxd < Package
     system "env CFLAGS='-flto=auto' \
       CXXFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \
-      ./autogen.sh #{CREW_OPTIONS}"
+      ./autogen.sh #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

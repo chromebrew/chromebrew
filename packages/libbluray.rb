@@ -21,7 +21,7 @@ class Libbluray < Package
   depends_on 'fontconfig'
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
             --enable-optimizations \
             --disable-bdjava-jar"
     system 'make'

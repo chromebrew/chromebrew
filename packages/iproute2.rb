@@ -37,7 +37,7 @@ class Iproute2 < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --include_dir=#{CREW_PREFIX}/include"
     system 'make'
   end

@@ -21,7 +21,7 @@ class Jansson < Package
     system 'autoreconf -i'
     system "env CFLAGS='-flto=auto' \
       CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+      ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

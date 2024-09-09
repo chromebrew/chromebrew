@@ -30,7 +30,7 @@ class Hwloc < Package
     system './autogen.sh'
     system 'filefix'
     system "#{CREW_ENV_OPTIONS} ./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --enable-plugins \
       --sysconfdir=#{CREW_PREFIX}/etc"
     system 'make'

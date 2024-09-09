@@ -100,7 +100,7 @@ class Libssp < Package
       system "env NM=gcc-nm AR=gcc-ar RANLIB=gcc-ranlib \
         CFLAGS='#{@cflags}' CXXFLAGS='#{@cxxflags}' \
         PATH=#{@path} \
-        ../#{@gcc_name}/configure #{CREW_OPTIONS} \
+        ../#{@gcc_name}/configure #{CREW_CONFIGURE_OPTIONS} \
         #{@gcc_global_opts} \
         --enable-languages=#{@languages} \
         --program-suffix=-#{gcc_version} \

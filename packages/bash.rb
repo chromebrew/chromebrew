@@ -29,7 +29,7 @@ class Bash < Autotools
     --without-bash-malloc \
     --with-installed-readline'
 
-  install_extras do
+  configure_install_extras do
     FileUtils.ln_s "#{CREW_PREFIX}/bin/bash", "#{CREW_DEST_PREFIX}/bin/sh"
   end
 end

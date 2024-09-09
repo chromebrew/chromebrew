@@ -78,7 +78,7 @@ class Qemu < Package
   def self.build
     FileUtils.mkdir_p 'build'
     Dir.chdir 'build' do
-      system "mold -run ../configure #{CREW_OPTIONS.sub(/--target.*/, '')} \
+      system "mold -run ../configure #{CREW_CONFIGURE_OPTIONS.sub(/--target.*/, '')} \
         --enable-kvm \
         --enable-lto"
       @counter = 1

@@ -27,7 +27,7 @@ class Xfsprogs < Package
 
   def self.build
     system 'make configure'
-    system "DEBUG=-DNDEBUG ./configure #{CREW_OPTIONS}"
+    system "DEBUG=-DNDEBUG ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

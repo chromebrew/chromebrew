@@ -23,7 +23,7 @@ class Readline < Package
 
   def self.build
     system "./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --with-curses \
       --enable-multibyte"
     system 'make', 'SHLIB_LIBS=-Wl,--as-needed -Wl,-ltinfow -Wl,--no-as-needed'

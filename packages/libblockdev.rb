@@ -33,7 +33,7 @@ class Libblockdev < Package
 
   def self.build
     system 'filefix'
-    system "./configure #{CREW_OPTIONS} --with-gtk-doc=no"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --with-gtk-doc=no"
     system 'make'
   end
 

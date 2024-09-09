@@ -25,7 +25,7 @@ class Minizip < Package
   def self.build
     Dir.chdir 'contrib/minizip' do
       system 'autoreconf -fiv'
-      system "./configure #{CREW_OPTIONS} \
+      system "./configure #{CREW_CONFIGURE_OPTIONS} \
                 --enable-demos"
       system 'make'
     end

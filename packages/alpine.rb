@@ -29,7 +29,7 @@ class Alpine < Package
 
   def self.build
     system "./configure \
-           #{CREW_OPTIONS} \
+           #{CREW_CONFIGURE_OPTIONS} \
            --with-ssl-dir=#{CREW_PREFIX}/etc/ssl \
            --with-ssl-include-dir=#{CREW_PREFIX}/include \
            --with-ssl-lib-dir=#{CREW_LIB_PREFIX} \

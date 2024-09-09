@@ -21,7 +21,7 @@ class Lxappearance < Package
   depends_on 'dbus_glib'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --enable-gtk3 --enable-dbus"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --enable-gtk3 --enable-dbus"
     system "make -j#{CREW_NPROC}"
   end
 

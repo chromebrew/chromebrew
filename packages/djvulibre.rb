@@ -28,7 +28,7 @@ class Djvulibre < Package
   depends_on 'glibc' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --disable-desktopfiles"
     system 'make'
   end

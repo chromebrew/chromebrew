@@ -42,7 +42,7 @@ class Xterm < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --disable-imake \
       --enable-16bit-chars \
       --enable-256-color \

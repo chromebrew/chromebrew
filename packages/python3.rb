@@ -73,7 +73,7 @@ class Python3 < Package
 
     FileUtils.mkdir_p 'builddir'
     Dir.chdir 'builddir' do
-      system "../configure #{CREW_OPTIONS} \
+      system "../configure #{CREW_CONFIGURE_OPTIONS} \
           --with-lto \
           --with-computed-gotos \
           --enable-loadable-sqlite-extensions \

@@ -37,7 +37,7 @@ class Libappindicator_gtk3 < Package
   def self.build
     system "#{CREW_ENV_OPTIONS.sub("CFLAGS='", "CFLAGS='-Wno-deprecated-declarations ")} \
     ./configure \
-    #{CREW_OPTIONS} \
+    #{CREW_CONFIGURE_OPTIONS} \
     --localstatedir=#{CREW_PREFIX}/var \
     --sysconfdir=#{CREW_PREFIX}/etc \
     --with-gtk=3 \

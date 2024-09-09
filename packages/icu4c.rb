@@ -23,7 +23,7 @@ class Icu4c < Package
   def self.build
     Dir.chdir 'source' do
       system "mold -run ./configure \
-        #{CREW_OPTIONS} \
+        #{CREW_CONFIGURE_OPTIONS} \
         --enable-shared \
         --disable-samples \
         --disable-tests"

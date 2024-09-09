@@ -20,7 +20,7 @@ class Libtool < Package
   depends_on 'm4'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
             --enable-ltdl-install"
     system 'make'
   end

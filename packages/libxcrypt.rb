@@ -22,7 +22,7 @@ class Libxcrypt < Package
     system "env CFLAGS='-flto=auto' \
       CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
       ./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --disable-static \
       --enable-hashes=strong,glibc \
       --enable-obsolete-api=no \

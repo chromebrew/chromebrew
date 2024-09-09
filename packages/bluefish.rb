@@ -33,7 +33,7 @@ class Bluefish < Package
 
   def self.build
     system 'filefix'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
     @bluefish = <<~EOF
       alias bluefish="WAYLAND_DISPLAY=wayland-0 DISPLAY='' GDK_BACKEND=wayland #{CREW_PREFIX}/bin/bluefish"

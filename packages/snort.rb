@@ -30,7 +30,7 @@ class Snort < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --enable-sourcefire \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --enable-sourcefire \
             --with-dnet-includes=#{CREW_PREFIX}/include/dnet \
             --with-tirpc-includes=#{CREW_PREFIX}/include/tirpc"
     system 'make'

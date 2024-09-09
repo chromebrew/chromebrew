@@ -25,7 +25,7 @@ class Jack1 < Package
       system 'git submodule init'
       system 'git submodule update'
       system './autogen.sh'
-      system "./configure #{CREW_OPTIONS}"
+      system "./configure #{CREW_CONFIGURE_OPTIONS}"
       system 'make'
     end
   end

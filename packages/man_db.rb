@@ -38,7 +38,7 @@ class Man_db < Package
     # we can't create the user 'man'
     # the pager is not at the default location
     year2038 = ARCH == 'x86_64' ? '' : ' --disable-year2038'
-    options = CREW_OPTIONS + year2038
+    options = CREW_CONFIGURE_OPTIONS + year2038
     system "./configure #{options} \
       --disable-cache-owner \
       --disable-rpath \

@@ -238,7 +238,7 @@ CREW_ENV_FNO_LTO_OPTIONS_HASH ||= {
 # parse from hash to shell readable string
 CREW_ENV_FNO_LTO_OPTIONS ||= CREW_ENV_FNO_LTO_OPTIONS_HASH.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')
 
-CREW_OPTIONS ||= <<~OPT.chomp
+CREW_CONFIGURE_OPTIONS ||= <<~OPT.chomp
   --prefix=#{CREW_PREFIX} \
   --libdir=#{CREW_LIB_PREFIX} \
   --mandir=#{CREW_MAN_PREFIX} \

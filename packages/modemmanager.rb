@@ -23,7 +23,7 @@ class Modemmanager < Package
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \
       ./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --with-dbus-sys-dir=#{CREW_PREFIX}/share/dbus-1 \
       --disable-maintainer-mode"
     system 'make'

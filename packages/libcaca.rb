@@ -50,7 +50,7 @@ class Libcaca < Package
   def self.build
     system '[ -x configure ] || ./bootstrap'
     system "./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --enable-gl \
       --enable-ncurses \
       --enable-network \

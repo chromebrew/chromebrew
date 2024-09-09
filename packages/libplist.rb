@@ -24,7 +24,7 @@ class Libplist < Package
       CXXFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \
       CC=gcc \
-      ./autogen.sh #{CREW_OPTIONS}"
+      ./autogen.sh #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

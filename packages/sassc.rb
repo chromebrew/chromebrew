@@ -23,7 +23,7 @@ class Sassc < Package
 
   def self.build
     system 'autoreconf -i'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'mold -run make'
   end
 

@@ -26,7 +26,7 @@ class Consolekit < Package
   def self.build
     system "env #{CREW_ENV_OPTIONS} \
       ./autogen.sh  \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --sysconfdir=#{CREW_PREFIX}/etc  \
       --sbindir=#{CREW_PREFIX}/usr/bin  \
       --with-rundir=/run  \

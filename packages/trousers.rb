@@ -24,7 +24,7 @@ class Trousers < Package
   def self.build
     system './bootstrap.sh'
     system "mold -run ./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --with-gui=none"
     system 'make'
   end

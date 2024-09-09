@@ -72,7 +72,7 @@ class Handbrake < Package
     # with a libtool error.
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libfribidi.la", "#{CREW_PREFIX}/lib/"
 
-    system "LDFLAGS+=' -L #{CREW_LIB_PREFIX}' ./configure #{CREW_OPTIONS} \
+    system "LDFLAGS+=' -L #{CREW_LIB_PREFIX}' ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-x265 \
       --enable-numa \
       --enable-fdk-aac \

@@ -20,7 +20,7 @@ class Libbytesize < Package
   depends_on 'gawk' => :build
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --with-gtk-doc=no"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --with-gtk-doc=no"
     system 'make'
   end
 

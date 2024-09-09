@@ -18,7 +18,7 @@ class Lftp < Package
   })
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-nls --disable-dependency-tracking --with-linux-crypto"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-nls --disable-dependency-tracking --with-linux-crypto"
     system 'make'
   end
 

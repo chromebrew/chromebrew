@@ -61,7 +61,7 @@ class Filecmd < Package
     Dir.chdir 'builddir-static' do
       system "env LDFLAGS+=' -static' \
       ../configure \
-        #{CREW_OPTIONS} \
+        #{CREW_CONFIGURE_OPTIONS} \
         #{@filecmd_config_opts}"
       system 'make'
     end
@@ -70,7 +70,7 @@ class Filecmd < Package
     Dir.mkdir 'builddir-dynamic'
     Dir.chdir 'builddir-dynamic' do
       system "../configure \
-        #{CREW_OPTIONS} \
+        #{CREW_CONFIGURE_OPTIONS} \
         #{@filecmd_config_opts}"
       system 'make'
     end

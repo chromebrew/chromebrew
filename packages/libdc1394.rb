@@ -21,7 +21,7 @@ class Libdc1394 < Package
   depends_on 'libusb'
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

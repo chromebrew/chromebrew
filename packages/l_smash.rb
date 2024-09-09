@@ -19,7 +19,7 @@ class L_smash < Package
 
   def self.build
     system '[ -x configure ] || ./autogen.sh'
-    system "./configure #{CREW_OPTIONS.sub(/--mandir=.*/, '')} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS.sub(/--mandir=.*/, '')} \
       --enable-shared \
       --extra-cflags='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       --extra-ldflags='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto'"

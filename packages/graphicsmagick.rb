@@ -122,7 +122,7 @@ class Graphicsmagick < Package
   end
 
   def self.build
-    system "#{CREW_ENV_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} ./configure #{CREW_CONFIGURE_OPTIONS} \
       --with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
       --with-perl=#{CREW_PREFIX}/bin/perl \
       --disable-maintainer-mode \
