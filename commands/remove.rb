@@ -46,6 +46,12 @@ class Command
       end
     end
 
+    # Use pip to first try to remove python packages if package uses pip.
+    if pkg.name.start_with?('py3_')
+      pkg_file = Dir["{#{CREW_LOCAL_REPO_ROOT}/packages,#{CREW_PACKAGES_PATH}}/#{pkg.name}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
+      system "python3 -s -m pip uninstall #{pkg.name.gsub('py3_', '')} -y", exception: false if Kernel.system "grep -q \"^require 'buildsystems/pip\" #{pkg_file}"
+    end
+
     # Remove the files and directories installed by the package.
     unless pkg.is_fake?
       Dir.chdir CREW_CONFIG_PATH do

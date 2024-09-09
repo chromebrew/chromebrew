@@ -35,6 +35,7 @@ class Pip < Package
     puts "Additional pre_configure_options being used: #{@pre_configure_options.nil? ? '<no pre_configure_options>' : @pre_configure_options}".orange
     system "MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python -s -m pip install --ignore-installed -U \"#{@py_pkg}==#{@py_pkg_chromebrew_version}\" | grep -v 'Requirement already satisfied'", exception: false
     @pip_files = `python3 -s -m pip show -f #{@py_pkg}`.chomp
+    abort "pip install of #{@py_pkg} failed." if @pip_files.empty?
     @pip_files_base = @pip_files[/(?<=Location: ).*/, 0].concat('/')
     @pip_files_lines = @pip_files[/(?<=Files:\n)[\W|\w]*/, 0].split
     @pip_files_lines.each do |pip_file|
@@ -45,9 +46,5 @@ class Pip < Package
       FileUtils.install @pip_path, @destpath
     end
     @pip_install_extras&.call
-  end
-
-  def self.remove
-    system "python3 -s -m pip uninstall #{@py_pkg} -y"
   end
 end
