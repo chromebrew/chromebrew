@@ -6,8 +6,7 @@ class Py3_pyyaml < Pip
   version '6.0.2-py3.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/yaml/pyyaml.git'
-  version '6.0.2-py3.12'
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   depends_on 'glibc' # R
