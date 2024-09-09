@@ -10,9 +10,9 @@ class Py3_pycairo < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a7d48864bc1909f37fde5110f31c67f63a033f0077820e34bed1fd8409f72f45',
-     armv7l: 'a7d48864bc1909f37fde5110f31c67f63a033f0077820e34bed1fd8409f72f45',
-     x86_64: 'e0ed80053b65186e6c12428ea3fec91838ef9332c7f2b3ce8b68545ab9ba99d3'
+    aarch64: '47b12c73255b67630fab3b0d53ff592649b28c3951659aad5a70ca7ef7b02b0b',
+     armv7l: '47b12c73255b67630fab3b0d53ff592649b28c3951659aad5a70ca7ef7b02b0b',
+     x86_64: '6ab5681782aec8f58d22b2bbed6a842227e6b3e1267cfe4981c57639ed335287'
   })
 
   depends_on 'cairo'

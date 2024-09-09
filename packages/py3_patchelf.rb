@@ -10,10 +10,10 @@ class Py3_patchelf < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '886bf82495e4abc3b83c72a12e6ea1b313f26c2c66ffce7c0dd5a963e52b1869',
-     armv7l: '886bf82495e4abc3b83c72a12e6ea1b313f26c2c66ffce7c0dd5a963e52b1869',
-       i686: 'c4b9b418670f8d84f3ab7cd8c46b8393caf80494e1a8989cdf9b709f36e0a8d0',
-     x86_64: '6f6a40b47f0298026b7bac3344bc3a70889d5488944c9299467b5a3c2f6ada4c'
+    aarch64: '751a985d0d90201e622d74a994d67bb6ab99cbad69ec10fbf86835a365ae9b08',
+     armv7l: '751a985d0d90201e622d74a994d67bb6ab99cbad69ec10fbf86835a365ae9b08',
+       i686: '086ac21c8a27b63546e0f3357df84612987fcb01e3d3371bb052f232396ffd19',
+     x86_64: 'c4ca517d99eb7f472e6c040b51b20b0896e5e8a3c8ae5f39a90ac9da5dc174b5'
   })
 
   depends_on 'python3'

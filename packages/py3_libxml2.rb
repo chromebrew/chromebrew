@@ -12,10 +12,10 @@ class Py3_libxml2 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3e1e15cefeae56e1900f403e451df0aecf830ff5b5a87ab14bd7728567aae7da',
-     armv7l: '3e1e15cefeae56e1900f403e451df0aecf830ff5b5a87ab14bd7728567aae7da',
-       i686: '2c00954c38ec288fe6fb7d892f85f21af2d418584cd4b37bd1f2a7283f30d7d5',
-     x86_64: '3f19e088f7e3bc2bb4c354ec4d6c1896aa55d728b18508d5d0de0517c66acbca'
+    aarch64: 'bff8fae7283d0749d059f3921f7e8b6651f3da3e102c02abfecbee93435e5cc9',
+     armv7l: 'bff8fae7283d0749d059f3921f7e8b6651f3da3e102c02abfecbee93435e5cc9',
+       i686: 'f92d0961f38537cbf5233b5f08c25d28b3425ba306398e76e2eae0bc0171f600',
+     x86_64: 'f03253815093dba410b70186d2a877ecd465db3ff426b12a02e1b5cff9ffeac2'
   })
 
   depends_on 'glibc' # R
