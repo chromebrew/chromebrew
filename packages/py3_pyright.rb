@@ -8,6 +8,7 @@ class Py3_pyright < Pip
   compatibility 'all'
   min_glibc '2.28'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
 
   depends_on 'python3'
   depends_on 'py3_nodeenv'

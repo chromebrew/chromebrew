@@ -7,6 +7,7 @@ class Py3_zcmds < Pip
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
 
   no_source_build
 end
