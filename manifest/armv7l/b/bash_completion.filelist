@@ -20,6 +20,7 @@
 /usr/local/share/bash-completion/completions/_ansible-pull
 /usr/local/share/bash-completion/completions/_ansible-vault
 /usr/local/share/bash-completion/completions/_arduino-cli
+/usr/local/share/bash-completion/completions/_bao
 /usr/local/share/bash-completion/completions/_black
 /usr/local/share/bash-completion/completions/_blackd
 /usr/local/share/bash-completion/completions/_buf
@@ -38,6 +39,7 @@
 /usr/local/share/bash-completion/completions/_datree
 /usr/local/share/bash-completion/completions/_deno
 /usr/local/share/bash-completion/completions/_diesel
+/usr/local/share/bash-completion/completions/_dlv
 /usr/local/share/bash-completion/completions/_dmesg
 /usr/local/share/bash-completion/completions/_docker
 /usr/local/share/bash-completion/completions/_dprint
@@ -55,12 +57,14 @@
 /usr/local/share/bash-completion/completions/_gopherjs
 /usr/local/share/bash-completion/completions/_goreleaser
 /usr/local/share/bash-completion/completions/_gsctl
+/usr/local/share/bash-completion/completions/_gup
 /usr/local/share/bash-completion/completions/_helm
 /usr/local/share/bash-completion/completions/_hexdump
 /usr/local/share/bash-completion/completions/_httpx
 /usr/local/share/bash-completion/completions/_hugo
 /usr/local/share/bash-completion/completions/_hwclock
 /usr/local/share/bash-completion/completions/_ignite
+/usr/local/share/bash-completion/completions/_incus
 /usr/local/share/bash-completion/completions/_infracost
 /usr/local/share/bash-completion/completions/_ionice
 /usr/local/share/bash-completion/completions/_istioctl
@@ -134,6 +138,7 @@
 /usr/local/share/bash-completion/completions/_terraform
 /usr/local/share/bash-completion/completions/_tkn
 /usr/local/share/bash-completion/completions/_tkn-pac
+/usr/local/share/bash-completion/completions/_tofu
 /usr/local/share/bash-completion/completions/_tokio-console
 /usr/local/share/bash-completion/completions/_trivy
 /usr/local/share/bash-completion/completions/_udevadm
@@ -148,6 +153,7 @@
 /usr/local/share/bash-completion/completions/_xm
 /usr/local/share/bash-completion/completions/_yq
 /usr/local/share/bash-completion/completions/_yum
+/usr/local/share/bash-completion/completions/_zarf
 /usr/local/share/bash-completion/completions/_zitadel
 /usr/local/share/bash-completion/completions/a2x
 /usr/local/share/bash-completion/completions/abook
@@ -299,6 +305,7 @@
 /usr/local/share/bash-completion/completions/ebtables
 /usr/local/share/bash-completion/completions/ecryptfs-migrate-home
 /usr/local/share/bash-completion/completions/edquota
+/usr/local/share/bash-completion/completions/env
 /usr/local/share/bash-completion/completions/eog
 /usr/local/share/bash-completion/completions/ether-wake
 /usr/local/share/bash-completion/completions/etherwake
