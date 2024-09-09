@@ -7,7 +7,7 @@ class Py3_setuptools < Python
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/setuptools.git'
-  version '74.1.2-py3.12'
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   depends_on 'python3'
@@ -16,7 +16,11 @@ class Py3_setuptools < Python
   conflicts_ok
 
   def self.prebuild
-    system 'python3 -m pip uninstall setuptools -y'
-    system 'python3 -m pip install setuptools'
+    system 'python3 -m pip uninstall setuptools -y', exception: false
+    system 'python3 -m pip install setuptools', exception: false
+  end
+
+  def self.postremove
+    system 'python3 -m pip uninstall setuptools -y', exception: false
   end
 end
