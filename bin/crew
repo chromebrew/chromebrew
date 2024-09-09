@@ -251,7 +251,8 @@ def update
 
   # The following is used in fixup.rb to determine if crew update needs to
   # be run again.
-  @crew_const_git_commit = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{__FILE__} 2> /dev/null`.split.first
+  @crew_const_git_commit = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
+  puts "crew: @crew_const_git_commit is #{@crew_const_git_commit}"
 
   unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
     puts 'Fixing Chromebrew system git repo clone...'.orange
