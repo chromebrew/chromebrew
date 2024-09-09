@@ -9,10 +9,7 @@ class Py3_setuptools_rust < Pip
   source_url 'SKIP'
 
   depends_on 'rust'
-  version '1.10.1-py3.12'
-  depends_on 'python3'
-
-  no_compile_needed
   depends_on 'py3_setuptools_scm' => :build
   depends_on 'py3_typing_extensions' => :build
+  depends_on 'python3'
 end
