@@ -21,7 +21,7 @@ class Libpipeline < Package
 
   def self.build
     system "./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
       --with-pic"
     system 'make'

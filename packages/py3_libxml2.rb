@@ -26,7 +26,7 @@ class Py3_libxml2 < Package
 
   def self.build
     system 'autoreconf -fiv'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     Dir.chdir('python') do
       system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
     end

@@ -33,7 +33,7 @@ class Pixz < Package
       CC=clang LD=ld.lld  CFLAGS='-flto -pipe -O3 -fuse-ld=lld -static' \
       CXXFLAGS='-flto -pipe -O3 -static' \
       LDFLAGS='-flto -static' \
-      #{CREW_OPTIONS}"
+      #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

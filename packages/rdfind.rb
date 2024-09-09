@@ -32,7 +32,7 @@ class Rdfind < Package
 
   def self.build
     system '[ -x configure ] || autoreconf -fvi'
-    system "./configure #{CREW_OPTIONS} #{CREW_ENV_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} #{CREW_ENV_OPTIONS}"
     system 'make -s'
   end
 

@@ -24,7 +24,7 @@ class Openconnect < Package
 
   def self.build
     system "./configure \
-           #{CREW_OPTIONS} \
+           #{CREW_CONFIGURE_OPTIONS} \
            --with-vpnc-script=#{CREW_PREFIX}/etc/vpnc/vpnc-script"
     system 'make'
   end

@@ -37,7 +37,7 @@ class Ldb < Package
 
   def self.build
     system "./configure \
-      #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
+      #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')} \
       --localstatedir=#{CREW_PREFIX}/var \
       --sysconfdir=#{CREW_PREFIX}/etc/samba \
       --with-modulesdir=#{CREW_LIB_PREFIX}/ldb/modules \

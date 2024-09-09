@@ -24,7 +24,7 @@ class Gpm < Package
     system "env CFLAGS='-flto=auto' \
       CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
       ./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --sysconfdir=#{CREW_PREFIX}/etc \
       --sbindir=#{CREW_PREFIX}/bin"
     system 'make'

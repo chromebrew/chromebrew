@@ -26,7 +26,7 @@ class Xhost < Package
            --enable-tcp-transport \
            --enable-unix-transport \
            --enable-local-transport \
-           #{CREW_OPTIONS}"
+           #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

@@ -24,7 +24,7 @@ class Nano < Package
 
   def self.build
     system "mold -run \
-      ./configure #{CREW_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-browser \
       --enable-color \
       --enable-comment \

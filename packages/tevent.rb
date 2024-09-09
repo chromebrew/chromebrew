@@ -28,7 +28,7 @@ class Tevent < Package
   depends_on 'talloc' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')} \
       --sysconfdir=#{CREW_PREFIX}/etc/samba \
       --localstatedir=#{CREW_PREFIX}/var \
       --bundled-libraries=NONE \

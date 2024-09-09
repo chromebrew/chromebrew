@@ -44,7 +44,7 @@ class Binutils < Package
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30006
     Dir.mkdir 'build'
     Dir.chdir 'build' do
-      system "../configure #{CREW_OPTIONS} \
+      system "../configure #{CREW_CONFIGURE_OPTIONS} \
         --disable-bootstrap \
         --disable-gdb \
         --disable-gdbserver \

@@ -24,7 +24,7 @@ class Xorg_xlsfonts < Package
   depends_on 'xorg_macros' => ':build'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

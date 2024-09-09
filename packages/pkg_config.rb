@@ -31,7 +31,7 @@ class Pkg_config < Package
         CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
         GLIB_CFLAGS='-I#{CREW_PREFIX}/include/glib-2.0 -I#{CREW_LIB_PREFIX}/glib-2.0/include' \
         GLIB_LIBS=-lglib-2.0 \
-        ./configure #{CREW_OPTIONS} \
+        ./configure #{CREW_CONFIGURE_OPTIONS} \
         --with-pc-path=#{CREW_PREFIX}/lib/pkgconfig:#{CREW_PREFIX}/lib64/pkgconfig:#{CREW_PREFIX}/share/pkgconfig \
         --with-system-include-path=/usr/include:#{CREW_PREFIX}/include \
         --with-system-library-path=#{CREW_LIB_PREFIX} \
@@ -43,7 +43,7 @@ class Pkg_config < Package
         CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
         GLIB_CFLAGS='-I#{CREW_PREFIX}/include/glib-2.0 -I#{CREW_LIB_PREFIX}/glib-2.0/include' \
         GLIB_LIBS=-lglib-2.0 \
-        ./configure #{CREW_OPTIONS} \
+        ./configure #{CREW_CONFIGURE_OPTIONS} \
         --with-pc-path=#{CREW_PREFIX}/lib/pkgconfig:#{CREW_PREFIX}/share/pkgconfig \
         --with-system-include-path=/usr/include:#{CREW_PREFIX}/include \
         --with-system-library-path=#{CREW_LIB_PREFIX} \

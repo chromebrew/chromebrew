@@ -24,7 +24,7 @@ class Shadow < Package
   depends_on 'libeconf' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --bindir=#{CREW_PREFIX}/bin \
       --sbindir=#{CREW_PREFIX}/bin \
       --enable-shared \

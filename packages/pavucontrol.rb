@@ -27,7 +27,7 @@ class Pavucontrol < Package
     system 'NOCONFIGURE=1 ./bootstrap.sh'
     system "env #{CREW_ENV_OPTIONS} \
     ./configure \
-    #{CREW_OPTIONS} \
+    #{CREW_CONFIGURE_OPTIONS} \
     --disable-lynx"
     system 'make'
   end

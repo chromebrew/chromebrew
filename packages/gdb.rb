@@ -45,7 +45,7 @@ class Gdb < Autotools
     FileUtils.mkdir_p 'build'
     Dir.chdir('build') do
       system "../configure \
-        #{CREW_OPTIONS} \
+        #{CREW_CONFIGURE_OPTIONS} \
         --disable-binutils \
         --disable-ld \
         --disable-nls \

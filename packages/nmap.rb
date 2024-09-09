@@ -33,7 +33,7 @@ class Nmap < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --with-libpcap=#{CREW_PREFIX} \
       --with-libpcre=#{CREW_PREFIX} \
       --with-zlib=#{CREW_PREFIX} \

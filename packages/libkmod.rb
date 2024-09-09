@@ -23,7 +23,7 @@ class Libkmod < Package
   def self.build
     system './autogen.sh'
     system 'filefix'
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
     --disable-maintainer-mode \
     --enable-python \
     --with-openssl \

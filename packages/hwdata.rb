@@ -25,7 +25,7 @@ class Hwdata < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --datadir=#{CREW_PREFIX}/share \
       --disable-blacklist"
     system 'make'

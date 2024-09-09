@@ -28,7 +28,7 @@ class Libx264 < Package
   end
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
               --disable-avs \
               --enable-lto \
               --enable-shared \

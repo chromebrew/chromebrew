@@ -31,7 +31,7 @@ class Libindicator_gtk3 < Package
     system "#{CREW_ENV_OPTIONS.sub("CFLAGS='", "CFLAGS='-Wno-deprecated-declarations ").sub("LDFLAGS='",
                                                                                             "LDFLAGS='-lm ")} \
     ./configure \
-    #{CREW_OPTIONS} \
+    #{CREW_CONFIGURE_OPTIONS} \
     --localstatedir=#{CREW_PREFIX}/var \
     --libexecdir=#{CREW_LIB_PREFIX}/libindicator \
     --sysconfdir=#{CREW_PREFIX}/etc \

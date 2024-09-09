@@ -239,7 +239,7 @@ class Glibc_build227 < Package
         # enable-obsolete-rpc will cause a conflict with libtirpc
         system "SYSROOT=''  CFLAGS='-O2 -fno-strict-aliasing -fno-stack-protector -march=armv7-a+fp' \
                 LD=ld ../configure \
-                #{CREW_OPTIONS} \
+                #{CREW_CONFIGURE_OPTIONS} \
                 --with-headers=#{CREW_PREFIX}/include \
                 ac_cv_lib_cap_cap_init=no \
                 --disable-sanity-checks \
@@ -261,7 +261,7 @@ class Glibc_build227 < Package
       when 'x86_64'
         File.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
         system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
-                 #{CREW_OPTIONS} \
+                 #{CREW_CONFIGURE_OPTIONS} \
                  --with-headers=#{CREW_PREFIX}/include \
                  --without-gd \
                  --disable-werror \

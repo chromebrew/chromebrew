@@ -26,7 +26,7 @@ class Tdb < Package
   depends_on 'python3' => :build
 
   def self.build
-    system "./configure #{CREW_OPTIONS.sub(/--program-suffix.*/, '')}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')}"
     system 'make'
   end
 

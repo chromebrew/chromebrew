@@ -22,7 +22,7 @@ class Linux_pam < Package
   depends_on 'libeconf' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --disable-selinux \
       --enable-static \
       --disable-nis"

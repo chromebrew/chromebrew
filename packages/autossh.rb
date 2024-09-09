@@ -20,7 +20,7 @@ class Autossh < Package
   depends_on 'openssh'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
             --with-ssh=$(which ssh)"
     system 'make'
   end

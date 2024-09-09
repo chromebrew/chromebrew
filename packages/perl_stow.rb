@@ -20,7 +20,7 @@ class Perl_stow < Package
   depends_on 'perl_app_cpanminus' => :build
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --with-pmdir=#{CREW_PREFIX}/share/perl5/vendor_perl"
     system 'make'
   end

@@ -27,7 +27,7 @@ class Squashfs_tools_ng < Package
     system "env CFLAGS='-pipe -flto=auto' \
       CXXFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+      ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
     system 'make doxygen-doc'
   end

@@ -22,7 +22,7 @@ class Yasm < Package
   def self.build
     system "env CFLAGS='-pipe -flto=auto' CPPFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+      ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

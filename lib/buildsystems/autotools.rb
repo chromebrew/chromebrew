@@ -24,7 +24,7 @@ class Autotools < Package
         system 'filefix'
       end
       @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run ' : ''
-      system "#{@pre_configure_options} #{@mold_linker_prefix_cmd}./configure #{CREW_OPTIONS} #{@configure_options}"
+      system "#{@pre_configure_options} #{@mold_linker_prefix_cmd}./configure #{CREW_CONFIGURE_OPTIONS} #{@configure_options}"
     end
     system 'make'
     @build_extras&.call

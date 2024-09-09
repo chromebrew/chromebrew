@@ -33,7 +33,7 @@ class Libwpd < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-static"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-static"
     system 'make'
   end
 

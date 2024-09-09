@@ -43,7 +43,7 @@ class Libtiff < Package
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     @x = ARCH == 'i686' ? '' : '--with-x --enable-webp'
-    system "#{CREW_ENV_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} ./configure #{CREW_CONFIGURE_OPTIONS} \
       #{@x} \
       --enable-zlib \
       --enable-mdi \

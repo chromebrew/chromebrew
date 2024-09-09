@@ -36,7 +36,7 @@ class Gparted < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --sbindir=#{CREW_PREFIX}/bin \
       --enable-online-resize \
       --enable-libparted-dmraid \

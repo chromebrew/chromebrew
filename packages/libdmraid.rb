@@ -23,7 +23,7 @@ class Libdmraid < Package
   def self.build
     Dir.chdir '1.0.0.rc16-3/dmraid' do
       system 'autoreconf -fvi'
-      system "./configure #{CREW_OPTIONS}"
+      system "./configure #{CREW_CONFIGURE_OPTIONS}"
       system 'make || make'
     end
   end

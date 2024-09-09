@@ -130,7 +130,7 @@ class Crun < Package
   def self.build
     @disable_criu = ARCH == 'x86_64' ? '' : '--disable-criu'
     system './autogen.sh'
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       #{@disable_criu} \
       --disable-systemd \
       --enable-shared \

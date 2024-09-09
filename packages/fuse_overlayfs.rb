@@ -26,7 +26,7 @@ class Fuse_overlayfs < Package
 
   def self.build
     system 'autoreconf -fiv'
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --sbindir=#{CREW_PREFIX}/bin"
     system 'make'
   end

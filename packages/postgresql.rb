@@ -46,7 +46,7 @@ class Postgresql < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --with-gssapi \
       --with-icu \
       --with-ldap \

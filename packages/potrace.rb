@@ -21,7 +21,7 @@ class Potrace < Package
   depends_on 'zlib' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --with-libpotrace"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --with-libpotrace"
     system 'make'
   end
 

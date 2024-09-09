@@ -25,8 +25,8 @@ class Libtinfo < Package
     # build libncurses
     Dir.mkdir 'ncurses_build'
     Dir.chdir 'ncurses_build' do
-      # system "#{CREW_ENV_OPTIONS} ../configure #{CREW_OPTIONS} \
-      system "../configure #{CREW_OPTIONS} \
+      # system "#{CREW_ENV_OPTIONS} ../configure #{CREW_CONFIGURE_OPTIONS} \
+      system "../configure #{CREW_CONFIGURE_OPTIONS} \
           --program-prefix='' \
           --program-suffix='' \
           --with-shared \
@@ -43,8 +43,8 @@ class Libtinfo < Package
     # build libncursesw
     Dir.mkdir 'ncursesw_build'
     Dir.chdir 'ncursesw_build' do
-      # system "#{CREW_ENV_OPTIONS} ../configure #{CREW_OPTIONS} \
-      system "../configure #{CREW_OPTIONS} \
+      # system "#{CREW_ENV_OPTIONS} ../configure #{CREW_CONFIGURE_OPTIONS} \
+      system "../configure #{CREW_CONFIGURE_OPTIONS} \
           --program-prefix='' \
           --program-suffix='' \
           --with-shared \

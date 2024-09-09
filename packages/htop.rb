@@ -26,7 +26,7 @@ class Htop < Package
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system "CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw' \
-      ./configure #{CREW_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --disable-unicode"
     system 'make'
   end

@@ -19,7 +19,7 @@ class Bdftopcf < Package
   depends_on 'libxfont'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} "
+    system "./configure #{CREW_CONFIGURE_OPTIONS} "
     system "make -j#{CREW_NPROC}"
   end
 

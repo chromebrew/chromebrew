@@ -26,7 +26,7 @@ class Bridge_utils < Package
   def self.build
     system 'autoreconf -fvi'
     system "./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --sbindir=#{CREW_PREFIX}/bin \
       --sysconfdir=#{CREW_PREFIX}/etc"
     system 'make'

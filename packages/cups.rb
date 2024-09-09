@@ -32,7 +32,7 @@ class Cups < Package
 
   def self.build
     @buildoverride = %w[armv7l aarch64].include?(ARCH) ? 'CC=clang CXX=clang++ LD=mold CUPS_LINKER=mold' : ''
-    system "#{@buildoverride} ./configure #{CREW_OPTIONS} \
+    system "#{@buildoverride} ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-libusb"
     system 'make'
     File.write 'startcupsd', <<~EOF

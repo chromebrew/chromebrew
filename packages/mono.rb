@@ -33,7 +33,7 @@ class Mono < Package
 
   def self.build
     system "env XMKMF=#{CREW_PREFIX}/bin/xmkmf \
-      ./configure #{CREW_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --disable-maintainer-mode \
       --enable-llvm \
       --enable-loadedllvm \

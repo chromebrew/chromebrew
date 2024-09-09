@@ -32,7 +32,7 @@ class Tk < Package
     FileUtils.chdir('unix') do
       @bit64 = ARCH == 'x86_64' ? 'enable' : 'disable'
       system "./configure \
-          #{CREW_OPTIONS} \
+          #{CREW_CONFIGURE_OPTIONS} \
           --with-tcl=#{CREW_LIB_PREFIX} \
           --enable-threads \
           --#{@bit64}-64bit"

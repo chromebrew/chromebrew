@@ -231,7 +231,7 @@ class Glibc_build223 < Package
       end
       FileUtils.cp 'binutils/ld.bfd', 'binutils/ld'
       system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
-                 #{CREW_OPTIONS} \
+                 #{CREW_CONFIGURE_OPTIONS} \
                  --with-headers=#{CREW_PREFIX}/include \
                  --without-gd \
                  --disable-werror \

@@ -19,7 +19,7 @@ class Yara < Package
 
   def self.build
     system './bootstrap.sh'
-    system "YACC=bison ./configure #{CREW_OPTIONS}"
+    system "YACC=bison ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 
