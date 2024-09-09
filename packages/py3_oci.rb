@@ -8,7 +8,7 @@ class Py3_oci < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'py3_dateutil'
+  depends_on 'py3_python_dateutil'
   depends_on 'py3_configparser'
   depends_on 'py3_pyopenssl'
   depends_on 'py3_certifi'

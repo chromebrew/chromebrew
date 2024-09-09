@@ -44,4 +44,8 @@ class Pip < Package
     end
     @pip_install_extras&.call
   end
+
+  def self.remove
+    system "python3 -s -m pip uninstall #{@py_pkg} -y"
+  end
 end

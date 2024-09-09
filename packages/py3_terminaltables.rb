@@ -10,7 +10,7 @@ class Py3_terminaltables < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'py3_dateutil'
+  depends_on 'py3_python_dateutil'
   depends_on 'python3' => :build
 
   no_compile_needed

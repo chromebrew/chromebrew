@@ -20,7 +20,7 @@ class Oci_cli < Package
   depends_on 'py3_six'
   depends_on 'py3_terminaltables'
   depends_on 'py3_certifi'
-  depends_on 'py3_dateutil'
+  depends_on 'py3_python_dateutil'
   depends_on 'py3_click'
   depends_on 'py3_jmespath'
   depends_on 'py3_retrying'

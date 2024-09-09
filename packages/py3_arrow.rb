@@ -9,6 +9,6 @@ class Py3_arrow < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  depends_on 'py3_dateutil'
+  depends_on 'py3_python_dateutil'
   depends_on 'python3' => :build
 end
