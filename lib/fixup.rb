@@ -46,7 +46,9 @@ CREW_BRANCH ||= 'master'
 # commit of the potentially updated const.rb after a git pull.
 
 puts "fixup: @crew_const_git_commit is #{@crew_const_git_commit}"
-unless `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first == @crew_const_git_commit
+current_crew_const_git_commit = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
+puts "fixup: current_crew_const_git_commit is #{current_crew_const_git_commit}"
+unless current_crew_const_git_commit == @crew_const_git_commit
   puts 'Restarting crew update since there is an updated crew version.'.lightcyan
   puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if CREW_VERBOSE
   exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
