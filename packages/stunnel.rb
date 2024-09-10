@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Stunnel < Autotools
   description "Stunnel is a proxy designed to add TLS encryption functionality to existing clients and servers without any changes in the programs' code."
   homepage 'https://www.stunnel.org/index.html'
-  version '5.72'
+  version '5.73'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://www.stunnel.org/downloads/stunnel-5.72.tar.gz'
-  source_sha256 '3d532941281ae353319735144e4adb9ae489a10b7e309c58a48157f08f42e949'
+  source_url "https://www.stunnel.org/downloads/stunnel-#{version}.tar.gz"
+  source_sha256 'bc917c3bcd943a4d632360c067977a31e85e385f5f4845f69749bce88183cb38'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ff4a682e17d159061c9d27ba1fb059fa157dcadac3e17a9cd1497ed026f9be8f',
-     armv7l: 'ff4a682e17d159061c9d27ba1fb059fa157dcadac3e17a9cd1497ed026f9be8f',
-       i686: '85f066d8558b53f840191a7c22066a39ad56b25ae9c1082d4cb11a4c39403133',
-     x86_64: 'be01355c6615b27aa4e3bbe96ef820fe2e5a208b361d4d997a1ff4553848a77b'
+    aarch64: '17ef99aef231bb24c69c9a4d82b1ea1b09477ba989aa6144ba1250e3bf9f07c3',
+     armv7l: '17ef99aef231bb24c69c9a4d82b1ea1b09477ba989aa6144ba1250e3bf9f07c3',
+       i686: 'fafe61e47d8d257e2d646dd9f5c2891280b0e7ebb369e2da55f1a05ae3901f3f',
+     x86_64: 'b0c5f60c70d1463a4d19bb5642b999283ac6e83936ddfbc63f1dc15a59702942'
   })
 
   depends_on 'openssl'
