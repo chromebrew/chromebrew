@@ -1,6 +1,7 @@
-require 'buildsystems/pip'
+# Only a meson build creates the pkgconfig files needed for other builds.
+require 'buildsystems/meson'
 
-class Py3_pygobject < Pip
+class Py3_pygobject < Meson
   description 'PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.'
   homepage 'https://pygobject.gnome.org/'
   version '3.48.2-py3.12'
@@ -11,9 +12,9 @@ class Py3_pygobject < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9c20d1c394f4c35bf3fad8cd0e015734dd48b227762f23fd53b059d5acf5e060',
-     armv7l: '9c20d1c394f4c35bf3fad8cd0e015734dd48b227762f23fd53b059d5acf5e060',
-     x86_64: '052613b256000800d203abcc5dfa1704fbfa85755acc7a3f818b7e625d51bf10'
+    aarch64: 'd424b8a55e40b5ed56b0a5adafb474baeaf04564d81021d772b43718ff5e2b26',
+     armv7l: 'd424b8a55e40b5ed56b0a5adafb474baeaf04564d81021d772b43718ff5e2b26',
+     x86_64: '08efcb0f9dc6205ee73dbe101ab27477c660721845afe015cbdd7c6a5546a117'
   })
 
   depends_on 'cairo' # R
@@ -23,7 +24,12 @@ class Py3_pygobject < Pip
   depends_on 'gobject_introspection' # R
   depends_on 'harfbuzz' # R
   depends_on 'libffi' # R
+  depends_on 'py3_meson_python' => :build
   depends_on 'py3_pycairo' => :build
   depends_on 'python3' # R
   depends_on 'wayland' => :build
+
+  meson_options '-Dtests=false'
+
+  no_source_build
 end

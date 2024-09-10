@@ -1,23 +1,23 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_leather < Python
+class Py3_leather < Pip
   description 'Leather is a fast, approximate chart generator in Python.'
   homepage 'https://leather.readthedocs.io/'
-  @_ver = '0.3.4'
-  version "#{@_ver}-py3.12"
+  version '0.4.0-py3.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/wireservice/leather.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e97384f56288da6c88a4002c1f47e832551e4295f7e3eeb5c8e721a0aed70e2c',
-     armv7l: 'e97384f56288da6c88a4002c1f47e832551e4295f7e3eeb5c8e721a0aed70e2c',
-       i686: '289f5072c1d82e07fa812fc08437fa54577989148036295030dab5eee4f1d928',
-     x86_64: '88fbb3488cd5e8e0e8253c3f9c8fc004dc68051009be3f54f4c9e26ddac17747'
+    aarch64: '0740ea7ffe34a34d00dff9ce59966761dc39abce22e6b1d9e518a68a3f0742a1',
+     armv7l: '0740ea7ffe34a34d00dff9ce59966761dc39abce22e6b1d9e518a68a3f0742a1',
+       i686: 'f2b942510ce85060f6e8f287e2c6be46b47cb1c5c6859ccbc45aa8cda764c1fd',
+     x86_64: 'c5987e1edff3d3a47e0c947a23d532a70974f6abee5073648be26cd87b6b2c30'
   })
 
   depends_on 'py3_six'
   depends_on 'python3' => :build
+
+  no_source_build
 end

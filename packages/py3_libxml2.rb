@@ -12,10 +12,10 @@ class Py3_libxml2 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8c23226248f7607cd21ce80117a40f3468f066e0d8748cf4183c4fff6fe5ddea',
-     armv7l: '8c23226248f7607cd21ce80117a40f3468f066e0d8748cf4183c4fff6fe5ddea',
-       i686: 'fef4655b6f08152a29da01e5daf78d8d39e49a44941b59452983ec45241abfb0',
-     x86_64: '49e28b37dc9ce0ba6c2efbdcea1ce85b8b600db7e54fc223a85a7eb6701d137e'
+    aarch64: 'bff8fae7283d0749d059f3921f7e8b6651f3da3e102c02abfecbee93435e5cc9',
+     armv7l: 'bff8fae7283d0749d059f3921f7e8b6651f3da3e102c02abfecbee93435e5cc9',
+       i686: 'f92d0961f38537cbf5233b5f08c25d28b3425ba306398e76e2eae0bc0171f600',
+     x86_64: 'f03253815093dba410b70186d2a877ecd465db3ff426b12a02e1b5cff9ffeac2'
   })
 
   depends_on 'glibc' # R
@@ -37,4 +37,6 @@ class Py3_libxml2 < Package
       system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS_NO_SVEM}"
     end
   end
+
+  no_source_build
 end

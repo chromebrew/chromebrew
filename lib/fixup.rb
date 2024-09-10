@@ -34,26 +34,26 @@ CREW_VERBOSE ||= ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
 CREW_PREFIX ||= '/usr/local'
 CREW_LIB_PATH ||= File.join(CREW_PREFIX, 'lib/crew')
 
-load "#{CREW_LIB_PATH}/lib/const.rb"
-load "#{CREW_LIB_PATH}/lib/package.rb"
-load "#{CREW_LIB_PATH}/lib/convenience_functions.rb"
-
 CREW_CONFIG_PATH ||= File.join(CREW_PREFIX, 'etc/crew')
 CREW_META_PATH ||= File.join(CREW_CONFIG_PATH, 'meta')
 # via git log --reverse --oneline lib/const.rb | head -n 1
-CREW_CONST_GIT_COMMIT ||= '72d807aac'
+@crew_const_git_commit ||= '72d807aac'
 CREW_REPO   ||= 'https://github.com/chromebrew/chromebrew.git'
 CREW_BRANCH ||= 'master'
 
-# Restart crew update as quickly as possibnle if the git commit of
-# const.rb loaded in const.rb is different from the git commit of the
-# potentially updated const.rb loaded here after a git pull.
-
-unless `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first == CREW_CONST_GIT_COMMIT
+# Restart crew update as quickly as possible if the git commit of
+# const.rb loaded from crew before a git pull is different from the git
+# commit of the potentially updated const.rb after a git pull.
+current_crew_const_git_commit = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
+unless current_crew_const_git_commit == @crew_const_git_commit
   puts 'Restarting crew update since there is an updated crew version.'.lightcyan
   puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if CREW_VERBOSE
   exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
 end
+
+load "#{CREW_LIB_PATH}/lib/const.rb"
+load "#{CREW_LIB_PATH}/lib/package.rb"
+load "#{CREW_LIB_PATH}/lib/convenience_functions.rb"
 
 KERN_ARCH ||= Etc.uname[:machine]
 ARCH ||= %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH
@@ -167,11 +167,17 @@ pkg_update_arr = [
   { pkg_name: 'meson', pkg_rename: 'mesonbuild', pkg_deprecated: nil, comments: 'Renamed to avoid conflict with buildsystems/meson.' },
   { pkg_name: 'moonbuggy', pkg_rename: 'moon_buggy', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'nping', pkg_rename: nil, pkg_deprecated: true, comments: 'Removed to avoid conflict with nmap.' },
+  { pkg_name: 'oci_cli', pkg_rename: 'py3_oci_cli', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
   { pkg_name: 'percona_boost', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced by regular boost.' },
   { pkg_name: 'percona_server', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced by mysql.' },
   { pkg_name: 'pkgconfig', pkg_rename: 'pkg_config', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'postgres', pkg_rename: 'postgresql', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'proj4', pkg_rename: 'proj', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'py3_appdirs', pkg_rename: 'py3_platformdirs', pkg_deprecated: nil, comments: 'Replaced upstream.' },
+  { pkg_name: 'py3_agate_dfb', pkg_rename: 'py3_agate_dbf', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
+  { pkg_name: 'py3_dateutil', pkg_rename: 'py3_python_dateutil', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
+  { pkg_name: 'py3_magic', pkg_rename: 'py3_python_magic', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
+  { pkg_name: 'py3_pptx', pkg_rename: 'py3_python_pptx', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
   { pkg_name: 'pygobject', pkg_rename: 'py3_pygobject', pkg_deprecated: nil, comments: 'Renamed to use pip packaging.' },
   { pkg_name: 'q', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer suitable for packaging.' },
   { pkg_name: 'qtbase', pkg_rename: 'qt5_base', pkg_deprecated: nil, comments: 'Qt packages renamed to qt5_*' },
@@ -192,7 +198,6 @@ pkg_update_arr = [
   { pkg_name: 'qtwebglplugin', pkg_rename: 'qt5_webglplugin', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'ruby_debug', pkg_rename: nil, pkg_deprecated: true, comments: 'Integrated into ruby package.' },
   { pkg_name: 'tracker3', pkg_rename: 'tinysparql', pkg_deprecated: nil, comments: 'Renamed upstream.' },
   { pkg_name: 'tracker3_miners', pkg_rename: 'localsearch', pkg_deprecated: nil, comments: 'Renamed upstream.' },
   { pkg_name: 'util_macros', pkg_rename: 'xorg_macros', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },

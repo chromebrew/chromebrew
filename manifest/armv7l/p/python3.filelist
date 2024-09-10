@@ -2436,9 +2436,9 @@
 /usr/local/lib/python3.12/lib-dynload/xxsubtype.cpython-312-arm-linux-gnueabihf.so
 /usr/local/lib/python3.12/lib-dynload/zlib.cpython-312-arm-linux-gnueabihf.so
 /usr/local/lib/python3.12/lib2to3/Grammar.txt
-/usr/local/lib/python3.12/lib2to3/Grammar3.12.5.final.0.pickle
+/usr/local/lib/python3.12/lib2to3/Grammar3.12.6.final.0.pickle
 /usr/local/lib/python3.12/lib2to3/PatternGrammar.txt
-/usr/local/lib/python3.12/lib2to3/PatternGrammar3.12.5.final.0.pickle
+/usr/local/lib/python3.12/lib2to3/PatternGrammar3.12.6.final.0.pickle
 /usr/local/lib/python3.12/lib2to3/__init__.py
 /usr/local/lib/python3.12/lib2to3/__main__.py
 /usr/local/lib/python3.12/lib2to3/__pycache__/__init__.cpython-312.opt-1.pyc
@@ -5987,6 +5987,9 @@
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_misc.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_misc.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_misc.cpython-312.pyc
+/usr/local/lib/python3.12/test/test_capi/__pycache__/test_number.cpython-312.opt-1.pyc
+/usr/local/lib/python3.12/test/test_capi/__pycache__/test_number.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/test/test_capi/__pycache__/test_number.cpython-312.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_run.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_run.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_run.cpython-312.pyc
@@ -5999,6 +6002,9 @@
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_sys.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_sys.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_sys.cpython-312.pyc
+/usr/local/lib/python3.12/test/test_capi/__pycache__/test_tuple.cpython-312.opt-1.pyc
+/usr/local/lib/python3.12/test/test_capi/__pycache__/test_tuple.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/test/test_capi/__pycache__/test_tuple.cpython-312.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_unicode.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_unicode.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_unicode.cpython-312.pyc
@@ -6021,10 +6027,12 @@
 /usr/local/lib/python3.12/test/test_capi/test_long.py
 /usr/local/lib/python3.12/test/test_capi/test_mem.py
 /usr/local/lib/python3.12/test/test_capi/test_misc.py
+/usr/local/lib/python3.12/test/test_capi/test_number.py
 /usr/local/lib/python3.12/test/test_capi/test_run.py
 /usr/local/lib/python3.12/test/test_capi/test_set.py
 /usr/local/lib/python3.12/test/test_capi/test_structmembers.py
 /usr/local/lib/python3.12/test/test_capi/test_sys.py
+/usr/local/lib/python3.12/test/test_capi/test_tuple.py
 /usr/local/lib/python3.12/test/test_capi/test_unicode.py
 /usr/local/lib/python3.12/test/test_capi/test_watchers.py
 /usr/local/lib/python3.12/test/test_cgi.py
