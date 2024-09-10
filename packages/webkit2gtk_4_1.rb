@@ -3,12 +3,12 @@ require 'package'
 class Webkit2gtk_4_1 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.44.2'
+  version '2.44.3'
   license 'LGPL-2+ and BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
-  min_glibc '2.37'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.44.2.tar.xz'
-  source_sha256 '523f42c8ff24832add17631f6eaafe8f9303afe316ef1a7e1844b952a7f7521b'
+  min_glibc '2.27'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.44.3.tar.xz'
+  source_sha256 'dc82d042ecaca981a4852357c06e5235743319cf10a94cd36ad41b97883a0b54'
   binary_compression 'tar.zst'
 
   binary_sha256({
