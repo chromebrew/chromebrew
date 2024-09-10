@@ -5,7 +5,10 @@
 require 'parallel'
 
 py_ver = `python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp
-Parallel.map(Dir['py3_*.rb']) do |package|
+py3_files = Dir['py3_*.rb']
+pip_files = `grep -l "^require 'buildsystems/pip'" *.rb`.chomp.split
+relevant_pip_files = (py3_files + pip_files).uniq!
+Parallel.map(relevant_pip_files) do |package|
   pip_name = package.gsub('.rb', '').gsub('py3_', '').gsub('_', '-')
   pip_version = `python -m pip index versions #{pip_name} 2>/dev/null | head -n 1 | awk '{print $2}'`.chomp.delete('()')
   puts "#{pip_name} version is #{pip_version}"
