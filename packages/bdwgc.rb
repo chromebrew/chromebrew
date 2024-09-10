@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Bdwgc < CMake
   description 'The Boehm-Demers-Weiser conservative C/C++ Garbage Collector'
   homepage 'https://www.hboehm.info/gc/'
-  version '8.2.4'
-  license 'custom'
+  version '8.2.8'
+  license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/ivmai/bdwgc/releases/download/v8.2.4/gc-8.2.4.tar.gz'
-  source_sha256 '3d0d3cdbe077403d3106bb40f0cbb563413d6efdbb2a7e1cd6886595dec48fc2'
+  source_url 'https://github.com/ivmai/bdwgc.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'afb82388b553021575812b5e8c788c8530f44193688123e5ff5a012122287f26',
-     armv7l: 'afb82388b553021575812b5e8c788c8530f44193688123e5ff5a012122287f26',
-       i686: 'e5187ea6bdfb5b478309039aa35e422c7a558cf0928f08af778f2a3f1362487f',
-     x86_64: '66a43028848541f4352b18c711d675abaa897a940fa5c2cd434b40cc5fb5851d'
+    aarch64: '2e123af98ab5cc027dd1ba32a9fc1048a0bedf27dffb322ba0d5ae711d08ec70',
+     armv7l: '2e123af98ab5cc027dd1ba32a9fc1048a0bedf27dffb322ba0d5ae711d08ec70',
+       i686: 'f277512c24c20ea65a55d51410ac40453aab42d349672e5425a217009e040ac0',
+     x86_64: '14f9a975ae17a0cde462794a1df8e30570807f51c5876bc32c24c51e4d7c12b9'
   })
 
   depends_on 'glibc' # R
