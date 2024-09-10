@@ -7,7 +7,6 @@ class Py3_dool < Pip
   license 'GPL3+'
   compatibility 'all'
   source_url 'SKIP'
-  binary_compression 'tar.zst'
 
   depends_on 'python3'
 

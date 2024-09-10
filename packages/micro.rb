@@ -6,10 +6,6 @@ class Micro < Package
   version '2.0.13'
   license 'MIT'
   compatibility 'all'
-  binary_compression 'tar.zst'
-
-  no_compile_needed
-
   case ARCH
   when 'aarch64', 'armv7l'
     source_url 'https://github.com/zyedidia/micro/releases/download/v2.0.13/micro-2.0.13-linux-arm.tar.gz'
@@ -21,6 +17,8 @@ class Micro < Package
     source_url 'https://github.com/zyedidia/micro/releases/download/v2.0.13/micro-2.0.13-linux64.tar.gz'
     source_sha256 'a50e405d3d09d58f6b2c182429c18537a05f317dc0c3c9cb834b3271362e4781'
   end
+
+  no_compile_needed
 
   def self.install
     system "install -Dm755 micro #{CREW_DEST_PREFIX}/bin/micro"

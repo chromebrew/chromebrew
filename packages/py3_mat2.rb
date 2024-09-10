@@ -7,7 +7,6 @@ class Py3_mat2 < Pip
   license 'MIT'
   compatibility 'x86_64'
   source_url 'SKIP'
-  binary_compression 'tar.zst'
 
   depends_on 'py3_pycairo' # R
   depends_on 'python3' => :build

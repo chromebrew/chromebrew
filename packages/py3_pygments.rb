@@ -7,8 +7,8 @@ class Py3_pygments < Pip
   license 'BSD-2'
   compatibility 'all'
   source_url 'SKIP'
-  binary_compression 'tar.zst'
 
   depends_on 'python3' => :build
+
   no_compile_needed
 end
