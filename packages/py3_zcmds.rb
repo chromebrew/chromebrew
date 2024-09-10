@@ -1,3 +1,4 @@
+# Currently breaks the system by replacing coreutils binaries with symlinks to python...
 require 'buildsystems/pip'
 
 class Py3_zcmds < Pip
@@ -5,7 +6,7 @@ class Py3_zcmds < Pip
   homepage 'https://github.com/zackees/zcmds'
   version '1.4.100-py3.12'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'aarch64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 

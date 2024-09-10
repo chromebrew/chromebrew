@@ -7441,6 +7441,11 @@ url: https://github.com/readthedocs/sphinx_rtd_theme/tags
 activity: medium
 ---
 kind: url
+name: py3_twine
+url: https://github.com/pypa/twine/releases
+activity: medium
+---
+kind: url
 name: py3_trove_classifiers
 url: https://github.com/pypa/trove-classifiers/releases
 activity: medium

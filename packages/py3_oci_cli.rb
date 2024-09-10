@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_oci_cli < Pip
   description 'Command Line Interface for Oracle Cloud Infrastructure'
   homepage 'https://github.com/oracle/oci-cli/'
-  version '3.47.0'
+  version '3.47.0-py3.12'
   license 'UPL-1.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'SKIP'
