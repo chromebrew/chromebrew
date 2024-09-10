@@ -150,6 +150,7 @@ ruby_highline
 ruby_mdl
 ruby_pry
 ruby_rubocop
+ruby_ruby_libversion
 ruby_yaml_lint
 samurai
 sed
