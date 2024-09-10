@@ -17,6 +17,6 @@
 /usr/local/share/X11/app-defaults/Bitmap
 /usr/local/share/X11/app-defaults/Bitmap-color
 /usr/local/share/X11/app-defaults/Bitmap-nocase
-/usr/local/share/man/man1/atobm.1.gz
-/usr/local/share/man/man1/bitmap.1.gz
-/usr/local/share/man/man1/bmtoa.1.gz
+/usr/local/share/man/man1/atobm.1.zst
+/usr/local/share/man/man1/bitmap.1.zst
+/usr/local/share/man/man1/bmtoa.1.zst
