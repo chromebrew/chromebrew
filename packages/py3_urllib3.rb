@@ -7,6 +7,7 @@ class Py3_urllib3 < Pip
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
 
   depends_on 'python3' => :build
 

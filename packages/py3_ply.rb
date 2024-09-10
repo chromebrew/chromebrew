@@ -7,6 +7,7 @@ class Py3_ply < Pip
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
 
   depends_on 'python3' => :build
 
