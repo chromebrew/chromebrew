@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Sqlmap < Pip
   description 'sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.'
   homepage 'https://sqlmap.org/'
-  version '1.8.8-py3.12'
+  version '1.8.9-py3.12'
   license 'GPL-2'
   compatibility 'all'
   source_url 'SKIP'

@@ -7906,6 +7906,11 @@ url: https://github.com/rubocop/rubocop/releases
 activity: medium
 ---
 kind: url
+name: ruby_ruby_libversion
+url: https://github.com/Zopolis4/ruby-libversion/tags
+activity: medium
+---
+kind: url
 name: ruby_webrick
 url: https://github.com/ruby/webrick/releases
 activity: medium
