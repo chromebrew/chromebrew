@@ -76,7 +76,7 @@ class Webkit2gtk_4_1 < Package
   no_env_options
 
   def self.patch
-    # Fix inconpatibility with gtk3 from current gobjects_introspection causing buuld failure
+    # Fix incompatibility with gtk3 from current gobjects_introspection causing build failure
     # as per https://bugs.webkit.org/show_bug.cgi?id=276180 .
     downloader 'https://github.com/WebKit/WebKit/pull/30446.diff', '6beda7960b232117f8445db4e588a45ef384d42ccb13f6926b695c472a4eea51'
     system 'patch -Np1 -i 30446.diff'
