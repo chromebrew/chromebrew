@@ -1,15 +1,12 @@
-# Adapted from Arch Linux python-twine PKGBUILD at:
-# https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=python-twine
-
 require 'buildsystems/pip'
 
 class Py3_twine < Pip
   description 'A utility for interacting with PyPI'
   homepage 'https://pypi.python.org/pypi/twine'
-  version '5.1.1-py3.12'
+  version '5.1.2.dev26+gc577765-py3.12'
   license 'APACHE'
   compatibility 'all'
-  source_url 'SKIP'
+  source_url 'https://github.com/pypa/twine.git@bugfix/1116-pkginfo-warnings'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -24,4 +21,5 @@ class Py3_twine < Pip
   depends_on 'rust' => :build
 
   no_source_build
+  prerelease
 end
