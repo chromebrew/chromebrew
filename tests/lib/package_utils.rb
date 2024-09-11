@@ -157,7 +157,7 @@ class PackageUtilsTest < Minitest::Test
   end
 
   def test_get_clean_glibc_version
-    assert_equal('9.5.18', PackageUtils.get_clean_version("9.5.18-glibc#{LIBC_VERSION}"))
+    assert_equal('9.5.18', PackageUtils.get_clean_version('9.5.18-glibc2.39'))
   end
 
   def test_get_clean_git_version

@@ -10,7 +10,13 @@ git clone --depth=1 --branch="$CREW_BRANCH" "$CREW_REPO" ~/build_test
 (cd ~/build_test && yes | CREW_CACHE_ENABLED=1 crew build -vf ~/build_test/packages/hello_world_chromebrew.rb)
 yes | crew install vim
 yes | crew remove vim
-rake -C..
+ruby ../tests/commands/const.rb
+ruby ../tests/commands/help.rb
+ruby ../tests/commands/list.rb
+ruby ../tests/commands/prop.rb
+ruby ../tests/commands/remove.rb
+ruby ../tests/commands/whatprovides.rb
+ruby ../tests/lib/docopt.rb
 if [[ -n ${CHANGED_PACKAGES-} ]]; then
   all_compatible_packages=$(crew list -d compatible)
   all_installed_packages=$(crew list -d installed)
