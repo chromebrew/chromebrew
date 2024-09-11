@@ -1756,30 +1756,6 @@ def sysinfo_command(_args)
   Command.sysinfo(CREW_VERBOSE)
 end
 
-def test_command(args)
-  test_commands_path = "#{CREW_LIB_PATH}/tests/commands"
-  if args['<name>'].empty?
-    Dir["#{test_commands_path}/*.rb"].each do |name|
-      basename = File.basename(name, '.rb')
-      puts "Testing #{basename} command ...".yellow
-      system("ruby #{name}")
-    end
-  else
-    args['<name>'].each do |name|
-      basename = File.basename(name, '.rb')
-      name = basename if basename != name
-      if File.file?("#{test_commands_path}/#{name}.rb")
-        Dir.chdir(test_commands_path) do
-          puts "Testing #{name} command ...".yellow
-          system("ruby #{name}.rb")
-        end
-      else
-        puts "The #{name} command or test does not exist. Test skipped.".orange
-      end
-    end
-  end
-end
-
 def update_command(args)
   if args['<compatible>']
     generate_compatible
