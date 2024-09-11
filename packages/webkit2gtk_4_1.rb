@@ -3,10 +3,9 @@ require 'package'
 class Webkit2gtk_4_1 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.44.3'
+  version '2.44.3-icu75.1'
   license 'LGPL-2+ and BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
-  min_glibc '2.27'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.44.3.tar.xz'
   source_sha256 'dc82d042ecaca981a4852357c06e5235743319cf10a94cd36ad41b97883a0b54'
   binary_compression 'tar.zst'
@@ -77,6 +76,10 @@ class Webkit2gtk_4_1 < Package
   no_env_options
 
   def self.patch
+    # Fix inconpatibility with gtk3 from current gobjects_introspection causing buuld failure
+    # as per https://bugs.webkit.org/show_bug.cgi?id=276180 .
+    downloader 'https://github.com/WebKit/WebKit/pull/30446.diff', '6beda7960b232117f8445db4e588a45ef384d42ccb13f6926b695c472a4eea51'
+    system 'patch -Np1 -i 30446.diff'
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
     @arch_flags = ''
     @gcc_ver = ''
@@ -97,7 +100,6 @@ class Webkit2gtk_4_1 < Package
           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
           -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
           -DENABLE_DOCUMENTATION=OFF \
-          -DENABLE_GLES2=OFF \
           -DENABLE_JOURNALD_LOG=OFF \
           -DENABLE_GAMEPAD=OFF \
           -DENABLE_MINIBROWSER=ON \
