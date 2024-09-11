@@ -11,10 +11,10 @@ class Py3_setuptools < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f3a0f31ba3c061d079764be008239b14e40ee4b8cac60e0f75d39d7f9d5e0e2f',
-     armv7l: 'f3a0f31ba3c061d079764be008239b14e40ee4b8cac60e0f75d39d7f9d5e0e2f',
-       i686: '49d57dcd49c10f827a328a744ad31f3573b1b015f2e763840b91ef2091b12456',
-     x86_64: 'b9dc353616f26bad1143e3c57ab7470ad16cd8ae400465363ef2132aaf44eaee'
+    aarch64: '3621d63b8a622c3c6a9a19ec43193652bc0ff966500a558587db2571a11f4e45',
+     armv7l: '3621d63b8a622c3c6a9a19ec43193652bc0ff966500a558587db2571a11f4e45',
+       i686: '1535313daecfa1ddbb92780efa88ecfd5c59f8078372eeab7ca0215a2f876921',
+     x86_64: 'f682404e6c62d422144c370bb33178117bda25859c166446270f33d8b42c717f'
   })
 
   depends_on 'python3'
@@ -23,7 +23,11 @@ class Py3_setuptools < Python
   conflicts_ok
 
   def self.prebuild
-    system 'python3 -m pip uninstall setuptools -y'
-    system 'python3 -m pip install setuptools'
+    system 'python3 -m pip uninstall setuptools -y', exception: false
+    system 'python3 -m pip install setuptools', exception: false
+  end
+
+  def self.postremove
+    system 'python3 -m pip uninstall setuptools -y', exception: false
   end
 end

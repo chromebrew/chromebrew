@@ -1,22 +1,23 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_pyproject_hooks < Python
+class Py3_pyproject_hooks < Pip
   description 'This package contains wrappers to call hooks on build backends for pyproject.toml -based projects'
   homepage 'https://pyproject-hooks.readthedocs.io/'
-  version '1.0.0-py3.12'
+  version '1.1.0-py3.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/pypa/pyproject-hooks.git'
-  git_hashtag "v#{version.split('-').first}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '85dc082e0188d4e202957bf5c9bfb9405e4ce8432ab38a311dbddfe0529f4ecc',
-     armv7l: '85dc082e0188d4e202957bf5c9bfb9405e4ce8432ab38a311dbddfe0529f4ecc',
-       i686: '320ca6f093e9dfd90ef604dc602bd6c92775d5314c83027ccb3595805f59c7ba',
-     x86_64: 'd411f26747f2f0f5b55fa094cfe2fc0622c522f476bd3c6ae97934bdfddf1dc9'
+    aarch64: '77bfe04652ed2a2940c25b83633c497c376d5d4fdebcd201267464704e62580c',
+     armv7l: '77bfe04652ed2a2940c25b83633c497c376d5d4fdebcd201267464704e62580c',
+       i686: 'c33947873a0cd97c42e0c4e4d158b52fe77c57dafb4626f770104d64b5a280c4',
+     x86_64: '501ce787ae83229071f823f75b754dcdbf7647de1ddc7809ddb965d081dffa78'
   })
 
   depends_on 'python3'
   depends_on 'py3_tomli'
+
+  no_source_build
 end

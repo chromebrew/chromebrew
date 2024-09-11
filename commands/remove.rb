@@ -40,10 +40,16 @@ class Command
     # Use gem to first try to remove gems...
     if pkg.name.start_with?('ruby_')
       @gem_name = pkg.name.sub('ruby_', '').sub('_', '-')
-      if Kernel.system "gem list -i \"^#{@gem_name}\$\""
-        puts "Uninstalling #{@gem_name} before updating. It's ok if this fails.".orange
+      if Kernel.system "gem list -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
+        puts "Uninstalling #{@gem_name} before removing gem files. It's ok if this fails.".orange
         system "gem uninstall -aIx --abort-on-dependent #{@gem_name}", exception: false
       end
+    end
+
+    # Use pip to first try to remove python packages if package uses pip.
+    if pkg.name.start_with?('py3_')
+      pkg_file = Dir["{#{CREW_LOCAL_REPO_ROOT}/packages,#{CREW_PACKAGES_PATH}}/#{pkg.name}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
+      system "python3 -s -m pip uninstall #{pkg.name.gsub('py3_', '')} -y", exception: false if Kernel.system "grep -q \"^require 'buildsystems/pip\" #{pkg_file}"
     end
 
     # Remove the files and directories installed by the package.

@@ -8,9 +8,9 @@ class Py3_unsupported_python < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_sha256({})
-
   depends_on 'python3' => :build
+
+  no_compile_needed
 
   pre_configure_options 'ALLOW_UNSUPPORTED_PYTHON=3.12'
 end

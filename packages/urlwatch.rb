@@ -20,9 +20,9 @@ class Urlwatch < Python
   depends_on 'py3_lxml'
   depends_on 'py3_cssselect'
   depends_on 'py3_minidb'
+  depends_on 'py3_platformdirs'
   depends_on 'py3_pyyaml'
   depends_on 'py3_requests'
-  depends_on 'py3_appdirs'
   depends_on 'py3_keyring'
   depends_on 'python3' => :build
 end

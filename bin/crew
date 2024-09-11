@@ -249,6 +249,10 @@ end
 def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkg_name
 
+  # The following is used in fixup.rb to determine if crew update needs to
+  # be run again.
+  @crew_const_git_commit = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
+
   unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
     puts 'Fixing Chromebrew system git repo clone...'.orange
     system(<<~GIT_REPAIR_COMMANDS, chdir: CREW_LIB_PATH, %i[out err] => File::NULL)
@@ -285,6 +289,7 @@ def update
   if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
     puts 'Updating RubyGems.'.orange
     system 'gem update -N --system'
+    system 'gem pristine --all'
   end
   puts 'Package lists, crew, and library updated.'
 
@@ -1232,7 +1237,7 @@ def resolve_dependencies
 end
 
 def install
-  if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name)
+  if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name) && !@pkg.name.start_with?('ruby_')
     puts "Package #{@pkg.name} already installed, skipping...".lightgreen
     return
   end
@@ -1676,7 +1681,7 @@ def install_command(args)
     @pkg_name = name
     # Exit early if package is already installed. This prevents the
     # postinstall from being run for an already installed package.
-    if @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg_name }
+    if !@pkg_name.start_with?('ruby_') && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg_name }
       puts "Package #{@pkg_name} already installed, skipping...".lightgreen
       next
     end

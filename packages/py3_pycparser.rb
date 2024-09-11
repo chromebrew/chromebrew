@@ -7,4 +7,5 @@ class Py3_pycparser < Pip
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
 end

@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.52.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.52.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -83,15 +83,6 @@ CREW_DEST_MAN_PREFIX  ||= File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2> /dev/null`.chomp
 CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 
-# The following is used in fixup.rb to determine if crew update needs to
-# be run again.
-@git_commit = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{__FILE__} 2> /dev/null`.split.first
-if defined?(CREW_CONST_GIT_COMMIT)
-  CREW_CONST_GIT_COMMIT = @git_commit if @git_commit != CREW_CONST_GIT_COMMIT
-else
-  CREW_CONST_GIT_COMMIT ||= @git_commit unless defined?(CREW_CONST_GIT_COMMIT)
-end
-
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX      ||= File.join(CREW_PREFIX, '/share/musl/')
 CREW_DEST_MUSL_PREFIX ||= File.join(CREW_DEST_DIR, CREW_MUSL_PREFIX)
@@ -135,7 +126,7 @@ CREW_NOT_SHRINK_ARCHIVE              ||= ENV.fetch('CREW_NOT_SHRINK_ARCHIVE', fa
 CREW_REPO   ||= ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git') unless defined?(CRE_REPO)
 CREW_BRANCH ||= ENV.fetch('CREW_BRANCH', 'master') unless defined?(CREW_BRANCH)
 
-USER ||= Etc.getlogin
+USER ||= Etc.getlogin unless defined?(USER)
 
 unless defined?(CHROMEOS_RELEASE)
   CHROMEOS_RELEASE = \

@@ -1,23 +1,23 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_openpyxl < Python
+class Py3_openpyxl < Pip
   description 'Openpyxl is a Python library to read/write Excel 2010 xlsx/xlsm files.'
   homepage 'https://openpyxl.readthedocs.io/'
-  @_ver = '3.1.2'
-  version "#{@_ver}-py3.12"
+  version '3.1.5-py3.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://files.pythonhosted.org/packages/42/e8/af028681d493814ca9c2ff8106fc62a4a32e4e0ae14602c2a98fc7b741c8/openpyxl-3.1.2.tar.gz'
-  source_sha256 'a6f5977418eff3b2d5500d54d9db50c8277a368436f4e4f8ddb1be3422870184'
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd051a09a1e07fdc0a8fcdbb7638e4dfbf5647fbd08bc1570f8f6575b179c9090',
-     armv7l: 'd051a09a1e07fdc0a8fcdbb7638e4dfbf5647fbd08bc1570f8f6575b179c9090',
-       i686: '018c292322d00d2e3505bb303ff20411b527f626c1be9c053e3d10b3ce9f8edb',
-     x86_64: '430dfbd257a078b52f06e5ca0b7d88fdee1dac408dd5ddeafb6ab55a2b3b3034'
+    aarch64: '2a77c68631a7c2111e53cb7721081bcaf7a5cfe179f80966fd59588246bde724',
+     armv7l: '2a77c68631a7c2111e53cb7721081bcaf7a5cfe179f80966fd59588246bde724',
+       i686: '76c5fa33bcde46581395b57e18749835fac76c8d139559386bcd83d45c70a0d7',
+     x86_64: '4d723c5456da0c06c7e8e8650ccb3f80102cf893b183ba8fa6be7c609135e736'
   })
 
   depends_on 'py3_et_xmlfile'
   depends_on 'python3' => :build
+
+  no_source_build
 end

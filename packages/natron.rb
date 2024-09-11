@@ -10,8 +10,6 @@ class Natron < Package
   source_sha256 '7e8f2ec343f553799f34dce89aa250c410024f17e2c9ccfb5e22544db3e46bb4'
   binary_compression 'tpxz'
 
-  no_compile_needed
-
   binary_sha256({
     x86_64: '35b3c22b67f74d285e71f619179cf36a3a475d0df37dd7dcb104d22a318edce4'
   })

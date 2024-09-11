@@ -7,6 +7,7 @@ class Py3_snowballstemmer < Pip
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
 
   depends_on 'py3_pystemmer'
   depends_on 'python3'

@@ -6,19 +6,21 @@ class Py3_pyicu < Pip
   version '2.13.1-icu75.1-py3.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.pyicu.org/main/pyicu.git'
-  git_hashtag "v#{version.split('-').first}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '932a8593f6cbd175a7a022c3d8a4cece0e99a62ce0b58c1f0a400055e6b00420',
-     armv7l: '932a8593f6cbd175a7a022c3d8a4cece0e99a62ce0b58c1f0a400055e6b00420',
-       i686: 'ab655db1f070b700cd8d47363a186a87922dea1f6a77dda8602cf9b0d15ad30a',
-     x86_64: '79d0f9f55ed714d5082593ce58d502ca4ff876198e08f79c736fa2732e2ea948'
+    aarch64: '6eae174f9c3871644bbe8ec5792ef7cb49c4a353d1c62cce78c438d9a67a9a89',
+     armv7l: '6eae174f9c3871644bbe8ec5792ef7cb49c4a353d1c62cce78c438d9a67a9a89',
+       i686: '5d4a05e038508cbcef7596c40b32ab739d81243636f0c60d290a920da0cf1952',
+     x86_64: '3dd41517151950f5cf13625035e0511b40c85cfb47b7be41df7dd3827ad3b8a6'
   })
 
   depends_on 'python3' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'glibc_lib' # R
   depends_on 'icu4c' # R
+
+  no_source_build
 end
