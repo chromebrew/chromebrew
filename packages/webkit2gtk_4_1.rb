@@ -11,9 +11,9 @@ class Webkit2gtk_4_1 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f97d19d647d8eac60b30cc6306cf20ab1154ac074707f84491c9bb319c2cb743',
-     armv7l: 'f97d19d647d8eac60b30cc6306cf20ab1154ac074707f84491c9bb319c2cb743',
-     x86_64: 'd55485064d6bfb73475ea96186970bc1552c766b0717a5a2ab951dfe8bf6b687'
+    aarch64: '6c220476148a9b263f78e1a9dfc95562bcf8635fbcc403f2c461bbbf7b5f465f',
+     armv7l: '6c220476148a9b263f78e1a9dfc95562bcf8635fbcc403f2c461bbbf7b5f465f',
+     x86_64: '80b969a2d1a82d55852f5026aefac336c8092d8d8c3628450e7fb1a47121e3de'
   })
 
   depends_on 'at_spi2_core' # R
