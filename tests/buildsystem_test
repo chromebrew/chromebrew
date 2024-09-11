@@ -1,42 +1,49 @@
 #!/usr/bin/env ruby
 
+require_relative '../lib/const'
 require_relative '../lib/color'
+require_relative '../lib/package'
 
-def get_buildsystems(file, field)
-  return `grep ^class #{file} | cut -d' ' -f#{field} | xargs`.chomp
-end
+# Add >LOCAL< lib to LOAD_PATH so that packages can be loaded
+$LOAD_PATH.unshift File.join(CREW_LIB_PATH, 'lib')
 
-def check_buildsystem(name)
-  puts "Checking #{name} package ...".yellow
-  buildsystem = get_buildsystems("../packages/#{name}.rb", 4)
-  if @buildsystems.include?(buildsystem)
-    puts "Buildsystem test for #{name} passed.".lightgreen
+def check_buildsystem(pkg_path, verbose: false)
+  name = File.basename(pkg_path, '.rb')
+  puts "Checking #{name} package ...".yellow if verbose
+  # If the buildsystem is invalid, it will almost certainly raise a NameError when we attempt to load it.
+  begin
+    buildsystem = Package.load_package(pkg_path).superclass.to_s
+  rescue NameError => e
+    buildsystem = e.name.to_s
+  end
+  valid_buildsystems = %w[Autotools CMake Meson PERL Package Pip Python Qmake RUBY]
+
+  if valid_buildsystems.include?(buildsystem)
+    puts "Buildsystem test for #{name} passed.".lightgreen if verbose
+    return 0
   else
-    puts "#{buildsystem} is an invalid buildsystem. Valid buildsystems include #{@buildsystems.sort.join(', ')}.".lightred
+    puts "#{buildsystem} is an invalid buildsystem. Valid buildsystems include #{valid_buildsystems.join(', ')}.".lightred
     puts "Buildsystem test for #{name} failed.".lightred
-    @tofail += 1
+    return 1
   end
 end
 
-@tofail = 0
-@buildsystems = "Package #{get_buildsystems('../lib/buildsystems/*.rb', 2)}".split
-
 if ARGV[0]
-  ARGV.each do |arg|
-    if File.file? "../packages/#{arg}.rb"
-      check_buildsystem(arg)
+  ARGV.each do |name|
+    if File.file?(File.join(CREW_PACKAGES_PATH, "#{name}.rb"))
+      check_buildsystem(File.join(CREW_PACKAGES_PATH, "#{name}.rb"), verbose: true)
     else
-      puts "Package #{arg} not found.".lightred
+      puts "Package #{name} not found.".lightred
     end
   end
 else
-  Dir['../packages/*.rb'].each do |filename|
-    name = File.basename(filename, '.rb')
-    check_buildsystem(name)
+  failed_packages = 0
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
+    failed_packages += check_buildsystem(filename)
   end
 
-  if @tofail.positive?
-    puts "\n#{@tofail} packages failed buildsystem tests.".lightred
+  if failed_packages.positive?
+    puts "\n#{failed_packages} packages failed buildsystem tests.".lightred
     exit(1)
   else
     puts "\nAll packages passed buildsystem tests.".lightgreen
