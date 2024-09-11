@@ -7441,6 +7441,11 @@ url: https://github.com/readthedocs/sphinx_rtd_theme/tags
 activity: medium
 ---
 kind: url
+name: py3_twine
+url: https://github.com/pypa/twine/releases
+activity: medium
+---
+kind: url
 name: py3_trove_classifiers
 url: https://github.com/pypa/trove-classifiers/releases
 activity: medium
@@ -7898,6 +7903,11 @@ activity: low
 kind: url
 name: ruby_rubocop
 url: https://github.com/rubocop/rubocop/releases
+activity: medium
+---
+kind: url
+name: ruby_ruby_libversion
+url: https://github.com/Zopolis4/ruby-libversion/tags
 activity: medium
 ---
 kind: url

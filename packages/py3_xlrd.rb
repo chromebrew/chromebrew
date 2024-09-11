@@ -1,21 +1,22 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_xlrd < Python
+class Py3_xlrd < Pip
   description 'XLRD is a library to extract data from Microsoft Excel (tm) spreadsheet files.'
   homepage 'https://xlrd.readthedocs.io/'
   version '2.0.1-py3.12'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/python-excel/xlrd.git'
-  git_hashtag version.split('-').first
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7a1ab7217475f907408d8750ed0d6413e456ef9854014c989074c011e87ef86b',
-     armv7l: '7a1ab7217475f907408d8750ed0d6413e456ef9854014c989074c011e87ef86b',
-       i686: '212ff9f9d31b3b55646708039daaf0f01b04a94ee18c15725b5dc92410d4071f',
-     x86_64: 'eaf26e2eee9f32ccd547b0a70254655d336ede3571d873758a8c9fd7a0e2eb8d'
+    aarch64: '0120d34f905d1a127bdaa8beb2508a10249597acd9609fb917d489f54a01ea7d',
+     armv7l: '0120d34f905d1a127bdaa8beb2508a10249597acd9609fb917d489f54a01ea7d',
+       i686: 'c3a90834fe72a55e9de63e34f74a3efe41e8ed327b6671c4a2429723dbaa14f8',
+     x86_64: '24f36d66f3206837b6a21a207d8673af10466d1819aa2838a7dc11dfae20b67d'
   })
 
   depends_on 'python3' => :build
+
+  no_source_build
 end

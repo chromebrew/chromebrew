@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.34'
+  version '1.36'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -166,13 +166,17 @@ class Buildessential < Package
   depends_on 'zstd'
 
   # Ruby gems
+  # Add ruby_concurrent_ruby
+  depends_on 'ruby_concurrent_ruby'
+  # Needed for irb
+  depends_on 'ruby_debug'
+  # For crew debugging.
+  depends_on 'ruby_pry_byebug'
   # Add rubocop for linting packages. (This also installs the
   # rubocop config file.)
   depends_on 'ruby_rubocop'
-  # Add ruby_concurrent_ruby
-  depends_on 'ruby_concurrent_ruby'
-  # For crew debugging.
-  depends_on 'ruby_pry_byebug'
+  # crew check -V breaks without this.
+  depends_on 'ruby_ruby_libversion'
 
   # Code quality
   depends_on 'py3_pre_commit'

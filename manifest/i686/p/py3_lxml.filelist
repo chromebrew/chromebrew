@@ -1,11 +1,11 @@
-/usr/local/lib/python3.12/site-packages/lxml-5.1.0.dist-info/INSTALLER
-/usr/local/lib/python3.12/site-packages/lxml-5.1.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.12/site-packages/lxml-5.1.0.dist-info/LICENSES.txt
-/usr/local/lib/python3.12/site-packages/lxml-5.1.0.dist-info/METADATA
-/usr/local/lib/python3.12/site-packages/lxml-5.1.0.dist-info/RECORD
-/usr/local/lib/python3.12/site-packages/lxml-5.1.0.dist-info/REQUESTED
-/usr/local/lib/python3.12/site-packages/lxml-5.1.0.dist-info/WHEEL
-/usr/local/lib/python3.12/site-packages/lxml-5.1.0.dist-info/top_level.txt
+/usr/local/lib/python3.12/site-packages/lxml-5.3.0.dist-info/INSTALLER
+/usr/local/lib/python3.12/site-packages/lxml-5.3.0.dist-info/LICENSE.txt
+/usr/local/lib/python3.12/site-packages/lxml-5.3.0.dist-info/LICENSES.txt
+/usr/local/lib/python3.12/site-packages/lxml-5.3.0.dist-info/METADATA
+/usr/local/lib/python3.12/site-packages/lxml-5.3.0.dist-info/RECORD
+/usr/local/lib/python3.12/site-packages/lxml-5.3.0.dist-info/REQUESTED
+/usr/local/lib/python3.12/site-packages/lxml-5.3.0.dist-info/WHEEL
+/usr/local/lib/python3.12/site-packages/lxml-5.3.0.dist-info/top_level.txt
 /usr/local/lib/python3.12/site-packages/lxml/ElementInclude.py
 /usr/local/lib/python3.12/site-packages/lxml/__init__.py
 /usr/local/lib/python3.12/site-packages/lxml/__pycache__/ElementInclude.cpython-312.pyc
@@ -53,7 +53,6 @@
 /usr/local/lib/python3.12/site-packages/lxml/html/_html5builder.py
 /usr/local/lib/python3.12/site-packages/lxml/html/_setmixin.py
 /usr/local/lib/python3.12/site-packages/lxml/html/builder.py
-/usr/local/lib/python3.12/site-packages/lxml/html/clean.cpython-312-i386-linux-gnu.so
 /usr/local/lib/python3.12/site-packages/lxml/html/clean.py
 /usr/local/lib/python3.12/site-packages/lxml/html/defs.py
 /usr/local/lib/python3.12/site-packages/lxml/html/diff.cpython-312-i386-linux-gnu.so

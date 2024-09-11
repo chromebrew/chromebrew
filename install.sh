@@ -343,7 +343,7 @@ install_ruby_gem ${BOOTSTRAP_GEMS}
 echo_info "Installing crew_profile_base...\n"
 yes | crew install crew_profile_base
 # shellcheck disable=SC1090
-source ~/.bashrc
+ARCH="$ARCH" source ~/.bashrc
 
 echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core

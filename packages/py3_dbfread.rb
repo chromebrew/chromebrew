@@ -1,22 +1,22 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_dbfread < Python
+class Py3_dbfread < Pip
   description 'DBFread reads DBF Files with Python.'
   homepage 'https://dbfread.readthedocs.io/'
-  @_ver = '2.0.7'
-  version "#{@_ver}-py3.12"
+  version '2.0.7-py3.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/olemb/dbfread.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '93cfff2250b28c5ebabbcb9f95197f2869e1769aa9e385a810a57c71a9945f55',
-     armv7l: '93cfff2250b28c5ebabbcb9f95197f2869e1769aa9e385a810a57c71a9945f55',
-       i686: 'bf5940ad975c45a48914ac09ba0677317555154bc153fda751ccce569c135ee8',
-     x86_64: '1a9ae024122fdc0df2e2973ff78e9ddc7c78d0cea43c9e29ffe48732ef5a5bb7'
+    aarch64: 'c0728bc8bcab54f0a30a2a98ed9cbd23ca97ccbce156743962ef00a424aac7bd',
+     armv7l: 'c0728bc8bcab54f0a30a2a98ed9cbd23ca97ccbce156743962ef00a424aac7bd',
+       i686: '0ccc60b28d011b6b8a4a56f740712eb318d484619cfd250c5cfbcfc74b3a8cb2',
+     x86_64: 'ce1c995899222a566aa4fb9dcc8b6cec1dafca40350ef8d28af6dab83523289f'
   })
 
   depends_on 'python3' => :build
+
+  no_source_build
 end

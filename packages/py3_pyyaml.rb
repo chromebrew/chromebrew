@@ -6,18 +6,19 @@ class Py3_pyyaml < Pip
   version '6.0.2-py3.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/yaml/pyyaml.git'
-  git_hashtag version.split('-').first
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2215ad3e68ae779056258955c89d1a466e88312460ef608ea406d13b3e61780a',
-     armv7l: '2215ad3e68ae779056258955c89d1a466e88312460ef608ea406d13b3e61780a',
-       i686: 'ad0733204a5bb9fb168eb2164a0576a56d97cf7d5027a5226af404f49481fbcd',
-     x86_64: '1565ef6f148ff8c7c5578dc81a76f551f12e4f3b8e53d1aec8d0e4eda4196ee7'
+    aarch64: '4e567d3dcdb6ab86c3848775f7bcf512e0a6e89d83ca84866f576f868c16c7c8',
+     armv7l: '4e567d3dcdb6ab86c3848775f7bcf512e0a6e89d83ca84866f576f868c16c7c8',
+       i686: '2751f0a93dc808dd3ab1c478f007a0e084c12d48197f9e8a81fce756223a0388',
+     x86_64: '34ef78071e59ad0dcd0b4e69d089cc1fd90fa94621370fc08b2d78a83d615bc1'
   })
 
   depends_on 'glibc' # R
   depends_on 'libyaml' # R
   depends_on 'python3' => :build
+
+  no_source_build
 end

@@ -8,9 +8,15 @@ class Pip < Package
   property :pip_install_extras, :pre_configure_options
 
   def self.install
+    # Make sure Chromebrew pypi variables are set:
+    Kernel.system 'pip config --user set local.index-url https://gitlab.com/api/v4/projects/26210301/packages/pypi/simple' unless `pip config get local.index-url`.chomp == 'https://gitlab.com/api/v4/projects/26210301/packages/pypi/simple'
+    Kernel.system 'pip config --user set local.extra-index-url https://pypi.org/simple' unless `pip config get local.extra-index-url`.chomp == 'https://pypi.org/simple'
+    Kernel.system 'pip config --user set local.trusted-host gitlab.com' unless `pip config get local.trusted-host`.chomp == 'gitlab.com'
+
     puts 'Checking for pip updates'.orange if CREW_VERBOSE
     system "python3 -s -m pip install -U pip | grep -v 'Requirement already satisfied'", exception: false
     @py_pkg = name.gsub('py3_', '')
+    @py_pkg_chromebrew_version = version.gsub(/-py3\.\d{2}/, '').gsub(/-icu\d{2}\.\d/, '')
     puts "Checking for #{@py_pkg} python dependencies...".orange if CREW_VERBOSE
     @py_pkg_pypi = `curl -Ls https://pypi.org/pypi/#{@py_pkg}/json`.chomp
     @py_pkg_pypi_hash = JSON.parse(@py_pkg_pypi)
@@ -26,13 +32,14 @@ class Pip < Package
       @py_pkg_deps.each do |pip_dep|
         @cleaned_py_dep = pip_dep[/[^;]+/]
         puts "——Installing: #{@cleaned_py_dep}".gray
-        system "python3 -s -m pip install -U \"#{@cleaned_py_dep}\" | grep -v 'Requirement already satisfied'", exception: false
+        system "python3 -s -m pip install --ignore-installed -U \"#{@cleaned_py_dep}\" | grep -v 'Requirement already satisfied'", exception: false
       end
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
     puts "Additional pre_configure_options being used: #{@pre_configure_options.nil? ? '<no pre_configure_options>' : @pre_configure_options}".orange
-    system "MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python -s -m pip install -U \"#{@py_pkg}\" | grep -v 'Requirement already satisfied'", exception: false
+    system "MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python -s -m pip install --ignore-installed -U \"#{@py_pkg}==#{@py_pkg_chromebrew_version}\" | grep -v 'Requirement already satisfied'", exception: false
     @pip_files = `python3 -s -m pip show -f #{@py_pkg}`.chomp
+    abort "pip install of #{@py_pkg} failed." if @pip_files.empty?
     @pip_files_base = @pip_files[/(?<=Location: ).*/, 0].concat('/')
     @pip_files_lines = @pip_files[/(?<=Files:\n)[\W|\w]*/, 0].split
     @pip_files_lines.each do |pip_file|
