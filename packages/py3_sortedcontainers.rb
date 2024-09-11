@@ -7,7 +7,6 @@ class Py3_sortedcontainers < Pip
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
-  binary_compression 'tar.zst'
 
   depends_on 'python3' => :build
 

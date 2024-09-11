@@ -30,6 +30,4 @@ class Py3_pygobject < Meson
   depends_on 'wayland' => :build
 
   meson_options '-Dtests=false'
-
-  no_source_build
 end

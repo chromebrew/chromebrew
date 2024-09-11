@@ -1,13 +1,12 @@
 require 'buildsystems/pip'
 
 class Py3_unsupported_python < Pip
-  version '1.0.0-py3.12'
+  description 'This package can be used as a conditional dependency to indicate lack of support for particular versions of Python.'
   homepage 'https://github.com/ntessore/unsupported-python'
   version '1.0.0-py3.12'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'SKIP'
-  binary_compression 'tar.zst'
 
   depends_on 'python3' => :build
 

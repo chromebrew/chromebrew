@@ -37,6 +37,4 @@ class Py3_libxml2 < Package
       system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS_NO_SVEM}"
     end
   end
-
-  no_source_build
 end
