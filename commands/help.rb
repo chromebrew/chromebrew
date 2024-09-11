@@ -131,8 +131,6 @@ class Command
         Update crew.
         Usage: crew update
         This only updates crew itself.  Use `crew upgrade` to update packages.
-        Usage: crew update compatible
-        This updates the crew package compatibility list.
       EOT
     when 'upgrade'
       puts <<~EOT
