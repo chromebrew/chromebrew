@@ -19,6 +19,7 @@ end
 
 # Package tests
 task :package_test do
+  ruby 'tests/dep_test'
   ruby 'tests/prop_test'
   ruby 'tests/buildsystem_test'
 end
