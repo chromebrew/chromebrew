@@ -117,7 +117,7 @@ def http_downloader(uri, filename = File.basename(url), verbose = false)
 
         return send(__method__, redirect_uri, filename, verbose)
       else
-        abort "Download failed with error #{response.code}: #{response.msg}".lightred
+        abort "Download of #{uri} failed with error #{response.code}: #{response.msg}".lightred
       end
 
       # get target file size (should be returned by the server)
