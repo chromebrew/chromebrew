@@ -289,7 +289,7 @@ def update
   if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
     puts 'Updating RubyGems.'.orange
     system 'gem update -N --system'
-    system 'gem pristine --all'
+    system 'gem cleanup'
   end
   puts 'Package lists, crew, and library updated.'
 
