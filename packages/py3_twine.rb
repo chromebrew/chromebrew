@@ -14,7 +14,7 @@ class Py3_twine < Pip
   binary_sha256({
     aarch64: '5b4216c688df8aaa90b6522aacea6d954cfc66ce3cce84a0cd2e538def855b1e',
      armv7l: '5b4216c688df8aaa90b6522aacea6d954cfc66ce3cce84a0cd2e538def855b1e',
-       i686: '62d0054b5c02bb37db80753217c190467b3bac6d30d2d44e65cc603fb332ed3d',
+       i686: 'f2e9743113677940a5fdfed69d917276832a5cfef89f2e0050e94bc7c5655e92',
      x86_64: '0361f5bdeccfbf2a6694ea1cf6d6b8d2b44036b8ec181fb0dd41c4d06f1012cc'
   })
 
