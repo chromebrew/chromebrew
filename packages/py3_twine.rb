@@ -1,3 +1,5 @@
+# Twine 5.1.1 currently breaks on some uploads.
+# Install twine from https://github.com/pypa/twine/pull/1123 instead.
 require 'buildsystems/pip'
 
 class Py3_twine < Pip
@@ -10,10 +12,10 @@ class Py3_twine < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0ba74a04dfa37eeaf4e86605a53c68fb538dbac5fae6a353e6588e9515b7ca74',
-     armv7l: '0ba74a04dfa37eeaf4e86605a53c68fb538dbac5fae6a353e6588e9515b7ca74',
-       i686: '67b51aae5ad8b862b66f7ad48ece1ca4bcbe31a21e95466427a11d760e10f859',
-     x86_64: '74adeccf2358a4f6d9bc4cb5cf26ac409419e775c4aa5af5ecb2aeee521e2842'
+    aarch64: '5b4216c688df8aaa90b6522aacea6d954cfc66ce3cce84a0cd2e538def855b1e',
+     armv7l: '5b4216c688df8aaa90b6522aacea6d954cfc66ce3cce84a0cd2e538def855b1e',
+       i686: '62d0054b5c02bb37db80753217c190467b3bac6d30d2d44e65cc603fb332ed3d',
+     x86_64: '0361f5bdeccfbf2a6694ea1cf6d6b8d2b44036b8ec181fb0dd41c4d06f1012cc'
   })
 
   depends_on 'py3_setuptools'

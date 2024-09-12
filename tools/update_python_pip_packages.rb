@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 # update_python_pip_packages version 1.1 (for Chromebrew)
 # This updates the versions in python pip packages.
+#
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in packages dir: ../tools/update_python_pip_packages.rb
 require 'parallel'
@@ -23,7 +24,6 @@ Parallel.map(relevant_pip_files) do |package|
   else
     pip_version = `python -m pip index versions #{pip_name} 2>/dev/null | head -n 1 | awk '{print $2}'`.chomp.delete('()')
   end
-  puts "#{pip_name} version is #{pip_version}"
   if pip_version.empty?
     puts "Checking #{pip_name} version failed..."
     next

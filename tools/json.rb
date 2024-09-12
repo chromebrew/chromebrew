@@ -14,8 +14,8 @@ Dir.glob('../packages/*.rb').each do |filename|
   # It shouldn't be doing that, but work around it for now.
   next if filename.include?('docbook')
   pkg = Package.load_package(filename)
-  # Skip fake packages.
-  next if pkg.is_fake?
+  # Skip fake or prerelease packages.
+  next if pkg.is_fake? || pkg.prerelease?
   output << { name: File.basename(filename, '.rb'), description: pkg.description, homepage: pkg.homepage, version: PackageUtils.get_clean_version(+pkg.version), license: pkg.license, compatibility: pkg.compatibility }
 end
 

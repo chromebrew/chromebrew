@@ -1410,20 +1410,20 @@ def archive_package(crew_archive_dest)
   end
 end
 
-def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compression = nil)
+def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_username = nil, binary_compression = nil)
   abort "\nPackage to be uploaded was not specified.\n".lightred if pkg_name.nil?
   abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if gitlab_token.nil?
 
   packages = pkg_name
 
-  base_url = 'https://gitlab.com/api/v4/projects/26210301/packages/generic'
+  base_url = 'https://gitlab.com/api/v4/projects/26210301/packages'
 
   packages.strip!
 
   [packages].each do |package|
+    pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
     %w[x86_64 i686 armv7l].each do |arch|
       release_dir = "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}"
-      pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
       new_tarfile = if binary_compression.nil?
                       Dir["#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
                     else
@@ -1446,6 +1446,9 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compres
         elsif File.read(pkg_file).include?('git_hashtag')
           puts "sed -i \"/git_hashtag/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if CREW_VERBOSE
           system "sed -i \"/git_hashtag/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
+        elsif File.read(pkg_file).include?('source_url')
+          puts "sed -i \"/source_url/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if CREW_VERBOSE
+          system "sed -i \"/source_url/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
         else
           puts "Unable to tell where to add \"binary_compression 'tar#{ext}'\" to #{pkg_file}. Please add it and manually.".lightblue
         end
@@ -1456,7 +1459,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compres
       puts "Uploading #{new_tarfile} ..."
       noname = new_tarfile.split("#{package}-").last
       new_version = noname.split('-chromeos').first
-      new_url = "#{base_url}/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
+      new_url = "#{base_url}/generic/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
       token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
 
       if `curl -sI #{new_url}`.lines.first.split[1] == '200'
@@ -1517,6 +1520,25 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, binary_compres
           system "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}"
         end
       end
+    end
+    # Upload python wheels if we are dealing with a pip package, but only
+    # if a gitlab token username is set. (The generic repo does not
+    # require a gitlab token username.)
+    next unless Kernel.system "grep -q \"^require 'buildsystems/pip'\" #{pkg_file}"
+    if gitlab_token_username.nil?
+      puts "\nGITLAB_TOKEN_USERNAME environment variable not set, so generated python wheels will not be uploaded.\n".lightred
+      next package
+    end
+    pip_config = `pip config list`.chomp
+    Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
+
+    pip_cache_dir = `pip cache dir`.chomp
+    wheels = `find #{pip_cache_dir} -type f -name \"*.whl\" -print`.chomp.split
+    next if wheels.empty?
+    wheels.each do |wheel|
+      puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
+      system("twine upload -u #{gitlab_token_username} -p #{gitlab_token} --repository-url #{base_url}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
+      FileUtils.rm_f wheel
     end
   end
 end
@@ -1780,10 +1802,11 @@ def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_sou
 
 def upload_command(args)
   gitlab_token = ENV.fetch('GITLAB_TOKEN', nil)
+  gitlab_token_username = ENV.fetch('GITLAB_TOKEN_USERNAME', nil)
   upload if args['<name>'].empty?
   args['<name>'].each do |name|
     search name
-    upload(name, @pkg.version, gitlab_token, @pkg.binary_compression)
+    upload(name, @pkg.version, gitlab_token, gitlab_token_username, @pkg.binary_compression)
   end
 end
 
