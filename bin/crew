@@ -1418,9 +1418,6 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
   abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if gitlab_token.nil?
 
   packages = pkg_name
-
-  base_url = 'https://gitlab.com/api/v4/projects/26210301/packages'
-
   packages.strip!
 
   [packages].each do |package|
@@ -1462,7 +1459,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       puts "Uploading #{new_tarfile} ..."
       noname = new_tarfile.split("#{package}-").last
       new_version = noname.split('-chromeos').first
-      new_url = "#{base_url}/generic/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
+      new_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
       token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
 
       if `curl -sI #{new_url}`.lines.first.split[1] == '200'
@@ -1540,7 +1537,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
     next if wheels.empty?
     wheels.each do |wheel|
       puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
-      system("twine upload -u #{gitlab_token_username} -p #{gitlab_token} --repository-url #{base_url}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
+      system("twine upload -u #{gitlab_token_username} -p #{gitlab_token} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
       FileUtils.rm_f wheel
     end
   end

@@ -11,7 +11,7 @@ class Pip < Package
     # Make sure Chromebrew pypi variables are set.
     # These need to be set as global or they don't work.
     pip_config = `pip config list`.chomp
-    Kernel.system 'pip config --user set global.index-url https://gitlab.com/api/v4/projects/26210301/packages/pypi/simple', %i[err out] => File::NULL unless pip_config.include?("global.index-url='https://gitlab.com/api/v4/projects/26210301/packages/pypi/simple'")
+    Kernel.system "pip config --user set global.index-url #{CREW_GITLAB_PKG_REPO}/pypi/simple", %i[err out] => File::NULL unless pip_config.include?("global.index-url='#{CREW_GITLAB_PKG_REPO}'")
     Kernel.system 'pip config --user set global.extra-index-url https://pypi.org/simple', %i[err out] => File::NULL unless pip_config.include?("global.extra-index-url='https://pypi.org/simple'")
     Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
     pip_cache_dir = `pip cache dir`.chomp

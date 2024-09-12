@@ -18,12 +18,12 @@ system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => Fi
 
 Parallel.map(relevant_pip_files) do |package|
   pip_name = package.gsub('.rb', '').sub('py3_', '').gsub('_', '-')
+  prerelease = ''
   if system("grep -q '^\ \ prerelease' #{package}")
     puts "#{pip_name.capitalize} is configured to look for a pre-release version."
-    pip_version = `python -m pip index versions --pre #{pip_name} 2>/dev/null | head -n 1 | awk '{print $2}'`.chomp.delete('()')
-  else
-    pip_version = `python -m pip index versions #{pip_name} 2>/dev/null | head -n 1 | awk '{print $2}'`.chomp.delete('()')
+    prerelease = '--pre'
   end
+  pip_version = `python -m pip index versions #{prerelease} #{pip_name} 2>/dev/null | head -n 1 | awk '{print $2}'`.chomp.delete('()')
   if pip_version.empty?
     puts "Checking #{pip_name} version failed..."
     next

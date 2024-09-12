@@ -137,8 +137,6 @@ else
   updated_packages.each { |p| puts p.sub('packages/', '').sub('.rb', '').to_s.lightblue }
 end
 
-base_url = 'https://gitlab.com/api/v4/projects/26210301/packages'
-
 updated_packages.each do |pkg|
   name = pkg.sub('packages/', '').sub('.rb', '')
 
@@ -157,7 +155,7 @@ updated_packages.each do |pkg|
   else
     build = compatibility == 'all' ? %w[x86_64 aarch64 armv7l i686] : compatibility.split
     build.each do |arch|
-      arch_specific_url = "#{base_url}/generic/#{name}/#{@version}_#{arch}/#{name}-#{@version}-chromeos-#{arch}.tar.zst"
+      arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@version}_#{arch}/#{name}-#{@version}-chromeos-#{arch}.tar.zst"
       if `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
         build.delete(arch)
         next
