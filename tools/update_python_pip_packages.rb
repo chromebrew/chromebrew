@@ -12,13 +12,13 @@ pip_files = `grep -l "^require 'buildsystems/pip'" *.rb`.chomp.split
 relevant_pip_files = (py3_files + pip_files).uniq!
 
 pip_config = `pip config list`.chomp
-Kernel.system 'pip config --user set global.index-url https://gitlab.com/api/v4/projects/26210301/packages/pypi/simple', %i[err out] => File::NULL unless pip_config.include?("global.index-url='https://gitlab.com/api/v4/projects/26210301/packages/pypi/simple'")
-Kernel.system 'pip config --user set global.extra-index-url https://pypi.org/simple', %i[err out] => File::NULL unless pip_config.include?("global.extra-index-url='https://pypi.org/simple'")
-Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
+system 'pip config --user set global.index-url https://gitlab.com/api/v4/projects/26210301/packages/pypi/simple', %i[err out] => File::NULL unless pip_config.include?("global.index-url='https://gitlab.com/api/v4/projects/26210301/packages/pypi/simple'")
+system 'pip config --user set global.extra-index-url https://pypi.org/simple', %i[err out] => File::NULL unless pip_config.include?("global.extra-index-url='https://pypi.org/simple'")
+system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
 
 Parallel.map(relevant_pip_files) do |package|
   pip_name = package.gsub('.rb', '').sub('py3_', '').gsub('_', '-')
-  if Kernel.system("grep -q '^\ \ prerelease' #{package}")
+  if system("grep -q '^\ \ prerelease' #{package}")
     puts "#{pip_name.capitalize} is configured to look for a pre-release version."
     pip_version = `python -m pip index versions --pre #{pip_name} 2>/dev/null | head -n 1 | awk '{print $2}'`.chomp.delete('()')
   else
