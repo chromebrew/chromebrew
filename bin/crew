@@ -463,10 +463,11 @@ def download
   git = true unless @pkg.git_hashtag.to_s.empty?
 
   Dir.chdir CREW_BREW_DIR do
+    FileUtils.mkdir_p @extract_dir
     # We want to skip when no_source_build is true during the build,
     # but when we have built a binary we are in upgrade, and we need
     # download since we need to extract the just generated binary.
-    Dir.mkdir @extract_dir && next if @pkg.no_source_build? && !@pkg.in_upgrade
+    next if @pkg.no_source_build? && !@pkg.in_upgrade && !@pkg.in_install
     case File.basename(filename)
     # Sources that download with our internal downloader
     when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
@@ -522,10 +523,10 @@ def download
       return { source:, filename: }
 
     when /^SKIP$/i
-      Dir.mkdir @extract_dir
+      FileUtils.mkdir_p @extract_dir
     else
       unless git # We don't want to download a git repository as a file.
-        Dir.mkdir @extract_dir
+        FileUtils.mkdir_p @extract_dir
         downloader url, sha256sum, filename, CREW_VERBOSE
 
         puts "#{filename}: File downloaded.".lightgreen
@@ -566,7 +567,7 @@ def download
         end
       end
       # Download via git
-      Dir.mkdir @extract_dir
+      FileUtils.mkdir_p @extract_dir
       Dir.chdir @extract_dir do
         if @pkg.git_branch.to_s.empty?
           system 'git init'
@@ -1241,6 +1242,7 @@ def resolve_dependencies
 end
 
 def install
+  @pkg.in_install = true
   if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name) && !@pkg.name.start_with?('ruby_')
     puts "Package #{@pkg.name} already installed, skipping...".lightgreen
     return
@@ -1317,6 +1319,7 @@ def install
   @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name } and @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
   ConvenienceFunctions.save_json(@device)
   crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if Kernel.system 'which jq', %i[out err] => File::NULL
+  @pkg.in_install = false
 end
 
 def resolve_dependencies_and_build
