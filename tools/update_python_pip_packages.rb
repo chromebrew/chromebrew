@@ -11,8 +11,9 @@ py3_files = Dir['py3_*.rb']
 pip_files = `grep -l "^require 'buildsystems/pip'" *.rb`.chomp.split
 relevant_pip_files = (py3_files + pip_files).uniq!
 
+CREW_GITLAB_PKG_REPO = 'https://gitlab.com/api/v4/projects/26210301/packages'
 pip_config = `pip config list`.chomp
-system 'pip config --user set global.index-url https://gitlab.com/api/v4/projects/26210301/packages/pypi/simple', %i[err out] => File::NULL unless pip_config.include?("global.index-url='https://gitlab.com/api/v4/projects/26210301/packages/pypi/simple'")
+system "pip config --user set global.index-url #{CREW_GITLAB_PKG_REPO}/pypi/simple", %i[err out] => File::NULL unless pip_config.include?("global.index-url='#{CREW_GITLAB_PKG_REPO}/pypi/simple'")
 system 'pip config --user set global.extra-index-url https://pypi.org/simple', %i[err out] => File::NULL unless pip_config.include?("global.extra-index-url='https://pypi.org/simple'")
 system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
 
