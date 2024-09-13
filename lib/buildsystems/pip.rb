@@ -5,7 +5,7 @@ require 'package'
 require_relative '../const'
 
 class Pip < Package
-  property :pip_install_extras, :pre_configure_options
+  property :pip_install_extras, :pre_configure_options, :prerelease
 
   def self.install
     # Make sure Chromebrew pypi variables are set.
