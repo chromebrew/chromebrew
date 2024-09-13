@@ -22,9 +22,9 @@
 /usr/local/share/flutter/.git/index
 /usr/local/share/flutter/.git/info/exclude
 /usr/local/share/flutter/.git/logs/HEAD
-/usr/local/share/flutter/.git/objects/pack/pack-453cfd6969b02b7cb7e6158e9f81fac7e9f83906.idx
-/usr/local/share/flutter/.git/objects/pack/pack-453cfd6969b02b7cb7e6158e9f81fac7e9f83906.pack
-/usr/local/share/flutter/.git/objects/pack/pack-453cfd6969b02b7cb7e6158e9f81fac7e9f83906.rev
+/usr/local/share/flutter/.git/objects/pack/pack-ff098f33d9f9eea6d338f1a3039e660abe1eca9b.idx
+/usr/local/share/flutter/.git/objects/pack/pack-ff098f33d9f9eea6d338f1a3039e660abe1eca9b.pack
+/usr/local/share/flutter/.git/objects/pack/pack-ff098f33d9f9eea6d338f1a3039e660abe1eca9b.rev
 /usr/local/share/flutter/.git/shallow
 /usr/local/share/flutter/.gitattributes
 /usr/local/share/flutter/.github/ISSUE_TEMPLATE/10_feature.yml
@@ -1935,6 +1935,7 @@
 /usr/local/share/flutter/dev/bots/serviceaccount.enc
 /usr/local/share/flutter/dev/bots/suite_runners/run_add_to_app_life_cycle_tests.dart
 /usr/local/share/flutter/dev/bots/suite_runners/run_analyze_tests.dart
+/usr/local/share/flutter/dev/bots/suite_runners/run_android_java11_integration_tool_tests.dart
 /usr/local/share/flutter/dev/bots/suite_runners/run_android_preview_integration_tool_tests.dart
 /usr/local/share/flutter/dev/bots/suite_runners/run_customer_testing_tests.dart
 /usr/local/share/flutter/dev/bots/suite_runners/run_docs_tests.dart
@@ -9052,8 +9053,8 @@
 /usr/local/share/flutter/packages/flutter_tools/templates/xcode/ios/custom_application_bundle/Runner.xcworkspace.tmpl/contents.xcworkspacedata
 /usr/local/share/flutter/packages/flutter_tools/templates/xcode/ios/custom_application_bundle/Runner.xcworkspace.tmpl/xcshareddata/IDEWorkspaceChecks.plist
 /usr/local/share/flutter/packages/flutter_tools/templates/xcode/ios/custom_application_bundle/Runner.xcworkspace.tmpl/xcshareddata/WorkspaceSettings.xcsettings
+/usr/local/share/flutter/packages/flutter_tools/test/android_java11_integration.shard/android_dependency_version_checking_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/android_preview_integration.shard/README.md
-/usr/local/share/flutter/packages/flutter_tools/test/android_preview_integration.shard/android_dependency_version_checking_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/android_preview_integration.shard/flutter_build_preview_sdk_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/README.md
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/analyze_continuously_test.dart
