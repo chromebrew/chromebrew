@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pyright < Pip
   description 'Static Type Checker for Python'
   homepage 'https://github.com/microsoft/pyright'
-  version '1.1.379-py3.12'
+  version '1.1.380-py3.12'
   license 'MIT'
   compatibility 'all'
   min_glibc '2.28'

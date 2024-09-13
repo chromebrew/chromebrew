@@ -44,7 +44,7 @@ end
 class Package
   boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
                    :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules, :no_links, :no_lto, :no_patchelf,
-                   :no_shrink, :no_source_build, :no_strip, :no_upstream_update, :no_zstd, :patchelf, :print_source_bashrc, :run_tests
+                   :no_shrink, :no_source_build, :no_strip, :no_upstream_update, :no_zstd, :patchelf, :prerelease, :print_source_bashrc, :run_tests
 
   property :description, :homepage, :version, :license, :compatibility,
            :binary_compression, :binary_url, :binary_sha256, :source_url, :source_sha256,
@@ -64,7 +64,7 @@ class Package
                      :postremove   # Function to perform after package removal.
 
   class << self
-    attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
+    attr_accessor :build_from_source, :cached_build, :in_build, :in_install, :in_upgrade, :name
   end
 
   def self.agree_to_remove(config_object = nil)

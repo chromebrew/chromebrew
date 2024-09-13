@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.36'
+  version '1.37'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -141,6 +141,8 @@ class Buildessential < Package
   depends_on 'py3_libxml2'
   # Pax_utils needs this.
   depends_on 'py3_pyelftools'
+  # Needed for pypi uploads to gitlab
+  depends_on 'py3_twine'
 
   # Qt
   # depends_on 'qtcreator'
