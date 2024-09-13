@@ -97,15 +97,13 @@ class Package
     pkg_name = File.basename(pkg_file, '.rb')
     class_name = pkg_name.capitalize
 
-    # Read and eval package script under 'Package' class, using the
-    # newest file available.
+    # Read and eval package script under 'Package' class, using the newest file available.
     pkg_file = Dir["{#{CREW_LOCAL_REPO_ROOT}/packages,#{CREW_PACKAGES_PATH}}/#{pkg_name}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
 
-    begin
-      class_eval(File.read(pkg_file, encoding: Encoding::UTF_8), pkg_file) unless const_defined?("Package::#{class_name}")
-    rescue TypeError
-      abort "Package file for #{pkg_name} not found.".lightred
-    end
+    # If this package has been removed, it won't be found in either directory, so set it back to what it was before to get a nicer error.
+    pkg_file = "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb" if pkg_file.nil?
+
+    class_eval(File.read(pkg_file, encoding: Encoding::UTF_8), pkg_file) unless const_defined?("Package::#{class_name}")
     pkg_obj = const_get(class_name)
     pkg_obj.name = pkg_name
 

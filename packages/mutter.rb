@@ -18,7 +18,6 @@ class Mutter < Meson
 
   # depends_on 'ccache' => :build
   depends_on 'dconf'
-  depends_on 'gnome_settings_daemon'
   depends_on 'gobject_introspection' => :build
   depends_on 'gsettings_desktop_schemas'
   depends_on 'libcanberra'
