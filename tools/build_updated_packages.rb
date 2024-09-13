@@ -13,6 +13,9 @@
 require_relative '../lib/color'
 require_relative '../lib/const'
 
+abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV['GITLAB_TOKEN'].nil?
+abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if ENV['GITLAB_TOKEN_USERNAME'].nil?
+
 def require_gem(gem_name_and_require = nil, require_override = nil)
   # Allow only loading gems when needed.
   return if gem_name_and_require.nil?
@@ -124,9 +127,9 @@ properties = "#{package_properties} #{buildsystem_properties}"
 property(properties.split)
 
 puts 'Checking for pip package version updates...'.orange
-system '../tools/update_python_pip_packages.rb', chdir: 'packages'
+load 'tools/update_python_pip_packages.rb'
 puts 'Checking for ruby gem package version updates...'.orange
-system '../tools/update_ruby_gem_packages.rb', chdir: 'packages'
+load 'tools/update_ruby_gem_packages.rb'
 changed_files = `git diff HEAD --name-only`.chomp.split
 updated_packages = changed_files.select { |c| c.include?('packages/') }
 

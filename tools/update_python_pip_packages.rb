@@ -3,37 +3,74 @@
 # This updates the versions in python pip packages.
 #
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
-# Usage in packages dir: ../tools/update_python_pip_packages.rb
-require 'parallel'
+# Usage in root of cloned chromebrew repo:
+# tools/update_python_pip_packages.rb
+require_relative '../lib/color'
+require_relative '../lib/const'
+def require_gem(gem_name_and_require = nil, require_override = nil)
+  # Allow only loading gems when needed.
+  return if gem_name_and_require.nil?
+
+  gem_name = gem_name_and_require.split('/')[0]
+  begin
+    gem gem_name
+  rescue LoadError
+    puts " -> install #{gem_name} gem".orange
+    Gem.install(gem_name)
+    gem gem_name
+  end
+  requires = if require_override.nil?
+               gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
+             else
+               require_override
+             end
+  require requires
+end
+require_gem('activesupport', 'active_support/core_ext/object/blank')
+require_gem 'concurrent-ruby'
 
 py_ver = `python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp
-py3_files = Dir['py3_*.rb']
-pip_files = `grep -l "^require 'buildsystems/pip'" *.rb`.chomp.split
-relevant_pip_files = (py3_files + pip_files).uniq!
+py3_files = Dir['packages/py3_*.rb']
+pip_files = `grep -l "^require 'buildsystems/pip'" packages/*.rb`.chomp.split
+relevant_pip_packages = (py3_files + pip_files).uniq!
 
-CREW_GITLAB_PKG_REPO = 'https://gitlab.com/api/v4/projects/26210301/packages'
 pip_config = `pip config list`.chomp
 system "pip config --user set global.index-url #{CREW_GITLAB_PKG_REPO}/pypi/simple", %i[err out] => File::NULL unless pip_config.include?("global.index-url='#{CREW_GITLAB_PKG_REPO}/pypi/simple'")
 system 'pip config --user set global.extra-index-url https://pypi.org/simple', %i[err out] => File::NULL unless pip_config.include?("global.extra-index-url='https://pypi.org/simple'")
 system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
 
-Parallel.map(relevant_pip_files) do |package|
-  pip_name = package.gsub('.rb', '').sub('py3_', '').gsub('_', '-')
-  prerelease = ''
-  if system("grep -q '^\ \ prerelease' #{package}")
-    puts "#{pip_name.capitalize} is configured to look for a pre-release version."
-    prerelease = '--pre'
-  end
-  pip_version = `python -m pip index versions #{prerelease} #{pip_name} 2>/dev/null | head -n 1 | awk '{print $2}'`.chomp.delete('()')
-  if pip_version.empty?
-    puts "Checking #{pip_name} version failed..."
-    next
-  end
-  puts "Updating #{pip_name} package file #{package} to #{pip_version}"
-  if pip_name == 'pyicu'
-    icu_ver = `uconv -V`.chomp.split[3]
-    system "sed -i \"s,^\ \ version\ .*,\ \ version '#{pip_version}-icu#{icu_ver}-py#{py_ver}',\" #{package}"
-  else
-    system "sed -i \"s,^\ \ version\ .*,\ \ version '#{pip_version}-py#{py_ver}',\" #{package}"
+pool = Concurrent::ThreadPoolExecutor.new(
+  min_threads: 1,
+  max_threads: CREW_NPROC.to_i + 1,
+  max_queue: 0, # unbounded work queue
+  fallback_policy: :caller_runs
+)
+total_files_to_check = relevant_pip_packages.length
+numlength = total_files_to_check.to_s.length
+relevant_pip_packages.each_with_index do |package, index|
+  pool.post do
+    pip_name = package.gsub('.rb', '').sub('py3_', '').gsub('_', '-').gsub('packages/', '')
+    prerelease = system("grep -q '^\ \ prerelease' #{package}") ? '--pre' : nil
+    puts "\e[1A\e[K[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Checking pypi for #{prerelease.blank? ? '' : 'prerelease '}updates to #{pip_name}...\r".orange
+    pip_version = `python -m pip index versions #{prerelease} #{pip_name} 2>/dev/null | head -n 1 | awk '{print $2}'`.chomp.delete('()')
+    next package if pip_version.blank?
+
+    relevant_pip_packages.delete(package)
+    pkg_version = `sed -n -e 's/^\ \ version //p' #{package}`.chomp.delete("'").delete('"').gsub(/-icu\d{2}\.\d/, '').gsub(/-py3\.\d{2}/, '')
+    next package unless Gem::Version.new(pip_version) > Gem::Version.new(pkg_version)
+
+    puts "\e[1B\e[KUpdating #{pip_name} from #{pkg_version} to #{pip_version}\e[1A".lightblue
+    if pip_name == 'pyicu'
+      icu_ver = `uconv -V`.chomp.split[3]
+      system "sed -i \"s,^\ \ version\ .*,\ \ version '#{pip_version}-icu#{icu_ver}-py#{py_ver}',\" #{package}"
+    else
+      system "sed -i \"s,^\ \ version\ .*,\ \ version '#{pip_version}-py#{py_ver}',\" #{package}"
+    end
   end
 end
+pool.shutdown
+pool.wait_for_termination
+puts "Done checking pypi for updates to #{total_files_to_check} python packages.".orange
+return if relevant_pip_packages.blank?
+
+puts "Updated version#{relevant_pip_packages.length > 1 ? 's were' : ' was'} not listed in pypi for: #{relevant_pip_packages.map { |i| i.gsub('.rb', '').sub('ruby_', '').gsub('_', '-').gsub('packages/', '') }.join(' ')}".orange

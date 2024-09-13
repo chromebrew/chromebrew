@@ -1000,14 +1000,7 @@ def shrink_dir(dir)
 
             FileUtils.cp execfilecp, "#{execfilecp}-crewupxtmp"
           end
-          begin
-            gem 'concurrent-ruby'
-          rescue Gem::LoadError
-            puts ' -> install gem concurrent-ruby'
-            Gem.install('concurrent-ruby')
-            gem 'concurrent-ruby'
-          end
-          require 'concurrent'
+          require_gem 'concurrent-ruby'
           pool = Concurrent::ThreadPoolExecutor.new(
             min_threads: 1,
             max_threads: CREW_NPROC,
@@ -1416,6 +1409,7 @@ end
 def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_username = nil, binary_compression = nil)
   abort "\nPackage to be uploaded was not specified.\n".lightred if pkg_name.nil?
   abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if gitlab_token.nil?
+  abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if gitlab_token_username.nil?
 
   packages = pkg_name
   packages.strip!
