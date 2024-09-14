@@ -1,4 +1,5 @@
-require 'package'
+require_relative '../const'
+require_relative '../package'
 
 class Qmake < Package
   property :qmake_build_extras, :qmake_install_extras

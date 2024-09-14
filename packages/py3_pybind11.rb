@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pybind11 < Pip
   description 'Seamless operability between C++11 and Python'
   homepage 'https://github.com/pybind/pybind11'
-  version '2.13.5-py3.12'
+  version '2.13.6-py3.12'
   license 'BSD-3 Clause'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b56730abcb0c4cdfc8dae7f7a73f73f5abe2adfb6db4afa11998551787f9eee0',
-     armv7l: 'b56730abcb0c4cdfc8dae7f7a73f73f5abe2adfb6db4afa11998551787f9eee0',
-       i686: 'b74b79228a19dfe47cf47405244b4a928cb1cfa6bf360cb16097403821b14489',
-     x86_64: '0dec2430e1263b161abd5dd060a44b05670d5c766bb79fcaf35d730df9a7f49c'
+    aarch64: '845870a92f25f1f508e24e2ff4a7f32ff9088638e96baca7da70514e699ab270',
+     armv7l: '845870a92f25f1f508e24e2ff4a7f32ff9088638e96baca7da70514e699ab270',
+       i686: 'd091ec27cd3bca95de8ef11ad2e82cc4f76c9a4c8d707dc6f8404603ae4ce482',
+     x86_64: 'f99678f96b6acf10b91a26ff2db72c39d6d35e66255f788164ae86ef12c570bd'
   })
 
   depends_on 'python3'
