@@ -1,4 +1,5 @@
-require 'package'
+require_relative '../const'
+require_relative '../package'
 
 class RUBY < Package
   property :ruby_install_extras

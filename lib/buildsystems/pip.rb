@@ -1,11 +1,11 @@
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 require 'json'
-require 'package'
 require_relative '../const'
+require_relative '../package'
 
 class Pip < Package
-  property :pip_install_extras, :pre_configure_options, :prerelease
+  property :pip_install_extras, :pre_configure_options
 
   def self.install
     # Make sure Chromebrew pypi variables are set.
