@@ -5,10 +5,13 @@ class RUBY < Package
   property :ruby_install_extras
 
   depends_on 'ruby'
+  depends_on 'ruby_gem_compiler'
 
   no_compile_needed
 
   def self.install
+    puts "prerelease is #{prerelease}"
+    # puts super(singleton_methods)
     # This assumes the package class name starts with 'Ruby_' and
     # version is in the form '(gem version)-ruby-(ruby version)'.
     # For example, name 'Ruby_awesome' and version '1.0.0-ruby-3.3'.
@@ -16,7 +19,30 @@ class RUBY < Package
     # We only report if @gem_ver is different than the current version reported by gem.
     @gem_ver = version.split('-', 2).first.to_s
     @ruby_ver = version.split('-', 3).last.to_s
-    if Kernel.system "gem list -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
+    # Need to check if a gem has extensions. If it does, we need
+    # buildessential.
+    system "gem fetch #{@gem_name} --platform=ruby --version=#{@gem_ver}"
+    system "gem unpack #{@gem_name}-#{@gem_ver}.gem"
+    gem_extensions = system "grep -q spec.extensions  #{@gem_name}-#{@gem_ver}/#{@gem_name}.gemspec"
+    if gem_extensions
+      gem_arch = case ARCH
+                 when 'x86_64'
+                   'x86_64-linux'
+                 when 'i686'
+                   'x86-linux'
+                 when 'aarch64', 'armv7l'
+                   'armv8l-linux-eabihf'
+                 end
+      gem_file = "#{@gem_name}-#{@gem_ver}-#{gem_arch}.gem"
+      gem_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{version}_#{ARCH}/#{gem_file}"
+      if `curl -sI #{gem_url}`.lines.first.split[1] == '200'
+        downloader gem_url, 'SKIP'
+      else
+        abort 'Buildessential needs to be installed for this gem to be built' unless system('which gcc', %i[out err] => File::NULL)
+        system "gem compile --strip --prune #{@gem_name}-#{@gem_ver}.gem"
+      end
+      system "gem install --local #{@gem_name}-#{@gem_ver}-#{gem_arch}.gem"
+    elsif Kernel.system "gem list -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
       system "gem update -N #{@gem_name} --conservative"
     else
       system "gem install -N #{@gem_name} --conservative"
