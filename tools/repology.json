@@ -75,7 +75,7 @@
     "name": "acquia_cli",
     "description": "Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.",
     "homepage": "https://github.com/acquia/cli",
-    "version": "2.29.2",
+    "version": "2.30.0",
     "license": "GPL-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -739,7 +739,7 @@
     "name": "awscli",
     "description": "Universal Command Line Interface for Amazon Web Services",
     "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.33.27",
+    "version": "1.34.19",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -755,7 +755,7 @@
     "name": "b2",
     "description": "B2 makes it easy to build C++ projects, everywhere.",
     "homepage": "https://www.bfgroup.xyz/b2/",
-    "version": "4.4.1",
+    "version": "5.2.1",
     "license": "BSL 1.0",
     "compatibility": "all"
   },
@@ -779,7 +779,7 @@
     "name": "bacon",
     "description": "BaCon is a free BASIC to C translator for Unix-based systems.",
     "homepage": "https://chiselapp.com/user/bacon/repository/bacon/home",
-    "version": "3.9.3",
+    "version": "5.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -819,7 +819,7 @@
     "name": "bash",
     "description": "The GNU Bourne Again SHell is a Bourne-compatible shell with useful csh and ksh features.",
     "homepage": "https://www.gnu.org/software/bash/",
-    "version": "5.2-26",
+    "version": "5.2.32",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -827,7 +827,7 @@
     "name": "bash_completion",
     "description": "Programmable completion functions for bash",
     "homepage": "https://github.com/scop/bash-completion",
-    "version": "2.13.0",
+    "version": "2.14.0",
     "license": "GPL-2+",
     "compatibility": "all"
   },
@@ -858,8 +858,8 @@
   {
     "name": "bats",
     "description": "Bash Automated Testing System",
-    "homepage": "https://github.com/sstephenson/bats",
-    "version": "0.4.0",
+    "homepage": "https://github.com/bats-core/bats-core",
+    "version": "1.11.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -875,9 +875,9 @@
     "name": "bazelisk",
     "description": "A user-friendly launcher for Bazel.",
     "homepage": "https://github.com/bazelbuild/bazelisk",
-    "version": "1.20.0",
+    "version": "1.21.0",
     "license": "Apache-2.0",
-    "compatibility": "x86_64"
+    "compatibility": "all"
   },
   {
     "name": "bc",
@@ -898,8 +898,8 @@
   {
     "name": "bdftopcf",
     "description": "BDF to PCF font converter for X11",
-    "homepage": "https://xorg.freedesktop.org/wiki/",
-    "version": "1.1",
+    "homepage": "https://gitlab.freedesktop.org/xorg/util/bdftopcf",
+    "version": "1.1.1",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -907,8 +907,8 @@
     "name": "bdwgc",
     "description": "The Boehm-Demers-Weiser conservative C/C++ Garbage Collector",
     "homepage": "https://www.hboehm.info/gc/",
-    "version": "8.2.4",
-    "license": "custom",
+    "version": "8.2.8",
+    "license": "MIT",
     "compatibility": "all"
   },
   {
@@ -923,7 +923,7 @@
     "name": "benchmark",
     "description": "A microbenchmark support library from Google",
     "homepage": "https://github.com/google/benchmark/",
-    "version": "1.5.2",
+    "version": "1.9.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -931,7 +931,7 @@
     "name": "berry",
     "description": "Healthy, bite-sized window manager",
     "homepage": "https://github.com/JLErvin/berry",
-    "version": "0.1.5",
+    "version": "0.1.12",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -963,8 +963,8 @@
     "name": "bind",
     "description": "BIND is open source software that enables you to publish your Domain Name System (DNS) information on the Internet, and to resolve DNS queries for your users.",
     "homepage": "https://www.isc.org/bind/",
-    "version": "9.20.0",
-    "license": "Apache-2.0, BSD, BSD-2, GPL-2, HPND, ISC and MPL-2.0",
+    "version": "9.21.0",
+    "license": "MPL-2.0",
     "compatibility": "all"
   },
   {
@@ -994,16 +994,16 @@
   {
     "name": "bitmap",
     "description": "bitmap, bmtoa, atobm - X bitmap (XBM) editor and converter utilities",
-    "homepage": "https://www.x.org/wiki/",
-    "version": "1.0.9",
-    "license": "custom",
-    "compatibility": "all"
+    "homepage": "https://gitlab.freedesktop.org/xorg/app/bitmap",
+    "version": "1.1.1",
+    "license": "MIT",
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "bitpocket",
     "description": "\"DIY Dropbox\" or \"2-way directory (r)sync with proper deletion\"",
     "homepage": "https://github.com/ku1ik/bitpocket",
-    "version": "0.2",
+    "version": "0.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -1011,7 +1011,7 @@
     "name": "bleachbit",
     "description": "Bleachbit provides a means to clean your system and free disk space.",
     "homepage": "https://www.bleachbit.org/",
-    "version": "4.4.2",
+    "version": "4.6.1",
     "license": "GPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -1067,7 +1067,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.69.162",
+    "version": "1.69.168",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1603,7 +1603,7 @@
     "name": "cloog",
     "description": "The CLooG Code Generator in the Polytope Model",
     "homepage": "https://github.com/periscop/cloog",
-    "version": "0.20.0",
+    "version": "0.21.1",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -1891,7 +1891,7 @@
     "name": "crew_profile_base",
     "description": "Crew-profile-base sets up Chromebrew's environment capabilities.",
     "homepage": "https://github.com/chromebrew/crew-profile-base",
-    "version": "0.0.22",
+    "version": "0.0.23",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -2035,7 +2035,7 @@
     "name": "curl",
     "description": "Command line tool and library for transferring data with URLs.",
     "homepage": "https://curl.se/",
-    "version": "8.9.1",
+    "version": "8.10.0",
     "license": "curl",
     "compatibility": "all"
   },
@@ -3067,7 +3067,7 @@
     "name": "flutter",
     "description": "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.",
     "homepage": "https://flutter.dev/",
-    "version": "3.24.0",
+    "version": "3.24.3",
     "license": "BSD-3",
     "compatibility": "x86_64"
   },
@@ -3611,7 +3611,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "491.0.0",
+    "version": "492.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -3694,6 +3694,14 @@
     "version": "2.0.0",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
+  },
+  {
+    "name": "geary",
+    "description": "Geary is an email application built around conversations for the GNOME desktop.",
+    "homepage": "https://wiki.gnome.org/Apps/Geary",
+    "version": "46.0",
+    "license": "GPL2+",
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "gedit",
@@ -4515,7 +4523,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "128.0.6613.119-1",
+    "version": "128.0.6613.137-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -4779,7 +4787,7 @@
     "name": "gtest",
     "description": "Google Test - C++ testing utility",
     "homepage": "https://opensource.google/projects/googletest",
-    "version": "1.11.0",
+    "version": "1.15.2",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -4803,7 +4811,7 @@
     "name": "gtk4",
     "description": "GTK+ is a multi-platform toolkit for creating graphical user interfaces.",
     "homepage": "https://developer.gnome.org/gtk4/",
-    "version": "4.15.6",
+    "version": "4.16.0",
     "license": "LGPL-2.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -5562,8 +5570,8 @@
   {
     "name": "isl",
     "description": "Integer Set Library for manipulating sets and relations of integer points bounded by linear constraints",
-    "homepage": "http://isl.gforge.inria.fr/",
-    "version": "0.23",
+    "homepage": "https://libisl.sourceforge.io/",
+    "version": "0.27",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -6171,7 +6179,7 @@
     "name": "libassuan",
     "description": "Libassuan is a small library implementing the so-called Assuan protocol.",
     "homepage": "https://www.gnupg.org/related_software/libassuan/index.html",
-    "version": "2.5.5",
+    "version": "3.0.1",
     "license": "GPL-3 and LGPL-2.1",
     "compatibility": "all"
   },
@@ -6811,7 +6819,7 @@
     "name": "libgcrypt",
     "description": "Libgcrypt is a general purpose cryptographic library originally based on code from GnuPG.",
     "homepage": "https://www.gnupg.org/related_software/libgcrypt/index.html",
-    "version": "1.10.3",
+    "version": "1.11.0",
     "license": "LGPL-2.1 and MIT",
     "compatibility": "all"
   },
@@ -10552,14 +10560,6 @@
     "compatibility": "all"
   },
   {
-    "name": "oci_cli",
-    "description": "Command Line Interface for Oracle Cloud Infrastructure",
-    "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.1.2",
-    "license": "UPL-1.0",
-    "compatibility": "x86_64 aarch64 armv7l"
-  },
-  {
     "name": "octane",
     "description": "The JavaScript Benchmark Suite for the modern web https://developers.google.com/octane/.",
     "homepage": "https://github.com/chromium/octane",
@@ -10630,6 +10630,14 @@
     "version": "8.0.1",
     "license": "AGPL-3",
     "compatibility": "x86_64"
+  },
+  {
+    "name": "oorexx",
+    "description": "Free implementation of Object Rexx",
+    "homepage": "https://www.oorexx.org/",
+    "version": "5.1.0-12905",
+    "license": "CPL-v1.0",
+    "compatibility": "all"
   },
   {
     "name": "opam",
@@ -10859,7 +10867,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "113.0.5230.62",
+    "version": "113.0.5230.86",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -10891,7 +10899,7 @@
     "name": "osl",
     "description": "OpenScop is a Specification and a Library for Data Exchange in Polyhedral Compilation Tools",
     "homepage": "https://github.com/periscop/openscop",
-    "version": "0.9.2",
+    "version": "0.9.7",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -11651,7 +11659,7 @@
     "name": "phive",
     "description": "The PHAR Installation and Verification Environment (PHIVE)",
     "homepage": "https://phar.io/",
-    "version": "0.15.2",
+    "version": "0.15.3",
     "license": "BSD",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -11867,7 +11875,7 @@
     "name": "platformsh",
     "description": "The unified tool for managing your Platform.sh services from the command line.",
     "homepage": "https://docs.platform.sh/overview/cli.html",
-    "version": "5.0.18",
+    "version": "5.0.20",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -12203,15 +12211,15 @@
     "name": "py3_agate",
     "description": "Agate is a data analysis library that is optimized for humans instead of machines.",
     "homepage": "https://agate.readthedocs.io/",
-    "version": "1.7.1",
+    "version": "1.12.0",
     "license": "MIT",
     "compatibility": "all"
   },
   {
-    "name": "py3_agate_dfb",
+    "name": "py3_agate_dbf",
     "description": "Agate-dbf adds read support for DBF files to agate.",
     "homepage": "https://agate-dbf.readthedocs.org/",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12219,7 +12227,7 @@
     "name": "py3_agate_excel",
     "description": "Agate-excel read support for Excel files (xls and xlsx) to agate.",
     "homepage": "https://agate-excel.readthedocs.io/",
-    "version": "0.2.5",
+    "version": "0.4.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12227,7 +12235,7 @@
     "name": "py3_agate_sql",
     "description": "Agate-sql adds SQL read/write support to agate.",
     "homepage": "https://agate-sql.readthedocs.org/",
-    "version": "0.6.0",
+    "version": "0.7.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12235,23 +12243,15 @@
     "name": "py3_alabaster",
     "description": "Alabaster is a configurable sidebar-enabled Sphinx theme.",
     "homepage": "https://alabaster.readthedocs.io/",
-    "version": "0.7.13",
+    "version": "1.0.0",
     "license": "BSD",
-    "compatibility": "all"
-  },
-  {
-    "name": "py3_appdirs",
-    "description": "Appdirs is a small Python module for determining appropriate platform-specific directories.",
-    "homepage": "https://github.com/ActiveState/appdirs/",
-    "version": "1.4.4",
-    "license": "MIT",
     "compatibility": "all"
   },
   {
     "name": "py3_argcomplete",
     "description": "Argcomplete provides bash completion for argparse.",
     "homepage": "https://kislyuk.github.io/argcomplete/",
-    "version": "3.1.2",
+    "version": "3.5.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -12259,7 +12259,7 @@
     "name": "py3_argparse_manpage",
     "description": "Automatically build man-pages for your Python project.",
     "homepage": "https://github.com/praiskup/argparse-manpage",
-    "version": "4.5",
+    "version": "4.6",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -12275,7 +12275,7 @@
     "name": "py3_atspi",
     "description": "Python bindings for D-Bus AT-SPI",
     "homepage": "https://wiki.linuxfoundation.org/accessibility/atk/at-spi/at-spi_on_d-bus",
-    "version": "2.46.0",
+    "version": "2.46.1",
     "license": "GPL2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -12283,7 +12283,7 @@
     "name": "py3_attrs",
     "description": "Attrs removes the need to implement object protocols in classes.",
     "homepage": "https://www.attrs.org/",
-    "version": "23.1.0",
+    "version": "24.2.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12291,7 +12291,7 @@
     "name": "py3_azure_cli",
     "description": "Next generation multi-platform command line experience for Azure.",
     "homepage": "https://pypi.org/project/azure-cli/",
-    "version": "2.53.1",
+    "version": "2.64.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12299,7 +12299,7 @@
     "name": "py3_babel",
     "description": "Babel is an integrated collection of utilities that assist in internationalizing and localizing Python applications.",
     "homepage": "https://babel.pocoo.org/",
-    "version": "2.13.0",
+    "version": "2.16.0",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -12307,7 +12307,7 @@
     "name": "py3_beautifulsoup4",
     "description": "BeautifulSoup is a screen-scraping library.",
     "homepage": "https://www.crummy.com/software/BeautifulSoup/",
-    "version": "4.12.2",
+    "version": "4.12.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12323,7 +12323,7 @@
     "name": "py3_build",
     "description": "Python build is a simple, correct PEP 517 build frontend.",
     "homepage": "https://pypa-build.readthedocs.io/",
-    "version": "1.0.3",
+    "version": "1.2.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12331,7 +12331,7 @@
     "name": "py3_certifi",
     "description": "Certifi provides Mozilla's CA Bundle.",
     "homepage": "https://certifi.io/",
-    "version": "2023.11.17",
+    "version": "2024.8.30",
     "license": "MPL-2.0",
     "compatibility": "all"
   },
@@ -12339,7 +12339,7 @@
     "name": "py3_cffi",
     "description": "C Foreign Function Interface for Python calling C code.",
     "homepage": "https://cffi.readthedocs.io/",
-    "version": "1.16.0",
+    "version": "1.17.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12355,7 +12355,7 @@
     "name": "py3_chardet",
     "description": "Chardet is a universal encoding detector.",
     "homepage": "https://github.com/chardet/chardet/",
-    "version": "4.0.0",
+    "version": "5.2.0",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -12371,7 +12371,7 @@
     "name": "py3_cmarkgfm",
     "description": "Python bindings to GitHub's cmark.",
     "homepage": "https://github.com/theacodes/cmarkgfm",
-    "version": "2022.10.27",
+    "version": "2024.1.14",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -12379,7 +12379,7 @@
     "name": "py3_codespell",
     "description": "Fix common misspellings in text files.",
     "homepage": "https://github.com/codespell-project/codespell",
-    "version": "2.2.6",
+    "version": "2.3.0",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -12387,7 +12387,7 @@
     "name": "py3_colorama",
     "description": "Colorama makes ANSI color sequences work on MS Windows.",
     "homepage": "https://github.com/tartley/colorama/",
-    "version": "0.4.4",
+    "version": "0.4.6",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -12395,7 +12395,7 @@
     "name": "py3_configparser",
     "description": "Configparser backports newer configparser modules to earlier python versions.",
     "homepage": "https://github.com/jaraco/configparser/",
-    "version": "5.0.2",
+    "version": "7.1.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12403,7 +12403,7 @@
     "name": "py3_cryptography",
     "description": "Cryptography provides cryptographic recipes and primitives to Python developers.",
     "homepage": "https://cryptography.io/",
-    "version": "41.0.5",
+    "version": "43.0.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12411,7 +12411,7 @@
     "name": "py3_cssselect",
     "description": "CSSselect parses CSS3 Selectors and translates them to XPath 1.0.",
     "homepage": "https://cssselect.readthedocs.io/",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -12419,16 +12419,8 @@
     "name": "py3_cython",
     "description": "The Cython language makes writing C extensions for the Python language as easy as Python itself.",
     "homepage": "https://cython.org/",
-    "version": "3.0.9",
+    "version": "3.0.11",
     "license": "Apache-2.0",
-    "compatibility": "all"
-  },
-  {
-    "name": "py3_dateutil",
-    "description": "Dateutil provides extensions to the standard Python datetime module.",
-    "homepage": "https://dateutil.readthedocs.io/",
-    "version": "2.8.2",
-    "license": "BSD-3 and Apache-2.0 or BSD-3",
     "compatibility": "all"
   },
   {
@@ -12443,7 +12435,7 @@
     "name": "py3_dbus_python",
     "description": "libdbus language binding (wrapper) for CPython",
     "homepage": "https://gitlab.freedesktop.org/dbus/dbus-python",
-    "version": "1.2.18",
+    "version": "1.3.2",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -12451,7 +12443,7 @@
     "name": "py3_decorator",
     "description": "define signature-preserving function decorators and decorator factories",
     "homepage": "https://github.com/micheles/decorator/",
-    "version": "4.4.2",
+    "version": "5.1.1",
     "license": "BSD-2",
     "compatibility": "all"
   },
@@ -12467,7 +12459,7 @@
     "name": "py3_dicttoxml",
     "description": "DicttoXML converts Python dictionaries into XML strings.",
     "homepage": "https://github.com/quandyfactory/dicttoxml/",
-    "version": "1.3.1",
+    "version": "1.7.16",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12475,7 +12467,7 @@
     "name": "py3_distlib",
     "description": "Distlib provides distribution utilities for Python packages.",
     "homepage": "https://bitbucket.org/pypa/distlib/",
-    "version": "0.3.2",
+    "version": "0.3.8",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12483,7 +12475,7 @@
     "name": "py3_dnspython",
     "description": "DNSPython is a DNS toolkit.",
     "homepage": "https://www.dnspython.org/",
-    "version": "2.4.2",
+    "version": "2.6.1",
     "license": "ISC",
     "compatibility": "all"
   },
@@ -12499,7 +12491,7 @@
     "name": "py3_docwriter",
     "description": "API documentation generator of the FreeType library.",
     "homepage": "https://gitlab.freedesktop.org/freetype/docwriter",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "license": "FTL and GPL-2",
     "compatibility": "all"
   },
@@ -12523,7 +12515,7 @@
     "name": "py3_ebooklib",
     "description": "Ebooklib is a Python E-book library for handling books in EPUB2/EPUB3 format.",
     "homepage": "https://docs.sourcefabric.org/projects/ebooklib/",
-    "version": "0.17.1",
+    "version": "0.18",
     "license": "AGPL-3",
     "compatibility": "all"
   },
@@ -12539,7 +12531,7 @@
     "name": "py3_et_xmlfile",
     "description": "Et-xmlfile is an implementation of lxml's xmlfile module for the standard library's ElementTree.",
     "homepage": "https://foss.heptapod.net/openpyxl/et_xmlfile",
-    "version": "1.1",
+    "version": "1.1.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12547,7 +12539,7 @@
     "name": "py3_extract_msg",
     "description": "Extract-msg extracts emails and attachments saved in Microsoft Outlook's .msg files.",
     "homepage": "https://github.com/mattgwwalker/msg-extractor/",
-    "version": "0.28.7",
+    "version": "0.49.0",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -12555,7 +12547,7 @@
     "name": "py3_fasteners",
     "description": "Fasteners provides useful locks for python programs.",
     "homepage": "https://github.com/harlowja/fasteners/",
-    "version": "0.16.3",
+    "version": "0.19",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -12563,7 +12555,7 @@
     "name": "py3_filelock",
     "description": "FileLock implements a platform independent file lock in Python.",
     "homepage": "https://github.com/benediktschmitt/py-filelock/",
-    "version": "3.3.0",
+    "version": "3.16.0",
     "license": "Unlicense",
     "compatibility": "all"
   },
@@ -12571,7 +12563,7 @@
     "name": "py3_flask",
     "description": "Flask is a simple framework for building complex web applications.",
     "homepage": "https://palletsprojects.com/p/flask/",
-    "version": "2.0.2",
+    "version": "3.0.3",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -12579,7 +12571,7 @@
     "name": "py3_flit",
     "description": "Flit provides simplified packaging of Python modules.",
     "homepage": "https://flit.pypa.io/",
-    "version": "3.7.1",
+    "version": "3.9.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12595,7 +12587,7 @@
     "name": "py3_future",
     "description": "Future provides clean single-source support for Python 3 and 2.",
     "homepage": "https://python-future.org/",
-    "version": "0.18.2",
+    "version": "1.0.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12611,7 +12603,7 @@
     "name": "py3_greenlet",
     "description": "Greenlet provides lightweight in-process concurrent programming.",
     "homepage": "https://greenlet.readthedocs.io/",
-    "version": "2.0.1",
+    "version": "3.1.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12619,7 +12611,7 @@
     "name": "py3_hatch_fancy_pypi_readme",
     "description": "MIT-licensed metadata plugin for Hatch",
     "homepage": "https://github.com/hynek/hatch-fancy-pypi-readme",
-    "version": "23.1.0",
+    "version": "24.1.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12627,7 +12619,7 @@
     "name": "py3_hatch_vcs",
     "description": "A plugin for Hatch that uses your preferred version control system.",
     "homepage": "https://github.com/ofek/hatch-vcs",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12635,7 +12627,7 @@
     "name": "py3_hatchling",
     "description": "The extensible, standards compliant build backend used by Hatch.",
     "homepage": "https://hatch.pypa.io/latest",
-    "version": "1.18.0",
+    "version": "1.25.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12651,7 +12643,7 @@
     "name": "py3_idna",
     "description": "IDNA provides internationalized domain names for Python.",
     "homepage": "https://github.com/kjd/idna/",
-    "version": "3.7",
+    "version": "3.9",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -12659,7 +12651,7 @@
     "name": "py3_imagesize",
     "description": "Imagesize gets image size from png/jpeg/jpeg2000/gif file.",
     "homepage": "https://github.com/shibukawa/imagesize_py/",
-    "version": "1.1.0",
+    "version": "1.4.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12667,7 +12659,7 @@
     "name": "py3_imapclient",
     "description": "IMAPclient is an easy-to-use, complete IMAP client library.",
     "homepage": "https://imapclient.readthedocs.io/",
-    "version": "2.2.0",
+    "version": "3.0.1",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -12675,7 +12667,7 @@
     "name": "py3_impacket",
     "description": "Impacket provides network protocols constructors and dissectors.",
     "homepage": "https://www.secureauth.com/labs/open-source-tools/impacket/",
-    "version": "0.9.23",
+    "version": "0.11.0",
     "license": "Apache-2.0-with-impacket-modifications",
     "compatibility": "all"
   },
@@ -12683,7 +12675,7 @@
     "name": "py3_importlib_metadata",
     "description": "Importlib metadata reads metadata from Python packages.",
     "homepage": "https://github.com/python/importlib_metadata/",
-    "version": "4.8.1",
+    "version": "8.5.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -12691,7 +12683,7 @@
     "name": "py3_iniconfig",
     "description": "Iniconfig provides simple config-ini parsing.",
     "homepage": "https://github.com/pytest-dev/iniconfig/",
-    "version": "1.1.1",
+    "version": "2.0.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12715,7 +12707,7 @@
     "name": "py3_itsdangerous",
     "description": "ItsDangerous provide various helpers to pass data to untrusted environments and back.",
     "homepage": "https://palletsprojects.com/p/itsdangerous/",
-    "version": "2.0.1",
+    "version": "2.2.0",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -12723,7 +12715,7 @@
     "name": "py3_jeepney",
     "description": "Jeepney is a low-level, pure Python DBus protocol wrapper.",
     "homepage": "https://gitlab.com/takluyver/jeepney/",
-    "version": "0.7.1",
+    "version": "0.8.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12739,7 +12731,7 @@
     "name": "py3_jmespath",
     "description": "JMESPath is a query language for JSON.",
     "homepage": "https://jmespath.org/",
-    "version": "0.10.0",
+    "version": "1.0.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12747,7 +12739,7 @@
     "name": "py3_json2xml",
     "description": "json to xml converter",
     "homepage": "https://json2xml.readthedocs.io/",
-    "version": "3.8.0",
+    "version": "5.0.5",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -12755,7 +12747,7 @@
     "name": "py3_keyring",
     "description": "Keyring stores and accesses your passwords safely.",
     "homepage": "https://github.com/jaraco/keyring/",
-    "version": "23.2.1",
+    "version": "25.3.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12771,7 +12763,7 @@
     "name": "py3_ldapdomaindump",
     "description": "LDAPDomainDump uses LDAP to dump active directory information.",
     "homepage": "https://github.com/dirkjanm/ldapdomaindump/",
-    "version": "0.9.3",
+    "version": "0.9.4",
     "license": "LGPL-3",
     "compatibility": "all"
   },
@@ -12779,7 +12771,7 @@
     "name": "py3_leather",
     "description": "Leather is a fast, approximate chart generator in Python.",
     "homepage": "https://leather.readthedocs.io/",
-    "version": "0.3.4",
+    "version": "0.4.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12787,7 +12779,7 @@
     "name": "py3_libevdev",
     "description": "Libevdev is a Python wrapper around the libevdev C library.",
     "homepage": "https://python-libevdev.readthedocs.io/",
-    "version": "0.9",
+    "version": "0.11",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12803,16 +12795,8 @@
     "name": "py3_lxml",
     "description": "LXML is a Python library for processing XML and HTML.",
     "homepage": "https://lxml.de/",
-    "version": "5.1.0",
+    "version": "5.3.0",
     "license": "BSD-3",
-    "compatibility": "all"
-  },
-  {
-    "name": "py3_magic",
-    "description": "Magic is a python wrapper for libmagic.",
-    "homepage": "https://github.com/ahupp/python-magic/",
-    "version": "0.4.24",
-    "license": "MIT",
     "compatibility": "all"
   },
   {
@@ -12827,7 +12811,7 @@
     "name": "py3_markdown",
     "description": "Markdown is a Python implementation of Markdown.",
     "homepage": "https://python-markdown.github.io/",
-    "version": "3.4.4",
+    "version": "3.7",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -12856,10 +12840,18 @@
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
+    "name": "py3_meson_python",
+    "description": "Meson Python build backend (PEP 517)",
+    "homepage": "https://pypi.org/project/meson-python",
+    "version": "0.16.0",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
     "name": "py3_minidb",
     "description": "Minidb is a simple SQLite3-based store for Python objects.",
     "homepage": "https://thp.io/2010/minidb/",
-    "version": "2.0.5",
+    "version": "2.0.8",
     "license": "ISC",
     "compatibility": "all"
   },
@@ -12867,7 +12859,7 @@
     "name": "py3_mock",
     "description": "Mock is a testing library in Python.",
     "homepage": "https://mock.readthedocs.org/",
-    "version": "4.0.3",
+    "version": "5.1.0",
     "license": "BSD-2",
     "compatibility": "all"
   },
@@ -12891,7 +12883,7 @@
     "name": "py3_nuitka",
     "description": "Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.",
     "homepage": "https://nuitka.net/",
-    "version": "0.6.18.5",
+    "version": "2.4.8",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -12899,7 +12891,7 @@
     "name": "py3_numpy",
     "description": "NumPy is the fundamental package for array computing with Python.",
     "homepage": "https://numpy.org/",
-    "version": "1.26.2",
+    "version": "2.1.1",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -12907,15 +12899,23 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.47.1",
+    "version": "2.133.0",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
+  },
+  {
+    "name": "py3_oci_cli",
+    "description": "Command Line Interface for Oracle Cloud Infrastructure",
+    "homepage": "https://github.com/oracle/oci-cli/",
+    "version": "3.47.0",
+    "license": "UPL-1.0",
+    "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "py3_olefile",
     "description": "Olefile is a Python package to parse, read and write Microsoft OLE2 files.",
     "homepage": "https://www.decalage.info/python/olefileio/",
-    "version": "0.46",
+    "version": "0.47",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -12923,7 +12923,7 @@
     "name": "py3_openpyxl",
     "description": "Openpyxl is a Python library to read/write Excel 2010 xlsx/xlsm files.",
     "homepage": "https://openpyxl.readthedocs.io/",
-    "version": "3.1.2",
+    "version": "3.1.5",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12931,7 +12931,7 @@
     "name": "py3_packaging",
     "description": "Packaging provides core utilities for Python packages",
     "homepage": "https://packaging.pypa.io/",
-    "version": "24.0",
+    "version": "24.1",
     "license": "BSD-2 or Apache-2.0",
     "compatibility": "all"
   },
@@ -12944,10 +12944,18 @@
     "compatibility": "all"
   },
   {
+    "name": "py3_patchelf",
+    "description": "Patchelf is a small utility to modify the dynamic linker and RPATH of ELF executables.",
+    "homepage": "https://pypi.org/project/patchelf",
+    "version": "0.17.2.1",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
     "name": "py3_pathspec",
     "description": "Path specification is a utility library for gitignore style pattern matching of file paths.",
     "homepage": "https://github.com/cpburnz/python-pathspec",
-    "version": "0.11.2",
+    "version": "0.12.1",
     "license": "MPL-2.0",
     "compatibility": "all"
   },
@@ -12955,7 +12963,7 @@
     "name": "py3_pdfminer_six",
     "description": "PDFminer.six is a community maintained fork of PDFminer.",
     "homepage": "https://pdfminersix.readthedocs.io/",
-    "version": "20201018",
+    "version": "20240706",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12963,7 +12971,7 @@
     "name": "py3_pep517",
     "description": "Python PEP517 is an API to call PEP 517 hooks for building Python packages ",
     "homepage": "https://pep517.readthedocs.io/",
-    "version": "1.0.0",
+    "version": "0.13.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12971,7 +12979,7 @@
     "name": "py3_pillow",
     "description": "Pillow is a Python Imaging Library (PIL).",
     "homepage": "https://python-pillow.org/",
-    "version": "9.2.0",
+    "version": "10.4.0",
     "license": "HPND",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -12987,7 +12995,15 @@
     "name": "py3_pipdeptree",
     "description": "Displays a dependency tree of the installed Python packages.",
     "homepage": "https://github.com/naiquevin/pipdeptree/",
-    "version": "2.2.0",
+    "version": "2.23.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "py3_platformdirs",
+    "description": "A small Python package for determining appropriate platform-specific dirs.",
+    "homepage": "https://pypi.org/project/platformdirs",
+    "version": "4.3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12995,7 +13011,7 @@
     "name": "py3_pluggy",
     "description": "Pluggy provides plugin and hook calling mechanisms for Python.",
     "homepage": "https://pluggy.readthedocs.io/",
-    "version": "1.3.0",
+    "version": "1.5.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13006,14 +13022,6 @@
     "version": "3.11",
     "license": "BSD",
     "compatibility": "all"
-  },
-  {
-    "name": "py3_pptx",
-    "description": "Python PPTX generates and manipulates Open XML PowerPoint files.",
-    "homepage": "https://github.com/scanny/python-pptx/",
-    "version": "0.6.21",
-    "license": "MIT",
-    "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "py3_pre_commit",
@@ -13027,7 +13035,7 @@
     "name": "py3_pspdfutils",
     "description": "Utilities for manipulating PostScript documents.",
     "homepage": "https://github.com/rrthomas/psutils",
-    "version": "3.3.2",
+    "version": "3.3.5",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -13035,7 +13043,7 @@
     "name": "py3_psutil",
     "description": "psutil is a cross-platform library for process and system monitoring in Python.",
     "homepage": "https://github.com/giampaolo/psutil/",
-    "version": "5.8.0",
+    "version": "6.0.0",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -13051,7 +13059,7 @@
     "name": "py3_pyasn1",
     "description": "PyASN.1 is a generic ASN.1 library for Python",
     "homepage": "https://github.com/etingof/pyasn1/",
-    "version": "0.4.8",
+    "version": "0.6.1",
     "license": "BSD-2",
     "compatibility": "all"
   },
@@ -13059,7 +13067,7 @@
     "name": "py3_pybind11",
     "description": "Seamless operability between C++11 and Python",
     "homepage": "https://github.com/pybind/pybind11",
-    "version": "2.12.0",
+    "version": "2.13.6",
     "license": "BSD-3 Clause",
     "compatibility": "all"
   },
@@ -13067,7 +13075,7 @@
     "name": "py3_pycairo",
     "description": "Pycairo is a provides bindings for the cairo graphics library.",
     "homepage": "https://cairographics.org/pycairo/",
-    "version": "1.25.0",
+    "version": "1.27.0",
     "license": "LGPL-2.1 or MPL-1.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13083,7 +13091,7 @@
     "name": "py3_pycryptodome",
     "description": "Pycryptodome is a cryptographic library for Python.",
     "homepage": "https://www.pycryptodome.org/",
-    "version": "3.11.0",
+    "version": "3.20.0",
     "license": "BSD and public-domain",
     "compatibility": "all"
   },
@@ -13091,7 +13099,7 @@
     "name": "py3_pycryptodomex",
     "description": "Pycryptodomex is a cryptographic library for Python.",
     "homepage": "https://www.pycryptodome.org/",
-    "version": "3.19.0",
+    "version": "3.20.0",
     "license": "BSD and public-domain",
     "compatibility": "all"
   },
@@ -13099,7 +13107,7 @@
     "name": "py3_pyelftools",
     "description": "Pure-Python library for parsing and analyzing ELF files and DWARF debugging information.",
     "homepage": "https://github.com/eliben/pyelftools/",
-    "version": "0.29",
+    "version": "0.31",
     "license": "public-domain",
     "compatibility": "all"
   },
@@ -13115,7 +13123,7 @@
     "name": "py3_pygobject",
     "description": "PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.",
     "homepage": "https://pygobject.gnome.org/",
-    "version": "3.48.2",
+    "version": "3.50.0",
     "license": "LGPL-2.1+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13131,7 +13139,7 @@
     "name": "py3_pylint",
     "description": "Analyzes Python code looking for bugs and signs of poor quality",
     "homepage": "https://pylint.pycqa.org",
-    "version": "3.1.0",
+    "version": "3.2.7",
     "license": "GPL",
     "compatibility": "all"
   },
@@ -13139,7 +13147,7 @@
     "name": "py3_pyopenssl",
     "description": "PyOpenSSL is a Python wrapper module around the OpenSSL library.",
     "homepage": "https://www.pyopenssl.org/",
-    "version": "21.0.0",
+    "version": "24.2.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13147,7 +13155,7 @@
     "name": "py3_pyparsing",
     "description": "The pyparsing module is an alternative approach to creating and executing simple grammars, vs. the traditional lex/yacc approach, or the use of regular expressions.",
     "homepage": "https://github.com/pyparsing/pyparsing/",
-    "version": "3.1.1",
+    "version": "3.1.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13155,7 +13163,7 @@
     "name": "py3_pypdf",
     "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.",
     "homepage": "https://github.com/py-pdf/pypdf",
-    "version": "4.2.0",
+    "version": "4.3.1",
     "license": "BSD-3-Clause",
     "compatibility": "all"
   },
@@ -13163,7 +13171,7 @@
     "name": "py3_pyproject_hooks",
     "description": "This package contains wrappers to call hooks on build backends for pyproject.toml -based projects",
     "homepage": "https://pyproject-hooks.readthedocs.io/",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13171,7 +13179,7 @@
     "name": "py3_pyright",
     "description": "Static Type Checker for Python",
     "homepage": "https://github.com/microsoft/pyright",
-    "version": "1.1.341",
+    "version": "1.1.380",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13179,7 +13187,7 @@
     "name": "py3_pystemmer",
     "description": "Snowball stemming algorithms, for information retrieval",
     "homepage": "http://snowball.tartarus.org",
-    "version": "2.0.1",
+    "version": "2.2.0.1",
     "license": "BSD MIT",
     "compatibility": "all"
   },
@@ -13187,7 +13195,7 @@
     "name": "py3_pyte",
     "description": "PyTE is a Simple VTXXX-compatible terminal emulator.",
     "homepage": "https://github.com/selectel/pyte/",
-    "version": "0.8.1",
+    "version": "0.8.2",
     "license": "LGPL-3",
     "compatibility": "all"
   },
@@ -13195,9 +13203,33 @@
     "name": "py3_pytest",
     "description": "Pytest is simple powerful testing with Python.",
     "homepage": "https://pytest.org/",
-    "version": "6.2.5",
+    "version": "8.3.3",
     "license": "MIT",
     "compatibility": "all"
+  },
+  {
+    "name": "py3_python_dateutil",
+    "description": "Dateutil provides extensions to the standard Python datetime module.",
+    "homepage": "https://dateutil.readthedocs.io/",
+    "version": "2.9.0.post0",
+    "license": "BSD-3 and Apache-2.0 or BSD-3",
+    "compatibility": "all"
+  },
+  {
+    "name": "py3_python_magic",
+    "description": "Magic is a python wrapper for libmagic.",
+    "homepage": "https://github.com/ahupp/python-magic/",
+    "version": "0.4.27",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "py3_python_pptx",
+    "description": "Python PPTX generates and manipulates Open XML PowerPoint files.",
+    "homepage": "https://github.com/scanny/python-pptx/",
+    "version": "1.0.2",
+    "license": "MIT",
+    "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "py3_pytimeparse",
@@ -13211,7 +13243,7 @@
     "name": "py3_pytz",
     "description": "pytz brings the Olson tz database into Python.",
     "homepage": "https://pythonhosted.org/pytz/",
-    "version": "2023.3.post1",
+    "version": "2024.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13219,7 +13251,7 @@
     "name": "py3_pyudev",
     "description": "Pyudev provides Python bindings for udev.",
     "homepage": "https://pyudev.readthedocs.io/",
-    "version": "0.22",
+    "version": "0.24.3",
     "license": "LGPL-2.1+",
     "compatibility": "all"
   },
@@ -13251,7 +13283,7 @@
     "name": "py3_retrying",
     "description": "Retrying simplifies the task of adding retry behavior to just about anything.",
     "homepage": "https://github.com/rholder/retrying/",
-    "version": "1.3.3",
+    "version": "1.3.4",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13259,7 +13291,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.1.3",
+    "version": "0.6.5",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13267,7 +13299,7 @@
     "name": "py3_secretstorage",
     "description": "Python bindings to Freedesktop.org Secret Service API",
     "homepage": "https://secretstorage.readthedocs.io/",
-    "version": "3.3.1",
+    "version": "3.3.3",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -13291,7 +13323,7 @@
     "name": "py3_setuptools_rust",
     "description": "Setuptools-rust provides rust support for setuptools.",
     "homepage": "https://github.com/PyO3/setuptools-rust",
-    "version": "1.7.0",
+    "version": "1.10.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13299,7 +13331,7 @@
     "name": "py3_setuptools_scm",
     "description": "Setuptools-scm is the blessed package to manage your versions by scm tags.",
     "homepage": "https://github.com/pypa/setuptools_scm",
-    "version": "8.0.4",
+    "version": "8.1.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13315,7 +13347,7 @@
     "name": "py3_slugify",
     "description": "Python-slugify returns unicode slugs.",
     "homepage": "https://github.com/un33k/python-slugify/",
-    "version": "8.0.1",
+    "version": "0.0.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13347,7 +13379,7 @@
     "name": "py3_soupsieve",
     "description": "CSS selector library designed to be used with Beautiful Soup 4.",
     "homepage": "https://github.com/facelessuser/soupsieve",
-    "version": "2.5",
+    "version": "2.6",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13355,7 +13387,7 @@
     "name": "py3_speechrecognition",
     "description": "SpeechRecognition is a library for performing speech recognition, with support for several engines and APIs, online and offline.",
     "homepage": "https://github.com/Uberi/speech_recognition/",
-    "version": "3.8.1",
+    "version": "3.10.4",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -13419,7 +13451,7 @@
     "name": "py3_sqlalchemy",
     "description": "SQLalchemy is a database toolkit for Python.",
     "homepage": "https://sqlalchemy.org",
-    "version": "2.0.21",
+    "version": "2.0.34",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13427,7 +13459,7 @@
     "name": "py3_terminaltables",
     "description": "Terminaltables generates simple tables in terminals from a nested list of strings.",
     "homepage": "https://robpol86.github.io/terminaltables/",
-    "version": "3.1.0",
+    "version": "3.1.10",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13467,7 +13499,7 @@
     "name": "py3_tox",
     "description": "Command line driven CI frontend and development task automation tool.",
     "homepage": "https://tox.readthedocs.io/",
-    "version": "3.24.4",
+    "version": "4.18.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13475,7 +13507,7 @@
     "name": "py3_trove_classifiers",
     "description": "Canonical source for classifiers on PyPI.",
     "homepage": "https://github.com/pypa/trove-classifiers",
-    "version": "2023.9.19",
+    "version": "2024.9.12",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13483,7 +13515,7 @@
     "name": "py3_typing_extensions",
     "description": "Backported and Experimental Type Hints for Python 3.5+",
     "homepage": "https://github.com/python/typing/tree/master/typing_extensions",
-    "version": "4.2.0",
+    "version": "4.12.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13499,7 +13531,7 @@
     "name": "py3_tzlocal",
     "description": "Tzlocal provides tzinfo object for the local timezone.",
     "homepage": "https://github.com/regebro/tzlocal/",
-    "version": "4.1",
+    "version": "5.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13515,7 +13547,7 @@
     "name": "py3_urllib3",
     "description": "URLlib3 is an HTTP library with thread-safe connection pooling, file post, and more.",
     "homepage": "https://urllib3.readthedocs.io/",
-    "version": "2.2.2",
+    "version": "2.2.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13523,7 +13555,7 @@
     "name": "py3_urwid",
     "description": "Urwid is a full-featured console user interface library.",
     "homepage": "http://urwid.org/",
-    "version": "2.1.2",
+    "version": "2.6.15",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -13531,7 +13563,7 @@
     "name": "py3_virtualenv",
     "description": "Virtualenv is a Virtual Environment builder for Python.",
     "homepage": "https://virtualenv.pypa.io/",
-    "version": "20.26.3",
+    "version": "20.26.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13539,7 +13571,7 @@
     "name": "py3_wcwidth",
     "description": "WCWidth measures the displayed width of unicode strings in a terminal.",
     "homepage": "https://github.com/jquast/wcwidth/",
-    "version": "0.2.8",
+    "version": "0.2.13",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13547,7 +13579,7 @@
     "name": "py3_websockets",
     "description": " Library for building WebSocket servers and clients in Python",
     "homepage": "https://websockets.readthedocs.io/",
-    "version": "12.0",
+    "version": "13.0.1",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -13555,7 +13587,7 @@
     "name": "py3_werkzeug",
     "description": "Werkzeug is a comprehensive WSGI web application library.",
     "homepage": "https://palletsprojects.com/p/werkzeug/",
-    "version": "2.0.2",
+    "version": "3.0.4",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -13563,7 +13595,7 @@
     "name": "py3_wheel",
     "description": "Wheel is the binary package format for python.",
     "homepage": "https://wheel.readthedocs.io/",
-    "version": "0.41.2",
+    "version": "0.44.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13579,7 +13611,7 @@
     "name": "py3_xlsxwriter",
     "description": "XlsxWriter is a Python module for creating Excel XLSX files.",
     "homepage": "https://xlsxwriter.readthedocs.io/",
-    "version": "3.0.1",
+    "version": "3.2.0",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -13587,7 +13619,7 @@
     "name": "py3_xmltodict",
     "description": "XMLtoDict makes working with XML feel like you are working with JSON.",
     "homepage": "https://github.com/martinblech/xmltodict/",
-    "version": "0.12.0",
+    "version": "0.13.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13595,7 +13627,7 @@
     "name": "py3_yamllint",
     "description": "YAMLlint is a linter for YAML files.",
     "homepage": "https://github.com/adrienverge/yamllint/",
-    "version": "1.26.3",
+    "version": "1.35.1",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -13603,15 +13635,15 @@
     "name": "py3_zcmds",
     "description": "Cross platform(ish) productivity commands written in python",
     "homepage": "https://github.com/zackees/zcmds",
-    "version": "1.1.18-1c3965",
+    "version": "1.4.100",
     "license": "MIT",
-    "compatibility": "all"
+    "compatibility": "aarch64"
   },
   {
     "name": "py3_zipp",
     "description": "Zipp is a backport of pathlib-compatible object wrapper for zip files.",
     "homepage": "https://github.com/jaraco/zipp/",
-    "version": "3.6.0",
+    "version": "3.20.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13659,7 +13691,7 @@
     "name": "python3",
     "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
     "homepage": "https://www.python.org/",
-    "version": "3.12.5",
+    "version": "3.12.6",
     "license": "PSF-2.0",
     "compatibility": "all"
   },
@@ -13963,7 +13995,7 @@
     "name": "rclone",
     "description": "Rclone is a command-line program to manage files on cloud storage.",
     "homepage": "https://rclone.org/",
-    "version": "1.67.0",
+    "version": "1.68.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14240,6 +14272,14 @@
     "compatibility": "all"
   },
   {
+    "name": "ruby_debug",
+    "description": "The debug library provides debugging functionality to Ruby (MRI) 2.7 and later.",
+    "homepage": "https://github.com/ruby/debug",
+    "version": "1.9.2-ruby-3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
     "name": "ruby_docopt",
     "description": "Docopt parses command line arguments from nothing more than a usage message.",
     "homepage": "http://docopt.org/",
@@ -14283,7 +14323,15 @@
     "name": "ruby_rubocop",
     "description": "A Ruby static code analyzer and formatter",
     "homepage": "https://rubocop.org",
-    "version": "1.66.0-ruby-3.3",
+    "version": "1.66.1-ruby-3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_ruby_libversion",
+    "description": "Ruby bindings for libversion.",
+    "homepage": "https://github.com/Zopolis4/ruby-libversion",
+    "version": "1.0.0-ruby-3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14723,7 +14771,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.23.0",
+    "version": "7.24.1",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -15027,7 +15075,7 @@
     "name": "sqlmap",
     "description": "sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.",
     "homepage": "https://sqlmap.org/",
-    "version": "1.8.8",
+    "version": "1.8.9",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -15179,7 +15227,7 @@
     "name": "stunnel",
     "description": "Stunnel is a proxy designed to add TLS encryption functionality to existing clients and servers without any changes in the programs' code.",
     "homepage": "https://www.stunnel.org/index.html",
-    "version": "5.72",
+    "version": "5.73",
     "license": "GPL-2+",
     "compatibility": "all"
   },
@@ -15427,7 +15475,7 @@
     "name": "telegram",
     "description": "Telegram is a messaging app with a focus on speed and security, it's super-fast, simple and free.",
     "homepage": "https://telegram.org/",
-    "version": "5.4.1",
+    "version": "5.5.4",
     "license": "BSD, LGPL-2+ and GPL-3-with-openssl-exception",
     "compatibility": "x86_64"
   },
@@ -15515,7 +15563,7 @@
     "name": "texinfo",
     "description": "Texinfo is the official documentation format of the GNU project.",
     "homepage": "https://www.gnu.org/software/texinfo/",
-    "version": "7.1.0.90",
+    "version": "7.1.1",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -16211,7 +16259,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "6.9.3447.41-1",
+    "version": "6.9.3447.44-1",
     "license": "Vivaldi",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -16443,7 +16491,7 @@
     "name": "webkit2gtk_4_1",
     "description": "Web content engine for GTK",
     "homepage": "https://webkitgtk.org",
-    "version": "2.44.2",
+    "version": "2.44.3",
     "license": "LGPL-2+ and BSD-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -17379,7 +17427,7 @@
     "name": "zotero",
     "description": "Zotero is a free, easy-to-use tool to help you collect, organize, annotate, cite, and share research.",
     "homepage": "https://www.zotero.org/",
-    "version": "7.0.3",
+    "version": "7.0.5",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
