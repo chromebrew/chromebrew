@@ -1,32 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Subversion < Package
+class Subversion < Autotools
   description 'Subversion is an open source version control system.'
   homepage 'https://subversion.apache.org/'
-  version '1.9.12'
+  version '1.14.3'
   license 'Apache-2.0, BSD, MIT, BSD-2, FSFAP and unicode'
-  compatibility 'all'
-  source_url 'https://www-us.apache.org/dist/subversion/subversion-1.9.12.tar.bz2'
-  source_sha256 '3c3a15fd73a21ab55556d7c291cf40e25ade1c070294504aa50b4767db1be397'
-  binary_compression 'tar.xz'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://dlcdn.apache.org/subversion/subversion-#{version}.tar.bz2"
+  source_sha256 '949efd451a09435f7e8573574c71c7b71b194d844890fa49cd61d2262ea1a440'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '797938b9feb0336b42848540b6fecb5f4474b78df1addc8cc2aefa05cc16796f',
-     armv7l: '797938b9feb0336b42848540b6fecb5f4474b78df1addc8cc2aefa05cc16796f',
-       i686: 'f6db4dc8a42150902b737c4a12258c3fd0ad6d939c14234ec90d99c5df889e07',
-     x86_64: 'c708bfe66744ccb19d7fcf463912a4b27c14fe854d9de83e49cb174baadf5d5e'
+    aarch64: '52d5520e27a6dae64e207ebcabf99bba1f6fe559e8b1c34473b4f9c4c302b32a',
+     armv7l: '52d5520e27a6dae64e207ebcabf99bba1f6fe559e8b1c34473b4f9c4c302b32a',
+     x86_64: '5569d6fadab22e7032d518f703c42b4fb574bcdd1f33ab1379c37aa374dc69d8'
   })
 
   depends_on 'apr_util'
   depends_on 'serf'
   depends_on 'sqlite'
 
-  def self.build
-    system './configure', '--disable-static', "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  configure_options '--disable-static --with-utf8proc=internal'
 end
