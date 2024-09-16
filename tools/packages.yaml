@@ -1800,6 +1800,11 @@ url: https://github.com/clvv/fasd/releases
 activity: none
 ---
 kind: url
+name: fastfetch
+url: https://github.com/fastfetch-cli/fastfetch/releases
+activity: high
+---
+kind: url
 name: faultstat
 url: https://kernel.ubuntu.com/~cking/tarballs/faultstat/
 activity: low
@@ -9774,6 +9779,11 @@ kind: url
 name: ytree
 url: https://www.han.de/~werner/ytree.html
 activity: high
+---
+kind: url
+name: yyjson
+url: https://github.com/ibireme/yyjson/releases
+activity: medium
 ---
 kind: url
 name: zathura
