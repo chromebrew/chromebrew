@@ -1,19 +1,19 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Thunar < Package
+class Thunar < Autotools
   description 'Thunar File Manager'
   homepage 'https://docs.xfce.org/xfce/thunar/Start'
-  version '4.17.3'
+  version '4.19.3'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'aarch64,armv7l,x86_64'
   source_url "https://archive.xfce.org/src/xfce/thunar/#{version.rpartition('.')[0]}/thunar-#{version}.tar.bz2"
-  source_sha256 '4580913d6c88003dbffc7e6d98a843ca0ae0fd1c5fa7b1e49fef565f33c7bea7'
-  binary_compression 'tpxz'
+  source_sha256 '9a7876352e8a54dd5a52c64affb54e7c8582e64dd569d9fe43af5835d9485b37'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4cd11110afd9b2b55ce2c167a494e95fd49e5b44ecece194e2561ea5e9b93c19',
-     armv7l: '4cd11110afd9b2b55ce2c167a494e95fd49e5b44ecece194e2561ea5e9b93c19',
-     x86_64: 'f567c97ed456b27374b465283081605bb70d6b4a7ff84851580c45891f02945c'
+    aarch64: '9c0b8d344e3bc98aabd00a82b610fab3770c9012ceafc8891fb59fed239da7fa',
+     armv7l: '9c0b8d344e3bc98aabd00a82b610fab3770c9012ceafc8891fb59fed239da7fa',
+     x86_64: 'fed5d6d825cd3184d85eb831000cb98124e61a53d7c51ee6ffe074b07cca9d39'
   })
 
   depends_on 'exo'
@@ -26,21 +26,12 @@ class Thunar < Package
   depends_on 'xdg_base'
   depends_on 'wayland'
 
-  def self.build
-    system <<~CONFIGURE
-      #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_CONFIGURE_OPTIONS} \
-      --enable-gio-unix \
-      --enable-gudev \
-      --enable-exif \
-      --enable-pcre \
-      --disable-static \
-      --enable-notifications
-    CONFIGURE
-    system 'make'
-  end
+  configure_options '--enable-gio-unix \
+    --enable-gudev \
+    --enable-exif \
+    --enable-pcre \
+    --disable-static \
+    --enable-notifications'
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end
