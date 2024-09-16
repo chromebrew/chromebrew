@@ -1,5 +1,4 @@
-require_relative '../const'
-require_relative '../package'
+require 'package'
 
 class CMake < Package
   property :cmake_build_extras, :cmake_build_relative_dir, :cmake_install_extras, :cmake_options, :pre_cmake_options

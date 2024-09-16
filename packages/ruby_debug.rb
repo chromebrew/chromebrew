@@ -9,5 +9,5 @@ class Ruby_debug < RUBY
   source_url 'SKIP'
 
   conflicts_ok
-  no_compile_needed
+  compile_needed
 end

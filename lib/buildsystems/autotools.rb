@@ -1,6 +1,5 @@
 require 'fileutils'
-require_relative '../const'
-require_relative '../package'
+require 'package'
 
 class Autotools < Package
   property :configure_options, :pre_configure_options, :configure_build_extras, :configure_install_extras

@@ -9,6 +9,5 @@ class Ruby_ruby_libversion < RUBY
   source_url 'SKIP'
 
   depends_on 'libversion' # R
-
-  no_compile_needed
+  compile_needed
 end

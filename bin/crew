@@ -1411,12 +1411,23 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
   abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if gitlab_token.nil?
   abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if gitlab_token_username.nil?
 
+  require_gem('tty-file')
+
   packages = pkg_name
   packages.strip!
 
   [packages].each do |package|
     pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+    require 'ostruct'
+    binhash = OpenStruct.new
+    binary_compression = 'gem' if @pkg.superclass == 'RUBY'
     %w[x86_64 i686 armv7l].each do |arch|
+      pkg_hash = @pkg.binary_sha256&.key?(arch.to_sym)
+      unless pkg_hash.blank?
+        puts "#{arch}=, #{@pkg.binary_sha256[arch.to_sym]}"
+        binhash.aarch64 = @pkg.binary_sha256[arch.to_sym] if arch == 'armv7l'
+        binhash.send "#{arch}=", @pkg.binary_sha256[arch.to_sym]
+      end
       release_dir = "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}"
       new_tarfile = if binary_compression.nil?
                       Dir["#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
@@ -1424,7 +1435,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
                       "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
                     end
       if new_tarfile.nil? || !File.file?(new_tarfile)
-        puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
+        puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression.nil? ? '(tar.xz|tar.zst)' : binary_compression} not found.\n".lightred
         next
       end
       if binary_compression.nil?
@@ -1458,8 +1469,16 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
 
       if `curl -sI #{new_url}`.lines.first.split[1] == '200'
         puts "\n#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
-        unless Package.agree_default_no('Do you want to overwrite the existing upload instead')
+        if Package.agree_default_no('Do you want to overwrite the existing upload instead')
+          puts "#{arch} = #{new_sha256}"
+          binhash.aarch64 = new_sha256 if arch == 'armv7l'
+          binhash.send "#{arch}=", new_sha256
+        else
           puts 'Will NOT overwite the existing upload.'.orange
+          upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
+          puts "#{arch} = #{upstream_sha256}"
+          binhash.aarch64 = upstream_sha256 if arch == 'armv7l'
+          binhash.send "#{arch}=", upstream_sha256
           next
         end
       end
@@ -1484,41 +1503,54 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         puts "#{output}. Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
         next
       end
-      old_sha256 = `grep -m 1 #{arch}: #{pkg_file} 2> /dev/null`.chomp
-      if old_sha256.empty?
-        unless File.readlines(pkg_file).grep(/binary_sha256/).any?
-          if CREW_VERBOSE
-            puts "sed -e '/binary_compression/ a\\
-\\
-\\ \\ binary_sha256({' -i #{pkg_file}"
-          end
-          system "sed -e '/binary_compression/ a\\
-\\
-\\ \\ binary_sha256({' -i #{pkg_file}"
-        end
-        puts "Adding binary_sha256 to #{pkg_file}..."
-        puts "#{arch}: '#{new_sha256}'"
-        unless new_sha256.empty?
-          update_sha256(pkg_file, arch, new_sha256)
-          update_sha256(pkg_file, 'aarch64', new_sha256) if arch.eql?('armv7l')
-        end
-      else
-        old_sha256 = old_sha256.split("'")[1]
-        if old_sha256 == new_sha256
-          puts "Skipping binary_sha256 update in #{pkg_file}..."
-        else
-          puts "Updating binary_sha256 in #{pkg_file}..."
-          puts "from: #{arch}: '#{old_sha256}'"
-          puts "  to: #{arch}: '#{new_sha256}'"
-          puts "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}" if CREW_VERBOSE
-          system "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}"
-        end
-      end
+      # old_sha256 = `grep -m 1 #{arch}: #{pkg_file} 2> /dev/null`.chomp
+      # if old_sha256.empty?
+      # unless File.readlines(pkg_file).grep(/binary_sha256/).any?
+      # if CREW_VERBOSE
+      # puts "sed -e '/binary_compression/ a\\
+      # \\
+      # \\ \\ binary_sha256({' -i #{pkg_file}"
+      # end
+      # system "sed -e '/binary_compression/ a\\
+      # \\
+      # \\ \\ binary_sha256({' -i #{pkg_file}"
+      # end
+      # puts "Adding binary_sha256 to #{pkg_file}..."
+      # puts "#{arch}: '#{new_sha256}'"
+      # unless new_sha256.empty?
+      # update_sha256(pkg_file, arch, new_sha256)
+      # update_sha256(pkg_file, 'aarch64', new_sha256) if arch.eql?('armv7l')
+      # end
+      # else
+      # old_sha256 = old_sha256.split("'")[1]
+      # if old_sha256 == new_sha256
+      # puts "Skipping binary_sha256 update in #{pkg_file}..."
+      # else
+      # puts "Updating binary_sha256 in #{pkg_file}..."
+      # puts "from: #{arch}: '#{old_sha256}'"
+      # puts "  to: #{arch}: '#{new_sha256}'"
+      # puts "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}" if CREW_VERBOSE
+      # system "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}"
+      # end
+      # end
     end
+    # binhash = OpenStruct.new
+    # binhash.aarch64 = 'hasharmv7l'
+    # binhash.armv7l = 'hasharmv7l'
+    # binhash.i686 = 'hashi686'
+    # binhash.x86_64 = 'hashx86_64'
+    binary_sha256json = JSON.pretty_generate(binhash.to_h)
+    binary_hash = "\n\n  binary_sha256(#{binary_sha256json})"
+    puts binary_hash.to_s.lightgreen
+    # Remove existing binary_sha256 block.
+    system "sed -i '/binary_sha256({/,/})/d' #{pkg_file}"
+    TTY::File.inject_into_file pkg_file, binary_hash, after: /binary_compression.*$/
+
     # Upload python wheels if we are dealing with a pip package, but only
     # if a gitlab token username is set. (The generic repo does not
     # require a gitlab token username.)
-    next unless Kernel.system "grep -q \"^require 'buildsystems/pip'\" #{pkg_file}"
+    next unless @pkg.superclass == 'Pip'
+    # Kernel.system "grep -q \"^require 'buildsystems/pip'\" #{pkg_file}"
     if gitlab_token_username.nil?
       puts "\nGITLAB_TOKEN_USERNAME environment variable not set, so generated python wheels will not be uploaded.\n".lightred
       next package

@@ -1,5 +1,4 @@
-require_relative '../const'
-require_relative '../package'
+require 'package'
 
 class Python < Package
   property :no_svem, :python_build_extras, :python_build_options, :python_build_relative_dir, :python_install_extras, :python_install_options

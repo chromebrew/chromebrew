@@ -1,5 +1,4 @@
-require_relative '../const'
-require_relative '../package'
+require 'package'
 
 class Meson < Package
   property :meson_options, :pre_meson_options, :meson_build_extras, :meson_install_extras

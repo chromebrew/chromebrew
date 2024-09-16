@@ -15,6 +15,5 @@ class Ruby_rubocop < RUBY
   depends_on 'xdg_base'
 
   conflicts_ok
-  no_compile_needed
   no_fhs
 end
