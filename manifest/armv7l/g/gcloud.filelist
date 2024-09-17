@@ -286,6 +286,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/cloudresourcemanager/projects_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/colab_enterprise/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/colab_enterprise/runtime_templates.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/colab_enterprise/runtimes.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/colab_enterprise/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/commerce_procurement/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/commerce_procurement/apis.py
@@ -860,6 +861,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/network_security/firewall_endpoint_associations/association_api.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/network_security/firewall_endpoints/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/network_security/firewall_endpoints/activation_api.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/network_security/intercept_deployment_groups/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/network_security/intercept_deployment_groups/api.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/network_security/mirroring_deployment_groups/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/network_security/mirroring_deployment_groups/api.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/network_security/mirroring_deployments/__init__.py
@@ -980,6 +983,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/scc/iac_remediation/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/scc/iac_remediation/const.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/scc/iac_remediation/findings.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/scc/iac_remediation/llm.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/scc/iac_remediation/terraform.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/scc/manage/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/scc/manage/etd/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/scc/manage/etd/clients.py
@@ -1707,6 +1712,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/regions/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/regions/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/reservations/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/reservations/blocks/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/reservations/blocks/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/reservations/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/reservations/resource_args.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/reservations/util.py
@@ -2617,6 +2624,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_security/endpoint_group_flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_security/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_security/hooks.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_security/intercept/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_security/intercept/deployment_group_flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_security/resource_args.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_security/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_security/sp_flags.py
@@ -4999,6 +5008,13 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/storage/v1/storage_v1_messages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/storage/v2/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/storage/v2/resources.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/storage/v2/storage_v2_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/storage/v2/storage_v2_messages.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/storagebatchoperations/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/storagebatchoperations/v1/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/storagebatchoperations/v1/resources.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/storagebatchoperations/v1/storagebatchoperations_v1_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/storagebatchoperations/v1/storagebatchoperations_v1_messages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/storageinsights/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/storageinsights/v1/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/storageinsights/v1/resources.py
@@ -6032,6 +6048,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1beta1/AuthzPolicyAuthzRuleToRequestOperationHeaderSet.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1beta1/AuthzPolicyCustomProvider.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1beta1/AuthzPolicyCustomProviderAuthzExtension.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1beta1/AuthzPolicyCustomProviderCloudIap.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1beta1/AuthzPolicyTarget.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1beta1/CertificateProviderInstance.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1beta1/ClientTlsPolicy.yaml
@@ -7601,6 +7618,8 @@
 /usr/local/share/gcloud/lib/surface/colab_enterprise/runtime_templates/list.py
 /usr/local/share/gcloud/lib/surface/colab_enterprise/runtime_templates/remove_iam_policy_binding.py
 /usr/local/share/gcloud/lib/surface/colab_enterprise/runtime_templates/set_iam_policy.py
+/usr/local/share/gcloud/lib/surface/colab_enterprise/runtimes/__init__.py
+/usr/local/share/gcloud/lib/surface/colab_enterprise/runtimes/assign.py
 /usr/local/share/gcloud/lib/surface/commerce_procurement/__init__.py
 /usr/local/share/gcloud/lib/surface/commerce_procurement/consumer/__init__.py
 /usr/local/share/gcloud/lib/surface/commerce_procurement/consumer/accounts/__init__.py
@@ -8302,6 +8321,9 @@
 /usr/local/share/gcloud/lib/surface/compute/regions/list.py
 /usr/local/share/gcloud/lib/surface/compute/reservations/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/reservations/add_iam_policy_binding.yaml
+/usr/local/share/gcloud/lib/surface/compute/reservations/blocks/__init__.py
+/usr/local/share/gcloud/lib/surface/compute/reservations/blocks/describe.py
+/usr/local/share/gcloud/lib/surface/compute/reservations/blocks/list.py
 /usr/local/share/gcloud/lib/surface/compute/reservations/create.py
 /usr/local/share/gcloud/lib/surface/compute/reservations/delete.yaml
 /usr/local/share/gcloud/lib/surface/compute/reservations/describe.yaml
@@ -9277,7 +9299,7 @@
 /usr/local/share/gcloud/lib/surface/database_migration/migration_jobs/describe.yaml
 /usr/local/share/gcloud/lib/surface/database_migration/migration_jobs/generate_ssh_script.yaml
 /usr/local/share/gcloud/lib/surface/database_migration/migration_jobs/list.yaml
-/usr/local/share/gcloud/lib/surface/database_migration/migration_jobs/promote.yaml
+/usr/local/share/gcloud/lib/surface/database_migration/migration_jobs/promote.py
 /usr/local/share/gcloud/lib/surface/database_migration/migration_jobs/restart.yaml
 /usr/local/share/gcloud/lib/surface/database_migration/migration_jobs/resume.yaml
 /usr/local/share/gcloud/lib/surface/database_migration/migration_jobs/start.yaml
@@ -9849,6 +9871,8 @@
 /usr/local/share/gcloud/lib/surface/developer_connect/connections/git_repository_links/create.yaml
 /usr/local/share/gcloud/lib/surface/developer_connect/connections/git_repository_links/delete.yaml
 /usr/local/share/gcloud/lib/surface/developer_connect/connections/git_repository_links/describe.yaml
+/usr/local/share/gcloud/lib/surface/developer_connect/connections/git_repository_links/fetch_read_token.yaml
+/usr/local/share/gcloud/lib/surface/developer_connect/connections/git_repository_links/fetch_read_write_token.yaml
 /usr/local/share/gcloud/lib/surface/developer_connect/connections/git_repository_links/list.yaml
 /usr/local/share/gcloud/lib/surface/developer_connect/connections/list.yaml
 /usr/local/share/gcloud/lib/surface/developer_connect/connections/update.yaml
@@ -11633,6 +11657,7 @@
 /usr/local/share/gcloud/lib/surface/netapp/volumes/replications/resume.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/replications/reverse.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/replications/stop.py
+/usr/local/share/gcloud/lib/surface/netapp/volumes/replications/sync.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/replications/update.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/revert.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/snapshots/__init__.py
@@ -11810,6 +11835,12 @@
 /usr/local/share/gcloud/lib/surface/network_security/gateway_security_policies/rules/export.yaml
 /usr/local/share/gcloud/lib/surface/network_security/gateway_security_policies/rules/import.yaml
 /usr/local/share/gcloud/lib/surface/network_security/gateway_security_policies/rules/list.yaml
+/usr/local/share/gcloud/lib/surface/network_security/intercept_deployment_groups/__init__.py
+/usr/local/share/gcloud/lib/surface/network_security/intercept_deployment_groups/create.py
+/usr/local/share/gcloud/lib/surface/network_security/intercept_deployment_groups/delete.py
+/usr/local/share/gcloud/lib/surface/network_security/intercept_deployment_groups/describe.py
+/usr/local/share/gcloud/lib/surface/network_security/intercept_deployment_groups/list.py
+/usr/local/share/gcloud/lib/surface/network_security/intercept_deployment_groups/update.py
 /usr/local/share/gcloud/lib/surface/network_security/mirroring_deployment_groups/__init__.py
 /usr/local/share/gcloud/lib/surface/network_security/mirroring_deployment_groups/create.py
 /usr/local/share/gcloud/lib/surface/network_security/mirroring_deployment_groups/delete.py
@@ -12031,6 +12062,9 @@
 /usr/local/share/gcloud/lib/surface/notebook_executor/__init__.py
 /usr/local/share/gcloud/lib/surface/notebook_executor/executions/__init__.py
 /usr/local/share/gcloud/lib/surface/notebook_executor/executions/create.py
+/usr/local/share/gcloud/lib/surface/notebook_executor/executions/delete.py
+/usr/local/share/gcloud/lib/surface/notebook_executor/executions/describe.py
+/usr/local/share/gcloud/lib/surface/notebook_executor/executions/list.py
 /usr/local/share/gcloud/lib/surface/notebooks/__init__.py
 /usr/local/share/gcloud/lib/surface/notebooks/environments/__init__.py
 /usr/local/share/gcloud/lib/surface/notebooks/environments/create.py
@@ -12120,6 +12154,9 @@
 /usr/local/share/gcloud/lib/surface/number_registry/registry_books/update.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/_init_extensions.py
+/usr/local/share/gcloud/lib/surface/oracle_database/autonomous_database_backups/__init__.py
+/usr/local/share/gcloud/lib/surface/oracle_database/autonomous_database_backups/_init_extensions.py
+/usr/local/share/gcloud/lib/surface/oracle_database/autonomous_database_backups/list.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_database_character_sets/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_database_character_sets/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_database_character_sets/_partials/_list_alpha.yaml
@@ -12129,11 +12166,15 @@
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_databases/_partials/_create_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_databases/_partials/_delete_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_databases/_partials/_describe_alpha.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/autonomous_databases/_partials/_generate_wallet_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_databases/_partials/_list_alpha.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/autonomous_databases/_partials/_restore_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_databases/create.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_databases/delete.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_databases/describe.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/autonomous_databases/generate_wallet.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_databases/list.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/autonomous_databases/restore.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_db_versions/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_db_versions/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_db_versions/_partials/_list_alpha.yaml
@@ -12825,6 +12866,8 @@
 /usr/local/share/gcloud/lib/surface/scc/findings/update_marks.py
 /usr/local/share/gcloud/lib/surface/scc/iac_remediation/__init__.py
 /usr/local/share/gcloud/lib/surface/scc/iac_remediation/create.py
+/usr/local/share/gcloud/lib/surface/scc/iac_validation_report_metrics/__init__.py
+/usr/local/share/gcloud/lib/surface/scc/iac_validation_report_metrics/describe.yaml
 /usr/local/share/gcloud/lib/surface/scc/iac_validation_reports/__init__.py
 /usr/local/share/gcloud/lib/surface/scc/iac_validation_reports/create.yaml
 /usr/local/share/gcloud/lib/surface/scc/iac_validation_reports/describe.yaml
@@ -12904,16 +12947,6 @@
 /usr/local/share/gcloud/lib/surface/scc/settings/services/modules/disable.py
 /usr/local/share/gcloud/lib/surface/scc/settings/services/modules/enable.py
 /usr/local/share/gcloud/lib/surface/scc/settings/services/modules/update.py
-/usr/local/share/gcloud/lib/surface/scc/slz_overwatch/__init__.py
-/usr/local/share/gcloud/lib/surface/scc/slz_overwatch/activate.py
-/usr/local/share/gcloud/lib/surface/scc/slz_overwatch/create.py
-/usr/local/share/gcloud/lib/surface/scc/slz_overwatch/delete.py
-/usr/local/share/gcloud/lib/surface/scc/slz_overwatch/enable.py
-/usr/local/share/gcloud/lib/surface/scc/slz_overwatch/get.py
-/usr/local/share/gcloud/lib/surface/scc/slz_overwatch/list.py
-/usr/local/share/gcloud/lib/surface/scc/slz_overwatch/operation.py
-/usr/local/share/gcloud/lib/surface/scc/slz_overwatch/suspend.py
-/usr/local/share/gcloud/lib/surface/scc/slz_overwatch/update.py
 /usr/local/share/gcloud/lib/surface/scc/sources/__init__.py
 /usr/local/share/gcloud/lib/surface/scc/sources/describe.yaml
 /usr/local/share/gcloud/lib/surface/scheduler/__init__.py
