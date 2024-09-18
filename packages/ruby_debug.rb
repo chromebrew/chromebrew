@@ -7,6 +7,7 @@ class Ruby_debug < RUBY
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'gem'
 
   conflicts_ok
   gem_compile_needed

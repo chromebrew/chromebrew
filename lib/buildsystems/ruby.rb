@@ -36,22 +36,23 @@ class RUBY < Package
   end
 
   def self.preinstall
-    @extract_dir = "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
+    # @extract_dir = "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
     @gem_binary_build_needed = check_gem_binary_build_needed(@gem_name, @gem_version) unless no_compile_needed? || gem_compile_needed?
   end
 
   def self.build
     return if no_compile_needed?
 
-    system "gem fetch #{@gem_name} --platform=ruby --version=#{@gem_ver}"
-    system "gem unpack #{@gem_name}-#{@gem_ver}.gem"
-    system "gem compile --strip --prune #{@gem_name}-#{@gem_ver}.gem"
+    Kernel.system "gem fetch #{@gem_name} --platform=ruby --version=#{@gem_ver}"
+    Kernel.system "gem unpack #{@gem_name}-#{@gem_ver}.gem"
+    Kernel.system "gem compile --strip --prune #{@gem_name}-#{@gem_ver}.gem"
   end
 
   def self.install
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"
     if !no_compile_needed? || !@gem_binary_build_needed.blank? || gem_compile_needed?
-      system "gem install -N --local #{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem --conservative"
+      FileUtils.cp "#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem", CREW_DEST_DIR if File.file?("#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem")
+      system "gem install -N --local #{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem --conservative"
     elsif Kernel.system "gem list -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
       system "gem update -N #{@gem_name} --conservative"
     else

@@ -649,7 +649,7 @@ def unpack(meta)
       when /\.gem$/i
         puts "Renaming #{@gem_name} binary gem for install..."
         gem_file = "#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem"
-        Fileutils.mv meta[:filename], gem_file
+        Fileutils.mv meta[:filename], File.join(@extract_dir, gem_file)
       end
     end
     if meta[:source]
@@ -672,7 +672,7 @@ def unpack(meta)
       target_dir = @extract_dir
     end
     # Remove tarball to save space.
-    FileUtils.rm_f meta[:filename], verbose: @fileutils_verbose
+    FileUtils.rm_f meta[:filename], verbose: @fileutils_verbose if File.file?(meta[:filename])
   end
   return File.join(CREW_BREW_DIR, target_dir)
 end
@@ -1252,11 +1252,13 @@ def install
   if @pkg.is_fake?
     # use CREW_DEST_DIR
     dest_dir = CREW_DEST_DIR
-  # elsif @pkg.name.start_with?('ruby_')
   elsif @pkg.superclass == 'RUBY'
     meta = download
     target_dir = unpack meta
-    dest_dir = Dir.exist?(target_dir) ? target_dir : CREW_DEST_DIR
+    puts "target_dir is #{target_dir}"
+    build_and_preconfigure target_dir
+    dest_dir = CREW_DEST_DIR
+    puts "dest_dir is #{dest_dir}"
   else
     meta = download
     target_dir = unpack meta
@@ -1302,7 +1304,9 @@ def install
     # perform install process
     # if @pkg.name.start_with?('ruby_')
     if @pkg.superclass == 'RUBY'
-      @pkg.install
+      Dir.chdir(target_dir) do
+        @pkg.install
+      end
     else
       install_package dest_dir
     end
@@ -1342,9 +1346,7 @@ def resolve_dependencies_and_build
       post_install
     end
     search origin, silent: true
-    binding.pry
     build_package CREW_LOCAL_BUILD_DIR
-    binding.pry
   rescue InstallError => e
     abort "#{@pkg.name} failed to build: #{e}".lightred
   ensure
@@ -1380,15 +1382,14 @@ def build_package(crew_archive_dest)
 
   # build package from filelist, dlist and binary files in CREW_DEST_DIR
   puts 'Archiving...'
-  archive_package crew_archive_dest
+  archive_package(crew_archive_dest)
 end
 
 def archive_package(crew_archive_dest)
-  if @pkg.superclass == 'RUBY'
-    puts "Renaming #{@gem_name} gem for install..."
-    gem_file = "#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem"
+  if @pkg.superclass.to_s == 'RUBY'
+    gem_file = "#{@pkg.gem_name}-#{@pkg.gem_ver}-#{GEM_ARCH}.gem"
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.gem"
-    FileUtils.mv gem_file, File.join(crew_archive_dest, pkg_name)
+    FileUtils.mv File.join(CREW_DEST_DIR, gem_file), File.join(crew_archive_dest, pkg_name)
   # Only use zstd if it is available.
   elsif @pkg.no_zstd? || !Kernel.system('which zstd', %i[out err] => File::NULL)
     puts 'Using xz to compress package. This may take some time.'.lightblue

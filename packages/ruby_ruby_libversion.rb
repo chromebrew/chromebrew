@@ -7,6 +7,7 @@ class Ruby_ruby_libversion < RUBY
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'gem'
 
   depends_on 'libversion' # R
   gem_compile_needed
