@@ -470,7 +470,7 @@ def download
     next if @pkg.no_source_build? && !@pkg.in_upgrade && !@pkg.in_install
     case File.basename(filename)
     # Sources that download with our internal downloader
-    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
+    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i, /\.gem$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
         puts "Looking for #{@pkg.name} archive in cache".orange if CREW_VERBOSE
@@ -646,6 +646,10 @@ def unpack(meta)
         puts "Unpacking 'AppImage' archive, this may take a while..."
         FileUtils.chmod 0o755, meta[:filename], verbose: @fileutils_verbose
         system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
+      when /\.gem$/i
+        puts "Renaming #{@gem_name} binary gem for install..."
+        gem_file = "#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem"
+        Fileutils.mv meta[:filename], gem_file
       end
     end
     if meta[:source]
@@ -675,7 +679,9 @@ end
 
 def build_and_preconfigure(target_dir)
   Dir.chdir target_dir do
-    unless @pkg.no_compile_needed?
+    if @pkg.gem_compile_needed?
+      puts 'Building binary gem...'
+    elsif !@pkg.no_compile_needed?
       puts 'Building from source, this may take a while...'
 
       # Load musl options only if package is targeted at the musl toolchain
@@ -1236,16 +1242,21 @@ end
 
 def install
   @pkg.in_install = true
-  if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name) && !@pkg.name.start_with?('ruby_')
+  if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name) && !@pkg.superclass == 'RUBY'
     puts "Package #{@pkg.name} already installed, skipping...".lightgreen
     return
   end
 
   install_start_time = Time.now.to_i
 
-  if @pkg.is_fake? || @pkg.name.start_with?('ruby_')
+  if @pkg.is_fake?
     # use CREW_DEST_DIR
     dest_dir = CREW_DEST_DIR
+  # elsif @pkg.name.start_with?('ruby_')
+  elsif @pkg.superclass == 'RUBY'
+    meta = download
+    target_dir = unpack meta
+    dest_dir = Dir.exist?(target_dir) ? target_dir : CREW_DEST_DIR
   else
     meta = download
     target_dir = unpack meta
@@ -1289,7 +1300,8 @@ def install
     pre_install dest_dir
 
     # perform install process
-    if @pkg.name.start_with?('ruby_')
+    # if @pkg.name.start_with?('ruby_')
+    if @pkg.superclass == 'RUBY'
       @pkg.install
     else
       install_package dest_dir
@@ -1330,7 +1342,9 @@ def resolve_dependencies_and_build
       post_install
     end
     search origin, silent: true
+    binding.pry
     build_package CREW_LOCAL_BUILD_DIR
+    binding.pry
   rescue InstallError => e
     abort "#{@pkg.name} failed to build: #{e}".lightred
   ensure
@@ -1340,20 +1354,21 @@ def resolve_dependencies_and_build
       FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest", verbose: @fileutils_verbose # this is a little ugly, feel free to find a better way
     end
   end
-  puts "#{@pkg.name} is built!".lightgreen
+  puts "#{@pkg.name.capitalize} is built!".lightgreen
   @resolve_dependencies_and_build = 0
 end
 
 def build_package(crew_archive_dest)
-  # download source codes and unpack it
+  # Download source code and unpack it.
   meta = download
   target_dir = unpack meta
 
-  # build from source and place binaries at CREW_DEST_DIR
+  # Build from source and place binaries in CREW_DEST_DIR.
   build_and_preconfigure target_dir
 
-  # call check method here.  this check method is called by this function only,
-  # therefore it is possible place time consuming tests in the check method.
+  # Call check method here. This check method is called by this function
+  # only, therefore it is possible to place time consuming tests in the
+  # check method.
   if Dir.exist? target_dir
     Dir.chdir target_dir do
       @pkg.check
@@ -1361,7 +1376,7 @@ def build_package(crew_archive_dest)
   end
 
   # prepare filelist and dlist at CREW_DEST_DIR
-  prepare_package CREW_DEST_DIR
+  prepare_package CREW_DEST_DIR unless @pkg.superclass == 'RUBY'
 
   # build package from filelist, dlist and binary files in CREW_DEST_DIR
   puts 'Archiving...'
@@ -1369,8 +1384,13 @@ def build_package(crew_archive_dest)
 end
 
 def archive_package(crew_archive_dest)
+  if @pkg.superclass == 'RUBY'
+    puts "Renaming #{@gem_name} gem for install..."
+    gem_file = "#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem"
+    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.gem"
+    FileUtils.mv gem_file, File.join(crew_archive_dest, pkg_name)
   # Only use zstd if it is available.
-  if @pkg.no_zstd? || !Kernel.system('which zstd', %i[out err] => File::NULL)
+  elsif @pkg.no_zstd? || !Kernel.system('which zstd', %i[out err] => File::NULL)
     puts 'Using xz to compress package. This may take some time.'.lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
@@ -1656,7 +1676,10 @@ def build_command(args)
     # Process preflight block to see if package should be built
     pre_flight
 
-    if !@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && (@pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP') && !@pkg.no_compile_needed?
+    crewlog "!@pkg.is_fake? #{!@pkg.is_fake?} && PackageUtils.compatible?(@pkg) #{PackageUtils.compatible?(@pkg)} && @pkg.source?(ARCH): #{@pkg.source?(ARCH)}"
+    crewlog "(@pkg.no_source_build? #{@pkg.no_source_build?} || @pkg.source_url.to_s.upcase != 'SKIP' #{@pkg.source_url.to_s.upcase != 'SKIP'})"
+    crewlog "!@pkg.no_compile_needed? #{!@pkg.no_compile_needed?} && @pkg.gem_compile_needed? #{@pkg.gem_compile_needed?}"
+    if !@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && (@pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP') && !@pkg.no_compile_needed? && @pkg.gem_compile_needed?
       resolve_dependencies_and_build
     else
       puts 'Unable to build a fake package. Skipping build.'.lightred if @pkg.is_fake?
