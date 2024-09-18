@@ -1411,23 +1411,20 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
   abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if gitlab_token.nil?
   abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if gitlab_token_username.nil?
 
-  require_gem('tty-file')
-
   packages = pkg_name
   packages.strip!
 
   [packages].each do |package|
     pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
-    require 'ostruct'
-    binhash = OpenStruct.new
+    binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
+    # The following is used to figure out where a non-standard
+    # binary_sha256 section might be, such as in a gcc_lib file.
+    starting_binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
     binary_compression = 'gem' if @pkg.superclass == 'RUBY'
     %w[x86_64 i686 armv7l].each do |arch|
-      pkg_hash = @pkg.binary_sha256&.key?(arch.to_sym)
-      unless pkg_hash.blank?
-        puts "#{arch}=, #{@pkg.binary_sha256[arch.to_sym]}"
-        binhash.aarch64 = @pkg.binary_sha256[arch.to_sym] if arch == 'armv7l'
-        binhash.send "#{arch}=", @pkg.binary_sha256[arch.to_sym]
-      end
+      # Load existing binary_sha256 hash from the package file.
+      binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
+      starting_binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
       release_dir = "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}"
       new_tarfile = if binary_compression.nil?
                       Dir["#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
@@ -1440,22 +1437,28 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       end
       if binary_compression.nil?
         ext = File.extname(new_tarfile)
-        puts "Setting binary compression in #{pkg_file}..."
+        binary_compression = @pkg.superclass == 'RUBY' ? 'gem' : "tar#{ext}"
+        binary_compression_line = "  binary_compression '#{binary_compression}'"
+        puts "Setting binary compression in #{pkg_file} to '#{binary_compression}'..."
         # Add binary compression setting, and add the line if it doesn't exist.
-        if File.read(pkg_file).include?('binary_compression')
-          puts "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkg_file}" if CREW_VERBOSE
-          system "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkg_file}"
-        elsif File.read(pkg_file).include?('source_sha256')
-          puts "sed -i \"/source_sha256/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if CREW_VERBOSE
-          system "sed -i \"/source_sha256/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
-        elsif File.read(pkg_file).include?('git_hashtag')
-          puts "sed -i \"/git_hashtag/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if CREW_VERBOSE
-          system "sed -i \"/git_hashtag/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
-        elsif File.read(pkg_file).include?('source_url')
-          puts "sed -i \"/source_url/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if CREW_VERBOSE
-          system "sed -i \"/source_url/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
+        file = File.read(pkg_file)
+        bc_re = /^\ \ binary_compression.*/
+        source_re = /^\ \ source_sha256.*/
+        git_hashtag_re = /^\ \ git_hashtag.*/
+        source_url_re = /^\ \ source_url.*/
+        if file.match(bc_re)
+          File.write(pkg_file, file.gsub(bc_re, binary_compression_line))
+        elsif file.match(source_re)
+          source_sha256_bc_line = "#{file.match(source_re)}\n#{binary_compression_line}"
+          File.write(pkg_file, file.gsub(source_re, source_sha256_bc_line))
+        elsif file.match(git_hashtag_re)
+          git_hashtag_bc_line = "#{file.match(git_hashtag_re)}\n#{binary_compression_line}"
+          File.write(pkg_file, file.gsub(git_hashtag_re, git_hashtag_bc_line))
+        elsif file.match(source_url_re)
+          source_url_bc_line = "#{file.match(source_url_re)}\n#{binary_compression_line}"
+          File.write(pkg_file, file.gsub(source_url_re, source_url_bc_line))
         else
-          puts "Unable to tell where to add \"binary_compression 'tar#{ext}'\" to #{pkg_file}. Please add it and manually.".lightblue
+          puts "Unable to tell where to add \"#{binary_compression_line}\" to #{pkg_file}. Please add it and manually.".lightblue
         end
       end
       puts "Package: #{package}, Arch: #{arch}".yellow
@@ -1470,17 +1473,18 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       if `curl -sI #{new_url}`.lines.first.split[1] == '200'
         puts "\n#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
         if Package.agree_default_no('Do you want to overwrite the existing upload instead')
-          puts "#{arch} = #{new_sha256}"
-          binhash.aarch64 = new_sha256 if arch == 'armv7l'
-          binhash.send "#{arch}=", new_sha256
+          crewlog "#{arch} = #{new_sha256}"
+          binary_sha256_hash[arch.to_sym] = new_sha256
         else
           puts 'Will NOT overwite the existing upload.'.orange
           upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
-          puts "#{arch} = #{upstream_sha256}"
-          binhash.aarch64 = upstream_sha256 if arch == 'armv7l'
-          binhash.send "#{arch}=", upstream_sha256
+          crewlog "#{arch} = #{upstream_sha256}"
+          binary_sha256_hash[arch.to_sym] = upstream_sha256
           next
         end
+      else
+        crewlog "#{arch} = #{new_sha256}"
+        binary_sha256_hash[arch.to_sym] = new_sha256
       end
 
       puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
@@ -1503,54 +1507,43 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         puts "#{output}. Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
         next
       end
-      # old_sha256 = `grep -m 1 #{arch}: #{pkg_file} 2> /dev/null`.chomp
-      # if old_sha256.empty?
-      # unless File.readlines(pkg_file).grep(/binary_sha256/).any?
-      # if CREW_VERBOSE
-      # puts "sed -e '/binary_compression/ a\\
-      # \\
-      # \\ \\ binary_sha256({' -i #{pkg_file}"
-      # end
-      # system "sed -e '/binary_compression/ a\\
-      # \\
-      # \\ \\ binary_sha256({' -i #{pkg_file}"
-      # end
-      # puts "Adding binary_sha256 to #{pkg_file}..."
-      # puts "#{arch}: '#{new_sha256}'"
-      # unless new_sha256.empty?
-      # update_sha256(pkg_file, arch, new_sha256)
-      # update_sha256(pkg_file, 'aarch64', new_sha256) if arch.eql?('armv7l')
-      # end
-      # else
-      # old_sha256 = old_sha256.split("'")[1]
-      # if old_sha256 == new_sha256
-      # puts "Skipping binary_sha256 update in #{pkg_file}..."
-      # else
-      # puts "Updating binary_sha256 in #{pkg_file}..."
-      # puts "from: #{arch}: '#{old_sha256}'"
-      # puts "  to: #{arch}: '#{new_sha256}'"
-      # puts "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}" if CREW_VERBOSE
-      # system "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}"
-      # end
-      # end
     end
-    # binhash = OpenStruct.new
-    # binhash.aarch64 = 'hasharmv7l'
-    # binhash.armv7l = 'hasharmv7l'
-    # binhash.i686 = 'hashi686'
-    # binhash.x86_64 = 'hashx86_64'
-    binary_sha256json = JSON.pretty_generate(binhash.to_h)
-    binary_hash = "\n\n  binary_sha256(#{binary_sha256json})"
-    puts binary_hash.to_s.lightgreen
-    # Remove existing binary_sha256 block.
-    system "sed -i '/binary_sha256({/,/})/d' #{pkg_file}"
-    TTY::File.inject_into_file pkg_file, binary_hash, after: /binary_compression.*$/
+    binary_sha256_block = ''
+    binary_sha256_block << "\n  binary_sha256({\n"
+    unless binary_sha256_hash[:armv7l].nil?
+      binary_sha256_block << "    aarch64: '#{binary_sha256_hash[:armv7l]}',\n"
+      binary_sha256_block << "     armv7l: '#{binary_sha256_hash[:armv7l]}'"
+      binary_sha256_block << if binary_sha256_hash[:i686].nil? && binary_sha256_hash[:x86_64].nil?
+                               "\n"
+                             else
+                               ",\n"
+                             end
+    end
+    unless binary_sha256_hash[:i686].nil?
+      binary_sha256_block << "       i686: '#{binary_sha256_hash[:i686]}'"
+      binary_sha256_block << if binary_sha256_hash[:x86_64].nil?
+                               "\n"
+                             else
+                               ",\n"
+                             end
+    end
+    binary_sha256_block << "     x86_64: '#{binary_sha256_hash[:x86_64]}'\n" unless binary_sha256_hash[:x86_64].nil?
+    binary_sha256_block << '  })'
+    # Replace existing binary_sha256 block (found by looking for the old hash), otherwise add it.
+    binary_sha256_block_re = /\n^\s*(binary_sha256\(\{)(((?!binary_sha256).)*)#{starting_binary_sha256_hash.compact.values.join('.*')}(((?!\}\)).)*)\}\)/m
+    file = File.read(pkg_file)
+    if file.match(binary_sha256_block_re)
+      File.write(pkg_file, file.gsub(binary_sha256_block_re, "\n#{binary_sha256_block}"))
+    else
+      bc_re = /^\ \ binary_compression.*/
+      binary_sha256_block_with_bc = "#{file.match(bc_re)}\n#{binary_sha256_block}"
+      File.write(pkg_file, file.gsub(bc_re, binary_sha256_block_with_bc))
+    end
 
     # Upload python wheels if we are dealing with a pip package, but only
     # if a gitlab token username is set. (The generic repo does not
     # require a gitlab token username.)
     next unless @pkg.superclass == 'Pip'
-    # Kernel.system "grep -q \"^require 'buildsystems/pip'\" #{pkg_file}"
     if gitlab_token_username.nil?
       puts "\nGITLAB_TOKEN_USERNAME environment variable not set, so generated python wheels will not be uploaded.\n".lightred
       next package
