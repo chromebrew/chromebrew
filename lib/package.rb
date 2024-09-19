@@ -1,6 +1,5 @@
 require 'English'
 require 'json'
-require 'timeout'
 require_relative 'const'
 require_relative 'color'
 require_relative 'package_helpers'
@@ -26,6 +25,7 @@ def require_gem(gem_name_and_require = nil, require_override = nil)
   require requires
 end
 require_gem 'highline'
+require_gem 'timeout'
 
 def agree_with_default(yes_or_no_question_msg, character = nil, default:)
   yes_or_no_question = yes_or_no_question_msg.lightpurple
@@ -68,22 +68,6 @@ class Package
     attr_accessor :build_from_source, :cached_build, :in_build, :in_install, :in_upgrade, :name
   end
 
-  def self.agree_to_remove(config_object = nil)
-    if File.file? config_object
-      identifier = 'file'
-    elsif File.directory? config_object
-      identifier = 'directory'
-    else
-      abort "Cannot identify #{config_object}.".lightred
-    end
-    if agree_with_default("Would you like to remove the config #{identifier}: #{config_object} (YES/no)?", true, default: 'y')
-      FileUtils.rm_rf config_object
-      puts "#{config_object} removed.".lightgreen
-    else
-      puts "#{config_object} saved.".lightgreen
-    end
-  end
-
   def self.agree_default_no(message = nil)
     Timeout.timeout(CREW_AGREE_TIMEOUT_SECONDS) do
       return agree_with_default("#{message} (yes/NO)?", true, default: 'n')
@@ -98,6 +82,22 @@ class Package
     end
   rescue Timeout::Error
     return true
+  end
+
+  def self.agree_to_remove(config_object = nil)
+    if File.file? config_object
+      identifier = 'file'
+    elsif File.directory? config_object
+      identifier = 'directory'
+    else
+      abort "Cannot identify #{config_object}.".lightred
+    end
+    if agree_default_no("Would you like to remove the config #{identifier}: #{config_object}")
+      puts "#{config_object} saved.".lightgreen
+    else
+      FileUtils.rm_rf config_object
+      puts "#{config_object} removed.".lightgreen
+    end
   end
 
   def self.load_package(pkg_file)
