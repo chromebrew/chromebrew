@@ -1663,7 +1663,7 @@ def build_command(args)
     crewlog "!@pkg.is_fake? #{!@pkg.is_fake?} && PackageUtils.compatible?(@pkg) #{PackageUtils.compatible?(@pkg)} && @pkg.source?(ARCH): #{@pkg.source?(ARCH)}"
     crewlog "(@pkg.no_source_build? #{@pkg.no_source_build?} || @pkg.source_url.to_s.upcase != 'SKIP' #{@pkg.source_url.to_s.upcase != 'SKIP'})"
     crewlog "!@pkg.no_compile_needed? #{!@pkg.no_compile_needed?} && @pkg.gem_compile_needed? #{@pkg.gem_compile_needed?}"
-    if !@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && (@pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP') && !@pkg.no_compile_needed? && @pkg.gem_compile_needed?
+    if (!@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && (@pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP') && !@pkg.no_compile_needed?) || @pkg.gem_compile_needed?
       resolve_dependencies_and_build
     else
       puts 'Unable to build a fake package. Skipping build.'.lightred if @pkg.is_fake?
