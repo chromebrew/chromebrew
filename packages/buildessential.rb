@@ -172,8 +172,6 @@ class Buildessential < Package
   depends_on 'ruby_concurrent_ruby'
   # Needed for irb
   depends_on 'ruby_debug'
-  # Needed to build binary gems
-  depends_on 'ruby_gem_compiler'
   # For crew debugging.
   depends_on 'ruby_pry_byebug'
   # Add rubocop for linting packages. (This also installs the
