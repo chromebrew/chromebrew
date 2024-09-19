@@ -1,5 +1,6 @@
 require 'English'
 require 'json'
+require 'timeout'
 require_relative 'const'
 require_relative 'color'
 require_relative 'package_helpers'
@@ -84,11 +85,19 @@ class Package
   end
 
   def self.agree_default_no(message = nil)
-    return agree_with_default("#{message} (yes/NO)?", true, default: 'n')
+    Timeout.timeout(CREW_AGREE_TIMEOUT_SECONDS) do
+      return agree_with_default("#{message} (yes/NO)?", true, default: 'n')
+    end
+  rescue Timeout::Error
+    return true
   end
 
   def self.agree_default_yes(message = nil)
-    return agree_with_default("#{message} (YES/no)?", true, default: 'y')
+    Timeout.timeout(CREW_AGREE_TIMEOUT_SECONDS) do
+      return agree_with_default("#{message} (YES/no)?", true, default: 'y')
+    end
+  rescue Timeout::Error
+    return true
   end
 
   def self.load_package(pkg_file)
