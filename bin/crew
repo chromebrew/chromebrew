@@ -1585,25 +1585,6 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
   end
 end
 
-def update_sha256(package, key, value)
-  case key
-  when 'aarch64'
-    leading_space = '\\ \\ \\ \\ '
-  when 'armv7l', 'x86_64'
-    leading_space = '\\ \\ \\ \\ \\ '
-  when 'i686'
-    leading_space = '\\ \\ \\ \\ \\ \\ \\ '
-  end
-  comma = key == 'x86_64' ? '\\n\\ \\ })' : ','
-  if File.readlines(package).grep(/#{key}:/).any?
-    puts "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}" if CREW_VERBOSE
-    system "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}"
-  else
-    puts "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}" if CREW_VERBOSE
-    system "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}"
-  end
-end
-
 def copy_package(pkg_name, prompt_msg = '')
   pkg_file = File.join(CREW_LOCAL_REPO_ROOT, 'packages', "#{pkg_name}.rb")
   # Use rubocop to sanitize package file, and let errors get flagged.
