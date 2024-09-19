@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# build_updated_packages version 1.1 (for Chromebrew)
+# build_updated_packages version 1.2 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -36,6 +36,7 @@ def require_gem(gem_name_and_require = nil, require_override = nil)
   require requires
 end
 require_gem 'highline'
+require_gem 'timeout'
 
 # The following is from lib/package_helpers.rb
 def property(*properties)
@@ -112,8 +113,12 @@ def agree_with_default(yes_or_no_question_msg, character = nil, default:)
   end
 end
 
-def agree_default_yes(message = nil)
-  return agree_with_default("#{message} (YES/no)?", true, default: 'y')
+def self.agree_default_yes(message = nil)
+  Timeout.timeout(CREW_AGREE_TIMEOUT_SECONDS) do
+    return agree_with_default("#{message} (YES/no)?", true, default: 'y')
+  end
+rescue Timeout::Error
+  return true
 end
 
 # Get all boolean properties from package.rb
