@@ -86,6 +86,8 @@ class Core < Package
   depends_on 'ruby_highline'
   # This contains the debugger config files.
   depends_on 'ruby_pry'
+  # crew check -V breaks without this.
+  depends_on 'ruby_ruby_libversion'
   depends_on 'slang'
   depends_on 'sqlite'
   depends_on 'uchardet'

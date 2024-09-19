@@ -179,8 +179,6 @@ class Buildessential < Package
   # Add rubocop for linting packages. (This also installs the
   # rubocop config file.)
   depends_on 'ruby_rubocop'
-  # crew check -V breaks without this.
-  depends_on 'ruby_ruby_libversion'
 
   # Code quality
   depends_on 'py3_pre_commit'
