@@ -16,4 +16,5 @@ class Ruby_rubocop < RUBY
 
   conflicts_ok
   no_fhs
+  no_compile_needed
 end
