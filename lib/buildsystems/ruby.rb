@@ -1,6 +1,6 @@
 require 'active_support/core_ext/object/blank'
+require 'color'
 require 'package'
-require_relative '../package_helpers'
 
 def check_gem_binary_build_needed(gem_name = nil, gem_ver = nil)
   puts "Checking to see if gem compile for #{gem_name} is needed..."
@@ -22,26 +22,24 @@ def set_vars(passed_name = nil, passed_version = nil)
   # For example, name 'Ruby_awesome' and version '1.0.0-ruby-3.3'.
   @gem_name = passed_name.sub('ruby_', '').sub('_', '-')
   @gem_ver = passed_version.split('-').first.to_s
-  @pkg_ruby_ver = passed_version.split('ruby-').last.to_s
 end
 
 class RUBY < Package
-  property :gem_name, :gem_ver, :pkg_ruby_ver, :ruby_install_extras
+  property :gem_name, :gem_ver, :ruby_install_extras
 
   depends_on 'ruby'
 
   def self.preflight
     set_vars(name, version)
-    # crewlog "@gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, @pkg_ruby_ver: #{@pkg_ruby_ver}"
+    crewlog "@gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}"
   end
 
   def self.preinstall
-    # @extract_dir = "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
     @gem_binary_build_needed = check_gem_binary_build_needed(@gem_name, @gem_version) unless no_compile_needed? || gem_compile_needed?
   end
 
   def self.build
-    return if no_compile_needed?
+    return unless !no_compile_needed? || @gem_binary_build_needed
 
     Kernel.system "gem fetch #{@gem_name} --platform=ruby --version=#{@gem_ver}"
     Kernel.system "gem unpack #{@gem_name}-#{@gem_ver}.gem"
@@ -50,6 +48,7 @@ class RUBY < Package
 
   def self.install
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"
+    puts "#{@gem_name.capitalize} needs a binary gem built!".orange unless @gem_binary_build_needed.blank?
     if !no_compile_needed? || !@gem_binary_build_needed.blank? || gem_compile_needed?
       FileUtils.cp "#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem", CREW_DEST_DIR if File.file?("#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem")
       system "gem install -N --local #{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem --conservative"
