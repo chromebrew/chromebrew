@@ -470,7 +470,7 @@ def download
     next if @pkg.no_source_build? && !@pkg.in_upgrade && !@pkg.in_install
     case File.basename(filename)
     # Sources that download with our internal downloader
-    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
+    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i, /\.gem$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
         puts "Looking for #{@pkg.name} archive in cache".orange if CREW_VERBOSE
@@ -646,6 +646,10 @@ def unpack(meta)
         puts "Unpacking 'AppImage' archive, this may take a while..."
         FileUtils.chmod 0o755, meta[:filename], verbose: @fileutils_verbose
         system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
+      when /\.gem$/i
+        puts "Moving #{@pkg.gem_name} binary gem for install..."
+        gem_file = "#{@pkg.gem_name}-#{@pkg.gem_ver}-#{GEM_ARCH}.gem"
+        FileUtils.mv meta[:filename], File.join(@extract_dir, gem_file)
       end
     end
     if meta[:source]
@@ -668,14 +672,16 @@ def unpack(meta)
       target_dir = @extract_dir
     end
     # Remove tarball to save space.
-    FileUtils.rm_f meta[:filename], verbose: @fileutils_verbose
+    FileUtils.rm_f meta[:filename], verbose: @fileutils_verbose if File.file?(meta[:filename])
   end
   return File.join(CREW_BREW_DIR, target_dir)
 end
 
 def build_and_preconfigure(target_dir)
   Dir.chdir target_dir do
-    unless @pkg.no_compile_needed?
+    if @pkg.gem_compile_needed?
+      puts 'Building binary gem...'
+    elsif !@pkg.no_compile_needed?
       puts 'Building from source, this may take a while...'
 
       # Load musl options only if package is targeted at the musl toolchain
@@ -1236,15 +1242,25 @@ end
 
 def install
   @pkg.in_install = true
-  if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name) && !@pkg.name.start_with?('ruby_')
+  if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name) && !@pkg.superclass.to_s == 'RUBY'
     puts "Package #{@pkg.name} already installed, skipping...".lightgreen
     return
   end
 
   install_start_time = Time.now.to_i
 
-  if @pkg.is_fake? || @pkg.name.start_with?('ruby_')
+  if @pkg.is_fake?
     # use CREW_DEST_DIR
+    dest_dir = CREW_DEST_DIR
+  elsif @pkg.superclass.to_s == 'RUBY'
+    meta = download
+    target_dir = unpack meta
+    gem_file = "#{@pkg.gem_name}-#{@pkg.gem_ver}-#{GEM_ARCH}.gem"
+    if File.file?(File.join(target_dir, gem_file))
+      FileUtils.mv File.join(target_dir, gem_file), File.join(CREW_DEST_DIR, gem_file)
+    else
+      build_and_preconfigure target_dir
+    end
     dest_dir = CREW_DEST_DIR
   else
     meta = download
@@ -1289,8 +1305,10 @@ def install
     pre_install dest_dir
 
     # perform install process
-    if @pkg.name.start_with?('ruby_')
-      @pkg.install
+    if @pkg.superclass.to_s == 'RUBY'
+      Dir.chdir(target_dir) do
+        @pkg.install
+      end
     else
       install_package dest_dir
     end
@@ -1340,20 +1358,21 @@ def resolve_dependencies_and_build
       FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest", verbose: @fileutils_verbose # this is a little ugly, feel free to find a better way
     end
   end
-  puts "#{@pkg.name} is built!".lightgreen
+  puts "#{@pkg.name.capitalize} is built!".lightgreen
   @resolve_dependencies_and_build = 0
 end
 
 def build_package(crew_archive_dest)
-  # download source codes and unpack it
+  # Download source code and unpack it.
   meta = download
   target_dir = unpack meta
 
-  # build from source and place binaries at CREW_DEST_DIR
+  # Build from source and place binaries in CREW_DEST_DIR.
   build_and_preconfigure target_dir
 
-  # call check method here.  this check method is called by this function only,
-  # therefore it is possible place time consuming tests in the check method.
+  # Call check method here. This check method is called by this function
+  # only, therefore it is possible to place time consuming tests in the
+  # check method.
   if Dir.exist? target_dir
     Dir.chdir target_dir do
       @pkg.check
@@ -1361,16 +1380,20 @@ def build_package(crew_archive_dest)
   end
 
   # prepare filelist and dlist at CREW_DEST_DIR
-  prepare_package CREW_DEST_DIR
+  prepare_package CREW_DEST_DIR unless @pkg.superclass.to_s == 'RUBY'
 
   # build package from filelist, dlist and binary files in CREW_DEST_DIR
   puts 'Archiving...'
-  archive_package crew_archive_dest
+  archive_package(crew_archive_dest)
 end
 
 def archive_package(crew_archive_dest)
+  if @pkg.superclass.to_s == 'RUBY'
+    gem_file = "#{@pkg.gem_name}-#{@pkg.gem_ver}-#{GEM_ARCH}.gem"
+    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.gem"
+    FileUtils.mv File.join(CREW_DEST_DIR, gem_file), File.join(crew_archive_dest, pkg_name)
   # Only use zstd if it is available.
-  if @pkg.no_zstd? || !Kernel.system('which zstd', %i[out err] => File::NULL)
+  elsif @pkg.no_zstd? || !Kernel.system('which zstd', %i[out err] => File::NULL)
     puts 'Using xz to compress package. This may take some time.'.lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
@@ -1416,7 +1439,15 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
 
   [packages].each do |package|
     pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+    binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
+    # The following is used to figure out where a non-standard
+    # binary_sha256 section might be, such as in a gcc_lib file.
+    starting_binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
+    binary_compression = 'gem' if @pkg.superclass.to_s == 'RUBY'
     %w[x86_64 i686 armv7l].each do |arch|
+      # Load existing binary_sha256 hash from the package file.
+      binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
+      starting_binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
       release_dir = "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}"
       new_tarfile = if binary_compression.nil?
                       Dir["#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
@@ -1424,27 +1455,33 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
                       "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
                     end
       if new_tarfile.nil? || !File.file?(new_tarfile)
-        puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
+        puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression.nil? ? '(tar.xz|tar.zst)' : binary_compression} not found.\n".lightred
         next
       end
       if binary_compression.nil?
         ext = File.extname(new_tarfile)
-        puts "Setting binary compression in #{pkg_file}..."
+        binary_compression = @pkg.superclass.to_s == 'RUBY' ? 'gem' : "tar#{ext}"
+        binary_compression_line = "  binary_compression '#{binary_compression}'"
+        puts "Setting binary compression in #{pkg_file} to '#{binary_compression}'..."
         # Add binary compression setting, and add the line if it doesn't exist.
-        if File.read(pkg_file).include?('binary_compression')
-          puts "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkg_file}" if CREW_VERBOSE
-          system "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkg_file}"
-        elsif File.read(pkg_file).include?('source_sha256')
-          puts "sed -i \"/source_sha256/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if CREW_VERBOSE
-          system "sed -i \"/source_sha256/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
-        elsif File.read(pkg_file).include?('git_hashtag')
-          puts "sed -i \"/git_hashtag/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if CREW_VERBOSE
-          system "sed -i \"/git_hashtag/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
-        elsif File.read(pkg_file).include?('source_url')
-          puts "sed -i \"/source_url/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if CREW_VERBOSE
-          system "sed -i \"/source_url/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
+        file = File.read(pkg_file)
+        bc_re = /^\ \ binary_compression.*/
+        source_re = /^\ \ source_sha256.*/
+        git_hashtag_re = /^\ \ git_hashtag.*/
+        source_url_re = /^\ \ source_url.*/
+        if file.match(bc_re)
+          File.write(pkg_file, file.gsub(bc_re, binary_compression_line))
+        elsif file.match(source_re)
+          source_sha256_bc_line = "#{file.match(source_re)}\n#{binary_compression_line}"
+          File.write(pkg_file, file.gsub(source_re, source_sha256_bc_line))
+        elsif file.match(git_hashtag_re)
+          git_hashtag_bc_line = "#{file.match(git_hashtag_re)}\n#{binary_compression_line}"
+          File.write(pkg_file, file.gsub(git_hashtag_re, git_hashtag_bc_line))
+        elsif file.match(source_url_re)
+          source_url_bc_line = "#{file.match(source_url_re)}\n#{binary_compression_line}"
+          File.write(pkg_file, file.gsub(source_url_re, source_url_bc_line))
         else
-          puts "Unable to tell where to add \"binary_compression 'tar#{ext}'\" to #{pkg_file}. Please add it and manually.".lightblue
+          puts "Unable to tell where to add \"#{binary_compression_line}\" to #{pkg_file}. Please add it and manually.".lightblue
         end
       end
       puts "Package: #{package}, Arch: #{arch}".yellow
@@ -1458,10 +1495,19 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
 
       if `curl -sI #{new_url}`.lines.first.split[1] == '200'
         puts "\n#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
-        unless Package.agree_default_no('Do you want to overwrite the existing upload instead')
+        if Package.agree_default_no('Do you want to overwrite the existing upload instead')
+          crewlog "#{arch} = #{new_sha256}"
+          binary_sha256_hash[arch.to_sym] = new_sha256
+        else
           puts 'Will NOT overwite the existing upload.'.orange
+          upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
+          crewlog "#{arch} = #{upstream_sha256}"
+          binary_sha256_hash[arch.to_sym] = upstream_sha256
           next
         end
+      else
+        crewlog "#{arch} = #{new_sha256}"
+        binary_sha256_hash[arch.to_sym] = new_sha256
       end
 
       puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
@@ -1484,41 +1530,43 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         puts "#{output}. Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
         next
       end
-      old_sha256 = `grep -m 1 #{arch}: #{pkg_file} 2> /dev/null`.chomp
-      if old_sha256.empty?
-        unless File.readlines(pkg_file).grep(/binary_sha256/).any?
-          if CREW_VERBOSE
-            puts "sed -e '/binary_compression/ a\\
-\\
-\\ \\ binary_sha256({' -i #{pkg_file}"
-          end
-          system "sed -e '/binary_compression/ a\\
-\\
-\\ \\ binary_sha256({' -i #{pkg_file}"
-        end
-        puts "Adding binary_sha256 to #{pkg_file}..."
-        puts "#{arch}: '#{new_sha256}'"
-        unless new_sha256.empty?
-          update_sha256(pkg_file, arch, new_sha256)
-          update_sha256(pkg_file, 'aarch64', new_sha256) if arch.eql?('armv7l')
-        end
-      else
-        old_sha256 = old_sha256.split("'")[1]
-        if old_sha256 == new_sha256
-          puts "Skipping binary_sha256 update in #{pkg_file}..."
-        else
-          puts "Updating binary_sha256 in #{pkg_file}..."
-          puts "from: #{arch}: '#{old_sha256}'"
-          puts "  to: #{arch}: '#{new_sha256}'"
-          puts "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}" if CREW_VERBOSE
-          system "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}"
-        end
-      end
     end
+    binary_sha256_block = ''
+    binary_sha256_block << "\n  binary_sha256({\n"
+    unless binary_sha256_hash[:armv7l].nil?
+      binary_sha256_block << "    aarch64: '#{binary_sha256_hash[:armv7l]}',\n"
+      binary_sha256_block << "     armv7l: '#{binary_sha256_hash[:armv7l]}'"
+      binary_sha256_block << if binary_sha256_hash[:i686].nil? && binary_sha256_hash[:x86_64].nil?
+                               "\n"
+                             else
+                               ",\n"
+                             end
+    end
+    unless binary_sha256_hash[:i686].nil?
+      binary_sha256_block << "       i686: '#{binary_sha256_hash[:i686]}'"
+      binary_sha256_block << if binary_sha256_hash[:x86_64].nil?
+                               "\n"
+                             else
+                               ",\n"
+                             end
+    end
+    binary_sha256_block << "     x86_64: '#{binary_sha256_hash[:x86_64]}'\n" unless binary_sha256_hash[:x86_64].nil?
+    binary_sha256_block << '  })'
+    # Replace existing binary_sha256 block (found by looking for the old hash), otherwise add it.
+    binary_sha256_block_re = /\n^\s*(binary_sha256\(\{)(((?!binary_sha256).)*)#{starting_binary_sha256_hash.compact.values.join('.*')}(((?!\}\)).)*)\}\)/m
+    file = File.read(pkg_file)
+    if file.match(binary_sha256_block_re)
+      File.write(pkg_file, file.gsub(binary_sha256_block_re, "\n#{binary_sha256_block}"))
+    else
+      bc_re = /^\ \ binary_compression.*/
+      binary_sha256_block_with_bc = "#{file.match(bc_re)}\n#{binary_sha256_block}"
+      File.write(pkg_file, file.gsub(bc_re, binary_sha256_block_with_bc))
+    end
+
     # Upload python wheels if we are dealing with a pip package, but only
     # if a gitlab token username is set. (The generic repo does not
     # require a gitlab token username.)
-    next unless Kernel.system "grep -q \"^require 'buildsystems/pip'\" #{pkg_file}"
+    next unless @pkg.superclass.to_s == 'Pip'
     if gitlab_token_username.nil?
       puts "\nGITLAB_TOKEN_USERNAME environment variable not set, so generated python wheels will not be uploaded.\n".lightred
       next package
@@ -1534,25 +1582,6 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       system("twine upload -u #{gitlab_token_username} -p #{gitlab_token} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
       FileUtils.rm_f wheel
     end
-  end
-end
-
-def update_sha256(package, key, value)
-  case key
-  when 'aarch64'
-    leading_space = '\\ \\ \\ \\ '
-  when 'armv7l', 'x86_64'
-    leading_space = '\\ \\ \\ \\ \\ '
-  when 'i686'
-    leading_space = '\\ \\ \\ \\ \\ \\ \\ '
-  end
-  comma = key == 'x86_64' ? '\\n\\ \\ })' : ','
-  if File.readlines(package).grep(/#{key}:/).any?
-    puts "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}" if CREW_VERBOSE
-    system "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}"
-  else
-    puts "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}" if CREW_VERBOSE
-    system "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}"
   end
 end
 
@@ -1631,7 +1660,10 @@ def build_command(args)
     # Process preflight block to see if package should be built
     pre_flight
 
-    if !@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && (@pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP') && !@pkg.no_compile_needed?
+    crewlog "!@pkg.is_fake? #{!@pkg.is_fake?} && PackageUtils.compatible?(@pkg) #{PackageUtils.compatible?(@pkg)} && @pkg.source?(ARCH): #{@pkg.source?(ARCH)}"
+    crewlog "(@pkg.no_source_build? #{@pkg.no_source_build?} || @pkg.source_url.to_s.upcase != 'SKIP' #{@pkg.source_url.to_s.upcase != 'SKIP'})"
+    crewlog "!@pkg.no_compile_needed? #{!@pkg.no_compile_needed?} && @pkg.gem_compile_needed? #{@pkg.gem_compile_needed?}"
+    if !@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && (@pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP') && !@pkg.no_compile_needed? && @pkg.gem_compile_needed?
       resolve_dependencies_and_build
     else
       puts 'Unable to build a fake package. Skipping build.'.lightred if @pkg.is_fake?

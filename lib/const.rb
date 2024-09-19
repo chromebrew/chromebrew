@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.52.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.52.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -285,6 +285,15 @@ CREW_CMAKE_FNO_LTO_OPTIONS ||= <<~OPT.chomp
 OPT
 
 CREW_CMAKE_LIBSUFFIX_OPTIONS ||= "#{CREW_CMAKE_OPTIONS} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX}"
+
+GEM_ARCH ||= case ARCH
+             when 'x86_64'
+               'x86_64-linux'
+             when 'i686'
+               'x86-linux'
+             when 'aarch64', 'armv7l'
+               'armv8l-linux-eabihf'
+             end
 
 PY3_SETUP_BUILD_OPTIONS          ||= "--executable=#{CREW_PREFIX}/bin/python3"
 PY2_SETUP_BUILD_OPTIONS          ||= "--executable=#{CREW_PREFIX}/bin/python2"

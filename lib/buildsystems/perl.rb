@@ -1,5 +1,4 @@
-require_relative '../const'
-require_relative '../package'
+require 'package'
 
 class PERL < Package
   property :pre_perl_options, :perl_build_extras, :perl_install_extras

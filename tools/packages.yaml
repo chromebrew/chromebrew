@@ -7891,6 +7891,11 @@ url: https://github.com/docopt/docopt/releases
 activity: none
 ---
 kind: url
+name: ruby_gem_compiler
+url: https://github.com/luislavena/gem-compiler/releases
+activity: low
+---
+kind: url
 name: ruby_glib2
 url: https://rubygems.org/gems/glib2
 activity: medium

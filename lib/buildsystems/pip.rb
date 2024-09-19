@@ -1,8 +1,7 @@
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 require 'json'
-require_relative '../const'
-require_relative '../package'
+require 'package'
 
 class Pip < Package
   property :pip_install_extras, :pre_configure_options
@@ -40,7 +39,7 @@ class Pip < Package
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
     puts "Additional pre_configure_options being used: #{@pre_configure_options.nil? ? '<no pre_configure_options>' : @pre_configure_options}".orange
-    puts "#{@py_pkg.capitalize} is configured to install a pre-release version." if prerelease
+    puts "#{@py_pkg.capitalize} is configured to install a pre-release version." if prerelease?
     system "MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python -s -m pip install --ignore-installed -U \"#{@py_pkg}==#{@py_pkg_chromebrew_version}\" | grep -v 'Requirement already satisfied'", exception: false
 
     if @source_url == 'SKIP'
