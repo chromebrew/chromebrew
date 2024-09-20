@@ -172,6 +172,7 @@ updated_packages.each do |pkg|
   else
     check_builds = compatibility == 'all' ? %w[x86_64 armv7l i686] : compatibility.delete(',').split
     check_builds.delete('aarch64')
+    check_builds = %w[x86_64 armv7l i686] if (check_builds & %w[x86_64 armv7l i686]).nil?
     build = check_builds.dup
     check_builds.each do |arch|
       arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@version}_#{arch}/#{name}-#{@version}-chromeos-#{arch}.tar.zst"
