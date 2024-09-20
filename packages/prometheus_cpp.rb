@@ -5,7 +5,7 @@ class Prometheus_cpp < Package
   homepage 'https://github.com/jupp0r/prometheus-cpp/'
   version '0.12.1'
   license 'MIT'
-  compatibility 'i686,x86_64'
+  compatibility 'i686 x86_64'
   source_url 'https://github.com/jupp0r/prometheus-cpp/releases/download/v0.12.1/prometheus-cpp-with-submodules.tar.gz'
   source_sha256 'f116cee772df7bf23fc89fb71c13ad4420601e304a382d77da725da0d0dc4cac'
   binary_compression 'tar.xz'

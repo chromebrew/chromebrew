@@ -5,7 +5,7 @@ class Thunar < Autotools
   homepage 'https://docs.xfce.org/xfce/thunar/Start'
   version '4.19.3'
   license 'GPL-2+ and LGPL-2+'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.xfce.org/src/xfce/thunar/#{version.rpartition('.')[0]}/thunar-#{version}.tar.bz2"
   source_sha256 '9a7876352e8a54dd5a52c64affb54e7c8582e64dd569d9fe43af5835d9485b37'
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Vscodium < Package
   homepage 'https://vscodium.com/'
   version '1.92.2.24228'
   license 'MIT'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   case ARCH
   when 'aarch64', 'armv7l'
     source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-armhf-#{version}.tar.gz"

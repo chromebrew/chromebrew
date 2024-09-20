@@ -5,7 +5,7 @@ class Libgnome_keyring < Autotools
   homepage 'https://www.gnome.org'
   version '3.12.0'
   license 'GPL-2+ and LGPL-2+'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/libgnome-keyring/3.12/libgnome-keyring-3.12.0.tar.xz'
   source_sha256 'c4c178fbb05f72acc484d22ddb0568f7532c409b0a13e06513ff54b91e947783'
   binary_compression 'tar.xz'

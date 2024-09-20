@@ -5,7 +5,7 @@ class Snort < Package
   homepage 'https://www.snort.org/'
   version '2.9.20'
   license 'GPL-2'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.snort.org/downloads/snort/snort-2.9.20.tar.gz'
   source_sha256 '29400e13f53b1831e0b8b10ec1224a1cbaa6dc1533a5322a20dd80bb84b4981c'
   binary_compression 'tar.zst'

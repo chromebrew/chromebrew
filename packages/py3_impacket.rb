@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_impacket < Pip
   description 'Impacket provides network protocols constructors and dissectors.'
   homepage 'https://www.secureauth.com/labs/open-source-tools/impacket/'
-  version '0.11.0-py3.12'
+  version '0.12.0-py3.12'
   license 'Apache-2.0-with-impacket-modifications'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aa8591cf4bb65c1690c9e47d7d19443916697c073c3ab07f1993997ea112b604',
-     armv7l: 'aa8591cf4bb65c1690c9e47d7d19443916697c073c3ab07f1993997ea112b604',
-       i686: '8b7d70465846f4c0a0c84d338a32bcb9c6e1b00f67fe83bbe231b0e9b961ca8e',
-     x86_64: 'ea69014fbf63f98390a229dee574c0ff58d6ea209b24d32c11d8d0dec9b42869'
+    aarch64: '934f48a9f70caa18993c8c76447e1d73cdf4f985fa4e4ee68569c5eaf4b648bc',
+     armv7l: '934f48a9f70caa18993c8c76447e1d73cdf4f985fa4e4ee68569c5eaf4b648bc',
+       i686: 'c04bebbfe77b9f36d322a89a5000e7e169e332d4b05921607fa2d31b43b21077',
+     x86_64: '7c046d13fb35a460a96a142b1da980c2bdf0892d1e09b06af02bdbff5e7975d4'
   })
 
   depends_on 'py3_pycryptodomex'

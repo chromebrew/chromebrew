@@ -5,7 +5,7 @@ class Misctools < Package
   homepage 'https://www.hyperrealm.com/oss_misctools.shtml'
   version '2.6'
   license 'GPL-2'
-  compatibility 'i686,x86_64'
+  compatibility 'i686 x86_64'
   source_url 'http://www.hyperrealm.com/packages/misctools-2.6.tar.bz2'
   source_sha256 'b1f13bb3af52ffffddf45efd8c10f942a8c1548352b7878668fbbf27ffa68e1a'
   binary_compression 'tar.xz'
