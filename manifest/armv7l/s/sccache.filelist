@@ -1,1 +1,3 @@
 /usr/local/bin/sccache
+/usr/local/bin/sccache-dist
+/usr/local/etc/env.d/00-sccache

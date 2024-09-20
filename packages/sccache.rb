@@ -3,22 +3,33 @@ require 'package'
 class Sccache < Package
   description 'Shared Compilation Cache'
   homepage 'https://github.com/mozilla/sccache/'
-  version '0.8.0'
+  version '0.8.1'
   license 'Apache-2.0, Apache-2.0-with-LLVM-exceptions, BSD, BSD-2, Boost-1.0, ISC, MIT, Unlicense and ZLIB'
-  compatibility 'x86_64'
-  # See https://github.com/mozilla/sccache/issues/656 for non-x86_64 compatibility info.
+  compatibility 'all'
   source_url 'https://github.com/mozilla/sccache.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '0096deae23c77a2c0a97e70a8d2a64967ccd9c92be52a45c8b0169f9296e5b9d'
+    aarch64: '1a9117b14992c77ce612ac399f90616d49a3c592fae5a9b572c1ba81e1c22f5f',
+     armv7l: '1a9117b14992c77ce612ac399f90616d49a3c592fae5a9b572c1ba81e1c22f5f',
+       i686: 'a81a1abe8eeac861e2476a866b7dc5ff08fe2136648b728b6d5587b0ce31bff2',
+     x86_64: 'cd07df16f07b3052235b08bc5b20e7d5eb4a881bfef4d6b1fde39d93f8f25c07'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc_lib' # R
+  depends_on 'glibc' # R
   depends_on 'openssl' # R
   depends_on 'rust' => :build
+
+  print_source_bashrc
+
+  def self.patch
+    # Enable builds for non-x86_64.
+    # See https://github.com/mozilla/sccache/issues/656 for non-x86_64 compatibility info.
+    system "sed -i 's/all(target_os = \"linux\", target_arch = \"x86_64\")/target_os = \"linux\"/' src/bin/sccache-dist/main.rs"
+  end
 
   def self.build
     system "cargo fetch \
@@ -38,40 +49,26 @@ class Sccache < Package
       --path . \
       --root #{CREW_DEST_PREFIX} \
       --features all,dist-server,native-zlib"
-    File.write 'start_sccache', <<~START_SCCACHEEOF
-      #!/bin/bash
-      if [[ $(pgrep -wc sccache) > 1 ]]; then
-        # distccd is already running.
-        # Return or exit depending upon whether script was sourced.
-        (return 0 2>/dev/null) && return 0 || exit 0
-      fi
-      sccache --start-server
-    START_SCCACHEEOF
-    FileUtils.install 'start_sccache', "#{CREW_DEST_PREFIX}/bin/startsccache", mode: 0o755
     File.write 'sccache_env', <<~SCCACHEEOF
       # Sccache configuration
       SCCACHE_IGNORE_SERVER_IO_ERROR=1
+      SCCACHE_DIRECT=true
       RUSTC_WRAPPER=#{CREW_PREFIX}/bin/sccache
-      if [[ $PATH != *"ccache/bin"* ]]; then
-        PATH="#{CREW_LIB_PREFIX}/ccache/bin:$PATH"
+      if [[ -f /.dockerenv ]]; then
+        if [[ -d /output/ ]]; then
+          SCCACHE_DIR="/output/.sccache/$(uname -m)"
+          mkdir -p "${SCCACHE_DIR}"
+        fi
+        # scacche configuration is as per
+        # https://github.com/mozilla/sccache/blob/main/docs/Configuration.md
+        # The default sccache config is looked for at:
+        #  ~/.config/sccache/config
+        if [[ -f /output/.sccache/$(uname -m)-config ]]; then
+          SCCACHE_CONF="/output/.sccache/sccache-$(uname -m)-config"
+        fi
       fi
+      RUSTC_WRAPPER=#{CREW_PREFIX}/bin/sccache
     SCCACHEEOF
-    File.write 'stop_sccache', <<~STOP_SCCACHEEOF
-      #!/bin/bash
-      sccache --stop-server
-    STOP_SCCACHEEOF
-    FileUtils.install 'stop_sccache', "#{CREW_DEST_PREFIX}/bin/stopsccache", mode: 0o755
-    File.write 'restart_sccache', <<~RESTART_SCCACHEEOF
-      #!/bin/bash
-      sccache --stop-server
-      sccache --start-server
-    RESTART_SCCACHEEOF
-    FileUtils.install 'restart_sccache', "#{CREW_DEST_PREFIX}/bin/restartsccache", mode: 0o755
     FileUtils.install 'sccache_env', "#{CREW_DEST_PREFIX}/etc/env.d/00-sccache", mode: 0o644
-    # start sccache server from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
-    File.write 'bashd_sccache', <<~BASHDSCCACHE_EOF
-      [[ $(pgrep -wc sccache) > 1 ]] || source #{CREW_PREFIX}/bin/startscccache
-    BASHDSCCACHE_EOF
-    FileUtils.install 'bashd_sccache', "#{CREW_DEST_PREFIX}/etc/bash.d/sccache", mode: 0o644
   end
 end
