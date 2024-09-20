@@ -7,8 +7,11 @@
 # to build those binaries.
 #
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
-# Usage in root of cloned chromebrew repo:
-# tools/build_updated_packages.rb
+# Usage in root of cloned chromebrew repo with a new branch checked out:
+# tools/build_updated_packages.rb [--skip]
+# Pass '--skip' as an argument to avoid running the pip and gen update scripts.
+# This is useful if you have already run this (and thus the update scripts)
+# from another container for the same cloned repo.
 
 require_relative '../lib/color'
 require_relative '../lib/const'
