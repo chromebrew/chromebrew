@@ -157,6 +157,7 @@ pkg_update_arr = [
   { pkg_name: 'jsonc', pkg_rename: 'json_c', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'komodo', pkg_rename: nil, pkg_deprecated: true, comments: 'Abandoned upstream and no longer functional.' },
   { pkg_name: 'libaudiofile', pkg_rename: nil, pkg_deprecated: true, comments: 'Inactive upstream with applicable CVEs' },
+  { pkg_name: 'libclc', pkg_rename: nil, pkg_deprecated: true, comments: 'llvm*_lib provides this.' },
   { pkg_name: 'libcurl', pkg_rename: 'curl', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'libgpgerror', pkg_rename: 'libgpg_error', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libjpeg', pkg_rename: 'libjpeg_turbo', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
