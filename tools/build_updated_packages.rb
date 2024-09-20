@@ -175,7 +175,7 @@ updated_packages.each do |pkg|
     check_builds = %w[x86_64 armv7l i686] if (check_builds & %w[x86_64 armv7l i686]).nil?
     build = check_builds.dup
     check_builds.each do |arch|
-      arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@version}_#{arch}/#{name}-#{@version}-chromeos-#{arch}.tar.zst"
+      arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@version}_#{arch}/#{name}-#{@version}-chromeos-#{arch}.#{@binary_compression}"
       build.delete(arch) if `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
     end
     if build.empty?
@@ -184,9 +184,7 @@ updated_packages.each do |pkg|
     else
       puts "#{name.capitalize} #{@version} needs builds uploaded for: #{build.join(' ')}".lightblue
     end
-    if build.include?(ARCH) && agree_default_yes("\nWould you like to build #{name} #{@version}")
-      system "yes | crew build -f #{pkg}"
-      system "crew upload #{name}"
-    end
+    system "yes | crew build -f #{pkg}" if build.include?(ARCH) && !File.file?("release/#{ARCH}#{name}-#{@version}-chromeos-#{ARCH}.#{@binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@version}")
+    system "crew upload #{name}" if build.include?(ARCH) && File.file?("release/#{ARCH}#{name}-#{@version}-chromeos-#{ARCH}.#{@binary_compression}") && agree_default_yes("\nWould you like to upload #{name} #{@version}")
   end
 end
