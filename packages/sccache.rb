@@ -11,10 +11,10 @@ class Sccache < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1a9117b14992c77ce612ac399f90616d49a3c592fae5a9b572c1ba81e1c22f5f',
-     armv7l: '1a9117b14992c77ce612ac399f90616d49a3c592fae5a9b572c1ba81e1c22f5f',
-       i686: 'a81a1abe8eeac861e2476a866b7dc5ff08fe2136648b728b6d5587b0ce31bff2',
-     x86_64: 'cd07df16f07b3052235b08bc5b20e7d5eb4a881bfef4d6b1fde39d93f8f25c07'
+    aarch64: 'b58db6f682f36c42e2d5085540a0625f9379e2457abec3059a18fa875eb62358',
+     armv7l: 'b58db6f682f36c42e2d5085540a0625f9379e2457abec3059a18fa875eb62358',
+       i686: '3d30cc3f9aa6c6a6dc8153ac776c34d9be1a9a66f315c63e2d2407bb7ea96768',
+     x86_64: 'e769f368dca022e095867300959d37be6947be0cad1a66c7861dd21ce49fee60'
   })
 
   depends_on 'gcc_lib' # R
@@ -68,7 +68,22 @@ class Sccache < Package
         fi
       fi
       RUSTC_WRAPPER=#{CREW_PREFIX}/bin/sccache
+      # Set a unique port to use for SCCACHE
+      case $( uname -m ) in
+        i686)          SCCACHE_SERVER_PORT=4236;;
+        armv7l|armv8l) SCCACHE_SERVER_PORT=4246;;
+        aarch64)       SCCACHE_SERVER_PORT=4256;;
+        x86_64)        SCCACHE_SERVER_PORT=4266;;
+        *)             SCCACHE_SERVER_PORT=4276;;
+      esac
     SCCACHEEOF
     FileUtils.install 'sccache_env', "#{CREW_DEST_PREFIX}/etc/env.d/00-sccache", mode: 0o644
+    File.write 'bashd_sccache', <<~BASHDSCCACHE_EOF
+      # Start sccache if the sccache server for this architecture is not running.
+      if [[ $(pgrep -wc sccache) -lt 1 ]]; then
+        true &>/dev/null </dev/tcp/127.0.0.1/$SCCACHE_SERVER_PORT || sccache --start-server
+      fi
+    BASHDSCCACHE_EOF
+    FileUtils.install 'bashd_sccache', "#{CREW_DEST_PREFIX}/etc/bash.d/sccache", mode: 0o644
   end
 end
