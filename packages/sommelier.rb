@@ -3,7 +3,7 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20240607-llvm18'
+  version '20240607-llvm19'
   license 'BSD-Google'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
@@ -11,8 +11,8 @@ class Sommelier < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '299245574363952883e97d4ace5ce5b6bd090caf2e85c5475326d8da25c1cb0e',
-     armv7l: '299245574363952883e97d4ace5ce5b6bd090caf2e85c5475326d8da25c1cb0e',
+    aarch64: '69aed813ef2f7cbfc699fc7300edd5d2321cf0a0a9f921e9c5dba322d33a5bc6',
+     armv7l: '69aed813ef2f7cbfc699fc7300edd5d2321cf0a0a9f921e9c5dba322d33a5bc6',
      x86_64: 'f1e5d9b797321caf508695db95406b9d78c88f4c28015791771fceb2f6a3ab6b'
   })
 
@@ -24,8 +24,8 @@ class Sommelier < Package
   depends_on 'libxcvt'
   depends_on 'libxfixes' => :build
   depends_on 'libxkbcommon' # R
-  depends_on 'llvm18_dev' => :build
-  depends_on 'llvm18_lib' # R Note that this may need rebuilds for newer llvm versions.
+  depends_on 'llvm19_dev' => :build
+  depends_on 'llvm19_lib' # R Note that this may need rebuilds for newer llvm versions.
   depends_on 'mesa' # R
   depends_on 'pixman' # R
   depends_on 'procps' # for pgrep in wrapper script

@@ -4,7 +4,7 @@ class Llvm19_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'https://llvm.org/'
   version '19.1.0'
-  # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
+  # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, and openmp in tandem.
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
@@ -45,7 +45,7 @@ class Llvm19_build < Package
     @ARCH_CXX_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;compiler-rt;libclc;lld;lldb;polly;pstl'.freeze
+    LLVM_PROJECTS_TO_BUILD = 'bolt;clang;clang-tools-extra;compiler-rt;libclc;lld;lldb;polly;pstl'.freeze
   when 'i686'
     # LLVM_TARGETS_TO_BUILD = 'X86'.freeze
     # Because ld.lld: error: undefinler-rt;libc;libcxx;libcxxabi;libunwind;openmped symbol: __atomic_store
@@ -143,12 +143,7 @@ class Llvm19_build < Package
             -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
             -DCOMPILER_RT_BUILD_SANITIZERS=OFF \
             -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON \
-            -DLIBOMP_ENABLE_SHARED=ON \
-            -DLIBOMP_INSTALL_ALIASES=OFF \
-            -DLIBUNWIND_C_FLAGS='-fno-exceptions -funwind-tables' \
-            -DLIBUNWIND_CXX_FLAGS='-fno-exceptions -funwind-tables' \
-            -DLIBUNWIND_SUPPORTS_FNO_EXCEPTIONS_FLAG=ON \
-            -DLIBUNWIND_SUPPORTS_FUNWIND_TABLES_FLAG=ON \
+            -DLIBCLC_TARGETS_TO_BUILD='amdgcn--;amdgcn--amdhsa;r600--;nvptx--;nvptx64--;nvptx--nvidiacl;nvptx64--nvidiacl' \
             -DLLVM_BINUTILS_INCDIR='#{CREW_PREFIX}/include' \
             -DLLVM_BUILD_LLVM_DYLIB=ON \
             -DLLVM_CCACHE_BUILD=ON \
@@ -157,16 +152,12 @@ class Llvm19_build < Package
             -DLLVM_ENABLE_LTO=Thin \
             -DLLVM_ENABLE_PROJECTS='#{LLVM_PROJECTS_TO_BUILD}' \
             -DLLVM_ENABLE_RTTI=ON \
-            -DLLVM_ENABLE_RUNTIME=all \
-            -DLLVM_ENABLE_TERMINFO=ON \
             -DLLVM_INCLUDE_BENCHMARKS=OFF \
             -DLLVM_INSTALL_UTILS=ON \
             -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
             -DLLVM_LINK_LLVM_DYLIB=ON \
             -DLLVM_OPTIMIZED_TABLEGEN=ON \
             -DLLVM_TARGETS_TO_BUILD='#{LLVM_TARGETS_TO_BUILD}' \
-            -DOPENMP_ENABLE_LIBOMPTARGET=OFF \
-            -DPYTHON_EXECUTABLE=$(which python3) \
             -Wno-dev"
     end
     @counter = 1
