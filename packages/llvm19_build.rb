@@ -18,7 +18,7 @@ class Llvm19_build < Package
      x86_64: '2b0a28e7050c8d7c6427a18daa3b57a8397a0aa49640c6bde15471d9d74555b9'
   })
 
-  depends_on 'ccache' => :build
+  depends_on 'sccache' => :build
   depends_on 'elfutils' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
@@ -128,11 +128,11 @@ class Llvm19_build < Package
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_C_COMPILER=$(which clang) \
-            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_C_COMPILER_LAUNCHER=sccache \
             -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_C_FLAGS='#{@ARCH_C_LTO_FLAGS}' \
             -DCMAKE_CXX_COMPILER=$(which clang++) \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=sccache \
             -DCMAKE_CXX_FLAGS='#{@ARCH_CXX_LTO_FLAGS}' \
             -DCMAKE_EXE_LINKER_FLAGS='#{@ARCH_LTO_LDFLAGS}' \
             -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
@@ -144,9 +144,9 @@ class Llvm19_build < Package
             -DCOMPILER_RT_BUILD_SANITIZERS=OFF \
             -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON \
             -DLIBCLC_TARGETS_TO_BUILD='amdgcn--;amdgcn--amdhsa;r600--;nvptx--;nvptx64--;nvptx--nvidiacl;nvptx64--nvidiacl' \
+            -DLLDB_INCLUDE_TESTS=OFF \
             -DLLVM_BINUTILS_INCDIR='#{CREW_PREFIX}/include' \
             -DLLVM_BUILD_LLVM_DYLIB=ON \
-            -DLLVM_CCACHE_BUILD=ON \
             -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_TARGET} \
             -DLLVM_ENABLE_FFI=ON \
             -DLLVM_ENABLE_LTO=Thin \
