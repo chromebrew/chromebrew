@@ -8018,7 +8018,7 @@ activity: high
 kind: url
 name: sccache
 url: https://github.com/mozilla/sccache/releases
-activity: low
+activity: medium
 ---
 kind: url
 name: scdoc
