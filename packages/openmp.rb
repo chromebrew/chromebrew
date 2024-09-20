@@ -8,7 +8,7 @@ class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
   version '19.1.0'
-  # When upgrading llvm_build*, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
+  # When upgrading llvm_build*, be sure to upgrade llvm_lib*, llvm_dev*, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm19_build.version}".orange if version != Llvm19_build.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'

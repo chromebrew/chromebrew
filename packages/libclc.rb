@@ -16,7 +16,6 @@ class Libclc < Package
   git_hashtag Llvm19_build.git_hashtag.to_s
   binary_compression 'tar.zst'
 
-
   depends_on 'llvm19_dev' => :build
   depends_on 'python3' => :build
   depends_on 'spirv_llvm_translator' => :build
