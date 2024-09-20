@@ -108,7 +108,7 @@ CREW_NPROC ||= \
 
 # Set following as boolean if environment variables exist.
 # Timeout for agree questions in package.rb:
-CREW_AGREE_TIMEOUT_SECONDS           ||= ENV.fetch('CREW_AGREE_TIMEOUT_SECONDS', 10) unless defined?(CREW_AGREE_TIMEOUT_SECONDS)
+CREW_AGREE_TIMEOUT_SECONDS           ||= ENV.fetch('CREW_AGREE_TIMEOUT_SECONDS', 10).to_i unless defined?(CREW_AGREE_TIMEOUT_SECONDS)
 CREW_CACHE_ENABLED                   ||= ENV.fetch('CREW_CACHE_ENABLED', false) unless defined?(CREW_CACHE_ENABLED)
 CREW_CONFLICTS_ONLY_ADVISORY         ||= ENV.fetch('CREW_CONFLICTS_ONLY_ADVISORY', false) unless defined?(CREW_CONFLICTS_ONLY_ADVISORY)
 # or use conflicts_ok

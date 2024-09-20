@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# build_updated_packages version 1.2 (for Chromebrew)
+# build_updated_packages version 1.3 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -15,7 +15,9 @@ require_relative '../lib/const'
 
 abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV['GITLAB_TOKEN'].nil?
 abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if ENV['GITLAB_TOKEN_USERNAME'].nil?
+puts "Setting the CREW_AGREE_TIMEOUT_SECONDS environment variable to less than the default of #{CREW_AGREE_TIMEOUT_SECONDS} may speed this up...".orange if ENV['CREW_AGREE_TIMEOUT_SECONDS'].nil?
 
+SKIP_UPDATE_CHECKS = ARGV.include?('--skip')
 def require_gem(gem_name_and_require = nil, require_override = nil)
   # Allow only loading gems when needed.
   return if gem_name_and_require.nil?
@@ -131,10 +133,14 @@ package_properties = `sed -n '/^\ \ property/,/^$/p' lib/package.rb | sed 's/^\ 
 properties = "#{package_properties} #{buildsystem_properties}"
 property(properties.split)
 
-puts 'Checking for pip package version updates...'.orange
-load 'tools/update_python_pip_packages.rb'
-puts 'Checking for ruby gem package version updates...'.orange
-load 'tools/update_ruby_gem_packages.rb'
+if SKIP_UPDATE_CHECKS
+  puts 'Skipping pip and gem remote update checks.'.orange
+else
+  puts 'Checking for pip package version updates...'.orange
+  load 'tools/update_python_pip_packages.rb'
+  puts 'Checking for ruby gem package version updates...'.orange
+  load 'tools/update_ruby_gem_packages.rb'
+end
 changed_files = `git diff HEAD --name-only`.chomp.split
 updated_packages = changed_files.select { |c| c.include?('packages/') }
 
@@ -161,13 +167,12 @@ updated_packages.each do |pkg|
     puts "#{name.capitalize} #{@version} has no binaries and may not need them.".lightgreen
     next pkg
   else
-    build = compatibility == 'all' ? %w[x86_64 armv7l i686] : compatibility.split
-    build.each do |arch|
+    check_builds = compatibility == 'all' ? %w[x86_64 armv7l i686] : compatibility.split
+    check_builds.delete('aarch64')
+    build = check_builds.dup
+    check_builds.each do |arch|
       arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@version}_#{arch}/#{name}-#{@version}-chromeos-#{arch}.tar.zst"
-      if `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
-        build.delete(arch)
-        next
-      end
+      build.delete(arch) if `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
     end
     if build.empty?
       puts "No builds are needed for #{name} #{@version}.".lightgreen
