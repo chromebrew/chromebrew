@@ -1456,7 +1456,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
                     end
       if new_tarfile.nil? || !File.file?(new_tarfile)
         puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression.nil? ? '(tar.xz|tar.zst)' : binary_compression} not found.\n".lightred
-        next
+        next arch
       end
       if binary_compression.nil?
         ext = File.extname(new_tarfile)
@@ -1485,25 +1485,27 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         end
       end
       puts "Package: #{package}, Arch: #{arch}".yellow
-      puts 'Generating sha256sum ...'
+      puts
+      puts "\e[1A\e[KGenerating sha256sum ...\r".orange
       new_sha256 = Digest::SHA256.hexdigest(File.read(new_tarfile))
-      puts "Uploading #{new_tarfile} ..."
+      puts "Uploading #{new_tarfile} ...".orange if CREW_VERBOSE
       noname = new_tarfile.split("#{package}-").last
       new_version = noname.split('-chromeos').first
       new_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
       token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
 
       if `curl -sI #{new_url}`.lines.first.split[1] == '200'
-        puts "\n#{new_tarfile} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
+        puts "\n#{File.basename(new_tarfile)} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
         if Package.agree_default_no('Do you want to overwrite the existing upload instead')
+          puts "\e[1A\e[KOverwriting existing upload...\r".orange
           crewlog "#{arch} = #{new_sha256}"
           binary_sha256_hash[arch.to_sym] = new_sha256
         else
-          puts 'Will NOT overwite the existing upload.'.orange
+          puts "\e[1A\e[KWill NOT overwite the existing upload.\r".orange
           upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
           crewlog "#{arch} = #{upstream_sha256}"
           binary_sha256_hash[arch.to_sym] = upstream_sha256
-          next
+          next arch
         end
       else
         crewlog "#{arch} = #{new_sha256}"
@@ -1511,7 +1513,9 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       end
 
       puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
+      puts "\e[1A\e[KUploading...\r".orange
       output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
+      puts "\e[1A\e[KChecking upload...\r".orange
       if output.include?('201 Created')
         puts "curl -Ls #{new_url} | sha256sum" if CREW_VERBOSE
         upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
@@ -1531,6 +1535,9 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         next
       end
     end
+
+    # Generate new or replacement binary_sha256 block.
+    puts "\e[1A\e[KGenerating binary_sha256 block for package file...\r".orange
     binary_sha256_block = ''
     binary_sha256_block << "\n  binary_sha256({\n"
     unless binary_sha256_hash[:armv7l].nil?
@@ -1562,6 +1569,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       binary_sha256_block_with_bc = "#{file.match(bc_re)}\n#{binary_sha256_block}"
       File.write(pkg_file, file.gsub(bc_re, binary_sha256_block_with_bc))
     end
+    puts "\e[1A\e[KUploads complete for #{package}.\r".orange
 
     # Upload python wheels if we are dealing with a pip package, but only
     # if a gitlab token username is set. (The generic repo does not
