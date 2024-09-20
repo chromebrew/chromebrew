@@ -5,7 +5,7 @@ class Cage < Meson
   homepage 'https://www.hjdskes.nl/projects/cage/'
   version '0.1.5-eaeab71'
   license 'MIT'
-  compatibility 'aarch64, armv7l, x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/Hjdskes/cage.git'
   git_hashtag 'eaeab71ffa3ab5884df09c5664c00e368ca2585e'
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Sbcl < Package
   homepage 'http://www.sbcl.org/index.html'
   version '2.0.3'
   license 'MIT'
-  compatibility 'i686,x86_64'
+  compatibility 'i686 x86_64'
   source_url 'https://downloads.sourceforge.net/project/sbcl/sbcl/2.0.3/sbcl-2.0.3-source.tar.bz2'
   source_sha256 'b5543f123214b2023ff5fc32dfd00b6cfeabd92c8edb33ad208842c4fd642f00'
   binary_compression 'tar.xz'

@@ -5,7 +5,7 @@ class Mutter < Meson
   homepage 'https://wiki.gnome.org/Projects/Mutter'
   version '45.4'
   license 'GPL-2+'
-  compatibility 'aarch64,armv7l,x86_64' # No longer supported for i686 upstream
+  compatibility 'aarch64 armv7l x86_64' # No longer supported for i686 upstream
   source_url 'https://gitlab.gnome.org/GNOME/mutter.git'
   git_hashtag version
   binary_compression 'tar.zst'
