@@ -11,11 +11,12 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fda3893b8c800f6a2f2acc70e209d47ad01e4c84a6f5cfe7aba3612bd60c5430',
-     armv7l: 'fda3893b8c800f6a2f2acc70e209d47ad01e4c84a6f5cfe7aba3612bd60c5430',
-     x86_64: '3fb2c1f1dc8e79b9e9a8d8ba378b67e85ebb24dbd35a026654b254d807d3940e'
+    aarch64: '202a238369e66ec988cd42ab3f2834a5f054fc6427cc474896512042c28f7209',
+     armv7l: '202a238369e66ec988cd42ab3f2834a5f054fc6427cc474896512042c28f7209',
+     x86_64: '302d2c4d63ad0ca7840a37f7b885b216ea417b90a1dcf5f886ebb99895ee7410'
   })
 
+  depends_on 'elfutils' # R
   depends_on 'eudev' # R
   depends_on 'expat' # R
   depends_on 'gcc_dev' => :build
@@ -23,7 +24,7 @@ class Mesa < Meson
   depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glslang' => :build
-  # depends_on 'libclc' => :build # (This is provided by llvm19.)
+  depends_on 'libclc' => :build
   depends_on 'libdrm' # R
   depends_on 'libomxil_bellagio' => :build
   depends_on 'libunwind' # R
@@ -63,8 +64,9 @@ class Mesa < Meson
     -Dgles2=enabled \
     -Dglvnd=enabled \
     -Dglx=dri \
+    -Dintel-clc=enabled \
     -Dllvm=enabled \
-    -Dgallium-drivers='#{ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink' : 'v3d,freedreno,etnaviv,nouveau,svga,tegra,virgl,lima,panfrost,swrast,iris,zink'}' \
+    -Dgallium-drivers='#{ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,softpipe,llvmpipe,iris,crocus,zink' : 'v3d,freedreno,etnaviv,nouveau,svga,tegra,virgl,lima,panfrost,softpipe,llvmpipe,iris,zink'}' \
     -Dvulkan-drivers='#{ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'}' \
     -Dvideo-codecs='all'"
 

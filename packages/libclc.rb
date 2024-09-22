@@ -16,8 +16,15 @@ class Libclc < Package
   git_hashtag Llvm19_build.git_hashtag.to_s
   binary_compression 'tar.zst'
 
+  binary_sha256({
+    aarch64: '8c13728af3fd71ed5d28f268ebf499331f71123d61df625f3d24d67ccd812b7c',
+     armv7l: '8c13728af3fd71ed5d28f268ebf499331f71123d61df625f3d24d67ccd812b7c',
+     x86_64: 'f026b84d4b6169d13956b8ee4de019922343c2dfb0284c82634b8ddb7dca5c20'
+  })
+
   depends_on 'llvm19_dev' => :build
   depends_on 'python3' => :build
+  depends_on 'sccache' => :build
   depends_on 'spirv_llvm_translator' => :build
 
   no_env_options
@@ -52,16 +59,13 @@ class Libclc < Package
     system "cmake -B builddir -G Ninja libclc \
       #{@cmake_options.gsub('-DCMAKE_LINKER_TYPE=MOLD', '')} \
       -DCMAKE_C_COMPILER=$(which clang) \
+      -DCMAKE_C_COMPILER_LAUNCHER=sccache \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \
+      -DCMAKE_CXX_COMPILER_LAUNCHER=sccache \
       -DCMAKE_CXX_COMPILER_AR=$(which llvm-ar) \
       -DCMAKE_CXX_COMPILER_RANLIB=$(which llvm-ranlib) \
       -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
-      -DLIBOMP_ENABLE_SHARED=ON \
-      -DLIBOMP_INSTALL_ALIASES=OFF \
-      -DLLVM_INCLUDE_BENCHMARKS=OFF \
-      -DOPENMP_LIBDIR_SUFFIX=#{CREW_LIB_SUFFIX} \
-      -DPYTHON_EXECUTABLE=$(which python3) \
       -Wno-dev"
     system "#{CREW_NINJA} -C builddir"
   end

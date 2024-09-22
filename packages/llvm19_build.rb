@@ -12,21 +12,19 @@ class Llvm19_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6dfbe59d9b095106b686783fb220d65231500279702c7b011135a1ca60848a2c',
-     armv7l: '6dfbe59d9b095106b686783fb220d65231500279702c7b011135a1ca60848a2c',
-       i686: '4555d985d176b43a32629ffcbe0a73fa3a1be468429f640ce1d39fd6072234a7',
-     x86_64: '2b0a28e7050c8d7c6427a18daa3b57a8397a0aa49640c6bde15471d9d74555b9'
+    aarch64: '9b143d252be2ac91b0447c719247dcefe96e53a8e02d7480daebcedaf968f6c9',
+     armv7l: '9b143d252be2ac91b0447c719247dcefe96e53a8e02d7480daebcedaf968f6c9',
+       i686: '095f75e398d5c2edf313ae24afddbefa06b3082da0f9a5f1fd8b6546276e5b8e',
+     x86_64: 'aceb4e09bf3f50fdc009d6784e5d9a263c366077bf4b17c1784c1163b026879b'
   })
 
   depends_on 'sccache' => :build
-  depends_on 'elfutils' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libedit' # R
   depends_on 'libffi' # R
   depends_on 'libxml2' # R
   depends_on 'llvm19_dev' => :build
-  depends_on 'ncurses' # R
   depends_on 'ocaml' => :build
   depends_on 'py3_pygments' => :build
   depends_on 'py3_pyyaml' => :build
