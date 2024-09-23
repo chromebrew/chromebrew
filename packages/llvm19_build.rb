@@ -5,7 +5,7 @@ class Llvm19_build < Package
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
   version '19.1.0'
-  # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, and openmp in tandem.
+  # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'

@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_websockets < Pip
   description ' Library for building WebSocket servers and clients in Python'
   homepage 'https://websockets.readthedocs.io/'
-  version '13.0.1-py3.12'
+  version '13.1-py3.12'
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'eba73daa824783ddf36a2b226b3d3d4673e07f08fd62d10e8f621d0a52d39446',
-     armv7l: 'eba73daa824783ddf36a2b226b3d3d4673e07f08fd62d10e8f621d0a52d39446',
-       i686: '250d6888ceeb105803587a92811cf84dd0c27f2904d9202df45e7b0d12bcc256',
-     x86_64: '25178a22e21f811fb955285e6bc3c00f009b6d1d094c71b5d83a6a6e18b2739d'
+    aarch64: 'ac819d630f783b37ffa8ae1583b57dab3f0ef98ef2085376bf0c0792b60a4546',
+     armv7l: 'ac819d630f783b37ffa8ae1583b57dab3f0ef98ef2085376bf0c0792b60a4546',
+       i686: '824055b4212f8b06e203cf4ffc88d8f3fc308e9f07cbb366c1712c8b9f9eb557',
+     x86_64: '16167e4018f250a3842c10cb7f6dcf8d048ee651fbc6fc8b6caf88aeffe64ee0'
   })
 
   depends_on 'python3' # L

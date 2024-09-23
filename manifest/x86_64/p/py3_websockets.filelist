@@ -1,10 +1,10 @@
-/usr/local/lib64/python3.12/site-packages/websockets-13.0.1.dist-info/INSTALLER
-/usr/local/lib64/python3.12/site-packages/websockets-13.0.1.dist-info/LICENSE
-/usr/local/lib64/python3.12/site-packages/websockets-13.0.1.dist-info/METADATA
-/usr/local/lib64/python3.12/site-packages/websockets-13.0.1.dist-info/RECORD
-/usr/local/lib64/python3.12/site-packages/websockets-13.0.1.dist-info/REQUESTED
-/usr/local/lib64/python3.12/site-packages/websockets-13.0.1.dist-info/WHEEL
-/usr/local/lib64/python3.12/site-packages/websockets-13.0.1.dist-info/top_level.txt
+/usr/local/lib64/python3.12/site-packages/websockets-13.1.dist-info/INSTALLER
+/usr/local/lib64/python3.12/site-packages/websockets-13.1.dist-info/LICENSE
+/usr/local/lib64/python3.12/site-packages/websockets-13.1.dist-info/METADATA
+/usr/local/lib64/python3.12/site-packages/websockets-13.1.dist-info/RECORD
+/usr/local/lib64/python3.12/site-packages/websockets-13.1.dist-info/REQUESTED
+/usr/local/lib64/python3.12/site-packages/websockets-13.1.dist-info/WHEEL
+/usr/local/lib64/python3.12/site-packages/websockets-13.1.dist-info/top_level.txt
 /usr/local/lib64/python3.12/site-packages/websockets/__init__.py
 /usr/local/lib64/python3.12/site-packages/websockets/__main__.py
 /usr/local/lib64/python3.12/site-packages/websockets/__pycache__/__init__.cpython-312.pyc
@@ -60,6 +60,7 @@
 /usr/local/lib64/python3.12/site-packages/websockets/legacy/__pycache__/__init__.cpython-312.pyc
 /usr/local/lib64/python3.12/site-packages/websockets/legacy/__pycache__/auth.cpython-312.pyc
 /usr/local/lib64/python3.12/site-packages/websockets/legacy/__pycache__/client.cpython-312.pyc
+/usr/local/lib64/python3.12/site-packages/websockets/legacy/__pycache__/exceptions.cpython-312.pyc
 /usr/local/lib64/python3.12/site-packages/websockets/legacy/__pycache__/framing.cpython-312.pyc
 /usr/local/lib64/python3.12/site-packages/websockets/legacy/__pycache__/handshake.cpython-312.pyc
 /usr/local/lib64/python3.12/site-packages/websockets/legacy/__pycache__/http.cpython-312.pyc
@@ -67,6 +68,7 @@
 /usr/local/lib64/python3.12/site-packages/websockets/legacy/__pycache__/server.cpython-312.pyc
 /usr/local/lib64/python3.12/site-packages/websockets/legacy/auth.py
 /usr/local/lib64/python3.12/site-packages/websockets/legacy/client.py
+/usr/local/lib64/python3.12/site-packages/websockets/legacy/exceptions.py
 /usr/local/lib64/python3.12/site-packages/websockets/legacy/framing.py
 /usr/local/lib64/python3.12/site-packages/websockets/legacy/handshake.py
 /usr/local/lib64/python3.12/site-packages/websockets/legacy/http.py
