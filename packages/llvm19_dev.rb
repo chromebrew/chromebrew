@@ -13,10 +13,10 @@ class Llvm19_dev < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '28cb7ea4725b3726c6f263156e14f82efbe36ce938ab3ba21741007918a65767',
-     armv7l: '28cb7ea4725b3726c6f263156e14f82efbe36ce938ab3ba21741007918a65767',
-       i686: '44d06d454ac2b0b7de7207213708e366c6aedc749eb480b3c9a96acf7d0f4c8c',
-     x86_64: 'bfec3919bf1bfb1be9efd3697b01c990964ff60a522414e215ada7b10d29150f'
+    aarch64: '6b041ba61cc047b05b06e12572e03923b9ebfa463d0673b1afcefd7d95b5c119',
+     armv7l: '6b041ba61cc047b05b06e12572e03923b9ebfa463d0673b1afcefd7d95b5c119',
+       i686: '854c54abdb727ca7cd128f058c2d67aec0bdce027397d53cb763c26f2ed3ea8e',
+     x86_64: 'fca04d6c23d763fcb4c596e8e14dd72a8ca0e6d09be8d82852c24c36966d9db7'
   })
 
   depends_on 'gcc_lib' # R
