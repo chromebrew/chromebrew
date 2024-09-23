@@ -1,7 +1,8 @@
 require 'package'
 
 class Llvm19_build < Package
-  description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
+  @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl' : 'clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl'
+  description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
   version '19.1.0'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, and openmp in tandem.
@@ -12,13 +13,12 @@ class Llvm19_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9b143d252be2ac91b0447c719247dcefe96e53a8e02d7480daebcedaf968f6c9',
-     armv7l: '9b143d252be2ac91b0447c719247dcefe96e53a8e02d7480daebcedaf968f6c9',
-       i686: '095f75e398d5c2edf313ae24afddbefa06b3082da0f9a5f1fd8b6546276e5b8e',
-     x86_64: 'aceb4e09bf3f50fdc009d6784e5d9a263c366077bf4b17c1784c1163b026879b'
+    aarch64: '45121c3694500486424beb83d80c91847c2f907ec9d15682106dc9ac1ccb49fd',
+     armv7l: '45121c3694500486424beb83d80c91847c2f907ec9d15682106dc9ac1ccb49fd',
+       i686: 'a3e8b18a518a79cca5a68c01ec2be71b9cc379d474425a76930c2a00dd8b16f8',
+     x86_64: '9e3c4902324677c68f456ae88ab0eddffa0d278d4d36bbb1e4107ec41c8d047f'
   })
 
-  depends_on 'sccache' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libedit' # R
@@ -28,6 +28,7 @@ class Llvm19_build < Package
   depends_on 'ocaml' => :build
   depends_on 'py3_pygments' => :build
   depends_on 'py3_pyyaml' => :build
+  depends_on 'sccache' => :build
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
@@ -43,7 +44,6 @@ class Llvm19_build < Package
     @ARCH_CXX_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;compiler-rt;libclc;lld;lldb;polly;pstl'.freeze
   when 'i686'
     # LLVM_TARGETS_TO_BUILD = 'X86'.freeze
     # Because ld.lld: error: undefinler-rt;libc;libcxx;libcxxabi;libunwind;openmped symbol: __atomic_store
@@ -57,7 +57,6 @@ class Llvm19_build < Package
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
     # lldb fails on i686 due to requirement for a kernel > 4.1.
     # See https://github.com/llvm/llvm-project/issues/57594
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;compiler-rt;libclc;lld;lldb;polly;pstl'.freeze
   when 'x86_64'
     # LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
@@ -65,13 +64,11 @@ class Llvm19_build < Package
     @ARCH_CXX_FLAGS = '-fPIC'
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
-    LLVM_PROJECTS_TO_BUILD = 'bolt;clang;clang-tools-extra;compiler-rt;libclc;lld;lldb;polly;pstl'.freeze
   end
   @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin"
   @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin"
   # flang isn't supported on 32-bit architectures.
   # openmp is its own package.
-  # LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp'.freeze
 
   # Using Targets 'all' for non-i686 because otherwise mesa complains.
   # This may be patched upstream as per
@@ -101,7 +98,7 @@ class Llvm19_build < Package
   def self.build
     ############################################################
     puts "Building LLVM Targets: #{LLVM_TARGETS_TO_BUILD}".lightgreen
-    puts "Building LLVM Projects: #{LLVM_PROJECTS_TO_BUILD}".lightgreen
+    puts "Building LLVM Projects: #{@llvm_projects_to_build}".lightgreen
     ############################################################
 
     unless Dir.exist?('builddir')
@@ -141,14 +138,13 @@ class Llvm19_build < Package
             -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
             -DCOMPILER_RT_BUILD_SANITIZERS=OFF \
             -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON \
-            -DLIBCLC_TARGETS_TO_BUILD='amdgcn--;amdgcn--amdhsa;r600--;nvptx--;nvptx64--;nvptx--nvidiacl;nvptx64--nvidiacl' \
             -DLLDB_INCLUDE_TESTS=OFF \
             -DLLVM_BINUTILS_INCDIR='#{CREW_PREFIX}/include' \
             -DLLVM_BUILD_LLVM_DYLIB=ON \
             -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_TARGET} \
             -DLLVM_ENABLE_FFI=ON \
             -DLLVM_ENABLE_LTO=Thin \
-            -DLLVM_ENABLE_PROJECTS='#{LLVM_PROJECTS_TO_BUILD}' \
+            -DLLVM_ENABLE_PROJECTS='#{@llvm_projects_to_build}' \
             -DLLVM_ENABLE_RTTI=ON \
             -DLLVM_INCLUDE_BENCHMARKS=OFF \
             -DLLVM_INSTALL_UTILS=ON \
