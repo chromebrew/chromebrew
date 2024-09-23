@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_keyring < Pip
   description 'Keyring stores and accesses your passwords safely.'
   homepage 'https://github.com/jaraco/keyring/'
-  version '25.4.0-py3.12'
+  version '25.4.1-py3.12'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3c9a772f1d2faeade4bcefc4a91d18281bd5de524494b4650d844f35f4952a65',
-     armv7l: '3c9a772f1d2faeade4bcefc4a91d18281bd5de524494b4650d844f35f4952a65',
-       i686: '2f6662f8abe594c866125012e7ff434e12e1df8b03181eea45eb15fed05d23d0',
-     x86_64: 'a1d32d18dc44aba7ab6c306b956d6c9c240be8ac04ebb69d23134c78220643c4'
+    aarch64: '0c34238a10171cf8e567fb26f373b2ea4eec08fe96ad6f06795f94317bfa5b9c',
+     armv7l: '0c34238a10171cf8e567fb26f373b2ea4eec08fe96ad6f06795f94317bfa5b9c',
+       i686: 'f89f139d1db4e6984997f8bac77c4fd5301e669157d23901181fc78cef95e3ca',
+     x86_64: '1afe008d04c9b21f2bf4cbcaa7d6b5424fb7f46f3fda0ffb6a39f694cfbcfc60'
   })
 
   depends_on 'py3_jeepney'
