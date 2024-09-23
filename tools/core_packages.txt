@@ -146,6 +146,7 @@ ruby
 ruby_activesupport
 ruby_concurrent_ruby
 ruby_debug
+ruby_gem_compiler
 ruby_highline
 ruby_mdl
 ruby_pry
