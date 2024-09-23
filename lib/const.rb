@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.52.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.52.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -43,7 +43,7 @@ end
 
 CREW_ESSENTIAL_PACKAGES ||= %w[gcc_lib glibc gmp lz4 ruby xzutils zlib zstd]
 
-CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false)
+CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 
 CREW_CPU_VENDOR ||= CPUINFO['vendor_id'] unless defined?(CREW_CPU_VENDOR)
 # The cpuinfo vendor_id may not exist on non-x86 platforms, or when a

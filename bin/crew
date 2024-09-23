@@ -112,6 +112,10 @@ String.use_color = args['--color'] || !args['--no-color']
 @verbose           = CREW_VERBOSE ? 'v' : ''
 @short_verbose     = CREW_VERBOSE ? '-v' : ''
 
+# Make sure crew work directories exist.
+FileUtils.mkdir_p CREW_BREW_DIR
+FileUtils.mkdir_p CREW_DEST_DIR
+
 class ExitMessage
   @messages = []
 
@@ -1494,14 +1498,15 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       new_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
       token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
 
-      if `curl -sI #{new_url}`.lines.first.split[1] == '200'
+      puts "\e[1A\e[KChecking for existing upload ...\r".orange
+      if `curl -fsI #{new_url}`.lines.first.split[1] == '200'
         puts "\n#{File.basename(new_tarfile)} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
         if Package.agree_default_no('Do you want to overwrite the existing upload instead')
           puts "\e[1A\e[KOverwriting existing upload...\r".orange
           crewlog "#{arch} = #{new_sha256}"
           binary_sha256_hash[arch.to_sym] = new_sha256
         else
-          puts "\e[1A\e[KWill NOT overwite the existing upload.\r".orange
+          puts "\e[1A\e[KWill NOT overwite the existing upload. Determining sha256 of already uploaded file...\r".orange
           upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
           crewlog "#{arch} = #{upstream_sha256}"
           binary_sha256_hash[arch.to_sym] = upstream_sha256
