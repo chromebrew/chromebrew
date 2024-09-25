@@ -1,19 +1,20 @@
 require 'buildsystems/meson'
+# build order: harfbuzz => freetype => fontconfig => cairo => pango
 
 class Cairo < Meson
   description 'Cairo is a 2D graphics library with support for multiple output devices.'
   homepage 'https://www.cairographics.org'
-  version '1.18.1-43e08ae'
+  version '1.18.2'
   license 'LGPL-2.1 or MPL-1.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/cairo/cairo.git'
-  git_hashtag '43e08aed8b70655d7e5834e81fa87fd353e27e1c'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a62399b2399be1666777e3840ddb61e0f3f7295f67f63bfac88c62d7b0bff964',
-     armv7l: 'a62399b2399be1666777e3840ddb61e0f3f7295f67f63bfac88c62d7b0bff964',
-     x86_64: 'a979754d2b6d6ad19fa0454032b6cdbb53184f315f52b5f8eab86e4cf2e77291'
+    aarch64: 'a5dc26b94030439f13d34b3dc36aa14169cd2dfff918e1953f6de6c7c01a46c6',
+     armv7l: 'a5dc26b94030439f13d34b3dc36aa14169cd2dfff918e1953f6de6c7c01a46c6',
+     x86_64: '9ae42198c6c69d131d8431a26da921bb7a1da4fb79c98a12d3ecfce1138d818b'
   })
 
   depends_on 'fontconfig' # R
