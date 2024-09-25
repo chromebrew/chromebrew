@@ -31,8 +31,4 @@ class Freetype < Meson
   depends_on 'zlib' # R
 
   meson_options '-Dharfbuzz=enabled'
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
 end
