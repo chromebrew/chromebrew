@@ -25,8 +25,6 @@ class ConvenienceFunctions
   def self.libtoolize(library, lib_pkg_name = nil)
     lib_pkg_name = library if lib_pkg_name.nil?
     libname = library.to_s.start_with?('lib') ? library.downcase : "lib#{library.downcase}"
-    file_array = []
-    lib_array = []
     # nmresults = `nm  -A *.so* 2>/dev/null | grep ucol_open_#{oldver}`.chop.split(/$/).map(&:strip)
     # nmresults.each { |file_line| lib_array.push(file_line.partition(':').first) }
     # lib_array.each do |f|
