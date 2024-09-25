@@ -6,7 +6,7 @@ class Qt5_base < Package
   version 'kde-5.15.14-9f9a56d-icu75.1'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
-  min_glibc '2.37'
+  # min_glibc '2.37'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
   git_hashtag '9f9a56d750caff8b4459e7e9bf82f1f4d725f72f'
   binary_compression 'tar.zst'
