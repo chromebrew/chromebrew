@@ -25,19 +25,8 @@ class ConvenienceFunctions
   def self.libtoolize(library, lib_pkg_name = nil)
     lib_pkg_name = library if lib_pkg_name.nil?
     libname = library.to_s.start_with?('lib') ? library.downcase : "lib#{library.downcase}"
-    # nmresults = `nm  -A *.so* 2>/dev/null | grep ucol_open_#{oldver}`.chop.split(/$/).map(&:strip)
-    # nmresults.each { |file_line| lib_array.push(file_line.partition(':').first) }
-    # lib_array.each do |f|
-    # grepresults = `grep "#{f}" #{CREW_META_PATH}/*.filelist`.chomp.gsub('.filelist', '').partition(':').first.gsub(
-    # CREW_META_PATH, ''
-    # ).split(/$/).map(&:strip)
-    # grepresults.each { |file_line| file_array.push(file_line) }
-    # end
-
-    # libnames = Dir["#{CREW_LIB_PREFIX}/#{libname}.so*"]
     puts "grep \"#{CREW_LIB_PREFIX}/#{libname}.so\\\|#{CREW_DEST_LIB_PREFIX}/#{libname}-*.so\" #{CREW_META_PATH}/#{lib_pkg_name}.filelist" if CREW_VERBOSE
     libnames = `grep "#{CREW_LIB_PREFIX}/#{libname}.so\\\|#{CREW_DEST_LIB_PREFIX}/#{libname}-*.so*" #{CREW_META_PATH}/#{lib_pkg_name}.filelist`.chomp.split(/$/).map(&:strip)
-    # libnames = Dir["#{CREW_DEST_LIB_PREFIX}/#{libname}-*.so*"] if libnames.empty?
     libnames.each do |s|
       s.gsub!("#{CREW_LIB_PREFIX}/", '')
     end
