@@ -3,18 +3,18 @@ require 'package'
 class Qt5_base < Package
   description 'Qt Base (Core, Gui, Widgets, Network, ...)'
   homepage 'https://code.qt.io/cgit/qt/qtbase'
-  version 'kde-5.15.14-9f9a56d-icu75.1'
+  kde_5_15_githash = 'ab13e81917207959785ad0185a3a9974e552a7f5'
+  version "kde-5.15.15-#{kde_5_15_githash[0, 7]}-#{CREW_ICU_VER}"
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
-  # min_glibc '2.37'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
-  git_hashtag '9f9a56d750caff8b4459e7e9bf82f1f4d725f72f'
+  git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0ce34bf448b6602c0a01a7a53bcdbcbc8b9792a202ff2edf5861505d4fac7f54',
-     armv7l: '0ce34bf448b6602c0a01a7a53bcdbcbc8b9792a202ff2edf5861505d4fac7f54',
-     x86_64: '40ede8066e4ade3377b5ead1cb1e19d29764f8e2920a6796e8b923a5dc7916a2'
+    aarch64: 'aa7cf2fa922671fc11ba1cf204967cb6fed3b5e46fb768ac6692735a68697277',
+     armv7l: 'aa7cf2fa922671fc11ba1cf204967cb6fed3b5e46fb768ac6692735a68697277',
+     x86_64: 'b03e7cbdb7ab70e820e2bca0c87f2a65fc8c0424c7eb7a92b7e1f1ec6b5d25b2'
   })
 
   depends_on 'alsa_plugins' => :build
@@ -69,28 +69,6 @@ class Qt5_base < Package
   depends_on 'xcb_util_xrm' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-
-  def self.patch
-    # There appears to be no way of setting QMAKE_CXX as a environment
-    # variable prepended to the configure command here.
-    if (ARCH == 'x86_64') && (Gem::Version.new(LIBC_VERSION.to_s) >= Gem::Version.new('2.37'))
-      File.write 'libC.patch', <<~LIBC_PATCH_EOF
-        diff -Npaur a/mkspecs/common/g++-base.conf b/mkspecs/common/g++-base.conf
-        --- a/mkspecs/common/g++-base.conf	2024-08-21 13:39:25.962767682 -0400
-        +++ b/mkspecs/common/g++-base.conf	2024-08-21 13:39:07.126893580 -0400
-        @@ -15,7 +15,7 @@ QMAKE_CC                = $${CROSS_COMPI
-         QMAKE_LINK_C            = $$QMAKE_CC
-         QMAKE_LINK_C_SHLIB      = $$QMAKE_CC
-
-        -QMAKE_CXX               = $${CROSS_COMPILE}g++
-        +QMAKE_CXX               = $${CROSS_COMPILE}g++ #{File.join(CREW_LIB_PREFIX, 'libC.so.6')}
-
-         QMAKE_LINK              = $$QMAKE_CXX
-         QMAKE_LINK_SHLIB        = $$QMAKE_CXX
-      LIBC_PATCH_EOF
-      system 'patch -Np1 -i libC.patch'
-    end
-  end
 
   def self.build
     system "./configure \
