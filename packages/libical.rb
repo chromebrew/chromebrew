@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libical < CMake
   description 'An open source reference implementation of the icalendar data type and serialization format'
   homepage 'https://github.com/libical/libical'
-  version '3.0.18-icu75.1'
+  version "3.0.18-#{CREW_ICU_VER}"
   license 'MPL-2.0 or LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/libical/libical.git'

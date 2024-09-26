@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_tomli < Pip
   description "Tomli is a lil' TOML parser."
   homepage 'https://github.com/hukkin/tomli/'
-  version '2.0.1-py3.12'
+  version "2.0.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pyelftools < Pip
   description 'Pure-Python library for parsing and analyzing ELF files and DWARF debugging information.'
   homepage 'https://github.com/eliben/pyelftools/'
-  version '0.31-py3.12'
+  version "0.31-#{CREW_PY_VER}"
   license 'public-domain'
   compatibility 'all'
   source_url 'SKIP'

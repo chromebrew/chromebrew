@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# build_updated_packages version 1.3 (for Chromebrew)
+# build_updated_packages version 1.4 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -176,6 +176,7 @@ updated_packages.each do |pkg|
     build = check_builds.dup
     check_builds.each do |arch|
       arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@version}_#{arch}/#{name}-#{@version}-chromeos-#{arch}.#{@binary_compression}"
+      puts "Checking: curl -sI #{arch_specific_url}" if CREW_VERBOSE
       build.delete(arch) if `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
     end
     if build.empty?

@@ -282,7 +282,7 @@ function install_ruby_gem () {
     echo_intra "Installing ${ruby_gem^} gem..."
     gem install -N "${ruby_gem}" --conservative
     gem_version="$(ruby -e "gem('${ruby_gem}')" -e "puts Gem.loaded_specs['${ruby_gem}'].version.to_s")"
-    json_gem_version="${gem_version}-ruby-${rubymajorversion}"
+    json_gem_version="${gem_version}-ruby${rubymajorversion}"
     crew_gem_package="ruby_${ruby_gem//-/_}"
     update_device_json "${crew_gem_package}" "${json_gem_version}" ""
     gem_filelist_path="${CREW_META_PATH}/${crew_gem_package}.filelist"

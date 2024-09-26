@@ -4,7 +4,7 @@ class Yt_dlp < Python
   description 'A fork of youtube-dl with additional features and patches'
   homepage 'https://github.com/yt-dlp/yt-dlp'
   @_ver = '2023.11.16'
-  version "#{@_ver}-py3.12"
+  version "#{@_ver}-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/yt-dlp/yt-dlp.git'

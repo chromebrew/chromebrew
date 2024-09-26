@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Imagemagick7 < Autotools
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '7.1.1-36-perl5.40-icu75.1'
+  version "7.1.1-36-perl5.40-#{CREW_ICU_VER}"
   license 'imagemagick'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/ImageMagick/ImageMagick.git'

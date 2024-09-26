@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Imlib2 < Autotools
   description 'library that does image file loading and saving as well as rendering, manipulation, arbitrary polygon support, etc.'
   homepage 'https://sourceforge.net/projects/enlightenment/'
-  version '1.12.3-icu75.1'
+  version "1.12.3-#{CREW_ICU_VER}"
   license 'BSD'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://sourceforge.net/projects/enlightenment/files/imlib2-src/#{version.split('-').first}/imlib2-#{version.split('-').first}.tar.xz"

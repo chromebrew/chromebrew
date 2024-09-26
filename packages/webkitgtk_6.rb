@@ -3,7 +3,7 @@ require 'package'
 class Webkitgtk_6 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.44.2-icu75.1'
+  version "2.44.2-#{CREW_ICU_VER}"
   license 'LGPL-2+ and BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.37'

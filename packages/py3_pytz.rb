@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pytz < Pip
   description 'pytz brings the Olson tz database into Python.'
   homepage 'https://pythonhosted.org/pytz/'
-  version '2024.2-py3.12'
+  version "2024.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

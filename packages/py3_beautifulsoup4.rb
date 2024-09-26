@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_beautifulsoup4 < Pip
   description 'BeautifulSoup is a screen-scraping library.'
   homepage 'https://www.crummy.com/software/BeautifulSoup/'
-  version '4.12.3-py3.12'
+  version "4.12.3-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

@@ -3,7 +3,7 @@ require 'package'
 class Perl_app_cpanminus < Package
   description 'App::cpanminus - get, unpack, build and install modules from CPAN'
   homepage 'https://metacpan.org/pod/App::cpanminus'
-  version '1.7047-perl5.40'
+  version "1.7047-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7047.tar.gz'

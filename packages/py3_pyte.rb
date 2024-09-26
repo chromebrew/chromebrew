@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pyte < Pip
   description 'PyTE is a Simple VTXXX-compatible terminal emulator.'
   homepage 'https://github.com/selectel/pyte/'
-  version '0.8.2-py3.12'
+  version "0.8.2-#{CREW_PY_VER}"
   license 'LGPL-3'
   compatibility 'all'
   source_url 'SKIP'

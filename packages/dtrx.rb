@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Dtrx < Pip
   description "An intelligent archive extraction tool for UNIX-like systems standing for 'Do The Right Extraction.'"
   homepage 'https://github.com/dtrx-py/dtrx/'
-  version '8.5.3-py3.12'
+  version "8.5.3-#{CREW_PY_VER}"
   license 'GPL-3+'
   compatibility 'all'
   source_url 'SKIP'

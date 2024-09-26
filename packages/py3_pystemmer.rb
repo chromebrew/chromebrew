@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pystemmer < Pip
   description 'Snowball stemming algorithms, for information retrieval'
   homepage 'http://snowball.tartarus.org'
-  version '2.2.0.1-py3.12'
+  version "2.2.0.1-#{CREW_PY_VER}"
   license 'BSD MIT'
   compatibility 'all'
   source_url 'SKIP'

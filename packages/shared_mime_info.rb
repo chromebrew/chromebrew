@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Shared_mime_info < Meson
   description 'The shared-mime-info package contains the core database of common types and the update-mime-database command used to extend it.'
   homepage 'https://freedesktop.org/wiki/Software/shared-mime-info/'
-  version '2.4-icu75.1'
+  version "2.4-#{CREW_ICU_VER}"
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xdg/shared-mime-info.git'

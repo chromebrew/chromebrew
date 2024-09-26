@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_sqlalchemy < Pip
   description 'SQLalchemy is a database toolkit for Python.'
   homepage 'https://sqlalchemy.org'
-  version '2.0.35-py3.12'
+  version "2.0.35-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

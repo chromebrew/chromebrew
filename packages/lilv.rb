@@ -7,7 +7,7 @@ class Lilv < Meson
   description 'A C library interface to the LV2 plug-in standard'
   homepage 'https://drobilla.net/software/lilv/'
   @_ver = '0.24.20'
-  version "#{@_ver}-py3.12"
+  version "#{@_ver}-#{CREW_PY_VER}"
   license 'isc'
   compatibility 'all'
   source_url 'https://github.com/lv2/lilv.git'

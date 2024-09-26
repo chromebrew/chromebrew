@@ -3,7 +3,7 @@ require 'buildsystems/python'
 class Mesonbuild < Python
   description 'Meson is an open source build system meant to be both extremely fast and user friendly.'
   homepage 'https://mesonbuild.com/'
-  version '1.5.1-py3.12'
+  version "1.5.1-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/mesonbuild/meson.git'

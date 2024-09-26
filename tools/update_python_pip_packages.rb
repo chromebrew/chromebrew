@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# update_python_pip_packages version 1.1 (for Chromebrew)
+# update_python_pip_packages version 1.2 (for Chromebrew)
 # This updates the versions in python pip packages.
 #
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
@@ -29,7 +29,6 @@ end
 require_gem('activesupport', 'active_support/core_ext/object/blank')
 require_gem 'concurrent-ruby'
 
-py_ver = `python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp
 py3_files = Dir['packages/py3_*.rb']
 pip_files = `grep -l "^require 'buildsystems/pip'" packages/*.rb`.chomp.split
 relevant_pip_packages = (py3_files + pip_files).uniq!
@@ -56,15 +55,16 @@ relevant_pip_packages.each_with_index do |package, index|
     next package if pip_version.blank?
 
     relevant_pip_packages.delete(package)
-    pkg_version = `sed -n -e 's/^\ \ version //p' #{package}`.chomp.delete("'").delete('"').gsub(/-icu\d{2}\.\d/, '').gsub(/-py3\.\d{2}/, '')
+    # rubocop:disable Lint/InterpolationCheck
+    pkg_version = `sed -n -e 's/^\ \ version //p' #{package}`.chomp.delete("'").delete('"').gsub('-#{CREW_ICU_VER}', '').gsub('-#{CREW_PY_VER}', '')
+    # rubocop:enable Lint/InterpolationCheck
     next package unless Gem::Version.new(pip_version) > Gem::Version.new(pkg_version)
 
     puts "\e[1B\e[KUpdating #{pip_name} from #{pkg_version} to #{pip_version}\e[1A".lightblue
     if pip_name == 'pyicu'
-      icu_ver = `uconv -V`.chomp.split[3]
-      system "sed -i \"s,^\ \ version\ .*,\ \ version '#{pip_version}-icu#{icu_ver}-py#{py_ver}',\" #{package}"
+      system "sed -i \"s,^\ \ version\ .*,\ \ version \\\"#{pip_version}-\#{CREW_ICU_VER}-\#{CREW_PY_VER}\\\",\" #{package}"
     else
-      system "sed -i \"s,^\ \ version\ .*,\ \ version '#{pip_version}-py#{py_ver}',\" #{package}"
+      system "sed -i \"s,^\ \ version\ .*,\ \ version \\\"#{pip_version}-\#{CREW_PY_VER}\\\",\" #{package}"
     end
   end
 end

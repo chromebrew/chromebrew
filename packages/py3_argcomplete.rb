@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_argcomplete < Pip
   description 'Argcomplete provides bash completion for argparse.'
   homepage 'https://kislyuk.github.io/argcomplete/'
-  version '3.5.0-py3.12'
+  version "3.5.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'

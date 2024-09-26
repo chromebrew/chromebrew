@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# update_ruby_gem_packages version 1.3 (for Chromebrew)
+# update_ruby_gem_packages version 1.4 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo:
 # tools/update_ruby_gem_packages.rb
@@ -27,7 +27,6 @@ end
 require_gem('activesupport', 'active_support/core_ext/object/blank')
 require_gem 'concurrent-ruby'
 
-ruby_ver_string = "-ruby-#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}"
 pool = Concurrent::ThreadPoolExecutor.new(
   min_threads: 1,
   max_threads: CREW_NPROC.to_i + 1,
@@ -41,12 +40,14 @@ relevant_gem_packages.each_with_index do |package, index|
   pool.post do
     gem_name = package.gsub('.rb', '').sub('ruby_', '').gsub('_', '-').gsub('packages/', '')
     puts "[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Checking rubygems for updates to #{gem_name}...".orange
-    pkg_version = `sed -n -e 's/^\ \ version //p' #{package}`.chomp.delete("'").delete('"').gsub(ruby_ver_string, '').split('-').first
+    # rubocop:disable Lint/InterpolationCheck
+    pkg_version = `sed -n -e 's/^\ \ version //p' #{package}`.chomp.delete("'").delete('"').gsub('-#{CREW_RUBY_VER}', '').split('-').first
+    # rubocop:enable Lint/InterpolationCheck
     gem_version = Gem.latest_spec_for(gem_name).version.to_s
     next package if gem_version.blank?
     if Gem::Version.new(gem_version) > Gem::Version.new(pkg_version)
       puts "Updating #{gem_name} from #{pkg_version} to #{gem_version}".lightblue
-      system "sed -i \"s,^\ \ version\ .*,\ \ version '#{gem_version}-ruby-#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}',\" #{package}"
+      system "sed -i \"s,^\ \ version\ .*\",\ \ version \\\"#{gem_version}-\#{CREW_RUBY_VER}\\\",\" #{package}"
     end
     relevant_gem_packages.delete(package)
   end

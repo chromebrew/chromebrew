@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_cairo_gobject < PERL
   description 'Integrate Cairo into the Glib type system'
   homepage 'https://metacpan.org/pod/Cairo::GObject'
-  version '1.005-perl5.40'
+  version "1.005-#{CREW_PERL_VER}"
   license 'GPL 2.1'
   compatibility 'x86_64'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Cairo-GObject-1.005.tar.gz'

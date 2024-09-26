@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_pry < RUBY
   description 'Pry is a runtime developer console and IRB alternative with powerful introspection capabilities.'
   homepage 'https://github.com/pry/pry'
-  version '0.14.2-ruby-3.3'
+  version "0.14.2-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
@@ -12,7 +12,7 @@ class Ruby_pry < RUBY
   no_compile_needed
 
   ruby_install_extras do
-    File.write "#{HOME}/.pryrc", <<~PRY_DEBUG_EOF
+    File.write File.join(HOME, '.pryrc'), <<~PRY_DEBUG_EOF
       if defined?(PryByebug)
         Pry.commands.alias_command 'c', 'continue'
         Pry.commands.alias_command 's', 'step'

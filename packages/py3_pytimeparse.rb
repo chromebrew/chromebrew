@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pytimeparse < Pip
   description 'Pytimeparse is a small Python module to parse various kinds of time expressions. '
   homepage 'https://github.com/wroberts/pytimeparse/'
-  version '1.1.8-py3.12'
+  version "1.1.8-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

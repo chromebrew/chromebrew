@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_slugify < Pip
   description 'Python-slugify returns unicode slugs.'
   homepage 'https://github.com/un33k/python-slugify/'
-  version '0.0.1-py3.12'
+  version "0.0.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

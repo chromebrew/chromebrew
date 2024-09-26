@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Yelp < Autotools
   description 'Get help with GNOME'
   homepage 'https://wiki.gnome.org/Apps/Yelp'
-  version '42.2-icu75.1'
+  version "42.2-#{CREW_ICU_VER}"
   license 'GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/yelp.git'

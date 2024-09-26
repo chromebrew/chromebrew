@@ -3,7 +3,7 @@ require 'package'
 class Perl_test_output < Package
   description 'Test::Output - Utilities to test STDOUT and STDERR messages.'
   homepage 'https://metacpan.org/pod/Test::Output'
-  version '1.034-perl5.40'
+  version "1.034-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/B/BD/BDFOY/Test-Output-1.034.tar.gz'

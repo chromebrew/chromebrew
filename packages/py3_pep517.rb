@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pep517 < Pip
   description 'Python PEP517 is an API to call PEP 517 hooks for building Python packages '
   homepage 'https://pep517.readthedocs.io/'
-  version '0.13.1-py3.12'
+  version "0.13.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

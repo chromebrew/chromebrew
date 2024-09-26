@@ -3,19 +3,18 @@ require 'buildsystems/autotools'
 class Itstool < Autotools
   description 'Translate XML with PO files using W3C Internationalization Tag Set rules'
   homepage 'https://itstool.org/'
-  @_ver = '2.0.7'
-  version "#{@_ver}-py3.12-1"
+  version "2.0.7-1-#{CREW_PY_VER}"
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/itstool/itstool.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '22578763153f6008c1dd9e8675825b65a2a0f0b776bcbfb992fe75540e0b3d47',
-     armv7l: '22578763153f6008c1dd9e8675825b65a2a0f0b776bcbfb992fe75540e0b3d47',
-       i686: '887e17bf8b6bc40df2703cb628d5016e908ac52a41ceb878f17dbb64a245e02c',
-     x86_64: '8d02b6b0f963b22a5d7c56ac706c37b39bebecf09687f764da266b764cb8d0a6'
+    aarch64: '463e52a82720360bb9a304ff276b81f076ab39c8d1bfb17578123dfb8d897af4',
+     armv7l: '463e52a82720360bb9a304ff276b81f076ab39c8d1bfb17578123dfb8d897af4',
+       i686: 'b638425cf099a72152bcbaf4c53cd1e6c72d218ddb1eefb4a31aa8d4f67b065c',
+     x86_64: '3a33bcc678ab2ce087ae4914997aa577fa93751190cfc64ac95176f2e92f0d6b'
   })
 
   depends_on 'coreutils' if ARCH == 'i686'

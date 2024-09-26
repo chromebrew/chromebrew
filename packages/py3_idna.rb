@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_idna < Pip
   description 'IDNA provides internationalized domain names for Python.'
   homepage 'https://github.com/kjd/idna/'
-  version '3.10-py3.12'
+  version "3.10-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'

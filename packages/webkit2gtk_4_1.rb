@@ -3,7 +3,7 @@ require 'package'
 class Webkit2gtk_4_1 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.44.3-icu75.1'
+  version "2.44.3-#{CREW_ICU_VER}"
   license 'LGPL-2+ and BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.44.3.tar.xz'

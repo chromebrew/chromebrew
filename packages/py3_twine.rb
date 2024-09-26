@@ -5,7 +5,7 @@ require 'buildsystems/pip'
 class Py3_twine < Pip
   description 'A utility for interacting with PyPI'
   homepage 'https://pypi.python.org/pypi/twine'
-  version '5.1.2.dev26+gc577765-py3.12'
+  version "5.1.2.dev26+gc577765-#{CREW_PY_VER}"
   license 'APACHE'
   compatibility 'all'
   source_url 'https://github.com/pypa/twine.git@bugfix/1116-pkginfo-warnings'

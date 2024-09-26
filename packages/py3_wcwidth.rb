@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_wcwidth < Pip
   description 'WCWidth measures the displayed width of unicode strings in a terminal.'
   homepage 'https://github.com/jquast/wcwidth/'
-  version '0.2.13-py3.12'
+  version "0.2.13-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

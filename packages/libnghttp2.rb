@@ -4,7 +4,7 @@ class Libnghttp2 < CMake
   description 'library implementing HTTP/2 protocol'
   homepage 'https://nghttp2.org/'
   @_ver = '1.59.0'
-  version "#{@_ver}-py3.12"
+  version "#{@_ver}-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/nghttp2/nghttp2.git'

@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pathspec < Pip
   description 'Path specification is a utility library for gitignore style pattern matching of file paths.'
   homepage 'https://github.com/cpburnz/python-pathspec'
-  version '0.12.1-py3.12'
+  version "0.12.1-#{CREW_PY_VER}"
   license 'MPL-2.0'
   compatibility 'all'
   source_url 'SKIP'

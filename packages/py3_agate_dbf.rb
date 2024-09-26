@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_agate_dbf < Pip
   description 'Agate-dbf adds read support for DBF files to agate.'
   homepage 'https://agate-dbf.readthedocs.org/'
-  version '0.2.3-py3.12'
+  version "0.2.3-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_extutils_depends < PERL
   description 'Easily build XS extensions that depend on XS extensions'
   homepage 'https://metacpan.org/pod/ExtUtils::Depends'
-  version '0.8001-perl5.40'
+  version "0.8001-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/ExtUtils-Depends-0.8001.tar.gz'

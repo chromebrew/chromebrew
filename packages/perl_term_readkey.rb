@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_term_readkey < PERL
   description 'Term::ReadKey - A perl module for simple terminal control'
   homepage 'https://metacpan.org/pod/Term::ReadKey'
-  version '2.38-perl5.40'
+  version "2.38-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/J/JS/JSTOWE/TermReadKey-2.38.tar.gz'

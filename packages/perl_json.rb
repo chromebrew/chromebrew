@@ -6,7 +6,7 @@ require 'package'
 class Perl_json < Package
   description 'JSON JavaScript Object Notation encoder/decoder'
   homepage 'https://search.cpan.org/dist/JSON'
-  version '4.10-perl5.40'
+  version "4.10-#{CREW_PERL_VER}"
   license 'GPL PerlArtistic'
   compatibility 'all'
   source_url 'https://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/JSON-4.10.tar.gz'
