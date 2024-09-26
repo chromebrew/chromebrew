@@ -10,10 +10,10 @@ class Ruby_debug < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '6b7344390da0b795d379c4e95ce41242a6392324a9c1f5e27bbba9a4b01a792a',
-     armv7l: '6b7344390da0b795d379c4e95ce41242a6392324a9c1f5e27bbba9a4b01a792a',
-       i686: '149ddb718f60aba21ca7aa3370df2e650d2b316117285b29c7de158da91711f7',
-     x86_64: 'ec3e4a33ea6dd305c666c641e510b891816483116313e7c35d683b2dbcabd035'
+    aarch64: '7bbdab6908ec124f2cfaaf6d93c23a522018993ff4426cf5274160bc2eb7836e',
+     armv7l: '7bbdab6908ec124f2cfaaf6d93c23a522018993ff4426cf5274160bc2eb7836e',
+       i686: '9403b227db36447ab2cf41eed7cb63b3ac9703dd2deddd1d7297eda38a8eab12',
+     x86_64: '2b701d2dd3b61b89da53aa557d5d88ce031fe3ac959f4ff0d966ca62bc504dc1'
   })
 
   conflicts_ok
