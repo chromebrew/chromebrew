@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# update_python_pip_packages version 1.1 (for Chromebrew)
+# update_python_pip_packages version 1.2 (for Chromebrew)
 # This updates the versions in python pip packages.
 #
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
