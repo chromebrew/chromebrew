@@ -1442,6 +1442,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
   packages.strip!
 
   [packages].each do |package|
+    binary_compression_not_in_file = binary_compression.nil?
     pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
     binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
     # The following is used to figure out where a non-standard
@@ -1462,7 +1463,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression.nil? ? '(tar.xz|tar.zst)' : binary_compression} not found.\n".lightred
         next arch
       end
-      if binary_compression.nil?
+      if binary_compression_not_in_file
         ext = File.extname(new_tarfile)
         binary_compression = @pkg.superclass.to_s == 'RUBY' ? 'gem' : "tar#{ext}"
         binary_compression_line = "  binary_compression '#{binary_compression}'"
