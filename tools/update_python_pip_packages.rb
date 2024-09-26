@@ -55,7 +55,9 @@ relevant_pip_packages.each_with_index do |package, index|
     next package if pip_version.blank?
 
     relevant_pip_packages.delete(package)
+    # rubocop:disable Lint/InterpolationCheck
     pkg_version = `sed -n -e 's/^\ \ version //p' #{package}`.chomp.delete("'").delete('"').gsub('-#{CREW_ICU_VER}', '').gsub('-#{CREW_PY_VER}', '')
+    # rubocop:enable Lint/InterpolationCheck
     next package unless Gem::Version.new(pip_version) > Gem::Version.new(pkg_version)
 
     puts "\e[1B\e[KUpdating #{pip_name} from #{pkg_version} to #{pip_version}\e[1A".lightblue
