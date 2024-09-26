@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_markupsafe < Pip
   description 'Markupsafe allows the safe addition of untrusted strings to HTML/XML markup.'
   homepage 'https://markupsafe.palletsprojects.com/'
-  version '2.1.5-py3.12'
+  version "2.1.5-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'

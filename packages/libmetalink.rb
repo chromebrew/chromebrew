@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libmetalink < Autotools
   description 'libmetalink is a Metalink library written in C language.'
   homepage 'https://launchpad.net/libmetalink/'
-  version '0.1.3-icu75.1'
+  version "0.1.3-#{CREW_ICU_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://launchpad.net/libmetalink/trunk/libmetalink-0.1.3/+download/libmetalink-0.1.3.tar.xz'

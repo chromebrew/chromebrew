@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_agate_excel < Pip
   description 'Agate-excel read support for Excel files (xls and xlsx) to agate.'
   homepage 'https://agate-excel.readthedocs.io/'
-  version '0.4.1-py3.12'
+  version "0.4.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

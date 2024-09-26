@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_abimap < Pip
   description 'A helper for library maintainers to use symbol versioning'
   homepage 'https://github.com/ansasaki/abimap'
-  version '0.3.2-py3.12'
+  version "0.3.2-#{CREW_PY_VER}"
   license 'BSD-2'
   compatibility 'all'
   source_url 'SKIP'

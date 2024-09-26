@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_future < Pip
   description 'Future provides clean single-source support for Python 3 and 2.'
   homepage 'https://python-future.org/'
-  version '1.0.0-py3.12'
+  version "1.0.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_leather < Pip
   description 'Leather is a fast, approximate chart generator in Python.'
   homepage 'https://leather.readthedocs.io/'
-  version '0.4.0-py3.12'
+  version "0.4.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

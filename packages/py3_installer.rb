@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_installer < Pip
   description 'Python build is a simple, correct PEP 517 build frontend.'
   homepage 'https://installer.readthedocs.io/'
-  version '0.7.0-py3.12'
+  version "0.7.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

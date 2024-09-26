@@ -6,7 +6,7 @@ require 'buildsystems/pip'
 class Py3_gi_docgen < Pip
   description 'Documentation generator for GObject-based libraries'
   homepage 'https://gnome.pages.gitlab.gnome.org/gi-docgen/'
-  version '2024.1-py3.12'
+  version "2024.1-#{CREW_PY_VER}"
   license 'Apache GPL3'
   compatibility 'all'
   source_url 'SKIP'

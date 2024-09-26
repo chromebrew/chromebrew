@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_text_csv < PERL
   description 'Comma-separated values manipulator (using XS or PurePerl)'
   homepage 'https://metacpan.org/pod/Text::CSV'
-  version '2.04-perl5.40'
+  version "2.04-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/Text-CSV-2.04.tar.gz'

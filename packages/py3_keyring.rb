@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_keyring < Pip
   description 'Keyring stores and accesses your passwords safely.'
   homepage 'https://github.com/jaraco/keyring/'
-  version '25.4.1-py3.12'
+  version "25.4.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

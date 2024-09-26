@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Openimageio < CMake
   description 'OpenImageIO is a toolset for reading, writing, and manipulating image files of any image file format relevant to VFX / animation via a format-agnostic API with a feature set, scalability, and robustness needed for feature film production.'
   homepage 'https://github.com/AcademySoftwareFoundation/OpenImageIO'
-  version '2.5.12.0-py3.12'
+  version "2.5.12.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/AcademySoftwareFoundation/OpenImageIO.git'

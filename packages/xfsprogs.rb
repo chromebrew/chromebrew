@@ -3,7 +3,7 @@ require 'package'
 class Xfsprogs < Package
   description 'XFS filesystem utilities'
   homepage 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/'
-  version '6.10.0-icu75.1'
+  version "6.10.0-#{CREW_ICU_VER}"
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git'

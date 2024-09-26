@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_glib < PERL
   description 'Provides perl access to Glib and GLib\'s GObject libraries.'
   homepage 'https://metacpan.org/pod/Glib'
-  version '1.3294-perl5.40'
+  version "1.3294-#{CREW_PERL_VER}"
   license 'GPL PerlArtistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Glib-1.3294.tar.gz'

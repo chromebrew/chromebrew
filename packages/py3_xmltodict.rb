@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_xmltodict < Pip
   description 'XMLtoDict makes working with XML feel like you are working with JSON.'
   homepage 'https://github.com/martinblech/xmltodict/'
-  version '0.13.0-py3.12'
+  version "0.13.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

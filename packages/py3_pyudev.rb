@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pyudev < Pip
   description 'Pyudev provides Python bindings for udev.'
   homepage 'https://pyudev.readthedocs.io/'
-  version '0.24.3-py3.12'
+  version "0.24.3-#{CREW_PY_VER}"
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'SKIP'

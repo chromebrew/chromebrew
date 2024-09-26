@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_try_tiny < PERL
   description 'Minimal try/catch with proper preservation of $@'
   homepage 'https://metacpan.org/pod/Try::Tiny'
-  version '0.31-perl5.40'
+  version "0.31-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/Try-Tiny-0.31.tar.gz'

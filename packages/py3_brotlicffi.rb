@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_brotlicffi < Pip
   description 'Python bindings to the Brotli compression library'
   homepage 'https://github.com/python-hyper/brotlicffi/'
-  version '1.1.0.0-py3.12'
+  version "1.1.0.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

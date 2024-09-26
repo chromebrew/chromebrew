@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libcap_ng < Autotools
   description 'The libcap-ng library is intended to make programming with posix capabilities much easier than the traditional libcap library.'
   homepage 'https://people.redhat.com/sgrubb/libcap-ng/'
-  version '0.8.4-py3.12'
+  version "0.8.4-#{CREW_PY_VER}"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/stevegrubb/libcap-ng.git'

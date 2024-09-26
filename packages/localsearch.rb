@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Localsearch < Meson
   description 'Collection of data extractors for Tracker/Nepomuk'
   homepage 'https://gitlab.gnome.org/GNOME/localsearch'
-  version '3.7.3-icu75.1'
+  version "3.7.3-#{CREW_ICU_VER}"
   license 'GPLv2+'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.37'

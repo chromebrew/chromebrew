@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Libabigail < Autotools
   description 'ABI Generic Analysis and Instrumentation Library'
   homepage 'https://sourceware.org/libabigail/'
-  version '2.5-py3.12'
+  version "2.5-#{CREW_PY_VER}"
   license 'Apache'
   compatibility 'all'
   source_url 'https://sourceware.org/git/libabigail.git'

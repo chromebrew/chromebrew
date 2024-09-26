@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_babel < Pip
   description 'Babel is an integrated collection of utilities that assist in internationalizing and localizing Python applications.'
   homepage 'https://babel.pocoo.org/'
-  version '2.16.0-py3.12'
+  version "2.16.0-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'

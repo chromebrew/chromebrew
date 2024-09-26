@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libxslt < CMake
   description 'Libxslt is the XSLT C library developed for the GNOME project.'
   homepage 'https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home'
-  version '1.1.42-icu75.1'
+  version "1.1.42-#{CREW_ICU_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libxslt.git'

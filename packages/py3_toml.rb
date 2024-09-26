@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_toml < Pip
   description 'Toml is a Python Library for Tom\'s Obvious, Minimal Language.'
   homepage 'https://github.com/uiri/toml/'
-  version '0.10.2-py3.12'
+  version "0.10.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

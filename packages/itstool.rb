@@ -3,12 +3,11 @@ require 'buildsystems/autotools'
 class Itstool < Autotools
   description 'Translate XML with PO files using W3C Internationalization Tag Set rules'
   homepage 'https://itstool.org/'
-  @_ver = '2.0.7'
-  version "#{@_ver}-py3.12-1"
+  version "2.0.7-1-#{CREW_PY_VER}"
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/itstool/itstool.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({

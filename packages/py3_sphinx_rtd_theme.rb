@@ -6,7 +6,7 @@ require 'buildsystems/pip'
 class Py3_sphinx_rtd_theme < Pip
   description 'Sphinx theme for readthedocs.org'
   homepage 'https://github.com/readthedocs/sphinx_rtd_theme'
-  version '2.0.0-py3.12'
+  version "2.0.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

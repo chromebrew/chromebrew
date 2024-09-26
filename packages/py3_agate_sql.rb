@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_agate_sql < Pip
   description 'Agate-sql adds SQL read/write support to agate.'
   homepage 'https://agate-sql.readthedocs.org/'
-  version '0.7.2-py3.12'
+  version "0.7.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

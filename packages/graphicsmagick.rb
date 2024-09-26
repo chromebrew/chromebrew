@@ -3,7 +3,7 @@ require 'package'
 class Graphicsmagick < Package
   description 'GraphicsMagick is the swiss army knife of image processing.'
   homepage 'http://www.graphicsmagick.org/'
-  version '1.3.45-icu75.1'
+  version "1.3.45-#{CREW_ICU_VER}"
   license 'MIT'
   compatibility 'all'
   min_glibc (%w[x86_64 aarch64 armv7l].include?(ARCH) ? '2.37' : '2.23').to_s

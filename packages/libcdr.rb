@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Libcdr < Autotools
   description 'CorelDraw file format importer library for LibreOffice'
   homepage 'https://wiki.documentfoundation.org/DLP/Libraries/libcdr'
-  version '0.1.7-icu75.1'
+  version "0.1.7-#{CREW_ICU_VER}"
   license 'GPL2 LGPL2.1 MPL'
   compatibility 'all'
   source_url 'https://dev-www.libreoffice.org/src/libcdr/libcdr-0.1.7.tar.xz'

@@ -6,7 +6,7 @@ require 'package'
 class Ldb < Package
   description 'Schema-less, ldap like, API and database'
   homepage 'https://ldb.samba.org/'
-  version '2.9.1-py3.12'
+  version "2.9.1-#{CREW_PY_VER}"
   license 'GPLv3'
   compatibility 'all'
   source_url "https://samba.org/ftp/ldb/ldb-#{version.split('-').first}.tar.gz"

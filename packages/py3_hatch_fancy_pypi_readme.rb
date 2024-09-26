@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_hatch_fancy_pypi_readme < Pip
   description 'MIT-licensed metadata plugin for Hatch'
   homepage 'https://github.com/hynek/hatch-fancy-pypi-readme'
-  version '24.1.0-py3.12'
+  version "24.1.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_minidb < Pip
   description 'Minidb is a simple SQLite3-based store for Python objects.'
   homepage 'https://thp.io/2010/minidb/'
-  version '2.0.8-py3.12'
+  version "2.0.8-#{CREW_PY_VER}"
   license 'ISC'
   compatibility 'all'
   source_url 'SKIP'

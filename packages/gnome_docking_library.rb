@@ -5,7 +5,7 @@ require 'buildsystems/autotools'
 class Gnome_docking_library < Autotools
   description 'GUsb is a GObject wrapper for libusb1'
   homepage 'https://www.gnome.org/'
-  version '3.40.0-icu75.1'
+  version "3.40.0-#{CREW_ICU_VER}"
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gdl.git'

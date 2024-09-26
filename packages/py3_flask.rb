@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_flask < Pip
   description 'Flask is a simple framework for building complex web applications.'
   homepage 'https://palletsprojects.com/p/flask/'
-  version '3.0.3-py3.12'
+  version "3.0.3-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
