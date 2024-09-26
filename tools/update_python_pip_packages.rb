@@ -60,9 +60,9 @@ relevant_pip_packages.each_with_index do |package, index|
 
     puts "\e[1B\e[KUpdating #{pip_name} from #{pkg_version} to #{pip_version}\e[1A".lightblue
     if pip_name == 'pyicu'
-      system "sed -i \"s,^\ \ version\ .*,\ \ version '#{pip_version}-\#{CREW_ICU_VER}-\#{CREW_PY_VER}\",\" #{package}"
+      system "sed -i \"s,^\ \ version\ .*,\ \ version \\\"#{pip_version}-\#{CREW_ICU_VER}-\#{CREW_PY_VER}\\\",\" #{package}"
     else
-      system "sed -i \"s,^\ \ version\ .*,\ \ version '#{pip_version}-\#{CREW_PY_VER}\",\" #{package}"
+      system "sed -i \"s,^\ \ version\ .*,\ \ version \\\"#{pip_version}-\#{CREW_PY_VER}\\\",\" #{package}"
     end
   end
 end

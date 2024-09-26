@@ -45,7 +45,7 @@ relevant_gem_packages.each_with_index do |package, index|
     next package if gem_version.blank?
     if Gem::Version.new(gem_version) > Gem::Version.new(pkg_version)
       puts "Updating #{gem_name} from #{pkg_version} to #{gem_version}".lightblue
-      system "sed -i \"s,^\ \ version\ .*\",\ \ version '#{gem_version}-\#{CREW_RUBY_VER}\",\" #{package}"
+      system "sed -i \"s,^\ \ version\ .*\",\ \ version \\\"#{gem_version}-\#{CREW_RUBY_VER}\\\",\" #{package}"
     end
     relevant_gem_packages.delete(package)
   end
