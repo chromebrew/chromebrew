@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Openimageio < CMake
   description 'OpenImageIO is a toolset for reading, writing, and manipulating image files of any image file format relevant to VFX / animation via a format-agnostic API with a feature set, scalability, and robustness needed for feature film production.'
   homepage 'https://github.com/AcademySoftwareFoundation/OpenImageIO'
-  version "2.5.12.0-#{CREW_PY_VER}"
+  version "2.5.15.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/AcademySoftwareFoundation/OpenImageIO.git'
@@ -11,14 +11,16 @@ class Openimageio < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '293f193c4c9bd02dae17d5b2f6fe68925f804e5a2e67bf1a2344c1fb80df1a2b',
-     armv7l: '293f193c4c9bd02dae17d5b2f6fe68925f804e5a2e67bf1a2344c1fb80df1a2b',
-     x86_64: 'c5bc2ce8a7ff1e45ff7e8c4e1e5a573a61e10d56ed71c929173e9758213da339'
+    aarch64: 'f6ff0c84c8844183e2b49fa214daa451c6515a5d1e6ae1dcb70ebe6d94c02ef8',
+     armv7l: 'f6ff0c84c8844183e2b49fa214daa451c6515a5d1e6ae1dcb70ebe6d94c02ef8',
+     x86_64: '44955202370b6691ff0fd388dfb96863adad55ec4f720e0caef2356815c0e343'
   })
 
   depends_on 'boost'
   depends_on 'bzip2' # R
   depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
   depends_on 'giflib' # R
   depends_on 'libfmt'
   depends_on 'libjpeg_turbo'
