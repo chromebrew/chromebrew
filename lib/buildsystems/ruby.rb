@@ -40,8 +40,12 @@ def set_vars(passed_name = nil, passed_version = nil)
   # This assumes the package class name starts with 'Ruby_' and
   # version is in the form '(gem version)-ruby-(ruby version)'.
   # For example, name 'Ruby_awesome' and version '1.0.0-ruby-3.3'.
-  @gem_name = passed_name.sub('ruby_', '').sub('_', '-')
+  gem_name_test = passed_name.gsub(/^ruby_/, '')
+  @remote_gem_ver = Gem.latest_version_for(gem_name_test).to_s
+  @remote_gem_ver = Gem.latest_version_for(gem_name_test.gsub!('_', '-')).to_s if gem_version.empty?
+  @gem_name = gem_name_test
   @gem_ver = passed_version.split('-').first.to_s
+  puts "Note that #{name}.rb suggests that latest #{@gem_name} version is #{@gem_ver}.\nHowever, gem reports that the latest version is #{@remote_gem_ver}.".orange if Gem::Version.new(@remote_gem_ver.to_s) >= Gem::Version.new(@gem_ver)
 end
 
 class RUBY < Package
@@ -81,10 +85,5 @@ class RUBY < Package
     gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
     system "gem contents #{@gem_name} > #{gem_filelist_path}"
     @ruby_install_extras&.call
-
-    @remote_gem_ver = Gem.latest_spec_for(@gem_name).version.to_s
-    return if @remote_gem_ver == @gem_ver
-
-    puts "Note that #{name}.rb suggests that #{@gem_name} version is #{@gem_ver}.\nHowever, gem reports that the installed version is #{@remote_gem_ver}.".orange if Gem::Version.new(@remote_gem_ver.to_s) >= Gem::Version.new(@gem_ver)
   end
 end

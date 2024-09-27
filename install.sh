@@ -346,7 +346,7 @@ yes | crew install crew_profile_base
 ARCH="$ARCH" source ~/.bashrc
 
 echo_info "Installing core Chromebrew packages...\n"
-yes | crew install core
+yes | crew install core default_gems
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than

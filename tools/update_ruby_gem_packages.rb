@@ -38,12 +38,12 @@ total_files_to_check = relevant_gem_packages.length
 numlength = total_files_to_check.to_s.length
 relevant_gem_packages.each_with_index do |package, index|
   pool.post do
-    gem_name = package.gsub('.rb', '').sub('ruby_', '').gsub('_', '-').gsub('packages/', '')
+    gem_name_test = package.gsub(%r{^packages/ruby_}, '').gsub(/.rb$/, '')
+    gem_version = Gem.latest_version_for(gem_name_test).to_s
+    gem_version = Gem.latest_version_for(gem_name_test.gsub!('_', '-')).to_s if gem_version.empty?
+    gem_name = gem_name_test
     puts "[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Checking rubygems for updates to #{gem_name}...".orange
-    # rubocop:disable Lint/InterpolationCheck
-    pkg_version = `sed -n -e 's/^\ \ version //p' #{package}`.chomp.delete("'").delete('"').gsub('-#{CREW_RUBY_VER}', '').split('-').first
-    # rubocop:enable Lint/InterpolationCheck
-    gem_version = Gem.latest_spec_for(gem_name).version.to_s
+    pkg_version = `sed -n -e 's/^\ \ version //p' #{package}`.chomp.delete("'").delete('"').gsub(/-\#{CREW_RUBY_VER}/, '').split('-').first
     next package if gem_version.blank?
     if Gem::Version.new(gem_version) > Gem::Version.new(pkg_version)
       puts "Updating #{gem_name} from #{pkg_version} to #{gem_version}".lightblue
