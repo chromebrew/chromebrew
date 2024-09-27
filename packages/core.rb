@@ -91,9 +91,7 @@ class Core < Package
   # Needed for rubygem updates
   depends_on 'ruby_rubygems_update'
   # These are the gems that come bundled with ruby.
-  # Only install this from the installer for new installs
-  # because the install takes a while.
-  # depends_on 'default_gems'
+  depends_on 'default_gems'
   depends_on 'slang'
   depends_on 'sqlite'
   depends_on 'uchardet'

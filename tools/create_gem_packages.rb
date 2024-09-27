@@ -132,7 +132,7 @@ end
 @gems_to_add = []
 # Allow gems to be passed in as arguments to this script.
 input_array = ARGV
-@gems_to_add.push(*input_array) if input_array.length > 0
+@gems_to_add.push(*input_array) if input_array.length.positive?
 
 puts "Checking for default gems via 'gem list | grep default'...".orange
 default_gems = `gem list | grep default`.split("\n").reject(&:empty?).map { |g| g.split.first }
