@@ -3,24 +3,17 @@ require 'buildsystems/pip'
 class Awscli < Pip
   description 'Universal Command Line Interface for Amazon Web Services'
   homepage 'https://github.com/aws/aws-cli'
-  version "1.34.28-#{CREW_PY_VER}"
+  version "1.34.29-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '627d8a0ed4021872f48d986fd0969272e3d1b1e91ca143526bd46c899857c05b',
-     armv7l: '627d8a0ed4021872f48d986fd0969272e3d1b1e91ca143526bd46c899857c05b',
-       i686: '7ee95c0821849739b70d8e0fb68c87bad12f8b880618e3e1a51b42f688cb7b9c',
-     x86_64: '5d44025832a7ad755abfa2036bd97f8f81ea33559f758b132d8016cc235ecc1c'
-  })
-
-  binary_sha256({
-    aarch64: '627d8a0ed4021872f48d986fd0969272e3d1b1e91ca143526bd46c899857c05b',
-     armv7l: '627d8a0ed4021872f48d986fd0969272e3d1b1e91ca143526bd46c899857c05b',
-       i686: '7ee95c0821849739b70d8e0fb68c87bad12f8b880618e3e1a51b42f688cb7b9c',
-     x86_64: '5d44025832a7ad755abfa2036bd97f8f81ea33559f758b132d8016cc235ecc1c'
+    aarch64: '4e09a646ab51f48df4499d9a6bfcdd6a5f989240cee552597b86aede3840bddf',
+     armv7l: '4e09a646ab51f48df4499d9a6bfcdd6a5f989240cee552597b86aede3840bddf',
+       i686: 'eb5b9d40a91e002f1f819a79c4d4cdcc0b16dc062fa875c9f0074463ee39b48d',
+     x86_64: '67d0b489172a31ea500ab22ce44e5a463be2230f734331f14a42971dad6daf17'
   })
 
   depends_on 'groff'

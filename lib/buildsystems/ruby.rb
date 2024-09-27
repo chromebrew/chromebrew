@@ -42,10 +42,10 @@ def set_vars(passed_name = nil, passed_version = nil)
   # For example, name 'Ruby_awesome' and version '1.0.0-ruby-3.3'.
   gem_name_test = passed_name.gsub(/^ruby_/, '')
   @remote_gem_ver = Gem.latest_version_for(gem_name_test).to_s
-  @remote_gem_ver = Gem.latest_version_for(gem_name_test.gsub!('_', '-')).to_s if gem_version.empty?
+  @remote_gem_ver = Gem.latest_version_for(gem_name_test.gsub!('_', '-')).to_s if @remote_gem_ver.empty?
   @gem_name = gem_name_test
   @gem_ver = passed_version.split('-').first.to_s
-  puts "Note that #{name}.rb suggests that latest #{@gem_name} version is #{@gem_ver}.\nHowever, gem reports that the latest version is #{@remote_gem_ver}.".orange if Gem::Version.new(@remote_gem_ver.to_s) >= Gem::Version.new(@gem_ver)
+  puts "Note that #{name}.rb suggests that latest #{@gem_name} version is #{@gem_ver}.\nHowever, gem reports that the latest version is #{@remote_gem_ver}.".orange if Gem::Version.new(@remote_gem_ver.to_s) > Gem::Version.new(@gem_ver)
 end
 
 class RUBY < Package
@@ -78,7 +78,7 @@ class RUBY < Package
       FileUtils.cp "#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem", CREW_DEST_DIR if File.file?("#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem")
       system "gem install -N --local #{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem --conservative"
     elsif Kernel.system "gem list -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
-      return if Gem::Version.new(@remote_gem_ver.to_s) >= Gem::Version.new(@gem_ver) && File.file?(gem_filelist_path)
+      return if Gem::Version.new(@remote_gem_ver.to_s) == Gem::Version.new(@gem_ver) && File.file?(gem_filelist_path)
       system "gem update -N #{@gem_name} --conservative"
     else
       system "gem install -N #{@gem_name} --conservative"
