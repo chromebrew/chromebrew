@@ -86,9 +86,9 @@ end
 def create_gem_package(package)
   description_raw = `gem spec #{package} description -b`.gsub('--- ', '').split("\n").reject(&:empty?)
   description = if description_raw.length == 1
-                  "#{description_raw[0].to_s.strip.split('.').first.capitalize}."
+                  "#{description_raw[0].to_s.strip.split('.').first}."
                 else
-                  "#{description_raw.join("\n").gsub(/\s+/, ' ').strip.split('.').first.capitalize}."
+                  "#{description_raw.join("\n").gsub(/\s+/, ' ').strip.split('.').first}."
                 end
 
   homepage = `gem spec #{package} homepage -b`.split.last

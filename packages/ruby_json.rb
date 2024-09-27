@@ -18,5 +18,4 @@ class Ruby_json < RUBY
 
   conflicts_ok
   gem_compile_needed
-  no_source_build
 end

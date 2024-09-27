@@ -4,7 +4,7 @@ class Ruby_erb < RUBY
   description 'An easy to use but powerful templating system for Ruby.'
   homepage 'https://github.com/ruby/erb'
   version "4.0.4-#{CREW_RUBY_VER}"
-  license 'Ruby'
+  license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
@@ -16,7 +16,8 @@ class Ruby_erb < RUBY
      x86_64: '129394d92d6b217e01353d476c3bb1a64dd95414e6ef623ce674c83a3eada1ab'
   })
 
+  depends_on 'ruby_cgi' # R
+
   conflicts_ok
   gem_compile_needed
-  no_source_build
 end

@@ -1,7 +1,7 @@
 require 'buildsystems/ruby'
 
 class Ruby_bundler < RUBY
-  description 'many machines, systematically and repeatably.'
+  description "Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably."
   homepage 'https://bundler.io'
   version "2.5.20-#{CREW_RUBY_VER}"
   license 'MIT'

@@ -2,9 +2,9 @@ require 'buildsystems/ruby'
 
 class Ruby_rubygems_update < RUBY
   description 'RubyGems is a package management framework for Ruby.'
-  homepage 'https://guides.rubygems.org'
+  homepage 'https://github.com/rubygems/rubygems'
   version "3.5.20-#{CREW_RUBY_VER}"
-  license 'Ruby'
+  license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
 
