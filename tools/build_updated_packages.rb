@@ -158,6 +158,11 @@ updated_packages.each do |pkg|
   name = pkg.sub('packages/', '').sub('.rb', '')
 
   puts "Evaluating #{name} package...".orange
+  # Clear out boolean properties for each package before eval.
+  boolean_properties.split.each do |prop_name|
+    prop_var_name = "@#{prop_name}"
+    instance_variable_set(prop_var_name, false)
+  end
   # rubocop:disable Security/Eval
   eval(`sed -e '/^require/d' -e '/^\ \ depends_on/d' -e '/^class/d' -e '/^end/d' #{pkg}`.chomp)
   # rubocop:enable Security/Eval
