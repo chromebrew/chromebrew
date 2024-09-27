@@ -8,9 +8,30 @@
 # tools/create_gem_packages.rb <gem name> ...
 
 require 'fileutils'
-
+require 'json'
 require_relative '../lib/color'
 require_relative '../lib/const'
+
+def require_gem(gem_name_and_require = nil, require_override = nil)
+  # Allow only loading gems when needed.
+  return if gem_name_and_require.nil?
+
+  gem_name = gem_name_and_require.split('/')[0]
+  begin
+    gem gem_name
+  rescue LoadError
+    puts " -> install #{gem_name} gem".orange
+    Gem.install(gem_name)
+    gem gem_name
+  end
+  requires = if require_override.nil?
+               gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
+             else
+               require_override
+             end
+  require requires
+end
+require_gem('httpparty')
 
 def check_gem_binary_build_needed(gem_name = nil, gem_ver = nil)
   puts "Checking to see if gem compile for #{gem_name} #{gem_ver} is needed..."
@@ -134,11 +155,19 @@ end
 input_array = ARGV
 @gems_to_add.push(*input_array) if input_array.length.positive?
 
-puts "Checking for default gems via 'gem list | grep default'...".orange
-default_gems = `gem list | grep default`.split("\n").reject(&:empty?).map { |g| g.split.first }
+puts 'Checking for default gems from https://stdgems.org/default_gems.json'
+default_gem_json = JSON.parse(HTTParty.get('https://stdgems.org/default_gems.json').body)
+default_gems = default_gem_json['gems'].map { |i| i['gem'] }
+default_gems.delete('win32ole')
+
+puts 'Checking for bundled gems from https://stdgems.org/bundled_gems.json'
+bundled_gem_json = JSON.parse(HTTParty.get('https://stdgems.org/bundled_gems.json').body)
+bundled_gems = bundled_gem_json['gems'].map { |i| i['gem'] }
+
 puts "Checking for updated gems via 'gem outdated'...".orange
 outdated_gems = `gem outdated`.split("\n").reject(&:empty?).map { |g| g.split.first }
 @gems_to_add.push(*default_gems)
+@gems_to_add.push(*bundled_gems)
 @gems_to_add.push(*outdated_gems)
 @gems_to_add.sort!
 @gems_to_add.uniq!

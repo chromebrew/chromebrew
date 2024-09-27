@@ -82,13 +82,13 @@ class RUBY < Package
   def self.install
     crewlog "install: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, @gem_outdated: #{@gem_outdated}, @gem_installed: #{@gem_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"
+    FileUtils.cp "#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem", CREW_DEST_DIR if File.file?("#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem") && (!@gem_binary_build_needed.blank? || gem_compile_needed?)
     unless @install_gem
       puts "#{@gem_name} #{@gem_ver} is already installed.".lightgreen
       return
     end
     puts "#{@gem_name.capitalize} needs a binary gem built!".orange unless @gem_binary_build_needed.blank?
     if !no_compile_needed? || !@gem_binary_build_needed.blank? || gem_compile_needed?
-      FileUtils.cp "#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem", CREW_DEST_DIR if File.file?("#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem")
       system "gem install -N --local #{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem --conservative"
     elsif @gem_outdated
       puts "Updating #{@gem_name} gem to #{@gem_ver}...".orange

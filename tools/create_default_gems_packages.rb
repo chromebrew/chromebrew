@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# create_default_gems_package version 1.0 (for Chromebrew)
+# create_default_gems_packages version 1.0 (for Chromebrew)
 # This creates a default_gems package and a bundled_gems package based
 # upon:
 # https://stdgems.org/default_gems.json
@@ -8,11 +8,10 @@
 #
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo with a new branch checked out:
-# tools/create_default_gems_package.rb
+# tools/create_default_gems_packages.rb
 
 require 'fileutils'
 require 'json'
-
 require_relative '../lib/color'
 require_relative '../lib/const'
 def require_gem(gem_name_and_require = nil, require_override = nil)
@@ -40,6 +39,7 @@ def create_default_gems_package
   # https://stdgems.org/default_gems.json
   default_gem_json = JSON.parse(HTTParty.get('https://stdgems.org/default_gems.json').body)
   default_gems = default_gem_json['gems'].map { |i| i['gem'] }
+  default_gems.delete('win32ole')
 
   puts 'Default Gems are:'
   puts default_gems

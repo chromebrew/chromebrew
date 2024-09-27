@@ -16,6 +16,10 @@ class Ruby_debug < RUBY
      x86_64: '2b701d2dd3b61b89da53aa557d5d88ce031fe3ac959f4ff0d966ca62bc504dc1'
   })
 
+  depends_on 'ruby_reline' # R
+
+  depends_on 'ruby_irb' # R
+
   conflicts_ok
   gem_compile_needed
   no_source_build

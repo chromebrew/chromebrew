@@ -19,6 +19,7 @@ class Ruby_pp < RUBY
   depends_on 'ruby_prettyprint' # R
   depends_on 'ruby_securerandom' # R
   depends_on 'ruby_tzinfo' # R
+  depends_on 'ruby_httparty' # R
 
   conflicts_ok
   no_compile_needed

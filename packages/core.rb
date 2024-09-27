@@ -90,8 +90,10 @@ class Core < Package
   depends_on 'ruby_ruby_libversion'
   # Needed for rubygem updates
   depends_on 'ruby_rubygems_update'
-  # These are the gems that come bundled with ruby.
+  # These are the "Default Gems" that come with Ruby.
   depends_on 'default_gems'
+  # These are the "Bundled Gems" that come with Ruby.
+  depends_on 'bundled_gems'
   depends_on 'slang'
   depends_on 'sqlite'
   depends_on 'uchardet'
