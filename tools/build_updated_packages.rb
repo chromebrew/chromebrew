@@ -169,6 +169,7 @@ updated_packages.each do |pkg|
   boolean_property(boolean_properties.split)
   property(properties.split)
 
+  @binary_compression = 'gem' if gem_compile_needed?
   # Don't check if we need new binaries if the package doesn't already
   # have binaries for this architecture and no_compile_needed is set.
   if !system("grep -q binary_sha256 #{pkg}") && no_compile_needed?
@@ -182,7 +183,7 @@ updated_packages.each do |pkg|
     check_builds.each do |arch|
       arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@version}_#{arch}/#{name}-#{@version}-chromeos-#{arch}.#{@binary_compression}"
       puts "Checking: curl -sI #{arch_specific_url}" if CREW_VERBOSE
-      build.delete(arch) if `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
+      build.delete(arch) if `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200' && system("grep -q binary_sha256 #{pkg}")
     end
     if build.empty?
       puts "No builds are needed for #{name} #{@version}.".lightgreen
