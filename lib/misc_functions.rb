@@ -1,7 +1,6 @@
 # lib/misc_functions.rb
 # Generic implementations of various functions/algorithms that are not crew-specific.
 require_relative 'color'
-require 'matrix'
 
 def require_gem(gem_name_and_require = nil, require_override = nil)
   # Allow only loading gems when needed.
