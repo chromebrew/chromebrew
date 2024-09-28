@@ -56,6 +56,7 @@ class RUBY < Package
   def self.preflight
     @install_gem = true
     set_vars(name, version)
+    puts "Examining #{@gem_name} gem...".orange
     @gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
     @gem_installed = Kernel.system "gem list -i \"^#{@gem_name}\$\" -v #{@gem_ver}", %i[out err] => File::NULL
     gem_installed_anyver = Kernel.system "gem list -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
@@ -76,14 +77,12 @@ class RUBY < Package
 
     Kernel.system "gem fetch #{@gem_name} --platform=ruby --version=#{@gem_ver}"
     Kernel.system "gem unpack #{@gem_name}-#{@gem_ver}.gem"
-    Kernel.system "gem compile --strip --prune #{@gem_name}-#{@gem_ver}.gem"
-    FileUtils.cp "#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem", CREW_DEST_DIR if File.file?("#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem") && (!@gem_binary_build_needed.blank? || gem_compile_needed?)
+    Kernel.system "gem compile --strip --prune #{@gem_name}-#{@gem_ver}.gem -O #{CREW_DEST_DIR}/"
   end
 
   def self.install
     crewlog "install: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, @gem_outdated: #{@gem_outdated}, @gem_installed: #{@gem_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"
-    FileUtils.cp "#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem", CREW_DEST_DIR if File.file?("#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem") && (!@gem_binary_build_needed.blank? || gem_compile_needed?)
     unless @install_gem
       puts "#{@gem_name} #{@gem_ver} is already installed.".lightgreen
       return
