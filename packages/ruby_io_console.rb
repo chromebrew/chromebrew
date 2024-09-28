@@ -4,7 +4,7 @@ class Ruby_io_console < RUBY
   description 'add console capabilities to IO instances.'
   homepage 'https://github.com/ruby/io-console'
   version "0.7.2-#{CREW_RUBY_VER}"
-  license 'Ruby'
+  license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
@@ -18,5 +18,4 @@ class Ruby_io_console < RUBY
 
   conflicts_ok
   gem_compile_needed
-  no_source_build
 end

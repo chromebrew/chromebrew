@@ -8,6 +8,8 @@ class Ruby_reline < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby_io_console' # R
+
   conflicts_ok
   no_compile_needed
 end

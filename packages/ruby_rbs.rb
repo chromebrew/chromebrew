@@ -16,6 +16,8 @@ class Ruby_rbs < RUBY
      x86_64: '7c8828fb9f1be082f75632001db85bfe5d9bd5d855fc0242bf5d0c54d112fd67'
   })
 
+  depends_on 'ruby_abbrev' # R
+
   conflicts_ok
   gem_compile_needed
   no_source_build

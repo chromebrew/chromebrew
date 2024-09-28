@@ -4,7 +4,7 @@ class Ruby_bigdecimal < RUBY
   description 'This library provides arbitrary-precision decimal floating-point number class.'
   homepage 'https://github.com/ruby/bigdecimal'
   version "3.1.8-#{CREW_RUBY_VER}"
-  license 'Ruby'
+  license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
@@ -18,5 +18,4 @@ class Ruby_bigdecimal < RUBY
 
   conflicts_ok
   gem_compile_needed
-  no_source_build
 end

@@ -8,7 +8,7 @@ class Ruby_typeprof < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'ruby_rbs'
+  depends_on 'ruby_rbs' # R
 
   conflicts_ok
   no_compile_needed

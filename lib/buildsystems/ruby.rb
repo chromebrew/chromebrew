@@ -40,8 +40,12 @@ def set_vars(passed_name = nil, passed_version = nil)
   # This assumes the package class name starts with 'Ruby_' and
   # version is in the form '(gem version)-ruby-(ruby version)'.
   # For example, name 'Ruby_awesome' and version '1.0.0-ruby-3.3'.
-  @gem_name = passed_name.sub('ruby_', '').sub('_', '-')
+  gem_name_test = passed_name.gsub(/^ruby_/, '')
+  @remote_gem_ver = Gem.latest_version_for(gem_name_test).to_s
+  @remote_gem_ver = Gem.latest_version_for(gem_name_test.gsub!('_', '-')).to_s if @remote_gem_ver.empty?
+  @gem_name = gem_name_test
   @gem_ver = passed_version.split('-').first.to_s
+  puts "Note that #{name}.rb suggests that latest #{@gem_name} version is #{@gem_ver}.\nHowever, gem reports that the latest version is #{@remote_gem_ver}.".orange if Gem::Version.new(@remote_gem_ver.to_s) > Gem::Version.new(@gem_ver)
 end
 
 class RUBY < Package
@@ -50,8 +54,18 @@ class RUBY < Package
   depends_on 'ruby'
 
   def self.preflight
+    @install_gem = true
     set_vars(name, version)
-    crewlog "@gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}"
+    puts "Examining #{@gem_name} gem...".orange
+    @gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
+    @gem_installed = Kernel.system "gem list -i \"^#{@gem_name}\$\" -v #{@gem_ver}", %i[out err] => File::NULL
+    gem_installed_anyver = Kernel.system "gem list -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
+    @gem_outdated = !@gem_installed && gem_installed_anyver
+    crewlog "preflight: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, @gem_outdated: #{@gem_outdated}, @gem_installed: #{@gem_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
+    if @gem_installed && Gem::Version.new(@remote_gem_ver.to_s) == Gem::Version.new(@gem_ver)
+      system "gem contents #{@gem_name} > #{@gem_filelist_path}" unless File.file?(@gem_filelist_path)
+      @install_gem = false
+    end
   end
 
   def self.preinstall
@@ -63,28 +77,28 @@ class RUBY < Package
 
     Kernel.system "gem fetch #{@gem_name} --platform=ruby --version=#{@gem_ver}"
     Kernel.system "gem unpack #{@gem_name}-#{@gem_ver}.gem"
-    Kernel.system "gem compile --strip --prune #{@gem_name}-#{@gem_ver}.gem"
+    Kernel.system "gem compile --strip --prune #{@gem_name}-#{@gem_ver}.gem -O #{CREW_DEST_DIR}/"
   end
 
   def self.install
+    crewlog "install: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, @gem_outdated: #{@gem_outdated}, @gem_installed: #{@gem_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"
+    unless @install_gem
+      puts "#{@gem_name} #{@gem_ver} is already installed.".lightgreen
+      return
+    end
     puts "#{@gem_name.capitalize} needs a binary gem built!".orange unless @gem_binary_build_needed.blank?
     if !no_compile_needed? || !@gem_binary_build_needed.blank? || gem_compile_needed?
-      FileUtils.cp "#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem", CREW_DEST_DIR if File.file?("#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem")
       system "gem install -N --local #{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem --conservative"
-    elsif Kernel.system "gem list -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
+    elsif @gem_outdated
+      puts "Updating #{@gem_name} gem to #{@gem_ver}...".orange
       system "gem update -N #{@gem_name} --conservative"
     else
       system "gem install -N #{@gem_name} --conservative"
     end
     system "gem cleanup #{@gem_name}"
-    gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
-    system "gem contents #{@gem_name} > #{gem_filelist_path}"
+    system "gem contents #{@gem_name} > #{@gem_filelist_path}"
     @ruby_install_extras&.call
-
-    @remote_gem_ver = Gem.latest_spec_for(@gem_name).version.to_s
-    return if @remote_gem_ver == @gem_ver
-
-    puts "Note that #{name}.rb suggests that #{@gem_name} version is #{@gem_ver}.\nHowever, gem reports that the installed version is #{@remote_gem_ver}.".orange if Gem::Version.new(@remote_gem_ver.to_s) >= Gem::Version.new(@gem_ver)
+    @install_gem = false
   end
 end
