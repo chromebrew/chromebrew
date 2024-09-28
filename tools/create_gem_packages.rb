@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
 # create_gem_packages version 1.2 (for Chromebrew)
-# This creates ruby gem packages based upon the output of 'gem list | grep default'.
+# This creates ruby gem packages based upon the default and bundled gems
+# listed at: https://stdgems.org/
 #
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo with a new branch checked out:
