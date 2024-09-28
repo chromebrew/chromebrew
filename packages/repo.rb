@@ -1,4 +1,5 @@
 require 'package'
+require 'misc_functions'
 
 class Repo < Package
   description 'The Multiple Git Repository Tool'
@@ -14,8 +15,7 @@ class Repo < Package
   no_compile_needed
 
   def self.preflight
-    free_space = `echo $(($(stat -f --format="%a*%S" #{CREW_PREFIX})))`.chomp.to_i
-    abort 'Not enough free disk space.  You need at least 1 MB to install.'.lightred if free_space < 1000000
+    MiscFunctions.check_free_disk_space(1000000000)
   end
 
   def self.install
