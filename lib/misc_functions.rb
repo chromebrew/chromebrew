@@ -3,6 +3,27 @@
 require_relative 'color'
 require 'matrix'
 
+def require_gem(gem_name_and_require = nil, require_override = nil)
+  # Allow only loading gems when needed.
+  return if gem_name_and_require.nil?
+
+  gem_name = gem_name_and_require.split('/')[0]
+  begin
+    gem gem_name
+  rescue LoadError
+    puts " -> install #{gem_name} gem".orange
+    Gem.install(gem_name)
+    gem gem_name
+  end
+  requires = if require_override.nil?
+               gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
+             else
+               require_override
+             end
+  require requires
+end
+require_gem('matrix')
+
 class MiscFunctions
   def self.human_size(bytes)
     kilobyte = 1024.0
@@ -75,7 +96,7 @@ class MiscFunctions
   end
 
   def self.check_free_disk_space(bytes = 0)
-    formatted_size = self.human_size(bytes)
+    formatted_size = human_size(bytes)
     free_space = `echo $(($(stat -f --format="%a*%S" #{CREW_PREFIX})))`.chomp.to_i
     abort "\nNot enough free disk space.  You need at least #{formatted_size} to install.\n".lightred if free_space < bytes
   end

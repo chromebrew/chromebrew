@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '3.0'
+  version '3.1'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -88,6 +88,12 @@ class Core < Package
   depends_on 'ruby_pry'
   # crew check -V breaks without this.
   depends_on 'ruby_ruby_libversion'
+  # Needed for rubygem updates
+  depends_on 'ruby_rubygems_update'
+  # These are the "Default Gems" that come with Ruby.
+  depends_on 'default_gems'
+  # These are the "Bundled Gems" that come with Ruby.
+  depends_on 'bundled_gems'
   depends_on 'slang'
   depends_on 'sqlite'
   depends_on 'uchardet'

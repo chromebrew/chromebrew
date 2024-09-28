@@ -4,7 +4,7 @@ class Ruby_nkf < RUBY
   description 'Ruby extension for Network Kanji Filter'
   homepage 'https://github.com/ruby/nkf'
   version "0.2.0-#{CREW_RUBY_VER}"
-  license 'Ruby'
+  license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
@@ -18,5 +18,4 @@ class Ruby_nkf < RUBY
 
   conflicts_ok
   gem_compile_needed
-  no_source_build
 end
