@@ -711,7 +711,7 @@ def build_and_preconfigure(target_dir)
     end
     @pkg.in_build = false
     # wipe crew destdir
-    FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: @fileutils_verbose
+    FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: @fileutils_verbose unless @pkg.superclass.to_s == 'RUBY'
     puts 'Preconfiguring package...'
     cache_build if CREW_CACHE_BUILD
     @pkg.install unless @pkg.superclass.to_s == 'RUBY'
@@ -723,14 +723,14 @@ def build_and_preconfigure(target_dir)
 end
 
 def pre_flight
-  puts 'Performing pre-flight checks...'
+  puts "Performing pre-flight checks for #{@pkg.name}...".lightblue
   abort PackageUtils.incompatible_reason(@pkg).join("\n").to_s.lightred unless PackageUtils.compatible?(@pkg)
   @pkg.preflight
 end
 
 def pre_install(dest_dir)
   Dir.chdir dest_dir do
-    puts 'Performing pre-install...'
+    puts "Performing pre-install for #{@pkg.name}...".lightblue
     @pkg.preinstall
     # Reload device.json in case preinstall modified it via
     # running 'crew remove packages...'

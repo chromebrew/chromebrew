@@ -77,6 +77,7 @@ class RUBY < Package
     Kernel.system "gem fetch #{@gem_name} --platform=ruby --version=#{@gem_ver}"
     Kernel.system "gem unpack #{@gem_name}-#{@gem_ver}.gem"
     Kernel.system "gem compile --strip --prune #{@gem_name}-#{@gem_ver}.gem"
+    FileUtils.cp "#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem", CREW_DEST_DIR if File.file?("#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem") && (!@gem_binary_build_needed.blank? || gem_compile_needed?)
   end
 
   def self.install
