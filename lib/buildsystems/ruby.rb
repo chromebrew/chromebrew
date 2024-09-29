@@ -74,7 +74,10 @@ class RUBY < Package
       system "gem contents #{@gem_name} > #{@gem_filelist_path}" unless File.file?(@gem_filelist_path)
       @device = ConvenienceFunctions.load_symbolized_json
       pkg_info = @device[:installed_packages].select { |pkg| pkg[:name] == name } [0]
-      @install_gem = false if Gem::Version.new(version) == pkg_info[:version]
+      # Handle case of Chromebrew gem pkg not yet having been installed
+      # or having a changed version number despite the gem having been
+      # installed.
+      @install_gem = false if pkg_info.nil? || Gem::Version.new(version) == pkg_info[:version]
     end
   end
 
