@@ -1526,7 +1526,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         puts "curl -Ls #{new_url} | sha256sum" if CREW_VERBOSE
         upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
         if upstream_sha256 == new_sha256
-          puts output.lightgreen
+          puts "#{output}\n".lightgreen
         else
           if CREW_VERBOSE
             puts "expected sha256 hash=#{new_sha256}"
