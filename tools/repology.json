@@ -381,7 +381,7 @@
     "homepage": "https://sourceforge.net/projects/aqemu/",
     "version": "0.9.2",
     "license": "GPL-2",
-    "compatibility": "aarch64,armv7l,x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "arduino_ide",
@@ -739,7 +739,7 @@
     "name": "awscli",
     "description": "Universal Command Line Interface for Amazon Web Services",
     "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.34.19",
+    "version": "1.34.29",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -1067,7 +1067,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.69.168",
+    "version": "1.70.119",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1229,13 +1229,13 @@
     "homepage": "https://www.hjdskes.nl/projects/cage/",
     "version": "0.1.5",
     "license": "MIT",
-    "compatibility": "aarch64, armv7l, x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "cairo",
     "description": "Cairo is a 2D graphics library with support for multiple output devices.",
     "homepage": "https://www.cairographics.org",
-    "version": "1.18.1",
+    "version": "1.18.2",
     "license": "LGPL-2.1 or MPL-1.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -1581,7 +1581,7 @@
     "homepage": "http://www.gnu.org/software/clisp/",
     "version": "2.49-3",
     "license": "GPL-2",
-    "compatibility": "i686,x86_64"
+    "compatibility": "i686 x86_64"
   },
   {
     "name": "clmystery",
@@ -1965,7 +1965,7 @@
     "homepage": "https://cryptopp.com/",
     "version": "8.7.0",
     "license": "public domain",
-    "compatibility": "aarch64,armv7l,x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "cryptsetup",
@@ -2547,7 +2547,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "128.0.2739.67-1",
+    "version": "129.0.2792.65-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2779,7 +2779,7 @@
     "name": "exo",
     "description": "Extension library for the Xfce desktop environment",
     "homepage": "https://xfce.org/",
-    "version": "4.16.2",
+    "version": "4.19.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2868,6 +2868,14 @@
     "description": "Command-line productivity booster, offers quick access to files and directories, inspired by autojump, z and v.",
     "homepage": "https://github.com/clvv/fasd",
     "version": "1.0.1-1",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "fastfetch",
+    "description": "Like Neofetch, but much faster because written in C",
+    "homepage": "https://github.com/fastfetch-cli/fastfetch",
+    "version": "2.24.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -2971,7 +2979,7 @@
     "name": "filezilla",
     "description": "FileZilla Client is a free FTP solution.",
     "homepage": "https://filezilla-project.org/",
-    "version": "3.65.0-1",
+    "version": "3.67.1",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2995,7 +3003,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "130.0",
+    "version": "130.0.1",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3283,7 +3291,7 @@
     "name": "fontconfig",
     "description": "Fontconfig is a library for configuring and customizing font access.",
     "homepage": "https://www.freedesktop.org/wiki/Software/fontconfig/",
-    "version": "2.15.0-1",
+    "version": "2.15.0-2",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3419,7 +3427,7 @@
     "name": "freerdp",
     "description": "FreeRDP is a free implementation of the Remote Desktop Protocol.",
     "homepage": "https://www.freerdp.com/",
-    "version": "3.7.0",
+    "version": "3.8.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3443,7 +3451,7 @@
     "name": "freetype",
     "description": "FreeType is a freely available software library to render fonts.",
     "homepage": "https://freetype.org/",
-    "version": "2.13.2-1",
+    "version": "2.13.3",
     "license": "FTL or GPL-2+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3611,7 +3619,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "492.0.0",
+    "version": "493.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -3907,7 +3915,7 @@
     "name": "git",
     "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
     "homepage": "https://git-scm.com/",
-    "version": "2.46.0-1",
+    "version": "2.46.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -3931,7 +3939,7 @@
     "name": "github_cli",
     "description": "Official Github CLI tool",
     "homepage": "https://cli.github.com/",
-    "version": "2.55.0",
+    "version": "2.57.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -3987,7 +3995,7 @@
     "name": "glab",
     "description": "A GitLab CLI tool bringing GitLab to your command line",
     "homepage": "https://gitlab.com/gitlab-org/cli",
-    "version": "1.46.0",
+    "version": "1.46.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4523,7 +4531,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "128.0.6613.137-1",
+    "version": "129.0.6668.70-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -4581,7 +4589,7 @@
     "homepage": "https://gparted.org/",
     "version": "1.6.0",
     "license": "GPL-2+ and FDL-1.2+",
-    "compatibility": "aarch64,armv7l,x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "gperf",
@@ -4829,7 +4837,7 @@
     "homepage": "https://git.gnome.org/browse/gnome-themes-standard/",
     "version": "3.27.92",
     "license": "LGPL-2.1+",
-    "compatibility": "aarch64,armv7l,x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "gtk_layer_shell",
@@ -5035,7 +5043,7 @@
     "name": "harfbuzz",
     "description": "HarfBuzz is an OpenType text shaping engine.",
     "homepage": "https://harfbuzz.github.io/",
-    "version": "9.0.0",
+    "version": "10.0.1",
     "license": "Old-MIT, ISC and icu",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -5141,7 +5149,7 @@
     "homepage": "https://devcenter.heroku.com/articles/heroku-cli",
     "version": "7.44.0",
     "license": "Heroku-TOS",
-    "compatibility": "aarch64,armv7l,x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "hexedit",
@@ -5931,7 +5939,7 @@
     "name": "krita",
     "description": "A generic image manipulation/painting application in the style of Photoshop or GIMP.",
     "homepage": "https://krita.org/en/",
-    "version": "5.2.3",
+    "version": "5.2.5",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
@@ -6379,7 +6387,7 @@
     "name": "libclc",
     "description": "Library requirements of the OpenCL C programming language",
     "homepage": "https://libclc.llvm.org/",
-    "version": "18.1.8",
+    "version": "19.1.0",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -6763,7 +6771,7 @@
     "name": "libfilezilla",
     "description": "libfilezilla is a small and modern C++ library, offering some basic functionality to build high-performing, platform-independent programs.",
     "homepage": "https://lib.filezilla-project.org/",
-    "version": "0.44.0",
+    "version": "0.48.1",
     "license": "GPL-2+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -6941,7 +6949,7 @@
     "homepage": "https://www.gnome.org",
     "version": "3.12.0",
     "license": "GPL-2+ and LGPL-2+",
-    "compatibility": "aarch64,armv7l,x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "libgnomecanvas",
@@ -7733,7 +7741,7 @@
     "homepage": "https://github.com/librespot-org/librespot",
     "version": "0.1.3",
     "license": "MIT",
-    "compatibility": "aarch64,armv7l,x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "librevenge",
@@ -8515,7 +8523,7 @@
     "name": "libxfce4ui",
     "description": "Replacement of the old libxfcegui4 library",
     "homepage": "https://xfce.org/",
-    "version": "4.16.0",
+    "version": "4.19.5",
     "license": "LGPL-2+ and GPL-2+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -8523,9 +8531,9 @@
     "name": "libxfce4util",
     "description": "Utility library for the Xfce4 desktop environment",
     "homepage": "https://xfce.org/",
-    "version": "4.17.1",
+    "version": "4.19.3",
     "license": "LGPL-2+ and GPL-2+",
-    "compatibility": "all"
+    "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "libxfixes",
@@ -8595,7 +8603,7 @@
     "name": "libxml2",
     "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project.",
     "homepage": "http://xmlsoft.org/",
-    "version": "2.13.3",
+    "version": "2.13.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -8603,7 +8611,7 @@
     "name": "libxml2_autotools",
     "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project.",
     "homepage": "http://xmlsoft.org/",
-    "version": "2.13.3",
+    "version": "2.13.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -8900,6 +8908,30 @@
     "description": "LibLLVM and llvm-strip",
     "homepage": "https://llvm.org/",
     "version": "18.1.8",
+    "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "llvm19_build",
+    "description": "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: bolt clang clang-tools-extra compiler-rt lld lldb polly pstl",
+    "homepage": "https://llvm.org/",
+    "version": "19.1.0",
+    "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "llvm19_dev",
+    "description": "LLVM: Everything except libLLVM & llvm-strip",
+    "homepage": "https://llvm.org/",
+    "version": "19.1.0",
+    "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "llvm19_lib",
+    "description": "LibLLVM and llvm-strip",
+    "homepage": "https://llvm.org/",
+    "version": "19.1.0",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9379,7 +9411,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "24.2.2",
+    "version": "24.2.3",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -9477,7 +9509,7 @@
     "homepage": "https://conda.io/miniconda.html",
     "version": "4.5.11",
     "license": "BSD-3",
-    "compatibility": "i686,x86_64"
+    "compatibility": "i686 x86_64"
   },
   {
     "name": "minijail",
@@ -9517,7 +9549,7 @@
     "homepage": "https://www.hyperrealm.com/oss_misctools.shtml",
     "version": "2.6",
     "license": "GPL-2",
-    "compatibility": "i686,x86_64"
+    "compatibility": "i686 x86_64"
   },
   {
     "name": "mjpegtools",
@@ -9587,7 +9619,7 @@
     "name": "mold",
     "description": "A Modern Linker",
     "homepage": "https://github.com/rui314/mold",
-    "version": "2.33.0",
+    "version": "2.34.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -9829,7 +9861,7 @@
     "homepage": "https://musl.cc/",
     "version": "1.2.2-b76f37fd",
     "license": "MIT, LGPL-2 and GPL-2",
-    "compatibility": "aarch64, armv7l, x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "musl_curl",
@@ -10045,7 +10077,7 @@
     "homepage": "https://wiki.gnome.org/Projects/Mutter",
     "version": "45.4",
     "license": "GPL-2+",
-    "compatibility": "aarch64,armv7l,x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "mypaint",
@@ -10179,9 +10211,9 @@
     "name": "nconvert",
     "description": "Command Line Batch utility for images",
     "homepage": "https://www.xnview.com/en/nconvert/",
-    "version": "7.39",
+    "version": "7.192",
     "license": "NConvert-EULA",
-    "compatibility": "i686,x86_64"
+    "compatibility": "i686 x86_64"
   },
   {
     "name": "ncrack",
@@ -10267,7 +10299,7 @@
     "name": "netbeans",
     "description": "Apache NetBeans IDE is free open source software to quickly and easily develop desktop, mobile, and web applications with Java, JavaScript, HTML5, PHP, C/C++ and more.",
     "homepage": "https://netbeans.apache.org/front/main/index.html",
-    "version": "22",
+    "version": "23",
     "license": "Apache-2.0, custom, EPL-1.0, W3C, MIT, BSD, MPL-1.0, CC-BY-3.0, CDDL and CDDL-1.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -10301,7 +10333,7 @@
     "homepage": "http://nethack4.org",
     "version": "4.3.0-beta2-1",
     "license": "nethack",
-    "compatibility": "i686,x86_64"
+    "compatibility": "i686 x86_64"
   },
   {
     "name": "nethogs",
@@ -10723,7 +10755,7 @@
     "name": "openimageio",
     "description": "OpenImageIO is a toolset for reading, writing, and manipulating image files of any image file format relevant to VFX / animation via a format-agnostic API with a feature set, scalability, and robustness needed for feature film production.",
     "homepage": "https://github.com/AcademySoftwareFoundation/OpenImageIO",
-    "version": "2.5.12.0",
+    "version": "2.5.15.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -10756,6 +10788,14 @@
     "description": "The JDK is a development environment for building applications, applets, and components using the Java programming language.",
     "homepage": "https://openjdk.org/",
     "version": "22.0.2",
+    "license": "GPL-2",
+    "compatibility": "x86_64"
+  },
+  {
+    "name": "openjdk23",
+    "description": "The JDK is a development environment for building applications, applets, and components using the Java programming language.",
+    "homepage": "https://openjdk.org/",
+    "version": "23.0.0",
     "license": "GPL-2",
     "compatibility": "x86_64"
   },
@@ -10795,7 +10835,7 @@
     "name": "openmp",
     "description": "LLVM OpenMP Runtime Library",
     "homepage": "https://openmp.llvm.org/",
-    "version": "18.1.8",
+    "version": "19.1.0",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -10867,7 +10907,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "113.0.5230.86",
+    "version": "114.0.5282.21",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -11003,7 +11043,7 @@
     "name": "pango",
     "description": "Pango is a library for laying out and rendering of text, with an emphasis on internationalization.",
     "homepage": "https://pango.gnome.org/",
-    "version": "1.54.0",
+    "version": "1.54.0-1",
     "license": "LGPL-2+ and FTL",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -11019,7 +11059,7 @@
     "name": "pangomm_2_48",
     "description": "pangomm is the official C++ interface for the Pango font layout library.",
     "homepage": "https://developer.gnome.org/pangomm/stable/",
-    "version": "2.52.0",
+    "version": "2.54.0",
     "license": "LGPL-2.1+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -11035,7 +11075,7 @@
     "name": "parted",
     "description": "Create, destroy, resize, check, copy partitions and file systems.",
     "homepage": "https://www.gnu.org/software/parted/",
-    "version": "3.6-1",
+    "version": "3.6-2",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -11723,7 +11763,7 @@
     "name": "php82",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
     "homepage": "https://www.php.net/",
-    "version": "8.2.22",
+    "version": "8.2.24",
     "license": "PHP-3.01",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -11731,7 +11771,7 @@
     "name": "php83",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
     "homepage": "https://www.php.net/",
-    "version": "8.3.10",
+    "version": "8.3.12",
     "license": "PHP-3.01",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -11875,7 +11915,7 @@
     "name": "platformsh",
     "description": "The unified tool for managing your Platform.sh services from the command line.",
     "homepage": "https://docs.platform.sh/overview/cli.html",
-    "version": "5.0.20",
+    "version": "5.0.21",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -12069,7 +12109,7 @@
     "homepage": "https://github.com/jupp0r/prometheus-cpp/",
     "version": "0.12.1",
     "license": "MIT",
-    "compatibility": "i686,x86_64"
+    "compatibility": "i686 x86_64"
   },
   {
     "name": "protobuf",
@@ -12555,7 +12595,7 @@
     "name": "py3_filelock",
     "description": "FileLock implements a platform independent file lock in Python.",
     "homepage": "https://github.com/benediktschmitt/py-filelock/",
-    "version": "3.16.0",
+    "version": "3.16.1",
     "license": "Unlicense",
     "compatibility": "all"
   },
@@ -12603,7 +12643,7 @@
     "name": "py3_greenlet",
     "description": "Greenlet provides lightweight in-process concurrent programming.",
     "homepage": "https://greenlet.readthedocs.io/",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12635,7 +12675,7 @@
     "name": "py3_identify",
     "description": "File identification library for Python",
     "homepage": "https://github.com/pre-commit/identify",
-    "version": "2.6.0",
+    "version": "2.6.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12643,7 +12683,7 @@
     "name": "py3_idna",
     "description": "IDNA provides internationalized domain names for Python.",
     "homepage": "https://github.com/kjd/idna/",
-    "version": "3.9",
+    "version": "3.10",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -12667,7 +12707,7 @@
     "name": "py3_impacket",
     "description": "Impacket provides network protocols constructors and dissectors.",
     "homepage": "https://www.secureauth.com/labs/open-source-tools/impacket/",
-    "version": "0.11.0",
+    "version": "0.12.0",
     "license": "Apache-2.0-with-impacket-modifications",
     "compatibility": "all"
   },
@@ -12747,7 +12787,7 @@
     "name": "py3_keyring",
     "description": "Keyring stores and accesses your passwords safely.",
     "homepage": "https://github.com/jaraco/keyring/",
-    "version": "25.3.0",
+    "version": "25.4.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12787,7 +12827,7 @@
     "name": "py3_libxml2",
     "description": "Libxml2-python provides access to libxml2 and libxslt in Python.",
     "homepage": "https://gitlab.gnome.org/GNOME/libxml2/",
-    "version": "2.13.3",
+    "version": "2.13.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12899,7 +12939,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.133.0",
+    "version": "2.135.0",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -12907,7 +12947,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.47.0",
+    "version": "3.48.1",
     "license": "UPL-1.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -12995,7 +13035,7 @@
     "name": "py3_pipdeptree",
     "description": "Displays a dependency tree of the installed Python packages.",
     "homepage": "https://github.com/naiquevin/pipdeptree/",
-    "version": "2.23.3",
+    "version": "2.23.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13003,7 +13043,7 @@
     "name": "py3_platformdirs",
     "description": "A small Python package for determining appropriate platform-specific dirs.",
     "homepage": "https://pypi.org/project/platformdirs",
-    "version": "4.3.3",
+    "version": "4.3.6",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13139,7 +13179,7 @@
     "name": "py3_pylint",
     "description": "Analyzes Python code looking for bugs and signs of poor quality",
     "homepage": "https://pylint.pycqa.org",
-    "version": "3.2.7",
+    "version": "3.3.1",
     "license": "GPL",
     "compatibility": "all"
   },
@@ -13163,7 +13203,7 @@
     "name": "py3_pypdf",
     "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.",
     "homepage": "https://github.com/py-pdf/pypdf",
-    "version": "4.3.1",
+    "version": "5.0.0",
     "license": "BSD-3-Clause",
     "compatibility": "all"
   },
@@ -13179,7 +13219,7 @@
     "name": "py3_pyright",
     "description": "Static Type Checker for Python",
     "homepage": "https://github.com/microsoft/pyright",
-    "version": "1.1.380",
+    "version": "1.1.382",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13291,7 +13331,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.6.5",
+    "version": "0.6.8",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13315,7 +13355,7 @@
     "name": "py3_setuptools",
     "description": "Setuptools is the python build system from the Python Packaging Authority.",
     "homepage": "https://setuptools.readthedocs.io/",
-    "version": "74.1.2",
+    "version": "75.1.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13451,7 +13491,7 @@
     "name": "py3_sqlalchemy",
     "description": "SQLalchemy is a database toolkit for Python.",
     "homepage": "https://sqlalchemy.org",
-    "version": "2.0.34",
+    "version": "2.0.35",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13499,7 +13539,7 @@
     "name": "py3_tox",
     "description": "Command line driven CI frontend and development task automation tool.",
     "homepage": "https://tox.readthedocs.io/",
-    "version": "4.18.1",
+    "version": "4.20.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13563,7 +13603,7 @@
     "name": "py3_virtualenv",
     "description": "Virtualenv is a Virtual Environment builder for Python.",
     "homepage": "https://virtualenv.pypa.io/",
-    "version": "20.26.4",
+    "version": "20.26.6",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13579,7 +13619,7 @@
     "name": "py3_websockets",
     "description": " Library for building WebSocket servers and clients in Python",
     "homepage": "https://websockets.readthedocs.io/",
-    "version": "13.0.1",
+    "version": "13.1",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -13707,7 +13747,7 @@
     "name": "qbittorrent",
     "description": "Open-source software alternative to µTorrent.",
     "homepage": "https://www.qbittorrent.org/",
-    "version": "4.6.6",
+    "version": "4.6.7",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13763,7 +13803,7 @@
     "name": "qt5_base",
     "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
     "homepage": "https://code.qt.io/cgit/qt/qtbase",
-    "version": "5.15.14-9f9a56d",
+    "version": "5.15.15-ab13e81",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13771,7 +13811,7 @@
     "name": "qt5_charts",
     "description": "Qt Charts",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13779,7 +13819,7 @@
     "name": "qt5_declarative",
     "description": "Provides QML and Quick declaratives.",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13787,7 +13827,7 @@
     "name": "qt5_imageformats",
     "description": "Qt Image Formats",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "GPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13795,7 +13835,7 @@
     "name": "qt5_location",
     "description": "Qt Location and Positioning",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13803,7 +13843,7 @@
     "name": "qt5_multimedia",
     "description": "Qt Multimedia",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13811,7 +13851,7 @@
     "name": "qt5_networkauth",
     "description": "Qt Network Authentication",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13819,7 +13859,7 @@
     "name": "qt5_quickcontrols",
     "description": "Reusable Qt Quick based UI controls to create classic desktop-style user interfaces",
     "homepage": "https://www.qt.io",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "GPL3 LGPL3 FDL custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13827,7 +13867,7 @@
     "name": "qt5_script",
     "description": "Qt Script Tools",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.17",
+    "version": "5.15.17-lts",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13835,7 +13875,7 @@
     "name": "qt5_serialport",
     "description": "Qt Serial Port",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13843,7 +13883,7 @@
     "name": "qt5_svg",
     "description": "Provides classes for displaying the contents of SVG files.",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13851,7 +13891,7 @@
     "name": "qt5_tools",
     "description": "Qt Tools",
     "homepage": "https://github.com/qt/qttools",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13859,7 +13899,7 @@
     "name": "qt5_wayland",
     "description": "Qt Wayland",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13867,7 +13907,7 @@
     "name": "qt5_webchannel",
     "description": "Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients",
     "homepage": "https://www.qt.io",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "GPL3 LGPL3 FDL custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13883,7 +13923,7 @@
     "name": "qt5_webglplugin",
     "description": "Qt WebGL Plugin",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "GPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13891,7 +13931,7 @@
     "name": "qt5_websockets",
     "description": "Qt Websockets",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "GPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13899,7 +13939,7 @@
     "name": "qt5_x11extras",
     "description": "Provides classes for developing for the X11 platform.",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13907,7 +13947,7 @@
     "name": "qt5_xmlpatterns",
     "description": "Qt XML Patterns",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.14",
+    "version": "5.15.15",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -14075,7 +14115,7 @@
     "name": "remmina",
     "description": "The GTK Remmina Remote Desktop Client",
     "homepage": "https://remmina.org/",
-    "version": "1.4.31",
+    "version": "1.4.35",
     "license": "GPL-2+-with-openssl-exception",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -14248,10 +14288,18 @@
     "compatibility": "all"
   },
   {
+    "name": "ruby_abbrev",
+    "description": "Calculates a set of unique abbreviations for a given set of strings.",
+    "homepage": "https://github.com/ruby/abbrev",
+    "version": "0.1.2-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
     "name": "ruby_activesupport",
     "description": "A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.",
     "homepage": "https://rubyonrails.org/",
-    "version": "7.2.1-ruby-3.3",
+    "version": "7.2.1-ruby3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14259,47 +14307,535 @@
     "name": "ruby_asciidoctor",
     "description": "A fast text processor & publishing toolchain for converting AsciiDoc to HTML5, DocBook & more.",
     "homepage": "https://asciidoctor.org/",
-    "version": "2.0.23-ruby-3.3",
+    "version": "2.0.23-ruby3.3",
     "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_base64",
+    "description": "Support for encoding and decoding binary data using a base64 representation.",
+    "homepage": "https://github.com/ruby/base64",
+    "version": "0.2.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_benchmark",
+    "description": "A performance benchmarking library.",
+    "homepage": "https://github.com/ruby/benchmark",
+    "version": "0.3.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_bigdecimal",
+    "description": "This library provides arbitrary-precision decimal floating-point number class.",
+    "homepage": "https://github.com/ruby/bigdecimal",
+    "version": "3.1.8-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_bundler",
+    "description": "Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably.",
+    "homepage": "https://bundler.io",
+    "version": "2.5.20-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_cgi",
+    "description": "Support for the common gateway interface protocol.",
+    "homepage": "https://github.com/ruby/cgi",
+    "version": "0.4.1-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_cmath",
+    "description": "CMath is a library that provides trigonometric and transcendental functions for complex numbers.",
+    "homepage": "https://github.com/ruby/cmath",
+    "version": "1.0.0-ruby3.3",
+    "license": "BSD-2-Clause",
     "compatibility": "all"
   },
   {
     "name": "ruby_concurrent_ruby",
     "description": "Modern concurrency tools for Ruby. Inspired by Erlang, Clojure, Scala, Haskell, F#, C#, Java, and classic concurrency patterns.",
     "homepage": "https://github.com/ruby-concurrency/concurrent-ruby",
-    "version": "1.3.4-ruby-3.3",
+    "version": "1.3.4-ruby3.3",
     "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_connection_pool",
+    "description": "Generic connection pool for ruby.",
+    "homepage": "https://github.com/mperham/connection_pool",
+    "version": "2.4.1-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_csv",
+    "description": "The csv library provides a complete interface to csv files and data.",
+    "homepage": "https://github.com/ruby/csv",
+    "version": "3.3.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_date",
+    "description": "A subclass of object includes comparable module for handling dates.",
+    "homepage": "https://github.com/ruby/date",
+    "version": "3.3.4-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_dbm",
+    "description": "Provides a wrapper for the UNIX-style Database Manager Library.",
+    "homepage": "https://github.com/ruby/dbm",
+    "version": "1.1.0-ruby3.3",
+    "license": "BSD-2-Clause",
     "compatibility": "all"
   },
   {
     "name": "ruby_debug",
     "description": "The debug library provides debugging functionality to Ruby (MRI) 2.7 and later.",
     "homepage": "https://github.com/ruby/debug",
-    "version": "1.9.2-ruby-3.3",
+    "version": "1.9.2-ruby3.3",
     "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_delegate",
+    "description": "Provides three abilities to delegate method calls to an object.",
+    "homepage": "https://github.com/ruby/delegate",
+    "version": "0.3.1-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_did_you_mean",
+    "description": "The gem that has been saving people from typos since 2014.",
+    "homepage": "https://github.com/ruby/did_you_mean",
+    "version": "1.6.3-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_digest",
+    "description": "Provides a framework for message digest libraries.",
+    "homepage": "https://github.com/ruby/digest",
+    "version": "3.1.1-ruby3.3",
+    "license": "Ruby",
     "compatibility": "all"
   },
   {
     "name": "ruby_docopt",
     "description": "Docopt parses command line arguments from nothing more than a usage message.",
     "homepage": "http://docopt.org/",
-    "version": "0.6.1-ruby-3.3",
+    "version": "0.6.1-ruby3.3",
     "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_drb",
+    "description": "Distributed object system for ruby.",
+    "homepage": "https://github.com/ruby/drb",
+    "version": "2.2.1-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_e2mmap",
+    "description": "Module for defining custom exceptions with specific messages.",
+    "homepage": "https://github.com/ruby/e2mmap",
+    "version": "0.1.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_english",
+    "description": "Require 'english.",
+    "homepage": "https://github.com/ruby/English",
+    "version": "0.8.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_erb",
+    "description": "An easy to use but powerful templating system for Ruby.",
+    "homepage": "https://github.com/ruby/erb",
+    "version": "4.0.4-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_error_highlight",
+    "description": "The gem enhances exception#message by adding a short explanation where the exception is raised.",
+    "homepage": "https://github.com/ruby/error_highlight",
+    "version": "0.6.0-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_etc",
+    "description": "Provides access to information typically stored in unix /etc directory.",
+    "homepage": "https://github.com/ruby/etc",
+    "version": "1.4.3-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_fcntl",
+    "description": "Loads constants defined in the os fcntl.",
+    "homepage": "https://github.com/ruby/fcntl",
+    "version": "1.1.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_fiddle",
+    "description": "A libffi wrapper for ruby.",
+    "homepage": "https://github.com/ruby/fiddle",
+    "version": "1.1.2-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_fileutils",
+    "description": "Several file utility methods for copying, moving, removing, etc.",
+    "homepage": "https://github.com/ruby/fileutils",
+    "version": "1.7.2-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_find",
+    "description": "This module supports top-down traversal of a set of file paths.",
+    "homepage": "https://github.com/ruby/find",
+    "version": "0.2.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_forwardable",
+    "description": "Provides delegation of specified methods to a designated object.",
+    "homepage": "https://github.com/ruby/forwardable",
+    "version": "1.3.3-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_gdbm",
+    "description": "Ruby extension for GNU dbm.",
+    "homepage": "https://github.com/ruby/gdbm",
+    "version": "2.1.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_gem_compiler",
+    "description": "Gem-compiler is a plugin that helps generates binary gems from already existing ones without altering the original source code.",
+    "homepage": "https://github.com/luislavena/gem-compiler",
+    "version": "0.9.0-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_getoptlong",
+    "description": "Getoptlong for ruby.",
+    "homepage": "https://github.com/ruby/getoptlong",
+    "version": "0.2.1-ruby3.3",
+    "license": "Ruby",
     "compatibility": "all"
   },
   {
     "name": "ruby_highline",
     "description": "A higher level command-line oriented interface.",
     "homepage": "https://github.com/JEG2/highline",
-    "version": "3.1.1-ruby-3.3",
+    "version": "3.1.1-ruby3.3",
     "license": "GPL",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_httparty",
+    "description": "Makes http fun! Also, makes consuming restful web services dead easy.",
+    "homepage": "https://github.com/jnunemaker/httparty",
+    "version": "0.22.0-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_i18n",
+    "description": "New wave internationalization support for ruby.",
+    "homepage": "https://github.com/ruby-i18n/i18n",
+    "version": "1.14.6-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_io_console",
+    "description": "add console capabilities to IO instances.",
+    "homepage": "https://github.com/ruby/io-console",
+    "version": "0.7.2-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_io_nonblock",
+    "description": "Enables non-blocking mode with io class.",
+    "homepage": "https://github.com/ruby/io-nonblock",
+    "version": "0.3.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_io_wait",
+    "description": "Waits until io is readable or writable without blocking.",
+    "homepage": "https://github.com/ruby/io-wait",
+    "version": "0.3.1-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_ipaddr",
+    "description": "| ipaddr provides a set of methods to manipulate an ip address.",
+    "homepage": "https://github.com/ruby/ipaddr",
+    "version": "1.2.6-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_irb",
+    "description": "Interactive Ruby command-line tool for REPL (Read Eval Print Loop).",
+    "homepage": "https://github.com/ruby/irb",
+    "version": "1.14.1-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_json",
+    "description": "This is a JSON implementation as a Ruby extension in C.",
+    "homepage": "https://flori.github.io/json",
+    "version": "2.7.2-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_logger",
+    "description": "Provides a simple logging utility for outputting messages.",
+    "homepage": "https://github.com/ruby/logger",
+    "version": "1.6.1-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_matrix",
+    "description": "An implementation of Matrix and Vector classes.",
+    "homepage": "https://github.com/ruby/matrix",
+    "version": "0.4.2-ruby3.3",
+    "license": "Ruby",
     "compatibility": "all"
   },
   {
     "name": "ruby_mdl",
     "description": "Style checker/lint tool for markdown files.",
     "homepage": "https://github.com/markdownlint/markdownlint",
-    "version": "0.13.0-ruby-3.3",
+    "version": "0.13.0-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_mini_mime",
+    "description": "A minimal mime type library.",
+    "homepage": "https://github.com/discourse/mini_mime",
+    "version": "1.1.5-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_minitest",
+    "description": "minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking.",
+    "homepage": "https://github.com/minitest/minitest",
+    "version": "5.25.1-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_multi_xml",
+    "description": "---.",
+    "homepage": "https://github.com/sferik/multi_xml",
+    "version": "0.7.1-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_mutex_m",
+    "description": "Mixin to extend objects to be handled like a mutex.",
+    "homepage": "https://github.com/ruby/mutex_m",
+    "version": "0.2.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_net_ftp",
+    "description": "Support for the File Transfer Protocol.",
+    "homepage": "https://github.com/ruby/net-ftp",
+    "version": "0.3.7-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_net_http",
+    "description": "Http client api for ruby.",
+    "homepage": "https://github.com/ruby/net-http",
+    "version": "0.4.1-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_net_imap",
+    "description": "Ruby client api for Internet Message Access Protocol",
+    "homepage": "https://github.com/ruby/net-imap",
+    "version": "0.4.16-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_net_pop",
+    "description": "Ruby client library for POP3.",
+    "homepage": "https://github.com/ruby/net-pop",
+    "version": "0.1.2-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_net_protocol",
+    "description": "The abstract interface for net-* client.",
+    "homepage": "https://github.com/ruby/net-protocol",
+    "version": "0.2.2-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_net_smtp",
+    "description": "Simple Mail Transfer Protocol client library for Ruby.",
+    "homepage": "https://github.com/ruby/net-smtp",
+    "version": "0.5.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_net_telnet",
+    "description": "Provides telnet client functionality.",
+    "homepage": "https://github.com/ruby/net-telnet",
+    "version": "0.2.0-ruby3.3",
+    "license": "ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_nkf",
+    "description": "Ruby extension for Network Kanji Filter",
+    "homepage": "https://github.com/ruby/nkf",
+    "version": "0.2.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_observer",
+    "description": "Implementation of the observer object-oriented design pattern.",
+    "homepage": "https://github.com/ruby/observer",
+    "version": "0.1.2-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_open3",
+    "description": "Popen, but with stderr, too.",
+    "homepage": "https://github.com/ruby/open3",
+    "version": "0.2.1-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_open_uri",
+    "description": "An easy-to-use wrapper for net::http, net::https and net::ftp.",
+    "homepage": "https://github.com/ruby/open-uri",
+    "version": "0.4.1-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_openssl",
+    "description": "Openssl for ruby provides access to ssl/tls and general-purpose cryptography based on the openssl library.",
+    "homepage": "https://github.com/ruby/openssl",
+    "version": "3.2.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_optparse",
+    "description": "OptionParser is a class for command-line option analysis.",
+    "homepage": "https://github.com/ruby/optparse",
+    "version": "0.5.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_ostruct",
+    "description": "Class to build custom data structures, similar to a hash.",
+    "homepage": "https://github.com/ruby/ostruct",
+    "version": "0.6.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_pathname",
+    "description": "Representation of the name of a file or directory on the filesystem.",
+    "homepage": "https://github.com/ruby/pathname",
+    "version": "0.3.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_power_assert",
+    "description": "Power assert shows each value of variables and method calls in the expression.",
+    "homepage": "https://github.com/ruby/power_assert",
+    "version": "2.0.3-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_pp",
+    "description": "Provides a prettyprinter for ruby objects.",
+    "homepage": "https://github.com/ruby/pp",
+    "version": "0.5.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_prettyprint",
+    "description": "Implements a pretty printing algorithm for readable structure.",
+    "homepage": "https://github.com/ruby/prettyprint",
+    "version": "0.2.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_prime",
+    "description": "Prime numbers and factorization library.",
+    "homepage": "https://github.com/ruby/prime",
+    "version": "0.1.2-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_prism",
+    "description": "Prism is a parser for the Ruby programming language.",
+    "homepage": "https://github.com/ruby/prism",
+    "version": "1.0.0-ruby3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14307,7 +14843,7 @@
     "name": "ruby_pry",
     "description": "Pry is a runtime developer console and IRB alternative with powerful introspection capabilities.",
     "homepage": "https://github.com/pry/pry",
-    "version": "0.14.2-ruby-3.3",
+    "version": "0.14.2-ruby3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14315,40 +14851,392 @@
     "name": "ruby_pry_byebug",
     "description": "Adds step-by-step debugging and stack navigation capabilities to pry using byebug.",
     "homepage": "https://github.com/deivid-rodriguez/pry-byebug",
-    "version": "3.10.1-ruby-3.3",
+    "version": "3.10.1-ruby3.3",
     "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_pstore",
+    "description": "Transactional file storage for ruby objects.",
+    "homepage": "https://github.com/ruby/pstore",
+    "version": "0.1.3-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_psych",
+    "description": "| psych is a yaml parser and emitter.",
+    "homepage": "https://github.com/ruby/psych",
+    "version": "5.1.2-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_racc",
+    "description": "Racc is a LALR(1) parser generator.",
+    "homepage": "https://github.com/ruby/racc",
+    "version": "1.8.1-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_rake",
+    "description": "Rake is a Make-like program implemented in Ruby.",
+    "homepage": "https://github.com/ruby/rake",
+    "version": "13.2.1-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_rbs",
+    "description": "RBS is the language for type signatures for Ruby and standard library definitions.",
+    "homepage": "https://github.com/ruby/rbs",
+    "version": "3.5.3-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_rdoc",
+    "description": "RDoc produces HTML and command-line documentation for Ruby projects.",
+    "homepage": "https://ruby.github.io/rdoc",
+    "version": "6.7.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_readline",
+    "description": "This is just a loader for 'readline'.",
+    "homepage": "https://github.com/ruby/readline",
+    "version": "0.0.4-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_readline_ext",
+    "description": "Provides an interface for GNU Readline and Edit Line (libedit).",
+    "homepage": "https://github.com/ruby/readline-ext",
+    "version": "0.2.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_reline",
+    "description": "Alternative GNU Readline or Editline implementation by pure Ruby.",
+    "homepage": "https://github.com/ruby/reline",
+    "version": "0.5.10-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_resolv",
+    "description": "Thread-aware dns resolver library in ruby.",
+    "homepage": "https://github.com/ruby/resolv",
+    "version": "0.4.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_resolv_replace",
+    "description": "Replace socket dns with resolv.",
+    "homepage": "https://github.com/ruby/resolv-replace",
+    "version": "0.1.1-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_rexml",
+    "description": "An XML toolkit for Ruby",
+    "homepage": "https://github.com/ruby/rexml",
+    "version": "3.3.7-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_rinda",
+    "description": "The linda distributed computing paradigm in ruby.",
+    "homepage": "https://github.com/ruby/rinda",
+    "version": "0.2.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_rss",
+    "description": "Family of libraries that support various formats of XML 'feeds'.",
+    "homepage": "https://github.com/ruby/rss",
+    "version": "0.3.1-ruby3.3",
+    "license": "BSD-2-Clause",
     "compatibility": "all"
   },
   {
     "name": "ruby_rubocop",
     "description": "A Ruby static code analyzer and formatter",
     "homepage": "https://rubocop.org",
-    "version": "1.66.1-ruby-3.3",
+    "version": "1.66.1-ruby3.3",
     "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_ruby2_keywords",
+    "description": "---.",
+    "homepage": "https://github.com/ruby/ruby2_keywords",
+    "version": "0.0.5-ruby3.3",
+    "license": "Ruby",
     "compatibility": "all"
   },
   {
     "name": "ruby_ruby_libversion",
     "description": "Ruby bindings for libversion.",
     "homepage": "https://github.com/Zopolis4/ruby-libversion",
-    "version": "1.0.0-ruby-3.3",
+    "version": "1.0.0-1-ruby3.3",
     "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_rubygems_update",
+    "description": "RubyGems is a package management framework for Ruby.",
+    "homepage": "https://github.com/rubygems/rubygems",
+    "version": "3.5.20-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_scanf",
+    "description": "scanf is an implementation of the C function scanf(3).",
+    "homepage": "https://github.com/ruby/scanf",
+    "version": "1.0.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_sdbm",
+    "description": "Provides a simple file-based key-value store with String keys and values.",
+    "homepage": "https://github.com/ruby/sdbm",
+    "version": "1.0.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_securerandom",
+    "description": "Interface for secure random number generator.",
+    "homepage": "https://github.com/ruby/securerandom",
+    "version": "0.3.1-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_set",
+    "description": "Provides a class to deal with collections of unordered, unique values.",
+    "homepage": "https://github.com/ruby/set",
+    "version": "1.1.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_shell",
+    "description": "An idiomatic Ruby interface for common UNIX shell commands.",
+    "homepage": "https://github.com/ruby/shell",
+    "version": "0.8.1-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_shellwords",
+    "description": "Manipulates strings with word parsing rules of unix bourne shell.",
+    "homepage": "https://github.com/ruby/shellwords",
+    "version": "0.2.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_singleton",
+    "description": "The singleton module implements the singleton pattern.",
+    "homepage": "https://github.com/ruby/singleton",
+    "version": "0.2.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_stringio",
+    "description": "Pseudo `io` class from/to `string`.",
+    "homepage": "https://github.com/ruby/stringio",
+    "version": "3.1.1-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_strscan",
+    "description": "Provides lexical scanning operations on a String.",
+    "homepage": "https://github.com/ruby/strscan",
+    "version": "3.1.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_sync",
+    "description": "A module that provides a two-phase lock with a counter.",
+    "homepage": "https://github.com/ruby/sync",
+    "version": "0.5.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_syntax_suggest",
+    "description": "When you get an 'unexpected end' in your syntax this gem helps you find it.",
+    "homepage": "https://github.com/ruby/syntax_suggest.git",
+    "version": "2.0.0-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_syslog",
+    "description": "Ruby interface for the posix system logging facility.",
+    "homepage": "https://github.com/ruby/syslog",
+    "version": "0.1.2-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_tempfile",
+    "description": "A utility class for managing temporary files.",
+    "homepage": "https://github.com/ruby/tempfile",
+    "version": "0.2.1-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_test_unit",
+    "description": "|- test-unit (test::unit) is unit testing framework for ruby, based on xunit principles.",
+    "homepage": "https://test-unit.github.io/",
+    "version": "3.6.2-ruby3.3",
+    "license": "PSFL",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_thwait",
+    "description": "Watches for termination of multiple threads.",
+    "homepage": "https://github.com/ruby/thwait",
+    "version": "0.2.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_time",
+    "description": "Extends the time class with methods for parsing and conversion.",
+    "homepage": "https://github.com/ruby/time",
+    "version": "0.4.0-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_timeout",
+    "description": "Auto-terminate potentially long-running operations in ruby.",
+    "homepage": "https://github.com/ruby/timeout",
+    "version": "0.4.1-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_tmpdir",
+    "description": "Extends the dir class to manage the os temporary file path.",
+    "homepage": "https://github.com/ruby/tmpdir",
+    "version": "0.2.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_tracer",
+    "description": "A Ruby tracer.",
+    "homepage": "https://github.com/ruby/tracer",
+    "version": "0.2.3-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_tsort",
+    "description": "Topological sorting using tarjan's algorithm.",
+    "homepage": "https://github.com/ruby/tsort",
+    "version": "0.2.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_typeprof",
+    "description": "TypeProf performs a type analysis of non-annotated Ruby code.",
+    "homepage": "https://github.com/ruby/typeprof",
+    "version": "0.21.11-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_tzinfo",
+    "description": "Tzinfo provides access to time zone data and allows times to be converted using time zone rules.",
+    "homepage": "https://tzinfo.github.io",
+    "version": "2.0.6-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_un",
+    "description": "Utilities to replace common unix commands.",
+    "homepage": "https://github.com/ruby/un",
+    "version": "0.3.0-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_uri",
+    "description": "Uri is a module providing classes to handle uniform resource identifiers.",
+    "homepage": "https://github.com/ruby/uri",
+    "version": "0.13.1-ruby3.3",
+    "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_weakref",
+    "description": "Allows a referenced object to be garbage-collected.",
+    "homepage": "https://github.com/ruby/weakref",
+    "version": "0.1.3-ruby3.3",
+    "license": "Ruby",
     "compatibility": "all"
   },
   {
     "name": "ruby_webrick",
     "description": "WEBrick is an HTTP server toolkit that can be configured as an HTTPS server, a proxy server, and a virtual-host server.",
     "homepage": "https://github.com/ruby/webrick/",
-    "version": "1.8.1-ruby-3.3",
+    "version": "1.8.2-ruby3.3",
     "license": "BSD-2",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_xmlrpc",
+    "description": "XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP.",
+    "homepage": "https://github.com/ruby/xmlrpc",
+    "version": "0.3.3-ruby3.3",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_yaml",
+    "description": "Yaml ain't markup language.",
+    "homepage": "https://github.com/ruby/yaml",
+    "version": "0.3.0-ruby3.3",
+    "license": "Ruby",
     "compatibility": "all"
   },
   {
     "name": "ruby_yaml_lint",
     "description": "Check if your YAML files can be loaded.",
     "homepage": "https://rubygems.org/gems/yaml-lint",
-    "version": "0.1.2-ruby-3.3",
+    "version": "0.1.2-ruby3.3",
     "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_zlib",
+    "description": "Ruby interface for the zlib compression/decompression library.",
+    "homepage": "https://github.com/ruby/zlib",
+    "version": "3.1.1-ruby3.3",
+    "license": "Ruby",
     "compatibility": "all"
   },
   {
@@ -14453,7 +15341,7 @@
     "homepage": "http://www.sbcl.org/index.html",
     "version": "2.0.3",
     "license": "MIT",
-    "compatibility": "i686,x86_64"
+    "compatibility": "i686 x86_64"
   },
   {
     "name": "sbt",
@@ -14475,9 +15363,9 @@
     "name": "sccache",
     "description": "Shared Compilation Cache",
     "homepage": "https://github.com/mozilla/sccache/",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "license": "Apache-2.0, Apache-2.0-with-LLVM-exceptions, BSD, BSD-2, Boost-1.0, ISC, MIT, Unlicense and ZLIB",
-    "compatibility": "x86_64"
+    "compatibility": "all"
   },
   {
     "name": "scdoc",
@@ -14771,7 +15659,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.24.1",
+    "version": "7.26.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -14909,7 +15797,7 @@
     "homepage": "https://www.snort.org/",
     "version": "2.9.20",
     "license": "GPL-2",
-    "compatibility": "aarch64,armv7l,x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "snowflake",
@@ -15035,7 +15923,7 @@
     "name": "spirv_headers",
     "description": "SPIR-V Headers",
     "homepage": "https://github.com/KhronosGroup/SPIRV-Headers",
-    "version": "1.3.283.0",
+    "version": "1.3.290.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15043,7 +15931,7 @@
     "name": "spirv_llvm_translator",
     "description": "Tool and a library for bi-directional translation between SPIR-V and LLVM IR",
     "homepage": "https://github.com/KhronosGroup/SPIRV-LLVM-Translator",
-    "version": "18.1.2-1",
+    "version": "19.1.0",
     "license": "Apache-2.0 WITH LLVM-exception",
     "compatibility": "all"
   },
@@ -15251,9 +16139,9 @@
     "name": "subversion",
     "description": "Subversion is an open source version control system.",
     "homepage": "https://subversion.apache.org/",
-    "version": "1.9.12",
+    "version": "1.14.3",
     "license": "Apache-2.0, BSD, MIT, BSD-2, FSFAP and unicode",
-    "compatibility": "all"
+    "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "suitesparse",
@@ -15523,7 +16411,7 @@
     "name": "terminus",
     "description": "The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform",
     "homepage": "https://github.com/pantheon-systems/terminus",
-    "version": "3.5.2",
+    "version": "3.6.0",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -15531,7 +16419,7 @@
     "name": "terraform",
     "description": "Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.",
     "homepage": "https://www.terraform.io/",
-    "version": "1.9.5",
+    "version": "1.9.6",
     "license": "Apache-2.0, BSD-2, BSD-4, ECL-2.0, imagemagick, ISC, JSON, MIT, MIT-with-advertising, MPL-2.0 and unicode",
     "compatibility": "all"
   },
@@ -15603,9 +16491,9 @@
     "name": "thunar",
     "description": "Thunar File Manager",
     "homepage": "https://docs.xfce.org/xfce/thunar/Start",
-    "version": "4.17.3",
+    "version": "4.19.3",
     "license": "GPL-2+ and LGPL-2+",
-    "compatibility": "aarch64,armv7l,x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "ticker",
@@ -15731,7 +16619,7 @@
     "name": "tmux",
     "description": "tmux is a terminal multiplexer",
     "homepage": "https://tmux.github.io/",
-    "version": "3.4",
+    "version": "3.5",
     "license": "ISC",
     "compatibility": "all"
   },
@@ -16259,7 +17147,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "6.9.3447.44-1",
+    "version": "6.9.3447.48-1",
     "license": "Vivaldi",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -16317,7 +17205,7 @@
     "homepage": "https://vscodium.com/",
     "version": "1.92.2.24228",
     "license": "MIT",
-    "compatibility": "aarch64,armv7l,x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "vtable_dumper",
@@ -16629,7 +17517,7 @@
     "homepage": "https://gitlab.freedesktop.org/wlroots/wlroots",
     "version": "0.18.0",
     "license": "MIT",
-    "compatibility": "aarch64, armv7l, x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "wmctrl",
@@ -16699,7 +17587,7 @@
     "name": "wxwidgets",
     "description": "wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.",
     "homepage": "https://www.wxwidgets.org/",
-    "version": "3.2.3-rc1",
+    "version": "3.2.6",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -17093,7 +17981,7 @@
     "homepage": "https://www.x.org/wiki/",
     "version": "13.1.0",
     "license": "MIT-with-advertising and ISC",
-    "compatibility": "i686,x86_64"
+    "compatibility": "i686 x86_64"
   },
   {
     "name": "xorg_vmware_driver",
@@ -17173,7 +18061,7 @@
     "homepage": "https://invisible-island.net/xterm/",
     "version": "390",
     "license": "MIT",
-    "compatibility": "aarch64,armv7l,x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "xwayland",
@@ -17328,6 +18216,14 @@
     "compatibility": "all"
   },
   {
+    "name": "yyjson",
+    "description": "A high performance JSON library written in ANSI C",
+    "homepage": "https://ibireme.github.io/yyjson",
+    "version": "0.10.0",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
     "name": "zathura",
     "description": "zathura is a highly customizable and functional PDF document viewer",
     "homepage": "https://pwmt.org/projects/zathura/",
@@ -17347,7 +18243,7 @@
     "name": "zed",
     "description": "Zed is a high-performance, multiplayer code editor",
     "homepage": "https://zed.dev/",
-    "version": "0.147.2",
+    "version": "0.153.7",
     "license": "GPL-3, AGPL-3, Apache-2.0",
     "compatibility": "x86_64"
   },
