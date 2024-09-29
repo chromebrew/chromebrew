@@ -63,7 +63,13 @@ class RUBY < Package
     @gem_outdated = !@gem_installed && gem_installed_anyver
     crewlog "preflight: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, @gem_outdated: #{@gem_outdated}, @gem_installed: #{@gem_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
     if @gem_installed && Gem::Version.new(@remote_gem_ver.to_s) == Gem::Version.new(@gem_ver)
-      require_gem(@gem_name)
+      begin
+        gem @gem_name
+      rescue LoadError
+        puts " -> install #{@gem_name} gem".orange
+        Gem.install(@gem_name)
+        gem @gem_name
+      end
       system "gem contents #{@gem_name} > #{@gem_filelist_path}" unless File.file?(@gem_filelist_path)
       @install_gem = false
     end
