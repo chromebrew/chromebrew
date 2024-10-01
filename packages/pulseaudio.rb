@@ -29,7 +29,7 @@ class Pulseaudio < Meson
   depends_on 'glibc' # R
   depends_on 'glib' # R
   # depends_on 'gsettings_desktop_schemas' # L
-  depends_on 'gstreamer' # R
+  depends_on 'gstreamer' => :build
   depends_on 'jack' # R
   depends_on 'json_c' => :build
   depends_on 'libcap' # R
@@ -44,7 +44,7 @@ class Pulseaudio < Meson
   depends_on 'libxfixes' => :build
   depends_on 'libxtst' # R
   depends_on 'openssl' # R
-  depends_on 'pipewire' # R
+  # depends_on 'pipewire' # R
   depends_on 'speexdsp' # R
   depends_on 'tcpwrappers' # R
   depends_on 'tdb' # R
