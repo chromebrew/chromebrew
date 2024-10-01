@@ -17,7 +17,7 @@ class Ffmpeg < Package
   })
 
   depends_on 'alsa_lib' # R
-  depends_on 'avisynthplus' # ?
+  depends_on 'avisynthplus' # R
   depends_on 'bzip2' # R
   depends_on 'ccache' => :build
   depends_on 'chromaprint' # ?
@@ -77,9 +77,10 @@ class Ffmpeg < Package
   depends_on 'rubberband' # R
   depends_on 'snappy' # R
   depends_on 'speex' # R
-  depends_on 'tesseract' => :build
+  depwnds_on 'srt' # R
+  depends_on 'tesseract' # R
   depends_on 'v4l_utils' # R
-  depends_on 'vidstab' => :build
+  depends_on 'vidstab' # R
   depends_on 'vmaf' # R
   depends_on 'wavpack' # ?
   depends_on 'xzutils' # R
@@ -87,9 +88,6 @@ class Ffmpeg < Package
   depends_on 'zimg' # R
   depends_on 'zlib' # R
   depends_on 'zvbi' # R
-  depends_on 'srt' # R
-  depends_on 'tesseract' # R
-  depends_on 'vidstab' # R
 
   no_env_options if %w[aarch64 armv7l].include? ARCH
 
