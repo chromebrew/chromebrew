@@ -3,19 +3,26 @@ require 'buildsystems/autotools'
 class Zvbi < Autotools
   description 'VBI capture and decoding library.'
   homepage 'https://github.com/zapping-vbi/zvbi'
-  version '0.2.42-ae74ae51'
+  version '0.2.42-be5efeb'
   license 'GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/zapping-vbi/zvbi.git'
-  git_hashtag 'ae74ae513714f81b9b8abdb12e1b235d16fad74e'
+  git_hashtag 'be5efebaadeb95be57d5435468bd3ec0f3007683'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5d6a9b7b4005a7cc607d7dbc5b0173c271146f87f1e8d0e9879e1e5f78f56922',
-     armv7l: '5d6a9b7b4005a7cc607d7dbc5b0173c271146f87f1e8d0e9879e1e5f78f56922',
-       i686: '1b3f4e46881f830c9fd037975d013709ebf606dce98ac5127eca42139aa19045',
-     x86_64: '0d57eb9ffae5774b6eac49cf7bb9dfa398561d7c87a95be7527e38f7f4b08db8'
+    aarch64: 'd2f582b4ee393dc0eca53805098b354efc68a766a32b2277fad26033a4bc1258',
+     armv7l: 'd2f582b4ee393dc0eca53805098b354efc68a766a32b2277fad26033a4bc1258',
+     x86_64: '622a92ff1bb9711422ba33d37a7635245adc0c1ba5f60cfb7a3aa7b150956682'
   })
 
-  depends_on 'libpng'
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libpng' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'zlib' # R
 end
