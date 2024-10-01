@@ -2435,9 +2435,9 @@
 /usr/local/lib/python3.12/lib-dynload/xxsubtype.cpython-312-i386-linux-gnu.so
 /usr/local/lib/python3.12/lib-dynload/zlib.cpython-312-i386-linux-gnu.so
 /usr/local/lib/python3.12/lib2to3/Grammar.txt
-/usr/local/lib/python3.12/lib2to3/Grammar3.12.6.final.0.pickle
+/usr/local/lib/python3.12/lib2to3/Grammar3.12.7.final.0.pickle
 /usr/local/lib/python3.12/lib2to3/PatternGrammar.txt
-/usr/local/lib/python3.12/lib2to3/PatternGrammar3.12.6.final.0.pickle
+/usr/local/lib/python3.12/lib2to3/PatternGrammar3.12.7.final.0.pickle
 /usr/local/lib/python3.12/lib2to3/__init__.py
 /usr/local/lib/python3.12/lib2to3/__main__.py
 /usr/local/lib/python3.12/lib2to3/__pycache__/__init__.cpython-312.opt-1.pyc
@@ -5838,6 +5838,9 @@
 /usr/local/lib/python3.12/test/test_asyncio/__pycache__/test_sslproto.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/test/test_asyncio/__pycache__/test_sslproto.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/test/test_asyncio/__pycache__/test_sslproto.cpython-312.pyc
+/usr/local/lib/python3.12/test/test_asyncio/__pycache__/test_staggered.cpython-312.opt-1.pyc
+/usr/local/lib/python3.12/test/test_asyncio/__pycache__/test_staggered.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/test/test_asyncio/__pycache__/test_staggered.cpython-312.pyc
 /usr/local/lib/python3.12/test/test_asyncio/__pycache__/test_streams.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/test/test_asyncio/__pycache__/test_streams.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/test/test_asyncio/__pycache__/test_streams.cpython-312.pyc
@@ -5897,6 +5900,7 @@
 /usr/local/lib/python3.12/test/test_asyncio/test_sock_lowlevel.py
 /usr/local/lib/python3.12/test/test_asyncio/test_ssl.py
 /usr/local/lib/python3.12/test/test_asyncio/test_sslproto.py
+/usr/local/lib/python3.12/test/test_asyncio/test_staggered.py
 /usr/local/lib/python3.12/test/test_asyncio/test_streams.py
 /usr/local/lib/python3.12/test/test_asyncio/test_subprocess.py
 /usr/local/lib/python3.12/test/test_asyncio/test_taskgroups.py
