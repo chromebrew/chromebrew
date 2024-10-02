@@ -13,7 +13,7 @@ class Py3_setuptools_rust < Pip
     aarch64: '5f40289c4dea96b00d8a5d98e5bf76e0aeb6583bc77a20e1ee8c1e072a73b7cb',
      armv7l: '5f40289c4dea96b00d8a5d98e5bf76e0aeb6583bc77a20e1ee8c1e072a73b7cb',
        i686: 'f82f0da32b291af8fab801a1135e3865b3edccb997770fd4086838889bb7e657',
-     x86_64: '952b75c25e84015b64fb0c68bc3d0af5a863b61e9693e7f7a11908bc6cfeeb37'
+     x86_64: '917dd6a09bf85bf5ad7d5e34b5e676b166dc0208f7e3ed6731d415ca934b3c13'
   })
 
   depends_on 'rust'
