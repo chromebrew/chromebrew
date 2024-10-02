@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# update_ruby_gem_packages version 1.4 (for Chromebrew)
+# update_ruby_gem_packages version 1.5 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo:
 # tools/update_ruby_gem_packages.rb
@@ -47,7 +47,7 @@ relevant_gem_packages.each_with_index do |package, index|
     next package if gem_version.blank?
     if Gem::Version.new(gem_version) > Gem::Version.new(pkg_version)
       puts "Updating #{gem_name} from #{pkg_version} to #{gem_version}".lightblue
-      system "sed -i \"s,^\ \ version\ .*\",\ \ version \\\"#{gem_version}-\#{CREW_RUBY_VER}\\\",\" #{package}"
+      system "sed -i \"s,^\ \ version\ .*,\ \ version \\\"#{gem_version}-\#{CREW_RUBY_VER}\\\",\" #{package}"
     end
     relevant_gem_packages.delete(package)
   end
