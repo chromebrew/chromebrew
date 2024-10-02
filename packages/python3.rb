@@ -3,18 +3,18 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.12.6'
+  version '3.12.7'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 '1999658298cf2fb837dffed8ff3c033ef0c98ef20cf73c5d5f66bed5ab89697c'
+  source_sha256 '24887b92e2afd4a2ac602419ad4b596372f67ac9b077190f459aba390faf5550'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '85df5cadf8cbb04698c3befe0bdcc8010e46e8aa51ebcf69dab8f298151a3feb',
-     armv7l: '85df5cadf8cbb04698c3befe0bdcc8010e46e8aa51ebcf69dab8f298151a3feb',
-       i686: '6ac42600df7756eb34c93046f561196808556f53dcf2e633d5aab15d2ca8d382',
-     x86_64: '9f6ddb59083d921353eca0c119f95d8a8c8c52ac4211a069afd98e8b45dad5e6'
+    aarch64: '956fdb2c517ae78c96af3e433b375caa126f7141c9e24d6a52e7b3a8ce2724de',
+     armv7l: '956fdb2c517ae78c96af3e433b375caa126f7141c9e24d6a52e7b3a8ce2724de',
+       i686: '450c9ba1657c7e89fe177e8f28140d4a89e575b212781b3821394cbcf1fb6309',
+     x86_64: 'e33f6471f7b28aeec266f61e7152496c3b43b301c6a5a85c9110799240755c91'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -26,10 +26,8 @@ class Python3 < Package
   depends_on 'krb5' => :build
   depends_on 'libdb' # R
   depends_on 'libffi' # R
-  depends_on 'libnsl' # R
   depends_on 'libtirpc' # R
   depends_on 'mpdecimal' # R
-  depends_on 'ncurses' # R
   depends_on 'openssl' # R
   depends_on 'readline' # R
   depends_on 'sqlite' # R
