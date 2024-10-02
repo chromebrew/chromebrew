@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pycryptodomex < Pip
   description 'Pycryptodomex is a cryptographic library for Python.'
   homepage 'https://www.pycryptodome.org/'
-  version "3.20.0-#{CREW_PY_VER}"
+  version "3.21.0-#{CREW_PY_VER}"
   license 'BSD and public-domain'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7e42d4bca9c3f3fc6e4603c56c63460eeffbea74bffc37ae7621b61f819eba35',
-     armv7l: '7e42d4bca9c3f3fc6e4603c56c63460eeffbea74bffc37ae7621b61f819eba35',
-       i686: '08f714bd2e1c45a93bf47ba4aacadf267ef3121b8f4ddf27ea0017944c7391b1',
-     x86_64: '467ceddc55434ad4e530a5fe1348abdb7c2bb6174dfa9230c6c15a49eb874907'
+    aarch64: '0665b5dde0eba842162f60570371b9a0d1ddd62cafcd1da140d2f639a96b7614',
+     armv7l: '0665b5dde0eba842162f60570371b9a0d1ddd62cafcd1da140d2f639a96b7614',
+       i686: 'adb874a4f31ca15e21b89fc1211ffeca0d6bd8561bd7372da185b2001d2e057b',
+     x86_64: '34a6dcd1b89dba3acc9b69f0deb7183f330f5c1c3ff943e68ccc081346692df1'
   })
 
   depends_on 'glibc' # R

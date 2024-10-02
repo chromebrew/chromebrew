@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_tomli < Pip
   description "Tomli is a lil' TOML parser."
   homepage 'https://github.com/hukkin/tomli/'
-  version "2.0.1-#{CREW_PY_VER}"
+  version "2.0.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b500c56d8fd105826c84d9175af7650a74139fa052f5e04ba92d9df2964c43d1',
-     armv7l: 'b500c56d8fd105826c84d9175af7650a74139fa052f5e04ba92d9df2964c43d1',
-       i686: '2d17475fb300405cfadfd507ca0d71bb7daac7f414e9211b2d8acd12ec622ec0',
-     x86_64: '26a9f5cc2cbcabf0699b404f601d3fc1c652e32312321c1d832df5d991590e71'
+    aarch64: '3eff3d0e02b85620e9d94b05a62cc6045f1d6904d00f4aa3446dde0906a5997a',
+     armv7l: '3eff3d0e02b85620e9d94b05a62cc6045f1d6904d00f4aa3446dde0906a5997a',
+       i686: 'cd6db6cd66b8ad5cc2eb219b49fe6f4102182971baa1b195307f655658bf68f9',
+     x86_64: 'df7a1ef8de474e682ed5a5b96476ff8fd73f95075581c923ef28e3647d505de0'
   })
 
   depends_on 'python3'
