@@ -77,7 +77,7 @@ class Ffmpeg < Package
   depends_on 'rubberband' # R
   depends_on 'snappy' # R
   depends_on 'speex' # R
-  depwnds_on 'srt' # R
+  depends_on 'srt' # R
   depends_on 'tesseract' # R
   depends_on 'v4l_utils' # R
   depends_on 'vidstab' # R
