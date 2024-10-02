@@ -3,7 +3,7 @@ require 'package'
 class Xxd_standalone < Package
   description 'Hexdump utility from vim'
   homepage 'https://www.vim.org/'
-  version '9.1.0188'
+  version '9.1.0754'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
@@ -11,10 +11,10 @@ class Xxd_standalone < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '244fb157da66a01175118fa7b1f4c9e1b0f31523bf9a975de015b3091b364fef',
-     armv7l: '244fb157da66a01175118fa7b1f4c9e1b0f31523bf9a975de015b3091b364fef',
-       i686: '994a7d4596c5e864c56ada0a70e70597db13bc41dc570dd9136e9f888ca7dc66',
-     x86_64: '833b7e34f728edaa2ac1d472348f7d706c92570d8aeb3260ec384ba017482eb7'
+    aarch64: 'ce3214bcb20f591aca75497f1be94d0ee24b962214310b944d9ceacc7c06d883',
+     armv7l: 'ce3214bcb20f591aca75497f1be94d0ee24b962214310b944d9ceacc7c06d883',
+       i686: '8af40856fa71e8ba389a759043efaa5448691ff907550c54989ab0a2447fde4c',
+     x86_64: '3c363bdb4841a3dfbc324a485dd9456a2ae2fe82e0336c989f6ebd7b1c38132d'
   })
 
   depends_on 'glibc' # R

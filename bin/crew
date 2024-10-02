@@ -1575,27 +1575,26 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       binary_sha256_block_with_bc = "#{file.match(bc_re)}\n#{binary_sha256_block}"
       File.write(pkg_file, file.gsub(bc_re, binary_sha256_block_with_bc))
     end
-    puts "\e[1A\e[KUploads complete for #{package}.\r".orange
 
     # Upload python wheels if we are dealing with a pip package, but only
     # if a gitlab token username is set. (The generic repo does not
     # require a gitlab token username.)
-    next unless @pkg.superclass.to_s == 'Pip'
-    if gitlab_token_username.nil?
-      puts "\nGITLAB_TOKEN_USERNAME environment variable not set, so generated python wheels will not be uploaded.\n".lightred
-      next package
-    end
-    pip_config = `pip config list`.chomp
-    Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
+    if @pkg.superclass.to_s == 'Pip'
+      pip_config = `pip config list`.chomp
+      Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
 
-    pip_cache_dir = `pip cache dir`.chomp
-    wheels = `find #{pip_cache_dir} -type f -name \"*.whl\" -print`.chomp.split
-    next if wheels.empty?
-    wheels.each do |wheel|
-      puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
-      system("twine upload -u #{gitlab_token_username} -p #{gitlab_token} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
-      FileUtils.rm_f wheel
+      pip_cache_dir = `pip cache dir`.chomp
+      wheels = `find #{pip_cache_dir} -type f -name \"*.whl\" -print`.chomp.split
+      unless wheels.empty?
+        wheels.each do |wheel|
+          puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
+          # Note that this uses the python twine from https://github.com/pypa/twine/pull/1123
+          system("twine upload -u #{gitlab_token_username} -p #{gitlab_token} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
+          FileUtils.rm_f wheel
+        end
+      end
     end
+    puts "\e[1A\e[K🎉 Uploads complete for #{package}. 🎉\r\n".lightgreen
   end
 end
 
