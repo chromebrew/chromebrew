@@ -1,5 +1,6 @@
 require 'color'
 require 'package'
+require 'package_utils'
 
 def require_gem(gem_name_and_require = nil, require_override = nil)
   # Allow only loading gems when needed.
@@ -45,7 +46,9 @@ def set_vars(passed_name = nil, passed_version = nil)
   @remote_gem_ver = Gem.latest_version_for(gem_name_test.gsub!('_', '-')).to_s if @remote_gem_ver.empty?
   @gem_name = gem_name_test
   @gem_ver = passed_version.split('-').first.to_s
-  puts "Note that #{name}.rb suggests that latest #{@gem_name} version is #{@gem_ver}.\nHowever, gem reports that the latest version is #{@remote_gem_ver}.".orange if Gem::Version.new(@remote_gem_ver.to_s) > Gem::Version.new(@gem_ver)
+  @gem_package_ver = @gem_ver.dup
+  # Use latest gem version.
+  @gem_ver = @remote_gem_ver.to_s if Gem::Version.new(@remote_gem_ver.to_s) > Gem::Version.new(@gem_ver)
 end
 
 class RUBY < Package
@@ -54,16 +57,17 @@ class RUBY < Package
   depends_on 'ruby'
 
   def self.preflight
-    @install_gem = true
+    @install_gem ||= true
+    @force_gem_build ||= false
     set_vars(name, version)
     puts "Examining #{@gem_name} gem...".orange
     @gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
-    @gem_installed = Kernel.system "gem list -i \"^#{@gem_name}\$\" -v #{@gem_ver}", %i[out err] => File::NULL
-    gem_installed_anyver = Kernel.system "gem list -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
-    @gem_outdated = !@gem_installed && gem_installed_anyver
-    crewlog "preflight: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, @gem_outdated: #{@gem_outdated}, @gem_installed: #{@gem_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
-    if @gem_installed && Gem::Version.new(@remote_gem_ver.to_s) == Gem::Version.new(@gem_ver)
-      # Make sure gem is installed before trying to get files from the gem...
+    @gem_latest_version_installed = Kernel.system "gem list -i \"^#{@gem_name}\$\" -v #{@gem_ver}", %i[out err] => File::NULL
+    crewlog "preflight: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, @gem_latest_version_installed: #{@gem_latest_version_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
+    # Create a filelist from the gem if the latest gem version is
+    # installed but the filelist doesn't exist.
+    if @gem_latest_version_installed && !File.file?(@gem_filelist_path)
+      # Verify gem is installed before trying to get files from the gem...
       begin
         gem @gem_name
       rescue LoadError
@@ -71,14 +75,19 @@ class RUBY < Package
         Gem.install(@gem_name)
         gem @gem_name
       end
-      system "gem contents #{@gem_name} > #{@gem_filelist_path}" unless File.file?(@gem_filelist_path)
-      @device = ConvenienceFunctions.load_symbolized_json
-      pkg_info = @device[:installed_packages].select { |pkg| pkg[:name] == name } [0]
-      # Handle case of Chromebrew gem pkg not yet having been installed
-      # or having a changed version number despite the gem having been
-      # installed.
-      @install_gem = false if pkg_info.nil? || Gem::Version.new(version) == pkg_info[:version]
+      system "gem contents #{@gem_name} > #{@gem_filelist_path}"
     end
+    # If the version number gem reports isn't the same as the version
+    # number that Chromebrew has recorded, force an install.
+    # Otherwise we can skip the install and bail.
+    @device = ConvenienceFunctions.load_symbolized_json
+    pkg_info = @device[:installed_packages].select { |pkg| pkg[:name] == name } [0]
+    return if pkg_info.nil?
+
+    # Handle case of the Chromebrew gem pkg not yet having been
+    # installed or having a changed version number despite the gem
+    # having been installed.
+    @install_gem = false if @gem_ver.to_s == pkg_info[:version].gsub!('_', '-').to_s
   end
 
   def self.preinstall
@@ -91,10 +100,12 @@ class RUBY < Package
     Kernel.system "gem fetch #{@gem_name} --platform=ruby --version=#{@gem_ver}"
     Kernel.system "gem unpack #{@gem_name}-#{@gem_ver}.gem"
     Kernel.system "gem compile --strip --prune #{@gem_name}-#{@gem_ver}.gem -O #{CREW_DEST_DIR}/"
+    @just_built_gem = true
   end
 
   def self.install
-    crewlog "install: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, @gem_outdated: #{@gem_outdated}, @gem_installed: #{@gem_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
+    gem_anyversion_installed = Kernel.system "gem list -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
+    crewlog "install: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, !@gem_latest_version_installed && gem_anyversion_installed: #{!@gem_latest_version_installed && gem_anyversion_installed}, @gem_latest_version_installed: #{@gem_latest_version_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"
     unless @install_gem
       puts "#{@gem_name} #{@gem_ver} is already installed.".lightgreen
@@ -102,16 +113,25 @@ class RUBY < Package
     end
     puts "#{@gem_name.capitalize} needs a binary gem built!".orange unless @gem_binary_build_needed.blank?
     if !no_compile_needed? || !@gem_binary_build_needed.blank? || gem_compile_needed?
-      system "gem install -N --local #{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem --conservative"
-    elsif @gem_outdated
+      @gem_pkg = Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb"))
+      gem_pkg_sha256sum = PackageUtils.get_sha256(@gem_pkg)
+      gem_sha256 = `sha256sum #{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem`.chomp.split.first
+
+      if File.file?("#{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem") && (gem_sha256 == gem_pkg_sha256sum || @just_built_gem)
+        puts "Installing #{@gem_name} gem #{@gem_ver}...".orange
+        Kernel.system "gem install -N --local #{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem --conservative"
+      end
+    elsif gem_anyversion_installed
       puts "Updating #{@gem_name} gem to #{@gem_ver}...".orange
       system "gem update -N #{@gem_name} --conservative"
     else
+      puts "Installing #{@gem_name} gem #{@gem_ver}...".orange
       system "gem install -N #{@gem_name} --conservative"
     end
     system "gem cleanup #{@gem_name}"
     system "gem contents #{@gem_name} > #{@gem_filelist_path}"
     @ruby_install_extras&.call
     @install_gem = false
+    @just_built_gem = false
   end
 end
