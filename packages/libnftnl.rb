@@ -4,17 +4,17 @@ class Libnftnl < Autotools
   description 'libnftnl is a userspace library providing a low-level netlink programming interface (API) to the in-kernel nf_tables subsystem.'
   homepage 'https://netfilter.org/projects/libnftnl/'
   license 'GPL-2'
-  version '1.2.7'
+  version '1.2.8'
   compatibility 'all'
   source_url "https://netfilter.org/projects/libnftnl/files/libnftnl-#{version}.tar.xz"
-  source_sha256 '9122774f968093d5c0bacddd67de480f31fa4073405a7fc058a34b0f387aecb3'
+  source_sha256 '37fea5d6b5c9b08de7920d298de3cdc942e7ae64b1a3e8b880b2d390ae67ad95'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e063c6205897f01460d0fa1692cdc458197588f483332f90e8f88f75f890c420',
-     armv7l: 'e063c6205897f01460d0fa1692cdc458197588f483332f90e8f88f75f890c420',
-       i686: '1377c81d11c0c7c5a32b0c75a72b54ecc2ad3f5c46cee733ba24d3dfb027f79f',
-     x86_64: '534d939421b14d0063b07af88ba7251b8255d122aa197303334a7726576d683a'
+    aarch64: '7c093a2a0cbee0292fb2e0d41bc54181b79e8105bbebb076782a9c160c6d6006',
+     armv7l: '7c093a2a0cbee0292fb2e0d41bc54181b79e8105bbebb076782a9c160c6d6006',
+       i686: 'c003b4116ed6c4a5e2f9abc8400f96a4312e16446d957a0a3f2865541b2cb982',
+     x86_64: '2a276eb55a9671e9314dd161e5605e8719222ff37b4beda1668614816309686f'
   })
 
   depends_on 'glibc' # R

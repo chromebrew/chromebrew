@@ -6,17 +6,17 @@ require 'buildsystems/autotools'
 class Nftables < Autotools
   description 'Netfilter tables userspace tools'
   homepage 'https://netfilter.org/projects/nftables/'
-  version '1.1.0'
+  version '1.1.1'
   license 'GPL2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://netfilter.org/projects/nftables/files/nftables-#{version}.tar.xz"
-  source_sha256 'ef3373294886c5b607ee7be82c56a25bc04e75f802f8e8adcd55aac91eb0aa24'
+  source_sha256 '6358830f3a64f31e39b0ad421d7dadcd240b72343ded48d8ef13b8faf204865a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '25b41af243ada6343ee8805e2e50b8dfcba33a6c65ef9f66c40fb6003146e3a0',
-     armv7l: '25b41af243ada6343ee8805e2e50b8dfcba33a6c65ef9f66c40fb6003146e3a0',
-     x86_64: 'bd633d09e225c49097d1e5f10bb97fd3371cb75c4b498ef8df4f6a6e5b7b2cc4'
+    aarch64: '9ef8444cc26ca8958a118ab23214ee1c93e4c8a82be3d3ee9d94378665b29bba',
+     armv7l: '9ef8444cc26ca8958a118ab23214ee1c93e4c8a82be3d3ee9d94378665b29bba',
+     x86_64: '64193fb122b88b0aa0c66fa65ac20c9e10aaafb55b40f459b204b08c785b4b19'
   })
 
   depends_on 'asciidoc' => :build
