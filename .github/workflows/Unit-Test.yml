@@ -6,14 +6,11 @@ jobs:
     strategy:
       matrix:
         arch: [x86_64, armv7l, i686]
-    runs-on: ubuntu-latest
+    runs-on: "{{ '[self-hosted, linux, ARM64]' if matrix.arch == 'armv7l' else 'ubuntu-latest' }}"
     steps:
       - uses: actions/checkout@v4
       - name: Dump github context
         run: echo "$GITHUB_CONTEXT"
-      - name: Set up QEMU
-        if: matrix.arch == 'armv7l'
-        uses: docker/setup-qemu-action@v3.2.0
       - name: Get non-pkg changed files
         id: non-pkg-changed-files
         uses: tj-actions/changed-files@v45

@@ -195,7 +195,7 @@ updated_packages.each do |pkg|
       next
     else
       puts "#{name.capitalize} #{@version} needs builds uploaded for: #{builds_needed.join(' ')}".lightblue
-      system "yes | crew build -f #{pkg}" if build.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{@version}-chromeos-#{ARCH}.#{@binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@version}")
+      system "yes | crew build -f #{pkg}" if builds_needed.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{@version}-chromeos-#{ARCH}.#{@binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@version}")
       upload_pkg = nil
       builds_needed.each do |build|
         upload_pkg = true if File.file?("release/#{build}/#{name}-#{@version}-chromeos-#{build}.#{@binary_compression}")
