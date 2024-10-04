@@ -6,7 +6,9 @@ jobs:
     strategy:
       matrix:
         arch: [x86_64, armv7l, i686]
-    runs-on: "{{ '[self-hosted, linux, ARM64]' if matrix.arch == 'armv7l' else 'ubuntu-latest' }}"
+      env:
+        RUNNER: "{{ '[self-hosted, linux, ARM64]' if matrix.arch == 'armv7l' else 'ubuntu-latest' }}"
+    runs-on: $RUNNER
     steps:
       - uses: actions/checkout@v4
       - name: Dump github context
