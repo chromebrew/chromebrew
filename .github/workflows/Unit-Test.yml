@@ -2,13 +2,24 @@
 name: Run Unit Tests on PR
 on: workflow_call
 jobs:
+  determine_runner:
+    runs-on: ubuntu-latest
+    outputs:
+      runner: ${{ steps.step1.outputs.runner }}
+    steps:
+      - name: Determine Runner
+        id: step1
+        run: |
+          if [ ${{ matrix.arch }} == 'armv7l' ]; then
+            echo "[self-hosted, linux, ARM64]" >> $GITHUB_OUTPUT
+          else
+            echo "ubuntu-latest" >> $GITHUB_OUTPUT
+          fi
   container_tests:
     strategy:
       matrix:
         arch: [x86_64, armv7l, i686]
-      env:
-        RUNNER: "{{ '[self-hosted, linux, ARM64]' if matrix.arch == 'armv7l' else 'ubuntu-latest' }}"
-    runs-on: $RUNNER
+    runs-on: ${{ needs.determine_runner.outputs.runner }}
     steps:
       - uses: actions/checkout@v4
       - name: Dump github context
