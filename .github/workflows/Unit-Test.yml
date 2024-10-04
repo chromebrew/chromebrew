@@ -28,8 +28,13 @@ jobs:
             runner="${{ matrix.runner }}"
             echo "matrix arch is $arch"
             echo "matrix runner is $runner"
-            [[ $arch == 'armv7l' ]] && [[ $runner == 'ubuntu-latest' ]] && exit 0
-            [[ $arch != 'armv7l' ]] && [[ $runner == '[self-hosted, linux, ARM64]' ]] && exit 0
+            [[ $arch == 'armv7l' ]] && [[ $runner == 'ubuntu-latest' ]] && export exitquick=1
+            [[ $arch != 'armv7l' ]] && [[ $runner == '[self-hosted, linux, ARM64]' ]] && export exitquick=1
+            if [[ -n $exitquick ]]; then
+              echo "exiting 0" && exit 0
+            else
+              echo "not exiting"
+            fi
       - name: Export variables to github context
         run: |
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
@@ -120,6 +125,8 @@ jobs:
               # but otherwise do not run the i686 container if there are no packages compatible with i686.
               exit 0
             fi
+            docker pull tonistiigi/binfmt
+            sudo docker run --privileged --rm tonistiigi/binfmt --install all
             sudo docker run \
               --platform $PLATFORM \
               -v "${{ github.workspace }}/tests/unit_test.sh:/unit_test.sh" \
