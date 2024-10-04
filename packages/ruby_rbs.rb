@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_rbs < RUBY
   description 'RBS is the language for type signatures for Ruby and standard library definitions.'
   homepage 'https://github.com/ruby/rbs'
-  version "3.6.0-#{CREW_RUBY_VER}"
+  version "3.6.1-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '6468eb42d0694c8244d0259a59f6c859567c966cc01a99b28457d1cdfaa7d396',
-     armv7l: '6468eb42d0694c8244d0259a59f6c859567c966cc01a99b28457d1cdfaa7d396',
-       i686: '2801c0bc8102e450b7b93cc1ba0661c2d73d9d4b6a30be494ace297c149cbae9',
-     x86_64: '5f1d42874b6ad32517a56855bded8a9a070e6eed4e90c0a62e2ace8ef904a4bc'
+    aarch64: '0b9ec2d04ba88c0a8f3f7a15ec79738b1600eba84219f8f34029389d20329251',
+     armv7l: '0b9ec2d04ba88c0a8f3f7a15ec79738b1600eba84219f8f34029389d20329251',
+       i686: '884b0d30c23f56ca3826817793e612b6a9c20ba3f1cde8ff587fb91a0aff8817',
+     x86_64: '0e0a78e3d391a32f8a0580b4c6bb4922bf77b8f0a6b36f07b61647d77aedf6c2'
   })
 
   depends_on 'ruby_abbrev' # R

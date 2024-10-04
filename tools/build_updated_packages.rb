@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# build_updated_packages version 1.4 (for Chromebrew)
+# build_updated_packages version 1.5 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -126,6 +126,18 @@ rescue Timeout::Error
   return true
 end
 
+def self.check_build_uploads(architectures_to_check = nil, name = nil, pkg = nil)
+  architectures_to_check.delete('aarch64')
+  architectures_to_check = %w[x86_64 armv7l i686] if (architectures_to_check & %w[x86_64 armv7l i686]).nil?
+  builds_needed = architectures_to_check.dup
+  architectures_to_check.each do |arch|
+    arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@version}_#{arch}/#{name}-#{@version}-chromeos-#{arch}.#{@binary_compression}"
+    puts "Checking: curl -sI #{arch_specific_url}" if CREW_VERBOSE
+    builds_needed.delete(arch) if `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200' && system("grep -q binary_sha256 #{pkg}")
+  end
+  return builds_needed
+end
+
 # Get all boolean properties from package.rb
 boolean_properties = `sed -n '/^\ \ boolean_property/,/^$/p' lib/package.rb | sed 's/^\ \ boolean_property//' | tr -d '\n' | sort -u`.chomp.delete(',').delete(':').split.join(' ')
 boolean_property(boolean_properties.split)
@@ -176,26 +188,21 @@ updated_packages.each do |pkg|
     puts "#{name.capitalize} #{@version} has no binaries and may not need them.".lightgreen
     next pkg
   else
-    check_builds = compatibility == 'all' ? %w[x86_64 armv7l i686] : compatibility.delete(',').split
-    check_builds.delete('aarch64')
-    check_builds = %w[x86_64 armv7l i686] if (check_builds & %w[x86_64 armv7l i686]).nil?
-    build = check_builds.dup
-    check_builds.each do |arch|
-      arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@version}_#{arch}/#{name}-#{@version}-chromeos-#{arch}.#{@binary_compression}"
-      puts "Checking: curl -sI #{arch_specific_url}" if CREW_VERBOSE
-      build.delete(arch) if `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200' && system("grep -q binary_sha256 #{pkg}")
-    end
-    if build.empty?
+    architectures_to_check = compatibility == 'all' ? %w[x86_64 armv7l i686] : compatibility.delete(',').split
+    builds_needed = check_build_uploads(architectures_to_check, name, pkg)
+    if builds_needed.empty?
       puts "No builds are needed for #{name} #{@version}.".lightgreen
       next
     else
-      puts "#{name.capitalize} #{@version} needs builds uploaded for: #{build.join(' ')}".lightblue
+      puts "#{name.capitalize} #{@version} needs builds uploaded for: #{builds_needed.join(' ')}".lightblue
       system "yes | crew build -f #{pkg}" if build.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{@version}-chromeos-#{ARCH}.#{@binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@version}")
       upload_pkg = nil
-      build.each do |build|
+      builds_needed.each do |build|
         upload_pkg = true if File.file?("release/#{build}/#{name}-#{@version}-chromeos-#{build}.#{@binary_compression}")
       end
       system "crew upload #{name}" if upload_pkg == true && agree_default_yes("\nWould you like to upload #{name} #{@version}")
+      builds_still_needed = check_build_uploads(architectures_to_check)
+      puts "#{name.capitalize} #{@version} still needs builds uploaded for: #{builds_still_needed.join(' ')}".lightblue unless builds_still_needed.empty?
     end
   end
 end
