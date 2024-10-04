@@ -2,24 +2,12 @@
 name: Run Unit Tests on PR
 on: workflow_call
 jobs:
-  determine_runner:
-    runs-on: ubuntu-latest
-    outputs:
-      runner: ${{ steps.step1.outputs.runner }}
-    steps:
-      - name: Determine Runner
-        id: step1
-        run: |
-          if [ ${{ matrix.arch }} == 'armv7l' ]; then
-            echo "[self-hosted, linux, ARM64]" >> $GITHUB_OUTPUT
-          else
-            echo "ubuntu-latest" >> $GITHUB_OUTPUT
-          fi
   container_tests:
     strategy:
       matrix:
         arch: [x86_64, armv7l, i686]
-    runs-on: ${{ needs.determine_runner.outputs.runner }}
+        runner: ['[self-hosted, linux, ARM64]', 'ubuntu-latest']
+    runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
       - name: Dump github context
@@ -34,6 +22,14 @@ jobs:
         uses: tj-actions/changed-files@v45
         with:
           files: packages/*.rb
+      - name: Exit quickly if on wrong runner.
+        run: |
+            arch="${{ matrix.arch }}"
+            runner="${{ matrix.runner }}"
+            echo "matrix arch is $arch"
+            echo "matrix runner is $runner"
+            [[ $arch == 'armv7l' ]] && [[ $runner == 'ubuntu-latest' ]] && exit 0
+            [[ $arch != 'armv7l' ]] && [[ $runner == '[self-hosted, linux, ARM64]' ]] && exit 0
       - name: Export variables to github context
         run: |
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
