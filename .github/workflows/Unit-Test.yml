@@ -25,30 +25,30 @@ jobs:
               echo "not exiting"
             fi
       - uses: actions/checkout@v4
-        if : ( steps.runner_check.outputs.skipnext  != 'true' )
+        if: ( steps.runner_check.outputs.skipnext  != 'true' )
       - name: Dump github context
-        if : ( steps.runner_check.outputs.skipnext  != 'true' )
+        if: ( steps.runner_check.outputs.skipnext  != 'true' )
         run: echo "$GITHUB_CONTEXT"
       - name: Get non-pkg changed files
         id: non-pkg-changed-files
-        if : ( steps.runner_check.outputs.skipnext  != 'true' )
+        if: ( steps.runner_check.outputs.skipnext  != 'true' )
         uses: tj-actions/changed-files@v45
         with:
           files_ignore: packages/*.rb
       - name: Get all changed package files
         id: changed-ruby-files
-        if : ( steps.runner_check.outputs.skipnext  != 'true' )
+        if: ( steps.runner_check.outputs.skipnext  != 'true' )
         uses: tj-actions/changed-files@v45
         with:
           files: packages/*.rb
       - name: Export variables to github context
-        if : ( steps.runner_check.outputs.skipnext  != 'true' )
+        if: ( steps.runner_check.outputs.skipnext  != 'true' )
         run: |
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
             echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> $GITHUB_ENV
             echo "NON_PKG_CHANGED_FILES=$(echo "${{ steps.non-pkg-changed-files.outputs.all_changed_files }}" | xargs)" >> $GITHUB_ENV
       - name: Determine glibc and architecture package compatibility
-        if : ( steps.runner_check.outputs.skipnext  != 'true' )
+        if: ( steps.runner_check.outputs.skipnext  != 'true' )
         run: |
             # If a package doesnt have a min_glibc value, or if its below 2.27, add it to GLIBC_227_COMPATIBLE_PACKAGES.
             export GLIBC_227_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do if grep -q min_glibc packages/${i}.rb; then grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.27}' || echo ${i} ; else echo ${i} ; fi ; done | xargs -r)"
@@ -85,7 +85,7 @@ jobs:
               echo "PR #${{ github.event.pull_request.number }} has these i686 compatible packages: ${i686_PACKAGES}"
             fi
       - name: Export target docker container to github context
-        if : ( steps.runner_check.outputs.skipnext  != 'true' )
+        if: ( steps.runner_check.outputs.skipnext  != 'true' )
         env:
           TARGET_ARCH: ${{ matrix.arch }}
         run: |
@@ -118,7 +118,7 @@ jobs:
               ;;
             esac
       - name: Run unit tests
-        if : ( steps.runner_check.outputs.skipnext  != 'true' )
+        if: ( steps.runner_check.outputs.skipnext  != 'true' )
         run: |
             if [[ -z ${NON_PKG_CHANGED_FILES} ]] && [[ $PLATFORM == 'linux/arm/v7' ]] && [[ -z ${ARMV7L_PACKAGES} ]]; then
               # Run the arm container if there are non-package changed files,
