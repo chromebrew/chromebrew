@@ -135,15 +135,10 @@ jobs:
               # but otherwise do not run the i686 container if there are no packages compatible with i686.
               exit 0
             fi
-            export start_path=`realpath ${{ github.workspace }}/tests/unit_test.sh`
-            file $start_path
-            docker pull tonistiigi/binfmt
-            # sudo docker run --privileged --rm tonistiigi/binfmt --install all
-            echo "start_path is ${start_path}"
-            sudo docker run \
+            docker pull satmandu/crewbuild:$CONTAINER
+            docker run \
               --rm \
               --platform $PLATFORM \
-              -v "${start_path}":"/unit_test.sh" \
               -u chronos \
               -e CHANGED_PACKAGES="$CHANGED_PACKAGES" \
               -e LD_LIBRARY_PATH="/usr/local/lib$LIB_SUFFIX" \
