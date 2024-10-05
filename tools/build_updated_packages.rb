@@ -126,7 +126,7 @@ rescue Timeout::Error
   return true
 end
 
-def self.check_build_uploads(architectures_to_check = nil, name = nil, pkg = nil)
+def self.check_build_uploads(architectures_to_check = nil, name = nil)
   architectures_to_check.delete('aarch64')
   architectures_to_check = %w[x86_64 armv7l i686] if (architectures_to_check & %w[x86_64 armv7l i686]).nil?
   builds_needed = architectures_to_check.dup
@@ -193,7 +193,7 @@ updated_packages.each do |pkg|
     next pkg
   else
     architectures_to_check = compatibility == 'all' ? %w[x86_64 armv7l i686] : compatibility.delete(',').split
-    builds_needed = check_build_uploads(architectures_to_check, name, pkg)
+    builds_needed = check_build_uploads(architectures_to_check, name)
     if builds_needed.empty?
       puts "No builds are needed for #{name} #{@version}.".lightgreen
       next
@@ -205,7 +205,7 @@ updated_packages.each do |pkg|
         upload_pkg = true if File.file?("release/#{build}/#{name}-#{@version}-chromeos-#{build}.#{@binary_compression}")
       end
       system "crew upload #{name}" if upload_pkg == true && agree_default_yes("\nWould you like to upload #{name} #{@version}")
-      builds_still_needed = check_build_uploads(architectures_to_check, name, pkg)
+      builds_still_needed = check_build_uploads(architectures_to_check, name)
       next if builds_still_needed.empty? && system("grep -q binary_sha256 #{pkg}")
 
       puts "#{name.capitalize} #{@version} still needs builds uploaded for: #{builds_still_needed.join(' ')}".lightblue unless builds_still_needed.empty? && system("grep -q binary_sha256 #{pkg}")
