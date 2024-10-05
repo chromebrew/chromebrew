@@ -3745,6 +3745,11 @@ url: http://www.greenwoodsoftware.com/less
 activity: low
 ---
 kind: url
+name: lesspipe
+url: https://github.com/wofr06/lesspipe/releases
+activity: low
+---
+kind: url
 name: leveldb
 url: https://github.com/google/leveldb/releases
 activity: low
