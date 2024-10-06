@@ -739,7 +739,7 @@
     "name": "awscli",
     "description": "Universal Command Line Interface for Amazon Web Services",
     "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.34.29",
+    "version": "1.35.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -1635,7 +1635,7 @@
     "name": "cmake",
     "description": "CMake is an open-source, cross-platform family of tools designed to build, test and package software.",
     "homepage": "https://cmake.org/",
-    "version": "3.30.3",
+    "version": "3.30.4",
     "license": "CMake",
     "compatibility": "all"
   },
@@ -1747,7 +1747,7 @@
     "name": "composer",
     "description": "Dependency Manager for PHP",
     "homepage": "https://getcomposer.org/",
-    "version": "2.7.9",
+    "version": "2.8.1",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2027,7 +2027,7 @@
     "name": "cups",
     "description": "CUPS is the standards-based, open source printing system",
     "homepage": "https://github.com/OpenPrinting/cups",
-    "version": "2.4.10",
+    "version": "2.4.11",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -2547,7 +2547,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "129.0.2792.65-1",
+    "version": "129.0.2792.79-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2795,7 +2795,7 @@
     "name": "expat",
     "description": "James Clark's Expat XML parser library in C.",
     "homepage": "https://github.com/libexpat/libexpat",
-    "version": "2.6.2",
+    "version": "2.6.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -3003,7 +3003,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "130.0.1",
+    "version": "131.0",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3531,7 +3531,7 @@
     "name": "fzf",
     "description": "A command-line fuzzy finder",
     "homepage": "https://github.com/junegunn/fzf",
-    "version": "0.54.0",
+    "version": "0.55.0",
     "license": "MIT and BSD-with-disclosure",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3939,7 +3939,7 @@
     "name": "github_cli",
     "description": "Official Github CLI tool",
     "homepage": "https://cli.github.com/",
-    "version": "2.57.0",
+    "version": "2.58.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4531,7 +4531,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "129.0.6668.70-1",
+    "version": "129.0.6668.89-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -4819,7 +4819,7 @@
     "name": "gtk4",
     "description": "GTK+ is a multi-platform toolkit for creating graphical user interfaces.",
     "homepage": "https://developer.gnome.org/gtk4/",
-    "version": "4.16.0",
+    "version": "4.16.3",
     "license": "LGPL-2.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -4971,7 +4971,7 @@
     "name": "gvim",
     "description": "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)",
     "homepage": "https://www.vim.org/",
-    "version": "9.1.0636",
+    "version": "9.1.0758",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -6069,6 +6069,14 @@
     "homepage": "https://www.gnu.org/software/less/",
     "version": "661",
     "license": "GPL-3 or BSD-2",
+    "compatibility": "all"
+  },
+  {
+    "name": "lesspipe",
+    "description": "Input filter for the pager less",
+    "homepage": "https://www-zeuthen.desy.de/~friebel/unix/lesspipe.html",
+    "version": "2.15",
+    "license": "GPL-2.0",
     "compatibility": "all"
   },
   {
@@ -7435,7 +7443,7 @@
     "name": "libnftnl",
     "description": "libnftnl is a userspace library providing a low-level netlink programming interface (API) to the in-kernel nf_tables subsystem.",
     "homepage": "https://netfilter.org/projects/libnftnl/",
-    "version": "1.2.7",
+    "version": "1.2.8",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -8131,7 +8139,7 @@
     "name": "libtool",
     "description": "GNU libtool is a generic library support script. Libtool hides the complexity of using shared libraries behind a consistent, portable interface.",
     "homepage": "https://www.gnu.org/software/libtool/",
-    "version": "2.4.7",
+    "version": "2.5.3",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -9203,7 +9211,7 @@
     "name": "m4",
     "description": "GNU M4 is an implementation of the traditional Unix macro processor.",
     "homepage": "https://www.gnu.org/software/m4/",
-    "version": "1.4.19",
+    "version": "1.4.19-1",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -9411,7 +9419,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "24.2.3",
+    "version": "24.2.4",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -9771,7 +9779,7 @@
     "name": "mtools",
     "description": "Mtools is a collection of utilities to access MS-DOS disks from GNU and Unix without mounting them.",
     "homepage": "https://www.gnu.org/software/mtools/",
-    "version": "4.0.44",
+    "version": "4.0.45",
     "license": "GPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -10387,7 +10395,7 @@
     "name": "networkmanager",
     "description": "Network connection manager and user applications",
     "homepage": "https://wiki.gnome.org/Projects/NetworkManager",
-    "version": "1.48.6",
+    "version": "1.50.0",
     "license": "GPL-2+ and LGPL-2.1+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -10411,7 +10419,7 @@
     "name": "nftables",
     "description": "Netfilter tables userspace tools",
     "homepage": "https://netfilter.org/projects/nftables/",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "license": "GPL2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -11915,7 +11923,7 @@
     "name": "platformsh",
     "description": "The unified tool for managing your Platform.sh services from the command line.",
     "homepage": "https://docs.platform.sh/overview/cli.html",
-    "version": "5.0.21",
+    "version": "5.0.22",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -12547,7 +12555,7 @@
     "name": "py3_dool",
     "description": "Dool is a command line tool to monitor many aspects of your system: CPU, Memory, Network, Load Average, etc.",
     "homepage": "https://github.com/scottchiefbaker/dool",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "license": "GPL3+",
     "compatibility": "all"
   },
@@ -12939,7 +12947,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.135.0",
+    "version": "2.135.1",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -12947,7 +12955,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.48.1",
+    "version": "3.48.2",
     "license": "UPL-1.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13131,7 +13139,7 @@
     "name": "py3_pycryptodome",
     "description": "Pycryptodome is a cryptographic library for Python.",
     "homepage": "https://www.pycryptodome.org/",
-    "version": "3.20.0",
+    "version": "3.21.0",
     "license": "BSD and public-domain",
     "compatibility": "all"
   },
@@ -13139,7 +13147,7 @@
     "name": "py3_pycryptodomex",
     "description": "Pycryptodomex is a cryptographic library for Python.",
     "homepage": "https://www.pycryptodome.org/",
-    "version": "3.20.0",
+    "version": "3.21.0",
     "license": "BSD and public-domain",
     "compatibility": "all"
   },
@@ -13203,7 +13211,7 @@
     "name": "py3_pypdf",
     "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.",
     "homepage": "https://github.com/py-pdf/pypdf",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "license": "BSD-3-Clause",
     "compatibility": "all"
   },
@@ -13211,7 +13219,7 @@
     "name": "py3_pyproject_hooks",
     "description": "This package contains wrappers to call hooks on build backends for pyproject.toml -based projects",
     "homepage": "https://pyproject-hooks.readthedocs.io/",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13219,7 +13227,7 @@
     "name": "py3_pyright",
     "description": "Static Type Checker for Python",
     "homepage": "https://github.com/microsoft/pyright",
-    "version": "1.1.382",
+    "version": "1.1.383",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13331,7 +13339,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.6.8",
+    "version": "0.6.9",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13363,7 +13371,7 @@
     "name": "py3_setuptools_rust",
     "description": "Setuptools-rust provides rust support for setuptools.",
     "homepage": "https://github.com/PyO3/setuptools-rust",
-    "version": "1.10.1",
+    "version": "1.10.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13523,7 +13531,7 @@
     "name": "py3_tomli",
     "description": "Tomli is a lil' TOML parser.",
     "homepage": "https://github.com/hukkin/tomli/",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13539,7 +13547,7 @@
     "name": "py3_tox",
     "description": "Command line driven CI frontend and development task automation tool.",
     "homepage": "https://tox.readthedocs.io/",
-    "version": "4.20.0",
+    "version": "4.21.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13731,7 +13739,7 @@
     "name": "python3",
     "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
     "homepage": "https://www.python.org/",
-    "version": "3.12.6",
+    "version": "3.12.7",
     "license": "PSF-2.0",
     "compatibility": "all"
   },
@@ -14339,7 +14347,7 @@
     "name": "ruby_bundler",
     "description": "Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably.",
     "homepage": "https://bundler.io",
-    "version": "2.5.20-ruby3.3",
+    "version": "2.5.21-ruby3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14683,7 +14691,7 @@
     "name": "ruby_net_ftp",
     "description": "Support for the File Transfer Protocol.",
     "homepage": "https://github.com/ruby/net-ftp",
-    "version": "0.3.7-ruby3.3",
+    "version": "0.3.8-ruby3.3",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -14803,7 +14811,7 @@
     "name": "ruby_power_assert",
     "description": "Power assert shows each value of variables and method calls in the expression.",
     "homepage": "https://github.com/ruby/power_assert",
-    "version": "2.0.3-ruby3.3",
+    "version": "2.0.4-ruby3.3",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -14835,7 +14843,7 @@
     "name": "ruby_prism",
     "description": "Prism is a parser for the Ruby programming language.",
     "homepage": "https://github.com/ruby/prism",
-    "version": "1.0.0-ruby3.3",
+    "version": "1.1.0-ruby3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14891,7 +14899,7 @@
     "name": "ruby_rbs",
     "description": "RBS is the language for type signatures for Ruby and standard library definitions.",
     "homepage": "https://github.com/ruby/rbs",
-    "version": "3.5.3-ruby3.3",
+    "version": "3.6.1-ruby3.3",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -14947,7 +14955,7 @@
     "name": "ruby_rexml",
     "description": "An XML toolkit for Ruby",
     "homepage": "https://github.com/ruby/rexml",
-    "version": "3.3.7-ruby3.3",
+    "version": "3.3.8-ruby3.3",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -14987,7 +14995,7 @@
     "name": "ruby_ruby_libversion",
     "description": "Ruby bindings for libversion.",
     "homepage": "https://github.com/Zopolis4/ruby-libversion",
-    "version": "1.0.0-1-ruby3.3",
+    "version": "1.0.0-2-ruby3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14995,7 +15003,7 @@
     "name": "ruby_rubygems_update",
     "description": "RubyGems is a package management framework for Ruby.",
     "homepage": "https://github.com/rubygems/rubygems",
-    "version": "3.5.20-ruby3.3",
+    "version": "3.5.21-ruby3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15659,7 +15667,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.26.0",
+    "version": "7.27.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -16419,7 +16427,7 @@
     "name": "terraform",
     "description": "Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.",
     "homepage": "https://www.terraform.io/",
-    "version": "1.9.6",
+    "version": "1.9.7",
     "license": "Apache-2.0, BSD-2, BSD-4, ECL-2.0, imagemagick, ISC, JSON, MIT, MIT-with-advertising, MPL-2.0 and unicode",
     "compatibility": "all"
   },
@@ -17123,7 +17131,7 @@
     "name": "vim",
     "description": "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.",
     "homepage": "https://www.vim.org/",
-    "version": "9.1.0636",
+    "version": "9.1.0758",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -17131,7 +17139,7 @@
     "name": "vim_runtime",
     "description": "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)",
     "homepage": "https://www.vim.org/",
-    "version": "9.1.0636",
+    "version": "9.1.0758",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -17147,7 +17155,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "6.9.3447.48-1",
+    "version": "6.9.3447.51-1",
     "license": "Vivaldi",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -18075,7 +18083,7 @@
     "name": "xxd_standalone",
     "description": "Hexdump utility from vim",
     "homepage": "https://www.vim.org/",
-    "version": "9.1.0188",
+    "version": "9.1.0754",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -18099,7 +18107,7 @@
     "name": "xzutils",
     "description": "XZ Utils is free general-purpose data compression software with a high compression ratio.",
     "homepage": "https://tukaani.org/xz/",
-    "version": "5.6.2-2",
+    "version": "5.6.3",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -18331,7 +18339,7 @@
     "name": "zoxide",
     "description": "zoxide is a smarter cd command, inspired by z and autojump.",
     "homepage": "https://github.com/ajeetdsouza/zoxide",
-    "version": "0.9.4",
+    "version": "0.9.6",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
