@@ -1,12 +1,12 @@
 /usr/local/bin/pre-commit
-/usr/local/lib/python3.12/site-packages/pre_commit-3.8.0.dist-info/INSTALLER
-/usr/local/lib/python3.12/site-packages/pre_commit-3.8.0.dist-info/LICENSE
-/usr/local/lib/python3.12/site-packages/pre_commit-3.8.0.dist-info/METADATA
-/usr/local/lib/python3.12/site-packages/pre_commit-3.8.0.dist-info/RECORD
-/usr/local/lib/python3.12/site-packages/pre_commit-3.8.0.dist-info/REQUESTED
-/usr/local/lib/python3.12/site-packages/pre_commit-3.8.0.dist-info/WHEEL
-/usr/local/lib/python3.12/site-packages/pre_commit-3.8.0.dist-info/entry_points.txt
-/usr/local/lib/python3.12/site-packages/pre_commit-3.8.0.dist-info/top_level.txt
+/usr/local/lib/python3.12/site-packages/pre_commit-4.0.0.dist-info/INSTALLER
+/usr/local/lib/python3.12/site-packages/pre_commit-4.0.0.dist-info/LICENSE
+/usr/local/lib/python3.12/site-packages/pre_commit-4.0.0.dist-info/METADATA
+/usr/local/lib/python3.12/site-packages/pre_commit-4.0.0.dist-info/RECORD
+/usr/local/lib/python3.12/site-packages/pre_commit-4.0.0.dist-info/REQUESTED
+/usr/local/lib/python3.12/site-packages/pre_commit-4.0.0.dist-info/WHEEL
+/usr/local/lib/python3.12/site-packages/pre_commit-4.0.0.dist-info/entry_points.txt
+/usr/local/lib/python3.12/site-packages/pre_commit-4.0.0.dist-info/top_level.txt
 /usr/local/lib/python3.12/site-packages/pre_commit/__init__.py
 /usr/local/lib/python3.12/site-packages/pre_commit/__main__.py
 /usr/local/lib/python3.12/site-packages/pre_commit/__pycache__/__init__.cpython-312.pyc
@@ -33,6 +33,7 @@
 /usr/local/lib/python3.12/site-packages/pre_commit/__pycache__/util.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pre_commit/__pycache__/xargs.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pre_commit/__pycache__/yaml.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pre_commit/__pycache__/yaml_rewrite.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pre_commit/all_languages.py
 /usr/local/lib/python3.12/site-packages/pre_commit/clientlib.py
 /usr/local/lib/python3.12/site-packages/pre_commit/color.py
@@ -153,3 +154,4 @@
 /usr/local/lib/python3.12/site-packages/pre_commit/util.py
 /usr/local/lib/python3.12/site-packages/pre_commit/xargs.py
 /usr/local/lib/python3.12/site-packages/pre_commit/yaml.py
+/usr/local/lib/python3.12/site-packages/pre_commit/yaml_rewrite.py
