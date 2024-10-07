@@ -146,6 +146,7 @@
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/OPENPGPKEY.py
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/OPT.py
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/PTR.py
+/usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/RESINFO.py
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/RP.py
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/RRSIG.py
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/RT.py
@@ -158,6 +159,7 @@
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/TSIG.py
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/TXT.py
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/URI.py
+/usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/WALLET.py
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/X25.py
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/ZONEMD.py
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__init__.py
@@ -194,6 +196,7 @@
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/OPENPGPKEY.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/OPT.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/PTR.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/RESINFO.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/RP.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/RRSIG.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/RT.cpython-312.pyc
@@ -206,6 +209,7 @@
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/TSIG.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/TXT.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/URI.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/WALLET.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/X25.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/ZONEMD.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/dns/rdtypes/ANY/__pycache__/__init__.cpython-312.pyc
@@ -283,9 +287,9 @@
 /usr/local/lib/python3.12/site-packages/dns/zone.py
 /usr/local/lib/python3.12/site-packages/dns/zonefile.py
 /usr/local/lib/python3.12/site-packages/dns/zonetypes.py
-/usr/local/lib/python3.12/site-packages/dnspython-2.6.1.dist-info/INSTALLER
-/usr/local/lib/python3.12/site-packages/dnspython-2.6.1.dist-info/METADATA
-/usr/local/lib/python3.12/site-packages/dnspython-2.6.1.dist-info/RECORD
-/usr/local/lib/python3.12/site-packages/dnspython-2.6.1.dist-info/REQUESTED
-/usr/local/lib/python3.12/site-packages/dnspython-2.6.1.dist-info/WHEEL
-/usr/local/lib/python3.12/site-packages/dnspython-2.6.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.12/site-packages/dnspython-2.7.0.dist-info/INSTALLER
+/usr/local/lib/python3.12/site-packages/dnspython-2.7.0.dist-info/METADATA
+/usr/local/lib/python3.12/site-packages/dnspython-2.7.0.dist-info/RECORD
+/usr/local/lib/python3.12/site-packages/dnspython-2.7.0.dist-info/REQUESTED
+/usr/local/lib/python3.12/site-packages/dnspython-2.7.0.dist-info/WHEEL
+/usr/local/lib/python3.12/site-packages/dnspython-2.7.0.dist-info/licenses/LICENSE
