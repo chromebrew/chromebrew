@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.53.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.53.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -93,6 +93,7 @@ CREW_DEST_HOME          ||= File.join(CREW_DEST_DIR, HOME)
 CREW_CACHE_DIR          ||= ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache") unless defined?(CREW_CACHE_DIR)
 CREW_CACHE_BUILD        ||= ENV.fetch('CREW_CACHE_BUILD', false) unless defined?(CREW_CACHE_BUILD)
 CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless defined?(CREW_CACHE_FAILED_BUILD)
+CREW_NO_GIT             ||= ENV.fetch('CREW_NO_GIT', false) unless defined?(CREW_NO_GIT)
 
 CREW_DEBUG   ||= ARGV.intersect?(%w[-D --debug]) unless defined?(CREW_DEBUG)
 CREW_FORCE   ||= ARGV.intersect?(%w[-f --force]) unless defined?(CREW_FORCE)

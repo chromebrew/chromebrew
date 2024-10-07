@@ -143,6 +143,12 @@ end
 at_exit do
   GnomePostinstall.run unless GnomePostinstall.gnome_packages.blank?
 
+  # Do gem cleanups all at once if needed.
+  unless @gems_needing_cleanup.blank?
+    puts "Running gem cleanup for gems: #{@gems_needing_cleanup.join(' ')}".orange
+    system "gem cleanup #{@gems_needing_cleanup.join(' ')}"
+  end
+
   # Print exit messages.
   ExitMessage.print
 end
@@ -253,52 +259,54 @@ end
 def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkg_name
 
-  # The following is used in fixup.rb to determine if crew update needs to
-  # be run again.
-  @crew_const_git_commit = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
+  unless CREW_NO_GIT
+    # The following is used in fixup.rb to determine if crew update needs to
+    # be run again.
+    @crew_const_git_commit = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
 
-  unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
-    puts 'Fixing Chromebrew system git repo clone...'.orange
-    system(<<~GIT_REPAIR_COMMANDS, chdir: CREW_LIB_PATH, %i[out err] => File::NULL)
-      ## Run the git setup commands used in install.sh.
-      # Make the git default branch error messages go away.
-      git config --global init.defaultBranch main
-      # Setup the dir with git information.
-      git init --ref-format=reftable
-      git remote add origin #{CREW_REPO}
-      # Help handle situations where GitHub is down.
-      git config --local http.lowSpeedLimit 1000
-      git config --local http.lowSpeedTime 5
-      # Checkout, overwriting local files.
-      git fetch --all
-      git checkout -f master
-      git reset --hard origin/#{CREW_BRANCH}
-    GIT_REPAIR_COMMANDS
+    unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
+      puts 'Fixing Chromebrew system git repo clone...'.orange
+      system(<<~GIT_REPAIR_COMMANDS, chdir: CREW_LIB_PATH, %i[out err] => File::NULL)
+        ## Run the git setup commands used in install.sh.
+        # Make the git default branch error messages go away.
+        git config --global init.defaultBranch main
+        # Setup the dir with git information.
+        git init --ref-format=reftable
+        git remote add origin #{CREW_REPO}
+        # Help handle situations where GitHub is down.
+        git config --local http.lowSpeedLimit 1000
+        git config --local http.lowSpeedTime 5
+        # Checkout, overwriting local files.
+        git fetch --all
+        git checkout -f master
+        git reset --hard origin/#{CREW_BRANCH}
+      GIT_REPAIR_COMMANDS
+    end
+
+    system(<<~GIT_UPDATE_COMMANDS, chdir: CREW_LIB_PATH, exception: true)
+      ## Update crew from git.
+      # Set sparse-checkout folders.
+      git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools
+      git sparse-checkout reapply
+      git fetch #{CREW_REPO} #{CREW_BRANCH}
+      git reset --hard FETCH_HEAD
+    GIT_UPDATE_COMMANDS
+    system(<<~GIT_RESTORE_MTIME_COMMAND, chdir: CREW_LIB_PATH, exception: true) if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
+      # Set the mtime on each file in git to the date the file was added,
+      # not to the date of the last git pull.
+      git-restore-mtime -sq 2>/dev/null
+    GIT_RESTORE_MTIME_COMMAND
+
+    if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
+      puts 'Updating RubyGems.'.orange
+      system 'gem update -N --system'
+      system 'gem cleanup'
+    end
+    puts 'Package lists, crew, and library updated.'
+
+    # Do any fixups necessary after crew has updated from git.
+    load "#{CREW_LIB_PATH}/lib/fixup.rb"
   end
-
-  system(<<~GIT_UPDATE_COMMANDS, chdir: CREW_LIB_PATH, exception: true)
-    ## Update crew from git.
-    # Set sparse-checkout folders.
-    git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools
-    git sparse-checkout reapply
-    git fetch #{CREW_REPO} #{CREW_BRANCH}
-    git reset --hard FETCH_HEAD
-  GIT_UPDATE_COMMANDS
-  system(<<~GIT_RESTORE_MTIME_COMMAND, chdir: CREW_LIB_PATH, exception: true) if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
-    # Set the mtime on each file in git to the date the file was added,
-    # not to the date of the last git pull.
-    git-restore-mtime -sq 2>/dev/null
-  GIT_RESTORE_MTIME_COMMAND
-
-  if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
-    puts 'Updating RubyGems.'.orange
-    system 'gem update -N --system'
-    system 'gem cleanup'
-  end
-  puts 'Package lists, crew, and library updated.'
-
-  # Do any fixups necessary after crew has updated from git.
-  load "#{CREW_LIB_PATH}/lib/fixup.rb"
 
   # update compatible packages
   generate_compatible
