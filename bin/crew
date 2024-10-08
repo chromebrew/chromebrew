@@ -447,6 +447,17 @@ def upgrade(*pkgs, build_from_source: false)
 end
 
 def download
+  if ARGV.intersect?(%w[download]) && @pkg.is_fake?
+    return if CREW_FORCE
+    fake_pkg_deplist = @pkg.get_deps_list(return_attr: true).flat_map(&:keys).uniq
+    puts "Will download the following packages: #{fake_pkg_deplist.join(' ')}".orange
+    fake_pkg_deplist.each do |fake_pkg_dep|
+      system "crew download -f #{fake_pkg_dep}"
+    end
+
+    return
+  end
+
   url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
   source = @pkg.source?(@device[:architecture])
 
