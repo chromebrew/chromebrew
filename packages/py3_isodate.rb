@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_isodate < Pip
   description 'ISOdate is an ISO 8601 date/time/duration parser and formatter.'
   homepage 'https://github.com/gweis/isodate/'
-  version "0.6.1-#{CREW_PY_VER}"
+  version "0.7.0-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bc99ff5bbc98353bd77119ce4e994ec85975d41f8c87ed36e56f0eb2fa96132e',
-     armv7l: 'bc99ff5bbc98353bd77119ce4e994ec85975d41f8c87ed36e56f0eb2fa96132e',
-       i686: '0c1ee87c18a3c9e94b86998a031f126c73285b8b409324c7504cc875b2710fca',
-     x86_64: 'c9fe9d5efc0b2a6ed0bae36d24d998a459172bed20af8ef6ce2dd47026af40e6'
+    aarch64: 'a89c6d8b54ca681fbc2cdf48e4f0b1c36efe34ffab9f9b569cd0c7b88421671b',
+     armv7l: 'a89c6d8b54ca681fbc2cdf48e4f0b1c36efe34ffab9f9b569cd0c7b88421671b',
+       i686: '39dfcb7e8d82cd0f808f71a80c685180639ebd40e41bdb989fd0ea8fd8dfb411',
+     x86_64: '7c1d942f4f69e1faa60f02bee122b3e5daf4ed9b3615cbedb69f18582ff5dcdd'
   })
 
   depends_on 'py3_six'
