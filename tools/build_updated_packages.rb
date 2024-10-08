@@ -170,6 +170,8 @@ else
   updated_packages.each { |p| puts p.sub('packages/', '').sub('.rb', '').to_s.lightblue }
 end
 
+updated_packages << `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update`.chomp
+updated_packages.uniq!
 updated_packages.each do |pkg|
   name = pkg.sub('packages/', '').sub('.rb', '')
 
