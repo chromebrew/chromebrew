@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# build_updated_packages version 1.6 (for Chromebrew)
+# build_updated_packages version 1.7 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -170,6 +170,8 @@ else
   updated_packages.each { |p| puts p.sub('packages/', '').sub('.rb', '').to_s.lightblue }
 end
 
+updated_packages << `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update`.chomp
+updated_packages.uniq!
 updated_packages.each do |pkg|
   name = pkg.sub('packages/', '').sub('.rb', '')
 

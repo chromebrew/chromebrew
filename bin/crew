@@ -311,9 +311,10 @@ def update
   # update compatible packages
   generate_compatible
   # check for outdated installed packages
-  puts 'Checking for package updates...'
+  puts 'Checking for package updates...' unless CREW_UNATTENDED
 
   can_be_updated = 0
+  updatable_packages = []
   @device[:installed_packages].each do |package|
     search package[:name], silent: true
     unless @pkg
@@ -329,16 +330,21 @@ def update
     if different_version && !different_sha && has_sha
       unless @pkg.no_compile_needed?
         can_be_updated -= 1
-        puts "#{@pkg.name} has a version change but does not have updated binaries".yellow
+        updatable_packages.push(@pkg.name)
+        puts "#{@pkg.name} has a version change but does not have updated binaries".yellow unless CREW_UNATTENDED
       end
     elsif different_version
-      puts "#{@pkg.name} could be updated from #{package[:version]} to #{@pkg.version}"
+      updatable_packages.push(@pkg.name)
+      puts "#{@pkg.name} could be updated from #{package[:version]} to #{@pkg.version}" unless CREW_UNATTENDED
     elsif !different_version && different_sha
-      puts "#{@pkg.name} could be updated (rebuild)"
+      updatable_packages.push(@pkg.name)
+      puts "#{@pkg.name} could be updated (rebuild)" unless CREW_UNATTENDED
     end
   end
 
-  if can_be_updated.positive?
+  if CREW_UNATTENDED && can_be_updated.positive?
+    puts updatable_packages
+  elsif can_be_updated.positive?
     puts "\n#{can_be_updated} packages can be updated."
     puts 'Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages.'
   else
