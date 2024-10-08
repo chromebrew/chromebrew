@@ -447,17 +447,6 @@ def upgrade(*pkgs, build_from_source: false)
 end
 
 def download
-  if ARGV.intersect?(%w[download]) && @pkg.is_fake?
-    return if CREW_FORCE
-    fake_pkg_deplist = @pkg.get_deps_list(return_attr: true).flat_map(&:keys).uniq
-    puts "Will download the following packages: #{fake_pkg_deplist.join(' ')}".orange
-    fake_pkg_deplist.each do |fake_pkg_dep|
-      system "crew download -f #{fake_pkg_dep}"
-    end
-
-    return
-  end
-
   url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
   source = @pkg.source?(@device[:architecture])
 
@@ -1753,7 +1742,31 @@ def download_command(args)
     search @pkg_name
     @pkg.build_from_source = true if @opt_source
     print_current_package CREW_VERBOSE
-    download
+    if ARGV.intersect?(%w[download]) && @pkg.is_fake?
+      fake_pkg_deplist = @pkg.get_deps_list(return_attr: true).flat_map(&:keys).uniq
+      until fake_pkg_deplist.blank?
+        puts "Will download the following packages: #{fake_pkg_deplist.join(' ')}".orange
+        fake_pkg_deplist.each_with_index do |fake_pkg_dep, index|
+          @pkg_name = fake_pkg_dep
+          search @pkg_name
+          @pkg.build_from_source = true if @opt_source
+          if @pkg.is_fake?
+            puts "Expanding #{fake_pkg_dep}...".lightpurple
+            expanded_pkg_list = @pkg.get_deps_list(return_attr: true).flat_map(&:keys).uniq
+            fake_pkg_deplist.push(*expanded_pkg_list)
+            fake_pkg_deplist.delete(@pkg_name)
+            next fake_pkg_dep
+          end
+          total_files_to_check = fake_pkg_deplist.length
+          numlength = total_files_to_check.to_s.length
+          puts "[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Downloading #{fake_pkg_dep}...".blue
+          download
+          fake_pkg_deplist.delete(@pkg_name)
+        end
+      end
+    else
+      download
+    end
   end
 end
 
