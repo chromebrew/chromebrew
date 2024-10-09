@@ -129,6 +129,7 @@ rescue Timeout::Error
 end
 
 def self.check_build_uploads(architectures_to_check = nil, name = nil)
+  return [] if is_fake?
   architectures_to_check.delete('aarch64')
   architectures_to_check = %w[x86_64 armv7l i686] if (architectures_to_check & %w[x86_64 armv7l i686]).nil?
   builds_needed = architectures_to_check.dup
@@ -209,6 +210,7 @@ updated_packages.each do |pkg|
     puts "#{name.capitalize} #{@version} has no binaries and may not need them.".lightgreen
     next pkg
   else
+    next if no_binaries_needed?
     architectures_to_check = compatibility == 'all' ? %w[x86_64 armv7l i686] : compatibility.delete(',').split
     puts "#{name.capitalize} appears to need binaries. Checking to see if current binaries exist...".orange
     builds_needed = check_build_uploads(architectures_to_check, name)
