@@ -65,7 +65,7 @@ class Package
                      :postremove   # Function to perform after package removal.
 
   class << self
-    attr_accessor :build_from_source, :cached_build, :in_build, :in_install, :in_upgrade, :name
+    attr_accessor :build_from_source, :cached_build, :in_build, :in_install, :in_upgrade, :missing_binaries, :name
   end
 
   def self.agree_default_no(message = nil)
@@ -341,7 +341,7 @@ class Package
   end
 
   def self.binary?(architecture) = !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
-  def self.source?(architecture) = !(binary?(architecture) || is_fake?)
+  def self.source?(architecture) = missing_binaries ? true : !(binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
     @crew_env_options_hash = if no_env_options?
