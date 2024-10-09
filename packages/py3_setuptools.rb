@@ -23,11 +23,15 @@ class Py3_setuptools < Python
   conflicts_ok
 
   def self.prebuild
-    system 'python3 -m pip uninstall setuptools -y', exception: false
-    system 'python3 -m pip install -I --force-reinstall --no-deps setuptools', exception: false
+    if `which python3`.chomp
+      system 'python3 -m pip uninstall setuptools -y', exception: false
+      system 'python3 -m pip install -I --force-reinstall --no-deps setuptools', exception: false
+    end
   end
 
   def self.postremove
-    system 'python3 -m pip uninstall setuptools -y', exception: false
+    if `which python3`.chomp
+      system 'python3 -m pip uninstall setuptools -y', exception: false
+    end
   end
 end
