@@ -210,7 +210,10 @@ updated_packages.each do |pkg|
     puts "#{name.capitalize} #{@version} has no binaries and may not need them.".lightgreen
     next pkg
   else
-    next if no_binaries_needed?
+    if no_binaries_needed?
+      updated_packages.delete(pkg)
+      next
+    end
     architectures_to_check = compatibility == 'all' ? %w[x86_64 armv7l i686] : compatibility.delete(',').split
     puts "#{name.capitalize} appears to need binaries. Checking to see if current binaries exist...".orange
     builds_needed = check_build_uploads(architectures_to_check, name)
