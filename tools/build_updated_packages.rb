@@ -21,6 +21,8 @@ abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if ENV[
 puts "Setting the CREW_AGREE_TIMEOUT_SECONDS environment variable to less than the default of #{CREW_AGREE_TIMEOUT_SECONDS} may speed this up...".orange if ENV['CREW_AGREE_TIMEOUT_SECONDS'].nil?
 
 SKIP_UPDATE_CHECKS = ARGV.include?('--skip')
+CHECK_ALL_PYTHON = ARGV.include?('--check-all-python')
+CHECK_ALL_RUBY = ARGV.include?('--check-all-ruby')
 def require_gem(gem_name_and_require = nil, require_override = nil)
   # Allow only loading gems when needed.
   return if gem_name_and_require.nil?
@@ -137,7 +139,7 @@ def self.check_build_uploads(architectures_to_check = nil, name = nil)
       builds_needed.delete(arch)
       puts "#{arch_specific_url} found!"
     end
-    puts "builds_needed is now #{builds_needed}"
+    puts "builds_needed for #{name} is now #{builds_needed}"
   end
   return builds_needed
 end
@@ -170,7 +172,15 @@ else
   updated_packages.each { |p| puts p.sub('packages/', '').sub('.rb', '').to_s.lightblue }
 end
 
-crew_update_packages = `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update`.chomp.split.map(&'packages/'.method(:+)).map {|i| i.concat('.rb')}
+crew_update_packages = `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update`.chomp.split.map(&'packages/'.method(:+)).map { |i| i.concat('.rb') }
+if CHECK_ALL_PYTHON
+  py_packages = `grep -l CREW_PY_VER packages/*`.chomp.split
+  updated_packages.push(*py_packages)
+end
+if CHECK_ALL_RUBY
+  ruby_packages = `grep -l CREW_RUBY_VER packages/*`.chomp.split
+  updated_packages.push(*ruby_packages)
+end
 updated_packages.push(*crew_update_packages)
 updated_packages.uniq!
 updated_packages.each do |pkg|
@@ -182,9 +192,13 @@ updated_packages.each do |pkg|
     prop_var_name = "@#{prop_name}"
     instance_variable_set(prop_var_name, false)
   end
-  # rubocop:disable Security/Eval
-  eval(`sed -e '/^require/d' -e '/^\ \ depends_on/d' -e '/^class/d' -e '/^end/d' #{pkg}`.chomp)
-  # rubocop:enable Security/Eval
+  begin
+    # rubocop:disable Security/Eval
+    eval(`sed -e '/^require/d' -e '/^\ \ depends_on/d' -e '/^class/d' -e '/^end/d' #{pkg}`.chomp)
+  rescue NameError
+    next pkg
+    # rubocop:enable Security/Eval
+  end
   boolean_property(boolean_properties.split)
   property(properties.split)
 
@@ -196,6 +210,7 @@ updated_packages.each do |pkg|
     next pkg
   else
     architectures_to_check = compatibility == 'all' ? %w[x86_64 armv7l i686] : compatibility.delete(',').split
+    puts "#{name.capitalize} appears to need binaries. Checking to see if current binaries exist...".orange
     builds_needed = check_build_uploads(architectures_to_check, name)
     if builds_needed.empty?
       puts "No builds are needed for #{name} #{@version}.".lightgreen
@@ -208,6 +223,7 @@ updated_packages.each do |pkg|
         upload_pkg = true if File.file?("release/#{build}/#{name}-#{@version}-chromeos-#{build}.#{@binary_compression}")
       end
       system "crew upload #{name}" if upload_pkg == true && agree_default_yes("\nWould you like to upload #{name} #{@version}")
+      puts "Are builds still needed for #{name}?".orange
       builds_still_needed = check_build_uploads(architectures_to_check, name)
       next if builds_still_needed.empty? && system("grep -q binary_sha256 #{pkg}")
 

@@ -405,21 +405,20 @@ def upgrade(*pkgs, build_from_source: false)
   # Upgrade OpenSSL first if OpenSSL is in the upgrade list, as other
   # package upgrades, especially their postinstalls, may break until the
   # new version of OpenSSL is installed.
-  if to_be_upgraded.include?('openssl')
-    to_be_upgraded.insert(0, to_be_upgraded.delete('openssl'))
-    rerun_upgrade = true
-  end
+  # if to_be_upgraded.include?('openssl')
+  #   to_be_upgraded.insert(0, to_be_upgraded.delete('openssl'))
+  #   rerun_upgrade = true
+  # end
 
-  # Only upgrade ruby if ruby is in the upgrade list, as other
-  # package upgrades may break until crew is rerun with the new
-  # version of ruby.
-  if to_be_upgraded.include?('ruby')
-    if to_be_upgraded.include?('openssl')
-      to_be_upgraded.delete('ruby')
-    else
-      to_be_upgraded = ['ruby']
+  # Manually specify order of packages that need to be have a standalone
+  # upgrade before any other packages are upgraded.
+  rerun_upgrade = false
+  CREW_STANDALONE_UPGRADE_ORDER.each do |upgrade_pkg|
+    break if rerun_upgrade == true
+    if to_be_upgraded.include?(upgrade_pkg)
+      to_be_upgraded = [upgrade_pkg]
+      rerun_upgrade = true
     end
-    rerun_upgrade = true
   end
 
   # install new dependencies (if any)
