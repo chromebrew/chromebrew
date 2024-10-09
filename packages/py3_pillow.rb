@@ -10,9 +10,9 @@ class Py3_pillow < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0f6de269b0bc8643ad5a843f0514595363a54b6c6044a9f483b741f7b02c8721',
-     armv7l: '0f6de269b0bc8643ad5a843f0514595363a54b6c6044a9f483b741f7b02c8721',
-     x86_64: '8ad2839dde613c060eb261e0fb3435f45cc0361cbbdcd91e740fb874dfc7c2c4'
+    aarch64: '199bbd66c5455cff375c106d7df4c1e203db880fef2347004802fa624cb96ea1',
+     armv7l: '199bbd66c5455cff375c106d7df4c1e203db880fef2347004802fa624cb96ea1',
+     x86_64: 'd6053f521459376c89784be014798c9d4f7b515dde792f477b2ff3bc7bf01118'
   })
 
   depends_on 'freetype' # R

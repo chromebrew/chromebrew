@@ -15877,8 +15877,8 @@
 /usr/local/lib/cmake/boost_program_options-1.85.0/libboost_program_options-variant-static.cmake
 /usr/local/lib/cmake/boost_python-1.85.0/boost_python-config-version.cmake
 /usr/local/lib/cmake/boost_python-1.85.0/boost_python-config.cmake
-/usr/local/lib/cmake/boost_python-1.85.0/libboost_python-variant-shared-py3.12.cmake
-/usr/local/lib/cmake/boost_python-1.85.0/libboost_python-variant-static-py3.12.cmake
+/usr/local/lib/cmake/boost_python-1.85.0/libboost_python-variant-shared-py3.13.cmake
+/usr/local/lib/cmake/boost_python-1.85.0/libboost_python-variant-static-py3.13.cmake
 /usr/local/lib/cmake/boost_random-1.85.0/boost_random-config-version.cmake
 /usr/local/lib/cmake/boost_random-1.85.0/boost_random-config.cmake
 /usr/local/lib/cmake/boost_random-1.85.0/libboost_random-variant-shared.cmake
@@ -16015,9 +16015,9 @@
 /usr/local/lib/libboost_program_options.a
 /usr/local/lib/libboost_program_options.so
 /usr/local/lib/libboost_program_options.so.1.85.0
-/usr/local/lib/libboost_python312.a
-/usr/local/lib/libboost_python312.so
-/usr/local/lib/libboost_python312.so.1.85.0
+/usr/local/lib/libboost_python313.a
+/usr/local/lib/libboost_python313.so
+/usr/local/lib/libboost_python313.so.1.85.0
 /usr/local/lib/libboost_random.a
 /usr/local/lib/libboost_random.so
 /usr/local/lib/libboost_random.so.1.85.0

@@ -11,8 +11,8 @@ class Openimageio < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f6ff0c84c8844183e2b49fa214daa451c6515a5d1e6ae1dcb70ebe6d94c02ef8',
-     armv7l: 'f6ff0c84c8844183e2b49fa214daa451c6515a5d1e6ae1dcb70ebe6d94c02ef8',
+    aarch64: '21048be1bfd175577175b1c8a1925b648f41a0bb06212c856da021b653d57031',
+     armv7l: '21048be1bfd175577175b1c8a1925b648f41a0bb06212c856da021b653d57031',
      x86_64: '44955202370b6691ff0fd388dfb96863adad55ec4f720e0caef2356815c0e343'
   })
 
@@ -31,6 +31,8 @@ class Openimageio < CMake
   depends_on 'pugixml'
   depends_on 'py3_pybind11'
   depends_on 'zlib' # R
+  depends_on 'ffmpeg' # R
+  depends_on 'openjpeg' # R
 
   # The setup for finding pybind11 is custom, so it's hard to tell where exactly it breaks to fix it properly.
   cmake_options "-Dpybind11_ROOT=#{CREW_PREFIX}/lib/python#{version.split('y').last}/site-packages/pybind11 -DOIIO_BUILD_TESTS=OFF"

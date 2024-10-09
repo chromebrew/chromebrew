@@ -10,14 +10,14 @@ class Ldb < Package
   license 'GPLv3'
   compatibility 'all'
   source_url "https://samba.org/ftp/ldb/ldb-#{version.split('-').first}.tar.gz"
-  source_sha256 '105aaff71ad881a7faeb582fd416ae28221b6fde338fff82828065062c2507a5'
+  source_sha256 'c95e4dc32dea8864b79899ee340c9fdf28b486f464bbc38ba99151a08b493f9b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '78ec3789e72251b4439325dac0c5ce6137e5787df52cfdadd591d9ccafba7382',
-     armv7l: '78ec3789e72251b4439325dac0c5ce6137e5787df52cfdadd591d9ccafba7382',
+    aarch64: '329039c021a28eeec1724ce00792262a6b7077a728b64fd766c784090daed756',
+     armv7l: '329039c021a28eeec1724ce00792262a6b7077a728b64fd766c784090daed756',
        i686: '41a64479efa5a4e84eb760a5a099a5aee385709097306b84b6335bffaeb223d7',
-     x86_64: '48f44065d72deb20771736cfbfe802fe668736a01ec776c8a710d8ba12db09b0'
+     x86_64: 'c51584480e0fd33624eb33c42994d38418ccf2e0f01ceb9cdc8d610e1070263c'
   })
 
   depends_on 'cmocka' => :build

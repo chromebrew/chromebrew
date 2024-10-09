@@ -10,10 +10,10 @@ class Py3_urwid < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '54a5b537a26ed1a5cfa02612ab8dbfa15087a840bfcfd585e3c7bcf88022064c',
-     armv7l: '54a5b537a26ed1a5cfa02612ab8dbfa15087a840bfcfd585e3c7bcf88022064c',
-       i686: 'fab316e8dc7f7012c792fcdf67985e41dd66bc133349151ef2d922d1112ddda9',
-     x86_64: 'aa276be22753a5ef660009116a02ee22219322c08bed3c1264b6900987778dd5'
+    aarch64: 'f8f28a0ca3435c91776c01c339fcaf0296a56dfcd2f05cccd92a2c22bc897a14',
+     armv7l: 'f8f28a0ca3435c91776c01c339fcaf0296a56dfcd2f05cccd92a2c22bc897a14',
+       i686: '0d66d76549ae8a87a2758057b899d7d2af25bca168f101f17a719a87c9370d3d',
+     x86_64: '3af4b3475b5def6826ed34dc73ab7613691630dd67af8a2dc651e03aa3833573'
   })
 
   depends_on 'glibc' # R

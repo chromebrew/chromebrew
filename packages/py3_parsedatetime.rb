@@ -10,10 +10,10 @@ class Py3_parsedatetime < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1d2a1aca1a892bbf697effcf9e7161b28096843b9383ebca0a7306feef0bca4f',
-     armv7l: '1d2a1aca1a892bbf697effcf9e7161b28096843b9383ebca0a7306feef0bca4f',
-       i686: '54a8db20a22c9c7327f171f599c748c8bc59ad46525779d2e789bad45072cc95',
-     x86_64: 'd919a290d840fc54618ef4dfe5941a189336c836ccfc88c62d72a2bb728f702a'
+    aarch64: '068807c3c6a9b9c97d99165ffa11a85f1776a42e67f4b95f9e05185c6bb14b6d',
+     armv7l: '068807c3c6a9b9c97d99165ffa11a85f1776a42e67f4b95f9e05185c6bb14b6d',
+       i686: '0875073438a18e7a36d1bd983177dc3a4894b352135fd6d0a630e90b3c1e6fbe',
+     x86_64: '633f755ee02d1df038de811e08881d2cacf1174dc3358a6cb2c32b7dcf7e7e2e'
   })
 
   depends_on 'python3' => :build

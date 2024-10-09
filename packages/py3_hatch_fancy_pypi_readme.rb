@@ -10,10 +10,10 @@ class Py3_hatch_fancy_pypi_readme < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8aca80ea95d7b71d86f96155d4f373c961c47e4897b7e0fda50b00a06970cfde',
-     armv7l: '8aca80ea95d7b71d86f96155d4f373c961c47e4897b7e0fda50b00a06970cfde',
-       i686: 'e881518b83fcc4fb7110761009c542c6d04da2d93681cdedbe142a735fc3a513',
-     x86_64: '26483a0530742581c26b20447c42f884e2d74e3304a85f0ef7a3be7235b173db'
+    aarch64: 'b3e847d54e394038a5de1a93d16b27f4adb6a9abdd35a3b230d1a8d34eae2ed9',
+     armv7l: 'b3e847d54e394038a5de1a93d16b27f4adb6a9abdd35a3b230d1a8d34eae2ed9',
+       i686: '410e9ea1a39edc542f634acd308fb9f507a333736254864ea816858941c6c269',
+     x86_64: 'e2d2366efafceb211fe4bea0cdd567b2faacc9cf667fdacf88589be4ac80b395'
   })
 
   depends_on 'py3_hatch_vcs' => :build

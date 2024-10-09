@@ -10,10 +10,10 @@ class Py3_retrying < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aa834354a337faaebeecffd1ec60142310ad2336daab7349ffcdc7a8c819f186',
-     armv7l: 'aa834354a337faaebeecffd1ec60142310ad2336daab7349ffcdc7a8c819f186',
-       i686: '50b9012af35153ee4e57ed7654a4410c0e56e9538dba1c5b21295350baac45a9',
-     x86_64: 'bace88257a27e476062fa937c00b503c2ae27cd337011d4f91a0030c8c070d75'
+    aarch64: '71b2618e43b2ce096ad90ea8a0c57dda5e0657b854d1372531230ef9bac975ea',
+     armv7l: '71b2618e43b2ce096ad90ea8a0c57dda5e0657b854d1372531230ef9bac975ea',
+       i686: '5cd060867dbfc7bc1ae6ad6f7952451f4c523dbb56b5c6ff1dba33024bebf2ef',
+     x86_64: '52c23837024cb22e5f380501162134e372bc74ad3958eb4e3ae0635580de683d'
   })
 
   depends_on 'py3_six'

@@ -18,7 +18,7 @@ class Libgnome_keyring < Autotools
 
   depends_on 'dbus'
   depends_on 'libgcrypt'
-  depends_on 'llvm18_lib' => :build
+  depends_on 'llvm19_lib' => :build
 
   gnome
 

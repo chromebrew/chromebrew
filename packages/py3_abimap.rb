@@ -10,10 +10,10 @@ class Py3_abimap < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2ea009d7fb99a65fb73bd25973dea39e37b32301c5aaf93eba41fa6e853a89bf',
-     armv7l: '2ea009d7fb99a65fb73bd25973dea39e37b32301c5aaf93eba41fa6e853a89bf',
-       i686: 'd48df4f7c7d70a779db5d5404bb3ea9491533ff9530fc5dfe3d0707ffbc71a7a',
-     x86_64: '9509d1d5d4c8f40b507b98572e9b2f2755100ad25eef7ab440787e076cade748'
+    aarch64: '36cd69c61ae1817edeec239eab4b3c4acc2359ac252f8e74374e3ec1fc55bd25',
+     armv7l: '36cd69c61ae1817edeec239eab4b3c4acc2359ac252f8e74374e3ec1fc55bd25',
+       i686: '0c4d7a3092775e375e5578c0d54d1fc9255ee772a99806f73c7467df7e2470fa',
+     x86_64: 'e989f3043f9d7a873a42be0bdd5071c23b8297091e2a2de0c202242ba8aa9cbc'
   })
 
   depends_on 'python3' => :build

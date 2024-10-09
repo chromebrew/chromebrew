@@ -10,10 +10,10 @@ class Py3_flask < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a54594aa85ab33ba92fc9c077cd28f746475192221a43a6b86f6d3b34f354741',
-     armv7l: 'a54594aa85ab33ba92fc9c077cd28f746475192221a43a6b86f6d3b34f354741',
-       i686: 'e2104d7943cdb34d6e4b4a167b33a65fe241df96bd2c956c263261c6b3e5e921',
-     x86_64: '7cbb67c1977ecc16f7d87365d44d3283e517cc986cbe1ea7f6eb1027fb9b9be3'
+    aarch64: '20ad7742a3e8d8018fcdc00fa6ff9e51fa704e5044a997153ad08ae18e80581f',
+     armv7l: '20ad7742a3e8d8018fcdc00fa6ff9e51fa704e5044a997153ad08ae18e80581f',
+       i686: 'de34673a3c1bae87f5a859e1bba3ac4e63d74a000ee9d3058bc57227d91ba4e6',
+     x86_64: '1a839e592e58d24d2360e4dbb8aea1eaca1c0deea6873ab3004c5d4ec5494836'
   })
 
   depends_on 'py3_werkzeug'

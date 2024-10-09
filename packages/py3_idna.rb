@@ -10,10 +10,10 @@ class Py3_idna < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '933812e4fc1780ee39c2d24b7758320a27e3b8f0f1d35b6f73d3cf675f6ee8cc',
-     armv7l: '933812e4fc1780ee39c2d24b7758320a27e3b8f0f1d35b6f73d3cf675f6ee8cc',
-       i686: '7684da659cb9e024c554ca8747e536c31908f520b1470ebe68023e65b5ee4c88',
-     x86_64: '2f92d90c413ca1a58524d1795ff5bfdaf9a43f690a961e388e6dccd31e1eaeb2'
+    aarch64: '48bd091cf8e829ed1082bcc0fd96aecf71154dcf239483f2b642b20e670fdc05',
+     armv7l: '48bd091cf8e829ed1082bcc0fd96aecf71154dcf239483f2b642b20e670fdc05',
+       i686: '6c179ed14684b9dbba85e50fb0d4dd03f0c25e86a6fc0080284c75b4bb4791ab',
+     x86_64: 'bdc9ecc643b56ac0720a70f3f955c23f190612f646a0fb1fcaebdf17d6a7263b'
   })
 
   depends_on 'python3' => :build

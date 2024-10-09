@@ -100,7 +100,7 @@ class Buildessential < Package
 
   # LLVM
   # This can be pulled in on a per-package basis...
-  # depends_on 'llvm18_dev'
+  # depends_on 'llvm19_dev'
   depends_on 'llvm19_lib' # This provides llvm-strip
 
   # Meson build system

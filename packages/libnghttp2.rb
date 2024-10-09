@@ -3,19 +3,18 @@ require 'buildsystems/cmake'
 class Libnghttp2 < CMake
   description 'library implementing HTTP/2 protocol'
   homepage 'https://nghttp2.org/'
-  @_ver = '1.59.0'
-  version "#{@_ver}-#{CREW_PY_VER}"
+  version "1.63.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/nghttp2/nghttp2.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '670240eb03ba44d929c770cbf1f1d3c77f0b2c5ee1c8e1565afb1a4085a565e8',
-     armv7l: '670240eb03ba44d929c770cbf1f1d3c77f0b2c5ee1c8e1565afb1a4085a565e8',
-       i686: '6a8d411e25459774c9529276e8939ca8db1b6fe749d321b3bdbfd4d4d873bbea',
-     x86_64: 'b40bd43b11403240b4c808877b70a04cba8c9fa1fc2a8a1f0e5f05d515cae21c'
+    aarch64: '4849fd644b3ef7840943ea9f85825cb7ef0654abe566d01a9537738d121f9334',
+     armv7l: '4849fd644b3ef7840943ea9f85825cb7ef0654abe566d01a9537738d121f9334',
+       i686: '87723056d31693ac4c857584c92465e5511bfef69eb8d29fed33326c7e500592',
+     x86_64: 'de6e5a4707db2ec9c5c8220b15527cde3b3711b117a25b6aeab4d257ae592706'
   })
 
   depends_on 'glibc' # R

@@ -10,10 +10,10 @@ class Py3_dbfread < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c0728bc8bcab54f0a30a2a98ed9cbd23ca97ccbce156743962ef00a424aac7bd',
-     armv7l: 'c0728bc8bcab54f0a30a2a98ed9cbd23ca97ccbce156743962ef00a424aac7bd',
-       i686: '0ccc60b28d011b6b8a4a56f740712eb318d484619cfd250c5cfbcfc74b3a8cb2',
-     x86_64: 'ce1c995899222a566aa4fb9dcc8b6cec1dafca40350ef8d28af6dab83523289f'
+    aarch64: '043a945a351a61933d4a6f69eaa79532d670775f2958636bd5cfa53e4db3d43e',
+     armv7l: '043a945a351a61933d4a6f69eaa79532d670775f2958636bd5cfa53e4db3d43e',
+       i686: '4d5628a154daa4151252803ac2295d8b17b31dfa08579070b8f2f30bc04ebdac',
+     x86_64: 'b192e930a38f5ae8768e965ca8baa29ff853ae7c19e41b2315d5e721b4532013'
   })
 
   depends_on 'python3' => :build
