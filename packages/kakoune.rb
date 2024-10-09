@@ -19,7 +19,7 @@ class Kakoune < Package
   })
 
   depends_on 'ncurses'  => :build
-  depends_on 'asciidoc' => :build
+  depends_on 'py3_asciidoc' => :build
   depends_on 'libxslt'  => :build
 
   def self.build

@@ -17,6 +17,7 @@ class Py3_azure_cli < Pip
   })
 
   depends_on 'python3'
+  depends_on 'py3_bcrypt'
   depends_on 'py3_cryptography'
   depends_on 'rust' => :build
 

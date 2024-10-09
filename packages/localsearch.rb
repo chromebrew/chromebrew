@@ -17,7 +17,7 @@ class Localsearch < Meson
      x86_64: 'ce85968eb93fe979aed0276475ed12ade0a0e1e99b182a32f01f6b644e9b25be'
   })
 
-  depends_on 'asciidoc' => :build
+  depends_on 'py3_asciidoc' => :build
   depends_on 'exempi' # R
   depends_on 'gcc_lib' => :build
   depends_on 'gexiv2' # R

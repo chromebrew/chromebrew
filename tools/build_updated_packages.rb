@@ -138,7 +138,7 @@ def self.check_build_uploads(architectures_to_check = nil, name = nil)
     puts "Checking: curl -sI #{arch_specific_url}" if CREW_VERBOSE
     if `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
       builds_needed.delete(arch)
-      puts "#{arch_specific_url} found!"
+      puts "#{arch_specific_url} found!" if CREW_VERBOSE
     end
     puts "builds_needed for #{name} is now #{builds_needed}"
   end
