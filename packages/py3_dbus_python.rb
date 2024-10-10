@@ -10,9 +10,9 @@ class Py3_dbus_python < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '37350575f24690386efe4fbfd172665163e2790bb84987922e4b08a47522a455',
-     armv7l: '37350575f24690386efe4fbfd172665163e2790bb84987922e4b08a47522a455',
-     x86_64: 'af74a5406dab0e5fbeaca54773900765e82a5657a7c2436c4c32cbdebf1aef0b'
+    aarch64: 'e94cdeb4263913b22b8c1c72f4079f8e11a20d74cae866bdb6d9c5e59f2a1e2f',
+     armv7l: 'e94cdeb4263913b22b8c1c72f4079f8e11a20d74cae866bdb6d9c5e59f2a1e2f',
+     x86_64: 'ae50be4cea9e44062e682500199c14adc96cab074d11b0f3dfda0068abedbd55'
   })
 
   depends_on 'autoconf_archive' => :build
