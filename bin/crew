@@ -348,7 +348,7 @@ def update
     puts "\n#{can_be_updated} packages can be updated."
     puts 'Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages.'
   else
-    puts 'Your software is up to date.'.lightgreen
+    puts 'Your software is up to date.'.lightgreen unless CREW_UNATTENDED
   end
 end
 
