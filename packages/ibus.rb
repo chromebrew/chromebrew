@@ -46,7 +46,7 @@ class Ibus < Autotools
   depends_on 'libxi' # R
   depends_on 'libxkbcommon' # R
   depends_on 'pango' # R
-  depends_on 'pygobject' => :build
+  depends_on 'py3_pygobject' => :build
   depends_on 'qt5_base' => :build
   depends_on 'unicode_cldr' => :build
   depends_on 'unicode_emoji' => :build
@@ -54,7 +54,7 @@ class Ibus < Autotools
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system "sed -i 's|/usr/bin/python|#{CREW_PREFIX}/bin/python3|' engine/gensimple.py"

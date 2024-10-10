@@ -18,7 +18,7 @@ class Textract < Package
 
   depends_on 'py3_pdfminer_six'
   depends_on 'py3_ebooklib'
-  depends_on 'py3_pptx'
+  depends_on 'py3_python_pptx'
   depends_on 'py3_extract_msg'
   depends_on 'py3_xlrd'
   depends_on 'py3_docx2txt'

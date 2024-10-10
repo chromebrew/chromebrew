@@ -3,7 +3,7 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.79.0'
+  version '1.81.0'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
@@ -11,15 +11,15 @@ class Rust < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '76d488dfcdf331a92985a761f213db54b03285a971fbcb0e44fe7060fe2c2f6d',
-     armv7l: '76d488dfcdf331a92985a761f213db54b03285a971fbcb0e44fe7060fe2c2f6d',
-       i686: '3677876652d9582fbfba353f8d1ff57c1dd9c07f2317a62d09da6dca53ded94c',
-     x86_64: '25826796c0caad6288885ba453f19b101fe885f19c32617d30e62b701b2a9920'
+    aarch64: 'a331329b3d2a8de67e367bff29106173b49fd7a81bac2049607934cd2c55a46a',
+     armv7l: 'a331329b3d2a8de67e367bff29106173b49fd7a81bac2049607934cd2c55a46a',
+       i686: '8ef4d22474532efdf22a754109d753389d4ecdd7cb79df82bbeaf8946183d7d9',
+     x86_64: '1ebb15df01b82c8ce80c2d7c5bb987e9a41e95bd3c4a0f62eff49f61dbd563d9'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_strip
   no_shrink
@@ -82,7 +82,7 @@ class Rust < Package
     system 'rustup default stable'
   end
 
-  def self.remove
+  def self.postremove
     config_dirs = %W[#{HOME}/.rustup #{CREW_PREFIX}/share/rustup #{HOME}/.cargo #{CREW_PREFIX}/share/cargo]
     print config_dirs
     print "\nWould you like to remove the config directories above? [y/N] "

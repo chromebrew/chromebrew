@@ -1,20 +1,20 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Git < Package
+class Git < CMake
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.45.2' # Do not use @_ver here, it will break the installer.
+  version '2.46.1' # Do not use @_ver here, it will break the installer.
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.45.2.tar.xz'
-  source_sha256 '51bfe87eb1c02fed1484051875365eeab229831d30d0cec5d89a14f9e40e9adb'
+  source_url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-#{version}.tar.xz"
+  source_sha256 '888cafb8bd6ab4cbbebc168040a8850eb088f81dc3ac2617195cfc0877f0f543'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fe8db63afdf238d52c85247e02f96c4ec5ce87f3261d5859af50cb0724ccbd56',
-     armv7l: 'fe8db63afdf238d52c85247e02f96c4ec5ce87f3261d5859af50cb0724ccbd56',
-       i686: '12d9fcecf4ed4d8e86b91a058a60d2cbf2f75585cfc24ffd1655042d132c138d',
-     x86_64: '81ce638926071604d8559b0d8cd02ce90c4a75e7a7c61d0033e7b8e602b82e91'
+    aarch64: 'd1125c6bb6ec9ceb744be85b89021ac2b467992f3926abd6c346eb6731b1f679',
+     armv7l: 'd1125c6bb6ec9ceb744be85b89021ac2b467992f3926abd6c346eb6731b1f679',
+       i686: 'c4eb2b82c88f5caaaf2f4470a960106f6bdd9c542662369e9473e8a30c204227',
+     x86_64: 'fcdd84453706b90b82a0d15d78b958dbf0c244bf634963ef88b86c95fb5d9808'
   })
 
   depends_on 'ca_certificates' => :build
@@ -23,9 +23,11 @@ class Git < Package
   depends_on 'glibc' # R
   depends_on 'libunistring' # R
   depends_on 'pcre2' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   print_source_bashrc
+  cmake_build_relative_dir 'contrib/buildsystems'
+  cmake_options '-DUSE_VCPKG=FALSE'
 
   def self.patch
     # Patch to prevent error function conflict with libidn2
@@ -50,14 +52,7 @@ class Git < Package
     system "sed -i 's,${CMAKE_INSTALL_PREFIX},\\\\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX},g' contrib/buildsystems/CMakeLists.txt"
   end
 
-  def self.build
-    system "mold -run cmake -B builddir \
-        #{CREW_CMAKE_OPTIONS} \
-        -DUSE_VCPKG=FALSE \
-        -Wdev \
-        -G Ninja \
-        contrib/buildsystems"
-    system "#{CREW_NINJA} -C builddir"
+  cmake_build_extras do
     git_env = <<~EOF
 
       GIT_PS1_SHOWDIRTYSTATE=yes
@@ -67,13 +62,18 @@ class Git < Package
       GIT_PS1_DESCRIBE_STYLE=default
       GIT_PS1_SHOWCOLORHINTS=yes
 
-      PS1='\\[\\033[1;34m\\]\\u@\\H \\[\\033[1;33m\\]\\w \\[\\033[1;31m\\]$(__git_ps1 "(%s)")\\[\\033[0m\\]\\$ '
+      # Add LIBC_VERSION and CHROMEOS_RELEASE_CHROME_MILESTONE set in
+      # crew_profile_base to prompt if in a container.
+      if [[ -e /.dockerenv ]] && [ -n "${LIBC_VERSION+1}" ] && [ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE+1}" ]; then
+        PS1='\\[\\033[1;34m\\]\\u@\\H:$LIBC_VERSION M$CHROMEOS_RELEASE_CHROME_MILESTONE \\[\\033[1;33m\\]\\w \\[\\033[1;31m\\]$(__git_ps1 "(%s)")\\[\\033[0m\\]\\$ '
+      else
+        PS1='\\[\\033[1;34m\\]\\u@\\H \\[\\033[1;33m\\]\\w \\[\\033[1;31m\\]$(__git_ps1 "(%s)")\\[\\033[0m\\]\\$ '
+      fi
     EOF
     File.write('contrib/completion/git-prompt.sh', git_env, mode: 'a')
   end
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  cmake_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/git-completion"
     FileUtils.cp_r Dir.glob('contrib/completion/.'), "#{CREW_DEST_PREFIX}/share/git-completion/"
 
@@ -99,6 +99,6 @@ class Git < Package
     return unless File.directory?("#{CREW_PREFIX}/lib/crew/.git")
 
     puts 'Running git garbage collection...'.lightblue
-    system 'git gc', chdir: "#{CREW_PREFIX}/lib/crew", exception: false
+    system 'git gc', chdir: CREW_LIB_PATH, exception: false
   end
 end

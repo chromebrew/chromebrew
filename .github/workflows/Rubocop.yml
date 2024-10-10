@@ -11,3 +11,6 @@ jobs:
           ruby-version: '3.2'
       - name: Rubocop
         uses: reviewdog/action-rubocop@v2
+        with:
+          fail_on_error: true
+          filter_mode: nofilter

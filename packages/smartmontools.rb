@@ -21,7 +21,7 @@ class Smartmontools < Package
 
   def self.build
     system './autogen.sh'
-    system "./configure #{CREW_OPTIONS} --with-nvme-devicescan --disable-maintainer-mode"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --with-nvme-devicescan --disable-maintainer-mode"
     system 'make'
   end
 

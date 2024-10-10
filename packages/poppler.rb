@@ -29,12 +29,12 @@ class Poppler < Package
   depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libtiff' # R
-  depends_on 'nspr' => :build
+  depends_on 'nss' => :build
   depends_on 'nss' # R
   depends_on 'openjpeg' # R
   depends_on 'poppler_data' => :build
   depends_on 'qt5_base' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \

@@ -6,15 +6,14 @@ class Pulseaudio < Meson
   version '17.0'
   license 'LGPL-2.1 and GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
-  min_glibc '2.34'
   source_url 'https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '546dac0ebd845e22d5c5530bfcfaad5a855e59110b4bb660e1cc41902d21d425',
-     armv7l: '546dac0ebd845e22d5c5530bfcfaad5a855e59110b4bb660e1cc41902d21d425',
-     x86_64: '5df633594ec2e85a3b0c5d4a91e9fd09daa27cf6f1d16a30fc668634528d6ab8'
+    aarch64: 'f20f9d1c77a533ea964f0975076621236609129654d99fa754938587596c63af',
+     armv7l: 'f20f9d1c77a533ea964f0975076621236609129654d99fa754938587596c63af',
+     x86_64: '4dc00fd8c37083d63d07be1259f071ce3eba76d7971b63d99bbdd4dcd2f85b0e'
   })
 
   depends_on 'alsa_lib' # R
@@ -82,13 +81,13 @@ class Pulseaudio < Meson
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    @pulseaudio_daemon_conf = <<~PAUDIO_DAEMON_CONF_HEREDOC
+    pulseaudio_daemon_conf = <<~PAUDIO_DAEMON_CONF_HEREDOC
       # Replace these with the proper values
       exit-idle-time = 10 # Exit as soon as unneeded
       flat-volumes = yes # Prevent messing with the master volume
     PAUDIO_DAEMON_CONF_HEREDOC
-    File.write("#{CREW_DEST_PREFIX}/etc/pulse/daemon.conf", @pulseaudio_daemon_conf, perm: 0o666)
-    @pulseaudio_client_conf = <<~PAUDIO_CLIENT_CONF_HEREDOC
+    File.write("#{CREW_DEST_PREFIX}/etc/pulse/daemon.conf", pulseaudio_daemon_conf, perm: 0o666)
+    pulseaudio_client_conf = <<~PAUDIO_CLIENT_CONF_HEREDOC
       # Replace these with the proper values
 
       # Applications that uses PulseAudio *directly* will spawn it,
@@ -96,8 +95,8 @@ class Pulseaudio < Meson
       # exit-idle-time setting in daemon.conf
       autospawn = yes
     PAUDIO_CLIENT_CONF_HEREDOC
-    File.write("#{CREW_DEST_PREFIX}/etc/pulse/client.conf", @pulseaudio_client_conf, perm: 0o666)
-    @pulseaudio_default_pa = <<~PAUDIO_DEFAULT_PA_HEREDOC
+    File.write("#{CREW_DEST_PREFIX}/etc/pulse/client.conf", pulseaudio_client_conf, perm: 0o666)
+    pulseaudio_default_pa = <<~PAUDIO_DEFAULT_PA_HEREDOC
       # Replace the *entire* content of this file with these few lines and
       # read the comments
 
@@ -124,6 +123,6 @@ class Pulseaudio < Meson
           load-module module-x11-publish
       .endif
     PAUDIO_DEFAULT_PA_HEREDOC
-    File.write("#{CREW_DEST_PREFIX}/etc/pulse/default.pa", @pulseaudio_default_pa, perm: 0o666)
+    File.write("#{CREW_DEST_PREFIX}/etc/pulse/default.pa", pulseaudio_default_pa, perm: 0o666)
   end
 end

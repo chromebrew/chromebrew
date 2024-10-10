@@ -3,15 +3,23 @@ require 'buildsystems/pip'
 class Awscli < Pip
   description 'Universal Command Line Interface for Amazon Web Services'
   homepage 'https://github.com/aws/aws-cli'
-  version '1.33.27-py3.12'
+  version "1.35.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
+
+  binary_sha256({
+    aarch64: 'e7f0eff7f016d9f3f67054e8336a034382110eadcdcfbab22ac43cdf75addfd8',
+     armv7l: 'e7f0eff7f016d9f3f67054e8336a034382110eadcdcfbab22ac43cdf75addfd8',
+       i686: 'f5a69e7fc9a2e590c9259bcfa3c6c6e82d732b74fed5583d3ae954ac62ffcca1',
+     x86_64: 'dbe54ab7e012af5496932508147df000cc16b35cf7e1bee549d3ec3ab65476ee'
+  })
 
   depends_on 'groff'
   depends_on 'python3' => :build
 
-  no_compile_needed
+  no_source_build
 
   pip_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"

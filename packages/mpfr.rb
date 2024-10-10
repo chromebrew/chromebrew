@@ -33,7 +33,7 @@ class Mpfr < Package
     system 'filefix'
     system 'autoreconf -fiv'
     system "./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared"
     system 'make'
   end

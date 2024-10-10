@@ -3,21 +3,21 @@ require 'package'
 class Starship < Package
   description 'Cross-shell prompt for astronauts'
   homepage 'https://starship.rs'
-  version '1.19.0'
+  version '1.20.0'
   license 'ISC'
   compatibility 'all'
 
   source_url({
-    aarch64: 'https://github.com/starship/starship/releases/download/v1.19.0/starship-arm-unknown-linux-musleabihf.tar.gz',
-     armv7l: 'https://github.com/starship/starship/releases/download/v1.19.0/starship-arm-unknown-linux-musleabihf.tar.gz',
-       i686: 'https://github.com/starship/starship/releases/download/v1.19.0/starship-i686-unknown-linux-musl.tar.gz',
-     x86_64: 'https://github.com/starship/starship/releases/download/v1.19.0/starship-x86_64-unknown-linux-musl.tar.gz'
+    aarch64: "https://github.com/starship/starship/releases/download/v#{version}/starship-arm-unknown-linux-musleabihf.tar.gz",
+     armv7l: "https://github.com/starship/starship/releases/download/v#{version}/starship-arm-unknown-linux-musleabihf.tar.gz",
+       i686: "https://github.com/starship/starship/releases/download/v#{version}/starship-i686-unknown-linux-musl.tar.gz",
+     x86_64: "https://github.com/starship/starship/releases/download/v#{version}/starship-x86_64-unknown-linux-musl.tar.gz"
   })
   source_sha256({
-    aarch64: '9c30af40245b2d854c4bb1e8c620a4e9cdf2e3d097b6e3f8abb943ef6163444c',
-     armv7l: '9c30af40245b2d854c4bb1e8c620a4e9cdf2e3d097b6e3f8abb943ef6163444c',
-       i686: '0378fe8c06be6ee2c763dcabd429ffa760d67b257efed31d47c55ee721102fde',
-     x86_64: 'a4283306d7d89e215208e787a851892b4933cddf8624366734d3614f816a675a'
+    aarch64: '833abffca4c417b1118723c3fb07966da408affdccd95628a14c71af61545b53',
+     armv7l: '833abffca4c417b1118723c3fb07966da408affdccd95628a14c71af61545b53',
+       i686: 'bc77a9335800aaf966cbe29896dda9ff1de9d9034efecd5e0d735297eafed4a4',
+     x86_64: '8b674659524fc6147f1b9857ed0135db277378f5dec2a98763502ce1471fa886'
   })
 
   no_compile_needed

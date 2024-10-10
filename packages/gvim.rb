@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Gvim < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)'
   homepage 'https://www.vim.org/'
-  version '9.1.0568'
+  version '9.1.0758'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/vim/vim.git'
@@ -11,9 +11,9 @@ class Gvim < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd2a0631395b4340f9cc8a37f46e4275ab7cf84e8328341545ce92b4ce8da2e68',
-     armv7l: 'd2a0631395b4340f9cc8a37f46e4275ab7cf84e8328341545ce92b4ce8da2e68',
-     x86_64: 'c19d8b60e6a6d7456eccc78d0fe889a10942f97892e0751c9badc16fa03739cc'
+    aarch64: 'e6ba3259adc6d813b640883a6d73f2b8401489a1d085a0ddb19de4fd62b80074',
+     armv7l: 'e6ba3259adc6d813b640883a6d73f2b8401489a1d085a0ddb19de4fd62b80074',
+     x86_64: '7836d95a5aac39c4ea07982f2811f9d2a08cabcbef5c9606bde6ea3188545c22'
   })
 
   depends_on 'acl' # R
@@ -99,9 +99,7 @@ class Gvim < Autotools
     @create_vi_symlink = true if !@system_vi && !@crew_vi
     @create_vi_symlink_ask = true if @crew_vi || @system_vi
     if @create_vi_symlink_ask
-      print "\nWould you like to set vim to be the default vi [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
+      if Package.agree_default_yes('Would you like to set vim to be the default vi')
         @create_vi_symlink = true
       else
         @create_vi_symlink = false
@@ -114,7 +112,7 @@ class Gvim < Autotools
     puts 'Default vi set to vim.'.lightgreen
   end
 
-  def self.remove
+  def self.postremove
     # Remove vi symlink if it is to vim.
     return unless File.symlink?("#{CREW_PREFIX}/bin/vi") && (File.readlink("#{CREW_PREFIX}/bin/vi") == "#{CREW_PREFIX}/bin/vim")
 

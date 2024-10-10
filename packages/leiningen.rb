@@ -20,7 +20,7 @@ class Leiningen < Package
     puts "\nType 'lein' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.lein"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "

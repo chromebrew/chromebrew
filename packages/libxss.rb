@@ -24,11 +24,11 @@ class Libxss < Package
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
   depends_on 'libxext' # R
-  depends_on 'util_macros' => :build
+  depends_on 'xorg_macros' => :build
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --sysconfdir=#{CREW_PREFIX}/etc"
     system 'make'
   end

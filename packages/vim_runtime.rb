@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Vim_runtime < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'https://www.vim.org/'
-  version '9.1.0568'
+  version '9.1.0758'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
@@ -11,10 +11,10 @@ class Vim_runtime < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c6c9e42b80ca65c021aa386c2737dd2f5338fb642a9b6d00b6bf24f43815a87e',
-     armv7l: 'c6c9e42b80ca65c021aa386c2737dd2f5338fb642a9b6d00b6bf24f43815a87e',
-       i686: '153e4f1a05c9bf12321ec3a5db4b1aaa5b8ef421f39957581b03ea384692e37d',
-     x86_64: '940ff81cdda2254dc4db3fbd1450a29df13823684d766d401fce2d38fb480abc'
+    aarch64: 'ce6a18c9d238b6426d143009c5a0711785b994320866cc95e5f269c73d4b8e5c',
+     armv7l: 'ce6a18c9d238b6426d143009c5a0711785b994320866cc95e5f269c73d4b8e5c',
+       i686: '5aeeed06a13093cff269117287559f1a68941501e7ff663d3aa16a4d868b6dfa',
+     x86_64: 'ff881dd6e1e4206e1466f826b7c02775a921dce6496f387bb3c01fd21706927b'
   })
 
   depends_on 'gpm' # R

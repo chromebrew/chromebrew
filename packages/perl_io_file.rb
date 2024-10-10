@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_io_file < PERL
   description 'Supply object methods for filehandles'
   homepage 'https://metacpan.org/pod/IO::File'
-  version '1.55_01-perl5.40'
+  version "1.55_01-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/IO-1.55_01.tar.gz'

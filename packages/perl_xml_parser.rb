@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_xml_parser < PERL
   description 'Perl XML::Parser - A perl module for parsing XML documents'
   homepage 'https://metacpan.org/pod/XML::Parser'
-  version '2.47-perl5.40'
+  version "2.47-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.47.tar.gz'

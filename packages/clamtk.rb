@@ -77,7 +77,7 @@ class Clamtk < Package
     system "update-mime-database #{CREW_PREFIX}/share/mime"
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.clamtk"
     if Dir.exist? config_dir
       puts 'WARNING: This will remove all clamtk config!'.orange

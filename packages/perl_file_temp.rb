@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_file_temp < PERL
   description 'Return name and handle of a temporary file safely'
   homepage 'https://metacpan.org/pod/File::Temp'
-  version '0.2311-perl5.40'
+  version "0.2311-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/File-Temp-0.2311.tar.gz'

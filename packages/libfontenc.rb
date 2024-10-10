@@ -19,11 +19,11 @@ class Libfontenc < Package
 
   depends_on 'xorg_proto'
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --with-fontrootdir=#{CREW_PREFIX}/share/fonts/X11"
     system 'make'
   end

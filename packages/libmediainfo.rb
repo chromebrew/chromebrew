@@ -19,7 +19,7 @@ class Libmediainfo < Package
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     # Fix /usr/bin/file: No such file or directory
@@ -27,7 +27,7 @@ class Libmediainfo < Package
   end
 
   def self.build
-    system "mold -run ./SO_Compile.sh #{CREW_OPTIONS}"
+    system "mold -run ./SO_Compile.sh #{CREW_CONFIGURE_OPTIONS}"
   end
 
   def self.install

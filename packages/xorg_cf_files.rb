@@ -20,7 +20,7 @@ class Xorg_cf_files < Package
   depends_on 'font_util'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
             --sysconfdir=#{CREW_PREFIX}/etc"
     system 'make'
   end

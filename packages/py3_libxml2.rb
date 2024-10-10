@@ -1,33 +1,32 @@
 require 'package'
-require_relative 'libxml2'
+Package.load_package("#{__dir__}/libxml2.rb")
 
 class Py3_libxml2 < Package
   description 'Libxml2-python provides access to libxml2 and libxslt in Python.'
   homepage 'https://gitlab.gnome.org/GNOME/libxml2/'
-  version '2.13.2-py3.12'
+  version Libxml2.version
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libxml2.git'
-  git_hashtag "v#{version.split('-').first}"
+  source_url Libxml2.source_url
+  git_hashtag Libxml2.git_hashtag
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '15c35359711c1cb7f4ea78d7637c955145e1628e78729f49e6377f3ecf121042',
-     armv7l: '15c35359711c1cb7f4ea78d7637c955145e1628e78729f49e6377f3ecf121042',
-       i686: 'fcb201b3f942e03466111d8240153a74791dfb05d963598710c59aa8f4a4d318',
-     x86_64: 'd2a77cc3852dfd53f1e46440ad79062e82e298dea75e028e9b9e10e3b3e1cd05'
+    aarch64: '0833c7822fbc2bc026bc219921ad375496da51d1f9387a4a770634d0ae80c91b',
+     armv7l: '0833c7822fbc2bc026bc219921ad375496da51d1f9387a4a770634d0ae80c91b',
+       i686: 'f62d6717a8ea63a53872efc8097720c974f48206182d1c4e2d48fec6a9523ad5',
+     x86_64: '5c6f02cc962cb28f66d2cfa34b8f8da524d36e550c0b8e8497ed9646a0f2aa25'
   })
 
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
-  depends_on 'libxslt' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'python3' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system 'autoreconf -fiv'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     Dir.chdir('python') do
       system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
     end

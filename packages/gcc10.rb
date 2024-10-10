@@ -25,7 +25,7 @@ class Gcc10 < Package
   depends_on 'libssp' # L
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
   depends_on 'gcc_lib' # R
 
@@ -50,6 +50,9 @@ class Gcc10 < Package
 
   def self.build
     @gcc_global_opts = <<~OPT.chomp
+      --build=#{CREW_TARGET} \
+      --host=#{CREW_TARGET} \
+      --target=#{CREW_TARGET} \
       --disable-bootstrap \
       --disable-install-libiberty \
       --disable-libmpx \
@@ -116,7 +119,7 @@ class Gcc10 < Package
 
       unless File.file?('Makefile')
         system configure_env, <<~BUILD.chomp
-          ../configure #{CREW_OPTIONS} \
+          ../configure #{CREW_CONFIGURE_OPTIONS} \
             #{@gcc_global_opts} \
             #{@archflags} \
             --with-native-system-header-dir=#{CREW_PREFIX}/include \

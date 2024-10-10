@@ -5,15 +5,20 @@ class Crew_sudo < Package
   homepage 'https://github.com/chromebrew/crew-sudo'
   version '1.1'
   license 'GPL-3'
-  compatibility 'all'
-
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/chromebrew/crew-sudo.git'
   git_hashtag "v#{@version}"
+  binary_compression 'tar.zst'
 
-  no_compile_needed
+  binary_sha256({
+    aarch64: '978c7fad9ecd7f1e3917843f94b709e2b15b62a4dea0327375eda17a75e38ecc',
+     armv7l: '978c7fad9ecd7f1e3917843f94b709e2b15b62a4dea0327375eda17a75e38ecc',
+     x86_64: '486cc1227bed448edfeb828f78c3776290a5a553fbcffb6e76d4df87c1ffc4d6'
+  })
 
   def self.install
     system({ 'CREW_DEST_PREFIX' => CREW_DEST_PREFIX }, './install.sh')
+    FileUtils.rm_rf File.join(CREW_DEST_PREFIX, 'lib/crew-sudo/.git')
   end
 
   def self.postinstall

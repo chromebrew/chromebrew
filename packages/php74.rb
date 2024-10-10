@@ -37,7 +37,7 @@ class Php74 < Package
   depends_on 'libedit' # R
   depends_on 'libffi' # R
   depends_on 'libgcrypt'
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libidn2' # R
   depends_on 'libjpeg_turbo'
   depends_on 'libnghttp2' # R
@@ -61,7 +61,7 @@ class Php74 < Package
   depends_on 'sqlite' # R
   depends_on 'tidy'
   depends_on 'unixodbc'
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_fhs

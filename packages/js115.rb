@@ -7,10 +7,12 @@ class Js115 < Package
   description 'JavaScript interpreter and libraries - Version 115'
   homepage 'https://spidermonkey.dev/'
   version '115.8.0'
+  # version '115.14.0'
   license 'MPL-2.0'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}esr/source/firefox-#{version}esr.source.tar.xz"
+  source_url "https://archive.mozilla.org/pub/firefox/releases/#{version.split('-').first}esr/source/firefox-#{version.split('-').first}esr.source.tar.xz"
   source_sha256 'af8086f23efc8492d286671f6035b1a915de6f4ed5c7897e40be0e1cb6b895ea'
+  # source_sha256 '8955e1b5db83200a70c6dea4b614e19328d92b406ec9a1bde2ea86333a74dab4'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -27,12 +29,13 @@ class Js115 < Package
   depends_on 'libnotify' => :build
   depends_on 'llvm18_dev' => :build
   depends_on 'ncurses' # R
-  depends_on 'nspr'
+  depends_on 'nss'
   depends_on 'nss' # R
+  depends_on 'py3_pre_commit' => :build
   depends_on 'py3_pycairo' => :build
   depends_on 'readline' # R
   depends_on 'rust' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_upstream_update
 
@@ -52,7 +55,7 @@ class Js115 < Package
       ac_add_options --disable-strip
       ac_add_options --enable-application=js
       ac_add_options --enable-hardening
-      ac_add_options --enable-linker=lld
+      ac_add_options --enable-linker=#{CREW_LINKER}
       ac_add_options --enable-optimize
       ac_add_options --enable-readline
       ac_add_options --enable-release
@@ -63,20 +66,21 @@ class Js115 < Package
       ac_add_options --with-intl-api
       ac_add_options --with-system-nspr
       ac_add_options --with-system-zlib
+      ac_add_options --without-system-icu
       mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj
     MOZCONFIG_EOF
     File.write('.mozconfig', @mozconfig)
-    if %w[armv7l aarch64].include?(ARCH)
-      # see https://bugzilla.mozilla.org/show_bug.cgi?id=1786621
-      open('.mozconfig', 'a') do |f|
-        f.puts 'ac_add_options --with-system-icu'
-      end
-    else
-      open('.mozconfig', 'a') do |f|
-        f.puts 'ac_add_options --enable-rust-simd'
-        f.puts 'ac_add_options --without-system-icu'
-      end
-    end
+    # if %w[armv7l aarch64].include?(ARCH)
+    #  # see https://bugzilla.mozilla.org/show_bug.cgi?id=1786621
+    #  open('.mozconfig', 'a') do |f|
+    #    f.puts 'ac_add_options --without-system-icu'
+    #  end
+    # else
+    #  open('.mozconfig', 'a') do |f|
+    #    f.puts 'ac_add_options --enable-rust-simd'
+    #    f.puts 'ac_add_options --without-system-icu'
+    #  end
+    # end
     FileUtils.mkdir_p 'obj'
     Dir.chdir 'obj' do
       # error: Cannot set `RUSTC_BOOTSTRAP=1` from build script of `packed_simd v0.3.4 (https://github.com/hsivonen/packed_simd?rev=0917fe780032a6bbb23d71be545f9c1834128d75#0917fe78)`.
@@ -86,12 +90,12 @@ class Js115 < Package
       system "CFLAGS='-fcf-protection=none' \
             CXXFLAGS='-fcf-protection=none' \
             CC=gcc CXX=g++ \
-            LD=mold \
+            LD=#{CREW_LINKER} \
             RUSTFLAGS='-Clto=thin' \
             RUSTUP_HOME='#{CREW_PREFIX}/share/rustup' \
             CARGO_HOME='#{CREW_PREFIX}/share/cargo' \
             LDFLAGS='-lreadline -ltinfo' \
-            MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system \
+            MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip \
             MOZCONFIG=../.mozconfig \
             ../mach build"
     end

@@ -1,22 +1,22 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_alabaster < Python
+class Py3_alabaster < Pip
   description 'Alabaster is a configurable sidebar-enabled Sphinx theme.'
   homepage 'https://alabaster.readthedocs.io/'
-  @_ver = '0.7.13'
-  version "#{@_ver}-py3.12"
+  version "1.0.0-#{CREW_PY_VER}"
   license 'BSD' # License is BSD-style, might be BSD-3?
   compatibility 'all'
-  source_url 'https://github.com/bitprophet/alabaster.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ab679526f7f0bad267d8f4dd03c3c2cab94bef7111cf8ecdd6b00db91c51e738',
-     armv7l: 'ab679526f7f0bad267d8f4dd03c3c2cab94bef7111cf8ecdd6b00db91c51e738',
-       i686: '0d22ad3826e6080ff23b2d6d469f9451322a16a0c10df923bbd1818ce737bc11',
-     x86_64: '6d9c2f7fe045eb5721d4e5e148dcafc6c0103153350bc150c778e3797cbdf171'
+    aarch64: 'dfc6e0bcb69911fee7cf70b8cc6d30d4b911314a159528ce90ade4caf2f4fa04',
+     armv7l: 'dfc6e0bcb69911fee7cf70b8cc6d30d4b911314a159528ce90ade4caf2f4fa04',
+       i686: '17490d26dc5dbdfce11245de710bbebc08dd14b1c738e1f04a92b6373d37e076',
+     x86_64: '3528849402fbd7076949b9018e78f6488b288dfdba7966913444444a3cfd52db'
   })
 
   depends_on 'python3' => :build
+
+  no_source_build
 end

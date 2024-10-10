@@ -25,7 +25,7 @@ class Libmpc < Package
 
   def self.build
     system 'autoreconf -fiv'
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

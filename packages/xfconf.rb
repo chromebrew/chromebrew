@@ -22,7 +22,7 @@ class Xfconf < Package
   depends_on 'vala' => :build
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --enable-gsettings-backend"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --enable-gsettings-backend"
     system "make -j#{CREW_NPROC}"
   end
 

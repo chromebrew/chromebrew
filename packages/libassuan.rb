@@ -3,21 +3,21 @@ require 'package'
 class Libassuan < Package
   description 'Libassuan is a small library implementing the so-called Assuan protocol.'
   homepage 'https://www.gnupg.org/related_software/libassuan/index.html'
-  version '2.5.5'
+  version '3.0.1'
   license 'GPL-3 and LGPL-2.1'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-#{version}.tar.bz2"
-  source_sha256 '8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4'
-  binary_compression 'tar.xz'
+  source_sha256 'c8f0f42e6103dea4b1a6a483cb556654e97302c7465308f58363778f95f194b1'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '853b20547fd035aa2b8e8e3653cfbbd1adc70f6b1f453a41776fa4799519a4d5',
-     armv7l: '853b20547fd035aa2b8e8e3653cfbbd1adc70f6b1f453a41776fa4799519a4d5',
-       i686: '6cb8279e8d9df539022f5b64cfdf42cccea3aea6f482b2fcd7a875c3a4ffac09',
-     x86_64: '9db3d46f74bf1446748f29165a163ee2c87bfcc6b7074b060fb8221146be85ec'
+    aarch64: '37cede2c044d520214d52cea89f713b430f23ca5b0ad89168d197de4bedf1ea6',
+     armv7l: '37cede2c044d520214d52cea89f713b430f23ca5b0ad89168d197de4bedf1ea6',
+       i686: '01b982b4968c5d8402e13504ecb253d3fd78ce8cbc006c21e3877c33bf3330c3',
+     x86_64: '22a5df7a07a95e6d3c70925f668bdd5cab66ef28caaa967b823b3368354ca012'
   })
 
-  depends_on 'libgpgerror'
+  depends_on 'libgpg_error'
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
@@ -25,7 +25,7 @@ class Libassuan < Package
     system "env CFLAGS='-flto=auto' \
       CXXFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+      ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

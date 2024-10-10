@@ -24,7 +24,7 @@ class Udisks2 < Package
 
   def self.build
     system 'filefix'
-    system "./configure #{CREW_OPTIONS} --disable-man"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-man"
     system 'make'
   end
 

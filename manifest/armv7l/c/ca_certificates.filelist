@@ -1,5 +1,6 @@
 /usr/local/bin/update-ca-certificates
 /usr/local/etc/ca-certificates.conf
+/usr/local/etc/env.d/08-ca-certificates
 /usr/local/etc/ssl/certs/ACCVRAIZ1.pem
 /usr/local/etc/ssl/certs/AC_RAIZ_FNMT-RCM.pem
 /usr/local/etc/ssl/certs/AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS.pem
@@ -59,6 +60,7 @@
 /usr/local/etc/ssl/certs/Entrust_Root_Certification_Authority_-_EC1.pem
 /usr/local/etc/ssl/certs/Entrust_Root_Certification_Authority_-_G2.pem
 /usr/local/etc/ssl/certs/Entrust_Root_Certification_Authority_-_G4.pem
+/usr/local/etc/ssl/certs/FIRMAPROFESIONAL_CA_ROOT-A_WEB.pem
 /usr/local/etc/ssl/certs/GDCA_TrustAUTH_R5_ROOT.pem
 /usr/local/etc/ssl/certs/GLOBALTRUST_2020.pem
 /usr/local/etc/ssl/certs/GTS_Root_R1.pem
@@ -112,7 +114,6 @@
 /usr/local/etc/ssl/certs/Security_Communication_ECC_RootCA1.pem
 /usr/local/etc/ssl/certs/Security_Communication_RootCA2.pem
 /usr/local/etc/ssl/certs/Security_Communication_RootCA3.pem
-/usr/local/etc/ssl/certs/Security_Communication_Root_CA.pem
 /usr/local/etc/ssl/certs/Starfield_Class_2_CA.pem
 /usr/local/etc/ssl/certs/Starfield_Root_Certificate_Authority_-_G2.pem
 /usr/local/etc/ssl/certs/Starfield_Services_Root_Certificate_Authority_-_G2.pem
@@ -123,6 +124,8 @@
 /usr/local/etc/ssl/certs/TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem
 /usr/local/etc/ssl/certs/TWCA_Global_Root_CA.pem
 /usr/local/etc/ssl/certs/TWCA_Root_Certification_Authority.pem
+/usr/local/etc/ssl/certs/Telekom_Security_TLS_ECC_Root_2020.pem
+/usr/local/etc/ssl/certs/Telekom_Security_TLS_RSA_Root_2023.pem
 /usr/local/etc/ssl/certs/TeliaSonera_Root_CA_v1.pem
 /usr/local/etc/ssl/certs/Telia_Root_CA_v2.pem
 /usr/local/etc/ssl/certs/TrustAsia_Global_Root_CA_G3.pem
@@ -206,6 +209,7 @@
 /usr/local/share/ca-certificates/mozilla/Entrust_Root_Certification_Authority_-_EC1.crt
 /usr/local/share/ca-certificates/mozilla/Entrust_Root_Certification_Authority_-_G2.crt
 /usr/local/share/ca-certificates/mozilla/Entrust_Root_Certification_Authority_-_G4.crt
+/usr/local/share/ca-certificates/mozilla/FIRMAPROFESIONAL_CA_ROOT-A_WEB.crt
 /usr/local/share/ca-certificates/mozilla/GDCA_TrustAUTH_R5_ROOT.crt
 /usr/local/share/ca-certificates/mozilla/GLOBALTRUST_2020.crt
 /usr/local/share/ca-certificates/mozilla/GTS_Root_R1.crt
@@ -259,7 +263,6 @@
 /usr/local/share/ca-certificates/mozilla/Security_Communication_ECC_RootCA1.crt
 /usr/local/share/ca-certificates/mozilla/Security_Communication_RootCA2.crt
 /usr/local/share/ca-certificates/mozilla/Security_Communication_RootCA3.crt
-/usr/local/share/ca-certificates/mozilla/Security_Communication_Root_CA.crt
 /usr/local/share/ca-certificates/mozilla/Starfield_Class_2_CA.crt
 /usr/local/share/ca-certificates/mozilla/Starfield_Root_Certificate_Authority_-_G2.crt
 /usr/local/share/ca-certificates/mozilla/Starfield_Services_Root_Certificate_Authority_-_G2.crt
@@ -270,6 +273,8 @@
 /usr/local/share/ca-certificates/mozilla/TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.crt
 /usr/local/share/ca-certificates/mozilla/TWCA_Global_Root_CA.crt
 /usr/local/share/ca-certificates/mozilla/TWCA_Root_Certification_Authority.crt
+/usr/local/share/ca-certificates/mozilla/Telekom_Security_TLS_ECC_Root_2020.crt
+/usr/local/share/ca-certificates/mozilla/Telekom_Security_TLS_RSA_Root_2023.crt
 /usr/local/share/ca-certificates/mozilla/TeliaSonera_Root_CA_v1.crt
 /usr/local/share/ca-certificates/mozilla/Telia_Root_CA_v2.crt
 /usr/local/share/ca-certificates/mozilla/TrustAsia_Global_Root_CA_G3.crt

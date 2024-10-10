@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'python2'
+Package.load_package("#{__dir__}/python2.rb")
 
 class Python27 < Package
   description 'A compatibility package for python2.'

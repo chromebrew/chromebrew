@@ -19,7 +19,7 @@ class Libxi < Package
   depends_on 'libx11'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

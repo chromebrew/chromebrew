@@ -4,7 +4,7 @@ class Xcb_proto < Autotools
   description 'The protocols for the X window system provide extended functionality for communication between a X client and the server.'
   homepage 'https://xcb.freedesktop.org'
   @_ver = '1.16.0'
-  version "#{@_ver}-py3.12"
+  version "#{@_ver}-#{CREW_PY_VER}"
   license 'MIT-with-advertising'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/proto/xcbproto.git'

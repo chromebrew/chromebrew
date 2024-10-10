@@ -3,28 +3,28 @@ require 'package'
 class Nano < Package
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  version '8.1'
+  version '8.2'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://nano-editor.org/dist/v8/nano-#{version}.tar.xz"
-  source_sha256 '93b3e3e9155ae389fe9ccf9cb7ab380eac29602835ba3077b22f64d0f0cbe8cb'
+  source_sha256 'd5ad07dd862facae03051c54c6535e54c7ed7407318783fcad1ad2d7076fffeb'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2486bc2e3e290458805a2c55eaf6649bd0e242ec699bbc424f3aae095b5da44d',
-     armv7l: '2486bc2e3e290458805a2c55eaf6649bd0e242ec699bbc424f3aae095b5da44d',
-       i686: 'd3acd202efabcd04785d3ad6e982bcaa8a2f372d5b1341818c27fa1412583912',
-     x86_64: '7ecab2c4d4815ae73044fdf5c9375aad2c06fbee2fe0dcd56cab86d8435e60d2'
+    aarch64: '43d613cbea676bfdf6f93f228e0b918c2d95c57d01a6d980480ec52110bd7248',
+     armv7l: '43d613cbea676bfdf6f93f228e0b918c2d95c57d01a6d980480ec52110bd7248',
+       i686: '85e0c367128b8cd99ecadcb7418138e70fe900346ba728e37fc3a55672cbd972',
+     x86_64: 'c0bdd0b69656ec2e8cc7dc613d3a05e6e9d026124b22c143c3240f4328056350'
   })
 
   depends_on 'filecmd' # R
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "mold -run \
-      ./configure #{CREW_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-browser \
       --enable-color \
       --enable-comment \

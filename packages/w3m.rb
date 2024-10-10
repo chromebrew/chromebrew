@@ -22,7 +22,7 @@ class W3m < Package
   depends_on 'mailutils'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
             --with-imagelib='gdk-pixbuf-2.0 imlib2' \
             --with-editor=$(which vi) \
             --with-mailer=$(which mail) \

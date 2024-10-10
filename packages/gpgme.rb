@@ -21,5 +21,5 @@ class Gpgme < Autotools
   depends_on 'glibc' # R
   depends_on 'gnupg' # L
   depends_on 'libassuan' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
 end

@@ -22,12 +22,12 @@ class Libraw < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libjpeg_turbo' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system 'autoreconf -fiv'
     system 'filefix'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

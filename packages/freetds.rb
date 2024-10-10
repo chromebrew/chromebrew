@@ -2,7 +2,7 @@ require 'package'
 
 class Freetds < Package
   description 'FreeTDS is a set of libraries for Unix and Linux that allows your programs to natively talk to Microsoft SQL Server and Sybase databases.'
-  homepage 'http://www.freetds.org/'
+  homepage 'https://www.freetds.org/'
   version '1.2.18'
   license 'GPL-2'
   compatibility 'all'
@@ -23,7 +23,7 @@ class Freetds < Package
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+      ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

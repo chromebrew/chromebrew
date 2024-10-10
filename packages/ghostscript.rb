@@ -44,7 +44,7 @@ class Ghostscript < Package
   depends_on 'neon' # R
   depends_on 'openjpeg' # R
   depends_on 'pango' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_lto
 
@@ -55,7 +55,7 @@ class Ghostscript < Package
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system 'filefix'
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --disable-hidden-visibility \
       --disable-compile-inits \
       --enable-dynamic \

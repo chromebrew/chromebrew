@@ -1,40 +1,25 @@
-# Adapted from Arch Linux chafa PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/chafa/trunk/PKGBUILD
+require 'buildsystems/autotools'
 
-require 'package'
-
-class Chafa < Package
+class Chafa < Autotools
   description 'Image-to-text converter supporting a wide range of symbols and palettes, transparency, animations, etc.'
   homepage 'https://hpjansson.org/chafa/'
-  version 'cf15d59'
+  version '1.14.2'
   license 'LGPL'
   compatibility 'all'
   source_url 'https://github.com/hpjansson/chafa.git'
-  git_hashtag 'cf15d59da7ccc6a79f8900e21d0926bea08074e9'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd53beb7ca506c4df22a1722a4de31c9f08d9726ea73af281c4dfe59019961512',
-     armv7l: 'd53beb7ca506c4df22a1722a4de31c9f08d9726ea73af281c4dfe59019961512',
-       i686: 'f75740d4e7863e7e7c8ef7bfa8270232a62456eadc3881ef67102791458bed48',
-     x86_64: '5aec91cd2979e938db4da44cdf3251338e7f7d81e38939f19f680e2a11dea21b'
+    aarch64: 'c827c889582064fcf7d6a054534e85d16595a6bf28e5e3caefcebf1e38c45706',
+     armv7l: 'c827c889582064fcf7d6a054534e85d16595a6bf28e5e3caefcebf1e38c45706',
+       i686: '615b1997f5b595ad3a95987e649b5aee68b5abc2a3310c6f215de67d6c26d24d',
+     x86_64: '01c0d9a470d3cd3241be22fb6ad7dc23b5a6ea3e1ddf7822786a2db5540be274'
   })
 
   depends_on 'glib'
   depends_on 'libxslt'
 
-  def self.build
-    system 'autoreconf -fiv'
-    system 'filefix'
-    system "#{CREW_ENV_OPTIONS} \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --without-tools \
-      --enable-gtk-doc=no"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  # The tools depends on freetype, which drops i686 compatibility.
+  configure_options '--without-tools'
 end

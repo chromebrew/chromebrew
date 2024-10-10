@@ -21,7 +21,7 @@ class Diffutils < Package
   depends_on 'libsigsegv'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

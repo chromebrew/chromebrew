@@ -2,22 +2,22 @@ require 'package'
 
 class Bats < Package
   description 'Bash Automated Testing System'
-  homepage 'https://github.com/sstephenson/bats'
-  version '0.4.0'
+  homepage 'https://github.com/bats-core/bats-core'
+  version '1.11.0'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/sstephenson/bats/archive/v0.4.0.tar.gz'
-  source_sha256 '480d8d64f1681eee78d1002527f3f06e1ac01e173b761bc73d0cf33f4dc1d8d7'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/bats-core/bats-core.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd551d8924ac131c93d5f7ae97b67536e3d898f6737d9accd71b979805162fa75',
-     armv7l: 'd551d8924ac131c93d5f7ae97b67536e3d898f6737d9accd71b979805162fa75',
-       i686: 'eabf41741fc22656b88807325d0345d7001b993aec01e38ffa263181c6b29efa',
-     x86_64: '8170fb0e171d68a1277c96f400845a42abfedd2d7b8edf761cd99b4088e7e56b'
+    aarch64: 'f1afc15e9cbcc247c6513c904415aaeb4bc44873245ae2b0c8ef78a55fd5ea31',
+     armv7l: 'f1afc15e9cbcc247c6513c904415aaeb4bc44873245ae2b0c8ef78a55fd5ea31',
+       i686: 'f1ab92897a857020cf0429f2b4d1245345555980816c3db470189f4477c60cc8',
+     x86_64: '25ad52e08f98dd338bcdb2e77b32ace2e58533c41046e02da0f65907028ac475'
   })
 
   def self.install
-    system "./install.sh #{CREW_DEST_PREFIX}"
+    system "./install.sh #{CREW_DEST_PREFIX} #{ARCH_LIB}"
   end
 end

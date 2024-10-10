@@ -39,11 +39,11 @@ class Mjpegtools < Package
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
   depends_on 'pango' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system '[ -x configure ] || ./autogen.sh'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

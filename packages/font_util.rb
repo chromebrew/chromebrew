@@ -1,30 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Font_util < Package
+class Font_util < Autotools
   description 'Tools for truncating and subseting of ISO10646-1 BDF fonts'
-  homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.3.2'
-  license 'custom'
+  homepage 'https://gitlab.freedesktop.org/xorg/font/util'
+  version '1.4.1'
+  license 'MIT'
   compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/font/font-util-1.3.2.tar.bz2'
-  source_sha256 '3ad880444123ac06a7238546fa38a2a6ad7f7e0cc3614de7e103863616522282'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.freedesktop.org/xorg/font/util.git'
+  git_hashtag "font-util-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cdb0bcfb44dd1513f0db12b85f6b46b63ef1b937c0a7a17a4d7d4655667632bb',
-     armv7l: 'cdb0bcfb44dd1513f0db12b85f6b46b63ef1b937c0a7a17a4d7d4655667632bb',
-       i686: 'e53928dc50fe10c1a45adf1529bb829d96add95920b5697dbd237bc705ff5f06',
-     x86_64: '56739db34fb689edc5b5aea0c360c3ffdb12aec9e9bccfbd557d7c2c27542d47'
+    aarch64: '1ef384a719dd423ee9529ad503f52ffa13af4afc4802a20e9e5cccac455e90c3',
+     armv7l: '1ef384a719dd423ee9529ad503f52ffa13af4afc4802a20e9e5cccac455e90c3',
+       i686: '50f78fd1b51145eced75ea02b93955be8c11e6fa100d47686a87481010229b4f',
+     x86_64: '9e65f04191f8f2d120bff3e71368fc09b2ba41063de84eea202041a3785d72d8'
   })
 
-  depends_on 'util_macros'
+  depends_on 'xorg_macros' => :build
 
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  configure_options "--with-fontrootdir=#{CREW_PREFIX}/share/fonts"
 end

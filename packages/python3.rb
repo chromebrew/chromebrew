@@ -3,18 +3,18 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.12.4'
+  version '3.12.7'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 'f6d419a6d8743ab26700801b4908d26d97e8b986e14f95de31b32de2b0e79554'
+  source_sha256 '24887b92e2afd4a2ac602419ad4b596372f67ac9b077190f459aba390faf5550'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f0bfcd80509e4033c28b3382f3a416b83dcde5efbdcbd7052ca49a7b8269bc7b',
-     armv7l: 'f0bfcd80509e4033c28b3382f3a416b83dcde5efbdcbd7052ca49a7b8269bc7b',
-       i686: '44905c28ef097fe5cbeb44410bd0d36694dbfb4f417c1ae4662d09e0f0a17bd6',
-     x86_64: 'c3c7fdb3017d800b45858863d19641e86ca608aedc3e60a45b6454b18d3f8951'
+    aarch64: '956fdb2c517ae78c96af3e433b375caa126f7141c9e24d6a52e7b3a8ce2724de',
+     armv7l: '956fdb2c517ae78c96af3e433b375caa126f7141c9e24d6a52e7b3a8ce2724de',
+       i686: '450c9ba1657c7e89fe177e8f28140d4a89e575b212781b3821394cbcf1fb6309',
+     x86_64: 'e33f6471f7b28aeec266f61e7152496c3b43b301c6a5a85c9110799240755c91'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -26,10 +26,8 @@ class Python3 < Package
   depends_on 'krb5' => :build
   depends_on 'libdb' # R
   depends_on 'libffi' # R
-  depends_on 'libnsl' # R
   depends_on 'libtirpc' # R
   depends_on 'mpdecimal' # R
-  depends_on 'ncurses' # R
   depends_on 'openssl' # R
   depends_on 'readline' # R
   depends_on 'sqlite' # R
@@ -37,7 +35,7 @@ class Python3 < Package
   depends_on 'tk' => :build unless ARCH == 'i686' # Needed for tkinter support
   depends_on 'util_linux' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zoneinfo' # L
 
   no_env_options
@@ -73,7 +71,7 @@ class Python3 < Package
 
     FileUtils.mkdir_p 'builddir'
     Dir.chdir 'builddir' do
-      system "../configure #{CREW_OPTIONS} \
+      system "../configure #{CREW_CONFIGURE_OPTIONS} \
           --with-lto \
           --with-computed-gotos \
           --enable-loadable-sqlite-extensions \

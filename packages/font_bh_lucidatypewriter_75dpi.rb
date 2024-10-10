@@ -1,31 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Font_bh_lucidatypewriter_75dpi < Package
+class Font_bh_lucidatypewriter_75dpi < Autotools
   description '75dpi Bigelow and Holmes Lucida Typewriter PCF fonts'
-  homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.0.3'
+  homepage 'https://gitlab.freedesktop.org/xorg/font/bh-lucidatypewriter-75dpi'
+  version '1.0.4'
   license 'public-domain'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://www.x.org/releases/individual/font/font-bh-lucidatypewriter-75dpi-1.0.3.tar.bz2'
-  source_sha256 '4ac16afbe205480cc5572e2977ea63488c543d05be0ea8e5a94c845a6eebcb31'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.freedesktop.org/xorg/font/bh-lucidatypewriter-75dpi.git'
+  git_hashtag "font-bh-lucidatypewriter-75dpi-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '28c150d55d5a1b5323eab5e908191646025ea3ed7a2590a90aef74cebf6787d2',
-     armv7l: '28c150d55d5a1b5323eab5e908191646025ea3ed7a2590a90aef74cebf6787d2',
-     x86_64: 'f6dc723b1c2385095421d1534e2fc20cdeba5515739ad8d9277e281b8c8817e8'
+    aarch64: 'b37fe3f9edb68df783f4397bb3a194a10a069177915032dac01aeb62161ba451',
+     armv7l: 'b37fe3f9edb68df783f4397bb3a194a10a069177915032dac01aeb62161ba451',
+     x86_64: '4a0a871d1baf437c4d5133e11f8625034caa80fcf1e14f22e41d25f8a510436f'
   })
 
   depends_on 'bdftopcf'
   depends_on 'font_util'
   depends_on 'mkfontscale'
-
-  def self.build
-    system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  depends_on 'xorg_macros' => :build
 end

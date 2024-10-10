@@ -3,28 +3,28 @@ require 'package'
 class Glibc_build223 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
+  version '2.23-6'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-  compatibility 'all'
+  @libc_version = LIBC_VERSION
+  compatibility 'i686'
+  min_glibc version.split('-').first
+  max_glibc version.split('-').first
+  source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
+  source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
   binary_compression 'tar.zst'
+
+  binary_sha256({
+    i686: 'f40aa662009999330bd1be1feb6c64efbe663a7a308973dc7c5a2b41c1faaf6b'
+  })
 
   depends_on 'gawk' => :build
   depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
   depends_on 'libidn2' => :build
   depends_on 'texinfo' => :build
   depends_on 'hashpipe' => :build
-
   conflicts_ok
   no_env_options
   no_upstream_update
-
-  @libc_version = LIBC_VERSION
-  version '2.23-6'
-  source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
-  source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
-
-  binary_sha256({
-    i686: 'f40aa662009999330bd1be1feb6c64efbe663a7a308973dc7c5a2b41c1faaf6b'
-  })
 
   def self.patch
     # Patch to avoid old ld issue on glibc 2.23 by using ld configure
@@ -231,7 +231,7 @@ class Glibc_build223 < Package
       end
       FileUtils.cp 'binutils/ld.bfd', 'binutils/ld'
       system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
-                 #{CREW_OPTIONS} \
+                 #{CREW_CONFIGURE_OPTIONS} \
                  --with-headers=#{CREW_PREFIX}/include \
                  --without-gd \
                  --disable-werror \
@@ -254,13 +254,11 @@ class Glibc_build223 < Package
     Dir.chdir 'glibc_build' do
       system 'touch', "#{CREW_DEST_PREFIX}/etc/ld.so.conf"
       case ARCH
-      when 'aarch64', 'armv7l'
-        system "make -j1 DESTDIR=#{CREW_DEST_DIR} install || true" # "sln elf/symlink.list" fails on armv7l
-      when 'i686', 'x86_64'
+      when 'i686'
         system "make -j1 DESTDIR=#{CREW_DEST_DIR} install"
       end
       case @libc_version
-      when '2.23', '2.27'
+      when '2.23'
         Dir.chdir 'localedata' do
           system "mkdir -pv #{CREW_DEST_LIB_PREFIX}/locale"
           puts 'Install minimum set of locales'.lightblue
@@ -297,12 +295,8 @@ class Glibc_build223 < Package
         puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
         @crew_libc_version = @libc_version
         case ARCH
-        when 'aarch64', 'armv7l'
-          FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-armhf.so.3'
         when 'i686'
-          FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-i686.so.2'
-        when 'x86_64'
-          FileUtils.ln_sf "/lib64/ld-#{@crew_libc_version}.so", 'ld-linux-x86-64.so.2'
+          FileUtils.ln_sf File.realpath('/lib/ld-linux.so.2'), 'ld-linux.so.2'
         end
         @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
                         libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
@@ -310,32 +304,17 @@ class Glibc_build223 < Package
                         libthread_db libresolv librlv librt libthread_db-1.0 libutil]
         @libraries.each do |lib|
           # Reject entries which aren't libraries ending in .so, and which aren't files.
-          Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-            @filetype = `file #{f}`.chomp
-            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-              g = File.basename(f)
-              FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
-            end
-          end
-          # Reject entries which aren't libraries ending in .so, and which aren't files.
           # Reject text files such as libc.so because they points to files like
           # libc_nonshared.a, which are not provided by ChromeOS
-          Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-            @filetype = `file #{f}`.chomp
-            puts "f: #{@filetype}" if @opt_verbose
-            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-              g = File.basename(f)
-              FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
-            elsif @opt_verbose
-              puts "#{f} excluded because #{@filetype}"
-            end
+          Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.select { |i| ['shared object', 'symbolic link'].any? { |j| `file #{i}`.chomp.include? j } }.each do |k|
+            FileUtils.ln_sf k, File.join(CREW_DEST_LIB_PREFIX, File.basename(k))
           end
         end
       end
     end
     # Only save libnsl.so.2, since libnsl.so.1 is provided by perl
     # For this to work, build on a M107 or newer container.
-    FileUtils.cp File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2"
+    FileUtils.ln_sf File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"
 
@@ -363,6 +342,7 @@ class Glibc_build223 < Package
 
   def self.postinstall
     if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
+      FileUtils.chmod 'u=wrx', "#{CREW_LIB_PREFIX}/libc.so.6"
       @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
       @crew_libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
       puts "Package glibc version is #{@crew_libc_version}.".lightblue
@@ -377,34 +357,15 @@ class Glibc_build223 < Package
       puts "System glibc version is #{@crew_libc_version}.".lightblue
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
       case ARCH
-      when 'aarch64', 'armv7l'
-        FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
       when 'i686'
-        FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-i686.so.2'
-      when 'x86_64'
-        FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2'
+        FileUtils.ln_sf File.realpath('/lib/ld-linux.so.2'), 'ld-linux.so.2'
       end
       @libraries.each do |lib|
         # Reject entries which aren't libraries ending in .so, and which aren't files.
-        Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          @filetype = `file #{f}`.chomp
-          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
-          end
-        end
-        # Reject entries which aren't libraries ending in .so, and which aren't files.
         # Reject text files such as libc.so because they points to files like
         # libc_nonshared.a, which are not provided by ChromeOS
-        Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          @filetype = `file #{f}`.chomp
-          puts "f: #{@filetype}" if @opt_verbose
-          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
-          elsif @opt_verbose
-            puts "#{f} excluded because #{@filetype}"
-          end
+        Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.select { |i| ['shared object', 'symbolic link'].any? { |j| `file #{i}`.chomp.include? j } }.each do |k|
+          FileUtils.ln_sf k, File.join(CREW_LIB_PREFIX, File.basename(k))
         end
       end
     end

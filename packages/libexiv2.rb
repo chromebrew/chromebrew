@@ -23,7 +23,7 @@ class Libexiv2 < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'curl' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system "sed -i 's/MINGW OR CYGWIN OR CMAKE_HOST_SOLARIS/UNIX/g' cmake/compilerFlags.cmake"

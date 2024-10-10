@@ -3,7 +3,7 @@ require 'package'
 class Flutter < Package
   description "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase."
   homepage 'https://flutter.dev/'
-  version '3.22.2'
+  version '3.24.3'
   license 'BSD-3'
   compatibility 'x86_64'
   source_url 'https://github.com/flutter/flutter.git'
@@ -28,10 +28,10 @@ class Flutter < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'flutter' to get started.\n".lightblue
+    ExitMessage.add "\nType 'flutter' to get started.\n"
   end
 
-  def self.remove
+  def self.postremove
     print 'Would you like to remove the config directories? [y/N] '
     response = $stdin.gets.chomp.downcase
     config_dirs = ["#{HOME}/.flutter", "#{CREW_PREFIX}/share/flutter"]

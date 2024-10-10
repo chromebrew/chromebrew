@@ -26,7 +26,7 @@ class Xfce4_terminal < Package
   depends_on 'mesa'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system "make -j#{CREW_NPROC}"
   end
 

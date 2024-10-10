@@ -23,7 +23,7 @@ class Libmbim < Package
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \
       ./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --disable-maintainer-mode"
     system 'make'
   end

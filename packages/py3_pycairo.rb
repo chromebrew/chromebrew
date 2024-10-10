@@ -1,20 +1,18 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_pycairo < Python
+class Py3_pycairo < Pip
   description 'Pycairo is a provides bindings for the cairo graphics library.'
   homepage 'https://cairographics.org/pycairo/'
-  @_ver = '1.25.0'
-  version "#{@_ver}-py3.12"
+  version "1.27.0-#{CREW_PY_VER}"
   license 'LGPL-2.1 or MPL-1.1'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/pygobject/pycairo.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b7cc5576a9bd92b01209a26a582f539dad7b4efe375ac1aeeecc6da956e27bc9',
-     armv7l: 'b7cc5576a9bd92b01209a26a582f539dad7b4efe375ac1aeeecc6da956e27bc9',
-     x86_64: '697c5507743e106e677c9a3ed48802071a3a20a80cc40a62761e5e256bed0b49'
+    aarch64: '47b12c73255b67630fab3b0d53ff592649b28c3951659aad5a70ca7ef7b02b0b',
+     armv7l: '47b12c73255b67630fab3b0d53ff592649b28c3951659aad5a70ca7ef7b02b0b',
+     x86_64: '6ab5681782aec8f58d22b2bbed6a842227e6b3e1267cfe4981c57639ed335287'
   })
 
   depends_on 'cairo'
@@ -23,4 +21,6 @@ class Py3_pycairo < Python
   depends_on 'python3' => :build
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
+
+  no_source_build
 end

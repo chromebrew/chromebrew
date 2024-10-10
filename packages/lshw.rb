@@ -25,7 +25,7 @@ class Lshw < Package
   depends_on 'glib' # R
   depends_on 'gtk3' # R (but not needed for the CLI app)
   depends_on 'sqlite' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build; end
 

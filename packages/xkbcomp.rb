@@ -20,7 +20,7 @@ class Xkbcomp < Package
   depends_on 'xcb_util'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

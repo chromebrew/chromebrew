@@ -22,7 +22,7 @@ class Neo_matrix < Package
     system './autogen.sh'
     # The program name is neo-matrix for us
     # "neo" refers to different software that existed before this neo
-    system "./configure #{CREW_OPTIONS.sub '--program-suffix=\'\'', ''} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS.sub '--program-suffix=\'\'', ''} \
       --program-suffix='-matrix'"
     system 'make'
   end

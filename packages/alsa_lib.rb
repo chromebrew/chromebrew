@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Alsa_lib < Autotools
   description 'The Advanced Linux Sound Architecture (ALSA) provides audio and MIDI functionality to the Linux operating system.'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
-  version '1.2.12-py3.12'
+  version "1.2.12-#{CREW_PY_VER}"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://github.com/alsa-project/alsa-lib/archive/v#{version.split('-').first}.tar.gz"
@@ -23,7 +23,7 @@ class Alsa_lib < Autotools
   def self.build
     @py_ver = `python -c "import sys; version = '.'.join(map(str, sys.version_info[:2])) ; print(version)"`.chomp
     system 'autoreconf -fiv'
-    system "mold -run ./configure #{CREW_OPTIONS} \
+    system "mold -run ./configure #{CREW_CONFIGURE_OPTIONS} \
        --without-debug \
        --disable-maintainer-mode \
        --with-pythonlibs=-lpython#{@py_ver} \

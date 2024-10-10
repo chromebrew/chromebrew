@@ -20,11 +20,11 @@ class Slang < Package
   depends_on 'glibc' # R
   depends_on 'libpng' # R
   depends_on 'pcre' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'gcc_lib' # R
 
   def self.build
-    system "mold -run ./configure #{CREW_OPTIONS} --without-x"
+    system "mold -run ./configure #{CREW_CONFIGURE_OPTIONS} --without-x"
 
     # force to compile in sequential since slang Makefile doesn't work in parallel
     system 'make', '-j1'

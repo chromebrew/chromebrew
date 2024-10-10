@@ -3,18 +3,17 @@ require 'buildsystems/meson'
 class Gstreamer < Meson
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.24.0'
+  version '1.24.7'
   license 'LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
-  min_glibc '2.29'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3343cac9678845e33a906ab4fc71ca419486092af5bc428293564611affd6cca',
-     armv7l: '3343cac9678845e33a906ab4fc71ca419486092af5bc428293564611affd6cca',
-     x86_64: '514ecd7a6eda71a69853fb291215f73424fc4570a5e979d3fb913796233ceaa5'
+    aarch64: 'b15493813a49437eaaecf0a1af49ef24d8ee8213d7cb16a92dfab2e5067fcfd1',
+     armv7l: 'b15493813a49437eaaecf0a1af49ef24d8ee8213d7cb16a92dfab2e5067fcfd1',
+     x86_64: 'd309a0f354c63ba9d321a2d55d0f31b3dda028a5880d8d413cb4021a009181d7'
   })
 
   depends_on 'alsa_lib' # R
@@ -103,7 +102,7 @@ class Gstreamer < Meson
   depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
   depends_on 'py3_setuptools' => :build
-  depends_on 'pygobject' # R
+  depends_on 'py3_pygobject' # R
   depends_on 'python3' # R
   depends_on 'qt5_base' => :build # otherwise this becomes circular
   depends_on 'qt5_declarative' => :build # otherwise this becomes circular
@@ -119,7 +118,7 @@ class Gstreamer < Meson
   depends_on 'wavpack' # R
   depends_on 'wayland' # R
   depends_on 'webrtc_audio_processing' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zvbi' # R
 
   gnome

@@ -75,7 +75,7 @@ class Libefl < Package
   depends_on 'libxkbcommon' # R
   depends_on 'libxtst' # R
   depends_on 'util_linux' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

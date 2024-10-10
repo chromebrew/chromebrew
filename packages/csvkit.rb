@@ -19,7 +19,7 @@ class Csvkit < Package
   })
 
   depends_on 'py3_six'
-  depends_on 'py3_agate_dfb'
+  depends_on 'py3_agate_dbf'
   depends_on 'py3_agate'
   depends_on 'py3_agate_excel'
   depends_on 'py3_agate_sql'

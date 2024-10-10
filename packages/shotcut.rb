@@ -41,7 +41,7 @@ class Shotcut < Package
   depends_on 'libepoxy' # R
   depends_on 'libgcrypt' # R
   depends_on 'libglvnd' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libice' # R
   depends_on 'libinput' # R
   depends_on 'libmp3lame' # R
@@ -92,7 +92,7 @@ class Shotcut < Package
   depends_on 'xcb_util' # R
   depends_on 'xzutils' # R
   depends_on 'zimg' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.build

@@ -6,11 +6,10 @@ require 'package'
 class Tevent < Package
   description 'Event system based on the talloc memory management library'
   homepage 'https://tevent.samba.org/'
-  @_ver = '0.16.1'
-  version "#{@_ver}-py3.12"
+  version "0.16.1-#{CREW_PY_VER}"
   license 'LGPL'
   compatibility 'all'
-  source_url "https://samba.org/ftp/tevent/tevent-#{@_ver}.tar.gz"
+  source_url "https://samba.org/ftp/tevent/tevent-#{version.split('-').first}.tar.gz"
   source_sha256 '362971e0f32dc1905f6fe4736319c4b8348c22dc85aa6c3f690a28efe548029e'
   binary_compression 'tar.zst'
 
@@ -29,7 +28,7 @@ class Tevent < Package
   depends_on 'talloc' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')} \
       --sysconfdir=#{CREW_PREFIX}/etc/samba \
       --localstatedir=#{CREW_PREFIX}/var \
       --bundled-libraries=NONE \

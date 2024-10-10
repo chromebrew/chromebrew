@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_uri < PERL
   description 'Uniform Resource Identifiers (absolute and relative)'
   homepage 'https://metacpan.org/pod/URI'
-  version '5.19-perl5.40'
+  version "5.19-#{CREW_PERL_VER}"
   license 'GPL PerlArtistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/URI-5.19.tar.gz'

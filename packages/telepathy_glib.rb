@@ -24,7 +24,7 @@ class Telepathy_glib < Package
   def self.build
     system "env #{CREW_ENV_OPTIONS} \
       ./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --libexecdir=#{CREW_LIB_PREFIX}/telepathy \
       --enable-vala-bindings"
     system 'make'

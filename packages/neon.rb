@@ -22,13 +22,13 @@ class Neon < Package
   depends_on 'krb5' # R
   depends_on 'libproxy' # R
   depends_on 'openssl' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system './autogen.sh'
     system 'filefix'
     system "./configure \
-            #{CREW_OPTIONS} \
+            #{CREW_CONFIGURE_OPTIONS} \
            --enable-shared=yes \
            --with-ssl=openssl"
     system 'make'

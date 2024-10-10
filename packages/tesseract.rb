@@ -3,17 +3,17 @@ require 'buildsystems/cmake'
 class Tesseract < CMake
   description 'A neural net (LSTM) based OCR engine which is focused on line recognition & an older OCR engine which recognizes character patterns.'
   homepage 'https://github.com/tesseract-ocr/tesseract'
-  version '5.3.3'
+  version "5.4.1-#{CREW_ICU_VER}"
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/tesseract-ocr/tesseract.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd8c0cca3421fca5743be7ab327ee071397069669f1f18720cfdc23ee3aa19457',
-     armv7l: 'd8c0cca3421fca5743be7ab327ee071397069669f1f18720cfdc23ee3aa19457',
-     x86_64: '29ae9b0d29c8959b42e53d5676c5c29b815dc74eb92e7b814e7cf390265a5957'
+    aarch64: '8594813df34ba63b51026dd0b4c5b0322d03edbbbb23759164f093d44e7a0aca',
+     armv7l: '8594813df34ba63b51026dd0b4c5b0322d03edbbbb23759164f093d44e7a0aca',
+     x86_64: '0e11215ea37e12710713a2f1c6967485ebdb09ca771f84287cce7a4030cd7d9b'
   })
 
   depends_on 'acl' => :build
@@ -53,15 +53,19 @@ class Tesseract < CMake
   depends_on 'lz4' => :build
   depends_on 'openjpeg' # R
   depends_on 'openldap' => :build
+  depends_on 'openmp' => :build
   depends_on 'openssl' => :build
   depends_on 'pango' # R
   depends_on 'xzutils' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' => :build
 
   git_fetchtags
 
   cmake_options "-DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
-        -DENABLE_LTO=ON"
+        -DENABLE_LTO=ON \
+        -DENABLE_NATIVE=ON \
+        -DOPENMP_BUILD=ON \
+        -DUSE_SYSTEM_ICU=ON"
 end

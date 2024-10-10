@@ -1,33 +1,21 @@
-# Adapted from Arch Linux tllist PKGBUILD at:
-# https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=tllist
+require 'buildsystems/meson'
 
-require 'package'
-
-class Tllist < Package
+class Tllist < Meson
   description 'A typed linked list C header file only library'
   homepage 'https://codeberg.org/dnkl/tllist'
-  version '1.0.5'
+  version '1.1.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://codeberg.org/dnkl/tllist.git'
   git_hashtag version
-  binary_compression 'tpxz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6eefb42195190f840d23f07dbfb76963abd124babf09d5253b1e08ac9bdba5de',
-     armv7l: '6eefb42195190f840d23f07dbfb76963abd124babf09d5253b1e08ac9bdba5de',
-       i686: '36cb299932fcebce6c373980fc427196334fbc8b6cb5a69b7880945f35ea1475',
-     x86_64: '7b46ee399514bd499c3a82f8c10916ed76f2c9c88a49cf75e348f683952dfd96'
+    aarch64: 'b787e5e636aff6cab361687942593134c0a37d3163eb8e8b095c98ad8a068fe0',
+     armv7l: 'b787e5e636aff6cab361687942593134c0a37d3163eb8e8b095c98ad8a068fe0',
+       i686: '31850a41aa98f2d11fdf9d13c4015ca7f2669d1cd0b67c6b1299c73d5b51ff43',
+     x86_64: '81947aa707f9934b2eef6d9ed1be0ee1b75218c8479bdbc79b541a74f0feff40'
   })
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  run_tests
 end

@@ -26,7 +26,7 @@ class Cfitsio < Autotools
     system "CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS} --enable-reentrant"
+      ./configure #{CREW_CONFIGURE_OPTIONS} --enable-reentrant"
     system 'make shared'
     system 'make utils'
   end

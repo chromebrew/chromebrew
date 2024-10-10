@@ -34,7 +34,7 @@ class Libtiff < Package
   depends_on 'mesa' => :build unless ARCH == 'i686'
   depends_on 'wget2' => :build
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   gnome
@@ -43,7 +43,7 @@ class Libtiff < Package
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     @x = ARCH == 'i686' ? '' : '--with-x --enable-webp'
-    system "#{CREW_ENV_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} ./configure #{CREW_CONFIGURE_OPTIONS} \
       #{@x} \
       --enable-zlib \
       --enable-mdi \

@@ -4,7 +4,7 @@ class Asciidoc < Package
   description 'AsciiDoc is a presentable text document format for writing articles, UNIX man pages and other small to medium sized documents.'
   homepage 'https://asciidoc.org/'
   @_ver = '10.2.0'
-  version "#{@_ver}-py3.12"
+  version "#{@_ver}-#{CREW_PY_VER}"
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/asciidoc-py/asciidoc-py.git'
@@ -26,7 +26,7 @@ class Asciidoc < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

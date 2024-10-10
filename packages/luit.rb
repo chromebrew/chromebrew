@@ -24,7 +24,7 @@ class Luit < Package
   depends_on 'libx11' => ':build'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --enable-fontenc"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --enable-fontenc"
     system 'make'
   end
 

@@ -1,54 +1,33 @@
-# Adapted from Arch Linux fcft PKGBUILD at:
-# https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=fcft
+require 'buildsystems/meson'
 
-require 'package'
-
-class Fcft < Package
+class Fcft < Meson
   description 'Simple library for font loading and glyph rasterization using FontConfig, FreeType and pixman.'
   homepage 'https://codeberg.org/dnkl/fcft'
-  version '2.5.1'
+  version '3.1.8'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://codeberg.org/dnkl/fcft.git'
   git_hashtag version
-  binary_compression 'tpxz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '28f1176a8cece2b6e7464020871a1f543a01b387b107f7ff8eaec0bb525a2745',
-     armv7l: '28f1176a8cece2b6e7464020871a1f543a01b387b107f7ff8eaec0bb525a2745',
-     x86_64: '4d5d098327ea62f4f4c9ea534e8f79346602f54acca4af2dc18e03be3b64c224'
+    aarch64: '10ec6f7c3f479908abeadc26c8793045f8da58660ffb79b687cd02130e0d72c4',
+     armv7l: '10ec6f7c3f479908abeadc26c8793045f8da58660ffb79b687cd02130e0d72c4',
+     x86_64: '9d2722efa27cbd6ff90e96d4571e2a0aba2204f060e3d237bd9823aa9719a96e'
   })
 
-  depends_on 'freetype'
   depends_on 'fontconfig'
+  depends_on 'freetype'
   depends_on 'harfbuzz'
-  depends_on 'utf8proc'
   depends_on 'pixman'
   depends_on 'tllist' => :build
+  depends_on 'utf8proc'
 
   def self.patch
-    # threads.h was introduced in glibc 2.28. This is a workaround for
-    # pre-M92 systems.
-    return unless LIBC_VERSION < '2.28'
-
-    system 'curl -Lf https://github.com/jtsiomb/c11threads/raw/19abeee43272002301ddece2f7d5df37394bb54f/c11threads.h -o threads.h'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('threads.h')) == 'c945fd352449174d3b6107c715b622206ebb81694ac23239637439d78e33ee5a'
+    # threads.h was introduced in glibc 2.28. This is a workaround for pre-M92 systems.
+    downloader 'https://github.com/jtsiomb/c11threads/raw/19abeee43272002301ddece2f7d5df37394bb54f/c11threads.h', 'c945fd352449174d3b6107c715b622206ebb81694ac23239637439d78e33ee5a', 'threads.h' if LIBC_VERSION < '2.28'
   end
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      -Dgrapheme-shaping=enabled \
-      -Drun-shaping=enabled \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system 'samu -C builddir'
-  end
-
-  def self.check
-    system 'samu -C builddir test'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  meson_options '-Drun-shaping=enabled'
+  run_tests
 end

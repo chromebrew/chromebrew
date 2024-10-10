@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'liba52'
+Package.load_package("#{__dir__}/liba52.rb")
 
 class A52 < Package
   description Liba52.description

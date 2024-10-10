@@ -1,16 +1,34 @@
 #!/usr/bin/env ruby
-require 'uri'
-require 'digest/sha2'
-begin
-  require 'json'
-rescue LoadError
-  # The json gem can break when upgrading from a much older version of ruby.
-  puts ' -> install gem json'
-  Gem.install('json')
-  require 'json'
+require_relative '../lib/color'
+# Disallow sudo
+abort 'Chromebrew should not be run as root.'.lightred if Process.uid.zero?
+def require_gem(gem_name_and_require = nil, require_override = nil)
+  # Allow only loading gems when needed.
+  return if gem_name_and_require.nil?
+
+  gem_name = gem_name_and_require.split('/')[0]
+  begin
+    gem gem_name
+  rescue LoadError
+    puts " -> install #{gem_name} gem".orange
+    Gem.install(gem_name)
+    gem gem_name
+  end
+  requires = if require_override.nil?
+               gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
+             else
+               require_override
+             end
+  require requires
 end
+require_gem('highline')
+# The json gem can break when upgrading from a much older version of ruby.
+require_gem('json')
+require_gem('activesupport', 'active_support/core_ext/object/blank')
+require 'digest/sha2'
 require 'fileutils'
 require 'tmpdir'
+require 'uri'
 begin
   require_relative '../commands/const'
 rescue LoadError
@@ -27,19 +45,20 @@ require_relative '../commands/remove'
 require_relative '../commands/search'
 require_relative '../commands/sysinfo'
 require_relative '../commands/whatprovides'
-require_relative '../lib/color'
 require_relative '../lib/const'
+require_gem 'pry-byebug' if CREW_DEBUG
+# Debugging starts at the following breakpoint when enabled via crew
+# being started with a --debug flag.
+# The following line can be used anywhere as a breakpoint.
+binding.pry if CREW_DEBUG
 require_relative '../lib/crewlog'
 require_relative '../lib/deb_utils'
 require_relative '../lib/docopt'
 require_relative '../lib/downloader'
 require_relative '../lib/gnome'
+require_relative '../lib/misc_functions'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
-require_relative '../lib/util'
-
-# Disallow sudo
-abort 'Chromebrew should not be run as root.'.lightred if Process.uid.zero?
 
 # Add lib to LOAD_PATH
 $LOAD_PATH << File.join(CREW_LIB_PATH, 'lib')
@@ -65,7 +84,7 @@ rescue Docopt::Exit => e
         puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
         # Looking for similar commands
         unless CREW_COMMANDS.include?(ARGV[0])
-          similar = CREW_COMMANDS.split.select { |word| edit_distance(ARGV[0], word) < 4 }
+          similar = CREW_COMMANDS.split.select { |word| MiscFunctions.edit_distance(ARGV[0], word) < 4 }
           unless similar.empty?
             abort <<~EOT
               Did you mean?
@@ -93,6 +112,10 @@ String.use_color = args['--color'] || !args['--no-color']
 @verbose           = CREW_VERBOSE ? 'v' : ''
 @short_verbose     = CREW_VERBOSE ? '-v' : ''
 
+# Make sure crew work directories exist.
+FileUtils.mkdir_p CREW_BREW_DIR
+FileUtils.mkdir_p CREW_DEST_DIR
+
 class ExitMessage
   @messages = []
 
@@ -118,41 +141,16 @@ class ExitMessage
 end
 
 at_exit do
-  begin
-    gem 'activesupport'
-  rescue Gem::LoadError
-    puts ' -> install gem activesupport'
-    Gem.install('activesupport')
-    gem 'activesupport'
-  end
-  require 'active_support/core_ext/object/blank'
   GnomePostinstall.run unless GnomePostinstall.gnome_packages.blank?
+
+  # Do gem cleanups all at once if needed.
+  unless @gems_needing_cleanup.blank?
+    puts "Running gem cleanup for gems: #{@gems_needing_cleanup.join(' ')}".orange
+    system "gem cleanup #{@gems_needing_cleanup.join(' ')}"
+  end
 
   # Print exit messages.
   ExitMessage.print
-end
-
-def load_json
-  # load_json(): (re)load device.json
-  json_path = File.join(CREW_CONFIG_PATH, 'device.json')
-  @device   = JSON.load_file(json_path, symbolize_names: true)
-
-  # symbolize also values
-  @device.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
-end
-
-def save_json(json_object)
-  crewlog 'Saving device.json...'
-  begin
-    File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
-  rescue StandardError
-    puts 'Error writing updated packages json file!'.lightred
-    abort
-  end
-
-  # Copy over original if the write to the tmp file succeeds.
-  FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
-  load_json
 end
 
 def print_current_package(extra = false)
@@ -194,7 +192,7 @@ def set_package(pkg_path)
 end
 
 def generate_compatible
-  puts 'Generating compatible packages...'.orange if CREW_VERBOSE
+  puts 'Determining package compatibility...'.orange if CREW_VERBOSE
   @device[:compatible_packages] = []
   Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     pkg_name = File.basename filename, '.rb'
@@ -212,11 +210,12 @@ def generate_compatible
       puts "#{pkg_name} is not a compatible package.".lightred
     end
   end
-  File.open(File.join(CREW_CONFIG_PATH, 'device.json'), 'w') do |file|
-    output = JSON.parse @device.to_json
-    file.write JSON.pretty_generate(output)
-  end
-  puts 'Generating compatible packages done.'.orange if CREW_VERBOSE
+  puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
+  @device[:essential_deps] = []
+  @device[:essential_deps].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
+  crewlog "Essential packages: #{@device[:essential_deps]}"
+  ConvenienceFunctions.save_json(@device)
+  puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
 end
 
 def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), silent: false)
@@ -246,7 +245,7 @@ def cache_build
       FileUtils.mv "#{build_cachefile}.sha256", "#{build_cachefile}.sha256.bak", force: true if File.file?("#{build_cachefile}.sha256")
       Dir.chdir(CREW_BREW_DIR) do
         system "tar c#{@verbose} #{pkg_build_dirname} \
-        | nice -n 20 #{CREW_PREFIX}/bin/zstd -c  --ultra --fast -f -o #{build_cachefile} -"
+        | nice -n 20 zstd -c  --ultra --fast -f -o #{build_cachefile} -"
       end
     end
     system "sha256sum #{build_cachefile} > #{build_cachefile}.sha256"
@@ -260,28 +259,62 @@ end
 def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkg_name
 
-  # update package lists
-  Dir.chdir(CREW_LIB_PATH) do
-    # Set sparse-checkout folders.
-    system "git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools"
-    system 'git sparse-checkout reapply'
+  unless CREW_NO_GIT
+    # The following is used in fixup.rb to determine if crew update needs to
+    # be run again.
+    @crew_const_git_commit = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
 
-    system "git fetch #{CREW_REPO} #{CREW_BRANCH}", exception: true
-    system 'git reset --hard FETCH_HEAD', exception: true
-    system 'git-restore-mtime -sq 2>/dev/null', exception: true if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
+    unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
+      puts 'Fixing Chromebrew system git repo clone...'.orange
+      system(<<~GIT_REPAIR_COMMANDS, chdir: CREW_LIB_PATH, %i[out err] => File::NULL)
+        ## Run the git setup commands used in install.sh.
+        # Make the git default branch error messages go away.
+        git config --global init.defaultBranch main
+        # Setup the dir with git information.
+        git init --ref-format=reftable
+        git remote add origin #{CREW_REPO}
+        # Help handle situations where GitHub is down.
+        git config --local http.lowSpeedLimit 1000
+        git config --local http.lowSpeedTime 5
+        # Checkout, overwriting local files.
+        git fetch --all
+        git checkout -f master
+        git reset --hard origin/#{CREW_BRANCH}
+      GIT_REPAIR_COMMANDS
+    end
+
+    system(<<~GIT_UPDATE_COMMANDS, chdir: CREW_LIB_PATH, exception: true)
+      ## Update crew from git.
+      # Set sparse-checkout folders.
+      git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools
+      git sparse-checkout reapply
+      git fetch #{CREW_REPO} #{CREW_BRANCH}
+      git reset --hard FETCH_HEAD
+    GIT_UPDATE_COMMANDS
+    system(<<~GIT_RESTORE_MTIME_COMMAND, chdir: CREW_LIB_PATH, exception: true) if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
+      # Set the mtime on each file in git to the date the file was added,
+      # not to the date of the last git pull.
+      git-restore-mtime -sq 2>/dev/null
+    GIT_RESTORE_MTIME_COMMAND
+
+    if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
+      puts 'Updating RubyGems.'.orange
+      system 'gem update -N --system'
+      system 'gem cleanup'
+    end
+    puts 'Package lists, crew, and library updated.'
+
+    # Do any fixups necessary after crew has updated from git.
+    load "#{CREW_LIB_PATH}/lib/fixup.rb"
   end
-
-  puts 'Package lists, crew, and library updated.'
-
-  # Do any fixups necessary after crew has updated from git.
-  load "#{CREW_LIB_PATH}/lib/fixup.rb"
 
   # update compatible packages
   generate_compatible
   # check for outdated installed packages
-  puts 'Checking for package updates...'
+  puts 'Checking for package updates...' unless CREW_UNATTENDED
 
   can_be_updated = 0
+  updatable_packages = []
   @device[:installed_packages].each do |package|
     search package[:name], silent: true
     unless @pkg
@@ -297,16 +330,21 @@ def update
     if different_version && !different_sha && has_sha
       unless @pkg.no_compile_needed?
         can_be_updated -= 1
-        puts "#{@pkg.name} has a version change but does not have updated binaries".yellow
+        updatable_packages.push(@pkg.name)
+        puts "#{@pkg.name} has a version change but does not have updated binaries".yellow unless CREW_UNATTENDED
       end
     elsif different_version
-      puts "#{@pkg.name} could be updated from #{package[:version]} to #{@pkg.version}"
+      updatable_packages.push(@pkg.name)
+      puts "#{@pkg.name} could be updated from #{package[:version]} to #{@pkg.version}" unless CREW_UNATTENDED
     elsif !different_version && different_sha
-      puts "#{@pkg.name} could be updated (rebuild)"
+      updatable_packages.push(@pkg.name)
+      puts "#{@pkg.name} could be updated (rebuild)" unless CREW_UNATTENDED
     end
   end
 
-  if can_be_updated.positive?
+  if CREW_UNATTENDED && can_be_updated.positive?
+    puts updatable_packages
+  elsif can_be_updated.positive?
     puts "\n#{can_be_updated} packages can be updated."
     puts 'Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages.'
   else
@@ -420,6 +458,8 @@ def download
 
   uri = URI.parse url
   filename = File.basename(uri.path)
+  # # If we're downloading a binary, reset the filename to what it would have been if we didn't download from the API.
+  filename = "#{@pkg.name}-#{@pkg.version}-chromeos-#{ARCH}.#{@pkg.binary_compression}" if filename.eql?('download')
   sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
   @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
@@ -428,22 +468,27 @@ def download
 
   if !url
     abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
+  elsif url.casecmp?('SKIP') || (@pkg.no_source_build? || @pkg.gem_compile_needed?)
+    puts 'Skipping source download...'
   elsif @pkg.build_from_source
     puts 'Downloading source...'
   elsif !source
     puts 'Precompiled binary available, downloading...'
-  elsif url.casecmp?('SKIP')
-    puts 'Skipping source download...'
   else
     puts 'No precompiled binary available for your platform, downloading source...'
   end
 
-  git = uri.scheme.eql?('git')
+  git = true unless @pkg.git_hashtag.to_s.empty?
 
   Dir.chdir CREW_BREW_DIR do
+    FileUtils.mkdir_p @extract_dir
+    # We want to skip when no_source_build is true during the build,
+    # but when we have built a binary we are in upgrade, and we need
+    # download since we need to extract the just generated binary.
+    next if (@pkg.no_source_build? || @pkg.gem_compile_needed?) && !@pkg.in_upgrade && !@pkg.in_install
     case File.basename(filename)
     # Sources that download with our internal downloader
-    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
+    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i, /\.gem$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
         puts "Looking for #{@pkg.name} archive in cache".orange if CREW_VERBOSE
@@ -496,16 +541,16 @@ def download
       return { source:, filename: }
 
     when /^SKIP$/i
-      Dir.mkdir @extract_dir
-    when /\.git$/i # Source URLs which end with .git are git sources.
-      git = true
+      FileUtils.mkdir_p @extract_dir
     else
-      Dir.mkdir @extract_dir
-      downloader url, sha256sum, filename, CREW_VERBOSE
+      unless git # We don't want to download a git repository as a file.
+        FileUtils.mkdir_p @extract_dir
+        downloader url, sha256sum, filename, CREW_VERBOSE
 
-      puts "#{filename}: File downloaded.".lightgreen
+        puts "#{filename}: File downloaded.".lightgreen
 
-      FileUtils.mv filename, "#{@extract_dir}/#{filename}"
+        FileUtils.mv filename, "#{@extract_dir}/#{filename}"
+      end
     end
 
     # Handle git sources.
@@ -540,7 +585,7 @@ def download
         end
       end
       # Download via git
-      Dir.mkdir @extract_dir
+      FileUtils.mkdir_p @extract_dir
       Dir.chdir @extract_dir do
         if @pkg.git_branch.to_s.empty?
           system 'git init'
@@ -568,7 +613,7 @@ def download
           # because some builds will use that information.
           system "tar c#{@verbose} \
             $(find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
-            nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - >  \
+            nice -n 20 zstd -c -T0 --ultra -20 - >  \
             #{cachefile}"
         end
         system 'sha256sum', cachefile, out: "#{cachefile}.sha256"
@@ -598,9 +643,16 @@ def unpack(meta)
       when /\.zip$/i
         puts "Unpacking archive using 'unzip', this may take a while..."
         system 'unzip', (CREW_VERBOSE ? '-v' : '-qq'), '-d', @extract_dir, meta[:filename], exception: true
-      when /\.(tar(\.(gz|bz2|xz|lzma|lz))?|tgz|tbz|txz|tpxz)$/i
+      when /\.(tar(\.(bz2|lz|lzma))?|tbz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
         system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
+      when /\.(tar(\.(gz|xz))?|tgz|txz|tpxz)$/i
+        puts "Unpacking archive using 'tar', this may take a while..."
+        if Kernel.system('zstd --help 2>/dev/null| grep -q lzma', %i[out err] => File::NULL)
+          system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
+        else
+          system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
+        end
       when /\.tar\.zst$/i
         puts "Unpacking archive using 'tar', this may take a while..."
         system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
@@ -612,6 +664,10 @@ def unpack(meta)
         puts "Unpacking 'AppImage' archive, this may take a while..."
         FileUtils.chmod 0o755, meta[:filename], verbose: @fileutils_verbose
         system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
+      when /\.gem$/i
+        puts "Moving #{@pkg.gem_name} binary gem for install..."
+        gem_file = "#{@pkg.gem_name}-#{@pkg.gem_ver}-#{GEM_ARCH}.gem"
+        FileUtils.mv meta[:filename], File.join(@extract_dir, gem_file)
       end
     end
     if meta[:source]
@@ -634,19 +690,23 @@ def unpack(meta)
       target_dir = @extract_dir
     end
     # Remove tarball to save space.
-    FileUtils.rm_f meta[:filename], verbose: @fileutils_verbose
+    FileUtils.rm_f meta[:filename], verbose: @fileutils_verbose if File.file?(meta[:filename])
   end
   return File.join(CREW_BREW_DIR, target_dir)
 end
 
 def build_and_preconfigure(target_dir)
   Dir.chdir target_dir do
-    unless @pkg.no_compile_needed?
+    if @pkg.gem_compile_needed?
+      puts 'Building binary gem...'
+    elsif !@pkg.no_compile_needed?
       puts 'Building from source, this may take a while...'
 
       # Load musl options only if package is targeted at the musl toolchain
       load File.join(CREW_LIB_PATH, 'lib/musl.rb').to_s if @pkg.is_musl?
     end
+
+    build_start_time = Time.now.to_i
 
     @pkg.in_build = true
     unless @pkg.cached_build
@@ -665,29 +725,30 @@ def build_and_preconfigure(target_dir)
     end
     @pkg.in_build = false
     # wipe crew destdir
-    FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: @fileutils_verbose
+    FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: @fileutils_verbose unless @pkg.superclass.to_s == 'RUBY'
     puts 'Preconfiguring package...'
     cache_build if CREW_CACHE_BUILD
-    @pkg.install
+    @pkg.install unless @pkg.superclass.to_s == 'RUBY'
+
+    build_end_time = Time.now.to_i
+
+    crewlog "Build for #{@pkg.name} took #{MiscFunctions.time_difference(build_start_time, build_end_time)}."
   end
 end
 
 def pre_flight
-  puts 'Performing pre-flight checks...'
-  if defined?(@pkg.min_glibc) && @pkg.min_glibc && (Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new(@pkg.min_glibc))
-    puts "\n#{@pkg.name.capitalize} requires glibc #{@pkg.min_glibc} and above.".lightred
-    abort "ChromeOS is currently running glibc #{LIBC_VERSION}.\n".lightred
-  end
+  puts "Performing pre-flight checks for #{@pkg.name}...".lightblue
+  abort PackageUtils.incompatible_reason(@pkg).join("\n").to_s.lightred unless PackageUtils.compatible?(@pkg)
   @pkg.preflight
 end
 
 def pre_install(dest_dir)
   Dir.chdir dest_dir do
-    puts 'Performing pre-install...'
+    puts "Performing pre-install for #{@pkg.name}...".lightblue
     @pkg.preinstall
     # Reload device.json in case preinstall modified it via
     # running 'crew remove packages...'
-    load_json
+    @device = ConvenienceFunctions.load_symbolized_json
   end
 end
 
@@ -832,11 +893,6 @@ def prepare_package(destdir)
 
     strip_dir destdir
 
-    # Patchelf currently disabled for security reasons
-    # See https://github.com/upx/upx/issues/655#issuecomment-1457434081
-    # Use patchelf to set need paths for all binaries.
-    # patchelf_set_need_paths destdir
-
     # use upx on executables
     shrink_dir destdir
   end
@@ -968,14 +1024,7 @@ def shrink_dir(dir)
 
             FileUtils.cp execfilecp, "#{execfilecp}-crewupxtmp"
           end
-          begin
-            gem 'concurrent-ruby'
-          rescue Gem::LoadError
-            puts ' -> install gem concurrent-ruby'
-            Gem.install('concurrent-ruby')
-            gem 'concurrent-ruby'
-          end
-          require 'concurrent'
+          require_gem 'concurrent-ruby'
           pool = Concurrent::ThreadPoolExecutor.new(
             min_threads: 1,
             max_threads: CREW_NPROC,
@@ -1187,18 +1236,8 @@ def resolve_dependencies
 
   if @opt_force
     puts 'Proceeding with dependency package installation...'.orange
-  else
-    print 'Do you agree? [Y/n] '
-    response = $stdin.gets.chomp.downcase
-    case response
-    when 'n', 'no'
-      abort 'No changes made.'
-    when '', 'y', 'yes'
-      puts 'Proceeding...'
-    else
-      puts "I don't understand `#{response}`. :(".lightred
-      abort 'No changes made.'
-    end
+  elsif !Package.agree_default_yes('Proceed')
+    abort 'No changes made.'
   end
 
   @dependencies.each do |dep|
@@ -1220,12 +1259,28 @@ def resolve_dependencies
 end
 
 def install
-  if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name)
+  @pkg.in_install = true
+  if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name) && !@pkg.superclass.to_s == 'RUBY'
     puts "Package #{@pkg.name} already installed, skipping...".lightgreen
     return
   end
 
-  unless @pkg.is_fake?
+  install_start_time = Time.now.to_i
+
+  if @pkg.is_fake?
+    # use CREW_DEST_DIR
+    dest_dir = CREW_DEST_DIR
+  elsif @pkg.superclass.to_s == 'RUBY'
+    meta = download
+    target_dir = unpack meta
+    gem_file = "#{@pkg.gem_name}-#{@pkg.gem_ver}-#{GEM_ARCH}.gem"
+    if File.file?(File.join(target_dir, gem_file))
+      FileUtils.mv File.join(target_dir, gem_file), File.join(CREW_DEST_DIR, gem_file)
+    else
+      build_and_preconfigure target_dir
+    end
+    dest_dir = CREW_DEST_DIR
+  else
     meta = download
     target_dir = unpack meta
     if meta[:source]
@@ -1257,8 +1312,8 @@ def install
 
   # remove it just before the file copy
   if @pkg.in_upgrade
-    puts 'Removing since upgrade or reinstall...'
-    Command.remove(@pkg, CREW_VERBOSE)
+    puts 'Attempting removal since this is an upgrade or reinstall...'
+    Command.remove(@pkg)
   end
 
   if @pkg.is_fake?
@@ -1268,7 +1323,13 @@ def install
     pre_install dest_dir
 
     # perform install process
-    install_package dest_dir
+    if @pkg.superclass.to_s == 'RUBY'
+      Dir.chdir(target_dir) do
+        @pkg.install
+      end
+    else
+      install_package dest_dir
+    end
 
     unless (@resolve_dependencies_and_install == 1) || (@resolve_dependencies_and_build == 1)
       # perform post-install process
@@ -1276,14 +1337,18 @@ def install
     end
   end
 
+  install_end_time = Time.now.to_i
+
+  install_time_elapsed_string = MiscFunctions.time_difference(install_start_time, install_end_time)
+  crewlog "Build & install for #{@pkg.name} took #{install_time_elapsed_string}."
+  puts "Build & install for #{@pkg.name} took #{install_time_elapsed_string}. Please ask for #{ARCH} binaries to be generated for #{@pkg.name}.".lightpurple if (install_start_time - install_end_time) > 60
+
   # Add to installed packages list in devices.json, but remove first if it is already there.
-  if PackageUtils.installed?(@pkg.name)
-    crewlog "Removing package #{@pkg.name} from device.json since a version is already marked as installed."
-    @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name }
-  end
   crewlog "Adding package #{@pkg.name} to device.json."
-  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
-  save_json(@device)
+  @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name } and @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
+  ConvenienceFunctions.save_json(@device)
+  crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if Kernel.system 'which jq', %i[out err] => File::NULL
+  @pkg.in_install = false
 end
 
 def resolve_dependencies_and_build
@@ -1311,20 +1376,21 @@ def resolve_dependencies_and_build
       FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest", verbose: @fileutils_verbose # this is a little ugly, feel free to find a better way
     end
   end
-  puts "#{@pkg.name} is built!".lightgreen
+  puts "#{@pkg.name.capitalize} is built!".lightgreen
   @resolve_dependencies_and_build = 0
 end
 
 def build_package(crew_archive_dest)
-  # download source codes and unpack it
+  # Download source code and unpack it.
   meta = download
   target_dir = unpack meta
 
-  # build from source and place binaries at CREW_DEST_DIR
+  # Build from source and place binaries in CREW_DEST_DIR.
   build_and_preconfigure target_dir
 
-  # call check method here.  this check method is called by this function only,
-  # therefore it is possible place time consuming tests in the check method.
+  # Call check method here. This check method is called by this function
+  # only, therefore it is possible to place time consuming tests in the
+  # check method.
   if Dir.exist? target_dir
     Dir.chdir target_dir do
       @pkg.check
@@ -1332,19 +1398,20 @@ def build_package(crew_archive_dest)
   end
 
   # prepare filelist and dlist at CREW_DEST_DIR
-  prepare_package CREW_DEST_DIR
+  prepare_package CREW_DEST_DIR unless @pkg.superclass.to_s == 'RUBY'
 
   # build package from filelist, dlist and binary files in CREW_DEST_DIR
   puts 'Archiving...'
-  archive_package crew_archive_dest
+  archive_package(crew_archive_dest)
 end
 
 def archive_package(crew_archive_dest)
-  # Check to see that there is a working zstd
-  if File.file?("#{CREW_PREFIX}/bin/zstd")
-    crew_prefix_zstd_available = File.file?("#{CREW_PREFIX}/bin/zstd") ? true : nil
-  end
-  if @pkg.no_zstd? || !crew_prefix_zstd_available
+  if @pkg.superclass.to_s == 'RUBY'
+    gem_file = "#{@pkg.gem_name}-#{@pkg.gem_ver}-#{GEM_ARCH}.gem"
+    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.gem"
+    FileUtils.mv File.join(CREW_DEST_DIR, gem_file), File.join(crew_archive_dest, pkg_name)
+  # Only use zstd if it is available.
+  elsif @pkg.no_zstd? || !Kernel.system('which zstd', %i[out err] => File::NULL)
     puts 'Using xz to compress package. This may take some time.'.lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
@@ -1358,10 +1425,7 @@ def archive_package(crew_archive_dest)
       # decompression speed over compression speed.
       # See https://lists.archlinux.org/pipermail/arch-dev-public/2019-March/029542.html
       # Use nice so that user can (possibly) do other things during compression.
-      if crew_prefix_zstd_available
-        puts 'Using standard zstd'.lightblue if CREW_VERBOSE
-        system "tar c#{@verbose} * | nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
-      end
+      system "tar c#{@verbose} * | nice -n 20 zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
     end
   end
   system "sha256sum #{crew_archive_dest}/#{pkg_name} > #{crew_archive_dest}/#{pkg_name}.sha256"
@@ -1383,141 +1447,100 @@ def archive_package(crew_archive_dest)
   end
 end
 
-def print_deps_tree(args)
-  warn 'Walking through dependencies recursively, this may take a while...', ''
-
-  # dep_hash: Hash object returned by @pkg.get_deps_list
-  dep_hash = @pkg.get_deps_list(hash: true, include_build_deps: args['--include-build-deps'] || 'auto', exclude_buildessential: args['--exclude-buildessential'])
-
-  # convert returned hash to json and format it
-  json_view = JSON.pretty_generate(dep_hash)
-
-  # convert formatted json string to tree structure
-  tree_view = json_view.gsub(/\{\s*/m, '└─────').gsub(/[\[\]{},":]/, '').gsub(/^\s*$\n/, '').gsub(/\s*$/, '')
-
-  # add pipe char to connect endpoints and starting points, improve readability
-  # find the horizontal location of all arrow symbols
-  index_with_pipe_char = tree_view.lines.map { |line| line.index('└') }.compact.uniq
-
-  # determine whatever a pipe char should be added according to the horizontal location of arrow symbols
-  tree_view = tree_view.lines.each_with_index.map do |line, line_i|
-    index_with_pipe_char.each do |char_i|
-      # check if there have any non-space char (pkg_names) between starting point ([line_i][char_i]) and endpoint vertically ([next_arrow_line_offset][char_i])
-      # (used to determine if the starting point and endpoint are in same branch, use pipe char to connect them if true)
-      next_arrow_line_offset = tree_view.lines[line_i..].index { |l| l[char_i] == '└' }
-      have_line_with_non_empty_char = tree_view.lines[line_i + 1..line_i + next_arrow_line_offset.to_i - 1].any? { |l| l[char_i].nil? or l[char_i] =~ /\S/ }
-
-      line[char_i] = '│' if next_arrow_line_offset && (line[char_i] == ' ') && !have_line_with_non_empty_char
-    end
-    next line
-  end.join
-
-  # replace arrow symbols with a tee symbol on branch intersection
-  tree_view = tree_view.lines.each_with_index.map do |line, line_i|
-    # orig_arrow_index_connecter: the horizontal location of the arrow symbol used to connect parent branch
-    #
-    # example:
-    # └───┬─chrome
-    #     └─────buildessential
-    #     ^
-    orig_arrow_index_connecter = line.index('└')
-    # orig_arrow_index_newbranch: the horizontal location of the "box drawing char" symbol MIGHT be
-    #                             required to convert to tee char in order to connect child branch,
-    #                             located at 3 chars later of orig_arrow_index_connecter
-    #
-    # example:
-    #     v
-    # └─────chrome
-    #     └─────buildessential
-    #
-    # which might need to be convert to:
-    # └───┬─chrome
-    #     └─────buildessential
-    orig_arrow_index_newbranch = orig_arrow_index_connecter + 4
-
-    # if the char under the processing arrow symbol (orig_arrow_index_connecter) is also arrow or pipe, change the processing char to tee symbol
-    line[orig_arrow_index_connecter] = '├' if orig_arrow_index_connecter && tree_view.lines[line_i + 1].to_s[orig_arrow_index_connecter] =~ (/[└│]/)
-    # if the char under the processing arrow symbol (orig_arrow_index_newbranch) is also arrow or pipe, change the processing char to tee symbol
-    line[orig_arrow_index_newbranch] = '┬' if orig_arrow_index_newbranch && tree_view.lines[line_i + 1].to_s[orig_arrow_index_newbranch] =~ (/[└├]/)
-    next line # return modified line
-  end.join
-
-  if String.use_color
-    puts <<~EOT, ''
-      \e[45m \e[0m: satisfied dependency
-      \e[46m \e[0m: build dependency
-      \e[47m \e[0m: runtime dependency
-    EOT
-    # (the first string in each #{} is used for commenting only, will not be included in output)
-
-    # replace special symbols returned by @pkg.get_deps_list to actual color code
-    tree_view.gsub!(/\*(.+)\*/, '\1'.lightcyan)
-    tree_view.gsub!(/\+(.+)\+/, "\e[45m\\1\e[0m")
-  end
-
-  puts tree_view
-end
-
-def upload(pkg_name = nil)
-  abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV.fetch('GITLAB_TOKEN', nil).nil?
+def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_username = nil, binary_compression = nil)
+  abort "\nPackage to be uploaded was not specified.\n".lightred if pkg_name.nil?
+  abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if gitlab_token.nil?
+  abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if gitlab_token_username.nil?
 
   packages = pkg_name
-  binary_compression_set = nil
-  gitlab_token = ENV.fetch('GITLAB_TOKEN', nil)
-  base_url = 'https://gitlab.com/api/v4/projects/26210301/packages/generic'
-
-  if pkg_name.nil?
-    %w[.tar.xz .tar.zst].each do |ext|
-      packages += `find #{CREW_LOCAL_REPO_ROOT}/release/*/*#{ext} -exec basename -s #{ext} {} + | cut -d- -f1 | LC_ALL=C sort | uniq | xargs`
-      packages += ' '
-    end
-    abort 'No package binaries found.'.lightred if packages.empty?
-  end
-
   packages.strip!
 
   [packages].each do |package|
+    binary_compression_not_in_file = binary_compression.nil?
+    pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+    binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
+    # The following is used to figure out where a non-standard
+    # binary_sha256 section might be, such as in a gcc_lib file.
+    starting_binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
+    binary_compression = 'gem' if @pkg.superclass.to_s == 'RUBY'
     %w[x86_64 i686 armv7l].each do |arch|
+      # Load existing binary_sha256 hash from the package file.
+      binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
+      starting_binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
       release_dir = "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}"
-      pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
-      new_tarfile = Dir["#{release_dir}/#{package}-*-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
-      if new_tarfile.nil?
-        puts "#{release_dir}/#{package}-#-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
-        next
+      new_tarfile = if binary_compression.nil?
+                      Dir["#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
+                    else
+                      "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
+                    end
+      if new_tarfile.nil? || !File.file?(new_tarfile)
+        puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression.nil? ? '(tar.xz|tar.zst)' : binary_compression} not found.\n".lightred
+        next arch
       end
-      if binary_compression_set.nil?
+      if binary_compression_not_in_file
         ext = File.extname(new_tarfile)
-        puts "Setting binary compression in #{pkg_file}..."
+        binary_compression = @pkg.superclass.to_s == 'RUBY' ? 'gem' : "tar#{ext}"
+        binary_compression_line = "  binary_compression '#{binary_compression}'"
+        puts "Setting binary compression in #{pkg_file} to '#{binary_compression}'..."
         # Add binary compression setting, and add the line if it doesn't exist.
-        if File.read(pkg_file).include?('binary_compression')
-          puts "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkg_file}" if CREW_VERBOSE
-          system "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkg_file}"
-        elsif File.read(pkg_file).include?('source_sha256')
-          puts "sed -i \"/source_sha256/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if CREW_VERBOSE
-          system "sed -i \"/source_sha256/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
-        elsif File.read(pkg_file).include?('git_hashtag')
-          puts "sed -i \"/git_hashtag/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if CREW_VERBOSE
-          system "sed -i \"/git_hashtag/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
+        file = File.read(pkg_file)
+        bc_re = /^\ \ binary_compression.*/
+        source_re = /^\ \ source_sha256.*/
+        git_hashtag_re = /^\ \ git_hashtag.*/
+        source_url_re = /^\ \ source_url.*/
+        if file.match(bc_re)
+          File.write(pkg_file, file.gsub(bc_re, binary_compression_line))
+        elsif file.match(source_re)
+          source_sha256_bc_line = "#{file.match(source_re)}\n#{binary_compression_line}"
+          File.write(pkg_file, file.gsub(source_re, source_sha256_bc_line))
+        elsif file.match(git_hashtag_re)
+          git_hashtag_bc_line = "#{file.match(git_hashtag_re)}\n#{binary_compression_line}"
+          File.write(pkg_file, file.gsub(git_hashtag_re, git_hashtag_bc_line))
+        elsif file.match(source_url_re)
+          source_url_bc_line = "#{file.match(source_url_re)}\n#{binary_compression_line}"
+          File.write(pkg_file, file.gsub(source_url_re, source_url_bc_line))
         else
-          puts "Unable to tell where to add \"binary_compression 'tar#{ext}'\" to #{pkg_file}. Please add it and manually.".lightblue
+          puts "Unable to tell where to add \"#{binary_compression_line}\" to #{pkg_file}. Please add it and manually.".lightblue
         end
-        binary_compression_set = 1
       end
       puts "Package: #{package}, Arch: #{arch}".yellow
-      puts 'Generating sha256sum ...'
+      puts
+      puts "\e[1A\e[KGenerating sha256sum ...\r".orange
       new_sha256 = Digest::SHA256.hexdigest(File.read(new_tarfile))
-      puts "Uploading #{new_tarfile} ..."
+      puts "Uploading #{new_tarfile} ...".orange if CREW_VERBOSE
       noname = new_tarfile.split("#{package}-").last
       new_version = noname.split('-chromeos').first
-      new_url = "#{base_url}/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
+      new_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
       token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
+
+      puts "\e[1A\e[KChecking for existing upload ...\r".orange
+      if `curl -fsI #{new_url}`.lines.first.split[1] == '200'
+        puts "\n#{File.basename(new_tarfile)} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
+        if Package.agree_default_no('Do you want to overwrite the existing upload instead')
+          puts "\e[1A\e[KOverwriting existing upload...\r".orange
+          crewlog "#{arch} = #{new_sha256}"
+          binary_sha256_hash[arch.to_sym] = new_sha256
+        else
+          puts "\e[1A\e[KWill NOT overwite the existing upload. Determining sha256 of already uploaded file...\r".orange
+          upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
+          crewlog "#{arch} = #{upstream_sha256}"
+          binary_sha256_hash[arch.to_sym] = upstream_sha256
+          next arch
+        end
+      else
+        crewlog "#{arch} = #{new_sha256}"
+        binary_sha256_hash[arch.to_sym] = new_sha256
+      end
+
       puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
+      puts "\e[1A\e[KUploading...\r".orange
       output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
+      puts "\e[1A\e[KChecking upload...\r".orange
       if output.include?('201 Created')
         puts "curl -Ls #{new_url} | sha256sum" if CREW_VERBOSE
         upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
         if upstream_sha256 == new_sha256
-          puts output.lightgreen
+          puts "#{output}\n".lightgreen
         else
           if CREW_VERBOSE
             puts "expected sha256 hash=#{new_sha256}"
@@ -1531,56 +1554,61 @@ def upload(pkg_name = nil)
         puts "#{output}. Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
         next
       end
-      old_sha256 = `grep -m 1 #{arch}: #{pkg_file} 2> /dev/null`.chomp
-      if old_sha256.empty?
-        unless File.readlines(pkg_file).grep(/binary_sha256/).any?
-          if CREW_VERBOSE
-            puts "sed -e '/binary_compression/ a\\
-\\
-\\ \\ binary_sha256({' -i #{pkg_file}"
-          end
-          system "sed -e '/binary_compression/ a\\
-\\
-\\ \\ binary_sha256({' -i #{pkg_file}"
-        end
-        puts "Adding binary_sha256 to #{pkg_file}..."
-        puts "#{arch}: '#{new_sha256}'"
-        unless new_sha256.empty?
-          update_sha256(pkg_file, arch, new_sha256)
-          update_sha256(pkg_file, 'aarch64', new_sha256) if arch.eql?('armv7l')
-        end
-      else
-        old_sha256 = old_sha256.split("'")[1]
-        if old_sha256 == new_sha256
-          puts "Skipping binary_sha256 update in #{pkg_file}..."
-        else
-          puts "Updating binary_sha256 in #{pkg_file}..."
-          puts "from: #{arch}: '#{old_sha256}'"
-          puts "  to: #{arch}: '#{new_sha256}'"
-          puts "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}" if CREW_VERBOSE
-          system "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}"
+    end
+
+    # Generate new or replacement binary_sha256 block.
+    puts "\e[1A\e[KGenerating binary_sha256 block for package file...\r".orange
+    binary_sha256_block = ''
+    binary_sha256_block << "\n  binary_sha256({\n"
+    unless binary_sha256_hash[:armv7l].nil?
+      binary_sha256_block << "    aarch64: '#{binary_sha256_hash[:armv7l]}',\n"
+      binary_sha256_block << "     armv7l: '#{binary_sha256_hash[:armv7l]}'"
+      binary_sha256_block << if binary_sha256_hash[:i686].nil? && binary_sha256_hash[:x86_64].nil?
+                               "\n"
+                             else
+                               ",\n"
+                             end
+    end
+    unless binary_sha256_hash[:i686].nil?
+      binary_sha256_block << "       i686: '#{binary_sha256_hash[:i686]}'"
+      binary_sha256_block << if binary_sha256_hash[:x86_64].nil?
+                               "\n"
+                             else
+                               ",\n"
+                             end
+    end
+    binary_sha256_block << "     x86_64: '#{binary_sha256_hash[:x86_64]}'\n" unless binary_sha256_hash[:x86_64].nil?
+    binary_sha256_block << '  })'
+    # Replace existing binary_sha256 block (found by looking for the old hash), otherwise add it.
+    binary_sha256_block_re = /\n^\s*(binary_sha256\(\{)(((?!binary_sha256).)*)#{starting_binary_sha256_hash.compact.values.join('.*')}(((?!\}\)).)*)\}\)/m
+    file = File.read(pkg_file)
+    if file.match(binary_sha256_block_re)
+      File.write(pkg_file, file.gsub(binary_sha256_block_re, "\n#{binary_sha256_block}"))
+    else
+      bc_re = /^\ \ binary_compression.*/
+      binary_sha256_block_with_bc = "#{file.match(bc_re)}\n#{binary_sha256_block}"
+      File.write(pkg_file, file.gsub(bc_re, binary_sha256_block_with_bc))
+    end
+
+    # Upload python wheels if we are dealing with a pip package, but only
+    # if a gitlab token username is set. (The generic repo does not
+    # require a gitlab token username.)
+    if @pkg.superclass.to_s == 'Pip'
+      pip_config = `pip config list`.chomp
+      Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
+
+      pip_cache_dir = `pip cache dir`.chomp
+      wheels = `find #{pip_cache_dir} -type f -name \"*.whl\" -print`.chomp.split
+      unless wheels.empty?
+        wheels.each do |wheel|
+          puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
+          # Note that this uses the python twine from https://github.com/pypa/twine/pull/1123
+          system("twine upload -u #{gitlab_token_username} -p #{gitlab_token} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
+          FileUtils.rm_f wheel
         end
       end
     end
-  end
-end
-
-def update_sha256(package, key, value)
-  case key
-  when 'aarch64'
-    leading_space = '\\ \\ \\ \\ '
-  when 'armv7l', 'x86_64'
-    leading_space = '\\ \\ \\ \\ \\ '
-  when 'i686'
-    leading_space = '\\ \\ \\ \\ \\ \\ \\ '
-  end
-  comma = key == 'x86_64' ? '\\n\\ \\ })' : ','
-  if File.readlines(package).grep(/#{key}:/).any?
-    puts "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}" if CREW_VERBOSE
-    system "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}"
-  else
-    puts "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}" if CREW_VERBOSE
-    system "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}"
+    puts "\e[1A\e[K🎉 Uploads complete for #{package}. 🎉\r\n".lightgreen
   end
 end
 
@@ -1601,17 +1629,10 @@ def copy_package(pkg_name, prompt_msg = '')
     # This pulls the operation from the calling function
     operation = caller_locations(1, 2)[1].to_s.split[3].split('_')[0]
     puts prompt_msg.yellow
-    print "\nWould you like to copy #{pkg_name}.rb to crew and start the #{operation}? [Y/n] ".yellow
-    response = $stdin.gets.chomp.downcase
-    case response
-    when 'n', 'no'
-      puts "#{operation.capitalize} skipped."
-      next_pkg = true
-    when '', 'y', 'yes'
+    if Package.agree_default_yes("\nWould you like to copy #{pkg_name}.rb to crew and start the #{operation}")
       FileUtils.cp pkg_file, "#{CREW_PACKAGES_PATH}/"
       puts "\nCopied #{pkg_file} to #{CREW_PACKAGES_PATH}.\n".lightgreen
     else
-      puts "I don't understand `#{response}`. :(".lightred
       puts "#{operation.capitalize} skipped."
       next_pkg = true
     end
@@ -1666,11 +1687,14 @@ def build_command(args)
     # Process preflight block to see if package should be built
     pre_flight
 
-    if !@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && (@pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP') && !@pkg.no_compile_needed?
+    crewlog "!@pkg.is_fake? #{!@pkg.is_fake?} && PackageUtils.compatible?(@pkg) #{PackageUtils.compatible?(@pkg)} && @pkg.source?(ARCH): #{@pkg.source?(ARCH)}"
+    crewlog "(@pkg.no_source_build? #{@pkg.no_source_build?} || @pkg.source_url.to_s.upcase != 'SKIP' #{@pkg.source_url.to_s.upcase != 'SKIP'} || @pkg.gem_compile_needed? #{@pkg.gem_compile_needed?})"
+    crewlog "!@pkg.no_compile_needed? #{!@pkg.no_compile_needed?} && @pkg.gem_compile_needed? #{@pkg.gem_compile_needed?}"
+    if !@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && (@pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP' || @pkg.gem_compile_needed?) && !@pkg.no_compile_needed?
       resolve_dependencies_and_build
     else
       puts 'Unable to build a fake package. Skipping build.'.lightred if @pkg.is_fake?
-      puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping build.".lightred unless PackageUtils.compatible?(@pkg)
+      puts "Package #{@pkg.name} is not compatible with your device. Skipping build.".lightred unless PackageUtils.compatible?(@pkg)
       puts 'Unable to build without source. Skipping build.'.lightred unless @pkg.source?(ARCH) && @pkg.source_url.to_s.upcase != 'SKIP'
       puts 'Compile not needed. Skipping build.'.lightred if @pkg.no_compile_needed?
     end
@@ -1708,7 +1732,7 @@ def deps_command(args)
 
     if args['--tree']
       # call `print_deps_tree` (print dependency tree) if --tree is specified
-      print_deps_tree(args)
+      @pkg.print_deps_tree(args)
     elsif args['--deep']
       system "#{CREW_LIB_PATH}/tools/getrealdeps.rb #{name}"
     else
@@ -1724,7 +1748,31 @@ def download_command(args)
     search @pkg_name
     @pkg.build_from_source = true if @opt_source
     print_current_package CREW_VERBOSE
-    download
+    if ARGV.intersect?(%w[download]) && @pkg.is_fake?
+      fake_pkg_deplist = @pkg.get_deps_list(return_attr: true).flat_map(&:keys).uniq
+      until fake_pkg_deplist.blank?
+        puts "Will download the following packages: #{fake_pkg_deplist.join(' ')}".orange
+        fake_pkg_deplist.each_with_index do |fake_pkg_dep, index|
+          @pkg_name = fake_pkg_dep
+          search @pkg_name
+          @pkg.build_from_source = true if @opt_source
+          if @pkg.is_fake?
+            puts "Expanding #{fake_pkg_dep}...".lightpurple
+            expanded_pkg_list = @pkg.get_deps_list(return_attr: true).flat_map(&:keys).uniq
+            fake_pkg_deplist.push(*expanded_pkg_list)
+            fake_pkg_deplist.delete(@pkg_name)
+            next fake_pkg_dep
+          end
+          total_files_to_check = fake_pkg_deplist.length
+          numlength = total_files_to_check.to_s.length
+          puts "[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Downloading #{fake_pkg_dep}...".blue
+          download
+          fake_pkg_deplist.delete(@pkg_name)
+        end
+      end
+    else
+      download
+    end
   end
 end
 
@@ -1744,7 +1792,7 @@ def install_command(args)
     @pkg_name = name
     # Exit early if package is already installed. This prevents the
     # postinstall from being run for an already installed package.
-    if @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg_name }
+    if !@pkg_name.start_with?('ruby_') && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg_name }
       puts "Package #{@pkg_name} already installed, skipping...".lightgreen
       next
     end
@@ -1757,13 +1805,14 @@ def install_command(args)
     if PackageUtils.compatible?(@pkg)
       resolve_dependencies_and_install
     else
-      puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping install.".lightred
+      puts PackageUtils.incompatible_reason(@pkg).join("\n").to_s.lightred
+      puts 'Skipping install.'.lightred
     end
   end
 end
 
 def list_command(args)
-  Command.list(args['available'], args['installed'], args['compatible'], args['incompatible'], CREW_VERBOSE)
+  Command.list(args['available'], args['compatible'], args['incompatible'], args['essential'], args['installed'], CREW_VERBOSE)
 end
 
 def postinstall_command(args)
@@ -1804,7 +1853,7 @@ end
 def remove_command(args)
   args['<name>'].each do |name|
     search name
-    Command.remove(@pkg, CREW_VERBOSE)
+    Command.remove(@pkg)
   end
 end
 
@@ -1818,30 +1867,6 @@ def sysinfo_command(_args)
   Command.sysinfo(CREW_VERBOSE)
 end
 
-def test_command(args)
-  test_commands_path = "#{CREW_LIB_PATH}/tests/commands"
-  if args['<name>'].empty?
-    Dir["#{test_commands_path}/*.rb"].each do |name|
-      basename = File.basename(name, '.rb')
-      puts "Testing #{basename} command ...".yellow
-      system("ruby #{name}")
-    end
-  else
-    args['<name>'].each do |name|
-      basename = File.basename(name, '.rb')
-      name = basename if basename != name
-      if File.file?("#{test_commands_path}/#{name}.rb")
-        Dir.chdir(test_commands_path) do
-          puts "Testing #{name} command ...".yellow
-          system("ruby #{name}.rb")
-        end
-      else
-        puts "The #{name} command or test does not exist. Test skipped.".orange
-      end
-    end
-  end
-end
-
 def update_command(args)
   if args['<compatible>']
     generate_compatible
@@ -1853,10 +1878,12 @@ end
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_source)
 
 def upload_command(args)
+  gitlab_token = ENV.fetch('GITLAB_TOKEN', nil)
+  gitlab_token_username = ENV.fetch('GITLAB_TOKEN_USERNAME', nil)
   upload if args['<name>'].empty?
   args['<name>'].each do |name|
     search name
-    upload name if @pkg.name
+    upload(name, @pkg.version, gitlab_token, gitlab_token_username, @pkg.binary_compression)
   end
 end
 
@@ -1878,6 +1905,10 @@ Signal.trap('INT') do
   exit 1
 end
 
-load_json
+@device = ConvenienceFunctions.load_symbolized_json
+
+@last_update_check = Dir["#{CREW_LIB_PATH}/{.git/FETCH_HEAD,lib/const.rb}"].compact.map { |i| File.mtime(i).utc.to_i }.max
+crewlog("The last update was #{MiscFunctions.time_difference(@last_update_check, Time.now.to_i)} ago.")
+puts "It has been more than #{CREW_UPDATE_CHECK_INTERVAL} day#{CREW_UPDATE_CHECK_INTERVAL < 2 ? '' : 's'} since crew was last updated. Please run 'crew update'".lightpurple if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
 command_name = args.select { |k, v| v && command?(k) }.keys[0]
 send("#{command_name}_command", args)

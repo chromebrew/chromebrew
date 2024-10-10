@@ -21,7 +21,7 @@ class Mailutils < Package
   depends_on 'tcpwrappers'
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
             --enable-ipv6 \
             --with-gnutls \
             --with-berkeley-db \

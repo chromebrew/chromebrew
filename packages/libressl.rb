@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'openssl'
+Package.load_package("#{__dir__}/openssl.rb")
 
 class Libressl < Package
   description 'LibreSSL is a version of the TLS/crypto stack forked from OpenSSL in 2014, with goals of modernizing the codebase, improving security, and applying best practice development processes.'

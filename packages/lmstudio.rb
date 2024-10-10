@@ -68,7 +68,7 @@ class Lmstudio < Package
     ExitMessage.add "\nType 'lmstudio' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.cache/lm-studio"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "

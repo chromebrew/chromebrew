@@ -1,31 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Font_misc_misc < Package
+class Font_misc_misc < Autotools
   description 'Standard X11 fixed PCF fonts'
-  homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.1.2'
+  homepage 'https://gitlab.freedesktop.org/xorg/font/misc-misc'
+  version '1.1.3'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://www.x.org/releases/individual/font/font-misc-misc-1.1.2.tar.bz2'
-  source_sha256 'b8e77940e4e1769dc47ef1805918d8c9be37c708735832a07204258bacc11794'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.freedesktop.org/xorg/font/misc-misc.git'
+  git_hashtag "font-misc-misc-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c7e78e79c50785db5262467c17dcfbff493624f91d61753741c3818d5a6b4542',
-     armv7l: 'c7e78e79c50785db5262467c17dcfbff493624f91d61753741c3818d5a6b4542',
-     x86_64: '12a176ada97f23ed38e1186741d40908f703383cecc913b99dc032360e226000'
+    aarch64: '2107978ea234f221e206115192686ccb0c089094636c700eca726ebbf48fe9f5',
+     armv7l: '2107978ea234f221e206115192686ccb0c089094636c700eca726ebbf48fe9f5',
+     x86_64: '81210393e7ab2854079582a35884b29a7f0b91c4b1c4a025bf26087279216786'
   })
 
   depends_on 'bdftopcf'
   depends_on 'font_util'
   depends_on 'mkfontscale'
-
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  depends_on 'xorg_macros' => :build
 end

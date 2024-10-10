@@ -27,7 +27,7 @@ class Swi_prolog < CMake
   depends_on 'pcre2' # R
   depends_on 'python3' # R
   depends_on 'readline' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   pre_cmake_options "CFLAGS+=' -I#{CREW_PREFIX}/include/ncurses'"
   cmake_options '-DCMAKE_BUILD_TYPE=PGO'

@@ -3,7 +3,7 @@ require 'package'
 class Perl_stow < Package
   description 'Manage installation of multiple softwares in the same directory tree'
   homepage 'https://www.gnu.org/software/stow/'
-  version '2.4.0-perl5.40'
+  version "2.4.0-#{CREW_PERL_VER}"
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/stow/stow-2.4.0.tar.gz'
@@ -20,7 +20,7 @@ class Perl_stow < Package
   depends_on 'perl_app_cpanminus' => :build
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --with-pmdir=#{CREW_PREFIX}/share/perl5/vendor_perl"
     system 'make'
   end

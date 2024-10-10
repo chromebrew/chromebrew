@@ -21,7 +21,7 @@ class Libdsm < Package
 
   def self.build
     system './bootstrap'
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
             --with-urandom=/dev/urandom"
     system 'make'
   end

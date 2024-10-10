@@ -27,7 +27,7 @@ class Ndctl < Package
   def self.build
     system './autogen.sh'
     system 'filefix'
-    system "./configure #{CREW_OPTIONS} --without-systemd"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --without-systemd"
     system 'make'
   end
 

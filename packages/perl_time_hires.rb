@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'perl'
+Package.load_package("#{__dir__}/perl.rb")
 
 class Perl_time_hires < Package
   description 'High resolution alarm, sleep, gettimeofday, interval timers Time::HiRes'

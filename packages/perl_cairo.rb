@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_cairo < PERL
   description 'Perl interface to the cairo 2d vector graphics library'
   homepage 'https://metacpan.org/pod/Cairo'
-  version '1.109-perl5.40'
+  version "1.109-#{CREW_PERL_VER}"
   license 'GPL 2.1'
   compatibility 'x86_64'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Cairo-1.109.tar.gz'

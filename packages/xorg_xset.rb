@@ -23,11 +23,11 @@ class Xorg_xset < Package
   depends_on 'libx11' # R
   depends_on 'libxext' # R
   depends_on 'libxmu' # R
-  depends_on 'util_macros' => :build
+  depends_on 'xorg_macros' => :build
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
     --without-fontcache \
     --without-xf86misc"
     system 'make'

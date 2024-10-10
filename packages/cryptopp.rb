@@ -5,7 +5,7 @@ class Cryptopp < Package
   homepage 'https://cryptopp.com/'
   version '8.7.0'
   license 'public domain'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://cryptopp.com/cryptopp870.zip'
   source_sha256 'd0d3a28fcb5a1f6ed66b3adf57ecfaed234a7e194e42be465c2ba70c744538dd'
   binary_compression 'tar.zst'

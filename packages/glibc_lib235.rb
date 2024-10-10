@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'glibc_build235'
+Package.load_package("#{__dir__}/glibc_build235.rb")
 
 class Glibc_lib235 < Package
   description 'glibc libraries'
@@ -7,6 +7,8 @@ class Glibc_lib235 < Package
   version '2.35' # Do not use @_ver here, it will break the installer.
   license Glibc_build235.license
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc version.split('-').first
+  max_glibc version.split('-').first
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
@@ -20,10 +22,6 @@ class Glibc_lib235 < Package
 
   conflicts_ok
   no_upstream_update
-
-  def self.preflight
-    abort 'Glibc_lib requires glibc = 2.35.' unless Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.35')
-  end
 
   def self.install
     puts 'Installing Glibc_build235 to pull files for build...'.lightblue

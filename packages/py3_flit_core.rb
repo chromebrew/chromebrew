@@ -1,34 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_flit_core < Package
+class Py3_flit_core < Pip
   description 'Flit provides simplified packaging of Python modules—core portions.'
   homepage 'https://flit.pypa.io/'
-  @_ver = '3.9.0'
-  version "#{@_ver}-py3.12"
+  version "3.9.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/pypa/flit.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '68402651f832c896ff80e5b44435a60dc9123f89bf36a1656bc572f42731c817',
-     armv7l: '68402651f832c896ff80e5b44435a60dc9123f89bf36a1656bc572f42731c817',
-       i686: '01a2f8a973d3d1a298221235bd99043d05980de1d79bacf8a03173fe0ef653b3',
-     x86_64: 'd870b86028d67c97728d91a490a93e473db11121f6f39c42890a3db8d0cc7407'
+    aarch64: 'c35f598c0f9f060933d971bad1bdc5380447eaa5502e59338deefc0e20636dc2',
+     armv7l: 'c35f598c0f9f060933d971bad1bdc5380447eaa5502e59338deefc0e20636dc2',
+       i686: '90b3adcaf0b2a4ccba676ecff0cab233dc92c5ec5a7ab57e882b2f007fda9311',
+     x86_64: '74f72a981bc87b998a08c6188647fb445b14fd17e18076e6fd1b0962c07cd34b'
   })
 
   depends_on 'python3'
 
-  def self.build
-    Dir.chdir 'flit_core' do
-      system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
-    end
-  end
-
-  def self.install
-    Dir.chdir 'flit_core' do
-      system "python3 -m installer #{PY3_INSTALLER_OPTIONS}"
-    end
-  end
+  no_source_build
 end

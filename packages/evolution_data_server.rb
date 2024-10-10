@@ -3,17 +3,17 @@ require 'buildsystems/cmake'
 class Evolution_data_server < CMake
   description 'Centralized access to appointments and contacts'
   homepage 'https://wiki.gnome.org/Apps/Evolution'
-  version '3.52.0'
+  version "3.52.4-#{CREW_ICU_VER}"
   license 'LGPL-2 or LGPL-3, BSD and Sleepycat'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/evolution-data-server.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3f7032d95995a85d6c5873fc77936228ea269cecf33c2ea0f8b3edb64d373589',
-     armv7l: '3f7032d95995a85d6c5873fc77936228ea269cecf33c2ea0f8b3edb64d373589',
-    x86_64: 'd25bfa3f764b50d9b50de1650f7b31d5e0e119b8098fe5dae5d37ed07fc2694c'
+    aarch64: '412f9158079a8854043b61b7af86f441aafd0df26c495405d27931a95d708899',
+     armv7l: '412f9158079a8854043b61b7af86f441aafd0df26c495405d27931a95d708899',
+    x86_64: 'c62e7f447c0f9d84ae27b3a83b52d042e3190377d582b0cfd99fe054e6dbc445'
   })
 
   depends_on 'at_spi2_core' # R
@@ -48,7 +48,7 @@ class Evolution_data_server < CMake
   depends_on 'vulkan_icd_loader' # R
   depends_on 'webkit2gtk_4_1' # R
   depends_on 'webkitgtk_6' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

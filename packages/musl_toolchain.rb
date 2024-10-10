@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'musl_cc_toolchain'
+Package.load_package("#{__dir__}/musl_cc_toolchain.rb")
 
 class Musl_toolchain < Package
   description Musl_cc_toolchain.description

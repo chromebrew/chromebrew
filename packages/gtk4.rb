@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.15.2'
+  version '4.16.3'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fc59001b24b696939b8c9e4bce743fcd7df2cc0f1c3652d0bcf9c076c950e898',
-     armv7l: 'fc59001b24b696939b8c9e4bce743fcd7df2cc0f1c3652d0bcf9c076c950e898',
-     x86_64: 'ca4cf382aeb6da6ab3fb3b3084de3b043655bde325cf8c0904c00c20483c3f9a'
+    aarch64: 'b2c4ab252dcf3904f8d5902362505793fdddacdd5fe3010e28048d30e189a72e',
+     armv7l: 'b2c4ab252dcf3904f8d5902362505793fdddacdd5fe3010e28048d30e189a72e',
+     x86_64: '3757f9da1c706c9052ec6dda800a05552ab97084709b9d52edbdbd7ab47c5f92'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -60,6 +60,7 @@ class Gtk4 < Meson
   depends_on 'libxrender' # R
   depends_on 'mesa' => :build
   depends_on 'pango' # R
+  depends_on 'py3_docutils' => :build
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_pygments' => :build
   depends_on 'sassc' => :build
@@ -71,7 +72,7 @@ class Gtk4 < Meson
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
   no_fhs
@@ -84,11 +85,10 @@ class Gtk4 < Meson
     end
   end
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-      -Dbroadway-backend=true \
+  meson_options '-Dbroadway-backend=true \
       -Dbuild-demos=false \
       -Dbuild-examples=false \
+      -Dbuild-tests=false \
       -Dbuild-testsuite=false \
       -Dcloudproviders=enabled \
       -Dgraphene:default_library=both \
@@ -97,10 +97,9 @@ class Gtk4 < Meson
       -Dmedia-gstreamer=disabled \
       -Dmutest:default_library=both \
       -Dprint-cups=auto \
-      -Dvulkan=enabled \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
+      -Dvulkan=enabled'
+
+  meson_build_extras do
     File.write 'gtk4settings', <<~GTK4_CONFIG_HEREDOC
       [Settings]
       gtk-icon-theme-name = Adwaita
@@ -109,9 +108,8 @@ class Gtk4 < Meson
     GTK4_CONFIG_HEREDOC
   end
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    @xdg_config_dest_home = "#{CREW_DEST_PREFIX}/.config"
-    FileUtils.install 'gtk4settings', "#{@xdg_config_dest_home}/gtk-4.0/settings.ini", mode: 0o644
+  meson_install_extras do
+    xdg_config_dest_home = File.join(CREW_DEST_PREFIX, '.config')
+    FileUtils.install 'gtk4settings', "#{xdg_config_dest_home}/gtk-4.0/settings.ini", mode: 0o644
   end
 end

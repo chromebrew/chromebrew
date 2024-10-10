@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Gdb < Autotools
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version '15.1-gcc14-py3.12'
+  version "15.1-gcc14-#{CREW_PY_VER}"
   license 'GPL3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
@@ -35,7 +35,7 @@ class Gdb < Autotools
   depends_on 'texinfo' => :build
   depends_on 'xxhash' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   conflicts_ok # binutils conflicts
@@ -45,7 +45,7 @@ class Gdb < Autotools
     FileUtils.mkdir_p 'build'
     Dir.chdir('build') do
       system "../configure \
-        #{CREW_OPTIONS} \
+        #{CREW_CONFIGURE_OPTIONS} \
         --disable-binutils \
         --disable-ld \
         --disable-nls \

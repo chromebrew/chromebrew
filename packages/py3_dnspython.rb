@@ -1,22 +1,22 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_dnspython < Python
+class Py3_dnspython < Pip
   description 'DNSPython is a DNS toolkit.'
   homepage 'https://www.dnspython.org/'
-  @_ver = '2.4.2'
-  version "#{@_ver}-py3.12"
+  version "2.7.0-#{CREW_PY_VER}"
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/rthalley/dnspython.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ef5f94b2f6f6fa5093e74bb51e122f107ef0578d9a7b4002f6c771a1bccc531a',
-     armv7l: 'ef5f94b2f6f6fa5093e74bb51e122f107ef0578d9a7b4002f6c771a1bccc531a',
-       i686: '708c59b55967c652f7df27cfa12080886f7c11f19d9938b11b9f334d871399d2',
-     x86_64: '5c1259ad9779ee76e91b8edec0ab27080dc4dd3797f2e4ba615c50349546e334'
+    aarch64: '87a115527a850e65a91c2b35c334059c0bfb665a173ac9093d1427b7e645f019',
+     armv7l: '87a115527a850e65a91c2b35c334059c0bfb665a173ac9093d1427b7e645f019',
+       i686: 'a82e5e9bdfb0e465324ff1f3d77ee884782f9a5d31d5e67d656d534407d2a75d',
+     x86_64: 'e955959fd11244a198f2a717341a771ff96dbcf2320a79ac49d55075cd08cd9d'
   })
 
   depends_on 'python3' => :build
+
+  no_source_build
 end

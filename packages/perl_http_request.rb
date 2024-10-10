@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_http_request < PERL
   description 'HTTP style request message'
   homepage 'https://metacpan.org/pod/HTTP::Request'
-  version '6.46-perl5.40'
+  version "6.46-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Message-6.46.tar.gz'

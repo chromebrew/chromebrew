@@ -32,19 +32,16 @@ class Ffmpeg < Package
   depends_on 'intel_media_sdk' if ARCH == 'x86_64' && CREW_IS_INTEL # R
   depends_on 'jack' # R
   depends_on 'ladspa' # ?
-  depends_on 'leptonica' # R
   depends_on 'libaom' # R
   depends_on 'libass' # R
   depends_on 'libavc1394' # R
   depends_on 'libbluray' # R
   depends_on 'libdc1394' => :build
   depends_on 'libdrm' # R
-  depends_on 'libfdk_aac' => :build
   depends_on 'libfdk_aac' # R
   depends_on 'libfrei0r' => :build
   depends_on 'libglvnd' # R
   depends_on 'libiec61883' # R
-  depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
   depends_on 'libmodplug' # R
   depends_on 'libmp3lame' # R
@@ -69,11 +66,9 @@ class Ffmpeg < Package
   depends_on 'libxvid' # R
   depends_on 'libxv' # R
   depends_on 'lilv' # R
-  depends_on 'mesa' # R
   depends_on 'nasm' => :build
   depends_on 'openal' # ?
   depends_on 'openjpeg' # R
-  depends_on 'openmp' # R
   depends_on 'openssl' # R
   depends_on 'opus' # R
   depends_on 'pipewire' # R
@@ -81,21 +76,15 @@ class Ffmpeg < Package
   depends_on 'rav1e' # R
   depends_on 'rtmpdump' # R
   depends_on 'rubberband' # R
-  depends_on 'serd' # R
   depends_on 'snappy' # R
-  depends_on 'sord' # R
   depends_on 'speex' # R
-  depends_on 'sratom' # R
-  depends_on 'srt' # R
-  depends_on 'tesseract' # R
   depends_on 'v4l_utils' # R
-  depends_on 'vidstab' # R
   depends_on 'vmaf' # R
   depends_on 'wavpack' # ?
   depends_on 'xzutils' # R
   depends_on 'zeromq' # R
   depends_on 'zimg' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zvbi' # R
 
   no_env_options if %w[aarch64 armv7l].include? ARCH
@@ -189,7 +178,7 @@ class Ffmpeg < Package
         --enable-version3 \
         --host-cflags='#{CREW_ENV_OPTIONS_HASH['CFLAGS']} -flto=auto -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
         --host-ldflags='#{CREW_ENV_OPTIONS_HASH['LDFLAGS']} -flto=auto' \
-        #{CREW_OPTIONS.sub(/--build=.*/, '').gsub('vfpv3-d16', 'neon').gsub('--disable-dependency-tracking', '')}"
+        #{CREW_CONFIGURE_OPTIONS.sub(/--build=.*/, '').gsub('vfpv3-d16', 'neon').gsub('--disable-dependency-tracking', '')}"
     system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
         make -j#{CREW_NPROC}"
     system 'make tools/qt-faststart'

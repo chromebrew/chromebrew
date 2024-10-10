@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'hunspell_en_us'
+Package.load_package("#{__dir__}/hunspell_en_us.rb")
 
 class Hunspell < Package
   description 'Hunspell is a spell checker and morphological analyzer library'

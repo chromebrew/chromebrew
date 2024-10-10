@@ -273,8 +273,10 @@
 /usr/local/lib64/gconv/libJISX0213.so
 /usr/local/lib64/gconv/libKSC.so
 /usr/local/lib64/ld-linux-x86-64.so.2
+/usr/local/lib64/ld-lsb-x86-64.so.3
 /usr/local/lib64/libBrokenLocale.so
 /usr/local/lib64/libBrokenLocale.so.1
+/usr/local/lib64/libC.so.6
 /usr/local/lib64/libanl.so
 /usr/local/lib64/libanl.so.1
 /usr/local/lib64/libc.so

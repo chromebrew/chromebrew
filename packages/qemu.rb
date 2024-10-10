@@ -64,7 +64,7 @@ class Qemu < Package
   depends_on 'snappy' # R
   depends_on 'sphinx' => :build
   depends_on 'vte' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.patch
@@ -78,7 +78,7 @@ class Qemu < Package
   def self.build
     FileUtils.mkdir_p 'build'
     Dir.chdir 'build' do
-      system "mold -run ../configure #{CREW_OPTIONS.sub(/--target.*/, '')} \
+      system "mold -run ../configure #{CREW_CONFIGURE_OPTIONS.sub(/--target.*/, '')} \
         --enable-kvm \
         --enable-lto"
       @counter = 1

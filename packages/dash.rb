@@ -20,7 +20,7 @@ class Dash < Package
   depends_on 'libedit'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --with-libedit"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --with-libedit"
     system 'make'
   end
 

@@ -23,7 +23,7 @@ class Mpc < Package
 
   def self.build
     system "./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --disable-maintainer-mode \
       --enable-shared"
     system 'make'

@@ -21,7 +21,7 @@ class Dosbox < Package
   depends_on 'sommelier'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 
@@ -35,7 +35,7 @@ class Dosbox < Package
     puts
   end
 
-  def self.remove
+  def self.postremove
     print 'Would you like to remove the config directory? [y/N] '
     response = $stdin.gets.chomp.downcase
     config_dir = "#{HOME}/.dosbox"

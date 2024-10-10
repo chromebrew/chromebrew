@@ -29,7 +29,7 @@ class Opam < Package
   @OPAMROOT = "#{CREW_PREFIX}/share/opam"
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system "make lib-ext all -j1 \
       OCAMLC='ocamlc -unsafe-string' \
       OCAMLOPT='ocamlopt -unsafe-string'"
@@ -55,7 +55,7 @@ class Opam < Package
             && opam option --global depext=false --root=#{@OPAMROOT} -y"
   end
 
-  def self.remove
+  def self.postremove
     return unless Dir.exist? @OPAMROOT
 
     puts

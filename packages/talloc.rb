@@ -6,11 +6,10 @@ require 'package'
 class Talloc < Package
   description 'Hierarchical pool based memory allocator with destructors'
   homepage 'https://talloc.samba.org/'
-  @_ver = '2.4.2'
-  version "#{@_ver}-py3.12"
+  version "2.4.2-#{CREW_PY_VER}"
   license 'LGPL'
   compatibility 'all'
-  source_url "https://www.samba.org/ftp/talloc/talloc-#{@_ver}.tar.gz"
+  source_url "https://www.samba.org/ftp/talloc/talloc-#{version.split('-').first}.tar.gz"
   source_sha256 '85ecf9e465e20f98f9950a52e9a411e14320bc555fa257d87697b7e7a9b1d8a6'
   binary_compression 'tar.zst'
 
@@ -29,7 +28,7 @@ class Talloc < Package
   depends_on 'python3' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')} \
       --sysconfdir=#{CREW_PREFIX}/etc/samba \
       --localstatedir=#{CREW_PREFIX}/var \
       --bundled-libraries=NONE \

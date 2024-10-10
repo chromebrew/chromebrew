@@ -19,7 +19,7 @@ class Libssh2 < Autotools
 
   depends_on 'glibc' # R
   depends_on 'openssl' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   configure_options '--with-libz'
 end

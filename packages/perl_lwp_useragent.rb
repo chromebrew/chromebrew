@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_lwp_useragent < PERL
   description 'Web user agent class'
   homepage 'https://metacpan.org/pod/LWP::UserAgent'
-  version '6.70-perl5.40'
+  version "6.70-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/libwww-perl-6.70.tar.gz'

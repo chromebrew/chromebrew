@@ -56,7 +56,7 @@ class Vuze < Package
     puts "\nType 'vuze' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dirs = ["#{HOME}/.azureus", "#{HOME}/.swt"]
     config_dirs.each do |config_dir|
       next unless Dir.exist? config_dir

@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '2.4'
+  version '3.1'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -17,6 +17,7 @@ class Core < Package
   depends_on 'ca_certificates'
   depends_on 'crew_mvdir'
   depends_on 'crew_profile_base'
+  depends_on 'crew_sudo' if CHROMEOS_RELEASE.to_i > 116
   depends_on 'e2fsprogs'
   depends_on 'elfutils'
   depends_on 'expat'
@@ -66,6 +67,7 @@ class Core < Package
   depends_on 'nettle'
   depends_on 'openldap'
   depends_on 'openssl'
+  depends_on 'patchelf'
   depends_on 'p11kit'
   depends_on 'pcre'
   depends_on 'pcre2'
@@ -76,6 +78,22 @@ class Core < Package
   depends_on 'readline'
   depends_on 'rtmpdump'
   depends_on 'ruby'
+  depends_on 'ruby_activesupport'
+  depends_on 'ruby_concurrent_ruby'
+  # Allows for building binary gems if necessary.
+  depends_on 'ruby_gem_compiler'
+  # For use in ruby prompts.
+  depends_on 'ruby_highline'
+  # This contains the debugger config files.
+  depends_on 'ruby_pry'
+  # crew check -V breaks without this.
+  depends_on 'ruby_ruby_libversion'
+  # Needed for rubygem updates
+  depends_on 'ruby_rubygems_update'
+  # These are the "Default Gems" that come with Ruby.
+  depends_on 'default_gems'
+  # These are the "Bundled Gems" that come with Ruby.
+  depends_on 'bundled_gems'
   depends_on 'slang'
   depends_on 'sqlite'
   depends_on 'uchardet'
@@ -83,6 +101,6 @@ class Core < Package
   depends_on 'xzutils'
   depends_on 'xxhash'
   depends_on 'zip'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
   depends_on 'zstd'
 end

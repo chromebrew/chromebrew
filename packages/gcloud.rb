@@ -3,7 +3,7 @@ require 'package'
 class Gcloud < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/gcloud/'
-  version '485.0.0'
+  version '496.0.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Gcloud < Package
      x86_64: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-linux-x86_64.tar.gz"
   })
   source_sha256({
-    aarch64: '749b0b76b2e64234047c7a11e832587b1d8788d58d59ac050ba6eb0470d89a05',
-     armv7l: '749b0b76b2e64234047c7a11e832587b1d8788d58d59ac050ba6eb0470d89a05',
-       i686: '305315de923dfc456d859fbed9ac50a9752b8d5e4b4e14018efa3fd53b10b4f4',
-     x86_64: 'd5cb04c857f50f776794ee77fe0598460bf8aa0b889ef5fd8f9828b8b9b124a0'
+    aarch64: '537bca73b3e2985dea45139efd28c617e2d7430622ab2d073e1466a35fdbe9f3',
+     armv7l: '537bca73b3e2985dea45139efd28c617e2d7430622ab2d073e1466a35fdbe9f3',
+       i686: 'e54ec781eba8d402b836895c53d6907b11c78fcc909e939c7447cd5f015f1227',
+     x86_64: 'efabc50c3c15e41cfdba2677d6b92d9b2fe1e2b2dbcda61f0cce468840b0f6d8'
   })
 
   depends_on 'python3'
@@ -60,7 +60,7 @@ class Gcloud < Package
     puts "source ~/.bashrc && gcloud init\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     print 'Would you like to remove the config directories? [y/N] '
     response = $stdin.gets.chomp.downcase
     config_dirs = ["#{HOME}/.config/gcloud", "#{CREW_PREFIX}/share/gcloud"]

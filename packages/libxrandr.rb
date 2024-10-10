@@ -19,7 +19,7 @@ class Libxrandr < Package
 
   depends_on 'libxext'
   depends_on 'libxrender'
-  depends_on 'util_macros' => :build
+  depends_on 'xorg_macros' => :build
   depends_on 'xorg_proto' => :build
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
@@ -31,7 +31,7 @@ class Libxrandr < Package
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

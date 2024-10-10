@@ -1,22 +1,22 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_argparse_manpage < Python
+class Py3_argparse_manpage < Pip
   description 'Automatically build man-pages for your Python project.'
   homepage 'https://github.com/praiskup/argparse-manpage'
-  @_ver = '4.5'
-  version "#{@_ver}-py3.12"
+  version "4.6-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/praiskup/argparse-manpage.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a7a76a57baa1b69c2a4ff85bb1e4e3ef59b0d5d08aa87ddc074bc8498365adf1',
-     armv7l: 'a7a76a57baa1b69c2a4ff85bb1e4e3ef59b0d5d08aa87ddc074bc8498365adf1',
-       i686: '38e973794b405f3de45d51cbd35650bd087ac38d663e67ddeb43e09fc092c7f8',
-     x86_64: 'bdb3fa284f9cdd9323dbd07b1403c8c1543cc66bbb81f9da8b1d2a2ff7fb38d5'
+    aarch64: '4772d03dbf2b21ddc721ce5da05ee13a730aa1d92221607489dd1d5497125a73',
+     armv7l: '4772d03dbf2b21ddc721ce5da05ee13a730aa1d92221607489dd1d5497125a73',
+       i686: '1352bf5790364f80d5d89dc217c4e96935a5ae1e9b858d01ab1d4d303a2b2335',
+     x86_64: '9aded4463afea06b23c6db412005f8c650e4edf2a24038b5e2f6ae08d0bf276f'
   })
 
   depends_on 'python3'
+
+  no_source_build
 end

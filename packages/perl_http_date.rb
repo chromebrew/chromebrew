@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_http_date < PERL
   description 'Date conversion routines'
   homepage 'https://metacpan.org/pod/HTTP::Date'
-  version '6.06-perl5.40'
+  version "6.06-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Date-6.06.tar.gz'

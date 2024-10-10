@@ -1,13 +1,15 @@
+# Currently broken with gcc 14.
+# See https://gitlab.gnome.org/GNOME/gdl/-/issues/9
 require 'buildsystems/autotools'
 
 class Gnome_docking_library < Autotools
   description 'GUsb is a GObject wrapper for libusb1'
   homepage 'https://www.gnome.org/'
-  version '3.40.0'
+  version "3.40.0-#{CREW_ICU_VER}"
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gdl.git'
-  git_hashtag "GDL_#{version.gsub('.', '_')}"
+  git_hashtag "GDL_#{version.split('-').first.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -23,12 +25,19 @@ class Gnome_docking_library < Autotools
   depends_on 'glib' # R
   depends_on 'gnome_common' => :build
   depends_on 'gtk3' # R
-  depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
   depends_on 'libxml2' # R
   depends_on 'pango' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
+
+  def self.patch
+    # Fix libxml compat.
+    downloader 'https://gitlab.gnome.org/GNOME/gdl/-/merge_requests/4.patch', '3bbd9118ea685bd3b161afdb6653825bf96a844551dadaa024c1fa0e57617f57'
+    system 'patch -Np1 -i 4.patch'
+  end
+
+  configure_options '--disable-gtk-doc'
 end

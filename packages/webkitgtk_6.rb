@@ -3,17 +3,18 @@ require 'package'
 class Webkitgtk_6 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.42.1'
+  version "2.44.2-#{CREW_ICU_VER}"
   license 'LGPL-2+ and BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.42.1.tar.xz'
-  source_sha256 '6f41fac9989d3ee51c08c48de1d439cdeddecbc757e34b6180987d99b16d2499'
+  min_glibc '2.37'
+  source_url "https://webkitgtk.org/releases/webkitgtk-#{version.split('-').first}.tar.xz"
+  source_sha256 '523f42c8ff24832add17631f6eaafe8f9303afe316ef1a7e1844b952a7f7521b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '53c442de2db8f52ed203fc6a9d3417382ec0d5d1e0531ba6f0531156c006174e',
-     armv7l: '53c442de2db8f52ed203fc6a9d3417382ec0d5d1e0531ba6f0531156c006174e',
-     x86_64: '9415fcdeb2cd5e21c20b3149825074f8c3c46aef39906882198429eb73902f1a'
+    aarch64: '85ed089e4dc72c58ec3630ccfb7cfe2be614c5c4f3a49c367acd1d36ea34e0b1',
+     armv7l: '85ed089e4dc72c58ec3630ccfb7cfe2be614c5c4f3a49c367acd1d36ea34e0b1',
+     x86_64: '6878f94647d5b3337f1e6ebab2bd2a095ed870cf3bf5e8ebb4c5c67ebace73d0'
   })
 
   depends_on 'at_spi2_core' # R
@@ -26,6 +27,7 @@ class Webkitgtk_6 < Package
   depends_on 'gcc10' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
@@ -39,18 +41,18 @@ class Webkitgtk_6 < Package
   depends_on 'icu4c' # R
   depends_on 'lcms' # R
   depends_on 'libavif' # R
+  depends_on 'libbacktrace' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
   depends_on 'libgcrypt' # R
   depends_on 'libglvnd' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
   depends_on 'libnotify'
   depends_on 'libpng' # R
   depends_on 'libsecret' # R
-  depends_on 'libsoup'
-  depends_on 'libsoup2' # R
+  depends_on 'libsoup' # R
   depends_on 'libtasn1' # R
   depends_on 'libwebp' # R
   depends_on 'libwpe' # R
@@ -74,7 +76,7 @@ class Webkitgtk_6 < Package
   depends_on 'wayland' # R
   depends_on 'woff2' # R
   depends_on 'wpebackend_fdo' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_env_options
 
@@ -146,11 +148,10 @@ class Webkitgtk_6 < Package
       @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
       system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' \
           cmake -B builddir -G Ninja \
-          #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('mold', 'gold').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
+          #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('-DCMAKE_LINKER_TYPE=MOLD', '').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
           -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
           -DENABLE_DOCUMENTATION=OFF \
-          -DENABLE_GLES2=OFF \
           -DENABLE_JOURNALD_LOG=OFF \
           -DENABLE_GAMEPAD=OFF \
           -DENABLE_MINIBROWSER=ON \

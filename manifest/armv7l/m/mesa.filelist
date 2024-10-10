@@ -24,6 +24,7 @@
 /usr/local/lib/dri/kirin_dri.so
 /usr/local/lib/dri/kms_swrast_dri.so
 /usr/local/lib/dri/komeda_dri.so
+/usr/local/lib/dri/libdril_dri.so
 /usr/local/lib/dri/lima_dri.so
 /usr/local/lib/dri/mali-dp_dri.so
 /usr/local/lib/dri/mcde_dri.so
@@ -55,6 +56,7 @@
 /usr/local/lib/dri/v3d_dri.so
 /usr/local/lib/dri/virtio_gpu_dri.so
 /usr/local/lib/dri/virtio_gpu_drv_video.so
+/usr/local/lib/dri/vkms_dri.so
 /usr/local/lib/dri/vmwgfx_dri.so
 /usr/local/lib/dri/zink_dri.so
 /usr/local/lib/dri/zynqmp-dpsub_dri.so
@@ -65,6 +67,7 @@
 /usr/local/lib/libGLX_mesa.so
 /usr/local/lib/libGLX_mesa.so.0
 /usr/local/lib/libGLX_mesa.so.0.0.0
+/usr/local/lib/libgallium-24.2.4.so
 /usr/local/lib/libgbm.so
 /usr/local/lib/libgbm.so.1
 /usr/local/lib/libgbm.so.1.0.0

@@ -34,6 +34,6 @@ class Octave < Autotools
   depends_on 'openblas' => :build
   depends_on 'pcre2' # R
   depends_on 'readline' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'openblas' # R
 end

@@ -21,7 +21,7 @@ class Autoconf213 < Package
 
   def self.build
     system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --infodir=#{CREW_PREFIX}/share/info \
       --program-suffix=-2.13 \
       --datadir=#{CREW_PREFIX}/share/autoconf213"

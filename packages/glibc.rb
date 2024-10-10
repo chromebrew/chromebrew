@@ -1,10 +1,10 @@
 require 'package'
-require_relative 'glibc_build223'
-require_relative 'glibc_build227'
-require_relative 'glibc_build232'
-require_relative 'glibc_build233'
-require_relative 'glibc_build235'
-require_relative 'glibc_build237'
+Package.load_package("#{__dir__}/glibc_build223.rb")
+Package.load_package("#{__dir__}/glibc_build227.rb")
+Package.load_package("#{__dir__}/glibc_build232.rb")
+Package.load_package("#{__dir__}/glibc_build233.rb")
+Package.load_package("#{__dir__}/glibc_build235.rb")
+Package.load_package("#{__dir__}/glibc_build237.rb")
 
 class Glibc < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
@@ -38,5 +38,9 @@ class Glibc < Package
     version Glibc_build237.version
     compatibility Glibc_build237.compatibility
     depends_on 'glibc_lib237'
+  else
+    version LIBC_VERSION
+    compatibility 'x86_64 aarch64 armv7l'
+    depends_on 'glibc_fallthrough'
   end
 end

@@ -1,22 +1,22 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_pathspec < Python
+class Py3_pathspec < Pip
   description 'Path specification is a utility library for gitignore style pattern matching of file paths.'
   homepage 'https://github.com/cpburnz/python-pathspec'
-  @_ver = '0.11.2'
-  version "#{@_ver}-py3.12"
+  version "0.12.1-#{CREW_PY_VER}"
   license 'MPL-2.0'
   compatibility 'all'
-  source_url 'https://github.com/cpburnz/python-pathspec.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3169f3b108464982d40355877bb4768a19d46abd1ca6a311bd011a382dad01f4',
-     armv7l: '3169f3b108464982d40355877bb4768a19d46abd1ca6a311bd011a382dad01f4',
-       i686: 'aac2999e6ff5d2f56cd41f2e9e2e58120b737cbddcf178d8b962fb4fcd6046c2',
-     x86_64: 'c1695e925dac96f847a4cb243c516d9df27135a927a3927217828fd4a6b4a341'
+    aarch64: '818cdce154415247f9526dada829889bcccd14100637f710b0d6a5d869a54532',
+     armv7l: '818cdce154415247f9526dada829889bcccd14100637f710b0d6a5d869a54532',
+       i686: 'ad543a8163973d6c06612f0ebe4cb8b4da6d3092281c776dff09dec4069d99d7',
+     x86_64: '6f25c201e9387795091ba84ad0eb98d5929811f7cca8da31b520a0a937d8c023'
   })
 
   depends_on 'python3' => :build
+
+  no_source_build
 end

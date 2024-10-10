@@ -3,21 +3,21 @@ require 'package'
 class Openjdk17 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
-  version '17.0.11'
+  version '17.0.12'
   license 'GPL-2'
   compatibility 'all'
   # Visit https://www.azul.com/downloads/?version=java-17-lts&package=jdk#zulu to download the binaries.
   source_url({
-    aarch64: 'https://cdn.azul.com/zulu-embedded/bin/zulu17.50.19-ca-jdk17.0.11-c2-linux_aarch32hf.tar.gz',
-     armv7l: 'https://cdn.azul.com/zulu-embedded/bin/zulu17.50.19-ca-jdk17.0.11-c2-linux_aarch32hf.tar.gz',
-       i686: 'https://cdn.azul.com/zulu/bin/zulu17.50.19-ca-jdk17.0.11-linux_i686.tar.gz',
-     x86_64: 'https://cdn.azul.com/zulu/bin/zulu17.50.19-ca-jdk17.0.11-linux_x64.tar.gz'
+    aarch64: 'https://cdn.azul.com/zulu-embedded/bin/zulu17.52.17-ca-jdk17.0.12-c2-linux_aarch32hf.tar.gz',
+     armv7l: 'https://cdn.azul.com/zulu-embedded/bin/zulu17.52.17-ca-jdk17.0.12-c2-linux_aarch32hf.tar.gz',
+       i686: 'https://cdn.azul.com/zulu/bin/zulu17.52.17-ca-jdk17.0.12-linux_i686.tar.gz',
+     x86_64: 'https://cdn.azul.com/zulu/bin/zulu17.52.17-ca-jdk17.0.12-linux_x64.tar.gz'
   })
   source_sha256({
-    aarch64: '60dcdc62928e7f0eefe815ca866adc706d94a8ad014b9620d0f753cffcd6c4d0',
-     armv7l: '60dcdc62928e7f0eefe815ca866adc706d94a8ad014b9620d0f753cffcd6c4d0',
-       i686: '6cbbae9dc7b2c1abd5a87bfd71890456080c68004bfa722c32957f6b2c307616',
-     x86_64: 'a1e8ac9ae5804b84dc07cf9d8ebe1b18247d70c92c1e0de97ea10109563f4379'
+    aarch64: '76cddae7ddf55352c8c52b658201dd6681de45d9a3379ca6692f62101cca2850',
+     armv7l: '76cddae7ddf55352c8c52b658201dd6681de45d9a3379ca6692f62101cca2850',
+       i686: 'fd4cda7f9646a455fd8f511efb9e342306f2b3e3077aaa2cdb5ccd0172ede437',
+     x86_64: '24245c8d0ce4915d86e70b288b5de9b1b4c78f10adbb0e6ba93e2910039aad19'
   })
 
   no_compile_needed

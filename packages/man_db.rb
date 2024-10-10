@@ -3,18 +3,18 @@ require 'package'
 class Man_db < Package
   description 'mandb is used to initialize or manually update index database caches that are usually maintained by man.'
   homepage 'https://man-db.nongnu.org/'
-  version '2.12.1'
+  version '2.13.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.12.1.tar.xz'
-  source_sha256 'ddee249daeb78cf92bab794ccd069cc8b575992265ea20e239e887156e880265'
+  source_url "https://download.savannah.gnu.org/releases/man-db/man-db-#{version}.tar.xz"
+  source_sha256 '82f0739f4f61aab5eb937d234de3b014e777b5538a28cbd31433c45ae09aefb9'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '007b6aa82ac63e00c9f576b570cb40cc217c3817d50355de1f414a4db199878b',
-     armv7l: '007b6aa82ac63e00c9f576b570cb40cc217c3817d50355de1f414a4db199878b',
-       i686: '8b679dfe0a15583ccb3ef19377f8fb79b27aa8ae31d9e6bb5aaa9088cd3384c8',
-     x86_64: 'e6e9d36cb3dcc908ee3f4574cda85aac6980428f2ac7e11954a4186355431a4a'
+    aarch64: '7f21547dc617f7964f81060f9228203b29eba727c47fc2d64ed952d7f3641e3b',
+     armv7l: '7f21547dc617f7964f81060f9228203b29eba727c47fc2d64ed952d7f3641e3b',
+       i686: 'a512ad68ff304bea2b22fac3eec19752ce6cf7c0563b9252299c1239bfec1cba',
+     x86_64: '882854084b75bb5646ff8f8558d0615a64554d03fd956ab250f204ce285be431'
   })
 
   no_fhs
@@ -24,7 +24,7 @@ class Man_db < Package
   depends_on 'groff' # L
   depends_on 'libpipeline' # R
   depends_on 'libseccomp' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system "for f in $(grep -lr '/usr/local' | xargs); do sed -i 's,/usr/local,#{CREW_PREFIX},g' $f; done"
@@ -38,7 +38,7 @@ class Man_db < Package
     # we can't create the user 'man'
     # the pager is not at the default location
     year2038 = ARCH == 'x86_64' ? '' : ' --disable-year2038'
-    options = CREW_OPTIONS + year2038
+    options = CREW_CONFIGURE_OPTIONS + year2038
     system "./configure #{options} \
       --disable-cache-owner \
       --disable-rpath \

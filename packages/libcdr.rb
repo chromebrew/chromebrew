@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Libcdr < Autotools
   description 'CorelDraw file format importer library for LibreOffice'
   homepage 'https://wiki.documentfoundation.org/DLP/Libraries/libcdr'
-  version '0.1.7-2'
+  version "0.1.7-#{CREW_ICU_VER}"
   license 'GPL2 LGPL2.1 MPL'
   compatibility 'all'
   source_url 'https://dev-www.libreoffice.org/src/libcdr/libcdr-0.1.7.tar.xz'
@@ -14,10 +14,10 @@ class Libcdr < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '79124696e55c0a01674829d77e7f8c9d17e688b502e94776b4a0df0e01a0f4e0',
-     armv7l: '79124696e55c0a01674829d77e7f8c9d17e688b502e94776b4a0df0e01a0f4e0',
-       i686: '0a7f893c78a6d7d964b7191215421333e7a98584296e50e5217262cb7ebeaf40',
-     x86_64: '81bea42bae37815908e4144ad8e2da2b8a07447fed3e6cbc0e6e9d768813eafd'
+    aarch64: 'f75389cc0dc595d9c126946a1869c1432f38a0aa2840e012f8af84252bfa4420',
+     armv7l: 'f75389cc0dc595d9c126946a1869c1432f38a0aa2840e012f8af84252bfa4420',
+       i686: '18458e613b393e2b896632d285dbad3f85c41c833176ee1593aebe4b31c0aaef',
+     x86_64: '27a7b288cef16935905289ba65693ef7edbcedacf66eda9cd35b67d933f562af'
   })
 
   depends_on 'boost' => :build
@@ -29,5 +29,5 @@ class Libcdr < Autotools
   depends_on 'lcms' # R
   depends_on 'librevenge' # R
   depends_on 'libwpg' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 end

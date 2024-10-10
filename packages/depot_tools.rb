@@ -46,7 +46,7 @@ class Depot_tools < Package
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/depot_tools", @depot_tools_env)
   end
 
-  def self.remove
+  def self.postremove
     FileUtils.rm_rf Dir.glob("#{HOME}/.config/.vpython*")
   end
 end

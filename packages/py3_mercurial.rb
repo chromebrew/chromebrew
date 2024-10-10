@@ -3,16 +3,16 @@ require 'buildsystems/pip'
 class Py3_mercurial < Pip
   description 'Mercurial is a free, distributed source control management tool. It efficiently handles projects of any size and offers an easy and intuitive interface.'
   homepage 'https://www.mercurial-scm.org/'
-  version '6.7.4'
+  version "6.8.1-#{CREW_PY_VER}"
   license 'GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c85013c1f2fea8cc5c07f6e66d73a99abe527cc7a0529b53a504d7b865cf9d29',
-     armv7l: 'c85013c1f2fea8cc5c07f6e66d73a99abe527cc7a0529b53a504d7b865cf9d29',
-     x86_64: 'c408b753a4a7b271ec69d971494bcca92f30b53425fbb12ebc7b758569f908ee'
+    aarch64: '3876f682d184e078c3ff43640de7045632732e9010f81701cba0ee96a6a7b95a',
+     armv7l: '3876f682d184e078c3ff43640de7045632732e9010f81701cba0ee96a6a7b95a',
+     x86_64: '7f7765912cb56b023e67797acea04da63b5f09509fd9a6ad3ed92a3343fc4b06'
   })
 
   no_source_build

@@ -25,7 +25,7 @@ class Ticker < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} || true" # Configure will fail
+    system "./configure #{CREW_CONFIGURE_OPTIONS} || true" # Configure will fail
     system 'make'
   end
 

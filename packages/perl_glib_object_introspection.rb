@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_glib_object_introspection < PERL
   description 'Dynamically create Perl language bindings'
   homepage 'https://metacpan.org/pod/Glib::Object::Introspection'
-  version '0.051-perl5.40'
+  version "0.051-#{CREW_PERL_VER}"
   license 'GPL PerlArtistic'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.051.tar.gz'

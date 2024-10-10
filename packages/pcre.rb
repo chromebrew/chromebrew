@@ -22,7 +22,7 @@ class Pcre < Package
   depends_on 'readline' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
       --with-pic \
       --enable-unicode-properties \

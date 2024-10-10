@@ -55,7 +55,7 @@ ctl.!default {
 _EOF_'
       system './git_prepare.sh'
       if ARCH == 'i686'
-        system "CFLAGS='-fuse-ld=lld -msse2' ./configure #{CREW_OPTIONS} \
+        system "CFLAGS='-fuse-ld=lld -msse2' ./configure #{CREW_CONFIGURE_OPTIONS} \
           --disable-alsa-plugin \
           --disable-webrtc-apm \
           --enable-sse42 \
@@ -63,7 +63,7 @@ _EOF_'
           --enable-avx2
           --enable-fma"
       else
-        system "CFLAGS='-fuse-ld=lld' ./configure #{CREW_OPTIONS} \
+        system "CFLAGS='-fuse-ld=lld' ./configure #{CREW_CONFIGURE_OPTIONS} \
           --disable-alsa-plugin \
           --disable-webrtc-apm \
           --enable-sse42 \

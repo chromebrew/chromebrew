@@ -19,7 +19,7 @@ class Encodings < Package
   depends_on 'mkfontscale'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
     system "sed -e 's|^\(encodings_DATA = $(DATA_FILES)\).*|\1|' -i Makefile" # Found in xbps-src
     system 'make'
   end

@@ -5,7 +5,7 @@ class Miniconda3 < Package
   homepage 'https://conda.io/miniconda.html'
   version '4.5.11'
   license 'BSD-3'
-  compatibility 'i686,x86_64'
+  compatibility 'i686 x86_64'
   source_url 'https://raw.githubusercontent.com/conda/conda/4.5.11/README.rst'
   source_sha256 '9a5d4e87325a5015bfc00167a0eb41d53e1e7a7f47f2078e50f5fb7ab3082b11'
   binary_compression 'tar.xz'

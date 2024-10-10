@@ -21,7 +21,7 @@ class Hplip < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libusb' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system "curl -Ls -o config.guess 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'"
@@ -34,7 +34,7 @@ class Hplip < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-network-build"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-network-build"
     system 'make'
   end
 

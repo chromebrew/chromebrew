@@ -108,9 +108,8 @@
 /usr/local/lib/libpspell.so
 /usr/local/lib/libpspell.so.15
 /usr/local/lib/libpspell.so.15.3.1
-/usr/local/share/info/aspell-dev.info.gz
-/usr/local/share/info/aspell.info.gz
-/usr/local/share/info/dir.gz
+/usr/local/share/info/aspell-dev.info.zst
+/usr/local/share/info/aspell.info.zst
 /usr/local/share/locale/ast/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/be/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/ca/LC_MESSAGES/aspell.mo
@@ -125,9 +124,11 @@
 /usr/local/share/locale/fur/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/ga/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/hr/LC_MESSAGES/aspell.mo
+/usr/local/share/locale/hu/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/id/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/it/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/ja/LC_MESSAGES/aspell.mo
+/usr/local/share/locale/ka/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/mn/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/ms/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/nl/LC_MESSAGES/aspell.mo
@@ -139,6 +140,7 @@
 /usr/local/share/locale/rw/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/sk/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/sl/LC_MESSAGES/aspell.mo
+/usr/local/share/locale/sq/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/sr/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/sv/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/tg/LC_MESSAGES/aspell.mo
@@ -146,9 +148,9 @@
 /usr/local/share/locale/vi/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/wa/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/aspell.mo
-/usr/local/share/man/man1/aspell-import.1.gz
-/usr/local/share/man/man1/aspell.1.gz
-/usr/local/share/man/man1/prezip-bin.1.gz
-/usr/local/share/man/man1/pspell-config.1.gz
-/usr/local/share/man/man1/run-with-aspell.1.gz
-/usr/local/share/man/man1/word-list-compress.1.gz
+/usr/local/share/man/man1/aspell-import.1.zst
+/usr/local/share/man/man1/aspell.1.zst
+/usr/local/share/man/man1/prezip-bin.1.zst
+/usr/local/share/man/man1/pspell-config.1.zst
+/usr/local/share/man/man1/run-with-aspell.1.zst
+/usr/local/share/man/man1/word-list-compress.1.zst

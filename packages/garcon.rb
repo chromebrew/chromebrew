@@ -20,7 +20,7 @@ class Garcon < Package
   depends_on 'libxfce4ui'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-static --enable-gtk2 --enable-libxfce4ui"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-static --enable-gtk2 --enable-libxfce4ui"
     system "make -j#{CREW_NPROC}"
   end
 

@@ -34,12 +34,12 @@ class Libgdiplus < Package
   depends_on 'libdeflate' # R
   depends_on 'pango' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --with-libexif \
       --with-libtiff \
       --with-jpeg \

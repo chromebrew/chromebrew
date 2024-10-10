@@ -27,5 +27,5 @@ class Gnuastro < Autotools
   depends_on 'libtiff'
   depends_on 'wcslib'
   depends_on 'xzutils'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
 end

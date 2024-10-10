@@ -24,7 +24,7 @@ class Tk < Package
   depends_on 'libxft' # R
   depends_on 'libxss' # R
   depends_on 'tcl' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_lto
 
@@ -32,7 +32,7 @@ class Tk < Package
     FileUtils.chdir('unix') do
       @bit64 = ARCH == 'x86_64' ? 'enable' : 'disable'
       system "./configure \
-          #{CREW_OPTIONS} \
+          #{CREW_CONFIGURE_OPTIONS} \
           --with-tcl=#{CREW_LIB_PREFIX} \
           --enable-threads \
           --#{@bit64}-64bit"

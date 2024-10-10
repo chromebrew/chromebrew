@@ -1,23 +1,23 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_sqlalchemy < Python
+class Py3_sqlalchemy < Pip
   description 'SQLalchemy is a database toolkit for Python.'
   homepage 'https://sqlalchemy.org'
-  @_ver = '2.0.21'
-  version "#{@_ver}-py3.12"
+  version "2.0.35-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/sqlalchemy/sqlalchemy.git'
-  git_hashtag "rel_#{@_ver.gsub('.', '_')}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c534589d8b157fcf9ea4b9e271b4b84308a1c030738e2c2990a150a19079015f',
-     armv7l: 'c534589d8b157fcf9ea4b9e271b4b84308a1c030738e2c2990a150a19079015f',
-       i686: 'a2a0947a8e18772bcc0c68caf51ff8d0c4f2105b36164146b2fdc5bc20282736',
-     x86_64: '1b9a83282c33ec27d911cbff1df78c84cfe5e2bffb55e6b51b51ed880906c233'
+    aarch64: 'f1547b68ece2a929a825c383f2e181796ba361388cacb1e27f066ba6d18861ee',
+     armv7l: 'f1547b68ece2a929a825c383f2e181796ba361388cacb1e27f066ba6d18861ee',
+       i686: '8f989eba8b1a4a25e95329d06917e5f56278e11efb9401cf01d84fd4190c16c0',
+     x86_64: 'cb15094b65bb608515e981a4c80e07cf1081cfdf7fb81c22a182b8c923293fc7'
   })
 
   depends_on 'python3' => :build
   depends_on 'glibc' # R
+
+  no_source_build
 end

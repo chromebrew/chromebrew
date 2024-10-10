@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Distcc < Autotools
   description 'Distributed compilation service for C, C++ and Objective-C'
   homepage 'https://github.com/distcc/distcc'
-  version '3.4-b83dd2e-py3.12'
+  version "3.4-b83dd2e-#{CREW_PY_VER}"
   license 'GPL'
   compatibility 'all'
   source_url 'https://github.com/distcc/distcc.git'
@@ -31,7 +31,7 @@ class Distcc < Autotools
   depends_on 'nss_mdns' # R
   depends_on 'popt' # R
   depends_on 'python3' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   print_source_bashrc
 
