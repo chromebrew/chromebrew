@@ -13,9 +13,9 @@ class Linuxheaders < Package
   case CREW_KERNEL_VERSION
   when '3.8'
 
-  binary_sha256({
-       i686: '362ab05c4f6903793560fffd33abf79e5194fb72d3d38ec1648a93c56ebf91e8'
-  })
+    binary_sha256({
+         i686: '362ab05c4f6903793560fffd33abf79e5194fb72d3d38ec1648a93c56ebf91e8'
+    })
   when '4.14'
     binary_sha256({
       aarch64: 'b45bd05d2bfcdd2c0c18c02af9fdddd4008256cfd76a70681d4ae426cd2126f3',
@@ -36,11 +36,11 @@ class Linuxheaders < Package
     })
   when '5.10'
 
-  binary_sha256({
-    aarch64: '23b6f70dad19663d42a1bb8707e66eb1b35c4934ef051577701397b4708e8cff',
-     armv7l: '23b6f70dad19663d42a1bb8707e66eb1b35c4934ef051577701397b4708e8cff',
-     x86_64: '797e7a8369f613b50b049b2352f82d5842a2c9ae766d6d5b1165b90a528ac139'
-  })
+    binary_sha256({
+      aarch64: '23b6f70dad19663d42a1bb8707e66eb1b35c4934ef051577701397b4708e8cff',
+       armv7l: '23b6f70dad19663d42a1bb8707e66eb1b35c4934ef051577701397b4708e8cff',
+       x86_64: '797e7a8369f613b50b049b2352f82d5842a2c9ae766d6d5b1165b90a528ac139'
+    })
   when '5.15'
     binary_sha256({
       aarch64: 'f777a2fa6f124a808f32dc3dea4d71d939bd6b1237d6eff6bd61e53a21d60707',

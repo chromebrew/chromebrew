@@ -20,16 +20,16 @@ class Gcc_lib < Package
   case @gcc_libc_version
   when '2.23'
 
-  binary_sha256({
-       i686: '4f82296584a31339ea3d6212403cd844cab0e2c150878239c04211112be80181'
-  })
+    binary_sha256({
+         i686: '4f82296584a31339ea3d6212403cd844cab0e2c150878239c04211112be80181'
+    })
   when '2.27', '2.32', '2.33', '2.35'
 
-  binary_sha256({
-    aarch64: '6ebddcef4b4ad7f7baf54c9f1e4912906ca36424d39e9ef3cda40466c8028b36',
-     armv7l: '6ebddcef4b4ad7f7baf54c9f1e4912906ca36424d39e9ef3cda40466c8028b36',
-     x86_64: 'c14b82e8240bc5db1a6634fc33d9405386be19af182f6364e7a318bc9f2714f8'
-  })
+    binary_sha256({
+      aarch64: '6ebddcef4b4ad7f7baf54c9f1e4912906ca36424d39e9ef3cda40466c8028b36',
+       armv7l: '6ebddcef4b4ad7f7baf54c9f1e4912906ca36424d39e9ef3cda40466c8028b36',
+       x86_64: 'c14b82e8240bc5db1a6634fc33d9405386be19af182f6364e7a318bc9f2714f8'
+    })
   when '2.37'
     binary_sha256({
       aarch64: '98ff61c1fd0d398658b08eaf84141deaa7a6d7b2f0fde5081c583234c0b70448',

@@ -10,8 +10,7 @@ class Py3_zcmds < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-  })
+  binary_sha256({})
 
   no_source_build
 end

@@ -18,9 +18,9 @@ class Pipewire < Meson
 
   if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('3.9')
 
-  binary_sha256({
-       i686: '0dbeda58c4e1db7a180ebfb2b7bc3057cc6966927f4d5ee543953b734dfc4510'
-  })
+    binary_sha256({
+         i686: '0dbeda58c4e1db7a180ebfb2b7bc3057cc6966927f4d5ee543953b734dfc4510'
+    })
   elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
     binary_sha256({
       aarch64: '237ad8299b16e6d294a6561a4959efb47fc72ee66d06f51a3863f55dbdedcf78',
@@ -29,11 +29,11 @@ class Pipewire < Meson
     })
   else
 
-  binary_sha256({
-    aarch64: '4e9cc1614f9e40efb98b6650a38b7decf46a88315e901ecd88f8e76b98ac7368',
-     armv7l: '4e9cc1614f9e40efb98b6650a38b7decf46a88315e901ecd88f8e76b98ac7368',
-     x86_64: '21e43aa1fc9038ef0824779ce3090c2d563981cdaecdbb3d82eb59c348cd478a'
-  })
+    binary_sha256({
+      aarch64: '4e9cc1614f9e40efb98b6650a38b7decf46a88315e901ecd88f8e76b98ac7368',
+       armv7l: '4e9cc1614f9e40efb98b6650a38b7decf46a88315e901ecd88f8e76b98ac7368',
+       x86_64: '21e43aa1fc9038ef0824779ce3090c2d563981cdaecdbb3d82eb59c348cd478a'
+    })
   end
 
   depends_on 'alsa_lib' # R

@@ -9,6 +9,5 @@ class Py3_tomli_w < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-  })
+  binary_sha256({})
 end
