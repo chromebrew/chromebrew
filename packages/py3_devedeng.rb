@@ -11,8 +11,8 @@ class Py3_devedeng < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '115ead1f1ccd90f97a42d51fb7d32ecb64570323f8ed454142139306509b691f',
-     armv7l: '115ead1f1ccd90f97a42d51fb7d32ecb64570323f8ed454142139306509b691f',
+    aarch64: '955b01867d1571a9bbff2f197c50de5aaa475e610a403066a4124568eb2d41c4',
+     armv7l: '955b01867d1571a9bbff2f197c50de5aaa475e610a403066a4124568eb2d41c4',
      x86_64: 'f5b0e921aca08f0c46b02ff95e5fca125c015be55025148ca5fddc692b7ed6cb'
   })
 

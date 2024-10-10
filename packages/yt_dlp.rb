@@ -14,7 +14,7 @@ class Yt_dlp < Python
   binary_sha256({
     aarch64: '88d16c94433eebc091c1ff59aceb6e538efacdcc9328e1744e31a56bb2aa3156',
      armv7l: '88d16c94433eebc091c1ff59aceb6e538efacdcc9328e1744e31a56bb2aa3156',
-       i686: 'dfeeb747f3e48d3c9043dbcb04e5766c7c75e21a382b657dffd95188bb774c74',
+       i686: '578247d398de210015c9f0085b0ebcd9784e6d66a3858f62e76efbef2de75b71',
      x86_64: '2e8e2cbdeb7e557e08e17ecde8e605f2d3e787f043995d4dcfd42ddb5dcccdc9'
   })
 

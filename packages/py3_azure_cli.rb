@@ -12,7 +12,7 @@ class Py3_azure_cli < Pip
   binary_sha256({
     aarch64: 'f8ac5343745a085289abfa93cb18da98b6cd98157ffba22390bb3fefae55556c',
      armv7l: 'f8ac5343745a085289abfa93cb18da98b6cd98157ffba22390bb3fefae55556c',
-       i686: 'a483f54003b50262129bbf123d3f734d85c6f22087fc982a7c071bf2d254eeed',
+       i686: 'e2c794480a446bbb57d0f19e120fce78af9a71199f2ea9daa466ec3edab7ef8c',
      x86_64: '15b8cf2a60ce9cbe38cdcdfc7bc0aa0539869680a698e1ef7461ce362357ca94'
   })
 

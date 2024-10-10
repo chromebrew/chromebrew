@@ -140,7 +140,7 @@ def self.check_build_uploads(architectures_to_check = nil, name = nil)
       builds_needed.delete(arch)
       puts "#{arch_specific_url} found!" if CREW_VERBOSE
     end
-    puts "builds_needed for #{name} is now #{builds_needed}"
+    puts "builds_needed for #{name} is now #{builds_needed}" if CREW_VERBOSE
   end
   return builds_needed
 end
