@@ -41,7 +41,7 @@ else
   HOME ||= File.join(CREW_PREFIX, Dir.home)
 end
 
-CREW_ESSENTIAL_PACKAGES ||= %w[gcc_lib glibc gmp lz4 ruby xzutils zlib zstd]
+CREW_ESSENTIAL_PACKAGES ||= %w[curl gcc_lib glibc gmp lz4 ruby xzutils zlib zstd]
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 
