@@ -3,11 +3,11 @@ require 'package'
 class Postgresql < Package
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org'
-  version "17.0-#{CREW_ICU_VER}"
+  version "16.4-#{CREW_ICU_VER}"
   license 'PostgreSQL and GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://ftp.postgresql.org/pub/source/v#{version.split('-').first}/postgresql-#{version.split('-').first}.tar.bz2"
-  source_sha256 '7e276131c0fdd6b62588dbad9b3bb24b8c3498d5009328dba59af16e819109de'
+  source_sha256 '971766d645aa73e93b9ef4e3be44201b4f45b5477095b049125403f9f3386d6f'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -25,8 +25,8 @@ class Postgresql < Package
   depends_on 'libcyrussasl' => :build
   depends_on 'libxml2' # R
   depends_on 'linux_pam' # R
-  depends_on 'llvm19_dev' => :build
-  depends_on 'llvm19_lib' # R
+  depends_on 'llvm18_dev' => :build
+  depends_on 'llvm18_lib' # R
   depends_on 'lz4' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R
