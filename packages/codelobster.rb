@@ -15,7 +15,7 @@ class Codelobster < Package
   depends_on 'sommelier'
 
   binary_sha256({
-    x86_64: 'bb07382b79b0c7a2a11fb35f2364e21497623362f8ef1a21fac0dbda15a5b6d8'
+     x86_64: 'bb07382b79b0c7a2a11fb35f2364e21497623362f8ef1a21fac0dbda15a5b6d8'
   })
 
   def self.preflight

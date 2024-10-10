@@ -12,8 +12,8 @@ class Libxi < Package
 
   binary_sha256({
     aarch64: 'faed3d1ad11fa264c71cce0d762e3941f29dd1d00620f5a45fdcc27419f54be5',
-      armv7l: 'faed3d1ad11fa264c71cce0d762e3941f29dd1d00620f5a45fdcc27419f54be5',
-      x86_64: '24bdf3f93bc7ad40eb7af639c674eaa868987661abfa1c1e0f5602a4645e4653'
+     armv7l: 'faed3d1ad11fa264c71cce0d762e3941f29dd1d00620f5a45fdcc27419f54be5',
+     x86_64: '24bdf3f93bc7ad40eb7af639c674eaa868987661abfa1c1e0f5602a4645e4653'
   })
 
   depends_on 'libx11'

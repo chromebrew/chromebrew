@@ -10,9 +10,9 @@ class Love < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-   aarch64: '772f1a95a42d7be26c944809b7dcffae5e6b63280df8c6fa0a4056bb70ebeaf8',
-    armv7l: '772f1a95a42d7be26c944809b7dcffae5e6b63280df8c6fa0a4056bb70ebeaf8',
-    x86_64: 'bc29e0b27e1de069d1612b9dab4eb62486207e7eaf94773c55e4a080e64aad1a'
+    aarch64: '772f1a95a42d7be26c944809b7dcffae5e6b63280df8c6fa0a4056bb70ebeaf8',
+     armv7l: '772f1a95a42d7be26c944809b7dcffae5e6b63280df8c6fa0a4056bb70ebeaf8',
+     x86_64: 'bc29e0b27e1de069d1612b9dab4eb62486207e7eaf94773c55e4a080e64aad1a'
   })
 
   depends_on 'freetype'

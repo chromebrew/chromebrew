@@ -12,7 +12,7 @@ class Igt_gpu_tools < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    x86_64: '72bfc16dbd9532d049a67a8a8c328b50d8f5764f6922445bfe9899129735fcd1'
+     x86_64: '72bfc16dbd9532d049a67a8a8c328b50d8f5764f6922445bfe9899129735fcd1'
   })
 
   depends_on 'libdrm'

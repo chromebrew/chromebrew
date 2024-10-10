@@ -11,9 +11,9 @@ class Libvncserver < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'e91fe2d7c70cf4683379c57ef4c4ed63807226213b69d85015da72bf3e7e0037',
     aarch64: '640218d703bebf5bfbac3095018f559890dcfcfa5eeeafd5d74b933144124316',
-     armv7l: '640218d703bebf5bfbac3095018f559890dcfcfa5eeeafd5d74b933144124316'
+     armv7l: '640218d703bebf5bfbac3095018f559890dcfcfa5eeeafd5d74b933144124316',
+     x86_64: 'e91fe2d7c70cf4683379c57ef4c4ed63807226213b69d85015da72bf3e7e0037'
   })
 
   depends_on 'ffmpeg' => :build

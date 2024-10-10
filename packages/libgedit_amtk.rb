@@ -12,8 +12,8 @@ class Libgedit_amtk < Meson
 
   binary_sha256({
     aarch64: 'e1311b5685cc0137cac447e126344664bae26c23d36ba85c28ee69c16527b572',
-      armv7l: 'e1311b5685cc0137cac447e126344664bae26c23d36ba85c28ee69c16527b572',
-      x86_64: '6bbeb30d50b1f2d254056db4fb86e6b74bb75359f7d4bba1d6142dda92f24bcb'
+     armv7l: 'e1311b5685cc0137cac447e126344664bae26c23d36ba85c28ee69c16527b572',
+     x86_64: '6bbeb30d50b1f2d254056db4fb86e6b74bb75359f7d4bba1d6142dda92f24bcb'
   })
 
   depends_on 'glibc' # R

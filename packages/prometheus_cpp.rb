@@ -11,8 +11,8 @@ class Prometheus_cpp < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    i686: '6fd409af6b2eeaf47267f459feb267f1309cac53b83eeafba27ce5165b5df162',
-    x86_64: 'c24ff7e1239a35fa7a34724905226354fc2582585bf3be6f159b2cbb53e03e44'
+       i686: '6fd409af6b2eeaf47267f459feb267f1309cac53b83eeafba27ce5165b5df162',
+     x86_64: 'c24ff7e1239a35fa7a34724905226354fc2582585bf3be6f159b2cbb53e03e44'
   })
 
   depends_on 'zstd'

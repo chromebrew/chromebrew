@@ -4,11 +4,14 @@ require 'buildsystems/pip'
 class Py3_zcmds < Pip
   description 'Cross platform(ish) productivity commands written in python'
   homepage 'https://github.com/zackees/zcmds'
-  version "1.4.100-#{CREW_PY_VER}"
+  version "1.5.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'aarch64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
+
+  binary_sha256({
+  })
 
   no_source_build
 end

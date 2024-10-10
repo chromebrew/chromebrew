@@ -9,7 +9,8 @@ class Py3_asciidoc < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_sha256({})
+  binary_sha256({
+  })
 
   depends_on 'python3'
 

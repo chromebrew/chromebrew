@@ -11,8 +11,8 @@ class Sbcl < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    i686: '0f6c5eba6d5ee12bee37436b3b61330741e92176a9f3142fa8e06269ba8665da',
-    x86_64: '20d312cf33af72624225cb49fe5fb01035619e83889a826447c5f35a14cbe399'
+       i686: '0f6c5eba6d5ee12bee37436b3b61330741e92176a9f3142fa8e06269ba8665da',
+     x86_64: '20d312cf33af72624225cb49fe5fb01035619e83889a826447c5f35a14cbe399'
   })
 
   depends_on 'clisp' => :build

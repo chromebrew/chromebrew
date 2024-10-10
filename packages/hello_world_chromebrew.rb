@@ -11,6 +11,7 @@ class Hello_world_chromebrew < Package
   binary_compression 'tar.zst'
 
   # These are needed to successfully build and check for dependencies.
+
   binary_sha256({
     aarch64: '827f9794864aa76f4c99fd31f989077f1fa65771386f73db30a7681842f8736d',
      armv7l: '827f9794864aa76f4c99fd31f989077f1fa65771386f73db30a7681842f8736d',

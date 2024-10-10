@@ -11,7 +11,7 @@ class Vuze < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    x86_64: '062957f74835d906c6788056224dda734b92e64473a4ac330afbd29041d71c74'
+     x86_64: '062957f74835d906c6788056224dda734b92e64473a4ac330afbd29041d71c74'
   })
 
   depends_on 'jdk8'

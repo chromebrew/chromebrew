@@ -14,9 +14,9 @@ class Iproute2 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     aarch64: '5f7277867d9fb2192273a7defb083dbe4dfb2dc7e0afc65049418a8c5c0bebef',
-      armv7l: '5f7277867d9fb2192273a7defb083dbe4dfb2dc7e0afc65049418a8c5c0bebef',
-      x86_64: '72308fddc001ba8a049f347337d5c26c02853695daae8042319381f272c00a3a'
+    aarch64: '5f7277867d9fb2192273a7defb083dbe4dfb2dc7e0afc65049418a8c5c0bebef',
+     armv7l: '5f7277867d9fb2192273a7defb083dbe4dfb2dc7e0afc65049418a8c5c0bebef',
+     x86_64: '72308fddc001ba8a049f347337d5c26c02853695daae8042319381f272c00a3a'
   })
 
   depends_on 'elfutils' # R

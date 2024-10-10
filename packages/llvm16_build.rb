@@ -14,7 +14,7 @@ class Llvm16_build < Package
     aarch64: 'ee0225da3164ae54a9d964b3606892b9cd0c6d37ade2096bbd64ce94eb2e586d',
      armv7l: 'ee0225da3164ae54a9d964b3606892b9cd0c6d37ade2096bbd64ce94eb2e586d',
        i686: '513668bf8310c34b0d0bfa26304a268a92904d3e6b81902f9148f69ab915ce6b',
-    x86_64: '53fbe0edeb0e5a7a9ad1767ce3bbaf00c306cf6f05960fe1e2bb0566ec61a748'
+     x86_64: '53fbe0edeb0e5a7a9ad1767ce3bbaf00c306cf6f05960fe1e2bb0566ec61a748'
   })
 
   depends_on 'ocaml' => :build

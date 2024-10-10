@@ -12,9 +12,9 @@ class Libevent < CMake
 
   binary_sha256({
     aarch64: 'd8e80ad3a816756ed0a10d2b036f756dbee87cefc8eada17a2e81184ec79343b',
-      armv7l: 'd8e80ad3a816756ed0a10d2b036f756dbee87cefc8eada17a2e81184ec79343b',
-        i686: '79aeefd04d639e1a57bd3e0acdb91196ccb5bd326f25d10d8b2b4da5b22cf8cc',
-      x86_64: '5fee31e3b068d46c7cddb56c830893ac2bedcac948f0ef2c3f655f6c5fc2b448'
+     armv7l: 'd8e80ad3a816756ed0a10d2b036f756dbee87cefc8eada17a2e81184ec79343b',
+       i686: '79aeefd04d639e1a57bd3e0acdb91196ccb5bd326f25d10d8b2b4da5b22cf8cc',
+     x86_64: '5fee31e3b068d46c7cddb56c830893ac2bedcac948f0ef2c3f655f6c5fc2b448'
   })
 
   depends_on 'glibc' # R

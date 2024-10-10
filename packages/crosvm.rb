@@ -14,7 +14,7 @@ class Crosvm < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '0292c2ccfc2261c756aeb82e48a6cac14efdf4fff2483950eacc05cd040451d4'
+     x86_64: '0292c2ccfc2261c756aeb82e48a6cac14efdf4fff2483950eacc05cd040451d4'
   })
 
   depends_on 'libcap'

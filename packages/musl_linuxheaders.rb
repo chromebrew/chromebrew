@@ -12,9 +12,10 @@ class Musl_linuxheaders < Package
 
   case CREW_KERNEL_VERSION
   when '3.8'
-    binary_sha256({
-      i686: '92c0794189e3631847293ae517b4e0a7bc41e9898433d514f46391b5807369cd'
-    })
+
+  binary_sha256({
+       i686: '92c0794189e3631847293ae517b4e0a7bc41e9898433d514f46391b5807369cd'
+  })
   when '4.14'
     binary_sha256({
      aarch64: '0673fa9ca73c10b60d4109dacc349247f98b5ea616110650a9f2917a281d780a',
@@ -22,9 +23,10 @@ class Musl_linuxheaders < Package
       x86_64: '8cb5a33d005cae9be24d2491d20b855c9561853f89f974159094bb66ef41b02f'
     })
   when '5.10'
-    binary_sha256({
-      x86_64: '4492e6a1a52b9ca39f11c9d68869761a3698c8d65bea501f57ad514298b9d182'
-    })
+
+  binary_sha256({
+     x86_64: '4492e6a1a52b9ca39f11c9d68869761a3698c8d65bea501f57ad514298b9d182'
+  })
   end
 
   no_env_options
