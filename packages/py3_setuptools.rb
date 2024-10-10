@@ -30,8 +30,6 @@ class Py3_setuptools < Python
   end
 
   def self.postremove
-    if Kernel.system('which zstd', %i[out err] => File::NULL)
-      system 'python3 -m pip uninstall setuptools -y', exception: false
-    end
+    system 'python3 -m pip uninstall setuptools -y', exception: false if Kernel.system('which zstd', %i[out err] => File::NULL)
   end
 end
