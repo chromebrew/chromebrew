@@ -12,8 +12,8 @@ class Py3_bcrypt < Pip
   binary_sha256({
     aarch64: '9a83c9a28d1c842577e5c89e96eb69bc0080f3492c4602b77275dfb3a24b2c31',
      armv7l: '9a83c9a28d1c842577e5c89e96eb69bc0080f3492c4602b77275dfb3a24b2c31',
-       i686: '3441cfda02d83fbdac8036a196cccac1d36b2c2acbfd2775a5f0b42d96271b67',
-     x86_64: '961c95392fd82b1f5f0e16d38f9b1ece5eaac22a82a0c1e25aa9c36164a54c6a'
+       i686: 'bc5509af909c37d88226ebd0d3fbe938d6d22713f34cbe6f25e1409ee6f63fe5',
+     x86_64: 'd60c1762dce34b0fbc88f8d4c2eb191ea75d091e0487f7caef6e0dbd468f588f'
   })
 
   depends_on 'python3'
