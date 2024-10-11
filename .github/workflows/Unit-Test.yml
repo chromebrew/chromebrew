@@ -136,11 +136,10 @@ jobs:
               exit 0
             fi
             docker pull --platform $PLATFORM satmandu/crewbuild:$CONTAINER
-            docker pull tonistiigi/binfmt
-            docker run --privileged --rm tonistiigi/binfmt --install all
             docker run \
               --rm \
               --platform $PLATFORM \
+              --privileged \
               -u chronos \
               -e CHANGED_PACKAGES="$CHANGED_PACKAGES" \
               -e LD_LIBRARY_PATH="/usr/local/lib$LIB_SUFFIX" \
