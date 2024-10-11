@@ -168,6 +168,8 @@ echo_out 'Set up the local package repo...'
 
 # Download the chromebrew repository.
 curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
+# Disable ruby updates until late in the install.
+sed -i -e "s/depends_on 'default_gems'/# depends_on 'default_gems'/" -e "s/depends_on 'bundled_gems'/# depends_on 'bundled_gems'/" -e "s/^  version.*$/  version '1.0'/" "${CREW_LIB_PATH}/packages/core.rb"
 
 BOOTSTRAP_PACKAGES='lz4 zlib xzutils zstd crew_mvdir ruby git ca_certificates libyaml openssl'
 
@@ -275,8 +277,6 @@ function update_device_json () {
 
 function install_ruby_gem () {
   rubymajorversion=$(ruby -e "puts RUBY_VERSION.slice(/(?:.*(?=\.))/)")
-  echo_info 'Updating RubyGems.'
-  gem update -N --system
   for gem in "$@"; do
     ruby_gem="${gem}"
     echo_intra "Installing ${ruby_gem^} gem..."
@@ -333,6 +333,11 @@ ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
+echo_info 'Updating RubyGems...'
+gem sources -u
+gem update --no-update-sources -N --system
+gem cleanup
+
 echo_info "Installing essential ruby gems...\n"
 BOOTSTRAP_GEMS='activesupport concurrent-ruby highline'
 # shellcheck disable=SC2086
@@ -388,6 +393,10 @@ else
 
   # Set mtimes of files to when the file was committed.
   git-restore-mtime -sq 2>/dev/null
+
+  # Try to efficiently update installed gems before installing the
+  # Chromebrew gem package updates.
+  crew update && yes | crew upgrade
 fi
 echo -e "${RESET}"
 

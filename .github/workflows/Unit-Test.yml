@@ -146,4 +146,4 @@ jobs:
               -e CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}" \
               -e CREW_BRANCH="${{ github.head_ref }}" \
               "satmandu/crewbuild:$CONTAINER" \
-              /usr/local/bin/bash  /usr/local/lib/crew/tests/unit_test.sh
+              /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test.sh

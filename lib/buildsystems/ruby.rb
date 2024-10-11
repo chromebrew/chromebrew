@@ -41,8 +41,13 @@ def set_vars(passed_name = nil, passed_version = nil)
   # This assumes the package class name starts with 'Ruby_' and
   # version is in the form '(gem version)-ruby-(ruby version)'.
   # For example, name 'Ruby_awesome' and version '1.0.0-ruby-3.3'.
+
+  # Update gem sources if updated more than 1 hour previously.
+  Kernel.system('gem sources -u') if ( Time.now.to_i - File.mtime(File.join(Gem.default_spec_cache_dir, 'rubygems.org%443')).utc.to_i ) > (3600)
+
   # Just use the fetcher.suggest_gems_from_name function to figure out
   # proper gem name with the appropriate dashes and underscores.
+  # require "rubygems/request"; Gem::Request.prepend(Module.new { def perform_request(req); super.tap{|rsp| p [self, req, rsp]} end })
   @gem_name = Gem::SpecFetcher.fetcher.suggest_gems_from_name(passed_name.gsub(/^ruby_/, '')).first
   @remote_gem_ver = Gem.latest_version_for(@gem_name).to_s
   @gem_ver = passed_version.split('-').first.to_s
@@ -93,7 +98,7 @@ class RUBY < Package
   end
 
   def self.install
-    gem_anyversion_installed = Kernel.system "gem search -l -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
+    gem_anyversion_installed = Kernel.system "gem search --no-update-sources -l -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
     crewlog "install: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, !@gem_latest_version_installed && gem_anyversion_installed: #{!@gem_latest_version_installed && gem_anyversion_installed}, @gem_latest_version_installed: #{@gem_latest_version_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"
     unless @install_gem
@@ -108,14 +113,14 @@ class RUBY < Package
 
       if File.file?("#{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem") && (gem_sha256 == gem_pkg_sha256sum || @just_built_gem)
         puts "Installing #{@gem_name} gem #{@gem_ver}...".orange
-        Kernel.system "gem install -N --local #{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem --conservative"
+        Kernel.system "gem install --no-update-sources -N --local #{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem --conservative"
       end
     elsif gem_anyversion_installed
       puts "Updating #{@gem_name} gem to #{@gem_ver}...".orange
-      Kernel.system "gem update -N #{@gem_name} --conservative"
+      Kernel.system "gem update --no-update-sources -N #{@gem_name} --conservative"
     else
       puts "Installing #{@gem_name} gem #{@gem_ver}...".orange
-      Kernel.system "gem install -N #{@gem_name} --conservative"
+      Kernel.system "gem install --no-update-sources -N #{@gem_name} --conservative"
     end
     @gems_needing_cleanup = Array(@gems_needing_cleanup) << @gem_name
     Kernel.system "gem contents #{@gem_name}", %i[out] => [@gem_filelist_path, 'w']
