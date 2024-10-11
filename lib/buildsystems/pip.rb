@@ -60,6 +60,7 @@ class Pip < Package
       begin
         FileUtils.install @pip_path, @destpath
       rescue Errno::ENOENT
+        puts @pip_files_lines
         abort "Problem installing #{@pip_path} to #{@destpath}".lightred
       end
     end
