@@ -135,7 +135,9 @@ jobs:
               # but otherwise do not run the i686 container if there are no packages compatible with i686.
               exit 0
             fi
-            docker pull satmandu/crewbuild:$CONTAINER
+            docker pull --platform $PLATFORM satmandu/crewbuild:$CONTAINER
+            docker pull tonistiigi/binfmt
+            docker run --privileged --rm tonistiigi/binfmt --install all
             docker run \
               --rm \
               --platform $PLATFORM \
