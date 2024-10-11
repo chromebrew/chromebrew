@@ -12,8 +12,8 @@ class Py3_twine < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aac661273ae116fb07e24c6304eea8533525b2a8fe92da4ebab0a0d704248ab1',
-     armv7l: 'aac661273ae116fb07e24c6304eea8533525b2a8fe92da4ebab0a0d704248ab1',
+    aarch64: '7630a3f553f6c9fd2701e383774f66d35accac4ce743c1dd7eaa4f30d3c1b2af',
+     armv7l: '7630a3f553f6c9fd2701e383774f66d35accac4ce743c1dd7eaa4f30d3c1b2af',
        i686: '2240d133df220b5d710bab65933bd64a4b22a00c29a7500dc601d321ffcdb076',
      x86_64: '28775f5e96a5975aa6c23d6d4f4f3723adef74b29e16c6d9f91e55bf994450b7'
   })

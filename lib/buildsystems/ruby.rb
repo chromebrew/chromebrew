@@ -43,11 +43,21 @@ def set_vars(passed_name = nil, passed_version = nil)
   # For example, name 'Ruby_awesome' and version '1.0.0-ruby-3.3'.
 
   # Update gem sources if updated more than 1 hour previously.
-  Kernel.system('gem sources -u') if ( Time.now.to_i - File.mtime(File.join(Gem.default_spec_cache_dir, 'rubygems.org%443')).utc.to_i ) > (3600)
+  ruby_gems_spec_cache_dir = File.join(Gem.default_spec_cache_dir, 'rubygems.org%443')
+  FileUtils.mkdir_p ruby_gems_spec_cache_dir
+  Kernel.system('gem sources -u') if (Time.now.to_i - File.mtime(ruby_gems_spec_cache_dir).utc.to_i) > (3600)
 
   # Just use the fetcher.suggest_gems_from_name function to figure out
   # proper gem name with the appropriate dashes and underscores.
-  # require "rubygems/request"; Gem::Request.prepend(Module.new { def perform_request(req); super.tap{|rsp| p [self, req, rsp]} end })
+  if CREW_VERBOSE
+    # Voluminous info about the gem fetcher network connection...
+    require 'rubygems/request'
+    Gem::Request.prepend(Module.new do
+      def perform_request(req)
+        super.tap { |rsp| p [self, req, rsp] }
+      end
+    end)
+  end
   @gem_name = Gem::SpecFetcher.fetcher.suggest_gems_from_name(passed_name.gsub(/^ruby_/, '')).first
   @remote_gem_ver = Gem.latest_version_for(@gem_name).to_s
   @gem_ver = passed_version.split('-').first.to_s
@@ -66,7 +76,7 @@ class RUBY < Package
     set_vars(name, version)
     puts "Examining #{@gem_name} gem...".orange
     @gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
-    @gem_latest_version_installed = Kernel.system "gem search -l -i \"^#{@gem_name}\$\" -v #{@gem_ver}", %i[out err] => File::NULL
+    @gem_latest_version_installed = Kernel.system "gem search  --no-update-sources -l -i \"^#{@gem_name}\$\" -v #{@gem_ver}", %i[out err] => File::NULL
     crewlog "preflight: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, @gem_latest_version_installed: #{@gem_latest_version_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
     # Create a filelist from the gem if the latest gem version is
     # installed but the filelist doesn't exist.
