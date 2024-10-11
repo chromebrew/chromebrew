@@ -51,7 +51,13 @@ class Pip < Package
     # Make sure package version of pip package is installed before
     # getting a filelist, since prior installs may have installed a
     # different version of this pip package.
-    `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install -vvv '#{@py_pkg}==#{@py_pkg_version}'` unless `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install --no-color '#{@py_pkg}==#{@py_pkg_version}'`.include?('Requirement already satisfied')
+    unless `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install --no-color '#{@py_pkg}==#{@py_pkg_version}'`.include?('Requirement already satisfied')
+      # As per https://stackoverflow.com/a/71119218
+      pip_site_packages_folder = `python3 -c "import sysconfig; print(sysconfig.get_paths()['purelib'])"`.chomp
+      Kernel.system 'python3 -m pip install trash-cli'
+      Kernel.system "trash-put #{pip_site_packages_folder}/#{@py_pkg}*"
+      Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install -vvv --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_version}'"
+    end
     @pip_files = `python3 -s -m pip --no-color show -f #{@py_pkg}`.chomp
     # Error out if the pip install has no files.
     unless @pip_files.include?('Files:')
