@@ -51,9 +51,13 @@ class Pip < Package
     # Make sure package version of pip package is installed before
     # getting a filelist, since prior installs may have installed a
     # different version of this pip package.
-    abort "Install of #{@py_pkg}==#{@py_pkg_version} is failing".lightred unless `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install --no-color '#{@py_pkg}==#{@py_pkg_version}'`.include?('Requirement already satisfied')
+    `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install -vvv '#{@py_pkg}==#{@py_pkg_version}'` unless `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install --no-color '#{@py_pkg}==#{@py_pkg_version}'`.include?('Requirement already satisfied')
     @pip_files = `python3 -s -m pip --no-color show -f #{@py_pkg}`.chomp
-    abort "pip install of #{@py_pkg} failed." if @pip_files.empty?
+    # Error out if the pip install has no files.
+    unless @pip_files.include?('Files:')
+      puts @pip_files
+      abort "pip install of #{@py_pkg} failed.".lightred
+    end
     @pip_files_base = @pip_files[/(?<=Location: ).*/, 0].concat('/')
     @pip_files_lines = @pip_files[/(?<=Files:\n)[\W|\w]*/, 0].split
     @pip_files_lines.each do |pip_file|
