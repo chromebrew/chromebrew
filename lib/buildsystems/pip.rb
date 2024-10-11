@@ -16,7 +16,7 @@ class Pip < Package
     pip_cache_dir = `pip cache dir`.chomp
 
     puts 'Checking for pip updates'.orange if CREW_VERBOSE
-    system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -s -m pip install -U pip | grep -v 'Requirement already satisfied'", exception: false
+    puts 'Updating pip...'.orange unless `python3 -s -m pip install --no-color -U pip`.include?('Requirement already satisfied')
     @py_pkg = name.gsub('py3_', '')
     @py_pkg_chromebrew_version = version.gsub(/-py3\.\d{2}/, '').gsub(/-icu\d{2}\.\d/, '')
     puts "Checking for #{@py_pkg} python dependencies...".orange if CREW_VERBOSE
@@ -43,12 +43,16 @@ class Pip < Package
     system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python -s -m pip install --ignore-installed -U \"#{@py_pkg}==#{@py_pkg_chromebrew_version}\" | grep -v 'Requirement already satisfied'", exception: false
 
     if @source_url == 'SKIP'
-      system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 pip wheel -w #{pip_cache_dir} #{@py_pkg}"
+      system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 pip wheel -w #{pip_cache_dir} #{@py_pkg}==#{@py_pkg_version}"
     else
       system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 pip wheel -w #{pip_cache_dir} git+#{source_url}"
     end
 
-    @pip_files = `python3 -s -m pip show -f #{@py_pkg}`.chomp
+    # Make sure package version of pip package is installed before
+    # getting a filelist, since prior installs may have installed a
+    # different version of this pip package.
+    abort "Install of #{@py_pkg}==#{@py_pkg_version} is failing".lightred unless `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install --no-color '#{@py_pkg}==#{@py_pkg_version}'`.include?('Requirement already satisfied')
+    @pip_files = `python3 -s -m pip --no-color show -f #{@py_pkg}`.chomp
     abort "pip install of #{@py_pkg} failed." if @pip_files.empty?
     @pip_files_base = @pip_files[/(?<=Location: ).*/, 0].concat('/')
     @pip_files_lines = @pip_files[/(?<=Files:\n)[\W|\w]*/, 0].split
@@ -61,7 +65,7 @@ class Pip < Package
         FileUtils.install @pip_path, @destpath
       rescue Errno::ENOENT
         puts @pip_files_lines
-        abort "Problem installing #{@pip_path} to #{@destpath}".lightred
+        abort "Problem installing #{@pip_path} from #{@py_pkg}==#{@py_pkg_version} to #{@destpath}".lightred
       end
     end
     @pip_install_extras&.call
