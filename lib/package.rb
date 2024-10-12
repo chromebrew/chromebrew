@@ -92,7 +92,8 @@ class Package
     elsif File.directory? config_object
       identifier = 'directory'
     else
-      abort "Cannot identify #{config_object}.".lightred
+      puts "Cannot identify #{config_object}.".lightred
+      return
     end
     if agree_default_no("Would you like to remove the config #{identifier}: #{config_object}")
       FileUtils.rm_rf config_object
