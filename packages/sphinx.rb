@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Sphinx < Pip
   description 'Sphinx is a tool that makes it easy to create intelligent and beautiful documentation.'
   homepage 'https://www.sphinx-doc.org/'
-  version "8.1.0-#{CREW_PY_VER}"
+  version "8.1.1-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1b68b9d458a34d026e70d858078096e1405e6e2b0b3d62325e52cd341447676f',
-     armv7l: '1b68b9d458a34d026e70d858078096e1405e6e2b0b3d62325e52cd341447676f',
-       i686: 'bda1c669b30ea83f93d2827d83859b66f178a2f5f01b6e6183e5ccf0dac2ed57',
-     x86_64: 'c8d3d886e69d68274e54112e1c4f76abb419fc94688cce33f4f8a200362c8c52'
+    aarch64: '4ef7e2827df80311cd3e12e46566a5811d241d1880704e2801ec96233b052f27',
+     armv7l: '4ef7e2827df80311cd3e12e46566a5811d241d1880704e2801ec96233b052f27',
+       i686: '592f2fb67298de19629243483ddbdcc150fc24023b50ceb75e257ccd454ce742',
+     x86_64: 'cd0d75d42209f11c214cc1bc556be7dd3e083533021706a31673269ceb91e00b'
   })
 
   depends_on 'py3_jinja2'
