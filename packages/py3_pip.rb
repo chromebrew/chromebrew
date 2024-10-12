@@ -17,7 +17,7 @@ class Py3_pip < Python
      x86_64: 'd7c3e28add47fe06b2ea82b020016a272de67f3fc02de361844d8be207e22bc1'
   })
 
-  depends_on 'python3', '< 3.13.0'
+  depends_on 'python3'
   conflicts_ok
 
   def self.postinstall
