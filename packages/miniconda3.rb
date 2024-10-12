@@ -11,8 +11,8 @@ class Miniconda3 < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    i686: 'f42040d6e439e545bf80a372bd277e0e12370a995425b50cdfdc1fe0fb9dc491',
-    x86_64: '18f8b5c8e75dc03a441358616eb17c9000425d720df45cb446bbbfe7f84c94f9'
+       i686: 'f42040d6e439e545bf80a372bd277e0e12370a995425b50cdfdc1fe0fb9dc491',
+     x86_64: '18f8b5c8e75dc03a441358616eb17c9000425d720df45cb446bbbfe7f84c94f9'
   })
 
   def self.install

@@ -17,7 +17,7 @@ class Tesseract < CMake
   })
 
   depends_on 'acl' => :build
-  depends_on 'asciidoc' => :build
+  depends_on 'py3_asciidoc' => :build
   depends_on 'attr' => :build
   depends_on 'brotli' => :build
   depends_on 'bzip2' => :build

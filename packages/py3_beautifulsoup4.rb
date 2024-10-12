@@ -10,9 +10,9 @@ class Py3_beautifulsoup4 < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4e1aee2ef9e84278ca1366115016424417579f2d1fe7a6d0aa5ef20a0a6e1e0d',
-     armv7l: '4e1aee2ef9e84278ca1366115016424417579f2d1fe7a6d0aa5ef20a0a6e1e0d',
-       i686: 'fa3b4bbe7269d23fb3a5078f9346e09e580903bfb11a8267e30e053d45c58c5f',
+    aarch64: 'b425aef91a969b8db3172d16c41ac3cbba1036d26b8a0b3150a58f706fa97007',
+     armv7l: 'b425aef91a969b8db3172d16c41ac3cbba1036d26b8a0b3150a58f706fa97007',
+       i686: '17bdfbbbb507e40b1a1ec70d0048faef832f308603e500995f3284bde90eddd5',
      x86_64: 'f00bf9b98cf4db31f7f77bd6df11b79e4f12d89685ce7d38e99ab5027137d8ce'
   })
 

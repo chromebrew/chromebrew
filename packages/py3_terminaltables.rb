@@ -12,10 +12,10 @@ class Py3_terminaltables < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '00bea5863b9fbe60cf85faacfe414a10f77f3be66aab93a19c124e822a5ce9c7',
-     armv7l: '00bea5863b9fbe60cf85faacfe414a10f77f3be66aab93a19c124e822a5ce9c7',
-       i686: '4019c3d5892b6beaf1510ceae4f402d6d3d765bf266f913d792a61035e59760a',
-     x86_64: 'b32fddd74cdd6d0f57650e751a296cac6411c3ca979d9914d49b56594c2f247c'
+    aarch64: 'a6667a328edc5aa49a63baaecf87748e6bda2320c6a81201fa8ebd9483588db5',
+     armv7l: 'a6667a328edc5aa49a63baaecf87748e6bda2320c6a81201fa8ebd9483588db5',
+       i686: '5739b3205848f1934a86cf891dc89d08d140819743267426b74ab2b4ee8dc5b6',
+     x86_64: '829808aba035b37708a0f6819d95a6b594dee5df28c76d603253381eb23aee17'
   })
 
   depends_on 'py3_python_dateutil'

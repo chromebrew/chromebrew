@@ -44,7 +44,7 @@ end
 
 class Package
   boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep, :git_fetchtags, :gem_compile_needed, :gnome, :is_fake, :is_musl, :is_static,
-                   :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules, :no_links, :no_lto, :no_patchelf,
+                   :no_binaries_needed, :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules, :no_links, :no_lto, :no_patchelf,
                    :no_shrink, :no_source_build, :no_strip, :no_upstream_update, :no_zstd, :patchelf, :prerelease, :print_source_bashrc, :run_tests
 
   property :description, :homepage, :version, :license, :compatibility,
@@ -65,7 +65,7 @@ class Package
                      :postremove   # Function to perform after package removal.
 
   class << self
-    attr_accessor :build_from_source, :cached_build, :in_build, :in_install, :in_upgrade, :name
+    attr_accessor :build_from_source, :cached_build, :in_build, :in_install, :in_upgrade, :missing_binaries, :name
   end
 
   def self.agree_default_no(message = nil)
@@ -92,7 +92,8 @@ class Package
     elsif File.directory? config_object
       identifier = 'directory'
     else
-      abort "Cannot identify #{config_object}.".lightred
+      puts "Cannot identify #{config_object}.".lightred
+      return
     end
     if agree_default_no("Would you like to remove the config #{identifier}: #{config_object}")
       FileUtils.rm_rf config_object
@@ -341,7 +342,7 @@ class Package
   end
 
   def self.binary?(architecture) = !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
-  def self.source?(architecture) = !(binary?(architecture) || is_fake?)
+  def self.source?(architecture) = missing_binaries ? true : !(binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
     @crew_env_options_hash = if no_env_options?

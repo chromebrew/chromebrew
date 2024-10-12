@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_trove_classifiers < Pip
   description 'Canonical source for classifiers on PyPI.'
   homepage 'https://github.com/pypa/trove-classifiers'
-  version "2024.9.12-#{CREW_PY_VER}"
+  version "2024.10.12-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f3727cc5d7c47efacee815f9d27bb2a7893df9a7dc639de3decb31b9614fb5f1',
-     armv7l: 'f3727cc5d7c47efacee815f9d27bb2a7893df9a7dc639de3decb31b9614fb5f1',
-       i686: 'f12d2f5664c9efc4d47d0c6ec97e097ce058b8f9275ee7f78a1e6a8111d79937',
-     x86_64: '05090fa04d9816b5b76b1b320c3ca1c0515a3f0f60517fc67fc7b1c871ff556d'
+    aarch64: '72f55bf7d257224d29f30ebedf6803736de21d0025a366264831e573bd51b03f',
+     armv7l: '72f55bf7d257224d29f30ebedf6803736de21d0025a366264831e573bd51b03f',
+       i686: '4f2c173e829513672fbf85389d2c499bd602c5f949153610434d7ca1dcb0b2f7',
+     x86_64: '745b76997903e68f6aa03ad87ab8fd1bc52fa5f366db04a8c90278aa7f9939c1'
   })
 
   depends_on 'python3' => :build

@@ -13,7 +13,7 @@ class Evolution_data_server < CMake
   binary_sha256({
     aarch64: '412f9158079a8854043b61b7af86f441aafd0df26c495405d27931a95d708899',
      armv7l: '412f9158079a8854043b61b7af86f441aafd0df26c495405d27931a95d708899',
-    x86_64: 'c62e7f447c0f9d84ae27b3a83b52d042e3190377d582b0cfd99fe054e6dbc445'
+     x86_64: 'c62e7f447c0f9d84ae27b3a83b52d042e3190377d582b0cfd99fe054e6dbc445'
   })
 
   depends_on 'at_spi2_core' # R

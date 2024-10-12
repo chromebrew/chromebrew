@@ -135,6 +135,7 @@ pkg_update_arr = [
   { pkg_name: 'apriconv', pkg_rename: 'apr_iconv', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'aprutil', pkg_rename: 'apr_util', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'arpscan', pkg_rename: 'arp_scan', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'asciidoc', pkg_rename: 'py3_asciidoc', pkg_deprecated: nil, comments: 'Renamed as a pip package.' },
   { pkg_name: 'aws', pkg_rename: 'aws_cli', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'aws_cli', pkg_rename: 'awscli', pkg_deprecated: nil, comments: 'Renamed to match pip package name.' },
   { pkg_name: 'btrfsprogs', pkg_rename: 'btrfs_progs', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },

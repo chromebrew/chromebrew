@@ -10,10 +10,10 @@ class Py3_hatchling < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f8f17f42cecca5f8ad2997a7650974d0bbb7c0ef14ece61038fdd86ba81a874f',
-     armv7l: 'f8f17f42cecca5f8ad2997a7650974d0bbb7c0ef14ece61038fdd86ba81a874f',
-       i686: '4670ef4d33c20d9db56f31a392b8707929011beba6786b78a6d9564f4d711bf6',
-     x86_64: 'c4f86d9377d52c97c23def6062508954bdac0f17b2c46ce0cc50fd78cebfa5b4'
+    aarch64: '92a5ea7ffbdccb3d397012d72daaed720ac166aabdb6fdba58cd104f545d0caa',
+     armv7l: '92a5ea7ffbdccb3d397012d72daaed720ac166aabdb6fdba58cd104f545d0caa',
+       i686: 'd826f26c7a3869f3ad61a146574898c51ba50de2e77a31b523c2b4ad94ab22ac',
+     x86_64: '4f3165f98cc721bb922c407477ba2ecd3b313be44f2775feb4b0c5d2921f1af0'
   })
 
   depends_on 'py3_editables'

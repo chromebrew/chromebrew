@@ -79,8 +79,8 @@
 /usr/local/lib/libOpenImageIO_Util.so.2.5
 /usr/local/lib/libOpenImageIO_Util.so.2.5.15
 /usr/local/lib/pkgconfig/OpenImageIO.pc
-/usr/local/lib/python3.12/site-packages/OpenImageIO/OpenImageIO.cpython-312-arm-linux-gnueabihf.so
-/usr/local/lib/python3.12/site-packages/OpenImageIO/__init__.py
+/usr/local/lib/python3.13/site-packages/OpenImageIO/OpenImageIO.cpython-313-arm-linux-gnueabihf.so
+/usr/local/lib/python3.13/site-packages/OpenImageIO/__init__.py
 /usr/local/share/doc/OpenImageIO/CHANGES-0.x.md
 /usr/local/share/doc/OpenImageIO/CHANGES-1.x.md
 /usr/local/share/doc/OpenImageIO/CHANGES.md

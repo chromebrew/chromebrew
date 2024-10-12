@@ -11,10 +11,10 @@ class Tdb < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a05a203afe8fb38a7b37cdae1d2cc9efe8730ec5f609f815b65f748e4313d547',
-     armv7l: 'a05a203afe8fb38a7b37cdae1d2cc9efe8730ec5f609f815b65f748e4313d547',
-       i686: '81a0c31f9c45be79081f67f0b940049e63b4e17cf17da6c7645d2f9270063aeb',
-     x86_64: '75e46c83dab2b9b741b5cc59e5a5135ab49cee6664ba3dd6998024762aeaaa29'
+    aarch64: '869c46af87e6828afb3343c472d6f44e93f9cbca3c8ddfca9674cc997b963339',
+     armv7l: '869c46af87e6828afb3343c472d6f44e93f9cbca3c8ddfca9674cc997b963339',
+       i686: 'c073e3b4552e61a1601c5038133e3c36c2c56cc740f3650ffbf1f176ab2e22c3',
+     x86_64: '19f09414803c8dac3596267d55de2324ca9c564379bb336f82ff853f53b11f4e'
   })
 
   depends_on 'docbook_xsl' => :build

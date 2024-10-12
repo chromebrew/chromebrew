@@ -11,7 +11,7 @@ class Intel_media_driver < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '415c7263be5e0743e023f3271b1d2e0823bc645678e877965fd30fc6383ea573'
+     x86_64: '415c7263be5e0743e023f3271b1d2e0823bc645678e877965fd30fc6383ea573'
   })
 
   depends_on 'gcc_lib' # R

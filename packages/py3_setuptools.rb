@@ -11,10 +11,10 @@ class Py3_setuptools < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd406b7a56fc8489151bd5a762115b2e7778329c8a6817f5c7c7a1156008dc945',
-     armv7l: 'd406b7a56fc8489151bd5a762115b2e7778329c8a6817f5c7c7a1156008dc945',
-       i686: 'e930f0d27a25bd3706e303efa235ca42346baf7c091880bfec8b379972a862fb',
-     x86_64: '741a36a2db9cb6de9a1f7fa841f63f46b3d6bc589069337f28984b69d72b4371'
+    aarch64: '6cba57a97fad9270cb46ea14be7124f6efa4507e83da8098eb684d46cec8d0b0',
+     armv7l: '6cba57a97fad9270cb46ea14be7124f6efa4507e83da8098eb684d46cec8d0b0',
+       i686: '1a2e568f03ae1665a943f7f40bc22fd58c0fbed3f27e17c007ab8a33f8aaa801',
+     x86_64: 'f7653efe47d0def2898a6366ae466bd1f06c411ba4c76a17246577d7925a8d8a'
   })
 
   depends_on 'python3'
@@ -23,11 +23,13 @@ class Py3_setuptools < Python
   conflicts_ok
 
   def self.prebuild
-    system 'python3 -m pip uninstall setuptools -y', exception: false
-    system 'python3 -m pip install -I --force-reinstall --no-deps setuptools', exception: false
+    if Kernel.system('which zstd', %i[out err] => File::NULL)
+      system 'python3 -m pip uninstall setuptools -y', exception: false
+      system 'python3 -m pip install -I --force-reinstall --no-deps setuptools', exception: false
+    end
   end
 
   def self.postremove
-    system 'python3 -m pip uninstall setuptools -y', exception: false
+    system 'python3 -m pip uninstall setuptools -y', exception: false if Kernel.system('which zstd', %i[out err] => File::NULL)
   end
 end

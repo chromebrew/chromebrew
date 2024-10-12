@@ -135,10 +135,11 @@ jobs:
               # but otherwise do not run the i686 container if there are no packages compatible with i686.
               exit 0
             fi
-            docker pull satmandu/crewbuild:$CONTAINER
+            docker pull --platform $PLATFORM satmandu/crewbuild:$CONTAINER
             docker run \
               --rm \
               --platform $PLATFORM \
+              --privileged \
               -u chronos \
               -e CHANGED_PACKAGES="$CHANGED_PACKAGES" \
               -e LD_LIBRARY_PATH="/usr/local/lib$LIB_SUFFIX" \
@@ -146,4 +147,4 @@ jobs:
               -e CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}" \
               -e CREW_BRANCH="${{ github.head_ref }}" \
               "satmandu/crewbuild:$CONTAINER" \
-              /usr/local/bin/bash  /usr/local/lib/crew/tests/unit_test.sh
+              /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test.sh

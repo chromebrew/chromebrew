@@ -13,7 +13,7 @@ class Musl_linuxheaders < Package
   case CREW_KERNEL_VERSION
   when '3.8'
     binary_sha256({
-      i686: '92c0794189e3631847293ae517b4e0a7bc41e9898433d514f46391b5807369cd'
+         i686: '92c0794189e3631847293ae517b4e0a7bc41e9898433d514f46391b5807369cd'
     })
   when '4.14'
     binary_sha256({
@@ -23,9 +23,13 @@ class Musl_linuxheaders < Package
     })
   when '5.10'
     binary_sha256({
-      x86_64: '4492e6a1a52b9ca39f11c9d68869761a3698c8d65bea501f57ad514298b9d182'
+      aarch64: '9766da037aeaede5c9e3f9ab84ba748dc8f586706669a7b07d44d2cdb5e8dc03',
+       armv7l: '9766da037aeaede5c9e3f9ab84ba748dc8f586706669a7b07d44d2cdb5e8dc03',
+       x86_64: '4492e6a1a52b9ca39f11c9d68869761a3698c8d65bea501f57ad514298b9d182'
     })
   end
+
+  depends_on 'rsync' => :build
 
   no_env_options
   no_fhs

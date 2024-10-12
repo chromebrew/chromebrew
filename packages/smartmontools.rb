@@ -13,8 +13,8 @@ class Smartmontools < Package
   binary_sha256({
     aarch64: 'b867b49bf0e9b7007fd593cec631b15b2dd8e7bccb8948cb1786de5522e8b56c',
      armv7l: 'b867b49bf0e9b7007fd593cec631b15b2dd8e7bccb8948cb1786de5522e8b56c',
-    i686: '3110b88c1b8e1f48076b44f8fe9d5ede7e49d68fed0c690a106dd75f01640200',
-  x86_64: 'fa71dd17b09bbb6fc3e0acf345c1bd499592c415842a7f16d22e388d87c185aa'
+       i686: '3110b88c1b8e1f48076b44f8fe9d5ede7e49d68fed0c690a106dd75f01640200',
+     x86_64: 'fa71dd17b09bbb6fc3e0acf345c1bd499592c415842a7f16d22e388d87c185aa'
   })
 
   depends_on 'gpgme'

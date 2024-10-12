@@ -20,10 +20,12 @@ class Libssp < Package
 
   case @gcc_libc_version
   when '2.23'
+
     binary_sha256({
          i686: '482ada83ade66f12de9370a91e3b48bde523248fa870d4729d4644b2115c8e04'
     })
   when '2.27', '2.32', '2.33', '2.35'
+
     binary_sha256({
       aarch64: 'ed9b5e88ce0beb9862ee9ed4d75751ee7bf198bd5cb1916aa4508e57dd760b41',
        armv7l: 'ed9b5e88ce0beb9862ee9ed4d75751ee7bf198bd5cb1916aa4508e57dd760b41',

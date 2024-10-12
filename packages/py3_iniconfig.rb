@@ -10,10 +10,10 @@ class Py3_iniconfig < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '290ea50b7012af7efddc9e0f57de0a443c7fe5bf109c89c3c5e98cb64488d262',
-     armv7l: '290ea50b7012af7efddc9e0f57de0a443c7fe5bf109c89c3c5e98cb64488d262',
-       i686: '42bea6e117d27111c609ce7a8201c6de638e0c94388f24c956e6f73b4a117cc1',
-     x86_64: 'ee7dc4de2a2899571a5bd4f63dfb9aac906e90129f7afc9edb5234d95c1d4162'
+    aarch64: '26a72c86edc3d1d7b3592869e409e52746dc5bdb0865903ec29a80c7a916f1f4',
+     armv7l: '26a72c86edc3d1d7b3592869e409e52746dc5bdb0865903ec29a80c7a916f1f4',
+       i686: '75840b6dc6229d9e0cae915b6061d4b57d1e55af48aa254684a0bc16ec83b5f7',
+     x86_64: 'affe2856094244e00505c11fc03a28d7090bd6a1199a6461713e2bb5e4fc59b8'
   })
 
   depends_on 'python3' => :build

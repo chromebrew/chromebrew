@@ -11,8 +11,8 @@ class Nethack4 < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    i686: '6d350da249e839266caf16d1f1c67ea39bdf504eb078cdad727aad08581aecfa',
-    x86_64: 'f433701d17fb8ac9c1d6ab57f3038ae27e3fe3999ea00e821f296647f622ec99'
+       i686: '6d350da249e839266caf16d1f1c67ea39bdf504eb078cdad727aad08581aecfa',
+     x86_64: 'f433701d17fb8ac9c1d6ab57f3038ae27e3fe3999ea00e821f296647f622ec99'
   })
 
   def self.build

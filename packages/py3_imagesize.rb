@@ -10,10 +10,10 @@ class Py3_imagesize < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3c6e1280739d45d927f0a101bd379eb4f3d466d561d3a625be2bf62546ebcb70',
-     armv7l: '3c6e1280739d45d927f0a101bd379eb4f3d466d561d3a625be2bf62546ebcb70',
-       i686: 'dfeeb2a03ffbc9845080e88e40be71448bc6b12c636cbd246e520fdad6e7ab05',
-     x86_64: 'f6838782b48725e7ecc2baa1b8835f248e26e84e798fd194d0a7e15d75c1d315'
+    aarch64: '496b7868dcafd439f2be6c27e1a350b548c0dd3f64cdee6b54271583b7c1e752',
+     armv7l: '496b7868dcafd439f2be6c27e1a350b548c0dd3f64cdee6b54271583b7c1e752',
+       i686: 'ebbee91dd8289110f28efc3aea74574246c64fcc9d9e6a777b3f1dfaa04113ea',
+     x86_64: 'dff67e0990826aaf6fa95348508d8290a67b3d3ad2156ca37b1c427c6d72643f'
   })
 
   depends_on 'python3' => :build

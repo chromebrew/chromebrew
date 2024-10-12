@@ -19,7 +19,7 @@ class Nftables < Autotools
      x86_64: '64193fb122b88b0aa0c66fa65ac20c9e10aaafb55b40f459b204b08c785b4b19'
   })
 
-  depends_on 'asciidoc' => :build
+  depends_on 'py3_asciidoc' => :build
   depends_on 'glibc' # R
   depends_on 'jansson' # R
   depends_on 'libmnl' # R

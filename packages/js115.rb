@@ -27,7 +27,7 @@ class Js115 < Package
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libnotify' => :build
-  depends_on 'llvm18_dev' => :build
+  depends_on 'llvm' => :build
   depends_on 'ncurses' # R
   depends_on 'nss'
   depends_on 'nss' # R

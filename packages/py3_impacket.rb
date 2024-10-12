@@ -10,13 +10,14 @@ class Py3_impacket < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '934f48a9f70caa18993c8c76447e1d73cdf4f985fa4e4ee68569c5eaf4b648bc',
-     armv7l: '934f48a9f70caa18993c8c76447e1d73cdf4f985fa4e4ee68569c5eaf4b648bc',
-       i686: 'c04bebbfe77b9f36d322a89a5000e7e169e332d4b05921607fa2d31b43b21077',
-     x86_64: '7c046d13fb35a460a96a142b1da980c2bdf0892d1e09b06af02bdbff5e7975d4'
+    aarch64: '2c1bbc2d3813eff21b4217614ca98606234e123dc930f52a05425d4ddf7ee253',
+     armv7l: '2c1bbc2d3813eff21b4217614ca98606234e123dc930f52a05425d4ddf7ee253',
+       i686: '93f8bbc137ffd9a26cfa9f694de720f0007b82084cd9b8c945cc743992f9be8c',
+     x86_64: 'ad274a4893be58b67d62438d2c02f77adb928f48e8e099e15e9b21f732a10bf0'
   })
 
   depends_on 'py3_pycryptodomex'
+  depends_on 'py3_cryptography'
   depends_on 'py3_flask'
   depends_on 'py3_pyasn1'
   depends_on 'py3_pyopenssl'
@@ -24,6 +25,7 @@ class Py3_impacket < Pip
   depends_on 'py3_ldap3'
   depends_on 'py3_ldapdomaindump'
   depends_on 'python3' => :build
+  depends_on 'rust' => :build
 
   no_source_build
 end

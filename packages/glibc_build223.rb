@@ -14,7 +14,7 @@ class Glibc_build223 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    i686: 'f40aa662009999330bd1be1feb6c64efbe663a7a308973dc7c5a2b41c1faaf6b'
+       i686: 'f40aa662009999330bd1be1feb6c64efbe663a7a308973dc7c5a2b41c1faaf6b'
   })
 
   depends_on 'gawk' => :build

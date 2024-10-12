@@ -12,9 +12,9 @@ class Rlottie < Package
 
   binary_sha256({
     aarch64: 'd41beeacb713a50355e002ce77a58344a9d4fca4d6dee45fce370657733e5088',
-      armv7l: 'd41beeacb713a50355e002ce77a58344a9d4fca4d6dee45fce370657733e5088',
-        i686: '64d0f691c23362e42c6a1c547ff44e1f0de100b4a6cb366fb744cf4bcc7dcbcc',
-      x86_64: 'bd04ab18b3fa491ecb1358e9fabc980a266859c3d867d62a2d327649ee1d4d33'
+     armv7l: 'd41beeacb713a50355e002ce77a58344a9d4fca4d6dee45fce370657733e5088',
+       i686: '64d0f691c23362e42c6a1c547ff44e1f0de100b4a6cb366fb744cf4bcc7dcbcc',
+     x86_64: 'bd04ab18b3fa491ecb1358e9fabc980a266859c3d867d62a2d327649ee1d4d33'
   })
 
   def self.build

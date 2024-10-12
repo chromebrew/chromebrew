@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_xmltodict < Pip
   description 'XMLtoDict makes working with XML feel like you are working with JSON.'
   homepage 'https://github.com/martinblech/xmltodict/'
-  version "0.13.0-#{CREW_PY_VER}"
+  version "0.14.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'eca7850b0613956a6a5913c34362c592efe1966e11e32f18c378206b5a417b82',
-     armv7l: 'eca7850b0613956a6a5913c34362c592efe1966e11e32f18c378206b5a417b82',
-       i686: 'b624046dca0a8052937809046e02f42e524170e3072a88d0dddb3dd54ca9122c',
-     x86_64: '2231c13c9babed4035caad9599bb742380fbf4379e1e7970f6c65ead2795885e'
+    aarch64: '9375a14575b8028c2c7100bf8d3569b4b51b6e9072c6a6770162d421eed567a9',
+     armv7l: '9375a14575b8028c2c7100bf8d3569b4b51b6e9072c6a6770162d421eed567a9',
+       i686: '85c5fa3717a41c62b55a113971a459c6d2f8e7deabb32974725f08edc75175e4',
+     x86_64: '734ad1f7e566e74c441aeb2d0e92b2608d1694a607ddfc2e85133aeebea4fd1f'
   })
 
   depends_on 'python3' => :build

@@ -14,10 +14,10 @@ class Tevent < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '23b98b9a9fe0742e40eac23182e333d2cc20490206a320dd3b7b3a4688f1de5d',
-     armv7l: '23b98b9a9fe0742e40eac23182e333d2cc20490206a320dd3b7b3a4688f1de5d',
-       i686: '4008ab286b57333173b5f440eeedeb2da44fa3e2fa850e5a1e7a63b309e90ac8',
-     x86_64: '9e4cfdcc1769a929148ec5a6c02100b8a5ca9ad645327c999283ae130f690449'
+    aarch64: 'eb797ce3effa14924747bc7c70aba3ff1f778bad976a3e3e75ec181d88066f78',
+     armv7l: 'eb797ce3effa14924747bc7c70aba3ff1f778bad976a3e3e75ec181d88066f78',
+       i686: 'e8ed5f70e19c964bb4763656440ddebb8e036ad862ef13288ea39695b710d9c3',
+     x86_64: '5db2c5713601b02cddcebb783fc52a38b2fb9fdd9f4621bb010b961b4a066564'
   })
 
   depends_on 'cmocka' => :build
