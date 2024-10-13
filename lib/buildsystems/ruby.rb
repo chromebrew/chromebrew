@@ -63,6 +63,7 @@ def set_vars(passed_name = nil, passed_version = nil)
   gem_test_name = gem_test.split.first
   gem_test_versions = gem_test.split[1].split(',')
   gem_test_versions.delete_if { |i| i.include?('beta') }
+  gem_test_versions.delete_if { |i| i.include?('pre') }
   gem_test_version = gem_test_versions.max
   @gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(passed_name.gsub(/^ruby_/, '')).first : gem_test_name
   @remote_gem_ver = gem_test_name.blank? ? Gem.latest_version_for(@gem_name).to_s : gem_test_version
@@ -133,7 +134,9 @@ class RUBY < Package
         Kernel.system "gem install --no-update-sources -N --local #{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem --conservative"
       end
     elsif gem_anyversion_installed
-      puts "Updating #{@gem_name} gem to #{@gem_ver}...".orange
+      installed_gem_info = [`gem list -l -e #{@gem_name}`.chomp.to_s].grep(/#{@gem_name}/)[0].delete('()').gsub('default:', '').split
+      @gem_installed_version = installed_gem_info[1]
+      puts "Updating #{@gem_name} gem to #{@gem_ver} from #{@gem_installed_version}...".orange
       Kernel.system "gem update --no-update-sources -N #{@gem_name} --conservative"
     else
       puts "Installing #{@gem_name} gem #{@gem_ver}...".orange
