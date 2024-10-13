@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 
-# create_gem_packages version 1.2 (for Chromebrew)
+# create_gem_packages version 1.3 (for Chromebrew)
 # This creates ruby gem packages based upon the default and bundled gems
-# listed at: https://stdgems.org/
+# listed at https://stdgems.org/
+# OR from gem names passed in as arguments.
 #
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo with a new branch checked out:
@@ -154,24 +155,34 @@ end
 @gems_to_add = []
 # Allow gems to be passed in as arguments to this script.
 input_array = ARGV
-@gems_to_add.push(*input_array) if input_array.length.positive?
+if input_array.length.positive?
+  puts 'Only trying to create gem packages for:'.orange
+  puts input_array.to_s.orange
+  @gems_to_add.push(*input_array)
+else
+  puts 'Checking for default gems from https://stdgems.org/default_gems.json'
+  default_gem_json = JSON.parse(HTTParty.get('https://stdgems.org/default_gems.json').body)
+  default_gems = default_gem_json['gems'].map { |i| i['gem'] }
+  default_gems.delete('win32ole')
 
-puts 'Checking for default gems from https://stdgems.org/default_gems.json'
-default_gem_json = JSON.parse(HTTParty.get('https://stdgems.org/default_gems.json').body)
-default_gems = default_gem_json['gems'].map { |i| i['gem'] }
-default_gems.delete('win32ole')
+  puts 'Checking for bundled gems from https://stdgems.org/bundled_gems.json'
+  bundled_gem_json = JSON.parse(HTTParty.get('https://stdgems.org/bundled_gems.json').body)
+  bundled_gems = bundled_gem_json['gems'].map { |i| i['gem'] }
 
-puts 'Checking for bundled gems from https://stdgems.org/bundled_gems.json'
-bundled_gem_json = JSON.parse(HTTParty.get('https://stdgems.org/bundled_gems.json').body)
-bundled_gems = bundled_gem_json['gems'].map { |i| i['gem'] }
-
-puts "Checking for updated gems via 'gem outdated'...".orange
-outdated_gems = `gem outdated`.split("\n").reject(&:empty?).map { |g| g.split.first }
-@gems_to_add.push(*default_gems)
-@gems_to_add.push(*bundled_gems)
-@gems_to_add.push(*outdated_gems)
+  puts "Checking for updated gems via 'gem outdated'...".orange
+  outdated_gems = `gem outdated`.split("\n").reject(&:empty?).map { |g| g.split.first }
+  @gems_to_add.push(*default_gems)
+  @gems_to_add.push(*bundled_gems)
+  @gems_to_add.push(*outdated_gems)
+end
 @gems_to_add.sort!
 @gems_to_add.uniq!
+if @gems_to_add.empty?
+  abort('No gems to add!'.lightblue)
+else
+  puts 'Gems_to_add:'.lightpurple
+  puts @gems_to_add.to_s.lightpurple
+end
 until @gems_to_add.empty?
   @gems_to_add.each do |p|
     if File.file?(File.join('packages/', "ruby_#{p.gsub('-', '_')}.rb"))

@@ -25,6 +25,7 @@ def require_gem(gem_name_and_require = nil, require_override = nil)
   require requires
 end
 require_gem('activesupport', 'active_support/core_ext/object/blank')
+require_gem('ptools')
 
 begin
   require 'securerandom'
@@ -193,7 +194,7 @@ def external_downloader(uri, filename = File.basename(url), verbose = false)
   #    %<output>s: Will be substitute to #{filename}
   # i686 curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
   # Only bypass this when we are using the system curl early in install.
-  @default_curl = `which curl`.chomp
+  @default_curl = File.which('curl')
   curl_cmdline = ARCH == 'i686' && @default_curl == '/usr/bin/curl' ? 'curl %<verbose>s -kL -# --retry %<retry>s %<url>s -o %<output>s' : 'curl %<verbose>s -L -# --retry %<retry>s %<url>s -o %<output>s'
 
   # use CREW_DOWNLOADER if specified, use curl by default
