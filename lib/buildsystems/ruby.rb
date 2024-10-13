@@ -1,4 +1,5 @@
 require 'color'
+require 'gem_compact_index_client'
 require 'package'
 require 'package_utils'
 
@@ -53,6 +54,11 @@ def set_vars(passed_name = nil, passed_version = nil)
       end
     end)
   end
+  if $gems.blank?
+    puts 'Populating gem information using compact index client...'.lightgreen
+    $gems ||= BasicCompactIndexClient.new.gems
+    puts 'Done populating gem information.'.lightgreen
+  end
   gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).first.blank? ? $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '').gsub('_', '-')}\\s.*$"}/).first : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).first
   gem_test_name = gem_test.split.first
   gem_test_versions = gem_test.split[1].split(',')
@@ -76,8 +82,14 @@ class RUBY < Package
     set_vars(name, version)
     puts "Examining #{@gem_name} gem...".orange
     @gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
+    puts "gem search  --no-update-sources -l -i \"^#{@gem_name}\$\" -v #{@gem_ver}"
     @gem_latest_version_installed = Kernel.system "gem search  --no-update-sources -l -i \"^#{@gem_name}\$\" -v #{@gem_ver}", %i[out err] => File::NULL
-    crewlog "preflight: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, @gem_latest_version_installed: #{@gem_latest_version_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
+    puts @gem_latest_version_installed
+    gem_anyversion_installed = Kernel.system "gem search --no-update-sources -l -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
+    puts "gem search --no-update-sources -l -i \"^#{@gem_name}\$\""
+    puts gem_anyversion_installed
+    puts "preflight: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, @gem_latest_version_installed: #{@gem_latest_version_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
+    Kernel.system ""
     # Create a filelist from the gem if the latest gem version is
     # installed but the filelist doesn't exist.
     Kernel.system "gem contents #{@gem_name}", %i[out] => [@gem_filelist_path, 'w'] if @gem_latest_version_installed && !File.file?(@gem_filelist_path)
@@ -108,8 +120,11 @@ class RUBY < Package
   end
 
   def self.install
+    puts "gem search  --no-update-sources -l -i \"^#{@gem_name}\$\" -v #{@gem_ver}"
+    @gem_latest_version_installed = Kernel.system "gem search  --no-update-sources -l -i \"^#{@gem_name}\$\" -v #{@gem_ver}", %i[out err] => File::NULL
+    puts @gem_latest_version_installed
     gem_anyversion_installed = Kernel.system "gem search --no-update-sources -l -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
-    crewlog "install: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, !@gem_latest_version_installed && gem_anyversion_installed: #{!@gem_latest_version_installed && gem_anyversion_installed}, @gem_latest_version_installed: #{@gem_latest_version_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
+    puts "install: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, !@gem_latest_version_installed && gem_anyversion_installed: #{!@gem_latest_version_installed && gem_anyversion_installed}, @gem_latest_version_installed: #{@gem_latest_version_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"
     unless @install_gem
       puts "#{@gem_name} #{@gem_ver} is already installed.".lightgreen

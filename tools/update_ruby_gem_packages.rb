@@ -52,7 +52,7 @@ relevant_gem_packages.each_with_index do |package, index|
     gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(untested_package_name).first : gem_test_name
     gem_version = gem_test_name.blank? ? Gem.latest_version_for(untested_package_name).to_s : gem_test_version
 
-    puts "[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Checking rubygems for updates to #{gem_name}...".orange
+    puts "[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Checking rubygems for updates to #{gem_name} in #{package}...".orange
     pkg_version = `sed -n -e 's/^\ \ version //p' #{package}`.chomp.delete("'").delete('"').gsub(/-\#{CREW_RUBY_VER}/, '').split('-').first
     next package if gem_version.blank?
     if Gem::Version.new(gem_version) > Gem::Version.new(pkg_version)
