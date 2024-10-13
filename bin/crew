@@ -57,6 +57,7 @@ require_relative '../lib/crewlog'
 require_relative '../lib/deb_utils'
 require_relative '../lib/docopt'
 require_relative '../lib/downloader'
+require_relative '../lib/gem_compact_index_client'
 require_relative '../lib/gnome'
 require_relative '../lib/misc_functions'
 require_relative '../lib/package'
@@ -741,6 +742,21 @@ end
 def pre_flight
   puts "Performing pre-flight checks for #{@pkg.name}...".lightblue
   abort PackageUtils.incompatible_reason(@pkg).join("\n").to_s.lightred unless PackageUtils.compatible?(@pkg)
+  if @pkg.superclass.to_s == 'RUBY'
+    puts 'Populating gem information using compact index client...'.lightgreen
+    $gems ||= BasicCompactIndexClient.new.gems
+    puts 'Done populating gem information.'.lightgreen
+    # Update gem sources if updated more than 1 day previously.
+    gem_spec_cache_dir = File.join(Gem.default_spec_cache_dir, 'rubygems.org%443')
+    FileUtils.mkdir_p gem_spec_cache_dir
+    gem_spec_cache_dir_age = (Time.now.to_i - File.mtime(gem_spec_cache_dir).utc.to_i)
+    puts "Gem source cache age: #{gem_spec_cache_dir_age}".lightgreen if CREW_VERBOSE
+    if gem_spec_cache_dir_age > (3600 * 24)
+      puts 'Updating gem source cache.'.lightgreen if CREW_VERBOSE
+      Kernel.system('gem sources -u')
+      puts 'Done updating gem source cache.'.lightgreen if CREW_VERBOSE
+    end
+  end
   @pkg.preflight
 end
 
