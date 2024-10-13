@@ -3,9 +3,8 @@
 /usr/local/lib/libmpfr.a
 /usr/local/lib/libmpfr.la
 /usr/local/lib/libmpfr.so
-/usr/local/lib/libmpfr.so.4
 /usr/local/lib/libmpfr.so.6
-/usr/local/lib/libmpfr.so.6.1.0
+/usr/local/lib/libmpfr.so.6.2.1
 /usr/local/lib/pkgconfig/mpfr.pc
 /usr/local/share/doc/mpfr/AUTHORS
 /usr/local/share/doc/mpfr/BUGS
@@ -21,4 +20,4 @@
 /usr/local/share/doc/mpfr/examples/sample.c
 /usr/local/share/doc/mpfr/examples/threads.c
 /usr/local/share/doc/mpfr/examples/version.c
-/usr/local/share/info/mpfr.info.gz
+/usr/local/share/info/mpfr.info.zst
