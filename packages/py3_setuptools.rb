@@ -1,4 +1,5 @@
 require 'buildsystems/python'
+require 'ptools'
 
 class Py3_setuptools < Python
   description 'Setuptools is the python build system from the Python Packaging Authority.'
@@ -23,7 +24,7 @@ class Py3_setuptools < Python
   conflicts_ok
 
   def self.prebuild
-    if Kernel.system('which zstd', %i[out err] => File::NULL)
+    if File.which('zstd')
       system 'python3 -m pip uninstall setuptools -y', exception: false
       system 'python3 -m pip install -I --force-reinstall --no-deps setuptools', exception: false
     end

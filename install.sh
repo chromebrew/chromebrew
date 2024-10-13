@@ -339,7 +339,7 @@ gem update --no-update-sources -N --system
 gem cleanup
 
 echo_info "Installing essential ruby gems...\n"
-BOOTSTRAP_GEMS='activesupport concurrent-ruby highline'
+BOOTSTRAP_GEMS='activesupport concurrent-ruby highline ptools'
 # shellcheck disable=SC2086
 install_ruby_gem ${BOOTSTRAP_GEMS}
 
