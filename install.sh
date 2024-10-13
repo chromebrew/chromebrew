@@ -274,13 +274,12 @@ function update_device_json () {
 }
 
 function install_ruby_gem () {
-  rubymajorversion=$(ruby -e "puts RUBY_VERSION.slice(/(?:.*(?=\.))/)")
   for gem in "$@"; do
     ruby_gem="${gem}"
     echo_intra "Installing ${ruby_gem^} gem..."
     gem install -N "${ruby_gem}" --conservative
     gem_version="$(ruby -e "gem('${ruby_gem}')" -e "puts Gem.loaded_specs['${ruby_gem}'].version.to_s")"
-    json_gem_version="${gem_version}-ruby${rubymajorversion}"
+    json_gem_version="${gem_version}-${CREW_RUBY_VER}"
     crew_gem_package="ruby_${ruby_gem//-/_}"
     update_device_json "${crew_gem_package}" "${json_gem_version}" ""
     gem_filelist_path="${CREW_META_PATH}/${crew_gem_package}.filelist"
@@ -334,10 +333,10 @@ echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 echo_info 'Updating RubyGems...'
 gem sources -u
 gem update --no-update-sources -N --system
-gem cleanup
 
 # Mark packages as installed for pre-installed gems.
 mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
+CREW_RUBY_VER="ruby$(ruby -e 'puts RUBY_VERSION.slice(/(?:.*(?=\.))/)')"
 for i in "${!installed_gems[@]}"
   do
    j="${installed_gems[$i]}"
@@ -345,7 +344,7 @@ for i in "${!installed_gems[@]}"
    crew_gem_package="ruby_${gem_package//-/_}"
    gem_version="${j#* }"
    gem contents "${gem_package}" > "${CREW_META_PATH}/${crew_gem_package}.filelist"
-   update_device_json "ruby_${gem_package//-/_}" "${gem_version}" ""
+   update_device_json "ruby_${gem_package//-/_}" "${gem_version}-${CREW_RUBY_VER}" ""
 done
 
 echo_info "Installing essential ruby gems...\n"
@@ -404,7 +403,9 @@ else
   # Set mtimes of files to when the file was committed.
   git-restore-mtime -sq 2>/dev/null
 
-  OWNER=${OWNER} REPO=${REPO} crew update
+  OWNER=${OWNER} REPO=${REPO} crew update && yes | crew upgrade
+  echo_info "Cleaning up older ruby gem versions...\n"
+  gem cleanup
 fi
 echo -e "${RESET}"
 
