@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '3.2'
+  version '3.3'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -85,6 +85,8 @@ class Core < Package
   depends_on 'ruby_gem_compiler'
   # For use in ruby prompts.
   depends_on 'ruby_highline'
+  # Adds File.which
+  depends_on 'ruby_ptools'
   # This contains the debugger config files.
   depends_on 'ruby_pry'
   # crew check -V breaks without this.
