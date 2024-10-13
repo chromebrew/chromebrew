@@ -5,6 +5,7 @@
 # tools/update_ruby_gem_packages.rb
 require_relative '../lib/color'
 require_relative '../lib/const'
+require_relative '../lib/gem_compact_index_client'
 def require_gem(gem_name_and_require = nil, require_override = nil)
   # Allow only loading gems when needed.
   return if gem_name_and_require.nil?
@@ -27,6 +28,8 @@ end
 require_gem('activesupport', 'active_support/core_ext/object/blank')
 require_gem 'concurrent-ruby'
 
+gems ||= BasicCompactIndexClient.new.gems
+
 pool = Concurrent::ThreadPoolExecutor.new(
   min_threads: 1,
   max_threads: CREW_NPROC.to_i + 1,
@@ -38,10 +41,17 @@ total_files_to_check = relevant_gem_packages.length
 numlength = total_files_to_check.to_s.length
 relevant_gem_packages.each_with_index do |package, index|
   pool.post do
-    gem_name_test = package.gsub(%r{^packages/ruby_}, '').gsub(/.rb$/, '')
-    gem_version = Gem.latest_version_for(gem_name_test).to_s
-    gem_version = Gem.latest_version_for(gem_name_test.gsub!('_', '-')).to_s if gem_version.empty?
-    gem_name = gem_name_test
+    untested_package_name = package.gsub(%r{^packages/ruby_}, '').gsub(/.rb$/, '')
+    gem_test = gems.grep(/#{"^#{untested_package_name}\\s.*$"}/).first.blank? ? gems.grep(/#{"^#{untested_package_name.gsub('_', '-')}\\s.*$"}/).first : gems.grep(/#{"^#{untested_package_name}\\s.*$"}/).first
+    gem_test_name = gem_test.split.first
+    puts "#{untested_package_name} versions for #{gem_test_name} are #{gem_test.split[1].split(',')}" if CREW_VERBOSE
+    gem_test_versions = gem_test.split[1].split(',')
+    gem_test_versions.delete_if { |i| i.include?('beta') }
+    gem_test_version = gem_test_versions.last
+    puts "#{untested_package_name} is #{gem_test_name} version #{gem_test_version}".lightpurple if CREW_VERBOSE
+    gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(untested_package_name).first : gem_test_name
+    gem_version = gem_test_name.blank? ? Gem.latest_version_for(untested_package_name).to_s : gem_test_version
+
     puts "[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Checking rubygems for updates to #{gem_name}...".orange
     pkg_version = `sed -n -e 's/^\ \ version //p' #{package}`.chomp.delete("'").delete('"').gsub(/-\#{CREW_RUBY_VER}/, '').split('-').first
     next package if gem_version.blank?

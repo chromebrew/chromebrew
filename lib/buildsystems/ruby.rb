@@ -53,9 +53,11 @@ def set_vars(passed_name = nil, passed_version = nil)
       end
     end)
   end
-  gem_test = $gems.grep(/#{name.gsub(/^ruby_/, '')}/).first
+  gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).first.blank? ? $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '').gsub('_', '-')}\\s.*$"}/).first : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).first
   gem_test_name = gem_test.split.first
-  gem_test_version = gem_test.split[1].split(',').last
+  gem_test_versions = gem_test.split[1].split(',')
+  gem_test_versions.delete_if { |i| i.include?('beta') }
+  gem_test_version = gem_test_versions.last
   @gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(passed_name.gsub(/^ruby_/, '')).first : gem_test_name
   @remote_gem_ver = gem_test_name.blank? ? Gem.latest_version_for(@gem_name).to_s : gem_test_version
   @gem_ver = passed_version.split('-').first.to_s
