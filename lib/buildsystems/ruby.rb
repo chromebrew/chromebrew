@@ -1,4 +1,5 @@
 require 'color'
+require 'gem_compact_index_client'
 require 'package'
 require 'package_utils'
 
@@ -53,9 +54,16 @@ def set_vars(passed_name = nil, passed_version = nil)
       end
     end)
   end
-  gem_test = $gems.grep(/#{name.gsub(/^ruby_/, '')}/).first
+  if $gems.blank?
+    puts 'Populating gem information using compact index client...'.lightgreen
+    $gems ||= BasicCompactIndexClient.new.gems
+    puts 'Done populating gem information.'.lightgreen
+  end
+  gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).first.blank? ? $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '').gsub('_', '-')}\\s.*$"}/).first : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).first
   gem_test_name = gem_test.split.first
-  gem_test_version = gem_test.split[1].split(',').last
+  gem_test_versions = gem_test.split[1].split(',')
+  gem_test_versions.delete_if { |i| i.include?('beta') }
+  gem_test_version = gem_test_versions.max
   @gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(passed_name.gsub(/^ruby_/, '')).first : gem_test_name
   @remote_gem_ver = gem_test_name.blank? ? Gem.latest_version_for(@gem_name).to_s : gem_test_version
   @gem_ver = passed_version.split('-').first.to_s
@@ -106,6 +114,7 @@ class RUBY < Package
   end
 
   def self.install
+    @gem_latest_version_installed = Kernel.system "gem search  --no-update-sources -l -i \"^#{@gem_name}\$\" -v #{@gem_ver}", %i[out err] => File::NULL
     gem_anyversion_installed = Kernel.system "gem search --no-update-sources -l -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
     crewlog "install: @gem_name: #{@gem_name}, @gem_ver: #{@gem_ver}, !@gem_latest_version_installed && gem_anyversion_installed: #{!@gem_latest_version_installed && gem_anyversion_installed}, @gem_latest_version_installed: #{@gem_latest_version_installed} && @remote_gem_ver.to_s: #{Gem::Version.new(@remote_gem_ver.to_s)} == Gem::Version.new(@gem_ver): #{Gem::Version.new(@gem_ver)} && File.file?(@gem_filelist_path): #{File.file?(@gem_filelist_path)}"
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"

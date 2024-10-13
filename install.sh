@@ -168,8 +168,6 @@ echo_out 'Set up the local package repo...'
 
 # Download the chromebrew repository.
 curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
-# Disable ruby updates until late in the install.
-sed -i -e "s/depends_on 'default_gems'/# depends_on 'default_gems'/" -e "s/depends_on 'bundled_gems'/# depends_on 'bundled_gems'/" -e "s/^  version.*$/  version '1.0'/" "${CREW_LIB_PATH}/packages/core.rb"
 
 BOOTSTRAP_PACKAGES='lz4 zlib xzutils zstd crew_mvdir ruby git ca_certificates libyaml openssl'
 
@@ -270,7 +268,7 @@ function extract_install () {
 
 function update_device_json () {
   cd "${CREW_CONFIG_PATH}"
-  echo_intra "Adding new information on ${1} to device.json..."
+  echo_intra "Adding new information on ${1} ${2} to device.json..."
   new_info=$(jq --arg name "$1" --arg version "$2" --arg sha256 "$3" '.installed_packages |= . + [{"name": $name, "version": $version, "sha256": $sha256}]' device.json)
   cat <<< "${new_info}" > device.json
 }
@@ -338,6 +336,18 @@ gem sources -u
 gem update --no-update-sources -N --system
 gem cleanup
 
+# Mark packages as installed for pre-installed gems.
+mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
+for i in "${!installed_gems[@]}"
+  do
+   j="${installed_gems[$i]}"
+   gem_package="${j% *}"
+   crew_gem_package="ruby_${gem_package//-/_}"
+   gem_version="${j#* }"
+   gem contents "${gem_package}" > "${CREW_META_PATH}/${crew_gem_package}.filelist"
+   update_device_json "ruby_${gem_package//-/_}" "${gem_version}" ""
+done
+
 echo_info "Installing essential ruby gems...\n"
 BOOTSTRAP_GEMS='activesupport concurrent-ruby highline ptools'
 # shellcheck disable=SC2086
@@ -394,9 +404,7 @@ else
   # Set mtimes of files to when the file was committed.
   git-restore-mtime -sq 2>/dev/null
 
-  # Try to efficiently update installed gems before installing the
-  # Chromebrew gem package updates.
-  crew update && yes | crew upgrade
+  OWNER=${OWNER} REPO=${REPO} crew update
 fi
 echo -e "${RESET}"
 
