@@ -27,12 +27,12 @@ class Autotools < Package
       system "#{@pre_configure_options} #{@mold_linker_prefix_cmd}./configure #{CREW_CONFIGURE_OPTIONS} #{@configure_options}"
     end
     system 'make'
-    @build_extras&.call
+    @configure_build_extras&.call
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    @install_extras&.call
+    @configure_install_extras&.call
   end
 
   def self.check

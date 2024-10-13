@@ -883,7 +883,7 @@ def prepare_package(destdir)
     abort 'Exiting due to above errors.'.lightred if errors
 
     # Make sure the package file has runtime dependencies added properly.
-    system "#{CREW_LIB_PATH}/tools/getrealdeps.rb --use-crew-dest-dir #{@pkg.name}", exception: true unless @pkg.no_compile_needed?
+    system "#{CREW_LIB_PATH}/tools/getrealdeps.rb --use-crew-dest-dir #{@pkg.name}", exception: true if Kernel.system('which gawk', %i[out err] => File::NULL) && Kernel.system('which upx', %i[out err] => File::NULL) && !@pkg.no_compile_needed?
     # create directory list
     # Remove CREW_PREFIX and HOME from the generated directorylist.
     crew_prefix_escaped = CREW_PREFIX.gsub('/', '\/')

@@ -59,6 +59,7 @@
 /usr/local/share/aclocal/ax_c_float_words_bigendian.m4
 /usr/local/share/aclocal/ax_c_long_long.m4
 /usr/local/share/aclocal/ax_c_referenceable_passed_va_list.m4
+/usr/local/share/aclocal/ax_c_restrict.m4
 /usr/local/share/aclocal/ax_c_var_func.m4
 /usr/local/share/aclocal/ax_cache_size.m4
 /usr/local/share/aclocal/ax_caolan_check_package.m4
@@ -583,8 +584,8 @@
 /usr/local/share/doc/autoconf-archive/COPYING
 /usr/local/share/doc/autoconf-archive/COPYING.EXCEPTION
 /usr/local/share/doc/autoconf-archive/README
-/usr/local/share/info/autoconf-archive.info-1.gz
-/usr/local/share/info/autoconf-archive.info-2.gz
-/usr/local/share/info/autoconf-archive.info-3.gz
-/usr/local/share/info/autoconf-archive.info-4.gz
-/usr/local/share/info/autoconf-archive.info.gz
+/usr/local/share/info/autoconf-archive.info-1.zst
+/usr/local/share/info/autoconf-archive.info-2.zst
+/usr/local/share/info/autoconf-archive.info-3.zst
+/usr/local/share/info/autoconf-archive.info-4.zst
+/usr/local/share/info/autoconf-archive.info.zst
