@@ -337,12 +337,14 @@ gem update --no-update-sources -N --system
 gem cleanup
 
 # Mark packages as installed for pre-installed gems.
-mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' -e 's/-/_/' | awk '{print $1, $2}')
-for i in ${!installed_gems[@]}
+mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
+for i in "${!installed_gems[@]}"
   do
    j="${installed_gems[$i]}"
    gem_package="${j% *}"
+   crew_gem_package="ruby_${gem_package//-/_}"
    gem_version="${j#* }"
+   gem contents "${gem_package}" > "${CREW_META_PATH}/${crew_gem_package}.filelist"
    update_device_json "ruby_${gem_package//-/_}" "${gem_version}" ""
 done
 
