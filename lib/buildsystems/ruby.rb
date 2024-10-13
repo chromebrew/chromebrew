@@ -42,11 +42,6 @@ def set_vars(passed_name = nil, passed_version = nil)
   # version is in the form '(gem version)-ruby-(ruby version)'.
   # For example, name 'Ruby_awesome' and version '1.0.0-ruby-3.3'.
 
-  # Update gem sources if updated more than 1 hour previously.
-  ruby_gems_spec_cache_dir = File.join(Gem.default_spec_cache_dir, 'rubygems.org%443')
-  FileUtils.mkdir_p ruby_gems_spec_cache_dir
-  Kernel.system('gem sources -u') if (Time.now.to_i - File.mtime(ruby_gems_spec_cache_dir).utc.to_i) > (3600)
-
   # Just use the fetcher.suggest_gems_from_name function to figure out
   # proper gem name with the appropriate dashes and underscores.
   if CREW_VERBOSE
@@ -58,8 +53,11 @@ def set_vars(passed_name = nil, passed_version = nil)
       end
     end)
   end
-  @gem_name = Gem::SpecFetcher.fetcher.suggest_gems_from_name(passed_name.gsub(/^ruby_/, '')).first
-  @remote_gem_ver = Gem.latest_version_for(@gem_name).to_s
+  gem_test = $gems.grep(/#{name.gsub(/^ruby_/, '')}/).first
+  gem_test_name = gem_test.split.first
+  gem_test_version = gem_test.split[1].split(',').last
+  @gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(passed_name.gsub(/^ruby_/, '')).first : gem_test_name
+  @remote_gem_ver = gem_test_name.blank? ? Gem.latest_version_for(@gem_name).to_s : gem_test_version
   @gem_ver = passed_version.split('-').first.to_s
   @gem_package_ver = @gem_ver.dup
   # Use latest gem version.
