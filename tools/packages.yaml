@@ -3535,6 +3535,11 @@ url: https://sourceforge.net/projects/jobscheduler/files/
 activity: medium
 ---
 kind: url
+name: joplin
+url: https://joplinapp.org/help/install/
+activity: medium
+---
+kind: url
 name: jp2a
 url: https://github.com/Talinx/jp2a/releases
 activity: low
