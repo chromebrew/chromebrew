@@ -341,7 +341,7 @@ class Package
     @dependencies.store(dep_name, [dep_tags, ver_check])
   end
 
-  def self.binary?(architecture) = !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
+  def self.binary?(architecture) = !@build_from_source && @binary_sha256&.key?(architecture)
   def self.source?(architecture) = missing_binaries ? true : !(binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
