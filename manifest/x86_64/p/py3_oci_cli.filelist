@@ -36,15 +36,15 @@
 /usr/local/lib/python3.13/site-packages/interactive/prompt_session.py
 /usr/local/lib/python3.13/site-packages/interactive/supported_resource_types.py
 /usr/local/lib/python3.13/site-packages/interactive/utils.py
-/usr/local/lib/python3.13/site-packages/oci_cli-3.49.1.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/oci_cli-3.49.1.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/oci_cli-3.49.1.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/oci_cli-3.49.1.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/oci_cli-3.49.1.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/oci_cli-3.49.1.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.13/site-packages/oci_cli-3.49.1.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/oci_cli-3.49.1.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/oci_cli-3.49.1.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/oci_cli-3.49.2.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/oci_cli-3.49.2.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/oci_cli-3.49.2.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/oci_cli-3.49.2.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/oci_cli-3.49.2.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/oci_cli-3.49.2.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.13/site-packages/oci_cli-3.49.2.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/oci_cli-3.49.2.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/oci_cli-3.49.2.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/__init__.py
 /usr/local/lib/python3.13/site-packages/oci_cli/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci_cli/__pycache__/cli.cpython-313.pyc
@@ -996,6 +996,7 @@
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_boot-volume.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_boot-volume_change-compartment.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_boot-volume_create-boot-volume-boot-volume-source-from-boot-volume-replica-details.1
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_boot-volume_create-boot-volume-source-from-boot-volume-backup-delta.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_boot-volume_create.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_boot-volume_delete.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_boot-volume_get.1
@@ -1036,6 +1037,7 @@
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_volume-kms-key_update.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_volume.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_volume_change-compartment.1
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_volume_create-volume-source-from-volume-backup-delta.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_volume_create-volume-volume-source-from-block-volume-replica-details.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_volume_create.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/bv_volume_delete.1
@@ -4272,6 +4274,8 @@
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/dns_zone_get.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/dns_zone_list.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/dns_zone_migrate-from-dynect.1
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/dns_zone_promote-zone-dnssec-key-version.1
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/dns_zone_stage-zone-dnssec-key-version.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/dns_zone_update.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/dts.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/dts_appliance.1
@@ -4971,6 +4975,8 @@
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/goldengate_deployment-backup_remove-lock.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/goldengate_deployment-backup_restore-deployment.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/goldengate_deployment-backup_update.1
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/goldengate_deployment-environment-collection.1
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/goldengate_deployment-environment-collection_list-deployment-environments.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/goldengate_deployment-type-collection.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/goldengate_deployment-type-collection_list-deployment-types.1
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/man/goldengate_deployment-upgrade.1
@@ -10195,6 +10201,7 @@
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/boot-volume.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/boot-volume/change-compartment.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/boot-volume/create-boot-volume-boot-volume-source-from-boot-volume-replica-details.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/boot-volume/create-boot-volume-source-from-boot-volume-backup-delta.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/boot-volume/create.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/boot-volume/delete.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/boot-volume/get.txt
@@ -10235,6 +10242,7 @@
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/volume-kms-key/update.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/volume.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/volume/change-compartment.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/volume/create-volume-source-from-volume-backup-delta.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/volume/create-volume-volume-source-from-block-volume-replica-details.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/volume/create.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/bv/volume/delete.txt
@@ -13471,6 +13479,8 @@
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/dns/zone/get.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/dns/zone/list.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/dns/zone/migrate-from-dynect.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/dns/zone/promote-zone-dnssec-key-version.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/dns/zone/stage-zone-dnssec-key-version.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/dns/zone/update.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/dts.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/dts/appliance.txt
@@ -14170,6 +14180,8 @@
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/goldengate/deployment-backup/remove-lock.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/goldengate/deployment-backup/restore-deployment.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/goldengate/deployment-backup/update.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/goldengate/deployment-environment-collection.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/goldengate/deployment-environment-collection/list-deployment-environments.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/goldengate/deployment-type-collection.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/goldengate/deployment-type-collection/list-deployment-types.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/goldengate/deployment-upgrade.txt

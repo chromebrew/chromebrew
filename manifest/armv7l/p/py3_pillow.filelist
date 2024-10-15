@@ -69,7 +69,6 @@
 /usr/local/lib/python3.13/site-packages/PIL/PngImagePlugin.py
 /usr/local/lib/python3.13/site-packages/PIL/PpmImagePlugin.py
 /usr/local/lib/python3.13/site-packages/PIL/PsdImagePlugin.py
-/usr/local/lib/python3.13/site-packages/PIL/PyAccess.py
 /usr/local/lib/python3.13/site-packages/PIL/QoiImagePlugin.py
 /usr/local/lib/python3.13/site-packages/PIL/SgiImagePlugin.py
 /usr/local/lib/python3.13/site-packages/PIL/SpiderImagePlugin.py
@@ -157,7 +156,6 @@
 /usr/local/lib/python3.13/site-packages/PIL/__pycache__/PngImagePlugin.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/PIL/__pycache__/PpmImagePlugin.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/PIL/__pycache__/PsdImagePlugin.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/PIL/__pycache__/PyAccess.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/PIL/__pycache__/QoiImagePlugin.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/PIL/__pycache__/SgiImagePlugin.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/PIL/__pycache__/SpiderImagePlugin.cpython-313.pyc
@@ -195,6 +193,7 @@
 /usr/local/lib/python3.13/site-packages/PIL/_imagingmorph.cpython-313-arm-linux-gnueabihf.so
 /usr/local/lib/python3.13/site-packages/PIL/_imagingmorph.pyi
 /usr/local/lib/python3.13/site-packages/PIL/_imagingtk.cpython-313-arm-linux-gnueabihf.so
+/usr/local/lib/python3.13/site-packages/PIL/_imagingtk.pyi
 /usr/local/lib/python3.13/site-packages/PIL/_tkinter_finder.py
 /usr/local/lib/python3.13/site-packages/PIL/_typing.py
 /usr/local/lib/python3.13/site-packages/PIL/_util.py
@@ -204,11 +203,11 @@
 /usr/local/lib/python3.13/site-packages/PIL/features.py
 /usr/local/lib/python3.13/site-packages/PIL/py.typed
 /usr/local/lib/python3.13/site-packages/PIL/report.py
-/usr/local/lib/python3.13/site-packages/pillow-10.4.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pillow-10.4.0.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/pillow-10.4.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pillow-10.4.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pillow-10.4.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pillow-10.4.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pillow-10.4.0.dist-info/top_level.txt
-/usr/local/lib/python3.13/site-packages/pillow-10.4.0.dist-info/zip-safe
+/usr/local/lib/python3.13/site-packages/pillow-11.0.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pillow-11.0.0.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/pillow-11.0.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pillow-11.0.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pillow-11.0.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pillow-11.0.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pillow-11.0.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/pillow-11.0.0.dist-info/zip-safe
