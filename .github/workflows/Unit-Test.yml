@@ -124,27 +124,26 @@ jobs:
               # Run the arm container if there are non-package changed files,
               # but otherwise do not run the arm container if there are no packages compatible with armv7l.
               exit 0
-            fi
-            if [[ -z ${NON_PKG_CHANGED_FILES} ]] && [[ $PLATFORM == 'linux/amd64' ]] && [[ -z ${x86_64_PACKAGES} ]]; then
+            elif [[ -z ${NON_PKG_CHANGED_FILES} ]] && [[ $PLATFORM == 'linux/amd64' ]] && [[ -z ${x86_64_PACKAGES} ]]; then
               # Run the x86_64 container if there are non-package changed files,
               # but otherwise do not run the x86_64 container if there are no packages compatible with x86_64.
               exit 0
-            fi
-            if [[ -z ${NON_PKG_CHANGED_FILES} ]] && [[ $PLATFORM == 'linux/386' ]] && [[ -z ${i686_PACKAGES} ]]; then
+            elif [[ -z ${NON_PKG_CHANGED_FILES} ]] && [[ $PLATFORM == 'linux/386' ]] && [[ -z ${i686_PACKAGES} ]]; then
               # Run the i686 container if there are non-package changed files,
               # but otherwise do not run the i686 container if there are no packages compatible with i686.
               exit 0
+            else
+              docker pull --platform $PLATFORM satmandu/crewbuild:$CONTAINER
+              docker run \
+                --rm \
+                --platform $PLATFORM \
+                --privileged \
+                -u chronos \
+                -e CHANGED_PACKAGES="$CHANGED_PACKAGES" \
+                -e LD_LIBRARY_PATH="/usr/local/lib$LIB_SUFFIX" \
+                -e GCONV_PATH="/usr/local/lib$LIB_SUFFIX/gconv" \
+                -e CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}" \
+                -e CREW_BRANCH="${{ github.head_ref }}" \
+                "satmandu/crewbuild:$CONTAINER" \
+                /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test.sh
             fi
-            docker pull --platform $PLATFORM satmandu/crewbuild:$CONTAINER
-            docker run \
-              --rm \
-              --platform $PLATFORM \
-              --privileged \
-              -u chronos \
-              -e CHANGED_PACKAGES="$CHANGED_PACKAGES" \
-              -e LD_LIBRARY_PATH="/usr/local/lib$LIB_SUFFIX" \
-              -e GCONV_PATH="/usr/local/lib$LIB_SUFFIX/gconv" \
-              -e CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}" \
-              -e CREW_BRANCH="${{ github.head_ref }}" \
-              "satmandu/crewbuild:$CONTAINER" \
-              /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test.sh
