@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Markdown-lint
-        uses: reviewdog/action-markdownlint@v0.25.0
+        uses: reviewdog/action-markdownlint@v0
         with:
           reporter: github-pr-review
           fail_on_error: true
