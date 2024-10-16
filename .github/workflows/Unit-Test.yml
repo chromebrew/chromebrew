@@ -34,9 +34,10 @@ jobs:
         if: ( steps.runner_check.outputs.skipnext  != 'true' )
         uses: tj-actions/changed-files@v45
         with:
-          files_ignore: packages/*.rb
-          files_ignore: manifest/*
-          files_ignore: tools/packages.yaml
+          files_ignore: |
+            packages/*.rb
+            manifest/**
+            tools/packages.yaml
       - name: Get all changed package files
         id: changed-ruby-files
         if: ( steps.runner_check.outputs.skipnext  != 'true' )
@@ -93,30 +94,30 @@ jobs:
         run: |
             case $TARGET_ARCH in
               x86_64)
-              # Export the x86_64 container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
-              if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                  echo "CONTAINER=hatch-x86_64.m129" >> $GITHUB_ENV
-              else
-                  echo "CONTAINER=nocturne-x86_64.m90" >> $GITHUB_ENV
-              fi
-              echo "PLATFORM=linux/amd64" >> $GITHUB_ENV
-              echo "LIB_SUFFIX=64" >> $GITHUB_ENV
+                # Export the x86_64 container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
+                if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                    echo "CONTAINER=hatch-x86_64.m129" >> $GITHUB_ENV
+                else
+                    echo "CONTAINER=nocturne-x86_64.m90" >> $GITHUB_ENV
+                fi
+                echo "PLATFORM=linux/amd64" >> $GITHUB_ENV
+                echo "LIB_SUFFIX=64" >> $GITHUB_ENV
               ;;
               armv7l)
-              # Export the armv7l container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
-              if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                  echo "CONTAINER=strongbad-armv7l.m129" >> $GITHUB_ENV
-              else
-                  echo "CONTAINER=fievel-armv7l.m91" >> $GITHUB_ENV
-              fi
-              echo "PLATFORM=linux/arm/v7" >> $GITHUB_ENV
-              echo "LIB_SUFFIX=" >> $GITHUB_ENV
+                # Export the armv7l container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
+                if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                    echo "CONTAINER=strongbad-armv7l.m129" >> $GITHUB_ENV
+                else
+                    echo "CONTAINER=fievel-armv7l.m91" >> $GITHUB_ENV
+                fi
+                echo "PLATFORM=linux/arm/v7" >> $GITHUB_ENV
+                echo "LIB_SUFFIX=" >> $GITHUB_ENV
               ;;
               i686)
-              # There is only one i686 container based upon M58 with glibc 2.23.
-              echo "CONTAINER=alex-i686.m58" >> $GITHUB_ENV
-              echo "PLATFORM=linux/386" >> $GITHUB_ENV
-              echo "LIB_SUFFIX=" >> $GITHUB_ENV
+                # There is only one i686 container based upon M58 with glibc 2.23.
+                echo "CONTAINER=alex-i686.m58" >> $GITHUB_ENV
+                echo "PLATFORM=linux/386" >> $GITHUB_ENV
+                echo "LIB_SUFFIX=" >> $GITHUB_ENV
               ;;
             esac
       - name: Run unit tests
