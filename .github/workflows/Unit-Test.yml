@@ -35,6 +35,8 @@ jobs:
         uses: tj-actions/changed-files@v45
         with:
           files_ignore: packages/*.rb
+          files_ignore: manifest/*
+          files_ignore: tools/packages.yaml
       - name: Get all changed package files
         id: changed-ruby-files
         if: ( steps.runner_check.outputs.skipnext  != 'true' )
@@ -120,15 +122,15 @@ jobs:
       - name: Run unit tests
         if: ( steps.runner_check.outputs.skipnext  != 'true' )
         run: |
-            if [[ -z ${NON_PKG_CHANGED_FILES} ]] && [[ $PLATFORM == 'linux/arm/v7' ]] && [[ -z ${ARMV7L_PACKAGES} ]]; then
+            if [ -n "${NON_PKG_CHANGED_FILES}" ] || ([ "$PLATFORM" == 'linux/arm/v7'  ] && [  -n "${ARMV7L_PACKAGES}" ]); then
               # Run the arm container if there are non-package changed files,
               # but otherwise do not run the arm container if there are no packages compatible with armv7l.
               exit 0
-            elif [[ -z ${NON_PKG_CHANGED_FILES} ]] && [[ $PLATFORM == 'linux/amd64' ]] && [[ -z ${x86_64_PACKAGES} ]]; then
+            elif [ -z "${NON_PKG_CHANGED_FILES}" ] || ([ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]); then
               # Run the x86_64 container if there are non-package changed files,
               # but otherwise do not run the x86_64 container if there are no packages compatible with x86_64.
               exit 0
-            elif [[ -z ${NON_PKG_CHANGED_FILES} ]] && [[ $PLATFORM == 'linux/386' ]] && [[ -z ${i686_PACKAGES} ]]; then
+            elif [ -z "${NON_PKG_CHANGED_FILES}" ] || ([ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]); then
               # Run the i686 container if there are non-package changed files,
               # but otherwise do not run the i686 container if there are no packages compatible with i686.
               exit 0
