@@ -13,7 +13,7 @@ jobs:
         with:
           ruby-version: '3.3'
       - name: Rubocop
-        uses: reviewdog/action-rubocop@v2
+        uses: reviewdog/action-rubocop@v2.19.1
         with:
           reporter: github-pr-review
           fail_on_error: true
