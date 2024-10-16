@@ -8,12 +8,12 @@ jobs:
         arch: [x86_64, armv7l, i686]
         runner: [self-hosted, ubuntu-latest]
         exclude:
-        - arch: x86_64
-          runner: self-hosted
-        - arch: i686
-          runner: self-hosted
-        - arch: armv7l
-          runner: ubuntu-latest
+          - arch: x86_64
+            runner: self-hosted
+          - arch: i686
+            runner: self-hosted
+          - arch: armv7l
+            runner: ubuntu-latest
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
