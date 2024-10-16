@@ -7,6 +7,13 @@ jobs:
       matrix:
         arch: [x86_64, armv7l, i686]
         runner: [self-hosted, ubuntu-latest]
+        exclude:
+        - arch: x86_64
+          runner: self-hosted
+        - arch: i686
+          runner: self-hosted
+        - arch: armv7l
+          runner: ubuntu-latest
     runs-on: ${{ matrix.runner }}
     steps:
       - name: Exit quickly if on wrong runner.
@@ -123,17 +130,17 @@ jobs:
       - name: Run unit tests
         if: ( steps.runner_check.outputs.skipnext  != 'true' )
         run: |
-            if [ -n "${NON_PKG_CHANGED_FILES}" ] || ([ "$PLATFORM" == 'linux/arm/v7'  ] && [  -n "${ARMV7L_PACKAGES}" ]); then
-              # Run the arm container if there are non-package changed files,
-              # but otherwise do not run the arm container if there are no packages compatible with armv7l.
+            if [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]); then
+              # Exit the arm container if there are neither non-package changed files nor armv7l compatible packages.
+              echo "Skipping armv7l container unit tests."
               exit 0
-            elif [ -z "${NON_PKG_CHANGED_FILES}" ] || ([ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]); then
-              # Run the x86_64 container if there are non-package changed files,
-              # but otherwise do not run the x86_64 container if there are no packages compatible with x86_64.
+            elif [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]); then
+              # Exit the x86_64 container if there are neither non-package changed files nor x86_64 compatible packages.
+              echo "Skipping x86_64 container unit tests."
               exit 0
-            elif [ -z "${NON_PKG_CHANGED_FILES}" ] || ([ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]); then
-              # Run the i686 container if there are non-package changed files,
-              # but otherwise do not run the i686 container if there are no packages compatible with i686.
+            elif [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]); then
+              # Exit the i686 container if there are neither non-package changed files nor i686 compatible packages.
+              echo "Skipping i686 container unit tests."
               exit 0
             else
               docker pull --platform $PLATFORM satmandu/crewbuild:$CONTAINER
