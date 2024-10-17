@@ -520,7 +520,7 @@ def download
             cachefile = ''
           end
         else
-          puts 'Cannot find cached archive. 😔 Will download.'.lightred
+          puts "Cannot find cached archive at #{cachefile}. 😔 Will download.".lightred
           cachefile = ''
         end
       end

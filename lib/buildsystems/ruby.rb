@@ -134,16 +134,16 @@ class RUBY < Package
         puts "Installing #{@gem_name} gem #{@gem_ver}...".orange
         Kernel.system "gem install --no-update-sources -N --local #{CREW_DEST_DIR}/#{@gem_name}-#{@gem_ver}-#{GEM_ARCH}.gem --conservative"
       end
-    elsif gem_anyversion_installed
+    elsif gem_anyversion_installed && !@gem_latest_version_installed
       installed_gem_info = [`gem list -l -e #{@gem_name}`.chomp.to_s].grep(/#{@gem_name}/)[0].delete('()').gsub('default:', '').split
       @gem_installed_version = installed_gem_info[1]
       puts "Updating #{@gem_name} gem: #{@gem_installed_version} 🔜 #{@gem_ver} ...".orange
       Kernel.system "gem update --no-update-sources -N #{@gem_name} --conservative"
-    else
+    elsif !@gem_latest_version_installed
       puts "Installing #{@gem_name} gem #{@gem_ver}...".orange
       Kernel.system "gem install --no-update-sources -N #{@gem_name} --conservative"
     end
-    @gems_needing_cleanup = Array(@gems_needing_cleanup) << @gem_name
+    @gems_needing_cleanup = Array(@gems_needing_cleanup) << @gem_name unless @gem_latest_version_installed
     Kernel.system "gem contents #{@gem_name}", %i[out] => [@gem_filelist_path, 'w']
     @ruby_install_extras&.call
     @install_gem = false
