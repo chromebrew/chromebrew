@@ -17,6 +17,8 @@ jobs:
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
       - name: Dump github context
         run: echo "$GITHUB_CONTEXT"
       - name: Get non-pkg changed files

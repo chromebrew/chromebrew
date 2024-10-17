@@ -7,7 +7,7 @@ Package.load_package("#{__dir__}/llvm19_build.rb")
 class Libclc < Package
   description 'Library requirements of the OpenCL C programming language'
   homepage 'https://libclc.llvm.org/'
-  version '19.1.0'
+  version '19.1.2'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm19_build.version}".orange if version != Llvm19_build.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
@@ -17,9 +17,9 @@ class Libclc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8c13728af3fd71ed5d28f268ebf499331f71123d61df625f3d24d67ccd812b7c',
-     armv7l: '8c13728af3fd71ed5d28f268ebf499331f71123d61df625f3d24d67ccd812b7c',
-     x86_64: 'f026b84d4b6169d13956b8ee4de019922343c2dfb0284c82634b8ddb7dca5c20'
+    aarch64: '1fc048ef02c1cc5ef37de481d24fd8cdd832ea97dc76238d773e3c2673f65ce9',
+     armv7l: '1fc048ef02c1cc5ef37de481d24fd8cdd832ea97dc76238d773e3c2673f65ce9',
+     x86_64: '45b0477184796b90e0f7c506c3249caf2d91ba5486543e2acaf1eaf1ae072c9e'
   })
 
   depends_on 'llvm19_dev' => :build
@@ -58,6 +58,7 @@ class Libclc < Package
                      end
     system "cmake -B builddir -G Ninja libclc \
       #{@cmake_options.gsub('-DCMAKE_LINKER_TYPE=MOLD', '')} \
+      -DCLANG_DEFAULT_LINKER=#{CREW_LINKER} \
       -DCMAKE_C_COMPILER=$(which clang) \
       -DCMAKE_C_COMPILER_LAUNCHER=sccache \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
