@@ -1,12 +1,12 @@
 ---
 name: Rubocop
 on: workflow_call
-permissions:
-  contents: read
-  pull-requests: write
 jobs:
   rubocop:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
@@ -15,6 +15,8 @@ jobs:
       - name: Rubocop
         uses: reviewdog/action-rubocop@v2
         with:
-          reporter: github-pr-review
           fail_on_error: true
           filter_mode: nofilter
+          only_changed: true
+          reporter: github-pr-check
+          reviewdog_flags: '-fail-level=any'
