@@ -14,7 +14,7 @@ class Py3_setuptools < Python
   binary_sha256({
     aarch64: '561ab0bc8baab39a873c0fc8b8157541dd4cf5d9d15a1454a8acb9d3fa01dc29',
      armv7l: '561ab0bc8baab39a873c0fc8b8157541dd4cf5d9d15a1454a8acb9d3fa01dc29',
-       i686: '1a2e568f03ae1665a943f7f40bc22fd58c0fbed3f27e17c007ab8a33f8aaa801',
+       i686: '5eabf8b8f9c6593bc825aa7e64ac436c41eaa4277bfce147250873b246441d87',
      x86_64: 'aca8532e2bb9c4858cf40894101c58fbd05f2463d472fe62d7b79668648fafcd'
   })
 
