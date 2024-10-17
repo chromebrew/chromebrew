@@ -62,9 +62,10 @@ def set_vars(passed_name = nil, passed_version = nil)
   gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).first.blank? ? $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '').gsub('_', '-')}\\s.*$"}/).first : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).first
   gem_test_name = gem_test.split.first
   gem_test_versions = gem_test.split[1].split(',')
-  gem_test_versions.delete_if { |i| i.include?('beta') }
-  gem_test_versions.delete_if { |i| i.include?('pre') }
-  gem_test_version = gem_test_versions.max
+  # Any version with a letter is considered a prerelease as per
+  # https://github.com/rubygems/rubygems/blob/b5798efd348935634d4e0e2b846d4f455582db48/lib/rubygems/version.rb#L305
+  gem_test_versions.delete_if { |i| i.match?(/[a-zA-Z]/) }
+  gem_test_version = gem_test_versions.map {|v| Gem::Version.new(v)}.max.to_s
   @gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(passed_name.gsub(/^ruby_/, '')).first : gem_test_name
   @remote_gem_ver = gem_test_name.blank? ? Gem.latest_version_for(@gem_name).to_s : gem_test_version
   @gem_ver = passed_version.split('-').first.to_s
@@ -136,7 +137,7 @@ class RUBY < Package
     elsif gem_anyversion_installed
       installed_gem_info = [`gem list -l -e #{@gem_name}`.chomp.to_s].grep(/#{@gem_name}/)[0].delete('()').gsub('default:', '').split
       @gem_installed_version = installed_gem_info[1]
-      puts "Updating #{@gem_name} gem to #{@gem_ver} from #{@gem_installed_version}...".orange
+      puts "Updating #{@gem_name} gem: #{@gem_installed_version} 🔜 #{@gem_ver} from ...".orange
       Kernel.system "gem update --no-update-sources -N #{@gem_name} --conservative"
     else
       puts "Installing #{@gem_name} gem #{@gem_ver}...".orange
