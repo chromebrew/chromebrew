@@ -137,7 +137,7 @@ class RUBY < Package
     elsif gem_anyversion_installed
       installed_gem_info = [`gem list -l -e #{@gem_name}`.chomp.to_s].grep(/#{@gem_name}/)[0].delete('()').gsub('default:', '').split
       @gem_installed_version = installed_gem_info[1]
-      puts "Updating #{@gem_name} gem: #{@gem_installed_version} 🔜 #{@gem_ver} from ...".orange
+      puts "Updating #{@gem_name} gem: #{@gem_installed_version} 🔜 #{@gem_ver} ...".orange
       Kernel.system "gem update --no-update-sources -N #{@gem_name} --conservative"
     else
       puts "Installing #{@gem_name} gem #{@gem_ver}...".orange
