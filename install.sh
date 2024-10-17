@@ -88,6 +88,12 @@ CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 : "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
 
+if [ -n "$CREW_CACHE_ENABLED" ]; then
+  echo_intra "Verifying setup of ${CREW_CACHE_DIR} since CREW_CACHE_ENABLED is set..."
+  mkdir -p "${CREW_CACHE_DIR}"
+  sudo chown -R "$(id -u)":"$(id -g)" "${CREW_CACHE_DIR}" || true
+fi
+
 # Architecture
 
 # For container usage, where we want to specify i686 arch
@@ -134,7 +140,7 @@ if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -
 fi
 
 # Force curl to use system libraries.
-function curl () {
+function curl_wrapper () {
   # Retry if download failed.
   # The --retry/--retry-all-errors parameter in curl will not work with
   # the 'curl: (7) Couldn't connect to server' error, a for loop is used
@@ -167,7 +173,7 @@ find "${CREW_LIB_PATH}" -mindepth 1 -delete
 echo_out 'Set up the local package repo...'
 
 # Download the chromebrew repository.
-curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
+curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
 BOOTSTRAP_PACKAGES='lz4 zlib xzutils zstd crew_mvdir ruby git ca_certificates libyaml openssl'
 
@@ -209,23 +215,27 @@ jq --arg key0 'architecture' --arg value0 "${ARCH}" \
 function download_check () {
     cd "$CREW_BREW_DIR"
     # Use cached file if available and caching is enabled.
-    if [ -n "$CREW_CACHE_ENABLED" ] && [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
-      mkdir -p "$CREW_CACHE_DIR"
-      sudo chown -R "$(id -u)":"$(id -g)" "$CREW_CACHE_DIR" || true
-      echo_intra "Verifying cached ${1}..."
-      echo_success "$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)"
-      case "${?}" in
-      0)
-        ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" || true
-        return
-        ;;
-      *)
-        echo_error "Verification of cached ${1} failed, downloading."
-      esac
+    if [ -n "$CREW_CACHE_ENABLED" ]; then
+      echo_intra "Looking for ${3} in ${CREW_CACHE_DIR}"
+      if [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
+        echo_info "$CREW_CACHE_DIR/${3} found."
+        echo_intra "Verifying cached ${1}..."
+        echo_success "$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)"
+        case "${?}" in
+        0)
+          ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" || true
+          return
+          ;;
+        *)
+          echo_error "Verification of cached ${1} failed, downloading."
+        esac
+      else
+        echo_intra "$CREW_CACHE_DIR/${3} not found"
+      fi
     fi
     # Download
     echo_intra "Downloading ${1}..."
-    curl '-#' -L "${2}" -o "${3}"
+    curl_wrapper '-#' -L "${2}" -o "${3}"
 
     # Verify
     echo_intra "Verifying ${1}..."
@@ -348,7 +358,7 @@ for i in "${!installed_gems[@]}"
 done
 
 echo_info "Installing essential ruby gems...\n"
-BOOTSTRAP_GEMS='activesupport concurrent-ruby highline ptools'
+BOOTSTRAP_GEMS='base64 bigdecimal connection_pool concurrent-ruby drb i18n logger minitest securerandom tzinfo activesupport highline ptools'
 # shellcheck disable=SC2086
 install_ruby_gem ${BOOTSTRAP_GEMS}
 
