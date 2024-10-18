@@ -33,8 +33,11 @@ def check_gem_binary_build_needed(gem_name = nil, gem_version = nil)
     # either a compiler or a pre-compiled binary gem.
     system "gem fetch #{gem_name} --platform=ruby --version=#{gem_version}"
     system "gem unpack #{gem_name}-#{gem_version}.gem"
-    return system "grep -q -r spec.extensions  #{gem_name}-#{gem_version}/*.gemspec", %i[out err] => File::NULL
+    system "grep -q -r spec.extensions  #{gem_name}-#{gem_version}/*.gemspec", %i[out err] => File::NULL
+    @build_needed = system "grep -q -r spec.extensions  #{gem_name}-#{gem_version}/*.gemspec", %i[out err] => File::NULL
   end
+  FileUtils.rm_rf File.join(CREW_BREW_DIR, @extract_dir)
+  return @build_needed
 end
 
 def set_vars(passed_name = nil, passed_version = nil)
@@ -105,8 +108,8 @@ class RUBY < Package
     # Handle case of the Chromebrew gem pkg not yet having been
     # installed or having a changed version number despite the gem
     # having been installed.
-    json_gem_pkg_version = pkg_info[:version].gsub!('_', '-').to_s
-    @install_gem = false if Gem::Version.new(@gem_version) <= Gem::Version.new(json_gem_pkg_version)
+    @json_gem_pkg_version = pkg_info[:version].gsub!('_', '-').to_s
+    @install_gem = false if Gem::Version.new(@gem_version) <= Gem::Version.new(@json_gem_pkg_version)
   end
 
   def self.preinstall
@@ -145,7 +148,7 @@ class RUBY < Package
         puts "Installing #{@gem_name} gem #{@gem_version}...".orange
         Kernel.system "gem install --no-update-sources -N --local #{CREW_DEST_DIR}/#{@gem_name}-#{@gem_version}-#{GEM_ARCH}.gem --conservative"
       end
-    elsif @gem_outdated
+    elsif @gem_outdated || Gem::Version.new(@gem_version) <= Gem::Version.new(@json_gem_pkg_version)
       puts "Updating #{@gem_name} gem: #{@gem_installed_version} 🔜 #{@gem_version} ...".orange
       Kernel.system "gem update --no-update-sources -N #{@gem_name} --conservative"
     elsif !@gem_latest_version_installed

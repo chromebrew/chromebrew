@@ -44,8 +44,10 @@ def check_gem_binary_build_needed(gem_name = nil, gem_version = nil)
     # either a compiler or a pre-compiled binary gem.
     system "gem fetch #{gem_name} --platform=ruby --version=#{gem_version}"
     system "gem unpack #{gem_name}-#{gem_version}.gem"
-    return system "grep -q -r spec.extensions  #{gem_name}-#{gem_version}/*.gemspec", %i[out err] => File::NULL
+    @build_needed = system "grep -q -r spec.extensions  #{gem_name}-#{gem_version}/*.gemspec", %i[out err] => File::NULL
   end
+  FileUtils.rm_rf File.join(CREW_BREW_DIR, @extract_dir)
+  return @build_needed
 end
 
 def check_gem_deps(package)
