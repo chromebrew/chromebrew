@@ -35,24 +35,17 @@ def require_gem(gem_name_and_require = nil, require_override = nil)
 end
 require_gem('httpparty')
 
-def check_gem_binary_build_needed(gem_name = nil, gem_ver = nil)
-  puts "Checking to see if gem compile for #{gem_name} #{gem_ver} is needed..."
+def check_gem_binary_build_needed(gem_name = nil, gem_version = nil)
+  puts "Checking to see if gem compile for #{gem_name} is needed..."
   @extract_dir = "#{gem_name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
   FileUtils.mkdir_p File.join(CREW_BREW_DIR, @extract_dir)
   Dir.chdir(File.join(CREW_BREW_DIR, @extract_dir)) do
     # Need to check if the gem has extensions. If it does, we need
     # either a compiler or a pre-compiled binary gem.
-    system "gem fetch #{gem_name} --platform=ruby --version=#{gem_ver}"
-    system "gem unpack #{gem_name}-#{gem_ver}.gem"
-    if system "grep -q -r \"\\\.extensions\"  #{gem_name}-#{gem_ver}/*.gemspec", %i[out err] => File::NULL
-      puts "#{gem_name} #{gem_ver} needs a binary gem build."
-      return true
-    else
-      puts "#{gem_name} #{gem_ver} does not need a binary gem build."
-      return false
-    end
+    system "gem fetch #{gem_name} --platform=ruby --version=#{gem_version}"
+    system "gem unpack #{gem_name}-#{gem_version}.gem"
+    return system "grep -q -r spec.extensions  #{gem_name}-#{gem_version}/*.gemspec", %i[out err] => File::NULL
   end
-  FileUtils.rm_rf File.join(CREW_BREW_DIR, @extract_dir)
 end
 
 def check_gem_deps(package)
