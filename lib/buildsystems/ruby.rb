@@ -99,7 +99,8 @@ class RUBY < Package
     # Handle case of the Chromebrew gem pkg not yet having been
     # installed or having a changed version number despite the gem
     # having been installed.
-    @install_gem = false if @gem_ver.to_s == pkg_info[:version].gsub!('_', '-').to_s
+    json_gem_pkg_ver = pkg_info[:version].gsub!('_', '-').to_s
+    @install_gem = false if Gem::Version.new(@gem_ver) <= Gem::Version.new(json_gem_pkg_ver)
   end
 
   def self.preinstall
@@ -137,8 +138,12 @@ class RUBY < Package
     elsif gem_anyversion_installed && !@gem_latest_version_installed
       installed_gem_info = [`gem list -l -e #{@gem_name}`.chomp.to_s].grep(/#{@gem_name}/)[0].delete('()').gsub('default:', '').split
       @gem_installed_version = installed_gem_info[1]
-      puts "Updating #{@gem_name} gem: #{@gem_installed_version} 🔜 #{@gem_ver} ...".orange
-      Kernel.system "gem update --no-update-sources -N #{@gem_name} --conservative"
+      if Gem::Version.new(@gem_ver) < Gem::Version.new(@gem_installed_version)
+        puts "Will not downgrade #{@gem_name} gem from #{@gem_installed_version} to #{@gem_ver} ...".orange
+      else
+        puts "Updating #{@gem_name} gem: #{@gem_installed_version} 🔜 #{@gem_ver} ...".orange
+        Kernel.system "gem update --no-update-sources -N #{@gem_name} --conservative"
+      end
     elsif !@gem_latest_version_installed
       puts "Installing #{@gem_name} gem #{@gem_ver}...".orange
       Kernel.system "gem install --no-update-sources -N #{@gem_name} --conservative"
