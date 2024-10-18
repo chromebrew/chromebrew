@@ -12,10 +12,10 @@
 /usr/local/share/man/man1/microsoft-edge.1.zst
 /usr/local/share/man/man1/msedge.1.zst
 /usr/local/share/menu/microsoft-edge.menu
+/usr/local/share/msedge/AdSelectionAttestationsPreloaded/ad-selection-attestations.dat
+/usr/local/share/msedge/AdSelectionAttestationsPreloaded/manifest.json
 /usr/local/share/msedge/MEIPreload/manifest.json
 /usr/local/share/msedge/MEIPreload/preloaded_data.pb
-/usr/local/share/msedge/PrivacySandboxAttestationsPreloaded/manifest.json
-/usr/local/share/msedge/PrivacySandboxAttestationsPreloaded/privacy-sandbox-attestations.dat
 /usr/local/share/msedge/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so
 /usr/local/share/msedge/WidevineCdm/manifest.json
 /usr/local/share/msedge/cron/microsoft-edge
