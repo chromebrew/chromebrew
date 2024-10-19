@@ -26,9 +26,9 @@ def pip_hard_reinstall
   # Try installing from network wheels
   # as per https://stackoverflow.com/a/71119218
   pip_site_packages_folder = `python3 -c "import sysconfig; print(sysconfig.get_paths()['purelib'])"`.chomp
-  Kernel.system "python3 -m pip install --platform #{PIP_ARCH} trash-cli"
+  Kernel.system 'python3 -m pip install trash-cli'
   Kernel.system "trash-put #{pip_site_packages_folder}/#{@py_pkg}*"
-  Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install --platform #{PIP_ARCH} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'"
+  Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'"
   get_pip_info(@py_pkg)
 end
 
@@ -65,7 +65,7 @@ class Pip < Package
       @py_pkg_deps.each do |pip_dep|
         @cleaned_py_dep = pip_dep[/[^;]+/]
         puts "——Installing: #{@cleaned_py_dep}".gray
-        system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -s -m pip install --platform #{PIP_ARCH} #{prerelease? ? '--pre' : ''} --ignore-installed -U \"#{@cleaned_py_dep}\" | grep -v 'Requirement already satisfied'", exception: false
+        system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -s -m pip install #{prerelease? ? '--pre' : ''} --ignore-installed -U \"#{@cleaned_py_dep}\" | grep -v 'Requirement already satisfied'", exception: false
       end
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
@@ -74,7 +74,7 @@ class Pip < Package
 
     # Build wheel if pip install fails, since that implies a wheel isn't available.
     puts "Trying to install #{@py_pkg}==#{@py_pkg_chromebrew_version}" if CREW_DEBUG
-    Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python3 -s -m pip install --platform #{PIP_ARCH} --no-warn-conflicts --force-reinstall #{prerelease? ? '--pre' : ''} --no-deps --ignore-installed -U #{@py_pkg}==#{@py_pkg_chromebrew_version}"
+    Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python3 -s -m pip install --no-warn-conflicts --force-reinstall #{prerelease? ? '--pre' : ''} --no-deps --ignore-installed -U #{@py_pkg}==#{@py_pkg_chromebrew_version}"
     get_pip_info(@py_pkg)
     pip_hard_reinstall unless @py_pkg_chromebrew_version == @pip_pkg_version
     if CREW_DEBUG
@@ -85,7 +85,7 @@ class Pip < Package
       puts "A wheel for #{@py_pkg}==#{@py_pkg_chromebrew_version} was found!".lightblue
     else
       puts "A wheel for #{@py_pkg}==#{@py_pkg_chromebrew_version} was unavailable, so we will build a wheel.".orange
-      Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install --platform #{PIP_ARCH} #{prerelease? ? '--pre' : ''} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'" unless prerelease?
+      Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install --platform #{PIP_ARCH} --no-deps #{prerelease? ? '--pre' : ''} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'" unless prerelease?
       # Assume all pip non-SKIP sources are git.
       @pip_wheel = if @source_url == 'SKIP'
                      `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python3 -m pip wheel #{prerelease? ? '--pre' : ''} -w #{@pip_cache_dir} --platform-tag=#{PIP_ARCH} #{@py_pkg}==#{@py_pkg_version}`[/(?<=filename=)(.*)*?(\S+)/, 0]
@@ -94,7 +94,7 @@ class Pip < Package
                    end
       puts "@pip_wheel is #{@pip_wheel}" if CREW_DEBUG
       FileUtils.install File.join(@pip_cache_dir, @pip_wheel), @pip_cache_dest_dir
-      Kernel.system "python3 -m pip install --platform #{PIP_ARCH} #{prerelease? ? '--pre' : ''} --force-reinstall --upgrade #{File.join(@pip_cache_dir, @pip_wheel)}"
+      Kernel.system "python3 -m pip install  #{prerelease? ? '--pre' : ''} --force-reinstall --upgrade #{File.join(@pip_cache_dir, @pip_wheel)}"
       # Check the just-installed package...
       if get_pip_info(@py_pkg)
         puts "Note that #{@py_pkg}==#{@pip_pkg_version} is installed, which is different from the #{@py_pkg_chromebrew_version}. Please update the package file.".lightpurple if @py_pkg_chromebrew_version != @pip_pkg_version
