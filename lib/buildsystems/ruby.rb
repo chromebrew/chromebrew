@@ -91,8 +91,9 @@ class RUBY < Package
     if installed_gem_search
       installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
       @gem_installed_version = installed_gem_info[1]
-      @gem_outdated = (Gem::Version.new(@gem_version) < Gem::Version.new(@gem_installed_version))
+      @gem_outdated = (Gem::Version.new(@gem_version) > Gem::Version.new(@gem_installed_version))
       @gem_latest_version_installed = Gem::Version.new(@gem_version) <= Gem::Version.new(@gem_installed_version)
+      crewlog "@gem_version: #{@gem_version} @gem_installed_version: #{@gem_installed_version} @gem_outdated: #{@gem_outdated} @gem_latest_version_installed: #{@gem_latest_version_installed}"
     end
 
     # Create a filelist from the gem if the latest gem version is
@@ -134,8 +135,9 @@ class RUBY < Package
     if installed_gem_search
       installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
       @gem_installed_version = installed_gem_info[1]
-      @gem_outdated = (Gem::Version.new(@gem_version) < Gem::Version.new(@gem_installed_version))
+      @gem_outdated = (Gem::Version.new(@gem_version) > Gem::Version.new(@gem_installed_version))
       @gem_latest_version_installed = Gem::Version.new(@gem_version) <= Gem::Version.new(@gem_installed_version)
+      crewlog "@gem_version: #{@gem_version} @gem_installed_version: #{@gem_installed_version} @gem_outdated: #{@gem_outdated} @gem_latest_version_installed: #{@gem_latest_version_installed}"
     end
 
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"
