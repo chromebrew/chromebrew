@@ -47,7 +47,7 @@ class Pip < Package
     Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
 
     puts 'Checking for pip updates'.orange if CREW_VERBOSE
-    puts 'Updating pip...'.orange unless `python3 -s -m pip install --platform #{PIP_ARCH} --no-color -U pip`.include?('Requirement already satisfied')
+    puts 'Updating pip...'.orange unless `python3 -s -m pip install --no-color -U pip`.include?('Requirement already satisfied')
     @py_pkg = name.gsub('py3_', '')
     @py_pkg_chromebrew_version = version.gsub(/-py3\.\d{2}/, '').gsub(/-icu\d{2}\.\d/, '')
     puts "Checking for #{@py_pkg} python dependencies...".orange if CREW_VERBOSE
