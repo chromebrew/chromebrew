@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libtirpc < Autotools
   description 'Libtirpc is a port of Suns Transport-Independent RPC library to Linux.'
   homepage 'https://sourceforge.net/projects/libtirpc/'
-  version '1.3.4'
+  version '1.3.6'
   license 'GPL-2'
   compatibility 'all'
   source_url "http://downloads.sourceforge.net/project/libtirpc/libtirpc/#{version}/libtirpc-#{version}.tar.bz2"
@@ -11,10 +11,10 @@ class Libtirpc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e50a429b7df4cacb0895f5a0c387934e0fb12ec38733019db46236bcd5c19dc8',
-     armv7l: 'e50a429b7df4cacb0895f5a0c387934e0fb12ec38733019db46236bcd5c19dc8',
-       i686: 'ab43a0bd0f003df12fce5a0fc64ba445ad040cf63832fc587e602cf40d96cfbf',
-     x86_64: '010df2b2eab43e5f646b768042d98e846553fcbfe4a5356c886d9c031921222a'
+    aarch64: '3c31698448bc7d4da06f459208026c5a014362818382893e3f59a8b498dfc2d9',
+     armv7l: '3c31698448bc7d4da06f459208026c5a014362818382893e3f59a8b498dfc2d9',
+       i686: 'f0706400548d723d0e19582ed8b66feabfd63e4eb47d20f33d79fb10cef19210',
+     x86_64: 'ed830cd8a2603ea3507efe334b22fd696b9b72f4b70b473f8c6b1e25236be281'
   })
 
   depends_on 'e2fsprogs' # R
