@@ -90,7 +90,7 @@ class Core < Package
   # This contains the debugger config files.
   depends_on 'ruby_pry'
   # Need rake for unit tests.
-  depends_on 'ruby_rake'
+  depends_on 'ruby_rake' if CREW_IN_CONTAINER
   # crew check -V breaks without this.
   depends_on 'ruby_ruby_libversion'
   # Needed for rubygem updates

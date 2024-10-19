@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.55.3' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.55.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -299,6 +299,18 @@ GEM_ARCH ||= case ARCH
                'x86-linux'
              when 'aarch64', 'armv7l'
                'armv8l-linux-eabihf'
+             end
+
+# This is found by 'python3 -c "import sysconfig; print(sysconfig.get_platform())"'
+# But it needs to be set manually until the armv7l unit tests are
+# actually being run in an armv[7,8]l only container.
+PIP_ARCH ||= case ARCH
+             when 'x86_64'
+               'linux-x86_64'
+             when 'i686'
+               'linux-i686'
+             when 'aarch64', 'armv7l'
+               'linux-armv8l'
              end
 
 PY3_SETUP_BUILD_OPTIONS          ||= "--executable=#{CREW_PREFIX}/bin/python3"
