@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_psutil < Pip
   description 'psutil is a cross-platform library for process and system monitoring in Python.'
   homepage 'https://github.com/giampaolo/psutil/'
-  version "6.0.0-#{CREW_PY_VER}"
+  version "6.1.0-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a867985e6598c7b86790c5f9365092d306db1cbd41660f51cfed10906b820107',
-     armv7l: 'a867985e6598c7b86790c5f9365092d306db1cbd41660f51cfed10906b820107',
-       i686: 'af69c098f0048389adf8201b9df84b835389dc757e22b8b4be2d28a9418889c6',
-     x86_64: '80fcbfc7bedad56b3fd55cac86da7b6e814ee5f3e59602aaaeb0ada1d3e30760'
+    aarch64: 'cd9bad21b8e6d4854fd7f766259b2c34d02daa980469d327b41e81074b2f312e',
+     armv7l: 'cd9bad21b8e6d4854fd7f766259b2c34d02daa980469d327b41e81074b2f312e',
+       i686: '9d7ac4536b6c9d11861f20c5399187af2d61f1b551e0cb740094bc9c582b028b',
+     x86_64: 'b6a41647e90cf40227f6e10234aabc037f1b2c0394846d2e15ead119c2c90a66'
   })
 
   depends_on 'glibc' # R
