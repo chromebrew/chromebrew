@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '3.3'
+  version '3.4'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -89,6 +89,8 @@ class Core < Package
   depends_on 'ruby_ptools'
   # This contains the debugger config files.
   depends_on 'ruby_pry'
+  # Need rake for unit tests.
+  depends_on 'ruby_rake' if CREW_IN_CONTAINER
   # crew check -V breaks without this.
   depends_on 'ruby_ruby_libversion'
   # Needed for rubygem updates
