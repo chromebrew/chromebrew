@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Libssh2 < Autotools
   description 'libssh2 is a client-side C library implementing the SSH2 protocol.'
   homepage 'https://libssh2.org/'
-  version '1.11.0'
+  version '1.11.1'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://libssh2.org/download/libssh2-1.11.0.tar.gz'
+  source_url "https://libssh2.org/download/libssh2-#{version}.tar.gz"
   source_sha256 '3736161e41e2693324deb38c26cfdc3efe6209d634ba4258db1cecff6a5ad461'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a7fa2cb89d69242f3a961563e0d3a2de115e5b2a1a2314669c93506105f723a8',
-     armv7l: 'a7fa2cb89d69242f3a961563e0d3a2de115e5b2a1a2314669c93506105f723a8',
-       i686: '278b8c6b59c297009e6e964672f0b73166a0f7636401f0f365ed38f736b5a629',
-     x86_64: 'f1b86b658c3fb8dfc91f89d6800eafc0662e43d6692c68bf56ae6b1f4f655e62'
+    aarch64: '0d155714a8e24c47778bfccdfd3bcaeaa64991c88b6ff0fe9a748d5f5680d852',
+     armv7l: '0d155714a8e24c47778bfccdfd3bcaeaa64991c88b6ff0fe9a748d5f5680d852',
+       i686: '031b1e4e102b791c9f6b61af75991ed118781a2b1630684731c7a7935519031c',
+     x86_64: '4233a506fb5cb1e11ee38fc93649a632c508bdc9cbe6346d99455b096c76fd0e'
   })
 
   depends_on 'glibc' # R
