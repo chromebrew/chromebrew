@@ -18,7 +18,7 @@ class Ciano < Meson
 
   gnome
 
-  depends_on 'mesonbuild' => :build
+  depends_on 'py3_meson' => :build
   depends_on 'ffmpeg' # R
   depends_on 'imagemagick7' # R
   depends_on 'glib' # R
