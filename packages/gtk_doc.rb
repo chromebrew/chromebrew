@@ -19,7 +19,7 @@ class Gtk_doc < Meson
 
   depends_on 'docbook_xml' => :build
   depends_on 'glib' => :build
-  depends_on 'itstool' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'libxslt' => :build
   depends_on 'py3_pygments' => :build
 
