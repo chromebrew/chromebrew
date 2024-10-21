@@ -11,7 +11,7 @@ class Metadata_cleaner < Meson
 
   depends_on 'desktop_file_utils' # R
   depends_on 'gtk4' # R
-  depends_on 'itstool' # R
+  depends_on 'py3_itstool' # R
   depends_on 'libadwaita' # R
   depends_on 'py3_meson' => :build
   depends_on 'py3_mat2' # R

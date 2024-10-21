@@ -35,7 +35,7 @@ class Geary < Meson
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
   depends_on 'iso_codes'
-  depends_on 'itstool' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'json_glib' # R
   depends_on 'libgee' # R
   depends_on 'libhandy'
