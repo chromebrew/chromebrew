@@ -27,7 +27,7 @@ class Yelp < Autotools
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
-  depends_on 'itstool' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'libgcrypt' # R
   depends_on 'libgpg_error' # R
   depends_on 'libhandy' # R

@@ -22,7 +22,7 @@ class Gnome_calculator < Meson
   depends_on 'gnome_text_editor' # R
   depends_on 'gtk4' # R
   depends_on 'gtksourceview_5' # R
-  depends_on 'itstool' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'libadwaita' # R
   depends_on 'libgee' # R
   depends_on 'libhandy' => :build

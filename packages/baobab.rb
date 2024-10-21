@@ -23,7 +23,7 @@ class Baobab < Meson
   depends_on 'gsettings_desktop_schemas' => :build
   depends_on 'gtk4' # R
   depends_on 'harfbuzz' # R
-  depends_on 'itstool' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'libadwaita' # R
   depends_on 'pango' # R
   depends_on 'vala' => :build
