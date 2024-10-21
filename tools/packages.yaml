@@ -3435,11 +3435,6 @@ url: https://salsa.debian.org/iso-codes-team/iso-codes/-/tags
 activity: low
 ---
 kind: url
-name: itstool
-url: https://github.com/itstool/itstool/releases
-activity: low
----
-kind: url
 name: iw
 url: https://git.kernel.org/pub/scm/linux/kernel/git/jberg/iw.git/
 activity: low
@@ -5761,11 +5756,6 @@ url: https://gitlab.freedesktop.org/mesa/demos/-/tags
 activity: none
 ---
 kind: url
-name: mesonbuild
-url: https://github.com/mesonbuild/meson/releases
-activity: high
----
-kind: url
 name: metadata_cleaner
 url: https://gitlab.com/rmnvgr/metadata-cleaner/-/tags
 activity: low
@@ -7396,6 +7386,11 @@ url: https://github.com/pre-commit/identify/tags
 activity: medium
 ---
 kind: url
+name: py3_itstool
+url: https://github.com/itstool/itstool/releases
+activity: low
+---
+kind: url
 name: py3_lxml
 url: https://github.com/lxml/lxml/releases
 activity: high
@@ -7408,6 +7403,11 @@ activity: low
 kind: url
 name: py3_mercurial
 url: https://www.mercurial-scm.org/release
+activity: high
+---
+kind: url
+name: py3_meson
+url: https://github.com/mesonbuild/meson/releases
 activity: high
 ---
 kind: url

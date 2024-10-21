@@ -17,7 +17,7 @@ class Yelp_xsl < Autotools
      x86_64: '03e70d4b552cb539c1799f1709bf22c20ddcb281b508c462aa146db023f9801c'
   })
 
-  depends_on 'itstool'
+  depends_on 'py3_itstool'
 
   gnome
 end
