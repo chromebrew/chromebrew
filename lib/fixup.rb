@@ -154,7 +154,7 @@ pkg_update_arr = [
   { pkg_name: 'ilmbase', pkg_rename: nil, pkg_deprecated: true, comments: 'Included in openexr.' },
   { pkg_name: 'imagemagick6', pkg_rename: nil, pkg_deprecated: true, comments: nil },
   { pkg_name: 'imagemagick', pkg_rename: nil, pkg_deprecated: true, comments: nil },
-  { pkg_name: 'itstool', pkg_rename: 'py3_itstool', pkg_deprecated: false, comments: 'Renamed to indicate switch to pip buildsyatem.' },
+  { pkg_name: 'itstool', pkg_rename: 'py3_itstool', pkg_deprecated: false, comments: 'Renamed to indicate switch to pip buildsystem.' },
   { pkg_name: 'js91', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced by newer versions of js.' },
   { pkg_name: 'jsonc', pkg_rename: 'json_c', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'komodo', pkg_rename: nil, pkg_deprecated: true, comments: 'Abandoned upstream and no longer functional.' },
