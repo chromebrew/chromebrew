@@ -3435,11 +3435,6 @@ url: https://salsa.debian.org/iso-codes-team/iso-codes/-/tags
 activity: low
 ---
 kind: url
-name: itstool
-url: https://github.com/itstool/itstool/releases
-activity: low
----
-kind: url
 name: iw
 url: https://git.kernel.org/pub/scm/linux/kernel/git/jberg/iw.git/
 activity: low
@@ -7394,6 +7389,11 @@ kind: url
 name: py3_identify
 url: https://github.com/pre-commit/identify/tags
 activity: medium
+---
+kind: url
+name: py3_itstool
+url: https://github.com/itstool/itstool/releases
+activity: low
 ---
 kind: url
 name: py3_lxml
