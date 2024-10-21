@@ -3,7 +3,7 @@ require 'package'
 class Dotnet < Package
   description '.NET is the free, open-source, cross-platform framework for building modern apps and powerful cloud services.'
   homepage 'https://dotnet.microsoft.com/'
-  version '8.0.303'
+  version '8.0.403'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url({
@@ -12,9 +12,9 @@ class Dotnet < Package
      x86_64: "https://dotnetcli.azureedge.net/dotnet/Sdk/#{version}/dotnet-sdk-#{version}-linux-x64.tar.gz"
   })
   source_sha256({
-    aarch64: '7514468e178871d8d997435755e7db207d8469e7e2a5f8a8ba018d0fd20d3e9f',
-     armv7l: '7514468e178871d8d997435755e7db207d8469e7e2a5f8a8ba018d0fd20d3e9f',
-     x86_64: '214ee467f75c42f1512748fe7ca8dd82da2af29cdf54be614a8997f0466ef070'
+    aarch64: '2244b19913c32aa0b60ae91def84528ddd7ec031cb9f3e78db4857088749eeec',
+     armv7l: '2244b19913c32aa0b60ae91def84528ddd7ec031cb9f3e78db4857088749eeec',
+     x86_64: 'f7c31f1397444aab91afbef8d8a46e36531443faced60fa9d4070cf15a81b256'
   })
 
   no_compile_needed
