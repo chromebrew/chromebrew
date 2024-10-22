@@ -33,7 +33,7 @@ associated command-line tool, named volume_key.'
     system 'autoconf'
     system 'autoheader'
     system 'automake --add-missing'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

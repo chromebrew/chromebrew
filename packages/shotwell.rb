@@ -11,7 +11,7 @@ class Shotwell < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '264115379b4912399f66a9ee732c9cfabb682bb9d762c73e129add22f26d5146'
+     x86_64: '264115379b4912399f66a9ee732c9cfabb682bb9d762c73e129add22f26d5146'
   })
 
   depends_on 'vala' => :build

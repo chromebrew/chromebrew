@@ -3,20 +3,25 @@ require 'buildsystems/pip'
 class Py3_pre_commit < Pip
   description 'A framework for managing and maintaining multi-language pre-commit hooks.'
   homepage 'https://pre-commit.com/'
-  version '3.7.1-py3.12'
+  version "4.0.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3651fd8a932fa8d2d587070a8a46f7a59a27b76dd08a3f180f976bcc7cfe8f53',
-     armv7l: '3651fd8a932fa8d2d587070a8a46f7a59a27b76dd08a3f180f976bcc7cfe8f53',
-       i686: 'cbd4fee4a8941cc221f0148eb87561b52c19da296ab02d970f1e1166730bbc10',
-     x86_64: '6b13ce2d264adcd5261c8a7f75ce84b7b9c24548379c42f3a18e9d0f7c10dfe2'
+    aarch64: 'c73013a160bc0dfaff0811eeec432faa819a15186e10c8b5a5c98d043be256ca',
+     armv7l: 'c73013a160bc0dfaff0811eeec432faa819a15186e10c8b5a5c98d043be256ca',
+       i686: 'a27bb2d49527d80a37cf244ef4fd9dd673b62ccf06ddc313395a0d26f311ab77',
+     x86_64: '28ccfec745895a9922e97afd43cc1ecdddbe980d47531b571808a1cab3fb0273'
   })
 
-  depends_on 'python3'
+  depends_on 'py3_cfgv'
+  depends_on 'py3_identify' # L
+  depends_on 'py3_nodeenv' # L
+  depends_on 'py3_pyyaml' # L
+  depends_on 'py3_virtualenv' # L
+  depends_on 'python3' # R
 
   no_source_build
 

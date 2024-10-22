@@ -24,7 +24,7 @@ class Aria2 < Package
 
   def self.build
     system 'autoreconf -fiv'
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
               --with-libnettle \
               --with-libgcrypt \
               --without-libssh2 \

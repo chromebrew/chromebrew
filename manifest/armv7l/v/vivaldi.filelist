@@ -16,6 +16,8 @@
 /usr/local/share/vivaldi/LICENSE.html
 /usr/local/share/vivaldi/MEIPreload/manifest.json
 /usr/local/share/vivaldi/MEIPreload/preloaded_data.pb
+/usr/local/share/vivaldi/PrivacySandboxAttestationsPreloaded/manifest.json
+/usr/local/share/vivaldi/PrivacySandboxAttestationsPreloaded/privacy-sandbox-attestations.dat
 /usr/local/share/vivaldi/WidevineCdm
 /usr/local/share/vivaldi/chrome_crashpad_handler
 /usr/local/share/vivaldi/cron/vivaldi
@@ -205,7 +207,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-57382c516057235763286d076671f25e.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-085ebf32033118e6ab506a00431859b8.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
@@ -239,6 +241,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/es-PE.json
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/es-VE.json
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/fallback-partner-ids.json
+/usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/fr-BE.json
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/fr-FR.json
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/id-ID.json
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/is-IS.json
@@ -247,6 +250,8 @@
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/mk-SG.json
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/my-MY.json
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/nb-NO.json
+/usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/nl-BE.json
+/usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/nl-NL.json
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/nn-NO.json
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/partners-locale-map.json
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/partners.json
@@ -275,6 +280,12 @@
 /usr/local/share/vivaldi/resources/vivaldi/prefs_definitions.json
 /usr/local/share/vivaldi/resources/vivaldi/resources/4-0-wallpaper-dark.jpg
 /usr/local/share/vivaldi/resources/vivaldi/resources/4-0-wallpaper-light.jpg
+/usr/local/share/vivaldi/resources/vivaldi/resources/badge-advocate-12@2x.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/badge-advocate-16@2x.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/badge-patron-12@2x.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/badge-patron-16@2x.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/badge-supporter-12@2x.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/badge-supporter-16@2x.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/bg_alt_1.jpg
 /usr/local/share/vivaldi/resources/vivaldi/resources/bg_alt_4.webp
 /usr/local/share/vivaldi/resources/vivaldi/resources/bg_alt_6.webp
@@ -311,8 +322,10 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/berlingske_dk.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/biobiochile_cl.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/blocket_se.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/bol.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/bookingcom_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/bt_dk.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/buienradar.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/carrefour_fr.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/cdiscount_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/cdon_com.png
@@ -374,6 +387,8 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/ndtv_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/news_abs-cbn_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/news_com_au.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/nos.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/npo.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/nvidia.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/onliner_by.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/ostrovok_ru.png
@@ -393,7 +408,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/sapo_pt.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/setn_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/seznam.png
-/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/shein_com.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/shein.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/shopee_pl.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/spiegel_de.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/spotify.png
@@ -404,6 +419,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/submarino_com_br.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/target_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/telegraf_com_ua.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/temu.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/theguardian_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/tidal.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/unext_jp.png
@@ -476,9 +492,11 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ben_prothomalo.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_bestbuy.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_blick.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_bol.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_booking.com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_br_americanas.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_bs_klix.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_buienradar.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_by_21vek.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_by_5element.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_by_citydog.png
@@ -631,6 +649,8 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_nl_cw_curacaocr.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_no_bonprix.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_no_cdon.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_nos.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_npo.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_nz_stuff.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_outlook.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_overstock.png
@@ -665,6 +685,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ru_tutu.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ru_yandex.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ru_yandex_games.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_shein.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_si_lankanews.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_simplygames.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_sk_auktality.png
@@ -682,6 +703,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_target.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_techcrunch.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ted.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_temu.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_th_sanook.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_tr_cnnturk.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_tr_haberturk.png
@@ -732,6 +754,18 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/vivaldi_chat_default.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/vivaldi_mail_default.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/vivaldi_rss_default.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/wallpapers/wallpaper_1.jpg
+/usr/local/share/vivaldi/resources/vivaldi/resources/wallpapers/wallpaper_10.jpg
+/usr/local/share/vivaldi/resources/vivaldi/resources/wallpapers/wallpaper_11.jpg
+/usr/local/share/vivaldi/resources/vivaldi/resources/wallpapers/wallpaper_12.jpg
+/usr/local/share/vivaldi/resources/vivaldi/resources/wallpapers/wallpaper_2.jpg
+/usr/local/share/vivaldi/resources/vivaldi/resources/wallpapers/wallpaper_3.jpg
+/usr/local/share/vivaldi/resources/vivaldi/resources/wallpapers/wallpaper_4.jpg
+/usr/local/share/vivaldi/resources/vivaldi/resources/wallpapers/wallpaper_5.jpg
+/usr/local/share/vivaldi/resources/vivaldi/resources/wallpapers/wallpaper_6.jpg
+/usr/local/share/vivaldi/resources/vivaldi/resources/wallpapers/wallpaper_7.jpg
+/usr/local/share/vivaldi/resources/vivaldi/resources/wallpapers/wallpaper_8.jpg
+/usr/local/share/vivaldi/resources/vivaldi/resources/wallpapers/wallpaper_9.jpg
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-arc.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-brave.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-chrome.svg

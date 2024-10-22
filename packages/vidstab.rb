@@ -1,32 +1,19 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Vidstab < Package
+class Vidstab < CMake
   description 'Transcode video stabilization plugin.'
   homepage 'http://public.hronopik.de/vid.stab/'
-  version '1.1.0-1'
+  version '1.1.1'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://github.com/georgmartius/vid.stab/archive/v1.1.0.tar.gz'
-  source_sha256 '14d2a053e56edad4f397be0cb3ef8eb1ec3150404ce99a426c4eb641861dc0bb'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/georgmartius/vid.stab.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1f8dad35414c0ee16576445473791d9012ff3910d3a491b40d820adc05438eb2',
-     armv7l: '1f8dad35414c0ee16576445473791d9012ff3910d3a491b40d820adc05438eb2',
-       i686: '36dc191071129b11a10eed98042c06b17dd2d41dccbddc0995da11a5a6fdb7d8',
-     x86_64: 'c722ad0d35766647406425bd512bf05058909045634b75ec42450fe3b42e4592'
+    aarch64: 'fabc6a0fb8cc0570cd9c9ab031c5bdc331007ea5f3b2edaa1efb56818915ae7e',
+     armv7l: 'fabc6a0fb8cc0570cd9c9ab031c5bdc331007ea5f3b2edaa1efb56818915ae7e',
+       i686: '8feab77e6b415747500ec4d398cfefdc8f94a13244b61beea7eceb1c4e859835',
+     x86_64: 'e55882a58cb795e010a3fcdbd5a43d636f8446389874c77cd231cbea71d6d1cc'
   })
-
-  def self.build
-    if ARCH == 'x86_64'
-      system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DLIB_SUFFIX=64"
-    else
-      system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}"
-    end
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "LIBDIR=#{CREW_LIB_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

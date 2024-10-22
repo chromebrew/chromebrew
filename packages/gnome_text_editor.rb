@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Gnome_text_editor < Meson
   description 'GNOME Text Editor'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-text-editor'
-  version '46.0'
+  version '47.beta'
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-text-editor.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8b870b1ce0e78ab2c07b37c3b1681912f49510dc02a771defb13832ae901be45',
-     armv7l: '8b870b1ce0e78ab2c07b37c3b1681912f49510dc02a771defb13832ae901be45',
-     x86_64: 'fd1ac48f213c3ca2c7f3f51bd5d2a2b5a470cec94876fc6fc87e5aa66f41cb12'
+    aarch64: '4a054cfb5030a01f538cea822bb24986bae41d413ba73d07c55de0e2fbe4803b',
+     armv7l: '4a054cfb5030a01f538cea822bb24986bae41d413ba73d07c55de0e2fbe4803b',
+     x86_64: '4771dc0e77de5069289161792a1101d0be593df9866315b90755180a2f9b8562'
   })
 
   depends_on 'cairo' # R
@@ -41,7 +41,8 @@ class Gnome_text_editor < Meson
   depends_on 'pango' # R
   depends_on 'pcre2' # R
   depends_on 'pcre' => :build
-  depends_on 'pygobject' => :build
+  depends_on 'py3_pygobject' => :build
+  depends_on 'sassc' => :build
   depends_on 'vala' => :build
   depends_on 'vulkan_icd_loader' # R
   depends_on 'yelp_tools' => :build

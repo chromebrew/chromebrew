@@ -55,7 +55,7 @@ class Ghostscript < Package
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system 'filefix'
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --disable-hidden-visibility \
       --disable-compile-inits \
       --enable-dynamic \

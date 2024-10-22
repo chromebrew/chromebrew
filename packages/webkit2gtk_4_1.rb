@@ -3,18 +3,17 @@ require 'package'
 class Webkit2gtk_4_1 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.44.2'
+  version "2.44.3-#{CREW_ICU_VER}"
   license 'LGPL-2+ and BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
-  min_glibc '2.37'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.44.2.tar.xz'
-  source_sha256 '523f42c8ff24832add17631f6eaafe8f9303afe316ef1a7e1844b952a7f7521b'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.44.3.tar.xz'
+  source_sha256 'dc82d042ecaca981a4852357c06e5235743319cf10a94cd36ad41b97883a0b54'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f97d19d647d8eac60b30cc6306cf20ab1154ac074707f84491c9bb319c2cb743',
-     armv7l: 'f97d19d647d8eac60b30cc6306cf20ab1154ac074707f84491c9bb319c2cb743',
-     x86_64: 'd55485064d6bfb73475ea96186970bc1552c766b0717a5a2ab951dfe8bf6b687'
+    aarch64: '6c220476148a9b263f78e1a9dfc95562bcf8635fbcc403f2c461bbbf7b5f465f',
+     armv7l: '6c220476148a9b263f78e1a9dfc95562bcf8635fbcc403f2c461bbbf7b5f465f',
+     x86_64: '80b969a2d1a82d55852f5026aefac336c8092d8d8c3628450e7fb1a47121e3de'
   })
 
   depends_on 'at_spi2_core' # R
@@ -43,7 +42,7 @@ class Webkit2gtk_4_1 < Package
   depends_on 'libepoxy' # R
   depends_on 'libgcrypt' # R
   depends_on 'libglvnd' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
   depends_on 'libnotify'
@@ -77,6 +76,10 @@ class Webkit2gtk_4_1 < Package
   no_env_options
 
   def self.patch
+    # Fix incompatibility with gtk3 from current gobjects_introspection causing build failure
+    # as per https://bugs.webkit.org/show_bug.cgi?id=276180 .
+    downloader 'https://github.com/WebKit/WebKit/pull/30446.diff', '6beda7960b232117f8445db4e588a45ef384d42ccb13f6926b695c472a4eea51'
+    system 'patch -Np1 -i 30446.diff'
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
     @arch_flags = ''
     @gcc_ver = ''
@@ -97,7 +100,6 @@ class Webkit2gtk_4_1 < Package
           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
           -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
           -DENABLE_DOCUMENTATION=OFF \
-          -DENABLE_GLES2=OFF \
           -DENABLE_JOURNALD_LOG=OFF \
           -DENABLE_GAMEPAD=OFF \
           -DENABLE_MINIBROWSER=ON \

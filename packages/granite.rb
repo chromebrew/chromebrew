@@ -18,7 +18,7 @@ class Granite < Meson
 
   gnome
 
-  depends_on 'mesonbuild' => :build
+  depends_on 'py3_meson' => :build
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'gobject_introspection'

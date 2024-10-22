@@ -36,7 +36,7 @@ class Coreutils < Autotools
 
   def self.build
     year2038 = ARCH == 'x86_64' ? '' : ' --disable-year2038'
-    options = CREW_OPTIONS + year2038
+    options = CREW_CONFIGURE_OPTIONS + year2038
     system "./configure #{options}"
     system 'make'
     arch = <<~EOF

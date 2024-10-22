@@ -52,7 +52,7 @@ class Dexed < Package
     FileUtils.install 'dexed.desktop', "#{CREW_DEST_PREFIX}/share/applications", mode: 0o644
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.config/dexed"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "

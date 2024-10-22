@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Spirv_headers < CMake
   homepage 'https://github.com/KhronosGroup/SPIRV-Headers'
   description 'SPIR-V Headers'
-  version '1.3.283.0'
+  version '1.3.290.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/SPIRV-Headers.git'
@@ -11,9 +11,9 @@ class Spirv_headers < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '56b65ee42413a4082ea307f966f7f210b2122bc7dbb1affcefc9d2d0522108e8',
-     armv7l: '56b65ee42413a4082ea307f966f7f210b2122bc7dbb1affcefc9d2d0522108e8',
-       i686: 'e504e50da7ded4996fafb8e0efe5df5d55b717a9c3707d9aaed09c9601f7548c',
-     x86_64: 'ad032337d87144f12d3a16cfcd5948cc5a33c6b330cd6353d7bd9b83245403f3'
+    aarch64: '55568d36faf09b8793a8a89da489acc93b9839423ac198b5b01f9d6fe7e5ebf7',
+     armv7l: '55568d36faf09b8793a8a89da489acc93b9839423ac198b5b01f9d6fe7e5ebf7',
+       i686: '0b25562e655bad67cd6348c23968808ea42c5547823082161e899ab8e6046923',
+     x86_64: '38d108fc91c151efdd1035c30cd53e64237c7a7acf220617955e015fa75e73e5'
   })
 end

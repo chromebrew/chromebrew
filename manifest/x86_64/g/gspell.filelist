@@ -14,10 +14,8 @@
 /usr/local/include/gspell-1/gspell/gspell-text-view.h
 /usr/local/include/gspell-1/gspell/gspell.h
 /usr/local/lib64/girepository-1.0/Gspell-1.typelib
-/usr/local/lib64/libgspell-1.la
 /usr/local/lib64/libgspell-1.so
-/usr/local/lib64/libgspell-1.so.2
-/usr/local/lib64/libgspell-1.so.2.3.2
+/usr/local/lib64/libgspell-1.so.3
 /usr/local/lib64/pkgconfig/gspell-1.pc
 /usr/local/share/gir-1.0/Gspell-1.gir
 /usr/local/share/locale/ab/LC_MESSAGES/gspell-1.mo

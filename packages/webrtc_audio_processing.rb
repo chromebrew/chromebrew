@@ -25,7 +25,7 @@ class Webrtc_audio_processing < Package
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto -std=c++17' \
      LDFLAGS='-flto=auto' \
      ./configure \
-     #{CREW_OPTIONS}"
+     #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

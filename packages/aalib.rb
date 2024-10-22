@@ -34,7 +34,7 @@ class Aalib < Package
 
   def self.build
     system 'autoreconf -fiv'
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
             --with-x \
             --with-x11-driver \
             --with-slang-driver"

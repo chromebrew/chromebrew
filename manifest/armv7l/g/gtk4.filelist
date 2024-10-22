@@ -2,6 +2,7 @@
 /usr/local/bin/gtk4-broadwayd
 /usr/local/bin/gtk4-builder-tool
 /usr/local/bin/gtk4-encode-symbolic-svg
+/usr/local/bin/gtk4-image-tool
 /usr/local/bin/gtk4-launch
 /usr/local/bin/gtk4-path-tool
 /usr/local/bin/gtk4-query-settings
@@ -17,7 +18,9 @@
 /usr/local/include/gtk-4.0/gdk/gdkapplaunchcontext.h
 /usr/local/include/gtk-4.0/gdk/gdkcairo.h
 /usr/local/include/gtk-4.0/gdk/gdkcairocontext.h
+/usr/local/include/gtk-4.0/gdk/gdkcicpparams.h
 /usr/local/include/gtk-4.0/gdk/gdkclipboard.h
+/usr/local/include/gtk-4.0/gdk/gdkcolorstate.h
 /usr/local/include/gtk-4.0/gdk/gdkconfig.h
 /usr/local/include/gtk-4.0/gdk/gdkcontentdeserializer.h
 /usr/local/include/gtk-4.0/gdk/gdkcontentformats.h
@@ -49,6 +52,7 @@
 /usr/local/include/gtk-4.0/gdk/gdkkeys.h
 /usr/local/include/gtk-4.0/gdk/gdkkeysyms.h
 /usr/local/include/gtk-4.0/gdk/gdkmemorytexture.h
+/usr/local/include/gtk-4.0/gdk/gdkmemorytexturebuilder.h
 /usr/local/include/gtk-4.0/gdk/gdkmonitor.h
 /usr/local/include/gtk-4.0/gdk/gdkpaintable.h
 /usr/local/include/gtk-4.0/gdk/gdkpango.h
@@ -411,7 +415,7 @@
 /usr/local/lib/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so
 /usr/local/lib/libgtk-4.so
 /usr/local/lib/libgtk-4.so.1
-/usr/local/lib/libgtk-4.so.1.1502.0
+/usr/local/lib/libgtk-4.so.1.1600.3
 /usr/local/lib/pkgconfig/gtk4-atspi.pc
 /usr/local/lib/pkgconfig/gtk4-broadway.pc
 /usr/local/lib/pkgconfig/gtk4-unix-print.pc

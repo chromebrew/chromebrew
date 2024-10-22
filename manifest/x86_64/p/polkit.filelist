@@ -2,6 +2,7 @@
 /usr/local/bin/pkcheck
 /usr/local/bin/pkexec
 /usr/local/bin/pkttyagent
+/usr/local/etc/elogind/polkit.service
 /usr/local/include/polkit-1/polkit/polkit.h
 /usr/local/include/polkit-1/polkit/polkitactiondescription.h
 /usr/local/include/polkit-1/polkit/polkitauthority.h
@@ -66,6 +67,7 @@
 /usr/local/share/locale/ro/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/ru/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/sk/LC_MESSAGES/polkit-1.mo
+/usr/local/share/locale/sl/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/sv/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/tr/LC_MESSAGES/polkit-1.mo
 /usr/local/share/locale/uk/LC_MESSAGES/polkit-1.mo

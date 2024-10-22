@@ -25,7 +25,7 @@ class Zsh < Package
   depends_on 'pcre' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
             --enable-zsh-mem \
             --enable-pcre \
             --enable-cap \

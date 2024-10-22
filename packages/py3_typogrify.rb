@@ -3,8 +3,7 @@ require 'buildsystems/pip'
 class Py3_typogrify < Pip
   description 'Typogrify provides filters to enhance web typography.'
   homepage 'https://python-markdown.github.io/'
-  @_ver = '2.0.7'
-  version "#{@_ver}-py3.12"
+  version "2.0.7-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'

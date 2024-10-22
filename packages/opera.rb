@@ -3,7 +3,7 @@ require 'package'
 class Opera < Package
   description 'Opera is a multi-platform web browser based on Chromium and developed by Opera Software.'
   homepage 'https://www.opera.com/'
-  version '112.0.5197.39'
+  version '114.0.5282.102'
   license 'OPERA-2018'
   compatibility 'x86_64'
   min_glibc '2.29'
@@ -11,7 +11,7 @@ class Opera < Package
   # faster apt mirror, but only works when downloading latest version of opera
   # source_url "https://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
   source_url "https://deb.opera.com/opera-stable/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
-  source_sha256 '35ccfa99c97a55b291fb38e089d3449d48e4f1d6ba859302fe158b78e208c5fe'
+  source_sha256 '3c16e8cc8740f9c7c4cc62322f53fedb9159b6b9ddee575cb4eb5962898a77ff'
 
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'
@@ -48,10 +48,10 @@ class Opera < Package
     else
       puts 'No change has been made.'.orange
     end
-    puts "\nType 'opera' to get started.\n".lightblue
+    ExitMessage.add "\nType 'opera' to get started.\n"
   end
 
-  def self.remove
+  def self.postremove
     Dir.chdir("#{CREW_PREFIX}/bin") do
       if File.exist?('x-www-browser') && File.symlink?('x-www-browser') && \
          (File.realpath('x-www-browser') == "#{CREW_PREFIX}/share/x86_64-linux-gnu/opera/opera")

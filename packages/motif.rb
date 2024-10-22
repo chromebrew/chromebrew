@@ -41,7 +41,7 @@ class Motif < Package
   depends_on 'zlib' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --with-x \
       --enable-xft \
       --enable-png \

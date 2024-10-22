@@ -119,7 +119,7 @@ class Gcc10 < Package
 
       unless File.file?('Makefile')
         system configure_env, <<~BUILD.chomp
-          ../configure #{CREW_OPTIONS} \
+          ../configure #{CREW_CONFIGURE_OPTIONS} \
             #{@gcc_global_opts} \
             #{@archflags} \
             --with-native-system-header-dir=#{CREW_PREFIX}/include \

@@ -25,7 +25,7 @@ class Grive < Package
   depends_on 'glibc' # R
   depends_on 'curl' # R
   depends_on 'libgcrypt' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'yajl' # R
 
   def self.build

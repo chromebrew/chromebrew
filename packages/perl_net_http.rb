@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_net_http < PERL
   description 'Low-level HTTP connection (client)'
   homepage 'https://metacpan.org/pod/Net::HTTP'
-  version '6.23-perl5.40'
+  version "6.23-#{CREW_PERL_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/Net-HTTP-6.23.tar.gz'

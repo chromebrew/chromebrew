@@ -3,12 +3,12 @@ require 'package'
 class Zed < Package
   description 'Zed is a high-performance, multiplayer code editor'
   homepage 'https://zed.dev/'
-  version '0.146.5'
+  version '0.157.4'
   license 'GPL-3, AGPL-3, Apache-2.0'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://github.com/zed-industries/zed/releases/download/v#{version}/zed-linux-x86_64.tar.gz"
-  source_sha256 'affa10f7db0d42a6d1fece2090c8f74a9ea4a56e5a2f1601db1224a4f29debc5'
+  source_sha256 'fe741af73157b88e4e15db2e6af87ac6dcdf7b275d7518642c5b10d6e9310513'
 
   depends_on 'alsa_lib'
   depends_on 'libbsd'
@@ -34,7 +34,7 @@ class Zed < Package
     ExitMessage.add "\nType 'zed' to get started.\n"
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{CREW_PREFIX}/.config/zed"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "

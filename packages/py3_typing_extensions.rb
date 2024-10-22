@@ -1,34 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_typing_extensions < Package
+class Py3_typing_extensions < Pip
   description 'Backported and Experimental Type Hints for Python 3.5+'
   homepage 'https://github.com/python/typing/tree/master/typing_extensions'
-  @_ver = '4.2.0'
-  version "#{@_ver}-py3.12"
+  version "4.12.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/python/typing.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'baa7f1c17ab1c1732a08acf814ea61550cba26075b1a69492ee07d8346a13e25',
-     armv7l: 'baa7f1c17ab1c1732a08acf814ea61550cba26075b1a69492ee07d8346a13e25',
-       i686: 'da35c6f1dc600b188f87223d478f27a4bee7f89c7dfb1513b43b29b403559094',
-     x86_64: '2cef12f43c51a6389f279f98b59075383431b29b599e8e8d559d6f124261c42d'
+    aarch64: 'bdda119677743af10138aef9831a1be963798f58ba6b563080078183288ad28a',
+     armv7l: 'bdda119677743af10138aef9831a1be963798f58ba6b563080078183288ad28a',
+       i686: '3507dcc272ee555e06ced72f426f6f10cd3a03b99b4b08dce36b9b744fe43aa2',
+     x86_64: 'eece44075614d5ec0188638080d594e1bb0bee828bf610da55374628731928c7'
   })
 
   depends_on 'python3' => :build
 
-  def self.build
-    Dir.chdir 'typing_extensions' do
-      system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
-    end
-  end
-
-  def self.install
-    Dir.chdir 'typing_extensions' do
-      system "python3 -m installer #{PY3_INSTALLER_OPTIONS}"
-    end
-  end
+  no_source_build
 end

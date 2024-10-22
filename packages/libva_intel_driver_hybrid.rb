@@ -11,7 +11,7 @@ class Libva_intel_driver_hybrid < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    x86_64: 'e9c740a0bd917ecbb69b822ce9df1609f415776ab5a5e553eb0a83bc93a35f90'
+     x86_64: 'e9c740a0bd917ecbb69b822ce9df1609f415776ab5a5e553eb0a83bc93a35f90'
   })
 
   depends_on 'igt_gpu_tools'

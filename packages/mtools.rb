@@ -3,17 +3,17 @@ require 'buildsystems/autotools'
 class Mtools < Autotools
   description 'Mtools is a collection of utilities to access MS-DOS disks from GNU and Unix without mounting them.'
   homepage 'https://www.gnu.org/software/mtools/'
-  version '4.0.44'
+  version '4.0.45'
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://ftpmirror.gnu.org/mtools/mtools-#{version}.tar.lz"
-  source_sha256 'e9cd7fff9e107b69a57bcbd59e9ccd76448cd5db0194a2383757e421994b21d7'
+  source_sha256 '32ca85dfc1674c536143d4e0da60e3134039eb9552e0fecfa110e9c8736093ce'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '394a41b3f8c5a8802d3f4daf150764bdfa25b62617144857d95be1b306c5b977',
-     armv7l: '394a41b3f8c5a8802d3f4daf150764bdfa25b62617144857d95be1b306c5b977',
-     x86_64: 'ec2796ea1ad06799acc17a0367a4c37a946423e10742ef7ce44acd3b6e4aff41'
+    aarch64: '301c1cbc6059963e5275ec7f474a5439acd3fb9c75575d91de6c7451e0d74519',
+     armv7l: '301c1cbc6059963e5275ec7f474a5439acd3fb9c75575d91de6c7451e0d74519',
+     x86_64: '8444664ab8fa7d98336bd4ac50927d589af516cf4f85e6d33f7ed118eb39ae10'
   })
 
   configure_options '--without-x'

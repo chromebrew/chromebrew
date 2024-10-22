@@ -38,5 +38,9 @@ class Glibc < Package
     version Glibc_build237.version
     compatibility Glibc_build237.compatibility
     depends_on 'glibc_lib237'
+  else
+    version LIBC_VERSION
+    compatibility 'x86_64 aarch64 armv7l'
+    depends_on 'glibc_fallthrough'
   end
 end

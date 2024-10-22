@@ -23,7 +23,7 @@ class Xauth < Package
   depends_on 'glibc' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
            --enable-ipv6 \
            --enable-tcp-transport \
            --enable-unix-transport \

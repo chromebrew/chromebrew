@@ -12,8 +12,8 @@ class Pcsc_lite < Package
 
   binary_sha256({
     aarch64: '7b33707baf6fbbebbd4cdbf53d0f4ced3db4175101ae48794d229e946a37d355',
-      armv7l: '7b33707baf6fbbebbd4cdbf53d0f4ced3db4175101ae48794d229e946a37d355',
-      x86_64: '356190c9a9118bb46981627a2d132d8209a035fe5003000584789e41f305e796'
+     armv7l: '7b33707baf6fbbebbd4cdbf53d0f4ced3db4175101ae48794d229e946a37d355',
+     x86_64: '356190c9a9118bb46981627a2d132d8209a035fe5003000584789e41f305e796'
   })
 
   depends_on 'eudev'
@@ -26,7 +26,7 @@ class Pcsc_lite < Package
   end
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
               --disable-libsystemd"
     system 'make'
   end

@@ -13,8 +13,8 @@ class Libmpeg2 < Package
 
   binary_sha256({
     aarch64: '5b5fdf553d59930d1d3df204c2b7f32c0665b7623bc83b4a88c1ffa70f7d7e7c',
-      armv7l: '5b5fdf553d59930d1d3df204c2b7f32c0665b7623bc83b4a88c1ffa70f7d7e7c',
-      x86_64: '6d148c52e28455fdd06b2797bcd99a0a36ae21319e998bece8945189c8fcf3ae'
+     armv7l: '5b5fdf553d59930d1d3df204c2b7f32c0665b7623bc83b4a88c1ffa70f7d7e7c',
+     x86_64: '6d148c52e28455fdd06b2797bcd99a0a36ae21319e998bece8945189c8fcf3ae'
   })
 
   depends_on 'libx11'
@@ -25,7 +25,7 @@ class Libmpeg2 < Package
   end
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
             --with-x"
     system 'make'
   end

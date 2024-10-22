@@ -79,7 +79,7 @@ class Nodebrew < Package
     puts
   end
 
-  def self.remove
+  def self.postremove
     return unless Dir.exist? "#{CREW_PREFIX}/share/nodebrew"
 
     puts

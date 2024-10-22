@@ -6,17 +6,17 @@ require 'buildsystems/autotools'
 class Caja < Autotools
   description 'Caja file manager for the MATE desktop'
   homepage 'https://mate-desktop.org'
-  version '1.28.0'
+  version "1.28.0-#{CREW_ICU_VER}"
   license 'GPL-2+ LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://pub.mate-desktop.org/releases/#{version.rpartition('.')[0]}/caja-#{version}.tar.xz"
+  source_url "https://pub.mate-desktop.org/releases/#{version.split('-').first.rpartition('.')[0]}/caja-#{version.split('-').first}.tar.xz"
   source_sha256 '1e3014ce1455817ec2ef74d09efdfb6835d8a372ed9a16efb5919ef7b821957a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0b9f66473078dd9f81b039fe44b5547f66f2404f0858e09cc46d5e1127f8a25d',
-     armv7l: '0b9f66473078dd9f81b039fe44b5547f66f2404f0858e09cc46d5e1127f8a25d',
-     x86_64: '74eff4aaec8f5d73efb4f4e8f25f8cfb9b3b2dcb919c2a3f1e6034868cca9708'
+    aarch64: '0a5706de0ac174f4eb8c2015a800a04bd1902d82913528e4084f66cf515c3e7c',
+     armv7l: '0a5706de0ac174f4eb8c2015a800a04bd1902d82913528e4084f66cf515c3e7c',
+     x86_64: 'c568946505c011070dd603fe5ecc5b5354ecadf04a58e83dc34d0bde7d323e8a'
   })
 
   depends_on 'at_spi2_core' # R

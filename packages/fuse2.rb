@@ -20,7 +20,7 @@ class Fuse2 < Package
   depends_on 'util_linux'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
             --enable-example \
             --disable-mtab \
             --enable-util \

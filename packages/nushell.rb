@@ -3,7 +3,7 @@ require 'package'
 class Nushell < Package
   description 'A new type of shell'
   homepage 'https://www.nushell.sh/'
-  version '0.95.0'
+  version '0.99.1'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.28'
@@ -13,9 +13,9 @@ class Nushell < Package
      x86_64: "https://github.com/nushell/nushell/releases/download/#{version}/nu-#{version}-x86_64-unknown-linux-gnu.tar.gz"
   })
   source_sha256({
-    aarch64: '95ac0e7d4def3330d9bbc8a2957491c909e17406d0ac8a565685bb93c1d214fa',
-     armv7l: '95ac0e7d4def3330d9bbc8a2957491c909e17406d0ac8a565685bb93c1d214fa',
-     x86_64: 'e1d01859e0bc86093fc49a4ece37fd92573baebeea383669feca942f67672a20'
+    aarch64: '68cc9d9de1b6015e646199bc3806f61b7bd228ac345d62b521d328902a883c17',
+     armv7l: '68cc9d9de1b6015e646199bc3806f61b7bd228ac345d62b521d328902a883c17',
+     x86_64: '3aeb6b790414e29296097790074f2e03db29b0aba329306e3ffdbfefa3e2664f'
   })
 
   no_compile_needed

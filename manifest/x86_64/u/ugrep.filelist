@@ -7,9 +7,11 @@
 /usr/local/share/bash-completion/completions/ug+
 /usr/local/share/bash-completion/completions/ugrep
 /usr/local/share/bash-completion/completions/ugrep+
+/usr/local/share/bash-completion/completions/ugrep-indexer
 /usr/local/share/fish/vendor_completions.d/ug+.fish
 /usr/local/share/fish/vendor_completions.d/ug.fish
 /usr/local/share/fish/vendor_completions.d/ugrep+.fish
+/usr/local/share/fish/vendor_completions.d/ugrep-indexer.fish
 /usr/local/share/fish/vendor_completions.d/ugrep.fish
 /usr/local/share/man/man1/ug.1.zst
 /usr/local/share/man/man1/ugrep-indexer.1.zst
@@ -205,3 +207,4 @@
 /usr/local/share/zsh/site-functions/_ug+
 /usr/local/share/zsh/site-functions/_ugrep
 /usr/local/share/zsh/site-functions/_ugrep+
+/usr/local/share/zsh/site-functions/_ugrep-indexer

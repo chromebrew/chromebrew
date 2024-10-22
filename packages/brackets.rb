@@ -11,7 +11,7 @@ class Brackets < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    x86_64: 'ddcef49b895b1d132ceef90406044ce7699cc21dfa1d048e059bafa2945399bc'
+     x86_64: 'ddcef49b895b1d132ceef90406044ce7699cc21dfa1d048e059bafa2945399bc'
   })
 
   depends_on 'alien' => :build

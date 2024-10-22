@@ -16,9 +16,9 @@
 /usr/local/share/aclocal/ltsugar.m4
 /usr/local/share/aclocal/ltversion.m4
 /usr/local/share/aclocal/lt~obsolete.m4
-/usr/local/share/info/libtool.info-1.gz
-/usr/local/share/info/libtool.info-2.gz
-/usr/local/share/info/libtool.info.gz
+/usr/local/share/info/libtool.info-1.zst
+/usr/local/share/info/libtool.info-2.zst
+/usr/local/share/info/libtool.info.zst
 /usr/local/share/libtool/COPYING.LIB
 /usr/local/share/libtool/Makefile.am
 /usr/local/share/libtool/Makefile.in
@@ -61,5 +61,5 @@
 /usr/local/share/libtool/ltdl.h
 /usr/local/share/libtool/ltdl.mk
 /usr/local/share/libtool/slist.c
-/usr/local/share/man/man1/libtool.1.gz
-/usr/local/share/man/man1/libtoolize.1.gz
+/usr/local/share/man/man1/libtool.1.zst
+/usr/local/share/man/man1/libtoolize.1.zst

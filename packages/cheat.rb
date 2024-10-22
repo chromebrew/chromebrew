@@ -28,7 +28,7 @@ class Cheat < Package
     FileUtils.install 'cheat', "#{CREW_DEST_PREFIX}/bin/cheat", mode: 0o755
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.config/cheat"
     if Dir.exist? config_dir
       puts 'WARNING: This will remove all cheat config!'.orange

@@ -4,17 +4,17 @@ require 'buildsystems/meson'
 class Pango < Meson
   description 'Pango is a library for laying out and rendering of text, with an emphasis on internationalization.'
   homepage 'https://pango.gnome.org/'
-  version '1.52.2'
+  version '1.54.0-1'
   license 'LGPL-2+ and FTL'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/pango.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bd55b1eb27d8106deaedb2a1af4bacea3c567f5bfbc037d9dde51f11b48e3454',
-     armv7l: 'bd55b1eb27d8106deaedb2a1af4bacea3c567f5bfbc037d9dde51f11b48e3454',
-     x86_64: 'dac956a0fb4c555d5aa7242876f150961eeb341ac35bda66833d8cfe8380b9e9'
+    aarch64: 'ca92c2d3cca59634ff7d09b80bb656c22137e981800ba06c5f781c7d6653dff8',
+     armv7l: 'ca92c2d3cca59634ff7d09b80bb656c22137e981800ba06c5f781c7d6653dff8',
+     x86_64: '5ef2193fac50ebf85e6b7fb46b38b3e8bd89ad47fe04039901ff290551ed9be8'
   })
 
   depends_on 'cairo' # R
@@ -32,10 +32,11 @@ class Pango < Meson
   depends_on 'libxrender' # R
   depends_on 'xorg_proto' => :build
 
-  meson_options '-Dinstall-tests=false \
+  meson_options '-Dbuild-examples=false \
+      -Dbuild-testsuite=false \
       -Dcairo=enabled \
-      -Dfreetype=enabled \
+      -Ddocumentation=false \
       -Dfontconfig=enabled \
-      -Dlibthai=disabled \
-      -Dgtk_doc=false'
+      -Dfreetype=enabled \
+      -Dlibthai=disabled'
 end

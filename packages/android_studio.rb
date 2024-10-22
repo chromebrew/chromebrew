@@ -1,4 +1,5 @@
 require 'package'
+require 'misc_functions'
 
 class Android_studio < Package
   description 'Android Studio is the official IDE for Android development.'
@@ -14,8 +15,7 @@ class Android_studio < Package
   depends_on 'sommelier'
 
   def self.preflight
-    free_space = `echo $(($(stat -f --format="%a*%S" #{CREW_PREFIX})))`.chomp.to_i
-    abort 'Not enough free disk space.  You need at least 6 GB to install.'.lightred if free_space < 6442450944
+    MiscFunctions.check_free_disk_space(6442450944)
   end
 
   def self.install
@@ -35,7 +35,7 @@ class Android_studio < Package
     puts "\nTo start using Android Studio, type `studio`.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     print 'Would you like to remove the config directories? [y/N] '
     response = $stdin.gets.chomp.downcase
     config_dirs = ["#{HOME}/.android", "#{HOME}/Android"]

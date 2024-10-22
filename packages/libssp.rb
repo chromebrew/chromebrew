@@ -4,7 +4,12 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version "14.2.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
+  @gcc_libc_version = if %w[2.23 2.27 2.32 2.33 2.35 2.37].any? { |i| LIBC_VERSION.include? i }
+                        LIBC_VERSION
+                      else
+                        ARCH.eql?('i686') ? '2.23' : '2.27'
+                      end
+  version "14.2.0-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
@@ -13,12 +18,14 @@ class Libssp < Package
   git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
-  case LIBC_VERSION
+  case @gcc_libc_version
   when '2.23'
+
     binary_sha256({
          i686: '482ada83ade66f12de9370a91e3b48bde523248fa870d4729d4644b2115c8e04'
     })
   when '2.27', '2.32', '2.33', '2.35'
+
     binary_sha256({
       aarch64: 'ed9b5e88ce0beb9862ee9ed4d75751ee7bf198bd5cb1916aa4508e57dd760b41',
        armv7l: 'ed9b5e88ce0beb9862ee9ed4d75751ee7bf198bd5cb1916aa4508e57dd760b41',
@@ -95,7 +102,7 @@ class Libssp < Package
       system "env NM=gcc-nm AR=gcc-ar RANLIB=gcc-ranlib \
         CFLAGS='#{@cflags}' CXXFLAGS='#{@cxxflags}' \
         PATH=#{@path} \
-        ../#{@gcc_name}/configure #{CREW_OPTIONS} \
+        ../#{@gcc_name}/configure #{CREW_CONFIGURE_OPTIONS} \
         #{@gcc_global_opts} \
         --enable-languages=#{@languages} \
         --program-suffix=-#{gcc_version} \

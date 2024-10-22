@@ -12,13 +12,13 @@ class Libmodplug < Package
 
   binary_sha256({
     aarch64: 'fd7b70d7e739910c13fcc14c1064c87d8824adea98f709be46e730cd0b21f2d3',
-      armv7l: 'fd7b70d7e739910c13fcc14c1064c87d8824adea98f709be46e730cd0b21f2d3',
-        i686: '2ae9edf8e240eb3c2f878d3f547ec2749fc19c00f3d5ad52b6760d541500a739',
-      x86_64: '4e6e48ce53a6008c438ef69ebe54de75257e825bda156b539204f67c9f359b51'
+     armv7l: 'fd7b70d7e739910c13fcc14c1064c87d8824adea98f709be46e730cd0b21f2d3',
+       i686: '2ae9edf8e240eb3c2f878d3f547ec2749fc19c00f3d5ad52b6760d541500a739',
+     x86_64: '4e6e48ce53a6008c438ef69ebe54de75257e825bda156b539204f67c9f359b51'
   })
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

@@ -23,7 +23,7 @@ class Libseccomp < Package
   def self.build
     system './autogen.sh'
     system "./configure \
-      #{CREW_OPTIONS}"
+      #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

@@ -3,34 +3,38 @@ require 'package'
 class Gn < Package
   description 'GN is a meta-build system that generates build files for Ninja.'
   homepage 'https://gn.googlesource.com/gn/'
-  version 'dca877f'
+  version 'b2afae1'
   license 'BSD'
   compatibility 'all'
-  source_url 'SKIP'
-  binary_compression 'tar.xz'
+  source_url 'https://gn.googlesource.com/gn'
+  git_hashtag 'b2afae122eeb6ce09c52d63f67dc53fc517dbdc8'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7ecb46dc020a7f2ef83c9f299b93e33b7d7907915a580eae29fba4038d348572',
-     armv7l: '7ecb46dc020a7f2ef83c9f299b93e33b7d7907915a580eae29fba4038d348572',
-       i686: '24f08672a3063c1fb151239d347a8126d204f0b9ef81114512acd8a70772b4d8',
-     x86_64: '385d47846ff117275793dc43d9ef004d4aa1075b29af3d9283f289cfc757d59f'
+    aarch64: '6859e645fd0fcb8c4fe3149af0d6be8e4bb1988d0ac3fbba4316a253b473a354',
+     armv7l: '6859e645fd0fcb8c4fe3149af0d6be8e4bb1988d0ac3fbba4316a253b473a354',
+       i686: '15f7ea0b5f31b5a7a82ac670388d44404824049c434c4699189ce4ef58930634',
+     x86_64: '1d0365f7a3ca6efd7a80c15515e198e3d6fe02dfb1c312ef0ac565fcc0ee4ae3'
   })
 
-  depends_on 'python2' => :build
+  depends_on 'python3' => :build
+
+  # The build process uses git describe to determine the version.
+  git_clone_deep
+  git_fetchtags
 
   def self.build
-    system 'git clone https://gn.googlesource.com/gn'
-    ENV['C_INCLUDE_PATH'] = "#{CREW_PREFIX}/include/"
-    ENV['CXX'] = 'g++'
-    Dir.chdir('gn') do
-      system 'python build/gen.py'
-      system 'ninja -C out'
-    end
+    # With the large llvm dependency and problems with -Wunused-command-line-argument, it's easier just to override the default value of clang++.
+    # https://gn.issues.chromium.org/issues/42440280
+    system "CXX=g++ #{'CFLAGS=-Wno-unused-value' if ARCH.eql?('armv7l')} python build/gen.py"
+    system "#{CREW_NINJA} -C out"
+  end
+
+  def self.check
+    system './out/gn_unittests'
   end
 
   def self.install
-    system "install -Dm755 gn/out/gn #{CREW_DEST_PREFIX}/bin/gn"
+    FileUtils.install 'out/gn', "#{CREW_DEST_PREFIX}/bin/gn", mode: 0o755
   end
-
-  def self.postinstall; end
 end

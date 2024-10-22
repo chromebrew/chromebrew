@@ -46,7 +46,7 @@ class Ibus < Autotools
   depends_on 'libxi' # R
   depends_on 'libxkbcommon' # R
   depends_on 'pango' # R
-  depends_on 'pygobject' => :build
+  depends_on 'py3_pygobject' => :build
   depends_on 'qt5_base' => :build
   depends_on 'unicode_cldr' => :build
   depends_on 'unicode_emoji' => :build

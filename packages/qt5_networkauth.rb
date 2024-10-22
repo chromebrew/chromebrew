@@ -3,17 +3,18 @@ require 'buildsystems/qmake'
 class Qt5_networkauth < Qmake
   description 'Qt Network Authentication'
   homepage 'https://www.qt.io/'
-  version 'kde-5.15.14-28180f2'
+  kde_5_15_githash = '17d6ed940cea4ead62f4055184d4fc69bf06b789'
+  version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtnetworkauth.git'
-  git_hashtag '28180f28c98e329676463e24cef0097cba45bc00'
+  git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e66c2abbad289ea5adc39374233279bf4bff5e900736b1f36b3b31e289fe4ef3',
-     armv7l: 'e66c2abbad289ea5adc39374233279bf4bff5e900736b1f36b3b31e289fe4ef3',
-     x86_64: 'f47387b32f4418c3bc5a9f352823b4216945f7f67a6de3172fc8443a4cacc5c8'
+    aarch64: '1ec3709c7cbb667917c8184d3eb48a7c33291e47ef3d8eadebd86a9faa0030e3',
+     armv7l: '1ec3709c7cbb667917c8184d3eb48a7c33291e47ef3d8eadebd86a9faa0030e3',
+     x86_64: 'cced625962e25e6f1c9e885bd193a3809e9d442702d242a79cd2636cbcc8742a'
   })
 
   depends_on 'gcc_lib' # R

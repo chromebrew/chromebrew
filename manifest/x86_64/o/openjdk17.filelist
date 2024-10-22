@@ -312,6 +312,7 @@
 /usr/local/share/openjdk17/legal/java.base/cldr.md
 /usr/local/share/openjdk17/legal/java.base/icu.md
 /usr/local/share/openjdk17/legal/java.base/public_suffix.md
+/usr/local/share/openjdk17/legal/java.base/siphash.md
 /usr/local/share/openjdk17/legal/java.base/unicode.md
 /usr/local/share/openjdk17/legal/java.compiler/ADDITIONAL_LICENSE_INFO
 /usr/local/share/openjdk17/legal/java.compiler/ASSEMBLY_EXCEPTION
@@ -330,6 +331,7 @@
 /usr/local/share/openjdk17/legal/java.desktop/lcms.md
 /usr/local/share/openjdk17/legal/java.desktop/libpng.md
 /usr/local/share/openjdk17/legal/java.desktop/mesa3d.md
+/usr/local/share/openjdk17/legal/java.desktop/pipewire.md
 /usr/local/share/openjdk17/legal/java.desktop/xwd.md
 /usr/local/share/openjdk17/legal/java.instrument/ADDITIONAL_LICENSE_INFO
 /usr/local/share/openjdk17/legal/java.instrument/ASSEMBLY_EXCEPTION

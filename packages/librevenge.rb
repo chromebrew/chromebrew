@@ -28,7 +28,7 @@ class Librevenge < Package
   depends_on 'zlib' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-werror"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-werror"
     system 'make'
   end
 

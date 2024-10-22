@@ -2716,6 +2716,8 @@
 /usr/local/share/doc/postgresql/html/regress.html
 /usr/local/share/doc/postgresql/html/release-16-1.html
 /usr/local/share/doc/postgresql/html/release-16-2.html
+/usr/local/share/doc/postgresql/html/release-16-3.html
+/usr/local/share/doc/postgresql/html/release-16-4.html
 /usr/local/share/doc/postgresql/html/release-16.html
 /usr/local/share/doc/postgresql/html/release-prior.html
 /usr/local/share/doc/postgresql/html/release.html
@@ -3692,6 +3694,7 @@
 /usr/local/share/postgresql/extension/xml2--1.0--1.1.sql
 /usr/local/share/postgresql/extension/xml2--1.1.sql
 /usr/local/share/postgresql/extension/xml2.control
+/usr/local/share/postgresql/fix-CVE-2024-4317.sql
 /usr/local/share/postgresql/information_schema.sql
 /usr/local/share/postgresql/pg_hba.conf.sample
 /usr/local/share/postgresql/pg_ident.conf.sample

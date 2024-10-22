@@ -12,8 +12,8 @@ class Libdc1394 < Package
 
   binary_sha256({
     aarch64: '0b694d5edbf189c0570a497999da69a8d11429f8204ac013d9280a92d1701bcf',
-      armv7l: '0b694d5edbf189c0570a497999da69a8d11429f8204ac013d9280a92d1701bcf',
-      x86_64: '778cdfbf6102517458e8c7c5873fb89cf8b13c00ab65ae23cd50de9a1a232adf'
+     armv7l: '0b694d5edbf189c0570a497999da69a8d11429f8204ac013d9280a92d1701bcf',
+     x86_64: '778cdfbf6102517458e8c7c5873fb89cf8b13c00ab65ae23cd50de9a1a232adf'
   })
 
   depends_on 'freeglut'
@@ -21,7 +21,7 @@ class Libdc1394 < Package
   depends_on 'libusb'
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

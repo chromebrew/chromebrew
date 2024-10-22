@@ -34,7 +34,7 @@ class Crew_launcher < Package
     EOF
   end
 
-  def self.remove
+  def self.postremove
     FileUtils.rm_rf "#{CREW_PREFIX}/share/crew-launcher/"
   end
 end

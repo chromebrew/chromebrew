@@ -28,7 +28,7 @@ class Startup_notification < Package
     system 'autoreconf --force --install'
     system "env CFLAGS='-flto=auto' \
       CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --localstatedir=/var \
       --sysconfdir=#{CREW_PREFIX}/etc"
     system 'make'

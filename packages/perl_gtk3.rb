@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_gtk3 < PERL
   description 'Perl interface to the 3.x series of the gtk+ toolkit'
   homepage 'https://metacpan.org/pod/Gtk3'
-  version '0.038-perl5.40'
+  version "0.038-#{CREW_PERL_VER}"
   license 'GPL 2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Gtk3-0.038.tar.gz'

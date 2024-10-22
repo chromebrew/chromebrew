@@ -1,14 +1,16 @@
-require 'buildsystems/python'
+# Currently breaks the system by replacing coreutils binaries with symlinks to python...
+require 'buildsystems/pip'
 
-class Py3_zcmds < Python
+class Py3_zcmds < Pip
   description 'Cross platform(ish) productivity commands written in python'
   homepage 'https://github.com/zackees/zcmds'
-  @_ver = '1.1.18-1c3965'
-  version "#{@_ver}-py3.12"
+  version "1.5.0-#{CREW_PY_VER}"
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://github.com/zackees/zcmds.git'
-  git_hashtag '1c396504a1756b220d028115defc1b87f584eed3'
+  compatibility 'aarch64'
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  no_compile_needed
+  binary_sha256({})
+
+  no_source_build
 end

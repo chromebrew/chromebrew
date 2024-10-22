@@ -1,21 +1,19 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_agate < Python
+class Py3_agate < Pip
   description 'Agate is a data analysis library that is optimized for humans instead of machines.'
   homepage 'https://agate.readthedocs.io/'
-  @_ver = '1.7.1'
-  version "#{@_ver}-py3.12"
+  version "1.12.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/wireservice/agate.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7166b2366d7a8e36c80b35d868ccbeaa3b4ed3c9fcd9f12cb81ee2e8bc3b47f3',
-     armv7l: '7166b2366d7a8e36c80b35d868ccbeaa3b4ed3c9fcd9f12cb81ee2e8bc3b47f3',
-       i686: '6aa482e07efae894990e6118f9804f42da282a517e9cbc636a448f50116d0bf2',
-     x86_64: '3a39c31a9950946ddc2359980f470e9754ff91c707535ffe485ffc05e7a2d1c1'
+    aarch64: '996f1eda8177dcf16765511247b031f7a5d66024519119788f13e10bba5c7928',
+     armv7l: '996f1eda8177dcf16765511247b031f7a5d66024519119788f13e10bba5c7928',
+       i686: 'f8612adfa5ee5a2ad19af5f565c979000f55737dca029fec85a4cee4c6218644',
+     x86_64: 'ff0028da75fa44acffcf17b897e4e93823f4a355277e09c3854253a73d17ceb4'
   })
 
   depends_on 'py3_babel'
@@ -27,4 +25,6 @@ class Py3_agate < Python
   depends_on 'py3_leather'
   depends_on 'py3_parsedatetime'
   depends_on 'python3' => :build
+
+  no_source_build
 end

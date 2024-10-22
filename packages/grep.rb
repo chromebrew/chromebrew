@@ -26,7 +26,7 @@ class Grep < Package
 
   def self.build
     system "CPPFLAGS=-DHAVE_DYNAMIC_LIBPCRE \
-      ./configure #{CREW_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --without-included-regex"
     system 'make'
   end

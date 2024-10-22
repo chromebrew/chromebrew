@@ -59,7 +59,7 @@ class Httpd < Package
     EOM
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{CREW_PREFIX}/share/httpd"
     if Dir.exist? config_dir
       puts 'WARNING: This will remove all hosting files and configuration.'.orange

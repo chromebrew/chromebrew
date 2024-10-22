@@ -23,7 +23,7 @@ class Dosbox_x < Package
 
   def self.patch
     system 'filefix'
-    system "sed -i 's,--prefix=/usr,#{CREW_OPTIONS},' build"
+    system "sed -i 's,--prefix=/usr,#{CREW_CONFIGURE_OPTIONS},' build"
   end
 
   def self.build

@@ -1,40 +1,33 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libical < Package
+class Libical < CMake
   description 'An open source reference implementation of the icalendar data type and serialization format'
   homepage 'https://github.com/libical/libical'
-  version '3.0.10'
+  version "3.0.18-#{CREW_ICU_VER}"
   license 'MPL-2.0 or LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/libical/libical/releases/download/v3.0.10/libical-3.0.10.tar.gz'
-  source_sha256 'f933b3e6cf9d56a35bb5625e8e4a9c3a50239a85aea05ed842932c1a1dc336b4'
-  binary_compression 'tpxz'
+  source_url 'https://github.com/libical/libical.git'
+  git_hashtag "v#{version.split('-').first}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'eaf30d94276f73f41c57f4c4ef520d90db8dd26c6fabd87ec06eb427d7630c1f',
-     armv7l: 'eaf30d94276f73f41c57f4c4ef520d90db8dd26c6fabd87ec06eb427d7630c1f',
-     x86_64: '4183f8666361ccb3c4c41e41ec1a17a649d1e432836a55a3aeb56ef2d0976f05'
+    aarch64: '41707a01e04fa17f6df3705fb955556df1bf852b66cdd02a6f52ffe47546aaca',
+     armv7l: '41707a01e04fa17f6df3705fb955556df1bf852b66cdd02a6f52ffe47546aaca',
+     x86_64: '670e55ae69fa5a1938b4a46b261fb3b65768fa2ce00fc6ba63d54a2ba91b90ac'
   })
 
-  depends_on 'glib'
-  depends_on 'gtk_doc' => :build
-  depends_on 'icu4c'
-  depends_on 'vala' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'icu4c' # R
+  depends_on 'libdb' # R
+  depends_on 'libxml2' # R
+  depends_on 'vala' => :build
 
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "cmake #{CREW_CMAKE_OPTIONS} .. -G Ninja \
-      -DGOBJECT_INTROSPECTION=true \
+  cmake_options '-DGOBJECT_INTROSPECTION=true \
       -DICAL_GLIB_VAPI=true \
       -DICAL_BUILD_DOCS=false \
-      -DLIBICAL_BUILD_TESTING=false"
-    end
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+      -DLIBICAL_BUILD_TESTING=false'
 end

@@ -43,7 +43,7 @@ class Newsboat < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.newsboat"
     if Dir.exist? config_dir
       print "Would you like to remove the config directory #{config_dir}? [y/N] "

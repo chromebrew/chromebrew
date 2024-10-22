@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libgedit_gtksourceview < Meson
   description 'A library that extends GtkTextView, the standard GTK '
   homepage 'https://gedit-technology.github.io'
-  version '299.0.5'
+  version '299.2.1'
   license 'LGPL2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/gedit-technology/libgedit-gtksourceview.git'
@@ -14,9 +14,9 @@ class Libgedit_gtksourceview < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'af6025427fb18b30b14ec3161e27ecf1d5042fbc9d37d767ede33d6a50fbc1c1',
-     armv7l: 'af6025427fb18b30b14ec3161e27ecf1d5042fbc9d37d767ede33d6a50fbc1c1',
-     x86_64: '6ec6e56cc039e43d03031de00c2dd0347826124407d60ed754ee3f82dcd9cae8'
+    aarch64: '6379ba00383a5eb73734d4ccf690fd92c9a638a5905746ab117dd2ddfc3c8da9',
+     armv7l: '6379ba00383a5eb73734d4ccf690fd92c9a638a5905746ab117dd2ddfc3c8da9',
+     x86_64: '155feea345e7a6a0451fb5eb7345a61f6e6e076befcb8d30f3814a094c3483a0'
   })
 
   depends_on 'cairo' # R

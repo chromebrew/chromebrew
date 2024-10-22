@@ -20,7 +20,7 @@ class Libedit < Package
   depends_on 'glibc' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
             CPPFLAGS=\"-I#{CREW_PREFIX}/include/ncursesw\""
     system 'make'
   end

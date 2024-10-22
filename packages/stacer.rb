@@ -32,7 +32,7 @@ class Stacer < Package
     ExitMessage.add "\nType 'stacer' to get started."
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{CREW_PREFIX}/.config/stacer"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "

@@ -6,7 +6,7 @@ class Minizip < Package
   homepage Zlib.homepage
   version '1.3.1'
   # When upgrading minizip, be sure to upgrade zlib in tandem.
-  puts "#{self} version differs from Zlib version #{Zlib.version}".orange if version != Zlib.version
+  puts "#{self} version differs from Zlib version #{Zlib.version.split('-').first}".orange if version != Zlib.version.split('-').first
   license Zlib.license
   compatibility 'all'
   source_url Zlib.source_url
@@ -25,7 +25,7 @@ class Minizip < Package
   def self.build
     Dir.chdir 'contrib/minizip' do
       system 'autoreconf -fiv'
-      system "./configure #{CREW_OPTIONS} \
+      system "./configure #{CREW_CONFIGURE_OPTIONS} \
                 --enable-demos"
       system 'make'
     end

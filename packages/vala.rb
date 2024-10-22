@@ -42,7 +42,7 @@ class Vala < Package
     end
 
     system "VALAC=#{Dir.pwd}/bootstrap_install/bin/valac mold -run ./autogen.sh \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --disable-maintainer-mode \
       --disable-valadoc"
     system 'make'

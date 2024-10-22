@@ -1,39 +1,22 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Isl < Package
+class Isl < Autotools
   description 'Integer Set Library for manipulating sets and relations of integer points bounded by linear constraints'
-  homepage 'http://isl.gforge.inria.fr/'
-  version '0.23'
+  homepage 'https://libisl.sourceforge.io/'
+  version '0.27'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'http://isl.gforge.inria.fr/isl-0.23.tar.xz'
-  source_sha256 '5efc53efaef151301f4e7dde3856b66812d8153dede24fab17673f801c8698f2'
-  binary_compression 'tar.xz'
+  source_url "https://libisl.sourceforge.io/isl-#{version}.tar.xz"
+  source_sha256 '6d8babb59e7b672e8cb7870e874f3f7b813b6e00e6af3f8b04f7579965643d5c'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c552525f20ee4089d55c58cb718275ef8c5beba05f49dce6415de3a80983305e',
-     armv7l: 'c552525f20ee4089d55c58cb718275ef8c5beba05f49dce6415de3a80983305e',
-       i686: '84ea248c0a4994146fed949afe40b2b6395bda1466d50976f0b080751d7617e4',
-     x86_64: '870574b61938cd278848864fd861a6d25ce27723375af17c3c3108fdc1197766'
+    aarch64: '1be10108b1dca2f1b4a5ec1b3e0327a60afc32f86d6eb18c26b2799aa0e666ec',
+     armv7l: '1be10108b1dca2f1b4a5ec1b3e0327a60afc32f86d6eb18c26b2799aa0e666ec',
+       i686: 'dcba2fea92e4bc82127c5a31ac1778d195c7255256c36b0ea2e8993577ed5c47',
+     x86_64: '913383236bf56e993aff957eeaa93a96478a045ea88adecceea57a3017f307d5'
   })
 
   depends_on 'glibc' # R
   depends_on 'gmp' # R
-
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-    # For backwards compatibility:
-    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libisl.so.23.0.0", "#{CREW_DEST_LIB_PREFIX}/libisl.so.15"
-    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libisl.so.23.0.0", "#{CREW_DEST_LIB_PREFIX}/libisl.so.19"
-  end
 end

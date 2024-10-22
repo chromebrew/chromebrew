@@ -1292,6 +1292,8 @@
 /usr/local/share/github_desktop/resources/app/highlighter/common.js.map
 /usr/local/share/github_desktop/resources/app/highlighter/ext/elixir.js
 /usr/local/share/github_desktop/resources/app/highlighter/ext/elixir.js.map
+/usr/local/share/github_desktop/resources/app/highlighter/ext/luau.js
+/usr/local/share/github_desktop/resources/app/highlighter/ext/luau.js.map
 /usr/local/share/github_desktop/resources/app/highlighter/ext/zig.js
 /usr/local/share/github_desktop/resources/app/highlighter/ext/zig.js.map
 /usr/local/share/github_desktop/resources/app/highlighter/mode/asciiarmor.js
@@ -1336,8 +1338,6 @@
 /usr/local/share/github_desktop/resources/app/highlighter/mode/jsx.js.map
 /usr/local/share/github_desktop/resources/app/highlighter/mode/julia.js
 /usr/local/share/github_desktop/resources/app/highlighter/mode/julia.js.map
-/usr/local/share/github_desktop/resources/app/highlighter/mode/lua.js
-/usr/local/share/github_desktop/resources/app/highlighter/mode/lua.js.map
 /usr/local/share/github_desktop/resources/app/highlighter/mode/markdown.js
 /usr/local/share/github_desktop/resources/app/highlighter/mode/markdown.js.map
 /usr/local/share/github_desktop/resources/app/highlighter/mode/mllike.js

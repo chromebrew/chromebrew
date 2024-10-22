@@ -3,18 +3,18 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.12.4'
+  version '3.13.0'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 'f6d419a6d8743ab26700801b4908d26d97e8b986e14f95de31b32de2b0e79554'
+  source_sha256 '086de5882e3cb310d4dca48457522e2e48018ecd43da9cdf827f6a0759efb07d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f0bfcd80509e4033c28b3382f3a416b83dcde5efbdcbd7052ca49a7b8269bc7b',
-     armv7l: 'f0bfcd80509e4033c28b3382f3a416b83dcde5efbdcbd7052ca49a7b8269bc7b',
-       i686: '44905c28ef097fe5cbeb44410bd0d36694dbfb4f417c1ae4662d09e0f0a17bd6',
-     x86_64: 'c3c7fdb3017d800b45858863d19641e86ca608aedc3e60a45b6454b18d3f8951'
+    aarch64: 'cd444774bf3d5c88321d72e7d1d4b4c3f09dcf793c2a9dcf230e72c8c70f831f',
+     armv7l: 'cd444774bf3d5c88321d72e7d1d4b4c3f09dcf793c2a9dcf230e72c8c70f831f',
+       i686: '3c3955d5ac36867db40f0249f99a34eee64142d32399fdc32f87261bcebc3880',
+     x86_64: 'adce9952f2118c876a122e04ca3407540306b840cdda266a404a80fd89ebeaaa'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -26,10 +26,7 @@ class Python3 < Package
   depends_on 'krb5' => :build
   depends_on 'libdb' # R
   depends_on 'libffi' # R
-  depends_on 'libnsl' # R
-  depends_on 'libtirpc' # R
   depends_on 'mpdecimal' # R
-  depends_on 'ncurses' # R
   depends_on 'openssl' # R
   depends_on 'readline' # R
   depends_on 'sqlite' # R
@@ -39,9 +36,17 @@ class Python3 < Package
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zoneinfo' # L
+  depends_on 'ncurses' # R
 
   no_env_options
   conflicts_ok
+
+  def self.patch
+    # Skip tests which rely on not having an underlying zfs filesystem.
+    # https://github.com/python/cpython/issues/125117
+    # See https://github.com/python/cpython/issues/81765
+    system "sed -i '/test_sqlite3/d'  Lib/test/libregrtest/pgo.py" unless %w[aarch64 armv7l].include?(ARCH)
+  end
 
   def self.preinstall
     @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
@@ -58,9 +63,9 @@ class Python3 < Package
 
   def self.prebuild
     # Ensure that internal copies of expat, libffi and zlib aren't used
-    FileUtils.rm_rf 'Modules/expat'
-    FileUtils.rm_rf Dir.glob('Modules/_ctypes/libffi*')
-    FileUtils.rm_rf 'Modules/zlib'
+    # FileUtils.rm_rf 'Modules/expat'
+    # FileUtils.rm_rf Dir.glob('Modules/_ctypes/libffi*')
+    # FileUtils.rm_rf 'Modules/zlib'
   end
 
   def self.build
@@ -73,7 +78,7 @@ class Python3 < Package
 
     FileUtils.mkdir_p 'builddir'
     Dir.chdir 'builddir' do
-      system "../configure #{CREW_OPTIONS} \
+      system "../configure #{CREW_CONFIGURE_OPTIONS} \
           --with-lto \
           --with-computed-gotos \
           --enable-loadable-sqlite-extensions \

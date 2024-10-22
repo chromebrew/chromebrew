@@ -3,8 +3,7 @@ require 'buildsystems/pip'
 class Py3_requests < Pip
   description 'Requests is a simple, yet elegant, HTTP library.'
   homepage 'https://docs.python-requests.org/'
-  @_ver = '2.32.3'
-  version "#{@_ver}-py3.12"
+  version "2.32.3-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'

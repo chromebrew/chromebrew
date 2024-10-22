@@ -38,7 +38,7 @@
 /usr/local/include/libgedit-gtksourceview-300/gtksourceview/gtksourceview.h
 /usr/local/lib64/girepository-1.0/GtkSource-300.typelib
 /usr/local/lib64/libgedit-gtksourceview-300.so
-/usr/local/lib64/libgedit-gtksourceview-300.so.0
+/usr/local/lib64/libgedit-gtksourceview-300.so.1
 /usr/local/lib64/pkgconfig/libgedit-gtksourceview-300.pc
 /usr/local/share/gir-1.0/GtkSource-300.gir
 /usr/local/share/libgedit-gtksourceview-300/language-specs/R.lang
@@ -221,6 +221,7 @@
 /usr/local/share/locale/id/LC_MESSAGES/libgedit-gtksourceview-300.mo
 /usr/local/share/locale/it/LC_MESSAGES/libgedit-gtksourceview-300.mo
 /usr/local/share/locale/ja/LC_MESSAGES/libgedit-gtksourceview-300.mo
+/usr/local/share/locale/ka/LC_MESSAGES/libgedit-gtksourceview-300.mo
 /usr/local/share/locale/kk/LC_MESSAGES/libgedit-gtksourceview-300.mo
 /usr/local/share/locale/kn/LC_MESSAGES/libgedit-gtksourceview-300.mo
 /usr/local/share/locale/ko/LC_MESSAGES/libgedit-gtksourceview-300.mo

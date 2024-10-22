@@ -2,6 +2,8 @@
 /usr/local/share/brave/LICENSE
 /usr/local/share/brave/MEIPreload/manifest.json
 /usr/local/share/brave/MEIPreload/preloaded_data.pb
+/usr/local/share/brave/PrivacySandboxAttestationsPreloaded/manifest.json
+/usr/local/share/brave/PrivacySandboxAttestationsPreloaded/privacy-sandbox-attestations.dat
 /usr/local/share/brave/brave
 /usr/local/share/brave/brave-browser
 /usr/local/share/brave/brave_100_percent.pak
