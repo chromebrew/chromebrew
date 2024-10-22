@@ -12,8 +12,9 @@ class Linuxheaders < Package
 
   case CREW_KERNEL_VERSION
   when '3.8'
+
     binary_sha256({
-      i686: '362ab05c4f6903793560fffd33abf79e5194fb72d3d38ec1648a93c56ebf91e8'
+         i686: '362ab05c4f6903793560fffd33abf79e5194fb72d3d38ec1648a93c56ebf91e8'
     })
   when '4.14'
     binary_sha256({
@@ -34,6 +35,7 @@ class Linuxheaders < Package
        x86_64: 'e6ea539149f4333518787eb1e0fa436d0914990fd2899011c277ab418a9b78ba'
     })
   when '5.10'
+
     binary_sha256({
       aarch64: '23b6f70dad19663d42a1bb8707e66eb1b35c4934ef051577701397b4708e8cff',
        armv7l: '23b6f70dad19663d42a1bb8707e66eb1b35c4934ef051577701397b4708e8cff',

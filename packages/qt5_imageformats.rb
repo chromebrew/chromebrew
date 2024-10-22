@@ -3,17 +3,18 @@ require 'buildsystems/qmake'
 class Qt5_imageformats < Qmake
   description 'Qt Image Formats'
   homepage 'https://www.qt.io/'
-  version 'kde-5.15.14-4e4f5fc'
+  kde_5_15_githash = '9f658c2093e81d1dc3333e594cc1aa4b0990e221'
+  version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtimageformats.git'
-  git_hashtag '4e4f5fc6bdac96f5281a3ebeb0fee78df7b1a498'
+  git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '21dde0735162af717a4d278a4f94d03fa2179aae6144948100bf2b575afcfacc',
-     armv7l: '21dde0735162af717a4d278a4f94d03fa2179aae6144948100bf2b575afcfacc',
-     x86_64: '3bdd5b73408e1022d3bba1ca9e3dc79127571d41260825d44e7e14a11fa1ef54'
+    aarch64: 'e000172a4865914de761df5858288b90b3168f2c8c905547af4c883c46b33496',
+     armv7l: 'e000172a4865914de761df5858288b90b3168f2c8c905547af4c883c46b33496',
+     x86_64: 'd23bfbc7ec790a30aaeec21563df43c7f4071c0a3ecf783c3e4fdd76ad22a178'
   })
 
   depends_on 'gcc_lib' # R

@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_editables < Pip
   description 'A Python library for creating "editable wheels"'
   homepage 'https://editables.readthedocs.io'
-  version '0.5-py3.12'
+  version "0.5-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8c6d70dd0b64b3de408c01fad2e19d96e8dba387198a2af0ea55e70a9e918600',
-     armv7l: '8c6d70dd0b64b3de408c01fad2e19d96e8dba387198a2af0ea55e70a9e918600',
-       i686: '191a4283041998cbf3dcc0ba234ec2e1cc1e643626835d009506c3b7fed87bbc',
-     x86_64: '71632e325a2e116ebc2608077e945d3cd6f0cc92124183bef07c7f4c722f7ebd'
+    aarch64: 'ae8fc003159785d26744d581c3842c66f9cf2bbebc9d7b94eba059d97f6c169d',
+     armv7l: 'ae8fc003159785d26744d581c3842c66f9cf2bbebc9d7b94eba059d97f6c169d',
+       i686: '7285e47b7daa821ce211b67abeb55bb4770e416e6b501c307788eeed02073b3a',
+     x86_64: '72995425085ce1cfa8df30088bd30c0282b871ea7d7149028d6e4ecbe40fd83a'
   })
 
   depends_on 'python3' => :build

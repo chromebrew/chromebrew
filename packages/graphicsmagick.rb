@@ -3,7 +3,7 @@ require 'package'
 class Graphicsmagick < Package
   description 'GraphicsMagick is the swiss army knife of image processing.'
   homepage 'http://www.graphicsmagick.org/'
-  version '1.3.45-icu75.1'
+  version "1.3.45-#{CREW_ICU_VER}"
   license 'MIT'
   compatibility 'all'
   min_glibc (%w[x86_64 aarch64 armv7l].include?(ARCH) ? '2.37' : '2.23').to_s
@@ -12,9 +12,9 @@ class Graphicsmagick < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '3e03732df5107a6c8617b785baae64d477ead57553087fafa31de0822d7f06fc',
     aarch64: 'd43124fbe8d5b9d83baee6a6f414de0cfebf3c8ece98b988bb1e4b15af70bb7d',
      armv7l: 'd43124fbe8d5b9d83baee6a6f414de0cfebf3c8ece98b988bb1e4b15af70bb7d',
+       i686: '3e03732df5107a6c8617b785baae64d477ead57553087fafa31de0822d7f06fc',
      x86_64: '36081e952cf6c73855cf4b59770bf5b89ecfed1fe9f4f9a16105d8ebbd5b8113'
   })
 

@@ -6,19 +6,29 @@ jobs:
     strategy:
       matrix:
         arch: [x86_64, armv7l, i686]
-    runs-on: ubuntu-latest
+        runner: [self-hosted, ubuntu-latest]
+        exclude:
+          - arch: x86_64
+            runner: self-hosted
+          - arch: i686
+            runner: self-hosted
+          - arch: armv7l
+            runner: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
       - name: Dump github context
         run: echo "$GITHUB_CONTEXT"
-      - name: Set up QEMU
-        if: matrix.arch == 'armv7l'
-        uses: docker/setup-qemu-action@v3.2.0
       - name: Get non-pkg changed files
         id: non-pkg-changed-files
         uses: tj-actions/changed-files@v45
         with:
-          files_ignore: packages/*.rb
+          files_ignore: |
+            packages/*.rb
+            manifest/**
+            tools/packages.yaml
       - name: Get all changed package files
         id: changed-ruby-files
         uses: tj-actions/changed-files@v45
@@ -71,57 +81,58 @@ jobs:
         run: |
             case $TARGET_ARCH in
               x86_64)
-              # Export the x86_64 container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
-              if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                  echo "CONTAINER=hatch-x86_64.m126" >> $GITHUB_ENV
-              else
-                  echo "CONTAINER=nocturne-x86_64.m90" >> $GITHUB_ENV
-              fi
-              echo "PLATFORM=linux/amd64" >> $GITHUB_ENV
-              echo "LIB_SUFFIX=64" >> $GITHUB_ENV
+                # Export the x86_64 container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
+                if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                    echo "CONTAINER=hatch-x86_64.m129" >> $GITHUB_ENV
+                else
+                    echo "CONTAINER=nocturne-x86_64.m90" >> $GITHUB_ENV
+                fi
+                echo "PLATFORM=linux/amd64" >> $GITHUB_ENV
+                echo "LIB_SUFFIX=64" >> $GITHUB_ENV
               ;;
               armv7l)
-              # Export the armv7l container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
-              if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                  echo "CONTAINER=strongbad-armv7l.m126" >> $GITHUB_ENV
-              else
-                  echo "CONTAINER=fievel-armv7l.m91" >> $GITHUB_ENV
-              fi
-              echo "PLATFORM=linux/arm/v7" >> $GITHUB_ENV
-              echo "LIB_SUFFIX=" >> $GITHUB_ENV
+                # Export the armv7l container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
+                if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                    echo "CONTAINER=strongbad-armv7l.m129" >> $GITHUB_ENV
+                else
+                    echo "CONTAINER=fievel-armv7l.m91" >> $GITHUB_ENV
+                fi
+                echo "PLATFORM=linux/arm/v7" >> $GITHUB_ENV
+                echo "LIB_SUFFIX=" >> $GITHUB_ENV
               ;;
               i686)
-              # There is only one i686 container based upon M58 with glibc 2.23.
-              echo "CONTAINER=alex-i686.m58" >> $GITHUB_ENV
-              echo "PLATFORM=linux/386" >> $GITHUB_ENV
-              echo "LIB_SUFFIX=" >> $GITHUB_ENV
+                # There is only one i686 container based upon M58 with glibc 2.23.
+                echo "CONTAINER=alex-i686.m58" >> $GITHUB_ENV
+                echo "PLATFORM=linux/386" >> $GITHUB_ENV
+                echo "LIB_SUFFIX=" >> $GITHUB_ENV
               ;;
             esac
       - name: Run unit tests
         run: |
-            if [[ -z ${NON_PKG_CHANGED_FILES} ]] && [[ $PLATFORM == 'linux/arm/v7' ]] && [[ -z ${ARMV7L_PACKAGES} ]]; then
-              # Run the arm container if there are non-package changed files,
-              # but otherwise do not run the arm container if there are no packages compatible with armv7l.
+            if [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]); then
+              # Exit the arm container if there are neither non-package changed files nor armv7l compatible packages.
+              echo "Skipping armv7l container unit tests."
               exit 0
-            fi
-            if [[ -z ${NON_PKG_CHANGED_FILES} ]] && [[ $PLATFORM == 'linux/amd64' ]] && [[ -z ${x86_64_PACKAGES} ]]; then
-              # Run the x86_64 container if there are non-package changed files,
-              # but otherwise do not run the x86_64 container if there are no packages compatible with x86_64.
+            elif [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]); then
+              # Exit the x86_64 container if there are neither non-package changed files nor x86_64 compatible packages.
+              echo "Skipping x86_64 container unit tests."
               exit 0
-            fi
-            if [[ -z ${NON_PKG_CHANGED_FILES} ]] && [[ $PLATFORM == 'linux/386' ]] && [[ -z ${i686_PACKAGES} ]]; then
-              # Run the i686 container if there are non-package changed files,
-              # but otherwise do not run the i686 container if there are no packages compatible with i686.
+            elif [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]); then
+              # Exit the i686 container if there are neither non-package changed files nor i686 compatible packages.
+              echo "Skipping i686 container unit tests."
               exit 0
+            else
+              docker pull --platform $PLATFORM satmandu/crewbuild:$CONTAINER
+              docker run \
+                --rm \
+                --platform $PLATFORM \
+                --privileged \
+                -u chronos \
+                -e CHANGED_PACKAGES="$CHANGED_PACKAGES" \
+                -e LD_LIBRARY_PATH="/usr/local/lib$LIB_SUFFIX" \
+                -e GCONV_PATH="/usr/local/lib$LIB_SUFFIX/gconv" \
+                -e CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}" \
+                -e CREW_BRANCH="${{ github.head_ref }}" \
+                "satmandu/crewbuild:$CONTAINER" \
+                /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test.sh
             fi
-            sudo docker run \
-              --platform $PLATFORM \
-              -v "${{ github.workspace }}/tests/unit_test.sh:/unit_test.sh" \
-              -u chronos \
-              -e CHANGED_PACKAGES="$CHANGED_PACKAGES" \
-              -e LD_LIBRARY_PATH="/usr/local/lib$LIB_SUFFIX" \
-              -e GCONV_PATH="/usr/local/lib$LIB_SUFFIX/gconv" \
-              -e CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}" \
-              -e CREW_BRANCH="${{ github.head_ref }}" \
-              "satmandu/crewbuild:$CONTAINER" \
-              /usr/local/bin/bash /unit_test.sh

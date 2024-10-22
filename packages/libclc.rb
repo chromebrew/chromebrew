@@ -2,28 +2,29 @@
 # https://github.com/archlinux/svntogit-packages/raw/packages/libclc/trunk/PKGBUILD
 
 require 'package'
-Package.load_package("#{__dir__}/llvm18_build.rb")
+Package.load_package("#{__dir__}/llvm19_build.rb")
 
 class Libclc < Package
   description 'Library requirements of the OpenCL C programming language'
   homepage 'https://libclc.llvm.org/'
-  version '18.1.8'
+  version '19.1.2'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm18_build.version}".orange if version != Llvm18_build.version
+  puts "#{self} version differs from llvm version #{Llvm19_build.version}".orange if version != Llvm19_build.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/llvm/llvm-project.git'
-  git_hashtag Llvm18_build.git_hashtag.to_s
+  git_hashtag Llvm19_build.git_hashtag.to_s
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '829c0e35b32c964349c22033ac225fcb7d66fa99f48fb9bdd7843bf5e474e2c6',
-     armv7l: '829c0e35b32c964349c22033ac225fcb7d66fa99f48fb9bdd7843bf5e474e2c6',
-     x86_64: '324f3637608dc4ad96a7125d8757265105978d0ac96f2f5ce64fe5c94f03a3ab'
+    aarch64: '1fc048ef02c1cc5ef37de481d24fd8cdd832ea97dc76238d773e3c2673f65ce9',
+     armv7l: '1fc048ef02c1cc5ef37de481d24fd8cdd832ea97dc76238d773e3c2673f65ce9',
+     x86_64: '45b0477184796b90e0f7c506c3249caf2d91ba5486543e2acaf1eaf1ae072c9e'
   })
 
-  depends_on 'llvm18_dev' => :build
+  depends_on 'llvm19_dev' => :build
   depends_on 'python3' => :build
+  depends_on 'sccache' => :build
   depends_on 'spirv_llvm_translator' => :build
 
   no_env_options
@@ -57,17 +58,15 @@ class Libclc < Package
                      end
     system "cmake -B builddir -G Ninja libclc \
       #{@cmake_options.gsub('-DCMAKE_LINKER_TYPE=MOLD', '')} \
+      -DCLANG_DEFAULT_LINKER=#{CREW_LINKER} \
       -DCMAKE_C_COMPILER=$(which clang) \
+      -DCMAKE_C_COMPILER_LAUNCHER=sccache \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \
+      -DCMAKE_CXX_COMPILER_LAUNCHER=sccache \
       -DCMAKE_CXX_COMPILER_AR=$(which llvm-ar) \
       -DCMAKE_CXX_COMPILER_RANLIB=$(which llvm-ranlib) \
       -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
-      -DLIBOMP_ENABLE_SHARED=ON \
-      -DLIBOMP_INSTALL_ALIASES=OFF \
-      -DLLVM_INCLUDE_BENCHMARKS=OFF \
-      -DOPENMP_LIBDIR_SUFFIX=#{CREW_LIB_SUFFIX} \
-      -DPYTHON_EXECUTABLE=$(which python3) \
       -Wno-dev"
     system "#{CREW_NINJA} -C builddir"
   end

@@ -5,7 +5,7 @@ class Aqemu < Package
   homepage 'https://sourceforge.net/projects/aqemu/'
   version '0.9.2'
   license 'GPL-2'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://downloads.sourceforge.net/project/aqemu/aqemu/0.9.2/aqemu-0.9.2.tar.gz'
   source_sha256 'e3d54de00ebdce3754f97f7e0e7cce8cebb588e8ce6bc249401cc909281b08de'
   binary_compression 'tar.xz'

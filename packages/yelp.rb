@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Yelp < Autotools
   description 'Get help with GNOME'
   homepage 'https://wiki.gnome.org/Apps/Yelp'
-  version '42.2-icu75.1'
+  version "42.2-#{CREW_ICU_VER}"
   license 'GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/yelp.git'
@@ -27,7 +27,7 @@ class Yelp < Autotools
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
-  depends_on 'itstool' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'libgcrypt' # R
   depends_on 'libgpg_error' # R
   depends_on 'libhandy' # R

@@ -25,6 +25,7 @@ def require_gem(gem_name_and_require = nil, require_override = nil)
   require requires
 end
 require_gem 'highline'
+require_gem 'timeout'
 
 def agree_with_default(yes_or_no_question_msg, character = nil, default:)
   yes_or_no_question = yes_or_no_question_msg.lightpurple
@@ -42,9 +43,9 @@ def agree_with_default(yes_or_no_question_msg, character = nil, default:)
 end
 
 class Package
-  boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
-                   :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules, :no_links, :no_lto, :no_patchelf,
-                   :no_shrink, :no_source_build, :no_strip, :no_upstream_update, :no_zstd, :patchelf, :print_source_bashrc, :run_tests
+  boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep, :git_fetchtags, :gem_compile_needed, :gnome, :is_fake, :is_musl, :is_static,
+                   :no_binaries_needed, :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules, :no_links, :no_lto, :no_patchelf,
+                   :no_shrink, :no_source_build, :no_strip, :no_upstream_update, :no_zstd, :patchelf, :prerelease, :print_source_bashrc, :run_tests
 
   property :description, :homepage, :version, :license, :compatibility,
            :binary_compression, :binary_url, :binary_sha256, :source_url, :source_sha256,
@@ -64,7 +65,25 @@ class Package
                      :postremove   # Function to perform after package removal.
 
   class << self
-    attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
+    attr_accessor :build_from_source, :cached_build, :in_build, :in_install, :in_upgrade, :missing_binaries, :name
+  end
+
+  def self.agree_default_no(message = nil)
+    # This defaults to false.
+    Timeout.timeout(CREW_AGREE_TIMEOUT_SECONDS) do
+      return agree_with_default("#{message} (yes/NO)?", true, default: 'n')
+    end
+  rescue Timeout::Error
+    return false
+  end
+
+  def self.agree_default_yes(message = nil)
+    # This defaults to true.
+    Timeout.timeout(CREW_AGREE_TIMEOUT_SECONDS) do
+      return agree_with_default("#{message} (YES/no)?", true, default: 'y')
+    end
+  rescue Timeout::Error
+    return true
   end
 
   def self.agree_to_remove(config_object = nil)
@@ -73,22 +92,15 @@ class Package
     elsif File.directory? config_object
       identifier = 'directory'
     else
-      abort "Cannot identify #{config_object}.".lightred
+      puts "Cannot identify #{config_object}.".lightred
+      return
     end
-    if agree_with_default("Would you like to remove the config #{identifier}: #{config_object} (YES/no)?", true, default: 'y')
+    if agree_default_no("Would you like to remove the config #{identifier}: #{config_object}")
       FileUtils.rm_rf config_object
       puts "#{config_object} removed.".lightgreen
     else
       puts "#{config_object} saved.".lightgreen
     end
-  end
-
-  def self.agree_default_no(message = nil)
-    return agree_with_default("#{message} (yes/NO)?", true, default: 'n')
-  end
-
-  def self.agree_default_yes(message = nil)
-    return agree_with_default("#{message} (YES/no)?", true, default: 'y')
   end
 
   def self.load_package(pkg_file)
@@ -97,15 +109,13 @@ class Package
     pkg_name = File.basename(pkg_file, '.rb')
     class_name = pkg_name.capitalize
 
-    # Read and eval package script under 'Package' class, using the
-    # newest file available.
+    # Read and eval package script under 'Package' class, using the newest file available.
     pkg_file = Dir["{#{CREW_LOCAL_REPO_ROOT}/packages,#{CREW_PACKAGES_PATH}}/#{pkg_name}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
 
-    begin
-      class_eval(File.read(pkg_file, encoding: Encoding::UTF_8), pkg_file) unless const_defined?("Package::#{class_name}")
-    rescue TypeError
-      abort "Package file for #{pkg_name} not found.".lightred
-    end
+    # If this package has been removed, it won't be found in either directory, so set it back to what it was before to get a nicer error.
+    pkg_file = "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb" if pkg_file.nil?
+
+    class_eval(File.read(pkg_file, encoding: Encoding::UTF_8), pkg_file) unless const_defined?("Package::#{class_name}")
     pkg_obj = const_get(class_name)
     pkg_obj.name = pkg_name
 
@@ -331,8 +341,8 @@ class Package
     @dependencies.store(dep_name, [dep_tags, ver_check])
   end
 
-  def self.binary?(architecture) = !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
-  def self.source?(architecture) = !(binary?(architecture) || is_fake?)
+  def self.binary?(architecture) = !@build_from_source && @binary_sha256&.key?(architecture)
+  def self.source?(architecture) = missing_binaries ? true : !(binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
     @crew_env_options_hash = if no_env_options?

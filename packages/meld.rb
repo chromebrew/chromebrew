@@ -4,7 +4,7 @@ class Meld < Meson
   description 'Meld is a visual diff and merge tool targeted at developers.'
   homepage 'https://meldmerge.org/'
   @_ver = '3.22.1'
-  version "#{@_ver}-py3.12"
+  version "#{@_ver}-#{CREW_PY_VER}"
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/meld.git'

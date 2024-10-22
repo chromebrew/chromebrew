@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_werkzeug < Pip
   description 'Werkzeug is a comprehensive WSGI web application library.'
   homepage 'https://palletsprojects.com/p/werkzeug/'
-  version '3.0.4-py3.12'
+  version "3.0.4-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '796f1c01882498826449902f1eebee3b859976950d1cd36d7c829972919e38e8',
-     armv7l: '796f1c01882498826449902f1eebee3b859976950d1cd36d7c829972919e38e8',
-       i686: '6f7646b7258d5fc500448b9cacf701de60a76d74734d8666d4ebc40cb8240824',
-     x86_64: '796be94191e2bf51885afb4d0b7d91004095fb96650a113d751aef5159891194'
+    aarch64: '8b054ea23e135a21791e45e7d7f3811dcccb695d8f69dd4ec45abd14eec2b784',
+     armv7l: '8b054ea23e135a21791e45e7d7f3811dcccb695d8f69dd4ec45abd14eec2b784',
+       i686: 'edd38dd4c95bf3e5c377800d999f82b94126466d289fd414e3ef00d485af96bf',
+     x86_64: '97db9a9e092c1cf1ab5fa9aeded984d3f27fac93ad931dcbdf3ef7ac318b610e'
   })
 
   depends_on 'python3' => :build

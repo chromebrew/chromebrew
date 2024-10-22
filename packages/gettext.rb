@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Gettext < Autotools
   description 'GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.'
   homepage 'https://www.gnu.org/software/gettext/'
-  version '0.22.5-icu75.1'
+  version "0.22.5-#{CREW_ICU_VER}"
   license 'GPL-3+ and LGPL-2.1+'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gettext/gettext-0.22.5.tar.lz'

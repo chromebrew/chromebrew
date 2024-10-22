@@ -1,9 +1,10 @@
 require 'buildsystems/python'
+require 'ptools'
 
 class Py3_setuptools < Python
   description 'Setuptools is the python build system from the Python Packaging Authority.'
   homepage 'https://setuptools.readthedocs.io/'
-  version '74.1.2-py3.12'
+  version "75.2.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/setuptools.git'
@@ -11,10 +12,10 @@ class Py3_setuptools < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3621d63b8a622c3c6a9a19ec43193652bc0ff966500a558587db2571a11f4e45',
-     armv7l: '3621d63b8a622c3c6a9a19ec43193652bc0ff966500a558587db2571a11f4e45',
-       i686: '1535313daecfa1ddbb92780efa88ecfd5c59f8078372eeab7ca0215a2f876921',
-     x86_64: 'f682404e6c62d422144c370bb33178117bda25859c166446270f33d8b42c717f'
+    aarch64: '561ab0bc8baab39a873c0fc8b8157541dd4cf5d9d15a1454a8acb9d3fa01dc29',
+     armv7l: '561ab0bc8baab39a873c0fc8b8157541dd4cf5d9d15a1454a8acb9d3fa01dc29',
+       i686: '5eabf8b8f9c6593bc825aa7e64ac436c41eaa4277bfce147250873b246441d87',
+     x86_64: 'aca8532e2bb9c4858cf40894101c58fbd05f2463d472fe62d7b79668648fafcd'
   })
 
   depends_on 'python3'
@@ -23,11 +24,13 @@ class Py3_setuptools < Python
   conflicts_ok
 
   def self.prebuild
-    system 'python3 -m pip uninstall setuptools -y', exception: false
-    system 'python3 -m pip install setuptools', exception: false
+    if File.which('zstd')
+      system 'python3 -m pip uninstall setuptools -y', exception: false
+      system 'python3 -m pip install -I --force-reinstall --no-deps setuptools', exception: false
+    end
   end
 
   def self.postremove
-    system 'python3 -m pip uninstall setuptools -y', exception: false
+    system 'python3 -m pip uninstall setuptools -y', exception: false if Kernel.system('which zstd', %i[out err] => File::NULL)
   end
 end

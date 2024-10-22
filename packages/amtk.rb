@@ -12,8 +12,8 @@ class Amtk < Meson
 
   binary_sha256({
     aarch64: '0cac9e9b31f3de8055a973430a67480efea5d04757c1b7b7ddd9887c7c4ca8db',
-      armv7l: '0cac9e9b31f3de8055a973430a67480efea5d04757c1b7b7ddd9887c7c4ca8db',
-      x86_64: '3f4369cafcc56717e6d5e0bb2f67e745fcc3200a7a6153045ad34ed5931e949c'
+     armv7l: '0cac9e9b31f3de8055a973430a67480efea5d04757c1b7b7ddd9887c7c4ca8db',
+     x86_64: '3f4369cafcc56717e6d5e0bb2f67e745fcc3200a7a6153045ad34ed5931e949c'
   })
 
   depends_on 'glibc' # R

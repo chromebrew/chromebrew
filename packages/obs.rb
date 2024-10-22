@@ -11,7 +11,7 @@ class Obs < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    x86_64: '854492244415cea4b4874cf3cd2302649d5b538d89366f2fd1ccceda7ff1f3ea'
+     x86_64: '854492244415cea4b4874cf3cd2302649d5b538d89366f2fd1ccceda7ff1f3ea'
   })
 
   depends_on 'curl'

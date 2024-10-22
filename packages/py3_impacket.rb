@@ -3,20 +3,21 @@ require 'buildsystems/pip'
 class Py3_impacket < Pip
   description 'Impacket provides network protocols constructors and dissectors.'
   homepage 'https://www.secureauth.com/labs/open-source-tools/impacket/'
-  version '0.11.0-py3.12'
+  version "0.12.0-#{CREW_PY_VER}"
   license 'Apache-2.0-with-impacket-modifications'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aa8591cf4bb65c1690c9e47d7d19443916697c073c3ab07f1993997ea112b604',
-     armv7l: 'aa8591cf4bb65c1690c9e47d7d19443916697c073c3ab07f1993997ea112b604',
-       i686: '8b7d70465846f4c0a0c84d338a32bcb9c6e1b00f67fe83bbe231b0e9b961ca8e',
-     x86_64: 'ea69014fbf63f98390a229dee574c0ff58d6ea209b24d32c11d8d0dec9b42869'
+    aarch64: '2c1bbc2d3813eff21b4217614ca98606234e123dc930f52a05425d4ddf7ee253',
+     armv7l: '2c1bbc2d3813eff21b4217614ca98606234e123dc930f52a05425d4ddf7ee253',
+       i686: '93f8bbc137ffd9a26cfa9f694de720f0007b82084cd9b8c945cc743992f9be8c',
+     x86_64: 'ad274a4893be58b67d62438d2c02f77adb928f48e8e099e15e9b21f732a10bf0'
   })
 
   depends_on 'py3_pycryptodomex'
+  depends_on 'py3_cryptography'
   depends_on 'py3_flask'
   depends_on 'py3_pyasn1'
   depends_on 'py3_pyopenssl'
@@ -24,6 +25,7 @@ class Py3_impacket < Pip
   depends_on 'py3_ldap3'
   depends_on 'py3_ldapdomaindump'
   depends_on 'python3' => :build
+  depends_on 'rust' => :build
 
   no_source_build
 end

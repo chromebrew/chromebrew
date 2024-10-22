@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_slugify < Pip
   description 'Python-slugify returns unicode slugs.'
   homepage 'https://github.com/un33k/python-slugify/'
-  version '0.0.1-py3.12'
+  version "0.0.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '25a308f3a01c35d1aa69f9e750b2f792ca3cd3cbbdaccc92821d7c8938fc8042',
-     armv7l: '25a308f3a01c35d1aa69f9e750b2f792ca3cd3cbbdaccc92821d7c8938fc8042',
-       i686: '2e08fb31c9f37ac554e6ea659a7af3ed853a51a18006bd29aeab3b137650507b',
-     x86_64: '37ccbe3e6b11eabf9d284e8d3ec03e6c970b31eab3e61c8fd37cdd9f11aa3c2f'
+    aarch64: '8bc7d2ea3ab799c2153922a5bdcd8b2ace9a1520f12b1092f2500cec45105090',
+     armv7l: '8bc7d2ea3ab799c2153922a5bdcd8b2ace9a1520f12b1092f2500cec45105090',
+       i686: 'fdeceb5b3c84b475e07782e45600f677394606c781fa952c0d4213930b7aee8d',
+     x86_64: '7723047cd546b00fc1b5a43448dad55669aacdf3ff7559515f6db87eacdb8ee4'
   })
 
   depends_on 'py3_text_unidecode'

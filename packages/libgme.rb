@@ -12,9 +12,9 @@ class Libgme < Package
 
   binary_sha256({
     aarch64: '3dd506152d59a392b3e0fd91b568acca67c95178f49b7781c05f9888ade788c8',
-      armv7l: '3dd506152d59a392b3e0fd91b568acca67c95178f49b7781c05f9888ade788c8',
-        i686: '8d6bdc67ece71fec32b470d57b37507ef55edcbe6807ffa70eff4db1ac3db94e',
-      x86_64: 'f87558d76fa56792e156c87cb9db5621f9b2a7ca8cac2f6d9c549761601c79bf'
+     armv7l: '3dd506152d59a392b3e0fd91b568acca67c95178f49b7781c05f9888ade788c8',
+       i686: '8d6bdc67ece71fec32b470d57b37507ef55edcbe6807ffa70eff4db1ac3db94e',
+     x86_64: 'f87558d76fa56792e156c87cb9db5621f9b2a7ca8cac2f6d9c549761601c79bf'
   })
 
   def self.build

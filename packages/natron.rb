@@ -11,7 +11,7 @@ class Natron < Package
   binary_compression 'tpxz'
 
   binary_sha256({
-    x86_64: '35b3c22b67f74d285e71f619179cf36a3a475d0df37dd7dcb104d22a318edce4'
+     x86_64: '35b3c22b67f74d285e71f619179cf36a3a475d0df37dd7dcb104d22a318edce4'
   })
 
   depends_on 'desktop_file_utils'

@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_sqlalchemy < Pip
   description 'SQLalchemy is a database toolkit for Python.'
   homepage 'https://sqlalchemy.org'
-  version '2.0.34-py3.12'
+  version "2.0.36-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6b31173fcba38941be369ede18babe8c1db8aff4f905d39daaa3f8655c3b7d9a',
-     armv7l: '6b31173fcba38941be369ede18babe8c1db8aff4f905d39daaa3f8655c3b7d9a',
-       i686: 'd399ffbf2dad704ce43ff685e4c6bb860736f5a56707edb032209abddf87c248',
-     x86_64: '591e303e043548fbe32e0370cbaf74a9e2935dcee200c0302ebba391affdef32'
+    aarch64: '4e0b9d6a5c27d975e2c5075ee92d6a05d08c1dae2436adfc8049a3a71c3bb598',
+     armv7l: '4e0b9d6a5c27d975e2c5075ee92d6a05d08c1dae2436adfc8049a3a71c3bb598',
+       i686: '92b633abf5b866bd44170cd6e914c35c50f1340e6dbd30d630cbdf091f91af19',
+     x86_64: '2a1484778eb32654731c78e965df9ff3fb13c5fe13f807fee85c64976f890f64'
   })
 
   depends_on 'python3' => :build

@@ -3,7 +3,7 @@ require 'package'
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://github.com/OpenPrinting/cups'
-  version '2.4.10'
+  version '2.4.11'
   compatibility 'all'
   license 'Apache-2.0'
   source_url 'https://github.com/OpenPrinting/cups.git'
@@ -11,10 +11,10 @@ class Cups < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ecc709a871b29edcb2cf0fba701bb0d47f27ecf0d9f951d9bc562a4e3e56af5c',
-     armv7l: 'ecc709a871b29edcb2cf0fba701bb0d47f27ecf0d9f951d9bc562a4e3e56af5c',
-       i686: '6a24d83dd8bae75bffab5a6a9ac36b6d2d1087ae134b3e1eb41043f4dffbc4b9',
-     x86_64: 'd809d075fdfbe30f9b722ae597204c1e12f0b72b1c674fcdb17e59a098606cb7'
+    aarch64: '418860e229680e2888764d14bac8bb4beeb7c562cd60696b4eb9b81082f43baa',
+     armv7l: '418860e229680e2888764d14bac8bb4beeb7c562cd60696b4eb9b81082f43baa',
+       i686: '7e000bd57ce514ffb1b50808d366ddb230d68ffe0f47a0fb5e19cfa4f216ca73',
+     x86_64: '580c67be4ecf77554096dc7c351ea7c118cb4b7801357154137e733a2d4cd7a1'
   })
 
   depends_on 'acl' # R
@@ -22,7 +22,7 @@ class Cups < Package
   depends_on 'glibc' # R
   depends_on 'libusb' # R
   depends_on 'linux_pam' # R
-  depends_on 'llvm18_dev' => :build if %w[armv7l aarch64].include?(ARCH)
+  depends_on 'llvm19_dev' => :build if %w[armv7l aarch64].include?(ARCH)
   depends_on 'openssl' # R
   depends_on 'psmisc' # L
   depends_on 'zlib' # R

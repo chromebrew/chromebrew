@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pep517 < Pip
   description 'Python PEP517 is an API to call PEP 517 hooks for building Python packages '
   homepage 'https://pep517.readthedocs.io/'
-  version '0.13.1-py3.12'
+  version "0.13.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7dc82400e3194a34ac0243f0e2b1bc8a1f8118abb9e3aa1f5e84708e0c2d3554',
-     armv7l: '7dc82400e3194a34ac0243f0e2b1bc8a1f8118abb9e3aa1f5e84708e0c2d3554',
-       i686: '3cb94c10f900e4f03fc9ba8eeef44e788ec9fb953321127d48a66fb7dfe1825c',
-     x86_64: '58576989d4eda6b3bebc576df520ae2b96dd069601a96a43f7360342ac40ab0a'
+    aarch64: 'c51509b73857ef343fe8719492caf72dda1b316c5baa18051095cd8b2083bb41',
+     armv7l: 'c51509b73857ef343fe8719492caf72dda1b316c5baa18051095cd8b2083bb41',
+       i686: '58effc349a8d3e02e8e4469803c2fac40a114ae5d274b9cb603750797669240d',
+     x86_64: '97e1e52fee8b729abdc65f97f82882f097944ef2788697bcb272fea1d2a66c7e'
   })
 
   depends_on 'python3'

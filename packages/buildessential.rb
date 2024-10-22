@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.36'
+  version '1.39'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -100,11 +100,11 @@ class Buildessential < Package
 
   # LLVM
   # This can be pulled in on a per-package basis...
-  # depends_on 'llvm18_dev'
-  depends_on 'llvm18_lib' # This provides llvm-strip
+  # depends_on 'llvm19_dev'
+  depends_on 'llvm19_lib' # This provides llvm-strip
 
   # Meson build system
-  depends_on 'mesonbuild'
+  depends_on 'py3_meson'
 
   # Node.js
   # depends_on 'nodebrew'
@@ -141,6 +141,8 @@ class Buildessential < Package
   depends_on 'py3_libxml2'
   # Pax_utils needs this.
   depends_on 'py3_pyelftools'
+  # Needed for pypi uploads to gitlab
+  depends_on 'py3_twine'
 
   # Qt
   # depends_on 'qtcreator'
@@ -175,8 +177,6 @@ class Buildessential < Package
   # Add rubocop for linting packages. (This also installs the
   # rubocop config file.)
   depends_on 'ruby_rubocop'
-  # crew check -V breaks without this.
-  depends_on 'ruby_ruby_libversion'
 
   # Code quality
   depends_on 'py3_pre_commit'

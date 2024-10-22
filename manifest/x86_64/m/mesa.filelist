@@ -10,7 +10,6 @@
 /usr/local/lib64/dri/iris_dri.so
 /usr/local/lib64/dri/kms_swrast_dri.so
 /usr/local/lib64/dri/libdril_dri.so
-/usr/local/lib64/dri/libgallium_drv_video.so
 /usr/local/lib64/dri/nouveau_dri.so
 /usr/local/lib64/dri/nouveau_drv_video.so
 /usr/local/lib64/dri/r300_dri.so
@@ -32,7 +31,7 @@
 /usr/local/lib64/libGLX_mesa.so
 /usr/local/lib64/libGLX_mesa.so.0
 /usr/local/lib64/libGLX_mesa.so.0.0.0
-/usr/local/lib64/libgallium-24.2.2.so
+/usr/local/lib64/libgallium-24.2.5.so
 /usr/local/lib64/libgbm.so
 /usr/local/lib64/libgbm.so.1
 /usr/local/lib64/libgbm.so.1.0.0
@@ -49,7 +48,6 @@
 /usr/local/lib64/pkgconfig/dri.pc
 /usr/local/lib64/pkgconfig/gbm.pc
 /usr/local/lib64/pkgconfig/xatracker.pc
-/usr/local/lib64/vdpau/libvdpau_gallium.so.1.0.0
 /usr/local/lib64/vdpau/libvdpau_nouveau.so
 /usr/local/lib64/vdpau/libvdpau_nouveau.so.1
 /usr/local/lib64/vdpau/libvdpau_nouveau.so.1.0

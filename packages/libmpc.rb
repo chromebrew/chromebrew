@@ -12,9 +12,9 @@ class Libmpc < Package
 
   binary_sha256({
     aarch64: '2aff1d1f93af9d47cebdf0e36a2172487301cb70b0be2aab5217d5e739306fdc',
-      armv7l: '2aff1d1f93af9d47cebdf0e36a2172487301cb70b0be2aab5217d5e739306fdc',
-        i686: '8133a1aae30798c0654e8f864a2ebbdf11f014f309257a031ee0eccb25c904bc',
-      x86_64: '6bcfe955860efa5da35ee05346e092978b3b15144d2b8169f89fbe7f9df4c11a'
+     armv7l: '2aff1d1f93af9d47cebdf0e36a2172487301cb70b0be2aab5217d5e739306fdc',
+       i686: '8133a1aae30798c0654e8f864a2ebbdf11f014f309257a031ee0eccb25c904bc',
+     x86_64: '6bcfe955860efa5da35ee05346e092978b3b15144d2b8169f89fbe7f9df4c11a'
   })
 
   depends_on 'libcue'

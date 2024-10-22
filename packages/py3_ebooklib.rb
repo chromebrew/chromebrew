@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_ebooklib < Pip
   description 'Ebooklib is a Python E-book library for handling books in EPUB2/EPUB3 format.'
   homepage 'https://docs.sourcefabric.org/projects/ebooklib/'
-  version '0.18-py3.12'
+  version "0.18-#{CREW_PY_VER}"
   license 'AGPL-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b737aa6b618f2548f229bfa67efb8d1b66c5e55eb15ff3bc9a6c6456922cf6c1',
-     armv7l: 'b737aa6b618f2548f229bfa67efb8d1b66c5e55eb15ff3bc9a6c6456922cf6c1',
-       i686: 'fa53a88a3640442155f31f773e89b6dfc78502551828e84e1ee20da59af680d4',
-     x86_64: '8a1126a6bfcc1ea9cf7b28e51b0575f94bb3bba66d438c7e5214c482935d8a35'
+    aarch64: 'd7b7f7addb43a911ca92a3c03725eeef7eb837db2846845464dfe2d0518532f3',
+     armv7l: 'd7b7f7addb43a911ca92a3c03725eeef7eb837db2846845464dfe2d0518532f3',
+       i686: '31ad50a93d78426a630f685efa02c1825e7546e7e614f537b04e655f6aae9a76',
+     x86_64: '1c5f81920c26b9471fbb48e6788fb56128a512d61c939dd59f8a936fdba7b681'
   })
 
   depends_on 'py3_lxml'

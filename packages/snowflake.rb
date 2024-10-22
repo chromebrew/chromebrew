@@ -10,10 +10,10 @@ class Snowflake < Package
   binary_compression 'tpxz'
 
   binary_sha256({
-    x86_64: '4e524ad28ef440ded64cb667b188ced01d662fc8240d85be39cc7319a306e99f'
+     x86_64: '4e524ad28ef440ded64cb667b188ced01d662fc8240d85be39cc7319a306e99f'
   })
 
-  depends_on 'jdk11'
+  depends_on 'jdk11' unless CREW_IN_CONTAINER
   depends_on 'sommelier'
 
   def self.build

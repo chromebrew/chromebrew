@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_highline < RUBY
   description 'A higher level command-line oriented interface.'
   homepage 'https://github.com/JEG2/highline'
-  version '3.1.1-ruby-3.3'
+  version "3.1.1-#{CREW_RUBY_VER}"
   license 'GPL'
   compatibility 'all'
   source_url 'SKIP'

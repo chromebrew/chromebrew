@@ -3,7 +3,7 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  version '6.0.1'
+  version '7.1'
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
@@ -11,20 +11,19 @@ class Ffmpeg < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '92e98d1fa4476fad082e2eaf86e73b2e28d2b1e6e60b0c3ef2fefeaaf3b0f75b',
-     armv7l: '92e98d1fa4476fad082e2eaf86e73b2e28d2b1e6e60b0c3ef2fefeaaf3b0f75b',
-     x86_64: '5e809fb78ca0a2953e73d55a87dbb70772c484bd0aec547558d678a33d75077d'
+    aarch64: 'adc716575087c8b9ca19502693a56494b7dc414e39f6655063a5b8a7158a1003',
+     armv7l: 'adc716575087c8b9ca19502693a56494b7dc414e39f6655063a5b8a7158a1003',
+     x86_64: '9a903d76bba340e766b50360504a013e3a3ad88dacd131a226dcf416f74609ca'
   })
 
   depends_on 'alsa_lib' # R
-  depends_on 'avisynthplus' # ?
+  depends_on 'avisynthplus' # R
   depends_on 'bzip2' # R
   depends_on 'ccache' => :build
   depends_on 'chromaprint' # ?
   depends_on 'dav1d' # R
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
-  depends_on 'fribidi' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gsm' # R
@@ -32,19 +31,16 @@ class Ffmpeg < Package
   depends_on 'intel_media_sdk' if ARCH == 'x86_64' && CREW_IS_INTEL # R
   depends_on 'jack' # R
   depends_on 'ladspa' # ?
-  depends_on 'leptonica' # R
   depends_on 'libaom' # R
   depends_on 'libass' # R
   depends_on 'libavc1394' # R
   depends_on 'libbluray' # R
   depends_on 'libdc1394' => :build
   depends_on 'libdrm' # R
-  depends_on 'libfdk_aac' => :build
   depends_on 'libfdk_aac' # R
   depends_on 'libfrei0r' => :build
   depends_on 'libglvnd' # R
   depends_on 'libiec61883' # R
-  depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
   depends_on 'libmodplug' # R
   depends_on 'libmp3lame' # R
@@ -69,11 +65,9 @@ class Ffmpeg < Package
   depends_on 'libxvid' # R
   depends_on 'libxv' # R
   depends_on 'lilv' # R
-  depends_on 'mesa' # R
   depends_on 'nasm' => :build
   depends_on 'openal' # ?
   depends_on 'openjpeg' # R
-  depends_on 'openmp' # R
   depends_on 'openssl' # R
   depends_on 'opus' # R
   depends_on 'pipewire' # R
@@ -81,11 +75,8 @@ class Ffmpeg < Package
   depends_on 'rav1e' # R
   depends_on 'rtmpdump' # R
   depends_on 'rubberband' # R
-  depends_on 'serd' # R
   depends_on 'snappy' # R
-  depends_on 'sord' # R
   depends_on 'speex' # R
-  depends_on 'sratom' # R
   depends_on 'srt' # R
   depends_on 'tesseract' # R
   depends_on 'v4l_utils' # R
@@ -189,7 +180,7 @@ class Ffmpeg < Package
         --enable-version3 \
         --host-cflags='#{CREW_ENV_OPTIONS_HASH['CFLAGS']} -flto=auto -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
         --host-ldflags='#{CREW_ENV_OPTIONS_HASH['LDFLAGS']} -flto=auto' \
-        #{CREW_CONFIGURE_OPTIONS.sub(/--build=.*/, '').gsub('vfpv3-d16', 'neon').gsub('--disable-dependency-tracking', '')}"
+        #{CREW_CONFIGURE_OPTIONS.sub(/--build=.*/, '').gsub('vfpv3-d16', 'neon').gsub('--disable-dependency-tracking', '').sub(/--program-prefix.*?(?=\s|$)/, '').sub(/--program-suffix.*?(?=\s|$)/, '')}"
     system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
         make -j#{CREW_NPROC}"
     system 'make tools/qt-faststart'

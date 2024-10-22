@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.52.2' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.55.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -41,9 +41,9 @@ else
   HOME ||= File.join(CREW_PREFIX, Dir.home)
 end
 
-CREW_ESSENTIAL_PACKAGES ||= %w[gcc_lib glibc gmp lz4 ruby xzutils zlib zstd]
+CREW_ESSENTIAL_PACKAGES ||= %w[curl gcc_lib glibc gmp lz4 ruby xzutils zlib zstd]
 
-CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false)
+CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 
 CREW_CPU_VENDOR ||= CPUINFO['vendor_id'] unless defined?(CREW_CPU_VENDOR)
 # The cpuinfo vendor_id may not exist on non-x86 platforms, or when a
@@ -82,6 +82,7 @@ CREW_DEST_MAN_PREFIX  ||= File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 # Local constants for contributors.
 CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2> /dev/null`.chomp
 CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
+CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX      ||= File.join(CREW_PREFIX, '/share/musl/')
@@ -92,6 +93,10 @@ CREW_DEST_HOME          ||= File.join(CREW_DEST_DIR, HOME)
 CREW_CACHE_DIR          ||= ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache") unless defined?(CREW_CACHE_DIR)
 CREW_CACHE_BUILD        ||= ENV.fetch('CREW_CACHE_BUILD', false) unless defined?(CREW_CACHE_BUILD)
 CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless defined?(CREW_CACHE_FAILED_BUILD)
+CREW_NO_GIT             ||= ENV.fetch('CREW_NO_GIT', false) unless defined?(CREW_NO_GIT)
+CREW_UNATTENDED         ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
+
+CREW_STANDALONE_UPGRADE_ORDER = %w[openssl ruby python3] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
 
 CREW_DEBUG   ||= ARGV.intersect?(%w[-D --debug]) unless defined?(CREW_DEBUG)
 CREW_FORCE   ||= ARGV.intersect?(%w[-f --force]) unless defined?(CREW_FORCE)
@@ -106,6 +111,8 @@ CREW_NPROC ||= \
   end
 
 # Set following as boolean if environment variables exist.
+# Timeout for agree questions in package.rb:
+CREW_AGREE_TIMEOUT_SECONDS           ||= ENV.fetch('CREW_AGREE_TIMEOUT_SECONDS', 10).to_i unless defined?(CREW_AGREE_TIMEOUT_SECONDS)
 CREW_CACHE_ENABLED                   ||= ENV.fetch('CREW_CACHE_ENABLED', false) unless defined?(CREW_CACHE_ENABLED)
 CREW_CONFLICTS_ONLY_ADVISORY         ||= ENV.fetch('CREW_CONFLICTS_ONLY_ADVISORY', false) unless defined?(CREW_CONFLICTS_ONLY_ADVISORY)
 # or use conflicts_ok
@@ -285,12 +292,26 @@ OPT
 
 CREW_CMAKE_LIBSUFFIX_OPTIONS ||= "#{CREW_CMAKE_OPTIONS} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX}"
 
+GEM_ARCH ||= case ARCH
+             when 'x86_64'
+               'x86_64-linux'
+             when 'i686'
+               'x86-linux'
+             when 'aarch64', 'armv7l'
+               'armv8l-linux-eabihf'
+             end
+
 PY3_SETUP_BUILD_OPTIONS          ||= "--executable=#{CREW_PREFIX}/bin/python3"
 PY2_SETUP_BUILD_OPTIONS          ||= "--executable=#{CREW_PREFIX}/bin/python2"
 PY_SETUP_INSTALL_OPTIONS_NO_SVEM ||= "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} -O2 --compile"
 PY_SETUP_INSTALL_OPTIONS         ||= "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version-externally-managed"
 PY3_BUILD_OPTIONS                ||= '--wheel --no-isolation'
 PY3_INSTALLER_OPTIONS            ||= "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
+
+CREW_ICU_VER ||= Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : 'icu75.1' unless defined?(CREW_ICU_VER)
+CREW_PERL_VER ||= Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl -MConfig -e "print \\\"\\\$Config{'PERL_API_REVISION'}.\\\$Config{'PERL_API_VERSION'}\\\";"`}" : 'perl5.40' unless defined?(CREW_PERL_VER)
+CREW_PY_VER ||= Kernel.system('which python3', %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : 'py3.13' unless defined?(CREW_PY_VER)
+CREW_RUBY_VER ||= "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}" unless defined?(CREW_RUBY_VER)
 
 CREW_LICENSE ||= <<~LICENSESTRING
   Copyright (C) 2013-2024 Chromebrew Authors

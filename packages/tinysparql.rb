@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Tinysparql < Meson
   description 'Low-footprint RDF triple store library with SPARQL 1.1 interface'
   homepage 'https://gitlab.gnome.org/GNOME/tinysparql'
-  version '3.7.3-icu75.1'
+  version "3.7.3-#{CREW_ICU_VER}"
   license 'GPLv2+'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.37'
@@ -17,7 +17,7 @@ class Tinysparql < Meson
      x86_64: '8ca12cb7bd12ce282e2cf036b7cd15011663886a47d0b24b4d1af5209cea3926'
   })
 
-  depends_on 'asciidoc' => :build
+  depends_on 'py3_asciidoc' => :build
   depends_on 'avahi' # R
   depends_on 'docbook_xml' => :build
   depends_on 'dbus' => :build

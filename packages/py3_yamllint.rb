@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_yamllint < Pip
   description 'YAMLlint is a linter for YAML files.'
   homepage 'https://github.com/adrienverge/yamllint/'
-  version '1.35.1-py3.12'
+  version "1.35.1-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c7f9eb2ac5356a59d145c2fa17973fbe53a42765efff781ccadf74f76b14d293',
-     armv7l: 'c7f9eb2ac5356a59d145c2fa17973fbe53a42765efff781ccadf74f76b14d293',
-       i686: '776c715afda0728f29bd4be41fd53e6445a5c49cb1898fbc28341803817e4550',
-     x86_64: 'ce279170064cd516c95f09fb145a56fba8390655b579fef0d0bd945b6f51290c'
+    aarch64: '0f61ac8c3a4ee1b7f4db75a34789bc9d3f9216a8b6c060597c782e727f457d8c',
+     armv7l: '0f61ac8c3a4ee1b7f4db75a34789bc9d3f9216a8b6c060597c782e727f457d8c',
+       i686: 'add8ceff7dfa76b9f12dce139e923b7ca24a8368e4d5d491200c2070e9ef10f5',
+     x86_64: '1ed3a642e4b5e1926800ff51481c35af6d93e0d6c6ab4dc2f017ef65e0e04f7c'
   })
 
   depends_on 'py3_pathspec'

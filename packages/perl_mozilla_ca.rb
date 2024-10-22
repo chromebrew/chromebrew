@@ -3,7 +3,7 @@ require 'package'
 class Perl_mozilla_ca < Package
   description "Mozilla::CA - Mozilla's CA cert bundle in PEM format"
   homepage 'https://metacpan.org/pod/Mozilla::CA'
-  version '20221114-perl5.40'
+  version "20221114-#{CREW_PERL_VER}"
   license 'GPL2'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/H/HA/HAARG/Mozilla-CA-20221114.tar.gz'

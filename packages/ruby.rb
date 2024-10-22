@@ -67,6 +67,5 @@ class Ruby < Package
     puts 'Updating ruby gems. This may take a while...'
     silent = @opt_verbose ? '' : '--silent'
     system "gem update #{silent} -N --system", exception: false
-    system 'gem pristine --all', exception: false
   end
 end

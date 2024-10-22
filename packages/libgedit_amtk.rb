@@ -12,15 +12,15 @@ class Libgedit_amtk < Meson
 
   binary_sha256({
     aarch64: 'e1311b5685cc0137cac447e126344664bae26c23d36ba85c28ee69c16527b572',
-      armv7l: 'e1311b5685cc0137cac447e126344664bae26c23d36ba85c28ee69c16527b572',
-      x86_64: '6bbeb30d50b1f2d254056db4fb86e6b74bb75359f7d4bba1d6142dda92f24bcb'
+     armv7l: 'e1311b5685cc0137cac447e126344664bae26c23d36ba85c28ee69c16527b572',
+     x86_64: '6bbeb30d50b1f2d254056db4fb86e6b74bb75359f7d4bba1d6142dda92f24bcb'
   })
 
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk3' # R
-  depends_on 'llvm18_lib' => :build
+  depends_on 'llvm19_lib' => :build
 
   meson_options '-Dgtk_doc=false'
 end

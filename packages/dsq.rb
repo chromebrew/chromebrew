@@ -11,7 +11,7 @@ class Dsq < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '8278c63305a72ecf2c5eb1343f15ed4e515cd12e79023352fc2c57a88370f763'
+     x86_64: '8278c63305a72ecf2c5eb1343f15ed4e515cd12e79023352fc2c57a88370f763'
   })
 
   depends_on 'go' => :build

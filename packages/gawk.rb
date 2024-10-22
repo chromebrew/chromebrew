@@ -1,20 +1,20 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gawk < Package
+class Gawk < Autotools
   description 'The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.'
   homepage 'https://www.gnu.org/software/gawk/'
-  version '5.3.0'
+  version '5.3.1'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gawk/gawk-5.3.0.tar.xz'
-  source_sha256 'ca9c16d3d11d0ff8c69d79dc0b47267e1329a69b39b799895604ed447d3ca90b'
+  source_url "https://ftpmirror.gnu.org/gawk/gawk-#{version}.tar.xz"
+  source_sha256 '694db764812a6236423d4ff40ceb7b6c4c441301b72ad502bb5c27e00cd56f78'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f1b44733f046da402351e65dc672cd21e355d0719b7ac152ad27d7a23302a175',
-     armv7l: 'f1b44733f046da402351e65dc672cd21e355d0719b7ac152ad27d7a23302a175',
-       i686: 'cfecbdfd324d06675809a7d651659655c2e249134594af1f9dac998e679eb1d6',
-     x86_64: 'ce0eb10edf6f35098e654487b3daf8839048179d34098dc90aed4730feb1c086'
+    aarch64: '2fd73496950cf2482815e4fb21a0e652f0b726be8fc5f7f16009d7dd3df2faa0',
+     armv7l: '2fd73496950cf2482815e4fb21a0e652f0b726be8fc5f7f16009d7dd3df2faa0',
+       i686: '71d84a28ad6d27b6a8c394592130fceaab5c7d4d62643daad9963aad6a129c58',
+     x86_64: '177e43ad886fca0a2701f42564d5ff084ee0efa3a3fb85319405a869641335bf'
   })
 
   depends_on 'glibc' # R
@@ -24,18 +24,12 @@ class Gawk < Package
   depends_on 'ncurses' => :build
   depends_on 'readline' # R
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-      --without-libsigsegv-prefix"
-    system 'make'
-  end
+  # Tests on i686 run out of memory.
+  run_tests unless ARCH == 'i686'
 
-  def self.check
-    system 'make', 'check'
-  end
+  configure_options '--without-libsigsegv-prefix'
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  configure_install_extras do
     # Remove conflict with #{CREW_PREFIX}/bin/awk from mawk package
     FileUtils.rm "#{CREW_DEST_PREFIX}/bin/awk"
   end

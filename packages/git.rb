@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Git < CMake
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.46.0-1' # Do not use @_ver here, it will break the installer.
+  version '2.46.1' # Do not use @_ver here, it will break the installer.
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-#{version.split('-').first}.tar.xz"
-  source_sha256 '7f123462a28b7ca3ebe2607485f7168554c2b10dfc155c7ec46300666ac27f95'
+  source_url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-#{version}.tar.xz"
+  source_sha256 '888cafb8bd6ab4cbbebc168040a8850eb088f81dc3ac2617195cfc0877f0f543'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a75eae1e96d4a9319e284afc682b7b68b50ec060e9ab518785df3c2a6ded5410',
-     armv7l: 'a75eae1e96d4a9319e284afc682b7b68b50ec060e9ab518785df3c2a6ded5410',
-       i686: '19e86f61ad78449fb1df678067ad38716430dd58767c953f2a3bac0cf632cc8a',
-     x86_64: 'fa26980dce128e72383fadbe3b0feedd6969e93f9cc1e9d461cc31ddf8ca9bcd'
+    aarch64: 'd1125c6bb6ec9ceb744be85b89021ac2b467992f3926abd6c346eb6731b1f679',
+     armv7l: 'd1125c6bb6ec9ceb744be85b89021ac2b467992f3926abd6c346eb6731b1f679',
+       i686: 'c4eb2b82c88f5caaaf2f4470a960106f6bdd9c542662369e9473e8a30c204227',
+     x86_64: 'fcdd84453706b90b82a0d15d78b958dbf0c244bf634963ef88b86c95fb5d9808'
   })
 
   depends_on 'ca_certificates' => :build

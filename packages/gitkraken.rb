@@ -11,7 +11,7 @@ class Gitkraken < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    x86_64: '71213a6e8a542787c455e2480a78ba7463be1573263bdfcef8fc499b61355b4a'
+     x86_64: '71213a6e8a542787c455e2480a78ba7463be1573263bdfcef8fc499b61355b4a'
   })
 
   depends_on 'gtk3'

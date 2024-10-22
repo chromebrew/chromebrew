@@ -5,7 +5,7 @@ class Wlroots < Meson
   homepage 'https://gitlab.freedesktop.org/wlroots/wlroots'
   version '0.18.0'
   license 'MIT'
-  compatibility 'aarch64, armv7l, x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/wlroots/wlroots.git'
   git_hashtag version
   binary_compression 'tar.zst'

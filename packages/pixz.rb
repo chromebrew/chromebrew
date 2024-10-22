@@ -20,7 +20,7 @@ class Pixz < Package
      x86_64: 'aa0c005b74a688982f0282833846879d6fbac02a28dadf69ebb0ded6924f096c'
   })
 
-  depends_on 'asciidoc' => :build
+  depends_on 'py3_asciidoc' => :build
   depends_on 'libarchive'
   depends_on 'xzutils'
   no_patchelf

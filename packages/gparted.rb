@@ -5,7 +5,7 @@ class Gparted < Package
   homepage 'https://gparted.org/'
   version '1.6.0'
   license 'GPL-2+ and FDL-1.2+'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/project/gparted/gparted/gparted-#{version}/gparted-#{version}.tar.gz"
   source_sha256 '9b9f51b3ce494ddcb59a55e1ae6679c09436604e331dbf5a536d60ded6c6ea5b'
   binary_compression 'tar.zst'
@@ -19,7 +19,7 @@ class Gparted < Package
   depends_on 'parted'
   depends_on 'gtkmm3'
   depends_on 'intltool' => :build
-  depends_on 'itstool' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'yelp_tools' => :build
   depends_on 'xfsprogs'
   depends_on 'exfatprogs'

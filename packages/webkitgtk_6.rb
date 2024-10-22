@@ -3,7 +3,7 @@ require 'package'
 class Webkitgtk_6 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.44.2-icu75.1'
+  version "2.44.2-#{CREW_ICU_VER}"
   license 'LGPL-2+ and BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.37'
@@ -14,7 +14,7 @@ class Webkitgtk_6 < Package
   binary_sha256({
     aarch64: '85ed089e4dc72c58ec3630ccfb7cfe2be614c5c4f3a49c367acd1d36ea34e0b1',
      armv7l: '85ed089e4dc72c58ec3630ccfb7cfe2be614c5c4f3a49c367acd1d36ea34e0b1',
-     x86_64: '9415fcdeb2cd5e21c20b3149825074f8c3c46aef39906882198429eb73902f1a'
+     x86_64: '6878f94647d5b3337f1e6ebab2bd2a095ed870cf3bf5e8ebb4c5c67ebace73d0'
   })
 
   depends_on 'at_spi2_core' # R

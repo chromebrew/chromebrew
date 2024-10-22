@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_markdown < Pip
   description 'Markdown is a Python implementation of Markdown.'
   homepage 'https://python-markdown.github.io/'
-  version '3.7-py3.12'
+  version "3.7-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd363fcf11925c974f1a89c480b19c833a37c5691c941020035a260b697c46b7e',
-     armv7l: 'd363fcf11925c974f1a89c480b19c833a37c5691c941020035a260b697c46b7e',
-       i686: '77421424a98933f74abb850c2d839068aea22fe463cbe4c4822a63cc1b411974',
-     x86_64: 'd8929bd6ffc46edd40182ae08a2cffab8e35e849e8da72e86d874cd5c9abcdbf'
+    aarch64: 'f7bd555a3350a4e6ba3abe7d3068197a4969e4edd23ad0bca9a8cd367b122db5',
+     armv7l: 'f7bd555a3350a4e6ba3abe7d3068197a4969e4edd23ad0bca9a8cd367b122db5',
+       i686: '6d370268c8dfa713d2e7ac2a810b9c808adeced30a6ea7294436597e89fcaac6',
+     x86_64: '38d983f8cbd7511f8bfb60697ddf0efff6f3e605206e31699ef8c74bfe990e40'
   })
 
   depends_on 'python3'

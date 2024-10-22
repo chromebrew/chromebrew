@@ -16,7 +16,7 @@ class Intel_media_sdk < Package
   depends_on 'wayland'
 
   binary_sha256({
-    x86_64: '6c50fda47c7711dbc506badef677cb9f9941ffd5fc0d147562117f08da7658f2'
+     x86_64: '6c50fda47c7711dbc506badef677cb9f9941ffd5fc0d147562117f08da7658f2'
   })
 
   def self.build

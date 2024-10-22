@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_docwriter < Pip
   description 'API documentation generator of the FreeType library.'
   homepage 'https://gitlab.freedesktop.org/freetype/docwriter'
-  version '1.3.3-py3.12'
+  version "1.3.3-#{CREW_PY_VER}"
   license 'FTL and GPL-2'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b1e588b01736069ba8a9e88232d11bfdab02b24bee0fd148615f8a86a690fd9d',
-     armv7l: 'b1e588b01736069ba8a9e88232d11bfdab02b24bee0fd148615f8a86a690fd9d',
-       i686: '74c04f4fd712baf9aaeb4d69cbab26a3d6e02b1d65abba877d28c9abf6fb97b4',
-     x86_64: 'a2c0db561b5d795394b5e9f006d8eb85c13cff7ffd9df9d2119e8df5c860c520'
+    aarch64: '9e38c865217c44d9e4160dd4fcc322fe3ce6597833b2215c91fdc8c114044426',
+     armv7l: '9e38c865217c44d9e4160dd4fcc322fe3ce6597833b2215c91fdc8c114044426',
+       i686: '6b98cdd7c48da31d801a74fff34f104078dbd9dc88f9897cb2ab1a2ce381c910',
+     x86_64: 'a420a5764dde1d6268404966c91ba59f3b7b38b6b794349b33226a6406dae8eb'
   })
 
   depends_on 'python3' => :build

@@ -5,7 +5,7 @@ class Xterm < Package
   homepage 'https://invisible-island.net/xterm/'
   version '390'
   license 'MIT'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ThomasDickey/xterm-snapshots.git'
   git_hashtag "xterm-#{version}"
   binary_compression 'tar.zst'

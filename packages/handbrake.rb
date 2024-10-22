@@ -1,4 +1,5 @@
 require 'package'
+require 'convenience_functions'
 
 class Handbrake < Package
   description 'HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.'
@@ -6,13 +7,12 @@ class Handbrake < Package
   version '1.8.2'
   license 'GPL-2'
   compatibility 'x86_64'
-  min_glibc '2.37'
   source_url 'https://github.com/HandBrake/HandBrake.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '7da9a4ce810f30c1128cf80e808d0136051a5dfca4e851671474aca993384278'
+     x86_64: '7da9a4ce810f30c1128cf80e808d0136051a5dfca4e851671474aca993384278'
   })
 
   depends_on 'at_spi2_core' # R
@@ -66,6 +66,15 @@ class Handbrake < Package
   depends_on 'zlib' # R
 
   no_lto
+
+  def self.prebuild
+    ConvenienceFunctions.libtoolize('freetype')
+    ConvenienceFunctions.libtoolize('fribidi')
+    ConvenienceFunctions.libtoolize('harfbuzz')
+    ConvenienceFunctions.libtoolize('libpng')
+    ConvenienceFunctions.libtoolize('libuuid', 'util_linux')
+    ConvenienceFunctions.libtoolize('libxml2')
+  end
 
   def self.build
     # Need to temporarily create a symlink for libfribidi.la or the build fails

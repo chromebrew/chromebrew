@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Evolution_data_server < CMake
   description 'Centralized access to appointments and contacts'
   homepage 'https://wiki.gnome.org/Apps/Evolution'
-  version '3.52.4-icu75.1'
+  version "3.52.4-#{CREW_ICU_VER}"
   license 'LGPL-2 or LGPL-3, BSD and Sleepycat'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/evolution-data-server.git'
@@ -13,7 +13,7 @@ class Evolution_data_server < CMake
   binary_sha256({
     aarch64: '412f9158079a8854043b61b7af86f441aafd0df26c495405d27931a95d708899',
      armv7l: '412f9158079a8854043b61b7af86f441aafd0df26c495405d27931a95d708899',
-    x86_64: 'c62e7f447c0f9d84ae27b3a83b52d042e3190377d582b0cfd99fe054e6dbc445'
+     x86_64: 'c62e7f447c0f9d84ae27b3a83b52d042e3190377d582b0cfd99fe054e6dbc445'
   })
 
   depends_on 'at_spi2_core' # R

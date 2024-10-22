@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Caja < Autotools
   description 'Caja file manager for the MATE desktop'
   homepage 'https://mate-desktop.org'
-  version '1.28.0-icu75.1'
+  version "1.28.0-#{CREW_ICU_VER}"
   license 'GPL-2+ LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://pub.mate-desktop.org/releases/#{version.split('-').first.rpartition('.')[0]}/caja-#{version.split('-').first}.tar.xz"

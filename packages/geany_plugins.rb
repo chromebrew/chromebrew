@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Geany_plugins < Autotools
   description 'Geany plugins.'
   homepage 'https://www.geany.org/'
-  version '2.0.0-icu75.1'
+  version "2.0.0-#{CREW_ICU_VER}"
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/geany/geany-plugins.git'

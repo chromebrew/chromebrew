@@ -5,7 +5,7 @@ class Heroku < Package
   homepage 'https://devcenter.heroku.com/articles/heroku-cli'
   version '7.44.0'
   license 'Heroku-TOS'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/heroku/cli/archive/v7.44.0.tar.gz'
   source_sha256 '565e2a42a5095da43466465f29455ea646b235742f16b667d58da0a312c0fe8a'
   binary_compression 'tar.xz'

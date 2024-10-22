@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_zipp < Pip
   description 'Zipp is a backport of pathlib-compatible object wrapper for zip files.'
   homepage 'https://github.com/jaraco/zipp/'
-  version '3.20.1-py3.12'
+  version "3.20.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a2ec9442fafc3c4341e719b9215e1df245dbbcd0a757c77da652f65e030df0fd',
-     armv7l: 'a2ec9442fafc3c4341e719b9215e1df245dbbcd0a757c77da652f65e030df0fd',
-       i686: '8211758d6b9bb5b7f2a247ed43bb6a82f6bd23e0e47ebaeb667369080fdb0be6',
-     x86_64: '8d30fdb6bef920ecc450457e73abb1f2355c7dae38c0afa1fff4d8640bd7cff9'
+    aarch64: '6256110cdfec415e016f6ada5b82124d21d534441eb3880080131e10a63b703b',
+     armv7l: '6256110cdfec415e016f6ada5b82124d21d534441eb3880080131e10a63b703b',
+       i686: 'ddf53236d4d8faf715cf8d43b7e731681d8c51b0ff437c78bc7e23e66b077a0e',
+     x86_64: '9eb4eba0306a25b20e40e326394c3b53991eeb7fc004c1a788f44bd1dff1567a'
   })
 
   depends_on 'python3' => :build

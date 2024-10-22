@@ -4,7 +4,7 @@ class Musl_cc_toolchain < Package
   description 'A modern, simple, and fast C library implementation that strives to be lightweight, fast, simple, free, and correct in the sense of standards-conformance and safety.'
   homepage 'https://musl.cc/'
   version '1.2.2-b76f37fd'
-  compatibility 'aarch64, armv7l, x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   license 'MIT, LGPL-2 and GPL-2'
   source_url({
     aarch64: 'https://musl.cc/armv7l-linux-musleabihf-native.tgz',

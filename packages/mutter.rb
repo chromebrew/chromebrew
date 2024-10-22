@@ -5,7 +5,7 @@ class Mutter < Meson
   homepage 'https://wiki.gnome.org/Projects/Mutter'
   version '45.4'
   license 'GPL-2+'
-  compatibility 'aarch64,armv7l,x86_64' # No longer supported for i686 upstream
+  compatibility 'aarch64 armv7l x86_64' # No longer supported for i686 upstream
   source_url 'https://gitlab.gnome.org/GNOME/mutter.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -18,7 +18,6 @@ class Mutter < Meson
 
   # depends_on 'ccache' => :build
   depends_on 'dconf'
-  depends_on 'gnome_settings_daemon'
   depends_on 'gobject_introspection' => :build
   depends_on 'gsettings_desktop_schemas'
   depends_on 'libcanberra'

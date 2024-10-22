@@ -3,17 +3,18 @@ require 'package'
 class Qt5_x11extras < Package
   description 'Provides classes for developing for the X11 platform.'
   homepage 'https://www.qt.io/'
-  version 'kde-5.15.14-6c3605f'
+  kde_5_15_githash = 'ff2cc0065a3504e6043b47b1b4601fcdce62eefb'
+  version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtx11extras.git'
-  git_hashtag '6c3605fcb3b34e55951f597e06c135d97dfa6cd7'
+  git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4f86049b53fc81981615e6a3b3a2dabbcee4b67db238c111143872604f818b31',
-     armv7l: '4f86049b53fc81981615e6a3b3a2dabbcee4b67db238c111143872604f818b31',
-     x86_64: '97c714e3323700056121a401bfb81270dd6022eb28fed6c08cffeac05fee9a2f'
+    aarch64: '8f0ead9577a59ea420d245b360238f7523b2b40cfcdf88067835ea49ac2d3e6b',
+     armv7l: '8f0ead9577a59ea420d245b360238f7523b2b40cfcdf88067835ea49ac2d3e6b',
+     x86_64: '24cd8d5e40511986bbed75f9ed50798aa36de42e39c03df4aff1d8cbc4bf3310'
   })
 
   depends_on 'gcc_lib' # R

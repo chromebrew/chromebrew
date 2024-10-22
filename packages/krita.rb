@@ -3,12 +3,12 @@ require 'package'
 class Krita < Package
   description 'A generic image manipulation/painting application in the style of Photoshop or GIMP.'
   homepage 'https://krita.org/en/'
-  version '5.2.3'
+  version '5.2.5'
   license 'GPL-3'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://download.kde.org/stable/krita/#{version}/krita-#{version}-x86_64.appimage"
-  source_sha256 'c91ce1810931171c11054e2277c21efc97cf9d73dc39da1239f6dc1462d19c8b'
+  source_sha256 'd3f8fe623cc59533dfd297077ed63314adf3ac089a2b356e3213aa469f4ed556'
 
   depends_on 'gtk3'
   depends_on 'gdk_base'
@@ -39,6 +39,6 @@ class Krita < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'krita' to get started.\n".lightblue
+    ExitMessage.add "\nType 'krita' to get started.\n"
   end
 end

@@ -3,7 +3,7 @@ require 'package'
 class Perl_date_manip < Package
   description 'Date::Manip - Date manipulation routines'
   homepage 'https://metacpan.org/pod/Date::Manip'
-  version '6.95-perl5.40'
+  version "6.95-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SB/SBECK/Date-Manip-6.95.tar.gz'

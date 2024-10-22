@@ -14,7 +14,7 @@ class Fakeroot_ng < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    x86_64: '68ade929172b332a688333874644ce80d3af25f9604c9cc68103975c667f4fee'
+     x86_64: '68ade929172b332a688333874644ce80d3af25f9604c9cc68103975c667f4fee'
   })
 
   def self.build

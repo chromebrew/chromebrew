@@ -7,7 +7,7 @@ class Lilv < Meson
   description 'A C library interface to the LV2 plug-in standard'
   homepage 'https://drobilla.net/software/lilv/'
   @_ver = '0.24.20'
-  version "#{@_ver}-py3.12"
+  version "#{@_ver}-#{CREW_PY_VER}"
   license 'isc'
   compatibility 'all'
   source_url 'https://github.com/lv2/lilv.git'
@@ -15,10 +15,10 @@ class Lilv < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ecbb826b1648be16f71b5c8a453c8f07a7cef24d3e4f9b529344ded90c8955b1',
-     armv7l: 'ecbb826b1648be16f71b5c8a453c8f07a7cef24d3e4f9b529344ded90c8955b1',
-       i686: 'dbd331cef323b3942d518413bf18a00f23995f906a945e179964c00928db10ae',
-     x86_64: 'a5526bf19b7dad498788d3b90906619634cd2bbd0ff22e779bd790ff6a5c1c06'
+    aarch64: 'ada5368cf318ffaf417ed2a3ad79ad3981fe8a2b360e4f53cae6f709493c2351',
+     armv7l: 'ada5368cf318ffaf417ed2a3ad79ad3981fe8a2b360e4f53cae6f709493c2351',
+       i686: '676dd2b3f734beac11dd153cc6aa5dc45834579727cbf9a44203ded0ac739b77',
+     x86_64: 'd8afc26bb659d79ad2821eba2e60ddf71504f7da5e357ca47ea4cef3fffcf4d9'
   })
 
   depends_on 'gcc_lib' # R

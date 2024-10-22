@@ -3,17 +3,18 @@ require 'buildsystems/qmake'
 class Qt5_websockets < Qmake
   description 'Qt Websockets'
   homepage 'https://www.qt.io/'
-  version 'kde-5.15.14-dbbdc64'
+  kde_5_15_githash = '0231c7c3a17c0320601e7766e7e701db5b9eb0dc'
+  version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtwebsockets.git'
-  git_hashtag 'dbbdc64b804f7c4d0ed92198aaab49b07fa15e7f'
+  git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '380f7575ea6adf126648992faf642938ff4b987357ac4cc7a7daabad0078befe',
-     armv7l: '380f7575ea6adf126648992faf642938ff4b987357ac4cc7a7daabad0078befe',
-     x86_64: '90dc6f7739f3fbc63a6d980f0ab1bff3e4089e4e7d7f7f514116cc1164dbac38'
+    aarch64: 'f2656344e2f7e71b9f170fe07e07eba45f5d5a9c29198af49d952127c3f3ec0d',
+     armv7l: 'f2656344e2f7e71b9f170fe07e07eba45f5d5a9c29198af49d952127c3f3ec0d',
+     x86_64: 'dfd957d60047987384111ca9ca35a8fdd87a93a5f8bc73ed3eb742280cf47efa'
   })
 
   depends_on 'gcc_lib' # R

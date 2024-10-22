@@ -1,4 +1,5 @@
 require 'package'
+require 'misc_functions'
 
 class Freecad < Package
   description 'A free and opensource multiplatform 3D parametric modeler.'
@@ -14,8 +15,7 @@ class Freecad < Package
   depends_on 'sommelier'
 
   def self.preflight
-    free_space = `echo $(($(stat -f --format="%a*%S" .)))`.chomp.to_i
-    abort 'Not enough free disk space.  You need at least 5.2 GB to install.'.lightred if free_space < 5583457485
+    MiscFunctions.check_free_disk_space(5583457485)
   end
 
   def self.patch

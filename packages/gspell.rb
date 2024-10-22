@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gspell < Meson
   description 'a flexible API to implement the spell checking in a GTK+ application'
   homepage 'https://wiki.gnome.org/Projects/gspell'
-  version '1.13.1-icu75.1'
+  version "1.13.1-#{CREW_ICU_VER}"
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gspell.git'
@@ -33,7 +33,7 @@ class Gspell < Meson
   depends_on 'icu4c' # R
   depends_on 'iso_codes' => :build
   depends_on 'libxml2' => :build
-  depends_on 'llvm18_lib' => :build
+  depends_on 'llvm19_lib' => :build
   depends_on 'ncurses' => :build
   depends_on 'pango' # R
   depends_on 'vala' => :build

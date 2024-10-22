@@ -4,6 +4,7 @@
 /usr/local/include/libfilezilla/aio/xml_writer.hpp
 /usr/local/include/libfilezilla/apply.hpp
 /usr/local/include/libfilezilla/ascii_layer.hpp
+/usr/local/include/libfilezilla/basic_tls_params.hpp
 /usr/local/include/libfilezilla/buffer.hpp
 /usr/local/include/libfilezilla/encode.hpp
 /usr/local/include/libfilezilla/encryption.hpp
@@ -12,6 +13,7 @@
 /usr/local/include/libfilezilla/event_loop.hpp
 /usr/local/include/libfilezilla/file.hpp
 /usr/local/include/libfilezilla/format.hpp
+/usr/local/include/libfilezilla/forward_like.hpp
 /usr/local/include/libfilezilla/fsresult.hpp
 /usr/local/include/libfilezilla/glue/unix.hpp
 /usr/local/include/libfilezilla/glue/wx.hpp
@@ -50,6 +52,7 @@
 /usr/local/include/libfilezilla/time.hpp
 /usr/local/include/libfilezilla/tls_info.hpp
 /usr/local/include/libfilezilla/tls_layer.hpp
+/usr/local/include/libfilezilla/tls_params.hpp
 /usr/local/include/libfilezilla/tls_system_trust_store.hpp
 /usr/local/include/libfilezilla/translate.hpp
 /usr/local/include/libfilezilla/uri.hpp
@@ -57,11 +60,10 @@
 /usr/local/include/libfilezilla/version.hpp
 /usr/local/include/libfilezilla/visibility_helper.hpp
 /usr/local/include/libfilezilla/xml.hpp
-/usr/local/lib/libfilezilla.a
 /usr/local/lib/libfilezilla.la
 /usr/local/lib/libfilezilla.so
-/usr/local/lib/libfilezilla.so.40
-/usr/local/lib/libfilezilla.so.40.0.0
+/usr/local/lib/libfilezilla.so.45
+/usr/local/lib/libfilezilla.so.45.0.0
 /usr/local/lib/pkgconfig/libfilezilla.pc
 /usr/local/share/locale/an/LC_MESSAGES/libfilezilla.mo
 /usr/local/share/locale/ar/LC_MESSAGES/libfilezilla.mo
