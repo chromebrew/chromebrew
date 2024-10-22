@@ -39,7 +39,7 @@ class Musecore < CMake
 
   # https://github.com/musescore/MuseScore/issues/15046
   no_lto
-  # Tests fail without X11
+  # Tests fail unless run with QT_QPA_PLATFORM=offscreen set.
   # run_tests
 
   cmake_options '-DMUE_COMPILE_USE_SYSTEM_FLAC=ON \
