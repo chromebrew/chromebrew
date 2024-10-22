@@ -1247,7 +1247,12 @@ def resolve_dependencies
   puts 'The following packages also need to be installed: '
 
   @dependencies.each do |dep|
-    abort "Dependency #{dep} was not found.".lightred unless File.file?(File.join(CREW_PACKAGES_PATH, "#{dep}.rb"))
+    if !File.file?(File.join(CREW_PACKAGES_PATH, "#{dep}.rb")) && File.file?(File.join(CREW_LOCAL_REPO_ROOT,"packages/#{dep}.rb"))
+      FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{dep}.rb", CREW_PACKAGES_PATH
+      puts "The package file for #{dep} only exists in #{CREW_LOCAL_REPO_ROOT}/packages/ and has been copied to #{CREW_PACKAGES_PATH} .".lightblue
+    else
+      abort "Dependency #{dep} was not found.".lightred unless File.file?(File.join(CREW_PACKAGES_PATH, "#{dep}.rb"))
+    end
   end
 
   puts @dependencies.join(' ')
