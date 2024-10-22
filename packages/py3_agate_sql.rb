@@ -1,24 +1,24 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_agate_sql < Python
+class Py3_agate_sql < Pip
   description 'Agate-sql adds SQL read/write support to agate.'
   homepage 'https://agate-sql.readthedocs.org/'
-  @_ver = '0.6.0'
-  version "#{@_ver}-py3.12"
+  version "0.7.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/wireservice/agate-sql.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '34fc4abae0696830075a13f982488fb5991e6063d912b488a14c91c2671b980c',
-     armv7l: '34fc4abae0696830075a13f982488fb5991e6063d912b488a14c91c2671b980c',
-       i686: 'c6bccfa1b69d9262be9fa6325335e1b9eb1bb141a1d676fd4a5695939578feaa',
-     x86_64: 'd861ecdf04c1445cad0e49d98a00815660e72088deb7aa8015c4b6d671007941'
+    aarch64: 'f7c8a337395025635ee1781f051a9e2b56e5c1bcfeddd944c21a43bf1769ae91',
+     armv7l: 'f7c8a337395025635ee1781f051a9e2b56e5c1bcfeddd944c21a43bf1769ae91',
+       i686: '9bd41a6572840f5d54df14be4c200afd889ba38ba5283c096261dc7b6f1b7380',
+     x86_64: 'b513d75c88c879a312bee339981d0aab1558783c388b0f082ec9e8951481f665'
   })
 
   depends_on 'py3_agate'
   depends_on 'py3_sqlalchemy'
   depends_on 'python3' => :build
+
+  no_source_build
 end

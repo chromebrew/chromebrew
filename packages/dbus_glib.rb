@@ -20,7 +20,7 @@ class Dbus_glib < Package
   depends_on 'glib'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

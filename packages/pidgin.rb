@@ -46,7 +46,7 @@ class Pidgin < Autotools
     --libdir=#{CREW_LIB_PREFIX} \
     --with-x"
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.purple"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "

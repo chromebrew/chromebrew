@@ -32,7 +32,7 @@ class Pycharm < Package
     puts "\nType 'pycharm' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{CREW_PREFIX}/.config/.PyCharmCE2022.2"
     if Dir.exist? config_dir
       puts 'WARNING: This will remove all PyCharm config!'.orange

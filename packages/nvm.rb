@@ -30,7 +30,7 @@ class Nvm < Package
     end
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{CREW_PREFIX}/share/nvm"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "

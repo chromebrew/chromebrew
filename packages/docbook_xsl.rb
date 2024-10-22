@@ -3,11 +3,10 @@ require 'package'
 class Docbook_xsl < Package
   description 'The DocBook XSL Stylesheets package contains XSL stylesheets. These are useful for performing transformations on XML DocBook files.'
   homepage 'https://github.com/docbook/xslt10-stylesheets'
-  @_ver = '1.79.2'
-  version "#{@_ver}-4"
+  version '1.79.2-4'
   license 'custom'
   compatibility 'all'
-  source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-#{@_ver}.zip"
+  source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{version.split('-').first}/docbook-xsl-#{version.split('-').first}.zip"
   source_sha256 '853dce096f5b32fe0b157d8018d8fecf92022e9c79b5947a98b365679c7e31d7'
   binary_compression 'tar.zst'
 
@@ -21,6 +20,7 @@ class Docbook_xsl < Package
   depends_on 'docbook_xml'
   depends_on 'libxml2'
   depends_on 'xmlcatmgr'
+  print_source_bashrc
 
   def self.patch
     downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/docbook-xsl/trunk/765567_non-recursive_string_subst.patch',

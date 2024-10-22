@@ -25,7 +25,7 @@ class Protobuf_c < Package
   depends_on 'gcc_lib' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

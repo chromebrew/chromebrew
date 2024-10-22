@@ -1,22 +1,22 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_olefile < Python
+class Py3_olefile < Pip
   description 'Olefile is a Python package to parse, read and write Microsoft OLE2 files.'
   homepage 'https://www.decalage.info/python/olefileio/'
-  @_ver = '0.46'
-  version "#{@_ver}-py3.12"
+  version "0.47-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/decalage2/olefile.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f0ddd04f4d7ee129cff58de6321cdea56c1789f61daa62439e8d6674384ca717',
-     armv7l: 'f0ddd04f4d7ee129cff58de6321cdea56c1789f61daa62439e8d6674384ca717',
-       i686: '1751c5717502d897abcecffb981d5346ac8fe3105a26d3949efbddf850e5dc08',
-     x86_64: '6b199cf2204839a60e5c5442b4a43a4d8db5ab9d56dc5223dfa38c39a39a24fb'
+    aarch64: 'aca8874d91d4702044720873773c28a2c9daf0de07dcd8a224a7f526a53d3e2b',
+     armv7l: 'aca8874d91d4702044720873773c28a2c9daf0de07dcd8a224a7f526a53d3e2b',
+       i686: '6a6dc1e2c93585795ffcb3a676f5f81cc4ffb6c62088997de14e5bcb2f89a3cc',
+     x86_64: 'fe2d19153c3ca2887f51598a724df75017f71f0f096334063dca00e654758bdf'
   })
 
   depends_on 'python3' => :build
+
+  no_source_build
 end

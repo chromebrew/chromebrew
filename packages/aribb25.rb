@@ -12,15 +12,15 @@ class Aribb25 < Package
 
   binary_sha256({
     aarch64: '21290fa231ac801bbafbcf7c6f16e588257d241560e81999df3014e48c15715e',
-      armv7l: '21290fa231ac801bbafbcf7c6f16e588257d241560e81999df3014e48c15715e',
-      x86_64: '8efc2a4ebaf94e5f556882b80b86dd5cecdecc7e3029b7e14b2a6fb9fd914b12'
+     armv7l: '21290fa231ac801bbafbcf7c6f16e588257d241560e81999df3014e48c15715e',
+     x86_64: '8efc2a4ebaf94e5f556882b80b86dd5cecdecc7e3029b7e14b2a6fb9fd914b12'
   })
 
   depends_on 'pcsc_lite'
 
   def self.build
     system 'autoreconf -fiv'
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

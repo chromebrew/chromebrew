@@ -117,9 +117,9 @@
 /usr/local/lib/pkgconfig/mount.pc
 /usr/local/lib/pkgconfig/smartcols.pc
 /usr/local/lib/pkgconfig/uuid.pc
-/usr/local/lib/python3.12/site-packages/libmount/__init__.py
-/usr/local/lib/python3.12/site-packages/libmount/__pycache__/__init__.cpython-312.pyc
-/usr/local/lib/python3.12/site-packages/libmount/pylibmount.cpython-312-i386-linux-gnu.so
+/usr/local/lib/python3.13/site-packages/libmount/__init__.py
+/usr/local/lib/python3.13/site-packages/libmount/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/libmount/pylibmount.cpython-313-i386-linux-gnu.so
 /usr/local/lib/security/pam_lastlog2.so
 /usr/local/sbin/addpart
 /usr/local/sbin/agetty

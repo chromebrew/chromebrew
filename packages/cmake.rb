@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Cmake < CMake
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.30.2'
+  version '3.30.5'
   license 'CMake'
   compatibility 'all'
   source_url 'https://github.com/Kitware/CMake.git'
@@ -11,10 +11,10 @@ class Cmake < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aedc68bc0e6d9dcf324ef09d1d823dd385558c2c4191a4b6e8981b33b5c9aa5b',
-     armv7l: 'aedc68bc0e6d9dcf324ef09d1d823dd385558c2c4191a4b6e8981b33b5c9aa5b',
-       i686: 'f94b24c8d31bf62fc1c40c238c19e6ea8f9bcbac73138dbe25910e4c71eaa775',
-     x86_64: '5920eb0898999cd1801f1ce8b84ebfd7866154b96689e17b5a21ccfe8c07d5cd'
+    aarch64: 'faa628df2501c1ad6819e74467decd281b072ac0910f7c6de80940632339d2d1',
+     armv7l: 'faa628df2501c1ad6819e74467decd281b072ac0910f7c6de80940632339d2d1',
+       i686: '50a32b8384c479941d2ffd1ad2a6c2bd06033591a2aa32b8ea8a93106b1c680b',
+     x86_64: '17d9405e4a7224353273a62248f50afde24a1abfcca48767226c27ea3f4b76f2'
   })
 
   depends_on 'bzip2' => :build
@@ -28,7 +28,7 @@ class Cmake < CMake
   depends_on 'libnghttp2' => :build
   depends_on 'librhash' # R
   depends_on 'libuv' # R
-  depends_on 'llvm18_lib' => :build
+  depends_on 'llvm19_lib' => :build
   depends_on 'ncurses' # R
   depends_on 'xzutils' => :build
   depends_on 'zlib' # R

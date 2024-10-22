@@ -23,7 +23,7 @@ class Mediainfo < Package
   end
 
   def self.build
-    system "mold -run ./CLI_Compile.sh #{CREW_OPTIONS}"
+    system "mold -run ./CLI_Compile.sh #{CREW_CONFIGURE_OPTIONS}"
   end
 
   def self.install

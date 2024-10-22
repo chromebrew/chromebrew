@@ -27,7 +27,7 @@ class Libraw < Package
   def self.build
     system 'autoreconf -fiv'
     system 'filefix'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

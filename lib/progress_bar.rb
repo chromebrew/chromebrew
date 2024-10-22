@@ -1,6 +1,6 @@
 require 'io/console'
 require_relative 'color'
-require_relative 'convert_size'
+require_relative 'misc_functions'
 
 class ProgressBar
   class InvalidSizeError < StandardError; end
@@ -23,7 +23,7 @@ class ProgressBar
     @percentage = @downloaded = 0
     @total_size = total_size.to_f
 
-    @total_size_in_str = human_size(@total_size)
+    @total_size_in_str = MiscFunctions.human_size(@total_size)
 
     trap('WINCH') do
       # reset width settings after terminal resized
@@ -48,7 +48,7 @@ class ProgressBar
       @percentage_in_str = '---'
 
       @total_size_in_str = ''
-      @downloaded_size_in_str = human_size(downloaded_size)
+      @downloaded_size_in_str = MiscFunctions.human_size(downloaded_size)
 
       # raise error unless #{invalid_size_error} is set to false
       if invalid_size_error
@@ -73,7 +73,7 @@ class ProgressBar
     @percentage_in_str = "#{@percentage.to_i}%"
 
     # {downloaded size}/{total size}
-    @downloaded_size_in_str = "#{human_size(downloaded_size)}/#{@total_size_in_str}"
+    @downloaded_size_in_str = "#{MiscFunctions.human_size(downloaded_size)}/#{@total_size_in_str}"
   end
 
   def show

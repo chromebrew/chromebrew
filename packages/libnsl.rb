@@ -14,9 +14,9 @@ class Libnsl < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '98241094fd90933e8fbecb7ce04cde284253f3ba6e232c7703cabd2a38d7e4af',
     aarch64: '76c4fcec01143ca4534929d53b31df5b1b8d7dfa230d70f151275eca4b28bef3',
      armv7l: '76c4fcec01143ca4534929d53b31df5b1b8d7dfa230d70f151275eca4b28bef3',
+       i686: '98241094fd90933e8fbecb7ce04cde284253f3ba6e232c7703cabd2a38d7e4af',
      x86_64: 'b941648127b3756d4e8ad781060d3c9a884bdf2b080d8971864c19863ea07283'
   })
 

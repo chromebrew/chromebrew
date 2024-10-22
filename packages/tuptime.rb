@@ -19,7 +19,7 @@ class Tuptime < Package
     FileUtils.install 'src/tuptime', "#{CREW_DEST_PREFIX}/bin/tuptime", mode: 0o755
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{CREW_PREFIX}/var/lib/tuptime"
     if Dir.exist? config_dir
       puts "WARNING: This will remove #{CREW_PREFIX}/var/lib/tuptime/tuptime.db and all your history.".orange

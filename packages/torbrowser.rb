@@ -51,7 +51,7 @@ class Torbrowser < Package
     puts "\nType 'tor' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     Dir.chdir("#{CREW_PREFIX}/bin") do
       if File.exist?('x-www-browser') && File.symlink?('x-www-browser') \
         && (File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/tor")

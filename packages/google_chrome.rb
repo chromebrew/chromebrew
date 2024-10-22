@@ -4,14 +4,14 @@ class Google_chrome < Package
   @update_channel = 'stable'
   description 'Google Chrome is a fast, easy to use, and secure web browser.'
   homepage 'https://www.google.com/chrome/'
-  version '127.0.6533.88-1'
+  version '130.0.6723.58-1'
   license 'google-chrome'
   compatibility 'x86_64'
-  min_glibc '2.25'
+  min_glibc '2.28'
   source_url "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-#{@update_channel}/google-chrome-#{@update_channel}_#{@version}_amd64.deb"
-  source_sha256 'd25f5c89d3453b475ccb35b2e270c3fce18540304b5f1f5a3d5aba8a80e4a8ad'
+  source_sha256 '1d6142fbd3a9e236bf4b778fe7a37d8643a431b0ab6c5f8d1c473148b6fce478'
 
-  depends_on 'nspr'
+  depends_on 'nss'
   depends_on 'cairo'
   depends_on 'gtk3'
   depends_on 'expat'
@@ -26,11 +26,10 @@ class Google_chrome < Package
     FileUtils.mv 'usr/share', CREW_DEST_PREFIX
     FileUtils.mv 'opt/google/chrome', "#{CREW_DEST_PREFIX}/share"
 
-    FileUtils.ln_s "../share/chrome/google-chrome-#{@update_channel}", "#{CREW_DEST_PREFIX}/bin/google-chrome-#{@update_channel}"
-    FileUtils.ln_s "../share/chrome/google-chrome-#{@update_channel}", "#{CREW_DEST_PREFIX}/bin/google-chrome"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/chrome/google-chrome", "#{CREW_DEST_PREFIX}/bin/google-chrome"
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'google-chrome-#{@update_channel}' to get started.\n".lightblue
+    ExitMessage.add "\nType 'google-chrome' to get started.\n"
   end
 end

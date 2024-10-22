@@ -34,7 +34,7 @@ class Wing < Package
     ExitMessage.add "\nType 'wing' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.wingpersonal#{@major_ver}"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "

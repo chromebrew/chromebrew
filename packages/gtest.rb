@@ -1,32 +1,21 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Gtest < Package
+class Gtest < CMake
   description 'Google Test - C++ testing utility'
   homepage 'https://opensource.google/projects/googletest'
-  version '1.11.0'
+  version '1.15.2'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/google/googletest.git'
-  git_hashtag "release-#{version}"
-  binary_compression 'tar.xz'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '523a783df726759242ab363f4174ef27b3db4b2794b85398b2d5f97dd3c136a3',
-     armv7l: '523a783df726759242ab363f4174ef27b3db4b2794b85398b2d5f97dd3c136a3',
-       i686: '67f2af894a33460bf36d2c4e913384e1afcaaa95256225abf80b6e271b9630c2',
-     x86_64: '79392e23282200e8d37d47738832b0e05d916f6c51b5af01b332b9887bc476a5'
+    aarch64: 'ee668998047fda174fcee58e90c399367ce8180f3c76c8758498996bf64b5e2a',
+     armv7l: 'ee668998047fda174fcee58e90c399367ce8180f3c76c8758498996bf64b5e2a',
+       i686: '542a15d9f5d6e1d5ca6848f48fa07030a7c419fc5b0cc6060f22348223f05f3e',
+     x86_64: '5726830816ada7a1f5ed60bcc12011a76e40d5da03cba1ceed0c1aaf270c5882'
   })
 
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env #{CREW_ENV_OPTIONS} \
-        cmake -G Ninja #{CREW_CMAKE_OPTIONS} -DBUILD_SHARED_LIBS=ON .."
-      system 'samu'
-    end
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  cmake_options '-DBUILD_SHARED_LIBS=ON'
 end

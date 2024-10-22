@@ -11,7 +11,7 @@ class Hurl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '59132b9e9ab44687e074a9417e8172a3e09653ac1256df9fa7dd38ecc5b341f0'
+     x86_64: '59132b9e9ab44687e074a9417e8172a3e09653ac1256df9fa7dd38ecc5b341f0'
   })
 
   depends_on 'rust' => :build

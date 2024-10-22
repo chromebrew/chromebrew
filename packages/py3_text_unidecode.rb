@@ -1,22 +1,22 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_text_unidecode < Python
+class Py3_text_unidecode < Pip
   description 'Text-unicode is the most basic Text::Unidecode port.'
   homepage 'https://github.com/kmike/text-unidecode/'
-  @_ver = '1.3'
-  version "#{@_ver}-py3.12"
+  version "1.3-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/kmike/text-unidecode.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fc5b03440a6fb6c45e0b2b442534cacf2b77168888e9df2f53376b1f72abb240',
-     armv7l: 'fc5b03440a6fb6c45e0b2b442534cacf2b77168888e9df2f53376b1f72abb240',
-       i686: '1d793188d215a8eacd84c2323af0cb424761c2ccf1d9f78bfc5f3292730b6c53',
-     x86_64: 'b1aef834e86f06370b8d8bd1f9c2356d763376ad9e2b909075fa3439ab004e89'
+    aarch64: '246d72090a1770c638ffe4a7291805d6e869bff4d5fdcdf4d602c7b32a4c2644',
+     armv7l: '246d72090a1770c638ffe4a7291805d6e869bff4d5fdcdf4d602c7b32a4c2644',
+       i686: '360d83586d770f6be85aacb856c48c9c7ca75b3eef1770dde13a3fe4029d68ad',
+     x86_64: 'a2fc5c17aeebc8ce4a29a26a5f1962f6160628de5b6d30ede47dd557d69e27d9'
   })
 
   depends_on 'python3' => :build
+
+  no_source_build
 end

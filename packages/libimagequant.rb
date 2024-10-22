@@ -22,7 +22,7 @@ class Libimagequant < Package
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS} --with-openmp"
+      ./configure #{CREW_CONFIGURE_OPTIONS} --with-openmp"
     system 'make all imagequant.pc'
   end
 

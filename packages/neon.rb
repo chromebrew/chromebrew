@@ -28,7 +28,7 @@ class Neon < Package
     system './autogen.sh'
     system 'filefix'
     system "./configure \
-            #{CREW_OPTIONS} \
+            #{CREW_CONFIGURE_OPTIONS} \
            --enable-shared=yes \
            --with-ssl=openssl"
     system 'make'

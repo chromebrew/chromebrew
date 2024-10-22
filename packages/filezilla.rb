@@ -3,17 +3,19 @@ require 'package'
 class Filezilla < Package
   description 'FileZilla Client is a free FTP solution.'
   homepage 'https://filezilla-project.org/'
-  version '3.65.0-1'
+  version '3.67.1'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://download.filezilla-project.org/client/FileZilla_3.65.0_src.tar.xz'
-  source_sha256 'd2bce4dbaa80fe035836db19441e90befcbabdef5556e9a4b3d4dd233638bdea'
+  # NOTE: This may generate a 403 forbidden error. To receive a new source url,
+  # download from here: https://filezilla-project.org/download.php?show_all=1.
+  source_url "https://dl4.cdn.filezilla-project.org/client/FileZilla_#{version}_src.tar.xz?h=lc3XtUiYRgT_RWF74oRGPA&x=1726381543"
+  source_sha256 '10468e6ef623ad9789996df61f588ca7417d39353678313611d54f2d8131a1db'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '352fdaf2d1c2d6fd7f3487dd3650a75b6695a046b8cf14b5d5fe15f54c01b14f',
-     armv7l: '352fdaf2d1c2d6fd7f3487dd3650a75b6695a046b8cf14b5d5fe15f54c01b14f',
-     x86_64: '5f5276b73062447835af8cdc05a2e36c7f570ef3256f648389590034b796533a'
+    aarch64: 'a727d04dac75bab9bb8aeaaa1cc7b224dcba459d0c35a26dff9e6c66a7e73074',
+     armv7l: 'a727d04dac75bab9bb8aeaaa1cc7b224dcba459d0c35a26dff9e6c66a7e73074',
+     x86_64: '8917e28eabda3cee162aa13095095884536402bef4370e774f056e45d5a0b6e4'
   })
 
   depends_on 'at_spi2_core' # R
@@ -49,7 +51,7 @@ class Filezilla < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-maintainer-mode --with-pugixml=builtin"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-maintainer-mode --with-pugixml=builtin"
     system 'make'
   end
 

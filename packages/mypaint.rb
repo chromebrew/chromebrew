@@ -21,7 +21,7 @@ class Mypaint < Package
   depends_on 'python3' => :build
   depends_on 'mypaint_brushes'
   depends_on 'openmp'
-  depends_on 'pygobject'
+  depends_on 'py3_pygobject'
   depends_on 'librsvg'
   depends_on 'xdg_base'
   depends_on 'sommelier'

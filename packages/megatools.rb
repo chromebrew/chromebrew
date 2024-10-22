@@ -17,7 +17,7 @@ class Megatools < Package
      x86_64: '39ac4b9d1aa152c12ba1b2cd162d07a8dad6b2206e6f67a6b87377b5c907ede4'
   })
 
-  depends_on 'asciidoc'
+  depends_on 'py3_asciidoc'
   depends_on 'glib'
 
   def self.build

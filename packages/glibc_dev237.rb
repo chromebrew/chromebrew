@@ -4,16 +4,18 @@ Package.load_package("#{__dir__}/glibc_build237.rb")
 class Glibc_dev237 < Package
   description 'glibc: everything except what is in glibc_lib'
   homepage Glibc_build237.homepage
-  version '2.37'
+  version '2.37-patchelf2'
   license Glibc_build237.license
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc version.split('-').first
+  max_glibc version.split('-').first
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '73b6371edbfd4295465c24dbc9fb60975a4c37aff37a6eecf940d22b2727d218',
-     armv7l: '73b6371edbfd4295465c24dbc9fb60975a4c37aff37a6eecf940d22b2727d218',
-     x86_64: '9ca2f35c8325766fb20cd4cd4c02e7b46052158ca528a0807b33a8624a050de8'
+    aarch64: 'd30575a011326b56ff235078aeb881c2a3d24619cb1697f7eed9b71bd9a33b42',
+     armv7l: 'd30575a011326b56ff235078aeb881c2a3d24619cb1697f7eed9b71bd9a33b42',
+     x86_64: '9689db1bfc8580b61409cc9b23591c1560b3651a2f1474815aab301611866553'
   })
 
   depends_on 'glibc_build237' => :build
@@ -22,11 +24,8 @@ class Glibc_dev237 < Package
   conflicts_ok
   no_shrink
   no_source_build
+  no_strip
   no_upstream_update
-
-  def self.preflight
-    abort 'Glibc_lib requires glibc = 2.37.' unless Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.37')
-  end
 
   def self.install
     puts 'Installing Glibc_build to pull files for build...'.lightblue

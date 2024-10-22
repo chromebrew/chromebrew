@@ -1,22 +1,22 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_click < Python
+class Py3_click < Pip
   description 'Click is a simple wrapper around optparse for powerful command line utilities.'
   homepage 'https://click.palletsprojects.com'
-  @_ver = '8.1.7'
-  version "#{@_ver}-py3.12"
+  version "8.1.7-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/pallets/click.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6841f11909be44ce2d1baccc66925893dab58ef5e256ad6bcd2fbdbc027c43aa',
-     armv7l: '6841f11909be44ce2d1baccc66925893dab58ef5e256ad6bcd2fbdbc027c43aa',
-       i686: '3670b9d3e1539843347c9846e59424684b93b1ff1ba20d54d9883a92a6643725',
-     x86_64: 'c55310d8ce2c65242b08d4e4eb244b9ce5f1dfb69c73676fedc450847acc051d'
+    aarch64: '176c87e87bdc23afb4ea063ad7e86a6f2ba16c84f817549245767f5db018d0db',
+     armv7l: '176c87e87bdc23afb4ea063ad7e86a6f2ba16c84f817549245767f5db018d0db',
+       i686: 'a33d65fded6dfe46afcab8c7c1deff47c7bdf63cfc4f53a32f2676aebc63fba0',
+     x86_64: '3402b43f2bf1b0febb3a711a5e8058fe0e31c92338df71af2e8a0629fe9cf0a2'
   })
 
   depends_on 'python3' => :build
+
+  no_source_build
 end

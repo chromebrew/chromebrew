@@ -3,17 +3,18 @@ require 'buildsystems/cmake'
 class Inkscape < CMake
   description 'Inkscape is a professional vector graphics editor for Windows, Mac OS X and Linux.'
   homepage 'https://inkscape.org/'
-  version '1.3.2'
+  version '1.4'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://media.inkscape.org/dl/resources/file/inkscape-1.3.2.tar.xz'
-  source_sha256 'dbd1844dc443fe5e10d3e9a887144e5fb7223852fff191cfb5ef7adeab0e086b'
+  min_glibc '2.37'
+  source_url "https://media.inkscape.org/dl/resources/file/inkscape-#{version}.tar.xz"
+  source_sha256 'c59a85453b699addebcd51c1dc07684dd96a10c8aec716b19551db50562e13f5'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '66c2c48729a8dce69f8842ef98ea13d9b647ec73023ebafbc1123d53248ac325',
-     armv7l: '66c2c48729a8dce69f8842ef98ea13d9b647ec73023ebafbc1123d53248ac325',
-     x86_64: '1c28df91667910fd81fad3c2849fe6edef318a49ca8188e8c743780bdc2e211c'
+    aarch64: '19eb8c1ce45c260019d96fa0dbd13b8d18e812542185f9f0a5a52163eb1dacc8',
+     armv7l: '19eb8c1ce45c260019d96fa0dbd13b8d18e812542185f9f0a5a52163eb1dacc8',
+     x86_64: '3d7da3a8dcf08953b44bd3f95ac3cba0fcf29b482a9e7f51959b41698e706cfb'
   })
 
   depends_on 'atkmm16' # R
@@ -74,12 +75,4 @@ class Inkscape < CMake
             -DWITH_INTERNAL_2GEOM=ON \
             -DWITH_MANPAGE_COMPRESSION=OFF \
             -DWITH_X11=ON'
-
-  def self.patch
-    downloader 'https://gitlab.archlinux.org/archlinux/packaging/packages/inkscape/-/raw/main/inkscape-1.3.2-poppler-24.03.patch?ref_type=heads&inline=false', '499bc0bd0d8600b597220f463034d5e132e69c7833108d6b766445e70e9c82ed', 'poppler.patch'
-    system 'patch -p1 -i poppler.patch'
-    # libxml compatibility patch
-    downloader 'https://gitlab.com/inkscape/inkscape/-/merge_requests/6089.patch', 'edc55ad0771b604c63737524fc5928a35334db04d6479e395801635d5f6dfc1f'
-    system 'patch -p1 -i 6089.patch'
-  end
 end

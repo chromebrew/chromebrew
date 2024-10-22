@@ -3,21 +3,23 @@ require 'buildsystems/cmake'
 class Qbittorrent < CMake
   description 'Open-source software alternative to µTorrent.'
   homepage 'https://www.qbittorrent.org/'
-  version '4.6.3'
+  version '4.6.7'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-4.6.3/qbittorrent-4.6.3.tar.xz'
-  source_sha256 '5f9f3e0b89861e8bae1894656f8b8f76feddb3c92e228065c8173632af6e544e'
+  min_glibc '2.37'
+  source_url "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-#{version}/qbittorrent-#{version}.tar.xz"
+  source_sha256 'bcf2dcf52a0186c3f5da2f1413453888654dc1aee5e4ad80e5a026764bc640c4'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a3bb615c33f412adcf44b9284b5f9c28c45d2f05dab0d299220b28d4844d64ff',
-     armv7l: 'a3bb615c33f412adcf44b9284b5f9c28c45d2f05dab0d299220b28d4844d64ff',
-     x86_64: 'afbe852b182f0e0ca7abc58a16415da49f1ae294853436b2b5e14d50c3b8cc54'
+    aarch64: 'ab18023baf9d990fb90acabc39884c9b0f38ef008e9ecef20cd9d90dea9619b6',
+     armv7l: 'ab18023baf9d990fb90acabc39884c9b0f38ef008e9ecef20cd9d90dea9619b6',
+     x86_64: 'dbaca4cd1e372ac6707b8d9547bf571d401067c1c151ca55f8cb9bb61f0824f0'
   })
 
   depends_on 'cmake' => :build
   depends_on 'gcc_lib' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libtorrent' # R
   depends_on 'openssl' # R

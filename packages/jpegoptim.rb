@@ -20,7 +20,7 @@ class Jpegoptim < Package
   depends_on 'libjpeg_turbo'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
     system 'make', 'strip'
   end

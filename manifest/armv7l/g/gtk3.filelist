@@ -439,10 +439,10 @@
 /usr/local/lib/libgailutil-3.so.0.0.0
 /usr/local/lib/libgdk-3.so
 /usr/local/lib/libgdk-3.so.0
-/usr/local/lib/libgdk-3.so.0.2409.32
+/usr/local/lib/libgdk-3.so.0.2410.32
 /usr/local/lib/libgtk-3.so
 /usr/local/lib/libgtk-3.so.0
-/usr/local/lib/libgtk-3.so.0.2409.32
+/usr/local/lib/libgtk-3.so.0.2410.32
 /usr/local/lib/pkgconfig/gail-3.0.pc
 /usr/local/lib/pkgconfig/gdk-3.0.pc
 /usr/local/lib/pkgconfig/gdk-broadway-3.0.pc
@@ -600,6 +600,8 @@
 /usr/local/share/locale/ja/LC_MESSAGES/gtk30.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gtk30-properties.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gtk30.mo
+/usr/local/share/locale/kab/LC_MESSAGES/gtk30-properties.mo
+/usr/local/share/locale/kab/LC_MESSAGES/gtk30.mo
 /usr/local/share/locale/kg/LC_MESSAGES/gtk30-properties.mo
 /usr/local/share/locale/kg/LC_MESSAGES/gtk30.mo
 /usr/local/share/locale/kk/LC_MESSAGES/gtk30-properties.mo

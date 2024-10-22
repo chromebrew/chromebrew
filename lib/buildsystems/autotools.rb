@@ -2,7 +2,7 @@ require 'fileutils'
 require 'package'
 
 class Autotools < Package
-  property :configure_options, :pre_configure_options, :install_extras
+  property :configure_options, :pre_configure_options, :configure_build_extras, :configure_install_extras
 
   def self.build
     unless File.file?('Makefile') && CREW_CACHE_BUILD
@@ -24,14 +24,15 @@ class Autotools < Package
         system 'filefix'
       end
       @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run ' : ''
-      system "#{@pre_configure_options} #{@mold_linker_prefix_cmd}./configure #{CREW_OPTIONS} #{@configure_options}"
+      system "#{@pre_configure_options} #{@mold_linker_prefix_cmd}./configure #{CREW_CONFIGURE_OPTIONS} #{@configure_options}"
     end
     system 'make'
+    @configure_build_extras&.call
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    @install_extras&.call
+    @configure_install_extras&.call
   end
 
   def self.check

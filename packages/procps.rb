@@ -19,7 +19,7 @@ class Procps < Package
 
   def self.build
     system './autogen.sh'
-    system "CFLAGS='-I#{CREW_PREFIX}/include/ncursesw' ./configure #{CREW_OPTIONS}"
+    system "CFLAGS='-I#{CREW_PREFIX}/include/ncursesw' ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

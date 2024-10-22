@@ -49,6 +49,7 @@
 /usr/local/include/isl/stdint.h
 /usr/local/include/isl/stream.h
 /usr/local/include/isl/stride_info.h
+/usr/local/include/isl/typed_cpp.h
 /usr/local/include/isl/union_map.h
 /usr/local/include/isl/union_map_type.h
 /usr/local/include/isl/union_set.h
@@ -62,9 +63,7 @@
 /usr/local/lib/libisl.a
 /usr/local/lib/libisl.la
 /usr/local/lib/libisl.so
-/usr/local/lib/libisl.so.15
-/usr/local/lib/libisl.so.19
 /usr/local/lib/libisl.so.23
-/usr/local/lib/libisl.so.23.0.0
-/usr/local/lib/libisl.so.23.0.0-gdb.py
+/usr/local/lib/libisl.so.23.4.0
+/usr/local/lib/libisl.so.23.4.0-gdb.py
 /usr/local/lib/pkgconfig/isl.pc

@@ -11,7 +11,7 @@ class Lnav < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: 'a3da030ad5690e7f447b58530966820e38e3d85bdb145d7fa77d02898fbb3453'
+     x86_64: 'a3da030ad5690e7f447b58530966820e38e3d85bdb145d7fa77d02898fbb3453'
   })
 
   depends_on 'gcc' => :build

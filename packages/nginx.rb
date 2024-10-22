@@ -79,7 +79,7 @@ class Nginx < Package
     EOM
   end
 
-  def self.remove
+  def self.postremove
     if Dir.exist? "#{CREW_PREFIX}/share/nginx"
       puts "\nWARNING: This will remove all hosting files and configuration.".orange
       print "Would you like to remove #{CREW_PREFIX}/share/nginx? [y/N] "

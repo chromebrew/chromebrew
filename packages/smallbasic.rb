@@ -23,7 +23,7 @@ class Smallbasic < Package
 
   def self.build
     system 'bash ./autogen.sh && filefix'
-    system "./configure #{CREW_OPTIONS} --enable-sdl"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --enable-sdl"
     system 'make'
   end
 

@@ -12,13 +12,13 @@ class Libdvbpsi < Package
 
   binary_sha256({
     aarch64: 'd528cc96c1ad8867d0698447257ea2804e173a30b8dd0110b128353312f1c1a6',
-      armv7l: 'd528cc96c1ad8867d0698447257ea2804e173a30b8dd0110b128353312f1c1a6',
-        i686: '633ad6aaee5508dfc781e3768d108b947f32c1609079ccc14d97254fe0f795a5',
-      x86_64: 'ff2fab5910127c762cc75c072fe30141b38f37ff90c29be5cef871250d688fd7'
+     armv7l: 'd528cc96c1ad8867d0698447257ea2804e173a30b8dd0110b128353312f1c1a6',
+       i686: '633ad6aaee5508dfc781e3768d108b947f32c1609079ccc14d97254fe0f795a5',
+     x86_64: 'ff2fab5910127c762cc75c072fe30141b38f37ff90c29be5cef871250d688fd7'
   })
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
               --enable-release"
     system 'make'
   end

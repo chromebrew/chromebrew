@@ -1,7 +1,7 @@
 /usr/local/bin/m4
-/usr/local/share/info/m4.info-1.gz
-/usr/local/share/info/m4.info-2.gz
-/usr/local/share/info/m4.info.gz
+/usr/local/share/info/m4.info-1.zst
+/usr/local/share/info/m4.info-2.zst
+/usr/local/share/info/m4.info.zst
 /usr/local/share/locale/bg/LC_MESSAGES/m4.mo
 /usr/local/share/locale/cs/LC_MESSAGES/m4.mo
 /usr/local/share/locale/da/LC_MESSAGES/m4.mo
@@ -28,4 +28,4 @@
 /usr/local/share/locale/vi/LC_MESSAGES/m4.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/m4.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/m4.mo
-/usr/local/share/man/man1/m4.1.gz
+/usr/local/share/man/man1/m4.1.zst

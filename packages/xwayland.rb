@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Xwayland < Meson
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org/wiki/'
-  version '24.1.1'
+  version '24.1.2'
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
@@ -11,9 +11,9 @@ class Xwayland < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a4519bdccf53e54ce5deb8f4ef305215b1a4a4f616c0010e63735d09a9c7b58c',
-     armv7l: 'a4519bdccf53e54ce5deb8f4ef305215b1a4a4f616c0010e63735d09a9c7b58c',
-     x86_64: '75294270a6cc629d3cefa2faf9231ce8b5adb89ce7dd3ce7dbea1f1fc843b22e'
+    aarch64: 'b7c7fd3f56141ee3dfc28e7e767e7b6b1ea83bd1189003a79a1fabfc58f8242f',
+     armv7l: 'b7c7fd3f56141ee3dfc28e7e767e7b6b1ea83bd1189003a79a1fabfc58f8242f',
+     x86_64: 'c5b8917bee9944a3db2687c3a10cdf9311d8f97e8182dedceb86181686b4fba0'
   })
 
   no_env_options
@@ -27,6 +27,7 @@ class Xwayland < Meson
   # depends_on 'glproto' => :build Conflict with xorg_proto
   depends_on 'graphite' => :build
   depends_on 'libbsd' # R
+  depends_on 'libdecor' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
   depends_on 'libglvnd' # R
@@ -47,6 +48,7 @@ class Xwayland < Meson
   depends_on 'rendercheck' # R
   depends_on 'wayland' # R
   depends_on 'xkbcomp' => :build
+  depends_on 'xmlto' => :build
   depends_on 'xorg_proto' => :build
 
   meson_options '-Db_asneeded=false \

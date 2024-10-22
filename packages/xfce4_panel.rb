@@ -30,7 +30,7 @@ class Xfce4_panel < Package
   def self.build
     system <<~BUILD
       [ -x autogen.sh ] && env NOCONFIGURE='1' ./autogen.sh
-      env #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+      env #{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
         --disable-static \
         --enable-gio-unix
 

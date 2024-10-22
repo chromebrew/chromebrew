@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Texinfo < Autotools
   description 'Texinfo is the official documentation format of the GNU project.'
   homepage 'https://www.gnu.org/software/texinfo/'
-  version '7.1.0.90-perl5.40'
+  version "7.1.1-#{CREW_PERL_VER}"
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://git.savannah.gnu.org/cgit/texinfo.git/snapshot/texinfo-c5961c61fa9c9f817f3569585fb75a3512c872de.tar.gz'
-  source_sha256 'd5058642862d0efa2ed98218fdd8830d4e018658aaa8df010d3d30a996812286'
+  source_url "https://git.savannah.gnu.org/cgit/texinfo.git/snapshot/texinfo-#{version.split('-').first}.tar.gz"
+  source_sha256 'dc6c36214d03cedba0cafe483ade60be2a3d78fc6074125215c805bc5fddf305'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5f544f32ab5100a1ddd07d5b22af52246afad99a47fe1af3358e33ddce9fbb13',
-     armv7l: '5f544f32ab5100a1ddd07d5b22af52246afad99a47fe1af3358e33ddce9fbb13',
-       i686: '3b88d3d6409604c7fbe06013c895e1c02758b6bf8d40025e77ccd749f63ff079',
-     x86_64: '89242d4e2e146c41de85e8e3641fa53422cc3ef29f8464b7357c7e3df0ab8ad2'
+    aarch64: '749fd3caf7acfa85c0f567ddb521691e114a3f077848778df14f1e3cc07306a1',
+     armv7l: '749fd3caf7acfa85c0f567ddb521691e114a3f077848778df14f1e3cc07306a1',
+       i686: '62585c50b3dfefe2a1e2d7ef4aa801c2471ad8b119041035e70e40560c25c561',
+     x86_64: 'e1f4f26cc112d9368f3f050a504a073c1f730b123600c3517e162dff1e89f070'
   })
 
   depends_on 'glibc_lib' # R

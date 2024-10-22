@@ -3,7 +3,7 @@ require 'package'
 class Perl_io_socket_ssl < Package
   description 'IO::Socket::SSL - SSL sockets with IO::Socket interface'
   homepage 'https://metacpan.org/pod/IO::Socket::SSL'
-  version '2.085-perl5.40'
+  version "2.085-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.085.tar.gz'

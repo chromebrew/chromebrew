@@ -40,7 +40,7 @@
 /usr/local/lib/girepository-1.0/xlib-2.0.typelib
 /usr/local/lib/girepository-1.0/xrandr-1.3.typelib
 /usr/local/lib/gobject-introspection/giscanner/__init__.py
-/usr/local/lib/gobject-introspection/giscanner/_giscanner.cpython-312-arm-linux-gnueabihf.so
+/usr/local/lib/gobject-introspection/giscanner/_giscanner.cpython-313-arm-linux-gnueabihf.so
 /usr/local/lib/gobject-introspection/giscanner/_version.py
 /usr/local/lib/gobject-introspection/giscanner/annotationmain.py
 /usr/local/lib/gobject-introspection/giscanner/annotationparser.py
@@ -166,6 +166,8 @@
 /usr/local/share/gobject-introspection-1.0/tests/gimarshallingtests.c
 /usr/local/share/gobject-introspection-1.0/tests/gimarshallingtests.h
 /usr/local/share/gobject-introspection-1.0/tests/gitestmacros.h
+/usr/local/share/gobject-introspection-1.0/tests/regress-unix.c
+/usr/local/share/gobject-introspection-1.0/tests/regress-unix.h
 /usr/local/share/gobject-introspection-1.0/tests/regress.c
 /usr/local/share/gobject-introspection-1.0/tests/regress.h
 /usr/local/share/gobject-introspection-1.0/tests/utility.c

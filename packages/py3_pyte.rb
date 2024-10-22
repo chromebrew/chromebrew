@@ -1,23 +1,23 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_pyte < Python
+class Py3_pyte < Pip
   description 'PyTE is a Simple VTXXX-compatible terminal emulator.'
   homepage 'https://github.com/selectel/pyte/'
-  @_ver = '0.8.1'
-  version "#{@_ver}-py3.12"
+  version "0.8.2-#{CREW_PY_VER}"
   license 'LGPL-3'
   compatibility 'all'
-  source_url 'https://github.com/selectel/pyte.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8dbdf94590e87358c841721e9fd75bf1806e0749d27472daa5ce36a294334190',
-     armv7l: '8dbdf94590e87358c841721e9fd75bf1806e0749d27472daa5ce36a294334190',
-       i686: 'd07194c7076360c9d404a8f3c5831f378bcbdf1b6fcde157018a401c47bd81bb',
-     x86_64: '05155f30c75f0155bfc4f1c332acb858771c3c164632eb5cb35965c3d8b39d38'
+    aarch64: '0e470f9ee2ed2378752f0b12d3581da70f6f15927e24d01dd1d4c873f6693019',
+     armv7l: '0e470f9ee2ed2378752f0b12d3581da70f6f15927e24d01dd1d4c873f6693019',
+       i686: '0f791907683662ec2fe4cdf87f14d600b853d987927dbace4b45e0359414bb5c',
+     x86_64: '7ffc9c40bc283433367d158ae2b65e4fc1e1a8c7593b372f49550e5faae45313'
   })
 
   depends_on 'py3_wcwidth'
   depends_on 'python3' => :build
+
+  no_source_build
 end

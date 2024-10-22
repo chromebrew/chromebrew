@@ -12,15 +12,15 @@ class Libdvdnav < Package
 
   binary_sha256({
     aarch64: '1663315253bf583fa15d29c094602053baa87927663124821a105e298c325746',
-      armv7l: '1663315253bf583fa15d29c094602053baa87927663124821a105e298c325746',
-        i686: 'f904448267fce9f2cf000d4b542c4eedca15cd26ebca5a75e07698a43c88b8ab',
-      x86_64: 'ac31549a112b165b145668e64688f6cd0f30cd6c8ffe6356c454a1c5bdce1c88'
+     armv7l: '1663315253bf583fa15d29c094602053baa87927663124821a105e298c325746',
+       i686: 'f904448267fce9f2cf000d4b542c4eedca15cd26ebca5a75e07698a43c88b8ab',
+     x86_64: 'ac31549a112b165b145668e64688f6cd0f30cd6c8ffe6356c454a1c5bdce1c88'
   })
 
   depends_on 'libdvdread'
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

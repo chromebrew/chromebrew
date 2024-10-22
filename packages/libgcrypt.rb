@@ -3,24 +3,38 @@ require 'buildsystems/autotools'
 class Libgcrypt < Autotools
   description 'Libgcrypt is a general purpose cryptographic library originally based on code from GnuPG.'
   homepage 'https://www.gnupg.org/related_software/libgcrypt/index.html'
-  version '1.10.3'
+  version '1.11.0'
   license 'LGPL-2.1 and MIT'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-#{version}.tar.bz2"
-  source_sha256 '8b0870897ac5ac67ded568dcfadf45969cfa8a6beb0fd60af2a9eadc2a3272aa'
+  source_sha256 '09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd5266a65d899b92c2d5b5f821aafc4416b6a49f187198d1d8a647884af9b6cae',
-     armv7l: 'd5266a65d899b92c2d5b5f821aafc4416b6a49f187198d1d8a647884af9b6cae',
-       i686: '359b23bd4316e3726275226081215f5541267370e2b8c22d11a1c24e6614df81',
-     x86_64: '52a6b584a9fcd729a7c8f4d0648e13cbafec3754c09d988e5358dd593491b69d'
+    aarch64: '3084b4d1869a8ff6d5daa76dcf9451378795fdac5af9182bda7a0a7b9d4f079c',
+     armv7l: '3084b4d1869a8ff6d5daa76dcf9451378795fdac5af9182bda7a0a7b9d4f079c',
+       i686: '85c818af47cfe64df3acab5e5e1e54a5ad98ce3495e6cf3d703568222b0d196d',
+     x86_64: 'cd0fb26e325aebc496d8b539f2f6b6744446b49caa1b34d9a1d5061b7dd502e9'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
 
   configure_options '--enable-static \
       --enable-shared'
+
+  def self.patch
+    # Fix error: 'asm' operand has impossible constraints or there are not enough registers
+    # See https://dev.gnupg.org/T7226.
+    if %w[aarch64 armv7l].include?(ARCH)
+      puts 'Downloading patch...'.yellow
+      downloader 'https://files.gnupg.net/file/download/4axfkyiszlsm4qgf5lxy/PHID-FILE-k3tzb5qnxdtsfvvpd7q4/0001-mpi-ec-inline-reduce-register-pressure-on-32-bit-ARM.patch',
+                 'de543d9d5bfcfb91090c0ebbe46b321344686130cbe5f214ca86c9f8c040d5fa'
+      puts 'Applying patch...'.yellow
+      system 'git apply 0001-mpi-ec-inline-reduce-register-pressure-on-32-bit-ARM.patch'
+    end
+  end
+
+  run_tests
 end

@@ -3,22 +3,21 @@ require 'buildsystems/autotools'
 class Geany_plugins < Autotools
   description 'Geany plugins.'
   homepage 'https://www.geany.org/'
-  version '2.0.0'
+  version "2.0.0-#{CREW_ICU_VER}"
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/geany/geany-plugins.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '712ed5e1737c8ae1bae903a36c182433ab01d829ec809e292d506fb1d9b2483f',
-     armv7l: '712ed5e1737c8ae1bae903a36c182433ab01d829ec809e292d506fb1d9b2483f',
-     x86_64: 'bd9e2dafbefab9bab849b93243ecc1e39174f0914267d3db55b7f1be5eda70cd'
+    aarch64: '59df5d161cebaef8831a1147adfdef7c28580d2c6cb0201ec3f9fe24141d8b27',
+     armv7l: '59df5d161cebaef8831a1147adfdef7c28580d2c6cb0201ec3f9fe24141d8b27',
+     x86_64: 'a1e96bedcad6e4417dc2dbe3086688ff6ff1532ce2d799dcd83212c23c8fddb5'
   })
 
   depends_on 'aspell' # R
   depends_on 'at_spi2_core' # R
-  depends_on 'cairo' => :build
   depends_on 'cairo' # R
   depends_on 'enchant' # R
   depends_on 'gcc_lib' # R
@@ -38,4 +37,7 @@ class Geany_plugins < Autotools
   depends_on 'vte' # R
   depends_on 'webkit2gtk_4' # R
   depends_on 'zlib' # R
+
+  # try to avoid gcc14 issues.
+  configure_options '--disable-projectorganizer'
 end

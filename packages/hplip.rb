@@ -11,7 +11,7 @@ class Hplip < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '6776701484130b500892959a852ce9a8c8ea8054974d64ce4539c00af64d645f'
+     x86_64: '6776701484130b500892959a852ce9a8c8ea8054974d64ce4539c00af64d645f'
   })
 
   depends_on 'cups'
@@ -34,7 +34,7 @@ class Hplip < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-network-build"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-network-build"
     system 'make'
   end
 

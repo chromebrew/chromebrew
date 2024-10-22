@@ -11,7 +11,7 @@ class Obs < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    x86_64: '854492244415cea4b4874cf3cd2302649d5b538d89366f2fd1ccceda7ff1f3ea'
+     x86_64: '854492244415cea4b4874cf3cd2302649d5b538d89366f2fd1ccceda7ff1f3ea'
   })
 
   depends_on 'curl'
@@ -20,8 +20,8 @@ class Obs < Package
   depends_on 'jansson'
   depends_on 'libmbedtls'
   depends_on 'luajit'
-  depends_on 'qtsvg'
-  depends_on 'qtx11extras'
+  depends_on 'qt5_svg'
+  depends_on 'qt5_x11extras'
   depends_on 'v4l_utils'
   depends_on 'xdg_base'
   depends_on 'sommelier'

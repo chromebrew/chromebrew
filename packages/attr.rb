@@ -1,32 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Attr < Package
+class Attr < Autotools
   description 'Commands for Manipulating Filesystem Extended Attributes.'
-  homepage 'http://savannah.nongnu.org/projects/attr'
-  version '2.5.1-1'
+  homepage 'https://savannah.nongnu.org/projects/attr'
+  version '2.5.2'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://download.savannah.gnu.org/releases/attr/attr-2.5.1.tar.xz'
-  source_sha256 'db448a626f9313a1a970d636767316a8da32aede70518b8050fa0de7947adc32'
+  source_url 'https://git.savannah.gnu.org/git/attr.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.xz'
 
   binary_sha256({
-    aarch64: '064c27a5daaecabe639c40b1b307bdc7711e7132903d300de699219dc8d00685',
-     armv7l: '064c27a5daaecabe639c40b1b307bdc7711e7132903d300de699219dc8d00685',
-       i686: 'fb434974fc3a48c3122785de09515115762555e9c7551db8734e54f251db6c51',
-     x86_64: '690156378a76ac649c3fd780c517042f74ef812da45e9f84274b2ce5e80b3978'
+    aarch64: '6730b3d290f8aaea61bbe814606910e2b24ec1fc1dc1f751a7820c4ba3915be5',
+     armv7l: '6730b3d290f8aaea61bbe814606910e2b24ec1fc1dc1f751a7820c4ba3915be5',
+       i686: '15f296a5eeb14d80ffb85b6f38c10112fa5aab3d3caaceb6f250d49da51bf8f7',
+     x86_64: '97ebf045a15e003b21a35401d8f7b5c40f6282840fdc10bdcba2def3bbfbb714'
   })
 
   depends_on 'libcap' => :build
+
   no_zstd
-
-  def self.build
-    system "./configure \
-      #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

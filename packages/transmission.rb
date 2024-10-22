@@ -119,7 +119,7 @@ class Transmission < Package
     system 'stoptransmission'
   end
 
-  def self.remove
+  def self.postremove
     config_dirs_exist = false
     config_dirs = ["#{CREW_PREFIX}/.config/transmission", "#{CREW_PREFIX}/.config/transmission-daemon"]
     config_dirs.each do |config_dir|

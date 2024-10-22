@@ -33,7 +33,7 @@ class Dia < Meson
   depends_on 'optipng' => :build
   depends_on 'pango' # R
   depends_on 'poppler' # R
-  depends_on 'pygobject' # R
+  depends_on 'py3_pygobject' # R
   depends_on 'py3_six' => :build
   depends_on 'python3' # R
   depends_on 'swig1' => :build

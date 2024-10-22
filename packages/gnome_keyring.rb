@@ -12,8 +12,8 @@ class Gnome_keyring < Autotools
 
   binary_sha256({
     aarch64: '76e86060eceecc2f75f2a1f6c25f903e395fcb998dc5db8b7221ac98cdf94ae8',
-      armv7l: '76e86060eceecc2f75f2a1f6c25f903e395fcb998dc5db8b7221ac98cdf94ae8',
-      x86_64: 'ea6a16c27a7b38a967e2ea62ecb72a5b597460234b98a14581db62357ca60df9'
+     armv7l: '76e86060eceecc2f75f2a1f6c25f903e395fcb998dc5db8b7221ac98cdf94ae8',
+     x86_64: 'ea6a16c27a7b38a967e2ea62ecb72a5b597460234b98a14581db62357ca60df9'
   })
 
   depends_on 'at_spi2_core' # R
@@ -30,7 +30,7 @@ class Gnome_keyring < Autotools
   depends_on 'libcap_ng' # R
   depends_on 'libeconf' # R
   depends_on 'libgcrypt' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libxslt' => :build
   depends_on 'linux_pam' # R
   depends_on 'openssh' => :build

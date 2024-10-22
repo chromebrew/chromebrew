@@ -87,14 +87,13 @@ Where available commands are:
 | files        | display installed files of package(s) |
 | help         | get information about command usage |
 | install      | install package(s) along with dependencies after prompting for confirmation |
-| list         | available, installed, compatible or incompatible packages |
+| list         | available, compatible, incompatible, essential, installed packages |
 | postinstall  | display postinstall messages of package(s) |
 | prop         | display all package boolean properties |
 | reinstall    | remove and install package(s) |
 | remove       | remove package(s) |
 | search       | look for package(s) |
 | sysinfo      | show system information in markdown style |
-| test         | test crew command(s) |
 | update       | update crew itself |
 | upgrade      | update all or specific package(s) |
 | upload       | upload binaries for all or specific package(s) |

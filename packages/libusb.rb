@@ -21,7 +21,7 @@ class Libusb < Package
 
   def self.build
     system "./configure \
-      #{CREW_OPTIONS}"
+      #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

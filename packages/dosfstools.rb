@@ -18,7 +18,7 @@ class Dosfstools < Package
   })
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --enable-compat-symlinks"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --enable-compat-symlinks"
     system 'make'
   end
 

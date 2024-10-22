@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Swig < Autotools
   description 'Simplified Wrapper and Interface Generator'
   homepage 'https://www.swig.org/'
-  version '4.1.1-1'
+  version '4.3.0'
   license 'GPL-3, BSD and BSD-2'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/swig/swig/swig-4.1.1/swig-4.1.1.tar.gz'
-  source_sha256 '2af08aced8fcd65cdb5cc62426768914bedc735b1c250325203716f78e39ac9b'
+  source_url 'https://github.com/swig/swig'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c6bcbd9582e70c4209eedbb931dd236c030a99cd4150c0ebfac1b250a7912a5b',
-     armv7l: 'c6bcbd9582e70c4209eedbb931dd236c030a99cd4150c0ebfac1b250a7912a5b',
-       i686: '5a1c1666474182c3f3f20a8dd5fc3ff659d603cb816210488c5abfee413c8934',
-     x86_64: '99ebb3ed84b2a5cee79ce6fc228d64ed65249e9d96ac8d8d90c388075f3d6eda'
+    aarch64: 'c48b84a284a041ca31c74bb13ee9b74d5637bbd65fef3c152a87e7f63a81da70',
+     armv7l: 'c48b84a284a041ca31c74bb13ee9b74d5637bbd65fef3c152a87e7f63a81da70',
+       i686: '4403396541949949bed0e1ad5222897a733eb8bd8cb7e5921ac915c39ce3afed',
+     x86_64: 'b703ed720a781b0d325625b64b7d65ab9617715ff213e0452586a5c0bd27bd31'
   })
 
   depends_on 'boost' => :build

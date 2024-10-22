@@ -3,7 +3,7 @@ require 'package'
 class Boost < Package
   description 'Boost provides free peer-reviewed portable C++ source libraries.'
   homepage 'https://www.boost.org/'
-  version '1.85.0-py3.12'
+  version "1.85.0-#{CREW_ICU_VER}-#{CREW_PY_VER}"
   license 'Boost-1.0'
   compatibility 'all'
   source_url "https://boostorg.jfrog.io/artifactory/main/release/#{version.split('-').first}/source/boost_#{version.split('-').first.gsub('.', '_')}.tar.bz2"
@@ -11,10 +11,10 @@ class Boost < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b4db9eb12101b140b6071bcf65e24e7d541728f9e64f4c71fa3dff3adf1ac208',
-     armv7l: 'b4db9eb12101b140b6071bcf65e24e7d541728f9e64f4c71fa3dff3adf1ac208',
-       i686: '2d68696fe8469881653e45579750952424537e6e2f7aad0c19957a3f570488e0',
-     x86_64: '8043b7745e036cf75717b1c8b59700d41fdff0479536b375a71a6054ce73d3d9'
+    aarch64: '0a8b31c3ea2d515e867ee006eb68a5958536044cf3009513c1b2753cf982a28d',
+     armv7l: '0a8b31c3ea2d515e867ee006eb68a5958536044cf3009513c1b2753cf982a28d',
+       i686: '572e6f8afc10744d96cd1b3caa29a8a67d16a0dff2a3b2791353dc92b97af9f5',
+     x86_64: '3ed4dc23d4011a5f1d77a70004ddec926b7cde25ece5cdc23e59e63d32fc5a86'
   })
 
   depends_on 'bzip2' # R

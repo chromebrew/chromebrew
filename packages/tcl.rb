@@ -25,7 +25,7 @@ class Tcl < Package
   def self.build
     FileUtils.chdir('unix') do
       @bit64 = ARCH == 'x86_64' ? 'enable' : 'disable'
-      system "./configure #{CREW_OPTIONS} --#{@bit64}-64bit"
+      system "./configure #{CREW_CONFIGURE_OPTIONS} --#{@bit64}-64bit"
       system 'make'
     end
   end

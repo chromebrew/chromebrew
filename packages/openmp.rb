@@ -2,32 +2,32 @@
 # https://github.com/archlinux/svntogit-packages/raw/packages/openmp/trunk/PKGBUILD
 
 require 'package'
-Package.load_package("#{__dir__}/llvm18_build.rb")
+Package.load_package("#{__dir__}/llvm19_build.rb")
 
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '18.1.8'
+  version '19.1.2'
   # When upgrading llvm_build*, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm18_build.version}".orange if version != Llvm18_build.version
+  puts "#{self} version differs from llvm version #{Llvm19_build.version}".orange if version != Llvm19_build.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
-  git_hashtag Llvm18_build.git_hashtag.to_s
+  git_hashtag Llvm19_build.git_hashtag.to_s
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a48c71bb201c63e98194954a14ffa0511c041300fe9cef9ea2d8e9528f937899',
-     armv7l: 'a48c71bb201c63e98194954a14ffa0511c041300fe9cef9ea2d8e9528f937899',
-       i686: '04eb4da46adf5d94cbb794584fbd00c50453c10c48ca8f30b627dc6f9896938e',
-     x86_64: '1ded03937b576d0b3a5cf9169f3512397d1aa0af11f693b6aa7df120c8e83d8a'
+    aarch64: '291b49c18b0be292cbcb4b5b5c96ef326ed5f0b9e9147fe96e1abe124442bc80',
+     armv7l: '291b49c18b0be292cbcb4b5b5c96ef326ed5f0b9e9147fe96e1abe124442bc80',
+       i686: '4a86634d251bdedfacf4574b80bf10db33071e9d87c97665cb63062b37590b88',
+     x86_64: '6153a6050963d89fcf3c9d6b7e07a4c9d564c706493918949cd52bf6988c70fe'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libffi' # R
-  depends_on 'llvm18_dev' => :build
-  depends_on 'llvm18_lib' # R
+  depends_on 'llvm19_dev' => :build
+  depends_on 'llvm19_lib' # R
   depends_on 'python3' # R
 
   no_env_options
@@ -61,6 +61,7 @@ class Openmp < Package
                      end
     system "cmake -B builddir -G Ninja openmp \
       #{@cmake_options} \
+      -DCLANG_DEFAULT_LINKER=#{CREW_LINKER} \
       -DCMAKE_C_COMPILER=$(which clang) \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \

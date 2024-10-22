@@ -55,7 +55,7 @@
 /usr/local/lib/libgsf-1.la
 /usr/local/lib/libgsf-1.so
 /usr/local/lib/libgsf-1.so.114
-/usr/local/lib/libgsf-1.so.114.0.52
+/usr/local/lib/libgsf-1.so.114.0.53
 /usr/local/lib/pkgconfig/libgsf-1.pc
 /usr/local/share/gir-1.0/Gsf-1.gir
 /usr/local/share/locale/as/LC_MESSAGES/libgsf.mo
@@ -74,6 +74,7 @@
 /usr/local/share/locale/fr/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/gl/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/he/LC_MESSAGES/libgsf.mo
+/usr/local/share/locale/hi/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/hr/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/hu/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/id/LC_MESSAGES/libgsf.mo

@@ -11,7 +11,7 @@ class Gmmlib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '73746485904173970cd608975011f0c91628ebdd5c68d09fd615d27327da27da'
+     x86_64: '73746485904173970cd608975011f0c91628ebdd5c68d09fd615d27327da27da'
   })
 
   depends_on 'libva' => :build

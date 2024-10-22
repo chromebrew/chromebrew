@@ -18,7 +18,7 @@ class Libgc < Package
   })
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
             --enable-static \
             --enable-shared \
             --enable-docs"

@@ -17,8 +17,9 @@ class Pipewire < Meson
   binary_compression 'tar.zst'
 
   if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('3.9')
+
     binary_sha256({
-      i686: '0dbeda58c4e1db7a180ebfb2b7bc3057cc6966927f4d5ee543953b734dfc4510'
+         i686: '0dbeda58c4e1db7a180ebfb2b7bc3057cc6966927f4d5ee543953b734dfc4510'
     })
   elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
     binary_sha256({
@@ -27,6 +28,7 @@ class Pipewire < Meson
        x86_64: '1534c6a7d71870ac60ec77aab0f795e148e63cf2eac61ff6ec58a5d3af23d994'
     })
   else
+
     binary_sha256({
       aarch64: '4e9cc1614f9e40efb98b6650a38b7decf46a88315e901ecd88f8e76b98ac7368',
        armv7l: '4e9cc1614f9e40efb98b6650a38b7decf46a88315e901ecd88f8e76b98ac7368',

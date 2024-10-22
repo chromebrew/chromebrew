@@ -23,7 +23,7 @@ class Scrot < Package
   depends_on 'optipng'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

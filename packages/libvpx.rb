@@ -25,7 +25,7 @@ class Libvpx < Package
 
   def self.build
     Dir.chdir 'build' do
-      system "../configure #{CREW_OPTIONS.sub(/--mandir=.*/, '')} \
+      system "../configure #{CREW_CONFIGURE_OPTIONS.sub(/--mandir=.*/, '')} \
         --disable-debug-libs \
         --disable-install-docs \
         --enable-ccache \

@@ -1,0 +1,8 @@
+/usr/local/bin/archive_color
+/usr/local/bin/code2color
+/usr/local/bin/lesscomplete
+/usr/local/bin/lesspipe.sh
+/usr/local/bin/sxw2txt
+/usr/local/bin/vimcolor
+/usr/local/etc/bash.d/less_completion
+/usr/local/etc/env.d/10-lesspipe

@@ -17,13 +17,13 @@ class Sassc < Package
      x86_64: '1d2cc3adbb8fdab70a69cc32975f10ca8c382fe04402d9717889787bcc580ffb'
   })
 
-  depends_on 'libsass'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'libsass' # R
 
   def self.build
     system 'autoreconf -i'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'mold -run make'
   end
 

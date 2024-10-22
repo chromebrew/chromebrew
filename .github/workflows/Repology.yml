@@ -11,6 +11,8 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3.4'
+      - name: Install highline
+        run: gem install highline
       - name: Configure git
         run: |
           git config --global user.name 'github-actions[bot]'
@@ -18,6 +20,7 @@ jobs:
       - name: Generate repology.json
         env:
           CREW_KERNEL_VERSION: 5.1
+          LIBC_VERSION: 2.37
         run: |
           ruby -Ctools json.rb
       - name: Create Pull Request

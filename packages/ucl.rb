@@ -22,7 +22,7 @@ class Ucl < Package
 
   def self.build
     system "env CFLAGS='-pipe -std=gnu90 -fPIC -flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
       --enable-static"
     system 'make'
