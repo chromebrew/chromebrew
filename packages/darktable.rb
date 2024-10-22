@@ -11,7 +11,7 @@ class Darktable < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    x86_64: '793e78e4d9859fdbc72e7490b8a5395409dd5d941dcbfafefdd0a5317cb4b832'
+     x86_64: '793e78e4d9859fdbc72e7490b8a5395409dd5d941dcbfafefdd0a5317cb4b832'
   })
 
   depends_on 'cairo'

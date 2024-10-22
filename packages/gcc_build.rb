@@ -17,10 +17,12 @@ class Gcc_build < Package
 
   case @gcc_libc_version
   when '2.23'
+
     binary_sha256({
          i686: '95b0aacd75c8ab2ba559b2992f0c7d1e13230cb22f1622cd282df6df3e53e7c0'
     })
   when '2.27', '2.32', '2.33', '2.35'
+
     binary_sha256({
       aarch64: 'c70348c4c2953e8a24ce2efc713ef1d628902c3e01f9ab9fa2a421851ecbb4e1',
        armv7l: 'c70348c4c2953e8a24ce2efc713ef1d628902c3e01f9ab9fa2a421851ecbb4e1',

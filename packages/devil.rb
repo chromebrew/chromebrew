@@ -16,21 +16,21 @@ class Devil < Package
      x86_64: '494336d49fee91201c74574356a2bf5c1e5bdc6e5d15bcc03decb99210286664'
   })
 
-  depends_on 'freeglut'
+  depends_on 'freeglut' => :build
   # arm does not build against current release of jasper
-  depends_on 'jasper'
-  depends_on 'lcms'
-  depends_on 'libglu'
-  depends_on 'libjpeg_turbo'
-  depends_on 'libpng'
-  depends_on 'libtiff'
-  depends_on 'libxi'
-  depends_on 'libxmu'
-  depends_on 'mesa'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'zlib' # R
+  depends_on 'jasper' # R
+  depends_on 'lcms' # R
+  depends_on 'libglu' # R
   depends_on 'libglvnd' # R
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libpng' # R
+  depends_on 'libtiff' => :build
+  depends_on 'libxi' => :build
+  depends_on 'libxmu' => :build
+  depends_on 'mesa' => :build
+  depends_on 'zlib' # R
 
   def self.patch
     system "find -type f -exec sed -i 's,DESTINATION lib,DESTINATION lib#{CREW_LIB_SUFFIX},g' {} +"

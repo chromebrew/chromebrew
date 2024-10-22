@@ -12,8 +12,8 @@ class Cras < Package
 
   binary_sha256({
     aarch64: '586a93c5359b39c91a576904a212dde5926581d603263874d71feef6ef6cf1e2',
-      armv7l: '586a93c5359b39c91a576904a212dde5926581d603263874d71feef6ef6cf1e2',
-      x86_64: '1f53ed96948e29f71d42f1b437e7e4637f6e08a4e573966ec139bb3437ed0d21'
+     armv7l: '586a93c5359b39c91a576904a212dde5926581d603263874d71feef6ef6cf1e2',
+     x86_64: '1f53ed96948e29f71d42f1b437e7e4637f6e08a4e573966ec139bb3437ed0d21'
   })
 
   depends_on 'alsa_lib' # R
@@ -22,7 +22,7 @@ class Cras < Package
   depends_on 'gtest' => :build
   depends_on 'iniparser' # R
   depends_on 'ladspa'
-  depends_on 'llvm18_dev' => :build
+  depends_on 'llvm19_dev' => :build
   depends_on 'rust' => :build
   depends_on 'sbc' # R
   depends_on 'speexdsp' # R

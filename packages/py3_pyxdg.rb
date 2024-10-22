@@ -10,10 +10,10 @@ class Py3_pyxdg < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b95b0f518267c116ec7726ae7379ef8b701ca96e89060db731e4b1ab27650ba9',
-     armv7l: 'b95b0f518267c116ec7726ae7379ef8b701ca96e89060db731e4b1ab27650ba9',
-       i686: '8aa3f88171fa0c1dab857f60c815c018a5f1a7b247fb54828a97ace738663d4d',
-     x86_64: '7c36f4e14291a24980878e9cef5b5dd14e0b9f087e6ce6f73d1c0d51c636d858'
+    aarch64: 'b0e027c8a2cdeeb3cb9ea7b658d29fad8827e52e2a9d4746938d684138f62e4c',
+     armv7l: 'b0e027c8a2cdeeb3cb9ea7b658d29fad8827e52e2a9d4746938d684138f62e4c',
+       i686: '2a402e65a7dcc76094e0932cfbdd481153dbd5e0f8d1a36f97a38993ae5d20cb',
+     x86_64: 'd2a2cbb926226a5096f02b4191c540d1897ed339805c2a4fd9997d56e5f1c4d6'
   })
 
   depends_on 'python3' => :build

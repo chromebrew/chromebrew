@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.54.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.55.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -41,7 +41,7 @@ else
   HOME ||= File.join(CREW_PREFIX, Dir.home)
 end
 
-CREW_ESSENTIAL_PACKAGES ||= %w[gcc_lib glibc gmp lz4 ruby xzutils zlib zstd]
+CREW_ESSENTIAL_PACKAGES ||= %w[curl gcc_lib glibc gmp lz4 ruby xzutils zlib zstd]
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 
@@ -95,6 +95,8 @@ CREW_CACHE_BUILD        ||= ENV.fetch('CREW_CACHE_BUILD', false) unless defined?
 CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless defined?(CREW_CACHE_FAILED_BUILD)
 CREW_NO_GIT             ||= ENV.fetch('CREW_NO_GIT', false) unless defined?(CREW_NO_GIT)
 CREW_UNATTENDED         ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
+
+CREW_STANDALONE_UPGRADE_ORDER = %w[openssl ruby python3] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
 
 CREW_DEBUG   ||= ARGV.intersect?(%w[-D --debug]) unless defined?(CREW_DEBUG)
 CREW_FORCE   ||= ARGV.intersect?(%w[-f --force]) unless defined?(CREW_FORCE)
@@ -306,9 +308,9 @@ PY_SETUP_INSTALL_OPTIONS         ||= "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --sing
 PY3_BUILD_OPTIONS                ||= '--wheel --no-isolation'
 PY3_INSTALLER_OPTIONS            ||= "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
 
-CREW_ICU_VER ||= Kernel.system('command -v uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : 'icu75.1' unless defined?(CREW_ICU_VER)
-CREW_PERL_VER ||= Kernel.system('command -v perl', %i[out err] => File::NULL) ? "perl#{`perl -MConfig -e "print \\\"\\\$Config{'PERL_API_REVISION'}.\\\$Config{'PERL_API_VERSION'}\\\";"`}" : 'perl5.40' unless defined?(CREW_PERL_VER)
-CREW_PY_VER ||= Kernel.system('command -v python3', %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : 'py3.12' unless defined?(CREW_PY_VER)
+CREW_ICU_VER ||= Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : 'icu75.1' unless defined?(CREW_ICU_VER)
+CREW_PERL_VER ||= Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl -MConfig -e "print \\\"\\\$Config{'PERL_API_REVISION'}.\\\$Config{'PERL_API_VERSION'}\\\";"`}" : 'perl5.40' unless defined?(CREW_PERL_VER)
+CREW_PY_VER ||= Kernel.system('which python3', %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : 'py3.13' unless defined?(CREW_PY_VER)
 CREW_RUBY_VER ||= "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}" unless defined?(CREW_RUBY_VER)
 
 CREW_LICENSE ||= <<~LICENSESTRING

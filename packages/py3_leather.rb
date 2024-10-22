@@ -10,10 +10,10 @@ class Py3_leather < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0740ea7ffe34a34d00dff9ce59966761dc39abce22e6b1d9e518a68a3f0742a1',
-     armv7l: '0740ea7ffe34a34d00dff9ce59966761dc39abce22e6b1d9e518a68a3f0742a1',
-       i686: 'f2b942510ce85060f6e8f287e2c6be46b47cb1c5c6859ccbc45aa8cda764c1fd',
-     x86_64: 'c5987e1edff3d3a47e0c947a23d532a70974f6abee5073648be26cd87b6b2c30'
+    aarch64: '5fc7d3e45f0f332d1794d82dcb6f656777fa2a4ec12694418e3e1360aebc8857',
+     armv7l: '5fc7d3e45f0f332d1794d82dcb6f656777fa2a4ec12694418e3e1360aebc8857',
+       i686: '4e1a6d9f01dd17373499a1a57550ef3c1df590e899f4e61649f51df263451fd2',
+     x86_64: '8a615f19b8480ccd34ca90d7d09bb9498b06ae9bfcd36f7b3f0d6f067aba9e2b'
   })
 
   depends_on 'py3_six'

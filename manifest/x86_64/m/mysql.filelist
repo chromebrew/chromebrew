@@ -90,6 +90,8 @@
 /usr/local/lib/mysql/plugin/component_test_pfs_notification.so
 /usr/local/lib/mysql/plugin/component_test_pfs_resource_group.so
 /usr/local/lib/mysql/plugin/component_test_sensitive_system_variables.so
+/usr/local/lib/mysql/plugin/component_test_server_telemetry_logs_client.so
+/usr/local/lib/mysql/plugin/component_test_server_telemetry_logs_export.so
 /usr/local/lib/mysql/plugin/component_test_server_telemetry_metrics.so
 /usr/local/lib/mysql/plugin/component_test_server_telemetry_traces.so
 /usr/local/lib/mysql/plugin/component_test_session_var_service.so
@@ -180,7 +182,7 @@
 /usr/local/lib64/libmysqlclient.a
 /usr/local/lib64/libmysqlclient.so
 /usr/local/lib64/libmysqlclient.so.24
-/usr/local/lib64/libmysqlclient.so.24.1.1
+/usr/local/lib64/libmysqlclient.so.24.1.0
 /usr/local/lib64/libmysqlservices.a
 /usr/local/lib64/pkgconfig/mysqlclient.pc
 /usr/local/share/aclocal/mysql.m4

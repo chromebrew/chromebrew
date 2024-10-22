@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Mysql < CMake
   description "MySQL Community Edition is a freely downloadable version of the world's most popular open source database"
   homepage 'https://www.mysql.com/'
-  version '9.0.1'
+  version '9.1.0'
   license 'GPL-2'
   compatibility 'x86_64' # Only 64-bit platforms are supported, so this will work on aarch64 userspaces once those are supported.
   source_url 'https://github.com/mysql/mysql-server.git'
@@ -11,7 +11,7 @@ class Mysql < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '78f197a0cc31d6657bc682cbbb5be958326872eef0b35d93d7633f59646265d8'
+    x86_64: '56b7178a5c3a9a04328e20ae7e93bbdcf261cca9acb508199f586481848e5573'
   })
 
   depends_on 'boost' => :build
@@ -50,7 +50,7 @@ class Mysql < CMake
     puts
     puts "Databases are stored in #{CREW_PREFIX}/var/mysql/data.".lightblue
     puts
-    puts 'MySQL Server documentation: https://dev.mysql.com/doc/refman/8.4/en/'.lightblue
+    puts 'MySQL Server documentation: https://dev.mysql.com/doc/refman/9.1/en/'.lightblue
     puts
   end
 

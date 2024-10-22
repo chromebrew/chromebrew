@@ -1,4 +1,5 @@
 /usr/local/bin/rubberband
+/usr/local/bin/rubberband-r3
 /usr/local/include/rubberband/RubberBandStretcher.h
 /usr/local/include/rubberband/rubberband-c.h
 /usr/local/lib64/ladspa/ladspa-rubberband.cat
@@ -6,7 +7,10 @@
 /usr/local/lib64/librubberband.a
 /usr/local/lib64/librubberband.so
 /usr/local/lib64/librubberband.so.2
-/usr/local/lib64/librubberband.so.2.1.1
+/usr/local/lib64/librubberband.so.2.3.0
+/usr/local/lib64/lv2/rubberband.lv2/lv2-rubberband.so
+/usr/local/lib64/lv2/rubberband.lv2/lv2-rubberband.ttl
+/usr/local/lib64/lv2/rubberband.lv2/manifest.ttl
 /usr/local/lib64/pkgconfig/rubberband.pc
 /usr/local/lib64/vamp/vamp-rubberband.cat
 /usr/local/lib64/vamp/vamp-rubberband.so

@@ -145,6 +145,12 @@
 /usr/local/share/man/man1/gh-repo-deploy-key.1.zst
 /usr/local/share/man/man1/gh-repo-edit.1.zst
 /usr/local/share/man/man1/gh-repo-fork.1.zst
+/usr/local/share/man/man1/gh-repo-gitignore-list.1.zst
+/usr/local/share/man/man1/gh-repo-gitignore-view.1.zst
+/usr/local/share/man/man1/gh-repo-gitignore.1.zst
+/usr/local/share/man/man1/gh-repo-license-list.1.zst
+/usr/local/share/man/man1/gh-repo-license-view.1.zst
+/usr/local/share/man/man1/gh-repo-license.1.zst
 /usr/local/share/man/man1/gh-repo-list.1.zst
 /usr/local/share/man/man1/gh-repo-rename.1.zst
 /usr/local/share/man/man1/gh-repo-set-default.1.zst

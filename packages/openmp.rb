@@ -7,8 +7,8 @@ Package.load_package("#{__dir__}/llvm19_build.rb")
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '19.1.0'
-  # When upgrading llvm_build*, be sure to upgrade llvm_lib*, llvm_dev*, and openmp in tandem.
+  version '19.1.2'
+  # When upgrading llvm_build*, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm19_build.version}".orange if version != Llvm19_build.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -17,10 +17,10 @@ class Openmp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '01bc3bbaa73975c33b3742fb0772ec41aff139db4b62816ba0e5f2499b3d31ad',
-     armv7l: '01bc3bbaa73975c33b3742fb0772ec41aff139db4b62816ba0e5f2499b3d31ad',
-       i686: '1be7c4c92c1e32c1e2fe6d70c129fdf79642dfd17ef6e11027f699a9e582a7eb',
-     x86_64: '9d1b558ea7554941123af79f5b7316f66789ade3868407d2dce9b58edd60f1e3'
+    aarch64: '291b49c18b0be292cbcb4b5b5c96ef326ed5f0b9e9147fe96e1abe124442bc80',
+     armv7l: '291b49c18b0be292cbcb4b5b5c96ef326ed5f0b9e9147fe96e1abe124442bc80',
+       i686: '4a86634d251bdedfacf4574b80bf10db33071e9d87c97665cb63062b37590b88',
+     x86_64: '6153a6050963d89fcf3c9d6b7e07a4c9d564c706493918949cd52bf6988c70fe'
   })
 
   depends_on 'gcc_lib' # R
@@ -61,6 +61,7 @@ class Openmp < Package
                      end
     system "cmake -B builddir -G Ninja openmp \
       #{@cmake_options} \
+      -DCLANG_DEFAULT_LINKER=#{CREW_LINKER} \
       -DCMAKE_C_COMPILER=$(which clang) \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \

@@ -17,7 +17,7 @@ class Tinysparql < Meson
      x86_64: '8ca12cb7bd12ce282e2cf036b7cd15011663886a47d0b24b4d1af5209cea3926'
   })
 
-  depends_on 'asciidoc' => :build
+  depends_on 'py3_asciidoc' => :build
   depends_on 'avahi' # R
   depends_on 'docbook_xml' => :build
   depends_on 'dbus' => :build

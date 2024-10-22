@@ -14,7 +14,7 @@ class Stellarium < CMake
   binary_sha256({
     aarch64: '5d92d053882ddb66a6eeba455ede459a8ad897117603176826cc0e8804647e10',
      armv7l: '5d92d053882ddb66a6eeba455ede459a8ad897117603176826cc0e8804647e10',
-    x86_64: '9ea039537005dafbbe3fc9faf989f4dbd7731c6f74e213d6c925b2b75a54d7d8'
+     x86_64: '9ea039537005dafbbe3fc9faf989f4dbd7731c6f74e213d6c925b2b75a54d7d8'
   })
 
   depends_on 'gcc_lib' # R

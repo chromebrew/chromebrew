@@ -21,12 +21,14 @@ def require_gem(gem_name_and_require = nil, require_override = nil)
              end
   require requires
 end
+require_gem('activesupport', 'active_support/core_ext/object/blank')
 require_gem('highline')
 # The json gem can break when upgrading from a much older version of ruby.
 require_gem('json')
-require_gem('activesupport', 'active_support/core_ext/object/blank')
+require_gem('ptools')
 require 'digest/sha2'
 require 'fileutils'
+require 'mkmf'
 require 'tmpdir'
 require 'uri'
 begin
@@ -55,6 +57,7 @@ require_relative '../lib/crewlog'
 require_relative '../lib/deb_utils'
 require_relative '../lib/docopt'
 require_relative '../lib/downloader'
+require_relative '../lib/gem_compact_index_client'
 require_relative '../lib/gnome'
 require_relative '../lib/misc_functions'
 require_relative '../lib/package'
@@ -348,7 +351,7 @@ def update
     puts "\n#{can_be_updated} packages can be updated."
     puts 'Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages.'
   else
-    puts 'Your software is up to date.'.lightgreen
+    puts 'Your software is up to date.'.lightgreen unless CREW_UNATTENDED
   end
 end
 
@@ -402,23 +405,14 @@ def upgrade(*pkgs, build_from_source: false)
   # analysis of the dependency hierarchy, to make sure that earlier
   # dependencies get upgraded first.
 
-  # Upgrade OpenSSL first if OpenSSL is in the upgrade list, as other
-  # package upgrades, especially their postinstalls, may break until the
-  # new version of OpenSSL is installed.
-  if to_be_upgraded.include?('openssl')
-    to_be_upgraded.insert(0, to_be_upgraded.delete('openssl'))
-    rerun_upgrade = true
-  end
-
-  # Only upgrade ruby if ruby is in the upgrade list, as other
-  # package upgrades may break until crew is rerun with the new
-  # version of ruby.
-  if to_be_upgraded.include?('ruby')
-    if to_be_upgraded.include?('openssl')
-      to_be_upgraded.delete('ruby')
-    else
-      to_be_upgraded = ['ruby']
-    end
+  # Manually specify order of packages that need to be have a standalone
+  # upgrade before any other packages are upgraded.
+  rerun_upgrade = false
+  CREW_STANDALONE_UPGRADE_ORDER.each do |upgrade_pkg|
+    break if rerun_upgrade == true
+    next unless to_be_upgraded.include?(upgrade_pkg)
+    puts "Overriding package upgrade list due to need to upgrade #{upgrade_pkg}".green
+    to_be_upgraded = [upgrade_pkg]
     rerun_upgrade = true
   end
 
@@ -453,14 +447,23 @@ def upgrade(*pkgs, build_from_source: false)
 end
 
 def download
-  url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
+  test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
+  sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
+
+  # Do an early check for a missing binary package and if so rebuild.
+  if !@pkg.source?(@device[:architecture]) && @pkg.superclass.to_s == 'Pip'
+    url = `curl -sI #{test_url}`.lines.first.split[1] == '200' && `curl -Ls #{test_url} | sha256sum -`.chomp == sha256sum ? test_url : 'SKIP'
+    @pkg.missing_binaries = true
+  else
+    url = test_url
+  end
+
   source = @pkg.source?(@device[:architecture])
 
   uri = URI.parse url
   filename = File.basename(uri.path)
   # # If we're downloading a binary, reset the filename to what it would have been if we didn't download from the API.
   filename = "#{@pkg.name}-#{@pkg.version}-chromeos-#{ARCH}.#{@pkg.binary_compression}" if filename.eql?('download')
-  sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
   @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
   build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
@@ -517,7 +520,7 @@ def download
             cachefile = ''
           end
         else
-          puts 'Cannot find cached archive. 😔 Will download.'.lightred
+          puts "Cannot find cached archive at #{cachefile}. 😔 Will download.".orange
           cachefile = ''
         end
       end
@@ -666,7 +669,7 @@ def unpack(meta)
         system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
       when /\.gem$/i
         puts "Moving #{@pkg.gem_name} binary gem for install..."
-        gem_file = "#{@pkg.gem_name}-#{@pkg.gem_ver}-#{GEM_ARCH}.gem"
+        gem_file = "#{@pkg.gem_name}-#{@pkg.gem_version}-#{GEM_ARCH}.gem"
         FileUtils.mv meta[:filename], File.join(@extract_dir, gem_file)
       end
     end
@@ -739,6 +742,21 @@ end
 def pre_flight
   puts "Performing pre-flight checks for #{@pkg.name}...".lightblue
   abort PackageUtils.incompatible_reason(@pkg).join("\n").to_s.lightred unless PackageUtils.compatible?(@pkg)
+  if @pkg.superclass.to_s == 'RUBY'
+    puts 'Populating gem information using compact index client...'.lightgreen
+    $gems ||= BasicCompactIndexClient.new.gems
+    puts 'Done populating gem information.'.lightgreen
+    # Update gem sources if updated more than 1 day previously.
+    gem_spec_cache_dir = File.join(Gem.default_spec_cache_dir, 'rubygems.org%443')
+    FileUtils.mkdir_p gem_spec_cache_dir
+    gem_spec_cache_dir_age = (Time.now.to_i - File.mtime(gem_spec_cache_dir).utc.to_i)
+    puts "Gem source cache age: #{gem_spec_cache_dir_age}".lightgreen if CREW_VERBOSE
+    if gem_spec_cache_dir_age > (3600 * 24)
+      puts 'Updating gem source cache.'.lightgreen if CREW_VERBOSE
+      Kernel.system('gem sources -u')
+      puts 'Done updating gem source cache.'.lightgreen if CREW_VERBOSE
+    end
+  end
   @pkg.preflight
 end
 
@@ -883,7 +901,7 @@ def prepare_package(destdir)
     abort 'Exiting due to above errors.'.lightred if errors
 
     # Make sure the package file has runtime dependencies added properly.
-    system "#{CREW_LIB_PATH}/tools/getrealdeps.rb --use-crew-dest-dir #{@pkg.name}", exception: true unless @pkg.no_compile_needed?
+    system "#{CREW_LIB_PATH}/tools/getrealdeps.rb --use-crew-dest-dir #{@pkg.name}", exception: true if File.which('gawk') && File.which('upx') && !@pkg.no_compile_needed?
     # create directory list
     # Remove CREW_PREFIX and HOME from the generated directorylist.
     crew_prefix_escaped = CREW_PREFIX.gsub('/', '\/')
@@ -1273,7 +1291,7 @@ def install
   elsif @pkg.superclass.to_s == 'RUBY'
     meta = download
     target_dir = unpack meta
-    gem_file = "#{@pkg.gem_name}-#{@pkg.gem_ver}-#{GEM_ARCH}.gem"
+    gem_file = "#{@pkg.gem_name}-#{@pkg.gem_version}-#{GEM_ARCH}.gem"
     if File.file?(File.join(target_dir, gem_file))
       FileUtils.mv File.join(target_dir, gem_file), File.join(CREW_DEST_DIR, gem_file)
     else
@@ -1347,7 +1365,7 @@ def install
   crewlog "Adding package #{@pkg.name} to device.json."
   @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name } and @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
   ConvenienceFunctions.save_json(@device)
-  crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if Kernel.system 'which jq', %i[out err] => File::NULL
+  crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if File.which('jq')
   @pkg.in_install = false
 end
 
@@ -1407,11 +1425,11 @@ end
 
 def archive_package(crew_archive_dest)
   if @pkg.superclass.to_s == 'RUBY'
-    gem_file = "#{@pkg.gem_name}-#{@pkg.gem_ver}-#{GEM_ARCH}.gem"
+    gem_file = "#{@pkg.gem_name}-#{@pkg.gem_version}-#{GEM_ARCH}.gem"
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.gem"
     FileUtils.mv File.join(CREW_DEST_DIR, gem_file), File.join(crew_archive_dest, pkg_name)
   # Only use zstd if it is available.
-  elsif @pkg.no_zstd? || !Kernel.system('which zstd', %i[out err] => File::NULL)
+  elsif @pkg.no_zstd? || !File.which('zstd')
     puts 'Using xz to compress package. This may take some time.'.lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
@@ -1603,6 +1621,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         wheels.each do |wheel|
           puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
           # Note that this uses the python twine from https://github.com/pypa/twine/pull/1123
+          abort 'Twine is broken, cannot upload python wheels.'.lightred unless system('twine --help', %i[out err] => File::NULL)
           system("twine upload -u #{gitlab_token_username} -p #{gitlab_token} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
           FileUtils.rm_f wheel
         end

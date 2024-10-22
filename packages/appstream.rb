@@ -32,7 +32,7 @@ class Appstream < Meson
   depends_on 'gperf' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
-  depends_on 'itstool' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'libadwaita' # R
   depends_on 'librsvg' # R
   depends_on 'libstemmer' # R

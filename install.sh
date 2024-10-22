@@ -88,6 +88,12 @@ CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 : "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
 
+if [ -n "$CREW_CACHE_ENABLED" ]; then
+  echo_intra "Verifying setup of ${CREW_CACHE_DIR} since CREW_CACHE_ENABLED is set..."
+  mkdir -p "${CREW_CACHE_DIR}"
+  sudo chown -R "$(id -u)":"$(id -g)" "${CREW_CACHE_DIR}" || true
+fi
+
 # Architecture
 
 # For container usage, where we want to specify i686 arch
@@ -134,7 +140,7 @@ if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -
 fi
 
 # Force curl to use system libraries.
-function curl () {
+function curl_wrapper () {
   # Retry if download failed.
   # The --retry/--retry-all-errors parameter in curl will not work with
   # the 'curl: (7) Couldn't connect to server' error, a for loop is used
@@ -167,7 +173,7 @@ find "${CREW_LIB_PATH}" -mindepth 1 -delete
 echo_out 'Set up the local package repo...'
 
 # Download the chromebrew repository.
-curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
+curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
 BOOTSTRAP_PACKAGES='lz4 zlib xzutils zstd crew_mvdir ruby git ca_certificates libyaml openssl'
 
@@ -209,23 +215,27 @@ jq --arg key0 'architecture' --arg value0 "${ARCH}" \
 function download_check () {
     cd "$CREW_BREW_DIR"
     # Use cached file if available and caching is enabled.
-    if [ -n "$CREW_CACHE_ENABLED" ] && [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
-      mkdir -p "$CREW_CACHE_DIR"
-      sudo chown -R "$(id -u)":"$(id -g)" "$CREW_CACHE_DIR" || true
-      echo_intra "Verifying cached ${1}..."
-      echo_success "$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)"
-      case "${?}" in
-      0)
-        ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" || true
-        return
-        ;;
-      *)
-        echo_error "Verification of cached ${1} failed, downloading."
-      esac
+    if [ -n "$CREW_CACHE_ENABLED" ]; then
+      echo_intra "Looking for ${3} in ${CREW_CACHE_DIR}"
+      if [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
+        echo_info "$CREW_CACHE_DIR/${3} found."
+        echo_intra "Verifying cached ${1}..."
+        echo_success "$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)"
+        case "${?}" in
+        0)
+          ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" || true
+          return
+          ;;
+        *)
+          echo_error "Verification of cached ${1} failed, downloading."
+        esac
+      else
+        echo_intra "$CREW_CACHE_DIR/${3} not found"
+      fi
     fi
     # Download
     echo_intra "Downloading ${1}..."
-    curl '-#' -L "${2}" -o "${3}"
+    curl_wrapper '-#' -L "${2}" -o "${3}"
 
     # Verify
     echo_intra "Verifying ${1}..."
@@ -268,21 +278,18 @@ function extract_install () {
 
 function update_device_json () {
   cd "${CREW_CONFIG_PATH}"
-  echo_intra "Adding new information on ${1} to device.json..."
+  echo_intra "Adding new information on ${1} ${2} to device.json..."
   new_info=$(jq --arg name "$1" --arg version "$2" --arg sha256 "$3" '.installed_packages |= . + [{"name": $name, "version": $version, "sha256": $sha256}]' device.json)
   cat <<< "${new_info}" > device.json
 }
 
 function install_ruby_gem () {
-  rubymajorversion=$(ruby -e "puts RUBY_VERSION.slice(/(?:.*(?=\.))/)")
-  echo_info 'Updating RubyGems.'
-  gem update -N --system
   for gem in "$@"; do
     ruby_gem="${gem}"
     echo_intra "Installing ${ruby_gem^} gem..."
     gem install -N "${ruby_gem}" --conservative
     gem_version="$(ruby -e "gem('${ruby_gem}')" -e "puts Gem.loaded_specs['${ruby_gem}'].version.to_s")"
-    json_gem_version="${gem_version}-ruby${rubymajorversion}"
+    json_gem_version="${gem_version}-${CREW_RUBY_VER}"
     crew_gem_package="ruby_${ruby_gem//-/_}"
     update_device_json "${crew_gem_package}" "${json_gem_version}" ""
     gem_filelist_path="${CREW_META_PATH}/${crew_gem_package}.filelist"
@@ -333,8 +340,25 @@ ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
+echo_info 'Updating RubyGems...'
+gem sources -u
+gem update --no-update-sources -N --system
+
+# Mark packages as installed for pre-installed gems.
+mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
+CREW_RUBY_VER="ruby$(ruby -e 'puts RUBY_VERSION.slice(/(?:.*(?=\.))/)')"
+for i in "${!installed_gems[@]}"
+  do
+   j="${installed_gems[$i]}"
+   gem_package="${j% *}"
+   crew_gem_package="ruby_${gem_package//-/_}"
+   gem_version="${j#* }"
+   gem contents "${gem_package}" > "${CREW_META_PATH}/${crew_gem_package}.filelist"
+   update_device_json "ruby_${gem_package//-/_}" "${gem_version}-${CREW_RUBY_VER}" ""
+done
+
 echo_info "Installing essential ruby gems...\n"
-BOOTSTRAP_GEMS='activesupport concurrent-ruby highline'
+BOOTSTRAP_GEMS='base64 bigdecimal connection_pool concurrent-ruby drb i18n logger minitest securerandom tzinfo activesupport highline ptools'
 # shellcheck disable=SC2086
 install_ruby_gem ${BOOTSTRAP_GEMS}
 
@@ -388,6 +412,10 @@ else
 
   # Set mtimes of files to when the file was committed.
   git-restore-mtime -sq 2>/dev/null
+
+  OWNER=${OWNER} REPO=${REPO} crew update && yes | crew upgrade
+  echo_info "Cleaning up older ruby gem versions...\n"
+  gem cleanup
 fi
 echo -e "${RESET}"
 

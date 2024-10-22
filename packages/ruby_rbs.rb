@@ -17,6 +17,7 @@ class Ruby_rbs < RUBY
   })
 
   depends_on 'ruby_abbrev' # R
+  depends_on 'ruby_logger' # R
 
   conflicts_ok
   gem_compile_needed

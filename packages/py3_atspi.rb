@@ -6,17 +6,17 @@ require 'buildsystems/autotools'
 class Py3_atspi < Autotools
   description 'Python bindings for D-Bus AT-SPI'
   homepage 'https://wiki.linuxfoundation.org/accessibility/atk/at-spi/at-spi_on_d-bus'
-  version '2.46.1'
+  version "2.46.1-#{CREW_PY_VER}"
   license 'GPL2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/pyatspi2.git'
-  git_hashtag "PYATSPI_#{version.gsub('.', '_')}"
+  git_hashtag "PYATSPI_#{version.split('-').first.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6a9dc1b83de4643e80e8927dc119cc969bcf4d14c9a99b2d35ef89ef5c49142a',
-     armv7l: '6a9dc1b83de4643e80e8927dc119cc969bcf4d14c9a99b2d35ef89ef5c49142a',
-     x86_64: '7105f68498920cdfdc304eff17005384cf4d6f13f6bf744b2a5db6d1059b90c8'
+    aarch64: 'ff609e6c1461ca5596852656971b612d80061dd29426f7334ddad850821bebf3',
+     armv7l: 'ff609e6c1461ca5596852656971b612d80061dd29426f7334ddad850821bebf3',
+     x86_64: '35cd595bf835a8e0defa9d2839bfb3879c7543a13007ab5bd2e570745e0b0b6b'
   })
 
   depends_on 'py3_pygobject'

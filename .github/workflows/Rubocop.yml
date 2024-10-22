@@ -4,13 +4,19 @@ on: workflow_call
 jobs:
   rubocop:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
+          ruby-version: '3.3'
       - name: Rubocop
         uses: reviewdog/action-rubocop@v2
         with:
           fail_on_error: true
           filter_mode: nofilter
+          only_changed: true
+          reporter: github-pr-check
+          reviewdog_flags: '-fail-level=any'

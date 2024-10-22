@@ -24,7 +24,7 @@ class Gucharmap < Meson
   depends_on 'glib' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'itstool' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'pango' # R
   depends_on 'pcre2' # R
   depends_on 'vala' => :build

@@ -16,7 +16,7 @@ class Gegl < Meson
      x86_64: '09e34df60b8b9d1907149997fb7b7a29d775f035d090f92cbbcabedf65f8c249'
   })
 
-  depends_on 'asciidoc' => :build
+  depends_on 'py3_asciidoc' => :build
   depends_on 'babl' # R
   depends_on 'cairo' # R
   depends_on 'enscript' => :build

@@ -12,7 +12,7 @@ class Handbrake < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '7da9a4ce810f30c1128cf80e808d0136051a5dfca4e851671474aca993384278'
+     x86_64: '7da9a4ce810f30c1128cf80e808d0136051a5dfca4e851671474aca993384278'
   })
 
   depends_on 'at_spi2_core' # R

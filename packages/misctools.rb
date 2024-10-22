@@ -11,8 +11,8 @@ class Misctools < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    i686: 'fca8249a6a8908228fb298e0b5b71d2f9030acf07a56438217d6d9a3576250a5',
-    x86_64: '71110f615c2a068066ac8761f6aecde557464946d3cf75a5420a1ee8f2ec14d1'
+       i686: 'fca8249a6a8908228fb298e0b5b71d2f9030acf07a56438217d6d9a3576250a5',
+     x86_64: '71110f615c2a068066ac8761f6aecde557464946d3cf75a5420a1ee8f2ec14d1'
   })
 
   depends_on 'cbase'
