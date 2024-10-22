@@ -1,11 +1,11 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gtk_engines_adwaita < Package
+class Gtk_engines_adwaita < Autotools
   description 'Adwaita GTK+2 theme engine.'
   homepage 'https://git.gnome.org/browse/gnome-themes-standard/'
   version '3.27.92'
   license 'LGPL-2.1+'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/GNOME/gnome-themes-extra/archive/3.27.92.tar.gz'
   source_sha256 'c2c2b02e6826d51de4e6e53afffbdb0ec301ef776df91944574fdc42b558cecb'
   binary_compression 'tar.xz'
@@ -22,13 +22,5 @@ class Gtk_engines_adwaita < Package
   depends_on 'gdk_pixbuf'
   depends_on 'cairo'
 
-  def self.build
-    system 'sh autogen.sh'
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install' # the steps required to install the package
-  end
+  gnome
 end

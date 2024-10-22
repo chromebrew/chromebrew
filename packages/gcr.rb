@@ -1,6 +1,6 @@
 require 'package'
-require_relative 'gcr_3'
-require_relative 'gcr_4'
+Package.load_package("#{__dir__}/gcr_3.rb")
+Package.load_package("#{__dir__}/gcr_4.rb")
 
 class Gcr < Package
   description Gcr_3.description
@@ -14,4 +14,3 @@ class Gcr < Package
   depends_on 'gcr_3'
   depends_on 'gcr_4'
 end
-

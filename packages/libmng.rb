@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libmng < Package
+class Libmng < Autotools
   description 'A PNG-like Image Format Supporting Multiple Images, Animation and Transparent JPEG'
   homepage 'http://www.libpng.org/pub/mng/'
   version '2.0.3-1'
@@ -18,25 +18,9 @@ class Libmng < Package
   })
 
   depends_on 'lcms'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.postinstall
-    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-
-    system 'gdk-pixbuf-query-loaders',
-           '--update-cache'
-  end
+  gnome
 end

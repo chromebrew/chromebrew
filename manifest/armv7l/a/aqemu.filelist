@@ -56,23 +56,23 @@
 /usr/local/share/aqemu/os_templates/FreeBSD 8.aqvmt
 /usr/local/share/aqemu/os_templates/Linux 2.0.aqvmt
 /usr/local/share/aqemu/os_templates/Linux 2.4.aqvmt
-/usr/local/share/aqemu/os_templates/Linux 2.6.aqvmt
 /usr/local/share/aqemu/os_templates/Linux 2.6 x86_64.aqvmt
+/usr/local/share/aqemu/os_templates/Linux 2.6.aqvmt
 /usr/local/share/aqemu/os_templates/MacOS X x86.aqvmt
 /usr/local/share/aqemu/os_templates/Windows 2000.aqvmt
-/usr/local/share/aqemu/os_templates/Windows 7.aqvmt
 /usr/local/share/aqemu/os_templates/Windows 7 x64.aqvmt
+/usr/local/share/aqemu/os_templates/Windows 7.aqvmt
 /usr/local/share/aqemu/os_templates/Windows 9X.aqvmt
-/usr/local/share/aqemu/os_templates/Windows Vista.aqvmt
 /usr/local/share/aqemu/os_templates/Windows Vista x64.aqvmt
-/usr/local/share/aqemu/os_templates/Windows XP.aqvmt
+/usr/local/share/aqemu/os_templates/Windows Vista.aqvmt
 /usr/local/share/aqemu/os_templates/Windows XP x64.aqvmt
+/usr/local/share/aqemu/os_templates/Windows XP.aqvmt
 /usr/local/share/aqemu/shared_images.rcc
 /usr/local/share/doc/aqemu/AUTHORS.bz2
 /usr/local/share/doc/aqemu/CHANGELOG.bz2
 /usr/local/share/doc/aqemu/README.bz2
 /usr/local/share/doc/aqemu/TODO.bz2
 /usr/local/share/man/man1/aqemu.1.gz
+/usr/local/share/pixmaps/aqemu.png
 /usr/local/share/pixmaps/aqemu_48x48.png
 /usr/local/share/pixmaps/aqemu_64x64.png
-/usr/local/share/pixmaps/aqemu.png

@@ -20,7 +20,9 @@ class Js91 < Package
   depends_on 'autoconf213' => :build
   depends_on 'rust' => :build
   depends_on 'llvm16_dev' => :build
-  depends_on 'nspr'
+  depends_on 'nss'
+
+  no_upstream_update
 
   @rust_default_host = case ARCH
                        when 'aarch64', 'armv7l'

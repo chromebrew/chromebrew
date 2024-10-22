@@ -5,8 +5,8 @@
 /usr/local/include/yajl/yajl_parse.h
 /usr/local/include/yajl/yajl_tree.h
 /usr/local/include/yajl/yajl_version.h
-/usr/local/lib/libyajl_s.a
 /usr/local/lib/libyajl.so
 /usr/local/lib/libyajl.so.2
 /usr/local/lib/libyajl.so.2.1.0
+/usr/local/lib/libyajl_s.a
 /usr/local/share/pkgconfig/yajl.pc

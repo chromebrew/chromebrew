@@ -6,18 +6,18 @@ require 'buildsystems/autotools'
 class Gdb < Autotools
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version '14.1-py3.12'
+  version "15.1-gcc14-#{CREW_PY_VER}"
   license 'GPL3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gnu/gdb/gdb-14.1.tar.xz'
-  source_sha256 'd66df51276143451fcbff464cc8723d68f1e9df45a6a2d5635a54e71643edb80'
+  source_url "https://ftpmirror.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
+  source_sha256 '38254eacd4572134bca9c5a5aa4d4ca564cbbd30c369d881f733fb6b903354f2'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '480f63771ac9e063bcd8a09c7033381c5a974a817cb12d89b22bddde0353ff33',
-     armv7l: '480f63771ac9e063bcd8a09c7033381c5a974a817cb12d89b22bddde0353ff33',
-       i686: 'b406ce513112710967880cf65bdaaede2e25770df312dbc840c0b5b88d24ff9f',
-     x86_64: '9af9831acd85d87b5451cc33fca809d81a4e8979c956a1faa21222049ec843e8'
+    aarch64: '5f9ae81368ba045330b783686cd514c38ff64c0bbcd3abd2ce1100a8abd28944',
+     armv7l: '5f9ae81368ba045330b783686cd514c38ff64c0bbcd3abd2ce1100a8abd28944',
+       i686: 'a0b35ff0e8b9a37237323c3a72cd89121b39dd1467d5e3c93c9d14a5b75fe7f7',
+     x86_64: '675a925237cc73dd7eb0da055c004f835dddba257aaec3986249f30fc19e79da'
   })
 
   depends_on 'binutils' # R
@@ -32,9 +32,10 @@ class Gdb < Autotools
   depends_on 'python3' # R
   depends_on 'readline' # R
   depends_on 'source_highlight' # R
+  depends_on 'texinfo' => :build
   depends_on 'xxhash' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   conflicts_ok # binutils conflicts
@@ -44,7 +45,7 @@ class Gdb < Autotools
     FileUtils.mkdir_p 'build'
     Dir.chdir('build') do
       system "../configure \
-        #{CREW_OPTIONS} \
+        #{CREW_CONFIGURE_OPTIONS} \
         --disable-binutils \
         --disable-ld \
         --disable-nls \

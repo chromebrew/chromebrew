@@ -3,11 +3,11 @@ require 'package'
 class Exodus < Package
   description 'Exodus is a desktop crypto wallet'
   homepage 'https://www.exodus.com/'
-  version '23.6.19'
+  version '24.29.2'
   license 'Freeware'
   compatibility 'x86_64'
-  source_url 'https://downloads.exodus.com/releases/exodus-linux-x64-23.6.19.zip'
-  source_sha256 'b9cc4db81dd8efbfe321394b817d641ef854d1b81a8209b330ff07aab6e8b0e0'
+  source_url "https://downloads.exodus.com/releases/exodus-linux-x64-#{version}.zip"
+  source_sha256 '9c2147a9555da6f4ca9d0f47dd5d7efb4152c03bf35411bf6c69550731adc9a8'
 
   depends_on 'at_spi2_core'
   depends_on 'gtk3'
@@ -25,10 +25,10 @@ class Exodus < Package
   end
 
   def self.postinstall
-    puts "\nType 'exodus' to get started.\n".lightblue
+    ExitMessage.add "\nType 'exodus' to get started.\n"
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{CREW_PREFIX}/.config/Exodus"
     if Dir.exist? config_dir
       puts 'WARNING: This will remove all Exodus data!'.orange
@@ -38,7 +38,7 @@ class Exodus < Package
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightgreen
       else
-        puts "#{config_dir} saved.".lightblue
+        puts "#{config_dir} saved.".lightgreen
       end
     end
   end

@@ -1,28 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Aspell < Package
+class Aspell < Autotools
   description 'GNU Aspell is a Free and Open Source spell checker designed to eventually replace Ispell.'
   homepage 'http://aspell.net/'
-  version '0.60.8'
+  version '0.60.8.1'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/aspell/aspell-0.60.8.tar.gz'
-  source_sha256 'f9b77e515334a751b2e60daab5db23499e26c9209f5e7b7443b05235ad0226f2'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/GNUAspell/aspell.git'
+  git_hashtag "rel-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ec931f1b5a7f23a2eef005a698b2fcda44bcbfe6c9d7c7e3fcc3df91bb284f62',
-     armv7l: 'ec931f1b5a7f23a2eef005a698b2fcda44bcbfe6c9d7c7e3fcc3df91bb284f62',
-       i686: '9ab3ed9b17c48be746b1d6d594126259ce38f13b162642b49fd37e73e3462f65',
-     x86_64: '43dfba23530b07ab4e59c3fe554904d4316646914a77a802009cfef55a01ff34'
+    aarch64: '67dcb78d4b1a2b04705bd8613863233bc5f2d0133e73b09c95a4b174dc614483',
+     armv7l: '67dcb78d4b1a2b04705bd8613863233bc5f2d0133e73b09c95a4b174dc614483',
+       i686: '48027960da969bd74a6039034f23b6682d7b7894c2762c2b4329d2b7286dc775',
+     x86_64: '4d69ecc5b7d9b26e78c8449e7ea6fb93d74b9cce3a390d3e9c74786867e80aa1'
   })
 
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  # https://github.com/GNUAspell/aspell/pull/654
+  def self.patch
+    # Rename autogen to autogen.sh
+    downloader 'https://patch-diff.githubusercontent.com/raw/GNUAspell/aspell/pull/654.patch', '215c99b3ef9a76f8d7623dfcf984ab46dd170c92b07862708a5688691481ab39'
+    system 'git apply 654.patch'
   end
 end

@@ -23,7 +23,7 @@ class Pcaudiolib < Package
     system './autogen.sh'
     system "env CFLAGS='-O2 -pipe -flto=auto -fuse-ld=gold' \
                 LDFLAGS='-flto=auto' \
-            ./configure #{CREW_OPTIONS} \
+            ./configure #{CREW_CONFIGURE_OPTIONS} \
               --without-pulseaudio \
               --with-alsa \
               --without-qsa \

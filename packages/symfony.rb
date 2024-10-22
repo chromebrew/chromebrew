@@ -3,25 +3,24 @@ require 'package'
 class Symfony < Package
   description 'Symfony is a set of PHP Components, a Web Application framework'
   homepage 'https://symfony.com/'
-  version '5.7.5'
+  version '5.9.1'
   license 'AGPL-3.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url({
-    aarch64: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.7.5/symfony-cli_linux_armv6.tar.gz',
-     armv7l: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.7.5/symfony-cli_linux_armv6.tar.gz',
-       i686: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.7.5/symfony-cli_linux_386.tar.gz',
-     x86_64: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.7.5/symfony-cli_linux_amd64.tar.gz'
+    aarch64: "https://github.com/symfony-cli/symfony-cli/releases/download/v#{version}/symfony-cli_linux_armv6.tar.gz",
+     armv7l: "https://github.com/symfony-cli/symfony-cli/releases/download/v#{version}/symfony-cli_linux_armv6.tar.gz",
+     x86_64: "https://github.com/symfony-cli/symfony-cli/releases/download/v#{version}/symfony-cli_linux_amd64.tar.gz"
   })
   source_sha256({
-    aarch64: '00221a0045dfbc980a18bead0c174041f8cbc4f63e4ff3c81d8cf391f353e510',
-     armv7l: '00221a0045dfbc980a18bead0c174041f8cbc4f63e4ff3c81d8cf391f353e510',
-       i686: '79cf4af35cd1da15834b99924f9868ef5d2a27b4749d6c1253d67c5188de540c',
-     x86_64: '584e69add9bcb3bbf0c82c4da626c52924428181c85820a20c7f355e427eccac'
+    aarch64: '5a5aa4c11ae051af09280fcbde51c4708038d75ebc041b1ca31c3f89d97d7cf3',
+     armv7l: '5a5aa4c11ae051af09280fcbde51c4708038d75ebc041b1ca31c3f89d97d7cf3',
+     x86_64: '124013c9d3175a98bd6e577c9dd7024d4311ee79e44c201ab8b3531c2b8bd571'
   })
 
-  depends_on 'php81' unless File.exist? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
   no_compile_needed
+  no_shrink
 
   def self.install
     FileUtils.install 'symfony', "#{CREW_DEST_PREFIX}/bin/symfony", mode: 0o755

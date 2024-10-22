@@ -1,31 +1,35 @@
 # Adapted from Arch Linux nautilus PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/nautilus/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/meson'
 
-class Nautilus < Package
+class Nautilus < Meson
   description 'Default file manager for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Files'
-  version '44.2'
+  version '46.2'
   license 'GPLv3'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.37'
   source_url 'https://gitlab.gnome.org/GNOME/nautilus.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7aa9ac926a916451288e17fa7eff600afb79530c9eade1bbf7724049ad5a9059',
-     armv7l: '7aa9ac926a916451288e17fa7eff600afb79530c9eade1bbf7724049ad5a9059',
-     x86_64: '8bad0c1b95bd31109c9df5811aeeda5a15d18e2b2756523136b9e072fca53af0'
+    aarch64: 'a9108646b99aa5f1ed6a82fc6c841791eddddfaabebae08064e7dbcfb2d28ef7',
+     armv7l: 'a9108646b99aa5f1ed6a82fc6c841791eddddfaabebae08064e7dbcfb2d28ef7',
+     x86_64: '760d0a5029e887e93f849db2440b5b149dd7499e21b213b9ddc95ba7b997bfe5'
   })
 
+  depends_on 'appstream' => :build
   depends_on 'appstream_glib' => :build
-  depends_on 'at_spi2_core' # R
+  depends_on 'at_spi2_core' => :build
   depends_on 'cairo' # R
   depends_on 'dconf' => :build
-  depends_on 'gcc_lib' # R
+  depends_on 'desktop_file_utils' => :build
+  depends_on 'gcc_lib' => :build
   depends_on 'gdk_pixbuf' # R
   depends_on 'gexiv2' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gnome_autoar' # R
@@ -33,37 +37,30 @@ class Nautilus < Package
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
   depends_on 'gstreamer' # R
-  depends_on 'gtk3' # R
+  depends_on 'gtk3' => :build
   depends_on 'gtk4' # R
   depends_on 'gtk_doc' => :build
   depends_on 'gvfs' => :build
   depends_on 'harfbuzz' # R
+  depends_on 'iso_codes' => :build
   depends_on 'libadwaita' # R
-  depends_on 'libarchive' # R
+  depends_on 'libarchive' => :build
   depends_on 'libcloudproviders' # R
-  depends_on 'libhandy' # R
-  depends_on 'libjpeg' => :build
+  depends_on 'libhandy' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'libportal' # R
-  depends_on 'libxml2' # R
+  depends_on 'libxml2' => :build
+  depends_on 'localsearch' => :build
   depends_on 'pango' # R
-  depends_on 'tracker3_miners'
-  depends_on 'tracker3' # R
+  depends_on 'tinysparql' # R
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # R
+  depends_on 'vulkan_icd_loader' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Ddocs=false \
+  gnome
+
+  meson_options '-Ddocs=false \
     -Dpackagekit=false \
-    -Dtests=headless \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+    -Dtests=headless'
 
   def self.postinstall
     FileUtils.touch "#{HOME}/.gtk-bookmarks"

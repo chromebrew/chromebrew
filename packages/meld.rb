@@ -3,25 +3,28 @@ require 'buildsystems/meson'
 class Meld < Meson
   description 'Meld is a visual diff and merge tool targeted at developers.'
   homepage 'https://meldmerge.org/'
-  version '3.22.0-684e1e2-py3.12'
+  @_ver = '3.22.1'
+  version "#{@_ver}-#{CREW_PY_VER}"
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/meld.git'
-  git_hashtag '684e1e27f31b4f0053da546a273a4ecf07df595f'
+  git_hashtag @_ver
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c9044c2ee4f70158c0f271a764f475c6a7cb095525699fe20c3ab6e55c3a622d',
-     armv7l: 'c9044c2ee4f70158c0f271a764f475c6a7cb095525699fe20c3ab6e55c3a622d',
-     x86_64: '0e8c2e68b57acfc2e826411a62c7bb5c5bea7303d4c82c84bb5e489af3182076'
+    aarch64: '8c9c00dfe88d9afb6f486cf3e2cd8788fb45a27992e856056ee98960e4528547',
+     armv7l: '8c9c00dfe88d9afb6f486cf3e2cd8788fb45a27992e856056ee98960e4528547',
+     x86_64: '5fa48ea39ba4f272052001622f828eb2b67eed4065037ab93d8a20baeccd75b1'
   })
 
   depends_on 'desktop_file_utils' # L
   depends_on 'gtk3' # L
   depends_on 'gtksourceview_4' # L
-  depends_on 'python3' # L
-  depends_on 'py3_pycairo' # L
   depends_on 'py3_libxml2' # L
+  depends_on 'py3_pycairo' # L
+  depends_on 'python3' # L
+
+  gnome
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"

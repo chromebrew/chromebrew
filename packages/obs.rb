@@ -5,14 +5,13 @@ class Obs < Package
   homepage 'https://obsproject.com/'
   version '24.0.5'
   license 'GPL-2'
-  compatibility 'i686,x86_64'
+  compatibility 'x86_64'
   source_url 'https://github.com/obsproject/obs-studio/archive/24.0.5.tar.gz'
   source_sha256 'b3d65f36ad2bfcd6ffde1771be64662ce8e8771349fab82bb49f80dbb1f5f2e6'
   binary_compression 'tar.xz'
 
   binary_sha256({
-    i686: 'b27299c233995f0c03a4dc2a8563bec7a2f00582a2554d62829d216769f42d5c',
-    x86_64: '854492244415cea4b4874cf3cd2302649d5b538d89366f2fd1ccceda7ff1f3ea'
+     x86_64: '854492244415cea4b4874cf3cd2302649d5b538d89366f2fd1ccceda7ff1f3ea'
   })
 
   depends_on 'curl'
@@ -21,8 +20,8 @@ class Obs < Package
   depends_on 'jansson'
   depends_on 'libmbedtls'
   depends_on 'luajit'
-  depends_on 'qtsvg'
-  depends_on 'qtx11extras'
+  depends_on 'qt5_svg'
+  depends_on 'qt5_x11extras'
   depends_on 'v4l_utils'
   depends_on 'xdg_base'
   depends_on 'sommelier'

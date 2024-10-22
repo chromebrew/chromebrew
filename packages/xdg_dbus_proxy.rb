@@ -18,7 +18,7 @@ class Xdg_dbus_proxy < Package
   })
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-maintainer-mode --disable-man"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-maintainer-mode --disable-man"
     system 'make'
   end
 

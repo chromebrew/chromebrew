@@ -1,5 +1,5 @@
-/usr/local/bin/rushlast
 /usr/local/bin/rush-po
+/usr/local/bin/rushlast
 /usr/local/bin/rushwho
 /usr/local/etc/rush.rc
 /usr/local/sbin/rush
@@ -19,8 +19,8 @@
 /usr/local/share/locale/uk/LC_MESSAGES/rush.mo
 /usr/local/share/locale/vi/LC_MESSAGES/rush.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/rush.mo
-/usr/local/share/man/man1/rushlast.1.gz
 /usr/local/share/man/man1/rush-po.1.gz
+/usr/local/share/man/man1/rushlast.1.gz
 /usr/local/share/man/man1/rushwho.1.gz
 /usr/local/share/man/man5/rush.rc.5.gz
 /usr/local/share/man/man8/rush.8.gz

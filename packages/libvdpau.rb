@@ -1,28 +1,24 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libvdpau < Package
+class Libvdpau < Meson
   description 'VDPAU is the Video Decode and Presentation API for UNIX. It provides an interface to video decode acceleration and presentation hardware present in modern GPUs.'
   homepage 'https://www.freedesktop.org/wiki/Software/VDPAU/'
-  version '1.3'
+  version '1.5'
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/1.3/libvdpau-1.3.tar.bz2'
-  source_sha256 'b5a52eeac9417edbc396f26c40591ba5df0cd18285f68d84614ef8f06196e50e'
-  binary_compression 'tar.xz'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/vdpau/libvdpau.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b3b560d72b7877db7cad6f15d79c35ae118fc8804c64be8192b7f4a1930b138c',
-     armv7l: 'b3b560d72b7877db7cad6f15d79c35ae118fc8804c64be8192b7f4a1930b138c',
-       i686: '6f703f96ce0e186605c64550ae9ad0b43e0f3a55b3e26dbbb8074af1bb0623ba',
-     x86_64: 'd1f759f51a5888850e54415ca03983e01e960941d3859e88c8b1891fdee1afb1'
+    aarch64: '54be014d64a3d0151dd9c77fba9bee49a1e8e6d46b39d25e3bba20abccc70fb3',
+     armv7l: '54be014d64a3d0151dd9c77fba9bee49a1e8e6d46b39d25e3bba20abccc70fb3',
+     x86_64: '7ea9f5cb75ca6a3511ff5da6ead6bd15e1cafb9d991d21000a76f5d06367a02d'
   })
 
-  def self.build
-    system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} builddir"
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'graphviz' => :build
+  depends_on 'libx11' # R
+  depends_on 'libxext' # R
 end

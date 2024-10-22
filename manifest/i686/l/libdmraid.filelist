@@ -9,8 +9,8 @@
 /usr/local/include/dmraid/misc.h
 /usr/local/include/dmraid/reconfig.h
 /usr/local/lib/device-mapper/libdmraid-events-isw.so
-/usr/local/lib/libdmraid.a
 /usr/local/lib/libdmraid-events-isw.so
+/usr/local/lib/libdmraid.a
 /usr/local/lib/libdmraid.so
 /usr/local/lib/libdmraid.so.1
 /usr/local/lib/libdmraid.so.1.0.0

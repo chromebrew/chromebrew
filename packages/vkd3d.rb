@@ -1,20 +1,17 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Vkd3d < Package
+class Vkd3d < Autotools
   description 'Vkd3d is a 3D graphics library built on top of Vulkan. It has an API very similar, but not identical, to Direct3D 12.'
   homepage 'https://wiki.winehq.org/Vkd3d/'
-  version '1.6'
+  version '1.11'
   license 'LGPL-2.1'
-  compatibility 'all'
-  source_url 'https://dl.winehq.org/vkd3d/source/vkd3d-1.6.tar.xz'
-  source_sha256 '9dce98c32c48932370bd51f50e2f9316e7bdacaf69506ce5a1bf28a590926c87'
+  compatibility 'x86_64'
+  source_url 'https://gitlab.winehq.org/wine/vkd3d.git'
+  git_hashtag "vkd3d-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '022d7e9e7e15a2546b462f46b2c79b477b46581204b80ea81ef8e1317b145320',
-     armv7l: '022d7e9e7e15a2546b462f46b2c79b477b46581204b80ea81ef8e1317b145320',
-       i686: '4d6896053db854565178eaa05d58dac00f14872bdf7bb7ff66eb9836320cf1e2',
-     x86_64: '6ea8560991499d40a425e4f5a64a4c61fdd26c68256eb6d30c168211519f84ef'
+     x86_64: '1bd0f096ce477dbc75ba59d09d8b368382047f4a789ba02699b22176119b7157'
   })
 
   depends_on 'glibc' # R
@@ -24,21 +21,9 @@ class Vkd3d < Package
   depends_on 'spirv_tools' # R
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
+  depends_on 'wine' => :build
   no_lto
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} \
-            --with-xcb \
-            --with-spirv-tools"
-    system 'make'
-  end
-
-  def self.check
-    # Tests don't work in a container due to 'Failed to create Vulkan instance' errors.
-    system 'make check || true'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--with-xcb \
+            --with-spirv-tools'
 end

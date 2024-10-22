@@ -2,11 +2,11 @@ require 'package'
 
 class Mypaint < Package
   description 'MyPaint is a simple drawing and painting program.'
-  homepage 'http://mypaint.org/'
+  homepage 'https://mypaint.app/'
   @_ver = '2.0.1'
   version "#{@_ver}-1"
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/mypaint/mypaint.git'
   git_hashtag "v#{@_ver}"
   binary_compression 'tpxz'
@@ -14,7 +14,6 @@ class Mypaint < Package
   binary_sha256({
     aarch64: '65b8fcea7a9864553887c42490bdc1743a7bbb55f5e84766b805423d10912ef0',
      armv7l: '65b8fcea7a9864553887c42490bdc1743a7bbb55f5e84766b805423d10912ef0',
-       i686: '033e80ce9b49bff9a25200a3e3d20204d388cd0b98cb5164a65debb0591d8624',
      x86_64: 'e5145a805c4748821e181e15347d55ac2d4d98b0ae95a146b121f06790f62768'
   })
 
@@ -22,7 +21,7 @@ class Mypaint < Package
   depends_on 'python3' => :build
   depends_on 'mypaint_brushes'
   depends_on 'openmp'
-  depends_on 'pygobject'
+  depends_on 'py3_pygobject'
   depends_on 'librsvg'
   depends_on 'xdg_base'
   depends_on 'sommelier'

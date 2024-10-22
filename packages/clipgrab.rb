@@ -3,11 +3,11 @@ require 'package'
 class Clipgrab < Package
   description 'A friendly downloader for YouTube and other sites'
   homepage 'https://clipgrab.org/'
-  version '3.9.7'
+  version '3.9.10'
   license 'GPL-3'
   compatibility 'x86_64'
-  source_url 'https://download.clipgrab.org/ClipGrab-3.9.7-x86_64.AppImage'
-  source_sha256 'acc14f71dceb9dcef7bf0a575180ecf80324d5435f7bb606bd0ba02308bf4efd'
+  source_url 'https://download.clipgrab.org/ClipGrab-3.9.10-x86_64.AppImage'
+  source_sha256 'f53b007f953a533b6ec2c0ffb8370773f734e50bb8ba9ba767b088902ba0a7b1'
 
   no_compile_needed
 
@@ -15,18 +15,21 @@ class Clipgrab < Package
   depends_on 'gtk3'
 
   def self.build
-    @clipgrab = <<~EOF
+    File.write 'clipgrab.sh', <<~EOF
       #!/bin/bash
       cd #{CREW_PREFIX}/share/clipgrab
       ./AppRun "$@"
     EOF
-    File.write('clipgrab.sh', @clipgrab)
+    # Fixes ./AppRun: symbol lookup error: /usr/local/lib64/libQt5Core.so.5: undefined symbol: u_strToLower_73
+    File.write 'clipgrab.env', <<~EOF
+      LD_LIBRARY_PATH=#{CREW_PREFIX}/share/clipgrab/usr/lib:$LD_LIBRARY_PATH
+    EOF
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/clipgrab"
     FileUtils.install 'clipgrab.sh', "#{CREW_DEST_PREFIX}/bin/clipgrab", mode: 0o755
+    FileUtils.install 'clipgrab.env', "#{CREW_DEST_PREFIX}/etc/env.d/clipgrab", mode: 0o644
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/clipgrab"
   end
 

@@ -5,5 +5,5 @@
 /usr/local/lib64/libpsl.so.5
 /usr/local/lib64/libpsl.so.5.3.4
 /usr/local/lib64/pkgconfig/libpsl.pc
-/usr/local/share/man/man1/psl.1.zst
 /usr/local/share/man/man1/psl-make-dafsa.1.zst
+/usr/local/share/man/man1/psl.1.zst

@@ -2,7 +2,7 @@ require 'package'
 
 class Cf < Package
   description 'The official command line client for Cloud Foundry'
-  homepage 'https://docs.cloudfoundry.org/cf-cli'
+  homepage 'https://docs.cloudfoundry.org/cf-cli/'
   version '6.53.0'
   license 'Apache-2.0'
   compatibility 'i686 x86_64'
@@ -17,8 +17,8 @@ class Cf < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    i686: 'bd74201bfadd439ea2e65827c8c6ff725bbd70a7931efe90e6f97b4628e10b8e',
-    x86_64: '1607f02390272191a8a0c393a9a5a9cf5389df774e158bd2cb669b0edd5c3570'
+       i686: 'bd74201bfadd439ea2e65827c8c6ff725bbd70a7931efe90e6f97b4628e10b8e',
+     x86_64: '1607f02390272191a8a0c393a9a5a9cf5389df774e158bd2cb669b0edd5c3570'
   })
 
   def self.install

@@ -2,10 +2,10 @@ require 'package'
 
 class Libxmu < Package
   description 'X.org X interface library for miscellaneous utilities not part of the Xlib standard'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.1.4'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.x.org/archive/individual/lib/libXmu-1.1.4.tar.xz'
   source_sha256 '210de3ab9c3e9382572c25d17c2518a854ce6e2c62c5f8315deac7579e758244'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libxmu < Package
   binary_sha256({
     aarch64: 'dc93c77b9fdb855416b04bf6f63f11726ab6e0ca4b5d838b5cc8e7588f73bf9b',
      armv7l: 'dc93c77b9fdb855416b04bf6f63f11726ab6e0ca4b5d838b5cc8e7588f73bf9b',
-       i686: '3b950b776db29754fd99b31caef24e970a7ead31f84d60456775cd24c121cb37',
      x86_64: '7d13dd2d816dc5b42f2db6868eda520ed9b1f9fb8d6cc393fa62959f79d0aec4'
   })
 
@@ -29,11 +28,11 @@ class Libxmu < Package
   depends_on 'libxext' # R
   depends_on 'libxt' # R
   depends_on 'util_linux' # R
-  depends_on 'util_macros' => :build
+  depends_on 'xorg_macros' => :build
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

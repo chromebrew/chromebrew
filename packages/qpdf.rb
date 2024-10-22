@@ -2,7 +2,7 @@ require 'package'
 
 class Qpdf < Package
   description 'QPDF is a command-line program that does structural, content-preserving transformations on PDF files.'
-  homepage 'http://qpdf.sourceforge.net/'
+  homepage 'https://qpdf.sourceforge.io/'
   version '11.1.1'
   license 'Apache-2.0 or Artistic-2'
   compatibility 'all'
@@ -17,12 +17,12 @@ class Qpdf < Package
      x86_64: '36dde4a77f5bbad284e02f9ca7d684a36d6b03c97addfe7a7667711feb5fdecd'
   })
 
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gnutls' # R
   depends_on 'openssl' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     Dir.mkdir 'builddir'

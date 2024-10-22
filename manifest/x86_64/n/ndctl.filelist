@@ -14,6 +14,7 @@
 /usr/local/include/ndctl/libdaxctl.h
 /usr/local/include/ndctl/libndctl.h
 /usr/local/include/ndctl/ndctl.h
+/usr/local/lib/udev/rules.d/90-daxctl-device.rules
 /usr/local/lib64/libcxl.la
 /usr/local/lib64/libcxl.so
 /usr/local/lib64/libcxl.so.1
@@ -29,17 +30,15 @@
 /usr/local/lib64/pkgconfig/libcxl.pc
 /usr/local/lib64/pkgconfig/libdaxctl.pc
 /usr/local/lib64/pkgconfig/libndctl.pc
-/usr/local/lib/udev/rules.d/90-daxctl-device.rules
 /usr/local/share/bash-completion/completions/cxl
 /usr/local/share/bash-completion/completions/daxctl
 /usr/local/share/bash-completion/completions/ndctl
 /usr/local/share/daxctl/daxctl.conf
-/usr/local/share/man/man1/cxl.1.gz
 /usr/local/share/man/man1/cxl-list.1.gz
 /usr/local/share/man/man1/cxl-read-labels.1.gz
 /usr/local/share/man/man1/cxl-write-labels.1.gz
 /usr/local/share/man/man1/cxl-zero-labels.1.gz
-/usr/local/share/man/man1/daxctl.1.gz
+/usr/local/share/man/man1/cxl.1.gz
 /usr/local/share/man/man1/daxctl-create-device.1.gz
 /usr/local/share/man/man1/daxctl-destroy-device.1.gz
 /usr/local/share/man/man1/daxctl-disable-device.1.gz
@@ -49,7 +48,7 @@
 /usr/local/share/man/man1/daxctl-offline-memory.1.gz
 /usr/local/share/man/man1/daxctl-online-memory.1.gz
 /usr/local/share/man/man1/daxctl-reconfigure-device.1.gz
-/usr/local/share/man/man1/ndctl.1.gz
+/usr/local/share/man/man1/daxctl.1.gz
 /usr/local/share/man/man1/ndctl-activate-firmware.1.gz
 /usr/local/share/man/man1/ndctl-check-labels.1.gz
 /usr/local/share/man/man1/ndctl-check-namespace.1.gz
@@ -82,5 +81,6 @@
 /usr/local/share/man/man1/ndctl-write-infoblock.1.gz
 /usr/local/share/man/man1/ndctl-write-labels.1.gz
 /usr/local/share/man/man1/ndctl-zero-labels.1.gz
+/usr/local/share/man/man1/ndctl.1.gz
 /usr/local/share/man/man3/cxl_new.3.gz
 /usr/local/share/man/man3/libcxl.3.gz

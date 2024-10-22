@@ -1,10 +1,10 @@
 /usr/local/bin/cddb_query
+/usr/local/include/cddb/cddb.h
 /usr/local/include/cddb/cddb_cmd.h
 /usr/local/include/cddb/cddb_config.h
 /usr/local/include/cddb/cddb_conn.h
 /usr/local/include/cddb/cddb_disc.h
 /usr/local/include/cddb/cddb_error.h
-/usr/local/include/cddb/cddb.h
 /usr/local/include/cddb/cddb_log.h
 /usr/local/include/cddb/cddb_site.h
 /usr/local/include/cddb/cddb_track.h

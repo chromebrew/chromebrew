@@ -2,7 +2,7 @@ require 'package'
 
 class Unzip < Package
   description 'UnZip is an extraction utility for archives compressed in .zip format (also called \'zipfiles\').'
-  homepage 'http://www.info-zip.org/UnZip.html'
+  homepage 'https://infozip.sourceforge.net/UnZip.html'
   version '6.0-2'
   license 'Info-ZIP'
   compatibility 'all'
@@ -12,9 +12,9 @@ class Unzip < Package
 
   binary_sha256({
     aarch64: '116ed2b03bcaeaa7ccd339e58b67519361933490d1469a72b3c9e12808fc4797',
-      armv7l: '116ed2b03bcaeaa7ccd339e58b67519361933490d1469a72b3c9e12808fc4797',
-        i686: '488891584f8cf53bcd3969140ab0baffeec4cffb4964c6b836d745afd17a86fe',
-      x86_64: 'a58e8a34a46721674ba16198fa943297c6fa80c5933b956bd1ebb6fe91ac6b89'
+     armv7l: '116ed2b03bcaeaa7ccd339e58b67519361933490d1469a72b3c9e12808fc4797',
+       i686: '488891584f8cf53bcd3969140ab0baffeec4cffb4964c6b836d745afd17a86fe',
+     x86_64: 'a58e8a34a46721674ba16198fa943297c6fa80c5933b956bd1ebb6fe91ac6b89'
   })
 
   depends_on 'compressdoc' => :build

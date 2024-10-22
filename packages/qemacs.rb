@@ -2,7 +2,7 @@ require 'package'
 
 class Qemacs < Package
   description 'QEmacs (for Quick Emacs) is a very small but powerful UNIX editor.'
-  homepage 'http://bellard.org/qemacs/'
+  homepage 'https://bellard.org/qemacs/'
   version '0.3.3'
   license 'LGPL-2.1+ and GPL-2+'
   compatibility 'all'

@@ -2,7 +2,7 @@ require 'package'
 
 class Opensp < Package
   description 'Suite of SGML/XML processing tools'
-  homepage 'http://openjade.sourceforge.net/'
+  homepage 'https://openjade.sourceforge.net/'
   version '1.5.2'
   license 'MIT'
   compatibility 'all'

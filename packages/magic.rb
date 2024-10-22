@@ -1,36 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Magic < Package
+class Magic < Autotools
   description 'Magic is a venerable VLSI layout tool'
   homepage 'http://opencircuitdesign.com/magic/'
-  version '8.3.454'
-  license 'Copyright (C) 1985, 1990 Regents of the University of California'
-  compatibility 'x86_64'
-  source_url 'https://github.com/RTimothyEdwards/magic/releases/download/8.3.454/Magic-8.3.454-x86_64.AppImage'
-  source_sha256 'b277d9ee93710cd3abaa55eb5248727429f6af65ced408e7a3f9534112b99f7a'
+  version '8.3.489'
+  license 'HPND-UC-export-US'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://github.com/RTimothyEdwards/magic.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  no_compile_needed
+  binary_sha256({
+    aarch64: 'd79946662a86b2691f78b594ae0694ae07deb566848be63924fd00fafbe36693',
+     armv7l: 'd79946662a86b2691f78b594ae0694ae07deb566848be63924fd00fafbe36693',
+     x86_64: '3b57b174f7fe788bca276885aa74e855210e2bb1560cb0270a61742bc5b55733'
+  })
 
-  depends_on 'gtk3'
+  depends_on 'cairo'
+  depends_on 'tcl'
+  depends_on 'tk'
 
-  def self.build
-    File.write 'magic.sh', <<~EOF
-      #!/bin/bash
-      cd #{CREW_PREFIX}/share/magic
-      ./AppRun "$@"
-    EOF
-  end
-
-  def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/magic"
-    FileUtils.install 'magic.sh', "#{CREW_DEST_PREFIX}/bin/magic", mode: 0o755
-    FileUtils.mv 'man', "#{CREW_DEST_PREFIX}/share"
-    FileUtils.install 'magic.desktop', "#{CREW_DEST_PREFIX}/share/applications/magic.desktop", mode: 0o644
-    FileUtils.install 'magic.svg', "#{CREW_DEST_PREFIX}/share/icons/hicolor/magic.svg", mode: 0o644
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/magic"
-  end
-
-  def self.postinstall
-    ExitMessage.add "Type 'magic' to get started.".lightblue
-  end
+  # https://github.com/RTimothyEdwards/magic/issues/323
+  configure_options "--with-tcl=#{CREW_LIB_PREFIX} --with-tk=#{CREW_LIB_PREFIX} CFLAGS='-fpermissive'"
 end

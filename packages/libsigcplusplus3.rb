@@ -20,6 +20,8 @@ class Libsigcplusplus3 < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
+  no_upstream_update
+
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
     -Dbuild-examples=false \

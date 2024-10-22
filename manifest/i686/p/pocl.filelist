@@ -1,4 +1,5 @@
 /usr/local/bin/poclcc
+/usr/local/include/CL/cl.h
 /usr/local/include/CL/cl2.hpp
 /usr/local/include/CL/cl_d3d10.h
 /usr/local/include/CL/cl_d3d11.h
@@ -8,9 +9,8 @@
 /usr/local/include/CL/cl_ext.h
 /usr/local/include/CL/cl_ext_intel.h
 /usr/local/include/CL/cl_ext_pocl.h
-/usr/local/include/CL/cl_gl_ext.h
 /usr/local/include/CL/cl_gl.h
-/usr/local/include/CL/cl.h
+/usr/local/include/CL/cl_gl_ext.h
 /usr/local/include/CL/cl_half.h
 /usr/local/include/CL/cl_icd.h
 /usr/local/include/CL/cl_platform.h
@@ -27,14 +27,14 @@
 /usr/local/share/pocl/include/_builtin_renames.h
 /usr/local/share/pocl/include/_clang_opencl.h
 /usr/local/share/pocl/include/_enable_all_exts.h
+/usr/local/share/pocl/include/_kernel.h
 /usr/local/share/pocl/include/_kernel_c.h
 /usr/local/share/pocl/include/_kernel_constants.h
-/usr/local/share/pocl/include/_kernel.h
 /usr/local/share/pocl/include/_libclang_versions_checks.h
 /usr/local/share/pocl/include/opencl-c-base.h
 /usr/local/share/pocl/include/opencl-c.h
-/usr/local/share/pocl/include/pocl_device.h
 /usr/local/share/pocl/include/pocl.h
+/usr/local/share/pocl/include/pocl_device.h
 /usr/local/share/pocl/include/pocl_image_types.h
 /usr/local/share/pocl/include/pocl_spir.h
 /usr/local/share/pocl/include/pocl_types.h

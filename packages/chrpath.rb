@@ -2,7 +2,7 @@ require 'package'
 
 class Chrpath < Package
   description 'Change or delete the rpath or runpath in ELF files'
-  homepage 'https://directory.fsf.org/project/chrpath/'
+  homepage 'https://directory.fsf.org/wiki/Chrpath'
   version '0.16'
   license 'GPL-2+'
   compatibility 'all'
@@ -18,7 +18,7 @@ class Chrpath < Package
   })
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

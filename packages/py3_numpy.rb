@@ -3,18 +3,17 @@ require 'buildsystems/pip'
 class Py3_numpy < Pip
   description 'NumPy is the fundamental package for array computing with Python.'
   homepage 'https://numpy.org/'
-  @_ver = '1.26.2'
-  version "#{@_ver}-py3.12"
+  version "2.1.2-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9de2b4d3aa0824602344338db0a94c6665bc2b935a450cf8b68f92669fc56709',
-     armv7l: '9de2b4d3aa0824602344338db0a94c6665bc2b935a450cf8b68f92669fc56709',
-       i686: '7df77023c9f1d93252d1f9f3493566bed9b99dda667cb2b05162ba8ecd4aa926',
-     x86_64: 'a0011ddbdfd8fd535fd2bfa6147f7265f379992c765b4158da441e9b8d3c5b28'
+    aarch64: '5a2d1735c19e7284b40b33c26f155135a15e1a25ddd03f50e1f7af98f07d2e3f',
+     armv7l: '5a2d1735c19e7284b40b33c26f155135a15e1a25ddd03f50e1f7af98f07d2e3f',
+       i686: 'd34232efd97bd87353ef6fabb788e68a16fb3c6c9889428b7de33722dc7a82c4',
+     x86_64: 'a85f0b899299ee01812545eee4b2ce703956a6600f23da0bd834ad9d9e5a5be8'
   })
 
   depends_on 'gcc_lib' # R
@@ -24,7 +23,9 @@ class Py3_numpy < Pip
   depends_on 'py3_cython' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'python3' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   pre_configure_options CREW_ENV_OPTIONS.gsub('mold', 'gold')
+
+  no_source_build
 end

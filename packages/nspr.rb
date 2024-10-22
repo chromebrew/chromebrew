@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'nss'
+Package.load_package("#{__dir__}/nss.rb")
 
 class Nspr < Package
   description 'Netscape Portable Runtime (NSPR) provides a platform-neutral API for system level and libc-like functions.'

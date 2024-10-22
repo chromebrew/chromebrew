@@ -15,7 +15,6 @@ class Openal < Package
      armv7l: 'f4fad76fa80a35e5ed2b551623610a764942c599caa606474bb9585da30dd648',
        i686: '34754828e5fdf5632b1a72f5632568fd3484b1edca17d14692f7bfa5578a0752',
      x86_64: 'ad3c151c3cd255fac16bd21bf207ebcc14928d740691fc74ee5d5537627bb2d7'
-
   })
 
   def self.build

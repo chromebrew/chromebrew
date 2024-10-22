@@ -1,9 +1,9 @@
-/usr/local/include/speex/speexdsp_config_types.h
-/usr/local/include/speex/speexdsp_types.h
 /usr/local/include/speex/speex_echo.h
 /usr/local/include/speex/speex_jitter.h
 /usr/local/include/speex/speex_preprocess.h
 /usr/local/include/speex/speex_resampler.h
+/usr/local/include/speex/speexdsp_config_types.h
+/usr/local/include/speex/speexdsp_types.h
 /usr/local/lib64/libspeexdsp.a
 /usr/local/lib64/libspeexdsp.la
 /usr/local/lib64/libspeexdsp.so

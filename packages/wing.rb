@@ -3,11 +3,13 @@ require 'package'
 class Wing < Package
   description 'Wing Personal is a free Python IDE designed for students and hobbyists.'
   homepage 'https://wingware.com/'
-  version '10.0.0.1'
+  version '10.0.4.0'
   license 'Wingware-EULA'
   compatibility 'x86_64'
-  source_url 'https://wingware.com/pub/wing-personal/10.0.0.1/wing-personal-10.0.0.1-linux-x64.tar.bz2'
-  source_sha256 '45e01632ebe36047e6407f48abcfe7a3922b2ff694611a150458f4d23f821e5d'
+  source_url "https://wingware.com/pub/wing-personal/#{version}/wing-personal-#{version}-linux-x64.tar.bz2"
+  source_sha256 '169580d26a7c852c06951e9bb67394b382076c31a0ce3e9376c2ccc9554b5b74'
+
+  @major_ver = version.split('.').first
 
   depends_on 'xcb_util_cursor'
   depends_on 'xcb_util_keysyms'
@@ -15,24 +17,25 @@ class Wing < Package
   depends_on 'sommelier'
 
   no_compile_needed
+  no_shrink
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/wing-personal"
-    FileUtils.mkdir_p "#{CREW_DEST_HOME}/.wingpersonal10"
-    FileUtils.touch "#{CREW_DEST_HOME}/.wingpersonal10/ide.log"
-    system 'tar xvf binary-package-10.0.0.b1.tar'
-    FileUtils.rm %w[binary-package-10.0.0.b1.tar wing-install.py]
+    FileUtils.mkdir_p "#{CREW_DEST_HOME}/.wingpersonal#{@major_ver}"
+    FileUtils.touch "#{CREW_DEST_HOME}/.wingpersonal#{@major_ver}/ide.log"
+    system "tar xvf binary-package-#{version}.tar"
+    FileUtils.rm ["binary-package-#{version}.tar", 'wing-install.py']
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/wing-personal"
     FileUtils.ln_s "#{CREW_PREFIX}/share/wing-personal/wing-personal", "#{CREW_DEST_PREFIX}/bin/wing"
   end
 
   def self.postinstall
-    puts "\nType 'wing' to get started.\n".lightblue
+    ExitMessage.add "\nType 'wing' to get started.\n".lightblue
   end
 
-  def self.remove
-    config_dir = "#{HOME}/.wingpersonal10"
+  def self.postremove
+    config_dir = "#{HOME}/.wingpersonal#{@major_ver}"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "
       case $stdin.gets.chomp.downcase

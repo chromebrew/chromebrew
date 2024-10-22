@@ -3,11 +3,11 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '2.7.1'
+  version '2.8.1'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/composer/composer/releases/download/2.7.1/composer.phar'
-  source_sha256 '1ffd0be3f27e237b1ae47f9e8f29f96ac7f50a0bd9eef4f88cdbe94dd04bfff0'
+  source_url "https://github.com/composer/composer/releases/download/#{version}/composer.phar"
+  source_sha256 '930b376fbd2147a623ea7b704eb9d3b8b0d6072992207aa0535aa21f6f05378e'
 
   depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
   depends_on 'xdg_base'
@@ -35,5 +35,10 @@ class Composer < Package
 
   def self.postinstall
     FileUtils.ln_sf "#{CREW_PREFIX}/.config", "#{HOME}/.config"
+    ExitMessage.add <<~EOF
+
+      To finish the installation, execute the following:
+      composer self-update --update-keys
+    EOF
   end
 end

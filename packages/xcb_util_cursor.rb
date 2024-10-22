@@ -2,7 +2,7 @@ require 'package'
 
 class Xcb_util_cursor < Package
   description 'The xcb-util-cursor package provides a module that implements the XCB cursor library. It is a the XCB replacement for libXcursor.'
-  homepage 'http://xcb.freedesktop.org'
+  homepage 'https://xcb.freedesktop.org/'
   version '0.1.4'
   license 'MIT-with-advertising'
   compatibility 'all'
@@ -30,7 +30,7 @@ class Xcb_util_cursor < Package
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

@@ -1,5 +1,4 @@
 /usr/local/include/gexiv2/gexiv2-enums.h
-/usr/local/include/gexiv2/gexiv2.h
 /usr/local/include/gexiv2/gexiv2-log.h
 /usr/local/include/gexiv2/gexiv2-managed-stream.h
 /usr/local/include/gexiv2/gexiv2-metadata.h
@@ -7,12 +6,14 @@
 /usr/local/include/gexiv2/gexiv2-preview-properties.h
 /usr/local/include/gexiv2/gexiv2-startup.h
 /usr/local/include/gexiv2/gexiv2-version.h
+/usr/local/include/gexiv2/gexiv2.h
+/usr/local/lib/python3.12/site-packages/gi/overrides/GExiv2.py
+/usr/local/lib/python3.12/site-packages/gi/overrides/__pycache__/GExiv2.cpython-312.pyc
 /usr/local/lib64/girepository-1.0/GExiv2-0.10.typelib
 /usr/local/lib64/libgexiv2.so
 /usr/local/lib64/libgexiv2.so.2
-/usr/local/lib64/libgexiv2.so.2.14.0
+/usr/local/lib64/libgexiv2.so.2.14.2
 /usr/local/lib64/pkgconfig/gexiv2.pc
-/usr/local/lib64/python3.10/site-packages/gi/overrides/GExiv2.py
 /usr/local/share/gir-1.0/GExiv2-0.10.gir
 /usr/local/share/vala/vapi/gexiv2.deps
 /usr/local/share/vala/vapi/gexiv2.vapi

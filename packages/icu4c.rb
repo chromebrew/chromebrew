@@ -2,35 +2,28 @@ require 'package'
 
 class Icu4c < Package
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
-  homepage 'http://site.icu-project.org/'
-  version '73.2'
+  homepage 'https://icu.unicode.org/'
+  version '75.1'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/unicode-org/icu/releases/download/release-73-2/icu4c-73_2-src.tgz'
-  source_sha256 '818a80712ed3caacd9b652305e01afc7fa167e6f2e94996da44b90c2ab604ce1'
+  source_url 'https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-src.tgz'
+  source_sha256 'cb968df3e4d2e87e8b11c49a5d01c787bd13b9545280fc6642f826527618caef'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ba5ef6142433e681a2e3b2c03b1e6cf5c3a685e065a1013e45ec2853ebc87c99',
-     armv7l: 'ba5ef6142433e681a2e3b2c03b1e6cf5c3a685e065a1013e45ec2853ebc87c99',
-       i686: '94fd8261f60025bc3666f3636678d094dd36a78fc3380bfae17d07b289ebcd0b',
-     x86_64: '2c3cc278326f762e965c9d34f51fff11be983d3b4c3af526f79b726d55d25804'
+    aarch64: '2ff2ed4760529e3611a51211876c17df5c9acc5a689cd35cb5a98ce0c4c1f714',
+     armv7l: '2ff2ed4760529e3611a51211876c17df5c9acc5a689cd35cb5a98ce0c4c1f714',
+       i686: '3bab33be0214ced3080b895c615ee8f9bf3b98e191701be0917c2e02c783c26f',
+     x86_64: '83e81c0d8bb9981034d6d63755ac0e9ae833d9544cbc07e32d242e98cf3d30db'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build
-    FileUtils.cd('source') do
-      case ARCH
-      when 'aarch64', 'armv7l'
-        # Armhf requires sane ELF headers rather than other architectures as
-        # discussed in https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=653457
-        system "sed -e '/LDFLAGSICUDT=/cLDFLAGSICUDT=' -i config/mh-linux"
-      end
+    Dir.chdir 'source' do
       system "mold -run ./configure \
-        #{CREW_OPTIONS} \
-        --enable-static \
+        #{CREW_CONFIGURE_OPTIONS} \
         --enable-shared \
         --disable-samples \
         --disable-tests"
@@ -38,22 +31,21 @@ class Icu4c < Package
     end
   end
 
-  @icuver = '73'
-  @oldicuver = %w[73.1]
+  @oldicuver = %w[version.split('.').first.to_i - 1]
 
   def self.install
-    FileUtils.cd('source') do
+    Dir.chdir 'source' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
     Dir.chdir CREW_DEST_LIB_PREFIX do
       @oldicuver.each do |oldver|
         # Backwards compatibility symlinks (which may not work - see postinstall.)
-        FileUtils.ln_sf "libicudata.so.#{@icuver}", "libicudata.so.#{oldver}"
-        FileUtils.ln_sf "libicui18n.so.#{@icuver}", "libicui18n.so.#{oldver}"
-        FileUtils.ln_sf "libicuio.so.#{@icuver}", "libicuio.so.#{oldver}"
-        FileUtils.ln_sf "libicutest.so.#{@icuver}", "libicutest.so.#{oldver}"
-        FileUtils.ln_sf "libicutu.so.#{@icuver}", "libicutu.so.#{oldver}"
-        FileUtils.ln_sf "libicuuc.so.#{@icuver}", "libicuuc.so.#{oldver}"
+        FileUtils.ln_sf "libicudata.so.#{version}", "libicudata.so.#{oldver}"
+        FileUtils.ln_sf "libicui18n.so.#{version}", "libicui18n.so.#{oldver}"
+        FileUtils.ln_sf "libicuio.so.#{version}", "libicuio.so.#{oldver}"
+        FileUtils.ln_sf "libicutest.so.#{version}", "libicutest.so.#{oldver}"
+        FileUtils.ln_sf "libicutu.so.#{version}", "libicutu.so.#{oldver}"
+        FileUtils.ln_sf "libicuuc.so.#{version}", "libicuuc.so.#{oldver}"
       end
     end
   end
@@ -64,25 +56,25 @@ class Icu4c < Package
     return if CREW_IN_CONTAINER
 
     Dir.chdir CREW_LIB_PREFIX do
-      @oldicuver = %w[72 72.1]
+      @oldicuver = %w[74.2 73.2 73 72 72.1]
       @oldicuver.each do |oldver|
         puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
-        @fileArray = []
-        @libArray = []
+        @file_array = []
+        @lib_array = []
         @nmresults = `nm  -A *.so* 2>/dev/null | grep ucol_open_#{oldver}`.chop.split(/$/).map(&:strip)
-        @nmresults.each { |fileLine| @libArray.push(fileLine.partition(':').first) }
-        @libArray.each do |f|
+        @nmresults.each { |file_line| @lib_array.push(file_line.partition(':').first) }
+        @lib_array.each do |f|
           @grepresults = `grep "#{f}" #{CREW_META_PATH}/*.filelist`.chomp.gsub('.filelist', '').partition(':').first.gsub(
             CREW_META_PATH, ''
           ).split(/$/).map(&:strip)
-          @grepresults.each { |fileLine| @fileArray.push(fileLine) }
+          @grepresults.each { |file_line| @file_array.push(file_line) }
         end
         # Mozjs contains an internal icu which will not match this version.
         # Update the following when there is a new version of mozjs.
-        @fileArray.delete_if { |item| item == 'js102' }
-        next if @fileArray.empty?
+        @file_array.delete_if { |item| item == 'js115' }
+        next if @file_array.empty?
 
-        @fileArray.uniq.sort.each do |item|
+        @file_array.uniq.sort.each do |item|
           puts item.lightred
         end
       end

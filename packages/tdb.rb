@@ -3,30 +3,30 @@ require 'package'
 class Tdb < Package
   description 'tdb is a simple database API for sharing structures between parts of Samba'
   homepage 'https://tdb.samba.org/'
-  @_ver = '1.4.9'
-  version "#{@_ver}-py3.12"
+  version "1.4.12-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://www.samba.org/ftp/tdb/tdb-#{@_ver}.tar.gz"
-  source_sha256 '0ac226073e3a2db8648da7af744cb95f50766a52feeb001d558b2b321b74a765'
+  source_url "https://www.samba.org/ftp/tdb/tdb-#{version.split('-').first}.tar.gz"
+  source_sha256 '6ce4b27498812d09237ece65a0d6dfac0941610e709848ecb822aa241084cd7a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a937908bc82109fc519b31cbe0c983a49743391a535817bb71f654ba4445aa0a',
-     armv7l: 'a937908bc82109fc519b31cbe0c983a49743391a535817bb71f654ba4445aa0a',
-       i686: '9074d39c76710f9b38922b6b5b149fe7cdafc8f66594f194b90c71f8478a2e99',
-     x86_64: '0be9b8c54b76cb5a86da7f636ca3b38b2f80a41367fcb437923df0767e3473c8'
+    aarch64: '869c46af87e6828afb3343c472d6f44e93f9cbca3c8ddfca9674cc997b963339',
+     armv7l: '869c46af87e6828afb3343c472d6f44e93f9cbca3c8ddfca9674cc997b963339',
+       i686: 'c073e3b4552e61a1601c5038133e3c36c2c56cc740f3650ffbf1f176ab2e22c3',
+     x86_64: '19f09414803c8dac3596267d55de2324ca9c564379bb336f82ff853f53b11f4e'
   })
 
   depends_on 'docbook_xsl' => :build
   depends_on 'gcc_lib' # R
+  depends_on 'gdb' => :build
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
   depends_on 'libxslt' => :build
   depends_on 'python3' => :build
 
   def self.build
-    system "./configure #{CREW_OPTIONS.sub(/--program-suffix.*/, '')}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')}"
     system 'make'
   end
 

@@ -2,7 +2,7 @@ require 'package'
 
 class Xorg_cf_files < Package
   description 'X.org cf files for use with imake builds.'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '1.0.7'
   license 'MIT'
   compatibility 'all'
@@ -20,7 +20,7 @@ class Xorg_cf_files < Package
   depends_on 'font_util'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
             --sysconfdir=#{CREW_PREFIX}/etc"
     system 'make'
   end

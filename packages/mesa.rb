@@ -1,32 +1,30 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Mesa < Package
+class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '24.0.0'
-  version "#{@_ver}-llvm17"
+  version '24.2.5-llvm19'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
-  git_hashtag "mesa-#{@_ver}"
+  git_hashtag "mesa-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f81dfc8673c57071f9c64127bc31d06913f02694739b2635294860fce64c5d9b',
-     armv7l: 'f81dfc8673c57071f9c64127bc31d06913f02694739b2635294860fce64c5d9b',
-     x86_64: '9e5c83d71c2df7009d780647ab96b35cc91bf4dab65e9c5cd223e8c4b58c82f4'
+    aarch64: 'f6ec635e98c470b7d41075f19f65ff6f45e6d4c4139931feda52a833edc70c83',
+     armv7l: 'f6ec635e98c470b7d41075f19f65ff6f45e6d4c4139931feda52a833edc70c83',
+     x86_64: 'b1f04bdb65ff08c22332e26106f6cd9858c1d6662cf3af94db4a7a77d10087f8'
   })
 
-  depends_on 'elfutils' # R
   depends_on 'eudev' # R
   depends_on 'expat' # R
   depends_on 'gcc_dev' => :build
   depends_on 'gcc_lib' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'glibc_lib' #
   depends_on 'glslang' => :build
+  depends_on 'libclc' => :build
   depends_on 'libdrm' # R
-  depends_on 'libglvnd' # R
   depends_on 'libomxil_bellagio' => :build
   depends_on 'libunwind' # R
   depends_on 'libva' => :build
@@ -40,42 +38,38 @@ class Mesa < Package
   depends_on 'libxrandr' # R
   depends_on 'libxshmfence' # R
   depends_on 'libxv' => :build
-  depends_on 'libxvmc' # R
-  depends_on 'libxv' # R
   depends_on 'libxxf86vm' # R
-  depends_on 'llvm17_dev' => :build
-  depends_on 'llvm17_lib' # R
+  depends_on 'llvm19_dev' => :build
+  depends_on 'llvm19_lib' # R
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako' => :build
+  depends_on 'py3_ply' => :build
+  depends_on 'py3_pycparser' => :build
+  depends_on 'spirv_llvm_translator' => :build
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland_protocols' => :build
   depends_on 'wayland' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'xcb_util_keysyms' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
-      -Db_asneeded=false \
-      -Ddri3=enabled \
-      -Degl=enabled \
-      -Dgbm=enabled \
-      -Dgles1=disabled \
-      -Dgles2=enabled \
-      -Dglvnd=true \
-      -Dglx=dri \
-      -Dllvm=enabled \
-      -Dgallium-drivers='#{ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink' : 'auto'}' \
-      -Dvulkan-drivers='#{ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'}' \
-      -Dvideo-codecs='all' \
-       builddir"
-    system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
+  meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
+    -Db_asneeded=false \
+    -Ddri3=enabled \
+    -Degl=enabled \
+    -Dgbm=enabled \
+    -Dgles1=disabled \
+    -Dgles2=enabled \
+    -Dglvnd=enabled \
+    -Dglx=dri \
+    -Dintel-clc=enabled \
+    -Dllvm=enabled \
+    -Dgallium-drivers='#{ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,softpipe,llvmpipe,iris,crocus,zink' : 'v3d,freedreno,etnaviv,nouveau,svga,tegra,virgl,lima,panfrost,softpipe,llvmpipe,iris,zink'}' \
+    -Dvulkan-drivers='#{ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'}' \
+    -Dvideo-codecs='all'"
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  meson_install_extras do
     # The following are hacks to keep sommelier from complaining.
     Dir.chdir("#{CREW_DEST_LIB_PREFIX}/dri") do
       FileUtils.ln_s '.', 'tls' unless File.exist?('tls')
@@ -94,5 +88,13 @@ class Mesa < Package
         FileUtils.ln_s '../../libgbm.so', 'pvr_gbm.so'
       end
     end
+  end
+
+  def self.patch
+    # See https://gitlab.freedesktop.org/mesa/mesa/-/issues/11896
+    # https://github.com/llvm/llvm-project/pull/97824
+    # https://github.com/Zentrik/julia/commit/1b35f7a9147788b9a727c11c5ccdb44c9a800c07
+    system "sed -i '/llvm::StringMap<bool> features;/d' src/gallium/auxiliary/gallivm/lp_bld_misc.cpp"
+    system "sed -i 's/llvm::sys::getHostCPUFeatures(features);/auto features = llvm::sys::getHostCPUFeatures();/' src/gallium/auxiliary/gallivm/lp_bld_misc.cpp"
   end
 end

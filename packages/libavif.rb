@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libavif < CMake
   description 'Library for encoding and decoding .avif files'
   homepage 'https://github.com/AOMediaCodec/libavif'
-  version '1.0.1'
+  version '1.1.0'
   license 'BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/AOMediaCodec/libavif.git'
@@ -11,18 +11,19 @@ class Libavif < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dfb81842a7e868e84642c7c5d10be49ace73a1861bbc327794b1397eaac9fdab',
-     armv7l: 'dfb81842a7e868e84642c7c5d10be49ace73a1861bbc327794b1397eaac9fdab',
-     x86_64: 'ca497d1da070101a5b2090c2e7edae41644ad9b8c31132fa00e6c7bbe4215921'
+    aarch64: 'a6632560338310f3909f141763e886af378a1671329d10f9bfd22310c596d50c',
+     armv7l: 'a6632560338310f3909f141763e886af378a1671329d10f9bfd22310c596d50c',
+     x86_64: '2f81bae4159dae77502f9c0c573e5b9a16156640a8c0eb23f93b5769c1c3b969'
   })
 
   depends_on 'dav1d' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'libaom' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libtiff' # L
   depends_on 'libwebp' # R
@@ -32,7 +33,9 @@ class Libavif < CMake
   depends_on 'pkgconf' => :build
   depends_on 'rav1e' # R
   depends_on 'svt_av1' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
+
+  gnome
 
   cmake_options '-DAVIF_BUILD_APPS=ON \
       -DAVIF_CODEC_AOM=ON \
@@ -41,11 +44,4 @@ class Libavif < CMake
       -DAVIF_CODEC_SVT=ON \
       -DAVIF_BUILD_GDK_PIXBUF=ON \
       -DAVIF_BUILD_MAN_PAGES=ON'
-
-  def self.postinstall
-    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-
-    system 'gdk-pixbuf-query-loaders',
-           '--update-cache'
-  end
 end

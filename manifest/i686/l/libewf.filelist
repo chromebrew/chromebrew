@@ -6,12 +6,12 @@
 /usr/local/bin/ewfmount
 /usr/local/bin/ewfrecover
 /usr/local/bin/ewfverify
+/usr/local/include/libewf.h
 /usr/local/include/libewf/codepage.h
 /usr/local/include/libewf/definitions.h
 /usr/local/include/libewf/error.h
 /usr/local/include/libewf/extern.h
 /usr/local/include/libewf/features.h
-/usr/local/include/libewf.h
 /usr/local/include/libewf/types.h
 /usr/local/lib/libewf.a
 /usr/local/lib/libewf.la

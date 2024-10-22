@@ -1,10 +1,10 @@
-/usr/local/include/mimalloc-1.8/mimalloc.h
 /usr/local/include/mimalloc-1.8/mimalloc-new-delete.h
 /usr/local/include/mimalloc-1.8/mimalloc-override.h
-/usr/local/lib/cmake/mimalloc-1.8/mimalloc.cmake
-/usr/local/lib/cmake/mimalloc-1.8/mimalloc-config.cmake
+/usr/local/include/mimalloc-1.8/mimalloc.h
 /usr/local/lib/cmake/mimalloc-1.8/mimalloc-config-version.cmake
+/usr/local/lib/cmake/mimalloc-1.8/mimalloc-config.cmake
 /usr/local/lib/cmake/mimalloc-1.8/mimalloc-release.cmake
+/usr/local/lib/cmake/mimalloc-1.8/mimalloc.cmake
 /usr/local/lib/libmimalloc.so
 /usr/local/lib/libmimalloc.so.1
 /usr/local/lib/libmimalloc.so.1.8

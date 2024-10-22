@@ -3,17 +3,18 @@ require 'buildsystems/cmake'
 class Inkscape < CMake
   description 'Inkscape is a professional vector graphics editor for Windows, Mac OS X and Linux.'
   homepage 'https://inkscape.org/'
-  version '1.3.1'
+  version '1.4'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://inkscape.org/gallery/item/44467/inkscape-1.3.1.tar.xz'
-  source_sha256 '421e0035fe5b3b054a0865dc8235be3f9e6e2dea54190d926b880a4ce05b00d8'
+  min_glibc '2.37'
+  source_url "https://media.inkscape.org/dl/resources/file/inkscape-#{version}.tar.xz"
+  source_sha256 'c59a85453b699addebcd51c1dc07684dd96a10c8aec716b19551db50562e13f5'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2fa1d4d51162d63e63059e85dc769ad4e561170cc683d61de39903504e8e0ce7',
-     armv7l: '2fa1d4d51162d63e63059e85dc769ad4e561170cc683d61de39903504e8e0ce7',
-     x86_64: 'c2bcaa2c535c20efacfa5974808012696f15d90a74298e82936a0e5b5e8994ef'
+    aarch64: '19eb8c1ce45c260019d96fa0dbd13b8d18e812542185f9f0a5a52163eb1dacc8',
+     armv7l: '19eb8c1ce45c260019d96fa0dbd13b8d18e812542185f9f0a5a52163eb1dacc8',
+     x86_64: '3d7da3a8dcf08953b44bd3f95ac3cba0fcf29b482a9e7f51959b41698e706cfb'
   })
 
   depends_on 'atkmm16' # R
@@ -45,7 +46,7 @@ class Inkscape < CMake
   depends_on 'libcdr' # R
   depends_on 'libepoxy' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'librevenge' # R
   depends_on 'libsigcplusplus' # R
@@ -66,7 +67,9 @@ class Inkscape < CMake
   depends_on 'py3_cython' => :build
   depends_on 'readline' # R
   depends_on 'xdg_base' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
+
+  gnome
 
   cmake_options '-DWITH_IMAGE_MAGICK=OFF \
             -DWITH_INTERNAL_2GEOM=ON \

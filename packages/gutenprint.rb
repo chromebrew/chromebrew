@@ -2,7 +2,7 @@ require 'package'
 
 class Gutenprint < Package
   description 'High quality drivers for Canon, Epson, Lexmark, Sony, Olympus, and PCL printers for use with CUPS and GIMP.'
-  homepage 'http://gimp-print.sourceforge.net/'
+  homepage 'https://gimp-print.sourceforge.io/'
   version '5.3.3'
   license 'GPL-2'
   compatibility 'all'
@@ -18,7 +18,7 @@ class Gutenprint < Package
   })
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

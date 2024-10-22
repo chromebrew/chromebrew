@@ -1,20 +1,20 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Wayland < Package
+class Wayland < Meson
   description 'Wayland is intended as a simpler replacement for X, easier to develop and maintain.'
   homepage 'https://wayland.freedesktop.org'
-  version '1.22.0'
+  version "1.23.1-#{CREW_ICU_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/wayland/wayland.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '72e4522abfc219a7f20f7894dcbeb3efe1f630ddda000131df9ba827e5547d13',
-     armv7l: '72e4522abfc219a7f20f7894dcbeb3efe1f630ddda000131df9ba827e5547d13',
-       i686: 'a5be6452a0bbd9aeb09ba960449c1690e9a0cbcfafdb2283ef6a02a2e1416025',
-     x86_64: '1fc209aa34fa165f41a6100dad83c352c5bfb5662bc37b279ce6091052edc90b'
+    aarch64: 'b6f79f1d26cf93d9effaa46756a2319f4ca8680e02cb23d897d08a9b84c63c6a',
+     armv7l: 'b6f79f1d26cf93d9effaa46756a2319f4ca8680e02cb23d897d08a9b84c63c6a',
+       i686: 'a0a324eea67718aeffa1fcd050626088cafffd02bd24e1b5f111cdc2f54bc48e',
+     x86_64: 'c53a3cc2c8bad1f6c49a7f0c4865d9493522611012bcb66ef9bd0dec333f8030'
   })
 
   depends_on 'expat' # R
@@ -23,9 +23,12 @@ class Wayland < Package
   depends_on 'icu4c' => :build
   depends_on 'libffi' # R
   depends_on 'libxml2' # R
-  depends_on 'zlibpkg' => :build
+  depends_on 'zlib' => :build
 
-  def self.build
+  meson_options '-Ddocumentation=false'
+
+  def self.install
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     File.write 'waylandenv', <<~WAYLAND_ENV_EOF
       # environment set-up for Chrome OS built-in Wayland server
       : "${XDG_RUNTIME_DIR:=/var/run/chrome}"
@@ -34,13 +37,6 @@ class Wayland < Package
       : "${CLUTTER_BACKEND:=wayland}"
       : "${GDK_BACKEND:=wayland}"
     WAYLAND_ENV_EOF
-    system "meson setup #{CREW_MESON_OPTIONS} -Ddocumentation=false builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     FileUtils.install 'waylandenv', "#{CREW_DEST_PREFIX}/etc/env.d/wayland", mode: 0o644
   end
 end

@@ -12,13 +12,13 @@
 /usr/local/include/cbase/version.h
 /usr/local/include/cbase/xml.h
 /usr/local/lib/libcbase.a
+/usr/local/lib/libcbase.so
+/usr/local/lib/libcbase.so.7
+/usr/local/lib/libcbase.so.7.1.0
 /usr/local/lib/libcbase_mt.a
 /usr/local/lib/libcbase_mt.so
 /usr/local/lib/libcbase_mt.so.7
 /usr/local/lib/libcbase_mt.so.7.1.0
-/usr/local/lib/libcbase.so
-/usr/local/lib/libcbase.so.7
-/usr/local/lib/libcbase.so.7.1.0
-/usr/local/lib/pkgconfig/libcbase_mt.pc
 /usr/local/lib/pkgconfig/libcbase.pc
+/usr/local/lib/pkgconfig/libcbase_mt.pc
 /usr/local/share/info/cbase.info.gz

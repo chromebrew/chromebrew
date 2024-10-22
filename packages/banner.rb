@@ -2,7 +2,7 @@ require 'package'
 
 class Banner < Package
   description 'An implementation of the traditional Unix-program used to display large characters.'
-  homepage 'http://shh.thathost.com/pub-unix/#banner'
+  homepage 'https://shh.thathost.com/pub-unix/'
   version '1.3.2'
   license 'GPL-2'
   compatibility 'all'

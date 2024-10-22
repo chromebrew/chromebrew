@@ -1,28 +1,33 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Patchelf < Package
+class Patchelf < Autotools
   description 'PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables.'
-  homepage 'http://nixos.org/patchelf.html'
-  version '0.17.2'
+  homepage 'https://github.com/NixOS/patchelf'
+  version '0.18.0-a0f5433'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/NixOS/patchelf.git'
-  git_hashtag version
+  git_hashtag 'a0f54334df36770b335c051e540ba40afcbf8378'
   binary_compression 'tar.zst'
 
   binary_sha256({
-     aarch64: 'd3b21500b8727dc9372dd42f21c24e346634cb4aa972fbc4653832c08cb9e64d',
-      armv7l: 'd3b21500b8727dc9372dd42f21c24e346634cb4aa972fbc4653832c08cb9e64d',
-        i686: '6175e787dee232ce9120e86dbb5b578c2662959f92ff8e51efb2efdd8d52d915',
-      x86_64: 'ce1fc5eb4f3ba8bf99fab4f4c3b4c9ca2cd2a93c504c0ac0928318b8cdafaeab'
+    aarch64: '4f03e9e000bb49583d7127d54caef6ee29758693061d68d446487b6b45dba169',
+     armv7l: '4f03e9e000bb49583d7127d54caef6ee29758693061d68d446487b6b45dba169',
+       i686: '85047aedda730e0e8e4f4b3cee0b69837e9319f49ae62fdaa79ef7accc5d23b5',
+     x86_64: '8f88e3483f8ce03b708e992dc2c0dacef893b6824f057606d996761aca603c9d'
   })
 
   no_env_options
 
-  def self.build
-    system './bootstrap.sh'
-    system "LDFLAGS='-flto=auto -static' ./configure #{CREW_OPTIONS}"
-    system 'make'
+  pre_configure_options "LDFLAGS='-flto=auto -static' "
+
+  def self.patch
+    # Allocate PHT & SHT at the end of the *.elf file
+    downloader 'https://github.com/NixOS/patchelf/pull/544.diff', 'fc65c0e6bfc751a1ab91f5f87c86202834eb3b3c208c6bb1eef077e4572e4b9c'
+    system 'patch -Np1 -i 544.diff'
+    # Fix rename-dynamic-symbols.sh test
+    downloader 'https://github.com/NixOS/patchelf/pull/547.diff', '478669b8749b38defe2b835c2ece1d1ff495da6f0a899c7ac8c00f92c5ec9b2d'
+    system 'patch -Np1 -i 547.diff'
   end
 
   def self.check
@@ -32,9 +37,5 @@ class Patchelf < Package
       system 'make clean'
     end
     system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

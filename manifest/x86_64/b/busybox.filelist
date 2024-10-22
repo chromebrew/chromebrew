@@ -246,10 +246,10 @@
 /usr/local/libexec/busybox/sbin/fakeidentd
 /usr/local/libexec/busybox/sbin/fdisk
 /usr/local/libexec/busybox/sbin/findfs
-/usr/local/libexec/busybox/sbin/flashcp
 /usr/local/libexec/busybox/sbin/flash_eraseall
 /usr/local/libexec/busybox/sbin/flash_lock
 /usr/local/libexec/busybox/sbin/flash_unlock
+/usr/local/libexec/busybox/sbin/flashcp
 /usr/local/libexec/busybox/sbin/freeramdisk
 /usr/local/libexec/busybox/sbin/fsck
 /usr/local/libexec/busybox/sbin/fsck.minix

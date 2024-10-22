@@ -1,62 +1,35 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Bash < Package
+class Bash < Autotools
   description 'The GNU Bourne Again SHell is a Bourne-compatible shell with useful csh and ksh features.'
   homepage 'https://www.gnu.org/software/bash/'
-  version '5.2-2'
+  version '5.2.32'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/bash/bash-5.2.tar.gz'
-  source_sha256 'a139c166df7ff4471c5e0733051642ee5556c1cc8a4a78f145583c5c81ab32fb'
+  source_url 'https://git.savannah.gnu.org/git/bash.git'
+  # Bash patch commits aren't tagged or anything, although this commit does correspond to the patchlevel we're shipping.
+  git_hashtag '142bbdd89e4d5bb62aea4469d1d2c24cf470afd8'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5167feed4d0bfc86b1b13ea87eadf4167bdd879122ad1c113002fc367a5db57e',
-     armv7l: '5167feed4d0bfc86b1b13ea87eadf4167bdd879122ad1c113002fc367a5db57e',
-       i686: '9454bcfda1d88307a80c00f68e9a5294c29331ffdf3c6f951385faef3cd5ffb5',
-     x86_64: 'a777bad1a9ce382c07e73e192c48063baa481c53ef78bf5e74c32aeb60b9eefd'
+    aarch64: '215c9201d6fcb93cf547fe8992c0d2d912c3d5b4de77530e99fc22847d02cdfa',
+     armv7l: '215c9201d6fcb93cf547fe8992c0d2d912c3d5b4de77530e99fc22847d02cdfa',
+       i686: '39ab8b278ffc655f1b89f971443ddbeaded91a7de8200291954f04bb2c89a474',
+     x86_64: 'baddfe839daa9d6741c82cc2e0494196d28bbfda8171c9f8486ccee33df0f364'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
+  depends_on 'readline' # R
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} \
-        --enable-alias\
-        --enable-arith-for-command \
-        --enable-array-variables \
-        --enable-bang-history \
-        --enable-brace-expansion \
-        --enable-casemod-attributes \
-        --enable-casemod-expansions \
-        --enable-command-timing \
-        --enable-cond-command \
-        --enable-cond-regexp \
-        --enable-coprocesses \
-        --enable-directory-stack \
-        --enable-dparen-arithmetic \
-        --enable-help-builtin \
-        --enable-history \
-        --enable-job-control \
-        --enable-mem-scramble \
-        --enable-multibyte \
-        --enable-net-redirections \
-        --enable-process-substitution \
-        --enable-progcomp \
-        --enable-readline \
-        --enable-restricted \
-        --enable-select \
-        --enable-single-help-strings \
-        --enable-usg-echo-default \
-        --with-bash-malloc \
-        --with-curses"
+  configure_options '--with-curses \
+    --enable-extended-glob-default \
+    --enable-readline \
+    --without-bash-malloc \
+    --with-installed-readline'
 
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  configure_install_extras do
     FileUtils.ln_s "#{CREW_PREFIX}/bin/bash", "#{CREW_DEST_PREFIX}/bin/sh"
   end
 end

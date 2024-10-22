@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'xzutils'
+Package.load_package("#{__dir__}/xzutils.rb")
 
 class Lzma < Package
   description 'LZMA Utils are legacy data compression software with high compression ratio. Bundled with xzutils.'

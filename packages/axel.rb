@@ -1,28 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Axel < Package
+class Axel < Autotools
   description 'Light command line download accelerator for Linux and Unix'
   homepage 'https://github.com/axel-download-accelerator/axel'
-  version '2.17.6'
+  version '2.17.14'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/axel-download-accelerator/axel/releases/download/v2.17.6/axel-2.17.6.tar.xz'
-  source_sha256 '24ab549021bdfca01ad5e8e95b706869dd30fe9ab1043da4cbb9dff89edc267d'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/axel-download-accelerator/axel.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '31800a542f21b117b5bb78b8c7c62fdc38d2afac61d306ddac01d71569909f4a',
-     armv7l: '31800a542f21b117b5bb78b8c7c62fdc38d2afac61d306ddac01d71569909f4a',
-       i686: '804815af38ee5ba38ac407831e8e3e40adcc0cdca91fe770c76a47f02fd3cdc8',
-     x86_64: '731b9413dee20493cfdeee3d8ed8b9379981aec08522677fdea16503e4ee90f0'
+    aarch64: '56a0871e20f98947802ee9d6f2c69e360935f225a62769af08deec7afaeb9f9d',
+     armv7l: '56a0871e20f98947802ee9d6f2c69e360935f225a62769af08deec7afaeb9f9d',
+       i686: '4e497b6887c9284614c64d77067729e44c071869c7405818e5cca3526cf37fee',
+     x86_64: '790e5060852e82a88bb3ce21a31a4832f9e932583011f00a120a6d04386236e0'
   })
 
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'autoconf_archive' => :build
+  depends_on 'openssl' # R
+  depends_on 'txt2man' => :build
 end

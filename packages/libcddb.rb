@@ -2,7 +2,7 @@ require 'package'
 
 class Libcddb < Package
   description 'Libcddb is a C library to access data on a CDDB server (freedb.org).'
-  homepage 'http://libcddb.sourceforge.net/'
+  homepage 'https://libcddb.sourceforge.net/'
   version '1.3.2-2'
   license 'LGPL-2'
   compatibility 'all'
@@ -31,7 +31,7 @@ class Libcddb < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

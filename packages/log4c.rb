@@ -2,7 +2,7 @@ require 'package'
 
 class Log4c < Package
   description 'Log4c is a library of C for flexible logging to files, syslog and other destinations.'
-  homepage 'http://log4c.sourceforge.net/'
+  homepage 'https://log4c.sourceforge.net/'
   version '1.2.4'
   license 'LGPL-2'
   compatibility 'all'
@@ -18,7 +18,7 @@ class Log4c < Package
   })
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

@@ -2,11 +2,11 @@ require 'package'
 
 class Libconfuse < Package
   description 'Small configuration file parser library for C.'
-  homepage 'https://github.com/martinh/libconfuse'
+  homepage 'https://github.com/libconfuse/libconfuse'
   version '3.2.1'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/martinh/libconfuse/releases/download/v3.2.1/confuse-3.2.1.tar.xz'
+  source_url 'https://github.com/libconfuse/libconfuse/releases/download/v3.2.1/confuse-3.2.1.tar.xz'
   source_sha256 '23c63272baf2ef4e2cbbafad2cf57de7eb81f006ec347c00b954819824add25e'
   binary_compression 'tar.xz'
 

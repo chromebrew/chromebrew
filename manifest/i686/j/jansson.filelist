@@ -1,5 +1,5 @@
-/usr/local/include/jansson_config.h
 /usr/local/include/jansson.h
+/usr/local/include/jansson_config.h
 /usr/local/lib/libjansson.a
 /usr/local/lib/libjansson.la
 /usr/local/lib/libjansson.so

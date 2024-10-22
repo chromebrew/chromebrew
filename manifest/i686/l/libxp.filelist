@@ -4,7 +4,6 @@
 /usr/local/lib/libXp.so.6
 /usr/local/lib/libXp.so.6.2.0
 /usr/local/lib/pkgconfig/xp.pc
-/usr/local/share/man/man3/libXp.3.gz
 /usr/local/share/man/man3/XpCancelDoc.3.gz
 /usr/local/share/man/man3/XpCancelJob.3.gz
 /usr/local/share/man/man3/XpCancelPage.3.gz
@@ -38,3 +37,4 @@
 /usr/local/share/man/man3/XpStartDoc.3.gz
 /usr/local/share/man/man3/XpStartJob.3.gz
 /usr/local/share/man/man3/XpStartPage.3.gz
+/usr/local/share/man/man3/libXp.3.gz

@@ -2,7 +2,7 @@ require 'package'
 
 class Libemf < Package
   description 'libEMF is a C/C++ library which provides a drawing toolkit based on ECMA-234.'
-  homepage 'http://libemf.sourceforge.net/'
+  homepage 'https://libemf.sourceforge.net/'
   version '1.0.9'
   license 'LGPL-2.1 and GPL-2'
   compatibility 'all'

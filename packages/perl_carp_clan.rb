@@ -3,7 +3,7 @@ require 'package'
 class Perl_carp_clan < Package
   description 'Carp::Clan - Report errors from perspective of caller of a "clan" of modules'
   homepage 'https://metacpan.org/pod/Carp::Clan'
-  version '6.08-perl5.38'
+  version "6.08-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/Carp-Clan-6.08.tar.gz'
@@ -11,10 +11,10 @@ class Perl_carp_clan < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '202c8b998b4756ff971dcdd1cd9b1222bad278f5cd974e1e2ade979add63beda',
-     armv7l: '202c8b998b4756ff971dcdd1cd9b1222bad278f5cd974e1e2ade979add63beda',
-       i686: '0f613e91045417a56580ae5c5e94003db554e92ab90c725fcd2dae53ede01fbd',
-     x86_64: 'ce783172887ddc4f1f4980885b75278471af598fe6986c98815e95385facfb14'
+    aarch64: '0ec48077b0e840bd18e60edbeb3819c82985b625cc28f8bda6835b6bcb49df60',
+     armv7l: '0ec48077b0e840bd18e60edbeb3819c82985b625cc28f8bda6835b6bcb49df60',
+       i686: '253526cb198bbaab51f904bd2c8945d87abcb505869a9c0932016506b0f8e210',
+     x86_64: 'e578a9f51a939058de80137c237ca21143b9b4652a8f58c6070c720f23946430'
   })
 
   def self.prebuild

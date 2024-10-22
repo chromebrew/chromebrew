@@ -4,7 +4,7 @@ require 'package'
 
 class Sshcode < Package
   description 'Run VS Code on any server over SSH.'
-  homepage 'https://github.com/cdr/sshcode'
+  homepage 'https://github.com/coder/sshcode'
   version '0.8.0'
   license 'MIT'
   compatibility 'all'
@@ -28,7 +28,7 @@ class Sshcode < Package
   end
 
   def self.postinstall
-    # https://github.com/cdr/sshcode/pull/82
+    # https://github.com/coder/sshcode/pull/82
     puts 'To use sshcode you need to bind the webserver to 0.0.0.0:<port>'.lightgreen
     puts 'For example: sshcode --skipsync --bind 0.0.0.0:8080 [remote-ssh-ip]'.lightgreen
     puts 'Syncing extensions does not work at this time.'.lightgreen

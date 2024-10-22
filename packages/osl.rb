@@ -1,32 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Osl < Package
+class Osl < Autotools
   description 'OpenScop is a Specification and a Library for Data Exchange in Polyhedral Compilation Tools'
   homepage 'https://github.com/periscop/openscop'
-  version '0.9.2'
+  version '0.9.7'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/periscop/openscop/releases/download/0.9.2/osl-0.9.2.tar.gz'
-  source_sha256 'eee5cd9bf5b3b8491f95f681cfaa987344f0fb3d7499f5d8e19e3ce75e0c5ed0'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/periscop/openscop.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '171bd5dfa05cc568a97a4fb4d88ad483f3d4a147df7c2e6da3561e9d61f845a7',
-     armv7l: '171bd5dfa05cc568a97a4fb4d88ad483f3d4a147df7c2e6da3561e9d61f845a7',
-       i686: '8c4a682433e1b332055cac4c152d0b03687d0fc2ccde8ed9e39da3fa3f284600',
-     x86_64: '70d5a0b54a59fa9c32cdeb22b9f02198cff7d319b4c8a78688ee992959f49371'
+    aarch64: '49a5e2ce4f59ea4d2b3140170d7f471214fb904400dd43d5b61c05f3cd52a9e9',
+     armv7l: '49a5e2ce4f59ea4d2b3140170d7f471214fb904400dd43d5b61c05f3cd52a9e9',
+       i686: '90a1a72a64481a75e3d3ef59c8440cefa211448e8366405bebf77f45be70fe33',
+     x86_64: '28c92686aa94cc86be32477a597d15e03e245d023dab18aaf2395b805437bfa4'
   })
 
-  def self.build
-    system './configure', "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
 
-  def self.check
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

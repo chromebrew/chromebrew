@@ -2,7 +2,7 @@ require 'package'
 
 class Docbook2x < Package
   description 'docbook2X is a software package that converts DocBook documents into the traditional Unix man page format and the GNU Texinfo format.'
-  homepage 'http://docbook2x.sourceforge.net/'
+  homepage 'https://docbook2x.sourceforge.net/'
   version '0.8.8-1'
   license 'MIT'
   compatibility 'all'
@@ -21,7 +21,7 @@ class Docbook2x < Package
   depends_on 'glibc' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

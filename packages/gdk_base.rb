@@ -8,9 +8,10 @@ class Gdk_base < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'wayland_info'
+  depends_on 'wayland_info' # L
 
   no_compile_needed
+  print_source_bashrc
 
   def self.install
     gdk_base = <<~EOF

@@ -2,7 +2,7 @@ require 'package'
 
 class Suitesparse < Package
   description 'A suite of sparse matrix software'
-  homepage 'http://faculty.cse.tamu.edu/davis/suitesparse.html'
+  homepage 'https://people.engr.tamu.edu/davis/suitesparse.html'
   version '5.7.2'
   license 'metapackage'
   compatibility 'all'

@@ -1,21 +1,21 @@
 require 'package'
+require 'misc_functions'
 
 class Android_studio < Package
   description 'Android Studio is the official IDE for Android development.'
   homepage 'https://developer.android.com/studio'
-  version '2021.2.1.15'
+  version '2023.1.1.26'
   license 'Apache-2.0'
   compatibility 'x86_64'
-  source_url 'https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2021.2.1.15/android-studio-2021.2.1.15-linux.tar.gz'
-  source_sha256 '0018e0dfc0dd2921700516f7a2c443377c557788da7fb0a45243ecb4300745be'
+  source_url 'https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2023.1.1.26/android-studio-2023.1.1.26-linux.tar.gz'
+  source_sha256 '977e8a9855414f7d41157f0be0e10fb740c42bd337f763d5d96b3e059780663d'
 
-  depends_on 'jdk11'
+  depends_on 'openjdk17'
   depends_on 'xdg_base'
   depends_on 'sommelier'
 
   def self.preflight
-    free_space = `echo $(($(stat -f --format="%a*%S" #{CREW_PREFIX})))`.chomp.to_i
-    abort 'Not enough free disk space.  You need at least 6 GB to install.'.lightred if free_space < 6442450944
+    MiscFunctions.check_free_disk_space(6442450944)
   end
 
   def self.install
@@ -35,7 +35,7 @@ class Android_studio < Package
     puts "\nTo start using Android Studio, type `studio`.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     print 'Would you like to remove the config directories? [y/N] '
     response = $stdin.gets.chomp.downcase
     config_dirs = ["#{HOME}/.android", "#{HOME}/Android"]

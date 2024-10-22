@@ -1,6 +1,6 @@
 require 'package'
-require_relative 'cairomm_1_0'
-require_relative 'cairomm_1_16'
+Package.load_package("#{__dir__}/cairomm_1_0.rb")
+Package.load_package("#{__dir__}/cairomm_1_16.rb")
 
 class Cairomm < Package
   description Cairomm_1_0.description

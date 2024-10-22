@@ -1,22 +1,22 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_markdown < Python
+class Py3_markdown < Pip
   description 'Markdown is a Python implementation of Markdown.'
   homepage 'https://python-markdown.github.io/'
-  @_ver = '3.4.4'
-  version "#{@_ver}-py3.12"
+  version "3.7-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/Python-Markdown/markdown.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6e5bc467aed13ab555396dd0a8fee5ae2757c41aa30c7eb8513cc3468ed8e2f8',
-     armv7l: '6e5bc467aed13ab555396dd0a8fee5ae2757c41aa30c7eb8513cc3468ed8e2f8',
-       i686: 'dd2cd5daa402f16be48f7282ccd822405cffc02cc1e1fd824e623fe727e29b6a',
-     x86_64: 'a178f3131d330ce5c33cbff3bf5ff762fb32b996fcc06510033051a2980b9a01'
+    aarch64: 'f7bd555a3350a4e6ba3abe7d3068197a4969e4edd23ad0bca9a8cd367b122db5',
+     armv7l: 'f7bd555a3350a4e6ba3abe7d3068197a4969e4edd23ad0bca9a8cd367b122db5',
+       i686: '6d370268c8dfa713d2e7ac2a810b9c808adeced30a6ea7294436597e89fcaac6',
+     x86_64: '38d983f8cbd7511f8bfb60697ddf0efff6f3e605206e31699ef8c74bfe990e40'
   })
 
   depends_on 'python3'
+
+  no_source_build
 end

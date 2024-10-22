@@ -1,39 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libsigsegv < Package
+class Libsigsegv < Autotools
   description 'GNU libsigsegv is a library for handling page faults in user mode.'
   homepage 'https://www.gnu.org/software/libsigsegv/'
-  version '2.14'
+  version '2.14-a816da0'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libsigsegv/libsigsegv-2.14.tar.gz'
-  source_sha256 'cdac3941803364cf81a908499beb79c200ead60b6b5b40cad124fd1e06caa295'
-  binary_compression 'tpxz'
+  source_url 'https://git.savannah.gnu.org/git/libsigsegv.git'
+  git_hashtag 'a816da0ecf6eb59234cdea8e62d0ac5706b714f0'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '72d6d5f467bfeb47fac29f664344385021932108ca3c72de2719181e1744ec7c',
-     armv7l: '72d6d5f467bfeb47fac29f664344385021932108ca3c72de2719181e1744ec7c',
-       i686: '08efedeb5ea7af99b35ed1073b20feed5bb1a89dfc5f6a1e3f5e0159f254e22f',
-     x86_64: 'efc24c18a85c611994d3e516994ab71a0a1f79780d47af8267940d68ae7f8716'
+    aarch64: 'a793b4b5435ef872527a2786e2ec2a60afa477d991971cbef3306294b4e4b158',
+     armv7l: 'a793b4b5435ef872527a2786e2ec2a60afa477d991971cbef3306294b4e4b158',
+       i686: '66c7fe9e6d8834353140c81a6ddb061a273f07e22bc104584eec90e42f86e9b3',
+     x86_64: '937a885c71dbee68b5cdfa5b9a80752d22c581771dcb7d6f8e22ae45e50957f3'
   })
 
   depends_on 'glibc' # R
-  no_lto
 
-  def self.build
-    system 'autoreconf -fiv'
-    system "./configure #{CREW_OPTIONS} \
-    --enable-shared \
+  configure_options '--enable-shared \
     --enable-static \
-    --enable-relocatable"
-    system 'make'
-  end
+    --enable-relocatable'
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
+  def self.patch
+    system './gitsub.sh pull'
   end
 end

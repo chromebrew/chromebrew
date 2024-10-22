@@ -6,25 +6,25 @@ require 'buildsystems/autotools'
 class Source_highlight < Autotools
   description 'Convert source code to syntax highlighted document'
   homepage 'https://www.gnu.org/software/src-highlite/'
-  version '3.1.9-e4cf32d-2'
+  version '3.1.9-894cacd-boost1.85'
   license 'GPL'
   compatibility 'all'
-  source_url 'https://git.savannah.gnu.org/cgit/src-highlite.git/snapshot/src-highlite-e4cf32db1ce3f0a7edb32caf131b2f45753cdf58.tar.gz'
-  source_sha256 '98bcd3f8dceed4e4cf24dd9694163dce2b5bfc805e0ba7eb0b7b8d5a01f9154f'
+  source_url 'https://git.savannah.gnu.org/git/src-highlite.git'
+  git_hashtag '894cacd0799ca60afa359a63782729dec76cbb79'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6dd0f34e63e8cb37dee3bd9da6fb921d5ab6086728946b5d9e234b43c24deae2',
-     armv7l: '6dd0f34e63e8cb37dee3bd9da6fb921d5ab6086728946b5d9e234b43c24deae2',
-       i686: '7fffd1fb10ba3c56e9ca522c8609a9cabb57e19a6ccc95ebcc4429e26ead90af',
-     x86_64: '8ad3cb4c407f21ba2b3e593534c6b757331ea81360c1d2e90ce970445e315206'
+    aarch64: '244749f21be5f01c11309e77959f4da2b47936a7cdd047321a06a066c8203a06',
+     armv7l: '244749f21be5f01c11309e77959f4da2b47936a7cdd047321a06a066c8203a06',
+       i686: '1f1ccc4f04308bb23c465b6f59e6d1f3f01baed828d3eb5847922754a56bb2b8',
+     x86_64: '7fbb5ac63a8225cf47824a54965b2faffd7059384fbd1a349fc68135f173b17e'
   })
 
   depends_on 'boost' # R
-  depends_on 'ctags' => :build
-  depends_on 'texinfo' => :build
+  depends_on 'ctags' # L
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'texinfo' => :build
 
   configure_options "--sysconfdir=#{CREW_PREFIX}/etc \
       --with-bash-completion=#{CREW_PREFIX}/share/bash-completion/completions"

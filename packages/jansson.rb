@@ -2,7 +2,7 @@ require 'package'
 
 class Jansson < Package
   description 'Jansson is a C library for encoding, decoding and manipulating JSON data.'
-  homepage 'http://www.digip.org/jansson/'
+  homepage 'https://github.com/akheron/jansson'
   version '2.13.1'
   license 'MIT'
   compatibility 'all'
@@ -21,7 +21,7 @@ class Jansson < Package
     system 'autoreconf -i'
     system "env CFLAGS='-flto=auto' \
       CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+      ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

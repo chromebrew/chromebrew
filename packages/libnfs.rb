@@ -13,14 +13,14 @@ class Libnfs < Package
 
   binary_sha256({
     aarch64: '93c8332ed7a11e62196a451206a1bb01f5c8d1bba0c860fdf08a6ee52638748f',
-      armv7l: '93c8332ed7a11e62196a451206a1bb01f5c8d1bba0c860fdf08a6ee52638748f',
-        i686: 'd838e8f83938d1621884496bcc226b33c61b5d20a1c45496d98733cde4c2505c',
-      x86_64: '8ff8bdbe19ee2c2bafe7ca410729eb30fc1195de1c3cab48867375752ad59299'
+     armv7l: '93c8332ed7a11e62196a451206a1bb01f5c8d1bba0c860fdf08a6ee52638748f',
+       i686: 'd838e8f83938d1621884496bcc226b33c61b5d20a1c45496d98733cde4c2505c',
+     x86_64: '8ff8bdbe19ee2c2bafe7ca410729eb30fc1195de1c3cab48867375752ad59299'
   })
 
   def self.build
     system 'autoreconf -fiv'
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
             --enable-utils"
     system 'make'
   end

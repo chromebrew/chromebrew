@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_gtk3 < Package
+class Perl_gtk3 < PERL
   description 'Perl interface to the 3.x series of the gtk+ toolkit'
   homepage 'https://metacpan.org/pod/Gtk3'
-  version '0.038-perl5.38'
+  version "0.038-#{CREW_PERL_VER}"
   license 'GPL 2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Gtk3-0.038.tar.gz'
@@ -11,25 +11,10 @@ class Perl_gtk3 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7ae67dd879f5cf7e7dd04463431df0b43b81321732d6ee4c8c846a2812fe87f6',
-     armv7l: '7ae67dd879f5cf7e7dd04463431df0b43b81321732d6ee4c8c846a2812fe87f6',
-     x86_64: '70f7723d9dd961d6ee0e3d48b691889f7df435952ee2dce6ffbfa12b38ef68ba'
+    aarch64: '25a4f26be9aeb34661b22d75c895305034bc209f223bd2c55a068ce5ba8f561a',
+     armv7l: '25a4f26be9aeb34661b22d75c895305034bc209f223bd2c55a068ce5ba8f561a',
+     x86_64: 'ed4008264b2dfce55205b65e0b54a6062bdfd4cc9ab0c8461c339689182a06ed'
   })
 
   depends_on 'gtk3' # R
-
-  no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

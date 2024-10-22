@@ -3,20 +3,20 @@ require 'package'
 class Glab < Package
   description 'A GitLab CLI tool bringing GitLab to your command line'
   homepage 'https://gitlab.com/gitlab-org/cli'
-  version '1.34.0'
+  version '1.47.0'
   license 'MIT'
   compatibility 'all'
   source_url({
-    aarch64: 'https://gitlab.com/gitlab-org/cli/-/releases/v1.34.0/downloads/glab_1.34.0_Linux_armv6.tar.gz',
-     armv7l: 'https://gitlab.com/gitlab-org/cli/-/releases/v1.34.0/downloads/glab_1.34.0_Linux_armv6.tar.gz',
-       i686: 'https://gitlab.com/gitlab-org/cli/-/releases/v1.34.0/downloads/glab_1.34.0_Linux_i386.tar.gz',
-     x86_64: 'https://gitlab.com/gitlab-org/cli/-/releases/v1.34.0/downloads/glab_1.34.0_Linux_x86_64.tar.gz'
+    aarch64: "https://gitlab.com/gitlab-org/cli/-/releases/v#{version}/downloads/glab_#{version}_linux_armv6.tar.gz",
+     armv7l: "https://gitlab.com/gitlab-org/cli/-/releases/v#{version}/downloads/glab_#{version}_linux_armv6.tar.gz",
+       i686: "https://gitlab.com/gitlab-org/cli/-/releases/v#{version}/downloads/glab_#{version}_linux_386.tar.gz",
+     x86_64: "https://gitlab.com/gitlab-org/cli/-/releases/v#{version}/downloads/glab_#{version}_linux_amd64.tar.gz"
   })
   source_sha256({
-    aarch64: 'd7f8f60fb82d9b973d90db7db94b99d8b370a2adf4c335fe458b37fcfa8b04c6',
-     armv7l: 'd7f8f60fb82d9b973d90db7db94b99d8b370a2adf4c335fe458b37fcfa8b04c6',
-       i686: '45d8fa10f3cbd0d3a909e503dc3f424c122edd2a130f24ec3bcf644b8ac0e24e',
-     x86_64: '0a6557e493c4dce99eb65f0832d9e5838d5f0ecc2ecfa0bd186d95943a597fac'
+    aarch64: '0a85f0bcc972c8705a1e7439b0535f76921f45b1c692365e81d8ca67b5ab4003',
+     armv7l: '0a85f0bcc972c8705a1e7439b0535f76921f45b1c692365e81d8ca67b5ab4003',
+       i686: 'a9e42a824c0779e56545bdfd164d9833b1ea257f1e84ab22420aa945f4120105',
+     x86_64: '407079d03b3e3d2953f7c08c7b555f00e59916f532336a43619afef9d11ed0d8'
   })
 
   no_compile_needed
@@ -24,5 +24,9 @@ class Glab < Package
 
   def self.install
     FileUtils.install 'bin/glab', "#{CREW_DEST_PREFIX}/bin/glab", mode: 0o755
+  end
+
+  def self.postinstall
+    ExitMessage.add "\nType 'glab' to get started.\n"
   end
 end

@@ -2,10 +2,10 @@ require 'package'
 
 class Libxrender < Package
   description 'X Rendering Extension client library.'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '0.9.11'
   license 'custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxrender.git'
   git_hashtag "libXrender-#{version}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libxrender < Package
   binary_sha256({
     aarch64: '859bf33ee1c94216071d6ef524e3f7ccb977cede86ab483b8936d6ef02ad802f',
      armv7l: '859bf33ee1c94216071d6ef524e3f7ccb977cede86ab483b8936d6ef02ad802f',
-       i686: '73b44d73f9b0075adb1eb8413ed2e029bef828d0841f92061833e103e0b14110',
      x86_64: '247dda42e157a2eb78da0f9408e0cd8281787df630f6bba62e428d02dd31f217'
   })
 
@@ -27,7 +26,7 @@ class Libxrender < Package
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

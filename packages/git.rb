@@ -1,20 +1,20 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Git < Package
+class Git < CMake
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.43.1' # Do not use @_ver here, it will break the installer.
+  version '2.46.1' # Do not use @_ver here, it will break the installer.
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.43.1.tar.xz'
-  source_sha256 '2234f37b453ff8e4672c21ad40d41cc7393c9a8dcdfe640bec7ac5b5358f30d2'
+  source_url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-#{version}.tar.xz"
+  source_sha256 '888cafb8bd6ab4cbbebc168040a8850eb088f81dc3ac2617195cfc0877f0f543'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '44dccb226039354ab3683e0bb878f6c97386451a2f37ae9a93087b1e167c65bb',
-     armv7l: '44dccb226039354ab3683e0bb878f6c97386451a2f37ae9a93087b1e167c65bb',
-       i686: 'a7a30c8bfc87b95cef2279d17793a81b39ba16fbcaa694aad66b4a46898fa07e',
-     x86_64: '9691cf12fc003254666984f39d394ac36382d76c74bf3d6818db4bce94c64cf5'
+    aarch64: 'd1125c6bb6ec9ceb744be85b89021ac2b467992f3926abd6c346eb6731b1f679',
+     armv7l: 'd1125c6bb6ec9ceb744be85b89021ac2b467992f3926abd6c346eb6731b1f679',
+       i686: 'c4eb2b82c88f5caaaf2f4470a960106f6bdd9c542662369e9473e8a30c204227',
+     x86_64: 'fcdd84453706b90b82a0d15d78b958dbf0c244bf634963ef88b86c95fb5d9808'
   })
 
   depends_on 'ca_certificates' => :build
@@ -23,7 +23,11 @@ class Git < Package
   depends_on 'glibc' # R
   depends_on 'libunistring' # R
   depends_on 'pcre2' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
+
+  print_source_bashrc
+  cmake_build_relative_dir 'contrib/buildsystems'
+  cmake_options '-DUSE_VCPKG=FALSE'
 
   def self.patch
     # Patch to prevent error function conflict with libidn2
@@ -48,18 +52,28 @@ class Git < Package
     system "sed -i 's,${CMAKE_INSTALL_PREFIX},\\\\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX},g' contrib/buildsystems/CMakeLists.txt"
   end
 
-  def self.build
-    system "mold -run cmake -B builddir \
-        #{CREW_CMAKE_OPTIONS} \
-        -DUSE_VCPKG=FALSE \
-        -Wdev \
-        -G Ninja \
-        contrib/buildsystems"
-    system "#{CREW_NINJA} -C builddir"
+  cmake_build_extras do
+    git_env = <<~EOF
+
+      GIT_PS1_SHOWDIRTYSTATE=yes
+      GIT_PS1_SHOWSTASHSTATE=yes
+      GIT_PS1_SHOWUNTRACKEDFILES=yes
+      GIT_PS1_SHOWUPSTREAM=auto
+      GIT_PS1_DESCRIBE_STYLE=default
+      GIT_PS1_SHOWCOLORHINTS=yes
+
+      # Add LIBC_VERSION and CHROMEOS_RELEASE_CHROME_MILESTONE set in
+      # crew_profile_base to prompt if in a container.
+      if [[ -e /.dockerenv ]] && [ -n "${LIBC_VERSION+1}" ] && [ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE+1}" ]; then
+        PS1='\\[\\033[1;34m\\]\\u@\\H:$LIBC_VERSION M$CHROMEOS_RELEASE_CHROME_MILESTONE \\[\\033[1;33m\\]\\w \\[\\033[1;31m\\]$(__git_ps1 "(%s)")\\[\\033[0m\\]\\$ '
+      else
+        PS1='\\[\\033[1;34m\\]\\u@\\H \\[\\033[1;33m\\]\\w \\[\\033[1;31m\\]$(__git_ps1 "(%s)")\\[\\033[0m\\]\\$ '
+      fi
+    EOF
+    File.write('contrib/completion/git-prompt.sh', git_env, mode: 'a')
   end
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  cmake_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/git-completion"
     FileUtils.cp_r Dir.glob('contrib/completion/.'), "#{CREW_DEST_PREFIX}/share/git-completion/"
 
@@ -68,6 +82,7 @@ class Git < Package
       source #{CREW_PREFIX}/share/git-completion/git-completion.bash
     GIT_BASHD_EOF
     FileUtils.install 'git_bashd_env', "#{CREW_DEST_PREFIX}/etc/bash.d/git", mode: 0o644
+    FileUtils.install 'contrib/completion/git-prompt.sh', "#{CREW_DEST_PREFIX}/etc/bash.d/git-prompt.sh", mode: 0o644
   end
 
   def self.check
@@ -80,9 +95,10 @@ class Git < Package
   end
 
   def self.postinstall
+    ExitMessage.add "\ncd /path/to/git/repo and you should see the branch displayed in the prompt.\n".lightblue
     return unless File.directory?("#{CREW_PREFIX}/lib/crew/.git")
 
     puts 'Running git garbage collection...'.lightblue
-    system 'git gc', chdir: "#{CREW_PREFIX}/lib/crew", exception: false
+    system 'git gc', chdir: CREW_LIB_PATH, exception: false
   end
 end

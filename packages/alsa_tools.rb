@@ -33,7 +33,7 @@ class Alsa_tools < Package
   depends_on 'libxfixes' # R
   depends_on 'libxrender' # R
   depends_on 'pango' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     # Make sure automake can be found.

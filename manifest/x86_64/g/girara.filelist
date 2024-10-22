@@ -4,8 +4,8 @@
 /usr/local/include/girara/config.h
 /usr/local/include/girara/datastructures.h
 /usr/local/include/girara/entry.h
-/usr/local/include/girara/girara.h
 /usr/local/include/girara/girara-version.h
+/usr/local/include/girara/girara.h
 /usr/local/include/girara/input-history.h
 /usr/local/include/girara/log.h
 /usr/local/include/girara/macros.h

@@ -3,7 +3,7 @@ require 'package'
 class Scbi < Package
   description 'Setup Configure Build Install - Tool to build from sources with local developers checkout support'
   homepage 'https://github.com/TurboGit/scbi'
-  version '8.4'
+  version '9.9'
   license 'Copyright (C) Pascal Obry'
   compatibility 'all'
   source_url 'https://github.com/TurboGit/scbi.git'
@@ -32,7 +32,7 @@ class Scbi < Package
     system "sed -i 's,hostname --short,hostname,' #{CREW_DEST_PREFIX}/.config/scbi/6_distpkg"
     # Download and install User Guide.
     downloader "https://github.com/TurboGit/scbi/releases/download/v#{version}/scbi.pdf",
-               '33873d653beacf8c0145e49d2b0cee29b4aabd5071f646efb524e549c5702a9b'
+               'e63b75682501bb04fbf16a5bcd3a23e788ddec92fadf577975ed83b72d03d7e0'
     FileUtils.install 'scbi.pdf', "#{CREW_DEST_PREFIX}/share/scbi/scbi.pdf", mode: 0o644
   end
 

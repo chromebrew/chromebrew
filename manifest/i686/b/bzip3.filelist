@@ -6,8 +6,8 @@
 /usr/local/bin/bz3most
 /usr/local/bin/bzip3
 /usr/local/include/libbz3.h
-/usr/local/lib/cmake/bzip3/bzip3-config.cmake
 /usr/local/lib/cmake/bzip3/bzip3-config-release.cmake
+/usr/local/lib/cmake/bzip3/bzip3-config.cmake
 /usr/local/lib/libbzip3.so
 /usr/local/lib/libbzip3.so.0
 /usr/local/lib/libbzip3.so.0.0.0

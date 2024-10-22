@@ -5,7 +5,7 @@ class Audacious_plugins < Package
   homepage 'https://audacious-media-player.org/'
   version '3.10.1'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://distfiles.audacious-media-player.org/audacious-plugins-3.10.1.tar.bz2'
   source_sha256 'eec3177631f99729bf0e94223b627406cc648c70e6646e35613c7b55040a2642'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Audacious_plugins < Package
   binary_sha256({
     aarch64: '200f784576d153da7d23ee308f32587957faf8e9108b197991c841d3cac46f18',
      armv7l: '200f784576d153da7d23ee308f32587957faf8e9108b197991c841d3cac46f18',
-       i686: '271778d167bccc497751f7bbcb34cacbf2ab600f3acafe04b7290e9fdf64c08b',
      x86_64: '5a9c46fceaa2c6307fd4791b4bb68133d412a27ba013105345ab64f0964f6e0b'
   })
 

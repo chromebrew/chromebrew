@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_lwp_useragent < Package
+class Perl_lwp_useragent < PERL
   description 'Web user agent class'
   homepage 'https://metacpan.org/pod/LWP::UserAgent'
-  version '6.70-perl5.38'
+  version "6.70-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/libwww-perl-6.70.tar.gz'
@@ -11,24 +11,9 @@ class Perl_lwp_useragent < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '57e1b69386760c070f0163161dc6218eba21a209ab39b3877d2198e3c29d595a',
-     armv7l: '57e1b69386760c070f0163161dc6218eba21a209ab39b3877d2198e3c29d595a',
-       i686: '55e2f3f52bbd90e104f93d7bcad5e77cf168a972a8cdef5233b00947416dc927',
-     x86_64: '514405dd0e89c6953fc5edd389e4d314f733b943e175122efe645341947defe2'
+    aarch64: '13086c2a28c90a93273c72a5dac71ea84cb8eae7763f50a445c04cdccc37dc43',
+     armv7l: '13086c2a28c90a93273c72a5dac71ea84cb8eae7763f50a445c04cdccc37dc43',
+       i686: '435a9347f5bd7c0a2823f904bc9c148cc8636e7a7ee84bf0fc558501f9700c58',
+     x86_64: '1ac5b2d0f48946c5b5ead56a55307a278833db4b760ccfdf45837624488c759d'
   })
-
-  no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

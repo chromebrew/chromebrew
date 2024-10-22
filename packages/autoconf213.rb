@@ -17,9 +17,11 @@ class Autoconf213 < Package
      x86_64: '98f744a5a7ae84583997e57ec03dcc6ce1f962b6316bd6d4c54a6c3ebaad5a36'
   })
 
+  no_upstream_update
+
   def self.build
     system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --infodir=#{CREW_PREFIX}/share/info \
       --program-suffix=-2.13 \
       --datadir=#{CREW_PREFIX}/share/autoconf213"

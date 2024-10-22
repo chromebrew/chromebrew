@@ -5,7 +5,7 @@ class Picom < Package
   homepage 'https://github.com/yshui/picom/'
   version '8'
   license 'MPL-2.0 and MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/yshui/picom/archive/v8.tar.gz'
   source_sha256 'f839a3c058ca90f463eae3973a9381cf2fe93be7d0e58db1c28ea72acd10480f'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Picom < Package
   binary_sha256({
     aarch64: '5de726299cbd8469b6c846cf437aac9132bbd50d1572c7b61dc4cfd14d8edc1f',
      armv7l: '5de726299cbd8469b6c846cf437aac9132bbd50d1572c7b61dc4cfd14d8edc1f',
-       i686: 'b97f666b3a6779ff9277cc15fa424785eb5a48aa9eaf04aeab88a3ff5b873862',
      x86_64: 'f8750b816aed2fac643ae65028048344d4736ab4e7968b754fe186b32514f85b'
   })
 

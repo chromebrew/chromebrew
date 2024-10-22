@@ -1,54 +1,36 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Aide < Package
+class Aide < Autotools
   description 'Advanced Intrusion Detection Environment'
-  homepage 'http://aide.sourceforge.net/'
-  version '0.15.1'
+  homepage 'https://aide.github.io'
+  version '0.18.8-9ed0843'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://downloads.sourceforge.net/project/aide/aide/0.15.1/aide-0.15.1.tar.gz'
-  source_sha256 '303e5c186257df8c86e418193199f4ea2183fc37d3d4a9098a614f61346059ef'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/aide/aide.git'
+  git_hashtag '9ed0843765f0f97f6d3f989995a492da20b8c410'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '805f42e0824ab40aa56a0b304636b7eac9da43832a2b20760e49a348a35f0a26',
-     armv7l: '805f42e0824ab40aa56a0b304636b7eac9da43832a2b20760e49a348a35f0a26',
-       i686: '90ffe18ff6970dd02e3625943ff68ccf4f3a53b795d781a4e1a0b6d449172401',
-     x86_64: '74b87dbc5ca9a9bfa16420b136afba5fa513da3c75b13993bb11051d14c2a5f6'
+    aarch64: '2af194bf79b62e10b7099222bd11f0e3811983a8e9158b3c52210623657dfbf0',
+     armv7l: '2af194bf79b62e10b7099222bd11f0e3811983a8e9158b3c52210623657dfbf0',
+       i686: 'ae0bf14c5f1b3b8a7e81150bb3d6d1341475c40e755e1b4d03774415ccd48de2',
+     x86_64: 'cf30bbf567dbfe35715dde38811c48bc186efa401629d42f78ea4d2c536c8820'
   })
 
+  depends_on 'autoconf_archive' => :build
+  depends_on 'check' => :build
   depends_on 'libgcrypt'
-  depends_on 'pcre'
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           '--disable-static',
-           '--with-gcrypt',
-           '--without-zlib'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    system "sed -i '22d' doc/aide.conf"
-    system "sed -i '24d' doc/aide.conf"
-    system "sed -i '24i@@define TOPDIR #{CREW_PREFIX}/etc' doc/aide.conf"
-    system "install -Dm644 doc/aide.conf #{CREW_DEST_PREFIX}/etc/aide.conf"
-    system "install -Dm644 doc/aide.conf.5 #{CREW_DEST_PREFIX}/man/man5/aide.conf.5"
-    system 'touch aide.db'
-    system "install -Dm644 aide.db #{CREW_DEST_PREFIX}/etc/doc/aide.db"
-  end
+  depends_on 'mhash'
+  depends_on 'nettle' # R
+  depends_on 'pcre2'
+  depends_on 'zlib'
 
   def self.postinstall
-    puts
-    puts "The configuration file is located at #{CREW_PREFIX}/etc/aide.conf".lightblue
-    puts
-    puts 'To initialize the database, execute the following:'.lightblue
-    puts "mkdir #{CREW_PREFIX}/etc/src".lightblue
-    puts "cd #{CREW_PREFIX}/etc/doc".lightblue
-    puts 'aide -i'.lightblue
-    puts 'mv aide.db.new aide.db'.lightblue
-    puts
+    ExitMessage.add <<~EOT.lightblue
+      aide requires a configuration to operate.
+      For information on the configuration format, run `man aide.conf`.
+    EOT
   end
+
+  run_tests
 end

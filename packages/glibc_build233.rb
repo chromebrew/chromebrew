@@ -3,29 +3,30 @@ require 'package'
 class Glibc_build233 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
-  license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-  compatibility 'all'
-  binary_compression 'tar.zst'
-
-  depends_on 'gawk' => :build
-  depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
-  depends_on 'libidn2' => :build
-  depends_on 'texinfo' => :build
-  depends_on 'hashpipe' => :build
-
-  no_env_options
-  conflicts_ok
-
-  @libc_version = LIBC_VERSION
   version '2.33-3'
+  license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
+  @libc_version = LIBC_VERSION
+  compatibility 'x86_64 aarch64 armv7l'
+  min_glibc version.split('-').first
+  max_glibc version.split('-').first
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.33.tar.xz'
   source_sha256 '2e2556000e105dbd57f0b6b2a32ff2cf173bde4f0d85dffccfd8b7e51a0677ff'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '11a3e7ba5eec18c325afa80bc869b4f8cc1fcbfef78ddf25e1b1e278679203a4',
      armv7l: '11a3e7ba5eec18c325afa80bc869b4f8cc1fcbfef78ddf25e1b1e278679203a4',
      x86_64: '3edde53b5ab8b577604b127c141042f4572b8972b7081abcda2e86778d1974a9'
   })
+
+  depends_on 'gawk' => :build
+  depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
+  depends_on 'libidn2' => :build
+  depends_on 'texinfo' => :build
+  depends_on 'hashpipe' => :build
+  conflicts_ok
+  no_env_options
+  no_upstream_update
 
   def self.patch
     FileUtils.mkdir 'fedora'
@@ -157,7 +158,7 @@ class Glibc_build233 < Package
           "
       end
       system "make PARALLELMFLAGS='-j #{CREW_NPROC}' || make || make PARALLELMFLAGS='-j 1'"
-      if @libc_version.to_f >= 2.32
+      if Gem::Version.new(@libc_version.to_s) > Gem::Version.new('2.32')
         system "gcc -Os -g -static -o build-locale-archive ../fedora/build-locale-archive.c \
           ../glibc_build/locale/locarchive.o \
           ../glibc_build/locale/md5.o \
@@ -178,10 +179,10 @@ class Glibc_build233 < Package
       case ARCH
       when 'aarch64', 'armv7l'
         system "make -j1 DESTDIR=#{CREW_DEST_DIR} install || true" # "sln elf/symlink.list" fails on armv7l
-      when 'i686', 'x86_64'
+      when 'x86_64'
         system "make -j1 DESTDIR=#{CREW_DEST_DIR} install"
       end
-      if @libc_version.to_f >= 2.32
+      if Gem::Version.new(@libc_version.to_s) > Gem::Version.new('2.32')
         system "install -Dt #{CREW_DEST_PREFIX}/bin -m755 build-locale-archive"
         system "make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales"
       end
@@ -191,11 +192,9 @@ class Glibc_build233 < Package
         @crew_libc_version = @libc_version
         case ARCH
         when 'aarch64', 'armv7l'
-          FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-armhf.so.3'
-        when 'i686'
-          FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-i686.so.2'
+          FileUtils.ln_sf File.realpath('/lib/ld-linux-armhf.so.3'), 'ld-linux-armhf.so.3'
         when 'x86_64'
-          FileUtils.ln_sf "/lib64/ld-#{@crew_libc_version}.so", 'ld-linux-x86-64.so.2'
+          FileUtils.ln_sf File.realpath('/lib64/ld-linux-x86-64.so.2'), 'ld-linux-x86-64.so.2'
         end
         @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
                         libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
@@ -204,32 +203,17 @@ class Glibc_build233 < Package
         @libraries -= ['libpthread'] if @crew_libc_version.to_f >= 2.35
         @libraries.each do |lib|
           # Reject entries which aren't libraries ending in .so, and which aren't files.
-          Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-            @filetype = `file #{f}`.chomp
-            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-              g = File.basename(f)
-              FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
-            end
-          end
-          # Reject entries which aren't libraries ending in .so, and which aren't files.
           # Reject text files such as libc.so because they points to files like
           # libc_nonshared.a, which are not provided by ChromeOS
-          Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-            @filetype = `file #{f}`.chomp
-            puts "f: #{@filetype}" if @opt_verbose
-            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-              g = File.basename(f)
-              FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
-            elsif @opt_verbose
-              puts "#{f} excluded because #{@filetype}"
-            end
+          Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.select { |i| ['shared object', 'symbolic link'].any? { |j| `file #{i}`.chomp.include? j } }.each do |k|
+            FileUtils.ln_sf k, File.join(CREW_DEST_LIB_PREFIX, File.basename(k))
           end
         end
       end
     end
     # Only save libnsl.so.2, since libnsl.so.1 is provided by perl
     # For this to work, build on a M107 or newer container.
-    FileUtils.cp File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2"
+    FileUtils.ln_sf File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"
 
@@ -245,6 +229,7 @@ class Glibc_build233 < Package
 
   def self.postinstall
     if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
+      FileUtils.chmod 'u=wrx', "#{CREW_LIB_PREFIX}/libc.so.6"
       @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
       @crew_libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
       puts "Package glibc version is #{@crew_libc_version}.".lightblue
@@ -261,37 +246,20 @@ class Glibc_build233 < Package
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
       case ARCH
       when 'aarch64', 'armv7l'
-        FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
-      when 'i686'
-        FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-i686.so.2'
+        FileUtils.ln_sf File.realpath('/lib/ld-linux-armhf.so.3'), 'ld-linux-armhf.so.3'
       when 'x86_64'
-        FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2'
+        FileUtils.ln_sf File.realpath('/lib64/ld-linux-x86-64.so.2'), 'ld-linux-x86-64.so.2'
       end
       @libraries.each do |lib|
         # Reject entries which aren't libraries ending in .so, and which aren't files.
-        Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          @filetype = `file #{f}`.chomp
-          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
-          end
-        end
-        # Reject entries which aren't libraries ending in .so, and which aren't files.
         # Reject text files such as libc.so because they points to files like
         # libc_nonshared.a, which are not provided by ChromeOS
-        Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          @filetype = `file #{f}`.chomp
-          puts "f: #{@filetype}" if @opt_verbose
-          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
-          elsif @opt_verbose
-            puts "#{f} excluded because #{@filetype}"
-          end
+        Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.select { |i| ['shared object', 'symbolic link'].any? { |j| `file #{i}`.chomp.include? j } }.each do |k|
+          FileUtils.ln_sf k, File.join(CREW_LIB_PREFIX, File.basename(k))
         end
       end
     end
-    return unless @libc_version.to_f >= 2.32 && Gem::Version.new(CREW_KERNEL_VERSION.to_s) >= Gem::Version.new('5.10')
+    return unless Gem::Version.new(@libc_version.to_s) > Gem::Version.new('2.32') && Gem::Version.new(CREW_KERNEL_VERSION.to_s) >= Gem::Version.new('5.10')
 
     puts 'Paring locales to a minimal set.'.lightblue
     system 'localedef --list-archive | grep -v -i -e ^en -e ^cs -e ^de -e ^es -e ^fa -e ^fe -e ^it -e ^ja -e ^ru -e ^tr -e ^zh -e ^C| xargs localedef --delete-from-archive',

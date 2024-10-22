@@ -1,36 +1,29 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Pkgconf < Package
+class Pkgconf < Meson
   description 'Package compiler and linker metadata toolkit'
   homepage 'https://github.com/pkgconf/pkgconf'
-  version '1.7.3'
+  version '2.1.1'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/pkgconf/pkgconf/archive/pkgconf-1.7.3.tar.gz'
-  source_sha256 '8f2c6e9f08adc5773d7fa3c1db1ed03f5fa02ceed037a537ce1195f7c93700ed'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/pkgconf/pkgconf/archive/pkgconf-2.1.1.tar.gz'
+  source_sha256 '6a181e0bf1195e95b7cd535a1854827aedb383b26b1fc24ca13586cb5e8e55af'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7dba3ff97aa46e3eb5ca3a3874b10d0d7952cbbd655c94d090da59827f3c05c3',
-     armv7l: '7dba3ff97aa46e3eb5ca3a3874b10d0d7952cbbd655c94d090da59827f3c05c3',
-       i686: 'fb51ba2693426e45f973cac8f053556c27864e0e1c4b3a08f29f054a77dac800',
-     x86_64: '014ca1e27dae6c162677a12ed73138631bb81f3749cfe093987208f84eaebcf1'
+    aarch64: 'df02dc6ab12c3df61808e5274f76fd958452a7d315d6200052feee8a587a962b',
+     armv7l: 'df02dc6ab12c3df61808e5274f76fd958452a7d315d6200052feee8a587a962b',
+       i686: '3496062a996fc18ce28b7ed237cae1b2732f9150d1acf187cf05293267a355ea',
+     x86_64: '27e9ebcfbbd391280ee650c45d19dfde2a5e0771bcc455214a1111869231c865'
   })
 
-  depends_on 'glibc'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
   # Can be enabled for packages by setting
   # ENV['PKG_CONFIG'] = "#{CREW_PREFIX}/bin/pkgconf"
 
-  def self.build
-    system './autogen.sh'
-    system "./configure #{CREW_OPTIONS} \
-    --with-system-libdir=#{CREW_LIB_PREFIX} \
-    --with-system-includedir=#{CREW_PREFIX}/include"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  meson_options "-Dtests=disabled \
+    -Dwith-system-libdir=#{CREW_LIB_PREFIX} \
+    -Dwith-system-includedir=#{CREW_PREFIX}/include"
 end

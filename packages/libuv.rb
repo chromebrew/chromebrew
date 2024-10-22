@@ -1,39 +1,21 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libuv < Package
+class Libuv < CMake
   description 'libuv is a multi-platform support library with a focus on asynchronous I/O.'
   homepage 'https://libuv.org/'
-  version '1.44.2'
+  version '1.48.0'
   license 'BSD, BSD-2, ISC and MIT'
   compatibility 'all'
   source_url "https://dist.libuv.org/dist/v#{version}/libuv-v#{version}.tar.gz"
-  source_sha256 'ccfcdc968c55673c6526d8270a9c8655a806ea92468afcbcabc2b16040f03cb4'
+  source_sha256 '7f1db8ac368d89d1baf163bac1ea5fe5120697a73910c8ae6b2fffb3551d59fb'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b323b1255d8f8bb03b218cf3c271b16f0e70e2e9d8d7eb350ad7a099785b3552',
-     armv7l: 'b323b1255d8f8bb03b218cf3c271b16f0e70e2e9d8d7eb350ad7a099785b3552',
-       i686: '7735507974c9e44dd4d92285e62de13917bd8fedaeb4ea3eede2880e25328e75',
-     x86_64: '5e2a57c818451af267468a254de305595c86003f1f9160fd13205282cc1ab400'
+    aarch64: '0e0424488bead5c05c6b01e73801417da431ef84aff201b137b2b0f46945b514',
+     armv7l: '0e0424488bead5c05c6b01e73801417da431ef84aff201b137b2b0f46945b514',
+       i686: 'e330145409fa893b9d2c3fb47d009a7396dd3495eceec8e3516be64c93330680',
+     x86_64: 'beede27d456e1825e3cdbba560b9c49b8cd1778f8d25ef17205a467ed9b0b0ea'
   })
 
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "#{CREW_ENV_OPTIONS} cmake \
-          -G Ninja \
-          #{CREW_CMAKE_OPTIONS} \
-          .."
-    end
-    system 'samu -C builddir'
-  end
-
-  # udp_multicast_join and udp_multicast_join6 tests fail
-  def self.check
-    system 'samu -C builddir test || true'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  depends_on 'glibc' # R
 end

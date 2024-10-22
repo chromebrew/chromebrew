@@ -19,7 +19,7 @@ class Libjxl < Package
      x86_64: '4e906d35e252d39c3c1351b9fd0b21dcbbaafe00b74988b10919a66d4bffd7e5'
   })
 
-  depends_on 'asciidoc' => :build
+  depends_on 'py3_asciidoc' => :build
   depends_on 'at_spi2_core' => :build
   depends_on 'babl' => :build
   depends_on 'brotli' # R
@@ -33,12 +33,12 @@ class Libjxl < Package
   depends_on 'harfbuzz' => :build
   depends_on 'highway' # R
   depends_on 'json_glib' => :build
-  depends_on 'libjpeg' # R This needs to be turbo.
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'openexr' # R
   depends_on 'pango' => :build
   depends_on 'xdg_utils' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_env_options
 

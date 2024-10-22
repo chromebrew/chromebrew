@@ -5,7 +5,7 @@ class Mesa_utils < Package
   homepage 'https://www.mesa3d.org'
   version '8.5.0'
   license 'mesa'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/demos.git'
   git_hashtag "mesa-demos-#{version}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Mesa_utils < Package
   binary_sha256({
     aarch64: '0b3f8f18610f75ed076605c2a05e9748710939b29bbe8279b5957bddeacdec9b',
      armv7l: '0b3f8f18610f75ed076605c2a05e9748710939b29bbe8279b5957bddeacdec9b',
-       i686: '5ac984ba6126371d59dbf96828fe87ef084ca4f3427067d2920440a36615ed5b',
      x86_64: 'e6f20f9a1f631d085934c3fce0d90c1945f88e72c3ee436a0b8460cf7d3d8150'
   })
 

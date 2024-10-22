@@ -14,9 +14,9 @@ class Ettercap_gtk < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     aarch64: 'f8a56ac7dcd90a7ff8ef0d343ddfc1b539c9be0282d6a36a445c879a49b91326',
-      armv7l: 'f8a56ac7dcd90a7ff8ef0d343ddfc1b539c9be0282d6a36a445c879a49b91326',
-      x86_64: '79fa1456b6486a304d9d4f45e7ebf7ec9a2565ebd19d0947b142676af997deeb'
+    aarch64: 'f8a56ac7dcd90a7ff8ef0d343ddfc1b539c9be0282d6a36a445c879a49b91326',
+     armv7l: 'f8a56ac7dcd90a7ff8ef0d343ddfc1b539c9be0282d6a36a445c879a49b91326',
+     x86_64: '79fa1456b6486a304d9d4f45e7ebf7ec9a2565ebd19d0947b142676af997deeb'
   })
 
   depends_on 'at_spi2_core' # R
@@ -39,7 +39,7 @@ class Ettercap_gtk < Package
   depends_on 'openssl' # R
   depends_on 'pango' # R
   depends_on 'pcre' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system "sed -i 's,list(APPEND GTK3_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIRS}),list(APPEND GTK3_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIRS} #{CREW_PREFIX}/include/harfbuzz),g' cmake/Modules/FindGTK3.cmake"

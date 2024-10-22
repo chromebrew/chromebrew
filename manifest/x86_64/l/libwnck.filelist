@@ -1,5 +1,5 @@
-/usr/local/bin/wnckprop
 /usr/local/bin/wnck-urgency-monitor
+/usr/local/bin/wnckprop
 /usr/local/include/libwnck-3.0/libwnck/application.h
 /usr/local/include/libwnck-3.0/libwnck/class-group.h
 /usr/local/include/libwnck-3.0/libwnck/libwnck.h
@@ -12,6 +12,7 @@
 /usr/local/include/libwnck-3.0/libwnck/window-action-menu.h
 /usr/local/include/libwnck-3.0/libwnck/window.h
 /usr/local/include/libwnck-3.0/libwnck/wnck-enum-types.h
+/usr/local/include/libwnck-3.0/libwnck/wnck-handle.h
 /usr/local/include/libwnck-3.0/libwnck/workspace.h
 /usr/local/lib64/girepository-1.0/Wnck-3.0.typelib
 /usr/local/lib64/libwnck-3.so
@@ -24,15 +25,16 @@
 /usr/local/share/locale/as/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/ast/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/az/LC_MESSAGES/libwnck-3.0.mo
-/usr/local/share/locale/be@latin/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/be/LC_MESSAGES/libwnck-3.0.mo
+/usr/local/share/locale/be@latin/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/bg/LC_MESSAGES/libwnck-3.0.mo
-/usr/local/share/locale/bn_IN/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/bn/LC_MESSAGES/libwnck-3.0.mo
+/usr/local/share/locale/bn_IN/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/br/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/bs/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/ca/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/ca@valencia/LC_MESSAGES/libwnck-3.0.mo
+/usr/local/share/locale/ckb/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/crh/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/cs/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/cy/LC_MESSAGES/libwnck-3.0.mo
@@ -40,9 +42,9 @@
 /usr/local/share/locale/de/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/dz/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/el/LC_MESSAGES/libwnck-3.0.mo
+/usr/local/share/locale/en@shaw/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/en_CA/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/en_GB/LC_MESSAGES/libwnck-3.0.mo
-/usr/local/share/locale/en@shaw/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/eo/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/es/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/et/LC_MESSAGES/libwnck-3.0.mo
@@ -88,8 +90,8 @@
 /usr/local/share/locale/or/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/pa/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/pl/LC_MESSAGES/libwnck-3.0.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/pt/LC_MESSAGES/libwnck-3.0.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/ro/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/ru/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/rw/LC_MESSAGES/libwnck-3.0.mo
@@ -97,8 +99,8 @@
 /usr/local/share/locale/sk/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/sl/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/sq/LC_MESSAGES/libwnck-3.0.mo
-/usr/local/share/locale/sr@latin/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/sr/LC_MESSAGES/libwnck-3.0.mo
+/usr/local/share/locale/sr@latin/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/sv/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/ta/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/te/LC_MESSAGES/libwnck-3.0.mo

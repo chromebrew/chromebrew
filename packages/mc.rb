@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Mc < Autotools
   description 'GNU Midnight Commander is a visual file manager'
   homepage 'http://midnight-commander.org/'
-  version '4.8.31'
+  version '4.8.32'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/MidnightCommander/mc.git'
@@ -11,10 +11,10 @@ class Mc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f12829b011cfbf97e92b3cb66773750899c306bdd1fe39ecec95d0658f05466f',
-     armv7l: 'f12829b011cfbf97e92b3cb66773750899c306bdd1fe39ecec95d0658f05466f',
-       i686: 'c7f67f4a9bf4e36e04082120f57cd62df023ca5fbf9207f3d8058713c82b68f3',
-     x86_64: 'a3d9d1f1e19baea67d2c2fab13b0c81e65915cd8653fe351951fd6b9109292f5'
+    aarch64: 'e2a24066767225d5b6eb92e83fea3e17fb30877403dbe1fb17f43646164547b2',
+     armv7l: 'e2a24066767225d5b6eb92e83fea3e17fb30877403dbe1fb17f43646164547b2',
+       i686: '2e8cd28f3e608407f5a9eaae4fc664142db54302e56e4f8f4b5d1b0fc600608f',
+     x86_64: '96b9254b193ec6af096fc2a8d535c825356a5ee8faa271708df10b85520e220c'
   })
 
   depends_on 'glib' => :build

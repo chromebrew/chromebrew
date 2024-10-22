@@ -2,8 +2,8 @@ require 'package'
 
 class Rkhunter < Package
   description 'Rootkit Hunter, security monitoring and analyzing tool for POSIX compliant systems.'
-  homepage 'http://rkhunter.sourceforge.net/'
-  version '1.4.6'
+  homepage 'https://rkhunter.sourceforge.net/'
+  version '1.4.6-1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/rkhunter/rkhunter/1.4.6/rkhunter-1.4.6.tar.gz'
@@ -24,7 +24,10 @@ class Rkhunter < Package
   end
 
   def self.postinstall
-    puts "\nTo run a check without prompting for a keypress after each test, execute the following:".lightblue
-    puts "sudo rkhunter -c --sk\n".lightblue
+    ExitMessage.add <<~EOF
+
+      To run a check without prompting for a keypress after each test, execute the following:
+      sudo rkhunter -c --sk -l #{CREW_PREFIX}/var/log/rkhunter.log
+    EOF
   end
 end

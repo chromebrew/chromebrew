@@ -2,7 +2,7 @@ require 'package'
 
 class Xercesc < Package
   description 'Xerces-C++ is a validating XML parser written in a portable subset of C++.'
-  homepage 'http://xerces.apache.org/xerces-c/'
+  homepage 'https://xerces.apache.org/xerces-c/'
   version '3.2.3'
   license 'Apache-2.0'
   compatibility 'all'

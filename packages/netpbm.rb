@@ -2,7 +2,7 @@ require 'package'
 
 class Netpbm < Package
   description 'Netpbm is a toolkit for manipulation of graphic images, including conversion of images between a variety of different formats.'
-  homepage 'http://netpbm.sourceforge.net/'
+  homepage 'https://netpbm.sourceforge.net/'
   version '10.73.28'
   license 'GPL-2'
   compatibility 'all'

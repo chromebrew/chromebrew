@@ -1,19 +1,19 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_glib_object_introspection < Package
+class Perl_glib_object_introspection < PERL
   description 'Dynamically create Perl language bindings'
   homepage 'https://metacpan.org/pod/Glib::Object::Introspection'
-  version '0.050-perl5.38'
+  version "0.051-#{CREW_PERL_VER}"
   license 'GPL PerlArtistic'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.050.tar.gz'
-  source_sha256 'ecf3bbb824df5eed6a3a7fcfd61be9ef448519801badcc82a6e3c4daab0cd763'
+  source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.051.tar.gz'
+  source_sha256 '6569611dcc80ac1482c7c22264b1ae8c9c351d4983511eb9a6c5f47a10150089'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ff44807be2b14ca0b6b6fe54e156e3f2e743ab0a70908ac480e36757c494a684',
-     armv7l: 'ff44807be2b14ca0b6b6fe54e156e3f2e743ab0a70908ac480e36757c494a684',
-     x86_64: '80f40ca1be2928cc983a349b0c3a9a033600c828427c44104753afbd8a1aaee4'
+    aarch64: '7193ab962dd8e2c414c8f0de9828e4ff072d16ee90682523949a32b33e3273d9',
+     armv7l: '7193ab962dd8e2c414c8f0de9828e4ff072d16ee90682523949a32b33e3273d9',
+     x86_64: '164f404f95c34e34a085bb115685832c2a24e3c406a5fc0dadabd79821079830'
   })
 
   depends_on 'cairo'
@@ -23,17 +23,4 @@ class Perl_glib_object_introspection < Package
   depends_on 'glibc' # R
   depends_on 'libffi' # R
   depends_on 'gcc_lib' # R
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

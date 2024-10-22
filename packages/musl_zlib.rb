@@ -20,8 +20,9 @@ class Musl_zlib < Package
 
   depends_on 'musl_native_toolchain' => :build
   is_musl
-  patchelf
   is_static
+  patchelf
+  print_source_bashrc
 
   def self.build
     system "#{MUSL_ENV_OPTIONS} ./configure --prefix=#{CREW_MUSL_PREFIX} \

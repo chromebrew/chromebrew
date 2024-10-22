@@ -1,72 +1,29 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Polkit < Package
+class Polkit < Meson
   description 'Application development toolkit for controlling system-wide privileges'
-  homepage 'https://www.freedesktop.org/wiki/Software/polkit/'
-  version '0.120-a2bf5c'
+  homepage 'https://github.com/polkit-org/polkit'
+  version '125'
   license 'LGPL-2'
-  compatibility 'all'
-  source_url 'https://gitlab.freedesktop.org/polkit/polkit.git'
-  git_hashtag 'a2bf5c9c83b6ae46cbd5c779d3055bff81ded683'
-  binary_compression 'tpxz'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/polkit-org/polkit.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '64f33f2ac0ab70d6aef5e1678bd83a5dbd9487ae50641402ffc5bd049409b4bf',
-     armv7l: '64f33f2ac0ab70d6aef5e1678bd83a5dbd9487ae50641402ffc5bd049409b4bf',
-       i686: 'd36368005afc56910018fbba79b8292aed5802db7fc8d9e6f593a3b81988292e',
-     x86_64: '7b775cbb16b44bde17a539955b33e14f97146ba10237ebeb01ec2ea700acafc7'
+    aarch64: '049b8152177810491fd8a7af7ba60707c25806cc74a7ffcb7e46f6351fb8a024',
+     armv7l: '049b8152177810491fd8a7af7ba60707c25806cc74a7ffcb7e46f6351fb8a024',
+     x86_64: 'd718513f21699196b8524a8f04a089ab7eb887fc273a83cf490636b54aca98c8'
   })
 
   depends_on 'duktape'
   depends_on 'elogind'
-  depends_on 'gtk_doc' => :build
+  depends_on 'expat'
+  depends_on 'glib'
   depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'linux_pam' # R
 
-  def self.patch
-    # Fix meson 0.60+ compatibility
-    # https://gitlab.freedesktop.org/polkit/polkit/-/merge_requests/99
-    @polkit_meson_patch = <<~POLKIT_MESON_PATCH_HEREDOC
-      diff --git a/actions/meson.build b/actions/meson.build
-      index 2abaaf3..1e3f370 100644
-      --- a/actions/meson.build
-      +++ b/actions/meson.build
-      @@ -1,7 +1,6 @@
-       policy = 'org.freedesktop.policykit.policy'
-
-       i18n.merge_file(
-      -  policy,
-         input: policy + '.in',
-         output: '@BASENAME@',
-         po_dir: po_dir,
-      diff --git a/src/examples/meson.build b/src/examples/meson.build
-      index c6305ab..8c18de5 100644
-      --- a/src/examples/meson.build
-      +++ b/src/examples/meson.build
-      @@ -1,7 +1,6 @@
-       policy = 'org.freedesktop.policykit.examples.pkexec.policy'
-
-       i18n.merge_file(
-      -  policy,
-         input: policy + '.in',
-         output: '@BASENAME@',
-         po_dir: po_dir,
-    POLKIT_MESON_PATCH_HEREDOC
-    File.write('99.patch', @polkit_meson_patch)
-    system 'patch -F3 -Np1 -i 99.patch'
-  end
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dsession_tracking=libelogind \
-    -Dsystemdsystemunitdir=#{CREW_PREFIX}/etc/elogind/ \
-    -Djs_engine=duktape \
-    -Dos_type=gentoo \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options "-Dsession_tracking=elogind -Dsystemdsystemunitdir=#{CREW_PREFIX}/etc/elogind"
+  run_tests
 end

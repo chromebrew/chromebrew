@@ -3,18 +3,17 @@ require 'package'
 class Mupdf < Package
   description 'MuPDF is a lightweight open source software framework for viewing and converting PDF, XPS, and E-book documents.'
   homepage 'https://mupdf.com/'
-  version '1.20.3'
+  version '1.24.9'
   license 'GPL-3'
-  compatibility 'all'
-  source_url 'https://mupdf.com/downloads/archive/mupdf-1.20.3-source.tar.lz'
-  source_sha256 '6f73f63ef8aa81991dfd023d4426a548827d1d74e0bfcf2a013acad63b651868'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://mupdf.com/downloads/archive/mupdf-#{version}-source.tar.lz"
+  source_sha256 'd87da097ae943ad0113003190ed370d39bde817383c59dc753dce23c7ba2b710'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5f4c38504fe42b4ec81e1f30954a5fe10acd5ab4c9f8ffaacd308f881cca11eb',
-     armv7l: '5f4c38504fe42b4ec81e1f30954a5fe10acd5ab4c9f8ffaacd308f881cca11eb',
-       i686: '76189a9e7138b4380a24470ce7010f95d50db15be74f980294d5b8d33c95010d',
-     x86_64: '4ce6bdbb132b435eadc824639e460b159e753b8d40c79a4815aa6b7299dfcf04'
+    aarch64: '8ae34fefdcf2ffb842c2f643b044561a356fc4b3a6fe7972aed077a103ca5581',
+     armv7l: '8ae34fefdcf2ffb842c2f643b044561a356fc4b3a6fe7972aed077a103ca5581',
+     x86_64: '6f4cd7df402ba79a07198e7df47fe7429482211262e7b93a7c12e442f55b5244'
   })
 
   depends_on 'freeglut'
@@ -23,7 +22,7 @@ class Mupdf < Package
   depends_on 'glibc' # R
   depends_on 'jbigkit'
   depends_on 'curl' # R
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libx11' # R
   depends_on 'libxext' # R
   depends_on 'libxrandr' # R
@@ -42,5 +41,9 @@ class Mupdf < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.postinstall
+    ExitMessage.add "\nType 'mupdf-gl' to get started.\n"
   end
 end

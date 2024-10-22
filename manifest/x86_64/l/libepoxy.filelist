@@ -1,10 +1,10 @@
 /usr/local/include/epoxy/common.h
-/usr/local/include/epoxy/egl_generated.h
 /usr/local/include/epoxy/egl.h
-/usr/local/include/epoxy/gl_generated.h
+/usr/local/include/epoxy/egl_generated.h
 /usr/local/include/epoxy/gl.h
-/usr/local/include/epoxy/glx_generated.h
+/usr/local/include/epoxy/gl_generated.h
 /usr/local/include/epoxy/glx.h
+/usr/local/include/epoxy/glx_generated.h
 /usr/local/lib64/libepoxy.so
 /usr/local/lib64/libepoxy.so.0
 /usr/local/lib64/libepoxy.so.0.0.0

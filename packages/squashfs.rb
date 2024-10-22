@@ -24,7 +24,7 @@ class Squashfs < Package
   depends_on 'lz4' # R
   depends_on 'lzo' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.patch

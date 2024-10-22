@@ -2,7 +2,7 @@ require 'package'
 
 class Usbutils < Package
   description 'Tools for examining usb devices'
-  homepage 'http://linux-usb.sourceforge.net/'
+  homepage 'https://linux-usb.sourceforge.net/'
   version '013'
   license 'GPL-2'
   compatibility 'all'
@@ -22,7 +22,7 @@ class Usbutils < Package
   def self.build
     system 'NOCONFIGURE=1 ./autogen.sh'
     system "env #{CREW_ENV_OPTIONS} \
-    ./configure #{CREW_OPTIONS}"
+    ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

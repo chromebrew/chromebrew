@@ -13,18 +13,15 @@ class Scdoc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     aarch64: 'dcf77b6cae857f23bb42151fdc6c0d3155756c07d7710d286d9ef8e97414adf9',
-      armv7l: 'dcf77b6cae857f23bb42151fdc6c0d3155756c07d7710d286d9ef8e97414adf9',
-        i686: 'dad39f88f3c071f8d32f8f5e33e84c0aee44c7dab986b939a812b9743d1d1e03',
-      x86_64: '1963cd6a64b25991b28207389a8a6d3299e07c4b4e2a00da7de432d93a3d1ae9'
+    aarch64: 'dcf77b6cae857f23bb42151fdc6c0d3155756c07d7710d286d9ef8e97414adf9',
+     armv7l: 'dcf77b6cae857f23bb42151fdc6c0d3155756c07d7710d286d9ef8e97414adf9',
+       i686: 'dad39f88f3c071f8d32f8f5e33e84c0aee44c7dab986b939a812b9743d1d1e03',
+     x86_64: '1963cd6a64b25991b28207389a8a6d3299e07c4b4e2a00da7de432d93a3d1ae9'
   })
 
   depends_on 'glibc' # R
 
   def self.patch
-    # Use correct gcc compiler
-    system "sed -i '2 s:^:CC = #{CREW_TGT}-gcc\\n:' Makefile"
-
     # Build a dynamically linked binary
     system "sed -i 's:LDFLAGS+=-static:LDFLAGS+=:' Makefile" # Compile dynamically
   end

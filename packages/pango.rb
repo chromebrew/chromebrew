@@ -1,21 +1,20 @@
-require 'package'
+require 'buildsystems/meson'
 # build order: harfbuzz => freetype => fontconfig => cairo => pango
 
-class Pango < Package
+class Pango < Meson
   description 'Pango is a library for laying out and rendering of text, with an emphasis on internationalization.'
   homepage 'https://pango.gnome.org/'
-  @_ver = '1.50.14'
-  version "#{@_ver}-1"
+  version '1.54.0-1'
   license 'LGPL-2+ and FTL'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/pango.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '223a3d19029d1a31182fc300d346108ca9b9540fafc314e8783de62405cef8b5',
-     armv7l: '223a3d19029d1a31182fc300d346108ca9b9540fafc314e8783de62405cef8b5',
-     x86_64: '05fe571aa075b48305b79ccf41adce94b0f53a4a0c4ccbd757897c5dca40abc8'
+    aarch64: 'ca92c2d3cca59634ff7d09b80bb656c22137e981800ba06c5f781c7d6653dff8',
+     armv7l: 'ca92c2d3cca59634ff7d09b80bb656c22137e981800ba06c5f781c7d6653dff8',
+     x86_64: '5ef2193fac50ebf85e6b7fb46b38b3e8bd89ad47fe04039901ff290551ed9be8'
   })
 
   depends_on 'cairo' # R
@@ -33,20 +32,11 @@ class Pango < Package
   depends_on 'libxrender' # R
   depends_on 'xorg_proto' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      -Dinstall-tests=false \
+  meson_options '-Dbuild-examples=false \
+      -Dbuild-testsuite=false \
       -Dcairo=enabled \
-      -Dfreetype=enabled \
+      -Ddocumentation=false \
       -Dfontconfig=enabled \
-      -Dlibthai=disabled \
-      -Dgtk_doc=false \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+      -Dfreetype=enabled \
+      -Dlibthai=disabled'
 end

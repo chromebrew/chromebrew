@@ -2,11 +2,11 @@ require 'package'
 
 class Snooze < Package
   description 'run a command at a particular time'
-  homepage 'https://github.com/chneukirchen/snooze/'
+  homepage 'https://github.com/leahneukirchen/snooze'
   version '0.2'
   license 'public-domain'
   compatibility 'all'
-  source_url 'https://github.com/chneukirchen/snooze/archive/v0.2.tar.gz'
+  source_url 'https://github.com/leahneukirchen/snooze/archive/v0.2.tar.gz'
   source_sha256 '69242bb1534b11b569dfd1535aca20e3e6be95c6285aff1ccf612b2a9f906a1a'
   binary_compression 'tar.xz'
 

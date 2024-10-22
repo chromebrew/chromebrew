@@ -5,7 +5,7 @@ class Virglrenderer < Package
   homepage 'https://virgil3d.github.io/'
   version '0.9.1-486d891'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/virgl/virglrenderer.git'
   git_hashtag '486d891a9242d978cef6bb5ae80d0d9b6aa420c8'
   binary_compression 'tar.zst'

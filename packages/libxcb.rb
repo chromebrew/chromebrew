@@ -2,7 +2,7 @@ require 'package'
 
 class Libxcb < Package
   description 'library for the X window system'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '1.15'
   license 'custom'
   compatibility 'all'
@@ -27,7 +27,7 @@ class Libxcb < Package
 
   def self.build
     system 'filefix'
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
         --enable-dri3 \
         --disable-xevie \
         --disable-devel-docs"

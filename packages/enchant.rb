@@ -25,7 +25,7 @@ class Enchant < Package
     system './bootstrap'
     system "env CFLAGS='-flto=auto -ltinfo' CXXFLAGS='-flto=auto' \
         LDFLAGS='-flto=auto' \
-        ./configure #{CREW_OPTIONS} \
+        ./configure #{CREW_CONFIGURE_OPTIONS} \
         --with-hunspell \
         --with-aspell"
     system 'make'

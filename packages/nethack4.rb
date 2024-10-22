@@ -2,17 +2,17 @@ require 'package'
 
 class Nethack4 < Package
   description 'NetHack is a \'roguelike\' game following in the same tradition; the player controls an adventurer delving into a randomly generated dungeon to retrieve the Amulet of Yendor from its depths.'
-  homepage 'http://nethack4.org/'
+  homepage 'http://nethack4.org'
   version '4.3.0-beta2-1'
   license 'nethack'
-  compatibility 'i686,x86_64'
+  compatibility 'i686 x86_64'
   source_url 'http://nethack4.org/media/releases/nethack4-4.3-beta2.tar.gz'
   source_sha256 'b143a86b5e1baf55c663ae09c2663b169d265e95ac43154982296a1887d05f15'
   binary_compression 'tar.xz'
 
   binary_sha256({
-    i686: '6d350da249e839266caf16d1f1c67ea39bdf504eb078cdad727aad08581aecfa',
-    x86_64: 'f433701d17fb8ac9c1d6ab57f3038ae27e3fe3999ea00e821f296647f622ec99'
+       i686: '6d350da249e839266caf16d1f1c67ea39bdf504eb078cdad727aad08581aecfa',
+     x86_64: 'f433701d17fb8ac9c1d6ab57f3038ae27e3fe3999ea00e821f296647f622ec99'
   })
 
   def self.build

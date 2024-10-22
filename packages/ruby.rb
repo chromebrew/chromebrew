@@ -3,44 +3,43 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.3.0' # Do not use @_ver here, it will break the installer.
+  version '3.3.5' # Do not use @_ver here, it will break the installer.
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
-  source_url 'https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.0.tar.gz'
-  source_sha256 '96518814d9832bece92a85415a819d4893b307db5921ae1f0f751a9a89a56b7d'
+  source_url 'https://github.com/ruby/ruby.git'
+  git_hashtag "v#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c26e8e64fdbb62c5a728582b957cc78ff64a7bc00bec978c3dede8b7a8a329f7',
-     armv7l: 'c26e8e64fdbb62c5a728582b957cc78ff64a7bc00bec978c3dede8b7a8a329f7',
-       i686: 'a97a17336b4d233129fb5a55c82d32b38b981d017cda70ba3cbb51012bc129ca',
-     x86_64: '8df1eee697c2561529e4c3c0b6c16c4d9a99922b1764a7c515473cf9b45d27ef'
+    aarch64: '9ad018a5a3f263bdeb9e548c42613a7e894aba6b8d9941e2c6e9c9f54fb84ee0',
+     armv7l: '9ad018a5a3f263bdeb9e548c42613a7e894aba6b8d9941e2c6e9c9f54fb84ee0',
+       i686: 'b62c49e3d8c8e70bcd81fec5708a848a254385c74d788c9cf8225190b660ba97',
+     x86_64: 'ea3fffee782c2e8c4f755eed36e865a2cb8ae346728f820a32df1e21be147b62'
   })
 
-  depends_on 'zlibpkg' # R
-  depends_on 'glibc' # R
+  depends_on 'ca_certificates' # L
   depends_on 'filecmd' # L (This is to enable file command use in package files.)
-  depends_on 'gmp' # R
   depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'libffi' # R
-  depends_on 'openssl' # R
   depends_on 'libyaml' # R
-  depends_on 'readline' # R
+  depends_on 'openssl' # R
   depends_on 'rust' => :build
-  depends_on 'ca_certificates'
-  depends_on 'libyaml' # This is needed to install gems
+  depends_on 'zlib' # R
 
-  # at run-time, system's gmp, openssl, readline and zlibpkg can be used
+  conflicts_ok # Needed for successful build.
+
+  # at run-time, system's gmp, openssl, and zlib can be used
 
   def self.build
-    @yjit = ARCH == 'x86_64' ? '--enable-yjit' : ''
     system '[ -x configure ] || autoreconf -fiv'
     system "RUBY_TRY_CFLAGS='stack_protector=no' \
       RUBY_TRY_LDFLAGS='stack_protector=no' \
       optflags='-flto=auto -fuse-ld=#{CREW_LINKER}' \
-      mold -run ./configure #{CREW_OPTIONS} \
+      mold -run ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
-      #{@yjit} \
+      #{ARCH == 'x86_64' ? '--enable-yjit' : ''} \
       --disable-fortify-source"
     system "MAKEFLAGS='--jobs #{CREW_NPROC}' make"
   end

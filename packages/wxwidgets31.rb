@@ -38,7 +38,7 @@ class Wxwidgets31 < Package
   depends_on 'harfbuzz' # R
   depends_on 'libglu' # R
   depends_on 'libglvnd' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libnotify' # R
   depends_on 'libsdl' => :build
   depends_on 'libsecret' # R
@@ -52,7 +52,7 @@ class Wxwidgets31 < Package
   depends_on 'pango' # R
   depends_on 'wayland' # R
   depends_on 'webkit2gtk_4' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.preflight
     %w[wxwidgets wxwidgets30].each do |wxw|
@@ -65,7 +65,7 @@ class Wxwidgets31 < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --with-gtk=3 \
       --with-opengl \
       --enable-unicode \

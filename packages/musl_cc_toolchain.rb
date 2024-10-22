@@ -4,7 +4,7 @@ class Musl_cc_toolchain < Package
   description 'A modern, simple, and fast C library implementation that strives to be lightweight, fast, simple, free, and correct in the sense of standards-conformance and safety.'
   homepage 'https://musl.cc/'
   version '1.2.2-b76f37fd'
-  compatibility 'aarch64, armv7l, x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   license 'MIT, LGPL-2 and GPL-2'
   source_url({
     aarch64: 'https://musl.cc/armv7l-linux-musleabihf-native.tgz',
@@ -23,6 +23,8 @@ class Musl_cc_toolchain < Package
      armv7l: '56b9685504b6ae0894b4c0e9e439c894fc3e9222124982e5c3321279c34de253',
      x86_64: 'ca388d227d187db9b60c53aa191803882a9ac21bcb6c0d1d2815ea2bb8725023'
   })
+
+  print_source_bashrc
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_MUSL_PREFIX}/lib"

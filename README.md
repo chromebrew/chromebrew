@@ -60,7 +60,7 @@ Open a VT-2 terminal session with <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>-></kbd> a
 Then run the installation script below:
 
 ```bash
-exec bash --init-file <(curl -Ls git.io/vddgY)
+bash <(curl -L git.io/vddgY) && . ~/.bashrc
 ```
 
 ## Help
@@ -80,13 +80,14 @@ Where available commands are:
 | Command      | Description |
 |:------------:|:------------|
 | build        | build package(s) from source and store the archive and checksum in the current working directory |
+| check        | check packages(s) |
 | const        | display constant(s) |
 | deps         | display dependencies of package(s) |
 | download     | download package(s) to CREW_BREW_DIR (/usr/local/tmp/crew by default), but don't install |
 | files        | display installed files of package(s) |
 | help         | get information about command usage |
 | install      | install package(s) along with dependencies after prompting for confirmation |
-| list         | available, installed, compatible or incompatible packages |
+| list         | available, compatible, incompatible, essential, installed packages |
 | postinstall  | display postinstall messages of package(s) |
 | prop         | display all package boolean properties |
 | reinstall    | remove and install package(s) |
@@ -108,7 +109,7 @@ crew install --keep [...]
 
 ## License
 
-Copyright 2013-2024 Michal Siwek and [all the awesome contributors](https://github.com/chromebrew/chromebrew/graphs/contributors). 
+Copyright 2013-2024 Michal Siwek and [all the awesome contributors](https://github.com/chromebrew/chromebrew/graphs/contributors).
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt). This project embeds [docopt.rb](https://github.com/docopt/docopt.rb) at lib/docopt.rb. We retain its [MIT license](lib/docopt.LICENSE).
 

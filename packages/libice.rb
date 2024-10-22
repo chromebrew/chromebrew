@@ -2,7 +2,7 @@ require 'package'
 
 class Libice < Package
   description 'X.org X Inter Client Exchange Library'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.1.0'
   license 'X11'
   compatibility 'all'
@@ -27,7 +27,7 @@ class Libice < Package
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

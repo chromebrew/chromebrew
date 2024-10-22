@@ -2,7 +2,7 @@ require 'package'
 
 class Xorg_synaptics_driver < Package
   description 'The Xorg Synaptics Driver package contains the X.Org Input Driver, support programs and SDK for Synaptics touchpads.'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.9.0'
   license 'MIT'
   compatibility 'all'

@@ -2,7 +2,7 @@ require 'package'
 
 class Libpciaccess < Package
   description 'Generic PCI access library'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '0.17'
   license 'MIT'
   compatibility 'all'
@@ -21,7 +21,7 @@ class Libpciaccess < Package
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

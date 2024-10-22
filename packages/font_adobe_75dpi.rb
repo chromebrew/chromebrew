@@ -1,32 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Font_adobe_75dpi < Package
+class Font_adobe_75dpi < Autotools
   description 'Standard 75pi Adobe PCF fonts'
-  homepage 'https://xorg.freedesktop.org/'
-  version '1.0.3'
-  license 'custom'
-  compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/font/font-adobe-75dpi-1.0.3.tar.bz2'
-  source_sha256 'c6024a1e4a1e65f413f994dd08b734efd393ce0a502eb465deb77b9a36db4d09'
-  binary_compression 'tar.xz'
+  homepage 'https://gitlab.freedesktop.org/xorg/font/adobe-75dpi'
+  version '1.0.4'
+  license 'MIT'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/xorg/font/adobe-75dpi.git'
+  git_hashtag "font-adobe-75dpi-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ce42dd81802a50ef02e136b209b97c4f622f1fe1ee639ee0d34002771e95ba54',
-     armv7l: 'ce42dd81802a50ef02e136b209b97c4f622f1fe1ee639ee0d34002771e95ba54',
-       i686: 'e497248af07548ec3260124b7667c2ab5057b66334bf76f3b9aa43622adadef0',
-     x86_64: '24a9499a17f3af0eb9f1c44ca71557b3ec8b7fa304f5955dcfbe4761ca0e97bb'
+    aarch64: '1b84cb99effc37186feb201876773ef64f96ad55fbd999f45f3339d8891d9aea',
+     armv7l: '1b84cb99effc37186feb201876773ef64f96ad55fbd999f45f3339d8891d9aea',
+     x86_64: '6c5b02f92568ef6f10630234b8d09ff30c9f3cb4c991f51642cd8f0ec5cdae95'
   })
 
   depends_on 'bdftopcf'
   depends_on 'font_util'
   depends_on 'mkfontscale'
-
-  def self.build
-    system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  depends_on 'xorg_macros' => :build
 end

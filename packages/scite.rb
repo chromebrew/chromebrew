@@ -5,7 +5,7 @@ class Scite < Package
   homepage 'https://www.scintilla.org/'
   version '4.2.0'
   license 'HPND and MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.scintilla.org/scite420.tgz'
   source_sha256 '2e0b95842bbc875a9224416fad3a9179ec329b3af2ca1abdd8e64c008068bb99'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Scite < Package
   binary_sha256({
     aarch64: '44c3738e5f6d241e74a0b2dc30080f73643cf170fcf93b8167a42f85943e4554',
      armv7l: '44c3738e5f6d241e74a0b2dc30080f73643cf170fcf93b8167a42f85943e4554',
-       i686: 'b0e95f29a380e9fe2dc71216aa36c7902210f59f9041b92700c556c927e57049',
      x86_64: '1fcbc9d13a7c7bc5b7473631281fdea5302c8e55b88bdb8d25159b70890dfcec'
   })
 

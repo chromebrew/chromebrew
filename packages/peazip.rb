@@ -11,9 +11,9 @@ class Peazip < Package
     source_url 'https://downloads.sourceforge.net/project/peazip/5.2.0/pea-gtk2-arm.tar.gz'
     source_sha256 '6724a5c4e273f086680ac30440a2014b647322d25ed9bba574b7b8edba61abcc'
   when 'x86_64'
-    version '8.6.0'
-    source_url 'https://github.com/peazip/PeaZip/releases/download/8.6.0/peazip_portable-8.6.0.LINUX.GTK2.x86_64.tar.gz'
-    source_sha256 '8d430a24dc6aaf21931aa82e46e91e36fcf82eaeb9a53906b3cce360668a443b'
+    version '9.8.0'
+    source_url 'https://github.com/peazip/PeaZip/releases/download/9.8.0/peazip_portable-9.8.0.LINUX.GTK2.x86_64.tar.gz'
+    source_sha256 'd1d7cbd65e034339f2905aaf99b69320d4087f0caa5132e4b9ba47ef18c2e0b5'
   end
 
   depends_on 'gtk2'

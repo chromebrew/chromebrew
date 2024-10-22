@@ -2,7 +2,7 @@ require 'package'
 
 class Libexiv2 < Package
   description 'Exiv2 is a Cross-platform C++ library and a command line utility to manage image metadata.'
-  homepage 'http://exiv2.org/'
+  homepage 'https://exiv2.org/'
   version '0.27.5'
   license 'GPL-2'
   compatibility 'all'
@@ -23,7 +23,7 @@ class Libexiv2 < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'curl' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system "sed -i 's/MINGW OR CYGWIN OR CMAKE_HOST_SOLARIS/UNIX/g' cmake/compilerFlags.cmake"

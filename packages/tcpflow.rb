@@ -32,11 +32,11 @@ class Tcpflow < Package
   depends_on 'openssl' # R
   depends_on 'pixman' # R
   depends_on 'sqlite' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system 'bash bootstrap.sh'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

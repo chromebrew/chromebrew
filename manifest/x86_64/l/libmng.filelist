@@ -1,5 +1,5 @@
-/usr/local/include/libmng_conf.h
 /usr/local/include/libmng.h
+/usr/local/include/libmng_conf.h
 /usr/local/include/libmng_types.h
 /usr/local/lib64/libmng.a
 /usr/local/lib64/libmng.la

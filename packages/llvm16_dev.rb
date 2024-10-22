@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'llvm16_build'
+Package.load_package("#{__dir__}/llvm16_build.rb")
 
 class Llvm16_dev < Package
   description 'LLVM: Everything except libLLVM & llvm-strip'
@@ -29,7 +29,7 @@ class Llvm16_dev < Package
   depends_on 'llvm16_lib' # R
   depends_on 'ncurses' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.install
@@ -39,11 +39,8 @@ class Llvm16_dev < Package
     @filelist = File.readlines(@filelist_path, chomp: true).sort
 
     @filelist.each do |filename|
-      if filename.include?('.so') && filename.include?('libLLVM')
-        next
-      elsif filename.include?('llvm-strip')
-        next
-      end
+      next if filename.include?('.so') && filename.include?('libLLVM')
+      next if filename.include?('llvm-strip')
 
       @destpath = File.join(CREW_DEST_DIR, filename)
       @filename_target = File.realpath(filename)

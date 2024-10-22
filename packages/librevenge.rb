@@ -25,10 +25,10 @@ class Librevenge < Package
   depends_on 'doxygen' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-werror"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-werror"
     system 'make'
   end
 

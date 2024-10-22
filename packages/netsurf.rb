@@ -5,7 +5,7 @@ class Netsurf < Package
   homepage 'https://www.netsurf-browser.org'
   version '3.10'
   license 'GPL-2 and MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.netsurf-browser.org/netsurf/releases/source/netsurf-3.10-src.tar.gz'
   source_sha256 '36484429e193614685c2ff246f55bd0a6dddf31a018bee45e0d1f7c28851995e'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Netsurf < Package
   binary_sha256({
     aarch64: '6227ff3b0f01bfc07874340c33c598dfda687be81c0475f067a93c10ae0d14e4',
      armv7l: '6227ff3b0f01bfc07874340c33c598dfda687be81c0475f067a93c10ae0d14e4',
-       i686: '571980948ef25797181f67dd7cf1977c0fd2d201a9ec7575c518082f3cb8fb6a',
      x86_64: '638661094c24e60ffbbd836af6e6c434c01c6e5aaa5c4003d59ace69e30edf99'
   })
 

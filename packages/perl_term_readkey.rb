@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_term_readkey < PERL
   description 'Term::ReadKey - A perl module for simple terminal control'
   homepage 'https://metacpan.org/pod/Term::ReadKey'
-  version '2.38-perl5.38.2'
+  version "2.38-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/J/JS/JSTOWE/TermReadKey-2.38.tar.gz'
@@ -11,10 +11,10 @@ class Perl_term_readkey < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '28012fd0e4f95d2eeb7debda4f183aa688fd092958c3e7160ac6e0235f03fb86',
-     armv7l: '28012fd0e4f95d2eeb7debda4f183aa688fd092958c3e7160ac6e0235f03fb86',
-       i686: '4ab79ff75422e43092e2b9a0cdc06c2604ca2fca726b2749a6dc1e7cbcfa706e',
-     x86_64: '91138c0fac8d7ae96c18f37cda72330fc54fdb40551cfd39584e4e1f72f6eab5'
+    aarch64: '2f69efe49a70880549248c73bd9b7979d4c172fcc241b8517ed921e57976096e',
+     armv7l: '2f69efe49a70880549248c73bd9b7979d4c172fcc241b8517ed921e57976096e',
+       i686: 'f81e73e25f83290af7448627745b2069db325bef7fa1e22bfb904c36d8d8207c',
+     x86_64: '1b379f1ca9fec9db393d689b0b4d88bb504892da77b90a2fa66ae3809c476dd5'
   })
 
   depends_on 'glibc' # R

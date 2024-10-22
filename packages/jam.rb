@@ -2,7 +2,7 @@ require 'package'
 
 class Jam < Package
   description 'Jam is a software build tool that makes building simple things simple and building complicated things manageable.'
-  homepage 'https://www.perforce.com/documentation/jam-documentation'
+  homepage 'https://swarm.workshop.perforce.com/projects/perforce_software-jam'
   version '2.6'
   license 'JAM License'
   compatibility 'all'

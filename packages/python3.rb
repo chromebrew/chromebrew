@@ -3,18 +3,18 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.12.2'
+  version '3.13.0'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 'be28112dac813d2053545c14bf13a16401a21877f1a69eb6ea5d84c4a0f3d870'
+  source_sha256 '086de5882e3cb310d4dca48457522e2e48018ecd43da9cdf827f6a0759efb07d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3b76c3c7ab7da89d27eed23c6b3d597679d5f269584a581092683ed89e09ebf3',
-     armv7l: '3b76c3c7ab7da89d27eed23c6b3d597679d5f269584a581092683ed89e09ebf3',
-       i686: 'bc33317fe957743d2d4944b2bf81ea5e9833bef109f83bdcff0487e2fa9082b5',
-     x86_64: '677379ff6a6e2dcd0ccabb3a08b524bfea86fe57b4ff44a4108c43beca91da59'
+    aarch64: 'cd444774bf3d5c88321d72e7d1d4b4c3f09dcf793c2a9dcf230e72c8c70f831f',
+     armv7l: 'cd444774bf3d5c88321d72e7d1d4b4c3f09dcf793c2a9dcf230e72c8c70f831f',
+       i686: '3c3955d5ac36867db40f0249f99a34eee64142d32399fdc32f87261bcebc3880',
+     x86_64: 'adce9952f2118c876a122e04ca3407540306b840cdda266a404a80fd89ebeaaa'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -26,9 +26,7 @@ class Python3 < Package
   depends_on 'krb5' => :build
   depends_on 'libdb' # R
   depends_on 'libffi' # R
-  depends_on 'libtirpc' => :build
   depends_on 'mpdecimal' # R
-  depends_on 'ncurses' # R
   depends_on 'openssl' # R
   depends_on 'readline' # R
   depends_on 'sqlite' # R
@@ -36,11 +34,19 @@ class Python3 < Package
   depends_on 'tk' => :build unless ARCH == 'i686' # Needed for tkinter support
   depends_on 'util_linux' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zoneinfo' # L
+  depends_on 'ncurses' # R
 
   no_env_options
   conflicts_ok
+
+  def self.patch
+    # Skip tests which rely on not having an underlying zfs filesystem.
+    # https://github.com/python/cpython/issues/125117
+    # See https://github.com/python/cpython/issues/81765
+    system "sed -i '/test_sqlite3/d'  Lib/test/libregrtest/pgo.py" unless %w[aarch64 armv7l].include?(ARCH)
+  end
 
   def self.preinstall
     @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
@@ -57,13 +63,12 @@ class Python3 < Package
 
   def self.prebuild
     # Ensure that internal copies of expat, libffi and zlib aren't used
-    FileUtils.rm_rf 'Modules/expat'
-    FileUtils.rm_rf Dir.glob('Modules/_ctypes/libffi*')
-    FileUtils.rm_rf 'Modules/zlib'
+    # FileUtils.rm_rf 'Modules/expat'
+    # FileUtils.rm_rf Dir.glob('Modules/_ctypes/libffi*')
+    # FileUtils.rm_rf 'Modules/zlib'
   end
 
   def self.build
-    @cppflags = "-I#{CREW_PREFIX}/include/ncursesw"
     # Using /tmp breaks test_distutils, test_subprocess.
     # Proxy setting breaks test_httpservers, test_ssl,
     # test_urllib, test_urllib2, test_urllib2_localnet.
@@ -73,9 +78,7 @@ class Python3 < Package
 
     FileUtils.mkdir_p 'builddir'
     Dir.chdir 'builddir' do
-      system CREW_ENV_OPTIONS_HASH.transform_values { |v|
-               "#{v} #{@cppflags}"
-             }, "LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} ../configure #{CREW_OPTIONS} \
+      system "../configure #{CREW_CONFIGURE_OPTIONS} \
           --with-lto \
           --with-computed-gotos \
           --enable-loadable-sqlite-extensions \
@@ -87,37 +90,12 @@ class Python3 < Package
           --with-tzpath=#{CREW_PREFIX}/share/zoneinfo \
           --with-libc= \
           --enable-shared"
-      system 'mold -run make'
+      system "MAKEFLAGS=-j#{CREW_NPROC} mold -run make"
       File.write 'python_config_env', <<~PYTHON_CONFIG_EOF
         # Force use of python3 over python2.7 in packages which check the variable to set the python used.
         PYTHON=python3
       PYTHON_CONFIG_EOF
     end
-  end
-
-  def self.check
-    # Chromebooks do not allow SIGHUP, so disable SIGHUP test
-    system 'sed', '-i', 'Lib/test/test_asyncio/test_events.py', '-e', "/Don't have SIGHUP/s/win32/linux/"
-    system 'sed', '-i', 'Lib/test/test_asyncio/test_subprocess.py', '-e', "/Don't have SIGHUP/s/win32/linux/"
-
-    # Chromebooks return EINVAL for F_NOTIFY DN_MULTISHOT, so disable test_fcntl_64_bit
-    system 'sed', '-i', 'Lib/test/test_fcntl.py', '-e', '/ARM Linux returns EINVAL for F_NOTIFY DN_MULTISHOT/s/$/\
-    @unittest.skipIf(platform.system() == '"'Linux'"', "Chromeos returns EINVAL for F_NOTIFY DN_MULTISHOT")/'
-
-    # imaplib test used to use a kind of security hole on a server in university and the hole is closed now.
-    # See https://bugs.python.org/issue30175 and https://github.com/python/cpython/pull/1320/files for details.
-    system 'sed', '-i', 'Lib/test/test_imaplib.py',
-           '-e', '/test_logincapa_with_client_certfile/i\ \ \ \ @unittest.skipIf(True,\
-                     "bpo-30175: FIXME: cyrus.andrew.cmu.edu doesn\'t accept "\
-                     "our randomly generated client x509 certificate anymore")',
-           '-e', '/test_logincapa_with_client_ssl_context/i\ \ \ \ @unittest.skipIf(True,\
-                     "bpo-30175: FIXME: cyrus.andrew.cmu.edu doesn\'t accept "\
-                     "our randomly generated client x509 certificate anymore")'
-
-    # Using /tmp breaks test_distutils, test_subprocess
-    # Proxy setting breaks test_httpservers, test_ssl,
-    # test_urllib, test_urllib2, test_urllib2_localnet
-    # system "http_proxy= https_proxy= ftp_proxy= make test"
   end
 
   def self.install

@@ -2,7 +2,7 @@ require 'package'
 
 class Wol < Package
   description 'Wake up hardware that is Magic Packet compliant'
-  homepage 'https://ahh.sourceforge.net/wol/'
+  homepage 'https://sourceforge.net/projects/wake-on-lan/'
   version '0.7.1-1'
   license 'GPL-2+'
   compatibility 'all'
@@ -20,7 +20,7 @@ class Wol < Package
   depends_on 'glibc' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

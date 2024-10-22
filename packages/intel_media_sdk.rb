@@ -2,7 +2,7 @@ require 'package'
 
 class Intel_media_sdk < Package
   description 'API to access hardware-accelerated video on Intel Gen graphics hardware platforms'
-  homepage 'https://software.intel.com/en-us/media-sdk/'
+  homepage 'https://www.intel.com/content/www/us/en/developer/articles/tool/media-sdk.html'
   version '20.5.1'
   license 'MIT'
   compatibility 'x86_64'
@@ -16,7 +16,7 @@ class Intel_media_sdk < Package
   depends_on 'wayland'
 
   binary_sha256({
-    x86_64: '6c50fda47c7711dbc506badef677cb9f9941ffd5fc0d147562117f08da7658f2'
+     x86_64: '6c50fda47c7711dbc506badef677cb9f9941ffd5fc0d147562117f08da7658f2'
   })
 
   def self.build

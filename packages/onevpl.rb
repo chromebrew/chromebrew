@@ -5,7 +5,7 @@ require 'package'
 
 class Onevpl < Package
   description 'oneAPI Video Processing Library'
-  homepage 'https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
+  homepage 'https://www.intel.com/content/www/us/en/developer/tools/vpl/overview.html'
   version '2023.1.0'
   license 'MIT'
   compatibility 'x86_64'
@@ -14,7 +14,7 @@ class Onevpl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: 'ad119dc97568f728a42b909a6c3980d9245fc10fa81bab64a261e3c8c6e6d634'
+     x86_64: 'ad119dc97568f728a42b909a6c3980d9245fc10fa81bab64a261e3c8c6e6d634'
   })
 
   depends_on 'gcc_lib' # R

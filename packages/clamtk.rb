@@ -5,7 +5,7 @@ class Clamtk < Package
   homepage 'https://gitlab.com/dave_m/clamtk/'
   version '6.14'
   license 'GPL-1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.com/dave_m/clamtk/-/archive/v6.14/clamtk-v6.14.tar.bz2'
   source_sha256 'cda9f3afed9ebfb36093f6d1572af2834b0488cc60296774c6d241db5ad149be'
 
@@ -77,7 +77,7 @@ class Clamtk < Package
     system "update-mime-database #{CREW_PREFIX}/share/mime"
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.clamtk"
     if Dir.exist? config_dir
       puts 'WARNING: This will remove all clamtk config!'.orange

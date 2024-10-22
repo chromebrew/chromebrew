@@ -2,7 +2,7 @@ require 'package'
 
 class Wput < Package
   description 'wput is a command line file upload tool, the opposite of wget'
-  homepage 'http://wput.sourceforge.net/'
+  homepage 'https://wput.sourceforge.net/'
   version '0.6.2'
   license 'GPL-2'
   compatibility 'all'
@@ -25,7 +25,7 @@ class Wput < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

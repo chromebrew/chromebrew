@@ -24,7 +24,7 @@ class Libwpd < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'librevenge' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     downloader 'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/libwpd/trunk/libwpd-gcc11.patch',
@@ -33,7 +33,7 @@ class Libwpd < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-static"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-static"
     system 'make'
   end
 

@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Cppunit < Autotools
   description 'CppUnit is the C++ port of the famous JUnit framework for unit testing.'
-  homepage 'https://www.freedesktop.org/wiki/Software/cppunit'
+  homepage 'https://www.freedesktop.org/wiki/Software/cppunit/'
   version '1.15.1-1'
   license 'LGPL'
   compatibility 'all'

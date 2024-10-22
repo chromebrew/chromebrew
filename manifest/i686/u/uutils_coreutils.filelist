@@ -218,8 +218,8 @@
 /usr/local/share/fish/vendor_completions.d/date.fish
 /usr/local/share/fish/vendor_completions.d/dd.fish
 /usr/local/share/fish/vendor_completions.d/df.fish
-/usr/local/share/fish/vendor_completions.d/dircolors.fish
 /usr/local/share/fish/vendor_completions.d/dir.fish
+/usr/local/share/fish/vendor_completions.d/dircolors.fish
 /usr/local/share/fish/vendor_completions.d/dirname.fish
 /usr/local/share/fish/vendor_completions.d/du.fish
 /usr/local/share/fish/vendor_completions.d/echo.fish
@@ -265,8 +265,8 @@
 /usr/local/share/fish/vendor_completions.d/pwd.fish
 /usr/local/share/fish/vendor_completions.d/readlink.fish
 /usr/local/share/fish/vendor_completions.d/realpath.fish
-/usr/local/share/fish/vendor_completions.d/rmdir.fish
 /usr/local/share/fish/vendor_completions.d/rm.fish
+/usr/local/share/fish/vendor_completions.d/rmdir.fish
 /usr/local/share/fish/vendor_completions.d/seq.fish
 /usr/local/share/fish/vendor_completions.d/shred.fish
 /usr/local/share/fish/vendor_completions.d/shuf.fish
@@ -296,8 +296,8 @@
 /usr/local/share/fish/vendor_completions.d/users.fish
 /usr/local/share/fish/vendor_completions.d/vdir.fish
 /usr/local/share/fish/vendor_completions.d/wc.fish
-/usr/local/share/fish/vendor_completions.d/whoami.fish
 /usr/local/share/fish/vendor_completions.d/who.fish
+/usr/local/share/fish/vendor_completions.d/whoami.fish
 /usr/local/share/fish/vendor_completions.d/yes.fish
 /usr/local/share/man/man1/arch.1.zst
 /usr/local/share/man/man1/base32.1.zst

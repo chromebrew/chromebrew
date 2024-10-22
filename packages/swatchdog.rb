@@ -2,7 +2,7 @@ require 'package'
 
 class Swatchdog < Package
   description 'The "simple watchdog" for activity monitoring log files produced by UNIX\'s syslog facility.'
-  homepage 'http://swatch.sourceforge.net/'
+  homepage 'https://swatch.sourceforge.net/'
   version '3.2.4-1'
   license 'GPL-2'
   compatibility 'all'

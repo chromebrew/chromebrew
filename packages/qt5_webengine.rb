@@ -3,7 +3,7 @@
 # & LFS build documentation at https://www.linuxfromscratch.org/blfs/view/svn/x/qtwebengine.html
 
 require 'package'
-require_relative 'qt5_base'
+Package.load_package("#{__dir__}/qt5_base.rb")
 
 class Qt5_webengine < Package
   description 'Provides support for web applications using the Chromium browser project'
@@ -39,7 +39,7 @@ class Qt5_webengine < Package
   depends_on 'lcms' # R
   depends_on 'libevent' # R
   depends_on 'libglvnd' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libvpx' # R
   depends_on 'libwebp' # R
@@ -72,7 +72,7 @@ class Qt5_webengine < Package
   depends_on 'qt5_webchannel' # R
   depends_on 're2' # R
   depends_on 'snappy' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     # Patches from lfs: https://www.linuxfromscratch.org/blfs/view/svn/x/qtwebengine.html

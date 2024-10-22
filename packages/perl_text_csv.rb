@@ -1,34 +1,19 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_text_csv < Package
+class Perl_text_csv < PERL
   description 'Comma-separated values manipulator (using XS or PurePerl)'
   homepage 'https://metacpan.org/pod/Text::CSV'
-  version '2.02-perl5.38'
+  version "2.04-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/Text-CSV-2.02.tar.gz'
-  source_sha256 '84120de3e10489ea8fbbb96411a340c32cafbe5cdff7dd9576b207081baa9d24'
+  source_url 'https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/Text-CSV-2.04.tar.gz'
+  source_sha256 '4f80122e4ea0b05079cad493e386564030f18c8d7b1f9af561df86985a653fe3'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd412d2354cc124a7da35eb06fe625261c3820c2fa887d35b941c8baa71db088d',
-     armv7l: 'd412d2354cc124a7da35eb06fe625261c3820c2fa887d35b941c8baa71db088d',
-       i686: '7db0afe944345373429589059bd965f17dba640c7e11aabca138d1570e80e96b',
-     x86_64: '7c79482dbb145c7d123df207ac3d3a204bbbcf092db14db0a0e27cfd60673d6b'
+    aarch64: 'de5d6f10d94ecc36811b57f44e556a3eae4c49b3e364654f3fcccaf20c19c8cd',
+     armv7l: 'de5d6f10d94ecc36811b57f44e556a3eae4c49b3e364654f3fcccaf20c19c8cd',
+       i686: 'aa1eec639e95448e93677f32c1505b866956fa06c054cb4c88d0e24c2d0fc19a',
+     x86_64: '7d45b7eb1b61697db117590ee41b21a2c3edeb76d02858c555fd2bf2feb5225c'
   })
-
-  no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

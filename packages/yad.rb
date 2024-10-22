@@ -5,7 +5,7 @@ class Yad < Package
   homepage 'https://sourceforge.net/projects/yad-dialog/'
   version '0.40.0'
   license 'GPL-3+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://prdownloads.sourceforge.net/project/yad-dialog/yad-0.40.0.tar.xz'
   source_sha256 'c2d0b7d1b6d3a0877299faa00db75d58c974f81fce72d520a3a84e67d1d60ef4'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Yad < Package
   binary_sha256({
     aarch64: '9e95ee3627b04922ddd447649e69ea54c9dc43e7138319bd1588a4f8b58b51af',
      armv7l: '9e95ee3627b04922ddd447649e69ea54c9dc43e7138319bd1588a4f8b58b51af',
-       i686: '6099dc7626511aa2c8e7dc55d0ed4ac516f165a5bd6c28a9b2170ca798aad445',
      x86_64: '1fdac4030f16b26ff16102a570c6d2ec58a5228fd8f89752e4e6da58555a6604'
   })
 

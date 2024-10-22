@@ -3,11 +3,11 @@ require 'package'
 class Torbrowser < Package
   description "'The Onion Router' browser"
   homepage 'https://www.torproject.org/'
-  version '13.0.6'
+  version '13.0.15'
   license 'BSD, custom, MPL-2.0 and MIT'
   compatibility 'x86_64'
-  source_url 'https://dist.torproject.org/torbrowser/13.0.6/tor-browser-linux-x86_64-13.0.6.tar.xz'
-  source_sha256 'ed3f8f244b062207be2493b3e86886f3def59679db40bda37477e574d993e234'
+  source_url "https://dist.torproject.org/torbrowser/#{version}/tor-browser-linux-x86_64-#{version}.tar.xz"
+  source_sha256 '7b6605acfce57bdb3f8f7faec458e82b9dfca4b575bb56b8903e95f116aaa4e5'
 
   depends_on 'gtk3'
   depends_on 'gdk_base'
@@ -51,7 +51,7 @@ class Torbrowser < Package
     puts "\nType 'tor' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     Dir.chdir("#{CREW_PREFIX}/bin") do
       if File.exist?('x-www-browser') && File.symlink?('x-www-browser') \
         && (File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/tor")

@@ -18,7 +18,7 @@ class Libhubbub < Package
   })
 
   depends_on 'libxslt'
-  depends_on 'jsonc'
+  depends_on 'json_c'
   depends_on 'libparserutils'
 
   def self.build

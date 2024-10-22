@@ -1,21 +1,23 @@
-require 'package'
-require_relative 'freetype'
+require 'buildsystems/meson'
+Package.load_package("#{__dir__}/cairo.rb")
+Package.load_package("#{__dir__}/fontconfig.rb")
+Package.load_package("#{__dir__}/freetype.rb")
 # build order: harfbuzz => freetype => fontconfig => cairo => pango
 
-class Harfbuzz < Package
+class Harfbuzz < Meson
   description 'HarfBuzz is an OpenType text shaping engine.'
-  homepage 'https://www.freedesktop.org/wiki/Software/HarfBuzz/'
-  version '7.3.0'
+  homepage 'https://harfbuzz.github.io/'
+  version "10.0.1-#{CREW_ICU_VER}"
   license 'Old-MIT, ISC and icu'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/harfbuzz/harfbuzz.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8eae2341b560a92f4e214b369e670e9d1cb195cbcc60489d9718fb7bfec615b0',
-     armv7l: '8eae2341b560a92f4e214b369e670e9d1cb195cbcc60489d9718fb7bfec615b0',
-     x86_64: '4bd7fadc454ddc205e67884bef2c926399174344ee70c1cbcb0d59828933d044'
+    aarch64: '46b5c610b6fbe6682cba6d1ef7f003478c1bc938e6d08f844e0df00157c19c8a',
+     armv7l: '46b5c610b6fbe6682cba6d1ef7f003478c1bc938e6d08f844e0df00157c19c8a',
+     x86_64: '41d90e25a0f0374383ba8dc3d0a74db8eb54bf95bf64c92d984be283640caecb'
   })
 
   depends_on 'brotli' # R
@@ -31,6 +33,7 @@ class Harfbuzz < Package
   depends_on 'gperf' => :build
   depends_on 'graphite' # R
   depends_on 'icu4c' # R
+  depends_on 'json_c' => :build
   depends_on 'libffi' => :build
   depends_on 'libpng' # R
   depends_on 'libx11' # R
@@ -41,36 +44,11 @@ class Harfbuzz < Package
   depends_on 'patchelf' => :build
   depends_on 'pcre' => :build
   depends_on 'pixman' # R Needed for cairo subproject.
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   # provides freetype (sans harfbuzz), ragel, and a non-x11 cairo stub
 
-  def self.prebuild
-    %w[fontconfig freetype].each do |build_exclusion|
-      next unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{build_exclusion}.filelist"
-
-      puts "#{build_exclusion} needs to be uninstalled before this build.".lightred
-    end
-  end
-
-  def self.patch
-    File.write 'subprojects/freetype2.wrap', <<~FREETYPE2_WRAP_EOF
-      [wrap-git]
-      directory = freetype-#{Freetype.version}
-      url=https://gitlab.freedesktop.org/freetype/freetype.git
-      revision=VER-#{Freetype.version.tr('.', '-')}
-      depth=1
-
-      [provide]
-      freetype2 = freetype_dep
-      freetype = freetype_dep
-    FREETYPE2_WRAP_EOF
-  end
-
-  def self.build
-    system 'update-ca-certificates --fresh'
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-      --wrap-mode=default \
+  meson_options '--wrap-mode=default \
       --default-library=both \
       -Dbenchmark=disabled \
       -Dcairo=enabled \
@@ -79,10 +57,68 @@ class Harfbuzz < Package
       -Dgraphite2=enabled \
       -Dintrospection=enabled \
       -Dragel_subproject=true \
-      -Dtests=disabled \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
+      -Dtests=disabled'
+
+  def self.prebuild
+    %w[fontconfig freetype].each do |build_exclusion|
+      next unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{build_exclusion}.filelist"
+
+      puts "#{build_exclusion} needs to be uninstalled before this build.".lightred
+    end
+    system 'update-ca-certificates --fresh'
+  end
+
+  def self.patch
+    File.write 'subprojects/freetype2.wrap', <<~FREETYPE2_WRAP_EOF
+      [wrap-git]
+      directory = freetype-#{Freetype.version}
+      url=https://gitlab.freedesktop.org/freetype/freetype.git
+      revision=#{Freetype.git_hashtag}
+      depth=1
+
+      [provide]
+      freetype2 = freetype_dep
+      freetype = freetype_dep
+    FREETYPE2_WRAP_EOF
+
+    File.write 'subprojects/cairo.wrap', <<~CAIRO_WRAP_EOF
+      [wrap-git]
+      directory = cairo
+      url=https://gitlab.freedesktop.org/cairo/cairo.git
+      revision=#{Cairo.git_hashtag}
+      depth=1
+
+      [provide]
+      dependency_names = cairo
+    CAIRO_WRAP_EOF
+
+    FileUtils.mkdir_p 'subprojects/packagefiles'
+    File.write 'subprojects/packagefiles/fontconfig.diff', <<~FCSTDINT_WRAP_EOF
+      diff -Npaur a/src/fcstdint.h b/src/fcstdint.h
+      --- a/src/fcstdint.h	1969-12-31 19:00:00.000000000 -0500
+      +++ b/src/fcstdint.h	2024-05-14 13:58:12.402498838 -0400
+      @@ -0,0 +1,8 @@
+      +#ifndef _FONTCONFIG_SRC_FCSTDINT_H
+      +#define _FONTCONFIG_SRC_FCSTDINT_H 1
+      +#ifndef _GENERATED_STDINT_H
+      +#define _GENERATED_STDINT_H "fontconfig #{Fontconfig.version}"
+      +#define _STDINT_HAVE_STDINT_H 1
+      +#include <stdint.h>
+      +#endif
+      +#endif
+    FCSTDINT_WRAP_EOF
+
+    File.write 'subprojects/fontconfig.wrap', <<~FONTCONFIG_WRAP_EOF
+      [wrap-git]
+      directory = fontconfig
+      url=https://gitlab.freedesktop.org/fontconfig/fontconfig.git
+      revision=#{Fontconfig.git_hashtag}
+      depth=1
+      diff_files = fontconfig.diff
+
+      [provide]
+      dependency_names = fontconfig
+    FONTCONFIG_WRAP_EOF
   end
 
   def self.install
@@ -204,63 +240,5 @@ class Harfbuzz < Package
     FileUtils.rm Dir["#{CREW_DEST_LIB_PREFIX}/libpng*"]
     FileUtils.rm Dir["#{CREW_DEST_PREFIX}/include/libpng16/png*"]
     FileUtils.rm Dir["#{CREW_DEST_LIB_PREFIX}/pkgconfig/libpng*"]
-    # Create libtool file. Needed by handbrake build
-    return if File.file?("#{CREW_DEST_LIB_PREFIX}/#{@libname}.la")
-
-    @libname = name.to_s.start_with?('lib') ? name.downcase : "lib#{name.downcase}"
-    @libnames = Dir["#{CREW_DEST_LIB_PREFIX}/#{@libname}.so*"]
-    @libnames = Dir["#{CREW_DEST_LIB_PREFIX}/#{@libname}-*.so*"] if @libnames.empty?
-    @libnames.each do |s|
-      s.gsub!("#{CREW_DEST_LIB_PREFIX}/", '')
-    end
-    @dlname = @libnames.grep(/.so./).first
-    @libname = @dlname.gsub(/.so.\d+/, '')
-    @longest_libname = @libnames.max_by(&:length)
-    @libvars = @longest_libname.rpartition('.so.')[2].split('.')
-
-    @libtool_file = <<~LIBTOOLEOF
-      # #{@libname}.la - a libtool library file
-      # Generated by libtool (GNU libtool) (Created by Chromebrew)
-      #
-      # Please DO NOT delete this file!
-      # It is necessary for linking the library.
-
-      # The name that we can dlopen(3).
-      dlname='#{@dlname}'
-
-      # Names of this library.
-      library_names='#{@libnames.reverse.join(' ')}'
-
-      # The name of the static archive.
-      old_library='#{@libname}.a'
-
-      # Linker flags that cannot go in dependency_libs.
-      inherited_linker_flags=''
-
-      # Libraries that this one depends upon.
-      dependency_libs=''
-
-      # Names of additional weak libraries provided by this library
-      weak_library_names=''
-
-      # Version information for #{name}.
-      current=#{@libvars[0]}
-      age=#{@libvars[1]}
-      revision=#{@libvars[2]}
-
-      # Is this an already installed library?
-      installed=yes
-
-      # Should we warn about portability when linking against -modules?
-      shouldnotlink=no
-
-      # Files to dlopen/dlpreopen
-      dlopen=''
-      dlpreopen=''
-
-      # Directory that this library needs to be installed in:
-      libdir='#{CREW_LIB_PREFIX}'
-    LIBTOOLEOF
-    File.write("#{CREW_DEST_LIB_PREFIX}/#{@libname}.la", @libtool_file)
   end
 end

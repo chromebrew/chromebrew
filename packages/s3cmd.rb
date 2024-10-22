@@ -2,7 +2,7 @@ require 'package'
 
 class S3cmd < Package
   description 'Command line tool for managing Amazon S3 and CloudFront services'
-  homepage 'http://s3tools.org/s3cmd'
+  homepage 'https://s3tools.org/s3cmd'
   version '2.2.0'
   license 'GPL-2+'
   compatibility 'all'
@@ -17,8 +17,8 @@ class S3cmd < Package
      x86_64: '55338685fc6229831a5960e6739244c9d4d23160abe8a3be0d7489a937a2a571'
   })
 
-  depends_on 'py3_dateutil'
-  depends_on 'py3_magic'
+  depends_on 'py3_python_dateutil'
+  depends_on 'py3_python_magic'
   depends_on 'python3' => :build
 
   def self.build

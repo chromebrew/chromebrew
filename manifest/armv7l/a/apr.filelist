@@ -1,4 +1,5 @@
 /usr/local/bin/apr-1-config
+/usr/local/include/apache2/apr.h
 /usr/local/include/apache2/apr_allocator.h
 /usr/local/include/apache2/apr_atomic.h
 /usr/local/include/apache2/apr_cstr.h
@@ -13,7 +14,6 @@
 /usr/local/include/apache2/apr_general.h
 /usr/local/include/apache2/apr_getopt.h
 /usr/local/include/apache2/apr_global_mutex.h
-/usr/local/include/apache2/apr.h
 /usr/local/include/apache2/apr_hash.h
 /usr/local/include/apache2/apr_inherit.h
 /usr/local/include/apache2/apr_lib.h

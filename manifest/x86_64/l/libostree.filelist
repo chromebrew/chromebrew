@@ -9,7 +9,6 @@
 /usr/local/include/ostree-1/ostree-diff.h
 /usr/local/include/ostree-1/ostree-dummy-enumtypes.h
 /usr/local/include/ostree-1/ostree-gpg-verify-result.h
-/usr/local/include/ostree-1/ostree.h
 /usr/local/include/ostree-1/ostree-kernel-args.h
 /usr/local/include/ostree-1/ostree-mutable-tree.h
 /usr/local/include/ostree-1/ostree-ref.h
@@ -18,17 +17,19 @@
 /usr/local/include/ostree-1/ostree-repo-file.h
 /usr/local/include/ostree-1/ostree-repo-finder-avahi.h
 /usr/local/include/ostree-1/ostree-repo-finder-config.h
-/usr/local/include/ostree-1/ostree-repo-finder.h
 /usr/local/include/ostree-1/ostree-repo-finder-mount.h
 /usr/local/include/ostree-1/ostree-repo-finder-override.h
+/usr/local/include/ostree-1/ostree-repo-finder.h
 /usr/local/include/ostree-1/ostree-repo.h
 /usr/local/include/ostree-1/ostree-sepolicy.h
 /usr/local/include/ostree-1/ostree-sign-ed25519.h
 /usr/local/include/ostree-1/ostree-sign.h
-/usr/local/include/ostree-1/ostree-sysroot.h
 /usr/local/include/ostree-1/ostree-sysroot-upgrader.h
+/usr/local/include/ostree-1/ostree-sysroot.h
 /usr/local/include/ostree-1/ostree-types.h
 /usr/local/include/ostree-1/ostree-version.h
+/usr/local/include/ostree-1/ostree.h
+/usr/local/lib/ostree/ostree-prepare-root
 /usr/local/lib64/girepository-1.0/OSTree-1.0.typelib
 /usr/local/lib64/libostree-1.la
 /usr/local/lib64/libostree-1.so
@@ -37,7 +38,6 @@
 /usr/local/lib64/pkgconfig/ostree-1.pc
 /usr/local/libexec/libostree/grub2-15_ostree
 /usr/local/libexec/libostree/ostree-trivial-httpd
-/usr/local/lib/ostree/ostree-prepare-root
 /usr/local/share/bash-completion/completions/ostree
 /usr/local/share/gir-1.0/OSTree-1.0.gir
 /usr/local/share/ostree/trusted.gpg.d/README-gpg

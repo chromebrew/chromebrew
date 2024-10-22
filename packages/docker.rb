@@ -20,7 +20,7 @@ class Docker < Package
   })
 
   depends_on 'bridge_utils' # L
-  depends_on 'btrfsprogs' => :build
+  depends_on 'btrfs_progs' => :build
   depends_on 'containerd' # L
   depends_on 'elogind' => :build
   depends_on 'eudev' => :build
@@ -43,19 +43,7 @@ class Docker < Package
   def self.build
     @cli_version = git_hashtag
 
-    binary_sha256({
-      aarch64: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
-       armv7l: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
-       x86_64: '21f9db6ec0086ab6452be9cd50a6bc980eb00caafb439a3387802c5363085ec1'
-    })
-
     @moby_version = git_hashtag
-
-    binary_sha256({
-      aarch64: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
-       armv7l: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
-       x86_64: '21f9db6ec0086ab6452be9cd50a6bc980eb00caafb439a3387802c5363085ec1'
-    })
 
     @libnetwork_version = '3f0048413d95802b9c6c836eba06bfc54f9dbd03'
     @tini_version = '0b44d3665869e46ccbac7414241b8256d6234dc4'

@@ -3,22 +3,23 @@ require 'buildsystems/qmake'
 class Qt5_svg < Qmake
   description 'Provides classes for displaying the contents of SVG files.'
   homepage 'https://www.qt.io/'
-  version '5.15.11-7d6e373'
+  kde_5_15_githash = '26fdcaff0d3d6bf6f5c847e833006577a6e8ba7d'
+  version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtsvg.git'
-  git_hashtag '7d6e373c7db9c05ef586db0eb50c87cd894229ad' # from kde/5.15 branch
+  git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '36231cdc4c997d8d667ecf71d17e6810ebacf7efe84e54f876ea57c34b7fe705',
-     armv7l: '36231cdc4c997d8d667ecf71d17e6810ebacf7efe84e54f876ea57c34b7fe705',
-     x86_64: 'c650cd8aa10f2178ddf50af0dfbbbe70dce28c16615ba98f61197e0c34ec9f76'
+    aarch64: 'e68ede4e09c34a681b51ed96b21a79864d523bb3c3d0267cbeb37599b64ce55a',
+     armv7l: 'e68ede4e09c34a681b51ed96b21a79864d523bb3c3d0267cbeb37599b64ce55a',
+     x86_64: '0a3d80df93eb60dfe82096202764d9be112622c63c59061981cad05e727f261f'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libglvnd' # R
   depends_on 'qt5_base' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 end

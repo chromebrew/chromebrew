@@ -5,7 +5,7 @@ require 'package'
 
 class Criu < Package
   description 'Utilities to checkpoint and restore processes in userspace'
-  homepage 'https://criu.org'
+  homepage 'https://criu.org/Main_Page'
   version '3.17.1'
   license 'GPL2'
   compatibility 'x86_64'
@@ -14,7 +14,7 @@ class Criu < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '1f2d925e397b49970d38fa034cb71d9af0f8e159b9b34c0afd0d8f93e6fadf5c'
+     x86_64: '1f2d925e397b49970d38fa034cb71d9af0f8e159b9b34c0afd0d8f93e6fadf5c'
   })
 
   depends_on 'glibc' # R

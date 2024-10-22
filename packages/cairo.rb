@@ -1,9 +1,10 @@
 require 'buildsystems/meson'
+# build order: harfbuzz => freetype => fontconfig => cairo => pango
 
 class Cairo < Meson
   description 'Cairo is a 2D graphics library with support for multiple output devices.'
   homepage 'https://www.cairographics.org'
-  version '1.18.0'
+  version '1.18.2'
   license 'LGPL-2.1 or MPL-1.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/cairo/cairo.git'
@@ -11,9 +12,9 @@ class Cairo < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd72e3793ff72a3f368d159b719522a9f832438caf816437214e359b0e5d4c2af',
-     armv7l: 'd72e3793ff72a3f368d159b719522a9f832438caf816437214e359b0e5d4c2af',
-     x86_64: '79cb19209eaeabc0f7fd49b4e73c38cae590d4f7e170ebe69b77c085657717ec'
+    aarch64: 'a5dc26b94030439f13d34b3dc36aa14169cd2dfff918e1953f6de6c7c01a46c6',
+     armv7l: 'a5dc26b94030439f13d34b3dc36aa14169cd2dfff918e1953f6de6c7c01a46c6',
+     x86_64: '9ae42198c6c69d131d8431a26da921bb7a1da4fb79c98a12d3ecfce1138d818b'
   })
 
   depends_on 'fontconfig' # R
@@ -29,7 +30,7 @@ class Cairo < Meson
   depends_on 'lzo' # R
   depends_on 'mesa' => :build
   depends_on 'pixman' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   conflicts_ok # because this overwrites the limited cairo from harfbuzz
 

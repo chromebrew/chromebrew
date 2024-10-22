@@ -5,11 +5,11 @@ require 'package'
 
 class Libutempter < Package
   description 'Interface for terminal emulators such as screen and xterm to record user sessions to utmp and wtmp files'
-  homepage 'http://ftp.altlinux.org/pub/people/ldv/utempter'
+  homepage 'http://ftp.altlinux.org/pub/people/ldv/utempter/'
   version '1.2.1'
   license 'LGPL'
   compatibility 'all'
-  source_url 'http://ftp.altlinux.org/pub/people/ldv/utempter/libutempter-1.2.1.tar.gz'
+  source_url 'http://ftp.altlinux.org/pub/people/ldv/utempter//libutempter-1.2.1.tar.gz'
   source_sha256 '967fef372f391de501843ad87570c6cf5dabd9651f00f1783090fbc12b2a34cb'
   binary_compression 'tar.zst'
 

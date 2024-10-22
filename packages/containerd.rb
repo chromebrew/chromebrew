@@ -24,7 +24,7 @@ class Containerd < Package
   depends_on 'glibc' # R
   depends_on 'runc'
   depends_on 'go' => :build
-  depends_on 'btrfsprogs' => :build
+  depends_on 'btrfs_progs' => :build
   depends_on 'libseccomp' => :build
   depends_on 'containers_common' => :build
   depends_on 'go_md2man' => :build

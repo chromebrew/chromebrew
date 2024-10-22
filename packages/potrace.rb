@@ -2,7 +2,7 @@ require 'package'
 
 class Potrace < Package
   description 'Potrace(TM) is a tool for tracing a bitmap, which means, transforming a bitmap into a smooth, scalable image.'
-  homepage 'http://potrace.sourceforge.net/'
+  homepage 'https://potrace.sourceforge.net/'
   version '1.16'
   license 'GPL-2'
   compatibility 'all'
@@ -18,10 +18,10 @@ class Potrace < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --with-libpotrace"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --with-libpotrace"
     system 'make'
   end
 

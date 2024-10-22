@@ -2,7 +2,7 @@ require 'package'
 
 class Llvm16_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
-  homepage 'http://llvm.org/'
+  homepage 'https://llvm.org/'
   version '16.0.6'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -14,7 +14,7 @@ class Llvm16_build < Package
     aarch64: 'ee0225da3164ae54a9d964b3606892b9cd0c6d37ade2096bbd64ce94eb2e586d',
      armv7l: 'ee0225da3164ae54a9d964b3606892b9cd0c6d37ade2096bbd64ce94eb2e586d',
        i686: '513668bf8310c34b0d0bfa26304a268a92904d3e6b81902f9148f69ab915ce6b',
-    x86_64: '53fbe0edeb0e5a7a9ad1767ce3bbaf00c306cf6f05960fe1e2bb0566ec61a748'
+     x86_64: '53fbe0edeb0e5a7a9ad1767ce3bbaf00c306cf6f05960fe1e2bb0566ec61a748'
   })
 
   depends_on 'ocaml' => :build
@@ -29,7 +29,7 @@ class Llvm16_build < Package
   depends_on 'ncurses' # R
   depends_on 'py3_pyyaml' => :build
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_env_options
@@ -39,8 +39,8 @@ class Llvm16_build < Package
   when 'aarch64', 'armv7l'
     # LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_BUILD}"
-    @ARCH_CXX_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_BUILD}"
+    @ARCH_C_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
+    @ARCH_CXX_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
     LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;compiler-rt;libclc;lld;lldb;polly;pstl'.freeze
@@ -122,11 +122,11 @@ class Llvm16_build < Package
         clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
       CLCPLUSPLUS_EOF
       system "cmake -B builddir -G Ninja llvm \
-            -DCMAKE_ASM_COMPILER_TARGET=#{CREW_BUILD} \
+            -DCMAKE_ASM_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_C_COMPILER=$(which clang) \
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
-            -DCMAKE_C_COMPILER_TARGET=#{CREW_BUILD} \
+            -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_C_FLAGS='#{@ARCH_C_LTO_FLAGS}' \
             -DCMAKE_CXX_COMPILER=$(which clang++) \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -148,7 +148,7 @@ class Llvm16_build < Package
             -DLLVM_BINUTILS_INCDIR='#{CREW_PREFIX}/include' \
             -DLLVM_BUILD_LLVM_DYLIB=ON \
             -DLLVM_CCACHE_BUILD=ON \
-            -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_BUILD} \
+            -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_TARGET} \
             -DLLVM_ENABLE_FFI=ON \
             -DLLVM_ENABLE_LTO=Thin \
             -DLLVM_ENABLE_PROJECTS='#{LLVM_PROJECTS_TO_BUILD}' \
@@ -207,7 +207,7 @@ class Llvm16_build < Package
     puts 'To avoid the repeated use of switch options,'.lightblue
     puts "try the wrapper scripts 'clc' or 'clc++'.".lightblue
     puts
-    puts 'For more information, see http://llvm.org/pubs/2008-10-04-ACAT-LLVM-Intro.pdf'.lightblue
+    puts 'For more information, see https://llvm.org/pubs/2008-10-04-ACAT-LLVM-Intro.pdf'.lightblue
     puts
   end
 end

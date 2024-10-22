@@ -25,14 +25,14 @@
 /usr/local/share/locale/pt_BR/LC_MESSAGES/obconf.mo
 /usr/local/share/locale/ro/LC_MESSAGES/obconf.mo
 /usr/local/share/locale/ru/LC_MESSAGES/obconf.mo
-/usr/local/share/locale/sr@latin/LC_MESSAGES/obconf.mo
 /usr/local/share/locale/sr/LC_MESSAGES/obconf.mo
+/usr/local/share/locale/sr@latin/LC_MESSAGES/obconf.mo
 /usr/local/share/locale/sv/LC_MESSAGES/obconf.mo
 /usr/local/share/locale/tr/LC_MESSAGES/obconf.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/obconf.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/obconf.mo
-/usr/local/share/mimelnk/application/x-openbox-theme.desktop
 /usr/local/share/mime/packages/obconf.xml
+/usr/local/share/mimelnk/application/x-openbox-theme.desktop
 /usr/local/share/obconf/obconf.glade
 /usr/local/share/obconf/video-display.png
 /usr/local/share/pixmaps/obconf.png

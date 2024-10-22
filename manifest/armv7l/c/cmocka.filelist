@@ -1,7 +1,7 @@
 /usr/local/include/cmocka.h
 /usr/local/include/cmocka_pbc.h
-/usr/local/lib/cmake/cmocka/cmocka-config.cmake
 /usr/local/lib/cmake/cmocka/cmocka-config-version.cmake
+/usr/local/lib/cmake/cmocka/cmocka-config.cmake
 /usr/local/lib/libcmocka.so
 /usr/local/lib/libcmocka.so.0
 /usr/local/lib/libcmocka.so.0.7.0

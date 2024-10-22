@@ -1,29 +1,20 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Mtools < Package
+class Mtools < Autotools
   description 'Mtools is a collection of utilities to access MS-DOS disks from GNU and Unix without mounting them.'
   homepage 'https://www.gnu.org/software/mtools/'
-  version '4.0.26'
+  version '4.0.45'
   license 'GPL-3'
-  compatibility 'all'
-  source_url "https://ftp.gnu.org/gnu/mtools/mtools-#{version}.tar.lz"
-  source_sha256 'd09cff66d7277ad36a7573fc3e9803bfa558cdda83baabaafbf7761317462283'
-  binary_compression 'tar.xz'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://ftpmirror.gnu.org/mtools/mtools-#{version}.tar.lz"
+  source_sha256 '32ca85dfc1674c536143d4e0da60e3134039eb9552e0fecfa110e9c8736093ce'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b04897069248682f60fe685c66cb74b1da86cbb393d80eca88a4445623a7f267',
-      armv7l: 'b04897069248682f60fe685c66cb74b1da86cbb393d80eca88a4445623a7f267',
-        i686: '35492c72f9e99631a58d3ad83847c9b6beca88bcda5549e5ca782fc404e7480d',
-      x86_64: 'f844076f5ac3d63daf9e0468b13de4c9d17f0b479b46a2fed44d30f618c9fccb'
+    aarch64: '301c1cbc6059963e5275ec7f474a5439acd3fb9c75575d91de6c7451e0d74519',
+     armv7l: '301c1cbc6059963e5275ec7f474a5439acd3fb9c75575d91de6c7451e0d74519',
+     x86_64: '8444664ab8fa7d98336bd4ac50927d589af516cf4f85e6d33f7ed118eb39ae10'
   })
 
-  def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      ./configure --without-x #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--without-x'
 end

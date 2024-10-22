@@ -26,7 +26,7 @@ class Libtiff < Package
   depends_on 'libglu' unless ARCH == 'i686' # R
   depends_on 'libglvnd' unless ARCH == 'i686' # R
   depends_on 'libice' unless ARCH == 'i686' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libsm' unless ARCH == 'i686' # R
   depends_on 'libwebp' unless ARCH == 'i686' # R
   depends_on 'libx11' unless ARCH == 'i686' # R
@@ -34,15 +34,16 @@ class Libtiff < Package
   depends_on 'mesa' => :build unless ARCH == 'i686'
   depends_on 'wget2' => :build
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
+  gnome
   no_env_options
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     @x = ARCH == 'i686' ? '' : '--with-x --enable-webp'
-    system "#{CREW_ENV_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} ./configure #{CREW_CONFIGURE_OPTIONS} \
       #{@x} \
       --enable-zlib \
       --enable-mdi \
@@ -59,12 +60,5 @@ class Libtiff < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     # Remove static library.
     FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/libtiff.a"
-  end
-
-  def self.postinstall
-    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-
-    system 'gdk-pixbuf-query-loaders',
-           '--update-cache'
   end
 end

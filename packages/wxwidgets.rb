@@ -1,20 +1,19 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Wxwidgets < Package
+class Wxwidgets < Autotools
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  @_ver = '3.2.3-rc1'
-  version @_ver.to_s
+  version '3.2.6'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8968dafc0c235cdf0bc0bb56d3a4f0e28f60bbf5b3f5f1de4e60c1bc3059c235',
-     armv7l: '8968dafc0c235cdf0bc0bb56d3a4f0e28f60bbf5b3f5f1de4e60c1bc3059c235',
-     x86_64: '64330626a415de673b6f71627d1d3d4250ddac9850d16a812b0d18fa999d4c2f'
+    aarch64: '8492d3b7b5cb54aa77bb309f6c8d6b41a6299a60f845b3328b936de2c55fa077',
+     armv7l: '8492d3b7b5cb54aa77bb309f6c8d6b41a6299a60f845b3328b936de2c55fa077',
+     x86_64: '56db29f66461a45c771dea8a79e08db58a9f9f1b5ca9360743989cc22b6ffcdb'
   })
 
   depends_on 'at_spi2_core' # R
@@ -36,7 +35,7 @@ class Wxwidgets < Package
   depends_on 'libglu' # R
   depends_on 'libglvnd' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libnotify' # R
   depends_on 'libpng' # R
   depends_on 'libsdl2' # R
@@ -56,7 +55,7 @@ class Wxwidgets < Package
   depends_on 'pcre2' # R
   depends_on 'wayland' # R
   depends_on 'webkit2gtk_4_1' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.preflight
     %w[wxwidgets30 wxwidgets31].each do |wxw|
@@ -68,9 +67,7 @@ class Wxwidgets < Package
     end
   end
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} \
-      --with-gtk=3 \
+  configure_options '--with-gtk=3 \
       --with-opengl \
       --enable-unicode \
       --enable-graphics_ctx \
@@ -81,18 +78,7 @@ class Wxwidgets < Package
       --with-libjpeg=sys \
       --with-libtiff=sys \
       --without-gnomevfs \
-      --disable-precomp-headers"
-    @counter = 1
-    @counter_max = 20
-    loop do
-      break if Kernel.system "make -j #{CREW_NPROC}"
-
-      puts "Make iteration #{@counter} of #{@counter_max}...".orange
-
-      @counter += 1
-      break if @counter > @counter_max
-    end
-  end
+      --disable-precomp-headers'
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

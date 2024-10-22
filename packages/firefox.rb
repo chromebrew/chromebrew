@@ -3,14 +3,16 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '122.0.1'
+  version '131.0.3'
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'x86_64'
+  min_glibc '2.35'
   source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.bz2"
-  source_sha256 '1c502c15f71bb729e6506667c32de525849d6571f4a3a21e5b02fc08312b20e7'
+  source_sha256 'fcd1e93221074a7b44445a99d81ea26e95fdc4c7e67000e748dab93cb12c2a13'
 
   depends_on 'at_spi2_core'
   depends_on 'cairo'
+  depends_on 'desktop_file_utils'
   depends_on 'dbus'
   depends_on 'dbus_glib'
   depends_on 'fontconfig'
@@ -80,9 +82,9 @@ class Firefox < Package
       FileUtils.mv 'default128.png', "#{icon_base_path}/128x128/apps/firefox.png"
     end
     # The following image is needed for crew-launcher which requires a minimum icon size of 144x144.
-    downloader 'https://files.softicons.com/download/application-icons/round-app-icons-by-ampeross/png/256x256/Mozilla.png',
-               '994e780ada1456c26b077a9f97186aefbc90be5c57e66366b1bca32df0c14c4e'
-    FileUtils.mv 'Mozilla.png', "#{icon_base_path}/256x256/apps/firefox.png"
+    downloader 'https://images.freeimages.com/fic/images/icons/783/mozilla_pack/256/firefox.png',
+               '314c3d2fe4cce3629007519a08e21c7aea8bd65ec262a11b00c0f583dd4a2087'
+    FileUtils.install 'firefox.png', "#{icon_base_path}/256x256/apps/firefox.png", mode: 0o644
   end
 
   def self.postinstall
@@ -96,6 +98,6 @@ class Firefox < Package
     else
       puts 'No change has been made.'.orange
     end
-    puts "\nType 'firefox' to get started.\n".lightblue
+    ExitMessage.add "\nType 'firefox' to get started.\n"
   end
 end

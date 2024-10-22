@@ -19,6 +19,8 @@
 /usr/local/share/man/man3/XcursorFileLoadAllImages.3.gz
 /usr/local/share/man/man3/XcursorFileLoadImage.3.gz
 /usr/local/share/man/man3/XcursorFileLoadImages.3.gz
+/usr/local/share/man/man3/XcursorFileSave.3.gz
+/usr/local/share/man/man3/XcursorFileSaveImages.3.gz
 /usr/local/share/man/man3/XcursorFilenameLoad.3.gz
 /usr/local/share/man/man3/XcursorFilenameLoadAllImages.3.gz
 /usr/local/share/man/man3/XcursorFilenameLoadCursor.3.gz
@@ -27,8 +29,6 @@
 /usr/local/share/man/man3/XcursorFilenameLoadImages.3.gz
 /usr/local/share/man/man3/XcursorFilenameSave.3.gz
 /usr/local/share/man/man3/XcursorFilenameSaveImages.3.gz
-/usr/local/share/man/man3/XcursorFileSave.3.gz
-/usr/local/share/man/man3/XcursorFileSaveImages.3.gz
 /usr/local/share/man/man3/XcursorGetDefaultSize.3.gz
 /usr/local/share/man/man3/XcursorGetTheme.3.gz
 /usr/local/share/man/man3/XcursorGetThemeCore.3.gz
@@ -56,8 +56,8 @@
 /usr/local/share/man/man3/XcursorShapeLoadCursors.3.gz
 /usr/local/share/man/man3/XcursorShapeLoadImage.3.gz
 /usr/local/share/man/man3/XcursorShapeLoadImages.3.gz
-/usr/local/share/man/man3/XcursorSupportsAnim.3.gz
 /usr/local/share/man/man3/XcursorSupportsARGB.3.gz
+/usr/local/share/man/man3/XcursorSupportsAnim.3.gz
 /usr/local/share/man/man3/XcursorTryShapeBitmapCursor.3.gz
 /usr/local/share/man/man3/XcursorTryShapeCursor.3.gz
 /usr/local/share/man/man3/XcursorXcFileLoad.3.gz

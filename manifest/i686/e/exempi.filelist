@@ -1,8 +1,8 @@
 /usr/local/bin/exempi
+/usr/local/include/exempi-2.0/exempi/xmp++.hpp
+/usr/local/include/exempi-2.0/exempi/xmp.h
 /usr/local/include/exempi-2.0/exempi/xmpconsts.h
 /usr/local/include/exempi-2.0/exempi/xmperrors.h
-/usr/local/include/exempi-2.0/exempi/xmp.h
-/usr/local/include/exempi-2.0/exempi/xmp++.hpp
 /usr/local/lib/libexempi.a
 /usr/local/lib/libexempi.la
 /usr/local/lib/libexempi.so

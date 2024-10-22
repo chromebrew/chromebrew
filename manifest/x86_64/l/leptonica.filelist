@@ -10,12 +10,12 @@
 /usr/local/bin/xtractprotos
 /usr/local/include/leptonica/allheaders.h
 /usr/local/include/leptonica/alltypes.h
-/usr/local/include/leptonica/arrayaccess.h
 /usr/local/include/leptonica/array.h
+/usr/local/include/leptonica/arrayaccess.h
 /usr/local/include/leptonica/bbuffer.h
 /usr/local/include/leptonica/bilateral.h
-/usr/local/include/leptonica/bmfdata.h
 /usr/local/include/leptonica/bmf.h
+/usr/local/include/leptonica/bmfdata.h
 /usr/local/include/leptonica/bmp.h
 /usr/local/include/leptonica/ccbord.h
 /usr/local/include/leptonica/colorfill.h
@@ -41,8 +41,8 @@
 /usr/local/include/leptonica/stringcode.h
 /usr/local/include/leptonica/sudoku.h
 /usr/local/include/leptonica/watershed.h
-/usr/local/lib64/cmake/LeptonicaConfig.cmake
 /usr/local/lib64/cmake/LeptonicaConfig-version.cmake
+/usr/local/lib64/cmake/LeptonicaConfig.cmake
 /usr/local/lib64/liblept.a
 /usr/local/lib64/liblept.la
 /usr/local/lib64/liblept.so

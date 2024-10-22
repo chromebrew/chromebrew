@@ -26,7 +26,7 @@ class Crun < Package
   depends_on 'libbpf' => :build
   depends_on 'libcap' # R
   depends_on 'libgcrypt' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libseccomp' # R
   depends_on 'yajl' # R
 
@@ -130,7 +130,7 @@ class Crun < Package
   def self.build
     @disable_criu = ARCH == 'x86_64' ? '' : '--disable-criu'
     system './autogen.sh'
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       #{@disable_criu} \
       --disable-systemd \
       --enable-shared \

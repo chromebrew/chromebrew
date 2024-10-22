@@ -5,7 +5,7 @@ class Arduino_ide < Package
   homepage 'https://www.arduino.cc/'
   version '1.8.19'
   license 'GPL-2, LGPL-2.1 and CC-BY-SA-3.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/arduino/Arduino/releases/download/1.8.19/arduino-1.8.19.tar.xz'
   source_sha256 '350c7e64a38d562c3c5b61e9b93d4d64455a2c71bd0773a5c593198b8efa578d'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Arduino_ide < Package
   binary_sha256({
     aarch64: '33bd83f692a6f241b14738bfef32a9118ebb6eb2f4936b69909e2c9f546d49d3',
      armv7l: '33bd83f692a6f241b14738bfef32a9118ebb6eb2f4936b69909e2c9f546d49d3',
-       i686: '1636654217841dd03dc22b315228ced30f9c50f67d39b6892f75e0732624dcb3',
      x86_64: 'd48a6cf203c563b343d3c33dd8c2767a8a416446ef73b34ca931ee964e88b244'
   })
 

@@ -1,20 +1,19 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Pangomm_1_4 < Package
+class Pangomm_1_4 < Meson
   description 'pangomm is the official C++ interface for the Pango font layout library.'
   homepage 'https://developer.gnome.org/pangomm/stable/'
-  version '2.46.3'
+  version '2.46.4'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/pangomm.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aebb5450624f733edb35c4397445b2992996f29820e9d13880ce348ad38d1498',
-     armv7l: 'aebb5450624f733edb35c4397445b2992996f29820e9d13880ce348ad38d1498',
-       i686: '525c1b73617d88faf5df331af60ba13c93ad4da7bce9bdb849017dd57dbc5f0b',
-     x86_64: 'bbad260e15756dcbb0f0faa65de5c95a3ab00ee8a41481d348db19cb842fe6ab'
+    aarch64: 'a86e0c8cc640c6d88c3557811255be336ec992a905a23540cec1ae8650f7a1a0',
+     armv7l: 'a86e0c8cc640c6d88c3557811255be336ec992a905a23540cec1ae8650f7a1a0',
+     x86_64: 'b0690d1ad21732cd2af6a6cf298a8ad28bb127c7c43a75a9a5deca24b17b138d'
   })
 
   depends_on 'cairomm_1_0' # R
@@ -27,16 +26,7 @@ class Pangomm_1_4 < Package
   depends_on 'mm_common' => :build
   depends_on 'pango' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dmaintainer-mode=true \
-    -Dbuild-documentation=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options '-Dbuild-documentation=false'
 end

@@ -1,12 +1,12 @@
 /usr/local/bin/mpv
 /usr/local/etc/mpv/encoding-profiles.conf
 /usr/local/include/mpv/client.h
-/usr/local/include/mpv/render_gl.h
 /usr/local/include/mpv/render.h
+/usr/local/include/mpv/render_gl.h
 /usr/local/include/mpv/stream_cb.h
 /usr/local/lib64/libmpv.so
 /usr/local/lib64/libmpv.so.2
-/usr/local/lib64/libmpv.so.2.2.0
+/usr/local/lib64/libmpv.so.2.3.0
 /usr/local/lib64/pkgconfig/mpv.pc
 /usr/local/share/applications/mpv.desktop
 /usr/local/share/bash-completion/completions/mpv

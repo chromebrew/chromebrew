@@ -2,7 +2,7 @@ require 'package'
 
 class E2fsprogs < Package
   description 'e2fsprogs are ext2/3/4 file system utilities.'
-  homepage 'http://e2fsprogs.sourceforge.net/'
+  homepage 'https://e2fsprogs.sourceforge.net/'
   version '1.47.0'
   license 'GPL-2 and BSD'
   compatibility 'all'
@@ -22,7 +22,7 @@ class E2fsprogs < Package
   depends_on 'util_linux' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}\
+    system "./configure #{CREW_CONFIGURE_OPTIONS}\
       --enable-elf-shlibs \
       --enable-lto \
       --disable-libblkid \

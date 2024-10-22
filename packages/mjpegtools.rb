@@ -5,7 +5,7 @@ class Mjpegtools < Package
   homepage 'https://mjpeg.sourceforge.io/'
   version '2.2.1'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://sourceforge.net/projects/mjpeg/files/mjpegtools/2.2.1/mjpegtools-2.2.1.tar.gz'
   source_sha256 'b180536d7d9960b05e0023a197b00dcb100929a49aab71d19d55f4a1b210f49a'
   binary_compression 'tar.zst'
@@ -13,12 +13,11 @@ class Mjpegtools < Package
   binary_sha256({
     aarch64: '769cff6f2acf252ff998f56f0d5e9c8fc9ed2a3e33f7639c4919675e783ee3ad',
      armv7l: '769cff6f2acf252ff998f56f0d5e9c8fc9ed2a3e33f7639c4919675e783ee3ad',
-       i686: '47ec9e23a5e7cb1506ae58b52efb7d0cd3d3f11ebc3acaa2f098619bb3daaf21',
      x86_64: '967ddfd9c3024f040cdc9044e6f30d66812f5e6e5aa7c8d9982d99b88cc5f579'
   })
 
   depends_on 'libdv'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libsdl'
   depends_on 'libsdl2'
@@ -40,11 +39,11 @@ class Mjpegtools < Package
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
   depends_on 'pango' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system '[ -x configure ] || ./autogen.sh'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

@@ -5,14 +5,14 @@ class Miniconda3 < Package
   homepage 'https://conda.io/miniconda.html'
   version '4.5.11'
   license 'BSD-3'
-  compatibility 'i686,x86_64'
+  compatibility 'i686 x86_64'
   source_url 'https://raw.githubusercontent.com/conda/conda/4.5.11/README.rst'
   source_sha256 '9a5d4e87325a5015bfc00167a0eb41d53e1e7a7f47f2078e50f5fb7ab3082b11'
   binary_compression 'tar.xz'
 
   binary_sha256({
-    i686: 'f42040d6e439e545bf80a372bd277e0e12370a995425b50cdfdc1fe0fb9dc491',
-    x86_64: '18f8b5c8e75dc03a441358616eb17c9000425d720df45cb446bbbfe7f84c94f9'
+       i686: 'f42040d6e439e545bf80a372bd277e0e12370a995425b50cdfdc1fe0fb9dc491',
+     x86_64: '18f8b5c8e75dc03a441358616eb17c9000425d720df45cb446bbbfe7f84c94f9'
   })
 
   def self.install

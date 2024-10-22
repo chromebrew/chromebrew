@@ -17,7 +17,7 @@ class Libnvme < Package
      x86_64: '29c8f05ab437e44302ea683763a4fec9d67f2bef1d1bcd92db473b5df01d851d'
   })
 
-  depends_on 'jsonc' => :build
+  depends_on 'json_c' => :build
   depends_on 'ninja' => :build
   depends_on 'openssl' => :build
   depends_on 'swig' => :build

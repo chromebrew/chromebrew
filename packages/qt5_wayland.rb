@@ -3,24 +3,25 @@ require 'buildsystems/qmake'
 class Qt5_wayland < Qmake
   description 'Qt Wayland'
   homepage 'https://www.qt.io/'
-  version '5.15.11-4de268c'
+  kde_5_15_githash = '6b1ba1cd0e1389d13e59b94e65da8f20a89ba03f'
+  version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtwayland.git'
-  git_hashtag '4de268cbaf6ff3b633429577f06d3d746a3b202a' # from kde/5.15 branch
+  git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5afef355eb2a6fb5d97a4e06e06e2fc13f0147f97e5c841167473878788b5ab1',
-     armv7l: '5afef355eb2a6fb5d97a4e06e06e2fc13f0147f97e5c841167473878788b5ab1',
-     x86_64: 'e2da6a9ecb37e0a2ced50e007a6debad79179d62427882522c00045141955ce8'
+    aarch64: '79f170b102db1b129c8e31ffbccbbe9e3a89edf830112a266390996fa6b552b8',
+     armv7l: '79f170b102db1b129c8e31ffbccbbe9e3a89edf830112a266390996fa6b552b8',
+     x86_64: 'c81fdc5af4f51642a5705a870377198d7d9f3ff05987334190deb3e8a8dd6b0e'
   })
 
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libdrm' # R
   depends_on 'libglvnd' # R
@@ -31,5 +32,5 @@ class Qt5_wayland < Qmake
   depends_on 'qt5_base' # R
   depends_on 'qt5_declarative' # R
   depends_on 'wayland' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 end

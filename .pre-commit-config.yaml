@@ -1,0 +1,22 @@
+---
+# To run these hooks, install pre-commit (https://pre-commit.com) and run 'pre-commit install'
+# These pre-commit hooks mirror the Github CI, so running them locally will catch errors earlier.
+repos:
+  - repo: https://github.com/rubocop/rubocop
+    rev: v1.64.1
+    hooks:
+      - id: rubocop
+  - repo: https://github.com/syntaqx/git-hooks
+    rev: v0.0.18
+    hooks:
+      - id: shellcheck
+        exclude: tools
+  - repo: https://github.com/markdownlint/markdownlint
+    rev: v0.13.0
+    hooks:
+      - id: markdownlint
+        args: [-s.mdl_style.rb]
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint

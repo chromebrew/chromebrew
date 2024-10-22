@@ -1,38 +1,39 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Tepl_6 < Package
+class Tepl_6 < Meson
   description 'Library that eases the development of GtkSourceView-based text editors and IDEs'
-  homepage 'https://wiki.gnome.org/Projects/Tepl'
-  version '6.0.0.0'
+  homepage 'https://gitlab.gnome.org/World/gedit/libgedit-tepl'
+  version "6.10.0-#{CREW_ICU_VER}"
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url 'https://gitlab.gnome.org/Archive/tepl.git'
-  git_hashtag version
-  binary_compression 'tpxz'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/World/gedit/libgedit-tepl.git'
+  git_hashtag version.split('-').first
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    i686: 'f98b0034642f3433f036107d710f7c466701f94cea809e83908ada8c98305bc2',
-    aarch64: '91d6926ec63368229ac7526d719d15d1e2ae9b5cdb4e6046519792a7ce8f5a8a',
-     armv7l: '91d6926ec63368229ac7526d719d15d1e2ae9b5cdb4e6046519792a7ce8f5a8a',
-     x86_64: 'cb6aa557f538e25b3b9dff15ec7b02699b8efc13e76749d4b262406b541b577d'
+    aarch64: '90aee89081b04bc5cd5acd569f08f8daa283dfeee45252ddb0d3cd66cb8ab7fb',
+     armv7l: '90aee89081b04bc5cd5acd569f08f8daa283dfeee45252ddb0d3cd66cb8ab7fb',
+     x86_64: '8bb15f270de6bc2ed4ad6177e97c11d8f9dc38dce9dbe154e17868ce57646ec5'
   })
 
-  depends_on 'amtk'
-  depends_on 'cairo'
-  depends_on 'glib'
-  depends_on 'gtk3'
-  depends_on 'gtksourceview'
+  depends_on 'cairo' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'gtk_doc' => :build
+  depends_on 'gsettings_desktop_schemas' => :build
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
+  depends_on 'libgedit_amtk' # R
+  depends_on 'libgedit_gfls' # R
+  depends_on 'libgedit_gtksourceview' # R
+  depends_on 'libhandy' => :build
+  depends_on 'pango' # R
   depends_on 'vala' => :build
+  depends_on 'libhandy' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dgtk_doc=false'
 end

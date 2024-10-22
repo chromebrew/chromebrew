@@ -21,7 +21,7 @@ class Oniguruma < Package
     system 'NOCONFIGURE=1 ./autogen.sh'
     system 'filefix'
     system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS}"
+      ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

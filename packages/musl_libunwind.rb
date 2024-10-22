@@ -20,6 +20,7 @@ class Musl_libunwind < Package
   depends_on 'musl_native_toolchain' => :build
   depends_on 'musl_libbacktrace' => :build
   depends_on 'musl_libucontext' => :build
+  print_source_bashrc
 
   def self.patch
     # As per https://www.linuxquestions.org/questions/linux-software-2/building-libunwind-on-x86-musl-libc-against-libucontext-4175692781/#post6235105

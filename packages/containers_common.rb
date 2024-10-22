@@ -185,7 +185,7 @@ class Containers_common < Package
     puts "Default container policy written to: #{HOME}/.config/containers/policy.json".lightgreen
   end
 
-  def self.remove
+  def self.postremove
     return if CREW_IN_CONTAINER
 
     @config_file = "#{HOME}/.config/containers/policy.json"

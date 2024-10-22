@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_unicode_linebreak < PERL
   description 'Unicode::LineBreak - UAX #14 Unicode Line Breaking Algorithm'
   homepage 'http://search.cpan.org/~nezumi/Unicode-LineBreak-2018.003/lib/Unicode/LineBreak.pod'
-  version '2019.001-perl5.38.2'
+  version "2019.001-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://github.com/hatukanezumi/Unicode-LineBreak.git'
@@ -11,10 +11,10 @@ class Perl_unicode_linebreak < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'db3f602563a48c48a482e4199a0eb14a033e28951f8b99ea25a6274cd4de93ee',
-     armv7l: 'db3f602563a48c48a482e4199a0eb14a033e28951f8b99ea25a6274cd4de93ee',
-       i686: '1ef1312e2ec8643322515daaaab94324630f81266f02970dd2b8ba51db9e4611',
-     x86_64: '78be2dc27f3779fc4dffdc529d8fb9b7962ea594b3aadefbe88f50cc4bf32c32'
+    aarch64: 'fdf8c7390909aec3bcf6eaa70ef7eb296f6d6b9cb51069b13f0f013acf14bbee',
+     armv7l: 'fdf8c7390909aec3bcf6eaa70ef7eb296f6d6b9cb51069b13f0f013acf14bbee',
+       i686: '27f9c39349b021df1119e03f013120afa4c768731d5cc1031094466ac1f951a3',
+     x86_64: '3ee61ff64b06949c68645a06aaceb348e060b4ff7c5a371760789c3079a7b330'
   })
 
   depends_on 'glibc' # R

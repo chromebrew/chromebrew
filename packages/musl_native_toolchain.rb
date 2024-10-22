@@ -21,11 +21,12 @@ class Musl_native_toolchain < Package
 
   # These libraries need to be built with the same version of gcc
   # as being built below, as the LTO versions need to match.
-  depends_on 'zlibpkg' => :build
+  depends_on 'zlib' => :build
   depends_on 'zstd' => :build
 
   is_musl
   conflicts_ok
+  print_source_bashrc
 
   @archflags = ''
   @linux_ver = '4.14.275'

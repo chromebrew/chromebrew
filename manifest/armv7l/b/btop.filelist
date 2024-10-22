@@ -1,6 +1,7 @@
 /usr/local/bin/btop
 /usr/local/share/applications/btop.desktop
 /usr/local/share/btop/README.md
+/usr/local/share/btop/themes/HotPurpleTrafficLight.theme
 /usr/local/share/btop/themes/adapta.theme
 /usr/local/share/btop/themes/ayu.theme
 /usr/local/share/btop/themes/dracula.theme
@@ -13,7 +14,6 @@
 /usr/local/share/btop/themes/gruvbox_dark.theme
 /usr/local/share/btop/themes/gruvbox_dark_v2.theme
 /usr/local/share/btop/themes/gruvbox_material_dark.theme
-/usr/local/share/btop/themes/HotPurpleTrafficLight.theme
 /usr/local/share/btop/themes/kyli0x.theme
 /usr/local/share/btop/themes/matcha-dark-sea.theme
 /usr/local/share/btop/themes/monokai.theme

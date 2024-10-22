@@ -5,7 +5,7 @@ class Wxformbuilder < Package
   homepage 'https://github.com/wxFormBuilder/wxFormBuilder'
   version '3.9.0'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/wxFormBuilder/wxFormBuilder/archive/v3.9.0.tar.gz'
   source_sha256 'e63532e71828d5e168388380fe627225f997267495da4bf6c55ef592738bdc88'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Wxformbuilder < Package
   binary_sha256({
     aarch64: '72919b2bd017609c541cdd137375e4f5b77ebbc575b64bf4c36f800ff9063acb',
      armv7l: '72919b2bd017609c541cdd137375e4f5b77ebbc575b64bf4c36f800ff9063acb',
-       i686: '401bfac8ccbad94011998a2e8f1b30605fbae2c11e11469516b171d0fe96e334',
      x86_64: 'f812d32fda14a1a379be8d8c98c291da84f0353bd7cefc6f07bad3f8ad89b4ad'
   })
 

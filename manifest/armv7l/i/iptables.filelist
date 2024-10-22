@@ -4,8 +4,8 @@
 /usr/local/include/libiptc/libiptc.h
 /usr/local/include/libiptc/libxtc.h
 /usr/local/include/libiptc/xtcshared.h
-/usr/local/include/xtables.h
 /usr/local/include/xtables-version.h
+/usr/local/include/xtables.h
 /usr/local/lib/libip4tc.a
 /usr/local/lib/libip4tc.la
 /usr/local/lib/libip4tc.so
@@ -41,12 +41,12 @@
 /usr/local/sbin/iptables-save
 /usr/local/sbin/xtables-legacy-multi
 /usr/local/share/man/man1/iptables-xml.1.zst
-/usr/local/share/man/man8/ip6tables.8.zst
 /usr/local/share/man/man8/ip6tables-apply.8.zst
 /usr/local/share/man/man8/ip6tables-restore.8.zst
 /usr/local/share/man/man8/ip6tables-save.8.zst
-/usr/local/share/man/man8/iptables.8.zst
+/usr/local/share/man/man8/ip6tables.8.zst
 /usr/local/share/man/man8/iptables-apply.8.zst
 /usr/local/share/man/man8/iptables-extensions.8.zst
 /usr/local/share/man/man8/iptables-restore.8.zst
 /usr/local/share/man/man8/iptables-save.8.zst
+/usr/local/share/man/man8/iptables.8.zst

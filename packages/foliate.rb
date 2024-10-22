@@ -1,45 +1,30 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Foliate < Package
+class Foliate < Meson
   description 'A simple and modern GTK eBook reader'
   homepage 'https://johnfactotum.github.io/foliate/'
-  version '2.6.4'
+  version '3.1.1'
   license 'GPL-3'
-  compatibility 'all'
-  source_url 'https://github.com/johnfactotum/foliate/archive/2.6.4.tar.gz'
-  source_sha256 '4a4381bff6e398f6734e1695da23f1c593ba2a67e463e07021a089ffd0741776'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/johnfactotum/foliate.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0a3f9b647599d14c483be05cc2cc4cba6e14e0cb73bd65ffed1635968c7e67e4',
-     armv7l: '0a3f9b647599d14c483be05cc2cc4cba6e14e0cb73bd65ffed1635968c7e67e4',
-       i686: 'c8a0273e75ecd0675a7e7230c5f75294bc73ec28aa1db180055c6ea3b9cfd1ed',
-     x86_64: 'd1107a7a7eded897f4b19f2f3c0fc34b83720bf2caac5be77865c223b670ccde'
+    aarch64: 'f0bc98dec8ec482f60e05a8758bb98c0a581ed9d1bb093755d7e2075cffec1c6',
+     armv7l: 'f0bc98dec8ec482f60e05a8758bb98c0a581ed9d1bb093755d7e2075cffec1c6',
+     x86_64: '24c4a76b361c91e81e8a584d8bb34bc4a417bb07408d1f7ff46af0fd22aad664'
   })
 
-  depends_on 'gettext' => :build
-  depends_on 'gjs'
-  depends_on 'iso_codes'
-  depends_on 'webkit2gtk'
   depends_on 'desktop_file_utils'
   depends_on 'gdk_base'
+  depends_on 'gettext' => :build
+  depends_on 'gjs'
+  depends_on 'gtk4'
+  depends_on 'iso_codes'
+  depends_on 'libadwaita'
   depends_on 'sommelier'
+  depends_on 'webkitgtk_6'
 
-  def self.build
-    system "meson build #{CREW_MESON_OPTIONS}"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-    FileUtils.ln_s "#{CREW_PREFIX}/bin/com.github.johnfactotum.Foliate", "#{CREW_DEST_PREFIX}/bin/foliate"
-  end
-
-  def self.postinstall
-    # generate schemas
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-    # update mime database
-    system "update-mime-database #{CREW_PREFIX}/share/mime"
-    puts "\nExecute `source #{CREW_PREFIX}/etc/env.d/09-gdk_base` to finish the installation.".lightblue
-    puts "\nAfter the above, type 'foliate' to get started.\n".lightblue
-  end
+  gnome
 end

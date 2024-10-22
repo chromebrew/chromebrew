@@ -1,35 +1,56 @@
 require 'package'
-require_relative 'gcc_build'
+Package.load_package("#{__dir__}/gcc_build.rb")
 
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version '13.2.0'
+  @gcc_libc_version = if %w[2.23 2.27 2.32 2.33 2.35 2.37].any? { |i| LIBC_VERSION.include? i }
+                        LIBC_VERSION
+                      else
+                        ARCH.eql?('i686') ? '2.23' : '2.27'
+                      end
+  version "14.2.0-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
-  puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version.to_s.gsub(/-.*/,
-                                                                                                   '') != Gcc_build.version
+  puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag "releases/gcc-#{version}"
+  git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: '58f3da30ae2a13f4a29a7e254db60c5a07b9a7cf8375203a38b19194dd60e3aa',
-     armv7l: '58f3da30ae2a13f4a29a7e254db60c5a07b9a7cf8375203a38b19194dd60e3aa',
-       i686: '6683362cfa816ea97abdfb9dabdb59ec5413104c59bb8fbf3cf8e3cc164bd526',
-     x86_64: 'e040def45cc23201fcbd38e0ffd54be81d84925f00a2f83a10e6e5b8a260b1f0'
-  })
+  case @gcc_libc_version
+  when '2.23'
+
+    binary_sha256({
+         i686: '482ada83ade66f12de9370a91e3b48bde523248fa870d4729d4644b2115c8e04'
+    })
+  when '2.27', '2.32', '2.33', '2.35'
+
+    binary_sha256({
+      aarch64: 'ed9b5e88ce0beb9862ee9ed4d75751ee7bf198bd5cb1916aa4508e57dd760b41',
+       armv7l: 'ed9b5e88ce0beb9862ee9ed4d75751ee7bf198bd5cb1916aa4508e57dd760b41',
+       x86_64: 'd10e99018633679a1503175da5e3b1aaab83f3da9e845d95ffa5450dbb191f9b'
+    })
+  when '2.37'
+    binary_sha256({
+      aarch64: '80428580f3ff02c0b8aa0b65ec64626e906b59d754851f289210360686bdb8d1',
+       armv7l: '80428580f3ff02c0b8aa0b65ec64626e906b59d754851f289210360686bdb8d1',
+       x86_64: '69114b1e6bcd208d14305e39de47e32aa8781af96f2ad3cced8333fb2d602ec3'
+    })
+  end
 
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' # R
+  depends_on 'glibc_lib' # R
 
   @gcc_name = 'libssp'
 
-  @gcc_global_opts = '--disable-libmpx \
+  @gcc_global_opts = "--build=#{CREW_TARGET} \
+  --host=#{CREW_TARGET} \
+  --target=#{CREW_TARGET} \
+  --disable-libmpx \
   --disable-install-libiberty \
-  --disable-libssp \
   --disable-multilib \
   --disable-werror \
   --enable-cet=auto \
@@ -53,7 +74,7 @@ class Libssp < Package
   --with-mpfr \
   --with-pic \
   --with-system-libunwind \
-  --with-system-zlib'
+  --with-system-zlib"
 
   @cflags = '-fPIC -pipe'
   @cxxflags = '-fPIC -pipe'
@@ -81,7 +102,7 @@ class Libssp < Package
       system "env NM=gcc-nm AR=gcc-ar RANLIB=gcc-ranlib \
         CFLAGS='#{@cflags}' CXXFLAGS='#{@cxxflags}' \
         PATH=#{@path} \
-        ../#{@gcc_name}/configure #{CREW_OPTIONS} \
+        ../#{@gcc_name}/configure #{CREW_CONFIGURE_OPTIONS} \
         #{@gcc_global_opts} \
         --enable-languages=#{@languages} \
         --program-suffix=-#{gcc_version} \

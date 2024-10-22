@@ -6,11 +6,18 @@ require 'buildsystems/pip'
 class Py3_gi_docgen < Pip
   description 'Documentation generator for GObject-based libraries'
   homepage 'https://gnome.pages.gitlab.gnome.org/gi-docgen/'
-  @_ver = '2022.2'
-  version "#{@_ver}-py3.12"
+  version "2024.1-#{CREW_PY_VER}"
   license 'Apache GPL3'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
+
+  binary_sha256({
+    aarch64: '5fd49cc13d1d61c8187e0797d772739581df1e403a7cc8676fdedc4cb2038c32',
+     armv7l: '5fd49cc13d1d61c8187e0797d772739581df1e403a7cc8676fdedc4cb2038c32',
+       i686: '828ecc70a33b61758235488060a1f30006188979f770a02b87c51aaee028cfee',
+     x86_64: '9a68e82076b1a68c6b4b87f3ddd183c802b4ee73d49fa6064dea78e8a10ba04c'
+  })
 
   depends_on 'py3_jinja2'
   depends_on 'py3_markdown'
@@ -18,7 +25,7 @@ class Py3_gi_docgen < Pip
   depends_on 'py3_pygments'
   depends_on 'python3' => :build
 
-  no_compile_needed
+  no_source_build
   depends_on 'py3_toml'
   depends_on 'py3_typogrify'
 end

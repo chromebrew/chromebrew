@@ -5,7 +5,7 @@ require 'package'
 
 class Tbb < Package
   description 'High level abstract threading library'
-  homepage 'https://www.threadingbuildingblocks.org/'
+  homepage 'https://github.com/oneapi-src/oneTBB'
   version '2021.5.0'
   license 'Apache-2.0'
   compatibility 'all'
@@ -16,8 +16,8 @@ class Tbb < Package
   binary_sha256({
     aarch64: 'f4e39ecbe901b49bc1923cc10b136b5fd01f5c73148d5d15a4dc78455ad80a07',
      armv7l: 'f4e39ecbe901b49bc1923cc10b136b5fd01f5c73148d5d15a4dc78455ad80a07',
-    i686: '7c3f26b5adca0413f399967769810420a00472f96189b98d9f474545da1f8086',
-  x86_64: 'e74dd3ba705401c6aba67c459a3522712c56aaacb0768312ddaeb5e5a257f04b'
+       i686: '7c3f26b5adca0413f399967769810420a00472f96189b98d9f474545da1f8086',
+     x86_64: 'e74dd3ba705401c6aba67c459a3522712c56aaacb0768312ddaeb5e5a257f04b'
   })
 
   depends_on 'hwloc'

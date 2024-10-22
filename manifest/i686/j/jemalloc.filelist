@@ -3,9 +3,9 @@
 /usr/local/bin/jeprof
 /usr/local/include/jemalloc/jemalloc.h
 /usr/local/lib/libjemalloc.a
-/usr/local/lib/libjemalloc_pic.a
 /usr/local/lib/libjemalloc.so
 /usr/local/lib/libjemalloc.so.2
+/usr/local/lib/libjemalloc_pic.a
 /usr/local/lib/pkgconfig/jemalloc.pc
 /usr/local/share/doc/jemalloc/jemalloc.html
 /usr/local/share/man/man3/jemalloc.3.zst

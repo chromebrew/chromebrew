@@ -11,10 +11,10 @@ class Vuze < Package
   binary_compression 'tar.xz'
 
   binary_sha256({
-    x86_64: '062957f74835d906c6788056224dda734b92e64473a4ac330afbd29041d71c74'
+     x86_64: '062957f74835d906c6788056224dda734b92e64473a4ac330afbd29041d71c74'
   })
 
-  depends_on 'jdk8'
+  depends_on 'jdk8' unless CREW_IN_CONTAINER
   depends_on 'gtk3'
 
   def self.patch
@@ -56,7 +56,7 @@ class Vuze < Package
     puts "\nType 'vuze' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dirs = ["#{HOME}/.azureus", "#{HOME}/.swt"]
     config_dirs.each do |config_dir|
       next unless Dir.exist? config_dir

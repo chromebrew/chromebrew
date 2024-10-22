@@ -1,11 +1,11 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libgnome_keyring < Package
+class Libgnome_keyring < Autotools
   description 'GNOME keyring client library'
   homepage 'https://www.gnome.org'
   version '3.12.0'
   license 'GPL-2+ and LGPL-2+'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/libgnome-keyring/3.12/libgnome-keyring-3.12.0.tar.xz'
   source_sha256 'c4c178fbb05f72acc484d22ddb0568f7532c409b0a13e06513ff54b91e947783'
   binary_compression 'tar.xz'
@@ -18,14 +18,9 @@ class Libgnome_keyring < Package
 
   depends_on 'dbus'
   depends_on 'libgcrypt'
-  depends_on 'llvm16_lib' => :build
+  depends_on 'llvm19_lib' => :build
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} --enable-introspection=no --enable-vala=no"
-    system 'make'
-  end
+  gnome
 
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  configure_options '--enable-introspection=no --enable-vala=no'
 end

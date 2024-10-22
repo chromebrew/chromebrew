@@ -2,7 +2,7 @@ require 'package'
 
 class Byobu < Package
   description 'Byobu is a GPLv3 open source text-based window manager and terminal multiplexer.'
-  homepage 'http://byobu.org/'
+  homepage 'https://www.byobu.org'
   version '5.125'
   license 'GPL-3'
   compatibility 'all'

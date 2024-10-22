@@ -9,12 +9,12 @@
 /usr/local/share/man/man3/HTTP::Response.3.zst
 /usr/local/share/man/man3/HTTP::Status.3.zst
 /usr/local/share/perl5/site_perl/HTTP/Config.pm
+/usr/local/share/perl5/site_perl/HTTP/Headers.pm
 /usr/local/share/perl5/site_perl/HTTP/Headers/Auth.pm
 /usr/local/share/perl5/site_perl/HTTP/Headers/ETag.pm
-/usr/local/share/perl5/site_perl/HTTP/Headers.pm
 /usr/local/share/perl5/site_perl/HTTP/Headers/Util.pm
 /usr/local/share/perl5/site_perl/HTTP/Message.pm
-/usr/local/share/perl5/site_perl/HTTP/Request/Common.pm
 /usr/local/share/perl5/site_perl/HTTP/Request.pm
+/usr/local/share/perl5/site_perl/HTTP/Request/Common.pm
 /usr/local/share/perl5/site_perl/HTTP/Response.pm
 /usr/local/share/perl5/site_perl/HTTP/Status.pm

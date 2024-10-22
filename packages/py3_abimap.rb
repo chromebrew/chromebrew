@@ -1,22 +1,22 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 
-class Py3_abimap < Python
+class Py3_abimap < Pip
   description 'A helper for library maintainers to use symbol versioning'
   homepage 'https://github.com/ansasaki/abimap'
-  @_ver = '0.3.2'
-  version "#{@_ver}-py3.12"
+  version "0.3.2-#{CREW_PY_VER}"
   license 'BSD-2'
   compatibility 'all'
-  source_url 'https://github.com/ansasaki/abimap.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2dfeb9e6b7ccb33314b37fa635b6abf3aa59f039005c90f1dcdaac1e811a92a6',
-     armv7l: '2dfeb9e6b7ccb33314b37fa635b6abf3aa59f039005c90f1dcdaac1e811a92a6',
-       i686: 'e04efd696ee2917057dc6dfdfd61c024f57cd53ead8957d3013f571bc9ef682a',
-     x86_64: 'e8b783f82dc557620223d76c32ed1bd40950352da810664a99f312cddee683c9'
+    aarch64: '36cd69c61ae1817edeec239eab4b3c4acc2359ac252f8e74374e3ec1fc55bd25',
+     armv7l: '36cd69c61ae1817edeec239eab4b3c4acc2359ac252f8e74374e3ec1fc55bd25',
+       i686: '0c4d7a3092775e375e5578c0d54d1fc9255ee772a99806f73c7467df7e2470fa',
+     x86_64: 'e989f3043f9d7a873a42be0bdd5071c23b8297091e2a2de0c202242ba8aa9cbc'
   })
 
   depends_on 'python3' => :build
+
+  no_source_build
 end

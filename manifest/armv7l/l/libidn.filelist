@@ -1,7 +1,7 @@
 /usr/local/bin/idn
-/usr/local/include/idna.h
 /usr/local/include/idn-free.h
 /usr/local/include/idn-int.h
+/usr/local/include/idna.h
 /usr/local/include/pr29.h
 /usr/local/include/punycode.h
 /usr/local/include/stringprep.h
@@ -40,6 +40,7 @@
 /usr/local/share/locale/vi/LC_MESSAGES/libidn.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/libidn.mo
 /usr/local/share/man/man1/idn.1.zst
+/usr/local/share/man/man3/idn_free.3.zst
 /usr/local/share/man/man3/idna_strerror.3.zst
 /usr/local/share/man/man3/idna_to_ascii_4i.3.zst
 /usr/local/share/man/man3/idna_to_ascii_4z.3.zst
@@ -51,7 +52,6 @@
 /usr/local/share/man/man3/idna_to_unicode_8z8z.3.zst
 /usr/local/share/man/man3/idna_to_unicode_8zlz.3.zst
 /usr/local/share/man/man3/idna_to_unicode_lzlz.3.zst
-/usr/local/share/man/man3/idn_free.3.zst
 /usr/local/share/man/man3/pr29_4.3.zst
 /usr/local/share/man/man3/pr29_4z.3.zst
 /usr/local/share/man/man3/pr29_8z.3.zst

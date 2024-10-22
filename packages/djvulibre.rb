@@ -5,7 +5,7 @@ require 'package'
 
 class Djvulibre < Package
   description 'Suite to create, manipulate and view DjVu déjà vu documents'
-  homepage 'http://djvu.sourceforge.net/'
+  homepage 'https://djvu.sourceforge.net/'
   @_ver = '3.5.28'
   version "#{@_ver}-1"
   license 'GPL2'
@@ -21,14 +21,14 @@ class Djvulibre < Package
      x86_64: '2d7e552fb69f2f0065b149be8046aaed7e6db3094b1f827fdd24454c2d5ddc9a'
   })
 
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libtiff'
   depends_on 'librsvg' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --disable-desktopfiles"
     system 'make'
   end

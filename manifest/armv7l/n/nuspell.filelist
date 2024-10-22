@@ -10,8 +10,8 @@
 /usr/local/include/nuspell/unicode.hxx
 /usr/local/lib/cmake/nuspell/NuspellConfig.cmake
 /usr/local/lib/cmake/nuspell/NuspellConfigVersion.cmake
-/usr/local/lib/cmake/nuspell/NuspellTargets.cmake
 /usr/local/lib/cmake/nuspell/NuspellTargets-release.cmake
+/usr/local/lib/cmake/nuspell/NuspellTargets.cmake
 /usr/local/lib/libnuspell.so
 /usr/local/lib/libnuspell.so.5
 /usr/local/lib/libnuspell.so.5.1.3

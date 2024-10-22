@@ -3,23 +3,15 @@ require 'package'
 class Glibc_build227 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
-  license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-  compatibility 'all'
-  binary_compression 'tar.xz'
-
-  depends_on 'gawk' => :build
-  depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
-  depends_on 'libidn2' => :build
-  depends_on 'texinfo' => :build
-  depends_on 'hashpipe' => :build
-
-  no_env_options
-  conflicts_ok
-
-  @libc_version = LIBC_VERSION
   version '2.27-1'
+  license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
+  @libc_version = LIBC_VERSION
+  compatibility 'x86_64 aarch64 armv7l'
+  min_glibc version.split('-').first
+  max_glibc version.split('-').first
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
   source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
+  binary_compression 'tar.xz'
 
   binary_sha256({
     aarch64: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
@@ -27,9 +19,19 @@ class Glibc_build227 < Package
      x86_64: '5fe94642dbbf900d22b715021c73ac1a601b81517f0da1e7413f0af8fbea7997'
   })
 
+  depends_on 'gawk' => :build
+  depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
+  depends_on 'libidn2' => :build
+  depends_on 'texinfo' => :build
+  depends_on 'hashpipe' => :build
+
+  conflicts_ok
+  no_env_options
+  no_upstream_update
+
   def self.patch
-      # Patch to avoid old ld issue on glibc 2.23 by using ld configure
-      # portion from https://github.com/bminor/glibc/blob/master/configure
+    # Patch to avoid old ld issue on glibc 2.23 by using ld configure
+    # portion from https://github.com/bminor/glibc/blob/master/configure
     @glibc_223_i686_patch = <<~'GLIBC_223_HEREDOC'
       --- a/configure	2021-12-22 11:42:36.689574968 -0500
       +++ b/configure	2021-12-22 11:58:43.052504544 -0500
@@ -237,7 +239,7 @@ class Glibc_build227 < Package
         # enable-obsolete-rpc will cause a conflict with libtirpc
         system "SYSROOT=''  CFLAGS='-O2 -fno-strict-aliasing -fno-stack-protector -march=armv7-a+fp' \
                 LD=ld ../configure \
-                #{CREW_OPTIONS} \
+                #{CREW_CONFIGURE_OPTIONS} \
                 --with-headers=#{CREW_PREFIX}/include \
                 ac_cv_lib_cap_cap_init=no \
                 --disable-sanity-checks \
@@ -259,7 +261,7 @@ class Glibc_build227 < Package
       when 'x86_64'
         File.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
         system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
-                 #{CREW_OPTIONS} \
+                 #{CREW_CONFIGURE_OPTIONS} \
                  --with-headers=#{CREW_PREFIX}/include \
                  --without-gd \
                  --disable-werror \
@@ -325,11 +327,9 @@ class Glibc_build227 < Package
       @crew_libc_version = @libc_version
       case ARCH
       when 'aarch64', 'armv7l'
-        FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-armhf.so.3'
-      when 'i686'
-        FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-i686.so.2'
+        FileUtils.ln_sf File.realpath('/lib/ld-linux-armhf.so.3'), 'ld-linux-armhf.so.3'
       when 'x86_64'
-        FileUtils.ln_sf "/lib64/ld-#{@crew_libc_version}.so", 'ld-linux-x86-64.so.2'
+        FileUtils.ln_sf File.realpath('/lib64/ld-linux-x86-64.so.2'), 'ld-linux-x86-64.so.2'
       end
       @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
                       libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
@@ -338,31 +338,16 @@ class Glibc_build227 < Package
       @libraries -= ['libpthread'] if @crew_libc_version.to_f >= 2.35
       @libraries.each do |lib|
         # Reject entries which aren't libraries ending in .so, and which aren't files.
-        Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          @filetype = `file #{f}`.chomp
-          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
-          end
-        end
-        # Reject entries which aren't libraries ending in .so, and which aren't files.
         # Reject text files such as libc.so because they points to files like
         # libc_nonshared.a, which are not provided by ChromeOS
-        Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          @filetype = `file #{f}`.chomp
-          puts "f: #{@filetype}" if @opt_verbose
-          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
-          elsif @opt_verbose
-            puts "#{f} excluded because #{@filetype}"
-          end
+        Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.select { |i| ['shared object', 'symbolic link'].any? { |j| `file #{i}`.chomp.include? j } }.each do |k|
+          FileUtils.ln_sf k, File.join(CREW_DEST_LIB_PREFIX, File.basename(k))
         end
       end
     end
     # Only save libnsl.so.2, since libnsl.so.1 is provided by perl
     # For this to work, build on a M107 or newer container.
-    FileUtils.cp File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2"
+    FileUtils.ln_sf File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"
 
@@ -378,6 +363,7 @@ class Glibc_build227 < Package
 
   def self.postinstall
     if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
+      FileUtils.chmod 'u=wrx', "#{CREW_LIB_PREFIX}/libc.so.6"
       @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
       @crew_libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
       puts "Package glibc version is #{@crew_libc_version}.".lightblue
@@ -388,39 +374,22 @@ class Glibc_build227 < Package
                     libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
                     libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                     libthread_db libresolv librlv librt libthread_db-1.0 libutil]
-    @libraries -= ['libpthread'] if @crew_libc_version.to_f >= 2.35
+    @libraries -= ['libpthread'] if Gem::Version.new(@libc_version.to_s) >= Gem::Version.new('2.35')
     Dir.chdir CREW_LIB_PREFIX do
       puts "System glibc version is #{@crew_libc_version}.".lightblue
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
       case ARCH
       when 'aarch64', 'armv7l'
-        FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
-      when 'i686'
-        FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-i686.so.2'
+        FileUtils.ln_sf File.realpath('/lib/ld-linux-armhf.so.3'), 'ld-linux-armhf.so.3'
       when 'x86_64'
-        FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2'
+        FileUtils.ln_sf File.realpath('/lib64/ld-linux-x86-64.so.2'), 'ld-linux-x86-64.so.2'
       end
       @libraries.each do |lib|
         # Reject entries which aren't libraries ending in .so, and which aren't files.
-        Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          @filetype = `file #{f}`.chomp
-          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
-          end
-        end
-        # Reject entries which aren't libraries ending in .so, and which aren't files.
         # Reject text files such as libc.so because they points to files like
         # libc_nonshared.a, which are not provided by ChromeOS
-        Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          @filetype = `file #{f}`.chomp
-          puts "f: #{@filetype}" if @opt_verbose
-          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
-          elsif @opt_verbose
-            puts "#{f} excluded because #{@filetype}"
-          end
+        Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.select { |i| ['shared object', 'symbolic link'].any? { |j| `file #{i}`.chomp.include? j } }.each do |k|
+          FileUtils.ln_sf k, File.join(CREW_LIB_PREFIX, File.basename(k))
         end
       end
     end

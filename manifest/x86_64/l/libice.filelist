@@ -1,5 +1,5 @@
-/usr/local/include/X11/ICE/ICEconn.h
 /usr/local/include/X11/ICE/ICE.h
+/usr/local/include/X11/ICE/ICEconn.h
 /usr/local/include/X11/ICE/ICElib.h
 /usr/local/include/X11/ICE/ICEmsg.h
 /usr/local/include/X11/ICE/ICEproto.h

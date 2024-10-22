@@ -1,7 +1,7 @@
 /usr/local/bin/inetcat
 /usr/local/bin/iproxy
-/usr/local/include/usbmuxd.h
 /usr/local/include/usbmuxd-proto.h
+/usr/local/include/usbmuxd.h
 /usr/local/lib/libusbmuxd-2.0.a
 /usr/local/lib/libusbmuxd-2.0.la
 /usr/local/lib/libusbmuxd-2.0.so

@@ -1,38 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Exo < Package
+class Exo < Autotools
   description 'Extension library for the Xfce desktop environment'
   homepage 'https://xfce.org/'
-  version '4.16.2'
+  version '4.19.0'
   license 'Apache-2.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://archive.xfce.org/src/xfce/exo/#{version.rpartition('.')[0]}/exo-#{version}.tar.bz2"
-  source_sha256 '4e89f5536afbf1cb9191cceb720fb2764df1a4fae3459512b7320841ab5a9e9d'
-  binary_compression 'tpxz'
+  source_sha256 'a0124108c197efcc576a6deeface381416dc7137b6a7e7dfa3060fad62509fb7'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dc9b3c212c72d35e40fc7710d3bba50bc60ed606f0413cc98bb6bc9f5131a6e0',
-     armv7l: 'dc9b3c212c72d35e40fc7710d3bba50bc60ed606f0413cc98bb6bc9f5131a6e0',
-       i686: '21d0447321f661d4427ba9a2ae193778d590bca295e1067367db38ad503acbae',
-     x86_64: '0badd872b7670ba922e11a798d7f49e92eedfd53c618517211ebcd5fb2f35d97'
+    aarch64: '89e5a94b33a630e03eeb5d9e748f71b9ee27001b7b749b2cc765b441ff48f999',
+     armv7l: '89e5a94b33a630e03eeb5d9e748f71b9ee27001b7b749b2cc765b441ff48f999',
+     x86_64: '4aa61da36edd80c5d36e94c34b610b9dcd41747acfca85d6834041c84eb04c9b'
   })
 
   depends_on 'libxfce4ui'
   depends_on 'xfce4_dev_tools'
   depends_on 'valgrind' => :build
 
-  def self.patch
-    FileUtils.mkdir_p 'm4'
-    system 'NOCONFIGURE=1 xdt-autogen'
-    system 'filefix'
-  end
-
-  def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

@@ -2,7 +2,7 @@ require 'package'
 
 class Mongodb < Package
   description 'MongoDB is the next-generation database that lets you create applications never before possible.'
-  homepage 'https://www.mongodb.com/'
+  homepage 'https://www.mongodb.com'
   # We use 3.2 branch here since:
   #  - 3.2 branch works well with gcc-4.9.4
   #  - master 3.4 branch requires gcc-5.4.0
@@ -33,20 +33,14 @@ MONGO-TOOLS***'"
       system "scons -j#{CREW_NPROC} install --ssl --prefix=#{CREW_DEST_PREFIX} --use-new-tools"
     when 'i686'
       system "scons -j#{CREW_NPROC} install --ssl --wiredtiger=off --prefix=#{CREW_DEST_PREFIX} --use-new-tools"
-    when 'armv7l'
+    when 'armv7l', 'aarch64'
+      # Arm 64 bit architecture is supported, but Chrome OS aarch64 is 32 bit.
+      # So, it is required to pretend it is armv7l.
       # Arm 32 bit architecture is not supported officaially.
       # Please read https://groups.google.com/forum/#!msg/mongodb-dev/G-kGjZEEam0/VSVB9fYCBAAJ for details
       system 'cd src/third_party/mozjs-38/; ./get_sources.sh'
       system 'cd src/third_party/mozjs-38/; ./gen-config.sh arm linux'
       system 'cd src/third_party/mozjs-38/; rm -rf firefix* mozilla-release'
-      system "scons -j#{CREW_NPROC} install --ssl --wiredtiger=off --mmapv1=on --prefix=#{CREW_DEST_PREFIX} --use-new-tools"
-    when 'aarch64'
-      # Arm 64 bit architecture is supported, but Chrome OS aarch64 is 32 bit.
-      # So, it is required to pretend it is armv7l.
-      system 'cd src/third_party/mozjs-38/; ./get_sources.sh'
-      system 'cd src/third_party/mozjs-38/; ./gen-config.sh arm linux'
-      system 'cd src/third_party/mozjs-38/; rm -rf firefix* mozilla-release'
-      # Not sure how to pretend it under scons
       system "scons -j#{CREW_NPROC} install --ssl --wiredtiger=off --mmapv1=on --prefix=#{CREW_DEST_PREFIX} --use-new-tools"
     end
 

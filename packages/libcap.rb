@@ -2,7 +2,7 @@ require 'package'
 
 class Libcap < Package
   description 'Libcap implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels.'
-  homepage 'https://directory.fsf.org/wiki/Libcap/'
+  homepage 'https://directory.fsf.org/wiki/Libcap'
   version '2.66'
   license 'GPL-2 or BSD'
   compatibility 'all'

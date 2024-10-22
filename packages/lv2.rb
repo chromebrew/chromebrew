@@ -5,7 +5,7 @@ require 'buildsystems/meson'
 
 class Lv2 < Meson
   description 'Plugin standard for audio systems'
-  homepage 'http://lv2plug.in/'
+  homepage 'https://lv2plug.in/'
   version '1.18.10'
   license 'ISC License'
   compatibility 'all'
@@ -20,7 +20,7 @@ class Lv2 < Meson
      x86_64: '66e128bfb3cd4e01aeeb9ae69a05fc0c4851d7297302b867c98f2a5adec4f6ac'
   })
 
-  depends_on 'asciidoc' => :build
+  depends_on 'py3_asciidoc' => :build
   depends_on 'doxygen' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R

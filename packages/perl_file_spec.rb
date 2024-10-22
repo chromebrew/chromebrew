@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_file_spec < PERL
   description 'Portably perform operations on file names'
   homepage 'https://metacpan.org/pod/File::Spec'
-  version '3.75-perl5.38.2'
+  version "3.75-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/X/XS/XSAWYERX/PathTools-3.75.tar.gz'
@@ -11,10 +11,10 @@ class Perl_file_spec < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2ed934fd7718877eab532dc0281db9e1ba496b99754d79d4f48591db27130033',
-     armv7l: '2ed934fd7718877eab532dc0281db9e1ba496b99754d79d4f48591db27130033',
-       i686: '4a6339226d7592d156e77549a2ee7efa06c5867e4633352b80410e9aad5f6746',
-     x86_64: '452caefac51321458273387f6cc4149d544827e5c21c115a81420ac76ac0ab5c'
+    aarch64: '0d530cfc20c1086d2130ba39bc8b190bff44147e60c1cf5d9e640903b793ed4f',
+     armv7l: '0d530cfc20c1086d2130ba39bc8b190bff44147e60c1cf5d9e640903b793ed4f',
+       i686: 'b29479b3ad1082eb506fc48ed9b90d89c87ec02333816bfab3c5f536847bea9a',
+     x86_64: 'fb13283d8ab33ce4b1d1c1b0832500c1756bab618bdadd7869bae58bb15cf818'
   })
 
   depends_on 'glibc' # R

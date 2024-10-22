@@ -1,6 +1,6 @@
 /usr/local/include/miniupnpc/igd_desc_parse.h
-/usr/local/include/miniupnpc/miniupnpc_declspec.h
 /usr/local/include/miniupnpc/miniupnpc.h
+/usr/local/include/miniupnpc/miniupnpc_declspec.h
 /usr/local/include/miniupnpc/miniupnpctypes.h
 /usr/local/include/miniupnpc/miniwget.h
 /usr/local/include/miniupnpc/portlistingparse.h

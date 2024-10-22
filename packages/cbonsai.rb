@@ -3,45 +3,29 @@ require 'package'
 class Cbonsai < Package
   description 'A CLI bonsai tree generator, grow bonsai trees in our terminal'
   homepage 'https://gitlab.com/jallbrit/cbonsai'
-  version '1.3.1'
+  version '1.3.1-4682ec7'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://gitlab.com/jallbrit/cbonsai.git'
-  git_hashtag "v#{version}"
+  git_hashtag '4682ec7ca7f74eca0b05b2fad8a8301d16e6978f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-     aarch64: '3cbeff88cd8a5bb190e5da9dd77f7007ed26ff022e52eacfb80e9c3e0cd79d74',
-      armv7l: '3cbeff88cd8a5bb190e5da9dd77f7007ed26ff022e52eacfb80e9c3e0cd79d74',
-        i686: '5ae0df0e6bac0b3946ae2f9d023c94cd153566880c2ad5e333bb0a2e2ee80ee0',
-      x86_64: '0783ebe521e25be4c7c251582bf1d3be3c74a319b4e8ea4c673dcea7173c2377'
+    aarch64: '5b17845d4f5c458f688455d9a50b67cef7859c7eb0c997f63d955d75f4581fa9',
+     armv7l: '5b17845d4f5c458f688455d9a50b67cef7859c7eb0c997f63d955d75f4581fa9',
+       i686: 'ca68a47382e3b61d305d79717d2568b3d3ea77dffc3c57db6bcbf822b73e9873',
+     x86_64: '5b3d01413c56c88d1801cdfcd432db1a54a5ab41a8b379187b938ce3dce9efd3'
   })
 
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
   depends_on 'scdoc' => :build
 
-  def self.patch
-    # Use correct gcc compiler
-    system "sed -i 's:= cc:= #{CREW_TGT}-gcc:' Makefile"
-
-    # Move the manpage from section 1 to section 6
-    # (See https://gitlab.com/jallbrit/cbonsai/-/merge_requests/21 for reasoning)
-    system "sed -i 's:man1:man6:g' Makefile"
-    system "sed -i 's:cbonsai.1:cbonsai.6:g' Makefile"
-    system "sed -i 's:cbonsai(1):cbonsai(6):' cbonsai.scd"
-  end
-
   def self.build
-    system 'make'
-  end
-
-  def self.check
-    # At the time of writing (20 Oct 2022), cbonsai has no checks
-    # system 'make', 'check'
+    system 'make', "PREFIX=#{CREW_PREFIX}"
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system 'make', "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

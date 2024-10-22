@@ -12,8 +12,8 @@
 /usr/local/include/dap/typeof.h
 /usr/local/include/dap/types.h
 /usr/local/include/dap/variant.h
+/usr/local/lib/cmake/cppdap/cppdap-targets-release.cmake
+/usr/local/lib/cmake/cppdap/cppdap-targets.cmake
 /usr/local/lib/cmake/cppdap/cppdapConfig.cmake
 /usr/local/lib/cmake/cppdap/cppdapConfigVersion.cmake
-/usr/local/lib/cmake/cppdap/cppdap-targets.cmake
-/usr/local/lib/cmake/cppdap/cppdap-targets-release.cmake
 /usr/local/lib/libcppdap.so

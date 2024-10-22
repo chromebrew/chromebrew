@@ -2,7 +2,7 @@ require 'package'
 
 class Datamash < Package
   description 'GNU Datamash is a command-line program which performs basic numeric, textual and statistical operations on input textual data files.'
-  homepage 'https://www.gnu.org/software/datamash'
+  homepage 'https://www.gnu.org/software/datamash/'
   version '1.8'
   license 'GPL-3'
   compatibility 'all'
@@ -18,7 +18,7 @@ class Datamash < Package
   })
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

@@ -1,11 +1,11 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gtksourceview_3 < Package
+class Gtksourceview_3 < Autotools
   description 'Source code editing widget'
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
   version '3.24.11'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.11.tar.xz'
   source_sha256 '691b074a37b2a307f7f48edc5b8c7afa7301709be56378ccf9cc9735909077fd'
   binary_compression 'tar.xz'
@@ -13,7 +13,7 @@ class Gtksourceview_3 < Package
   binary_sha256({
     aarch64: '66c81231c2866221935586f1230a5be8df66685bbe29cc9c44063a0d5999dc5b',
      armv7l: '66c81231c2866221935586f1230a5be8df66685bbe29cc9c44063a0d5999dc5b',
-     i686: '05d72c6ec22ca912ee561db41a42f3ab8ea723f1cdb607f75e8dc60466a40a19',
+       i686: '05d72c6ec22ca912ee561db41a42f3ab8ea723f1cdb607f75e8dc60466a40a19',
      x86_64: '539da69432b1494f60cdc5d498f0ec13d89835688b3775a1b0a7d72c671b8454'
   })
 
@@ -36,14 +36,10 @@ class Gtksourceview_3 < Package
   depends_on 'pango' # R
   depends_on 'vala' => :build
   depends_on 'vulkan_icd_loader' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} --enable-glade-catalog --enable-gtk-doc --disable-gtk-doc-html"
-    system 'make'
-  end
+  gnome
+  no_upstream_update
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--enable-glade-catalog --enable-gtk-doc --disable-gtk-doc-html'
 end

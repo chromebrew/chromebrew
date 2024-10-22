@@ -2,18 +2,18 @@ require 'package'
 
 class Php83 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
-  homepage 'http://www.php.net/'
-  version '8.3.1'
+  homepage 'https://www.php.net/'
+  version '8.3.12'
   license 'PHP-3.01'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://www.php.net/distributions/php-8.3.1.tar.xz'
-  source_sha256 '56445b1771b2ba5b7573453f9e8a9451e2d810b1741a352fa05259733b1e9758'
+  source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
+  source_sha256 'f774e28633e26fc8c5197f4dae58ec9e3ff87d1b4311cbc61ab05a7ad24bd131'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0827e048aad4c0de9c39b07b33fbad4411f7425ca4c702a92cd5b42588f7fa9a',
-     armv7l: '0827e048aad4c0de9c39b07b33fbad4411f7425ca4c702a92cd5b42588f7fa9a',
-     x86_64: '0ef8c1622bea39302db6110932abab1c5b204950ad61c3613f6b39e230eaa703'
+    aarch64: '215887847faa3ffe482994cf4ee9a77b506835a3e6a7eb747703845b373528bd',
+     armv7l: '215887847faa3ffe482994cf4ee9a77b506835a3e6a7eb747703845b373528bd',
+     x86_64: '03764b9fe64baedd6cc98a10fa49b1b85ecca503a4daca1f96b226f1b574b159'
   })
 
   depends_on 'aspell_en' => :build
@@ -38,9 +38,9 @@ class Php83 < Package
   depends_on 'libffi' # R
   depends_on 'libgcrypt' # R
   depends_on 'libgd' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libidn2' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libnghttp2' # R
   depends_on 'libpng' # R
   depends_on 'libpsl' # R
@@ -61,7 +61,7 @@ class Php83 < Package
   depends_on 'sqlite' # R
   depends_on 'tidy' # R
   depends_on 'unixodbc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_fhs

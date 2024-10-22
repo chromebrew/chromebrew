@@ -1,6 +1,6 @@
 require 'package'
-require_relative 'pangomm_1_4'
-require_relative 'pangomm_2_48'
+Package.load_package("#{__dir__}/pangomm_1_4.rb")
+Package.load_package("#{__dir__}/pangomm_2_48.rb")
 
 class Pangomm < Package
   description Pangomm_1_4.description

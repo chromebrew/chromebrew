@@ -2,7 +2,7 @@ require 'package'
 
 class Go_bootstrap < Package
   description 'Bootstrap tool chain for the Go programming language.'
-  homepage 'https://golang.org/'
+  homepage 'https://go.dev'
   version '1.4-1'
   license 'BSD'
   compatibility 'all'

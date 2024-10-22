@@ -2,7 +2,7 @@ require 'package'
 
 class Filecmd < Package
   description 'file and libmagic determine file type'
-  homepage 'https://www.darwinsys.com/file/'
+  homepage 'https://darwinsys.com/file/'
   version '5.45-8dc5513'
   license 'BSD-2 and GPL-3+' # Chromebrew's filefix is GPL-3+, file itself is BSD-2
   compatibility 'all'
@@ -22,7 +22,7 @@ class Filecmd < Package
   depends_on 'glibc' # R
   depends_on 'lzlib' # R Fixes checking lzlib.h usability... no
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.prebuild
@@ -54,16 +54,14 @@ class Filecmd < Package
                             --enable-bzlib \
                             --enable-xzlib \
                             --enable-fsect-man5 \
-                            --disable-libseccomp" # libseccomp is disabled because
-                            # it causes file to return "Bad system call" errors when
-                            # not run with root.
+                            --disable-libseccomp" # libseccomp is disabled because it causes file to return "Bad system call" errors when not run with root.
 
     # Build a static file binary for use in case needed with glibc brokenness.
     Dir.mkdir 'builddir-static'
     Dir.chdir 'builddir-static' do
       system "env LDFLAGS+=' -static' \
       ../configure \
-        #{CREW_OPTIONS} \
+        #{CREW_CONFIGURE_OPTIONS} \
         #{@filecmd_config_opts}"
       system 'make'
     end
@@ -72,7 +70,7 @@ class Filecmd < Package
     Dir.mkdir 'builddir-dynamic'
     Dir.chdir 'builddir-dynamic' do
       system "../configure \
-        #{CREW_OPTIONS} \
+        #{CREW_CONFIGURE_OPTIONS} \
         #{@filecmd_config_opts}"
       system 'make'
     end

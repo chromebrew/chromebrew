@@ -35,7 +35,7 @@
 /usr/local/include/fontconfig/fontconfig.h
 /usr/local/lib/libfontconfig.so
 /usr/local/lib/libfontconfig.so.1
-/usr/local/lib/libfontconfig.so.1.13.0
+/usr/local/lib/libfontconfig.so.1.14.0
 /usr/local/lib/pkgconfig/fontconfig.pc
 /usr/local/share/fontconfig/conf.avail/05-reset-dirs-sample.conf
 /usr/local/share/fontconfig/conf.avail/09-autohint-if-no-hinting.conf
@@ -56,6 +56,7 @@
 /usr/local/share/fontconfig/conf.avail/11-lcdfilter-default.conf
 /usr/local/share/fontconfig/conf.avail/11-lcdfilter-legacy.conf
 /usr/local/share/fontconfig/conf.avail/11-lcdfilter-light.conf
+/usr/local/share/fontconfig/conf.avail/11-lcdfilter-none.conf
 /usr/local/share/fontconfig/conf.avail/20-unhint-small-vera.conf
 /usr/local/share/fontconfig/conf.avail/25-unhint-nonlatin.conf
 /usr/local/share/fontconfig/conf.avail/30-metric-aliases.conf

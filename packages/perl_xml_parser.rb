@@ -3,18 +3,18 @@ require 'buildsystems/perl'
 class Perl_xml_parser < PERL
   description 'Perl XML::Parser - A perl module for parsing XML documents'
   homepage 'https://metacpan.org/pod/XML::Parser'
-  version '2.46-perl5.38.2'
+  version "2.47-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.46.tar.gz'
-  source_sha256 'd331332491c51cccfb4cb94ffc44f9cd73378e618498d4a37df9e043661c515d'
+  source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.47.tar.gz'
+  source_sha256 'ad4aae643ec784f489b956abe952432871a622d4e2b5c619e8855accbfc4d1d8'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '145526882871fa42720440e83ce399115861019371e4078877557f4ab579fd63',
-     armv7l: '145526882871fa42720440e83ce399115861019371e4078877557f4ab579fd63',
-       i686: '25d4a67d1a2ff7d83f162e09d7fbc9feef5047e1a7b07a8cacb25e3477cb6846',
-     x86_64: '152702033e12d4ad0df20d5e13bc4addc1e09f98c2040486174c82944e0ae1a9'
+    aarch64: 'dc513863d63f1a38fd10ef532e0680e7fb52294c682eaee0f8d5cb3100846b39',
+     armv7l: 'dc513863d63f1a38fd10ef532e0680e7fb52294c682eaee0f8d5cb3100846b39',
+       i686: '32a7f58beaf5e2f5472cae3008af11e3ce0cdb0c7585592f4ed0b7ec4fb29637',
+     x86_64: '8cd7897597178becc53b244e501a45e2f632b2c98f166661abe70e183386cbbf'
   })
 
   depends_on 'expat' # R

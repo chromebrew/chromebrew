@@ -2,7 +2,7 @@ require 'package'
 
 class Dejagnu < Package
   description 'DejaGnu is a framework for running test suites on GNU tools.'
-  homepage 'http://www.gnu.org/s/dejagnu/'
+  homepage 'https://www.gnu.org/software/dejagnu/'
   version '1.6.1'
   license 'GPL-3'
   compatibility 'all'

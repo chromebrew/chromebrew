@@ -25,6 +25,7 @@ class Musl_openssl < Package
 
   is_musl
   is_static
+  print_source_bashrc
 
   def self.build
     # rand-seed is needed to keep git from breaking with an error about

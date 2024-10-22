@@ -6,19 +6,18 @@ require 'package'
 class Talloc < Package
   description 'Hierarchical pool based memory allocator with destructors'
   homepage 'https://talloc.samba.org/'
-  @_ver = '2.4.1'
-  version "#{@_ver}-py3.12"
+  version "2.4.2-#{CREW_PY_VER}"
   license 'LGPL'
   compatibility 'all'
-  source_url "https://www.samba.org/ftp/talloc/talloc-#{@_ver}.tar.gz"
-  source_sha256 '410a547f08557007be0e88194f218868358edc0ab98c98ba8c167930db3d33f9'
+  source_url "https://www.samba.org/ftp/talloc/talloc-#{version.split('-').first}.tar.gz"
+  source_sha256 '85ecf9e465e20f98f9950a52e9a411e14320bc555fa257d87697b7e7a9b1d8a6'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a529ad100187f9ec5d7646d18dfb6ea8232748399007f84a053651443063c35d',
-     armv7l: 'a529ad100187f9ec5d7646d18dfb6ea8232748399007f84a053651443063c35d',
-       i686: '0f5fce2f0c8c5e4109241ae40b73312dd9995888a200a44c7ce04bfb10096974',
-     x86_64: '2c549eaadd8029a4ad1a715ac0fae3ede35ed41f3ed7447094237fcb2c01a75d'
+    aarch64: '1619aeed34e6ef39470a26f70d063b527950a9d97d3f09bc4eb0f9bb3366c29d',
+     armv7l: '1619aeed34e6ef39470a26f70d063b527950a9d97d3f09bc4eb0f9bb3366c29d',
+       i686: '0efa7e4bb5effc9461cb6ad682fd5aa2b19f993bdbd47aa08ed6cca082530a3a',
+     x86_64: '61cddcc6102531dd5395a6372ad425a45967bc2906f35e96b6157b32568a02c3'
   })
 
   depends_on 'docbook_xsl' => :build
@@ -29,7 +28,7 @@ class Talloc < Package
   depends_on 'python3' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')} \
       --sysconfdir=#{CREW_PREFIX}/etc/samba \
       --localstatedir=#{CREW_PREFIX}/var \
       --bundled-libraries=NONE \

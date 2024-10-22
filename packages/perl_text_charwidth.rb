@@ -11,10 +11,10 @@ class Perl_text_charwidth < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '43b5c99fd673e7ac47a11516367505afb89c022b9388706e19d54517436ea7bc',
-     armv7l: '43b5c99fd673e7ac47a11516367505afb89c022b9388706e19d54517436ea7bc',
-       i686: 'fd86eeb4a6a524e4fe2314fdc4c5e4f454538485526aad1751cc5e175046a528',
-     x86_64: '67be1d93589b122d905c9685378fb95eaf5403ac80472481f1baa826c0375571'
+    aarch64: 'eb79b142a945e01dae2d33d7a0219509fe6f9d4fff67edc9cf9b0298ac6cdf61',
+     armv7l: 'eb79b142a945e01dae2d33d7a0219509fe6f9d4fff67edc9cf9b0298ac6cdf61',
+       i686: '69e4e117b0d22cb2b230ef48ccf1a0b660f218ec08f2127e368a31b864eae21f',
+     x86_64: '50dc30e26bc35e7e83bfeadea1263d96ad75932766da1197f811ab621e8b124b'
   })
 
   depends_on 'glibc' # R

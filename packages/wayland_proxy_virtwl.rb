@@ -5,7 +5,7 @@ class Wayland_proxy_virtwl < Package
   homepage 'https://github.com/talex5/wayland-proxy-virtwl'
   version 'd7f58d405514dd031f2f12e402c8c6a58e62a885'
   license 'Apache-2.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/talex5/wayland-proxy-virtwl.git'
   git_hashtag version
   binary_compression 'tpxz'
@@ -13,7 +13,6 @@ class Wayland_proxy_virtwl < Package
   binary_sha256({
     aarch64: '057575d06814635e9cdf22463641569486d7e2b663c82db3c31939fef0a346e7',
      armv7l: '057575d06814635e9cdf22463641569486d7e2b663c82db3c31939fef0a346e7',
-       i686: '9258061ba55c3ce7b1a65a07a0d98ec68007118533339fd577e71f6154a8d291',
      x86_64: '8a4ccc9cca2248d2f729e6ab0d66e97e6f3799a14a5da38d955ff8fb1a41f08d'
   })
 

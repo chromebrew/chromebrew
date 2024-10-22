@@ -5,26 +5,25 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  @_ver = '2.42'
-  version @_ver
+  version '2.43.1-gcc14'
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.bz2"
-  source_sha256 'aa54850ebda5064c72cd4ec2d9b056c294252991486350d9a97ab2a6dfdfaf12'
+  source_url "https://ftpmirror.gnu.org/binutils/binutils-#{version.split('-').first}.tar.bz2"
+  source_sha256 'becaac5d295e037587b63a42fad57fe3d9d7b83f478eb24b67f9eec5d0f1872f'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '18cab64dbb525b4ae98a6c05ddea5d32029f86f90de51ea16b53f68ed38b73d8',
-     armv7l: '18cab64dbb525b4ae98a6c05ddea5d32029f86f90de51ea16b53f68ed38b73d8',
-       i686: '9fa43b03e93d1bfcb311bf7e263f71a9e30dd022090e325cf783ce594eca6716',
-     x86_64: '029c70874c1a17c3ff6f341e4cd76a92f1ffe2b764716936932a3e951bfd2020'
+    aarch64: '2054d452f15cb8b018453e863f04421ee5cec46da7af695ab279f0060ebbc00d',
+     armv7l: '2054d452f15cb8b018453e863f04421ee5cec46da7af695ab279f0060ebbc00d',
+       i686: '62db3f76719701daf87f4e299bfc033b8adeb39dea00a991b59a25a7b48a52e0',
+     x86_64: 'd457df70b8784a7e8ffcb641f377731d87846b8d269c4d5c8c94a1b2bf2ef361'
   })
-  binary_compression 'tar.zst'
 
   depends_on 'elfutils' # R
   depends_on 'flex' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.prebuild
@@ -43,26 +42,26 @@ class Binutils < Package
   def self.build
     # gprofng is broken on i686 in binutils 2.40
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30006
-    @gprofng = ARCH == 'i686' || ARCH == 'x86_64' ? '--disable-gprofng' : ''
     Dir.mkdir 'build'
     Dir.chdir 'build' do
-      system "../configure #{CREW_OPTIONS} \
+      system "../configure #{CREW_CONFIGURE_OPTIONS} \
+        --disable-bootstrap \
         --disable-gdb \
         --disable-gdbserver \
-        --disable-bootstrap \
         --disable-maintainer-mode \
-        #{@gprofng} \
         --enable-64-bit-bfd \
         --enable-colored-disassembly \
-        --enable-gold=default \
+        --enable-gold \
         --enable-install-libiberty \
         --enable-ld \
+        --enable-ld=default \
         --enable-lto \
         --enable-plugins \
         --enable-relro \
         --enable-shared \
         --enable-threads \
         --enable-vtable-verify \
+        #{ARCH == 'i686' || ARCH == 'x86_64' ? '--disable-gprofng' : ''} \
         --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new \
         --with-lib-path=#{CREW_LIB_PREFIX} \
         --with-pic \

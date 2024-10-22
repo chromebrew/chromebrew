@@ -25,7 +25,7 @@ class Libwebp < Package
   depends_on 'libglu' # R
   depends_on 'libglvnd' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libsdl' => :build
   depends_on 'libsm' # R
@@ -35,8 +35,10 @@ class Libwebp < Package
   depends_on 'libxi' # R
   depends_on 'libxmu' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
+
+  gnome
 
   def self.build
     system "cmake \
@@ -49,12 +51,5 @@ class Libwebp < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
-
-  def self.postinstall
-    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-
-    system 'gdk-pixbuf-query-loaders',
-           '--update-cache'
   end
 end

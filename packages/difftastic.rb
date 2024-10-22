@@ -3,7 +3,7 @@ require 'package'
 class Difftastic < Package
   description 'Difftastic is a structural diff tool that compares files based on their syntax.'
   homepage 'https://github.com/Wilfred/difftastic'
-  version '0.52.0'
+  version '0.60.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/Wilfred/difftastic.git'
@@ -11,10 +11,10 @@ class Difftastic < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '54412e3711977b6cc829490a847844c12cfe5fd1898b2c9ae4d10b640df91e41',
-     armv7l: '54412e3711977b6cc829490a847844c12cfe5fd1898b2c9ae4d10b640df91e41',
-       i686: '8c6df5d2ae0941782dd53136e6912837b6ba364929fabaa0d29252f24c22a1bb',
-     x86_64: '555b7c11f0b13166e5dd9ca3c826fd5c730f93cb0e2bce167a26f4b9b8fb1386'
+    aarch64: 'a76daf14ae3e2b82c635da690b27d9dfc3e83b22a856d8a1ef0c9ad5e1dfcea7',
+     armv7l: 'a76daf14ae3e2b82c635da690b27d9dfc3e83b22a856d8a1ef0c9ad5e1dfcea7',
+       i686: 'b766154522964c4b421f9afba18885d87b96a07df295329bf85a5704546ec6d5',
+     x86_64: '649c57d13b0a9d234e23b62c5c34b0025859687abb393f2c543c69f804d88b61'
   })
 
   depends_on 'rust' => :build
@@ -27,6 +27,6 @@ class Difftastic < Package
   end
 
   def self.postinstall
-    puts "\nType 'difft' to get started.\n".lightblue
+    ExitMessage.add "\nType 'difft' to get started.\n"
   end
 end

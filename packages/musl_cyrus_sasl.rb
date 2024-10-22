@@ -2,7 +2,7 @@ require 'package'
 
 class Musl_cyrus_sasl < Package
   description 'Simple Authentication and Security Layer (SASL) is a specification that describes how authentication mechanisms can be plugged into an application protocol on the wire. Cyrus SASL is an implementation of SASL that makes it easy for application developers to integrate authentication mechanisms into their application in a generic way.'
-  homepage 'https://www.cyrusimap.org/sasl'
+  homepage 'https://www.cyrusimap.org/sasl/'
   version '2.1.27'
   compatibility 'all'
   license 'custom'
@@ -26,6 +26,7 @@ class Musl_cyrus_sasl < Package
   depends_on 'musl_krb5' => :build
 
   is_static
+  print_source_bashrc
 
   def self.build
     load "#{CREW_LIB_PATH}/lib/musl.rb"

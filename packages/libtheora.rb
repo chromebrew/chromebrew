@@ -5,7 +5,7 @@ class Libtheora < Package
   homepage 'https://theora.org/'
   version '1.1.1-0'
   license 'BSD'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2'
   source_sha256 'b6ae1ee2fa3d42ac489287d3ec34c5885730b1296f0801ae577a35193d3affbc'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Libtheora < Package
   binary_sha256({
     aarch64: '8737530ad3a7923d32b273258123f8c18d9f7c7ef13be95880e9b4e85d435cfb',
      armv7l: '8737530ad3a7923d32b273258123f8c18d9f7c7ef13be95880e9b4e85d435cfb',
-       i686: '971dfa07b59b68f7c4861b2bbfd65f6b64a937c69b8fd42bf4fa4b1b567ee49f',
      x86_64: '281643b002a7da1589c01550d7a73ca0eed69d4bde2529b6c881bc8debd2bade'
   })
 

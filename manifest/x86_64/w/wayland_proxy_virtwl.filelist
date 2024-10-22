@@ -1,6 +1,6 @@
 /usr/local/bin/wayland-proxy-virtwl
 /usr/local/share/opam/bin/wayland-proxy-virtwl
 /usr/local/share/opam/doc/wayland-proxy-virtwl/README.md
-/usr/local/share/opam/lib/wayland-proxy-virtwl/dune-package
 /usr/local/share/opam/lib/wayland-proxy-virtwl/META
+/usr/local/share/opam/lib/wayland-proxy-virtwl/dune-package
 /usr/local/share/opam/lib/wayland-proxy-virtwl/opam

@@ -2,8 +2,8 @@ require 'buildsystems/autotools'
 
 class Vim < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
-  homepage 'http://www.vim.org/'
-  version '9.1.0'
+  homepage 'https://www.vim.org/'
+  version '9.1.0758'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
@@ -11,13 +11,13 @@ class Vim < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0f02ba1fd86f9f7ea9c188f544a397d1a47c6bec7de718be00b485fcdec90621',
-     armv7l: '0f02ba1fd86f9f7ea9c188f544a397d1a47c6bec7de718be00b485fcdec90621',
-       i686: 'e885a7795536483801993daecef9da25c4cef6c1a096388b27c782ed5f2ee160',
-     x86_64: '2295cbf27e8f02430c6473b1b95aa91135601c427af1b2b5381fcac061f118a4'
+    aarch64: '9607dd384bc7fb458c7df553ca57204a50d1582fc98b8a51746d2945b9dc0052',
+     armv7l: '9607dd384bc7fb458c7df553ca57204a50d1582fc98b8a51746d2945b9dc0052',
+       i686: 'fe8d07640f06016f6026ca0a03a0b3d4a9363c14adfa0ffa105a92a565884c47',
+     x86_64: '1daa3c80ced797449f0ef997a7350c9c93c23f5e9281b712e56d24afd7cd88f4'
   })
 
-  depends_on 'vim_runtime'
+  depends_on 'vim_runtime' # R
   depends_on 'acl' # R
   depends_on 'glibc' # R
   depends_on 'gpm' # R
@@ -91,9 +91,7 @@ class Vim < Autotools
     @create_vi_symlink = true if !@system_vi && !@crew_vi
     @create_vi_symlink_ask = true if @crew_vi || @system_vi
     if @create_vi_symlink_ask
-      print "\nWould you like to set vim to be the default vi [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
+      if Package.agree_default_yes('Would you like to set vim to be the default vi')
         @create_vi_symlink = true
       else
         @create_vi_symlink = false
@@ -106,7 +104,7 @@ class Vim < Autotools
     puts 'Default vi set to vim.'.lightgreen
   end
 
-  def self.remove
+  def self.postremove
     # Remove vi symlink if it is to vim.
     return unless File.symlink?("#{CREW_PREFIX}/bin/vi") && (File.readlink("#{CREW_PREFIX}/bin/vi") == "#{CREW_PREFIX}/bin/vim")
 

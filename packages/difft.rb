@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'difftastic'
+Package.load_package("#{__dir__}/difftastic.rb")
 
 class Difft < Package
   description Difftastic.description

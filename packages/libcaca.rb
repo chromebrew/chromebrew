@@ -4,7 +4,7 @@ class Libcaca < Package
   description 'libcaca is a graphics library that outputs text instead of pixels, so that it can work on older video cards or text terminals.'
   homepage 'https://github.com/cacalabs/libcaca'
   @_ver = '0.99.beta20-f42aa68'
-  version "#{@_ver}-py3.12"
+  version "#{@_ver}-#{CREW_PY_VER}"
   license 'GPL-2, ISC, LGPL-2.1 and WTFPL'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/cacalabs/libcaca/archive/f42aa68fc798db63b7b2a789ae8cf5b90b57b752.zip'
@@ -36,7 +36,7 @@ class Libcaca < Package
   depends_on 'python3'
   depends_on 'ruby' # R
   depends_on 'slang' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     downloader 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/66.patch',
@@ -50,7 +50,7 @@ class Libcaca < Package
   def self.build
     system '[ -x configure ] || ./bootstrap'
     system "./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --enable-gl \
       --enable-ncurses \
       --enable-network \

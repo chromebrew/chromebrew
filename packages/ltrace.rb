@@ -31,7 +31,7 @@ class Ltrace < Package
   def self.build
     system './autogen.sh'
     system 'filefix'
-    system "./configure #{CREW_OPTIONS} --disable-werror --without-elfutils --disable-maintainer-mode"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-werror --without-elfutils --disable-maintainer-mode"
     system 'make'
   end
 

@@ -2,7 +2,7 @@ require 'package'
 
 class Llvm17_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
-  homepage 'http://llvm.org/'
+  homepage 'https://llvm.org/'
   version '17.0.6'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -24,13 +24,13 @@ class Llvm17_build < Package
   depends_on 'libedit' # R
   depends_on 'libffi' # R
   depends_on 'libxml2' # R
-  depends_on 'llvm17_dev' => :build
+  depends_on 'llvm18_dev' => :build
   depends_on 'ncurses' # R
   depends_on 'ocaml' => :build
   depends_on 'py3_pygments' => :build
   depends_on 'py3_pyyaml' => :build
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_env_options
@@ -40,8 +40,8 @@ class Llvm17_build < Package
   when 'aarch64', 'armv7l'
     # LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_BUILD}"
-    @ARCH_CXX_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_BUILD}"
+    @ARCH_C_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
+    @ARCH_CXX_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
     LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;compiler-rt;libclc;lld;lldb;polly;pstl'.freeze
@@ -123,11 +123,11 @@ class Llvm17_build < Package
         clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
       CLCPLUSPLUS_EOF
       system "mold -run cmake -B builddir -G Ninja llvm \
-            -DCMAKE_ASM_COMPILER_TARGET=#{CREW_BUILD} \
+            -DCMAKE_ASM_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_C_COMPILER=$(which clang) \
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
-            -DCMAKE_C_COMPILER_TARGET=#{CREW_BUILD} \
+            -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_C_FLAGS='#{@ARCH_C_LTO_FLAGS}' \
             -DCMAKE_CXX_COMPILER=$(which clang++) \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -149,7 +149,7 @@ class Llvm17_build < Package
             -DLLVM_BINUTILS_INCDIR='#{CREW_PREFIX}/include' \
             -DLLVM_BUILD_LLVM_DYLIB=ON \
             -DLLVM_CCACHE_BUILD=ON \
-            -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_BUILD} \
+            -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_TARGET} \
             -DLLVM_ENABLE_FFI=ON \
             -DLLVM_ENABLE_LTO=Thin \
             -DLLVM_ENABLE_PROJECTS='#{LLVM_PROJECTS_TO_BUILD}' \
@@ -208,7 +208,7 @@ class Llvm17_build < Package
     puts 'To avoid the repeated use of switch options,'.lightblue
     puts "try the wrapper scripts 'clc' or 'clc++'.".lightblue
     puts
-    puts 'For more information, see http://llvm.org/pubs/2008-10-04-ACAT-LLVM-Intro.pdf'.lightblue
+    puts 'For more information, see https://llvm.org/pubs/2008-10-04-ACAT-LLVM-Intro.pdf'.lightblue
     puts
   end
 end

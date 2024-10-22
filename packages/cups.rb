@@ -3,7 +3,7 @@ require 'package'
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://github.com/OpenPrinting/cups'
-  version '2.4.7'
+  version '2.4.11'
   compatibility 'all'
   license 'Apache-2.0'
   source_url 'https://github.com/OpenPrinting/cups.git'
@@ -11,10 +11,10 @@ class Cups < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8136049f7ce18912c9d229244683cde85a376ce105b3cb4837d24b62c4dd0ab9',
-     armv7l: '8136049f7ce18912c9d229244683cde85a376ce105b3cb4837d24b62c4dd0ab9',
-       i686: 'e10353c24862994304572d586db10fe7ac2dc6073e0b22035591343c70352595',
-     x86_64: '8570aba4ee30599c186f334b72231d206c5decae39d6fc91a364db4079fc41df'
+    aarch64: '418860e229680e2888764d14bac8bb4beeb7c562cd60696b4eb9b81082f43baa',
+     armv7l: '418860e229680e2888764d14bac8bb4beeb7c562cd60696b4eb9b81082f43baa',
+       i686: '7e000bd57ce514ffb1b50808d366ddb230d68ffe0f47a0fb5e19cfa4f216ca73',
+     x86_64: '580c67be4ecf77554096dc7c351ea7c118cb4b7801357154137e733a2d4cd7a1'
   })
 
   depends_on 'acl' # R
@@ -22,17 +22,17 @@ class Cups < Package
   depends_on 'glibc' # R
   depends_on 'libusb' # R
   depends_on 'linux_pam' # R
-  depends_on 'llvm17_dev' => :build if %w[armv7l aarch64].include?(ARCH)
+  depends_on 'llvm19_dev' => :build if %w[armv7l aarch64].include?(ARCH)
   depends_on 'openssl' # R
   depends_on 'psmisc' # L
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_env_options
   no_fhs
 
   def self.build
     @buildoverride = %w[armv7l aarch64].include?(ARCH) ? 'CC=clang CXX=clang++ LD=mold CUPS_LINKER=mold' : ''
-    system "#{@buildoverride} ./configure #{CREW_OPTIONS} \
+    system "#{@buildoverride} ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-libusb"
     system 'make'
     File.write 'startcupsd', <<~EOF
@@ -97,8 +97,12 @@ class Cups < Package
   end
 
   def self.postinstall
-    puts "\nTo start the cups daemon, run 'startcupsd'".lightblue
-    puts "To stop the cups daemon, run 'stopcupsd'\n".lightblue
-    puts "For more information, see https://www.cups.org/doc/admin.html.\n".lightblue
+    ExitMessage.add <<~EOM.lightblue
+
+      To start the cups daemon, run 'startcupsd'
+      To stop the cups daemon, run 'stopcupsd'
+      For more information, see https://www.cups.org/doc/admin.html.
+
+    EOM
   end
 end

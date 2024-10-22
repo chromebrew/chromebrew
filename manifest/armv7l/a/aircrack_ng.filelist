@@ -21,8 +21,8 @@
 /usr/local/include/aircrack-ng/ce-wpa/memory.h
 /usr/local/include/aircrack-ng/ce-wpa/misc.h
 /usr/local/include/aircrack-ng/ce-wpa/pseudo_intrinsics.h
-/usr/local/include/aircrack-ng/ce-wpa/simd-intrinsics.h
 /usr/local/include/aircrack-ng/ce-wpa/simd-intrinsics-load-flags.h
+/usr/local/include/aircrack-ng/ce-wpa/simd-intrinsics.h
 /usr/local/include/aircrack-ng/ce-wpa/wpapsk.h
 /usr/local/include/aircrack-ng/compat.h
 /usr/local/include/aircrack-ng/cowpatty/cowpatty.h

@@ -2,10 +2,10 @@ require 'package'
 
 class Irrlicht < Package
   description 'An open source realtime 3D engine written in C++ — Libraries and headers'
-  homepage 'http://irrlicht.sourceforge.net/'
+  homepage 'https://irrlicht.sourceforge.io/'
   version '1.8.5'
   license 'ZLIB'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://downloads.sourceforge.net/irrlicht/irrlicht-1.8.5.zip'
   source_sha256 'effb7beed3985099ce2315a959c639b4973aac8210f61e354475a84105944f3d'
   binary_compression 'tar.zst'
@@ -13,21 +13,20 @@ class Irrlicht < Package
   binary_sha256({
     aarch64: '6d0e198597e15bb4e9606803abfd3981e259fa4146c9aeb51c407d3b1ef41686',
      armv7l: '6d0e198597e15bb4e9606803abfd3981e259fa4146c9aeb51c407d3b1ef41686',
-       i686: '8c1332d73f73efeff230e86250d796a7daf4a8d696f782ba6823cee79f7f3c60',
      x86_64: 'fb72b83979027060249a52e0ec38f0d92e1ae7b04c836230baa744eb967316fd'
   })
 
   depends_on 'libxrandr'
   depends_on 'libglvnd'
   depends_on 'libxxf86vm'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'dos2unix' => :build
   depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'mesa' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system 'curl -#LO https://dev.gentoo.org/~mgorny/dist/irrlicht-1.8.4-patchset.tar.bz2'

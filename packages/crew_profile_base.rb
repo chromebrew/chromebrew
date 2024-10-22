@@ -3,21 +3,19 @@ require 'package'
 class Crew_profile_base < Package
   description 'Crew-profile-base sets up Chromebrew\'s environment capabilities.'
   homepage 'https://github.com/chromebrew/crew-profile-base'
-  version '0.0.11'
+  version '0.0.23'
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://github.com/chromebrew/crew-profile-base/archive/refs/tags/#{version}.tar.gz"
-  source_sha256 '4f13afdca466ac51c0c76373cd909fa3ae76befd9d45394e8119109dbdee9e68'
+  source_sha256 'e063af6611d7a622c3dfc11bb3bbeb3db4b2c5335731610aa0799880f5afc0aa'
 
   no_compile_needed
+  print_source_bashrc
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/profile.d"
-
-    # dbus file moved to dbus package, so remove it.
-    FileUtils.rm_f './src/env.d/04-dbus'
 
     # Don't overwrite custom changes
     %w[01-locale 02-editor 03-pager 99-custom].each do |custom_files|
@@ -77,19 +75,21 @@ class Crew_profile_base < Package
     ]
 
     @pager_default = Selector.new(@pager_options).show_prompt
-    File.write 'pagerenv', <<~PAGER_ENV_EOF
-      # The user's preferred pager is set here by the crew_profile_base
-      # postinstall.
+    Dir.chdir CREW_DEST_DIR do
+      File.write 'pagerenv', <<~PAGER_ENV_EOF
+        # The user's preferred pager is set here by the crew_profile_base
+        # postinstall.
 
-      # PAGER from container PAGER variable is passed through into the
-      # CONTAINER_PAGER variable.
-      if [ -z "$CONTAINER_PAGER" ]; then
-        PAGER="#{@pager_default}"
-      else
-        PAGER="$CONTAINER_PAGER"
-      fi
-    PAGER_ENV_EOF
-    FileUtils.install 'pagerenv', "#{CREW_PREFIX}/etc/env.d/03-pager", mode: 0o644
+        # PAGER from container PAGER variable is passed through into the
+        # CONTAINER_PAGER variable.
+        if [ -z "$CONTAINER_PAGER" ]; then
+          PAGER="#{@pager_default}"
+        else
+          PAGER="$CONTAINER_PAGER"
+        fi
+      PAGER_ENV_EOF
+      FileUtils.install 'pagerenv', "#{CREW_PREFIX}/etc/env.d/03-pager", mode: 0o644
+    end
     puts "The default PAGER has been set to #{@pager_default}.".lightblue
   end
 end

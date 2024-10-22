@@ -2,11 +2,11 @@ require 'package'
 
 class Musl_xz < Package
   description 'XZ is free general-purpose data compression software with a high compression ratio.'
-  homepage 'http://tukaani.org/xz/'
+  homepage 'https://tukaani.org/xz/'
   version '5.2.5-e7da-1'
   license 'public-domain, LGPL-2.1+ and GPL-2+'
   compatibility 'all'
-  source_url 'https://github.com/xz-mirror/xz.git'
+  source_url 'https://github.com/tukaani-project/xz.git'
   git_hashtag 'e7da44d5151e21f153925781ad29334ae0786101'
   binary_compression 'tpxz'
 
@@ -21,6 +21,7 @@ class Musl_xz < Package
   depends_on 'musl_native_toolchain' => :build
 
   is_static
+  print_source_bashrc
 
   def self.build
     load "#{CREW_LIB_PATH}/lib/musl.rb"

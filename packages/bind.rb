@@ -2,43 +2,39 @@ require 'buildsystems/autotools'
 
 class Bind < Autotools
   description 'BIND is open source software that enables you to publish your Domain Name System (DNS) information on the Internet, and to resolve DNS queries for your users.'
-  homepage 'https://www.isc.org/downloads/bind/'
-  version '9.18.21'
-  license 'Apache-2.0, BSD, BSD-2, GPL-2, HPND, ISC and MPL-2.0'
+  homepage 'https://www.isc.org/bind/'
+  version '9.21.0'
+  license 'MPL-2.0'
   compatibility 'all'
-  source_url "https://ftp.isc.org/isc/bind9/#{version}/bind-#{version}.tar.xz"
-  source_sha256 'a556be22505d9ea4f9c6717aee9c549739c68498aff3ca69035787ecc648fec5'
+  source_url 'https://gitlab.isc.org/isc-projects/bind9.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b6041be3e1a2da68142d25e5322055e59776c22f3be3963bfec8f98b99ca516f',
-     armv7l: 'b6041be3e1a2da68142d25e5322055e59776c22f3be3963bfec8f98b99ca516f',
-       i686: '899bad21b6ebc0ff3928282943cde4c7c332da860cf5e652fc0ecefb532d80ae',
-     x86_64: '2ace6554897a788547b015c55e2bdf7279c02e1cb3bbfb969c1c6f6aa6a63169'
+    aarch64: 'c884e14dd54d6371f913ea29b2e71dd6dfc781484e758665b533218fb63c2dc7',
+     armv7l: 'c884e14dd54d6371f913ea29b2e71dd6dfc781484e758665b533218fb63c2dc7',
+       i686: '7650f2e7c4cc2aa1e4b28150e35c89b40c00351440d40495d8df990247540af7',
+     x86_64: '4cae0f0b7c17ea994e1d1be8c97ba4a61e78104aa2a934a4070ece76c5c0e64e'
   })
 
   depends_on 'e2fsprogs' # R
   depends_on 'glibc' # R
-  depends_on 'icu4c' => :build
   depends_on 'jemalloc' # R
-  depends_on 'jsonc' # R
+  depends_on 'json_c' # R
   depends_on 'krb5' # R
   depends_on 'libcap' # R
   depends_on 'libedit' # R
   depends_on 'libidn2' # R
   depends_on 'libnghttp2' # R
-  depends_on 'libunistring' => :build
-  depends_on 'liburcu' => :build
+  depends_on 'libunistring' # R
+  depends_on 'liburcu' # R
   depends_on 'libuv' # R
   depends_on 'libxml2' # R
-  depends_on 'ncurses' => :build
+  depends_on 'ncurses' # R
   depends_on 'openssl' # R
   depends_on 'py3_ply' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'sphinx' => :build
+  depends_on 'zlib' # R
 
-  pre_configure_options "CFLAGS='#{CREW_ENV_OPTIONS_HASH['CFLAGS']} -DDIG_SIGCHASE'"
-  configure_options '--enable-fixed-rrset \
-         --enable-full-report \
-         --with-openssl \
-         --with-libidn2'
+  configure_options '--enable-fixed-rrset --enable-full-report --with-libidn2'
 end

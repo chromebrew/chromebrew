@@ -2,7 +2,7 @@ require 'package'
 
 class Txt2regex < Package
   description 'Regex wizard for the terminal, written in Bash'
-  homepage 'http://aurelio.net/projects/txt2regex/'
+  homepage 'https://aurelio.net/projects/txt2regex/'
   version '0.9'
   license 'GPL-2'
   compatibility 'all'

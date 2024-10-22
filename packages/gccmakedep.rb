@@ -2,7 +2,7 @@ require 'package'
 
 class Gccmakedep < Package
   description 'A utility to list the resource database of an X application.'
-  homepage 'https://xorg.freedesktop.org'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.3'
   license 'MIT'
   compatibility 'all'
@@ -18,7 +18,7 @@ class Gccmakedep < Package
   })
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
             --sysconfdir=#{CREW_PREFIX}/etc"
     system 'make'
   end

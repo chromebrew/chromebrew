@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Imagemagick7 < Autotools
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  @_ver = '7.1.1-23'
-  version "#{@_ver}-perl5.38"
+  version "7.1.1-36-perl5.40-#{CREW_ICU_VER}"
   license 'imagemagick'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/ImageMagick/ImageMagick.git'
-  git_hashtag @_ver
+  # The imagemagick7 version always has a dash in it.
+  git_hashtag version.reverse.split('-', 3).collect(&:reverse).reverse.first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fefbb13329799de2d4d62eca465c7fd5ac086386cc1e35d0b362605041e9b598',
-     armv7l: 'fefbb13329799de2d4d62eca465c7fd5ac086386cc1e35d0b362605041e9b598',
-     x86_64: '7c0a0c4340d25380efd0fabe2eb92c2b87ce49141b79cf696aaf7be9fc187ecc'
+    aarch64: '5a3607ff766e0da06451f8a1d19c2b794a8984f7b5443bdba5d995937949c35b',
+     armv7l: '5a3607ff766e0da06451f8a1d19c2b794a8984f7b5443bdba5d995937949c35b',
+     x86_64: '8fe3bfce6062370e8bc73bc2f16532ffd07944f8f68864d5494d7fbd6b584cfc'
   })
 
   depends_on 'bzip2' # R
@@ -39,7 +39,7 @@ class Imagemagick7 < Autotools
   depends_on 'libdeflate' # R
   depends_on 'libheif' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
   depends_on 'libmd' # R
   depends_on 'libpng' # R
@@ -62,8 +62,10 @@ class Imagemagick7 < Autotools
   depends_on 'pango' # R
   depends_on 'util_linux' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
+
+  no_upstream_update
 
   def self.preinstall
     imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp

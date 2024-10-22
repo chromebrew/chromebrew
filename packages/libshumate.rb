@@ -1,47 +1,41 @@
 # Adapted from Arch Linux libshumate PKGBUILD at:
 # https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=libshumate
 
-require 'package'
+require 'buildsystems/meson'
 
-class Libshumate < Package
+class Libshumate < Meson
   description 'GTK toolkit providing widgets for embedded maps'
   homepage 'https://wiki.gnome.org/Projects/libshumate'
-  version '1.0.1'
+  version '1.2.rc2'
   license 'LGPL'
-  compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libshumate/-/archive/1.0.1/libshumate-1.0.1.tar.bz2'
-  source_sha256 '004188509189eab352b8f86701cec223c15c8fa52b1e0cf5379877725a1e9014'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/libshumate.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f52fac3cb098d9048580df930016a6fa597e29140eb1680c34d38b98bfd74fb2',
-     armv7l: 'f52fac3cb098d9048580df930016a6fa597e29140eb1680c34d38b98bfd74fb2',
-       i686: '070e45c5b594a7c8f1e68e4100a456a61301d06781946c96b9fccb1be4851c9f',
-     x86_64: '47f61acf76edf10e4e127efe5ba0b3b40781540ce14b5df35a0b28e0d514254d'
+    aarch64: '370044f75080c1149725e608c1a455f6918f76a26e2402008f68bd8f65c140e2',
+     armv7l: '370044f75080c1149725e608c1a455f6918f76a26e2402008f68bd8f65c140e2',
+     x86_64: '8f79c0bc9c97cf72c48cc64b88064b74ee95196f4be9be664002670be8c29175'
   })
 
-  depends_on 'gtk4'
-  depends_on 'py3_gi_docgen' => :build
-  depends_on 'gobject_introspection' => :build
-  depends_on 'gtk_doc' => :build
-  depends_on 'vala' => :build
-  depends_on 'gcc_lib' # R
+  depends_on 'cairo' # R
+  depends_on 'gcc_lib' => :build
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
+  depends_on 'gtk4' # R
   depends_on 'harfbuzz' # R
+  depends_on 'json_glib' # R
   depends_on 'libsoup' # R
+  depends_on 'pango' # R
+  depends_on 'protobuf_c' # R
   depends_on 'sqlite' # R
+  depends_on 'vala' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dsysprof=disabled -Dgtk_doc=false'
 end

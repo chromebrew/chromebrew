@@ -1,6 +1,7 @@
 /usr/local/bin/newsboat
 /usr/local/bin/podboat
 /usr/local/share/doc/newsboat/CHANGELOG.md
+/usr/local/share/doc/newsboat/contrib/README.md
 /usr/local/share/doc/newsboat/contrib/bookmark-evernote.sh
 /usr/local/share/doc/newsboat/contrib/bookmark-pinboard.sh
 /usr/local/share/doc/newsboat/contrib/colorschemes/commander
@@ -23,12 +24,11 @@
 /usr/local/share/doc/newsboat/contrib/getpocket.com/readme.md
 /usr/local/share/doc/newsboat/contrib/getpocket.com/send-to-pocket.sh
 /usr/local/share/doc/newsboat/contrib/heise.rb
+/usr/local/share/doc/newsboat/contrib/image-preview/README.org
 /usr/local/share/doc/newsboat/contrib/image-preview/nbparser
 /usr/local/share/doc/newsboat/contrib/image-preview/nbrun
-/usr/local/share/doc/newsboat/contrib/image-preview/README.org
 /usr/local/share/doc/newsboat/contrib/image-preview/vifmimg
 /usr/local/share/doc/newsboat/contrib/pinboard.pl
-/usr/local/share/doc/newsboat/contrib/README.md
 /usr/local/share/doc/newsboat/contrib/slashdot.rb
 /usr/local/share/doc/newsboat/contrib/urls-maintenance.sh
 /usr/local/share/doc/newsboat/examples/config

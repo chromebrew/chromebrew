@@ -1,4 +1,5 @@
 require 'package'
+require 'misc_functions'
 
 class Codelobster < Package
   description 'Free cross-platform IDE for PHP/HTML/CSS/JavaScript development'
@@ -14,13 +15,12 @@ class Codelobster < Package
   depends_on 'sommelier'
 
   binary_sha256({
-    x86_64: 'bb07382b79b0c7a2a11fb35f2364e21497623362f8ef1a21fac0dbda15a5b6d8'
+     x86_64: 'bb07382b79b0c7a2a11fb35f2364e21497623362f8ef1a21fac0dbda15a5b6d8'
   })
 
   def self.preflight
     abort 'Please remove qt5_base before installing.'.lightred if File.exist? "#{CREW_LIB_PREFIX}/libQt5Core.so.5"
-    free_space = `echo $(($(stat -f --format="%a*%S" .)))`.chomp.to_i
-    abort 'Not enough free disk space.  You need at least 1.2 GB to install.'.lightred if free_space < 1288490188
+    MiscFunctions.check_free_disk_space(1288490188)
   end
 
   def self.patch

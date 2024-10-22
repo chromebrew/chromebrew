@@ -1,6 +1,6 @@
 /usr/local/bin/econftool
-/usr/local/include/libeconf_ext.h
 /usr/local/include/libeconf.h
+/usr/local/include/libeconf_ext.h
 /usr/local/lib/libeconf.so
 /usr/local/lib/libeconf.so.0
 /usr/local/lib/libeconf.so.0.5.2

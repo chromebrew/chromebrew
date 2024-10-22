@@ -2,7 +2,7 @@ require 'package'
 
 class Git_lfs < Package
   description 'Git extension for versioning large files'
-  homepage 'https://git-lfs.github.com'
+  homepage 'https://git-lfs.com/'
   version '2.13.2'
   license 'AGPL-3'
   compatibility 'all'

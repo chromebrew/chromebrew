@@ -2,7 +2,7 @@ require 'package'
 
 class Leptonica < Package
   description 'Software that is broadly useful for image processing and image analysis applications'
-  homepage 'http://www.leptonica.com/'
+  homepage 'http://www.leptonica.org'
   version '1.83.1'
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
@@ -20,13 +20,13 @@ class Leptonica < Package
   depends_on 'glibc' # R
   depends_on 'harfbuzz' => :build
   depends_on 'libdeflate' => :build
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libtiff' # R
   depends_on 'libwebp' # R
   depends_on 'openjpeg' # R
   depends_on 'xzutils' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' => :build
 
   def self.patch

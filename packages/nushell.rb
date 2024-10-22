@@ -3,19 +3,19 @@ require 'package'
 class Nushell < Package
   description 'A new type of shell'
   homepage 'https://www.nushell.sh/'
-  version '0.88.0'
+  version '0.99.1'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.28'
   source_url({
-    aarch64: 'https://github.com/nushell/nushell/releases/download/0.88.0/nu-0.88.0-armv7-unknown-linux-gnueabihf.tar.gz',
-     armv7l: 'https://github.com/nushell/nushell/releases/download/0.88.0/nu-0.88.0-armv7-unknown-linux-gnueabihf.tar.gz',
-     x86_64: 'https://github.com/nushell/nushell/releases/download/0.88.0/nu-0.88.0-x86_64-unknown-linux-gnu.tar.gz'
+    aarch64: "https://github.com/nushell/nushell/releases/download/#{version}/nu-#{version}-armv7-unknown-linux-gnueabihf.tar.gz",
+     armv7l: "https://github.com/nushell/nushell/releases/download/#{version}/nu-#{version}-armv7-unknown-linux-gnueabihf.tar.gz",
+     x86_64: "https://github.com/nushell/nushell/releases/download/#{version}/nu-#{version}-x86_64-unknown-linux-gnu.tar.gz"
   })
   source_sha256({
-    aarch64: '81a8a45ae50c8574ea59017e71ba8be56b13899fb16477c97be50d56beb1d17e',
-     armv7l: '81a8a45ae50c8574ea59017e71ba8be56b13899fb16477c97be50d56beb1d17e',
-     x86_64: 'f9359784ad6f09e840bc2b6fbb6b7d17964109009d7ad460c16db30ef0cea414'
+    aarch64: '68cc9d9de1b6015e646199bc3806f61b7bd228ac345d62b521d328902a883c17',
+     armv7l: '68cc9d9de1b6015e646199bc3806f61b7bd228ac345d62b521d328902a883c17',
+     x86_64: '3aeb6b790414e29296097790074f2e03db29b0aba329306e3ffdbfefa3e2664f'
   })
 
   no_compile_needed

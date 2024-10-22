@@ -2,11 +2,11 @@
 /usr/local/share/man/man1/sejda-console.1.zst
 /usr/local/share/sejda_console/bin/sejda-console
 /usr/local/share/sejda_console/bin/sejda-console.bat
+/usr/local/share/sejda_console/doc/README.txt
+/usr/local/share/sejda_console/doc/examples/README.txt
 /usr/local/share/sejda_console/doc/examples/merge-filelist-config.csv
 /usr/local/share/sejda_console/doc/examples/merge-filelist-config.xml
-/usr/local/share/sejda_console/doc/examples/README.txt
 /usr/local/share/sejda_console/doc/examples/xsd/merge-filelist-config.xsd
-/usr/local/share/sejda_console/doc/README.txt
 /usr/local/share/sejda_console/doc/third-party/bouncy-castle/LICENSE.txt
 /usr/local/share/sejda_console/doc/third-party/commons-io/LICENSE.txt
 /usr/local/share/sejda_console/doc/third-party/commons-io/NOTICE.txt
@@ -24,8 +24,8 @@
 /usr/local/share/sejda_console/doc/third-party/slf4j/LICENSE.txt
 /usr/local/share/sejda_console/doc/third-party/twelve-monkeys/LICENSE.txt
 /usr/local/share/sejda_console/doc/third-party/validation-api/LICENSE.txt
-/usr/local/share/sejda_console/etc/logback.xml
 /usr/local/share/sejda_console/etc/SEJDA_LICENSE.txt
+/usr/local/share/sejda_console/etc/logback.xml
 /usr/local/share/sejda_console/lib/bcmail-jdk15on-1.61.jar
 /usr/local/share/sejda_console/lib/bcpkix-jdk15on-1.61.jar
 /usr/local/share/sejda_console/lib/bcprov-jdk15on-1.61.jar

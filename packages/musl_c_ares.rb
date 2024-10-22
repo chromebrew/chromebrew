@@ -2,11 +2,11 @@ require 'package'
 
 class Musl_c_ares < Package
   description 'c-ares is a C library for asynchronous DNS requests (including name resolves).'
-  homepage 'https://c-ares.haxx.se/'
+  homepage 'https://c-ares.org/'
   version '1.18.1'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://c-ares.haxx.se/download/c-ares-1.18.1.tar.gz'
+  source_url 'https://c-ares.org/download/c-ares-1.18.1.tar.gz'
   source_sha256 '1a7d52a8a84a9fbffb1be9133c0f6e17217d91ea5a6fa61f6b4729cda78ebbcf'
   binary_compression 'tpxz'
 
@@ -27,6 +27,7 @@ class Musl_c_ares < Package
   depends_on 'patchelf' => :build
 
   is_static
+  print_source_bashrc
 
   def self.build
     load "#{CREW_LIB_PATH}/lib/musl.rb"

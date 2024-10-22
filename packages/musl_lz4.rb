@@ -2,7 +2,7 @@ require 'package'
 
 class Musl_lz4 < Package
   description 'LZ4 is lossless compression algorithm, providing compression speed at 400 MB/s per core (0.16 Bytes/cycle).'
-  homepage 'https://lz4.github.io/lz4/'
+  homepage 'https://lz4.org/'
   version '1.9.4'
   license 'BSD-2 and GPL-2'
   compatibility 'all'
@@ -20,6 +20,7 @@ class Musl_lz4 < Package
   depends_on 'musl_native_toolchain' => :build
 
   is_static
+  print_source_bashrc
 
   def self.build
     load "#{CREW_LIB_PATH}/lib/musl.rb"

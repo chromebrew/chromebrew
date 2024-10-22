@@ -1,31 +1,22 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libevent < Package
+class Libevent < CMake
   description 'The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached.'
-  homepage 'http://libevent.org/'
-  version '2.1.12'
+  homepage 'https://libevent.org/'
+  version '2.2-64decd4'
   license 'BSD'
   compatibility 'all'
-  source_url "https://github.com/libevent/libevent/releases/download/release-#{version}-stable/libevent-#{version}-stable.tar.gz"
-  source_sha256 '92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/libevent/libevent.git'
+  git_hashtag '64decd48e20f6d20d6f510aa75ab05861fd3d51c'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c5617c8ad9ff0c9107a5a744f6d8e8413a07aa70212c25dd9df085dae5f96d19',
-      armv7l: 'c5617c8ad9ff0c9107a5a744f6d8e8413a07aa70212c25dd9df085dae5f96d19',
-        i686: '4762713d801e19d3d61365e886fb99fe2349eeadb09c6a347c073bab97434721',
-      x86_64: 'b34f4abe636e86709e0256bded03442782c637fb9c155cd954bb0952f8a339e3'
+    aarch64: 'd8e80ad3a816756ed0a10d2b036f756dbee87cefc8eada17a2e81184ec79343b',
+     armv7l: 'd8e80ad3a816756ed0a10d2b036f756dbee87cefc8eada17a2e81184ec79343b',
+       i686: '79aeefd04d639e1a57bd3e0acdb91196ccb5bd326f25d10d8b2b4da5b22cf8cc',
+     x86_64: '5fee31e3b068d46c7cddb56c830893ac2bedcac948f0ef2c3f655f6c5fc2b448'
   })
 
-  depends_on 'openssl'
-
-  def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'openssl' # R
 end

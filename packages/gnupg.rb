@@ -22,7 +22,7 @@ class Gnupg < Autotools
   depends_on 'gnutls' # R
   depends_on 'libassuan' # R
   depends_on 'libgcrypt' # R
-  depends_on 'libgpgerror' # R
+  depends_on 'libgpg_error' # R
   depends_on 'libksba' # R
   depends_on 'libusb' # R
   depends_on 'libxtrans' => :build
@@ -32,7 +32,7 @@ class Gnupg < Autotools
   depends_on 'potrace' => :build
   depends_on 'readline' # R
   depends_on 'sqlite' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   configure_options '--with-zlib \
     --with-bzip2 \

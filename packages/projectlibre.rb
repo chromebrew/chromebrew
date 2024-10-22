@@ -5,7 +5,7 @@ class Projectlibre < Package
   homepage 'https://www.projectlibre.com/'
   version '1.9.1'
   license 'CPAL-1.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://downloads.sourceforge.net/project/projectlibre/ProjectLibre/1.9.1/projectlibre-1.9.1.tar.gz'
   source_sha256 '65ca96728eb5a31c3e23eb43181dde367d785a86b82f330ca52bc7b51c74a5bb'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Projectlibre < Package
   binary_sha256({
     aarch64: 'f7df4bbee8466e6cfffd9c4e22f5982c1762abeebf699732ea114b9fa9daf5a6',
      armv7l: 'f7df4bbee8466e6cfffd9c4e22f5982c1762abeebf699732ea114b9fa9daf5a6',
-       i686: 'd7267d23309e7f0459caec003453024680c08a94ed81033b9624ab4867eb1b87',
      x86_64: '004464a19153c20ace590a7077cbadf3be558b9a107fa581346507d98cfd2df8'
   })
 

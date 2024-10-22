@@ -6,9 +6,11 @@
 /usr/local/lib/libsamplerate.so.0
 /usr/local/lib/libsamplerate.so.0.1.8
 /usr/local/lib/pkgconfig/samplerate.pc
+/usr/local/share/doc/libsamplerate0-dev/html/SRC.css
+/usr/local/share/doc/libsamplerate0-dev/html/SRC.png
+/usr/local/share/doc/libsamplerate0-dev/html/api.html
 /usr/local/share/doc/libsamplerate0-dev/html/api_callback.html
 /usr/local/share/doc/libsamplerate0-dev/html/api_full.html
-/usr/local/share/doc/libsamplerate0-dev/html/api.html
 /usr/local/share/doc/libsamplerate0-dev/html/api_misc.html
 /usr/local/share/doc/libsamplerate0-dev/html/api_simple.html
 /usr/local/share/doc/libsamplerate0-dev/html/download.html
@@ -18,6 +20,4 @@
 /usr/local/share/doc/libsamplerate0-dev/html/license.html
 /usr/local/share/doc/libsamplerate0-dev/html/lists.html
 /usr/local/share/doc/libsamplerate0-dev/html/quality.html
-/usr/local/share/doc/libsamplerate0-dev/html/SRC.css
-/usr/local/share/doc/libsamplerate0-dev/html/SRC.png
 /usr/local/share/doc/libsamplerate0-dev/html/win32.html

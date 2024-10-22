@@ -2,9 +2,9 @@
 /usr/local/share/musl/bin/lz4c
 /usr/local/share/musl/bin/lz4cat
 /usr/local/share/musl/bin/unlz4
+/usr/local/share/musl/include/lz4.h
 /usr/local/share/musl/include/lz4frame.h
 /usr/local/share/musl/include/lz4frame_static.h
-/usr/local/share/musl/include/lz4.h
 /usr/local/share/musl/include/lz4hc.h
 /usr/local/share/musl/lib/liblz4.a
 /usr/local/share/musl/lib/liblz4.so

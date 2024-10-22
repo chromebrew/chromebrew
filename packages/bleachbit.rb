@@ -3,77 +3,36 @@ require 'package'
 class Bleachbit < Package
   description 'Bleachbit provides a means to clean your system and free disk space.'
   homepage 'https://www.bleachbit.org/'
-  version '4.4.2'
+  version '4.6.1'
   license 'GPL-3'
-  compatibility 'all'
-  source_url 'https://download.bleachbit.org/bleachbit-4.4.2.tar.lzma'
-  source_sha256 '113686f537be4a9fcfeb99fd2e976a33fb8eeb208fb69c571ec7acd96d7fb21b'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/bleachbit/bleachbit.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '93058ccca4af018b26df9878ba6898a3cb1d7cd7c26cb9617a4bea1173b97697',
-     armv7l: '93058ccca4af018b26df9878ba6898a3cb1d7cd7c26cb9617a4bea1173b97697',
-       i686: '3757fad8813dc6ad6f6122993336de0c00e9e6cec0583a3c010cdcb179279e5c',
-     x86_64: '9fce1a604d77059c43980dae5cbe13c3779b88e9e58ab164e49223ec3901c7cf'
+    aarch64: 'f33cbce2cb7a675895a564eee685893c168a832f4fe87d2d074df0371aeaf9dc',
+     armv7l: 'f33cbce2cb7a675895a564eee685893c168a832f4fe87d2d074df0371aeaf9dc',
+     x86_64: '24ef4d3ad423ca6695b92babb56848b236a83861660f13af2b884c63133abcd6'
   })
 
-  depends_on 'pygobject'
   depends_on 'gtk3'
-  depends_on 'sommelier'
-  depends_on 'py3_mock' => :build # for checks
-  depends_on 'py3_requests' => :build # for checks
-  depends_on 'py3_psutil' => :build # for checks
-  depends_on 'util_linux' => :build # for checks
+  depends_on 'py3_chardet'
+  depends_on 'py3_mock' => :build
+  depends_on 'py3_psutil'
+  depends_on 'py3_pygobject'
+  depends_on 'py3_requests' => :build
+  depends_on 'python3', '>= 3.12.0'
 
   def self.patch
-    @bleachbit_path_patch = <<~EOF
-      diff --git a/bleachbit.py b/bleachbit.py
-      index 1dd085b3..0533a55a 100755
-      --- a/bleachbit.py
-      +++ b/bleachbit.py
-      @@ -26,10 +26,10 @@ import os
-       import sys
-
-       if 'posix' == os.name:
-      -    if os.path.isdir('/usr/share/bleachbit'):
-      +    if os.path.isdir('#{CREW_PREFIX}/share/bleachbit'):
-               # This path contains bleachbit/{C,G}LI.py .  This section is
-               # unnecessary if installing BleachBit in site-packages.
-      -        sys.path.append('/usr/share/')
-      +        sys.path.append('#{CREW_PREFIX}/share/')
-
-       if os.name == 'nt':
-           # change error handling to avoid popup with GTK 3
-
-    EOF
-    File.write('chromebrew_path.patch', @bleachbit_path_patch)
-    system 'patch -Np1 -i chromebrew_path.patch'
-  end
-
-  def self.build
-    system 'make', 'delete_windows_files' # removes MS Windows specific cleaners
-    system 'make', '-C', 'po', 'local'
+    # Improve portability around hardcoded /usr/share in bleachbit.py; respect destdir and prefix in po/Makefile; correct shebangs
+    downloader 'https://patch-diff.githubusercontent.com/raw/bleachbit/bleachbit/pull/1714.patch', '52ce1bc71c273a824f49369fdb467a7fa558c3f0724b0ad4c6ec6b37a633930e'
+    system 'git apply 1714.patch'
   end
 
   def self.install
+    # This deletes windows-specific files.
+    system 'make', 'delete_windows_files'
     system 'make', "prefix=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    # Move locales
-    FileUtils.mv "#{CREW_DEST_DIR}/usr/share/locale", "#{CREW_DEST_PREFIX}/share"
-    FileUtils.rm_rf '/usr/share'
-    # Fix shebangs
-    Dir["#{CREW_DEST_PREFIX}/bin/bleachbit", \
-        "#{CREW_DEST_PREFIX}/share/bleachbit/GUI.py", \
-        "#{CREW_DEST_PREFIX}/share/bleachbit/_platform.py", \
-        "#{CREW_DEST_PREFIX}/share/bleachbit/CLI.py"].each do |filename|
-      system "sed -i 's:#!/usr/bin/python3:#!/usr/bin/env python3:' #{filename}"
-    end
-    # Add config file
-    FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/bleachbit"
-    system "touch #{CREW_DEST_HOME}/.config/bleachbit/bleachbit.ini"
-  end
-
-  def self.check
-    # Some tests require root privilages
-    system 'make tests || true'
   end
 end

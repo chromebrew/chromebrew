@@ -21,7 +21,7 @@ class Lha < Package
 
   def self.build
     system 'autoreconf -sif'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

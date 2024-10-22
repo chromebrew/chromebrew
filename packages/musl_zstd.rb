@@ -2,7 +2,7 @@ require 'package'
 
 class Musl_zstd < Package
   description 'Zstandard - Fast real-time compression algorithm'
-  homepage 'http://www.zstd.net'
+  homepage 'https://facebook.github.io/zstd/'
   version '1.5.4'
   license 'BSD or GPL-2'
   compatibility 'all'
@@ -19,10 +19,11 @@ class Musl_zstd < Package
 
   depends_on 'musl_native_toolchain' => :build
 
+  conflicts_ok # copies in libc.so from musl
   is_musl
   no_zstd
   patchelf
-  conflicts_ok # copies in libc.so from musl
+  print_source_bashrc
 
   def self.build
     FileUtils.mkdir('build/cmake/builddir')

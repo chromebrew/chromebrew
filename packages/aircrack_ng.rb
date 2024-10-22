@@ -31,7 +31,7 @@ class Aircrack_ng < Package
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
       LDFLAGS='-flto=auto' \
       ./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --program-prefix='' --program-suffix='' \
       --with-lto \
       --with-experimental=yes \

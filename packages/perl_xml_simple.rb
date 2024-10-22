@@ -3,7 +3,7 @@ require 'package'
 class Perl_xml_simple < Package
   description 'XML::Simple - An API for simple XML files'
   homepage 'https://metacpan.org/pod/XML::Simple'
-  version '2.25-perl5.38'
+  version "2.25-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz'
@@ -11,10 +11,10 @@ class Perl_xml_simple < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0a9fd6e9a24027772a04f6ed9fec7c1fb1643839768e855e99fd0ce7132f4979',
-     armv7l: '0a9fd6e9a24027772a04f6ed9fec7c1fb1643839768e855e99fd0ce7132f4979',
-       i686: '073c65f1ca5c5dc44d51e3b8ebcd254eb2f9c4bf5545e80f7db7609a5226690e',
-     x86_64: '511f5fdc7c1acd82b0c960dd159fd6d44aa1d34aa53c30a53d086519c4a57e4d'
+    aarch64: '9945ac5a1564a81c70fd0d3e59aa84164616e7ce638fe2ead1436cfdf9935c11',
+     armv7l: '9945ac5a1564a81c70fd0d3e59aa84164616e7ce638fe2ead1436cfdf9935c11',
+       i686: 'ea1c3c4b8331b4fbaf5e57353404301bc160df27e42d99e350291edd63f388cc',
+     x86_64: '9f60918ddee247e80de73be7cc35ea93350ef2ae867d6bbcff00f1361125aaa2'
   })
 
   depends_on 'perl_xml_parser' => :build

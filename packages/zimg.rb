@@ -24,7 +24,7 @@ class Zimg < Package
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto}' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto}' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE  #{@lto}' \
-      ./configure #{CREW_OPTIONS}"
+      ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

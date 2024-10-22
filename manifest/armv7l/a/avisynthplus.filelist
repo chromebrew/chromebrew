@@ -1,5 +1,5 @@
-/usr/local/include/avisynth/avisynth_c.h
 /usr/local/include/avisynth/avisynth.h
+/usr/local/include/avisynth/avisynth_c.h
 /usr/local/include/avisynth/avs/alignment.h
 /usr/local/include/avisynth/avs/arch.h
 /usr/local/include/avisynth/avs/capi.h
@@ -16,6 +16,6 @@
 /usr/local/lib/avisynth/libshibatch.so
 /usr/local/lib/avisynth/libtimestretch.so
 /usr/local/lib/libavisynth.so
-/usr/local/lib/libavisynth.so.3.7.2
-/usr/local/lib/libavisynth.so.9
+/usr/local/lib/libavisynth.so.10
+/usr/local/lib/libavisynth.so.3.7.3
 /usr/local/lib/pkgconfig/avisynth.pc

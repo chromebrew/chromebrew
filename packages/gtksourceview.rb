@@ -1,7 +1,7 @@
 require 'package'
-require_relative 'gtksourceview_3'
-require_relative 'gtksourceview_4'
-require_relative 'gtksourceview_5'
+Package.load_package("#{__dir__}/gtksourceview_3.rb")
+Package.load_package("#{__dir__}/gtksourceview_4.rb")
+Package.load_package("#{__dir__}/gtksourceview_5.rb")
 
 class Gtksourceview < Package
   description Gtksourceview_3.description

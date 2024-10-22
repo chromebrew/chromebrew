@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Totem_pl_parser < Package
+class Totem_pl_parser < Meson
   description 'Totem playlist parsing library'
   homepage 'https://gitlab.gnome.org/GNOME/totem-pl-parser'
   version '3.26.6'
@@ -21,13 +21,5 @@ class Totem_pl_parser < Package
   depends_on 'libgcrypt'
   depends_on 'libsoup'
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} build"
-    system 'meson configure build'
-    system 'ninja -C build'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-  end
+  gnome
 end

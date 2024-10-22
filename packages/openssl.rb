@@ -3,18 +3,18 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  version '3.0.13' # Do not use @_ver here, it will break the installer.
+  version '3.3.2' # Do not use @_ver here, it will break the installer.
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://www.openssl.org/source/openssl-3.0.13.tar.gz'
-  source_sha256 '88525753f79d3bec27d2fa7c66aa0b92b3aa9498dafd93d7cfa4b3780cdae313'
+  source_url 'https://github.com/openssl/openssl.git'
+  git_hashtag "openssl-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5450b693d453d48b4c4e0c594c98e9bb684a316802b7540cee2e52278a0d61d6',
-     armv7l: '5450b693d453d48b4c4e0c594c98e9bb684a316802b7540cee2e52278a0d61d6',
-       i686: 'a3e19ddaee80131c3432bca1acba02b095af9656d80a509e3584370f8ad7e4f4',
-     x86_64: '8ee844ac6718027da140b25501f9c2676eb98c741b0256c4c5d24b32b0b9999a'
+    aarch64: '34700c7ed9108623f0a9eca21e776d6a1db8ec57f8be1b056a6039be767617dd',
+     armv7l: '34700c7ed9108623f0a9eca21e776d6a1db8ec57f8be1b056a6039be767617dd',
+       i686: '5f3fdd0fbb3e84a472e7464c44b7721182ffc9c2151f9e638772ebba13fb98a4',
+     x86_64: '1b461315ab7109f7244017cb9d77c75d15cd91096d86b5dc1c1091a0f1b47898'
   })
 
   depends_on 'ccache' => :build
@@ -47,7 +47,7 @@ class Openssl < Package
       CFLAGS=\"#{@ARCH_C_LTO_FLAGS}\" CXXFLAGS=\"#{@ARCH_CXX_LTO_FLAGS}\" \
       LDFLAGS=\"#{@ARCH_LDFLAGS}\" \
       mold -run ./Configure --prefix=#{CREW_PREFIX} \
-      --libdir=#{CREW_LIB_PREFIX} \
+      --libdir=#{ARCH_LIB} \
       --openssldir=#{CREW_PREFIX}/etc/ssl \
       #{@openssl_configure_target} #{@no_tests_target}"
     system 'make'
@@ -78,13 +78,13 @@ class Openssl < Package
     @legacy_version = '1.1.1w'
     case ARCH
     when 'aarch64', 'armv7l'
-      downloader "https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/#{@legacy_version}_armv7l/openssl111-#{@legacy_version}-chromeos-armv7l.tar.zst",
+      downloader "#{CREW_GITLAB_PKG_REPO}/generic/openssl111/#{@legacy_version}_armv7l/openssl111-#{@legacy_version}-chromeos-armv7l.tar.zst",
                  '650209f527994f5c8bd57d1f2b5c42174d66472ca2a40116f66a043bd6e4c046', "openssl111-#{@legacy_version}-chromeos.tar.zst"
     when 'i686'
-      downloader "https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/#{@legacy_version}_i686/openssl111-#{@legacy_version}-chromeos-i686.tar.zst",
+      downloader "#{CREW_GITLAB_PKG_REPO}/generic/openssl111/#{@legacy_version}_i686/openssl111-#{@legacy_version}-chromeos-i686.tar.zst",
                  'a409ebebe5b5789e3ed739bc540d150faa66d9e33e6f19000b1b4e110a86d618', "openssl111-#{@legacy_version}-chromeos.tar.zst"
     when 'x86_64'
-      downloader "https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/#{@legacy_version}_x86_64/openssl111-#{@legacy_version}-chromeos-x86_64.tar.zst",
+      downloader "#{CREW_GITLAB_PKG_REPO}/generic/openssl111/#{@legacy_version}_x86_64/openssl111-#{@legacy_version}-chromeos-x86_64.tar.zst",
                  'e95e8cf456fc9168de148946c38cdda6a1e7482bdcbb4121766a178a32421917', "openssl111-#{@legacy_version}-chromeos.tar.zst"
     end
     Dir.chdir(CREW_DEST_DIR) do

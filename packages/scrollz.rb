@@ -2,7 +2,7 @@ require 'package'
 
 class Scrollz < Package
   description 'ScrollZ is an advanced IRC client based on ircII.'
-  homepage 'http://www.scrollz.info/'
+  homepage 'https://www.scrollz.info'
   version '2.3-1'
   license 'BSD'
   compatibility 'all'

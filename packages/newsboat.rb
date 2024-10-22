@@ -22,7 +22,7 @@ class Newsboat < Package
   depends_on 'curl'
   depends_on 'libxml2'
   depends_on 'libstfl'
-  depends_on 'jsonc'
+  depends_on 'json_c'
   depends_on 'openssl'
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'rust' => :build
@@ -43,7 +43,7 @@ class Newsboat < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.newsboat"
     if Dir.exist? config_dir
       print "Would you like to remove the config directory #{config_dir}? [y/N] "

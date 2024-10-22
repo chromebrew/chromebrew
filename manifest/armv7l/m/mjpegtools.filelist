@@ -88,8 +88,8 @@
 /usr/local/include/mjpegtools/mpegconsts.h
 /usr/local/include/mjpegtools/mpegtimecode.h
 /usr/local/include/mjpegtools/mplex/audiostrm.hpp
-/usr/local/include/mjpegtools/mplex/aunitbuffer.hpp
 /usr/local/include/mjpegtools/mplex/aunit.hpp
+/usr/local/include/mjpegtools/mplex/aunitbuffer.hpp
 /usr/local/include/mjpegtools/mplex/bits.hpp
 /usr/local/include/mjpegtools/mplex/decodebufmodel.hpp
 /usr/local/include/mjpegtools/mplex/inputstrm.hpp

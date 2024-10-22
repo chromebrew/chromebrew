@@ -3,21 +3,21 @@ require 'package'
 class Openjdk8 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
-  version '1.8.0_402'
+  version %w[aarch64 armv7l].include?(ARCH) ? '1.8.0_422' : '1.8.0_432'
   license 'GPL-2'
   compatibility 'all'
   # Visit https://www.azul.com/downloads/?version=java-8-lts&package=jdk#zulu to download the binaries.
   source_url({
-    aarch64: 'https://cdn.azul.com/zulu-embedded/bin/zulu8.76.0.17-ca-jdk8.0.402-linux_aarch32hf.tar.gz',
-     armv7l: 'https://cdn.azul.com/zulu-embedded/bin/zulu8.76.0.17-ca-jdk8.0.402-linux_aarch32hf.tar.gz',
-       i686: 'https://cdn.azul.com/zulu/bin/zulu8.76.0.17-ca-jdk8.0.402-linux_i686.tar.gz',
-     x86_64: 'https://cdn.azul.com/zulu/bin/zulu8.76.0.17-ca-jdk8.0.402-linux_x64.tar.gz'
+    aarch64: 'https://cdn.azul.com/zulu-embedded/bin/zulu8.80.0.17-ca-jdk8.0.422-linux_aarch32hf.tar.gz',
+     armv7l: 'https://cdn.azul.com/zulu-embedded/bin/zulu8.80.0.17-ca-jdk8.0.422-linux_aarch32hf.tar.gz',
+       i686: 'https://cdn.azul.com/zulu/bin/zulu8.82.0.21-ca-jdk8.0.432-linux_i686.tar.gz',
+     x86_64: 'https://cdn.azul.com/zulu/bin/zulu8.82.0.21-ca-jdk8.0.432-linux_x64.tar.gz'
   })
   source_sha256({
-    aarch64: '40212ef921979154dbb0e0e502fcd601914912fea9d3aaef946be0f30dc974c2',
-     armv7l: '40212ef921979154dbb0e0e502fcd601914912fea9d3aaef946be0f30dc974c2',
-       i686: 'f3cfd84b0d16564f4b176a6c416a7d89d72e5537626bb9083586afbdb938a34b',
-     x86_64: 'df80c8e8eed3f22a831ec5fadd2df193e04a0eef081d145636fb71a6c9d42449'
+    aarch64: '409d4f5ed7d231790de4d2ce0f70353b16b25b011abdb225b1e003e2259fbe2b',
+     armv7l: '409d4f5ed7d231790de4d2ce0f70353b16b25b011abdb225b1e003e2259fbe2b',
+       i686: 'b5358cebc351d859077819d69411e91f15d75654afadb361e31962472cbebc49',
+     x86_64: 'cc3dc7883441a38d910333a9417d8123b0973a86a08828242299a16157c272c0'
   })
 
   no_compile_needed

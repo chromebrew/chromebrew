@@ -1,32 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libsodium < Package
+class Libsodium < Autotools
   description 'A modern, portable, easy to use crypto library'
   homepage 'https://libsodium.org'
-  version '1.0.18-RELEASE'
+  version '1.0.20'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/jedisct1/libsodium/archive/refs/tags/1.0.18-RELEASE.tar.gz'
-  source_sha256 'b7292dd1da67a049c8e78415cd498ec138d194cfdb302e716b08d26b80fecc10'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/jedisct1/libsodium.git'
+  git_hashtag "#{version}-RELEASE"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e87f51f0f58dfd46cd547bbe8548c9dd8fc18260c022c6440c2e2d64673de0f1',
-     armv7l: 'e87f51f0f58dfd46cd547bbe8548c9dd8fc18260c022c6440c2e2d64673de0f1',
-       i686: 'd1a7c85be6511c084b6830e9e0786e07efbc79a415e9bddc8961486bf355a41f',
-     x86_64: '46856f8d0724b7c52dc8c2b657e9f49da97bd2eaee423c3055eb426b29a200a5'
+    aarch64: '77ef287d2f76ba67a1caf99cdc0c84b579992373e492cc2cb4df2c28130cdf6e',
+     armv7l: '77ef287d2f76ba67a1caf99cdc0c84b579992373e492cc2cb4df2c28130cdf6e',
+       i686: '987a5a71288c73cec1a462a03265065d588fb93cd3aed0d0e386bbb12209dd40',
+     x86_64: 'f1345dbf261fc7bb8d085da9ce90b27fa3105e95171af3181e69945fc385886f'
   })
 
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
+  depends_on 'glibc' # R
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    # Fix php: error while loading shared libraries: libsodium.so.23: cannot open shared object file: No such file or directory
+    FileUtils.ln_s "#{CREW_LIB_PREFIX}/libsodium.so", "#{CREW_DEST_LIB_PREFIX}/libsodium.so.23"
   end
+
+  run_tests
 end

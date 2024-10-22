@@ -29,7 +29,7 @@ class Appstream_glib < Meson
   depends_on 'gtk_doc' => :build
   depends_on 'json_glib'
   depends_on 'libarchive'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libsoup'
   depends_on 'libsoup2'
   depends_on 'libstemmer'

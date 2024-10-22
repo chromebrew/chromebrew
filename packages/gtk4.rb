@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gtk4 < Package
+class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.13.5'
+  version '4.16.3'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk4 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '57fe6e15199af3567dae37dc5b175f0a2f779c0d38832b68e5961433604f8c6f',
-     armv7l: '57fe6e15199af3567dae37dc5b175f0a2f779c0d38832b68e5961433604f8c6f',
-     x86_64: 'a7e04af865767a8ae2fc5b1f6896847f3c2504d28249a7ccdfaf8c77b812c3bd'
+    aarch64: 'b2c4ab252dcf3904f8d5902362505793fdddacdd5fe3010e28048d30e189a72e',
+     armv7l: 'b2c4ab252dcf3904f8d5902362505793fdddacdd5fe3010e28048d30e189a72e',
+     x86_64: '3757f9da1c706c9052ec6dda800a05552ab97084709b9d52edbdbd7ab47c5f92'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -30,18 +30,20 @@ class Gtk4 < Package
   depends_on 'ghostscript' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glslang' => :build
   # depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
-  depends_on 'gstreamer' # R
+  # depends_on 'gstreamer' # R Let's avoid the glibc 2.29 dep.
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme' # L
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
   depends_on 'iso_codes' => :build
   depends_on 'libcloudproviders' # R
   depends_on 'libepoxy' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
+  depends_on 'librsvg' # L
   depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
   depends_on 'libtiff' # R
@@ -58,6 +60,7 @@ class Gtk4 < Package
   depends_on 'libxrender' # R
   depends_on 'mesa' => :build
   depends_on 'pango' # R
+  depends_on 'py3_docutils' => :build
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_pygments' => :build
   depends_on 'sassc' => :build
@@ -69,8 +72,9 @@ class Gtk4 < Package
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
+  gnome
   no_fhs
 
   def self.patch
@@ -81,23 +85,21 @@ class Gtk4 < Package
     end
   end
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-      -Dbroadway-backend=true \
+  meson_options '-Dbroadway-backend=true \
+      -Dbuild-demos=false \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
       -Dbuild-testsuite=false \
-      -Ddemos=false \
-      -Dintrospection=enabled \
-      -Dgraphene:default_library=both \
-      -Dlibsass:default_library=both \
-      -Dmutest:default_library=both \
       -Dcloudproviders=enabled \
-      -Dvulkan=enabled \
+      -Dgraphene:default_library=both \
+      -Dintrospection=enabled \
+      -Dlibsass:default_library=both \
+      -Dmedia-gstreamer=disabled \
+      -Dmutest:default_library=both \
       -Dprint-cups=auto \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
+      -Dvulkan=enabled'
+
+  meson_build_extras do
     File.write 'gtk4settings', <<~GTK4_CONFIG_HEREDOC
       [Settings]
       gtk-icon-theme-name = Adwaita
@@ -106,9 +108,8 @@ class Gtk4 < Package
     GTK4_CONFIG_HEREDOC
   end
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    @xdg_config_dest_home = "#{CREW_DEST_PREFIX}/.config"
-    FileUtils.install 'gtk4settings', "#{@xdg_config_dest_home}/gtk-4.0/settings.ini", mode: 0o644
+  meson_install_extras do
+    xdg_config_dest_home = File.join(CREW_DEST_PREFIX, '.config')
+    FileUtils.install 'gtk4settings', "#{xdg_config_dest_home}/gtk-4.0/settings.ini", mode: 0o644
   end
 end

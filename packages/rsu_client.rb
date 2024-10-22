@@ -5,7 +5,7 @@ class Rsu_client < Package
   homepage 'https://github.com/rsu-client/rsu-client'
   version '4.3.8'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/rsu-client/rsu-client/archive/v4.3.8.tar.gz'
   source_sha256 'a84d27f2775ceef3bf0f715504ba41f3776c5374b61f9820993a26f350e4fa3d'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Rsu_client < Package
   binary_sha256({
     aarch64: '740174a97f6f60b8fde6cc6458934ecb1605fa66d40c4ee04b095316b8fa4e7e',
      armv7l: '740174a97f6f60b8fde6cc6458934ecb1605fa66d40c4ee04b095316b8fa4e7e',
-       i686: '17999feafa2539689e57454b9825d9f436baca894125383405f5c5e93421d70e',
      x86_64: '535a8a5339b57fe5929b6b1ff4fc40c8c93039ecf43006c2323c0d65502ed899'
   })
 

@@ -19,12 +19,12 @@ class Podofo < Package
   depends_on 'fontconfig'
   depends_on 'freetype'
   depends_on 'libidn'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libtiff'
   depends_on 'libxml2'
   depends_on 'openssl'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
 
   def self.build
     system "cmake -G 'Unix Makefiles' \

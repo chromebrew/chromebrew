@@ -1,32 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Font_adobe_utopia_type1 < Package
+class Font_adobe_utopia_type1 < Autotools
   description 'Adobe Utopia Type1 fonts'
-  homepage 'https://xorg.freedesktop.org/'
-  version '1.0.4'
-  license 'custom'
-  compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/font/font-adobe-utopia-type1-1.0.4.tar.bz2'
-  source_sha256 '979435105f897a70f8993fa02c8362160b0513366c2ab896965416f96dbb8077'
-  binary_compression 'tar.xz'
+  homepage 'https://gitlab.freedesktop.org/xorg/font/adobe-utopia-type1'
+  version '1.0.5'
+  license 'MIT'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/xorg/font/adobe-utopia-type1.git'
+  git_hashtag "font-adobe-utopia-type1-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2e0f5a41d6d0d01abc90e1646315c027489fb53c662d6885e7b729449107d94b',
-     armv7l: '2e0f5a41d6d0d01abc90e1646315c027489fb53c662d6885e7b729449107d94b',
-       i686: '6e5ab58840dfac86b37565200dbff84d6e9baed00b0adca72268c1afdf3eaeba',
-     x86_64: '78465e87c0964dff80de20039762822063fe56273c5a83f3170c1e84d4b76d2f'
+    aarch64: '22f1ce834a8dff41f9eb3cea29494d511c79cce89acb078f1a1f85c841a659e0',
+     armv7l: '22f1ce834a8dff41f9eb3cea29494d511c79cce89acb078f1a1f85c841a659e0',
+     x86_64: '8eec4a13c6a41fa43d482d0ec8ac6fa65836782cbb8ce99d1eb3bf5de6e6f3df'
   })
 
   depends_on 'bdftopcf'
   depends_on 'font_util'
   depends_on 'mkfontscale'
-
-  def self.build
-    system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  depends_on 'xorg_macros' => :build
 end

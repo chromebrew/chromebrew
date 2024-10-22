@@ -3,21 +3,21 @@ require 'package'
 class Openjdk11 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
-  version '11.0.22'
+  version %w[aarch64 armv7l].include?(ARCH) ? '11.0.24' : '11.0.25'
   license 'GPL-2'
   compatibility 'all'
   # Visit https://www.azul.com/downloads/?version=java-11-lts&package=jdk#zulu to download the binaries.
   source_url({
-    aarch64: 'https://cdn.azul.com/zulu-embedded/bin/zulu11.70.15-ca-jdk11.0.22-linux_aarch32hf.tar.gz',
-     armv7l: 'https://cdn.azul.com/zulu-embedded/bin/zulu11.70.15-ca-jdk11.0.22-linux_aarch32hf.tar.gz',
-       i686: 'https://cdn.azul.com/zulu/bin/zulu11.70.15-ca-jdk11.0.22-linux_i686.tar.gz',
-     x86_64: 'https://cdn.azul.com/zulu/bin/zulu11.70.15-ca-jdk11.0.22-linux_x64.tar.gz'
+    aarch64: 'https://cdn.azul.com/zulu-embedded/bin/zulu11.74.15-ca-jdk11.0.24-linux_aarch32hf.tar.gz',
+     armv7l: 'https://cdn.azul.com/zulu-embedded/bin/zulu11.74.15-ca-jdk11.0.24-linux_aarch32hf.tar.gz',
+       i686: 'https://cdn.azul.com/zulu/bin/zulu11.76.21-ca-jdk11.0.25-linux_i686.tar.gz',
+     x86_64: 'https://cdn.azul.com/zulu/bin/zulu11.76.21-ca-jdk11.0.25-linux_x64.tar.gz'
   })
   source_sha256({
-    aarch64: 'd354e784a533291bc8deb73613105ccd43295c714981f708315f0a11adc6f4e0',
-     armv7l: 'd354e784a533291bc8deb73613105ccd43295c714981f708315f0a11adc6f4e0',
-       i686: 'e48c8060de5d4c4e2c1be476fcc57f22c77df3195ecdeba3049674d9922491a7',
-     x86_64: '578d5946b26d9257b78e82a1c28203e5bbd690de48e2016399b1274c3ee7a3c5'
+    aarch64: 'bb0d50e7c08306fe093fde2c0f96d09f195a5b3d0fda48f681bb4640839c30eb',
+     armv7l: 'bb0d50e7c08306fe093fde2c0f96d09f195a5b3d0fda48f681bb4640839c30eb',
+       i686: 'dec3dd696bab39869a52cbd6f6e019dd80cae7db2e9ecb4feaad1da35eee5398',
+     x86_64: 'fabe2091d43604d3ae248a7d96e6cfb9ed37eaf980b225730b7b18289b3f6eaf'
   })
 
   no_compile_needed

@@ -5,7 +5,7 @@ class Libxss < Package
   homepage 'https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver'
   version '1.2.4'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver.git'
   git_hashtag "libXScrnSaver-#{version}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libxss < Package
   binary_sha256({
     aarch64: '2779424e8d1364c22a3d56cd98bf335721ceb0adb6229db84702009d116b7f72',
      armv7l: '2779424e8d1364c22a3d56cd98bf335721ceb0adb6229db84702009d116b7f72',
-       i686: '19428de1250a4399d152cb85de245ae326a47414096e36f0f42f747a1751f5a2',
      x86_64: 'ea6648451677b22506a534c62a3a90a7e12ee433cfee8835dcef65894ee12517'
   })
 
@@ -25,11 +24,11 @@ class Libxss < Package
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
   depends_on 'libxext' # R
-  depends_on 'util_macros' => :build
+  depends_on 'xorg_macros' => :build
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --sysconfdir=#{CREW_PREFIX}/etc"
     system 'make'
   end

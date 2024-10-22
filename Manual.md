@@ -55,7 +55,7 @@ Preset constants are shown below:
 - `#{CREW_LIB_PREFIX}` - The `LIB` prefix used by `crew` - Equal to `#{CREW_PREFIX}/lib` - `#{CREW_PREFIX}/lib64` on `amd64`
 - `#{CREW_DEST_DIR}` - The`DESTDIR` variable used by `crew` - Equal to `#{CREW_PREFIX}/tmp/crew/dest`
 - `#{CREW_DEST_PREFIX}` - The`DESTDIR` variable prefix used by `crew` - Equal to `#{CREW_DEST_DIR}/usr/local`
-- `#{CREW_OPTIONS}` - The preset options for `./congifure` - <sup>[Equals](#eq)</sup>
+- `#{CREW_CONFIGURE_OPTIONS}` - The preset options for `./congifure` - <sup>[Equals](#eq)</sup>
 - `#{CREW_MAN_PREFIX}` - Useful for building man pages - Equal to `#{CREW_PREFIX}/share/man`
 - `#{CREW_DEST_LIB_PREFIX}` - The `DESTDIR` `LIB` prefix - Equal to `#{CREW_DEST_PREFIX}/lib` - `#{CREW_DEST_PREFIX}/lib64` on `amd64`
 - `#{CREW_DEST_HOME}` - The `DESTDIR` home variable - Equal to `#{CREW_DEST}/#{HOME}`
@@ -147,7 +147,7 @@ end
 
 NOTE: All rules can have exceptions, if ***REQUIRED***, exceptions to the rules should be avoided at all costs.
 
-<a name="eq">`CREW_OPTIONS`</a>: Equal to `--prefix=/usr/local --libdir=/usr/local/lib --mandir=/usr/local/share/man --build=armv7l-cros-linux-gnueabihf --host=armv7l-cros-linux-gnueabihf --target=#{CREW_BUILD}`
+<a name="eq">`CREW_CONFIGURE_OPTIONS`</a>: Equal to `--prefix=/usr/local --libdir=/usr/local/lib --mandir=/usr/local/share/man --disable-dependency-tracking --program-prefix='' --program-suffix=''`
 
 Any additionally required resources for ChromeOS or ChromeBooks can be found [here](https://github.com/chromebrew/chromebrew/wiki/Links)
 

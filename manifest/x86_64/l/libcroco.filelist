@@ -15,8 +15,8 @@
 /usr/local/include/libcroco-0.6/libcroco/cr-prop-list.h
 /usr/local/include/libcroco-0.6/libcroco/cr-pseudo.h
 /usr/local/include/libcroco-0.6/libcroco/cr-rgb.h
-/usr/local/include/libcroco-0.6/libcroco/cr-selector.h
 /usr/local/include/libcroco-0.6/libcroco/cr-sel-eng.h
+/usr/local/include/libcroco-0.6/libcroco/cr-selector.h
 /usr/local/include/libcroco-0.6/libcroco/cr-simple-sel.h
 /usr/local/include/libcroco-0.6/libcroco/cr-statement.h
 /usr/local/include/libcroco-0.6/libcroco/cr-string.h
@@ -54,8 +54,8 @@
 /usr/local/share/gtk-doc/html/libcroco/libcroco-cr-prop-list.html
 /usr/local/share/gtk-doc/html/libcroco/libcroco-cr-pseudo.html
 /usr/local/share/gtk-doc/html/libcroco/libcroco-cr-rgb.html
-/usr/local/share/gtk-doc/html/libcroco/libcroco-cr-selector.html
 /usr/local/share/gtk-doc/html/libcroco/libcroco-cr-sel-eng.html
+/usr/local/share/gtk-doc/html/libcroco/libcroco-cr-selector.html
 /usr/local/share/gtk-doc/html/libcroco/libcroco-cr-simple-sel.html
 /usr/local/share/gtk-doc/html/libcroco/libcroco-cr-statement.html
 /usr/local/share/gtk-doc/html/libcroco/libcroco-cr-string.html
@@ -65,8 +65,8 @@
 /usr/local/share/gtk-doc/html/libcroco/libcroco-cr-tknzr.html
 /usr/local/share/gtk-doc/html/libcroco/libcroco-cr-token.html
 /usr/local/share/gtk-doc/html/libcroco/libcroco-cr-utils.html
-/usr/local/share/gtk-doc/html/libcroco/libcroco.devhelp2
 /usr/local/share/gtk-doc/html/libcroco/libcroco-libcroco-config.html
+/usr/local/share/gtk-doc/html/libcroco/libcroco.devhelp2
 /usr/local/share/gtk-doc/html/libcroco/right-insensitive.png
 /usr/local/share/gtk-doc/html/libcroco/right.png
 /usr/local/share/gtk-doc/html/libcroco/style.css

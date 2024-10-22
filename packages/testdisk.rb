@@ -19,15 +19,15 @@ class Testdisk < Package
 
   depends_on 'apr_iconv'
   depends_on 'compressdoc' => :build
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'ncurses'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
   depends_on 'e2fsprogs' # R
   depends_on 'glibc' # R
   depends_on 'util_linux' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

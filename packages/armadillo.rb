@@ -2,7 +2,7 @@ require 'package'
 
 class Armadillo < Package
   description 'Armadillo is a high quality linear algebra library (matrix maths) for the C++ language, aiming towards a good balance between speed and ease of use'
-  homepage 'http://arma.sourceforge.net/'
+  homepage 'https://arma.sourceforge.net/'
   version '9.600.5'
   license 'Apache-2.0'
   compatibility 'all'

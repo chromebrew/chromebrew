@@ -2,7 +2,7 @@ require 'package'
 
 class Libvpx < Package
   description 'VP8/VP9 Codec SDK'
-  homepage 'http://www.webmproject.org/code/'
+  homepage 'https://www.webmproject.org/code/'
   version '1.13.1'
   license 'BSD'
   compatibility 'all'
@@ -25,7 +25,7 @@ class Libvpx < Package
 
   def self.build
     Dir.chdir 'build' do
-      system "../configure #{CREW_OPTIONS.sub(/--mandir=.*/, '')} \
+      system "../configure #{CREW_CONFIGURE_OPTIONS.sub(/--mandir=.*/, '')} \
         --disable-debug-libs \
         --disable-install-docs \
         --enable-ccache \

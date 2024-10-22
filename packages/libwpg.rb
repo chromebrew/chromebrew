@@ -26,10 +26,10 @@ class Libwpg < Package
   depends_on 'librevenge' # R
   depends_on 'libwpd' # R
   depends_on 'perl' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

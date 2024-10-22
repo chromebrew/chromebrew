@@ -3,7 +3,7 @@ require 'package'
 class Vivaldi < Package
   description 'Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.'
   homepage 'https://vivaldi.com/'
-  version '6.5.3206.61-1'
+  version '6.9.3447.54-1'
   license 'Vivaldi'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.29'
@@ -23,10 +23,10 @@ class Vivaldi < Package
   case ARCH
   when 'aarch64', 'armv7l'
     arch = 'armhf'
-    source_sha256 '6572c3bbae043ceb752f7c0723f854f73b50837eba3fceb42d404778139360da'
+    source_sha256 '1870b6cfaaf956f86fde7da2f2000fca23f3e854d5c68566a2b32ae4aa915edb'
   when 'x86_64'
     arch = 'amd64'
-    source_sha256 '46fca558b37cb0f0f243cc6c252a7c47f4594cedb4bbdf5c0450e2f499bb98c0'
+    source_sha256 '7053d863dee667ccd7aba936ed78a19f6dbd3681314382b15ae583df75911c29'
   end
 
   source_url "https://downloads.vivaldi.com/stable/vivaldi-stable_#{version}_#{arch}.deb"
@@ -64,7 +64,7 @@ class Vivaldi < Package
     system "#{CREW_PREFIX}/share/vivaldi/update-ffmpeg", '--user'
   end
 
-  def self.remove
+  def self.postremove
     Dir.chdir(CREW_PREFIX) do
       FileUtils.rm_rf ["#{HOME}/.local/lib/vivaldi", '.config/vivaldi', '.cache/vivaldi', '.config/share/.vivaldi_reporting_data']
     end

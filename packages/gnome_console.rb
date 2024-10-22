@@ -1,51 +1,41 @@
 # Adapted from Arch Linux gnome-console PKGBUILD at:
 # https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=gnome-console
 
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_console < Package
+class Gnome_console < Meson
   description 'A simple user-friendly terminal emulator for the GNOME desktop'
   homepage 'https://gitlab.gnome.org/GNOME/console'
-  @_ver = '44.0'
-  version "#{@_ver}-1"
+  version '46.rc'
   license 'GPL3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/console.git'
-  git_hashtag @_ver
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1ab2ae3fe6ae44c24c64f2798f45d465c48b4116f530e975bfa967af3bd23a1e',
-     armv7l: '1ab2ae3fe6ae44c24c64f2798f45d465c48b4116f530e975bfa967af3bd23a1e',
-     x86_64: 'f66c46cdf1a783f685240ba195232e5056db5de64b37994e7e2701fa870f7adc'
+    aarch64: '0e18752cb72dff86cba422d967e1d12dcc5a09b5edaa65f26bc79ee657abe75b',
+     armv7l: '0e18752cb72dff86cba422d967e1d12dcc5a09b5edaa65f26bc79ee657abe75b',
+     x86_64: '837c952b979c300f72e1a1ea00c6e7c57f50e2d96dcc028a4f89b5f3e2a012cf'
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
+  depends_on 'gdk_pixbuf' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'graphene' # R
+  depends_on 'graphene' => :build
   depends_on 'gtk4' # R
-  depends_on 'harfbuzz' # R
+  depends_on 'harfbuzz' => :build
   depends_on 'libadwaita' # R
   depends_on 'libgtop' # R
   depends_on 'libhandy' => :build
   depends_on 'nautilus' => :build
   depends_on 'pango' # R
-  depends_on 'pcre2' # R
+  depends_on 'pcre2' => :build
   depends_on 'sassc' => :build
   depends_on 'vte' # R
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # R
+  depends_on 'vulkan_icd_loader' # L
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  gnome
 end

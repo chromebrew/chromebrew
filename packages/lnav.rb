@@ -11,7 +11,7 @@ class Lnav < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: 'a3da030ad5690e7f447b58530966820e38e3d85bdb145d7fa77d02898fbb3453'
+     x86_64: 'a3da030ad5690e7f447b58530966820e38e3d85bdb145d7fa77d02898fbb3453'
   })
 
   depends_on 'gcc' => :build
@@ -19,7 +19,7 @@ class Lnav < Autotools
   depends_on 'sqlite' # R
   depends_on 'ncurses' # R
   depends_on 'readline' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'bzip2' # R
   depends_on 'libcurl' # R
   depends_on 'libarchive' # R

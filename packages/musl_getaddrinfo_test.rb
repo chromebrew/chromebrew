@@ -9,6 +9,7 @@ class Musl_getaddrinfo_test < Package
   source_url 'SKIP'
 
   depends_on 'musl_native_toolchain' => :build
+  print_source_bashrc
 
   def self.build
     load "#{CREW_LIB_PATH}/lib/musl.rb"

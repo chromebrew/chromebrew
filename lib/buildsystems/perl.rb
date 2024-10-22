@@ -1,7 +1,7 @@
 require 'package'
 
 class PERL < Package
-  property :pre_perl_options, :perl_install_extras
+  property :pre_perl_options, :perl_build_extras, :perl_install_extras
 
   def self.prebuild
     puts "Additional pre_perl_options being used: #{@pre_perl_options.nil? ? '<no pre_perl_options>' : @pre_perl_options}".orange
@@ -12,10 +12,11 @@ class PERL < Package
   def self.build
     @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run' : ''
     system "#{@pre_perl_options} #{@mold_linker_prefix_cmd} make"
+    @perl_build_extras&.call
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    eval @perl_install_extras if @perl_install_extras
+    @perl_install_extras&.call
   end
 end

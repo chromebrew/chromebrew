@@ -2,7 +2,7 @@ require 'package'
 
 class Zsh < Package
   description 'Zsh is a shell designed for interactive use, although it is also a powerful scripting language.'
-  homepage 'http://zsh.sourceforge.net/'
+  homepage 'https://zsh.sourceforge.io/'
   version '5.9'
   license 'ZSH and GPL-2'
   compatibility 'all'
@@ -25,7 +25,7 @@ class Zsh < Package
   depends_on 'pcre' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
             --enable-zsh-mem \
             --enable-pcre \
             --enable-cap \

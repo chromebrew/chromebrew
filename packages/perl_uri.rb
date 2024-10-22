@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_uri < Package
+class Perl_uri < PERL
   description 'Uniform Resource Identifiers (absolute and relative)'
   homepage 'https://metacpan.org/pod/URI'
-  version '5.19-perl5.38'
+  version "5.19-#{CREW_PERL_VER}"
   license 'GPL PerlArtistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/URI-5.19.tar.gz'
@@ -11,24 +11,9 @@ class Perl_uri < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '60efa146dff8f02e99dd1a8493660d0b5397caff9a6848208221126e223b6efd',
-     armv7l: '60efa146dff8f02e99dd1a8493660d0b5397caff9a6848208221126e223b6efd',
-       i686: 'b15b9f19038ee0efe1f3017d60e3bf62783e7eb4215608130fb4cb426f3ede2c',
-     x86_64: '2c21df63cd42d3a0217526f6cfbd19649022bc915d06ff6f3d9f50f7b7742e0b'
+    aarch64: '27db52f862cb79a9d36f21dedcb1e326b1e60d094beb33d91355126e3fac70a4',
+     armv7l: '27db52f862cb79a9d36f21dedcb1e326b1e60d094beb33d91355126e3fac70a4',
+       i686: '4ce90ee55cefda0811b939b46bbf93ab397ae74388ae9042f91d749a9b605115',
+     x86_64: '7e86ddc84a6ae56deb345a03fb1b162a6333c531bdff539306ea264a7717dae2'
   })
-
-  no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

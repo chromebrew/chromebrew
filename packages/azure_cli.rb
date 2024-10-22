@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'py3_azure_cli'
+Package.load_package("#{__dir__}/py3_azure_cli.rb")
 
 class Azure_cli < Package
   description Py3_azure_cli.description

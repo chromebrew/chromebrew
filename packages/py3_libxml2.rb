@@ -1,42 +1,67 @@
 require 'package'
-require_relative 'libxml2'
+Package.load_package("#{__dir__}/libxml2.rb")
 
 class Py3_libxml2 < Package
   description 'Libxml2-python provides access to libxml2 and libxslt in Python.'
   homepage 'https://gitlab.gnome.org/GNOME/libxml2/'
-  @_ver = '2.12.5'
-  version "#{@_ver}-py3.12"
+  version "#{Libxml2.version}-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.12.5/libxml2-v2.12.5.tar.bz2'
-  source_sha256 '6ac1511e1f659940708254c430b51a7ba6b88a8d1d46b03e5a1e0e264bd87679'
+  source_url Libxml2.source_url
+  git_hashtag Libxml2.git_hashtag
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd6f747a81d1a7aff9b958373d642911f94e423840e02041570b077fa3bf879e9',
-     armv7l: 'd6f747a81d1a7aff9b958373d642911f94e423840e02041570b077fa3bf879e9',
-       i686: '66c629606887a495e8a1e9bfa5c2b6a7aa757baa27cae07ca669bfb31adc1ccf',
-     x86_64: '222da927a2495bd9e3ae7db94b8f2b37d1dab885c1fa1551102e8383ee05e5d8'
+    aarch64: '6104bab109fab73576daa07ae3bc5c2c174615b17f85b65d52696bfcb84f33b8',
+     armv7l: '6104bab109fab73576daa07ae3bc5c2c174615b17f85b65d52696bfcb84f33b8',
+       i686: '7ff32e8616aba0682996bb630d35bd551a2a10f302c5b0cb659a1f901cb1c65e',
+     x86_64: '8d6a0a678776b2988cb6826f0f778f204cf552e0d40909436f804a6ebf90ce52'
   })
 
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
-  depends_on 'libxslt' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'python3' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
+
+  no_fhs
 
   def self.build
     system 'autoreconf -fiv'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     Dir.chdir('python') do
-      system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
+      @pip_wheel = `python setup.py bdist_wheel`[/(?<=filename=)(.*)*?(\S+)/, 0]
     end
   end
 
   def self.install
+    @pip_cache_dest_dir = File.join(CREW_DEST_DIR, `pip cache dir`.chomp)
+    FileUtils.mkdir_p @pip_cache_dest_dir
+    @py_pkg = 'libxml2-python'
     Dir.chdir('python') do
-      system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS_NO_SVEM}"
+      system "python3 -m pip install --force-reinstall -U dist/#{@pip_wheel}"
+      FileUtils.install "dist/#{@pip_wheel}", @pip_cache_dest_dir
+    end
+    @pip_show = `python3 -s -m pip --no-color show -f #{@py_pkg}`.chomp
+    # Error out if the pip install has no files.
+    unless @pip_show.include?('Files:')
+      puts @pip_show
+      abort "pip install of #{@py_pkg} failed.".lightred
+    end
+    @pip_pkg_version = @pip_show[/(?<=Version: ).*/, 0]
+    @pip_show_location = @pip_show[/(?<=Location: ).*/, 0].concat('/')
+    @pip_show_files = @pip_show[/(?<=Files:\n)[\W|\w]*/, 0].split
+    @pip_show_files.each do |pip_file|
+      @pip_file_path = File.expand_path("#{@pip_show_location}#{pip_file}")
+      @pip_file_destpath = File.join(CREW_DEST_DIR, @pip_file_path)
+      # Handle older FileUtils from older ruby versions.
+      FileUtils.mkdir_p File.dirname(@pip_file_destpath) if Gem::Version.new(RUBY_VERSION.to_s) < Gem::Version.new('3.3')
+      begin
+        FileUtils.install @pip_file_path, @pip_file_destpath
+      rescue Errno::ENOENT
+        puts @pip_show_files
+        abort "Problem installing #{@pip_file_path} from #{@py_pkg}==#{@pip_pkg_version} to #{@pip_file_destpath}".lightred
+      end
     end
   end
 end

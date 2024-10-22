@@ -3,10 +3,8 @@
 /usr/local/bin/updatedb
 /usr/local/bin/xargs
 /usr/local/libexec/frcode
-/usr/local/share/info/find.info-1.zst
-/usr/local/share/info/find.info-2.zst
-/usr/local/share/info/find.info.zst
 /usr/local/share/info/find-maint.info.zst
+/usr/local/share/info/find.info.zst
 /usr/local/share/locale/be/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/bg/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/ca/LC_MESSAGES/findutils.mo
@@ -26,6 +24,7 @@
 /usr/local/share/locale/id/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/it/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/ja/LC_MESSAGES/findutils.mo
+/usr/local/share/locale/ka/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/ko/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/lg/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/lt/LC_MESSAGES/findutils.mo
@@ -33,8 +32,8 @@
 /usr/local/share/locale/nb/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/nl/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/pl/LC_MESSAGES/findutils.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/pt/LC_MESSAGES/findutils.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/ro/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/ru/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/sk/LC_MESSAGES/findutils.mo

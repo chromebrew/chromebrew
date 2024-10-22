@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Yelp_tools < Package
+class Yelp_tools < Meson
   description 'yelp-tools is a collection of scripts and build utilities to help create, manage, and publish documentation for Yelp and the web'
   homepage 'https://github.com/GNOME/yelp-tools'
   version '42.1'
@@ -21,18 +21,9 @@ class Yelp_tools < Package
   depends_on 'libxslt'
   depends_on 'py3_lxml'
 
+  gnome
+
   def self.patch
     system "sed -i 's,/usr/bin/python3,#{CREW_PREFIX}/bin/python3,g' tools/*.in"
-  end
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

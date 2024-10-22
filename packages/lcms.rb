@@ -2,7 +2,7 @@ require 'package'
 
 class Lcms < Package
   description 'Little CMS intends to be an OPEN SOURCE small-footprint color management engine, with special focus on accuracy and performance.'
-  homepage 'http://www.littlecms.com/'
+  homepage 'https://www.littlecms.com/'
   version '2.12'
   license 'MIT'
   compatibility 'all'
@@ -21,7 +21,7 @@ class Lcms < Package
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+      ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

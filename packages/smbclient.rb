@@ -3,26 +3,27 @@ require 'package'
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
-  version '4.19.0'
+  version "4.20.4-#{CREW_ICU_VER}"
   license 'GPLv3'
   compatibility 'all'
-  source_url 'https://download.samba.org/pub/samba/stable/samba-4.19.0.tar.gz'
-  source_sha256 '28f98ceab75a6a59432912fa110fc8c716abcab1ed6d8bdd4393d178acff3d20'
+  source_url "https://download.samba.org/pub/samba/stable/samba-#{version.split('-').first}.tar.gz"
+  source_sha256 '3a92e97eaeb345b6b32232f503e14d34f03a7aa64c451fe8c258a11bbda908e5'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b9a4ab33c8485d9b134ea179b6f844bc8f10bdba4a6bd528238bdc4f71023200',
-     armv7l: 'b9a4ab33c8485d9b134ea179b6f844bc8f10bdba4a6bd528238bdc4f71023200',
-       i686: '92d7c9f231dcdd61bba87a69942ec885ee9392f779e560fce8555836364c9499',
-     x86_64: '95c4638c81ec65bcac478a16d6581d80f154b1e718541b7b14c80d73113af668'
+    aarch64: 'f161a7f955ecca54425add1cfd6683eabb204c15c9fd77894abe33f5546ac30f',
+     armv7l: 'f161a7f955ecca54425add1cfd6683eabb204c15c9fd77894abe33f5546ac30f',
+       i686: 'e3cf441f53e3137b89bd92c3518d76c68ac1323636ee116613d2a00f7dcc0c60',
+     x86_64: '0d52fa1f276bd5ec3ac28b4b6e132a33c4401f247a65c81626c53cfffdc25db1'
   })
 
   depends_on 'acl' # R
   depends_on 'avahi' # R
   depends_on 'cmocka' => :build
   depends_on 'cups' => :build
-  depends_on 'docbook_xsl' => :build
+  depends_on 'docbook' => :build
   depends_on 'gcc_lib' # R
+  depends_on 'gdb' => :build
   depends_on 'glibc' # R
   depends_on 'gnutls' # R
   depends_on 'gpgme' => :build
@@ -33,10 +34,12 @@ class Smbclient < Package
   depends_on 'libbsd' # R
   depends_on 'libcap' # R
   depends_on 'libtasn1' # R
+  depends_on 'libtirpc' # R
   depends_on 'libunwind' # R
   depends_on 'liburing' => :build
   depends_on 'linux_pam' # R
   depends_on 'lmdb' => :build
+  depends_on 'ncurses' # R
   depends_on 'openldap' # R
   depends_on 'perl_json' => :build
   depends_on 'perl_parse_yapp' => :build
@@ -47,7 +50,7 @@ class Smbclient < Package
   depends_on 'talloc' # R
   depends_on 'tdb' # R
   depends_on 'tevent' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   @samba4_idmap_modules = 'idmap_ad,idmap_rid,idmap_adex,idmap_hash,idmap_tdb2'
   @samba4_pdb_modules = 'pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4'
@@ -69,7 +72,7 @@ class Smbclient < Package
   def self.build
     system './configure --help'
     system "python_LDFLAGS='' ./configure --enable-fhs \
-      #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
+      #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')} \
       --sysconfdir=#{CREW_PREFIX}/etc \
       --sbindir=#{CREW_PREFIX}/bin \
       --libdir=#{CREW_LIB_PREFIX} \

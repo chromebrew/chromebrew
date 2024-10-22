@@ -1,20 +1,20 @@
-require 'package'
+require 'buildsystems/python'
 
-class Ansible < Package
+class Ansible < Python
   description 'Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.'
   homepage 'https://www.ansible.com/'
-  version '2.11.6'
+  version '2.17.3'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/ansible/ansible.git'
   git_hashtag "v#{version}"
-  binary_compression 'tpxz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e99dda3d567d2f51088c406f87cf4a046253414af0f772449acdaf5c580990c6',
-     armv7l: 'e99dda3d567d2f51088c406f87cf4a046253414af0f772449acdaf5c580990c6',
-       i686: 'e4e6c38d5cbac73ad2504b7815e7e119976943b0f04dd74d69f6a13b46efd0fb',
-     x86_64: 'a3fc4acfca1229ca1c2bbb1c8107e4ee207afea58f092796daecb17e42a3b9fb'
+    aarch64: '9062621a2fa226e56059a777f2a7ea35f632c7a0866c5b1bcfa5b933e09350f0',
+     armv7l: '9062621a2fa226e56059a777f2a7ea35f632c7a0866c5b1bcfa5b933e09350f0',
+       i686: 'b38555e1996ca01a2180a88dccf22c85a46ab94b6248fe3fa2078667d293eb4c',
+     x86_64: '6741f337d27cd106fdc721f3bccb536c5f6f42cd3cd3ff650f32a7729970c353'
   })
 
   depends_on 'xdg_base'
@@ -23,12 +23,4 @@ class Ansible < Package
   depends_on 'py3_packaging'
   depends_on 'py3_jinja2'
   depends_on 'python3' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
 end

@@ -22,6 +22,8 @@ class Docbook_xml44 < Package
   depends_on 'xmlcatmgr'
   depends_on 'libxml2'
 
+  no_upstream_update
+
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/xml-dtd-#{@_ver}"
     system "cp -dr docbook.cat *.dtd ent/ *.mod #{CREW_DEST_PREFIX}/share/xml/docbook/xml-dtd-#{@_ver}"

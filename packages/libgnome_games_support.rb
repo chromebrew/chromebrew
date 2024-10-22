@@ -20,4 +20,6 @@ class Libgnome_games_support < Meson
   depends_on 'gtk3'
   depends_on 'libgee'
   depends_on 'vala' => :build
+
+  gnome
 end

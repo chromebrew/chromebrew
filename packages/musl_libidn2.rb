@@ -25,6 +25,7 @@ class Musl_libidn2 < Package
   is_musl
   is_static
   patchelf
+  print_source_bashrc
 
   def self.patch
     FileUtils.rm_f 'doc/idn2.1'

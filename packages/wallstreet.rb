@@ -5,7 +5,7 @@ class Wallstreet < Package
   homepage 'https://a.hollywood.computer/'
   version '1.21'
   license 'Apache-2.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.32'
   source_url 'https://httpredir.debian.org/debian/pool/main/h/hollywood/hollywood_1.21.orig.tar.gz'
   source_sha256 '793ef1f022b376e131c75e05ff1b55a010c0f4193225bb79018855cb9ab89acb'

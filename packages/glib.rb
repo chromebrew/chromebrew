@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Glib < Package
+class Glib < Meson
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
-  homepage 'https://developer.gnome.org/glib'
-  version '2.78.0'
+  homepage 'https://docs.gtk.org/glib/'
+  version '2.81.1'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'
@@ -11,34 +11,29 @@ class Glib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '829516ace17d57ad58ac5d5e617235e243a6fb8927505a77a967df9a90f91405',
-     armv7l: '829516ace17d57ad58ac5d5e617235e243a6fb8927505a77a967df9a90f91405',
-       i686: '5945326740ddddfb751c7bd7740d2964f993b1dbc30c054cef35d4033082ac4a',
-     x86_64: '0af84b414507e0ce9178845035944c054deaa8e9304f05a1e3bdb2f66dfe0bf7'
+    aarch64: '57c2786ced63e26c717e0e7951dc8960df8e3887de8bdedc94d2186aa59c3087',
+     armv7l: '57c2786ced63e26c717e0e7951dc8960df8e3887de8bdedc94d2186aa59c3087',
+       i686: 'aa85475d828e1c4469567defb6fd484cef6a8d716784ca9e8f53e458e95d4a7c',
+     x86_64: '10a5a19bba806274e5aef833cd465c8b7f531ca74af37f77a05c208850408282'
   })
 
   depends_on 'elfutils' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gobject_introspection' unless ARCH == 'i686' # L
   depends_on 'libffi' # R
-  depends_on 'pcre' # R
+  depends_on 'pcre2' # R
   depends_on 'py3_pygments' => :build
   depends_on 'shared_mime_info' # L
   depends_on 'util_linux' # R
-  depends_on 'zlibpkg' # R
-  depends_on 'pcre2' # R
-  depends_on 'gcc_lib' # R
+  depends_on 'zlib' # R
 
+  gnome
   no_strip if %w[aarch64 armv7l].include? ARCH
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS.gsub('strip=true', 'strip=false')} \
-    -Dselinux=disabled \
+  meson_options '-Dselinux=disabled \
     -Dsysprof=disabled \
-    -Dman=false \
-    -Dtests=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
+    -Dman-pages=disabled \
+    -Dtests=false'
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"

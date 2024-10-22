@@ -15,9 +15,9 @@
 /usr/local/share/gtk-doc/html/libidn2/index.html
 /usr/local/share/gtk-doc/html/libidn2/left-insensitive.png
 /usr/local/share/gtk-doc/html/libidn2/left.png
+/usr/local/share/gtk-doc/html/libidn2/libidn2-idn2.h.html
 /usr/local/share/gtk-doc/html/libidn2/libidn2.devhelp2
 /usr/local/share/gtk-doc/html/libidn2/libidn2.html
-/usr/local/share/gtk-doc/html/libidn2/libidn2-idn2.h.html
 /usr/local/share/gtk-doc/html/libidn2/right-insensitive.png
 /usr/local/share/gtk-doc/html/libidn2/right.png
 /usr/local/share/gtk-doc/html/libidn2/style.css
@@ -58,8 +58,8 @@
 /usr/local/share/man/man3/idn2_register_ul.3.zst
 /usr/local/share/man/man3/idn2_strerror.3.zst
 /usr/local/share/man/man3/idn2_strerror_name.3.zst
-/usr/local/share/man/man3/idn2_to_ascii_4i2.3.zst
 /usr/local/share/man/man3/idn2_to_ascii_4i.3.zst
+/usr/local/share/man/man3/idn2_to_ascii_4i2.3.zst
 /usr/local/share/man/man3/idn2_to_ascii_4z.3.zst
 /usr/local/share/man/man3/idn2_to_ascii_8z.3.zst
 /usr/local/share/man/man3/idn2_to_ascii_lz.3.zst

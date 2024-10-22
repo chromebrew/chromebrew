@@ -7,13 +7,13 @@
 /usr/local/include/giblib/gib_debug.h
 /usr/local/include/giblib/gib_hash.h
 /usr/local/include/giblib/gib_imlib.h
-/usr/local/include/giblib/giblib_config.h
-/usr/local/include/giblib/giblib.h
 /usr/local/include/giblib/gib_list.h
 /usr/local/include/giblib/gib_queue.h
 /usr/local/include/giblib/gib_stack.h
 /usr/local/include/giblib/gib_style.h
 /usr/local/include/giblib/gib_utils.h
+/usr/local/include/giblib/giblib.h
+/usr/local/include/giblib/giblib_config.h
 /usr/local/lib/libgiblib.a
 /usr/local/lib/libgiblib.la
 /usr/local/lib/libgiblib.so

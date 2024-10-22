@@ -1,4 +1,6 @@
+/usr/local/include/osl/attributes.h
 /usr/local/include/osl/body.h
+/usr/local/include/osl/extensions/annotation.h
 /usr/local/include/osl/extensions/arrays.h
 /usr/local/include/osl/extensions/clay.h
 /usr/local/include/osl/extensions/comment.h
@@ -9,12 +11,14 @@
 /usr/local/include/osl/extensions/loop.h
 /usr/local/include/osl/extensions/null.h
 /usr/local/include/osl/extensions/pluto_unroll.h
+/usr/local/include/osl/extensions/region.h
+/usr/local/include/osl/extensions/scatinfos.h
 /usr/local/include/osl/extensions/scatnames.h
 /usr/local/include/osl/extensions/symbols.h
 /usr/local/include/osl/extensions/textual.h
 /usr/local/include/osl/generic.h
-/usr/local/include/osl/interface.h
 /usr/local/include/osl/int.h
+/usr/local/include/osl/interface.h
 /usr/local/include/osl/macros.h
 /usr/local/include/osl/names.h
 /usr/local/include/osl/osl.h
@@ -31,3 +35,4 @@
 /usr/local/lib/libosl.so.0
 /usr/local/lib/libosl.so.0.0.0
 /usr/local/lib/osl/osl-config.cmake
+/usr/local/lib/pkgconfig/osl.pc

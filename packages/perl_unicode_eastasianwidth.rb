@@ -3,7 +3,7 @@ require 'package'
 class Perl_unicode_eastasianwidth < Package
   description 'Perl Unicode::EastAsianWidth - East Asian Width properties.'
   homepage 'https://metacpan.org/pod/Unicode::EastAsianWidth'
-  version '12.0-perl5.38'
+  version "12.0-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/Unicode-EastAsianWidth-12.0.tar.gz'
@@ -11,10 +11,10 @@ class Perl_unicode_eastasianwidth < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '95257f63295ee7c5ca7869a321ae73ce4cb8a3a6de09f5be2f1571191da06b9d',
-     armv7l: '95257f63295ee7c5ca7869a321ae73ce4cb8a3a6de09f5be2f1571191da06b9d',
-       i686: 'ca8ae9e257f0b3b351fc3bb523efd787ca15d9f38117e3ab09f5c892ab178551',
-     x86_64: '5ad064ebc83e7c7ec96e0ee4039b4d09d9212cdb6cad8fc4f1914f4cc0797e61'
+    aarch64: 'f1603d9ec54f0360c78df76f7188b431467b2fe800be97f01c32ecca860a87f8',
+     armv7l: 'f1603d9ec54f0360c78df76f7188b431467b2fe800be97f01c32ecca860a87f8',
+       i686: 'ee94f24739538c1b0b50c25bff3aec171c51077d40750f1f178812b5564e75b1',
+     x86_64: '1d45396a77ad9abb31b63e23f1b012c3dafadaca944b454c642760a18a200d24'
   })
 
   def self.prebuild

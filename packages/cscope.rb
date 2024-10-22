@@ -2,7 +2,7 @@ require 'package'
 
 class Cscope < Package
   description 'Cscope is a developer\'s tool for browsing source code.'
-  homepage 'http://cscope.sourceforge.net/'
+  homepage 'https://cscope.sourceforge.net/'
   version '15.9'
   license 'BSD and GPL-2+'
   compatibility 'all'

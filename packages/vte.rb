@@ -1,19 +1,19 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Vte < Package
+class Vte < Meson
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  version '0.72.2'
+  version "0.77.91-#{CREW_ICU_VER}"
   license 'LGPL-2+ and GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e90bfce1c8449ef74c9acf5a3eeb4f365ffa39c008fe398ff3c6b7042dfc3520',
-     armv7l: 'e90bfce1c8449ef74c9acf5a3eeb4f365ffa39c008fe398ff3c6b7042dfc3520',
-     x86_64: '1c86607d53f6a6f1738770c14b06df6e5cc95f43ce9e6d54a00a1f4ec97f3017'
+    aarch64: 'd4516db006795e505a81fb52c34803fc6b0eea01a16bbbec03fd0f6546ba604f',
+     armv7l: 'd4516db006795e505a81fb52c34803fc6b0eea01a16bbbec03fd0f6546ba604f',
+     x86_64: 'f983e3b3731e062c5e0719ae5886cfb3dadb7d45ddea9ea8a22c5f07ce65a7a8'
   })
 
   depends_on 'at_spi2_core' # R
@@ -30,28 +30,24 @@ class Vte < Package
   depends_on 'gtk4' # R
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
+  depends_on 'lz4' # R
   depends_on 'pango' # R
   depends_on 'pcre2' # R
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'vulkan_icd_loader' => :build
+  depends_on 'zlib' => :build
 
+  gnome
   no_lto
 
-  def self.build
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} \
-      -D_systemd=false \
+  meson_options '-D_systemd=false \
       -Dfribidi=true \
       -Dgtk3=true \
       -Dgtk4=true \
       -Dgir=false \
-      -Dvapi=false
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
+      -Dvapi=false'
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  def self.patch
+    system "sed -i 's,/usr/bin/python3,#{CREW_PREFIX}/bin/python3,' src/minifont-coverage.py"
   end
 end

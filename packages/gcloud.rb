@@ -3,20 +3,20 @@ require 'package'
 class Gcloud < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/gcloud/'
-  version '463.0.0'
+  version '497.0.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url({
-    aarch64: 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-463.0.0-linux-arm.tar.gz',
-     armv7l: 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-463.0.0-linux-arm.tar.gz',
-       i686: 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-463.0.0-linux-x86.tar.gz',
-     x86_64: 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-463.0.0-linux-x86_64.tar.gz'
+    aarch64: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-linux-arm.tar.gz",
+     armv7l: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-linux-arm.tar.gz",
+       i686: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-linux-x86.tar.gz",
+     x86_64: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-linux-x86_64.tar.gz"
   })
   source_sha256({
-    aarch64: '41cde0aa0050e842eb19846f5ab89aae532c8080dbcd844e6a89e6a3865f4499',
-     armv7l: '41cde0aa0050e842eb19846f5ab89aae532c8080dbcd844e6a89e6a3865f4499',
-       i686: '780ca14ff9aa1c5258b5030238e2c471da88c5b1e08f80e4e201daaf1ab01111',
-     x86_64: 'aa9d83d0736422da011d1e22c2a453d40ea3e0594fa676380d59be10fc184ce6'
+    aarch64: '476b54d7cf450d6f8423a46168be47762038a9fe73e20b6664075eeed9adf949',
+     armv7l: '476b54d7cf450d6f8423a46168be47762038a9fe73e20b6664075eeed9adf949',
+       i686: '5a2d2c8186966bbe39ab7f6ce29889d511994db79d17d51fc5aea4d400f75178',
+     x86_64: 'a7b25414292de203f16d872e2ba24474e83e5f83b14fdc1cbd9eea8b07e8057b'
   })
 
   depends_on 'python3'
@@ -60,7 +60,7 @@ class Gcloud < Package
     puts "source ~/.bashrc && gcloud init\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     print 'Would you like to remove the config directories? [y/N] '
     response = $stdin.gets.chomp.downcase
     config_dirs = ["#{HOME}/.config/gcloud", "#{CREW_PREFIX}/share/gcloud"]

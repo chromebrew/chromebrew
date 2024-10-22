@@ -3,17 +3,17 @@ require 'package'
 class Webkit2gtk_4_1 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.42.1'
+  version "2.44.3-#{CREW_ICU_VER}"
   license 'LGPL-2+ and BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.42.1.tar.xz'
-  source_sha256 '6f41fac9989d3ee51c08c48de1d439cdeddecbc757e34b6180987d99b16d2499'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.44.3.tar.xz'
+  source_sha256 'dc82d042ecaca981a4852357c06e5235743319cf10a94cd36ad41b97883a0b54'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0c5aef666af4c64cdbd5069cbf01a1a44fd767c3c0e5c44528308f3bdc5166f0',
-     armv7l: '0c5aef666af4c64cdbd5069cbf01a1a44fd767c3c0e5c44528308f3bdc5166f0',
-     x86_64: '0ff287563fc005cf0213d1844206bc19fba32f0edea8d386db7993a876d1e610'
+    aarch64: '6c220476148a9b263f78e1a9dfc95562bcf8635fbcc403f2c461bbbf7b5f465f',
+     armv7l: '6c220476148a9b263f78e1a9dfc95562bcf8635fbcc403f2c461bbbf7b5f465f',
+     x86_64: '80b969a2d1a82d55852f5026aefac336c8092d8d8c3628450e7fb1a47121e3de'
   })
 
   depends_on 'at_spi2_core' # R
@@ -23,9 +23,9 @@ class Webkit2gtk_4_1 < Package
   depends_on 'enchant' # R
   depends_on 'fontconfig'
   depends_on 'freetype' # R
-  depends_on 'gcc10' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
@@ -36,15 +36,14 @@ class Webkit2gtk_4_1 < Package
   depends_on 'hyphen' # R
   depends_on 'icu4c' # R
   depends_on 'lcms' # R
-  depends_on 'libavif' => :build
   depends_on 'libavif' # R
+  depends_on 'libbacktrace' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
   depends_on 'libgcrypt' # R
   depends_on 'libglvnd' # R
-  depends_on 'libgpgerror' # R
-  depends_on 'libjpeg' # R
-  depends_on 'libjxl' => :build
+  depends_on 'libgpg_error' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
   depends_on 'libnotify'
   depends_on 'libpng' # R
@@ -60,7 +59,6 @@ class Webkit2gtk_4_1 < Package
   depends_on 'libxrender' # R
   depends_on 'libxslt' # R
   depends_on 'libxt' # R
-  depends_on 'mesa' => :build
   depends_on 'mesa' # R
   depends_on 'openjpeg' # R
   depends_on 'pango' # R
@@ -73,66 +71,19 @@ class Webkit2gtk_4_1 < Package
   depends_on 'wayland' # R
   depends_on 'woff2' # R
   depends_on 'wpebackend_fdo' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_env_options
 
   def self.patch
+    # Fix incompatibility with gtk3 from current gobjects_introspection causing build failure
+    # as per https://bugs.webkit.org/show_bug.cgi?id=276180 .
+    downloader 'https://github.com/WebKit/WebKit/pull/30446.diff', '6beda7960b232117f8445db4e588a45ef384d42ccb13f6926b695c472a4eea51'
+    system 'patch -Np1 -i 30446.diff'
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
     @arch_flags = ''
     @gcc_ver = ''
-    if ARCH == 'armv7l' || ARCH == 'aarch64'
-      ## Patch from https://bugs.webkit.org/show_bug.cgi?id=226557#c27 to
-      ## handle issue with gcc > 11.
-      # @gcc_patch = <<~'GCCEOF'
-      # diff --git a/Source/cmake/WebKitCompilerFlags.cmake b/Source/cmake/WebKitCompilerFlags.cmake
-      # index 77ebb802ebb03450b5e96629a47b6819a68672c6..d49d6e43d7eeb6673c624e00eadf3edfca0674eb 100644
-      #--- a/Source/cmake/WebKitCompilerFlags.cmake
-      #+++ b/Source/cmake/WebKitCompilerFlags.cmake
-      # @@ -143,6 +143,13 @@ if (COMPILER_IS_GCC_OR_CLANG)
-      # WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-nonnull)
-      # endif ()
-
-      # +    # This triggers warnings in wtf/Packed.h, a header that is included in many places. It does not
-      # +    # respect ignore warning pragmas and we cannot easily suppress it for all affected files.
-      # +    # https://bugs.webkit.org/show_bug.cgi?id=226557
-      # +    if (CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND ${CMAKE_CXX_COMPILER_VERSION} VERSION_GREATER_EQUAL "11.0")
-      # +        WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-stringop-overread)
-      # +    endif ()
-      # +
-      ## -Wexpansion-to-defined produces false positives with GCC but not Clang
-      ## https://bugs.webkit.org/show_bug.cgi?id=167643#c13
-      # if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-      # GCCEOF
-      # File.write('gcc.patch', @gcc_patch)
-      # system 'patch -Np1 -F 10 -i gcc.patch'
-      # Patch from https://github.com/WebKit/WebKit/pull/1233
-      # downloader 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/1233.diff',
-      #           '70c990ced72c5551b01c9d7c72da7900d609d0f7891e7b99ab132ac1b4aa33ea'
-      # system "sed -i 's,data.pixels->bytes(),data.pixels->data(),' 1233.diff"
-      # system 'patch -Np1 -F 10 -i 1233.diff'
-      # Patch from https://github.com/WebKit/WebKit/pull/2926
-      # downloader 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/2926.diff',
-      # '26a8d5a9dd9d61865645158681b766e13cf05b3ed07f30bebb79ff73259d0664'
-      # system "sed -i '22,63d' 2926.diff"
-      # system 'patch -Np1 -F 10 -i 2926.diff'
-      # @arch_flags = '-mtune=cortex-a15 -mfloat-abi=hard -mfpu=neon -mtls-dialect=gnu -marm -mlibarch=armv8-a+crc+simd -march=armv8-a+crc+simd'
-      @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
-    end
-    @gcc_ver = '-10'
-    @new_gcc = <<~NEW_GCCEOF
-      #!/bin/bash
-      gcc#{@gcc_ver} #{@arch_flags} $@
-    NEW_GCCEOF
-    @new_gpp = <<~NEW_GPPEOF
-      #!/bin/bash
-      g++#{@gcc_ver} #{@arch_flags} $@
-    NEW_GPPEOF
-    FileUtils.mkdir_p 'bin'
-    File.write('bin/gcc', @new_gcc)
-    FileUtils.chmod 0o755, 'bin/gcc'
-    File.write('bin/g++', @new_gpp)
-    FileUtils.chmod 0o755, 'bin/g++'
+    @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp' if ARCH == 'armv7l' || ARCH == 'aarch64'
   end
 
   def self.build
@@ -143,13 +94,12 @@ class Webkit2gtk_4_1 < Package
     # LDFLAGS from debian: -Wl,--no-keep-memory
     unless File.file?('build.ninja')
       @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
-      system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' \
+      system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' \
           cmake -B builddir -G Ninja \
-          #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('mold', 'gold').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
+          #{CREW_CMAKE_FNO_LTO_OPTIONS.sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
           -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
           -DENABLE_DOCUMENTATION=OFF \
-          -DENABLE_GLES2=OFF \
           -DENABLE_JOURNALD_LOG=OFF \
           -DENABLE_GAMEPAD=OFF \
           -DENABLE_MINIBROWSER=ON \
@@ -164,7 +114,7 @@ class Webkit2gtk_4_1 < Package
     @counter = 1
     @counter_max = 20
     loop do
-      break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+      break if Kernel.system "mold -run #{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
 
       puts "Make iteration #{@counter} of #{@counter_max}...".orange
 

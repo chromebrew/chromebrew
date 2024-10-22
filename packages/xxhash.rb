@@ -2,7 +2,7 @@ require 'package'
 
 class Xxhash < Package
   description 'xxHash is an extremely fast non-cryptographic hash algorithm, working at speeds close to RAM limits.'
-  homepage 'https://cyan4973.github.io/xxHash/'
+  homepage 'https://xxhash.com/'
   version '0.8.1'
   license 'BSD-2 and GPL-2+'
   compatibility 'all'

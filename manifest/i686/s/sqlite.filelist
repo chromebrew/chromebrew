@@ -1,6 +1,6 @@
 /usr/local/bin/sqlite3
-/usr/local/include/sqlite3ext.h
 /usr/local/include/sqlite3.h
+/usr/local/include/sqlite3ext.h
 /usr/local/lib/libsqlite3.a
 /usr/local/lib/libsqlite3.la
 /usr/local/lib/libsqlite3.so

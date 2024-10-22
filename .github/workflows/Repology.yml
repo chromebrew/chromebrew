@@ -6,19 +6,29 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    container: satmandu/crewbuild:amd64
     steps:
-      - name: Generate JSON
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3.4'
+      - name: Install highline
+        run: gem install highline
+      - name: Configure git
         run: |
-          git config --global safe.directory /usr/local/lib/crew
-          git pull
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global credential.helper store
-          echo 'https://token:${{ secrets.GITHUB_TOKEN }}@github.com' > ~/.git-credentials
-          cd /usr/local/lib/crew/tools
-          ruby json.rb
-          # We only need to add repology.json for the first run of the script
-          git add repology.json
-          git commit -o repology.json -m "Update Repology JSON"
-          git push
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+      - name: Generate repology.json
+        env:
+          CREW_KERNEL_VERSION: 5.1
+          LIBC_VERSION: 2.37
+        run: |
+          ruby -Ctools json.rb
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          add-paths: "tools/repology.json"
+          title: "Update Repology JSON"
+          body: "Automatic PR to update tools/repology.json"
+          author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          commit-message: "Update Repology JSON"
+          delete-branch: true

@@ -18,6 +18,6 @@ class Girara < Meson
 
   depends_on 'gtk3'
   depends_on 'glib'
-  depends_on 'jsonc'
+  depends_on 'json_c'
   depends_on 'json_glib'
 end

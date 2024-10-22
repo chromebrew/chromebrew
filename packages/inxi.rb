@@ -3,29 +3,25 @@ require 'package'
 class Inxi < Package
   description 'inxi is a full featured CLI system information tool.'
   homepage 'https://smxi.org/docs/inxi.htm'
-  version '811a19'
+  version '3.3.35-1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/smxi/inxi/archive/811a199badbacc8d54254264c51de8dc3f5c82d2.tar.gz'
-  source_sha256 'fd4d7e89166f4cd96fe91448753a1279520bc0f9ee3a2cfbd92ff4a2b1cf487a'
-  binary_compression 'tar.xz'
+  source_url 'https://codeberg.org/smxi/inxi.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a7605cdd62c35259dddf00c133c7af00816ed270b3326094a129f9436e65700e',
-     armv7l: 'a7605cdd62c35259dddf00c133c7af00816ed270b3326094a129f9436e65700e',
-       i686: 'c8dc00fc15d1fd8b11386b71c061746361fc5792f7bbede5ecc3a244aaf8c357',
-     x86_64: '6226f1fb5fbeb93ab9ad7237de9f1e8f21bba3e47e035f1b2776c4733972e197'
+    aarch64: '238537279b21affc02dc28973d5af2cb3db3ec4b80327389d276adeaf8bbc8f6',
+     armv7l: '238537279b21affc02dc28973d5af2cb3db3ec4b80327389d276adeaf8bbc8f6',
+       i686: '99135aa3e34c39e4d3624fbb9e1a36adfda08d53cc76fdd88772a33c27afc71a',
+     x86_64: 'dd850645b3f5ba9528257250ae2851b26c964c83b669d40a26352407f0d5c619'
   })
 
   depends_on 'gawk'
   depends_on 'perl'
 
-  def self.build
-    system "sed -i 's,/os-release,/lsb-release,g' inxi"
-  end
-
   def self.install
-    system "install -Dm755 inxi #{CREW_DEST_PREFIX}/bin/inxi"
-    system "install -Dm644 inxi.1.gz #{CREW_DEST_PREFIX}/man/man1/inxi.1.gz"
+    FileUtils.install 'inxi', "#{CREW_DEST_PREFIX}/bin/inxi", mode: 0o755
+    FileUtils.install 'inxi.1', "#{CREW_DEST_MAN_PREFIX}/man1/inxi.1", mode: 0o644
   end
 end

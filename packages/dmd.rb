@@ -10,7 +10,7 @@ class Dmd < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '4a32b8ae822fc66fc26d6399d9d7db872ae72d8c97f2dde8606bc4defbbe760a'
+     x86_64: '4a32b8ae822fc66fc26d6399d9d7db872ae72d8c97f2dde8606bc4defbbe760a'
   })
 
   depends_on 'ldc' => :build # For running dub in tests.

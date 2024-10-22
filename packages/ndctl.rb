@@ -19,7 +19,7 @@ class Ndctl < Package
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'bash_completion' => :build
   depends_on 'iniparser' => :build
-  depends_on 'jsonc' => :build
+  depends_on 'json_c' => :build
   depends_on 'keyutils' => :build
   depends_on 'libkmod' => :build
   depends_on 'xmlto' => :build
@@ -27,7 +27,7 @@ class Ndctl < Package
   def self.build
     system './autogen.sh'
     system 'filefix'
-    system "./configure #{CREW_OPTIONS} --without-systemd"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --without-systemd"
     system 'make'
   end
 

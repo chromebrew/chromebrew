@@ -3,24 +3,26 @@ require 'buildsystems/qmake'
 class Qt5_multimedia < Qmake
   description 'Qt Multimedia'
   homepage 'https://www.qt.io/'
-  version '5.15.11-f587b18'
+  kde_5_15_githash = '85fe63b98703ced6c5568c52af77b50e6ddf1edc'
+  version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtmultimedia.git'
-  git_hashtag 'f587b18db4abd68cb6d4d77fbcec1b94c38d2a51' # from kde/5.15 branch
+  git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '682f5598df01442a3bde7ff5324bc3d43d1742e18cd24564fd4f26f51ee86a85',
-     armv7l: '682f5598df01442a3bde7ff5324bc3d43d1742e18cd24564fd4f26f51ee86a85',
-     x86_64: 'a2e7a9911878a22ed43e58840366b9300a69f264bb98253c34d5f8a33841dce2'
+    aarch64: '14b9edb627935207a061752dfac5b9d0a5c14b5c88c56dd59a715f8fa8558979',
+     armv7l: '14b9edb627935207a061752dfac5b9d0a5c14b5c88c56dd59a715f8fa8558979',
+     x86_64: '1610df59143ad7865b6df91ac26454350948717c2b18fcbccae77d1ae0abe02e'
   })
 
   depends_on 'alsa_lib' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gstreamer' # R
+  depends_on 'libdrm' # R
   depends_on 'libglvnd' # R
   depends_on 'openal' # R
   depends_on 'pulseaudio' # R

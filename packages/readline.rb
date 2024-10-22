@@ -2,7 +2,7 @@ require 'package'
 
 class Readline < Package
   description 'The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in.'
-  homepage 'http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html'
+  homepage 'https://tiswww.cwru.edu/php/chet/readline/rltop.html'
   version '8.2'
   license 'GPL-2'
   compatibility 'all'
@@ -23,7 +23,7 @@ class Readline < Package
 
   def self.build
     system "./configure \
-      #{CREW_OPTIONS} \
+      #{CREW_CONFIGURE_OPTIONS} \
       --with-curses \
       --enable-multibyte"
     system 'make', 'SHLIB_LIBS=-Wl,--as-needed -Wl,-ltinfow -Wl,--no-as-needed'

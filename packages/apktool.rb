@@ -2,7 +2,7 @@ require 'package'
 
 class Apktool < Package
   description 'A tool for reverse engineering Android apk files'
-  homepage 'https://ibotpeaches.github.io/Apktool/'
+  homepage 'https://apktool.org/'
   version '2.7.0'
   license 'Apache-2.0'
   compatibility 'all'

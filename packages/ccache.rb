@@ -2,7 +2,7 @@ require 'buildsystems/cmake'
 
 class Ccache < CMake
   description 'Compiler cache that speeds up recompilation by caching previous compilations'
-  homepage 'https://ccache.samba.org/'
+  homepage 'https://ccache.dev/'
   version '4.9.1'
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
@@ -23,6 +23,8 @@ class Ccache < CMake
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'xdg_base'
   depends_on 'zstd' # R
+
+  print_source_bashrc
 
   cmake_options "-DCMAKE_INSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc \
       -DENABLE_IPO=ON \

@@ -2,7 +2,7 @@ require 'package'
 
 class Libofx < Package
   description 'The LibOFX library is a parser and an API designed to allow applications to very easily support OFX command responses, usually provided by financial institutions for statement downloads.'
-  homepage 'http://libofx.sourceforge.net/'
+  homepage 'https://github.com/libofx/libofx'
   version '0.9.13'
   license 'GPL-2'
   compatibility 'all'
