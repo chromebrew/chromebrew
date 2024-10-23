@@ -4661,6 +4661,11 @@ url: https://sourceforge.net/projects/opencore-amr/files/opencore-amr/
 activity: none
 ---
 kind: url
+name: libopusenc
+url: https://github.com/xiph/libopusenc/tags
+activity: none
+---
+kind: url
 name: libostree
 url: https://github.com/ostreedev/ostree/releases/
 activity: low
@@ -5998,6 +6003,11 @@ activity: low
 kind: url
 name: mupdf
 url: https://mupdf.com/downloads/archive/
+activity: medium
+---
+kind: url
+name: musecore
+url: https://github.com/musescore/MuseScore/releases
 activity: medium
 ---
 kind: url
@@ -7621,6 +7631,11 @@ url: https://invent.kde.org/qt/qt/qtquickcontrols/-/tags
 activity: medium
 ---
 kind: url
+name: qt5_quickcontrols2
+url: https://invent.kde.org/qt/qt/qtquickcontrols2/-/tags
+activity: medium
+---
+kind: url
 name: qt5_script
 url: https://invent.kde.org/qt/qt/qtscript/-/tags
 activity: medium
@@ -8789,6 +8804,11 @@ kind: url
 name: tinysparql
 url: https://gitlab.gnome.org/GNOME/tinysparql/-/tags
 activity: high
+---
+kind: url
+name: tinyxml2
+url: https://github.com/leethomason/tinyxml2/tags
+activity: low
 ---
 kind: url
 name: tk
