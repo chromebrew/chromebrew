@@ -199,6 +199,7 @@
 /usr/local/libexec/git-core/mergetools/tkdiff
 /usr/local/libexec/git-core/mergetools/tortoisemerge
 /usr/local/libexec/git-core/mergetools/vimdiff
+/usr/local/libexec/git-core/mergetools/vscode
 /usr/local/libexec/git-core/mergetools/winmerge
 /usr/local/libexec/git-core/mergetools/xxdiff
 /usr/local/share/git-completion/.gitattributes
