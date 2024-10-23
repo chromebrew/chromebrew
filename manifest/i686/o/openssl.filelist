@@ -78,6 +78,7 @@
 /usr/local/include/openssl/http.h
 /usr/local/include/openssl/httperr.h
 /usr/local/include/openssl/idea.h
+/usr/local/include/openssl/indicator.h
 /usr/local/include/openssl/kdf.h
 /usr/local/include/openssl/kdferr.h
 /usr/local/include/openssl/lhash.h
@@ -142,6 +143,7 @@
 /usr/local/include/openssl/uierr.h
 /usr/local/include/openssl/whrlpool.h
 /usr/local/include/openssl/x509.h
+/usr/local/include/openssl/x509_acert.h
 /usr/local/include/openssl/x509_vfy.h
 /usr/local/include/openssl/x509err.h
 /usr/local/include/openssl/x509v3.h
