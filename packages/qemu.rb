@@ -3,18 +3,18 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'https://www.qemu.org/'
-  version '9.0.2'
+  version '9.1.1'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
-  min_glibc '2.37'
+  min_glibc '2.29' # Needed for MAP_FIXED_NOREPLACE support.
   source_url 'https://github.com/qemu/qemu.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f6624d5b70e43518895d2c17ccc95357013bc0b9a762ccd4e5ce4ddb710f1abb',
-     armv7l: 'f6624d5b70e43518895d2c17ccc95357013bc0b9a762ccd4e5ce4ddb710f1abb',
-     x86_64: '881e78ab3c46b1a04096d9504fe98a880bac0867fb95238fcfbe623f124eca09'
+    aarch64: 'b07e876cca85b8003be705aee939d5676e0a8109fa69bfb3d7a3cb16d986e67d',
+     armv7l: 'b07e876cca85b8003be705aee939d5676e0a8109fa69bfb3d7a3cb16d986e67d',
+     x86_64: '30183ad202272d2d568a6da30a58ad228cd1b42daebee015051703cbdd88eafe'
   })
 
   depends_on 'alsa_lib' # R
@@ -78,7 +78,7 @@ class Qemu < Package
   def self.build
     FileUtils.mkdir_p 'build'
     Dir.chdir 'build' do
-      system "mold -run ../configure #{CREW_CONFIGURE_OPTIONS.sub(/--target.*/, '')} \
+      system "mold -run ../configure #{CREW_CONFIGURE_OPTIONS.sub(/--target.*/, '').gsub('vfpv3-d16', 'neon').gsub('--disable-dependency-tracking', '').sub(/--program-prefix.*?(?=\s|$)/, '').sub(/--program-suffix.*?(?=\s|$)/, '')} \
         --enable-kvm \
         --enable-lto"
       @counter = 1
