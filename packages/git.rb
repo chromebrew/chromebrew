@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Git < CMake
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.46.1' # Do not use @_ver here, it will break the installer.
+  version '2.47.0'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-#{version}.tar.xz"
-  source_sha256 '888cafb8bd6ab4cbbebc168040a8850eb088f81dc3ac2617195cfc0877f0f543'
+  source_sha256 '1ce114da88704271b43e027c51e04d9399f8c88e9ef7542dae7aebae7d87bc4e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd1125c6bb6ec9ceb744be85b89021ac2b467992f3926abd6c346eb6731b1f679',
-     armv7l: 'd1125c6bb6ec9ceb744be85b89021ac2b467992f3926abd6c346eb6731b1f679',
-       i686: 'c4eb2b82c88f5caaaf2f4470a960106f6bdd9c542662369e9473e8a30c204227',
-     x86_64: 'fcdd84453706b90b82a0d15d78b958dbf0c244bf634963ef88b86c95fb5d9808'
+    aarch64: '6ea2fc4944c3e575c0d42e2e71c22d972b6eb08a197bfcf4497f914ba9df4bc5',
+     armv7l: '6ea2fc4944c3e575c0d42e2e71c22d972b6eb08a197bfcf4497f914ba9df4bc5',
+       i686: '50993ce9bb11ae77a510f61494ccaca285dee65a258aab44609b58c076f32f0b',
+     x86_64: '65fd42279d365bb37db9ea41ba96f85c17cb96c6ae4a74fc446e613b0d41ab8c'
   })
 
   depends_on 'ca_certificates' => :build
@@ -50,6 +50,9 @@ class Git < CMake
     system "sed -i 's,${CMAKE_INSTALL_PREFIX}/bin/git,${CMAKE_BINARY_DIR}/git,g' contrib/buildsystems/CMakeLists.txt"
     system "sed -i 's,${CMAKE_INSTALL_PREFIX}/bin/git,\\\\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/git,g' contrib/buildsystems/CMakeLists.txt"
     system "sed -i 's,${CMAKE_INSTALL_PREFIX},\\\\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX},g' contrib/buildsystems/CMakeLists.txt"
+
+    # Git 2.47.0 broke cmake out of tree builds.
+    system "sed -i 's,file(WRITE \"\${CMAKE_BINARY_DIR}/t/unit-tests,file(WRITE \"\${CMAKE_SOURCE_DIR}/t/unit-tests,g' contrib/buildsystems/CMakeLists.txt"
   end
 
   cmake_build_extras do
