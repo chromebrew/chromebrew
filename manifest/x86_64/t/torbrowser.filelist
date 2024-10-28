@@ -21,11 +21,9 @@
 /usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/Torbutton.txt
 /usr/local/share/torbrowser/Browser/TorBrowser/Docs/conjure/README.md
 /usr/local/share/torbrowser/Browser/TorBrowser/Docs/snowflake/README.md
-/usr/local/share/torbrowser/Browser/TorBrowser/Docs/webtunnel/README.md
 /usr/local/share/torbrowser/Browser/TorBrowser/Tor/PluggableTransports/conjure-client
 /usr/local/share/torbrowser/Browser/TorBrowser/Tor/PluggableTransports/lyrebird
 /usr/local/share/torbrowser/Browser/TorBrowser/Tor/PluggableTransports/snowflake-client
-/usr/local/share/torbrowser/Browser/TorBrowser/Tor/PluggableTransports/webtunnel-client
 /usr/local/share/torbrowser/Browser/TorBrowser/Tor/libcrypto.so.3
 /usr/local/share/torbrowser/Browser/TorBrowser/Tor/libevent-2.1.so.7
 /usr/local/share/torbrowser/Browser/TorBrowser/Tor/libssl.so.3
@@ -33,6 +31,7 @@
 /usr/local/share/torbrowser/Browser/TorBrowser/Tor/tor
 /usr/local/share/torbrowser/Browser/abicheck
 /usr/local/share/torbrowser/Browser/application.ini
+/usr/local/share/torbrowser/Browser/browser/chrome/icons/default/about-logo.svg
 /usr/local/share/torbrowser/Browser/browser/chrome/icons/default/default128.png
 /usr/local/share/torbrowser/Browser/browser/chrome/icons/default/default16.png
 /usr/local/share/torbrowser/Browser/browser/chrome/icons/default/default32.png
@@ -193,6 +192,7 @@
 /usr/local/share/torbrowser/Browser/glxtest
 /usr/local/share/torbrowser/Browser/icons/updater.png
 /usr/local/share/torbrowser/Browser/libfreeblpriv3.so
+/usr/local/share/torbrowser/Browser/libgkcodecs.so
 /usr/local/share/torbrowser/Browser/libipcclientcerts.so
 /usr/local/share/torbrowser/Browser/liblgpllibs.so
 /usr/local/share/torbrowser/Browser/libmozavcodec.so
@@ -213,7 +213,6 @@
 /usr/local/share/torbrowser/Browser/libxul.so
 /usr/local/share/torbrowser/Browser/omni.ja
 /usr/local/share/torbrowser/Browser/platform.ini
-/usr/local/share/torbrowser/Browser/plugin-container
 /usr/local/share/torbrowser/Browser/precomplete
 /usr/local/share/torbrowser/Browser/removed-files
 /usr/local/share/torbrowser/Browser/start-tor-browser
