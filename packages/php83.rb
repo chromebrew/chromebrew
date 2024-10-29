@@ -3,17 +3,17 @@ require 'package'
 class Php83 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.3.12'
+  version '8.3.13'
   license 'PHP-3.01'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
-  source_sha256 'f774e28633e26fc8c5197f4dae58ec9e3ff87d1b4311cbc61ab05a7ad24bd131'
+  source_sha256 '89adb978cca209124fe53fd6327bc4966ca21213a7fa2e9504f854e340873018'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '215887847faa3ffe482994cf4ee9a77b506835a3e6a7eb747703845b373528bd',
-     armv7l: '215887847faa3ffe482994cf4ee9a77b506835a3e6a7eb747703845b373528bd',
-     x86_64: '03764b9fe64baedd6cc98a10fa49b1b85ecca503a4daca1f96b226f1b574b159'
+    aarch64: '97cb5a3926db0bce2124334c800deeb3bb0c702119314b3b30b8aa027f61fa00',
+     armv7l: '97cb5a3926db0bce2124334c800deeb3bb0c702119314b3b30b8aa027f61fa00',
+     x86_64: 'a33b13fa86c7f2cfa70ca6df6995c516a50d2943399bc68be09f4f3ae0a0f868'
   })
 
   depends_on 'aspell_en' => :build
@@ -96,7 +96,7 @@ class Php83 < Package
 
   def self.build
     system "CPPFLAGS+=' -I#{CREW_PREFIX}/include/php/Zend' \
-       mold -run ./configure \
+       ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \

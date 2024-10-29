@@ -9331,6 +9331,11 @@ url: https://github.com/wayland-project/weston/releases/
 activity: medium
 ---
 kind: url
+name: wezterm
+url: https://github.com/wez/wezterm/releases
+activity: low
+---
+kind: url
 name: wget2
 url: https://ftpmirror.gnu.org/wget/
 activity: low
