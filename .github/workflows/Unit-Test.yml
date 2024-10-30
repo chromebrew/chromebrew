@@ -1,6 +1,8 @@
 ---
 name: Run Unit Tests on PR
-on: workflow_call
+on:
+  pull_request:
+    branches: [master]
 jobs:
   container_tests:
     strategy:
