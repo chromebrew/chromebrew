@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Vulkan_icd_loader < CMake
   description 'Vulkan Installable Client Driver ICD Loader'
   homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
-  version '1.3.283'
+  version '1.3.300'
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/Vulkan-Loader.git'
@@ -11,9 +11,9 @@ class Vulkan_icd_loader < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3e76f57d1c7de356d5af505194f71139fbd35b0afa7c1fd55c3ff0a9ceb5016a',
-     armv7l: '3e76f57d1c7de356d5af505194f71139fbd35b0afa7c1fd55c3ff0a9ceb5016a',
-     x86_64: '4a0261bb0cf7b98e56f34fd1b966dfc2bfbb554893f270dd5cb780c5dd800b57'
+    aarch64: '35b8f2cb307f971f9f86fc60c00ace788081d61517270b0b150dc002077bc561',
+     armv7l: '35b8f2cb307f971f9f86fc60c00ace788081d61517270b0b150dc002077bc561',
+     x86_64: 'a27824a2e823bc7f42b281a64977615692ff7c9ad173cd45da63e29afa7b2d0b'
   })
 
   depends_on 'glibc' # R
@@ -24,10 +24,12 @@ class Vulkan_icd_loader < CMake
   depends_on 'wayland' => :build
 
   def self.patch
-    system 'scripts/update_deps.py'
+    # https://github.com/KhronosGroup/Vulkan-Loader/pull/1586
+    system "sed -i 's/armhf/armhf|armv7l|armv8l/g' loader/CMakeLists.txt"
   end
 
-  cmake_options "-DVULKAN_HEADERS_INSTALL_DIR=#{CREW_PREFIX} \
+  cmake_options "-DUPDATE_DEPS=On \
+        -DVULKAN_HEADERS_INSTALL_DIR=#{CREW_PREFIX} \
         -DCMAKE_INSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc \
         -DCMAKE_INSTALL_DATADIR=#{CREW_PREFIX}/share \
         -DCMAKE_SKIP_RPATH=True \
