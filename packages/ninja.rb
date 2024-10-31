@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Ninja < CMake
   description 'a small build system with a focus on speed'
   homepage 'https://ninja-build.org'
-  version '1.12.0'
+  version '1.12.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/ninja-build/ninja.git'
@@ -11,10 +11,10 @@ class Ninja < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b9c7c3f0f22982ee2ac220e73e449c1458434525aff08afb910926c4d5d380cf',
-     armv7l: 'b9c7c3f0f22982ee2ac220e73e449c1458434525aff08afb910926c4d5d380cf',
-       i686: '20babb33e1e01ffd2ed2fa5125c2fced7b6b7820600a13bda7ec15b8f2ea8f51',
-     x86_64: '46b369359e6277064e2c77fce5bcd4dc97df99bdcb2412c46f92cc8fb88f0e42'
+    aarch64: '9a6273179b9c9242db8c19708498d3de8a9bcc98292615cfbf44364cb4db4536',
+     armv7l: '9a6273179b9c9242db8c19708498d3de8a9bcc98292615cfbf44364cb4db4536',
+       i686: '98466d2c4986666d124e9cdac21a7e129ce86741a5823975410c0830cc49acf6',
+     x86_64: '0216d7f30e7aeb8febfc94c7c985e109de83d3e836dc4c9d41164017113cc4b4'
   })
 
   depends_on 'gcc_lib' # R

@@ -1,5 +1,5 @@
 ---
-name: Handoff
+name: Linter-Handoff
 on:
   pull_request:
     branches: [master]
@@ -54,7 +54,3 @@ jobs:
     needs: handoff
     if: contains(needs.handoff.outputs.category, 'YAML')
     uses: ./.github/workflows/YAMLlint.yml
-  unittests:
-    needs: handoff
-    if: contains(needs.handoff.outputs.category, 'Ruby')
-    uses: ./.github/workflows/Unit-Test.yml
