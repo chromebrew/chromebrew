@@ -17,6 +17,9 @@ jobs:
           - arch: armv7l
             runner: ubuntu-latest
     runs-on: ${{ matrix.runner }}
+    concurrency:
+      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
         with:
