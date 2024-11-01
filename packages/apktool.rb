@@ -3,19 +3,20 @@ require 'package'
 class Apktool < Package
   description 'A tool for reverse engineering Android apk files'
   homepage 'https://apktool.org/'
-  version '2.7.0'
+  version '2.10.0'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://raw.githubusercontent.com/iBotPeaches/Apktool/v2.7.0/scripts/linux/apktool'
-  source_sha256 '84797978cbaf5f6cfee926ca55a5db710448b43a3e957567bd3e24feab41201e'
+  source_url "https://raw.githubusercontent.com/iBotPeaches/Apktool/v#{version}/scripts/linux/apktool"
+  source_sha256 '493a9c98df968a25c373ca9df871ca77730c82954be4959b74e90adaf91a0e77'
 
   depends_on 'openjdk8'
 
+  no_compile_needed
+
   def self.install
     downloader "https://github.com/iBotPeaches/Apktool/releases/download/v#{version}/apktool_#{version}.jar",
-               'c11b5eb518d9ac2ab18e959cbe087499079072b04d567cdcae5ceb447f9a7e7d', 'apktool.jar'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.install 'apktool.jar', "#{CREW_DEST_PREFIX}/bin", mode: 0o644
-    FileUtils.install 'apktool', "#{CREW_DEST_PREFIX}/bin", mode: 0o755
+               'c0350abbab5314248dfe2ee0c907def4edd14f6faef1f5d372d3d4abd28f0431', 'apktool.jar'
+    FileUtils.install 'apktool.jar', "#{CREW_DEST_PREFIX}/bin/apktool.jar", mode: 0o644
+    FileUtils.install 'apktool', "#{CREW_DEST_PREFIX}/bin/apktool", mode: 0o755
   end
 end
