@@ -1,6 +1,7 @@
 # lib/convenience_functions.rb
 # Extracted bits of crew-specific code that we use frequently enough that it makes sense to split them out to here.
 require 'json'
+require_relative 'color'
 require_relative 'const'
 require_relative 'crewlog'
 
