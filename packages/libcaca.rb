@@ -1,10 +1,10 @@
-require 'package'
+require 'buildsystems/autotools'
+require 'convenience_functions'
 
-class Libcaca < Package
+class Libcaca < Autotools
   description 'libcaca is a graphics library that outputs text instead of pixels, so that it can work on older video cards or text terminals.'
   homepage 'https://github.com/cacalabs/libcaca'
-  @_ver = '0.99.beta20-f42aa68'
-  version "#{@_ver}-#{CREW_PY_VER}"
+  version "0.99.beta20-f42aa68-1-#{CREW_PY_VER}"
   license 'GPL-2, ISC, LGPL-2.1 and WTFPL'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/cacalabs/libcaca/archive/f42aa68fc798db63b7b2a789ae8cf5b90b57b752.zip'
@@ -12,9 +12,9 @@ class Libcaca < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '26cbffa922a211ff150e019db4dad1a71a817bc18419e61dfdd898ddac3093d0',
-     armv7l: '26cbffa922a211ff150e019db4dad1a71a817bc18419e61dfdd898ddac3093d0',
-     x86_64: '21c788591a10ea39365c8635e80ed9afd053ffbd5b83c7352112c6885d885601'
+    aarch64: '8b2eb8981ef4951c62fbfd6160903b6d6c639e2fa80f381679045830744992e9',
+     armv7l: '8b2eb8981ef4951c62fbfd6160903b6d6c639e2fa80f381679045830744992e9',
+     x86_64: 'cbda913f155d8c0efee4fed8e173100e604cc0fc0df00a5311cd730071386c5f'
   })
 
   depends_on 'freeglut' # R
@@ -45,22 +45,19 @@ class Libcaca < Package
     downloader 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/70.patch',
                '173778700c92338a7b6d9f139053574359dd28829c8cdf8418df81632e002b6a'
     system 'patch -Np1 -i 70.patch'
+    downloader 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/81.patch',
+               '99917c0bc6b0405c8a8a8f4ce8e0df46182ff4db96d6ffb4edbb19ec2ed24b8d'
+    system 'patch -Np1 -i 81.patch'
   end
 
-  def self.build
-    system '[ -x configure ] || ./bootstrap'
-    system "./configure \
-      #{CREW_CONFIGURE_OPTIONS} \
+  def self.prebuild
+    ConvenienceFunctions.libtoolize('freetype')
+  end
+
+  configure_options '--disable-ruby \
       --enable-gl \
       --enable-ncurses \
       --enable-network \
       --enable-slang \
-      --enable-x11"
-
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+      --enable-x11'
 end
