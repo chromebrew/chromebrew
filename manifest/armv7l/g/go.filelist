@@ -6729,6 +6729,8 @@
 /usr/local/share/go/src/internal/types/testdata/check/go1_19_20.go
 /usr/local/share/go/src/internal/types/testdata/check/go1_20_19.go
 /usr/local/share/go/src/internal/types/testdata/check/go1_21_19.go
+/usr/local/share/go/src/internal/types/testdata/check/go1_21_22.go
+/usr/local/share/go/src/internal/types/testdata/check/go1_22_21.go
 /usr/local/share/go/src/internal/types/testdata/check/go1_8.go
 /usr/local/share/go/src/internal/types/testdata/check/go1_xx_19.go
 /usr/local/share/go/src/internal/types/testdata/check/gotos.go
@@ -7005,6 +7007,8 @@
 /usr/local/share/go/src/internal/types/testdata/fixedbugs/issue67683.go
 /usr/local/share/go/src/internal/types/testdata/fixedbugs/issue67872.go
 /usr/local/share/go/src/internal/types/testdata/fixedbugs/issue67962.go
+/usr/local/share/go/src/internal/types/testdata/fixedbugs/issue68903.go
+/usr/local/share/go/src/internal/types/testdata/fixedbugs/issue68935.go
 /usr/local/share/go/src/internal/types/testdata/fixedbugs/issue6977.go
 /usr/local/share/go/src/internal/types/testdata/spec/assignability.go
 /usr/local/share/go/src/internal/types/testdata/spec/comparable.go
@@ -12317,6 +12321,9 @@
 /usr/local/share/go/test/fixedbugs/issue6899.go
 /usr/local/share/go/test/fixedbugs/issue6899.out
 /usr/local/share/go/test/fixedbugs/issue6902.go
+/usr/local/share/go/test/fixedbugs/issue69110.go
+/usr/local/share/go/test/fixedbugs/issue69434.go
+/usr/local/share/go/test/fixedbugs/issue69507.go
 /usr/local/share/go/test/fixedbugs/issue6964.go
 /usr/local/share/go/test/fixedbugs/issue6977.go
 /usr/local/share/go/test/fixedbugs/issue7023.dir/a.go
