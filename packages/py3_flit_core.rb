@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_flit_core < Pip
   description 'Flit provides simplified packaging of Python modules—core portions.'
   homepage 'https://flit.pypa.io/'
-  version "3.9.0-#{CREW_PY_VER}"
+  version "3.10.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '01401d079f3e80bcc8f1a1b89368b1f6194909b411d9469e834c239fcb5a4e0b',
-     armv7l: '01401d079f3e80bcc8f1a1b89368b1f6194909b411d9469e834c239fcb5a4e0b',
-       i686: '98509dc8ddd38b49bedd3c6ad13269f82fb00504d332c3067611e8abe900d16c',
-     x86_64: '310d593fb5e5c9c994ffcd3de67191c8d42379b7ab5049d3d2f0dc22b9fcf051'
+    aarch64: '358a7ea268944112dbefc38d641719433032e41b27393db639dcee2a54ed3c78',
+     armv7l: '358a7ea268944112dbefc38d641719433032e41b27393db639dcee2a54ed3c78',
+       i686: '7c9814afc327797e0266ebc8cb41be724fc4a6f47a6b7a288839145b605385f3',
+     x86_64: 'a3b46f3db82947c3efc63b8d1b52348724c97961a75b09b808320f19db5e5a0f'
   })
 
   depends_on 'python3'
