@@ -3,13 +3,13 @@ require 'package'
 class Abcl < Package
   description 'Armed Bear Common Lisp (ABCL) is a full implementation of the Common Lisp language featuring both an interpreter and a compiler, running in the JVM.'
   homepage 'https://abcl.org/'
-  version '1.9.2'
+  version '1.9.3'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://abcl.org/releases/1.9.2/abcl-bin-1.9.2.tar.gz'
-  source_sha256 '24970976b3565ddf32a1e0b17c5034a9996df25404ec44f240505b01c68a37fe'
+  source_url "https://abcl.org/releases/#{version}/abcl-bin-#{version}.tar.gz"
+  source_sha256 'dbf7fc10cf80657cf9bca7d349020fd021b92d6294bbd74b111873ccb7b2134e'
 
-  depends_on 'openjdk8'
+  depends_on 'openjdk17'
 
   no_compile_needed
 
