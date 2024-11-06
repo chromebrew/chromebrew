@@ -141,8 +141,8 @@ jobs:
         run: |
             case $GITHUB_EVENT in
               merge_group)
-                export CREW_REPO="https://github.com/${{ github.actor }}/chromebrew.git"
-                export CREW_BRANCH="mergegroup"
+                export CREW_REPO="${{ github.event.repository.clone_url }}"
+                export CREW_BRANCH="${{ github.ref_name }}"
                 ;;
               pull_request)
                 export CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}"
