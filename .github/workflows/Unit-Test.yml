@@ -3,6 +3,7 @@ name: Run Unit Tests on PR
 on:
   pull_request:
     branches: [master]
+  merge_group:
 jobs:
   container_tests:
     strategy:
