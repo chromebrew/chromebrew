@@ -84,6 +84,3 @@
 /usr/local/share/locale/uk/LC_MESSAGES/appstream-glib.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/appstream-glib.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/appstream-glib.mo
-/usr/local/share/man/man1/appstream-builder.1.zst
-/usr/local/share/man/man1/appstream-compose.1.zst
-/usr/local/share/man/man1/appstream-util.1.zst
