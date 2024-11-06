@@ -25,8 +25,30 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - name: Dump github context
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
       - name: Get non-pkg changed files
         id: non-pkg-changed-files
         uses: tj-actions/changed-files@v45
@@ -115,7 +137,6 @@ jobs:
             esac
       - name: Run unit tests
         run: |
-            echo "$GITHUB_CONTEXT"
             if [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]); then
               # Exit the arm container if there are neither non-package changed files nor armv7l compatible packages.
               echo "Skipping armv7l container unit tests."
