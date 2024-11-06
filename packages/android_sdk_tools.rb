@@ -12,9 +12,9 @@ class Android_sdk_tools < Package
   depends_on 'jdk11'
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_PREFIX + '/bin'
-    FileUtils.mkdir_p CREW_DEST_PREFIX + '/share/android-sdk-tools'
-    FileUtils.mv Dir['*'], CREW_DEST_PREFIX + '/share/android-sdk-tools'
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/android-sdk-tools"
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/android-sdk-tools"
     Dir["#{CREW_DEST_PREFIX}/share/android-sdk-tools/bin/*"].each do |filename|
       binary = File.basename(filename)
       FileUtils.ln_s "../share/android-sdk-tools/bin/#{binary}", "#{CREW_DEST_PREFIX}/bin/#{binary}"

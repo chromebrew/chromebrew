@@ -1,36 +1,32 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Openvpn < Package
+class Openvpn < Autotools
   description 'OpenVPN is an open source VPN daemon'
   homepage 'https://openvpn.net/'
-  version '2.4.9'
+  version '2.6.12'
   license 'GPL-2'
-  compatibility 'all'
-  source_url 'https://swupdate.openvpn.org/community/releases/openvpn-2.4.9.tar.xz'
-  source_sha256 '641f3add8694b2ccc39fd4fd92554e4f089ad16a8db6d2b473ec284839a5ebe2'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/OpenVPN/openvpn.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvpn/2.4.9_armv7l/openvpn-2.4.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvpn/2.4.9_armv7l/openvpn-2.4.9-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvpn/2.4.9_i686/openvpn-2.4.9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvpn/2.4.9_x86_64/openvpn-2.4.9-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '27e5efdb11c4d8b9af843d5e6cff5a6792dda5b09498f8781d6e094261869c59',
-     armv7l: '27e5efdb11c4d8b9af843d5e6cff5a6792dda5b09498f8781d6e094261869c59',
-       i686: '113d563f0881a1de9c742913ea32daca76a5e9da938c102245024b9072d80348',
-     x86_64: '02353189cfcc0fbe81ec8e13014d85dc67ce1a0c0c64ce2b6008345696d109c0',
+  binary_sha256({
+    aarch64: 'cb5caf7c68a195699cb890e7918bb79f10e0e3003960a3cdf2351e6b8ae6b52d',
+     armv7l: 'cb5caf7c68a195699cb890e7918bb79f10e0e3003960a3cdf2351e6b8ae6b52d',
+     x86_64: '82b50c69a2a2cf439e52be724fe7eb95bfcfa75ed6e77046ab32dbbbd4daeb44'
   })
 
-  depends_on 'libmbedtls'
-  depends_on 'lzo'
+  depends_on 'glibc' # R
+  depends_on 'libcap_ng' # R
+  depends_on 'libeconf' # R
+  depends_on 'libmbedtls' => :build
+  depends_on 'libnl3' # R
+  depends_on 'linux_pam' # R
+  depends_on 'lz4' # R
+  depends_on 'lzo' # R
+  depends_on 'mold' => :build
+  depends_on 'openssl' # R
+  depends_on 'py3_docutils' => :build
 
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

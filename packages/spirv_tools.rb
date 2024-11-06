@@ -1,62 +1,33 @@
-# Adapted from Arch Linux spirv-tools PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/spirv-tools/trunk/PKGBUILD
-require 'package'
+require 'buildsystems/cmake'
 
-class Spirv_tools < Package
+class Spirv_tools < CMake
+  homepage 'https://github.com/KhronosGroup/SPIRV-Tools'
   description 'API and commands for processing SPIR-V modules'
-  version '2020.7'
-  license 'custom'
+  version '2024.3-1'
+  license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/KhronosGroup/SPIRV-Tools/archive/v2020.7.tar.gz'
-  source_sha256 'c06eed1c7a1018b232768481184b5ae4d91d614d7bd7358dc2fe306bd0a39c6e'
+  source_url 'https://github.com/KhronosGroup/SPIRV-Tools.git'
+  git_hashtag "v#{version.split('-').first}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_tools/2020.7_armv7l/spirv_tools-2020.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_tools/2020.7_armv7l/spirv_tools-2020.7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_tools/2020.7_i686/spirv_tools-2020.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_tools/2020.7_x86_64/spirv_tools-2020.7-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '11f7b470632a94066cae7c546fc8a826c2cc34e11aab3544bb1fff64dc3627d4',
-     armv7l: '11f7b470632a94066cae7c546fc8a826c2cc34e11aab3544bb1fff64dc3627d4',
-       i686: '4a35f21e49c67571334444318560c9f182c1c31d82290927f83330ba7178f3f1',
-     x86_64: 'deaebf001fa0d2d78c24b1b7cb6a6b1c062afa88c3c8ae80d79a73db86595597'
+    aarch64: '52a58053473626c4d8e6adbb3d58e353ea8468c63d4b481ec827dd8905a006e4',
+     armv7l: '52a58053473626c4d8e6adbb3d58e353ea8468c63d4b481ec827dd8905a006e4',
+       i686: 'ccb2da56af36c69d66548acc33d5d13cb816e9698fbfa8d69ba1e853e1e4da16',
+     x86_64: '21eafdec332b855639c05586fffa18f6719ff3ae63573e86a659a72799ae8887'
   })
 
-  depends_on 'spirv_headers'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  # depends_on 'spirv_headers' => :build
+  depends_on 'glibc_lib' # R
 
+  # https://github.com/KhronosGroup/SPIRV-Tools/issues/5728
   def self.patch
-    # Source needs spirv-headers repo as submodule
-    @git_dir = 'external/SPIRV-Headers'
-    @git_hash = 'f88a1f98fa7a44ccfcf33d810c72b200e7d9a78a'
-    @git_url = 'https://github.com/KhronosGroup/SPIRV-Headers'
-    FileUtils.rm_rf(@git_dir)
-    FileUtils.mkdir_p(@git_dir)
-    Dir.chdir @git_dir do
-      system 'git init'
-      system "git remote add origin #{@git_url}"
-      system "git fetch --depth 1 origin #{@git_hash}"
-      system 'git checkout FETCH_HEAD'
-    end
+    system 'utils/git-sync-deps'
   end
 
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        -DSPIRV_WERROR=Off \
-        -DBUILD_SHARED_LIBS=ON \
-        .."
-    end
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  # https://github.com/KhronosGroup/SPIRV-Tools/issues/3909
+  cmake_options '-DSPIRV_TOOLS_BUILD_STATIC=OFF -DBUILD_SHARED_LIBS=ON'
+  run_tests
 end

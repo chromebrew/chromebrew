@@ -1,41 +1,32 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Ninja < Package
+class Ninja < CMake
   description 'a small build system with a focus on speed'
   homepage 'https://ninja-build.org'
-  version '1.10.2'
+  version '1.12.1'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/ninja-build/ninja/archive/v1.10.2.tar.gz'
-  source_sha256 'ce35865411f0490368a8fc383f29071de6690cbadc27704734978221f25e2bed'
+  source_url 'https://github.com/ninja-build/ninja.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.10.2_armv7l/ninja-1.10.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.10.2_armv7l/ninja-1.10.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.10.2_i686/ninja-1.10.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.10.2_x86_64/ninja-1.10.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'd6fe1cfab1c8c0c9a4865fcc1918ebe86a4effd17a28d9fc7b90401e550e2b90',
-     armv7l: 'd6fe1cfab1c8c0c9a4865fcc1918ebe86a4effd17a28d9fc7b90401e550e2b90',
-       i686: '36f809229fd7779f0783742a579043c9b8a69ec9454efcb1ff7655fd621d5e45',
-     x86_64: '40ee7476d70e15874acb59b43e4e379c67cc65793ead2af6fbd67331f06193ff'
+    aarch64: '9a6273179b9c9242db8c19708498d3de8a9bcc98292615cfbf44364cb4db4536',
+     armv7l: '9a6273179b9c9242db8c19708498d3de8a9bcc98292615cfbf44364cb4db4536',
+       i686: '98466d2c4986666d124e9cdac21a7e129ce86741a5823975410c0830cc49acf6',
+     x86_64: '0216d7f30e7aeb8febfc94c7c985e109de83d3e836dc4c9d41164017113cc4b4'
   })
 
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
   depends_on 're2c' => :build
 
+  cmake_options '-DBUILD_TESTING=OFF'
+
   def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-      AR=gcc-ar \
-      python3 configure.py --bootstrap"
-  end
-
-  def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.install 'ninja', "#{CREW_DEST_PREFIX}/bin/ninja", mode: 0o755
+    puts 'Patching to update status on edge finish.'.orange
+    downloader 'https://patch-diff.githubusercontent.com/raw/ninja-build/ninja/pull/2312.patch',
+               '09608df70838e8af1a4dab69f735da071699cb10af2336dfe22f92451edbe886'
+    system 'patch -F 3 -p1 -i 2312.patch'
   end
 end

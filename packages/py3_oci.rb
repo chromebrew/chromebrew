@@ -1,39 +1,29 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_oci < Package
+class Py3_oci < Pip
   description 'Oracle Cloud Infrastructure Python SDK'
   homepage 'https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/'
-  @_ver = '2.38.1'
-  version @_ver
+  version "2.137.1-#{CREW_PY_VER}"
   license 'UPL-1.0 or Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/oracle/oci-python-sdk.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.38.1_armv7l/py3_oci-2.38.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.38.1_armv7l/py3_oci-2.38.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.38.1_x86_64/py3_oci-2.38.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '0412d58af1bf04b702d03c3121ffd53eaf3b2143c88d4ba40336c2f340a210da',
-     armv7l: '0412d58af1bf04b702d03c3121ffd53eaf3b2143c88d4ba40336c2f340a210da',
-     x86_64: 'd8405fcf598555bd2e060fd2549ac055b09d086a6d4f96abda982a9b0d48697e'
+    aarch64: '976d5d7b9675e18729ce4ab8a411ca9de65f877a7397ec8733cd11b410f77d3c',
+     armv7l: '976d5d7b9675e18729ce4ab8a411ca9de65f877a7397ec8733cd11b410f77d3c',
+       i686: 'ebf6b04c9afecd7168a4bf3713ad6e670c27304b5d965b43c3bf8c486c63e33e',
+     x86_64: '0edd9af9594d2ac55b27c1fdad160aef4f01f0257636f3b3fc3bcc031ae46954'
   })
 
-  depends_on 'py3_dateutil'
+  depends_on 'py3_python_dateutil'
   depends_on 'py3_configparser'
   depends_on 'py3_pyopenssl'
   depends_on 'py3_certifi'
   depends_on 'py3_pytz'
   depends_on 'py3_cryptography'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
+  depends_on 'rust' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

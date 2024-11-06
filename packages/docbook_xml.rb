@@ -3,18 +3,20 @@ require 'package'
 class Docbook_xml < Package
   description 'Meta package for all versions of docbook_xml'
   homepage 'http://www.docbook.org'
-  version '5.1-2-1'
+  version '5.1-2-2'
   license 'MIT'
   compatibility 'all'
 
   is_fake
 
-  FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-  @env = <<~EOF
-    # Docbook_xml configuration
-    XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog
-  EOF
-  IO.write("#{CREW_DEST_PREFIX}/etc/env.d/docbook_xml", @env)
+  unless File.exist?("#{CREW_PREFIX}/etc/env.d/docbook_xml")
+    FileUtils.mkdir_p "#{CREW_PREFIX}/etc/env.d/"
+    @env = <<~DOCBOOK_XML_EOF
+      # Docbook_xml configuration
+      XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog
+    DOCBOOK_XML_EOF
+    File.write("#{CREW_PREFIX}/etc/env.d/docbook_xml", @env)
+  end
 
   depends_on 'xmlcatmgr'
   depends_on 'docbook_xml412'

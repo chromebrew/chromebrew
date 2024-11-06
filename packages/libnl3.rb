@@ -1,42 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libnl3 < Package
-  description 'Library for applications dealing with netlink sockets.'
-  homepage 'http://www.infradead.org/~tgr/libnl/'
-  version '3.2.25-0'
-  license 'LGPL-2.1 and GPL-2'
+class Libnl3 < Autotools
+  description 'libnl is a library for applications dealing with netlink sockets.'
+  homepage 'https://github.com/thom311/libnl'
+  version '3.9.0-5248e1a'
+  license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://www.infradead.org/~tgr/libnl/files/libnl-3.2.25.tar.gz'
-  source_sha256 '8beb7590674957b931de6b7f81c530b85dc7c1ad8fbda015398bc1e8d1ce8ec5'
+  source_url 'https://github.com/thom311/libnl.git'
+  git_hashtag '5248e1a45576617b349465997822cef34cbc5053'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.2.25-0_armv7l/libnl3-3.2.25-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.2.25-0_armv7l/libnl3-3.2.25-0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.2.25-0_i686/libnl3-3.2.25-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.2.25-0_x86_64/libnl3-3.2.25-0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'fdce1a46f9a89772ef9b51dd5bf738a24966908027299f5c3dc049c95b8f2a7b',
-     armv7l: 'fdce1a46f9a89772ef9b51dd5bf738a24966908027299f5c3dc049c95b8f2a7b',
-       i686: '1efa9cd106f16ff347d82bb3cb0734d8393d53edf51db2d294e9788a20036bb4',
-     x86_64: '4494bd6d1919090838d86f75d6cc1ea86becc467400d58dffc4e905d27a373da',
+  binary_sha256({
+    aarch64: '83355357cf4755c47348e8db7528e345a36de0dfa3d734e1141dc632e5970973',
+     armv7l: '83355357cf4755c47348e8db7528e345a36de0dfa3d734e1141dc632e5970973',
+       i686: '8f9373822534eea9fec8cbdea8b4dac53b94920aae8abc4c9f19264fff0130a3',
+     x86_64: '455ffa9f7ba341a84989c0e36546918d671ef61013ddb171264601cc058abe1d'
   })
 
-  def self.build
-	system "./configure \
-		--prefix=#{CREW_PREFIX} \
-		--libdir=#{CREW_LIB_PREFIX} \
-                --sysconfdir=#{CREW_PREFIX}/etc \
-                --sbindir=#{CREW_PREFIX}/sbin \
-                --disable-static"
-    system "make"
-  end
+  # depends_on 'check' => :build
+  depends_on 'glibc' # R
 
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
-
-  def self.check
-    system "make", "check"
-  end
+  configure_options '--disable-debug'
+  # https://github.com/thom311/libnl/issues/393
+  # run_tests
 end

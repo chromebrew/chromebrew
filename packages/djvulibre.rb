@@ -5,35 +5,30 @@ require 'package'
 
 class Djvulibre < Package
   description 'Suite to create, manipulate and view DjVu déjà vu documents'
-  homepage 'http://djvu.sourceforge.net/'
-  version '3.5.28'
+  homepage 'https://djvu.sourceforge.net/'
+  @_ver = '3.5.28'
+  version "#{@_ver}-1"
   license 'GPL2'
   compatibility 'all'
-  source_url "https://downloads.sourceforge.net/project/djvu/DjVuLibre/#{version}/djvulibre-#{version}.tar.gz"
+  source_url "https://downloads.sourceforge.net/project/djvu/DjVuLibre/#{@_ver}/djvulibre-#{@_ver}.tar.gz"
   source_sha256 'fcd009ea7654fde5a83600eb80757bd3a76998e47d13c66b54c8db849f8f2edc'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/djvulibre/3.5.28_armv7l/djvulibre-3.5.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/djvulibre/3.5.28_armv7l/djvulibre-3.5.28-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/djvulibre/3.5.28_i686/djvulibre-3.5.28-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/djvulibre/3.5.28_x86_64/djvulibre-3.5.28-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '2a662b5b95e3e5c24531cb4ae0f5b33c044895f33fc88c562026a4124ff15295',
-     armv7l: '2a662b5b95e3e5c24531cb4ae0f5b33c044895f33fc88c562026a4124ff15295',
-       i686: 'a0cf591f8e04fc89a0c2f45f0ad67c7c907971dcf85371a2184c3ea54e605da4',
-     x86_64: 'd17ec121e01aea869ea74b421aebcf4b8f019e8b32268859256aadd32019aab5'
+    aarch64: '48a4422a5608c30ca64ee39e5def5889b39fb0a8baa21bea2e4a1a71732e4807',
+     armv7l: '48a4422a5608c30ca64ee39e5def5889b39fb0a8baa21bea2e4a1a71732e4807',
+       i686: '72dc698bb4e83cfa4b745005daea4ab7f877477e307462df26940b0404bb851c',
+     x86_64: '2d7e552fb69f2f0065b149be8046aaed7e6db3094b1f827fdd24454c2d5ddc9a'
   })
- 
-  depends_on 'libjpeg'
+
+  depends_on 'libjpeg_turbo'
   depends_on 'libtiff'
   depends_on 'librsvg' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --disable-desktopfiles"
     system 'make'
   end

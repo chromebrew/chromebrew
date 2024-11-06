@@ -3,31 +3,27 @@ require 'package'
 class Gdbm < Package
   description 'GNU dbm is a set of database routines that use extensible hashing.'
   homepage 'https://www.gnu.org/software/gdbm/'
-  @_ver = '1.19'
-  version @_ver
+  version '1.23'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/gdbm/gdbm-#{@_ver}.tar.gz"
-  source_sha256 '37ed12214122b972e18a0d94995039e57748191939ef74115b1d41d8811364bc'
+  source_url "https://ftpmirror.gnu.org/gdbm/gdbm-#{version}.tar.gz"
+  source_sha256 '74b1081d21fff13ae4bd7c16e5d6e504a4c26f7cde1dca0d963a484174bbcacd'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdbm/1.19_armv7l/gdbm-1.19-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdbm/1.19_armv7l/gdbm-1.19-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdbm/1.19_i686/gdbm-1.19-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdbm/1.19_x86_64/gdbm-1.19-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '34ed01ff6f5ce4af6e8d89f54acbd74cd2b33c585c4409d5d6d77fcbedf0562b',
-     armv7l: '34ed01ff6f5ce4af6e8d89f54acbd74cd2b33c585c4409d5d6d77fcbedf0562b',
-       i686: '1042907927b4b62f49ec959f317273b27a380d264a5ea690070b4643528e33f8',
-     x86_64: '79ffa73dfefefdec13bfd9ccaac27f24e6bd6b86da4efd6b0544f45a6828ad51'
+    aarch64: 'f0220b8db665e3ae6cb1ad8bcdf857412ed30f57d959df46cc5239095b4248bc',
+     armv7l: 'f0220b8db665e3ae6cb1ad8bcdf857412ed30f57d959df46cc5239095b4248bc',
+       i686: 'c7c6d8d62f231088d689c1ac890e5fde6ef236056b697ad7dbf75f7845f6d32e',
+     x86_64: 'fac97319de143626cd10e33d84c3618f58fa32cd814460b6287af7d8ada36b3b'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'readline' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS}"
+    system "mold -run ./configure \
+      #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

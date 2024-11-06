@@ -1,3 +1,4 @@
+---
 kind: url
 name: a2png
 url: https://sourceforge.net/projects/a2png/files/a2png
@@ -6,11 +7,6 @@ activity: none
 kind: url
 name: a2ps
 url: https://ftp.gnu.org/gnu/a2ps
-activity: none
----
-kind: url
-name: a52
-url: http://liba52.sourceforge.net/downloads.html
 activity: none
 ---
 kind: url
@@ -24,6 +20,11 @@ url: https://abcde.einval.com/download/
 activity: medium
 ---
 kind: url
+name: abcl
+url: https://abcl.org/releases
+activity: medium
+---
+kind: url
 name: abseil_cpp
 url: https://github.com/abseil/abseil-cpp/releases
 activity: medium
@@ -34,7 +35,7 @@ url: https://download.savannah.gnu.org/releases/acl
 activity: medium
 ---
 kind: url
-name: acli
+name: acquia_cli
 url: https://github.com/acquia/cli/releases
 activity: medium
 ---
@@ -49,8 +50,18 @@ url: https://acpica.org/downloads
 activity: medium
 ---
 kind: url
+name: act
+url: https://github.com/nektos/act/releases
+activity: medium
+---
+kind: url
 name: adobe_source_code_pro_fonts
 url: https://github.com/adobe-fonts/source-code-pro/releases
+activity: low
+---
+kind: url
+name: advanced_rest_client
+url: https://github.com/advanced-rest-client/arc-electron/releases
 activity: low
 ---
 kind: url
@@ -61,6 +72,16 @@ activity: medium
 kind: url
 name: ag
 url: https://github.com/ggreer/the_silver_searcher/releases
+activity: medium
+---
+kind: url
+name: agedu
+url: https://www.chiark.greenend.org.uk/~sgtatham/agedu/
+activity: none
+---
+kind: url
+name: angle_grinder
+url: https://github.com/rcoh/angle-grinder/releases
 activity: medium
 ---
 kind: url
@@ -79,6 +100,11 @@ url: http://download.aircrack-ng.org
 activity: none
 ---
 kind: url
+name: alacritty
+url: https://github.com/alacritty/alacritty/tags
+activity: medium
+---
+kind: url
 name: alien
 url: https://sourceforge.net/projects/alien-pkg-convert/files/release/
 activity: none
@@ -87,6 +113,11 @@ kind: url
 name: alive
 url: https://ftpmirror.gnu.org/alive/
 activity: none
+---
+kind: url
+name: aliyun_cli
+url: https://github.com/aliyun/aliyun-cli/releases
+activity: medium
 ---
 kind: url
 name: alpine
@@ -114,9 +145,9 @@ url: ftp://ftp.alsa-project.org/pub/plugins
 activity: medium
 ---
 kind: url
-name: amtk
-url: https://github.com/GNOME/amtk/releases
-activity: medium
+name: android_sdk_tools
+url: https://developer.android.com/studio
+activity: low
 ---
 kind: url
 name: android_studio
@@ -126,11 +157,6 @@ activity: high
 kind: url
 name: ansible
 url: https://pypi.org/project/ansible/
-activity: high
----
-kind: url
-name: ansible_base
-url: https://pypi.org/project/ansible-base/
 activity: high
 ---
 kind: url
@@ -169,9 +195,19 @@ url: https://github.com/iBotPeaches/Apktool/releases/
 activity: low
 ---
 kind: url
+name: apng2gif
+url: https://sourceforge.net/projects/apng2gif/files
+activity: none
+---
+kind: url
 name: appres
 url: https://x.org/archive/individual/app/
 activity: none
+---
+kind: url
+name: appstream
+url: https://github.com/ximion/appstream/tags
+activity: medium
 ---
 kind: url
 name: appstream_glib
@@ -184,12 +220,12 @@ url: https://apache.claz.org/apr
 activity: low
 ---
 kind: url
-name: apriconv
+name: apr_iconv
 url: https://apache.claz.org/apr
 activity: low
 ---
 kind: url
-name: aprutil
+name: apr_util
 url: https://apache.claz.org/apr
 activity: low
 ---
@@ -214,6 +250,16 @@ url: https://github.com/aria2/aria2/releases
 activity: medium
 ---
 kind: url
+name: aribb24
+url: https://github.com/nkoriyama/aribb24/releases
+activity: none
+---
+kind: url
+name: aribb25
+url: https://code.videolan.org/videolan/aribb25/-/tags
+activity: none
+---
+kind: url
 name: armadillo
 url: https://sourceforge.net/projects/arma/files/
 activity: high
@@ -229,6 +275,11 @@ url: https://github.com/ThomasHabets/arping/releases
 activity: low
 ---
 kind: url
+name: arpscan
+url: https://github.com/royhills/arp-scan/releases
+activity: none
+---
+kind: url
 name: ascii
 url: http://www.catb.org/~esr/ascii
 activity: low
@@ -239,13 +290,13 @@ url: https://sourceforge.net/projects/asciidoc/files/asciidoc/
 activity: none
 ---
 kind: url
-name: asciidoctor
-url: https://github.com/asciidoctor/asciidoctor/releases
+name: asciinema
+url: https://github.com/asciinema/asciinema/releases
 activity: medium
 ---
 kind: url
-name: asciinema
-url: https://github.com/asciinema/asciinema/releases
+name: asmc
+url: https://github.com/nidud/asmc
 activity: medium
 ---
 kind: url
@@ -262,6 +313,11 @@ kind: url
 name: aspell_fr
 url: https://ftpmirror.gnu.org/aspell/dict/fr/
 activity: none
+---
+kind: url
+name: asunder
+url: https://littlesvr.ca/asunder/releases
+activity: low
 ---
 kind: url
 name: aspell_es
@@ -304,6 +360,11 @@ url: https://download.savannah.gnu.org/releases/atool/
 activity: none
 ---
 kind: url
+name: atop
+url: https://www.atoptool.nl/downloadatop.php
+activity: low
+---
+kind: url
 name: attr
 url: http://download.savannah.gnu.org/releases/attr
 activity: medium
@@ -336,6 +397,11 @@ activity: medium
 kind: url
 name: autoconf213
 url: https://ftp.gnu.org/gnu/autoconf
+activity: none
+---
+kind: url
+name: autojump
+url: https://github.com/wting/autojump/tags
 activity: none
 ---
 kind: url
@@ -404,6 +470,11 @@ url: https://github.com/boostorg/build/releases
 activity: low
 ---
 kind: url
+name: b64
+url: https://sourceforge.net/projects/base64/files/
+activity: none
+---
+kind: url
 name: babl
 url: https://download.gimp.org/pub/babl/
 activity: high
@@ -444,14 +515,34 @@ url: https://github.com/scop/bash-completion/releases
 activity: medium
 ---
 kind: url
+name: bash_snippets
+url: https://github.com/alexanderepstein/Bash-Snippets/releases
+activity: none
+---
+kind: url
 name: bashdb
 url: https://sourceforge.net/projects/bashdb/files/bashdb/
+activity: low
+---
+kind: url
+name: bat
+url: https://github.com/sharkdp/bat/releases
 activity: low
 ---
 kind: url
 name: bats
 url: https://github.com/sstephenson/bats/releases
 activity: none
+---
+kind: url
+name: bazel
+url: https://github.com/bazelbuild/bazel/releases
+activity: medium
+---
+kind: url
+name: bazelisk
+url: https://github.com/bazelbuild/bazelisk/releases
+activity: low
 ---
 kind: url
 name: bc
@@ -489,6 +580,11 @@ url: https://github.com/JLErvin/berry/releases
 activity: low
 ---
 kind: url
+name: bibutils
+url: https://downloads.sourceforge.net/project/bibutils
+activity: none
+---
+kind: url
 name: biew
 url: https://sourceforge.net/projects/beye/files/biew/
 activity: none
@@ -500,8 +596,8 @@ activity: none
 ---
 kind: url
 name: bind
-url: https://www.isc.org/downloads
-activity: medium
+url: https://gitlab.isc.org/isc-projects/bind9/-/tags
+activity: high
 ---
 kind: url
 name: binutils
@@ -512,6 +608,11 @@ kind: url
 name: bison
 url: https://ftp.gnu.org/gnu/bison/
 activity: medium
+---
+kind: url
+name: bitcoin_core
+url: https://github.com/bitcoin/bitcoin/releases
+activity: low
 ---
 kind: url
 name: bitmap
@@ -564,14 +665,29 @@ url: https://github.com/brave/brave-browser/releases/
 activity: high
 ---
 kind: url
+name: bridge_utils
+url: https://mirrors.edge.kernel.org/pub/linux/utils/net/bridge-utils/
+activity: medium
+---
+kind: url
 name: broadway
 url: https://developer.gnome.org/gtk3/stable/gtk-broadway.html
 activity: none
 ---
 kind: url
+name: broot
+url: https://github.com/Canop/broot/releases
+activity: high
+---
+kind: url
 name: brotli
 url: https://github.com/google/brotli/releases
 activity: medium
+---
+kind: url
+name: btop
+url: https://github.com/aristocratos/btop/releases
+activity: low
 ---
 kind: url
 name: btrfsprogs
@@ -589,6 +705,11 @@ url: https://github.com/bulletphysics/bullet3/releases
 activity: low
 ---
 kind: url
+name: bun
+url: https://github.com/oven-sh/bun/releases
+activity: high
+---
+kind: url
 name: busybox
 url: https://busybox.net/downloads/
 activity: medium
@@ -599,14 +720,24 @@ url: https://launchpad.net/byobu/trunk
 activity: medium
 ---
 kind: url
-name: bz2
+name: bzip2
 url: http://www.bzip.org
 activity: none
+---
+kind: url
+name: bzip3
+url: https://github.com/kspalaiologos/bzip3/releases
+activity: medium
 ---
 kind: url
 name: c_ares
 url: https://github.com/c-ares/c-ares/releases
 activity: medium
+---
+kind: url
+name: c2x
+url: http://www.jens-goedeke.eu/tools/csv2xml/
+activity: none
 ---
 kind: url
 name: ca_certificates
@@ -627,6 +758,11 @@ kind: url
 name: cadaver
 url: https://packages.ubuntu.com/source/xenial/cadaver
 activity: none
+---
+kind: url
+name: cage
+url: https://github.com/Hjdskes/cage/releases
+activity: low
 ---
 kind: url
 name: cairo
@@ -659,13 +795,28 @@ url: https://download.gnome.org/sources/cantarell-fonts/
 activity: low
 ---
 kind: url
+name: caprine
+url: https://github.com/sindresorhus/caprine/releases
+activity: low
+---
+kind: url
 name: cargo_c
 url: https://github.com/lu-zero/cargo-c/releases
 activity: high
 ---
 kind: url
+name: catatonit
+url: https://github.com/openSUSE/catatonit/releases
+activity: low
+---
+kind: url
 name: cbase
 url: http://www.hyperrealm.com/packages
+activity: none
+---
+kind: url
+name: cbonsai
+url: https://gitlab.com/jallbrit/cbonsai/-/tags
 activity: none
 ---
 kind: url
@@ -681,6 +832,11 @@ activity: low
 kind: url
 name: cdargs
 url: http://www.skamphausen.de/downloads/cdargs
+activity: none
+---
+kind: url
+name: cdparanoia
+url: https://downloads.xiph.org/releases/cdparanoia
 activity: none
 ---
 kind: url
@@ -707,6 +863,16 @@ kind: url
 name: chafa
 url: https://github.com/hpjansson/chafa/releases
 activity: medium
+---
+kind: url
+name: charm
+url: https://github.com/charmbracelet/charm/releases
+activity: high
+---
+kind: url
+name: cheat
+url: https://github.com/cheat/cheat/releases
+activity: low
 ---
 kind: url
 name: check
@@ -754,8 +920,18 @@ url: https://github.com/reynhout/chrx
 activity: low
 ---
 kind: url
+name: ciano
+url: https://github.com/robertsanseries/ciano/releases
+activity: none
+---
+kind: url
 name: civetweb
 url: https://github.com/civetweb/civetweb/releases
+activity: low
+---
+kind: url
+name: cjson
+url: https://github.com/DaveGamble/cJSON/releases
 activity: low
 ---
 kind: url
@@ -774,6 +950,11 @@ url: https://www.clamav.net/downloads/
 activity: medium
 ---
 kind: url
+name: clamtk
+url: https://gitlab.com/dave_m/clamtk/-/tags
+activity: none
+---
+kind: url
 name: clean
 url: https://sourceforge.net/projects/clean/files/clean/
 activity: none
@@ -782,6 +963,16 @@ kind: url
 name: clib
 url: https://github.com/clibs/clib/releases
 activity: low
+---
+kind: url
+name: clickhouse
+url: https://github.com/ClickHouse/ClickHouse/releases
+activity: high
+---
+kind: url
+name: clipgrab
+url: https://clipgrab.org/
+activity: none
 ---
 kind: url
 name: clisp
@@ -801,6 +992,11 @@ activity: medium
 kind: url
 name: cloog
 url: https://www.bastoul.net/cloog/download.php
+activity: none
+---
+kind: url
+name: cloudcross
+url: https://github.com/MasterSoft24/CloudCross/releases
 activity: none
 ---
 kind: url
@@ -834,6 +1030,11 @@ url: https://github.com/cmus/cmus/releases
 activity: none
 ---
 kind: url
+name: cni_plugins
+url: https://github.com/containernetworking/plugins/releases
+activity: medium
+---
+kind: url
 name: codelite
 url: https://github.com/eranif/codelite/releases/
 activity: medium
@@ -844,7 +1045,12 @@ url: http://codelobsteride.com/#download
 activity: medium
 ---
 kind: url
-name: codium
+name: codon
+url: https://github.com/exaloop/codon/releases
+activity: low
+---
+kind: url
+name: vscodium
 url: https://github.com/VSCodium/vscodium/releases
 activity: high
 ---
@@ -889,9 +1095,24 @@ url: https://github.com/ojab/BLFS/releases
 activity: low
 ---
 kind: url
+name: conmon
+url: https://github.com/containers/conmon/releases
+activity: high
+---
+kind: url
 name: consolekit
 url: https://github.com/ConsoleKit2/ConsoleKit2/releases
 activity: low
+---
+kind: url
+name: containerd
+url: https://github.com/containerd/containerd/releases
+activity: medium
+---
+kind: url
+name: containers_common
+url: https://github.com/containers/common/releases
+activity: medium
 ---
 kind: url
 name: coreutils
@@ -907,6 +1128,11 @@ kind: url
 name: cpio
 url: https://ftp.gnu.org/gnu/cpio/
 activity: none
+---
+kind: url
+name: cppdap
+url: https://github.com/google/cppdap/tags
+activity: low
 ---
 kind: url
 name: cppunit
@@ -939,6 +1165,16 @@ url: https://chromium.googlesource.com/chromiumos/third_party/adhd
 activity: medium
 ---
 kind: url
+name: crew-mvdir
+url: https://github.com/chromebrew/crew-mvdir/releases
+activity: medium
+---
+kind: url
+name: criu
+url: https://github.com/checkpoint-restore/criu/tags
+activity: medium
+---
+kind: url
 name: cronie
 url: https://github.com/cronie-crond/cronie/releases
 activity: medium
@@ -959,9 +1195,29 @@ url: https://github.com/crossmob/CrossMobile/releases/
 activity: medium
 ---
 kind: url
+name: crosvm
+url: https://chromium.googlesource.com/crosvm/crosvm
+activity: high
+---
+kind: url
+name: crun
+url: https://github.com/containers/crun/releases
+activity: high
+---
+kind: url
+name: cryptopp
+url: https://cryptopp.com/#download
+activity: low
+---
+kind: url
 name: cryptsetup
 url: https://www.kernel.org/pub/linux/utils/cryptsetup/
 activity: low
+---
+kind: url
+name: crystal
+url: https://github.com/crystal-lang/crystal/releases
+activity: medium
 ---
 kind: url
 name: cscope
@@ -975,12 +1231,17 @@ activity: low
 ---
 kind: url
 name: ctags
-url: https://sourceforge.net/projects/ctags/files/ctags/
-activity: none
+url: https://github.com/universal-ctags/ctags/releases
+activity: low
 ---
 kind: url
 name: ctorrent
 url: http://www.rahul.net/dholmes/ctorrent
+activity: none
+---
+kind: url
+name: cunit
+url: https://sourceforge.net/projects/cunit/files
 activity: none
 ---
 kind: url
@@ -990,8 +1251,13 @@ activity: medium
 ---
 kind: url
 name: curl
-url: https://curl.haxx.se/download
-activity: medium
+url: https://github.com/curl/curl/releases
+activity: high
+---
+kind: url
+name: curtail
+url: https://github.com/Huluti/Curtail/releases
+activity: low
 ---
 kind: url
 name: cvs
@@ -1034,6 +1300,11 @@ url: https://get.videolan.org/dav1d/
 activity: high
 ---
 kind: url
+name: dbeaver
+url: https://github.com/dbeaver/dbeaver/releases
+activity: high
+---
+kind: url
 name: dbus
 url: https://dbus.freedesktop.org/releases/dbus
 activity: medium
@@ -1052,6 +1323,11 @@ kind: url
 name: dconf_editor
 url: https://download.gnome.org/sources/dconf-editor/
 activity: medium
+---
+kind: url
+name: ddgr
+url: https://github.com/jarun/ddgr/releases
+activity: low
 ---
 kind: url
 name: ddrescue
@@ -1094,6 +1370,11 @@ url: https://github.com/DentonW/DevIL/releases
 activity: none
 ---
 kind: url
+name: dexed
+url: https://gitlab.com/basile.b/dexed/-/tags
+activity: low
+---
+kind: url
 name: dfc
 url: https://projects.gw-computing.net/
 activity: low
@@ -1112,6 +1393,16 @@ kind: url
 name: dia
 url: https://github.com/GNOME/dia/releases
 activity: none
+---
+kind: url
+name: diff_so_fancy
+url: https://github.com/so-fancy/diff-so-fancy/releases
+activity: low
+---
+kind: url
+name: difftastic
+url: https://github.com/Wilfred/difftastic/releases
+activity: medium
 ---
 kind: url
 name: diffuse
@@ -1134,6 +1425,11 @@ url: https://sourceforge.net/projects/disktype/files/disktype/
 activity: none
 ---
 kind: url
+name: distcc
+url: https://github.com/distcc/distcc/releases
+activity: low
+---
+kind: url
 name: diy
 url: https://github.com/diatomic/diy/releases
 activity: none
@@ -1142,6 +1438,11 @@ kind: url
 name: djvulibre
 url: https://sourceforge.net/projects/djvu/files/DjVuLibre/
 activity: low
+---
+kind: url
+name: dmd
+url: https://github.com/dlang/dmd/releases
+activity: high
 ---
 kind: url
 name: dmidecode
@@ -1174,6 +1475,21 @@ url: https://sourceforge.net/projects/docbook2x/files/docbook2x/
 activity: none
 ---
 kind: url
+name: docker
+url: https://github.com/docker/cli/releases
+activity: medium
+---
+kind: url
+name: docker_systemctl_replacement
+url: https://github.com/gdraheim/docker-systemctl-replacement/releases
+activity: low
+---
+kind: url
+name: doctl
+url: https://github.com/digitalocean/doctl/releases
+activity: medium
+---
+kind: url
 name: docx2txt
 url: https://sourceforge.net/projects/docx2txt/files/docx2txt/
 activity: none
@@ -1181,6 +1497,11 @@ activity: none
 kind: url
 name: dos2unix
 url: https://sourceforge.net/projects/dos2unix/files/dos2unix/
+activity: low
+---
+kind: url
+name: dosbox
+url: https://sourceforge.net/projects/dosbox/files/dosbox/
 activity: low
 ---
 kind: url
@@ -1192,6 +1513,11 @@ kind: url
 name: dosfstools
 url: https://github.com/joncampbell123/dosbox-x/releases
 activity: none
+---
+kind: url
+name: dotnet
+url: https://dotnet.microsoft.com/en-us/download/dotnet
+activity: high
 ---
 kind: url
 name: double_conversion
@@ -1214,9 +1540,19 @@ url: https://github.com/andreafabrizi/Dropbox-Uploader/releases
 activity: none
 ---
 kind: url
+name: dsq
+url: https://github.com/multiprocessio/dsq/releases
+activity: high
+---
+kind: url
 name: dstat
 url: https://github.com/dagwieers/dstat/releases
 activity: none
+---
+kind: url
+name: dtc
+url: https://www.devicetree.org/
+activity: low
 ---
 kind: url
 name: dtrx
@@ -1229,9 +1565,19 @@ url: https://github.com/dlang/dub/releases
 activity: high
 ---
 kind: url
+name: duktape
+url: https://duktape.org/download.html
+activity: medium
+---
+kind: url
 name: duplicity
 url: https://launchpad.net/duplicity/+download
 activity: medium
+---
+kind: url
+name: dvtm
+url: https://github.com/martanne/dvtm/releases
+activity: none
 ---
 kind: url
 name: e2fsprogs
@@ -1249,6 +1595,16 @@ url: http://ftpmirror.gnu.org/ed
 activity: low
 ---
 kind: url
+name: editoconfig_core_c
+url: https://github.com/editorconfig/editorconfig-core-c/releases
+activity: medium
+---
+kind: url
+name: edge
+url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/
+activity: high
+---
+kind: url
 name: editres
 url: https://x.org/archive/individual/app
 activity: none
@@ -1259,14 +1615,19 @@ url: https://gitlab.com/libeigen/eigen/-/tags
 activity: low
 ---
 kind: url
+name: electric
+url: https://ftpmirror.gnu.org/electric
+activity: none
+---
+kind: url
 name: elfutils
 url: https://sourceware.org/elfutils/ftp/
 activity: none
 ---
 kind: url
 name: elinks
-url: https://gitlab.com/alanaktion/elinks-mirror/repository
-activity: none
+url: https://github.com/rkd77/elinks/releases
+activity: medium
 ---
 kind: url
 name: elixir
@@ -1294,6 +1655,11 @@ url: https://www.x.org/releases/individual/font
 activity: none
 ---
 kind: url
+name: enet
+url: https://github.com/lsalzman/enet/tags
+activity: none
+---
+kind: url
 name: enscript
 url: https://ftpmirror.gnu.org/enscript/
 activity: none
@@ -1317,6 +1683,21 @@ kind: url
 name: erlang
 url: http://erlang.org/download
 activity: high
+---
+kind: url
+name: ethtool
+url: https://mirrors.edge.kernel.org/pub/software/network/ethtool/
+activity: medium
+---
+kind: url
+name: ettercap
+url: https://github.com/Ettercap/ettercap/releases
+activity: low
+---
+kind: url
+name: ettercap_gtk
+url: https://github.com/Ettercap/ettercap/releases
+activity: low
 ---
 kind: url
 name: eudev
@@ -1419,9 +1800,19 @@ url: https://github.com/clvv/fasd/releases
 activity: none
 ---
 kind: url
+name: fastfetch
+url: https://github.com/fastfetch-cli/fastfetch/releases
+activity: high
+---
+kind: url
 name: faultstat
 url: https://kernel.ubuntu.com/~cking/tarballs/faultstat/
 activity: low
+---
+kind: url
+name: fcft
+url: https://codeberg.org/dnkl/fcft/tags
+activity: high
 ---
 kind: url
 name: fd
@@ -1432,6 +1823,11 @@ kind: url
 name: feh
 url: https://feh.finalrewind.org/
 activity: medium
+---
+kind: url
+name: ferdi
+url: https://github.com/getferdi/ferdi/releases
+activity: high
 ---
 kind: url
 name: fetch
@@ -1457,6 +1853,11 @@ kind: url
 name: fftw
 url: ftp://ftp.fftw.org/pub/fftw/
 activity: none
+---
+kind: url
+name: fig2dev
+url: https://sourceforge.net/projects/mcj/files/
+activity: low
 ---
 kind: url
 name: figlet
@@ -1542,6 +1943,11 @@ kind: url
 name: fnotifystat
 url: http://kernel.ubuntu.com/~cking/tarballs/fnotifystat/
 activity: medium
+---
+kind: url
+name: foliate
+url: https://github.com/johnfactotum/foliate/releases
+activity: low
 ---
 kind: url
 name: folks
@@ -1669,6 +2075,11 @@ url: https://github.com/fontforge/fontforge/releases/
 activity: medium
 ---
 kind: url
+name: foot
+url: https://codeberg.org/dnkl/foot/releases
+activity: medium
+---
+kind: url
 name: fop
 url: http://apache.forsale.plus/xmlgraphics/fop/binaries
 activity: low
@@ -1699,9 +2110,19 @@ url: https://www.fossil-scm.org/fossil/uv/download.html
 activity: medium
 ---
 kind: url
+name: foxit_reader
+url: https://www.foxit.com/downloads/
+activity: low
+---
+kind: url
 name: fpc
 url: https://sourceforge.net/projects/freepascal/files/Linux/
 activity: low
+---
+kind: url
+name: fragments
+url: https://gitlab.gnome.org/World/Fragments/-/tags
+activity: medium
 ---
 kind: url
 name: freebasic
@@ -1739,12 +2160,12 @@ url: ftp://ftp.freetds.org/pub/freetds/stable/
 activity: medium
 ---
 kind: url
-name: freetype
-url: http://download.savannah.gnu.org/releases/freetype
+name: freetube
+url: https://github.com/FreeTubeApp/FreeTube/releases
 activity: medium
 ---
 kind: url
-name: freetype_sub
+name: freetype
 url: http://download.savannah.gnu.org/releases/freetype
 activity: medium
 ---
@@ -1752,6 +2173,11 @@ kind: url
 name: fribidi
 url: https://github.com/fribidi/fribidi/releases
 activity: high
+---
+kind: url
+name: frp
+url: https://github.com/fatedier/frp/releases
+activity: medium
 ---
 kind: url
 name: fskit
@@ -1782,6 +2208,11 @@ kind: url
 name: fuse3
 url: https://github.com/libfuse/libfuse/releases
 activity: high
+---
+kind: url
+name: fuse_overlayfs
+url: https://github.com/containers/fuse-overlayfs/releases
+activity: medium
 ---
 kind: url
 name: fzf
@@ -1869,6 +2300,11 @@ url: https://download.geany.org/
 activity: medium
 ---
 kind: url
+name: geary
+url: https://gitlab.gnome.org/GNOME/geary
+activity: low
+---
+kind: url
 name: gedit
 url: https://download.gnome.org/sources/gedit/
 activity: medium
@@ -1944,6 +2380,11 @@ url: https://www.haskell.org/ghc/
 activity: medium
 ---
 kind: url
+name: ghidra
+url: https://github.com/NationalSecurityAgency/ghidra/releases
+activity: medium
+---
+kind: url
 name: ghostscript
 url: https://ftp.gnu.org/gnu/ghostscript/
 activity: none
@@ -1951,6 +2392,11 @@ activity: none
 kind: url
 name: giblib
 url: https://deb.debian.org/debian/pool/main/g/giblib/
+activity: none
+---
+kind: url
+name: gif2apng
+url: https://sourceforge.net/projects/gif2apng/files/
 activity: none
 ---
 kind: url
@@ -1987,6 +2433,11 @@ kind: url
 name: git_lfs
 url: https://github.com/git-lfs/git-lfs/releases
 activity: medium
+---
+kind: url
+name: git_mestrelion_tools
+url: https://github.com/MestreLion/git-tools/releases
+activity: low
 ---
 kind: url
 name: git_prompt
@@ -2027,6 +2478,11 @@ kind: url
 name: gl2ps
 url: http://geuz.org/gl2ps/src/
 activity: low
+---
+kind: url
+name: glab
+url: https://gitlab.com/gitlab-org/cli/-/releases
+activity: medium
 ---
 kind: url
 name: glade
@@ -2089,6 +2545,16 @@ url: https://github.com/google/glog/releases
 activity: low
 ---
 kind: url
+name: glow
+url: https://github.com/charmbracelet/glow/releases
+activity: medium
+---
+kind: url
+name: glpk
+url: https://ftpmirror.gnu.org/glpk/
+activity: none
+---
+kind: url
 name: glproto
 url: https://github.com/freedesktop/glproto/releases
 activity: none
@@ -2132,6 +2598,11 @@ kind: url
 name: gnome_calculator
 url: https://gitlab.gnome.org/GNOME/gnome-calculator/-/tags
 activity: high
+---
+kind: url
+name: gnome_console
+url: https://gitlab.gnome.org/GNOME/console/-/tags
+activity: medium
 ---
 kind: url
 name: gnome_common
@@ -2239,6 +2710,11 @@ url: https://ftpmirror.gnu.org/time/
 activity: none
 ---
 kind: url
+name: gnuastro
+url: https://ftpmirror.gnu.org/gnuastro/
+activity: low
+---
+kind: url
 name: gnuchess
 url: https://ftpmirror.gnu.org/chess/
 activity: low
@@ -2247,6 +2723,11 @@ kind: url
 name: gnucobol
 url: https://sourceforge.net/projects/open-cobol/files/gnu-cobol/
 activity: low
+---
+kind: url
+name: gnulib_git
+url: https://git.savannah.gnu.org/gitweb/?p=gnulib.git
+activity: high
 ---
 kind: url
 name: gnupg
@@ -2274,6 +2755,21 @@ url: https://golang.org/doc/install/source#bootstrapFromSource
 activity: none
 ---
 kind: url
+name: go_containerregistry
+url: https://github.com/google/go-containerregistry/releases
+activity: medium
+---
+kind: url
+name: go_fetch
+url: https://github.com/gruntwork-io/fetch/releases
+activity: medium
+---
+kind: url
+name: go_md2man
+url: https://github.com/cpuguy83/go-md2man/releases
+activity: low
+---
+kind: url
 name: go_tools
 url: https://github.com/golang/tools/releases
 activity: high
@@ -2286,6 +2782,16 @@ activity: low
 kind: url
 name: gobject_introspection
 url: https://ftp.gnome.org/pub/gnome/sources/gobject-introspection/
+activity: medium
+---
+kind: url
+name: google_webdesigner
+url: https://webdesigner.withgoogle.com/
+activity: high
+---
+kind: url
+name: gopeed
+url: https://github.com/GopeedLab/gopeed/releases
 activity: medium
 ---
 kind: url
@@ -2324,6 +2830,16 @@ url: https://github.com/telmich/gpm/releases
 activity: none
 ---
 kind: url
+name: gpp
+url: https://github.com/logological/gpp/releases
+activity: low
+---
+kind: url
+name: gpt4all
+url: https://github.com/nomic-ai/gpt4all/releases
+activity: medium
+---
+kind: url
 name: gptfdisk
 url: https://sourceforge.net/projects/gptfdisk/files/gptfdisk/
 activity: low
@@ -2337,6 +2853,11 @@ kind: url
 name: gradle
 url: https://services.gradle.org/distributions/
 activity: high
+---
+kind: url
+name: granite
+url: https://github.com/elementary/granite/releases
+activity: medium
 ---
 kind: url
 name: graphene
@@ -2409,21 +2930,6 @@ url: https://gstreamer.freedesktop.org/src/gst-editing-services/
 activity: medium
 ---
 kind: url
-name: gst_plugins_bad
-url: https://github.com/GStreamer/gst-plugins-bad/releases/
-activity: medium
----
-kind: url
-name: gst_plugins_base
-url: https://gstreamer.freedesktop.org/src/gst-plugins-base/
-activity: medium
----
-kind: url
-name: gst_plugins_good
-url: https://github.com/GStreamer/gst-plugins-good/releases/
-activity: medium
----
-kind: url
 name: gstreamer
 url: https://gstreamer.freedesktop.org/src/gstreamer/
 activity: medium
@@ -2462,6 +2968,11 @@ kind: url
 name: gtk4
 url: https://download.gnome.org/sources/gtk/
 activity: medium
+---
+kind: url
+name: gtk_layer_shell
+url: https://github.com/wmww/gtk-layer-shell/releases
+activity: low
 ---
 kind: url
 name: gtkdialog
@@ -2654,6 +3165,11 @@ url: https://icon-theme.freedesktop.org/releases/
 activity: low
 ---
 kind: url
+name: highway
+url: https://github.com/google/highway/releases
+activity: medium
+---
+kind: url
 name: hollywood
 url: https://httpredir.debian.org/debian/pool/main/h/hollywood/
 activity: none
@@ -2714,6 +3230,21 @@ url: https://github.com/hunspell/hunspell/releases
 activity: low
 ---
 kind: url
+name: hurl
+url: https://github.com/Orange-OpenSource/releases
+activity: medium
+---
+kind: url
+name: hwdata
+url: https://github.com/vcrhonek/hwdata/releases
+activity: high
+---
+kind: url
+name: hwloc
+url: https://github.com/open-mpi/hwloc/tags
+activity: medium
+---
+kind: url
 name: hyphen
 url: https://github.com/hunspell/hyphen/
 activity: none
@@ -2734,8 +3265,18 @@ url: https://github.com/ibus/ibus/releases/
 activity: low
 ---
 kind: url
+name: icecream
+url: https://github.com/icecc/icecream/releases
+activity: medium
+---
+kind: url
 name: icon_naming_utils
 url: http://tango-project.org/releases/
+activity: none
+---
+kind: url
+name: icoutils
+url: https://savannah.nongnu.org/download/icoutils
 activity: none
 ---
 kind: url
@@ -2794,6 +3335,11 @@ url: https://ftp.gnu.org/gnu/inetutils
 activity: none
 ---
 kind: url
+name: info2man
+url: https://salsa.debian.org/debian/info2man/-/tags
+activity: none
+---
+kind: url
 name: iniparser
 url: https://github.com/ndevilla/iniparser/releases
 activity: none
@@ -2812,6 +3358,11 @@ kind: url
 name: intel_media_sdk
 url: https://github.com/Intel-Media-SDK/MediaSDK/releases
 activity: low
+---
+kind: url
+name: intel_opencl_clang
+url: https://github.com/intel/opencl-clang/releases
+activity: medium
 ---
 kind: url
 name: intltool
@@ -2834,6 +3385,11 @@ url: https://github.com/ipfs/go-ipfs/releases
 activity: high
 ---
 kind: url
+name: iproute2
+url: https://www.kernel.org/pub/linux/utils/net/iproute2
+activity: high
+---
+kind: url
 name: iptables
 url: https://www.netfilter.org/projects/iptables/files
 activity: low
@@ -2842,6 +3398,11 @@ kind: url
 name: iptraf
 url: ftp://iptraf.seul.org/pub/iptraf/
 activity: none
+---
+kind: url
+name: iputils
+url: https://github.com/iputils/iputils/releases
+activity: low
 ---
 kind: url
 name: irrlicht
@@ -2871,11 +3432,6 @@ activity: low
 kind: url
 name: iso_codes
 url: https://salsa.debian.org/iso-codes-team/iso-codes/-/tags
-activity: low
----
-kind: url
-name: itstool
-url: https://github.com/itstool/itstool/releases
 activity: low
 ---
 kind: url
@@ -2934,9 +3490,24 @@ url: https://www.oracle.com/java/technologies/javase-jdk16-downloads.html
 activity: low
 ---
 kind: url
+name: jdk17
+url: https://www.oracle.com/java/technologies/downloads/
+activity: low
+---
+kind: url
+name: jdk18
+url: https://www.oracle.com/java/technologies/downloads/
+activity: low
+---
+kind: url
 name: jdk8
 url: https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 activity: low
+---
+kind: url
+name: jellyfin_media_player
+url: https://github.com/jellyfin/jellyfin-media-player/releases
+activity: medium
 ---
 kind: url
 name: jemalloc
@@ -2949,13 +3520,28 @@ url: https://github.com/JFrogDev/jfrog-cli-go/releases
 activity: high
 ---
 kind: url
+name: jitsi_meet
+url: https://github.com/jitsi/jitsi-meet-electron/releases
+activity: medium
+---
+kind: url
 name: jobscheduler
 url: https://sourceforge.net/projects/jobscheduler/files/
 activity: medium
 ---
 kind: url
+name: joplin
+url: https://joplinapp.org/help/install/
+activity: medium
+---
+kind: url
 name: jp2a
 url: https://github.com/Talinx/jp2a/releases
+activity: low
+---
+kind: url
+name: jpegoptim
+url: https://github.com/tjko/jpegoptim/releases
 activity: low
 ---
 kind: url
@@ -2965,6 +3551,21 @@ activity: none
 ---
 kind: url
 name: js78
+url: https://archive.mozilla.org/pub/firefox/releases/
+activity: high
+---
+kind: url
+name: js91
+url: https://archive.mozilla.org/pub/firefox/releases/
+activity: high
+---
+kind: url
+name: js102
+url: https://archive.mozilla.org/pub/firefox/releases/
+activity: high
+---
+kind: url
+name: js115
 url: https://archive.mozilla.org/pub/firefox/releases/
 activity: high
 ---
@@ -2982,6 +3583,11 @@ kind: url
 name: jsoncpp
 url: https://github.com/open-source-parsers/jsoncpp/releases
 activity: medium
+---
+kind: url
+name: jsonrpc_glib
+url: https://gitlab.gnome.org/GNOME/jsonrpc-glib/-/tags
+activity: low
 ---
 kind: url
 name: julia
@@ -3029,6 +3635,11 @@ url: https://github.com/funtoo/keychain/releases/
 activity: low
 ---
 kind: url
+name: keyutils
+url: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git
+activity: none
+---
+kind: url
 name: komodo
 url: https://downloads.activestate.com/Komodo/releases/
 activity: low
@@ -3054,9 +3665,24 @@ url: http://web.mit.edu/kerberos/dist/krb5
 activity: low
 ---
 kind: url
+name: krita
+url: https://download.kde.org/stable/krita/
+activity: medium
+---
+kind: url
+name: ksh
+url: https://github.com/att/ast/releases
+activity: none
+---
+kind: url
 name: kubectl
 url: https://github.com/kubernetes/kubernetes/releases
 activity: high
+---
+kind: url
+name: kupfer
+url: https://github.com/kupferlauncher/kupfer/releases
+activity: low
 ---
 kind: url
 name: kwiml
@@ -3099,6 +3725,11 @@ url: https://github.com/ledger/ledger/releases
 activity: medium
 ---
 kind: url
+name: lego
+url: https://github.com/go-acme/lego/releases
+activity: medium
+---
+kind: url
 name: leiningen
 url: https://github.com/technomancy/leiningen/releases
 activity: medium
@@ -3111,6 +3742,11 @@ activity: low
 kind: url
 name: less
 url: http://www.greenwoodsoftware.com/less
+activity: low
+---
+kind: url
+name: lesspipe
+url: https://github.com/wofr06/lesspipe/releases
 activity: low
 ---
 kind: url
@@ -3134,9 +3770,19 @@ url: https://github.com/jca02266/lha
 activity: none
 ---
 kind: url
+name: liba52
+url: https://salsa.debian.org/multimedia-team/a52dec/-/tags
+activity: none
+---
+kind: url
 name: libaacs
 url: https://get.videolan.org/libaacs/
 activity: low
+---
+kind: url
+name: libabigail
+url: https://sourceware.org/git/?p=libabigail.git;a=tags
+activity: medium
 ---
 kind: url
 name: libadwaita
@@ -3179,6 +3825,11 @@ url: https://www.gnupg.org/ftp/gcrypt/libassuan
 activity: low
 ---
 kind: url
+name: libatasmart
+url: http://git.0pointer.net/libatasmart.git
+activity: none
+---
+kind: url
 name: libatomic_ops
 url: https://github.com/ivmai/libatomic_ops/releases
 activity: low
@@ -3199,13 +3850,39 @@ url: https://github.com/AOMediaCodec/libavif/releases
 activity: medium
 ---
 kind: url
+name: libb64
+url: https://github.com/libb64/libb64/releases
+activity: none
+---
+kind: url
+name: libbacktrace
+url: https://github.com/ianlancetaylor/libbacktrace/releases
+activity: none
+---
+kind: url
+name: libblockdev
+url: https://github.com/storaged-project/libblockdev/releases
+activity: low
+---
+kind: url
+name: libbluray
+url: https://get.videolan.org/libbluray/
+activity: low
+---
+---
+kind: url
+name: libbpf
+url: hhttps://github.com/libbpf/libbpf/releases
+activity: medium
+---
+kind: url
 name: libbsd
 url: https://libbsd.freedesktop.org/releases
 activity: medium
 ---
 kind: url
-name: libbluray
-url: https://get.videolan.org/libbluray/
+name: libbytesize
+url: https://github.com/storaged-project/libbytesize/releases
 activity: low
 ---
 kind: url
@@ -3249,6 +3926,16 @@ url: https://github.com/rocky/libcdio-paranoia/releases
 activity: none
 ---
 kind: url
+name: libcdr
+url: https://dev-www.libreoffice.org/src/libcdr/
+activity: low
+---
+kind: url
+name: libcec
+url: https://github.com/Pulse-Eight/libcec/releases
+activity: low
+---
+kind: url
 name: libcerf
 url: http://apps.jcns.fz-juelich.de/src/libcerf/
 activity: none
@@ -3259,8 +3946,18 @@ url: https://gitlab.gnome.org/GNOME/libchamplain/-/tags
 activity: low
 ---
 kind: url
+name: libclc
+url: https://github.com/llvm/llvm-project/releases
+activity: medium
+---
+kind: url
 name: libcheck
 url: https://github.com/libcheck/check/releases
+activity: low
+---
+kind: url
+name: libcloudproviders
+url: https://gitlab.gnome.org/World/libcloudproviders/-/tags
 activity: low
 ---
 kind: url
@@ -3294,11 +3991,6 @@ url: https://github.com/lipnitsk/libcue/releases
 activity: none
 ---
 kind: url
-name: libcurl
-url: https://github.com/curl/curl/releases
-activity: high
----
-kind: url
 name: libcyrussasl
 url: https://github.com/cyrusimap/cyrus-imapd/releases
 activity: medium
@@ -3306,6 +3998,11 @@ activity: medium
 kind: url
 name: libdaemon
 url: http://0pointer.de/lennart/projects/libdaemon/
+activity: none
+---
+kind: url
+name: libdatrie
+url: https://github.com/tlwg/libdatrie/releases
 activity: none
 ---
 kind: url
@@ -3339,9 +4036,19 @@ url: https://github.com/strukturag/libde265/releases/
 activity: medium
 ---
 kind: url
+name: libdecor
+url: https://gitlab.freedesktop.org/libdecor/libdecor/-/tags
+activity: medium
+---
+kind: url
 name: libdeflate
 url: https://github.com/ebiggers/libdeflate/releases
 activity: low
+---
+kind: url
+name: libdmraid
+url: https://people.redhat.com/~heinzm/sw/dmraid/src/
+activity: none
 ---
 kind: url
 name: libdmx
@@ -3359,6 +4066,11 @@ url: https://download.netsurf-browser.org/libs/releases/
 activity: low
 ---
 kind: url
+name: libdovi
+url: https://github.com/quietvoid/dovi_tool/tags
+activity: medium
+---
+kind: url
 name: libdrm
 url: https://dri.freedesktop.org/libdrm
 activity: medium
@@ -3374,6 +4086,16 @@ url: https://sourceforge.net/projects/libdv/files/libdv/
 activity: none
 ---
 kind: url
+name: libdvbpsi
+url: https://download.videolan.org/pub/libdvbpsi/
+activity: none
+---
+kind: url
+name: libdvdcss
+url: http://get.videolan.org/libdvdcss/
+activity: low
+---
+kind: url
 name: libdvdnav
 url: http://get.videolan.org/libdvdnav/
 activity: medium
@@ -3382,6 +4104,11 @@ kind: url
 name: libdvdread
 url: https://get.videolan.org/libdvdread/
 activity: medium
+---
+kind: url
+name: libebml
+url: https://github.com/Matroska-Org/libebml/tags
+activity: low
 ---
 kind: url
 name: libeconf
@@ -3397,6 +4124,11 @@ kind: url
 name: libefl
 url: https://download.enlightenment.org/rel/libs/efl/
 activity: high
+---
+kind: url
+name: libei
+url: https://gitlab.freedesktop.org/libinput/libei/-/tags
+activity: medium
 ---
 kind: url
 name: libemf
@@ -3437,6 +4169,11 @@ kind: url
 name: libexiv2
 url: http://www.exiv2.org/builds/
 activity: none
+---
+kind: url
+name: libfaudio
+url: https://github.com/FNA-XNA/FAudio/releases
+activity: high
 ---
 kind: url
 name: libfdk_aac
@@ -3499,6 +4236,21 @@ url: https://github.com/mono/libgdiplus/releases
 activity: low
 ---
 kind: url
+name: libgedit_amtk
+url: https://gitlab.gnome.org/World/gedit/libgedit-amtk/-/tags
+activity: medium
+---
+kind: url
+name: libgedit_gfls
+url: https://gitlab.gnome.org/World/gedit/libgedit-gfls/-/tags
+activity: medium
+---
+kind: url
+name: libgedit_gtksourceview
+url: https://gitlab.gnome.org/World/gedit/libgedit-gtksourceview/-/tags
+activity: medium
+---
+kind: url
 name: libgee
 url: https://download.gnome.org/sources/libgee/
 activity: medium
@@ -3527,6 +4279,11 @@ kind: url
 name: libglvnd
 url: https://gitlab.freedesktop.org/glvnd/libglvnd/-/tags
 activity: low
+---
+kind: url
+name: libgme
+url: https://bitbucket.org/mpyne/game-music-emu/downloads/?tab=tags
+activity: none
 ---
 kind: url
 name: libgnome_games_support
@@ -3562,6 +4319,11 @@ kind: url
 name: libgsf
 url: https://ftp.gnome.org/pub/gnome/sources/libgsf/
 activity: medium
+---
+kind: url
+name: libgtop
+url: https://gitlab.gnome.org/GNOME/libgtop/-/tags
+activity: low
 ---
 kind: url
 name: libgudev
@@ -3619,6 +4381,11 @@ url: ftp://ftp.mars.org/pub/mpeg/
 activity: none
 ---
 kind: url
+name: libidn
+url: https://ftpmirror.gnu.org/libidn/
+activity: medium
+---
+kind: url
 name: libidn2
 url: https://ftpmirror.gnu.org/libidn/
 activity: medium
@@ -3654,9 +4421,19 @@ url: https://www.freedesktop.org/software/libinput/
 activity: high
 ---
 kind: url
+name: libinstpatch
+url: https://github.com/swami/libinstpatch/releases
+activity: none
+---
+kind: url
 name: libjpeg
 url: http://www.ijg.org/files
 activity: none
+---
+kind: url
+name: libjxl
+url: https://github.com/libjxl/libjxl/releases
+activity: high
 ---
 kind: url
 name: libkmod
@@ -3669,9 +4446,24 @@ url: https://www.gnupg.org/ftp/gcrypt/libksba
 activity: none
 ---
 kind: url
+name: libluv
+url: https://github.com/luvit/luv/releases
+activity: low
+---
+kind: url
 name: libmad
 url: ftp://ftp.mars.org/pub/mpeg/
 activity: none
+---
+kind: url
+name: libmatroska
+url: https://github.com/Matroska-Org/libmatroska/tags
+activity: none
+---
+kind: url
+name: libmaxminddb
+url: https://github.com/maxmind/libmaxminddb/releases
+activity: low
 ---
 kind: url
 name: libmbedtls
@@ -3684,19 +4476,39 @@ url: https://www.freedesktop.org/software/libmbim/
 activity: low
 ---
 kind: url
+name: libmd
+url: https://git.hadrons.org/git/libmd.git
+activity: low
+---
+kind: url
+name: libmediaart
+url: https://gitlab.gnome.org/GNOME/libmediaart/-/tags
+activity: low
+---
+kind: url
+name: libmediainfo
+url: https://mediaarea.net/download/binary/libmediainfo0/
+activity: medium
+---
+kind: url
 name: libmetalink
 url: https://launchpad.net/libmetalink/+download
 activity: none
 ---
 kind: url
-name: libmfx
-url: https://github.com/lu-zero/mfx_dispatch/releases
-activity: low
+name: libmicrodns
+url: https://github.com/videolabs/libmicrodns/releases
+activity: none
 ---
 kind: url
 name: libmicrohttpd
 url: https://ftpmirror.gnu.org/libmicrohttpd/
 activity: low
+---
+kind: url
+name: libminigbm
+url: https://chromium.googlesource.com/chromiumos/platform/minigbm.git
+activity: high
 ---
 kind: url
 name: libmms
@@ -3724,6 +4536,16 @@ url: https://sourceforge.net/projects/lame/files/lame/
 activity: low
 ---
 kind: url
+name: libmpack
+url: https://github.com/libmpack/libmpack/tags
+activity: low
+---
+kind: url
+name: libmpc
+url: https://salsa.debian.org/multimedia-team/libmpc/-/tags
+activity: none
+---
+kind: url
 name: libmpeg2
 url: https://libmpeg2.sourceforge.io/
 activity: none
@@ -3734,8 +4556,18 @@ url: https://salsa.debian.org/debian/libmrss/-/tags
 activity: low
 ---
 kind: url
+name: libmtp
+url: https://github.com/libmtp/libmtp/releases
+activity: low
+---
+kind: url
 name: libmypaint
 url: https://github.com/mypaint/libmypaint/releases
+activity: low
+---
+kind: url
+name: libmysofa
+url: https://github.com/hoene/libmysofa/releases
 activity: low
 ---
 kind: url
@@ -3789,9 +4621,19 @@ url: https://download.netsurf-browser.org/libs/releases/
 activity: none
 ---
 kind: url
+name: libnsl
+url: https://github.com/thkukuk/libnsl/releases
+activity: low
+---
+kind: url
 name: libnsutils
 url: https://download.netsurf-browser.org/libs/releases/
 activity: low
+---
+kind: url
+name: libnvme
+url: https://github.com/linux-nvme/libnvme/releases
+activity: high
 ---
 kind: url
 name: libnxml
@@ -3819,6 +4661,11 @@ url: https://sourceforge.net/projects/opencore-amr/files/opencore-amr/
 activity: none
 ---
 kind: url
+name: libopusenc
+url: https://github.com/xiph/libopusenc/tags
+activity: none
+---
+kind: url
 name: libostree
 url: https://github.com/ostreedev/ostree/releases/
 activity: low
@@ -3832,6 +4679,11 @@ kind: url
 name: libotr
 url: https://otr.im/dist/libotr/
 activity: none
+---
+kind: url
+name: libpanel
+url: https://gitlab.gnome.org/GNOME/libpanel/-/tags
+activity: medium
 ---
 kind: url
 name: libpaper
@@ -3859,9 +4711,19 @@ url: https://gitlab.gnome.org/GNOME/libpeas/tags
 activity: low
 ---
 kind: url
+name: libpeas2
+url: https://gitlab.gnome.org/GNOME/libpeas/tags
+activity: low
+---
+kind: url
 name: libpipeline
 url: https://download.savannah.gnu.org/releases/libpipeline
 activity: low
+---
+kind: url
+name: libplacebo
+url: https://code.videolan.org/videolan/libplacebo/-/tags
+activity: medium
 ---
 kind: url
 name: libplist
@@ -3870,8 +4732,8 @@ activity: none
 ---
 kind: url
 name: libpng
-url: https://sourceforge.net/projects/libpng/files/libpng16
-activity: low
+url: https://downloads.sourceforge.net/project/libpng/libpng16
+activity: none
 ---
 kind: url
 name: libportal
@@ -3904,6 +4766,11 @@ url: https://ftpmirror.gnu.org/pth/
 activity: none
 ---
 kind: url
+name: libptytty
+url: http://dist.schmorp.de/libptytty/
+activity: low
+---
+kind: url
 name: libqmi
 url: https://www.freedesktop.org/software/libqmi/
 activity: low
@@ -3922,6 +4789,11 @@ kind: url
 name: librespot
 url: https://github.com/librespot-org/librespot/releases
 activity: high
+---
+kind: url
+name: librevenge
+url: https://sourceforge.net/projects/libwpd/files/librevenge
+activity: low
 ---
 kind: url
 name: librhash
@@ -3969,6 +4841,16 @@ url: https://github.com/GNOME/libsecret/releases
 activity: low
 ---
 kind: url
+name: libshine
+url: https://github.com/toots/shine/releases
+activity: none
+---
+kind: url
+name: libshumate
+url: https://gitlab.gnome.org/GNOME/libshumate/-/tags
+activity: medium
+---
+kind: url
 name: libsigcplusplus
 url: http://ftp.gnome.org/pub/GNOME/sources/libsigc++/
 activity: medium
@@ -3984,6 +4866,16 @@ url: http://ftp.gnu.org/gnu/libsigsegv
 activity: low
 ---
 kind: url
+name: libsixel
+url: https://github.com/libsixel/libsixel/releases
+activity: low
+---
+kind: url
+name: libslirp
+url: https://gitlab.freedesktop.org/slirp/libslirp/-/tags
+activity: low
+---
+kind: url
 name: libslz
 url: http://www.libslz.org/
 activity: none
@@ -3991,6 +4883,11 @@ activity: none
 kind: url
 name: libsm
 url: https://www.x.org/archive/individual/lib/
+activity: none
+---
+kind: url
+name: libsmi
+url: https://gitlab.ibr.cs.tu-bs.de/nm/libsmi/-/tags
 activity: none
 ---
 kind: url
@@ -4022,6 +4919,11 @@ kind: url
 name: libsoxr
 url: https://sourceforge.net/projects/soxr/files
 activity: low
+---
+kind: url
+name: libspatialaudio
+url: https://salsa.debian.org/multimedia-team/libspatialaudio/-/tags
+activity: none
 ---
 kind: url
 name: libspatialindex
@@ -4074,6 +4976,11 @@ url: https://ftpmirror.gnu.org/libtasn1
 activity: none
 ---
 kind: url
+name: libtermkey
+url: http://www.leonerd.org.uk/code/libtermkey
+activity: none
+---
+kind: url
 name: libticables2
 url: https://sourceforge.net/projects/tilp/files/tilp2-linux/
 activity: none
@@ -4099,6 +5006,11 @@ url: http://downloads.sourceforge.net/project/karthas/release/
 activity: none
 ---
 kind: url
+name: libthai
+url: https://github.com/tlwg/libthai/releases
+activity: none
+---
+kind: url
 name: libtheora
 url: http://downloads.xiph.org/releases/theora
 activity: none
@@ -4117,6 +5029,11 @@ kind: url
 name: libtool
 url: https://ftp.gnu.org/gnu/libtool
 activity: none
+---
+kind: url
+name: libtorrent
+url: https://github.com/arvidn/libtorrent/releases
+activity: low
 ---
 kind: url
 name: libudev_stub
@@ -4140,8 +5057,13 @@ activity: medium
 ---
 kind: url
 name: libunwind
-url: http://download.savannah.gnu.org/releases/libunwind
-activity: none
+url: https://github.com/libunwind/libunwind/releases
+activity: medium
+---
+kind: url
+name: liburcu
+url: https://lttng.org/files/urcu/
+activity: medium
 ---
 kind: url
 name: liburing
@@ -4156,6 +5078,16 @@ activity: low
 kind: url
 name: libusbmuxd
 url: http://www.libimobiledevice.org/downloads/
+activity: none
+---
+kind: url
+name: libutempter
+url: https://github.com/altlinux/libutempter/tags
+activity: low
+---
+kind: url
+name: libutp
+url: https://github.com/bittorrent/libutp
 activity: none
 ---
 kind: url
@@ -4189,6 +5121,11 @@ url: https://github.com/libvips/libvips/releases
 activity: medium
 ---
 kind: url
+name: libvisio
+url: https://dev-www.libreoffice.org/src/libvisio
+activity: low
+---
+kind: url
 name: libvisual
 url: https://github.com/Libvisual/libvisual/releases
 activity: none
@@ -4219,6 +5156,11 @@ url: https://github.com/webmproject/libvpx/releases
 activity: low
 ---
 kind: url
+name: libvterm
+url: https://bazaar.launchpad.net/~libvterm/libvterm/trunk/changes
+activity: low
+---
+kind: url
 name: libwacom
 url: https://sourceforge.net/projects/linuxwacom/files/libwacom/
 activity: low
@@ -4244,9 +5186,19 @@ url: https://ftp.gnome.org/pub/GNOME/sources/libwnck/
 activity: low
 ---
 kind: url
+name: libwpd
+url: https://sourceforge.net/projects/libwpd/files/
+activity: low
+---
+kind: url
 name: libwpe
 url: https://github.com/WebPlatformForEmbedded/libwpe/releases/
 activity: medium
+---
+kind: url
+name: libwpg
+url: https://sourceforge.net/projects/libwpg/files/
+activity: low
 ---
 kind: url
 name: libx11
@@ -4292,6 +5244,11 @@ kind: url
 name: libxcursor
 url: https://www.x.org/archive/individual/lib/
 activity: none
+---
+kind: url
+name: libxcvt
+url: https://gitlab.freedesktop.org/xorg/lib/libxcvt/-/tags
+activity: low
 ---
 kind: url
 name: libxdamage
@@ -4361,6 +5318,11 @@ activity: none
 kind: url
 name: libxml2
 url: https://gitlab.gnome.org/GNOME/libxml2/tags
+activity: medium
+---
+kind: url
+name: libxmlb
+url: https://github.com/hughsie/libxmlb/releases
 activity: medium
 ---
 kind: url
@@ -4469,6 +5431,11 @@ url: https://github.com/nih-at/libzip/releases
 activity: low
 ---
 kind: url
+name: lilv
+url: https://github.com/lv2/lilv/tags
+activity: none
+---
+kind: url
 name: links
 url: http://www.jikos.cz/~mikulas/links/download
 activity: none
@@ -4490,8 +5457,8 @@ activity: high
 ---
 kind: url
 name: llvm
-url: https://releases.llvm.org/
-activity: low
+url: https://github.com/llvm/llvm-project/releases
+activity: medium
 ---
 kind: url
 name: llvm_stage1
@@ -4504,8 +5471,23 @@ url: https://github.com/lm-sensors/lm-sensors/releases
 activity: none
 ---
 kind: url
+name: lmstudio
+url: https://lmstudio.ai/
+activity: medium
+---
+kind: url
 name: lmdb
 url: https://git.openldap.org/openldap/openldap/-/tags
+activity: high
+---
+kind: url
+name: lnav
+url: https://github.com/tstack/lnav/releases
+activity: high
+---
+kind: url
+name: localsearch
+url: https://gitlab.gnome.org/GNOME/localsearch/-/tags
 activity: high
 ---
 kind: url
@@ -4522,6 +5504,11 @@ kind: url
 name: logisim
 url: https://sourceforge.net/projects/circuit/files/
 activity: none
+---
+kind: url
+name: love
+url: https://github.com/love2d/love/releases
+activity: medium
 ---
 kind: url
 name: lsb_release
@@ -4544,6 +5531,16 @@ url: https://gitlab.com/cespedes/ltrace
 activity: none
 ---
 kind: url
+name: lttng_tools
+url: https://lttng.org/download/#build-from-source
+activity: medium
+---
+kind: url
+name: lttng_ust
+url: https://lttng.org/download/#build-from-source
+activity: medium
+---
+kind: url
 name: lua
 url: https://www.lua.org/ftp
 activity: none
@@ -4551,6 +5548,36 @@ activity: none
 kind: url
 name: luajit
 url: https://luajit.org/download.html
+activity: none
+---
+kind: url
+namw: luajit_bitop
+url: https://bitop.luajit.org/download.html
+activity: none
+---
+kind: url
+namw: luajit_lgi
+url: https://github.com/lgi-devs/lgi/tags
+activity: none
+---
+kind: url
+name: luajit_lpeg
+url: http://www.inf.puc-rio.br/~roberto/lpeg
+activity: low
+---
+kind: url
+name: luajit_mpack
+url: https://github.com/libmpack/libmpack-lua/releases
+activity: low
+---
+kind: url
+name: luit
+url: https://github.com/ThomasDickey/luit-snapshots/tags
+activity: medium
+---
+kind: url
+name: lv2
+url: https://github.com/lv2/lv2/tags
 activity: none
 ---
 kind: url
@@ -4574,8 +5601,18 @@ url: https://github.com/lz4/lz4/releases
 activity: medium
 ---
 kind: url
+name: lzfse
+url: https://github.com/lzfse/lzfse/releases
+activity: none
+---
+kind: url
 name: lzip
 url: http://download.savannah.gnu.org/releases/lzip
+activity: low
+---
+kind: url
+name: lzlib
+url: http://download.savannah.gnu.org/releases/lzip/lzlib
 activity: low
 ---
 kind: url
@@ -4604,6 +5641,11 @@ url: ftp://ftp.mars.org/pub/mpeg/
 activity: none
 ---
 kind: url
+name: magic
+url: https://github.com/RTimothyEdwards/magic/releases
+activity: high
+---
+kind: url
 name: mailutils
 url: https://ftpmirror.gnu.org/mailutils/
 activity: high
@@ -4622,6 +5664,11 @@ kind: url
 name: mandb
 url: http://download.savannah.gnu.org/releases/man-db
 activity: medium
+---
+kind: url
+name: mandown
+url: https://gitlab.com/kornelski/mandown/-/tags
+activity: low
 ---
 kind: url
 name: manpages
@@ -4694,13 +5741,13 @@ url: https://megatools.megous.com/builds
 activity: low
 ---
 kind: url
-name: memcached
-url: https://memcached.org/downloads
-activity: high
+name: meld
+url: https://gitlab.gnome.org/GNOME/meld/-/tags
+activity: medium
 ---
 kind: url
-name: mercurial
-url: https://www.mercurial-scm.org/release
+name: memcached
+url: https://memcached.org/downloads
 activity: high
 ---
 kind: url
@@ -4714,9 +5761,9 @@ url: https://gitlab.freedesktop.org/mesa/demos/-/tags
 activity: none
 ---
 kind: url
-name: meson
-url: https://github.com/mesonbuild/meson/releases
-activity: high
+name: metadata_cleaner
+url: https://gitlab.com/rmnvgr/metadata-cleaner/-/tags
+activity: low
 ---
 kind: url
 name: metasploit
@@ -4729,9 +5776,24 @@ url: https://github.com/troglobit/mg/releases/
 activity: medium
 ---
 kind: url
+name: mhash
+url: https://sourceforge.net/projects/mhash/files/mhash/
+activity: none
+---
+kind: url
 name: micro
 url: https://github.com/zyedidia/micro/releases
 activity: high
+---
+kind: url
+name: miller
+url: https://github.com/johnkerl/miller/releases
+activity: medium
+---
+kind: url
+name: mimalloc
+url: https://github.com/microsoft/mimalloc/tags
+activity: medium
 ---
 kind: url
 name: minecraft
@@ -4749,9 +5811,19 @@ url: https://github.com/Anaconda-Platform/anaconda-project/releases
 activity: low
 ---
 kind: url
+name: minijail
+url: https://google.github.io/minijail/
+activity: medium
+---
+kind: url
 name: miniupnpc
 url: https://github.com/miniupnp/miniupnp/releases
 activity: high
+---
+kind: url
+name: minizip
+url: https://sourceforge.net/projects/libpng/files/zlib/
+activity: none
 ---
 kind: url
 name: miscfiles
@@ -4809,6 +5881,21 @@ url: http://download.mono-project.com/sources/mono
 activity: medium
 ---
 kind: url
+name: mold
+url: https://github.com/rui314/mold/releases
+activity: high
+---
+kind: url
+name: monero
+url: https://github.com/monero-project/monero/releases
+activity: medium
+---
+kind: url
+name: monero_gui
+url: https://github.com/monero-project/monero-gui/releases
+activity: medium
+---
+kind: url
 name: mongodb
 url: https://github.com/mongodb/mongo/releases
 activity: medium
@@ -4849,6 +5936,11 @@ url: http://www.multiprecision.org/mpc/download.html
 activity: none
 ---
 kind: url
+name: mpdecimal
+url: https://www.bytereef.org/mpdecimal/download.html
+activity: none
+---
+kind: url
 name: mpfr
 url: http://www.mpfr.org/mpfr-current/#download
 activity: low
@@ -4862,6 +5954,11 @@ kind: url
 name: mpv
 url: https://github.com/mpv-player/mpv/releases
 activity: high
+---
+kind: url
+name: msgpack_c
+url: https://msgpack.org/
+activity: low
 ---
 kind: url
 name: msttcorefonts
@@ -4894,9 +5991,24 @@ url: https://github.com/flok99/multitail/releases
 activity: none
 ---
 kind: url
+name: multy
+url: https://github.com/multycloud/multy/releases
+activity: low
+---
+kind: url
 name: muparser
 url: https://github.com/beltoforion/muparser/releases
 activity: low
+---
+kind: url
+name: mupdf
+url: https://mupdf.com/downloads/archive/
+activity: medium
+---
+kind: url
+name: musecore
+url: https://github.com/musescore/MuseScore/releases
+activity: medium
 ---
 kind: url
 name: musl
@@ -4926,6 +6038,11 @@ activity: none
 kind: url
 name: mypaint_brushes
 url: https://github.com/Jehan/mypaint-brushes/releases
+activity: low
+---
+kind: url
+name: mypaint_brushes_1
+url: https://github.com/mypaint/mypaint-brushes/releases
 activity: low
 ---
 kind: url
@@ -4989,6 +6106,11 @@ url: http://ftp.ncftp.com/ncftp
 activity: none
 ---
 kind: url
+name: ncompress
+url: https://github.com/vapier/ncompress/releases
+activity: low
+---
+kind: url
 name: nconvert
 url: https://download.xnview.com/
 activity: low
@@ -5000,8 +6122,13 @@ activity: low
 ---
 kind: url
 name: ncurses
-url: https://ftpmirror.gnu.org/ncurses
-activity: low
+url: https://github.com/ThomasDickey/ncurses-snapshots/tags
+activity: medium
+---
+kind: url
+name: ndctl
+url: https://github.com/pmem/ndctl/releases
+activity: medium
 ---
 kind: url
 name: ndisc6
@@ -5012,6 +6139,11 @@ kind: url
 name: nedit
 url: https://sourceforge.net/projects/nedit/files/nedit-source/
 activity: none
+---
+kind: url
+name: neo_matrix
+url: https://github.com/st3w/neo/releases
+activity: low
 ---
 kind: url
 name: neofetch
@@ -5027,6 +6159,11 @@ kind: url
 name: neovim
 url: https://github.com/neovim/neovim/releases
 activity: low
+---
+kind: url
+name: netavark
+url: https://github.com/containers/netavark/releases
+activity: medium
 ---
 kind: url
 name: netbeans
@@ -5114,6 +6251,11 @@ url: https://ngrok.com/download
 activity: none
 ---
 kind: url
+name: nikto
+url: https://github.com/sullo/nikto/releases
+activity: none
+---
+kind: url
 name: nim
 url: https://nim-lang.org/install_unix.html
 activity: medium
@@ -5127,6 +6269,11 @@ kind: url
 name: nitrogen
 url: https://github.com/l3ib/nitrogen/releases
 activity: none
+---
+kind: url
+name: nlopt
+url: https://github.com/stevengj/nlopt/releases
+activity: low
 ---
 kind: url
 name: nmap
@@ -5144,11 +6291,6 @@ url: https://github.com/hokaccha/nodebrew/releases
 activity: low
 ---
 kind: url
-name: nping
-url: https://nmap.org/dist/
-activity: low
----
-kind: url
 name: npth
 url: https://www.gnupg.org/ftp/gcrypt/npth
 activity: medium
@@ -5157,11 +6299,6 @@ kind: url
 name: nsgenbind
 url: https://download.netsurf-browser.org/libs/releases/
 activity: low
----
-kind: url
-name: nspr
-url: https://ftp.mozilla.org/pub/security/nss/releases/
-activity: none
 ---
 kind: url
 name: nss
@@ -5177,6 +6314,11 @@ kind: url
 name: numactl
 url: https://github.com/numactl/numactl/releases/
 activity: medium
+---
+kind: url
+name: nuspell
+url: https://github.com/nuspell/nuspell/releases
+activity: low
 ---
 kind: url
 name: nvm
@@ -5214,9 +6356,19 @@ url: https://github.com/chromium/octane/releases
 activity: none
 ---
 kind: url
+name: octave
+url: https://ftpmirror.gnu.org/octave
+activity: medium
+---
+kind: url
 name: od1n
 url: https://github.com/CoolerVoid/0d1n/releases
 activity: low
+---
+kind: url
+name: ollama
+url: https://github.com/ollama/ollama/releases
+activity: high
 ---
 kind: url
 name: ondir
@@ -5229,8 +6381,28 @@ url: https://httpredir.debian.org/debian/pool/main/o/oneko/
 activity: low
 ---
 kind: url
+name: onevpl
+url: https://github.com/oneapi-src/oneVPL/releases
+activity: medium
+---
+kind: url
 name: oniguruma
 url: https://github.com/kkos/oniguruma/releases
+activity: medium
+---
+kind: url
+name: onlyoffice
+url: https://github.com/ONLYOFFICE/appimage-desktopeditors/releases
+activity: medium
+---
+kind: url
+name: oorexx
+url: https://sourceforge.net/projects/oorexx/files/oorexx/
+activity: medium
+---
+kind: url
+name: opam
+url: https://github.com/ocaml/opam/releases
 activity: medium
 ---
 kind: url
@@ -5249,6 +6421,16 @@ url: http://openbox.org/wiki/Openbox:Download
 activity: none
 ---
 kind: url
+name: opencl_headers
+url: https://github.com/KhronosGroup/OpenCL-Headers/releases
+activity: medium
+---
+kind: url
+name: opencl_icd_loader
+url: https://github.com/KhronosGroup/OpenCL-ICD-Loader/releases
+activity: medium
+---
+kind: url
 name: openconnect
 url: ftp://ftp.infradead.org/pub/openconnect/
 activity: none
@@ -5259,9 +6441,44 @@ url: https://github.com/openexr/openexr/releases/
 activity: low
 ---
 kind: url
+name: openh264
+url: https://github.com/cisco/openh264/releases
+activity: medium
+---
+kind: url
 name: openhab
 url: https://www.openhab.org/download/
 activity: high
+---
+kind: url
+name: openjdk8
+url: https://www.azul.com/downloads/?version=java-8-lts&os=linux&package=jdk
+activity: medium
+---
+kind: url
+name: openjdk11
+url: https://www.azul.com/downloads/?version=java-11-lts&os=linux&package=jdk
+activity: medium
+---
+kind: url
+name: openjdk17
+url: https://www.azul.com/downloads/?version=java-17-lts&package=jdk#zulu
+activity: medium
+---
+kind: url
+name: openjdk21
+url: https://www.azul.com/downloads/?version=java-21-lts&package=jdk#zulu
+activity: medium
+---
+kind: url
+name: openjdk22
+url: https://www.azul.com/downloads/?package=jdk#zulu
+activity: medium
+---
+kind: url
+name: openjdk23
+url: https://www.azul.com/downloads/?package=jdk#zulu
+activity: medium
 ---
 kind: url
 name: openjpeg
@@ -5277,6 +6494,11 @@ kind: url
 name: openlibm
 url: https://github.com/JuliaMath/openlibm/releases
 activity: low
+---
+kind: url
+name: openmp
+url: https://github.com/llvm/llvm-project/releases
+activity: high
 ---
 kind: url
 name: openmpi
@@ -5300,6 +6522,11 @@ activity: none
 ---
 kind: url
 name: openssl
+url: https://github.com/openssl/openssl/releases
+activity: medium
+---
+kind: url
+name: openssl111
 url: https://github.com/openssl/openssl/releases
 activity: medium
 ---
@@ -5329,13 +6556,18 @@ url: https://archive.mozilla.org/pub/opus/
 activity: none
 ---
 kind: url
-name: orc
-url: https://github.com/GStreamer/orc/releases/
+name: opusfile
+url: https://github.com/xiph/opusfile/releases
 activity: low
 ---
 kind: url
 name: osl
 url: https://github.com/periscop/openscop/releases/
+activity: low
+---
+kind: url
+name: ots
+url: https://github.com/khaledhosny/ots/releases
 activity: low
 ---
 kind: url
@@ -5349,9 +6581,14 @@ url: https://github.com/p11-glue/p11-kit/releases
 activity: medium
 ---
 kind: url
-name: p7zip
+name: p7zip_gui
 url: https://sourceforge.net/projects/p7zip/files/p7zip/
 activity: none
+---
+kind: url
+name: p8_platform
+url: https://github.com/Pulse-Eight/platform/tags
+activity: low
 ---
 kind: url
 name: packer
@@ -5469,6 +6706,11 @@ url: https://ftp.pcre.org/pub/pcre
 activity: low
 ---
 kind: url
+name: pcsc_lite
+url: https://salsa.debian.org/debian/pcsc-lite/-/tags
+activity: medium
+---
+kind: url
 name: pdfchain
 url: https://downloads.sourceforge.net/project/pdfchain/files/
 activity: none
@@ -5489,9 +6731,19 @@ url: https://gitlab.com/pdftk-java/pdftk/-/tags
 activity: low
 ---
 kind: url
+name: pdm
+url: https://github.com/pdm-project/pdm/releases
+activity: high
+---
+kind: url
 name: peazip
 url: https://github.com/peazip/PeaZip/releases/
 activity: high
+---
+kind: url
+name: peco
+url: https://github.com/peco/peco/releases
+activity: medium
 ---
 kind: url
 name: peek
@@ -5529,8 +6781,33 @@ url: http://www.cpan.org/src
 activity: medium
 ---
 kind: url
+name: perl_app_cpanminus
+url: https://metacpan.org/pod/App::cpanminus
+activity: low
+---
+kind: url
+name: perl_cairo
+url: https://metacpan.org/pod/Cairo
+activity: low
+---
+kind: url
+name: perl_cairo_gobject
+url: https://metacpan.org/pod/Cairo::GObject
+activity: low
+---
+kind: url
 name: perl_carp_clan
 url: https://metacpan.org/pod/Carp::Clan
+activity: low
+---
+kind: url
+name: perl_clone
+url: https://metacpan.org/pod/Clone
+activity: low
+---
+kind: url
+name: perl_data_dumper
+url: https://metacpan.org/pod/Data::Dumper
 activity: low
 ---
 kind: url
@@ -5549,18 +6826,73 @@ url: https://metacpan.org/pod/Date::Manip
 activity: low
 ---
 kind: url
+name: perl_extutils_depends
+url: https://metacpan.org/pod/ExtUtils::Depends
+activity: low
+---
+kind: url
+name: perl_extutils_makemaker
+url: https://metacpan.org/pod/ExtUtils::MakeMaker
+activity: low
+---
+kind: url
+name: perl_extutils_pkgconfig
+url: https://metacpan.org/pod/ExtUtils::PkgConfig
+activity: low
+---
+kind: url
+name: perl_file_spec
+url: https://metacpan.org/pod/File::Spec
+activity: low
+---
+kind: url
 name: perl_file_tail
 url: https://metacpan.org/pod/File::Tail
 activity: low
 ---
 kind: url
-name: perl_gcstring_linebreak
-url: https://github.com/hatukanezumi/Unicode-LineBreak/releases
-activity: none
+name: perl_file_temp
+url: https://metacpan.org/pod/File::Temp
+activity: low
+---
+kind: url
+name: perl_glib
+url: https://metacpan.org/pod/Glib
+activity: low
+---
+kind: url
+name: perl_glib_object_introspection
+url: https://metacpan.org/pod/Glib::Object::Introspection
+activity: low
+---
+kind: url
+name: perl_gtk3
+url: https://metacpan.org/pod/Gtk3
+activity: low
+---
+kind: url
+name: perl_http_date
+url: https://metacpan.org/pod/HTTP::Date
+activity: low
+---
+kind: url
+name: perl_http_request
+url: https://metacpan.org/pod/HTTP::Request
+activity: low
+---
+kind: url
+name: perl_io_file
+url: https://metacpan.org/pod/IO::File
+activity: low
 ---
 kind: url
 name: perl_io_socket_ssl
 url: https://cpan.metacpan.org/authors/id/S/SU/SULLR/
+activity: low
+---
+kind: url
+name: perl_json
+url: https://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/
 activity: low
 ---
 kind: url
@@ -5574,9 +6906,34 @@ url: https://cpan.metacpan.org/authors/id/G/GU/GUIDO/
 activity: none
 ---
 kind: url
+name: perl_lwp_protocol_https
+url: https://metacpan.org/pod/LWP::Protocol::https
+activity: none
+---
+kind: url
+name: perl_lwp_useragent
+url: https://metacpan.org/pod/LWP::UserAgent
+activity: none
+---
+kind: url
 name: perl_module_build
 url: https://cpan.metacpan.org/authors/id/L/LE/LEONT/
 activity: none
+---
+kind: url
+name: perl_mozilla_ca
+url: https://search.cpan.org/CPAN/authors/id/A/AB/ABH/
+activity: low
+---
+kind: url
+name: perl_net_http
+url: https://metacpan.org/pod/Net::HTTP
+activity: medium
+---
+kind: url
+name: perl_net_ssleay
+url: https://cpan.metacpan.org/authors/id/C/CH/CHRISN/
+activity: medium
 ---
 kind: url
 name: perl_parse_yapp
@@ -5586,11 +6943,6 @@ activity: none
 kind: url
 name: perl_pod_parser
 url: https://metacpan.org/pod/Pod::Parser
-activity: none
----
-kind: url
-name: perl_read_key
-url: https://github.com/jonathanstowe/TermReadKey/releases
 activity: none
 ---
 kind: url
@@ -5604,18 +6956,23 @@ url: https://ftp.gnu.org/gnu/stow
 activity: none
 ---
 kind: url
-name: perl_term_ansicolor
-url: https://github.com/rra/ansicolor/releases
-activity: none
----
-kind: url
 name: perl_term_readkey
 url: https://metacpan.org/pod/Term::ReadKey
 activity: none
 ---
 kind: url
+name: perl_test_output
+url: https://cpan.metacpan.org/authors/id/B/BD/BDFOY/
+activity: none
+---
+kind: url
 name: perl_text_charwidth
 url: https://cpan.metacpan.org/authors/id/K/KU/KUBOTA/
+activity: none
+---
+kind: url
+name: perl_text_csv
+url: https://metacpan.org/pod/Text::CSV
 activity: none
 ---
 kind: url
@@ -5629,8 +6986,8 @@ url: https://cpan.metacpan.org/authors/id/K/KU/KUBOTA/
 activity: none
 ---
 kind: url
-name: perl_time_hires
-url: https://cpan.metacpan.org/authors/id/J/JH/JHI/
+name: perl_try_tiny
+url: https://metacpan.org/pod/Try::Tiny
 activity: none
 ---
 kind: url
@@ -5639,12 +6996,32 @@ url: https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/
 activity: none
 ---
 kind: url
+name: perl_unicode_linebreak
+url: https://github.com/hatukanezumi/Unicode-LineBreak/tags
+activity: none
+---
+kind: url
+name: perl_uri
+url: https://metacpan.org/pod/URI
+activity: none
+---
+kind: url
+name: perl_xml_namespacesupport
+url: https://cpan.metacpan.org/authors/id/P/PE/PERIGRIN/
+activity: none
+---
+kind: url
 name: perl_xml_parser
 url: https://cpan.metacpan.org/authors/id/T/TO/TODDR/
 activity: none
 ---
 kind: url
-name: perl_xml_sax_parserfactory
+name: perl_xml_sax
+url: https://cpan.metacpan.org/authors/id/G/GR/GRANTM/
+activity: none
+---
+kind: url
+name: perl_xml_sax_base
 url: https://cpan.metacpan.org/authors/id/G/GR/GRANTM/
 activity: none
 ---
@@ -5652,6 +7029,11 @@ kind: url
 name: perl_xml_simple
 url: https://cpan.metacpan.org/authors/id/G/GR/GRANTM/
 activity: none
+---
+kind: url
+name: perl_xml_xpath
+url: https://metacpan.org/pod/XML::XPath
+activity: low
 ---
 kind: url
 name: perl_yaml_tiny
@@ -5674,9 +7056,24 @@ url: https://php.net/distributions
 activity: high
 ---
 kind: url
+name: php_malware_finder
+url: https://github.com/nbs-system/php-malware-finder
+activity: low
+---
+kind: url
+name: phpbrew
+url: https://github.com/phpbrew/phpbrew/releases
+activity: low
+---
+kind: url
 name: phpsysinfo
 url: https://sourceforge.net/projects/phpsysinfo/files/phpsysinfo/
 activity: low
+---
+kind: url
+name: pickle
+url: https://github.com/FriendsOfPHP/pickle/releases
+activity: none
 ---
 kind: url
 name: picom
@@ -5724,6 +7121,11 @@ url: https://github.com/vasi/pixz/releases
 activity: low
 ---
 kind: url
+name: pkg_7_zip
+url: https://www.7-zip.org/download.html
+activity: medium
+---
+kind: url
 name: pkgconf
 url: https://github.com/pkgconf/pkgconf/releases
 activity: low
@@ -5764,8 +7166,18 @@ url: https://sourceforge.net/projects/png-mng/files/pngcheck/
 activity: none
 ---
 kind: url
+name: pngquant
+url: https://github.com/kornelski/pngquant/tags
+activity: low
+---
+kind: url
+name: pocl
+url: https://github.com/pocl/pocl/releases
+activity: medium
+---
+kind: url
 name: podofo
-url: https://sourceforge.net/projects/podofo/files/
+url: https://github.com/podofo/podofo/releases
 activity: low
 ---
 kind: url
@@ -5859,6 +7271,11 @@ url: https://github.com/google/protobuf/releases
 activity: medium
 ---
 kind: url
+name: protobuf_c
+url: https://github.com/protobuf-c/protobuf-c/releases
+activity: medium
+---
+kind: url
 name: proxychains
 url: https://github.com/haad/proxychains/releases
 activity: none
@@ -5887,6 +7304,11 @@ kind: url
 name: pup
 url: https://github.com/ericchiang/pup/releases
 activity: low
+---
+kind: url
+name: pupnp
+url: https://github.com/pupnp/pupnp/releases
+activity: medium
 ---
 kind: url
 name: putty
@@ -5919,8 +7341,123 @@ url: https://github.com/pypa/wheel/releases
 activity: low
 ---
 kind: url
+name: py3_atspi
+url: https://gitlab.gnome.org/GNOME/pyatspi2/-/tags
+activity: low
+---
+kind: url
+name: py3_brotlicffi
+url: https://github.com/python-hyper/brotlicffi/tags
+activity: low
+---
+kind: url
+name: py3_cfgv
+url: https://github.com/asottile/cfgv/tags
+activity: low
+---
+kind: url
+name: py3_devedeng
+url: https://gitlab.com/rastersoft/devedeng/-/tags
+activity: low
+---
+kind: url
+name: py3_dool
+url: https://github.com/scottchiefbaker/dool
+activity: low
+---
+kind: url
+name: py3_editables
+url: https://github.com/pfmoore/editables/tags
+activity: medium
+---
+kind: url
+name: py3_gi_docgen
+url: https://gitlab.gnome.org/GNOME/gi-docgen/-/tags
+activity: medium
+---
+kind: url
+name: py3_hatch_vcs
+url: https://github.com/ofek/hatch-vcs/releases
+activity: medium
+---
+kind: url
+name: py3_hatch_fancy_pypi_readme
+url: https://github.com/hynek/hatch-fancy-pypi-readme/releases
+activity: medium
+---
+kind: url
+name: py3_hatchling
+url: https://github.com/pypa/hatch/releases
+activity: medium
+---
+kind: url
+name: py3_identify
+url: https://github.com/pre-commit/identify/tags
+activity: medium
+---
+kind: url
+name: py3_itstool
+url: https://github.com/itstool/itstool/releases
+activity: low
+---
+kind: url
+name: py3_lxml
+url: https://github.com/lxml/lxml/releases
+activity: high
+---
+kind: url
+name: py3_mat2
+url: https://0xacab.org/jvoisin/mat2/-/tags
+activity: low
+---
+kind: url
+name: py3_mercurial
+url: https://www.mercurial-scm.org/release
+activity: high
+---
+kind: url
+name: py3_meson
+url: https://github.com/mesonbuild/meson/releases
+activity: high
+---
+kind: url
+name: py3_mutagen
+url: https://github.com/quodlibet/mutagen/releases
+activity: medium
+---
+kind: url
+name: py3_nodeenv
+url: https://github.com/ekalinin/nodeenv/releases
+activity: low
+---
+kind: url
 name: py3_pip
 url: https://github.com/pypa/pip/releases
+activity: medium
+---
+kind: url
+name: py3_pre_commit
+url: https://github.com/pre-commit/pre-commit/releases
+activity: medium
+---
+kind: url
+name: py3_pygobject
+url: https://gitlab.gnome.org/GNOME/pygobject/tags
+activity: high
+---
+kind: url
+name: py3_pylint
+url: https://github.com/pylint-dev/pylint/releases
+activity: high
+---
+kind: url
+name: py3_pyright
+url: https://github.com/RobertCraigie/pyright-python/releases
+activity: high
+---
+kind: url
+name: py3_ruff
+url: https://docs.astral.sh/ruff
 activity: medium
 ---
 kind: url
@@ -5929,9 +7466,44 @@ url: https://github.com/pypa/setuptools/releases
 activity: medium
 ---
 kind: url
+name: py3_soupsieve
+url: https://github.com/facelessuser/soupsieve/releases
+activity: medium
+---
+kind: url
+name: py3_sphinx_rtd_theme
+url: https://github.com/readthedocs/sphinx_rtd_theme/tags
+activity: medium
+---
+kind: url
+name: py3_twine
+url: https://github.com/pypa/twine/releases
+activity: medium
+---
+kind: url
+name: py3_trove_classifiers
+url: https://github.com/pypa/trove-classifiers/releases
+activity: medium
+---
+kind: url
+name: py3_unsupported_python
+url: https://github.com/ntessore/unsupported-python/releases
+activity: none
+---
+kind: url
+name: py3_websockets
+url: https://github.com/python-websockets/websockets/tags
+activity: high
+---
+kind: url
 name: py3_wheel
 url: https://github.com/pypa/wheel/releases
 activity: low
+---
+kind: url
+name: py3_zcmds
+url: https://github.com/zackees/zcmds/releases
+activity: none
 ---
 kind: url
 name: pycharm
@@ -5942,11 +7514,6 @@ kind: url
 name: pyconfigure
 url: https://ftpmirror.gnu.org/pyconfigure/
 activity: none
----
-kind: url
-name: pygobject
-url: https://gitlab.gnome.org/GNOME/pygobject/tags
-activity: high
 ---
 kind: url
 name: pygobject2
@@ -5979,6 +7546,11 @@ url: https://github.com/Galleondragon/qb64/releases
 activity: low
 ---
 kind: url
+name: qbittorrent
+url: https://sourceforge.net/projects/qbittorrent/files/qbittorrent/
+activity: medium
+---
+kind: url
 name: qemacs
 url: http://bellard.org/qemacs
 activity: none
@@ -6009,14 +7581,14 @@ url: https://github.com/fukuchi/libqrencode/releases
 activity: none
 ---
 kind: url
-name: qtbase
-url: http://download.qt.io/official_releases/qt/
-activity: high
+name: qt5_base
+url: https://invent.kde.org/qt/qt/qtbase/-/tags
+activity: medium
 ---
 kind: url
-name: qtchooser
-url: http://download.qt.io/official_releases/qtchooser/
-activity: low
+name: qt5_charts
+url: https://invent.kde.org/qt/qt/qtcharts/-/tags
+activity: medium
 ---
 kind: url
 name: qtcreator
@@ -6024,8 +7596,8 @@ url: http://download.qt.io/official_releases/qt/
 activity: high
 ---
 kind: url
-name: qtdeclarative
-url: http://download.qt.io/official_releases/qt/
+name: qt5_declarative
+url: https://invent.kde.org/qt/qt/qtdeclarative/-/tags
 activity: medium
 ---
 kind: url
@@ -6034,44 +7606,89 @@ url: https://github.com/rodlie/qtfm/releases
 activity: medium
 ---
 kind: url
-name: qtlocation
-url: http://download.qt.io/official_releases/qt/
+name: qt5_imageformats
+url: https://invent.kde.org/qt/qt/qtimageformats/-/tags
 activity: medium
 ---
 kind: url
-name: qtmultimedia
-url: http://download.qt.io/official_releases/qt/
+name: qt5_location
+url: https://invent.kde.org/qt/qt/qtlocation/-/tags
 activity: medium
 ---
 kind: url
-name: qtscript
-url: http://download.qt.io/official_releases/qt/
+name: qt5_multimedia
+url: https://invent.kde.org/qt/qt/qtmultimedia/-/tags
 activity: medium
 ---
 kind: url
-name: qtserialport
-url: http://download.qt.io/official_releases/qt/
+name: qt5_networkauth
+url: https://invent.kde.org/qt/qt/qtnetworkauth/-/tags
 activity: medium
 ---
 kind: url
-name: qtsvg
-url: http://download.qt.io/official_releases/qt/
-activity: high
----
-kind: url
-name: qttools
-url: http://download.qt.io/official_releases/qt/
-activity: high
----
-kind: url
-name: qtwayland
-url: http://download.qt.io/official_releases/qt/
+name: qt5_quickcontrols
+url: https://invent.kde.org/qt/qt/qtquickcontrols/-/tags
 activity: medium
 ---
 kind: url
-name: qtx11extras
-url: http://download.qt.io/official_releases/qt/
-activity: high
+name: qt5_quickcontrols2
+url: https://invent.kde.org/qt/qt/qtquickcontrols2/-/tags
+activity: medium
+---
+kind: url
+name: qt5_script
+url: https://invent.kde.org/qt/qt/qtscript/-/tags
+activity: medium
+---
+kind: url
+name: qt5_serialport
+url: https://invent.kde.org/qt/qt/qtserialport/-/tags
+activity: medium
+---
+kind: url
+name: qt5_svg
+url: https://invent.kde.org/qt/qt/qtsvg/-/tags
+activity: medium
+---
+kind: url
+name: qt5_tools
+url: https://invent.kde.org/qt/qt/qttools/-/tags
+activity: medium
+---
+kind: url
+name: qt5_wayland
+url: https://invent.kde.org/qt/qt/qtwayland/-/tags
+activity: medium
+---
+kind: url
+name: qt5_webchannel
+url: https://invent.kde.org/qt/qt/qtwebchannel/-/tags
+activity: medium
+---
+kind: url
+name: qt5_webengine
+url: https://invent.kde.org/qt/qt/qtwebengine/-/tags
+activity: medium
+---
+kind: url
+name: qt5_webglplugin
+url: https://invent.kde.org/qt/qt/qtwebglplugin/-/tags
+activity: medium
+---
+kind: url
+name: qt5_websockets
+url: https://invent.kde.org/qt/qt/qtwebsockets/-/tags
+activity: medium
+---
+kind: url
+name: qt5_x11extras
+url: https://invent.kde.org/qt/qt/qtx11extras/-/tags
+activity: medium
+---
+kind: url
+name: qt5_xmlpatterns
+url: https://invent.kde.org/qt/qt/qtxmlpatterns/-/tags
+activity: medium
 ---
 kind: url
 name: quakespasm
@@ -6089,14 +7706,19 @@ url: https://github.com/radare/radare2/releases
 activity: medium
 ---
 kind: url
-name: ragel
-url: https://www.colm.net/files/ragel/
-activity: low
+name: rakudo
+url: https://github.com/rakudo/rakudo/releases
+activity: medium
 ---
 kind: url
 name: ranger
 url: https://github.com/ranger/ranger/releases
 activity: low
+---
+kind: url
+name: rapidjson
+url: https://github.com/Tencent/rapidjson/releases
+activity: none
 ---
 kind: url
 name: rarian
@@ -6106,6 +7728,11 @@ activity: none
 kind: url
 name: rav1e
 url: https://github.com/xiph/rav1e/releases
+activity: medium
+---
+kind: url
+name: rclone
+url: https://github.com/rclone/rclone/releases
 activity: medium
 ---
 kind: url
@@ -6169,6 +7796,11 @@ url: https://x.org/archive/individual/app
 activity: none
 ---
 kind: url
+name: repo
+url: https://gerrit.googlesource.com/git-repo/+refs
+activity: medium
+---
+kind: url
 name: rest
 url: https://gitlab.gnome.org/GNOME/librest/-/tags
 activity: none
@@ -6187,6 +7819,11 @@ kind: url
 name: rhino
 url: https://github.com/mozilla/rhino/releases
 activity: medium
+---
+kind: url
+name: rhythmbox
+url: https://download.gnome.org/sources/rhythmbox/
+activity: none
 ---
 kind: url
 name: ripgrep
@@ -6219,6 +7856,11 @@ url: https://github.com/roswell/roswell/releases
 activity: medium
 ---
 kind: url
+name: rpcsvc_proto
+url: https://github.com/thkukuk/rpcsvc-proto/releases
+activity: low
+---
+kind: url
 name: rsu_client
 url: https://github.com/rsu-client/rsu-client/releases
 activity: low
@@ -6249,13 +7891,83 @@ url: http://www.ruby-lang.org/en/downloads/
 activity: medium
 ---
 kind: url
+name: ruby_activesupport
+url: https://rubygems.org/gems/activesupport/versions/
+activity: medium
+---
+kind: url
+name: ruby_asciidoctor
+url: https://github.com/asciidoctor/asciidoctor/releases
+activity: medium
+---
+kind: url
+name: ruby_concurrent_ruby
+url: https://github.com/ruby-concurrency/concurrent-ruby/releases
+activity: medium
+---
+kind: url
+name: ruby_debug
+url: https://github.com/ruby/debug/releases
+activity: medium
+---
+kind: url
 name: ruby_docopt
 url: https://github.com/docopt/docopt/releases
 activity: none
 ---
 kind: url
+name: ruby_gem_compiler
+url: https://github.com/luislavena/gem-compiler/releases
+activity: low
+---
+kind: url
+name: ruby_glib2
+url: https://rubygems.org/gems/glib2
+activity: medium
+---
+kind: url
+name: ruby_highline
+url: https://github.com/JEG2/highline/tags
+activity: medium
+---
+kind: url
+name: ruby_mdl
+url: https://github.com/markdownlint/markdownlint/tags
+activity: low
+---
+kind: url
+name: ruby_pry
+url: https://github.com/pry/pry/tags
+activity: low
+---
+kind: url
+name: ruby_pry_byebug
+url: https://github.com/deivid-rodriguez/pry-byebug/releases
+activity: low
+---
+kind: url
+name: ruby_rubocop
+url: https://github.com/rubocop/rubocop/releases
+activity: medium
+---
+kind: url
+name: ruby_ruby_libversion
+url: https://github.com/Zopolis4/ruby-libversion/tags
+activity: medium
+---
+kind: url
 name: ruby_webrick
 url: https://github.com/ruby/webrick/releases
+activity: medium
+---
+kind: url
+name: ruby_yaml_lint
+url: https://github.com/Pryz/yaml-lint/releases
+activity: none
+---
+kind: url
+name: runc
+url: hhttps://github.com/opencontainers/runc/releases
 activity: medium
 ---
 kind: url
@@ -6267,6 +7979,11 @@ kind: url
 name: rust
 url: https://github.com/rust-lang/rust/releases
 activity: high
+---
+kind: url
+name: rxvt_unicode
+url: http://dist.schmorp.de/rxvt-unicode/
+activity: low
 ---
 kind: url
 name: s
@@ -6319,9 +8036,19 @@ url: https://github.com/sbt/sbt/releases
 activity: medium
 ---
 kind: url
+name: scbi
+url: https://github.com/TurboGit/scbi/releases
+activity: high
+---
+kind: url
 name: sccache
 url: https://github.com/mozilla/sccache/releases
-activity: low
+activity: medium
+---
+kind: url
+name: scdoc
+url: https://git.sr.ht/~sircmpwn/scdoc/refs
+activity: none
 ---
 kind: url
 name: scheme48
@@ -6359,8 +8086,33 @@ url: https://github.com/resurrecting-open-source-projects/scrot/releases
 activity: medium
 ---
 kind: url
+name: sdkman
+url: https://github.com/sdkman/sdkman-cli/releases
+activity: low
+---
+kind: url
 name: sdl2_image
 url: https://www.libsdl.org/projects/SDL_image/release/
+activity: medium
+---
+kind: url
+name: sdl2_ttf
+url: https://www.libsdl.org/projects/SDL_ttf/release/
+activity: medium
+---
+kind: url
+name: sdl3
+url: https://www.libsdl.org/release
+activity: medium
+---
+kind: url
+name: sdl3_ttf
+url: https://www.libsdl.org/projects/SDL_ttf/release/
+activity: medium
+---
+kind: url
+name: seatd
+url: hhttps://git.sr.ht/~kennylevinsen/seatd/refs
 activity: medium
 ---
 kind: url
@@ -6379,8 +8131,18 @@ url: https://github.com/SeleniumHQ/selenium/releases
 activity: low
 ---
 kind: url
+name: serd
+url: https://github.com/drobilla/serd/tags
+activity: none
+---
+kind: url
 name: serf
 url: https://www.apache.org/dist/serf
+activity: none
+---
+kind: url
+name: setconf
+url: https://github.com/xyproto/setconf/releases
 activity: none
 ---
 kind: url
@@ -6414,6 +8176,11 @@ url: http://freedesktop.org/~hadess/
 activity: low
 ---
 kind: url
+name: shellcheck
+url: https://github.com/koalaman/shellcheck/releases
+activity: low
+---
+kind: url
 name: shells
 url: https://www.shells.com/l/en-US/download
 activity: low
@@ -6439,6 +8206,11 @@ url: https://github.com/mltframework/shotcut/releases
 activity: high
 ---
 kind: url
+name: shotwell
+url: https://download.gnome.org/sources/shotwell/
+activity: high
+---
+kind: url
 name: shrinkpdf
 url: http://alfredklomp.com/programming/shrinkpdf/
 activity: none
@@ -6454,6 +8226,11 @@ url: http://download.joedog.org/siege/
 activity: low
 ---
 kind: url
+name: signal_desktop
+url: https://signal.org/download/
+activity: medium
+---
+kind: url
 name: skype
 url: https://www.skype.com/en/get-skype/
 activity: medium
@@ -6462,6 +8239,11 @@ kind: url
 name: sl
 url: https://github.com/mtoyoda/sl/releases
 activity: none
+---
+kind: url
+name: slack_cli
+url: https://api.slack.com/automation/cli/install-mac-linux
+activity: low
 ---
 kind: url
 name: slang
@@ -6504,8 +8286,18 @@ url: http://kernel.ubuntu.com/~cking/tarballs/smemstat
 activity: medium
 ---
 kind: url
+name: smplayer
+url: https://github.com/smplayer-dev/smplayer/releases
+activity: medium
+---
+kind: url
 name: snappy
 url: https://github.com/google/snappy/releases
+activity: high
+---
+kind: url
+name: snd
+url: https://sourceforge.net/projects/snd/files/snd/
 activity: high
 ---
 kind: url
@@ -6541,6 +8333,11 @@ activity: none
 kind: url
 name: sonic
 url: https://github.com/espeak-ng/sonic/releases
+activity: none
+---
+kind: url
+name: sord
+url: https://github.com/drobilla/sord/tags
 activity: none
 ---
 kind: url
@@ -6599,13 +8396,18 @@ url: https://github.com/KhronosGroup/SPIRV-Headers/releases
 activity: medium
 ---
 kind: url
+name: spirv_llvm_translator
+url: https://github.com/KhronosGroup/SPIRV-LLVM-Translator/releases
+activity: medium
+---
+kind: url
 name: spirv_tools
 url: https://github.com/KhronosGroup/SPIRV-Tools/releases
 activity: low
 ---
 kind: url
 name: sqlite
-url: https://www.sqlite.org
+url: https://sqlite.org/download.html
 activity: medium
 ---
 kind: url
@@ -6620,8 +8422,8 @@ activity: low
 ---
 kind: url
 name: squashfs
-url: https://sourceforge.net/projects/squashfs/files/squashfs/
-activity: none
+url: https://github.com/plougher/squashfs-tools/releases
+activity: low
 ---
 kind: url
 name: squashfs_tools_ng
@@ -6637,6 +8439,16 @@ kind: url
 name: squeak
 url: http://files.squeak.org/
 activity: medium
+---
+kind: url
+name: squid
+url: https://github.com/squid-cache/squid
+activity: medium
+---
+kind: url
+name: sratom
+url: https://github.com/lv2/sratom/tags
+activity: none
 ---
 kind: url
 name: srt
@@ -6664,8 +8476,18 @@ url: https://github.com/sshuttle/sshuttle/releases
 activity: low
 ---
 kind: url
+name: stacer
+url: https://github.com/oguzhaninan/Stacer/releases
+activity: none
+---
+kind: url
 name: stack
 url: https://github.com/commercialhaskell/stack/releases
+activity: medium
+---
+kind: url
+name: starship
+url: https://github.com/starship/starship/releases
 activity: medium
 ---
 kind: url
@@ -6750,7 +8572,7 @@ activity: low
 ---
 kind: url
 name: symfony
-url: https://github.com/symfony/cli/releases/
+url: https://github.com/symfony-cli/symfony-cli/releases
 activity: high
 ---
 kind: url
@@ -6779,6 +8601,11 @@ url: http://www.ibiblio.org/pub/Linux/libs/graphics/
 activity: none
 ---
 kind: url
+name: tabby
+url: https://github.com/Eugeny/tabby/releases
+activity: low
+---
+kind: url
 name: tack
 url: https://ftpmirror.gnu.org/ncurses/
 activity: low
@@ -6796,6 +8623,11 @@ activity: low
 kind: url
 name: tar
 url: https://ftpmirror.gnu.org/tar/
+activity: medium
+---
+kind: url
+name: tbb
+url: https://github.com/oneapi-src/oneTBB/releases
 activity: medium
 ---
 kind: url
@@ -6914,6 +8746,11 @@ url: https://github.com/nvbn/thefuck/releases
 activity: medium
 ---
 kind: url
+name: thorium
+url: https://github.com/Alex313031/thorium/releases
+activity: medium
+---
+kind: url
 name: thunar
 url: https://archive.xfce.org/src/xfce/thunar/
 activity: medium
@@ -6931,6 +8768,11 @@ activity: low
 kind: url
 name: tig
 url: https://github.com/jonas/tig/releases
+activity: low
+---
+kind: url
+name: tika
+url: https://github.com/apache/tika/tags
 activity: low
 ---
 kind: url
@@ -6959,6 +8801,16 @@ url: https://distro.ibiblio.org/tinycorelinux/downloads.html
 activity: medium
 ---
 kind: url
+name: tinysparql
+url: https://gitlab.gnome.org/GNOME/tinysparql/-/tags
+activity: high
+---
+kind: url
+name: tinyxml2
+url: https://github.com/leethomason/tinyxml2/tags
+activity: low
+---
+kind: url
 name: tk
 url: https://sourceforge.net/projects/tcl/files/Tcl/
 activity: low
@@ -6974,14 +8826,34 @@ url: https://github.com/raylee/tldr/releases
 activity: none
 ---
 kind: url
+name: tllist
+url: https://codeberg.org/dnkl/tllist/tags
+activity: medium
+---
+kind: url
+name: tmate
+url: https://github.com/tmate-io/tmate/releases
+activity: low
+---
+kind: url
 name: tmux
 url: https://github.com/tmux/tmux/releases
 activity: low
 ---
 kind: url
+name: toilet
+url: http://caca.zoy.org/wiki/toilet
+activity: none
+---
+kind: url
 name: torbrowser
 url: https://dist.torproject.org/torbrowser/
 activity: high
+---
+kind: url
+name: totem_pl_parser
+url: https://download.gnome.org/sources/totem-pl-parser/
+activity: none
 ---
 kind: url
 name: tpp
@@ -6992,16 +8864,6 @@ kind: url
 name: traceroute
 url: https://sourceforge.net/projects/traceroute/files/traceroute/
 activity: none
----
-kind: url
-name: tracker3
-url: https://gitlab.gnome.org/GNOME/tracker/-/tags
-activity: high
----
-kind: url
-name: tracker3_miners
-url: https://gitlab.gnome.org/GNOME/tracker-miners/-/tags
-activity: high
 ---
 kind: url
 name: translate_shell
@@ -7024,6 +8886,11 @@ url: http://mama.indstate.edu/users/ice/tree/src
 activity: none
 ---
 kind: url
+name: tree_sitter
+url: https://github.com/tree-sitter/tree-sitter/releases
+activity: low
+---
+kind: url
 name: trousers
 url: https://sourceforge.net/projects/trousers/files/trousers/
 activity: none
@@ -7032,6 +8899,16 @@ kind: url
 name: ttf2pt1
 url: https://sourceforge.net/projects/ttf2pt1/files/ttf2pt1/
 activity: none
+---
+kind: url
+name: ttf_hanazono
+url: https://osdn.net/projects/hanazono-font/releases/
+activity: none
+---
+kind: url
+name: tuptime
+url: https://github.com/rfmoz/tuptime/releases
+activity: low
 ---
 kind: url
 name: twm
@@ -7059,14 +8936,34 @@ url: https://www.oberhumer.com/opensource/ucl/download/
 activity: none
 ---
 kind: url
+name: udeler
+url: https://github.com/FaisalUmair/udemy-downloader-gui/releases
+activity: none
+---
+kind: url
+name: udisks2
+url: https://github.com/storaged-project/udisks/releases
+activity: medium
+---
+kind: url
 name: uget
 url: https://sourceforge.net/projects/urlget/files/uget%20%28stable%29/
 activity: low
 ---
 kind: url
+name: ugrep
+url: https://github.com/Genivia/ugrep/releases
+activity: high
+---
+kind: url
 name: umockdev
 url: https://github.com/martinpitt/umockdev/releases
 activity: medium
+---
+kind: url
+name: unibilium
+url: https://github.com/neovim/unibilium/releases
+activity: none
 ---
 kind: url
 name: unicode_character_database
@@ -7081,6 +8978,11 @@ activity: low
 kind: url
 name: unicode_emoji
 url: https://www.unicode.org/Public/emoji/
+activity: low
+---
+kind: url
+name: unifdef
+url: https://dotat.at/prog/unifdef/
 activity: low
 ---
 kind: url
@@ -7114,13 +9016,28 @@ url: https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/
 activity: none
 ---
 kind: url
+name: upm
+url: https://sourceforge.net/projects/upm/files/
+activity: none
+---
+kind: url
 name: upower
 url: https://gitlab.freedesktop.org/upower/upower/-/tags
 activity: none
 ---
 kind: url
+name: upscayl
+url: https://github.com/upscayl/upscayl/releases
+activity: medium
+---
+kind: url
 name: upx
 url: https://github.com/upx/upx/releases/
+activity: low
+---
+kind: url
+name: uriparser
+url: https://github.com/uriparser/uriparser/releases/
 activity: low
 ---
 kind: url
@@ -7159,6 +9076,11 @@ url: https://www.x.org/pub/individual/util/
 activity: low
 ---
 kind: url
+name: uutils_coreutils
+url: https://github.com/uutils/coreutils/releases
+activity: medium
+---
+kind: url
 name: uwsgi
 url: https://github.com/unbit/uwsgi/releases
 activity: medium
@@ -7189,6 +9111,21 @@ url: http://sourceware.org/pub/valgrind
 activity: none
 ---
 kind: url
+name: vapoursynth
+url: https://github.com/vapoursynth/vapoursynth/releases
+activity: high
+---
+kind: url
+name: vc_intrinsics
+url: https://github.com/intel/vc-intrinsics/releases
+activity: low
+---
+kind: url
+name: vcpkg
+url: https://github.com/microsoft/vcpkg/releases
+activity: low
+---
+kind: url
 name: vamp_sdk
 url: https://code.soundsoftware.ac.uk/projects/vamp-plugin-sdk/files
 activity: medium
@@ -7197,6 +9134,16 @@ kind: url
 name: vdev
 url: https://github.com/jcnelson/vdev/releases
 activity: none
+---
+kind: url
+name: veracrypt
+url: https://launchpad.net/veracrypt/+download
+activity: medium
+---
+kind: url
+name: vice
+url: https://downloads.sourceforge.net/project/vice-emu/releases
+activity: low
 ---
 kind: url
 name: vidstab
@@ -7229,9 +9176,29 @@ url: https://vivaldi.com/download/
 activity: medium
 ---
 kind: url
+name: vkd3d
+url: https://dl.winehq.org/vkd3d/source/
+activity: medium
+---
+kind: url
+name: vlock
+url: https://repo.or.cz/vlock
+activity: none
+---
+kind: url
 name: vmaf
 url: https://github.com/Netflix/vmaf/releases
 activity: low
+---
+kind: url
+name: volta
+url: https://github.com/volta-cli/volta/releases
+activity: low
+---
+kind: url
+name: volume_key
+url: https://pagure.io/volume_key/releases
+activity: none
 ---
 kind: url
 name: vpnc
@@ -7250,13 +9217,23 @@ activity: medium
 ---
 kind: url
 name: vulkan_headers
-url: https://github.com/KhronosGroup/Vulkan-Headers/releases
+url: https://github.com/KhronosGroup/Vulkan-Headers/tags
 activity: high
 ---
 kind: url
 name: vulkan_icd_loader
-url: https://github.com/KhronosGroup/Vulkan-Loader/releases
+url: https://github.com/KhronosGroup/Vulkan-Loader/tags
 activity: high
+---
+kind: url
+name: vulkan_tools
+url: https://github.com/KhronosGroup/Vulkan-Tools/tags
+activity: high
+---
+kind: url
+name: vulkansdk
+url: https://vulkan.lunarg.com/sdk/home
+activity: medium
 ---
 kind: url
 name: vuze
@@ -7289,9 +9266,19 @@ url: https://wayland.freedesktop.org/releases.html
 activity: high
 ---
 kind: url
+name: wayland_info
+url: https://gitlab.freedesktop.org/wayland/wayland-utils/-/tags
+activity: low
+---
+kind: url
 name: wayland_protocols
 url: https://wayland.freedesktop.org/releases.html
 activity: high
+---
+kind: url
+name: wayland_proxy_virtwl
+url: https://github.com/talex5/wayland-proxy-virtwl
+activity: none
 ---
 kind: url
 name: waypipe
@@ -7301,6 +9288,11 @@ activity: medium
 kind: url
 name: wbox
 url: http://www.hping.org/wbox
+activity: none
+---
+kind: url
+name: wcslib
+url: https://www.atnf.csiro.au/people/Mark.Calabretta/WCS/
 activity: none
 ---
 kind: url
@@ -7339,8 +9331,13 @@ url: https://github.com/wayland-project/weston/releases/
 activity: medium
 ---
 kind: url
-name: wget
-url: https://ftp.gnu.org/gnu/wget
+name: wezterm
+url: https://github.com/wez/wezterm/releases
+activity: low
+---
+kind: url
+name: wget2
+url: https://ftpmirror.gnu.org/wget/
 activity: low
 ---
 kind: url
@@ -7379,13 +9376,28 @@ url: https://github.com/HewlettPackard/wireless-tools/releases
 activity: none
 ---
 kind: url
+name: wireshark
+url: https://github.com/wireshark/wireshark/tags
+activity: high
+---
+kind: url
+name: wishlist
+url: https://github.com/charmbracelet/wishlist/releases
+activity: high
+---
+kind: url
 name: wkhtmltox
 url: https://github.com/wkhtmltopdf/wkhtmltopdf/releases
-activity: low
+activity: none
 ---
 kind: url
 name: wl_clipboard
 url: https://github.com/bugaevc/wl-clipboard/releases/
+activity: medium
+---
+kind: url
+name: wlroots
+url: https://gitlab.freedesktop.org/wlroots/wlroots/-/tags
 activity: medium
 ---
 kind: url
@@ -7430,6 +9442,16 @@ activity: none
 ---
 kind: url
 name: wxwidgets
+url: https://github.com/wxWidgets/wxWidgets/releases/
+activity: low
+---
+kind: url
+name: wxwidgets30
+url: https://github.com/wxWidgets/wxWidgets/releases/
+activity: low
+---
+kind: url
+name: wxwidgets31
 url: https://github.com/wxWidgets/wxWidgets/releases/
 activity: low
 ---
@@ -7489,9 +9511,19 @@ url: https://github.com/Airblader/xcb-util-xrm/releases
 activity: none
 ---
 kind: url
+name: xclip
+url: https://github.com/astrand/xclip/releases
+activity: none
+---
+kind: url
 name: xclock
 url: https://www.x.org/pub/individual/app/
 activity: low
+---
+kind: url
+name: xcurses
+url: https://github.com/wmcbrine/PDCurses/releases
+activity: none
 ---
 kind: url
 name: xdg_dbus_proxy
@@ -7659,8 +9691,28 @@ url: https://www.x.org/pub/individual/driver/
 activity: low
 ---
 kind: url
+name: xorg_xeyes
+url: https://gitlab.freedesktop.org/xorg/app/xeyes/-/tags
+activity: low
+---
+kind: url
+name: xorg_xlsfonts
+url: https://gitlab.freedesktop.org/xorg/app/xlsfonts/-/tags
+activity: low
+---
+kind: url
+name: xorg_xset
+url: https://gitlab.freedesktop.org/xorg/app/xset/-/tags
+activity: low
+---
+kind: url
 name: xprop
 url: https://www.x.org/archive/individual/app
+activity: low
+---
+kind: url
+name: xrdb
+url: https://gitlab.freedesktop.org/xorg/app/xrdb/-/tags
 activity: low
 ---
 kind: url
@@ -7700,8 +9752,8 @@ activity: none
 ---
 kind: url
 name: xzutils
-url: http://tukaani.org/xz
-activity: low
+url: https://github.com/tukaani-project/xz/releases
+activity: medium
 ---
 kind: url
 name: yad
@@ -7712,6 +9764,11 @@ kind: url
 name: yajl
 url: https://github.com/lloyd/yajl/releases
 activity: none
+---
+kind: url
+name: yara
+url: https://github.com/VirusTotal/yara/releases
+activity: medium
 ---
 kind: url
 name: yarn
@@ -7744,9 +9801,34 @@ url: https://github.com/GNOME/yelp-xsl/releases
 activity: low
 ---
 kind: url
+name: yggdrasil
+url: https://github.com/yggdrasil-network/yggdrasil-go/releases
+activity: high
+---
+kind: url
 name: youtube_dl
 url: https://github.com/rg3/youtube-dl/releases
 activity: high
+---
+kind: url
+name: yt_dlp
+url: https://github.com/yt-dlp/yt-dlp/releases
+activity: high
+---
+kind: url
+name: ytnef
+url: https://github.com/Yeraze/ytnef/releases
+activity: low
+---
+kind: url
+name: ytree
+url: https://www.han.de/~werner/ytree.html
+activity: high
+---
+kind: url
+name: yyjson
+url: https://github.com/ibireme/yyjson/releases
+activity: medium
 ---
 kind: url
 name: zathura
@@ -7757,6 +9839,11 @@ kind: url
 name: zathura_poppler_pdf
 url: https://pwmt.org/projects/zathura-pdf-poppler/download/
 activity: low
+---
+kind: url
+name: zed
+url: https://github.com/zed-industries/zed/releases
+activity: high
 ---
 kind: url
 name: zenity
@@ -7797,6 +9884,21 @@ kind: url
 name: zoneinfo
 url: https://data.iana.org/time-zones/releases/
 activity: high
+---
+kind: url
+name: zopfli
+url: https://github.com/google/zopfli/releases
+activity: none
+---
+kind: url
+name: zotero
+url: https://www.zotero.org/download
+activity: medium
+---
+kind: url
+name: zoxide
+url: https://github.com/ajeetdsouza/zoxide/releases
+activity: low
 ---
 kind: url
 name: zsh

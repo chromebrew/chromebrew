@@ -3,26 +3,21 @@ require 'package'
 class Pdftk < Package
   description 'PDFtk is a simple tool for doing everyday things with PDF documents.'
   homepage 'https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/'
-  version '3.2.2'
+  version '3.3.3'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://gitlab.com/pdftk-java/pdftk/-/archive/v3.2.2/pdftk-v3.2.2.tar.bz2'
-  source_sha256 'b315f1267947af337c0d1e8253fba26108eed6392b43633fe967093f42ad45eb'
+  source_url 'https://gitlab.com/pdftk-java/pdftk/-/archive/v3.3.3/pdftk-v3.3.3.tar.bz2'
+  source_sha256 'c144e0dd388db2f5e8e0b412c0d9be6c54e4db99a4575b6058a209f3603a333d'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdftk/3.2.2_armv7l/pdftk-3.2.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdftk/3.2.2_armv7l/pdftk-3.2.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdftk/3.2.2_i686/pdftk-3.2.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdftk/3.2.2_x86_64/pdftk-3.2.2-chromeos-x86_64.tpxz',
-  })
-  binary_sha256 ({
-    aarch64: '543fa66938dc6604d579a7570fe89bf043c471b5976d217031b19244f522d432',
-     armv7l: '543fa66938dc6604d579a7570fe89bf043c471b5976d217031b19244f522d432',
-       i686: '1611c0ecc0566e7e29fecb1ce1128153d2716698fae67f2107cffaea7350953c',
-     x86_64: '7efc1211d25ae0fa57342bc8f22298480c3366285e4673e2c2552a9491300bba',
+  binary_sha256({
+    aarch64: '72389eb077f1c4a770a330869e28638694b518167c8f301e47cc0fd623912890',
+     armv7l: '72389eb077f1c4a770a330869e28638694b518167c8f301e47cc0fd623912890',
+       i686: '25ecb4269be3009714e39f8e6a6e2c92c1c75f92cb10988cc14f1f63d70fb2ff',
+     x86_64: '925c1d1aec21ee2fe6cfd7da07d256842ad1fba1b542389676ac40356bb8139a'
   })
 
-  depends_on 'jdk8'
+  depends_on 'openjdk8'
   depends_on 'gradle' => :build
 
   def self.build

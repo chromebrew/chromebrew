@@ -2,39 +2,40 @@ require 'package'
 
 class Libxrandr < Package
   description 'X.org X Resize, Rotate and Reflection extension library'
-  homepage 'https://www.x.org'
-  version '1.5.2-1'
+  homepage 'https://xorg.freedesktop.org/wiki/'
+  @_ver = '1.5.2'
+  version "#{@_ver}-2"
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libXrandr-1.5.2.tar.gz'
-  source_sha256 '3f10813ab355e7a09f17e147d61b0ce090d898a5ea5b5519acd0ef68675dcf8e'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxrandr.git'
+  git_hashtag "libXrandr-#{@_ver}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrandr/1.5.2-1_armv7l/libxrandr-1.5.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrandr/1.5.2-1_armv7l/libxrandr-1.5.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrandr/1.5.2-1_i686/libxrandr-1.5.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrandr/1.5.2-1_x86_64/libxrandr-1.5.2-1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '795885bddb9431b2522f1d78ced0bcf06dcbbb988b1aec402223a8d5c42ad4ba',
-     armv7l: '795885bddb9431b2522f1d78ced0bcf06dcbbb988b1aec402223a8d5c42ad4ba',
-       i686: 'c744ec234f8362ce658f5acccfd978287e73f7a41d64ca2a0593de096b6ec41d',
-     x86_64: 'c4d10ac43c01b0e857536b939775597ffe0adf533925c1a2146695213f10f7c9',
+  binary_sha256({
+    aarch64: '1fd4c4cbaf1d23c91908689adf29874d2a9de83bece2428c92603fa39cdef70e',
+     armv7l: '1fd4c4cbaf1d23c91908689adf29874d2a9de83bece2428c92603fa39cdef70e',
+     x86_64: '76c42361b5df7706ade70aa94f21afe89d25dd0710931b39023d4b1493dbd30e'
   })
 
-  depends_on 'libx11'
   depends_on 'libxext'
   depends_on 'libxrender'
-  depends_on 'llvm' => :build
+  depends_on 'xorg_macros' => :build
+  depends_on 'xorg_proto' => :build
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
 
   def self.build
-    ENV['CFLAGS'] = "-fuse-ld=lld"
-    ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system "./configure #{CREW_OPTIONS}"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
 end

@@ -1,35 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Stunnel < Package
+class Stunnel < Autotools
   description "Stunnel is a proxy designed to add TLS encryption functionality to existing clients and servers without any changes in the programs' code."
   homepage 'https://www.stunnel.org/index.html'
-  version '5.42'
+  version '5.73'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://www.stunnel.org/downloads/stunnel-5.42.tar.gz' # 404 Not Found
-  source_sha256 '1b6a7aea5ca223990bc8bd621fb0846baa4278e1b3e00ff6eee279cb8e540fab'
+  source_url "https://www.stunnel.org/downloads/stunnel-#{version}.tar.gz"
+  source_sha256 'bc917c3bcd943a4d632360c067977a31e85e385f5f4845f69749bce88183cb38'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stunnel/5.42_armv7l/stunnel-5.42-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stunnel/5.42_armv7l/stunnel-5.42-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stunnel/5.42_i686/stunnel-5.42-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stunnel/5.42_x86_64/stunnel-5.42-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '6d16c4bec0d34b70aeea87c50523082cd237c1f453804adc094add3c0811e7d8',
-     armv7l: '6d16c4bec0d34b70aeea87c50523082cd237c1f453804adc094add3c0811e7d8',
-       i686: 'cf9d32c8abf695a786c7b0dfe5573b1dc5355e2f45b3eb7d1979012532f7c5c9',
-     x86_64: '35876775273e30f179df5966c0444c3a7290d22d668a81c83959ba6c8a644a2f',
+  binary_sha256({
+    aarch64: '17ef99aef231bb24c69c9a4d82b1ea1b09477ba989aa6144ba1250e3bf9f07c3',
+     armv7l: '17ef99aef231bb24c69c9a4d82b1ea1b09477ba989aa6144ba1250e3bf9f07c3',
+       i686: 'fafe61e47d8d257e2d646dd9f5c2891280b0e7ebb369e2da55f1a05ae3901f3f',
+     x86_64: 'b0c5f60c70d1463a4d19bb5642b999283ac6e83936ddfbc63f1dc15a59702942'
   })
 
   depends_on 'openssl'
-
-  def self.build
-    system "./configure", "--libdir=#{CREW_LIB_PREFIX}"
-    system "make"
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
 end

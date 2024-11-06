@@ -1,36 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Swig < Package
+class Swig < Autotools
   description 'Simplified Wrapper and Interface Generator'
-  homepage 'http://www.swig.org'
-  version '4.0.1'
+  homepage 'https://www.swig.org/'
+  version '4.3.0'
   license 'GPL-3, BSD and BSD-2'
   compatibility 'all'
-  source_url 'http://prdownloads.sourceforge.net/swig/swig-4.0.1.tar.gz'
-  source_sha256 '7a00b4d0d53ad97a14316135e2d702091cd5f193bb58bcfcd8bc59d41e7887a9'
+  source_url 'https://github.com/swig/swig'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.1_armv7l/swig-4.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.1_armv7l/swig-4.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.1_i686/swig-4.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.1_x86_64/swig-4.0.1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'bfcc6357fed1a729192a5f94fcb0a42ce9a391c71e973a5c71663bcec5758409',
-     armv7l: 'bfcc6357fed1a729192a5f94fcb0a42ce9a391c71e973a5c71663bcec5758409',
-       i686: 'd6f872741b8f4c6fb572db6d4e62a4259c43d7de5c3b879db20db4f9799a5d19',
-     x86_64: '55ba83675fb3106cb101f487d5d758c845d8cea922abaec52307f5f261fea1b5',
+  binary_sha256({
+    aarch64: 'c48b84a284a041ca31c74bb13ee9b74d5637bbd65fef3c152a87e7f63a81da70',
+     armv7l: 'c48b84a284a041ca31c74bb13ee9b74d5637bbd65fef3c152a87e7f63a81da70',
+       i686: '4403396541949949bed0e1ad5222897a733eb8bd8cb7e5921ac915c39ce3afed',
+     x86_64: 'b703ed720a781b0d325625b64b7d65ab9617715ff213e0452586a5c0bd27bd31'
   })
 
-  depends_on 'pcre'
-  depends_on 'zlibpkg'
-
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
+  depends_on 'boost' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'pcre' => :build
+  depends_on 'pcre2' # R
+  depends_on 'zlib' # R
 end

@@ -1,14 +1,16 @@
 require 'package'
 
 class Ld_default < Package
-  description 'Select the default ld executable and check for libraries in #{CREW_LIB_PREFIX} first'
-  homepage 'https://github.com/skycocker/chromebrew/wiki/FAQ'
-  version '1.2'
+  description "Select the default ld executable and check for libraries in #{CREW_LIB_PREFIX} first"
+  homepage 'https://github.com/chromebrew/chromebrew/wiki/FAQ'
+  version '1.3'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'llvm'
+  depends_on 'llvm19_dev'
+
+  no_binaries_needed
 
   def self.build
     system "cat << 'EOF' > ld_default
@@ -90,11 +92,11 @@ EOF"
 
   def self.postinstall
     puts
-    puts "To change the default linker, execute `ld_default`.".lightblue
+    puts 'To change the default linker, execute `ld_default`.'.lightblue
     puts
-    puts "To change the default linker without any user interaction,".lightblue
+    puts 'To change the default linker without any user interaction,'.lightblue
     puts "execute `ld_default <letter>` where '<letter>' is b, g, or l".lightblue
-    puts "for BFD, Gold, or LLD, respectively.".lightblue
+    puts 'for BFD, Gold, or LLD, respectively.'.lightblue
     puts
   end
 end

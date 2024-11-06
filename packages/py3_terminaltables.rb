@@ -1,36 +1,25 @@
-require 'package'
+# NOTE: Archived upstream
 
-class Py3_terminaltables < Package
+require 'buildsystems/pip'
+
+class Py3_terminaltables < Pip
   description 'Terminaltables generates simple tables in terminals from a nested list of strings.'
   homepage 'https://robpol86.github.io/terminaltables/'
-  @_ver = '3.1.0'
-  version @_ver
+  version "3.1.10-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/Robpol86/terminaltables.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_terminaltables/3.1.0_armv7l/py3_terminaltables-3.1.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_terminaltables/3.1.0_armv7l/py3_terminaltables-3.1.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_terminaltables/3.1.0_i686/py3_terminaltables-3.1.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_terminaltables/3.1.0_x86_64/py3_terminaltables-3.1.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '28a47e04b0adeaa207368d2ff7783778a3cac4901422908cbafce54f2b608921',
-     armv7l: '28a47e04b0adeaa207368d2ff7783778a3cac4901422908cbafce54f2b608921',
-       i686: '69c81fceac6edb3f2c2bbb94dd95ddc6f666f46ed852fa36f0cd89703ce8a14a',
-     x86_64: 'e47536692ca04ff487ff0619ba71ed592e5dcf2cc0583b9a0b523f9da5487a88'
+    aarch64: 'a6667a328edc5aa49a63baaecf87748e6bda2320c6a81201fa8ebd9483588db5',
+     armv7l: 'a6667a328edc5aa49a63baaecf87748e6bda2320c6a81201fa8ebd9483588db5',
+       i686: '5739b3205848f1934a86cf891dc89d08d140819743267426b74ab2b4ee8dc5b6',
+     x86_64: '829808aba035b37708a0f6819d95a6b594dee5df28c76d603253381eb23aee17'
   })
 
-  depends_on 'py3_dateutil'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'py3_python_dateutil'
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

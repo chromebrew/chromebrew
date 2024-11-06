@@ -2,20 +2,14 @@ require 'package'
 
 class Libx265 < Package
   description 'x265 is a H.265 / HEVC video encoder application library.'
-  homepage 'http://x265.org/'
-  @_ver = '3.4'
-  version @_ver
+  homepage 'https://www.x265.org/'
+  version '3.4'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://github.com/videolan/x265/archive/#{@_ver}.tar.gz"
+  source_url "https://github.com/videolan/x265/archive/#{version}.tar.gz"
   source_sha256 '544d147bf146f8994a7bf8521ed878c93067ea1c7c6e93ab602389be3117eaaf'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx265/3.4_armv7l/libx265-3.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx265/3.4_armv7l/libx265-3.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx265/3.4_i686/libx265-3.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx265/3.4_x86_64/libx265-3.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'cf7548c97fb5774a3fea30a580ba1719f7b4efdfb4e5f6db91fac20d651d8442',
      armv7l: 'cf7548c97fb5774a3fea30a580ba1719f7b4efdfb4e5f6db91fac20d651d8442',

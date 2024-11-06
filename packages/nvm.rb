@@ -3,36 +3,44 @@ require 'package'
 class Nvm < Package
   description 'Node Version Manager - Simple bash script to manage multiple active node.js versions.'
   homepage 'https://github.com/nvm-sh/nvm'
-  version '0.35.3'
+  version '0.39.3'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/nvm-sh/nvm/archive/v0.35.3.tar.gz'
-  source_sha256 'a88c8c1e920ca24c09a2f9f0733afa9d6ccf03fe068e9ffba488416d9710d4fb'
+  source_url 'https://github.com/nvm-sh/nvm.git'
+  git_hashtag "v#{version}"
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nvm/0.35.3_armv7l/nvm-0.35.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nvm/0.35.3_armv7l/nvm-0.35.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nvm/0.35.3_i686/nvm-0.35.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nvm/0.35.3_x86_64/nvm-0.35.3-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: 'eba4a5fdb550729b0d406cf5dd5791f0c4bc166d8cfc195abadc60a8323b6445',
-     armv7l: 'eba4a5fdb550729b0d406cf5dd5791f0c4bc166d8cfc195abadc60a8323b6445',
-       i686: '89f5bed7552b0f80689c3dd2dd46c1357b4b77a96502216d794098e6a3d607c7',
-     x86_64: '864317f63b74224ed74bc131c5596e11524abb277e717494111c98d75fd86de2'
-  })
+  no_compile_needed
+  print_source_bashrc
 
   def self.install
-    system "sed -i 's,\$HOME/.nvm,#{CREW_DEST_PREFIX}/share/nvm,g' install.sh"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/nvm"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
+    system "sed -i 's,$HOME/.nvm,#{CREW_DEST_PREFIX}/share/nvm,g' install.sh"
+    system "sed -i 's,$(nvm_detect_profile),#{CREW_DEST_PREFIX}/etc/bash.d/10-nvm.sh,' install.sh"
     system "NVM_DIR=#{CREW_DEST_PREFIX}/share/nvm && bash install.sh"
-    system "rm -rf #{CREW_DEST_PREFIX}/share/nvm/.git*"
-    system "rm -rf #{CREW_DEST_PREFIX}/share/nvm/test"
+    system "sed -i 's,#{CREW_DEST_PREFIX},#{CREW_PREFIX},' #{CREW_DEST_PREFIX}/etc/bash.d/10-nvm.sh"
+    FileUtils.rm_rf Dir["#{CREW_DEST_PREFIX}/share/nvm/.git*"]
+    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/share/nvm/test"
   end
 
-  def self.remove
-    puts
-    puts "Don't forget to run:"
-    puts "rm -rf #{CREW_PREFIX}/share/nvm".lightblue
-    puts
+  def self.postinstall
+    if Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.28')
+      puts "\nNode.js 18.x and above requires GLIBC 2.28.".orange
+      puts "ChromeOS is currently running GLIBC #{LIBC_VERSION}.".orange
+    end
+  end
+
+  def self.postremove
+    config_dir = "#{CREW_PREFIX}/share/nvm"
+    if Dir.exist? config_dir
+      print "Would you like to remove the #{config_dir} directory? [y/N] "
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
+        FileUtils.rm_rf config_dir
+        puts "#{config_dir} removed.".lightblue
+      else
+        puts "#{config_dir} saved.".lightgreen
+      end
+    end
   end
 end

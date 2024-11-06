@@ -1,45 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Alsa_utils < Package
+class Alsa_utils < Autotools
   description 'The Advanced Linux Sound Architecture (ALSA) - utilities'
   homepage 'https://github.com/alsa-project/alsa-utils'
-  version '1.2.4'
+  version '1.2.12'
   license 'GPL-2'
-  compatibility 'all'
-  source_url "https://github.com/alsa-project/alsa-utils/archive/v#{version}.tar.gz"
-  source_sha256 '4fdd1745d6ad339be596ba66c12c0ee513aab19050bd48439f91edafbd8688b0'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/alsa-project/alsa-utils.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_utils/1.2.4_armv7l/alsa_utils-1.2.4-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_utils/1.2.4_armv7l/alsa_utils-1.2.4-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_utils/1.2.4_i686/alsa_utils-1.2.4-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_utils/1.2.4_x86_64/alsa_utils-1.2.4-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-     aarch64: '40412aaf27fd4e38efe2613a8ee92d6a6f91dcf33b58e3c39a4bd65f1c12cf34',
-      armv7l: '40412aaf27fd4e38efe2613a8ee92d6a6f91dcf33b58e3c39a4bd65f1c12cf34',
-        i686: 'c1e9ac9a17508f1d5f314d556ceadaf29449de67cd139fc64bba42f9666a921f',
-      x86_64: '081f05bf5548ea9e01743e79c9d379d128b2db43cf3007c8c945bb8c1b346d0c',
+  binary_sha256({
+    aarch64: 'adf3a2732a82eda1e9d4c62e5c71a6d15bf430bc0db13caf0b23213793c3355f',
+     armv7l: 'adf3a2732a82eda1e9d4c62e5c71a6d15bf430bc0db13caf0b23213793c3355f',
+     x86_64: '319eafbd0afed0942f9da2a1e28d6e4d8d2d4fe0ba2fd9d797ad9d274d8ac6b7'
   })
 
-
-  depends_on 'alsa_lib'
-  depends_on 'cras'
+  depends_on 'alsa_lib' # R
+  depends_on 'cras' # L
+  depends_on 'glibc' # R
+  depends_on 'libsamplerate' # R
+  depends_on 'ncurses' # R
 
   def self.patch
-    system "sed -i 's/export CFLAGS=/export CFLAGS+=/g' gitcompile"
-  end
-
-  def self.build
-    system "CFLAGS='-fuse-ld=lld ' ./gitcompile #{CREW_OPTIONS}"
-  end
-
-  def self.check
-    # This takes several hours to run!
-    #system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    downloader 'https://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess', 'SKIP'
+    downloader 'https://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.sub', 'SKIP'
+    system 'autoreconf -fiv'
   end
 end

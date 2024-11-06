@@ -2,28 +2,26 @@ require 'package'
 
 class Potrace < Package
   description 'Potrace(TM) is a tool for tracing a bitmap, which means, transforming a bitmap into a smooth, scalable image.'
-  homepage 'http://potrace.sourceforge.net/'
-  version '1.15'
+  homepage 'https://potrace.sourceforge.net/'
+  version '1.16'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://potrace.sourceforge.net/download/1.15/potrace-1.15.tar.gz'
-  source_sha256 'a9b33904ace328340c850a01458199e0064e03ccaaa731bc869a842b1b8d529d'
+  source_url 'https://potrace.sourceforge.net/download/1.16/potrace-1.16.tar.gz'
+  source_sha256 'be8248a17dedd6ccbaab2fcc45835bb0502d062e40fbded3bc56028ce5eb7acc'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/potrace/1.15_armv7l/potrace-1.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/potrace/1.15_armv7l/potrace-1.15-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/potrace/1.15_i686/potrace-1.15-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/potrace/1.15_x86_64/potrace-1.15-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: '9b3c98c199a622153c6fc35ee284edab1dc872b6ab950983f26adee74f73dcb8',
+     armv7l: '9b3c98c199a622153c6fc35ee284edab1dc872b6ab950983f26adee74f73dcb8',
+       i686: 'd4b063df7f8db9488137a0e2c395bb10f249134c99e20fed86b094973825f0a4',
+     x86_64: 'f740ee5ec834c0c43c58f4eee3015c286440368fd52e96c0cb6cafb8aeb5a77a'
   })
-  binary_sha256 ({
-    aarch64: '8429fae5e3917cb36772db6e14a5245cbf2c1fab7c4798319aace9f037285aed',
-     armv7l: '8429fae5e3917cb36772db6e14a5245cbf2c1fab7c4798319aace9f037285aed',
-       i686: '24bdf26db8e31189bd7440707bc5372952e6e3d37e3a1cac7220e7c75bde5eaa',
-     x86_64: '3afcffc9b2d9db5e880ce55119de7e67295d599ef8fc7837a446f18c67f5ca31',
-  })
+
+  depends_on 'glibc' # R
+  depends_on 'zlib' # R
 
   def self.build
-    system './configure'
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --with-libpotrace"
     system 'make'
   end
 

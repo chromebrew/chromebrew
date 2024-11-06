@@ -1,59 +1,40 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Bind < Package
+class Bind < Autotools
   description 'BIND is open source software that enables you to publish your Domain Name System (DNS) information on the Internet, and to resolve DNS queries for your users.'
-  homepage 'https://www.isc.org/downloads/bind/'
-  @_ver = '9.17.11'
-  version @_ver
-  license 'Apache-2.0, BSD, BSD-2, GPL-2, HPND, ISC and MPL-2.0'
+  homepage 'https://www.isc.org/bind/'
+  version '9.21.0'
+  license 'MPL-2.0'
   compatibility 'all'
-  source_url 'file:///dev/null'
-  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  source_url 'https://gitlab.isc.org/isc-projects/bind9.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.17.11_armv7l/bind-9.17.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.17.11_armv7l/bind-9.17.11-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.17.11_i686/bind-9.17.11-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.17.11_x86_64/bind-9.17.11-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '732a27d1c4061ac070d159583b1b76068980799a3021999d39e11a6da79d6e84',
-     armv7l: '732a27d1c4061ac070d159583b1b76068980799a3021999d39e11a6da79d6e84',
-       i686: '7541e71a39abf95c510d78522e033637b8918fc1bbcb0880149a60d0b6b6cd39',
-     x86_64: '4f075b386135f94a2508aa13e005033454662c608f23923b9e2f58bad7329377'
+    aarch64: 'c884e14dd54d6371f913ea29b2e71dd6dfc781484e758665b533218fb63c2dc7',
+     armv7l: 'c884e14dd54d6371f913ea29b2e71dd6dfc781484e758665b533218fb63c2dc7',
+       i686: '7650f2e7c4cc2aa1e4b28150e35c89b40c00351440d40495d8df990247540af7',
+     x86_64: '4cae0f0b7c17ea994e1d1be8c97ba4a61e78104aa2a934a4070ece76c5c0e64e'
   })
 
-  depends_on 'jsonc'
-  depends_on 'libcap'
-  depends_on 'libuv'
+  depends_on 'e2fsprogs' # R
+  depends_on 'glibc' # R
+  depends_on 'jemalloc' # R
+  depends_on 'json_c' # R
+  depends_on 'krb5' # R
+  depends_on 'libcap' # R
+  depends_on 'libedit' # R
+  depends_on 'libidn2' # R
+  depends_on 'libnghttp2' # R
+  depends_on 'libunistring' # R
+  depends_on 'liburcu' # R
+  depends_on 'libuv' # R
+  depends_on 'libxml2' # R
+  depends_on 'ncurses' # R
+  depends_on 'openssl' # R
+  depends_on 'py3_ply' => :build
+  depends_on 'sphinx' => :build
+  depends_on 'zlib' # R
 
-  def self.build
-    system 'git config --global advice.detachedHead false'
-    @_ver_ = @_ver.gsub(/[.]/, '_')
-    system "git clone --depth=1 -b v#{@_ver_} https://gitlab.isc.org/isc-projects/bind9.git"
-    Dir.chdir 'bind9' do
-      system 'pip3 install ply==3.11'
-      system 'autoreconf -fi'
-      system 'filefix'
-      system "env CFLAGS='-DDIG_SIGCHASE -flto=auto' \
-        CXXFLAGS='-pipe -flto=auto' \
-        LDFLAGS='-flto=auto' \
-        ./configure \
-        #{CREW_OPTIONS} \
-         --enable-fixed-rrset \
-         --enable-full-report \
-         --with-openssl \
-         --with-libidn2 \
-         --disable-maintainer-mode"
-      system 'make'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'bind9' do
-      system "make DESTDIR=#{CREW_DEST_DIR} install"
-      system 'pip3 uninstall -y ply'
-      system "pip3 install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I ply==3.11"
-    end
-  end
+  configure_options '--enable-fixed-rrset --enable-full-report --with-libidn2'
 end

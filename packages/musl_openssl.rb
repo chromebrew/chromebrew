@@ -3,99 +3,71 @@ require 'package'
 class Musl_openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  @_ver = '3.0.0'
-  version @_ver
+  version '3.0.10'
   license 'openssl'
   compatibility 'all'
-  source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
-  source_sha256 '59eedfcb46c25214c9bd37ed6078297b4df01d012267fe9e9eee31f61bc70536'
+  source_url "https://www.openssl.org/source/openssl-#{version}.tar.gz"
+  source_sha256 '1761d4f5b13a1028b9b6f3d4b8e17feb0cedc9370f6afe61d7193d2cdce83323'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.0_armv7l/musl_openssl-3.0.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.0_armv7l/musl_openssl-3.0.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.0_i686/musl_openssl-3.0.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.0_x86_64/musl_openssl-3.0.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'a9b6e78fe11c73ec19c4698786a7d01d39d8bafbd35ff82243106cb2a40a3889',
-     armv7l: 'a9b6e78fe11c73ec19c4698786a7d01d39d8bafbd35ff82243106cb2a40a3889',
-       i686: 'dc3c37e2d1badaf4b192339d144a0e3a83c47182a5531e80a9fa91255694733e',
-     x86_64: 'a17f737f02bb9c15d288832a066795b532530d68623bd6d3568946a99894258e'
+    aarch64: '4585df04bfd1347e87bf3f8cb7da9ab791817e054ea50369ccb2fc1bdab503ae',
+     armv7l: '4585df04bfd1347e87bf3f8cb7da9ab791817e054ea50369ccb2fc1bdab503ae',
+       i686: '29a5b6de94a8c1f16492b36f67695ce08f1569b588ec0e3770d621b300d0db50',
+     x86_64: '5ff522b2a1a1b046bbdc30d2e11803b648e25716d68de6e126d3a86c4604f206'
   })
 
   depends_on 'musl_native_toolchain' => :build
+  depends_on 'musl_libunistring' => :build
+  depends_on 'musl_libidn2' => :build
   depends_on 'musl_zlib' => :build
+  depends_on 'musl_ncurses' => :build
 
-  @abi = ''
-  @arch_ssp_cflags = ''
-  @arch_c_flags = ''
-  @arch_cxx_flags = ''
-  case ARCH
-  when 'aarch64', 'armv7l'
-    @abi = 'eabihf'
-    @openssl_configure_target = 'linux-generic32'
-  when 'i686'
-    @arch_ssp_cflags = '-fno-stack-protector'
-    @openssl_configure_target = 'linux-x86'
-  when 'x86_64'
-    @openssl_configure_target = 'linux-x86_64'
-  end
-
-  @cflags = "-B#{CREW_PREFIX}/musl/include -flto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_c_flags} #{@arch_ssp_cflags} -fcommon"
-  @cxxflags = "-B#{CREW_PREFIX}/musl/include -flto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_cxx_flags} #{@arch_ssp_cflags} -fcommon"
-  @ldflags = "-L#{CREW_PREFIX}/musl/lib -flto -static"
-  @cmake_ldflags = '-flto'
-  @musldep_cmake_options = "PATH=#{CREW_PREFIX}/musl/bin:#{CREW_PREFIX}/musl/#{ARCH}-linux-musl#{@abi}/bin:#{ENV['PATH']} \
-        CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
-        CXX='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++' \
-        LD=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-ld.gold \
-        AR=#{CREW_PREFIX}/musl/bin/ar \
-        CFLAGS='#{@cflags}' \
-        CXXFLAGS='#{@cxxflags}' \
-        CPPFLAGS='-I#{CREW_PREFIX}/musl/include -fcommon' \
-        LDFLAGS='#{@cmake_ldflags}' \
-        cmake \
-        -DCMAKE_INSTALL_PREFIX='#{CREW_PREFIX}/musl' \
-        -DCMAKE_INSTALL_LIBDIR='#{CREW_PREFIX}/musl/lib' \
-        -DCMAKE_LIBRARY_PATH='#{CREW_PREFIX}/musl/lib' \
-        -DCMAKE_C_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc \
-        -DCMAKE_CXX_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++ \
-        -DCMAKE_INCLUDE_DIRECTORIES_BEFORE=ON \
-        -DINCLUDE_DIRECTORIES=#{CREW_PREFIX}/musl/include \
-        -DCMAKE_C_FLAGS='#{@cflags}' \
-        -DCMAKE_CXX_FLAGS='#{@cxxflags}' \
-        -DCMAKE_EXE_LINKER_FLAGS='#{@cmake_ldflags}' \
-        -DCMAKE_SHARED_LINKER_FLAGS='#{@cmake_ldflags}' \
-        -DCMAKE_STATIC_LINKER_FLAGS='#{@cmake_ldflags}' \
-        -DCMAKE_MODULE_LINKER_FLAGS='#{@cmake_ldflags}' \
-        -DPROPERTY_INTERPROCEDURAL_OPTIMIZATION=TRUE \
-        -DCMAKE_BUILD_TYPE=Release"
-
-  @musldep_env_options = "PATH=#{CREW_PREFIX}/musl/bin:#{ENV['PATH']} \
-      CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
-      CXX='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++' \
-      LD=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-ld.gold \
-      PKG_CONFIG_LIBDIR=#{CREW_PREFIX}/musl/lib/pkgconfig \
-      CFLAGS='#{@cflags}' \
-      CXXFLAGS='#{@cxxflags}' \
-      CPPFLAGS='-I#{CREW_PREFIX}/musl/include -fcommon' \
-      LDFLAGS='#{@ldflags}'"
+  is_musl
+  is_static
+  print_source_bashrc
 
   def self.build
-    system "#{@musldep_env_options} ./Configure \
-        --prefix=#{CREW_PREFIX}/musl \
-        --libdir=#{CREW_PREFIX}/musl/lib \
-        no-tests zlib no-shared \
+    # rand-seed is needed to keep git from breaking with an error about
+    # insufficient randomness being available.
+    case ARCH
+    when 'aarch64', 'armv7l'
+      @openssl_configure_target = 'linux-generic32'
+      # rdcpu breaks armv7l builds with OpenSSL 3.0.3
+      @rand_seed = 'os,getrandom'
+    when 'i686'
+      @openssl_configure_target = 'linux-elf'
+      @rand_seed = 'os,getrandom,rdcpu'
+    when 'x86_64'
+      @openssl_configure_target = 'linux-x86_64'
+      @rand_seed = 'os,getrandom,rdcpu'
+    end
+    # Use debian build options to work around problem building on armv7l.
+    # Disable cast because it breaks i686 builds.
+    system "#{MUSL_ENV_OPTIONS} ./Configure \
+        --prefix=#{CREW_MUSL_PREFIX} \
+        --openssldir=#{CREW_MUSL_PREFIX} \
+        --libdir=#{CREW_MUSL_PREFIX}/lib \
+        enable-cms \
+        no-capieng \
+        enable-rfc3779 \
+        no-cast \
+        no-idea \
+        no-mdc2 \
+        no-rc5 \
+        no-ssl3 \
+        no-ssl3-method \
+        no-tests \
+        no-zlib \
+        --with-rand-seed=#{@rand_seed} \
+        -static --static \
+        -Wl,-rpath=#{CREW_MUSL_PREFIX}/lib -Wl,--enable-new-dtags \
+        -Wl,-Bsymbolic \
         #{@openssl_configure_target}"
-    system 'make'
+    system "#{MUSL_ENV_OPTIONS} make"
   end
 
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install_sw'
   end
 end

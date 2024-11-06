@@ -1,36 +1,22 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Autoconf < Package
+class Autoconf < Autotools
   description 'Autoconf is an extensible package of M4 macros that produce shell scripts to automatically configure software source code packages.'
   homepage 'http://www.gnu.org/software/autoconf/'
-  version '2.69'
+  version '2.72'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'ftp://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz'
-  source_sha256 '64ebcec9f8ac5b2487125a86a7760d2591ac9e1d3dbd59489633f9de62a57684'
+  source_url 'https://ftpmirror.gnu.org/autoconf/autoconf-2.72.tar.xz'
+  source_sha256 'ba885c1319578d6c94d46e9b0dceb4014caafe2490e437a0dbca3f270a223f5a'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.69_armv7l/autoconf-2.69-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.69_armv7l/autoconf-2.69-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.69_i686/autoconf-2.69-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.69_x86_64/autoconf-2.69-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '18bb14e7e51ec1a76627f99976a28a14a82c29994370b261433550d5c8c461cc',
-     armv7l: '18bb14e7e51ec1a76627f99976a28a14a82c29994370b261433550d5c8c461cc',
-       i686: '99e6837ba27895c1ca73826bcbc05ec6363351c74caea3a43dc26c05c55ffffa',
-     x86_64: '6e9469eefc244fbe7754a3ae88e74fa8892f8676084a6c9ea2ec5b4d49a36c6b',
+  binary_sha256({
+    aarch64: '1afb15ee3b59839b1db68a3a498b226b98b55bbb4080398860c832a5ec9e1afd',
+     armv7l: '1afb15ee3b59839b1db68a3a498b226b98b55bbb4080398860c832a5ec9e1afd',
+       i686: 'feb717b740e3277a2d75430a128690cdd4a722ebc80c9d94ca9b2f6019633d1d',
+     x86_64: 'cc237426fdda757d28d9413e669e7d4003f8062b4e206fb39f5456d86b1e06e1'
   })
 
   depends_on 'perl'
   depends_on 'm4'
-
-  def self.build
-    system "./configure"
-    system "make"
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
 end

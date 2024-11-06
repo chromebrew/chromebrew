@@ -1,42 +1,37 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libpeas < Package
+class Libpeas < Meson
   description 'A GObject plugins library'
-  homepage 'https://wiki.gnome.org/Projects/Libpeas'
-  version '1.28.0'
+  homepage 'https://gitlab.gnome.org/GNOME/libpeas'
+  version '1.36.0'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url 'https://github.com/GNOME/libpeas/archive/libpeas-1.28.0.tar.gz'
-  source_sha256 '93d2826330a5e943dcfe8d059c5885a808494ee44c0b04f72f2bb2283b4d515b'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/libpeas.git'
+  git_hashtag "libpeas-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.28.0_armv7l/libpeas-1.28.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.28.0_armv7l/libpeas-1.28.0-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.28.0_i686/libpeas-1.28.0-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.28.0_x86_64/libpeas-1.28.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-     aarch64: '1e304a55ad539257c0ff2e1caa48671ee0c8749eb438d344d27025bc8b48c435',
-      armv7l: '1e304a55ad539257c0ff2e1caa48671ee0c8749eb438d344d27025bc8b48c435',
-        i686: '2fb94c73ed674c002632cc4dfd4d32ade44ed5798e13c2cb01a8ff63966169dd',
-      x86_64: '1333e5f9ba1e4b516a81dfbd41cc4bf0502d4d735b250a61ef95c7c0f60073c0',
+  binary_sha256({
+    aarch64: 'a2a3c23c38fbf26fee2163da96a67377bd8b1cd4c93d3ece0f29a8d85de9f75e',
+     armv7l: 'a2a3c23c38fbf26fee2163da96a67377bd8b1cd4c93d3ece0f29a8d85de9f75e',
+     x86_64: 'ee094d10ed5ce027d6ae6858b7a19978463b0c37386ac2c07b6b019f394272ea'
   })
 
-  depends_on 'gtk3'
-  depends_on 'gobject_introspection'
-  depends_on 'gtk_doc' => :build
-  depends_on 'pygobject' => :build
+  depends_on 'gcc_lib' => :build
+  depends_on 'gjs' => :build
   depends_on 'glade' => :build
-  depends_on 'gobject_introspection' => :build
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gobject_introspection' # R
+  depends_on 'gtk3' # R
+  depends_on 'gtk_doc' => :build
+  depends_on 'luajit' => :build
+  depends_on 'luajit_lgi' => :build
+  depends_on 'luajit' # R
+  depends_on 'py3_gi_docgen' => :build
+  depends_on 'py3_pygobject' => :build
+  depends_on 'python3' => :build
+  depends_on 'python3' # R
   depends_on 'vala' => :build
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} builddir"
-    system "meson configure builddir"
-    system "ninja -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

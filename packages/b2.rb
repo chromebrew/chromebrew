@@ -3,23 +3,18 @@ require 'package'
 class B2 < Package
   description 'B2 makes it easy to build C++ projects, everywhere.'
   homepage 'https://www.bfgroup.xyz/b2/'
-  version '4.4.1'
+  version '5.2.1'
   license 'BSL 1.0'
   compatibility 'all'
-  source_url 'https://github.com/boostorg/build/archive/refs/tags/4.4.1.tar.gz'
-  source_sha256 '31a243b1eb26638500977a8386e56d44f86c18db70cf0a5dcdd2d7391afc1a61'
+  source_url 'https://github.com/bfgroup/b2.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/b2/4.4.1_armv7l/b2-4.4.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/b2/4.4.1_armv7l/b2-4.4.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/b2/4.4.1_i686/b2-4.4.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/b2/4.4.1_x86_64/b2-4.4.1-chromeos-x86_64.tpxz',
-  })
-  binary_sha256 ({
-    aarch64: 'e569052575f2ea9cca33f7fc6b1bfd95a8fb3a6366da44142f51c99a71b377ed',
-     armv7l: 'e569052575f2ea9cca33f7fc6b1bfd95a8fb3a6366da44142f51c99a71b377ed',
-       i686: '108b05f8acd6c4f5b0b9748fe274a7d439dfd2bf52ea1a37bee8eca936a542c5',
-     x86_64: '545ab9a0d26e0abe5296a7913ea7d0ded9caea6592f1cf7cd623d290e7f96343',
+  binary_sha256({
+    aarch64: 'fc6346c901e7433af6a5faf05b7b7d968af58764267858473409eeed1f5dad5e',
+     armv7l: 'fc6346c901e7433af6a5faf05b7b7d968af58764267858473409eeed1f5dad5e',
+       i686: '85a397c2afe175bd53dd4bf5e388935854f24cc6b27edbd42ff343df6dc23c8c',
+     x86_64: 'ade42866d817c30e5d19e55ede2e9186d145b0e5735f5c8e097031b6811acfbb'
   })
 
   def self.build

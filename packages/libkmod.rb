@@ -3,30 +3,33 @@ require 'package'
 class Libkmod < Package
   description 'Linux kernel module handling library'
   homepage 'https://kernel.org'
-  @_ver = '28'
-  version @_ver
+  version '29'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-#{@_ver}.tar.xz"
-  source_sha256 '3969fc0f13daa98084256337081c442f8749310089e48aa695c9b4dfe1b3a26c'
+  source_url 'https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libkmod/28_armv7l/libkmod-28-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libkmod/28_armv7l/libkmod-28-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libkmod/28_i686/libkmod-28-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libkmod/28_x86_64/libkmod-28-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-     aarch64: '57c5726cd378bf3e1458cdfebead52b9279557af8229550d5f91f0a3e04d4f10',
-      armv7l: '57c5726cd378bf3e1458cdfebead52b9279557af8229550d5f91f0a3e04d4f10',
-        i686: '95c805d62289d8751682d4bb1c8046deeae68958e0f06f6863e30eb74e941864',
-      x86_64: '258578c242a793bfda78e9dc98a9e029a8788e9971a809d0c6e42c2abe10b317',
+  binary_sha256({
+    aarch64: '40fe9af2580dbc280c5c8b44f9dccbd4869cdb439eeee510bc26468f2652fa32',
+     armv7l: '40fe9af2580dbc280c5c8b44f9dccbd4869cdb439eeee510bc26468f2652fa32',
+       i686: 'e3cbd134f96e7e25cba0eb1e721ecaa2372c218ff1deb5d5da9303691f6fc42b',
+     x86_64: 'a69c727d00f82f0e50dc12f2030e613a50f21095d070c80d59437f9eab02e372'
   })
 
+  depends_on 'py3_cython'
   depends_on 'xzutils'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --enable-python --disable-maintainer-mode --with-openssl --with-zlib --with-xz"
+    system './autogen.sh'
+    system 'filefix'
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
+    --disable-maintainer-mode \
+    --enable-python \
+    --with-openssl \
+    --with-xz \
+    --with-zlib \
+    --with-zstd"
     system 'make'
   end
 

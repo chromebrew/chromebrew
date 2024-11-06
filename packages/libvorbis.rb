@@ -3,33 +3,32 @@ require 'package'
 class Libvorbis < Package
   description 'Ogg Vorbis is a fully open, non-proprietary, patent-and-royalty-free, general-purpose compressed audio format.'
   homepage 'https://xiph.org/vorbis/'
-  version '1.3.5'
-  license 'BSD'
+  version '1.3.7'
   compatibility 'all'
-  source_url 'https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.5.tar.xz'
-  source_sha256 '54f94a9527ff0a88477be0a71c0bab09a4c3febe0ed878b24824906cd4b0e1d1'
+  license 'BSD'
+  source_url 'https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.xz'
+  source_sha256 'b33cc4934322bcbf6efcbacf49e3ca01aadbea4114ec9589d1b1e9d20f72954b'
+  binary_compression 'tpxz'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvorbis/1.3.5_armv7l/libvorbis-1.3.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvorbis/1.3.5_armv7l/libvorbis-1.3.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvorbis/1.3.5_i686/libvorbis-1.3.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvorbis/1.3.5_x86_64/libvorbis-1.3.5-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '8a3d930a7aa9324121b84b45f81454299004ee37b7326c35afc20dbf9ff19619',
-     armv7l: '8a3d930a7aa9324121b84b45f81454299004ee37b7326c35afc20dbf9ff19619',
-       i686: '8989a74129fb2605eda7d5a011d3edaed81d725031b8bc466017bafd5d21caf6',
-     x86_64: 'ec8103fc056bc0598a1715d43d18d5456d941dfb39f20d909247c745ae2c5f88',
+  binary_sha256({
+    aarch64: 'd7887b0f9a491d6b9b1e6d0998988c71a398dd0734a8cdc3a9a8973acaa1e5e0',
+     armv7l: 'd7887b0f9a491d6b9b1e6d0998988c71a398dd0734a8cdc3a9a8973acaa1e5e0',
+       i686: '71033a9a6d323bcf3b81376b151bce904ad9e3d16369d4c2e3a5dcda22074b76',
+     x86_64: '155962844a425ab407ce4c38e2a0ee8960059699c4559e3fcedf449b6e5592f0'
   })
 
   depends_on 'libogg'
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.check
+    # system 'make', 'check'
   end
 end

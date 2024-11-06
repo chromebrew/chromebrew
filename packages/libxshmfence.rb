@@ -3,33 +3,30 @@ require 'package'
 class Libxshmfence < Package
   description 'A library that exposes a event API on top of Linux futexes'
   homepage 'http://t2sde.org/packages/libxshmfence.html'
-  version '1.2'
+  version '1.3.1'
   license 'custom'
   compatibility 'all'
-  source_url 'https://xorg.freedesktop.org/releases/individual/lib/libxshmfence-1.2.tar.bz2'
-  source_sha256 'd21b2d1fd78c1efbe1f2c16dae1cb23f8fd231dcf891465b8debe636a9054b0c'
+  source_url 'https://xorg.freedesktop.org/releases/individual/lib/libxshmfence-1.3.1.tar.xz'
+  source_sha256 '1129f95147f7bfe6052988a087f1b7cb7122283d2c47a7dbf7135ce0df69b4f8'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxshmfence/1.2_armv7l/libxshmfence-1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxshmfence/1.2_armv7l/libxshmfence-1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxshmfence/1.2_i686/libxshmfence-1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxshmfence/1.2_x86_64/libxshmfence-1.2-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: '80960ac0229518c53314b7da0647329860ca1f3369076624e866267a555bf178',
+     armv7l: '80960ac0229518c53314b7da0647329860ca1f3369076624e866267a555bf178',
+       i686: '80a7cd36137b0ba04e1775277667abd21ae43bc1415a5e53d5ebaa211ab78bcd',
+     x86_64: 'cab374aabaa29a0e9723ec3242efcdee5b196cec9398056977fdc813fcc3bb9b'
   })
-  binary_sha256 ({
-    aarch64: 'e61a8cd679d4337f4f9e2fbf9ed1987e20e524032a9578ac654bc21619848a64',
-     armv7l: 'e61a8cd679d4337f4f9e2fbf9ed1987e20e524032a9578ac654bc21619848a64',
-       i686: '3974fb4cfdb33db51ecafad7197676df52907a087f41022629f72610d90b08c1',
-     x86_64: 'd015681e769125f9b28f9abaeeb7dee8b83dde1678dba8709933cb7ebcbcca89',
-  })
+
+  depends_on 'glibc' # R
+  depends_on 'xorg_proto' => :build
 
   def self.build
-    system './configure',
-      "--prefix=#{CREW_PREFIX}",
-      "--libdir=#{CREW_LIB_PREFIX}"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

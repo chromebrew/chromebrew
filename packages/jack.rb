@@ -3,39 +3,36 @@ require 'package'
 class Jack < Package
   description 'JACK (JACK Audio Connection Kit) refers to an API that provides a basic infrastructure for audio applications to communicate with each other and with audio hardware.'
   homepage 'https://jackaudio.org/'
-  @_ver = '1.9.17'
-  version @_ver
+  version '1.9.21'
   license 'GPL-2+'
-  compatibility 'all'
-  source_url "https://github.com/jackaudio/jack2/archive/v#{@_ver}.tar.gz"
-  source_sha256 '38f674bbc57852a8eb3d9faa1f96a0912d26f7d5df14c11005ad499c8ae352f2'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://github.com/jackaudio/jack2/archive/v#{version}.tar.gz"
+  source_sha256 '8b044a40ba5393b47605a920ba30744fdf8bf77d210eca90d39c8637fe6bc65d'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack/1.9.17_armv7l/jack-1.9.17-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack/1.9.17_armv7l/jack-1.9.17-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack/1.9.17_i686/jack-1.9.17-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack/1.9.17_x86_64/jack-1.9.17-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'd18c47ae88f28ada701a4938cf26db6659ed9425006e0a81b887be1f8868a280',
-     armv7l: 'd18c47ae88f28ada701a4938cf26db6659ed9425006e0a81b887be1f8868a280',
-       i686: '0946a39b386d3f4434e1a4d735342918537f302acfba6641ed888e76c058fae0',
-     x86_64: 'f8cf79f4a8402e8c4cdcfe8d31cc9357ba3404d5bfe57a8dea7fac4ec12bd091'
+    aarch64: '6185f7f83066b59da49430902bf6cb99d3c69922e41d96ef18456bd27fdedaa6',
+     armv7l: '6185f7f83066b59da49430902bf6cb99d3c69922e41d96ef18456bd27fdedaa6',
+     x86_64: 'b4c6d93821733e2f834e460ce7ca206df2ef19e2480338a174adc15bc95cf4b2'
   })
 
   depends_on 'dbus'
   depends_on 'alsa_lib'
   depends_on 'libdb'
   depends_on 'libsndfile'
+  depends_on 'expat' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'opus' # R
 
   def self.patch
     # Set the correct python executable path.
     system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,' waf"
+    system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,' dbus/jack_control"
   end
 
   def self.build
-    system "env CFLAGS=-fno-stack-protector \
-      ./waf configure \
+    system "./waf configure \
       --dbus \
       --classic \
       --db=yes \

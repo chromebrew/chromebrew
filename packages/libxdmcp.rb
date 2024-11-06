@@ -1,38 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxdmcp < Package
+class Libxdmcp < Autotools
   description 'The libXdmcp package contains a library implementing the X Display Manager Control Protocol.'
-  homepage 'http://www.x.org'
-  version '1.1.3-1'
+  homepage 'https://gitlab.freedesktop.org/xorg/lib/libxdmcp'
+  version '1.1.5'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.x.org/pub/individual/lib/libXdmcp-1.1.3.tar.bz2'
-  source_sha256 '20523b44aaa513e17c009e873ad7bbc301507a3224c232610ce2e099011c6529'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxdmcp.git'
+  git_hashtag "libXdmcp-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-1_armv7l/libxdmcp-1.1.3-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-1_armv7l/libxdmcp-1.1.3-1-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-1_i686/libxdmcp-1.1.3-1-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-1_x86_64/libxdmcp-1.1.3-1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-     aarch64: '8d044dae7bae3290e3189d25216df2dec946bf3214812c3327f44c5d4af908c7',
-      armv7l: '8d044dae7bae3290e3189d25216df2dec946bf3214812c3327f44c5d4af908c7',
-        i686: '0bb28f04ed3c6668febc1f9aad001ff0b39ed1746e0ca808bdfbc795bc36cd83',
-      x86_64: 'e85f069e15080182742ef6a4cc15742c94ea438ccd2ee772feea199a7fad1622',
+  binary_sha256({
+    aarch64: '7d48ce878c0b396e1b31800e3861c2081b5e29a26d4e948ac6c3dbcb9b86d8ec',
+     armv7l: '7d48ce878c0b396e1b31800e3861c2081b5e29a26d4e948ac6c3dbcb9b86d8ec',
+       i686: '2b4fe67950321efca05634b09e694a5482fa8ecfe41ee58e693cc0eba38beaba',
+     x86_64: 'e8e3832fa1f024a3546e435f028ca6c47894a32705e56fa11e2b29467ea4cd9e'
   })
 
-  depends_on "xorg_proto"
-  depends_on "llvm" => :build
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'xorg_macros' => :build
+  depends_on 'xorg_proto'
 
-  def self.build
-    ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system "./configure #{CREW_OPTIONS}"
-    system "make"
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
-
+  run_tests
 end

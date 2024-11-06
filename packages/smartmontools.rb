@@ -3,29 +3,25 @@ require 'package'
 class Smartmontools < Package
   description 'The smartmontools package contains two utility programs (smartctl and smartd) to control and monitor storage systems using the Self-Monitoring, Analysis and Reporting Technology System (SMART) built into most modern ATA/SATA, SCSI/SAS and NVMe disks.'
   homepage 'https://www.smartmontools.org/'
-  version '7.2'
+  version '7.3'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/smartmontools/smartmontools/7.2/smartmontools-7.2.tar.gz'
-  source_sha256 '5cd98a27e6393168bc6aaea070d9e1cd551b0f898c52f66b2ff2e5d274118cd6'
+  source_url 'https://github.com/smartmontools/smartmontools.git'
+  git_hashtag "RELEASE_#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smartmontools/7.2_armv7l/smartmontools-7.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smartmontools/7.2_armv7l/smartmontools-7.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smartmontools/7.2_i686/smartmontools-7.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smartmontools/7.2_x86_64/smartmontools-7.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'ac90e2813866209afb1a854571f3223be3af25a897be70c4253ecd07727c10ec',
-     armv7l: 'ac90e2813866209afb1a854571f3223be3af25a897be70c4253ecd07727c10ec',
-       i686: 'a23fa22c6669b2b959c4637c524dc8a0f3d54b8064b9d6c325682ac65c1d5db8',
-     x86_64: 'bcf4a50b737ac859717f4edc061c77e7ec793c1e69c652c0e06455ac5bf25bf2',
+  binary_sha256({
+    aarch64: 'b867b49bf0e9b7007fd593cec631b15b2dd8e7bccb8948cb1786de5522e8b56c',
+     armv7l: 'b867b49bf0e9b7007fd593cec631b15b2dd8e7bccb8948cb1786de5522e8b56c',
+       i686: '3110b88c1b8e1f48076b44f8fe9d5ede7e49d68fed0c690a106dd75f01640200',
+     x86_64: 'fa71dd17b09bbb6fc3e0acf345c1bd499592c415842a7f16d22e388d87c185aa'
   })
 
   depends_on 'gpgme'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --with-nvme-devicescan --disable-maintainer-mode"
+    system './autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --with-nvme-devicescan --disable-maintainer-mode"
     system 'make'
   end
 

@@ -1,32 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Vim_runtime < Package
+class Vim_runtime < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
-  homepage 'http://www.vim.org/'
-  @_ver = '8.2.2783'
-  version @_ver
+  homepage 'https://www.vim.org/'
+  version '9.1.0758'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_armv7l/vim_runtime-8.2.2783-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_armv7l/vim_runtime-8.2.2783-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_i686/vim_runtime-8.2.2783-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_x86_64/vim_runtime-8.2.2783-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '5ebaa13f220c72794f065f4173a0f669a6334ee36cce70f70ac191fcd218ff1a',
-     armv7l: '5ebaa13f220c72794f065f4173a0f669a6334ee36cce70f70ac191fcd218ff1a',
-       i686: 'fe0bed8bc2aaa80db2748876c746cfce7f6c1004a30f3293f9497bdbdf6ca04e',
-     x86_64: 'f1e37f9c9ad6cf1fea25581634abc0a67ec51f4c64bfc0936b9a9544a958095b'
+    aarch64: 'ce6a18c9d238b6426d143009c5a0711785b994320866cc95e5f269c73d4b8e5c',
+     armv7l: 'ce6a18c9d238b6426d143009c5a0711785b994320866cc95e5f269c73d4b8e5c',
+       i686: '5aeeed06a13093cff269117287559f1a68941501e7ff663d3aa16a4d868b6dfa',
+     x86_64: 'ff881dd6e1e4206e1466f826b7c02775a921dce6496f387bb3c01fd21706927b'
   })
 
-  depends_on 'gpm'
+  depends_on 'gpm' # R
+  depends_on 'libsodium' # R
+  depends_on 'termcap' # R
 
   def self.patch
-    abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
     # set the system-wide vimrc path
     FileUtils.cd('src') do
       system 'sed', '-i', "s|^.*#define SYS_VIMRC_FILE.*$|#define SYS_VIMRC_FILE \"#{CREW_PREFIX}/etc/vimrc\"|",
@@ -36,36 +31,28 @@ class Vim_runtime < Package
     end
   end
 
-  def self.build
-    system '[ -x configure ] || autoreconf -fvi'
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --localstatedir=#{CREW_PREFIX}/var/lib/vim \
-      --with-features=huge \
-      --with-compiledby='Chromebrew' \
-      --enable-gpm \
-      --enable-acl \
-      --with-x=no \
-      --disable-gui \
-      --enable-multibyte \
-      --enable-cscope \
-      --enable-netbeans \
-      --enable-perlinterp=dynamic \
-      --enable-pythoninterp=dynamic \
-      --enable-python3interp=dynamic \
-      --enable-rubyinterp=dynamic \
-      --enable-luainterp=dynamic \
-      --enable-tclinterp=dynamic \
-      --disable-canberra \
-      --disable-selinux \
-      --disable-nls"
-    system 'make'
-  end
+  configure_options "--localstatedir=#{CREW_PREFIX}/var/lib/vim \
+    --with-features=huge \
+    --with-compiledby='Chromebrew' \
+    --enable-gpm \
+    --enable-acl \
+    --with-x=no \
+    --disable-gui \
+    --enable-multibyte \
+    --enable-cscope \
+    --enable-netbeans \
+    --enable-perlinterp=dynamic \
+    --enable-pythoninterp=dynamic \
+    --enable-python3interp=dynamic \
+    --enable-rubyinterp=dynamic \
+    --enable-luainterp=dynamic \
+    --enable-tclinterp=dynamic \
+    --disable-canberra \
+    --disable-selinux \
+    --disable-nls"
 
   def self.install
+    @vim_version = version.rpartition('.')[0].sub('.', '')
     system 'make', "VIMRCLOC=#{CREW_PREFIX}/etc", "DESTDIR=#{CREW_DEST_DIR}", 'install'
 
     # bin and man will be provided by the 'vim' packages
@@ -79,7 +66,7 @@ class Vim_runtime < Package
     # these are provided by 'xxd_standalone'
     @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/xxd #{CREW_DEST_MAN_PREFIX}/man1/xxd.1]
     @deletefiles.each do |f|
-      FileUtils.rm f if  File.exist?(f)
+      FileUtils.rm_f f
     end
 
     # add sane defaults and simulate some XDG support
@@ -127,7 +114,7 @@ class Vim_runtime < Package
         silent! call mkdir(expand(&g:undodir), 'p', 0700)
       endif
     EOF
-    system "sed -i 's/set mouse=a/set mouse-=a/g' #{CREW_DEST_PREFIX}/share/vim/vim82/defaults.vim"
+    system "sed -i 's/set mouse=a/set mouse-=a/g' #{CREW_DEST_PREFIX}/share/vim/vim#{@vim_version}/defaults.vim"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
     vimrc = "#{CREW_DEST_PREFIX}/etc/vimrc"
     # by default we will load the global config

@@ -1,42 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libsigsegv < Package
+class Libsigsegv < Autotools
   description 'GNU libsigsegv is a library for handling page faults in user mode.'
   homepage 'https://www.gnu.org/software/libsigsegv/'
-  version '2.12'
+  version '2.14-a816da0'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libsigsegv/libsigsegv-2.12.tar.gz'
-  source_sha256 '3ae1af359eebaa4ffc5896a1aee3568c052c99879316a1ab57f8fe1789c390b6'
+  source_url 'https://git.savannah.gnu.org/git/libsigsegv.git'
+  git_hashtag 'a816da0ecf6eb59234cdea8e62d0ac5706b714f0'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigsegv/2.12_armv7l/libsigsegv-2.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigsegv/2.12_armv7l/libsigsegv-2.12-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigsegv/2.12_i686/libsigsegv-2.12-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigsegv/2.12_x86_64/libsigsegv-2.12-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'e95892871d5cfd7164b3056e87461fd852d1a224ca0a23f0dd73a98e71a83217',
-     armv7l: 'e95892871d5cfd7164b3056e87461fd852d1a224ca0a23f0dd73a98e71a83217',
-       i686: '626159d654d90139bfb1301323aea5c28b6ad37f895824323471eb7911a5ce4f',
-     x86_64: '02097e964faa7116a1e4701f322da97375d8df1a0928cadc05e86b838fe9fef3',
+  binary_sha256({
+    aarch64: 'a793b4b5435ef872527a2786e2ec2a60afa477d991971cbef3306294b4e4b158',
+     armv7l: 'a793b4b5435ef872527a2786e2ec2a60afa477d991971cbef3306294b4e4b158',
+       i686: '66c7fe9e6d8834353140c81a6ddb061a273f07e22bc104584eec90e42f86e9b3',
+     x86_64: '937a885c71dbee68b5cdfa5b9a80752d22c581771dcb7d6f8e22ae45e50957f3'
   })
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--enable-shared',
-           '--disable-static',
-           '--with-pic'
-    system 'make'
-  end
+  depends_on 'glibc' # R
 
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
+  configure_options '--enable-shared \
+    --enable-static \
+    --enable-relocatable'
 
-  def self.check
-    system "make", "check"
+  def self.patch
+    system './gitsub.sh pull'
   end
 end

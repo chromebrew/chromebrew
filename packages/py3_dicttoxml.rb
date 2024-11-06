@@ -1,33 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_dicttoxml < Package
+class Py3_dicttoxml < Pip
   description 'DicttoXML converts Python dictionaries into XML strings.'
   homepage 'https://github.com/quandyfactory/dicttoxml/'
-  @_ver = '1.3.1'
-  version @_ver
+  version "1.7.16-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/quandyfactory/dicttoxml.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dicttoxml/1.3.1_armv7l/py3_dicttoxml-1.3.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dicttoxml/1.3.1_armv7l/py3_dicttoxml-1.3.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dicttoxml/1.3.1_x86_64/py3_dicttoxml-1.3.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '2768c5f5a8030c4c767527190858affc5f08615c8fd51306747cc940520c1146',
-     armv7l: '2768c5f5a8030c4c767527190858affc5f08615c8fd51306747cc940520c1146',
-     x86_64: '2d1ac6c009956ef58fb036072918ca327adfaf8b9c689d1bc0cd058dbed3eecf'
+    aarch64: '206f3042d5a80de650ba11b9622cc21c63a8417a29043f893cfec2ba508f79b4',
+     armv7l: '206f3042d5a80de650ba11b9622cc21c63a8417a29043f893cfec2ba508f79b4',
+       i686: 'cc4221031544f2f06313e2ed0191a515d43c8c8c2b08bffb0187f66d635f1b7e',
+     x86_64: 'dd2db4599c91b927ef690142dfb0fa6bcf9f297c71d7320d1bfa7b23fc16d9e0'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS_NO_SVEM}"
-  end
+  no_source_build
 end

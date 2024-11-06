@@ -2,92 +2,35 @@ require 'package'
 
 class Musl_zlib < Package
   description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
-  homepage 'http://www.zlib.net/'
+  homepage 'https://www.zlib.net/'
   @_ver = '1.2.11'
-  version @_ver.to_s
+  version "#{@_ver}-3"
   license 'zlib'
   compatibility 'all'
-  source_url "http://www.zlib.net/zlib-#{@_ver}.tar.gz"
+  source_url "https://www.zlib.net/zlib-#{@_ver}.tar.gz"
   source_sha256 'c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_armv7l/musl_zlib-1.2.11-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_armv7l/musl_zlib-1.2.11-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_i686/musl_zlib-1.2.11-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_x86_64/musl_zlib-1.2.11-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '00d2af88bd0b9ac504405379e470392a8c66d293046f4466899f493fec34c082',
-     armv7l: '00d2af88bd0b9ac504405379e470392a8c66d293046f4466899f493fec34c082',
-       i686: 'e30270a0ed70bd26ff96f2929f19f2e7dcba4dd6b5b458ccb299f618e2e72795',
-     x86_64: 'dbe2f1f798905e8577e9b1b2579554a22802fec93c803fd10857be7cfc999cc2'
+    aarch64: '571117513b5a9668145ab0bdd54202644cb4f0d955c36e1f87e7cb6f1db65eb7',
+     armv7l: '571117513b5a9668145ab0bdd54202644cb4f0d955c36e1f87e7cb6f1db65eb7',
+       i686: '8cb92c4a79f090c3ad19002a62d23d401aa73fbe36d9038fbca2e9e4df6557ab',
+     x86_64: 'c5f536dffcc2be62f4c5f131531418b4b4b24b6d27b7bc9dd531ea9a05f04074'
   })
 
   depends_on 'musl_native_toolchain' => :build
-
-  @abi = ''
-  @arch_ssp_cflags = ''
-  @arch_c_flags = ''
-  @arch_cxx_flags = ''
-  case ARCH
-  when 'aarch64', 'armv7l'
-    @abi = 'eabihf'
-  when 'i686'
-    @arch_ssp_cflags = '-fno-stack-protector'
-  when 'x86_64'
-  end
-
-  @cflags = "-B#{CREW_PREFIX}/musl/include -flto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_c_flags} #{@arch_ssp_cflags} -fcommon"
-  @cxxflags = "-B#{CREW_PREFIX}/musl/include -flto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_cxx_flags} #{@arch_ssp_cflags} -fcommon"
-  @ldflags = "-L#{CREW_PREFIX}/musl/lib -flto -static"
-  @cmake_ldflags = '-flto'
-  @musldep_cmake_options = "PATH=#{CREW_PREFIX}/musl/bin:#{CREW_PREFIX}/musl/#{ARCH}-linux-musl#{@abi}/bin:#{ENV['PATH']} \
-        CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
-        CXX='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++' \
-        LD=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-ld.gold \
-        AR=#{CREW_PREFIX}/musl/bin/ar \
-        CFLAGS='#{@cflags}' \
-        CXXFLAGS='#{@cxxflags}' \
-        CPPFLAGS='-I#{CREW_PREFIX}/musl/include -fcommon' \
-        LDFLAGS='#{@cmake_ldflags}' \
-        cmake \
-        -DCMAKE_INSTALL_PREFIX='#{CREW_PREFIX}/musl' \
-        -DCMAKE_LIBRARY_PATH='#{CREW_PREFIX}/musl/lib' \
-        -DCMAKE_C_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc \
-        -DCMAKE_CXX_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++ \
-        -DCMAKE_INCLUDE_DIRECTORIES_BEFORE=ON \
-        -DINCLUDE_DIRECTORIES=#{CREW_PREFIX}/musl/include \
-        -DCMAKE_C_FLAGS='#{@cflags}' \
-        -DCMAKE_CXX_FLAGS='#{@cxxflags}' \
-        -DCMAKE_EXE_LINKER_FLAGS='#{@cmake_ldflags}' \
-        -DCMAKE_SHARED_LINKER_FLAGS='#{@cmake_ldflags}' \
-        -DCMAKE_STATIC_LINKER_FLAGS='#{@cmake_ldflags}' \
-        -DCMAKE_MODULE_LINKER_FLAGS='#{@cmake_ldflags}' \
-        -DPROPERTY_INTERPROCEDURAL_OPTIMIZATION=TRUE \
-        -DCMAKE_BUILD_TYPE=Release"
-
-  @musldep_env_options = "PATH=#{CREW_PREFIX}/musl/bin:#{ENV['PATH']} \
-      CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
-      CXX='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++' \
-      LD=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-ld.gold \
-      PKG_CONFIG_LIBDIR=#{CREW_PREFIX}/musl/lib/pkgconfig \
-      CFLAGS='#{@cflags}' \
-      CXXFLAGS='#{@cxxflags}' \
-      CPPFLAGS='-I#{CREW_PREFIX}/musl/include -fcommon' \
-      LDFLAGS='#{@ldflags}'"
+  is_musl
+  is_static
+  patchelf
+  print_source_bashrc
 
   def self.build
-    system "#{@musldep_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
+    system "#{MUSL_ENV_OPTIONS} ./configure --prefix=#{CREW_MUSL_PREFIX} \
           --static"
-    system 'make'
+    system "#{MUSL_ENV_OPTIONS} make"
   end
 
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

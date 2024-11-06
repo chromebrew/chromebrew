@@ -1,37 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Subversion < Package
+class Subversion < Autotools
   description 'Subversion is an open source version control system.'
   homepage 'https://subversion.apache.org/'
-  version '1.9.12'
+  version '1.14.4'
   license 'Apache-2.0, BSD, MIT, BSD-2, FSFAP and unicode'
-  compatibility 'all'
-  source_url 'https://www-us.apache.org/dist/subversion/subversion-1.9.12.tar.bz2'
-  source_sha256 '3c3a15fd73a21ab55556d7c291cf40e25ade1c070294504aa50b4767db1be397'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://dlcdn.apache.org/subversion/subversion-#{version}.tar.bz2"
+  source_sha256 '44ead116e72e480f10f123c914bb6f9f8c041711c041ed7abff1b8634a199e3c'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/subversion/1.9.12_armv7l/subversion-1.9.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/subversion/1.9.12_armv7l/subversion-1.9.12-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/subversion/1.9.12_i686/subversion-1.9.12-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/subversion/1.9.12_x86_64/subversion-1.9.12-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '797938b9feb0336b42848540b6fecb5f4474b78df1addc8cc2aefa05cc16796f',
-     armv7l: '797938b9feb0336b42848540b6fecb5f4474b78df1addc8cc2aefa05cc16796f',
-       i686: 'f6db4dc8a42150902b737c4a12258c3fd0ad6d939c14234ec90d99c5df889e07',
-     x86_64: 'c708bfe66744ccb19d7fcf463912a4b27c14fe854d9de83e49cb174baadf5d5e',
+  binary_sha256({
+    aarch64: '62704e12605742de34089c350055f2859e6dd23731921c1db9eb7b60381316d3',
+     armv7l: '62704e12605742de34089c350055f2859e6dd23731921c1db9eb7b60381316d3',
+     x86_64: 'c05a9400f3fdecc25f2c1eba9a5502926eb234a5aa6302e5e2392be27fd97d6d'
   })
 
-  depends_on 'aprutil'
+  depends_on 'apr_util'
+  depends_on 'expat'
   depends_on 'serf'
   depends_on 'sqlite'
 
-  def self.build
-    system './configure', '--disable-static', "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
+  configure_options '--disable-static --with-utf8proc=internal'
 
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
+  def self.prebuild
+    ConvenienceFunctions.libtoolize('expat')
   end
 end

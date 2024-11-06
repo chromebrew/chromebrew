@@ -1,41 +1,28 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libx11 < Package
+class Libx11 < Autotools
   description 'C interface to the X window system'
-  homepage 'https://x.org'
-  version '1.7.0'
-  license 'custom'
-  compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libX11-1.7.0.tar.bz2'
-  source_sha256 '36c8f93b6595437c8cfbc9f08618bcb3041cbd303e140a0013f88e4c2977cb54'
+  homepage 'https://x.org/wiki/'
+  version '1.8.10'
+  license 'X11'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libx11.git'
+  git_hashtag "libX11-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx11/1.7.0_armv7l/libx11-1.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx11/1.7.0_armv7l/libx11-1.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx11/1.7.0_i686/libx11-1.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx11/1.7.0_x86_64/libx11-1.7.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '77e5db5e74f4524ec72a3887ac329c6f34d5d4eecec6cc76a59989bbc3612902',
-     armv7l: '77e5db5e74f4524ec72a3887ac329c6f34d5d4eecec6cc76a59989bbc3612902',
-       i686: '3a1d278ded5b1e1e413c253d0b98a902a7d70b3afe9540a450846cf2df81ab1d',
-     x86_64: 'dc5886be69213c051995f16978e1927712a066068614658f84a23fb192dfc294',
+  binary_sha256({
+    aarch64: '3e992951cf49ed047e4ef45e45b87b640e5aafed4a0614543d7c6957613dd463',
+     armv7l: '3e992951cf49ed047e4ef45e45b87b640e5aafed4a0614543d7c6957613dd463',
+     x86_64: '55c2d33cc673cec976f9f628204da0f02e83a92aae0936a42a231df81d5dd05c'
   })
 
-
-  depends_on 'llvm' => :build
-  depends_on 'xorg_proto'
-  depends_on 'libxcb'
-  depends_on 'libxtrans'
-
-  def self.build
-    system "env CFLAGS='-fuse-ld=lld' \
-                CXXFLAGS='-fuse-ld=lld' \
-            ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxtrans' => :build
+  depends_on 'llvm19_lib' => :build
+  depends_on 'xorg_proto' => :build
 end

@@ -3,40 +3,30 @@ require 'package'
 class Perl_pod_parser < Package
   description 'Perl Pod::Parser - base class for creating POD filters and translators'
   homepage 'https://metacpan.org/pod/Pod::Parser'
-  version '1.63-1'
+  version "1.67-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.63.tar.gz'
-  source_sha256 'dbe0b56129975b2f83a02841e8e0ed47be80f060686c66ea37e529d97aa70ccd'
+  source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.67.tar.gz'
+  source_sha256 '5deccbf55d750ce65588cd211c1a03fa1ef3aaa15d1ac2b8d85383a42c1427ea'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-1_armv7l/perl_pod_parser-1.63-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-1_armv7l/perl_pod_parser-1.63-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-1_i686/perl_pod_parser-1.63-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-1_x86_64/perl_pod_parser-1.63-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '8ba74165129311c52ccf8add610eda8aba4ef5e7b24e4a7ed365fbe825837710',
-     armv7l: '8ba74165129311c52ccf8add610eda8aba4ef5e7b24e4a7ed365fbe825837710',
-       i686: 'a0ae78e4d2aafd3ef90d2b23fdf5bd5f43da4638b17183ac9e1cf7914e349625',
-     x86_64: '75ee5ada7995eb9c7bc6c5199069c944107fe555cd1ef2a9df67ac60b5269908'
+    aarch64: '3c6f74bb9c0c26489cb439eafac7eee329d67705030602508e1b8c71772ceeb2',
+     armv7l: '3c6f74bb9c0c26489cb439eafac7eee329d67705030602508e1b8c71772ceeb2',
+       i686: '89276cec5f6f47284346a22a284f4638d9e87cbbf70da8b86bf2c0313a3990ef',
+     x86_64: 'e1e81a36e19337176855749dd5858e2ed6c7947f3e875de16a4657806afe6dbd'
   })
 
-  def self.build; end
-
-  def self.install
-    # install files to build directory
-    system 'cpanm', '-l', 'build', '--self-contained', '--force', '.'
-
-    # install lib
-    libdir = CREW_DEST_DIR + `perl -e 'require Config; print $Config::Config{'"'installsitelib'"'};'`
-    FileUtils.mkdir_p libdir
-    system "(cd build/lib/perl5; tar cf - .) | (cd #{libdir}; tar xfp -)"
-
-    # install man
-    FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
-    system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
+  def self.prebuild
+    system 'perl', 'Makefile.PL'
+    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
   end
 
-  def self.check; end
+  def self.build
+    system 'make'
+  end
+
+  def self.install
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
 end

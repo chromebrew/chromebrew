@@ -1,36 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gsl < Package
+class Gsl < Autotools
   description 'The GNU Scientific Library (GSL) is a numerical library for C and C++ programmers.'
   homepage 'https://www.gnu.org/software/gsl/'
-  version '2.6'
+  version '2.8'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gsl/gsl-2.6.tar.gz'
-  source_sha256 'b782339fc7a38fe17689cb39966c4d821236c28018b6593ddb6fd59ee40786a8'
+  source_url 'https://ftpmirror.gnu.org/gsl/gsl-2.8.tar.gz'
+  source_sha256 '6a99eeed15632c6354895b1dd542ed5a855c0f15d9ad1326c6fe2b2c9e423190'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsl/2.6_armv7l/gsl-2.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsl/2.6_armv7l/gsl-2.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsl/2.6_i686/gsl-2.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsl/2.6_x86_64/gsl-2.6-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'aef58137cae2223ebc52ee81039e04768d32c837edbbddcc25d144cdd0e1983b',
-     armv7l: 'aef58137cae2223ebc52ee81039e04768d32c837edbbddcc25d144cdd0e1983b',
-       i686: 'ff59679e039167ed10758575b49780f688d0e70dd5ee9bcc45d3546bae168f46',
-     x86_64: 'b08296445edc313d9c44a66a73a4a62c264c828fb8ee41e9d42d819742cee4f4',
+  binary_sha256({
+    aarch64: '497fc9bf9043263ef4e6e4cee7f4bd880e69043e507c5588acee271670c3a3a1',
+     armv7l: '497fc9bf9043263ef4e6e4cee7f4bd880e69043e507c5588acee271670c3a3a1',
+       i686: 'c477d1c6a95531270ceb558fdfe108d0fbf966c003dc653fd7e3c014b6e621bb',
+     x86_64: '77040ff7e8b9da1e95c93fed6d6f8e8942c3e64ef790a0775303906f82322aed'
   })
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

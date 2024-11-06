@@ -3,37 +3,34 @@ require 'package'
 class Graphite < Package
   description 'Reimplementation of the SIL Graphite text processing engine'
   homepage 'https://github.com/silnrsi/graphite'
-  version '1.3.14-2'
+  version '2757274'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://github.com/silnrsi/graphite/releases/download/1.3.14/graphite2-1.3.14.tgz'
-  source_sha256 'f99d1c13aa5fa296898a181dff9b82fb25f6cc0933dbaa7a475d8109bd54209d'
+  source_url 'https://github.com/silnrsi/graphite.git'
+  git_hashtag '27572742003b93dc53dc02c01c237b72c6c25f54'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-2_armv7l/graphite-1.3.14-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-2_armv7l/graphite-1.3.14-2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-2_i686/graphite-1.3.14-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-2_x86_64/graphite-1.3.14-2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '4b7ccb98e54afb311014eedeaee7a262cc8d46c0ee9ca4102cc5aee8a38660e0',
-     armv7l: '4b7ccb98e54afb311014eedeaee7a262cc8d46c0ee9ca4102cc5aee8a38660e0',
-       i686: '457ed635172c5ba7f61b95cfa2036efdfa1183ae2a77e4e9f06b9d33f9dbe763',
-     x86_64: '298e03f04acb71d5b8fdfb340b0bc6387fe4ecf2ac2b0ebad7ecb21101c85e66'
+    aarch64: 'db258e3b6e5c9809d0d2f95bcbda19fd8bb989667f722282e5284745cc3a20e4',
+     armv7l: 'db258e3b6e5c9809d0d2f95bcbda19fd8bb989667f722282e5284745cc3a20e4',
+       i686: '7245cfaa6b1d4dbfd0b495b0a78a4b0969002d67e118184e887a2347328c12c4',
+     x86_64: 'f3e5350af96d7c6785b06f260bbc66a96568118739ae737cd98d91e9cfcc49ca'
   })
 
-  depends_on 'freetype_sub'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+
+  def self.patch
+    # remove font tools dependent tests
+    system "sed -i '/cmptest/d' tests/CMakeLists.txt"
+  end
 
   def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "cmake #{CREW_CMAKE_LIBSUFFIX_OPTIONS} .."
-    end
+    system "cmake -B builddir #{CREW_CMAKE_LIBSUFFIX_OPTIONS} -G Ninja"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 end

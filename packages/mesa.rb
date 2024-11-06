@@ -1,128 +1,101 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Mesa < Package
+class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.2.2'
-  version @_ver
+  version '24.2.6-llvm19'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
-  git_hashtag "mesa-#{@_ver}"
+  git_hashtag "mesa-#{version.split('-').first}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_armv7l/mesa-21.2.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_armv7l/mesa-21.2.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_i686/mesa-21.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_x86_64/mesa-21.2.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '0cbce907c2515100c624643c1243876c3c0cc47c6c531ca253e6d97b3d13f438',
-     armv7l: '0cbce907c2515100c624643c1243876c3c0cc47c6c531ca253e6d97b3d13f438',
-       i686: '7d28e75839baed8ceb15e677eba566b6501819c03cbe9f8067857d79a0bb9a7e',
-     x86_64: '82f5de3eb10852a5fdd40ac38b85ed3c4c17c9f7a67199417a9ebe8021552d2e'
+    aarch64: '5b73ae1980d24afda1c7e981a9b90364fd25af79ba497ca1a20557cc85ea6a70',
+     armv7l: '5b73ae1980d24afda1c7e981a9b90364fd25af79ba497ca1a20557cc85ea6a70',
+     x86_64: 'd5be79158ac59a758db8f7cf52e3d64bdb1adfbe8c848ed2a4eafced63002ff1'
   })
 
+  depends_on 'elfutils' # R
+  depends_on 'eudev' # R
+  depends_on 'expat' # R
+  depends_on 'gcc_dev' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc_lib' # R
+  depends_on 'glibc' # R
   depends_on 'glslang' => :build
+  depends_on 'libclc' => :build
   depends_on 'libdrm' # R
   depends_on 'libomxil_bellagio' => :build
-  depends_on 'libunwind'
+  depends_on 'libunwind' # R
+  depends_on 'libva' => :build
   depends_on 'libvdpau' => :build
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
   depends_on 'libxdamage' => :build
+  depends_on 'libxdmcp' => :build
   depends_on 'libxext' # R
   depends_on 'libxfixes' # R
   depends_on 'libxrandr' # R
   depends_on 'libxshmfence' # R
   depends_on 'libxv' => :build
-  depends_on 'libxvmc' # R
-  depends_on 'libxv' # R
   depends_on 'libxxf86vm' # R
-  # depends_on 'libva' => :build # Enable only during build to avoid circular dep.
-  depends_on 'llvm' => :build
+  depends_on 'llvm19_dev' => :build
+  depends_on 'llvm19_lib' # R
   depends_on 'lm_sensors' # R
-  depends_on 'py3_mako'
+  depends_on 'py3_mako' => :build
+  depends_on 'py3_ply' => :build
+  depends_on 'py3_pycparser' => :build
+  depends_on 'spirv_llvm_translator' => :build
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' => :build
   depends_on 'wayland_protocols' => :build
   depends_on 'wayland' # R
+  depends_on 'xcb_util_keysyms' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
+
+  meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
+    -Db_asneeded=false \
+    -Ddri3=enabled \
+    -Degl=enabled \
+    -Dgbm=enabled \
+    -Dgles1=disabled \
+    -Dgles2=enabled \
+    -Dglvnd=enabled \
+    -Dglx=dri \
+    -Dintel-clc=enabled \
+    -Dllvm=enabled \
+    -Dgallium-drivers='#{ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,softpipe,llvmpipe,iris,crocus,zink' : 'v3d,freedreno,etnaviv,nouveau,svga,tegra,virgl,lima,panfrost,softpipe,llvmpipe,iris,zink'}' \
+    -Dvulkan-drivers='#{ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'}' \
+    -Dvideo-codecs='all'"
+
+  meson_install_extras do
+    # The following are hacks to keep sommelier from complaining.
+    Dir.chdir("#{CREW_DEST_LIB_PREFIX}/dri") do
+      FileUtils.ln_s '.', 'tls' unless File.exist?('tls')
+    end
+    FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/gbm/tls"
+    case ARCH
+    when 'x86_64'
+      Dir.chdir("#{CREW_DEST_LIB_PREFIX}/gbm/tls") do
+        # For Intel GPUs
+        FileUtils.ln_s '../../libgbm.so', 'i915_gbm.so'
+        # For AMD GPUs
+        FileUtils.ln_s '../../libgbm.so', 'amdgpu_gbm.so'
+      end
+    when 'armv7l', 'aarch64'
+      Dir.chdir("#{CREW_DEST_LIB_PREFIX}/gbm/tls") do
+        FileUtils.ln_s '../../libgbm.so', 'pvr_gbm.so'
+      end
+    end
+  end
 
   def self.patch
-    case ARCH
-    when 'aarch64', 'armv7l'
-      # See https://gitlab.freedesktop.org/mesa/mesa/-/issues/5067
-      @freedrenopatch = <<~FREEDRENOPATCHEOF
-                --- a/src/gallium/drivers/freedreno/freedreno_util.h   2021-08-05 14:40:22.000000000 +0000
-                +++ b/src/gallium/drivers/freedreno/freedreno_util.h   2021-08-05 19:52:53.115410668 +0000
-                @@ -44,6 +44,15 @@
-                 #include "adreno_pm4.xml.h"
-                 #include "disasm.h"
-        #{'         '}
-                +#include <unistd.h>
-                +#include <sys/syscall.h>
-                +
-                +#ifndef SYS_gettid
-                +#error "SYS_gettid unavailable on this system"
-                +#endif
-                +
-                +#define gettid() ((pid_t)syscall(SYS_gettid))
-                +
-                 #ifdef __cplusplus
-                 extern "C" {
-                 #endif
-      FREEDRENOPATCHEOF
-      IO.write('freedreno.patch', @freedrenopatch)
-      system 'patch -Np1 -i freedreno.patch'
-      # See https://gitlab.freedesktop.org/mesa/mesa/-/issues/3505
-      @tegrapatch = <<~TEGRAPATCHEOF
-                diff --git a/src/gallium/drivers/nouveau/nvc0/nvc0_state_validate.c b/src/gallium/drivers/nouveau/nvc0/nvc0_state_validate.c
-                index 48d81f197db..f9b7bd57b27 100644
-                --- a/src/gallium/drivers/nouveau/nvc0/nvc0_state_validate.c
-                +++ b/src/gallium/drivers/nouveau/nvc0/nvc0_state_validate.c
-                @@ -255,6 +255,10 @@ nvc0_validate_fb(struct nvc0_context *nvc0)
-        #{'         '}
-                          nvc0_resource_fence(res, NOUVEAU_BO_WR);
-        #{'         '}
-                +         // hack to make opengl at least halfway working on a tegra k1
-                +         // see: https://gitlab.freedesktop.org/mesa/mesa/-/issues/3505#note_627006
-                +         fb->zsbuf=NULL;
-                +
-                          assert(!fb->zsbuf);
-                       }
-      TEGRAPATCHEOF
-      IO.write('tegra.patch', @tegrapatch)
-      system 'patch -Np1 -i tegra.patch'
-    end
-  end
-
-  def self.build
-    case ARCH
-    when 'i686'
-      @vk = 'intel,swrast'
-      @galliumdrivers = 'swrast,svga,virgl,swr,lima,zink'
-      @lto = CREW_MESON_FNO_LTO_OPTIONS
-    when 'aarch64', 'armv7l'
-      @vk = 'auto'
-      @galliumdrivers = 'auto'
-      @lto = CREW_MESON_OPTIONS
-    when 'x86_64'
-      @vk = 'auto'
-      @galliumdrivers = 'r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus'
-      @lto = CREW_MESON_OPTIONS
-    end
-    system "meson #{@lto} \
-    -Db_asneeded=false \
-    -Dvulkan-drivers=#{@vk} \
-    -Dgallium-drivers=#{@galliumdrivers} \
-    -Dprefer-crocus=true \
-     builddir"
-    system 'meson configure builddir'
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    # See https://gitlab.freedesktop.org/mesa/mesa/-/issues/11896
+    # https://github.com/llvm/llvm-project/pull/97824
+    # https://github.com/Zentrik/julia/commit/1b35f7a9147788b9a727c11c5ccdb44c9a800c07
+    system "sed -i '/llvm::StringMap<bool> features;/d' src/gallium/auxiliary/gallivm/lp_bld_misc.cpp"
+    system "sed -i 's/llvm::sys::getHostCPUFeatures(features);/auto features = llvm::sys::getHostCPUFeatures();/' src/gallium/auxiliary/gallivm/lp_bld_misc.cpp"
   end
 end

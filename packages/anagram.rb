@@ -2,45 +2,43 @@ require 'package'
 
 class Anagram < Package
   description 'finds anagrams or permutations of words in the target phrase'
-  homepage 'http://www.fourmilab.ch/anagram/'
-  version '1.4'
-  license 'public-domain'
+  homepage 'https://www.fourmilab.ch/anagram/'
+  version '1.5'
+  license 'CC0-1.0'
   compatibility 'all'
-  source_url 'http://www.fourmilab.ch/anagram/anagram-1.4.tar.gz'
-  source_sha256 'd046fd5accd3c62267c0ef81b56cd05c59ec92b37cdb73f69d031879dba308bd'
+  source_url 'https://github.com/Fourmilab/anagram.git'
+  git_hashtag '5466ccd28c1b8f46bd8af420d17801bdf1da51a8'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.4_armv7l/anagram-1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.4_armv7l/anagram-1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.4_i686/anagram-1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.4_x86_64/anagram-1.4-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: '60eb2350a7133d51a49e92ff958136e1b9dc81c4dd8ef7b75df3f0bd4907dcf0',
+     armv7l: '60eb2350a7133d51a49e92ff958136e1b9dc81c4dd8ef7b75df3f0bd4907dcf0',
+       i686: 'e9079eddb55e0f0c9a660c761394355ef5b8d755bdd457ca2c591388a0e8f10a',
+     x86_64: '5e02d9bf17529e1db392e014b193f528b3c2fd990e758be3f023478b56ac9975'
   })
-  binary_sha256 ({
-    aarch64: '5d5e2fa0868d99ed24623a1fd98bf9a00a07c50e5a8c931cf2d43ab3dfbf1a42',
-     armv7l: '5d5e2fa0868d99ed24623a1fd98bf9a00a07c50e5a8c931cf2d43ab3dfbf1a42',
-       i686: '33dbe4fd1116e429e1b927f63de8361b3ba888f24712ae692bee0ac152bc41b7',
-     x86_64: '2d162c9d06d59ee1dab520deccfed04e3c27f7a5584346dfdc2e267bc46d310c',
-  })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
-    system 'mkdir build'
-    Dir.chdir 'build' do
-      system "echo '#!/bin/bash' > anagram"
-      system "echo '#{CREW_PREFIX}/share/anagram/bin/anagram --dictionary #{CREW_PREFIX}/share/anagram/crossword.txt --bindict #{CREW_PREFIX}/share/anagram/wordlist.bin $@' >> anagram"
-    end
+
+    @_anagram_wrapper = <<~ANAGRAM_WRAPPER_EOF
+      #!/bin/bash -e
+
+      exec #{CREW_PREFIX}/share/anagram/bin/anagram \
+        --dictionary #{CREW_PREFIX}/share/anagram/crossword.txt \
+        --bindict #{CREW_PREFIX}/share/anagram/wordlist.bin "${@}"
+    ANAGRAM_WRAPPER_EOF
+    File.write 'anagram_wrapper', @_anagram_wrapper, perm: 0o755
   end
 
   def self.install
-    system "gzip -9 anagram.1"
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_PREFIX}/share/anagram/bin"
-    system "mkdir -p #{CREW_DEST_PREFIX}/share/man/man1"
-    system "install -Dm755 build/anagram #{CREW_DEST_PREFIX}/bin"
-    system "install -Dm755 anagram #{CREW_DEST_PREFIX}/share/anagram/bin"
-    system "install -Dm644 crossword.txt #{CREW_DEST_PREFIX}/share/anagram"
-    system "install -Dm644 wordlist.bin #{CREW_DEST_PREFIX}/share/anagram"
-    system "install -Dm644 anagram.1.gz #{CREW_DEST_PREFIX}/share/man/man1"
+    FileUtils.install 'anagram', "#{CREW_DEST_PREFIX}/share/anagram/bin", mode: 0o755
+    FileUtils.install 'anagram_wrapper', "#{CREW_DEST_PREFIX}/bin/anagram", mode: 0o755
+    FileUtils.install 'anagram.1', "#{CREW_DEST_MAN_PREFIX}/man1/anagram.1", mode: 0o644
+    FileUtils.install 'crossword.txt', "#{CREW_DEST_PREFIX}/share/anagram", mode: 0o644
+    FileUtils.install 'wordlist.bin', "#{CREW_DEST_PREFIX}/share/anagram", mode: 0o644
   end
 end

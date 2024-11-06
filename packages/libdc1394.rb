@@ -1,39 +1,35 @@
 require 'package'
 
 class Libdc1394 < Package
-  description 'libdc1394 is a library that provides a complete high level application programming interface (API) for developers who wish to control IEEE 1394 based cameras'
+  description 'libdc1394 is a library that provides a complete high level application programming interface (API) for developers who wish to control IEEE 1394 based cameras.'
   homepage 'https://damien.douxchamps.net/ieee1394/libdc1394/'
-  version '2.2.0'
+  version '2.2.6'
+  compatibility 'x86_64 aarch64 armv7l'
   license 'LGPL-2.1'
-  compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/libdc1394/libdc1394-2/2.2.0/libdc1394-2.2.0.tar.gz'
-  source_sha256 'c6e6175c32c5567c5d4245176e75d1dfdd353902dd640e1de26cdefe5146fe6c'
+  source_url 'https://sourceforge.net/projects/libdc1394/files/libdc1394-2/2.2.6/libdc1394-2.2.6.tar.gz'
+  source_sha256 '2b905fc9aa4eec6bdcf6a2ae5f5ba021232739f5be047dec8fe8dd6049c10fed'
+  binary_compression 'tpxz'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdc1394/2.2.0_armv7l/libdc1394-2.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdc1394/2.2.0_armv7l/libdc1394-2.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdc1394/2.2.0_i686/libdc1394-2.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdc1394/2.2.0_x86_64/libdc1394-2.2.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '9b7d5faf499e68792355cce360192bc48b8379d897096b966aecb3714c929442',
-     armv7l: '9b7d5faf499e68792355cce360192bc48b8379d897096b966aecb3714c929442',
-       i686: '38f1b4636ffc6a4e7b49fbe5691c87d6c38042b0ebadb521c740db9cc9906a20',
-     x86_64: 'fe06f9509d4ddb10d2c98f813965f93381453ef87d82dc93f8169884be889b8d',
+  binary_sha256({
+    aarch64: '0b694d5edbf189c0570a497999da69a8d11429f8204ac013d9280a92d1701bcf',
+     armv7l: '0b694d5edbf189c0570a497999da69a8d11429f8204ac013d9280a92d1701bcf',
+     x86_64: '778cdfbf6102517458e8c7c5873fb89cf8b13c00ab65ae23cd50de9a1a232adf'
   })
 
   depends_on 'freeglut'
-  depends_on 'sommelier'
+  depends_on 'libraw1394'
+  depends_on 'libusb'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--with-x'
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.check
+    system 'make', 'check'
   end
 end

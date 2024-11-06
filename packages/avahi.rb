@@ -1,56 +1,95 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Avahi < Package
+class Avahi < Autotools
   description 'Avahi is a system which facilitates service discovery on a local network via the mDNS/DNS-SD protocol suite.'
-  homepage 'http://www.avahi.org/'
-  version '0.8-3'
+  homepage 'https://avahi.org/'
+  version '0.9-rc1'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz'
-  source_sha256 '060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda'
+  source_url 'https://github.com/avahi/avahi.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avahi/0.8-3_armv7l/avahi-0.8-3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avahi/0.8-3_armv7l/avahi-0.8-3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avahi/0.8-3_i686/avahi-0.8-3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avahi/0.8-3_x86_64/avahi-0.8-3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '1a2f3f2f1963ff4843ecf2212eaca985368d26ef532f953a68020c1518db0dcf',
-     armv7l: '1a2f3f2f1963ff4843ecf2212eaca985368d26ef532f953a68020c1518db0dcf',
-       i686: 'ca7e9694328710e7b14c22b5d0dd488363303cabca6d7e2ef5f82f484f56d666',
-     x86_64: 'a9b2f76d80af5ebd527cff54f928437f454824b7e5eda102fa7d1c568bb73063'
+    aarch64: 'c34e8d66c23cc56cffd351e1c760eb352b73900f1943fb135774f4cd5093699d',
+     armv7l: 'c34e8d66c23cc56cffd351e1c760eb352b73900f1943fb135774f4cd5093699d',
+       i686: 'b589977a70fdb9bb32887425ee855d50f369345f3b2520c9db3dd56bd32fc819',
+     x86_64: '0939b420dceeccf39b7afe71b562ef9f85087913b5191d43357b51e3e1a1d955'
   })
 
-  depends_on 'atk'
-  depends_on 'cairo'
-  depends_on 'dbus'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gtk3'
-  depends_on 'harfbuzz'
-  depends_on 'libcap'
-  depends_on 'libdaemon'
-  depends_on 'libevent'
-  depends_on 'libjpeg'
-  depends_on 'mono' => :build
-  depends_on 'pango'
-  depends_on 'qtbase' => :build
+  depends_on 'dbus' # R (needed to enable avahi-client)
+  depends_on 'expat' # R
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'libcap' # R
+  depends_on 'libdaemon' # R
+  depends_on 'libevent' # R
+  depends_on 'nss_mdns' # L
+  depends_on 'libssp' # R
+  depends_on 'xmltoman' => :build
 
-  def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --with-dbus-sys=#{CREW_PREFIX}/share/dbus-1 \
-      --with-distro=none \
+  configure_options "--enable-compat-libdns_sd \
+      --disable-gtk \
+      --disable-gtk3 \
+      --disable-libsystemd \
+      --disable-mono \
+      --disable-monodoc \
       --disable-python \
-      --disable-xmltoman"
-    system "sed -i '695d' Makefile"
-    system 'make'
-  end
+      --disable-qt3 \
+      --disable-qt4 \
+      --disable-qt5 \
+      --with-avahi-user=chronos \
+      --with-avahi-group=chronos \
+      --with-autoipd-group=chronos \
+      --with-autoipd-user=chronos \
+      --with-avahi-priv-access-group=chronos-access \
+      --with-distro=none"
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "make DESTDIR=#{CREW_DEST_DIR} install"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/etc/avahi/avahi-daemon.conf", "#{CREW_DEST_PREFIX}/etc/avahi/avahi-daemon.conf.default"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/etc/avahi/hosts", "#{CREW_DEST_PREFIX}/etc/avahi/hosts.default"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/etc/avahi/services/sftp-ssh.service", "#{CREW_DEST_PREFIX}/etc/avahi/services/sftp-ssh.service.disabled"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/etc/avahi/services/ssh.service", "#{CREW_DEST_PREFIX}/etc/avahi/services/ssh.service.disabled"
+    # start avahi-daemon from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
+    File.write 'bashd_avahi', <<~BASHDAVAHI_EOF
+      [[ $(pgrep -wc avahi-daemon) > 0 ]] || source #{CREW_PREFIX}/bin/startavahi
+    BASHDAVAHI_EOF
+    FileUtils.install 'bashd_avahi', "#{CREW_DEST_PREFIX}/etc/bash.d/avahi", mode: 0o644
+    File.write 'start_avahi', <<~STARTAVAHI_EOF
+      if [[ $(pgrep -wc avahi-daemon) > 0 ]]; then
+        # distccd is already running.
+        # Return or exit depending upon whether script was sourced.
+        (return 0 2>/dev/null) && return 0 || exit 0
+      elif [[ -f '/.dockerenv' ]]; then
+        echo "In container. Avahi daemon will not be started."
+        (return 0 2>/dev/null) && return 0 || exit 0
+      fi
+      hostname="$(hostname)"
+      primaryinterface="$(ip route get 1 | awk '{print $5;exit}')"
+      localip="$(ip route get 1 | awk '{print $7;exit}')"
+      cp #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf.default #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf
+      cp #{CREW_PREFIX}/etc/avahi/hosts.default #{CREW_PREFIX}/etc/avahi/hosts
+
+      sed -i "s/#allow-interfaces=eth0/allow-interfaces=$primaryinterface/" #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf
+      sed -i "s/#host-name=foo/host-name=$hostname/" #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf
+      sed -i "s/#domain-name=local/domain-name=local/" #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf
+
+      echo -e "\n${localip} ${hostname}.local" >> #{CREW_PREFIX}/etc/avahi/hosts
+      echo "Enabling Avahi mDNS/DNS-SD daemon for address $localip ..."
+      mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/avahi.log
+      (sudo LD_LIBRARY_PATH="$LD_LIBRARY_PATH" #{CREW_PREFIX}/sbin/avahi-daemon &> #{CREW_PREFIX}/var/log/avahi.log &)
+    STARTAVAHI_EOF
+    FileUtils.install 'start_avahi', "#{CREW_DEST_PREFIX}/bin/startavahi", mode: 0o755
+    File.write 'stop_avahi', <<~STOP_AVAHI_EOF
+      #!/bin/bash
+      killall -9 avahi-daemon
+    STOP_AVAHI_EOF
+    FileUtils.install 'stop_avahi', "#{CREW_DEST_PREFIX}/bin/stopavahi", mode: 0o755
+  end
+
+  def self.postinstall
+    ExitMessage.add "The avahi daemon will be automatically started, but can be stopped with 'stopavahi' and restarted with 'startavahi'."
   end
 end

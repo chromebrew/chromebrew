@@ -2,43 +2,39 @@ require 'package'
 
 class V2ray < Package
   description 'A platform for building proxies to bypass network restrictions.'
-  homepage 'https://www.v2ray.com/'
-  version 'v4.24.2'
+  homepage 'www.v2fly.org'
+  version 'v5.16.1'
   license 'MIT'
   compatibility 'all'
 
-  case ARCH
-  when 'aarch64', 'armv7l'
-    source_url 'https://github.com/v2ray/v2ray-core/releases/download/v4.24.2/v2ray-linux-arm.zip'
-    source_sha256 'd6c93961c0c192097cadadc73e3a4b2cc6fff722851af9c073ea2612f996a3b7'
-  when 'i686'
-    source_url 'https://github.com/v2ray/v2ray-core/releases/download/v4.24.2/v2ray-linux-32.zip'
-    source_sha256 '7a72f5dc9ee9b38fc9a827b555150714da19905d27d88f23b1ae3adb411a0ece'
-  when 'x86_64'
-    source_url 'https://github.com/v2ray/v2ray-core/releases/download/v4.24.2/v2ray-linux-64.zip'
-    source_sha256 '2d763daae301869bdb1e8cc5ef851bd5f8a3eefd2cd31c400b7830c36398d903'
-  end
+  source_url({
+    aarch64: "https://github.com/v2fly/v2ray-core/releases/download/#{version}/v2ray-linux-arm32-v7a.zip",
+     armv7l: "https://github.com/v2fly/v2ray-core/releases/download/#{version}/v2ray-linux-arm32-v7a.zip",
+       i686: "https://github.com/v2fly/v2ray-core/releases/download/#{version}/v2ray-linux-32.zip",
+     x86_64: "https://github.com/v2fly/v2ray-core/releases/download/#{version}/v2ray-linux-64.zip"
+  })
+  source_sha256({
+    aarch64: '7d3380b9080abc42dae5efa37a15413f4df2b6b645a992c5046d7d53a16ab876',
+     armv7l: '7d3380b9080abc42dae5efa37a15413f4df2b6b645a992c5046d7d53a16ab876',
+       i686: 'efbe54462b11f27343da1a2585cc762944180b524f8f31d911b0e6bdc0cd33a8',
+     x86_64: '82a7bf0b37ce2fda36d9e0040d71a494170026841735e20d708717b99ca0fe9b'
+  })
+
+  no_compile_needed
 
   def self.install
-    FileUtils.mkdir_p(CREW_DEST_PREFIX + '/share/v2ray')
-    FileUtils.cp_r('.', CREW_DEST_PREFIX + '/share/v2ray')
-    FileUtils.mkdir_p(CREW_DEST_PREFIX + '/bin')
-    FileUtils.cd(CREW_DEST_PREFIX + '/bin') do
-      FileUtils.ln_s(CREW_PREFIX + '/share/v2ray/v2ray', 'v2ray')
-      FileUtils.ln_s(CREW_PREFIX + '/share/v2ray/v2ctl', 'v2ctl')
-    end
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/etc/v2ray #{CREW_DEST_PREFIX}/share/v2ray]
+    FileUtils.chmod 0o755, 'v2ray'
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/v2ray"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/v2ray/v2ray", "#{CREW_DEST_PREFIX}/bin/v2ray"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/v2ray/config.json", "#{CREW_DEST_PREFIX}/etc/v2ray/config.json"
   end
 
   def self.postinstall
-    FileUtils.chmod('u=x,go=x', CREW_PREFIX + '/share/v2ray/v2ray')
-    FileUtils.chmod('u=x,go=x', CREW_PREFIX + '/share/v2ray/v2ctl')
-    puts
-    puts 'To start using v2ray, type `v2ray`.'.lightblue
-    puts
-    puts 'You can use customer config. about how to use v2ray command, see https://www.v2ray.com/'.lightblue
-    puts 'If you want to remove v2ray'.lightblue
-    puts
-    puts 'crew remove v2ray'.lightblue
-    puts
+    ExitMessage.add <<~EOT.lightblue
+      To start using v2ray, type `v2ray`.
+
+      For more information, see https://www.v2fly.org/en_US/guide/start.html#novice-guide?
+    EOT
   end
 end

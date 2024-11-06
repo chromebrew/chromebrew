@@ -1,46 +1,59 @@
 # Adapted from Arch Linux caja PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/blob/packages/caja/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Caja < Package
+class Caja < Autotools
   description 'Caja file manager for the MATE desktop'
   homepage 'https://mate-desktop.org'
-  @_ver = '1.25.2'
-  version @_ver
-  compatibility 'all'
+  version "1.28.0-#{CREW_ICU_VER}"
   license 'GPL-2+ LGPL-2+'
-  source_url "https://pub.mate-desktop.org/releases/#{@_ver.rpartition('.')[0]}/caja-#{@_ver}.tar.xz"
-  source_sha256 'a0737ce87b53add2fc68285dbd52a3cf25ace20f0f56503ebe6dd47e7b5cc124'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://pub.mate-desktop.org/releases/#{version.split('-').first.rpartition('.')[0]}/caja-#{version.split('-').first}.tar.xz"
+  source_sha256 '1e3014ce1455817ec2ef74d09efdfb6835d8a372ed9a16efb5919ef7b821957a'
+  binary_compression 'tar.zst'
 
-  depends_on 'exempi'
-  depends_on 'gvfs'
-  depends_on 'libexif'
-  depends_on 'libsm'
-  depends_on 'mate_desktop'
-  depends_on 'libnotify'
-  depends_on 'sommelier'
+  binary_sha256({
+    aarch64: '0a5706de0ac174f4eb8c2015a800a04bd1902d82913528e4084f66cf515c3e7c',
+     armv7l: '0a5706de0ac174f4eb8c2015a800a04bd1902d82913528e4084f66cf515c3e7c',
+     x86_64: 'c568946505c011070dd603fe5ecc5b5354ecadf04a58e83dc34d0bde7d323e8a'
+  })
 
-  def self.build
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
-                LDFLAGS='-flto=auto' \
-            ./configure #{CREW_OPTIONS}"
-    
-    # https://bugzilla.gnome.org/show_bug.cgi?id=656231
-    system "sed -i 's/ -shared / -Wl,-O1,--as-needed\\0/g' libtool"
-    
-    system 'make'
-  end
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'dconf' # R
+  depends_on 'exempi' # R
+  depends_on 'expat' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' # R
+  depends_on 'gtk_layer_shell' # R
+  depends_on 'gvfs' => :build
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
+  depends_on 'libbsd' # R
+  depends_on 'libexif' # R
+  depends_on 'libice' # R
+  depends_on 'libmd' # R
+  depends_on 'libnotify' # R
+  depends_on 'libsm' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxext' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxrandr' # R
+  depends_on 'libxrender' # R
+  depends_on 'mate_desktop' # R
+  depends_on 'pango' # R
+  depends_on 'util_linux' # R
+  depends_on 'wayland' # R
+  depends_on 'zlib' # R
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-    
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-  end
+  gnome
 
-  def self.check
-    system 'make', 'check'
-  end
+  configure_options '--enable-wayland'
 end

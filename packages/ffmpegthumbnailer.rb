@@ -1,44 +1,27 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Ffmpegthumbnailer < Package
+class Ffmpegthumbnailer < CMake
   description 'FFmpegthumbnailer is a lightweight video thumbnailer that can be used by file managers to create thumbnails for your video files.'
   homepage 'https://github.com/dirkvdb/ffmpegthumbnailer'
-  version '2.2.0-1'
+  version '2.2.2-1b5a779'
   license 'GPL-2'
-  compatibility 'all'
-  source_url 'https://github.com/dirkvdb/ffmpegthumbnailer/releases/download/2.2.0/ffmpegthumbnailer-2.2.0.tar.bz2'
-  source_sha256 'e5c31299d064968198cd378f7488e52cd5e738fac998eea780bc77d7f32238c2'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/dirkvdb/ffmpegthumbnailer.git'
+  git_hashtag '1b5a77983240bcf00a4ef7702c07bcd8f4e5f97c'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.0_armv7l/ffmpegthumbnailer-2.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.0_armv7l/ffmpegthumbnailer-2.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.0_i686/ffmpegthumbnailer-2.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.0_x86_64/ffmpegthumbnailer-2.2.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'd87b2c125e50ecc2556594995889eba190dff239f3e3d9707f7cb73dc4a6adc8',
-     armv7l: 'd87b2c125e50ecc2556594995889eba190dff239f3e3d9707f7cb73dc4a6adc8',
-       i686: 'e47f302bf25775143bd1e7b0a62af36dfe734d7f9766c5e9a13c4eee54b69701',
-     x86_64: '1ca2b6e0d414f56c48952814a8470e01c012d11434ab3c26fa28dfbb39b13890',
+  binary_sha256({
+    aarch64: 'fd757ed0f568529db3b8cf0fa804fef50710f00a513ccc5dc85c940d4f400342',
+     armv7l: 'fd757ed0f568529db3b8cf0fa804fef50710f00a513ccc5dc85c940d4f400342',
+     x86_64: 'e3093743ca3ecdc3b0638aac7c12d94bb7ec450fc07696ec20d155151f370ffb'
   })
 
-  depends_on 'ffmpeg'
+  depends_on 'ffmpeg' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libpng' # R
+  depends_on 'zlib' # R
 
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      if ARCH == 'x86_64'
-        system "cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_GIO=ON -DENABLE_THUMBNAILER=ON -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DLIB_SUFFIX=64"
-      else
-        system "cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_GIO=ON -DENABLE_THUMBNAILER=ON -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}"
-      end
-      system 'make'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'build' do
-      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    end
-  end
+  cmake_options '-DENABLE_GIO=ON -DENABLE_THUMBNAILER=ON'
 end

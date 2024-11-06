@@ -1,45 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Fakeroot < Package
+class Fakeroot < Autotools
   description 'Run a command in an environment faking root privileges for file manipulation.'
   homepage 'https://wiki.debian.org/FakeRoot'
-  version '1.25.3'
+  version '1.35.1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://httpredir.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.25.3.orig.tar.gz'
-  source_sha256 '8e903683357f7f5bcc31b879fd743391ad47691d4be33d24a76be3b6c21e956c'
+  source_url "https://deb.debian.org/debian/pool/main/f/fakeroot/fakeroot_#{version}.orig.tar.gz"
+  source_sha256 '6a0de53b2de05277d4e6d4a884eb0de7a8ad467b82c07a6f8f2f6a629e655fdc'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fakeroot/1.25.3_armv7l/fakeroot-1.25.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fakeroot/1.25.3_armv7l/fakeroot-1.25.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fakeroot/1.25.3_i686/fakeroot-1.25.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fakeroot/1.25.3_x86_64/fakeroot-1.25.3-chromeos-x86_64.tar.xz',
-  })
   binary_sha256({
-    aarch64: '92c44951d47177c59c5afcb0f58a9628e469f4f29586e85ace47eb84bbfddbe7',
-     armv7l: '92c44951d47177c59c5afcb0f58a9628e469f4f29586e85ace47eb84bbfddbe7',
-       i686: 'b689d26d69b8760b6a083d4119c8240aa26a6d4cf7efb70fd547901badd29ad2',
-     x86_64: 'df77a7108f6dfc836eda895fed8c7b84274828af41d0e5e4eaa1d1ca0ba0cf9d'
+    aarch64: '64542b42054b52f1ca987a1c2974da60d6080d03a762d4e6527f0921c18031f8',
+     armv7l: '64542b42054b52f1ca987a1c2974da60d6080d03a762d4e6527f0921c18031f8',
+       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
   })
 
   depends_on 'libcap'
 
-  def self.patch
-    # Needed since build fails when building other language
-    # manpages.
-    system "sed -i '/SUBDIRS/d' doc/Makefile.am"
-  end
-
-  def self.build
-    system './bootstrap'
-    system "env CFLAGS='-flto=auto -fuse-ld=gold' \
-      CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1074945
+  pre_configure_options 'CFLAGS=-Wno-incompatible-pointer-types'
 end

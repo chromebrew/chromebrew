@@ -2,35 +2,31 @@ require 'package'
 
 class Libmodplug < Package
   description 'A MOD playing library'
-  homepage 'http://modplug-xmms.sourceforge.net/'
-  version '0.8.9.0'
-  license 'public-domain'
+  homepage 'https://modplug-xmms.sourceforge.net/'
+  version '0.8.9.0-1'
   compatibility 'all'
+  license 'public-domain'
   source_url 'https://downloads.sourceforge.net/modplug-xmms/libmodplug-0.8.9.0.tar.gz'
   source_sha256 '457ca5a6c179656d66c01505c0d95fafaead4329b9dbaa0f997d00a3508ad9de'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmodplug/0.8.9.0_armv7l/libmodplug-0.8.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmodplug/0.8.9.0_armv7l/libmodplug-0.8.9.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmodplug/0.8.9.0_i686/libmodplug-0.8.9.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmodplug/0.8.9.0_x86_64/libmodplug-0.8.9.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'bc64a7b24b9d2fbfb92026b77566d8c8f2bb404ee5a2afefa808891f878e1760',
-     armv7l: 'bc64a7b24b9d2fbfb92026b77566d8c8f2bb404ee5a2afefa808891f878e1760',
-       i686: '6958758b7981730fe6f1fc9bc1f257b73364902d44322fc987de8f29180fe07a',
-     x86_64: '382325c8131ba25044af340d04d136c98cf101cffd2aa4dccc015b01afe84c38'
+    aarch64: 'fd7b70d7e739910c13fcc14c1064c87d8824adea98f709be46e730cd0b21f2d3',
+     armv7l: 'fd7b70d7e739910c13fcc14c1064c87d8824adea98f709be46e730cd0b21f2d3',
+       i686: '2ae9edf8e240eb3c2f878d3f547ec2749fc19c00f3d5ad52b6760d541500a739',
+     x86_64: '4e6e48ce53a6008c438ef69ebe54de75257e825bda156b539204f67c9f359b51'
   })
 
   def self.build
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 
   def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.check
+    system 'make', 'check'
   end
 end

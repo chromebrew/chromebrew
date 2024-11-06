@@ -1,41 +1,21 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libdeflate < Package
+class Libdeflate < CMake
   description 'Heavily optimized library for DEFLATE compression and decompression'
   homepage 'https://github.com/ebiggers/libdeflate/'
-  version '1.7-1'
-  compatibility 'all'
+  version '1.19'
   license 'MIT'
-  source_url 'https://github.com/ebiggers/libdeflate/archive/v1.7.tar.gz'
-  source_sha256 'a5e6a0a9ab69f40f0f59332106532ca76918977a974e7004977a9498e3f11350'
+  compatibility 'all'
+  source_url 'https://github.com/ebiggers/libdeflate.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdeflate/1.7-1_armv7l/libdeflate-1.7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdeflate/1.7-1_armv7l/libdeflate-1.7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdeflate/1.7-1_i686/libdeflate-1.7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdeflate/1.7-1_x86_64/libdeflate-1.7-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '1195e3098e35caf102d85f6e094c0e4e13d0f4065bf43447168b5c3f53e59130',
-     armv7l: '1195e3098e35caf102d85f6e094c0e4e13d0f4065bf43447168b5c3f53e59130',
-       i686: 'bbbd9b82d8e241e6ac6db6d50ef217e4fcb8d7d029a6fe2bab514401d87f809c',
-     x86_64: 'cf08842579addb9c9abe37b6bff1ff8071401c2f37c5e8278a323f40878c71e0'
+    aarch64: '9c2808b40e8257439943369bf44153758e706f09446b9b92de42391ebb52dd00',
+     armv7l: '9c2808b40e8257439943369bf44153758e706f09446b9b92de42391ebb52dd00',
+       i686: '0c5306cc7692ae9f5061a5a89e13da1bb1ece3240366238613301e69003c7236',
+     x86_64: 'b339d1e1e71fcf0aed63e4ed3cd52a5b595c4401829e471f48b83236d895e378'
   })
 
-  def self.build
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'
-      LDFLAGS='-flto=auto' \
-      PREFIX=#{CREW_PREFIX} \
-      LIBDIR=#{CREW_LIB_PREFIX} \
-      make"
-  end
-
-  def self.install
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'
-      LDFLAGS='-flto=auto' \
-      DESTDIR=#{CREW_DEST_DIR} \
-      PREFIX=#{CREW_PREFIX} \
-      LIBDIR=#{CREW_LIB_PREFIX} \
-      make install"
-  end
+  depends_on 'glibc' # R
 end

@@ -1,35 +1,23 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_wheel < Package
+class Py3_wheel < Pip
   description 'Wheel is the binary package format for python.'
   homepage 'https://wheel.readthedocs.io/'
-  @_ver = '0.36.2'
-  version @_ver
+  version "0.44.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/pypa/wheel.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_wheel/0.36.2_armv7l/py3_wheel-0.36.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_wheel/0.36.2_armv7l/py3_wheel-0.36.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_wheel/0.36.2_i686/py3_wheel-0.36.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_wheel/0.36.2_x86_64/py3_wheel-0.36.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '06b0135ace731c342706f307a5c41f52f73a59957be395f9fdf25af89000f77a',
-     armv7l: '06b0135ace731c342706f307a5c41f52f73a59957be395f9fdf25af89000f77a',
-       i686: '602342af626c62f894bbc133b9cceed7bd8caffb0f9eb655899639714bb3ddc3',
-     x86_64: '90da6888403ebdddf46183bc8e25129574e629d69effa868b074e8a8ef84c2ae'
+    aarch64: '6bc46689a5fc62323501cae3d69971a2209f65975d7aa8d34b0f3670a0406c30',
+     armv7l: '6bc46689a5fc62323501cae3d69971a2209f65975d7aa8d34b0f3670a0406c30',
+       i686: '8fbfd17fcba34451310f156338b71eb6a0361ded802295817c646fdd83f610d9',
+     x86_64: '83d46929fd6bb77c0e2a7e06f00c31ecb12187c4f55e8eae45cc325475bc4d53'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3'
+  depends_on 'py3_packaging'
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

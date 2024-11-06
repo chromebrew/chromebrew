@@ -3,46 +3,80 @@ require 'package'
 class Xterm < Package
   description 'The xterm program is a terminal emulator for the X Window System.'
   homepage 'https://invisible-island.net/xterm/'
-  version '362'
+  version '390'
   license 'MIT'
-  compatibility 'all'
-  source_url "https://invisible-mirror.net/archives/xterm/xterm-362.tgz"
-  source_sha256 '1d4ffe226fa8f021859bbc3007788ff63a46a31242d9bd9a7bd7ebe24e81aca2'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://github.com/ThomasDickey/xterm-snapshots.git'
+  git_hashtag "xterm-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/362_armv7l/xterm-362-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/362_armv7l/xterm-362-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/362_i686/xterm-362-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/362_x86_64/xterm-362-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'e61f8a1bfc06e700ec42b0d3f7e97b9b1e0f8120a33fbfc6efeba3eabda24126',
-     armv7l: 'e61f8a1bfc06e700ec42b0d3f7e97b9b1e0f8120a33fbfc6efeba3eabda24126',
-       i686: '7912500763cca0d85c1f6d84ec4cce6cbd5b4c9a70090dfe49cc94a395b7b84b',
-     x86_64: 'c6dd0a0eebbe9a84af571c79ad1ecb925b1a16333bb6e75280f5818c86faedb5',
+  binary_sha256({
+    aarch64: '6248935abd526d98dedaf033475bf4ef967dec6f450cd4ffa0536f3a61ff31e1',
+     armv7l: '6248935abd526d98dedaf033475bf4ef967dec6f450cd4ffa0536f3a61ff31e1',
+     x86_64: '804f23057165662f203994db4614ca2595a1a2a403a1b35ba8909501fb209a6d'
   })
 
-  depends_on 'pcre'
+  depends_on 'libxaw' => :build
+  depends_on 'freetype' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libice' # R
+  depends_on 'libutempter' # R
+  depends_on 'libx11' # R
+  depends_on 'libxaw' # R
+  depends_on 'libxext' # R
+  depends_on 'libxft' # R
+  depends_on 'libxinerama' # R
+  depends_on 'libxmu' # R
+  depends_on 'libxpm' # R
+  depends_on 'libxt' # R
+  depends_on 'luit' => :build
+  depends_on 'ncurses' # R
+  depends_on 'pcre' # R
   depends_on 'sommelier'
 
+  no_env_options
+
+  def self.patch
+    system "sed -i '/^LDFLAGS/ s/$/ -DUSE_TERMINFO=1 -ltinfo/' Makefile.in"
+  end
+
   def self.build
-    system './configure',
-           '--with-x',
-           '--with-pcre',
-           '--with-xinerama',
-           '--enable-dabbrev',
-           '--enable-toolbar',
-           '--with-pkg-config',
-           '--enable-exec-xterm',
-           '--enable-16bit-chars',
-           '--enable-dec-locator',
-           '--enable-double-buffer',
-           '--enable-readline-mouse',
-           '--enable-regis-graphics',
-           '--enable-sixel-graphics',
-           "--prefix=#{CREW_PREFIX}",
-           "--with-xpm=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
+      --disable-imake \
+      --enable-16bit-chars \
+      --enable-256-color \
+      --enable-88-color \
+      --enable-ansi-color \
+      --enable-broken-osc \
+      --enable-broken-st \
+      --enable-dabbrev \
+      --enable-dec-locator \
+      --enable-double-buffer \
+      --enable-doublechars \
+      --enable-exec-xterm \
+      --enable-freetype \
+      --enable-i18n \
+      --enable-load-vt-fonts \
+      --enable-logging \
+      --enable-luit \
+      --enable-mini-luit \
+      --enable-narrowproto \
+      --enable-readline-mouse \
+      --enable-regis-graphics \
+      --enable-sixel-graphics \
+      --enable-tcap-query \
+      --enable-toolbar \
+      --enable-warnings \
+      --enable-wide-chars \
+      --with-app-defaults=#{CREW_PREFIX}/share/X11/app-defaults/ \
+      --with-pcre \
+      --with-pkg-config \
+      --with-tty-group=tty \
+      --with-utempter \
+      --with-x \
+      --with-xinerama \
+      --with-xpm=#{CREW_PREFIX}"
     system 'make'
   end
 

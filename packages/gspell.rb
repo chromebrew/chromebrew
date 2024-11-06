@@ -1,50 +1,45 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gspell < Package
+class Gspell < Meson
   description 'a flexible API to implement the spell checking in a GTK+ application'
   homepage 'https://wiki.gnome.org/Projects/gspell'
-  version '1.9.1-2'
+  version "1.13.1-#{CREW_ICU_VER}"
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url 'https://download.gnome.org/sources/gspell/1.9/gspell-1.9.1.tar.xz'
-  source_sha256 'dcbb769dfdde8e3c0a8ed3102ce7e661abbf7ddf85df08b29915e92cd723abdd'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/gspell.git'
+  git_hashtag version.split('-').first
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.9.1-2_armv7l/gspell-1.9.1-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.9.1-2_armv7l/gspell-1.9.1-2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.9.1-2_x86_64/gspell-1.9.1-2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'b3d710b9a07b831b1d7b771bd563367e5ebf40adb880238824c4a906ba3118bb',
-     armv7l: 'b3d710b9a07b831b1d7b771bd563367e5ebf40adb880238824c4a906ba3118bb',
-     x86_64: 'e5f3df2f932455279ab3cd4ac3828684644524e39e4a53c6b54de62c30e2ad2b'
+    aarch64: '6ac757e5b1395d38c5c0e71c73520221da80ba1eece3e1b9a193af908ca32fae',
+     armv7l: '6ac757e5b1395d38c5c0e71c73520221da80ba1eece3e1b9a193af908ca32fae',
+     x86_64: '1bd1ceda2c88ffb2885beba6cec7583e0efb16e4478d9be67b7e4e630461123c'
   })
 
-  depends_on 'gtk3'
-  depends_on 'enchant'
-  depends_on 'libxml2'
-  depends_on 'iso_codes'
+  depends_on 'aspell' => :build
+  depends_on 'at_spi2_core' # R
+  depends_on 'autoconf_archive' => :build
+  depends_on 'cairo' # R
+  depends_on 'enchant' # R
+  depends_on 'gcc_lib' => :build
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'vala' => :build
-  depends_on 'gtk_doc' => :build
   depends_on 'graphite' => :build
-  depends_on 'harfbuzz' => :build
-  depends_on 'llvm' => :build
-  depends_on 'hunspell'
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'hunspell' # L
+  depends_on 'icu4c' # R
+  depends_on 'iso_codes' => :build
+  depends_on 'libxml2' => :build
+  depends_on 'llvm19_lib' => :build
+  depends_on 'ncurses' => :build
+  depends_on 'pango' # R
+  depends_on 'vala' => :build
+  depends_on 'zlib' # R
 
-  ENV['XML_CATALOG_FILES'] = "#{CREW_PREFIX}/etc/xml/catalog"
+  gnome
 
-  def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    system "#{CREW_ENV_OPTIONS} \
-      ./configure  #{CREW_OPTIONS} --enable-gtk-doc-html=no"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  meson_options '-Dgtk_doc=false -Dtests=false'
 end

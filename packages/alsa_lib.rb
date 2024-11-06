@@ -1,41 +1,33 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Alsa_lib < Package
+class Alsa_lib < Autotools
   description 'The Advanced Linux Sound Architecture (ALSA) provides audio and MIDI functionality to the Linux operating system.'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
-  version '1.2.4'
+  version "1.2.12-#{CREW_PY_VER}"
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://github.com/alsa-project/alsa-lib/archive/v#{version}.tar.gz"
-  source_sha256 '0c6ab052d7ea980a01d0208da5e5e10849bd16c4c9961bbd5d2665083b74a6c0'
+  source_url "https://github.com/alsa-project/alsa-lib/archive/v#{version.split('-').first}.tar.gz"
+  source_sha256 'f067dbba9376e5bbbb417b77751d2a9f2f277c54fb3a2b5c023cc2c7dfb4e3c1'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.4_armv7l/alsa_lib-1.2.4-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.4_armv7l/alsa_lib-1.2.4-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.4_i686/alsa_lib-1.2.4-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.4_x86_64/alsa_lib-1.2.4-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-     aarch64: '07cb624cc829dc5f17dcc5d6a9f0a7ea67798bdbc4c27a7a4e075149be91143f',
-      armv7l: '07cb624cc829dc5f17dcc5d6a9f0a7ea67798bdbc4c27a7a4e075149be91143f',
-        i686: '3baa9db99ab259ba52b8769fd5720da076620a30981133b4143b9e5907698227',
-      x86_64: '20132936d9c3ba6fa0126aad6926996f47886ace79548be152cb8aa6975c626d',
+  binary_sha256({
+    aarch64: '570ee5e7d7164a3e6c67f0cc28a72c5052e0520ca1489af80bf5d1afa1272cf2',
+     armv7l: '570ee5e7d7164a3e6c67f0cc28a72c5052e0520ca1489af80bf5d1afa1272cf2',
+       i686: '8b7e69705b7f7fa70c9e523b63cc65ad14dd9287c56574c61d0843ca65aeb990',
+     x86_64: '7d9cf5e9b5a2cb154f58ec95febfcc7dcb9e83c27fa4818c939507135ea5f08c'
   })
 
-  depends_on 'python3'
+  depends_on 'glibc' # R
+  depends_on 'python3' # L
 
   def self.build
+    @py_ver = `python -c "import sys; version = '.'.join(map(str, sys.version_info[:2])) ; print(version)"`.chomp
     system 'autoreconf -fiv'
-    system "./configure #{CREW_OPTIONS} \
-       --with-alsalconfdir=#{CREW_PREFIX}/etc/alsa/conf.d \
+    system "mold -run ./configure #{CREW_CONFIGURE_OPTIONS} \
        --without-debug \
        --disable-maintainer-mode \
-       --with-pythonlibs=-lpython3.9 \
-       --with-pythonincludes=-I#{CREW_PREFIX}/include/python3.9"
+       --with-pythonlibs=-lpython#{@py_ver} \
+       --with-pythonincludes=-I#{CREW_PREFIX}/include/python#{@py_ver}"
     system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

@@ -2,32 +2,30 @@ require 'package'
 
 class Libxcursor < Package
   description 'X.org X Cursor management library'
-  homepage 'http://www.x.org'
-  @_ver = '1.2.0'
-  version @_ver
+  homepage 'https://www.x.org/wiki/'
+  version '1.2.1'
   license 'MIT'
-  compatibility 'all'
-  source_url "https://www.x.org/archive/individual/lib/libXcursor-#{@_ver}.tar.gz"
-  source_sha256 'ad5b2574fccaa4c3fa67b9874fbed863d29ad230c784e9a08b20692418f6a1f8'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://www.x.org/archive/individual/lib/libXcursor-#{version}.tar.gz"
+  source_sha256 '77f96b9ad0a3c422cfa826afabaf1e02b9bfbfc8908c5fa1a45094faad074b98'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcursor/1.2.0_armv7l/libxcursor-1.2.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcursor/1.2.0_armv7l/libxcursor-1.2.0-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcursor/1.2.0_i686/libxcursor-1.2.0-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcursor/1.2.0_x86_64/libxcursor-1.2.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-     aarch64: 'e605f3d58857df9ccdf5abdc8e9b3c16b8f424953406fb04585741504cb443bf',
-      armv7l: 'e605f3d58857df9ccdf5abdc8e9b3c16b8f424953406fb04585741504cb443bf',
-        i686: '8c91e2a04ee4749324447217d5da5981275a6d847c691aebe74ca96bb791fe33',
-      x86_64: 'bc4900d480ea5e94ded6b4b81c9a45a41216b977754ab3cfa5a0862bb02c2279',
+  binary_sha256({
+    aarch64: 'a97308abd1cfddffb54a08bbfd1018ec8d33a139e1cace109815a0056889369a',
+     armv7l: 'a97308abd1cfddffb54a08bbfd1018ec8d33a139e1cace109815a0056889369a',
+     x86_64: 'c107c34d8e95d54f6552dd17c105f062a1d27016421db5628298c118bf992708'
   })
 
   depends_on 'libxrender'
   depends_on 'libxfixes'
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

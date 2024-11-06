@@ -1,35 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Tmux < Package
+class Tmux < Autotools
   description 'tmux is a terminal multiplexer'
   homepage 'https://tmux.github.io/'
-  version '2.9'
+  version '3.5'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/tmux/tmux/releases/download/2.9/tmux-2.9.tar.gz'
-  source_sha256 '34901232f486fd99f3a39e864575e658b5d49f43289ccc6ee57c365f2e2c2980'
+  source_url 'https://github.com/tmux/tmux.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tmux/2.9_armv7l/tmux-2.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tmux/2.9_armv7l/tmux-2.9-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tmux/2.9_i686/tmux-2.9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tmux/2.9_x86_64/tmux-2.9-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '99938a59550bdbc0354332c6960a8648fc5096d611ae0b595c1b806d6fbe9064',
-     armv7l: '99938a59550bdbc0354332c6960a8648fc5096d611ae0b595c1b806d6fbe9064',
-       i686: 'b8266f980bb84415518a129aa816486e76a518fe52766fbb683d2c3144ef106b',
-     x86_64: 'd16ffdb0c0cc7378587e43a06823404061e7db65a4fcbcaf7f59548c3eb3646f',
+  binary_sha256({
+    aarch64: 'ee0d154b58e740eb8c518b24d0b5757ed5d1589fed73073445ae1081b948f6ca',
+     armv7l: 'ee0d154b58e740eb8c518b24d0b5757ed5d1589fed73073445ae1081b948f6ca',
+       i686: 'e7c110ed9a390bfb963d6ed70c50f6a0039823fd802ab4aa425a9d831f0d9271',
+     x86_64: '3856197ff401420c0cf0a62c47d5e1c3f44f5056e3f46848c6b6963fc9ed2538'
   })
 
-  depends_on 'libevent'
-
-  def self.build
-    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses ./configure --prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'libevent' # R
+  depends_on 'ncurses' # R
 end

@@ -3,36 +3,36 @@ require 'package'
 class Libsecret < Package
   description 'GObject based library for accessing the Secret Service API.'
   homepage 'https://github.com/GNOME/libsecret'
-  version '0.20.4'
+  version '0.20.5'
   license 'LGPL-2.1+ and Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/GNOME/libsecret/archive/0.20.4.tar.gz'
-  source_sha256 'ca34e69b210df221ae5da6692c2cb15ef169bb4daf42e204442f24fdb0520d4b'
+  source_url 'https://github.com/GNOME/libsecret/archive/0.20.5.tar.gz'
+  source_sha256 'b33b9542222ea8866f6ff2d31c0ad373877c2277db546ca00cc7fdda9cbab1c3'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsecret/0.20.4_armv7l/libsecret-0.20.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsecret/0.20.4_armv7l/libsecret-0.20.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsecret/0.20.4_i686/libsecret-0.20.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsecret/0.20.4_x86_64/libsecret-0.20.4-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '72e98cbae2d269061a3d2ca137a8437642d9cc72a130f02fecddd405dd968c95',
-     armv7l: '72e98cbae2d269061a3d2ca137a8437642d9cc72a130f02fecddd405dd968c95',
-       i686: '3a58950489de1b2dc1cdb57c81f73b6aca116dac47e13ee486c0bbf513c54dff',
-     x86_64: '8d4f30362b10c787837da9ed3568d27933f22cea9f6b605ad5f8fec20b5e755d',
+  binary_sha256({
+    aarch64: '0d9ac5b80df9e1fa0c09c790e1f50b715304ee88e0af7e9fe1f990f9e6d0457e',
+     armv7l: '0d9ac5b80df9e1fa0c09c790e1f50b715304ee88e0af7e9fe1f990f9e6d0457e',
+       i686: 'b95c5aafd5357157bf8cba2665ff5dda57df63846b695d717d984952645beb36',
+     x86_64: '4b4595d60fae4c5b5b8c23c1976c9cbafe1f8a43341486c682854ddad9253440'
   })
 
   depends_on 'gobject_introspection' => :build
   depends_on 'libgcrypt' => :build
   depends_on 'vala' => :build
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
 
   def self.build
-    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} -Dgtk_doc=false -Dmanpage=false build"
+    system "meson setup #{CREW_MESON_OPTIONS} \
+      -Dgtk_doc=false \
+      -Dmanpage=false \
+      build"
     system 'meson configure build'
-    system 'ninja -v -C build'
+    system 'mold -run samu -C build'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C build install"
   end
 end

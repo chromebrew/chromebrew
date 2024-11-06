@@ -1,43 +1,34 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Baobab < Package
+class Baobab < Meson
   description 'Disk Usage Analyzer (also known as baobab) scans folders, devices or remote locations and and reports on the disk space consumed by each element.'
   homepage 'https://wiki.gnome.org/Apps/DiskUsageAnalyzer'
-  version '3.35.1'
+  version '45.0'
   license 'GPL-2+ and FDL-1.1+'
-  compatibility 'all'
-  source_url 'https://ftp.gnome.org/pub/gnome/sources/baobab/3.35/baobab-3.35.1.tar.xz'
-  source_sha256 '1b6b5e533802a9293bd061cd0a49049664c310f814e39e40b310ae954342fe83'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/baobab.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/baobab/3.35.1_armv7l/baobab-3.35.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/baobab/3.35.1_armv7l/baobab-3.35.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/baobab/3.35.1_i686/baobab-3.35.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/baobab/3.35.1_x86_64/baobab-3.35.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'c71f8f044a796984990f52b33953c22e9a197ca547123f65cad0b810bd04a53f',
-     armv7l: 'c71f8f044a796984990f52b33953c22e9a197ca547123f65cad0b810bd04a53f',
-       i686: '5eda1f765da12d94fdc6b8e9de37b62608edf215e7b07941b3328523a3ebb074',
-     x86_64: '0fac89defc368a81745bc7fae11dd16c9ea0008820a0bafabbf85d837426f9ae'
+    aarch64: '7405ce4a84ca2ffeab17643a9efa11ced62a1687ee3c8433215bda8f177b541f',
+     armv7l: '7405ce4a84ca2ffeab17643a9efa11ced62a1687ee3c8433215bda8f177b541f',
+     x86_64: '0e1c62920726909f86756309f9a1a2efc7a520eaa78c63d88678bdbd4ea11e67'
   })
 
-  depends_on 'gtk3'
-  depends_on 'gsettings_desktop_schemas'
-  depends_on 'itstool' => :build
+  depends_on 'cairo' # R
+  depends_on 'desktop_file_utils' => :build
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gsettings_desktop_schemas' => :build
+  depends_on 'gtk4' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'py3_itstool' => :build
+  depends_on 'libadwaita' # R
+  depends_on 'pango' # R
   depends_on 'vala' => :build
-  depends_on 'sommelier'
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' => :build
 
-  def self.build
-    system "meson  --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} builddir"
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
-
-  def self.postinstall
-    system "update-mime-database #{CREW_PREFIX}/share/mime"
-  end
+  gnome
 end

@@ -1,40 +1,31 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_impacket < Package
+class Py3_impacket < Pip
   description 'Impacket provides network protocols constructors and dissectors.'
   homepage 'https://www.secureauth.com/labs/open-source-tools/impacket/'
-  @_ver = '0.9.22'
-  version @_ver
+  version "0.12.0-#{CREW_PY_VER}"
   license 'Apache-2.0-with-impacket-modifications'
   compatibility 'all'
-  source_url 'https://github.com/SecureAuthCorp/impacket.git'
-  git_hashtag "impacket_#{@_ver.gsub('.', '_')}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_impacket/0.9.22_armv7l/py3_impacket-0.9.22-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_impacket/0.9.22_armv7l/py3_impacket-0.9.22-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_impacket/0.9.22_x86_64/py3_impacket-0.9.22-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '207d25e818e1bbeaccdfc8461459a138d109ab0542bb3576353f9e79d5b57399',
-     armv7l: '207d25e818e1bbeaccdfc8461459a138d109ab0542bb3576353f9e79d5b57399',
-     x86_64: '795f9396ffaa32c7f197dc732bd36cdcbe71965514e75ae205f4d9729ac288e5'
+    aarch64: '2c1bbc2d3813eff21b4217614ca98606234e123dc930f52a05425d4ddf7ee253',
+     armv7l: '2c1bbc2d3813eff21b4217614ca98606234e123dc930f52a05425d4ddf7ee253',
+       i686: '93f8bbc137ffd9a26cfa9f694de720f0007b82084cd9b8c945cc743992f9be8c',
+     x86_64: 'ad274a4893be58b67d62438d2c02f77adb928f48e8e099e15e9b21f732a10bf0'
   })
 
   depends_on 'py3_pycryptodomex'
+  depends_on 'py3_cryptography'
   depends_on 'py3_flask'
   depends_on 'py3_pyasn1'
   depends_on 'py3_pyopenssl'
   depends_on 'py3_six'
   depends_on 'py3_ldap3'
   depends_on 'py3_ldapdomaindump'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
+  depends_on 'rust' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

@@ -1,35 +1,25 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_cffi < Package
+class Py3_cffi < Pip
   description 'C Foreign Function Interface for Python calling C code.'
   homepage 'https://cffi.readthedocs.io/'
-  @_ver = '1.14.6'
-  version @_ver
+  version "1.17.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://files.pythonhosted.org/packages/2e/92/87bb61538d7e60da8a7ec247dc048f7671afe17016cd0008b3b710012804/cffi-1.14.6.tar.gz'
-  source_sha256 'c9a875ce9d7fe32887784274dd533c57909b7b1dcadcc128a2ac21331a9765dd'
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.14.6_armv7l/py3_cffi-1.14.6-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.14.6_armv7l/py3_cffi-1.14.6-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.14.6_i686/py3_cffi-1.14.6-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.14.6_x86_64/py3_cffi-1.14.6-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'b8fb5b6b8f7d866d80901792934034f6c1c145f06288e47600d16cbfe69a26e5',
-     armv7l: 'b8fb5b6b8f7d866d80901792934034f6c1c145f06288e47600d16cbfe69a26e5',
-       i686: '68be14b16f5c18ff3476ea640bd287584581651a0acbba025b8032560b583a31',
-     x86_64: 'd75a398ba7e4196843558c7f32a7692347d0c0d280fcd6b5fe5c5c285d5e441b'
+    aarch64: '15288b635c9fbe8a4c3314323af962ed3d04896e182c2b12cdae3e4ce303de99',
+     armv7l: '15288b635c9fbe8a4c3314323af962ed3d04896e182c2b12cdae3e4ce303de99',
+       i686: '29ace8d2b68c330c4500405c1779b3dfb4572276801babcbd157e08a3eac436b',
+     x86_64: '91a092dead86e56e44730f3c53f180a44f38e830acca92b6a50ea9f44b9bb8ea'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libffi' # R
+  depends_on 'python3' # L
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

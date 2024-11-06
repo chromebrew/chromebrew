@@ -1,27 +1,22 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gtksourceview_4 < Package
+class Gtksourceview_4 < Meson
   description 'Source code editing widget'
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
-  @_ver = '4.8.1'
-  version @_ver
+  version '4.8.3'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://gitlab.gnome.org/GNOME/gtksourceview/-/archive/#{@_ver}/gtksourceview-#{@_ver}.tar.bz2"
-  source_sha256 'ec16a6a61d643e278d3a02828257a59d802d4ae740247bf03fdebf10d9401635'
+  source_url 'https://gitlab.gnome.org/GNOME/gtksourceview.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_4/4.8.1_armv7l/gtksourceview_4-4.8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_4/4.8.1_armv7l/gtksourceview_4-4.8.1-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_4/4.8.1_x86_64/gtksourceview_4-4.8.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'b6e5a158eaf5853eadcc5fcf3057c84b60800113358e3db76b1c9b716faec11e',
-     armv7l: 'b6e5a158eaf5853eadcc5fcf3057c84b60800113358e3db76b1c9b716faec11e',
-     x86_64: '68b3cea57e7cd0edf6712b9ad3b8c9c1e3b2b7723d7a1cc070178b04db597d82'
+    aarch64: '664f99be9dcaf2caba948f7ff4f06b9b1280bc78b0c95608f3e8d2cdfab65edd',
+     armv7l: '664f99be9dcaf2caba948f7ff4f06b9b1280bc78b0c95608f3e8d2cdfab65edd',
+     x86_64: 'a9c2b5d14d3b1603ed0400edd45aa2ca907d1bdf413c85623152788ed342d494'
   })
 
-  depends_on 'atk'
+  depends_on 'at_spi2_core'
   depends_on 'cairo'
   depends_on 'fontconfig'
   depends_on 'freetype'
@@ -35,21 +30,18 @@ class Gtksourceview_4 < Package
   depends_on 'libsoup'
   depends_on 'pango'
   depends_on 'vala'
+  depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'
+  depends_on 'glibc' # R
+  depends_on 'libxml2' # R
+  depends_on 'zlib' # R
+
+  gnome
+  no_upstream_update
 
   def self.patch
-    system "sed -i 's/-fstack-protector-strong/-flto/g' meson.build"
+    system "sed -i 's/-fstack-protector-strong/-flto=auto/g' meson.build"
   end
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-    -Db_asneeded=false \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Db_asneeded=false'
 end

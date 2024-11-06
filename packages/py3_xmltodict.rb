@@ -1,35 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_xmltodict < Package
+class Py3_xmltodict < Pip
   description 'XMLtoDict makes working with XML feel like you are working with JSON.'
   homepage 'https://github.com/martinblech/xmltodict/'
-  @_ver = '0.12.0'
-  version @_ver
+  version "0.14.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/martinblech/xmltodict.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xmltodict/0.12.0_armv7l/py3_xmltodict-0.12.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xmltodict/0.12.0_armv7l/py3_xmltodict-0.12.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xmltodict/0.12.0_i686/py3_xmltodict-0.12.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xmltodict/0.12.0_x86_64/py3_xmltodict-0.12.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'd2f1f67dd415be8c6ea04832d0c92a5241d2db02f33b036c89d4c04b587fb17e',
-     armv7l: 'd2f1f67dd415be8c6ea04832d0c92a5241d2db02f33b036c89d4c04b587fb17e',
-       i686: '59801b6583e036eb706d57b0b71e6ae7719310e665d435cffef7f65f084ecab7',
-     x86_64: 'a71384afcde283e696cfce1754884f6b347da546ad58523929cc5600c75a5b5c'
+    aarch64: 'a7feb951e5b978a92e67220c7a1c3ffaaab578bc9dab0c68c7c0a721aae646f4',
+     armv7l: 'a7feb951e5b978a92e67220c7a1c3ffaaab578bc9dab0c68c7c0a721aae646f4',
+       i686: 'a707a431edba0a60f6d601df75789cfdfae3ab0d39ee40d32eb263b2c27ceaeb',
+     x86_64: '57697be5cc7b27b4a70cf91be79802ec88d79d15103b1b379ccedd23dae84c41'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

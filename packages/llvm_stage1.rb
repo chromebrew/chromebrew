@@ -2,25 +2,19 @@ require 'package'
 
 class Llvm_stage1 < Package
   description 'THIS IS NOT THE LLVM PACKAGE. This is only a Limited Stage 1 compile of LLVM.'
-  homepage 'http://llvm.org/'
-  @_ver = '11.1.0-rc1'
-  version @_ver
+  homepage 'https://llvm.org/'
+  version '13.0.0'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain and rc'
   compatibility 'all'
-  source_url "https://github.com/llvm/llvm-project/archive/llvmorg-#{@_ver}.tar.gz"
-  source_sha256 'e610297041129a5c5b24355a988c99c7452ee7105ee2355334a8c521b988eb3c'
+  source_url "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/llvm-project-#{version}.src.tar.xz"
+  source_sha256 '6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3'
+  binary_compression 'tpxz'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_stage1/11.1.0-rc1_armv7l/llvm_stage1-11.1.0-rc1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_stage1/11.1.0-rc1_armv7l/llvm_stage1-11.1.0-rc1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_stage1/11.1.0-rc1_i686/llvm_stage1-11.1.0-rc1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_stage1/11.1.0-rc1_x86_64/llvm_stage1-11.1.0-rc1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '863dd7cae43abef88dfe25c60e0dda1f8d59756f8c8fbb111989a3669dca0a16',
-     armv7l: '863dd7cae43abef88dfe25c60e0dda1f8d59756f8c8fbb111989a3669dca0a16',
-       i686: '84a5a2a381af8c789fcb895d1ae62dc1932b3ad1ad423e8351e37aa9be5e2490',
-     x86_64: 'ddb9e88444729174b0c6f4de883910ce78e8fa489e0831acdf92daaf4561e9af',
+  binary_sha256({
+    aarch64: '471ccebb72765a304bc8a1097e144b16d33e1fbbef5dd27fa4ed43530aaf2ee8',
+     armv7l: '471ccebb72765a304bc8a1097e144b16d33e1fbbef5dd27fa4ed43530aaf2ee8',
+       i686: '02bd963269fc8fb491bb641f8eb6acd00ed543ccdfe2707cb540d6b792961b44',
+     x86_64: '310143770e287975bcb97e454d7e63f3f74ebaca5e02ea88d5f2e1140d0d3ac7'
   })
 
   # llvm_stage1 is compiled with gcc, without -flto
@@ -32,19 +26,19 @@ class Llvm_stage1 < Package
   depends_on 'libtirpc'
   depends_on 'swig'
   depends_on 'py3_pygments' => :build
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
 
   case ARCH
-  when 'aarch64','armv7l'
-    #LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
+  when 'aarch64', 'armv7l'
+    # LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     @ARCH_C_FLAGS = '-march=armv7-a -mfloat-abi=hard'
     @ARCH_CXX_FLAGS = '-march=armv7-a -mfloat-abi=hard'
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;lld'
-  when 'i686','x86_64'
-    #LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
+    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;lld'.freeze
+  when 'i686', 'x86_64'
+    # LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
     @ARCH_C_FLAGS = '-fPIC'
     @ARCH_CXX_FLAGS = '-fPIC'
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lld'
+    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lld'.freeze
   end
 
   @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto"
@@ -53,8 +47,8 @@ class Llvm_stage1 < Package
   # Using Targets 'all' because otherwise mesa complains.
   # This may be patched upstream as per
   # https://reviews.llvm.org/rG1de56d6d13c083c996dfd44a32041dacae037d66
-  LLVM_TARGETS_TO_BUILD = 'all'
-  LLVM_VERSION = version.split("-")[0]
+  LLVM_TARGETS_TO_BUILD = 'all'.freeze
+  LLVM_VERSION = version.split('-')[0]
 
   def self.build
     ############################################################
@@ -62,7 +56,7 @@ class Llvm_stage1 < Package
     puts "Building LLVM Projects: #{LLVM_PROJECTS_TO_BUILD}".lightgreen
     ############################################################
     ############################################################
-    puts "Setting compile to use python3".lightgreen
+    puts 'Setting compile to use python3'.lightgreen
     ############################################################
     system "grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'"
 
@@ -80,10 +74,10 @@ cxx_sys=#{CREW_PREFIX}/include/c++/\${version}
 cxx_inc=#{CREW_PREFIX}/include/c++/\${version}/\${machine}
 gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
 clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
-        system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin FC= \
+      system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin FC= \
             cmake -G Ninja \
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-            -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_BUILD} \
+            -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_TARGET} \
             -DLLVM_TARGETS_TO_BUILD=\'#{LLVM_TARGETS_TO_BUILD}' \
             -DCMAKE_BUILD_TYPE=Release \
             -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
@@ -95,7 +89,6 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DLLVM_ENABLE_RTTI=ON \
             -DCMAKE_C_FLAGS='#{@ARCH_C_FLAGS}' \
             -DCMAKE_CXX_FLAGS='#{@ARCH_CXX_FLAGS}' \
-            -DLLVM_PARALLEL_LINK_JOBS=1 \
             -DPYTHON_EXECUTABLE=$(which python3) \
             -DLLVM_BINUTILS_INCDIR='#{CREW_PREFIX}/include' \
             -DLLVM_OPTIMIZED_TABLEGEN=ON \
@@ -111,14 +104,12 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON \
             -Wno-dev \
             ../llvm"
-      system 'ninja -j1'
+      system 'ninja'
     end
   end
 
   def self.install
-    Dir.chdir("builddir") do
-      FileUtils.install 'clc', "#{CREW_DEST_PREFIX}/bin/clc", mode: 0755
-      FileUtils.install 'clc++', "#{CREW_DEST_PREFIX}/bin/clc++", mode: 0755
+    Dir.chdir('builddir') do
       system "DESTDIR=#{CREW_DEST_DIR} ninja install"
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins"
       FileUtils.ln_s "lib#{CREW_LIB_SUFFIX}/LLVMgold.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
@@ -126,21 +117,16 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
   end
 
   def self.check
-    Dir.chdir("builddir") do
-      #system "ninja check-llvm || true"
-      #system "ninja check-clang || true"
-      #system "ninja check-lld || true"
+    Dir.chdir('builddir') do
+      # system "ninja check-llvm || true"
+      # system "ninja check-clang || true"
+      # system "ninja check-lld || true"
     end
   end
 
   def self.postinstall
     puts
     puts "To compile programs, use 'clang' or 'clang++'.".lightblue
-    puts
-    puts "To avoid the repeated use of switch options,".lightblue
-    puts "try the wrapper scripts 'clc' or 'clc++'.".lightblue
-    puts
-    puts "For more information, see http://llvm.org/pubs/2008-10-04-ACAT-LLVM-Intro.pdf".lightblue
     puts
   end
 end

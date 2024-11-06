@@ -1,41 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Sdl2_image < Package
+class Sdl2_image < Autotools
   description 'SDL2_image is an image loading library that is used with the SDL2 library.'
-  homepage 'https://www.libsdl.org/projects/SDL_image/'
-  version '2.0.4'
+  homepage 'https://github.com/libsdl-org/SDL_image'
+  version '2.8.2'
   license 'ZLIB'
-  compatibility 'all'
-  source_url 'https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.4.tar.gz'
-  source_sha256 'e74ec49c2402eb242fbfa16f2f43a19582a74c2eabfbfb873f00d4250038ceac'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/libsdl-org/SDL_image.git'
+  git_hashtag "release-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.0.4_armv7l/sdl2_image-2.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.0.4_armv7l/sdl2_image-2.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.0.4_i686/sdl2_image-2.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.0.4_x86_64/sdl2_image-2.0.4-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'fa555b57c402a9dd9ff3b2cca24b173f443114b43c077b299ff1a6355bf8eb05',
-     armv7l: 'fa555b57c402a9dd9ff3b2cca24b173f443114b43c077b299ff1a6355bf8eb05',
-       i686: 'da49934960375538108cde608f94e2dee00e05438757ef9b8fb02e50f225a689',
-     x86_64: '6e665aa5ddcff39d0d46e1b35cb698da8bbf2fb0a5523cec2028e67bd691c7a1',
+  binary_sha256({
+    aarch64: '1d0d60b10c863b665f400c8e65b89dc038c38ccfd64ccd9dd19e0ea017094260',
+     armv7l: '1d0d60b10c863b665f400c8e65b89dc038c38ccfd64ccd9dd19e0ea017094260',
+     x86_64: '2cd54c0f5fd71e02e7c0d5ebe9643f87e18fc239b8233db062ab1e906ccd60cb'
   })
 
-  depends_on 'libsdl2'
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libtiff'
-  depends_on 'libwebp'
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libavif' => :build
+  depends_on 'libjpeg_turbo' => :build
+  depends_on 'libpng' => :build
+  depends_on 'libsdl2' # R
+  depends_on 'libtiff' => :build
+  depends_on 'libwebp' => :build
 end

@@ -1,36 +1,25 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_keyring < Package
+class Py3_keyring < Pip
   description 'Keyring stores and accesses your passwords safely.'
   homepage 'https://github.com/jaraco/keyring/'
-  @_ver = '23.0.1'
-  version @_ver
+  version "25.5.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/jaraco/keyring.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_keyring/23.0.1_armv7l/py3_keyring-23.0.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_keyring/23.0.1_armv7l/py3_keyring-23.0.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_keyring/23.0.1_x86_64/py3_keyring-23.0.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '1bb40d7217db39f04c41bbd1e45bc95a9d3aeba2259a64fa87449fa00d4e4e6e',
-     armv7l: '1bb40d7217db39f04c41bbd1e45bc95a9d3aeba2259a64fa87449fa00d4e4e6e',
-     x86_64: 'f1ce83cfed4f4d7f6f0628e7022c1d9f8c1ec77a8217deed2d968075bdf4b79b'
+    aarch64: '805bf9d9b8e7a3251ad2380f376b71c6b1c25d51577b5cd6bf7167d4639d9fd1',
+     armv7l: '805bf9d9b8e7a3251ad2380f376b71c6b1c25d51577b5cd6bf7167d4639d9fd1',
+       i686: 'cd3ff064a7a3fd3611b5da807d8b5b6afc1e830b6a68e3ac32b05ee93d0c655b',
+     x86_64: '9ab83a2bb29c61f68ae40b97594693c0842b7549d5e5848bdfcd173e1904f732'
   })
 
   depends_on 'py3_jeepney'
   depends_on 'py3_secretstorage'
   depends_on 'py3_importlib_metadata'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

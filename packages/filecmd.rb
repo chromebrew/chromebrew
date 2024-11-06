@@ -1,69 +1,95 @@
 require 'package'
 
 class Filecmd < Package
-  description 'file command determines the file type.'
-  homepage 'http://ftp.astron.com/'
-  @_ver = '5.40'
-  version "#{@_ver}-2"
+  description 'file and libmagic determine file type'
+  homepage 'https://darwinsys.com/file/'
+  version '5.45-8dc5513'
   license 'BSD-2 and GPL-3+' # Chromebrew's filefix is GPL-3+, file itself is BSD-2
   compatibility 'all'
-  source_url "http://ftp.astron.com/pub/file/file-#{@_ver}.tar.gz"
-  source_sha256 '167321f43c148a553f68a0ea7f579821ef3b11c27b8cbe158e4df897e4a5dd57'
+  source_url 'https://github.com/file/file.git'
+  git_hashtag '8dc5513908381a14981b16a85d59ba054bf4df52'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.40-2_armv7l/filecmd-5.40-2-chromeos-armv7l.tpxz',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.40-2_armv7l/filecmd-5.40-2-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.40-2_i686/filecmd-5.40-2-chromeos-i686.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.40-2_x86_64/filecmd-5.40-2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '651c9ebb6b6294969df3f776b49fdb3eb08371a7ab8eb929a8e2c8d298e9d6bd',
-    armv7l: '651c9ebb6b6294969df3f776b49fdb3eb08371a7ab8eb929a8e2c8d298e9d6bd',
-    i686: 'ea5a96dbdf900f836b1ca69eefa72b2622722a1f3d0e46736932cc75b12a653f',
-    x86_64: '4d0da2febbb0f5a9e5d08dfe2026a9816aa2b1fb603d2c9328082e740a96c8a2'
+    aarch64: '50f314a3a9e88f216c06d9aa5b89c77132539473a1b3bb063704662aa0e9b16c',
+     armv7l: '50f314a3a9e88f216c06d9aa5b89c77132539473a1b3bb063704662aa0e9b16c',
+       i686: '7ee65126f670cff57931f6def9546cf77b0e476a1f5c43eaa22236abf85d0a37',
+     x86_64: '934e22a6546df52a0fba66589029a87d1e4fabefb5a32fd4326615670deb8631'
   })
 
-  def self.build
+  depends_on 'bzip2' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'lzlib' # R Fixes checking lzlib.h usability... no
+  depends_on 'xzutils' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
+
+  def self.prebuild
     # The filefix command changes the full path of the file command in configure scripts.
     # Execute this command from your source code root directory.
-    @filefix = <<~EOF
-      #!/bin/bash
-      for f in $(find . -name configure); do
-        sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' ${f}
-      done
-    EOF
-    IO.write('./filefix', @filefix)
-    # Optimization flags from https://github.com/InBetweenNames/gentooLTO
-    # Build static for use in case needed with glibc brokenness.
-    system "env  CFLAGS='-flto=auto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
-      CXXFLAGS='-flto=auto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
-      LDFLAGS='-flto=auto -static' \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --enable-static \
-      --enable-shared \
-      --disable-libseccomp"
-    system 'make'
-    FileUtils.mv 'src/file', 'file.static'
-    system "env  CFLAGS='-flto=auto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
-      CXXFLAGS='-flto=auto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --enable-static \
-      --enable-shared \
-      --disable-libseccomp"
-    system 'make'
+    # This may be needed in older autotools tarballs due to an old libtool bug.
+    # It's better to run filefix if unsure.
+    # See https://savannah.gnu.org/support/?func=detailitem&item_id=110550 for more information.
+
+    @filefix = <<~FILEFIX_EOF
+      #!/usr/bin/env bash
+      while IFS= read -r -d '' f; do
+        sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' "${f}"
+      done <  <(find . -name configure -print0)
+    FILEFIX_EOF
+    File.write('filefix', @filefix)
+  end
+
+  def self.patch
+    # Fix Error: /usr/bin/file file not found.
+    system 'filefix'
+  end
+
+  def self.build
+    system 'autoreconf -fiv' unless File.executable? './configure'
+    @filecmd_config_opts = "--enable-static \
+                            --enable-shared \
+                            --enable-zlib \
+                            --enable-bzlib \
+                            --enable-xzlib \
+                            --enable-fsect-man5 \
+                            --disable-libseccomp" # libseccomp is disabled because it causes file to return "Bad system call" errors when not run with root.
+
+    # Build a static file binary for use in case needed with glibc brokenness.
+    Dir.mkdir 'builddir-static'
+    Dir.chdir 'builddir-static' do
+      system "env LDFLAGS+=' -static' \
+      ../configure \
+        #{CREW_CONFIGURE_OPTIONS} \
+        #{@filecmd_config_opts}"
+      system 'make'
+    end
+
+    # Build libmagic and everything else (dynamically linked).
+    Dir.mkdir 'builddir-dynamic'
+    Dir.chdir 'builddir-dynamic' do
+      system "../configure \
+        #{CREW_CONFIGURE_OPTIONS} \
+        #{@filecmd_config_opts}"
+      system 'make'
+    end
   end
 
   def self.check
-    system 'make', 'check'
+    system 'make -C builddir-static check'
+    system 'make -C builddir-dynamic check'
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
+    # Install dynamically linked package.
+    system "make -C builddir-dynamic DESTDIR='#{CREW_DEST_DIR}' install"
+    # Install statically linked package to local directory and copy binary
+    # DESTDIR must be a full path, hence running pwd.
+    system "make -C builddir-static DESTDIR='#{Dir.pwd}/dest-static' install"
+    FileUtils.rm "#{CREW_DEST_PREFIX}/bin/file"
+    FileUtils.install 'dest-static/usr/local/bin/file', "#{CREW_DEST_PREFIX}/bin/file", mode: 0o755
+    # Install filefix.
     FileUtils.install 'filefix', "#{CREW_DEST_PREFIX}/bin/filefix", mode: 0o755
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
-    FileUtils.install 'file.static', "#{CREW_DEST_PREFIX}/bin/file", mode: 0o755
   end
 end

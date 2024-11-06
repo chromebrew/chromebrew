@@ -2,25 +2,18 @@ require 'package'
 
 class Libinput < Package
   description 'libinput is a library to handle input devices in Wayland compositors and to provide a generic X.Org input driver.'
-  homepage 'https://www.freedesktop.org/wiki/Software/libinput'
-  @_ver = '1.19.0'
-  version @_ver
+  homepage 'https://www.freedesktop.org/wiki/Software/libinput/'
+  version '1.21.0'
   license 'MIT'
-  compatibility 'all'
-  source_url "https://www.freedesktop.org/software/libinput/libinput-#{@_ver}.tar.xz"
-  source_sha256 '3d3a2f12b4a65cd82684121ae4b33cdc3ad541c761a55e8eb73a8e5e443cccbb'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/libinput/libinput.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.0_armv7l/libinput-1.19.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.0_armv7l/libinput-1.19.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.0_i686/libinput-1.19.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.0_x86_64/libinput-1.19.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '92d7106871145a7b83c4fcf91603563473de4da33c4b3368b4a795a7e51629e1',
-     armv7l: '92d7106871145a7b83c4fcf91603563473de4da33c4b3368b4a795a7e51629e1',
-       i686: 'f33badf3a7bed9a0ba5c343663be77c32d773c943a886d1307a9ec05d58abd80',
-     x86_64: '46bdc13b4d3e214591300759ec62d14d76e20faa9d8f05f887f88e1cd70cac62'
+    aarch64: 'c131c07fb1f1d4e9a59a47b30cfa53c7b0a9f746a35091c1576cf822a5b58637',
+     armv7l: 'c131c07fb1f1d4e9a59a47b30cfa53c7b0a9f746a35091c1576cf822a5b58637',
+     x86_64: 'c7961df2596c843e5822b2ac94c0d88ffc126bf9fdf3a3a6c985b8997a3fa789'
   })
 
   depends_on 'mtdev'
@@ -35,11 +28,11 @@ class Libinput < Package
   # depends_on 'gtk3' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Ddebug-gui=false \
       -Ddocumentation=false \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

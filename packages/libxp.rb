@@ -2,36 +2,37 @@ require 'package'
 
 class Libxp < Package
   description 'x print service extension library'
-  homepage 'https://xorg.freedesktop.org'
-  version '1.0.3'
+  homepage 'https://xorg.freedesktop.org/wiki/'
+  version '1.0.4'
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/lib/libXp-1.0.3.tar.bz2'
-  source_sha256 '7f360c9905849c3587d48efc0f0ecbc852c19f61a52b18530d6b005cb9148c57'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.x.org/releases/individual/lib/libXp-1.0.4.tar.xz'
+  source_sha256 '1f19e3b8e82a34a8fd9889a7d9af0abe8588cb03fb57c37c569634cf3b9df1a4'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxp/1.0.3_armv7l/libxp-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxp/1.0.3_armv7l/libxp-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxp/1.0.3_i686/libxp-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxp/1.0.3_x86_64/libxp-1.0.3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '173115a4b608b9234e3150d03fe8b41547878897c9a969e084950a72cd8ac633',
-     armv7l: '173115a4b608b9234e3150d03fe8b41547878897c9a969e084950a72cd8ac633',
-       i686: 'd3a75d68b62fca37ce490144e78d4fbf182cbb2aafb3433d0346ebe5cbfafdcd',
-     x86_64: '4021f601179cdd9a62c551d9e131fd95a373535baeebc6eed166eb0dc7cd30ce',
+  binary_sha256({
+    aarch64: '33ccc7a386d8f0486d019b94ee9b64752294680a6bafe6e4ab27888a0ca243ff',
+     armv7l: '33ccc7a386d8f0486d019b94ee9b64752294680a6bafe6e4ab27888a0ca243ff',
+     x86_64: '5c9937164f3a122b1af881da8eafa563a1220d3d2ac450730bc356952ea1a672'
   })
 
   depends_on 'xorg_proto'
   depends_on 'libxext'
   depends_on 'printproto'
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --enable-malloc0returnsnull"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
+      --enable-malloc0returnsnull"
     system 'make'
   end
 
   def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

@@ -1,36 +1,22 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xcb_proto < Package
+class Xcb_proto < Autotools
   description 'The protocols for the X window system provide extended functionality for communication between a X client and the server.'
   homepage 'https://xcb.freedesktop.org'
-  version '1.14.1'
+  @_ver = '1.16.0'
+  version "#{@_ver}-#{CREW_PY_VER}"
   license 'MIT-with-advertising'
   compatibility 'all'
-  source_url 'https://x.org/releases/individual/proto/xcb-proto-1.14.tar.xz'
-  source_sha256 '186a3ceb26f9b4a015f5a44dcc814c93033a5fc39684f36f1ecc79834416a605'
+  source_url 'https://gitlab.freedesktop.org/xorg/proto/xcbproto.git'
+  git_hashtag "xcb-proto-#{@_ver}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1_armv7l/xcb_proto-1.14.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1_armv7l/xcb_proto-1.14.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1_i686/xcb_proto-1.14.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1_x86_64/xcb_proto-1.14.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '44acc3a13eef02910837f702f2375cfe9b4ec84b29b21901dde05a20bb03cd5f',
-     armv7l: '44acc3a13eef02910837f702f2375cfe9b4ec84b29b21901dde05a20bb03cd5f',
-       i686: '43bd2fe4d681f2a13deef0eeb5b1e22850dc53c836613a18fe73f1c77267a03a',
-     x86_64: '6f7ccb0abc93a0b8156993ab46aa096bc087ae1c82eac33ef8924d7d69f3027f'
+    aarch64: '11bb582fa6333d511521cc297b658ee77bd6962e28e44d3dc261804dc30ff5d8',
+     armv7l: '11bb582fa6333d511521cc297b658ee77bd6962e28e44d3dc261804dc30ff5d8',
+       i686: '822d361f75dcc35464840a465385b6cf016b7ff463e916d7a8533962240bb230',
+     x86_64: '7411b8251017a64592afd72ccb26e9092900ff5b9841a6be1e6d2383615d6545'
   })
 
-  def self.build
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
-        LDFLAGS='-flto=auto' \
-        ./autogen.sh \
-        #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'python3'
 end

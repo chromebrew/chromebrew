@@ -1,33 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_configparser < Package
+class Py3_configparser < Pip
   description 'Configparser backports newer configparser modules to earlier python versions.'
   homepage 'https://github.com/jaraco/configparser/'
-  @_ver = '5.0.2'
-  version @_ver
+  version "7.1.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/jaraco/configparser.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_configparser/5.0.2_armv7l/py3_configparser-5.0.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_configparser/5.0.2_armv7l/py3_configparser-5.0.2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_configparser/5.0.2_x86_64/py3_configparser-5.0.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '239d87ea1922fd8ae501b603011f8ddb4212026dd6e72bf3bf750ee5dd3cb277',
-     armv7l: '239d87ea1922fd8ae501b603011f8ddb4212026dd6e72bf3bf750ee5dd3cb277',
-     x86_64: 'e45b32190ef07b77b65cc4648ac8f0c2a3f7752d2f872c5f9b3e97b198956e3f'
+    aarch64: 'fd3ec797bc6ac479b914551006b3498e395864c7822abcd606d57c351af0de9d',
+     armv7l: 'fd3ec797bc6ac479b914551006b3498e395864c7822abcd606d57c351af0de9d',
+       i686: 'efa5fb48152416f67183357d65a2af64aaa8c0c8eabf1086b6688dbfb0f4cd26',
+     x86_64: '29214157c0a3771b83e2d9192aeb9464f710e11293bdf7972e48e00995ab276e'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

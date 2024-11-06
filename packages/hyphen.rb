@@ -1,41 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Hyphen < Package
+class Hyphen < Autotools
   description 'hyphenation library to use converted TeX hyphenation patterns'
   homepage 'https://github.com/hunspell/hyphen'
-  version '73dd29'
+  version '2.8.8-73dd296'
   license 'GPL-2, LGPL-2.1 and MPL-1.1'
   compatibility 'all'
-  source_url 'https://github.com/hunspell/hyphen/archive/73dd2967c8e1e4f6d7334ee9e539a323d6e66cbd.tar.gz'
-  source_sha256 'd174ba8a2653e79ebd135fd2241fe87d511f9510a31e82bdf13ec21192852595'
+  source_url 'https://github.com/hunspell/hyphen.git'
+  git_hashtag '73dd2967c8e1e4f6d7334ee9e539a323d6e66cbd'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hyphen/73dd29_armv7l/hyphen-73dd29-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hyphen/73dd29_armv7l/hyphen-73dd29-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hyphen/73dd29_i686/hyphen-73dd29-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hyphen/73dd29_x86_64/hyphen-73dd29-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '9c4dc3e8175ecf54eff33dca64506534b0a5e284749854ff20fc8f2b411c2442',
-     armv7l: '9c4dc3e8175ecf54eff33dca64506534b0a5e284749854ff20fc8f2b411c2442',
-       i686: 'a7a0146e845bdb5238a2f30bfca98261e4c1cc509f0f70a0a457092ad6a50346',
-     x86_64: '6bb5f68a9f8b03a56456c9e806a9baf6be49ee2298bbc0c0e0c4ef182152f79b',
+  binary_sha256({
+    aarch64: '7e2e2fdb83d0ffc858f50927f8119566a7709cb7644bbf1002f8e47f050e3a56',
+     armv7l: '7e2e2fdb83d0ffc858f50927f8119566a7709cb7644bbf1002f8e47f050e3a56',
+       i686: 'fceabb306364839bea4cec6d415a11e4b6b961f64eda2ade1cd5339fd57b0dd0',
+     x86_64: 'cae5691f15a004798e42721343845626363a807b0973009edcd415c33b739b5b'
   })
 
-  def self.build
-    system 'autoreconf -fvi'
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
-    system 'make'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

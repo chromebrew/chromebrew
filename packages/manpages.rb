@@ -3,32 +3,27 @@ require 'package'
 class Manpages < Package
   description 'The Linux man-pages project documents the Linux kernel and C library interfaces that are employed by user-space programs.'
   homepage 'https://www.kernel.org/doc/man-pages/'
-  version '5.10'
+  version '6.9.1'
   license 'man-pages, GPL-2+ and BSD'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-5.10.tar.xz'
-  source_sha256 '75102535ba119f2f223f674d84e1dcdaebf0a5ffd639b3c2e6cb0a0e34768762'
+  source_url "https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-#{version}.tar.xz"
+  source_sha256 'e23cbac29f110ba571f0da8523e79d373691466ed7f2a31301721817d34530bd'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/5.10_armv7l/manpages-5.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/5.10_armv7l/manpages-5.10-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/5.10_i686/manpages-5.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/5.10_x86_64/manpages-5.10-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'f744832c6e15601fa603a42bb12f8b1d9500ddd1f1e39444970e57a5c2d2e2db',
-     armv7l: 'f744832c6e15601fa603a42bb12f8b1d9500ddd1f1e39444970e57a5c2d2e2db',
-       i686: '0a4ae4dc6cd4896e5f3ab4708eb7a6463ddd0ed2f59840e19035dbf8d17ae4c9',
-     x86_64: '3b8dac6ed2af12ac5a8ebee632d548fc26b8526ad7795533e16a4291c7227c03',
+  binary_sha256({
+    aarch64: '15d1ba25c9bdd2b00b00e8fe0a318f4cf34af6282a75c9c9edc4121c891a2596',
+     armv7l: '15d1ba25c9bdd2b00b00e8fe0a318f4cf34af6282a75c9c9edc4121c891a2596',
+       i686: 'c732ebbc849059bd3e125b746e2c99afe4d156eccf1f3008b3cb44256dcee140',
+     x86_64: '5b5efe0e84c640b041b3edcb2c8442c36290230d153de6a124368810f34c12bf'
   })
 
-  depends_on 'mandb'
+  depends_on 'man_db'
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "prefix=#{CREW_PREFIX}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", "prefix=#{CREW_PREFIX}", 'install'
   end
 
   def self.postinstall
-    puts "Try 'man printf' to see if it works.".lightblue
+    ExitMessage.add "\nTry 'man printf' to see if it works.\n".lightblue
   end
 end

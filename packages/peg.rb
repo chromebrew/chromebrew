@@ -1,35 +1,27 @@
-# Adapted from Arch Linux peg PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/peg/trunk/PKGBUILD
-
 require 'package'
 
 class Peg < Package
   description 'recursive-descent parser generators for C'
   homepage 'https://www.piumarta.com/software/peg/'
-  version '0.1.18-2'
+  version '0.1.20'
   license 'MIT'
   compatibility 'all'
-  source_url 'http://piumarta.com/software/peg/peg-0.1.18.tar.gz'
-  source_sha256 '20193bdd673fc7487a38937e297fff08aa73751b633a086ac28c3b34890f9084'
+  source_url "https://www.piumarta.com/software/peg/peg-#{version}.tar.gz"
+  source_sha256 'b8b717bc93a59768a35d6525679a4e0ce94e6bf66f92bacf2979c6474572b45a'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peg/0.1.18-2_armv7l/peg-0.1.18-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peg/0.1.18-2_armv7l/peg-0.1.18-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peg/0.1.18-2_i686/peg-0.1.18-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peg/0.1.18-2_x86_64/peg-0.1.18-2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '439a168668877cae8de48cf51c9f18c18245373a6c7e7104c8fa23d61197264f',
-     armv7l: '439a168668877cae8de48cf51c9f18c18245373a6c7e7104c8fa23d61197264f',
-       i686: '584696fc71b9e3dee4f1beb736ce88e9d5cd9e7d508c431c0e94c0092c809518',
-     x86_64: 'eb2da8d54a121265fabae9af1e30f9a5e4d89461e4e39477971a7fbc1b22d458',
+  binary_sha256({
+    aarch64: '067774ea64597be22413a26404f82d807fdf7518971312739242d8dff0eedd61',
+     armv7l: '067774ea64597be22413a26404f82d807fdf7518971312739242d8dff0eedd61',
+       i686: '5be1892c37014891c67f32b2b5cd8933579f900f657695b8dfa33fed8fe7d61b',
+     x86_64: '9e0f53922d97f1a3f9a7c6f76b5ad2dc4cb9eb3d6d1e238a3beb05a22c48a3b9'
   })
 
   def self.build
-    system "sed -i 's,PREFIX = /usr/local,PREFIX = #{CREW_PREFIX},g' Makefile"
-    system "make"
+    system 'make', "PREFIX=#{CREW_PREFIX}", "MANDIR=#{CREW_MAN_PREFIX}/man1"
   end
+
   def self.install
-    system "make ROOT=#{CREW_DEST_DIR} install"
+    system 'make', "PREFIX=#{CREW_PREFIX}", "MANDIR=#{CREW_DEST_MAN_PREFIX}/man1", "ROOT=#{CREW_DEST_DIR}", 'install'
   end
 end

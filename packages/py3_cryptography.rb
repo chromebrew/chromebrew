@@ -1,38 +1,28 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_cryptography < Package
+class Py3_cryptography < Pip
   description 'Cryptography provides cryptographic recipes and primitives to Python developers.'
   homepage 'https://cryptography.io/'
-  @_ver = '3.4.7'
-  version @_ver
+  version "43.0.3-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/pyca/cryptography.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/3.4.7_armv7l/py3_cryptography-3.4.7-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/3.4.7_armv7l/py3_cryptography-3.4.7-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/3.4.7_i686/py3_cryptography-3.4.7-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/3.4.7_x86_64/py3_cryptography-3.4.7-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '8bd03b0ab62ae17ce3c4cdeb4e209a5d761000c1327748bddc75de4d4d422c90',
-     armv7l: '8bd03b0ab62ae17ce3c4cdeb4e209a5d761000c1327748bddc75de4d4d422c90',
-       i686: '4ce8cefc8f67c30648ae3cf5d9ce711b7904f30e89fa8dc962fabd7f7fc0fcb6',
-     x86_64: 'f95da04a5ebbb8b3d12b12ab90f244f2d45445e3eb004e62177966396ddbd2b9'
+    aarch64: '9bc2a5a2e7dd7e2a0184247170ea6d0628a8867ae24afa8b31bb40b8dcb14a92',
+     armv7l: '9bc2a5a2e7dd7e2a0184247170ea6d0628a8867ae24afa8b31bb40b8dcb14a92',
+       i686: 'cbaadc230213d01d74a747274a94746811a45aa8fd27a5148e43defa95d37b1e',
+     x86_64: 'aee80bdaf42f7d5c30ea21f8b752bc3d67083ae2656189014f4440573e84ce5f'
   })
 
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'openssl' # R
   depends_on 'py3_cffi'
-  depends_on 'py3_six'
-  depends_on 'py3_setuptools_rust' => :build
-  depends_on 'py3_setuptools' => :build
+  depends_on 'py3_pycparser' => :build
+  depends_on 'py3_typing_extensions'
+  depends_on 'rust' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

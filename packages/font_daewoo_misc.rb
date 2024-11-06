@@ -1,37 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Font_daewoo_misc < Package
+class Font_daewoo_misc < Autotools
   description 'Daewoo Gothic PCF format'
-  homepage 'https://xorg.freedesktop.org/'
-  version '1.0.3'
+  homepage 'https://gitlab.freedesktop.org/xorg/font/daewoo-misc'
+  version '1.0.4'
   license 'custom'
-  compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/font/font-daewoo-misc-1.0.3.tar.bz2'
-  source_sha256 'bc65de70bee12698caa95b523d3b652c056347e17b68cc8b5d6bbdff235c4be8'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/xorg/font/daewoo-misc.git'
+  git_hashtag "font-daewoo-misc-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_daewoo_misc/1.0.3_armv7l/font_daewoo_misc-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_daewoo_misc/1.0.3_armv7l/font_daewoo_misc-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_daewoo_misc/1.0.3_i686/font_daewoo_misc-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_daewoo_misc/1.0.3_x86_64/font_daewoo_misc-1.0.3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'ab4e6485bc9457a2bce6d7f9ebd426048a7844539f8538a0b703ceb84128e746',
-     armv7l: 'ab4e6485bc9457a2bce6d7f9ebd426048a7844539f8538a0b703ceb84128e746',
-       i686: 'da1530601e1558c7766e1f8dad6885065ff5de0ab82368d7dec82cf309a3da4c',
-     x86_64: '9477310018acb565a629602ae131766100dac22e8f3f78bd1305d3e96287f373',
+  binary_sha256({
+    aarch64: '6943bff5d56ec5915fccff48c4ba960eb536018f863441d42a194f5b48518fcf',
+     armv7l: '6943bff5d56ec5915fccff48c4ba960eb536018f863441d42a194f5b48518fcf',
+     x86_64: '1745b68b815fea96114a778c7ff2bb66a98e9010f1176a9667381f594c51fa00'
   })
 
   depends_on 'bdftopcf'
   depends_on 'font_util'
   depends_on 'mkfontscale'
-
-  def self.build
-    system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  depends_on 'xorg_macros' => :build
 end

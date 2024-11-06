@@ -1,47 +1,26 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Sngrep < Package
+class Sngrep < CMake
   description 'An Ncurses SIP Messages flow viewer'
   homepage 'https://github.com/irontec/sngrep'
-  version '1.4.6-1'
+  version '1.8.2'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/irontec/sngrep/archive/v1.4.6.tar.gz'
-  source_sha256 '638d6557dc68db401b07d73b2e7f8276800281f021fe0c942992566d6b59a48a'
+  source_url 'https://github.com/irontec/sngrep.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
+
+  binary_sha256({
+    aarch64: '552cc7ce41179cf9668968fae9b13f1554428246eb941c2b8fa3918396c72cd0',
+     armv7l: '552cc7ce41179cf9668968fae9b13f1554428246eb941c2b8fa3918396c72cd0',
+       i686: '356406691634070b953d40fbe9d3f654e672b585e9106c90e028c6ebcb3c9e2f',
+     x86_64: 'a0f58ac482e37ad2f71eb0345df75f340b9725eeb6a48ad0537bbdc26e4da259'
+  })
 
   depends_on 'libpcap'
-  depends_on 'pcre'
+  depends_on 'ncurses'
+  depends_on 'openssl'
+  depends_on 'pcre2'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sngrep/1.4.6-1_armv7l/sngrep-1.4.6-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sngrep/1.4.6-1_armv7l/sngrep-1.4.6-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sngrep/1.4.6-1_i686/sngrep-1.4.6-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sngrep/1.4.6-1_x86_64/sngrep-1.4.6-1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '09a6ad001c63ce4ac435c148e5bb6df64908b3e06f95520e268510aa89f8c13f',
-     armv7l: '09a6ad001c63ce4ac435c148e5bb6df64908b3e06f95520e268510aa89f8c13f',
-       i686: '9791803d412c9b0f3b25da9fc5c80483aa18262c6411f2eb1b7e636c1ca4c585',
-     x86_64: 'd370d8913abea954dc6420e2dae3d83373917e26935f58c66c38c59809fa275f',
-  })
-
-  def self.build
-    system './bootstrap.sh'
-    system "./configure CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw -I#{CREW_PREFIX}/include/pcap' \
-          --prefix=#{CREW_PREFIX} \
-          --libdir=#{CREW_LIB_PREFIX} \
-          --with-openssl \
-          --with-pcre \
-          --disable-logo \
-          --enable-ipv6"
-    system 'make'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  cmake_options '-DWITH_OPENSSL=ON -DWITH_PCRE2=ON -DUSE_IPV6=ON -DDISABLE_LOGO=ON'
 end

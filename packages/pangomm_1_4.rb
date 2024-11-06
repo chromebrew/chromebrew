@@ -1,44 +1,32 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Pangomm_1_4 < Package
+class Pangomm_1_4 < Meson
   description 'pangomm is the official C++ interface for the Pango font layout library.'
   homepage 'https://developer.gnome.org/pangomm/stable/'
-  @_ver = '2.46.0'
-  version @_ver
+  version '2.46.4'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/pangomm/-/archive/#{@_ver}/pangomm-#{@_ver}.tar.bz2"
-  source_sha256 '9582d961e71d5134aeadc73de63baa27424f76ab6d04280d6b6c9177c4b653a9'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/pangomm.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_1_4/2.46.0_armv7l/pangomm_1_4-2.46.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_1_4/2.46.0_armv7l/pangomm_1_4-2.46.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_1_4/2.46.0_i686/pangomm_1_4-2.46.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_1_4/2.46.0_x86_64/pangomm_1_4-2.46.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '36bd8512279d1f7fe1e33d2a69ec7488404bedd879bd021485ffee036dbc376e',
-     armv7l: '36bd8512279d1f7fe1e33d2a69ec7488404bedd879bd021485ffee036dbc376e',
-       i686: '28c625ea2df998071dfd1bba523b01989b8e8d8c1dbbdb381d2ca4ac298cbdf9',
-     x86_64: 'c29af342514e22182c03946216f4faa04975bcff142c859ba9f5f5b19b8cfcf0'
+    aarch64: 'a86e0c8cc640c6d88c3557811255be336ec992a905a23540cec1ae8650f7a1a0',
+     armv7l: 'a86e0c8cc640c6d88c3557811255be336ec992a905a23540cec1ae8650f7a1a0',
+     x86_64: 'b0690d1ad21732cd2af6a6cf298a8ad28bb127c7c43a75a9a5deca24b17b138d'
   })
 
-  depends_on 'glibmm'
-  depends_on 'cairomm'
-  depends_on 'pango'
-  depends_on 'graphite'
-  depends_on 'mm_common'
+  depends_on 'cairomm_1_0' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glibmm_2_4' # R
+  depends_on 'glib' # R
+  depends_on 'graphite' => :build
+  depends_on 'libsigcplusplus' # R
+  depends_on 'mm_common' => :build
+  depends_on 'pango' # R
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-    -Dmaintainer-mode=true \
-    -Dbuild-documentation=false \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dbuild-documentation=false'
 end

@@ -2,108 +2,31 @@ require 'package'
 
 class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
-  homepage 'https://golang.org/'
-  @_ver = '1.16.3'
-  version @_ver
+  homepage 'https://go.dev'
+  version '1.23.2'
   license 'BSD'
   compatibility 'all'
-  source_url "https://dl.google.com/go/go#{@_ver}.src.tar.gz"
-  source_sha256 'b298d29de9236ca47a023e382313bcc2d2eed31dfa706b60a04103ce83a71a25'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go/1.16.3_armv7l/go-1.16.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go/1.16.3_armv7l/go-1.16.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go/1.16.3_i686/go-1.16.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go/1.16.3_x86_64/go-1.16.3-chromeos-x86_64.tar.xz'
+  source_url({
+    aarch64: "https://go.dev/dl/go#{version}.linux-armv6l.tar.gz",
+     armv7l: "https://go.dev/dl/go#{version}.linux-armv6l.tar.gz",
+       i686: "https://go.dev/dl/go#{version}.linux-386.tar.gz",
+     x86_64: "https://go.dev/dl/go#{version}.linux-amd64.tar.gz"
   })
-  binary_sha256({
-    aarch64: '2f6ab6029594d5563bd1b020ff0982d960a8d569e0081d1a36f4972a436e2e1b',
-     armv7l: '2f6ab6029594d5563bd1b020ff0982d960a8d569e0081d1a36f4972a436e2e1b',
-       i686: '13df993fe2af5ab01b1d4f28808dab883107ad62fb4dd566970b52d1decd26aa',
-     x86_64: 'f4676ad5ab1f1c83e73e4dfd1b94794a7630e9d1880e854ea81da9ffe912cd8f'
+  source_sha256({
+    aarch64: 'e3286bdde186077e65e961cbe18874d42a461e5b9c472c26572b8d4a98d15c40',
+     armv7l: 'e3286bdde186077e65e961cbe18874d42a461e5b9c472c26572b8d4a98d15c40',
+       i686: 'cb1ed4410f68d8be1156cee0a74fcfbdcd9bca377c83db3a9e1b07eebc6d71ef',
+     x86_64: '542d3c1705f1c6a1c5a80d5dc62e2e45171af291e755d591c5e6531ef63b454e'
   })
 
-  @env ||= ''
-
-  # Tests require perl
-  # go is required to build versions of go > 1.4
-  case ARCH
-  when 'x86_64'
-    @go_bootstrap_url = "https://golang.org/dl/go#{@_ver}.linux-amd64.tar.gz"
-  when 'i686'
-    @go_bootstrap_url = "https://golang.org/dl/go#{@_ver}.linux-386.tar.gz"
-  when 'aarch64', 'armv7l'
-    unless File.exist? "#{CREW_PREFIX}/share/go/bin/go"
-      depends_on 'go_bootstrap' => :build
-      @env += " PATH=$PATH:#{CREW_PREFIX}/share/go_bootstrap/go/bin"
-    end
-  end
-
-  def self.build
-    # Binaries not available for armv7l, so build those.
-    case ARCH
-    when 'aarch64', 'armv7l'
-      FileUtils.cd 'src' do
-        @env += "GOROOT='..'"
-        @env += " GOROOT_FINAL=#{CREW_PREFIX}/share/go"
-        @env += ' GOHOSTARCH=arm' if ARCH == 'aarch64'
-        # install with go_bootstrap if go is not in the path
-        if File.exist? "#{CREW_PREFIX}/share/go/bin/go"
-          @env += " GOROOT_BOOTSTRAP=#{CREW_PREFIX}/share/go"
-        else
-          @env += " GOROOT_BOOTSTRAP=#{CREW_PREFIX}/share/go_bootstrap/go"
-          @env += " PATH=$PATH:#{CREW_PREFIX}/share/go_bootstrap/go/bin"
-        end
-        system "env #{@env} ./make.bash"
-      end
-    end
-  end
-
-  def self.check
-    case ARCH
-    when 'aarch64', 'armv7l'
-      Dir.chdir 'src' do
-        system "PATH=\"#{Dir.pwd}/../bin:$PATH\" GOROOT=\"#{Dir.pwd}/..\" go tool dist test"
-      end
-    end
-  end
+  no_compile_needed
+  no_shrink
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
-    case ARCH
-    when 'i686', 'x86_64'
-      system "curl -Ls #{@go_bootstrap_url} | tar -C #{CREW_DEST_PREFIX}/share/ -zxf -"
-    when 'aarch64', 'armv7l'
-      FileUtils.cp_r Dir.pwd, "#{CREW_DEST_PREFIX}/share/"
-    end
-
-    # make a symbolic link for #{CREW_PREFIX}/bin/{go,gofmt}
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/go"
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/go"
     FileUtils.ln_s "#{CREW_PREFIX}/share/go/bin/go", "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s "#{CREW_PREFIX}/share/go/bin/gofmt", "#{CREW_DEST_PREFIX}/bin"
-
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @gorun = <<~EOF
-      # Uncomment the line starting with "export" below to use `go run`
-      # Don't forget to uncomment it when you're done
-    EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/go-run", @gorun)
-    @godev = <<~EOF
-      # Go development configuration
-      if [ ! -e #{CREW_PREFIX}/work/go ]; then
-        mkdir -vp #{CREW_PREFIX}/work/go
-      fi
-      if [ ! -e #{HOME}/go ]; then
-        ln -sv #{CREW_PREFIX}/work/go #{HOME}/go
-      fi
-      export PATH="$PATH:$HOME/go/bin"
-    EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/go-dev", @godev)
-  end
-
-  def self.postinstall
-    puts
-    puts "Edit #{CREW_PREFIX}/etc/env.d/go-run to be able to use go-run".lightblue
-    puts
   end
 end

@@ -3,25 +3,25 @@ require 'package'
 class Hplip < Package
   description 'Print, Scan and Fax Drivers for Linux'
   homepage 'https://developers.hp.com/hp-linux-imaging-and-printing/'
-  version '3.20.2'
+  version '3.23.12'
   license 'GPL-2'
-  compatibility 'i686,x86_64'
-  source_url 'https://sourceforge.net/projects/hplip/files/hplip/3.20.2/hplip-3.20.2.tar.gz'
-  source_sha256 '90c49d74688b4d745a739a6db9bf8dbdfa134c24e921e31909bffe9d84f471c2'
+  compatibility 'x86_64'
+  source_url 'https://sourceforge.net/projects/hplip/files/hplip/3.23.12/hplip-3.23.12.tar.gz'
+  source_sha256 'a76c2ac8deb31ddb5f0da31398d25ac57440928a0692dcb060a48daa718e69ed'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hplip/3.20.2_i686/hplip-3.20.2-chromeos-i686.tar.xz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hplip/3.20.2_x86_64/hplip-3.20.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-      i686: '3665d159fe1684d280689e09546a9f6cb0ab7be68d4e670f40c4111ae015d8b7',
-    x86_64: '05b80f04ea8ac68ffad990ed86140932f6353d25f7fd116df5190e8484385f09',
+  binary_sha256({
+     x86_64: '6776701484130b500892959a852ce9a8c8ea8054974d64ce4539c00af64d645f'
   })
 
   depends_on 'cups'
   depends_on 'dbus'
   depends_on 'libjpeg_turbo'
   depends_on 'sane_backends'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libusb' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system "curl -Ls -o config.guess 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'"
@@ -34,7 +34,7 @@ class Hplip < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-network-build"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-network-build"
     system 'make'
   end
 

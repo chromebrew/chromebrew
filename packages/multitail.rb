@@ -3,42 +3,27 @@ require 'package'
 class Multitail < Package
   description 'MultiTail allows you to monitor logfiles and command output in multiple windows in a terminal, colorize, filter and merge.'
   homepage 'https://www.vanheusden.com/multitail/'
-  version '6.4.2-1'
+  version '7.1.3'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://www.vanheusden.com/multitail/multitail-6.4.2.tgz'
-  source_sha256 'af1d5458a78ad3b747c5eeb135b19bdca281ce414cefdc6ea0cff6d913caa1fd'
+  source_url 'https://github.com/folkertvanheusden/multitail.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/multitail/6.4.2-1_armv7l/multitail-6.4.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/multitail/6.4.2-1_armv7l/multitail-6.4.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/multitail/6.4.2-1_i686/multitail-6.4.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/multitail/6.4.2-1_x86_64/multitail-6.4.2-1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'e82af7ce211b54d03d0938a27af1c9471c857440e81a88cd4b5188dd63913a27',
-     armv7l: 'e82af7ce211b54d03d0938a27af1c9471c857440e81a88cd4b5188dd63913a27',
-       i686: '553c789667253e18f656dfec111eaa05c9b95e69ee06ebcfec0488655ac00434',
-     x86_64: '2059e4345609cbd3c45b40b5f741dc294e26f58f44e52b424f85c07ff3375ec7',
+  binary_sha256({
+    aarch64: '9b1283d41d4db63ae5f8128f518efdcf220eec40bf1e45156c1bf6919c83436e',
+     armv7l: '9b1283d41d4db63ae5f8128f518efdcf220eec40bf1e45156c1bf6919c83436e',
+       i686: '830acfcc1baecbaac8a8a3b2518b8713d8aa174357fd1222a5d6999b5ffad168',
+     x86_64: '8e5532a2c47fa8f690433568cb3e9d8b9d4548ff643955d85c5da69b2d1a8696'
   })
 
   depends_on 'ncurses'
 
   def self.build
-    system "sed -i 's,$(DESTDIR)/etc,$(DESTDIR)$(PREFIX)/etc,g' Makefile"
-    system 'make'
+    system 'make', "PREFIX=#{CREW_PREFIX}", "SYSCONFDIR=#{CREW_PREFIX}/etc"
   end
 
   def self.install
-    system "make", "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "mkdir -p #{CREW_DEST_DIR}$HOME"
-    system "cp #{CREW_DEST_PREFIX}/etc/multitail.conf.new #{CREW_DEST_DIR}$HOME/.multitail.conf"
-    system "cp #{CREW_DEST_PREFIX}/etc/multitail.conf.new $HOME/.multitail.conf"
-  end
-
-  def self.postinstall
-    puts
-    puts "To configure, edit $HOME/.multitail.conf".lightblue
-    puts
+    system 'make', "PREFIX=#{CREW_PREFIX}", "SYSCONFDIR=#{CREW_PREFIX}/etc", "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

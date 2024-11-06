@@ -2,64 +2,63 @@ require 'package'
 
 class Mapserver < Package
   description 'MapServer is an Open Source platform for publishing spatial data and interactive mapping applications to the web.'
-  homepage 'http://mapserver.org/'
-  version '7.0.6'
+  homepage 'https://mapserver.org/'
+  version '8.0.0'
   license 'Boost-1.0, BSD-2, ISC, MIT and tcltk'
-  compatibility 'all'
-  source_url 'http://download.osgeo.org/mapserver/mapserver-7.0.6.tar.gz'
-  source_sha256 'dcbebd62976deef1490b084d8f6a0b2f2a1a25407efb6e058390025375539507'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'http://download.osgeo.org/mapserver/mapserver-8.0.0.tar.gz'
+  source_sha256 'bb7ee625eb6fdce9bd9851f83664442845d70d041e449449e88ac855e97d773c'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mapserver/7.0.6_armv7l/mapserver-7.0.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mapserver/7.0.6_armv7l/mapserver-7.0.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mapserver/7.0.6_i686/mapserver-7.0.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mapserver/7.0.6_x86_64/mapserver-7.0.6-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '3779fc38a83229c289aa32a8d6610af0a379d08296ff9639c153f6b5a44b1174',
-     armv7l: '3779fc38a83229c289aa32a8d6610af0a379d08296ff9639c153f6b5a44b1174',
-       i686: '2fd2e786969a35a7eba1e23d1e499e9528375c499a72b29d3e7b9db49496574a',
-     x86_64: '30aee13618652273e99735b3bb6ea83e3623598ccdcb353a954143711995bc04',
+  binary_sha256({
+    aarch64: '1369f2cc35af3f53ae7c3514b592b9b7dd3e6552b13f0951dbc1fb5d5d70d7c8',
+     armv7l: '1369f2cc35af3f53ae7c3514b592b9b7dd3e6552b13f0951dbc1fb5d5d70d7c8',
+     x86_64: '803eb10f06933eff71eea4138ad9bd81a3abb8c81d707e9df268abe12f8842f3'
   })
 
   depends_on 'cmake'
   depends_on 'cairo'
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'fribidi'
   depends_on 'gdal'
   depends_on 'geos'
   depends_on 'glib'
   depends_on 'harfbuzz'
-  depends_on 'libjpeg'
-  depends_on 'proj4'
+  depends_on 'libjpeg_turbo'
+  depends_on 'proj'
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libpng' # R
+  depends_on 'libxml2' # R
+  depends_on 'protobuf_c' # R
+  depends_on 'zlib' # R
 
   def self.build
-    system "mkdir build"
-    Dir.chdir "build" do
-      system "cmake \
-              -DFRIBIDI_INCLUDE_DIR=`pkg-config fribidi --cflags-only-I|sed -e 's/^-I//' -e 's/ -I/;/g'` \
-              -DWITH_CLIENT_WFS=1 \
-              -DWITH_CLIENT_WMS=1 \
-              -DWITH_CURL=1 \
-              -DWITH_FCGI=0 \
-              -DWITH_FRIBIDI=1 \
-              -DWITH_GDAL=1 \
-              -DWITH_GIF=0 \
-              -DWITH_HARFBUZZ=1 \
-              -DWITH_OGR=1 \
-              -DWITH_POSTGIS=0 \
-              -DWITH_PROJ=1 \
-              -DWITH_THREAD_SAFETY=1 \
-              -DWITH_WCS=1 \
-              -DCMAKE_C_FLAGS=\" -fPIC\" \
-              -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} .. > ../configure.out.txt"
-      system "make"
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "cmake -G Ninja \
+        #{CREW_CMAKE_OPTIONS} \
+        -DFRIBIDI_INCLUDE_DIR=`pkg-config fribidi --cflags-only-I|sed -e 's/^-I//' -e 's/ -I/;/g'` \
+        -DWITH_CLIENT_WFS=1 \
+        -DWITH_CLIENT_WMS=1 \
+        -DWITH_CURL=1 \
+        -DWITH_FCGI=0 \
+        -DWITH_FRIBIDI=1 \
+        -DWITH_GDAL=1 \
+        -DWITH_GIF=0 \
+        -DWITH_HARFBUZZ=1 \
+        -DWITH_OGR=1 \
+        -DWITH_POSTGIS=0 \
+        -DWITH_PROJ=1 \
+        -DWITH_THREAD_SAFETY=1 \
+        -DWITH_WCS=1 \
+        .."
     end
+    system 'ninja -C builddir'
   end
 
   def self.install
-    Dir.chdir "build" do
-      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

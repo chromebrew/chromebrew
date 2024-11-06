@@ -1,43 +1,23 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Doxygen < Package
+class Doxygen < CMake
   description 'Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.'
-  homepage 'http://www.doxygen.nl/'
-  version '1.8.17'
+  homepage 'https://www.doxygen.nl/'
+  version '1.11.0'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/doxygen/doxygen/archive/Release_1_8_17.tar.gz'
-  source_sha256 '1b5d337e4b73ef1357a88cbd06fc4c301f08f279dac0adb99e876f4d72361f4f'
+  source_url 'https://github.com/doxygen/doxygen.git'
+  git_hashtag 'Release_1_11_0'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.8.17_armv7l/doxygen-1.8.17-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.8.17_armv7l/doxygen-1.8.17-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.8.17_i686/doxygen-1.8.17-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.8.17_x86_64/doxygen-1.8.17-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'f775a0bd1f0ac17e216d5be7667e605bb8b819426dcd87ccb79547978883e79f',
-     armv7l: 'f775a0bd1f0ac17e216d5be7667e605bb8b819426dcd87ccb79547978883e79f',
-       i686: 'f6a9e88ac424e38e19df517723af86c2b3296d6119d24073ff411bd3988d1603',
-     x86_64: 'ff5909d7d941b2a9e29ffc2c1d54613f65c57ff5ac4bae186264f63614ee6be3',
+  binary_sha256({
+    aarch64: '15dedc67203dc4b24273e0efed9296c7cdd63e6a3c65e869047890c9bc24aab3',
+     armv7l: '15dedc67203dc4b24273e0efed9296c7cdd63e6a3c65e869047890c9bc24aab3',
+       i686: 'aad9ef98fd93177a5d90c4d616de28c49a58a4cf586a4a79ca927836dc02bfb3',
+     x86_64: 'f3bdbafbb4e0f1e912959fbba038b403180952a17e48704283d072225b14e806'
   })
 
-  depends_on 'python2' => :build
-
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system 'cmake',
-             "-DCMAKE_INSTALL_PREFIX:PATH=#{CREW_PREFIX}",
-             "-DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX}",
-             '..'
-      system 'make'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  depends_on 'python3' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 end

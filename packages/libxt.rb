@@ -2,35 +2,30 @@ require 'package'
 
 class Libxt < Package
   description 'X.org X Toolkit Library'
-  homepage 'https://www.x.org'
-  version '1.1.5-0'
+  homepage 'https://www.x.org/wiki/'
+  version '1.2.1'
   license 'custom'
-  compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libXt-1.1.5.tar.gz'
-  source_sha256 'b59bee38a9935565fa49dc1bfe84cb30173e2e07e1dcdf801430d4b54eb0caa3'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.x.org/archive/individual/lib/libXt-1.2.1.tar.gz'
+  source_sha256 '6da1bfa9dd0ed87430a5ce95b129485086394df308998ebe34d98e378e3dfb33'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxt/1.1.5-0_armv7l/libxt-1.1.5-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxt/1.1.5-0_armv7l/libxt-1.1.5-0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxt/1.1.5-0_i686/libxt-1.1.5-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxt/1.1.5-0_x86_64/libxt-1.1.5-0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '168593f2dd1628c1816c4504beec2fc997932b28b1fc0e2ddb9043d1400f5523',
-     armv7l: '168593f2dd1628c1816c4504beec2fc997932b28b1fc0e2ddb9043d1400f5523',
-       i686: '70220d5f6b186bf700907b8b2a92665608f24944dfab22cc9b077a3dd6b18437',
-     x86_64: 'ccc5cd728842864ab67d48a85420ba8eb05c19d3a1beb9a5e6ac473ed7a5c9e0',
+  binary_sha256({
+    aarch64: 'a7ff82ccb3d878142449b1b61b4523a37c02a6341588165541159175d313dabf',
+     armv7l: 'a7ff82ccb3d878142449b1b61b4523a37c02a6341588165541159175d313dabf',
+     x86_64: 'c59be078d6b5120a57ee6a0ee21caea62e9f6a227855e014a3b661c3400e50f0'
   })
 
   depends_on 'libsm'
   depends_on 'libx11'
+  patchelf
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

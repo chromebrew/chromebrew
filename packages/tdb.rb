@@ -3,34 +3,30 @@ require 'package'
 class Tdb < Package
   description 'tdb is a simple database API for sharing structures between parts of Samba'
   homepage 'https://tdb.samba.org/'
-  version '1.4.3'
+  version "1.4.12-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://www.samba.org/ftp/tdb/tdb-#{version}.tar.gz"
-  source_sha256 'c8058393dfa15f47e11ebd2f1d132693f0b3b3b8bf22d0201bfb305026f88a1b'
+  source_url "https://www.samba.org/ftp/tdb/tdb-#{version.split('-').first}.tar.gz"
+  source_sha256 '6ce4b27498812d09237ece65a0d6dfac0941610e709848ecb822aa241084cd7a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.3_armv7l/tdb-1.4.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.3_armv7l/tdb-1.4.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.3_i686/tdb-1.4.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.3_x86_64/tdb-1.4.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '658452e796dffb16b9cc074f47bee90e5155cca0888f444cb13b716b577c5e60',
-     armv7l: '658452e796dffb16b9cc074f47bee90e5155cca0888f444cb13b716b577c5e60',
-       i686: '22c959f77a28a1b13d2603557b4d87b454dd04099682ba7a749ad99b7a945a43',
-     x86_64: '0040f43e9214ce035ca1eefca7923fce12aa8bc8710de383ca142c0eaaf12a9e'
+    aarch64: '869c46af87e6828afb3343c472d6f44e93f9cbca3c8ddfca9674cc997b963339',
+     armv7l: '869c46af87e6828afb3343c472d6f44e93f9cbca3c8ddfca9674cc997b963339',
+       i686: 'c073e3b4552e61a1601c5038133e3c36c2c56cc740f3650ffbf1f176ab2e22c3',
+     x86_64: '19f09414803c8dac3596267d55de2324ca9c564379bb336f82ff853f53b11f4e'
   })
 
-  depends_on 'docbook_xsl'
-  depends_on 'libbsd'
-  depends_on 'libxslt'
+  depends_on 'docbook_xsl' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'gdb' => :build
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libxslt' => :build
+  depends_on 'python3' => :build
 
   def self.build
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS.sub(/--program-suffix.*/, '')}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')}"
     system 'make'
   end
 

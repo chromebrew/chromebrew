@@ -2,36 +2,39 @@ require 'package'
 
 class Qpdf < Package
   description 'QPDF is a command-line program that does structural, content-preserving transformations on PDF files.'
-  homepage 'http://qpdf.sourceforge.net/'
-  version '7.1.1'
+  homepage 'https://qpdf.sourceforge.io/'
+  version '11.1.1'
   license 'Apache-2.0 or Artistic-2'
   compatibility 'all'
-  source_url 'https://github.com/qpdf/qpdf/archive/release-qpdf-7.1.1.tar.gz'
-  source_sha256 '21822dc365eaee55bc449d84eb760b9845c4871783ab0e4c4f3b244052718a1a'
+  source_url 'https://github.com/qpdf/qpdf/archive/refs/tags/v11.1.1.tar.gz'
+  source_sha256 '785edab622a1bc7e25e1537ad2c325005d48c5c7957f7abedff405deb80fa59a'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qpdf/7.1.1_armv7l/qpdf-7.1.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qpdf/7.1.1_armv7l/qpdf-7.1.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qpdf/7.1.1_i686/qpdf-7.1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qpdf/7.1.1_x86_64/qpdf-7.1.1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '94947bdabca20ed079672c86ce3f6b94ff5e3d992e0d94d41cbeef7bbc40d78e',
-     armv7l: '94947bdabca20ed079672c86ce3f6b94ff5e3d992e0d94d41cbeef7bbc40d78e',
-       i686: 'c0bc260a6c702e6edc13cccf8294b257bf560d7e6977030aeddaf64606372668',
-     x86_64: '32069b9fb1bcb81e9024eef707b5ab9e61bacc87fa8141f8de51ba4293fefa98',
+  binary_sha256({
+    aarch64: '53a790ba153b2533d9384f3653830942fd87eac4f5f58b58d161a32af06d012c',
+     armv7l: '53a790ba153b2533d9384f3653830942fd87eac4f5f58b58d161a32af06d012c',
+       i686: 'd71562f7c38ea4a57274fc8d6d8a85bbc91feb19af8ffc1417f9a183d5b2dba6',
+     x86_64: '36dde4a77f5bbad284e02f9ca7d684a36d6b03c97addfe7a7667711feb5fdecd'
   })
 
-  depends_on 'libjpeg'
-  depends_on 'automake' => :build
+  depends_on 'libjpeg_turbo'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'gnutls' # R
+  depends_on 'openssl' # R
+  depends_on 'zlib' # R
 
   def self.build
-    system './autogen.sh'
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "cmake -G Ninja \
+        #{CREW_CMAKE_OPTIONS} \
+        .."
+    end
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

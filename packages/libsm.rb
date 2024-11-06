@@ -1,36 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libsm < Package
+class Libsm < Autotools
   description 'X.org X Session Management Library'
-  homepage 'http://www.x.org'
-  version '1.2.2'
+  homepage 'https://www.x.org/wiki/'
+  version '1.2.4-5edd20b'
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libSM-1.2.2.tar.gz'
-  source_sha256 '14bb7c669ce2b8ff712fbdbf48120e3742a77edcd5e025d6b3325ed30cf120f4'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libsm.git'
+  git_hashtag '5edd20b307ce70ccb14c360f1b94914c49544a24'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsm/1.2.2_armv7l/libsm-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsm/1.2.2_armv7l/libsm-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsm/1.2.2_i686/libsm-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsm/1.2.2_x86_64/libsm-1.2.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '37e41534cb72c0816c7836f5e042183bc03062367b09d2da556b355be4cd541f',
-     armv7l: '37e41534cb72c0816c7836f5e042183bc03062367b09d2da556b355be4cd541f',
-       i686: '43c197b6a44e70314c6c6593e719e35b011ac20776ebc9a2114b4af06e6448a0',
-     x86_64: '9516fc81d7106f5f611bfd0f47fc4d44bf3562cddf9c2f83a18a50e3960e9386',
+  binary_sha256({
+    aarch64: '0bddd0de07a4a833a9b6ae2238eb549f5f012f6dfc0a79062551f39ca02c5ec8',
+     armv7l: '0bddd0de07a4a833a9b6ae2238eb549f5f012f6dfc0a79062551f39ca02c5ec8',
+     x86_64: '3177c18fbb37de01bb93cab3ee821a50987034e5fa146a48e6eb581ebb8cf773'
   })
 
-  depends_on 'libice'
-  depends_on 'libx11'
-
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libice' # R
+  depends_on 'libmd' # R
+  depends_on 'libx11' => :build
+  depends_on 'libxtrans' => :build
+  depends_on 'util_linux' # R
 end

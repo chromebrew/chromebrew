@@ -1,50 +1,41 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Mutt < Package
+class Mutt < Autotools
   description 'Mutt is a small but very powerful text-based mail client for Unix operating systems.'
   homepage 'http://mutt.org/'
-  version '2.0.6'
+  version '2.2.12'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'ftp://ftp.mutt.org/pub/mutt/mutt-2.0.6.tar.gz'
-  source_sha256 '81e31c45895fd624747f19106aa2697d2aa135049ff2e9e9db0a6ed876bcb598'
+  source_url 'ftp://ftp.mutt.org/pub/mutt/mutt-2.2.12.tar.gz'
+  source_sha256 '043af312f64b8e56f7fd0bf77f84a205d4c498030bd9586457665c47bb18ce38'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutt/2.0.6_armv7l/mutt-2.0.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutt/2.0.6_armv7l/mutt-2.0.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutt/2.0.6_i686/mutt-2.0.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutt/2.0.6_x86_64/mutt-2.0.6-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '2f3f18827cb8a2c0a5a48e04397c4c4bf811cad82a8a235081a9f54ba227308f',
-     armv7l: '2f3f18827cb8a2c0a5a48e04397c4c4bf811cad82a8a235081a9f54ba227308f',
-       i686: 'd43f6599f9c83c487a2302015e1be9c8d28702fe8d8feab092cbc5b37a54e4a4',
-     x86_64: '3dedfd9092e58cba771c3af7079bf608b11960df2d30989254187501befccecc'
+    aarch64: 'd896cb0d3a3735d12951ba29b6f98b8f3cc32c4a29f6c9e4a26186f0ace42b71',
+     armv7l: 'd896cb0d3a3735d12951ba29b6f98b8f3cc32c4a29f6c9e4a26186f0ace42b71',
+       i686: '6ca743089425ed3d40bac6e3267d04ba3916244010b8ad9be50a720b01a88e4f',
+     x86_64: '1e877319f01ee8343036dfcd11bf4ba71a0f7ded74a6f3f9c585ae4dd5a1f5e8'
   })
 
+  depends_on 'libcyrussasl'
   depends_on 'libxslt'
 
-  def self.build
-    system "./configure \
-            --prefix=#{CREW_PREFIX} \
-            --with-mailpath=#{CREW_PREFIX}/mail \
-            --with-sasl=#{CREW_PREFIX}/lib/sasl2 \
-            --with-ssl \
-            --enable-imap \
-            --enable-smtp \
-            --enable-hcache"
-    system 'make'
-  end
+  configure_options "--with-mailpath=#{CREW_PREFIX}/etc/mail \
+    --with-sasl=#{CREW_LIB_PREFIX}/sasl2 \
+    --with-ssl \
+    --enable-imap \
+    --enable-smtp \
+    --enable-hcache"
+
+  run_tests
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/mail"
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/mail"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @muttenv = <<~MUTTEOF
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/mutt", <<~MUTTEOF
       # Mutt configuration
-      export SASL_PATH=#{CREW_PREFIX}/lib/sasl2
+      SASL_PATH=#{CREW_LIB_PREFIX}/sasl2
     MUTTEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/mutt", @muttenv)
   end
 end

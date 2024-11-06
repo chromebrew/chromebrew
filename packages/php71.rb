@@ -2,32 +2,26 @@ require 'package'
 
 class Php71 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
-  homepage 'http://www.php.net/'
+  homepage 'https://www.php.net/'
   @_ver = '7.1.33'
   version "#{@_ver}-3"
   license 'PHP-3.01'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://php.net/distributions/php-7.1.33.tar.xz'
   source_sha256 'bd7c0a9bd5433289ee01fd440af3715309faf583f75832b64fe169c100d52968'
+  binary_compression 'tar.xz'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-3_armv7l/php71-7.1.33-3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-3_armv7l/php71-7.1.33-3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-3_i686/php71-7.1.33-3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-3_x86_64/php71-7.1.33-3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '04261aa8c2f2244c429d45456c83bfc10f4beb2e634a6c7db4da044097a260d5',
      armv7l: '04261aa8c2f2244c429d45456c83bfc10f4beb2e634a6c7db4da044097a260d5',
-       i686: '2a103889c234601b47489808de43e01d96be4bfe002653acc8c08c6f2c770770',
-     x86_64: '2d354302e1cc625a6f12af2da718c41068eabe5b63175803875d37a1c4224f57',
+     x86_64: '2d354302e1cc625a6f12af2da718c41068eabe5b63175803875d37a1c4224f57'
   })
 
   depends_on 'libgcrypt'
   depends_on 'libwebp'
   depends_on 'libxslt'
   depends_on 'libzip'
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'exif'
   depends_on 'freetype'
   depends_on 'pcre'
@@ -35,11 +29,11 @@ class Php71 < Package
   depends_on 'tidy'
   depends_on 'unixodbc'
 
+  no_fhs
+
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    unless ARGV[0] == 'reinstall' and @_ver == phpver
-      abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
-    end
+    abort "PHP version #{phpver} already installed.".lightgreen if ARGV[0] != 'reinstall' && @_ver != phpver && !phpver.empty?
   end
 
   def self.patch
@@ -57,8 +51,8 @@ class Php71 < Package
     system "sed -i 's,upload_max_filesize = 2M,upload_max_filesize = 128M,' php.ini-development"
     system "sed -i 's,;opcache.enable=0,opcache.enable=1,' php.ini-development"
     # Fix cc: error: ext/standard/.libs/type.o: No such file or directory
-    #system "sed -i '98303d' configure"
-    #system "sed -i '98295,98296d' configure"
+    # system "sed -i '98303d' configure"
+    # system "sed -i '98295,98296d' configure"
     # Fix /usr/bin/file: No such file or directory
     system 'filefix'
   end
@@ -110,16 +104,7 @@ class Php71 < Package
     system 'make'
   end
 
-  def self.check
-    #system 'make', 'test'
-  end
-
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/log"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"

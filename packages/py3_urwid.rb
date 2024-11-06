@@ -1,35 +1,23 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_urwid < Package
+class Py3_urwid < Pip
   description 'Urwid is a full-featured console user interface library.'
   homepage 'http://urwid.org/'
-  @_ver = '2.1.2'
-  version @_ver
+  version "2.6.16-#{CREW_PY_VER}"
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://github.com/urwid/urwid.git'
-  git_hashtag "release-#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urwid/2.1.2_armv7l/py3_urwid-2.1.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urwid/2.1.2_armv7l/py3_urwid-2.1.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urwid/2.1.2_i686/py3_urwid-2.1.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urwid/2.1.2_x86_64/py3_urwid-2.1.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '38afd9d587f8b96d22a0bee2dcb65733718c4cd5c22ce1aeaadc4184ab763d3b',
-     armv7l: '38afd9d587f8b96d22a0bee2dcb65733718c4cd5c22ce1aeaadc4184ab763d3b',
-       i686: '33e095941cac6e21c11f87cba6dd7f3729c985c168a4a88fa15162024171c2f1',
-     x86_64: 'fa219fcf2872d1482f17fcee27f908e07dee4bcf2fdd9e7b0029e7075d650bee'
+    aarch64: '3ded50ec1306cda310e934707270152a62cee1fd17e5474f341b0631132f6388',
+     armv7l: '3ded50ec1306cda310e934707270152a62cee1fd17e5474f341b0631132f6388',
+       i686: '29534b324faaa31147b3b369d5c30ea750df33d53165d1f5e393db87b7b54a51',
+     x86_64: 'd53b6a491471a3970bf5322285d8d75ccd86688fb1cfb5f217c521cd9a6ad1f7'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'glibc' # R
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

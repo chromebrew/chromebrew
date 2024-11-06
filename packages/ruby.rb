@@ -3,52 +3,69 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.0.2'
+  version '3.3.5' # Do not use @_ver here, it will break the installer.
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
-  source_url 'https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.2.tar.gz'
-  source_sha256 '5085dee0ad9f06996a8acec7ebea4a8735e6fac22f22e2d98c3f2bc3bef7e6f1'
+  source_url 'https://github.com/ruby/ruby.git'
+  git_hashtag "v#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.0.2_armv7l/ruby-3.0.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.0.2_armv7l/ruby-3.0.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.0.2_i686/ruby-3.0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.0.2_x86_64/ruby-3.0.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'ad593ad2768a370594cc8353127f8754b67855a8f89606ed02c5517d3c6c0d8c',
-     armv7l: 'ad593ad2768a370594cc8353127f8754b67855a8f89606ed02c5517d3c6c0d8c',
-       i686: 'e484cc77a18a0e85ae7e30d0ad3c9fe11da044ddffd3ebbcc30a3468ceb850ff',
-     x86_64: 'a6f630ab4a14e584fcabb2c66c3005d0db01d856f25bb6ced527b7e93d9e0762'
+    aarch64: '9ad018a5a3f263bdeb9e548c42613a7e894aba6b8d9941e2c6e9c9f54fb84ee0',
+     armv7l: '9ad018a5a3f263bdeb9e548c42613a7e894aba6b8d9941e2c6e9c9f54fb84ee0',
+       i686: 'b62c49e3d8c8e70bcd81fec5708a848a254385c74d788c9cf8225190b660ba97',
+     x86_64: 'ea3fffee782c2e8c4f755eed36e865a2cb8ae346728f820a32df1e21be147b62'
   })
 
-  depends_on 'ca_certificates'
-  depends_on 'libyaml' # This is needed to install gems
-  # at run-time, system's gmp, openssl, readline and zlibpkg are possible to use
+  depends_on 'ca_certificates' # L
+  depends_on 'filecmd' # L (This is to enable file command use in package files.)
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'libffi' # R
+  depends_on 'libyaml' # R
+  depends_on 'openssl' # R
+  depends_on 'rust' => :build
+  depends_on 'zlib' # R
+
+  conflicts_ok # Needed for successful build.
+
+  # at run-time, system's gmp, openssl, and zlib can be used
 
   def self.build
-    # The download from ruby-lang.org doesn't need autoconf run,
-    # but the download from github does.
     system '[ -x configure ] || autoreconf -fiv'
-    system "env RUBY_CONF_ENV='stack_protector=no' \
-    CFLAGS='-ltinfow -flto=auto' CXXFLAGS='-flto=auto' \
-    LDFLAGS='-flto=auto' \
-    optflags='-flto=auto' \
-    ./configure #{CREW_OPTIONS} \
-    --enable-shared \
-    --disable-fortify-source"
-    system 'make'
+    system "RUBY_TRY_CFLAGS='stack_protector=no' \
+      RUBY_TRY_LDFLAGS='stack_protector=no' \
+      optflags='-flto=auto -fuse-ld=#{CREW_LINKER}' \
+      mold -run ./configure #{CREW_CONFIGURE_OPTIONS} \
+      --enable-shared \
+      #{ARCH == 'x86_64' ? '--enable-yjit' : ''} \
+      --disable-fortify-source"
+    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make"
   end
 
-  # def self.check
-  #  system 'make check || true'
-  # end
+  def self.check
+    # Do not run checks if rebuilding current ruby version.
+    # RUBY_VERSION is a built-in ruby constant.
+    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version.split('-')[0] == RUBY_VERSION
+  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    # See https://stackoverflow.com/questions/1844118/ruby-split-string-at-character-counting-from-the-right-side.
+    @ruby_ver = version.split(/\.([^.]*)$/).first
+    # Gems are stored in a ruby majorversion.minorversion.0 folder.
+    @gemrc = <<~GEMRCEOF
+      gem: --no-document
+      gempath: #{CREW_LIB_PREFIX}/ruby/gems/#{@ruby_ver}.0
+    GEMRCEOF
+    FileUtils.mkdir_p CREW_DEST_HOME
+    File.write("#{CREW_DEST_HOME}/.gemrc", @gemrc)
   end
 
   def self.postinstall
-    system 'gem update --silent -N --system'
+    puts 'Updating ruby gems. This may take a while...'
+    silent = @opt_verbose ? '' : '--silent'
+    system "gem update #{silent} -N --system", exception: false
   end
 end

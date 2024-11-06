@@ -2,33 +2,29 @@ require 'package'
 
 class Libxft < Package
   description 'X.org X FreeType interface library'
-  homepage 'https://www.x.org'
-  version '2.3.3'
+  homepage 'https://www.x.org/wiki/'
+  version '2.3.7'
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libXft-2.3.3.tar.bz2'
-  source_sha256 '225c68e616dd29dbb27809e45e9eadf18e4d74c50be43020ef20015274529216'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.x.org/archive/individual/lib/libXft-2.3.7.tar.xz'
+  source_sha256 '79f0b37c45007381c371a790c2754644ad955166dbf2a48e3625032e9bdd4f71'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxft/2.3.3_armv7l/libxft-2.3.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxft/2.3.3_armv7l/libxft-2.3.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxft/2.3.3_i686/libxft-2.3.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxft/2.3.3_x86_64/libxft-2.3.3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '609b249aaa1dcd93cac3d16996dc8c0141c0150d288ff2bf9fe004e7cc5396ab',
-     armv7l: '609b249aaa1dcd93cac3d16996dc8c0141c0150d288ff2bf9fe004e7cc5396ab',
-       i686: 'c8c994cc8ae2d890e4c9410b84f8987c7f993a161bb1986ba547448bcd7de732',
-     x86_64: 'cfe26131953575e93d3254fbc87a314379e66ed6c33445435b77bcf9236ed7cc',
+  binary_sha256({
+    aarch64: '2114f2123bd6fc24fc4f5d9b16441f0ce70aab9bf752ceb2aff99a79ce576334',
+     armv7l: '2114f2123bd6fc24fc4f5d9b16441f0ce70aab9bf752ceb2aff99a79ce576334',
+     x86_64: 'bac8b590570dd2b635e90f0b0b383237bf9df45e7c836bad733ff4023b903a4b'
   })
 
-  depends_on 'libxrender'
-  depends_on 'libx11'
-  depends_on 'fontconfig'
-  depends_on 'util_macros'
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libx11' # R
+  depends_on 'libxrender' # R
+  depends_on 'xorg_macros' => :build
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

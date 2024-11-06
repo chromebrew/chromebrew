@@ -1,36 +1,23 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pyudev < Package
+class Py3_pyudev < Pip
   description 'Pyudev provides Python bindings for udev.'
   homepage 'https://pyudev.readthedocs.io/'
-  @_ver = '0.22'
-  version @_ver
+  version "0.24.3-#{CREW_PY_VER}"
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://github.com/pyudev/pyudev.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyudev/0.22_armv7l/py3_pyudev-0.22-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyudev/0.22_armv7l/py3_pyudev-0.22-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyudev/0.22_i686/py3_pyudev-0.22-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyudev/0.22_x86_64/py3_pyudev-0.22-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'd3595f1225885de8ccbdca03a0a4e6a3be3745d48869fa0e65bbaf152a8bacaa',
-     armv7l: 'd3595f1225885de8ccbdca03a0a4e6a3be3745d48869fa0e65bbaf152a8bacaa',
-       i686: 'df1eca213e62f52722cd9437f141207c05a22711990ba163d522a6b9cde6c8f6',
-     x86_64: 'b3e8f6b7149108bf039a29a7a6ed1c19199396c68a3f08d5817128c726af198b'
+    aarch64: 'dc5904f922eed95d3e34d19a8d75fbc6b25eaac2a5896f23deb366b7060ea7b6',
+     armv7l: 'dc5904f922eed95d3e34d19a8d75fbc6b25eaac2a5896f23deb366b7060ea7b6',
+       i686: '26eff0e7c5e2e780946ca442a6cfd8d5a7e50f35e7aa0cae5fb5c10b341fe406',
+     x86_64: '3580d0edd85a33d0012da3d45779f1b6ee1287c54a9e03c6c8219cce16146edb'
   })
 
   depends_on 'py3_six'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

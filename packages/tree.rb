@@ -3,33 +3,25 @@ require 'package'
 class Tree < Package
   description 'Tree is a recursive directory listing command that produces a depth indented listing of files, which is colorized ala dircolors if the LS_COLORS environment variable is set and output is to tty.'
   homepage 'http://mama.indstate.edu/users/ice/tree/'
-  version '1.8.0'
+  version '2.1.0'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://mama.indstate.edu/users/ice/tree/src/tree-1.8.0.tgz'
-  source_sha256 '715d5d4b434321ce74706d0dd067505bb60c5ea83b5f0b3655dae40aa6f9b7c2'
+  source_url 'http://mama.indstate.edu/users/ice/tree/src/tree-2.1.0.tgz'
+  source_sha256 '0160c535bff2b0dc6a830b9944e981e3427380f63e748da96ced7071faebabf6'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tree/1.8.0_armv7l/tree-1.8.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tree/1.8.0_armv7l/tree-1.8.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tree/1.8.0_i686/tree-1.8.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tree/1.8.0_x86_64/tree-1.8.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'a7505aeb61a91e3735cd89e139632af5229a41d693e7b088fcdd6b5db630504a',
-     armv7l: 'a7505aeb61a91e3735cd89e139632af5229a41d693e7b088fcdd6b5db630504a',
-       i686: '648c1628521180d65f0ccdd12a9e1a90c3571988dc9debda621878dd06d9eef6',
-     x86_64: '32d029842308d0d237c09109248bb9244a6a2cac38eba679674b7b26555f11a2',
+  binary_sha256({
+    aarch64: '3bcf4c520da9ece2bfafe91dc60a3aef3d082748bb97831b6dc11435d5bb3a9d',
+     armv7l: '3bcf4c520da9ece2bfafe91dc60a3aef3d082748bb97831b6dc11435d5bb3a9d',
+       i686: 'ed51e27c703299efd1b73221c6c5226d2b0d10c629dac2326d1edc6a9258867f',
+     x86_64: 'a99cb6010fc11eb1802b1307b9e486104f74745baed92b8764b7f2055ea908f6'
   })
 
   def self.build
-    system "sed -i 's,/usr,#{CREW_PREFIX},g' Makefile"
-    system "sed -i '25s,=,=$(DESTDIR),' Makefile"
-    system "sed -i '27s,=,=$(DESTDIR),' Makefile"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_PREFIX}/bin", "MANDIR=#{CREW_DEST_MAN_PREFIX}", 'install'
   end
 end

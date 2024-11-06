@@ -1,49 +1,53 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Vte < Package
+class Vte < Meson
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  @_ver = '0.64.2'
-  version @_ver
+  version "0.77.91-#{CREW_ICU_VER}"
   license 'LGPL-2+ and GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.2_armv7l/vte-0.64.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.2_armv7l/vte-0.64.2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.2_x86_64/vte-0.64.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '28d3e1ec594f547221c5a806b89017f4f44817053238a3c75eef000a856c7a29',
-     armv7l: '28d3e1ec594f547221c5a806b89017f4f44817053238a3c75eef000a856c7a29',
-     x86_64: '3c8d0ddce8365705d966bdc2b1102d77dd660c0265b0e36ff9a7848e400614e0'
+    aarch64: 'd4516db006795e505a81fb52c34803fc6b0eea01a16bbbec03fd0f6546ba604f',
+     armv7l: 'd4516db006795e505a81fb52c34803fc6b0eea01a16bbbec03fd0f6546ba604f',
+     x86_64: 'f983e3b3731e062c5e0719ae5886cfb3dadb7d45ddea9ea8a22c5f07ce65a7a8'
   })
 
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'fribidi' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gnutls' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'fribidi'
-  depends_on 'gtk3'
-  depends_on 'gtk4'
+  depends_on 'graphene' # R
+  depends_on 'gtk3' # R
+  depends_on 'gtk4' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
+  depends_on 'lz4' # R
+  depends_on 'pango' # R
+  depends_on 'pcre2' # R
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' => :build
+  depends_on 'zlib' => :build
 
-  def self.build
-    system <<~CONFIGURE
-      meson \
-      #{CREW_MESON_FNO_LTO_OPTIONS.gsub('-fno-lto', '-fno-lto -fno-stack-protector')} \
-      -D_systemd=false \
+  gnome
+  no_lto
+
+  meson_options '-D_systemd=false \
       -Dfribidi=true \
       -Dgtk3=true \
       -Dgtk4=true \
       -Dgir=false \
-      -Dvapi=false \
-      builddir
-    CONFIGURE
+      -Dvapi=false'
 
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+  def self.patch
+    system "sed -i 's,/usr/bin/python3,#{CREW_PREFIX}/bin/python3,' src/minifont-coverage.py"
   end
 end

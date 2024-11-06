@@ -1,35 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libraw1394 < Package
+class Libraw1394 < Autotools
   description 'libraw1394 provides direct access to the IEEE 1394 bus through the Linux 1394 subsystem\'s raw1394 user space interface.'
   homepage 'https://sourceforge.net/projects/libraw1394/'
-  version '2.0.5'
+  version '2.1.2'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/libraw1394/libraw1394/libraw1394-2.0.5.tar.gz'
-  source_sha256 '50e7b812f09ec8181fc060e7e25e260017c16c1b41a04c51e23446f26fa109d4'
+  source_url "https://www.kernel.org/pub/linux/libs/ieee1394/libraw1394-#{version}.tar.xz"
+  source_sha256 '03ccc69761d22c7deb1127fc301010dd13e70e44bb7134b8ff0d07590259a55e'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libraw1394/2.0.5_armv7l/libraw1394-2.0.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libraw1394/2.0.5_armv7l/libraw1394-2.0.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libraw1394/2.0.5_i686/libraw1394-2.0.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libraw1394/2.0.5_x86_64/libraw1394-2.0.5-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '80d9eaa85a6bdca66142ccc091e94a1e049d24fb50be4adcaf0656bf136560a2',
-     armv7l: '80d9eaa85a6bdca66142ccc091e94a1e049d24fb50be4adcaf0656bf136560a2',
-       i686: 'd5701722d2fbb3a2bb7fb4bded4b2635f95a3332cd39a9f5896cd139091e5dcc',
-     x86_64: '4c0fd94617c2f7c9cd5c3468b562aa208c6a34812bc05ca63f7c490d298cab84',
+  binary_sha256({
+    aarch64: 'c275175e2e4e8be4fa817d3398faf415ccdd74bb37b0d4e856f6381dedae5cc4',
+     armv7l: 'c275175e2e4e8be4fa817d3398faf415ccdd74bb37b0d4e856f6381dedae5cc4',
+       i686: '9bee6317419d78c8497fce66f5f2e6c35d4dd124a206d3d32d618601a5f82c79',
+     x86_64: '11474a36fe379f1a95f3280d0dfa0ae6453c1ef030197571dd48210e76c20c43'
   })
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

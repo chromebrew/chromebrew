@@ -3,34 +3,32 @@ require 'package'
 class Libsigcplusplus < Package
   description 'libsigc++ implements a typesafe callback system for standard C++.'
   homepage 'https://github.com/libsigcplusplus/libsigcplusplus/'
-  @_ver = '2.10.6'
-  version @_ver
+  version '2.12.0'
   license 'LGPL-3'
   compatibility 'all'
-  source_url "https://github.com/libsigcplusplus/libsigcplusplus/archive/#{@_ver}.tar.gz"
-  source_sha256 '3458b027f44204571a3a7091ebb94e5b1b5ecc7fbab89ce2bada25543645993f'
+  source_url "https://github.com/libsigcplusplus/libsigcplusplus/releases/download/#{version}/libsigc++-#{version}.tar.xz"
+  source_sha256 '1c466d2e64b34f9b118976eb21b138c37ed124d0f61497df2a90ce6c3d9fa3b5'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_armv7l/libsigcplusplus-2.10.6-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_armv7l/libsigcplusplus-2.10.6-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_i686/libsigcplusplus-2.10.6-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_x86_64/libsigcplusplus-2.10.6-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: '75ba671255aa82733e1cd6e48828d1c1438d9505478066b312196c2c1b140369',
+     armv7l: '75ba671255aa82733e1cd6e48828d1c1438d9505478066b312196c2c1b140369',
+       i686: 'eac15d7439592c7c165333c19dc6268b76cd4800b810a8a2395991cbae3686ed',
+     x86_64: 'ee5bed2bab217c458efe10fb8a4697034e0c6a787880e5f7b7f8e79649f5b0bb'
   })
-  binary_sha256 ({
-     aarch64: 'e94e9f2da752623773a8b832204ab57e814bfb3c9132942b079e87f84f3c0ba3',
-      armv7l: 'e94e9f2da752623773a8b832204ab57e814bfb3c9132942b079e87f84f3c0ba3',
-        i686: '4fa4524d137e1d7a78b166808923fb1470664fd0523ea23320d951859f0bc5c4',
-      x86_64: '5fca09ea7258aa2edfba573da8366f40ab5aae476b3df248fb556cfe4bcdd8a0',
-  })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+
+  no_upstream_update
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-    -Dmaintainer-mode=true \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dbuild-deprecated-api=true \
     -Dbuild-examples=false \
     builddir"
-    system "meson configure builddir"
-    system "ninja -C builddir"
+    system 'meson configure --no-pager builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install

@@ -1,41 +1,42 @@
 require 'package'
 
 class Fd < Package
-  description "A simple, fast and user-friendly alternative to 'find'"
-  homepage 'https://github.com/sharkdp/fd'
-  version '8.2.1'
-  license 'Apache License Version 2.0'
+  description "A simple, fast and user-friendly alternative to 'find'."
+  homepage 'https://github.com/sharkdp/fd/'
+  @_ver = '8.3.0'
+  version "#{@_ver}-1"
+  license 'Apache-2.0 and MIT'
   compatibility 'all'
-  case ARCH
-  when 'aarch64', 'armv7l'
-    source_url 'https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-arm-unknown-linux-musleabihf.tar.gz'
-    source_sha256 'b2e4d38f9beb20070d140643884c96c0f71089102b608eb3fe2ac7067de1dd3d'
-  when 'i686'
-    source_url 'https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-i686-unknown-linux-musl.tar.gz'
-    source_sha256 '2632725f0a41f8a6012e6b451f978693ce24b6555ef52e33c161135a5ca90830'
-  when 'x86_64'
-    source_url 'https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-x86_64-unknown-linux-musl.tar.gz'
-    source_sha256 'af511a1eb8c407397a52ebb7783ead06bd5c27f727ee0cb91e8adafd607ef9eb'
-  end
+  source_url 'https://github.com/sharkdp/fd.git'
+  git_hashtag "v#{@_ver}"
+  binary_compression 'tpxz'
+
+  binary_sha256({
+    aarch64: '1325765ea06369318274a4c9432b22cff9a6714b15afd7c6d61ab833166852f3',
+     armv7l: '1325765ea06369318274a4c9432b22cff9a6714b15afd7c6d61ab833166852f3',
+       i686: '7c39bc4ee7d48d65baea2e20a5573ba48a285c00a6e1816809a04749f657a15a',
+     x86_64: '076f8e237125bcd488bdcf72a4f6a6f3e0786de795fb19444ec30c288f421965'
+  })
+
+  depends_on 'rust' => :build
 
   def self.build
-    File.write('fd.bash', "source #{CREW_PREFIX}/share/fd/autocomplete/fd.bash-completion")
+    system 'cargo build --release'
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/fd"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
-    FileUtils.mv 'autocomplete', "#{CREW_DEST_PREFIX}/share/fd"
-    FileUtils.install 'fd', "#{CREW_DEST_PREFIX}/bin/fd", mode: 0o755
-    FileUtils.install 'fd.1', "#{CREW_DEST_MAN_PREFIX}/man1/fd.1", mode: 0o644
-    FileUtils.install 'fd.bash', "#{CREW_DEST_PREFIX}/etc/bash.d/fd.bash", mode: 0o644
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
+    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/bash-completion/completions/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/zsh/site-functions/"
+    FileUtils.install 'target/release/fd', "#{CREW_DEST_PREFIX}/bin/fd", mode: 0o755
+    FileUtils.install `find . -name 'fd.bash' -type f`.to_s.chomp,
+                      "#{CREW_DEST_PREFIX}/share/bash-completion/completions/fd"
+    FileUtils.install 'doc/fd.1', "#{CREW_DEST_MAN_PREFIX}/man1/fd.1"
+    FileUtils.install 'contrib/completion/_fd', "#{CREW_DEST_PREFIX}/share/zsh/site-functions/_fd"
   end
 
-  def self.postinstall
-    puts "\nTo enable bash completion, execute the following:".lightblue
-    puts "source ~/.bashrc".lightblue
-    puts "\nType 'fd -h' to get started.\n".lightblue
+  def self.check
+    system 'cargo test --release'
   end
 end

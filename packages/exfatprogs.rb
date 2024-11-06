@@ -1,38 +1,31 @@
 require 'package'
 
 class Exfatprogs < Package
-  description 'exFAT filesystem userspace utilities for the Linux Kernel exfat driver'
+  description 'exFAT filesystem userspace utilities for the Linux Kernel exfat driver.'
   homepage 'https://github.com/exfatprogs/exfatprogs'
-  @_ver = '1.1.0'
-  version @_ver
+  version '1.2.0'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://github.com/exfatprogs/exfatprogs/archive/#{@_ver}/exfatprogs-#{@_ver}.tar.gz"
-  source_sha256 '88c12a2f9cbe4f12129f3b7fa2cd42f24dbed3f579e61bac2ca699ca79fad4e0'
+  source_url 'https://github.com/exfatprogs/exfatprogs.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exfatprogs/1.1.0_armv7l/exfatprogs-1.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exfatprogs/1.1.0_armv7l/exfatprogs-1.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exfatprogs/1.1.0_i686/exfatprogs-1.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exfatprogs/1.1.0_x86_64/exfatprogs-1.1.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '4e2730cc159d86f2f49888f692b199c29490ffac051585777f3ccd09f762145d',
-     armv7l: '4e2730cc159d86f2f49888f692b199c29490ffac051585777f3ccd09f762145d',
-       i686: '7cf5fe80e0ec6e5933f4d22e278b9a51f057165206167a76005790bcb00793ee',
-     x86_64: '8239bb9b62684474dbab1b370e0993c80aceea1d49a57a3b985bada7c58c2725'
+    aarch64: '3549b44369753a5372ebe620309468cd0ccf2e3814aadbec75c2077f4c035841',
+     armv7l: '3549b44369753a5372ebe620309468cd0ccf2e3814aadbec75c2077f4c035841',
+       i686: 'ccdcf93768f7ddc060364bf9953a2e903c669866dafa08141e33a075bb660059',
+     x86_64: 'fd89fc698d84aebcba7d97ca7f62d26181393bbb2878dda78d18d4773f8c3ba5'
   })
+
+  depends_on 'glibc' # R
 
   def self.build
-    system './autogen.sh'
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} --sbindir=#{CREW_PREFIX}/bin"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 
   def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-    system "install -Dm644 -t #{CREW_DEST_PREFIX}/share/man/man8 */*.8"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

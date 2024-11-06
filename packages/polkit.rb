@@ -1,40 +1,29 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Polkit < Package
+class Polkit < Meson
   description 'Application development toolkit for controlling system-wide privileges'
-  homepage 'https://www.freedesktop.org/wiki/Software/polkit/'
-  version '0.118-265f'
+  homepage 'https://github.com/polkit-org/polkit'
+  version '125'
   license 'LGPL-2'
-  compatibility 'all'
-  source_url 'https://gitlab.freedesktop.org/polkit/polkit/-/archive/265f0d54b83f0c9f0d66c88f132ef385117e1b97/polkit-265f0d54b83f0c9f0d66c88f132ef385117e1b97.tar.bz2'
-  source_sha256 '48cf39b1113f22a79a2ad3c901aa5d495b1ead780ca9be99ca4d4bb39cc25619'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/polkit-org/polkit.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/polkit/0.118-265f_armv7l/polkit-0.118-265f-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/polkit/0.118-265f_armv7l/polkit-0.118-265f-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/polkit/0.118-265f_i686/polkit-0.118-265f-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/polkit/0.118-265f_x86_64/polkit-0.118-265f-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '6144024125f13a854cf48dce3d567a562beeeb6bfce82d01ae2309110a6ceaba',
-     armv7l: '6144024125f13a854cf48dce3d567a562beeeb6bfce82d01ae2309110a6ceaba',
-       i686: '6a3f46969a0ca97cd96ba1882ccc2adefe90e5dd31cd7020b0c4001c1af9137f',
-     x86_64: '3dd185d450d343bb6c4c1a073497fe50cd2afd1b380b8f682ee50ab7030177f5'
+    aarch64: '049b8152177810491fd8a7af7ba60707c25806cc74a7ffcb7e46f6351fb8a024',
+     armv7l: '049b8152177810491fd8a7af7ba60707c25806cc74a7ffcb7e46f6351fb8a024',
+     x86_64: 'd718513f21699196b8524a8f04a089ab7eb887fc273a83cf490636b54aca98c8'
   })
 
-  depends_on 'js78'
-  depends_on 'gtk_doc' => :build
+  depends_on 'duktape'
+  depends_on 'elogind'
+  depends_on 'expat'
+  depends_on 'glib'
   depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'linux_pam' # R
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-    -Dsystemd=disabled \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options "-Dsession_tracking=elogind -Dsystemdsystemunitdir=#{CREW_PREFIX}/etc/elogind"
+  run_tests
 end

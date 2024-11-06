@@ -3,35 +3,40 @@ require 'package'
 class Clojure < Package
   description 'Clojure is a robust, practical, and fast programming language with a set of useful features that together form a simple, coherent, and powerful tool.'
   homepage 'https://clojure.org/'
-  version '1.10.1.469'
+  version '1.11.3'
   license 'EPL-1.0, Apache-2.0 and BSD'
   compatibility 'all'
-  source_url 'https://raw.githubusercontent.com/clojure/clojure/clojure-1.10.1/readme.txt'
-  source_sha256 '3487545874a31b2c568397be221eb5c9070e220cbf741f1eb4819937200d21a5'
+  source_url 'https://github.com/clojure/clojure.git'
+  git_hashtag "clojure-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clojure/1.10.1.469_armv7l/clojure-1.10.1.469-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clojure/1.10.1.469_armv7l/clojure-1.10.1.469-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clojure/1.10.1.469_i686/clojure-1.10.1.469-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clojure/1.10.1.469_x86_64/clojure-1.10.1.469-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'b7413c3b56bb18d5fb8e60cb5b3b9de827fe6398bf6022d58b3e05f596f8e07a',
-     armv7l: 'b7413c3b56bb18d5fb8e60cb5b3b9de827fe6398bf6022d58b3e05f596f8e07a',
-       i686: '5a1db6246686b0485d62032530f069aa8f1a201c26aa34e09375395b0a4dffe1',
-     x86_64: '24966018c4e0d9ab94fe91a6094c03da6e95673de5c9a5a4a0b413a54027332e',
+  binary_sha256({
+    aarch64: '944560332940086342379caa876f578609f0ae0b609852ea4d8c1ba145c4b85f',
+     armv7l: '944560332940086342379caa876f578609f0ae0b609852ea4d8c1ba145c4b85f',
+       i686: '6fd46d3898db62673f38f629f7b5fb6d846fddee9d6305f8a5750f3baa849a23',
+     x86_64: 'c0ffc01bf45e7ec7d75c8f7f3c2dff766426b9aa1b2e91d69387c139b747b954'
   })
 
-  depends_on 'jdk8'
+  depends_on 'openjdk8'
   depends_on 'rlwrap'
+  depends_on 'ant' => :build
+  depends_on 'maven' => :build
+
+  def self.build
+    ENV['JAVA_HOME'] = CREW_PREFIX
+    clojure = <<~EOF
+      #!/bin/bash
+      java -jar #{CREW_PREFIX}/share/clojure/clojure.jar
+    EOF
+    File.write('clojure.sh', clojure)
+    system './antsetup.sh'
+    system 'ant local'
+  end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_PREFIX}/share/clojure"
-    system "curl -O https://download.clojure.org/install/linux-install-#{self.version}.sh"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("linux-install-#{self.version}.sh") ) == '265e46d492b682cecc346ef018076a3181203dfe5e3dbe455b0f7feab51df70f'
-    system "chmod +x linux-install-#{self.version}.sh"
-    system "./linux-install-#{self.version}.sh --prefix #{CREW_DEST_PREFIX}"
-    system "sed -i 's,install_dir=#{CREW_DEST_PREFIX},install_dir=#{CREW_PREFIX},' #{CREW_DEST_PREFIX}/bin/clojure"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/clojure"
+    FileUtils.install 'clojure.sh', "#{CREW_DEST_PREFIX}/bin/clojure", mode: 0o755
+    FileUtils.install 'clojure.jar', "#{CREW_DEST_PREFIX}/share/clojure", mode: 0o644
   end
 end

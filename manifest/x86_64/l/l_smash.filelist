@@ -1,0 +1,9 @@
+/usr/local/bin/boxdumper
+/usr/local/bin/muxer
+/usr/local/bin/remuxer
+/usr/local/bin/timelineeditor
+/usr/local/include/lsmash.h
+/usr/local/lib64/liblsmash.a
+/usr/local/lib64/liblsmash.so
+/usr/local/lib64/liblsmash.so.2
+/usr/local/lib64/pkgconfig/liblsmash.pc

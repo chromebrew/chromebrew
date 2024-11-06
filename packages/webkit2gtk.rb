@@ -1,15 +1,16 @@
 require 'package'
+Package.load_package("#{__dir__}/webkit2gtk_4.rb")
 
 class Webkit2gtk < Package
-  description 'Web content engine for GTK'
-  homepage 'https://webkitgtk.org'
-  @_ver = '2.32.0'
-  version @_ver
-  license 'LGPL-2+ and BSD-2'
-  compatibility 'all'
-  
+  description Webkit2gtk_4.description
+  homepage Webkit2gtk_4.homepage
+  version Webkit2gtk_4.version
+  license Webkit2gtk_4.license
+  compatibility Webkit2gtk_4.compatibility
+
   is_fake
 
   depends_on 'webkit2gtk_4'
-  depends_on 'webkit2gtk_5'
+  depends_on 'webkit2gtk_4_1'
+  depends_on 'webkitgtk_6'
 end

@@ -3,31 +3,20 @@ require 'package'
 class Maven < Package
   description 'Apache Maven is a software project management and comprehension tool.'
   homepage 'https://maven.apache.org/'
-  version '3.5.2'
+  version '3.9.8'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'http://mirror.csclub.uwaterloo.ca/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.tar.gz'
-  source_sha256 '707b1f6e390a65bde4af4cdaf2a24d45fc19a6ded00fff02e91626e3e42ceaff'
+  source_url "https://dlcdn.apache.org/maven/maven-3/#{version}/binaries/apache-maven-#{version}-bin.tar.gz"
+  source_sha256 '067672629075b740e3d0a928e21021dd615a53287af36d4ccca44e87e081d102'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/maven/3.5.2_armv7l/maven-3.5.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/maven/3.5.2_armv7l/maven-3.5.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/maven/3.5.2_i686/maven-3.5.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/maven/3.5.2_x86_64/maven-3.5.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'ab7d4fa404f53d5876e0a977a4eeaf1d38f3d9738ece113c9507c968ed2eac91',
-     armv7l: 'ab7d4fa404f53d5876e0a977a4eeaf1d38f3d9738ece113c9507c968ed2eac91',
-       i686: '8dcd4e8924457622ccd8770258274f16a63156a6fdb05b3a55320dabaa9733d0',
-     x86_64: '62475788ab2144a67de31b08a946d613c277f9557f2122aff8cc996bd87bde2f',
-  })
+  depends_on 'openjdk8' unless File.exist? "#{CREW_PREFIX}/bin/java"
 
-  depends_on 'jdk8'
+  no_compile_needed
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_PREFIX}/share/apache-maven"
-    system "cp -r . #{CREW_DEST_PREFIX}/share/apache-maven"
-    system "ln -s #{CREW_PREFIX}/share/apache-maven/bin/mvn #{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/apache-maven"
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/apache-maven"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/apache-maven/bin/mvn", "#{CREW_DEST_PREFIX}/bin/mvn"
   end
 end

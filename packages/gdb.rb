@@ -1,44 +1,56 @@
 # Adapted from Arch Linux gdb PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/gdb/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Gdb < Package
+class Gdb < Autotools
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version '11.1'
+  version "15.1-gcc14-#{CREW_PY_VER}"
   license 'GPL3'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/gdb/gdb-11.1.tar.xz'
-  source_sha256 'cccfcc407b20d343fb320d4a9a2110776dd3165118ffd41f4b1b162340333f94'
+  source_url "https://ftpmirror.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
+  source_sha256 '38254eacd4572134bca9c5a5aa4d4ca564cbbd30c369d881f733fb6b903354f2'
+  binary_compression 'tar.zst'
 
-  binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.1_i686/gdb-11.1-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.1_armv7l/gdb-11.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.1_armv7l/gdb-11.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.1_x86_64/gdb-11.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-       i686: '5ed42d4d144048f46d888079719431d5031f39f60f392dd690d72fe52233e19f',
-    aarch64: 'd790322bdc75abf93546a0845c55562e9ef358edd5f80883c4847b630bda6c27',
-     armv7l: 'd790322bdc75abf93546a0845c55562e9ef358edd5f80883c4847b630bda6c27',
-     x86_64: 'f3d0bb232d38629b0c25e12d29a5098a7d6fb01abcc65e914401b313b5d0bd68'
+    aarch64: '5f9ae81368ba045330b783686cd514c38ff64c0bbcd3abd2ce1100a8abd28944',
+     armv7l: '5f9ae81368ba045330b783686cd514c38ff64c0bbcd3abd2ce1100a8abd28944',
+       i686: 'a0b35ff0e8b9a37237323c3a72cd89121b39dd1467d5e3c93c9d14a5b75fe7f7',
+     x86_64: '675a925237cc73dd7eb0da055c004f835dddba257aaec3986249f30fc19e79da'
   })
 
-  depends_on 'mpfr' # R
-  depends_on 'gmp' # R
-  depends_on 'source_highlight' # R
+  depends_on 'binutils' # R
   depends_on 'boost' # R
+  depends_on 'elfutils' # R
+  depends_on 'expat' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'mpfr' # R
+  depends_on 'ncurses' # R
+  depends_on 'python3' # R
+  depends_on 'readline' # R
+  depends_on 'source_highlight' # R
+  depends_on 'texinfo' => :build
+  depends_on 'xxhash' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
+
+  conflicts_ok # binutils conflicts
 
   def self.build
+    @x = ARCH == 'i686' ? '' : '--with-x'
     FileUtils.mkdir_p 'build'
     Dir.chdir('build') do
-      system "env #{CREW_ENV_OPTIONS} \
-        CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw  -lncursesw' \
-        ../configure \
-        #{CREW_OPTIONS} \
+      system "../configure \
+        #{CREW_CONFIGURE_OPTIONS} \
+        --disable-binutils \
+        --disable-ld \
         --disable-nls \
         --enable-64-bit-bfd \
+        --enable-install-libbfd \
         --enable-host-shared \
         --enable-lto \
         --enable-shared \
@@ -52,28 +64,21 @@ class Gdb < Package
         --with-system-gdbinit=#{CREW_PREFIX}/etc/gdb/gdbinit \
         --with-system-readline \
         --with-system-zlib \
-        --with-x"
+        #{@x}"
       system 'make'
     end
   end
 
   def self.install
     Dir.chdir('build') do
+      # Handle missing libopcodes
+      # https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/merge_requests/13697/diffs
       system "make -C gdb DESTDIR=#{CREW_DEST_DIR} install"
+      system "make -C opcodes DESTDIR=#{CREW_DEST_DIR} install"
+      system "make -C bfd DESTDIR=#{CREW_DEST_DIR} install"
+      system "make -C gdb/data-directory DESTDIR=#{CREW_DEST_DIR} install"
       system "make -C gdbserver DESTDIR=#{CREW_DEST_DIR} install"
     end
-    # Remove files conflicting with binutils
-    FileUtils.rm "#{CREW_DEST_PREFIX}/share/info/bfd.info" if File.exist?("#{CREW_DEST_PREFIX}/share/info/bfd.info")
-    conflict_packages = %w[binutils]
-    conflict_packages.each do |package|
-      file = File.open("#{CREW_META_PATH}#{package}.filelist").read
-      file.each_line do |line|
-        if File.exist?("#{CREW_DEST_DIR}#{line}")
-          FileUtils.rm_f "#{CREW_DEST_DIR}#{line}"
-          puts "Removed #{CREW_DEST_DIR}#{line}"
-        end
-      end
-    end
-    FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/libinproctrace.so" if File.exist?("#{CREW_DEST_LIB_PREFIX}/libinproctrace.so")
+    FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libinproctrace.so"
   end
 end

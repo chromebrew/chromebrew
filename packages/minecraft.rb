@@ -12,13 +12,16 @@ class Minecraft < Package
   source_sha256 'SKIP'
 
   depends_on 'libx11'
-  depends_on 'jdk8'
+  depends_on 'openjdk17'
   depends_on 'gtk3'
   depends_on 'libcom_err'
+  depends_on 'libsecret'
   depends_on 'sommelier'
 
+  no_fhs
+
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}"
+    FileUtils.mkdir_p CREW_DEST_PREFIX
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/minecraft-launcher", "#{CREW_DEST_PREFIX}/bin/minecraft-launcher.elf"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/.minecraft"
@@ -29,15 +32,14 @@ class Minecraft < Package
         # https://minecraft.fandom.com/wiki/Minecraft_Launcher
         HOME=#{CREW_PREFIX}/.config #{CREW_PREFIX}/bin/minecraft-launcher.elf --workDir #{CREW_PREFIX}/.config/.minecraft --tmpDir #{CREW_PREFIX}/tmp $@
       EOF
-      IO.write("minecraft-launcher", @launcherscript)
-      system "chmod +x minecraft-launcher"
+      File.write('minecraft-launcher', @launcherscript, perm: 0o755)
     end
   end
 
   def self.postinstall
     puts
     puts "Your minecraft data is in #{CREW_PREFIX}/.config/.minecraft .".lightblue
-    puts "To launch, just type `minecraft-launcher`.".lightblue
+    puts 'To launch, just type `minecraft-launcher`.'.lightblue
     puts
   end
 end

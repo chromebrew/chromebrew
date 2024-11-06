@@ -1,41 +1,22 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xorg_evdev_driver < Package
-  description 'The Xorg Evdev Driver package contains a Generic Linux input driver for the Xorg X server. It handles keyboard, mouse, touchpads and wacom devices, though for touchpad and wacom advanced handling, additional drivers are required.'
-  homepage 'https://www.x.org'
-  version '2.10.5'
-  license 'ISC and MIT'
-  compatibility 'all'
-  source_url 'https://www.x.org/pub/individual/driver/xf86-input-evdev-2.10.5.tar.bz2'
-  source_sha256 '9edaa6205baf6d2922cc4db3d8e54a7e7773b5f733b0ae90f6be7725f983b70d'
+class Xorg_evdev_driver < Autotools
+  description 'Generic Linux input driver for the Xorg X server.'
+  homepage 'https://gitlab.freedesktop.org/xorg/driver/xf86-input-evdev'
+  version '2.10.6'
+  compatibility 'aarch64 armv7l x86_64'
+  license 'MIT'
+  source_url 'https://gitlab.freedesktop.org/xorg/driver/xf86-input-evdev.git'
+  git_hashtag "xf86-input-evdev-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_evdev_driver/2.10.5_armv7l/xorg_evdev_driver-2.10.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_evdev_driver/2.10.5_armv7l/xorg_evdev_driver-2.10.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_evdev_driver/2.10.5_i686/xorg_evdev_driver-2.10.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_evdev_driver/2.10.5_x86_64/xorg_evdev_driver-2.10.5-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'de669f481bef66a6589ea28232fc8991ef476260ce1f718f338d9fbcbee1525f',
-     armv7l: 'de669f481bef66a6589ea28232fc8991ef476260ce1f718f338d9fbcbee1525f',
-       i686: 'e7736ea7242f41d4b9e0f73a1ee3c015ab72395984f4514f9eb81f5765edfe44',
-     x86_64: '7f8aab503e08725b8c0271af7df95fa10b69cb907cfde990539565ca2c6588eb',
+  binary_sha256({
+    aarch64: 'd15fae840bdb86e14177bc9f7ec5c0ed47326af3b2888c75f4087a28368bdb22',
+     armv7l: 'd15fae840bdb86e14177bc9f7ec5c0ed47326af3b2888c75f4087a28368bdb22',
+     x86_64: '3ed674dc7de7cc72ceb06df044132d1c7b4f7e5ab033e31d54de4ec5ec4ce7f0'
   })
 
   depends_on 'mtdev'
   depends_on 'libevdev'
   depends_on 'xorg_server' => :build
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--enable-shared',
-           '--disable-static'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
-  end
 end

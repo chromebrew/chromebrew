@@ -3,24 +3,17 @@ require 'package'
 class Wpebackend_fdo < Package
   description 'Freedesktop.org backend for WPE WebKit'
   homepage 'https://wpewebkit.org'
-  @_ver = '1.8.4'
-  version @_ver
+  version '1.14.0'
   license 'BSD-2'
-  compatibility 'all'
-  source_url "https://github.com/Igalia/WPEBackend-fdo/releases/download/#{@_ver}/wpebackend-fdo-#{@_ver}.tar.xz"
-  source_sha256 'def59bed5e8cdabb65ffa76ee2eef349fba7b42a75dac80f3da5954b17f4074a'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://github.com/Igalia/WPEBackend-fdo/releases/download/#{version}/wpebackend-fdo-#{version}.tar.xz"
+  source_sha256 'e75b0cb2c7145448416e8696013d8883f675c66c11ed750e06865efec5809155'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wpebackend_fdo/1.8.4_armv7l/wpebackend_fdo-1.8.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wpebackend_fdo/1.8.4_armv7l/wpebackend_fdo-1.8.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wpebackend_fdo/1.8.4_i686/wpebackend_fdo-1.8.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wpebackend_fdo/1.8.4_x86_64/wpebackend_fdo-1.8.4-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'fe50fe41d14a69954f6df24f77f4a86ed123c62c07cecbd9e20881b22ec8a4b6',
-     armv7l: 'fe50fe41d14a69954f6df24f77f4a86ed123c62c07cecbd9e20881b22ec8a4b6',
-       i686: 'df008b94ea6fc3172ba993d5aab760f92659bbdfe022a012d20837cf35a242ab',
-     x86_64: '8da6d976164abe12aaea42e61d57dfab772639fffa954305c9b9e59889d09f8d'
+    aarch64: '8bf04acd2a0086a4dfd8376829577d00de7366cd4304383d65bf2226d05449de',
+     armv7l: '8bf04acd2a0086a4dfd8376829577d00de7366cd4304383d65bf2226d05449de',
+     x86_64: '2f878e911a8b013af12f05680f5c894b1e23b5c04301a8d936ff55993387a6c4'
   })
 
   depends_on 'libwpe'
@@ -28,11 +21,14 @@ class Wpebackend_fdo < Package
   depends_on 'libepoxy'
   depends_on 'mesa' => :build
   depends_on 'wayland_protocols' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

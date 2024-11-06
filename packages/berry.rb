@@ -1,87 +1,31 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Berry < Package
+class Berry < Autotools
   description 'Healthy, bite-sized window manager'
   homepage 'https://github.com/JLErvin/berry'
-  version '0.1.5'
+  version '0.1.12'
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://github.com/JLErvin/berry/archive/0.1.5.tar.gz'
-  source_sha256 '3d2fa52aeba6ed05d3cc0e8308604c5a83e94a8623f3e66ed53fd5e0fdabfabf'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/JLErvin/berry.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/berry/0.1.5_armv7l/berry-0.1.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/berry/0.1.5_armv7l/berry-0.1.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/berry/0.1.5_i686/berry-0.1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/berry/0.1.5_x86_64/berry-0.1.5-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'cec62b31daf5040990846378b214c0856b590a9cf84873cb5f44c67a90382bc1',
-     armv7l: 'cec62b31daf5040990846378b214c0856b590a9cf84873cb5f44c67a90382bc1',
-       i686: 'ed7257e3a11a68f3e21b2546d55bed20364df8d08522a008b002452e784b5f9d',
-     x86_64: '68c0aef9dc4654a7abb36c1bbe3a0a9d213840f8f847a21ea40658f7fc56a28e',
+  binary_sha256({
+    aarch64: '59add51bcb91e1bc310128f0f0735e9665ca38afa246b03eb9e8059426b4b6be',
+     armv7l: '59add51bcb91e1bc310128f0f0735e9665ca38afa246b03eb9e8059426b4b6be',
+     x86_64: '32d9f31e492cbd4606d59a12c18ee59e9634e3abc15257c47110f4f7ffeb1b4b'
   })
 
-  depends_on 'libx11'
+  depends_on 'fontconfig' # R
   depends_on 'freetype'
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libx11'
+  depends_on 'libxft' # R
+  depends_on 'libxinerama' # R
   depends_on 'sommelier'
 
-  def self.patch
-    #system "touch ./cross.patch"
-    puts "Making Patch file".lightred
-    system "cat << 'EOF' > cross.patch
-diff config.mk.orig config.mk -u
---- config.mk.orig	2020-08-17 19:22:12.659998356 -0400
-+++ config.mk	2020-08-17 19:23:12.059998341 -0400
-@@ -12,8 +12,8 @@
- PREFIX = /usr/local
- MANPREFIX = ${PREFIX}/share/man
-
--X11INC = /usr/X11R6/include
--X11LIB = /usr/X11R6/lib
-+X11INC = /usr/local/include
-+X11LIB = /usr/local/lib
-
- # Xinerama, comment if you don't want it
- XINERAMALIBS  = -lXinerama
-@@ -21,7 +21,7 @@
-
- # freetype
- FREETYPELIBS = -lfontconfig -lXft
--FREETYPEINC = /usr/include/freetype2
-+FREETYPEINC = /usr/local/include/freetype2
- # OpenBSD (uncomment)
- #FREETYPEINC = ${X11INC}/freetype2
-
-@@ -36,7 +36,7 @@
- # flags
- CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS} ${DEBUG_CPPFLAGS}
- #CFLAGS   = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS} ${DEBUG_CFLAGS}
--CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os ${INCS} ${CPPFLAGS} ${DEBUG_CFLAGS} $(NAME_DEFINES)
-+CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os ${INCS} ${CPPFLAGS} ${DEBUG_CFLAGS}
- LDFLAGS  = ${LIBS}
-
- # Solaris
-@@ -44,4 +44,4 @@
- #LDFLAGS = ${LIBS}
-
- # compiler and linker
--CC = cc
-+#CC = cc
-
-EOF"
-    puts "Patching...".red
-    system "cat ./cross.patch"
-    system "patch -Np0 < cross.patch"
-    puts "Patched!".lightblue
-  end
-  def self.build
-    system "make"
-  end
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install PREFIX=#{CREW_PREFIX}"
-  end
   def self.postinstall
-    puts 'A hoykey system such as sxhkd is needed in order to use berry as a WM'.lightblue
+    ExitMessage.add 'A hotkey system such as sxhkd is needed in order to use berry as a WM'.lightblue
   end
 end

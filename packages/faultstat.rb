@@ -2,32 +2,34 @@ require 'package'
 
 class Faultstat < Package
   description 'Faultstat measures page fault activity and swap utilization of processes'
-  homepage 'https://kernel.ubuntu.com/~cking/faultstat/'
-  version '0.01.01'
+  homepage 'https://github.com/ColinIanKing/faultstat'
+  version '0.01.11'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://kernel.ubuntu.com/~cking/tarballs/faultstat/faultstat-0.01.01.tar.xz'
-  source_sha256 '81218818fe7498411797289bdd0967e82665d2065407be8b5335eaf2959b8991'
+  source_url 'https://github.com/ColinIanKing/faultstat.git'
+  git_hashtag "V#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faultstat/0.01.01_armv7l/faultstat-0.01.01-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faultstat/0.01.01_armv7l/faultstat-0.01.01-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faultstat/0.01.01_i686/faultstat-0.01.01-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faultstat/0.01.01_x86_64/faultstat-0.01.01-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: '107d40e974c26833b74828cefdf50d24626f3bfa2d33d4b55d95a5b989c18ce8',
+     armv7l: '107d40e974c26833b74828cefdf50d24626f3bfa2d33d4b55d95a5b989c18ce8',
+       i686: '373a96ee73bfdec3545a1af4a1218bf5d662b2c889b0c2ff40c6f3958cb70212',
+     x86_64: '13512f8bf0d1789ba1478eedeec8c764c2a0e8fd0bd6c6029f695298ada43a96'
   })
-  binary_sha256 ({
-    aarch64: '4e77ced9098ba0ceefd750295c6dfa4bd032136d62dd5ca8b80252e9307206c5',
-     armv7l: '4e77ced9098ba0ceefd750295c6dfa4bd032136d62dd5ca8b80252e9307206c5',
-       i686: 'd06fb76f7101afbdf7faddb3d071462c5636b2f5c14d70361d844d926fc33655',
-     x86_64: '6a2eb859919e7ad7e5c6b58541cf04f8c7ab42dd7f03112ddfda6c27198a9053',
-  })
+
+  depends_on 'ncurses' # R
+
+  def self.patch
+    # Add support for overriding installation prefix in Makefile
+    downloader 'https://patch-diff.githubusercontent.com/raw/ColinIanKing/faultstat/pull/6.patch', 'fe1c1faf89908646f32ece035ff74330560f34b1f0f236f9888d7f04df609210'
+    system 'git apply 6.patch'
+  end
 
   def self.build
     system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses make"
   end
 
   def self.install
-    system "install -Dm755 faultstat #{CREW_DEST_PREFIX}/bin/faultstat"
-    system "install -Dm644 faultstat.8 #{CREW_DEST_PREFIX}/share/man/man8/faultstat.8"
+    system 'make', "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

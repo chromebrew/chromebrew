@@ -2,31 +2,28 @@ require 'package'
 
 class Xinit < Package
   description 'The xinit package contains a usable script to start the xserver.'
-  homepage 'https://www.x.org'
-  version '1.4.1'
+  homepage 'https://www.x.org/wiki/'
+  version '1.4.2'
   license 'GPL-2'
-  compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/app/xinit-1.4.1.tar.gz'
-  source_sha256 'ca33ec3de6c39589c753620e5b3bcbc8277218b949bfa2df727779b03a8d2357'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.x.org/archive/individual/app/xinit-1.4.2.tar.gz'
+  source_sha256 '9121c9162f6dedab1229a8c4ed4021c4d605699cb0da580ac2ee1b0c96b3f60e'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xinit/1.4.1_armv7l/xinit-1.4.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xinit/1.4.1_armv7l/xinit-1.4.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xinit/1.4.1_i686/xinit-1.4.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xinit/1.4.1_x86_64/xinit-1.4.1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '269e5d57c7dbde243914bba10782a9b7a237840f132ff20b7037d264da1a1cea',
-     armv7l: '269e5d57c7dbde243914bba10782a9b7a237840f132ff20b7037d264da1a1cea',
-       i686: '46496e925ada2487dcb695fea39987fd2d96b962f623f3ccf8cf0184a49d10c5',
-     x86_64: 'e26fee34f297ca45faff99054a6fbf84e019925326d3b45244f40cb70725c930',
+  binary_sha256({
+    aarch64: '23c169a3f7662628d1ee072ddb5e9275705d4625f7a32dc97addea86d2221140',
+     armv7l: '23c169a3f7662628d1ee072ddb5e9275705d4625f7a32dc97addea86d2221140',
+     x86_64: '39b6cdc11b9bbef6850969fa9f9d1e445b5eee7f377658927818b371d4928dc0'
   })
 
-  depends_on 'xauth'
-  depends_on 'xterm'
+  depends_on 'xauth' # L
+  depends_on 'xterm' # L
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
 
   def self.build
-    system "env #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

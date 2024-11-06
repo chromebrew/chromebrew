@@ -1,38 +1,35 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Fossil < Package
+class Fossil < Autotools
   description 'Fossil is a simple, high-reliability, distributed software configuration management system'
-  homepage 'http://www.fossil-scm.org/index.html/doc/trunk/www/index.wiki'
-  version '2.6'
+  homepage 'https://fossil-scm.org/home/doc/trunk/www/index.wiki'
+  version '2.24'
   license 'BSD-2'
   compatibility 'all'
-  source_url 'https://www.fossil-scm.org/fossil/uv/fossil-src-2.6.tar.gz'
-  source_sha256 '76a794555918be179850739a90f157de0edb8568ad552b4c40ce186c79ff6ed9'
+  source_url 'https://github.com/drhsqlite/fossil-mirror.git'
+  git_hashtag "version-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fossil/2.6_armv7l/fossil-2.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fossil/2.6_armv7l/fossil-2.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fossil/2.6_i686/fossil-2.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fossil/2.6_x86_64/fossil-2.6-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '1888721a262e9a4232f91ff46a1700d8e024969475f01bc769f5d04f2a00567d',
-     armv7l: '1888721a262e9a4232f91ff46a1700d8e024969475f01bc769f5d04f2a00567d',
-       i686: '944890663fabbff3fe75f23d3dda5c2ab2b865e8f5545cce3e69d1c1c38998ae',
-     x86_64: 'e3de20c2f0f7d49d2cac73d9076fd866d8df5f781105473b15107fcc3c45b69d',
+  binary_sha256({
+    aarch64: '269cb46f15dc921144fb041850350096dba8b30b4df7e10911d97040ca9d661a',
+     armv7l: '269cb46f15dc921144fb041850350096dba8b30b4df7e10911d97040ca9d661a',
+       i686: 'd2ad4dd32e4b12a72b5baa59c0c970dd04e41fa29d2a52f625f0632a38004ad0',
+     x86_64: '173b80cd19a31560bb4bae0db994bc14bbcd102d18a6514404963ec93ecb069a'
   })
 
-  depends_on 'fuse3'
-  depends_on 'sqlite'
+  depends_on 'fuse2'
+  depends_on 'openssl' # R
+  # Error: system SQLite library omits required build option -DSQLITE_ENABLE_DBSTAT_VTAB
+  # depends_on 'sqlite'
+  depends_on 'tcl' => :build
+  depends_on 'zlib' # R
 
+  # Fossil uses autosetup, which behaves enough like autotools that if we only pass certain options we can still use the rest of the autotools buildsystem.
   def self.build
-    system "bash configure --prefix=#{CREW_PREFIX}"
-    system 'make'
-    system 'gzip -9 fossil.1'
+    system "./configure --prefix=#{CREW_PREFIX}"
   end
 
-  def self.install
-    system "install -Dm755 fossil #{CREW_DEST_PREFIX}/bin/fossil"
-    system "install -Dm644 fossil.1.gz #{CREW_DEST_PREFIX}/share/man/man1/fossil.1.gz"
+  configure_install_extras do
+    FileUtils.install 'fossil.1', "#{CREW_DEST_MAN_PREFIX}/man1/fossil.1", mode: 0o644
   end
 end

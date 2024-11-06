@@ -1,32 +1,28 @@
-ENV['CREW_NOT_STRIP'] = 'true'
-
 require 'package'
 
 class Packer < Package
   description 'Packer is an open source tool for creating identical machine images for multiple platforms from a single source configuration.'
   homepage 'https://www.packer.io/'
-  version '1.4.4'
+  version '1.11.0'
   license 'Apache-2.0, BSD-2, BSD-4, MIT, MPL-2.0 and unicode'
   compatibility 'all'
+  source_url({
+    aarch64: "https://releases.hashicorp.com/packer/#{version}/packer_#{version}_linux_arm.zip",
+     armv7l: "https://releases.hashicorp.com/packer/#{version}/packer_#{version}_linux_arm.zip",
+       i686: "https://releases.hashicorp.com/packer/#{version}/packer_#{version}_linux_386.zip",
+     x86_64: "https://releases.hashicorp.com/packer/#{version}/packer_#{version}_linux_amd64.zip"
+  })
+  source_sha256({
+    aarch64: '644ff27386993ef09b29169c383b70c0c92aef6bce53bdd9f87b945c4a6a31bb',
+     armv7l: '644ff27386993ef09b29169c383b70c0c92aef6bce53bdd9f87b945c4a6a31bb',
+       i686: 'b3f51d82341c155c520d530178ffdf5cfe48cd001cf9a760ece11e7813132ca0',
+     x86_64: 'dcac06a4c671bbb71e916da5abe947ebf4d6aa35c197e21c7c7b1d68cb8b7cad'
+  })
 
-  case ARCH
-  when 'aarch64'
-    source_url 'https://releases.hashicorp.com/packer/1.4.4/packer_1.4.4_linux_arm64.zip'
-    source_sha256 'c6930cf5afdeb99df3ed5c9eeeef89fbcb3a1a71a9e17ebba16c873405ab72cd'
-  when 'armv7l'
-    source_url 'https://releases.hashicorp.com/packer/1.4.4/packer_1.4.4_linux_arm.zip'
-    source_sha256 '0cac826f983172aa836da65f76aa535fe7eacdece0510832ccfe3b51cb8dfe47'
-  when 'i686'
-    source_url 'https://releases.hashicorp.com/packer/1.4.4/packer_1.4.4_linux_386.zip'
-    source_sha256 'a1a3773305453c81c48a5f5c0d2df91d64a44c29063e3d5dccd6be77fef3bcea'
-  when 'x86_64'
-    source_url 'https://releases.hashicorp.com/packer/1.4.4/packer_1.4.4_linux_amd64.zip'
-    source_sha256 'b4dc37877a0fd00fc72ebda98977c2133be9ba6b26bcdd13b1b14a369e508948'
-  end
+  no_compile_needed
+  no_shrink
 
   def self.install
-    system "install -Dm755 packer #{CREW_DEST_PREFIX}/bin/packer"
+    FileUtils.install 'packer', "#{CREW_DEST_PREFIX}/bin/packer", mode: 0o755
   end
 end
-
-ENV['CREW_NOT_STRIP'] = ''

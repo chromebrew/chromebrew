@@ -1,34 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libidn2 < Package
+class Libidn2 < Autotools
   description 'GNU Libidn is a fully documented implementation of the Stringprep, Punycode and IDNA 2003 specifications.'
   homepage 'https://www.gnu.org/software/libidn/'
-  @_ver = '2.3.2'
-  version @_ver
+  @_ver = '2.3.4'
+  version "#{@_ver}-1"
   license 'GPL-2+ and LGPL-3+'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/libidn/libidn2-#{@_ver}.tar.gz"
-  source_sha256 '76940cd4e778e8093579a9d195b25fff5e936e9dc6242068528b437a76764f91'
+  source_sha256 '93caba72b4e051d1f8d4f5a076ab63c99b77faee019b72b9783b267986dbb45f'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.2_armv7l/libidn2-2.3.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.2_armv7l/libidn2-2.3.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.2_i686/libidn2-2.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.2_x86_64/libidn2-2.3.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '6c335d7c611cc1d054c22d2b658aaa060a7bfd682528bac46dc404ffff14c818',
-     armv7l: '6c335d7c611cc1d054c22d2b658aaa060a7bfd682528bac46dc404ffff14c818',
-       i686: '7ce581270eeba81b5f3ec0d7f0e7826b95248a54e960608cc72777beb9f31098',
-     x86_64: '740ae2266e95b4d1974b80165967ec15efd0a7810a649fd7408bdb2964f06de7'
+    aarch64: 'adbffb0615f7f292642ef4b6b279ebe8f4f588e931b10aa804aa29faf6054857',
+     armv7l: 'adbffb0615f7f292642ef4b6b279ebe8f4f588e931b10aa804aa29faf6054857',
+       i686: '26e053300160392951cbc6a1442cc9a93e34949f59db06d79ced10211812ec69',
+     x86_64: 'c52ce4eb1cdd80d6cd9bbe5df1c212b21e51d076ec23b6c443e25d76e62cb515'
   })
 
-  def self.build
-    system "env #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'libunistring' # R
 end

@@ -3,23 +3,19 @@ require 'package'
 class Libtinfo < Package
   description 'Missing ncurses library reference.'
   homepage 'https://www.gnu.org/software/ncurses/'
-  version '5.9'
+  @_ver = 5.9
+  version "#{@_ver}-1"
   license 'MIT' # Ncurses license
   compatibility 'all'
   source_url 'https://github.com/mirror/ncurses.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{@_ver}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtinfo/5.9_armv7l/libtinfo-5.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtinfo/5.9_armv7l/libtinfo-5.9-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtinfo/5.9_i686/libtinfo-5.9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtinfo/5.9_x86_64/libtinfo-5.9-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '2e94b9a42682306f5c05eae9a9b28fb797a79b7f782ed4e291c66224fb2a09b4',
-     armv7l: '2e94b9a42682306f5c05eae9a9b28fb797a79b7f782ed4e291c66224fb2a09b4',
-       i686: 'c884149bf8c6dea3fc3d16ba1ac316c811d318fbfa18ef35171e2bf2c81f4bd9',
-     x86_64: '6ff14ec1bdcdbf55e145b4a8c450b09526803c1450fb3a06fc233a9e85e4ea3e',
+  binary_sha256({
+    aarch64: '4cd214446b4d34eb7c00166986e746c8cc84b123d8cb3bbff61d486384c746f2',
+     armv7l: '4cd214446b4d34eb7c00166986e746c8cc84b123d8cb3bbff61d486384c746f2',
+       i686: '1391890981de5c9b70cc86e8ac3e0b87076ea6cdf7a73c89e3b5aa3c8500a67d',
+     x86_64: '9527bba23a9c551e0865996aeedf0d13a87572b8049125cbff24bf2d137e5e23'
   })
 
   def self.build
@@ -29,8 +25,8 @@ class Libtinfo < Package
     # build libncurses
     Dir.mkdir 'ncurses_build'
     Dir.chdir 'ncurses_build' do
-      #system "#{CREW_ENV_OPTIONS} ../configure #{CREW_OPTIONS} \
-      system "../configure #{CREW_OPTIONS} \
+      # system "#{CREW_ENV_OPTIONS} ../configure #{CREW_CONFIGURE_OPTIONS} \
+      system "../configure #{CREW_CONFIGURE_OPTIONS} \
           --program-prefix='' \
           --program-suffix='' \
           --with-shared \
@@ -47,8 +43,8 @@ class Libtinfo < Package
     # build libncursesw
     Dir.mkdir 'ncursesw_build'
     Dir.chdir 'ncursesw_build' do
-      #system "#{CREW_ENV_OPTIONS} ../configure #{CREW_OPTIONS} \
-      system "../configure #{CREW_OPTIONS} \
+      # system "#{CREW_ENV_OPTIONS} ../configure #{CREW_CONFIGURE_OPTIONS} \
+      system "../configure #{CREW_CONFIGURE_OPTIONS} \
           --program-prefix='' \
           --program-suffix='' \
           --with-shared \
@@ -72,10 +68,9 @@ class Libtinfo < Package
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install.libs'
     end
     # Save only the libtinfo libraries.
-    FileUtils.mv Dir["ncurses_build/#{ARCH_LIB}/libtinfo.so.5*"], CREW_DEST_DIR
-    FileUtils.mv Dir["ncursesw_build/#{ARCH_LIB}/libtinfow.so.5*"], CREW_DEST_DIR
     FileUtils.rm_rf CREW_DEST_PREFIX
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-    FileUtils.mv Dir["#{CREW_DEST_DIR}/libtinfo*.so.5*"], CREW_DEST_LIB_PREFIX
+    FileUtils.mv Dir['ncurses_build/lib/libtinfo.so.5*'], CREW_DEST_LIB_PREFIX
+    FileUtils.mv Dir['ncursesw_build/lib/libtinfow.so.5*'], CREW_DEST_LIB_PREFIX
   end
 end

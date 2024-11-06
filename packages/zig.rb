@@ -3,22 +3,33 @@ require 'package'
 class Zig < Package
   description 'Programming language designed for robustness, optimality, and clarity'
   homepage 'https://ziglang.org/'
-  version '0.7.1'
+  version '0.13.0'
   license 'MIT'
-  compatibility 'x86_64 aarch64'
-  source_url 'https://ziglang.org/download/0.7.1/zig-0.7.1.tar.xz'
-  source_sha256 '2db3b944ab368d955b48743d9f7c963b8f96de1a441ba5a35e197237cc6dae44'
+  compatibility 'all'
+  source_url({
+    aarch64: 'https://ziglang.org/builds/zig-linux-armv7a-0.13.0.tar.xz',
+     armv7l: 'https://ziglang.org/builds/zig-linux-armv7a-0.13.0.tar.xz',
+       i686: 'https://ziglang.org/builds/zig-linux-x86-0.13.0.tar.xz',
+     x86_64: 'https://ziglang.org/builds/zig-linux-x86_64-0.13.0.tar.xz'
+  })
+  source_sha256({
+    aarch64: '4b0550239c2cd884cc03ddeb2b9934708f4b073ad59a96fccbfe09f7e4f54233',
+     armv7l: '4b0550239c2cd884cc03ddeb2b9934708f4b073ad59a96fccbfe09f7e4f54233',
+       i686: '876159cc1e15efb571e61843b39a2327f8925951d48b9a7a03048c36f72180f7',
+     x86_64: 'd45312e61ebcc48032b77bc4cf7fd6915c11fa16e4aad116b66c9468211230ea'
+  })
 
- def self.build
-   Dir.mkdir 'build'
-   FileUtils.cd('build') do
-     system "cmake #{CREW_CMAKE_OPTIONS} .."
-     system 'make'
-   end
- end
- def self.install
-   FileUtils.cd('build') do
-     system "DESTDIR=#{CREW_DEST_DIR} make install"
-   end
+  no_compile_needed
+  no_shrink
+
+  def self.install
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/zig"
+    FileUtils.cp_r Dir['*'], "#{CREW_DEST_PREFIX}/share/zig"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/zig/zig", "#{CREW_DEST_PREFIX}/bin/zig"
+  end
+
+  def self.postinstall
+    ExitMessage.add "\nType 'zig' to get started.\n".lightblue
   end
 end

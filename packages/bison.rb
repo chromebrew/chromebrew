@@ -1,38 +1,22 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Bison < Package
+class Bison < Autotools
   description 'Bison is a general-purpose parser generator that converts an annotated context-free grammar into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables.'
   homepage 'https://www.gnu.org/software/bison/'
-  @_ver = '3.7.4'
-  version @_ver
+  version '3.8.2'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/gnu/bison/bison-#{@_ver}.tar.xz"
-  source_sha256 'a3b5813f48a11e540ef26f46e4d288c0c25c7907d9879ae50e430ec49f63c010'
+  source_url "https://ftpmirror.gnu.org/bison/bison-#{version}.tar.lz"
+  source_sha256 'fdf98bfe82abb04a34d4356753f7748dbbd2ef1221b1f202852a2b5ce0f78534'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bison/3.7.4_armv7l/bison-3.7.4-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bison/3.7.4_armv7l/bison-3.7.4-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bison/3.7.4_i686/bison-3.7.4-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bison/3.7.4_x86_64/bison-3.7.4-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-     aarch64: 'ba8edbb5a88d16aedbd7c37dc247bd4a4fec5390063dc6220b1275a0bdcfb44c',
-      armv7l: 'ba8edbb5a88d16aedbd7c37dc247bd4a4fec5390063dc6220b1275a0bdcfb44c',
-        i686: '5e3db2010be0f04fefe4d4db3c265e4c5c96e7d9b36748fbd221fb71c4405ff5',
-      x86_64: '9ae17d6c8ae82bbf4ff2d6e2cdca52f91c21a8498b972f1012629697e6d8ee5d',
+  binary_sha256({
+    aarch64: '5c7748f4fd47bd81bad984cb278df1561407b43ea3601d2c49ccaa752119dae4',
+     armv7l: '5c7748f4fd47bd81bad984cb278df1561407b43ea3601d2c49ccaa752119dae4',
+       i686: '8b8120f98e4707695a337d4ac0b21fc0bc26e1a1ee734e4b191420988601d576',
+     x86_64: '4476aa49cf42b79a2fed31e77a7d1df7e11aebb3bf269d036c2666d2ab7e238a'
   })
 
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make check'
-  end
+  depends_on 'gettext' # R
+  depends_on 'glibc' # R
 end

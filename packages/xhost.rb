@@ -3,35 +3,30 @@ require 'package'
 class Xhost < Package
   description 'Server access control program for X'
   homepage 'https://github.com/freedesktop/xorg-xhost'
-  version '1.0.7'
+  version '1.0.8'
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/app/xhost-1.0.7.tar.bz2'
-  source_sha256 '93e619ee15471f576cfb30c663e18f5bc70aca577a63d2c2c03f006a7837c29a'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.x.org/releases/individual/app/xhost-1.0.8.tar.bz2'
+  source_sha256 'a2dc3c579e13674947395ef8ccc1b3763f89012a216c2cc6277096489aadc396'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xhost/1.0.7_armv7l/xhost-1.0.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xhost/1.0.7_armv7l/xhost-1.0.7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xhost/1.0.7_i686/xhost-1.0.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xhost/1.0.7_x86_64/xhost-1.0.7-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '6bc7b1b1ac3da2a29d255dc12116d8fb7558b7a951c39694e793a17de3118f0f',
-     armv7l: '6bc7b1b1ac3da2a29d255dc12116d8fb7558b7a951c39694e793a17de3118f0f',
-       i686: '6b52588ce97148da0b44ca76a7934b9f921834fe3d3bc3165c9085a46fb20d87',
-     x86_64: '81710af7e1d0a9193739e8fd4f87b469be75ceadf364f5628504927a7f715ab2',
+  binary_sha256({
+    aarch64: '314e4cf5b09e6e4517639c6904efd5e7cb1336536524f102c210e9e5c4388b5b',
+     armv7l: '314e4cf5b09e6e4517639c6904efd5e7cb1336536524f102c210e9e5c4388b5b',
+     x86_64: '8e108d51711153c01c45343af91d6b1c7bd493e4da823ebe85209eb5278ee25a'
   })
 
-  depends_on 'xorg_lib'
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
+  depends_on 'libxmu' # R
 
   def self.build
-    system './configure',
-           '--enable-ipv6',
-           '--enable-tcp-transport',
-           '--enable-unix-transport',
-           "--prefix=#{CREW_PREFIX}",
-           '--enable-local-transport',
-           "--libdir=#{CREW_LIB_PREFIX}"
+    system "./configure \
+           --enable-ipv6 \
+           --enable-tcp-transport \
+           --enable-unix-transport \
+           --enable-local-transport \
+           #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

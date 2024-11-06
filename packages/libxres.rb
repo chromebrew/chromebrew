@@ -2,35 +2,36 @@ require 'package'
 
 class Libxres < Package
   description 'X.org X-Resource extension client library'
-  homepage 'https://www.x.org'
-  version '1.2.0-0'
-  license 'custom'
-  compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libXres-1.2.0.tar.gz'
-  source_sha256 '5b62feee09f276d74054787df030fceb41034de84174abec6d81c591145e043a'
+  homepage 'https://www.x.org/wiki/'
+  version '1.2.2'
+  license 'X11'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxres.git'
+  git_hashtag "libXres-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxres/1.2.0-0_armv7l/libxres-1.2.0-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxres/1.2.0-0_armv7l/libxres-1.2.0-0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxres/1.2.0-0_i686/libxres-1.2.0-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxres/1.2.0-0_x86_64/libxres-1.2.0-0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'd6de2abe84e9f020add008da76bdb2e35e98438d799f64c3f8cf93df39a0319c',
-     armv7l: 'd6de2abe84e9f020add008da76bdb2e35e98438d799f64c3f8cf93df39a0319c',
-       i686: '042a57a7fbc0ce1c3f07c76f2a0a3bd3009f8f8e5b3c8c346fa87eed38fa051e',
-     x86_64: '4c765244df508377ed52517cb56a572a76b319b68e9bb88074870f1530f922d1',
+  binary_sha256({
+    aarch64: '85692a6d926c0b22a9253c1bf2c3b58d95a6b522a910879bfe77244499888aa7',
+     armv7l: '85692a6d926c0b22a9253c1bf2c3b58d95a6b522a910879bfe77244499888aa7',
+     x86_64: '85c68ffd68dd2dbc642d555f68cd2513e94cb7888ca25f248b49bcfad71651f5'
   })
 
-  depends_on 'libxext'
-  depends_on 'libx11'
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxext' # R
 
   def self.build
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

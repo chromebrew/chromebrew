@@ -1,67 +1,103 @@
 require 'package'
+require 'uri'
 
 class Jdk8 < Package
-  description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
-  homepage 'https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html'
-  version '8u301'
+  description 'The Oracle JDK is a development environment for building applications, applets, and components using the Java programming language.'
+  homepage 'https://www.oracle.com/java'
+  version '8u341'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'all'
-  source_url 'SKIP'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u301_armv7l/jdk8-8u301-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u301_armv7l/jdk8-8u301-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u301_i686/jdk8-8u301-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u301_x86_64/jdk8-8u301-chromeos-x86_64.tar.xz',
+  @jdk_arch = {
+    armv7l: 'arm32-vfp-hflt',
+      i686: 'i586',
+    x86_64: 'x64'
+  }
+
+  @jdk_description = {
+    aarch64: 'ARM 32 Hard Float ABI',
+     armv7l: 'ARM 32 Hard Float ABI',
+       i686: 'x86 Compressed Archive',
+     x86_64: 'x64 Compressed Archive'
+  }
+
+  source_url({
+    aarch64: File.join('file://', HOME, 'Downloads', "jdk-#{version}-linux-#{@jdk_arch[:armv7l]}.tar.gz"),
+     armv7l: File.join('file://', HOME, 'Downloads', "jdk-#{version}-linux-#{@jdk_arch[:armv7l]}.tar.gz"),
+       i686: File.join('file://', HOME, 'Downloads', "jdk-#{version}-linux-#{@jdk_arch[:i686]}.tar.gz"),
+     x86_64: File.join('file://', HOME, 'Downloads', "jdk-#{version}-linux-#{@jdk_arch[:x86_64]}.tar.gz")
   })
-  binary_sha256 ({
-    aarch64: '2d9a015c7b166433e271385fce079e10a69ce3d605f047c6607d988a263f6daa',
-     armv7l: '2d9a015c7b166433e271385fce079e10a69ce3d605f047c6607d988a263f6daa',
-       i686: '97e017c17b2c977bc3449b8edf06d370ec4a952d1407a5eb81a72907cfdca29a',
-     x86_64: 'edb2abc91c37ce7a1378a9e40e31116528037708df49aad64dccc18b9eb14b2c',
+
+  source_sha256({
+    aarch64: '6dec09bd213bf97bcab99e54881af85f3911e771f8843470fe384520c0249c33',
+     armv7l: '6dec09bd213bf97bcab99e54881af85f3911e771f8843470fe384520c0249c33',
+       i686: '6beb8997121c771b9d69742f2be583f566736e517d8afa5d91b371c729e515da',
+     x86_64: 'c98e57cfc6ac9947d9aa9a31c5878d52e2bf764f8d90f20eec08f3c3fcaee0e7'
   })
+
+  no_compile_needed
+  no_patchelf
 
   def self.preflight
-    abort "JDK11 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk11"
-    abort "JDK15 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk15"
-    abort "JDK16 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk16"
+    jdk_exec = File.join(CREW_PREFIX, 'bin', 'java')
+
+    if File.exist?(jdk_exec)
+      jdk_ver_str   = `#{jdk_exec} -version 2>&1`
+      jdk_ver       = jdk_ver_str[/version "(.+?)"/, 1]
+      jdk_major_ver = jdk_ver.match?(/^1.8/) ? '8' : jdk_ver.partition('.')[0]
+
+      is_openjdk   = jdk_ver_str.include?('openjdk')
+      pkg_branding = is_openjdk ? 'OpenJDK' : 'Oracle JDK'
+      pkg_prefix   = is_openjdk ? 'openjdk' : 'jdk'
+
+      abort <<~EOT.yellow unless jdk_major_ver == name.delete_prefix('jdk') && !is_openjdk
+
+        #{pkg_branding} #{jdk_ver} installed.
+
+        Run "crew remove #{pkg_prefix}#{jdk_major_ver}; crew install #{name}" to install this version of JDK
+      EOT
+    end
+
+    return if File.exist?(URI(source_url.key(ARCH.to_sym)).path)
+
+    # check if we should prompt user to the archive page or download page based on #{version}
+    # download page only contains latest version while archive page only contains older versions
+
+    # get latest available version
+    latest_jdk_page  = 'https://www.oracle.com/java/technologies/downloads/#java8'
+    is_latest_jdk    = `curl -LSs '#{latest_jdk_page}'`.include?(version)
+    jdk_download_url = is_latest_jdk ? latest_jdk_page : 'https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html#JDK'
+
+    abort <<~EOT.orange
+
+      Oracle now requires an account to download the JDK.
+
+      You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
+      #{jdk_download_url}
+
+      Download "jdk-#{version}-linux-#{@jdk_arch[ARCH.to_sym]}.tar.gz" (#{@jdk_description[ARCH.to_sym]}) to Chrome OS download folder to continue.
+    EOT
   end
 
   def self.install
-    case ARCH
-    when 'aarch64', 'armv7l'
-      jdk_bin = "#{HOME}/Downloads/jdk-#{version}-linux-arm32-vfp-hflt.tar.gz"
-      jdk_sha256 = '999615cd642d18f3cf04383c9f2a87d1acc85d598850742ef8d9ed5c6647d07a'
-    when 'i686'
-      jdk_bin = "#{HOME}/Downloads/jdk-#{version}-linux-i586.tar.gz"
-      jdk_sha256 = '9d970ba3743a89ca9b7b8b11131f258f68f77cb1ce8840f6b2d9256cf9de594c'
-    when 'x86_64'
-      jdk_bin = "#{HOME}/Downloads/jdk-#{version}-linux-x64.tar.gz"
-      jdk_sha256 = 'f87ea91eb825ee45366f2653d97f8ca96527809a37982bad8fff19a2eaf3cd42'
+    jdk_dir = File.join(CREW_DEST_PREFIX, 'share', name)
+    FileUtils.mkdir_p [jdk_dir, File.join(CREW_DEST_PREFIX, 'bin'), CREW_DEST_MAN_PREFIX]
+
+    FileUtils.rm_f ['src.zip', 'javafx-src.zip']
+    FileUtils.cp_r Dir['*'], jdk_dir
+
+    Dir[File.join(jdk_dir, 'bin', '*')].each do |path|
+      filename = File.basename(path)
+      symlink  = File.join(CREW_DEST_PREFIX, 'bin', filename)
+
+      FileUtils.ln_s path.sub(CREW_DEST_PREFIX, CREW_PREFIX), symlink
     end
-    unless File.exists? jdk_bin
-      puts
-      puts "Oracle now requires an account to download the JDK.".orange
-      puts
-      puts "You must login at https://login.oracle.com/mysso/signon.jsp and then visit:".orange
-      puts "https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html".orange
-      puts
-      puts "Download the JDK for your architecture to #{HOME}/Downloads to continue.".orange
-      puts
-      abort
-    end
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read(jdk_bin) ) == jdk_sha256
-    system "tar xvf #{jdk_bin}"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/jdk8"
-    FileUtils.cd 'jdk1.8.0_301' do
-      FileUtils.rm_f 'src.zip'
-      FileUtils.rm_f 'javafx-src.zip'
-      FileUtils.cp_r Dir['*'], "#{CREW_DEST_PREFIX}/share/jdk8/"
-    end
-    FileUtils.cd "#{CREW_DEST_PREFIX}/share/jdk8/bin" do
-      system "find -type f -exec ln -s #{CREW_PREFIX}/share/jdk8/bin/{} #{CREW_DEST_PREFIX}/bin/{} \\;"
-    end
-    FileUtils.mv "#{CREW_DEST_PREFIX}/share/jdk8/man/", "#{CREW_DEST_PREFIX}/share/"
+
+    FileUtils.mv Dir[File.join(jdk_dir, 'man', '*')], CREW_DEST_MAN_PREFIX
+  end
+
+  def self.postinstall
+    # remove jdk archive after installed
+    FileUtils.rm_f URI(source_url.key(ARCH.to_sym)).path
   end
 end

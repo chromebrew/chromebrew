@@ -2,33 +2,29 @@ require 'package'
 
 class Libevdev < Package
   description 'libevdev is a wrapper library for evdev devices.'
-  homepage 'https://www.freedesktop.org/wiki/Software/libevdev'
-  version '1.11.0'
+  homepage 'https://www.freedesktop.org/wiki/Software/libevdev/'
+  version '1.12.1'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.freedesktop.org/software/libevdev/libevdev-1.11.0.tar.xz'
-  source_sha256 '63f4ea1489858a109080e0b40bd43e4e0903a1e12ea888d581db8c495747c2d0'
+  source_url 'https://www.freedesktop.org/software/libevdev/libevdev-1.12.1.tar.xz'
+  source_sha256 '1dbba41bc516d3ca7abc0da5b862efe3ea8a7018fa6e9b97ce9d39401b22426c'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libevdev/1.11.0_armv7l/libevdev-1.11.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libevdev/1.11.0_armv7l/libevdev-1.11.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libevdev/1.11.0_i686/libevdev-1.11.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libevdev/1.11.0_x86_64/libevdev-1.11.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '3b4008a79759fdb098e2e93a5455aed90965d670d5a4328b67b49f4936584eb6',
-     armv7l: '3b4008a79759fdb098e2e93a5455aed90965d670d5a4328b67b49f4936584eb6',
-       i686: 'c4d8bad0f712c1cfacc725e7d317be45aa15bb67d281f8d73ca92a9e803dd116',
-     x86_64: '6afbae9d141ced6da39edb73127c4e247afd9abeae8a681b3dc8b62b7edc818d'
+    aarch64: 'ef21c213c561863ccb9cea8a5b88501fdec31c094af3238bac482b3db7b4b053',
+     armv7l: 'ef21c213c561863ccb9cea8a5b88501fdec31c094af3238bac482b3db7b4b053',
+       i686: 'c950e9e171bb65513f22ed76a1195caa4706cde60397f4ba0e1d0c213e9edd99',
+     x86_64: '175b179c49706e118bdb1da0dfa4d216271396eecf3bd289f0db6fc11f631a64'
   })
 
+  depends_on 'check' => :build
   depends_on 'doxygen' => :build
   depends_on 'python3' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

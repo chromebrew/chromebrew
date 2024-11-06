@@ -1,30 +1,24 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pystemmer < Package
+class Py3_pystemmer < Pip
   description 'Snowball stemming algorithms, for information retrieval'
   homepage 'http://snowball.tartarus.org'
-  version '2.0.1'
+  version "2.2.0.3-#{CREW_PY_VER}"
   license 'BSD MIT'
   compatibility 'all'
-  source_url 'https://pypi.io/packages/source/P/PyStemmer/PyStemmer-2.0.1.tar.gz'
-  source_sha256 '9b81c35302f1d2a5ad9465b85986db246990db93d97d3e8f129269ed7102788e'
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pystemmer/2.0.1_armv7l/py3_pystemmer-2.0.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pystemmer/2.0.1_armv7l/py3_pystemmer-2.0.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pystemmer/2.0.1_x86_64/py3_pystemmer-2.0.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '33877bc277d34c3b4345a54589d6d2a824ff51c8a53683ba1546b51f34bde0d4',
-     armv7l: '33877bc277d34c3b4345a54589d6d2a824ff51c8a53683ba1546b51f34bde0d4',
-     x86_64: '10d004a45733854bbd67e03133c60eaac0e52ce40d9ee7dbe0a64fa59b6717a4'
+    aarch64: '72e21d7400cd773a2b60bed2f70ef09377361e546e7f1cc6374b53e1628f7507',
+     armv7l: '72e21d7400cd773a2b60bed2f70ef09377361e546e7f1cc6374b53e1628f7507',
+       i686: '84cd405c13f2a8ee59506eb4774a5bad9249b7cf7700077d5988441166b2ac79',
+     x86_64: '8626bc38307965996af5318aef1a17f9b9ce7c9017d0c0910e1467823709ac65'
   })
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
+  depends_on 'glibc' # R
+  depends_on 'python3' => :build
 
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  # no_source_build
+  no_compile_needed
 end

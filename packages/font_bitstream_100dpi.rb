@@ -1,37 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Font_bitstream_100dpi < Package
+class Font_bitstream_100dpi < Autotools
   description 'Standard 100dpi Bitstream PCF fonts'
-  homepage 'https://xorg.freedesktop.org/'
-  version '1.0.3'
+  homepage 'https://gitlab.freedesktop.org/xorg/font/bitstream-100dpi'
+  version '1.0.4'
   license 'custom'
-  compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/font/font-bitstream-100dpi-1.0.3.tar.bz2'
-  source_sha256 'ebe0d7444e3d7c8da7642055ac2206f0190ee060700d99cd876f8fc9964cb6ce'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/xorg/font/bitstream-100dpi.git'
+  git_hashtag "font-bitstream-100dpi-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bitstream_100dpi/1.0.3_armv7l/font_bitstream_100dpi-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bitstream_100dpi/1.0.3_armv7l/font_bitstream_100dpi-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bitstream_100dpi/1.0.3_i686/font_bitstream_100dpi-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bitstream_100dpi/1.0.3_x86_64/font_bitstream_100dpi-1.0.3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'f441acd2dbd2a14fbf1f8a9751c280914430fb1fca73226e9d41f6942d148584',
-     armv7l: 'f441acd2dbd2a14fbf1f8a9751c280914430fb1fca73226e9d41f6942d148584',
-       i686: 'a624d6c5904592ce3cbd6fc12a8256637f0901e8d3c43e00761a6cce6dd5d857',
-     x86_64: 'b77710477235aae88b224494b18cf17b14789916bdf4f4f4b7397e3885a9a347',
+  binary_sha256({
+    aarch64: '7c0a64f92d6ad7b796c9a7110fb1f6df5d4455d36d365a46cecc3793608ce4a8',
+     armv7l: '7c0a64f92d6ad7b796c9a7110fb1f6df5d4455d36d365a46cecc3793608ce4a8',
+     x86_64: 'f4a18537118ee0431cb57eae41c3f3b66ab4389d619d84564a89de3302913cf0'
   })
 
   depends_on 'bdftopcf'
   depends_on 'font_util'
   depends_on 'mkfontscale'
-
-  def self.build
-    system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  depends_on 'xorg_macros' => :build
 end

@@ -1,36 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Openssh < Package
+class Openssh < Autotools
   description 'OpenSSH is the premier connectivity tool for remote login with the SSH protocol.'
   homepage 'https://www.openssh.com/'
-  version '8.8'
+  version '9.8p1'
   license 'BSD and GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/openssh/openssh-portable/archive/refs/tags/V_8_8_P1.tar.gz'
-  source_sha256 'a944effea9597a36c80a6c71aa520bf6fbef7b6bcefbb648dc39d0ed788c90c8'
+  source_url 'https://github.com/openssh/openssh-portable.git'
+  git_hashtag 'V_9_8_P1'
+  binary_compression 'tar.zst'
 
-  binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/8.8_i686/openssh-8.8-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/8.8_armv7l/openssh-8.8-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/8.8_armv7l/openssh-8.8-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/8.8_x86_64/openssh-8.8-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-       i686: '7f584f07449817a69d2780cca72aabae6bdf383b18aa724b710fa7043af53161',
-    aarch64: '926ed75ad7a0d374de9f28db3233b34a6e0650cab4e55297858e386286c6df68',
-     armv7l: '926ed75ad7a0d374de9f28db3233b34a6e0650cab4e55297858e386286c6df68',
-     x86_64: 'd734097f18ce48e634a6300574053e2cb4b904a572264ca6d73beb3a5740bfce'
+    aarch64: 'f34e1cb3b2f851183e605ed793f7f0d2c948825e957de5668565562cee9dd713',
+     armv7l: 'f34e1cb3b2f851183e605ed793f7f0d2c948825e957de5668565562cee9dd713',
+       i686: '8ec26067d3074d2ac4f33048d6a41d36d89d17c5d81c98b0ff7d61377db03807',
+     x86_64: '96834677981dbb55fb51ed1e99d9abe9d8121629702d4b84cb01dd3926b65e77'
   })
 
-  def self.build
-    system 'autoreconf -fiv'
-    system 'autoheader'
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libmd' # R
+  depends_on 'openssl' # R
+  depends_on 'zlib' # R
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--enable-year2038 --without-hardening --without-retpoline'
 end

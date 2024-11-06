@@ -1,35 +1,23 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_cython < Package
+class Py3_cython < Pip
   description 'The Cython language makes writing C extensions for the Python language as easy as Python itself.'
   homepage 'https://cython.org/'
-  @_ver = '0.29.23'
-  version @_ver
+  version "3.0.11-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/cython/cython.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cython/0.29.23_armv7l/py3_cython-0.29.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cython/0.29.23_armv7l/py3_cython-0.29.23-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cython/0.29.23_i686/py3_cython-0.29.23-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cython/0.29.23_x86_64/py3_cython-0.29.23-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '4febe216fea2a366bded23e9522d7984190fd0d65e446f5d89857ca9f4938e3b',
-     armv7l: '4febe216fea2a366bded23e9522d7984190fd0d65e446f5d89857ca9f4938e3b',
-       i686: '21c38b0a8f73120fedfade5db08b69e4cca5c7a1cd6595e5a84fcc177eccee43',
-     x86_64: '1e4761d551e1ee2232d7a6af7be63c0f5ef7ab8cd1cb5f1fe9f22abafd346369'
+    aarch64: '89c4b7252bee3fa56554ae99a4c5b60c5fc99959ea457e896c5d55b4d5618f12',
+     armv7l: '89c4b7252bee3fa56554ae99a4c5b60c5fc99959ea457e896c5d55b4d5618f12',
+       i686: 'd155250cf737282915e12c874cd3b646d3af4de37b128dea8f8870982049736d',
+     x86_64: '79f3f5313e416e2c351799ecf84b58d4ac8924aad917af47137b3ba36b246e8d'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'glibc' # R
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

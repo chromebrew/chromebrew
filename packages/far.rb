@@ -2,20 +2,17 @@ require 'package'
 
 class Far < Package
   description 'Search and replace operations on file content across multiple files.'
-  homepage 'http://findandreplace.sourceforge.net'
+  homepage 'https://findandreplace.sourceforge.net/'
   version '2.0.3'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://downloads.sourceforge.net/project/findandreplace/findandreplace/2.0.3/FAR-2.0.3-x.tar.gz'
   source_sha256 'd0e8406b08833be398476e3482a657998cd89e429025989f87cd35added5bedf'
 
-  binary_url ({
-  })
-  binary_sha256 ({
-  })
-
-  depends_on 'jdk8'
+  depends_on 'openjdk8'
   depends_on 'sommelier'
+
+  no_compile_needed
 
   def self.build
     @far = <<~EOF

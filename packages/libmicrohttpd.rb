@@ -1,36 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libmicrohttpd < Package
+class Libmicrohttpd < Autotools
   description 'GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application.'
   homepage 'https://www.gnu.org/software/libmicrohttpd/'
-  version '0.9.58'
+  version '1.0.0'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libmicrohttpd/libmicrohttpd-0.9.58.tar.gz'
-  source_sha256 '7a11e1376c62ff95bd6d2dfe6799d57ac7cdbcb32f70bfbd5e47c71f373e01f3'
+  source_url 'https://ftpmirror.gnu.org/libmicrohttpd/libmicrohttpd-1.0.0.tar.gz'
+  source_sha256 'a02792d3cd1520e2ecfed9df642079d44a36ed87167442b28d7ed19e906e3e96'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.58_armv7l/libmicrohttpd-0.9.58-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.58_armv7l/libmicrohttpd-0.9.58-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.58_i686/libmicrohttpd-0.9.58-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.58_x86_64/libmicrohttpd-0.9.58-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '861604f225237f0ab46185d0b71fb8e405efe376c1c8014dc15ad1491ab76e8f',
-     armv7l: '861604f225237f0ab46185d0b71fb8e405efe376c1c8014dc15ad1491ab76e8f',
-       i686: '056291de57c0e46c8632cc4cc9f46d15aa4aab580777894694923ac8b2374ebe',
-     x86_64: 'aa41e8d0577c54de70b7f830be5780d5b9f5d92ccafca54570d9a97a9b7fda15',
+  binary_sha256({
+    aarch64: 'b2623ef36b1587c1d3e6f7821d4d9d016b7cadbaf6a0442fd0f055dd69338925',
+     armv7l: 'b2623ef36b1587c1d3e6f7821d4d9d016b7cadbaf6a0442fd0f055dd69338925',
+       i686: '97798a780803f029b9bc17f2f687da43d8f23c1ab6e27e6606f3bf8c16e06abc',
+     x86_64: 'f8dbc8399732197b0152fda7114ae969627b3ae4501f1d20b67669d892d58f8d'
   })
 
   depends_on 'diffutils' => :build
-
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "gzip -9 #{CREW_DEST_PREFIX}/share/man/man3/libmicrohttpd.3"
-  end
+  depends_on 'glibc' # R
+  depends_on 'gnutls' # R
 end

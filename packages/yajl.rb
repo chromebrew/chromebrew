@@ -3,43 +3,41 @@ require 'package'
 class Yajl < Package
   description 'A fast streaming JSON parsing library in C.'
   homepage 'http://lloyd.github.io/yajl/'
-  version '2.1.0-2'
+  version '2.1.0-4'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/lloyd/yajl/archive/2.1.0.tar.gz'
+  source_url 'https://github.com/lloyd/yajl/archive/refs/tags/2.1.0.tar.gz'
   source_sha256 '3fb73364a5a30efe615046d07e6db9d09fd2b41c763c5f7d3bfb121cd5c5ac5a'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-2_armv7l/yajl-2.1.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-2_armv7l/yajl-2.1.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-2_i686/yajl-2.1.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-2_x86_64/yajl-2.1.0-2-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: 'be4e182188a8f042b65865dae2af1dd1312d6a2c0edfd9cb8da75999927ee174',
+     armv7l: 'be4e182188a8f042b65865dae2af1dd1312d6a2c0edfd9cb8da75999927ee174',
+       i686: 'cd4f672d43eba7368b08e4d0a71baf40daa5562ae789e3150ff941293e6fb64e',
+     x86_64: 'efea10c9cbb546dd9e5877047299b3d76c78ea106a10484bdeb0e062e49222c2'
   })
-  binary_sha256 ({
-    aarch64: '4afb152584a025239161684888378662bc1305adccd63b5b5246581a914b74c8',
-     armv7l: '4afb152584a025239161684888378662bc1305adccd63b5b5246581a914b74c8',
-       i686: 'fab84163e9ddd02ec0286ccbad845005d376352f392e68bd57955b003c788d89',
-     x86_64: 'f702d50a8e81b5fcfed7229a782aae5f03e45d85b0a386a24d152e3fac5ed595',
-  })
+
+  depends_on 'glibc' # R
+
+  def self.patch
+    # Fix CVE-2022-24795
+    downloader 'https://patch-diff.githubusercontent.com/raw/lloyd/yajl/pull/242.patch',
+               '28cf573e61ad5d442dc3ea23912e1d1a3a714c6f20a647304fbd5a886b457f29'
+    system 'patch -Np1 -i 242.patch'
+    #  Fixes incorrect lower bound for integers
+    downloader 'https://patch-diff.githubusercontent.com/raw/lloyd/yajl/pull/251.patch',
+               '24b6928e87f388f633b51b98025c15ca6cd40c4cd388278cbb98bd06c64be719'
+    system 'patch -Np1 -i 251.patch'
+  end
 
   def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "cmake .. -DCMAKE_C_FLAGS=' -fPIC' -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_BUILD_TYPE=Release"
-      system 'make'
-    end
+    system "cmake -B builddir -G Ninja \
+      #{CREW_CMAKE_LIBSUFFIX_OPTIONS} \
+      -Wno-dev"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      case ARCH
-      when 'x86_64'
-        Dir.chdir "#{CREW_DEST_PREFIX}" do
-          FileUtils.mkdir 'lib64'
-          FileUtils.mv Dir.glob('lib/*'), 'lib64/'
-        end
-      end
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 end

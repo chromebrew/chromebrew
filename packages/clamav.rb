@@ -3,36 +3,73 @@ require 'package'
 class Clamav < Package
   description 'ClamAV is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.'
   homepage 'https://www.clamav.net/'
-  version '0.103.0'
+  version '1.3.1'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://www.clamav.net/downloads/production/clamav-0.103.0.tar.gz'
-  source_sha256 '32a9745277bfdda80e77ac9ca2f5990897418e9416880f3c31553ca673e80546'
+  source_url 'https://www.clamav.net/downloads/production/clamav-1.3.1.tar.gz'
+  source_sha256 '12a3035bf26f55f71e3106a51a5fa8d7b744572df98a63920a9cff876a7dcce4'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/0.103.0_armv7l/clamav-0.103.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/0.103.0_armv7l/clamav-0.103.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/0.103.0_i686/clamav-0.103.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/0.103.0_x86_64/clamav-0.103.0-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: 'caab8a0c813eceb49dd3d531c8ac6c03c8c475791604347d067218b74bb202a9',
+     armv7l: 'caab8a0c813eceb49dd3d531c8ac6c03c8c475791604347d067218b74bb202a9',
+       i686: 'f8f4a7a89e2b427aff44587bebe0834ee3dbdd95f7f2e89627d739a386498c0a',
+     x86_64: '3149f0230e8ee22842eda13bd168f070ad44daf2cc19ecf5dbdbcb509434739a'
   })
-  binary_sha256 ({
-    aarch64: 'c1bc0817863ee9f5e77e0805080cba457c405681b08960ff6581c5c1a39186fa',
-     armv7l: 'c1bc0817863ee9f5e77e0805080cba457c405681b08960ff6581c5c1a39186fa',
-       i686: '1f8fe38995c08b324d6ecab9e098ef9b7c5e0727b13986b3e5a2c1a023e5515e',
-     x86_64: 'ad7996a0db5a870babab22074a874ca669f2922a245848683393adb2574ef402',
-  })
+
+  depends_on 'rust' => :build
+  depends_on 'libcheck' => :build
+  depends_on 'libiconv' => :build
+  depends_on 'json_c' => :build
+  depends_on 'py3_pytest' => :build
 
   def self.build
-    system 'autoconf'
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode',
-           '--disable-zlib-vcheck'
-    system 'make'
+    system "cmake #{CREW_CMAKE_OPTIONS} -B build \
+            -D APP_CONFIG_DIRECTORY=#{CREW_PREFIX}/etc/clamav \
+            -D DATABASE_DIRECTORY=#{CREW_PREFIX}/share/clamav \
+            -D CMAKE_C_FLAGS=-fPIC \
+            -D ENABLE_JSON_SHARED=OFF \
+            -D ENABLE_STATIC_LIB=ON \
+            -D ENABLE_SYSTEMD=OFF \
+            -D ENABLE_MILTER=OFF \
+            -G Ninja"
+    system "#{CREW_NINJA} -C build"
+  end
+
+  def self.check
+    system 'ctest -C build'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C build install"
+    FileUtils.cp "#{CREW_DEST_PREFIX}/etc/clamav/clamd.conf.sample", "#{CREW_DEST_PREFIX}/etc/clamav/clamd.conf"
+    FileUtils.cp "#{CREW_DEST_PREFIX}/etc/clamav/freshclam.conf.sample", "#{CREW_DEST_PREFIX}/etc/clamav/freshclam.conf"
+    system "sed -i 's,^Example,#Example,' #{CREW_DEST_PREFIX}/etc/clamav/clamd.conf"
+    system "sed -i 's,^#LocalSocket ,LocalSocket ,' #{CREW_DEST_PREFIX}/etc/clamav/clamd.conf"
+    system "sed -i 's,^Example,#Example,' #{CREW_DEST_PREFIX}/etc/clamav/freshclam.conf"
+  end
+
+  def self.postinstall
+    system 'freshclam' # Create the clamav database.
+    puts "\nTo start the clamav daemon, execute the following:".lightblue
+    puts 'sudo clamd &'.lightblue
+    puts "\nTo modify the clamav config, edit the following:".lightblue
+    puts "#{CREW_PREFIX}/etc/clamav/clamd.conf".lightblue
+    puts "#{CREW_PREFIX}/etc/clamav/freshclam.conf\n".lightblue
+  end
+
+  def self.postremove
+    config_dir = "#{CREW_PREFIX}/share/clamav"
+    if Dir.exist? config_dir
+      puts 'WARNING: This will remove the clamav database!'.orange
+      print "Would you like to remove the #{config_dir} directory? [y/N] "
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
+        FileUtils.rm_rf config_dir
+        puts "#{config_dir} removed.".lightgreen
+      else
+        puts "#{config_dir} saved.".lightgreen
+      end
+    end
   end
 end

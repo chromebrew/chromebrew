@@ -1,5 +1,6 @@
-# It is recommended that you investigate other files in the package directory
-# to help get an idea of how existing packages are being installed through chromebrew
+#!/usr/bin/env ruby <- This line is not necessary, just for GitHub's language detection
+# It is recommended that you investigate other files in the 'packages/' directory
+# to help get an idea of how existing packages are being installed through Chromebrew.
 
 require 'package'
 
@@ -7,77 +8,50 @@ class Template < Package
   description ''
   homepage ''
   version ''
-  license ''
-  compatibility ''
-  source_url '*.tar.gz'
+  license ''       # Package license (eg. GPL-3, MIT, etc.)
+  compatibility '' # Package architecture compatibility (eg. aarch64, armv7l, i686, x86_64 or all)
+  source_url ''    # The url to the source code (eg. https://ftpmirror.gnu.org/sed/sed-4.8.tar.xz)
   source_sha256 ''
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-x86_64.tar.xz',
+  # These are needed to successfully build and check for dependencies.
+  binary_sha256({
+    aarch64: '000',
+     armv7l: '000',
+       i686: '111',
+     x86_64: '222'
   })
-  binary_sha256 ({
-    aarch64: '',
-     armv7l: '',
-       i686: '',
-     x86_64: '',
-  })
-
 
   # Register dependencies (use the following line as a basis)
   #
-  # depends_on '*'
+  # Runtime dependencies:
+  # depends_on '*' # R
+  # Build dependencies:
+  # depends_on '*' => :build
   #
 
-  # Function to perform pre-flight operations prior to dependency checks.
-  def self.preflight
-
-  end
-
+  # Function to check if install should occur.
+  def self.preflight; end
 
   # Function to perform patch operations prior to build from source.
-  def self.patch
-
-  end
-
+  def self.patch; end
 
   # Function to perform pre-build operations prior to build from source.
-  def self.prebuild
-
-  end
-
+  def self.prebuild; end
 
   # Function to perform build from source.
-  def self.build
-
-  end
-
+  def self.build; end
 
   # Function to perform check from source build.
-  # This executes only during `crew build`.
-  def self.check
+  # This is executed only during `crew build`.
+  def self.check; end
 
-  end
-
-
-  # Function to perform pre-install operations prior to install.
-  def self.preinstall
-
-  end
-
+  # Function to perform pre-install operations prior to install for both source build and binary distribution.
+  def self.preinstall; end
 
   # Function to perform install from source build.
-  def self.install
-
-  end
-
+  def self.install; end
 
   # Function to perform post-install for both source build and binary distribution
-  def self.postinstall
-
-  end
-
-
+  def self.postinstall; end
 end

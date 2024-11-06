@@ -3,27 +3,26 @@ require 'package'
 class Perl_date_calc < Package
   description 'Gregorian calendar date calculations'
   homepage 'https://metacpan.org/pod/Date::Calc'
-  version '6.4-1'
+  version "6.4-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/ST/STBEY/Date-Calc-6.4.tar.gz'
   source_sha256 '7ce137b2e797b7c0901f3adf1a05a19343356cd1f04676aa1c56a9f624f859ad'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_calc/6.4-1_armv7l/perl_date_calc-6.4-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_calc/6.4-1_armv7l/perl_date_calc-6.4-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_calc/6.4-1_i686/perl_date_calc-6.4-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_calc/6.4-1_x86_64/perl_date_calc-6.4-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '794fba788fdccc502c07cf8d213e8c4f116658beaa508a0964bbea36ce4d07fb',
-     armv7l: '794fba788fdccc502c07cf8d213e8c4f116658beaa508a0964bbea36ce4d07fb',
-       i686: 'a1b37b825b42512d796d38486f1d63696c68257a7c0d6f5be1e64784610d3d5d',
-     x86_64: 'f91b5551c3b2f7487d9dedec2a910c9a881bed5dbd732d7fe759adfcb843f186'
+    aarch64: '6d35d5dda7e12d5e45e96ae9a889879bf2b85a53036eb2a506e52572d5fcc1d0',
+     armv7l: '6d35d5dda7e12d5e45e96ae9a889879bf2b85a53036eb2a506e52572d5fcc1d0',
+       i686: '5a74df2cb3af5c839e383c79439a2a4917c4256caadcf0fdb0a414af8952c7c5',
+     x86_64: 'fef93e4586a0d47c16d30a03717e7a45b75580168337adc86a1f57906f7c0c4a'
   })
+
+  def self.prebuild
+    system 'perl', 'Makefile.PL'
+    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
+  end
 
   def self.build
-    system 'perl', 'Makefile.PL'
     system 'make'
   end
 

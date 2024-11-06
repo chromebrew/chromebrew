@@ -1,40 +1,23 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Dtrx < Package
+class Dtrx < Pip
   description "An intelligent archive extraction tool for UNIX-like systems standing for 'Do The Right Extraction.'"
-  homepage 'https://brettcsmith.org/2007/dtrx/' # 404 Not Found
-  version '7.1'
-  license '' # Can't find license for project
+  homepage 'https://github.com/dtrx-py/dtrx/'
+  version "8.5.3-#{CREW_PY_VER}"
+  license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://brettcsmith.org/2007/dtrx/dtrx-7.1.tar.gz' # 404 Not Found
-  source_sha256 '1c9afe48e9d9d4a1caa4c9b0c50593c6fe427942716ce717d81bae7f8425ce97'
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dtrx/7.1_armv7l/dtrx-7.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dtrx/7.1_armv7l/dtrx-7.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dtrx/7.1_i686/dtrx-7.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dtrx/7.1_x86_64/dtrx-7.1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'a607b05853dfa122ebdb852f28ac59b6142c99f7ee156a631b75bc5d82f797fa',
-     armv7l: 'a607b05853dfa122ebdb852f28ac59b6142c99f7ee156a631b75bc5d82f797fa',
-       i686: 'cdd735f6be940b2535b89226bfdeba5b65e92cbdfe0a828bceb7fc5787d872d7',
-     x86_64: '4817af93d2c30c4ced5c8fb5a4e0ebc7ebb51fb6fbfb2300380b27221b6b5c49',
+  binary_sha256({
+    aarch64: '65e071be678871b34d248d7500b8710905b1365a508074d69c89fa213bc0e659',
+     armv7l: '65e071be678871b34d248d7500b8710905b1365a508074d69c89fa213bc0e659',
+       i686: 'ee15458799363a535e7b02af32e58c0afa17fecba53bf6137180e74ca1fcdf3b',
+     x86_64: '970f4425b1440daec99d5f0e78a5a51f863acfb937048a611ef2ea5062074874'
   })
 
-  depends_on 'binutils'
-  depends_on 'bz2'
-  depends_on 'cabextract'
-  depends_on 'cpio'
-  depends_on 'lha'
-  depends_on 'python2'
-  depends_on 'unrar'
-  depends_on 'unshield'
-  depends_on 'unzip'
+  depends_on 'py3_unsupported_python' => :build
+  depends_on 'python3' => :build
 
-  def self.install
-    system "python setup.py install --prefix=#{CREW_PREFIX}"
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "cp #{CREW_PREFIX}/bin/dtrx #{CREW_DEST_PREFIX}/bin"
-  end
+  no_source_build
 end

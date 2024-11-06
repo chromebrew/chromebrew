@@ -1,85 +1,44 @@
-require 'package'
+require 'buildsystems/meson'
+# build order: harfbuzz => freetype => fontconfig => cairo => pango
 
-class Fontconfig < Package
+class Fontconfig < Meson
   description 'Fontconfig is a library for configuring and customizing font access.'
-  homepage 'https://www.freedesktop.org/software/fontconfig/front.html'
-  @_ver = '2.13.93'
-  version "#{@_ver}-2"
+  homepage 'https://www.freedesktop.org/wiki/Software/fontconfig/'
+  version '2.15.0-2'
   license 'MIT'
-  compatibility 'all'
-  source_url "https://github.com/freedesktop/fontconfig/archive/#{@_ver}.tar.gz"
-  source_sha256 'f8452c78d1a12f6966455b0d584f89553b13e970b40644c3650f690ec0b3b4fe'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/fontconfig/fontconfig.git'
+  git_hashtag version.split('-').first
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.13.93-2_armv7l/fontconfig-2.13.93-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.13.93-2_armv7l/fontconfig-2.13.93-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.13.93-2_i686/fontconfig-2.13.93-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.13.93-2_x86_64/fontconfig-2.13.93-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '0047a707a1fc8531fa6bfc6fa45f2aead43ece0e65d1eaad094e4e98f3e43ec0',
-     armv7l: '0047a707a1fc8531fa6bfc6fa45f2aead43ece0e65d1eaad094e4e98f3e43ec0',
-       i686: 'abef1aab53d6880c0f43fc188a6de1ca1bf9b60c20c3f6459cdbcb40b32cb80a',
-     x86_64: '762b2f4a1d0d593f7f4c5000b651e9d03e98b11759a113bac0c260cc45830391'
+    aarch64: 'f4b3f86770a0373bdbddc34a284ec36a5b0a7df1d0ef10e4caa0ce449dd5a235',
+     armv7l: 'f4b3f86770a0373bdbddc34a284ec36a5b0a7df1d0ef10e4caa0ce449dd5a235',
+     x86_64: 'bc9a2abe014c5ed4dfa097039af3c590b8251bbf8558aae1393f9fcf16c96a61'
   })
 
-  depends_on 'gperf'
-  depends_on 'freetype_sub'
-  depends_on 'jsonc'
-  depends_on 'util_linux'
-  depends_on 'graphite'
+  depends_on 'expat' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'gperf' => :build
+  depends_on 'graphite' => :build
+  depends_on 'harfbuzz' # R
+  depends_on 'json_c' => :build
+  depends_on 'libpng' => :build
+  depends_on 'util_linux' => :build
 
-  # Remove freetype and fontconfig before rebuilding this package.
+  no_fhs
 
-  def self.build
-    # Fix build failure from font directories not being writable.
-    @install_cache = <<~INSTALLCACHE_HEREDOC
-      #!/usr/bin/env python3
-      import sys
-      sys.exit()
-    INSTALLCACHE_HEREDOC
-    IO.write('install-cache', @install_cache, perm: 0o666)
-    system "meson #{CREW_MESON_OPTIONS} \
-    --localstatedir=#{CREW_PREFIX}/cache \
-    --default-library=both \
-    -Ddoc=disabled \
-    -Dfreetype2:harfbuzz=enabled \
-    -Dfreetype2:default_library=both \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
+  meson_options "--wrap-mode=default \
+      -Dlocalstatedir=#{CREW_PREFIX}/cache \
+      -Dtests=disabled"
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/fonts/conf.d"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/cache/fontconfig"
-    @fonts_conf = <<~FONTCONF_HEREDOC
-      <?xml version="1.0"?>
-      <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
-      <fontconfig>
-        <description>Load local customization file</description>
-        <!-- Font directory list -->
-        <dir>/usr/local/share/fonts</dir>
-        <dir>~/.fonts</dir>
-        <!-- Font cache directory list -->
-        <cachedir>#{CREW_PREFIX}/cache/fontconfig</cachedir>
-        <cachedir>~/.fontconfig</cachedir>
-      </fontconfig>
-    FONTCONF_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/etc/fonts/conf.d/52-chromebrew.conf", @fonts_conf, perm: 0o666)
-
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @env = <<~EOF
-      # Fontconfig configuration
-      export FONTCONFIG_PATH=#{CREW_PREFIX}/etc/fonts
-    EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/fontconfig", @env)
-  end
-
-  def self.postinstall
-    # The following postinstall fails if graphite isn't installed when fontconfig
-    # is being installed.
-    system "env FONTCONFIG_PATH=#{CREW_PREFIX}/etc/fonts fc-cache -fv || true"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+    # The following are included in the libpng package.
+    FileUtils.rm Dir["#{CREW_DEST_LIB_PREFIX}/libpng*"]
+    FileUtils.rm Dir["#{CREW_DEST_PREFIX}/include/libpng16/png*"]
+    FileUtils.rm Dir["#{CREW_DEST_LIB_PREFIX}/pkgconfig/libpng*"]
   end
 end

@@ -1,37 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Font_adobe_utopia_100dpi < Package
+class Font_adobe_utopia_100dpi < Autotools
   description '100dpi Adobe Utopia PCF fonts'
-  homepage 'https://xorg.freedesktop.org/'
-  version '1.0.4'
-  license 'custom'
-  compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/font/font-adobe-utopia-100dpi-1.0.4.tar.bz2'
-  source_sha256 'd16f5e3f227cc6dd07a160a71f443559682dbc35f1c056a5385085aaec4fada5'
+  homepage 'https://gitlab.freedesktop.org/xorg/font/adobe-utopia-100dpi'
+  version '1.0.5'
+  license 'MIT'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/xorg/font/adobe-utopia-100dpi.git'
+  git_hashtag "font-adobe-utopia-100dpi-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_adobe_utopia_100dpi/1.0.4_armv7l/font_adobe_utopia_100dpi-1.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_adobe_utopia_100dpi/1.0.4_armv7l/font_adobe_utopia_100dpi-1.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_adobe_utopia_100dpi/1.0.4_i686/font_adobe_utopia_100dpi-1.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_adobe_utopia_100dpi/1.0.4_x86_64/font_adobe_utopia_100dpi-1.0.4-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'c217c619266885a4d3d2860ab9f0a4376590c75609db41ac2f4ff0bfc90bffed',
-     armv7l: 'c217c619266885a4d3d2860ab9f0a4376590c75609db41ac2f4ff0bfc90bffed',
-       i686: '88d1fc4761c703b059669aea4ba713b1df82997d63c3b4c2dbee89fbf12c6522',
-     x86_64: '513463f01f5bee4f268e0bb264748252936273c8c5c5a37e1d28a2b54a66480d',
+  binary_sha256({
+    aarch64: '6ed64ca48c4de2e80a7ed0c900f47ffa52e16d10fdbd3e607bc0b57bd07f2bd5',
+     armv7l: '6ed64ca48c4de2e80a7ed0c900f47ffa52e16d10fdbd3e607bc0b57bd07f2bd5',
+     x86_64: 'aaac37b2a6d415ad2d3a532c54fcb4f1d3958475da8cbc39e14a1f166a3d076d'
   })
 
   depends_on 'bdftopcf'
   depends_on 'font_util'
   depends_on 'mkfontscale'
-
-  def self.build
-    system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  depends_on 'xorg_macros' => :build
 end

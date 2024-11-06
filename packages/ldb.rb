@@ -6,41 +6,38 @@ require 'package'
 class Ldb < Package
   description 'Schema-less, ldap like, API and database'
   homepage 'https://ldb.samba.org/'
-  version '2.3.0'
+  version "2.9.1-#{CREW_PY_VER}"
   license 'GPLv3'
   compatibility 'all'
-  source_url "https://samba.org/ftp/ldb/ldb-#{version}.tar.gz"
-  source_sha256 'a4d308b3d0922ef01f3661a69ebc373e772374defa76cf0979ad21b21f91922d'
+  source_url "https://samba.org/ftp/ldb/ldb-#{version.split('-').first}.tar.gz"
+  source_sha256 'c95e4dc32dea8864b79899ee340c9fdf28b486f464bbc38ba99151a08b493f9b'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.3.0_armv7l/ldb-2.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.3.0_armv7l/ldb-2.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.3.0_i686/ldb-2.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.3.0_x86_64/ldb-2.3.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'a21f075d2ecc39ccb53e97433c4cdbe3474054f773ea31735c9ef1227e05ae9e',
-     armv7l: 'a21f075d2ecc39ccb53e97433c4cdbe3474054f773ea31735c9ef1227e05ae9e',
-       i686: '4f4e782aa74c6ff93f20c0ab13858ea295094e547169336ec3d0cc34e6e1b3d2',
-     x86_64: '509439aae3a82f99825414bac49b704d6fec0f95c67e8b2532001e011ce2d288'
+    aarch64: '329039c021a28eeec1724ce00792262a6b7077a728b64fd766c784090daed756',
+     armv7l: '329039c021a28eeec1724ce00792262a6b7077a728b64fd766c784090daed756',
+       i686: 'ff8a1f3269a2ebcc24b9df04fbb09721d45e3fd07070cb38fda98c22bb128001',
+     x86_64: 'c51584480e0fd33624eb33c42994d38418ccf2e0f01ceb9cdc8d610e1070263c'
   })
 
   depends_on 'cmocka' => :build
   depends_on 'docbook_xsl' => :build
-  depends_on 'libbsd'
-  depends_on 'libxcrypt'
-  depends_on 'lmdb'
-  depends_on 'popt'
-  depends_on 'talloc'
-  depends_on 'tdb'
-  depends_on 'tevent'
+  depends_on 'gcc_lib' # R
+  depends_on 'gdb' => :build
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libxcrypt' => :build
+  depends_on 'lmdb' # R
+  depends_on 'openldap' # R
+  depends_on 'popt' # R
+  depends_on 'python3' # R
+  depends_on 'talloc' # R
+  depends_on 'tdb' # R
+  depends_on 'tevent' # R
 
   def self.build
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
+    system "./configure \
+      #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')} \
       --localstatedir=#{CREW_PREFIX}/var \
       --sysconfdir=#{CREW_PREFIX}/etc/samba \
       --with-modulesdir=#{CREW_LIB_PREFIX}/ldb/modules \

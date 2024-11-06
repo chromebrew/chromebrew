@@ -2,33 +2,32 @@ require 'package'
 
 class Luajit < Package
   description 'LuaJIT is a Just-In-Time Compiler (JIT) for the Lua programming language.'
-  homepage 'http://luajit.org/'
-  version '2.0.5-2'
+  homepage 'https://github.com/openresty/luajit2'
+  version '2.1-6c4826f'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://luajit.org/download/LuaJIT-2.0.5.tar.gz'
-  source_sha256 '874b1f8297c697821f561f9b73b57ffd419ed8f4278c82e05b48806d30c1e979'
+  source_url 'https://github.com/LuaJIT/LuaJIT/archive/6c4826f12c4d33b8b978004bc681eb1eef2be977.zip'
+  source_sha256 '4a384b218557e650e6fbbe2e0f14aa7a7d08a3e1f31eedbfc54de1cc62583496'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.0.5-2_armv7l/luajit-2.0.5-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.0.5-2_armv7l/luajit-2.0.5-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.0.5-2_i686/luajit-2.0.5-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.0.5-2_x86_64/luajit-2.0.5-2-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: 'af723c53d04e905531d9f3497017bc0d65be32be3c6613f518e72ed7f53de0b6',
+     armv7l: 'af723c53d04e905531d9f3497017bc0d65be32be3c6613f518e72ed7f53de0b6',
+       i686: 'ead1b0c1e413199a63d2b729daede0242188e1bb951408cad050483723ac459e',
+     x86_64: 'c4bfd99b5d7098acf0cd890b409a4b2a444c3f90b34bdfc0d356a4bcaf3c50e6'
   })
-  binary_sha256 ({
-    aarch64: '0518de335a3dc8ac04d9bcbe476d3cf2f053c058737d57f6d723c31c6eb59c99',
-     armv7l: '0518de335a3dc8ac04d9bcbe476d3cf2f053c058737d57f6d723c31c6eb59c99',
-       i686: '4942a96c905bdbc35026f9737cf55e7ca9879f06bfe9923229aeeb51039fe96b',
-     x86_64: 'd95af6ff12ca102dfad963a0606b5e2181f9e3fd68788b470f21de580f52142b',
-  })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
   def self.build
-    system "make", "PREFIX=#{CREW_PREFIX}", "MULTILIB=#{ARCH_LIB}"
+    system 'make', "PREFIX=#{CREW_PREFIX}", "MULTILIB=#{ARCH_LIB}"
   end
 
   def self.install
-    system "make", "PREFIX=#{CREW_PREFIX}", "MULTILIB=#{ARCH_LIB}", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "ln -sf #{CREW_LIB_PREFIX}/libluajit-5.1.so.2.0.5 #{CREW_DEST_LIB_PREFIX}/libluajit-5.1.so.2"
-    system "ln -sf #{CREW_LIB_PREFIX}/libluajit-5.1.so.2.0.5 #{CREW_DEST_LIB_PREFIX}/libluajit-5.1.so"
+    system 'make', "PREFIX=#{CREW_PREFIX}", "MULTILIB=#{ARCH_LIB}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    Dir.chdir("#{CREW_DEST_PREFIX}/bin") do
+      FileUtils.ln_s 'luajit-2.1.0-beta3', 'luajit'
+    end
   end
 end

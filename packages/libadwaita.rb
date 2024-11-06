@@ -1,47 +1,51 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libadwaita < Package
+class Libadwaita < Meson
   description 'Library of GNOME-specific UI patterns, replacing libhandy for GTK4'
   homepage 'https://gitlab.gnome.org/GNOME/libadwaita/'
-  version '1.0.0-alpha.2'
+  version '1.6.beta'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/libadwaita.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.1.0-aab6_i686/libadwaita-1.1.0-aab6-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.0.0-alpha.2_armv7l/libadwaita-1.0.0-alpha.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.0.0-alpha.2_armv7l/libadwaita-1.0.0-alpha.2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.0.0-alpha.2_x86_64/libadwaita-1.0.0-alpha.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-       i686: 'd68dd1fb68393dbeed3f7537a81d5812cc3cdff659dc74dfd07592a1cacad297',
-    aarch64: '64fa0c4373eb849fbb139e8fd1fcd2f9f6b64f4ccf373ef17c58a0130a77ae54',
-     armv7l: '64fa0c4373eb849fbb139e8fd1fcd2f9f6b64f4ccf373ef17c58a0130a77ae54',
-     x86_64: '39da23ece24e4872fc0519d499e9f6306d6dbb6e5de11a7220f18e8f9b7c95e3'
+    aarch64: '986ab05714ec676db239846ec08a81ba6a7f6696b6726478b04655435ae3908b',
+     armv7l: '986ab05714ec676db239846ec08a81ba6a7f6696b6726478b04655435ae3908b',
+     x86_64: '9843c177eefacd1e5eb9bf08e7323d9131c243285bc31a01776664c52de8d2f7'
   })
 
-  depends_on 'cairo'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
+  depends_on 'appstream' # R
+  depends_on 'cairo' => :build
+  depends_on 'curl' # R
+  depends_on 'fribidi' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' => :build
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'graphene'
-  depends_on 'gtk4'
-  depends_on 'libjpeg'
-  depends_on 'pango'
+  depends_on 'gperf' => :build
+  depends_on 'graphene' # R
+  depends_on 'gtk4' # R
+  depends_on 'harfbuzz' => :build
+  depends_on 'libjpeg_turbo' => :build
+  depends_on 'libsass' => :build
+  depends_on 'libxml2' # R
+  depends_on 'libyaml' # R
+  depends_on 'pango' # R
+  depends_on 'py3_gi_docgen' => :build
+  depends_on 'sassc' => :build
   depends_on 'vala' => :build
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' => :build
+  depends_on 'xzutils' # R
+  depends_on 'zstd' # R
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-      -Drequire_all_tests=false \
-      -Duser_documentation=false \
-      builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dintrospection=enabled \
+            -Dexamples=false \
+            -Dgtk_doc=false \
+            -Dtests=false'
 end

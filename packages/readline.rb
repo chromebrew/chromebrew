@@ -2,36 +2,35 @@ require 'package'
 
 class Readline < Package
   description 'The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in.'
-  homepage 'http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html'
-  @_ver = '8.1'
-  version "#{@_ver}-1"
+  homepage 'https://tiswww.cwru.edu/php/chet/readline/rltop.html'
+  version '8.2'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://gnu.askapache.com/readline/readline-#{@_ver}.tar.gz"
-  source_sha256 'f8ceb4ee131e3232226a17f51b164afc46cd0b9e6cef344be87c65962cb82b02'
+  source_url "https://ftpmirror.gnu.org/readline/readline-#{version}.tar.gz"
+  source_sha256 '3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.1-1_armv7l/readline-8.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.1-1_armv7l/readline-8.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.1-1_i686/readline-8.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.1-1_x86_64/readline-8.1-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '59a46fc3edcb1a6dd5039aee1e7dda31289e87f60c8d260f8f883da11880425e',
-     armv7l: '59a46fc3edcb1a6dd5039aee1e7dda31289e87f60c8d260f8f883da11880425e',
-       i686: '5ceea6d03304fdbd8cd1a1a999831bafe46938f458128c0bc5df1a6819114201',
-     x86_64: '3d60b7fd04b57c4b57b34d8af12ab7b7dbf368842fc8b19b09df7698e9623292'
+    aarch64: '2b15b0948ea00612e81fe9118ec797bf7acde887b6d9f6590c8be08cc8e60215',
+     armv7l: '2b15b0948ea00612e81fe9118ec797bf7acde887b6d9f6590c8be08cc8e60215',
+       i686: '4e0b1ad9c373fb7fe6b8f4bcfd15ee5abef73512d46db51b307966b233ca2794',
+     x86_64: '20b80a9206e4327a373c564ac9a041f0192955bd6105a7ddcdecbcc8482081a0'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'ncurses' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
-    system "env CFLAGS='-flto=auto -g0' \
-      CXXFLAGS='-flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS} \
+    system "./configure \
+      #{CREW_CONFIGURE_OPTIONS} \
       --with-curses \
       --enable-multibyte"
     system 'make', 'SHLIB_LIBS=-Wl,--as-needed -Wl,-ltinfow -Wl,--no-as-needed'
+  end
+
+  def self.check
+    system 'make', 'check'
   end
 
   def self.install

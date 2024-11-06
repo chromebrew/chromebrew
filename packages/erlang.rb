@@ -1,35 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Erlang < Package
+class Erlang < Autotools
   description 'Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.'
-  homepage 'http://www.erlang.org/'
-  version '24.0'
+  homepage 'https://www.erlang.org/'
+  version '27.0.1'
   license 'Apache-2.0'
-  compatibility 'all'
-  source_url 'http://erlang.org/download/otp_src_24.0.tar.gz'
-  source_sha256 '27cb5d62f82778793f96b67dbc0c67aa490267274e2f06efee8111ef11c4755c'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/erlang/otp.git'
+  git_hashtag "OTP-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/24.0_armv7l/erlang-24.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/24.0_armv7l/erlang-24.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/24.0_i686/erlang-24.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/24.0_x86_64/erlang-24.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '1049d788c19d7a187a09e4e80c5128e9173213ed453be9c789d3d7cadc5cee1f',
-     armv7l: '1049d788c19d7a187a09e4e80c5128e9173213ed453be9c789d3d7cadc5cee1f',
-       i686: 'e0fb17559d68b7ade5fc66fad22ed88eaee3ef3b34277ecd5416ed14d6f7c33b',
-     x86_64: 'd6b25b877e2217536d6cca2bd6464d95f97c43df4b73546e150e0cd04ed6bf38',
+  binary_sha256({
+    aarch64: 'e217ec9ee6e3603b264bb551543ae204e7790c7b370213d049e7ce92f59f4463',
+     armv7l: 'e217ec9ee6e3603b264bb551543ae204e7790c7b370213d049e7ce92f59f4463',
+     x86_64: 'bdcbe7622352f10703b073311deabeaf9fb2994b49e945e7667373ff56da3866'
   })
 
-  depends_on 'jdk8'
+  depends_on 'openjdk8'
   depends_on 'wxwidgets'
 
-  def self.build
-    system "export ERL_OTP=`pwd` && ./configure #{CREW_OPTIONS} && make"
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options "ERL_OTP=#{Dir.pwd} #{'--disable-year2038' unless ARCH.eql?('x86_64')}"
 end

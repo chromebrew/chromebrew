@@ -1,42 +1,29 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Atkmm < Package
+class Atkmm < Meson
   description 'Atkmm is the official C++ interface for the ATK accessibility toolkit library.'
   homepage 'https://www.gtkmm.org/'
-  version '2.28.1'
+  version '2.36.3'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url 'https://ftp.gnome.org/pub/gnome/sources/atkmm/2.28/atkmm-2.28.1.tar.xz'
-  source_sha256 '116876604770641a450e39c1f50302884848ce9cc48d43c5dc8e8efc31f31bad'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/atkmm.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.28.1_armv7l/atkmm-2.28.1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.28.1_armv7l/atkmm-2.28.1-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.28.1_i686/atkmm-2.28.1-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.28.1_x86_64/atkmm-2.28.1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-     aarch64: '0f959c7e95bee71b46cb1b90902d0e7556d0914e56e1a4e7654c95166307dd8d',
-      armv7l: '0f959c7e95bee71b46cb1b90902d0e7556d0914e56e1a4e7654c95166307dd8d',
-        i686: '1b400ecf33d5dcbceaffee8608a06c155fcd57d118262569136552c1f11c96bc',
-      x86_64: '2aee40b687e3c021894d9d98719655de5bc703f5d397b4ee2f452accc45915cd',
+  binary_sha256({
+    aarch64: '9224b82b6db207ebcb652edeb5403eec1be918f7b395d449c2b4a6bd04298a37',
+     armv7l: '9224b82b6db207ebcb652edeb5403eec1be918f7b395d449c2b4a6bd04298a37',
+     x86_64: 'a31362204e6e24f6f808389b62868f690b9377185c979dcbdadf737293d4c306'
   })
 
-  depends_on 'atk'
-  depends_on 'glibmm'
+  depends_on 'at_spi2_core' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glibmm_2_68' # R
+  depends_on 'glib' # R
+  depends_on 'libsigcplusplus3' # R
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-    --default-library=both \
-    -Dbuild-documentation=false \
-    -Dbuild-demos=false \
-    -Dbuild-tests=false \
-    builddir"
-    system "meson configure builddir"
-    system "ninja -C builddir"
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dbuild-documentation=false'
 end

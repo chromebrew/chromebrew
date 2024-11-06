@@ -2,35 +2,32 @@ require 'package'
 
 class Libxcb < Package
   description 'library for the X window system'
-  homepage 'https://x.org'
-  version '1.14-2'
+  homepage 'https://x.org/wiki/'
+  version '1.15'
   license 'custom'
   compatibility 'all'
-  source_url 'https://xcb.freedesktop.org/dist/libxcb-1.14.tar.xz'
-  source_sha256 'a55ed6db98d43469801262d81dc2572ed124edc3db31059d4e9916eb9f844c34'
+  source_url 'https://xcb.freedesktop.org/dist/libxcb-1.15.tar.xz'
+  source_sha256 'cc38744f817cf6814c847e2df37fcb8997357d72fa4bcbc228ae0fe47219a059'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.14-2_armv7l/libxcb-1.14-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.14-2_armv7l/libxcb-1.14-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.14-2_i686/libxcb-1.14-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.14-2_x86_64/libxcb-1.14-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '970a54ee26b5719351236de38fa8e714815f478fb76a53b07ed8458950f0e7e8',
-     armv7l: '970a54ee26b5719351236de38fa8e714815f478fb76a53b07ed8458950f0e7e8',
-       i686: '95447782172b761f15c728f2a5d0d99e7e34987ba069f0c788e225134e72eee9',
-     x86_64: 'b3d0f1ae99ab39ada872217c14bf137e7f77ff1f37c357408c649e19a152ec53'
+    aarch64: 'fad951d000d7d85249abf783489d84f1d34a938cb10cd29ca7c891b9b5657767',
+     armv7l: 'fad951d000d7d85249abf783489d84f1d34a938cb10cd29ca7c891b9b5657767',
+       i686: 'cc9c9c2c023c4aa478f0b256f5e4aa3b3fa51b36d8f94627342c4f2f6ca1bbbf',
+     x86_64: 'd1e81462049e32ba54bedf4a3d6ce39cb8610fa3d9b451618a78446b625fd564'
   })
 
   depends_on 'xcb_proto'
   depends_on 'libxau'
   depends_on 'pthread_stubs'
+  depends_on 'glibc' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
 
   def self.build
     system 'filefix'
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
-        LDFLAGS='-flto=auto' \
-        ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
         --enable-dri3 \
         --disable-xevie \
         --disable-devel-docs"

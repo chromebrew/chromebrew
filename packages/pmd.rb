@@ -3,45 +3,35 @@ require 'package'
 class Pmd < Package
   description 'An extensible cross-language static code analyzer.'
   homepage 'https://pmd.github.io/'
-  version '6.28.0'
+  version '7.2.0'
   license 'custom'
   compatibility 'all'
-  source_url 'https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.28.0/pmd-bin-6.28.0.zip'
-  source_sha256 '9a19365f2e107ae801b39be04c5c03cdca2d352c450faac639a6dd95b5c3ab0c'
+  source_url "https://github.com/pmd/pmd/releases/download/pmd_releases%2F#{version}/pmd-dist-#{version}-bin.zip"
+  source_sha256 '2dfee533351069816870c3fc1ea3b3089f0fea602748b0d8ab9db1f0c381ded2'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pmd/6.28.0_armv7l/pmd-6.28.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pmd/6.28.0_armv7l/pmd-6.28.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pmd/6.28.0_i686/pmd-6.28.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pmd/6.28.0_x86_64/pmd-6.28.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '3ffa1b5c562929b74903a42bb8246203b6b1a09a156031e25522991bb25eea51',
-     armv7l: '3ffa1b5c562929b74903a42bb8246203b6b1a09a156031e25522991bb25eea51',
-       i686: '8002bc791ac2751dca2c557b248a3d52eff48c5ad04d8ad4320fc4b19a88a230',
-     x86_64: 'a9595a5dc740d9f952526817488a86bca488ec06daac8b990b724eca45459629',
-  })
-
-  depends_on 'jdk8'
+  depends_on 'openjdk8'
   depends_on 'unzip'
+
+  no_compile_needed
+
+  def self.build
+    File.write 'cpd', <<~EOF
+      #!/bin/bash
+      pmd cpd "$@"
+    EOF
+  end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.cd "#{CREW_DEST_PREFIX}/bin" do
-      system "echo '#!/bin/bash' > cpd"
-      system "echo 'PWD=$(pwd)' >> cpd"
-      system "echo 'cd #{CREW_LIB_PREFIX}/pmd' >> cpd"
-      system "echo 'bin/run.sh cpd \"$@\"' >> cpd"
-      system "echo 'cd $PWD' >> cpd"
-      system "chmod +x cpd"
-      system "echo '#!/bin/bash' > pmd"
-      system "echo 'PWD=$(pwd)' >> pmd"
-      system "echo 'cd #{CREW_LIB_PREFIX}/pmd' >> pmd"
-      system "echo 'bin/run.sh pmd \"$@\"' >> pmd"
-      system "echo 'cd $PWD' >> pmd"
-      system "chmod +x pmd"
-    end
-    FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/pmd"
-    FileUtils.cp_r '.', "#{CREW_DEST_LIB_PREFIX}/pmd"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/pmd"
+    FileUtils.install 'cpd', "#{CREW_DEST_PREFIX}/bin/cpd", mode: 0o755
+    FileUtils.rm 'cpd'
+    FileUtils.rm Dir['bin/*.bat']
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/pmd"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/pmd/bin/pmd", "#{CREW_DEST_PREFIX}/bin/pmd"
+  end
+
+  def self.postinstall
+    ExitMessage.add "\nType 'pmd -h' to get started.\n".lightblue
   end
 end

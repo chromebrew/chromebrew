@@ -1,36 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libsndfile < Package
+class Libsndfile < Autotools
   description 'Libsndfile is a C library for reading and writing files containing sampled sound (such as MS Windows WAV and the Apple/SGI AIFF format) through one standard library interface.'
-  homepage 'http://www.mega-nerd.com/libsndfile/'
-  version '1.0.28'
+  homepage 'https://github.com/libsndfile/libsndfile'
+  version '1.2.2'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz'
-  source_sha256 '1ff33929f042fa333aed1e8923aa628c3ee9e1eb85512686c55092d1e5a9dfa9'
+  source_url 'https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz'
+  source_sha256 '3799ca9924d3125038880367bf1468e53a1b7e3686a934f098b7e1d286cdb80e'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsndfile/1.0.28_armv7l/libsndfile-1.0.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsndfile/1.0.28_armv7l/libsndfile-1.0.28-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsndfile/1.0.28_i686/libsndfile-1.0.28-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsndfile/1.0.28_x86_64/libsndfile-1.0.28-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'a07e55a380f5ab880d10740824ee36dd0509bf1e84cd30b1d6347df3556ffba4',
-     armv7l: 'a07e55a380f5ab880d10740824ee36dd0509bf1e84cd30b1d6347df3556ffba4',
-       i686: 'ac2f0640066e55e9c28f373096fb7ddcbb3b5b21af7557a645366f2677b1c612',
-     x86_64: '65b4f4f13f020620801e43bbfe9027fc7208d18575727bda56d2ebe75c80e7fc',
+  binary_sha256({
+    aarch64: 'e64d75555b4ff9383478bbe2588693ba41a024b281a64a8de47ee0cf03e0f2f6',
+     armv7l: 'e64d75555b4ff9383478bbe2588693ba41a024b281a64a8de47ee0cf03e0f2f6',
+       i686: '6d28a661b4ec8e0c85db4b57902aef01b253edfc633b3f9d791d53ffbbe31278',
+     x86_64: 'be7071f6c235ed413cda0f328506a3661e513c7053882c8ef7fbe8426a9047e8'
   })
 
-  def self.build
-    system "./configure \
-            --prefix=#{CREW_PREFIX} \
-            --libdir=#{CREW_LIB_PREFIX} \
-            --disable-dependency-tracking"
-    system "make"
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
+  depends_on 'alsa_lib' # R
+  depends_on 'flac' # R
+  depends_on 'glibc' # R
+  depends_on 'libogg' # R
+  depends_on 'libvorbis' # R
+  depends_on 'nasm' => :build
+  depends_on 'opus' # R
+  depends_on 'speex' => :build
+  depends_on 'sqlite' => :build
 end

@@ -1,37 +1,28 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Fetch < Package
-  description 'fetch makes it easy to download files, folders, or release assets from a specific commit, branch, or tag of a public or private GitHub repo.'
-  homepage 'https://github.com/gruntwork-io/fetch'
-  version '0.1.1'
-  license 'LGPL-2.1'
+class Fetch < CMake
+  description 'FreeBSD Fetch retrieves files by URL.'
+  homepage 'https://github.com/jrmarino/fetch-freebsd'
+  version '12.0.11'
+  license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/gruntwork-io/fetch/archive/v0.1.1.tar.gz'
-  source_sha256 'ff3072da89c36a5031a3585ec6898113005185e76f626cf4ca8cffee4b62446d'
+  source_url 'https://github.com/jrmarino/fetch-freebsd.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fetch/0.1.1_armv7l/fetch-0.1.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fetch/0.1.1_armv7l/fetch-0.1.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fetch/0.1.1_i686/fetch-0.1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fetch/0.1.1_x86_64/fetch-0.1.1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '6df3fe6ab4d7a6277577275e49c973949b2e60e8f1516e7eca7ff72bf8f4ce7f',
-     armv7l: '6df3fe6ab4d7a6277577275e49c973949b2e60e8f1516e7eca7ff72bf8f4ce7f',
-       i686: '6daecf37b9ee3ad15cf7b30172b46a13ae84a8909edbbd09f48c9eeafdc07cec',
-     x86_64: '572f35ff3eec1fc6ee50b70bd65d236bf9aff901e7c12adce0af82fcb07d2706',
+  binary_sha256({
+    aarch64: '41075f997abd150a9b45550c189366757304c1604ebbf50154ecf6b9d76474dc',
+     armv7l: '41075f997abd150a9b45550c189366757304c1604ebbf50154ecf6b9d76474dc',
+       i686: '2a88b20b8fddddab48017a39bb7087c5858e803433d1749b38bbcc77df82d34f',
+     x86_64: '62999f08847a7a9c51fcfa70abb595906553ed8eb8fa75c2b11e67baa639b57c'
   })
 
-  depends_on 'go'
+  depends_on 'openssl'
 
-  def self.build
-    system "go get github.com/urfave/cli"
-    system "go get github.com/hashicorp/go-version"
-    system "sed -i 's,codegangsta,urfave,g' main.go"
+  def self.patch
+    downloader 'https://patch-diff.githubusercontent.com/raw/jrmarino/fetch-freebsd/pull/6.patch', 'd872cae4f979c563be3659657a323ce444a469167733712a2e96f578ff9d7427'
+    system 'git apply 6.patch'
   end
 
-  def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "go build -ldflags \"-X main.VERSION=v0.1.1\" -o #{CREW_DEST_PREFIX}/bin/fetch"
-  end
+  cmake_options '-DFETCH_LIBRARY=ON -DUSE_SYSTEM_SSL=ON'
 end

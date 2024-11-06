@@ -1,60 +1,53 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Remmina < Package
+class Remmina < CMake
   description 'The GTK Remmina Remote Desktop Client'
   homepage 'https://remmina.org/'
-  version '1.4.19'
+  version '1.4.35'
   license 'GPL-2+-with-openssl-exception'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.com/Remmina/Remmina/-/archive/v#{version}/Remmina-v#{version}.tar.bz2"
-  source_sha256 'a730d5927232818d55c8e094dba69d504faacabab2288d0c5c0c30ee7e89be46'
+  source_sha256 '6ce8944e87f5a7bb5c96587a9d8df412f852717f49e58a7289dd24175519fe46'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.19_armv7l/remmina-1.4.19-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.19_armv7l/remmina-1.4.19-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.19_x86_64/remmina-1.4.19-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'dab35fcbbc23c18cad70e6410f55add495cdae28056a5f32b135609918f4abf1',
-     armv7l: 'dab35fcbbc23c18cad70e6410f55add495cdae28056a5f32b135609918f4abf1',
-     x86_64: '5c0664d01de495b9e0a8c872d8f510c2523d19bcf9e4c7ae4f0c7c6ad4fcbb6d'
+    aarch64: '4a5e869bf74adc0a449f88e4bc6d71c9a1ac2915045cb0f80ef243a6b6ee08df',
+     armv7l: '4a5e869bf74adc0a449f88e4bc6d71c9a1ac2915045cb0f80ef243a6b6ee08df',
+     x86_64: '69f0f6a0c131925a580d69def851594c6629807b38233f56efff6cdf715f7ec8'
   })
 
-  depends_on 'avahi'
-  depends_on 'freerdp'
-  depends_on 'hashpipe' => :build
-  depends_on 'libappindicator_gtk3'
-  depends_on 'libsecret'
-  depends_on 'libsodium'
-  depends_on 'libsoup'
-  depends_on 'libvncserver'
-  depends_on 'spice_gtk'
-  depends_on 'vte'
-  depends_on 'webkit2gtk_4'
+  depends_on 'avahi' # L
+  depends_on 'cairo' # R
+  depends_on 'cups' # R
+  depends_on 'curl' # R
+  depends_on 'freerdp' # R
+  depends_on 'fuse3' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'json_glib' # R
+  depends_on 'libappindicator_gtk3' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libsecret' # R
+  depends_on 'libsodium' # R
+  depends_on 'libsoup' # R
+  depends_on 'libssh' # R
+  depends_on 'libvncserver' # R
+  depends_on 'openssl' # R
+  depends_on 'pango' # R
+  depends_on 'python3' # R
+  depends_on 'sommelier' # L
+  depends_on 'spice_gtk' => :build
+  depends_on 'vte' # R
+  depends_on 'wayland' # R
+  depends_on 'webkit2gtk_4_1' # R
   depends_on 'xdg_utils' => :build
-  depends_on 'sommelier'
+  depends_on 'xprop' # L
 
-  def self.patch
-    # https://gitlab.com/Remmina/Remmina/-/issues/2542
-    system "curl -Ls https://gitlab.com/Remmina/Remmina/-/merge_requests/2290.patch | \
-    hashpipe sha256 618b6f759a40293c71cb622bbd16ed673c0474e9238b339095a5957c929e26a9 | \
-    patch -Np1 --binary"
-  end
-
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "cmake \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS.sub("C_FLAGS='",
-                                 "C_FLAGS='-Wno-unused-function ")} \
-        -DWITH_TELEPATHY=OFF \
-        .."
-    end
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  cmake_options '-DCMAKE_SKIP_INSTALL_RPATH=ON \
+      -DWITH_FREERDP3:BOOL=ON \
+      -DWITH_TELEPATHY=OFF'
 end

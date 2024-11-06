@@ -3,44 +3,48 @@ require 'package'
 class Wing < Package
   description 'Wing Personal is a free Python IDE designed for students and hobbyists.'
   homepage 'https://wingware.com/'
-  version '7.2.1.0'
+  version '10.0.4.0'
   license 'Wingware-EULA'
   compatibility 'x86_64'
-  source_url 'https://wingware.com/pub/wing-personal/7.2.1.0/wing-personal-7.2.1.0-linux-x64.tar.bz2'
-  source_sha256 'e42a8269a08c8bff6a91d021dcc11de8ab0b007a5a267bdeb870e7369f155064'
+  source_url "https://wingware.com/pub/wing-personal/#{version}/wing-personal-#{version}-linux-x64.tar.bz2"
+  source_sha256 '169580d26a7c852c06951e9bb67394b382076c31a0ce3e9376c2ccc9554b5b74'
 
+  @major_ver = version.split('.').first
+
+  depends_on 'xcb_util_cursor'
+  depends_on 'xcb_util_keysyms'
+  depends_on 'xcb_util_wm'
   depends_on 'sommelier'
 
-  binary_url ({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wing/7.2.1.0_x86_64/wing-7.2.1.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    x86_64: '8be03ea9bcfa884c4f4a324190ecf6cbefd7b82389e264b6a35e318f30ec7ed3',
-  })
-
-  def self.patch
-    system "sed -i 's,/usr/bin/python,#{CREW_PREFIX}/bin/python,' wing-install.py"
-  end
+  no_compile_needed
+  no_shrink
 
   def self.install
-    # The install is interactive, so remember to prefix directories with #{CREW_PREFIX} when prompted.
-    system './wing-install.py'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
-    FileUtils.mkdir_p "#{CREW_DEST_HOME}/.wingpersonal7"
-    system "touch #{CREW_DEST_HOME}/.wingpersonal7/ide.log"
-    FileUtils.cp "#{CREW_PREFIX}/bin/wing-personal7.2", "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.cp_r "#{CREW_PREFIX}/share/wing-personal7.2", "#{CREW_DEST_PREFIX}/share"
-    FileUtils.ln_s "#{CREW_PREFIX}/share/wing-personal7.2/wing-personal", "#{CREW_DEST_PREFIX}/bin/wing"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/wing-personal"
+    FileUtils.mkdir_p "#{CREW_DEST_HOME}/.wingpersonal#{@major_ver}"
+    FileUtils.touch "#{CREW_DEST_HOME}/.wingpersonal#{@major_ver}/ide.log"
+    system "tar xvf binary-package-#{version}.tar"
+    FileUtils.rm ["binary-package-#{version}.tar", 'wing-install.py']
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/wing-personal"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/wing-personal/wing-personal", "#{CREW_DEST_PREFIX}/bin/wing"
   end
 
   def self.postinstall
-    puts
-    puts "Type 'wing' to get started.".lightblue
-    puts
-    puts "To completely remove including all preferences, execute the following:".lightblue
-    puts "crew remove wing".lightblue
-    puts "rm -rf ~/.wingpersonal7".lightblue
-    puts
+    ExitMessage.add "\nType 'wing' to get started.\n".lightblue
+  end
+
+  def self.postremove
+    config_dir = "#{HOME}/.wingpersonal#{@major_ver}"
+    if Dir.exist? config_dir
+      print "Would you like to remove the #{config_dir} directory? [y/N] "
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
+        FileUtils.rm_rf config_dir
+        puts "#{config_dir} removed.".lightgreen
+      else
+        puts "#{config_dir} saved.".lightgreen
+      end
+    end
   end
 end

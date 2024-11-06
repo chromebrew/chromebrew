@@ -3,34 +3,34 @@ require 'package'
 class Libxtst < Package
   description 'X.org Xtst Library'
   homepage 'http://t2sde.org/packages/libxtst.html'
-  version '1.2.3'
+  version '1.2.4'
   license 'custom'
-  compatibility 'all'
-  source_url 'https://xorg.freedesktop.org/releases/individual/lib/libXtst-1.2.3.tar.bz2'
-  source_sha256 '4655498a1b8e844e3d6f21f3b2c4e2b571effb5fd83199d428a6ba7ea4bf5204'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://xorg.freedesktop.org/releases/individual/lib/libXtst-1.2.4.tar.xz'
+  source_sha256 '84f5f30b9254b4ffee14b5b0940e2622153b0d3aed8286a3c5b7eeb340ca33c8'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtst/1.2.3_armv7l/libxtst-1.2.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtst/1.2.3_armv7l/libxtst-1.2.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtst/1.2.3_i686/libxtst-1.2.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtst/1.2.3_x86_64/libxtst-1.2.3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '032782d5f6b4eff989dead39660124c9248d6612b41f5a7ad065172e9fdbdb2a',
-     armv7l: '032782d5f6b4eff989dead39660124c9248d6612b41f5a7ad065172e9fdbdb2a',
-       i686: '3d551292dcd4c6098790203c6028f367ba8c1b8d205395d5a3dbdbbef08ee572',
-     x86_64: '0649bbebfbe8c632cd06507115fc3d546aaf5c851248f8b052119bbdbaee699a',
+  binary_sha256({
+    aarch64: 'a44455fc4e851f8b7e876e158f4602fb10ab7181aad7813e484005121f31eae4',
+     armv7l: 'a44455fc4e851f8b7e876e158f4602fb10ab7181aad7813e484005121f31eae4',
+     x86_64: '2169135a37e04d3bcb39449423acbf56253a46bfa1bc08d204bf2a781e783c75'
   })
 
-
-  depends_on 'libxi'
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
+  depends_on 'libxext' # R
+  depends_on 'libxi' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
 end

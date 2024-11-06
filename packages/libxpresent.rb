@@ -3,34 +3,38 @@ require 'package'
 class Libxpresent < Package
   description 'XPresent extension C library'
   homepage 'https://cgit.freedesktop.org/xorg/lib/libXpresent/'
-  version '1.0.0'
+  version '1.0.1'
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/lib/libXpresent-1.0.0.tar.gz'
-  source_sha256 '92f1bdfb67ae2ffcdb25ad72c02cac5e4912dc9bc792858240df1d7f105946fa'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.x.org/releases/individual/lib/libXpresent-1.0.1.tar.xz'
+  source_sha256 'b964df9e5a066daa5e08d2dc82692c57ca27d00b8cc257e8e960c9f1cf26231b'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpresent/1.0.0_armv7l/libxpresent-1.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpresent/1.0.0_armv7l/libxpresent-1.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpresent/1.0.0_i686/libxpresent-1.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpresent/1.0.0_x86_64/libxpresent-1.0.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '4cd080d977c53e1134a3fd3b90d9c5b557474baa31d01cfded8cfac45da9ed81',
-     armv7l: '4cd080d977c53e1134a3fd3b90d9c5b557474baa31d01cfded8cfac45da9ed81',
-       i686: 'b05f699372ec32348998b01209c6a857f87127d5260733078de97b23bb3c5e01',
-     x86_64: '49a362f1000bdc0b4d815417f7ce497413987414ab3cbf16bb1435333b80a160',
+  binary_sha256({
+    aarch64: 'cdda664576c7628d3bdae2d374ba46492c9cd9f5aadfcefa0c84592439c59cbc',
+     armv7l: 'cdda664576c7628d3bdae2d374ba46492c9cd9f5aadfcefa0c84592439c59cbc',
+     x86_64: '71ae88c52f3316a543ec7c6a77958151c77f0aea4020a976468a60be305670a9'
   })
 
   depends_on 'libxfixes'
   depends_on 'libxrandr'
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxext' # R
+  depends_on 'libxrender' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 
   def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

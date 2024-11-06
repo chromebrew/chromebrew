@@ -1,53 +1,42 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_calculator < Package
+class Gnome_calculator < Meson
   description 'GNOME desktop calculator'
   homepage 'https://wiki.gnome.org/Apps/Calculator'
-  @_ver = '41.0'
-  version @_ver
+  version '46.rc'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url "https://download.gnome.org/sources/gnome-calculator/#{@_ver.rpartition('.')[0]}/gnome-calculator-#{@_ver}.tar.xz"
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-calculator.git'
-  git_hashtag @_ver
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_calculator/41.0_armv7l/gnome_calculator-41.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_calculator/41.0_armv7l/gnome_calculator-41.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_calculator/41.0_x86_64/gnome_calculator-41.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '3360a1f8ff9d8cdcd7bf9f951d4ab86f60568ce46332e7780d1e4998e7361d8d',
-     armv7l: '3360a1f8ff9d8cdcd7bf9f951d4ab86f60568ce46332e7780d1e4998e7361d8d',
-     x86_64: 'e964edff1e49d225e1db6477b0c372d204afdd78a55512617a4d62fb5445f29b'
+    aarch64: '82d67a2384b1e6765c69f5bd745059ee875a0e379789939e11a58c0233531bdc',
+     armv7l: '82d67a2384b1e6765c69f5bd745059ee875a0e379789939e11a58c0233531bdc',
+     x86_64: '38498259c4dd6b93519602c295304c110d01b8317bb6ad4f69c8ec40c180bc3e'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gnome_text_editor' # R
+  depends_on 'gtk4' # R
+  depends_on 'gtksourceview_5' # R
+  depends_on 'py3_itstool' => :build
+  depends_on 'libadwaita' # R
+  depends_on 'libgee' # R
+  depends_on 'libhandy' => :build
+  depends_on 'libsoup' # R
+  depends_on 'libxml2' # R
+  depends_on 'mpc' # R
+  depends_on 'mpfr' # R
   depends_on 'py3_libxml2' => :build
-  depends_on 'gtk3'
-  depends_on 'gtksourceview'
-  depends_on 'itstool'
-  depends_on 'libgee'
-  depends_on 'libhandy'
-  depends_on 'libsoup'
-  depends_on 'wayland'
+  depends_on 'python3' => :build
+  depends_on 'wayland' => :build
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} builddir"
-    system 'meson configure builddir'
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  gnome
 
   def self.postinstall
-    system "update-mime-database #{CREW_PREFIX}/share/mime"
-    system 'gdk-pixbuf-query-loaders --update-cache'
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-
     puts <<~EOT.lightblue
 
       To use the graphical calculator, execute 'gnome-calculator'

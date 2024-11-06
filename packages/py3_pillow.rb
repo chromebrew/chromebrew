@@ -1,41 +1,32 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pillow < Package
+class Py3_pillow < Pip
   description 'Pillow is a Python Imaging Library (PIL).'
   homepage 'https://python-pillow.org/'
-  @_ver = '8.3.1'
-  version @_ver
+  version "11.0.0-#{CREW_PY_VER}"
   license 'HPND'
-  compatibility 'all'
-  source_url 'https://github.com/python-pillow/Pillow.git'
-  git_hashtag @_ver
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/8.3.1_armv7l/py3_pillow-8.3.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/8.3.1_armv7l/py3_pillow-8.3.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/8.3.1_x86_64/py3_pillow-8.3.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'd13c98552eb144e0e37550e179a49c24fe1a35a0a3033810e3814d32c0fbc015',
-     armv7l: 'd13c98552eb144e0e37550e179a49c24fe1a35a0a3033810e3814d32c0fbc015',
-     x86_64: '227408b4faf8bbb1dfe0da046d54dad9071d054cad675eba91468717ce438919'
+    aarch64: '0556388525664e4a1bd8d3bb24e7b1c87f3c90e11521b0f3005df062557a12c9',
+     armv7l: '0556388525664e4a1bd8d3bb24e7b1c87f3c90e11521b0f3005df062557a12c9',
+     x86_64: '36203f74989dad1d9417cce6eb363e0264f4792ce782fba3d021ec635882f389'
   })
 
+  depends_on 'freetype' # R
+  depends_on 'glibc' # R
+  depends_on 'lcms' # R
+  depends_on 'libjpeg_turbo'
+  depends_on 'libtiff' # R
+  depends_on 'libwebp' # R
+  depends_on 'libxcb'
+  depends_on 'openjpeg' # R
   depends_on 'py3_lxml'
   depends_on 'py3_xlsxwriter'
-  depends_on 'libjpeg'
-  depends_on 'libxcb'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
+  depends_on 'zlib' # R
 
-  def self.build
-    system "python3 setup.py build_ext \
-            --disable-platform-guessing \
-            --enable-zlib \
-            --enable-jpeg \
-            --enable-xcb"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

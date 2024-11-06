@@ -3,24 +3,18 @@ require 'package'
 class Youtube_dl < Package
   description 'Command-line program to download videos from YouTube.com and other video sites'
   homepage 'https://youtube-dl.org/'
-  @_ver = '2021.06.06'
-  version @_ver
+  version '2021.12.17'
   license 'public-domain'
   compatibility 'all'
   source_url 'https://github.com/ytdl-org/youtube-dl.git'
-  git_hashtag @_ver
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/youtube_dl/2021.06.06_armv7l/youtube_dl-2021.06.06-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/youtube_dl/2021.06.06_armv7l/youtube_dl-2021.06.06-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/youtube_dl/2021.06.06_i686/youtube_dl-2021.06.06-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/youtube_dl/2021.06.06_x86_64/youtube_dl-2021.06.06-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '8da245bca7bf4d1b106c5571898efb60c4517e6ad8bbe623c9332d57b19266ad',
-     armv7l: '8da245bca7bf4d1b106c5571898efb60c4517e6ad8bbe623c9332d57b19266ad',
-       i686: '48f4fa06db554fda1b6b4f6af804204bd4229758ef56bf7cbca2b6fd87039c07',
-     x86_64: '41ce42924d1924dd1e7d199f779193e4180d2882361805a41995c0ae6f15c67c',
+  binary_sha256({
+    aarch64: '67493026c59e65899994e63542d9c032c2ab85d443b57cca9933280e81d7f6a3',
+     armv7l: '67493026c59e65899994e63542d9c032c2ab85d443b57cca9933280e81d7f6a3',
+       i686: '4097a2d204d79d05e2b8acba94c13c5cbce0e3e0391f4a7454ca83b03e9d3a1e',
+     x86_64: '8c1848f320b4f82d25eafaba316eb0858a33318dde94dbaa6fdf8c1feaa6d41f'
   })
 
   def self.build

@@ -3,35 +3,32 @@ require 'package'
 class Hello < Package
   description 'GNU Hello is another implementation of the classic program that prints “Hello, world!”'
   homepage 'https://www.gnu.org/software/hello/'
-  version '2.10'
+  version '2.12'
   license 'FDL-1.3 GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/hello/hello-2.10.tar.gz'
-  source_sha256 '31e066137a962676e89f69d1b65382de95a7ef7d914b8cb956f41ea72e0f516b'
+  source_url 'https://ftpmirror.gnu.org/hello/hello-2.12.tar.gz'
+  source_sha256 'cf04af86dc085268c5f4470fbae49b18afbc221b78096aab842d934a76bad0ab'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hello/2.10_armv7l/hello-2.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hello/2.10_armv7l/hello-2.10-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hello/2.10_i686/hello-2.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hello/2.10_x86_64/hello-2.10-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: '1ffdc1749b56194ef9913c92d98aa29b2ed7592eb9c52828f0e458da9a84f977',
+     armv7l: '1ffdc1749b56194ef9913c92d98aa29b2ed7592eb9c52828f0e458da9a84f977',
+       i686: 'c75ebf55540a37f20fdcb80c4c0157d88ce8f269e16bf158fe35b41c37427a41',
+     x86_64: '432d72ce76e2224d5af08ddaa323b577dd625cfac7feefe18866c9afdf3b1190'
   })
-  binary_sha256 ({
-    aarch64: '5dc4429669eb28c742dfea306e988b168f4fd871bfca7aa29d69c6594a24a7f6',
-     armv7l: '5dc4429669eb28c742dfea306e988b168f4fd871bfca7aa29d69c6594a24a7f6',
-       i686: '5cd41999885734e0e380fb90c1f51da9a5280ff95d44fa1cc495d007158ebf81',
-     x86_64: 'af1e0ecfc8043022dc39fb531602abd619153f7e4522c27b393e154c16c1f13d',
-  })
+
+  depends_on 'glibc' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system "make"
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
+    system 'make'
   end
 
   def self.check
-    system "make", "check"
+    system 'make', 'check'
+  end
+
+  def self.install
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

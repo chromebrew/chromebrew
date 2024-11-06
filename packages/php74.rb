@@ -2,51 +2,73 @@ require 'package'
 
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
-  homepage 'http://www.php.net/'
-  @_ver = '7.4.23'
-  version @_ver
+  homepage 'https://www.php.net/'
+  version '7.4.33-1'
   license 'PHP-3.01'
-  compatibility 'all'
-  source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 'cea52313fcffe56343bcd3c66dbb23cd5507dc559cc2e3547cf8f5452e88a05d'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.php.net/distributions/php-7.4.33.tar.xz'
+  source_sha256 '924846abf93bc613815c55dd3f5809377813ac62a9ec4eb3778675b82a27b927'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.23_armv7l/php74-7.4.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.23_armv7l/php74-7.4.23-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.23_i686/php74-7.4.23-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.23_x86_64/php74-7.4.23-chromeos-x86_64.tar.xz',
-  })
   binary_sha256({
-    aarch64: 'f74f93f8b17b36cd51a6b1e05a07436631a014348592ef07c26c90f07658e075',
-     armv7l: 'f74f93f8b17b36cd51a6b1e05a07436631a014348592ef07c26c90f07658e075',
-       i686: '95217c23ec537756ad89d0e4bd5ec55f5dba38deccd3db9be50b45ad1c33826e',
-     x86_64: '8e03a92a68091211a31e99d11a51a035554124c9726a78f7ae9755f82b1e9c7f',
+    aarch64: 'c6d0341c39053efa64ebb9b0056ed5c8c066f827fe854fb6b3164f978208d42c',
+     armv7l: 'c6d0341c39053efa64ebb9b0056ed5c8c066f827fe854fb6b3164f978208d42c',
+     x86_64: '3556beb44da6b3c292425c0f06c2fb2cf55b60880e752bf2f7a46f333c789b83'
   })
 
   depends_on 'aspell_en'
-  depends_on 'libcurl'
-  depends_on 'libgcrypt'
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libsodium'
-  depends_on 'libxpm'
-  depends_on 'libxslt'
-  depends_on 'libzip'
+  depends_on 'aspell' # R
+  depends_on 'brotli' # R
+  depends_on 'bzip2' # R
+  depends_on 'c_ares' # R
+  depends_on 'curl'
+  depends_on 'e2fsprogs' # R
   depends_on 'exif'
   depends_on 'freetds'
   depends_on 'freetype'
+  depends_on 'gcc_lib' # R
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'graphite'
+  depends_on 'icu4c' # R
+  depends_on 'krb5' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libedit' # R
+  depends_on 'libffi' # R
+  depends_on 'libgcrypt'
+  depends_on 'libgpg_error' # R
+  depends_on 'libidn2' # R
+  depends_on 'libjpeg_turbo'
+  depends_on 'libnghttp2' # R
+  depends_on 'libpng'
+  depends_on 'libpsl' # R
+  depends_on 'libsodium'
+  depends_on 'libssh' # R
+  depends_on 'libtool' # R
+  depends_on 'libunistring' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxpm'
+  depends_on 'libxslt'
+  depends_on 'libzip'
+  depends_on 'ncurses' # R
+  depends_on 'oniguruma'
+  depends_on 'openldap' # R
+  depends_on 'openssl111'
+  depends_on 'openssl' # R
+  depends_on 'py3_pygments'
   depends_on 're2c'
+  depends_on 'sqlite' # R
   depends_on 'tidy'
   depends_on 'unixodbc'
-  depends_on 'oniguruma'
-  depends_on 'py3_pygments'
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
+
+  no_fhs
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    unless ARGV[0] == 'reinstall' and @_ver == phpver
-      abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
-    end
+    abort "PHP version #{phpver} already installed.".lightgreen if ARGV[0] != 'reinstall' && @_ver != phpver && !phpver.empty?
   end
 
   def self.patch
@@ -71,8 +93,7 @@ class Php74 < Package
   end
 
   def self.build
-    system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} CFLAGS='-pipe' \
-      ./configure \
+    system "CFLAGS='-pipe' mold -run ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \
@@ -124,7 +145,7 @@ class Php74 < Package
        --with-xmlrpc \
        --with-xsl \
        --with-zip"
-    system 'make'
+    system 'mold -run make'
   end
 
   def self.check
@@ -132,20 +153,15 @@ class Php74 < Package
   end
 
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/php-fpm.d"
     system 'make', "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
-    FileUtils.install 'php.ini-development', "#{CREW_DEST_PREFIX}/etc/php.ini", mode: 0644
-    FileUtils.install 'sapi/fpm/init.d.php-fpm.in', "#{CREW_DEST_PREFIX}/etc/init.d/php-fpm", mode: 0755
-    FileUtils.install 'sapi/fpm/php-fpm.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.conf", mode: 0755
-    FileUtils.install 'sapi/fpm/www.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.d/www.conf", mode:0644
+    FileUtils.install 'php.ini-development', "#{CREW_DEST_PREFIX}/etc/php.ini", mode: 0o644
+    FileUtils.install 'sapi/fpm/init.d.php-fpm.in', "#{CREW_DEST_PREFIX}/etc/init.d/php-fpm", mode: 0o755
+    FileUtils.install 'sapi/fpm/php-fpm.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.conf", mode: 0o755
+    FileUtils.install 'sapi/fpm/www.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.d/www.conf", mode: 0o644
     FileUtils.ln_s "#{CREW_PREFIX}/etc/init.d/php-fpm", "#{CREW_DEST_PREFIX}/bin/php7-fpm"
 
     # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details

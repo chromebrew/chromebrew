@@ -1,58 +1,49 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Elfutils < Package
+class Elfutils < Autotools
   description 'elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.'
   homepage 'https://sourceware.org/elfutils/'
-  @_ver = '0.185'
-  version @_ver
+  version '0.191'
   license 'GPL-2+ or LGPL-3+'
   compatibility 'all'
-  source_url "https://sourceware.org/elfutils/ftp/#{@_ver}/elfutils-#{@_ver}.tar.bz2"
-  source_sha256 'dc8d3e74ab209465e7f568e1b3bb9a5a142f8656e2b57d10049a73da2ae6b5a6'
+  source_url 'https://sourceware.org/git/elfutils.git'
+  git_hashtag "elfutils-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.185_i686/elfutils-0.185-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.185_armv7l/elfutils-0.185-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.185_armv7l/elfutils-0.185-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.185_x86_64/elfutils-0.185-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-       i686: '6bc34ddc832c3b49ee3e0bf887fd64d15537f3641c42c190383ef7f51de7ff49',
-    aarch64: '097278811aa6899156dd5fdf770e9d42b4e20e7214cdd011b1c0d0191b349da1',
-     armv7l: '097278811aa6899156dd5fdf770e9d42b4e20e7214cdd011b1c0d0191b349da1',
-     x86_64: '4a84025108de03a5bcaddf493af476887b37bd2cd8fe7cc28e1ae3aad449ab82'
+    aarch64: '818e00b257bc8aecc944da511ca0ce159d5d9836be118a813078a9ceff58bd1b',
+     armv7l: '818e00b257bc8aecc944da511ca0ce159d5d9836be118a813078a9ceff58bd1b',
+       i686: '1e5061a8f1448225d91546f5428fdf9e5d01966074512e16cce3fd6f3214046a',
+     x86_64: '5090210bdc4f451e69c994b9d6e5a23241f4cce6a38870a27f0cc66c82fe8213'
   })
+
+  depends_on 'bzip2' # R
+  depends_on 'curl' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libarchive' # R
+  depends_on 'libmicrohttpd' # R
+  depends_on 'sqlite' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
+
+  pre_configure_options "CFLAGS+=' -Wno-error ' CXXFLAGS+=' -Wno-error '"
+  configure_options "#{ARCH == 'i686' ? '--disable-libdebuginfod --disable-debuginfod' : ''} --enable-maintainer-mode --program-prefix='eu-'"
 
   def self.patch
-    # See https://www.mail-archive.com/elfutils-devel@sourceware.org/msg03816.html
-    @gccpatch = <<~GCCPATCHEOF
-      diff --git a/src/elflint.c b/src/elflint.c
-      index 85cc7833..35b40500 100644
-      --- a/src/elflint.c
-      +++ b/src/elflint.c
-      @@ -3434,7 +3434,7 @@ buffer_pos (Elf_Data *data, const unsigned char *p)
-         return p - (const unsigned char *) data->d_buf;
-       }
-      #{' '}
-      -inline size_t
-      +static inline size_t
-       buffer_left (Elf_Data *data, const unsigned char *p)
-       {
-         return (const unsigned char *) data->d_buf + data->d_size - p;
-    GCCPATCHEOF
-    IO.write('gcc.patch', @gccpatch)
-    system 'patch -Np1 -i gcc.patch'
-  end
+    return unless ARCH == 'i686'
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} \
-      --program-prefix='eu-' \
-      --disable-libdebuginfod \
-      --disable-debuginfod"
-    system 'make'
+    # https://sourceware.org/git/?p=glibc.git;a=commit;h=0be74c5c7cb239e4884d1ee0fd48c746a0bd1a65
+    FileUtils.install "#{CREW_PREFIX}/include/fts.h", 'src/fts.h', mode: 0o644
+    system "sed -i 's/__REDIRECT (fts_set, (FTS \\*, FTSENT \\*, int), fts64_set) __THROW;/__REDIRECT_NTH (fts_set, (FTS \\*, FTSENT \\*, int), fts64_set);/' src/fts.h"
+    system "sed -i 's,#include <fts.h>,#include \"fts.h\",' src/srcfiles.cxx"
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    # These files cause a fork bomb when they are invoked from /usr/local/etc/profile
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/etc/profile.d/debuginfod.csh"
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/etc/profile.d/debuginfod.sh"
   end
 end

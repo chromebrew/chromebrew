@@ -1,0 +1,9 @@
+/usr/local/include/xcb/xcb_bitops.h
+/usr/local/include/xcb/xcb_image.h
+/usr/local/include/xcb/xcb_pixel.h
+/usr/local/lib64/libxcb-image.a
+/usr/local/lib64/libxcb-image.la
+/usr/local/lib64/libxcb-image.so
+/usr/local/lib64/libxcb-image.so.0
+/usr/local/lib64/libxcb-image.so.0.0.0
+/usr/local/lib64/pkgconfig/xcb-image.pc

@@ -1,14 +1,14 @@
 require 'package'
+Package.load_package("#{__dir__}/perl_stow.rb")
 
 class Stow < Package
-  description 'Manage installation of multiple softwares in the same directory tree'
-  homepage 'https://www.gnu.org/software/stow/'
-  version '2.3.1'
-  license 'GPL-3+'
-  compatibility 'all'
+  description Perl_stow.description
+  homepage Perl_stow.homepage
+  version Perl_stow.version
+  license Perl_stow.license
+  compatibility Perl_stow.compatibility
 
   depends_on 'perl_stow'
 
   is_fake
-
 end

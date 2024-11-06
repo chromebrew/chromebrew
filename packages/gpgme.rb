@@ -1,39 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gpgme < Package
+class Gpgme < Autotools
   description 'GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier for applications.'
   homepage 'https://www.gnupg.org/related_software/gpgme/index.html'
-  @_ver = '1.15.1'
-  version @_ver
+  version '1.23.1'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-#{@_ver}.tar.bz2"
-  source_sha256 'eebc3c1b27f1c8979896ff361ba9bb4778b508b2496c2fc10e3775a40b1de1ad'
+  source_url "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-#{version}.tar.bz2"
+  source_sha256 'a0c316f7ab7d3bfb01a8753c3370dc906e5b61436021f3b54ff1483b513769bd'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.15.1_armv7l/gpgme-1.15.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.15.1_armv7l/gpgme-1.15.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.15.1_i686/gpgme-1.15.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.15.1_x86_64/gpgme-1.15.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'cefc164ba4ee3297c69c23c247c48cc26aea6f8bf060ff428d03d3288bffbffb',
-     armv7l: 'cefc164ba4ee3297c69c23c247c48cc26aea6f8bf060ff428d03d3288bffbffb',
-       i686: '828ebe648f313eb3849d0fc1b09f287159ec658438b0917d2cea9938da173924',
-     x86_64: '63a1accd77f24e417dc9ca519a142303d2083f1fa49af2bb3edb6b3fc08e0677'
+    aarch64: '96d70618ccb2cf94a2e4dca0a14d6b3626f62103fecad7e539f722c9e8502280',
+     armv7l: '96d70618ccb2cf94a2e4dca0a14d6b3626f62103fecad7e539f722c9e8502280',
+       i686: '8937411c7a2355a112103cba225b7c32cf672ae571a3c6641197ecd4434b6fce',
+     x86_64: 'd10b89f8f098af4862523bea4d6b58585c45cf9010c07b26bc540f0cbfbe883f'
   })
 
-  depends_on 'gnupg'
-
-  def self.build
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'gnupg' # L
+  depends_on 'libassuan' # R
+  depends_on 'libgpg_error' # R
 end

@@ -1,51 +1,63 @@
-require 'package'
+require 'buildsystems/autotools'
+require 'convenience_functions'
 
-class Libcaca < Package
+class Libcaca < Autotools
   description 'libcaca is a graphics library that outputs text instead of pixels, so that it can work on older video cards or text terminals.'
   homepage 'https://github.com/cacalabs/libcaca'
-  version '0.99.beta20-e496'
+  version "0.99.beta20-f42aa68-1-#{CREW_PY_VER}"
   license 'GPL-2, ISC, LGPL-2.1 and WTFPL'
-  compatibility 'all'
-  source_url 'https://github.com/cacalabs/libcaca/archive/e4968ba6e93e9fd35429eb16895c785c51072015.zip'
-  source_sha256 'e44aa1a77d4345809d317063ca82e9247867dd9147069dd2fa0fe6db8411e395'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/cacalabs/libcaca/archive/f42aa68fc798db63b7b2a789ae8cf5b90b57b752.zip'
+  source_sha256 'a0d0afd5cc9733510f20dab2fcd59256c960b091307e37c921f158629204bfe0'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcaca/0.99.beta20-e496_armv7l/libcaca-0.99.beta20-e496-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcaca/0.99.beta20-e496_armv7l/libcaca-0.99.beta20-e496-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcaca/0.99.beta20-e496_i686/libcaca-0.99.beta20-e496-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcaca/0.99.beta20-e496_x86_64/libcaca-0.99.beta20-e496-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'ab3310aa860fc7ec1f52300dbf2089052dbabda6ebcd991666e8000cad16658e',
-     armv7l: 'ab3310aa860fc7ec1f52300dbf2089052dbabda6ebcd991666e8000cad16658e',
-       i686: 'ba1650734ebfff4563b6e1a50ef58d8fa60ae5425f79127290e7af81a7b4a7d9',
-     x86_64: 'b108a838bc825089b20da633c9a759e42071eb6137ef1effb0f9297d9cbbf3c5'
+    aarch64: '8b2eb8981ef4951c62fbfd6160903b6d6c639e2fa80f381679045830744992e9',
+     armv7l: '8b2eb8981ef4951c62fbfd6160903b6d6c639e2fa80f381679045830744992e9',
+     x86_64: 'cbda913f155d8c0efee4fed8e173100e604cc0fc0df00a5311cd730071386c5f'
   })
 
-  depends_on 'freeglut'
-  depends_on 'imlib2'
-  depends_on 'jdk8' => :build
-  depends_on 'libglu'
-  depends_on 'libx11'
-  depends_on 'mesa'
+  depends_on 'freeglut' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'imlib2' # R
+  depends_on 'libbsd' # R
+  depends_on 'libglu' # R
+  depends_on 'libglvnd' # R
+  depends_on 'libmd' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxext' # R
+  depends_on 'mesa' => :build
+  depends_on 'ncurses' # R
+  depends_on 'python3'
+  depends_on 'ruby' # R
+  depends_on 'slang' # R
+  depends_on 'zlib' # R
 
-  def self.build
-    system '[ -x configure ] || ./bootstrap'
-    system "env CFLAGS='-flto=auto -fuse-ld=gold' \
-      CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
-      LDFLAGS='-flto=auto'
-      ./configure \
-      #{CREW_OPTIONS} \
+  def self.patch
+    downloader 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/66.patch',
+               'd8a8f7347c5cb7b1f63ef4ef112d7fecd9d39d1703f27fccfab10709fc284d51'
+    system 'patch -Np1 -i 66.patch'
+    downloader 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/70.patch',
+               '173778700c92338a7b6d9f139053574359dd28829c8cdf8418df81632e002b6a'
+    system 'patch -Np1 -i 70.patch'
+    downloader 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/81.patch',
+               '99917c0bc6b0405c8a8a8f4ce8e0df46182ff4db96d6ffb4edbb19ec2ed24b8d'
+    system 'patch -Np1 -i 81.patch'
+  end
+
+  def self.prebuild
+    ConvenienceFunctions.libtoolize('freetype')
+  end
+
+  configure_options '--disable-ruby \
       --enable-gl \
       --enable-ncurses \
       --enable-network \
       --enable-slang \
-      --enable-x11"
-
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+      --enable-x11'
 end

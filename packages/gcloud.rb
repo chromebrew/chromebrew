@@ -3,19 +3,27 @@ require 'package'
 class Gcloud < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/gcloud/'
-  version '357.0.0'
+  version '499.0.0'
   license 'Apache-2.0'
-  compatibility 'i686,x86_64'
-  case ARCH
-  when 'i686'
-    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-357.0.0-linux-x86.tar.gz'
-    source_sha256 '62efaaa3032780f665bb325aed9eacd6a1273f3fc680f94c9c4168dda4c1933f'
-  when 'x86_64'
-    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-357.0.0-linux-x86_64.tar.gz'
-    source_sha256 '7fa9058ecee419564f53ad768699a78baec5b712b15db63f9e2aed42b5dcde29'
-  end
+  compatibility 'all'
+  source_url({
+    aarch64: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-linux-arm.tar.gz",
+     armv7l: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-linux-arm.tar.gz",
+       i686: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-linux-x86.tar.gz",
+     x86_64: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-linux-x86_64.tar.gz"
+  })
+  source_sha256({
+    aarch64: 'aa5d7cfcddb402d43005fc4c67621dc45d178890d18ee681c26232b9589e4db3',
+     armv7l: 'aa5d7cfcddb402d43005fc4c67621dc45d178890d18ee681c26232b9589e4db3',
+       i686: '19e1204e77e7d3ced418b311919a0e58ee9f578ef015bc7fa0d7f945353e8a0e',
+     x86_64: 'a43370a34cbe4d7defbae25fb09872ace7df0793a36424033dce05e056fce77f'
+  })
 
+  depends_on 'python3'
   depends_on 'xdg_base'
+
+  no_shrink
+  no_compile_needed
 
   def self.build
     @gcloudenv = <<~EOF
@@ -29,11 +37,6 @@ class Gcloud < Package
   end
 
   def self.install
-    ENV['CREW_SHRINK_ARCHIVE'] = '0'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/gcloud"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/gcloud"
     FileUtils.cp_r Dir['.'], "#{CREW_DEST_PREFIX}/share/gcloud"
@@ -49,30 +52,28 @@ class Gcloud < Package
     end
     FileUtils.mv "#{HOME}/.bashrc.backup", "#{HOME}/.bashrc"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    IO.write "#{CREW_DEST_PREFIX}/etc/env.d/gcloud", @gcloudenv
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/gcloud", @gcloudenv
   end
 
   def self.postinstall
-    puts
-    puts "To finish the installation, execute the following:".lightblue
-    puts "source ~/.bashrc && gcloud init".lightblue
-    puts
+    puts "\nTo finish the installation, execute the following:".lightblue
+    puts "source ~/.bashrc && gcloud init\n".lightblue
   end
 
-  def self.remove
-    print "Would you like to remove the config directories? [y/N] "
-    response = STDIN.getc
+  def self.postremove
+    print 'Would you like to remove the config directories? [y/N] '
+    response = $stdin.gets.chomp.downcase
     config_dirs = ["#{HOME}/.config/gcloud", "#{CREW_PREFIX}/share/gcloud"]
-    config_dirs.each { |config_dir|
-      if Dir.exists? config_dir
-        case response
-        when "y", "Y"
-          FileUtils.rm_rf config_dir
-          puts "#{config_dir} removed.".lightred
-        else
-          puts "#{config_dir} saved.".lightgreen
-        end
+    config_dirs.each do |config_dir|
+      next unless Dir.exist? config_dir
+
+      case response
+      when 'y', 'yes'
+        FileUtils.rm_rf config_dir
+        puts "#{config_dir} removed.".lightgreen
+      else
+        puts "#{config_dir} saved.".lightgreen
       end
-    }
+    end
   end
 end

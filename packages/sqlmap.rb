@@ -1,46 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Sqlmap < Package
+class Sqlmap < Pip
   description 'sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.'
-  homepage 'http://sqlmap.org/'
-  version '1.4.2'
+  homepage 'https://sqlmap.org/'
+  version "1.8.10-#{CREW_PY_VER}"
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/sqlmapproject/sqlmap/archive/1.4.2.tar.gz'
-  source_sha256 '77faf85164eb17dce769ec830cbd146768644315bc1024613ad13155e09c2d11'
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlmap/1.4.2_armv7l/sqlmap-1.4.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlmap/1.4.2_armv7l/sqlmap-1.4.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlmap/1.4.2_i686/sqlmap-1.4.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlmap/1.4.2_x86_64/sqlmap-1.4.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '02a1b56739af28c5c2dbd920f69c630e7e1ffafc043387b06534c9586886f5f7',
-     armv7l: '02a1b56739af28c5c2dbd920f69c630e7e1ffafc043387b06534c9586886f5f7',
-       i686: '0fbff386670b5ef09f12d3b3e3478d203f4f1140d529b039be36d7123399497e',
-     x86_64: '886d073baae73b24d03dfdc8c7d09dff3de47eda9229794caed5a1915b25c588',
+  binary_sha256({
+    aarch64: '414f21d5f2e26d5887ff35bd347cd1f1c4e31152b06fa94297fd45e8a9184f81',
+     armv7l: '414f21d5f2e26d5887ff35bd347cd1f1c4e31152b06fa94297fd45e8a9184f81',
+       i686: 'c04e336885d07ba5aa980219c6257fbe0e53afccd6750ec2f296df05ed780cff',
+     x86_64: '6b4d945b556086c4e02851aad2b931a7430eda1f534fdbbd70d9d27cfa52dd9e'
   })
 
-  depends_on 'python27' unless File.exist? "#{CREW_PREFIX}/bin/python"
+  depends_on 'python3', '>= 3.12.0'
 
-  def self.build
-    system "echo '#!/bin/bash' > sqlmap"
-    system "echo 'cd #{CREW_PREFIX}/share/sqlmap' >> sqlmap"
-    system "echo 'python sqlmap.py -c sqlmap.conf \"\$@\"' >> sqlmap"
-  end
-
-  def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/sqlmap"
-    system "cp -r . #{CREW_DEST_PREFIX}/share/sqlmap"
-    system "install -Dm755 sqlmap #{CREW_DEST_PREFIX}/bin/sqlmap"
-  end
-
-  def self.postinstall
-    puts
-    puts "To get extended help, run 'sqlmap -hh | most'".lightblue
-    puts
-    puts "To configure, edit #{CREW_PREFIX}/share/sqlmap/sqlmap.conf".lightblue
-    puts
-  end
+  no_source_build
 end

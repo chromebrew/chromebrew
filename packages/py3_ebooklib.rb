@@ -1,35 +1,24 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_ebooklib < Package
+class Py3_ebooklib < Pip
   description 'Ebooklib is a Python E-book library for handling books in EPUB2/EPUB3 format.'
   homepage 'https://docs.sourcefabric.org/projects/ebooklib/'
-  @_ver = '0.17.1'
-  version @_ver
+  version "0.18-#{CREW_PY_VER}"
   license 'AGPL-3'
   compatibility 'all'
-  source_url 'https://github.com/aerkalov/ebooklib.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ebooklib/0.17.1_armv7l/py3_ebooklib-0.17.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ebooklib/0.17.1_armv7l/py3_ebooklib-0.17.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ebooklib/0.17.1_x86_64/py3_ebooklib-0.17.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '9ef251c995198dbc2f0d9e63cbf9a7c03458ed7ea9b0aeea4eeb0e4465b5eb48',
-     armv7l: '9ef251c995198dbc2f0d9e63cbf9a7c03458ed7ea9b0aeea4eeb0e4465b5eb48',
-     x86_64: 'f805c0ac9fef8f5d9cdef29753d4a79d4b9eb83fe23fa0a1758282b29b7c7075'
+    aarch64: 'd7b7f7addb43a911ca92a3c03725eeef7eb837db2846845464dfe2d0518532f3',
+     armv7l: 'd7b7f7addb43a911ca92a3c03725eeef7eb837db2846845464dfe2d0518532f3',
+       i686: '31ad50a93d78426a630f685efa02c1825e7546e7e614f537b04e655f6aae9a76',
+     x86_64: '1c5f81920c26b9471fbb48e6788fb56128a512d61c939dd59f8a936fdba7b681'
   })
 
   depends_on 'py3_lxml'
   depends_on 'py3_six'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

@@ -1,41 +1,42 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gnupg < Package
+class Gnupg < Autotools
   description 'GnuPG is a complete and free implementation of the OpenPGP standard as defined by RFC4880 (also known as PGP).'
   homepage 'https://gnupg.org/'
-  version '2.2.7'
+  version '2.4.4'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.7.tar.bz2'
-  source_sha256 'd95b361ee6ef7eff86af40c8c72bf9313736ac9f7010d6604d78bf83818e976e'
+  source_url 'https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.4.tar.bz2'
+  source_sha256 '67ebe016ca90fa7688ce67a387ebd82c6261e95897db7b23df24ff335be85bc6'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.2.7_armv7l/gnupg-2.2.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.2.7_armv7l/gnupg-2.2.7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.2.7_i686/gnupg-2.2.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.2.7_x86_64/gnupg-2.2.7-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'e356625feaef9e93d4d0946635db862df13c5f555636b38c5504042fa4ff3c23',
-     armv7l: 'e356625feaef9e93d4d0946635db862df13c5f555636b38c5504042fa4ff3c23',
-       i686: '32060d1d69ac5b44ad7f7fe7e6a2744404f972b26b28ba2999e70c12f9c20dc7',
-     x86_64: 'eaa2a33957ce00de10e0655b326ba1d2d9512b749e1d81cbf205c4c6e064a729',
+  binary_sha256({
+    aarch64: '2a5fda73f4dc3c7cc17b0c6374e17408941dedc72add820f27d209343fd8991f',
+     armv7l: '2a5fda73f4dc3c7cc17b0c6374e17408941dedc72add820f27d209343fd8991f',
+       i686: '9e204d523d1fb4fae27fb870df06ab11535df322d2c9c5c951052826c9c6784a',
+     x86_64: 'c2172f64f852c09867f4780fdef72f1ca52fdd2df9059866f8e6b8033a256460'
   })
 
-  depends_on 'bz2'
-  depends_on 'libassuan'
-  depends_on 'libgcrypt'
-  depends_on 'libksba'
-  depends_on 'pinentry'
+  depends_on 'bzip2' # R
+  depends_on 'glibc' # R
+  depends_on 'gnutls' # R
+  depends_on 'libassuan' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libgpg_error' # R
+  depends_on 'libksba' # R
+  depends_on 'libusb' # R
+  depends_on 'libxtrans' => :build
+  depends_on 'npth' # R
+  depends_on 'openldap' # R
+  depends_on 'pinentry' => :build
+  depends_on 'potrace' => :build
+  depends_on 'readline' # R
+  depends_on 'sqlite' # R
+  depends_on 'zlib' # R
 
-  def self.build
-    system './configure',
-      "--prefix=#{CREW_PREFIX}",
-      "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
+  configure_options '--with-zlib \
+    --with-bzip2 \
+    --with-readline'
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

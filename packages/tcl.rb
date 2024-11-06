@@ -3,41 +3,29 @@ require 'package'
 class Tcl < Package
   description 'Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language, suitable for a very wide range of uses, including web and desktop applications, networking, administration, testing and many more.'
   homepage 'http://www.tcl.tk/'
-  @_ver = '8.6.11'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version "#{@_ver}-1"
+  version '8.6.14'
   license 'tcltk'
   compatibility 'all'
-  source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{@_ver}/tcl#{@_ver}-src.tar.gz"
-  source_sha256 '8c0486668586672c5693d7d95817cb05a18c5ecca2f40e2836b9578064088258'
+  source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tcl#{version}-src.tar.gz"
+  source_sha256 '5880225babf7954c58d4fb0f5cf6279104ce1cd6aa9b71e9a6322540e1c4de66'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.11-1_armv7l/tcl-8.6.11-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.11-1_armv7l/tcl-8.6.11-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.11-1_i686/tcl-8.6.11-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.11-1_x86_64/tcl-8.6.11-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '82ae2b101306c3a450a81a44e3b9d5e05b2a5f6bcfaba6bbe9907a26b04914aa',
-     armv7l: '82ae2b101306c3a450a81a44e3b9d5e05b2a5f6bcfaba6bbe9907a26b04914aa',
-       i686: '52dbbca5c17fc69ced4ae740c00f5c992dd0a7495753c9c32c2ffe6a0ce3f052',
-     x86_64: '2a7b7348a8b4c83b3bd5b6e6d584911ebba10db0b1485f974888ec4f5734f27f'
+    aarch64: 'a2f6571a792ae2827c9991d3dac762036659b61b03179deeb02cffa01788d0f2',
+     armv7l: 'a2f6571a792ae2827c9991d3dac762036659b61b03179deeb02cffa01788d0f2',
+       i686: '92b8e77422d9bfbf5c50e80a14f9579275d66b97505e66d19da22e64d1ae6254',
+     x86_64: '7c381e1f0fb53435c0d7ffe504e1c217ffc40e702f28779c1ec668f7548e2225'
   })
 
-  # tk breaks if tcl is built with lto
+  depends_on 'glibc' # R
+  depends_on 'zlib' # R
+
+  no_lto
+
   def self.build
     FileUtils.chdir('unix') do
-      if ARCH == 'x86_64'
-        system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE' \
-      ./configure #{CREW_OPTIONS} --enable-64bit"
-      else
-        system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE' \
-      ./configure #{CREW_OPTIONS} --disable-64bit"
-      end
+      @bit64 = ARCH == 'x86_64' ? 'enable' : 'disable'
+      system "./configure #{CREW_CONFIGURE_OPTIONS} --#{@bit64}-64bit"
       system 'make'
     end
   end
@@ -46,7 +34,7 @@ class Tcl < Package
     FileUtils.chdir('unix') do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-private-headers'
-      FileUtils.ln_s "#{CREW_PREFIX}/bin/tclsh#{@_ver_prelastdot}", "#{CREW_DEST_PREFIX}/bin/tclsh"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/tclsh#{version.rpartition('.')[0]}", "#{CREW_DEST_PREFIX}/bin/tclsh"
     end
   end
 end

@@ -3,41 +3,50 @@ require 'package'
 class Antlr4 < Package
   description 'ANTLR (ANother Tool for Language Recognition) is a powerful parser generator for reading, processing, executing, or translating structured text or binary files.'
   homepage 'https://www.antlr.org/'
-  version '4.7.1-1'
+  @_ver = '4.12.0'
+  version "#{@_ver}-1"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://raw.githubusercontent.com/antlr/antlr4/4.7.1/README.md'
-  source_sha256 '70a58ea4c4f5ed23306313782bc13f36c3529d9a990e95ab273d5deed9286d4f'
+  source_url 'https://github.com/antlr/antlr4/archive/4.12.0.tar.gz'
+  source_sha256 '8b6050a2111a6bb6405cc5e9e7bca80c136548ac930e4b2c27566d1eb32f8aed'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antlr4/4.7.1-1_armv7l/antlr4-4.7.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antlr4/4.7.1-1_armv7l/antlr4-4.7.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antlr4/4.7.1-1_i686/antlr4-4.7.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antlr4/4.7.1-1_x86_64/antlr4-4.7.1-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '13ba681685e80cfc70ca3346d42038c7798eb71a867ebbeaefbe92aa4bcd63ac',
-     armv7l: '13ba681685e80cfc70ca3346d42038c7798eb71a867ebbeaefbe92aa4bcd63ac',
-       i686: '621f4cc8a6c8cf696c01c3694d1507cd51a313ee9dde90646b60de1152b143cc',
-     x86_64: 'dd474ad8ab5eb164714dfa647a6e6faba701228f2bc8d89d6af77437d5829d2b'
+    aarch64: '80863f7d228af865b8e203940b20315281e8b4051368280995f9e58e29cfabbf',
+     armv7l: '80863f7d228af865b8e203940b20315281e8b4051368280995f9e58e29cfabbf',
+       i686: 'b06cc13d89c857d6c289b9a7e5db8746b25016d8f3ab869f1665724bbfa9a3d0',
+     x86_64: '4bf4a263b746b86ff380a88e912747ebd96ee97ba38e63b2cdf2d10dff951b47'
   })
 
-  depends_on 'jdk8'
+  depends_on 'openjdk11'
+  print_source_bashrc
 
-  def self.install
-    system 'curl -#LO https://www.antlr.org/download/antlr-4.7.1-complete.jar'
-    unless Digest::SHA256.hexdigest(File.read('antlr-4.7.1-complete.jar')) == 'f41dce7441d523baf9769cb7756a00f27a4b67e55aacab44525541f62d7f6688'
-      abort 'Checksum mismatch. :/ Try again.'.lightred
-    end
-    system "install -Dm644 antlr-4.7.1-complete.jar #{CREW_DEST_LIB_PREFIX}/antlr-4.7.1-complete.jar"
-
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+  def self.build
     @antlrenv = <<~ANTLR_EOF
       # ANTLR (ANother Tool for Language Recognition) configuration
-      export CLASSPATH=\".:#{CREW_LIB_PREFIX}/antlr-4.7.1-complete.jar:\$CLASSPATH\"
-      alias antlr4=\"java -jar #{CREW_LIB_PREFIX}/antlr-4.7.1-complete.jar\"
-      alias grun=\"java org.antlr.v4.gui.TestRig\"
+      CLASSPATH=".:#{CREW_PREFIX}/share/antlr/antlr-#{@_ver}-complete.jar:$CLASSPATH"
+      alias antlr4="java -jar #{CREW_PREFIX}/share/antlr/antlr-#{@_ver}-complete.jar"
+      alias grun="java org.antlr.v4.gui.TestRig"
     ANTLR_EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/antlr4", @antlrenv)
+    Dir.chdir 'runtime/Cpp' do
+      system "cmake -B builddir #{CREW_CMAKE_OPTIONS} -G Ninja -DBUILD_GMOCK=OFF -DINSTALL_GTEST=OFF"
+      system "#{CREW_NINJA} -C builddir"
+    end
+  end
+
+  def self.install
+    downloader "https://www.antlr.org/download/antlr-#{@_ver}-complete.jar",
+               '88f18a2bfac0dde1009eda5c7dce358a52877faef7868f56223a5bcc15329e43'
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/antlr"
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/10-antlr4", @antlrenv)
+    FileUtils.install "antlr-#{@_ver}-complete.jar", "#{CREW_DEST_PREFIX}/share/antlr", mode: 0o644
+    Dir.chdir 'runtime/Cpp' do
+      system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+    end
+  end
+
+  def self.postinstall
+    ExitMessage.add "\nType 'antlr4' to get started.\n".lightblue
   end
 end

@@ -1,35 +1,24 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pdfminer_six < Package
+class Py3_pdfminer_six < Pip
   description 'PDFminer.six is a community maintained fork of PDFminer.'
   homepage 'https://pdfminersix.readthedocs.io/'
-  @_ver = '20201018'
-  version @_ver
+  version "20240706-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/pdfminer/pdfminer.six.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pdfminer_six/20201018_armv7l/py3_pdfminer_six-20201018-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pdfminer_six/20201018_armv7l/py3_pdfminer_six-20201018-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pdfminer_six/20201018_x86_64/py3_pdfminer_six-20201018-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '0190554a998298faa773b29a8a29746627dcfeea528a58c7149bed1f9d4f8093',
-     armv7l: '0190554a998298faa773b29a8a29746627dcfeea528a58c7149bed1f9d4f8093',
-     x86_64: '00e565527c66c64c8f61ccfcbd8f283c7e77002115fdd24cd27f7e2a8c99e901'
+    aarch64: 'd1c10870a6df183cd20330bda2881d79a3c558730c75890c135c1e05ff4b9734',
+     armv7l: 'd1c10870a6df183cd20330bda2881d79a3c558730c75890c135c1e05ff4b9734',
+       i686: '88433b2ad9741fcf79028644f5d29cbbcdfddef728618e7136270e19bb27b9cf',
+     x86_64: '453edf695ef46a720fd723ff2d45b8394a858d7ca0df07961bd20d293f3137ad'
   })
 
   depends_on 'py3_pycryptodome'
   depends_on 'py3_sortedcontainers'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

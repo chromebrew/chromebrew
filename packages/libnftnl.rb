@@ -1,35 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libnftnl < Package
+class Libnftnl < Autotools
   description 'libnftnl is a userspace library providing a low-level netlink programming interface (API) to the in-kernel nf_tables subsystem.'
   homepage 'https://netfilter.org/projects/libnftnl/'
-  compatibility 'all'
   license 'GPL-2'
-  version '1.1.7-1'
-  source_url 'https://netfilter.org/projects/libnftnl/files/libnftnl-1.1.7.tar.bz2'
-  source_sha256 '20dbc13f11004aea2c9e479cfb90359cb11fe3446c3140811c18e4ec1648ed8f'
+  version '1.2.8'
+  compatibility 'all'
+  source_url "https://netfilter.org/projects/libnftnl/files/libnftnl-#{version}.tar.xz"
+  source_sha256 '37fea5d6b5c9b08de7920d298de3cdc942e7ae64b1a3e8b880b2d390ae67ad95'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.1.7-1_armv7l/libnftnl-1.1.7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.1.7-1_armv7l/libnftnl-1.1.7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.1.7-1_i686/libnftnl-1.1.7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.1.7-1_x86_64/libnftnl-1.1.7-1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '6cc802f2d8a84367d34fc91c32aa8f06715a0cac91d4c6ea774fe2905be1255a',
-     armv7l: '6cc802f2d8a84367d34fc91c32aa8f06715a0cac91d4c6ea774fe2905be1255a',
-       i686: '510a3ca438c83f53457707bc89e6ddab8332fb7e5343721def87cbc9a86c34da',
-     x86_64: '7e72516f66aab3d3ed6d554e72c0b198ec82ee8e061a7c3941d607890de100f2',
+  binary_sha256({
+    aarch64: '7c093a2a0cbee0292fb2e0d41bc54181b79e8105bbebb076782a9c160c6d6006',
+     armv7l: '7c093a2a0cbee0292fb2e0d41bc54181b79e8105bbebb076782a9c160c6d6006',
+       i686: 'c003b4116ed6c4a5e2f9abc8400f96a4312e16446d957a0a3f2865541b2cb982',
+     x86_64: '2a276eb55a9671e9314dd161e5605e8719222ff37b4beda1668614816309686f'
   })
 
-  depends_on 'libmnl'
+  depends_on 'glibc' # R
+  depends_on 'libmnl' # R
 
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

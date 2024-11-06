@@ -1,0 +1,17 @@
+/usr/local/bin/jellyfinmediaplayer
+/usr/local/etc/env.d/10-jellyfinmediaplayer
+/usr/local/share/applications/com.github.iwalton3.jellyfin-media-player.desktop
+/usr/local/share/icons/hicolor/scalable/apps/com.github.iwalton3.jellyfin-media-player.svg
+/usr/local/share/jellyfinmediaplayer/web-client/extension/find-webclient.css
+/usr/local/share/jellyfinmediaplayer/web-client/extension/find-webclient.html
+/usr/local/share/jellyfinmediaplayer/web-client/extension/find-webclient.js
+/usr/local/share/jellyfinmediaplayer/web-client/extension/find-webclient.lang.js
+/usr/local/share/jellyfinmediaplayer/web-client/extension/jellyscrubPlugin.js
+/usr/local/share/jellyfinmediaplayer/web-client/extension/jmpInputPlugin.js
+/usr/local/share/jellyfinmediaplayer/web-client/extension/jmpUpdatePlugin.js
+/usr/local/share/jellyfinmediaplayer/web-client/extension/logo.svg
+/usr/local/share/jellyfinmediaplayer/web-client/extension/mpvAudioPlayer.js
+/usr/local/share/jellyfinmediaplayer/web-client/extension/mpvVideoPlayer.js
+/usr/local/share/jellyfinmediaplayer/web-client/extension/nativeshell.js
+/usr/local/share/jellyfinmediaplayer/web-client/extension/skipIntroPlugin.js
+/usr/local/share/metainfo/com.github.iwalton3.jellyfin-media-player.appdata.xml

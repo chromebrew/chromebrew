@@ -2,35 +2,32 @@ require 'package'
 
 class Libfs < Package
   description 'X.org library interface to the X Font Server.'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   license 'custom'
-  version '1.0.7-0'
+  version '1.0.9'
   compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libFS-1.0.7.tar.gz'
-  source_sha256 '91bf1c5ce4115b7dbf4e314fdbee54052708e8f7b6a2ec6e82c309bcbe40ef3d'
+  source_url 'https://www.x.org/archive/individual/lib/libFS-1.0.9.tar.xz'
+  source_sha256 '597379438b3242ccc7d7b0fc432dc6c844eca0d4a82a7b82518bfeb203fc208a'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfs/1.0.7-0_armv7l/libfs-1.0.7-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfs/1.0.7-0_armv7l/libfs-1.0.7-0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfs/1.0.7-0_i686/libfs-1.0.7-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfs/1.0.7-0_x86_64/libfs-1.0.7-0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '70879f9509e6c33cc7377706e251e53397c772c6ab1d59ffec7370bd6f247eb2',
-     armv7l: '70879f9509e6c33cc7377706e251e53397c772c6ab1d59ffec7370bd6f247eb2',
-       i686: 'b287f1ae9e043b83b14aa54e23f4abe3b9f10760316e41cedf994be2e1e72a52',
-     x86_64: '98f7cc48a3a2406ea1d110b051b3f18f5682b2096cfdb7f4f4f9c4b2255f2f42',
+  binary_sha256({
+    aarch64: '7f4159d023ced6bd8b42c5e398ce1a7876de0901077945e8dcdc0b8da1a15789',
+     armv7l: '7f4159d023ced6bd8b42c5e398ce1a7876de0901077945e8dcdc0b8da1a15789',
+       i686: 'af677f44f3b43f0a4e34ff2c5a45fd28738e9147d1208e8820d219530a33dab1',
+     x86_64: '806e70356efb784e7e8be0c8ff0de277619c611a8ea2c76a11a74d7a53439d1c'
   })
 
   depends_on 'xorg_proto'
   depends_on 'libxtrans'
+  depends_on 'glibc' # R
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
 end

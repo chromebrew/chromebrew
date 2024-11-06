@@ -1,33 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_decorator < Package
+class Py3_decorator < Pip
   description 'define signature-preserving function decorators and decorator factories'
   homepage 'https://github.com/micheles/decorator/'
-  @_ver = '4.4.2'
-  version @_ver
+  version "5.1.1-#{CREW_PY_VER}"
   license 'BSD-2'
   compatibility 'all'
-  source_url 'https://github.com/micheles/decorator.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_decorator/4.4.2_armv7l/py3_decorator-4.4.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_decorator/4.4.2_armv7l/py3_decorator-4.4.2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_decorator/4.4.2_x86_64/py3_decorator-4.4.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '3b5cf4a06faa87a5f7cd6ac40f035d78f416c71529cf264f1ebd042170024689',
-     armv7l: '3b5cf4a06faa87a5f7cd6ac40f035d78f416c71529cf264f1ebd042170024689',
-     x86_64: 'c5cf9f13a699189e71e43f362b0e17447f4ee1cd01cebb8aaf6d2074efaab2d8'
+    aarch64: '7b15288d0c84167e24f565def729b519d79433a3e53982df78fb52d1d9c7b683',
+     armv7l: '7b15288d0c84167e24f565def729b519d79433a3e53982df78fb52d1d9c7b683',
+       i686: '3c683ae6148a8031ce22b645605e4d6f7f23f16e27c652d358fd648ee84508d8',
+     x86_64: '38f05b88546b1c02453449be7b89e22d415fa8c0dbc8f721973881d5ad4d83fb'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

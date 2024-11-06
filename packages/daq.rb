@@ -1,37 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Daq < Package
+class Daq < Autotools
   description 'Data Acquisition library, for packet I/O.'
   homepage 'https://www.snort.org'
-  version '2.0.6'
+  version '3.0.15'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://www.snort.org/downloads/snort/daq-2.0.6.tar.gz'
-  source_sha256 'd41da5f7793e66044e6927dd868c0525e7ee4ec1a3515bf74ef9a30cd9273af0'
+  source_url 'https://github.com/snort3/libdaq.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/daq/2.0.6_armv7l/daq-2.0.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/daq/2.0.6_armv7l/daq-2.0.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/daq/2.0.6_i686/daq-2.0.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/daq/2.0.6_x86_64/daq-2.0.6-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'e886d91158b996eac4c5510945fed80906b328aea842bd588db5acc080a3ff4c',
-     armv7l: 'e886d91158b996eac4c5510945fed80906b328aea842bd588db5acc080a3ff4c',
-       i686: 'c5e045e96062109cd5693b95be378ebcef385d4fb6d6c7f3d1b6857b670af297',
-     x86_64: 'db3de1a94b02f47c15ae68b905f53fc7c6e6aef0845c28b03d4dd35f51d8f00b',
+  binary_sha256({
+    aarch64: '3c809aeb3c5663f7a3b84e573679dd5c68acb6b4f188ad7961721bf45470019f',
+     armv7l: '3c809aeb3c5663f7a3b84e573679dd5c68acb6b4f188ad7961721bf45470019f',
+       i686: 'cdf573c9b712ea6e17b6ac49bdd8553343aecedeb44987439f2e2428be5d4aec',
+     x86_64: '1f5b8b93b32144d8c603ef13752a7ddbee93c16b5df5a0bcbacd03d5463b91fd'
   })
 
+  # depends_on 'cmocka' => :build
   depends_on 'libpcap'
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
+  # https://github.com/snort3/libdaq/issues/30
+  # run_tests
 end

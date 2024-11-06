@@ -3,36 +3,32 @@ require 'package'
 class Libavc1394 < Package
   description 'libavc1394 is a programming interface for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set.'
   homepage 'https://sourceforge.net/projects/libavc1394/'
-  version '0.5.4'
+  version '0.5.4-1'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/libavc1394/libavc1394/libavc1394-0.5.4.tar.gz'
   source_sha256 '7cb1ff09506ae911ca9860bef4af08c2403f3e131f6c913a2cbd6ddca4215b53'
+  binary_compression 'tpxz'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavc1394/0.5.4_armv7l/libavc1394-0.5.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavc1394/0.5.4_armv7l/libavc1394-0.5.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavc1394/0.5.4_i686/libavc1394-0.5.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavc1394/0.5.4_x86_64/libavc1394-0.5.4-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '57ba75e9dd0cf910ec946b83626e3266401fa02a8673301a65b46be17fc60426',
-     armv7l: '57ba75e9dd0cf910ec946b83626e3266401fa02a8673301a65b46be17fc60426',
-       i686: '4ad13321cd0cbb9e15dfe8bf6834e1e29c6436acda8fcff55c2112f3b278e55b',
-     x86_64: '633edd7c131376ec1e76b8d4540fada425525f9f97d34107abe1a4cca7d45117',
+  binary_sha256({
+    aarch64: '23401f9493493c0368a6fcc3039df80bfb840661b3f6846a45acc991856b149a',
+     armv7l: '23401f9493493c0368a6fcc3039df80bfb840661b3f6846a45acc991856b149a',
+       i686: '0097f563822dfbeb71df4d74d06a53df9a68e15bea70bfd677a22c3a71e0fb82',
+     x86_64: '844ced6d6835b915bc7882ce5503e893c52426c9a789bc2aeb274bbf82dbc219'
   })
 
   depends_on 'libraw1394'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.check
+    system 'make', 'check'
   end
 end

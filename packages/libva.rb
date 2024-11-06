@@ -1,46 +1,28 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libva < Package
+class Libva < Meson
   description 'Libva is an implementation for VA-API (Video Acceleration API)'
   homepage 'https://01.org/linuxmedia'
-  @_ver = '2.12.0'
-  version @_ver
+  version '2.22.0'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/intel/libva.git'
-  git_hashtag @_ver
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.12.0_armv7l/libva-2.12.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.12.0_armv7l/libva-2.12.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.12.0_i686/libva-2.12.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.12.0_x86_64/libva-2.12.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'e64a354e9607f5b220a22d33ebe24cf8b933a0cd97bad7efa0376fdd8ef27c52',
-     armv7l: 'e64a354e9607f5b220a22d33ebe24cf8b933a0cd97bad7efa0376fdd8ef27c52',
-       i686: '7949cad8c32e05368d58243cfdc956e40350d570333a517f2c8c891f5ba0895d',
-     x86_64: '7cdc4741dd68458cdff0fff55ef4600af6fcf3b0fc385acc5649eda4bfcea0be'
+    aarch64: 'df90f06f31baa1d5788f74db2e7375d1b55a65139682b462d48ea7d4c2288414',
+     armv7l: 'df90f06f31baa1d5788f74db2e7375d1b55a65139682b462d48ea7d4c2288414',
+     x86_64: 'd69d1976c650f61712667bdbafecf9a0ca7cf8af250c8d1e0496a31e35031791'
   })
 
-  depends_on 'libdrm'
-  depends_on 'libx11'
-  depends_on 'libxext'
-  depends_on 'libxfixes'
-  depends_on 'mesa'
-  depends_on 'wayland'
-
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-    --default-library=both \
-    -Db_lto=true \
-    -Db_pie=true \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  depends_on 'glibc' # R
+  depends_on 'libdrm' # R
+  depends_on 'libglvnd' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'mesa' # L
+  depends_on 'wayland' # R
 end

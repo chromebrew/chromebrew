@@ -3,23 +3,17 @@ require 'package'
 class Mailutils < Package
   description 'GNU Mailutils is the swiss army knife of electronic mail handling.'
   homepage 'https://mailutils.org'
-  version '3.12'
+  version '3.13'
   license 'GPL-2 and LGPL-2.1'
-  compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/mailutils/mailutils-3.12.tar.xz'
-  source_sha256 '6d43fa217c4ac63f057de87890c562d170bb92bc402368b5fbc579e4c2b3a158'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://ftpmirror.gnu.org/mailutils/mailutils-3.13.tar.xz'
+  source_sha256 'd920971dcb49878a009911774fd6404f13d27bd101e2d59b664a28659a4094c7'
+  binary_compression 'tpxz'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mailutils/3.12_armv7l/mailutils-3.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mailutils/3.12_armv7l/mailutils-3.12-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mailutils/3.12_i686/mailutils-3.12-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mailutils/3.12_x86_64/mailutils-3.12-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '826c7106823744618d9d070727ce7349845918576442dc00e52643e394792a5a',
-     armv7l: '826c7106823744618d9d070727ce7349845918576442dc00e52643e394792a5a',
-       i686: '19680504fee9c4864c544f674c83ad052af68624cdce0b50fe56e8184da4cc85',
-     x86_64: '80da9e98948aa0a87d062659783a6518669892bc27e65d755ef58aefc1977e96',
+  binary_sha256({
+    aarch64: 'ad6e2116b39db4db712d59caddf7a70bfe0cb1e206d595af4011eaac29d4136a',
+     armv7l: 'ad6e2116b39db4db712d59caddf7a70bfe0cb1e206d595af4011eaac29d4136a',
+     x86_64: 'b135bb16017bf602bd00b8f5ccd28b2582627c69f9abab8318e2b79e025981b3'
   })
 
   depends_on 'libdb'
@@ -27,22 +21,24 @@ class Mailutils < Package
   depends_on 'tcpwrappers'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
             --enable-ipv6 \
+            --with-gnutls \
             --with-berkeley-db \
             --without-guile \
             --with-gdbm \
+            --with-fribidi \
             --with-unistring \
             --with-tcp-wrappers \
             --with-readline"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check
-    system "make check || /bin/true" # Check 471 will fail
+    system 'make check || /bin/true' # Check 471 will fail
   end
 end

@@ -1,37 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Mtdev < Package
+class Mtdev < Autotools
   description 'The mtdev is a stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol.'
-  homepage 'http://bitmath.org/code/mtdev'
-  version '1.1.5-0'
+  homepage 'https://bitmath.org/code/mtdev/'
+  version '1.1.7'
   license 'MIT'
   compatibility 'all'
-  source_url 'http://bitmath.org/code/mtdev/mtdev-1.1.5.tar.bz2'
-  source_sha256 '6677d5708a7948840de734d8b4675d5980d4561171c5a8e89e54adf7a13eba7f'
+  source_url 'https://bitmath.org/git/mtdev.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtdev/1.1.5-0_armv7l/mtdev-1.1.5-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtdev/1.1.5-0_armv7l/mtdev-1.1.5-0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtdev/1.1.5-0_i686/mtdev-1.1.5-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtdev/1.1.5-0_x86_64/mtdev-1.1.5-0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '6c0bbb0650a3777648f106279d11e702c75c01c2b036f113bd8cf0cab6bf463a',
-     armv7l: '6c0bbb0650a3777648f106279d11e702c75c01c2b036f113bd8cf0cab6bf463a',
-       i686: '0a18d63b9ecbd32dabc98e0b63f8514696ffd133227a42173193e828e1e7752f',
-     x86_64: 'ef6142c6cbaa71698acbb2cfcc3c40d5e9674931adfbb7352ce71b9b45c1027f',
+  binary_sha256({
+    aarch64: 'e3aa454e83b4dd1fe256fe4fbdd4304d94c4cac24beafa479c1069ee589c6a5e',
+     armv7l: 'e3aa454e83b4dd1fe256fe4fbdd4304d94c4cac24beafa479c1069ee589c6a5e',
+       i686: 'f5fc42cb0f32c91392a5850cd43dfddb3bbdff969173cbff6f2eca0026467c9b',
+     x86_64: '49dbf2523821a3c5a2fc582adb4b2b3e36726b9f73b5cf7bf9920e846f5ddf31'
   })
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--enable-shared',
-           '--disable-static'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  # Otherwise the clone fails like so:
+  # fatal: dumb http transport does not support shallow capabilities
+  # It seems like git should just retry with a non-shallow clone in this scenario, but that doesn't seem to be the case.
+  git_clone_deep
 end

@@ -1,38 +1,21 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libuv < Package
+class Libuv < CMake
   description 'libuv is a multi-platform support library with a focus on asynchronous I/O.'
-  homepage 'http://libuv.org/'
-  @_ver = '1.39.0'
-  version @_ver
+  homepage 'https://libuv.org/'
+  version '1.48.0'
   license 'BSD, BSD-2, ISC and MIT'
   compatibility 'all'
-  source_url "https://dist.libuv.org/dist/v#{@_ver}/libuv-v#{@_ver}.tar.gz"
-  source_sha256 '5c52de5bdcfb322dbe10f98feb56e45162e668ad08bc28ab4b914d4f79911697'
+  source_url "https://dist.libuv.org/dist/v#{version}/libuv-v#{version}.tar.gz"
+  source_sha256 '7f1db8ac368d89d1baf163bac1ea5fe5120697a73910c8ae6b2fffb3551d59fb'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.39.0_armv7l/libuv-1.39.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.39.0_armv7l/libuv-1.39.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.39.0_i686/libuv-1.39.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.39.0_x86_64/libuv-1.39.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '4b844ba4a96f39e12b4a691c96d76726de85ced70ca4eda8dcc5f6f02fc56b13',
-     armv7l: '4b844ba4a96f39e12b4a691c96d76726de85ced70ca4eda8dcc5f6f02fc56b13',
-       i686: '49ad521137cca7a9384d84f3bf88b232edabf9ad9e26f40d1c543ea6975ed5ce',
-     x86_64: '49f142a0b9e09c4b48a6d9dbac1b20fb2e579536af9391d04c06fb0ef9693844'
+    aarch64: '0e0424488bead5c05c6b01e73801417da431ef84aff201b137b2b0f46945b514',
+     armv7l: '0e0424488bead5c05c6b01e73801417da431ef84aff201b137b2b0f46945b514',
+       i686: 'e330145409fa893b9d2c3fb47d009a7396dd3495eceec8e3516be64c93330680',
+     x86_64: 'beede27d456e1825e3cdbba560b9c49b8cd1778f8d25ef17205a467ed9b0b0ea'
   })
 
-  def self.build
-    system './autogen.sh'
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
 end

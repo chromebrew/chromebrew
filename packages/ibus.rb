@@ -1,53 +1,60 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Ibus < Package
+class Ibus < Autotools
   description 'Next Generation Input Bus for Linux'
   homepage 'https://github.com/ibus/ibus/wiki'
-  @_ver = '1.5.24'
-  version "#{@_ver}-1"
+  version '1.5.30'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://github.com/ibus/ibus/releases/download/#{@_ver}/ibus-#{@_ver}.tar.gz"
-  source_sha256 'abf33a965063629d3bbdab8a5948736ce3a9523cc3d6331e5ea0ec5e8ea7421f'
+  source_url 'https://github.com/ibus/ibus.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.24-1_armv7l/ibus-1.5.24-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.24-1_armv7l/ibus-1.5.24-1-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.24-1_x86_64/ibus-1.5.24-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'f12163d784b45e68bbc6c5f844fe3082db1f3c2b3dc621464cc4ac4d81ba2024',
-     armv7l: 'f12163d784b45e68bbc6c5f844fe3082db1f3c2b3dc621464cc4ac4d81ba2024',
-     x86_64: 'baeca79b3d8750e062e46dcee2114f3425a8abed1a104db540df542ea098814f'
+    aarch64: 'f6ff0b2ddfdb2745f81392bebb0e8c17ed4cd2125fe9de5a6a7cdbcc3896fa2f',
+     armv7l: 'f6ff0b2ddfdb2745f81392bebb0e8c17ed4cd2125fe9de5a6a7cdbcc3896fa2f',
+     x86_64: '61e86129203821d91959f3b01f4b0020efea0e4f8d542755bf0317b6469f66d9'
   })
 
-  depends_on 'atk'
-  depends_on 'cairo'
-  depends_on 'dconf'
-  depends_on 'fontconfig'
-  depends_on 'freetype'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'graphene'
-  depends_on 'harfbuzz'
-  depends_on 'hicolor_icon_theme'
-  depends_on 'libnotify'
-  depends_on 'libx11'
-  depends_on 'libxi'
-  depends_on 'pango'
-  depends_on 'pygobject'
-  depends_on 'unicode_cldr'
-  depends_on 'unicode_emoji'
-  depends_on 'vulkan_icd_loader'
-  depends_on 'wayland'
-  depends_on 'gobject_introspection' => :build
-  depends_on 'vala' => :build
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'dbus' # R
+  depends_on 'dconf' # R
+  depends_on 'fontconfig' => :build
+  depends_on 'freetype' => :build
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gnome_common' => :build
+  depends_on 'gobject_introspection' => :build
+  depends_on 'graphene' # R
+  depends_on 'gtk3' # R
+  depends_on 'gtk4' # R
   depends_on 'gtk_doc' => :build
-  depends_on 'gtk2' => :build
-  depends_on 'gtk3' => :build
-  depends_on 'gtk4' => :build
-  depends_on 'qtbase' => :build
+  depends_on 'harfbuzz' # R
+  depends_on 'hicolor_icon_theme' => :build
+  depends_on 'iso_codes' => :build
+  depends_on 'libbsd' # R
+  depends_on 'libdbusmenu_gtk3' # R
+  depends_on 'libnotify' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxi' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'pango' # R
+  depends_on 'py3_pygobject' => :build
+  depends_on 'qt5_base' => :build
+  depends_on 'unicode_cldr' => :build
+  depends_on 'unicode_emoji' => :build
+  depends_on 'vala' => :build
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' # R
+  depends_on 'wayland' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system "sed -i 's|/usr/bin/python|#{CREW_PREFIX}/bin/python3|' engine/gensimple.py"
@@ -55,32 +62,25 @@ class Ibus < Package
     system "sed -i 's|\$(libibus) \$(libibus_emoji_dialog)|\$(libibus_emoji_dialog) \$(libibus)|' ui/gtk3/Makefile.am"
   end
 
-  def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system 'filefix'
-    system "env CFLAGS='-flto=auto' \
-    CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-    ./configure \
-    #{CREW_OPTIONS} \
-    --libexecdir=#{CREW_LIB_PREFIX}/ibus \
+  def self.prebuild
+    unless File.exist?('engine/denylist.txt')
+      downloader "https://github.com/ibus/ibus/raw/#{version}/engine/denylist.txt",
+                 '8589b87200d2e7dbf8a413129270d678e83b727bb5b7f8607e62cb9e40d2fdf1'
+    end
+  end
+
+  configure_options "--libexecdir=#{CREW_LIB_PREFIX}/ibus \
     --sysconfdir=#{CREW_PREFIX}/etc \
-    --enable-dconf \
-    --enable-wayland \
-    --enable-gtk4 \
+    --disable-gtk2 \
     --disable-memconf \
-    --enable-ui \
     --disable-python2 \
+    --disable-systemd-services \
+    --enable-dconf \
+    --enable-gtk4 \
+    --enable-ui \
+    --enable-wayland \
     --with-unicode-emoji-dir=#{CREW_PREFIX}/share/unicode/emoji \
     --with-emoji-annotation-dir=#{CREW_PREFIX}/share/unicode/cldr/common/annotations \
     --with-python=python3 \
     --with-ucd-dir=#{CREW_PREFIX}/share/unicode"
-    unless File.exist?('engine/denylist.txt')
-      system "curl -Lf https://github.com/ibus/ibus/raw/#{@_ver}/engine/denylist.txt -o engine/denylist.txt"
-    end
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
 end

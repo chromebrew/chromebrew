@@ -3,38 +3,28 @@ require 'package'
 class Nano < Package
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  @_ver = '5.8'
-  version @_ver
+  version '8.2'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://nano-editor.org/dist/v5/nano-#{@_ver}.tar.xz"
-  source_sha256 'e43b63db2f78336e2aa123e8d015dbabc1720a15361714bfd4b1bb4e5e87768c'
+  source_url "https://nano-editor.org/dist/v8/nano-#{version}.tar.xz"
+  source_sha256 'd5ad07dd862facae03051c54c6535e54c7ed7407318783fcad1ad2d7076fffeb'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.8_armv7l/nano-5.8-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.8_armv7l/nano-5.8-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.8_i686/nano-5.8-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.8_x86_64/nano-5.8-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '23b77943e240929c4acf71ea4c0f40ef107524b6368bbcc35e8cc5f6bd751ee8',
-     armv7l: '23b77943e240929c4acf71ea4c0f40ef107524b6368bbcc35e8cc5f6bd751ee8',
-       i686: '0e21d468927c646e377e9aa848032b401eb7a6c160a564d45d4e809a7f20f8c7',
-     x86_64: '00651b1b81c2479b9b924325e5308530e49dacaa925f67903893347e8f295628'
+    aarch64: '43d613cbea676bfdf6f93f228e0b918c2d95c57d01a6d980480ec52110bd7248',
+     armv7l: '43d613cbea676bfdf6f93f228e0b918c2d95c57d01a6d980480ec52110bd7248',
+       i686: '85e0c367128b8cd99ecadcb7418138e70fe900346ba728e37fc3a55672cbd972',
+     x86_64: 'c0bdd0b69656ec2e8cc7dc613d3a05e6e9d026124b22c143c3240f4328056350'
   })
 
-  depends_on 'xdg_base'
-
-  def self.patch
-    system "sed -i '/SIGWINCH/d' src/nano.c"
-  end
+  depends_on 'filecmd' # R
+  depends_on 'glibc' # R
+  depends_on 'ncurses' # R
+  depends_on 'zlib' # R
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS} \
-      --enable-threads=posix \
-      --enable-nls \
-      --enable-rpath \
+    system "mold -run \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-browser \
       --enable-color \
       --enable-comment \
@@ -47,12 +37,16 @@ class Nano < Package
       --enable-mouse \
       --enable-multibuffer \
       --enable-nanorc \
+      --enable-nls \
       --enable-operatingdir \
+      --enable-rpath \
       --enable-speller \
       --enable-tabcomp \
+      --enable-threads=posix \
+      --enable-utf8 \
       --enable-wordcomp \
       --enable-wrapping \
-      --enable-utf8"
+      --enable-year2038"
     system 'make'
     open('nanorc', 'w') do |f|
       f << "set constantshow\n"
@@ -70,14 +64,10 @@ class Nano < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
-    system "install -Dm644 nanorc #{CREW_DEST_HOME}/.nanorc"
-    FileUtils.mkdir_p "#{CREW_DEST_HOME}/.local/share"
-    FileUtils.ln_sf("#{CREW_PREFIX}/share/nano", "#{CREW_DEST_HOME}/.local/share/")
+    FileUtils.install 'nanorc', "#{CREW_DEST_HOME}/.nanorc", mode: 0o644
   end
 
   def self.postinstall
-    puts
-    puts 'Personal configuration file is located in $HOME/.nanorc'.lightblue
-    puts
+    ExitMessage.add "\nPersonal configuration file is located in #{HOME}/.nanorc.\n".lightblue
   end
 end

@@ -1,54 +1,71 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Tesseract < Package
+class Tesseract < CMake
   description 'A neural net (LSTM) based OCR engine which is focused on line recognition & an older OCR engine which recognizes character patterns.'
   homepage 'https://github.com/tesseract-ocr/tesseract'
-  @_ver = '4.1.1'
-  version "#{@_ver}-2"
+  version "5.4.1-#{CREW_ICU_VER}"
   license 'Apache-2.0'
-  compatibility 'all'
-  source_url "https://github.com/tesseract-ocr/tesseract/archive/#{@_ver}.tar.gz"
-  source_sha256 '2a66ff0d8595bff8f04032165e6c936389b1e5727c3ce5a27b3e059d218db1cb'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/tesseract-ocr/tesseract.git'
+  git_hashtag version.split('-').first
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/4.1.1-2_armv7l/tesseract-4.1.1-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/4.1.1-2_armv7l/tesseract-4.1.1-2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/4.1.1-2_x86_64/tesseract-4.1.1-2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'dd19e48f5511792037333cb2b6945c9dd37cc87233d815932cdbf8a43bb30d01',
-     armv7l: 'dd19e48f5511792037333cb2b6945c9dd37cc87233d815932cdbf8a43bb30d01',
-     x86_64: '611623a2484006193d0a9506cc277f5ffb39a6c8de9229663c6d81da984d2b45'
+    aarch64: '8594813df34ba63b51026dd0b4c5b0322d03edbbbb23759164f093d44e7a0aca',
+     armv7l: '8594813df34ba63b51026dd0b4c5b0322d03edbbbb23759164f093d44e7a0aca',
+     x86_64: '0e11215ea37e12710713a2f1c6967485ebdb09ca771f84287cce7a4030cd7d9b'
   })
 
-  depends_on 'asciidoc' => :build
-  depends_on 'cairo'
-  depends_on 'fontconfig'
-  depends_on 'giflib'
-  depends_on 'glib'
-  depends_on 'leptonica'
-  depends_on 'libarchive'
-  depends_on 'libcurl'
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libtiff'
-  depends_on 'pango'
+  depends_on 'acl' => :build
+  depends_on 'py3_asciidoc' => :build
+  depends_on 'attr' => :build
+  depends_on 'brotli' => :build
+  depends_on 'bzip2' => :build
+  depends_on 'cairo' # R
+  depends_on 'c_ares' => :build
+  depends_on 'curl' # R
+  depends_on 'docbook_xsl' => :build
+  depends_on 'e2fsprogs' => :build
+  depends_on 'expat' => :build
+  depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'giflib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
+  depends_on 'krb5' => :build
+  depends_on 'leptonica' # R
+  depends_on 'libarchive' # R
+  depends_on 'libcyrussasl' => :build
+  depends_on 'libdeflate' => :build
+  depends_on 'libidn2' => :build
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libnghttp2' => :build
+  depends_on 'libpng' # R
+  depends_on 'libpsl' => :build
+  depends_on 'libssh' => :build
+  depends_on 'libtiff' # R
+  depends_on 'libunistring' => :build
+  depends_on 'libwebp' # R
+  depends_on 'libxml2' => :build
+  depends_on 'lz4' => :build
+  depends_on 'openjpeg' # R
+  depends_on 'openldap' => :build
+  depends_on 'openmp' => :build
+  depends_on 'openssl' => :build
+  depends_on 'pango' # R
+  depends_on 'xzutils' => :build
+  depends_on 'zlib' # R
+  depends_on 'zstd' => :build
 
-  def self.build
-    system '[ -x configure ] || ./autogen.sh'
-    system 'filefix'
-    system "[ -f Makefile ] || env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -fno-math-errno -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -fno-math-errno -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS}"
-    system 'make'
-    system 'make training'
-  end
+  git_fetchtags
 
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-    system "make DESTDIR=#{CREW_DEST_DIR} training-install"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/tessdata"
-    system "curl -Ls https://github.com/tesseract-ocr/tessdata/raw/4767ea922bcc460e70b87b1d303ebdfed0897da8/eng.traineddata -o #{CREW_DEST_PREFIX}/share/tessdata/osd.traineddata"
-  end
+  cmake_options "-DBUILD_SHARED_LIBS=ON \
+        -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
+        -DENABLE_LTO=ON \
+        -DENABLE_NATIVE=ON \
+        -DOPENMP_BUILD=ON \
+        -DUSE_SYSTEM_ICU=ON"
 end

@@ -1,44 +1,31 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Openjpeg < Package
+class Openjpeg < CMake
   description 'An open source JPEG 2000 codec, written in C.'
   homepage 'https://github.com/uclouvain/openjpeg'
-  version '2.4.0'
+  version '2.5.0'
   license 'BSD-2'
-  compatibility 'all'
-  source_url 'https://github.com/uclouvain/openjpeg/archive/v2.4.0.tar.gz'
-  source_sha256 '8702ba68b442657f11aaeb2b338443ca8d5fb95b0d845757968a7be31ef7f16d'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/uclouvain/openjpeg/archive/v2.5.0.tar.gz'
+  source_sha256 '0333806d6adecc6f7a91243b2b839ff4d2053823634d4f6ed7a59bc87409122a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openjpeg/2.4.0_armv7l/openjpeg-2.4.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openjpeg/2.4.0_armv7l/openjpeg-2.4.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openjpeg/2.4.0_i686/openjpeg-2.4.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openjpeg/2.4.0_x86_64/openjpeg-2.4.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '595710bad9c20bb9cf549c4ac128c38a7b95d765482a4686f92e9a7c2436492c',
-     armv7l: '595710bad9c20bb9cf549c4ac128c38a7b95d765482a4686f92e9a7c2436492c',
-       i686: 'bab4acb957c546518cff701f1c004778351c7d973bb0c3f42bd4c5e89fd37f87',
-     x86_64: '490073608d724068424b594ef15e77bdef75bcb44beebe6c8fe09eb99f06bd0a'
+    aarch64: 'a7af46fa74fd908fafa8c9ba3761a5f3167159e7e0776d72892b342d130db604',
+     armv7l: 'a7af46fa74fd908fafa8c9ba3761a5f3167159e7e0776d72892b342d130db604',
+     x86_64: 'cad4bc6d4f0784d9f0871c51d36c5c96ff5becff4d43ed52eefda13c89ea5eeb'
   })
 
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        -DBUILD_SHARED_LIBS=ON \
-        -DOPENJPEG_INSTALL_LIB_DIR='lib#{CREW_LIB_SUFFIX}' \
-        .."
-    end
-    system 'ninja -C builddir'
-  end
+  depends_on 'glibc' # R
+  depends_on 'jbigkit' # R
+  depends_on 'libdeflate' # R
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libpng' # R
+  depends_on 'libtiff' # R
+  depends_on 'libwebp' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  cmake_options "-DOPENJPEG_INSTALL_LIB_DIR='lib#{CREW_LIB_SUFFIX}'"
 end

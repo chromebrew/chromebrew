@@ -1,75 +1,87 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Imagemagick7 < Package
+class Imagemagick7 < Autotools
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  @_ver = '7.0.11-2'
-  version @_ver
+  version "7.1.1-36-perl5.40-#{CREW_ICU_VER}"
   license 'imagemagick'
-  compatibility 'all'
-  source_url "https://github.com/ImageMagick/ImageMagick/archive/#{@_ver}.tar.gz"
-  source_sha256 '936959ba77bb9d8fdab4d9c69f90316c02a7e2467dea3790ad36b4d500c31a22'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/ImageMagick/ImageMagick.git'
+  # The imagemagick7 version always has a dash in it.
+  git_hashtag version.reverse.split('-', 3).collect(&:reverse).reverse.first
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.0.11-2_armv7l/imagemagick7-7.0.11-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.0.11-2_armv7l/imagemagick7-7.0.11-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.0.11-2_i686/imagemagick7-7.0.11-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.0.11-2_x86_64/imagemagick7-7.0.11-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '04025f5ae6e216cf6e79f2c1a6eccc79ee4a3228eb4d13d9475938a031bb1986',
-     armv7l: '04025f5ae6e216cf6e79f2c1a6eccc79ee4a3228eb4d13d9475938a031bb1986',
-       i686: '2a8cae3b4c308c75078f199e8bb9b005baf0babfdce0ff9f5b5f52b23ca71fa0',
-     x86_64: '8bc32c289e65e5499660cda89afab1dfb68b14de9c70b4f3e82924fa3dafe80a'
+    aarch64: '5a3607ff766e0da06451f8a1d19c2b794a8984f7b5443bdba5d995937949c35b',
+     armv7l: '5a3607ff766e0da06451f8a1d19c2b794a8984f7b5443bdba5d995937949c35b',
+     x86_64: '8fe3bfce6062370e8bc73bc2f16532ffd07944f8f68864d5494d7fbd6b584cfc'
   })
 
-  depends_on 'flif'
-  depends_on 'freeimage'
-  depends_on 'freetype'
-  depends_on 'ghostscript'
-  depends_on 'graphviz'
-  depends_on 'jbigkit'
-  depends_on 'jemalloc'
-  depends_on 'xzutils'
-  depends_on 'libheif'
-  depends_on 'librsvg'
-  depends_on 'libwebp'
-  depends_on 'libwmf'
-  depends_on 'msttcorefonts'
-  depends_on 'openexr'
-  depends_on 'openjpeg'
-  depends_on 'pango'
+  depends_on 'bzip2' # R
+  depends_on 'cairo' # R
+  depends_on 'expat' # R
+  depends_on 'flif' => :build
+  depends_on 'fontconfig' # R
+  depends_on 'freeimage' => :build
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'ghostscript' => :build
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'graphviz' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
+  depends_on 'jbigkit' # R
+  depends_on 'jemalloc' # R
+  depends_on 'lcms' # R
+  depends_on 'libbsd' # R
+  depends_on 'libdeflate' # R
+  depends_on 'libheif' # R
+  depends_on 'libice' # R
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libjxl' # R
+  depends_on 'libmd' # R
+  depends_on 'libpng' # R
+  depends_on 'librsvg' # R
+  depends_on 'libsm' # R
+  depends_on 'libtiff' # R
+  depends_on 'libtool' # R
+  depends_on 'libwebp' # R
+  depends_on 'libwmf' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxext' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxt' # R
+  depends_on 'msttcorefonts' # L
+  depends_on 'openexr' # R
+  depends_on 'openjpeg' # R
+  depends_on 'pango' # R
+  depends_on 'util_linux' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
+
+  no_upstream_update
 
   def self.preinstall
     imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp
     abort "ImageMagick version #{imver} already installed.".lightgreen unless imver.to_s == ''
   end
 
-  def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    system "env CFLAGS='-pipe -flto=auto -fno-stack-protector -U_FORTIFY_SOURCE \
-      -I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 \
-      -I#{CREW_PREFIX}/include/c++/v1/support/xlocale' \
-      CXXFLAGS='-pipe -flto=auto -fno-stack-protector -U_FORTIFY_SOURCE' \
-      LDFLAGS='-flto=auto -fno-stack-protector -U_FORTIFY_SOURCE' \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --mandir=#{CREW_MAN_PREFIX} \
+  configure_options "--mandir=#{CREW_MAN_PREFIX} \
       --program-prefix='' \
       --with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
-      --disable-dependency-tracking \
       --enable-hugepages \
       --with-jemalloc \
       --with-modules \
-      --enable-hdri \
       --with-perl \
+      --with-perl-options='INSTALLDIRS=vendor' \
       --with-rsvg \
       --with-x"
-    system 'make'
-  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

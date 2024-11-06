@@ -1,44 +1,24 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libmbedtls < Package
+class Libmbedtls < CMake
   description 'An open source, portable, easy to use, readable and flexible SSL library'
-  homepage 'https://tls.mbed.org/'
-  version '2.16.8'
+  homepage 'https://www.trustedfirmware.org/projects/mbed-tls/'
+  version '3.6.0'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/ARMmbed/mbedtls/archive/v2.16.8.tar.gz'
-  source_sha256 'fe9e3b15c3375943bdfebbbb20dd6b4f1147b3b5d926248bd835d73247407430'
+  source_url 'https://github.com/ARMmbed/mbedtls.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmbedtls/2.16.8_armv7l/libmbedtls-2.16.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmbedtls/2.16.8_armv7l/libmbedtls-2.16.8-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmbedtls/2.16.8_i686/libmbedtls-2.16.8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmbedtls/2.16.8_x86_64/libmbedtls-2.16.8-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'fa1207538c87a278987bd49aa789d9a064745eb17af6e0bca986cab290f7c8e4',
-     armv7l: 'fa1207538c87a278987bd49aa789d9a064745eb17af6e0bca986cab290f7c8e4',
-       i686: '82f4fe07be9599125bbce078e3ff8a5c3f2c96691270abc60cf97fed79879e45',
-     x86_64: '58e98d4edf8ff733228ff2499e7faf33bfc1d90bc6c834e8b1b78b7c369b85f1',
+  binary_sha256({
+    aarch64: 'fb5f733356acdd57769af17d70d3369b2deb38ce130360ccbcd8a065ff61103e',
+     armv7l: 'fb5f733356acdd57769af17d70d3369b2deb38ce130360ccbcd8a065ff61103e',
+       i686: '316dddb6af3d89939333d256d97a256ce31947cda68ee55035b89901d9d49839',
+     x86_64: '4891dfd90df0c29e0646e27aceba87b8932e4b4a817ec995a928c82bcca5d7c9'
   })
 
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system 'cmake',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             '-DUSE_SHARED_MBEDTLS_LIBRARY=ON',
-             '-DCMAKE_BUILD_TYPE=Release',
-             '-DENABLE_ZLIB_SUPPORT=ON',
-             '..'
-      system 'make'
-    end
-  end
+  depends_on 'glibc' # R
+  run_tests
 
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      FileUtils.mv "#{CREW_DEST_PREFIX}/lib", "#{CREW_DEST_LIB_PREFIX}" if ARCH == 'x86_64'
-    end
-  end
+  cmake_options '-DUSE_SHARED_MBEDTLS_LIBRARY=ON'
 end

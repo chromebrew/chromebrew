@@ -3,64 +3,60 @@ require 'package'
 class Ghostscript < Package
   description 'Interpreter for the PostScript language'
   homepage 'https://www.ghostscript.com/'
-  version '9.54'
+  version '10.02.0'
   license 'AGPL-3+'
-  compatibility 'all'
-  source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostpdl-9.54.0.tar.xz'
-  source_sha256 'ecbaa2e79e6d82cab8d0fbdfd899aa4fc68ffb43f6901d547d33ca7008fe1871'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10020/ghostpdl-10.02.0.tar.xz'
+  source_sha256 'c158f3b5ade88227510a42652e0fe7b2aa48e123c1fd663cb03e3d87ca2db86a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_armv7l/ghostscript-9.54-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_armv7l/ghostscript-9.54-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_i686/ghostscript-9.54-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_x86_64/ghostscript-9.54-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'a2fee20357654918f2deac0d7af356c84898e282d008906ede6b424fd95fd549',
-     armv7l: 'a2fee20357654918f2deac0d7af356c84898e282d008906ede6b424fd95fd549',
-       i686: 'f68277f2d042311835bf70828dcae6ce281d5cb376e4d525d63e1858012ab30d',
-     x86_64: '92ac6123594ea3fe04474e7654785a599f65b57884f5931b71bfeb63100b0741'
+    aarch64: 'd6788673f00998758405cc8aab3b29a0184c9abaf40c2177600f779ca5222c4a',
+     armv7l: 'd6788673f00998758405cc8aab3b29a0184c9abaf40c2177600f779ca5222c4a',
+     x86_64: '04b66919323c4660ddbbfcb9f255a3ba0de73e540a956abc10650978d9abe6f1'
   })
 
-  depends_on 'atk'
-  depends_on 'cairo'
-  depends_on 'cups'
-  depends_on 'fontconfig'
-  depends_on 'freetype'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gtk3'
-  depends_on 'harfbuzz'
-  depends_on 'lcms'
-  depends_on 'libice'
-  depends_on 'libjpeg'
-  depends_on 'libpaper'
-  depends_on 'libpng'
-  depends_on 'libsm'
-  depends_on 'libtiff'
-  depends_on 'libx11'
-  depends_on 'libxext'
-  depends_on 'libxt'
-  depends_on 'openjpeg'
-  depends_on 'pango'
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' => :build
+  depends_on 'cups' # R
+  depends_on 'expat' # R
+  depends_on 'fontconfig' => :build
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'jbigkit' => :build
+  depends_on 'lcms' # R
+  depends_on 'libarchive' # R
+  depends_on 'libice' # R
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libpaper' # R
+  depends_on 'libpng' # R
+  depends_on 'libsm' # R
+  depends_on 'libtiff' # R
+  depends_on 'libvdpau' # R
+  depends_on 'libx11' # R
+  depends_on 'libxext' # R
+  depends_on 'libxt' # R
+  depends_on 'neon' # R
+  depends_on 'openjpeg' # R
+  depends_on 'pango' # R
+  depends_on 'zlib' # R
 
-  case ARCH
-  when 'armv7l', 'aarch64'
-    @ltoflags = ''
-  when 'x86_64', 'i686'
-    @ltoflags = '-flto'
-  end
+  no_lto
 
   def self.patch
-    system 'rm -r cups/libs expat ijs jpeg lcms2mt libpng openjpeg tiff zlib'
+    FileUtils.rm_rf %w[cups/libs expat ijs jpeg lcms2mt libpng openjpeg tiff zlib]
   end
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system 'filefix'
-    system "env CFLAGS='-pipe -fuse-ld=gold #{@ltoflags}' \
-      CXXFLAGS='-pipe -fuse-ld=gold #{@ltoflags}' \
-      ./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
+      --disable-hidden-visibility \
       --disable-compile-inits \
       --enable-dynamic \
       --enable-fontconfig \
@@ -71,10 +67,7 @@ class Ghostscript < Package
       --with-ijs \
       --with-jbig2dec \
       --with-libpaper \
-      --with-openprinting \
-      --without-luratech \
-      --with-system-libtiff \
-      --with-x"
+      --with-system-libtiff"
     system 'make'
     system 'make so' # Make libgs
   end
@@ -82,7 +75,7 @@ class Ghostscript < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     system "make soinstall DESTDIR=#{CREW_DEST_DIR}" # Install libgs
-    FileUtils.cp_r Dir.glob('./base/*.h'), "#{CREW_DEST_PREFIX}/include/ghostscript"
+    FileUtils.cp_r Dir['./base/*.h'], "#{CREW_DEST_PREFIX}/include/ghostscript"
     FileUtils.ln_sf 'ghostscript', "#{CREW_DEST_PREFIX}/include/ps"
   end
 end

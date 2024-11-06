@@ -3,35 +3,27 @@ require 'package'
 class Scrot < Package
   description 'scrot, an acronym for (SCReen shOT) is a simple, freely distributed and open source command-line screen capture utility'
   homepage 'https://github.com/resurrecting-open-source-projects/scrot'
-  version '1.2'
+  version '1.8.1'
   license 'feh and LGPL-2+'
-  compatibility 'all'
-  source_url 'https://github.com/resurrecting-open-source-projects/scrot/archive/1.2.tar.gz'
-  source_sha256 'e9b41d4cb9b5ab3747d6718c4eb51d5aaf35b6cac23c9ff68af15fc1c9ce187c'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/resurrecting-open-source-projects/scrot/releases/download/1.8.1/scrot-1.8.1.tar.bz2'
+  source_sha256 '05f91be9a32eb912f8f2b9abdb3dca83166f77ed0a5a430b6766067ab13c3b18'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrot/1.2_armv7l/scrot-1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrot/1.2_armv7l/scrot-1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrot/1.2_i686/scrot-1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrot/1.2_x86_64/scrot-1.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'bbb19fc3f64dd778da3a3a79658cb22da4d435ebd6319ba0d6dce5117d8790cc',
-     armv7l: 'bbb19fc3f64dd778da3a3a79658cb22da4d435ebd6319ba0d6dce5117d8790cc',
-       i686: '2b1720613f82c66ab60473bf454375c6b3a73019a5e7f10dd6af0327f51dd777',
-     x86_64: 'a80847e67860885dadcb12c0dce773dee599293240a3365932268ac77d98e75b',
+  binary_sha256({
+    aarch64: '369e6e791ae3be26802eb410e76e87ef94aacf9a22d8770f8553d08393359c19',
+     armv7l: '369e6e791ae3be26802eb410e76e87ef94aacf9a22d8770f8553d08393359c19',
+     x86_64: '985f1c550bb81074318088309b31e5e89fca94a98c63ea4a8e946fe49172724d'
   })
 
   depends_on 'autoconf_archive' => :build
   depends_on 'giblib'
   depends_on 'libxcursor'
   depends_on 'libxfixes'
+  depends_on 'optipng'
 
   def self.build
-    system './autogen.sh'
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

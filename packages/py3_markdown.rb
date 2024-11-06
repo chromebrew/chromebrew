@@ -1,33 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_markdown < Package
+class Py3_markdown < Pip
   description 'Markdown is a Python implementation of Markdown.'
   homepage 'https://python-markdown.github.io/'
-  @_ver = '3.3.4'
-  version @_ver
+  version "3.7-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/Python-Markdown/markdown.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markdown/3.3.4_armv7l/py3_markdown-3.3.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markdown/3.3.4_armv7l/py3_markdown-3.3.4-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markdown/3.3.4_x86_64/py3_markdown-3.3.4-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '1b2adf8265bba21545e029127806cd2523d4fa43a609494ce9202eb0af7f93b3',
-     armv7l: '1b2adf8265bba21545e029127806cd2523d4fa43a609494ce9202eb0af7f93b3',
-     x86_64: '08d6d1d753b8bb9eb34d5269b17196e25b3d5372335b70bea1130bd87a441d8c'
+    aarch64: 'f7bd555a3350a4e6ba3abe7d3068197a4969e4edd23ad0bca9a8cd367b122db5',
+     armv7l: 'f7bd555a3350a4e6ba3abe7d3068197a4969e4edd23ad0bca9a8cd367b122db5',
+       i686: '6d370268c8dfa713d2e7ac2a810b9c808adeced30a6ea7294436597e89fcaac6',
+     x86_64: '38d983f8cbd7511f8bfb60697ddf0efff6f3e605206e31699ef8c74bfe990e40'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3'
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

@@ -1,47 +1,25 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Rubberband < Package
+class Rubberband < Meson
   description 'Rubber Band Library is a high quality software library for audio time-stretching and pitch-shifting.'
   homepage 'https://breakfastquay.com/rubberband/'
-  version '1.8.2'
+  version '3.3.0'
   license 'GPL-2'
-  compatibility 'all'
-  source_url 'https://breakfastquay.com/files/releases/rubberband-1.8.2.tar.bz2'
-  source_sha256 '86bed06b7115b64441d32ae53634fcc0539a50b9b648ef87443f936782f6c3ca'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://breakfastquay.com/files/releases/rubberband-3.3.0.tar.bz2'
+  source_sha256 'd9ef89e2b8ef9f85b13ac3c2faec30e20acf2c9f3a9c8c45ce637f2bc95e576c'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rubberband/1.8.2_armv7l/rubberband-1.8.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rubberband/1.8.2_armv7l/rubberband-1.8.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rubberband/1.8.2_i686/rubberband-1.8.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rubberband/1.8.2_x86_64/rubberband-1.8.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'b684aa86b3ef03b2be91f518c5b88d536d9d3152eeab5670fd7117186742be8b',
-     armv7l: 'b684aa86b3ef03b2be91f518c5b88d536d9d3152eeab5670fd7117186742be8b',
-       i686: 'deb5b36f7b7b2da1390baf2330b533ab82598a46eeb7073d9f334cb905d006f8',
-     x86_64: '909761fb62e174eaf6b788afc0c1390a38083d7ac7571260f1e294b560dffdbf',
+  binary_sha256({
+    aarch64: '30db5404665bb687280f3a90748260dcc4fe78abdb591dfdb1a713ef444f7ec6',
+     armv7l: '30db5404665bb687280f3a90748260dcc4fe78abdb591dfdb1a713ef444f7ec6',
+     x86_64: 'd280cbc2f5f677b739dfc6ba1fa5739f0342635eb629bf7848d654dd9bbda667'
   })
 
-  depends_on 'ladspa'
-  depends_on 'libsamplerate'
-  depends_on 'vamp_sdk'
-
-  def self.build
-    ENV['JAVA_HOME'] = "#{CREW_PREFIX}/share/jdk8"
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    # Remove missing librubberband-jni.so.
-    system "sed -i '186d' Makefile"
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    if ARCH == 'x86_64'
-      Dir.chdir "#{CREW_DEST_PREFIX}" do
-        FileUtils.mv 'lib/', 'lib64/'
-      end
-    end
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'ladspa' => :build
+  depends_on 'libsamplerate' => :build
+  depends_on 'libsndfile' # R
+  depends_on 'vamp_sdk' # R
 end

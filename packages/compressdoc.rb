@@ -1,28 +1,29 @@
 require 'package'
 
 class Compressdoc < Package
-  description 'Compress (with bzip2 or gzip) all man pages in a hierarchy and update symlinks'
-  homepage 'https://github.com/ojab/BLFS/blob/master/auxfiles/compressdoc'
-  version '20080421.1623'
-  license '' # Can't find license for project
+  description 'Compress all man pages in a hierarchy and update symlinks. Supports a variety of compression algorithms.'
+  homepage 'https://github.com/chromebrew/compressdoc'
+  version '20221119'
+  license 'MIT'
   compatibility 'all'
-  source_url 'https://raw.githubusercontent.com/ojab/BLFS/af6c11d985fe36c8828abaa9d5124c8725580b15/auxfiles/compressdoc'
-  source_sha256 'f380473baaa8785b1c7a7a30f2dda4b748a9baed3b335655faedad49ebf8246b'
+  source_url 'https://github.com/saltedcoffii/compressdoc.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20080421.1623_armv7l/compressdoc-20080421.1623-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20080421.1623_armv7l/compressdoc-20080421.1623-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20080421.1623_i686/compressdoc-20080421.1623-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20080421.1623_x86_64/compressdoc-20080421.1623-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: '880427162c3107c72346778eeaee0d965321bd3f0cea87b6e496cc541aa76f5a',
+     armv7l: '880427162c3107c72346778eeaee0d965321bd3f0cea87b6e496cc541aa76f5a',
+       i686: '3712fc941fa77066d2ce378e2bafe67555ac5da2827a6f32338bd48b8a3bde8d',
+     x86_64: '67cc750a7c59c35eaea3ddea7ff5c103d61c2c6f154b35416b0f85c7b3319674'
   })
-  binary_sha256 ({
-    aarch64: '3e63d392982f5ccfd330f927febec36b18a53ad722b26a4beb2f4de3efad6c94',
-     armv7l: '3e63d392982f5ccfd330f927febec36b18a53ad722b26a4beb2f4de3efad6c94',
-       i686: '9ec4c600cdbff22fe39a719b28fda93ffa78b9517ef930091ff05c486b72123f',
-     x86_64: 'ff47516fe18e91d4e1a255b4a78f336a0cba0dd06c8ee6c4aa3b45e1c9ea8ec8',
-  })
+
+  depends_on 'help2man' => :build
+
+  def self.build
+    system 'make'
+  end
 
   def self.install
-    system "install -Dm755 ../compressdoc #{CREW_DEST_PREFIX}/bin/compressdoc"
+    system "make PREFIX=#{CREW_PREFIX} MANDIR=#{CREW_MAN_PREFIX} DESTDIR=#{CREW_DEST_DIR} install"
   end
 end

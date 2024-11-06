@@ -1,46 +1,23 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Eigen < Package
+class Eigen < CMake
   description 'Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.'
-  homepage 'http://eigen.tuxfamily.org/'
-  version '3.3.7'
+  homepage 'https://eigen.tuxfamily.org/index.php?title=Main_Page'
+  version '3.4.0-1'
   license 'MPL-2.0'
-  compatibility 'all'
-  source_url 'https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.bz2'
-  source_sha256 '685adf14bd8e9c015b78097c1dc22f2f01343756f196acdc76a678e1ae352e11'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2'
+  source_sha256 'b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eigen/3.3.7_armv7l/eigen-3.3.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eigen/3.3.7_armv7l/eigen-3.3.7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eigen/3.3.7_i686/eigen-3.3.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eigen/3.3.7_x86_64/eigen-3.3.7-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'd5cf4005c822890e8d6a3a57fd186151dfd36d0fef513200a2e81fa767ddb64e',
-     armv7l: 'd5cf4005c822890e8d6a3a57fd186151dfd36d0fef513200a2e81fa767ddb64e',
-       i686: '11f717b454e479d2f91ad0410aa403fa68c904fab37a8f30499254f3e780964a',
-     x86_64: '4ae4ecb6aed2407f0e4adf84116b91b40e830eaed6d2ef028825a26e89d8bc72',
+  binary_sha256({
+    aarch64: 'e7c0d128ac5b97411dad488756a79d7ecd54a23184281e11c73edb066dff5b75',
+     armv7l: 'e7c0d128ac5b97411dad488756a79d7ecd54a23184281e11c73edb066dff5b75',
+     x86_64: 'a87ea3dbfdfc82cb123d5692bc33c4e41702c6be0df5d1ea467b14585e1f1066'
   })
 
-  depends_on 'boost'
-  depends_on 'fftw'
-  depends_on 'mesa'
-  depends_on 'superlu'
-
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system 'cmake',
-             '-DCMAKE_BUILD_TYPE=Release',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             '..'
-      system 'make'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  depends_on 'boost' => :build
+  depends_on 'fftw' => :build
+  depends_on 'mesa' => :build
+  depends_on 'superlu' => :build
 end

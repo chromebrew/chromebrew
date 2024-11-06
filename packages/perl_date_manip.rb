@@ -1,29 +1,28 @@
 require 'package'
 
 class Perl_date_manip < Package
-  description 'Date manipulation routines'
+  description 'Date::Manip - Date manipulation routines'
   homepage 'https://metacpan.org/pod/Date::Manip'
-  version '6.82-1'
+  version "6.95-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/S/SB/SBECK/Date-Manip-6.82.tar.gz'
-  source_sha256 'fa96bcf94c6b4b7d3333f073f5d0faad59f546e5aec13ac01718f2e6ef14672a'
+  source_url 'https://cpan.metacpan.org/authors/id/S/SB/SBECK/Date-Manip-6.95.tar.gz'
+  source_sha256 '92383832311f22083f55d03c8dae8f4bcc387cd902624e5ef9ac680f144cbd4c'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.82-1_armv7l/perl_date_manip-6.82-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.82-1_armv7l/perl_date_manip-6.82-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.82-1_i686/perl_date_manip-6.82-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.82-1_x86_64/perl_date_manip-6.82-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '96b6434cacbc4c44472b663f92f8f1f66fa017aade85cf73b589cbc92b0cd988',
-     armv7l: '96b6434cacbc4c44472b663f92f8f1f66fa017aade85cf73b589cbc92b0cd988',
-       i686: '5d0213058c1d5c1d20eae4223cadde99c563f23a66cd7637553d1c35797bf7df',
-     x86_64: 'aac6357483d49208f09ee9b1c71087ca10924ddba8268fbf054fb3efc3ed7a5d'
+    aarch64: '164bb060096d6e83c9eda3da9c847cce65fe7940708f19ccc1cdd5a7393934b2',
+     armv7l: '164bb060096d6e83c9eda3da9c847cce65fe7940708f19ccc1cdd5a7393934b2',
+       i686: '7823bb0d905f6839848903257606892a9fb3400f705121527554bb197200ce19',
+     x86_64: 'b79a4d0a655d2a384be4beccc3979f6ec509b4833e44fc3c4535433be89713d5'
   })
+
+  def self.prebuild
+    system 'perl', 'Makefile.PL'
+    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
+  end
 
   def self.build
-    system 'perl', 'Makefile.PL'
     system 'make'
   end
 

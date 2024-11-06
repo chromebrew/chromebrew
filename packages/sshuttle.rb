@@ -1,36 +1,22 @@
-require 'package'
+require 'buildsystems/python'
 
-class Sshuttle < Package
+class Sshuttle < Python
   description 'Full-featured VPN over an SSH tunnel'
-  homepage 'https://github.com/sshuttle/sshuttle/'
-  @_ver = '1.0.5'
-  version @_ver
+  homepage 'https://github.com/sshuttle/sshuttle'
+  version '1.1.2'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/sshuttle/sshuttle.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshuttle/1.0.5_armv7l/sshuttle-1.0.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshuttle/1.0.5_armv7l/sshuttle-1.0.5-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshuttle/1.0.5_i686/sshuttle-1.0.5-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshuttle/1.0.5_x86_64/sshuttle-1.0.5-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'f92a3bd7c8cc9d75d5579aa4a4f2bcfe6f7761783432ee0348cca63564029134',
-     armv7l: 'f92a3bd7c8cc9d75d5579aa4a4f2bcfe6f7761783432ee0348cca63564029134',
-       i686: 'f9bb6e927dc48be4d11b8c5bd224f803d9a03ff06a3050990c322fae20307462',
-     x86_64: '6453c1b70cc001fce9e695870d0c783c0fdfe9cbf1c69abffcc1772e1363b22f'
+    aarch64: 'f8c81a5d421f5c393ed4d512c8ec40fdbddafc6e203fa21083997b004df81a05',
+     armv7l: 'f8c81a5d421f5c393ed4d512c8ec40fdbddafc6e203fa21083997b004df81a05',
+       i686: 'ced49c2fd3203e735589e16ab842a9187d4c9b0abdf6d27353d013d5497b7fe9',
+     x86_64: '1e168c1546b5c8f10f8e99a7c0dde8edb9b5d79a6a53a398ec5bd3e95705557e'
   })
 
   depends_on 'py3_psutil'
-  depends_on 'py3_setuptools' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  depends_on 'python3'
 end

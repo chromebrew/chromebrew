@@ -1,40 +1,34 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Lvm2 < Package
+class Lvm2 < Autotools
   description 'LVM2 refers to the userspace toolset that provide logical volume management facilities on linux.'
-  homepage 'https://sourceware.org/lvm2'
-  @_ver = '2.03.11'
-  version @_ver
+  homepage 'https://sourceware.org/lvm2/'
+  version '2.03.23'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://www.sourceware.org/pub/lvm2/releases/LVM2.#{@_ver}.tgz"
-  source_sha256 '842c4510d4653990927d4518a5bf2743126a37531671a05842cdaf8d54bb9dd4'
+  source_url 'https://mirrors.kernel.org/sourceware/lvm2/LVM2.2.03.23.tgz'
+  source_sha256 '74e794a9e9dee1bcf8a2065f65b9196c44fdf321e22d63b98ed7de8c9aa17a5d'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.11_armv7l/lvm2-2.03.11-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.11_armv7l/lvm2-2.03.11-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.11_i686/lvm2-2.03.11-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.11_x86_64/lvm2-2.03.11-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-     aarch64: 'a60be47b7f7011234587ebba6e28adb36d27138b4bb182aa88da8af7fc6a6079',
-      armv7l: 'a60be47b7f7011234587ebba6e28adb36d27138b4bb182aa88da8af7fc6a6079',
-        i686: '62fbf27d3a75a5bf043c02b24ecf4f55f428a14192a59289bb97fd14cd073d78',
-      x86_64: 'd1b98a8b2c8ca75d78a4fd744a2d1aad44b0c23f102b588f8b5e7a7ed17d42c0',
+  binary_sha256({
+    aarch64: '9354ed80514c7cbedea66c76806d8de49b0b5e55960ac1e44a7f97446844344c',
+     armv7l: '9354ed80514c7cbedea66c76806d8de49b0b5e55960ac1e44a7f97446844344c',
+       i686: '8ca10b4b08ac1e7a541653c11ac747a5525cabb97da90651f123afd80ad32b3a',
+     x86_64: '6dc2b5060e3747e6d19e87433a7033a385a5973caa7fe476b4da3e033096d587'
   })
 
-  depends_on 'libaio'
+  depends_on 'glibc' # R
+  depends_on 'libaio' # R
+  depends_on 'readline' # R
+  depends_on 'util_linux' # R
 
-  def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --disable-selinux \
-      --with-confdir=#{CREW_PREFIX}/etc"
-    system "make"
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
+  configure_options "--localstatedir=#{CREW_PREFIX}/var \
+    --disable-selinux \
+    --enable-cmdlib \
+    --enable-dmeventd \
+    --enable-pkgconfig \
+    --enable-readline \
+    --with-cache=internal \
+    --with-thin=internal \
+    --with-confdir=#{CREW_PREFIX}/etc"
 end

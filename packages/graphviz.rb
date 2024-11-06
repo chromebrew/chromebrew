@@ -1,120 +1,48 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Graphviz < Package
+class Graphviz < CMake
   description 'Graphviz is open source graph visualization software.'
   homepage 'https://www.graphviz.org/'
-  @_ver = '2.46.1'
-  version "#{@_ver}-1"
+  version '9.0.0'
   license 'BSD'
-  compatibility 'all'
-  source_url "https://gitlab.com/graphviz/graphviz/-/archive/#{@_ver}/graphviz-#{@_ver}.tar.bz2"
-  source_sha256 'e5d7580b3dfcbeb0b86f28dd3c2df76f32086bb428f67c8ae8512e5fd969324d'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.com/graphviz/graphviz.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/2.46.1-1_armv7l/graphviz-2.46.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/2.46.1-1_armv7l/graphviz-2.46.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/2.46.1-1_i686/graphviz-2.46.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/2.46.1-1_x86_64/graphviz-2.46.1-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '4ae28e2e66dc90f4c0ff235578512a9e972490db1a2e8042fc71b800fd034003',
-     armv7l: '4ae28e2e66dc90f4c0ff235578512a9e972490db1a2e8042fc71b800fd034003',
-       i686: '2fb2eff8637b036a92334b66986ac0ce9fb1f36aa358d2d72f3169187a8ac0ff',
-     x86_64: '3e2ece533cf5bbe49ecb90254c3ad1b2b1fa2274a22eb0c09662701da807a44c'
+    aarch64: 'c12deae6fa8b9d66b083bcd159658b5f693bd93814f1d6d33736c5944336bd2e',
+     armv7l: 'c12deae6fa8b9d66b083bcd159658b5f693bd93814f1d6d33736c5944336bd2e',
+     x86_64: '87162917d3aeab886e233df4863b76ce830f9d4f5c4ea0f3299210a0be2f40c1'
   })
 
-  depends_on 'libgd'
-  depends_on 'pango'
-
-  def self.patch
-    # The patch below derives from these steps.
-    # system 'cp  CMakeLists.txt CMakeLists.txt.orig'
-    # system "sed -i '/include(FeatureSummary)/a include(GNUInstallDirs)'  CMakeLists.txt"
-    # system "sed -i 's|set(LIBRARY_INSTALL_DIR     lib)|set(LIBRARY_INSTALL_DIR     \"\${CMAKE_INSTALL_LIBDIR}\")|g' CMakeLists.txt"
-    # system "sed -i 's|set(PKGCONFIG_DIR	    lib/pkgconfig)|set(PKGCONFIG_DIR	     \"\${CMAKE_INSTALL_LIBDIR}/pkgconfig\")|g' CMakeLists.txt"
-    # system "sed -i 's|\${CMAKE_INSTALL_PREFIX}/lib|\${CMAKE_INSTALL_PREFIX}/\${CMAKE_INSTALL_LIBDIR}|g' CMakeLists.txt"
-    # system "sed -i 's|list(APPEND CMAKE_INCLUDE_PATH /usr/lib /usr/local/lib /usr/lib/x86_64-linux-gnu)|list(APPEND CMAKE_INCLUDE_PATH /usr/lib /usr/local/lib /usr/lib/x86_64-linux-gnu \"\${CMAKE_INSTALL_PREFIX}\")|g' CMakeLists.txt"
-    # system 'ls -aFl CMakeLists.txt*'
-    # system 'diff -Npaur CMakeLists.txt.orig CMakeLists.txt > /output/graphviz.patch || true'
-    # system 'cp cmake/configure_plugins.cmake cmake/configure_plugins.cmake.orig'
-    # system "sed -i 's|set(ENV{LD_LIBRARY_PATH} \"\${ROOT}/lib\")|set(ENV{LD_LIBRARY_PATH} \"\${ROOT}/\${CMAKE_INSTALL_LIBDIR}\")|g' cmake/configure_plugins.cmake"
-    # system 'diff -Npaur cmake/configure_plugins.cmake.orig cmake/configure_plugins.cmake >> /output/graphviz.patch || true'
-    system "sed -i 's|/usr|#{CREW_PREFIX}|g' cmake/config_checks.cmake"
-    @graphviz_cmake_patch = <<~'CMAKE_PATCH_EOF'
-      --- CMakeLists.txt.orig	2021-03-10 16:59:26.690413145 +0000
-      +++ CMakeLists.txt	2021-03-10 16:59:26.696413066 +0000
-      @@ -2,6 +2,7 @@ cmake_minimum_required (VERSION 3.1 FATA
-       project (Graphviz)
-
-       include(FeatureSummary)
-      +include(GNUInstallDirs)
-
-       # =============================== Build options ================================
-       option(enable_ltdl     "Support on-demand plugin loading" ON)
-      @@ -48,11 +49,11 @@ find_package(Perl REQUIRED)
-
-       # ================== Convenient values for CMake configuration =================
-       set(BINARY_INSTALL_DIR      bin)
-      -set(LIBRARY_INSTALL_DIR     lib)
-      +set(LIBRARY_INSTALL_DIR     "${CMAKE_INSTALL_LIBDIR}")
-       set(PLUGIN_INSTALL_DIR      ${LIBRARY_INSTALL_DIR}/graphviz)
-       set(HEADER_INSTALL_DIR      include/graphviz)
-       set(MAN_INSTALL_DIR         share/man/man3)
-      -set(PKGCONFIG_DIR	    lib/pkgconfig)
-      +set(PKGCONFIG_DIR	     "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
-       # TODO: Find a way to check for groff and ps2pdf for manpage pdf generation
-       # set(MAN_PDF_INSTALL_DIR share/graphviz/doc/pdf)
-       set(TOP_SOURCE_DIR          "${CMAKE_CURRENT_SOURCE_DIR}")
-      @@ -77,7 +78,7 @@ if (WIN32)
-           list(APPEND CMAKE_PREFIX_PATH ${WINDOWS_DEPENDENCY_DIR})
-           list(APPEND CMAKE_PREFIX_PATH ${WINDOWS_DEPENDENCY_VCPKG_DIR})
-       else()
-      -    list(APPEND CMAKE_INCLUDE_PATH /usr/lib /usr/local/lib /usr/lib/x86_64-linux-gnu)
-      +    list(APPEND CMAKE_INCLUDE_PATH /usr/lib /usr/local/lib /usr/lib/x86_64-linux-gnu "${CMAKE_INSTALL_PREFIX}")
-       endif()
-
-       find_package(ANN)
-      @@ -211,7 +212,7 @@ set(GVPLUGIN_VERSION "${GRAPHVIZ_PLUGIN_
-       set(VERSION "${GRAPHVIZ_VERSION_STRING}")
-       set(prefix "${CMAKE_INSTALL_PREFIX}")
-       set(exec_prefix "${CMAKE_INSTALL_PREFIX}")
-      -set(libdir "${CMAKE_INSTALL_PREFIX}/lib")
-      +set(libdir "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
-       set(includedir "${CMAKE_INSTALL_PREFIX}/include")
-       set(PACKAGE "graphviz")
-       configure_file(${CMAKE_CURRENT_SOURCE_DIR}/lib/cdt/libcdt.pc.in ${CMAKE_CURRENT_SOURCE_DIR}/libcdt.pc @ONLY)
-      --- cmake/configure_plugins.cmake.orig	2021-03-10 16:59:26.699413027 +0000
-      +++ cmake/configure_plugins.cmake	2021-03-10 16:59:26.700413013 +0000
-      @@ -30,7 +30,7 @@ set(ROOT $ENV{DESTDIR}${CMAKE_INSTALL_PR
-       if (APPLE)
-         set(ENV{DYLD_LIBRARY_PATH} "${ROOT}/lib")
-       elseif (UNIX)
-      -  set(ENV{LD_LIBRARY_PATH} "${ROOT}/lib")
-      +  set(ENV{LD_LIBRARY_PATH} "${ROOT}/${CMAKE_INSTALL_LIBDIR}")
-       endif()
-
-       execute_process(
-    CMAKE_PATCH_EOF
-    IO.write('graphviz_cmake.patch', @graphviz_cmake_patch)
-    system 'patch -p0 -i graphviz_cmake.patch'
-  end
-
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      AWK=#{CREW_PREFIX}/bin/mawk \
-      cmake \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        .."
-    end
-    system 'ninja -C builddir'
-  end
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'expat' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'ghostscript' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libgd' # R
+  depends_on 'libpng' => :build
+  depends_on 'librsvg' # R
+  depends_on 'libtool' # R
+  depends_on 'libwebp' # R
+  depends_on 'libx11' # R
+  depends_on 'libxrender' # R
+  depends_on 'pango' # R
+  depends_on 'qt5_base' # R
+  depends_on 'zlib' # R
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    # There is a library error only when installing dot using the following command.
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install || true"
+  end
+
+  def self.postinstall
+    # Without this, builds of rest fail.
+    system 'dot -c'
   end
 end

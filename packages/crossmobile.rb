@@ -9,28 +9,25 @@ class Crossmobile < Package
   source_url 'https://github.com/crossmob/CrossMobile/releases/download/v3.4.0/CrossMobile-3.4.0.x86_64.appimage'
   source_sha256 '295f65a8ef3d115061749370ec0a9eb68424e9b96d208acd91aa18818e3fa134'
 
-  binary_url ({
-  })
-  binary_sha256 ({
-  })
-
-  depends_on 'jdk8'
+  depends_on 'openjdk8'
   depends_on 'sommelier'
+
+  no_compile_needed
 
   def self.build
     cross = <<~EOF
-    #!/bin/bash
-    cd #{CREW_PREFIX}/share/crossmobile
-    ./AppRun "$@"
+      #!/bin/bash
+      cd #{CREW_PREFIX}/share/crossmobile
+      ./AppRun "$@"
     EOF
-    IO.write('crossmobile.sh', cross)
+    File.write('crossmobile.sh', cross)
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/crossmobile"
-    FileUtils.install 'crossmobile.sh', "#{CREW_DEST_PREFIX}/bin/crossmobile", mode: 0755
-    FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/share/crossmobile"
+    FileUtils.install 'crossmobile.sh', "#{CREW_DEST_PREFIX}/bin/crossmobile", mode: 0o755
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/crossmobile"
   end
 
   def self.postinstall

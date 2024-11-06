@@ -3,34 +3,31 @@ require 'package'
 class Libaio < Package
   description 'Linux-native asynchronous I/O access library'
   homepage 'https://pagure.io/libaio'
-  @_ver = '0.3.112'
-  version @_ver
+  version '0.3.113-932de6c'
   license 'LGPL-2'
+  # Use release patched to fix lto issues as per
+  # https://marc.info/?l=linux-aio&m=164999309120529&w=2
   compatibility 'all'
-  source_url "https://pagure.io/libaio/archive/libaio-#{@_ver}/libaio-libaio-#{@_ver}.tar.gz"
-  source_sha256 'b7cf93b29bbfb354213a0e8c0e82dfcf4e776157940d894750528714a0af2272'
+  source_url 'https://git.hadrons.org/cgit/sys/libaio.git'
+  git_hashtag '932de6c91978639eee576ecdc1343b52e5a0a54a'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.112_armv7l/libaio-0.3.112-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.112_armv7l/libaio-0.3.112-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.112_i686/libaio-0.3.112-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.112_x86_64/libaio-0.3.112-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-     aarch64: 'f7fc535e5d72f059e97f5b18a41b3cac20b63930d773bdc21438e170bb395e26',
-      armv7l: 'f7fc535e5d72f059e97f5b18a41b3cac20b63930d773bdc21438e170bb395e26',
-        i686: '95ec694e17e2c13ea263fd39711daf68d9f5e7b5e17c596e4aa52a1ce001398f',
-      x86_64: '17335130827e4eb1cc2202e5dcbc8651e61f8ba32fc8264c59bf26b78a0a5545',
+  binary_sha256({
+    aarch64: 'a950ffa572b765898a2607ac7a220a854f2f48578128e67a1c122687d817dc5e',
+     armv7l: 'a950ffa572b765898a2607ac7a220a854f2f48578128e67a1c122687d817dc5e',
+       i686: '0a22ed56376f7c0d7b0518f4f2503efc1701583eb5c60cd02fcfc1111a97a04b',
+     x86_64: '4021e49d7549ef0601f2baf53a2b12f62d39c7535bc4db13a4153968f00789e8'
   })
 
+  depends_on 'glibc' # R
 
   def self.build
     system "sed -i 's,prefix=/usr,prefix=#{CREW_PREFIX},' Makefile"
-    system "sed -i 's,libdir=\$(prefix)/lib,libdir=#{CREW_LIB_PREFIX},' Makefile"
+    system "sed -i 's,libdir=$(prefix)/lib,libdir=#{CREW_LIB_PREFIX},' Makefile"
     system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

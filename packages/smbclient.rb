@@ -3,45 +3,54 @@ require 'package'
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
-  version '4.14.4'
+  version "4.20.4-#{CREW_ICU_VER}"
   license 'GPLv3'
   compatibility 'all'
-  source_url "https://us1.samba.org/samba/ftp/stable/samba-#{version}.tar.gz"
-  source_sha256 '89af092a0b00f5354ed287f0aa37b8c2cf9ba2ce67ea6464192e2c18528f89b9'
+  source_url "https://download.samba.org/pub/samba/stable/samba-#{version.split('-').first}.tar.gz"
+  source_sha256 '3a92e97eaeb345b6b32232f503e14d34f03a7aa64c451fe8c258a11bbda908e5'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.14.4_armv7l/smbclient-4.14.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.14.4_armv7l/smbclient-4.14.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.14.4_i686/smbclient-4.14.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.14.4_x86_64/smbclient-4.14.4-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '22d24a7a51efc97853ed1b7b110a84b099efd7b465dbf46194a406fc9af6b8d5',
-     armv7l: '22d24a7a51efc97853ed1b7b110a84b099efd7b465dbf46194a406fc9af6b8d5',
-       i686: '2e50aa2792825d119143bd9cbeae10d167623d2ffee50f4e4b7d64ff69251b7e',
-     x86_64: '8f0f6e9e37d39b8893034af1e019bcf4c1c4fcf0c689edbb37da967658c7c1f4'
+    aarch64: 'f161a7f955ecca54425add1cfd6683eabb204c15c9fd77894abe33f5546ac30f',
+     armv7l: 'f161a7f955ecca54425add1cfd6683eabb204c15c9fd77894abe33f5546ac30f',
+       i686: 'e3cf441f53e3137b89bd92c3518d76c68ac1323636ee116613d2a00f7dcc0c60',
+     x86_64: '0d52fa1f276bd5ec3ac28b4b6e132a33c4401f247a65c81626c53cfffdc25db1'
   })
 
-  depends_on 'avahi'
-  depends_on 'cmocka'
-  depends_on 'cups'
-  depends_on 'docbook_xsl'
+  depends_on 'acl' # R
+  depends_on 'avahi' # R
+  depends_on 'cmocka' => :build
+  depends_on 'cups' => :build
+  depends_on 'docbook' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'gdb' => :build
+  depends_on 'glibc' # R
+  depends_on 'gnutls' # R
   depends_on 'gpgme' => :build
-  depends_on 'jansson'
-  depends_on 'ldb'
-  depends_on 'libbsd'
-  depends_on 'libcap'
-  depends_on 'libunwind'
+  depends_on 'icu4c' # R
+  depends_on 'jansson' # R
+  depends_on 'ldb' # R
+  depends_on 'libarchive' # R
+  depends_on 'libbsd' # R
+  depends_on 'libcap' # R
+  depends_on 'libtasn1' # R
+  depends_on 'libtirpc' # R
+  depends_on 'libunwind' # R
   depends_on 'liburing' => :build
-  depends_on 'linux_pam'
+  depends_on 'linux_pam' # R
   depends_on 'lmdb' => :build
+  depends_on 'ncurses' # R
+  depends_on 'openldap' # R
+  depends_on 'perl_json' => :build
   depends_on 'perl_parse_yapp' => :build
-  depends_on 'popt'
-  depends_on 'py3_markdown'
-  depends_on 'py3_dnspython'
-  depends_on 'talloc'
-  depends_on 'tdb'
-  depends_on 'tevent'
+  depends_on 'popt' # R
+  depends_on 'py3_dnspython' => :build
+  depends_on 'py3_markdown' => :build
+  depends_on 'readline' # R
+  depends_on 'talloc' # R
+  depends_on 'tdb' # R
+  depends_on 'tevent' # R
+  depends_on 'zlib' # R
 
   @samba4_idmap_modules = 'idmap_ad,idmap_rid,idmap_adex,idmap_hash,idmap_tdb2'
   @samba4_pdb_modules = 'pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4'
@@ -51,10 +60,10 @@ class Smbclient < Package
                        smbcquotas smbget net nmblookup smbtar]
   @smbclient_pkgconfig = %w[smbclient netapi wbclient]
 
-  @xml_catalog_files = ENV['XML_CATALOG_FILES']
+  @xml_catalog_files = ENV.fetch('XML_CATALOG_FILES', nil)
 
   def self.patch
-    system "sed -e 's:<gpgme\.h>:<gpgme/gpgme.h>:' \
+    system "sed -e 's:<gpgme.h>:<gpgme/gpgme.h>:' \
     -i source4/dsdb/samdb/ldb_modules/password_hash.c"
     system "sed -i 's,/etc/xml/catalog,#{@xml_catalog_files},g' docs-xml/Makefile"
     system "sed -i 's,file:///etc/xml/catalog,#{@xml_catalog_files},g' buildtools/wafsamba/wafsamba.py"
@@ -62,9 +71,8 @@ class Smbclient < Package
 
   def self.build
     system './configure --help'
-    system "env #{CREW_ENV_OPTIONS}
-      ./configure --enable-fhs \
-      #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
+    system "python_LDFLAGS='' ./configure --enable-fhs \
+      #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')} \
       --sysconfdir=#{CREW_PREFIX}/etc \
       --sbindir=#{CREW_PREFIX}/bin \
       --libdir=#{CREW_LIB_PREFIX} \
@@ -74,6 +82,7 @@ class Smbclient < Package
       --with-lockdir=#{CREW_PREFIX}/var/cache/samba \
       --builtin-libraries=NONE \
       --bundled-libraries=!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb,!pyldb-util,NONE \
+      --disable-python \
       --disable-rpath \
       --disable-rpath-install \
       --with-acl-support \

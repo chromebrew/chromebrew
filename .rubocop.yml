@@ -1,0 +1,125 @@
+---
+# The behavior of RuboCop can be controlled via the .rubocop.yml
+# configuration file. It makes it possible to enable/disable
+# certain cops (checks) and to alter their behavior if they accept
+# any parameters. The file can be placed either in your home
+# directory or in some project directory.
+#
+# RuboCop will start looking for the configuration file in the directory
+# where the inspected file is and continue its way up to the root directory.
+#
+# See https://docs.rubocop.org/rubocop/configuration
+
+AllCops:
+  Exclude:
+    - 'lib/docopt.rb'
+  NewCops: enable
+  TargetRubyVersion: 3.3
+
+# These cops have been temporarily disabled and should be reenabled asap
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
+Lint/Debugger:
+  DebuggerMethods:
+    Pry: ~
+
+# Need to allow reloading const.rb from fixup.rb
+Lint/OrAssignmentToConstant:
+  Exclude:
+    - 'lib/const.rb'
+    - 'lib/fixup.rb'
+
+Lint/SuppressedException:
+  Enabled: false
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle:
+    - separator
+  EnforcedColonStyle:
+    - separator
+  # When this is reenabled, keep the EnforcedHashRocketStyle and EnforcedColonStyle configuration
+  Enabled: false
+
+# End temporarily disabled cops
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+Layout/FirstHashElementIndentation:
+  Enabled: false
+# EnforcedStyle: consistent
+
+Layout/LineLength:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/MutableConstant:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/DocumentDynamicEvalDefinition:
+  Enabled: false
+
+# https://github.com/rubocop/rubocop/issues/12132
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Style/ClassVars:
+  Enabled: false
+
+Style/GlobalVars:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/RedundantCapitalW:
+  Enabled: false
+
+Style/RedundantLineContinuation:
+  Enabled: false
+
+Style/RedundantStringEscape:
+  Enabled: false
+
+Metrics:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Naming/BlockParameterName:
+  Enabled: false
+
+Naming/ClassAndModuleCamelCase:
+  Exclude:
+    - 'packages/*'
+
+Naming/VariableName:
+  EnforcedStyle: snake_case
+  # Allow variable names which are in all caps (with optional numbers and underscores)
+  AllowedPatterns:
+    - '^@?[A-Z0-9_]+$'
+
+Naming/VariableNumber:
+  Enabled: false
+
+Naming/HeredocDelimiterNaming:
+  Enabled: false

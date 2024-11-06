@@ -3,44 +3,36 @@ require 'package'
 class Fop < Package
   description 'Apache FOP (Formatting Objects Processor) is a print formatter driven by XSL formatting objects (XSL-FO) and an output independent formatter.'
   homepage 'https://xmlgraphics.apache.org/fop/'
-  version '2.6-1'
+  version '2.7-1'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://downloads.apache.org/xmlgraphics/fop/binaries/fop-2.6-bin.tar.gz'
-  source_sha256 'ccfd7a1d4e5a04e76723946efa1147ffa9a8715ce2b58d2a27085a8e744520f8'
+  source_url 'https://downloads.apache.org/xmlgraphics/fop/binaries/fop-2.7-bin.tar.gz'
+  source_sha256 'ec75d6135f55f57b275f8332e069f8817990fdc7f63b1f5c0cb9da5609aa3074'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fop/2.6-1_armv7l/fop-2.6-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fop/2.6-1_armv7l/fop-2.6-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fop/2.6-1_i686/fop-2.6-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fop/2.6-1_x86_64/fop-2.6-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '5b7a73cd366557240852ea2ec1dc75d2f75d2b0b47c6d5634c2995aba1de79c0',
-     armv7l: '5b7a73cd366557240852ea2ec1dc75d2f75d2b0b47c6d5634c2995aba1de79c0',
-       i686: '6b830403f1596aba2a77856a892913b7b0776f2cb78cc62c1d867d8ad394db5a',
-     x86_64: '489c9c4000771c944e54a70e01015e0d5e62acbf1d32cea7c41eb481b506ed1c'
+    aarch64: '592a35d04bcca3ab8762e8ba03ce7f57c10a93f03efecad58f3f9304c3eaa79a',
+     armv7l: '592a35d04bcca3ab8762e8ba03ce7f57c10a93f03efecad58f3f9304c3eaa79a',
+       i686: 'c6c96e9a3b66a448dc1c30b8cbe64022e2d6cb6a078f879d824ffe143839e56b',
+     x86_64: '537463270af9f987c2604b98f46e17bb4b1249a7203e055531822574c7562450'
   })
 
-  depends_on 'jdk8'
+  depends_on 'openjdk8'
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_LIB_PREFIX}/fop"
-    system "cp -r . #{CREW_DEST_LIB_PREFIX}/fop"
-    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
-      system "echo '#!/bin/bash' > fop"
-      system "echo 'cd #{CREW_LIB_PREFIX}/fop/fop' >> fop"
-      system "echo './fop \"$@\"' >> fop"
-      system "echo 'cd $PWD' >> fop"
-      system 'chmod +x fop'
-    end
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_LIB_PREFIX}/fop #{CREW_DEST_PREFIX}/etc/env.d/]
+    FileUtils.cp_r '.', "#{CREW_DEST_LIB_PREFIX}/fop"
 
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    File.write "#{CREW_DEST_PREFIX}/bin/fop", <<~EOF, perm: 0o755
+      #!/bin/bash
+      cd #{CREW_LIB_PREFIX}/fop/fop
+      ./fop "$@"
+    EOF
+
     @fopenv = <<~FOPEOF
       # Fop configuration
-      export JAVA_HOME=#{CREW_LIB_PREFIX}/jdk8
+      export JAVA_HOME=#{CREW_PREFIX}/jre
     FOPEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/fop", @fopenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/fop", @fopenv)
   end
 end

@@ -1,22 +1,15 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libcroco < Package
+class Libcroco < Autotools
   description 'Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit.'
-  homepage 'https://git.gnome.org/browse/libcroco/'
-  @_ver = '0.6.13'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  homepage 'https://gitlab.gnome.org/Archive/libcroco'
+  version '0.6.13'
   license 'LGPL-2'
   compatibility 'all'
-  source_url "http://ftp.gnome.org/pub/gnome/sources/libcroco/#{@_ver_prelastdot}/libcroco-#{@_ver}.tar.xz"
+  source_url "http://ftp.gnome.org/pub/gnome/sources/libcroco/#{version.rpartition('.')[0]}/libcroco-#{version}.tar.xz"
   source_sha256 '767ec234ae7aa684695b3a735548224888132e063f92db585759b422570621d4'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcroco/0.6.13_armv7l/libcroco-0.6.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcroco/0.6.13_armv7l/libcroco-0.6.13-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcroco/0.6.13_i686/libcroco-0.6.13-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcroco/0.6.13_x86_64/libcroco-0.6.13-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '60fc1383b5e017354c7c2125a8357d5856c13eea76a765b92bf64e3f92df5341',
      armv7l: '60fc1383b5e017354c7c2125a8357d5856c13eea76a765b92bf64e3f92df5341',
@@ -27,16 +20,5 @@ class Libcroco < Package
   depends_on 'gtk_doc'
   depends_on 'py3_six' => :build
 
-  def self.build
-    system 'sh autogen.sh'
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  gnome
 end

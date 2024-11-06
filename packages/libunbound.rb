@@ -1,51 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libunbound < Package
+class Libunbound < Autotools
   description 'Unbound is a validating, recursive, and caching DNS resolver.'
   homepage 'https://nlnetlabs.nl/projects/unbound/about/'
-  @_ver = '1.13.1'
-  version @_ver
+  version '1.22.0'
   license 'BSD and GPL-2'
   compatibility 'all'
-  source_url "https://nlnetlabs.nl/downloads/unbound/unbound-#{@_ver}.tar.gz"
-  source_sha256 '8504d97b8fc5bd897345c95d116e0ee0ddf8c8ff99590ab2b4bd13278c9f50b8'
+  source_url "https://nlnetlabs.nl/downloads/unbound/unbound-#{version}.tar.gz"
+  source_sha256 'c5dd1bdef5d5685b2cedb749158dd152c52d44f65529a34ac15cd88d4b1b3d43'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.13.1_armv7l/libunbound-1.13.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.13.1_armv7l/libunbound-1.13.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.13.1_i686/libunbound-1.13.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.13.1_x86_64/libunbound-1.13.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '1e6999af00f48993d63ff36bff111796a1a79894808499ff0afafcf12a6e5c32',
-     armv7l: '1e6999af00f48993d63ff36bff111796a1a79894808499ff0afafcf12a6e5c32',
-       i686: 'eb5e0d99f4a98ed55e6842d01782e3326045c7a9e3e99e4a3867113d2113a30f',
-     x86_64: 'fe16753a6cb9a8c69cf759201f39dec701d29b9de75954c77a2225e32e7a3edc'
+    aarch64: '64e32be9f9014acf6dbd9ca1639ba5d9b59555d8182b7fbc11b9122feef91579',
+     armv7l: '64e32be9f9014acf6dbd9ca1639ba5d9b59555d8182b7fbc11b9122feef91579',
+       i686: 'd32fb93dc73cf58782dc155a39bf656295795a761ae48da3c5f48b88fe07bf3e',
+     x86_64: '2ad9eb65fc9c304c1b9239af056ec4e6b2ee2a1e6268b6b8e99d5330886aa2d5'
   })
 
-  depends_on 'openssl' # On i686 openssl needs to be installed before libunbound.
+  depends_on 'expat' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'openssl' # R On i686 openssl needs to be installed before libunbound.
 
-  def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    system "./configure \
-    #{CREW_OPTIONS} \
-    #{CREW_ENV_OPTIONS} \
-    --enable-shared \
+  configure_options '--enable-shared \
     --enable-static \
-    --with-pic"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
-
-  def self.check
-    system 'make', 'test'
-  end
+    --with-pic'
 
   def self.postinstall
     # Use IPv4 if default fails.

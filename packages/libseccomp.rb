@@ -3,32 +3,27 @@ require 'package'
 class Libseccomp < Package
   description 'The libseccomp library provides an easy to use, platform independent, interface to the Linux Kernel\'s syscall filtering mechanism.'
   homepage 'https://github.com/seccomp/libseccomp'
-  @_ver = '2.5.1'
-  version @_ver
+  version '2.5.4'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://github.com/seccomp/libseccomp/archive/v#{@_ver}.tar.gz"
-  source_sha256 '76ad54e31d143b39a99083564045212a965e026a1010a742edd793d26d699829'
+  source_url "https://github.com/seccomp/libseccomp/archive/v#{version}.tar.gz"
+  source_sha256 '96bbadb4384716272a6d2be82801dc564f7aab345febfe9b698b70fc606e3f75'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libseccomp/2.5.1_armv7l/libseccomp-2.5.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libseccomp/2.5.1_armv7l/libseccomp-2.5.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libseccomp/2.5.1_i686/libseccomp-2.5.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libseccomp/2.5.1_x86_64/libseccomp-2.5.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'a5fb74e92c03f02a6079796234e0c3c192ec689d71bc5b5dd104c0decdd747b1',
-     armv7l: 'a5fb74e92c03f02a6079796234e0c3c192ec689d71bc5b5dd104c0decdd747b1',
-       i686: '4d9b966795112a9bf8a6d3da564345998ee007400c9720b4d86b58e79c7c65ea',
-     x86_64: 'dc052c6c4962cc1f5b30c1a73f0ab397abd15406d808a18f96ed8ff095a62e25'
+    aarch64: 'd4aafa04c27719b2d5d5be94a89846d0a118710effd5f1144e2139a0b8f9c09d',
+     armv7l: 'd4aafa04c27719b2d5d5be94a89846d0a118710effd5f1144e2139a0b8f9c09d',
+       i686: '96743fd080af70581781c4e0b17bdb3f5c91b765c1355803193527984176f5f9',
+     x86_64: '1097b0549a2f0210fa15ca54f7916b9927363534913dbc3030270c39c2559d3d'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'gperf' => :build
 
   def self.build
     system './autogen.sh'
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS}"
+    system "./configure \
+      #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

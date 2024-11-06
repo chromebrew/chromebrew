@@ -1,36 +1,23 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_retrying < Package
+class Py3_retrying < Pip
   description 'Retrying simplifies the task of adding retry behavior to just about anything.'
   homepage 'https://github.com/rholder/retrying/'
-  @_ver = '1.3.3'
-  version @_ver
+  version "1.3.4-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/rholder/retrying.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_retrying/1.3.3_armv7l/py3_retrying-1.3.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_retrying/1.3.3_armv7l/py3_retrying-1.3.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_retrying/1.3.3_i686/py3_retrying-1.3.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_retrying/1.3.3_x86_64/py3_retrying-1.3.3-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'b740f5334db1044b55f4edc3876f7f88b631584abde4cb57f68f0a29285e4820',
-     armv7l: 'b740f5334db1044b55f4edc3876f7f88b631584abde4cb57f68f0a29285e4820',
-       i686: 'd0dcfc77dc868dda22e863de9d140384cb53fe010b9e67da9a13a217c6365e85',
-     x86_64: 'b96a36c91d9c3a54ec595ac9133cf62d45f03c6057a785cca907cae6006c55b7'
+    aarch64: '71b2618e43b2ce096ad90ea8a0c57dda5e0657b854d1372531230ef9bac975ea',
+     armv7l: '71b2618e43b2ce096ad90ea8a0c57dda5e0657b854d1372531230ef9bac975ea',
+       i686: '5cd060867dbfc7bc1ae6ad6f7952451f4c523dbb56b5c6ff1dba33024bebf2ef',
+     x86_64: '52c23837024cb22e5f380501162134e372bc74ad3958eb4e3ae0635580de683d'
   })
 
   depends_on 'py3_six'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

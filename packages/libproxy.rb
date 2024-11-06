@@ -1,37 +1,29 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libproxy < Package
+class Libproxy < Meson
   description 'libproxy is a library that provides automatic proxy configuration management.'
-  homepage 'http://libproxy.github.io/libproxy/'
-  version '0.4.15'
+  homepage 'https://libproxy.github.io/libproxy/'
+  version '0.5.3'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url 'https://github.com/libproxy/libproxy/releases/download/0.4.15/libproxy-0.4.15.tar.xz'
-  source_sha256 '654db464120c9534654590b6683c7fa3887b3dad0ca1c4cd412af24fbfca6d4f'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/libproxy/libproxy.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libproxy/0.4.15_armv7l/libproxy-0.4.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libproxy/0.4.15_armv7l/libproxy-0.4.15-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libproxy/0.4.15_i686/libproxy-0.4.15-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libproxy/0.4.15_x86_64/libproxy-0.4.15-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'f0df6d6fbe49b9783ebe03bf922cb917714358dc4380c44dfa9b5bbdc747d831',
-     armv7l: 'f0df6d6fbe49b9783ebe03bf922cb917714358dc4380c44dfa9b5bbdc747d831',
-       i686: '00c146655e1bf4c437974ad59549b900924ac93f7de277477c196c56c44b7c73',
-     x86_64: '896073cbf37b750da1856e37c58111f4c1350196ddb6fef5ce7799197d7a9f27',
+  binary_sha256({
+    aarch64: '2faef327daefacb96faecc16d2c732acdf77bbaa08b0815d733f3511d3575fea',
+     armv7l: '2faef327daefacb96faecc16d2c732acdf77bbaa08b0815d733f3511d3575fea',
+     x86_64: 'b5939b2138ba04d4014aeb4c98aa69739810f21a5459ac3383a474a8955fdda2'
   })
 
-  def self.build
-    system './autogen.sh'
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "cmake .. -DLIB_INSTALL_DIR=#{CREW_LIB_PREFIX}"
-    end
-    system 'make'
-  end
+  depends_on 'curl' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gsettings_desktop_schemas' => :build
+  depends_on 'vala' => :build
 
-  def self.install
-    system "make", "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
+  meson_options '-Ddocs=false \
+              -Dpacrunner-duktape=false \
+              -Dtests=false'
 end

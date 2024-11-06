@@ -1,35 +1,24 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pyyaml < Package
+class Py3_pyyaml < Pip
   description 'PyYAML is a YAML parser and emitter for Python.'
   homepage 'https://pyyaml.org/'
-  @_ver = '5.4.1.1'
-  version @_ver
+  version "6.0.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/yaml/pyyaml.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyyaml/5.4.1.1_armv7l/py3_pyyaml-5.4.1.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyyaml/5.4.1.1_armv7l/py3_pyyaml-5.4.1.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyyaml/5.4.1.1_i686/py3_pyyaml-5.4.1.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyyaml/5.4.1.1_x86_64/py3_pyyaml-5.4.1.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '2238a2b916934779b015e9b80279d05a0e8431580c33c97baeed732dfd97e5db',
-     armv7l: '2238a2b916934779b015e9b80279d05a0e8431580c33c97baeed732dfd97e5db',
-       i686: 'd2e8fc66be9ab8411a83211ec08e04549410cc4c0be3295a37943c7a518288e9',
-     x86_64: '2219b3b519406e57edcbd2bde7895b850b255b4a06d8d76c1e7ee8f784935e47'
+    aarch64: 'bc8bdf7e1975ac702f5db16b7842eb981ac14fec43a5c1d38524171061081550',
+     armv7l: 'bc8bdf7e1975ac702f5db16b7842eb981ac14fec43a5c1d38524171061081550',
+       i686: 'fcfcf65c6d2e02196a3918e0a1700fe0649f3cb4a81227c66389d9704355117c',
+     x86_64: 'de32c1ba7ee0d6800f042060aa655aaa5a7d67f467ada70b756a82f31e766277'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'glibc' # R
+  depends_on 'libyaml' # R
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

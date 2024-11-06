@@ -4,24 +4,18 @@ require 'package'
 
 class Libefl < Package
   description 'Enlightenment Foundation Libraries'
-  homepage 'https://enlightenment.org'
-  version '1.24.3'
+  homepage 'https://www.enlightenment.org/'
+  version '1.26.3'
   license 'BSD, BSD-2, BSD-3, LGPL-2.1, GPL-2, freetype, MIT, Apache-2.0' # Needs verifiying
-  compatibility 'all'
-  source_url 'https://download.enlightenment.org/rel/libs/efl/efl-1.24.3.tar.xz'
-  source_sha256 'de95c6e673c170c1e21382918b122417c091c643e7dcaced89aa785529625c2a'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://download.enlightenment.org/rel/libs/efl/efl-1.26.3.tar.xz'
+  source_sha256 'd9f83aa0fd9334f44deeb4e4952dc0e5144683afac786feebce6030951617d15'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libefl/1.24.3_armv7l/libefl-1.24.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libefl/1.24.3_armv7l/libefl-1.24.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libefl/1.24.3_i686/libefl-1.24.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libefl/1.24.3_x86_64/libefl-1.24.3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'a8711a86825b0186ce5749455cf1763c9a338a2dffdad78cdbf1eab185b6a879',
-     armv7l: 'a8711a86825b0186ce5749455cf1763c9a338a2dffdad78cdbf1eab185b6a879',
-       i686: 'e5f5bba5bdb07c1abaa60229fee05f97b6a617c60af647734a839340e38a8429',
-     x86_64: 'be56db051dee123ac67bb9938acc09a930ba5a58e785b9a818d2ac74fbba97aa',
+  binary_sha256({
+    aarch64: 'f1bf40ac1f75c23e2eccc2b1aae3e8df459ed3a7155fffae17a89bd6f082d277',
+     armv7l: 'f1bf40ac1f75c23e2eccc2b1aae3e8df459ed3a7155fffae17a89bd6f082d277',
+     x86_64: 'c1761b15c8a7910deff5fd58282197b91609db928b4ed880a210827c46fba301'
   })
 
   depends_on 'lz4'
@@ -62,23 +56,40 @@ class Libefl < Package
   depends_on 'xcb_util_wm'
   depends_on 'xorg_proto'
   depends_on 'gnutls'
+  depends_on 'dbus' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'lcms' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libglvnd' # R
+  depends_on 'libinput' # R
+  depends_on 'libunwind' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxtst' # R
+  depends_on 'util_linux' # R
+  depends_on 'zlib' # R
 
   def self.build
-    system 'meson',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '-Dcrypto=gnutls',
-           '-Dsystemd=false',
-           '-Dglib=false',
-           '-Dgstreamer=false',
-           '-Decore-imf-loaders-disabler=ibus,scim',
-           '-Demotion-loaders-disabler=gstreamer1,gstreamer,xine',
-           '-Demotion-generic-loaders-disabler=vlc',
-           '_build'
-    system 'ninja -v -C _build'
+    system "meson setup #{CREW_MESON_OPTIONS} \
+       -Dcrypto=gnutls \
+       -Dsystemd=false \
+       -Dglib=false \
+       -Dgstreamer=false \
+       -Decore-imf-loaders-disabler=ibus,scim \
+       builddir"
+    system 'meson configure --no-pager builddir'
+    system 'mold -run samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

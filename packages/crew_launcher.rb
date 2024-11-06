@@ -5,11 +5,11 @@ class Crew_launcher < Package
   homepage 'https://github.com/chromebrew/crew-launcher'
   version '1.1-2'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/chromebrew/crew-launcher.git'
   git_hashtag '1.1'
-  
-  depends_on 'llvm'
+
+  depends_on 'llvm16_lib'
   depends_on 'graphicsmagick'
 
   def self.install
@@ -26,15 +26,15 @@ class Crew_launcher < Package
       FileUtils.ln_s '../../../lib/crew/lib/color.rb', 'color.rb'
     end
     FileUtils.ln_s '../share/crew-launcher/main.rb', "#{CREW_DEST_PREFIX}/bin/crew-launcher"
-    
-    system "curl -L https://github.com/skycocker/chromebrew/raw/gh-pages/images/brew-title.png -o #{CREW_DEST_PREFIX}/share/crew-launcher/icon/brew.png"
+
+    system "curl -L https://github.com/chromebrew/chromebrew/raw/gh-pages/images/brew-title.png -o #{CREW_DEST_PREFIX}/share/crew-launcher/icon/brew.png"
 
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/crew_launcher", <<~EOF
       crew-launcher start-server
     EOF
   end
 
-  def self.remove
+  def self.postremove
     FileUtils.rm_rf "#{CREW_PREFIX}/share/crew-launcher/"
   end
 end

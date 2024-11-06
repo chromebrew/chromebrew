@@ -1,37 +1,14 @@
 require 'package'
+Package.load_package("#{__dir__}/at_spi2_core.rb")
 
 class Atk < Package
-  description 'ATK provides the set of accessibility interfaces that are implemented by other toolkits and applications'
-  homepage 'https://developer.gnome.org/atk'
-  version '2.36'
-  license 'LGPL-2+'
-  compatibility 'all'
-  source_url 'https://download.gnome.org/sources/atk/2.36/atk-2.36.0.tar.xz'
-  source_sha256 'fb76247e369402be23f1f5c65d38a9639c1164d934e40f6a9cf3c9e96b652788'
+  description At_spi2_core.description
+  homepage At_spi2_core.homepage
+  version At_spi2_core.version
+  license At_spi2_core.license
+  compatibility At_spi2_core.compatibility
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atk/2.36_armv7l/atk-2.36-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atk/2.36_armv7l/atk-2.36-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atk/2.36_i686/atk-2.36-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atk/2.36_x86_64/atk-2.36-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '59b8ccc0c669036ac52af1ce1ae2935f003b373c8fad8ce6825ded95bc1b2a29',
-     armv7l: '59b8ccc0c669036ac52af1ce1ae2935f003b373c8fad8ce6825ded95bc1b2a29',
-       i686: 'e96cb35a8e5855e32a7ab39f7edf67f7dc19eed74c0a3a63abf4d2ffb4b3db67',
-     x86_64: '6e8cf2d268ac84d9cccb189167449882aa19489093dacedf6697165049d3fa58',
-  })
+  is_fake
 
-  depends_on 'gobject_introspection'
-  depends_on 'py3_six' => :build
-
-  def self.build
-    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} build"
-    system 'meson configure build'
-    system 'ninja -C build'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-  end
+  depends_on 'at_spi2_core'
 end

@@ -3,43 +3,39 @@ require 'package'
 class Musl_expat < Package
   description 'James Clark\'s Expat XML parser library in C.'
   homepage 'https://sourceforge.net/projects/expat/'
-  version '2.4.1'
+  version '2.4.8'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://prdownloads.sourceforge.net/project/expat/expat/2.4.1/expat-2.4.1.tar.xz'
-  source_sha256 'cf032d0dba9b928636548e32b327a2d66b1aab63c4f4a13dd132c2d1d2f2fb6a'
+  source_url 'https://prdownloads.sourceforge.net/project/expat/expat/2.4.8/expat-2.4.8.tar.xz'
+  source_sha256 'f79b8f904b749e3e0d20afeadecf8249c55b2e32d4ebb089ae378df479dcaf25'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.1_armv7l/musl_expat-2.4.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.1_armv7l/musl_expat-2.4.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.1_i686/musl_expat-2.4.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.1_x86_64/musl_expat-2.4.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '7f5fe3311c73a4737cefdfe8553ee604c1e046376ca240711cc953186f35d590',
-     armv7l: '7f5fe3311c73a4737cefdfe8553ee604c1e046376ca240711cc953186f35d590',
-       i686: 'deb210dcd8e6db83798ff3e349669b726318ae4c99a8797b327e938c43e5e0c1',
-     x86_64: 'fe4d81b538419c1e27d8600c3bd87c1a4011289fb7eddd58ad75a9e8b623decc'
+    aarch64: 'da829889bc002774679a8ac8373a662b75469cd4e1e0efcf003165e3b1083e19',
+     armv7l: 'da829889bc002774679a8ac8373a662b75469cd4e1e0efcf003165e3b1083e19',
+       i686: 'e737950ec7ed54a5fa04d923e4f42710c063d1d8dd580a4f887d6b40e28a596d',
+     x86_64: '06bfcf25868d41925874458068e56155028d027be365db5989079a92bb3570b2'
   })
+
+  depends_on 'musl_native_toolchain' => :build
+
+  is_musl
+  is_static
+  patchelf
+  print_source_bashrc
 
   def self.patch
     system 'filefix'
   end
 
   def self.build
-    system "#{@musldep_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
-        --disable-shared \
+    system "#{MUSL_ENV_OPTIONS} ./configure --prefix=#{CREW_MUSL_PREFIX} \
         --enable-static \
         --with-pic"
     system 'make'
   end
 
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

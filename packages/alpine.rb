@@ -2,52 +2,48 @@ require 'package'
 
 class Alpine < Package
   description 'The continuation of the Alpine email client from University of Washington.'
-  homepage 'http://alpine.x10host.com/alpine'
-  version '2.22'
+  homepage 'https://alpineapp.email/'
+  version '2.25'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'http://alpine.x10host.com/alpine/release/src/alpine-2.22.tar.xz'
-  source_sha256 '849567c1b6f71fde3aaa1c97cf0577b12a525d9e22c0ea47797c4bf1cd2bbfdb'
+  source_url 'https://alpineapp.email/alpine/release/src/Old/alpine-2.25.tar.xz'
+  source_sha256 '658a150982f6740bb4128e6dd81188eaa1212ca0bf689b83c2093bb518ecf776'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alpine/2.22_armv7l/alpine-2.22-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alpine/2.22_armv7l/alpine-2.22-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alpine/2.22_i686/alpine-2.22-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alpine/2.22_x86_64/alpine-2.22-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '3856cd6cb2d2073b4cf022e5d2db54ed65ba2f7ab53545c4cd476d894a343d89',
-     armv7l: '3856cd6cb2d2073b4cf022e5d2db54ed65ba2f7ab53545c4cd476d894a343d89',
-       i686: '32701e3edcc3cab4a409d66cb9747c799b1265b46cb531e093b2472660f34f48',
-     x86_64: '4277b6583b8e753da09a95ea7912d69666d45dae5a9db91b18abf1a7bbcca155',
+  binary_sha256({
+    aarch64: '6c919cb0d6fad903fc0e0cb96f1d8bff6030181a9e871b38ccd59a121f342dfe',
+     armv7l: '6c919cb0d6fad903fc0e0cb96f1d8bff6030181a9e871b38ccd59a121f342dfe',
+       i686: '453a722ceefb5749a215e76599133686011b51c9b45a4747d5c95faf7f94f799',
+     x86_64: '31d6176774aee2a53e8fd784816c7daaa361cf80c8ea8fa11f99c3fe22c3bfef'
   })
 
+  depends_on 'e2fsprogs'
   depends_on 'hunspell_en_us'
   depends_on 'openldap'
-  depends_on 'tcl'
+  depends_on 'tcl' # R
+  no_fhs # complains about /usr/local/tmp
 
   def self.patch
-    # Fixes ./configure: line 8156: /usr/bin/file: No such file or directory
     system 'filefix'
   end
 
   def self.build
-    system "./configure",
-    "--prefix=#{CREW_PREFIX}",
-    "--libdir=#{CREW_LIB_PREFIX}",
-    "--with-ssl-dir=/etc/ssl",
-    "--with-ssl-include-dir=#{CREW_PREFIX}/include",
-    "--with-ssl-lib-dir=#{CREW_LIB_PREFIX}", "--disable-nls",
-    "--with-system-pinerc=#{CREW_PREFIX}/etc/alpine.d/pine.conf",
-    "--with-system-fixed-pinerc=#{CREW_PREFIX}/etc/alpine/pine.conf.fixed"
-    system "make"
+    system "./configure \
+           #{CREW_CONFIGURE_OPTIONS} \
+           --with-ssl-dir=#{CREW_PREFIX}/etc/ssl \
+           --with-ssl-include-dir=#{CREW_PREFIX}/include \
+           --with-ssl-lib-dir=#{CREW_LIB_PREFIX} \
+           --disable-nls \
+           --with-system-pinerc=#{CREW_PREFIX}/etc/alpine.d/pine.conf \
+           --with-system-fixed-pinerc=#{CREW_PREFIX}/etc/alpine/pine.conf.fixed"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check
-    system "make", "check"
+    system 'make', 'check'
   end
 end

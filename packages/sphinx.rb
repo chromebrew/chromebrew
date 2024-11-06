@@ -1,24 +1,19 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Sphinx < Package
+class Sphinx < Pip
   description 'Sphinx is a tool that makes it easy to create intelligent and beautiful documentation.'
   homepage 'https://www.sphinx-doc.org/'
-  @_ver = '3.5.4'
-  version @_ver
+  version "8.1.3-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/sphinx-doc/sphinx.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sphinx/3.5.4_armv7l/sphinx-3.5.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sphinx/3.5.4_armv7l/sphinx-3.5.4-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sphinx/3.5.4_x86_64/sphinx-3.5.4-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'fb9681f4dee30873ea30badb34773fd5cc8d4573138fc49964289f9c3a188171',
-     armv7l: 'fb9681f4dee30873ea30badb34773fd5cc8d4573138fc49964289f9c3a188171',
-     x86_64: 'a62fe2943fb8de064afa7613cd5cf6522b5a27b64cda434eeac79c49ce225b5b'
+    aarch64: 'a1d6e6ec1df41718c26cb9dcb70d92bbc09581a47c0ed2e0172da37358ee68b5',
+     armv7l: 'a1d6e6ec1df41718c26cb9dcb70d92bbc09581a47c0ed2e0172da37358ee68b5',
+       i686: 'ade09099a97b46356c8a76f7af0d6d64bc2f632ec11af77620b54f44c796c74c',
+     x86_64: 'b41a60ba80209aab436576c2f3f9587264937e4c28e63fe6d2c19d199c1489ad'
   })
 
   depends_on 'py3_jinja2'
@@ -36,12 +31,7 @@ class Sphinx < Package
   depends_on 'py3_pygments'
   depends_on 'py3_packaging'
   depends_on 'py3_snowballstemmer'
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

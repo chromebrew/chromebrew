@@ -1,46 +1,42 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Ecasound < Package
+class Ecasound < Autotools
   description 'Ecasound is a software package designed for multitrack audio processing.'
   homepage 'https://ecasound.seul.org/ecasound/'
-  version '1.0.21'
+  version '2.9.3'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://nosignal.fi/download/ecasound-2.9.3.tar.gz'
-  source_sha256 '468bec44566571043c655c808ddeb49ae4f660e49ab0072970589fd5a493f6d4'
+  source_url 'https://git.code.sf.net/p/ecasound/code' # The github repository does not have the tags.
+  git_hashtag "v#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ecasound/1.0.21_armv7l/ecasound-1.0.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ecasound/1.0.21_armv7l/ecasound-1.0.21-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ecasound/1.0.21_i686/ecasound-1.0.21-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ecasound/1.0.21_x86_64/ecasound-1.0.21-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: 'b0673a7d622b71db4c881d570691218f739b1b6092ab01617d3ab070de2633b7',
+     armv7l: 'b0673a7d622b71db4c881d570691218f739b1b6092ab01617d3ab070de2633b7',
+       i686: 'be223ffc0ba90c8e8b37890ac26cc546d6a56a6794abc1148836a9118b1a417f',
+     x86_64: 'e51ceabd4f781a0f172ab2a446dd7349f71a2fe8ee396f23a3f583ba0da8d28e'
   })
-  binary_sha256 ({
-    aarch64: '8bbf7d4b25da6f034a519a8bbb213acd9e4d328c8be0ffcb1ef7973faf1932ea',
-     armv7l: '8bbf7d4b25da6f034a519a8bbb213acd9e4d328c8be0ffcb1ef7973faf1932ea',
-       i686: '1cce14a38401659698c2500e9d09aaf732c46343438601745d46cbf162fcd5cf',
-     x86_64: 'f8242a29cdc5a9a3abcabb1455a457c39ed08d195b7aa17df859f0ad845ca6d4',
-  })
-
-  depends_on 'libaudiofile'
-  depends_on 'libsndfile'
-  depends_on 'python2'
 
   def self.patch
-    # Fix ./configure: line 8777: /usr/bin/file: No such file or directory
-    system 'filefix'
+    # Allow building as shared library
+    downloader 'https://patch-diff.githubusercontent.com/raw/kaivehmanen/ecasound/pull/4.patch', 'a5caeb1dfe580f1e338dddd849ed18f7ce3a32f83c5ea63297e4cbaeadc3088b'
+    system 'git apply 4.patch'
+
+    # build: Use PKG_CHECK_MODULES to find readline
+    downloader 'https://patch-diff.githubusercontent.com/raw/kaivehmanen/ecasound/pull/6.patch', '11aa2f31665172c3ab98e136f021e55e6c2e7b11e0fc5e05e9ea449e3d32af8b'
+    system 'git apply 6.patch'
   end
 
-  def self.build
-    system "CPPFLAGS=-I#{CREW_PREFIX}/include/readline ./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
+  depends_on 'alsa_lib'
+  depends_on 'flac'
+  depends_on 'libogg' # R
+  depends_on 'libsndfile'
+  depends_on 'libvorbis' # R
+  depends_on 'ncurses' # R
+  depends_on 'opus' # R
+  depends_on 'readline'
+  depends_on 'ruby'
 
-  def self.check
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--disable-pyecasound'
+  run_tests
 end

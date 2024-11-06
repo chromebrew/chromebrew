@@ -6,20 +6,14 @@ class Geoclue < Package
   @_ver = '2.5.7'
   version "#{@_ver}-1"
   license 'LGPL-2.1 and GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/#{@_ver}/geoclue-#{@_ver}.tar.bz2"
   source_sha256 '6cc7dbe4177b4e7f3532f7fe42262049789a3cd6c55afe60a3564d7394119c27'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoclue/2.5.7-1_armv7l/geoclue-2.5.7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoclue/2.5.7-1_armv7l/geoclue-2.5.7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoclue/2.5.7-1_i686/geoclue-2.5.7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoclue/2.5.7-1_x86_64/geoclue-2.5.7-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8208222a9240c0d90afaac07a4111ad27e5b02f9ea3ba55211278440f065dad2',
      armv7l: '8208222a9240c0d90afaac07a4111ad27e5b02f9ea3ba55211278440f065dad2',
-       i686: '17377ae86e1205882121acc6fd1beee159ff0a4d090b2081dfa6582d73248ba2',
      x86_64: '214403eb81cd51b173365be83577e79b3f30266941f54f8ceec7659565d3cba8'
   })
 
@@ -33,14 +27,14 @@ class Geoclue < Package
   depends_on 'modemmanager'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dsystemd=disabled \
       -Ddbus-sys-dir=#{CREW_PREFIX}/share/dbus-1 \
       -D3g-source=true \
       -Dcdma-source=false \
       -Dmodem-gps-source=true \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

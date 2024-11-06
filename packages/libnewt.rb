@@ -3,19 +3,13 @@ require 'package'
 class Libnewt < Package
   description 'Not Eriks Windowing Toolkit - text mode windowing with slang'
   homepage 'https://pagure.io/newt'
-  @_ver = '0.52.21'
-  version @_ver
+  version '0.52.21'
   license 'LGPL-2'
   compatibility 'all'
-  source_url "https://releases.pagure.org/newt/newt-#{@_ver}.tar.gz"
+  source_url "https://releases.pagure.org/newt/newt-#{version}.tar.gz"
   source_sha256 '265eb46b55d7eaeb887fca7a1d51fe115658882dfe148164b6c49fccac5abb31'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnewt/0.52.21_armv7l/libnewt-0.52.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnewt/0.52.21_armv7l/libnewt-0.52.21-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnewt/0.52.21_i686/libnewt-0.52.21-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnewt/0.52.21_x86_64/libnewt-0.52.21-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'd1813f44254d795347e412bfffcc6a86b4dffc934db3e0341b5072f7a7518b12',
      armv7l: 'd1813f44254d795347e412bfffcc6a86b4dffc934db3e0341b5072f7a7518b12',
@@ -34,9 +28,7 @@ class Libnewt < Package
     patch_sha256 = '163f2f58bf4d0ac8a0907a1c2530a02d7c178b88c53fb98ee69d4b33bc86187d'
 
     system('curl', '-Lf', patch_url, '-o', 'zippatches.tar.xz')
-    unless Digest::SHA256.hexdigest(File.read('./zippatches.tar.xz')) == patch_sha256
-      abort 'Checksum mismatch :/ try again'
-    end
+    abort 'Checksum mismatch :/ try again' unless Digest::SHA256.hexdigest(File.read('./zippatches.tar.xz')) == patch_sha256
     system('tar', '-xf', 'zippatches.tar.xz')
 
     system('for i in `cat debian/patches/series`; do patch -p 1 < debian/patches/$i; done')
@@ -46,7 +38,7 @@ class Libnewt < Package
   def self.build
     system "env CFLAGS='-flto=auto' \
       CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --with-gpm-support"
     system 'make'
   end

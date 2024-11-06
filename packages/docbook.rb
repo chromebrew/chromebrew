@@ -12,5 +12,4 @@ class Docbook < Package
   depends_on 'docbook_xml'
   depends_on 'docbook_xsl'
   depends_on 'docbook_xsl_nons'
-
 end

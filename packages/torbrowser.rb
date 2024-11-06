@@ -3,40 +3,44 @@ require 'package'
 class Torbrowser < Package
   description "'The Onion Router' browser"
   homepage 'https://www.torproject.org/'
-  @_ver = '10.5.8'
-  version @_ver
+  version '14.0'
   license 'BSD, custom, MPL-2.0 and MIT'
   compatibility 'x86_64'
-
-  @_url = "https://www.torproject.org/dist/torbrowser/#{@_ver}"
-  @_name = "tor-browser-linux64-#{@_ver}_en-US.tar.xz"
-  source_url "#{@_url}/#{@_name}"
-  source_sha256 'e1938b9dad1a326e878c5bb12a1613a5f8fe7189b2d9c2e54d677bc5460ec3ae'
+  source_url "https://dist.torproject.org/torbrowser/#{version}/tor-browser-linux-x86_64-#{version}.tar.xz"
+  source_sha256 '44db138fcfc73f5d049488eeb580aaa79d2037b5bb2b3f8303de2b92453f55a2'
 
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'gdk_base'
+
+  no_compile_needed
+  no_shrink
+  print_source_bashrc
 
   def self.build
-    @tor = <<~EOF
-      #!/bin/sh -e
-      cd #{CREW_PREFIX}/share/
+    tor = <<~EOF
+      #!/bin/bash
+      cd #{CREW_PREFIX}/share/torbrowser
       ./start-tor-browser.desktop "$@"
     EOF
-    File.write('tor', @tor)
+    File.write('tor', tor)
+  end
+
+  def self.patch
+    system "sed -i 's,$(pwd),#{CREW_PREFIX}/share/torbrowser,g' start-tor-browser.desktop"
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
-    FileUtils.mv 'Browser/', "#{CREW_DEST_PREFIX}/share/"
-    FileUtils.mv 'start-tor-browser.desktop', "#{CREW_DEST_PREFIX}/share"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/torbrowser"
+    FileUtils.mv 'Browser/', "#{CREW_DEST_PREFIX}/share/torbrowser"
+    FileUtils.mv 'start-tor-browser.desktop', "#{CREW_DEST_PREFIX}/share/torbrowser"
     FileUtils.install 'tor', "#{CREW_DEST_PREFIX}/bin/tor", mode: 0o755
   end
 
   def self.postinstall
     print "\nSet Tor as your default browser? [Y/n]: "
-    case STDIN.getc
-    when "\n", 'Y', 'y'
+    case $stdin.gets.chomp.downcase
+    when '', 'y', 'yes'
       Dir.chdir("#{CREW_PREFIX}/bin") do
         FileUtils.ln_sf 'tor', 'x-www-browser'
       end
@@ -47,11 +51,22 @@ class Torbrowser < Package
     puts "\nType 'tor' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     Dir.chdir("#{CREW_PREFIX}/bin") do
-      if File.exist?('x-www-browser') and File.symlink?('x-www-browser') \
-        and File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/tor"
+      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') \
+        && (File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/tor")
         FileUtils.rm 'x-www-browser'
+      end
+    end
+    config_dir = "#{CREW_PREFIX}/share/torbrowser"
+    if Dir.exist? config_dir
+      print "Would you like to remove the #{config_dir} directory? [y/N] "
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
+        FileUtils.rm_rf config_dir
+        puts "#{config_dir} removed.".lightred
+      else
+        puts "#{config_dir} saved.".lightgreen
       end
     end
   end

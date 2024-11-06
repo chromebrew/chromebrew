@@ -3,21 +3,19 @@ require 'package'
 class Exodus < Package
   description 'Exodus is a desktop crypto wallet'
   homepage 'https://www.exodus.com/'
-  version '21.6.18'
+  version '24.29.2'
   license 'Freeware'
   compatibility 'x86_64'
-  source_url 'https://downloads.exodus.com/releases/exodus-linux-x64-21.6.18.zip'
-  source_sha256 '94f81db2bcd0eab66bec71a7ac8926173413894359de4ccf9324514894440679'
+  source_url "https://downloads.exodus.com/releases/exodus-linux-x64-#{version}.zip"
+  source_sha256 '9c2147a9555da6f4ca9d0f47dd5d7efb4152c03bf35411bf6c69550731adc9a8'
 
-  binary_url ({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exodus/21.6.18_x86_64/exodus-21.6.18-chromeos-x86_64.tpxz'
-  })
-  binary_sha256 ({
-    x86_64: '3e238cbb72121e8e67a8c276397ad9386056b250b3aad6d12bc6a788a05b84a7'
-  })
-
+  depends_on 'at_spi2_core'
+  depends_on 'gtk3'
   depends_on 'xdg_base'
   depends_on 'sommelier'
+
+  no_compile_needed
+  no_shrink
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
@@ -27,18 +25,18 @@ class Exodus < Package
   end
 
   def self.postinstall
-    puts "\nType 'exodus' to get started.\n".lightblue
+    ExitMessage.add "\nType 'exodus' to get started.\n"
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{CREW_PREFIX}/.config/Exodus"
-    if Dir.exists? config_dir
-      puts "WARNING: This will remove all Exodus data!".orange
+    if Dir.exist? config_dir
+      puts 'WARNING: This will remove all Exodus data!'.orange
       print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case STDIN.getc
-      when "y", "Y"
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightred
+        puts "#{config_dir} removed.".lightgreen
       else
         puts "#{config_dir} saved.".lightgreen
       end

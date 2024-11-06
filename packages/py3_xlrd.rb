@@ -1,35 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_xlrd < Package
+class Py3_xlrd < Pip
   description 'XLRD is a library to extract data from Microsoft Excel (tm) spreadsheet files.'
   homepage 'https://xlrd.readthedocs.io/'
-  @_ver = '2.0.1'
-  version @_ver
+  version "2.0.1-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/python-excel/xlrd.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xlrd/2.0.1_armv7l/py3_xlrd-2.0.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xlrd/2.0.1_armv7l/py3_xlrd-2.0.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xlrd/2.0.1_i686/py3_xlrd-2.0.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xlrd/2.0.1_x86_64/py3_xlrd-2.0.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '9a7800b3ac478d8108485b785bbc0815db92d43d5d2df645f6b145442a70d48c',
-     armv7l: '9a7800b3ac478d8108485b785bbc0815db92d43d5d2df645f6b145442a70d48c',
-       i686: '782adefc2e97ceccd609de4f1a50e72c67281fa9a6ff65455a80717ada9923e7',
-     x86_64: '8ad7b6d53bd416c6cda2e7d3a18dc842029bc9c43ca14225484117b575280a8b'
+    aarch64: 'e1a02ad5ed55435cb09572710171bb9046e2d29e8caec211bd0619b75629d068',
+     armv7l: 'e1a02ad5ed55435cb09572710171bb9046e2d29e8caec211bd0619b75629d068',
+       i686: '5d40727569aa1537230137df8015048982872482c1eee2322f31e6cefca3fab3',
+     x86_64: 'f242f03e316d62a71e228401502c6fa392a96a8b0ba7815ccd055bac7ee8477c'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

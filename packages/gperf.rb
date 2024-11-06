@@ -1,33 +1,32 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gperf < Package
+class Gperf < Autotools
   description 'GNU gperf is a perfect hash function generator.'
   homepage 'https://www.gnu.org/software/gperf/'
-  version '3.1'
+  version '3.1-97c1fbc'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://ftp.gnu.org/pub/gnu/gperf/gperf-3.1.tar.gz'
-  source_sha256 '588546b945bba4b70b6a3a616e80b4ab466e3f33024a352fc2198112cdbb3ae2'
+  source_url 'https://git.savannah.gnu.org/git/gperf.git'
+  git_hashtag '97c1fbcc8cc00c3a56af8be8543dedc588aace0f'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.1_armv7l/gperf-3.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.1_armv7l/gperf-3.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.1_i686/gperf-3.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.1_x86_64/gperf-3.1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '4515671860504871812106df28e025e75ba47c8068d1183e2d9e2baf743c94d4',
-     armv7l: '4515671860504871812106df28e025e75ba47c8068d1183e2d9e2baf743c94d4',
-       i686: 'cc740abbac1d7bfff9886c0993a59bcbb5735cb7bcec09ab04a3c036cb3df2aa',
-     x86_64: '50d2087a5d7c41451ba6320dd8614da47582e4a01b53a9be39041a4b0e10733b',
+  binary_sha256({
+    aarch64: '49b1152ce33b46afac2e25a656d28e1304283a6e3c847662dbdd80ad58cecf90',
+     armv7l: '49b1152ce33b46afac2e25a656d28e1304283a6e3c847662dbdd80ad58cecf90',
+       i686: '04ae0d6f0337cbc88935e2909074699461bf48534811b9a4b6cb22c2caa13614',
+     x86_64: 'e3876dc56fa7d9a23f2a91a15078f242f282da6f6178082e9d393a2002355d38'
   })
 
-  def self.build
-    system './configure'
-    system 'make'
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'wget2' => :build
 
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  def self.patch
+    # Documentation requires texlive, our package for which is currently not working on certain architectures or glibc versions.
+    system "sed -i '/gperf.texi/d' configure.ac"
+    system "sed -i 's,tests doc],tests],' configure.ac"
+    system "cat configure.ac | tac | sed '/doc/,+2d' | tac > configure.ac.new && mv configure.ac.new configure.ac"
+    # For whatever reason, gperf doesn't actually support the usual `./autogen.sh && ./configure && make` build setup.
+    system './autopull.sh'
   end
 end

@@ -3,27 +3,33 @@ require 'package'
 class Emacs < Package
   description 'An extensible, customizable, free/libre text editor - and more.'
   homepage 'http://www.gnu.org/software/emacs/'
-  version '27.1'
-  license 'GPL-3+, FPL-1.3+, BSD, HPND, MIT, W3C, unicode and PSF-2'
-  compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/emacs/emacs-27.1.tar.xz'
-  source_sha256 '4a4c128f915fc937d61edfc273c98106711b540c9be3cd5d2e2b9b5b2f172e41'
+  version '29.1'
+  license 'GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://ftpmirror.gnu.org/emacs/emacs-29.1.tar.xz'
+  source_sha256 'd2f881a5cc231e2f5a03e86f4584b0438f83edd7598a09d24a21bd8d003e2e01'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/27.1_armv7l/emacs-27.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/27.1_armv7l/emacs-27.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/27.1_i686/emacs-27.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/27.1_x86_64/emacs-27.1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '2a4c0e724b6d5d05ae99418cad0557dc6e72c04e66dbccc041971bd3d954f408',
-     armv7l: '2a4c0e724b6d5d05ae99418cad0557dc6e72c04e66dbccc041971bd3d954f408',
-       i686: 'e428b1bcf011ce6a81a057b7b757436385ad11c5e3b34d5508d2ed3411b27047',
-     x86_64: 'ee87e75116c30bdfcab5c92dff5f7413c6b7bdc1fe813727dce16f21f2b0ec61',
+  binary_sha256({
+    aarch64: '6ae43bf5c3b04727fd8c2879b94605ce8d3a79c5cbed32c76fd2ec0a55a34ee2',
+     armv7l: '6ae43bf5c3b04727fd8c2879b94605ce8d3a79c5cbed32c76fd2ec0a55a34ee2',
+     x86_64: '54767b9f97dae52ee3b6ad63494a1a02b7d9c8f539ad15dc91ef49a4f939c2eb'
   })
 
   depends_on 'lcms'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
+  depends_on 'acl' # R
+  depends_on 'alsa_lib' # R
+  depends_on 'dbus' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'gnutls' # R
+  depends_on 'gpm' # R
+  depends_on 'jansson' # R
+  depends_on 'libxml2' # R
+  depends_on 'ncurses' # R
+  depends_on 'zlib' # R
+  depends_on 'sqlite' # R
 
   def self.build
     system "./configure \

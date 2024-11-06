@@ -1,0 +1,25 @@
+require 'buildsystems/meson'
+
+class Totem_pl_parser < Meson
+  description 'Totem playlist parsing library'
+  homepage 'https://gitlab.gnome.org/GNOME/totem-pl-parser'
+  version '3.26.6'
+  license 'LGPL GPL-2'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://download.gnome.org/sources/totem-pl-parser/3.26/totem-pl-parser-3.26.6.tar.xz'
+  source_sha256 'c0df0f68d5cf9d7da43c81c7f13f11158358368f98c22d47722f3bd04bd3ac1c'
+  binary_compression 'tar.zst'
+
+  binary_sha256({
+    aarch64: '0b5ddaa9e3078bf36f0f6c86047ac03c23df75cc31bf098191a269e9c978c1c9',
+     armv7l: '0b5ddaa9e3078bf36f0f6c86047ac03c23df75cc31bf098191a269e9c978c1c9',
+     x86_64: 'd940b25706611415e4fe0d8e7d090d55b3b7b44d02a6884f9b5386a0a3555175'
+  })
+
+  depends_on 'gobject_introspection'
+  depends_on 'libarchive'
+  depends_on 'libgcrypt'
+  depends_on 'libsoup'
+
+  gnome
+end

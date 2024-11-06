@@ -1,0 +1,12 @@
+/usr/local/bin/paper
+/usr/local/bin/paperconf
+/usr/local/etc/paperspecs
+/usr/local/include/paper.h
+/usr/local/lib64/libpaper.a
+/usr/local/lib64/libpaper.la
+/usr/local/lib64/libpaper.so
+/usr/local/lib64/libpaper.so.2
+/usr/local/lib64/libpaper.so.2.2.5
+/usr/local/share/doc/libpaper/README.md
+/usr/local/share/man/man1/paper.1.zst
+/usr/local/share/man/man5/paperspecs.5.zst

@@ -3,17 +3,17 @@ require 'package'
 class Terminus < Package
   description 'The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform'
   homepage 'https://github.com/pantheon-systems/terminus'
-  version '2.6.1'
+  version '3.6.0'
   license 'MIT'
-  compatibility 'all'
-  source_url 'SKIP'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://github.com/pantheon-systems/terminus/releases/download/#{version}/terminus.phar"
+  source_sha256 '97bfa7d0ab16b0998b245fb18b78c19e3a8dca737e8f259dfbc40ec58a0d59ac'
 
-  depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
+
+  no_compile_needed
 
   def self.install
-    system "curl -#LO https://github.com/pantheon-systems/terminus/releases/download/#{version}/terminus.phar"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('terminus.phar') ) == '97254f4aa4fb8fc8a900a2e22ab449d95d8ca7387c3916e041a1ea946a49d34b'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'terminus.phar', "#{CREW_DEST_PREFIX}/bin/terminus", mode: 0o755
   end
 end

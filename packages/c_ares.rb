@@ -1,33 +1,27 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class C_ares < Package
-  description 'c-ares is a C library for asynchronous DNS requests (including name resolves).'
-  homepage 'https://c-ares.haxx.se/'
-  version '1.17.1'
+class C_ares < CMake
+  description 'C library for asynchronous DNS requests (including name resolves).'
+  homepage 'https://c-ares.org/'
+  version '1.23.0'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://c-ares.haxx.se/download/c-ares-1.17.1.tar.gz'
-  source_sha256 'd73dd0f6de824afd407ce10750ea081af47eba52b8a6cb307d220131ad93fc40'
+  source_url 'https://github.com/c-ares/c-ares.git'
+  git_hashtag "cares-#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/c_ares/1.17.1_armv7l/c_ares-1.17.1-chromeos-armv7l.tpxz',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/c_ares/1.17.1_armv7l/c_ares-1.17.1-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/c_ares/1.17.1_i686/c_ares-1.17.1-chromeos-i686.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/c_ares/1.17.1_x86_64/c_ares-1.17.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '7d3542bd270aa9ebf5f2b08273f547978290f5febc5142ff8f7fed363efc122e',
-    armv7l: '7d3542bd270aa9ebf5f2b08273f547978290f5febc5142ff8f7fed363efc122e',
-    i686: 'bb4a3bd9eaeff1e09b68f83514ca9a2a64414445bd040536cfe48c147a745641',
-    x86_64: '2ab4479e0290444e44b842072c86c75e3a7a68c326d987be18f2cad01c19ea46'
+    aarch64: '70191e6614bdbcdb3bafe196af1ba643b2506e7b394417ed59e2ed532d057ce7',
+     armv7l: '70191e6614bdbcdb3bafe196af1ba643b2506e7b394417ed59e2ed532d057ce7',
+       i686: '4ceee8430606e7f1d9085b9d96b36a5a9b54a8a4561674b8826c013f1952ec16',
+     x86_64: 'e7a8595eaa6e95ecbb25c9568eac8fb6aa39e4ac0f462b32ad2b05f8bfa4dde6'
   })
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} #{CREW_ENV_OPTIONS}"
-    system 'make'
-  end
+  depends_on 'glibc' # R
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  cmake_options '-DCARES_STATIC=ON \
+      -DCARES_STATIC_PIC=ON \
+      -DCARES_BUILD_TESTS=OFF \
+      -DCARES_BUILD_TOOLS=ON \
+      -DCARES_SHARED=ON'
 end

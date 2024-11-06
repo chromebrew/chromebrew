@@ -3,33 +3,25 @@ require 'package'
 class Libusb < Package
   description 'A cross-platform library that gives apps easy access to USB devices'
   homepage 'https://sourceforge.net/projects/libusb/'
-  @_ver = '1.0.24'
-  version @_ver
+  version '1.0.26'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://github.com/libusb/libusb/releases/download/v#{@_ver}/libusb-#{@_ver}.tar.bz2"
-  source_sha256 '7efd2685f7b327326dcfb85cee426d9b871fd70e22caa15bb68d595ce2a2b12a'
+  source_url "https://github.com/libusb/libusb/releases/download/v#{version}/libusb-#{version}.tar.bz2"
+  source_sha256 '12ce7a61fc9854d1d2a1ffe095f7b5fac19ddba095c259e6067a46500381b5a5'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libusb/1.0.24_armv7l/libusb-1.0.24-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libusb/1.0.24_armv7l/libusb-1.0.24-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libusb/1.0.24_i686/libusb-1.0.24-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libusb/1.0.24_x86_64/libusb-1.0.24-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'ded8613e843afa15f3cee5cebfd443b46cd628184de64564df93104ceff11de2',
-     armv7l: 'ded8613e843afa15f3cee5cebfd443b46cd628184de64564df93104ceff11de2',
-       i686: '492b39ccfc194a917db879576b50d0b888c9036c70e7f0f15c39c7b427a75d4f',
-     x86_64: 'ceb4addc8cbb3e1e6a72549ef699514ed20ecb2b40d4277a42702b2c13f24491'
+    aarch64: 'b1ec533b10ebaca34474b8876e26b2ad9dfda3dab193e71a4caeddb4db3a6f38',
+     armv7l: 'b1ec533b10ebaca34474b8876e26b2ad9dfda3dab193e71a4caeddb4db3a6f38',
+       i686: 'f7b9cba3d12a9e999228b0143a617a768f2f90f897ee06588d581313c92f0e5c',
+     x86_64: '5517a4b11a9cd8789f32f700942c6627f872b4e742b6175dcb9746fc3795963f'
   })
 
   depends_on 'eudev'
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS}"
+    system "./configure \
+      #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

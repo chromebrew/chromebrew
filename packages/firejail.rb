@@ -1,38 +1,20 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Firejail < Package
+class Firejail < Autotools
   description 'Firejail is a SUID program that reduces the risk of security breaches by restricting the running environment of untrusted applications
   by using Linux namespaces and seccomp-bpf.'
   homepage 'https://firejail.wordpress.com'
-  version '0.9.54'
+  version '0.9.72-60ea220'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://sourceforge.net/projects/firejail/files/firejail/firejail-0.9.54.tar.xz'
-  source_sha256 'ce996854278863f3e91ff185198c7cc1377fb70053d37a43e3b1ef1021c57756'
+  source_url 'https://github.com/netblue30/firejail.git'
+  git_hashtag '60ea22080a36c66c3e90b75e016ad6324575c7a0'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/firejail/0.9.54_armv7l/firejail-0.9.54-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/firejail/0.9.54_armv7l/firejail-0.9.54-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/firejail/0.9.54_i686/firejail-0.9.54-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/firejail/0.9.54_x86_64/firejail-0.9.54-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: 'a34d46a5fb832516d072e064e3f71abd3f87a299960b465880b512450dc555e4',
+     armv7l: 'a34d46a5fb832516d072e064e3f71abd3f87a299960b465880b512450dc555e4',
+       i686: '0d7145aa047152da398cd50d1495a74cb8d93b4ec5db380ea771446af9aa07f6',
+     x86_64: 'a64b8e303201574631b07dd00d7813688ee2ade71b763d45eb99c496257fa351'
   })
-  binary_sha256 ({
-    aarch64: '6a5a4b9f191482d5fb5259d9b7a6e8487bff6dca1b44e859d78a9c98c474805c',
-     armv7l: '6a5a4b9f191482d5fb5259d9b7a6e8487bff6dca1b44e859d78a9c98c474805c',
-       i686: 'b5e81766f7cd14ea389ed9b767178d113e4073e021c67b6cf7a2ab26a8dcc00f',
-     x86_64: 'c6c490e1955926bebba1a01bac60472fc9d1a536ad4339b6ab1c5ac278be2b53',
-  })
-
-  def self.build
-    system "sed -i 's,-fstack-protector-all,,g' src/common.mk.in"
-    system "sed -i 's,-fstack-protector-all,,g' src/libtrace/Makefile.in"
-    system "sed -i 's,-fstack-protector-all,,g' src/libtracelog/Makefile.in"
-    system "sed -i 's,-fstack-protector-all,,g' src/libpostexecseccomp/Makefile.in"
-    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
 end

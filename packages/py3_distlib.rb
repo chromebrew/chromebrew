@@ -1,33 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_distlib < Package
+class Py3_distlib < Pip
   description 'Distlib provides distribution utilities for Python packages.'
   homepage 'https://bitbucket.org/pypa/distlib/'
-  @_ver = '0.3.1'
-  version @_ver
+  version "0.3.9-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://bitbucket.org/pypa/distlib.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_distlib/0.3.1_armv7l/py3_distlib-0.3.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_distlib/0.3.1_armv7l/py3_distlib-0.3.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_distlib/0.3.1_x86_64/py3_distlib-0.3.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '65978b1ac26d1fbed2e6d52b206556b5c73d97eb3b1df265ae0c697fa85b7987',
-     armv7l: '65978b1ac26d1fbed2e6d52b206556b5c73d97eb3b1df265ae0c697fa85b7987',
-     x86_64: '58c20fa460e47d16141c1e33482443e98b479c080cb2460df950a5d74b9e152f'
+    aarch64: 'df18f10779c82f90149713a03d33565821f61dc9d38dc548c7d5a5d4c138f766',
+     armv7l: 'df18f10779c82f90149713a03d33565821f61dc9d38dc548c7d5a5d4c138f766',
+       i686: '3f2a5ab5ae11be5c4b70ef7701bba725c31681cd4a01621f46df192a7d3aa64b',
+     x86_64: 'fa30fbf10eea81be37f6f32216dc03da6aea62d44f7006cd6c9274fe58c47439'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS_NO_SVEM}"
-  end
+  no_source_build
 end

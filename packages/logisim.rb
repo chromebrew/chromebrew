@@ -5,11 +5,14 @@ class Logisim < Package
   homepage 'https://sourceforge.net/projects/circuit/'
   version '2.7.1'
   license 'GPLv2'
-  compatibility 'all'
-  source_url 'SKIP'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://downloads.sourceforge.net/project/circuit/2.7.x/#{version}/logisim-generic-#{version}.jar"
+  source_sha256 '362a78c12ad18c203fed868872c4a01cd9c12141379d92e892bbe2c37e627bc2'
 
-  depends_on 'jdk8'
+  depends_on 'openjdk8'
   depends_on 'sommelier'
+
+  no_compile_needed
 
   def self.build
     logisim = <<~EOF
@@ -21,11 +24,9 @@ class Logisim < Package
   end
 
   def self.install
-    system "curl -L#O https://downloads.sourceforge.net/project/circuit/2.7.x/#{version}/logisim-generic-#{version}.jar"
-    abort 'Checksum mismatch :/ try again'.lightred unless Digest::SHA256.hexdigest( File.read("logisim-generic-#{version}.jar") ) == '362a78c12ad18c203fed868872c4a01cd9c12141379d92e892bbe2c37e627bc2'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/logisim"
-    FileUtils.cp "logisim-generic-#{version}.jar", "#{CREW_DEST_PREFIX}/share/logisim"
+    FileUtils.install "logisim-generic-#{version}.jar", "#{CREW_DEST_PREFIX}/share/logisim", mode: 0o644
     FileUtils.install 'logisim', "#{CREW_DEST_PREFIX}/bin/logisim", mode: 0o755
   end
 

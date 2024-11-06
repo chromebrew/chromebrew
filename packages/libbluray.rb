@@ -3,35 +3,35 @@ require 'package'
 class Libbluray < Package
   description 'This library is simply a tool for playback of Blu-ray movies.'
   homepage 'https://www.videolan.org/developers/libbluray.html'
-  version '1.1.2'
+  version '1.3.0'
+  compatibility 'x86_64 aarch64 armv7l'
   license 'LGPL-2.1'
-  compatibility 'all'
-  source_url 'https://get.videolan.org/libbluray/1.1.2/libbluray-1.1.2.tar.bz2'
-  source_sha256 'a3dd452239b100dc9da0d01b30e1692693e2a332a7d29917bf84bb10ea7c0b42'
+  source_url 'https://get.videolan.org/libbluray/1.3.0/libbluray-1.3.0.tar.bz2'
+  source_sha256 'e2dbaf99e84e0a9725f4985bcb85d41e52c2261cc651d8884b1b790b5ef016f9'
+  binary_compression 'tpxz'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbluray/1.1.2_armv7l/libbluray-1.1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbluray/1.1.2_armv7l/libbluray-1.1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbluray/1.1.2_i686/libbluray-1.1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbluray/1.1.2_x86_64/libbluray-1.1.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '2affb63f6bf45b408f27f9f52eb29d4eeed070bf0fa729f91349a70b784b4661',
-     armv7l: '2affb63f6bf45b408f27f9f52eb29d4eeed070bf0fa729f91349a70b784b4661',
-       i686: 'c82f5e72b2df76453d8b4c14b753096674949737b2ec94ceff888808d3727c0d',
-     x86_64: 'bb71312b23ffc4aa48fe759dcc05eeb1f45f895748b5ca8ed40a319e1734ab99',
+  binary_sha256({
+    aarch64: 'bf82630d544040492dd6d8d9f835ef448c6cce5752a50958b564bc17517fec60',
+     armv7l: 'bf82630d544040492dd6d8d9f835ef448c6cce5752a50958b564bc17517fec60',
+     x86_64: '06216dc7ac94c9cc1d4e86b67a8502e1550a0daf66865b24593c578d0e38435a'
   })
 
-  depends_on 'ant' => :build
+  depends_on 'libxml2'
+  depends_on 'freetype'
+  depends_on 'fontconfig'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
+            --enable-optimizations \
+            --disable-bdjava-jar"
     system 'make'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.check
+    system 'make', 'check'
   end
 end

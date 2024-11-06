@@ -1,35 +1,34 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Links < Package
-  description 'Links is text WWW browser with tables and frames.'
-  homepage 'http://www.jikos.cz/~mikulas/links/'
-  version '1.03'
+class Links < Autotools
+  description 'Links is a lynx-like text WWW browser with tables and frames.'
+  homepage 'http://links.twibright.com/'
+  version '2.30'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://www.jikos.cz/~mikulas/links/download/links-1.03.tar.gz'
-  source_sha256 '32443c6f011216a8a43ed0806d9d23c1defdd19bc4b021ee00cda197782e175a'
+  source_url "http://links.twibright.com/download/links-#{version}.tar.bz2"
+  source_sha256 'c4631c6b5a11527cdc3cb7872fc23b7f2b25c2b021d596be410dadb40315f166'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/links/1.03_armv7l/links-1.03-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/links/1.03_armv7l/links-1.03-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/links/1.03_i686/links-1.03-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/links/1.03_x86_64/links-1.03-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'de75740c75a6b141e68df3ab31a834890f79834843df543f1de9fbb077665d40',
-     armv7l: 'de75740c75a6b141e68df3ab31a834890f79834843df543f1de9fbb077665d40',
-       i686: '70a3a6c7fdcc9efd24b99e4526d1bf97d189b0d6180b89b51a455e5a23c60310',
-     x86_64: '4975b03ad6b4cda6b09f7e8ad16b90cc30adc01e2da30547c3e29fee130c1072',
+  binary_sha256({
+    aarch64: '7356e73ee8bf693ae549f23cf6062c4a2ae226eb4a5ac1fdd5ed472cb340452c',
+     armv7l: '7356e73ee8bf693ae549f23cf6062c4a2ae226eb4a5ac1fdd5ed472cb340452c',
+       i686: '565c3a9c6646904b37a50e5b834b3b666d225be3e8924e0f0dd08afcdbf489e6',
+     x86_64: 'b908c2dad31b45cff19e0fd030188ee0afa96f1734d5d745fd8de7f0f8ad871a'
   })
 
+  depends_on 'brotli' # R
+  depends_on 'bzip2' # R
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libpng' # R
+  depends_on 'lzlib' # R
+  depends_on 'lzma' # R
   depends_on 'openssl'
+  depends_on 'xzutils' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
-    system "make"
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
+  run_tests
 end

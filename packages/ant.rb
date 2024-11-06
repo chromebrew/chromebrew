@@ -2,48 +2,52 @@ require 'package'
 
 class Ant < Package
   description 'Apache Ant is a Java library and command-line tool whose mission is to drive processes described in build files as targets and extension points dependent upon each other.'
-  homepage 'http://ant.apache.org/'
-  version '1.10.10'
+  homepage 'https://ant.apache.org/'
+  version '1.10.14'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://downloads.apache.org/ant/source/apache-ant-1.10.10-src.tar.xz'
-  source_sha256 'c8ab046eaca09d2c3fa0cdf1a681740e31f8afad0ad6bc346fe51d16fdc6d92d'
+  source_url 'https://downloads.apache.org/ant/source/apache-ant-1.10.14-src.tar.xz'
+  source_sha256 '9eea3cd8a793574a07fde2f87b203dc86339492baeb539367d5aa5be497aea24'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.10_armv7l/ant-1.10.10-chromeos-armv7l.tpxz',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.10_armv7l/ant-1.10.10-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.10_i686/ant-1.10.10-chromeos-i686.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.10_x86_64/ant-1.10.10-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '0cd248d2aad662ee194c4da645a2de61757dc3e3fe2f1fa962cb08a5cc7c9df8',
-    armv7l: '0cd248d2aad662ee194c4da645a2de61757dc3e3fe2f1fa962cb08a5cc7c9df8',
-    i686: '41f67696a66bd3e812bd232eda0e3c499d11075b189364109ade3fb5e3737823',
-    x86_64: '3583405dbe2ea4233533f00e492140bfc48478e3d0024be3c9f98e372c6defaf'
+    aarch64: '467ba617135bbe2ba177bacbe2c98b9a520361b21d14b3e2508acee527c9f588',
+     armv7l: '467ba617135bbe2ba177bacbe2c98b9a520361b21d14b3e2508acee527c9f588',
+       i686: '979f1f0284376f53b341b8d3e015ce5bc0d425931590e5a6bde21b9de87157c2',
+     x86_64: '2763cdc4ddd5fa2a1b71f766302204f30814fad4a82528e09f947a779bc5da1a'
   })
 
-  depends_on 'jdk8'
+  depends_on 'openjdk8'
+
+  no_fhs
 
   def self.build
-    system "JAVA_HOME=#{CREW_PREFIX}/share/jdk8 ./build.sh"
+    system "JAVA_HOME=#{CREW_PREFIX} ./build.sh"
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/jdk8/"
-    system "for dist in lib bin; do \
-              cp -a dist/$dist/ #{CREW_DEST_PREFIX}/share/jdk8/; \
-            done"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
-    system "for bin in ant antRun antRun.pl complete-ant-cmd.pl runant.pl runant.py; do \
-              ln -s ../share/jdk8/bin/$bin #{CREW_DEST_PREFIX}/bin/; \
-            done"
+    # Copy lib and bin files to JAVA_HOME.
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/jre/"
+    %w[lib bin].each do |dir|
+      FileUtils.cp_r "dist/#{dir}/", "#{CREW_DEST_PREFIX}/jre/", preserve: true
+    end
 
+    # Symlink bin files to a directory in PATH.
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
+    %w[ant antRun antRun.pl complete-ant-cmd.pl runant.pl runant.py].each do |bin|
+      FileUtils.ln_s "../jre/bin/#{bin}", "#{CREW_DEST_PREFIX}/bin/"
+    end
+
+    # Remove Windows executables.
+    FileUtils.rm Dir["#{CREW_DEST_PREFIX}/jre/bin/*.bat"]
+    FileUtils.rm Dir["#{CREW_DEST_PREFIX}/jre/bin/*.cmd"]
+
+    # Add environment variables.
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @antenv = <<~ANTEOF
       # Apache Ant configuration
-      export JAVA_HOME=#{CREW_PREFIX}/share/jdk8
-      export ANT_HOME=\$JAVA_HOME
+      export ANT_HOME=#{CREW_PREFIX}/jre
     ANTEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/ant", @antenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/10-ant", @antenv)
   end
 end

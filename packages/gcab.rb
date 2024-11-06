@@ -1,39 +1,30 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gcab < Package
+class Gcab < Meson
   description 'A GObject library to create cabinet files'
   homepage 'https://gitlab.gnome.org/GNOME/gcab'
-  version '1.4'
+  version '1.6'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/gcab/-/archive/v1.4/gcab-v1.4.tar.bz2'
-  source_sha256 '597dd7d0ddee9065412abf0ee15ae73e913daf967f43af5dd55ea9b87b514188'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/gcab.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcab/1.4_armv7l/gcab-1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcab/1.4_armv7l/gcab-1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcab/1.4_i686/gcab-1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcab/1.4_x86_64/gcab-1.4-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '38438135d7527691a77a8c8016ad4afb13bebc6245663b87e8b0dd6beb41174d',
-     armv7l: '38438135d7527691a77a8c8016ad4afb13bebc6245663b87e8b0dd6beb41174d',
-       i686: '39f92f811a45cc0947c35dd7510eb00647bfd1cd6425b59c6483f84d2d6d4886',
-     x86_64: '69ad98764b36a8745ae765aa683df6d91aca5e42f1e313db5ae2dc72bdf94ce7',
+  binary_sha256({
+    aarch64: 'f9ba7c254adce2f4c3b622bce9272867efc38257b3ca6f062ca28fe41a8d0cbf',
+     armv7l: 'f9ba7c254adce2f4c3b622bce9272867efc38257b3ca6f062ca28fe41a8d0cbf',
+       i686: '83da57fe5363d0b06c110da0546c37c8e4d5ee1146a97f2b59681a889c29157f',
+     x86_64: '4915b0c6903d89b7b759e0efd8ee04691b63e594490025d472f5c7a29ea27acc'
   })
 
-  depends_on 'gobject_introspection'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'zlib' # R
 
-  def self.prebuild
-    system "sed -i 's,-fstack-protector-strong,-fno-stack-protector,' meson.build"
-  end
+  gnome
 
-  def self.build
-    system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} -Ddocs=false -Dvapi=false _build"
-    system 'ninja -v -C _build'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
-  end
+  meson_options '-Ddocs=false \
+      -Dtests=false \
+      -Dvapi=false'
 end

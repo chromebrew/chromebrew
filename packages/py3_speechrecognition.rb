@@ -1,35 +1,23 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_speechrecognition < Package
+class Py3_speechrecognition < Pip
   description 'SpeechRecognition is a library for performing speech recognition, with support for several engines and APIs, online and offline.'
   homepage 'https://github.com/Uberi/speech_recognition/'
-  @_ver = '3.8.1'
-  version @_ver
+  version "3.11.0-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/Uberi/speech_recognition.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_speechrecognition/3.8.1_armv7l/py3_speechrecognition-3.8.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_speechrecognition/3.8.1_armv7l/py3_speechrecognition-3.8.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_speechrecognition/3.8.1_i686/py3_speechrecognition-3.8.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_speechrecognition/3.8.1_x86_64/py3_speechrecognition-3.8.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '6a7c922b92517dfc88374777aa7a4a46b46454b06b97dc4f7e9f7c5c276117b2',
-     armv7l: '6a7c922b92517dfc88374777aa7a4a46b46454b06b97dc4f7e9f7c5c276117b2',
-       i686: '3c6dc27f3104eed6077024225802aa34b04028291b850a049ee2ec03f8d73929',
-     x86_64: '616ac521e9abc6844240623932a93a42421bc0e716a5733e8d11546bc4e9dbfd'
+    aarch64: '126080b3ed5daf57f85faae07a532d6a5c275b750dbad3868216cbe0db014361',
+     armv7l: '126080b3ed5daf57f85faae07a532d6a5c275b750dbad3868216cbe0db014361',
+       i686: 'ac6ff09bc0935f4ef955ac70056cf5beade710a8fc2a37ea17b86734e0b483de',
+     x86_64: 'cafaebb85c7282ddb66111199d3c2ef9f941bf72e06e7732dafde04b35f0e424'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'glibc' # R
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

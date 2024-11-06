@@ -2,18 +2,13 @@ require 'package'
 
 class Xdg_base < Package
   description 'XDG Base Directory Specification Configuration'
-  homepage 'https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html'
+  homepage 'https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html'
   version '0.7-7-1'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_base/0.7-7-1_armv7l/xdg_base-0.7-7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_base/0.7-7-1_armv7l/xdg_base-0.7-7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_base/0.7-7-1_i686/xdg_base-0.7-7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_base/0.7-7-1_x86_64/xdg_base-0.7-7-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2ec80e4af5d9791083b8004542b4fda18160a8773ef42a7390ec3018927c37ea',
      armv7l: '2ec80e4af5d9791083b8004542b4fda18160a8773ef42a7390ec3018927c37ea',
@@ -29,7 +24,7 @@ class Xdg_base < Package
     end
     if File.directory?("#{HOME}/.local") && !File.symlink?("#{HOME}/.local") && !FileUtils.cp_r("#{HOME}/.local/.",
                                                                                                 "#{CREW_PREFIX}/.config/")
-      # FileUtils.mkdir_p("#{CREW_PREFIX}/.config") unless Dir.exists? "#{CREW_PREFIX}/.config"
+      # FileUtils.mkdir_p("#{CREW_PREFIX}/.config") unless Dir.exist? "#{CREW_PREFIX}/.config"
       FileUtils.rm_rf("#{HOME}/.local")
     end
   end
@@ -38,7 +33,7 @@ class Xdg_base < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @xdgbaseenv = <<~XDGBASEEOF
       # Chromebrew's XDG configuration
-      # See https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+      # See https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
       # XDG Base Directory Specification Environment Variables
       export XDG_CACHE_HOME=#{CREW_PREFIX}/.cache
       export XDG_CONFIG_DIRS=#{CREW_PREFIX}/etc/xdg
@@ -47,7 +42,7 @@ class Xdg_base < Package
       export XDG_DATA_HOME=#{CREW_PREFIX}/.config/.local/share
       export XDG_RUNTIME_DIR=/var/run/chrome
     XDGBASEEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/xdg_base", @xdgbaseenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/xdg_base", @xdgbaseenv)
   end
 
   def self.postinstall

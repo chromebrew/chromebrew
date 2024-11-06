@@ -1,33 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_docx2txt < Package
+class Py3_docx2txt < Pip
   description 'Docx2txt is a pure python based utility to extract text and images from docx files.'
   homepage 'https://github.com/ankushshah89/python-docx2txt/'
-  @_ver = '0.8'
-  version @_ver
+  version "0.8-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/ankushshah89/python-docx2txt.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_docx2txt/0.8_armv7l/py3_docx2txt-0.8-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_docx2txt/0.8_armv7l/py3_docx2txt-0.8-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_docx2txt/0.8_x86_64/py3_docx2txt-0.8-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '8c73dcb3572f19da071bddaf2340ea7c5415790dd87ccd94a2667d3528247ce0',
-     armv7l: '8c73dcb3572f19da071bddaf2340ea7c5415790dd87ccd94a2667d3528247ce0',
-     x86_64: 'e4bb30becfb81c7f3b0570ec3f4849f2e44e9cdc164cf7ded0af8c40b46c6a92'
+    aarch64: '5e1093d0dc6ef8f7cdb4283d1877b972f951addd6ded997483161d91aaaa321a',
+     armv7l: '5e1093d0dc6ef8f7cdb4283d1877b972f951addd6ded997483161d91aaaa321a',
+       i686: 'f483ee44ebf2701b8353622e666fb29be2bf00630abed77c8116552da67469a1',
+     x86_64: 'b9c6548bbe2f99ab44b6ae684a8dc52c169be87978df38e580ae481e89a2f2b0'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS_NO_SVEM}"
-  end
+  no_source_build
 end

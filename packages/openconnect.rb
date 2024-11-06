@@ -1,25 +1,19 @@
 require 'package'
 
 class Openconnect < Package
-  version '7.08-1'
+  version '8.20'
   description 'OpenConnect is an SSL VPN client initially created to support Cisco\'s AnyConnect SSL VPN.'
   homepage 'http://www.infradead.org/openconnect/'
-  compatibility 'all'
   license 'LGPL-2.1 and GPL-2'
-  source_url 'ftp://ftp.infradead.org/pub/openconnect/openconnect-7.08.tar.gz'
-  source_sha256 '1c44ec1f37a6a025d1ca726b9555649417f1d31a46f747922b84099ace628a03'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.infradead.org/openconnect/download/openconnect-8.20.tar.gz'
+  source_sha256 'c1452384c6f796baee45d4e919ae1bfc281d6c88862e1f646a2cc513fc44e58b'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/7.08-1_armv7l/openconnect-7.08-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/7.08-1_armv7l/openconnect-7.08-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/7.08-1_i686/openconnect-7.08-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/7.08-1_x86_64/openconnect-7.08-1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'ca2e5a3d1deaa91670d114f94afb6a20e155efe6fbbaf24c0c7ab998711236dc',
-     armv7l: 'ca2e5a3d1deaa91670d114f94afb6a20e155efe6fbbaf24c0c7ab998711236dc',
-       i686: 'bd5819451328a81e4a1e78db9964cabbb8e84c1d97679e7699c8b3dced4267cf',
-     x86_64: 'e76d8af2e66e08618b40ca788442dcd317dc334c145748332ce3fcd5f03ddf29',
+  binary_sha256({
+    aarch64: '7b9c045bd2b24a6a1aacefa110c4271c22429eedf7eec1cebf057fa2898f4876',
+     armv7l: '7b9c045bd2b24a6a1aacefa110c4271c22429eedf7eec1cebf057fa2898f4876',
+     x86_64: '6f25b14be33eca8f53eb142dbda5b6df2db7c6b1dd6e5d000740e69979c7df10'
   })
 
   depends_on 'libproxy'
@@ -30,36 +24,49 @@ class Openconnect < Package
 
   def self.build
     system "./configure \
-           CFLAGS=' -fPIC' \
-           --prefix=#{CREW_PREFIX} \
-           --libdir=#{CREW_LIB_PREFIX} \
+           #{CREW_CONFIGURE_OPTIONS} \
            --with-vpnc-script=#{CREW_PREFIX}/etc/vpnc/vpnc-script"
     system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
-      system "echo '#!/bin/bash' > vpnc-start"
-      system "echo 'if test \$1; then' >> vpnc-start"
-      system "echo '  sudo ip tuntap add mode tun tun0' >> vpnc-start"
-      system "echo '  read -p \"VPN Username: \" USER' >> vpnc-start"
-      system "echo '  read -s -p \"VPN Password: \" PASS' >> vpnc-start"
-      system "echo '  echo \"\$PASS\" | openconnect --user=\$USER --interface=tun0 -b \$1' >> vpnc-start"
-      system "echo 'else' >> vpnc-start"
-      system "echo '  echo \"Usage: vpnc-start vpn.example.com\"' >> vpnc-start"
-      system "echo 'fi' >> vpnc-start"
-      system "chmod +x vpnc-start"
-      system "echo '#!/bin/bash' > vpnc-stop"
-      system "echo 'killall openconnect' >> vpnc-stop"
-      system "echo 'sudo ip tuntap del mode tun tun0' >> vpnc-stop"
-      system "chmod +x vpnc-stop"
-    end
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    @vpnc_start = <<~'VPNC_STARTEOF'
+      #!/bin/bash
+      if test "$1"; then
+        echo "Restarting ChromeOS shill process such that it does not kill the vpn network device."
+        sudo stop shill
+        sudo start shill BLOCKED_DEVICES="tun0,br0"
+        timeout=10
+        echo "Sleeping $timeout seconds to allow ChromeOS to reconnect to the network."
+        while [ $timeout -gt 0 ]; do
+           echo -ne "$timeout\033[0K\r"
+           sleep 1
+           ((timeout--))
+        done
+        sudo ip tuntap add mode tun tun0
+        read -r -p "VPN Username: " USER
+        read -r -s -p "VPN Password: " PASS
+        echo "$PASS" | openconnect --user="$USER" --interface=tun0 -b "$1"
+      else
+        echo "Usage: vpnc-start vpn.example.com"
+      fi
+    VPNC_STARTEOF
+    File.write "#{CREW_DEST_PREFIX}/bin/vpnc-start", @vpnc_start, perm: 0o755
+    @vpnc_stop = <<~VPNC_STOPEOF
+      #!/bin/bash
+      killall openconnect
+      sudo ip tuntap del mode tun tun0
+    VPNC_STOPEOF
+    File.write "#{CREW_DEST_PREFIX}/bin/vpnc-stop", @vpnc_stop, perm: 0o755
+  end
+
+  def self.postinstall
     puts
-    puts "Added the following bash scripts:".lightblue
-    puts "vpnc-start - start vpn".lightblue
-    puts "vpnc-stop - stop vpn".lightblue
+    puts 'Added the following bash scripts:'.lightblue
+    puts 'vpnc-start - start vpn'.lightblue
+    puts 'vpnc-stop - stop vpn'.lightblue
     puts
   end
 end

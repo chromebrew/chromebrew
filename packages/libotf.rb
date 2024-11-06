@@ -3,23 +3,16 @@ require 'package'
 class Libotf < Package
   description 'OpenType Font library'
   homepage 'https://www.nongnu.org/m17n/'
-  @_ver = '0.9.16'
-  version @_ver
+  version '0.9.16'
   license 'LGPL-2.1'
-  compatibility 'all'
-  source_url 'https://download.savannah.gnu.org/releases/m17n/libotf-#{@_ver}.tar.gz'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://download.savannah.gnu.org/releases/m17n/libotf-#{version}.tar.gz"
   source_sha256 '68db0ca3cda2d46a663a92ec26e6eb5adc392ea5191bcda74268f0aefa78066b'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libotf/0.9.16_armv7l/libotf-0.9.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libotf/0.9.16_armv7l/libotf-0.9.16-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libotf/0.9.16_i686/libotf-0.9.16-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libotf/0.9.16_x86_64/libotf-0.9.16-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '48ea420876299f2de783c250b6def3c2a87e7bf8c16695a63b7561efbb9594f8',
      armv7l: '48ea420876299f2de783c250b6def3c2a87e7bf8c16695a63b7561efbb9594f8',
-       i686: '487c98f04bdc12c06a2afd32087222150ee652d9fc3c6233daee341c41718406',
      x86_64: '8ec1c9f4e8b99482323e3bf444cca95b5e3d0abb90b8ea278d1461b29470e340'
   })
 
@@ -36,7 +29,7 @@ class Libotf < Package
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+      ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

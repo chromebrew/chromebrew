@@ -1,37 +1,24 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_secretstorage < Package
+class Py3_secretstorage < Pip
   description 'Python bindings to Freedesktop.org Secret Service API'
   homepage 'https://secretstorage.readthedocs.io/'
-  @_ver = '3.3.1'
-  version @_ver
+  version "3.3.3-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/mitya57/secretstorage.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_secretstorage/3.3.1_armv7l/py3_secretstorage-3.3.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_secretstorage/3.3.1_armv7l/py3_secretstorage-3.3.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_secretstorage/3.3.1_i686/py3_secretstorage-3.3.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_secretstorage/3.3.1_x86_64/py3_secretstorage-3.3.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'f96796ae7c776a7826d80744760d64d91ba5594bed17125620806ae071e7450a',
-     armv7l: 'f96796ae7c776a7826d80744760d64d91ba5594bed17125620806ae071e7450a',
-       i686: '8effc39487d487cbc6c4d79ce6a69b5bdfd0fec9bf1af06ac65355b5e9813fd5',
-     x86_64: '6907804991a9052f2a9d7fa2c472d0c407034013978cd231d3c17defa845573e'
+    aarch64: 'c21ec5de02b7874adf6746995e1247298957895e885deb360d75319f560efa77',
+     armv7l: 'c21ec5de02b7874adf6746995e1247298957895e885deb360d75319f560efa77',
+       i686: '44d6d4e58dcb10f5e9ac6526afe2734e293490296c3652f0ff995c0d3f28be6d',
+     x86_64: 'dfc9f2bf6b1202e0bf917f19795755204de57ec91dc172e51ecf63d75af533b0'
   })
 
   depends_on 'py3_jeepney'
   depends_on 'py3_cryptography'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

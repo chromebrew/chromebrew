@@ -3,35 +3,37 @@ require 'package'
 class Libtool < Package
   description 'GNU libtool is a generic library support script. Libtool hides the complexity of using shared libraries behind a consistent, portable interface.'
   homepage 'https://www.gnu.org/software/libtool/'
-  version '2.4.6-4'
+  version '2.5.3'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/libtool/libtool-2.4.6.tar.gz'
-  source_sha256 'e3bd4d5d3d025a36c21dd6af7ea818a2afcd4dfc1ea5a17b39d7854bcd0c06e3'
+  source_url "https://ftpmirror.gnu.org/libtool/libtool-#{version}.tar.xz"
+  source_sha256 '898011232cc59b6b3bbbe321b60aba9db1ac11578ab61ed0df0299458146ae2e'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtool/2.4.6-4_armv7l/libtool-2.4.6-4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtool/2.4.6-4_armv7l/libtool-2.4.6-4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtool/2.4.6-4_i686/libtool-2.4.6-4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtool/2.4.6-4_x86_64/libtool-2.4.6-4-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '4d83d3c0d26b8aef3fba0d0d42feaa3fda736652a82ecfd24f4cdce384dc2b0c',
-     armv7l: '4d83d3c0d26b8aef3fba0d0d42feaa3fda736652a82ecfd24f4cdce384dc2b0c',
-       i686: '6eb2da330f7d23c34f41f5f7d94e1abc2f4b4feeb59d4c3886bfb00c8d34b4fb',
-     x86_64: 'c0de77f4eeee3d662c9575b69125fa2778fe623ffad54de5ed296a01622e3724',
+  binary_sha256({
+    aarch64: 'a4bf53b273b5e90c4a3470d878b94f2de531ae8140ca460e28ca87664a5510ab',
+     armv7l: 'a4bf53b273b5e90c4a3470d878b94f2de531ae8140ca460e28ca87664a5510ab',
+       i686: '86f4cfa7180133de85327171f111e5728ab2431503b708aec781ce77bd4cf013',
+     x86_64: '72cecefe0089d7befb386b8df1b4608a5c6c987576e6f35d162a78a2743f76ca'
   })
 
   depends_on 'm4'
 
   def self.build
-    system "./configure",
-             "--prefix=#{CREW_PREFIX}",
-             "--libdir=#{CREW_LIB_PREFIX}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
+            --enable-ltdl-install"
     system 'make'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.check
+    # Some tests fail on arm builds.
+    # Link order of deplibs             FAILED (link-order2.at:126)
+    # static linking flags for programs FAILED (static.at:177)
+    # Run tests with low max_cmd_len    FAILED (cmdline_wrap.at:48)
+    system 'make', 'check'
   end
 end

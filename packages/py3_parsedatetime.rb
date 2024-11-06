@@ -1,33 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_parsedatetime < Package
+class Py3_parsedatetime < Pip
   description 'Parse human-readable date/time strings'
   homepage 'https://github.com/bear/parsedatetime/'
-  @_ver = '2.6'
-  version @_ver
+  version "2.6-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/bear/parsedatetime.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_parsedatetime/2.6_armv7l/py3_parsedatetime-2.6-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_parsedatetime/2.6_armv7l/py3_parsedatetime-2.6-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_parsedatetime/2.6_x86_64/py3_parsedatetime-2.6-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'bb4a5c7932ccdaba5b29e981f1872fd84f22cf1dbbe36c210f20f30ca2e7461c',
-     armv7l: 'bb4a5c7932ccdaba5b29e981f1872fd84f22cf1dbbe36c210f20f30ca2e7461c',
-     x86_64: 'ad032dca3e09c204521a36b4f5e266c74c2add26b77fc034e6ee2782d278ec61'
+    aarch64: '068807c3c6a9b9c97d99165ffa11a85f1776a42e67f4b95f9e05185c6bb14b6d',
+     armv7l: '068807c3c6a9b9c97d99165ffa11a85f1776a42e67f4b95f9e05185c6bb14b6d',
+       i686: '0875073438a18e7a36d1bd983177dc3a4894b352135fd6d0a630e90b3c1e6fbe',
+     x86_64: '633f755ee02d1df038de811e08881d2cacf1174dc3358a6cb2c32b7dcf7e7e2e'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

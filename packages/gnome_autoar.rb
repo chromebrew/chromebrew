@@ -1,53 +1,36 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_autoar < Package
+class Gnome_autoar < Meson
   description 'Automatic archives creating and extracting library'
-  homepage 'https://wiki.gnome.org/TingweiLan/GSoC2013Final'
-  @_ver = '0.3.1'
-  version "#{@_ver}-1"
+  homepage 'https://gitlab.gnome.org/GNOME/gnome-autoar'
+  version '0.4.4'
   license 'LGPL-2.1'
-  compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gnome-autoar/-/archive/#{@_ver}/gnome-autoar-#{@_ver}.tar.bz2"
-  source_sha256 '22a69b610697386a2c0edaa7aa64cc3b45e655d7fd5fe14f71d4d196c5747eab'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-autoar.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.3.1-1_armv7l/gnome_autoar-0.3.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.3.1-1_armv7l/gnome_autoar-0.3.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.3.1-1_i686/gnome_autoar-0.3.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.3.1-1_x86_64/gnome_autoar-0.3.1-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'd39da19ad4e07e32fdd631512d9be881b1b3d35169db87c681b20ae56ba027af',
-     armv7l: 'd39da19ad4e07e32fdd631512d9be881b1b3d35169db87c681b20ae56ba027af',
-       i686: 'b688460904880b84c9ccecab6f2affe9ee07674110ce92d5f66c2c44fa0f766c',
-     x86_64: '4908f3bbfd1ab6145428752bbb69d67a7b4921810d52a73e09732423e2c52ddd'
+    aarch64: '2b2ec52490637bb52ee34c9d454ef16c7c615dce5f1704cb00c8060c04a38f73',
+     armv7l: '2b2ec52490637bb52ee34c9d454ef16c7c615dce5f1704cb00c8060c04a38f73',
+     x86_64: '075ff1866f197a0d54c5ca5a1ea2d5ccb8a4bed63629500ffb8fae62939f418b'
   })
 
-  depends_on 'atk'
+  depends_on 'at_spi2_core' # R
   depends_on 'autoconf_archive' => :build
-  depends_on 'cairo'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
+  depends_on 'cairo' => :build
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'gtk3'
+  depends_on 'gtk3' # R
   depends_on 'gtk_doc' => :build
-  depends_on 'harfbuzz'
-  depends_on 'libarchive'
-  depends_on 'libjpeg'
-  depends_on 'pango'
+  depends_on 'harfbuzz' # R
+  depends_on 'libarchive' # R
+  depends_on 'libjpeg_turbo' => :build
+  depends_on 'pango' # R
   depends_on 'vala' => :build
+  depends_on 'zlib' # R
 
-  def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system "env CFLAGS='-flto=auto' \
-    CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-    ./configure \
-    #{CREW_OPTIONS} \
-    --enable-gtk-doc"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  gnome
 end

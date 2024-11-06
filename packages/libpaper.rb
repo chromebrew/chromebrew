@@ -1,34 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libpaper < Package
-  description 'Library for handling paper characteristics'
-  homepage 'https://packages.debian.org/unstable/source/libpaper'
-  version '1.1.28'
-  license 'GPL-2'
+class Libpaper < Autotools
+  description 'Library and command-line tools for configuring and getting information on paper sizes.'
+  homepage 'https://github.com/rrthomas/libpaper'
+  version '2.2.5'
+  license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://httpredir.debian.org/debian/pool/main/libp/libpaper/libpaper_1.1.28.tar.gz'
-  source_sha256 'c8bb946ec93d3c2c72bbb1d7257e90172a22a44a07a07fb6b802a5bb2c95fddc'
+  source_url 'https://github.com/rrthomas/libpaper.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpaper/1.1.28_armv7l/libpaper-1.1.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpaper/1.1.28_armv7l/libpaper-1.1.28-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpaper/1.1.28_i686/libpaper-1.1.28-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpaper/1.1.28_x86_64/libpaper-1.1.28-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '472aad9c97d57161047736b996d1d1ae3f8baab235ce5f53fc176c74df2edb14',
-     armv7l: '472aad9c97d57161047736b996d1d1ae3f8baab235ce5f53fc176c74df2edb14',
-       i686: '646d18362de3bcbba53b7f50b49d8d96760083eea17dd1a59fb2de1bc3a84b88',
-     x86_64: 'de7927b668b75642bdcfa82b06056af21cb11b9c710453457ecafec690e2880b',
+  binary_sha256({
+    aarch64: '311224c0e1461aa3333816f625d386ed654a9a0873796f7ef4889e10336879ab',
+     armv7l: '311224c0e1461aa3333816f625d386ed654a9a0873796f7ef4889e10336879ab',
+       i686: 'd4e0d32bb633f5c7df21d5b234f2ed71f482e8341fc0dacd9b0e0972d2a5181b',
+     x86_64: '1bd10e468924df67a70e49e6aff58d3c7dbac500e1ce735fdd701cf341d62dca'
   })
 
-  def self.build
-    system 'autoreconf -fvi'
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
+  depends_on 'gnupg' => :build
+  depends_on 'help2man' => :build
 
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  configure_options '--enable-relocatable'
+
+  run_tests
 end

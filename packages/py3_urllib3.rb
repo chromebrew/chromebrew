@@ -1,35 +1,14 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_urllib3 < Package
+class Py3_urllib3 < Pip
   description 'URLlib3 is an HTTP library with thread-safe connection pooling, file post, and more.'
   homepage 'https://urllib3.readthedocs.io/'
-  @_ver = '1.26.4'
-  version @_ver
+  version "2.2.3-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/urllib3/urllib3.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urllib3/1.26.4_armv7l/py3_urllib3-1.26.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urllib3/1.26.4_armv7l/py3_urllib3-1.26.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urllib3/1.26.4_i686/py3_urllib3-1.26.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urllib3/1.26.4_x86_64/py3_urllib3-1.26.4-chromeos-x86_64.tpxz'
-  })
-  binary_sha256({
-    aarch64: 'bf68c09e43c2146279fef1aebc82391a3a00f84d02bd8c1886583f84a92ae8d8',
-     armv7l: 'bf68c09e43c2146279fef1aebc82391a3a00f84d02bd8c1886583f84a92ae8d8',
-       i686: '9384102b6c832c47e4ff9ce145c2688ce42def8c526db8936e1d42379a6f6c3b',
-     x86_64: '0f4f87c1ca55ada88d565c947a3219502baa207396a4cdce27873f9126cab279'
-  })
+  depends_on 'python3' => :build
 
-  depends_on 'py3_setuptools' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_compile_needed
 end

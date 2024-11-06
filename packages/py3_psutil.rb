@@ -1,35 +1,23 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_psutil < Package
+class Py3_psutil < Pip
   description 'psutil is a cross-platform library for process and system monitoring in Python.'
   homepage 'https://github.com/giampaolo/psutil/'
-  @_ver = '5.8.0'
-  version @_ver + '-1'
+  version "6.1.0-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/giampaolo/psutil.git'
-  git_hashtag "release-#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_psutil/5.8.0-1_armv7l/py3_psutil-5.8.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_psutil/5.8.0-1_armv7l/py3_psutil-5.8.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_psutil/5.8.0-1_i686/py3_psutil-5.8.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_psutil/5.8.0-1_x86_64/py3_psutil-5.8.0-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '18ba9a9e443b4ad2881ea6d217b8dfacd5407c1f861fcda275cc75d8f9a11c43',
-     armv7l: '18ba9a9e443b4ad2881ea6d217b8dfacd5407c1f861fcda275cc75d8f9a11c43',
-       i686: 'f524b9fd9e96b751b4b3fcbe29362743ae2e6a5462781670db4f5a57a88756b8',
-     x86_64: 'a1dcb3782e3fdf47407195c207f8e308433031ac050eeb8ef587351364188595'
+    aarch64: 'cd9bad21b8e6d4854fd7f766259b2c34d02daa980469d327b41e81074b2f312e',
+     armv7l: 'cd9bad21b8e6d4854fd7f766259b2c34d02daa980469d327b41e81074b2f312e',
+       i686: '9d7ac4536b6c9d11861f20c5399187af2d61f1b551e0cb740094bc9c582b028b',
+     x86_64: 'b6a41647e90cf40227f6e10234aabc037f1b2c0394846d2e15ead119c2c90a66'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'glibc' # R
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

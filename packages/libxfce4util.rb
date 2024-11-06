@@ -1,42 +1,22 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxfce4util < Package
+class Libxfce4util < Autotools
   description 'Utility library for the Xfce4 desktop environment'
   homepage 'https://xfce.org/'
-  version '4.17.1'
+  version '4.19.3'
   license 'LGPL-2+ and GPL-2+'
-  compatibility 'all'
-  source_url 'https://archive.xfce.org/src/xfce/libxfce4util/4.17/libxfce4util-4.17.1.tar.bz2'
-  source_sha256 '1942151f3c1f3732bc53dd9fd3b936f62067796dc47a33c60a0ad05d933d90f2'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://archive.xfce.org/src/xfce/libxfce4util/4.19/libxfce4util-#{version}.tar.bz2"
+  source_sha256 'f047937f753466b7ff74ad3809c817b11db44498dd90497de7e1584ee48502c6'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfce4util/4.17.1_armv7l/libxfce4util-4.17.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfce4util/4.17.1_armv7l/libxfce4util-4.17.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfce4util/4.17.1_i686/libxfce4util-4.17.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfce4util/4.17.1_x86_64/libxfce4util-4.17.1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '60931162f4dd81641a84a84c840426d9d188a960a9cc222bcbd15591e718af57',
-     armv7l: '60931162f4dd81641a84a84c840426d9d188a960a9cc222bcbd15591e718af57',
-       i686: '597083d2e0a9b254580295236747903e0c032e0bf05537c6c6576c416450e4f2',
-     x86_64: 'bec77f6226c7fb69e215acc98c50da5c44189d089724672e607e9590c3ebc7b9',
+  binary_sha256({
+    aarch64: 'e78230be262113082306c9d0f9721022585aa570ce5421992e37c8e32b413b3b',
+     armv7l: 'e78230be262113082306c9d0f9721022585aa570ce5421992e37c8e32b413b3b',
+     x86_64: '396ad555b42b55134e855630a0d09cd8911502e196c6d1d3ed3ab0006d03d664'
   })
 
   depends_on 'gobject_introspection'
 
-  def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    system <<~BUILD
-      [ -x autogen.sh ] && env NOCONFIGURE='1' ./autogen.sh
-      env #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}
-      make
-    BUILD
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

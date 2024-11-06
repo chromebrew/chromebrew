@@ -1,35 +1,24 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_agate_sql < Package
+class Py3_agate_sql < Pip
   description 'Agate-sql adds SQL read/write support to agate.'
   homepage 'https://agate-sql.readthedocs.org/'
-  @_ver = '0.5.7'
-  version @_ver
+  version "0.7.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/wireservice/agate-sql.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_sql/0.5.7_armv7l/py3_agate_sql-0.5.7-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_sql/0.5.7_armv7l/py3_agate_sql-0.5.7-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_sql/0.5.7_x86_64/py3_agate_sql-0.5.7-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '211b35ed7e9d3a484c16defcd5189657693067d4db59afa67a01189e09409411',
-     armv7l: '211b35ed7e9d3a484c16defcd5189657693067d4db59afa67a01189e09409411',
-     x86_64: '4e5560fbade017e6aa1e2f552e625bc9df2421ec9ca1312d69d58668e29d1995'
+    aarch64: 'f7c8a337395025635ee1781f051a9e2b56e5c1bcfeddd944c21a43bf1769ae91',
+     armv7l: 'f7c8a337395025635ee1781f051a9e2b56e5c1bcfeddd944c21a43bf1769ae91',
+       i686: '9bd41a6572840f5d54df14be4c200afd889ba38ba5283c096261dc7b6f1b7380',
+     x86_64: 'b513d75c88c879a312bee339981d0aab1558783c388b0f082ec9e8951481f665'
   })
 
   depends_on 'py3_agate'
   depends_on 'py3_sqlalchemy'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

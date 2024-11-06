@@ -1,42 +1,28 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Strace < Package
+class Strace < Autotools
   description 'strace is a diagnostic, debugging and instructional userspace utility for Linux.'
   homepage 'https://strace.io/'
-  version '5.2-1'
+  version '6.7'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://strace.io/files/5.2/strace-5.2.tar.xz'
-  source_sha256 'd513bc085609a9afd64faf2ce71deb95b96faf46cd7bc86048bc655e4e4c24d2'
+  source_url 'https://strace.io/files/6.7/strace-6.7.tar.xz'
+  source_sha256 '2090201e1a3ff32846f4fe421c1163b15f440bb38e31355d09f82d3949922af7'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.2-1_armv7l/strace-5.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.2-1_armv7l/strace-5.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.2-1_i686/strace-5.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.2-1_x86_64/strace-5.2-1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '2affe33b6758ed49fc50d140e7673f44e33fc72410597eb851fef5e9699a1afc',
-     armv7l: '2affe33b6758ed49fc50d140e7673f44e33fc72410597eb851fef5e9699a1afc',
-       i686: '233884ae2118bd1558f85a0bef68260bdc981075d7e5861233004c920438f3c4',
-     x86_64: 'e5e6704b6749417a141f0c925294e53c1f0ff6119cfcd703cd156e0109ad5981',
+  binary_sha256({
+    aarch64: '17d17894e2e6310672586b7d1f542490d8d000f78ed49117c79145d318beb241',
+     armv7l: '17d17894e2e6310672586b7d1f542490d8d000f78ed49117c79145d318beb241',
+       i686: 'e781f0a6c053e44bc1afa18d4a576754ff147dbb6c66cf020181e3ef368b3d71',
+     x86_64: '3728df0a5f17fb34f79fc8011976f7f1052700238897b05dbd785e918eeca62f'
   })
 
   depends_on 'elfutils' # Needed for stack trace support
+  depends_on 'glibc' # R
 
-  def self.patch
-    system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,' strace-graph"
-  end
+  # This needs to be built with linux headers 5.15 on x86_64 via
+  # CREW_KERNEL_VERSION=5.15 crew upgrade linuxheaders ; CREW_KERNEL_VERSION=5.15 crew build strace
 
-  def self.build
-    system './configure',
-           '--with-libdw',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--disable-mpers \
+      --with-libdw'
 end

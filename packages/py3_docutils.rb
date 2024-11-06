@@ -1,32 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_docutils < Package
+class Py3_docutils < Pip
   description 'Docutils is an open-source text processing system for processing plaintext documentation into useful formats, such as HTML, LaTeX, man-pages, open-document or XML.'
   homepage 'http://docutils.sourceforge.net/'
-  version '0.17.1'
+  version "0.21.2-#{CREW_PY_VER}"
   license 'BSD-2, GPL-3 and public-domain'
   compatibility 'all'
-  source_url 'https://sourceforge.net/projects/docutils/files/docutils/0.17.1/docutils-0.17.1.tar.gz'
-  source_sha256 '686577d2e4c32380bb50cbb22f575ed742d58168cee37e99117a854bcd88f125'
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_docutils/0.17.1_armv7l/py3_docutils-0.17.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_docutils/0.17.1_armv7l/py3_docutils-0.17.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_docutils/0.17.1_x86_64/py3_docutils-0.17.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '7991b4f06ea92a83f2f3516f3c084e5a2800592164e70869e5c38751b5c9e593',
-     armv7l: '7991b4f06ea92a83f2f3516f3c084e5a2800592164e70869e5c38751b5c9e593',
-     x86_64: 'a78db8875de1b809b898334ae4026fb3b86ac87e4f6cc788c535702e70f037ba'
+    aarch64: 'a84e0858e761ead822b9846a562324b83f19934a6f0d6775915c7cd7ae495f35',
+     armv7l: 'a84e0858e761ead822b9846a562324b83f19934a6f0d6775915c7cd7ae495f35',
+       i686: '9ea1726b98463b3f8a05b7758bd3b6036a51784c6198841b4e2f03465edf9d09',
+     x86_64: '895df3eb7e91a2649f86fbb81e5bfb4be9b53a5ca2407342b3a914c8db5f7544'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

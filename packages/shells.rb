@@ -4,7 +4,7 @@ class Shells < Package
   description 'Launch your Shells™ virtual desktop'
   homepage 'https://www.shells.com/'
   version '0.2b'
-  license ''
+  license 'Proprietary'
   compatibility 'x86_64'
   source_url 'https://static.atonline.net/download/cswvf-5htgl5-77xz-glna-lowp-45nddony/shells-go-debian-buster-0.2b.tar.bz2'
   source_sha256 '6d1a8267056c5c372f2bc1918e022f618006e2bcec1869cf2bfbb7d33e8dbc84'

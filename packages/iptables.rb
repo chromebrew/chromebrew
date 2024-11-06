@@ -3,31 +3,34 @@ require 'package'
 class Iptables < Package
   description 'iptables is the userspace command line program used to configure the Linux 2.4.x and later packet filtering ruleset.'
   homepage 'https://www.netfilter.org/projects/iptables/'
-  version '1.8.3'
+  version '1.8.8'
   license 'GPL-2'
-  compatibility 'all'
-  source_url 'https://www.netfilter.org/projects/iptables/files/iptables-1.8.3.tar.bz2'
-  source_sha256 'a23cac034181206b4545f4e7e730e76e08b5f3dd78771ba9645a6756de9cdd80'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://www.netfilter.org/projects/iptables/files/iptables-1.8.8.tar.bz2'
+  source_sha256 '71c75889dc710676631553eb1511da0177bbaaf1b551265b912d236c3f51859f'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.3_armv7l/iptables-1.8.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.3_armv7l/iptables-1.8.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.3_i686/iptables-1.8.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.3_x86_64/iptables-1.8.3-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: 'e13ddd61cf7c2bc5428ebc87c3723818982e21ba53527bc98b7e55a5f68eb6fa',
+     armv7l: 'e13ddd61cf7c2bc5428ebc87c3723818982e21ba53527bc98b7e55a5f68eb6fa',
+     x86_64: '64356d6f62e37dd77ec2c5953cc20b9fe6280623145c184fc5896b184a6317ff'
   })
-  binary_sha256 ({
-    aarch64: '18c2cdd028a017bd6e7fa02ebc1f41158fa3793873bcd33a3054d746a7655be1',
-     armv7l: '18c2cdd028a017bd6e7fa02ebc1f41158fa3793873bcd33a3054d746a7655be1',
-       i686: '7d19db312bd7d3ebad6e90049f03b656add0abf7f55f299a2243316136a2e130',
-     x86_64: 'fbef75acb3252c55f30712ac902662a1c2968932e167df82173ba64cd333e45e',
-  })
+
+  depends_on 'glibc' # R
+
+  def self.patch
+    system 'filefix'
+  end
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --disable-nftables"
+    system "#{CREW_ENV_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
+      --enable-static \
+      --disable-nftables"
     system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

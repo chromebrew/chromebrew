@@ -1,43 +1,21 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Brotli < Package
+class Brotli < CMake
   description 'Brotli compression format'
   homepage 'https://github.com/google/brotli'
-  version '1.0.9'
+  version '1.1.0'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/google/brotli/archive/v1.0.9.tar.gz'
-  source_sha256 'f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46'
+  source_url 'https://github.com/google/brotli/archive/v1.1.0.tar.gz'
+  source_sha256 'e720a6ca29428b803f4ad165371771f5398faba397edf6778837a18599ea13ff'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/brotli/1.0.9_armv7l/brotli-1.0.9-chromeos-armv7l.tpxz',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/brotli/1.0.9_armv7l/brotli-1.0.9-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/brotli/1.0.9_i686/brotli-1.0.9-chromeos-i686.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/brotli/1.0.9_x86_64/brotli-1.0.9-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '5346decd05692836b92056ecddbd530ce4b8c741f4b8903104a0495f0b44b590',
-    armv7l: '5346decd05692836b92056ecddbd530ce4b8c741f4b8903104a0495f0b44b590',
-    i686: '2e0214bd69b04c9deb8af703c21ccca71c98462fcad81c7664608376e926af27',
-    x86_64: '04cabaaf97a633c2ffe1de7ebc74dd4227f60e1dc1e69bd6094fe69e38020cb4'
+    aarch64: 'd13d057682ef6ded09fd4490d83065e99bd66d23e9f3bc5e34b8b805c289cb95',
+     armv7l: 'd13d057682ef6ded09fd4490d83065e99bd66d23e9f3bc5e34b8b805c289cb95',
+       i686: '23497dabfe0c426384f5c65fdeb98329f7a2110c1d628d29c95eb5e1d1f5b95d',
+     x86_64: '7f5b4bb53f796eff2267b3329588566d259feb136b2b5d2dde7032bde3bfd9bc'
   })
 
-  def self.build
-    FileUtils.mkdir('builddir')
-    Dir.chdir('builddir') do
-      system "cmake #{CREW_CMAKE_OPTIONS} \
-      ../ -G Ninja"
-    end
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-    Dir.chdir CREW_DEST_LIB_PREFIX.to_s do
-      @brotlilibs = %w[libbrotlidec libbrotlienc libbrotlicommon]
-      @brotlilibs.each do |lib|
-        FileUtils.ln_s "#{lib}-static.a", "#{lib}.a"
-      end
-    end
-  end
+  depends_on 'glibc' # R
 end

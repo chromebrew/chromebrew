@@ -3,36 +3,39 @@ require 'package'
 class Libportal < Package
   description 'libportal provides GIO-style async APIs for most Flatpak portals.'
   homepage 'https://github.com/flatpak/libportal'
-  version '0.3'
+  version '0.6-1'
   license 'GPL-2+'
-  compatibility 'all'
-  source_url 'https://github.com/flatpak/libportal/releases/download/0.3/libportal-0.3.tar.xz'
-  source_sha256 'fd35d66357169e63e33ef46c43fdf22ddc07dbd960ec3462b58ca9ef15a65bd7'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/flatpak/libportal/archive/refs/tags/0.6.tar.gz'
+  source_sha256 '8ad326c4f53b7433645dc86d994fef0292bee8adda0fe67db9288ace19250a9c'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libportal/0.3_armv7l/libportal-0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libportal/0.3_armv7l/libportal-0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libportal/0.3_i686/libportal-0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libportal/0.3_x86_64/libportal-0.3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '40fd03920ab3921bb7b40580da67071c3fd6fc58dd6b4329fce2c36a6a36b54c',
-     armv7l: '40fd03920ab3921bb7b40580da67071c3fd6fc58dd6b4329fce2c36a6a36b54c',
-       i686: '9958d65c373711027353a478a51fdce534a58891f3212edecd14e4727cf05416',
-     x86_64: '3a2b74f4d9b3faf92d55e545f891475470c97eda8baac143142e3b669bc1b34a',
+  binary_sha256({
+    aarch64: 'e36d5b19b14145ca110f55da37402b3898677e01b86a3e77401f1687e280d00a',
+     armv7l: 'e36d5b19b14145ca110f55da37402b3898677e01b86a3e77401f1687e280d00a',
+     x86_64: 'ff87e704a0402c8aba6ddf27a5d3bc5e4289251cd2fc80478f70254ece4c37c4'
   })
 
-  def self.prebuild
-    # Disable doc
-    system "sed -i '38d' meson.build"
-  end
+  depends_on 'gobject_introspection'
+  depends_on 'gtk4'
+  depends_on 'gtk3'
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader'
 
   def self.build
-    system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --buildtype=release _build"
-    system 'ninja -v -C _build'
+    system "meson setup #{CREW_MESON_OPTIONS} \
+    -Dbackends=gtk3,gtk4 \
+    -Ddocs=false \
+    -Dportal-tests=false \
+    -Dtests=false \
+    builddir"
+    system 'meson configure --no-pager builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

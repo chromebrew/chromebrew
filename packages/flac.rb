@@ -1,37 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Flac < Package
+class Flac < Autotools
   description 'FLAC stands for Free Lossless Audio Codec, an audio format similar to MP3, but lossless, meaning that audio is compressed in FLAC without any loss in quality.'
   homepage 'https://xiph.org/flac/'
-  version '1.3.2'
+  version '1.4.3'
   license 'BSD, FDL-1.2, GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url 'https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.3.2.tar.xz'
-  source_sha256 '91cfc3ed61dc40f47f050a109b08610667d73477af6ef36dcad31c31a4a8d53f'
+  source_url 'https://downloads.xiph.org/releases/flac/flac-1.4.3.tar.xz'
+  source_sha256 '6c58e69cd22348f441b861092b825e591d0b822e106de6eb0ee4d05d27205b70'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flac/1.3.2_armv7l/flac-1.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flac/1.3.2_armv7l/flac-1.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flac/1.3.2_i686/flac-1.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flac/1.3.2_x86_64/flac-1.3.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'adbc9e93a8d301f82c6cb9ede5392c787bd3994eaf1a963df9c36298f137e08b',
-     armv7l: 'adbc9e93a8d301f82c6cb9ede5392c787bd3994eaf1a963df9c36298f137e08b',
-       i686: '37d96f3aa15558f3bf2f2191db3b9c346785bc5d16a99027c5332f4fc2374681',
-     x86_64: 'f8868c2bcc493dcc7cf51d72531bf6e0be420d883b314847f20eed37251e251b',
+  binary_sha256({
+    aarch64: 'f0b9a35c35a3be20185cca981650dd7ba33550505c7853fa52e0eec823181a8d',
+     armv7l: 'f0b9a35c35a3be20185cca981650dd7ba33550505c7853fa52e0eec823181a8d',
+       i686: '863ad1e4a367536471713f192db032f5cf6521652ab55220b900f0d7118cf562',
+     x86_64: 'eb70328f8034cdcbb8047ffe15f42555b048ae111f0ba4001d5c282f6c59ee42'
   })
 
-  depends_on 'libogg'
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libogg' # R
 end

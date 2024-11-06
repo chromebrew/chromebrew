@@ -1,14 +1,14 @@
 require 'package'
+Package.load_package("#{__dir__}/gcloud.rb")
 
 class Google_cloud_sdk < Package
-  description 'Command-line interface for Google Cloud Platform products and services'
-  homepage 'https://cloud.google.com/sdk/gcloud/'
-  version '341.0.0'
-  license 'Apache-2.0'
-  compatibility 'i686,x86_64'
-
-  depends_on 'gcloud'
+  description Gcloud.description
+  homepage Gcloud.homepage
+  version Gcloud.version
+  license Gcloud.license
+  compatibility Gcloud.compatibility
 
   is_fake
 
+  depends_on 'gcloud'
 end

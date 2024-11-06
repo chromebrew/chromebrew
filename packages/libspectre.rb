@@ -3,29 +3,26 @@ require 'package'
 class Libspectre < Package
   description 'Small library for rendering Postscript documents'
   homepage 'https://www.freedesktop.org/wiki/Software/libspectre/'
-  version '0.2.9'
+  version '0.2.10'
   license 'GPL-2'
-  compatibility 'all'
-  source_url 'https://libspectre.freedesktop.org/releases/libspectre-0.2.9.tar.gz'
-  source_sha256 '49ae9c52b5af81b405455c19fe24089d701761da2c45d22164a99576ceedfbed'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://libspectre.freedesktop.org/releases/libspectre-0.2.10.tar.gz'
+  source_sha256 'cf60b2a80f6bfc9a6b110e18f08309040ceaa755210bf94c465a969da7524d07'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspectre/0.2.9_armv7l/libspectre-0.2.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspectre/0.2.9_armv7l/libspectre-0.2.9-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspectre/0.2.9_i686/libspectre-0.2.9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspectre/0.2.9_x86_64/libspectre-0.2.9-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '4b475b4e20a95c3ae4a2b9c515b63b865395d3885291f8339adc25315a47c09e',
-     armv7l: '4b475b4e20a95c3ae4a2b9c515b63b865395d3885291f8339adc25315a47c09e',
-       i686: '1d329f12e3b38090cb438e550967caf3d974ca7544235746b436b8ad5b7bb443',
-     x86_64: '27903948a5042bb286bd1654d979376b2318980629bc44b94fb89b77a36dfec3',
+  binary_sha256({
+    aarch64: 'd223b14ea07212f13a354c3bf35325c0294e6576c53508cd98b4ef5c678dc89e',
+     armv7l: 'd223b14ea07212f13a354c3bf35325c0294e6576c53508cd98b4ef5c678dc89e',
+     x86_64: 'c919a94a979fc362af267b647412ff6f8d58d1bbc39de6250683129f9a08a4d8'
   })
 
   depends_on 'ghostscript' # = libgs
+  depends_on 'libjpeg_turbo'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-static"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

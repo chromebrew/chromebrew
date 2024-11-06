@@ -1,33 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_cssselect < Package
+class Py3_cssselect < Pip
   description 'CSSselect parses CSS3 Selectors and translates them to XPath 1.0.'
   homepage 'https://cssselect.readthedocs.io/'
-  @_ver = '1.1.0'
-  version @_ver
+  version "1.2.0-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/scrapy/cssselect.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cssselect/1.1.0_armv7l/py3_cssselect-1.1.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cssselect/1.1.0_armv7l/py3_cssselect-1.1.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cssselect/1.1.0_x86_64/py3_cssselect-1.1.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'daadd3f8649cabb1884f2e8ed37c05149be271e3aff9d0022548ce896a11e5ab',
-     armv7l: 'daadd3f8649cabb1884f2e8ed37c05149be271e3aff9d0022548ce896a11e5ab',
-     x86_64: 'bb1c01edf7595c0fdd4baa7c738df7c7c4c861f7b64bf1a23e2fc908d1d3f341'
+    aarch64: 'f6d6d1e7c2046864651a1f3d142ae7050c1cad9c7b05de1e30274214ad460d2e',
+     armv7l: 'f6d6d1e7c2046864651a1f3d142ae7050c1cad9c7b05de1e30274214ad460d2e',
+       i686: 'b90a81dbd9c21673742bfc4bcdabad158a88bed3509d093de8d18a3b44d19370',
+     x86_64: '4f304107cb4f04a7c3ca214c7b743c16bef757072e8ec06d3d13efc6a20a73cc'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

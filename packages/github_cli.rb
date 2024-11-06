@@ -3,32 +3,28 @@ require 'package'
 class Github_cli < Package
   description 'Official Github CLI tool'
   homepage 'https://cli.github.com/'
-  version '1.8.1'
+  version '2.60.1'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/cli/cli/archive/refs/tags/v1.8.1.tar.gz'
-  source_sha256 '5bdbc589a6d5cca241b2dc467d846a8f23c465d78efd898271f18b636608d6e6'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/github_cli/1.8.1_armv7l/github_cli-1.8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/github_cli/1.8.1_armv7l/github_cli-1.8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/github_cli/1.8.1_i686/github_cli-1.8.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/github_cli/1.8.1_x86_64/github_cli-1.8.1-chromeos-x86_64.tar.xz'
+  source_url({
+    aarch64: "https://github.com/cli/cli/releases/download/v#{version}/gh_#{version}_linux_armv6.tar.gz",
+     armv7l: "https://github.com/cli/cli/releases/download/v#{version}/gh_#{version}_linux_armv6.tar.gz",
+       i686: "https://github.com/cli/cli/releases/download/v#{version}/gh_#{version}_linux_386.tar.gz",
+     x86_64: "https://github.com/cli/cli/releases/download/v#{version}/gh_#{version}_linux_amd64.tar.gz"
   })
-  binary_sha256({
-    aarch64: 'fa3db74e10915c3edb47bc8f92b934dddb5fbb284ba9526c3e207826b3f8f949',
-     armv7l: 'fa3db74e10915c3edb47bc8f92b934dddb5fbb284ba9526c3e207826b3f8f949',
-       i686: '490bea45749ecc20f57a49e78ea323e45fda376d4437dfa4ecc01f7a34ea972b',
-     x86_64: 'c82ab211a3c9653e4f16a6aed36bc377ffa54a6d193b1d51a076dbf91faf1997'
+  source_sha256({
+    aarch64: '9ca62426c20b6cdd5e32ffe5ae6fca75edea14645bc6de0e853025eadd3544a6',
+     armv7l: '9ca62426c20b6cdd5e32ffe5ae6fca75edea14645bc6de0e853025eadd3544a6',
+       i686: '9f83869ca7b11d014481c73afbebea6ea238c8585684cec7389eca03513636cb',
+     x86_64: 'dfcd9926de38a797e88e604c3111ecf9ddf13c524706712b2b0d2e2fc4a6ed7f'
   })
 
-  depends_on 'go' => :build
-
-  def self.build
-    system 'make'
-  end
+  no_compile_needed
+  no_shrink
+  no_strip # ./usr/local/bin/gh: 1: ./usr/local/bin/gh: Syntax error: redirection unexpected (expecting ")")
 
   def self.install
-    system "install -Dm755 bin/gh #{CREW_DEST_PREFIX}/bin/gh"
+    FileUtils.install 'bin/gh', "#{CREW_DEST_PREFIX}/bin/gh", mode: 0o755
+    FileUtils.mv 'share', CREW_DEST_PREFIX
   end
 end

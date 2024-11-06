@@ -2,84 +2,82 @@ require 'package'
 
 class Icu4c < Package
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
-  homepage 'http://site.icu-project.org/'
-  version '69.1'
+  homepage 'https://icu.unicode.org/'
+  version '75.1'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/unicode-org/icu/releases/download/release-69-1/icu4c-69_1-src.tgz'
-  source_sha256 '4cba7b7acd1d3c42c44bb0c14be6637098c7faf2b330ce876bc5f3b915d09745'
+  source_url 'https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-src.tgz'
+  source_sha256 'cb968df3e4d2e87e8b11c49a5d01c787bd13b9545280fc6642f826527618caef'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/69.1_armv7l/icu4c-69.1-chromeos-armv7l.tpxz',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/69.1_armv7l/icu4c-69.1-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/69.1_i686/icu4c-69.1-chromeos-i686.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/69.1_x86_64/icu4c-69.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '31aaafa8b65f82f0bd77e403c4cf3819b20ddfd8abd775996bbf740251244aeb',
-    armv7l: '31aaafa8b65f82f0bd77e403c4cf3819b20ddfd8abd775996bbf740251244aeb',
-    i686: 'bbb7320a1aac37f09c7f8eb96ed1fefc5f01bc7a85ed0ad1cc9dac2a781472ea',
-    x86_64: '868a783d335eb13ff06d29b5221448a50e68a728ee1c35f3dc4c16c816716d68'
+    aarch64: '2ff2ed4760529e3611a51211876c17df5c9acc5a689cd35cb5a98ce0c4c1f714',
+     armv7l: '2ff2ed4760529e3611a51211876c17df5c9acc5a689cd35cb5a98ce0c4c1f714',
+       i686: '3bab33be0214ced3080b895c615ee8f9bf3b98e191701be0917c2e02c783c26f',
+     x86_64: '83e81c0d8bb9981034d6d63755ac0e9ae833d9544cbc07e32d242e98cf3d30db'
   })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
   def self.build
-    FileUtils.cd('source') do
-      case ARCH
-      when 'aarch64', 'armv7l'
-        # Armhf requires sane ELF headers rather than other architectures as
-        # discussed in https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=653457
-        system "sed -e '/LDFLAGSICUDT=/cLDFLAGSICUDT=' -i config/mh-linux"
-      end
-      system "./configure \
-        #{CREW_OPTIONS} \
-        #{CREW_ENV_OPTIONS} \
-        --enable-static \
+    Dir.chdir 'source' do
+      system "mold -run ./configure \
+        #{CREW_CONFIGURE_OPTIONS} \
         --enable-shared \
-        --without-samples \
-        --without-tests"
+        --disable-samples \
+        --disable-tests"
       system 'make'
     end
   end
 
-  @icuver = '69'
-  @oldicuver = %w[67 68]
+  @oldicuver = %w[version.split('.').first.to_i - 1]
 
   def self.install
-    FileUtils.cd('source') do
+    Dir.chdir 'source' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
     Dir.chdir CREW_DEST_LIB_PREFIX do
       @oldicuver.each do |oldver|
         # Backwards compatibility symlinks (which may not work - see postinstall.)
-        FileUtils.ln_sf "libicudata.so.#{@icuver}", "libicudata.so.#{oldver}"
-        FileUtils.ln_sf "libicui18n.so.#{@icuver}", "libicui18n.so.#{oldver}"
-        FileUtils.ln_sf "libicuio.so.#{@icuver}", "libicuio.so.#{oldver}"
-        FileUtils.ln_sf "libicutest.so.#{@icuver}", "libicutest.so.#{oldver}"
-        FileUtils.ln_sf "libicutu.so.#{@icuver}", "libicutu.so.#{oldver}"
-        FileUtils.ln_sf "libicuuc.so.#{@icuver}", "libicuuc.so.#{oldver}"
+        FileUtils.ln_sf "libicudata.so.#{version}", "libicudata.so.#{oldver}"
+        FileUtils.ln_sf "libicui18n.so.#{version}", "libicui18n.so.#{oldver}"
+        FileUtils.ln_sf "libicuio.so.#{version}", "libicuio.so.#{oldver}"
+        FileUtils.ln_sf "libicutest.so.#{version}", "libicutest.so.#{oldver}"
+        FileUtils.ln_sf "libicutu.so.#{version}", "libicutu.so.#{oldver}"
+        FileUtils.ln_sf "libicuuc.so.#{version}", "libicuuc.so.#{oldver}"
       end
     end
   end
 
   def self.postinstall
-    # Check for packages that expect an older icu library.
-    #Dir.chdir CREW_LIB_PREFIX do
-      #@oldicuver.each do |oldver|
-        #puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
-        #@fileArray = []
-        #@libArray = []
-        #@nmresults = %x[nm  -A *.so* 2>/dev/null | grep ucol_open_#{oldver}].chop.split(/$/).map(&:strip)
-        #@nmresults.each { |fileLine| @libArray.push(fileLine.partition(":").first) }
-        #@libArray.each do |f|
-          #@grepresults =  %x[grep "#{f}" #{CREW_META_PATH}*.filelist].chomp.gsub('.filelist','').partition(":").first.gsub(CREW_META_PATH,'').split(/$/).map(&:strip)
-          #@grepresults.each { |fileLine| @fileArray.push(fileLine) }
-        #end
-        #unless @fileArray.empty?
-          #@fileArray.uniq.sort.each do |item|
-            #puts item.lightred
-          #end
-        #end
-      #end
-    #end
+    # Check for packages that expect an older icu library, but not in a container, since we have already
+    # checked all obvious packages there.
+    return if CREW_IN_CONTAINER
+
+    Dir.chdir CREW_LIB_PREFIX do
+      @oldicuver = %w[74.2 73.2 73 72 72.1]
+      @oldicuver.each do |oldver|
+        puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
+        @file_array = []
+        @lib_array = []
+        @nmresults = `nm  -A *.so* 2>/dev/null | grep ucol_open_#{oldver}`.chop.split(/$/).map(&:strip)
+        @nmresults.each { |file_line| @lib_array.push(file_line.partition(':').first) }
+        @lib_array.each do |f|
+          @grepresults = `grep "#{f}" #{CREW_META_PATH}/*.filelist`.chomp.gsub('.filelist', '').partition(':').first.gsub(
+            CREW_META_PATH, ''
+          ).split(/$/).map(&:strip)
+          @grepresults.each { |file_line| @file_array.push(file_line) }
+        end
+        # Mozjs contains an internal icu which will not match this version.
+        # Update the following when there is a new version of mozjs.
+        @file_array.delete_if { |item| item == 'js115' }
+        next if @file_array.empty?
+
+        @file_array.uniq.sort.each do |item|
+          puts item.lightred
+        end
+      end
+    end
   end
 end

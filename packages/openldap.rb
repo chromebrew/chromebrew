@@ -1,41 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Openldap < Package
+class Openldap < Autotools
   description 'OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.'
   homepage 'https://www.openldap.org/'
-  @_ver = '2.5.5'
-  version "#{@_ver}-1"
+  version '2.6.8'
   license 'OpenLDAP and GPL-2'
   compatibility 'all'
-  source_url "https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-#{@_ver}.tgz"
-  source_sha256 '74ecefda2afc0e054d2c7dc29166be6587fa9de7a4087a80183bc9c719dbf6b3'
+  source_url 'https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.8.tgz'
+  source_sha256 '48969323e94e3be3b03c6a132942dcba7ef8d545f2ad35401709019f696c3c4e'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.5.5-1_armv7l/openldap-2.5.5-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.5.5-1_armv7l/openldap-2.5.5-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.5.5-1_i686/openldap-2.5.5-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.5.5-1_x86_64/openldap-2.5.5-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'fb6fd0f0690103b39b71bce3a71426feb41ac8f0de03466a2a5985dcd82a4fdd',
-     armv7l: 'fb6fd0f0690103b39b71bce3a71426feb41ac8f0de03466a2a5985dcd82a4fdd',
-       i686: '409d75a7523e4de951285a5f9daf0d14166467242ce37cf85b5718a85e63cc88',
-     x86_64: 'a79aa7779fe182d0e529099f704a7c3d9e590b103d33e2f35779e59c4b582e06'
+    aarch64: '3b475001d98c3143a48c57887a26fe2366149061c6dfeb6b26aa84fc2179a6cd',
+     armv7l: '3b475001d98c3143a48c57887a26fe2366149061c6dfeb6b26aa84fc2179a6cd',
+       i686: '86d7876872980466fd29a2f0fa94b1f2f08d7d9c99e72f74df30e6df0caa7a86',
+     x86_64: 'c60b1a431470cdef4b61b2cfbd16d512541a95e83a447f90327f5da03c7b6414'
   })
 
-  depends_on 'libcyrussasl'
+  depends_on 'e2fsprogs' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'krb5' => :build
+  depends_on 'libcyrussasl' # R
+  depends_on 'openssl' # R
+  depends_on 'util_linux' # R
 
-  def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    system "./configure #{CREW_OPTIONS} #{CREW_ENV_OPTIONS} --disable-slapd"
-    system 'make'
-    system 'make depend'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--disable-slapd'
 end

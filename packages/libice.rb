@@ -2,36 +2,36 @@ require 'package'
 
 class Libice < Package
   description 'X.org X Inter Client Exchange Library'
-  homepage 'http://www.x.org'
-  version '1.0.9-0'
+  homepage 'https://www.x.org/wiki/'
+  version '1.1.0'
   license 'X11'
   compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libICE-1.0.9.tar.gz'
-  source_sha256 '7812a824a66dd654c830d21982749b3b563d9c2dfe0b88b203cefc14a891edc0'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libice.git'
+  git_hashtag "libICE-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.0.9-0_armv7l/libice-1.0.9-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.0.9-0_armv7l/libice-1.0.9-0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.0.9-0_i686/libice-1.0.9-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.0.9-0_x86_64/libice-1.0.9-0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '9950466b86446a797a1331d6778a5d339af17960cad8c2c9a8e5a038c63c5b57',
-     armv7l: '9950466b86446a797a1331d6778a5d339af17960cad8c2c9a8e5a038c63c5b57',
-       i686: 'b5591b7c29b39dc1490481990590ca062f62ca717a0decdd342f8b1ce62a7145',
-     x86_64: 'f12df0a9802c23816595d13ddaa15ca46727b9ace7c7f57ede4cdbcc1ecbd8f8',
+  binary_sha256({
+    aarch64: '98119ae9368b7d11644676afac7d66a220bc5329f41b236004e5c3f76e2ce7ec',
+     armv7l: '98119ae9368b7d11644676afac7d66a220bc5329f41b236004e5c3f76e2ce7ec',
+       i686: 'aa06dc806a8c3b32e8bcd401297d19bddf05689927842001be65cd66b0fc96b2',
+     x86_64: '58bbc7896230e0d630360a6b4686b7c41f40f44f1477da31bff7cde929569752'
   })
 
-  depends_on 'libxtrans'
-  depends_on 'libx11'
-  depends_on 'libbsd'
+  depends_on 'libxtrans' => :build
+  depends_on 'libx11' => :build
+  depends_on 'libbsd' # R
+  depends_on 'glibc' # R
+  depends_on 'libmd' # R
+
+  patchelf
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

@@ -1,50 +1,55 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Gdal < Package
+class Gdal < CMake
   description 'The Geospatial Data Abstraction Library is a translator for raster and vector geospatial data formats.'
-  homepage 'http://www.gdal.org/'
-  version '3.1.3'
+  homepage 'https://gdal.org/'
+  version '3.7.3'
   license 'BSD, Info-ZIP and MIT'
-  compatibility 'all'
-  source_url 'https://download.osgeo.org/gdal/3.1.3/gdal-3.1.3.tar.xz'
-  source_sha256 '161cf55371a143826f1d76ce566db1f0a666496eeb4371aed78b1642f219d51d'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://download.osgeo.org/gdal/3.7.3/gdal-3.7.3.tar.xz'
+  source_sha256 'e0a6f0c453ea7eb7c09967f50ac49426808fcd8f259dbc9888140eb69d7ffee6'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdal/3.1.3_armv7l/gdal-3.1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdal/3.1.3_armv7l/gdal-3.1.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdal/3.1.3_i686/gdal-3.1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdal/3.1.3_x86_64/gdal-3.1.3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '4e650503583cdb958c514a681ef5ed4791dee197eadcdb9bf58ca574e6a7f034',
-     armv7l: '4e650503583cdb958c514a681ef5ed4791dee197eadcdb9bf58ca574e6a7f034',
-       i686: '6e168a4d3daadb0661241a56edbbba8d6ab2d54460c3079c2554420601b6a920',
-     x86_64: '984599cb21608ba4ba15be1512981406b6c1e0c581c4e29ccb3d36452778b51e',
+  binary_sha256({
+    aarch64: '3b1dff7b7b8f2b7155717b23c9b0f44e55c6d6f0966cacda7cdddde01d7b32d8',
+     armv7l: '3b1dff7b7b8f2b7155717b23c9b0f44e55c6d6f0966cacda7cdddde01d7b32d8',
+     x86_64: '0f7ba51a7a8fa276c28992219004b7c56b3fba03fc01bfe777ca33a684c5a9fe'
   })
 
-  depends_on 'openjpeg'
-  depends_on 'libcurl'
-  depends_on 'geos'
-  depends_on 'hdf5'
-  depends_on 'proj4'
-  depends_on 'qhull'
-  depends_on 'libgeotiff'
-  depends_on 'libxml2'
-  depends_on 'xercesc'
+  depends_on 'curl' # R
+  depends_on 'expat' # R
+  depends_on 'freeimage' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'geos' # R
+  depends_on 'giflib' # R
+  depends_on 'glibc' # R
+  depends_on 'hdf5' # R
+  depends_on 'json_c' # R
+  depends_on 'libarchive' # R
+  depends_on 'libdeflate' # R
+  depends_on 'libheif' # R
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libjxl' # R
+  depends_on 'libpng' # R
+  depends_on 'libwebp' # R
+  depends_on 'libxml2' # R
+  depends_on 'lz4' # R
+  depends_on 'openexr' # R
+  depends_on 'openjpeg' # R
+  depends_on 'openssl' # R
+  depends_on 'pcre2' # R
+  depends_on 'poppler' # R
+  depends_on 'proj' # R
+  depends_on 'py3_numpy' => :build
+  depends_on 'qhull' # R
+  depends_on 'sqlite' # R
+  depends_on 'swig' => :build
+  depends_on 'unixodbc' # R
+  depends_on 'xercesc' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
-  def self.build
-    system 'filefix'
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           "--with-curl=#{CREW_PREFIX}/bin/curl-config",
-           "--with-geos=#{CREW_PREFIX}/bin/geos-config",
-           '--with-python',
-           '--with-proj'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  cmake_options '-DGDAL_USE_TIFF_INTERNAL=ON \
+    -DGDAL_USE_GEOTIFF_INTERNAL=ON'
 end

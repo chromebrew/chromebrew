@@ -1,33 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_chardet < Package
+class Py3_chardet < Pip
   description 'Chardet is a universal encoding detector.'
   homepage 'https://github.com/chardet/chardet/'
-  @_ver = '4.0.0'
-  version @_ver
+  version "5.2.0-#{CREW_PY_VER}"
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://github.com/chardet/chardet.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_chardet/4.0.0_armv7l/py3_chardet-4.0.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_chardet/4.0.0_armv7l/py3_chardet-4.0.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_chardet/4.0.0_x86_64/py3_chardet-4.0.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '1f5e8a5b489edf07d57eef7ece1f9192d9271c64c9be8046dc5cf4545a83c365',
-     armv7l: '1f5e8a5b489edf07d57eef7ece1f9192d9271c64c9be8046dc5cf4545a83c365',
-     x86_64: '68734f0138f0d5c9e052f594b9119c05d92058fc5297b5bda3f712aab94df215'
+    aarch64: '73b4436b08a149fe17225a99e8b35aeafd1e4ef1653ed1479ba63abaaed67ff1',
+     armv7l: '73b4436b08a149fe17225a99e8b35aeafd1e4ef1653ed1479ba63abaaed67ff1',
+       i686: '4d9d0d12c29e69f190b891363950a29da500f6df007a71524c22612ea2f76687',
+     x86_64: 'bf3b2d46715c31fe3076b6835b2d77268b226714a775aa29ed97af53f06b3b78'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

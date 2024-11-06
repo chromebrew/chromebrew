@@ -8,13 +8,8 @@ class Hashpipe < Package
   compatibility 'all'
   source_url 'https://git.zx2c4.com/hashpipe/snapshot/hashpipe-dc11b6262f4717e61e55760cb2bd637ff1c0f6a9.tar.xz'
   source_sha256 '6b3931d7c46332be2a6c07f94f91924065ba7988edd2e8a471123c77d3c614f6'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hashpipe/1.0-1_armv7l/hashpipe-1.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hashpipe/1.0-1_armv7l/hashpipe-1.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hashpipe/1.0-1_i686/hashpipe-1.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hashpipe/1.0-1_x86_64/hashpipe-1.0-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c852b3c8c35151b359f94c71505132a865da8bdb710345431b24c46a3ba6931b',
      armv7l: 'c852b3c8c35151b359f94c71505132a865da8bdb710345431b24c46a3ba6931b',
@@ -23,7 +18,7 @@ class Hashpipe < Package
   })
 
   def self.patch
-    @hashpipe_patch = <<~'HASHPIPE_PATCHEOF'
+    @hashpipe_patch = <<~HASHPIPE_PATCHEOF
       diff -Npaur orig/hashpipe.c new/hashpipe.c
       --- orig/hashpipe.c	2021-04-08 14:56:27.657272292 -0400
       +++ new/hashpipe.c	2021-04-08 15:11:20.398253126 -0400
@@ -33,7 +28,7 @@ class Hashpipe < Package
         * Copyright (C) 2018 Jason A. Donenfeld <Jason@zx2c4.com>. All Rights Reserved.
       + * Code also imported from https://gitlab.gnome.org/GNOME/gtk/-/blob/master/gdk/wayland/cursor/os-compatibility.c
         */
-       
+
        #define _GNU_SOURCE
       @@ -10,12 +11,59 @@
        #include <stdbool.h>
@@ -47,7 +42,7 @@ class Hashpipe < Package
        #include <sys/sendfile.h>
        #include <fcntl.h>
        #include <openssl/evp.h>
-       
+
       +#ifndef HAVE_MKOSTEMP
       +static int
       +set_cloexec_or_close(int fd)
@@ -96,7 +91,7 @@ class Hashpipe < Package
        static bool hex2bin(unsigned char *bin, const char *hex, size_t hexlen)
        {
       @@ -51,11 +99,14 @@ static bool hex2bin(unsigned char *bin,
-       
+
        int main(int argc, char *argv[])
        {
       +	char *name;
@@ -114,7 +109,7 @@ class Hashpipe < Package
       @@ -65,12 +116,57 @@ int main(int argc, char *argv[])
        		return 1;
        	}
-       
+
       -	home = getenv("HOME");
       -	fd = open(home ? home : "/", O_TMPFILE | O_EXCL | O_RDWR, S_IRUSR | S_IWUSR);
       -	if (fd < 0) {
@@ -171,7 +166,7 @@ class Hashpipe < Package
       +		return -1;
        	}
       +#endif
-       
+
        	algo = argv[1];
        	hex = argv[2];
       @@ -99,7 +195,7 @@ int main(int argc, char *argv[])
@@ -188,15 +183,15 @@ class Hashpipe < Package
       +++ new/Makefile	2021-04-08 14:59:00.199269017 -0400
       @@ -4,7 +4,7 @@ BINDIR ?= $(PREFIX)/bin
        MANDIR ?= $(PREFIX)/share/man
-       
+
        LDLIBS := -lcrypto
       -CFLAGS ?= -O3 -march=native
       +CFLAGS ?= -O3
        CFLAGS += -std=gnu11 -Wall -pedantic
-       
+
        all: hashpipe
     HASHPIPE_PATCHEOF
-    IO.write('hashpipe.patch', @hashpipe_patch, perm: 0o644)
+    File.write('hashpipe.patch', @hashpipe_patch, perm: 0o644)
     system 'patch -Np1 -i hashpipe.patch'
   end
 

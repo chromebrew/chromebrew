@@ -1,0 +1,15 @@
+/usr/local/include/libcss/computed.h
+/usr/local/include/libcss/errors.h
+/usr/local/include/libcss/font_face.h
+/usr/local/include/libcss/fpmath.h
+/usr/local/include/libcss/functypes.h
+/usr/local/include/libcss/hint.h
+/usr/local/include/libcss/libcss.h
+/usr/local/include/libcss/properties.h
+/usr/local/include/libcss/select.h
+/usr/local/include/libcss/stylesheet.h
+/usr/local/include/libcss/types.h
+/usr/local/lib64/libcss.so
+/usr/local/lib64/libcss.so.0
+/usr/local/lib64/libcss.so.0.9.1
+/usr/local/lib64/pkgconfig/libcss.pc

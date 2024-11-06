@@ -5,37 +5,37 @@ require 'package'
 
 class Xdpyinfo < Package
   description 'Display information utility for X'
-  homepage 'https://xorg.freedesktop.org/'
-  version '1.3.2'
+  homepage 'https://xorg.freedesktop.org/wiki/'
+  version '1.3.3'
   license 'MIT-with-advertising'
-  compatibility 'all'
-  source_url 'https://xorg.freedesktop.org/archive/individual/app/xdpyinfo-1.3.2.tar.bz2'
-  source_sha256 '30238ed915619e06ceb41721e5f747d67320555cc38d459e954839c189ccaf51'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/xorg/app/xdpyinfo.git'
+  git_hashtag "xdpyinfo-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdpyinfo/1.3.2_armv7l/xdpyinfo-1.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdpyinfo/1.3.2_armv7l/xdpyinfo-1.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdpyinfo/1.3.2_i686/xdpyinfo-1.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdpyinfo/1.3.2_x86_64/xdpyinfo-1.3.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '7f5d670f0eb6a4f9d0d47ca597f401e9596cee02c110d824462e599f9f4a1ca8',
-     armv7l: '7f5d670f0eb6a4f9d0d47ca597f401e9596cee02c110d824462e599f9f4a1ca8',
-       i686: '052a899e25cb340d886152f983896b1f28404d74253149fd1bf7323a39d5de68',
-     x86_64: '3876556bb0c33537aabfb08c1929b06b1a88e90df56f87f838b3e4e47491aae9',
+  binary_sha256({
+    aarch64: '6041d86f4823e1dd0918d920124ef79eebfa2f7496947d3171a8f58d09358b33',
+     armv7l: '6041d86f4823e1dd0918d920124ef79eebfa2f7496947d3171a8f58d09358b33',
+     x86_64: '50a3cd0a5276633ef0b5d825a76fb90fa5f10d5790ed9a394eb900924d44d667'
   })
 
-  depends_on 'libx11'
-  depends_on 'libxext'
-  depends_on 'libxtst'
-  depends_on 'libxxf86vm'
-  depends_on 'libxrender'
-  depends_on 'libxcomposite'
-  depends_on 'libxinerama'
-  depends_on 'xorg_proto'
+  depends_on 'xorg_proto' => :build
+  depends_on 'glibc' # R
+  depends_on 'libdmx' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxext' # R
+  depends_on 'libxi' # R
+  depends_on 'libxinerama' # R
+  depends_on 'libxrender' # R
+  depends_on 'libxtst' # R
+  depends_on 'libxxf86dga' # R
+  depends_on 'libxxf86vm' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

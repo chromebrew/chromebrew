@@ -2,33 +2,35 @@ require 'package'
 
 class Xcb_util_cursor < Package
   description 'The xcb-util-cursor package provides a module that implements the XCB cursor library. It is a the XCB replacement for libXcursor.'
-  homepage 'http://xcb.freedesktop.org'
-  version '0.1.3'
+  homepage 'https://xcb.freedesktop.org/'
+  version '0.1.4'
   license 'MIT-with-advertising'
   compatibility 'all'
-  source_url 'https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.3.tar.bz2'
-  source_sha256 '05a10a0706a1a789a078be297b5fb663f66a71fb7f7f1b99658264c35926394f'
+  source_url 'https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.4.tar.xz'
+  source_sha256 '28dcfe90bcab7b3561abe0dd58eb6832aa9cc77cfe42fcdfa4ebe20d605231fb'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.3_armv7l/xcb_util_cursor-0.1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.3_armv7l/xcb_util_cursor-0.1.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.3_i686/xcb_util_cursor-0.1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.3_x86_64/xcb_util_cursor-0.1.3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '8049a324950ee5f84a3397d4f32131b9db6ce64a3209a5f8d89a77f0e58d58f0',
-     armv7l: '8049a324950ee5f84a3397d4f32131b9db6ce64a3209a5f8d89a77f0e58d58f0',
-       i686: 'affd9e774332aa1b0bdd870db784febded0fd1aedc53ddcf71e0b8ef3827d776',
-     x86_64: '997331d8cbdf24d6f934e0b1e9f17a4208671c8ad3f5deab50e3a3160e998b4f',
+  binary_sha256({
+    aarch64: '6024a6c057f93b6f2fb41607cd4b94ce5d790dc0dec95c16279c0461f6d9c8b0',
+     armv7l: '6024a6c057f93b6f2fb41607cd4b94ce5d790dc0dec95c16279c0461f6d9c8b0',
+       i686: '2e8232bf927297a009da0171ed1a456294c74f1104f99b8fe71aae2bcb904529',
+     x86_64: '0b93d9946e1c41c3fc77c638a76d17d314593ccaa938b0898f57c02076b8c6c5'
   })
 
   depends_on 'xcb_util'
   depends_on 'm4'
   depends_on 'xcb_util_renderutil'
   depends_on 'xcb_util_image'
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

@@ -3,33 +3,31 @@ require 'package'
 class Testdisk < Package
   description 'TestDisk is powerful free data recovery software!'
   homepage 'https://www.cgsecurity.org/wiki/TestDisk'
-  version '7.2'
+  version '7.2-1'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://www.cgsecurity.org/testdisk-7.2-WIP.tar.bz2'
-  source_sha256 'c95dd532dad353713e8ca895a3faac31acef284f9f0fad299f69181fec583313'
+  source_sha256 '501df617fe1541d66c34fc6337dfc8b76f3e862ce55e3d19ccb3e29ced430f57'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/testdisk/7.2_armv7l/testdisk-7.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/testdisk/7.2_armv7l/testdisk-7.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/testdisk/7.2_i686/testdisk-7.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/testdisk/7.2_x86_64/testdisk-7.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'd1d42ff50e0792de2c5ddaec3abcb5de9e7057a3d7f63f883cdf283d336850ce',
-     armv7l: 'd1d42ff50e0792de2c5ddaec3abcb5de9e7057a3d7f63f883cdf283d336850ce',
-       i686: 'a3da5c747e406e52ed72d119ba4c308e6465c85b594cf21be9e9e63151551bc7',
-     x86_64: '8b5a399c8e43c821156eb632805fe94f0d6f81e99aaffbeb2e54f54e3a887c77',
+  binary_sha256({
+    aarch64: '02481100433190d98338035d8f5261500859bc748994f77c3bf5c2a80d9fea68',
+     armv7l: '02481100433190d98338035d8f5261500859bc748994f77c3bf5c2a80d9fea68',
+       i686: 'cbd898f11ef7c5338f59c85b1b75b88fb24aaf26f23f8b1dc62dcdb1c77f0e7c',
+     x86_64: 'c861cb658e05fee9728239a404f4aaf87617fb19805f9ec2f183f6a9ff6205db'
   })
 
-  depends_on 'apriconv'
+  depends_on 'apr_iconv'
   depends_on 'compressdoc' => :build
   depends_on 'libjpeg_turbo'
   depends_on 'ncurses'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
+  depends_on 'e2fsprogs' # R
+  depends_on 'glibc' # R
+  depends_on 'util_linux' # R
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

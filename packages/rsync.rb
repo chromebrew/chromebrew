@@ -1,39 +1,34 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Rsync < Package
+class Rsync < Autotools
   description 'rsync is an open source utility that provides fast incremental file transfer.'
   homepage 'https://rsync.samba.org/'
-  @_ver = '3.2.3'
-  version "#{@_ver}-1"
+  version '3.3.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url "http://rsync.samba.org/ftp/rsync/src/rsync-#{@_ver}.tar.gz"
-  source_sha256 'becc3c504ceea499f4167a260040ccf4d9f2ef9499ad5683c179a697146ce50e'
+  source_url 'https://rsync.samba.org/ftp/rsync/src/rsync-3.3.0.tar.gz'
+  source_sha256 '7399e9a6708c32d678a72a63219e96f23be0be2336e50fd1348498d07041df90'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsync/3.2.3-1_armv7l/rsync-3.2.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsync/3.2.3-1_armv7l/rsync-3.2.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsync/3.2.3-1_i686/rsync-3.2.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsync/3.2.3-1_x86_64/rsync-3.2.3-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'a005ade8a7e03d1fcfb7b122c7db6ffd48ca759ff21d70dbf5d57eee26661f34',
-     armv7l: 'a005ade8a7e03d1fcfb7b122c7db6ffd48ca759ff21d70dbf5d57eee26661f34',
-       i686: '0c1b8db87c84c849710705b4f07fc75edf78d998056c97025dcc6e55de775a8f',
-     x86_64: '507cbeaafce02f9c0c55f378abae7e4fe7814ac29ad000f99aae1f2978caa1bd'
+    aarch64: '9ec003fc1c46fcd0f1a47ae6f358fc3bf964c160736d81edc9deb0a6954129d3',
+     armv7l: '9ec003fc1c46fcd0f1a47ae6f358fc3bf964c160736d81edc9deb0a6954129d3',
+       i686: 'd6cdbe64eef2b542bdc49c7077b3370cb0d1823cc6c3477a5e4df347fc1b5592',
+     x86_64: '9a63634c624037bfa5b294eb4dc36f817796ad201a947d86a7c52165e16e135d'
   })
 
-  depends_on 'xxhash'
-  depends_on 'lz4'
+  depends_on 'acl' # R
+  depends_on 'attr' # R
+  depends_on 'glibc' # R
+  depends_on 'lz4' # R
+  depends_on 'openssl' # R
+  depends_on 'popt' # R
+  depends_on 'py3_cmarkgfm' => :build
+  depends_on 'xxhash' # R
+  depends_on 'zstd' # R
 
-  def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} --disable-maintainer-mode"
-    system 'make'
-  end
+  no_patchelf
+  no_zstd
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

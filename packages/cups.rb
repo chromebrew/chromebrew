@@ -3,67 +3,70 @@ require 'package'
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://github.com/OpenPrinting/cups'
-  @_ver = '2.3.3op2'
-  version @_ver
-  license 'Apache-2.0'
+  version '2.4.11'
   compatibility 'all'
-  source_url "https://github.com/OpenPrinting/cups/releases/download/v#{@_ver}/cups-#{@_ver}-source.tar.gz"
-  source_sha256 'deb3575bbe79c0ae963402787f265bfcf8d804a71fc2c94318a74efec86f96df'
+  license 'Apache-2.0'
+  source_url 'https://github.com/OpenPrinting/cups.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_armv7l/cups-2.3.3op2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_armv7l/cups-2.3.3op2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_i686/cups-2.3.3op2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_x86_64/cups-2.3.3op2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'cf7fb54c659bb5f01c3097274864c3e0bf1669f0d6a8a1e6df82e6c403ad5264',
-     armv7l: 'cf7fb54c659bb5f01c3097274864c3e0bf1669f0d6a8a1e6df82e6c403ad5264',
-       i686: '74e029c12bf5af1545ca74ffddf0f70fda68bebaaab22c264d7541c2c7b570aa',
-     x86_64: '993136847f961e31b04906a36334278df723c12c5e55c7d7cf9ee797fad2ed88'
+    aarch64: '418860e229680e2888764d14bac8bb4beeb7c562cd60696b4eb9b81082f43baa',
+     armv7l: '418860e229680e2888764d14bac8bb4beeb7c562cd60696b4eb9b81082f43baa',
+       i686: '7e000bd57ce514ffb1b50808d366ddb230d68ffe0f47a0fb5e19cfa4f216ca73',
+     x86_64: '580c67be4ecf77554096dc7c351ea7c118cb4b7801357154137e733a2d4cd7a1'
   })
 
-  depends_on 'libusb'
-  depends_on 'linux_pam'
-  depends_on 'psmisc'
+  depends_on 'acl' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libusb' # R
+  depends_on 'linux_pam' # R
+  depends_on 'llvm19_dev' => :build if %w[armv7l aarch64].include?(ARCH)
+  depends_on 'openssl' # R
+  depends_on 'psmisc' # L
+  depends_on 'zlib' # R
+
+  no_env_options
+  no_fhs
 
   def self.build
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS} \
-      --disable-launchd \
-      --disable-systemd \
+    @buildoverride = %w[armv7l aarch64].include?(ARCH) ? 'CC=clang CXX=clang++ LD=mold CUPS_LINKER=mold' : ''
+    system "#{@buildoverride} ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-libusb"
     system 'make'
-    system "echo '#!/bin/bash' > startcupsd"
-    system "echo 'CUPSD=#{CREW_PREFIX}/sbin/cupsd' >> startcupsd"
-    system "echo 'CUPS=\$(pidof \$CUPSD 2> /dev/null)' >> startcupsd"
-    system "echo 'if [ -z \"\$CUPS\" ]; then' >> startcupsd"
-    system "echo '  \$CUPSD' >> startcupsd"
-    system "echo '  sleep 3' >> startcupsd"
-    system "echo 'fi' >> startcupsd"
-    system "echo 'CUPS=\$(pidof \$CUPSD 2> /dev/null)' >> startcupsd"
-    system "echo 'if [ ! -z \"\$CUPS\" ]; then' >> startcupsd"
-    system "echo '  echo \"cupsd process \$CUPS is running\"' >> startcupsd"
-    system "echo 'else' >> startcupsd"
-    system "echo '  echo \"cupsd failed to start\"' >> startcupsd"
-    system "echo '  exit 1' >> startcupsd"
-    system "echo 'fi' >> startcupsd"
-    system "echo '#!/bin/bash' > stopcupsd"
-    system "echo 'CUPSD=#{CREW_PREFIX}/sbin/cupsd' >> stopcupsd"
-    system "echo 'CUPS=\$(pidof \$CUPSD 2> /dev/null)' >> stopcupsd"
-    system "echo 'if [ ! -z \"\$CUPS\" ]; then' >> stopcupsd"
-    system "echo '  killall \$CUPSD' >> stopcupsd"
-    system "echo '  sleep 3' >> stopcupsd"
-    system "echo 'fi' >> stopcupsd"
-    system "echo 'CUPS=\$(pidof \$CUPSD 2> /dev/null)' >> stopcupsd"
-    system "echo 'if [ -z \"\$CUPS\" ]; then' >> stopcupsd"
-    system "echo '  echo \"cupsd process stopped\"' >> stopcupsd"
-    system "echo 'else' >> stopcupsd"
-    system "echo '  echo \"cupsd process \$CUPS is running\"' >> stopcupsd"
-    system "echo '  exit 1' >> stopcupsd"
-    system "echo 'fi' >> stopcupsd"
+    File.write 'startcupsd', <<~EOF
+      #!/bin/bash
+      CUPSD=#{CREW_PREFIX}/sbin/cupsd
+      CUPS=$(pidof "$CUPSD" 2> /dev/null)
+      if [ -z "$CUPS" ]; then
+        $CUPSD
+        sleep 3
+      fi
+      CUPS=$(pidof "$CUPSD" 2> /dev/null)
+      if [ -n "$CUPS" ]; then
+        echo "cupsd process $CUPS is running"
+      else
+        echo "cupsd failed to start"
+        exit 1
+      fi
+    EOF
+    File.write 'stopcupsd', <<~EOF
+      #!/bin/bash
+      CUPSD=#{CREW_PREFIX}/sbin/cupsd
+      CUPS=$(pidof "$CUPSD" 2> /dev/null)
+      if [ -n "$CUPS" ]; then
+        killall "$CUPSD"
+        sleep 3
+      fi
+      CUPS=$(pidof "$CUPSD" 2> /dev/null)
+      if [ -z "$CUPS" ]; then
+        echo "cupsd process stopped"
+      else
+        echo "cupsd process $CUPS is running"
+        exit 1
+      fi
+    EOF
   end
 
   def self.install
@@ -71,7 +74,7 @@ class Cups < Package
            "DESTDIR=#{CREW_DEST_DIR}",
            "DATADIR=#{CREW_DEST_PREFIX}/share/cups",
            "DOCDIR=#{CREW_DEST_PREFIX}/share/doc/cups",
-           "MANDIR=#{CREW_DEST_PREFIX}/share/man",
+           "MANDIR=#{CREW_DEST_MAN_PREFIX}",
            "ICONDIR=#{CREW_PREFIX}/share/icons",
            "MENUDIR=#{CREW_PREFIX}/share/applications",
            "INITDIR=#{CREW_PREFIX}/etc/init.d",
@@ -80,24 +83,26 @@ class Cups < Package
            "CACHEDIR=#{CREW_DEST_PREFIX}/var/cache/cups",
            "LOCALEDIR=#{CREW_DEST_PREFIX}/share/locale",
            'install'
-    system "install -Dm755 startcupsd #{CREW_DEST_PREFIX}/bin/startcupsd"
-    system "install -Dm755 stopcupsd #{CREW_DEST_PREFIX}/bin/stopcupsd"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.install 'startcupsd', "#{CREW_DEST_PREFIX}/bin/startcupsd", mode: 0o755
+    FileUtils.install 'stopcupsd', "#{CREW_DEST_PREFIX}/bin/stopcupsd", mode: 0o755
     if File.exist?("#{CREW_DEST_DIR}/etc/dbus-1/system.d/cups.conf")
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/dbus-1/system.d"
       FileUtils.mv "#{CREW_DEST_DIR}/etc/dbus-1/system.d/cups.conf", "#{CREW_DEST_PREFIX}/share/dbus-1/system.d/"
     end
-    if File.exist?("#{CREW_DEST_DIR}/etc/pam.d/cups")
-      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/pam.d"
-      FileUtils.mv "#{CREW_DEST_DIR}/etc/pam.d/cups", "#{CREW_DEST_PREFIX}/etc/pam.d/"
-    end
+    return unless File.exist?("#{CREW_DEST_DIR}/etc/pam.d/cups")
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/pam.d"
+    FileUtils.mv "#{CREW_DEST_DIR}/etc/pam.d/cups", "#{CREW_DEST_PREFIX}/etc/pam.d/"
   end
 
   def self.postinstall
-    puts
-    puts "To start the cups daemon, run 'startcupsd'".lightblue
-    puts "To stop the cups daemon, run 'stopcupsd'".lightblue
-    puts
-    puts 'For more information, see https://docs.oracle.com/cd/E23824_01/html/821-1451/gllgm.html'.lightblue
-    puts
+    ExitMessage.add <<~EOM.lightblue
+
+      To start the cups daemon, run 'startcupsd'
+      To stop the cups daemon, run 'stopcupsd'
+      For more information, see https://www.cups.org/doc/admin.html.
+
+    EOM
   end
 end

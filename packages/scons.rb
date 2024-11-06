@@ -1,34 +1,21 @@
-require 'package'
+require 'buildsystems/python'
 
-class Scons < Package
+class Scons < Python
   description 'SCons is an Open Source software construction tool that is, a next-generation build tool.'
   homepage 'https://scons.org/'
   license 'MIT'
-  version '3.0.5'
+  version '4.8.0'
   compatibility 'all'
-  source_url 'https://prdownloads.sourceforge.net/scons/scons-3.0.5.tar.gz'
-  source_sha256 'df676f23dc6d4bfa384fc389d95dcd21ab907e6349d4c848958ba4befb73c73e'
+  source_url 'https://github.com/SCons/scons.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scons/3.0.5_armv7l/scons-3.0.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scons/3.0.5_armv7l/scons-3.0.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scons/3.0.5_i686/scons-3.0.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scons/3.0.5_x86_64/scons-3.0.5-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'e4498f5a89565452fee2f035af1a9ea37e7c36862c0d8cb3d2e3702faaea3abb',
-     armv7l: 'e4498f5a89565452fee2f035af1a9ea37e7c36862c0d8cb3d2e3702faaea3abb',
-       i686: '189352c2c7e9263b71e11fe363f6c1c610aa6b6fad280f7347cb7e823544e545',
-     x86_64: 'f4cff9a4f35e2feeff5aac3dc49605b645a8362f53a335f37dd49b1dd6f8092c',
+  binary_sha256({
+    aarch64: '6328b0d23b5056a824f81be896813645e63cb4109dbae4f1c8dcb9f388a2984d',
+     armv7l: '6328b0d23b5056a824f81be896813645e63cb4109dbae4f1c8dcb9f388a2984d',
+       i686: '5ae1eb2287b066b23d5cf294ae943dd87dd5527be04faa17e73486172227af16',
+     x86_64: 'bcca5b43aa9137c288b706b750c44033c6caa1a4e8c54095cd2675f0edd77424'
   })
 
-  depends_on 'python27'
-
-  def self.build
-    nil
-  end
-
-  def self.install
-    system "python2.7 setup.py install --prefix=#{CREW_PREFIX} --root=#{CREW_DEST_DIR}"
-  end
+  depends_on 'python3'
 end

@@ -1,31 +1,27 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Mutter < Package
+class Mutter < Meson
   description 'A window manager for GNOME'
   homepage 'https://wiki.gnome.org/Projects/Mutter'
-  version '40.3'
+  version '45.4'
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64' # No longer supported for i686 upstream
   source_url 'https://gitlab.gnome.org/GNOME/mutter.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.3_armv7l/mutter-40.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.3_armv7l/mutter-40.3-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.3_x86_64/mutter-40.3-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'ad5d9c51bd569a9a6a06fecf2075eb63ed70817f4c29abf7ececbceeb50fe7d4',
-     armv7l: 'ad5d9c51bd569a9a6a06fecf2075eb63ed70817f4c29abf7ececbceeb50fe7d4',
-     x86_64: 'd1427dea256c51647c61f7e1d8987fe4ce87aee6d98c79993bdaf5657f74b186'
+    aarch64: '51616723ce4f1abb0c70764cec24ef81a79bbb07ce04aa5b5e5a0dad1f9ef83d',
+     armv7l: '51616723ce4f1abb0c70764cec24ef81a79bbb07ce04aa5b5e5a0dad1f9ef83d',
+     x86_64: 'f7b3b24b155fcfb1041f59fff0585a94493917f8cd3771111c9a5d9bd7cb3cb4'
   })
 
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'dconf'
-  depends_on 'gnome_settings_daemon'
   depends_on 'gobject_introspection' => :build
   depends_on 'gsettings_desktop_schemas'
   depends_on 'libcanberra'
+  depends_on 'libei'
   depends_on 'libinput'
   depends_on 'libwacom'
   depends_on 'pipewire'
@@ -33,22 +29,15 @@ class Mutter < Package
   depends_on 'xorg_server' => :build
   depends_on 'xwayland'
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-    -Dtests=false \
+  gnome
+
+  meson_options "-Dtests=false \
     -Dprofiler=false \
     -Dopengl=true \
     -Dglx=true \
+    -Dsystemd=false \
     -Dwayland=true \
     -Dnative_backend=true \
     -Dcogl_tests=true \
-    -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+    -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland"
 end

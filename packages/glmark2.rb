@@ -6,36 +6,38 @@ require 'package'
 class Glmark2 < Package
   description 'OpenGL ES 2.0 benchmark'
   homepage 'https://github.com/glmark2/glmark2'
-  version '2020.04'
+  version '2021.12-9057c05'
   license 'GPL-3'
-  compatibility 'all'
-  source_url 'https://github.com/glmark2/glmark2/archive/2020.04.tar.gz'
-  source_sha256 '0fa7723111c928a73c04d4fa4adfc15a9dea6d335fe189f59c74ae5af26f99a2'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/glmark2/glmark2/archive/9057c056b6e72d156c0bc7e4b52658e155760222.zip'
+  source_sha256 'fd37e6360f03f8ffcd236eb39ee1cb42c487edd0418441c22e375ec5e499297d'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2020.04_armv7l/glmark2-2020.04-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2020.04_armv7l/glmark2-2020.04-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2020.04_i686/glmark2-2020.04-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2020.04_x86_64/glmark2-2020.04-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'e4a59d48fdb44be2e3a8cbec3c0b9cd5c10a1dae8d07121010fd73b6986015d2',
-     armv7l: 'e4a59d48fdb44be2e3a8cbec3c0b9cd5c10a1dae8d07121010fd73b6986015d2',
-       i686: '49227b2fdedf881b927ca755404164587daf56ed1968854f2bb03071724d52a5',
-     x86_64: '32ed34762096df02768643f7781c7e1a587ce95e6cfd0a5ddbf6c4720b87d923',
+  binary_sha256({
+    aarch64: '6faaae26b628926374967d5a9b77e0e137af8403608c3a2eb191807b140a2418',
+     armv7l: '6faaae26b628926374967d5a9b77e0e137af8403608c3a2eb191807b140a2418',
+     x86_64: '8343d0404f69f2b1e064fdd7d8c4675bd2600b8d30cbb6cdaae99f207a6594e3'
   })
 
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libdrm'
   depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libx11'
   depends_on 'libxcb'
+  depends_on 'wayland'
 
   def self.build
-    system "python2 ./waf configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --with-flavors x11-gl,x11-glesv2"
-    system "python2 ./waf"
+    system "meson \
+      #{CREW_MESON_OPTIONS} \
+      -Dflavors=drm-gl,drm-glesv2,wayland-gl,wayland-glesv2,x11-gl,x11-glesv2 \
+      builddir"
+    system 'meson configure --no-pager builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "python2 ./waf install --destdir=#{CREW_DEST_DIR}/"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

@@ -15,9 +15,9 @@
 #
 # Directory structure:
 #
-#   release/armv7l/*.t(ar.|p)xz(.sha256)  binary tarball and sha256 files for armv7l
-#   release/i686/*.t(ar.|p)xz(.sha256)    binary tarball and sha256 files for i686
-#   release/x86_64/*.t(ar.|p)xz(.sha256)  binary tarball and sha256 files for x86_64
+#   release/armv7l/*.(tar.xz|tpxz|tar.zst)(.sha256)  binary tarball and sha256 files for armv7l
+#   release/i686/*.(tar.xz|tpxz|tar.zst)(.sha256)    binary tarball and sha256 files for i686
+#   release/x86_64/*.(tar.xz|tpxz|tar.zst)(.sha256)  binary tarball and sha256 files for x86_64
 #
 # Author: Ed Reel (uberhacker) edreel at gmail dot com
 #         Contact me if you would like access to the repository.
@@ -25,6 +25,8 @@
 # Updated: 2021-05-02
 #
 # License: GPL-3+
+
+shopt -s extglob
 
 packages=
 if test $1; then
@@ -38,7 +40,8 @@ if test $1; then
   done
 else
   packages=$(find ../release/*/*.xz -exec basename -s .tar.xz {} + | cut -d'-' -f1 | sort | uniq | xargs)" "
-  packages+=$(find ../release/*/*.tpxz -exec basename -s .tpxz {} + | cut -d'-' -f1 | sort | uniq | xargs)
+  packages+=$(find ../release/*/*.tpxz -exec basename -s .tpxz {} + | cut -d'-' -f1 | sort | uniq | xargs)" "
+  packages+=$(find ../release/*/*.tar.zst -exec basename -s .tar.zst {} + | cut -d'-' -f1 | sort | uniq | xargs)
 fi
 [ -z "${packages}" ] && echo "No packages found." && exit 1
 
@@ -73,24 +76,19 @@ for package in ${packages}; do
       noname="${tarfile#*-}"
       old_version="${noname%-chromeos*}"
     fi
-    new_tarfile="$(ls -t ../release/${arch}/${package}-*-chromeos-${arch}.t*xz 2> /dev/null | head -1)"
+    new_tarfile="$(ls -t ../release/${arch}/${package}-*-chromeos-${arch}.@(tar.xz|tpxz|tar.zst) 2> /dev/null | head -1)"
     if [ -z "${new_tarfile}" ]; then
-      echo "../release/${arch}/${package}-#-chromeos-${arch}.t(ar.|p)xz not found."
+      echo "../release/${arch}/${package}-#-chromeos-${arch}.(tar.xz|tpxz|tar.zst) not found."
       echo
       continue
     fi
-    new_sha256file="$(ls -t ../release/${arch}/${package}-*-chromeos-${arch}.t*xz.sha256 2> /dev/null | head -1)"
-    if [ -z "${new_sha256file}" ]; then
-      echo "${new_tarfile}.sha256 not found. Generating sha256sum ..."
-      new_sha256=$(sha256sum ${new_tarfile} | cut -d' ' -f1)
-      echo
-    else
-      new_sha256=$(cut -d' ' -f1 ${new_sha256file})
-    fi
+    echo "Generating sha256sum ..."
+    new_sha256=$(sha256sum ${new_tarfile} | cut -d' ' -f1)
     noname="${new_tarfile#*-}"
+    echo "Uploading ${package}/${noname} ..."
     new_version="${noname%-chromeos*}"
     new_url=$(echo "${BASE_URL}/${package}/${new_version}_${arch}/${new_tarfile}" | sed "s,../release/${arch}/,,")
-    curl --header "DEPLOY-TOKEN: ${GITLAB_TOKEN}" --upload-file "${new_tarfile}" "${new_url}"
+    curl -# --header "DEPLOY-TOKEN: ${GITLAB_TOKEN}" --upload-file "${new_tarfile}" "${new_url}" | cat
     if [ -n "${old_url}" ]; then
       if [[ ${old_url} != ${new_url} ]]; then
         echo "Updating binary_url in ${pkgfile}..."

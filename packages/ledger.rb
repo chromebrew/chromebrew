@@ -1,35 +1,26 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Ledger < Package
+class Ledger < CMake
   description 'A double-entry accounting system with a command-line reporting interface'
-  homepage 'https://www.ledger-cli.org/'
-  version '3.1.3'
+  homepage 'https://ledger-cli.org/'
+  version '3.3.2'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/ledger/ledger/archive/v3.1.3.tar.gz'
-  source_sha256 'b248c91d65c7a101b9d6226025f2b4bf3dabe94c0c49ab6d51ce84a22a39622b'
+  source_url 'https://github.com/ledger/ledger.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: '',
-     armv7l: '',
-       i686: '',
-     x86_64: '',
-  })
-  binary_sha256 ({
-    aarch64: '',
-     armv7l: '',
-       i686: '',
-     x86_64: '',
+  binary_sha256({
+    aarch64: 'a078d15274360b4f03558eca8ac4128536bffa774d3bc0a432802f89369b19c3',
+     armv7l: 'a078d15274360b4f03558eca8ac4128536bffa774d3bc0a432802f89369b19c3',
+       i686: '8ba30162cc4c1b55a6e47e590bde549b24e7a91dfbdc2f7f04870069897891ce',
+     x86_64: 'e15d098bd64cd861eead5b792cf74703dd1a98b0e3adecda13baeb6cc4ef3fe1'
   })
 
-  depends_on 'boost' => :build
-
-  def self.build
-    system './acprep', "--prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install/strip'
-  end
+  depends_on 'boost' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'libedit' # R
+  depends_on 'mpfr' # R
 end

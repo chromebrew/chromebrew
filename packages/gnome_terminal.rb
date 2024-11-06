@@ -1,53 +1,48 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_terminal < Package
+class Gnome_terminal < Meson
   description 'The GNOME Terminal Emulator'
   homepage 'https://wiki.gnome.org/Apps/Terminal'
-  @_ver = '3.41.0'
-  version @_ver
+  version '3.51.91'
   license 'GPL-3+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-terminal.git'
-  git_hashtag '3.41.0'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0_armv7l/gnome_terminal-3.41.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0_armv7l/gnome_terminal-3.41.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0_x86_64/gnome_terminal-3.41.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'a645989d30509d01be54ef794bf8c4f105cef48965c2beb0d05eded71faae724',
-     armv7l: 'a645989d30509d01be54ef794bf8c4f105cef48965c2beb0d05eded71faae724',
-     x86_64: 'ed42ef2ce74e24a414e978891802fc06cc8cc3c0bb4b9c9dfcd3e71b86b1c0ad'
+    aarch64: '508069bccbc1e289c1c875c4366833681ff28326554675dfe5a7402a898fc0c9',
+     armv7l: '508069bccbc1e289c1c875c4366833681ff28326554675dfe5a7402a898fc0c9',
+     x86_64: '7845852c6237e388142b2bfd8e5f62a12f1b6852c7bc98883bb5eaf384cd954e'
   })
 
-  depends_on 'gtk3'
-  depends_on 'vte'
-  depends_on 'dconf'
-  depends_on 'desktop_file_utilities'
-  depends_on 'gsettings_desktop_schemas'
-  depends_on 'adobe_source_code_pro_fonts' # (Needed for monospace fonts)
-  depends_on 'yelp_tools'
-  depends_on 'gtk_doc'
+  depends_on 'adobe_source_code_pro_fonts' # L (Needed for monospace fonts)
+  depends_on 'at_spi2_core' # R
+  depends_on 'dbus' # L
+  depends_on 'dconf' => :build
+  depends_on 'desktop_file_utilities' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gsettings_desktop_schemas' => :build
+  depends_on 'gtk3' # R
+  depends_on 'gtk_doc' => :build
+  depends_on 'libhandy' # R
+  depends_on 'libx11' # R
+  depends_on 'pango' # R
+  depends_on 'util_linux' # R
+  depends_on 'vte' # R
+  depends_on 'yelp_tools' => :build
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-    --default-library=both \
+  gnome
+  no_lto
+
+  meson_options '--default-library=both \
     -Ddocs=false \
     -Dsearch_provider=false \
-    -Dnautilus_extension=false \
-    -Dlocalstatedir=#{CREW_PREFIX}/var/local \
-    -Dsharedstatedir=#{CREW_PREFIX}/var/local/lib \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+    -Dnautilus_extension=false'
 
   def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
+    ExitMessage.add 'gnome-terminal should be launched using "dbus-launch gnome-terminal"'.lightblue
   end
 end

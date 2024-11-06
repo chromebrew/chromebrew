@@ -2,28 +2,35 @@ require 'package'
 
 class Zsh < Package
   description 'Zsh is a shell designed for interactive use, although it is also a powerful scripting language.'
-  homepage 'http://zsh.sourceforge.net/'
-  version '5.8'
+  homepage 'https://zsh.sourceforge.io/'
+  version '5.9'
   license 'ZSH and GPL-2'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/zsh/zsh/5.8/zsh-5.8.tar.xz'
-  source_sha256 'dcc4b54cc5565670a65581760261c163d720991f0d06486da61f8d839b52de27'
+  source_url 'https://downloads.sourceforge.net/project/zsh/zsh/5.9/zsh-5.9.tar.xz'
+  source_sha256 '9b8d1ecedd5b5e81fbf1918e876752a7dd948e05c1a0dba10ab863842d45acd5'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsh/5.8_armv7l/zsh-5.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsh/5.8_armv7l/zsh-5.8-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsh/5.8_i686/zsh-5.8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsh/5.8_x86_64/zsh-5.8-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: '712590cb87f8bb45b656c62b5cbbbe6bf06b382ac7dd71e9ed2e750df59c65a6',
+     armv7l: '712590cb87f8bb45b656c62b5cbbbe6bf06b382ac7dd71e9ed2e750df59c65a6',
+       i686: '83f48b8561ca5b3826eb486c5babbd510276a82837977eb4957b423d7cd3732b',
+     x86_64: '296b8325a681d2ff996d1731d88bc1e9b56f82dfa54acfbd7edc31f5e2612829'
   })
-  binary_sha256 ({
-    aarch64: '8f06f08ffefdbe17a1026eab0140c74a103c3dc4b710fad9f9a158a215ba3376',
-     armv7l: '8f06f08ffefdbe17a1026eab0140c74a103c3dc4b710fad9f9a158a215ba3376',
-       i686: '7a1748369c926f9296b3cd9f2bfd4866c6ccdacd179882adce875f3b8ac54709',
-     x86_64: '1d2aca16006b4e79c2c5d438eee0503f21933c61c7c1daeccd4995750b171ab4',
-  })
+
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
+  depends_on 'ncurses' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'libcap' # R
+  depends_on 'pcre' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
+            --enable-zsh-mem \
+            --enable-pcre \
+            --enable-cap \
+            --enable-gdbm \
+            --enable-multibyte"
     system 'make'
   end
 

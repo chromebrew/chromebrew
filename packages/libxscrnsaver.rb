@@ -1,11 +1,12 @@
 require 'package'
+Package.load_package("#{__dir__}/libxss.rb")
 
 class Libxscrnsaver < Package
-  description 'X11 Screen Saver extension library'
-  homepage 'https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver'
-  version '1.2.3'
-  license 'MIT'
-  compatibility 'all'
+  description Libxss.description
+  homepage Libxss.homepage
+  version Libxss.version
+  license Libxss.license
+  compatibility Libxss.compatibility
 
   is_fake
 

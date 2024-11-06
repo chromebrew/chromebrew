@@ -1,37 +1,22 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libsass < Package
+class Libsass < Autotools
   description 'LibSass is a C/C++ port of the Sass engine'
   homepage 'https://sass-lang.com/libsass'
-  version '3.6.4'
+  version '3.6.6'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/sass/libsass/archive/3.6.4.tar.gz'
-  source_sha256 'f9484d9a6df60576e791566eab2f757a97fd414fce01dd41fc0a693ea5db2889'
+  source_url 'https://github.com/sass/libsass.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsass/3.6.4_armv7l/libsass-3.6.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsass/3.6.4_armv7l/libsass-3.6.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsass/3.6.4_i686/libsass-3.6.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsass/3.6.4_x86_64/libsass-3.6.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '80f6e743442cc3725a889cd139c89f159f1bb834698f60c4b9e10595bcde3e8c',
-     armv7l: '80f6e743442cc3725a889cd139c89f159f1bb834698f60c4b9e10595bcde3e8c',
-       i686: '22f4764ace15192ce1831133b2a46486ce23b6d7628613fd1dc8ca4c5af9c367',
-     x86_64: 'a8b8f0e1560da7b41ee260f603c6ff57b0c9dea5505b2956b709bba278a550ca'
+    aarch64: '54edb65b75e405ab734f847204f8b1ccfb583064afffb2698db29d4ec5573da1',
+     armv7l: '54edb65b75e405ab734f847204f8b1ccfb583064afffb2698db29d4ec5573da1',
+       i686: '0782e46f2985d8d7b5e5d3d6da925a86e4a326da305b8b2a6054ff7afd92516f',
+     x86_64: 'cd346d8a6208d342781864cfdfaebafccf06a1491c72b385b34d12cccb43d146'
   })
 
-  def self.build
-    system 'autoreconf', '-i'
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 end

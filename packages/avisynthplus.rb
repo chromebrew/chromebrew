@@ -1,45 +1,25 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Avisynthplus < Package
+class Avisynthplus < CMake
   description 'An improved version of the AviSynth frameserver'
   homepage 'https://avs-plus.net/'
-  version '3.7.0'
+  version '3.7.3'
   license 'GPL-2 and GPL-2-with-linking-exception'
-  compatibility 'all'
-  source_url 'https://github.com/AviSynth/AviSynthPlus/archive/v3.7.0/avisynthplus-3.7.0.tar.gz'
-  source_sha256 '8906d9e46dc90a194413d69b710e3106c0aafddc0c5c62004885d0c3beb79862'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/AviSynth/AviSynthPlus.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avisynthplus/3.7.0_armv7l/avisynthplus-3.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avisynthplus/3.7.0_armv7l/avisynthplus-3.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avisynthplus/3.7.0_i686/avisynthplus-3.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avisynthplus/3.7.0_x86_64/avisynthplus-3.7.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '041ab6c783a42f1ffa0ecbb27b5fee4b49a1e5083b00a48454fc5a29069264ef',
-     armv7l: '041ab6c783a42f1ffa0ecbb27b5fee4b49a1e5083b00a48454fc5a29069264ef',
-       i686: 'a94ac5f71b9dba1fb0175d828effe302603fa7b72efa09683660ddc9e992d2cd',
-     x86_64: '84f41b0ea157e9f53267f9e9212c9ad5eea5ee31d2cb1dc7cd516475e10e04ba'
+    aarch64: 'b9e247846b433bd2e1767f268bf34a22860e0a18a29e45528aabf8b32725f6e2',
+     armv7l: 'b9e247846b433bd2e1767f268bf34a22860e0a18a29e45528aabf8b32725f6e2',
+     x86_64: '2e7cd1267ae94d155abc1e9890f484a08a8eeb0ea75473d4875431316ae23471'
   })
 
-  depends_on 'devil' => :build
+  depends_on 'devil' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  git_fetchtags
 
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -I#{CREW_PREFIX}/include/harfbuzz' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        -DBUILD_SHARED_LIBS=ON \
-        .."
-    end
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  cmake_options "-DCMAKE_BUILD_TYPE:STRING='None'"
 end

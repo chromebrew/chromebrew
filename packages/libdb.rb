@@ -3,35 +3,41 @@ require 'package'
 class Libdb < Package
   description 'Berkeley DB is a family of embedded key-value database libraries providing scalable high-performance data management services to applications.'
   homepage 'https://github.com/berkeleydb/libdb'
-  version '5.3.28'
+  version '5.3.28-dfsg2-1'
   license 'ASM, BSD, CDDL, custom and SPL.'
   compatibility 'all'
-  source_url 'https://github.com/berkeleydb/libdb/releases/download/v5.3.28/db-5.3.28.tar.gz'
-  source_sha256 'e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628'
+  source_url 'https://salsa.debian.org/debian/db5.3.git'
+  git_hashtag 'debian/5.3.28+dfsg2-1'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdb/5.3.28_armv7l/libdb-5.3.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdb/5.3.28_armv7l/libdb-5.3.28-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdb/5.3.28_i686/libdb-5.3.28-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdb/5.3.28_x86_64/libdb-5.3.28-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: '13c6a2e5b7482bf638b3a37d924a31a782dfc21dd9ac6834885e11d0d7730223',
+     armv7l: '13c6a2e5b7482bf638b3a37d924a31a782dfc21dd9ac6834885e11d0d7730223',
+       i686: 'f632cf996b72841a48ca0201aaf5dd9a98fc3a51d81ea3e526c2bca9e12b7d13',
+     x86_64: 'd849400eb1a1b0ea3797b96ae6e7361c3c392ec11ceeb025d4dca37d1a3c2ae6'
   })
-  binary_sha256 ({
-    aarch64: 'bf1e26d40554e30404c8eaba250eb008561113f8742f4d9d07999687881c642d',
-     armv7l: 'bf1e26d40554e30404c8eaba250eb008561113f8742f4d9d07999687881c642d',
-       i686: '5371ea9f3d3fc18d38bd31dbd97854f4d6a06d995a58776ec1e3c94fbf29dc54',
-     x86_64: '0e51467868c7ea8fdf9916bf2ee1b3500b8ea7f0f5cd8f9ec4c9f3a3aafc2213',
-  })
+
+  depends_on 'glibc' # R
+  depends_on 'gcc_lib' # R
+
+  def self.patch
+    system 'for i in $(cat debian/patches/series); do patch -Np1 -i debian/patches/${i}; done'
+  end
 
   def self.build
     Dir.chdir 'build_unix' do
-      system "../dist/configure #{CREW_OPTIONS} --enable-dbm"
-      system 'make'
+      system "mold -run ../dist/configure #{CREW_CONFIGURE_OPTIONS} \
+      --enable-compat185 \
+      --enable-cxx \
+      --enable-dbm \
+      --enable-stl"
+      system "make -j #{CREW_NPROC} || make"
     end
   end
 
   def self.install
     Dir.chdir 'build_unix' do
-      system "make", "docdir=#{CREW_PREFIX}/share/doc/db-5.3.28", "DESTDIR=#{CREW_DEST_DIR}", "install"
+      system 'make', "docdir=#{CREW_PREFIX}/share/doc/db-5.3.28", "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
   end
 end

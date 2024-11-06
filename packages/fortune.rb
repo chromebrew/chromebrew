@@ -9,11 +9,11 @@ class Fortune < Package
   source_url 'http://dl.fefe.de/fortune-1.2.tar.bz2'
   source_sha256 'cbb246a500366db39ce035632eb4954e09f1e03b28f2c4688864bfa8661b236a'
 
-  depends_on "fortunes"
+  depends_on 'fortunes'
 
   def self.build
     system "sed -i 's,/usr,#{CREW_PREFIX},' fortune.c"
-    system "make"
+    system 'make'
   end
 
   def self.install

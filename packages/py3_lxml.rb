@@ -1,34 +1,26 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_lxml < Package
+class Py3_lxml < Pip
   description 'LXML is a Python library for processing XML and HTML.'
   homepage 'https://lxml.de/'
-  @_ver = '4.6.3'
-  version @_ver
+  version "5.3.0-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/lxml/lxml.git'
-  git_hashtag "lxml-#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_lxml/4.6.3_armv7l/py3_lxml-4.6.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_lxml/4.6.3_armv7l/py3_lxml-4.6.3-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_lxml/4.6.3_x86_64/py3_lxml-4.6.3-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '78988749162202d2da062a5c9b718d27f9cb0290d18cf3526eeba8affa489657',
-     armv7l: '78988749162202d2da062a5c9b718d27f9cb0290d18cf3526eeba8affa489657',
-     x86_64: 'fa0232ee0bd1d4a171f37f15e0e608e3fd27bc9306c30d195ac83639cfa5feb6'
+    aarch64: '561a45432b37e8ec6a4784dd23adc1bfe8977f7de2f4a06091ccb0935571691d',
+     armv7l: '561a45432b37e8ec6a4784dd23adc1bfe8977f7de2f4a06091ccb0935571691d',
+       i686: 'afdcc8ac2b37962b76d15b91db1a6764961841fd2f904455c8fb2b45f206912c',
+     x86_64: 'e5dfa06f0d105752fde85b382b8f458026f4f52cfb5c8aef5f6a82c0c0f116da'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxslt' # R
   depends_on 'py3_cython' => :build
-  depends_on 'py3_setuptools' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  depends_on 'python3' # R
+  depends_on 'zlib' # R
+  no_source_build
 end

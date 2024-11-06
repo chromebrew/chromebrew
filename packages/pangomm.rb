@@ -1,11 +1,13 @@
 require 'package'
+Package.load_package("#{__dir__}/pangomm_1_4.rb")
+Package.load_package("#{__dir__}/pangomm_2_48.rb")
 
 class Pangomm < Package
-  description 'pangomm is the official C++ interface for the Pango font layout library.'
-  homepage 'https://developer.gnome.org/pangomm/stable/'
-  version '1.0'
-  license 'LGPL-2.1+'
-  compatibility 'all'
+  description Pangomm_1_4.description
+  homepage Pangomm_1_4.homepage
+  version "#{Pangomm_1_4.version}+#{Pangomm_2_48.version}"
+  license Pangomm_1_4.license
+  compatibility Pangomm_1_4.compatibility
 
   is_fake
 

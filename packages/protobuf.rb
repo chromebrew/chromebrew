@@ -1,41 +1,41 @@
+# Adapted from Arch Linux protobuf PKGBUILD at:
+# https://github.com/archlinux/svntogit-packages/raw/packages/protobuf/trunk/PKGBUILD
+
 require 'package'
 
 class Protobuf < Package
-  description 'Protocol buffers are a language-neutral, platform-neutral extensible mechanism for serializing structured data.'
-  homepage 'https://developers.google.com/protocol-buffers/'
-  version '3.9.2'
+  description 'Protocol Buffers - Googles data interchange format'
+  homepage 'https://protobuf.dev'
+  version '21.12'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/protocolbuffers/protobuf/archive/v3.9.2.tar.gz'
-  source_sha256 '1fbf1c2962af287607232b2eddeaec9b4f4a7a6f5934e1a9276e9af76952f7e0'
+  source_url "https://github.com/protocolbuffers/protobuf/archive/v#{version}/protobuf-#{version}.tar.gz"
+  source_sha256 '22fdaf641b31655d4b2297f9981fa5203b2866f8332d3c6333f6b0107bb320de'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/3.9.2_armv7l/protobuf-3.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/3.9.2_armv7l/protobuf-3.9.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/3.9.2_i686/protobuf-3.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/3.9.2_x86_64/protobuf-3.9.2-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: '525fa6ba3fe024ceadab14380e4bd9e2b4a7e4c2e486285cf0cc2483a541b581',
+     armv7l: '525fa6ba3fe024ceadab14380e4bd9e2b4a7e4c2e486285cf0cc2483a541b581',
+       i686: '4dedac0a666c3050f7e4944bab9aa2c676a727fd448bbf6ae37cc1494ac13e5c',
+     x86_64: '314c9575d0a48a7a4ccada06404594452ab99183409aaec9e53abd8d1ede0dfe'
   })
-  binary_sha256 ({
-    aarch64: '7b3f225eebd40ce365b40d98ea7eaef74705a2801f50c83a4bc84cdd7f0a5cf6',
-     armv7l: '7b3f225eebd40ce365b40d98ea7eaef74705a2801f50c83a4bc84cdd7f0a5cf6',
-       i686: '11088f5231b60bddcb902bfc9b72363d67c668384063f31e24a37244cc34cf60',
-     x86_64: '7e6016f3c4b2c50db0e7b285a3f4fbc384b80f9cf367a68fda8de15d4fb8fcc3',
-  })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'zlib' # R
 
   def self.build
-    system './autogen.sh'
-    system "./configure",
-           "--disable-static",
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
+    FileUtils.mkdir('builddir')
+    Dir.chdir('builddir') do
+      system "cmake #{CREW_CMAKE_OPTIONS} \
+      -Dprotobuf_BUILD_SHARED_LIBS=ON \
+      -Dprotobuf_BUILD_TESTS=OFF \
+      ../ -G Ninja"
+    end
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
-
-  def self.check
-    #system 'make check'
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

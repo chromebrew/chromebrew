@@ -2,30 +2,26 @@ require 'package'
 
 class Xprop < Package
   description 'Xprop is a property displayer for X.'
-  homepage 'https://www.x.org/'
-  version '1.2.5'
+  homepage 'https://www.x.org/wiki/'
+  version '1.2.6'
   license 'MIT-with-advertising and ISC'
-  compatibility 'all'
-  source_url 'https://x.org/releases/individual/app/xprop-1.2.5.tar.bz2'
-  source_sha256 '9b92ed0316bf2486121d8bac88bd1878f16b43bd335f18009b1f941f1eca93a1'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/xorg/app/xprop.git'
+  git_hashtag "xprop-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xprop/1.2.5_armv7l/xprop-1.2.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xprop/1.2.5_armv7l/xprop-1.2.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xprop/1.2.5_i686/xprop-1.2.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xprop/1.2.5_x86_64/xprop-1.2.5-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '67a59122be3f28942a9c2d8752ea09d9e4f854415f1512d1f2b2b90ead9d37a4',
-     armv7l: '67a59122be3f28942a9c2d8752ea09d9e4f854415f1512d1f2b2b90ead9d37a4',
-       i686: 'b5614aabe21d4a0c001a2c79e40ed898756a6a4d9cb76ea183f45a9b549fa84d',
-     x86_64: '47d22d5a8bd02ce77b7ccc1955cf821e39c865e637598746a9ca7a38297f1c6f',
+  binary_sha256({
+    aarch64: '29b6c1397a06c4b4691ffb044d6ad1e9ab6686b1c3b6c8dffbbb195a09499d38',
+     armv7l: '29b6c1397a06c4b4691ffb044d6ad1e9ab6686b1c3b6c8dffbbb195a09499d38',
+     x86_64: '0121b423cdce35f7dafd41a9aaf8199cd2d69eb3fda164c69058354f545e08c6'
   })
 
-  depends_on 'xorg_lib'
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

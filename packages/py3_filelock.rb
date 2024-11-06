@@ -1,33 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_filelock < Package
+class Py3_filelock < Pip
   description 'FileLock implements a platform independent file lock in Python.'
   homepage 'https://github.com/benediktschmitt/py-filelock/'
-  @_ver = '3.0.12'
-  version @_ver
+  version "3.16.1-#{CREW_PY_VER}"
   license 'Unlicense'
   compatibility 'all'
-  source_url 'https://github.com/benediktschmitt/py-filelock.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_filelock/3.0.12_armv7l/py3_filelock-3.0.12-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_filelock/3.0.12_armv7l/py3_filelock-3.0.12-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_filelock/3.0.12_x86_64/py3_filelock-3.0.12-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '67648c5c3a5bb64e28cb3bf7a86db2b825ae648444975f198ca6c3e9a8471774',
-     armv7l: '67648c5c3a5bb64e28cb3bf7a86db2b825ae648444975f198ca6c3e9a8471774',
-     x86_64: '265ec94c08c1bb9fa4e49e1b5a5c4a3ff432a55af850f4891b731fab7505c61e'
+    aarch64: 'bf1481ea759a4219be96c8ffcd1131c6e0a5d8dd998ea8a43e305d1768b4dfca',
+     armv7l: 'bf1481ea759a4219be96c8ffcd1131c6e0a5d8dd998ea8a43e305d1768b4dfca',
+       i686: 'b6a63131803fa6e0fa072c527b6c21f454028d95f374a2105eebfff9b238bc5f',
+     x86_64: '1eec59817fac828643c5c4772964f3f7fe70f939084e37c3f366505915586e13'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

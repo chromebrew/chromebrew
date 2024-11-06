@@ -2,32 +2,30 @@ require 'package'
 
 class Libpciaccess < Package
   description 'Generic PCI access library'
-  homepage 'https://x.org'
-  version '0.16'
+  homepage 'https://x.org/wiki/'
+  version '0.17'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libpciaccess-0.16.tar.gz'
-  source_sha256 '84413553994aef0070cf420050aa5c0a51b1956b404920e21b81e96db6a61a27'
+  source_url 'https://www.x.org/archive/individual/lib/libpciaccess-0.17.tar.xz'
+  source_sha256 '74283ba3c974913029e7a547496a29145b07ec51732bbb5b5c58d5025ad95b73'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpciaccess/0.16_armv7l/libpciaccess-0.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpciaccess/0.16_armv7l/libpciaccess-0.16-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpciaccess/0.16_i686/libpciaccess-0.16-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpciaccess/0.16_x86_64/libpciaccess-0.16-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: '5c8d971346ea24e2f5bc14de9070e17151943953dbf7efa515b4fb6708a723a5',
+     armv7l: '5c8d971346ea24e2f5bc14de9070e17151943953dbf7efa515b4fb6708a723a5',
+       i686: '9362cd9b579036b25d29082dc007539145548a6e74db327c18bc805a25d8a875',
+     x86_64: 'e61aaa65adb6f1932bc538ed7bb946aec5b6502149931461dec1b9fbf7a58908'
   })
-  binary_sha256 ({
-    aarch64: '4168d9adea96e7394c3a2aee9b732134abf9ea0c749dcf1b696bbb2d19047bec',
-     armv7l: '4168d9adea96e7394c3a2aee9b732134abf9ea0c749dcf1b696bbb2d19047bec',
-       i686: 'ad555204d597c0600daeecf298240e072cdfd12b7b0a6674ca5e8cbc9f27b5eb',
-     x86_64: '1d1a2bcf5767f35e3502681aa2821fd9f81b3bf517f595657c22296163219a14',
-  })
+
+  depends_on 'glibc' # R
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

@@ -2,45 +2,59 @@ require 'package'
 
 class Zstd < Package
   description 'Zstandard - Fast real-time compression algorithm'
-  homepage 'http://www.zstd.net'
-  @_ver = '1.5.0'
-  version "#{@_ver}-1"
+  homepage 'https://facebook.github.io/zstd/'
+  version '1.5.6-1' # Do not use @_ver here, it will break the installer.
   license 'BSD or GPL-2'
   compatibility 'all'
-  source_url "https://github.com/facebook/zstd/archive/v#{@_ver}.tar.gz"
-  source_sha256 '0d9ade222c64e912d6957b11c923e214e2e010a18f39bec102f572e693ba2867'
+  source_url 'https://github.com/facebook/zstd.git'
+  git_hashtag "v#{version.split('-').first}"
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.0-1_armv7l/zstd-1.5.0-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.0-1_armv7l/zstd-1.5.0-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.0-1_i686/zstd-1.5.0-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.0-1_x86_64/zstd-1.5.0-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'e63e459052fb415caa074ac053bb35418421b2573abf4fad4dd8f94197715187',
-     armv7l: 'e63e459052fb415caa074ac053bb35418421b2573abf4fad4dd8f94197715187',
-       i686: 'a5260b4a7c9a372571f0d77fc942b3f9f49d16432ed27447f46919cca246c0e2',
-     x86_64: 'af4b54526d9a6cd8b35d07b7e12c257cb46a5042861b83cf4248b63b6a6628eb'
+    aarch64: 'fcef09c11c9fa7ce65b4c81fe3622343311bae1ea3e79d0efbd109e6d154174e',
+     armv7l: 'fcef09c11c9fa7ce65b4c81fe3622343311bae1ea3e79d0efbd109e6d154174e',
+       i686: '6a1af809ce6d0fc507b1b857b8f0803c6aded4e816d3c454e4e59b0f5ed4acca',
+     x86_64: 'bc5f4c725cf5302933a4b6aa0e6a1c7ac18b8a0da6d01654c95556eb88b5da45'
   })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'lz4' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlib' # R
+
+  no_zstd
 
   def self.build
     Dir.chdir 'build/cmake' do
-      FileUtils.mkdir('builddir')
-      Dir.chdir('builddir') do
-        system "cmake #{CREW_CMAKE_OPTIONS} \
-        -DZSTD_BUILD_STATIC=ON \
-        -DZSTD_BUILD_SHARED=ON \
-        -DZSTD_LEGACY_SUPPORT=ON \
-        -DZSTD_BUILD_CONTRIB=ON \
-        ../ -G Ninja"
-      end
-      system 'ninja -C builddir'
+      system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
+      -DZSTD_LZ4_SUPPORT=ON \
+      -DZSTD_LZMA_SUPPORT=ON \
+      -DZSTD_ZLIB_SUPPORT=ON \
+      -DZSTD_BUILD_STATIC=ON \
+      -DZSTD_BUILD_SHARED=ON \
+      -DZSTD_LEGACY_SUPPORT=ON \
+      -DZSTD_BUILD_CONTRIB=ON \
+      -DZSTD_PROGRAMS_LINK_SHARED=OFF \
+      -G Ninja"
+      system "#{CREW_NINJA} -C builddir"
     end
+    system 'make -C tests'
+  end
+
+  def self.check
+    system 'make -C tests check'
   end
 
   def self.install
     Dir.chdir 'build/cmake' do
-      system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+      system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+    end
+    # Convert symlinks to hard links in libdir.
+    Dir.chdir CREW_DEST_LIB_PREFIX do
+      Dir['*'].each do |f|
+        FileUtils.ln File.realpath(f), f, force: true if File.symlink?(f)
+      end
     end
   end
 end

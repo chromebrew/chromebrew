@@ -2,37 +2,34 @@ require 'package'
 
 class Libmypaint < Package
   description 'Libmypaint is MyPaint\'s brushstroke rendering code, in a form that can be used by other programs.'
-  homepage 'http://mypaint.org/'
+  homepage 'https://mypaint.app/'
   @_ver = '1.6.1'
-  version @_ver
+  version "#{@_ver}-1"
   license 'ISC'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/mypaint/libmypaint.git'
   git_hashtag "v#{@_ver}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmypaint/1.6.1_armv7l/libmypaint-1.6.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmypaint/1.6.1_armv7l/libmypaint-1.6.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmypaint/1.6.1_x86_64/libmypaint-1.6.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '37363c4d7e13e651dbf6dfa89369711660d6ae9ec844990a05a21a2bdf273429',
-     armv7l: '37363c4d7e13e651dbf6dfa89369711660d6ae9ec844990a05a21a2bdf273429',
-     x86_64: '797fe6813b0aa1148eebc92949638963b83c51f6ab445da09b7d0acd62f123c3'
+    aarch64: '4ba8808e23307488b85fb7153402bc14fc5f9669ca38defc67b68c008a522cab',
+     armv7l: '4ba8808e23307488b85fb7153402bc14fc5f9669ca38defc67b68c008a522cab',
+     x86_64: '6c694a3414e517d05de4ca5c5e4151383dd2895874b2d1dd809560e7af31e362'
   })
 
   depends_on 'gegl'
-  depends_on 'jsonc'
+  depends_on 'json_c'
+  depends_on 'openmp'
+  depends_on 'babl' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'json_glib' # R
 
   def self.build
     system 'env NOCONFIGURE=1 ./autogen.sh'
-    system "env #{CREW_ENV_OPTIONS} \
-      GEGL_LIBS=\"#{CREW_LIB_PREFIX}/gegl-0.4\" \
-      GEGL_CFLAGS=\"-I#{CREW_PREFIX}/include/gegl-0.4 \
-      -I#{CREW_PREFIX}/include/babl-0.1 \
-      -I#{CREW_PREFIX}/include/glib-2.0\" \
-      ./configure \
-      #{CREW_OPTIONS} \
+    system "./configure \
+      #{CREW_CONFIGURE_OPTIONS} \
       --disable-maintainer-mode \
       --enable-openmp \
       --enable-gegl"

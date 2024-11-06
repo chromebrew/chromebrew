@@ -8,22 +8,15 @@ class Natron < Package
   compatibility 'x86_64'
   source_url 'https://github.com/NatronGitHub/Natron/releases/download/v2.4.0/Natron-2.4.0-Linux-64.tgz'
   source_sha256 '7e8f2ec343f553799f34dce89aa250c410024f17e2c9ccfb5e22544db3e46bb4'
+  binary_compression 'tpxz'
 
-  binary_url ({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/natron/2.4.0_x86_64/natron-2.4.0-chromeos-x86_64.tpxz'
-  })
-  binary_sha256 ({
-    x86_64: '35b3c22b67f74d285e71f619179cf36a3a475d0df37dd7dcb104d22a318edce4'
+  binary_sha256({
+     x86_64: '35b3c22b67f74d285e71f619179cf36a3a475d0df37dd7dcb104d22a318edce4'
   })
 
   depends_on 'desktop_file_utils'
   depends_on 'libglu'
   depends_on 'sommelier'
-
-  @strip = ENV['CREW_NOT_STRIP']
-  @shrink = ENV['CREW_SHRINK_ARCHIVE']
-  ENV['CREW_NOT_STRIP'] = '1'
-  ENV['CREW_SHRINK_ARCHIVE'] = '0'
 
   def self.install
     # IMPORTANT BUILD/INSTALL FROM SOURCE INSTRUCTIONS BELOW:
@@ -38,12 +31,12 @@ class Natron < Package
     puts "\nType 'natron' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.Natron"
-    if Dir.exists? config_dir
+    if Dir.exist? config_dir
       print "Would you like to remove the config directory #{config_dir}? [y/N] "
-      case STDIN.getc
-      when "y", "Y"
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else
@@ -51,7 +44,4 @@ class Natron < Package
       end
     end
   end
-
-  ENV['CREW_SHRINK_ARCHIVE'] = @shrink
-  ENV['CREW_NOT_STRIP'] = @strip
 end

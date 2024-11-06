@@ -2,30 +2,23 @@ require 'package'
 
 class Php73 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
-  homepage 'http://www.php.net/'
-  @_ver = '7.3.30'
-  version @_ver
+  homepage 'https://www.php.net/'
+  version '7.3.33'
   license 'PHP-3.01'
-  compatibility 'all'
-  source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 '0ebfd656df0f3b1ea37ff2887f8f2d1a71cd160fb0292547c0ee0a99e58ffd1b'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
+  source_sha256 '166eaccde933381da9516a2b70ad0f447d7cec4b603d07b9a916032b215b90cc'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.30_armv7l/php73-7.3.30-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.30_armv7l/php73-7.3.30-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.30_i686/php73-7.3.30-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.30_x86_64/php73-7.3.30-chromeos-x86_64.tar.xz',
-  })
   binary_sha256({
-    aarch64: '335b04b4491451c9cf99260fb2a20d9d246ce7a98a3821b66de4e93c5759ac51',
-     armv7l: '335b04b4491451c9cf99260fb2a20d9d246ce7a98a3821b66de4e93c5759ac51',
-       i686: '9428c9905b0a8003ce445980bcce73e4cfac7c218b6fce3e7453248ac2dc6597',
-     x86_64: '7fea7d62dc132f26a2e255f85c00fad9059b8d167e22d154b8a930c1f5082d94',
+    aarch64: '3b29987c24ed7d47d97152df1ba7915b37fde7c0a4959a003c90691853a2bfae',
+     armv7l: '3b29987c24ed7d47d97152df1ba7915b37fde7c0a4959a003c90691853a2bfae',
+     x86_64: '332b1b11d789481fc735d59722364772ec68cfc4de6c775a558b45454cb074bb'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'libgcrypt'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libxpm'
   depends_on 'libxslt'
@@ -37,11 +30,11 @@ class Php73 < Package
   depends_on 'unixodbc'
   depends_on 'py3_pygments'
 
+  no_fhs
+
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    unless ARGV[0] == 'reinstall' and @_ver == phpver
-      abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
-    end
+    abort "PHP version #{phpver} already installed.".lightgreen if ARGV[0] != 'reinstall' && @_ver != phpver && !phpver.empty?
   end
 
   def self.patch
@@ -110,16 +103,7 @@ class Php73 < Package
     system 'make'
   end
 
-  def self.check
-    #system 'make', 'test'
-  end
-
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/log"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"

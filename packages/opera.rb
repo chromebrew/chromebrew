@@ -1,13 +1,17 @@
 require 'package'
 
 class Opera < Package
-  description "Opera is a multi-platform web browser based on Chromium and developed by Opera Software."
+  description 'Opera is a multi-platform web browser based on Chromium and developed by Opera Software.'
   homepage 'https://www.opera.com/'
-  version '80.0.4170.16'
+  version '114.0.5282.154'
   license 'OPERA-2018'
   compatibility 'x86_64'
-  source_url "https://get.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
-  source_sha256 'fd7dfe8669a70c8c86b395426452311916edef1300c00291cee68cb3f148da63'
+  min_glibc '2.29'
+
+  # faster apt mirror, but only works when downloading latest version of opera
+  # source_url "https://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
+  source_url "https://deb.opera.com/opera-stable/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
+  source_sha256 'b0cf6d7f9ca7bd1acd2ff4bf3f248f38eff1412bd82ee05df0445686b74bddc1'
 
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'
@@ -15,12 +19,11 @@ class Opera < Package
   depends_on 'graphite'
   depends_on 'cras'
   depends_on 'libcom_err'
-  depends_on 'sommelier'
+
+  no_compile_needed
+  no_shrink
 
   def self.install
-    # llvm-strip doesn't works with opera
-    ENV['CREW_NOT_STRIP'] = '1'
-
     # Since opera puts the executable in a location that is not in the path,
     # we need to link it to bin directory.
     FileUtils.ln_sf "#{CREW_PREFIX}/share/x86_64-linux-gnu/opera/opera", 'bin/opera'
@@ -36,8 +39,8 @@ class Opera < Package
   def self.postinstall
     puts
     print 'Set Opera as your default browser? [Y/n]: '
-    case STDIN.getc
-    when "\n", 'Y', 'y'
+    case $stdin.gets.chomp.downcase
+    when '', 'y', 'yes'
       Dir.chdir("#{CREW_PREFIX}/bin") do
         FileUtils.ln_sf "#{CREW_LIB_PREFIX}/opera/opera", 'x-www-browser'
       end
@@ -45,13 +48,13 @@ class Opera < Package
     else
       puts 'No change has been made.'.orange
     end
-    puts "\nType 'opera' to get started.\n".lightblue
+    ExitMessage.add "\nType 'opera' to get started.\n"
   end
 
-  def self.remove
+  def self.postremove
     Dir.chdir("#{CREW_PREFIX}/bin") do
-      if File.exist?('x-www-browser') and File.symlink?('x-www-browser') and \
-        File.realpath('x-www-browser') == "#{CREW_PREFIX}/share/x86_64-linux-gnu/opera/opera"
+      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') && \
+         (File.realpath('x-www-browser') == "#{CREW_PREFIX}/share/x86_64-linux-gnu/opera/opera")
         FileUtils.rm 'x-www-browser'
       end
     end

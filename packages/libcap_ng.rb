@@ -1,35 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libcap_ng < Package
+class Libcap_ng < Autotools
   description 'The libcap-ng library is intended to make programming with posix capabilities much easier than the traditional libcap library.'
-  homepage 'https://people.redhat.com/sgrubb/libcap-ng'
-  version '0.7.8-0'
+  homepage 'https://people.redhat.com/sgrubb/libcap-ng/'
+  version "0.8.5-#{CREW_PY_VER}"
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://people.redhat.com/sgrubb/libcap-ng/libcap-ng-0.7.8.tar.gz'
-  source_sha256 'c21af997445cd4107a55d386f955c5ea6f6e96ead693e9151277c0ab5f97d05f'
+  source_url 'https://github.com/stevegrubb/libcap-ng.git'
+  git_hashtag "v#{version.split('-').first}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.7.8-0_armv7l/libcap_ng-0.7.8-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.7.8-0_armv7l/libcap_ng-0.7.8-0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.7.8-0_i686/libcap_ng-0.7.8-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.7.8-0_x86_64/libcap_ng-0.7.8-0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '393c39c06fa807c9d879fbf97a50f95ad94741f2a64ea79306181026df057208',
-     armv7l: '393c39c06fa807c9d879fbf97a50f95ad94741f2a64ea79306181026df057208',
-       i686: '60bd85f01a320d59e114cab2ecae92c8bbe5a05552512ec0ef81cb9b792aea89',
-     x86_64: 'ddf60e28ecb7fc3f60d6e2bfa47492ddfa9a09fff1b115634eb726901846304e',
+  binary_sha256({
+    aarch64: '03157fb9edeed725ed6cd8162731ae8ead0a5ad7841d783e9eb59a2aa1e0cab7',
+     armv7l: '03157fb9edeed725ed6cd8162731ae8ead0a5ad7841d783e9eb59a2aa1e0cab7',
+       i686: '9a2aa76e781b91013633d025504083d410110338057bb1ee485228bf68cd6ed6',
+     x86_64: 'efe0c88308b8fe7b21ea87854cf562df5ef42b40b3a1da2d63d9b49214afbf8f'
   })
 
-  depends_on 'python3'
+  depends_on 'glibc' # R
+  depends_on 'python3' => :build
+  depends_on 'swig' => :build
 
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+  def self.patch
+    system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' utils/captest.c"
   end
 
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
+  configure_options "--with-capability_header=#{CREW_PREFIX}/include/linux/capability.h"
 end

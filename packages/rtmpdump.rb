@@ -3,28 +3,31 @@ require 'package'
 class Rtmpdump < Package
   description 'rtmpdump is a toolkit for RTMP streams.'
   homepage 'https://rtmpdump.mplayerhq.hu/'
-  version 'c5f04a58f-1'
+  version '2.6-6f6bb13'
   license 'LGPL-2.1 and GPL-2'
   compatibility 'all'
-  source_url 'https://git.ffmpeg.org/gitweb/rtmpdump.git/snapshot/c5f04a58fc2aeea6296ca7c44ee4734c18401aa3.tar.gz'
-  source_sha256 'fd8c21263d93fbde8bee8aa6c5f6a657789674bb0f9e74f050651504d5f43b46'
-  @make_common_opts = ['SYS=posix', "prefix=#{CREW_PREFIX}", "libdir=#{CREW_LIB_PREFIX}", 'CRYPTO=GNUTLS']
+  source_url 'https://git.ffmpeg.org/rtmpdump.git'
+  git_hashtag '6f6bb1353fc84f4cc37138baa99f586750028a01'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtmpdump/c5f04a58f-1_armv7l/rtmpdump-c5f04a58f-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtmpdump/c5f04a58f-1_armv7l/rtmpdump-c5f04a58f-1-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtmpdump/c5f04a58f-1_i686/rtmpdump-c5f04a58f-1-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtmpdump/c5f04a58f-1_x86_64/rtmpdump-c5f04a58f-1-chromeos-x86_64.tar.xz',
+  binary_sha256({
+    aarch64: '3ac0bf695f1cf627cc9e2cdf99fb8a0ad3058360b5c46d25114c357ae7b48757',
+     armv7l: '3ac0bf695f1cf627cc9e2cdf99fb8a0ad3058360b5c46d25114c357ae7b48757',
+       i686: 'b033b0cd2ab34aa95548f370e5aed5cb3be372ab298910fc3cfd7629c8690f5f',
+     x86_64: '76b21d71603c2e7185c85e382c1a472b9cd949152034b6d113898a3ab33fb7e9'
   })
-  binary_sha256 ({
-     aarch64: '47e67bbdb93c72136630dfc35c37ddd7d37c242fbd3446f67ff40b52376fa3e6',
-      armv7l: '47e67bbdb93c72136630dfc35c37ddd7d37c242fbd3446f67ff40b52376fa3e6',
-        i686: '109fb6fa70409f8ba274fa452c2e04dc1ff3ba740f618525c188139c1ddce363',
-      x86_64: '0212408c6faad92b5909d77188d8c27e68ce955f61dcb5597603303e31e601ce',
-  })
+
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'gnutls' # R
+  depends_on 'nettle' # R
+  depends_on 'zlib' # R
+
+  @make_common_opts = ['SYS=posix', "prefix=#{CREW_PREFIX}", "libdir=#{CREW_LIB_PREFIX}",
+                       "mandir=#{CREW_PREFIX}/share/man", 'CRYPTO=GNUTLS']
 
   def self.build
-    system "make", *@make_common_opts
+    system 'make', *@make_common_opts
   end
 
   def self.install

@@ -1,35 +1,23 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_packaging < Package
+class Py3_packaging < Pip
   description 'Packaging provides core utilities for Python packages'
   homepage 'https://packaging.pypa.io/'
-  @_ver = '20.9'
-  version @_ver
+  version "24.1-#{CREW_PY_VER}"
   license 'BSD-2 or Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/pypa/packaging.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/20.9_armv7l/py3_packaging-20.9-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/20.9_armv7l/py3_packaging-20.9-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/20.9_i686/py3_packaging-20.9-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/20.9_x86_64/py3_packaging-20.9-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '455e073afb6ca12d3c4837f97d6c4753ab20093b3a45529199f6331ccae2192b',
-     armv7l: '455e073afb6ca12d3c4837f97d6c4753ab20093b3a45529199f6331ccae2192b',
-       i686: '9209458660109c6278e1680230cb16f755b6d486e4f7a2b01fcedab80fb12fef',
-     x86_64: '976769e26fb5a042068876e1204820ea39177b82eb576e36ed0ecb96b178747c'
+    aarch64: 'cf54fa1369ce1c11d17ed3b6ed0e367d14a28fc8962740602a7b5a2a911ab546',
+     armv7l: 'cf54fa1369ce1c11d17ed3b6ed0e367d14a28fc8962740602a7b5a2a911ab546',
+       i686: '8ff3369655d16b4862059a2b77dd3d8924d4321899f51686c5255e8ab3b495e3',
+     x86_64: 'c23fe088338fefd878b9f7631d121f0e17e6be5b49097467f856bf0aed34a70d'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'py3_pyparsing'
+  depends_on 'python3'
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

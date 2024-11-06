@@ -1,39 +1,22 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Re2c < Package
+class Re2c < CMake
   description 're2c is a free and open-source lexer generator for C and C++.'
   homepage 'http://re2c.org/'
-  version '2.1.1'
+  version '3.1'
   license 'public-domain'
   compatibility 'all'
-  source_url 'https://github.com/skvadrik/re2c/releases/download/2.1.1/re2c-2.1.1.tar.lz'
-  source_sha256 '635860abc1c611dc5f7ab85581fa65bfa9b447946763b073d38e51620467539b'
+  source_url 'https://github.com/skvadrik/re2c/releases/download/3.1/re2c-3.1.tar.lz'
+  source_sha256 '1c499e89ffd9926d79374fa5101c27a4bc89355462d5217abdbe4c76312db2f1'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2c/2.1.1_armv7l/re2c-2.1.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2c/2.1.1_armv7l/re2c-2.1.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2c/2.1.1_i686/re2c-2.1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2c/2.1.1_x86_64/re2c-2.1.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'f83c472ffa93b475b4fe715cbf05e131d8f9865d516af8d45a9ef3d5f029d1fd',
-     armv7l: 'f83c472ffa93b475b4fe715cbf05e131d8f9865d516af8d45a9ef3d5f029d1fd',
-       i686: '8f2ce53ecda3396e3fb199955a5803fd1ac695590a838a73f80cf1ce684680d5',
-     x86_64: '527b1e15f7c58f7725d04d0f025b630af76564ae42b14d979d6d958f221f92cd'
+    aarch64: 'de01cccbde508b8f13ea0100c6b87aa640087865849b56bc78f55da9973437bc',
+     armv7l: 'de01cccbde508b8f13ea0100c6b87aa640087865849b56bc78f55da9973437bc',
+       i686: '7a920a06ca30f757003f3199e070a9a7c33a250d053bd35d55c6c2e4e266285a',
+     x86_64: '765e292a2ad73ed9ca4704b72ee4163f3644071bf6727005e32a21349e9873d2'
   })
 
-  def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS}"
-    system 'make'
-    system 'make bootstrap'
-  end
-
-  def self.check
-    system 'make check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 end

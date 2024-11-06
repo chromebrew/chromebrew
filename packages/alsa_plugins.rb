@@ -1,47 +1,32 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Alsa_plugins < Package
+class Alsa_plugins < Autotools
   description 'alsa-plugins contains plugins for various ALSA needs (e.g. Jack).'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
-  version '1.2.2'
+  version '1.2.12'
   license 'GPL-2 and LGPL-2.1'
-  compatibility 'all'
-  source_url 'ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.2.2.tar.bz2'
-  source_sha256 '1c0f06450c928d711719686c9dbece2d480184f36fab11b8f0534cb7b41e337d'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/alsa-project/alsa-plugins.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.2_armv7l/alsa_plugins-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.2_armv7l/alsa_plugins-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.2_i686/alsa_plugins-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.2_x86_64/alsa_plugins-1.2.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '6dfe0afc4137d689eda0c4693aac4016e66e9da74ccaf540ebd12cb2fd704103',
-     armv7l: '6dfe0afc4137d689eda0c4693aac4016e66e9da74ccaf540ebd12cb2fd704103',
-       i686: '2e363fbae56a4dc05af716316f6465b36655663a5953437af4c996e22eece8bc',
-     x86_64: '2c0108843697c8711160defebbf6db421a2b6fe1aa582b9567e8cbb9b124bf02',
+  binary_sha256({
+    aarch64: 'd89f01712334fe53f17861e86df16aaf6062facec1e23e4e78c037c06830cf05',
+     armv7l: 'd89f01712334fe53f17861e86df16aaf6062facec1e23e4e78c037c06830cf05',
+     x86_64: '01aa9a107de4ef378f3196eb4c10ad69a52f261cbcd36d65feda40f909d6c77a'
   })
 
   depends_on 'alsa_lib' # R
-  depends_on 'dbus'
-  depends_on 'ffmpeg'
-  depends_on 'pulseaudio'
+  depends_on 'dbus' => :build
+  depends_on 'ffmpeg' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'gstreamer' # R
+  depends_on 'jack' # R
+  depends_on 'libsamplerate' # R
+  depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
   depends_on 'speexdsp' # R
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           "--with-alsalconfdir=#{CREW_PREFIX}/etc/alsa/conf.d"
-    system 'make'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

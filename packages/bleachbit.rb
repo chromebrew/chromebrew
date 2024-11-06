@@ -1,41 +1,38 @@
 require 'package'
 
 class Bleachbit < Package
-  description 'Clean Your System and Free Disk Space'
+  description 'Bleachbit provides a means to clean your system and free disk space.'
   homepage 'https://www.bleachbit.org/'
-  version '2.2'
+  version '4.6.1'
   license 'GPL-3'
-  compatibility 'all'
-  source_url 'https://download.bleachbit.org/bleachbit-2.2.tar.bz2'
-  source_sha256 '0318cd1bc83655971c9ffd6bf27f4866bbe57381e92cfbcf8a2a6833075b49fa'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/bleachbit/bleachbit.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bleachbit/2.2_armv7l/bleachbit-2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bleachbit/2.2_armv7l/bleachbit-2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bleachbit/2.2_i686/bleachbit-2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bleachbit/2.2_x86_64/bleachbit-2.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '2afa292475e4b51d8a05be4c9d22053e07b0ab9fc80f15c31206a7c76196b1b8',
-     armv7l: '2afa292475e4b51d8a05be4c9d22053e07b0ab9fc80f15c31206a7c76196b1b8',
-       i686: '2db04756504e73dc5045016a45a7fa2ebeeab506aed80b5eb9a552db73e211dd',
-     x86_64: 'cb0083062191290a8182fa14f43310e2dc43f583d4d9e20d6aad99a7ade8dabc',
+  binary_sha256({
+    aarch64: 'f33cbce2cb7a675895a564eee685893c168a832f4fe87d2d074df0371aeaf9dc',
+     armv7l: 'f33cbce2cb7a675895a564eee685893c168a832f4fe87d2d074df0371aeaf9dc',
+     x86_64: '24ef4d3ad423ca6695b92babb56848b236a83861660f13af2b884c63133abcd6'
   })
 
-  depends_on 'pygtk'
-  depends_on 'sommelier'
+  depends_on 'gtk3'
+  depends_on 'py3_chardet'
+  depends_on 'py3_mock' => :build
+  depends_on 'py3_psutil'
+  depends_on 'py3_pygobject'
+  depends_on 'py3_requests' => :build
+  depends_on 'python3', '>= 3.12.0'
 
   def self.patch
-    system "for f in \$(grep -lrn '/usr/share'); do sed -i 's,/usr/share,#{CREW_PREFIX}/share,g' \$f; done"
-  end
-
-  def self.build
-    system 'make -C po local'
+    # Improve portability around hardcoded /usr/share in bleachbit.py; respect destdir and prefix in po/Makefile; correct shebangs
+    downloader 'https://patch-diff.githubusercontent.com/raw/bleachbit/bleachbit/pull/1714.patch', '52ce1bc71c273a824f49369fdb467a7fa558c3f0724b0ad4c6ec6b37a633930e'
+    system 'git apply 1714.patch'
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/bleachbit"
-    system "touch #{CREW_DEST_HOME}/.config/bleachbit/bleachbit.ini"
+    # This deletes windows-specific files.
+    system 'make', 'delete_windows_files'
     system 'make', "prefix=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

@@ -1,77 +1,103 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Freerdp < Package
+class Freerdp < CMake
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
-  version '2.3.2'
+  version "3.9.0-#{CREW_ICU_VER}"
   license 'Apache-2.0'
-  compatibility 'all'
-  source_url "https://github.com/FreeRDP/FreeRDP/archive/refs/tags/#{version}.tar.gz"
-  source_sha256 'a1f52f0d9569b418a555ffe4d15a3782712198be47308e9514d20ca5af41a1b1'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/FreeRDP/FreeRDP.git'
+  git_hashtag version.split('-').first
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.3.2_armv7l/freerdp-2.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.3.2_armv7l/freerdp-2.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.3.2_i686/freerdp-2.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.3.2_x86_64/freerdp-2.3.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'dd2db88bb1442ed6d8d37d064ed5701087e339008b91314916b69b0f0f127ca6',
-     armv7l: 'dd2db88bb1442ed6d8d37d064ed5701087e339008b91314916b69b0f0f127ca6',
-       i686: 'fd935d4def75b22e6ad98c2435c2ccae461c689be480dfe9b7afd49a6fef3798',
-     x86_64: '46cf60d78f89cd9adab7d71a8d2d204a0633efef5362eacf8d1085f131bc0eac'
+    aarch64: 'ee16d8ab8899b39aab2bf475d957bc71f1db668c6462a9921488042d192505c1',
+     armv7l: 'ee16d8ab8899b39aab2bf475d957bc71f1db668c6462a9921488042d192505c1',
+     x86_64: 'c6c62a8cbfd2218a7dd60a525afa738d7925f8275317eef5d4341cd8e88cf1d7'
   })
 
-  depends_on 'cairo'
-  depends_on 'cups'
-  depends_on 'faac'
-  depends_on 'faad2'
-  depends_on 'ffmpeg'
-  depends_on 'gsm'
-  depends_on 'gst_plugins_base'
-  depends_on 'libfdk_aac'
-  depends_on 'linux_pam'
-  depends_on 'pulseaudio'
-  depends_on 'xdg_base'
-  depends_on 'xmlto'
-  depends_on 'xprop'
-  depends_on 'wayland'
-  depends_on 'sommelier'
+  depends_on 'alsa_lib' # R
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'cjson' # R
+  depends_on 'cups' # R
+  depends_on 'e2fsprogs' # R
+  depends_on 'faac' # R
+  depends_on 'faad2' # R
+  depends_on 'ffmpeg' # R
+  depends_on 'fuse3' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gsm' # R
+  depends_on 'gstreamer' => :build
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
+  depends_on 'json_c' # R
+  depends_on 'krb5' # R
+  depends_on 'libbacktrace' => :build
+  depends_on 'libfdk_aac' => :build
+  depends_on 'libice' # R
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libmp3lame' # R
+  depends_on 'libsdl2' # R
+  depends_on 'libsm' # R
+  depends_on 'libsoup' # R
+  depends_on 'libsoxr' # R
+  depends_on 'libusb' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcursor' # R
+  depends_on 'libxdamage' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxinerama' # R
+  depends_on 'libxi' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxkbfile' # R
+  depends_on 'libxrandr' # R
+  depends_on 'libxrender' # R
+  depends_on 'libxtst' # R
+  depends_on 'libxv' # R
+  depends_on 'linux_pam' # R
+  depends_on 'openh264' # R
+  depends_on 'openssl' # R
+  depends_on 'pango' # R
+  depends_on 'pulseaudio' # R
+  depends_on 'sdl2_ttf' # R
+  depends_on 'sommelier' # L
+  depends_on 'uriparser' # R
+  depends_on 'wayland' # R
+  depends_on 'webkit2gtk_4_1' # R
+  depends_on 'xdg_base' # L
+  depends_on 'xmlto' => :build
+  depends_on 'xprop' => :build
+  depends_on 'zlib' # R
 
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env GSS_ROOT_FLAVOUR=MIT \
-        cmake \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
+  cmake_options "-DCMAKE_SKIP_INSTALL_RPATH=ON \
         -DDOCBOOKXSL_DIR=#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.2 \
-        -DWITH_GSM=ON \
+        -DWITH_CAIRO=ON \
+        -DWITH_CHANNELS=ON \
+        -DWITH_CLIENT=ON \
+        -DWITH_CLIENT_SDL=ON \
+        -DWITH_CUPS=ON \
+        -DWITH_DSP_FFMPEG=yes \
         -DWITH_FAAC=ON \
         -DWITH_FAAD2=ON \
-        -DWITH_SWSCALE=ON \
-        -DWITH_CAIRO=ON \
-        -DWITH_LIBSYSTEMD=OFF \
-        -DWITH_DSP_FFMPEG=yes \
-        -DWITH_CHANNELS=ON \
-        -DWITH_SERVER=ON \
-        -DWITH_CLIENT=ON \
+        -DWITH_GSM=ON \
         -DWITH_GSSAPI=ON \
-        -DWITH_PULSE=ON \
-        -DWITH_CUPS=ON \
-        -DWITH_SOXR=ON \
-        -DWITH_LAME=ON \
         -DWITH_JPEG=ON \
-        -DWITH_WAYLAND=ON \
-        -Wno-dev \
-        .."
-    end
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+        -DWITH_LAME=ON \
+        -DWITH_LIBSYSTEMD=OFF \
+        -DWITH_MBEDTLS=OFF \
+        -DWITH_OPENH264=ON \
+        -DWITH_PULSE=ON \
+        -DWITH_SERVER=ON \
+        -DWITH_SOXR=ON \
+        -DWITH_SWSCALE=ON \
+        -DUSE_UNWIND=OFF \
+        -DWITH_WAYLAND=ON"
 
   def self.postinstall
     puts

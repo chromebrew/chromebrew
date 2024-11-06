@@ -1,35 +1,14 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_sphinxcontrib_qthelp < Package
+class Py3_sphinxcontrib_qthelp < Pip
   description 'sphinxcontrib-qthelp is a sphinx extension which outputs QtHelp document.'
   homepage 'https://www.sphinx-doc.org/'
-  @_ver = '1.0.3'
-  version @_ver
+  version "2.0.0-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/sphinx-doc/sphinxcontrib-qthelp.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_qthelp/1.0.3_armv7l/py3_sphinxcontrib_qthelp-1.0.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_qthelp/1.0.3_armv7l/py3_sphinxcontrib_qthelp-1.0.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_qthelp/1.0.3_i686/py3_sphinxcontrib_qthelp-1.0.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_qthelp/1.0.3_x86_64/py3_sphinxcontrib_qthelp-1.0.3-chromeos-x86_64.tpxz'
-  })
-  binary_sha256({
-    aarch64: 'fd704c99d991b7e9d099048386399c027e05885353c422edd014eee98fa60b5b',
-     armv7l: 'fd704c99d991b7e9d099048386399c027e05885353c422edd014eee98fa60b5b',
-       i686: '7232ad9206a252a383db1dd1621de131412645e9091a2ba9c3b1be551b4f1cc2',
-     x86_64: '12409c13d5e5d417bc9efffd558532652824aae63d00a6c0de886694f9804fa4'
-  })
+  depends_on 'python3' => :build
 
-  depends_on 'py3_setuptools' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_compile_needed
 end

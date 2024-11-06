@@ -1,38 +1,28 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Zvbi < Package
-  description 'The Zapping VBI library, in short ZVBI, provides functions to capture and decode VBI data.'
-  homepage 'http://zapping.sourceforge.net/ZVBI/'
-  version '0.2.35'
-  license 'GPL-2 and LGPL-2'
-  compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/zapping/zvbi/0.2.35/zvbi-0.2.35.tar.bz2'
-  source_sha256 'fc883c34111a487c4a783f91b1b2bb5610d8d8e58dcba80c7ab31e67e4765318'
+class Zvbi < Autotools
+  description 'VBI capture and decoding library.'
+  homepage 'https://github.com/zapping-vbi/zvbi'
+  version '0.2.42-be5efeb'
+  license 'GPL-2+'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/zapping-vbi/zvbi.git'
+  git_hashtag 'be5efebaadeb95be57d5435468bd3ec0f3007683'
+  binary_compression 'tar.zst'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35_armv7l/zvbi-0.2.35-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35_armv7l/zvbi-0.2.35-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35_i686/zvbi-0.2.35-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35_x86_64/zvbi-0.2.35-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '78f0e7cac98dcee9617256ff1ce5fff4e71c83b9fcf986edb6128020de950ccf',
-     armv7l: '78f0e7cac98dcee9617256ff1ce5fff4e71c83b9fcf986edb6128020de950ccf',
-       i686: 'bdb25d86773c2dfe642b254be5bd567da509ac4546e3ffa2cb15bea24ddbd985',
-     x86_64: 'df144f5bf127aad35537b7874fbeddf60847e2d8e956bea44fdd4d6b1ab4eece',
+  binary_sha256({
+    aarch64: 'd2f582b4ee393dc0eca53805098b354efc68a766a32b2277fad26033a4bc1258',
+     armv7l: 'd2f582b4ee393dc0eca53805098b354efc68a766a32b2277fad26033a4bc1258',
+     x86_64: '622a92ff1bb9711422ba33d37a7635245adc0c1ba5f60cfb7a3aa7b150956682'
   })
 
-  depends_on 'libpng'
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libpng' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'zlib' # R
 end

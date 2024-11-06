@@ -1,6 +1,8 @@
 release/
 *.bz2
 *.gz
+*.tgz
 *.sha256
 *.xz
 *.zip
+/.vs

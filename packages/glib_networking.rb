@@ -1,38 +1,27 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Glib_networking < Package
+class Glib_networking < Meson
   description 'Network extensions for GLib'
   homepage 'https://github.com/GNOME/glib-networking'
-  version '2.68.0'
+  version '2.78.0'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url 'https://download.gnome.org/core/40/40.rc/sources/glib-networking-2.68.rc.tar.xz'
-  source_sha256 '5f2f62db8a75e2ec5462af12cb59157fb17500dca172c637a88c59053d52115b'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/glib-networking.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib_networking/2.68.0_armv7l/glib_networking-2.68.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib_networking/2.68.0_armv7l/glib_networking-2.68.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib_networking/2.68.0_i686/glib_networking-2.68.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib_networking/2.68.0_x86_64/glib_networking-2.68.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '8ce43fcc55b8b8dd2692e80a610741aa727307ab3bfdb34382271634727ac186',
-     armv7l: '8ce43fcc55b8b8dd2692e80a610741aa727307ab3bfdb34382271634727ac186',
-       i686: '1aff81fd94e89fdc9eb3186ad3d0397ec170a5c4902de753c1511efd0d96819a',
-     x86_64: '5b3f9d3712f531356d0cada0b3abdfb97fe1b3679b5ba78ab99664a536ddbccc'
+    aarch64: '0d2722140f2f0e71b7abac4acac2925ad798650f3307c2545a4cc4bfe21e599f',
+     armv7l: '0d2722140f2f0e71b7abac4acac2925ad798650f3307c2545a4cc4bfe21e599f',
+     x86_64: '7e778510957044f2fc5db7283cd171514983134a5bc1fe11337c77e7f5ffe108'
   })
 
-  depends_on 'libproxy'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gnutls' # R
   depends_on 'gsettings_desktop_schemas'
+  depends_on 'libproxy'
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-      -Dstatic_modules=true builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

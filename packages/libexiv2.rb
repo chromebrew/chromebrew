@@ -2,29 +2,28 @@ require 'package'
 
 class Libexiv2 < Package
   description 'Exiv2 is a Cross-platform C++ library and a command line utility to manage image metadata.'
-  homepage 'http://exiv2.org/'
-  @_ver = '0.27.3-d8dd'
-  version @_ver
+  homepage 'https://exiv2.org/'
+  version '0.27.5'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/Exiv2/exiv2/archive/d8dd632ad511db37245e4fe644a3cd399d770399.zip'
-  source_sha256 '4cf76787b665186c7a484f16aaf92b306be3fa34feb1edbda79442811dd4287e'
+  source_url 'https://github.com/Exiv2/exiv2/archive/refs/tags/v0.27.5.tar.gz'
+  source_sha256 '1da1721f84809e4d37b3f106adb18b70b1b0441c860746ce6812bb3df184ed6c'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libexiv2/0.27.3-d8dd_armv7l/libexiv2-0.27.3-d8dd-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libexiv2/0.27.3-d8dd_armv7l/libexiv2-0.27.3-d8dd-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libexiv2/0.27.3-d8dd_i686/libexiv2-0.27.3-d8dd-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libexiv2/0.27.3-d8dd_x86_64/libexiv2-0.27.3-d8dd-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'd5e464080d02bd02f92cc8faab43eae4ed3f65a86dd931302e9d3400df65ece1',
-     armv7l: 'd5e464080d02bd02f92cc8faab43eae4ed3f65a86dd931302e9d3400df65ece1',
-       i686: '182b35e673f39fc2288839ce36df148ecf646ed3aa239992001abf224c5e91e1',
-     x86_64: 'f538547a42943c62fbdc847a17ffb38304ffda35648116477885e661fcefd2f4'
+    aarch64: '12707819474aa94f34f38d2b81ac4ab8d94e79868ce31c4b6c56ba5ad0690a2a',
+     armv7l: '12707819474aa94f34f38d2b81ac4ab8d94e79868ce31c4b6c56ba5ad0690a2a',
+       i686: 'c33dc88fbb67b7d2adc32b5cb01cce8cec7c0db0d92f3ef1ee2ae90adc717514',
+     x86_64: '67103e8c19401e0c0a944e50856f3a40c41846e29dbfae84ef273af8134445c6'
   })
 
   depends_on 'libssh'
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
+  depends_on 'expat' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'curl' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system "sed -i 's/MINGW OR CYGWIN OR CMAKE_HOST_SOLARIS/UNIX/g' cmake/compilerFlags.cmake"
@@ -33,10 +32,7 @@ class Libexiv2 < Package
   def self.build
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
+      system "cmake \
       -G Ninja \
       #{CREW_CMAKE_OPTIONS} \
       -DEXIV2_ENABLE_CURL=ON \

@@ -5,21 +5,15 @@ class Smallbasic < Package
   homepage 'https://smallbasic.github.io/'
   version '12.23'
   license 'GPLv3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/smallbasic/SmallBASIC.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.xz'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smallbasic/12.23_armv7l/smallbasic-12.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smallbasic/12.23_armv7l/smallbasic-12.23-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smallbasic/12.23_i686/smallbasic-12.23-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smallbasic/12.23_x86_64/smallbasic-12.23-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'e86e6eda7034972b3d8cac560fab08c64eb9868105104b8846c8f0c5c4e5e8ec',
      armv7l: 'e86e6eda7034972b3d8cac560fab08c64eb9868105104b8846c8f0c5c4e5e8ec',
-       i686: 'c3121b950dafdfb351db77cdedaebe15b7c0c7cccb9467c0df2770ca5c3beaac',
-     x86_64: 'b4ab1ab31b5c350340245cded4e39ed3070dc65537c35640091ea721df0475c6',
+     x86_64: 'b4ab1ab31b5c350340245cded4e39ed3070dc65537c35640091ea721df0475c6'
   })
 
   depends_on 'libiconv'
@@ -29,7 +23,7 @@ class Smallbasic < Package
 
   def self.build
     system 'bash ./autogen.sh && filefix'
-    system "./configure #{CREW_OPTIONS} --enable-sdl"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --enable-sdl"
     system 'make'
   end
 

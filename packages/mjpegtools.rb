@@ -3,39 +3,47 @@ require 'package'
 class Mjpegtools < Package
   description 'Video capture, editing, playback, and compression to MPEG of MJPEG video'
   homepage 'https://mjpeg.sourceforge.io/'
-  @_ver = '2.2.0'
-  version @_ver
+  version '2.2.1'
   license 'GPL-2'
-  compatibility 'all'
-  source_url 'https://sourceforge.net/projects/mjpeg/files/mjpegtools/2.2.0/mjpegtools-2.2.0.tar.bz2'
-  source_sha256 'a84349839471052db1ef691134aacf905b314dfce8762d47e10edcc9ab5f97d8'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://sourceforge.net/projects/mjpeg/files/mjpegtools/2.2.1/mjpegtools-2.2.1.tar.gz'
+  source_sha256 'b180536d7d9960b05e0023a197b00dcb100929a49aab71d19d55f4a1b210f49a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mjpegtools/2.2.0_armv7l/mjpegtools-2.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mjpegtools/2.2.0_armv7l/mjpegtools-2.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mjpegtools/2.2.0_i686/mjpegtools-2.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mjpegtools/2.2.0_x86_64/mjpegtools-2.2.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '50bef51c33555ed239c35fe88ce52e025cbefc7bc3ce80158b186bb4d348f746',
-     armv7l: '50bef51c33555ed239c35fe88ce52e025cbefc7bc3ce80158b186bb4d348f746',
-       i686: '62337fe4925af757764dac019076a22120377c808d9081fd3d1713192c092da3',
-     x86_64: 'f046724650de108d5ed9f7f000953de6bd13425d5e1b5be6785817672c190f3f'
+    aarch64: '769cff6f2acf252ff998f56f0d5e9c8fc9ed2a3e33f7639c4919675e783ee3ad',
+     armv7l: '769cff6f2acf252ff998f56f0d5e9c8fc9ed2a3e33f7639c4919675e783ee3ad',
+     x86_64: '967ddfd9c3024f040cdc9044e6f30d66812f5e6e5aa7c8d9982d99b88cc5f579'
   })
 
   depends_on 'libdv'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libsdl'
   depends_on 'libsdl2'
   depends_on 'libx11'
   depends_on 'v4l_utils' => :build
+  depends_on 'at_spi2_core' # R
+  depends_on 'expat' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'gstreamer' # R
+  depends_on 'gtk2' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'pango' # R
+  depends_on 'zlib' # R
 
   def self.build
-    system 'ls -aFl'
     system '[ -x configure ] || ./autogen.sh'
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 
