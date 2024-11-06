@@ -3,7 +3,7 @@
 # Version 1.0
 set -e
 echo "Chromebrew GitHub Action Unit Test Stub"
-last_update=$(stat -c %w /usr/local/lib/crew/tests/unit_test_stub.sh)
+last_update=$(stat -c %y /usr/local/lib/crew/tests/unit_test_stub.sh)
 echo "Last Updated: ${last_update}"
 stub_mtime=$(stat -c %Y /usr/local/lib/crew/tests/unit_test_stub.sh)
 echo "CHANGED_PACKAGES: ${CHANGED_PACKAGES}"
