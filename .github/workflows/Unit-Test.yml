@@ -115,6 +115,7 @@ jobs:
             esac
       - name: Run unit tests
         run: |
+            echo "$GITHUB_CONTEXT"
             if [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]); then
               # Exit the arm container if there are neither non-package changed files nor armv7l compatible packages.
               echo "Skipping armv7l container unit tests."
