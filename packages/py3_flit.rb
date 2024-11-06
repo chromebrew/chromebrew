@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_flit < Pip
   description 'Flit provides simplified packaging of Python modules.'
   homepage 'https://flit.pypa.io/'
-  version "3.9.0-#{CREW_PY_VER}"
+  version "3.10.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ef8a42ac074cc2be6eacaa9009047fa0328dbee4e654b926033f206b8a649975',
-     armv7l: 'ef8a42ac074cc2be6eacaa9009047fa0328dbee4e654b926033f206b8a649975',
-       i686: '0cb61118e416d7ad3b3f0eeb1812d0e827d5909c5afafd5858b455e4810edb05',
-     x86_64: '88c43c6e353d0998ad564eff8e2c1c0670a3afff7d185f8a00dc9294766c7c0f'
+    aarch64: '02fd1c35ef6cc5087170eefb1491e99a5895f2477dab8d31e7c25f24b84c785d',
+     armv7l: '02fd1c35ef6cc5087170eefb1491e99a5895f2477dab8d31e7c25f24b84c785d',
+       i686: '9f0897e5c1dc5fe3dae65a8121307c60c8702577d6447d9c47c4bfa0e9339828',
+     x86_64: '580f966b7ab5293f90a558d605a87a8c5123342a60f40f8926dc2b5979d372bb'
   })
 
   depends_on 'py3_docutils'

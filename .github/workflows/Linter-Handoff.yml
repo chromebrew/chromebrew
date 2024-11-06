@@ -3,6 +3,7 @@ name: Linter-Handoff
 on:
   pull_request:
     branches: [master]
+  merge_group:
 jobs:
   handoff:
     runs-on: ubuntu-latest
