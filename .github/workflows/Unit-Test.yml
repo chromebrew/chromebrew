@@ -136,7 +136,19 @@ jobs:
               ;;
             esac
       - name: Run unit tests
+        env:
+          GITHUB_EVENT: ${{ github.event_name }}
         run: |
+            case $GITHUB_EVENT in
+              merge_group)
+                export CREW_REPO="https://github.com/${{ github.actor }}/chromebrew.git"
+                export CREW_BRANCH="mergegroup"
+                ;;
+              pull_request)
+                export CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}"
+                export CREW_BRANCH="${{ github.head_ref }}"
+                ;;
+            esac
             if [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]); then
               # Exit the arm container if there are neither non-package changed files nor armv7l compatible packages.
               echo "Skipping armv7l container unit tests."
@@ -150,17 +162,17 @@ jobs:
               echo "Skipping i686 container unit tests."
               exit 0
             else
-              docker pull --platform $PLATFORM satmandu/crewbuild:$CONTAINER
+              docker pull --platform ${PLATFORM} satmandu/crewbuild:${CONTAINER}
               docker run \
                 --rm \
-                --platform $PLATFORM \
+                --platform ${PLATFORM} \
                 --privileged \
                 -u chronos \
-                -e CHANGED_PACKAGES="$CHANGED_PACKAGES" \
-                -e LD_LIBRARY_PATH="/usr/local/lib$LIB_SUFFIX" \
-                -e GCONV_PATH="/usr/local/lib$LIB_SUFFIX/gconv" \
-                -e CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}" \
-                -e CREW_BRANCH="${{ github.head_ref }}" \
-                "satmandu/crewbuild:$CONTAINER" \
+                -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
+                -e LD_LIBRARY_PATH="/usr/local/lib${LIB_SUFFIX}" \
+                -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
+                -e CREW_REPO="${CREW_REPO}" \
+                -e CREW_BRANCH="${CREW_BRANCH}" \
+                "satmandu/crewbuild:${CONTAINER}" \
                 /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test.sh
             fi
