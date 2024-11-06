@@ -1,6 +1,10 @@
 #!/bin/bash
-# This is for use as a Github CI Pull Request Unit Test.
+# This is for use in Chromebrew Github CI Unit Tests.
+# Version 1.0
 set -e
+echo "Chromebrew GitHub Action Unit Test Stub"
+last_update=$(stat -c %w /usr/local/lib/crew/tests/unit_test_stub.sh)
+echo "Last Updated: ${last_update}"
 stub_mtime=$(stat -c %Y /usr/local/lib/crew/tests/unit_test_stub.sh)
 echo "CHANGED_PACKAGES: ${CHANGED_PACKAGES}"
 cd /usr/local/lib/crew/packages/
