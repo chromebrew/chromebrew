@@ -1,10 +1,8 @@
-#!/bin/bash -e
-# This is for use as a Github CI Pull Request Unit Test.
+#!/bin/bash
+# This is for use as a Github CI Unit Test.
+# Version 1.0
 set -e
-echo "CHANGED_PACKAGES: ${CHANGED_PACKAGES}"
 cd /usr/local/lib/crew/packages/
-yes | crew update
-yes | crew upgrade
 git clone --depth=1 --branch="$CREW_BRANCH" "$CREW_REPO" ~/build_test
 # crew wont let you build if you're in the installation directory.
 (cd ~/build_test && yes | CREW_CACHE_ENABLED=1 crew build -vf ~/build_test/packages/hello_world_chromebrew.rb)
