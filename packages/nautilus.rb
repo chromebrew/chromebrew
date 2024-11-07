@@ -6,18 +6,17 @@ require 'buildsystems/meson'
 class Nautilus < Meson
   description 'Default file manager for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Files'
-  version '46.2'
+  version '47.0'
   license 'GPLv3'
   compatibility 'x86_64 aarch64 armv7l'
-  min_glibc '2.37'
   source_url 'https://gitlab.gnome.org/GNOME/nautilus.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a9108646b99aa5f1ed6a82fc6c841791eddddfaabebae08064e7dbcfb2d28ef7',
-     armv7l: 'a9108646b99aa5f1ed6a82fc6c841791eddddfaabebae08064e7dbcfb2d28ef7',
-     x86_64: '760d0a5029e887e93f849db2440b5b149dd7499e21b213b9ddc95ba7b997bfe5'
+    aarch64: 'a273e282589015b336b968e3945b931898021aa4818595bcef78efc08b0c1424',
+     armv7l: 'a273e282589015b336b968e3945b931898021aa4818595bcef78efc08b0c1424',
+     x86_64: 'bfd42a2ec2f237eb10cfa8e000ff8ebdf7b00e6ffcf8c77f50adfd04e3d280ce'
   })
 
   depends_on 'appstream' => :build
@@ -49,12 +48,14 @@ class Nautilus < Meson
   depends_on 'libhandy' => :build
   depends_on 'libjpeg_turbo' => :build
   depends_on 'libportal' # R
+  depends_on 'libx11' # R
   depends_on 'libxml2' => :build
   depends_on 'localsearch' => :build
   depends_on 'pango' # R
   depends_on 'tinysparql' # R
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
+  depends_on 'wayland' # R
 
   gnome
 
