@@ -45,7 +45,7 @@ class Tinysparql < Meson
       -Dsystemd_user_services=false"
 
   def self.patch
-    return unless LIBC_VERSION < '2.37' && %w[aarch64 armv7l].include?(ARCH)
+    return unless Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.37') && %w[aarch64 armv7l].include?(ARCH)
 
     system "sed -i '/Get an appropriate 4-digit year modifier for strftime/,/^endif/d' meson.build"
     system "sed -i \"s/year_modifier/'%4Y'/g\" meson.build"
