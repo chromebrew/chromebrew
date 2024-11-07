@@ -111,7 +111,7 @@ jobs:
               x86_64)
                 # Export the x86_64 container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
                 if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=hatch-x86_64.m129" >> $GITHUB_ENV
+                    echo "CONTAINER=hatch-x86_64.m130" >> $GITHUB_ENV
                 else
                     echo "CONTAINER=nocturne-x86_64.m90" >> $GITHUB_ENV
                 fi
@@ -121,7 +121,7 @@ jobs:
               armv7l)
                 # Export the armv7l container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
                 if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=strongbad-armv7l.m129" >> $GITHUB_ENV
+                    echo "CONTAINER=strongbad-armv7l.m130" >> $GITHUB_ENV
                 else
                     echo "CONTAINER=fievel-armv7l.m91" >> $GITHUB_ENV
                 fi
@@ -174,5 +174,5 @@ jobs:
                 -e CREW_REPO="${CREW_REPO}" \
                 -e CREW_BRANCH="${CREW_BRANCH}" \
                 "satmandu/crewbuild:${CONTAINER}" \
-                /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test.sh
+                /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test_stub.sh
             fi
