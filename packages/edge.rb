@@ -3,12 +3,12 @@ require 'package'
 class Edge < Package
   description 'Microsoft Edge is the fast and secure browser'
   homepage 'https://www.microsoft.com/en-us/edge'
-  version '130.0.2849.68-1'
+  version '130.0.2849.80-1'
   license 'MIT'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_#{version}_amd64.deb"
-  source_sha256 'a5a18b57cfd76d37a9b46bdb4b38272fd6fbb4889ecc7d610f60c9110e1ab374'
+  source_sha256 '1b6f5743703e6da81c65c28dbcfd949d605466e226acc7cde9efbd4beabfa05d'
 
   depends_on 'at_spi2_core'
   depends_on 'libcom_err'
@@ -37,7 +37,7 @@ class Edge < Package
 
     # Add icon for use with crew-launcher
     downloader 'https://cdn.icon-icons.com/icons2/2552/PNG/128/edge_browser_logo_icon_152998.png',
-               'ae7b1378a5d9d84314b459b6a16c3ec14aae0b88eeb78040f7bc28156cf2d753', 'microsoft-edge.png'
+               '524373bb044a48b8e72f7ffed1e0a95ed88f89e1fe29a065e52a32486bcb9f99', 'microsoft-edge.png'
 
     icon_path = "#{CREW_DEST_PREFIX}/share/icons/hicolor/128x128/apps"
     FileUtils.mkdir_p icon_path.to_s
