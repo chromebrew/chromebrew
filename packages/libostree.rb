@@ -11,9 +11,9 @@ class Libostree < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'afb793c59fb8c3c6fb332c09d0afb901f8b776122e0990a312a63c0c1bbf54e0',
-     armv7l: 'afb793c59fb8c3c6fb332c09d0afb901f8b776122e0990a312a63c0c1bbf54e0',
-     x86_64: 'bc80e7c50fec8d70f6024991eae569080d6fed8e3da7ec51ce5cea0f2bb3039e'
+    aarch64: '1136bea46e168c2be48e029a9b084f56d32ab3d7023ca13a17eb96f1829575c9',
+     armv7l: '1136bea46e168c2be48e029a9b084f56d32ab3d7023ca13a17eb96f1829575c9',
+     x86_64: '175a202b1843d9c26ea579d5896530198f74ff201de46ed89a92473299197657'
   })
 
   depends_on 'acl' # R
@@ -24,6 +24,7 @@ class Libostree < Autotools
   depends_on 'c_ares' # R
   depends_on 'curl' # R
   depends_on 'dbus' # R
+  depends_on 'docbook_xml' => :build
   depends_on 'e2fsprogs' => :build
   depends_on 'fuse3' => :build
   depends_on 'glibc' # R
@@ -54,9 +55,7 @@ class Libostree < Autotools
       --with-curl \
       --without-libsystemd \
       --with-avahi \
-      --with-libarchive \
-      --disable-gtk-doc \
-      --disable-man' # gtk-doc and man failed to build, causes make to fail
+      --with-libarchive'
 
   def self.prebuild
     ConvenienceFunctions.libtoolize('libxml2')

@@ -11,9 +11,9 @@ class Flatpak < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '818bafde9c297f81603edef7d87768cb70203c346b3c128eb03a2d7048549439',
-     armv7l: '818bafde9c297f81603edef7d87768cb70203c346b3c128eb03a2d7048549439',
-     x86_64: 'cdea08539044826c107a1eb81c322aedfeb9bf3d9ee94ddccd7892dff42158df'
+    aarch64: 'f7a4671c2d60b558b523b3aa5a5b31521a5ccb3fb2cad92e7bdcfd9d9ca68dd6',
+     armv7l: 'f7a4671c2d60b558b523b3aa5a5b31521a5ccb3fb2cad92e7bdcfd9d9ca68dd6',
+     x86_64: '9af5a05a1a8ab7e65e268a4409f2daab459959482bf94b99f8922e96e60345a6'
   })
 
   depends_on 'appstream_glib' => :build
@@ -49,8 +49,6 @@ class Flatpak < Meson
   print_source_bashrc
 
   meson_options "-Dsystem_install_dir=#{CREW_PREFIX}/var/lib/flatpak \
-              -Ddocbook_docs=disabled \
-              -Dgtkdoc=disabled \
               -Dsystemd=disabled \
               -Dsystem_bubblewrap=#{CREW_PREFIX}/bin/bwrap \
               -Dsystem_fonts_dir=#{CREW_PREFIX}/share/fonts:/usr/share/fonts \
