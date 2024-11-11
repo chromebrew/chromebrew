@@ -3,17 +3,17 @@ require 'buildsystems/autotools'
 class Gmime < Autotools
   description 'GMime is a powerful MIME (Multipurpose Internet Mail Extension) utility library. It is meant for creating, editing, and parsing MIME messages and structures.'
   homepage 'https://developer.gnome.org/gmime/'
-  version '3.2.14-de4f1b0'
+  version '3.2.15'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/jstedfast/gmime.git'
-  git_hashtag 'de4f1b044141df3ef0b1fc20be422dc667443484'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '64a5336aa9c72b3afb128b124c24a09d229e787915c1d17b0874e1775d98e9ea',
-     armv7l: '64a5336aa9c72b3afb128b124c24a09d229e787915c1d17b0874e1775d98e9ea',
-     x86_64: 'db5b68e4c23881dfe323a660d14d9f5112f79c998bdf98dad5f5fb19123afcbd'
+    aarch64: '1dc01a8bfdbb7058ddcfe98030ce742a499f4992104af6f709584cc729889a0e',
+     armv7l: '1dc01a8bfdbb7058ddcfe98030ce742a499f4992104af6f709584cc729889a0e',
+     x86_64: '8af3eff73005d645fb83ec90888d4b9e36903d64324bf7010289de71d9a6ca9b'
   })
 
   depends_on 'glibc' # R
@@ -27,4 +27,9 @@ class Gmime < Autotools
   depends_on 'zlib' # R
 
   gnome
+
+  def self.patch
+    downloader 'https://patch-diff.githubusercontent.com/raw/jstedfast/gmime/pull/171.diff', 'a9532d24030babcbdf2cfe09c9dc9274c7607f5cf1d3544996a0353b3eb36354', '171.diff'
+    system 'patch -Np1 -i 171.diff'
+  end
 end

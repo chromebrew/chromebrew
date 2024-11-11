@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Gnupg < Autotools
   description 'GnuPG is a complete and free implementation of the OpenPGP standard as defined by RFC4880 (also known as PGP).'
   homepage 'https://gnupg.org/'
-  version '2.4.4'
+  version '2.4.6'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.4.tar.bz2'
-  source_sha256 '67ebe016ca90fa7688ce67a387ebd82c6261e95897db7b23df24ff335be85bc6'
+  source_url "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-#{version}.tar.bz2"
+  source_sha256 '95acfafda7004924a6f5c901677f15ac1bda2754511d973bb4523e8dd840e17a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2a5fda73f4dc3c7cc17b0c6374e17408941dedc72add820f27d209343fd8991f',
-     armv7l: '2a5fda73f4dc3c7cc17b0c6374e17408941dedc72add820f27d209343fd8991f',
-       i686: '9e204d523d1fb4fae27fb870df06ab11535df322d2c9c5c951052826c9c6784a',
-     x86_64: 'c2172f64f852c09867f4780fdef72f1ca52fdd2df9059866f8e6b8033a256460'
+    aarch64: '11f64f2bf8d36d22c4b12de99a5dba2e9eb471a897d2a124a7082a75569f3ce7',
+     armv7l: '11f64f2bf8d36d22c4b12de99a5dba2e9eb471a897d2a124a7082a75569f3ce7',
+       i686: '772375004996c7cb5837f9f0ed54d107b201db9dd099fec3c9b7ab2ee8cba9b8',
+     x86_64: '5915ea7434e4a720737832fd6a21fea46baa996c2c34bab4feba437f044b971d'
   })
 
   depends_on 'bzip2' # R
@@ -39,4 +39,9 @@ class Gnupg < Autotools
     --with-readline'
 
   run_tests
+
+  def self.patch
+    downloader 'https://files.gnupg.net/file/data/zy2tsxkydxq4okdhxj4p/PHID-FILE-cnig3h7b4hnrmr5efbh2/file', '7beaf4c72dc91a885fb088f7c1ef043ab49f230666727bcf2609954d722aba36', 'unistd.patch'
+    system 'patch -Np1 -i unistd.patch'
+  end
 end

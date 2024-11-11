@@ -1,30 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Pinentry < Package
+class Pinentry < Autotools
   description 'A collection of passphrase entry dialogs which is required for almost all usages of GnuPG'
   homepage 'https://gnupg.org/software/pinentry/index.html'
-  version '1.1.0'
+  version '1.3.1'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://gnupg.org/ftp/gcrypt/pinentry/pinentry-1.1.0.tar.bz2'
-  source_sha256 '68076686fa724a290ea49cdf0d1c0c1500907d1b759a3bcbfbec0293e8f56570'
-  binary_compression 'tar.xz'
+  source_url "https://gnupg.org/ftp/gcrypt/pinentry/pinentry-#{version}.tar.bz2"
+  source_sha256 'bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6b0d4c5f8806b54a00ff932b9d77183e14e16fc9d78e90018b4444591eaf1ff0',
-     armv7l: '6b0d4c5f8806b54a00ff932b9d77183e14e16fc9d78e90018b4444591eaf1ff0',
-       i686: '759683fb43d0936de9aed52c8b95de5083f85d2181619952c188cba12fcd1d5e',
-     x86_64: 'e9af08a3fcb09f6001c39438976c4be453fea946775391fbcaedd03d2700869a'
+    aarch64: '536fc3599f6cffc1e7f8a89ec174dd4306e689e9e779ade0735a270ad6cd38b0',
+     armv7l: '536fc3599f6cffc1e7f8a89ec174dd4306e689e9e779ade0735a270ad6cd38b0',
+       i686: 'eabc731fb8cbabbd416b1714e28b511cb8fd9da86ead7f81fcb1e07b48cf86f4',
+     x86_64: '8a07b26c69ccedb0b7092fbb5c91dce0a42d2679682be088a0a3095f764aa5b3'
   })
 
-  depends_on 'libcap'
-
-  def self.build
-    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses ./configure --prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'libassuan' # R
+  depends_on 'libcap' => :build
+  depends_on 'libgpg_error' # R
+  depends_on 'ncurses' # R
 end

@@ -1,9 +1,9 @@
 /usr/local/bin/ostree
-/usr/local/bin/rofiles-fuse
 /usr/local/etc/grub.d/15_ostree
 /usr/local/include/ostree-1/ostree-async-progress.h
 /usr/local/include/ostree-1/ostree-autocleanups.h
 /usr/local/include/ostree-1/ostree-bootconfig-parser.h
+/usr/local/include/ostree-1/ostree-content-writer.h
 /usr/local/include/ostree-1/ostree-core.h
 /usr/local/include/ostree-1/ostree-deployment.h
 /usr/local/include/ostree-1/ostree-diff.h
@@ -20,6 +20,7 @@
 /usr/local/include/ostree-1/ostree-repo-finder-mount.h
 /usr/local/include/ostree-1/ostree-repo-finder-override.h
 /usr/local/include/ostree-1/ostree-repo-finder.h
+/usr/local/include/ostree-1/ostree-repo-os.h
 /usr/local/include/ostree-1/ostree-repo.h
 /usr/local/include/ostree-1/ostree-sepolicy.h
 /usr/local/include/ostree-1/ostree-sign-ed25519.h
@@ -37,7 +38,6 @@
 /usr/local/lib/ostree/ostree-prepare-root
 /usr/local/lib/pkgconfig/ostree-1.pc
 /usr/local/libexec/libostree/grub2-15_ostree
-/usr/local/libexec/libostree/ostree-trivial-httpd
 /usr/local/share/bash-completion/completions/ostree
 /usr/local/share/gir-1.0/OSTree-1.0.gir
 /usr/local/share/ostree/trusted.gpg.d/README-gpg
