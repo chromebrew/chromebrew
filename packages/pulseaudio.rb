@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Pulseaudio < Meson
   description 'PulseAudio is a sound system for POSIX OSes, meaning that it is a proxy for your sound applications.'
   homepage 'https://www.freedesktop.org/wiki/Software/PulseAudio/'
-  version '17.0'
+  version '17.0-1'
   license 'LGPL-2.1 and GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f20f9d1c77a533ea964f0975076621236609129654d99fa754938587596c63af',
-     armv7l: 'f20f9d1c77a533ea964f0975076621236609129654d99fa754938587596c63af',
-     x86_64: '4dc00fd8c37083d63d07be1259f071ce3eba76d7971b63d99bbdd4dcd2f85b0e'
+    aarch64: 'e7b80a2ed41c08c7e702459361bedb07946773631ba317f62ec3951b590f4fab',
+     armv7l: 'e7b80a2ed41c08c7e702459361bedb07946773631ba317f62ec3951b590f4fab',
+     x86_64: 'c779ca6d9f8a108dd12523185e33b683e1aa3e72abd41b06f56262a8fd72986b'
   })
 
   depends_on 'alsa_lib' # R
@@ -29,7 +29,7 @@ class Pulseaudio < Meson
   depends_on 'glibc' # R
   depends_on 'glib' # R
   # depends_on 'gsettings_desktop_schemas' # L
-  depends_on 'gstreamer' => :build
+  depends_on 'gstreamer' # R
   depends_on 'jack' # R
   depends_on 'json_c' => :build
   depends_on 'libcap' # R
@@ -49,7 +49,6 @@ class Pulseaudio < Meson
   depends_on 'tcpwrappers' # R
   depends_on 'tdb' # R
   depends_on 'valgrind' => :build
-  depends_on 'webrtc_audio_processing' # R
 
   git_fetchtags
 
