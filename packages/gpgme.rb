@@ -25,7 +25,7 @@ class Gpgme < Autotools
 
   def self.patch
     Dir.chdir('src') do
-      gettid_wrapper = <<~GETTID_WRAPPER_EOF
+      File.write 'gettid_wrapper', <<~GETTID_WRAPPER_EOF
         #if __GLIBC_PREREQ(2,30)
         #define _GNU_SOURCE
         #include <unistd.h>
@@ -43,7 +43,6 @@ class Gpgme < Autotools
         }
         #endif
       GETTID_WRAPPER_EOF
-      File.write('gettid_wrapper', gettid_wrapper)
       system "sed -i '/# include <unistd.h>/d' debug.c"
       system "sed -i '/#ifdef HAVE_UNISTD_H/r gettid_wrapper' debug.c"
     end
