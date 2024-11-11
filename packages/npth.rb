@@ -18,4 +18,6 @@ class Npth < Autotools
   })
 
   depends_on 'glibc' # R
+
+  run_tests
 end
