@@ -11,15 +11,19 @@ class Bubblewrap < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9b0d4fb6f95057a8eaee2a38611a6f87ff5f24729ca8a6e1946ba3322dcfd59b',
-     armv7l: '9b0d4fb6f95057a8eaee2a38611a6f87ff5f24729ca8a6e1946ba3322dcfd59b',
-       i686: '0fb5b33471ff70119fc060dfe5fbb00779caa3fc982e5bbe6961afbe7a560dcc',
-     x86_64: '328728bf2901f320a45383ae8e2056c78514cefd74abc5bd48323735e2136bd0'
+    aarch64: 'b0febfc984247217480a4268557c31250726ff2df9b267608c2c91eecdee1d32',
+     armv7l: 'b0febfc984247217480a4268557c31250726ff2df9b267608c2c91eecdee1d32',
+       i686: '191f69c05e2d9196d37c6b25013f98f89a52f3841bf2ce29271eff662c408629',
+     x86_64: 'd59f8e762e6596b9245437d465445aadb876352b11e4f450d34f28da02c095ac'
   })
 
   depends_on 'dconf' => :build
+  depends_on 'docbook_xml' => :build
   depends_on 'glibc' # R
   depends_on 'libcap' # R
+  depends_on 'libxslt' => :build
+
+  meson_options '-Dman=enabled'
 
   meson_build_extras do
     File.write 'bwrap.sh', <<~BWRAP_HEREDOC

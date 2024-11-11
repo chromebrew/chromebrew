@@ -3,7 +3,7 @@ require 'package'
 class Docbook_xsl < Package
   description 'The DocBook XSL Stylesheets package contains XSL stylesheets. These are useful for performing transformations on XML DocBook files.'
   homepage 'https://github.com/docbook/xslt10-stylesheets'
-  version '1.79.2-4'
+  version '1.79.2-5'
   license 'custom'
   compatibility 'all'
   source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{version.split('-').first}/docbook-xsl-#{version.split('-').first}.zip"
@@ -11,10 +11,10 @@ class Docbook_xsl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '73221262b792d4e3539f9e5916b4b9d6213f2c396b04fca17932705d90ae9c75',
-     armv7l: '73221262b792d4e3539f9e5916b4b9d6213f2c396b04fca17932705d90ae9c75',
-       i686: '939fdab9fdfe243644b2144dc61e259874d1d4d4e1f0f0ec70d914c1ca28776e',
-     x86_64: '0f2158867eb01d15aac465273bbee82c30028dff0733d9b0a0448d3156f18b53'
+    aarch64: 'b62ae6d5baf3b31f3c08850cf6fab86502c27a3410590384daee6b0a0e82ad47',
+     armv7l: 'b62ae6d5baf3b31f3c08850cf6fab86502c27a3410590384daee6b0a0e82ad47',
+       i686: '93aa4669b36e84f8b19447681109621eda935ae860946d3f9d84af3234b71015',
+     x86_64: '0358b98fa34acc6681a7fff0431acc43753220ec8a2662fdef52b9dde0490c67'
   })
 
   depends_on 'docbook_xml'
@@ -30,7 +30,7 @@ class Docbook_xsl < Package
 
   def self.install
     ENV['XML_CATALOG_FILES'] = "#{CREW_DEST_PREFIX}/etc/xml/catalog"
-    @pkgroot = "#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}"
+    @pkgroot = "#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first}"
     @ADDFILES_SH = <<~ADDFILES_HEREDOC
       #!/usr/bin/env bash
       set -ex
@@ -51,11 +51,11 @@ class Docbook_xsl < Package
     File.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
     system './add_files.sh || true'
     FileUtils.install 'VERSION.xsl', @pkgroot, mode: 0o644
-    FileUtils.ln_s "#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}",
+    FileUtils.ln_s "#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first}",
                    "#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/"
     # For moreutils
-    FileUtils.ln_s "#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}",
+    FileUtils.ln_s "#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first}",
                    "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook-xsl"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @env = <<~EOF
@@ -90,18 +90,18 @@ class Docbook_xsl < Package
 
   def self.postinstall
     <<~CMD.each_line(chomp: true) do |cmd|
-      xmlcatalog --noout --add rewriteSystem https://cdn.docbook.org/release/xsl/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'
-      xmlcatalog --noout --add rewriteURI https://cdn.docbook.org/release/xsl/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'
-      xmlcatalog --noout --add rewriteSystem http://docbook.sourceforge.net/release/xsl/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'
-      xmlcatalog --noout --add rewriteURI http://docbook.sourceforge.net/release/xsl/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'
-      xmlcatalog --noout --add rewriteSystem http://docbook.sourceforge.net/release/xsl-ns/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'
-      xmlcatalog --noout --add rewriteURI http://docbook.sourceforge.net/release/xsl-ns/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'
-      xmlcatalog --noout --add rewriteSystem https://cdn.docbook.org/release/xsl/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'
-      xmlcatalog --noout --add rewriteURI https://cdn.docbook.org/release/xsl/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'
-      xmlcatalog --noout --add rewriteSystem http://docbook.sourceforge.net/release/xsl/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'
-      xmlcatalog --noout --add rewriteURI http://docbook.sourceforge.net/release/xsl/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'
-      xmlcatalog --noout --add rewriteSystem http://docbook.sourceforge.net/release/xsl-ns/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'
-      xmlcatalog --noout --add rewriteURI http://docbook.sourceforge.net/release/xsl-ns/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'
+      xmlcatalog --noout --add rewriteSystem https://cdn.docbook.org/release/xsl/#{version.split('-').first} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first} '#{CREW_PREFIX}/etc/xml/catalog'
+      xmlcatalog --noout --add rewriteURI https://cdn.docbook.org/release/xsl/#{version.split('-').first} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first} '#{CREW_PREFIX}/etc/xml/catalog'
+      xmlcatalog --noout --add rewriteSystem http://docbook.sourceforge.net/release/xsl/#{version.split('-').first} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first} '#{CREW_PREFIX}/etc/xml/catalog'
+      xmlcatalog --noout --add rewriteURI http://docbook.sourceforge.net/release/xsl/#{version.split('-').first} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first} '#{CREW_PREFIX}/etc/xml/catalog'
+      xmlcatalog --noout --add rewriteSystem http://docbook.sourceforge.net/release/xsl-ns/#{version.split('-').first} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first} '#{CREW_PREFIX}/etc/xml/catalog'
+      xmlcatalog --noout --add rewriteURI http://docbook.sourceforge.net/release/xsl-ns/#{version.split('-').first} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first} '#{CREW_PREFIX}/etc/xml/catalog'
+      xmlcatalog --noout --add rewriteSystem https://cdn.docbook.org/release/xsl/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first} '#{CREW_PREFIX}/etc/xml/catalog'
+      xmlcatalog --noout --add rewriteURI https://cdn.docbook.org/release/xsl/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first} '#{CREW_PREFIX}/etc/xml/catalog'
+      xmlcatalog --noout --add rewriteSystem http://docbook.sourceforge.net/release/xsl/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first} '#{CREW_PREFIX}/etc/xml/catalog'
+      xmlcatalog --noout --add rewriteURI http://docbook.sourceforge.net/release/xsl/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first} '#{CREW_PREFIX}/etc/xml/catalog'
+      xmlcatalog --noout --add rewriteSystem http://docbook.sourceforge.net/release/xsl-ns/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first} '#{CREW_PREFIX}/etc/xml/catalog'
+      xmlcatalog --noout --add rewriteURI http://docbook.sourceforge.net/release/xsl-ns/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first} '#{CREW_PREFIX}/etc/xml/catalog'
     CMD
       system cmd
     end
@@ -109,11 +109,11 @@ class Docbook_xsl < Package
     # Check:
     <<~CMD.each_line(chomp: true) do |cmd|
       xmlcatalog #{CREW_PREFIX}/etc/xml/catalog https://cdn.docbook.org/release/xsl/current/
-      xmlcatalog #{CREW_PREFIX}/etc/xml/catalog https://cdn.docbook.org/release/xsl/#{@_ver}/
+      xmlcatalog #{CREW_PREFIX}/etc/xml/catalog https://cdn.docbook.org/release/xsl/#{version.split('-').first}/
       xmlcatalog #{CREW_PREFIX}/etc/xml/catalog http://docbook.sourceforge.net/release/xsl/current/
-      xmlcatalog #{CREW_PREFIX}/etc/xml/catalog http://docbook.sourceforge.net/release/xsl/#{@_ver}/
+      xmlcatalog #{CREW_PREFIX}/etc/xml/catalog http://docbook.sourceforge.net/release/xsl/#{version.split('-').first}/
       xmlcatalog #{CREW_PREFIX}/etc/xml/catalog http://docbook.sourceforge.net/release/xsl-ns/current/
-      xmlcatalog #{CREW_PREFIX}/etc/xml/catalog http://docbook.sourceforge.net/release/xsl-ns/#{@_ver}/
+      xmlcatalog #{CREW_PREFIX}/etc/xml/catalog http://docbook.sourceforge.net/release/xsl-ns/#{version.split('-').first}/
     CMD
       system cmd if @opt_verbose
     end
