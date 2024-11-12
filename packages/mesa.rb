@@ -11,9 +11,9 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5b73ae1980d24afda1c7e981a9b90364fd25af79ba497ca1a20557cc85ea6a70',
-     armv7l: '5b73ae1980d24afda1c7e981a9b90364fd25af79ba497ca1a20557cc85ea6a70',
-     x86_64: 'd5be79158ac59a758db8f7cf52e3d64bdb1adfbe8c848ed2a4eafced63002ff1'
+    aarch64: '2357e259595c772d45d3d3b1dc01e9d2d5357ff79566367233383c612a643d57',
+     armv7l: '2357e259595c772d45d3d3b1dc01e9d2d5357ff79566367233383c612a643d57',
+     x86_64: '532a5d864c3aef590974b76293cfe2c5d17392b90dc443e089afd287f910dff4'
   })
 
   depends_on 'elfutils' # R
@@ -47,6 +47,7 @@ class Mesa < Meson
   depends_on 'py3_ply' => :build
   depends_on 'py3_pycparser' => :build
   depends_on 'spirv_llvm_translator' => :build
+  depends_on 'spirv_tools' # R
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'wayland_protocols' => :build
@@ -57,7 +58,6 @@ class Mesa < Meson
 
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
     -Db_asneeded=false \
-    -Ddri3=enabled \
     -Degl=enabled \
     -Dgbm=enabled \
     -Dgles1=disabled \
@@ -89,13 +89,5 @@ class Mesa < Meson
         FileUtils.ln_s '../../libgbm.so', 'pvr_gbm.so'
       end
     end
-  end
-
-  def self.patch
-    # See https://gitlab.freedesktop.org/mesa/mesa/-/issues/11896
-    # https://github.com/llvm/llvm-project/pull/97824
-    # https://github.com/Zentrik/julia/commit/1b35f7a9147788b9a727c11c5ccdb44c9a800c07
-    # system "sed -i '/llvm::StringMap<bool> features;/d' src/gallium/auxiliary/gallivm/lp_bld_misc.cpp"
-    # system "sed -i 's/llvm::sys::getHostCPUFeatures(features);/auto features = llvm::sys::getHostCPUFeatures();/' src/gallium/auxiliary/gallivm/lp_bld_misc.cpp"
   end
 end
