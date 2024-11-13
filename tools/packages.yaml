@@ -8626,6 +8626,11 @@ url: https://ftpmirror.gnu.org/tar/
 activity: medium
 ---
 kind: url
+name: taskwarrior
+url: https://github.com/GothenburgBitFactory/taskwarrior/releases
+activity: medium
+---
+kind: url
 name: tbb
 url: https://github.com/oneapi-src/oneTBB/releases
 activity: medium
