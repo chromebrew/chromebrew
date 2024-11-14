@@ -18,9 +18,9 @@ class Elvish < Package
 
   def self.install
     system 'go', 'build',
-      '-o', "#{CREW_DEST_PREFIX}/bin/elvish",
-      '-trimpath',
-      '-ldflags', '-s -w -X src.elv.sh/pkg/buildinfo.VersionSuffix=',
-      './cmd/elvish'
+           '-o', "#{CREW_DEST_PREFIX}/bin/elvish",
+           '-trimpath',
+           '-ldflags', '-s -w -X src.elv.sh/pkg/buildinfo.VersionSuffix=',
+           './cmd/elvish'
   end
 end
