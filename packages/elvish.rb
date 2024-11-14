@@ -11,7 +11,7 @@ class Elvish < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'c3baac781ae26606f9366015d1edd4efa070e910718786a515aa5ad8c67d077d'
+     x86_64: '4c25a1c9b97a78b30fcd843511deec3e1240ed2b0646f3007fc9d5ae508a3bf6'
   })
 
   depends_on 'go' => :build
