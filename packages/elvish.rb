@@ -11,9 +11,10 @@ class Elvish < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '4c25a1c9b97a78b30fcd843511deec3e1240ed2b0646f3007fc9d5ae508a3bf6'
+     x86_64: 'bd53118a35e0dbedeaaab0262ea847959c5693ab7208559d0a6748bbeb841cdb'
   })
 
+  depends_on 'glibc' # R
   depends_on 'go' => :build
 
   def self.install

@@ -3874,8 +3874,6 @@ name: libbluray
 url: https://get.videolan.org/libbluray/
 activity: low
 ---
-
----
 kind: url
 name: libbpf
 url: hhttps://github.com/libbpf/libbpf/releases
