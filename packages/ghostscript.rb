@@ -3,24 +3,26 @@ require 'package'
 class Ghostscript < Package
   description 'Interpreter for the PostScript language'
   homepage 'https://www.ghostscript.com/'
-  version '10.02.0'
+  version '10.04.0'
   license 'AGPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10020/ghostpdl-10.02.0.tar.xz'
-  source_sha256 'c158f3b5ade88227510a42652e0fe7b2aa48e123c1fd663cb03e3d87ca2db86a'
+  source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10040/ghostpdl-10.04.0.tar.xz'
+  source_sha256 '0603f5629bc6f567b454911d104cd96702489c9e70e577787843f480b23d4a77'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd6788673f00998758405cc8aab3b29a0184c9abaf40c2177600f779ca5222c4a',
-     armv7l: 'd6788673f00998758405cc8aab3b29a0184c9abaf40c2177600f779ca5222c4a',
-     x86_64: '04b66919323c4660ddbbfcb9f255a3ba0de73e540a956abc10650978d9abe6f1'
+    aarch64: 'ebadc4e1e882398f800455434158d3260d61d32e42f647b6f9d803c8d750d2c3',
+     armv7l: 'ebadc4e1e882398f800455434158d3260d61d32e42f647b6f9d803c8d750d2c3',
+     x86_64: 'efdcd90cb6598beccfb3d16d090fa86fa282a59975565d4ee220bd3f19440812'
   })
 
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' => :build
+  depends_on 'cairo' # R
   depends_on 'cups' # R
   depends_on 'expat' # R
   depends_on 'fontconfig' => :build
+  depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
@@ -30,18 +32,15 @@ class Ghostscript < Package
   depends_on 'harfbuzz' # R
   depends_on 'jbigkit' => :build
   depends_on 'lcms' # R
-  depends_on 'libarchive' # R
   depends_on 'libice' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libpaper' # R
   depends_on 'libpng' # R
   depends_on 'libsm' # R
   depends_on 'libtiff' # R
-  depends_on 'libvdpau' # R
   depends_on 'libx11' # R
   depends_on 'libxext' # R
   depends_on 'libxt' # R
-  depends_on 'neon' # R
   depends_on 'openjpeg' # R
   depends_on 'pango' # R
   depends_on 'zlib' # R
@@ -58,6 +57,7 @@ class Ghostscript < Package
     system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --disable-hidden-visibility \
       --disable-compile-inits \
+      --disable-neon \
       --enable-dynamic \
       --enable-fontconfig \
       --enable-freetype \

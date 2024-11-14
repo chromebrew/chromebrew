@@ -48,13 +48,14 @@
 /usr/local/lib/libgpgme.la
 /usr/local/lib/libgpgme.so
 /usr/local/lib/libgpgme.so.11
-/usr/local/lib/libgpgme.so.11.32.0
+/usr/local/lib/libgpgme.so.11.33.0
 /usr/local/lib/libgpgmepp.la
 /usr/local/lib/libgpgmepp.so
 /usr/local/lib/libgpgmepp.so.6
-/usr/local/lib/libgpgmepp.so.6.20.0
+/usr/local/lib/libgpgmepp.so.6.21.0
 /usr/local/lib/pkgconfig/gpgme-glib.pc
 /usr/local/lib/pkgconfig/gpgme.pc
+/usr/local/lib/pkgconfig/gpgmepp.pc
 /usr/local/share/aclocal/gpgme.m4
 /usr/local/share/common-lisp/source/gpgme/gpgme-grovel.lisp
 /usr/local/share/common-lisp/source/gpgme/gpgme-package.lisp
@@ -63,3 +64,4 @@
 /usr/local/share/info/gpgme.info-1.zst
 /usr/local/share/info/gpgme.info-2.zst
 /usr/local/share/info/gpgme.info.zst
+/usr/local/share/man/man1/gpgme-json.1.zst

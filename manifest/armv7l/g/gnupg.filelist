@@ -4,6 +4,7 @@
 /usr/local/bin/gpg-agent
 /usr/local/bin/gpg-card
 /usr/local/bin/gpg-connect-agent
+/usr/local/bin/gpg-mail-tube
 /usr/local/bin/gpg-wks-client
 /usr/local/bin/gpg-wks-server
 /usr/local/bin/gpgconf
@@ -94,6 +95,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/gnupg2.mo
 /usr/local/share/locale/ja/LC_MESSAGES/gnupg2.mo
 /usr/local/share/locale/nb/LC_MESSAGES/gnupg2.mo
+/usr/local/share/locale/nl/LC_MESSAGES/gnupg2.mo
 /usr/local/share/locale/pl/LC_MESSAGES/gnupg2.mo
 /usr/local/share/locale/pt/LC_MESSAGES/gnupg2.mo
 /usr/local/share/locale/ro/LC_MESSAGES/gnupg2.mo
@@ -109,6 +111,7 @@
 /usr/local/share/man/man1/gpg-card.1.zst
 /usr/local/share/man/man1/gpg-check-pattern.1.zst
 /usr/local/share/man/man1/gpg-connect-agent.1.zst
+/usr/local/share/man/man1/gpg-mail-tube.1.zst
 /usr/local/share/man/man1/gpg-preset-passphrase.1.zst
 /usr/local/share/man/man1/gpg-wks-client.1.zst
 /usr/local/share/man/man1/gpg-wks-server.1.zst
@@ -124,3 +127,4 @@
 /usr/local/share/man/man8/addgnupghome.8.zst
 /usr/local/share/man/man8/applygnupgdefaults.8.zst
 /usr/local/share/man/man8/dirmngr.8.zst
+/usr/local/share/man/manh/gnupg.7.html.zst

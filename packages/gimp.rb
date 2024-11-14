@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Gimp < Meson
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
-  version '2.99.18'
+  version '3.0.0-RC1'
   license 'GPL-3 and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://download.gimp.org/gimp/v2.99/gimp-2.99.18.tar.xz'
-  source_sha256 '8c1bb7a94ac0d4d0cde4d701d8b356387c2ecd87abbd35bbf7d222d40f6ddb6e'
+  source_url 'https://gitlab.gnome.org/GNOME/gimp.git'
+  git_hashtag "GIMP_#{version.gsub('-', '_').gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e538613618d20be74bf6dbb8c8a64c226b0f827dcce487170f4ef8da92a840bd',
-     armv7l: 'e538613618d20be74bf6dbb8c8a64c226b0f827dcce487170f4ef8da92a840bd',
-     x86_64: '846bbfd31fa3b72a0d21017466f36c787203aa2b54c44d86a878d5bd3d48be07'
+    aarch64: '376506a87cd90e550e323694541b060c1e11b2a9361c7f7aa82939ff6e81d105',
+     armv7l: '376506a87cd90e550e323694541b060c1e11b2a9361c7f7aa82939ff6e81d105',
+     x86_64: 'e5e545e96ca5e52155f1a4d4def9a8989d775dd949d42f1a94c14e01e5ffd1c3'
   })
 
   depends_on 'aalib' # R
@@ -27,7 +27,6 @@ class Gimp < Meson
   depends_on 'ffmpeg' => :build
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
-  depends_on 'gcc_dev' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'gegl' # R
@@ -42,6 +41,7 @@ class Gimp < Meson
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'json_c' => :build
+  depends_on 'json_c' # R
   depends_on 'json_glib' # R
   depends_on 'lcms' # R
   depends_on 'libarchive' # R
@@ -68,6 +68,7 @@ class Gimp < Meson
   depends_on 'libxmu' # R
   depends_on 'libxpm' # R
   depends_on 'libxt' => :build
+  depends_on 'libxt' # R
   depends_on 'luajit' # L
   depends_on 'luajit_lgi' # L
   depends_on 'mypaint_brushes_1' => :build
@@ -95,7 +96,7 @@ class Gimp < Meson
     @binaries = %w[gimp gimp-console gimp-test-clipboard gimptool]
     @binaries.each do |binary|
       unless File.file?("#{CREW_DEST_PREFIX}/bin/#{binary}")
-        FileUtils.ln_s "#{CREW_PREFIX}/bin/#{binary}-2.99",
+        FileUtils.ln_s "#{CREW_PREFIX}/bin/#{binary}-#{version.split('.')[0..1].join('.')}",
                        "#{CREW_DEST_PREFIX}/bin/#{binary}"
       end
     end
@@ -103,13 +104,13 @@ class Gimp < Meson
     @man5pages = %w[gimprc]
     @man1pages.each do |manpage|
       unless File.file?("#{CREW_DEST_MAN_PREFIX}/man1/#{manpage}.1")
-        FileUtils.ln_s "#{CREW_MAN_PREFIX}/man1/#{manpage}-2.99.1",
+        FileUtils.ln_s "#{CREW_MAN_PREFIX}/man1/#{manpage}-#{version.split('.')[0..1].join('.')}.1",
                        "#{CREW_DEST_MAN_PREFIX}/man1/#{manpage}.1"
       end
     end
     @man5pages.each do |manpage|
       unless File.file?("#{CREW_DEST_MAN_PREFIX}/man5/#{manpage}.5")
-        FileUtils.ln_s "#{CREW_MAN_PREFIX}/man5/#{manpage}-2.99.5",
+        FileUtils.ln_s "#{CREW_MAN_PREFIX}/man5/#{manpage}-#{version.split('.')[0..1].join('.')}.5",
                        "#{CREW_DEST_MAN_PREFIX}/man5/#{manpage}.5"
       end
     end
