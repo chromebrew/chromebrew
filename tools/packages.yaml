@@ -1640,6 +1640,11 @@ url: https://github.com/elogind/elogind/releases
 activity: low
 ---
 kind: url
+name: elvish
+url: https://github.com/elves/elvish/releases
+activity: high
+---
+kind: url
 name: emacs
 url: https://ftp.gnu.org/gnu/emacs
 activity: low
@@ -3869,6 +3874,7 @@ name: libbluray
 url: https://get.videolan.org/libbluray/
 activity: low
 ---
+
 ---
 kind: url
 name: libbpf
