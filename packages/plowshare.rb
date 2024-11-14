@@ -8,13 +8,8 @@ class Plowshare < Package
   compatibility 'all'
   source_url 'https://github.com/mcrapet/plowshare/archive/v2.1.7.tar.gz'
   source_sha256 'c17d0cc1b3323f72b2c1a5b183a9fcef04e8bfc53c9679a4e1523642310d22ad'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/plowshare/2.1.7-1_armv7l/plowshare-2.1.7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/plowshare/2.1.7-1_armv7l/plowshare-2.1.7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/plowshare/2.1.7-1_i686/plowshare-2.1.7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/plowshare/2.1.7-1_x86_64/plowshare-2.1.7-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0ea3edec905fbdd53d7b94ae485878905008c9945f5861eda3724f0804d52d5b',
      armv7l: '0ea3edec905fbdd53d7b94ae485878905008c9945f5861eda3724f0804d52d5b',

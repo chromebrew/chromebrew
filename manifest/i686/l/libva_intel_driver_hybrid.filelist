@@ -1,0 +1,2 @@
+/usr/local/etc/env.d/libva_intel_driver_hybrid
+/usr/local/lib/dri/i965_drv_video.so

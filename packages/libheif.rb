@@ -3,56 +3,48 @@ require 'package'
 class Libheif < Package
   description 'libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.'
   homepage 'https://github.com/strukturag/libheif'
-  @_ver = '1.11.0'
-  version "#{@_ver}-2"
+  version '1.17.6'
   license 'GPL-3'
-  compatibility 'all'
-  source_url "https://github.com/strukturag/libheif/releases/download/v#{@_ver}/libheif-#{@_ver}.tar.gz"
-  source_sha256 'c550938f56ff6dac83702251a143f87cb3a6c71a50d8723955290832d9960913'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/strukturag/libheif.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.11.0-2_armv7l/libheif-1.11.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.11.0-2_armv7l/libheif-1.11.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.11.0-2_i686/libheif-1.11.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.11.0-2_x86_64/libheif-1.11.0-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '741663915e39e3f343c5d084423597484477eb49dc719f1395c62f84501ba8d9',
-     armv7l: '741663915e39e3f343c5d084423597484477eb49dc719f1395c62f84501ba8d9',
-       i686: '73ad610bbde6b2adb6ac5171efb9078e26ca9a252aece71688e5bd85b0478f86',
-     x86_64: '00cdd26729e9af1d85ca26edd0094195cab10c53bb07158a892293ef94e033af'
+    aarch64: '9c116b6ac1b5da63aa2917a80a7b76c30b6409a32c77644271bc1b038dfa1842',
+     armv7l: '9c116b6ac1b5da63aa2917a80a7b76c30b6409a32c77644271bc1b038dfa1842',
+     x86_64: '6993cb1d221656dfce127fb0de2d1dceb27815f46f20a33abdc4b72e03f6bc56'
   })
 
-  depends_on 'dav1d'
-  depends_on 'libaom'
-  depends_on 'libde265'
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libx265'
-  depends_on 'rav1e'
+  depends_on 'dav1d' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'graphviz' => :build # Only needed for dot.
+  depends_on 'libaom' # R
+  depends_on 'libde265' # R
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libpng' # R
+  depends_on 'libtiff' # L
+  depends_on 'libwebp' # R
+  depends_on 'libx265' # R
+  depends_on 'rav1e' # R
+  depends_on 'svt_av1' # R
+  depends_on 'zlib' # R
+
+  gnome
 
   def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
+    system "cmake -B builddir \
         -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        .."
-    end
-    system 'ninja -C builddir'
+        #{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
+        -Wno-dev"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
-
-  def self.postinstall
-    if File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-      system 'gdk-pixbuf-query-loaders',
-             '--update-cache'
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 end

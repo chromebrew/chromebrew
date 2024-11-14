@@ -2,28 +2,23 @@ require 'package'
 
 class Lz4 < Package
   description 'LZ4 is lossless compression algorithm, providing compression speed at 400 MB/s per core (0.16 Bytes/cycle).'
-  homepage 'https://lz4.github.io/lz4/'
-  version '1.9.4'
+  homepage 'https://lz4.org/'
+  version '1.10.0'
   license 'BSD-2 and GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/lz4/lz4/archive/v1.9.4.tar.gz'
-  source_sha256 '0b0e3aa07c8c063ddf40b082bdf7e37a1562bda40a0ff5272957f3e987e0e54b'
+  source_url 'https://github.com/lz4/lz4.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lz4/1.9.4_armv7l/lz4-1.9.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lz4/1.9.4_armv7l/lz4-1.9.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lz4/1.9.4_i686/lz4-1.9.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lz4/1.9.4_x86_64/lz4-1.9.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '8248d98221d940f8a06a0c19562572b5128afe214b9eb83e4c0fc5240706c2e1',
-     armv7l: '8248d98221d940f8a06a0c19562572b5128afe214b9eb83e4c0fc5240706c2e1',
-       i686: 'ab796d7ebec72971369520ff7a7a87cbdf1c76cd04a2a095c2bf712e72741c5a',
-     x86_64: '76a2f4eccf84e78f32bbd2f8e6042f3ed4cda506ca74706fbbc4d60488b54a2a'
+    aarch64: '441620cf23567ee829c2c61e44c96f3230aa5df9780ef46708a16da3c1d13984',
+     armv7l: '441620cf23567ee829c2c61e44c96f3230aa5df9780ef46708a16da3c1d13984',
+       i686: 'c1ee1b29762fe352bb1fa588b5ae8ddc4589b45479bebe0723449258fabac7b2',
+     x86_64: '6e07a8d095f778015b2e30681f3d17e37bbd33b13c52f1ae2468e3f90a85cffd'
   })
 
   depends_on 'glibc' # R
-  no_patchelf
+  no_zstd
 
   def self.build
     system 'make', "PREFIX=#{CREW_PREFIX}"

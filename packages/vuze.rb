@@ -8,15 +8,13 @@ class Vuze < Package
   compatibility 'x86_64'
   source_url 'https://downloads.sourceforge.net/project/azureus/vuze/Vuze_5760/Vuze_5760_linux.tar.bz2'
   source_sha256 '1c5995ed8a25bac4bf1cea012b583af92af04c15579ab686689bca13e6cad36c'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vuze/5.7.6.0_x86_64/vuze-5.7.6.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    x86_64: '062957f74835d906c6788056224dda734b92e64473a4ac330afbd29041d71c74'
+     x86_64: '062957f74835d906c6788056224dda734b92e64473a4ac330afbd29041d71c74'
   })
 
-  depends_on 'jdk8'
+  depends_on 'jdk8' unless CREW_IN_CONTAINER
   depends_on 'gtk3'
 
   def self.patch
@@ -58,7 +56,7 @@ class Vuze < Package
     puts "\nType 'vuze' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dirs = ["#{HOME}/.azureus", "#{HOME}/.swt"]
     config_dirs.each do |config_dir|
       next unless Dir.exist? config_dir
@@ -66,8 +64,8 @@ class Vuze < Package
       system "echo '#{config_dir}'; ls '#{config_dir}'"
     end
     print "\nWould you like to remove the config directories above? [y/N] "
-    case $stdin.getc
-    when 'y', 'Y'
+    case $stdin.gets.chomp.downcase
+    when 'y', 'yes'
       config_dirs.each do |config_dir|
         next unless Dir.exist? config_dir
 

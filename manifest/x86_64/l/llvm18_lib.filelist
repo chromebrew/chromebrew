@@ -1,0 +1,4 @@
+/usr/local/bin/llvm-strip
+/usr/local/lib64/libLLVM-18.so
+/usr/local/lib64/libLLVM.so
+/usr/local/lib64/libLLVM.so.18.1

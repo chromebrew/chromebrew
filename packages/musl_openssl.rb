@@ -3,24 +3,18 @@ require 'package'
 class Musl_openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  @_ver = '3.0.5'
-  version @_ver
+  version '3.0.10'
   license 'openssl'
   compatibility 'all'
-  source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
-  source_sha256 'aa7d8d9bef71ad6525c55ba11e5f4397889ce49c2c9349dcea6d3e4f0b024a7a'
+  source_url "https://www.openssl.org/source/openssl-#{version}.tar.gz"
+  source_sha256 '1761d4f5b13a1028b9b6f3d4b8e17feb0cedc9370f6afe61d7193d2cdce83323'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.5_armv7l/musl_openssl-3.0.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.5_armv7l/musl_openssl-3.0.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.5_i686/musl_openssl-3.0.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.5_x86_64/musl_openssl-3.0.5-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '3ebcd412658d981868446b6f981a0cad2c1d2a4d071551a5ec9bc08b260d152f',
-     armv7l: '3ebcd412658d981868446b6f981a0cad2c1d2a4d071551a5ec9bc08b260d152f',
-       i686: '682ee9aecdfd610a3578edc9b1d6250bf927d368711dde8acd16fedb771b0c62',
-     x86_64: 'c90fa52f2088f1d5b4c442807cd75b128f2b9b798eb4020a9f4af4b81b07cffe'
+    aarch64: '4585df04bfd1347e87bf3f8cb7da9ab791817e054ea50369ccb2fc1bdab503ae',
+     armv7l: '4585df04bfd1347e87bf3f8cb7da9ab791817e054ea50369ccb2fc1bdab503ae',
+       i686: '29a5b6de94a8c1f16492b36f67695ce08f1569b588ec0e3770d621b300d0db50',
+     x86_64: '5ff522b2a1a1b046bbdc30d2e11803b648e25716d68de6e126d3a86c4604f206'
   })
 
   depends_on 'musl_native_toolchain' => :build
@@ -31,6 +25,7 @@ class Musl_openssl < Package
 
   is_musl
   is_static
+  print_source_bashrc
 
   def self.build
     # rand-seed is needed to keep git from breaking with an error about

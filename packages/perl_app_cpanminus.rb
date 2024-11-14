@@ -3,23 +3,18 @@ require 'package'
 class Perl_app_cpanminus < Package
   description 'App::cpanminus - get, unpack, build and install modules from CPAN'
   homepage 'https://metacpan.org/pod/App::cpanminus'
-  version '1.7045'
+  version "1.7047-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7045.tar.gz'
-  source_sha256 'ac4e4adc23fec0ab54f088aca511f5a57d95e6c97a12a1cb98eed1fe0fe0e99c'
+  source_url 'https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7047.tar.gz'
+  source_sha256 '963e63c6e1a8725ff2f624e9086396ae150db51dd0a337c3781d09a994af05a5'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7045_armv7l/perl_app_cpanminus-1.7045-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7045_armv7l/perl_app_cpanminus-1.7045-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7045_i686/perl_app_cpanminus-1.7045-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7045_x86_64/perl_app_cpanminus-1.7045-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '688d1f8c904ef638932f871b8364492ae6d487e0ce1b0a3357eec9749555dc66',
-     armv7l: '688d1f8c904ef638932f871b8364492ae6d487e0ce1b0a3357eec9749555dc66',
-       i686: 'c4242cf166543fc1bca251e32346c00f6c2035f8e4108a010dc8485e2e6de461',
-     x86_64: 'f6448d53166638b53d376d4cd5358acfd65de7da839313d81234618abf56347e'
+    aarch64: '84e030ee7dab59b7a923ee81f4783a01da53034fdba1bd9b5341c09b7cb29f88',
+     armv7l: '84e030ee7dab59b7a923ee81f4783a01da53034fdba1bd9b5341c09b7cb29f88',
+       i686: '0c1b25eeb9a35847965e4f8a36c89fe9b3ae24856e30b36b5c7f44aa2f20938f',
+     x86_64: '160ae3c20b576049a20bad272a46f11c0c04436716cb0a04199a7550f5708583'
   })
 
   def self.prebuild

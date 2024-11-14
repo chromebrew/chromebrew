@@ -5,24 +5,20 @@ class Libsdl < Package
   homepage 'http://www.libsdl.org'
   version '1.2.15-4'
   license 'LGPL-2.1'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'http://www.libsdl.org/release/SDL-1.2.15.tar.gz'
   source_sha256 'd6d316a793e5e348155f0dd93b979798933fb98aa1edebcc108829d6474aad00'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl/1.2.15-4_armv7l/libsdl-1.2.15-4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl/1.2.15-4_armv7l/libsdl-1.2.15-4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl/1.2.15-4_i686/libsdl-1.2.15-4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl/1.2.15-4_x86_64/libsdl-1.2.15-4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0875d5715c39505b6c07a04ea267d233df122fb0f2179c09b700b31817e9d4c6',
      armv7l: '0875d5715c39505b6c07a04ea267d233df122fb0f2179c09b700b31817e9d4c6',
-       i686: '86e6bfe0051158b63e7b14c5a41d681c759f45522149133031da6854e673bae7',
      x86_64: '1ff00ecd7af2ce401776cbdaa75a8b1d2d7c35d48688124bc986d7f5ef4108da'
   })
 
-  depends_on 'xorg_server'
+  depends_on 'glibc' # R
+  # depends_on 'xorg_server'
+  # depends_on 'xwayland'
   depends_on 'alsa_lib'
   depends_on 'pulseaudio'
   depends_on 'mesa'
@@ -45,9 +41,8 @@ class Libsdl < Package
   end
 
   def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure \
-      #{CREW_OPTIONS}"
+    system "./configure \
+      #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

@@ -1,52 +1,38 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libdrm < Package
+class Libdrm < Meson
   description 'Cross-driver middleware for DRI protocol.'
-  homepage 'https://dri.freedesktop.org'
-  @_ver = '2.4.112'
-  version @_ver
+  homepage 'https://dri.freedesktop.org/wiki/'
+  version '2.4.122'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/drm.git'
-  git_hashtag "libdrm-#{@_ver}"
+  git_hashtag "libdrm-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.112_armv7l/libdrm-2.4.112-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.112_armv7l/libdrm-2.4.112-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.112_i686/libdrm-2.4.112-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.112_x86_64/libdrm-2.4.112-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '80aaba199fd6f8c788e07cb1dc1d77b77318d810d7d7593a24d7d422d927b798',
-     armv7l: '80aaba199fd6f8c788e07cb1dc1d77b77318d810d7d7593a24d7d422d927b798',
-       i686: '280ee9624f654a35e16f77a053488e13d9b1f2e7f51b1c060abb286636c76749',
-     x86_64: '6f0aca30b18bd101dcc1e38d888e2c734b260291a9d2d19076dd540919ed0cdd'
+    aarch64: 'e2bc6660676c581685ea0a7ae370f04c98e68951d9967b1c4eded48c764052a3',
+     armv7l: 'e2bc6660676c581685ea0a7ae370f04c98e68951d9967b1c4eded48c764052a3',
+     x86_64: 'cf7faca3da977cde68110f3b7247a11dbf97cfc515c3abb8228e39d52aa67406'
   })
 
+  depends_on 'cairo' # R
   depends_on 'libpciaccess' # R
-  depends_on 'xorg_lib' => :build
   depends_on 'eudev' => :build
   depends_on 'libxslt' => :build
+  depends_on 'glibc' # R
+  depends_on 'gcc_lib' # R
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-      -Dfreedreno-kgsl=true \
-      -Damdgpu=true \
-      -Dradeon=true \
-      -Dnouveau=true \
-      -Dintel=true \
-      -Dvmwgfx=true \
-      -Dvc4=true \
-      -Dfreedreno=true \
-      -Detnaviv=true \
-      -Dexynos=true \
-      -Dudev=true \
-      builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dfreedreno-kgsl=true \
+      -Damdgpu=enabled \
+      -Dradeon=enabled \
+      -Dnouveau=enabled \
+      -Dintel=auto \
+      -Dvmwgfx=enabled \
+      -Dvc4=auto \
+      -Dfreedreno=enabled \
+      -Detnaviv=auto \
+      -Dexynos=auto \
+      -Dtests=false \
+      -Dudev=true'
 end

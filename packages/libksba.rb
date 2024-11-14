@@ -1,40 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libksba < Package
+class Libksba < Autotools
   description 'Libksba is a library to make the tasks of working with X.509 certificates, CMS data and related objects more easy.'
   homepage 'https://www.gnupg.org/related_software/libksba/index.html'
-  version '1.6.0'
+  version '1.6.7'
   license 'LGPL-3+, GPL-2+ and GPL-3+'
   compatibility 'all'
-  source_url 'https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.6.0.tar.bz2'
-  source_sha256 'dad683e6f2d915d880aa4bed5cea9a115690b8935b78a1bbe01669189307a48b'
+  source_url "https://www.gnupg.org/ftp/gcrypt/libksba/libksba-#{version}.tar.bz2"
+  source_sha256 'cf72510b8ebb4eb6693eef765749d83677a03c79291a311040a5bfd79baab763'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.0_armv7l/libksba-1.6.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.0_armv7l/libksba-1.6.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.0_i686/libksba-1.6.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.0_x86_64/libksba-1.6.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'd25ccbccc0a376b5a832167dadf95295117feb63b52020438e301e3f2d6eca66',
-     armv7l: 'd25ccbccc0a376b5a832167dadf95295117feb63b52020438e301e3f2d6eca66',
-       i686: 'db9c4cccfa6452890cfcd2c90155a097cc8c24ff884eacb2377364b437a3d3ce',
-     x86_64: '1306f097b8a500d4bd39442329083fd79cceb8fd62a7b159466b6acef9ad8839'
+    aarch64: 'b93a69de2895d378b86d6b108eb31e9b4eef113310b94e43b5068ac1236c468a',
+     armv7l: 'b93a69de2895d378b86d6b108eb31e9b4eef113310b94e43b5068ac1236c468a',
+       i686: '7fa75bdb6503b2131dfe033b622ebfccba3559745e4ed4fffdc5bb68e8201980',
+     x86_64: '4aa6690deccb3bd613022b245e37ca233af675789ce4af13d09e0f0cbf47ef9d'
   })
 
-  depends_on 'libgpgerror'
-  depends_on 'npth'
+  depends_on 'npth' => :build
+  depends_on 'glibc' # R
+  depends_on 'libgpg_error' # R
 
-  def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
+  run_tests
 end

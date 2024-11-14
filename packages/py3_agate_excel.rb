@@ -1,39 +1,26 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_agate_excel < Package
+class Py3_agate_excel < Pip
   description 'Agate-excel read support for Excel files (xls and xlsx) to agate.'
   homepage 'https://agate-excel.readthedocs.io/'
-  @_ver = '0.2.5'
-  version @_ver
+  version "0.4.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/wireservice/agate-excel.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5_armv7l/py3_agate_excel-0.2.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5_armv7l/py3_agate_excel-0.2.5-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5_i686/py3_agate_excel-0.2.5-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5_x86_64/py3_agate_excel-0.2.5-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '8f3fc1398cf3fa11b71b7daf87b435f81ae7f4fcc8dee907175744c930db06db',
-     armv7l: '8f3fc1398cf3fa11b71b7daf87b435f81ae7f4fcc8dee907175744c930db06db',
-       i686: '2ac4d6a29c4aceed7fb10ae42f417279fc3dfe39eb2ebee718e8ed1622818b14',
-     x86_64: '87dd31f3678007f4b19088cd6e88e1d3b0237cc7f45202704c5f7908bc428c9e'
+    aarch64: 'ac077af3004a6ecc0d36b8e732dddfceee36700195dc110f86fe0dccd1e02417',
+     armv7l: 'ac077af3004a6ecc0d36b8e732dddfceee36700195dc110f86fe0dccd1e02417',
+       i686: '62585f8d4a1b348204f58c02e99473a704da64ec70501e7ac2b348d7b22c4d1a',
+     x86_64: 'da99c33ad28d62deb879cf41bd686f54106252e3e3565cc5eab23a3c8a0bafaf'
   })
 
   depends_on 'py3_xlrd'
   depends_on 'py3_openpyxl'
   depends_on 'py3_olefile'
   depends_on 'py3_agate'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

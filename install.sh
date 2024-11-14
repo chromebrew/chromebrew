@@ -1,215 +1,259 @@
 #!/bin/bash
 
-# exit on fail
-set -e
+# Exit on fail.
+set -eE
 
-#chromebrew directories
-: "${OWNER:=chromebrew}"
-: "${REPO:=chromebrew}"
-: "${BRANCH:=master}"
-URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
-: "${CREW_PREFIX:=/usr/local}"
-CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
-CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
-CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
-CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
-CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
-: "${CURL:=/usr/bin/curl}"
-: "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
-# For container usage, where we want to specify i686 arch
-# on a x86_64 host by setting ARCH=i686.
-: "${ARCH:=$(uname -m)}"
-# For container usage, when we are emulating armv7l via linux32
-# uname -m reports armv8l.
-ARCH="${ARCH/armv8l/armv7l}"
-
-# BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-# rsync requires openssl xxhash lz4 popt
-BOOTSTRAP_PACKAGES="zstd pixz ca_certificates ruby rsync openssl xxhash lz4 popt"
-# i686 requires gcc and openssl
-[ "${ARCH}" == "i686" ] && BOOTSTRAP_PACKAGES+=" gcc"
-
-RED='\e[1;91m';    # Use Light Red for errors.
-YELLOW='\e[1;33m'; # Use Yellow for informational messages.
-GREEN='\e[1;32m';  # Use Green for success messages.
-BLUE='\e[1;34m';   # Use Blue for intrafunction messages.
-GRAY='\e[0;37m';   # Use Gray for program output.
-MAGENTA='\e[1;35m';
 RESET='\e[0m'
 
 # Simplify colors and print errors to stderr (2).
-echo_error() { echo -e "${RED}${*}${RESET}" >&2; }
-echo_info() { echo -e "${YELLOW}${*}${RESET}" >&1; }
-echo_success() { echo -e "${GREEN}${*}${RESET}" >&1; }
-echo_intra() { echo -e "${BLUE}${*}${RESET}" >&1; }
-echo_out() { echo -e "${GRAY}${*}${RESET}" >&1; }
-echo_other() { echo -e "${MAGENTA}${*}${RESET}" >&2; }
+echo_error() { echo -e "\e[1;91m${*}${RESET}" >&2; } # Use Light Red for errors.
+echo_info() { echo -e "\e[1;33m${*}${RESET}" >&1; } # Use Yellow for informational messages.
+echo_success() { echo -e "\e[1;32m${*}${RESET}" >&1; } # Use Green for success messages.
+echo_intra() { echo -e "\e[1;34m${*}${RESET}" >&1; } # Use Blue for intrafunction messages.
+echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output.
 
-# Skip all checks if running on a docker container.
-[[ -f "/.dockerenv" ]] && CREW_FORCE_INSTALL=1
+# Print a message before exit on error
+trap "echo_error 'An error occured during the installation :/'" ERR
+
+# Check if the script is being run as root.
+if [ "${EUID}" == "0" ]; then
+  echo_error "Chromebrew should not be installed or run as root."
+  echo_info "Please login as 'chronos' and restart the install."
+  exit 1
+fi
 
 # Reject crostini.
 if [[ -d /opt/google/cros-containers && "${CREW_FORCE_INSTALL}" != '1' ]]; then
   echo_error "Crostini containers are not supported by Chromebrew :/"
-  echo_info "Run 'curl -Ls git.io/vddgY | CREW_FORCE_INSTALL=1 bash' to perform install anyway"
+  echo_info "Run 'CREW_FORCE_INSTALL=1 bash <(curl -Ls git.io/vddgY) && . ~/.bashrc' to perform install anyway"
   exit 1
 fi
 
-# Disallow non-stable channels Chrome OS.
+# Reject non-stable Chrome OS channels.
 if [ -f /etc/lsb-release ]; then
   if [[ ! "$(< /etc/lsb-release)" =~ CHROMEOS_RELEASE_TRACK=stable-channel$'\n' && "${CREW_FORCE_INSTALL}" != '1' ]]; then
-    echo_error "The beta, dev, and canary channel are unsupported by Chromebrew"
-    echo_info "Run 'curl -Ls git.io/vddgY | CREW_FORCE_INSTALL=1 bash' to perform install anyway"
+    echo_error "The beta, dev, and canary channel are unsupported by Chromebrew."
+    echo_info "Run 'CREW_FORCE_INSTALL=1 bash <(curl -Ls git.io/vddgY) && . ~/.bashrc' to perform install anyway."
     exit 1
   fi
+  export "$(grep CHROMEOS_RELEASE_CHROME_MILESTONE /etc/lsb-release)"
 else
   echo_info "Unable to detect system information, installation will continue."
 fi
 
-if [ "${EUID}" == "0" ]; then
-  echo_error "Chromebrew should not be installed or run as root."
-  exit 1;
+# Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
+# Check if the user is on ChromeOS v117+ and not in the VT-2 console, as sudo will not work.
+: "${CREW_PREFIX:=/usr/local}"
+if [[ "$(stat -c '%u' "${CREW_PREFIX}")" == "$(id -u)" ]] && sudo 2>&1 | grep -q 'no new privileges'; then
+  echo_error "Please run the installer in the VT-2 shell."
+  echo_info "To start the VT-2 session, type Ctrl + Alt + ->"
+  exit 1
+fi
+
+# Make sure installation directory is clean.
+if [ -d "${CREW_PREFIX}" ]; then
+  if [ "$(ls -A "${CREW_PREFIX}")" ]; then
+    echo_error "${CREW_PREFIX} is not empty, would you like it to be cleared?"
+    echo_info "This will delete ALL files in ${CREW_PREFIX}!"
+    echo_info "Continue?"
+    select continue in "Yes" "No"; do
+      if [[ "${continue}" == "Yes" ]]; then
+        sudo find "${CREW_PREFIX}" -mindepth 1 -delete
+        break 2
+      else
+        exit 1
+      fi
+    done
+  fi
+else
+  sudo mkdir -p "${CREW_PREFIX}"
+fi
+
+# Do not redundantly use sudo if the user already owns the directory.
+if [ "$(stat -c '%u' "${CREW_PREFIX}")" != "$(id -u)" ]; then
+  # This will allow things to work without sudo.
+  sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
+fi
+
+# Default chromebrew repo values.
+: "${OWNER:=chromebrew}"
+: "${REPO:=chromebrew}"
+: "${BRANCH:=master}"
+
+# Chromebrew directories.
+CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
+CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
+CREW_META_PATH="${CREW_CONFIG_PATH}/meta"
+CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
+CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
+: "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
+
+if [ -n "$CREW_CACHE_ENABLED" ]; then
+  echo_intra "Verifying setup of ${CREW_CACHE_DIR} since CREW_CACHE_ENABLED is set..."
+  mkdir -p "${CREW_CACHE_DIR}"
+  sudo chown -R "$(id -u)":"$(id -g)" "${CREW_CACHE_DIR}" || true
+fi
+
+# Architecture
+
+# For container usage, where we want to specify i686 arch
+# on a x86_64 host by setting ARCH=i686.
+: "${ARCH:=$(uname -m)}"
+
+# For container usage, when we are emulating armv7l via linux32, where uname -m will report armv8l.
+# Additionally, if the architecture is aarch64, set it to armv7l, as we treat as if it was armv7l.
+# When we have proper support for aarch64, remove this.
+if [[ "${ARCH}" = "armv8l" ]] || [[ "${ARCH}" = "aarch64" ]]; then
+  ARCH='armv7l'
+fi
+
+if [[ "$ARCH" == "x86_64" ]]; then
+  LIB_SUFFIX='64'
+fi
+
+# Package version string may include LIBC_VERSION.
+LIBC_VERSION=$(/lib"$LIB_SUFFIX"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')
+
+# Warn users of the AMD segfault issue and allow them to work around it.
+# The easiest way to distinguish StoneyRidge platorms is to check for the FMA4
+# instruction, as it was first introduced in Bulldozer and later dropped in Zen.
+if grep -s "fma4" /proc/cpuinfo ; then
+  echo_info "Notice: You are running an AMD StoneyRidge device; due to some bugs some packages may fail with a segmentation fault and need to be rebuilt."
+  echo_info "If this happens, please report them to: https://github.com/chromebrew/chromebrew/issues"
+  echo_info "If the install fails, try running 'CREW_AMD_INSTALL=1 bash <(curl -Ls git.io/vddgY) && . ~/.bashrc'"
+  if [ "${CREW_AMD_INSTALL}" == "1" ]; then
+    # Otherwise one may get segfaults during install on stoneyridge devices.
+    # See https://github.com/chromebrew/chromebrew/issues/8823
+    echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
+  fi
 fi
 
 echo_success "Welcome to Chromebrew!"
 
-# Prompt user to enter the sudo password if it set.
+# Prompt user to enter the sudo password if it is set.
 # If the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set.
 if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -f "${BASH_REMATCH[1]}" ]; then
-  echo_intra "Please enter the developer mode password"
+  echo_intra "Please enter the developer mode password."
   # Reset sudo timeout.
   sudo -k
   sudo /bin/true
 fi
 
 # Force curl to use system libraries.
-function curl () {
+function curl_wrapper () {
   # Retry if download failed.
-  # The --retry/--retry-all-errors parameter in curl will not work with 
+  # The --retry/--retry-all-errors parameter in curl will not work with
   # the 'curl: (7) Couldn't connect to server' error, a for loop is used
   # here.
   for (( i = 0; i < 4; i++ )); do
-    env LD_LIBRARY_PATH='' ${CURL} --ssl -C - "${@}" && \
-      return 0 || \
-      echo_info "Retrying, $((3-$i)) retries left."
+    if [[ "$ARCH" == "i686" ]]; then
+      # i686 curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
+      env -u LD_LIBRARY_PATH curl -kC - "${@}" && return 0
+    else
+      # Force TLS as we know GitLab supports it.
+      env -u LD_LIBRARY_PATH curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
+    fi
+    echo_info "Retrying, $((3-i)) retries left."
   done
   # The download failed if we're still here.
   echo_error "Download failed :/ Please check your network settings."
   return 1
 }
 
-case "${ARCH}" in
-"i686"|"x86_64"|"armv7l"|"aarch64")
-  LIB_SUFFIX=
-  [ "${ARCH}" == "x86_64" ] && LIB_SUFFIX='64'
-  ;;
-*)
-  echo_error "Your device is not supported by Chromebrew yet :/"
-  exit 1;;
-esac
+# This will create the directories.
+crew_folders="bin cache doc docbook include lib/crew/packages lib$LIB_SUFFIX libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
+# shellcheck disable=SC2086
+# Quoting crew_folders leads to breakage.
+(cd "${CREW_PREFIX}" && mkdir -p ${crew_folders})
 
-echo_info "\n\nDoing initial setup for install in ${CREW_PREFIX}."
-echo_info "This may take a while if there are preexisting files in ${CREW_PREFIX}...\n"
 
-# This will allow things to work without sudo.
-crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
-for folder in $crew_folders
-do
-  if [ -d "${CREW_PREFIX}"/"${folder}" ]; then
-    echo_intra "Resetting ownership of ${CREW_PREFIX}/${folder}"
-    sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"/"${folder}"
+# Remove old git config directories if they exist.
+find "${CREW_LIB_PATH}" -mindepth 1 -delete
+
+echo_out 'Set up the local package repo...'
+
+# Download the chromebrew repository.
+curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
+
+BOOTSTRAP_PACKAGES='lz4 zlib xzutils zstd crew_mvdir ruby git ca_certificates libyaml openssl'
+
+# Older i686 systems.
+[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' gcc_lib'
+
+if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
+  # shellcheck disable=SC2231
+  for i in /lib$LIB_SUFFIX/libc.so*
+  do
+    sudo cp "$i" "$CREW_PREFIX/lib$LIB_SUFFIX/"
+    libcname=$(basename "$i")
+    sudo chown chronos "$CREW_PREFIX/lib$LIB_SUFFIX/${libcname}"
+    sudo chmod 644 "$CREW_PREFIX/lib$LIB_SUFFIX/${libcname}"
+  done
+  if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
+    # Recent Arm systems have a cut down system.
+    [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
+    if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" < "123" )); then
+      # Append the correct packages for systems running M122 and lower.
+      BOOTSTRAP_PACKAGES+=' glibc_lib235 zlib gmp'
+    elif (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "122" )); then
+      # Append the correct packages for systems running M123 onwards.
+      BOOTSTRAP_PACKAGES+=' glibc_lib237 zlib gmp'
+    fi
   fi
-done
-sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
-
-# Delete ${CREW_PREFIX}/{var,local} symlinks on some Chromium OS distro 
-# if they exist.
-[ -L ${CREW_PREFIX}/var ] && sudo rm -f "${CREW_PREFIX}/var"
-[ -L ${CREW_PREFIX}/local ] && sudo rm -f "${CREW_PREFIX}/local"
-
-# Prepare directories.
-for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "${CREW_CACHE_DIR}" ; do
-  if [ ! -d "${dir}" ]; then
-    mkdir -p "${dir}"
-  fi
-done
-
-echo_info "\nDownloading information for Bootstrap packages..."
-echo -en "${GRAY}"
-# Use parallel mode if available.
-if [[ "$(curl --help curl)" =~ --parallel ]]; then
-  (cd "${CREW_LIB_PATH}"/packages && curl -OLZ "${URL}"/packages/{"${BOOTSTRAP_PACKAGES// /,}"}.rb)
-else
-  (cd "${CREW_LIB_PATH}"/packages && curl -OL "${URL}"/packages/{"${BOOTSTRAP_PACKAGES// /,}"}.rb)
 fi
-echo -e "${RESET}"
 
-# Prepare url and sha256.
-urls=()
-sha256s=()
-
-case "${ARCH}" in
-"armv7l"|"aarch64")
-  if ! type "xz" > /dev/null; then
-    urls+=('https://github.com/snailium/chrome-cross/releases/download/v1.8.1/xz-5.2.3-chromeos-armv7l.tar.gz')
-    sha256s+=('4dc9f086ee7613ab0145ec0ed5ac804c80c620c92f515cb62bae8d3c508cbfe7')
-  fi
-  ;;
-esac
-
-# Create the device.json file if it doesn't exist.
+# Create the device.json file.
 cd "${CREW_CONFIG_PATH}"
-if [ ! -f device.json ]; then
-  echo_info "\nCreating new device.json."
-  jq --arg key0 'architecture' --arg value0 "${ARCH}" \
-    --arg key1 'installed_packages' \
-    '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
-fi
+echo_info "\nCreating device.json."
+jq --arg key0 'architecture' --arg value0 "${ARCH}" \
+  --arg key1 'installed_packages' \
+  '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
 
-for package in $BOOTSTRAP_PACKAGES; do
-  pkgfile="${CREW_PACKAGES_PATH}/${package}.rb"
-
-  [[ "$(sed -n '/binary_sha256/,/}/p' "${pkgfile}")" =~ .*${ARCH}:[[:blank:]]*[\'\"]([^\'\"]*) ]]
-    sha256s+=("${BASH_REMATCH[1]}")
-
-  [[ "$(sed -n '/binary_url/,/}/p' "${pkgfile}")" =~ .*${ARCH}:[[:blank:]]*[\'\"]([^\'\"]*) ]]
-    urls+=("${BASH_REMATCH[1]}")
-done
+# Functions to maintain packages.
 
 # These functions are for handling packages.
 function download_check () {
     cd "$CREW_BREW_DIR"
-    # Use cached file if available and caching enabled.
-    if [ -n "$CREW_CACHE_ENABLED" ] && [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
-      echo_intra "Verifying cached ${1}..."
-      echo_success "$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)"
-      case "${?}" in
-      0)
-        ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" || true
-        return
-        ;;
-      *)
-        echo_error "Verification of cached ${1} failed, downloading."
-      esac
+    # Use cached file if available and caching is enabled.
+    if [ -n "$CREW_CACHE_ENABLED" ]; then
+      echo_intra "Looking for ${3} in ${CREW_CACHE_DIR}"
+      if [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
+        echo_info "$CREW_CACHE_DIR/${3} found."
+        echo_intra "Verifying cached ${1}..."
+        echo_success "$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)"
+        case "${?}" in
+        0)
+          ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" || true
+          return
+          ;;
+        *)
+          echo_error "Verification of cached ${1} failed, downloading."
+        esac
+      else
+        echo_intra "$CREW_CACHE_DIR/${3} not found"
+      fi
     fi
-    #download
+    # Download
     echo_intra "Downloading ${1}..."
-    curl '-#' -L "${2}" -o "${3}"
+    curl_wrapper '-#' -L "${2}" -o "${3}"
 
-    #verify
+    # Verify
     echo_intra "Verifying ${1}..."
-    echo_success "$(echo "${4}" "${3}" | sha256sum -c -)"
-    case "${?}" in
-    0)
+    if echo "${4}" "${3}" | sha256sum -c - ; then
       if [ -n "$CREW_CACHE_ENABLED" ] ; then
         cp "${3}" "$CREW_CACHE_DIR/${3}" || true
       fi
-      return
-      ;;
-    *)
-      echo_error "Verification failed, something may be wrong with the download."
-      exit 1;;
-    esac
+      echo_success "Verification of ${1} succeeded."
+      return 0
+    else
+      if [[ ${5} -lt 2 ]]; then
+        echo_error "Verification of ${1} failed, something may be wrong with the download."
+        exit 1
+      else
+        echo_info "Verification of ${1} failed. Will try another sha256 hash if available."
+        return 1
+      fi
+    fi
 }
 
 function extract_install () {
@@ -218,90 +262,125 @@ function extract_install () {
     mkdir "${CREW_DEST_DIR}"
     cd "${CREW_DEST_DIR}"
 
-    #Extract and install.
+    # Extract and install.
     echo_intra "Extracting ${1} ..."
-    case "${2}" in
-    *.zst)
-      if [[ -e /usr/bin/zstd ]]; then
-        tar -I /usr/bin/zstd -xpf ../"${2}"
-      elif ("${CREW_PREFIX}"/bin/zstd --version &> /dev/null); then
-        tar -I "${CREW_PREFIX}"/bin/zstd -xpf ../"${2}"
-      else
-        echo "Zstd is broken or nonfunctional, and some packages can not be extracted properly."
-        exit 1
-      fi
-    ;;
-    *.tpxz)
-      if "${CREW_PREFIX}"/bin/pixz -h &> /dev/null; then
-        tar -I "${CREW_PREFIX}"/bin/pixz -xpf ../"${2}"
-      else
-        echo "Pixz is broken or nonfunctional, and some packages can not be extracted properly."
-        exit 1
-      fi
-    ;;
-    *)
+    if [[ "${2##*.}" == "zst" ]] || zstd --help 2>/dev/null| grep -q lzma; then
+      tar -I zstd -xpf ../"${2}"
+    else
       tar xpf ../"${2}"
-    ;;
-    esac
+    fi
+
     echo_intra "Installing ${1} ..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
-    mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
-    mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
+    mv ./dlist "${CREW_META_PATH}/${1}.directorylist"
+    mv ./filelist "${CREW_META_PATH}/${1}.filelist"
 }
 
 function update_device_json () {
   cd "${CREW_CONFIG_PATH}"
-
-  if [[ $(jq --arg key "$1" -e '.installed_packages[] | select(.name == $key )' device.json) ]]; then
-    echo_intra "Updating version number of ${1} in device.json..."
-    cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '(.installed_packages[] | select(.name == $key0) | .version) |= $value0' device.json) > device.json
-  else
-    echo_intra "Adding new information on ${1} to device.json..."
-    cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '.installed_packages |= . + [{"name": $key0, "version": $value0}]' device.json ) > device.json
-  fi
+  echo_intra "Adding new information on ${1} ${2} to device.json..."
+  new_info=$(jq --arg name "$1" --arg version "$2" --arg sha256 "$3" '.installed_packages |= . + [{"name": $name, "version": $version, "sha256": $sha256}]' device.json)
+  cat <<< "${new_info}" > device.json
 }
-echo_info "Downloading Bootstrap packages...\n"
-# Extract, install and register packages.
-for i in $(seq 0 $((${#urls[@]} - 1))); do
-  url="${urls["${i}"]}"
-  sha256="${sha256s["${i}"]}"
-  tarfile="$(basename ${url})"
-  name="${tarfile%%-*}"   # extract string before first '-'
-  rest="${tarfile#*-}"    # extract string after first '-'
-  version="${rest%%-chromeos*}"
-                          # extract string between first '-' and "-chromeos"
 
-  download_check "${name}" "${url}" "${tarfile}" "${sha256}"
-  extract_install "${name}" "${tarfile}"
-  update_device_json "${name}" "${version}"
+function install_ruby_gem () {
+  for gem in "$@"; do
+    ruby_gem="${gem}"
+    echo_intra "Installing ${ruby_gem^} gem..."
+    gem install -N "${ruby_gem}" --conservative
+    gem_version="$(ruby -e "gem('${ruby_gem}')" -e "puts Gem.loaded_specs['${ruby_gem}'].version.to_s")"
+    json_gem_version="${gem_version}-${CREW_RUBY_VER}"
+    crew_gem_package="ruby_${ruby_gem//-/_}"
+    update_device_json "${crew_gem_package}" "${json_gem_version}" ""
+    gem_filelist_path="${CREW_META_PATH}/${crew_gem_package}.filelist"
+    echo_intra "Saving ${ruby_gem^} filelist..."
+    gem contents "${ruby_gem}" > "${gem_filelist_path}"
+    echo_success "${ruby_gem^} gem installed."
+    BOOTSTRAP_PACKAGES+=" ${crew_gem_package}"
+  done
+}
+
+echo_info "Downloading Bootstrap packages...\n"
+
+# Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
+# x86_64, and the mandb postinstall doesn't fail in newer arm
+# containers.
+echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}" >> "$CREW_PREFIX"/etc/env.d/00-library
+export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
+
+# Extract, install and register packages.
+for package in $BOOTSTRAP_PACKAGES; do
+  cd "${CREW_LIB_PATH}/packages"
+  version=$(grep "\ \ version" "${package}.rb" | head -n 1 | sed "s/#{LIBC_VERSION}/$LIBC_VERSION/g" | sed "s/#{@gcc_libc_version}/$LIBC_VERSION/g" | awk '{print substr($2,2,length($2)-2)}')
+  binary_compression=$(sed -n "s/.*binary_compression '\([^']*\)'.*/\1/p" "${package}.rb")
+  if [[ -z "$binary_compression" ]]; then
+    binary_compression='tar.zst'
+  fi
+
+  url="https://gitlab.com/api/v4/projects/26210301/packages/generic/${package}/${version}_${ARCH}/${package}-${version}-chromeos-${ARCH}.${binary_compression}"
+  tarfile=$(basename "${url}")
+
+  sha256=$(sed -n "s/.*${ARCH}: '\([^']*\)'.*/\1/p" "${package}.rb")
+  shacount=$(echo "$sha256" | wc -w)
+  for sha in $sha256
+  do
+    if download_check "${package}" "${url}" "${tarfile}" "${sha}" "${shacount}"; then
+      extract_install "${package}" "${tarfile}"
+      update_device_json "${package}" "${version}" "${sha}"
+    fi
+  done
 done
 
-echo_info "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
-echo -e "${GRAY}"
+# Work around https://github.com/chromebrew/chromebrew/issues/3305.
+# shellcheck disable=SC2024
+sudo ldconfig &> /tmp/crew_ldconfig || true
+
+echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
-echo -e "${RESET}"
 
-echo_info "Setup and synchronize local package repo..."
-echo -e "${GRAY}"
+echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
-# Remove old git config directories if they exist.
-find "${CREW_LIB_PATH}" -mindepth 1 -delete
+echo_info 'Updating RubyGems...'
+gem sources -u
+gem update --no-update-sources -N --system
 
-curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
+# Mark packages as installed for pre-installed gems.
+mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
+CREW_RUBY_VER="ruby$(ruby -e 'puts RUBY_VERSION.slice(/(?:.*(?=\.))/)')"
+for i in "${!installed_gems[@]}"
+  do
+   j="${installed_gems[$i]}"
+   gem_package="${j% *}"
+   crew_gem_package="ruby_${gem_package//-/_}"
+   gem_version="${j#* }"
+   gem contents "${gem_package}" > "${CREW_META_PATH}/${crew_gem_package}.filelist"
+   update_device_json "ruby_${gem_package//-/_}" "${gem_version}-${CREW_RUBY_VER}" ""
+done
 
-# Set LD_LIBRARY_PATH so crew doesn't break on i686 and
-# the mandb install doesn't fail.
-export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}"
+echo_info "Installing essential ruby gems...\n"
+BOOTSTRAP_GEMS='base64 bigdecimal connection_pool concurrent-ruby drb i18n logger minitest securerandom tzinfo activesupport highline ptools'
+# shellcheck disable=SC2086
+install_ruby_gem ${BOOTSTRAP_GEMS}
 
-# Since we just downloaded the package repo, just update package 
-# compatibility information.
-crew update compatible
+# This is needed for SSL env variables to be populated so ruby doesn't
+# complain about missing certs, resulting in failed https connections.
+echo_info "Installing crew_profile_base...\n"
+yes | crew install crew_profile_base
+# shellcheck disable=SC1090
+ARCH="$ARCH" source ~/.bashrc
 
 echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
-crew postinstall $BOOTSTRAP_PACKAGES
+# Due to a bug in crew where it accepts spaces in package files names rather than
+# splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}.
+# shellcheck disable=SC2086
+for i in ${BOOTSTRAP_PACKAGES}
+do
+  echo_info "Doing postinstall for $i"
+  crew postinstall $i || echo_error "Postinstall for $i failed."
+done
 
 if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
   echo_error "\nGit is broken on your system, and crew update will not work properly."
@@ -309,26 +388,34 @@ if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
   echo_error "https://github.com/chromebrew/chromebrew/issues\n\n"
 else
   echo_info "Synchronizng local package repo..."
-  # First clear out temporary package repo so we can replace it with the 
-  # repo downloaded via git.
-  find "${CREW_LIB_PATH}" -mindepth 1 -delete
-
-  # Do a minimal clone, which also sets origin to the master/main branch
-  # by default. For more on why this setup might be useful see:
-  # https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/
-  # If using alternate branch don't use depth=1 .
-  [[ "$BRANCH" == "master" ]] && GIT_DEPTH="--depth=1" || GIT_DEPTH=
-  git clone $GIT_DEPTH --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
 
   cd "${CREW_LIB_PATH}"
 
+  # Make the git default branch error messages go away.
+  git config --global init.defaultBranch main
+
+  # Setup the folder with git information.
+  git init --ref-format=reftable
+  git remote add origin "https://github.com/${OWNER}/${REPO}"
+
+  # Help handle situations where GitHub is down.
+  git config --local http.lowSpeedLimit 1000
+  git config --local http.lowSpeedTime 5
+
   # Checkout, overwriting local files.
-  [[ "$BRANCH" != "master" ]] && git fetch --all
-  git checkout "${BRANCH}"
+  git fetch --all
+  git checkout -f "${BRANCH}"
 
   # Set sparse-checkout folders.
-  git sparse-checkout set packages lib bin crew tools
+  git sparse-checkout set packages "manifest/${ARCH}" lib commands bin crew tests tools
   git reset --hard origin/"${BRANCH}"
+
+  # Set mtimes of files to when the file was committed.
+  git-restore-mtime -sq 2>/dev/null
+
+  OWNER=${OWNER} REPO=${REPO} crew update && yes | crew upgrade
+  echo_info "Cleaning up older ruby gem versions...\n"
+  gem cleanup
 fi
 echo -e "${RESET}"
 
@@ -361,24 +448,10 @@ echo "  ___ _                               _
  \___/|   |_/   |_/\__/  |  |  |_/|__/\__/   |_/|__/  \_/ \_/
 "
 
-if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
-  echo_info "\n$
-Since you have installed Chromebrew in a directory other than '/usr/local',
-you need to run these commands to complete your installation:
-"
-
-  echo_intra "
-echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc
-echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc
-echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc
-source ~/.bashrc"
-fi
 echo_intra "
-Edit ${CREW_PREFIX}/etc/env.d/02-pager to change the default PAGER.
-more is used by default
-
-You may wish to edit the ${CREW_PREFIX}/etc/env.d/01-editor file for an editor default.
-
+Edit ${CREW_PREFIX}/etc/env.d/03-pager to change the default PAGER.
+most is used by default
+You may wish to edit the ${CREW_PREFIX}/etc/env.d/02-editor file for an editor default.
 Chromebrew provides nano, vim and emacs as default TUI editor options."
 
 echo_success "Chromebrew installed successfully and package lists updated."

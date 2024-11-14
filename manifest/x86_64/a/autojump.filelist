@@ -1,0 +1,11 @@
+/usr/local/bin/autojump
+/usr/local/bin/autojump_argparse.py
+/usr/local/bin/autojump_data.py
+/usr/local/bin/autojump_match.py
+/usr/local/bin/autojump_utils.py
+/usr/local/etc/env.d/autojump.sh
+/usr/local/share/autojump/autojump.bash
+/usr/local/share/autojump/autojump.fish
+/usr/local/share/autojump/autojump.zsh
+/usr/local/share/autojump/icon.png
+/usr/local/share/man/man1/autojump.1.zst

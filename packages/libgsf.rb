@@ -1,44 +1,35 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libgsf < Package
+class Libgsf < Autotools
   description 'The G Structured File Library'
   homepage 'https://gitlab.gnome.org/GNOME/libgsf'
-  @_ver = '1.14.47'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  version "1.14.52-634340d-#{CREW_ICU_VER}"
   license 'GPL-2 and LGPL-2'
-  compatibility 'all'
-  source_url "https://download.gnome.org/sources/libgsf/#{@_ver_prelastdot}/libgsf-#{@_ver}.tar.xz"
-  source_sha256 'd188ebd3787b5375a8fd38ee6f761a2007de5e98fa0cf5623f271daa67ba774d'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/libgsf.git'
+  git_hashtag '634340d31177c02ccdb43171e37291948e7f8974'
+  # git_hashtag "LIBGSF_#{version.split('-').first.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgsf/1.14.47_armv7l/libgsf-1.14.47-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgsf/1.14.47_armv7l/libgsf-1.14.47-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgsf/1.14.47_i686/libgsf-1.14.47-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgsf/1.14.47_x86_64/libgsf-1.14.47-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'fdb327f0c46a75e3cd5c5e4bc7e2701fe5b622881837894f9b2314bcc4b29501',
-     armv7l: 'fdb327f0c46a75e3cd5c5e4bc7e2701fe5b622881837894f9b2314bcc4b29501',
-       i686: '200b8890ef591be47d6554bb280d4a60fcf2798bf2f970910207e3471c733842',
-     x86_64: '8d8c0cf26f3bad537ddc82020078ebb52062f83c7a33709f1b2c4cac0abc33c6'
+    aarch64: 'bf5545a06b87dcfe050261ec24f2d4bde2e171fc9738888d37da71010bbcc618',
+     armv7l: 'bf5545a06b87dcfe050261ec24f2d4bde2e171fc9738888d37da71010bbcc618',
+     x86_64: '55290360c18f65034004fb5e4f747e034fbbcb04ce7705134bc654820bd0b9fc'
   })
 
-  depends_on 'gdk_pixbuf'
-  depends_on 'gtk_doc'
+  depends_on 'bzip2' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gtk_doc' => :build
+  depends_on 'icu4c' # R
+  depends_on 'libxml2' # R
+  depends_on 'zlib' # R
 
-  def self.build
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS} \
-      --enable-shared=yes \
+  gnome
+
+  configure_options '--enable-shared=yes \
       --disable-maintainer-mode \
-      --enable-introspection"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+      --enable-introspection'
 end

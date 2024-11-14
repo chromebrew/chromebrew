@@ -2,19 +2,14 @@ require 'package'
 
 class Musl_cyrus_sasl < Package
   description 'Simple Authentication and Security Layer (SASL) is a specification that describes how authentication mechanisms can be plugged into an application protocol on the wire. Cyrus SASL is an implementation of SASL that makes it easy for application developers to integrate authentication mechanisms into their application in a generic way.'
-  homepage 'https://www.cyrusimap.org/sasl'
+  homepage 'https://www.cyrusimap.org/sasl/'
   version '2.1.27'
   compatibility 'all'
   license 'custom'
   source_url 'https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.27/cyrus-sasl-2.1.27.tar.gz'
   source_sha256 '26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_armv7l/musl_cyrus_sasl-2.1.27-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_armv7l/musl_cyrus_sasl-2.1.27-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_i686/musl_cyrus_sasl-2.1.27-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_x86_64/musl_cyrus_sasl-2.1.27-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '2821b2a97fddab00c8cb159f5c4dc85595a6567c0b3ec83c37f4e7ff3afdfade',
      armv7l: '2821b2a97fddab00c8cb159f5c4dc85595a6567c0b3ec83c37f4e7ff3afdfade',
@@ -31,9 +26,10 @@ class Musl_cyrus_sasl < Package
   depends_on 'musl_krb5' => :build
 
   is_static
+  print_source_bashrc
 
   def self.build
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     system "#{MUSL_ENV_OPTIONS} ./configure --prefix=#{CREW_MUSL_PREFIX} \
         --enable-static \
         --with-cxx-static"

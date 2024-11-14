@@ -1,49 +1,34 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Upower < Package
+class Upower < Meson
   description 'Abstraction for enumerating power devices, listening to device events and querying history and statistics'
   homepage 'https://upower.freedesktop.org'
-  @_ver = '0.99.11'
-  @_ver_ = @_ver.gsub(/[.]/, '_')
-  version @_ver
+  version '1.90.2'
   license 'GPL-2'
-  compatibility 'all'
-  source_url "https://gitlab.freedesktop.org/upower/upower/-/archive/UPOWER_#{@_ver_}/upower-UPOWER_#{@_ver_}.tar.bz2"
-  source_sha256 'd50961ff6d2c5bc5e9b8ef6611a12dc8933f722ebf7de245b97fbe72999ebd9b'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/upower/upower.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upower/0.99.11_armv7l/upower-0.99.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upower/0.99.11_armv7l/upower-0.99.11-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upower/0.99.11_i686/upower-0.99.11-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upower/0.99.11_x86_64/upower-0.99.11-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'f424ee9ea8fa6d96c9765983fb3ba67564ac7ce4531ba3302b28a7dc2c54c9f5',
-     armv7l: 'f424ee9ea8fa6d96c9765983fb3ba67564ac7ce4531ba3302b28a7dc2c54c9f5',
-       i686: 'ce0952caa0be85214e627dbc1f910d5aba538b1e53e0ae459a329b85ed962ae9',
-     x86_64: '1a6543c4260568e9224dc1497cca57d99c0a1f0bd54ddd95267ea28b420fad1c'
+    aarch64: '4b7a470ec75af657fd8ca4cac58f6adf568756348a7c1b4112c1521fefa3cbcf',
+     armv7l: '4b7a470ec75af657fd8ca4cac58f6adf568756348a7c1b4112c1521fefa3cbcf',
+     x86_64: 'cfe67815bc2225f8189e8f2b426b61258a081c6b4a3869e52c6e991bece42b72'
   })
 
-  depends_on 'libusb'
-  depends_on 'libgudev'
   depends_on 'docbook_xsl' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
+  depends_on 'libgudev' # R
+  depends_on 'libusb' => :build
+  depends_on 'py3_pygments' => :build
 
-  def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --sysconfdir=#{CREW_PREFIX}/etc \
-      --localstatedir=#{CREW_PREFIX}/var \
-      --libexecdir=#{CREW_PREFIX}/libexec \
-      --enable-gtk-doc"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  meson_options "-Dos_backend=linux \
+      -Dsystemdsystemunitdir=no \
+      -Dhistorydir=#{CREW_PREFIX}/var \
+      -Dudevrulesdir=#{CREW_PREFIX}/etc/udev \
+      -Dudevhwdbdir=#{CREW_PREFIX}/etc/udev"
 end

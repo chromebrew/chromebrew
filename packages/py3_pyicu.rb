@@ -1,35 +1,26 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pyicu < Package
+class Py3_pyicu < Pip
   description 'PyICU is a Python extension wrapping the ICU C++ API.'
   homepage 'https://pyicu.org/'
-  @_ver = '2.7.4'
-  version @_ver
+  version "2.14-#{CREW_ICU_VER}-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.pyicu.org/main/pyicu.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyicu/2.7.4_armv7l/py3_pyicu-2.7.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyicu/2.7.4_armv7l/py3_pyicu-2.7.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyicu/2.7.4_i686/py3_pyicu-2.7.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyicu/2.7.4_x86_64/py3_pyicu-2.7.4-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '55e7d497efb527c6062625712badc3d96231af45198be87044896d5d607cfca8',
-     armv7l: '55e7d497efb527c6062625712badc3d96231af45198be87044896d5d607cfca8',
-       i686: '7660fbca6f2b3e7bc1bdea1f469667a45a29f3586089bebb62a354d997d194c7',
-     x86_64: '1185201e529b2566f7cf5167cae6b61717c82a77a6a1353b19d8dd39d912e629'
+    aarch64: '1bd7f2b6ad53c7d6b9b49a81bce6fd7ea7b1340b1972c037c0c024c86dad137f',
+     armv7l: '1bd7f2b6ad53c7d6b9b49a81bce6fd7ea7b1340b1972c037c0c024c86dad137f',
+       i686: '161777426ef5031a0a05b1814ffe9981c434e5e78cdc6e1da6b05f5a4b361384',
+     x86_64: '2edcf17c5c465084f675af4792f7652adcec19ccc5197057fe6b6932a57e5871'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glibc_lib' # R
+  depends_on 'icu4c' # R
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

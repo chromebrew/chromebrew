@@ -3,19 +3,13 @@ require 'package'
 class Musl_perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  @_ver = '5.34.0'
-  version @_ver
+  version '5.34.0'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url "http://www.cpan.org/src/5.0/perl-#{@_ver}.tar.gz"
+  source_url "http://www.cpan.org/src/5.0/perl-#{version}.tar.gz"
   source_sha256 '551efc818b968b05216024fb0b727ef2ad4c100f8cb6b43fab615fa78ae5be9a'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_perl/5.34.0_armv7l/musl_perl-5.34.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_perl/5.34.0_armv7l/musl_perl-5.34.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_perl/5.34.0_i686/musl_perl-5.34.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_perl/5.34.0_x86_64/musl_perl-5.34.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '6387be753a5b69e6665317a60493d9c8f823d19da026a3007a9c80b32d95e2a6',
      armv7l: '6387be753a5b69e6665317a60493d9c8f823d19da026a3007a9c80b32d95e2a6',
@@ -28,13 +22,10 @@ class Musl_perl < Package
   depends_on 'musl_native_toolchain'
   depends_on 'musl_zlib' => :build
   depends_on 'musl_bz2' => :build
-
-  @perl_fullversion = @_ver.split('-')[0]
-
-  @perl_version = @_ver.rpartition('.')[0]
+  print_source_bashrc
 
   def self.build
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     # Install manual files into #{CREW_MUSL_PREFIX}/share/man/man* even if groff is not installed.
     system "#{MUSL_ENV_OPTIONS} \
       ./Configure \
@@ -88,12 +79,12 @@ EOF'
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.mkdir_p "#{CREW_DEST_MUSL_PREFIX}/lib"
-    FileUtils.ln_sf "#{CREW_MUSL_PREFIX}/lib/perl5/#{@perl_fullversion}/#{ARCH}-linux-thread-multi/CORE/libperl.so",
+    FileUtils.ln_sf "#{CREW_MUSL_PREFIX}/lib/perl5/#{version.split('-')[0]}/#{ARCH}-linux-thread-multi/CORE/libperl.so",
                     "#{CREW_DEST_MUSL_PREFIX}/lib/libperl.so"
     FileUtils.ln_sf "#{CREW_MUSL_PREFIX}/lib/libnsl.so.1", "#{CREW_DEST_MUSL_PREFIX}/lib/libnsl.so"
     system "install -Dm755 cpanm #{CREW_DEST_MUSL_PREFIX}/bin/cpanm"
     Dir.chdir(CREW_DEST_MUSL_PREFIX) do
-      load "#{CREW_LIB_PATH}lib/musl.rb"
+      load "#{CREW_LIB_PATH}/lib/musl.rb"
       Musl.patchelf
     end
   end

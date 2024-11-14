@@ -9,13 +9,10 @@ class Aws2 < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url({
-  })
-  binary_sha256({
-  })
+  no_compile_needed
 
   depends_on 'rust' => :build
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.install
     system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I aws2==#{@_ver} --no-warn-script-location"

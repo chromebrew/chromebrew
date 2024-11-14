@@ -1,35 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_dnspython < Package
+class Py3_dnspython < Pip
   description 'DNSPython is a DNS toolkit.'
   homepage 'https://www.dnspython.org/'
-  @_ver = '2.1.0'
-  version @_ver
+  version "2.7.0-#{CREW_PY_VER}"
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/rthalley/dnspython.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dnspython/2.1.0_armv7l/py3_dnspython-2.1.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dnspython/2.1.0_armv7l/py3_dnspython-2.1.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dnspython/2.1.0_i686/py3_dnspython-2.1.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dnspython/2.1.0_x86_64/py3_dnspython-2.1.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '88bb279608f84d8db142bc0011d7c33910ff4d67046a433d2967c9232b065902',
-     armv7l: '88bb279608f84d8db142bc0011d7c33910ff4d67046a433d2967c9232b065902',
-       i686: '880fd78e0e2c772bdaf2661b362b5f2ed32615535a49a1ea1a1a65f3052775bd',
-     x86_64: '52c717cb5ad0943c6067ea0e09a69e47c7b15e8d9ec6d1ab7a109d149530781a'
+    aarch64: '7c281e4c16ef58a393f4875c866a58818b192bcf8231af6e3500608dfd996c73',
+     armv7l: '7c281e4c16ef58a393f4875c866a58818b192bcf8231af6e3500608dfd996c73',
+       i686: '53b3dea9854a55798d90c6eedb7dc00d0d69979b0c49be5b63340a441f108ab6',
+     x86_64: 'f7839f4bb4a56a2e32ff64daed07ae147a2bfa91c3ef0516ce6c959fc6ed87da'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

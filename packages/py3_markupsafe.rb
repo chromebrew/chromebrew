@@ -1,35 +1,23 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_markupsafe < Package
+class Py3_markupsafe < Pip
   description 'Markupsafe allows the safe addition of untrusted strings to HTML/XML markup.'
   homepage 'https://markupsafe.palletsprojects.com/'
-  @_ver = '2.0.1'
-  version @_ver
+  version "3.0.2-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/pallets/markupsafe.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markupsafe/2.0.1_armv7l/py3_markupsafe-2.0.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markupsafe/2.0.1_armv7l/py3_markupsafe-2.0.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markupsafe/2.0.1_i686/py3_markupsafe-2.0.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markupsafe/2.0.1_x86_64/py3_markupsafe-2.0.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '88b79d1954f17a711dc7e5ef4af4b215d3b5f3648e5321f6e94be7787334c127',
-     armv7l: '88b79d1954f17a711dc7e5ef4af4b215d3b5f3648e5321f6e94be7787334c127',
-       i686: 'caff6c801d1fe95917b88e08e5593d322aa10cf8b79e1592f0fecf964f29855f',
-     x86_64: '0f7dbc0ac9261efa659c7d8eba7866c845242329b0ddd1403f4b2bbfdf3d0ef7'
+    aarch64: '6ac52d175f30d1c71cbe716666db37b38bda1aab902b4711fc65b0b4787e6e85',
+     armv7l: '6ac52d175f30d1c71cbe716666db37b38bda1aab902b4711fc65b0b4787e6e85',
+       i686: '3c7918bacfe87950e96e6c61bd7c01cba0e9eb001a2c8c5fa00044cb84b3d036',
+     x86_64: '49f99e35b905332c91f943412514275618af337f5b70ea89cc35246d2c3b53fd'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'glibc' # R
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

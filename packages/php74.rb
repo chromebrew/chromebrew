@@ -2,45 +2,67 @@ require 'package'
 
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
-  homepage 'http://www.php.net/'
-  @_ver = '7.4.32'
-  version @_ver
+  homepage 'https://www.php.net/'
+  version '7.4.33-1'
   license 'PHP-3.01'
-  compatibility 'all'
-  source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 '323332c991e8ef30b1d219cb10f5e30f11b5f319ce4c6642a5470d75ade7864a'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.php.net/distributions/php-7.4.33.tar.xz'
+  source_sha256 '924846abf93bc613815c55dd3f5809377813ac62a9ec4eb3778675b82a27b927'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.32_armv7l/php74-7.4.32-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.32_armv7l/php74-7.4.32-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.32_i686/php74-7.4.32-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.32_x86_64/php74-7.4.32-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '30df54ecef19cc23a05d24159d60c71efaabd7e1b2ab82011bbb2ffe58163249',
-     armv7l: '30df54ecef19cc23a05d24159d60c71efaabd7e1b2ab82011bbb2ffe58163249',
-       i686: '0da9d7ed1939f894b33d0fcf84e8acc302286cd27019e35d2a05746006a6d4f0',
-     x86_64: '65877f0049ca34c2087a98c44740febc61418021aa7cfbf7e60fa5563243c476'
+    aarch64: 'c6d0341c39053efa64ebb9b0056ed5c8c066f827fe854fb6b3164f978208d42c',
+     armv7l: 'c6d0341c39053efa64ebb9b0056ed5c8c066f827fe854fb6b3164f978208d42c',
+     x86_64: '3556beb44da6b3c292425c0f06c2fb2cf55b60880e752bf2f7a46f333c789b83'
   })
 
   depends_on 'aspell_en'
-  depends_on 'libcurl'
-  depends_on 'libgcrypt'
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libsodium'
-  depends_on 'libxpm'
-  depends_on 'libxslt'
-  depends_on 'libzip'
+  depends_on 'aspell' # R
+  depends_on 'brotli' # R
+  depends_on 'bzip2' # R
+  depends_on 'c_ares' # R
+  depends_on 'curl'
+  depends_on 'e2fsprogs' # R
   depends_on 'exif'
   depends_on 'freetds'
   depends_on 'freetype'
+  depends_on 'gcc_lib' # R
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'graphite'
+  depends_on 'icu4c' # R
+  depends_on 'krb5' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libedit' # R
+  depends_on 'libffi' # R
+  depends_on 'libgcrypt'
+  depends_on 'libgpg_error' # R
+  depends_on 'libidn2' # R
+  depends_on 'libjpeg_turbo'
+  depends_on 'libnghttp2' # R
+  depends_on 'libpng'
+  depends_on 'libpsl' # R
+  depends_on 'libsodium'
+  depends_on 'libssh' # R
+  depends_on 'libtool' # R
+  depends_on 'libunistring' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxpm'
+  depends_on 'libxslt'
+  depends_on 'libzip'
+  depends_on 'ncurses' # R
+  depends_on 'oniguruma'
+  depends_on 'openldap' # R
+  depends_on 'openssl111'
+  depends_on 'openssl' # R
+  depends_on 'py3_pygments'
   depends_on 're2c'
+  depends_on 'sqlite' # R
   depends_on 'tidy'
   depends_on 'unixodbc'
-  depends_on 'oniguruma'
-  depends_on 'py3_pygments'
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
   no_fhs
 
@@ -71,7 +93,7 @@ class Php74 < Package
   end
 
   def self.build
-    system "CFLAGS='-pipe' ./configure \
+    system "CFLAGS='-pipe' mold -run ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \
@@ -123,7 +145,7 @@ class Php74 < Package
        --with-xmlrpc \
        --with-xsl \
        --with-zip"
-    system 'make'
+    system 'mold -run make'
   end
 
   def self.check

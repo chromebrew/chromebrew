@@ -1,35 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_itsdangerous < Package
+class Py3_itsdangerous < Pip
   description 'ItsDangerous provide various helpers to pass data to untrusted environments and back.'
   homepage 'https://palletsprojects.com/p/itsdangerous/'
-  @_ver = '2.0.1'
-  version @_ver
+  version "2.2.0-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/pallets/itsdangerous.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_itsdangerous/2.0.1_armv7l/py3_itsdangerous-2.0.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_itsdangerous/2.0.1_armv7l/py3_itsdangerous-2.0.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_itsdangerous/2.0.1_i686/py3_itsdangerous-2.0.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_itsdangerous/2.0.1_x86_64/py3_itsdangerous-2.0.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'e480e5ef2d9b757bbcd7b45a0427003a2d81ee85e9388f56cfc895ec6ed5d0c1',
-     armv7l: 'e480e5ef2d9b757bbcd7b45a0427003a2d81ee85e9388f56cfc895ec6ed5d0c1',
-       i686: '6776095190067ae1b6809aa7cb6d61f0baa08423e2bac1f4b110584d7da56600',
-     x86_64: 'b211621da276c9693729ba64ab14f4a133683c2692f5b737e38ea50653adf00a'
+    aarch64: '46c6bb4a28c70160611cb6405be56708bd6f9dc0de8acaa03745f2d8236dbb52',
+     armv7l: '46c6bb4a28c70160611cb6405be56708bd6f9dc0de8acaa03745f2d8236dbb52',
+       i686: '0b138130bb6b1bff3ff5cfafea4036d051529ef52ee4eede99faf3ab714bc0a5',
+     x86_64: '7d12a9199b418b9cff1894ce3d48c343bddf714350452b0ad1b52f2ed2965da1'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

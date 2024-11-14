@@ -1,0 +1,12 @@
+/usr/local/include/aribb24/aribb24.h
+/usr/local/include/aribb24/bits.h
+/usr/local/include/aribb24/decoder.h
+/usr/local/include/aribb24/parser.h
+/usr/local/lib/libaribb24.a
+/usr/local/lib/libaribb24.la
+/usr/local/lib/libaribb24.so
+/usr/local/lib/libaribb24.so.0
+/usr/local/lib/libaribb24.so.0.0.0
+/usr/local/lib/pkgconfig/aribb24.pc
+/usr/local/share/doc/aribb24/COPYING
+/usr/local/share/doc/aribb24/README.md

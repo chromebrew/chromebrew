@@ -1,0 +1,8 @@
+/usr/local/bin/dcd-client
+/usr/local/bin/dcd-server
+/usr/local/bin/dexed
+/usr/local/bin/dscanner
+/usr/local/lib64/libdexed-d.so
+/usr/local/share/applications/dexed.desktop
+/usr/local/share/pixmaps/dexed.png
+/home/chronos/user/.config/dexed/compilerspaths.txt

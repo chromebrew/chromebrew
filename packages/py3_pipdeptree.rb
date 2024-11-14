@@ -1,36 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pipdeptree < Package
+class Py3_pipdeptree < Pip
   description 'Displays a dependency tree of the installed Python packages.'
   homepage 'https://github.com/naiquevin/pipdeptree/'
-  @_ver = '2.2.0'
-  version @_ver
+  version "2.23.4-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/naiquevin/pipdeptree.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pipdeptree/2.2.0_armv7l/py3_pipdeptree-2.2.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pipdeptree/2.2.0_armv7l/py3_pipdeptree-2.2.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pipdeptree/2.2.0_i686/py3_pipdeptree-2.2.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pipdeptree/2.2.0_x86_64/py3_pipdeptree-2.2.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '43bcc3d8c7cafc9ff0ffb11c3ac02d711bad8c3a255544ae1359f6266b61c96b',
-     armv7l: '43bcc3d8c7cafc9ff0ffb11c3ac02d711bad8c3a255544ae1359f6266b61c96b',
-       i686: 'def4e8eddadd8d3e5842c7c55796c753bd56fc7e4dd07b825e05703a73647906',
-     x86_64: 'a33079dea17ba00a73708eece8b455506abe1a3d46ed814f68176d2b62f7c9d0'
+    aarch64: 'cd30883d52a4aedcb4d6915df60cc50b864f7301b642dc28b6a93c9d6b8c7257',
+     armv7l: 'cd30883d52a4aedcb4d6915df60cc50b864f7301b642dc28b6a93c9d6b8c7257',
+       i686: 'd7ab47aaa1a8ba5b8751ce01d9c582686e55a00743f46a9b3cc05f464adbe6ef',
+     x86_64: '5c6e54c943c38bb39b48a34ffaba1129230d192e23faea783878767e0d71f1bd'
   })
 
-  depends_on 'py3_pip'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

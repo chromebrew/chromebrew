@@ -1,57 +1,36 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gawk < Package
+class Gawk < Autotools
   description 'The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.'
   homepage 'https://www.gnu.org/software/gawk/'
-  @_ver = '5.1.1'
-  version "#{@_ver}-1"
+  version '5.3.1'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://git.savannah.gnu.org/git/gawk.git'
-  git_hashtag "gawk-#{@_ver}"
+  source_url "https://ftpmirror.gnu.org/gawk/gawk-#{version}.tar.xz"
+  source_sha256 '694db764812a6236423d4ff40ceb7b6c4c441301b72ad502bb5c27e00cd56f78'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.1.1-1_armv7l/gawk-5.1.1-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.1.1-1_armv7l/gawk-5.1.1-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.1.1-1_i686/gawk-5.1.1-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.1.1-1_x86_64/gawk-5.1.1-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '0963d6d7067653da8039fc4182235d7b8b75bb4adc8e2448e122a85d00cb3d93',
-     armv7l: '0963d6d7067653da8039fc4182235d7b8b75bb4adc8e2448e122a85d00cb3d93',
-       i686: '9c6609595c2fa11e1a5e9ddda7e6a592b4040549a37915ebae929ba12fa41fea',
-     x86_64: '2734c6270be8ee586007e4389c762b956f993d7503e9cb7d863c2b675bde9e2b'
+    aarch64: '2fd73496950cf2482815e4fb21a0e652f0b726be8fc5f7f16009d7dd3df2faa0',
+     armv7l: '2fd73496950cf2482815e4fb21a0e652f0b726be8fc5f7f16009d7dd3df2faa0',
+       i686: '71d84a28ad6d27b6a8c394592130fceaab5c7d4d62643daad9963aad6a129c58',
+     x86_64: '177e43ad886fca0a2701f42564d5ff084ee0efa3a3fb85319405a869641335bf'
   })
 
-  depends_on 'readline' => :build
-  depends_on 'ncurses'
-  depends_on 'mpfr'
-  depends_on 'gmp'
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'libsigsegv' # R
+  depends_on 'mpfr' # R
+  depends_on 'ncurses' => :build
+  depends_on 'readline' # R
 
-  def self.patch
-    # Ironically libsigsegv causes crashes on i686
-    return unless ARCH == 'i686'
+  # Tests on i686 run out of memory.
+  run_tests unless ARCH == 'i686'
 
-    system "sed -i 's,\$(top_srcdir)/m4/libsigsegv.m4,,g' Makefile.in"
-    FileUtils.rm 'm4/libsigsegv.m4'
-  end
+  configure_options '--without-libsigsegv-prefix'
 
-  def self.build
-    system 'autoreconf -fvi'
-    system 'filefix'
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.check
-    # Still has failing issues on i686.
-    system 'make check || true'
-  end
-
-  def self.install
-    # Conflict with /usr/local/bin/awk from mawk package.
-    ENV['CREW_CONFLICTS_ONLY_ADVISORY'] = '1'
-    reload_constants
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  configure_install_extras do
+    # Remove conflict with #{CREW_PREFIX}/bin/awk from mawk package
+    FileUtils.rm "#{CREW_DEST_PREFIX}/bin/awk"
   end
 end

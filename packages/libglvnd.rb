@@ -3,38 +3,34 @@ require 'package'
 class Libglvnd < Package
   description 'The GL Vendor-Neutral Dispatch library'
   homepage 'https://gitlab.freedesktop.org/glvnd/libglvnd'
-  version '1.4.0'
+  version '1.6.0'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/glvnd/libglvnd.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.4.0_armv7l/libglvnd-1.4.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.4.0_armv7l/libglvnd-1.4.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.4.0_i686/libglvnd-1.4.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.4.0_x86_64/libglvnd-1.4.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '9f38d8734bbcd7e2258edf3a8e872093d10e71a5bcae250b211798413d2c617b',
-     armv7l: '9f38d8734bbcd7e2258edf3a8e872093d10e71a5bcae250b211798413d2c617b',
-       i686: '5e293d8f35f240ea212d1df3ca0fc852f60ac0fc79eb18d38489da7231022ac0',
-     x86_64: 'f17ee5a381d022cdc3ad36601ba4d2df0550b51a540e81c9c0486b61fca014bd'
+    aarch64: '52555ba2aab442a4d3b336e164ad35f64ec8ea09db9340751729363e6e5d51ba',
+     armv7l: '52555ba2aab442a4d3b336e164ad35f64ec8ea09db9340751729363e6e5d51ba',
+     x86_64: 'e076f11dae10b4fd8c21076b33a85be40bc585cc7612f3da29802e6b09e58ba5'
   })
 
-  depends_on 'libxext'
-  depends_on 'libx11'
-  depends_on 'glproto'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glproto' => :build
+  depends_on 'libx11' # R
+  depends_on 'libxext' => :build
   depends_on 'python3' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'meson configure --no-pager builddir'
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

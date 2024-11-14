@@ -7,15 +7,13 @@ class Snowflake < Package
   license 'GPL-3'
   compatibility 'x86_64'
   source_url 'SKIP'
+  binary_compression 'tpxz'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snowflake/1.0.4_x86_64/snowflake-1.0.4-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    x86_64: '4e524ad28ef440ded64cb667b188ced01d662fc8240d85be39cc7319a306e99f'
+     x86_64: '4e524ad28ef440ded64cb667b188ced01d662fc8240d85be39cc7319a306e99f'
   })
 
-  depends_on 'jdk11'
+  depends_on 'jdk11' unless CREW_IN_CONTAINER
   depends_on 'sommelier'
 
   def self.build
@@ -40,13 +38,13 @@ class Snowflake < Package
     puts "\nType 'snowflake' to get started.\n".lightblue
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/snowflake-ssh"
     if Dir.exist? config_dir
       puts 'WARNING: This will remove all saved ssh sessions!'.orange
       print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case $stdin.getc
-      when 'y', 'Y'
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else

@@ -8,13 +8,8 @@ class Tinycc < Package
   compatibility 'all'
   source_url 'https://download.savannah.gnu.org/releases/tinycc/tcc-0.9.27.tar.bz2'
   source_sha256 'de23af78fca90ce32dff2dd45b3432b2334740bb9bb7b05bf60fdbfc396ceb9c'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tinycc/0.9.27_armv7l/tinycc-0.9.27-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tinycc/0.9.27_armv7l/tinycc-0.9.27-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tinycc/0.9.27_i686/tinycc-0.9.27-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tinycc/0.9.27_x86_64/tinycc-0.9.27-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '029ba25378599e4fe2f4b17d1106f33dc0638fba4a993053eb75de8790a1fafc',
      armv7l: '029ba25378599e4fe2f4b17d1106f33dc0638fba4a993053eb75de8790a1fafc',

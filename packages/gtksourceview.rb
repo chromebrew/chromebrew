@@ -1,11 +1,14 @@
 require 'package'
+Package.load_package("#{__dir__}/gtksourceview_3.rb")
+Package.load_package("#{__dir__}/gtksourceview_4.rb")
+Package.load_package("#{__dir__}/gtksourceview_5.rb")
 
 class Gtksourceview < Package
-  description 'Source code editing widget'
-  homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
-  version '1.1'
-  license 'GPL-2 and LGPL-2.1+'
-  compatibility 'all'
+  description Gtksourceview_3.description
+  homepage Gtksourceview_3.homepage
+  version "#{Gtksourceview_3.version}+#{Gtksourceview_4.version}+#{Gtksourceview_5.version}"
+  license Gtksourceview_3.license
+  compatibility Gtksourceview_3.compatibility
 
   is_fake
 

@@ -1,40 +1,35 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gmime < Package
+class Gmime < Autotools
   description 'GMime is a powerful MIME (Multipurpose Internet Mail Extension) utility library. It is meant for creating, editing, and parsing MIME messages and structures.'
   homepage 'https://developer.gnome.org/gmime/'
-  version '3.2.3'
+  version '3.2.15'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url 'https://github.com/jstedfast/gmime/archive/3.2.3.tar.gz'
-  source_sha256 '5190dd45e297e2bdeca4b14b7055d37ec07b0fa1fe936159bdb69ddb7c91dd53'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/jstedfast/gmime.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gmime/3.2.3_armv7l/gmime-3.2.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gmime/3.2.3_armv7l/gmime-3.2.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gmime/3.2.3_i686/gmime-3.2.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gmime/3.2.3_x86_64/gmime-3.2.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'aba50d887f3654b629d771b3a2a8545a88fd88b115b85b36c4c0ca851094628f',
-     armv7l: 'aba50d887f3654b629d771b3a2a8545a88fd88b115b85b36c4c0ca851094628f',
-       i686: '7d88fded92d616d666548a60b655626d80b1a5edaa53726e26d71e407673b3a6',
-     x86_64: '221c5d7bcb23ea1a985eb6cbf1834e1d3438f481ae3b1a33cc3a7069a8c06378'
+    aarch64: '1dc01a8bfdbb7058ddcfe98030ce742a499f4992104af6f709584cc729889a0e',
+     armv7l: '1dc01a8bfdbb7058ddcfe98030ce742a499f4992104af6f709584cc729889a0e',
+     x86_64: '8af3eff73005d645fb83ec90888d4b9e36903d64324bf7010289de71d9a6ca9b'
   })
 
-  depends_on 'glib'
-  depends_on 'gpgme'
-  depends_on 'vala'
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gpgme' # R
+  depends_on 'libassuan' # R
+  depends_on 'libgpg_error' # R
+  depends_on 'libidn2' # R
+  depends_on 'libunistring' # R
+  depends_on 'vala' => :build
+  depends_on 'zlib' # R
 
-  def self.build
-    system './autogen.sh',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
-    system 'make'
-  end
+  gnome
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  def self.patch
+    downloader 'https://patch-diff.githubusercontent.com/raw/jstedfast/gmime/pull/171.diff', 'a9532d24030babcbdf2cfe09c9dc9274c7607f5cf1d3544996a0353b3eb36354', '171.diff'
+    system 'patch -Np1 -i 171.diff'
   end
 end

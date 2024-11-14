@@ -3,23 +3,18 @@ require 'package'
 class Perl_pod_parser < Package
   description 'Perl Pod::Parser - base class for creating POD filters and translators'
   homepage 'https://metacpan.org/pod/Pod::Parser'
-  version '1.63-2'
+  version "1.67-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.63.tar.gz'
-  source_sha256 'dbe0b56129975b2f83a02841e8e0ed47be80f060686c66ea37e529d97aa70ccd'
+  source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.67.tar.gz'
+  source_sha256 '5deccbf55d750ce65588cd211c1a03fa1ef3aaa15d1ac2b8d85383a42c1427ea'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-2_armv7l/perl_pod_parser-1.63-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-2_armv7l/perl_pod_parser-1.63-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-2_i686/perl_pod_parser-1.63-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-2_x86_64/perl_pod_parser-1.63-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '97cd18fd9d32ee8b9d524e06d9735c21cf8c4a49ba312f035615f6d921649c98',
-     armv7l: '97cd18fd9d32ee8b9d524e06d9735c21cf8c4a49ba312f035615f6d921649c98',
-       i686: '887a43228afe65ff3fadfd6187d82dacd325e2bcd18647ccde28cf93c345ee47',
-     x86_64: '50447fab41d9e1c1d18e6ff73fe111c5b340ef49ac5414940d2ad2c998bef6bd'
+    aarch64: '3c6f74bb9c0c26489cb439eafac7eee329d67705030602508e1b8c71772ceeb2',
+     armv7l: '3c6f74bb9c0c26489cb439eafac7eee329d67705030602508e1b8c71772ceeb2',
+       i686: '89276cec5f6f47284346a22a284f4638d9e87cbbf70da8b86bf2c0313a3990ef',
+     x86_64: 'e1e81a36e19337176855749dd5858e2ed6c7947f3e875de16a4657806afe6dbd'
   })
 
   def self.prebuild

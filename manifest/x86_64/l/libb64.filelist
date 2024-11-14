@@ -1,0 +1,7 @@
+/usr/local/bin/base64
+/usr/local/include/b64/ccommon.h
+/usr/local/include/b64/cdecode.h
+/usr/local/include/b64/cencode.h
+/usr/local/include/b64/decode.h
+/usr/local/include/b64/encode.h
+/usr/local/lib64/libb64.a

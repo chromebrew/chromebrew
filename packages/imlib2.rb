@@ -1,49 +1,58 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Imlib2 < Package
+class Imlib2 < Autotools
   description 'library that does image file loading and saving as well as rendering, manipulation, arbitrary polygon support, etc.'
   homepage 'https://sourceforge.net/projects/enlightenment/'
-  version '1.7.1'
+  version "1.12.3-#{CREW_ICU_VER}"
   license 'BSD'
-  compatibility 'all'
-  source_url "https://downloads.sourceforge.net/enlightenment/imlib2-#{version}.tar.bz2"
-  source_sha256 '033a6a639dcbc8e03f65ff05e57068e7346d50ee2f2fff304bb9095a1b2bc407'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://sourceforge.net/projects/enlightenment/files/imlib2-src/#{version.split('-').first}/imlib2-#{version.split('-').first}.tar.xz"
+  source_sha256 '96244656576a3e0a6f58b78e514ddc919622ac6806711bc231837eee62c1de34'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imlib2/1.7.1_armv7l/imlib2-1.7.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imlib2/1.7.1_armv7l/imlib2-1.7.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imlib2/1.7.1_i686/imlib2-1.7.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imlib2/1.7.1_x86_64/imlib2-1.7.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'fc1a05ee2eeaa200511b2bcebd2bdc70bd68192e1b3fabacba732cf48485a330',
-     armv7l: 'fc1a05ee2eeaa200511b2bcebd2bdc70bd68192e1b3fabacba732cf48485a330',
-       i686: 'fdfae01f5ec753ac700e9e49c7054c9dda42027c9e23c22e5297b92d868ae470',
-     x86_64: 'e2bd849c909c8d6bf6b996be7a16479476916fdce072f8d924005318edde2219'
+    aarch64: 'efcce21c77145b6db2823bb7a0d5cccb83ebd5e59163cc21ffe3ea2ecc8fca4e',
+     armv7l: 'efcce21c77145b6db2823bb7a0d5cccb83ebd5e59163cc21ffe3ea2ecc8fca4e',
+     x86_64: 'b58d6d00929472e6b5f738e84d361e7922ab45dd3a0c270f1c9652dda1e836d9'
   })
 
-  depends_on 'fontconfig'
-  depends_on 'freetype'
-  depends_on 'giflib'
-  depends_on 'libid3tag'
-  depends_on 'libjpeg'
-  depends_on 'libtiff'
-  depends_on 'libx11'
-  depends_on 'libxcb'
-  depends_on 'libxext'
+  depends_on 'bzip2' # R
+  depends_on 'cairo' # R
+  depends_on 'expat' # R
+  depends_on 'fontconfig' => :build
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'giflib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
+  depends_on 'jbigkit' # R
+  depends_on 'libbsd' # R
+  depends_on 'libdeflate' # R
+  depends_on 'libheif' # R
+  depends_on 'libid3tag' => :build
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libjxl' # R
+  depends_on 'libmd' # R
+  depends_on 'libpng' # R
+  depends_on 'librsvg' # R
+  depends_on 'libtiff' # R
+  depends_on 'libwebp' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxext' # R
+  depends_on 'libxml2' # R
+  depends_on 'openjpeg' # R
+  depends_on 'pango' # R
+  depends_on 'protobuf_c' => :build
+  depends_on 'xzutils' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
-  def self.build
-    system "env CFLAGS='-flto=auto -fuse-ld=gold' \
-      CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --sysconfdir=#{CREW_PREFIX}/etc/imlib2 \
+  configure_options "--sysconfdir=#{CREW_PREFIX}/etc/imlib2 \
       --x-libraries=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

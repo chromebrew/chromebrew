@@ -2,7 +2,7 @@ require 'package'
 
 class Xz_java < Package
   description 'A complete implementation of XZ data de/compression in pure Java.'
-  homepage 'http://tukaani.org/xz/java.html'
+  homepage 'https://tukaani.org/xz/java.html'
   version '1.9'
   license 'public-domain'
   compatibility 'all'

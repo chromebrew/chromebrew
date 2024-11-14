@@ -1,35 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pytimeparse < Package
+class Py3_pytimeparse < Pip
   description 'Pytimeparse is a small Python module to parse various kinds of time expressions. '
   homepage 'https://github.com/wroberts/pytimeparse/'
-  @_ver = '1.1.8'
-  version "#{@_ver}-1"
+  version "1.1.8-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/wroberts/pytimeparse.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytimeparse/1.1.8-1_armv7l/py3_pytimeparse-1.1.8-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytimeparse/1.1.8-1_armv7l/py3_pytimeparse-1.1.8-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytimeparse/1.1.8-1_i686/py3_pytimeparse-1.1.8-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytimeparse/1.1.8-1_x86_64/py3_pytimeparse-1.1.8-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '47cbd8c39c0f08f252ae9c83d09f48476e1ec5481fe16c1ee5a5470e0f462446',
-     armv7l: '47cbd8c39c0f08f252ae9c83d09f48476e1ec5481fe16c1ee5a5470e0f462446',
-       i686: '908e3b05225e761d451cba630e25416b95b5a73cd145ee39c0d38fd343780961',
-     x86_64: '90214d3ab619ac80df3b5fa36a46b5e52a4afedfe834ef8dc847cc612607e16d'
+    aarch64: '456fe5518f3837b8e4f39c7fd287847626548ff809d555f41014ecea93f50c6b',
+     armv7l: '456fe5518f3837b8e4f39c7fd287847626548ff809d555f41014ecea93f50c6b',
+       i686: '755cab8cb4689906f9ba07519609e5b883ad4c8f84f4d058ac24689672f54a06',
+     x86_64: 'ce17f5826c782eac297afdd17a2b005792012840c42d973a63108672146ab079'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

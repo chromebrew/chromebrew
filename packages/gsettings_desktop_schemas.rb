@@ -1,44 +1,23 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gsettings_desktop_schemas < Package
+class Gsettings_desktop_schemas < Meson
   description 'Collection of GSettings schemas for GNOME desktop.'
-  homepage 'https://git.gnome.org/browse/gsettings-desktop-schemas'
-  @_ver = '41.0'
-  version @_ver
+  homepage 'https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas'
+  version '46.rc'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git'
-  git_hashtag @_ver
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/41.0_armv7l/gsettings_desktop_schemas-41.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/41.0_armv7l/gsettings_desktop_schemas-41.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/41.0_i686/gsettings_desktop_schemas-41.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/41.0_x86_64/gsettings_desktop_schemas-41.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '84fb838d4cde372d9c93ccfaa00be432a6c31b926550a6e3a6f758c7147b8db2',
-     armv7l: '84fb838d4cde372d9c93ccfaa00be432a6c31b926550a6e3a6f758c7147b8db2',
-       i686: 'd82010f0135140529a24c49ee1bc240cf1a79c4c3a118525fc610f491cc3088d',
-     x86_64: '5454f7a310fbaf115dac44142dcc45436838fdc874f5647d7f056a76e656e9a8'
+    aarch64: '503ad8e48cc72c97beb135b2e9b27b01a90ff18a10cef4c9d05f2c8c1f2feb04',
+     armv7l: '503ad8e48cc72c97beb135b2e9b27b01a90ff18a10cef4c9d05f2c8c1f2feb04',
+     x86_64: '4aee4c66f8b9db262fe88d105ea5d07d007e83c5439ffc1e66a387a279f97058'
   })
 
-  depends_on 'gnome_common'
-  depends_on 'glib'
-  depends_on 'gobject_introspection'
-  depends_on 'gtk4'
+  depends_on 'glib' => :build
+  depends_on 'gobject_introspection' => :build
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
-
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-  end
+  gnome
 end

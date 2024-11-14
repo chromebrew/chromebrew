@@ -3,30 +3,24 @@ require 'package'
 class Unicode_character_database < Package
   description 'Unicode Character Database'
   homepage 'https://www.unicode.org/'
-  @_ver = '13.0.0'
-  version @_ver
+  version '15.1.0'
   license 'Unicode-DFS-2015'
   compatibility 'all'
-  source_url "https://www.unicode.org/Public/zipped/#{@_ver}/UCD.zip"
-  source_sha256 '2f76973b4d36ae45584f5a45ec65b47138932d777dd23a5669c89535ef3da951'
+  source_url "https://www.unicode.org/Public/zipped/#{version}/UCD.zip"
+  source_sha256 'cb1c663d053926500cd501229736045752713a066bd75802098598b7a7056177'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_character_database/13.0.0_armv7l/unicode_character_database-13.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_character_database/13.0.0_armv7l/unicode_character_database-13.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_character_database/13.0.0_i686/unicode_character_database-13.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_character_database/13.0.0_x86_64/unicode_character_database-13.0.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '68f18a9c671f5879fccebc536c730e28610eaa3b62615faac64c2aa240c0dfbe',
-     armv7l: '68f18a9c671f5879fccebc536c730e28610eaa3b62615faac64c2aa240c0dfbe',
-       i686: '95e4261e757d50b90268c50be6075c5bd339fc187fcda549d12bc953bc79b971',
-     x86_64: '84dcb02569be48cedfbd149e8bd03507e66278615722a5f365b64a124c53a60b'
+    aarch64: '26caf30c0bcfb89c007fcd11a12e7d45de7b9556f164af10e8278f11f35ca8fc',
+     armv7l: '26caf30c0bcfb89c007fcd11a12e7d45de7b9556f164af10e8278f11f35ca8fc',
+       i686: 'f5efedecde5ff06d53ab85291aad1e4df946f554261c11363e7b9b3f3a11d00d',
+     x86_64: '319100958a2e3c1fbb4f31831632cf22e545b086a5a7e2afca1f2fc41db99291'
   })
 
   depends_on 'libarchive' => :build
 
   def self.build
-    system "curl -Ls https://www.unicode.org/Public/zipped/#{@_ver}/Unihan.zip | bsdtar --no-same-owner --no-same-permissions -xf -"
+    system "curl -Ls https://www.unicode.org/Public/zipped/#{version}/Unihan.zip | bsdtar --no-same-owner --no-same-permissions -xf -"
   end
 
   def self.install

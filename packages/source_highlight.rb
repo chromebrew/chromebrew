@@ -1,43 +1,33 @@
 # Adapted from Arch Linux source-highlight PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/source-highlight/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Source_highlight < Package
+class Source_highlight < Autotools
   description 'Convert source code to syntax highlighted document'
   homepage 'https://www.gnu.org/software/src-highlite/'
-  version '3.1.9-9049-1'
+  version '3.1.9-894cacd-boost1.85'
   license 'GPL'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/src-highlite.git'
-  git_hashtag '904949c9026cb772dc93fbe0947a252ef47127f4'
+  git_hashtag '894cacd0799ca60afa359a63782729dec76cbb79'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/source_highlight/3.1.9-9049-1_armv7l/source_highlight-3.1.9-9049-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/source_highlight/3.1.9-9049-1_armv7l/source_highlight-3.1.9-9049-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/source_highlight/3.1.9-9049-1_i686/source_highlight-3.1.9-9049-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/source_highlight/3.1.9-9049-1_x86_64/source_highlight-3.1.9-9049-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '5c5660558f3a902622714f0c5562aa49b4e2c4ebcf54867b25205656c23d3251',
-     armv7l: '5c5660558f3a902622714f0c5562aa49b4e2c4ebcf54867b25205656c23d3251',
-       i686: '1032b43c246c0e8d95392437112d49f48ce2d5d52f0be5d42944459b0067506b',
-     x86_64: '89797072609793b821f66c9069e96bdb8c02db74545968728a681de6c59d16ed'
+    aarch64: '244749f21be5f01c11309e77959f4da2b47936a7cdd047321a06a066c8203a06',
+     armv7l: '244749f21be5f01c11309e77959f4da2b47936a7cdd047321a06a066c8203a06',
+       i686: '1f1ccc4f04308bb23c465b6f59e6d1f3f01baed828d3eb5847922754a56bb2b8',
+     x86_64: '7fbb5ac63a8225cf47824a54965b2faffd7059384fbd1a349fc68135f173b17e'
   })
 
   depends_on 'boost' # R
-  depends_on 'ctags' => :build
+  depends_on 'ctags' # L
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
   depends_on 'texinfo' => :build
 
-  def self.build
-    system 'NOCONFIGURE=1 autoreconf -fiv'
-    system 'filefix'
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS} \
-      --sysconfdir=#{CREW_PREFIX}/etc \
+  configure_options "--sysconfdir=#{CREW_PREFIX}/etc \
       --with-bash-completion=#{CREW_PREFIX}/share/bash-completion/completions"
-    system 'make'
-  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

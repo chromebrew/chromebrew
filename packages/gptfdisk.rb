@@ -8,13 +8,8 @@ class Gptfdisk < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/gptfdisk/files/gptfdisk/1.0.4/gptfdisk-1.0.4.tar.gz'
   source_sha256 'b663391a6876f19a3cd901d862423a16e2b5ceaa2f4a3b9bb681e64b9c7ba78d'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gptfdisk/1.0.4_armv7l/gptfdisk-1.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gptfdisk/1.0.4_armv7l/gptfdisk-1.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gptfdisk/1.0.4_i686/gptfdisk-1.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gptfdisk/1.0.4_x86_64/gptfdisk-1.0.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e3374328c3134de08eae9bba3b47b18d8dc8198713105c32fb46e20e4bef0c0f',
      armv7l: 'e3374328c3134de08eae9bba3b47b18d8dc8198713105c32fb46e20e4bef0c0f',

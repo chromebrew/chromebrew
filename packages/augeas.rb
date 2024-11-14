@@ -8,13 +8,8 @@ class Augeas < Package
   compatibility 'all'
   source_url 'http://download.augeas.net/augeas-1.12.0.tar.gz'
   source_sha256 '321942c9cc32185e2e9cb72d0a70eea106635b50269075aca6714e3ec282cb87'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/augeas/1.12.0_armv7l/augeas-1.12.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/augeas/1.12.0_armv7l/augeas-1.12.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/augeas/1.12.0_i686/augeas-1.12.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/augeas/1.12.0_x86_64/augeas-1.12.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8c77e2c9e36dff045129f4e196b72051e7e085c612d43fe0f3f3f8d825c9d3ad',
      armv7l: '8c77e2c9e36dff045129f4e196b72051e7e085c612d43fe0f3f3f8d825c9d3ad',

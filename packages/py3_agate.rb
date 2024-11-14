@@ -1,26 +1,19 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_agate < Package
+class Py3_agate < Pip
   description 'Agate is a data analysis library that is optimized for humans instead of machines.'
   homepage 'https://agate.readthedocs.io/'
-  @_ver = '1.6.3'
-  version @_ver
+  version "1.12.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/wireservice/agate.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate/1.6.3_armv7l/py3_agate-1.6.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate/1.6.3_armv7l/py3_agate-1.6.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate/1.6.3_i686/py3_agate-1.6.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate/1.6.3_x86_64/py3_agate-1.6.3-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '357edbdec5c4cf615877846eb1cf7abe0d6ffa5897c5a5b74268d1590df4bde8',
-     armv7l: '357edbdec5c4cf615877846eb1cf7abe0d6ffa5897c5a5b74268d1590df4bde8',
-       i686: 'a46ea8c01fd442aebfe7f2e7dc26b79edc6419dc83909c2a66b5a16333427084',
-     x86_64: '0015ba29995578c47bd9f36abeebdfb400e00b9b137fdeed9ced4d6d151f41bc'
+    aarch64: '996f1eda8177dcf16765511247b031f7a5d66024519119788f13e10bba5c7928',
+     armv7l: '996f1eda8177dcf16765511247b031f7a5d66024519119788f13e10bba5c7928',
+       i686: 'f8612adfa5ee5a2ad19af5f565c979000f55737dca029fec85a4cee4c6218644',
+     x86_64: 'ff0028da75fa44acffcf17b897e4e93823f4a355277e09c3854253a73d17ceb4'
   })
 
   depends_on 'py3_babel'
@@ -31,13 +24,7 @@ class Py3_agate < Package
   depends_on 'py3_isodate'
   depends_on 'py3_leather'
   depends_on 'py3_parsedatetime'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

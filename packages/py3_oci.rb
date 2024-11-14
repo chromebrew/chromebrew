@@ -1,41 +1,29 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_oci < Package
+class Py3_oci < Pip
   description 'Oracle Cloud Infrastructure Python SDK'
   homepage 'https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/'
-  @_ver = '2.47.1'
-  version @_ver
+  version "2.138.0-#{CREW_PY_VER}"
   license 'UPL-1.0 or Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/oracle/oci-python-sdk.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.47.1_armv7l/py3_oci-2.47.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.47.1_armv7l/py3_oci-2.47.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.47.1_i686/py3_oci-2.47.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.47.1_x86_64/py3_oci-2.47.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '5d86993783651e32978610bf6ef35bc5f7204b982d9c97569faf6e46efd25471',
-     armv7l: '5d86993783651e32978610bf6ef35bc5f7204b982d9c97569faf6e46efd25471',
-       i686: 'aae5523e9d97e038cf5dc4763597e37940f0b057e17083c3d85d5080411109f4',
-     x86_64: '99649cc221142e93cca0bb6473c7300799792f1c2fa9e49862f4bc61cffc19fb'
+    aarch64: '00cf4fca520040c729c9d61d21d1a24ba625ba538f8c304a7d5a3c1344a4d790',
+     armv7l: '00cf4fca520040c729c9d61d21d1a24ba625ba538f8c304a7d5a3c1344a4d790',
+       i686: '611ea53b9c425c12ae211db5baa52da69a9ea65cfaedc1e9988af261139563fd',
+     x86_64: '4ecdf07501ab743d19eeffc8d9ecd9a5de8353872395e68416f1c819d2f3d507'
   })
 
-  depends_on 'py3_dateutil'
+  depends_on 'py3_python_dateutil'
   depends_on 'py3_configparser'
   depends_on 'py3_pyopenssl'
   depends_on 'py3_certifi'
   depends_on 'py3_pytz'
   depends_on 'py3_cryptography'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
+  depends_on 'rust' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

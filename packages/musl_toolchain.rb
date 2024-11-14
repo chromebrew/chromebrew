@@ -1,11 +1,12 @@
 require 'package'
+Package.load_package("#{__dir__}/musl_cc_toolchain.rb")
 
 class Musl_toolchain < Package
-  description 'A modern, simple, and fast C library implementation that strives to be lightweight, fast, simple, free, and correct in the sense of standards-conformance and safety.'
-  homepage 'https://musl.cc/'
-  version '1.2.2-b76f37fd'
-  compatibility 'all'
-  license 'MIT, LGPL-2 and GPL-2'
+  description Musl_cc_toolchain.description
+  homepage Musl_cc_toolchain.homepage
+  version Musl_cc_toolchain.version
+  license Musl_cc_toolchain.license
+  compatibility Musl_cc_toolchain.compatibility
 
   is_fake
 

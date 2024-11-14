@@ -4,8 +4,7 @@ require 'uri'
 class Jdk8 < Package
   description 'The Oracle JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java'
-  @_ver = '8u341'
-  version @_ver
+  version '8u341'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'all'
 
@@ -23,10 +22,10 @@ class Jdk8 < Package
   }
 
   source_url({
-    aarch64: File.join('file://', HOME, 'Downloads', "jdk-#{@_ver}-linux-#{@jdk_arch[:armv7l]}.tar.gz"),
-     armv7l: File.join('file://', HOME, 'Downloads', "jdk-#{@_ver}-linux-#{@jdk_arch[:armv7l]}.tar.gz"),
-       i686: File.join('file://', HOME, 'Downloads', "jdk-#{@_ver}-linux-#{@jdk_arch[:i686]}.tar.gz"),
-     x86_64: File.join('file://', HOME, 'Downloads', "jdk-#{@_ver}-linux-#{@jdk_arch[:x86_64]}.tar.gz")
+    aarch64: File.join('file://', HOME, 'Downloads', "jdk-#{version}-linux-#{@jdk_arch[:armv7l]}.tar.gz"),
+     armv7l: File.join('file://', HOME, 'Downloads', "jdk-#{version}-linux-#{@jdk_arch[:armv7l]}.tar.gz"),
+       i686: File.join('file://', HOME, 'Downloads', "jdk-#{version}-linux-#{@jdk_arch[:i686]}.tar.gz"),
+     x86_64: File.join('file://', HOME, 'Downloads', "jdk-#{version}-linux-#{@jdk_arch[:x86_64]}.tar.gz")
   })
 
   source_sha256({
@@ -59,9 +58,9 @@ class Jdk8 < Package
       EOT
     end
 
-    return if File.exist?( URI( get_source_url(ARCH.to_sym) ).path )
+    return if File.exist?(URI(source_url.key(ARCH.to_sym)).path)
 
-    # check if we should prompt user to the archive page or download page based on #{@_ver}
+    # check if we should prompt user to the archive page or download page based on #{version}
     # download page only contains latest version while archive page only contains older versions
 
     # get latest available version
@@ -76,7 +75,7 @@ class Jdk8 < Package
       You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
       #{jdk_download_url}
 
-      Download "jdk-#{@_ver}-linux-#{@jdk_arch[ARCH.to_sym]}.tar.gz" (#{@jdk_description[ARCH.to_sym]}) to Chrome OS download folder to continue.
+      Download "jdk-#{version}-linux-#{@jdk_arch[ARCH.to_sym]}.tar.gz" (#{@jdk_description[ARCH.to_sym]}) to Chrome OS download folder to continue.
     EOT
   end
 
@@ -99,6 +98,6 @@ class Jdk8 < Package
 
   def self.postinstall
     # remove jdk archive after installed
-    FileUtils.rm_f URI( get_source_url(ARCH.to_sym) ).path
+    FileUtils.rm_f URI(source_url.key(ARCH.to_sym)).path
   end
 end

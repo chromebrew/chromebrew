@@ -3,23 +3,22 @@ require 'package'
 class Perl_xml_sax < Package
   description 'XML::SAX - Simple API for XML'
   homepage 'https://metacpan.org/pod/XML::SAX'
-  version '1.02'
+  version "1.02-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-SAX-1.02.tar.gz'
   source_sha256 '4506c387043aa6a77b455f00f57409f3720aa7e553495ab2535263b4ed1ea12a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax/1.02_i686/perl_xml_sax-1.02-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax/1.02_x86_64/perl_xml_sax-1.02-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    i686: 'b967b46a1d777e550ec9173605cc1ab19f7149fbd3e901d26ade3f05d065e46d',
-  x86_64: 'a5c4f62598b738a7846fbb86d3db1ba3ef67fe30cfb34fea90b2d1513794402e'
+    aarch64: 'dbddbf67a7c9ea789ca6eff91979bda6a134a925cb0e1d2285c83fde25f9aa10',
+     armv7l: 'dbddbf67a7c9ea789ca6eff91979bda6a134a925cb0e1d2285c83fde25f9aa10',
+       i686: '3994c3bf14ffb7ae3ef99e5e8678a648219b7984297609ea701327f8ded052ce',
+     x86_64: 'e3547948c85de5c36899160dc4e9f1fce54ac5fd8f617636dbe7a064060e876d'
   })
 
-  depends_on 'perl_xml_sax_base'
-  depends_on 'perl_xml_namespacesupport'
+  depends_on 'perl_xml_sax_base' => :build
+  depends_on 'perl_xml_namespacesupport' => :build
 
   def self.prebuild
     system 'perl', 'Makefile.PL'
@@ -31,6 +30,6 @@ class Perl_xml_sax < Package
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install_perl'
   end
 end

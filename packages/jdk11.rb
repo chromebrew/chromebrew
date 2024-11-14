@@ -35,7 +35,7 @@ class Jdk11 < Package
       EOT
     end
 
-    return if File.exist?( URI(source_url).path )
+    return if File.exist?(URI(source_url).path)
 
     # check if we should prompt user to the archive page or download page based on #{@_ver}
     # download page only contains latest version while archive page only contains older versions

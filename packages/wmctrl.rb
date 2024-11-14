@@ -2,24 +2,18 @@ require 'package'
 
 class Wmctrl < Package
   description 'Control your EWMH compliant window manager from command line'
-  homepage 'http://tripie.sweb.cz/utils/wmctrl/'
+  homepage 'https://sweb.cz/utils/wmctrl/'
   @_ver = '1.07'
   version "#{@_ver}-1"
   license 'GPL-2'
-  compatibility 'all'
-  source_url "http://tripie.sweb.cz/utils/wmctrl/dist/wmctrl-#{@_ver}.tar.gz"
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://sweb.cz/utils/wmctrl/dist/wmctrl-#{@_ver}.tar.gz"
   source_sha256 'd78a1efdb62f18674298ad039c5cbdb1edb6e8e149bb3a8e3a01a4750aa3cca9'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wmctrl/1.07-1_armv7l/wmctrl-1.07-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wmctrl/1.07-1_armv7l/wmctrl-1.07-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wmctrl/1.07-1_i686/wmctrl-1.07-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wmctrl/1.07-1_x86_64/wmctrl-1.07-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '97f0bfc34405935c50b960f58b277560fc6cd866a8d56aedde7d963ff3e888e4',
      armv7l: '97f0bfc34405935c50b960f58b277560fc6cd866a8d56aedde7d963ff3e888e4',
-       i686: '457c74eed5b513a70046d1f2c63bc8ae925c46b67df8c811ae115e7b7177a1b7',
      x86_64: '3087608f812c2888edaa264885bc1efb3044e958bdfaadc609e375b1a7172eb8'
   })
 
@@ -39,7 +33,7 @@ class Wmctrl < Package
   def self.build
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+      ./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

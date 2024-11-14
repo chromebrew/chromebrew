@@ -1,11 +1,13 @@
 require 'package'
+Package.load_package("#{__dir__}/cairomm_1_0.rb")
+Package.load_package("#{__dir__}/cairomm_1_16.rb")
 
 class Cairomm < Package
-  description 'The Cairomm package provides a C++ interface to Cairo.'
-  homepage 'https://www.cairographics.org/'
-  version '1.0'
-  license 'LGPL-2+'
-  compatibility 'all'
+  description Cairomm_1_0.description
+  homepage Cairomm_1_0.homepage
+  version "#{Cairomm_1_0.version}+#{Cairomm_1_16.version}"
+  license Cairomm_1_0.license
+  compatibility Cairomm_1_0.compatibility
 
   is_fake
 

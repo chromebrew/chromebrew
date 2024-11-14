@@ -1,46 +1,61 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Wxwidgets < Package
+class Wxwidgets < Autotools
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  version '3.2.1'
+  version '3.2.6'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_armv7l/wxwidgets-3.2.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_armv7l/wxwidgets-3.2.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_i686/wxwidgets-3.2.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_x86_64/wxwidgets-3.2.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '10c71058ec6cfdd15fbb5df6d806b8cac45a4c76660c3e241784a50a7025ea19',
-     armv7l: '10c71058ec6cfdd15fbb5df6d806b8cac45a4c76660c3e241784a50a7025ea19',
-       i686: 'f752f8d0ba3fb2385f42d5f8476857845a44fbb528cf5838e6b307516c9fe3fa',
-     x86_64: 'beae22a38ef0479491e2c563e7e9d317d14d643e4ffa5499579b3fe53176df1c'
+    aarch64: '8492d3b7b5cb54aa77bb309f6c8d6b41a6299a60f845b3328b936de2c55fa077',
+     armv7l: '8492d3b7b5cb54aa77bb309f6c8d6b41a6299a60f845b3328b936de2c55fa077',
+     x86_64: '56db29f66461a45c771dea8a79e08db58a9f9f1b5ca9360743989cc22b6ffcdb'
   })
 
-  depends_on 'atk' # R
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'curl' # R
+  depends_on 'enchant' # R
+  depends_on 'expat' # R
   depends_on 'fontconfig'
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'gspell' # R
   depends_on 'gstreamer' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
+  depends_on 'jbigkit' # R
   depends_on 'libglu' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libglvnd' # R
+  depends_on 'libice' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libnotify' # R
-  depends_on 'libsdl'
-  depends_on 'libsecret'
+  depends_on 'libpng' # R
+  depends_on 'libsdl2' # R
+  depends_on 'libsdl' => :build
+  depends_on 'libsecret' # R
   depends_on 'libsm' # R
-  depends_on 'libsoup'
+  depends_on 'libsoup2' # R
+  depends_on 'libsoup' # R
   depends_on 'libtiff' # R
   depends_on 'libx11' # R
+  depends_on 'libxext' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxtst' # R
   depends_on 'libxxf86vm' # R
   depends_on 'mesa' # R
   depends_on 'pango' # R
+  depends_on 'pcre2' # R
+  depends_on 'wayland' # R
+  depends_on 'webkit2gtk_4_1' # R
+  depends_on 'zlib' # R
 
   def self.preflight
     %w[wxwidgets30 wxwidgets31].each do |wxw|
@@ -52,9 +67,7 @@ class Wxwidgets < Package
     end
   end
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} \
-      --with-gtk=3 \
+  configure_options '--with-gtk=3 \
       --with-opengl \
       --enable-unicode \
       --enable-graphics_ctx \
@@ -65,10 +78,7 @@ class Wxwidgets < Package
       --with-libjpeg=sys \
       --with-libtiff=sys \
       --without-gnomevfs \
-      --disable-universal \
-      --disable-precomp-headers"
-    system 'make'
-  end
+      --disable-precomp-headers'
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

@@ -8,13 +8,8 @@ class Exif < Package
   compatibility 'all'
   source_url 'https://github.com/libexif/exif/archive/exif-0_6_21-release.tar.gz'
   source_sha256 'f55e125eee6c2a75d367d3b388bcd7bea75dc944fabe8671bb32e889192f4b77'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exif/0.6.21_armv7l/exif-0.6.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exif/0.6.21_armv7l/exif-0.6.21-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exif/0.6.21_i686/exif-0.6.21-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exif/0.6.21_x86_64/exif-0.6.21-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8f8de193c0571c268e8004876a0365178237107d2e21d44766ef128f204adcb3',
      armv7l: '8f8de193c0571c268e8004876a0365178237107d2e21d44766ef128f204adcb3',

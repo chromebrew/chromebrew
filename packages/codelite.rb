@@ -5,20 +5,14 @@ class Codelite < Package
   homepage 'https://codelite.org/'
   version '13.0-1'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/eranif/codelite/archive/13.0.tar.gz'
   source_sha256 'f2653fa42d6214999718236998cb223e6de00a498c0cfde795e901be693fb9ac'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/codelite/13.0-1_armv7l/codelite-13.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/codelite/13.0-1_armv7l/codelite-13.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/codelite/13.0-1_i686/codelite-13.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/codelite/13.0-1_x86_64/codelite-13.0-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '3ce2928e3a9d72d9a46c90260a6d5b4396913dcdb02a7c8342acebeb5db5c9e0',
      armv7l: '3ce2928e3a9d72d9a46c90260a6d5b4396913dcdb02a7c8342acebeb5db5c9e0',
-       i686: 'c3b273b5ed85b711e8d7040ae55142b8f9d92f3a0aad6ec4c09f89b179130b51',
      x86_64: '8a3cb05597521854499fd7f69287ed82a68853a11bda85621c16456b1dc1c081'
   })
 

@@ -6,32 +6,29 @@ require 'package'
 class Tevent < Package
   description 'Event system based on the talloc memory management library'
   homepage 'https://tevent.samba.org/'
-  version '0.13.0'
+  version "0.16.1-#{CREW_PY_VER}"
   license 'LGPL'
   compatibility 'all'
-  source_url "https://samba.org/ftp/tevent/tevent-#{version}.tar.gz"
-  source_sha256 'b9437a917fa55344361beb64ec9e0042e99cae8879882a62dd38f6abe2371d0c'
+  source_url "https://samba.org/ftp/tevent/tevent-#{version.split('-').first}.tar.gz"
+  source_sha256 '362971e0f32dc1905f6fe4736319c4b8348c22dc85aa6c3f690a28efe548029e'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.13.0_armv7l/tevent-0.13.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.13.0_armv7l/tevent-0.13.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.13.0_i686/tevent-0.13.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.13.0_x86_64/tevent-0.13.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '6882e33fce796b68aea820e56f502a0fbca16b366bcdeedced2b0d11a1e2bc96',
-     armv7l: '6882e33fce796b68aea820e56f502a0fbca16b366bcdeedced2b0d11a1e2bc96',
-       i686: '6b144a691f72dbc6161dcc6c3a90080aa5a980ae53fe0db79b5365a716fcd780',
-     x86_64: '8f7afd3c02a9f6832c0bdae29b9ab629b5aa205433bd0f9f4fbbb617dffa62e9'
+    aarch64: 'eb797ce3effa14924747bc7c70aba3ff1f778bad976a3e3e75ec181d88066f78',
+     armv7l: 'eb797ce3effa14924747bc7c70aba3ff1f778bad976a3e3e75ec181d88066f78',
+       i686: 'e8ed5f70e19c964bb4763656440ddebb8e036ad862ef13288ea39695b710d9c3',
+     x86_64: '5db2c5713601b02cddcebb783fc52a38b2fb9fdd9f4621bb010b961b4a066564'
   })
 
-  depends_on 'libbsd'
-  depends_on 'libxcrypt'
-  depends_on 'talloc'
   depends_on 'cmocka' => :build
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libxcrypt' => :build
+  depends_on 'python3' => :build
+  depends_on 'talloc' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')} \
       --sysconfdir=#{CREW_PREFIX}/etc/samba \
       --localstatedir=#{CREW_PREFIX}/var \
       --bundled-libraries=NONE \

@@ -1,35 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_alabaster < Package
+class Py3_alabaster < Pip
   description 'Alabaster is a configurable sidebar-enabled Sphinx theme.'
   homepage 'https://alabaster.readthedocs.io/'
-  @_ver = '0.7.12'
-  version "#{@_ver}-1"
+  version "1.0.0-#{CREW_PY_VER}"
   license 'BSD' # License is BSD-style, might be BSD-3?
   compatibility 'all'
-  source_url 'https://github.com/bitprophet/alabaster.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.12-1_armv7l/py3_alabaster-0.7.12-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.12-1_armv7l/py3_alabaster-0.7.12-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.12-1_i686/py3_alabaster-0.7.12-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.12-1_x86_64/py3_alabaster-0.7.12-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'd6c4783e5580c9d1e934dd75181c2a13151d71398c27879e0ac9efc4888c7ce8',
-     armv7l: 'd6c4783e5580c9d1e934dd75181c2a13151d71398c27879e0ac9efc4888c7ce8',
-       i686: '55c46df2b001aeeababef44841ef9284bd0d77635875502396cb8d320a45c988',
-     x86_64: '85cea802be3a36f4de9cc91ee1da3d50e4c618dbb0516a70c337acf77da1d58a'
+    aarch64: 'c69245013f76725cf74115ccd8ee7f69f1fe1264bad8b621e38ec45f0490621c',
+     armv7l: 'c69245013f76725cf74115ccd8ee7f69f1fe1264bad8b621e38ec45f0490621c',
+       i686: '731e8a1f34bad3c19366bfcb8e23e2759ac39aca3b78b8931b1a47e02dd1f12d',
+     x86_64: '14ff489221a96e87522fcecdb6773daa799c7272e69f14a8b6bd46402a2cdc73'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

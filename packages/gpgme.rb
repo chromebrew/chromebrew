@@ -1,36 +1,50 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gpgme < Package
+class Gpgme < Autotools
   description 'GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier for applications.'
   homepage 'https://www.gnupg.org/related_software/gpgme/index.html'
-  @_ver = '1.17.1'
-  version @_ver
+  version '1.24.0'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-#{@_ver}.tar.bz2"
-  source_sha256 '711eabf5dd661b9b04be9edc9ace2a7bc031f6bd9d37a768d02d0efdef108f5f'
+  source_url "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-#{version}.tar.bz2"
+  source_sha256 '61e3a6ad89323fecfaff176bc1728fb8c3312f2faa83424d9d5077ba20f5f7da'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.1_armv7l/gpgme-1.17.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.1_armv7l/gpgme-1.17.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.1_i686/gpgme-1.17.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.1_x86_64/gpgme-1.17.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '7f18875986e440ba0a1d6c6fef977f4235efcbad9f390772b9d2f292f3b20700',
-     armv7l: '7f18875986e440ba0a1d6c6fef977f4235efcbad9f390772b9d2f292f3b20700',
-       i686: '6c54ea2784966e5ad972c53b53d63b1514036013fc698f75f36195b3d77fc434',
-     x86_64: '324529721ce4dbe10d971629bfa9f6a25c1a9040645b38b664c4f805987d2524'
+    aarch64: 'dc4fbcc9f8abb29a5163877b5204a53e72b1a694297d2471c2919c4d9df76b4c',
+     armv7l: 'dc4fbcc9f8abb29a5163877b5204a53e72b1a694297d2471c2919c4d9df76b4c',
+       i686: 'd2b2f649a267c6bd89eb0b58ad895de6dcbbb169ffea47e891c66be47e5eff8a',
+     x86_64: '625651f0ae53383ab88615aa49a954849953fbef58648673245ac83f585911c5'
   })
 
-  depends_on 'gnupg'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'gnupg' # L
+  depends_on 'libassuan' # R
+  depends_on 'libgpg_error' # R
 
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
+  def self.patch
+    Dir.chdir('src') do
+      File.write 'gettid_wrapper', <<~GETTID_WRAPPER_EOF
+        #if __GLIBC_PREREQ(2,30)
+        #define _GNU_SOURCE
+        #include <unistd.h>
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+        #else
+
+        #include <unistd.h>
+        #include <sys/syscall.h>
+
+        pid_t
+        gettid(void)
+        {
+
+            return syscall(SYS_gettid);
+        }
+        #endif
+      GETTID_WRAPPER_EOF
+      system "sed -i '/# include <unistd.h>/d' debug.c"
+      system "sed -i '/#ifdef HAVE_UNISTD_H/r gettid_wrapper' debug.c"
+    end
   end
 end

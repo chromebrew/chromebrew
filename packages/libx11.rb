@@ -1,42 +1,28 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libx11 < Package
+class Libx11 < Autotools
   description 'C interface to the X window system'
-  homepage 'https://x.org'
-  version '1.7.5'
-  license 'custom'
-  compatibility 'all'
+  homepage 'https://x.org/wiki/'
+  version '1.8.10'
+  license 'X11'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libx11.git'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx11/1.7.5_armv7l/libx11-1.7.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx11/1.7.5_armv7l/libx11-1.7.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx11/1.7.5_i686/libx11-1.7.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx11/1.7.5_x86_64/libx11-1.7.5-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: '929405c796f836e64620cb1d751c9651a71387467a84302b352a41a953872c16',
-     armv7l: '929405c796f836e64620cb1d751c9651a71387467a84302b352a41a953872c16',
-       i686: '32fd6f90c8dc7886c23063ba59fa5858ddae011244ec8da1c8361db6c70c501d',
-     x86_64: 'adbf1fda20914f22186dfacbe96d549a46319e58c3c7869530e3ab6b860b96b8'
-  })
   git_hashtag "libX11-#{version}"
+  binary_compression 'tar.zst'
 
-  depends_on 'llvm' => :build
-  depends_on 'xorg_proto'
-  depends_on 'libxcb'
-  depends_on 'libxdmcp'
-  depends_on 'libxtrans'
-  patchelf
+  binary_sha256({
+    aarch64: '3e992951cf49ed047e4ef45e45b87b640e5aafed4a0614543d7c6957613dd463',
+     armv7l: '3e992951cf49ed047e4ef45e45b87b640e5aafed4a0614543d7c6957613dd463',
+     x86_64: '55c2d33cc673cec976f9f628204da0f02e83a92aae0936a42a231df81d5dd05c'
+  })
 
-  def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system 'filefix'
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxtrans' => :build
+  depends_on 'llvm19_lib' => :build
+  depends_on 'xorg_proto' => :build
 end

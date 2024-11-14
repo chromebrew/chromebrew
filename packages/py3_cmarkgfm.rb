@@ -1,35 +1,24 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_cmarkgfm < Package
+class Py3_cmarkgfm < Pip
   description 'Python bindings to GitHub\'s cmark.'
   homepage 'https://github.com/theacodes/cmarkgfm'
-  version '2022.3.4'
+  version "2024.1.14-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/theacodes/cmarkgfm.git'
-  git_hashtag version
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cmarkgfm/2022.3.4_armv7l/py3_cmarkgfm-2022.3.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cmarkgfm/2022.3.4_armv7l/py3_cmarkgfm-2022.3.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cmarkgfm/2022.3.4_i686/py3_cmarkgfm-2022.3.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cmarkgfm/2022.3.4_x86_64/py3_cmarkgfm-2022.3.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'bc0353b91ffb3dd020add427767e2f2f04a72f5a3c9af2aec69c55ac06a87a6a',
-     armv7l: 'bc0353b91ffb3dd020add427767e2f2f04a72f5a3c9af2aec69c55ac06a87a6a',
-       i686: '366c8bc7afebe3a50113b5423321f5b11a06a2fbc5ac8d0bd81142a350ce049f',
-     x86_64: '71638e32662db8b194a5af22609b8bfd5fd6362841ef441b536d70435683ebc5'
+    aarch64: '3b5e988c19ae49eb31cd9606270b6d40bd523dc0722a970fa169730e5a92bcaa',
+     armv7l: '3b5e988c19ae49eb31cd9606270b6d40bd523dc0722a970fa169730e5a92bcaa',
+       i686: '5a768b234e73c912c8d7bc003564b7fd1895b1fdd0f6da211b09bd688de1a6f7',
+     x86_64: '3736649f66cea64033366c138ca1c3de406744e6c65a2aab2a7e3bf80c27655b'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'glibc' # R
   depends_on 'py3_cffi'
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

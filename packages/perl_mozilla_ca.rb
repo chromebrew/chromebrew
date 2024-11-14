@@ -3,23 +3,18 @@ require 'package'
 class Perl_mozilla_ca < Package
   description "Mozilla::CA - Mozilla's CA cert bundle in PEM format"
   homepage 'https://metacpan.org/pod/Mozilla::CA'
-  version '20211001'
+  version "20221114-#{CREW_PERL_VER}"
   license 'GPL2'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/A/AB/ABH/Mozilla-CA-20211001.tar.gz'
-  source_sha256 '122c8900000a9d388aa8e44f911cab6c118fe8497417917a84a8ec183971b449'
+  source_url 'https://cpan.metacpan.org/authors/id/H/HA/HAARG/Mozilla-CA-20221114.tar.gz'
+  source_sha256 '701bea67be670add5a102f9f8c879402b4983096b1cb0e20dd47d52d7a10666b'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_mozilla_ca/20211001_armv7l/perl_mozilla_ca-20211001-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_mozilla_ca/20211001_armv7l/perl_mozilla_ca-20211001-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_mozilla_ca/20211001_i686/perl_mozilla_ca-20211001-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_mozilla_ca/20211001_x86_64/perl_mozilla_ca-20211001-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '22f611b19be5a58ea4c13d60120e5da4357f0cc9c476c27e56bb8d150e790753',
-     armv7l: '22f611b19be5a58ea4c13d60120e5da4357f0cc9c476c27e56bb8d150e790753',
-       i686: 'b7b7376352fc4b2f6e7deebaced880eb5fcf986b1ee7b1678652de7c098edce3',
-     x86_64: '5bc064a7d5d2485fdc9837a70733d58e973dcb495b592435e05745f37ac9d441'
+    aarch64: 'dd5e175a919101f31b59cdfe5b5a417a69ec90f932dfbda1b0bc8a34c3d8ae20',
+     armv7l: 'dd5e175a919101f31b59cdfe5b5a417a69ec90f932dfbda1b0bc8a34c3d8ae20',
+       i686: '2469e94b03a6c762ce8bf0e6a91cec12174cee0f3377dc84aca55258d4b38b19',
+     x86_64: 'f232499a01c67a5c63212e77fbad67015d9c8942337b69cd72fbf569cdef6251'
   })
 
   def self.prebuild

@@ -1,0 +1,17 @@
+/usr/local/bin/yelp-build
+/usr/local/bin/yelp-check
+/usr/local/bin/yelp-new
+/usr/local/share/aclocal/yelp.m4
+/usr/local/share/yelp-tools/templates/concept.duck
+/usr/local/share/yelp-tools/templates/concept.page
+/usr/local/share/yelp-tools/templates/guide.duck
+/usr/local/share/yelp-tools/templates/guide.page
+/usr/local/share/yelp-tools/templates/info.ducktype.include
+/usr/local/share/yelp-tools/templates/info.mallard.include
+/usr/local/share/yelp-tools/templates/reference.duck
+/usr/local/share/yelp-tools/templates/reference.page
+/usr/local/share/yelp-tools/templates/task.duck
+/usr/local/share/yelp-tools/templates/task.page
+/usr/local/share/yelp-tools/xslt/mal-ncx.xsl
+/usr/local/share/yelp-tools/xslt/mal-opf.xsl
+/usr/local/share/yelp-tools/xslt/mal-rng.xsl

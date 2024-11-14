@@ -1,37 +1,25 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libgudev < Package
+class Libgudev < Meson
   description 'libgudev is a library with GObject bindings to libudev'
   homepage 'https://wiki.gnome.org/Projects/libgudev'
-  version '234-1c7e'
+  version '238'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url 'https://github.com/GNOME/libgudev/archive/1c7e05b40b92b67dac7a6cd27b70ba08956e4815.zip'
-  source_sha256 '5ecb0c8ca76b6da7c7ad01f947c407f3670362bf5d3244075928dd86e040fcc4'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/libgudev.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgudev/234-1c7e_armv7l/libgudev-234-1c7e-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgudev/234-1c7e_armv7l/libgudev-234-1c7e-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgudev/234-1c7e_i686/libgudev-234-1c7e-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgudev/234-1c7e_x86_64/libgudev-234-1c7e-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'e636f1df415de3dddf08c3326d633b8bdf0223130e50cb2f62c5916b641c152a',
-     armv7l: 'e636f1df415de3dddf08c3326d633b8bdf0223130e50cb2f62c5916b641c152a',
-       i686: 'f4fb01f5d16cd38b890a85c501bfb9c22a29b8ad7a759430275b6a490d798795',
-     x86_64: '0980fde25a7a552e3f672d63c50e350a369667b9dbc69191635341ca64937f76'
+    aarch64: '90a6e1e31605c0e70bb19a9670f6d63b386c32c8a5e19d7b8b3fc6bec48990ba',
+     armv7l: '90a6e1e31605c0e70bb19a9670f6d63b386c32c8a5e19d7b8b3fc6bec48990ba',
+     x86_64: '3c4e94e7cf0a94d58929a3a2f2b722a701070424750ebdb70793039345eb00bc'
   })
 
-  depends_on 'gobject_introspection'
+  depends_on 'eudev' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gobject_introspection' => :build
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-      builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

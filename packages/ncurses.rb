@@ -1,82 +1,80 @@
-require 'package'
+# Adapted from Arch Linux ncurses PKGBUILD at:
+# https://gitlab.archlinux.org/archlinux/packaging/packages/ncurses/-/blob/main/PKGBUILD
 
-class Ncurses < Package
+require 'buildsystems/autotools'
+
+class Ncurses < Autotools
   description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. — Wide character'
   homepage 'https://www.gnu.org/software/ncurses/'
-  version '6.3-20211106'
+  version '6_5_20240727'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/mirror/ncurses.git'
-  git_hashtag 'f399f54c6c4ea2143afcbf704ce9af0be52b63fc'
+  source_url 'https://github.com/ThomasDickey/ncurses-snapshots.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.3-20211106_armv7l/ncurses-6.3-20211106-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.3-20211106_armv7l/ncurses-6.3-20211106-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.3-20211106_i686/ncurses-6.3-20211106-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.3-20211106_x86_64/ncurses-6.3-20211106-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'ca5672be1713a202243f5c13bbb688254cf0c93b075dcfc5c3d51677d6861b1e',
-     armv7l: 'ca5672be1713a202243f5c13bbb688254cf0c93b075dcfc5c3d51677d6861b1e',
-       i686: '208930e9bb95aa70c7111e3ea22fcdc4f03295153feed0b7b2b79ff179a42d13',
-     x86_64: '567cf7a40682009b0b817795e62e248374e87896ab76e5bd5fc69f98d252bf31'
+    aarch64: '89e7ce837045e170325cdceb7e94edb0b82276bc199eeb050d99d21bfe49d394',
+     armv7l: '89e7ce837045e170325cdceb7e94edb0b82276bc199eeb050d99d21bfe49d394',
+       i686: 'f8c8c8af6ea6d7eb63940130218d67ca250c75e54d651568b80925b946c2da26',
+     x86_64: '5039a63035d67af137ea55fc7c3a0db661e29ccb3a62b275477894e64c1b4c5c'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  no_patchelf
 
-  def self.build
-    # build libncurses
-    Dir.mkdir 'ncurses_build'
-    Dir.chdir 'ncurses_build' do
-      system "../configure #{CREW_OPTIONS} \
-          --program-prefix='' \
+  configure_options "--program-prefix='' \
           --program-suffix='' \
+          --disable-root-access \
+          --disable-root-environ \
+          --disable-setuid-environ \
           --with-shared \
+          --with-cxx-binding \
           --with-cxx-shared \
-          --without-debug \
-          --enable-pc-files \
-          --with-pkg-config-libdir=#{CREW_LIB_PREFIX}/pkgconfig \
-          --disable-widec \
-          --without-tests \
-          --with-termlib \
-          --enable-termcap"
-      system 'make'
-    end
-    # build libncursesw
-    Dir.mkdir 'ncursesw_build'
-    Dir.chdir 'ncursesw_build' do
-      system "../configure #{CREW_OPTIONS} \
-          --program-prefix='' \
-          --program-suffix='' \
-          --with-shared \
-          --with-cxx-shared \
+          --with-manpage-format=normal \
           --without-debug \
           --enable-pc-files \
           --with-pkg-config-libdir=#{CREW_LIB_PREFIX}/pkgconfig \
           --enable-widec \
           --without-tests \
-          --with-termlib \
+          --without-ada \
           --enable-termcap"
-      system 'make'
-    end
-  end
 
   def self.install
-    Dir.chdir 'ncurses_build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    @curseslibs = %w[ncurses ncurses++ form panel menu]
+    @curseslibs.each do |lib|
+      File.write("#{CREW_DEST_LIB_PREFIX}/lib#{lib}.so", "INPUT(-l#{lib}w)")
+      Dir["#{CREW_DEST_LIB_PREFIX}/lib#{lib}*.so.*"].each do |so|
+        baselib = File.basename(so)
+        FileUtils.ln_sf "#{CREW_LIB_PREFIX}/#{baselib}", "#{CREW_DEST_LIB_PREFIX}/#{baselib.gsub('w.so', '.so')}"
+      end
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/pkgconfig/#{lib}w.pc", "#{CREW_DEST_LIB_PREFIX}/pkgconfig/#{lib}.pc"
     end
-    Dir.chdir 'ncursesw_build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    File.write("#{CREW_DEST_LIB_PREFIX}/libcursesw.so", 'INPUT(-lncursesw)')
+    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libncursesw.so", "#{CREW_DEST_LIB_PREFIX}/libcurses.so"
+    @ticlibs = %w[tic ticinfo tinfo]
+    @ticlibs.each do |lib|
+      File.write("#{CREW_DEST_LIB_PREFIX}/lib#{lib}.so", 'INPUT(libncursesw.so)')
+      Dir["#{CREW_DEST_LIB_PREFIX}/lib#{lib}*.so.*"].each do |so|
+        baselib = File.basename(so)
+        FileUtils.ln_s "#{CREW_LIB_PREFIX}/#{baselib}", "#{CREW_DEST_LIB_PREFIX}/#{baselib.gsub('w.so', '.so')}" unless File.file?("#{CREW_DEST_LIB_PREFIX}/#{baselib.gsub('w.so', '.so')}")
+      end
+      Dir["#{CREW_DEST_LIB_PREFIX}/libncursesw.so.*"].each do |so|
+        baselibsuffix = File.basename(so).gsub('libncursesw.so', '')
+        FileUtils.ln_s "#{CREW_LIB_PREFIX}/libncursesw.so", "#{CREW_DEST_LIB_PREFIX}/lib#{lib}.so" unless File.file?("#{CREW_DEST_LIB_PREFIX}/lib#{lib}.so")
+        FileUtils.ln_s "#{CREW_LIB_PREFIX}/libncursesw.so", "#{CREW_DEST_LIB_PREFIX}/lib#{lib}w.so" unless File.file?("#{CREW_DEST_LIB_PREFIX}/lib#{lib}w.so")
+        FileUtils.ln_s "#{CREW_LIB_PREFIX}/libncursesw.so", "#{CREW_DEST_LIB_PREFIX}/lib#{lib}.so#{baselibsuffix}" unless File.file?("#{CREW_DEST_LIB_PREFIX}/lib#{lib}.so#{baselibsuffix}")
+        FileUtils.ln_s "#{CREW_LIB_PREFIX}/libncursesw.so", "#{CREW_DEST_LIB_PREFIX}/lib#{lib}w.so#{baselibsuffix}" unless File.file?("#{CREW_DEST_LIB_PREFIX}/lib#{lib}w.so#{baselibsuffix}")
+      end
+      FileUtils.ln_s "#{CREW_LIB_PREFIX}/pkgconfig/ncursesw.pc", "#{CREW_DEST_LIB_PREFIX}/pkgconfig/#{lib}.pc"
+      FileUtils.ln_s "#{CREW_LIB_PREFIX}/pkgconfig/ncursesw.pc", "#{CREW_DEST_LIB_PREFIX}/pkgconfig/#{lib}w.pc"
     end
-    # Make symlinks for non-wide software
-    # Dir.chdir CREW_DEST_LIB_PREFIX.to_s do
-    #  Dir.glob('*w.so*').each do |f|
-    #    @basefile_nowide = f.gsub('w.so', '.so')
-    #    puts "Symlinking #{f} to #{@basefile_nowide}"
-    #    FileUtils.ln_sf f, @basefile_nowide
-    #  end
-    # end
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/ncursesw6-config", "#{CREW_DEST_PREFIX}/bin/ncurses6-config"
+    FileUtils.ln_sf "#{CREW_PREFIX}/include/ncursesw", "#{CREW_DEST_PREFIX}/include/ncurses"
+    # Remove conflicts with dvtm package.
+    Dir.chdir "#{CREW_DEST_PREFIX}/share/terminfo/d" do
+      FileUtils.rm %w[dvtm dvtm-256color]
+    end
   end
 end

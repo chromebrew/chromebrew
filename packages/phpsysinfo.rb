@@ -5,7 +5,7 @@ class Phpsysinfo < Package
   homepage 'https://phpsysinfo.github.io/phpsysinfo/'
   version '3.4.1'
   license 'GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/phpsysinfo/phpsysinfo/archive/v3.4.1.tar.gz'
   source_sha256 '377bafea4dc4f1f705cd35df5b95e55034045ab3e7971dc934d1f599157dc3aa'
 

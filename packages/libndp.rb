@@ -1,39 +1,19 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libndp < Package
+class Libndp < Autotools
   description 'Library for Neighbor Discovery Protocol'
   homepage 'http://libndp.org/'
-  version '1.7-3fc2'
+  version '1.9'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://github.com/jpirko/libndp/archive/3fc2ed78edb5deae0381d022bedc22ffd00d50cb.zip'
-  source_sha256 '53fd7da8fc840900238f1699e98a7e3e60cd6c68489015303e84b19c9dd2bb3a'
+  source_url 'https://github.com/jpirko/libndp.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libndp/1.7-3fc2_armv7l/libndp-1.7-3fc2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libndp/1.7-3fc2_armv7l/libndp-1.7-3fc2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libndp/1.7-3fc2_i686/libndp-1.7-3fc2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libndp/1.7-3fc2_x86_64/libndp-1.7-3fc2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'cd1c2dc1ba0d66e86f335a9003a21c5cdb83f617b95fc9cee3f47cedaac44776',
-     armv7l: 'cd1c2dc1ba0d66e86f335a9003a21c5cdb83f617b95fc9cee3f47cedaac44776',
-       i686: '362f65de766cd934bf1e99db75ffdac99715b9a05e90f97b89784ad6d952f369',
-     x86_64: '17fb4275c5ef57c0c5e058721381fa4f836fae81076114ebd81dea0e0facaa41'
+    aarch64: '7c8a67bdf4aa0591cb96221037b3489ea897935faabeca90a5d44518d069bdba',
+     armv7l: '7c8a67bdf4aa0591cb96221037b3489ea897935faabeca90a5d44518d069bdba',
+       i686: 'bf609c1911545b304ed8b9196cca833c0af8806d9af180b80f3a4cb8bb3af231',
+     x86_64: '51374e8a22adfc253787a0f883c26809c174517961e7699b9e56c28d4fd41209'
   })
-
-  def self.build
-    system './autogen.sh'
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-    LDFLAGS='-pipe -flto=auto' \
-    ./configure #{CREW_OPTIONS} \
-    --sysconfdir=#{CREW_PREFIX}/etc \
-    --localstatedir=/var \
-    --libexecdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
 end

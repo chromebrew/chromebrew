@@ -3,20 +3,13 @@ require 'package'
 class Libgphoto < Package
   description 'The libgphoto2 camera access and control library.'
   homepage 'http://www.gphoto.org/'
-  @_ver = '2.5.27'
-  @_ver_ = @_ver.gsub(/[.]/, '_')
-  version @_ver
+  version '2.5.27'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://github.com/gphoto/libgphoto2/archive/libgphoto2-#{@_ver_}-release.tar.gz"
+  source_url "https://github.com/gphoto/libgphoto2/archive/libgphoto2-#{version.gsub(/[.]/, '_')}-release.tar.gz"
   source_sha256 '9ac1ab84fc5070d40194181efd0775044220c8d5cdee830386d528710e864ec9'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgphoto/2.5.27_armv7l/libgphoto-2.5.27-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgphoto/2.5.27_armv7l/libgphoto-2.5.27-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgphoto/2.5.27_i686/libgphoto-2.5.27-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgphoto/2.5.27_x86_64/libgphoto-2.5.27-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f3111fd01e63280e864e24c38ac199bff329766a305b8c2b7009c600078bf66b',
      armv7l: 'f3111fd01e63280e864e24c38ac199bff329766a305b8c2b7009c600078bf66b',
@@ -33,7 +26,7 @@ class Libgphoto < Package
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --with-camlibs=all,outdated"
     system 'make'
   end

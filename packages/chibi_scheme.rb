@@ -8,13 +8,8 @@ class Chibi_scheme < Package
   compatibility 'all'
   source_url 'https://github.com/ashinn/chibi-scheme/archive/0.8.tar.gz'
   source_sha256 '8a077859b123216c123c243db391b0fe4c0cf73978c7cdd7b8ea853a48192756'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chibi_scheme/0.8_armv7l/chibi_scheme-0.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chibi_scheme/0.8_armv7l/chibi_scheme-0.8-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chibi_scheme/0.8_i686/chibi_scheme-0.8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chibi_scheme/0.8_x86_64/chibi_scheme-0.8-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c5ce68d2b060f78644b9b95d4c4bf900aec0787d5461d78ff4ccfca556d63e16',
      armv7l: 'c5ce68d2b060f78644b9b95d4c4bf900aec0787d5461d78ff4ccfca556d63e16',

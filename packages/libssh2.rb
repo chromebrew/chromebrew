@@ -1,39 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libssh2 < Package
+class Libssh2 < Autotools
   description 'libssh2 is a client-side C library implementing the SSH2 protocol.'
-  homepage 'https://www.libssh2.org/'
-  @_ver = '1.10.0'
-  version @_ver
-  compatibility 'all'
+  homepage 'https://libssh2.org/'
+  version '1.11.1'
   license 'BSD'
-  source_url 'https://www.libssh2.org/download/libssh2-1.10.0.tar.gz'
-  source_sha256 '2d64e90f3ded394b91d3a2e774ca203a4179f69aebee03003e5a6fa621e41d51'
+  compatibility 'all'
+  source_url "https://libssh2.org/download/libssh2-#{version}.tar.gz"
+  source_sha256 '3736161e41e2693324deb38c26cfdc3efe6209d634ba4258db1cecff6a5ad461'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh2/1.10.0_armv7l/libssh2-1.10.0-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh2/1.10.0_armv7l/libssh2-1.10.0-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh2/1.10.0_i686/libssh2-1.10.0-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh2/1.10.0_x86_64/libssh2-1.10.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'c31d6ee0243ce8b131d559c996a4d5d856a9ad4dfe412eb3b99af364d71157f5',
-      armv7l: 'c31d6ee0243ce8b131d559c996a4d5d856a9ad4dfe412eb3b99af364d71157f5',
-        i686: '6b65af8a14f9d2dfdcd8ee4006bd1c9ae35932108f0d9536394ce668c870cc30',
-      x86_64: 'fc86a278cfc296e49716bc02e25119504be4ee451e5d12da9d9941e1a3bc2eb9'
+    aarch64: '0d155714a8e24c47778bfccdfd3bcaeaa64991c88b6ff0fe9a748d5f5680d852',
+     armv7l: '0d155714a8e24c47778bfccdfd3bcaeaa64991c88b6ff0fe9a748d5f5680d852',
+       i686: '031b1e4e102b791c9f6b61af75991ed118781a2b1630684731c7a7935519031c',
+     x86_64: '4233a506fb5cb1e11ee38fc93649a632c508bdc9cbe6346d99455b096c76fd0e'
   })
 
-  def self.patch
-    system "sed -i 's:/TESTS =/s:mansyntax.sh:g' tests/Makefile.in"
-  end
+  depends_on 'glibc' # R
+  depends_on 'openssl' # R
+  depends_on 'zlib' # R
 
-  def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
-              --with-libz"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--with-libz'
 end

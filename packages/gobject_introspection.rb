@@ -1,38 +1,27 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gobject_introspection < Package
+class Gobject_introspection < Meson
   description 'GObject introspection is a middleware layer between C libraries (using GObject) and language bindings.'
   homepage 'https://wiki.gnome.org/action/show/Projects/GObjectIntrospection'
-  @_ver = '1.73.0'
-  version @_ver.to_s
+  version "1.81.4-#{CREW_PY_VER}"
   license 'LGPL-2+ and GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gobject-introspection.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.73.0_armv7l/gobject_introspection-1.73.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.73.0_armv7l/gobject_introspection-1.73.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.73.0_i686/gobject_introspection-1.73.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.73.0_x86_64/gobject_introspection-1.73.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '7314c1f2b339c804ae2a2f6d6796bdc0e7dcc100ef6996e0da1f1543dc95c008',
-     armv7l: '7314c1f2b339c804ae2a2f6d6796bdc0e7dcc100ef6996e0da1f1543dc95c008',
-       i686: '51d59a3021eebc098d69cbff7e895743bf66c0f04b180fa78af3273e418b8249',
-     x86_64: '8ae83a1eee02a8f95c6d95be86ac44420eb4008a03df1bcce3fd13677d103cda'
+    aarch64: '160e81f4e83e853bfcd5a16394eaa2b458c6cf1cca65d958f7eea4c8c95a806d',
+     armv7l: '160e81f4e83e853bfcd5a16394eaa2b458c6cf1cca65d958f7eea4c8c95a806d',
+     x86_64: '8529db83792eb3dd859fd3a20fe2a700d628e34d3954db629d7dc9ce508df85b'
   })
 
-  depends_on 'glib'
+  depends_on 'gcc_lib' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'libffi' # R
+  depends_on 'python3' # R
+  depends_on 'py3_setuptools' => :build
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-      builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

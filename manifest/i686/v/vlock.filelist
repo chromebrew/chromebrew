@@ -1,0 +1,8 @@
+/usr/local/bin/vlock
+/usr/local/lib/vlock/modules/all.so
+/usr/local/lib/vlock/modules/new.so
+/usr/local/lib/vlock/modules/nosysrq.so
+/usr/local/sbin/vlock-main
+/usr/local/share/man/man1/vlock.1.zst
+/usr/local/share/man/man5/vlock-plugins.5.zst
+/usr/local/share/man/man8/vlock-main.8.zst

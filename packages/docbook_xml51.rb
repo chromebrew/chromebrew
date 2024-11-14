@@ -9,13 +9,8 @@ class Docbook_xml51 < Package
   compatibility 'all'
   source_url "https://docbook.org/xml/#{@_ver}/docbook-v#{@_ver}-os.zip"
   source_sha256 'b3f3413654003c1e773360d7fc60ebb8abd0e8c9af8e7d6c4b55f124f34d1e7f'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-3_armv7l/docbook_xml51-5.1-3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-3_armv7l/docbook_xml51-5.1-3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-3_i686/docbook_xml51-5.1-3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-3_x86_64/docbook_xml51-5.1-3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '540df829dc7cba3edba8180004eceb50613e9b73300f34b87c1b4fe204b1ed2d',
      armv7l: '540df829dc7cba3edba8180004eceb50613e9b73300f34b87c1b4fe204b1ed2d',
@@ -26,6 +21,8 @@ class Docbook_xml51 < Package
   depends_on 'docbook_xml'
   depends_on 'libxml2'
   depends_on 'xmlcatmgr'
+
+  no_upstream_update
 
   def self.install
     system "xmlcatalog --noout --create docbook-#{@_ver}.xml"
@@ -118,7 +115,7 @@ class Docbook_xml51 < Package
     # Docbook common preinstall block
     FileUtils.mkdir_p "#{CREW_PREFIX}/etc/xml"
 
-    if File.exist?("#{CREW_PREFIX}/etc/xml/catalog") && !File.zero?("#{CREW_PREFIX}/etc/xml/catalog")
+    if File.exist?("#{CREW_PREFIX}/etc/xml/catalog") && !File.empty?("#{CREW_PREFIX}/etc/xml/catalog")
       puts "#{CREW_PREFIX}/etc/xml/catalog exists" if @opt_verbose
     else
       puts "Creating #{CREW_PREFIX}/etc/xml/catalog" if @opt_verbose
@@ -126,7 +123,7 @@ class Docbook_xml51 < Package
       system "xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/catalog"
     end
 
-    if File.exist?("#{CREW_PREFIX}/etc/xml/docbook-xml") && !File.zero?("#{CREW_PREFIX}/etc/xml/docbook-xml")
+    if File.exist?("#{CREW_PREFIX}/etc/xml/docbook-xml") && !File.empty?("#{CREW_PREFIX}/etc/xml/docbook-xml")
       puts "#{CREW_PREFIX}/etc/xml/docbook-xml not empty" if @opt_verbose
     else
       puts "Creating #{CREW_PREFIX}/etc/xml/docbook-xml" if @opt_verbose

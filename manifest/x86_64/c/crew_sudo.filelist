@@ -1,0 +1,17 @@
+/usr/local/bin/crew-sudo
+/usr/local/bin/sudo
+/usr/local/etc/bash.d/crew_sudo
+/usr/local/etc/env.d/crew_sudo
+/usr/local/lib/crew-sudo/LICENSE
+/usr/local/lib/crew-sudo/README.md
+/usr/local/lib/crew-sudo/autocomplete/crew-sudo.sh
+/usr/local/lib/crew-sudo/autostart/crew-sudo.conf
+/usr/local/lib/crew-sudo/autostart/crew-sudo.sh
+/usr/local/lib/crew-sudo/component/client.rb
+/usr/local/lib/crew-sudo/component/daemon.rb
+/usr/local/lib/crew-sudo/crew-sudo
+/usr/local/lib/crew-sudo/images/how-it-works.svg
+/usr/local/lib/crew-sudo/install.sh
+/usr/local/lib/crew-sudo/lib/const.rb
+/usr/local/lib/crew-sudo/lib/function.rb
+/usr/local/lib/crew-sudo/lib/pty_helper.rb

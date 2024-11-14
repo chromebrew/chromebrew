@@ -1,0 +1,12 @@
+/usr/local/bin/libotf-config
+/usr/local/bin/otfdump
+/usr/local/bin/otflist
+/usr/local/bin/otftobdf
+/usr/local/bin/otfview
+/usr/local/include/otf.h
+/usr/local/lib/libotf.a
+/usr/local/lib/libotf.la
+/usr/local/lib/libotf.so
+/usr/local/lib/libotf.so.1
+/usr/local/lib/libotf.so.1.0.0
+/usr/local/lib/pkgconfig/libotf.pc

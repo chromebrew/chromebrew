@@ -1,44 +1,38 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libgweather < Package
+class Libgweather < Meson
   description 'Location and timezone database and weather-lookup library'
   homepage 'https://wiki.gnome.org/Projects/LibGWeather'
-  version '40.beta'
+  version '4.4.0'
   license 'GPL-2+'
-  compatibility 'all'
-  source_url 'https://github.com/GNOME/libgweather/archive/40.beta.tar.gz'
-  source_sha256 '89eebe5a83177f094c017a484be3a27b5e418fec2d9aaea1937bdc6ddc430627'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/libgweather.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgweather/40.beta_armv7l/libgweather-40.beta-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgweather/40.beta_armv7l/libgweather-40.beta-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgweather/40.beta_i686/libgweather-40.beta-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgweather/40.beta_x86_64/libgweather-40.beta-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'eb3d11bb2bd6fcc03b232c52e018851ae3e4aa6008dc4676c3f99218a6a62b77',
-     armv7l: 'eb3d11bb2bd6fcc03b232c52e018851ae3e4aa6008dc4676c3f99218a6a62b77',
-       i686: '544a1b6fe84b39e108bb4baeec800d8b3e84796c738b445d7e5a95d2bf2e843e',
-     x86_64: 'fd210e31135860d1e84e55ddbc64ada18deb731b7815e3471d78e00b24e56ee3'
+    aarch64: '636d43908dcb6601e60c336942230cd51962f104e147f87c9d5c6ee8dd770286',
+     armv7l: '636d43908dcb6601e60c336942230cd51962f104e147f87c9d5c6ee8dd770286',
+     x86_64: 'f5262a74f6830ca6cd311241d6e1ff6986c2d818326c78efd9e3f0934d2c9c87'
   })
 
-  depends_on 'libsoup'
-  depends_on 'gtk3'
-  depends_on 'geocode_glib'
-  depends_on 'dconf'
-  depends_on 'gobject_introspection' => :build
-  depends_on 'gtk_doc' => :build
+  depends_on 'dconf' => :build
+  depends_on 'geocode_glib' # R
   depends_on 'glade' => :build
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk3' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'json_glib' # R
+  depends_on 'libsoup2' # R
+  depends_on 'libxml2' # R
+  depends_on 'py3_gi_docgen' => :build
+  depends_on 'py3_pylint' => :build
+  depends_on 'py3_smartypants' => :build
+  depends_on 'py3_pygobject' => :build
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-    -Dsystemd=disabled \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dsoup2=true'
 end

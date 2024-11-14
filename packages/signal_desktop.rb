@@ -3,15 +3,17 @@ require 'package'
 class Signal_desktop < Package
   description 'Private Messenger for Windows, Mac, and Linux'
   homepage 'https://signal.org/'
-  version '5.60.0'
+  version '7.33.0'
   license 'AGPL-3.0'
   compatibility 'x86_64'
-  source_url "https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_#{version}_amd64.deb"
-  source_sha256 '7ca6c1ac0a216ff5fba5e8567cfdc55707ead06ada9ddd8795f39ae9113667ac'
+  min_glibc '2.29'
+  source_url "https://updates.signal.org/desktop/apt/pool/s/signal-desktop/signal-desktop_#{version}_amd64.deb"
+  source_sha256 'f62f4567c2a7ea75d259dcd32cde0493a9d67bb45aa99826ab5ba9a5cf659cf3'
 
   no_compile_needed
+  no_shrink
 
-  depends_on 'at_spi2_atk'
+  depends_on 'at_spi2_core'
   depends_on 'gtk3'
   depends_on 'sommelier'
 
@@ -26,12 +28,12 @@ class Signal_desktop < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mv 'usr/share', CREW_DEST_PREFIX.to_s
+    FileUtils.mv 'usr/share', CREW_DEST_PREFIX
     FileUtils.mv 'opt/Signal', "#{CREW_DEST_PREFIX}/share"
     FileUtils.ln_s "#{CREW_PREFIX}/share/Signal/signal-desktop", "#{CREW_DEST_PREFIX}/bin/signal-desktop"
   end
 
   def self.postinstall
-    puts "\nType 'signal-desktop' to get started.\n".lightblue
+    ExitMessage.add "\nType 'signal-desktop' to get started.\n"
   end
 end

@@ -3,19 +3,13 @@ require 'package'
 class Musl_obstack < Package
   description 'Void Linux copy + paste of the obstack functions and macros found in GNU gcc libiberty library for use with musl libc'
   homepage 'https://github.com/void-linux/musl-obstack'
-  @_ver = '1.2.2'
-  version @_ver
+  version '1.2.2'
   license 'zlib'
   compatibility 'all'
   source_url 'https://github.com/void-linux/musl-obstack.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_obstack/1.2.2_armv7l/musl_obstack-1.2.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_obstack/1.2.2_armv7l/musl_obstack-1.2.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_obstack/1.2.2_i686/musl_obstack-1.2.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_obstack/1.2.2_x86_64/musl_obstack-1.2.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'fcfd3b87dcb48cc7d4798e7af325a185a242e7c90d8776e833a1eb8cca1c3567',
      armv7l: 'fcfd3b87dcb48cc7d4798e7af325a185a242e7c90d8776e833a1eb8cca1c3567',
@@ -26,9 +20,10 @@ class Musl_obstack < Package
   depends_on 'musl_native_toolchain' => :build
 
   is_static
+  print_source_bashrc
 
   def self.build
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     system "#{MUSL_ENV_OPTIONS} ./bootstrap.sh"
     system "#{MUSL_ENV_OPTIONS} ./configure --prefix=#{CREW_MUSL_PREFIX}"
     system "#{MUSL_ENV_OPTIONS} make"

@@ -1,0 +1,12 @@
+/usr/local/bin/wkhtmltoimage
+/usr/local/bin/wkhtmltopdf
+/usr/local/include/wkhtmltox/dllbegin.inc
+/usr/local/include/wkhtmltox/dllend.inc
+/usr/local/include/wkhtmltox/image.h
+/usr/local/include/wkhtmltox/pdf.h
+/usr/local/lib64/libwkhtmltox.so
+/usr/local/lib64/libwkhtmltox.so.0
+/usr/local/lib64/libwkhtmltox.so.0.12
+/usr/local/lib64/libwkhtmltox.so.0.12.4
+/usr/local/share/man/man1/wkhtmltoimage.1.zst
+/usr/local/share/man/man1/wkhtmltopdf.1.zst

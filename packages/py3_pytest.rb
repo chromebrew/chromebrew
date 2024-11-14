@@ -1,26 +1,19 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pytest < Package
+class Py3_pytest < Pip
   description 'Pytest is simple powerful testing with Python.'
   homepage 'https://pytest.org/'
-  @_ver = '6.2.5'
-  version @_ver
+  version "8.3.3-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/pytest-dev/pytest.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytest/6.2.5_armv7l/py3_pytest-6.2.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytest/6.2.5_armv7l/py3_pytest-6.2.5-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytest/6.2.5_i686/py3_pytest-6.2.5-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytest/6.2.5_x86_64/py3_pytest-6.2.5-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'e07eb2dc508c1710332cdf74a023c30d6c1805166ed8c4aea52e56e7b8afbe45',
-     armv7l: 'e07eb2dc508c1710332cdf74a023c30d6c1805166ed8c4aea52e56e7b8afbe45',
-       i686: 'c2f645998e899eab99998914fe74a65c83f16f4f688fdcb1ded0c5345a0891e6',
-     x86_64: '090b9bea45cafcc0b83fd11024a5fa149758c94b355e213c1c18f8bff5fad5f3'
+    aarch64: 'e90653cbfd8934bedb4655355de94f9df049d758049ca7001f76385ce79fb5af',
+     armv7l: 'e90653cbfd8934bedb4655355de94f9df049d758049ca7001f76385ce79fb5af',
+       i686: 'c4e7668a899e1bba44a931399386fdf76014981bbd954610a36fa026ff87e355',
+     x86_64: '0b610d1b2fcb8fbb0b2cc1d048657f0e6bf51133c53926e1174ac7f5bdcf3507'
   })
 
   depends_on 'py3_py'
@@ -29,13 +22,7 @@ class Py3_pytest < Package
   depends_on 'py3_attrs'
   depends_on 'py3_pluggy'
   depends_on 'py3_iniconfig'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

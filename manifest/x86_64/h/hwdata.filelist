@@ -1,0 +1,6 @@
+/usr/local/lib64/pkgconfig/hwdata.pc
+/usr/local/share/hwdata/iab.txt
+/usr/local/share/hwdata/oui.txt
+/usr/local/share/hwdata/pci.ids
+/usr/local/share/hwdata/pnp.ids
+/usr/local/share/hwdata/usb.ids

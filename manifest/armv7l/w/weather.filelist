@@ -1,0 +1,12 @@
+/usr/local/bin/weather
+/usr/local/bin/weather.py
+/usr/local/data/weather/airports
+/usr/local/data/weather/places
+/usr/local/data/weather/slist
+/usr/local/data/weather/stations
+/usr/local/data/weather/zctas
+/usr/local/data/weather/zlist
+/usr/local/data/weather/zones
+/usr/local/etc/weatherrc
+/usr/local/man/man1/weather.1
+/usr/local/man/man5/weatherrc.5

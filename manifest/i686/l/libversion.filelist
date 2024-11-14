@@ -1,0 +1,12 @@
+/usr/local/bin/version_compare
+/usr/local/bin/version_sort
+/usr/local/include/libversion/config.h
+/usr/local/include/libversion/export.h
+/usr/local/include/libversion/version.h
+/usr/local/lib/cmake/libversion/libversionConfig-release.cmake
+/usr/local/lib/cmake/libversion/libversionConfig.cmake
+/usr/local/lib/libversion.a
+/usr/local/lib/libversion.so
+/usr/local/lib/libversion.so.1
+/usr/local/lib/libversion.so.1.0.0
+/usr/local/lib/pkgconfig/libversion.pc

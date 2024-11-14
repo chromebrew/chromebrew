@@ -1,35 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_minidb < Package
+class Py3_minidb < Pip
   description 'Minidb is a simple SQLite3-based store for Python objects.'
-  homepage 'http://thp.io/2010/minidb/'
-  @_ver = '2.0.5'
-  version @_ver
+  homepage 'https://thp.io/2010/minidb/'
+  version "2.0.8-#{CREW_PY_VER}"
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/thp/minidb.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_minidb/2.0.5_armv7l/py3_minidb-2.0.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_minidb/2.0.5_armv7l/py3_minidb-2.0.5-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_minidb/2.0.5_i686/py3_minidb-2.0.5-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_minidb/2.0.5_x86_64/py3_minidb-2.0.5-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '7bf3d7fcf5e0d7e868504f2cb79f0f033e372da97fa9c67aacbaa71d433b149c',
-     armv7l: '7bf3d7fcf5e0d7e868504f2cb79f0f033e372da97fa9c67aacbaa71d433b149c',
-       i686: '4141447a1c6edfc9e942140d037783affd0fb590e8147260ba56e222115fa6fc',
-     x86_64: '21ec8faa80892e6792e66d027a0a92027715f47686cbf4d3c178090d50a73e3b'
+    aarch64: 'a92de47d57a9c9d5048b057f87713c14e91ea65adfb2c36828c9f9ce5e2d7524',
+     armv7l: 'a92de47d57a9c9d5048b057f87713c14e91ea65adfb2c36828c9f9ce5e2d7524',
+       i686: '91eb38dc1ba5b4475718c4a3bc5bee5a8d35c58ef488578830d612c6e0c269fa',
+     x86_64: '24d173b1879a4866d67236c07c36f34ff2b0699eeb17ed0a15af3fecf9e55b19'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS_NO_SVEM}"
-  end
+  no_source_build
 end

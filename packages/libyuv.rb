@@ -1,61 +1,27 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libyuv < Package
+class Libyuv < CMake
   description 'Library for YUV scaling'
   homepage 'https://chromium.googlesource.com/libyuv/libyuv/'
-  version 'd470'
+  version '188e4e3'
   license 'BSD-Google'
-  compatibility 'all'
-  source_url 'SKIP'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://chromium.googlesource.com/libyuv/libyuv.git'
+  git_hashtag '188e4e3afbfe90f6f13f59db6c929762de07921b'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d470_armv7l/libyuv-d470-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d470_armv7l/libyuv-d470-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d470_i686/libyuv-d470-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d470_x86_64/libyuv-d470-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '7fa394f0b0e7da7ccb54fa49dd04ee1fc794eee1518c6a9a39743ab006ca7dd0',
-     armv7l: '7fa394f0b0e7da7ccb54fa49dd04ee1fc794eee1518c6a9a39743ab006ca7dd0',
-       i686: '15f7bb558997c8a437997d61aa7a16aed327a87cf50e0d7504373ba9b6796c79',
-     x86_64: 'e4a3761380386ef8fa07c95b195eedfd4cae05616d5ee3af4e55ae761010efff'
+    aarch64: 'fb76ee82bfc4a5b4a20c471da425443e92f93b1e74c826b4f698409e70df5550',
+     armv7l: 'fb76ee82bfc4a5b4a20c471da425443e92f93b1e74c826b4f698409e70df5550',
+     x86_64: '079922fb87321c186cbbc468bfa310841d2acc1c75a7abe717898a7aa65a3943'
   })
 
-  depends_on 'libjpeg'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libjpeg_turbo' # R
 
-  def self.prebuild
-    @git_dir = 'libyuv_git'
-    @git_hash = 'd47031c0d42efa8f10842e36f7b8135b52bcd3d0'
-    @git_url = 'https://chromium.googlesource.com/libyuv/libyuv'
-    FileUtils.rm_rf(@git_dir)
-    FileUtils.mkdir_p(@git_dir)
-    Dir.chdir @git_dir do
-      system 'git init'
-      system "git remote add origin #{@git_url}"
-      system "git fetch --depth 1 origin #{@git_hash}"
-      system 'git checkout FETCH_HEAD'
-    end
-  end
-
-  def self.build
-    Dir.mkdir 'libyuv_git/builddir'
-    Dir.chdir 'libyuv_git/builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        .."
-    end
-    system 'ninja -C libyuv_git/builddir'
-    system 'du -a libyuv_git/builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C libyuv_git/builddir install"
-    Dir.chdir CREW_DEST_PREFIX do
-      FileUtils.mv 'lib', 'lib64' if ARCH == 'x86_64'
-    end
+  def self.patch
+    system "sed -i 's,DESTINATION lib,DESTINATION lib#{CREW_LIB_SUFFIX},g' CMakeLists.txt"
   end
 end

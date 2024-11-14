@@ -1,47 +1,38 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_online_accounts < Package
+class Gnome_online_accounts < Meson
   description 'Single sign-on framework for GNOME'
   homepage 'https://wiki.gnome.org/Projects/GnomeOnlineAccounts'
-  @_ver = '3.39.92'
-  version @_ver
+  version '3.48.1'
   license 'LGPL-2+'
-  compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gnome-online-accounts/-/archive/#{@_ver}/gnome-online-accounts-#{@_ver}.tar.bz2"
-  source_sha256 '89e27c886c0266b8c84a56dbb0fb0baefa704dd4d0ec47dd154a26590554adc9'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-online-accounts.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_online_accounts/3.39.92_armv7l/gnome_online_accounts-3.39.92-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_online_accounts/3.39.92_armv7l/gnome_online_accounts-3.39.92-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_online_accounts/3.39.92_i686/gnome_online_accounts-3.39.92-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_online_accounts/3.39.92_x86_64/gnome_online_accounts-3.39.92-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: 'c99efb0ee72e176460beea2b7e75fb980d48f6f1fe56725437631fc17a804cc6',
-     armv7l: 'c99efb0ee72e176460beea2b7e75fb980d48f6f1fe56725437631fc17a804cc6',
-       i686: 'c5d6803aedb9f3ce4d17eefb958543c58ae6affc0c360d745091a846819e1375',
-     x86_64: 'bd8c7198503bbe8aed993679a6d1019bc3245dbfd73f9de404d92189b7c0a1d3'
+    aarch64: '0837dbb7d9beaa6c321b654faf1f00a641cef5aa6147ae3594cde6ddba2c9749',
+     armv7l: '0837dbb7d9beaa6c321b654faf1f00a641cef5aa6147ae3594cde6ddba2c9749',
+     x86_64: 'f772cc1cedfbec3606f6b5f50a0740ac042a87d265616ae06676529aa659818f'
   })
 
-  depends_on 'webkit2gtk'
-  depends_on 'json_glib'
-  depends_on 'libnotify'
-  depends_on 'rest'
-  depends_on 'libsecret'
-  depends_on 'gcr'
+  depends_on 'gcr_3' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
+  depends_on 'gtk3' # R
   depends_on 'gtk_doc' => :build
+  depends_on 'json_glib' # R
+  depends_on 'krb5' # R
+  depends_on 'libnotify' => :build
+  depends_on 'libsecret' # R
+  depends_on 'libsoup' # R
+  depends_on 'libxml2' # R
+  depends_on 'rest' # R
   depends_on 'vala' => :build
+  depends_on 'webkit2gtk_4_1' # R
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-    -Dgtk_doc=true \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dgtk_doc=false'
 end

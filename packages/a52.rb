@@ -1,12 +1,12 @@
 require 'package'
+Package.load_package("#{__dir__}/liba52.rb")
 
 class A52 < Package
-  description 'Legacy compatibility package for liba52'
-  homepage 'http://liba52.sourceforge.net/'
-  @_ver = '0.7.4-1'
-  version @_ver
-  license 'public-domain'
-  compatibility 'all'
+  description Liba52.description
+  homepage Liba52.homepage
+  version Liba52.version
+  license Liba52.license
+  compatibility Liba52.compatibility
 
   is_fake
 

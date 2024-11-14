@@ -1,37 +1,23 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pyelftools < Package
+class Py3_pyelftools < Pip
   description 'Pure-Python library for parsing and analyzing ELF files and DWARF debugging information.'
   homepage 'https://github.com/eliben/pyelftools/'
-  @_ver = '0.28'
-  version @_ver
+  version "0.31-#{CREW_PY_VER}"
   license 'public-domain'
   compatibility 'all'
-  source_url 'https://github.com/eliben/pyelftools.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.28_armv7l/py3_pyelftools-0.28-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.28_armv7l/py3_pyelftools-0.28-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.28_i686/py3_pyelftools-0.28-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.28_x86_64/py3_pyelftools-0.28-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '969669befcac95f56ea469f66cced8d37728d89c92b87c6e11fa9b12943d0482',
-     armv7l: '969669befcac95f56ea469f66cced8d37728d89c92b87c6e11fa9b12943d0482',
-       i686: 'c6112ede652cbcb1f46efcdab9c5d66e73ab9483b9615a2d50ef2a00ba7bc735',
-     x86_64: 'a43b98cb137c5c8093a497a39ae63d79d9c2ad0ef4ec08391392e099a962f5a4'
+    aarch64: 'd30cee2389ab5fbb6a048fea7fd5ea316daa38f4170f8700acaa8fe477555067',
+     armv7l: 'd30cee2389ab5fbb6a048fea7fd5ea316daa38f4170f8700acaa8fe477555067',
+       i686: 'decadefabc6eba7a020612af5545f43403cecefc560966fd7738ec22f8bdd98d',
+     x86_64: '1e3308c2fd122ea76d03213c26962eb4c39c717a86507cf020614a5a9739edd7'
   })
 
   depends_on 'glibc' # R
   depends_on 'python3' # R
-  depends_on 'py3_setuptools' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

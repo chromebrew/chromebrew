@@ -1,46 +1,28 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libsdl2 < Package
+class Libsdl2 < CMake
   description 'Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.'
   homepage 'http://www.libsdl.org'
-  @_ver = '2.24.0'
-  version @_ver
+  version '2.30.6'
   license 'ZLIB'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/libsdl-org/SDL.git'
-  git_hashtag "release-#{@_ver}"
+  git_hashtag "release-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.24.0_i686/libsdl2-2.24.0-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.24.0_x86_64/libsdl2-2.24.0-chromeos-x86_64.tar.zst',
- aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.24.0_armv7l/libsdl2-2.24.0-chromeos-armv7l.tar.zst',
-  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.24.0_armv7l/libsdl2-2.24.0-chromeos-armv7l.tar.zst'
-  })
   binary_sha256({
-    i686: '1bd6297e4988229ce177a37f49985356610fc30d6f853a0b3bd8375ddbf67b61',
-  x86_64: '9a93f85dc4c8889b48c32ed9755367e67df2bceb0c200a59bc25f8d85a51d83f',
- aarch64: '359f785c46faa39300fcdca8a52f9b35a3cbc143cf02d88d0a7aacb0b7df068e',
-  armv7l: '359f785c46faa39300fcdca8a52f9b35a3cbc143cf02d88d0a7aacb0b7df068e'
+    aarch64: '6c5228f8a857c3bb44b1f320c6c9900a7597776c14c2a1d4d3f6dd982f0ebc85',
+     armv7l: '6c5228f8a857c3bb44b1f320c6c9900a7597776c14c2a1d4d3f6dd982f0ebc85',
+     x86_64: '36a1d2e6085589831566dbf9c23bb0125ae87e3c321084f3c8eb0a032d661106'
   })
 
-  depends_on 'xorg_server'
-  depends_on 'alsa_lib'
-  depends_on 'ibus'
-  depends_on 'pulseaudio'
+  depends_on 'alsa_lib' => :build
+  depends_on 'glibc' # R
+  depends_on 'ibus' => :build
+  depends_on 'libdecor' # R
   depends_on 'nasm' => :build
-  patchelf
+  depends_on 'pulseaudio' => :build
+  depends_on 'xwayland' => :build
 
-  def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    system "./configure \
-      #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  @cmake_options = ARCH == 'x86_64' ? '-DOPT_DEF_SSEMATH=ON' : ''
 end

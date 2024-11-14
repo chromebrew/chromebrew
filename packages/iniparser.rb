@@ -8,13 +8,8 @@ class Iniparser < Package
   compatibility 'all'
   source_url 'https://github.com/ndevilla/iniparser/archive/v4.1.tar.gz'
   source_sha256 '960daa800dd31d70ba1bacf3ea2d22e8ddfc2906534bf328319495966443f3ae'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iniparser/4.1_armv7l/iniparser-4.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iniparser/4.1_armv7l/iniparser-4.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iniparser/4.1_i686/iniparser-4.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iniparser/4.1_x86_64/iniparser-4.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '712e6e63ea2aa696666a53ba354a5108f158241ce806f1eda5b27a577cc7bd58',
      armv7l: '712e6e63ea2aa696666a53ba354a5108f158241ce806f1eda5b27a577cc7bd58',

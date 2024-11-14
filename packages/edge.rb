@@ -3,16 +3,21 @@ require 'package'
 class Edge < Package
   description 'Microsoft Edge is the fast and secure browser'
   homepage 'https://www.microsoft.com/en-us/edge'
-  version '106.0.1370.52-1'
-  compatibility 'x86_64'
+  version '130.0.2849.80-1'
   license 'MIT'
+  compatibility 'x86_64'
+  min_glibc '2.29'
   source_url "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_#{version}_amd64.deb"
-  source_sha256 '19bd28810a3d48b6210eb9e254af7eb358c806953ef12b41b7968753bfb14ef4'
+  source_sha256 '1b6f5743703e6da81c65c28dbcfd949d605466e226acc7cde9efbd4beabfa05d'
+
+  depends_on 'at_spi2_core'
+  depends_on 'libcom_err'
+  depends_on 'libxcomposite'
+  depends_on 'libxdamage'
+  depends_on 'sommelier'
 
   no_compile_needed
-
-  depends_on 'libcom_err'
-  depends_on 'sommelier'
+  no_shrink
 
   def self.patch
     # Make sure the executable path is correct.
@@ -32,7 +37,7 @@ class Edge < Package
 
     # Add icon for use with crew-launcher
     downloader 'https://cdn.icon-icons.com/icons2/2552/PNG/128/edge_browser_logo_icon_152998.png',
-               'ae7b1378a5d9d84314b459b6a16c3ec14aae0b88eeb78040f7bc28156cf2d753', 'microsoft-edge.png'
+               '524373bb044a48b8e72f7ffed1e0a95ed88f89e1fe29a065e52a32486bcb9f99', 'microsoft-edge.png'
 
     icon_path = "#{CREW_DEST_PREFIX}/share/icons/hicolor/128x128/apps"
     FileUtils.mkdir_p icon_path.to_s
@@ -40,6 +45,6 @@ class Edge < Package
   end
 
   def self.postinstall
-    puts "\nType 'edge' to get started.\n".lightblue
+    ExitMessage.add "\nType 'edge' to get started.\n"
   end
 end

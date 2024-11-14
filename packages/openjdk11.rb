@@ -3,23 +3,26 @@ require 'package'
 class Openjdk11 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
-  version '11.0.16.1'
+  version %w[aarch64 armv7l].include?(ARCH) ? '11.0.24' : '11.0.25'
   license 'GPL-2'
   compatibility 'all'
+  # Visit https://www.azul.com/downloads/?version=java-11-lts&package=jdk#zulu to download the binaries.
   source_url({
-    aarch64: 'https://cdn.azul.com/zulu-embedded/bin/zulu11.58.25-ca-jdk11.0.16.1-linux_aarch32hf.tar.gz',
-     armv7l: 'https://cdn.azul.com/zulu-embedded/bin/zulu11.58.25-ca-jdk11.0.16.1-linux_aarch32hf.tar.gz',
-       i686: 'https://cdn.azul.com/zulu/bin/zulu11.58.25-ca-jdk11.0.16.1-linux_i686.tar.gz',
-     x86_64: 'https://cdn.azul.com/zulu/bin/zulu11.58.23-ca-jdk11.0.16.1-linux_x64.tar.gz'
+    aarch64: 'https://cdn.azul.com/zulu-embedded/bin/zulu11.74.15-ca-jdk11.0.24-linux_aarch32hf.tar.gz',
+     armv7l: 'https://cdn.azul.com/zulu-embedded/bin/zulu11.74.15-ca-jdk11.0.24-linux_aarch32hf.tar.gz',
+       i686: 'https://cdn.azul.com/zulu/bin/zulu11.76.21-ca-jdk11.0.25-linux_i686.tar.gz',
+     x86_64: 'https://cdn.azul.com/zulu/bin/zulu11.76.21-ca-jdk11.0.25-linux_x64.tar.gz'
   })
   source_sha256({
-    aarch64: '6f7a4721303710384e7c9aeaf5a47954dbf992e2d92a27bc83c2170229c3a826',
-     armv7l: '6f7a4721303710384e7c9aeaf5a47954dbf992e2d92a27bc83c2170229c3a826',
-       i686: 'c75d2bd5f53d92ca3aed24ffdef6690824af5a7e04f8809dcc509b0a666c3083',
-     x86_64: 'b8b3e7c2eec6d62b6f4de3e4b4b1c6035d42bd4d6d4f31e9aa804dc311d4a4b3'
+    aarch64: 'bb0d50e7c08306fe093fde2c0f96d09f195a5b3d0fda48f681bb4640839c30eb',
+     armv7l: 'bb0d50e7c08306fe093fde2c0f96d09f195a5b3d0fda48f681bb4640839c30eb',
+       i686: 'dec3dd696bab39869a52cbd6f6e019dd80cae7db2e9ecb4feaad1da35eee5398',
+     x86_64: 'fabe2091d43604d3ae248a7d96e6cfb9ed37eaf980b225730b7b18289b3f6eaf'
   })
 
   no_compile_needed
+  no_shrink
+  print_source_bashrc
 
   def self.preflight
     jdkver = `java -version 2>&1`[/version "(.*?)"/, 1].to_s
@@ -38,11 +41,19 @@ class Openjdk11 < Package
   def self.install
     FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/openjdk11"
-    FileUtils.mv 'bin/', CREW_DEST_PREFIX
-    FileUtils.mv 'conf/', "#{CREW_DEST_PREFIX}/share/openjdk11"
-    FileUtils.mv 'jmods/', "#{CREW_DEST_PREFIX}/share/openjdk11"
-    FileUtils.mv 'include/', CREW_DEST_PREFIX
-    FileUtils.mv 'lib/', CREW_DEST_PREFIX
-    FileUtils.mv Dir['man/*'], CREW_DEST_MAN_PREFIX
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/openjdk11/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    Dir["#{CREW_DEST_PREFIX}/share/openjdk11/bin/*"].each do |binfile|
+      @basename = File.basename(binfile)
+      FileUtils.ln_s "#{CREW_PREFIX}/share/openjdk11/bin/#{@basename}", "#{CREW_DEST_PREFIX}/bin/#{@basename}"
+    end
+    FileUtils.mv Dir["#{CREW_DEST_PREFIX}/share/openjdk11/man/*"], CREW_DEST_MAN_PREFIX
+    # Add environment variable.
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    javaenv = <<~EOF
+      # Java configuration
+      JAVA_HOME=#{CREW_PREFIX}
+    EOF
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/10-openjdk11", javaenv)
   end
 end

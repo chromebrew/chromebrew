@@ -1,0 +1,14 @@
+/usr/local/include/spice-1/spice/barrier.h
+/usr/local/include/spice-1/spice/end-packed.h
+/usr/local/include/spice-1/spice/enums.h
+/usr/local/include/spice-1/spice/ipc_ring.h
+/usr/local/include/spice-1/spice/macros.h
+/usr/local/include/spice-1/spice/protocol.h
+/usr/local/include/spice-1/spice/qxl_dev.h
+/usr/local/include/spice-1/spice/qxl_windows.h
+/usr/local/include/spice-1/spice/start-packed.h
+/usr/local/include/spice-1/spice/stats.h
+/usr/local/include/spice-1/spice/stream-device.h
+/usr/local/include/spice-1/spice/types.h
+/usr/local/include/spice-1/spice/vd_agent.h
+/usr/local/share/pkgconfig/spice-protocol.pc

@@ -3,19 +3,13 @@ require 'package'
 class Enchant < Package
   description 'Enchant is a library (and command-line program) that wraps a number of different spelling libraries and programs with a consistent interface.'
   homepage 'https://abiword.github.io/enchant/'
-  @_ver = '2.2.15'
-  version @_ver
+  version '2.2.15'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "https://github.com/AbiWord/enchant/archive/v#{@_ver}.tar.gz"
+  source_url "https://github.com/AbiWord/enchant/archive/v#{version}.tar.gz"
   source_sha256 '85295934102a4ab94f209cbc7c956affcb2834e7a5fb2101e2db436365e2922d'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/enchant/2.2.15_armv7l/enchant-2.2.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/enchant/2.2.15_armv7l/enchant-2.2.15-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/enchant/2.2.15_i686/enchant-2.2.15-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/enchant/2.2.15_x86_64/enchant-2.2.15-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '1d13b3581ec9223b127f91b29bd5838b44ed61cfee4eb6d2d58a1e3f945f0a14',
      armv7l: '1d13b3581ec9223b127f91b29bd5838b44ed61cfee4eb6d2d58a1e3f945f0a14',
@@ -31,7 +25,7 @@ class Enchant < Package
     system './bootstrap'
     system "env CFLAGS='-flto=auto -ltinfo' CXXFLAGS='-flto=auto' \
         LDFLAGS='-flto=auto' \
-        ./configure #{CREW_OPTIONS} \
+        ./configure #{CREW_CONFIGURE_OPTIONS} \
         --with-hunspell \
         --with-aspell"
     system 'make'

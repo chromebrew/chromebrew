@@ -8,13 +8,8 @@ class Gambit < Package
   compatibility 'all'
   source_url 'https://github.com/gambit/gambit/archive/v4.9.3.tar.gz'
   source_sha256 'a5e4e5c66a99b6039fa7ee3741ac80f3f6c4cff47dc9e0ff1692ae73e13751ca'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gambit/4.9.3_armv7l/gambit-4.9.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gambit/4.9.3_armv7l/gambit-4.9.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gambit/4.9.3_i686/gambit-4.9.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gambit/4.9.3_x86_64/gambit-4.9.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0e2b98c6d0a60f3715c6e554a4b95018cd6d665c4709892da9eafc74fd84ebd5',
      armv7l: '0e2b98c6d0a60f3715c6e554a4b95018cd6d665c4709892da9eafc74fd84ebd5',

@@ -1,9 +1,10 @@
 require 'package'
+Package.load_package("#{__dir__}/perl.rb")
 
 class Perl_term_ansicolor < Package
   description 'Character mode terminal access for Perl Term::ANSIColor'
   homepage 'https://metacpan.org/pod/Term::ANSIColor'
-  version '5.01-2'
+  version Perl.version
   license 'GPL-1+ or Artistic'
   compatibility 'all'
 

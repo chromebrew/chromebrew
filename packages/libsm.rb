@@ -1,37 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libsm < Package
+class Libsm < Autotools
   description 'X.org X Session Management Library'
-  homepage 'http://www.x.org'
-  version '1.2.3'
+  homepage 'https://www.x.org/wiki/'
+  version '1.2.4-5edd20b'
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libSM-1.2.3.tar.gz'
-  source_sha256 '1e92408417cb6c6c477a8a6104291001a40b3bb56a4a60608fdd9cd2c5a0f320'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libsm.git'
+  git_hashtag '5edd20b307ce70ccb14c360f1b94914c49544a24'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsm/1.2.3_armv7l/libsm-1.2.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsm/1.2.3_armv7l/libsm-1.2.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsm/1.2.3_i686/libsm-1.2.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsm/1.2.3_x86_64/libsm-1.2.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '7d6702a3ba19eae8a974a69614c262f50ae7c6f7b1b514bd52591131192bb086',
-     armv7l: '7d6702a3ba19eae8a974a69614c262f50ae7c6f7b1b514bd52591131192bb086',
-       i686: '8ecb14d2b98abcb482d222fabcb04e036525ae02e29556ee0f5ec6632403a7b6',
-     x86_64: 'f994171ce6971904dbba890e78e2a95db68c99c0509730e62cb53f6ef71ce88a'
+    aarch64: '0bddd0de07a4a833a9b6ae2238eb549f5f012f6dfc0a79062551f39ca02c5ec8',
+     armv7l: '0bddd0de07a4a833a9b6ae2238eb549f5f012f6dfc0a79062551f39ca02c5ec8',
+     x86_64: '3177c18fbb37de01bb93cab3ee821a50987034e5fa146a48e6eb581ebb8cf773'
   })
 
-  depends_on 'libice'
-  depends_on 'libx11'
-  patchelf
-
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libice' # R
+  depends_on 'libmd' # R
+  depends_on 'libx11' => :build
+  depends_on 'libxtrans' => :build
+  depends_on 'util_linux' # R
 end

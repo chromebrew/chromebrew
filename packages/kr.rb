@@ -37,7 +37,7 @@ class Kr < Package
     FileUtils.mkdir_p "#{Dir.pwd}/go/src"
     system 'go get github.com/kryptco/kr'
     FileUtils.cd('go/src/github.com/kryptco/kr') do
-      ENV['PREFIX'] = CREW_PREFIX.to_s
+      ENV['PREFIX'] = CREW_PREFIX
       ENV['PWD'] = Dir.pwd
       system "git checkout tags/#{version}"
       system 'git submodule update --init --recursive'

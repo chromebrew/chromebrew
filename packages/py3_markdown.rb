@@ -1,35 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_markdown < Package
+class Py3_markdown < Pip
   description 'Markdown is a Python implementation of Markdown.'
   homepage 'https://python-markdown.github.io/'
-  @_ver = '3.3.4'
-  version "#{@_ver}-1"
+  version "3.7-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/Python-Markdown/markdown.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markdown/3.3.4-1_armv7l/py3_markdown-3.3.4-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markdown/3.3.4-1_armv7l/py3_markdown-3.3.4-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markdown/3.3.4-1_i686/py3_markdown-3.3.4-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markdown/3.3.4-1_x86_64/py3_markdown-3.3.4-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '3572804087c4ad60bc3b67e96eb812f6c24685c01aea3f9aa43dbec688a1d38d',
-     armv7l: '3572804087c4ad60bc3b67e96eb812f6c24685c01aea3f9aa43dbec688a1d38d',
-       i686: 'caa494c8241be6ba00f814432af5cbe0466ec8f921677fe9695c78133912a1a3',
-     x86_64: '1ce0ddb7399b90079d6a5fc24cf9273542ccf3f1b61f1fc7390bb3dd14acd90d'
+    aarch64: 'f7bd555a3350a4e6ba3abe7d3068197a4969e4edd23ad0bca9a8cd367b122db5',
+     armv7l: 'f7bd555a3350a4e6ba3abe7d3068197a4969e4edd23ad0bca9a8cd367b122db5',
+       i686: '6d370268c8dfa713d2e7ac2a810b9c808adeced30a6ea7294436597e89fcaac6',
+     x86_64: '38d983f8cbd7511f8bfb60697ddf0efff6f3e605206e31699ef8c74bfe990e40'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3'
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

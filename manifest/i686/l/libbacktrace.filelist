@@ -1,0 +1,7 @@
+/usr/local/include/backtrace-supported.h
+/usr/local/include/backtrace.h
+/usr/local/lib/libbacktrace.a
+/usr/local/lib/libbacktrace.la
+/usr/local/lib/libbacktrace.so
+/usr/local/lib/libbacktrace.so.0
+/usr/local/lib/libbacktrace.so.0.0.0

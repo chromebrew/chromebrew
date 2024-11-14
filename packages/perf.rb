@@ -7,13 +7,8 @@ class Perf < Package
   license 'GPL-2'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perf/4.14_armv7l/perf-4.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perf/4.14_armv7l/perf-4.14-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perf/4.14_i686/perf-4.14-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perf/4.14_x86_64/perf-4.14-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '87c533c2b45a9beec0ef975b4a3f110e42a6d03def1820dfd3190fb3f767e710',
      armv7l: '87c533c2b45a9beec0ef975b4a3f110e42a6d03def1820dfd3190fb3f767e710',

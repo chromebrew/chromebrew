@@ -1,35 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pytz < Package
+class Py3_pytz < Pip
   description 'pytz brings the Olson tz database into Python.'
   homepage 'https://pythonhosted.org/pytz/'
-  @_ver = '2021.3'
-  version @_ver
+  version "2024.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://files.pythonhosted.org/packages/e3/8e/1cde9d002f48a940b9d9d38820aaf444b229450c0854bdf15305ce4a3d1a/pytz-2021.3.tar.gz'
-  source_sha256 'acad2d8b20a1af07d4e4c9d2e9285c5ed9104354062f275f3fcd88dcef4f1326'
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytz/2021.3_armv7l/py3_pytz-2021.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytz/2021.3_armv7l/py3_pytz-2021.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytz/2021.3_i686/py3_pytz-2021.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytz/2021.3_x86_64/py3_pytz-2021.3-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '802a3c3e79d6e0694eeb7d39ade44f216a2c3189b5be46d060917d26f4ae6f49',
-     armv7l: '802a3c3e79d6e0694eeb7d39ade44f216a2c3189b5be46d060917d26f4ae6f49',
-       i686: '62e2cc62b0b94b75ab0ae6215f0dfe69ba384ffe56ed92822b7df45cd0cadd40',
-     x86_64: '49fafd755f9968f1b370d39c89db0b37fede393aa7a1d00c9946e28411f9176b'
+    aarch64: '74a14d07ced9064d64372093e4a72f1edefe648da4a2869d8aca59d8f9544d0b',
+     armv7l: '74a14d07ced9064d64372093e4a72f1edefe648da4a2869d8aca59d8f9544d0b',
+       i686: '39799f24cec5b6095c731b1ec3df4d96a38be824c14e95c869651b79f31a0885',
+     x86_64: '4f0b0816ecb578d440b2a270c0f54468b0bee7dd63041a2e845bb9cb21304724'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

@@ -3,13 +3,15 @@ require 'package'
 class Sublime_merge < Package
   description 'A snappy UI, three-way merge tool,side-by-side diffs, syntax highlighting, and more.'
   homepage 'https://www.sublimemerge.com/'
-  version 'Build 2068'
+  version 'Build 2096'
   license 'Copyright Sublime HQ Pty Ltd' # Shareware for evaluation purposes only.  Source code is not available.
   compatibility 'x86_64'
-  source_url 'https://download.sublimetext.com/sublime_merge_build_2068_x64.tar.xz'
-  source_sha256 '0ac7994208eaafc07ae9295fff215966c9d115cdf3a8218a140cd274c45074d2'
+  source_url "https://download.sublimetext.com/sublime_merge_build_#{version.split.last}_x64.tar.xz"
+  source_sha256 'e3523aa79c0dc76a45e7a9e9ee01eaa77f7a447a57b50bb9aee92c532c05fd48'
 
   depends_on 'sommelier'
+
+  no_compile_needed
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
@@ -19,7 +21,6 @@ class Sublime_merge < Package
   end
 
   def self.postinstall
-    puts "\nCongratulations! You have installed Sublime Merge on Chrome OS!".lightgreen
-    puts "Now, please run 'sublime_merge' to get started.\n".lightgreen
+    ExitMessage.add "\nType 'sublime_merge' to get started.\n".lightblue
   end
 end

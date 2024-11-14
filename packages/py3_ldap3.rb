@@ -1,36 +1,23 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_ldap3 < Package
+class Py3_ldap3 < Pip
   description 'LDAP3 is a strictly RFC 4510 conforming LDAP V3 pure Python client library.'
   homepage 'https://github.com/cannatag/ldap3/'
-  @_ver = '2.9.1'
-  version @_ver
+  version "2.9.1-#{CREW_PY_VER}"
   license 'LGPL-3'
   compatibility 'all'
-  source_url 'https://github.com/cannatag/ldap3.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ldap3/2.9.1_armv7l/py3_ldap3-2.9.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ldap3/2.9.1_armv7l/py3_ldap3-2.9.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ldap3/2.9.1_i686/py3_ldap3-2.9.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ldap3/2.9.1_x86_64/py3_ldap3-2.9.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'dc7919d10be71fd2fe4b8947a406507eefa5b1d451df185c01a65d4d782fea67',
-     armv7l: 'dc7919d10be71fd2fe4b8947a406507eefa5b1d451df185c01a65d4d782fea67',
-       i686: 'e6e147db62d2363d75a301517de9abc637bada7826ccbf7231f6b3f7f87aaa13',
-     x86_64: '6d317338004c117385ba585f614070bbaf65eeadff449b662682228d22115dd3'
+    aarch64: '3cdf77fb19eb04a8cbaed5b623ae45762c0663939c6528711cfa19070bae8dd3',
+     armv7l: '3cdf77fb19eb04a8cbaed5b623ae45762c0663939c6528711cfa19070bae8dd3',
+       i686: 'ad6172927643ddb11828a4e6e5384f7303bbda14b80f837e87ffb642f20e1dd8',
+     x86_64: '790978ce38b8e1e7f18fac1915520edd83c2e93eab0120238feac7cf6145bea0'
   })
 
   depends_on 'py3_pyasn1'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

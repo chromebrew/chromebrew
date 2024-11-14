@@ -1,65 +1,54 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Ccache < Package
+class Ccache < CMake
   description 'Compiler cache that speeds up recompilation by caching previous compilations'
-  homepage 'https://ccache.samba.org/'
-  @_ver = '4.6.3'
-  version @_ver
+  homepage 'https://ccache.dev/'
+  version '4.9.1'
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
-  source_url "https://github.com/ccache/ccache/releases/download/v#{@_ver}/ccache-#{@_ver}.tar.xz"
-  source_sha256 '1e3a251bb112632553b8255a78661fe526c3a16598496d51128c32b218fd8b22'
+  source_url "https://github.com/ccache/ccache/releases/download/v#{version}/ccache-#{version}.tar.xz"
+  source_sha256 '4c03bc840699127d16c3f0e6112e3f40ce6a230d5873daa78c60a59c7ef59d25'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.6.3_armv7l/ccache-4.6.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.6.3_armv7l/ccache-4.6.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.6.3_i686/ccache-4.6.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.6.3_x86_64/ccache-4.6.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '81425bb2430cf6c88dd4b5a7cc391768ee340d388c290c66bad4e6bb8cdee6d9',
-     armv7l: '81425bb2430cf6c88dd4b5a7cc391768ee340d388c290c66bad4e6bb8cdee6d9',
-       i686: '7d80c4ca1cc5210219e55819b5a8c505c1b6c2ec1868b0c7f844c0ca158870ac',
-     x86_64: 'c1db0bb70b6af2544d4026200a93fdf40080b007a6324d75c06455aad2efaef8'
+    aarch64: 'd54bd2f5b30ca8c3f706ea7a95156a2507ac14b05ca515af25c7632985c3d9a1',
+     armv7l: 'd54bd2f5b30ca8c3f706ea7a95156a2507ac14b05ca515af25c7632985c3d9a1',
+       i686: '3af6ca8bb0e136e737554172dceb98709a2548361f734879c084f0939079a527',
+     x86_64: '4f99d28cd4ec2e6931bd45b98f275c1fb3686f9c09aee7f34aa9ca05d32c1974'
   })
 
+  depends_on 'gcc_dev' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'ruby_asciidoctor' => :build
   depends_on 'xdg_base'
-  depends_on 'asciidoc' => :build
+  depends_on 'zstd' # R
 
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "env #{CREW_ENV_OPTIONS} \
-      cmake -G Ninja \
-      #{CREW_CMAKE_OPTIONS} \
-      -DCMAKE_INSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc \
-      -DZSTD_FROM_INTERNET=ON \
-      -DHIREDIS_FROM_INTERNET=ON \
-      .."
-      system 'mold -run ninja'
-    end
-  end
+  print_source_bashrc
+
+  cmake_options "-DCMAKE_INSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc \
+      -DENABLE_IPO=ON \
+      -DENABLE_TESTING=OFF \
+      -DZSTD_FROM_INTERNET=OFF \
+      -DHIREDIS_FROM_INTERNET=ON"
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/ccache/bin"
-    @gcc_bins = %w[gcc g++ c++]
-    @llvm_bins = %w[cc clang clang++]
     Dir.chdir "#{CREW_DEST_LIB_PREFIX}/ccache/bin" do
-      @gcc_bins.each do |bin|
+      %w[gcc g++ c++].each do |bin|
         FileUtils.ln_s '../../../bin/ccache', bin
       end
-      @llvm_bins.each do |bin|
+      %w[cc clang clang++].each do |bin|
         FileUtils.ln_s '../../../bin/ccache', bin
       end
     end
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @ccacheenv = <<~CCACHEEOF
+    File.write 'ccache_env', <<~CCACHEEOF
       # ccache configuration
-      if ! [[ \$PATH == *"ccache/bin"* ]]; then
-        export PATH="#{CREW_LIB_PREFIX}/ccache/bin:\$PATH"
+      if [[ $PATH != *"ccache/bin"* ]]; then
+        PATH="#{CREW_LIB_PREFIX}/ccache/bin:$PATH"
       fi
     CCACHEEOF
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/ccache", @ccacheenv)
+    FileUtils.install 'ccache_env', "#{CREW_DEST_PREFIX}/etc/env.d/00-ccache", mode: 0o644
   end
 end

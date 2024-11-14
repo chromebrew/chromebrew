@@ -2,60 +2,82 @@
 # https://github.com/archlinux/svntogit-packages/raw/packages/openmp/trunk/PKGBUILD
 
 require 'package'
+Package.load_package("#{__dir__}/llvm19_build.rb")
 
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '13.0.0'
+  version '19.1.3'
+  # When upgrading llvm_build*, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
+  puts "#{self} version differs from llvm version #{Llvm19_build.version}".orange if version != Llvm19_build.version
+  license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
-  source_url "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/openmp-#{version}.src.tar.xz"
-  source_sha256 '4930ae7a1829a53b698255c2c6b6ee977cc364b37450c14ee458793c0d5e493c'
+  source_url 'https://github.com/llvm/llvm-project.git'
+  git_hashtag Llvm19_build.git_hashtag.to_s
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/13.0.0_armv7l/openmp-13.0.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/13.0.0_armv7l/openmp-13.0.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/13.0.0_i686/openmp-13.0.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/13.0.0_x86_64/openmp-13.0.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '591d7fa5500ee74e4c1c6fe89abe6bfcbd5c335ec83859388e2a31d3b39fa9cf',
-     armv7l: '591d7fa5500ee74e4c1c6fe89abe6bfcbd5c335ec83859388e2a31d3b39fa9cf',
-       i686: '8eeb887db0ae5b80aa155bef46c79174b949959c6713133213e16c5ad3add55a',
-     x86_64: '8c5139ea1de8ef4e153fdea2cc9c99125442f2c6398a5509076f742a48bc0f2b'
+    aarch64: 'e69f049f2b3a668f3d0924f93f1bd2d437be1dae48461ece6553446572d3371b',
+     armv7l: 'e69f049f2b3a668f3d0924f93f1bd2d437be1dae48461ece6553446572d3371b',
+       i686: '5fc4844f643b9ee76217a07eaf003c4fbf0a952ea31cab9bb4395673aa5eb977',
+     x86_64: '6d27d0f551bf39146d18330b665e8fc930a2769f348ab6e780aab2401f35a916'
   })
 
-  depends_on 'libffi'
-  depends_on 'llvm' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libffi' # R
+  depends_on 'llvm19_dev' => :build
+  depends_on 'llvm19_lib' # R
+  depends_on 'python3' # R
+
+  no_env_options
+
+  def self.patch
+    # Remove rc suffix on final release.
+    system "sed -i 's,set(LLVM_VERSION_SUFFIX rc),,' llvm/CMakeLists.txt"
+
+    # Patch for LLVM 15+ because of https://github.com/llvm/llvm-project/issues/58851
+    File.write 'llvm_crew_lib_prefix.patch', <<~LLVM_PATCH_EOF
+      --- a/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:50:36.777754608 -0500
+      +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:51:57.004417484 -0500
+      @@ -314,6 +314,7 @@ Linux::Linux(const Driver &D, const llvm
+             D.getVFS().exists(D.Dir + "/../lib/libc++.so"))
+           addPathIfExists(D, D.Dir + "/../lib", Paths);
+
+      +  addPathIfExists(D, concat(SysRoot, "#{CREW_LIB_PREFIX}"), Paths);
+         addPathIfExists(D, concat(SysRoot, "/lib"), Paths);
+         addPathIfExists(D, concat(SysRoot, "/usr/lib"), Paths);
+       }
+    LLVM_PATCH_EOF
+    system 'patch -Np1 -i llvm_crew_lib_prefix.patch'
+  end
 
   def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env LLVM_IAS=1 LD=ld.lld \
-            cmake -G Ninja \
-            -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-            -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_C_COMPILER=$(which clang) \
-            -DCMAKE_C_COMPILER_TARGET=#{CREW_BUILD} \
-            -DCMAKE_CXX_COMPILER=$(which clang++) \
-            -DCMAKE_C_FLAGS='-fuse-ld=lld' \
-            -DCMAKE_CXX_FLAGS='-fuse-ld=lld' \
-            -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-            -DCMAKE_LINKER=$(which ld.lld) \
-            -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
-            -DLIBOMP_ENABLE_SHARED=ON \
-            -DLIBOMP_INSTALL_ALIASES=OFF \
-            -DOPENMP_LIBDIR_SUFFIX=#{CREW_LIB_SUFFIX} \
-            -DPYTHON_EXECUTABLE=$(which python3) \
-            -Wno-dev \
-            .."
-      system 'ninja'
-    end
+    @cmake_options = case ARCH
+                     when 'i686', 'x86_64'
+                       CREW_CMAKE_FNO_LTO_OPTIONS.gsub('-fno-lto', '')
+                     else
+                       CREW_CMAKE_OPTIONS
+                     end
+    system "cmake -B builddir -G Ninja openmp \
+      #{@cmake_options} \
+      -DCLANG_DEFAULT_LINKER=#{CREW_LINKER} \
+      -DCMAKE_C_COMPILER=$(which clang) \
+      -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
+      -DCMAKE_CXX_COMPILER=$(which clang++) \
+      -DCMAKE_CXX_COMPILER_AR=$(which llvm-ar) \
+      -DCMAKE_CXX_COMPILER_RANLIB=$(which llvm-ranlib) \
+      -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
+      -DLIBOMP_ENABLE_SHARED=ON \
+      -DLIBOMP_INSTALL_ALIASES=OFF \
+      -DLLVM_INCLUDE_BENCHMARKS=OFF \
+      -DOPENMP_LIBDIR_SUFFIX=#{CREW_LIB_SUFFIX} \
+      -DPYTHON_EXECUTABLE=$(which python3) \
+      -Wno-dev"
+    system "mold -run #{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    Dir.chdir('builddir') do
-      system "DESTDIR=#{CREW_DEST_DIR} ninja install"
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 end

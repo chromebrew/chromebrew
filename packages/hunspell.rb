@@ -1,9 +1,10 @@
 require 'package'
+Package.load_package("#{__dir__}/hunspell_en_us.rb")
 
 class Hunspell < Package
   description 'Hunspell is a spell checker and morphological analyzer library'
   homepage 'https://hunspell.github.io/'
-  version '1.x'
+  version Hunspell_en_us.version
   license 'MPL-1.1, GPL-2 and LGPL-2.1'
   compatibility 'all'
 

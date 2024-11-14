@@ -3,23 +3,19 @@ require 'package'
 class Crew_profile_base < Package
   description 'Crew-profile-base sets up Chromebrew\'s environment capabilities.'
   homepage 'https://github.com/chromebrew/crew-profile-base'
-  @_ver = '0.0.5'
-  version @_ver
+  version '0.0.23'
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://github.com/chromebrew/crew-profile-base/archive/#{@_ver}.tar.gz"
-  source_sha256 '93dc200df351a1f6e1faf458108bee87fff65f45e044d2b08b6c20ea8e064ab9'
+  source_url "https://github.com/chromebrew/crew-profile-base/archive/refs/tags/#{version}.tar.gz"
+  source_sha256 'e063af6611d7a622c3dfc11bb3bbeb3db4b2c5335731610aa0799880f5afc0aa'
 
   no_compile_needed
-  no_patchelf
+  print_source_bashrc
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/profile.d"
-
-    # dbus file moved to dbus package, so remove it.
-    FileUtils.rm_f './src/env.d/04-dbus'
 
     # Don't overwrite custom changes
     %w[01-locale 02-editor 03-pager 99-custom].each do |custom_files|
@@ -45,7 +41,8 @@ class Crew_profile_base < Package
     ['.bashrc', '.zshrc'].each do |rc|
       rc_path = File.join(HOME, rc)
 
-      next unless File.exist?(rc_path)
+      FileUtils.touch rc_path
+      # next unless File.exist?(rc_path)
 
       rc_file = File.readlines(rc_path, chomp: true)
 
@@ -70,5 +67,29 @@ class Crew_profile_base < Package
       # save changes
       File.write rc_path, rc_file.join("\n")
     end
+    puts 'Choose your default pager:'.yellow
+    @pager_options = [
+      { value: 'most', description: 'Most Pager' },
+      { value: 'more',  description: 'More Pager' },
+      { value: 'less',  description: 'Less Pager' }
+    ]
+
+    @pager_default = Selector.new(@pager_options).show_prompt
+    Dir.chdir CREW_DEST_DIR do
+      File.write 'pagerenv', <<~PAGER_ENV_EOF
+        # The user's preferred pager is set here by the crew_profile_base
+        # postinstall.
+
+        # PAGER from container PAGER variable is passed through into the
+        # CONTAINER_PAGER variable.
+        if [ -z "$CONTAINER_PAGER" ]; then
+          PAGER="#{@pager_default}"
+        else
+          PAGER="$CONTAINER_PAGER"
+        fi
+      PAGER_ENV_EOF
+      FileUtils.install 'pagerenv', "#{CREW_PREFIX}/etc/env.d/03-pager", mode: 0o644
+    end
+    puts "The default PAGER has been set to #{@pager_default}.".lightblue
   end
 end

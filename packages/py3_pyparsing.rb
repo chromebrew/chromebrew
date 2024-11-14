@@ -1,33 +1,23 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pyparsing < Package
+class Py3_pyparsing < Pip
   description 'The pyparsing module is an alternative approach to creating and executing simple grammars, vs. the traditional lex/yacc approach, or the use of regular expressions.'
   homepage 'https://github.com/pyparsing/pyparsing/'
-  @_ver = '3.0.9'
-  version "#{@_ver}-1"
+  version "3.2.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/pyparsing/pyparsing.git'
-  git_hashtag "pyparsing_#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/3.0.9-1_armv7l/py3_pyparsing-3.0.9-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/3.0.9-1_armv7l/py3_pyparsing-3.0.9-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/3.0.9-1_i686/py3_pyparsing-3.0.9-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/3.0.9-1_x86_64/py3_pyparsing-3.0.9-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '1d699410ff0ce5fd1ffd04e0821c6f4cf40c1ba121e068667c10c54aec6e9988',
-     armv7l: '1d699410ff0ce5fd1ffd04e0821c6f4cf40c1ba121e068667c10c54aec6e9988',
-       i686: '58120f6c525c5948122d0e3667d84a7a525c8ff41b09ba85529a756c3bae0775',
-     x86_64: '0570ed48a42e9a30e2587f3384ab3468a9280e06433658d00f0cdd9578326633'
+    aarch64: '3990fb5fe628edd46fd128c1fe5ac0735247b2b0690af32bab401d8668b1a52f',
+     armv7l: '3990fb5fe628edd46fd128c1fe5ac0735247b2b0690af32bab401d8668b1a52f',
+       i686: '4830dd9c90f5e59f23cf2f306e678a7f3bb1e363c730e0a884418cd0ef24f1d0',
+     x86_64: '62f56649660855f8f2b8d4a400a099d570036bbc3395aad0d49ee8f166db3a0b'
   })
 
-  def self.build
-    system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
-  end
+  depends_on 'python3'
+  depends_on 'py3_flit_core'
 
-  def self.install
-    system "python3 -m installer #{PY3_INSTALLER_OPTIONS}"
-  end
+  no_source_build
 end

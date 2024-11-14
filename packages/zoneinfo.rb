@@ -3,24 +3,21 @@ require 'package'
 class Zoneinfo < Package
   description 'Code and data that represent the history of local time for many representative locations around the globe.'
   homepage 'https://www.iana.org/time-zones'
-  version '2021a'
+  version '2024a'
   license 'public-domain'
   compatibility 'all'
-  source_url 'https://data.iana.org/time-zones/releases/tzdb-2021a.tar.lz'
-  source_sha256 '21bf125de7b0c486cb57f1ba61b39584c949b2e6cac0a03a6425435d9bff37d0'
+  source_url 'https://data.iana.org/time-zones/releases/tzdb-2024a.tar.lz'
+  source_sha256 '511af6b467f40b1ec9ac3684d1701793af470f3e29ddfb97b82be438e8601a7a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zoneinfo/2021a_armv7l/zoneinfo-2021a-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zoneinfo/2021a_armv7l/zoneinfo-2021a-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zoneinfo/2021a_i686/zoneinfo-2021a-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zoneinfo/2021a_x86_64/zoneinfo-2021a-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '90df3fefec5c3a6c74dc8f5ebc9c71eedafe4d8640c4925bbe06add4a860c4b4',
-     armv7l: '90df3fefec5c3a6c74dc8f5ebc9c71eedafe4d8640c4925bbe06add4a860c4b4',
-       i686: '90525ed6a5f9ffd5428c626c24e1cf57442568720388a646846ceb86a1c725d2',
-     x86_64: '09996f9d306829c341d5959bb2a8c59064c2e89c547b160edc6b0244f54bf0d7'
+    aarch64: 'e0daf569178baf4d59c6f6641c3819dba2999cf71e3917d9fc0bf8e1f4149b50',
+     armv7l: 'e0daf569178baf4d59c6f6641c3819dba2999cf71e3917d9fc0bf8e1f4149b50',
+       i686: '66c5afe3e8961c11bf253d9a8826e1c0c79bd12bad7c1f9645f36ccec363625b',
+     x86_64: 'd6a147311371d94f7ec2a4bbf412bd35a83324062adc64a374a1c844db686c86'
   })
+
+  depends_on 'glibc' # R
 
   def self.patch
     system "sed -i 's:TZDEFAULT = $(TOPDIR)/etc/localtime:TZDEFAULT = #{CREW_PREFIX}/etc/localtime:g' Makefile"
@@ -28,29 +25,22 @@ class Zoneinfo < Package
   end
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      make ALL"
+    system 'make ALL'
     # This fixed failure of make check on i686 & armv7l.
     system 'make force_tzs'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'INSTALL'
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/tzselect", "#{CREW_DEST_PREFIX}/bin/zoneinfo_tzselect"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/sbin/zic", "#{CREW_DEST_PREFIX}/sbin/zoneinfo_zic"
+    FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man5/tzfile.5", "#{CREW_DEST_MAN_PREFIX}/man5/zoneinfo_tzfile.5"
+    FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man8/zdump.8", "#{CREW_DEST_MAN_PREFIX}/man8/zoneinfo_zdump.8"
+    FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man8/zic.8", "#{CREW_DEST_MAN_PREFIX}/man8/zoneinfo_zic.8"
+    FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man8/tzselect.8", "#{CREW_DEST_MAN_PREFIX}/man8/zoneinfo_tzselect.8"
   end
 
   def self.check
     system 'make', 'check'
-  end
-
-  def self.postinstall
-    # Do not run tzselect if shell is non-interactive.
-    system('tty -s || tzselect ;;')
-    puts
-    puts "Add `TZ='<timezone>'` to your ~/.bashrc file".lightblue
-    puts 'Where <timezone> is the timezone displayed above'.lightblue
-    puts 'e.g. `TZ=America/New_York` or `TZ=Etc/UTC`'.lightblue
-    puts "This won't affect the timezone of non-chromebrew ChromeOS apps.".lightblue
-    puts
   end
 end

@@ -5,20 +5,14 @@ class Scite < Package
   homepage 'https://www.scintilla.org/'
   version '4.2.0'
   license 'HPND and MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.scintilla.org/scite420.tgz'
   source_sha256 '2e0b95842bbc875a9224416fad3a9179ec329b3af2ca1abdd8e64c008068bb99'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scite/4.2.0_armv7l/scite-4.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scite/4.2.0_armv7l/scite-4.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scite/4.2.0_i686/scite-4.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scite/4.2.0_x86_64/scite-4.2.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '44c3738e5f6d241e74a0b2dc30080f73643cf170fcf93b8167a42f85943e4554',
      armv7l: '44c3738e5f6d241e74a0b2dc30080f73643cf170fcf93b8167a42f85943e4554',
-       i686: 'b0e95f29a380e9fe2dc71216aa36c7902210f59f9041b92700c556c927e57049',
      x86_64: '1fcbc9d13a7c7bc5b7473631281fdea5302c8e55b88bdb8d25159b70890dfcec'
   })
 

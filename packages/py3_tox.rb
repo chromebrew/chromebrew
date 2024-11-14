@@ -1,26 +1,19 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_tox < Package
+class Py3_tox < Pip
   description 'Command line driven CI frontend and development task automation tool.'
   homepage 'https://tox.readthedocs.io/'
-  @_ver = '3.24.4'
-  version @_ver
+  version "4.23.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/tox-dev/tox.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_tox/3.24.4_armv7l/py3_tox-3.24.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_tox/3.24.4_armv7l/py3_tox-3.24.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_tox/3.24.4_i686/py3_tox-3.24.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_tox/3.24.4_x86_64/py3_tox-3.24.4-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '48b18633490b76fca8dbef6428ea3b95f8d84a1847517b3bc924c0302b0c5139',
-     armv7l: '48b18633490b76fca8dbef6428ea3b95f8d84a1847517b3bc924c0302b0c5139',
-       i686: 'ffeea5e8ee192ff7b32a8f899fd6b643770fb13011a3a1f15bec01c10e365846',
-     x86_64: '1c3aaed8fd7000a5bc719855947eb75a556b81d2a023d3e8c3980cff4554df31'
+    aarch64: '110056a43d2f55ce385e4dab49b1c8994782de84d442516432bfc817f54bdb47',
+     armv7l: '110056a43d2f55ce385e4dab49b1c8994782de84d442516432bfc817f54bdb47',
+       i686: 'fd9bbfe266c952307e620f627882dc969d3903d3d7bfea63597692e2ce500796',
+     x86_64: '5376cdfa85c7ad561818495b5d3f431729cc5db9b1ceead27c26a1f84122a8a1'
   })
 
   depends_on 'py3_py'
@@ -30,13 +23,7 @@ class Py3_tox < Package
   depends_on 'py3_virtualenv'
   depends_on 'py3_pluggy'
   depends_on 'py3_toml'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

@@ -8,13 +8,8 @@ class Iperf3 < Package
   compatibility 'all'
   source_url 'https://github.com/esnet/iperf/archive/3.7.tar.gz'
   source_sha256 'c349924a777e8f0a70612b765e26b8b94cc4a97cc21a80ed260f65e9823c8fc5'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iperf3/3.7_armv7l/iperf3-3.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iperf3/3.7_armv7l/iperf3-3.7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iperf3/3.7_i686/iperf3-3.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iperf3/3.7_x86_64/iperf3-3.7-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'b58c66a6ac474fff36e1336194fb0e8b9fac68ccd7bcb8b083e85c48d4d7011e',
      armv7l: 'b58c66a6ac474fff36e1336194fb0e8b9fac68ccd7bcb8b083e85c48d4d7011e',

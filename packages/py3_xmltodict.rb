@@ -1,35 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_xmltodict < Package
+class Py3_xmltodict < Pip
   description 'XMLtoDict makes working with XML feel like you are working with JSON.'
   homepage 'https://github.com/martinblech/xmltodict/'
-  @_ver = '0.12.0'
-  version "#{@_ver}-1"
+  version "0.14.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/martinblech/xmltodict.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xmltodict/0.12.0-1_armv7l/py3_xmltodict-0.12.0-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xmltodict/0.12.0-1_armv7l/py3_xmltodict-0.12.0-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xmltodict/0.12.0-1_i686/py3_xmltodict-0.12.0-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xmltodict/0.12.0-1_x86_64/py3_xmltodict-0.12.0-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'e6e260cb091e9b5e235e1d2d27334694b863dc58a5acf92c1dde94672e83462c',
-     armv7l: 'e6e260cb091e9b5e235e1d2d27334694b863dc58a5acf92c1dde94672e83462c',
-       i686: 'c788c22328fae7a225a17d7329f69dd8a3255ae0a179011b0d66fc291aecdc77',
-     x86_64: '1b6f20ad9ccbdd7a3012f370c20d4664df2c5c2e107cb6ded6875e405ec2b7a1'
+    aarch64: 'a7feb951e5b978a92e67220c7a1c3ffaaab578bc9dab0c68c7c0a721aae646f4',
+     armv7l: 'a7feb951e5b978a92e67220c7a1c3ffaaab578bc9dab0c68c7c0a721aae646f4',
+       i686: 'a707a431edba0a60f6d601df75789cfdfae3ab0d39ee40d32eb263b2c27ceaeb',
+     x86_64: '57697be5cc7b27b4a70cf91be79802ec88d79d15103b1b379ccedd23dae84c41'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

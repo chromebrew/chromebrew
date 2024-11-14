@@ -1,26 +1,20 @@
-require 'package'
+require 'buildsystems/python'
 
-class Ansible < Package
+class Ansible < Python
   description 'Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.'
   homepage 'https://www.ansible.com/'
-  @_ver = '2.11.6'
-  version @_ver
+  version '2.17.3'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/ansible/ansible.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.11.6_armv7l/ansible-2.11.6-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.11.6_armv7l/ansible-2.11.6-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.11.6_i686/ansible-2.11.6-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.11.6_x86_64/ansible-2.11.6-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'e99dda3d567d2f51088c406f87cf4a046253414af0f772449acdaf5c580990c6',
-     armv7l: 'e99dda3d567d2f51088c406f87cf4a046253414af0f772449acdaf5c580990c6',
-       i686: 'e4e6c38d5cbac73ad2504b7815e7e119976943b0f04dd74d69f6a13b46efd0fb',
-     x86_64: 'a3fc4acfca1229ca1c2bbb1c8107e4ee207afea58f092796daecb17e42a3b9fb'
+    aarch64: '9062621a2fa226e56059a777f2a7ea35f632c7a0866c5b1bcfa5b933e09350f0',
+     armv7l: '9062621a2fa226e56059a777f2a7ea35f632c7a0866c5b1bcfa5b933e09350f0',
+       i686: 'b38555e1996ca01a2180a88dccf22c85a46ab94b6248fe3fa2078667d293eb4c',
+     x86_64: '6741f337d27cd106fdc721f3bccb536c5f6f42cd3cd3ff650f32a7729970c353'
   })
 
   depends_on 'xdg_base'
@@ -28,13 +22,5 @@ class Ansible < Package
   depends_on 'py3_pyyaml'
   depends_on 'py3_packaging'
   depends_on 'py3_jinja2'
-  depends_on 'py3_setuptools' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  depends_on 'python3' => :build
 end

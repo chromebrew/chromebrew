@@ -1,0 +1,18 @@
+---
+name: Markdown-lint
+on: workflow_call
+jobs:
+  markdown-lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Markdown-lint
+        uses: reviewdog/action-markdownlint@v0
+        with:
+          fail_on_error: true
+          markdownlint_flags: '-s .mdl_style.rb'
+          reporter: github-pr-check
+          reviewdog_flags: '-fail-level=any'

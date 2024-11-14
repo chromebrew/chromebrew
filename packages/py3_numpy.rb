@@ -1,38 +1,31 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_numpy < Package
+class Py3_numpy < Pip
   description 'NumPy is the fundamental package for array computing with Python.'
   homepage 'https://numpy.org/'
-  @_ver = '1.21.4'
-  version @_ver
+  version "2.1.3-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/numpy/numpy.git'
-  git_hashtag "v#{@_ver}"
-  git_fetchtags
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.21.4_armv7l/py3_numpy-1.21.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.21.4_armv7l/py3_numpy-1.21.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.21.4_i686/py3_numpy-1.21.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.21.4_x86_64/py3_numpy-1.21.4-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'eb62980656c6cafe8ee1bd97ae0d6d6dff5402f9ff7a1f5f3687074661897c4d',
-     armv7l: 'eb62980656c6cafe8ee1bd97ae0d6d6dff5402f9ff7a1f5f3687074661897c4d',
-       i686: '17fe1d24ba66b5316c12a43ee64c1d59670cde1ab6179eb71dce1b8c6ea5dee4',
-     x86_64: '59b54964979b170cb4076b98a0ac1e67cb1292b2d472ed9c39c66199d835f54a'
+    aarch64: '0b4af2f634908ce20e89146d4eff0892ea5d77668f23a71bdffea03148fb0ae7',
+     armv7l: '0b4af2f634908ce20e89146d4eff0892ea5d77668f23a71bdffea03148fb0ae7',
+       i686: '1acdcc7a080e838b4792874d6de608b6578cd635e3e880fc47ee685752c16d43',
+     x86_64: '34811d0ce0570c3afd7348809bc50e3844e64c4800f3a4531da3448b761ee185'
   })
 
-  depends_on 'lapack'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'lapack' => :build
+  depends_on 'openblas' # R
   depends_on 'py3_cython' => :build
   depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
+  depends_on 'zlib' # R
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
+  pre_configure_options CREW_ENV_OPTIONS.gsub('mold', 'gold')
 
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

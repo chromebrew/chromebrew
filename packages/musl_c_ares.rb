@@ -2,19 +2,14 @@ require 'package'
 
 class Musl_c_ares < Package
   description 'c-ares is a C library for asynchronous DNS requests (including name resolves).'
-  homepage 'https://c-ares.haxx.se/'
+  homepage 'https://c-ares.org/'
   version '1.18.1'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://c-ares.haxx.se/download/c-ares-1.18.1.tar.gz'
+  source_url 'https://c-ares.org/download/c-ares-1.18.1.tar.gz'
   source_sha256 '1a7d52a8a84a9fbffb1be9133c0f6e17217d91ea5a6fa61f6b4729cda78ebbcf'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.18.1_armv7l/musl_c_ares-1.18.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.18.1_armv7l/musl_c_ares-1.18.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.18.1_i686/musl_c_ares-1.18.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.18.1_x86_64/musl_c_ares-1.18.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'c93e3a4f64cd4e667369de02eddf7f524c2828a68ed3d8fe3cd695647527cddd',
      armv7l: 'c93e3a4f64cd4e667369de02eddf7f524c2828a68ed3d8fe3cd695647527cddd',
@@ -32,9 +27,10 @@ class Musl_c_ares < Package
   depends_on 'patchelf' => :build
 
   is_static
+  print_source_bashrc
 
   def self.build
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     FileUtils.mkdir('builddir')
     Dir.chdir('builddir') do
       system "#{MUSL_CMAKE_OPTIONS} \

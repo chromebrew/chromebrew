@@ -1,29 +1,38 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gvim < Package
+class Gvim < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)'
-  homepage 'http://www.vim.org/'
-  @_ver = '8.2.4594'
-  version @_ver
+  homepage 'https://www.vim.org/'
+  version '9.1.0758'
   license 'GPL-2'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/vim/vim.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.4594_armv7l/gvim-8.2.4594-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.4594_armv7l/gvim-8.2.4594-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.4594_x86_64/gvim-8.2.4594-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'a778b458c9111ccedf0c84b2cdd472c52bf80c9e52e40f6c22f22f2ccf27d50a',
-     armv7l: 'a778b458c9111ccedf0c84b2cdd472c52bf80c9e52e40f6c22f22f2ccf27d50a',
-     x86_64: '0b238d45425755746cf68dd398f33ca5e22345a3fcab50dfb472bf7fe574f402'
+    aarch64: 'e6ba3259adc6d813b640883a6d73f2b8401489a1d085a0ddb19de4fd62b80074',
+     armv7l: 'e6ba3259adc6d813b640883a6d73f2b8401489a1d085a0ddb19de4fd62b80074',
+     x86_64: '7836d95a5aac39c4ea07982f2811f9d2a08cabcbef5c9606bde6ea3188545c22'
   })
 
-  depends_on 'vim_runtime'
-  depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'acl' # R
+  depends_on 'cairo' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gpm' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz'
+  depends_on 'libice' # R
+  depends_on 'libsm' # R
+  depends_on 'libsodium' # R
+  depends_on 'libx11' # R
+  depends_on 'libxt' # R
+  depends_on 'ncurses' # R
+  depends_on 'pango' # R
+  depends_on 'vim_runtime' # R
 
   def self.preflight
     vim = `which #{CREW_PREFIX}/bin/vim 2> /dev/null`.chomp
@@ -31,7 +40,6 @@ class Gvim < Package
   end
 
   def self.patch
-    abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
     # set the system-wide vimrc path
     FileUtils.cd('src') do
       system 'sed', '-i', "s|^.*#define SYS_VIMRC_FILE.*$|#define SYS_VIMRC_FILE \"#{CREW_PREFIX}/etc/vimrc\"|",
@@ -41,34 +49,26 @@ class Gvim < Package
     end
   end
 
-  def self.build
-    system '[ -x configure ] || autoreconf -fvi'
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --localstatedir=#{CREW_PREFIX}/var/lib/vim \
-      --with-features=huge \
-      --with-compiledby='Chromebrew' \
-      --enable-gpm \
-      --enable-acl \
-      --with-x=yes \
-      --enable-gnome-check \
-      --enable-multibyte \
-      --enable-cscope \
-      --enable-netbeans \
-      --enable-perlinterp=dynamic \
-      --enable-pythoninterp=dynamic \
-      --enable-python3interp=dynamic \
-      --enable-rubyinterp=dynamic \
-      --enable-luainterp=dynamic \
-      --enable-tclinterp=dynamic \
-      --disable-canberra \
-      --disable-selinux \
-      --disable-nls"
-    system 'make'
-  end
+  configure_options "--localstatedir=#{CREW_PREFIX}/var/lib/vim \
+    --disable-canberra \
+    --disable-nls \
+    --disable-selinux \
+    --enable-acl \
+    --enable-cscope \
+    --enable-gnome-check \
+    --enable-gpm \
+    --enable-gui=gtk3 \
+    --enable-luainterp=dynamic \
+    --enable-multibyte \
+    --enable-netbeans \
+    --enable-perlinterp=dynamic \
+    --enable-python3interp=dynamic \
+    --enable-pythoninterp=dynamic \
+    --enable-rubyinterp=dynamic \
+    --enable-tclinterp=dynamic \
+    --with-compiledby='Chromebrew' \
+    --with-features=huge \
+    --with-x=yes"
 
   def self.install
     system 'make', "VIMRCLOC=#{CREW_PREFIX}/etc", "DESTDIR=#{CREW_DEST_DIR}", 'install'
@@ -86,11 +86,36 @@ class Gvim < Package
 
   def self.postinstall
     puts
-    puts "The config files are located in #{CREW_PREFIX}/etc".lightblue
-    puts 'User-specific configuration should go in ~/.gvimrc'.lightblue
+    puts "The config files are located in #{CREW_PREFIX}/etc.".lightblue
+    puts 'User-specific configuration should go in ~/.vimrc and'.lightblue
+    puts '~/.gvimrc.'.lightblue
     puts
     puts 'If you are upgrading from an earlier version, edit ~/.bashrc'.orange
     puts "and remove the 'export VIMRUNTIME' and 'export LC_ALL=C' lines.".orange
-    puts
+    # Set vim to be the default vi if there is no vi or if a default
+    # vi does not exist.
+    @crew_vi = File.file?("#{CREW_PREFIX}/bin/vi")
+    @system_vi = File.file?('/usr/bin/vi')
+    @create_vi_symlink = true if !@system_vi && !@crew_vi
+    @create_vi_symlink_ask = true if @crew_vi || @system_vi
+    if @create_vi_symlink_ask
+      if Package.agree_default_yes('Would you like to set vim to be the default vi')
+        @create_vi_symlink = true
+      else
+        @create_vi_symlink = false
+        puts 'Default vi left unchanged.'.lightgreen
+      end
+    end
+    return unless @create_vi_symlink
+
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/vim", "#{CREW_PREFIX}/bin/vi"
+    puts 'Default vi set to vim.'.lightgreen
+  end
+
+  def self.postremove
+    # Remove vi symlink if it is to vim.
+    return unless File.symlink?("#{CREW_PREFIX}/bin/vi") && (File.readlink("#{CREW_PREFIX}/bin/vi") == "#{CREW_PREFIX}/bin/vim")
+
+    FileUtils.rm "#{CREW_PREFIX}/bin/vi"
   end
 end

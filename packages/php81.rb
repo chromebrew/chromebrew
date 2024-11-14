@@ -2,51 +2,73 @@ require 'package'
 
 class Php81 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
-  homepage 'http://www.php.net/'
-  @_ver = '8.1.11'
-  version @_ver
+  homepage 'https://www.php.net/'
+  version '8.1.28'
   license 'PHP-3.01'
-  compatibility 'all'
-  source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 '3005198d7303f87ab31bc30695de76e8ad62783f806b6ab9744da59fe41cc5bd'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.php.net/distributions/php-8.1.28.tar.xz'
+  source_sha256 '95d0b2e9466108fd750dab5c30a09e5c67f5ad2cb3b1ffb3625a038a755ad080'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.11_armv7l/php81-8.1.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.11_armv7l/php81-8.1.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.11_i686/php81-8.1.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.11_x86_64/php81-8.1.11-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '7bed3f955ee01e65883a6e0bfee94ec1b396714c3b43182845bff2aaf039b4ab',
-     armv7l: '7bed3f955ee01e65883a6e0bfee94ec1b396714c3b43182845bff2aaf039b4ab',
-       i686: 'f59558743ef55589eda677e923189d41908421ce1e71879e1ec187ee9af59f65',
-     x86_64: '3e77028cc0a2f84ade4007ae02b53bc8f6b27bd0661b0ee84076a5efde6cd589'
+    aarch64: 'b9d166b9421fd9d2ad20db9089727e223c7ee29bbf2713359016debd2fa20c56',
+     armv7l: 'b9d166b9421fd9d2ad20db9089727e223c7ee29bbf2713359016debd2fa20c56',
+     x86_64: '1eebcfec831ead5b3c6f43c3712c3c001d6c9601ef7ba6f2e2da1be64585fcc4'
   })
 
-  depends_on 'aspell_en'
-  depends_on 'libcurl'
-  depends_on 'libgcrypt'
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libsodium'
-  depends_on 'libxpm'
-  depends_on 'libxslt'
-  depends_on 'libzip'
+  depends_on 'aspell_en' => :build
+  depends_on 'aspell' # R
+  depends_on 'brotli' # R
+  depends_on 'bzip2' # R
+  depends_on 'c_ares' # R
+  depends_on 'curl' # R
+  depends_on 'e2fsprogs' # R
   depends_on 'exif'
   depends_on 'freetds'
-  depends_on 'freetype'
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'graphite'
-  depends_on 're2c'
-  depends_on 'tidy'
-  depends_on 'unixodbc'
-  depends_on 'oniguruma'
+  depends_on 'icu4c' # R
+  depends_on 'krb5' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libedit' # R
+  depends_on 'libffi' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libgpg_error' # R
+  depends_on 'libidn2' # R
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libnghttp2' # R
+  depends_on 'libpng' # R
+  depends_on 'libpsl' # R
+  depends_on 'libsodium' # R
+  depends_on 'libssh' # R
+  depends_on 'libtool' # R
+  depends_on 'libunistring' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxpm'
+  depends_on 'libxslt' # R
+  depends_on 'libzip' # R
+  depends_on 'ncurses' # R
+  depends_on 'oniguruma' # R
+  depends_on 'openldap' # R
+  depends_on 'openssl111' # R
+  depends_on 'openssl' # R
   depends_on 'py3_pygments'
+  depends_on 're2c'
+  depends_on 'sqlite' # R
+  depends_on 'tidy' # R
+  depends_on 'unixodbc' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
   no_fhs
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen if ARGV[0] != 'reinstall' && @_ver != phpver && !phpver.empty?
+    abort "PHP version #{phpver} already installed.".lightgreen if ARGV[0] != 'reinstall' && version != phpver && !phpver.empty?
   end
 
   def self.patch
@@ -71,7 +93,7 @@ class Php81 < Package
   end
 
   def self.build
-    system "CFLAGS='-pipe' ./configure \
+    system "CFLAGS='-pipe' mold -run ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \
@@ -125,7 +147,7 @@ class Php81 < Package
        --with-zip \
        --with-ffi \
        --with-libedit"
-    system 'make'
+    system 'mold -run make'
   end
 
   def self.check
@@ -152,23 +174,29 @@ class Php81 < Package
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.filemap"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.lock"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.registry"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
+    # Launch php8-fpm when the bash shell session starts.
+    File.write "#{CREW_DEST_PREFIX}/etc/bash.d/01-php8-fpm", <<~EOF
+      [ -x #{CREW_PREFIX}/bin/php8-fpm ] && #{CREW_PREFIX}/bin/php8-fpm start
+    EOF
   end
 
   def self.postinstall
-    puts
-    puts 'To start the php-fpm service, execute:'.lightblue
-    puts 'php8-fpm start'.lightblue
-    puts
-    puts 'To stop the php-fpm service, execute:'.lightblue
-    puts 'php8-fpm stop'.lightblue
-    puts
-    puts 'To restart the php-fpm service, execute:'.lightblue
-    puts 'php8-fpm restart'.lightblue
-    puts
-    puts 'To start php-fpm on login, execute the following:'.lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/php8-fpm ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  #{CREW_PREFIX}/bin/php8-fpm start' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
+    ExitMessage.add <<~EOF.lightblue
+
+      To start the php-fpm service, execute:
+      php8-fpm start
+
+      To stop the php-fpm service, execute:
+      php8-fpm stop
+
+      To restart the php-fpm service, execute:
+      php8-fpm restart
+
+      php8-fpm start will execute on login.
+      To prevent this, edit or remove #{CREW_PREFIX}/etc/bash.d/01-php8-fpm.
+
+    EOF
   end
 end

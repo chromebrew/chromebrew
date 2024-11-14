@@ -1,0 +1,12 @@
+/usr/local/include/woff2/decode.h
+/usr/local/include/woff2/encode.h
+/usr/local/include/woff2/output.h
+/usr/local/lib/libwoff2common.so
+/usr/local/lib/libwoff2common.so.1.0.2
+/usr/local/lib/libwoff2dec.so
+/usr/local/lib/libwoff2dec.so.1.0.2
+/usr/local/lib/libwoff2enc.so
+/usr/local/lib/libwoff2enc.so.1.0.2
+/usr/local/lib/pkgconfig/libwoff2common.pc
+/usr/local/lib/pkgconfig/libwoff2dec.pc
+/usr/local/lib/pkgconfig/libwoff2enc.pc

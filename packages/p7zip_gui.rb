@@ -5,10 +5,10 @@ require 'package'
 
 class P7zip_gui < Package
   description 'Graphic user interface (alpha quality) for the 7-zip file archiver'
-  homepage 'http://p7zip.sourceforge.net/'
+  homepage 'https://p7zip.sourceforge.net/'
   version '16.02'
   license 'LGPL-2.1 and unRAR'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://downloads.sourceforge.net/p7zip/p7zip_16.02_src_all.tar.bz2'
   source_sha256 '5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'
 
@@ -16,10 +16,10 @@ class P7zip_gui < Package
 
   case ARCH
   when 'x86_64'
-    depends_on 'yasm' # needed for compiling the faster asm binary
+    depends_on 'yasm' => :build # needed for compiling the faster asm binary
     @_makefile = 'makefile.linux_amd64_asm'
   when 'i686'
-    depends_on 'nasm' # needed for compiling the faster asm binary
+    depends_on 'nasm' => :build # needed for compiling the faster asm binary
     @_makefile = 'makefile.linux_x86_asm_gcc_4.X'
   else
     @_makefile = 'makefile.linux_any_cpu'

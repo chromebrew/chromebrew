@@ -1,36 +1,37 @@
-# Not supported on 32-bit architectures.
-
 require 'package'
 
 class Svt_av1 < Package
   description 'Scalable Video Technology AV1 encoder and decoder'
   homepage 'https://gitlab.com/AOMediaCodec/SVT-AV1'
-  @_ver = '0.8.6'
-  version @_ver
+  version '2.0.0'
   license 'BSD-2, Apache-2.0, BSD, ISC, MIT and LGPG-2.1+'
-  compatibility 'x86_64'
-  source_url "https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v#{@_ver}/SVT-AV1-v#{@_ver}.tar.bz2"
-  source_sha256 'e942959be6b062f4adea33fd5dbfbd5581b178ce87b4baf9bd84283fbc8203e1'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.com/AOMediaCodec/SVT-AV1.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/svt_av1/0.8.6_x86_64/svt_av1-0.8.6-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    x86_64: '930dad392dc9b31153adfbdb01f5c9cc947bf58c29c121aac89039a24c043867'
+    aarch64: '6252e978f095cd4657727731e8223ccef315a5eec8926b9f748eaa34fd41cabc',
+     armv7l: '6252e978f095cd4657727731e8223ccef315a5eec8926b9f748eaa34fd41cabc',
+     x86_64: 'c0e20fc16251760a043b98967055dcaad9088bcb979f73602750913b7f321c43'
   })
+
+  depends_on 'nasm' => :build
+  depends_on 'glibc' # R
 
   def self.build
-    Dir.mkdir 'builddir'
+    @arch_flags = ''
+    @arch_flags = '-mtune=cortex-a15 -mfloat-abi=hard -mfpu=neon -mtls-dialect=gnu -marm -mlibarch=armv8-a+crc+simd -march=armv8-a+crc+simd' if ARCH == 'armv7l' || ARCH == 'aarch64'
+    FileUtils.mkdir_p 'builddir'
     Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -I#{CREW_PREFIX}/include/harfbuzz' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        -DBUILD_SHARED_LIBS=ON \
-        -DNATIVE=OFF \
-        .."
+      unless File.file?('build.ninja')
+        system "cmake \
+          -G Ninja \
+          #{CREW_CMAKE_OPTIONS.sub('-pipe', "-pipe #{@arch_flags}")} \
+          -DBUILD_SHARED_LIBS=ON \
+          -DNATIVE=OFF \
+          .."
+      end
     end
     system 'ninja -C builddir'
   end

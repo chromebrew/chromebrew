@@ -1,0 +1,4 @@
+/usr/local/bin/ucat
+/usr/local/bin/ucat-static
+/usr/local/lib/libutp.a
+/usr/local/lib/libutp.so

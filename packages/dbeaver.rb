@@ -3,19 +3,21 @@ require 'package'
 class Dbeaver < Package
   description 'Free Universal Database Tool'
   homepage 'https://dbeaver.io'
-  version '22.0.0'
+  version '24.1.5'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url({
-    x86_64: 'https://github.com/dbeaver/dbeaver/releases/download/22.0.0/dbeaver-ce-22.0.0-linux.gtk.x86_64.tar.gz'
+    x86_64: "https://github.com/dbeaver/dbeaver/releases/download/#{version}/dbeaver-ce-#{version}-linux.gtk.x86_64.tar.gz"
   })
   source_sha256({
-    x86_64: '32d701a4d1fc74e0b220a26202e2adc2774d57c1330a35c3ce2eb16c7450a7c4'
+    x86_64: '59f3b876ef95b0be87d9b4c646349c9ad172197c52971dec693a3f4d3daa955e'
   })
 
   depends_on 'gtk3'
   depends_on 'xdg_base'
   depends_on 'sommelier'
+
+  no_compile_needed
 
   def self.patch
     system "sed -i 's,/usr/share/dbeaver-ce,#{CREW_PREFIX}/share/dbeaver,g' dbeaver-ce.desktop"
@@ -35,17 +37,17 @@ class Dbeaver < Package
   end
 
   def self.postinstall
-    puts "\nType 'dbeaver' to get started.\n".lightblue
+    ExitMessage.add "\nType 'dbeaver' to get started.\n"
   end
 
-  def self.remove
+  def self.postremove
     config_dir = "#{HOME}/.local/share/DBeaverData"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case $stdin.getc
-      when 'y', 'Y'
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightred
+        puts "#{config_dir} removed.".lightgreen
       else
         puts "#{config_dir} saved.".lightgreen
       end

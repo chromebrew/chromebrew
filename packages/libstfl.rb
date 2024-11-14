@@ -2,19 +2,14 @@ require 'package'
 
 class Libstfl < Package
   description 'libSTFL is a library that implements a curses-based widget set for text terminals.'
-  homepage 'http://www.clifford.at/stfl/'
+  homepage 'https://clifford.at/stfl'
   version '0.23'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'http://www.clifford.at/stfl/stfl-0.23.tar.gz'
+  source_url 'https://clifford.at/stflstfl-0.23.tar.gz'
   source_sha256 'e75ed8427905ad50faf43ed5fefd0cf7b16ee0c1ca87e15d33e360bb92aedfde'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstfl/0.23_armv7l/libstfl-0.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstfl/0.23_armv7l/libstfl-0.23-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstfl/0.23_i686/libstfl-0.23-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstfl/0.23_x86_64/libstfl-0.23-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '68532ced7ade579392d5d3ab4e9ea70f8282f5ec8a981770e6976411f496266d',
      armv7l: '68532ced7ade579392d5d3ab4e9ea70f8282f5ec8a981770e6976411f496266d',
@@ -45,10 +40,10 @@ class Libstfl < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    Dir.chdir CREW_DEST_PREFIX.to_s do
-      FileUtils.mv 'lib', CREW_DEST_LIB_PREFIX.to_s if CREW_LIB_SUFFIX.to_s == '64'
+    Dir.chdir CREW_DEST_PREFIX do
+      FileUtils.mv 'lib', CREW_DEST_LIB_PREFIX if CREW_LIB_SUFFIX.to_s == '64'
     end
-    Dir.chdir CREW_DEST_LIB_PREFIX.to_s do
+    Dir.chdir CREW_DEST_LIB_PREFIX do
       FileUtils.symlink 'libstfl.so.0.23', 'libstfl.so.0'
     end
   end

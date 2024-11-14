@@ -8,13 +8,8 @@ class Fop < Package
   compatibility 'all'
   source_url 'https://downloads.apache.org/xmlgraphics/fop/binaries/fop-2.7-bin.tar.gz'
   source_sha256 'ec75d6135f55f57b275f8332e069f8817990fdc7f63b1f5c0cb9da5609aa3074'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fop/2.7-1_armv7l/fop-2.7-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fop/2.7-1_armv7l/fop-2.7-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fop/2.7-1_i686/fop-2.7-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fop/2.7-1_x86_64/fop-2.7-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '592a35d04bcca3ab8762e8ba03ce7f57c10a93f03efecad58f3f9304c3eaa79a',
      armv7l: '592a35d04bcca3ab8762e8ba03ce7f57c10a93f03efecad58f3f9304c3eaa79a',
@@ -25,18 +20,15 @@ class Fop < Package
   depends_on 'openjdk8'
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_LIB_PREFIX}/fop"
-    system "cp -r . #{CREW_DEST_LIB_PREFIX}/fop"
-    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
-      system "echo '#!/bin/bash' > fop"
-      system "echo 'cd #{CREW_LIB_PREFIX}/fop/fop' >> fop"
-      system "echo './fop \"$@\"' >> fop"
-      system "echo 'cd $PWD' >> fop"
-      system 'chmod +x fop'
-    end
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_LIB_PREFIX}/fop #{CREW_DEST_PREFIX}/etc/env.d/]
+    FileUtils.cp_r '.', "#{CREW_DEST_LIB_PREFIX}/fop"
 
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    File.write "#{CREW_DEST_PREFIX}/bin/fop", <<~EOF, perm: 0o755
+      #!/bin/bash
+      cd #{CREW_LIB_PREFIX}/fop/fop
+      ./fop "$@"
+    EOF
+
     @fopenv = <<~FOPEOF
       # Fop configuration
       export JAVA_HOME=#{CREW_PREFIX}/jre

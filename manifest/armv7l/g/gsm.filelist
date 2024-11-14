@@ -1,0 +1,12 @@
+/usr/local/bin/tcat
+/usr/local/bin/toast
+/usr/local/bin/untoast
+/usr/local/include/gsm/gsm.h
+/usr/local/lib/libgsm.so
+/usr/local/lib/libgsm.so.1
+/usr/local/lib/libgsm.so.1.0.13
+/usr/local/share/man/man1/toast.1.gz
+/usr/local/share/man/man3/gsm.3.gz
+/usr/local/share/man/man3/gsm_explode.3.gz
+/usr/local/share/man/man3/gsm_option.3.gz
+/usr/local/share/man/man3/gsm_print.3.gz

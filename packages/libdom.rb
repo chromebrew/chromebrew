@@ -8,13 +8,8 @@ class Libdom < Package
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/libs/releases/libdom-0.4.1-src.tar.gz'
   source_sha256 '98ee072471e55e208c9878e515c410ad462ca36f87b4afcbecad023f3a2cef4a'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdom/0.4.1_armv7l/libdom-0.4.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdom/0.4.1_armv7l/libdom-0.4.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdom/0.4.1_i686/libdom-0.4.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdom/0.4.1_x86_64/libdom-0.4.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7fa6e8636c79092311db986438b9234bd2c5ec9a8d66081ad13c87f49048ac70',
      armv7l: '7fa6e8636c79092311db986438b9234bd2c5ec9a8d66081ad13c87f49048ac70',

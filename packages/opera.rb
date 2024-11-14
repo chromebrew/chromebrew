@@ -3,14 +3,15 @@ require 'package'
 class Opera < Package
   description 'Opera is a multi-platform web browser based on Chromium and developed by Opera Software.'
   homepage 'https://www.opera.com/'
-  version '92.0.4561.21'
+  version '114.0.5282.185'
   license 'OPERA-2018'
   compatibility 'x86_64'
+  min_glibc '2.29'
 
   # faster apt mirror, but only works when downloading latest version of opera
   # source_url "https://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
-  source_url "https://get.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
-  source_sha256 '7f71bb4e584df23cbc3849d47e7bb55ae5b7bb07344475521f8143c6ca95241f'
+  source_url "https://deb.opera.com/opera-stable/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
+  source_sha256 'f938bcc6a8df93e9dc4defdd3ddb7291a0f7ba85abecc8f0c301f6b7103d1106'
 
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'
@@ -18,9 +19,9 @@ class Opera < Package
   depends_on 'graphite'
   depends_on 'cras'
   depends_on 'libcom_err'
-  depends_on 'sommelier'
 
   no_compile_needed
+  no_shrink
 
   def self.install
     # Since opera puts the executable in a location that is not in the path,
@@ -38,8 +39,8 @@ class Opera < Package
   def self.postinstall
     puts
     print 'Set Opera as your default browser? [Y/n]: '
-    case $stdin.getc
-    when "\n", 'Y', 'y'
+    case $stdin.gets.chomp.downcase
+    when '', 'y', 'yes'
       Dir.chdir("#{CREW_PREFIX}/bin") do
         FileUtils.ln_sf "#{CREW_LIB_PREFIX}/opera/opera", 'x-www-browser'
       end
@@ -47,10 +48,10 @@ class Opera < Package
     else
       puts 'No change has been made.'.orange
     end
-    puts "\nType 'opera' to get started.\n".lightblue
+    ExitMessage.add "\nType 'opera' to get started.\n"
   end
 
-  def self.remove
+  def self.postremove
     Dir.chdir("#{CREW_PREFIX}/bin") do
       if File.exist?('x-www-browser') && File.symlink?('x-www-browser') && \
          (File.realpath('x-www-browser') == "#{CREW_PREFIX}/share/x86_64-linux-gnu/opera/opera")

@@ -2,24 +2,18 @@ require 'package'
 
 class Startup_notification < Package
   description 'Monitor and display application startup'
-  homepage 'https://www.freedesktop.org'
+  homepage 'https://www.freedesktop.org/wiki/'
   @_ver = '0.12'
   version "#{@_ver}-2"
   license 'LGPL-2 and MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://www.freedesktop.org/software/startup-notification/releases/startup-notification-#{@_ver}.tar.gz"
   source_sha256 '3c391f7e930c583095045cd2d10eb73a64f085c7fde9d260f2652c7cb3cfbe4a'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/startup_notification/0.12-2_armv7l/startup_notification-0.12-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/startup_notification/0.12-2_armv7l/startup_notification-0.12-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/startup_notification/0.12-2_i686/startup_notification-0.12-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/startup_notification/0.12-2_x86_64/startup_notification-0.12-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8bd6a0275356eb6dd22ff8b5352354873cbba0e57f99864a52e853de3f9284c2',
      armv7l: '8bd6a0275356eb6dd22ff8b5352354873cbba0e57f99864a52e853de3f9284c2',
-       i686: '028205aa25c3c3a082dbe1046a2c5c7b7e59e0ae38b819b6511c942cff2f19e2',
      x86_64: '85ac878ff6afeaa64b599b8a20b2615f95dbeb99f046c8f52bde474697d357ab'
   })
 
@@ -34,7 +28,7 @@ class Startup_notification < Package
     system 'autoreconf --force --install'
     system "env CFLAGS='-flto=auto' \
       CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --localstatedir=/var \
       --sysconfdir=#{CREW_PREFIX}/etc"
     system 'make'

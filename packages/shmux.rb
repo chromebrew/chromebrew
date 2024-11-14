@@ -8,13 +8,8 @@ class Shmux < Package
   compatibility 'all'
   source_url 'https://github.com/shmux/shmux/archive/v1.0.2.tar.gz'
   source_sha256 '4b84dc3e0d72d054ed4730d130a509f43441fb61561c11a444d6ee65cbff9c04'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shmux/1.0.2_armv7l/shmux-1.0.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shmux/1.0.2_armv7l/shmux-1.0.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shmux/1.0.2_i686/shmux-1.0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shmux/1.0.2_x86_64/shmux-1.0.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'a8e89a4d6d087c646c5a0050fb09527a15b655838277fda2bcfd4ed37a1c10c5',
      armv7l: 'a8e89a4d6d087c646c5a0050fb09527a15b655838277fda2bcfd4ed37a1c10c5',

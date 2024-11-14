@@ -1,11 +1,12 @@
 require 'package'
+Package.load_package("#{__dir__}/libx11.rb")
 
 class Xorg_lib < Package
   description 'A collection of xorg libraries.'
-  homepage ''
-  version '0.1-0'
-  license '' # is_fake
-  compatibility 'all'
+  homepage Libx11.homepage
+  version Libx11.version
+  license Libx11.license
+  compatibility Libx11.compatibility
 
   is_fake
 

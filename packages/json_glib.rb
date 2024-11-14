@@ -1,43 +1,27 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Json_glib < Package
+class Json_glib < Meson
   description 'JSON-GLib implements a full suite of JSON-related tools using GLib and GObject.'
-  homepage 'https://wiki.gnome.org/Projects/JsonGlib'
-  version '1.6.6'
+  homepage 'https://gitlab.gnome.org/GNOME/json-glib'
+  version '1.9.2-1'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/json-glib.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.6_armv7l/json_glib-1.6.6-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.6_armv7l/json_glib-1.6.6-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.6_i686/json_glib-1.6.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.6_x86_64/json_glib-1.6.6-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '37724d89adff90c65166c4f9f908bd1f4184ed5422caea9ec31fab941abbc947',
-     armv7l: '37724d89adff90c65166c4f9f908bd1f4184ed5422caea9ec31fab941abbc947',
-       i686: '08a05f309d75ee639cc009973f03de5018d6306080d6feac96a3792597eb348c',
-     x86_64: '40a0670356d43d4154b89ea2d0543b9db01b5920bc04b8d144d56a1de78d418c'
+    aarch64: 'a907845c293113e9cb096924451e00db90ab02460fbb9be3aeb846db78f4be5f',
+     armv7l: 'a907845c293113e9cb096924451e00db90ab02460fbb9be3aeb846db78f4be5f',
+     x86_64: '212a85d881638611b9585bd77ae1d1605301e860da9e84bee32c0099816b2089'
   })
 
-  depends_on 'gtk_doc'
-  depends_on 'glib'
-  depends_on 'gobject_introspection'
+  depends_on 'gcc_lib' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'gobject_introspection' => :build
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.check
-    system 'ninja test -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  # https://gitlab.gnome.org/GNOME/json-glib/-/issues/72
+  meson_options '-Ddocumentation=disabled -Dtests=false'
+  # run_tests
 end

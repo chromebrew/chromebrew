@@ -3,19 +3,13 @@ require 'package'
 class Musl_libunbound < Package
   description 'Unbound is a validating, recursive, and caching DNS resolver.'
   homepage 'https://nlnetlabs.nl/projects/unbound/about/'
-  @_ver = '1.15.0'
-  version @_ver
+  version '1.15.0'
   license 'BSD and GPL-2'
   compatibility 'all'
-  source_url "https://nlnetlabs.nl/downloads/unbound/unbound-#{@_ver}.tar.gz"
+  source_url "https://nlnetlabs.nl/downloads/unbound/unbound-#{version}.tar.gz"
   source_sha256 'a480dc6c8937447b98d161fe911ffc76cfaffa2da18788781314e81339f1126f'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunbound/1.15.0_armv7l/musl_libunbound-1.15.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunbound/1.15.0_armv7l/musl_libunbound-1.15.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunbound/1.15.0_i686/musl_libunbound-1.15.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunbound/1.15.0_x86_64/musl_libunbound-1.15.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '004be055e9469e11e3eb71de62e6c87ffbbfaca1456be4767557d77eab60509d',
      armv7l: '004be055e9469e11e3eb71de62e6c87ffbbfaca1456be4767557d77eab60509d',
@@ -29,6 +23,7 @@ class Musl_libunbound < Package
 
   is_musl
   is_static
+  print_source_bashrc
 
   def self.patch
     system 'filefix'

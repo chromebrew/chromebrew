@@ -1,37 +1,25 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_build < Package
+class Py3_build < Pip
   description 'Python build is a simple, correct PEP 517 build frontend.'
   homepage 'https://pypa-build.readthedocs.io/'
-  @_ver = '0.8.0'
-  version "#{@_ver}-1"
+  version "1.2.2.post1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/pypa/build.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_build/0.8.0-1_armv7l/py3_build-0.8.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_build/0.8.0-1_armv7l/py3_build-0.8.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_build/0.8.0-1_i686/py3_build-0.8.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_build/0.8.0-1_x86_64/py3_build-0.8.0-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'fad4cbbb4220a513f0357cd549f5d9760dfbb542cdca26564aff7bee1b3cf280',
-     armv7l: 'fad4cbbb4220a513f0357cd549f5d9760dfbb542cdca26564aff7bee1b3cf280',
-       i686: 'ded0af9208dc6465bfc84b78e922e2243a4a95e8c4969e4eb57e206203c9eb54',
-     x86_64: '820bc24d5da0c2394fa587b3b41f62b5bf4903a7eb91263ef555380f367bc9a3'
+    aarch64: 'cc0bd7d5cc2ff63ec8fd6f7b9f78628cce0fa7d7a09ed74e3c3b29722313d8b9',
+     armv7l: 'cc0bd7d5cc2ff63ec8fd6f7b9f78628cce0fa7d7a09ed74e3c3b29722313d8b9',
+       i686: '08e4574c31917c7cd93980ffe4cb32eef4bfb3a5629dff2b7521ea87c036a694',
+     x86_64: '3bdb4962ff19ec9673dcb3884cbb334137b936eac355922f1e73f82b9cbbd83a'
   })
 
+  depends_on 'python3'
   depends_on 'py3_packaging'
-  depends_on 'py3_pep517'
+  depends_on 'py3_pyproject_hooks'
   depends_on 'py3_tomli'
 
-  def self.build
-    system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 -m installer #{PY3_INSTALLER_OPTIONS}"
-  end
+  no_source_build
 end

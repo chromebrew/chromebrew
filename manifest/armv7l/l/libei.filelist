@@ -1,0 +1,17 @@
+/usr/local/bin/ei-debug-events
+/usr/local/include/libei-1.0/libei.h
+/usr/local/include/libei-1.0/libeis.h
+/usr/local/include/libei-1.0/liboeffis.h
+/usr/local/lib/libei.so
+/usr/local/lib/libei.so.1
+/usr/local/lib/libei.so.1.2.1
+/usr/local/lib/libeis.so
+/usr/local/lib/libeis.so.1
+/usr/local/lib/libeis.so.1.2.1
+/usr/local/lib/libmunit.so
+/usr/local/lib/liboeffis.so
+/usr/local/lib/liboeffis.so.1
+/usr/local/lib/liboeffis.so.1.2.1
+/usr/local/lib/pkgconfig/libei-1.0.pc
+/usr/local/lib/pkgconfig/libeis-1.0.pc
+/usr/local/lib/pkgconfig/liboeffis-1.0.pc

@@ -3,14 +3,17 @@ require 'package'
 class Qtcreator < Package
   description 'Qt is a comprehensive cross-platform framework and toolkit that helps you create and build native applications and user interfaces for all the screens of your end user.'
   homepage 'https://info.qt.io/download-qt-for-application-development'
-  version '4.9.1'
-  license '' # Can't find license
-  compatibility 'i686,x86_64'
-  source_url 'https://download.qt.io/official_releases/qt/5.15/5.15.1/md5sums.txt'
-  source_sha256 '50ea8bf9728b8ceb3a92044745edd55fd02783b8733da7fd57e044bc21980bf6'
+  version '11.0.3'
+  license 'unknown' # Can't find license
+  compatibility 'x86_64'
+  source_url 'SKIP'
 
-  depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' # L
+  depends_on 'xcb_util_image' # R
+  depends_on 'xcb_util_keysyms' # R
+  depends_on 'xcb_util_renderutil' # R
+  depends_on 'xcb_util_wm' # R
+  depends_on 'xdg_base' # L
 
   def self.install
     system "echo 'function Controller() {' > qt-installer-script.qs"
@@ -56,23 +59,13 @@ class Qtcreator < Package
     system "echo '    }' >> qt-installer-script.qs"
     system "echo '    gui.clickButton(buttons.FinishButton);' >> qt-installer-script.qs"
     system "echo '}' >> qt-installer-script.qs"
-    case ARCH
-    when 'i686'
-      system 'curl -#LO http://qtmirror.ics.com/pub/qtproject/archive/online_installers/2.0/qt-unified-linux-x86-2.0.5-2-online.run'
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('qt-unified-linux-x86-2.0.5-2-online.run')) == 'b9dfef211d3122ab2f1b1e96aa7e2357ebdeb068c750eeb423b9396a3f55d619'
-      system "install -Dm755 qt-unified-linux-x86-2.0.5-2-online.run #{CREW_PREFIX}/tmp/qt-unified-linux-x86-2.0.5-2-online.run"
-      system "#{CREW_PREFIX}/tmp/qt-unified-linux-x86-2.0.5-2-online.run --script qt-installer-script.qs"
-      system "rm -f #{CREW_PREFIX}/tmp/qt-unified-linux-x86-2.0.5-2-online.run"
-    when 'x86_64'
-      system 'curl -#LO http://qt.mirror.constant.com/archive/online_installers/3.2/qt-unified-linux-x64-3.2.3-online.run'
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('qt-unified-linux-x64-3.2.3-online.run')) == 'b724dabc0e7bfde1e078de3edcdd87c94b60031f9896d7119099a66191d75eec'
-      system "install -Dm755 qt-unified-linux-x64-3.2.3-online.run #{CREW_PREFIX}/tmp/qt-unified-linux-x64-3.2.3-online.run"
-      system "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-3.2.3-online.run --script qt-installer-script.qs"
-      system "rm -f #{CREW_PREFIX}/tmp/qt-unified-linux-x64-3.2.3-online.run"
-    end
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_PREFIX}/share"
-    system "cp -r #{CREW_PREFIX}/share/qt #{CREW_DEST_PREFIX}/share"
-    system "ln -s #{CREW_PREFIX}/share/qt/Tools/QtCreator/bin/qtcreator #{CREW_DEST_PREFIX}/bin/qtcreator"
+    downloader 'https://download.qt.io/archive/online_installers/4.6/qt-unified-linux-x64-4.6.1-online.run', '11f8e9307a31d283b7ad80050e9d43c1e94dbc2ea283eb6fa9d051549f2bbccb'
+    FileUtils.install 'qt-unified-linux-x64-4.6.1-online.run', "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-4.6.1-online.run", mode: 0o755
+    system "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-4.6.1-online.run --script qt-installer-script.qs"
+    FileUtils.rm_f "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-4.6.1-online.run"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
+    FileUtils.cp_r "#{CREW_PREFIX}/share/qt", "#{CREW_DEST_PREFIX}/share"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/qt/Tools/QtCreator/bin/qtcreator", "#{CREW_DEST_PREFIX}/bin/qtcreator"
   end
 end

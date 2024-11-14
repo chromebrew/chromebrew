@@ -1,45 +1,31 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Cairomm_1_0 < Package
+class Cairomm_1_0 < Meson
   description 'The Cairomm package provides a C++ interface to Cairo.'
   homepage 'https://www.cairographics.org/'
-  @_ver = '1.14.2'
-  version @_ver
+  version '1.14.5'
   license 'LGPL-2+'
-  compatibility 'all'
-  source_url "https://www.cairographics.org/releases/cairomm-#{@_ver}.tar.xz"
-  source_sha256 '0126b9cc295dc36bc9c0860d5b720cb5469fd78d5620c8f10cc5f0c07b928de3'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.freedesktop.org/cairo/cairomm.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_0/1.14.2_armv7l/cairomm_1_0-1.14.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_0/1.14.2_armv7l/cairomm_1_0-1.14.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_0/1.14.2_i686/cairomm_1_0-1.14.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_0/1.14.2_x86_64/cairomm_1_0-1.14.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
-    aarch64: '43377afdfd60e5d6de950d883d7053c5f21dc2fe7b87b99d60b51de2c16e480d',
-     armv7l: '43377afdfd60e5d6de950d883d7053c5f21dc2fe7b87b99d60b51de2c16e480d',
-       i686: 'b66a27aae76d273e8d365d764efafb4a01703d087dde1f63401b3feff0257ad0',
-     x86_64: '3ec47e52333e93b341c65d1af2d58bb51c6d60a9b4023b20b2b8c04fd5a42b5e'
+    aarch64: 'd5929e8b0df2c1043728370afcf8bc33fcda134dec6f2fafa0d99d9f4bf36521',
+     armv7l: 'd5929e8b0df2c1043728370afcf8bc33fcda134dec6f2fafa0d99d9f4bf36521',
+     x86_64: 'a12939138f8ace49eaaa0188b39157f2e0619b17e67d4101411c7f3209a6a0a6'
   })
 
-  depends_on 'cairo'
-  depends_on 'libsigcplusplus3'
-  depends_on 'libxxf86vm'
-  depends_on 'libxrender'
+  depends_on 'cairo' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libsigcplusplus' # R
+  depends_on 'libxrender' => :build
+  depends_on 'libxxf86vm' => :build
 
-  def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
-    --default-library=both \
-    -Dbuild-documentation=false \
-    -Dbuild-examples=false \
-    -Dbuild-tests=false \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
+  no_upstream_update
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dbuild-documentation=false \
+    -Dbuild-examples=false'
 end

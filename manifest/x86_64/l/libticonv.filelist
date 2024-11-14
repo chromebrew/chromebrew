@@ -1,0 +1,9 @@
+/usr/local/include/tilp2/charset.h
+/usr/local/include/tilp2/export4.h
+/usr/local/include/tilp2/stdints4.h
+/usr/local/include/tilp2/ticonv.h
+/usr/local/lib64/libticonv.la
+/usr/local/lib64/libticonv.so
+/usr/local/lib64/libticonv.so.8
+/usr/local/lib64/libticonv.so.8.0.4
+/usr/local/lib64/pkgconfig/ticonv.pc

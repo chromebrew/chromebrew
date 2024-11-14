@@ -11,13 +11,8 @@ class Luajit_bitop < Package
   compatibility 'all'
   source_url 'https://bitop.luajit.org/download/LuaBitOp-1.0.2.tar.gz'
   source_sha256 '1207c9293dcd52eb9dca6538d1b87352bd510f4e760938f5048433f7f272ce99'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_bitop/1.0.2_armv7l/luajit_bitop-1.0.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_bitop/1.0.2_armv7l/luajit_bitop-1.0.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_bitop/1.0.2_i686/luajit_bitop-1.0.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_bitop/1.0.2_x86_64/luajit_bitop-1.0.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '63df810db9bf29d11a124d7b7097c41602009a79be424ac1aa7bc435d0332eee',
      armv7l: '63df810db9bf29d11a124d7b7097c41602009a79be424ac1aa7bc435d0332eee',

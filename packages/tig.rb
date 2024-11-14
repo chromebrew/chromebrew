@@ -8,13 +8,8 @@ class Tig < Package
   compatibility 'all'
   source_url 'https://github.com/jonas/tig/releases/download/tig-2.4.1/tig-2.4.1.tar.gz'
   source_sha256 'b6b6aa183e571224d0e1fab3ec482542c1a97fa7a85b26352dc31dbafe8558b8'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tig/2.4.1_armv7l/tig-2.4.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tig/2.4.1_armv7l/tig-2.4.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tig/2.4.1_i686/tig-2.4.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tig/2.4.1_x86_64/tig-2.4.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '712274329587938cdb648fba374338f12f78145a0a69e2285f30a3ac0f2b0eb2',
      armv7l: '712274329587938cdb648fba374338f12f78145a0a69e2285f30a3ac0f2b0eb2',

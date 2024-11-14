@@ -1,56 +1,30 @@
-# Adapted from Arch Linux duktape PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/duktape/trunk/PKGBUILD
-
 require 'package'
 
 class Duktape < Package
   description 'Embeddable Javascript engine'
   homepage 'https://duktape.org/'
-  @_ver = '2.6.0'
-  version @_ver
-  compatibility 'all'
+  version '2.7.0-1'
   license 'MIT'
-  source_url "https://duktape.org/duktape-#{@_ver}.tar.xz"
-  source_sha256 '96f4a05a6c84590e53b18c59bb776aaba80a205afbbd92b82be609ba7fe75fa7'
+  compatibility 'all'
+  source_url 'https://github.com/svaarala/duktape-releases.git'
+  git_hashtag 'v2.7.0'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.6.0_armv7l/duktape-2.6.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.6.0_armv7l/duktape-2.6.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.6.0_i686/duktape-2.6.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.6.0_x86_64/duktape-2.6.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'c734d031be824d9bdaa17efe89f88a527e585fdd4665ec406251d0451ad1b77f',
-     armv7l: 'c734d031be824d9bdaa17efe89f88a527e585fdd4665ec406251d0451ad1b77f',
-       i686: '5e4bfca44b948812f3f20730ff779c7d92358dca39e958105a011cbb856069da',
-     x86_64: '5f5787b8f9893d2b838e41c9391022f7fd9f0f7bacf45059b40e061ec7654ed1'
+    aarch64: 'f140a0f226f7d1c91bdf22b92a16bfecbebf401bfc79165a324191ea35b46a3a',
+     armv7l: 'f140a0f226f7d1c91bdf22b92a16bfecbebf401bfc79165a324191ea35b46a3a',
+       i686: '535d51c28caab852609ac4983cc4c4d25e15208e41851606d319f4f49edb0430',
+     x86_64: '7a39e108b1168a7ac69fe164b43a79065be5b4832ff5d4a31a6762c41a069b3c'
   })
 
+  depends_on 'glibc' # R
   depends_on 'setconf' => :build
 
   def self.build
-    FileUtils.mv 'Makefile.sharedlibrary', 'Makefile'
-    system "sed -i 's/-Wall -Wextra/$(CFLAGS) -D DUK_USE_FASTINT -w/g' Makefile"
-    system "sed -i 's,$(INSTALL_PREFIX)/lib,#{CREW_DEST_LIB_PREFIX},g' Makefile"
-    system "setconf Makefile INSTALL_PREFIX #{CREW_DEST_PREFIX}"
-    @duktapepc = <<~DUKTAPEPCEOF
-      prefix=#{CREW_PREFIX}
-      exec_prefix=\${prefix}
-      libdir=#{CREW_LIB_PREFIX}
-      includedir=\${prefix}/include
-
-      Name: duktape
-      Description: Embeddable Javascript engine
-      Version: #{@_ver}
-      Libs: -L\${libdir} -lduktape
-      Cflags: -I\${includedir}
-    DUKTAPEPCEOF
-    File.write('duktape.pc', @duktapepc)
+    system "INSTALL_PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} make -f Makefile.sharedlibrary"
   end
 
   def self.install
-    FileUtils.mkdir_p %W[#{CREW_DEST_LIB_PREFIX}/pkgconfig]
-    FileUtils.install 'duktape.pc', "#{CREW_DEST_LIB_PREFIX}/pkgconfig/duktape.pc", mode: 0o644
-    system 'make install'
+    system "INSTALL_PREFIX= LIBDIR=/#{ARCH_LIB} DESTDIR=#{CREW_DEST_PREFIX} make -f Makefile.sharedlibrary install"
   end
 end

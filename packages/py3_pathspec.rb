@@ -1,35 +1,22 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pathspec < Package
+class Py3_pathspec < Pip
   description 'Path specification is a utility library for gitignore style pattern matching of file paths.'
-  homepage 'https://github.com/cpburnz/python-path-specification/'
-  @_ver = '0.9.0'
-  version @_ver
+  homepage 'https://github.com/cpburnz/python-pathspec'
+  version "0.12.1-#{CREW_PY_VER}"
   license 'MPL-2.0'
   compatibility 'all'
-  source_url 'https://github.com/cpburnz/python-path-specification.git'
-  git_hashtag '7b125acf41702cb82679dcf56aaf6a14d34bd785'
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pathspec/0.9.0_armv7l/py3_pathspec-0.9.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pathspec/0.9.0_armv7l/py3_pathspec-0.9.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pathspec/0.9.0_i686/py3_pathspec-0.9.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pathspec/0.9.0_x86_64/py3_pathspec-0.9.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '83e126ed957af789ed654ced0691b665c6b00a462dffe50e30452a5691c7c6b0',
-     armv7l: '83e126ed957af789ed654ced0691b665c6b00a462dffe50e30452a5691c7c6b0',
-       i686: '46309e4e84bb0e885fce67b71417a961cd0a441c3ea3933b4af7133ea6b0c49d',
-     x86_64: '993a31bef230e06ff6815816740707eabf8af60dbf1bb7c9456745370034c873'
+    aarch64: 'ef78dfad2d7689f3da11cacedcab7bb2beae4a448e8ea47ede1759e4031f9da0',
+     armv7l: 'ef78dfad2d7689f3da11cacedcab7bb2beae4a448e8ea47ede1759e4031f9da0',
+       i686: '49d88b41984c5c171d5a3cab544d27a6e8124434a4f16891e59c0f25a5b1bc08',
+     x86_64: 'a051a80059a6eb3ab001fe1e31f77f2b6d0ec3f889ec93cf0acccc52f6f06d94'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

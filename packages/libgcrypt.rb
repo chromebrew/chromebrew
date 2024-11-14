@@ -1,49 +1,40 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libgcrypt < Package
+class Libgcrypt < Autotools
   description 'Libgcrypt is a general purpose cryptographic library originally based on code from GnuPG.'
   homepage 'https://www.gnupg.org/related_software/libgcrypt/index.html'
-  version '1.9.4'
+  version '1.11.0'
   license 'LGPL-2.1 and MIT'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-#{version}.tar.bz2"
-  source_sha256 'ea849c83a72454e3ed4267697e8ca03390aee972ab421e7df69dfe42b65caaf7'
+  source_sha256 '09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.4_armv7l/libgcrypt-1.9.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.4_armv7l/libgcrypt-1.9.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.4_i686/libgcrypt-1.9.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.4_x86_64/libgcrypt-1.9.4-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: 'c9b2becd32471b6d23c65b513685bf58bd1e5f453b6ab49dd5ebe33959fb2354',
-     armv7l: 'c9b2becd32471b6d23c65b513685bf58bd1e5f453b6ab49dd5ebe33959fb2354',
-       i686: '9d9dea2c93f63e7ab36f6423c873ece51ce2cd3558da61e266e463cda38413c5',
-     x86_64: '83e047dd1591ec41c67d707517f5fd0b31492e15b282345e31ca563689ec8df9'
+    aarch64: '3084b4d1869a8ff6d5daa76dcf9451378795fdac5af9182bda7a0a7b9d4f079c',
+     armv7l: '3084b4d1869a8ff6d5daa76dcf9451378795fdac5af9182bda7a0a7b9d4f079c',
+       i686: '85c818af47cfe64df3acab5e5e1e54a5ad98ce3495e6cf3d703568222b0d196d',
+     x86_64: 'cd0fb26e325aebc496d8b539f2f6b6744446b49caa1b34d9a1d5061b7dd502e9'
   })
 
-  depends_on 'libgpgerror'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libgpg_error' # R
+
+  configure_options '--enable-static \
+      --enable-shared'
 
   def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    case ARCH
-    when 'aarch64'
-      system "gcry_cv_gcc_arm_platform_as_ok=no ./configure #{CREW_OPTIONS} #{CREW_ENV_OPTIONS} \
-      --enable-static \
-      --enable-shared \
-      --disable-asm"
-    else
-      system "./configure #{CREW_OPTIONS} #{CREW_ENV_OPTIONS} \
-        --enable-static \
-        --enable-shared"
+    # Fix error: 'asm' operand has impossible constraints or there are not enough registers
+    # See https://dev.gnupg.org/T7226.
+    if %w[aarch64 armv7l].include?(ARCH)
+      puts 'Downloading patch...'.yellow
+      downloader 'https://files.gnupg.net/file/download/4axfkyiszlsm4qgf5lxy/PHID-FILE-k3tzb5qnxdtsfvvpd7q4/0001-mpi-ec-inline-reduce-register-pressure-on-32-bit-ARM.patch',
+                 'de543d9d5bfcfb91090c0ebbe46b321344686130cbe5f214ca86c9f8c040d5fa'
+      puts 'Applying patch...'.yellow
+      system 'git apply 0001-mpi-ec-inline-reduce-register-pressure-on-32-bit-ARM.patch'
     end
-    system 'make'
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

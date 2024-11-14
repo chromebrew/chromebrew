@@ -2,10 +2,10 @@ require 'package'
 
 class Upm < Package
   description 'Universal Password Manager (UPM) allows you to store usernames, passwords, URLs and generic notes in an encrypted database protected by one master password.'
-  homepage 'http://upm.sourceforge.net/'
+  homepage 'https://upm.sourceforge.net/'
   version '1.15.1'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://downloads.sourceforge.net/project/upm/upm-1.15.1/upm-1.15.1.tar.gz'
   source_sha256 'c8ade41ec0fe6f387f6e44b941ce5f17a3c2e2d096b4be766bed29ee606ac078'
 

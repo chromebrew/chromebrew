@@ -1,64 +1,47 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Librsvg < Package
+class Librsvg < Autotools
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  version '2.54.4'
+  version "2.58.2-#{CREW_ICU_VER}"
   license 'LGPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.54.4_armv7l/librsvg-2.54.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.54.4_armv7l/librsvg-2.54.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.54.4_i686/librsvg-2.54.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.54.4_x86_64/librsvg-2.54.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: '58760d1112269cead225097aaac939ea5be45e2b10616bb8dff6ffbe421a68df',
-     armv7l: '58760d1112269cead225097aaac939ea5be45e2b10616bb8dff6ffbe421a68df',
-       i686: '01233045873ee26b638876acd32697ca2b9c5d80327c6aff04d6bdd840831527',
-     x86_64: 'c8d079c44fe9017d16ec1b32aecd0c6e00e6143f02bd0a124fb9eb683d29a5a8'
+    aarch64: '59dafc0bb05dafb25e81da2aad87b9f37f4da703503fac40efdcc4667937f018',
+     armv7l: '59dafc0bb05dafb25e81da2aad87b9f37f4da703503fac40efdcc4667937f018',
+     x86_64: '5301c32f54d047e3684bbd9b1aa3bb4555c700397ad129928112a8eeb7966736'
   })
 
-  depends_on 'fontconfig'
-  depends_on 'harfbuzz'
-  depends_on 'fribidi'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gobject_introspection'
-  depends_on 'harfbuzz'
-  depends_on 'libcroco'
-  depends_on 'libjpeg'
-  depends_on 'pango'
-  depends_on 'rust' => :build
+  depends_on 'cairo' # R
+  depends_on 'expat' # R
+  depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
+  depends_on 'fribidi' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gobject_introspection' => :build
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
+  depends_on 'libcroco' => :build
+  depends_on 'libjpeg_turbo' => :build
+  depends_on 'libpng' # R
+  depends_on 'libxml2' # R
+  depends_on 'pango' # R
   depends_on 'py3_six' => :build
+  depends_on 'py3_smartypants' => :build
+  depends_on 'rust' => :build
   depends_on 'vala' => :build
+  depends_on 'zlib' # R
+
   gnome
 
-  def self.build
-    # Following rustup modification as per https://github.com/rust-lang/rustup/issues/1167#issuecomment-367061388
-    system 'rustup install stable --profile minimal || (rm -frv ~/.rustup/toolchains/* && rustup install stable --profile minimal)'
-    system 'rustup default stable'
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system "./configure \
-      #{CREW_OPTIONS} \
-      --enable-introspection=yes \
+  configure_options '--enable-introspection=yes \
       --enable-vala=yes \
-      --enable-pixbuf-loader \
-      --disable-tools"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
-
-  def self.postinstall
-    if File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-      system 'gdk-pixbuf-query-loaders',
-             '--update-cache'
-    end
-  end
+      --enable-pixbuf-loader'
 end

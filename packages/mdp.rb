@@ -8,13 +8,8 @@ class Mdp < Package
   compatibility 'all'
   source_url 'https://github.com/visit1985/mdp/archive/1.0.10.tar.gz'
   source_sha256 '7384c1ba32bd8e4b11342570d2144165a60682499b4cb54e50c8eb3164cfabc5'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mdp/1.0.10_armv7l/mdp-1.0.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mdp/1.0.10_armv7l/mdp-1.0.10-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mdp/1.0.10_i686/mdp-1.0.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mdp/1.0.10_x86_64/mdp-1.0.10-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2478dbee17514f83d0340c0ac6eb2ccf957aa000e48a0b0d2c614df523f98315',
      armv7l: '2478dbee17514f83d0340c0ac6eb2ccf957aa000e48a0b0d2c614df523f98315',

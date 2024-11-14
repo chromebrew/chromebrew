@@ -3,13 +3,15 @@ require 'package'
 class Brave < Package
   description 'Next generation Brave browser for macOS, Windows, Linux, Android.'
   homepage 'https://brave.com/'
-  version '1.44.112'
+  version '1.73.89'
   license 'MPL-2'
   compatibility 'x86_64'
+  min_glibc '2.29'
   source_url "https://github.com/brave/brave-browser/releases/download/v#{version}/brave-browser-#{version}-linux-amd64.zip"
-  source_sha256 '8d073bac2c2c75b9fea02e070c64e03a9680884d7c2756df1414c0990a69320d'
+  source_sha256 'da54165e78fc04365402d6d39163ad6f7b5f218acbbc46601896842f88090d49'
 
   no_compile_needed
+  no_shrink
 
   depends_on 'gtk3'
   depends_on 'libcom_err'
@@ -22,5 +24,9 @@ class Brave < Package
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/brave"
     FileUtils.ln_s "#{CREW_PREFIX}/share/brave/brave", "#{CREW_DEST_PREFIX}/bin/brave"
     FileUtils.ln_s CREW_LIB_PREFIX, "#{CREW_DEST_PREFIX}/share/#{ARCH_LIB}"
+  end
+
+  def self.postinstall
+    ExitMessage.add "\nType 'brave' to get started.\n"
   end
 end

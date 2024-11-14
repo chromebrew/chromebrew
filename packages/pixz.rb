@@ -11,13 +11,8 @@ class Pixz < Package
   compatibility 'all'
   source_url 'https://github.com/vasi/pixz.git'
   git_hashtag 'f1b1b5f8af68d0ac782e5ff24f11785282382f40'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixz/1.0.7-f1b1b5f_armv7l/pixz-1.0.7-f1b1b5f-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixz/1.0.7-f1b1b5f_armv7l/pixz-1.0.7-f1b1b5f-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixz/1.0.7-f1b1b5f_i686/pixz-1.0.7-f1b1b5f-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixz/1.0.7-f1b1b5f_x86_64/pixz-1.0.7-f1b1b5f-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e4155b71de92416f5e3be2e6fdb142e789bdabc8d6a631ae8f5e1e185bfbab5e',
      armv7l: 'e4155b71de92416f5e3be2e6fdb142e789bdabc8d6a631ae8f5e1e185bfbab5e',
@@ -25,7 +20,7 @@ class Pixz < Package
      x86_64: 'aa0c005b74a688982f0282833846879d6fbac02a28dadf69ebb0ded6924f096c'
   })
 
-  depends_on 'asciidoc' => :build
+  depends_on 'py3_asciidoc' => :build
   depends_on 'libarchive'
   depends_on 'xzutils'
   no_patchelf
@@ -38,7 +33,7 @@ class Pixz < Package
       CC=clang LD=ld.lld  CFLAGS='-flto -pipe -O3 -fuse-ld=lld -static' \
       CXXFLAGS='-flto -pipe -O3 -static' \
       LDFLAGS='-flto -static' \
-      #{CREW_OPTIONS}"
+      #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end
 

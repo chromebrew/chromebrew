@@ -1,56 +1,62 @@
 # Adapted from Arch Linux wireshark PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/wireshark/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/cmake'
 
-class Wireshark < Package
+class Wireshark < CMake
   description 'Network traffic and protocol analyzer/sniffer'
   homepage 'https://www.wireshark.org/'
-  version '3.6.0'
+  version '4.2.3'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/wireshark/wireshark.git'
   git_hashtag "wireshark-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/3.6.0_armv7l/wireshark-3.6.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/3.6.0_armv7l/wireshark-3.6.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/3.6.0_i686/wireshark-3.6.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/3.6.0_x86_64/wireshark-3.6.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
-    aarch64: '61ea40696865306311267c22ef44c78d3dfbb7836c54be34991c781b0d39308a',
-     armv7l: '61ea40696865306311267c22ef44c78d3dfbb7836c54be34991c781b0d39308a',
-       i686: '8a0e904fa243b649d85d729c7d6ab2875fd3c9a0d0124c2dc9e9cfd780bfe30d',
-     x86_64: 'd6b21c3d27bf7e8db7ee42b83c794c494baee18bda7beb18ec5fa556b0a43db2'
+    aarch64: '7b8aa126fcb06deb4739b1a24bc7e1bf27c3b32cb9b45157198ea2f604cab53d',
+     armv7l: '7b8aa126fcb06deb4739b1a24bc7e1bf27c3b32cb9b45157198ea2f604cab53d',
+       i686: 'ddd5018c138d0fb411d99c857aecac9902bcee75ab398c6e6373da13abfd735d',
+     x86_64: '40d21fcdfe0d7bac9c2db677054b94ca03ebf5f1b707ba93d58e2e88fe3d90d8'
   })
 
-  depends_on 'asciidoctor' => :build
-  depends_on 'c_ares'
-  depends_on 'libmaxminddb'
-  depends_on 'libpcap'
-  depends_on 'glib'
-  depends_on 'qttools' unless ARCH == 'i686'
-  depends_on 'qtmultimedia' unless ARCH == 'i686'
-  depends_on 'qtsvg' unless ARCH == 'i686'
+  depends_on 'brotli' # R
+  depends_on 'c_ares' # R
+  depends_on 'e2fsprogs' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gnutls' # R
+  depends_on 'krb5' # R
+  depends_on 'libcap' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libgpg_error' # R
+  depends_on 'libmaxminddb' # R
+  depends_on 'libnghttp2' # R
+  depends_on 'libnl3' # R
+  depends_on 'libopencoreamr' # R
+  depends_on 'libpcap' # R
+  depends_on 'libsmi' # R
+  depends_on 'libssh' # R
+  depends_on 'libxml2' # R
+  depends_on 'lz4' # R
+  depends_on 'minizip' # R
+  depends_on 'opus' # R
+  depends_on 'pcre2' # R
+  depends_on 'qt5_base' unless ARCH == 'i686'
+  depends_on 'qt5_multimedia' unless ARCH == 'i686'
+  depends_on 'qt5_svg' unless ARCH == 'i686'
+  depends_on 'qt5_tools' unless ARCH == 'i686'
+  depends_on 'ruby_asciidoctor' => :build
+  depends_on 'sbc' # R
+  depends_on 'snappy' # R
+  depends_on 'speexdsp' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
-  @gui = 'true'
-  case ARCH
-  when 'i686'
-    @gui = 'false'
-  end
+  git_fetchtags
 
-  def self.build
-    FileUtils.mkdir('builddir')
-    Dir.chdir('builddir') do
-      system "cmake #{CREW_CMAKE_OPTIONS} \
-      -DENABLE_LTO=true \
-      -DBUILD_wireshark=#{@gui} \
-      ../ -G Ninja"
-    end
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  pre_cmake_options 'WIRESHARK_BUILD_WITH_QT5=1'
+  cmake_options "-DENABLE_LTO=true \
+    -DBUILD_wireshark=#{ARCH == 'i686' ? 'false' : 'true'}"
 end

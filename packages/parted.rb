@@ -1,37 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Parted < Package
+class Parted < Autotools
   description 'Create, destroy, resize, check, copy partitions and file systems.'
-  homepage 'https://www.gnu.org/software/parted'
-  @_ver = '3.5'
-  version @_ver
+  homepage 'https://www.gnu.org/software/parted/'
+  version '3.6-2'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/parted/parted-#{@_ver}.tar.xz"
-  source_sha256 '4938dd5c1c125f6c78b1f4b3e297526f18ee74aa43d45c248578b1d2470c05a2'
+  source_url "https://ftpmirror.gnu.org/parted/parted-#{version.split('-').first}.tar.xz"
+  source_sha256 '3b43dbe33cca0f9a18601ebab56b7852b128ec1a3df3a9b30ccde5e73359e612'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/parted/3.5_armv7l/parted-3.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/parted/3.5_armv7l/parted-3.5-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/parted/3.5_x86_64/parted-3.5-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
-    aarch64: 'd5a0356c1b50d3b96d40816186f53b26230db7642cf2a8efc86e3388c35bdf34',
-     armv7l: 'd5a0356c1b50d3b96d40816186f53b26230db7642cf2a8efc86e3388c35bdf34',
-     x86_64: '7ff57d716c7c5c5e7a640c57b584bead70e4e853dc0937c501ba95e4a33cfe8a'
+    aarch64: 'dec111ce508f4446d74dcbefa2e2ccb7c9424a8e651f4a75b0091ebc5cd0c45b',
+     armv7l: 'dec111ce508f4446d74dcbefa2e2ccb7c9424a8e651f4a75b0091ebc5cd0c45b',
+       i686: 'ed682917604cfd68e3acd47bb6a3441db47e8cea3f468245066cadc13662866a',
+     x86_64: '6c90b4c01a6275e5f09438a80c7f973042834fb801bd18cbd6dade603a843a9f'
   })
 
-  depends_on 'lvm2'
-  depends_on 'ncurses'
-  depends_on 'readline'
-  patchelf
-
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'lvm2' # R
+  depends_on 'ncurses' # R
+  depends_on 'readline' # R
+  depends_on 'util_linux' # R
 end
