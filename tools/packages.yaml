@@ -1645,6 +1645,11 @@ url: https://github.com/elogind/elogind/releases
 activity: low
 ---
 kind: url
+name: elvish
+url: https://github.com/elves/elvish/releases
+activity: high
+---
+kind: url
 name: emacs
 url: https://ftp.gnu.org/gnu/emacs
 activity: low
@@ -3874,7 +3879,6 @@ name: libbluray
 url: https://get.videolan.org/libbluray/
 activity: low
 ---
----
 kind: url
 name: libbpf
 url: hhttps://github.com/libbpf/libbpf/releases
@@ -4663,6 +4667,11 @@ activity: none
 kind: url
 name: libopencoreamr
 url: https://sourceforge.net/projects/opencore-amr/files/opencore-amr/
+activity: none
+---
+kind: url
+name: libopusenc
+url: https://github.com/xiph/libopusenc/tags
 activity: none
 ---
 kind: url
@@ -6003,6 +6012,11 @@ activity: low
 kind: url
 name: mupdf
 url: https://mupdf.com/downloads/archive/
+activity: medium
+---
+kind: url
+name: musecore
+url: https://github.com/musescore/MuseScore/releases
 activity: medium
 ---
 kind: url
@@ -7631,6 +7645,11 @@ url: https://invent.kde.org/qt/qt/qtquickcontrols/-/tags
 activity: medium
 ---
 kind: url
+name: qt5_quickcontrols2
+url: https://invent.kde.org/qt/qt/qtquickcontrols2/-/tags
+activity: medium
+---
+kind: url
 name: qt5_script
 url: https://invent.kde.org/qt/qt/qtscript/-/tags
 activity: medium
@@ -8621,6 +8640,11 @@ url: https://ftpmirror.gnu.org/tar/
 activity: medium
 ---
 kind: url
+name: taskwarrior
+url: https://github.com/GothenburgBitFactory/taskwarrior/releases
+activity: medium
+---
+kind: url
 name: tbb
 url: https://github.com/oneapi-src/oneTBB/releases
 activity: medium
@@ -8799,6 +8823,11 @@ kind: url
 name: tinysparql
 url: https://gitlab.gnome.org/GNOME/tinysparql/-/tags
 activity: high
+---
+kind: url
+name: tinyxml2
+url: https://github.com/leethomason/tinyxml2/tags
+activity: low
 ---
 kind: url
 name: tk
@@ -9319,6 +9348,11 @@ kind: url
 name: weston
 url: https://github.com/wayland-project/weston/releases/
 activity: medium
+---
+kind: url
+name: wezterm
+url: https://github.com/wez/wezterm/releases
+activity: low
 ---
 kind: url
 name: wget2

@@ -33,7 +33,7 @@
 /usr/local/lib/libgnutls.la
 /usr/local/lib/libgnutls.so
 /usr/local/lib/libgnutls.so.30
-/usr/local/lib/libgnutls.so.30.36.0
+/usr/local/lib/libgnutls.so.30.40.1
 /usr/local/lib/libgnutlsxx.la
 /usr/local/lib/libgnutlsxx.so
 /usr/local/lib/libgnutlsxx.so.30
@@ -368,6 +368,7 @@
 /usr/local/share/man/man3/gnutls_hash_get_len.3.zst
 /usr/local/share/man/man3/gnutls_hash_init.3.zst
 /usr/local/share/man/man3/gnutls_hash_output.3.zst
+/usr/local/share/man/man3/gnutls_hash_squeeze.3.zst
 /usr/local/share/man/man3/gnutls_heartbeat_allowed.3.zst
 /usr/local/share/man/man3/gnutls_heartbeat_enable.3.zst
 /usr/local/share/man/man3/gnutls_heartbeat_get_timeout.3.zst
@@ -564,6 +565,7 @@
 /usr/local/share/man/man3/gnutls_pkcs12_export2.3.zst
 /usr/local/share/man/man3/gnutls_pkcs12_generate_mac.3.zst
 /usr/local/share/man/man3/gnutls_pkcs12_generate_mac2.3.zst
+/usr/local/share/man/man3/gnutls_pkcs12_generate_mac3.3.zst
 /usr/local/share/man/man3/gnutls_pkcs12_get_bag.3.zst
 /usr/local/share/man/man3/gnutls_pkcs12_import.3.zst
 /usr/local/share/man/man3/gnutls_pkcs12_init.3.zst
@@ -629,6 +631,8 @@
 /usr/local/share/man/man3/gnutls_privkey_decrypt_data.3.zst
 /usr/local/share/man/man3/gnutls_privkey_decrypt_data2.3.zst
 /usr/local/share/man/man3/gnutls_privkey_deinit.3.zst
+/usr/local/share/man/man3/gnutls_privkey_derive_secret.3.zst
+/usr/local/share/man/man3/gnutls_privkey_export_dh_raw.3.zst
 /usr/local/share/man/man3/gnutls_privkey_export_dsa_raw.3.zst
 /usr/local/share/man/man3/gnutls_privkey_export_dsa_raw2.3.zst
 /usr/local/share/man/man3/gnutls_privkey_export_ecc_raw.3.zst
@@ -645,6 +649,7 @@
 /usr/local/share/man/man3/gnutls_privkey_get_seed.3.zst
 /usr/local/share/man/man3/gnutls_privkey_get_spki.3.zst
 /usr/local/share/man/man3/gnutls_privkey_get_type.3.zst
+/usr/local/share/man/man3/gnutls_privkey_import_dh_raw.3.zst
 /usr/local/share/man/man3/gnutls_privkey_import_dsa_raw.3.zst
 /usr/local/share/man/man3/gnutls_privkey_import_ecc_raw.3.zst
 /usr/local/share/man/man3/gnutls_privkey_import_ext.3.zst
@@ -704,6 +709,7 @@
 /usr/local/share/man/man3/gnutls_pubkey_encrypt_data.3.zst
 /usr/local/share/man/man3/gnutls_pubkey_export.3.zst
 /usr/local/share/man/man3/gnutls_pubkey_export2.3.zst
+/usr/local/share/man/man3/gnutls_pubkey_export_dh_raw.3.zst
 /usr/local/share/man/man3/gnutls_pubkey_export_dsa_raw.3.zst
 /usr/local/share/man/man3/gnutls_pubkey_export_dsa_raw2.3.zst
 /usr/local/share/man/man3/gnutls_pubkey_export_ecc_raw.3.zst
@@ -719,6 +725,7 @@
 /usr/local/share/man/man3/gnutls_pubkey_get_preferred_hash_algorithm.3.zst
 /usr/local/share/man/man3/gnutls_pubkey_get_spki.3.zst
 /usr/local/share/man/man3/gnutls_pubkey_import.3.zst
+/usr/local/share/man/man3/gnutls_pubkey_import_dh_raw.3.zst
 /usr/local/share/man/man3/gnutls_pubkey_import_dsa_raw.3.zst
 /usr/local/share/man/man3/gnutls_pubkey_import_ecc_raw.3.zst
 /usr/local/share/man/man3/gnutls_pubkey_import_ecc_x962.3.zst
@@ -1230,6 +1237,7 @@
 /usr/local/share/man/man3/gnutls_x509_privkey_get_spki.3.zst
 /usr/local/share/man/man3/gnutls_x509_privkey_import.3.zst
 /usr/local/share/man/man3/gnutls_x509_privkey_import2.3.zst
+/usr/local/share/man/man3/gnutls_x509_privkey_import_dh_raw.3.zst
 /usr/local/share/man/man3/gnutls_x509_privkey_import_dsa_raw.3.zst
 /usr/local/share/man/man3/gnutls_x509_privkey_import_ecc_raw.3.zst
 /usr/local/share/man/man3/gnutls_x509_privkey_import_gost_raw.3.zst
@@ -1251,8 +1259,10 @@
 /usr/local/share/man/man3/gnutls_x509_rdn_get_by_oid.3.zst
 /usr/local/share/man/man3/gnutls_x509_rdn_get_oid.3.zst
 /usr/local/share/man/man3/gnutls_x509_spki_deinit.3.zst
+/usr/local/share/man/man3/gnutls_x509_spki_get_rsa_oaep_params.3.zst
 /usr/local/share/man/man3/gnutls_x509_spki_get_rsa_pss_params.3.zst
 /usr/local/share/man/man3/gnutls_x509_spki_init.3.zst
+/usr/local/share/man/man3/gnutls_x509_spki_set_rsa_oaep_params.3.zst
 /usr/local/share/man/man3/gnutls_x509_spki_set_rsa_pss_params.3.zst
 /usr/local/share/man/man3/gnutls_x509_tlsfeatures_add.3.zst
 /usr/local/share/man/man3/gnutls_x509_tlsfeatures_check_crt.3.zst

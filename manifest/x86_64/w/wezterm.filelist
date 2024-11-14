@@ -1,0 +1,13 @@
+/usr/local/bin/open-wezterm-here
+/usr/local/bin/strip-ansi-escapes
+/usr/local/bin/wezterm
+/usr/local/bin/wezterm-gui
+/usr/local/bin/wezterm-mux-server
+/usr/local/etc/bash.d/10-wezterm
+/usr/local/etc/bash.d/wezterm.sh
+/usr/local/share/applications/org.wezfurlong.wezterm.desktop
+/usr/local/share/bash-completion/completions/wezterm
+/usr/local/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png
+/usr/local/share/metainfo/org.wezfurlong.wezterm.appdata.xml
+/usr/local/share/nautilus-python/extensions/wezterm-nautilus.py
+/usr/local/share/zsh/functions/Completion/Unix/_wezterm

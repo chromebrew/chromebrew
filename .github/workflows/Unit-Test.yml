@@ -1,6 +1,9 @@
 ---
 name: Run Unit Tests on PR
-on: workflow_call
+on:
+  pull_request:
+    branches: [master]
+  merge_group:
 jobs:
   container_tests:
     strategy:
@@ -15,12 +18,37 @@ jobs:
           - arch: armv7l
             runner: ubuntu-latest
     runs-on: ${{ matrix.runner }}
+    concurrency:
+      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - name: Dump github context
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
       - name: Get non-pkg changed files
         id: non-pkg-changed-files
         uses: tj-actions/changed-files@v45
@@ -83,7 +111,7 @@ jobs:
               x86_64)
                 # Export the x86_64 container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
                 if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=hatch-x86_64.m129" >> $GITHUB_ENV
+                    echo "CONTAINER=hatch-x86_64.m130" >> $GITHUB_ENV
                 else
                     echo "CONTAINER=nocturne-x86_64.m90" >> $GITHUB_ENV
                 fi
@@ -93,7 +121,7 @@ jobs:
               armv7l)
                 # Export the armv7l container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
                 if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=strongbad-armv7l.m129" >> $GITHUB_ENV
+                    echo "CONTAINER=strongbad-armv7l.m130" >> $GITHUB_ENV
                 else
                     echo "CONTAINER=fievel-armv7l.m91" >> $GITHUB_ENV
                 fi
@@ -108,7 +136,19 @@ jobs:
               ;;
             esac
       - name: Run unit tests
+        env:
+          GITHUB_EVENT: ${{ github.event_name }}
         run: |
+            case $GITHUB_EVENT in
+              merge_group)
+                export CREW_REPO="${{ github.event.repository.clone_url }}"
+                export CREW_BRANCH="${{ github.ref_name }}"
+                ;;
+              pull_request)
+                export CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}"
+                export CREW_BRANCH="${{ github.head_ref }}"
+                ;;
+            esac
             if [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]); then
               # Exit the arm container if there are neither non-package changed files nor armv7l compatible packages.
               echo "Skipping armv7l container unit tests."
@@ -122,17 +162,17 @@ jobs:
               echo "Skipping i686 container unit tests."
               exit 0
             else
-              docker pull --platform $PLATFORM satmandu/crewbuild:$CONTAINER
+              docker pull --platform ${PLATFORM} satmandu/crewbuild:${CONTAINER}
               docker run \
                 --rm \
-                --platform $PLATFORM \
+                --platform ${PLATFORM} \
                 --privileged \
                 -u chronos \
-                -e CHANGED_PACKAGES="$CHANGED_PACKAGES" \
-                -e LD_LIBRARY_PATH="/usr/local/lib$LIB_SUFFIX" \
-                -e GCONV_PATH="/usr/local/lib$LIB_SUFFIX/gconv" \
-                -e CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}" \
-                -e CREW_BRANCH="${{ github.head_ref }}" \
-                "satmandu/crewbuild:$CONTAINER" \
-                /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test.sh
+                -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
+                -e LD_LIBRARY_PATH="/usr/local/lib${LIB_SUFFIX}" \
+                -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
+                -e CREW_REPO="${CREW_REPO}" \
+                -e CREW_BRANCH="${CREW_BRANCH}" \
+                "satmandu/crewbuild:${CONTAINER}" \
+                /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test_stub.sh
             fi

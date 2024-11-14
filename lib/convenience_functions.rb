@@ -1,6 +1,7 @@
 # lib/convenience_functions.rb
 # Extracted bits of crew-specific code that we use frequently enough that it makes sense to split them out to here.
 require 'json'
+require_relative 'color'
 require_relative 'const'
 require_relative 'crewlog'
 
@@ -25,6 +26,7 @@ class ConvenienceFunctions
   def self.libtoolize(library, lib_pkg_name = nil)
     lib_pkg_name = library if lib_pkg_name.nil?
     libname = library.to_s.start_with?('lib') ? library.downcase : "lib#{library.downcase}"
+    puts "Generating libtool file for #{lib_pkg_name}".orange
     puts "grep \"#{CREW_LIB_PREFIX}/#{libname}.so\\\|#{CREW_DEST_LIB_PREFIX}/#{libname}-*.so\" #{CREW_META_PATH}/#{lib_pkg_name}.filelist" if CREW_VERBOSE
     libnames = `grep "#{CREW_LIB_PREFIX}/#{libname}.so\\\|#{CREW_DEST_LIB_PREFIX}/#{libname}-*.so*" #{CREW_META_PATH}/#{lib_pkg_name}.filelist`.chomp.split(/$/).map(&:strip)
     libnames.each do |s|

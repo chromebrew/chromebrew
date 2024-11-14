@@ -3,7 +3,7 @@ require 'package'
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org/wiki/'
-  version '21.1.12'
+  version '21.1.14'
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
@@ -11,9 +11,9 @@ class Xorg_server < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'df55489c47e3ab85f8253ea1114530cdd49fcff45a68c70fe8ad63e76c787e40',
-     armv7l: 'df55489c47e3ab85f8253ea1114530cdd49fcff45a68c70fe8ad63e76c787e40',
-     x86_64: 'f1aa3b47ed6933b023a75ab53e9daee937047282cc7802c0f8c7bcbb6a8ef086'
+    aarch64: '09c2ecbe391a6d40b3f120024e5b5c4ec396ad86680c759f6cdfe9c0a730374a',
+     armv7l: '09c2ecbe391a6d40b3f120024e5b5c4ec396ad86680c759f6cdfe9c0a730374a',
+     x86_64: 'b86b5ebcb1fff6c2c2167a85374271f88c04b73bd5d6036abdc2976466a43e55'
   })
 
   depends_on 'dbus' # R
