@@ -27,37 +27,8 @@ class Taskwarrior < CMake
   end
 
   def self.postremove
-    taskrc = "#{HOME}/.taskrc"
-    if File.exist? taskrc
-      print "Would you like to remove #{taskrc}? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_f taskrc
-        puts "#{taskrc} removed.".lightgreen
-      else
-        puts "#{taskrc} saved.".lightgreen
-      end
-    end
-    config_dirs_to_remove = []
-    config_dirs = ["#{HOME}/.config/task", "#{HOME}/.task"]
-    config_dirs.each do |config_dir|
-      next unless Dir.exist? config_dir
-
-      config_dirs_to_remove.push(config_dir)
-      puts config_dir
-      system "ls '#{config_dir}'"
-    end
-    if config_dirs_to_remove.any?
-      print "\nWould you like to remove the config directory contents above? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        config_dirs_to_remove.each do |config_dir|
-          FileUtils.rm_rf config_dir
-          puts "#{config_dir} removed.".lightgreen
-        end
-      else
-        puts 'Directories saved.'.lightgreen
-      end
-    end
+    Package.agree_to_remove("#{HOME}/.task")
+    Package.agree_to_remove("#{HOME}/.config/task")
+    Package.agree_to_remove("#{HOME}/.taskrc")
   end
 end
