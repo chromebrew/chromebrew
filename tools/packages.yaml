@@ -8635,6 +8635,11 @@ url: https://github.com/GothenburgBitFactory/taskwarrior/releases
 activity: medium
 ---
 kind: url
+name: tauri_cli
+url: https://github.com/tauri-apps/tauri/releases
+activity: high
+---
+kind: url
 name: tbb
 url: https://github.com/oneapi-src/oneTBB/releases
 activity: medium
