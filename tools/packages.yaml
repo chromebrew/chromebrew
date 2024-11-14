@@ -685,6 +685,11 @@ url: https://github.com/google/brotli/releases
 activity: medium
 ---
 kind: url
+name: bsdgames
+url: https://salsa.debian.org/games-team/bsdgames/-/tags
+activity: low
+---
+kind: url
 name: btop
 url: https://github.com/aristocratos/btop/releases
 activity: low
