@@ -24,6 +24,7 @@ class Ruby < Package
   depends_on 'gmp' # R
   depends_on 'libffi' # R
   depends_on 'libyaml' # R
+  depends_on 'linuxheaders', '== 3.10' => :build if %w[armv7l aarch64].include?(ARCH) && CREW_IN_CONTAINER
   depends_on 'openssl' # R
   depends_on 'rust' => :build
   depends_on 'zlib' # R
