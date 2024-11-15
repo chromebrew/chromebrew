@@ -12,9 +12,18 @@ class Linuxheaders < Package
 
   case CREW_KERNEL_VERSION
   when '3.8'
-
     binary_sha256({
          i686: '362ab05c4f6903793560fffd33abf79e5194fb72d3d38ec1648a93c56ebf91e8'
+    })
+  when '3.10'
+    binary_sha256({
+      aarch64: 'c72bd617ad3b828daffb6715461e8fd9d40770c381a3acab1a9028d5efefb141',
+       armv7l: 'c72bd617ad3b828daffb6715461e8fd9d40770c381a3acab1a9028d5efefb141'
+    })
+  when '3.14'
+    binary_sha256({
+      aarch64: 'ab9bcfc09e84da46955cec28c795f7aab8e92be85f5a05ca972285382ea6aac5',
+       armv7l: 'ab9bcfc09e84da46955cec28c795f7aab8e92be85f5a05ca972285382ea6aac5'
     })
   when '4.14'
     binary_sha256({

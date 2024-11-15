@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.55.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.55.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -59,7 +59,7 @@ end
 
 # Use sane minimal defaults if in container and no override specified.
 CREW_KERNEL_VERSION ||= \
-  if CREW_IN_CONTAINER || ENV.fetch('CREW_KERNEL_VERSION', nil)
+  if CREW_IN_CONTAINER && ENV.fetch('CREW_KERNEL_VERSION', nil).nil?
     ARCH.eql?('i686') ? '3.8' : '5.10'
   else
     ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
