@@ -34,7 +34,7 @@ class Ruby < Package
 
   def self.prebuild
     # See https://github.com/chromebrew/chromebrew/issues/10724#issuecomment-2466486461
-    abort 'Please build with CREW_KERNEL_VERSION=3.10' if %w[armv7l aarch64].include?(ARCH) && Gem::Version.new(CREW_KERNEL_VERSION) > Gem::Version.new('3.10')
+    abort 'Please build with CREW_KERNEL_VERSION=3.10'.orange if %w[armv7l aarch64].include?(ARCH) && Gem::Version.new(CREW_KERNEL_VERSION) > Gem::Version.new('3.10')
   end
 
   def self.build
