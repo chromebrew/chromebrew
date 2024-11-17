@@ -6,7 +6,7 @@ on:
   merge_group:
 jobs:
   handoff:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       category: ${{ steps.changed-file-extensions.outputs.category }}
     steps:
@@ -56,7 +56,7 @@ jobs:
     if: contains(needs.handoff.outputs.category, 'YAML')
     uses: ./.github/workflows/YAMLlint.yml
   linter-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs:
       - handoff
       - markdown
