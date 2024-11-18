@@ -9,14 +9,14 @@ jobs:
     strategy:
       matrix:
         arch: [x86_64, armv7l, i686]
-        runner: [self-hosted, ubuntu-latest]
+        runner: [self-hosted, ubuntu-24.04]
         exclude:
           - arch: x86_64
             runner: self-hosted
           - arch: i686
             runner: self-hosted
           - arch: armv7l
-            runner: ubuntu-latest
+            runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
     concurrency:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}

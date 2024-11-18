@@ -5,21 +5,23 @@ on:
     - cron: '0 0 * * 0'  # Weekly
 jobs:
   generate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3.4'
+          ruby-version: '3.3.6'
       - name: Install highline
-        run: gem install highline
+        run: sudo apt-install -y ruby-highline
+      - name: Install activesupport
+        run: sudo apt install -y ruby-activesupport
       - name: Configure git
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
       - name: Generate repology.json
         env:
-          CREW_KERNEL_VERSION: 5.1
+          CREW_KERNEL_VERSION: 5.10
           LIBC_VERSION: 2.37
         run: |
           ruby -Ctools json.rb
