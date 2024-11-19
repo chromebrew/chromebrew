@@ -1,13 +1,13 @@
 /usr/local/bin/nuitka
 /usr/local/bin/nuitka-run
-/usr/local/lib/python3.13/site-packages/Nuitka-2.4.11.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/Nuitka-2.4.11.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/Nuitka-2.4.11.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/Nuitka-2.4.11.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/Nuitka-2.4.11.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/Nuitka-2.4.11.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/Nuitka-2.4.11.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/Nuitka-2.4.11.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/Nuitka-2.5.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/Nuitka-2.5.1.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/Nuitka-2.5.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/Nuitka-2.5.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/Nuitka-2.5.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/Nuitka-2.5.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/Nuitka-2.5.1.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/Nuitka-2.5.1.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/nuitka/Builtins.py
 /usr/local/lib/python3.13/site-packages/nuitka/BytecodeCaching.py
 /usr/local/lib/python3.13/site-packages/nuitka/Bytecodes.py
@@ -95,6 +95,7 @@
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/compiled_method.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/constants.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/constants_blob.h
+/usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/debug_settings.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/environment_variables.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/environment_variables_system.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/exception_groups.h
@@ -107,6 +108,12 @@
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/bytearrays.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/bytes.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/calling_generated.h
+/usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/comparisons_dual_eq.h
+/usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/comparisons_dual_ge.h
+/usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/comparisons_dual_gt.h
+/usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/comparisons_dual_le.h
+/usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/comparisons_dual_lt.h
+/usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/comparisons_dual_ne.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/comparisons_eq.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/comparisons_ge.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/comparisons_gt.h
@@ -129,6 +136,7 @@
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/operations_binary_bitor.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/operations_binary_bitxor.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/operations_binary_divmod.h
+/usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/operations_binary_dual_add.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/operations_binary_floordiv.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/operations_binary_lshift.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/include/nuitka/helper/operations_binary_matmult.h
@@ -545,6 +553,12 @@
 /usr/local/lib/python3.13/site-packages/nuitka/build/inline_copy/python_hacl/hacl_312/internal/Hacl_Hash_SHA2.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/inline_copy/python_hacl/hacl_312/internal/Hacl_Hash_SHA3.h
 /usr/local/lib/python3.13/site-packages/nuitka/build/inline_copy/python_hacl/hacl_312/python_hacl_namespaces.h
+/usr/local/lib/python3.13/site-packages/nuitka/build/inline_copy/stubgen/__pycache__/astunparse.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/nuitka/build/inline_copy/stubgen/__pycache__/six.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/nuitka/build/inline_copy/stubgen/__pycache__/stubgen.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/nuitka/build/inline_copy/stubgen/astunparse.py
+/usr/local/lib/python3.13/site-packages/nuitka/build/inline_copy/stubgen/six.py
+/usr/local/lib/python3.13/site-packages/nuitka/build/inline_copy/stubgen/stubgen.py
 /usr/local/lib/python3.13/site-packages/nuitka/build/inline_copy/tqdm/tqdm/__init__.py
 /usr/local/lib/python3.13/site-packages/nuitka/build/inline_copy/tqdm/tqdm/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/build/inline_copy/tqdm/tqdm/__pycache__/_main.cpython-313.pyc
@@ -660,6 +674,12 @@
 /usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersCallingGenerated.c
 /usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersChecksumTools.c
 /usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersClasses.c
+/usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersComparisonDualEq.c
+/usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersComparisonDualGe.c
+/usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersComparisonDualGt.c
+/usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersComparisonDualLe.c
+/usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersComparisonDualLt.c
+/usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersComparisonDualNe.c
 /usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersComparisonEq.c
 /usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersComparisonEqUtils.c
 /usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersComparisonGe.c
@@ -694,6 +714,7 @@
 /usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryBitxor.c
 /usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryDivmod.c
 /usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryDivmodUtils.c
+/usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryDualAdd.c
 /usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryFloordiv.c
 /usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryInplaceAdd.c
 /usr/local/lib/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryLshift.c
@@ -933,8 +954,10 @@
 /usr/local/lib/python3.13/site-packages/nuitka/code_generation/templates_c/HelperLongTools.c.j2
 /usr/local/lib/python3.13/site-packages/nuitka/code_generation/templates_c/HelperObjectTools.c.j2
 /usr/local/lib/python3.13/site-packages/nuitka/code_generation/templates_c/HelperOperationBinary.c.j2
+/usr/local/lib/python3.13/site-packages/nuitka/code_generation/templates_c/HelperOperationBinaryDual.c.j2
 /usr/local/lib/python3.13/site-packages/nuitka/code_generation/templates_c/HelperOperationComparison.c.j2
 /usr/local/lib/python3.13/site-packages/nuitka/code_generation/templates_c/HelperOperationComparisonBytes.c.j2
+/usr/local/lib/python3.13/site-packages/nuitka/code_generation/templates_c/HelperOperationComparisonDual.c.j2
 /usr/local/lib/python3.13/site-packages/nuitka/code_generation/templates_c/HelperOperationComparisonFloat.c.j2
 /usr/local/lib/python3.13/site-packages/nuitka/code_generation/templates_c/HelperOperationComparisonInt.c.j2
 /usr/local/lib/python3.13/site-packages/nuitka/code_generation/templates_c/HelperOperationComparisonList.c.j2
@@ -1262,6 +1285,7 @@
 /usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/OptionsNannyPlugin.py
 /usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/PbrPlugin.py
 /usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/PkgResourcesPlugin.py
+/usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/PlaywrightPlugin.py
 /usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/PmwPlugin.py
 /usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/PySidePyQtPlugin.py
 /usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/PywebViewPlugin.py
@@ -1292,6 +1316,7 @@
 /usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/__pycache__/OptionsNannyPlugin.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/__pycache__/PbrPlugin.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/__pycache__/PkgResourcesPlugin.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/__pycache__/PlaywrightPlugin.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/__pycache__/PmwPlugin.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/__pycache__/PySidePyQtPlugin.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/plugins/standard/__pycache__/PywebViewPlugin.cpython-313.pyc
@@ -1517,6 +1542,7 @@
 /usr/local/lib/python3.13/site-packages/nuitka/utils/Hashing.py
 /usr/local/lib/python3.13/site-packages/nuitka/utils/Images.py
 /usr/local/lib/python3.13/site-packages/nuitka/utils/Importing.py
+/usr/local/lib/python3.13/site-packages/nuitka/utils/InlineCopies.py
 /usr/local/lib/python3.13/site-packages/nuitka/utils/InstalledPythons.py
 /usr/local/lib/python3.13/site-packages/nuitka/utils/InstanceCounters.py
 /usr/local/lib/python3.13/site-packages/nuitka/utils/Jinja2.py
@@ -1524,6 +1550,7 @@
 /usr/local/lib/python3.13/site-packages/nuitka/utils/MacOSApp.py
 /usr/local/lib/python3.13/site-packages/nuitka/utils/MemoryUsage.py
 /usr/local/lib/python3.13/site-packages/nuitka/utils/ModuleNames.py
+/usr/local/lib/python3.13/site-packages/nuitka/utils/PackageResources.py
 /usr/local/lib/python3.13/site-packages/nuitka/utils/ReExecute.py
 /usr/local/lib/python3.13/site-packages/nuitka/utils/Rest.py
 /usr/local/lib/python3.13/site-packages/nuitka/utils/SharedLibraries.py
@@ -1548,6 +1575,7 @@
 /usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/Hashing.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/Images.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/Importing.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/InlineCopies.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/InstalledPythons.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/InstanceCounters.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/Jinja2.cpython-313.pyc
@@ -1555,6 +1583,7 @@
 /usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/MacOSApp.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/MemoryUsage.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/ModuleNames.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/PackageResources.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/ReExecute.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/Rest.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nuitka/utils/__pycache__/SharedLibraries.cpython-313.pyc
