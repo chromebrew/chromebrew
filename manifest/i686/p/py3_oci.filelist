@@ -1,11 +1,11 @@
-/usr/local/lib/python3.13/site-packages/oci-2.138.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/oci-2.138.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/oci-2.138.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/oci-2.138.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/oci-2.138.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/oci-2.138.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.13/site-packages/oci-2.138.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/oci-2.138.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/oci/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/alloy.cpython-313.pyc
@@ -15063,6 +15063,9 @@
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/cohere_llm_inference_response.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/cohere_message.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/cohere_parameter_definition.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/cohere_response_format.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/cohere_response_json_format.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/cohere_response_text_format.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/cohere_system_message.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/cohere_tool.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/cohere_tool_call.cpython-313.pyc
@@ -15077,6 +15080,8 @@
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/generated_text.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/generic_chat_request.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/generic_chat_response.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/image_content.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/image_url.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/llama_llm_inference_request.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/llama_llm_inference_response.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/llm_inference_request.cpython-313.pyc
@@ -15108,6 +15113,9 @@
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/cohere_llm_inference_response.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/cohere_message.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/cohere_parameter_definition.py
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/cohere_response_format.py
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/cohere_response_json_format.py
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/cohere_response_text_format.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/cohere_system_message.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/cohere_tool.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/cohere_tool_call.py
@@ -15122,6 +15130,8 @@
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/generated_text.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/generic_chat_request.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/generic_chat_response.py
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/image_content.py
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/image_url.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/llama_llm_inference_request.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/llama_llm_inference_response.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/llm_inference_request.py
@@ -15326,6 +15336,7 @@
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/default_cancel_deployment_upgrade_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/default_cancel_snooze_deployment_upgrade_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/default_deployment_wallet_exists_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/default_refresh_connection_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/default_restore_deployment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/default_rollback_deployment_upgrade_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/default_snooze_deployment_upgrade_details.cpython-313.pyc
@@ -15401,6 +15412,7 @@
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/postgresql_connection_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/redis_connection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/redis_connection_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/refresh_connection_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/remove_resource_lock_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/reschedule_deployment_upgrade_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/__pycache__/reschedule_deployment_upgrade_to_date_details.cpython-313.pyc
@@ -15530,6 +15542,7 @@
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/default_cancel_deployment_upgrade_details.py
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/default_cancel_snooze_deployment_upgrade_details.py
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/default_deployment_wallet_exists_details.py
+/usr/local/lib/python3.13/site-packages/oci/golden_gate/models/default_refresh_connection_details.py
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/default_restore_deployment_details.py
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/default_rollback_deployment_upgrade_details.py
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/default_snooze_deployment_upgrade_details.py
@@ -15605,6 +15618,7 @@
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/postgresql_connection_summary.py
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/redis_connection.py
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/redis_connection_summary.py
+/usr/local/lib/python3.13/site-packages/oci/golden_gate/models/refresh_connection_details.py
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/remove_resource_lock_details.py
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/reschedule_deployment_upgrade_details.py
 /usr/local/lib/python3.13/site-packages/oci/golden_gate/models/reschedule_deployment_upgrade_to_date_details.py

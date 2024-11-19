@@ -6,17 +6,17 @@ require 'buildsystems/pip'
 class Py3_sphinx_rtd_theme < Pip
   description 'Sphinx theme for readthedocs.org'
   homepage 'https://github.com/readthedocs/sphinx_rtd_theme'
-  version "3.0.1-#{CREW_PY_VER}"
+  version "3.0.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '36b4758363dbd424d6912901d6073c0ba74ff6334213771c2eafdd84c0cf0c4d',
-     armv7l: '36b4758363dbd424d6912901d6073c0ba74ff6334213771c2eafdd84c0cf0c4d',
-       i686: '2cb3259fccb44f0e954b0c324a22a7bc478d40cfb4c663ba1dd7e0abc6a358f2',
-     x86_64: 'd102197d10167aab634c7b34679a9d3232a831e24754ef4bacbf41fe5d6bc439'
+    aarch64: '3be0cd0438adbb5cc5f3e6686d06f02ad7f2e13a3a221c42c7dc735b55dd8ca9',
+     armv7l: '3be0cd0438adbb5cc5f3e6686d06f02ad7f2e13a3a221c42c7dc735b55dd8ca9',
+       i686: 'b538202e01c70be5904ef647f8b2b873cefaeed1cfb8009a4902388de135df64',
+     x86_64: '899cfeaf4e4ab6383db9e15c160e0ee103ec632d46013abdf105c0a5b3a7fe72'
   })
 
   depends_on 'python3'
