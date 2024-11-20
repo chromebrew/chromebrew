@@ -376,6 +376,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/attachments/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/attachments/client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/attachments/groups/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/attachments/groups/client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/groups/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/groups/client.py
@@ -1052,6 +1054,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/spanner/database_operations.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/spanner/database_roles.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/spanner/database_sessions.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/spanner/database_splits.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/spanner/databases.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/spanner/instance_config_operations.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/spanner/instance_configs.py
@@ -1754,6 +1757,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/attachments/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/attachments/flags.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/attachments/groups/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/attachments/groups/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/groups/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/groups/flags.py
@@ -3031,6 +3036,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/resource_args.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/samples.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/split_file_parser.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/sql.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/write_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/sql/__init__.py
@@ -4866,6 +4872,11 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/parallelstore/v1beta/parallelstore_v1beta_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/parallelstore/v1beta/parallelstore_v1beta_messages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/parallelstore/v1beta/resources.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/parametermanager/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/parametermanager/v1/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/parametermanager/v1/parametermanager_v1_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/parametermanager/v1/parametermanager_v1_messages.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/parametermanager/v1/resources.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/policyanalyzer/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/policyanalyzer/v1/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/policyanalyzer/v1/policyanalyzer_v1_client.py
@@ -8170,6 +8181,14 @@
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/dedicated/update.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/delete.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/describe.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/__init__.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/add_members.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/create.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/delete.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/describe.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/list.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/remove_members.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/update.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/list.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/partner/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/partner/create.py
@@ -9628,6 +9647,10 @@
 /usr/local/share/gcloud/lib/surface/dataplex/glossaries/set_iam_policy.py
 /usr/local/share/gcloud/lib/surface/dataplex/glossaries/terms/__init__.py
 /usr/local/share/gcloud/lib/surface/dataplex/glossaries/terms/create.py
+/usr/local/share/gcloud/lib/surface/dataplex/glossaries/terms/delete.yaml
+/usr/local/share/gcloud/lib/surface/dataplex/glossaries/terms/describe.yaml
+/usr/local/share/gcloud/lib/surface/dataplex/glossaries/terms/list.yaml
+/usr/local/share/gcloud/lib/surface/dataplex/glossaries/terms/update.py
 /usr/local/share/gcloud/lib/surface/dataplex/glossaries/update.py
 /usr/local/share/gcloud/lib/surface/dataplex/governance_rules/__init__.py
 /usr/local/share/gcloud/lib/surface/dataplex/governance_rules/add_iam_policy_binding.py
@@ -10604,6 +10627,7 @@
 /usr/local/share/gcloud/lib/surface/functions/delete.py
 /usr/local/share/gcloud/lib/surface/functions/deploy.py
 /usr/local/share/gcloud/lib/surface/functions/describe.py
+/usr/local/share/gcloud/lib/surface/functions/detach.py
 /usr/local/share/gcloud/lib/surface/functions/event_types/__init__.py
 /usr/local/share/gcloud/lib/surface/functions/event_types/list.py
 /usr/local/share/gcloud/lib/surface/functions/get_iam_policy.py
@@ -11204,6 +11228,7 @@
 /usr/local/share/gcloud/lib/surface/kms/key_handles/__init__.py
 /usr/local/share/gcloud/lib/surface/kms/key_handles/create.py
 /usr/local/share/gcloud/lib/surface/kms/key_handles/describe.yaml
+/usr/local/share/gcloud/lib/surface/kms/key_handles/list.py
 /usr/local/share/gcloud/lib/surface/kms/keyrings/__init__.py
 /usr/local/share/gcloud/lib/surface/kms/keyrings/add_iam_policy_binding.yaml
 /usr/local/share/gcloud/lib/surface/kms/keyrings/config/__init__.py
@@ -12827,7 +12852,16 @@
 /usr/local/share/gcloud/lib/surface/redis/__init__.py
 /usr/local/share/gcloud/lib/surface/redis/clusters/__init__.py
 /usr/local/share/gcloud/lib/surface/redis/clusters/add_cluster_endpoints.yaml
+/usr/local/share/gcloud/lib/surface/redis/clusters/backup_collections/__init__.py
+/usr/local/share/gcloud/lib/surface/redis/clusters/backup_collections/describe.yaml
+/usr/local/share/gcloud/lib/surface/redis/clusters/backup_collections/list.yaml
+/usr/local/share/gcloud/lib/surface/redis/clusters/backups/__init__.py
+/usr/local/share/gcloud/lib/surface/redis/clusters/backups/delete.yaml
+/usr/local/share/gcloud/lib/surface/redis/clusters/backups/describe.yaml
+/usr/local/share/gcloud/lib/surface/redis/clusters/backups/export.yaml
+/usr/local/share/gcloud/lib/surface/redis/clusters/backups/list.yaml
 /usr/local/share/gcloud/lib/surface/redis/clusters/create.yaml
+/usr/local/share/gcloud/lib/surface/redis/clusters/create_backup.yaml
 /usr/local/share/gcloud/lib/surface/redis/clusters/delete.yaml
 /usr/local/share/gcloud/lib/surface/redis/clusters/describe.yaml
 /usr/local/share/gcloud/lib/surface/redis/clusters/detach.yaml
@@ -13526,6 +13560,9 @@
 /usr/local/share/gcloud/lib/surface/spanner/databases/sessions/delete.py
 /usr/local/share/gcloud/lib/surface/spanner/databases/sessions/list.py
 /usr/local/share/gcloud/lib/surface/spanner/databases/set_iam_policy.py
+/usr/local/share/gcloud/lib/surface/spanner/databases/splits/__init__.py
+/usr/local/share/gcloud/lib/surface/spanner/databases/splits/add.py
+/usr/local/share/gcloud/lib/surface/spanner/databases/splits/list.py
 /usr/local/share/gcloud/lib/surface/spanner/databases/update.py
 /usr/local/share/gcloud/lib/surface/spanner/instance_configs/__init__.py
 /usr/local/share/gcloud/lib/surface/spanner/instance_configs/create.py
