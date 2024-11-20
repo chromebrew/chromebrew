@@ -7,7 +7,7 @@ Package.load_package("#{__dir__}/llvm19_build.rb")
 class Libclc < Package
   description 'Library requirements of the OpenCL C programming language'
   homepage 'https://libclc.llvm.org/'
-  version '19.1.3'
+  version '19.1.4'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm19_build.version}".orange if version != Llvm19_build.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
@@ -17,9 +17,9 @@ class Libclc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0cb9b672fac089bb3a2049798dbc0fe80e9fdd26fa95cb42756ab43593008082',
-     armv7l: '0cb9b672fac089bb3a2049798dbc0fe80e9fdd26fa95cb42756ab43593008082',
-     x86_64: 'e92c2a3ac741518a30ad506a22dd7af98082818bd4bb0bebe205a2089157b418'
+    aarch64: '5dad3e67079bc62721e86ab0c0d5e6f12b9efb3bf15f43f40f17e85ce2fd33f8',
+     armv7l: '5dad3e67079bc62721e86ab0c0d5e6f12b9efb3bf15f43f40f17e85ce2fd33f8',
+     x86_64: '37c28e0d86c42702e00a2d5f95dfbbb11203d003b2af42a6f25c9ed7139ed001'
   })
 
   depends_on 'llvm19_dev' => :build
