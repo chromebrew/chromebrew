@@ -1,11 +1,11 @@
-/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/oci-2.138.1.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/oci/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/alloy.cpython-313.pyc
@@ -243,7 +243,9 @@
 /usr/local/lib/python3.13/site-packages/oci/_vendor/urllib3/packages/backports/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/_vendor/urllib3/packages/backports/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/_vendor/urllib3/packages/backports/__pycache__/makefile.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/_vendor/urllib3/packages/backports/__pycache__/weakref_finalize.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/_vendor/urllib3/packages/backports/makefile.py
+/usr/local/lib/python3.13/site-packages/oci/_vendor/urllib3/packages/backports/weakref_finalize.py
 /usr/local/lib/python3.13/site-packages/oci/_vendor/urllib3/packages/six.py
 /usr/local/lib/python3.13/site-packages/oci/_vendor/urllib3/poolmanager.py
 /usr/local/lib/python3.13/site-packages/oci/_vendor/urllib3/request.py
@@ -3172,6 +3174,7 @@
 /usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/activity_item.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/category.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/classifier.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/cmos_user_group_info.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/contact.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/contact_list.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/contextual_data.cpython-313.pyc
@@ -3194,8 +3197,8 @@
 /usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/item.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/limit_item.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/resource.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/service_categories.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/service_category.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/services.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/status.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/sub_categories.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cims/models/__pycache__/sub_category.cpython-313.pyc
@@ -3215,6 +3218,7 @@
 /usr/local/lib/python3.13/site-packages/oci/cims/models/activity_item.py
 /usr/local/lib/python3.13/site-packages/oci/cims/models/category.py
 /usr/local/lib/python3.13/site-packages/oci/cims/models/classifier.py
+/usr/local/lib/python3.13/site-packages/oci/cims/models/cmos_user_group_info.py
 /usr/local/lib/python3.13/site-packages/oci/cims/models/contact.py
 /usr/local/lib/python3.13/site-packages/oci/cims/models/contact_list.py
 /usr/local/lib/python3.13/site-packages/oci/cims/models/contextual_data.py
@@ -3237,8 +3241,8 @@
 /usr/local/lib/python3.13/site-packages/oci/cims/models/item.py
 /usr/local/lib/python3.13/site-packages/oci/cims/models/limit_item.py
 /usr/local/lib/python3.13/site-packages/oci/cims/models/resource.py
-/usr/local/lib/python3.13/site-packages/oci/cims/models/service_categories.py
 /usr/local/lib/python3.13/site-packages/oci/cims/models/service_category.py
+/usr/local/lib/python3.13/site-packages/oci/cims/models/services.py
 /usr/local/lib/python3.13/site-packages/oci/cims/models/status.py
 /usr/local/lib/python3.13/site-packages/oci/cims/models/sub_categories.py
 /usr/local/lib/python3.13/site-packages/oci/cims/models/sub_category.py
@@ -9104,6 +9108,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/complete_external_backup_job_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/compute_performance_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/configure_autonomous_database_vault_key_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/configure_exascale_exadata_infrastructure_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/configure_saas_admin_user_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/console_connection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/console_connection_summary.cpython-313.pyc
@@ -9268,6 +9273,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/exadb_vm_cluster_update_history_entry.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/exadb_vm_cluster_update_history_entry_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/exadb_vm_cluster_update_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/exascale_config_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/exascale_db_storage_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/exascale_db_storage_input_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/exascale_db_storage_vault.cpython-313.pyc
@@ -9558,6 +9564,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/complete_external_backup_job_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/compute_performance_summary.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/configure_autonomous_database_vault_key_details.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/configure_exascale_exadata_infrastructure_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/configure_saas_admin_user_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/console_connection.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/console_connection_summary.py
@@ -9722,6 +9729,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/exadb_vm_cluster_update_history_entry.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/exadb_vm_cluster_update_history_entry_summary.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/exadb_vm_cluster_update_summary.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/exascale_config_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/exascale_db_storage_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/exascale_db_storage_input_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/exascale_db_storage_vault.py

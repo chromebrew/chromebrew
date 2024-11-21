@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_bcrypt < Pip
   description 'Modern password hashing for your software and your servers.'
   homepage 'https://github.com/pyca/bcrypt/'
-  version "4.2.0-#{CREW_PY_VER}"
+  version "4.2.1-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9a83c9a28d1c842577e5c89e96eb69bc0080f3492c4602b77275dfb3a24b2c31',
-     armv7l: '9a83c9a28d1c842577e5c89e96eb69bc0080f3492c4602b77275dfb3a24b2c31',
-       i686: 'bc5509af909c37d88226ebd0d3fbe938d6d22713f34cbe6f25e1409ee6f63fe5',
-     x86_64: 'd60c1762dce34b0fbc88f8d4c2eb191ea75d091e0487f7caef6e0dbd468f588f'
+    aarch64: '469fd931b308ffeadd4a90844494ad436f017d3ab6a9eff7af35898c6d3cb7d0',
+     armv7l: '469fd931b308ffeadd4a90844494ad436f017d3ab6a9eff7af35898c6d3cb7d0',
+       i686: '217b72df520f5d1697686d7beb2c6009fd8d4e63cab2cf984687dadb52a2137f',
+     x86_64: '4a76275a9f0387b45c1d35f342d6f6c4bed5698485cc0ccf35a92aeeeafdcd01'
   })
 
   depends_on 'python3'
