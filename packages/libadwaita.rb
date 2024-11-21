@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libadwaita < Meson
   description 'Library of GNOME-specific UI patterns, replacing libhandy for GTK4'
   homepage 'https://gitlab.gnome.org/GNOME/libadwaita/'
-  version '1.6.beta'
+  version '1.6.1'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/libadwaita.git'
@@ -11,9 +11,9 @@ class Libadwaita < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '986ab05714ec676db239846ec08a81ba6a7f6696b6726478b04655435ae3908b',
-     armv7l: '986ab05714ec676db239846ec08a81ba6a7f6696b6726478b04655435ae3908b',
-     x86_64: '9843c177eefacd1e5eb9bf08e7323d9131c243285bc31a01776664c52de8d2f7'
+    aarch64: 'e878a076bd1b32ffac81c0c1a4a1507528933d805ec28ebccba93298bd6905c7',
+     armv7l: 'e878a076bd1b32ffac81c0c1a4a1507528933d805ec28ebccba93298bd6905c7',
+     x86_64: '5aa963f1ccdcaf5b515add4c4f4c0e0cecc409d119d5d0c823f4e498608d86e5'
   })
 
   depends_on 'appstream' # R
@@ -27,7 +27,8 @@ class Libadwaita < Meson
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
   depends_on 'graphene' # R
-  depends_on 'gtk4' # R
+  # Keep the gtk4 dependency from being pulled in during a gtk3 build.
+  depends_on 'gtk4' unless ancestors[0].to_s.split('::')[1].downcase == 'gtk3' # R
   depends_on 'harfbuzz' => :build
   depends_on 'libjpeg_turbo' => :build
   depends_on 'libsass' => :build

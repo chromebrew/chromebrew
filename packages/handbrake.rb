@@ -70,6 +70,7 @@ class Handbrake < Package
   def self.prebuild
     ConvenienceFunctions.libtoolize('freetype')
     ConvenienceFunctions.libtoolize('fribidi')
+    ConvenienceFunctions.libtoolize('glib')
     ConvenienceFunctions.libtoolize('harfbuzz')
     ConvenienceFunctions.libtoolize('libpng')
     ConvenienceFunctions.libtoolize('libuuid', 'util_linux')

@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk3 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://docs.gtk.org/gtk3/'
-  version '3.24.42'
+  version '3.24.43'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk3 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e5235420bc26f24f91ee5b5d1f4c5e5088abe4d95b60f0461a38ed00a3ffddc2',
-     armv7l: 'e5235420bc26f24f91ee5b5d1f4c5e5088abe4d95b60f0461a38ed00a3ffddc2',
-     x86_64: '82137a4436122b01483137fe772724df66f1cdebe3b2a6ba03c0204d96d6230b'
+    aarch64: '741d6a205ee67026f2c7d46f675403396ca62b91462129eb69ebebb9ce42fe35',
+     armv7l: '741d6a205ee67026f2c7d46f675403396ca62b91462129eb69ebebb9ce42fe35',
+     x86_64: '239a482c97a97342ed22b7ba28eaf37b25941ed81e0c62e03f5ae96372edb60b'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -80,16 +80,13 @@ class Gtk3 < Meson
     end
   end
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      -Dbroadway_backend=true \
+  meson_options '-Dbroadway_backend=false \
       -Ddemos=false \
       -Dexamples=false \
-      -Dgtk_doc=false \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-    @gtk3settings = <<~GTK3_CONFIG_HEREDOC
+      -Dgtk_doc=false'
+
+  meson_build_extras do
+    File.write 'gtk3settings', <<~GTK3_CONFIG_HEREDOC
       [Settings]
       gtk-icon-theme-name = Adwaita
       gtk-fallback-icon-theme = gnome
@@ -99,10 +96,9 @@ class Gtk3 < Meson
     GTK3_CONFIG_HEREDOC
   end
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  meson_install_extras do
     system "sed -i 's,null,,g'  #{CREW_DEST_LIB_PREFIX}/pkgconfig/gtk*.pc"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/gtk-3.0"
-    File.write("#{CREW_DEST_PREFIX}/.config/gtk-3.0/settings.ini", @gtk3settings)
+    xdg_config_dest_home = File.join(CREW_DEST_PREFIX, '.config')
+    FileUtils.install 'gtk3settings', "#{xdg_config_dest_home}/gtk-3.0/settings.ini", mode: 0o644
   end
 end
