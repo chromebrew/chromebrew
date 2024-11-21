@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.16.5'
+  version '4.17.0'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e7dc79ad0649c7e281a0187ce0a3bc912f3c27ba1da155e05a1e613a81eff901',
-     armv7l: 'e7dc79ad0649c7e281a0187ce0a3bc912f3c27ba1da155e05a1e613a81eff901',
-     x86_64: '3a0d5e38638e7952f38c9c27e0d9cbf0cb22bd5ee67a77faf6c8e4cab3d14c8e'
+    aarch64: '9d69995b733949806f9770614aa09bc3ee6ad261e2cd3af96ae80f7a6230190c',
+     armv7l: '9d69995b733949806f9770614aa09bc3ee6ad261e2cd3af96ae80f7a6230190c',
+     x86_64: '39fceeda2e71617029d5ffe355c8ba20146b947d7f91845887023e4dbc11ff03'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -85,7 +85,7 @@ class Gtk4 < Meson
     end
   end
 
-  meson_options '-Dbroadway-backend=true \
+  meson_options '-Dbroadway-backend=false \
       -Dbuild-demos=false \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
