@@ -346,7 +346,7 @@ def update
   end
 
   if CREW_UNATTENDED && can_be_updated.positive?
-    puts updatable_packages
+    puts updatable_packages.to_json
   elsif can_be_updated.positive?
     puts "\n#{can_be_updated} packages can be updated."
     puts 'Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages.'

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# build_updated_packages version 1.8 (for Chromebrew)
+# build_updated_packages version 1.9 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -164,16 +164,19 @@ else
   load 'tools/update_ruby_gem_packages.rb'
 end
 changed_files = `git diff HEAD --name-only`.chomp.split
+changed_files_previous_commit = `git diff --name-only HEAD HEAD~1`.chomp.split
 updated_packages = changed_files.select { |c| c.include?('packages/') }
+updated_packages.push(*changed_files_previous_commit.select { |c| c.include?('packages/') })
 
 if updated_packages.empty?
   puts 'No packages need to be updated.'.orange
 else
   puts 'These changed packages will be checked to see if they need updated binaries:'.orange
+  updated_packages.uniq!
   updated_packages.each { |p| puts p.sub('packages/', '').sub('.rb', '').to_s.lightblue }
 end
 
-crew_update_packages = `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update`.chomp.split.map(&'packages/'.method(:+)).map { |i| i.concat('.rb') }
+crew_update_packages = `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update | grep "\\[\\""  | jq -r '.[]'`.chomp.split.map(&'packages/'.method(:+)).map { |i| i.concat('.rb') }
 if CHECK_ALL_PYTHON
   py_packages = `grep -l CREW_PY_VER packages/*`.chomp.split
   updated_packages.push(*py_packages)
@@ -184,6 +187,7 @@ if CHECK_ALL_RUBY
 end
 updated_packages.push(*crew_update_packages)
 updated_packages.uniq!
+
 updated_packages.each do |pkg|
   name = pkg.sub('packages/', '').sub('.rb', '')
 
