@@ -13,7 +13,7 @@ jobs:
         with:
           ruby-version: '3.3.6'
       - name: Install highline
-        run: sudo apt-install -y ruby-highline
+        run: sudo apt install -y ruby-highline
       - name: Install activesupport
         run: sudo apt install -y ruby-activesupport
       - name: Configure git
