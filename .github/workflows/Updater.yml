@@ -2,7 +2,8 @@
 name: Generate Updates PR
 on:
   schedule:
-    - cron: '20 19 * * *'  # Daily
+    - cron: '0 0 * * *'  # Daily
+  workflow_dispatch:
 jobs:
   update-check:
     permissions:
