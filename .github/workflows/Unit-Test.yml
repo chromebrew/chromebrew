@@ -54,8 +54,9 @@ jobs:
         uses: tj-actions/changed-files@v45
         with:
           files_ignore: |
-            packages/*.rb
+            .github/**
             manifest/**
+            packages/*.rb
             tools/packages.yaml
       - name: Get all changed package files
         id: changed-ruby-files
@@ -176,3 +177,13 @@ jobs:
                 "satmandu/crewbuild:${CONTAINER}" \
                 /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test_stub.sh
             fi
+  container_test_check:
+    runs-on: ubuntu-24.04
+    needs:
+      - container_tests
+    if: ${{ !cancelled() }}
+    steps:
+      - name: fail if container_test jobs failed
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
+      - run: echo "Container test jobs succeeded"

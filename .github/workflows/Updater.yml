@@ -46,10 +46,10 @@ jobs:
           fi
   generate:
     strategy:
+      max-parallel: 1
       matrix:
         arch: [x86_64, armv7l, i686]
         runner: [self-hosted, ubuntu-24.04]
-        max-parallel: 1
         exclude:
           - arch: x86_64
             runner: self-hosted
