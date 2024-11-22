@@ -2,7 +2,7 @@
 name: Generate Updates PR
 on:
   schedule:
-    - cron: '0 0 * * *'  # Daily
+    - cron: '0 19 * * *'  # Daily
 jobs:
   update-check:
     permissions:
