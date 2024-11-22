@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# build_updated_packages version 2.0 (for Chromebrew)
+# build_updated_packages version 2.1 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -81,7 +81,7 @@ else
   load 'tools/update_ruby_gem_packages.rb'
 end
 changed_files = `git diff HEAD --name-only`.chomp.split
-changed_files_previous_commit = `git diff --name-only HEAD HEAD~1`.chomp.split
+changed_files_previous_commit = `git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)`.chomp.split
 updated_packages = changed_files.select { |c| c.include?('packages/') }
 updated_packages.push(*changed_files_previous_commit.select { |c| c.include?('packages/') })
 

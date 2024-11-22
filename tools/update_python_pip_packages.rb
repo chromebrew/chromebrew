@@ -1,12 +1,18 @@
 #!/usr/bin/env ruby
-# update_python_pip_packages version 1.2 (for Chromebrew)
+# update_python_pip_packages version 1.3 (for Chromebrew)
 # This updates the versions in python pip packages.
 #
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo:
 # tools/update_python_pip_packages.rb
+
+# Add >LOCAL< lib to LOAD_PATH
+$LOAD_PATH.unshift '../lib'
 require_relative '../lib/color'
-require_relative '../lib/const'
+
+CREW_GITLAB_PKG_REPO = 'https://gitlab.com/api/v4/projects/26210301/packages'
+CREW_NPROC = `nproc`.chomp
+
 def require_gem(gem_name_and_require = nil, require_override = nil)
   # Allow only loading gems when needed.
   return if gem_name_and_require.nil?
@@ -51,7 +57,7 @@ relevant_pip_packages.each_with_index do |package, index|
     pip_name = package.gsub('.rb', '').sub('py3_', '').gsub('_', '-').gsub('packages/', '')
     prerelease = system("grep -q '^\ \ prerelease' #{package}") ? '--pre' : nil
     puts "\e[1A\e[K[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Checking pypi for #{prerelease.blank? ? '' : 'prerelease '}updates to #{pip_name}...\r".orange
-    pip_version = `python -m pip index versions #{prerelease} #{pip_name} 2>/dev/null | head -n 1 | awk '{print $2}'`.chomp.delete('()')
+    pip_version = `python3 -m pip index versions #{prerelease} #{pip_name} 2>/dev/null | head -n 1 | awk '{print $2}'`.chomp.delete('()')
     next package if pip_version.blank?
 
     relevant_pip_packages.delete(package)
