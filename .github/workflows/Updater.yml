@@ -2,7 +2,7 @@
 name: Generate Updates PR
 on:
   schedule:
-    - cron: '0 19 * * *'  # Daily
+    - cron: '20 19 * * *'  # Daily
 jobs:
   update-check:
     permissions:
@@ -43,104 +43,104 @@ jobs:
             gh run cancel ${{ github.run_id }}
             gh run watch ${{ github.run_id }}
           fi
-    generate:
-      strategy:
-        matrix:
-          arch: [x86_64, armv7l, i686]
-          runner: [self-hosted, ubuntu-24.04]
-          max-parallel: 1
-          exclude:
-            - arch: x86_64
-              runner: self-hosted
-            - arch: i686
-              runner: self-hosted
-            - arch: armv7l
-              runner: ubuntu-24.04
-      runs-on: ${{ matrix.runner }}
-      needs: update-check
-      if: ${{ !cancelled() }}
-      concurrency:
-        group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}
-        cancel-in-progress: true
-      steps:
-        - uses: actions/checkout@v4
-          with:
-            persist-credentials: true
-        - name: Export target docker container to github context
-          env:
-            TARGET_ARCH: ${{ matrix.arch }}
-          run: |
-              case $TARGET_ARCH in
-                x86_64)
-                  echo "CONTAINER=nocturne-x86_64.m90" >> $GITHUB_ENV
-                  echo "PLATFORM=linux/amd64" >> $GITHUB_ENV
-                  echo "LIB_SUFFIX=64" >> $GITHUB_ENV
-                ;;
-                armv7l)
-                  echo "CONTAINER=fievel-armv7l.m91" >> $GITHUB_ENV
-                  echo "PLATFORM=linux/arm/v7" >> $GITHUB_ENV
-                  echo "LIB_SUFFIX=" >> $GITHUB_ENV
-                ;;
-                i686)
-                  echo "CONTAINER=alex-i686.m58" >> $GITHUB_ENV
-                  echo "PLATFORM=linux/386" >> $GITHUB_ENV
-                  echo "LIB_SUFFIX=" >> $GITHUB_ENV
-                ;;
-              esac
-        - name: Run Updater in container
-          env:
-            CREW_REPO: "https://github.com/chromebrew/chromebrew.git"
-            CREW_BRANCH: ${{ needs.update-check.outputs.output1 }}
-          run: |
-              git config --global user.name 'github-actions[bot]'
-              git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-              git pull && git checkout ${CREW_BRANCH}
-              docker pull --platform ${PLATFORM} satmandu/crewbuild:${CONTAINER}
-              docker run \
-                --rm \
-                --platform ${PLATFORM} \
-                --privileged \
-                -u chronos \
-                -e LD_LIBRARY_PATH="/usr/local/lib${LIB_SUFFIX}" \
-                -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
-                -e CREW_REPO="${CREW_REPO}" \
-                -e CREW_BRANCH="${CREW_BRANCH}" \
-                -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
-                -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
-                -v $(pwd):/output \
-                "satmandu/crewbuild:${CONTAINER}" \
-                /bin/chromebrewstart /output/tools/github_actions_update_builder.sh
-        - name: Add updated packages to PR.
-          env:
-            BRANCH_NAME: ${{ needs.update-check.outputs.output1 }}
-            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: |
-            if [ -n "$(git status --porcelain)" ]; then
-              git add -A
-              git commit -m "Add updated pip packages for ${PLATFORM} to ${BRANCH_NAME}"
-              git push
-            fi
-    linter-tests:
-      runs-on: ubuntu-24.04
-      needs:
-        - update-check
-        - generate
-      if: ${{ !cancelled() }}
-      steps:
-        - name: fail if update jobs failed, otherwise create a PR
-          if: ${{ contains(needs.*.result, 'failure') }}
-          run: exit 1
-        - run: echo "Update jobs succeeded. Creating a PR."
-        - name: Create Pull Request
-          uses: peter-evans/create-pull-request@v7
-          with:
-            add-paths: |
-              manifest/**
-              packages/**
-            branch: ${{ needs.update-check.outputs.output1 }}
-            title: "Updated Packages for ${{ needs.update-check.outputs.output2 }}"
-            body: "Automatic PR to update packages"
-            author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
-            commit-message: "Automated Package Updates for ${{ needs.update-check.outputs.output2 }}"
-            sign-commits: true
-            delete-branch: true
+  generate:
+    strategy:
+      matrix:
+        arch: [x86_64, armv7l, i686]
+        runner: [self-hosted, ubuntu-24.04]
+        max-parallel: 1
+        exclude:
+          - arch: x86_64
+            runner: self-hosted
+          - arch: i686
+            runner: self-hosted
+          - arch: armv7l
+            runner: ubuntu-24.04
+    runs-on: ${{ matrix.runner }}
+    needs: update-check
+    if: ${{ !cancelled() }}
+    concurrency:
+      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Export target docker container to github context
+        env:
+          TARGET_ARCH: ${{ matrix.arch }}
+        run: |
+            case $TARGET_ARCH in
+              x86_64)
+                echo "CONTAINER=nocturne-x86_64.m90" >> $GITHUB_ENV
+                echo "PLATFORM=linux/amd64" >> $GITHUB_ENV
+                echo "LIB_SUFFIX=64" >> $GITHUB_ENV
+              ;;
+              armv7l)
+                echo "CONTAINER=fievel-armv7l.m91" >> $GITHUB_ENV
+                echo "PLATFORM=linux/arm/v7" >> $GITHUB_ENV
+                echo "LIB_SUFFIX=" >> $GITHUB_ENV
+              ;;
+              i686)
+                echo "CONTAINER=alex-i686.m58" >> $GITHUB_ENV
+                echo "PLATFORM=linux/386" >> $GITHUB_ENV
+                echo "LIB_SUFFIX=" >> $GITHUB_ENV
+              ;;
+            esac
+      - name: Run Updater in container
+        env:
+          CREW_REPO: "https://github.com/chromebrew/chromebrew.git"
+          CREW_BRANCH: ${{ needs.update-check.outputs.output1 }}
+        run: |
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git pull && git checkout ${CREW_BRANCH}
+            docker pull --platform ${PLATFORM} satmandu/crewbuild:${CONTAINER}
+            docker run \
+              --rm \
+              --platform ${PLATFORM} \
+              --privileged \
+              -u chronos \
+              -e LD_LIBRARY_PATH="/usr/local/lib${LIB_SUFFIX}" \
+              -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
+              -e CREW_REPO="${CREW_REPO}" \
+              -e CREW_BRANCH="${CREW_BRANCH}" \
+              -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
+              -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
+              -v $(pwd):/output \
+              "satmandu/crewbuild:${CONTAINER}" \
+              /bin/chromebrewstart /output/tools/github_actions_update_builder.sh
+      - name: Add updated packages to PR.
+        env:
+          BRANCH_NAME: ${{ needs.update-check.outputs.output1 }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "Add updated pip packages for ${PLATFORM} to ${BRANCH_NAME}"
+            git push
+          fi
+  linter-tests:
+    runs-on: ubuntu-24.04
+    needs:
+      - update-check
+      - generate
+    if: ${{ !cancelled() }}
+    steps:
+      - name: fail if update jobs failed, otherwise create a PR
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
+      - run: echo "Update jobs succeeded. Creating a PR."
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          add-paths: |
+            manifest/**
+            packages/**
+          branch: ${{ needs.update-check.outputs.output1 }}
+          title: "Updated Packages for ${{ needs.update-check.outputs.output2 }}"
+          body: "Automatic PR to update packages"
+          author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          commit-message: "Automated Package Updates for ${{ needs.update-check.outputs.output2 }}"
+          sign-commits: true
+          delete-branch: true
