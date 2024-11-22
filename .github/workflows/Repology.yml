@@ -3,6 +3,7 @@ name: Generate Repology JSON
 on:
   schedule:
     - cron: '0 12 * * 0'  # Weekly
+  workflow_dispatch:
 jobs:
   generate:
     runs-on: ubuntu-24.04
