@@ -29,7 +29,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ruby -Ctools update_python_pip_packages.rb
+          echo "current dir: $(pwd)"
+          ls -aFl
+          tools/update_python_pip_packages.rb
           # Create a new branch with the updated package files only
           # if there are updated packages. Otherwise exit early.
           if [ -n "$(git status --porcelain)" ]; then
@@ -121,7 +123,7 @@ jobs:
             git commit -m "Add updated pip packages for ${PLATFORM} to ${BRANCH_NAME}"
             git push
           fi
-  linter-tests:
+  build-check:
     runs-on: ubuntu-24.04
     needs:
       - update-check
@@ -131,17 +133,14 @@ jobs:
       - name: fail if update jobs failed, otherwise create a PR
         if: ${{ contains(needs.*.result, 'failure') }}
         run: exit 1
-      - run: echo "Update jobs succeeded. Creating a PR."
+      - name: Report build success
+        run: echo "Update jobs succeeded. Creating a PR."
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          add-paths: |
-            manifest/**
-            packages/**
-          branch: ${{ needs.update-check.outputs.output1 }}
-          title: "Updated Packages for ${{ needs.update-check.outputs.output2 }}"
-          body: "Automatic PR to update packages"
-          author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
-          commit-message: "Automated Package Updates for ${{ needs.update-check.outputs.output2 }}"
-          sign-commits: true
-          delete-branch: true
+        env:
+          CREW_BRANCH: ${{ needs.update-check.outputs.output1 }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git pull && git checkout ${CREW_BRANCH}
+          gh pr create --title "Updated Packages for ${{ needs.update-check.outputs.output2 }}" --body "Automatic PR to update packages" -r @active
