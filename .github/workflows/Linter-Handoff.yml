@@ -2,8 +2,8 @@
 name: Linter-Handoff
 on:
   pull_request:
-    branches: [master]
   merge_group:
+  workflow_dispatch:
 jobs:
   handoff:
     runs-on: ubuntu-24.04
