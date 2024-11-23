@@ -10,7 +10,7 @@ jobs:
       actions: 'write'
     runs-on: ubuntu-24.04
     outputs:
-      output1: ${{ steps.update-check.outputs.BRANCH_NAME }}  # https://stackoverflow.com/a/75142892
+      output1: ${{ steps.update-check.outputs.UPDATE_BRANCH_NAME }}  # https://stackoverflow.com/a/75142892
       output2: ${{ steps.update-check.outputs.TIMESTAMP }}
     steps:
       - uses: actions/checkout@v4
@@ -29,17 +29,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "current dir: $(pwd)"
-          ls -aFl
           tools/update_python_pip_packages.rb
           # Create a new branch with the updated package files only
           # if there are updated packages. Otherwise exit early.
           if [ -n "$(git status --porcelain)" ]; then
-            echo "BRANCH_NAME=updates-$(date --date='UTC' +%F-%H)" >> $GITHUB_OUTPUT
+            export UPDATE_BRANCH_NAME=updates-$(date --date='UTC' +%F-%H)"
+            echo "UPDATE_BRANCH_NAME=${UPDATE_BRANCH_NAME}" >> $GITHUB_OUTPUT
             echo "TIMESTAMP=$(date --date='UTC' +%F-%H)" >> $GITHUB_OUTPUT
-            git checkout -b ${BRANCH_NAME}
+            git checkout -b ${UPDATE_BRANCH_NAME}
             git add -A
-            git commit -m "Add unbuilt updated pip packages to ${BRANCH_NAME}"
+            git commit -m "Add unbuilt updated pip packages to ${UPDATE_BRANCH_NAME}"
             git push
           else
             # https://stackoverflow.com/a/75809743
@@ -115,12 +114,12 @@ jobs:
               /bin/chromebrewstart /output/tools/github_actions_update_builder.sh
       - name: Add updated packages to PR.
         env:
-          BRANCH_NAME: ${{ needs.update-check.outputs.output1 }}
+          UPDATE_BRANCH_NAME: ${{ needs.update-check.outputs.output1 }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             git add -A
-            git commit -m "Add updated pip packages for ${PLATFORM} to ${BRANCH_NAME}"
+            git commit -m "Add updated pip packages for ${PLATFORM} to ${UPDATE_BRANCH_NAME}"
             git push
           fi
   build-check:
