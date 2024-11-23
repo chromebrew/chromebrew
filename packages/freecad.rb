@@ -4,13 +4,14 @@ require 'misc_functions'
 class Freecad < Package
   description 'A free and opensource multiplatform 3D parametric modeler.'
   homepage 'https://www.freecad.org/'
-  version '0.21.2'
+  version '1.0.0'
   license 'GPL-2'
   compatibility 'x86_64'
-  source_url 'https://github.com/FreeCAD/FreeCAD/releases/download/0.21.2/FreeCAD-0.21.2-Linux-x86_64.AppImage'
-  source_sha256 '13eecbb23c60948b41d7270b75370794576e4b0ccde302a6f3472f46e996fce6'
+  source_url "https://github.com/FreeCAD/FreeCAD/releases/download/#{version}/FreeCAD_#{version}-conda-Linux-x86_64-py311.AppImage"
+  source_sha256 '4b1c53e7f444a7897875064e059be84c0ebb8848dd58bc034dcdd1ccc407dbc7'
 
   no_compile_needed
+  no_shrink
 
   depends_on 'sommelier'
 
@@ -31,27 +32,18 @@ class Freecad < Package
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/freecad"
     FileUtils.install 'freecad.sh', "#{CREW_DEST_PREFIX}/bin/freecad", mode: 0o755
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/freecad"
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/freecad"
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'freecad' to get started.\n".lightblue
+    ExitMessage.add "\nType 'freecad' to get started.\n"
   end
 
   def self.postremove
-    config_dir = "#{HOME}/.FreeCAD"
-    if Dir.exist? config_dir.to_s
-      print "\nWould you like to remove #{config_dir}? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir.to_s
-        puts "#{config_dir} removed.".lightgreen
-      else
-        puts "#{config_dir} saved.".lightgreen
-      end
-    end
+    Package.agree_to_remove("#{CREW_PREFIX}/.cache/FreeCAD")
+    Package.agree_to_remove("#{CREW_PREFIX}/.config/FreeCAD")
+    Package.agree_to_remove("#{CREW_PREFIX}/.config/.local/share/FreeCAD")
   end
 end
