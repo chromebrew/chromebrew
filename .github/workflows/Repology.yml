@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 jobs:
   generate:
+    if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -35,3 +36,4 @@ jobs:
           author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           commit-message: "Update Repology JSON"
           delete-branch: true
+          team-reviewers: active

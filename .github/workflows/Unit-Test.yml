@@ -58,6 +58,7 @@ jobs:
             manifest/**
             packages/*.rb
             tools/packages.yaml
+            tools/*.json
       - name: Get all changed package files
         id: changed-ruby-files
         uses: tj-actions/changed-files@v45

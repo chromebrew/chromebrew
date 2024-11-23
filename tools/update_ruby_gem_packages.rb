@@ -1,11 +1,17 @@
 #!/usr/bin/env ruby
-# update_ruby_gem_packages version 1.5 (for Chromebrew)
+# update_ruby_gem_packages version 1.6 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo:
 # tools/update_ruby_gem_packages.rb
+
+# Add >LOCAL< lib to LOAD_PATH
+$LOAD_PATH.unshift '../lib'
 require_relative '../lib/color'
-require_relative '../lib/const'
 require_relative '../lib/gem_compact_index_client'
+CREW_NPROC = `nproc`.chomp
+CREW_RUBY_VER = "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}"
+CREW_VERBOSE = false
+
 def require_gem(gem_name_and_require = nil, require_override = nil)
   # Allow only loading gems when needed.
   return if gem_name_and_require.nil?
