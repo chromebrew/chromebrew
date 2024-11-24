@@ -17307,7 +17307,7 @@
     "name": "vscodium",
     "description": "VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.",
     "homepage": "https://vscodium.com/",
-    "version": "1.95.2.24313",
+    "version": "1.95.3.24321",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
