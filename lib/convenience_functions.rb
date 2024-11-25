@@ -4,6 +4,7 @@ require 'json'
 require_relative 'color'
 require_relative 'const'
 require_relative 'crewlog'
+require_relative 'downloader'
 
 class ConvenienceFunctions
   def self.load_symbolized_json
@@ -83,5 +84,18 @@ class ConvenienceFunctions
     LIBTOOLEOF
     File.write("#{CREW_LIB_PREFIX}/#{libname}.la", libtool_file)
     puts "Generated #{CREW_LIB_PREFIX}/#{libname}.la..."
+  end
+
+  def self.patch(patch_array = [])
+    return if patch_array.empty?
+    patch_array.each do |patch_item|
+      abort 'Patch array is not valid!'.lightred unless patch_item[0]
+      abort 'Patch sha256sum does not exist!'.lightred unless patch_item[1]
+      patch_file = File.basename(patch_item[0])
+      puts "downloader #{patch_item[0]}, #{patch_item[1]}" if CREW_VERBOSE
+      downloader patch_item[0], patch_item[1]
+      puts "patch -Np1 -i #{patch_file}" if CREW_VERBOSE
+      system "patch -Np1 -i #{patch_file}"
+    end
   end
 end
