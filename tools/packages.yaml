@@ -7870,6 +7870,11 @@ url: https://github.com/thkukuk/rpcsvc-proto/releases
 activity: low
 ---
 kind: url
+name: rqlite
+url: https://github.com/rqlite/rqlite/releases
+activity: high
+---
+kind: url
 name: rsu_client
 url: https://github.com/rsu-client/rsu-client/releases
 activity: low
