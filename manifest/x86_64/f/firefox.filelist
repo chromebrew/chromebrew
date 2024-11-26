@@ -47,7 +47,6 @@
 /usr/local/firefox/libssl3.so
 /usr/local/firefox/libxul.so
 /usr/local/firefox/libxul.so.sig
-/usr/local/firefox/minidump-analyzer
 /usr/local/firefox/omni.ja
 /usr/local/firefox/pingsender
 /usr/local/firefox/platform.ini
