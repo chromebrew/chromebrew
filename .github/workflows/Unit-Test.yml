@@ -9,12 +9,14 @@ jobs:
     strategy:
       matrix:
         arch: [x86_64, armv7l, i686]
-        runner: [self-hosted, ubuntu-24.04]
+        runner:
+          - ubuntu-24.04
+          - [self-hosted, ARM]
         exclude:
           - arch: x86_64
-            runner: self-hosted
+            runner: [self-hosted, ARM]
           - arch: i686
-            runner: self-hosted
+            runner: [self-hosted, ARM]
           - arch: armv7l
             runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
