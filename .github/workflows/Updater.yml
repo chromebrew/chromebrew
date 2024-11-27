@@ -217,8 +217,6 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git remote add chromebrew https://github.com/chromebrew/chromebrew.git
-          git fetch chromebrew
           git fetch --depth=5
           mapfile -t updated_packages < <( git diff-tree --no-commit-id --name-only -r $(git log --oneline | grep $CREW_BRANCH | tail -n 1 | awk '{print \$1}')..$(git rev-parse --verify HEAD) | grep -v manifest)
           UPDATED_FILES="Updated packages:$(echo '';for file in "${updated_packages[@]}" ; do echo "- ${file}" ; done)"
