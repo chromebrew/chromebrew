@@ -151,8 +151,13 @@ jobs:
             docker pull --platform ${PLATFORM} satmandu/crewbuild:${CONTAINER}
             sudo apt install -y acl
             sudo setfacl -R -m u:1000:rwx .
-            getfacl .
-            docker run \
+            # getfacl .
+            # Use docker-in-docker shim to mount volume inside docker.
+            # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+            # ghcr.io/felipecrs/dond-shim:latest \
+            (cd /tmp ; curl -OLf https://github.com/felipecrs/docker-on-docker-shim/raw/refs/tags/v0.7.1/dond ; chmod +x /tmp/dond )
+            # docker run \
+            /tmp/dond run \
               --rm \
               --platform ${PLATFORM} \
               --privileged \
