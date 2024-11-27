@@ -219,6 +219,7 @@ jobs:
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git remote add chromebrew https://github.com/chromebrew/chromebrew.git
           git fetch chromebrew
-          mapfile -t updated_packages < <( git diff-tree --no-commit-id --name-only -r $(git rev-parse chromebrew/master)..$(git rev-parse --verify HEAD) | grep -v manifest)
-          UPDATED_FILES="Updated packages:\n$(for file in "${updated_packages[@]}" ; do echo "- ${file}" ; done)"
-          gh pr create --title "Automatic PR to update packages for ${{ needs.update-check.outputs.output1 }}" --body "${UPDATED_FILES}" -r @active
+          git fetch --depth=5
+          mapfile -t updated_packages < <( git diff-tree --no-commit-id --name-only -r $(git log --oneline | grep $CREW_BRANCH | tail -n 1 | awk '{print \$1}')..$(git rev-parse --verify HEAD) | grep -v manifest)
+          UPDATED_FILES="Updated packages:$(echo '';for file in "${updated_packages[@]}" ; do echo "- ${file}" ; done)"
+          gh pr create --title "Automatic PR to update packages for ${{ needs.update-check.outputs.output1 }}" --body "${UPDATED_FILES}" -r chromebrew/active
