@@ -1,9 +1,0 @@
-/usr/local/bin/lsusb
-/usr/local/bin/lsusb.py
-/usr/local/bin/usb-devices
-/usr/local/bin/usbhid-dump
-/usr/local/share/hwdata/usb.ids
-/usr/local/share/man/man1/lsusb.py.1.zst
-/usr/local/share/man/man1/usb-devices.1.zst
-/usr/local/share/man/man8/lsusb.8.zst
-/usr/local/share/man/man8/usbhid-dump.8.zst

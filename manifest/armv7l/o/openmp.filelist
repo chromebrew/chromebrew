@@ -1,4 +1,0 @@
-/usr/local/include/omp.h
-/usr/local/include/ompx.h
-/usr/local/lib/cmake/openmp/FindOpenMPTarget.cmake
-/usr/local/lib/libomp.so
