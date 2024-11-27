@@ -178,6 +178,7 @@ jobs:
               "satmandu/crewbuild:${CONTAINER}" \
               /bin/chromebrewstart /output/tools/github_actions_update_builder.sh  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
               grep "Built and Uploaded:" /tmp/build.log
+              sudo rm -rf release manifest
       - name: Add updated packages to PR.
         id: push-check
         env:
@@ -218,5 +219,6 @@ jobs:
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git remote add chromebrew https://github.com/chromebrew/chromebrew.git
           git fetch chromebrew
-          UPDATED_FILES=$(git diff-tree --no-commit-id --name-only -r $(git rev-parse chromebrew/master)..$(git rev-parse --verify HEAD))
-          gh pr create --title "Updated Packages for ${{ needs.update-check.outputs.output1 }}" --body "Automatic PR to update packages\n${UPDATED_FILES}" -r @active
+          mapfile -t updated_packages < <( git diff-tree --no-commit-id --name-only -r $(git rev-parse chromebrew/master)..$(git rev-parse --verify HEAD) | grep -v manifest)
+          UPDATED_FILES="Updated packages:\n$(for file in "${updated_packages[@]}" ; do echo "- ${file}" ; done)"
+          gh pr create --title "Automatic PR to update packages for ${{ needs.update-check.outputs.output1 }}" --body "${UPDATED_FILES}" -r @active
