@@ -7,7 +7,9 @@ on:
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # setting GH_TOKEN for the entire workflow
 permissions:                    # Global permissions configuration starts here
-  contents: write                # 'read' access to repository contents
+  actions: write
+  contents: write
+  packages: write
   pull-requests: write          # 'write' access to pull requests
 jobs:
   update-check:
@@ -53,10 +55,10 @@ jobs:
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add -A
             git commit -m "Add unbuilt updated pip packages to ${UPDATE_BRANCH_NAME}"
-            echo "PIP_UPDATED=true >> $GITHUB_OUTPUT
+            echo "PIP_UPDATED=true" >> $GITHUB_OUTPUT
           else
             echo "Python pip packages were not updated."
-            echo "PIP_UPDATED=false >> $GITHUB_OUTPUT
+            echo "PIP_UPDATED=false" >> $GITHUB_OUTPUT
           fi
       - name: Push pip package changes
         if: ${{ steps.pip-update-checks.outputs.PIP_UPDATED == 'true' }}
@@ -77,10 +79,10 @@ jobs:
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add -A
             git commit -m "Add unbuilt updated ruby gem packages to ${UPDATE_BRANCH_NAME}"
-            echo "GEM_UPDATED=true >> $GITHUB_OUTPUT
+            echo "GEM_UPDATED=true" >> $GITHUB_OUTPUT
           else
             echo "Ruby gem packages were not updated."
-            echo "GEM_UPDATED=false >> $GITHUB_OUTPUT
+            echo "GEM_UPDATED=false" >> $GITHUB_OUTPUT
           fi
       - name: Push ruby gem package changes
         if: ${{ steps.gem-update-checks.outputs.GEM_UPDATED == 'true' }}
@@ -88,24 +90,30 @@ jobs:
         with:
           branch: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
       - name: Cancel if no updates
+        id: no-update-cancel
         if: ${{ steps.pip-update-checks.outputs.PIP_UPDATED == 'false' }} && ${{ steps.gem-update-checks.outputs.GEM_UPDATED == 'false' }}
         run: |
+          echo "PIP_UPDATED is ${{ steps.pip-update-checks.outputs.PIP_UPDATED }}."
+          echo "GEM_UPDATED is ${{ steps.gem-update-checks.outputs.GEM_UPDATED }}."
+          git checkout master && git branch -D ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }} && git push
           # https://stackoverflow.com/a/75809743
-          gh run cancel ${{ github.run_id }}
-          gh run watch ${{ github.run_id }}
+          # gh run cancel ${{ github.run_id }}
+          # gh run watch ${{ github.run_id }}
   generate:
     strategy:
       max-parallel: 1
       matrix:
         arch: [x86_64, armv7l, i686]
-        runner: [self-hosted, ubuntu-24.04]
+        runner:
+          - [self-hosted, X64]
+          - [self-hosted, ARM]
         exclude:
           - arch: x86_64
-            runner: self-hosted
+            runner: [self-hosted, ARM]
           - arch: i686
-            runner: self-hosted
+            runner: [self-hosted, ARM]
           - arch: armv7l
-            runner: ubuntu-24.04
+            runner: [self-hosted, X64]
     runs-on: ${{ matrix.runner }}
     needs: update-check
     if: ${{ !cancelled() }}
@@ -149,8 +157,13 @@ jobs:
             docker pull --platform ${PLATFORM} satmandu/crewbuild:${CONTAINER}
             sudo apt install -y acl
             sudo setfacl -R -m u:1000:rwx .
-            getfacl .
-            docker run \
+            # getfacl .
+            # Use docker-in-docker shim to mount volume inside docker.
+            # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+            # ghcr.io/felipecrs/dond-shim:latest \
+            (cd /tmp ; curl -OLf https://github.com/felipecrs/docker-on-docker-shim/raw/refs/tags/v0.7.1/dond ; chmod +x /tmp/dond )
+            # docker run \
+            /tmp/dond run \
               --rm \
               --platform ${PLATFORM} \
               --privileged \
@@ -163,7 +176,8 @@ jobs:
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               -v $(pwd):/output \
               "satmandu/crewbuild:${CONTAINER}" \
-              /bin/chromebrewstart /output/tools/github_actions_update_builder.sh
+              /bin/chromebrewstart /output/tools/github_actions_update_builder.sh  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
+              grep "Built and Uploaded:" /tmp/build.log
       - name: Add updated packages to PR.
         id: push-check
         env:
@@ -191,11 +205,18 @@ jobs:
         run: exit 1
       - name: Report build success
         run: echo "Update jobs succeeded. Creating a PR."
+      - uses: actions/checkout@v4
+        with:
+          clean: false
+          persist-credentials: true
+          ref: ${{ needs.update-check.outputs.output2 }}
       - name: Create Pull Request
         env:
           CREW_BRANCH: ${{ needs.update-check.outputs.output2 }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git pull && git checkout ${CREW_BRANCH}
-          gh pr create --title "Updated Packages for ${{ needs.update-check.outputs.output1 }}" --body "Automatic PR to update packages" -r @active
+          git remote add chromebrew https://github.com/chromebrew/chromebrew.git
+          git fetch chromebrew
+          UPDATED_FILES=$(git diff-tree --no-commit-id --name-only -r $(git rev-parse chromebrew/master)..$(git rev-parse --verify HEAD))
+          gh pr create --title "Updated Packages for ${{ needs.update-check.outputs.output1 }}" --body "Automatic PR to update packages\n${UPDATED_FILES}" -r @active

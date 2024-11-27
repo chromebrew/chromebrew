@@ -138,6 +138,7 @@ updated_packages.each do |pkg|
       system "crew upload #{name}" if upload_pkg == true && agree_default_yes("\nWould you like to upload #{name} #{@pkg_obj.version}")
       puts "Are builds still needed for #{name}?".orange
       builds_still_needed = check_build_uploads(architectures_to_check, name)
+      puts "Built and Uploaded: #{name} for #{ARCH}" if builds_needed != builds_still_needed
       next if builds_still_needed.empty? && system("grep -q binary_sha256 #{pkg}")
 
       puts "#{name.capitalize} #{@pkg_obj.version} still needs builds uploaded for: #{builds_still_needed.join(' ')}".lightblue unless builds_still_needed.empty? && system("grep -q binary_sha256 #{pkg}")
