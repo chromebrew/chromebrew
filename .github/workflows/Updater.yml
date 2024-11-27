@@ -7,7 +7,9 @@ on:
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # setting GH_TOKEN for the entire workflow
 permissions:                    # Global permissions configuration starts here
-  contents: write                # 'read' access to repository contents
+  actions: write
+  contents: write
+  packages: write
   pull-requests: write          # 'write' access to pull requests
 jobs:
   update-check:
@@ -88,11 +90,15 @@ jobs:
         with:
           branch: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
       - name: Cancel if no updates
+        id: no-update-cancel
         if: ${{ steps.pip-update-checks.outputs.PIP_UPDATED == 'false' }} && ${{ steps.gem-update-checks.outputs.GEM_UPDATED == 'false' }}
         run: |
+          echo "PIP_UPDATED is ${{ steps.pip-update-checks.outputs.PIP_UPDATED }}."
+          echo "GEM_UPDATED is ${{ steps.gem-update-checks.outputs.GEM_UPDATED }}."
+          git checkout master && git branch -D ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }} && git push
           # https://stackoverflow.com/a/75809743
-          gh run cancel ${{ github.run_id }}
-          gh run watch ${{ github.run_id }}
+          # gh run cancel ${{ github.run_id }}
+          # gh run watch ${{ github.run_id }}
   generate:
     strategy:
       max-parallel: 1
