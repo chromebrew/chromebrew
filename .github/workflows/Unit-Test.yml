@@ -152,6 +152,10 @@ jobs:
                 export CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}"
                 export CREW_BRANCH="${{ github.head_ref }}"
                 ;;
+              workflow_dispatch)
+                export CREW_REPO="${{ github.event.repository.clone_url }}"
+                export CREW_BRANCH="${{ github.ref_name }}"
+                ;;
             esac
             if [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]); then
               # Exit the arm container if there are neither non-package changed files nor armv7l compatible packages.

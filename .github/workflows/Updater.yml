@@ -218,13 +218,21 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git fetch --depth=5
+          # Add some debugging...
+          git log --oneline | grep $CREW_BRANCH
+          git log --oneline | grep $CREW_BRANCH | tail -n 1 | awk '{print $1}'
+          git rev-parse --verify HEAD
+          git diff-tree --no-commit-id --name-only -r $(git log --oneline | grep $CREW_BRANCH | tail -n 1 | awk '{print $1}')..$(git rev-parse --verify HEAD)
           mapfile -t updated_package_array < <( git diff-tree --no-commit-id --name-only -r $(git log --oneline | grep $CREW_BRANCH | tail -n 1 | awk '{print $1}')..$(git rev-parse --verify HEAD) | grep -v manifest | grep "^packages" | sed -e 's,packages/,,' -e 's,.rb,,')
-          UPDATED_PACKAGES="Updated packages:
-          $(for file in "${updated_package_array[@]}" ; do echo "- ${file}" ; done)"
-          echo "${UPDATED_PACKAGES}"
-          gh pr create --title "Automatic PR to update packages for ${{ needs.update-check.outputs.output1 }}" --body "${UPDATED_PACKAGES}"
+          echo -e "Updated packages:" > /tmp/pr.txt
+          for file in "${updated_package_array[@]}"
+            do
+            echo "- ${file}" >> /tmp/pr.txt
+          done
+          gh pr create --title "Automatic PR to update packages for ${{ needs.update-check.outputs.output1 }}" -F /tmp/pr.txt
       - name: Add active team reviewers to PR
         run: |
+          gh pr list --search ${{ needs.update-check.outputs.output1 }} --json number
           export PR_NUMBER="$(gh pr list --search ${{ needs.update-check.outputs.output1 }} --json number | jq -r '.[].number')"
           echo "PR is #${PR_NUMBER}"
           curl -X POST \
