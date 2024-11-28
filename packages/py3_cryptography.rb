@@ -12,7 +12,7 @@ class Py3_cryptography < Pip
   binary_sha256({
     aarch64: '0a9ab365df58e161d26aac574d8df5b2d913dbe37d1ef8ec7df0c865a33297c4',
      armv7l: '0a9ab365df58e161d26aac574d8df5b2d913dbe37d1ef8ec7df0c865a33297c4',
-       i686: 'cbaadc230213d01d74a747274a94746811a45aa8fd27a5148e43defa95d37b1e',
+       i686: '2f9b1a0c8e37530a154bc023998a6350cec2101c06206bdff8803eb634b5dd0d',
      x86_64: '0d6b5394083bd0cbb285848bc8fba5c444546b3b7cf3f7c1ecdedf95b25a5a7e'
   })
 
