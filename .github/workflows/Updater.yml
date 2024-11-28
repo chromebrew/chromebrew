@@ -91,14 +91,14 @@ jobs:
           branch: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
       - name: Cancel if no updates
         id: no-update-cancel
-        if: ${{ steps.pip-update-checks.outputs.PIP_UPDATED == 'false' }} && ${{ steps.gem-update-checks.outputs.GEM_UPDATED == 'false' }}
+        if: ${{ ( steps.pip-update-checks.outputs.PIP_UPDATED == 'false' ) && ( steps.gem-update-checks.outputs.GEM_UPDATED == 'false' ) }}
         run: |
           echo "PIP_UPDATED is ${{ steps.pip-update-checks.outputs.PIP_UPDATED }}."
           echo "GEM_UPDATED is ${{ steps.gem-update-checks.outputs.GEM_UPDATED }}."
           git checkout master && git branch -D ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }} && git push
           # https://stackoverflow.com/a/75809743
-          # gh run cancel ${{ github.run_id }}
-          # gh run watch ${{ github.run_id }}
+          gh run cancel ${{ github.run_id }}
+          gh run watch ${{ github.run_id }}
   generate:
     strategy:
       max-parallel: 1
@@ -229,12 +229,15 @@ jobs:
             do
             echo "- ${file}" >> /tmp/pr.txt
           done
-          gh pr create --title "Automatic PR to update packages for ${{ needs.update-check.outputs.output1 }}" -F /tmp/pr.txt
+          cat /tmp/pr.txt
+          export PR_NUMBER=$(gh pr create --title "Automatic PR to update packages for ${{ needs.update-check.outputs.output1 }}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          echo "PR_NUMBER is ${PR_NUMBER}"
+          echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
+      - name: Trigger Unit Test workflow.
+        run: |
+          gh workflow run "Unit-Test.yml" --ref ${{ needs.update-check.outputs.output2 }}
       - name: Add active team reviewers to PR
         run: |
-          gh pr list --search ${{ needs.update-check.outputs.output1 }} --json number
-          export PR_NUMBER="$(gh pr list --search ${{ needs.update-check.outputs.output1 }} --json number | jq -r '.[].number')"
-          echo "PR is #${PR_NUMBER}"
           curl -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"\
