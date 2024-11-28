@@ -223,7 +223,9 @@ jobs:
           $(for file in "${updated_package_array[@]}" ; do echo "- ${file}" ; done)"
           echo "${UPDATED_PACKAGES}"
           gh pr create --title "Automatic PR to update packages for ${{ needs.update-check.outputs.output1 }}" --body "${UPDATED_PACKAGES}"
-          PR_NUMBER="$(gh pr list --search ${{ needs.update-check.outputs.output1 }} --json number | jq -r '.[].number')"
+      - name: Add active team reviewers to PR
+        run: |
+          export PR_NUMBER="$(gh pr list --search ${{ needs.update-check.outputs.output1 }} --json number | jq -r '.[].number')"
           echo "PR is #${PR_NUMBER}"
           curl -X POST \
             -H "Accept: application/vnd.github+json" \
