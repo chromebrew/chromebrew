@@ -12,7 +12,7 @@ class Py3_virtualenv < Pip
   binary_sha256({
     aarch64: 'd80bcf9d1c63ab66c93a853123e20fbf731ed77c656003dec70af27f7ebcd1c3',
      armv7l: 'd80bcf9d1c63ab66c93a853123e20fbf731ed77c656003dec70af27f7ebcd1c3',
-       i686: '3d93cbb2df549028e822aacd61f616a79f79a68d075d9b5eb1ba63ea5fd2c2a2',
+       i686: '0f87f3994eef5b818e2cf9403d127f8303a99bda7cfd0067a02ec137b2daa80d',
      x86_64: '2b98b60bc20ebf9db7e464236111d8dc80a717d064e6bf39ef5b8a5b477360c7'
   })
 
