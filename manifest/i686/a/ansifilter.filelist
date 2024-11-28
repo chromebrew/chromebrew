@@ -1,9 +1,0 @@
-/usr/local/bin/ansifilter
-/usr/local/share/bash-completion/completions/ansifilter
-/usr/local/share/doc/ansifilter/COPYING
-/usr/local/share/doc/ansifilter/ChangeLog.adoc
-/usr/local/share/doc/ansifilter/INSTALL
-/usr/local/share/doc/ansifilter/README.adoc
-/usr/local/share/fish/vendor_completions.d/ansifilter.fish
-/usr/local/share/man/man1/ansifilter.1.zst
-/usr/local/share/zsh/site-functions/_ansifilter

@@ -1,6 +1,0 @@
-/usr/local/bin/rqbench
-/usr/local/bin/rqlite
-/usr/local/bin/rqlited
-/usr/local/bin/startrqlited
-/usr/local/bin/stoprqlited
-/usr/local/etc/bash.d/10-rqlited

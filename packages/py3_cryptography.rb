@@ -13,7 +13,7 @@ class Py3_cryptography < Pip
     aarch64: '9bc2a5a2e7dd7e2a0184247170ea6d0628a8867ae24afa8b31bb40b8dcb14a92',
      armv7l: '9bc2a5a2e7dd7e2a0184247170ea6d0628a8867ae24afa8b31bb40b8dcb14a92',
        i686: 'cbaadc230213d01d74a747274a94746811a45aa8fd27a5148e43defa95d37b1e',
-     x86_64: 'aee80bdaf42f7d5c30ea21f8b752bc3d67083ae2656189014f4440573e84ce5f'
+     x86_64: '184e30a964cee8123b5db9175fef636cf4a3ca7cd25e3662ff2893867b434a20'
   })
 
   depends_on 'gcc_lib' # R
