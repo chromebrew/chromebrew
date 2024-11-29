@@ -12,8 +12,8 @@ class Pango < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ca92c2d3cca59634ff7d09b80bb656c22137e981800ba06c5f781c7d6653dff8',
-     armv7l: 'ca92c2d3cca59634ff7d09b80bb656c22137e981800ba06c5f781c7d6653dff8',
+    aarch64: '48b8ec06f019253565677eed265b6aa0222feb26d2f2fd22572fecbb217db1ca',
+     armv7l: '48b8ec06f019253565677eed265b6aa0222feb26d2f2fd22572fecbb217db1ca',
      x86_64: '673fea915af5662797660cb754a759016e63316338ef70a9731f7178d1e9395a'
   })
 
