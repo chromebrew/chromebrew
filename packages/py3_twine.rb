@@ -1,14 +1,12 @@
-# Twine 5.1.1 currently breaks on some uploads.
-# Install twine from https://github.com/pypa/twine/pull/1123 instead.
 require 'buildsystems/pip'
 
 class Py3_twine < Pip
   description 'A utility for interacting with PyPI'
   homepage 'https://pypi.python.org/pypi/twine'
-  version "5.1.2.dev32+gd53a8a6-#{CREW_PY_VER}"
+  version "6.0.0-#{CREW_PY_VER}"
   license 'APACHE'
   compatibility 'all'
-  source_url 'https://github.com/pypa/twine.git@bugfix/1116-pkginfo-warnings'
+  source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -23,5 +21,4 @@ class Py3_twine < Pip
   depends_on 'rust' => :build
 
   no_source_build
-  prerelease
 end
