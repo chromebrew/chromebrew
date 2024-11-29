@@ -49,6 +49,30 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
       - name: Export target docker container to github context
         env:
           TARGET_ARCH: ${{ matrix.arch }}
@@ -74,8 +98,8 @@ jobs:
         id: run-updater
         if: ${{ !cancelled() }}
         env:
-          CREW_REPO: github.event.repository.clone_url
-          CREW_BRANCH: github.ref_name
+          CREW_REPO: ${{ github.event.repository.clone_url }}
+          CREW_BRANCH: ${{ github.ref_name }}
         run: |
             git pull && git checkout ${CREW_BRANCH}
             docker pull --platform ${PLATFORM} satmandu/crewbuild:${CONTAINER}
@@ -106,7 +130,7 @@ jobs:
       - name: Add updated packages to PR.
         id: push-check
         env:
-          UPDATE_BRANCH_NAME: github.ref_name
+          UPDATE_BRANCH_NAME: ${{ github.ref_name }}
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name "${{ github.actor }}"
@@ -117,7 +141,7 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          branch: github.ref_name
+          branch: ${{ github.ref_name }}
   build-check:
     runs-on: ubuntu-24.04
     needs:
@@ -134,10 +158,10 @@ jobs:
         with:
           clean: false
           persist-credentials: true
-          ref: github.ref_name
+          ref: ${{ github.ref_name }}
       - name: Create Pull Request
         env:
-          CREW_BRANCH: github.ref_name
+          CREW_BRANCH: ${{ github.ref_name }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
