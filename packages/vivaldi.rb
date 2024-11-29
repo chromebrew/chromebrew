@@ -3,7 +3,7 @@ require 'package'
 class Vivaldi < Package
   description 'Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.'
   homepage 'https://vivaldi.com/'
-  version '7.0.3495.18-1'
+  version '7.0.3495.20-1'
   license 'Vivaldi'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.29'
@@ -23,10 +23,10 @@ class Vivaldi < Package
   case ARCH
   when 'aarch64', 'armv7l'
     arch = 'armhf'
-    source_sha256 'aa384004a6967379afdcf84cee3eabe63d42ee46f0e0b8a0568cd94ef0ab7a73'
+    source_sha256 '0cae9119ae288fa26352adf94c2f38abc4dba9b9c6b76304fa240a30a4b0d9ee'
   when 'x86_64'
     arch = 'amd64'
-    source_sha256 '2c52adb88a2b6f6d7f53acac1eae86468d053f60e00fbc8ce83c2e225a6e4f95'
+    source_sha256 '64ccacf417a2531c14fed5e0528cdd7270fc52db7df62d0ea761e7e75748a07d'
   end
 
   source_url "https://downloads.vivaldi.com/stable/vivaldi-stable_#{version}_#{arch}.deb"
