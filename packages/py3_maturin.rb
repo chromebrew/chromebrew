@@ -13,8 +13,14 @@ class Py3_maturin < Python
   git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
+  binary_sha256({
+     x86_64: '62ba08658e8d09f0b46cff6a70610ea43bcc364d73a98b54ac0de147b18cb50a'
+  })
+
   depends_on 'py3_setuptools'
   depends_on 'py3_setuptools_rust'
   depends_on 'python3'
   depends_on 'rust'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 end
