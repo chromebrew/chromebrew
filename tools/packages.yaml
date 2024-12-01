@@ -7420,6 +7420,11 @@ url: https://0xacab.org/jvoisin/mat2/-/tags
 activity: low
 ---
 kind: url
+name: py3_maturin
+url: https://github.com/PyO3/maturin/releases
+activity: high
+---
+kind: url
 name: py3_mercurial
 url: https://www.mercurial-scm.org/release
 activity: high
