@@ -1,12 +1,12 @@
-require 'buildsystems/pip'
+require 'package'
 
-class Py3_ruff < Pip
+class Py3_ruff < Package
   description 'An extremely fast Python linter, written in Rust.'
   homepage 'https://docs.astral.sh/ruff'
-  version "0.8.0-#{CREW_PY_VER}"
+  version "0.8.1-#{CREW_PY_VER}"
   license 'GPL-2.0'
   compatibility 'all'
-  source_url 'SKIP'
+  source_url 'https://github.com/astral-sh/ruff.git'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -21,5 +21,21 @@ class Py3_ruff < Pip
   depends_on 'python3'
   depends_on 'rust' => :build
 
-  no_source_build
+  def self.build
+    system 'cargo fetch \
+      --manifest-path Cargo.toml'
+    system 'cargo build \
+      --release \
+      --frozen \
+      --manifest-path Cargo.toml'
+  end
+
+  def self.install
+    system "cargo install \
+      --frozen \
+      --offline \
+      --no-track \
+      --path . \
+      --root #{CREW_DEST_PREFIX}"
+  end
 end
