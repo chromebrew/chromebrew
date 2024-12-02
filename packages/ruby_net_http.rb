@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_net_http < RUBY
   description 'Http client api for ruby.'
   homepage 'https://github.com/ruby/net-http'
-  version "0.4.1-#{CREW_RUBY_VER}"
+  version "0.5.0-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'

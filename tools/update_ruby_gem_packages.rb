@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# update_ruby_gem_packages version 1.6 (for Chromebrew)
+# update_ruby_gem_packages version 1.7 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo:
 # tools/update_ruby_gem_packages.rb
@@ -53,6 +53,7 @@ relevant_gem_packages.each_with_index do |package, index|
     puts "#{untested_package_name} versions for #{gem_test_name} are #{gem_test.split[1].split(',')}" if CREW_VERBOSE
     gem_test_versions = gem_test.split[1].split(',')
     gem_test_versions.delete_if { |i| i.include?('beta') }
+    gem_test_versions.delete_if { |i| i.include?('java') }
     gem_test_versions.delete_if { |i| i.include?('pre') }
     gem_test_version = gem_test_versions.max
     puts "#{untested_package_name} is #{gem_test_name} version #{gem_test_version}".lightpurple if CREW_VERBOSE
