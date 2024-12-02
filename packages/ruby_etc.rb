@@ -9,6 +9,10 @@ class Ruby_etc < RUBY
   source_url 'SKIP'
   binary_compression 'gem'
 
+  binary_sha256({
+     x86_64: '69e46a65066e7e277687a99439c2b5664280b5c56518105757ac9919b2b6d016'
+  })
+
   conflicts_ok
   gem_compile_needed
 end
