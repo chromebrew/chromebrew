@@ -7,7 +7,8 @@ class Ruby_etc < RUBY
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'gem'
 
   conflicts_ok
-  no_compile_needed
+  gem_compile_needed
 end
