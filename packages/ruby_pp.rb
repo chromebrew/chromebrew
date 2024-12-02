@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_pp < RUBY
   description 'Provides a prettyprinter for ruby objects.'
   homepage 'https://github.com/ruby/pp'
-  version "0.5.0-#{CREW_RUBY_VER}"
+  version "0.6.1-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'

@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_pathname < RUBY
   description 'Representation of the name of a file or directory on the filesystem.'
   homepage 'https://github.com/ruby/pathname'
-  version "0.3.0-#{CREW_RUBY_VER}"
+  version "0.4.0-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'

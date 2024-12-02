@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_zlib < RUBY
   description 'Ruby interface for the zlib compression/decompression library.'
   homepage 'https://github.com/ruby/zlib'
-  version "3.1.1-#{CREW_RUBY_VER}"
+  version "3.2.0-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
