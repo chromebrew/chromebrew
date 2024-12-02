@@ -221,30 +221,28 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git fetch --depth=5
-          # Add some debugging...
-          git log --oneline | grep ${TIMESTAMP}
-          git log --oneline | grep ${TIMESTAMP} | tail -n 1 | awk '{print $1}'
-          git rev-parse --verify HEAD
-          git diff-tree --no-commit-id --name-only -r $(git log --oneline | grep ${TIMESTAMP} | tail -n 1 | awk '{print $1}')..$(git rev-parse --verify HEAD)
-          mapfile -t updated_package_array < <( git diff-tree --no-commit-id --name-only -r $(git log --oneline | grep ${TIMESTAMP} | tail -n 1 | awk '{print $1}')..$(git rev-parse --verify HEAD) | grep -v manifest | grep "^packages" | sed -e 's,packages/,,' -e 's,.rb,,')
+          git fetch --shallow-since="1 week"
+          git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)
+          mapfile -t updated_package_array < <( git diff-tree --no-commit-id --name-only -r $(git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD) | grep -v manifest | grep "^packages" | sed -e 's,packages/,,' -e 's,.rb,,')
           echo -e "Updated packages:" > /tmp/pr.txt
           for file in "${updated_package_array[@]}"
             do
             echo "- ${file}" >> /tmp/pr.txt
           done
           cat /tmp/pr.txt
-          export PR_NUMBER=$(gh pr create --title "Automatic PR to update packages for ${{ needs.update-check.outputs.output1 }}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          export PR_NUMBER=$(gh pr create --title "Automatic PR to update packages for ${CREW_BRANCH}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
       - name: Trigger Unit Test workflow.
         run: |
+          echo "Branch is ${{ needs.update-check.outputs.output2 }}"
           gh workflow run "Unit-Test.yml" --ref ${{ needs.update-check.outputs.output2 }}
-      - name: Add active team reviewers to PR
+      - name: Add chromebrew/active team reviewers to PR
         run: |
+          echo "PR_NUMBER is ${PR_NUMBER}"
           curl -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"\
             -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos${{ github.owner }}/${{ github.repository }}/pulls/${PR_NUMBER}/requested_reviewers \
-            -d '{"team_reviewers":["active"]}'
+            -d '{"team_reviewers":["chromebrew/active"]}'
