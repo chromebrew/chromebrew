@@ -10,6 +10,8 @@ class Ruby_etc < RUBY
   binary_compression 'gem'
 
   binary_sha256({
+    aarch64: '896c7745514e3b45b4ff9c6a20f0f14197d6ca4efc48fc8ba80bc81bc754f5b6',
+     armv7l: '896c7745514e3b45b4ff9c6a20f0f14197d6ca4efc48fc8ba80bc81bc754f5b6',
      x86_64: '69e46a65066e7e277687a99439c2b5664280b5c56518105757ac9919b2b6d016'
   })
 

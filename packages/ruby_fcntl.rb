@@ -10,6 +10,8 @@ class Ruby_fcntl < RUBY
   binary_compression 'gem'
 
   binary_sha256({
+    aarch64: '5c70a361da3cedbac596ce40bfe1807a0a5a263cedeb290aa7db99abe65793f8',
+     armv7l: '5c70a361da3cedbac596ce40bfe1807a0a5a263cedeb290aa7db99abe65793f8',
      x86_64: '5d7e8d0d5620baf40e0c091099b8aa5e1c9e37058efcfdeabb43876b545d2c05'
   })
 
