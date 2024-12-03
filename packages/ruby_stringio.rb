@@ -10,6 +10,8 @@ class Ruby_stringio < RUBY
   binary_compression 'gem'
 
   binary_sha256({
+    aarch64: '1ba3f6cd5a6ce7da06ba2764fa543c43c366b9c8110f73966ee98b143ff1b5b3',
+     armv7l: '1ba3f6cd5a6ce7da06ba2764fa543c43c366b9c8110f73966ee98b143ff1b5b3',
      x86_64: '3f0acdab152899c3b4bd9067513eaaac7b688606a4f08524b8b52b3c360d46f9'
   })
 
