@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Stellarium < CMake
   description 'Stellarium is a free open source planetarium for your computer.'
   homepage 'http://stellarium.org/'
-  version '24.2'
+  version '24.3'
   license 'GPL-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.37'
@@ -12,9 +12,9 @@ class Stellarium < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5d92d053882ddb66a6eeba455ede459a8ad897117603176826cc0e8804647e10',
-     armv7l: '5d92d053882ddb66a6eeba455ede459a8ad897117603176826cc0e8804647e10',
-     x86_64: '9ea039537005dafbbe3fc9faf989f4dbd7731c6f74e213d6c925b2b75a54d7d8'
+    aarch64: 'bd548e884494c873af710087dbfbe368add12273256894d3025bc61d58a254ef',
+     armv7l: 'bd548e884494c873af710087dbfbe368add12273256894d3025bc61d58a254ef',
+     x86_64: '1f3493b31364ba7019186d10ec2881710c887b7a7595d5d08e29feea0295cebf'
   })
 
   depends_on 'gcc_lib' # R
@@ -31,6 +31,10 @@ class Stellarium < CMake
   depends_on 'zlib' # R
 
   cmake_options '-DENABLE_GPS=0'
+
+  def self.preflight
+    MiscFunctions.check_free_disk_space(551550976)
+  end
 
   def self.postremove
     Package.agree_to_remove("#{HOME}/.stellarium")
