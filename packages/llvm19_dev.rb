@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/llvm19_build.rb")
 class Llvm19_dev < Package
   description 'LLVM: Everything except libLLVM & llvm-strip'
   homepage Llvm19_build.homepage
-  version '19.1.4'
+  version '19.1.5'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm19_build.version}".orange if version != Llvm19_build.version
   license Llvm19_build.license
