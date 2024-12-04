@@ -37,10 +37,6 @@ class Python3 < Package
   depends_on 'zlib' # R
   depends_on 'zoneinfo' # L
   depends_on 'ncurses' # R
-  depends_on 'tcl' # R
-  depends_on 'tk' # R
-  depends_on 'tcl' # R
-  depends_on 'tk' # R
 
   no_env_options
   conflicts_ok
