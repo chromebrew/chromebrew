@@ -27,9 +27,6 @@ class Llvm19_lib < Package
   depends_on 'llvm19_build' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'llvm19_build' # R
-  depends_on 'llvm19_build' # R
-  depends_on 'llvm19_build' # R
 
   conflicts_ok
   no_shrink
