@@ -4,4 +4,6 @@
 cd /output/ || exit 1
 git config --global --add safe.directory /output
 export CREW_AGREE_TIMEOUT_SECONDS=1
+set -x
 tools/build_updated_packages.rb --skip
+echo "Exit code of build run was: $?"
