@@ -103,7 +103,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        arch: [x86_64, armv7l, i686]
+        arch: [i686, x86_64, armv7l]
         runner:
           - [self-hosted, X64]
           - [self-hosted, ARM]
@@ -223,7 +223,7 @@ jobs:
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git fetch --shallow-since="1 week"
           git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)
-          mapfile -t updated_package_array < <( git diff-tree --no-commit-id --name-only -r $(git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)) | grep -v manifest | grep "^packages" | sed -e 's,packages/,,' -e 's,.rb,,')
+          mapfile -t updated_package_array < <( git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD) | grep -v manifest | grep "^packages" | sed -e 's,packages/,,' -e 's,.rb,,')
           echo -e "Updated packages:" > /tmp/pr.txt
           for file in "${updated_package_array[@]}"
             do
