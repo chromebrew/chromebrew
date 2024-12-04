@@ -103,7 +103,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        arch: [x86_64, armv7l, i686]
+        arch: [i686, x86_64, armv7l]
         runner:
           - [self-hosted, X64]
           - [self-hosted, ARM]
