@@ -13,8 +13,8 @@ class Llvm19_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '349970a4b9c69b17fd50aa5fc80a6e0de0743843e15e61c6734df6ac114ff1a8',
-     armv7l: '349970a4b9c69b17fd50aa5fc80a6e0de0743843e15e61c6734df6ac114ff1a8',
+    aarch64: 'c5994f189965c881c91f94f0f4b541169de155bfcc1876069e68dd60124c2d69',
+     armv7l: 'c5994f189965c881c91f94f0f4b541169de155bfcc1876069e68dd60124c2d69',
        i686: '5906cfaa7fa7e26c2eb858b19c6a09bc7afc33df0768f7209ed82bc598ceba99',
      x86_64: '8b618358f195d255a3339fc5861febab65ad51823baa7f9718a1110af16a0a32'
   })
@@ -34,6 +34,7 @@ class Llvm19_build < Package
   depends_on 'zstd' # R
   depends_on 'llvm19_dev' # R
   depends_on 'llvm19_lib' # R
+  depends_on 'llvm19_dev' # R
 
   no_env_options
   conflicts_ok
