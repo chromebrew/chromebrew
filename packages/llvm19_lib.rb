@@ -16,7 +16,7 @@ class Llvm19_lib < Package
     aarch64: '98e6e554beaebddfb2e845655bc115e92cb38826e3bbbe365ca6716a41cbbb49',
      armv7l: '98e6e554beaebddfb2e845655bc115e92cb38826e3bbbe365ca6716a41cbbb49',
        i686: '704c28c98399858a737f5fb8524b410dd51211af37a540af1001d744cfa66c66',
-     x86_64: '1feea8a12de4c9278471852a3f2509078c17f8a3406c68d73f835d97ef7fe44e'
+     x86_64: 'e31dd4258c0c3d75fe01e205dff2a841f735c54db03d91211b47002220192c5a'
   })
 
   depends_on 'gcc_lib' # R
@@ -27,6 +27,7 @@ class Llvm19_lib < Package
   depends_on 'llvm19_build' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
+  depends_on 'llvm19_build' # R
   depends_on 'llvm19_build' # R
 
   conflicts_ok
