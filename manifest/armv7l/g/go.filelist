@@ -7792,6 +7792,7 @@
 /usr/local/share/go/src/net/write_unix_test.go
 /usr/local/share/go/src/net/writev_test.go
 /usr/local/share/go/src/net/writev_unix.go
+/usr/local/share/go/src/os/copy_test.go
 /usr/local/share/go/src/os/dir.go
 /usr/local/share/go/src/os/dir_darwin.go
 /usr/local/share/go/src/os/dir_plan9.go
