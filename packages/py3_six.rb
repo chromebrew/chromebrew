@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_six < Pip
   description 'Six is a Python 2 and 3 compatibility library.'
   homepage 'https://six.readthedocs.io/'
-  version "1.16.0-#{CREW_PY_VER}"
+  version "1.17.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
