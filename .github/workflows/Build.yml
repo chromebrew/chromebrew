@@ -128,7 +128,7 @@ jobs:
               -v $(pwd):/output \
               "satmandu/crewbuild:${CONTAINER}" \
               /bin/chromebrewstart /output/tools/github_actions_update_builder.sh  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
-              grep "Built and Uploaded:" /tmp/build.log
+              grep "Built and Uploaded:" /tmp/build.log || true
               sudo rm -rf release
       - name: Add updated packages to PR.
         id: push-check
