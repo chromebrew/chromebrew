@@ -116,7 +116,7 @@ jobs:
             runner: [self-hosted, X64]
     runs-on: ${{ matrix.runner }}
     needs: update-check
-    if: ${{ !cancelled() }}
+    if: ${{ !cancelled() && github.repository_owner == 'chromebrew' }}
     concurrency:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
@@ -202,7 +202,7 @@ jobs:
     needs:
       - update-check
       - generate
-    if: ${{ !cancelled() }}
+    if: ${{ !cancelled() && github.repository_owner == 'chromebrew' }}
     steps:
       - name: fail if update or build jobs failed, otherwise create a PR
         if: ${{ contains(needs.*.result, 'failure') }}
