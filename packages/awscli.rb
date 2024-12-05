@@ -10,8 +10,8 @@ class Awscli < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '703ca6f6351abc7e904945e0fb8baf9dc1546e7d7dbda88c50879bc3519058b7',
-     armv7l: '703ca6f6351abc7e904945e0fb8baf9dc1546e7d7dbda88c50879bc3519058b7',
+    aarch64: '48380a1e3c317d1ee4cdb519c52954be572092472745a14824c6c3ae85b0ebee',
+     armv7l: '48380a1e3c317d1ee4cdb519c52954be572092472745a14824c6c3ae85b0ebee',
        i686: 'b30c33d6b77e961be8212a54b0be516666473897e28da51ceed45e8e9bdca60d',
      x86_64: 'a20bce9f9b9efee779d5fa5717ea21594b9dd5de06321a239777ff2fa18ea1ae'
   })

@@ -10,8 +10,8 @@ class Sqlmap < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f6e4151cacaa39eda43e36f2cfbb1b43bb911c73ff70262a01b11c5c4092677c',
-     armv7l: 'f6e4151cacaa39eda43e36f2cfbb1b43bb911c73ff70262a01b11c5c4092677c',
+    aarch64: '7bde12ddbbc4e43c5a2493bfc9781ad68c3a6b030de12759a776a63759f839e7',
+     armv7l: '7bde12ddbbc4e43c5a2493bfc9781ad68c3a6b030de12759a776a63759f839e7',
        i686: '4bd5ac422ff7c69ec854a6ec364815d299b1ad9fe87b2bec958e0101b3986e14',
      x86_64: '3b6a6d5cef96fda6974ae3b5632c29a1a3dbf81fa98ddae4237bbf375230ce43'
   })
