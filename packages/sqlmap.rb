@@ -13,7 +13,7 @@ class Sqlmap < Pip
     aarch64: 'f6e4151cacaa39eda43e36f2cfbb1b43bb911c73ff70262a01b11c5c4092677c',
      armv7l: 'f6e4151cacaa39eda43e36f2cfbb1b43bb911c73ff70262a01b11c5c4092677c',
        i686: '4bd5ac422ff7c69ec854a6ec364815d299b1ad9fe87b2bec958e0101b3986e14',
-     x86_64: '7c300a321af68eee9eca8b1710fe22ba000cda130bae9e0cc37df3b524e56e3c'
+     x86_64: '3b6a6d5cef96fda6974ae3b5632c29a1a3dbf81fa98ddae4237bbf375230ce43'
   })
 
   depends_on 'python3', '>= 3.12.0'
