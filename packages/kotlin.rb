@@ -3,11 +3,11 @@ require 'package'
 class Kotlin < Package
   description 'Statically typed programming language for modern multiplatform applications'
   homepage 'https://kotlinlang.org/'
-  version '2.0.0'
+  version '2.1.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://github.com/JetBrains/kotlin/releases/download/v#{version}/kotlin-compiler-#{version}.zip"
-  source_sha256 'ef578730976154fd2c5968d75af8c2703b3de84a78dffe913f670326e149da3b'
+  source_sha256 'b6698d5728ad8f9edcdd01617d638073191d8a03139cc538a391b4e3759ad297'
 
   depends_on 'openjdk8'
 

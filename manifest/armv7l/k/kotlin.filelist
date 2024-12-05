@@ -1,12 +1,10 @@
 /usr/local/bin/kapt
 /usr/local/bin/kotlin
-/usr/local/bin/kotlin-dce-js
 /usr/local/bin/kotlinc
 /usr/local/bin/kotlinc-js
 /usr/local/bin/kotlinc-jvm
 /usr/local/share/kotlin/bin/kapt
 /usr/local/share/kotlin/bin/kotlin
-/usr/local/share/kotlin/bin/kotlin-dce-js
 /usr/local/share/kotlin/bin/kotlinc
 /usr/local/share/kotlin/bin/kotlinc-js
 /usr/local/share/kotlin/bin/kotlinc-jvm
@@ -16,6 +14,7 @@
 /usr/local/share/kotlin/lib/android-extensions-runtime.jar
 /usr/local/share/kotlin/lib/annotations-13.0.jar
 /usr/local/share/kotlin/lib/assignment-compiler-plugin.jar
+/usr/local/share/kotlin/lib/compose-compiler-plugin.jar
 /usr/local/share/kotlin/lib/js.engines.jar
 /usr/local/share/kotlin/lib/jvm-abi-gen.jar
 /usr/local/share/kotlin/lib/kotlin-annotation-processing-cli.jar
