@@ -22,9 +22,9 @@
 /usr/local/share/flutter/.git/index
 /usr/local/share/flutter/.git/info/exclude
 /usr/local/share/flutter/.git/logs/HEAD
-/usr/local/share/flutter/.git/objects/pack/pack-ff098f33d9f9eea6d338f1a3039e660abe1eca9b.idx
-/usr/local/share/flutter/.git/objects/pack/pack-ff098f33d9f9eea6d338f1a3039e660abe1eca9b.pack
-/usr/local/share/flutter/.git/objects/pack/pack-ff098f33d9f9eea6d338f1a3039e660abe1eca9b.rev
+/usr/local/share/flutter/.git/objects/pack/pack-3fa488f2b81f4302af9de96581cf35db82a821b9.idx
+/usr/local/share/flutter/.git/objects/pack/pack-3fa488f2b81f4302af9de96581cf35db82a821b9.pack
+/usr/local/share/flutter/.git/objects/pack/pack-3fa488f2b81f4302af9de96581cf35db82a821b9.rev
 /usr/local/share/flutter/.git/shallow
 /usr/local/share/flutter/.gitattributes
 /usr/local/share/flutter/.github/ISSUE_TEMPLATE/10_feature.yml
@@ -9435,6 +9435,8 @@
 /usr/local/share/flutter/packages/flutter_tools/test/integration.shard/hot_reload_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/integration.shard/hot_reload_with_asset_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/integration.shard/isolated/native_assets_test.dart
+/usr/local/share/flutter/packages/flutter_tools/test/integration.shard/isolated/native_assets_test_utils.dart
+/usr/local/share/flutter/packages/flutter_tools/test/integration.shard/isolated/native_assets_without_cbuild_assemble_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/integration.shard/lifetime_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/integration.shard/observatory_port_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/integration.shard/overall_experience_test.dart
