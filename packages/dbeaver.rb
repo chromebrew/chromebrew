@@ -3,15 +3,11 @@ require 'package'
 class Dbeaver < Package
   description 'Free Universal Database Tool'
   homepage 'https://dbeaver.io'
-  version '24.1.5'
+  version '24.3.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
-  source_url({
-    x86_64: "https://github.com/dbeaver/dbeaver/releases/download/#{version}/dbeaver-ce-#{version}-linux.gtk.x86_64.tar.gz"
-  })
-  source_sha256({
-    x86_64: '59f3b876ef95b0be87d9b4c646349c9ad172197c52971dec693a3f4d3daa955e'
-  })
+  source_url "https://github.com/dbeaver/dbeaver/releases/download/#{version}/dbeaver-ce-#{version}-linux.gtk.x86_64.tar.gz"
+  source_sha256 '7f5f872d7ea020bc07f875ec5df867e3a47445d1d19d4e6728994fb6696483d9'
 
   depends_on 'gtk3'
   depends_on 'xdg_base'
@@ -41,16 +37,6 @@ class Dbeaver < Package
   end
 
   def self.postremove
-    config_dir = "#{HOME}/.local/share/DBeaverData"
-    if Dir.exist? config_dir
-      print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightgreen
-      else
-        puts "#{config_dir} saved.".lightgreen
-      end
-    end
+    Package.agree_to_remove("#{HOME}/.local/share/DBeaverData")
   end
 end
