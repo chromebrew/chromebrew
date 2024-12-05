@@ -64,6 +64,7 @@
 /usr/local/share/man/man2/ioctl_xfs_scrub_metadata.2.zst
 /usr/local/share/man/man2/ioctl_xfs_scrubv_metadata.2.zst
 /usr/local/share/man/man2/ioctl_xfs_setresblks.2.zst
+/usr/local/share/man/man2/ioctl_xfs_start_commit.2.zst
 /usr/local/share/man/man3/attr_list_by_handle.3.zst
 /usr/local/share/man/man3/attr_multi_by_handle.3.zst
 /usr/local/share/man/man3/fd_to_handle.3.zst
@@ -110,5 +111,6 @@
 /usr/local/share/xfsprogs/mkfs/lts_5.15.conf
 /usr/local/share/xfsprogs/mkfs/lts_5.4.conf
 /usr/local/share/xfsprogs/mkfs/lts_6.1.conf
+/usr/local/share/xfsprogs/mkfs/lts_6.12.conf
 /usr/local/share/xfsprogs/mkfs/lts_6.6.conf
 /usr/local/share/xfsprogs/xfs_scrub_all.cron
