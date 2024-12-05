@@ -13,6 +13,5 @@ jobs:
         uses: reviewdog/action-shellcheck@v1
         with:
           exclude: './tools/*'
-          fail_on_error: true
+          fail_level: any
           reporter: github-pr-check
-          reviewdog_flags: '-fail-level=any'

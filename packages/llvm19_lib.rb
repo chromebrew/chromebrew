@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/llvm19_build.rb")
 class Llvm19_lib < Package
   description 'LibLLVM and llvm-strip'
   homepage Llvm19_build.homepage
-  version '19.1.4'
+  version '19.1.5'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm19_build.version}".orange if version != Llvm19_build.version
   license Llvm19_build.license
@@ -13,10 +13,10 @@ class Llvm19_lib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '98e6e554beaebddfb2e845655bc115e92cb38826e3bbbe365ca6716a41cbbb49',
-     armv7l: '98e6e554beaebddfb2e845655bc115e92cb38826e3bbbe365ca6716a41cbbb49',
-       i686: 'f6d542f8aea68738dc38aa90f16fdc6acae70d09c20007181dfc8356f4fbbbe4',
-     x86_64: '1feea8a12de4c9278471852a3f2509078c17f8a3406c68d73f835d97ef7fe44e'
+    aarch64: 'a87ae145aab11317701d380526e22a87046ac86d45ae3e94213845878c32d620',
+     armv7l: 'a87ae145aab11317701d380526e22a87046ac86d45ae3e94213845878c32d620',
+       i686: '704c28c98399858a737f5fb8524b410dd51211af37a540af1001d744cfa66c66',
+     x86_64: 'e31dd4258c0c3d75fe01e205dff2a841f735c54db03d91211b47002220192c5a'
   })
 
   depends_on 'gcc_lib' # R
