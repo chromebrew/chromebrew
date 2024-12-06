@@ -1,5 +1,5 @@
 /usr/local/bin/pwsh
-/usr/local/share/powershell/JetBrains.Annotations.dll
+/usr/local/share/powershell/Humanizer.dll
 /usr/local/share/powershell/Json.More.dll
 /usr/local/share/powershell/JsonPointer.Net.dll
 /usr/local/share/powershell/JsonSchema.Net.dll
@@ -271,6 +271,7 @@
 /usr/local/share/powershell/System.Private.DataContractSerialization.dll
 /usr/local/share/powershell/System.Private.ServiceModel.dll
 /usr/local/share/powershell/System.Private.Uri.dll
+/usr/local/share/powershell/System.Private.Windows.Core.dll
 /usr/local/share/powershell/System.Private.Xml.Linq.dll
 /usr/local/share/powershell/System.Private.Xml.dll
 /usr/local/share/powershell/System.Reflection.Context.dll
