@@ -36,7 +36,7 @@
 /usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files (x86)/Add to ZIP.lnk
 /usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files (x86)/Add to Zpaq.lnk
 /usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files (x86)/Add to Zstd.lnk
-/usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files (x86)/Add to archive.lnk
+/usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files (x86)/Add to archive....lnk
 /usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files (x86)/Add to self-extracting archive.lnk
 /usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files (x86)/Add to separate 7Z.lnk
 /usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files (x86)/Add to separate ZIP.lnk
@@ -68,7 +68,7 @@
 /usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files/Add to ZIP.lnk
 /usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files/Add to Zpaq.lnk
 /usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files/Add to Zstd.lnk
-/usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files/Add to archive.lnk
+/usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files/Add to archive....lnk
 /usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files/Add to self-extracting archive.lnk
 /usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files/Add to separate .7Z.lnk
 /usr/local/share/peazip/res/share/batch/Windows/SendTo/SendTo_Program Files/Add to separate .ZIP.lnk
@@ -111,7 +111,7 @@
 /usr/local/share/peazip/res/share/batch/Windows/Windows 11 mini context menu/readme mini context menu.txt
 /usr/local/share/peazip/res/share/batch/Windows/Windows 11 mini context menu/remove PeaZip entries.reg
 /usr/local/share/peazip/res/share/batch/bat/Add to 7z.bat
-/usr/local/share/peazip/res/share/batch/bat/Add to archive.bat
+/usr/local/share/peazip/res/share/batch/bat/Add to archive....bat
 /usr/local/share/peazip/res/share/batch/bat/Add to brotli.bat
 /usr/local/share/peazip/res/share/batch/bat/Add to bzip2.bat
 /usr/local/share/peazip/res/share/batch/bat/Add to gzip.bat
@@ -151,6 +151,8 @@
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE6-dolphin/peazip-kde6-minimal.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE6-dolphin/peazip-kde6.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/Add to Archive
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/Convert
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/Extract Archive
@@ -230,7 +232,7 @@
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, open file or folder.workflow/Contents/document.wflow
 /usr/local/share/peazip/res/share/batch/readme-batch.txt
 /usr/local/share/peazip/res/share/batch/sh/Add to 7z.sh
-/usr/local/share/peazip/res/share/batch/sh/Add to archive.sh
+/usr/local/share/peazip/res/share/batch/sh/Add to archive....sh
 /usr/local/share/peazip/res/share/batch/sh/Add to brotli.sh
 /usr/local/share/peazip/res/share/batch/sh/Add to bzip2.sh
 /usr/local/share/peazip/res/share/batch/sh/Add to gzip.sh
@@ -267,18 +269,27 @@
 /usr/local/share/peazip/res/share/copying/third-parties/upx note.txt
 /usr/local/share/peazip/res/share/copying/third-parties/zpaq note.txt
 /usr/local/share/peazip/res/share/copying/third-parties/zstd note.txt
+/usr/local/share/peazip/res/share/icons/PeaZip.icns
 /usr/local/share/peazip/res/share/icons/PeaZip.ico
+/usr/local/share/peazip/res/share/icons/PeaZip_7z.icns
 /usr/local/share/peazip/res/share/icons/PeaZip_7z.ico
-/usr/local/share/peazip/res/share/icons/PeaZip_app.ico
+/usr/local/share/peazip/res/share/icons/PeaZip_alt.icns
+/usr/local/share/peazip/res/share/icons/PeaZip_alt.ico
+/usr/local/share/peazip/res/share/icons/PeaZip_block.icns
 /usr/local/share/peazip/res/share/icons/PeaZip_block.ico
+/usr/local/share/peazip/res/share/icons/PeaZip_cd.icns
 /usr/local/share/peazip/res/share/icons/PeaZip_cd.ico
+/usr/local/share/peazip/res/share/icons/PeaZip_package.icns
 /usr/local/share/peazip/res/share/icons/PeaZip_package.ico
+/usr/local/share/peazip/res/share/icons/PeaZip_rar.icns
 /usr/local/share/peazip/res/share/icons/PeaZip_rar.ico
+/usr/local/share/peazip/res/share/icons/PeaZip_zip.icns
 /usr/local/share/peazip/res/share/icons/PeaZip_zip.ico
 /usr/local/share/peazip/res/share/icons/peazip.png
 /usr/local/share/peazip/res/share/icons/peazip_7z.png
 /usr/local/share/peazip/res/share/icons/peazip_add.png
 /usr/local/share/peazip/res/share/icons/peazip_add_alt.png
+/usr/local/share/peazip/res/share/icons/peazip_alt.png
 /usr/local/share/peazip/res/share/icons/peazip_app.png
 /usr/local/share/peazip/res/share/icons/peazip_block.png
 /usr/local/share/peazip/res/share/icons/peazip_browse.png
@@ -290,6 +301,7 @@
 /usr/local/share/peazip/res/share/icons/peazip_rar.png
 /usr/local/share/peazip/res/share/icons/peazip_seven.icl
 /usr/local/share/peazip/res/share/icons/peazip_zip.png
+/usr/local/share/peazip/res/share/icons/peazipmac.icns
 /usr/local/share/peazip/res/share/icons/peazipmac.png
 /usr/local/share/peazip/res/share/icons/readme-icons.txt
 /usr/local/share/peazip/res/share/lang-wincontext/bg.reg
@@ -315,6 +327,7 @@
 /usr/local/share/peazip/res/share/lang-wincontext/id.reg
 /usr/local/share/peazip/res/share/lang-wincontext/it.reg
 /usr/local/share/peazip/res/share/lang-wincontext/ja.reg
+/usr/local/share/peazip/res/share/lang-wincontext/ko.reg
 /usr/local/share/peazip/res/share/lang-wincontext/lv.reg
 /usr/local/share/peazip/res/share/lang-wincontext/nl.reg
 /usr/local/share/peazip/res/share/lang-wincontext/pl.reg
@@ -369,7 +382,6 @@
 /usr/local/share/peazip/res/share/lang/uz.txt
 /usr/local/share/peazip/res/share/lang/vn.txt
 /usr/local/share/peazip/res/share/peazip_help.pdf
-/usr/local/share/peazip/res/share/presets/0.txt
 /usr/local/share/peazip/res/share/presets/1.txt
 /usr/local/share/peazip/res/share/presets/10.txt
 /usr/local/share/peazip/res/share/presets/11.txt
@@ -385,12 +397,16 @@
 /usr/local/share/peazip/res/share/presets/7.txt
 /usr/local/share/peazip/res/share/presets/8.txt
 /usr/local/share/peazip/res/share/presets/9.txt
-/usr/local/share/peazip/res/share/presets/alt/11.txt
-/usr/local/share/peazip/res/share/presets/alt/12.txt
-/usr/local/share/peazip/res/share/presets/custom/cb7.txt
-/usr/local/share/peazip/res/share/presets/custom/cbr.txt
-/usr/local/share/peazip/res/share/presets/custom/cbt.txt
-/usr/local/share/peazip/res/share/presets/custom/cbz.txt
+/usr/local/share/peazip/res/share/presets/alt/7z-brotli.txt
+/usr/local/share/peazip/res/share/presets/alt/arc.txt
+/usr/local/share/peazip/res/share/presets/alt/brotli.txt
+/usr/local/share/peazip/res/share/presets/alt/cb7.txt
+/usr/local/share/peazip/res/share/presets/alt/cbr.txt
+/usr/local/share/peazip/res/share/presets/alt/cbt.txt
+/usr/local/share/peazip/res/share/presets/alt/cbz.txt
+/usr/local/share/peazip/res/share/presets/alt/zip-bzip2.txt
+/usr/local/share/peazip/res/share/presets/alt/zpaq.txt
+/usr/local/share/peazip/res/share/presets/alt/zstandard.txt
 /usr/local/share/peazip/res/share/readme/readme_Linux.txt
 /usr/local/share/peazip/res/share/readme/readme_Windows.txt
 /usr/local/share/peazip/res/share/readme/readme_macOS.txt
