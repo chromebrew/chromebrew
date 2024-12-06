@@ -3,7 +3,7 @@ require 'package'
 class Nushell < Package
   description 'A new type of shell'
   homepage 'https://www.nushell.sh/'
-  version '0.99.1'
+  version '0.100.0'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.28'
@@ -13,9 +13,9 @@ class Nushell < Package
      x86_64: "https://github.com/nushell/nushell/releases/download/#{version}/nu-#{version}-x86_64-unknown-linux-gnu.tar.gz"
   })
   source_sha256({
-    aarch64: '68cc9d9de1b6015e646199bc3806f61b7bd228ac345d62b521d328902a883c17',
-     armv7l: '68cc9d9de1b6015e646199bc3806f61b7bd228ac345d62b521d328902a883c17',
-     x86_64: '3aeb6b790414e29296097790074f2e03db29b0aba329306e3ffdbfefa3e2664f'
+    aarch64: 'adca26d894b0b3ca30adb06f180d6d7e57c39b76d1802ba4d59225bf7f1e7fec',
+     armv7l: 'adca26d894b0b3ca30adb06f180d6d7e57c39b76d1802ba4d59225bf7f1e7fec',
+     x86_64: '7bcd2c64bc7028f8cdbb25f2f84d61b3c9418ce6c39e13c7f010d412f1e8711e'
   })
 
   no_compile_needed
@@ -28,6 +28,6 @@ class Nushell < Package
   end
 
   def self.postinstall
-    puts "\nType 'nu' to get started.\n".lightblue
+    ExitMessage.add "\nType 'nu' to get started.\n"
   end
 end
