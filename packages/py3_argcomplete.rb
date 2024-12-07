@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_argcomplete < Pip
   description 'Argcomplete provides bash completion for argparse.'
   homepage 'https://kislyuk.github.io/argcomplete/'
-  version "3.5.1-#{CREW_PY_VER}"
+  version "3.5.2-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c6d3d5b5f5e5f37568c77044d28f6ff5e9a63aaaf98c48c61f29415681467da1',
-     armv7l: 'c6d3d5b5f5e5f37568c77044d28f6ff5e9a63aaaf98c48c61f29415681467da1',
-       i686: 'd7a180a5b7ddc040c4e5ea8f8506a4dc46fc557e656ab0df557529f8849db39c',
-     x86_64: 'b594d8dac1ec5f30fef65d7bc45f839e5e8908c5a2a4c0481341641a88c6e636'
+    aarch64: 'ec1038917be7b87c8685244a639f88aa2e0b291efc989f2d594d46cd439a4f6f',
+     armv7l: 'ec1038917be7b87c8685244a639f88aa2e0b291efc989f2d594d46cd439a4f6f',
+       i686: '1baf35d3a3b0b7ab9634a345831860d2484b9d1a22859742fb709d8d846ca401',
+     x86_64: '2409fc468c69a30e46009bce8e51476ba46c4f59add289cd2a5e0e0e57c83940'
   })
 
   depends_on 'python3' => :build
