@@ -166,8 +166,9 @@ jobs:
         run: |
            git config user.name "${{ github.actor }}"
            git config user.email "${{ github.actor }}@users.noreply.github.com"
-           git pull origin master --rebase
-           git commit -m "Rebase ${{ github.ref_name }} to master."
+           git fetch --shallow-since="1 week"
+           git pull origin master --merge
+           git commit -m "Merge master into ${{ github.ref_name }}."
       - name: Push rebase
         uses: ad-m/github-push-action@master
         with:
@@ -189,6 +190,10 @@ jobs:
           export PR_NUMBER=$(gh pr create --title "Automatic PR to build packages for ${{ github.ref_name }} on ${{ needs.setup.outputs.output1 }}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
+          # Close and reopen PR to try to automatically trigger
+          # unit test workflow.
+          gh pr close ${PR_NUMBER}
+          gh pr reopen ${PR_NUMBER}
       - name: Trigger Unit Test workflow.
         run: |
           gh workflow run "Unit-Test.yml" --ref ${{ github.ref_name }}
