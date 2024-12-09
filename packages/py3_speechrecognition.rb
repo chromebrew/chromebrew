@@ -12,7 +12,7 @@ class Py3_speechrecognition < Pip
   binary_sha256({
     aarch64: '126080b3ed5daf57f85faae07a532d6a5c275b750dbad3868216cbe0db014361',
      armv7l: '126080b3ed5daf57f85faae07a532d6a5c275b750dbad3868216cbe0db014361',
-       i686: 'ac6ff09bc0935f4ef955ac70056cf5beade710a8fc2a37ea17b86734e0b483de',
+       i686: 'e501dcbfcd1e390bd99e014a6c9cec18f5f5ac32e1db2e68530c259a060f5d14',
      x86_64: 'cafaebb85c7282ddb66111199d3c2ef9f941bf72e06e7732dafde04b35f0e424'
   })
 
