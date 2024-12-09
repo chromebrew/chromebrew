@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_numpy < Pip
   description 'NumPy is the fundamental package for array computing with Python.'
   homepage 'https://numpy.org/'
-  version "2.1.3-#{CREW_PY_VER}"
+  version "2.2.0-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0b4af2f634908ce20e89146d4eff0892ea5d77668f23a71bdffea03148fb0ae7',
-     armv7l: '0b4af2f634908ce20e89146d4eff0892ea5d77668f23a71bdffea03148fb0ae7',
-       i686: '1acdcc7a080e838b4792874d6de608b6578cd635e3e880fc47ee685752c16d43',
-     x86_64: '34811d0ce0570c3afd7348809bc50e3844e64c4800f3a4531da3448b761ee185'
+    aarch64: '598a625b8fdd7a0ed52bc8c35e6b1cc9d09b2920510ca7663f929451410c6c9e',
+     armv7l: '598a625b8fdd7a0ed52bc8c35e6b1cc9d09b2920510ca7663f929451410c6c9e',
+       i686: '907ed4ccf038a5070f13b8956fe765a9a8fd7a792a84feb2eb1494c7b1a53e7c',
+     x86_64: 'f74a73a0e54b4c6693afea276007fca5b354a4aa5e13d0615a5d1f8d65e8ecd5'
   })
 
   depends_on 'gcc_lib' # R
