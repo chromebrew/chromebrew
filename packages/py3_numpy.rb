@@ -13,7 +13,7 @@ class Py3_numpy < Pip
     aarch64: '0b4af2f634908ce20e89146d4eff0892ea5d77668f23a71bdffea03148fb0ae7',
      armv7l: '0b4af2f634908ce20e89146d4eff0892ea5d77668f23a71bdffea03148fb0ae7',
        i686: '907ed4ccf038a5070f13b8956fe765a9a8fd7a792a84feb2eb1494c7b1a53e7c',
-     x86_64: '34811d0ce0570c3afd7348809bc50e3844e64c4800f3a4531da3448b761ee185'
+     x86_64: 'f74a73a0e54b4c6693afea276007fca5b354a4aa5e13d0615a5d1f8d65e8ecd5'
   })
 
   depends_on 'gcc_lib' # R
