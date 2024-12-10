@@ -11,8 +11,8 @@ class Expat < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c05d2caeebaaae182d518d4081f774cfe11981f0cec3f95aba3b25aabb10e916',
-     armv7l: 'c05d2caeebaaae182d518d4081f774cfe11981f0cec3f95aba3b25aabb10e916',
+    aarch64: '394efc3fa2f9c2c50f824a17cce76a6e05762a2292ed20355b40e193cfe6a24f',
+     armv7l: '394efc3fa2f9c2c50f824a17cce76a6e05762a2292ed20355b40e193cfe6a24f',
        i686: '209a331cf549ca5c9650019ce53f4b0df586cf3a755b291ef2a7e8e0e92b7220',
      x86_64: 'd6701ff3fe50aac83aa42ec62353f26245d31473a435fb721f7769cef51e5330'
   })
