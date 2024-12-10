@@ -28,6 +28,8 @@ def get_version(name, homepage)
 end
 
 def get_anitya_id(name, homepage)
+  # Ignore python and ruby packages.
+  return if name.to_s.start_with?('py2_', 'py3_', 'ruby_')
   # Find out how many packages Anitya has with the provided name.
   json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{name}")))
   number_of_packages = json['total_items']
