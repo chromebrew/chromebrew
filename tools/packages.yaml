@@ -7820,6 +7820,11 @@ url: https://gitlab.gnome.org/GNOME/librest/-/tags
 activity: none
 ---
 kind: url
+name: revive
+url: https://github.com/mgechev/revive/releases
+activity: medium
+---
+kind: url
 name: rfkill
 url: https://www.kernel.org/pub/software/network/rfkill
 activity: none
@@ -9262,6 +9267,11 @@ activity: high
 kind: url
 name: vulkansdk
 url: https://vulkan.lunarg.com/sdk/home
+activity: medium
+---
+kind: url
+name: vuls
+url: https://github.com/future-architect/vuls/releases
 activity: medium
 ---
 kind: url
