@@ -11,8 +11,8 @@ class Git < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6ea2fc4944c3e575c0d42e2e71c22d972b6eb08a197bfcf4497f914ba9df4bc5',
-     armv7l: '6ea2fc4944c3e575c0d42e2e71c22d972b6eb08a197bfcf4497f914ba9df4bc5',
+    aarch64: 'cc131c193087acc6435d5bbc5e128a78bb0b21a3b230cd21a09f653add0e26d4',
+     armv7l: 'cc131c193087acc6435d5bbc5e128a78bb0b21a3b230cd21a09f653add0e26d4',
        i686: '5ee9c7364e7d6371f4db19113587e797e48a122d597500456a5c0dc703d29491',
      x86_64: '82e81a9e51da7914d9edb19d5cf7c306efaca52b692709182bb0c3ea92b4a141'
   })
