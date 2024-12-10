@@ -1,5 +1,5 @@
 ---
-name: Build Updates & Generate PR
+name: Build
 on:
   workflow_dispatch:
 env:
@@ -168,10 +168,11 @@ jobs:
            git pull
            git checkout ${{ github.ref_name }} && git rebase master
            # git commit -m "Merge master into ${{ github.ref_name }}." || true
-      - name: Push rebase
+      - name: Push rebase changes
         uses: ad-m/github-push-action@master
         with:
           branch: ${{ github.ref_name }}
+          force: true
       - name: Create Pull Request
         env:
           CREW_BRANCH: ${{ github.ref_name }}
@@ -189,10 +190,6 @@ jobs:
           export PR_NUMBER=$(gh pr create --title "Automatic PR to build packages for ${{ github.ref_name }} on ${{ needs.setup.outputs.output1 }}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
-          # Close and reopen PR to try to automatically trigger
-          # unit test workflow.
-          gh pr close ${PR_NUMBER}
-          gh pr reopen ${PR_NUMBER}
       - name: Trigger Unit Test workflow.
         run: |
           gh workflow run "Unit-Test.yml" --ref ${{ github.ref_name }}

@@ -4,6 +4,10 @@ on:
   pull_request:
   merge_group:
   workflow_dispatch:
+  workflow_run:
+    workflows: [Build]
+    types:
+      - completed
 jobs:
   container_tests:
     strategy:
