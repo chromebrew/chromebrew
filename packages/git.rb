@@ -14,7 +14,7 @@ class Git < CMake
     aarch64: '6ea2fc4944c3e575c0d42e2e71c22d972b6eb08a197bfcf4497f914ba9df4bc5',
      armv7l: '6ea2fc4944c3e575c0d42e2e71c22d972b6eb08a197bfcf4497f914ba9df4bc5',
        i686: '5ee9c7364e7d6371f4db19113587e797e48a122d597500456a5c0dc703d29491',
-     x86_64: '65fd42279d365bb37db9ea41ba96f85c17cb96c6ae4a74fc446e613b0d41ab8c'
+     x86_64: '82e81a9e51da7914d9edb19d5cf7c306efaca52b692709182bb0c3ea92b4a141'
   })
 
   depends_on 'ca_certificates' => :build
