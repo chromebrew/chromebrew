@@ -3,7 +3,7 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'https://www.qemu.org/'
-  version '9.1.1'
+  version '10.0.3'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.29' # Needed for MAP_FIXED_NOREPLACE support.
@@ -61,6 +61,7 @@ class Qemu < Package
   depends_on 'pixman' # R
   depends_on 'pulseaudio' # R
   depends_on 'py3_sphinx_rtd_theme' => :build
+  depends_on 'rust' => :build
   depends_on 'sdl2_image' # R
   depends_on 'snappy' # R
   depends_on 'sphinx' => :build
@@ -79,9 +80,10 @@ class Qemu < Package
   def self.build
     FileUtils.mkdir_p 'build'
     Dir.chdir 'build' do
+      system '../configure --help'
       system "../configure #{CREW_CONFIGURE_OPTIONS.sub(/--target.*/, '').gsub('vfpv3-d16', 'neon').gsub('--disable-dependency-tracking', '').sub(/--program-prefix.*?(?=\s|$)/, '').sub(/--program-suffix.*?(?=\s|$)/, '')} \
         --enable-kvm \
-        --enable-lto"
+        --disable-tcg"
       @counter = 1
       @counter_max = 20
       loop do
