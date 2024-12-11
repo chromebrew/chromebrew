@@ -1,11 +1,11 @@
-/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/oci-2.139.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/oci-2.140.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/oci-2.140.0.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/oci-2.140.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/oci-2.140.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/oci-2.140.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/oci-2.140.0.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.13/site-packages/oci-2.140.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/oci-2.140.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/oci/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/alloy.cpython-313.pyc
@@ -839,6 +839,7 @@
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/evaluation_results.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/health_entity.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/health_entity_document_result.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/health_nlu_model_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/hierarchical_entity.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/input_configuration.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/input_location.cpython-313.pyc
@@ -850,6 +851,7 @@
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/location_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/mel_concept.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/mel_concept_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/meta_info.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/model.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/model_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/model_details.cpython-313.pyc
@@ -881,6 +883,7 @@
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/pre_trained_sentiment_analysis_model_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/pre_trained_summarization.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/pre_trained_text_classification_model_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/pre_trained_translation_model_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/pre_trained_universal_model.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/profile.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/__pycache__/project.cpython-313.pyc
@@ -977,6 +980,7 @@
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/evaluation_results.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/health_entity.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/health_entity_document_result.py
+/usr/local/lib/python3.13/site-packages/oci/ai_language/models/health_nlu_model_details.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/hierarchical_entity.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/input_configuration.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/input_location.py
@@ -988,6 +992,7 @@
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/location_details.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/mel_concept.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/mel_concept_details.py
+/usr/local/lib/python3.13/site-packages/oci/ai_language/models/meta_info.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/model.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/model_collection.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/model_details.py
@@ -1019,6 +1024,7 @@
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/pre_trained_sentiment_analysis_model_details.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/pre_trained_summarization.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/pre_trained_text_classification_model_details.py
+/usr/local/lib/python3.13/site-packages/oci/ai_language/models/pre_trained_translation_model_details.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/pre_trained_universal_model.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/profile.py
 /usr/local/lib/python3.13/site-packages/oci/ai_language/models/project.py
@@ -5125,10 +5131,13 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/launch_instance_agent_config_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/launch_instance_availability_config_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/launch_instance_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/launch_instance_licensing_config.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/launch_instance_platform_config.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/launch_instance_shape_config_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/launch_instance_windows_licensing_config.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/launch_options.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/letter_of_authority.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/licensing_config.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/list_ip_inventory_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/local_peering_gateway.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/loop_back_drg_attachment_network_details.cpython-313.pyc
@@ -5247,6 +5256,7 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_instance_configuration_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_instance_console_connection_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_instance_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_instance_licensing_config.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_instance_maintenance_event_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_instance_platform_config.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_instance_pool_details.cpython-313.pyc
@@ -5255,6 +5265,7 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_instance_source_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_instance_source_via_boot_volume_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_instance_source_via_image_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_instance_windows_licensing_config.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_internet_gateway_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_ip_sec_connection_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_ip_sec_connection_tunnel_details.cpython-313.pyc
@@ -5731,10 +5742,13 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/launch_instance_agent_config_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/launch_instance_availability_config_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/launch_instance_details.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/launch_instance_licensing_config.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/launch_instance_platform_config.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/launch_instance_shape_config_details.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/launch_instance_windows_licensing_config.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/launch_options.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/letter_of_authority.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/licensing_config.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/list_ip_inventory_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/local_peering_gateway.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/loop_back_drg_attachment_network_details.py
@@ -5853,6 +5867,7 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_instance_configuration_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_instance_console_connection_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_instance_details.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/update_instance_licensing_config.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_instance_maintenance_event_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_instance_platform_config.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_instance_pool_details.py
@@ -5861,6 +5876,7 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_instance_source_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_instance_source_via_boot_volume_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_instance_source_via_image_details.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/update_instance_windows_licensing_config.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_internet_gateway_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_ip_sec_connection_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_ip_sec_connection_tunnel_details.py
@@ -9374,6 +9390,8 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/resource_pool_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/restore_autonomous_database_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/restore_database_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/rotate_autonomous_container_database_encryption_key_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/rotate_autonomous_database_encryption_key_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/rotate_autonomous_vm_cluster_ords_certs_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/rotate_autonomous_vm_cluster_ssl_certs_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/rotate_cloud_autonomous_vm_cluster_ords_certs_details.cpython-313.pyc
@@ -9830,6 +9848,8 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/resource_pool_summary.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/restore_autonomous_database_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/restore_database_details.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/rotate_autonomous_container_database_encryption_key_details.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/rotate_autonomous_database_encryption_key_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/rotate_autonomous_vm_cluster_ords_certs_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/rotate_autonomous_vm_cluster_ssl_certs_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/rotate_cloud_autonomous_vm_cluster_ords_certs_details.py
@@ -12993,6 +13013,8 @@
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/object_storage_script_location.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/object_store_script_precheck_step.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/pause_dr_plan_execution_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/refresh_dr_plan_default_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/refresh_dr_plan_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/resume_dr_plan_execution_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/retry_dr_plan_execution_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/run_local_script_user_defined_step.cpython-313.pyc
@@ -13043,6 +13065,8 @@
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/update_object_store_script_precheck_step_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/update_run_local_script_user_defined_step_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/update_run_object_store_script_user_defined_step_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/verify_dr_plan_default_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/verify_dr_plan_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/work_request.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/work_request_error.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/__pycache__/work_request_error_collection.cpython-313.pyc
@@ -13137,6 +13161,8 @@
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/object_storage_script_location.py
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/object_store_script_precheck_step.py
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/pause_dr_plan_execution_details.py
+/usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/refresh_dr_plan_default_details.py
+/usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/refresh_dr_plan_details.py
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/resume_dr_plan_execution_details.py
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/retry_dr_plan_execution_details.py
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/run_local_script_user_defined_step.py
@@ -13187,6 +13213,8 @@
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/update_object_store_script_precheck_step_details.py
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/update_run_local_script_user_defined_step_details.py
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/update_run_object_store_script_user_defined_step_details.py
+/usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/verify_dr_plan_default_details.py
+/usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/verify_dr_plan_details.py
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/work_request.py
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/work_request_error.py
 /usr/local/lib/python3.13/site-packages/oci/disaster_recovery/models/work_request_error_collection.py
@@ -14300,6 +14328,7 @@
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/create_patch_fsu_cycle.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/create_precheck_action_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/create_rollback_action_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/create_rollback_cycle_apply_action_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/create_schedule_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/create_sequential_batching_strategy_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/create_service_availability_factor_batching_strategy_details.cpython-313.pyc
@@ -14380,6 +14409,10 @@
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/remove_fsu_collection_targets_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/rollback_action.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/rollback_action_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/rollback_cycle_action.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/rollback_cycle_action_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/rollback_cycle_fsu_job.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/rollback_cycle_fsu_job_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/rollback_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/rollback_fsu_job.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/rollback_fsu_job_summary.cpython-313.pyc
@@ -14410,6 +14443,7 @@
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/update_patch_fsu_cycle.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/update_precheck_action_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/update_rollback_action_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/update_rollback_cycle_action_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/update_schedule_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/update_sequential_batching_strategy_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/__pycache__/update_service_availability_factor_batching_strategy_details.cpython-313.pyc
@@ -14456,6 +14490,7 @@
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/create_patch_fsu_cycle.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/create_precheck_action_details.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/create_rollback_action_details.py
+/usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/create_rollback_cycle_apply_action_details.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/create_schedule_details.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/create_sequential_batching_strategy_details.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/create_service_availability_factor_batching_strategy_details.py
@@ -14536,6 +14571,10 @@
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/remove_fsu_collection_targets_details.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/rollback_action.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/rollback_action_summary.py
+/usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/rollback_cycle_action.py
+/usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/rollback_cycle_action_summary.py
+/usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/rollback_cycle_fsu_job.py
+/usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/rollback_cycle_fsu_job_summary.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/rollback_details.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/rollback_fsu_job.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/rollback_fsu_job_summary.py
@@ -14566,6 +14605,7 @@
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/update_patch_fsu_cycle.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/update_precheck_action_details.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/update_rollback_action_details.py
+/usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/update_rollback_cycle_action_details.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/update_schedule_details.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/update_sequential_batching_strategy_details.py
 /usr/local/lib/python3.13/site-packages/oci/fleet_software_update/models/update_service_availability_factor_batching_strategy_details.py
@@ -25665,14 +25705,16 @@
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/application_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/application_summary_collection.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/attachment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/change_vb_instance_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/create_custom_endpoint_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/create_vb_instance_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/custom_endpoint_details.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/idcs_info_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/network_endpoint_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/private_endpoint_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/request_summarized_applications_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/update_custom_endpoint_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/update_network_endpoint_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/update_private_endpoint_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/update_vb_instance_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/vb_instance.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/vb_instance_summary.cpython-313.pyc
@@ -25687,14 +25729,16 @@
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/__pycache__/work_request_summary_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/application_summary.py
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/application_summary_collection.py
-/usr/local/lib/python3.13/site-packages/oci/visual_builder/models/attachment_details.py
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/change_vb_instance_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/create_custom_endpoint_details.py
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/create_vb_instance_details.py
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/custom_endpoint_details.py
-/usr/local/lib/python3.13/site-packages/oci/visual_builder/models/idcs_info_details.py
+/usr/local/lib/python3.13/site-packages/oci/visual_builder/models/network_endpoint_details.py
+/usr/local/lib/python3.13/site-packages/oci/visual_builder/models/private_endpoint_details.py
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/request_summarized_applications_details.py
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/update_custom_endpoint_details.py
+/usr/local/lib/python3.13/site-packages/oci/visual_builder/models/update_network_endpoint_details.py
+/usr/local/lib/python3.13/site-packages/oci/visual_builder/models/update_private_endpoint_details.py
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/update_vb_instance_details.py
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/vb_instance.py
 /usr/local/lib/python3.13/site-packages/oci/visual_builder/models/vb_instance_summary.py
