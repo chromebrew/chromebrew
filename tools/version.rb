@@ -21,9 +21,10 @@ require_relative '../lib/package_utils'
 def get_version(name, homepage)
   anitya_id = get_anitya_id(name, homepage)
   # If we weren't able to get an Anitya ID, return early here to save time and headaches
-  return nil if anitya_id.nil?
+  return if anitya_id.nil?
   # Get the latest stable version of the package
   json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
+  return if json['stable_versions'].nil?
   return json['stable_versions'][0]
 end
 
