@@ -13,7 +13,7 @@ class Py3_oci < Pip
     aarch64: 'd2fce622e27f1176f759f715e5ba7c82adcbd2101807bda67adb68f187e6f782',
      armv7l: 'd2fce622e27f1176f759f715e5ba7c82adcbd2101807bda67adb68f187e6f782',
        i686: '76946362df8cce114fbb800e3f6f7460648bc56c864dd9372b33d91c494eb3df',
-     x86_64: 'da8f404d72ec95d8dcd556652b99d8f7537b3e48f2803bf802eda2946191967f'
+     x86_64: 'dba59a886c0b935ed6df905cc29dc2555d8ea470f49fd320e1777a73eb2bfa15'
   })
 
   depends_on 'py3_python_dateutil'
