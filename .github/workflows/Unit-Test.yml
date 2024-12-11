@@ -84,7 +84,14 @@ jobs:
               echo "PR #${{ github.event.pull_request.number }} has these possibly Glibc 2.27 compatible packages: ${GLIBC_227_COMPATIBLE_PACKAGES}"
             fi
 
-            # If a package doesnt have a min_glibc value, or if its below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
+            # If a package doesnt have a min_glibc value, or if it is below 2.32, add it to GLIBC_232_COMPATIBLE_PACKAGES.
+            export GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo ${i} ; done | xargs)"
+            if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
+              echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
+              echo "Branch ${{ github.ref_name }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
+            fi
+
+            # If a package doesnt have a min_glibc value, or if it is below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
             export GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo ${i} ; done | xargs)"
             if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
@@ -117,8 +124,10 @@ jobs:
         run: |
             case $TARGET_ARCH in
               x86_64)
-                # Export the x86_64 container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
-                if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                # Export the x86_64 container depending on whether this PR updates packages with appropriate minimum glibc.
+                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
+                    echo "CONTAINER=nocturne-x86_64.m97" >> $GITHUB_ENV
+                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=hatch-x86_64.m130" >> $GITHUB_ENV
                 else
                     echo "CONTAINER=nocturne-x86_64.m90" >> $GITHUB_ENV
@@ -127,8 +136,10 @@ jobs:
                 echo "LIB_SUFFIX=64" >> $GITHUB_ENV
               ;;
               armv7l)
-                # Export the armv7l container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
-                if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                # Export the armv7l container depending on whether this PR updates packages with appropriate minimum glibc.
+                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
+                    echo "CONTAINER=fievel-armv7l.m97" >> $GITHUB_ENV
+                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=strongbad-armv7l.m130" >> $GITHUB_ENV
                 else
                     echo "CONTAINER=fievel-armv7l.m91" >> $GITHUB_ENV
