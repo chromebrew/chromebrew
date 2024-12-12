@@ -14,7 +14,7 @@ class Elfutils < Autotools
     aarch64: 'abf24a50af269b1c68cdd5a744ae76c36a064668d28baa5bad3b3d5f69af5a48',
      armv7l: 'abf24a50af269b1c68cdd5a744ae76c36a064668d28baa5bad3b3d5f69af5a48',
        i686: '11df8c8616d54f2a78bd1eee6d468ffc9cf87269aaa853fa628b1bd7e5254be6',
-     x86_64: '5090210bdc4f451e69c994b9d6e5a23241f4cce6a38870a27f0cc66c82fe8213'
+     x86_64: '7ae043365539b0b193166b1695cebc49de05d6841f6e8787430826034eb0fb19'
   })
 
   depends_on 'bzip2' # R

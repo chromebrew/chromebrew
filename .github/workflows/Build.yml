@@ -265,7 +265,7 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git fetch origin
-            git reset --hard origin$/{{ github.ref_name }}
+            git reset --hard origin/${{ github.ref_name }}
             git pull --rebase origin master && git push -f
             git log --oneline -10
       - name: Get all changed package files
