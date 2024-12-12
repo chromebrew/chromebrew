@@ -39,13 +39,13 @@ class Elfutils < Autotools
 
     return unless ARCH == 'i686'
 
-    downloader 'https://raw.githubusercontent.com/openwrt/openwrt/refs/heads/main/package/libs/elfutils/patches/101-no-fts.patch', 'asasasasaa'
-    system 'patch -Np1 -i 101-no-fts.patch'
+    # downloader 'https://raw.githubusercontent.com/openwrt/openwrt/refs/heads/main/package/libs/elfutils/patches/101-no-fts.patch', '8b568dfda4b1c4708d317dc8937d8de6a1298036309306c172a4ea26ca400763'
+    # system 'patch -Np1 -i 101-no-fts.patch'
 
     # https://sourceware.org/git/?p=glibc.git;a=commit;h=0be74c5c7cb239e4884d1ee0fd48c746a0bd1a65
-    # FileUtils.install "#{CREW_PREFIX}/include/fts.h", 'src/fts.h', mode: 0o644
-    # system "sed -i 's/__REDIRECT (fts_set, (FTS \\*, FTSENT \\*, int), fts64_set) __THROW;/__REDIRECT_NTH (fts_set, (FTS \\*, FTSENT \\*, int), fts64_set);/' src/fts.h"
-    # system "sed -i 's,#include <fts.h>,#include \"fts.h\",' src/srcfiles.cxx"
+    FileUtils.install "#{CREW_PREFIX}/include/fts.h", 'src/fts.h', mode: 0o644
+    system "sed -i 's/__REDIRECT (fts_set, (FTS \\*, FTSENT \\*, int), fts64_set) __THROW;/__REDIRECT_NTH (fts_set, (FTS \\*, FTSENT \\*, int), fts64_set);/' src/fts.h"
+    system "sed -i 's,#include <fts.h>,#include \"fts.h\",' src/srcfiles.cxx"
   end
 
   def self.install

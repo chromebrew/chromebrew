@@ -51,6 +51,7 @@ jobs:
             sudo rm -rf release
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           persist-credentials: true
       - name: Dump GitHub context
         env:
@@ -82,6 +83,7 @@ jobs:
         with:
           base_sha: master
           files: packages/*.rb
+          since_last_remote_commit: true
       - name: Export variables to github context
         run: |
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
