@@ -11,8 +11,8 @@ class Elfutils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '818e00b257bc8aecc944da511ca0ce159d5d9836be118a813078a9ceff58bd1b',
-     armv7l: '818e00b257bc8aecc944da511ca0ce159d5d9836be118a813078a9ceff58bd1b',
+    aarch64: 'abf24a50af269b1c68cdd5a744ae76c36a064668d28baa5bad3b3d5f69af5a48',
+     armv7l: 'abf24a50af269b1c68cdd5a744ae76c36a064668d28baa5bad3b3d5f69af5a48',
        i686: '1e5061a8f1448225d91546f5428fdf9e5d01966074512e16cce3fd6f3214046a',
      x86_64: '5090210bdc4f451e69c994b9d6e5a23241f4cce6a38870a27f0cc66c82fe8213'
   })
