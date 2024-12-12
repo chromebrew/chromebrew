@@ -13,7 +13,7 @@ class Elfutils < Autotools
   binary_sha256({
     aarch64: 'abf24a50af269b1c68cdd5a744ae76c36a064668d28baa5bad3b3d5f69af5a48',
      armv7l: 'abf24a50af269b1c68cdd5a744ae76c36a064668d28baa5bad3b3d5f69af5a48',
-       i686: '1e5061a8f1448225d91546f5428fdf9e5d01966074512e16cce3fd6f3214046a',
+       i686: '11df8c8616d54f2a78bd1eee6d468ffc9cf87269aaa853fa628b1bd7e5254be6',
      x86_64: '5090210bdc4f451e69c994b9d6e5a23241f4cce6a38870a27f0cc66c82fe8213'
   })
 
