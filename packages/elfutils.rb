@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Elfutils < Autotools
   description 'elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.'
   homepage 'https://sourceware.org/elfutils/'
-  version '0.191'
+  version '0.192'
   license 'GPL-2+ or LGPL-3+'
   compatibility 'all'
   source_url 'https://sourceware.org/git/elfutils.git'
@@ -32,6 +32,9 @@ class Elfutils < Autotools
   configure_options "#{ARCH == 'i686' ? '--disable-libdebuginfod --disable-debuginfod' : ''} --enable-maintainer-mode --program-prefix='eu-'"
 
   def self.patch
+    downloader 'https://raw.githubusercontent.com/openwrt/openwrt/refs/heads/main/package/libs/elfutils/patches/102-fix-potential-deref-of-null-error.patch', 'asasasas'
+    system 'patch -Np1 -i 102-fix-potential-deref-of-null-error.patch'
+
     return unless ARCH == 'i686'
 
     # https://sourceware.org/git/?p=glibc.git;a=commit;h=0be74c5c7cb239e4884d1ee0fd48c746a0bd1a65
