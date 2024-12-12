@@ -10,6 +10,7 @@ on:
       - completed
 jobs:
   container_tests:
+    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( github.ref_name != 'master' ) }}
     strategy:
       matrix:
         arch: [x86_64, armv7l, i686]
