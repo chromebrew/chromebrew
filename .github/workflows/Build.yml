@@ -25,6 +25,7 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git pull --rebase origin master
+            git push -f
       - name: Push rebase changes
         uses: ad-m/github-push-action@master
         with:
@@ -90,14 +91,12 @@ jobs:
           persist-credentials: true
       - name: Rebase to master
         run: |
+            git fetch origin
+            git checkout ${{ github.ref_name }}
+            git reset --hard origin/${{ github.ref_name }}
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git pull --rebase origin master
-      - name: Push rebase changes
-        uses: ad-m/github-push-action@master
-        with:
-          branch: ${{ github.ref_name }}
-          force: true
+            git pull --rebase origin master && git push -f
       - name: Get all changed package files
         id: changed-ruby-files
         uses: tj-actions/changed-files@v45
@@ -202,7 +201,9 @@ jobs:
               exit 0
             fi
 
-            git pull && git checkout ${CREW_BRANCH}
+            git fetch origin
+            git checkout ${{ github.ref_name }}
+            git reset --hard origin/${{ github.ref_name }}
             docker pull --platform ${PLATFORM} satmandu/crewbuild:${CONTAINER}
             sudo apt install -y acl
             sudo setfacl -R -m u:1000:rwx .
@@ -233,16 +234,15 @@ jobs:
         env:
           UPDATE_BRANCH_NAME: ${{ github.ref_name }}
         run: |
+          git log --oneline -10
           if [ -n "$(git status --porcelain)" ]; then
+            git log --oneline -10
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add -A
-            git commit -m "Add built packages for ${PLATFORM} to ${{ github.ref_name }}"
+            git commit -m "Add built packages for ${PLATFORM} to ${{ github.ref_name }}" && git push -f
+            git log --oneline -10
           fi
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          branch: ${{ github.ref_name }}
   build-check:
     runs-on: ubuntu-24.04
     needs:
@@ -255,32 +255,36 @@ jobs:
         run: exit 1
       - name: Report update & build success
         run: echo "Update & build jobs succeeded. Creating a PR."
-      - name: Rebase to Master
-        run: |
-           git init --ref-format=reftable
-           git remote add origin https://github.com/chromebrew/chromebrew
-           git fetch --all
-           git checkout -f master
-           git config user.name "${{ github.actor }}"
-           git config user.email "${{ github.actor }}@users.noreply.github.com"
-           git pull
-           git checkout ${{ github.ref_name }} && git rebase master
-           # git commit -m "Merge master into ${{ github.ref_name }}." || true
-      - name: Push rebase changes
-        uses: ad-m/github-push-action@master
+      - uses: actions/checkout@v4
         with:
-          branch: ${{ github.ref_name }}
-          force: true
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Rebase to master
+        run: |
+            git log --oneline -10
+            git config user.name "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git fetch origin
+            git reset --hard origin$/{{ github.ref_name }}
+            git pull --rebase origin master && git push -f
+            git log --oneline -10
+      - name: Get all changed package files
+        id: changed-ruby-files
+        uses: tj-actions/changed-files@v45
+        with:
+          base_sha: master
+          files: packages/*.rb
+          since_last_remote_commit: true
+      - name: Export variables to github context
+        run: |
+            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> $GITHUB_ENV
       - name: Create Pull Request
         env:
           CREW_BRANCH: ${{ github.ref_name }}
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git fetch --shallow-since="1 week"
-          mapfile -t updated_package_array < <( git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD) | grep -v manifest | grep "^packages" | sed -e 's,packages/,,' -e 's,.rb,,')
           echo -e "Updated packages:" > /tmp/pr.txt
-          for file in "${updated_package_array[@]}"
+          for file in ${CHANGED_PACKAGES}
             do
             echo "- ${file}" >> /tmp/pr.txt
           done

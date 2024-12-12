@@ -28,6 +28,7 @@ class Elfutils < Autotools
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
+  # -D_FORTIFY_SOURCE=0 needed due to -O3 optimization.
   pre_configure_options "CFLAGS+=' -Wno-error -D_FORTIFY_SOURCE=0' CXXFLAGS+=' -Wno-error -D_FORTIFY_SOURCE=0'"
   configure_options "#{ARCH == 'i686' ? '--disable-libdebuginfod --disable-debuginfod' : ''} --enable-maintainer-mode --program-prefix='eu-'"
 
@@ -38,9 +39,6 @@ class Elfutils < Autotools
     system 'patch -Np1 -i 102-fix-potential-deref-of-null-error.patch'
 
     return unless ARCH == 'i686'
-
-    # downloader 'https://raw.githubusercontent.com/openwrt/openwrt/refs/heads/main/package/libs/elfutils/patches/101-no-fts.patch', '8b568dfda4b1c4708d317dc8937d8de6a1298036309306c172a4ea26ca400763'
-    # system 'patch -Np1 -i 101-no-fts.patch'
 
     # https://sourceware.org/git/?p=glibc.git;a=commit;h=0be74c5c7cb239e4884d1ee0fd48c746a0bd1a65
     FileUtils.install "#{CREW_PREFIX}/include/fts.h", 'src/fts.h', mode: 0o644
