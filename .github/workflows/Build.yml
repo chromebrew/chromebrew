@@ -234,9 +234,7 @@ jobs:
         env:
           UPDATE_BRANCH_NAME: ${{ github.ref_name }}
         run: |
-          git log --oneline -10
           if [ -n "$(git status --porcelain)" ]; then
-            git log --oneline -10
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add -A
@@ -261,7 +259,6 @@ jobs:
           persist-credentials: true
       - name: Rebase to master
         run: |
-            git log --oneline -10
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git fetch origin
