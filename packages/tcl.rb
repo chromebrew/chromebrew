@@ -3,18 +3,18 @@ require 'package'
 class Tcl < Package
   description 'Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language, suitable for a very wide range of uses, including web and desktop applications, networking, administration, testing and many more.'
   homepage 'http://www.tcl.tk/'
-  version '8.6.14'
+  version '8.6.16'
   license 'tcltk'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tcl#{version}-src.tar.gz"
-  source_sha256 '5880225babf7954c58d4fb0f5cf6279104ce1cd6aa9b71e9a6322540e1c4de66'
+  source_sha256 '91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a2f6571a792ae2827c9991d3dac762036659b61b03179deeb02cffa01788d0f2',
-     armv7l: 'a2f6571a792ae2827c9991d3dac762036659b61b03179deeb02cffa01788d0f2',
-       i686: '92b8e77422d9bfbf5c50e80a14f9579275d66b97505e66d19da22e64d1ae6254',
-     x86_64: '7c381e1f0fb53435c0d7ffe504e1c217ffc40e702f28779c1ec668f7548e2225'
+    aarch64: '954698397c18fe344dacf6033939837f58dc069852994431e55fd4c2af079687',
+     armv7l: '954698397c18fe344dacf6033939837f58dc069852994431e55fd4c2af079687',
+       i686: '92f3ee73dd486d29ec9855b30074cb620ac46f178c31d8f5c56b877bf1515f9e',
+     x86_64: '6fac769e898db52d2602b701d155fbf8e9b045894f34bfadadef30af37a57dea'
   })
 
   depends_on 'glibc' # R
