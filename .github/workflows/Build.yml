@@ -18,7 +18,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           persist-credentials: true
+      - name: Rebase to master
+        run: |
+            git config user.name "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git pull --rebase origin master
+      - name: Push rebase changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: ${{ github.ref_name }}
+          force: true
       - name: Set workflow & branch variables
         id: set-variables
         run: |
@@ -49,9 +60,6 @@ jobs:
       - name: Build Container cleanup
         run: |
             sudo rm -rf release
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: true
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -76,12 +84,27 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Rebase to master
+        run: |
+            git config user.name "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git pull --rebase origin master
+      - name: Push rebase changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: ${{ github.ref_name }}
+          force: true
       - name: Get all changed package files
         id: changed-ruby-files
         uses: tj-actions/changed-files@v45
         with:
           base_sha: master
           files: packages/*.rb
+          since_last_remote_commit: true
       - name: Export variables to github context
         run: |
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
