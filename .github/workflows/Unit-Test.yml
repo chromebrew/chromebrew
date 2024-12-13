@@ -1,5 +1,5 @@
 ---
-name: Run Unit Tests on PR
+name: Unit Tests
 on:
   pull_request:
   merge_group:
@@ -10,7 +10,7 @@ on:
       - completed
 jobs:
   container_tests:
-    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( github.ref_name != 'master' ) }}
+    if: ${{ github.repository_owner == 'chromebrew' }}
     strategy:
       matrix:
         arch: [x86_64, armv7l, i686]
