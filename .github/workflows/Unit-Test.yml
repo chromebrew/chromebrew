@@ -1,8 +1,12 @@
 ---
-name: Run Unit Tests on PR
+name: Unit Tests
 on:
-  pull_request:
+  check_run:
+    types:
+      - created
   merge_group:
+  pull_request:
+  push:
   workflow_dispatch:
   workflow_run:
     workflows: [Build]
@@ -10,7 +14,7 @@ on:
       - completed
 jobs:
   container_tests:
-    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( github.ref_name != 'master' ) }}
+    if: ${{ github.repository_owner == 'chromebrew' }}
     strategy:
       matrix:
         arch: [x86_64, armv7l, i686]
