@@ -290,7 +290,7 @@ jobs:
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
       - name: Trigger Unit Test Workflow
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             github.rest.actions.createWorkflowDispatch({
