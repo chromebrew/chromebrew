@@ -3,6 +3,9 @@ name: autocheck
 on:
   schedule:
     - cron: '*/5 * * * *'
+  workflow_dispatch:
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # setting GH_TOKEN for the entire workflow
 jobs:
   autocheck:
     runs-on: ubuntu-24.04
