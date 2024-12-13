@@ -289,7 +289,13 @@ jobs:
           export PR_NUMBER=$(gh pr create --title "Automated Package Build: ${{ github.ref_name }} branch started at ${{ needs.setup.outputs.output1 }}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
-      - name: Trigger Unit Tests
-        run: |
-            gh workflow run Unit-Test.yml \
-              --ref ${{ github.ref_name }}
+      - name: Trigger Unit Test Workflow
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'Unit-Test.yml',
+              ref: '${{ github.ref_name }}'
+            })
