@@ -3,15 +3,15 @@ require 'buildsystems/pip'
 class Py3_pytest < Pip
   description 'Pytest is simple powerful testing with Python.'
   homepage 'https://pytest.org/'
-  version "8.3.3-#{CREW_PY_VER}"
+  version "8.3.4-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e90653cbfd8934bedb4655355de94f9df049d758049ca7001f76385ce79fb5af',
-     armv7l: 'e90653cbfd8934bedb4655355de94f9df049d758049ca7001f76385ce79fb5af',
+    aarch64: 'e7a68fcc0a629446f2c5ea9d0479bdc78469f1ae48e2fdc83e7f5e006fffdcdf',
+     armv7l: 'e7a68fcc0a629446f2c5ea9d0479bdc78469f1ae48e2fdc83e7f5e006fffdcdf',
        i686: 'c4e7668a899e1bba44a931399386fdf76014981bbd954610a36fa026ff87e355',
      x86_64: '0b610d1b2fcb8fbb0b2cc1d048657f0e6bf51133c53926e1174ac7f5bdcf3507'
   })

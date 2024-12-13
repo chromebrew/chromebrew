@@ -3,12 +3,12 @@ require 'package'
 class Thorium < Package
   description 'The fastest browser on Earth.'
   homepage 'https://thorium.rocks/'
-  version '124.0.6367.218'
+  version '128.0.6613.189'
   license 'BSD-3 Clause'
   compatibility 'x86_64'
   min_glibc '2.29'
-  source_url 'https://github.com/Alex313031/thorium/releases/download/M124.0.6367.218/Thorium_Browser_124.0.6367.218_SSE4.AppImage'
-  source_sha256 '500d82637b91fe5e74862ba3c7714048232c09c8f7912ed26ef1a02326164cb4'
+  source_url "https://github.com/Alex313031/thorium/releases/download/M#{version}/Thorium_Browser_#{version}_SSE4.AppImage"
+  source_sha256 '6badc72f32c647751f9a578767240a0f7d0209254852bcc402e74bb831319f9d'
 
   depends_on 'ffmpeg'
   depends_on 'gtk3'
@@ -38,6 +38,6 @@ class Thorium < Package
   end
 
   def self.postinstall
-    puts "\nType 'thorium' to get started.\n".lightblue
+    puts "\nType 'thorium' to get started.\n"
   end
 end

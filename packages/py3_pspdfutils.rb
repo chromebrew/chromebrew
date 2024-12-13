@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pspdfutils < Pip
   description 'Utilities for manipulating PostScript documents.'
   homepage 'https://github.com/rrthomas/psutils'
-  version "3.3.5-#{CREW_PY_VER}"
+  version "3.3.6-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '012e4cb29ee9e67a8b6ffe7fa7b6fc17f4e092279a6608bda6d4a60dddd4e037',
-     armv7l: '012e4cb29ee9e67a8b6ffe7fa7b6fc17f4e092279a6608bda6d4a60dddd4e037',
-       i686: '95519faebdc8a7dd0117fd4784a54dbc14e69a0e62945f7cd3f0e015890a590a',
-     x86_64: 'e5a488f3ef79730103e3bddd36163aa83add084b6595bc3465c365cbd6e89014'
+    aarch64: 'fb7b45f10533aaa293b537c4e8abb64e7ef5c2c21fdb00d9da405558ea70a7c8',
+     armv7l: 'fb7b45f10533aaa293b537c4e8abb64e7ef5c2c21fdb00d9da405558ea70a7c8',
+       i686: '46e94fd6bd4b82a0969a7d03475abbf79fc5a03c7420c26b905c15cf2a13d082',
+     x86_64: 'a09fe9189a934923dced94da1823efa39e8da064144dc5b5ba3c9740a0250496'
   })
 
   depends_on 'libpaper'

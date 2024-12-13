@@ -3,7 +3,7 @@ require 'package'
 class Tk < Package
   description 'Tk is a graphical user interface toolkit that takes developing desktop applications to a higher level than conventional approaches.'
   homepage 'http://www.tcl.tk/'
-  version '8.6.14'
+  version '8.6.16'
   license 'tcltk'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tk#{version}-src.tar.gz"
@@ -11,9 +11,9 @@ class Tk < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '039a2b1b70f4eaaef0d7e53339e40d0ad0c3f76b271eb4c2df399b39571cd6ef',
-     armv7l: '039a2b1b70f4eaaef0d7e53339e40d0ad0c3f76b271eb4c2df399b39571cd6ef',
-     x86_64: '3c36ce7b693d7f46df30abfdae507dc4b85de846bdcaf0629dedba835830423d'
+    aarch64: '82a08a00077dcc0a758cb3d4eafe03a145185fb5d4e855787e08b7c1487af73a',
+     armv7l: '82a08a00077dcc0a758cb3d4eafe03a145185fb5d4e855787e08b7c1487af73a',
+     x86_64: '8623e92dc19caa784f90727744ac98f9a87fe1868f4a5d513b94a496bab177ab'
   })
 
   depends_on 'freetype' # R

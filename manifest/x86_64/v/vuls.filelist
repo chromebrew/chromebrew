@@ -1,0 +1,11 @@
+/usr/local/bin/future-vuls
+/usr/local/bin/go-cti
+/usr/local/bin/go-cve-dictionary
+/usr/local/bin/go-exploitdb
+/usr/local/bin/go-key
+/usr/local/bin/go-msfdb
+/usr/local/bin/gost
+/usr/local/bin/goval-dictionary
+/usr/local/bin/vuls
+/usr/local/etc/env.d/10-vuls.bash
+/home/chronos/user/config.toml

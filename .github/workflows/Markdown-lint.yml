@@ -3,7 +3,7 @@ name: Markdown-lint
 on: workflow_call
 jobs:
   markdown-lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       pull-requests: write
@@ -12,7 +12,6 @@ jobs:
       - name: Markdown-lint
         uses: reviewdog/action-markdownlint@v0
         with:
-          fail_on_error: true
+          fail_level: any
           markdownlint_flags: '-s .mdl_style.rb'
           reporter: github-pr-check
-          reviewdog_flags: '-fail-level=any'

@@ -20,7 +20,7 @@
 /usr/local/lib64/libxtables.la
 /usr/local/lib64/libxtables.so
 /usr/local/lib64/libxtables.so.12
-/usr/local/lib64/libxtables.so.12.6.0
+/usr/local/lib64/libxtables.so.12.7.0
 /usr/local/lib64/pkgconfig/libip4tc.pc
 /usr/local/lib64/pkgconfig/libip6tc.pc
 /usr/local/lib64/pkgconfig/libiptc.pc
@@ -50,3 +50,4 @@
 /usr/local/share/man/man8/iptables-restore.8.zst
 /usr/local/share/man/man8/iptables-save.8.zst
 /usr/local/share/man/man8/iptables.8.zst
+/usr/local/share/xtables/iptables.xslt

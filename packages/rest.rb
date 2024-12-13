@@ -16,26 +16,28 @@ class Rest < Meson
      x86_64: 'dcb417551add89f25c24a9f3cdcd3f43c4fa0ac78606775fe252dd6662d3056c'
   })
 
-  depends_on 'glib'
-  depends_on 'libsoup'
-  depends_on 'libadwaita'
-  depends_on 'librsvg'
-  depends_on 'gtksourceview_5'
-  depends_on 'gobject_introspection' => :build
-  depends_on 'gtk_doc' => :build
-  depends_on 'py3_gi_docgen' => :build
-  depends_on 'py3_toml' => :build
-  depends_on 'py3_smartypants' => :build
-  depends_on 'py3_typogrify' => :build
-  depends_on 'vulkan_headers' => :build
+  depends_on 'cairo' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
-  depends_on 'gtk4' # R
+  # Keep the gtk4 dependency from being pulled in during a gtk3 build.
+  depends_on 'gtk4' unless ancestors[0].to_s.split('::')[1].downcase == 'gtk3' # R
+  depends_on 'gtk_doc' => :build
+  depends_on 'gtksourceview_5' => :build
   depends_on 'harfbuzz' # R
   depends_on 'json_glib' # R
+  depends_on 'libadwaita' # R
+  depends_on 'librsvg' => :build
+  depends_on 'libsoup' # R
   depends_on 'libxml2' # R
   depends_on 'pango' # R
+  depends_on 'py3_gi_docgen' => :build
+  depends_on 'py3_smartypants' => :build
+  depends_on 'py3_toml' => :build
+  depends_on 'py3_typogrify' => :build
+  depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
 
   gnome

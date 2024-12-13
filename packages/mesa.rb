@@ -3,19 +3,20 @@ require 'buildsystems/meson'
 class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version '24.2.5-llvm19'
+  version '24.3.1-llvm19'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
-  git_hashtag "mesa-#{version.split('-').first}"
+  git_hashtag "mesa-#{version.split('-')[0..-2].join('-')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f6ec635e98c470b7d41075f19f65ff6f45e6d4c4139931feda52a833edc70c83',
-     armv7l: 'f6ec635e98c470b7d41075f19f65ff6f45e6d4c4139931feda52a833edc70c83',
-     x86_64: 'b1f04bdb65ff08c22332e26106f6cd9858c1d6662cf3af94db4a7a77d10087f8'
+    aarch64: 'd090a7176037a45a73a7b1bdd729898975e51b257adac6de4d4499d398814bc6',
+     armv7l: 'd090a7176037a45a73a7b1bdd729898975e51b257adac6de4d4499d398814bc6',
+     x86_64: 'a0c35488d5d1ac66dbc93e3820a8442ab03f7d58ef938cfde8d8428fa2bbeb26'
   })
 
+  depends_on 'elfutils' # R
   depends_on 'eudev' # R
   depends_on 'expat' # R
   depends_on 'gcc_dev' => :build
@@ -46,6 +47,7 @@ class Mesa < Meson
   depends_on 'py3_ply' => :build
   depends_on 'py3_pycparser' => :build
   depends_on 'spirv_llvm_translator' => :build
+  depends_on 'spirv_tools' # R
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'wayland_protocols' => :build
@@ -56,7 +58,6 @@ class Mesa < Meson
 
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
     -Db_asneeded=false \
-    -Ddri3=enabled \
     -Degl=enabled \
     -Dgbm=enabled \
     -Dgles1=disabled \
@@ -88,13 +89,5 @@ class Mesa < Meson
         FileUtils.ln_s '../../libgbm.so', 'pvr_gbm.so'
       end
     end
-  end
-
-  def self.patch
-    # See https://gitlab.freedesktop.org/mesa/mesa/-/issues/11896
-    # https://github.com/llvm/llvm-project/pull/97824
-    # https://github.com/Zentrik/julia/commit/1b35f7a9147788b9a727c11c5ccdb44c9a800c07
-    system "sed -i '/llvm::StringMap<bool> features;/d' src/gallium/auxiliary/gallivm/lp_bld_misc.cpp"
-    system "sed -i 's/llvm::sys::getHostCPUFeatures(features);/auto features = llvm::sys::getHostCPUFeatures();/' src/gallium/auxiliary/gallivm/lp_bld_misc.cpp"
   end
 end

@@ -1,8 +1,10 @@
 # lib/convenience_functions.rb
 # Extracted bits of crew-specific code that we use frequently enough that it makes sense to split them out to here.
 require 'json'
+require_relative 'color'
 require_relative 'const'
 require_relative 'crewlog'
+require_relative 'downloader'
 
 class ConvenienceFunctions
   def self.load_symbolized_json
@@ -25,6 +27,7 @@ class ConvenienceFunctions
   def self.libtoolize(library, lib_pkg_name = nil)
     lib_pkg_name = library if lib_pkg_name.nil?
     libname = library.to_s.start_with?('lib') ? library.downcase : "lib#{library.downcase}"
+    puts "Generating libtool file for #{lib_pkg_name}".orange
     puts "grep \"#{CREW_LIB_PREFIX}/#{libname}.so\\\|#{CREW_DEST_LIB_PREFIX}/#{libname}-*.so\" #{CREW_META_PATH}/#{lib_pkg_name}.filelist" if CREW_VERBOSE
     libnames = `grep "#{CREW_LIB_PREFIX}/#{libname}.so\\\|#{CREW_DEST_LIB_PREFIX}/#{libname}-*.so*" #{CREW_META_PATH}/#{lib_pkg_name}.filelist`.chomp.split(/$/).map(&:strip)
     libnames.each do |s|
@@ -81,5 +84,18 @@ class ConvenienceFunctions
     LIBTOOLEOF
     File.write("#{CREW_LIB_PREFIX}/#{libname}.la", libtool_file)
     puts "Generated #{CREW_LIB_PREFIX}/#{libname}.la..."
+  end
+
+  def self.patch(patch_array = [])
+    return if patch_array.empty?
+    patch_array.each do |patch_item|
+      abort 'Patch array is not valid!'.lightred unless patch_item[0]
+      abort 'Patch sha256sum does not exist!'.lightred unless patch_item[1]
+      patch_file = File.basename(patch_item[0])
+      puts "downloader #{patch_item[0]}, #{patch_item[1]}" if CREW_VERBOSE
+      downloader patch_item[0], patch_item[1]
+      puts "patch -Np1 -i #{patch_file}" if CREW_VERBOSE
+      system "patch -Np1 -i #{patch_file}"
+    end
   end
 end

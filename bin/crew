@@ -346,7 +346,7 @@ def update
   end
 
   if CREW_UNATTENDED && can_be_updated.positive?
-    puts updatable_packages
+    puts updatable_packages.to_json
   elsif can_be_updated.positive?
     puts "\n#{can_be_updated} packages can be updated."
     puts 'Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages.'
@@ -1247,7 +1247,8 @@ def resolve_dependencies
   puts 'The following packages also need to be installed: '
 
   @dependencies.each do |dep|
-    abort "Dependency #{dep} was not found.".lightred unless File.file?(File.join(CREW_PACKAGES_PATH, "#{dep}.rb"))
+    FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{dep}.rb", CREW_PACKAGES_PATH if !File.file?(File.join(CREW_PACKAGES_PATH, "#{dep}.rb")) && File.file?(File.join(CREW_LOCAL_REPO_ROOT, "packages/#{dep}.rb")) && Package.agree_default_yes("The package file for #{dep}, which is a required dependency to build #{@pkg.name} only exists in #{CREW_LOCAL_REPO_ROOT}/packages/ . Is it ok to copy it to #{CREW_PACKAGES_PATH} so that the build can continue?")
+    abort "Dependency #{dep} for #{@pkg.name} was not found.".lightred unless File.file?(File.join(CREW_PACKAGES_PATH, "#{dep}.rb"))
   end
 
   puts @dependencies.join(' ')

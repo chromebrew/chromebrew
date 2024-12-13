@@ -1,41 +1,31 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libportal < Package
+class Libportal < Meson
   description 'libportal provides GIO-style async APIs for most Flatpak portals.'
   homepage 'https://github.com/flatpak/libportal'
-  version '0.6-1'
+  version '0.8.1'
   license 'GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/flatpak/libportal/archive/refs/tags/0.6.tar.gz'
+  source_url 'https://github.com/flatpak/libportal.git'
+  git_hashtag version
   source_sha256 '8ad326c4f53b7433645dc86d994fef0292bee8adda0fe67db9288ace19250a9c'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e36d5b19b14145ca110f55da37402b3898677e01b86a3e77401f1687e280d00a',
-     armv7l: 'e36d5b19b14145ca110f55da37402b3898677e01b86a3e77401f1687e280d00a',
-     x86_64: 'ff87e704a0402c8aba6ddf27a5d3bc5e4289251cd2fc80478f70254ece4c37c4'
+    aarch64: '99a2d190d5b99e391625ad833188f8cf59c745b42e09475cebdddb8d1af640d6',
+     armv7l: '99a2d190d5b99e391625ad833188f8cf59c745b42e09475cebdddb8d1af640d6',
+     x86_64: '74764a5ced5cfd38b12c8415a656115a2eb037967b071c9a85d50fa5e6506fd8'
   })
 
-  depends_on 'gobject_introspection'
-  depends_on 'gtk4'
-  depends_on 'gtk3'
-  depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' # R
+  depends_on 'gtk4' # R
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader'
+  depends_on 'vulkan_icd_loader' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dbackends=gtk3,gtk4 \
-    -Ddocs=false \
+  meson_options '-Ddocs=false \
+    -Dintrospection=false \
     -Dportal-tests=false \
-    -Dtests=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+    -Dtests=false'
 end

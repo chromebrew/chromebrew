@@ -1,11 +1,12 @@
 ---
-name: Handoff
+name: Linter-Handoff
 on:
   pull_request:
-    branches: [master]
+  merge_group:
+  workflow_dispatch:
 jobs:
   handoff:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       category: ${{ steps.changed-file-extensions.outputs.category }}
     steps:
@@ -54,7 +55,17 @@ jobs:
     needs: handoff
     if: contains(needs.handoff.outputs.category, 'YAML')
     uses: ./.github/workflows/YAMLlint.yml
-  unittests:
-    needs: handoff
-    if: contains(needs.handoff.outputs.category, 'Ruby')
-    uses: ./.github/workflows/Unit-Test.yml
+  linter-tests:
+    runs-on: ubuntu-24.04
+    needs:
+      - handoff
+      - markdown
+      - ruby
+      - bash
+      - yaml
+    if: ${{ !cancelled() }}
+    steps:
+      - name: fail if linter jobs failed
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
+      - run: echo "Linter jobs succeeded"

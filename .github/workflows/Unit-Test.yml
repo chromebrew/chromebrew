@@ -1,34 +1,71 @@
 ---
 name: Run Unit Tests on PR
-on: workflow_call
+on:
+  pull_request:
+  merge_group:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [Build]
+    types:
+      - completed
 jobs:
   container_tests:
+    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( github.ref_name != 'master' ) }}
     strategy:
       matrix:
         arch: [x86_64, armv7l, i686]
-        runner: [self-hosted, ubuntu-latest]
+        runner:
+          - ubuntu-24.04
+          - [self-hosted, ARM]
         exclude:
           - arch: x86_64
-            runner: self-hosted
+            runner: [self-hosted, ARM]
           - arch: i686
-            runner: self-hosted
+            runner: [self-hosted, ARM]
           - arch: armv7l
-            runner: ubuntu-latest
+            runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
+    concurrency:
+      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - name: Dump github context
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
       - name: Get non-pkg changed files
         id: non-pkg-changed-files
         uses: tj-actions/changed-files@v45
         with:
           files_ignore: |
-            packages/*.rb
+            .github/**
             manifest/**
+            packages/*.rb
             tools/packages.yaml
+            tools/*.json
       - name: Get all changed package files
         id: changed-ruby-files
         uses: tj-actions/changed-files@v45
@@ -48,7 +85,14 @@ jobs:
               echo "PR #${{ github.event.pull_request.number }} has these possibly Glibc 2.27 compatible packages: ${GLIBC_227_COMPATIBLE_PACKAGES}"
             fi
 
-            # If a package doesnt have a min_glibc value, or if its below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
+            # If a package doesnt have a min_glibc value, or if it is below 2.32, add it to GLIBC_232_COMPATIBLE_PACKAGES.
+            export GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo ${i} ; done | xargs)"
+            if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
+              echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
+              echo "Branch ${{ github.ref_name }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
+            fi
+
+            # If a package doesnt have a min_glibc value, or if it is below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
             export GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo ${i} ; done | xargs)"
             if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
@@ -81,9 +125,11 @@ jobs:
         run: |
             case $TARGET_ARCH in
               x86_64)
-                # Export the x86_64 container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
-                if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=hatch-x86_64.m129" >> $GITHUB_ENV
+                # Export the x86_64 container depending on whether this PR updates packages with appropriate minimum glibc.
+                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
+                    echo "CONTAINER=nocturne-x86_64.m97" >> $GITHUB_ENV
+                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                    echo "CONTAINER=hatch-x86_64.m130" >> $GITHUB_ENV
                 else
                     echo "CONTAINER=nocturne-x86_64.m90" >> $GITHUB_ENV
                 fi
@@ -91,9 +137,11 @@ jobs:
                 echo "LIB_SUFFIX=64" >> $GITHUB_ENV
               ;;
               armv7l)
-                # Export the armv7l container depending on whether this PR updates packages with a minimum glibc greater than or equal to 2.37.
-                if [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=strongbad-armv7l.m129" >> $GITHUB_ENV
+                # Export the armv7l container depending on whether this PR updates packages with appropriate minimum glibc.
+                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
+                    echo "CONTAINER=fievel-armv7l.m97" >> $GITHUB_ENV
+                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                    echo "CONTAINER=strongbad-armv7l.m130" >> $GITHUB_ENV
                 else
                     echo "CONTAINER=fievel-armv7l.m91" >> $GITHUB_ENV
                 fi
@@ -108,7 +156,23 @@ jobs:
               ;;
             esac
       - name: Run unit tests
+        env:
+          GITHUB_EVENT: ${{ github.event_name }}
         run: |
+            case $GITHUB_EVENT in
+              merge_group)
+                export CREW_REPO="${{ github.event.repository.clone_url }}"
+                export CREW_BRANCH="${{ github.ref_name }}"
+                ;;
+              pull_request)
+                export CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}"
+                export CREW_BRANCH="${{ github.head_ref }}"
+                ;;
+              workflow_dispatch)
+                export CREW_REPO="${{ github.event.repository.clone_url }}"
+                export CREW_BRANCH="${{ github.ref_name }}"
+                ;;
+            esac
             if [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]); then
               # Exit the arm container if there are neither non-package changed files nor armv7l compatible packages.
               echo "Skipping armv7l container unit tests."
@@ -122,17 +186,27 @@ jobs:
               echo "Skipping i686 container unit tests."
               exit 0
             else
-              docker pull --platform $PLATFORM satmandu/crewbuild:$CONTAINER
+              docker pull --platform ${PLATFORM} satmandu/crewbuild:${CONTAINER}
               docker run \
                 --rm \
-                --platform $PLATFORM \
+                --platform ${PLATFORM} \
                 --privileged \
                 -u chronos \
-                -e CHANGED_PACKAGES="$CHANGED_PACKAGES" \
-                -e LD_LIBRARY_PATH="/usr/local/lib$LIB_SUFFIX" \
-                -e GCONV_PATH="/usr/local/lib$LIB_SUFFIX/gconv" \
-                -e CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}" \
-                -e CREW_BRANCH="${{ github.head_ref }}" \
-                "satmandu/crewbuild:$CONTAINER" \
-                /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test.sh
+                -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
+                -e LD_LIBRARY_PATH="/usr/local/lib${LIB_SUFFIX}" \
+                -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
+                -e CREW_REPO="${CREW_REPO}" \
+                -e CREW_BRANCH="${CREW_BRANCH}" \
+                "satmandu/crewbuild:${CONTAINER}" \
+                /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test_stub.sh
             fi
+  container_test_check:
+    runs-on: ubuntu-24.04
+    needs:
+      - container_tests
+    if: ${{ !cancelled() }}
+    steps:
+      - name: fail if container_test jobs failed
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
+      - run: echo "Container test jobs succeeded"

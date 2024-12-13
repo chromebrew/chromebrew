@@ -3,7 +3,7 @@ require 'package'
 class Tuptime < Package
   description 'Report historical and statistical real time of the system, keeping it between restarts.'
   homepage 'https://github.com/rfmoz/tuptime'
-  version '5.2.3'
+  version '5.2.4'
   license 'GPL-2.0'
   compatibility 'all'
   source_url 'https://github.com/rfmoz/tuptime.git'

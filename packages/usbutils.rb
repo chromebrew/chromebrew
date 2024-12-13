@@ -1,45 +1,36 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Usbutils < Package
+class Usbutils < Meson
   description 'Tools for examining usb devices'
   homepage 'https://linux-usb.sourceforge.net/'
-  version '013'
+  version '018'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://mirrors.kernel.org/pub/linux/utils/usb/usbutils/usbutils-#{version}.tar.xz"
-  source_sha256 '9e23494fcc78b7a80ee29a07dd179c95ae2f71509c35728dbbabc2d1cca41338'
-  binary_compression 'tar.xz'
+  source_sha256 '83f68b59b58547589c00266e82671864627593ab4362d8c807f50eea923cad93'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '031de655991e234e4978f63306510504229fa7b84f8f98959a1afcf054db0e1f',
-     armv7l: '031de655991e234e4978f63306510504229fa7b84f8f98959a1afcf054db0e1f',
-       i686: 'e86afc7fc87f4740645765229229e27a38b8a5179e0aa779e07822e1cd6e16c1',
-     x86_64: 'dd7055b6ed55339a9774b104af3166da897a0415c9b206f48a853f62a9212c3f'
+    aarch64: '987283deb6b628c42d2f72d1cab5b965148df3b66f026681def026e506a88dd9',
+     armv7l: '987283deb6b628c42d2f72d1cab5b965148df3b66f026681def026e506a88dd9',
+       i686: 'c13e904f31ed2afa1fa917d24a347414ed6aa0341c39b8087b33004c383e33c0',
+     x86_64: '5793147bdf7f45c8c7f95516bc1819a28f9a96ccc8ece2f0a29a8368fa0ecfe9'
   })
 
   depends_on 'libusb'
 
-  def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system "env #{CREW_ENV_OPTIONS} \
-    ./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/hwdata"
-    FileUtils.touch "#{CREW_DEST_PREFIX}/share/hwdata/usb.ids"
+  meson_install_extras do
+    downloader 'http://www.linux-usb.org/usb.ids',
+               'a761bd7660839cd4d6185a89c92d466cbb349e45c2639e4ed85c63c10b6fac0c'
+    FileUtils.install 'usb.ids', "#{CREW_DEST_PREFIX}/share/hwdata/usb.ids", mode: 0o644
   end
 
   def self.postinstall
-    FileUtils.mkdir_p "#{CREW_PREFIX}/share/hwdata/"
-    system "curl -#LO http://www.linux-usb.org/usb.ids -o #{CREW_PREFIX}/share/hwdata/usb.ids"
     puts "It's recommended that you setup a cron job to update this file regularly.".lightblue
     puts 'You can install a cron package by executing `crew install cronie`'.lightblue
     puts
     puts 'Add a cron job with something like the following:'.lightblue
     puts '# Update usb.ids at 6pm daily.'.lightblue
-    puts "0 18 * * * #{CREW_PREFIX}/bin/crew postinstall usbutils >/dev/null 2>&1".lightblue
+    puts "0 18 * * * #{CREW_PREFIX}/bin/curl -LO http://www.linux-usb.org/usb.ids -o #{CREW_PREFIX}/share/hwdata/usb.ids >/dev/null 2>&1".lightblue
   end
 end

@@ -3,7 +3,7 @@ require 'package'
 class Monero < Package
   description 'Private, decentralized cryptocurrency that keeps your finances confidential and secure.'
   homepage 'https://www.getmonero.org/'
-  version '0.18.3.3'
+  version '0.18.3.4'
   license 'The Cryptonote developers,The Boolberry developers,MIT'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.27'
@@ -14,9 +14,9 @@ class Monero < Package
      x86_64: "https://downloads.getmonero.org/cli/monero-linux-x64-v#{version}.tar.bz2"
   })
   source_sha256({
-    aarch64: 'f3f982b141cb6c88939d15a83aaa26334d628c0d2766d6834371030dd00401d3',
-     armv7l: 'f3f982b141cb6c88939d15a83aaa26334d628c0d2766d6834371030dd00401d3',
-     x86_64: '47c7e6b4b88a57205800a2538065a7874174cd087eedc2526bee1ebcce0cc5e3'
+    aarch64: '354603c56446fb0551cdd6933bce5a13590b7881e05979b7ec25d89e7e59a0e2',
+     armv7l: '354603c56446fb0551cdd6933bce5a13590b7881e05979b7ec25d89e7e59a0e2',
+     x86_64: '51ba03928d189c1c11b5379cab17dd9ae8d2230056dc05c872d0f8dba4a87f1d'
   })
 
   no_compile_needed
@@ -30,6 +30,6 @@ class Monero < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'monero-wallet-cli' to get started.\n".lightblue
+    ExitMessage.add "\nType 'monero-wallet-cli' to get started.\n"
   end
 end

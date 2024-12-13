@@ -15,6 +15,8 @@
 /usr/local/share/thorium/usr/bin/ClearKeyCdm/_platform_specific/linux_x64/libclearkeycdm.so
 /usr/local/share/thorium/usr/bin/MEIPreload/manifest.json
 /usr/local/share/thorium/usr/bin/MEIPreload/preloaded_data.pb
+/usr/local/share/thorium/usr/bin/PrivacySandboxAttestationsPreloaded/manifest.json
+/usr/local/share/thorium/usr/bin/PrivacySandboxAttestationsPreloaded/privacy-sandbox-attestations.dat
 /usr/local/share/thorium/usr/bin/WidevineCdm/LICENSE
 /usr/local/share/thorium/usr/bin/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so
 /usr/local/share/thorium/usr/bin/WidevineCdm/manifest.json
@@ -30,6 +32,7 @@
 /usr/local/share/thorium/usr/bin/icudtl.dat
 /usr/local/share/thorium/usr/bin/initial_preferences
 /usr/local/share/thorium/usr/bin/lib/libclearkeycdm.so
+/usr/local/share/thorium/usr/bin/lib/libffmpeg.so
 /usr/local/share/thorium/usr/bin/libEGL.so
 /usr/local/share/thorium/usr/bin/libGLESv2.so
 /usr/local/share/thorium/usr/bin/libqt5_shim.so
@@ -106,7 +109,6 @@
 /usr/local/share/thorium/usr/bin/resources/inspector_overlay/inspector_overlay_resources.grd
 /usr/local/share/thorium/usr/bin/resources/inspector_overlay/main.js
 /usr/local/share/thorium/usr/bin/shell_resources.pak
-/usr/local/share/thorium/usr/bin/thor_ver
 /usr/local/share/thorium/usr/bin/thorium
 /usr/local/share/thorium/usr/bin/thorium-shell
 /usr/local/share/thorium/usr/bin/thorium.svg

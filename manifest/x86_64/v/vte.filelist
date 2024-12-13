@@ -30,7 +30,7 @@
 /usr/local/lib64/libvte-2.91-gtk4.so.0
 /usr/local/lib64/libvte-2.91.so
 /usr/local/lib64/libvte-2.91.so.0
-/usr/local/lib64/libvte-2.91.so.0.7791.0
+/usr/local/lib64/libvte-2.91.so.0.7800.2
 /usr/local/lib64/pkgconfig/vte-2.91-gtk4.pc
 /usr/local/lib64/pkgconfig/vte-2.91.pc
 /usr/local/libexec/vte-urlencode-cwd
@@ -136,4 +136,3 @@
 /usr/local/share/locale/zh_CN/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/vte-2.91.mo
-/usr/local/share/vte-2.91/terminfo/x/xterm-256color

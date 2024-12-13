@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.55.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.56.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -59,7 +59,7 @@ end
 
 # Use sane minimal defaults if in container and no override specified.
 CREW_KERNEL_VERSION ||= \
-  if CREW_IN_CONTAINER || ENV.fetch('CREW_KERNEL_VERSION', nil)
+  if CREW_IN_CONTAINER && ENV.fetch('CREW_KERNEL_VERSION', nil).nil?
     ARCH.eql?('i686') ? '3.8' : '5.10'
   else
     ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
@@ -202,7 +202,7 @@ CREW_LINKER ||= ENV.fetch('CREW_LINKER', 'mold') unless defined?(CREW_LINKER)
 CREW_GLIBC_OVERRIDE_LINKER_FLAGS ||= ARCH == 'x86_64' && LIBC_VERSION.to_f >= 2.35 ? " #{File.join(CREW_LIB_PREFIX, 'libC.so.6')} " : ''
 CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', CREW_GLIBC_OVERRIDE_LINKER_FLAGS) unless defined?(CREW_LINKER_FLAGS)
 
-CREW_CORE_FLAGS           ||= "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
 CREW_COMMON_FLAGS         ||= "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS ||= "#{CREW_CORE_FLAGS} -fno-lto"
 CREW_LDFLAGS              ||= "-flto=auto #{CREW_LINKER_FLAGS}"
@@ -303,14 +303,15 @@ GEM_ARCH ||= case ARCH
 
 PY3_SETUP_BUILD_OPTIONS          ||= "--executable=#{CREW_PREFIX}/bin/python3"
 PY2_SETUP_BUILD_OPTIONS          ||= "--executable=#{CREW_PREFIX}/bin/python2"
-PY_SETUP_INSTALL_OPTIONS_NO_SVEM ||= "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} -O2 --compile"
+PY_SETUP_INSTALL_OPTIONS_NO_SVEM ||= "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} --compile"
 PY_SETUP_INSTALL_OPTIONS         ||= "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version-externally-managed"
 PY3_BUILD_OPTIONS                ||= '--wheel --no-isolation'
 PY3_INSTALLER_OPTIONS            ||= "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
 
+CREW_GCC_VER ||= Kernel.system('which gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : 'gcc14' unless defined?(CREW_GCC_VER)
 CREW_ICU_VER ||= Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : 'icu75.1' unless defined?(CREW_ICU_VER)
 CREW_PERL_VER ||= Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl -MConfig -e "print \\\"\\\$Config{'PERL_API_REVISION'}.\\\$Config{'PERL_API_VERSION'}\\\";"`}" : 'perl5.40' unless defined?(CREW_PERL_VER)
-CREW_PY_VER ||= Kernel.system('which python3', %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : 'py3.13' unless defined?(CREW_PY_VER)
+CREW_PY_VER ||= Kernel.system("#{CREW_PREFIX}/bin/python3 --version", %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : 'py3.13' unless defined?(CREW_PY_VER)
 CREW_RUBY_VER ||= "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}" unless defined?(CREW_RUBY_VER)
 
 CREW_LICENSE ||= <<~LICENSESTRING

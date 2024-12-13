@@ -3,7 +3,7 @@ require 'package'
 class Powershell < Package
   description 'Powershell is a cross-platform, task-based command-line shell and scripting language that helps rapidly automate tasks that manage operating systems and processes'
   homepage 'https://learn.microsoft.com/en-us/powershell/'
-  version '7.4.4'
+  version '7.4.6'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
 
@@ -13,9 +13,9 @@ class Powershell < Package
      x86_64: "https://github.com/PowerShell/PowerShell/releases/download/v#{version}/powershell-#{version}-linux-x64.tar.gz"
   })
   source_sha256({
-    aarch64: '8725138d3261c056ee103eb9728c25ff62cc0e0d72a3ecdc3c1139d42965d34b',
-     armv7l: '8725138d3261c056ee103eb9728c25ff62cc0e0d72a3ecdc3c1139d42965d34b',
-     x86_64: '49435200c43fe6ff83f3e62f9909b4062ed817a31d0697fb57611ea4faca633b'
+    aarch64: 'a3a5b116c7eec98e3c11b152dc62f62fa4f660a70ccb33d3604158de821c268e',
+     armv7l: 'a3a5b116c7eec98e3c11b152dc62f62fa4f660a70ccb33d3604158de821c268e',
+     x86_64: '6f6015203c47806c5cc444c19d8ed019695e610fbd948154264bf9ca8e157561'
   })
 
   depends_on 'xdg_base'
@@ -31,6 +31,6 @@ class Powershell < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nTo get started, execute 'pwsh'.\n".lightblue
+    ExitMessage.add "\nTo get started, execute 'pwsh'.\n"
   end
 end

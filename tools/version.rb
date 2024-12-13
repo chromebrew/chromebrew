@@ -21,13 +21,16 @@ require_relative '../lib/package_utils'
 def get_version(name, homepage)
   anitya_id = get_anitya_id(name, homepage)
   # If we weren't able to get an Anitya ID, return early here to save time and headaches
-  return nil if anitya_id.nil?
-  # Get the latest version of the package
+  return if anitya_id.nil?
+  # Get the latest stable version of the package
   json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
-  return json['latest_version']
+  return if json['stable_versions'].nil?
+  return json['stable_versions'][0]
 end
 
 def get_anitya_id(name, homepage)
+  # Ignore python and ruby packages.
+  return if name.to_s.start_with?('py2_', 'py3_', 'ruby_')
   # Find out how many packages Anitya has with the provided name.
   json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{name}")))
   number_of_packages = json['total_items']
@@ -111,6 +114,12 @@ if filelist.length.positive?
     # We skip fake packages.
     if pkg.is_fake?
       puts pkg.name.ljust(35) + 'fake'.lightred if verbose
+      next
+    end
+
+    # Skip ruby and pip buildsystem packages.
+    if pkg.superclass.to_s == 'RUBY' || pkg.superclass.to_s == 'Pip'
+      puts pkg.name.ljust(35) + 'skipped'.lightred if verbose
       next
     end
 

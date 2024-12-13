@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Elfutils < Autotools
   description 'elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.'
   homepage 'https://sourceware.org/elfutils/'
-  version '0.191'
+  version '0.192'
   license 'GPL-2+ or LGPL-3+'
   compatibility 'all'
   source_url 'https://sourceware.org/git/elfutils.git'
@@ -11,10 +11,10 @@ class Elfutils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '818e00b257bc8aecc944da511ca0ce159d5d9836be118a813078a9ceff58bd1b',
-     armv7l: '818e00b257bc8aecc944da511ca0ce159d5d9836be118a813078a9ceff58bd1b',
-       i686: '1e5061a8f1448225d91546f5428fdf9e5d01966074512e16cce3fd6f3214046a',
-     x86_64: '5090210bdc4f451e69c994b9d6e5a23241f4cce6a38870a27f0cc66c82fe8213'
+    aarch64: 'abf24a50af269b1c68cdd5a744ae76c36a064668d28baa5bad3b3d5f69af5a48',
+     armv7l: 'abf24a50af269b1c68cdd5a744ae76c36a064668d28baa5bad3b3d5f69af5a48',
+       i686: '11df8c8616d54f2a78bd1eee6d468ffc9cf87269aaa853fa628b1bd7e5254be6',
+     x86_64: '7ae043365539b0b193166b1695cebc49de05d6841f6e8787430826034eb0fb19'
   })
 
   depends_on 'bzip2' # R
@@ -28,10 +28,16 @@ class Elfutils < Autotools
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  pre_configure_options "CFLAGS+=' -Wno-error ' CXXFLAGS+=' -Wno-error '"
+  # -D_FORTIFY_SOURCE=0 needed due to -O3 optimization.
+  pre_configure_options "CFLAGS+=' -Wno-error -D_FORTIFY_SOURCE=0' CXXFLAGS+=' -Wno-error -D_FORTIFY_SOURCE=0'"
   configure_options "#{ARCH == 'i686' ? '--disable-libdebuginfod --disable-debuginfod' : ''} --enable-maintainer-mode --program-prefix='eu-'"
 
   def self.patch
+    downloader 'https://raw.githubusercontent.com/openwrt/openwrt/refs/heads/main/package/libs/elfutils/patches/009-fix-null-dereference-with-lto.patch', 'bd81d483ed5474fd7e87a27e4c961bf8670f76c45f5fe9a273cb2f11d8f44ffc'
+    system 'patch -Np1 -i 009-fix-null-dereference-with-lto.patch'
+    downloader 'https://raw.githubusercontent.com/openwrt/openwrt/refs/heads/main/package/libs/elfutils/patches/102-fix-potential-deref-of-null-error.patch', '4be7368570bf64d38d34ae8147946e0d3741103e3b4dd0000d4e5c228d16e352'
+    system 'patch -Np1 -i 102-fix-potential-deref-of-null-error.patch'
+
     return unless ARCH == 'i686'
 
     # https://sourceware.org/git/?p=glibc.git;a=commit;h=0be74c5c7cb239e4884d1ee0fd48c746a0bd1a65

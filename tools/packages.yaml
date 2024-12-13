@@ -685,6 +685,11 @@ url: https://github.com/google/brotli/releases
 activity: medium
 ---
 kind: url
+name: bsdgames
+url: https://salsa.debian.org/games-team/bsdgames/-/tags
+activity: low
+---
+kind: url
 name: btop
 url: https://github.com/aristocratos/btop/releases
 activity: low
@@ -1638,6 +1643,11 @@ kind: url
 name: elogind
 url: https://github.com/elogind/elogind/releases
 activity: low
+---
+kind: url
+name: elvish
+url: https://github.com/elves/elvish/releases
+activity: high
 ---
 kind: url
 name: emacs
@@ -3869,7 +3879,6 @@ name: libbluray
 url: https://get.videolan.org/libbluray/
 activity: low
 ---
----
 kind: url
 name: libbpf
 url: hhttps://github.com/libbpf/libbpf/releases
@@ -4658,6 +4667,11 @@ activity: none
 kind: url
 name: libopencoreamr
 url: https://sourceforge.net/projects/opencore-amr/files/opencore-amr/
+activity: none
+---
+kind: url
+name: libopusenc
+url: https://github.com/xiph/libopusenc/tags
 activity: none
 ---
 kind: url
@@ -5981,6 +5995,11 @@ url: https://github.com/ccxvii/mujs/releases
 activity: medium
 ---
 kind: url
+name: mullvad
+url: https://github.com/mullvad/mullvad-browser/releases
+activity: high
+---
+kind: url
 name: multitail
 url: https://github.com/flok99/multitail/releases
 activity: none
@@ -5998,6 +6017,11 @@ activity: low
 kind: url
 name: mupdf
 url: https://mupdf.com/downloads/archive/
+activity: medium
+---
+kind: url
+name: musecore
+url: https://github.com/musescore/MuseScore/releases
 activity: medium
 ---
 kind: url
@@ -7401,6 +7425,11 @@ url: https://0xacab.org/jvoisin/mat2/-/tags
 activity: low
 ---
 kind: url
+name: py3_maturin
+url: https://github.com/PyO3/maturin/releases
+activity: high
+---
+kind: url
 name: py3_mercurial
 url: https://www.mercurial-scm.org/release
 activity: high
@@ -7621,6 +7650,11 @@ url: https://invent.kde.org/qt/qt/qtquickcontrols/-/tags
 activity: medium
 ---
 kind: url
+name: qt5_quickcontrols2
+url: https://invent.kde.org/qt/qt/qtquickcontrols2/-/tags
+activity: medium
+---
+kind: url
 name: qt5_script
 url: https://invent.kde.org/qt/qt/qtscript/-/tags
 activity: medium
@@ -7791,6 +7825,11 @@ url: https://gitlab.gnome.org/GNOME/librest/-/tags
 activity: none
 ---
 kind: url
+name: revive
+url: https://github.com/mgechev/revive/releases
+activity: medium
+---
+kind: url
 name: rfkill
 url: https://www.kernel.org/pub/software/network/rfkill
 activity: none
@@ -7844,6 +7883,11 @@ kind: url
 name: rpcsvc_proto
 url: https://github.com/thkukuk/rpcsvc-proto/releases
 activity: low
+---
+kind: url
+name: rqlite
+url: https://github.com/rqlite/rqlite/releases
+activity: high
 ---
 kind: url
 name: rsu_client
@@ -8611,6 +8655,16 @@ url: https://ftpmirror.gnu.org/tar/
 activity: medium
 ---
 kind: url
+name: taskwarrior
+url: https://github.com/GothenburgBitFactory/taskwarrior/releases
+activity: medium
+---
+kind: url
+name: tauri_cli
+url: https://github.com/tauri-apps/tauri/releases
+activity: high
+---
+kind: url
 name: tbb
 url: https://github.com/oneapi-src/oneTBB/releases
 activity: medium
@@ -8789,6 +8843,11 @@ kind: url
 name: tinysparql
 url: https://gitlab.gnome.org/GNOME/tinysparql/-/tags
 activity: high
+---
+kind: url
+name: tinyxml2
+url: https://github.com/leethomason/tinyxml2/tags
+activity: low
 ---
 kind: url
 name: tk
@@ -9216,6 +9275,11 @@ url: https://vulkan.lunarg.com/sdk/home
 activity: medium
 ---
 kind: url
+name: vuls
+url: https://github.com/future-architect/vuls/releases
+activity: medium
+---
+kind: url
 name: vuze
 url: https://sourceforge.net/projects/azureus/files/vuze/
 activity: none
@@ -9309,6 +9373,11 @@ kind: url
 name: weston
 url: https://github.com/wayland-project/weston/releases/
 activity: medium
+---
+kind: url
+name: wezterm
+url: https://github.com/wez/wezterm/releases
+activity: low
 ---
 kind: url
 name: wget2

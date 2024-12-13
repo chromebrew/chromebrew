@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pyopenssl < Pip
   description 'PyOpenSSL is a Python wrapper module around the OpenSSL library.'
   homepage 'https://www.pyopenssl.org/'
-  version "24.2.1-#{CREW_PY_VER}"
+  version "24.3.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ecbf746d6465d5b96a1a80a12597a68018dd5e97cd1ff9a7a6ae96e318e4420f',
-     armv7l: 'ecbf746d6465d5b96a1a80a12597a68018dd5e97cd1ff9a7a6ae96e318e4420f',
-       i686: '25a91a785492c5700d91107847c649fb8ab0ee173435268d334542628f1e4183',
-     x86_64: 'c1a2aafac4a991dbb49b30a4e5346650364fa8f318314ea980cd5f3779f70539'
+    aarch64: '7d0c7181d4a280f5ebff85be6d3ba9486a1395d33da848f5584eefd5caa91b80',
+     armv7l: '7d0c7181d4a280f5ebff85be6d3ba9486a1395d33da848f5584eefd5caa91b80',
+       i686: '34d24ef0fb2f906d7c6863bd7954477523988b8377bca935306f4d4a252664e5',
+     x86_64: '193238dbc97f7a7914d6b45b94656f6fba61cee7e0619228aa4ed5667e5107ef'
   })
 
   depends_on 'openssl'

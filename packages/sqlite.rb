@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Sqlite < Autotools
   description 'SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.'
   homepage 'https://www.sqlite.org/'
-  version '3.46.1'
+  version '3.47.2'
   license 'public-domain'
   compatibility 'all'
-  source_url 'https://www.sqlite.org/2024/sqlite-autoconf-3460100.tar.gz'
-  source_sha256 '67d3fe6d268e6eaddcae3727fce58fcc8e9c53869bdd07a0c61e38ddf2965071'
+  source_url 'https://www.sqlite.org/2024/sqlite-autoconf-3470200.tar.gz'
+  source_sha256 'f1b2ee412c28d7472bc95ba996368d6f0cdcf00362affdadb27ed286c179540b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '77a65e449b58fed33e40d6a414f2c863ca9c5023d5c07f0c121f8bcb38198fe0',
-     armv7l: '77a65e449b58fed33e40d6a414f2c863ca9c5023d5c07f0c121f8bcb38198fe0',
-       i686: '1e0ecb9e4edfc496e7d55949af6ae6d27fa584b55d94adf7fd7fa2295f5814d9',
-     x86_64: '59870ca8524fed61744a8dd818714bd54af3d3731fc6ef8a9f28ffc0833a85bf'
+    aarch64: '02ac3e9b356a5f0e8285571ec3234a1158dad2be2073356e39b7febada545644',
+     armv7l: '02ac3e9b356a5f0e8285571ec3234a1158dad2be2073356e39b7febada545644',
+       i686: 'db23ab9115398bef425478b3ef43dee260ced68bb964d4cfe0bd70e9d886a0fb',
+     x86_64: '657df8ae9a5aa6ef321e2f677ffa92fced56d45c313d63b0b15bbd158615347d'
   })
 
   depends_on 'glibc' # R

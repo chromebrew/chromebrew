@@ -2,29 +2,33 @@
 name: Generate Repology JSON
 on:
   schedule:
-    - cron: '0 0 * * 0'  # Weekly
+    - cron: '0 12 * * 0'  # Weekly
+  workflow_dispatch:
 jobs:
   generate:
-    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'chromebrew' }}
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3.4'
+          ruby-version: '3.3.6'
       - name: Install highline
-        run: gem install highline
+        run: sudo apt install -y ruby-highline
+      - name: Install activesupport
+        run: sudo apt install -y ruby-activesupport
       - name: Configure git
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
       - name: Generate repology.json
         env:
-          CREW_KERNEL_VERSION: 5.1
+          CREW_KERNEL_VERSION: 5.10
           LIBC_VERSION: 2.37
         run: |
           ruby -Ctools json.rb
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           add-paths: "tools/repology.json"
           title: "Update Repology JSON"
@@ -32,3 +36,4 @@ jobs:
           author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           commit-message: "Update Repology JSON"
           delete-branch: true
+          team-reviewers: active

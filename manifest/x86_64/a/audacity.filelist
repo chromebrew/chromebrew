@@ -1,12 +1,14 @@
 /usr/local/bin/audacity
+/usr/local/share/applications/audacity-url-handler.desktop
 /usr/local/share/applications/audacity.desktop
 /usr/local/share/audacity/AppRun
 /usr/local/share/audacity/AppRun.wrapped
 /usr/local/share/audacity/EffectsMenuDefaults.xml
 /usr/local/share/audacity/apprun-hooks/00-preserve-environment.sh
+/usr/local/share/audacity/apprun-hooks/install-url-handler.sh
 /usr/local/share/audacity/apprun-hooks/linuxdeploy-plugin-gtk.sh
+/usr/local/share/audacity/audacity-url-handler.desktop
 /usr/local/share/audacity/audacity.desktop
-/usr/local/share/audacity/audacity.png
 /usr/local/share/audacity/audacity.sh
 /usr/local/share/audacity/audacity.svg
 /usr/local/share/audacity/bin/audacity
@@ -92,10 +94,12 @@
 /usr/local/share/audacity/lib/girepository-1.0/xft-2.0.typelib
 /usr/local/share/audacity/lib/girepository-1.0/xlib-2.0.typelib
 /usr/local/share/audacity/lib/girepository-1.0/xrandr-1.3.typelib
+/usr/local/share/audacity/lib/lib-audacity-application-logic.so
 /usr/local/share/audacity/lib/lib-audio-devices.so
 /usr/local/share/audacity/lib/lib-audio-graph.so
 /usr/local/share/audacity/lib/lib-audio-io.so
 /usr/local/share/audacity/lib/lib-basic-ui.so
+/usr/local/share/audacity/lib/lib-builtin-effects.so
 /usr/local/share/audacity/lib/lib-channel.so
 /usr/local/share/audacity/lib/lib-cloud-audiocom.so
 /usr/local/share/audacity/lib/lib-command-parameters.so
@@ -114,6 +118,7 @@
 /usr/local/share/audacity/lib/lib-graphics.so
 /usr/local/share/audacity/lib/lib-import-export.so
 /usr/local/share/audacity/lib/lib-ipc.so
+/usr/local/share/audacity/lib/lib-label-track.so
 /usr/local/share/audacity/lib/lib-ladspa.so
 /usr/local/share/audacity/lib/lib-lv2.so
 /usr/local/share/audacity/lib/lib-math.so
@@ -124,6 +129,7 @@
 /usr/local/share/audacity/lib/lib-network-manager.so
 /usr/local/share/audacity/lib/lib-note-track.so
 /usr/local/share/audacity/lib/lib-numeric-formats.so
+/usr/local/share/audacity/lib/lib-nyquist-effects.so
 /usr/local/share/audacity/lib/lib-playable-track.so
 /usr/local/share/audacity/lib/lib-preference-pages.so
 /usr/local/share/audacity/lib/lib-preferences.so
@@ -157,7 +163,9 @@
 /usr/local/share/audacity/lib/lib-viewport.so
 /usr/local/share/audacity/lib/lib-vst.so
 /usr/local/share/audacity/lib/lib-vst3.so
+/usr/local/share/audacity/lib/lib-wave-track-fft.so
 /usr/local/share/audacity/lib/lib-wave-track-paint.so
+/usr/local/share/audacity/lib/lib-wave-track-settings.so
 /usr/local/share/audacity/lib/lib-wave-track.so
 /usr/local/share/audacity/lib/lib-wx-init.so
 /usr/local/share/audacity/lib/lib-wx-wrappers.so
@@ -207,7 +215,6 @@
 /usr/local/share/audacity/lib/libjbig.so.0
 /usr/local/share/audacity/lib/libjpeg.so.8
 /usr/local/share/audacity/lib/liblzma.so.5
-/usr/local/share/audacity/lib/libmount.so.1
 /usr/local/share/audacity/lib/libmpg123.so.0
 /usr/local/share/audacity/lib/libogg.so.0
 /usr/local/share/audacity/lib/libopus.so.0

@@ -3,18 +3,17 @@ require 'buildsystems/meson'
 class Mpv < Meson
   description 'Video player based on MPlayer/mplayer2'
   homepage 'https://mpv.io/'
-  version '0.38.0'
+  version '0.39.0'
   license 'LGPL-2.1+, GPL-2+, BSD, ISC and GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
-  min_glibc '2.36'
   source_url 'https://github.com/mpv-player/mpv.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0d086ff079b65d9ee74829a6b5aad33c7165fe79a7ad5faca010dacc827452dd',
-     armv7l: '0d086ff079b65d9ee74829a6b5aad33c7165fe79a7ad5faca010dacc827452dd',
-     x86_64: 'fdfadb11bfe7f46aaee9c0dd0ba2d291b5f943d86974082d641bf2a6fc21a78a'
+    aarch64: 'f27922e81b166afce9df09ea7e2802dd43239d6f3ff5d114ad59c1f0037a5bc8',
+     armv7l: 'f27922e81b166afce9df09ea7e2802dd43239d6f3ff5d114ad59c1f0037a5bc8',
+     x86_64: 'f4e97ded5f04dc2cebfc3eac812eefeaf870f01be0249e234d67331b7fdf1068'
   })
 
   depends_on 'alsa_lib' # R
@@ -38,6 +37,7 @@ class Mpv < Meson
   depends_on 'libglvnd' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libplacebo' # R
+  depends_on 'libsamplerate' # R
   depends_on 'libsdl2' # R
   depends_on 'libva' # R
   depends_on 'libvdpau' # R
@@ -68,30 +68,24 @@ class Mpv < Meson
   depends_on 'zimg' # R
   depends_on 'zlib' # R
 
-  def self.build
-    # Wayland is disabled because mpv has moved to
-    # wl_compositor 4, while ChromeOS still uses
-    # the ancient wl_compositor 3.
-    system "meson \
-      #{CREW_MESON_OPTIONS} \
-      -Dwayland=disabled \
+  # Wayland is disabled because mpv has moved to
+  # wl_compositor 4, while ChromeOS still uses
+  # the ancient wl_compositor 3.
+  meson_options '-Dwayland=disabled \
       -Dlibmpv=true \
       -Dgl-x11=enabled \
-      -Dsdl2=enabled \
-      builddir"
+      -Dsdl2=enabled'
+
+  meson_build_extras do
     # mpv conf file
     File.write 'mpv.conf', <<~MPVCONF
       hwdec=auto-safe
       hwdec-codecs=all
       fs=yes
     MPVCONF
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
   end
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    FileUtils.mkdir_p "#{CREW_DEST_HOME}/.mpv"
+  meson_install_extras do
     FileUtils.install 'mpv.conf', "#{CREW_DEST_HOME}/.mpv/mpv.conf", mode: 0o644
   end
 

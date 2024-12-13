@@ -1,16 +1,17 @@
 /usr/local/bin/f2py
 /usr/local/bin/numpy-config
-/usr/local/lib64/python3.13/site-packages/numpy-2.1.2.dist-info/INSTALLER
-/usr/local/lib64/python3.13/site-packages/numpy-2.1.2.dist-info/LICENSE.txt
-/usr/local/lib64/python3.13/site-packages/numpy-2.1.2.dist-info/METADATA
-/usr/local/lib64/python3.13/site-packages/numpy-2.1.2.dist-info/RECORD
-/usr/local/lib64/python3.13/site-packages/numpy-2.1.2.dist-info/REQUESTED
-/usr/local/lib64/python3.13/site-packages/numpy-2.1.2.dist-info/WHEEL
-/usr/local/lib64/python3.13/site-packages/numpy-2.1.2.dist-info/entry_points.txt
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.0.dist-info/INSTALLER
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.0.dist-info/LICENSE.txt
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.0.dist-info/METADATA
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.0.dist-info/RECORD
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.0.dist-info/REQUESTED
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.0.dist-info/WHEEL
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.0.dist-info/entry_points.txt
 /usr/local/lib64/python3.13/site-packages/numpy.libs/libgfortran-040039e1-0352e75f.so.5.0.0
 /usr/local/lib64/python3.13/site-packages/numpy.libs/libquadmath-96973f99-934c22de.so.0.0.0
-/usr/local/lib64/python3.13/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so
+/usr/local/lib64/python3.13/site-packages/numpy.libs/libscipy_openblas64_-6bb31eeb.so
 /usr/local/lib64/python3.13/site-packages/numpy/__config__.py
+/usr/local/lib64/python3.13/site-packages/numpy/__config__.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/__init__.cython-30.pxd
 /usr/local/lib64/python3.13/site-packages/numpy/__init__.pxd
 /usr/local/lib64/python3.13/site-packages/numpy/__init__.py
@@ -342,9 +343,11 @@
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/__pycache__/_dtype_like.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/__pycache__/_extended_precision.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/__pycache__/_nbit.cpython-313.pyc
+/usr/local/lib64/python3.13/site-packages/numpy/_typing/__pycache__/_nbit_base.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/__pycache__/_nested_sequence.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/__pycache__/_scalars.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/__pycache__/_shape.cpython-313.pyc
+/usr/local/lib64/python3.13/site-packages/numpy/_typing/__pycache__/_ufunc.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_add_docstring.py
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_array_like.py
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_callable.pyi
@@ -352,9 +355,11 @@
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_dtype_like.py
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_extended_precision.py
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_nbit.py
+/usr/local/lib64/python3.13/site-packages/numpy/_typing/_nbit_base.py
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_nested_sequence.py
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_scalars.py
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_shape.py
+/usr/local/lib64/python3.13/site-packages/numpy/_typing/_ufunc.py
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_ufunc.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/_utils/__init__.py
 /usr/local/lib64/python3.13/site-packages/numpy/_utils/__pycache__/__init__.cpython-313.pyc
@@ -496,6 +501,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/__pycache__/test_return_integer.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/__pycache__/test_return_logical.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/__pycache__/test_return_real.cpython-313.pyc
+/usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/__pycache__/test_routines.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/__pycache__/test_semicolon_split.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/__pycache__/test_size.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/__pycache__/test_string.cpython-313.pyc
@@ -516,6 +522,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/callback/gh18335.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/callback/gh25211.f
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/callback/gh25211.pyf
+/usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/callback/gh26681.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/cli/gh_22819.pyf
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/cli/hi77.f
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/cli/hiworld.f90
@@ -534,6 +541,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/crackfortran/gh23598.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/crackfortran/gh23598Warn.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/crackfortran/gh23879.f90
+/usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/crackfortran/gh27697.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/crackfortran/gh2848.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/crackfortran/operators.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/crackfortran/privatemod.f90
@@ -562,6 +570,8 @@
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/parameter/constant_real.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/quoted_character/foo.f
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/regression/AB.inc
+/usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/regression/assignOnlyModule.f90
+/usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/regression/datonly.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/regression/f77comments.f
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/regression/f77fixedform.f95
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/regression/f90continuation.f90
@@ -577,6 +587,10 @@
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/return_logical/foo90.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/return_real/foo77.f
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/return_real/foo90.f90
+/usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/routines/funcfortranname.f
+/usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/routines/funcfortranname.pyf
+/usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/routines/subrout.f
+/usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/routines/subrout.pyf
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/size/foo.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/string/char.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/string/fixed_string.f90
@@ -613,6 +627,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/test_return_integer.py
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/test_return_logical.py
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/test_return_real.py
+/usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/test_routines.py
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/test_semicolon_split.py
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/test_size.py
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/test_string.py
@@ -1060,7 +1075,6 @@
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/fail/datasource.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/fail/dtype.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/fail/einsumfunc.pyi
-/usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/fail/false_positives.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/fail/flatiter.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/fail/fromnumeric.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/fail/histograms.pyi
@@ -1196,6 +1210,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/modules.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/multiarray.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/nbit_base_example.pyi
+/usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/ndarray_assignability.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/ndarray_conversion.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/ndarray_misc.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/ndarray_shape_manipulation.pyi

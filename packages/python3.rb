@@ -3,7 +3,7 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.13.0'
+  version '3.13.1'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
@@ -11,10 +11,10 @@ class Python3 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cd444774bf3d5c88321d72e7d1d4b4c3f09dcf793c2a9dcf230e72c8c70f831f',
-     armv7l: 'cd444774bf3d5c88321d72e7d1d4b4c3f09dcf793c2a9dcf230e72c8c70f831f',
-       i686: '3c3955d5ac36867db40f0249f99a34eee64142d32399fdc32f87261bcebc3880',
-     x86_64: 'adce9952f2118c876a122e04ca3407540306b840cdda266a404a80fd89ebeaaa'
+    aarch64: '577602972673c4f98fad65b1f423c0124c182dba8b0102ebfcc2f1a76f401e8d',
+     armv7l: '577602972673c4f98fad65b1f423c0124c182dba8b0102ebfcc2f1a76f401e8d',
+       i686: 'ce4bf3a07329174c83d0c0ed68ef006780400833338c46b2c2f7806820f5b100',
+     x86_64: '0a27a2f99c4e06242228326d3d506770fd5d2cc3dd4b60a476cd4e8fcc81da04'
   })
 
   depends_on 'autoconf_archive' => :build

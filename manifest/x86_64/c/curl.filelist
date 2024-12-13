@@ -37,6 +37,7 @@
 /usr/local/share/man/man3/CURLINFO_CONTENT_LENGTH_UPLOAD_T.3.zst
 /usr/local/share/man/man3/CURLINFO_CONTENT_TYPE.3.zst
 /usr/local/share/man/man3/CURLINFO_COOKIELIST.3.zst
+/usr/local/share/man/man3/CURLINFO_EARLYDATA_SENT_T.3.zst
 /usr/local/share/man/man3/CURLINFO_EFFECTIVE_METHOD.3.zst
 /usr/local/share/man/man3/CURLINFO_EFFECTIVE_URL.3.zst
 /usr/local/share/man/man3/CURLINFO_FILETIME.3.zst

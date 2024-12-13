@@ -1,0 +1,29 @@
+---
+name: Repo / Reply stale issue
+on:
+  schedule:
+    - cron: 30 3 * * *
+  workflow_dispatch: null
+permissions:
+  issues: write
+  pull-requests: write
+jobs:
+  triage:
+    name: Triage
+    runs-on: ubuntu-24.04
+    if: ${{ contains(github.repository_owner, 'chromebrew') }}
+    steps:
+      - uses: actions/stale@28ca1036281a5e5922ead5184a1bbf96e5fc984e  # v9.0.0
+        with:
+          days-before-stale: 120
+          days-before-pr-stale: -1
+          days-before-close: 21
+          days-before-pr-close: -1
+          exempt-issue-labels: enhancement,confirmed
+          stale-issue-label: stale
+          stale-issue-message: >-
+            This issue has gone 120 days without comment. To avoid abandoned issues, it will be closed in 21 days if there are no new comments.
+
+            If you're the original submitter of this issue, please comment confirming if this issue still affects you in the latest release with `crew update && yes | crew upgrade`, or close the issue if it has been fixed. If you're another user also affected by this bug, please comment confirming so. Either action will remove the stale label.
+
+            This bot exists to prevent issues from becoming stale and forgotten. Chromebrew is always moving forward, and bugs are often fixed as side effects of other changes. We therefore ask that bug report authors remain vigilant about their issues to ensure they are closed if fixed, or re-confirmed - perhaps with fresh logs or reproduction examples - regularly.
