@@ -5995,6 +5995,11 @@ url: https://github.com/ccxvii/mujs/releases
 activity: medium
 ---
 kind: url
+name: mullvad
+url: https://github.com/mullvad/mullvad-browser/releases
+activity: high
+---
+kind: url
 name: multitail
 url: https://github.com/flok99/multitail/releases
 activity: none
