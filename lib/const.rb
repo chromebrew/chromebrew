@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.56.3' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.56.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -308,6 +308,7 @@ PY_SETUP_INSTALL_OPTIONS         ||= "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --sing
 PY3_BUILD_OPTIONS                ||= '--wheel --no-isolation'
 PY3_INSTALLER_OPTIONS            ||= "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
 
+CREW_GCC_VER ||= Kernel.system('which gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : 'gcc14' unless defined?(CREW_GCC_VER)
 CREW_ICU_VER ||= Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : 'icu75.1' unless defined?(CREW_ICU_VER)
 CREW_PERL_VER ||= Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl -MConfig -e "print \\\"\\\$Config{'PERL_API_REVISION'}.\\\$Config{'PERL_API_VERSION'}\\\";"`}" : 'perl5.40' unless defined?(CREW_PERL_VER)
 CREW_PY_VER ||= Kernel.system("#{CREW_PREFIX}/bin/python3 --version", %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : 'py3.13' unless defined?(CREW_PY_VER)

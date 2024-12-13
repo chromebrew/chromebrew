@@ -71,6 +71,8 @@ class PackageUtils
   end
 
   def self.get_clean_version(pkg_version)
+    # Delete -gcc14, futureproofed until gcc 100
+    pkg_version.gsub!(/-gcc\d{2}/, '')
     # Trim kde- suffixes in qt5 packages so nothing else gets confused.
     pkg_version.delete_prefix!('kde-')
     # Delete -py3.12, futureproofed until Python 4
