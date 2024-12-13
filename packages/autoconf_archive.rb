@@ -11,8 +11,8 @@ class Autoconf_archive < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '538076c9589edd796a25e62ddce771d92169db79179ed32755dc2eee0717ea3d',
-     armv7l: '538076c9589edd796a25e62ddce771d92169db79179ed32755dc2eee0717ea3d',
+    aarch64: '3e08a3bf59c5973ec5fee59d4692fd266d8082c753fca0f8dcc27448da44ba8a',
+     armv7l: '3e08a3bf59c5973ec5fee59d4692fd266d8082c753fca0f8dcc27448da44ba8a',
        i686: '8a69c686eb94611f432847d68b8d8fa3787548d002072266e9807635c878c30b',
      x86_64: 'dc9e54c5af6fb9271d4c5599f50f2d98f311f3550ad326b45f48eb7484255a29'
   })
