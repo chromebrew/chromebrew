@@ -9,6 +9,18 @@ on:
     types:
       - completed
 jobs:
+  setup:
+    if: ${{ github.repository_owner == 'chromebrew' }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
   container_tests:
     if: ${{ ( github.repository_owner == 'chromebrew' ) && ( github.ref_name != 'master' ) }}
     strategy:
@@ -25,6 +37,8 @@ jobs:
           - arch: armv7l
             runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
+    needs:
+      - setup
     concurrency:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
@@ -203,6 +217,7 @@ jobs:
   container_test_check:
     runs-on: ubuntu-24.04
     needs:
+      - setup
       - container_tests
     if: ${{ !cancelled() }}
     steps:
