@@ -8,7 +8,7 @@ class Automake < Autotools
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gnu/automake/automake-#{version}.tar.xz"
   source_sha256 'f01d58cd6d9d77fbdca9eb4bbd5ead1988228fdb73d6f7a201f5f8d6b118b469'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'b991366b2b59e1c6bdbce17789552240019d7e4d175661dacf3533a66e584037',
