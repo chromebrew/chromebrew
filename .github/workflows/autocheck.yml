@@ -2,7 +2,7 @@
 name: autocheck
 on:
   schedule:
-    - cron:  '*/5 * * * *'
+    - cron: '*/5 * * * *'
 jobs:
   autocheck:
     runs-on: ubuntu-24.04
