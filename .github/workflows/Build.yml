@@ -34,7 +34,7 @@ jobs:
       - name: Set workflow & branch variables
         id: set-variables
         run: |
-          export TIMESTAMP="$(date -u +%F-%H-%M)"
+          export TIMESTAMP="$(date -u +%F-%H)Z"
           echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_OUTPUT
   generate:
     strategy:
@@ -286,6 +286,10 @@ jobs:
             echo "- ${file}" >> /tmp/pr.txt
           done
           cat /tmp/pr.txt
-          export PR_NUMBER=$(gh pr create --title "Automatic PR to build packages for ${{ github.ref_name }} on ${{ needs.setup.outputs.output1 }}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          export PR_NUMBER=$(gh pr create --title "Automated Package Build: ${{ github.ref_name }} branch started at ${{ needs.setup.outputs.output1 }}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
+      - name: Trigger Unit Tests
+        run: |
+            gh workflow run Unit-Test.yml \
+              --ref ${{ github.ref_name }}
