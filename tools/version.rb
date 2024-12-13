@@ -117,6 +117,12 @@ if filelist.length.positive?
       next
     end
 
+    # Skip ruby and pip buildsystem packages.
+    if pkg.superclass.to_s == 'RUBY' || pkg.superclass.to_s == 'Pip'
+      puts pkg.name.ljust(35) + 'skipped'.lightred if verbose
+      next
+    end
+
     # Get the upstream version.
     upstream_version = get_version(pkg.name.tr('_', '-'), pkg.homepage)
     # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
