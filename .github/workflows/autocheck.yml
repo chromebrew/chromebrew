@@ -1,0 +1,18 @@
+---
+name: autocheck
+on:
+  schedule:
+    - cron:  '*/5 * * * *'
+jobs:
+  autocheck:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Run required checks if necessary
+        run: |
+            for pr in $(gh pr list -s open --author app/github-actions --json number | jq '.[].number')
+            do
+              gh pr checks --required $pr || (echo "Flipping pr ${pr} state." ; gh pr close $pr && gh pr reopen $pr)
+            done
