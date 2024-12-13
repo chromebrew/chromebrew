@@ -291,5 +291,6 @@ jobs:
           echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
       - name: Trigger Unit Tests
         run: |
-            gh workflow run Unit-Test.yml \
-              --ref ${{ github.ref_name }}
+            # See https://github.com/orgs/community/discussions/26698#discussioncomment-7564287
+            git commit --amend --no-edit
+            git push --force-with-lease
