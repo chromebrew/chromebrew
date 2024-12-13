@@ -6,7 +6,7 @@ on:
       - created
   merge_group:
   pull_request:
-  push:
+  #  push:
   workflow_dispatch:
   workflow_run:
     workflows: [Build]
