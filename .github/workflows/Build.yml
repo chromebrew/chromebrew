@@ -34,7 +34,7 @@ jobs:
       - name: Set workflow & branch variables
         id: set-variables
         run: |
-          export TIMESTAMP="$(date -u +%F-%H)Z"
+          export TIMESTAMP="$(date -u +%F-%H%Z)"
           echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_OUTPUT
   generate:
     strategy:
