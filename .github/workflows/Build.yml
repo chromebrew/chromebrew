@@ -4,11 +4,12 @@ on:
   workflow_dispatch:
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # setting GH_TOKEN for the entire workflow
-permissions:                    # Global permissions configuration starts here
+permissions:
   actions: write
   contents: write
   packages: write
-  pull-requests: write          # 'write' access to pull requests
+  pull-requests: write
+  repository-projects: read
 jobs:
   setup:
     if: ${{ ( github.repository_owner == 'chromebrew' ) && ( github.ref_name != 'master' ) }}
@@ -304,5 +305,11 @@ jobs:
       - name: Add Reviewers
         env:
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+        permissions:
+          actions: write
+          contents: write
+          packages: write
+          pull-requests: write
+          repository-projects: read
         run: |
           gh pr edit ${PR_NUMBER} --add-reviewer chromebrew/active

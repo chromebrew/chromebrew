@@ -6,6 +6,12 @@ on:
   workflow_dispatch:
 env:
   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+permissions:
+  actions: write
+  contents: write
+  packages: write
+  pull-requests: write
+  repository-projects: read
 jobs:
   autocheck:
     if: ${{ github.repository_owner == 'chromebrew' }}
