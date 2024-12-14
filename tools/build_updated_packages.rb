@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# build_updated_packages version 2.2 (for Chromebrew)
+# build_updated_packages version 2.3 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -13,6 +13,7 @@
 # This is useful if you have already run this (and thus the update scripts)
 # from another container for the same cloned repo.
 
+require 'English'
 require_relative '../lib/color'
 require_relative '../lib/const'
 require_relative '../lib/package'
@@ -129,7 +130,11 @@ updated_packages.each do |pkg|
       next
     else
       puts "#{name.capitalize} #{@pkg_obj.version} needs builds uploaded for: #{builds_needed.join(' ')}".lightblue
-      (system "yes | crew build -f #{pkg}" || abort("#{pkg} build failed!")) if builds_needed.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{@pkg_obj.version}-chromeos-#{ARCH}.#{@pkg_obj.binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@pkg_obj.version}")
+
+      if builds_needed.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{@pkg_obj.version}-chromeos-#{ARCH}.#{@pkg_obj.binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@pkg_obj.version}")
+        system "yes | crew build -f #{pkg}"
+        abort("#{pkg} build failed!") unless $CHILD_STATUS.success?
+      end
       upload_pkg = nil
       builds_needed.each do |build|
         upload_pkg = true if File.file?("release/#{build}/#{name}-#{@pkg_obj.version}-chromeos-#{build}.#{@pkg_obj.binary_compression}")
