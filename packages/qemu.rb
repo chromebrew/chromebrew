@@ -69,6 +69,10 @@ class Qemu < Package
   depends_on 'zstd' # R
 
   def self.patch
+    # https://gitlab.com/qemu-project/qemu/-/issues/2718
+    downloader 'https://patchew.org/QEMU/20241213182337.3343068-1-peter.maydell@linaro.org/mbox', 'aasasaa', 'qemu_patch'
+    system 'patch -Np1 -i qemu_patch'
+
     # Avoid linux/usbdevice_fs.h:88:9: error: unknown type name ‘u8’ error
     FileUtils.mkdir_p 'linux'
     FileUtils.cp "#{CREW_PREFIX}/include/linux/usbdevice_fs.h", 'linux/usbdevice_fs.h'
