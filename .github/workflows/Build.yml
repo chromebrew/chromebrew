@@ -305,11 +305,5 @@ jobs:
       - name: Add Reviewers
         env:
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
-        permissions:
-          actions: write
-          contents: write
-          packages: write
-          pull-requests: write
-          repository-projects: read
         run: |
           gh pr edit ${PR_NUMBER} --add-reviewer chromebrew/active
