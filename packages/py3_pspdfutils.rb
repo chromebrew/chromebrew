@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pspdfutils < Pip
   description 'Utilities for manipulating PostScript documents.'
   homepage 'https://github.com/rrthomas/psutils'
-  version "3.3.6-#{CREW_PY_VER}"
+  version "3.3.7-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
