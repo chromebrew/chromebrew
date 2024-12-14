@@ -8495,6 +8495,11 @@ url: https://github.com/libfuse/sshfs/releases
 activity: low
 ---
 kind: url
+name: sshpass
+url: https://sourceforge.net/projects/sshpass/files/sshpass/
+activity: none
+---
+kind: url
 name: sshrc
 url: https://github.com/Russell91/sshrc/releases
 activity: medium
