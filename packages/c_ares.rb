@@ -7,7 +7,7 @@ class C_ares < CMake
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/c-ares/c-ares.git'
-  git_hashtag "cares-#{version.gsub('.', '_')}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
