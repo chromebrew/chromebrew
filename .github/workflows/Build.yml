@@ -287,7 +287,7 @@ jobs:
             echo "- ${file}" >> /tmp/pr.txt
           done
           cat /tmp/pr.txt
-          export PR_NUMBER=$(gh pr create --title "Automated Build: ${{ github.ref_name }} started at ${{ needs.setup.outputs.output1 }}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          export PR_NUMBER=$(gh pr create --title "AutoBuild: ${{ github.ref_name }} started at ${{ needs.setup.outputs.output1 }}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
       - name: Trigger Unit Test Workflow & Add Reviewer Team

@@ -132,7 +132,7 @@ updated_packages.each do |pkg|
       puts "#{name.capitalize} #{@pkg_obj.version} needs builds uploaded for: #{builds_needed.join(' ')}".lightblue
 
       if builds_needed.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{@pkg_obj.version}-chromeos-#{ARCH}.#{@pkg_obj.binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@pkg_obj.version}")
-        system "yes | crew build -f #{pkg}"
+        system({ 'CREW_CACHE_ENABLED' => '1' }, "yes | crew build -f #{pkg}")
         abort("#{pkg} build failed!") unless $CHILD_STATUS.success?
       end
       upload_pkg = nil
