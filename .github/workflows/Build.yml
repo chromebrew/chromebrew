@@ -287,23 +287,13 @@ jobs:
             echo "- ${file}" >> /tmp/pr.txt
           done
           cat /tmp/pr.txt
-          export PR_NUMBER=$(gh pr create --title "Automated Package Build: ${{ github.ref_name }} branch started at ${{ needs.setup.outputs.output1 }}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          export PR_NUMBER=$(gh pr create --title "AutoBuild: ${{ github.ref_name }} started at ${{ needs.setup.outputs.output1 }}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
-      - name: Trigger Unit Test Workflow
-        uses: actions/github-script@v7
-        env:
-          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
-        with:
-          script: |
-            github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'Unit-Test.yml',
-              ref: '${{ github.ref_name }}'
-            })
-      - name: Add Reviewers
+      - name: Trigger Unit Test Workflow & Add Reviewer Team
         env:
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
         run: |
+          echo "Flipping pr ${PR_NUMBER} state."
+          gh pr close ${PR_NUMBER} && gh pr reopen ${PR_NUMBER}
           gh pr edit ${PR_NUMBER} --add-reviewer chromebrew/active
