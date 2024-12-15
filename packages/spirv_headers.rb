@@ -11,8 +11,8 @@ class Spirv_headers < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '55568d36faf09b8793a8a89da489acc93b9839423ac198b5b01f9d6fe7e5ebf7',
-     armv7l: '55568d36faf09b8793a8a89da489acc93b9839423ac198b5b01f9d6fe7e5ebf7',
+    aarch64: 'f7121f3344e946fe826ad36bc530b065f9fb8f48d4a38baab53ef1882afe5ce1',
+     armv7l: 'f7121f3344e946fe826ad36bc530b065f9fb8f48d4a38baab53ef1882afe5ce1',
        i686: '766f60a4f30774ea819dcf5cfd4f360fac0f33c00b806fad0888fceb520d5f15',
      x86_64: '38d108fc91c151efdd1035c30cd53e64237c7a7acf220617955e015fa75e73e5'
   })
