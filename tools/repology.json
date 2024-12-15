@@ -603,7 +603,7 @@
     "name": "audacity",
     "description": "Audacity is the world's most popular audio editing and recording app",
     "homepage": "https://www.audacityteam.org/",
-    "version": "3.7.0",
+    "version": "3.7.1",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
@@ -643,7 +643,7 @@
     "name": "autoconf_archive",
     "description": "GNU Autoconf Archive is a collection of freely re-usable Autoconf macros.",
     "homepage": "https://www.gnu.org/software/autoconf-archive/",
-    "version": "2023.02.20",
+    "version": "2024.10.16",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -659,7 +659,7 @@
     "name": "automake",
     "description": "Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards.",
     "homepage": "https://www.gnu.org/software/automake/",
-    "version": "1.16.5",
+    "version": "1.17",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -731,7 +731,7 @@
     "name": "awscli",
     "description": "Universal Command Line Interface for Amazon Web Services",
     "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.36.17",
+    "version": "1.36.22",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -963,7 +963,7 @@
     "name": "binutils",
     "description": "The GNU Binutils are a collection of binary tools.",
     "homepage": "https://www.gnu.org/software/binutils/",
-    "version": "2.43.1-gcc14",
+    "version": "2.43.1",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -1059,7 +1059,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.73.97",
+    "version": "1.73.101",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1187,7 +1187,7 @@
     "name": "c_ares",
     "description": "C library for asynchronous DNS requests (including name resolves).",
     "homepage": "https://c-ares.org/",
-    "version": "1.23.0",
+    "version": "1.34.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -1323,7 +1323,7 @@
     "name": "ccache",
     "description": "Compiler cache that speeds up recompilation by caching previous compilations",
     "homepage": "https://ccache.dev/",
-    "version": "4.9.1",
+    "version": "4.10.2",
     "license": "GPL-3 and LGPL-3",
     "compatibility": "all"
   },
@@ -1747,7 +1747,7 @@
     "name": "composer",
     "description": "Dependency Manager for PHP",
     "homepage": "https://getcomposer.org/",
-    "version": "2.8.3",
+    "version": "2.8.4",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2035,7 +2035,7 @@
     "name": "curl",
     "description": "Command line tool and library for transferring data with URLs.",
     "homepage": "https://curl.se/",
-    "version": "8.11.0",
+    "version": "8.11.1",
     "license": "curl",
     "compatibility": "all"
   },
@@ -2587,7 +2587,7 @@
     "name": "elfutils",
     "description": "elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.",
     "homepage": "https://sourceware.org/elfutils/",
-    "version": "0.191",
+    "version": "0.192",
     "license": "GPL-2+ or LGPL-3+",
     "compatibility": "all"
   },
@@ -2803,7 +2803,7 @@
     "name": "expat",
     "description": "James Clark's Expat XML parser library in C.",
     "homepage": "https://github.com/libexpat/libexpat",
-    "version": "2.6.3",
+    "version": "2.6.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -3011,7 +3011,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "133.0",
+    "version": "133.0.3",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3627,7 +3627,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "502.0.0",
+    "version": "503.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -3659,7 +3659,7 @@
     "name": "gdb",
     "description": "The GNU Debugger",
     "homepage": "https://www.gnu.org/software/gdb/",
-    "version": "15.1-gcc14",
+    "version": "15.1",
     "license": "GPL3",
     "compatibility": "all"
   },
@@ -3923,7 +3923,7 @@
     "name": "git",
     "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
     "homepage": "https://git-scm.com/",
-    "version": "2.47.0",
+    "version": "2.47.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -4539,7 +4539,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "131.0.6778.108-1",
+    "version": "131.0.6778.139-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -6595,7 +6595,7 @@
     "name": "libdrm",
     "description": "Cross-driver middleware for DRI protocol.",
     "homepage": "https://dri.freedesktop.org/wiki/",
-    "version": "2.4.122",
+    "version": "2.4.124",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -7251,7 +7251,7 @@
     "name": "libmbedtls",
     "description": "An open source, portable, easy to use, readable and flexible SSL library",
     "homepage": "https://www.trustedfirmware.org/projects/mbed-tls/",
-    "version": "3.6.0",
+    "version": "3.6.2",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -9419,7 +9419,7 @@
     "name": "meld",
     "description": "Meld is a visual diff and merge tool targeted at developers.",
     "homepage": "https://meldmerge.org/",
-    "version": "3.22.1",
+    "version": "3.23.0",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -9635,7 +9635,7 @@
     "name": "mold",
     "description": "A Modern Linker",
     "homepage": "https://github.com/rui314/mold",
-    "version": "2.34.1",
+    "version": "2.35.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -9806,6 +9806,14 @@
     "version": "1.1.0",
     "license": "ISC",
     "compatibility": "all"
+  },
+  {
+    "name": "mullvad",
+    "description": "Privacy-focused browser",
+    "homepage": "https://mullvad.net/browser",
+    "version": "14.0.3",
+    "license": "Mozilla Public License V2",
+    "compatibility": "x86_64"
   },
   {
     "name": "multitail",
@@ -10323,7 +10331,7 @@
     "name": "netbeans",
     "description": "Apache NetBeans IDE is free open source software to quickly and easily develop desktop, mobile, and web applications with Java, JavaScript, HTML5, PHP, C/C++ and more.",
     "homepage": "https://netbeans.apache.org/front/main/index.html",
-    "version": "23",
+    "version": "24",
     "license": "Apache-2.0, custom, EPL-1.0, W3C, MIT, BSD, MPL-1.0, CC-BY-3.0, CDDL and CDDL-1.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -10664,6 +10672,14 @@
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
+    "name": "onepassword",
+    "description": "1Password CLI brings 1Password to your terminal.",
+    "homepage": "https://1password.com/",
+    "version": "2.30.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
     "name": "onevpl",
     "description": "oneAPI Video Processing Library",
     "homepage": "https://www.intel.com/content/www/us/en/developer/tools/vpl/overview.html",
@@ -10891,7 +10907,7 @@
     "name": "openssh",
     "description": "OpenSSH is the premier connectivity tool for remote login with the SSH protocol.",
     "homepage": "https://www.openssh.com/",
-    "version": "9.8p1",
+    "version": "9.9p1",
     "license": "BSD and GPL-2",
     "compatibility": "all"
   },
@@ -12419,7 +12435,7 @@
     "name": "py3_certifi",
     "description": "Certifi provides Mozilla's CA Bundle.",
     "homepage": "https://certifi.io/",
-    "version": "2024.8.30",
+    "version": "2024.12.14",
     "license": "MPL-2.0",
     "compatibility": "all"
   },
@@ -13003,7 +13019,7 @@
     "name": "py3_numpy",
     "description": "NumPy is the fundamental package for array computing with Python.",
     "homepage": "https://numpy.org/",
-    "version": "2.1.3",
+    "version": "2.2.0",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -13011,7 +13027,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.139.0",
+    "version": "2.140.0",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13019,7 +13035,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.50.2",
+    "version": "3.50.3",
     "license": "UPL-1.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13147,7 +13163,7 @@
     "name": "py3_pspdfutils",
     "description": "Utilities for manipulating PostScript documents.",
     "homepage": "https://github.com/rrthomas/psutils",
-    "version": "3.3.6",
+    "version": "3.3.7",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -13411,7 +13427,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.8.2",
+    "version": "0.8.3",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13507,7 +13523,7 @@
     "name": "py3_speechrecognition",
     "description": "SpeechRecognition is a library for performing speech recognition, with support for several engines and APIs, online and offline.",
     "homepage": "https://github.com/Uberi/speech_recognition/",
-    "version": "3.11.0",
+    "version": "3.12.0",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -14246,6 +14262,14 @@
     "version": "0.9.1",
     "license": "LGPL-2.1",
     "compatibility": "x86_64 aarch64 armv7l"
+  },
+  {
+    "name": "revive",
+    "description": "Faster, stricter, configurable, extensible, and beautiful drop-in replacement for golint",
+    "homepage": "https://github.com/mgechev/revive",
+    "version": "1.5.1",
+    "license": "MIT",
+    "compatibility": "all"
   },
   {
     "name": "rfkill",
@@ -15771,7 +15795,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.35.1",
+    "version": "7.36.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -16035,7 +16059,7 @@
     "name": "spirv_headers",
     "description": "SPIR-V Headers",
     "homepage": "https://github.com/KhronosGroup/SPIRV-Headers",
-    "version": "1.3.290.0",
+    "version": "1.3.296.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16059,7 +16083,7 @@
     "name": "sqlite",
     "description": "SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.",
     "homepage": "https://www.sqlite.org/",
-    "version": "3.47.0",
+    "version": "3.47.2",
     "license": "public-domain",
     "compatibility": "all"
   },
@@ -16148,6 +16172,14 @@
     "description": "A network filesystem client to connect to SSH servers.",
     "homepage": "https://github.com/libfuse/sshfs",
     "version": "2.10",
+    "license": "GPL-2",
+    "compatibility": "all"
+  },
+  {
+    "name": "sshpass",
+    "description": "Tool for non-interactivly performing password authentication",
+    "homepage": "https://sourceforge.net/projects/sshpass/",
+    "version": "1.10",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -16251,7 +16283,7 @@
     "name": "subversion",
     "description": "Subversion is an open source version control system.",
     "homepage": "https://subversion.apache.org/",
-    "version": "1.14.4",
+    "version": "1.14.5",
     "license": "Apache-2.0, BSD, MIT, BSD-2, FSFAP and unicode",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -16435,7 +16467,7 @@
     "name": "tcl",
     "description": "Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language, suitable for a very wide range of uses, including web and desktop applications, networking, administration, testing and many more.",
     "homepage": "http://www.tcl.tk/",
-    "version": "8.6.14",
+    "version": "8.6.16",
     "license": "tcltk",
     "compatibility": "all"
   },
@@ -16715,7 +16747,7 @@
     "name": "tk",
     "description": "Tk is a graphical user interface toolkit that takes developing desktop applications to a higher level than conventional approaches.",
     "homepage": "http://www.tcl.tk/",
-    "version": "8.6.14",
+    "version": "8.6.16",
     "license": "tcltk",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -17283,7 +17315,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.0.3495.23-1",
+    "version": "7.0.3495.26-1",
     "license": "Vivaldi",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -17339,7 +17371,7 @@
     "name": "vscodium",
     "description": "VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.",
     "homepage": "https://vscodium.com/",
-    "version": "1.95.3.24321",
+    "version": "1.96.0.24347",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -17355,7 +17387,7 @@
     "name": "vte",
     "description": "Virtual Terminal Emulator widget for use with GTK",
     "homepage": "https://wiki.gnome.org/Apps/Terminal/VTE",
-    "version": "0.77.91",
+    "version": "0.78.2",
     "license": "LGPL-2+ and GPL-3+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -17363,7 +17395,7 @@
     "name": "vulkan_headers",
     "description": "Vulkan header files",
     "homepage": "https://github.com/KhronosGroup/Vulkan-Headers",
-    "version": "1.3.300",
+    "version": "1.4.303",
     "license": "Apache-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -17371,7 +17403,7 @@
     "name": "vulkan_icd_loader",
     "description": "Vulkan Installable Client Driver ICD Loader",
     "homepage": "https://github.com/KhronosGroup/Vulkan-Loader",
-    "version": "1.3.300",
+    "version": "1.4.303",
     "license": "Apache-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -17379,7 +17411,7 @@
     "name": "vulkan_tools",
     "description": "Vulkan Utilities and Tools",
     "homepage": "https://www.vulkan.org/",
-    "version": "1.3.280.0",
+    "version": "1.4.303",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -17390,6 +17422,14 @@
     "version": "1.3.283.0",
     "license": "https://vulkan.lunarg.com/license/#/license",
     "compatibility": "x86_64"
+  },
+  {
+    "name": "vuls",
+    "description": "Agent-less vulnerability scanner",
+    "homepage": "https://vuls.io/",
+    "version": "0.28.0",
+    "license": "GPL-3.0",
+    "compatibility": "all"
   },
   {
     "name": "vuze",
