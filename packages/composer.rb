@@ -3,11 +3,11 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '2.8.3'
+  version '2.8.4'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/composer/composer/releases/download/#{version}/composer.phar"
-  source_sha256 '8323b4105c6e166d47c9db93209370083f9e421743636e108c37d8c1126386ef'
+  source_sha256 'c4c4e2e1beab0ea04e0bd042a5dbba9feda1fbf5eda0d36203958edd343c0a8a'
 
   depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
   depends_on 'xdg_base'
@@ -40,5 +40,9 @@ class Composer < Package
       To finish the installation, execute the following:
       composer self-update --update-keys
     EOF
+  end
+
+  def self.postremove
+    Package.agree_to_remove("#{CREW_PREFIX}/.config/composer")
   end
 end
