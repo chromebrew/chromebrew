@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Glslang < CMake
   description 'OpenGL and OpenGL ES shader front end and validator'
   homepage 'https://github.com/KhronosGroup/glslang'
-  version '14.0.0'
+  version '15.1.0'
   license 'BSD-3, MIT, BSD-2, Apache-2.0 and NVIDIA'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/KhronosGroup/glslang.git'
