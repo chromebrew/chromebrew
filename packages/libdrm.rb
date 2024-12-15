@@ -13,7 +13,7 @@ class Libdrm < Meson
   binary_sha256({
     aarch64: 'e2bc6660676c581685ea0a7ae370f04c98e68951d9967b1c4eded48c764052a3',
      armv7l: 'e2bc6660676c581685ea0a7ae370f04c98e68951d9967b1c4eded48c764052a3',
-     x86_64: 'cf7faca3da977cde68110f3b7247a11dbf97cfc515c3abb8228e39d52aa67406'
+     x86_64: '9497a56d0180c74ce217e0654dbecced4d62930d2a53461f4f116d755520164b'
   })
 
   depends_on 'cairo' # R
