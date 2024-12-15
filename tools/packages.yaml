@@ -6395,6 +6395,11 @@ url: https://httpredir.debian.org/debian/pool/main/o/oneko/
 activity: low
 ---
 kind: url
+name: onepassword
+url: https://developer.1password.com/docs/cli/get-started
+activity: medium
+---
+kind: url
 name: onevpl
 url: https://github.com/oneapi-src/oneVPL/releases
 activity: medium
