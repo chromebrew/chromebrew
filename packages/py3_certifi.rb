@@ -12,7 +12,7 @@ class Py3_certifi < Pip
   binary_sha256({
     aarch64: '61bc904434759198ddfd30a6cec6a340e87daf15f186ab9556eb083bb43dbfee',
      armv7l: '61bc904434759198ddfd30a6cec6a340e87daf15f186ab9556eb083bb43dbfee',
-       i686: '8e2d0171481fdafd171d14f971607331bb0d948e99515fc43b3b6f80147661af',
+       i686: 'eb86cc67fbecb05b079de34731d7e4cac0aed998e7eee3bfc6c747a71ac377f5',
      x86_64: '14ec36af51a0c546fd5f9e0e6a61a242b7d420466569a6f4eba25e8bb9844c8f'
   })
 
