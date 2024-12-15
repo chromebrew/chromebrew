@@ -16,7 +16,7 @@ class Vulkan_tools < CMake
   binary_sha256({
     aarch64: '21e22c03ae7c4560f99ef7017d55329f2149d186f2ee59213b5962f86e20a655',
      armv7l: '21e22c03ae7c4560f99ef7017d55329f2149d186f2ee59213b5962f86e20a655',
-     x86_64: 'df93036cc97781aff6ea9147ae8e4843ad5a83b235a728a222cfd37f01240a4c'
+     x86_64: 'a4ff75bb8ac838abe2a8b98f5e5c0d033dcf6e66a3c195ce29a6f5b883693d26'
   })
 
   depends_on 'gcc_dev' => :build
