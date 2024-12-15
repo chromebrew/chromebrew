@@ -6,11 +6,11 @@ require 'buildsystems/cmake'
 class Vulkan_tools < CMake
   description 'Vulkan Utilities and Tools'
   homepage 'https://www.vulkan.org/'
-  version '1.3.296.0'
+  version '1.4.303'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/Vulkan-Tools.git'
-  git_hashtag "vulkan-sdk-#{version}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -69,6 +69,6 @@ class Vulkan_tools < CMake
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    FileUtils.install 'builddir-wayland/cube/vkcube-wayland', "#{CREW_DEST_PREFIX}/bin/vkcube-wayland", mode: 0o755
+    FileUtils.install 'builddir-wayland/cube/vkcube', "#{CREW_DEST_PREFIX}/bin/vkcube-wayland", mode: 0o755
   end
 end
