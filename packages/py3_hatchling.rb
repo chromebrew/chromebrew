@@ -12,7 +12,7 @@ class Py3_hatchling < Pip
   binary_sha256({
     aarch64: '090259a56a1746bfb2ccf91acdeddfe6f1d03954c81884b8b71d3a7e47cdbdfb',
      armv7l: '090259a56a1746bfb2ccf91acdeddfe6f1d03954c81884b8b71d3a7e47cdbdfb',
-       i686: '71eb71c2c108c903d4ce7c1d8ba0a19422357c4054e5b9748a075c8aa20b5953',
+       i686: '9561c9a316f68ed6077b0baf3a2afd04b6fde2f428dfb24c6f78cb00066e3705',
      x86_64: '9f3a0241924634fe9ecdf03ebc2f5e9271370f607f7891be99454c2146d49ccf'
   })
 
