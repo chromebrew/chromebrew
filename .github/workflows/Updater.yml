@@ -214,35 +214,51 @@ jobs:
           clean: false
           persist-credentials: true
           ref: ${{ needs.update-check.outputs.output2 }}
+      - name: Get all changed package files
+        id: changed-ruby-files
+        uses: tj-actions/changed-files@v45
+        with:
+          base_sha: master
+          files: packages/*.rb
+          since_last_remote_commit: true
+      - name: Export variables to github context
+        run: |
+            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> $GITHUB_ENV
+      - name: Create Pull Request
+        env:
+          CREW_BRANCH: ${{ github.ref_name }}
+        run: |
+          echo -e "Updated packages:" > /tmp/pr.txt
+          for file in ${CHANGED_PACKAGES}
+            do
+            echo "- ${file}" >> /tmp/pr.txt
+          done
+          cat /tmp/pr.txt
+          export PR_NUMBER=$(gh pr create --title "AutoBuild: ${{ github.ref_name }} started at ${{ needs.setup.outputs.output1 }}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          echo "PR_NUMBER is ${PR_NUMBER}"
+          echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
       - name: Create Pull Request
         env:
           TIMESTAMP: ${{ needs.update-check.outputs.output1 }}
           CREW_BRANCH: ${{ needs.update-check.outputs.output2 }}
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git fetch --shallow-since="1 week"
-          git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)
-          mapfile -t updated_package_array < <( git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD) | grep -v manifest | grep "^packages" | sed -e 's,packages/,,' -e 's,.rb,,')
           echo -e "Updated packages:" > /tmp/pr.txt
-          for file in "${updated_package_array[@]}"
+          for file in ${CHANGED_PACKAGES}
             do
             echo "- ${file}" >> /tmp/pr.txt
           done
           cat /tmp/pr.txt
-          export PR_NUMBER=$(gh pr create --title "Automatic PR to update packages for ${CREW_BRANCH}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          export PR_NUMBER=$(gh pr create --title "AutoUpdate: ${{ github.ref_name }} started at ${TIMESTAMP}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
-      - name: Trigger Unit Test workflow.
-        run: |
-          echo "Branch is ${{ needs.update-check.outputs.output2 }}"
-          gh workflow run "Unit-Test.yml" --ref ${{ needs.update-check.outputs.output2 }}
-      - name: Add chromebrew/active team reviewers to PR
-        run: |
+          ${CREW_BRANCH}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
-          curl -X POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"\
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/repos${{ github.owner }}/${{ github.repository }}/pulls/${PR_NUMBER}/requested_reviewers \
-            -d '{"team_reviewers":["chromebrew/active"]}'
+          echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
+      - name: Trigger Unit Test Workflow & Add Reviewer Team
+        env:
+          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+        run: |
+          echo "Flipping pr ${PR_NUMBER} state."
+          gh pr close ${PR_NUMBER} && gh pr reopen ${PR_NUMBER}
+          gh pr edit ${PR_NUMBER} --add-reviewer chromebrew/active
