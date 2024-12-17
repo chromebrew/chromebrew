@@ -6,17 +6,17 @@ require 'package'
 class Iproute2 < Package
   description 'IP Routing Utilities'
   homepage 'https://git.kernel.org/pub/scm/network/iproute2/iproute2.git'
-  version '6.1.0'
+  version '6.12.0'
   license 'GPL2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.1.0.tar.xz'
+  source_url "https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-#{version}.tar.xz"
   source_sha256 '5ce12a0fec6b212725ef218735941b2dab76244db7e72646a76021b0537b43ab'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5f7277867d9fb2192273a7defb083dbe4dfb2dc7e0afc65049418a8c5c0bebef',
-     armv7l: '5f7277867d9fb2192273a7defb083dbe4dfb2dc7e0afc65049418a8c5c0bebef',
-     x86_64: '72308fddc001ba8a049f347337d5c26c02853695daae8042319381f272c00a3a'
+    aarch64: 'f0bc31ac888585ca1385c9dc80041b6a723eef3e4590d9b5438b78159692d765',
+     armv7l: 'f0bc31ac888585ca1385c9dc80041b6a723eef3e4590d9b5438b78159692d765',
+     x86_64: '19339518de24d9a5b90159b5579a1c8a133756bba7c1d2a02741b77b68e48769'
   })
 
   depends_on 'elfutils' # R
