@@ -375,6 +375,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/attachments/groups/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/attachments/groups/client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/cross_site_networks/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/cross_site_networks/client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/groups/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/groups/client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/locations/__init__.py
@@ -484,6 +486,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/packages/releases.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/packages/resource_bundles.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/packages/rollouts.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/packages/variants.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/policycontroller/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/policycontroller/protos.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/policycontroller/status_api_utils.py
@@ -1759,6 +1762,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/attachments/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/attachments/groups/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/attachments/groups/flags.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/cross_site_networks/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/cross_site_networks/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/groups/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/interconnects/groups/flags.py
@@ -2719,6 +2724,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_actions/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_connectivity/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_connectivity/compute_resources.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_connectivity/filter_rewrite.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_connectivity/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_connectivity/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_connectivity/util.py
@@ -2784,6 +2790,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/pam/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/pam/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/pam/util.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/parallelstore/custom_resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/parallelstore/default_resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/parallelstore/v1_resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/parallelstore/v1alpha_resources.yaml
@@ -6208,6 +6215,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/UrlList.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/ValidationCA.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1alpha1/AuthorizationPolicy.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1alpha1/BackendAuthenticationConfig.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1alpha1/CertificateProvider.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1alpha1/CertificateProviderInstance.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1alpha1/ClientTlsPolicy.yaml
@@ -8206,6 +8214,8 @@
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/provider/create.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/provider/update.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/create.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/cross_site_networks/__init__.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/cross_site_networks/create.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/delete.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/describe.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/get_diagnostics.py
@@ -12045,6 +12055,13 @@
 /usr/local/share/gcloud/lib/surface/network_security/authz_policies/describe.yaml
 /usr/local/share/gcloud/lib/surface/network_security/authz_policies/import.yaml
 /usr/local/share/gcloud/lib/surface/network_security/authz_policies/list.yaml
+/usr/local/share/gcloud/lib/surface/network_security/backend_authentication_configs/__init__.py
+/usr/local/share/gcloud/lib/surface/network_security/backend_authentication_configs/create.yaml
+/usr/local/share/gcloud/lib/surface/network_security/backend_authentication_configs/delete.yaml
+/usr/local/share/gcloud/lib/surface/network_security/backend_authentication_configs/describe.yaml
+/usr/local/share/gcloud/lib/surface/network_security/backend_authentication_configs/export.yaml
+/usr/local/share/gcloud/lib/surface/network_security/backend_authentication_configs/import.yaml
+/usr/local/share/gcloud/lib/surface/network_security/backend_authentication_configs/list.yaml
 /usr/local/share/gcloud/lib/surface/network_security/client_tls_policies/__init__.py
 /usr/local/share/gcloud/lib/surface/network_security/client_tls_policies/delete.yaml
 /usr/local/share/gcloud/lib/surface/network_security/client_tls_policies/export.yaml
@@ -12260,6 +12277,11 @@
 /usr/local/share/gcloud/lib/surface/network_services/multicast_domain_activations/delete.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_domain_activations/describe.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_domain_activations/list.yaml
+/usr/local/share/gcloud/lib/surface/network_services/multicast_domain_groups/__init__.py
+/usr/local/share/gcloud/lib/surface/network_services/multicast_domain_groups/create.yaml
+/usr/local/share/gcloud/lib/surface/network_services/multicast_domain_groups/delete.yaml
+/usr/local/share/gcloud/lib/surface/network_services/multicast_domain_groups/describe.yaml
+/usr/local/share/gcloud/lib/surface/network_services/multicast_domain_groups/list.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_domains/__init__.py
 /usr/local/share/gcloud/lib/surface/network_services/multicast_domains/create.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_domains/delete.yaml
@@ -12629,6 +12651,9 @@
 /usr/local/share/gcloud/lib/surface/parallelstore/instances/import_data.yaml
 /usr/local/share/gcloud/lib/surface/parallelstore/instances/list.yaml
 /usr/local/share/gcloud/lib/surface/parallelstore/instances/update.yaml
+/usr/local/share/gcloud/lib/surface/parallelstore/locations/__init__.py
+/usr/local/share/gcloud/lib/surface/parallelstore/locations/describe.yaml
+/usr/local/share/gcloud/lib/surface/parallelstore/locations/list.yaml
 /usr/local/share/gcloud/lib/surface/parallelstore/operations/__init__.py
 /usr/local/share/gcloud/lib/surface/parallelstore/operations/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/parallelstore/operations/_partials/_cancel_alpha.yaml
