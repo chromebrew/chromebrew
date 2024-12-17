@@ -15,7 +15,7 @@ class Llvm19_build < Package
   binary_sha256({
     aarch64: 'c5994f189965c881c91f94f0f4b541169de155bfcc1876069e68dd60124c2d69',
      armv7l: 'c5994f189965c881c91f94f0f4b541169de155bfcc1876069e68dd60124c2d69',
-       i686: '1b0dfd67f1cde6e5d4e20d64056913762cdea436be79c48ad12aa98dd2f9aaa2',
+       i686: '806357b43ca03f02e95b9a3495e59b3d091c813501103ee40a2aca04ab1c8dd7',
      x86_64: '8b618358f195d255a3339fc5861febab65ad51823baa7f9718a1110af16a0a32'
   })
 
@@ -32,6 +32,8 @@ class Llvm19_build < Package
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
+  depends_on 'llvm19_dev' # R
+  depends_on 'llvm19_lib' # R
 
   no_env_options
   conflicts_ok
