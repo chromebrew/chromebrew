@@ -287,11 +287,14 @@ jobs:
       - name: Create Pull Request
         env:
           TIMESTAMP: ${{ needs.update-check.outputs.output1 }}
-          CHANGED_MANIFEST_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
+          CHANGED_MANIFEST_FILES: ${{ steps.changed-manifest-files.outputs.all_changed_files }}
+          x86_64_PACKAGES: ${{ env.x86_64_PACKAGES }}
+          i686_PACKAGES: ${{ env.i686_PACKAGES }}
+          armv7l_PACKAGES: ${{ env.armv7l_PACKAGES }}
         run: |
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
-          echo -e "- This PR has built package updates using the Build.yml workflow, whichwas pointed to the ${{ github.ref_name }} branch.\n" >> /tmp/pr.txt
+          echo -e "- This PR has built package updates using the Build.yml workflow, which was pointed to the ${{ github.ref_name }} branch.\n" >> /tmp/pr.txt
           echo -e "Updated packages:" >> /tmp/pr.txt
           for file in ${CHANGED_PACKAGES}
             do
@@ -299,26 +302,26 @@ jobs:
           done
           echo -e "##\nBuilds attempted for:" >> /tmp/pr.txt
           if [[ "${x86_64_PACKAGES}" == "" ]]; then
-            echo -e "- [ ] `x86_64`" >> /tmp/pr.txt
+            echo -e "- [ ] \`x86_64\`" >> /tmp/pr.txt
           else
-            echo -e "- [x] `x86_64`" >> /tmp/pr.txt
+            echo -e "- [x] \`x86_64\`" >> /tmp/pr.txt
           fi
           if [[ "${i686_PACKAGES}" == "" ]]; then
-            echo -e "- [ ] `i686`" >> /tmp/pr.txt
+            echo -e "- [ ] \`i686\`" >> /tmp/pr.txt
           else
-            echo -e "- [x] `i686`" >> /tmp/pr.txt
+            echo -e "- [x] \`i686\`" >> /tmp/pr.txt
           fi
           if [[ "${armv7l_PACKAGES}" == "" ]]; then
-            echo -e "- [ ] `armv7l`" >> /tmp/pr.txt
+            echo -e "- [ ] \`armv7l\`" >> /tmp/pr.txt
           else
-            echo -e "- [x] `armv7l`" >> /tmp/pr.txt
+            echo -e "- [x] \`armv7l\`" >> /tmp/pr.txt
           fi
           if [[ "${CHANGED_MANIFEST_FILES}" == "" ]]; then
             echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
           fi
-          echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n```bash" >> /tmp/pr.txt
+          echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/pr.txt
           echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ github.ref_name }} crew update \\" >> /tmp/pr.txt
-          echo -e "&& yes | crew upgrade\n```" >> /tmp/pr.txt
+          echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           cat /tmp/pr.txt
           export PR_NUMBER=$(gh pr create --title "AutoBuild: ${{ github.ref_name }} started at ${TIMESTAMP}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
