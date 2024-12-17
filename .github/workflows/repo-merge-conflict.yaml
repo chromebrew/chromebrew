@@ -1,0 +1,19 @@
+---
+name: Repo / Label merge conflict
+
+on:
+  push:
+  pull_request_target:
+    types:
+      - synchronize
+
+jobs:
+  triage:
+    name: Triage
+    runs-on: ubuntu-24.04
+    if: ${{ contains(github.repository_owner, 'chromebrew') }}
+    steps:
+      - uses: eps1lon/actions-label-merge-conflict@1b1b1fcde06a9b3d089f3464c96417961dde1168  # v3.0.2
+        with:
+          dirtyLabel: merge conflict
+          repoToken: ${{ secrets.CREW_PR_TOKEN }}
