@@ -28,7 +28,6 @@ class Llvm19_dev < Package
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'llvm19_build' # R
 
   conflicts_ok
   no_shrink
