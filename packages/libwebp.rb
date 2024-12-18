@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libwebp < Package
+class Libwebp < CMake
   description 'WebP is a modern image format that provides superior lossless and lossy compression for images on the web.'
   homepage 'https://developers.google.com/speed/webp/'
-  version '1.3.2'
+  version '1.4.0'
   license 'BSD'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/webmproject/libwebp.git'
@@ -40,16 +40,5 @@ class Libwebp < Package
 
   gnome
 
-  def self.build
-    system "cmake \
-      -B builddir -G Ninja \
-      #{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
-      -DBUILD_SHARED_LIBS=ON \
-      -Wno-dev"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  cmake_options '-DBUILD_SHARED_LIBS=ON'
 end
