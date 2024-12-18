@@ -4,7 +4,7 @@ on:
   check_run:
     types:
       - created
-  # merge_group:
+  merge_group:
   pull_request:
   #  push:
   workflow_dispatch:
