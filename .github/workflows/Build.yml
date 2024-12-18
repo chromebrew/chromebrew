@@ -15,7 +15,13 @@ jobs:
     if: ${{ ( github.repository_owner == 'chromebrew' ) && ( github.ref_name != 'master' ) }}
     runs-on: ubuntu-24.04
     outputs:
-      output1: ${{ steps.set-variables.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
+      timestamp: ${{ steps.set-timestamp.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
+      changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
+      glibc_232_compat: ${{ steps.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
+      glibc_237_compat: ${{ steps.get-compatibility.outputs.GLIBC_237_COMPATIBLE_PACKAGES }}
+      i686_packages: ${{ steps.get-compatibility.outputs.i686_PACKAGES }}
+      x86_64_packages: ${{ steps.get-compatibility.outputs.x86_64_PACKAGES }}
+      armv7l_packages: ${{ steps.get-compatibility.outputs.ARMV7L_PACKAGES }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,11 +38,66 @@ jobs:
         with:
           branch: ${{ github.ref_name }}
           force: true
-      - name: Set workflow & branch variables
-        id: set-variables
+      - name: Set Timestamp
+        id: set-timestamp
         run: |
           export TIMESTAMP="$(date -u +%F-%H%Z)"
           echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_OUTPUT
+      - name: Get all changed package files
+        id: changed-ruby-files
+        uses: tj-actions/changed-files@v45
+        with:
+          base_sha: master
+          files: packages/*.rb
+          since_last_remote_commit: true
+      - name: Export variables to github context
+        id: changed-packages
+        run: |
+            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> $GITHUB_ENV
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> $GITHUB_OUTPUT
+      - name: Determine glibc and architecture package compatibility
+        id: get-compatibility
+        run: |
+            # If a package doesnt have a min_glibc value, or if it is below 2.32, add it to GLIBC_232_COMPATIBLE_PACKAGES.
+            export GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo ${i} ; done | xargs)"
+            if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
+              echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
+              echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> $GITHUB_OUTPUT
+              echo "Branch ${{ github.ref_name }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
+            fi
+
+            # If a package doesnt have a min_glibc value, or if it is below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
+            export GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo ${i} ; done | xargs)"
+            if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
+              echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
+              echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> $GITHUB_OUTPUT
+              echo "Branch ${{ github.ref_name }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
+            fi
+
+            # If a package has a compatibility of 'all' or one that includes 'x86_64', add it to x86_64_PACKAGES.
+            export x86_64_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*x86_64" packages/${i}.rb && echo ${i}; done | xargs)"
+            if [[ -n ${x86_64_PACKAGES} ]]; then
+              echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> $GITHUB_ENV
+              echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> $GITHUB_OUTPUT
+              echo "Branch ${{ github.ref_name }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
+            fi
+
+            ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to ARMV7L_PACKAGES.
+            export ARMV7L_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/${i}.rb && echo ${i}; done | xargs)"
+            if [[ -n ${ARMV7L_PACKAGES} ]]; then
+              echo "ARMV7L_PACKAGES=${ARMV7L_PACKAGES}" >> $GITHUB_ENV
+              echo "ARMV7L_PACKAGES=${ARMV7L_PACKAGES}" >> $GITHUB_OUTPUT
+              echo "Branch ${{ github.ref_name }} has these armv7l compatible packages: ${ARMV7L_PACKAGES}"
+            fi
+
+            ## If a package has a compatibility of 'all' or one that includes 'i686', add it to i686_PACKAGES.
+            export i686_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*i686" packages/${i}.rb && echo ${i}; done | xargs)"
+            if [[ -n ${i686_PACKAGES} ]]; then
+              echo "i686_PACKAGES=${i686_PACKAGES}" >> $GITHUB_ENV
+              echo "i686_PACKAGES=${i686_PACKAGES}" >> $GITHUB_OUTPUT
+              echo "Branch ${{ github.ref_name }} has these i686 compatible packages: ${i686_PACKAGES}"
+            fi
   generate:
     strategy:
       max-parallel: 1
@@ -54,6 +115,16 @@ jobs:
             runner: [self-hosted, X64]
     runs-on: ${{ matrix.runner }}
     needs: setup
+    env:
+      CREW_REPO: ${{ github.event.repository.clone_url }}
+      CREW_BRANCH: ${{ github.ref_name }}
+      TARGET_ARCH: ${{ matrix.arch }}
+      TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
+      GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_232_compat }}
+      GLIBC_237_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_237_compat }}
+      i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
+      x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
+      armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
     if: ${{ !cancelled() }}
     concurrency:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}
@@ -90,64 +161,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
-      - name: Rebase to master
-        run: |
-            git fetch origin
-            git checkout ${{ github.ref_name }}
-            git reset --hard origin/${{ github.ref_name }}
-            git config user.name "${{ github.actor }}"
-            git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git pull --rebase origin master && git push -f
-      - name: Get all changed package files
-        id: changed-ruby-files
-        uses: tj-actions/changed-files@v45
-        with:
-          base_sha: master
-          files: packages/*.rb
-          since_last_remote_commit: true
-      - name: Export variables to github context
-        run: |
-            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> $GITHUB_ENV
-      - name: Determine glibc and architecture package compatibility
-        run: |
-            # If a package doesnt have a min_glibc value, or if it is below 2.32, add it to GLIBC_232_COMPATIBLE_PACKAGES.
-            export GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo ${i} ; done | xargs)"
-            if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
-              echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
-              echo "Branch ${{ github.ref_name }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
-            fi
-
-            # If a package doesnt have a min_glibc value, or if it is below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
-            export GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo ${i} ; done | xargs)"
-            if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
-              echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
-              echo "Branch ${{ github.ref_name }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
-            fi
-
-            # If a package has a compatibility of 'all' or one that includes 'x86_64', add it to x86_64_PACKAGES.
-            export x86_64_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*x86_64" packages/${i}.rb && echo ${i}; done | xargs)"
-            if [[ -n ${x86_64_PACKAGES} ]]; then
-              echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> $GITHUB_ENV
-              echo "Branch ${{ github.ref_name }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
-            fi
-
-            ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to ARMV7L_PACKAGES.
-            export ARMV7L_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/${i}.rb && echo ${i}; done | xargs)"
-            if [[ -n ${ARMV7L_PACKAGES} ]]; then
-              echo "ARMV7L_PACKAGES=${ARMV7L_PACKAGES}" >> $GITHUB_ENV
-              echo "Branch ${{ github.ref_name }} has these armv7l compatible packages: ${ARMV7L_PACKAGES}"
-            fi
-
-            ## If a package has a compatibility of 'all' or one that includes 'i686', add it to i686_PACKAGES.
-            export i686_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*i686" packages/${i}.rb && echo ${i}; done | xargs)"
-            if [[ -n ${i686_PACKAGES} ]]; then
-              echo "i686_PACKAGES=${i686_PACKAGES}" >> $GITHUB_ENV
-              echo "Branch ${{ github.ref_name }} has these i686 compatible packages: ${i686_PACKAGES}"
-            fi
       - name: Export target docker container to github context
-        env:
-          TARGET_ARCH: ${{ matrix.arch }}
         run: |
           case $TARGET_ARCH in
               x86_64)
@@ -184,9 +198,6 @@ jobs:
       - name: Run Updater in container
         id: run-updater
         if: ${{ !cancelled() }}
-        env:
-          CREW_REPO: ${{ github.event.repository.clone_url }}
-          CREW_BRANCH: ${{ github.ref_name }}
         run: |
             if ([ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]); then
               # Exit the arm container if there are not armv7l compatible packages.
@@ -213,7 +224,6 @@ jobs:
             # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
             # ghcr.io/felipecrs/dond-shim:latest \
             (cd /tmp ; curl -OLf https://github.com/felipecrs/docker-on-docker-shim/raw/refs/tags/v0.7.1/dond ; chmod +x /tmp/dond )
-            # docker run \
             /tmp/dond run \
               --rm \
               --platform ${PLATFORM} \
@@ -232,8 +242,6 @@ jobs:
               sudo rm -rf release
       - name: Add updated packages to branch.
         id: push-check
-        env:
-          UPDATE_BRANCH_NAME: ${{ github.ref_name }}
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name "${{ github.actor }}"
@@ -258,6 +266,13 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
+      - name: Get all changed manifest files
+        id: changed-manifest-files
+        uses: tj-actions/changed-files@v45
+        with:
+          base_sha: master
+          files: manifest/**
+          since_last_remote_commit: true
       - name: Rebase to master
         run: |
             git config user.name "${{ github.actor }}"
@@ -266,31 +281,14 @@ jobs:
             git reset --hard origin/${{ github.ref_name }}
             git pull --rebase origin master && git push -f
             git log --oneline -10
-      - name: Get all changed package files
-        id: changed-ruby-files
-        uses: tj-actions/changed-files@v45
-        with:
-          base_sha: master
-          files: packages/*.rb
-          since_last_remote_commit: true
-      - name: Export CHANGED_PACKAGES
-        run: |
-            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> $GITHUB_ENV
-      - name: Get all changed manifest files
-        id: changed-manifest-files
-        uses: tj-actions/changed-files@v45
-        with:
-          base_sha: master
-          files: manifest/**
-          since_last_remote_commit: true
       - name: Create Pull Request
         env:
-          TIMESTAMP: ${{ needs.update-check.outputs.output1 }}
           CHANGED_MANIFEST_FILES: ${{ steps.changed-manifest-files.outputs.all_changed_files }}
-          x86_64_PACKAGES: ${{ env.x86_64_PACKAGES }}
-          i686_PACKAGES: ${{ env.i686_PACKAGES }}
-          armv7l_PACKAGES: ${{ env.armv7l_PACKAGES }}
+          CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
+          TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
+          i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
+          x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
+          armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
         run: |
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
