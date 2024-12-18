@@ -11,8 +11,8 @@ class Libssh < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '035d003c9c829f069844cc16d7ec513a91be550d951ec2e079e18d1ebefa5561',
-     armv7l: '035d003c9c829f069844cc16d7ec513a91be550d951ec2e079e18d1ebefa5561',
+    aarch64: '2df6ae74bba1bb47cea2a8b3a3504a940dcc79448f0b63aff0181068c46a33b9',
+     armv7l: '2df6ae74bba1bb47cea2a8b3a3504a940dcc79448f0b63aff0181068c46a33b9',
        i686: '709cac8b5e0a2419926b68614fc82aeae01ea7189f9ffd5619e440fe08b1a0f8',
      x86_64: 'c05854fe1214aa1f962f7080493da80d081e02c54336de81100fd84efdd5216d'
   })
