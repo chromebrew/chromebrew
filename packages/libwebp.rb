@@ -11,8 +11,8 @@ class Libwebp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '90ddd5f4be685858ebf374b8b76d21633de1a6da288018f4201930906967edd2',
-     armv7l: '90ddd5f4be685858ebf374b8b76d21633de1a6da288018f4201930906967edd2',
+    aarch64: '4d1781ce806206a9a8024a8f2da664c2d6b1f147fd79f30b5ad4d687cbb68752',
+     armv7l: '4d1781ce806206a9a8024a8f2da664c2d6b1f147fd79f30b5ad4d687cbb68752',
      x86_64: '6928c7a7de2fa9fc1f937a303c7804db849d496c547c972ffa1ceae757364012'
   })
 
