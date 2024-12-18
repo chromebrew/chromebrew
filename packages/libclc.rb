@@ -19,7 +19,7 @@ class Libclc < Package
   binary_sha256({
     aarch64: '7d11f18f39d9f84cf73a2c06b0c4671dcf6d892273ba89d24aa5cf346a500ab9',
      armv7l: '7d11f18f39d9f84cf73a2c06b0c4671dcf6d892273ba89d24aa5cf346a500ab9',
-     x86_64: '84da692112605519aa692d7f2a7bba5666b204ba33cebe8cf1a8dfcd72e0d3dc'
+     x86_64: '294cd61e798f1de62ae44ef63e6f1366718b224ce0cf28268cae1e890c5265b8'
   })
 
   depends_on 'llvm19_dev' => :build
