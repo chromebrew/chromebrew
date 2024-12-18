@@ -4,14 +4,14 @@ on:
   check_run:
     types:
       - created
-  merge_group:
+  # merge_group:
   pull_request:
   #  push:
   workflow_dispatch:
-  workflow_run:
-    workflows: [Build]
-    types:
-      - completed
+  # workflow_run:
+  #  workflows: [Build]
+  #  types:
+  #    - completed
 jobs:
   container_tests:
     if: ${{ github.repository_owner == 'chromebrew' }}
