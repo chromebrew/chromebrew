@@ -2,8 +2,13 @@
 name: Build
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
+        required: false
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # setting GH_TOKEN for the entire workflow
+  BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
   actions: write
   contents: write
@@ -12,7 +17,7 @@ permissions:
   repository-projects: read
 jobs:
   setup:
-    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( github.ref_name != 'master' ) }}
+    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) && ( github.ref_name != 'master' ) }}
     runs-on: ubuntu-24.04
     outputs:
       timestamp: ${{ steps.set-timestamp.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
@@ -21,7 +26,7 @@ jobs:
       glibc_237_compat: ${{ steps.get-compatibility.outputs.GLIBC_237_COMPATIBLE_PACKAGES }}
       i686_packages: ${{ steps.get-compatibility.outputs.i686_PACKAGES }}
       x86_64_packages: ${{ steps.get-compatibility.outputs.x86_64_PACKAGES }}
-      armv7l_packages: ${{ steps.get-compatibility.outputs.ARMV7L_PACKAGES }}
+      armv7l_packages: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,7 +41,7 @@ jobs:
       - name: Push rebase changes
         uses: ad-m/github-push-action@master
         with:
-          branch: ${{ github.ref_name }}
+          branch: ${{ env.BRANCH }}
           force: true
       - name: Set Timestamp
         id: set-timestamp
@@ -64,7 +69,7 @@ jobs:
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
               echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> $GITHUB_OUTPUT
-              echo "Branch ${{ github.ref_name }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
+              echo "Branch ${{ env.BRANCH }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
             fi
 
             # If a package doesnt have a min_glibc value, or if it is below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
@@ -72,7 +77,7 @@ jobs:
             if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> $GITHUB_OUTPUT
-              echo "Branch ${{ github.ref_name }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
+              echo "Branch ${{ env.BRANCH }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
             fi
 
             # If a package has a compatibility of 'all' or one that includes 'x86_64', add it to x86_64_PACKAGES.
@@ -80,15 +85,15 @@ jobs:
             if [[ -n ${x86_64_PACKAGES} ]]; then
               echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> $GITHUB_ENV
               echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> $GITHUB_OUTPUT
-              echo "Branch ${{ github.ref_name }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
+              echo "Branch ${{ env.BRANCH }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
             fi
 
-            ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to ARMV7L_PACKAGES.
-            export ARMV7L_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/${i}.rb && echo ${i}; done | xargs)"
-            if [[ -n ${ARMV7L_PACKAGES} ]]; then
-              echo "ARMV7L_PACKAGES=${ARMV7L_PACKAGES}" >> $GITHUB_ENV
-              echo "ARMV7L_PACKAGES=${ARMV7L_PACKAGES}" >> $GITHUB_OUTPUT
-              echo "Branch ${{ github.ref_name }} has these armv7l compatible packages: ${ARMV7L_PACKAGES}"
+            ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to armv7l_PACKAGES.
+            export armv7l_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/${i}.rb && echo ${i}; done | xargs)"
+            if [[ -n ${armv7l_PACKAGES} ]]; then
+              echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> $GITHUB_ENV
+              echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> $GITHUB_OUTPUT
+              echo "Branch ${{ env.BRANCH }} has these armv7l compatible packages: ${armv7l_PACKAGES}"
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'i686', add it to i686_PACKAGES.
@@ -96,7 +101,7 @@ jobs:
             if [[ -n ${i686_PACKAGES} ]]; then
               echo "i686_PACKAGES=${i686_PACKAGES}" >> $GITHUB_ENV
               echo "i686_PACKAGES=${i686_PACKAGES}" >> $GITHUB_OUTPUT
-              echo "Branch ${{ github.ref_name }} has these i686 compatible packages: ${i686_PACKAGES}"
+              echo "Branch ${{ env.BRANCH }} has these i686 compatible packages: ${i686_PACKAGES}"
             fi
   generate:
     strategy:
@@ -117,7 +122,7 @@ jobs:
     needs: setup
     env:
       CREW_REPO: ${{ github.event.repository.clone_url }}
-      CREW_BRANCH: ${{ github.ref_name }}
+      CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
       TARGET_ARCH: ${{ matrix.arch }}
       TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
       GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_232_compat }}
@@ -199,7 +204,7 @@ jobs:
         id: run-updater
         if: ${{ !cancelled() }}
         run: |
-            if ([ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]); then
+            if ([ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]); then
               # Exit the arm container if there are not armv7l compatible packages.
               echo "Skipping armv7l container builds."
               exit 0
@@ -214,8 +219,9 @@ jobs:
             fi
 
             git fetch origin
-            git checkout ${{ github.ref_name }}
-            git reset --hard origin/${{ github.ref_name }}
+            git checkout ${{ env.BRANCH }}
+            git reset --hard origin/${{ env.BRANCH }}
+            git log --oneline -10
             docker pull --platform ${PLATFORM} satmandu/crewbuild:${CONTAINER}
             sudo apt install -y acl
             sudo setfacl -R -m u:1000:rwx .
@@ -247,7 +253,7 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add -A
-            git commit -m "Add built packages for ${PLATFORM} to ${{ github.ref_name }}" && git push -f
+            git commit -m "Add built packages for ${PLATFORM} to ${{ env.BRANCH }}" && git push -f
             git log --oneline -10
           fi
   build-check:
@@ -278,7 +284,7 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git fetch origin
-            git reset --hard origin/${{ github.ref_name }}
+            git reset --hard origin/${{ env.BRANCH }}
             git pull --rebase origin master && git push -f
             git log --oneline -10
       - name: Create Pull Request
@@ -292,7 +298,7 @@ jobs:
         run: |
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
-          echo -e "- This PR has built package updates using the Build.yml workflow, which was pointed to the ${{ github.ref_name }} branch.\n" >> /tmp/pr.txt
+          echo -e "- This PR has built package updates using the Build.yml workflow, which was pointed to the ${{ env.BRANCH }} branch.\n" >> /tmp/pr.txt
           echo -e "Updated packages:" >> /tmp/pr.txt
           for file in ${CHANGED_PACKAGES}
             do
@@ -318,10 +324,10 @@ jobs:
             echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
           fi
           echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/pr.txt
-          echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ github.ref_name }} crew update \\" >> /tmp/pr.txt
+          echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ env.BRANCH }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           cat /tmp/pr.txt
-          export PR_NUMBER=$(gh pr create --title "AutoBuild: ${{ github.ref_name }} started at ${TIMESTAMP}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          export PR_NUMBER=$(gh pr create --title "AutoBuild: ${{ env.BRANCH }} started at ${TIMESTAMP}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
       - name: Trigger Unit Test Workflow & Add Reviewer Team
