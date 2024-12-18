@@ -32,8 +32,6 @@ class Llvm19_build < Package
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'llvm19_dev' # R
-  depends_on 'llvm19_lib' # R
 
   no_env_options
   conflicts_ok
