@@ -13,7 +13,7 @@ class Libwebp < CMake
   binary_sha256({
     aarch64: '90ddd5f4be685858ebf374b8b76d21633de1a6da288018f4201930906967edd2',
      armv7l: '90ddd5f4be685858ebf374b8b76d21633de1a6da288018f4201930906967edd2',
-     x86_64: '6c5b89e7c1e1098cbfc0f8aa24e44bec396728691f82805abdea95c2d1a4027c'
+     x86_64: '6928c7a7de2fa9fc1f937a303c7804db849d496c547c972ffa1ceae757364012'
   })
 
   depends_on 'freeglut' # R
