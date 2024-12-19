@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libwebp < Package
+class Libwebp < CMake
   description 'WebP is a modern image format that provides superior lossless and lossy compression for images on the web.'
   homepage 'https://developers.google.com/speed/webp/'
-  version '1.3.2'
+  version '1.4.0'
   license 'BSD'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/webmproject/libwebp.git'
@@ -11,9 +11,9 @@ class Libwebp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '90ddd5f4be685858ebf374b8b76d21633de1a6da288018f4201930906967edd2',
-     armv7l: '90ddd5f4be685858ebf374b8b76d21633de1a6da288018f4201930906967edd2',
-     x86_64: '6c5b89e7c1e1098cbfc0f8aa24e44bec396728691f82805abdea95c2d1a4027c'
+    aarch64: '64e92520924b6f294bf617fb53f1731869c408f4fd4b32849dc6b7c4e47cbc8e',
+     armv7l: '64e92520924b6f294bf617fb53f1731869c408f4fd4b32849dc6b7c4e47cbc8e',
+     x86_64: '6928c7a7de2fa9fc1f937a303c7804db849d496c547c972ffa1ceae757364012'
   })
 
   depends_on 'freeglut' # R
@@ -40,16 +40,5 @@ class Libwebp < Package
 
   gnome
 
-  def self.build
-    system "cmake \
-      -B builddir -G Ninja \
-      #{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
-      -DBUILD_SHARED_LIBS=ON \
-      -Wno-dev"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  cmake_options '-DBUILD_SHARED_LIBS=ON'
 end

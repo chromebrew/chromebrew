@@ -1,4 +1,6 @@
 /usr/local/bin/scite
+/usr/local/lib/scite/liblexilla.so
+/usr/local/lib/scite/libscintilla.so
 /usr/local/share/applications/SciTE.desktop
 /usr/local/share/pixmaps/Sci48M.png
 /usr/local/share/scite/CommandValues.html
@@ -15,6 +17,7 @@
 /usr/local/share/scite/SciTEExtras.html
 /usr/local/share/scite/SciTEFAQ.html
 /usr/local/share/scite/SciTEGlobal.properties
+/usr/local/share/scite/SciTEHistory.html
 /usr/local/share/scite/SciTEIco.png
 /usr/local/share/scite/SciTEImage.html
 /usr/local/share/scite/SciTEIndicators.png
@@ -25,6 +28,7 @@
 /usr/local/share/scite/abaqus.properties
 /usr/local/share/scite/abbrev.properties
 /usr/local/share/scite/ada.properties
+/usr/local/share/scite/asciidoc.properties
 /usr/local/share/scite/asl.properties
 /usr/local/share/scite/asm.properties
 /usr/local/share/scite/asn1.properties
@@ -53,9 +57,11 @@
 /usr/local/share/scite/forth.properties
 /usr/local/share/scite/fortran.properties
 /usr/local/share/scite/freebasic.properties
+/usr/local/share/scite/fsharp.properties
 /usr/local/share/scite/gap.properties
 /usr/local/share/scite/haskell.properties
 /usr/local/share/scite/hex.properties
+/usr/local/share/scite/hollywood.properties
 /usr/local/share/scite/html.properties
 /usr/local/share/scite/inno.properties
 /usr/local/share/scite/json.properties
@@ -72,7 +78,6 @@
 /usr/local/share/scite/mmixal.properties
 /usr/local/share/scite/modula3.properties
 /usr/local/share/scite/nim.properties
-/usr/local/share/scite/nimrod.properties
 /usr/local/share/scite/nncrontab.properties
 /usr/local/share/scite/nsis.properties
 /usr/local/share/scite/opal.properties
@@ -87,10 +92,12 @@
 /usr/local/share/scite/purebasic.properties
 /usr/local/share/scite/python.properties
 /usr/local/share/scite/r.properties
+/usr/local/share/scite/raku.properties
 /usr/local/share/scite/rebol.properties
 /usr/local/share/scite/registry.properties
 /usr/local/share/scite/ruby.properties
 /usr/local/share/scite/rust.properties
+/usr/local/share/scite/sas.properties
 /usr/local/share/scite/scriptol.properties
 /usr/local/share/scite/smalltalk.properties
 /usr/local/share/scite/sorcins.properties
@@ -101,6 +108,7 @@
 /usr/local/share/scite/tal.properties
 /usr/local/share/scite/tcl.properties
 /usr/local/share/scite/tex.properties
+/usr/local/share/scite/troff.properties
 /usr/local/share/scite/txt2tags.properties
 /usr/local/share/scite/vb.properties
 /usr/local/share/scite/verilog.properties

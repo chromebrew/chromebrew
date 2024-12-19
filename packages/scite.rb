@@ -3,17 +3,17 @@ require 'package'
 class Scite < Package
   description 'A free source code editing component for Win32, GTK+, and OS X'
   homepage 'https://www.scintilla.org/'
-  version '4.2.0'
+  version '5.5.4'
   license 'HPND and MIT'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://www.scintilla.org/scite420.tgz'
-  source_sha256 '2e0b95842bbc875a9224416fad3a9179ec329b3af2ca1abdd8e64c008068bb99'
-  binary_compression 'tar.xz'
+  source_url "https://www.scintilla.org/scite#{version.gsub('.', '')}.tgz"
+  source_sha256 '439d033c452bb30bf7952e30390991a6abd022a031e8e74b25717f9e46ae90a8'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '44c3738e5f6d241e74a0b2dc30080f73643cf170fcf93b8167a42f85943e4554',
-     armv7l: '44c3738e5f6d241e74a0b2dc30080f73643cf170fcf93b8167a42f85943e4554',
-     x86_64: '1fcbc9d13a7c7bc5b7473631281fdea5302c8e55b88bdb8d25159b70890dfcec'
+    aarch64: 'c22e93f663185ecc128b1f6adaf5402306e87f5f37d898ec35f349b7d3bf9d78',
+     armv7l: 'c22e93f663185ecc128b1f6adaf5402306e87f5f37d898ec35f349b7d3bf9d78',
+     x86_64: 'b684675d163cc75cc3f631f201e1bbe95dfbb8eea58f97d1c4bdc8b981c1fc6d'
   })
 
   depends_on 'gtk3'
@@ -23,6 +23,9 @@ class Scite < Package
   depends_on 'sommelier'
 
   def self.build
+    Dir.chdir 'lexilla/src' do
+      system 'make', "prefix=#{CREW_PREFIX}"
+    end
     Dir.chdir 'scintilla/gtk' do
       system 'make', 'GTK3=1', "prefix=#{CREW_PREFIX}"
     end
