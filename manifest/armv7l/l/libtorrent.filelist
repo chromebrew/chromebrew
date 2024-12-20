@@ -278,6 +278,6 @@
 /usr/local/lib/cmake/LibtorrentRasterbar/LibtorrentRasterbarTargets.cmake
 /usr/local/lib/libtorrent-rasterbar.so
 /usr/local/lib/libtorrent-rasterbar.so.2.0
-/usr/local/lib/libtorrent-rasterbar.so.2.0.9
+/usr/local/lib/libtorrent-rasterbar.so.2.0.10
 /usr/local/lib/pkgconfig/libtorrent-rasterbar.pc
 /usr/local/share/cmake/Modules/FindLibtorrentRasterbar.cmake
