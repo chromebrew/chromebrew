@@ -1,6 +1,9 @@
 ---
 name: Rubocop
 on: workflow_call
+env:
+   REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
 jobs:
   rubocop:
     runs-on: ubuntu-24.04
@@ -18,4 +21,4 @@ jobs:
           fail_level: any
           filter_mode: nofilter
           only_changed: true
-          reporter: github-pr-check
+          reporter: github-pr-review

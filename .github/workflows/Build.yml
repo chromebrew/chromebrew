@@ -16,8 +16,24 @@ permissions:
   pull-requests: write
   repository-projects: read
 jobs:
+  debug:
+    if: ${{ ( github.repository_owner == 'chromebrew' ) }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
   setup:
-    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) && ( github.ref_name != 'master' ) }}
+    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) }}
     runs-on: ubuntu-24.04
     outputs:
       timestamp: ${{ steps.set-timestamp.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
@@ -32,6 +48,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
+          ref: ${{ inputs.branch || github.ref_name }}
       - name: Rebase to master
         run: |
             git config user.name "${{ github.actor }}"
@@ -272,6 +289,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
+          ref: ${{ inputs.branch || github.ref_name }}
       - name: Get all changed manifest files
         id: changed-manifest-files
         uses: tj-actions/changed-files@v45
@@ -284,6 +302,7 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git fetch origin
+            git checkout ${{ env.BRANCH }}
             git reset --hard origin/${{ env.BRANCH }}
             git pull --rebase origin master && git push -f
             git log --oneline -10
