@@ -48,6 +48,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
+          ref: ${{ inputs.branch || github.ref_name }}
       - name: Rebase to master
         run: |
             git config user.name "${{ github.actor }}"
@@ -288,6 +289,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
+          ref: ${{ inputs.branch || github.ref_name }}
       - name: Get all changed manifest files
         id: changed-manifest-files
         uses: tj-actions/changed-files@v45
@@ -300,6 +302,7 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git fetch origin
+            git checkout ${{ env.BRANCH }}
             git reset --hard origin/${{ env.BRANCH }}
             git pull --rebase origin master && git push -f
             git log --oneline -10
