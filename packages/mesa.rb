@@ -11,8 +11,8 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd090a7176037a45a73a7b1bdd729898975e51b257adac6de4d4499d398814bc6',
-     armv7l: 'd090a7176037a45a73a7b1bdd729898975e51b257adac6de4d4499d398814bc6',
+    aarch64: '3b29e37bf027257b2dcb6dd88916c90e708688f38cd679f944da4ecd976c06b1',
+     armv7l: '3b29e37bf027257b2dcb6dd88916c90e708688f38cd679f944da4ecd976c06b1',
      x86_64: 'ba5b5de95fd4001cedb57176f9329937b963a0b7bee26eb5b2913ef1071d13ef'
   })
 
