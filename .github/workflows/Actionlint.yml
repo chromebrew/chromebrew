@@ -1,0 +1,21 @@
+---
+name: ActionLint
+on: workflow_call
+env:
+  REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+  GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+  REVIEWDOG_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+jobs:
+  yamllint:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: YAMLLint
+        uses: reviewdog/action-actionlint@6612efe1589ccf23cb1320d11fced44b86fb5ad7  # Post v1.7.4 commit to support fail_level
+        with:
+          actionlint_flags: "-shellcheck ''"
+          fail_level: none
+          reporter: github-pr-review

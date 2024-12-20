@@ -55,6 +55,10 @@ jobs:
     needs: handoff
     if: contains(needs.handoff.outputs.category, 'YAML')
     uses: ./.github/workflows/YAMLlint.yml
+  action-yaml:
+    needs: handoff
+    if: contains(needs.handoff.outputs.category, 'YAML')
+    uses: ./.github/workflows/Actionlint.yml
   linter-tests:
     runs-on: ubuntu-24.04
     needs:
@@ -63,6 +67,7 @@ jobs:
       - ruby
       - bash
       - yaml
+      - action-yaml
     if: ${{ !cancelled() }}
     steps:
       - name: fail if linter jobs failed
