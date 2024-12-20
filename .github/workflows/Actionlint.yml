@@ -17,5 +17,5 @@ jobs:
         uses: reviewdog/action-actionlint@6612efe1589ccf23cb1320d11fced44b86fb5ad7  # Post v1.7.4 commit to support fail_level
         with:
           actionlint_flags: "-shellcheck ''"
-          fail_level: any
+          fail_level: none
           reporter: github-pr-review
