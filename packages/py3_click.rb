@@ -12,7 +12,7 @@ class Py3_click < Pip
   binary_sha256({
     aarch64: '176c87e87bdc23afb4ea063ad7e86a6f2ba16c84f817549245767f5db018d0db',
      armv7l: '176c87e87bdc23afb4ea063ad7e86a6f2ba16c84f817549245767f5db018d0db',
-       i686: 'a33d65fded6dfe46afcab8c7c1deff47c7bdf63cfc4f53a32f2676aebc63fba0',
+       i686: '006e9b6ba77331b2aefe16b0f5d35403e43b12031af5e322ece255c8928dd864',
      x86_64: '3402b43f2bf1b0febb3a711a5e8058fe0e31c92338df71af2e8a0629fe9cf0a2'
   })
 
