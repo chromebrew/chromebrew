@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.3.6' # Do not use @_ver here, it will break the installer.
+  version '3.4.0' # Do not use @_ver here, it will break the installer.
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
@@ -31,11 +31,6 @@ class Ruby < Package
   conflicts_ok # Needed for successful build.
 
   # at run-time, system's gmp, openssl, and zlib can be used
-
-  def self.prebuild
-    # See https://github.com/chromebrew/chromebrew/issues/10724#issuecomment-2466486461
-    abort 'Please build with CREW_KERNEL_VERSION=3.10'.orange if %w[armv7l aarch64].include?(ARCH) && Gem::Version.new(CREW_KERNEL_VERSION) > Gem::Version.new('3.10')
-  end
 
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
