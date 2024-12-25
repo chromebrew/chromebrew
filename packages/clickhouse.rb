@@ -3,11 +3,11 @@ require 'package'
 class Clickhouse < Package
   description 'Real-time analytics DBMS'
   homepage 'https://clickhouse.com/'
-  version '24.10.2.80'
+  version '24.12.1.1614'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url "https://github.com/ClickHouse/ClickHouse/releases/download/v#{version}-stable/clickhouse-common-static-#{version}-amd64.tgz"
-  source_sha256 '96424f17df845c89218e6e333b433a43e5d7525f5fcba7f70dc5f6e55a1ad15f'
+  source_sha256 '965e17b6c0c2b151e413cf36b1c8b011a82f41e1b6c355fe4ba92826a68eda4c'
 
   no_compile_needed
   no_shrink
