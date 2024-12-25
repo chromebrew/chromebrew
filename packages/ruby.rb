@@ -14,7 +14,7 @@ class Ruby < Package
     aarch64: 'b9513fdcba659ef938a74ab3b0a7615bba7600cb70f75e839ea311cb6a77dc47',
      armv7l: 'b9513fdcba659ef938a74ab3b0a7615bba7600cb70f75e839ea311cb6a77dc47',
        i686: '588475572a33ca1f8fcd06f79981f47b371cb54ed38a875c3234f76c7733e99b',
-     x86_64: 'ed10371a0e72451fe98dcb37fa51760c34928e9cf8e677e0e5e62e94e09cbf9e'
+     x86_64: 'edac6c2ce58aa8225391764b0c8fe8793d21e0ba37df045140ac94f878fad1b6'
   })
 
   depends_on 'ca_certificates' # L
