@@ -15,7 +15,7 @@ class Binutils < Package
   binary_sha256({
     aarch64: '2054d452f15cb8b018453e863f04421ee5cec46da7af695ab279f0060ebbc00d',
      armv7l: '2054d452f15cb8b018453e863f04421ee5cec46da7af695ab279f0060ebbc00d',
-       i686: '62db3f76719701daf87f4e299bfc033b8adeb39dea00a991b59a25a7b48a52e0',
+       i686: '383dde3bfe1eade13cf44a766007f0de88dda09bae9d216dcd5817be710f5d13',
      x86_64: 'd457df70b8784a7e8ffcb641f377731d87846b8d269c4d5c8c94a1b2bf2ef361'
   })
 
