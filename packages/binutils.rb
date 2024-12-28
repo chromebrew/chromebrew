@@ -5,7 +5,7 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  version "2.43.1-#{CREW_GCC_VER}"
+  version "2.43.1-1-#{CREW_GCC_VER}"
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/binutils/binutils-#{version.split('-').first}.tar.bz2"
