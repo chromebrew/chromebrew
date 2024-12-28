@@ -11,8 +11,8 @@ class Gegl < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f3e7f6d7bf087ae590937aa885ce6b9d6fe19e32fdffd25375b5f5a98facdec4',
-     armv7l: 'f3e7f6d7bf087ae590937aa885ce6b9d6fe19e32fdffd25375b5f5a98facdec4',
+    aarch64: 'fa0d3a8e0c6b229dc866f029c44c0865df03d992f54e29276a99d73cb5512405',
+     armv7l: 'fa0d3a8e0c6b229dc866f029c44c0865df03d992f54e29276a99d73cb5512405',
      x86_64: '354e826616305bf3c9e50dc78d0368e9099bc93be1aec5cd92b85229da4bb536'
   })
 
