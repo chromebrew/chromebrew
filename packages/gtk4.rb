@@ -13,7 +13,7 @@ class Gtk4 < Meson
   binary_sha256({
     aarch64: '9d69995b733949806f9770614aa09bc3ee6ad261e2cd3af96ae80f7a6230190c',
      armv7l: '9d69995b733949806f9770614aa09bc3ee6ad261e2cd3af96ae80f7a6230190c',
-     x86_64: '39fceeda2e71617029d5ffe355c8ba20146b947d7f91845887023e4dbc11ff03'
+     x86_64: 'aa432fc6384b5743a94673537d533c11b74174a900b756ef2938e3a922347730'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
