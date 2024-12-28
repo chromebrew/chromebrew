@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gimp < Meson
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
-  version '3.0.0-RC1'
+  version '3.0.0-RC2'
   license 'GPL-3 and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gimp.git'
@@ -11,9 +11,9 @@ class Gimp < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '376506a87cd90e550e323694541b060c1e11b2a9361c7f7aa82939ff6e81d105',
-     armv7l: '376506a87cd90e550e323694541b060c1e11b2a9361c7f7aa82939ff6e81d105',
-     x86_64: 'e5e545e96ca5e52155f1a4d4def9a8989d775dd949d42f1a94c14e01e5ffd1c3'
+    aarch64: '05f778dee546468b51ba819f2151320f43ac7bae96c53d64ed5365681f6b4fa7',
+     armv7l: '05f778dee546468b51ba819f2151320f43ac7bae96c53d64ed5365681f6b4fa7',
+     x86_64: '305290e55fe984eaa36ebfc0c02114903482c89634c426e466f70e444072ea2a'
   })
 
   depends_on 'aalib' # R
