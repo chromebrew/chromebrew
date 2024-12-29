@@ -11,8 +11,8 @@ class Doxygen < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '15dedc67203dc4b24273e0efed9296c7cdd63e6a3c65e869047890c9bc24aab3',
-     armv7l: '15dedc67203dc4b24273e0efed9296c7cdd63e6a3c65e869047890c9bc24aab3',
+    aarch64: '532b57c91866ffa061c7b1f4d2086d5283701cf0262f1dc6a1c4842eca71fa46',
+     armv7l: '532b57c91866ffa061c7b1f4d2086d5283701cf0262f1dc6a1c4842eca71fa46',
        i686: '44a7cd6b1f99c8327fce2c05b4eb3c338d855630e1c57aa85350d28a0a5e54a3',
      x86_64: 'af37b6c800d705e67aea6ee5eb1e6eb87df2c908604a29698ac58d1f94191202'
   })
