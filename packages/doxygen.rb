@@ -7,7 +7,7 @@ class Doxygen < CMake
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/doxygen/doxygen.git'
-  git_hashtag 'Release_1_11_0'
+  git_hashtag "Release_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
