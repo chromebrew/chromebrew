@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Gvim < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)'
   homepage 'https://www.vim.org/'
-  version '9.1.0758'
+  version '9.1.0969'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/vim/vim.git'
@@ -11,9 +11,9 @@ class Gvim < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e6ba3259adc6d813b640883a6d73f2b8401489a1d085a0ddb19de4fd62b80074',
-     armv7l: 'e6ba3259adc6d813b640883a6d73f2b8401489a1d085a0ddb19de4fd62b80074',
-     x86_64: '7836d95a5aac39c4ea07982f2811f9d2a08cabcbef5c9606bde6ea3188545c22'
+    aarch64: '4081c295d676d191c32d6fb7bc65d898becfa1346c5827e5966752854fe61d24',
+     armv7l: '4081c295d676d191c32d6fb7bc65d898becfa1346c5827e5966752854fe61d24',
+     x86_64: '81ff3be59f5f414c33211f7f326705f56eb4eb21788fe019ecf8dfbecb86f579'
   })
 
   depends_on 'acl' # R
