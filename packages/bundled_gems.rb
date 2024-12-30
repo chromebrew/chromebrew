@@ -35,7 +35,7 @@ class Bundled_gems < Package
   depends_on 'ruby_rake'
   depends_on 'ruby_rbs'
   depends_on 'ruby_repl_type_completor'
-  depends_on 'ruby_resolv_replace'
+  # depends_on 'ruby_resolv_replace'
   depends_on 'ruby_rexml'
   depends_on 'ruby_rinda'
   depends_on 'ruby_rss'

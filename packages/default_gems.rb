@@ -73,7 +73,7 @@ class Default_gems < Package
   depends_on 'ruby_readline_ext'
   depends_on 'ruby_reline'
   depends_on 'ruby_resolv'
-  depends_on 'ruby_resolv_replace'
+  # depends_on 'ruby_resolv_replace'
   depends_on 'ruby_rexml'
   depends_on 'ruby_rinda'
   depends_on 'ruby_rss'
