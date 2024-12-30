@@ -4,7 +4,7 @@ require 'package'
 class Default_gems < Package
   description 'Ruby Default Gem Packages.'
   homepage 'https://stdgems.org/'
-  version "2024092800-#{CREW_RUBY_VER}"
+  version "2024123018-#{CREW_RUBY_VER}"
   license 'GPL-3+'
   compatibility 'all'
   source_url 'SKIP'
@@ -78,6 +78,7 @@ class Default_gems < Package
   depends_on 'ruby_rinda'
   depends_on 'ruby_rss'
   depends_on 'ruby_ruby2_keywords'
+  depends_on 'ruby_rubygems'
   depends_on 'ruby_scanf'
   depends_on 'ruby_sdbm'
   depends_on 'ruby_securerandom'

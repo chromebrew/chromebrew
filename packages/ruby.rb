@@ -67,7 +67,8 @@ class Ruby < Package
     puts 'Updating ruby gems. This may take a while...'
     silent = @opt_verbose ? '' : '--silent'
     # install for Ruby 3.4
-    system 'gem install resolv-replace highline ptools'
+    system 'gem uninstall resolv-replace', exception: false
+    system 'gem install highline ptools'
     system "gem update #{silent} -N --system", exception: false
   end
 end
