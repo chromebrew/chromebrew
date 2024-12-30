@@ -1428,7 +1428,12 @@ def archive_package(crew_archive_dest)
   if @pkg.superclass.to_s == 'RUBY'
     gem_file = "#{@pkg.gem_name}-#{@pkg.gem_version}-#{GEM_ARCH}.gem"
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.gem"
-    FileUtils.mv File.join(CREW_DEST_DIR, gem_file), File.join(crew_archive_dest, pkg_name)
+    begin
+      FileUtils.mv File.join(CREW_DEST_DIR, gem_file), File.join(crew_archive_dest, pkg_name)
+    rescue Errno::EXDEV
+      # handle Invalid cross-device link error in containers.
+      FileUtils.cp File.join(CREW_DEST_DIR, gem_file), File.join(crew_archive_dest, pkg_name)
+    end
   # Only use zstd if it is available.
   elsif @pkg.no_zstd? || !File.which('zstd')
     puts 'Using xz to compress package. This may take some time.'.lightblue
