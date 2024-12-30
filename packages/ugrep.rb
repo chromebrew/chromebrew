@@ -23,4 +23,8 @@ class Ugrep < Autotools
   depends_on 'zstd'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+
+  def self.patch
+    system 'autoreconf -f'
+  end
 end
