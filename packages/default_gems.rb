@@ -78,7 +78,7 @@ class Default_gems < Package
   depends_on 'ruby_rinda'
   depends_on 'ruby_rss'
   depends_on 'ruby_ruby2_keywords'
-  depends_on 'ruby_rubygems'
+  depends_on 'ruby_rubygems_update'
   depends_on 'ruby_scanf'
   depends_on 'ruby_sdbm'
   depends_on 'ruby_securerandom'
