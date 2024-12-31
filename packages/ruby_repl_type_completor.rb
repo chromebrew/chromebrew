@@ -8,7 +8,6 @@ class Ruby_repl_type_completor < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
-
   depends_on 'ruby_prism' # R
   depends_on 'ruby_rbs' # R
 
