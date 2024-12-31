@@ -6300,6 +6300,11 @@ url: https://sourceforge.net/projects/nmon/files/
 activity: none
 ---
 kind: url
+name: nocodb
+url: https://github.com/nocodb/nocodb/releases
+activity: medium
+---
+kind: url
 name: nodebrew
 url: https://github.com/hokaccha/nodebrew/releases
 activity: low
