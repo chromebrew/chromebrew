@@ -136,7 +136,9 @@ updated_packages.each do |pkg|
         abort "#{pkg} build failed!".lightred unless $CHILD_STATUS.success?
         # Reinvoke this script to take just built packages that have been built and
         # installed into account.
-        exec "$0 #{ARGV}"
+        cmdline = "cd #{`pwd`.chomp} && " + $0 + ' ' + ARGV.join(' ')
+        puts "cmdline is #{cmdline}"
+        exec cmdline
       end
       upload_pkg = nil
       builds_needed.each do |build|
