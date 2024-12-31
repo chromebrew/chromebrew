@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_etc < RUBY
   description 'Provides access to information typically stored in unix /etc directory.'
   homepage 'https://github.com/ruby/etc'
-  version "1.4.4-#{CREW_RUBY_VER}"
+  version "1.4.5-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '896c7745514e3b45b4ff9c6a20f0f14197d6ca4efc48fc8ba80bc81bc754f5b6',
-     armv7l: '896c7745514e3b45b4ff9c6a20f0f14197d6ca4efc48fc8ba80bc81bc754f5b6',
-       i686: '32ecbd4e6c5f6096b9116a4937eeef64df17f64abbc4a815eb54dadbc1658a9a',
-     x86_64: '69e46a65066e7e277687a99439c2b5664280b5c56518105757ac9919b2b6d016'
+    aarch64: '024c05673730fc7daf911de1d6e55c6f356f5b117624bbc7c1518e5e94dbb43c',
+     armv7l: '024c05673730fc7daf911de1d6e55c6f356f5b117624bbc7c1518e5e94dbb43c',
+       i686: '4d3ad83bec00f97af032b3fed1bf48f3bd6ba42db564a2fa7bf0f33267c441c5',
+     x86_64: 'd26b0e71c5acff7122cf438fe0031b510c40e834195a4d88cd72817653ed4100'
   })
 
   conflicts_ok

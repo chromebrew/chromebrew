@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_net_imap < RUBY
   description 'Ruby client api for Internet Message Access Protocol'
   homepage 'https://github.com/ruby/net-imap'
-  version "0.5.1-#{CREW_RUBY_VER}"
+  version "0.5.4-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'

@@ -6300,6 +6300,11 @@ url: https://sourceforge.net/projects/nmon/files/
 activity: none
 ---
 kind: url
+name: nocodb
+url: https://github.com/nocodb/nocodb/releases
+activity: medium
+---
+kind: url
 name: nodebrew
 url: https://github.com/hokaccha/nodebrew/releases
 activity: low
@@ -7978,6 +7983,11 @@ kind: url
 name: ruby_pry_byebug
 url: https://github.com/deivid-rodriguez/pry-byebug/releases
 activity: low
+---
+kind: url
+name: ruby_repl_type_completor
+url: https://github.com/ruby/repl_type_completor/tags
+activity: high
 ---
 kind: url
 name: ruby_rubocop

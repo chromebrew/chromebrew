@@ -10,10 +10,10 @@ class Ruby_ruby_libversion < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'b82794a10b04fa6041bdf836a300527704b87db1cbf167a545f38456899e1dcf',
-     armv7l: 'b82794a10b04fa6041bdf836a300527704b87db1cbf167a545f38456899e1dcf',
-       i686: '2b2dadb3a8d2a0289bd40558fd5d3ef8b25e31157eb9a02558369c9e47b1783b',
-     x86_64: 'ab7b4acda26268bca9fd13a88db52113ac7b99a4e906f26f41fda5f72b2beb58'
+    aarch64: 'ec87b38fb09bdff6bf2f5b89c4f4eb275078407234fe7e4bdcad0eef676edab6',
+     armv7l: 'ec87b38fb09bdff6bf2f5b89c4f4eb275078407234fe7e4bdcad0eef676edab6',
+       i686: 'd1ff6e76b3ab134b5a1cc3fc0fdb314930f7aa3b87eb4e0eb1e846d75cd19069',
+     x86_64: '513694e8aaa844a72bcf2c9dcbd75ea3f0b23d743d583c5b2028a6809b811362'
   })
 
   depends_on 'libversion' # R
