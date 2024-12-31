@@ -135,8 +135,8 @@ updated_packages.each do |pkg|
         system({ 'CREW_CACHE_ENABLED' => '1' }, "yes | crew build -f #{pkg}")
         abort "#{pkg} build failed!".lightred unless $CHILD_STATUS.success?
         # Reinvoke this script to take just built packages that have been built and
-        # installed into account.
-        cmdline = "cd #{`pwd`.chomp} && #{$PROGRAM_NAME} #{ARGV.join(' ')}"
+        # installed into account, attempting uploads of just built packages immediately.
+        cmdline = "cd #{`pwd`.chomp} && crew upload #{name} ; #{$PROGRAM_NAME} #{ARGV.join(' ')}"
         puts "cmdline is #{cmdline}"
         exec cmdline
       end

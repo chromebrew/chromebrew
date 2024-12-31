@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# update_ruby_gem_packages version 1.8 (for Chromebrew)
+# update_ruby_gem_packages version 1.9 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo:
 # tools/update_ruby_gem_packages.rb
@@ -48,11 +48,12 @@ numlength = total_files_to_check.to_s.length
 relevant_gem_packages.each_with_index do |package, index|
   pool.post do
     untested_package_name = package.gsub(%r{^packages/ruby_}, '').gsub(/.rb$/, '')
-    gem_test = gems.grep(/#{"^#{untested_package_name}\\s.*$"}/).first.blank? ? gems.grep(/#{"^#{untested_package_name.gsub('_', '-')}\\s.*$"}/).first : gems.grep(/#{"^#{untested_package_name}\\s.*$"}/).first
+    gem_test = gems.grep(/#{"^#{untested_package_name}\\s.*$"}/).last.blank? ? gems.grep(/#{"^#{untested_package_name.gsub('_', '-')}\\s.*$"}/).last : gems.grep(/#{"^#{untested_package_name}\\s.*$"}/).last
     gem_test_name = gem_test.split.first
     puts "#{untested_package_name} versions for #{gem_test_name} are #{gem_test.split[1].split(',')}" if CREW_VERBOSE
     gem_test_versions = gem_test.split[1].split(',')
     gem_test_versions.delete_if { |i| i.include?('beta') }
+    gem_test_versions.delete_if { |i| i.include?('dev') }
     gem_test_versions.delete_if { |i| i.include?('java') }
     gem_test_versions.delete_if { |i| i.include?('pre') }
     gem_test_versions.delete_if { |i| i.include?('rc') }

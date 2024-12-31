@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_json < RUBY
   description 'This is a JSON implementation as a Ruby extension in C.'
   homepage 'https://flori.github.io/json'
-  version "2.8.2-#{CREW_RUBY_VER}"
+  version "2.9.1-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'f51468aaea4dc1471c397d7b05e62422610895defb5f8805515d76c46b7cfa29',
-     armv7l: 'f51468aaea4dc1471c397d7b05e62422610895defb5f8805515d76c46b7cfa29',
-       i686: 'e232a0d7c4142535c9e36c09fdf6985f8b673f3fab874c7a751d31c519b117be',
-     x86_64: 'c90e36d7800d7c9216f9d60d788a798e42f4fb9eaf4dc2e40c696054d0635b35'
+    aarch64: 'a4c3d6ad62657a4edc82911981dd617b8f270e76b160f59d6f590aee86b26d5c',
+     armv7l: 'a4c3d6ad62657a4edc82911981dd617b8f270e76b160f59d6f590aee86b26d5c',
+       i686: '77891fdaaf2316852adeaa293e5a072eecd5eaa4c8281e1a56053746e5ad3689',
+     x86_64: '2a67638b26f450166d3d26dc01a57b7bff3fe1010fbc0af714e56192f77a3cfa'
   })
 
   conflicts_ok

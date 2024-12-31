@@ -10,10 +10,10 @@ class Ruby_fcntl < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '5c70a361da3cedbac596ce40bfe1807a0a5a263cedeb290aa7db99abe65793f8',
-     armv7l: '5c70a361da3cedbac596ce40bfe1807a0a5a263cedeb290aa7db99abe65793f8',
-       i686: '1af766faa607737239f2e96a9991e56610ae9e666e9f848627061922276a1b84',
-     x86_64: '5d7e8d0d5620baf40e0c091099b8aa5e1c9e37058efcfdeabb43876b545d2c05'
+    aarch64: 'd12c37dd64e2036ace6a1d821945cbe1f37e286f95d6c76acddd48c50910f06c',
+     armv7l: 'd12c37dd64e2036ace6a1d821945cbe1f37e286f95d6c76acddd48c50910f06c',
+       i686: '4c750bb1529ee671825c9ac0c005293736cf4b773b953281066a86bc156873a4',
+     x86_64: '6d1b4297d4637b6c7a0f6ca7d5f078a6fd4475e184f71417f0f71d84ea7b8559'
   })
 
   conflicts_ok
