@@ -43,6 +43,7 @@ class Qemu < Package
   depends_on 'libgcrypt'
   depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
+  depends_on 'libsamplerate' # R
   depends_on 'libsdl2' # R
   depends_on 'libseccomp' # R
   depends_on 'libslirp' # R
