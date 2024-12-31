@@ -29,7 +29,8 @@ require_gem('ptools')
 
 begin
   require 'securerandom'
-  require 'resolv-replace'
+  # resolv-replace is no longer needed with ruby 3.4
+  require 'resolv-replace' if Gem::Version.new(RUBY_VERSION) < Gem::Version.new('3.4.0')
   require 'net/http'
 rescue RuntimeError => e
   # hide the error message and fallback to curl if securerandom raise an error

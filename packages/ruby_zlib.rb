@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_zlib < RUBY
   description 'Ruby interface for the zlib compression/decompression library.'
   homepage 'https://github.com/ruby/zlib'
-  version "3.2.0-#{CREW_RUBY_VER}"
+  version "3.2.1-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'a58fa0c668b89f0c0135272802be6b4997d0d76181d856d7ea371b93ee9a8f1f',
-     armv7l: 'a58fa0c668b89f0c0135272802be6b4997d0d76181d856d7ea371b93ee9a8f1f',
-       i686: '90944dbc771b1dc1ee67824262233b4b0aa07e568f5d0ae7788719e2385a2b9b',
-     x86_64: 'a40187395922eeada9adbb2bc800e9e43fd65cc39af6c8bb30871454f29b3a95'
+    aarch64: 'eace3994d49283f656b4aacca6637d6210cc67d25ac5cc010b3185c503ccd7fe',
+     armv7l: 'eace3994d49283f656b4aacca6637d6210cc67d25ac5cc010b3185c503ccd7fe',
+       i686: 'd99c12eaaa2e7e9dbc0e55446b5fe4d046680c5b1fa65ef2710d7b71593df3f6',
+     x86_64: 'fb822ab8a5526bc2f5f5b7869598f2f2e1ec1b2b82522ba6f42b24a6058eef6a'
   })
 
   conflicts_ok

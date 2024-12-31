@@ -10,10 +10,10 @@ class Ruby_sdbm < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '8cf08be1c22c953862291b9adedb0ad4cfe9fcb1871cd08bbb7cc9fe678ec48f',
-     armv7l: '8cf08be1c22c953862291b9adedb0ad4cfe9fcb1871cd08bbb7cc9fe678ec48f',
-       i686: '0fcec40c41dce5523928803999f9bbb38736dc079086a906911902b038cb9bca',
-     x86_64: 'bc762fd9fad242df80416ab00fe1ba4cff8a778dc9888963d7ee917630e9d830'
+    aarch64: 'ec6e32d972b86e80dec1fa13b45f98c3b5fe7bfbf05bca6a616b58d54bb0aff8',
+     armv7l: 'ec6e32d972b86e80dec1fa13b45f98c3b5fe7bfbf05bca6a616b58d54bb0aff8',
+       i686: 'b53d96f851a19e8ae95b7eeb009dff8192655479408a1b88b85e3bfd230e68b3',
+     x86_64: '7ec5550b8f9d7851a42b193f8beb36f7c9f8830e97c03e4407d31cbe52fd0e3f'
   })
 
   conflicts_ok
