@@ -7985,6 +7985,11 @@ url: https://github.com/deivid-rodriguez/pry-byebug/releases
 activity: low
 ---
 kind: url
+name: ruby_repl_type_completor
+url: https://github.com/ruby/repl_type_completor/tags
+activity: high
+---
+kind: url
 name: ruby_rubocop
 url: https://github.com/rubocop/rubocop/releases
 activity: medium
