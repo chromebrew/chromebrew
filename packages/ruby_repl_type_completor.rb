@@ -1,7 +1,7 @@
 require 'buildsystems/ruby'
 
 class Ruby_repl_type_completor < RUBY
-  description "Type based completion for REPL."
+  description 'Type based completion for REPL.'
   homepage 'https://github.com/ruby/repl_type_completor'
   version "0.1.9-#{CREW_RUBY_VER}"
   license 'MIT'
