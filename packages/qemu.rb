@@ -24,6 +24,7 @@ class Qemu < Package
   depends_on 'curl' # R
   depends_on 'elfutils' # R
   depends_on 'eudev' # R
+  depends_on 'fftw' # R
   depends_on 'fontconfig' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
