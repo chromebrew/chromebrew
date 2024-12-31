@@ -52,11 +52,9 @@ relevant_gem_packages.each_with_index do |package, index|
     gem_test_name = gem_test.split.first
     puts "#{untested_package_name} versions for #{gem_test_name} are #{gem_test.split[1].split(',')}" if CREW_VERBOSE
     gem_test_versions = gem_test.split[1].split(',')
-    gem_test_versions.delete_if { |i| i.include?('beta') }
-    gem_test_versions.delete_if { |i| i.include?('dev') }
-    gem_test_versions.delete_if { |i| i.include?('java') }
-    gem_test_versions.delete_if { |i| i.include?('pre') }
-    gem_test_versions.delete_if { |i| i.include?('rc') }
+    # Any version with a letter is considered a prerelease as per
+    # https://github.com/rubygems/rubygems/blob/b5798efd348935634d4e0e2b846d4f455582db48/lib/rubygems/version.rb#L305
+    gem_test_versions.delete_if { |i| i.match?(/[a-zA-Z]/) }
     gem_test_version = gem_test_versions.max
     puts "#{untested_package_name} is #{gem_test_name} version #{gem_test_version}".lightpurple if CREW_VERBOSE
     gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(untested_package_name).first : gem_test_name
