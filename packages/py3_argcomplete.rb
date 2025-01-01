@@ -10,8 +10,8 @@ class Py3_argcomplete < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ec1038917be7b87c8685244a639f88aa2e0b291efc989f2d594d46cd439a4f6f',
-     armv7l: 'ec1038917be7b87c8685244a639f88aa2e0b291efc989f2d594d46cd439a4f6f',
+    aarch64: '2eb07d1c75fb7a5318b8da2493e7d6a034ffbc0d3be0de4e9d5f89dffc46d9bf',
+     armv7l: '2eb07d1c75fb7a5318b8da2493e7d6a034ffbc0d3be0de4e9d5f89dffc46d9bf',
        i686: '887aacf879741c85d1f8d18cd4c16ab615a1836cf9df3375e179194ceb9c2cf9',
      x86_64: '095bde7c1e10da06ebb3d0396c161fba3b1542a52f54596dfdeff48708419ab4'
   })
