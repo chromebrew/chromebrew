@@ -1,6 +1,9 @@
 /usr/local/bin/elixir
+/usr/local/bin/elixir.ps1
 /usr/local/bin/elixirc
+/usr/local/bin/elixirc.ps1
 /usr/local/bin/iex
+/usr/local/bin/iex.ps1
 /usr/local/bin/mix
 /usr/local/lib64/mix.ex
 /usr/local/lib64/mix/app_loader.ex
@@ -23,6 +26,8 @@
 /usr/local/lib64/mix/local/installer.ex
 /usr/local/lib64/mix/project.ex
 /usr/local/lib64/mix/project_stack.ex
+/usr/local/lib64/mix/pubsub.ex
+/usr/local/lib64/mix/pubsub/subscriber.ex
 /usr/local/lib64/mix/rebar.ex
 /usr/local/lib64/mix/release.ex
 /usr/local/lib64/mix/remote_converger.ex
@@ -34,6 +39,8 @@
 /usr/local/lib64/mix/shell/process.ex
 /usr/local/lib64/mix/shell/quiet.ex
 /usr/local/lib64/mix/state.ex
+/usr/local/lib64/mix/sync/lock.ex
+/usr/local/lib64/mix/sync/pubsub.ex
 /usr/local/lib64/mix/task.compiler.ex
 /usr/local/lib64/mix/task.ex
 /usr/local/lib64/mix/tasks/app.config.ex
