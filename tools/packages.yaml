@@ -200,6 +200,11 @@ url: https://sourceforge.net/projects/apng2gif/files
 activity: none
 ---
 kind: url
+name: appflowy
+url: https://github.com/AppFlowy-IO/AppFlowy/releases
+activity: high
+---
+kind: url
 name: appres
 url: https://x.org/archive/individual/app/
 activity: none
@@ -3638,6 +3643,11 @@ kind: url
 name: keybase
 url: https://github.com/keybase/client/releases
 activity: high
+---
+kind: url
+name: keybinder
+url: https://github.com/kupferlauncher/keybinder/releases/
+activity: none
 ---
 kind: url
 name: keychain
