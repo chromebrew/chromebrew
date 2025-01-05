@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_strscan < RUBY
   description 'Provides lexical scanning operations on a String.'
   homepage 'https://github.com/ruby/strscan'
-  version "3.1.0-#{CREW_RUBY_VER}"
+  version "3.1.2-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'c972769c684978ee9ef03ca6dc04da9c12dc80d9389a8949d2e018d67f6fb064',
-     armv7l: 'c972769c684978ee9ef03ca6dc04da9c12dc80d9389a8949d2e018d67f6fb064',
-       i686: '013d5e27649cae733eb07456ad4e28a4d474b711d2569e89b82af685c1b1d789',
-     x86_64: '74f89fc9209cb824c54f160abe5436a5a5cac0dabe43c19ff7142896172d9ba0'
+    aarch64: '642a4d8c490555fe2fb4894f1d1689eaf611ee0577c3cfc4a33ba4ca9734aab9',
+     armv7l: '642a4d8c490555fe2fb4894f1d1689eaf611ee0577c3cfc4a33ba4ca9734aab9',
+       i686: '526e033dc45ff6e24c1db5a3083e6cdb3900822c996361e4d39672e39eb70098',
+     x86_64: '827a7b8abba2f99dcd3e48f3708af76e7a27a74b651fae50991ac91760d154d3'
   })
 
   conflicts_ok
