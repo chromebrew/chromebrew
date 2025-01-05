@@ -11,8 +11,8 @@ class Py3_ruff < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '937b71f97daaf37df4cdbc0d43ebdba86911fb42ee7b884534eb760786b1ccbe',
-     armv7l: '937b71f97daaf37df4cdbc0d43ebdba86911fb42ee7b884534eb760786b1ccbe',
+    aarch64: 'da4a6fed94e4960429a68717fca27122b0d7185acde1555f6073b6de9e284359',
+     armv7l: 'da4a6fed94e4960429a68717fca27122b0d7185acde1555f6073b6de9e284359',
        i686: '5f2f1eae47959d263c87c7812521b5c6d2a13312d5e5cf4cc70c801c90ad29f5',
      x86_64: '843404fcfa57712519fde2788acace4e70b376cad2345553baef562db98f9a6e'
   })
