@@ -42,7 +42,8 @@ jobs:
       - name: Trigger Unit Test Workflow & Add Reviewer Team
         env:
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
-          run: |
+        run: |
+
             echo "Flipping pr ${PR_NUMBER} state."
             gh pr close ${PR_NUMBER} && gh pr reopen ${PR_NUMBER}
             gh pr edit ${PR_NUMBER} --add-reviewer chromebrew/active
