@@ -11,8 +11,8 @@ class Bc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '23cb493a118d4ff377dc78b4e5ea2b0c35b06e1f54b3b14c0280e6f672ee2706',
-     armv7l: '23cb493a118d4ff377dc78b4e5ea2b0c35b06e1f54b3b14c0280e6f672ee2706',
+    aarch64: '79c3e614e6e4860e42bfed550cacb544507afe84bc7b227fe5b09f33e7d6e7e9',
+     armv7l: '79c3e614e6e4860e42bfed550cacb544507afe84bc7b227fe5b09f33e7d6e7e9',
        i686: '82c96318ca649079ca49570f1b7e9e0adc1ce0f236db1a35d95b1849966db17b',
      x86_64: 'ef7ec7a38073d1c63e54a82729dcc3fdf1f5ebb46fb6630886f2d55734ac3687'
   })
