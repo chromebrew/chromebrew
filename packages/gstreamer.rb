@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gstreamer < Meson
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.24.10'
+  version '1.24.11'
   license 'LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
