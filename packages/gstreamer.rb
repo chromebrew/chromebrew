@@ -11,8 +11,8 @@ class Gstreamer < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cad0b84204e08fd78b57b6b6b6b75fc6c3108a9855e8d1246c9bc1ce2e2b3a8b',
-     armv7l: 'cad0b84204e08fd78b57b6b6b6b75fc6c3108a9855e8d1246c9bc1ce2e2b3a8b',
+    aarch64: '258ec2bb1c6c62e74a3117819b36833fbecfb3779c7e001e07ccc93de51f31eb',
+     armv7l: '258ec2bb1c6c62e74a3117819b36833fbecfb3779c7e001e07ccc93de51f31eb',
      x86_64: '94511ce97c9cc5df8084143a0b2217f353b24b11bbc8f74256754ba0f75c8db4'
   })
 
