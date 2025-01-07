@@ -13,7 +13,7 @@ class Gstreamer < Meson
   binary_sha256({
     aarch64: 'cad0b84204e08fd78b57b6b6b6b75fc6c3108a9855e8d1246c9bc1ce2e2b3a8b',
      armv7l: 'cad0b84204e08fd78b57b6b6b6b75fc6c3108a9855e8d1246c9bc1ce2e2b3a8b',
-     x86_64: '46b7222af720aff9d5dce44dce7e7cca4805cb538a4247db98f26fbbda32e90d'
+     x86_64: '94511ce97c9cc5df8084143a0b2217f353b24b11bbc8f74256754ba0f75c8db4'
   })
 
   depends_on 'alsa_lib' # R
