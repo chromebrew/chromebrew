@@ -1,0 +1,9 @@
+/usr/local/bin/rustdesk
+/usr/local/share/applications/rustdesk-link.desktop
+/usr/local/share/applications/rustdesk.desktop
+/usr/local/share/icons/hicolor/256x256/apps/rustdesk.png
+/usr/local/share/icons/hicolor/scalable/apps/rustdesk.svg
+/usr/local/share/rustdesk/files/polkit
+/usr/local/share/rustdesk/files/systemd/rustdesk.service
+/usr/local/share/rustdesk/libsciter-gtk.so
+/usr/local/share/rustdesk/rustdesk

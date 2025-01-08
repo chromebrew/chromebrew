@@ -28,7 +28,10 @@ jobs:
         run: |
           ruby -Ctools json.rb
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v7
+        env:
+          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
         with:
           add-paths: "tools/repology.json"
           title: "Update Repology JSON"
@@ -36,4 +39,12 @@ jobs:
           author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           commit-message: "Update Repology JSON"
           delete-branch: true
-          team-reviewers: active
+      - name: Trigger Unit Test Workflow & Add Reviewer Team
+        env:
+          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+        run: |
+
+            echo "Flipping pr ${PR_NUMBER} state."
+            gh pr close ${PR_NUMBER} && gh pr reopen ${PR_NUMBER}
+            gh pr edit ${PR_NUMBER} --add-reviewer chromebrew/active
+            gh pr merge ${PR_NUMBER} --auto

@@ -200,6 +200,11 @@ url: https://sourceforge.net/projects/apng2gif/files
 activity: none
 ---
 kind: url
+name: appflowy
+url: https://github.com/AppFlowy-IO/AppFlowy/releases
+activity: high
+---
+kind: url
 name: appres
 url: https://x.org/archive/individual/app/
 activity: none
@@ -3640,6 +3645,11 @@ url: https://github.com/keybase/client/releases
 activity: high
 ---
 kind: url
+name: keybinder
+url: https://github.com/kupferlauncher/keybinder/releases/
+activity: none
+---
+kind: url
 name: keychain
 url: https://github.com/funtoo/keychain/releases/
 activity: low
@@ -6300,6 +6310,11 @@ url: https://sourceforge.net/projects/nmon/files/
 activity: none
 ---
 kind: url
+name: nocodb
+url: https://github.com/nocodb/nocodb/releases
+activity: medium
+---
+kind: url
 name: nodebrew
 url: https://github.com/hokaccha/nodebrew/releases
 activity: low
@@ -6393,6 +6408,11 @@ kind: url
 name: oneko
 url: https://httpredir.debian.org/debian/pool/main/o/oneko/
 activity: low
+---
+kind: url
+name: onepassword
+url: https://developer.1password.com/docs/cli/get-started
+activity: medium
 ---
 kind: url
 name: onevpl
@@ -7975,6 +7995,11 @@ url: https://github.com/deivid-rodriguez/pry-byebug/releases
 activity: low
 ---
 kind: url
+name: ruby_repl_type_completor
+url: https://github.com/ruby/repl_type_completor/tags
+activity: high
+---
+kind: url
 name: ruby_rubocop
 url: https://github.com/rubocop/rubocop/releases
 activity: medium
@@ -8493,6 +8518,11 @@ kind: url
 name: sshfs
 url: https://github.com/libfuse/sshfs/releases
 activity: low
+---
+kind: url
+name: sshpass
+url: https://sourceforge.net/projects/sshpass/files/sshpass/
+activity: none
 ---
 kind: url
 name: sshrc

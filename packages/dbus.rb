@@ -3,18 +3,18 @@ require 'buildsystems/meson'
 class Dbus < Meson
   description 'D-Bus is a message bus system, a simple way for applications to talk to one another.'
   homepage 'https://www.freedesktop.org/wiki/Software/dbus/'
-  version '1.15.9-e277bf9'
+  version '1.16.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/dbus/dbus.git'
-  git_hashtag 'e277bf9070fa76712c6f113fbccc7c3b107297dd'
+  git_hashtag "dbus-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c471c04d20149c1c32c98de34f30960c3e924a2bec35010b954bd15a10d08306',
-     armv7l: 'c471c04d20149c1c32c98de34f30960c3e924a2bec35010b954bd15a10d08306',
-       i686: '64873de4af66f26fc9be1afc93d38e8c725f7e12bf6ee80c81b9ad508f527303',
-     x86_64: '252cf6fc37542d9f956f72109e546002e3729cc3c60428114d02b66354e89b55'
+    aarch64: 'a59af1d22ad1a8c7124ad4c5eb123196d84c47040226d0556c969edc3a560d58',
+     armv7l: 'a59af1d22ad1a8c7124ad4c5eb123196d84c47040226d0556c969edc3a560d58',
+       i686: 'f55865c5c6f8ba1f2cc3651debc1e848d6f703adeabdce3125eac3b9684baa81',
+     x86_64: 'c28c9fbda77f5125d6201cb164a8e94842fbaf32eec3a871b636e3ec239b3112'
   })
 
   depends_on 'expat' # R

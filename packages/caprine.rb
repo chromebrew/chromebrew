@@ -3,15 +3,16 @@ require 'package'
 class Caprine < Package
   description 'An elegant Facebook Messenger desktop app'
   homepage 'https://sindresorhus.com/caprine/'
-  version '2.60.1'
+  version '2.60.3'
   license 'MIT'
   compatibility 'x86_64'
-  source_url 'https://github.com/sindresorhus/caprine/releases/download/v2.60.1/Caprine-2.60.1.AppImage'
-  source_sha256 'a9e259dc3a1e238ebf25426ad2303a1e279fcc8f0097175b4ee0e14e22e667cc'
+  source_url "https://github.com/sindresorhus/caprine/releases/download/v#{version}/Caprine-#{version}.AppImage"
+  source_sha256 '3fc8f57fcff84638d81679846ee9241091f71e914be7657787218f96985a73ce'
 
   depends_on 'gtk3'
   depends_on 'sommelier'
 
+  no_compile_needed
   no_shrink
 
   def self.build
@@ -34,6 +35,6 @@ class Caprine < Package
   end
 
   def self.postinstall
-    puts "\nType 'caprine' to get started.\n".lightblue
+    ExitMessage.add "\nType 'caprine' to get started.\n"
   end
 end

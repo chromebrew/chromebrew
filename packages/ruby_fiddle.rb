@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_fiddle < RUBY
   description 'A libffi wrapper for ruby.'
   homepage 'https://github.com/ruby/fiddle'
-  version "1.1.5-#{CREW_RUBY_VER}"
+  version "1.1.6-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'ae51eed09acce2e7226f885ced440678e4504e967ddbeaa3818e94735649da6b',
-     armv7l: 'ae51eed09acce2e7226f885ced440678e4504e967ddbeaa3818e94735649da6b',
-       i686: 'f0d72080c63dd659e383f3d6424e3bd8698627603fc66b898d7961f7fa4e8bc4',
-     x86_64: '691e45fedbfbc0d59c5fe0a0e2d7eae4f38ccdfc0a4cc1c0feeff25f359d500e'
+    aarch64: 'adabccd39e60519d5e841bb944f9b1901706d6f6a0ff96d652c9b45e88bc3db0',
+     armv7l: 'adabccd39e60519d5e841bb944f9b1901706d6f6a0ff96d652c9b45e88bc3db0',
+       i686: 'f9fcc22e3efc5f42a821b46f12ec5a6824ec0871e63c76da65f28808cf7df4bc',
+     x86_64: '53945142f943d053fb5bb16b26fb2475609ba946c008d0bf7e79b07ee65c1bf8'
   })
 
   conflicts_ok

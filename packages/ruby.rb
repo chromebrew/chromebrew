@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.3.6' # Do not use @_ver here, it will break the installer.
+  version '3.4.1' # Do not use @_ver here, it will break the installer.
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
@@ -11,10 +11,10 @@ class Ruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b9513fdcba659ef938a74ab3b0a7615bba7600cb70f75e839ea311cb6a77dc47',
-     armv7l: 'b9513fdcba659ef938a74ab3b0a7615bba7600cb70f75e839ea311cb6a77dc47',
-       i686: 'ba0cf252f0ecdbdf3895464b3304c799390ec256981c67f868c1298186877e85',
-     x86_64: 'ed10371a0e72451fe98dcb37fa51760c34928e9cf8e677e0e5e62e94e09cbf9e'
+    aarch64: 'f4a7b29463268c3f3b3a06265c6bf17122b6487bd878bbf55438999daa7e1884',
+     armv7l: 'f4a7b29463268c3f3b3a06265c6bf17122b6487bd878bbf55438999daa7e1884',
+       i686: '01b9d4094733fb34c48ad611377de6f97b1137073af7ee7617d23abe6d8fdb39',
+     x86_64: '417c248d4921fd5cf07569f358957528e42c293e6f7f759786fcc874f3738c7e'
   })
 
   depends_on 'ca_certificates' # L
@@ -31,11 +31,6 @@ class Ruby < Package
   conflicts_ok # Needed for successful build.
 
   # at run-time, system's gmp, openssl, and zlib can be used
-
-  def self.prebuild
-    # See https://github.com/chromebrew/chromebrew/issues/10724#issuecomment-2466486461
-    abort 'Please build with CREW_KERNEL_VERSION=3.10'.orange if %w[armv7l aarch64].include?(ARCH) && Gem::Version.new(CREW_KERNEL_VERSION) > Gem::Version.new('3.10')
-  end
 
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
@@ -71,6 +66,9 @@ class Ruby < Package
   def self.postinstall
     puts 'Updating ruby gems. This may take a while...'
     silent = @opt_verbose ? '' : '--silent'
+    # install for Ruby 3.4
+    system 'gem uninstall resolv-replace', exception: false
+    system 'gem install highline ptools'
     system "gem update #{silent} -N --system", exception: false
   end
 end

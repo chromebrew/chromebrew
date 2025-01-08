@@ -8,6 +8,8 @@ git clone --depth=1 --branch="$CREW_BRANCH" "$CREW_REPO" ~/build_test
 (cd ~/build_test && yes | CREW_CACHE_ENABLED=1 crew build -vf ~/build_test/packages/hello_world_chromebrew.rb)
 yes | crew install vim
 yes | crew remove vim
+# Check if rake is installed and working, and if not install it.
+rake --help &>/dev/null || gem install rake
 rake -C..
 if [[ -n ${CHANGED_PACKAGES-} ]]; then
   all_compatible_packages=$(crew list -d compatible)

@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class C_ares < CMake
   description 'C library for asynchronous DNS requests (including name resolves).'
   homepage 'https://c-ares.org/'
-  version '1.23.0'
+  version '1.34.3'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/c-ares/c-ares.git'
-  git_hashtag "cares-#{version.gsub('.', '_')}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '70191e6614bdbcdb3bafe196af1ba643b2506e7b394417ed59e2ed532d057ce7',
-     armv7l: '70191e6614bdbcdb3bafe196af1ba643b2506e7b394417ed59e2ed532d057ce7',
-       i686: '4ceee8430606e7f1d9085b9d96b36a5a9b54a8a4561674b8826c013f1952ec16',
-     x86_64: 'e7a8595eaa6e95ecbb25c9568eac8fb6aa39e4ac0f462b32ad2b05f8bfa4dde6'
+    aarch64: '176042a48ab436444760f10e5000ce21f9b09f38074b5427fa71db996e13ff32',
+     armv7l: '176042a48ab436444760f10e5000ce21f9b09f38074b5427fa71db996e13ff32',
+       i686: '84251436210c524b6fb3d0eeab4c5c1c06814a00521f0322a019b440731b350e',
+     x86_64: 'b4f77f816e9417006e93a4da708cd1e57d649621f46bdd1c323b0d0c61808318'
   })
 
   depends_on 'glibc' # R

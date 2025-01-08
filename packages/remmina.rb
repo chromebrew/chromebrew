@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Remmina < CMake
   description 'The GTK Remmina Remote Desktop Client'
   homepage 'https://remmina.org/'
-  version '1.4.35'
+  version '1.4.39'
   license 'GPL-2+-with-openssl-exception'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.com/Remmina/Remmina/-/archive/v#{version}/Remmina-v#{version}.tar.bz2"
@@ -11,9 +11,9 @@ class Remmina < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4a5e869bf74adc0a449f88e4bc6d71c9a1ac2915045cb0f80ef243a6b6ee08df',
-     armv7l: '4a5e869bf74adc0a449f88e4bc6d71c9a1ac2915045cb0f80ef243a6b6ee08df',
-     x86_64: '69f0f6a0c131925a580d69def851594c6629807b38233f56efff6cdf715f7ec8'
+    aarch64: 'fd0c2b9110b8e99079d1f8ff8410f1592910176ff34698fa6c6d8b6793449b9d',
+     armv7l: 'fd0c2b9110b8e99079d1f8ff8410f1592910176ff34698fa6c6d8b6793449b9d',
+     x86_64: 'b57ff80f3291548ac50093510d86584f7f92c28649b1dfaac724114d7f1e192f'
   })
 
   depends_on 'avahi' # L

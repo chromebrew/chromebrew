@@ -3,16 +3,16 @@ require 'buildsystems/pip'
 class Py3_pillow < Pip
   description 'Pillow is a Python Imaging Library (PIL).'
   homepage 'https://python-pillow.org/'
-  version "11.0.0-#{CREW_PY_VER}"
+  version "11.1.0-#{CREW_PY_VER}"
   license 'HPND'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0556388525664e4a1bd8d3bb24e7b1c87f3c90e11521b0f3005df062557a12c9',
-     armv7l: '0556388525664e4a1bd8d3bb24e7b1c87f3c90e11521b0f3005df062557a12c9',
-     x86_64: '36203f74989dad1d9417cce6eb363e0264f4792ce782fba3d021ec635882f389'
+    aarch64: '88db73ecdddf9926b43fa8763cb914ace661c91fc6f3cb6f055e71977d9c684e',
+     armv7l: '88db73ecdddf9926b43fa8763cb914ace661c91fc6f3cb6f055e71977d9c684e',
+     x86_64: '55f9e406fcaabd232358012c37a9fc55f54b23baa1749fb37bef48e933cf7c3b'
   })
 
   depends_on 'freetype' # R

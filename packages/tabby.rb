@@ -3,7 +3,7 @@ require 'package'
 class Tabby < Package
   description 'Tabby is an infinitely customizable cross-platform terminal app for local shells, serial, SSH and Telnet connections.'
   homepage 'https://tabby.sh/'
-  version '1.0.208'
+  version '1.0.216'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url({
@@ -12,9 +12,9 @@ class Tabby < Package
      x86_64: "https://github.com/Eugeny/tabby/releases/download/v#{version}/tabby-#{version}-linux-x64.tar.gz"
   })
   source_sha256({
-    aarch64: '475ad3658768642158c1af85f92fa45b381ade8ddfc65c4430df58dda581988a',
-     armv7l: '475ad3658768642158c1af85f92fa45b381ade8ddfc65c4430df58dda581988a',
-     x86_64: 'c30d8c0c26e8d6d9f4d173ad79668ca9e4fccd521850c0df8bfb222df65edcff'
+    aarch64: '7030226f30a75d8e65ca64fe82f22c9886a65f596186711e5c443b079969076f',
+     armv7l: '7030226f30a75d8e65ca64fe82f22c9886a65f596186711e5c443b079969076f',
+     x86_64: 'bb03f206c73a2aa28825e3ba56f78568ee8a86b76072e0dc6dd8bfdcdede3b57'
   })
 
   depends_on 'at_spi2_core'

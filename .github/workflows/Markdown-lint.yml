@@ -1,6 +1,9 @@
 ---
 name: Markdown-lint
 on: workflow_call
+env:
+   REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
 jobs:
   markdown-lint:
     runs-on: ubuntu-24.04
@@ -14,4 +17,4 @@ jobs:
         with:
           fail_level: any
           markdownlint_flags: '-s .mdl_style.rb'
-          reporter: github-pr-check
+          reporter: github-pr-review

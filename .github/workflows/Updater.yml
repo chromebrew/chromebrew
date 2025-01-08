@@ -16,8 +16,8 @@ jobs:
     if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
     outputs:
-      output1: ${{ steps.set-variables.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
-      output2: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
+      timestamp: ${{ steps.set-variables.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
+      update_branch_name: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -99,150 +99,12 @@ jobs:
           # https://stackoverflow.com/a/75809743
           gh run cancel ${{ github.run_id }}
           gh run watch ${{ github.run_id }}
-  generate:
-    strategy:
-      max-parallel: 1
-      matrix:
-        arch: [i686, x86_64, armv7l]
-        runner:
-          - [self-hosted, X64]
-          - [self-hosted, ARM]
-        exclude:
-          - arch: x86_64
-            runner: [self-hosted, ARM]
-          - arch: i686
-            runner: [self-hosted, ARM]
-          - arch: armv7l
-            runner: [self-hosted, X64]
-    runs-on: ${{ matrix.runner }}
-    needs: update-check
-    if: ${{ !cancelled() && github.repository_owner == 'chromebrew' }}
-    concurrency:
-      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
-    steps:
-      - name: Build Container cleanup
-        run: |
-            sudo rm -rf release
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-      - name: Export target docker container to github context
-        env:
-          TARGET_ARCH: ${{ matrix.arch }}
-        run: |
-            case $TARGET_ARCH in
-              x86_64)
-                echo "CONTAINER=nocturne-x86_64.m90" >> $GITHUB_ENV
-                echo "PLATFORM=linux/amd64" >> $GITHUB_ENV
-                echo "LIB_SUFFIX=64" >> $GITHUB_ENV
-              ;;
-              armv7l)
-                echo "CONTAINER=fievel-armv7l.m91" >> $GITHUB_ENV
-                echo "PLATFORM=linux/arm/v7" >> $GITHUB_ENV
-                echo "LIB_SUFFIX=" >> $GITHUB_ENV
-              ;;
-              i686)
-                echo "CONTAINER=alex-i686.m58" >> $GITHUB_ENV
-                echo "PLATFORM=linux/386" >> $GITHUB_ENV
-                echo "LIB_SUFFIX=" >> $GITHUB_ENV
-              ;;
-            esac
-      - name: Run Updater in container
-        id: run-updater
-        if: ${{ !cancelled() }}
-        env:
-          #  CREW_REPO: "https://github.com/chromebrew/chromebrew.git"
-          CREW_REPO: "https://github.com/${{ github.repository }}.git"
-          CREW_BRANCH: ${{ needs.update-check.outputs.output2 }}
-        run: |
-            git pull && git checkout ${CREW_BRANCH}
-            docker pull --platform ${PLATFORM} satmandu/crewbuild:${CONTAINER}
-            sudo apt install -y acl
-            sudo setfacl -R -m u:1000:rwx .
-            # getfacl .
-            # Use docker-in-docker shim to mount volume inside docker.
-            # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-            # ghcr.io/felipecrs/dond-shim:latest \
-            (cd /tmp ; curl -OLf https://github.com/felipecrs/docker-on-docker-shim/raw/refs/tags/v0.7.1/dond ; chmod +x /tmp/dond )
-            # docker run \
-            /tmp/dond run \
-              --rm \
-              --platform ${PLATFORM} \
-              --privileged \
-              -u chronos \
-              -e LD_LIBRARY_PATH="/usr/local/lib${LIB_SUFFIX}" \
-              -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
-              -e CREW_REPO="${CREW_REPO}" \
-              -e CREW_BRANCH="${CREW_BRANCH}" \
-              -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
-              -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
-              -v $(pwd):/output \
-              "satmandu/crewbuild:${CONTAINER}" \
-              /bin/chromebrewstart /output/tools/github_actions_update_builder.sh  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
-              grep "Built and Uploaded:" /tmp/build.log || true
-              sudo rm -rf release
-      - name: Add updated packages to PR.
-        id: push-check
-        env:
-          UPDATE_BRANCH_NAME: ${{ needs.update-check.outputs.output2 }}
-        run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "${{ github.actor }}"
-            git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git add -A
-            git commit -m "Add updated packages for ${PLATFORM} to ${UPDATE_BRANCH_NAME}"
-          fi
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          branch: ${{ needs.update-check.outputs.output2 }}
-  build-check:
+  dispatch-build:
+    if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
-    needs:
-      - update-check
-      - generate
-    if: ${{ !cancelled() && github.repository_owner == 'chromebrew' }}
+    needs: update-check
+    env:
+      UPDATE_BRANCH_NAME: ${{ needs.update-check.outputs.update_branch_name }}
     steps:
-      - name: fail if update or build jobs failed, otherwise create a PR
-        if: ${{ contains(needs.*.result, 'failure') }}
-        run: exit 1
-      - name: Report update & build success
-        run: echo "Update & build jobs succeeded. Creating a PR."
-      - uses: actions/checkout@v4
-        with:
-          clean: false
-          persist-credentials: true
-          ref: ${{ needs.update-check.outputs.output2 }}
-      - name: Create Pull Request
-        env:
-          TIMESTAMP: ${{ needs.update-check.outputs.output1 }}
-          CREW_BRANCH: ${{ needs.update-check.outputs.output2 }}
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git fetch --shallow-since="1 week"
-          git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)
-          mapfile -t updated_package_array < <( git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD) | grep -v manifest | grep "^packages" | sed -e 's,packages/,,' -e 's,.rb,,')
-          echo -e "Updated packages:" > /tmp/pr.txt
-          for file in "${updated_package_array[@]}"
-            do
-            echo "- ${file}" >> /tmp/pr.txt
-          done
-          cat /tmp/pr.txt
-          export PR_NUMBER=$(gh pr create --title "Automatic PR to update packages for ${CREW_BRANCH}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
-          echo "PR_NUMBER is ${PR_NUMBER}"
-          echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
-      - name: Trigger Unit Test workflow.
-        run: |
-          echo "Branch is ${{ needs.update-check.outputs.output2 }}"
-          gh workflow run "Unit-Test.yml" --ref ${{ needs.update-check.outputs.output2 }}
-      - name: Add chromebrew/active team reviewers to PR
-        run: |
-          echo "PR_NUMBER is ${PR_NUMBER}"
-          curl -X POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"\
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/repos${{ github.owner }}/${{ github.repository }}/pulls/${PR_NUMBER}/requested_reviewers \
-            -d '{"team_reviewers":["chromebrew/active"]}'
+      - name: gh_workflow_dispatch
+        run: gh workflow -R chromebrew/chromebrew run Build.yml -f branch=${UPDATE_BRANCH_NAME}

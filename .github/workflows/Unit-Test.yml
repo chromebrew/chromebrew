@@ -1,16 +1,20 @@
 ---
-name: Run Unit Tests on PR
+name: Unit Tests
 on:
-  pull_request:
-  merge_group:
-  workflow_dispatch:
-  workflow_run:
-    workflows: [Build]
+  check_run:
     types:
-      - completed
+      - created
+  merge_group:
+  pull_request:
+  #  push:
+  workflow_dispatch:
+  # workflow_run:
+  #  workflows: [Build]
+  #  types:
+  #    - completed
 jobs:
   container_tests:
-    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( github.ref_name != 'master' ) }}
+    if: ${{ github.repository_owner == 'chromebrew' }}
     strategy:
       matrix:
         arch: [x86_64, armv7l, i686]
@@ -160,17 +164,13 @@ jobs:
           GITHUB_EVENT: ${{ github.event_name }}
         run: |
             case $GITHUB_EVENT in
-              merge_group)
+              check_run | merge_group | push | workflow_run | workflow_dispatch)
                 export CREW_REPO="${{ github.event.repository.clone_url }}"
                 export CREW_BRANCH="${{ github.ref_name }}"
                 ;;
               pull_request)
                 export CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}"
                 export CREW_BRANCH="${{ github.head_ref }}"
-                ;;
-              workflow_dispatch)
-                export CREW_REPO="${{ github.event.repository.clone_url }}"
-                export CREW_BRANCH="${{ github.ref_name }}"
                 ;;
             esac
             if [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]); then

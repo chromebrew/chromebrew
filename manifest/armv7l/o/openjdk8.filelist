@@ -154,6 +154,14 @@
 /usr/local/jre/lib/ext/sunpkcs11.jar
 /usr/local/jre/lib/ext/zipfs.jar
 /usr/local/jre/lib/flavormap.properties
+/usr/local/jre/lib/fontconfig.Fedora.bfc
+/usr/local/jre/lib/fontconfig.Fedora.properties.src
+/usr/local/jre/lib/fontconfig.SuSE.bfc
+/usr/local/jre/lib/fontconfig.SuSE.properties.src
+/usr/local/jre/lib/fontconfig.Ubuntu.bfc
+/usr/local/jre/lib/fontconfig.Ubuntu.properties.src
+/usr/local/jre/lib/fontconfig.bfc
+/usr/local/jre/lib/fontconfig.properties.src
 /usr/local/jre/lib/hijrah-config-umalqura.properties
 /usr/local/jre/lib/images/cursors/cursors.properties
 /usr/local/jre/lib/images/cursors/invalid32x32.gif

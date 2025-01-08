@@ -6,17 +6,17 @@ require 'buildsystems/cmake'
 class Vulkan_tools < CMake
   description 'Vulkan Utilities and Tools'
   homepage 'https://www.vulkan.org/'
-  version '1.3.280.0'
+  version '1.4.303'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/Vulkan-Tools.git'
-  git_hashtag "vulkan-sdk-#{version}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1061255c604d43c62897629618db82fa6ddd99425d6d5572f3325fcfa1fc795e',
-     armv7l: '1061255c604d43c62897629618db82fa6ddd99425d6d5572f3325fcfa1fc795e',
-     x86_64: '929be2990a68b52052033a86146abdfedd9ebaaf53e2d8d55661465411491018'
+    aarch64: '21e22c03ae7c4560f99ef7017d55329f2149d186f2ee59213b5962f86e20a655',
+     armv7l: '21e22c03ae7c4560f99ef7017d55329f2149d186f2ee59213b5962f86e20a655',
+     x86_64: 'a4ff75bb8ac838abe2a8b98f5e5c0d033dcf6e66a3c195ce29a6f5b883693d26'
   })
 
   depends_on 'gcc_dev' => :build
@@ -69,6 +69,6 @@ class Vulkan_tools < CMake
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    FileUtils.install 'builddir-wayland/cube/vkcube-wayland', "#{CREW_DEST_PREFIX}/bin/vkcube-wayland", mode: 0o755
+    FileUtils.install 'builddir-wayland/cube/vkcube', "#{CREW_DEST_PREFIX}/bin/vkcube-wayland", mode: 0o755
   end
 end

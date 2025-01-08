@@ -24,6 +24,7 @@ class Qemu < Package
   depends_on 'curl' # R
   depends_on 'elfutils' # R
   depends_on 'eudev' # R
+  depends_on 'fftw' # R
   depends_on 'fontconfig' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
@@ -43,6 +44,7 @@ class Qemu < Package
   depends_on 'libgcrypt'
   depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
+  depends_on 'libsamplerate' # R
   depends_on 'libsdl2' # R
   depends_on 'libseccomp' # R
   depends_on 'libslirp' # R

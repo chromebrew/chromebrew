@@ -62,7 +62,7 @@ def set_vars(passed_name = nil, passed_version = nil)
     $gems ||= BasicCompactIndexClient.new.gems
     puts 'Done populating gem information.'.lightgreen
   end
-  gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).first.blank? ? $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '').gsub('_', '-')}\\s.*$"}/).first : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).first
+  gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last.blank? ? $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '').gsub('_', '-')}\\s.*$"}/).last : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last
   gem_test_name = gem_test.split.first
   gem_test_versions = gem_test.split[1].split(',')
   # Any version with a letter is considered a prerelease as per
@@ -122,6 +122,7 @@ class RUBY < Package
 
     Kernel.system "gem fetch #{@gem_name} --platform=ruby --version=#{@gem_version}"
     Kernel.system "gem unpack #{@gem_name}-#{@gem_version}.gem"
+    system 'gem install gem-compiler' unless Kernel.system('gem compile --help 2>/dev/null', %i[out err] => File::NULL)
     Kernel.system "gem compile --strip --prune #{@gem_name}-#{@gem_version}.gem -O #{CREW_DEST_DIR}/"
     @just_built_gem = true
   end
