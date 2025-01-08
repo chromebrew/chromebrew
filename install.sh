@@ -12,6 +12,24 @@ echo_success() { echo -e "\e[1;32m${*}${RESET}" >&1; } # Use Green for success m
 echo_intra() { echo -e "\e[1;34m${*}${RESET}" >&1; } # Use Blue for intrafunction messages.
 echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output.
 
+# Add proper support for parsing /etc/lsb-release
+# Reference: https://www.chromium.org/chromium-os/developer-library/reference/infrastructure/lsb-release/
+lsbval() {
+  local key="$1"
+  local lsbfile="${2:-/etc/lsb-release}"
+
+  if ! echo "${key}" | grep -Eq '^[a-zA-Z0-9_]+$'; then
+    return 1
+  fi
+
+  sed -E -n -e \
+    "/^[[:space:]]*${key}[[:space:]]*=/{
+      s:^[^=]+=[[:space:]]*::
+      s:[[:space:]]+$::
+      p
+    }" "${lsbfile}"
+}
+
 # Print a message before exit on error
 trap "echo_error 'An error occured during the installation :/'" ERR
 
@@ -31,12 +49,12 @@ fi
 
 # Reject non-stable Chrome OS channels.
 if [ -f /etc/lsb-release ]; then
-  if [[ ! "$(< /etc/lsb-release)" =~ CHROMEOS_RELEASE_TRACK=stable-channel$'\n' && "${CREW_FORCE_INSTALL}" != '1' ]]; then
+  if [[ ! "$(lsbval CHROMEOS_RELEASE_TRACK)" =~ stable-channel && "${CREW_FORCE_INSTALL}" != '1' ]]; then
     echo_error "The beta, dev, and canary channel are unsupported by Chromebrew."
     echo_info "Run 'CREW_FORCE_INSTALL=1 bash <(curl -Ls git.io/vddgY) && . ~/.bashrc' to perform install anyway."
     exit 1
   fi
-  export "$(grep CHROMEOS_RELEASE_CHROME_MILESTONE /etc/lsb-release)"
+  export CHROMEOS_RELEASE_CHROME_MILESTONE="$(lsbval CHROMEOS_RELEASE_CHROME_MILESTONE)"
 else
   echo_info "Unable to detect system information, installation will continue."
 fi
