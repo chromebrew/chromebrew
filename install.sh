@@ -194,10 +194,10 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
     [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
     if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" < "123" )); then
       # Append the correct packages for systems running M122 and lower.
-      BOOTSTRAP_PACKAGES+=' glibc_lib235 zlib gmp'
+      BOOTSTRAP_PACKAGES+=' glibc_lib235 gmp'
     elif (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "122" )); then
       # Append the correct packages for systems running M123 onwards.
-      BOOTSTRAP_PACKAGES+=' glibc_lib237 zlib gmp'
+      BOOTSTRAP_PACKAGES+=' glibc_lib237 gmp'
     fi
   fi
 fi
