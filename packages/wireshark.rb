@@ -58,5 +58,6 @@ class Wireshark < CMake
 
   pre_cmake_options 'WIRESHARK_BUILD_WITH_QT5=1'
   cmake_options "-DENABLE_LTO=true \
-    -DBUILD_wireshark=#{ARCH == 'i686' ? 'false' : 'true'}"
+    -DBUILD_wireshark=#{ARCH == 'i686' ? 'false' : 'true'} \
+    -DUSE_qt6=OFF"
 end
