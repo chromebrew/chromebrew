@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Wireshark < CMake
   description 'Network traffic and protocol analyzer/sniffer'
   homepage 'https://www.wireshark.org/'
-  version '4.2.3'
+  version '4.4.3'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/wireshark/wireshark.git'
@@ -14,10 +14,10 @@ class Wireshark < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7b8aa126fcb06deb4739b1a24bc7e1bf27c3b32cb9b45157198ea2f604cab53d',
-     armv7l: '7b8aa126fcb06deb4739b1a24bc7e1bf27c3b32cb9b45157198ea2f604cab53d',
-       i686: 'ddd5018c138d0fb411d99c857aecac9902bcee75ab398c6e6373da13abfd735d',
-     x86_64: '40d21fcdfe0d7bac9c2db677054b94ca03ebf5f1b707ba93d58e2e88fe3d90d8'
+    aarch64: 'ca6d2ac8b8bc39613d729de96ee58c4faf455f03a96a4fcba80cb15e7924d45a',
+     armv7l: 'ca6d2ac8b8bc39613d729de96ee58c4faf455f03a96a4fcba80cb15e7924d45a',
+       i686: '5b0700fb97ce474fedb1edefb347653c5844457f45ce51059e4c6bde14768fa9',
+     x86_64: '9eabcc620b4c96c545a580ef6263f6cf1fa699063e1bd7292805a1ebd69daf40'
   })
 
   depends_on 'brotli' # R
@@ -58,5 +58,6 @@ class Wireshark < CMake
 
   pre_cmake_options 'WIRESHARK_BUILD_WITH_QT5=1'
   cmake_options "-DENABLE_LTO=true \
-    -DBUILD_wireshark=#{ARCH == 'i686' ? 'false' : 'true'}"
+    -DBUILD_wireshark=#{ARCH == 'i686' ? 'false' : 'true'} \
+    -DUSE_qt6=OFF"
 end
