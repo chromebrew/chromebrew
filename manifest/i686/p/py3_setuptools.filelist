@@ -31,12 +31,12 @@
 /usr/local/lib/python3.13/site-packages/pkg_resources/tests/test_pkg_resources.py
 /usr/local/lib/python3.13/site-packages/pkg_resources/tests/test_resources.py
 /usr/local/lib/python3.13/site-packages/pkg_resources/tests/test_working_set.py
-/usr/local/lib/python3.13/site-packages/setuptools-75.7.0.post20250106-py3.13.egg-info/PKG-INFO
-/usr/local/lib/python3.13/site-packages/setuptools-75.7.0.post20250106-py3.13.egg-info/SOURCES.txt
-/usr/local/lib/python3.13/site-packages/setuptools-75.7.0.post20250106-py3.13.egg-info/dependency_links.txt
-/usr/local/lib/python3.13/site-packages/setuptools-75.7.0.post20250106-py3.13.egg-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/setuptools-75.7.0.post20250106-py3.13.egg-info/requires.txt
-/usr/local/lib/python3.13/site-packages/setuptools-75.7.0.post20250106-py3.13.egg-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/setuptools-75.8.0.post20250109-py3.13.egg-info/PKG-INFO
+/usr/local/lib/python3.13/site-packages/setuptools-75.8.0.post20250109-py3.13.egg-info/SOURCES.txt
+/usr/local/lib/python3.13/site-packages/setuptools-75.8.0.post20250109-py3.13.egg-info/dependency_links.txt
+/usr/local/lib/python3.13/site-packages/setuptools-75.8.0.post20250109-py3.13.egg-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/setuptools-75.8.0.post20250109-py3.13.egg-info/requires.txt
+/usr/local/lib/python3.13/site-packages/setuptools-75.8.0.post20250109-py3.13.egg-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/setuptools/__init__.py
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/_core_metadata.cpython-313.pyc
@@ -48,6 +48,7 @@
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/_path.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/_reqs.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/_shutil.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/setuptools/__pycache__/_static.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/archive_util.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/build_meta.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/depends.cpython-313.pyc
@@ -265,6 +266,7 @@
 /usr/local/lib/python3.13/site-packages/setuptools/_path.py
 /usr/local/lib/python3.13/site-packages/setuptools/_reqs.py
 /usr/local/lib/python3.13/site-packages/setuptools/_shutil.py
+/usr/local/lib/python3.13/site-packages/setuptools/_static.py
 /usr/local/lib/python3.13/site-packages/setuptools/_vendor/__pycache__/typing_extensions.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/_vendor/autocommand-2.2.2.dist-info/INSTALLER
 /usr/local/lib/python3.13/site-packages/setuptools/_vendor/autocommand-2.2.2.dist-info/LICENSE
