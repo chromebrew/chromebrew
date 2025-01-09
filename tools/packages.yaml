@@ -8165,6 +8165,11 @@ url: https://www.libsdl.org/projects/SDL_ttf/release/
 activity: medium
 ---
 kind: url
+name: seamonkey
+url: https://www.seamonkey-project.org/releases/
+activity: high
+---
+kind: url
 name: seatd
 url: hhttps://git.sr.ht/~kennylevinsen/seatd/refs
 activity: medium
