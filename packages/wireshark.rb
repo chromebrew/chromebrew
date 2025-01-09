@@ -16,7 +16,7 @@ class Wireshark < CMake
   binary_sha256({
     aarch64: '7b8aa126fcb06deb4739b1a24bc7e1bf27c3b32cb9b45157198ea2f604cab53d',
      armv7l: '7b8aa126fcb06deb4739b1a24bc7e1bf27c3b32cb9b45157198ea2f604cab53d',
-       i686: 'ddd5018c138d0fb411d99c857aecac9902bcee75ab398c6e6373da13abfd735d',
+       i686: '5b0700fb97ce474fedb1edefb347653c5844457f45ce51059e4c6bde14768fa9',
      x86_64: '40d21fcdfe0d7bac9c2db677054b94ca03ebf5f1b707ba93d58e2e88fe3d90d8'
   })
 
