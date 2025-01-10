@@ -3,7 +3,7 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.83.0'
+  version '1.84.0'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
@@ -11,10 +11,10 @@ class Rust < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9ce980874de612ef89c9cf8fc96e04659e7b8a91c90a4a7300e1cede8500a358',
-     armv7l: '9ce980874de612ef89c9cf8fc96e04659e7b8a91c90a4a7300e1cede8500a358',
-       i686: '5c9044a40cb6951bb6f447c326855d4b2c8f7815d8bd12bed28c45f7a0dbaa62',
-     x86_64: '30a655d68c8690b9301d642ebdd09e8184da6213ca760f3937d9693ce9d2a29b'
+    aarch64: '99b20a3be1f21a2aba6c693cbc5390367e91495c0112889fc027b1fc79a22c91',
+     armv7l: '99b20a3be1f21a2aba6c693cbc5390367e91495c0112889fc027b1fc79a22c91',
+       i686: '3fc085f957d8765f930b5e40402448abf7274d87286ed540e3e94b6ce1b32bef',
+     x86_64: '77bfcadfe9c255b488630a48a6407b370a119582f4f5507f4f0aebdbe835e43a'
   })
 
   depends_on 'gcc_lib' # R
@@ -39,9 +39,6 @@ class Rust < Package
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/rustup")
     system "RUSTFLAGS='-Clto=thin' bash ./rustup-init.sh -y --no-modify-path --default-host #{default_host} --default-toolchain #{version} --profile minimal"
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/bash-completion/completions/")
-    # FileUtils.install "#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/etc/bash_completion.d/cargo",
-    #                   "#{CREW_DEST_PREFIX}/share/bash-completion/completions/cargo", mode: 0o644
-    # FileUtils.rm("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/etc/bash_completion.d/cargo")
     FileUtils.touch "#{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
     FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/share/man/",
                  "#{CREW_DEST_PREFIX}/share/")
@@ -83,15 +80,9 @@ class Rust < Package
   end
 
   def self.postremove
-    config_dirs = %W[#{HOME}/.rustup #{CREW_PREFIX}/share/rustup #{HOME}/.cargo #{CREW_PREFIX}/share/cargo]
-    print config_dirs
-    print "\nWould you like to remove the config directories above? [y/N] "
-    case $stdin.gets.chomp.downcase
-    when 'y', 'yes'
-      FileUtils.rm_rf config_dirs
-      puts "#{config_dirs} removed.".lightgreen
-    else
-      puts "#{config_dirs} saved.".lightgreen
-    end
+    Package.agree_to_remove("#{HOME}/.rustup")
+    Package.agree_to_remove("#{CREW_PREFIX}/share/rustup")
+    Package.agree_to_remove("#{HOME}/.cargo")
+    Package.agree_to_remove("#{CREW_PREFIX}/share/cargo")
   end
 end
