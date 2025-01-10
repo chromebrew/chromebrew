@@ -136,6 +136,8 @@
 /usr/local/share/man/man1/gh-release-view.1.zst
 /usr/local/share/man/man1/gh-release.1.zst
 /usr/local/share/man/man1/gh-repo-archive.1.zst
+/usr/local/share/man/man1/gh-repo-autolink-list.1.zst
+/usr/local/share/man/man1/gh-repo-autolink.1.zst
 /usr/local/share/man/man1/gh-repo-clone.1.zst
 /usr/local/share/man/man1/gh-repo-create.1.zst
 /usr/local/share/man/man1/gh-repo-delete.1.zst
