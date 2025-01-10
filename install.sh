@@ -54,7 +54,7 @@ if [ -f /etc/lsb-release ]; then
     echo_info "Run 'CREW_FORCE_INSTALL=1 bash <(curl -Ls git.io/vddgY) && . ~/.bashrc' to perform install anyway."
     exit 1
   fi
-  export CHROMEOS_RELEASE_CHROME_MILESTONE="$(lsbval CHROMEOS_RELEASE_CHROME_MILESTONE)"
+  CHROMEOS_RELEASE_CHROME_MILESTONE="$(lsbval CHROMEOS_RELEASE_CHROME_MILESTONE)"
 else
   echo_info "Unable to detect system information, installation will continue."
 fi
@@ -215,6 +215,8 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
       BOOTSTRAP_PACKAGES+=' glibc_lib235 gmp'
     elif (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "122" )); then
       # Append the correct packages for systems running M123 onwards.
+      # X86_64 requires patchelf patching of the system libc.so.6.
+      [[ "$ARCH" == "x86_64" ]] && BOOTSTRAP_PACKAGES+=' patchelf'
       BOOTSTRAP_PACKAGES+=' glibc_lib237 gmp'
     fi
   fi
@@ -279,13 +281,46 @@ function extract_install () {
     rm -rf "${CREW_DEST_DIR}"
     mkdir "${CREW_DEST_DIR}"
     cd "${CREW_DEST_DIR}"
-
+    XZ_STATUS=
+    if ! xz --help &>/dev/null; then
+      XZ_STATUS="broken"
+    elif [[ -f /usr/bin/xz ]] && env -u LD_LIBRARY_PATH /usr/bin/xz --help &>/dev/null; then
+      XZ_STATUS="system"
+    fi
+    ZSTD_STATUS=
+    if ! zstd --help &>/dev/null; then
+      ZSTD_STATUS="broken"
+    elif [[ -f /usr/bin/xz ]] && env -u LD_LIBRARY_PATH /usr/bin/xz --help &>/dev/null; then
+      ZSTD_STATUS="system"
+    fi
+    [[ -z ${XZ_STATUS} ]] || echo_info "XZ: ${XZ_STATUS}"
+    [[ -z ${ZSTD_STATUS} ]] || echo_info "ZSTD: ${ZSTD_STATUS}"
     # Extract and install.
     echo_intra "Extracting ${1} ..."
-    if [[ "${2##*.}" == "zst" ]] || zstd --help 2>/dev/null| grep -q lzma; then
-      tar -I zstd -xpf ../"${2}"
-    else
-      tar xpf ../"${2}"
+    if [[ "${2##*.}" == "xz" ]]; then
+      if [[ -z $XZ_STATUS ]]; then
+        tar xpf ../"${2}"
+      elif [[ $XZ_STATUS == 'system' ]]; then
+       env -u LD_LIBRARY_PATH tar -I /usr/bin/xz -xpf ../"${2}"
+      elif [[ $XZ_STATUS == 'broken' ]] && [[ -z $ZSTD_STATUS ]] && zstd --help 2>/dev/null| grep -q lzma; then
+        tar -I zstd -xpf ../"${2}"
+      elif [[ $XZ_STATUS == 'broken' ]] && [[ $ZSTD_STATUS == 'broken' ]]; then
+        echo_error "xz and zstd are broken. Install will fail." && exit 1
+      elif [[ $XZ_STATUS == 'broken' ]] && [[ $ZSTD_STATUS == 'system' ]]; then
+        env -u LD_LIBRARY_PATH tar -I /usr/bin/zstd -xpf ../"${2}"
+      fi
+    fi
+    if [[ "${2##*.}" == "zst" ]]; then
+      if [[ -z $ZSTD_STATUS ]] && tar --usage | grep -q zstd ; then
+        tar xpf ../"${2}"
+      elif [[ $ZSTD_STATUS == 'system' ]]; then
+        env -u LD_LIBRARY_PATH tar -I /usr/bin/zstd -xpf ../"${2}"
+      elif [[ $ZSTD_STATUS == 'broken' ]]; then
+        echo_error "zstd is broken. Install will fail."
+        exit 1
+      else
+        tar -I zstd -xpf ../"${2}"
+      fi
     fi
 
     echo_intra "Installing ${1} ..."
@@ -318,7 +353,7 @@ function install_ruby_gem () {
   done
 }
 
-echo_info "Downloading Bootstrap packages...\n"
+echo_info "Downloading Bootstrap packages:\n${BOOTSTRAP_PACKAGES}"
 
 # Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
 # x86_64, and the mandb postinstall doesn't fail in newer arm
@@ -357,6 +392,14 @@ echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
+
+if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "122" )) && [[ "$ARCH" == "x86_64" ]]; then
+  echo_info "This Milestone (M${CHROMEOS_RELEASE_CHROME_MILESTONE}) needs to have libc.so.6 patched for the Chromebrew Glibc."
+  cp "/lib${LIB_SUFFIX}/libc.so.6" /tmp/libc.so.6.tmp
+  patchelf --add-needed libC.so.6 /tmp/libc.so.6.tmp
+  env -u LD_LIBRARY_PATH cp /tmp/libc.so.6.tmp "${CREW_PREFIX}/lib${LIB_SUFFIX}/libc.so.6"
+  rm /tmp/libc.so.6.tmp
+fi
 
 echo_info 'Updating RubyGems...'
 gem sources -u
@@ -405,7 +448,7 @@ if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
   echo_error "Please report this here:"
   echo_error "https://github.com/chromebrew/chromebrew/issues\n\n"
 else
-  echo_info "Synchronizng local package repo..."
+  echo_info "Synchronizing local package repo..."
 
   cd "${CREW_LIB_PATH}"
 
