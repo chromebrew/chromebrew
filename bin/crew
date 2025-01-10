@@ -459,7 +459,6 @@ def download
   end
 
   source = @pkg.source?(@device[:architecture])
-
   uri = URI.parse url
   filename = File.basename(uri.path)
   # # If we're downloading a binary, reset the filename to what it would have been if we didn't download from the API.
@@ -471,7 +470,7 @@ def download
 
   if !url
     abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
-  elsif url.casecmp?('SKIP') || (@pkg.no_source_build? || @pkg.gem_compile_needed?)
+  elsif url.casecmp?('SKIP') || ((@pkg.no_source_build? || @pkg.gem_compile_needed?) && caller.grep(/download_command/).empty?)
     puts 'Skipping source download...'
   elsif @pkg.build_from_source
     puts 'Downloading source...'
@@ -488,7 +487,7 @@ def download
     # We want to skip when no_source_build is true during the build,
     # but when we have built a binary we are in upgrade, and we need
     # download since we need to extract the just generated binary.
-    next if (@pkg.no_source_build? || @pkg.gem_compile_needed?) && !@pkg.in_upgrade && !@pkg.in_install
+    next if (@pkg.no_source_build? || @pkg.gem_compile_needed?) && !@pkg.in_upgrade && !@pkg.in_install && caller.grep(/download_command/).empty?
     case File.basename(filename)
     # Sources that download with our internal downloader
     when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i, /\.gem$/i
