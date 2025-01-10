@@ -13,7 +13,7 @@ class Git < Meson
   binary_sha256({
     aarch64: 'cc131c193087acc6435d5bbc5e128a78bb0b21a3b230cd21a09f653add0e26d4',
      armv7l: 'cc131c193087acc6435d5bbc5e128a78bb0b21a3b230cd21a09f653add0e26d4',
-       i686: '5ee9c7364e7d6371f4db19113587e797e48a122d597500456a5c0dc703d29491',
+       i686: 'e39fb150bd59676181e9b6df3c7e84263b4e40552706c92624e188b008161728',
      x86_64: '82e81a9e51da7914d9edb19d5cf7c306efaca52b692709182bb0c3ea92b4a141'
   })
 
@@ -21,11 +21,11 @@ class Git < Meson
   depends_on 'curl' # R
   depends_on 'expat' # R
   depends_on 'glibc' # R
-  depends_on 'libunistring' # R
   depends_on 'pcre2' # R
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'xmlto' => :build
   depends_on 'zlib' # R
+  depends_on 'openssl' # R
 
   print_source_bashrc
   # cmake_build_relative_dir 'contrib/buildsystems'
