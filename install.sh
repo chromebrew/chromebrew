@@ -290,7 +290,7 @@ function extract_install () {
     ZSTD_STATUS=
     if ! zstd --help &>/dev/null; then
       ZSTD_STATUS="broken"
-    elif [[ -f /usr/bin/xz ]] && env -u LD_LIBRARY_PATH /usr/bin/xz --help &>/dev/null; then
+    elif [[ -f /usr/bin/zstd ]] && env -u LD_LIBRARY_PATH /usr/bin/zstd --help &>/dev/null; then
       ZSTD_STATUS="system"
     fi
     [[ -z ${XZ_STATUS} ]] || echo_info "XZ: ${XZ_STATUS}"
