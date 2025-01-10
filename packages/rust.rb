@@ -3,7 +3,7 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.83.0'
+  version '1.84.0'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
@@ -39,9 +39,6 @@ class Rust < Package
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/rustup")
     system "RUSTFLAGS='-Clto=thin' bash ./rustup-init.sh -y --no-modify-path --default-host #{default_host} --default-toolchain #{version} --profile minimal"
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/bash-completion/completions/")
-    # FileUtils.install "#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/etc/bash_completion.d/cargo",
-    #                   "#{CREW_DEST_PREFIX}/share/bash-completion/completions/cargo", mode: 0o644
-    # FileUtils.rm("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/etc/bash_completion.d/cargo")
     FileUtils.touch "#{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
     FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/share/man/",
                  "#{CREW_DEST_PREFIX}/share/")
@@ -83,15 +80,9 @@ class Rust < Package
   end
 
   def self.postremove
-    config_dirs = %W[#{HOME}/.rustup #{CREW_PREFIX}/share/rustup #{HOME}/.cargo #{CREW_PREFIX}/share/cargo]
-    print config_dirs
-    print "\nWould you like to remove the config directories above? [y/N] "
-    case $stdin.gets.chomp.downcase
-    when 'y', 'yes'
-      FileUtils.rm_rf config_dirs
-      puts "#{config_dirs} removed.".lightgreen
-    else
-      puts "#{config_dirs} saved.".lightgreen
-    end
+    Package.agree_to_remove("#{HOME}/.rustup")
+    Package.agree_to_remove("#{CREW_PREFIX}/share/rustup")
+    Package.agree_to_remove("#{HOME}/.cargo")
+    Package.agree_to_remove("#{CREW_PREFIX}/share/cargo")
   end
 end
