@@ -78,49 +78,49 @@ jobs:
       - name: Export variables to github context
         run: |
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> $GITHUB_ENV
-            echo "NON_PKG_CHANGED_FILES=$(echo "${{ steps.non-pkg-changed-files.outputs.all_changed_files }}" | xargs)" >> $GITHUB_ENV
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+            echo "NON_PKG_CHANGED_FILES=$(echo "${{ steps.non-pkg-changed-files.outputs.all_changed_files }}" | xargs)" >> "$GITHUB_ENV"
       - name: Determine glibc and architecture package compatibility
         run: |
             # If a package doesnt have a min_glibc value, or if its below 2.27, add it to GLIBC_227_COMPATIBLE_PACKAGES.
-            export GLIBC_227_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do if grep -q min_glibc packages/${i}.rb; then grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.27}' || echo ${i} ; else echo ${i} ; fi ; done | xargs -r)"
+            GLIBC_227_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do if grep -q min_glibc packages/"${i}".rb; then grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.27}' || echo "${i}" ; else echo "${i}" ; fi ; done | xargs -r)"
             if [[ -n ${GLIBC_227_COMPATIBLE_PACKAGES} ]]; then
-              echo "GLIBC_227_COMPATIBLE_PACKAGES=${GLIBC_227_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
+              echo "GLIBC_227_COMPATIBLE_PACKAGES=${GLIBC_227_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
               echo "PR #${{ github.event.pull_request.number }} has these possibly Glibc 2.27 compatible packages: ${GLIBC_227_COMPATIBLE_PACKAGES}"
             fi
 
             # If a package doesnt have a min_glibc value, or if it is below 2.32, add it to GLIBC_232_COMPATIBLE_PACKAGES.
-            export GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo ${i} ; done | xargs)"
+            GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo "${i}" ; done | xargs)"
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
-              echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
+              echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
               echo "Branch ${{ github.ref_name }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
             fi
 
             # If a package doesnt have a min_glibc value, or if it is below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
-            export GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo ${i} ; done | xargs)"
+            GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo "${i}" ; done | xargs)"
             if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
-              echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> $GITHUB_ENV
+              echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
               echo "PR #${{ github.event.pull_request.number }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
             fi
 
             # If a package has a compatibility of 'all' or one that includes 'x86_64', add it to x86_64_PACKAGES.
-            export x86_64_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*x86_64" packages/${i}.rb && echo ${i}; done | xargs)"
+            x86_64_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*x86_64" packages/"${i}".rb && echo "${i}"; done | xargs)"
             if [[ -n ${x86_64_PACKAGES} ]]; then
-              echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> $GITHUB_ENV
+              echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_ENV"
               echo "PR #${{ github.event.pull_request.number }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to ARMV7L_PACKAGES.
-            export ARMV7L_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/${i}.rb && echo ${i}; done | xargs)"
+            ARMV7L_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/"${i}".rb && echo "${i}"; done | xargs)"
             if [[ -n ${ARMV7L_PACKAGES} ]]; then
-              echo "ARMV7L_PACKAGES=${ARMV7L_PACKAGES}" >> $GITHUB_ENV
+              echo "ARMV7L_PACKAGES=${ARMV7L_PACKAGES}" >> "$GITHUB_ENV"
               echo "PR #${{ github.event.pull_request.number }} has these armv7l compatible packages: ${ARMV7L_PACKAGES}"
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'i686', add it to i686_PACKAGES.
-            export i686_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*i686" packages/${i}.rb && echo ${i}; done | xargs)"
+            i686_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*i686" packages/"${i}".rb && echo "${i}"; done | xargs)"
             if [[ -n ${i686_PACKAGES} ]]; then
-              echo "i686_PACKAGES=${i686_PACKAGES}" >> $GITHUB_ENV
+              echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_ENV"
               echo "PR #${{ github.event.pull_request.number }} has these i686 compatible packages: ${i686_PACKAGES}"
             fi
       - name: Export target docker container to github context
@@ -131,32 +131,32 @@ jobs:
               x86_64)
                 # Export the x86_64 container depending on whether this PR updates packages with appropriate minimum glibc.
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=nocturne-x86_64.m97" >> $GITHUB_ENV
+                    echo "CONTAINER=nocturne-x86_64.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=hatch-x86_64.m131" >> $GITHUB_ENV
+                    echo "CONTAINER=hatch-x86_64.m131" >> "$GITHUB_ENV"
                 else
-                    echo "CONTAINER=nocturne-x86_64.m90" >> $GITHUB_ENV
+                    echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 fi
-                echo "PLATFORM=linux/amd64" >> $GITHUB_ENV
-                echo "LIB_SUFFIX=64" >> $GITHUB_ENV
+                echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
+                echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
               ;;
               armv7l)
                 # Export the armv7l container depending on whether this PR updates packages with appropriate minimum glibc.
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=fievel-armv7l.m97" >> $GITHUB_ENV
+                    echo "CONTAINER=fievel-armv7l.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=strongbad-armv7l.m131" >> $GITHUB_ENV
+                    echo "CONTAINER=strongbad-armv7l.m131" >> "$GITHUB_ENV"
                 else
-                    echo "CONTAINER=fievel-armv7l.m91" >> $GITHUB_ENV
+                    echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
                 fi
-                echo "PLATFORM=linux/arm/v7" >> $GITHUB_ENV
-                echo "LIB_SUFFIX=" >> $GITHUB_ENV
+                echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
+                echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
               ;;
               i686)
                 # There is only one i686 container based upon M58 with glibc 2.23.
-                echo "CONTAINER=alex-i686.m58" >> $GITHUB_ENV
-                echo "PLATFORM=linux/386" >> $GITHUB_ENV
-                echo "LIB_SUFFIX=" >> $GITHUB_ENV
+                echo "CONTAINER=alex-i686.m58" >> "$GITHUB_ENV"
+                echo "PLATFORM=linux/386" >> "$GITHUB_ENV"
+                echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
               ;;
             esac
       - name: Run unit tests
@@ -173,23 +173,23 @@ jobs:
                 export CREW_BRANCH="${{ github.head_ref }}"
                 ;;
             esac
-            if [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]); then
+            if [ -z "${NON_PKG_CHANGED_FILES}" ] && { [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]; }; then
               # Exit the arm container if there are neither non-package changed files nor armv7l compatible packages.
               echo "Skipping armv7l container unit tests."
               exit 0
-            elif [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]); then
+            elif [ -z "${NON_PKG_CHANGED_FILES}" ] && { [ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]; }; then
               # Exit the x86_64 container if there are neither non-package changed files nor x86_64 compatible packages.
               echo "Skipping x86_64 container unit tests."
               exit 0
-            elif [ -z "${NON_PKG_CHANGED_FILES}" ] && ([ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]); then
+            elif [ -z "${NON_PKG_CHANGED_FILES}" ] && { [ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]; }; then
               # Exit the i686 container if there are neither non-package changed files nor i686 compatible packages.
               echo "Skipping i686 container unit tests."
               exit 0
             else
-              docker pull --platform ${PLATFORM} satmandu/crewbuild:${CONTAINER}
+              docker pull --platform "${PLATFORM}" satmandu/crewbuild:"${CONTAINER}"
               docker run \
                 --rm \
-                --platform ${PLATFORM} \
+                --platform "${PLATFORM}" \
                 --privileged \
                 -u chronos \
                 -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
