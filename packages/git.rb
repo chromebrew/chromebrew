@@ -7,7 +7,7 @@ class Git < Meson
   license 'GPL-2'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-#{version}.tar.xz"
-  source_sha256 '1ce114da88704271b43e027c51e04d9399f8c88e9ef7542dae7aebae7d87bc4e'
+  source_sha256 '4803b809c42696b3b8cce6b0ba6de26febe1197f853daf930a484db93c1ad0d5'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -23,6 +23,7 @@ class Git < Meson
   depends_on 'glibc' # R
   depends_on 'libunistring' # R
   depends_on 'pcre2' # R
+  depends_on 'ruby_asciidoctor' => :build
   depends_on 'zlib' # R
 
   print_source_bashrc
@@ -38,16 +39,16 @@ class Git < Meson
   def self.patch
     # Patch to prevent error function conflict with libidn2
     # By replacing all calls to error with git_error.
-    system "sed -i 's,^#undef error$,#undef git_error,' usage.c"
-    sedcmd = 's/\([[:blank:]]\)error(/\1git_error(/'.dump
-    system "grep -rl '[[:space:]]error(' . | xargs sed -i #{sedcmd}"
-    sedcmd2 = 's/\([[:blank:]]\)error (/\1git_error (/'.dump
-    system "grep -rl '[[:space:]]error (' . | xargs sed -i #{sedcmd2}"
-    system "grep -rl ' !!error(' . | xargs sed -i 's/ !!error(/ !!git_error(/g'"
-    system "sed -i 's/#define git_error(...) (error(__VA_ARGS__), const_error())/#define git_error(...) (git_error(__VA_ARGS__), const_error())/' git-compat-util.h"
+    # system "sed -i 's,^#undef error$,#undef git_error,' usage.c"
+    # sedcmd = 's/\([[:blank:]]\)error(/\1git_error(/'.dump
+    # system "grep -rl '[[:space:]]error(' . | xargs sed -i #{sedcmd}"
+    # sedcmd2 = 's/\([[:blank:]]\)error (/\1git_error (/'.dump
+    # system "grep -rl '[[:space:]]error (' . | xargs sed -i #{sedcmd2}"
+    # system "grep -rl ' !!error(' . | xargs sed -i 's/ !!error(/ !!git_error(/g'"
+    # system "sed -i 's/#define git_error(...) (error(__VA_ARGS__), const_error())/#define git_error(...) (git_error(__VA_ARGS__), const_error())/' git-compat-util.h"
     # CMake patches.
     # Avoid undefined reference to `trace2_collect_process_info' &  `obstack_free'
-    system "sed -i 's,compat_SOURCES unix-socket.c unix-stream-server.c,compat_SOURCES unix-socket.c unix-stream-server.c compat/linux/procinfo.c compat/obstack.c,g' contrib/buildsystems/CMakeLists.txt"
+    # system "sed -i 's,compat_SOURCES unix-socket.c unix-stream-server.c,compat_SOURCES unix-socket.c unix-stream-server.c compat/linux/procinfo.c compat/obstack.c,g' contrib/buildsystems/CMakeLists.txt"
     # The VCPKG optout in this CmakeLists.txt file is quite broken.
     # system "sed -i 's/set(USE_VCPKG/#set(USE_VCPKG/g' contrib/buildsystems/CMakeLists.txt"
     # system "sed -i 's,set(PERL_PATH /usr/bin/perl),set(PERL_PATH #{CREW_PREFIX}/bin/perl),g' contrib/buildsystems/CMakeLists.txt"
