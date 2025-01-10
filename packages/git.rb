@@ -24,6 +24,7 @@ class Git < Meson
   depends_on 'libunistring' # R
   depends_on 'pcre2' # R
   depends_on 'ruby_asciidoctor' => :build
+  depends_on 'xmlto' => :build
   depends_on 'zlib' # R
 
   print_source_bashrc
