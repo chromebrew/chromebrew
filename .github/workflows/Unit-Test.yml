@@ -162,6 +162,7 @@ jobs:
       - name: Run unit tests
         env:
           GITHUB_EVENT: ${{ github.event_name }}
+          HEAD_REF: ${{ github.head_ref }}
         run: |
             case $GITHUB_EVENT in
               check_run | merge_group | push | workflow_run | workflow_dispatch)
@@ -170,7 +171,7 @@ jobs:
                 ;;
               pull_request)
                 export CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}"
-                export CREW_BRANCH="${{ github.head_ref }}"
+                export CREW_BRANCH="${HEAD_REF}"
                 ;;
             esac
             if [ -z "${NON_PKG_CHANGED_FILES}" ] && { [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]; }; then
