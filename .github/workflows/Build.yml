@@ -348,12 +348,12 @@ jobs:
           cat /tmp/pr.txt
           export PR_NUMBER=$(gh pr create --title "AutoBuild: ${{ env.BRANCH }} started at ${TIMESTAMP}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
-          echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
+          echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
       - name: Trigger Unit Test Workflow & Add Reviewer Team
         env:
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
         run: |
           echo "Flipping pr ${PR_NUMBER} state."
-          gh pr close ${PR_NUMBER} && gh pr reopen ${PR_NUMBER}
-          gh pr edit ${PR_NUMBER} --add-reviewer chromebrew/active
-          gh pr merge ${PR_NUMBER} --auto
+          gh pr close "${PR_NUMBER}" && gh pr reopen "${PR_NUMBER}"
+          gh pr edit "${PR_NUMBER}" --add-reviewer chromebrew/active
+          gh pr merge "${PR_NUMBER}" --auto
