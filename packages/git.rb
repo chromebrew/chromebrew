@@ -1,9 +1,9 @@
-require 'buildsystems/cmake'
+require 'buildsystems/meson'
 
-class Git < CMake
+class Git < Meson
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.47.1'
+  version '2.48.0'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-#{version}.tar.xz"
@@ -26,8 +26,14 @@ class Git < CMake
   depends_on 'zlib' # R
 
   print_source_bashrc
-  cmake_build_relative_dir 'contrib/buildsystems'
-  cmake_options '-DUSE_VCPKG=FALSE'
+  # cmake_build_relative_dir 'contrib/buildsystems'
+  # cmake_options '-DUSE_VCPKG=FALSE'
+  meson_options "-Ddefault_pager=most \
+        -Ddocs=man \
+        -Dgitattributes=#{CREW_PREFIX}/etc/gitattributes \
+        -Dgitconfig=#{CREW_PREFIX}/etc/gitconfig \
+        -Dgitweb=disabled \
+        -Dsane_tool_path=#{CREW_PREFIX}/bin"
 
   def self.patch
     # Patch to prevent error function conflict with libidn2
@@ -43,19 +49,19 @@ class Git < CMake
     # Avoid undefined reference to `trace2_collect_process_info' &  `obstack_free'
     system "sed -i 's,compat_SOURCES unix-socket.c unix-stream-server.c,compat_SOURCES unix-socket.c unix-stream-server.c compat/linux/procinfo.c compat/obstack.c,g' contrib/buildsystems/CMakeLists.txt"
     # The VCPKG optout in this CmakeLists.txt file is quite broken.
-    system "sed -i 's/set(USE_VCPKG/#set(USE_VCPKG/g' contrib/buildsystems/CMakeLists.txt"
-    system "sed -i 's,set(PERL_PATH /usr/bin/perl),set(PERL_PATH #{CREW_PREFIX}/bin/perl),g' contrib/buildsystems/CMakeLists.txt"
-    system "sed -i 's,#!/usr/bin,#!#{CREW_PREFIX}/bin,g' contrib/buildsystems/CMakeLists.txt"
+    # system "sed -i 's/set(USE_VCPKG/#set(USE_VCPKG/g' contrib/buildsystems/CMakeLists.txt"
+    # system "sed -i 's,set(PERL_PATH /usr/bin/perl),set(PERL_PATH #{CREW_PREFIX}/bin/perl),g' contrib/buildsystems/CMakeLists.txt"
+    # system "sed -i 's,#!/usr/bin,#!#{CREW_PREFIX}/bin,g' contrib/buildsystems/CMakeLists.txt"
     # Without the following DESTDIR doesn't work.
-    system "sed -i 's,${CMAKE_INSTALL_PREFIX}/bin/git,${CMAKE_BINARY_DIR}/git,g' contrib/buildsystems/CMakeLists.txt"
-    system "sed -i 's,${CMAKE_INSTALL_PREFIX}/bin/git,\\\\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/git,g' contrib/buildsystems/CMakeLists.txt"
-    system "sed -i 's,${CMAKE_INSTALL_PREFIX},\\\\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX},g' contrib/buildsystems/CMakeLists.txt"
+    # system "sed -i 's,${CMAKE_INSTALL_PREFIX}/bin/git,${CMAKE_BINARY_DIR}/git,g' contrib/buildsystems/CMakeLists.txt"
+    # system "sed -i 's,${CMAKE_INSTALL_PREFIX}/bin/git,\\\\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/git,g' contrib/buildsystems/CMakeLists.txt"
+    # system "sed -i 's,${CMAKE_INSTALL_PREFIX},\\\\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX},g' contrib/buildsystems/CMakeLists.txt"
 
     # Git 2.47.0 broke cmake out of tree builds.
-    system "sed -i 's,file(WRITE \"\${CMAKE_BINARY_DIR}/t/unit-tests,file(WRITE \"\${CMAKE_SOURCE_DIR}/t/unit-tests,g' contrib/buildsystems/CMakeLists.txt"
+    # system "sed -i 's,file(WRITE \"\${CMAKE_BINARY_DIR}/t/unit-tests,file(WRITE \"\${CMAKE_SOURCE_DIR}/t/unit-tests,g' contrib/buildsystems/CMakeLists.txt"
   end
 
-  cmake_build_extras do
+  meson_build_extras do
     git_env = <<~EOF
 
       GIT_PS1_SHOWDIRTYSTATE=yes
@@ -76,7 +82,7 @@ class Git < CMake
     File.write('contrib/completion/git-prompt.sh', git_env, mode: 'a')
   end
 
-  cmake_install_extras do
+  meson_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/git-completion"
     FileUtils.cp_r Dir.glob('contrib/completion/.'), "#{CREW_DEST_PREFIX}/share/git-completion/"
 
