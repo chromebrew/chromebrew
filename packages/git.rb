@@ -21,47 +21,21 @@ class Git < Meson
   depends_on 'curl' # R
   depends_on 'expat' # R
   depends_on 'glibc' # R
+  depends_on 'openssl' # R
   depends_on 'pcre2' # R
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'xmlto' => :build
   depends_on 'zlib' # R
-  depends_on 'openssl' # R
 
   print_source_bashrc
-  # cmake_build_relative_dir 'contrib/buildsystems'
-  # cmake_options '-DUSE_VCPKG=FALSE'
+  run_tests
+
   meson_options "-Ddefault_pager=most \
         -Ddocs=man \
         -Dgitattributes=#{CREW_PREFIX}/etc/gitattributes \
         -Dgitconfig=#{CREW_PREFIX}/etc/gitconfig \
         -Dgitweb=disabled \
         -Dsane_tool_path=#{CREW_PREFIX}/bin"
-
-  def self.patch
-    # Patch to prevent error function conflict with libidn2
-    # By replacing all calls to error with git_error.
-    # system "sed -i 's,^#undef error$,#undef git_error,' usage.c"
-    # sedcmd = 's/\([[:blank:]]\)error(/\1git_error(/'.dump
-    # system "grep -rl '[[:space:]]error(' . | xargs sed -i #{sedcmd}"
-    # sedcmd2 = 's/\([[:blank:]]\)error (/\1git_error (/'.dump
-    # system "grep -rl '[[:space:]]error (' . | xargs sed -i #{sedcmd2}"
-    # system "grep -rl ' !!error(' . | xargs sed -i 's/ !!error(/ !!git_error(/g'"
-    # system "sed -i 's/#define git_error(...) (error(__VA_ARGS__), const_error())/#define git_error(...) (git_error(__VA_ARGS__), const_error())/' git-compat-util.h"
-    # CMake patches.
-    # Avoid undefined reference to `trace2_collect_process_info' &  `obstack_free'
-    # system "sed -i 's,compat_SOURCES unix-socket.c unix-stream-server.c,compat_SOURCES unix-socket.c unix-stream-server.c compat/linux/procinfo.c compat/obstack.c,g' contrib/buildsystems/CMakeLists.txt"
-    # The VCPKG optout in this CmakeLists.txt file is quite broken.
-    # system "sed -i 's/set(USE_VCPKG/#set(USE_VCPKG/g' contrib/buildsystems/CMakeLists.txt"
-    # system "sed -i 's,set(PERL_PATH /usr/bin/perl),set(PERL_PATH #{CREW_PREFIX}/bin/perl),g' contrib/buildsystems/CMakeLists.txt"
-    # system "sed -i 's,#!/usr/bin,#!#{CREW_PREFIX}/bin,g' contrib/buildsystems/CMakeLists.txt"
-    # Without the following DESTDIR doesn't work.
-    # system "sed -i 's,${CMAKE_INSTALL_PREFIX}/bin/git,${CMAKE_BINARY_DIR}/git,g' contrib/buildsystems/CMakeLists.txt"
-    # system "sed -i 's,${CMAKE_INSTALL_PREFIX}/bin/git,\\\\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/git,g' contrib/buildsystems/CMakeLists.txt"
-    # system "sed -i 's,${CMAKE_INSTALL_PREFIX},\\\\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX},g' contrib/buildsystems/CMakeLists.txt"
-
-    # Git 2.47.0 broke cmake out of tree builds.
-    # system "sed -i 's,file(WRITE \"\${CMAKE_BINARY_DIR}/t/unit-tests,file(WRITE \"\${CMAKE_SOURCE_DIR}/t/unit-tests,g' contrib/buildsystems/CMakeLists.txt"
-  end
 
   meson_build_extras do
     git_env = <<~EOF
