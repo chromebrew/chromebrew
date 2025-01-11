@@ -13,7 +13,7 @@ class Doxygen < CMake
   binary_sha256({
     aarch64: '0af737ada31ad5ec8bdf9626ab99bbced14ac6f57f7443f45d76130aac7d3671',
      armv7l: '0af737ada31ad5ec8bdf9626ab99bbced14ac6f57f7443f45d76130aac7d3671',
-       i686: 'd0d056a617ba2a7bbc3b75de42a75f288da5f24419a3199b13840ccc1128d36c',
+       i686: 'a326ae94a2750aab1051ce0248c76aeb36a9a1358f8cf964c25ca23519d8dca9',
      x86_64: 'f5047b1651a0a7bd84ab4342d0e390f694e80a90bf43f9c11b35d5b38750d85c'
   })
 
