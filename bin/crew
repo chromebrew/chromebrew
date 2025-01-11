@@ -488,7 +488,7 @@ def download
     # We want to skip when no_source_build is true during the build,
     # but when we have built a binary we are in upgrade, and we need
     # download since we need to extract the just generated binary.
-    crewlog "(@pkg.no_source_build? || @pkg.gem_compile_needed?) && !@pkg.in_upgrade && !@pkg.in_install && caller.grep(/download_command/).empty?"
+    crewlog '(@pkg.no_source_build? || @pkg.gem_compile_needed?) && !@pkg.in_upgrade && !@pkg.in_install && caller.grep(/download_command/).empty?'
     crewlog "#{@pkg.no_source_build?} || #{@pkg.gem_compile_needed?} && #{!@pkg.in_upgrade} && #{!@pkg.in_install} && #{caller.grep(/download_command/).empty?}"
     next if (@pkg.no_source_build? || @pkg.gem_compile_needed?) && !@pkg.in_upgrade && !@pkg.in_install && caller.grep(/download_command/).empty?
     case File.basename(filename)
