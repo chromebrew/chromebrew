@@ -7950,6 +7950,11 @@ url: https://github.com/asciidoctor/asciidoctor/releases
 activity: medium
 ---
 kind: url
+name: ruby_byebug
+url: https://github.com/deivid-rodriguez/byebug/releases
+activity: low
+---
+kind: url
 name: ruby_concurrent_ruby
 url: https://github.com/ruby-concurrency/concurrent-ruby/releases
 activity: medium
