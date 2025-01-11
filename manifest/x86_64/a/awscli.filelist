@@ -5,13 +5,13 @@
 /usr/local/bin/aws_zsh_completer.sh
 /usr/local/etc/bash.d/aws
 /usr/local/etc/zsh.d/aws
-/usr/local/lib/python3.13/site-packages/awscli-1.36.37.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/awscli-1.36.37.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/awscli-1.36.37.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/awscli-1.36.37.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/awscli-1.36.37.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/awscli-1.36.37.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/awscli-1.36.37.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/awscli-1.36.38.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/awscli-1.36.38.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/awscli-1.36.38.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/awscli-1.36.38.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/awscli-1.36.38.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/awscli-1.36.38.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/awscli-1.36.38.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/awscli/__init__.py
 /usr/local/lib/python3.13/site-packages/awscli/__main__.py
 /usr/local/lib/python3.13/site-packages/awscli/__pycache__/__init__.cpython-313.pyc
@@ -500,6 +500,7 @@
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/create-authorizer.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/create-base-path-mapping.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/create-deployment.rst
+/usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/create-domain-name-access-association.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/create-domain-name.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/create-model.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/create-resource.rst
@@ -512,6 +513,7 @@
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/delete-base-path-mapping.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/delete-client-certificate.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/delete-deployment.rst
+/usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/delete-domain-name-access-association.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/delete-domain-name.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/delete-integration-response.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/delete-integration.rst
@@ -537,6 +539,7 @@
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/get-client-certificates.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/get-deployment.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/get-deployments.rst
+/usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/get-domain-name-access-associations.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/get-domain-name.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/get-domain-names.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/get-export.rst
@@ -565,6 +568,7 @@
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/put-method-response.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/put-method.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/put-rest-api.rst
+/usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/reject-domain-name-access-association.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/test-invoke-authorizer.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/test-invoke-method.rst
 /usr/local/lib/python3.13/site-packages/awscli/examples/apigateway/update-account.rst
