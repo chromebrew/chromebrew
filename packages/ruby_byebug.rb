@@ -1,7 +1,7 @@
 require 'buildsystems/ruby'
 
 class Ruby_byebug < RUBY
-  description '|- Byebug is a Ruby debugger.'
+  description 'Byebug is a Ruby debugger.'
   homepage 'https://github.com/deivid-rodriguez/byebug'
   version "11.1.3-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
