@@ -14,7 +14,7 @@ class Doxygen < CMake
     aarch64: '0af737ada31ad5ec8bdf9626ab99bbced14ac6f57f7443f45d76130aac7d3671',
      armv7l: '0af737ada31ad5ec8bdf9626ab99bbced14ac6f57f7443f45d76130aac7d3671',
        i686: 'a326ae94a2750aab1051ce0248c76aeb36a9a1358f8cf964c25ca23519d8dca9',
-     x86_64: 'f5047b1651a0a7bd84ab4342d0e390f694e80a90bf43f9c11b35d5b38750d85c'
+     x86_64: '11fd469f24e49b78d8bbb2a84cc00875679c39bbec68072ca4506002dc723f7d'
   })
 
   depends_on 'python3' => :build
