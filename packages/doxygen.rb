@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Doxygen < CMake
   description 'Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.'
   homepage 'https://www.doxygen.nl/'
-  version '1.13.1'
+  version '1.13.2'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/doxygen/doxygen.git'
