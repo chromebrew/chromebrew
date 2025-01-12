@@ -11,8 +11,8 @@ class Magic < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd79946662a86b2691f78b594ae0694ae07deb566848be63924fd00fafbe36693',
-     armv7l: 'd79946662a86b2691f78b594ae0694ae07deb566848be63924fd00fafbe36693',
+    aarch64: '1654ea716b488b5c01ac04c4ad96033b0d8449c09601c1271e05d24bb648d6d9',
+     armv7l: '1654ea716b488b5c01ac04c4ad96033b0d8449c09601c1271e05d24bb648d6d9',
      x86_64: '063af0803d89568fef8d1d0b1749f9f73fe85ec600c937aa6a2c5e92ee4fbfa5'
   })
 
