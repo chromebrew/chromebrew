@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Magic < Autotools
   description 'Magic is a venerable VLSI layout tool'
   homepage 'http://opencircuitdesign.com/magic/'
-  version '8.3.489'
+  version '8.3.513'
   license 'HPND-UC-export-US'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/RTimothyEdwards/magic.git'
