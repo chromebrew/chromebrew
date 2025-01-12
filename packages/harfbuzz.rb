@@ -17,7 +17,7 @@ class Harfbuzz < Meson
   binary_sha256({
     aarch64: '46b5c610b6fbe6682cba6d1ef7f003478c1bc938e6d08f844e0df00157c19c8a',
      armv7l: '46b5c610b6fbe6682cba6d1ef7f003478c1bc938e6d08f844e0df00157c19c8a',
-     x86_64: '41d90e25a0f0374383ba8dc3d0a74db8eb54bf95bf64c92d984be283640caecb'
+     x86_64: '1ac1bbcd5f42ceecab9578c062fd065385f060b844c6a8e2e395351a8d80eac4'
   })
 
   depends_on 'brotli' # R
