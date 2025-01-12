@@ -8,6 +8,7 @@ class Ruby_pry_byebug < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby_byebug' # L
   depends_on 'ruby_pry' # L
   conflicts_ok
   no_compile_needed
