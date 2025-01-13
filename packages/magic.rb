@@ -16,14 +16,14 @@ class Magic < Autotools
      x86_64: '063af0803d89568fef8d1d0b1749f9f73fe85ec600c937aa6a2c5e92ee4fbfa5'
   })
 
-  depends_on 'cairo'
-  depends_on 'tcl'
-  depends_on 'tk'
-  depends_on 'harfbuzz' # R
+  depends_on 'cairo' # R
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
   depends_on 'libx11' # R
+  depends_on 'tcl' # R
+  depends_on 'tk' # R
   depends_on 'zlib' # R
 
   # https://github.com/RTimothyEdwards/magic/issues/323
