@@ -4,17 +4,17 @@ require 'buildsystems/meson'
 class Cairo < Meson
   description 'Cairo is a 2D graphics library with support for multiple output devices.'
   homepage 'https://www.cairographics.org'
-  version '1.18.2'
+  version '1.18.2-1'
   license 'LGPL-2.1 or MPL-1.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/cairo/cairo.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a5dc26b94030439f13d34b3dc36aa14169cd2dfff918e1953f6de6c7c01a46c6',
-     armv7l: 'a5dc26b94030439f13d34b3dc36aa14169cd2dfff918e1953f6de6c7c01a46c6',
-     x86_64: '9ae42198c6c69d131d8431a26da921bb7a1da4fb79c98a12d3ecfce1138d818b'
+    aarch64: 'df583dc1b125069d0c26e2fd738e4da2613277dfdffba7d86085793eb466dcf8',
+     armv7l: 'df583dc1b125069d0c26e2fd738e4da2613277dfdffba7d86085793eb466dcf8',
+     x86_64: '63f75ad8c7339d005e7af0ff882f48f8e016f7d2579ae3715ba41e282b28c906'
   })
 
   depends_on 'fontconfig' # R

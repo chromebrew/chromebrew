@@ -4,7 +4,7 @@ require 'buildsystems/meson'
 class Fontconfig < Meson
   description 'Fontconfig is a library for configuring and customizing font access.'
   homepage 'https://www.freedesktop.org/wiki/Software/fontconfig/'
-  version '2.15.0-2'
+  version '2.15.0-3'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/fontconfig/fontconfig.git'
@@ -12,9 +12,9 @@ class Fontconfig < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f4b3f86770a0373bdbddc34a284ec36a5b0a7df1d0ef10e4caa0ce449dd5a235',
-     armv7l: 'f4b3f86770a0373bdbddc34a284ec36a5b0a7df1d0ef10e4caa0ce449dd5a235',
-     x86_64: 'bc9a2abe014c5ed4dfa097039af3c590b8251bbf8558aae1393f9fcf16c96a61'
+    aarch64: '1f117eddd9a07f63b1ad89cb4c3ff262f8390db14d4eef75fefdda331c6a3e66',
+     armv7l: '1f117eddd9a07f63b1ad89cb4c3ff262f8390db14d4eef75fefdda331c6a3e66',
+     x86_64: '3f3eac96451109088059f2abcd52bc751206195657728393a559f2ee563f0623'
   })
 
   depends_on 'expat' # R
