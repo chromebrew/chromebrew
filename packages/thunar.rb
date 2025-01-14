@@ -12,8 +12,8 @@ class Thunar < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9c0b8d344e3bc98aabd00a82b610fab3770c9012ceafc8891fb59fed239da7fa',
-     armv7l: '9c0b8d344e3bc98aabd00a82b610fab3770c9012ceafc8891fb59fed239da7fa',
+    aarch64: '238fd7945241cb22b77a93bb1b158b7fdec3ec9a41f6734c5b5ee56dbf6265c0',
+     armv7l: '238fd7945241cb22b77a93bb1b158b7fdec3ec9a41f6734c5b5ee56dbf6265c0',
      x86_64: '45745314c506b418ce986d2d3106c764953071f74202d46316a701bea5f038e7'
   })
 
