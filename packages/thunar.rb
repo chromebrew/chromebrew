@@ -17,29 +17,29 @@ class Thunar < Autotools
      x86_64: '45745314c506b418ce986d2d3106c764953071f74202d46316a701bea5f038e7'
   })
 
-  depends_on 'exo'
-  depends_on 'libexif'
-  depends_on 'libgudev'
-  depends_on 'libnotify'
-  depends_on 'xfce4_panel'
-  depends_on 'desktop_file_utilities'
-  depends_on 'hicolor_icon_theme'
-  depends_on 'xdg_base'
-  depends_on 'wayland'
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
-  depends_on 'harfbuzz' # R
+  depends_on 'desktop_file_utilities' # R
+  depends_on 'exo' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'hicolor_icon_theme' # R
+  depends_on 'libexif' # R
+  depends_on 'libgudev' # R
   depends_on 'libice' # R
+  depends_on 'libnotify' # R
   depends_on 'libsm' # R
   depends_on 'libx11' # R
   depends_on 'libxfce4ui' # R
   depends_on 'libxfce4util' # R
   depends_on 'pango' # R
   depends_on 'pcre2' # R
+  depends_on 'wayland' # R
+  depends_on 'xdg_base' # R
+  depends_on 'xfce4_panel' # R
   depends_on 'xfconf' # R
 
   def self.prebuild
