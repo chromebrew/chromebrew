@@ -14,7 +14,7 @@ class Fontconfig < Meson
   binary_sha256({
     aarch64: 'f4b3f86770a0373bdbddc34a284ec36a5b0a7df1d0ef10e4caa0ce449dd5a235',
      armv7l: 'f4b3f86770a0373bdbddc34a284ec36a5b0a7df1d0ef10e4caa0ce449dd5a235',
-     x86_64: 'bc9a2abe014c5ed4dfa097039af3c590b8251bbf8558aae1393f9fcf16c96a61'
+     x86_64: 'c24d54ab1773584d35a1b459872ca93122e8c24e87f4c19e61849afa2ce407c3'
   })
 
   depends_on 'expat' # R
