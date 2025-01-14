@@ -14,7 +14,7 @@ class Thunar < Autotools
   binary_sha256({
     aarch64: '9c0b8d344e3bc98aabd00a82b610fab3770c9012ceafc8891fb59fed239da7fa',
      armv7l: '9c0b8d344e3bc98aabd00a82b610fab3770c9012ceafc8891fb59fed239da7fa',
-     x86_64: 'fed5d6d825cd3184d85eb831000cb98124e61a53d7c51ee6ffe074b07cca9d39'
+     x86_64: '45745314c506b418ce986d2d3106c764953071f74202d46316a701bea5f038e7'
   })
 
   depends_on 'exo'
