@@ -12,8 +12,8 @@ class Fontconfig < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f4b3f86770a0373bdbddc34a284ec36a5b0a7df1d0ef10e4caa0ce449dd5a235',
-     armv7l: 'f4b3f86770a0373bdbddc34a284ec36a5b0a7df1d0ef10e4caa0ce449dd5a235',
+    aarch64: '8d53e4f93e3a6a3df19d6cdcbc8199f2d4369e34114f086f37c6e1ba7f5e57a9',
+     armv7l: '8d53e4f93e3a6a3df19d6cdcbc8199f2d4369e34114f086f37c6e1ba7f5e57a9',
      x86_64: 'c24d54ab1773584d35a1b459872ca93122e8c24e87f4c19e61849afa2ce407c3'
   })
 
