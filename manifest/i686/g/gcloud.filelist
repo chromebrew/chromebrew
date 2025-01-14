@@ -545,7 +545,21 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/api_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/connection_profiles.py
-/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/app_code_conversion/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/app_code_conversion/application_code_converter.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/app_code_conversion/audit_writer.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/app_code_conversion/conversion_params.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/app_code_conversion/conversion_result.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/base_conversion_workspaces_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/conversion_workspace_builder.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/conversion_workspaces_ai_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/conversion_workspaces_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/conversion_workspaces_crud_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/conversion_workspaces_entities_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/conversion_workspaces_lro_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/conversion_workspaces_operations_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/filter_rewrite.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/migration_jobs.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/objects.py
@@ -845,6 +859,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/netapp/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/netapp/volumes/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/netapp/volumes/client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/netapp/volumes/quota_rules/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/netapp/volumes/quota_rules/client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/netapp/volumes/replications/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/netapp/volumes/replications/client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/netapp/volumes/snapshots/__init__.py
@@ -927,6 +943,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/pubsub/snapshots.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/pubsub/subscriptions.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/pubsub/topics.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/pubsub/utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/quotas/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/quotas/message_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/quotas/quota_adjuster_settings.py
@@ -2146,7 +2163,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/database_migration/connection_profiles/oracle_flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/database_migration/connection_profiles/sqlserver_flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/database_migration/conversion_workspaces/__init__.py
-/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/database_migration/conversion_workspaces/api_helper.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/database_migration/conversion_workspaces/command_mixin.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/database_migration/conversion_workspaces/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/database_migration/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/database_migration/migration_jobs/__init__.py
@@ -2720,6 +2737,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/netapp/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/netapp/volumes/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/netapp/volumes/flags.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/netapp/volumes/quota_rules/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/netapp/volumes/quota_rules/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/netapp/volumes/replications/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/netapp/volumes/replications/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/netapp/volumes/snapshots/__init__.py
@@ -2949,6 +2968,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/config_changes.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/flags_parser.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/instance_split.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/worker_pools_operations.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/volumes.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/runapps/__init__.py
@@ -3056,6 +3076,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/write_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/sql/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/sql/export_util.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/sql/filter_rewrite.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/sql/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/sql/generate_login_token_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/sql/import_util.py
@@ -3869,6 +3890,11 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigquerydatatransfer/v1/bigquerydatatransfer_v1_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigquerydatatransfer/v1/bigquerydatatransfer_v1_messages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigquerydatatransfer/v1/resources.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigquerymigration/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigquerymigration/v2/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigquerymigration/v2/bigquerymigration_v2_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigquerymigration/v2/bigquerymigration_v2_messages.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigquerymigration/v2/resources.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigtableadmin/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigtableadmin/v2/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigtableadmin/v2/bigtableadmin_v2_client.py
@@ -4040,7 +4066,6 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudquotas/v1alpha/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudquotas/v1alpha/cloudquotas_v1alpha_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudquotas/v1alpha/cloudquotas_v1alpha_messages.py
-/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudquotas/v1alpha/resources.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudquotas/v1beta/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudquotas/v1beta/cloudquotas_v1beta_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudquotas/v1beta/cloudquotas_v1beta_messages.py
@@ -8223,6 +8248,7 @@
 /usr/local/share/gcloud/lib/surface/compute/interconnects/cross_site_networks/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/cross_site_networks/create.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/cross_site_networks/delete.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/cross_site_networks/describe.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/cross_site_networks/list.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/cross_site_networks/update.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/delete.py
@@ -8233,6 +8259,7 @@
 /usr/local/share/gcloud/lib/surface/compute/interconnects/groups/create.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/groups/delete.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/groups/describe.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/groups/get_operational_status.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/groups/list.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/groups/remove_members.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/groups/update.py
@@ -8252,6 +8279,7 @@
 /usr/local/share/gcloud/lib/surface/compute/interconnects/update.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/create.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/list.py
 /usr/local/share/gcloud/lib/surface/compute/machine_images/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/machine_images/add_iam_policy_binding.yaml
 /usr/local/share/gcloud/lib/surface/compute/machine_images/create.py
@@ -11911,6 +11939,11 @@
 /usr/local/share/gcloud/lib/surface/netapp/volumes/delete.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/describe.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/list.py
+/usr/local/share/gcloud/lib/surface/netapp/volumes/quota_rules/__init__.py
+/usr/local/share/gcloud/lib/surface/netapp/volumes/quota_rules/create.py
+/usr/local/share/gcloud/lib/surface/netapp/volumes/quota_rules/delete.py
+/usr/local/share/gcloud/lib/surface/netapp/volumes/quota_rules/describe.py
+/usr/local/share/gcloud/lib/surface/netapp/volumes/quota_rules/list.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/replications/__init__.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/replications/create.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/replications/delete.py
@@ -12224,6 +12257,7 @@
 /usr/local/share/gcloud/lib/surface/network_security/security_profiles/custom_mirroring/update.py
 /usr/local/share/gcloud/lib/surface/network_security/security_profiles/describe.yaml
 /usr/local/share/gcloud/lib/surface/network_security/security_profiles/export.yaml
+/usr/local/share/gcloud/lib/surface/network_security/security_profiles/import.yaml
 /usr/local/share/gcloud/lib/surface/network_security/security_profiles/list.yaml
 /usr/local/share/gcloud/lib/surface/network_security/security_profiles/threat_prevention/__init__.py
 /usr/local/share/gcloud/lib/surface/network_security/security_profiles/threat_prevention/add_override.py
