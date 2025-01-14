@@ -47,16 +47,16 @@
 /usr/local/lib/girepository-1.0/PangoXft-1.0.typelib
 /usr/local/lib/libpango-1.0.so
 /usr/local/lib/libpango-1.0.so.0
-/usr/local/lib/libpango-1.0.so.0.5500.0
+/usr/local/lib/libpango-1.0.so.0.5600.0
 /usr/local/lib/libpangocairo-1.0.so
 /usr/local/lib/libpangocairo-1.0.so.0
-/usr/local/lib/libpangocairo-1.0.so.0.5500.0
+/usr/local/lib/libpangocairo-1.0.so.0.5600.0
 /usr/local/lib/libpangoft2-1.0.so
 /usr/local/lib/libpangoft2-1.0.so.0
-/usr/local/lib/libpangoft2-1.0.so.0.5500.0
+/usr/local/lib/libpangoft2-1.0.so.0.5600.0
 /usr/local/lib/libpangoxft-1.0.so
 /usr/local/lib/libpangoxft-1.0.so.0
-/usr/local/lib/libpangoxft-1.0.so.0.5500.0
+/usr/local/lib/libpangoxft-1.0.so.0.5600.0
 /usr/local/lib/pkgconfig/pango.pc
 /usr/local/lib/pkgconfig/pangocairo.pc
 /usr/local/lib/pkgconfig/pangofc.pc
@@ -69,4 +69,3 @@
 /usr/local/share/gir-1.0/PangoFc-1.0.gir
 /usr/local/share/gir-1.0/PangoOT-1.0.gir
 /usr/local/share/gir-1.0/PangoXft-1.0.gir
-/usr/local/share/man/man1/pango-view.1.zst
