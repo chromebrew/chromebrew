@@ -13,7 +13,7 @@ class Rsync < Autotools
   binary_sha256({
     aarch64: '9ec003fc1c46fcd0f1a47ae6f358fc3bf964c160736d81edc9deb0a6954129d3',
      armv7l: '9ec003fc1c46fcd0f1a47ae6f358fc3bf964c160736d81edc9deb0a6954129d3',
-       i686: 'd6cdbe64eef2b542bdc49c7077b3370cb0d1823cc6c3477a5e4df347fc1b5592',
+       i686: 'edbba6b8dd2ce07c6a413ab52b8e11adfd58fb6b3a18802cde43bd98bc12ead8',
      x86_64: '9a63634c624037bfa5b294eb4dc36f817796ad201a947d86a7c52165e16e135d'
   })
 
