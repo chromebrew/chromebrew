@@ -3,14 +3,15 @@ require 'package'
 class Clickhouse < Package
   description 'Real-time analytics DBMS'
   homepage 'https://clickhouse.com/'
-  version '24.12.1.1614'
+  version '24.12.3.47'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url "https://github.com/ClickHouse/ClickHouse/releases/download/v#{version}-stable/clickhouse-common-static-#{version}-amd64.tgz"
-  source_sha256 '965e17b6c0c2b151e413cf36b1c8b011a82f41e1b6c355fe4ba92826a68eda4c'
+  source_sha256 'd437fab107d39bfda379041181313e8d4d1eacc12b3f890349b247838de6181f'
 
   no_compile_needed
   no_shrink
+  print_source_bashrc
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
