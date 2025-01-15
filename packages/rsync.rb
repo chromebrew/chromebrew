@@ -3,12 +3,12 @@ require 'buildsystems/autotools'
 class Rsync < Autotools
   description 'rsync is an open source utility that provides fast incremental file transfer.'
   homepage 'https://rsync.samba.org/'
-  version '3.3.0'
+  version '3.4.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://rsync.samba.org/ftp/rsync/src/rsync-3.3.0.tar.gz'
+  source_url "https://rsync.samba.org/ftp/rsync/src/rsync-#{version}.tar.gz"
   source_sha256 '7399e9a6708c32d678a72a63219e96f23be0be2336e50fd1348498d07041df90'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '9ec003fc1c46fcd0f1a47ae6f358fc3bf964c160736d81edc9deb0a6954129d3',
@@ -28,7 +28,6 @@ class Rsync < Autotools
   depends_on 'zstd' # R
 
   no_patchelf
-  no_zstd
 
   run_tests
 end
