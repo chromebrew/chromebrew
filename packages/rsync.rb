@@ -14,7 +14,7 @@ class Rsync < Autotools
     aarch64: '9ec003fc1c46fcd0f1a47ae6f358fc3bf964c160736d81edc9deb0a6954129d3',
      armv7l: '9ec003fc1c46fcd0f1a47ae6f358fc3bf964c160736d81edc9deb0a6954129d3',
        i686: 'edbba6b8dd2ce07c6a413ab52b8e11adfd58fb6b3a18802cde43bd98bc12ead8',
-     x86_64: '9a63634c624037bfa5b294eb4dc36f817796ad201a947d86a7c52165e16e135d'
+     x86_64: '469183611bff51c3a412f68d6a58c498947ac58444cc9d4178a52332f178f5b6'
   })
 
   depends_on 'acl' # R
