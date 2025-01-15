@@ -3,12 +3,12 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '134.0'
+  version '134.0.1'
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'x86_64'
   min_glibc '2.35'
   source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.bz2"
-  source_sha256 'f232764ff33abddba8e7a90f6bd7de7d73ff79b9104abe3a2477f68af287cbcd'
+  source_sha256 '81951a7cbe64a63455640919aecced8eef9c7af0c3704aa75995981fa9a4ae7c'
 
   depends_on 'at_spi2_core'
   depends_on 'cairo'
@@ -99,5 +99,22 @@ class Firefox < Package
       puts 'No change has been made.'.orange
     end
     ExitMessage.add "\nType 'firefox' to get started.\n"
+  end
+
+  def self.preremove
+    Dir.chdir("#{CREW_PREFIX}/bin") do
+      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') && \
+         File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/firefox"
+        FileUtils.rm "#{CREW_PREFIX}/bin/x-www-browser"
+      end
+    end
+  end
+
+  def self.postremove
+    if Dir.exist?("#{HOME}/.mozilla/seamonkey")
+      Package.agree_to_remove("#{HOME}/.mozilla/firefox")
+    else
+      Package.agree_to_remove("#{HOME}/.mozilla")
+    end
   end
 end
