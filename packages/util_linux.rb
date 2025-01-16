@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Util_linux < Meson
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version "2.40.2-#{CREW_PY_VER}"
+  version "2.40.4-#{CREW_PY_VER}"
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
   source_url 'https://github.com/util-linux/util-linux.git'
@@ -11,10 +11,10 @@ class Util_linux < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '337f5ada3bdab988e8e1a495975e2da53ace10525de389972f38e349e571c641',
-     armv7l: '337f5ada3bdab988e8e1a495975e2da53ace10525de389972f38e349e571c641',
-       i686: 'b5afb757ef741feecd52fc8b21cf04f32915334da633e1b8b571be87ed8e0dea',
-     x86_64: 'c9a7f6086218a9bc1ecd436c5615bc3ce5b6b7926b6cdf3d91ea41c369f9a698'
+    aarch64: 'db53c6aac00a7b8538b21779e2540ab523f837493aff0548f39469e92a899d08',
+     armv7l: 'db53c6aac00a7b8538b21779e2540ab523f837493aff0548f39469e92a899d08',
+       i686: 'ae3083a9bfdf5d76652fd76100a06003796bdec90ce7c7fe7cdfa42e185bc691',
+     x86_64: '15c6bd80d892d59adc0946c401e96cdc4c6c00f48e6859718337803c647cd417'
   })
 
   depends_on 'bash_completion' # R

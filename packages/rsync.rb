@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Rsync < Autotools
   description 'rsync is an open source utility that provides fast incremental file transfer.'
   homepage 'https://rsync.samba.org/'
-  version '3.3.0'
+  version '3.4.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://rsync.samba.org/ftp/rsync/src/rsync-3.3.0.tar.gz'
+  source_url "https://rsync.samba.org/ftp/rsync/src/rsync-#{version}.tar.gz"
   source_sha256 '7399e9a6708c32d678a72a63219e96f23be0be2336e50fd1348498d07041df90'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9ec003fc1c46fcd0f1a47ae6f358fc3bf964c160736d81edc9deb0a6954129d3',
-     armv7l: '9ec003fc1c46fcd0f1a47ae6f358fc3bf964c160736d81edc9deb0a6954129d3',
-       i686: 'd6cdbe64eef2b542bdc49c7077b3370cb0d1823cc6c3477a5e4df347fc1b5592',
-     x86_64: '9a63634c624037bfa5b294eb4dc36f817796ad201a947d86a7c52165e16e135d'
+    aarch64: '8c54301a434d5d6dd2ae9fa9fc70d17b7fdf7b4230160bdecad5f3e62d4ffb9e',
+     armv7l: '8c54301a434d5d6dd2ae9fa9fc70d17b7fdf7b4230160bdecad5f3e62d4ffb9e',
+       i686: 'edbba6b8dd2ce07c6a413ab52b8e11adfd58fb6b3a18802cde43bd98bc12ead8',
+     x86_64: '469183611bff51c3a412f68d6a58c498947ac58444cc9d4178a52332f178f5b6'
   })
 
   depends_on 'acl' # R
@@ -28,7 +28,6 @@ class Rsync < Autotools
   depends_on 'zstd' # R
 
   no_patchelf
-  no_zstd
 
   run_tests
 end
