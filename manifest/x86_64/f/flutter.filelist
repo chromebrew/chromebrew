@@ -22,9 +22,9 @@
 /usr/local/share/flutter/.git/index
 /usr/local/share/flutter/.git/info/exclude
 /usr/local/share/flutter/.git/logs/HEAD
-/usr/local/share/flutter/.git/objects/pack/pack-899ba76f727be30e6f8463f6837f3bc6cc401fcf.idx
-/usr/local/share/flutter/.git/objects/pack/pack-899ba76f727be30e6f8463f6837f3bc6cc401fcf.pack
-/usr/local/share/flutter/.git/objects/pack/pack-899ba76f727be30e6f8463f6837f3bc6cc401fcf.rev
+/usr/local/share/flutter/.git/objects/pack/pack-8e9b62a74bacc96e51b54b0d7d23352ddc710666.idx
+/usr/local/share/flutter/.git/objects/pack/pack-8e9b62a74bacc96e51b54b0d7d23352ddc710666.pack
+/usr/local/share/flutter/.git/objects/pack/pack-8e9b62a74bacc96e51b54b0d7d23352ddc710666.rev
 /usr/local/share/flutter/.git/shallow
 /usr/local/share/flutter/.gitattributes
 /usr/local/share/flutter/.github/ISSUE_TEMPLATE/10_feature.yml
@@ -9016,7 +9016,7 @@
 /usr/local/share/flutter/packages/flutter_tools/templates/module/android/host_app_common/app.tmpl/src/main/res/mipmap-hdpi/ic_launcher.png
 /usr/local/share/flutter/packages/flutter_tools/templates/module/android/host_app_common/app.tmpl/src/main/res/values/styles.xml
 /usr/local/share/flutter/packages/flutter_tools/templates/module/android/host_app_editable/settings.gradle.copy.tmpl
-/usr/local/share/flutter/packages/flutter_tools/templates/module/android/host_app_ephemeral/settings.gradle.copy.tmpl
+/usr/local/share/flutter/packages/flutter_tools/templates/module/android/host_app_ephemeral/settings.gradle.tmpl
 /usr/local/share/flutter/packages/flutter_tools/templates/module/android/library_new_embedding/Flutter.tmpl/build.gradle.tmpl
 /usr/local/share/flutter/packages/flutter_tools/templates/module/android/library_new_embedding/Flutter.tmpl/flutter.iml.copy.tmpl
 /usr/local/share/flutter/packages/flutter_tools/templates/module/android/library_new_embedding/Flutter.tmpl/src/main/AndroidManifest.xml.tmpl
