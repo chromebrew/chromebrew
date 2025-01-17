@@ -10,10 +10,10 @@ class Py3_trove_classifiers < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c66abd4017a8d83c58cf1d557efeaf55373596f5307bdf6f74eac582fc4f5f68',
-     armv7l: 'c66abd4017a8d83c58cf1d557efeaf55373596f5307bdf6f74eac582fc4f5f68',
-       i686: 'ce9e2f517f476d1787042615dd7db98bcffcde179db560b3a4391be3696cad45',
-     x86_64: 'd041fce42b387152df9155deb694c073b18de88e2ce7fe5a53b10fbb221f7a1a'
+    aarch64: '456f0f403fcfee77965c5b510f25c1e84cc2a005c2cbc6ddc68c39ce77c15466',
+     armv7l: '456f0f403fcfee77965c5b510f25c1e84cc2a005c2cbc6ddc68c39ce77c15466',
+       i686: '0de173d6d0d30664c13bbc462b587332b1f797ed00c59d11e3956fb9b0173ccb',
+     x86_64: '1eed9dbab90a5493100bcd3a911f69f55de340965a87608b9bc2adacae6902b1'
   })
 
   depends_on 'python3' => :build
