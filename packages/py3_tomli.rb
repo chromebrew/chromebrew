@@ -10,10 +10,10 @@ class Py3_tomli < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1e8c10cc8ad5f584f55de4cbac48e0bf74e655d5bd50c4dc6e1789c2fe7ce654',
-     armv7l: '1e8c10cc8ad5f584f55de4cbac48e0bf74e655d5bd50c4dc6e1789c2fe7ce654',
-       i686: 'f24bdeb777bff1c0a4d1ff7bf9f041e174f8156f387f7bdbd5d24eaaa4023e6a',
-     x86_64: 'a2b894aaa45b5d5fd55505af5214832ab28209dffbacb02d3af17ed3abb41780'
+    aarch64: 'cdf451209124a36c978246d88435031de33294f04e28b0d609817b5480c6bbc8',
+     armv7l: 'cdf451209124a36c978246d88435031de33294f04e28b0d609817b5480c6bbc8',
+       i686: 'e7f6b4c940e09408d2cd6114b458c6d30bcb6914db53668572beedbe0feb9db4',
+     x86_64: '26290fc0583d5f520535e805a1a120bf9cc4b12ece1c64db2ede1d811bd0147b'
   })
 
   depends_on 'python3'
