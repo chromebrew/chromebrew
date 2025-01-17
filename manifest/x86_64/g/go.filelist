@@ -472,6 +472,7 @@
 /usr/local/share/go/src/cmd/cgo/internal/test/typeparam.go
 /usr/local/share/go/src/cmd/cgo/internal/testcarchive/carchive_test.go
 /usr/local/share/go/src/cmd/cgo/internal/testcarchive/testdata/libgo/libgo.go
+/usr/local/share/go/src/cmd/cgo/internal/testcarchive/testdata/libgo10/a.go
 /usr/local/share/go/src/cmd/cgo/internal/testcarchive/testdata/libgo2/libgo2.go
 /usr/local/share/go/src/cmd/cgo/internal/testcarchive/testdata/libgo3/libgo3.go
 /usr/local/share/go/src/cmd/cgo/internal/testcarchive/testdata/libgo4/libgo4.go
@@ -480,6 +481,7 @@
 /usr/local/share/go/src/cmd/cgo/internal/testcarchive/testdata/libgo8/a.go
 /usr/local/share/go/src/cmd/cgo/internal/testcarchive/testdata/libgo9/a.go
 /usr/local/share/go/src/cmd/cgo/internal/testcarchive/testdata/main.c
+/usr/local/share/go/src/cmd/cgo/internal/testcarchive/testdata/main10.c
 /usr/local/share/go/src/cmd/cgo/internal/testcarchive/testdata/main2.c
 /usr/local/share/go/src/cmd/cgo/internal/testcarchive/testdata/main3.c
 /usr/local/share/go/src/cmd/cgo/internal/testcarchive/testdata/main4.c
@@ -793,6 +795,7 @@
 /usr/local/share/go/src/cmd/compile/internal/importer/iimport.go
 /usr/local/share/go/src/cmd/compile/internal/importer/support.go
 /usr/local/share/go/src/cmd/compile/internal/importer/testdata/a.go
+/usr/local/share/go/src/cmd/compile/internal/importer/testdata/alias.go
 /usr/local/share/go/src/cmd/compile/internal/importer/testdata/b.go
 /usr/local/share/go/src/cmd/compile/internal/importer/testdata/exports.go
 /usr/local/share/go/src/cmd/compile/internal/importer/testdata/generics.go
@@ -7682,6 +7685,7 @@
 /usr/local/share/go/src/net/sendfile_stub.go
 /usr/local/share/go/src/net/sendfile_test.go
 /usr/local/share/go/src/net/sendfile_unix_alt.go
+/usr/local/share/go/src/net/sendfile_unix_test.go
 /usr/local/share/go/src/net/sendfile_windows.go
 /usr/local/share/go/src/net/server_test.go
 /usr/local/share/go/src/net/smtp/auth.go

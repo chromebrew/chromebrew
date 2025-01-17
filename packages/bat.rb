@@ -3,7 +3,7 @@ require 'package'
 class Bat < Package
   description 'Clone of cat with syntax highlighting and Git integration'
   homepage 'https://github.com/sharkdp/bat'
-  version '0.24.0'
+  version '0.25.0'
   license 'Apache-2.0, MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Bat < Package
      x86_64: "https://github.com/sharkdp/bat/releases/download/v#{version}/bat-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
   })
   source_sha256({
-    aarch64: 'f7eda9431a64ec3cedc4b576134ed3f8eac7b7fb04e076a7b186b6b65e4370e8',
-     armv7l: 'f7eda9431a64ec3cedc4b576134ed3f8eac7b7fb04e076a7b186b6b65e4370e8',
-       i686: '25c597011975653d9344061a126a296cf6d7f3f360a0f6d23511dc6b41e324a0',
-     x86_64: '0faf5d51b85bf81b92495dc93bf687d5c904adc9818b16f61ec2e7a4f925c77a'
+    aarch64: '8248de4331da04d71fab8894af80077227e7e3f7429b9179bc5d28aaec51d4b4',
+     armv7l: '8248de4331da04d71fab8894af80077227e7e3f7429b9179bc5d28aaec51d4b4',
+       i686: '9379470b5f674b82eaa1821dbda664ebe40f1953cca16786f3e403e8e3c85627',
+     x86_64: '31bbbcc0d9f5abe16399425c98ffbf21aaa0ce190c7b75d4f32297696ff32b81'
   })
 
   no_compile_needed
