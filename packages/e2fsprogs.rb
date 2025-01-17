@@ -3,7 +3,7 @@ require 'package'
 class E2fsprogs < Package
   description 'e2fsprogs are ext2/3/4 file system utilities.'
   homepage 'https://e2fsprogs.sourceforge.net/'
-  version '1.47.0'
+  version '1.47.2'
   license 'GPL-2 and BSD'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v#{version}/e2fsprogs-#{version}.tar.xz"
