@@ -6,7 +6,7 @@ class Coreutils < Autotools
   version '9.6'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftp.gnu.org/coreutils/coreutils-#{version}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/coreutils/coreutils-#{version}.tar.xz"
   source_sha256 'cd328edeac92f6a665de9f323c93b712af1858bc2e0d88f3f7100469470a1b8a'
   binary_compression 'tar.zst'
 
