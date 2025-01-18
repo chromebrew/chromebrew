@@ -42,40 +42,35 @@ class Gdb < Autotools
 
   def self.build
     @x = ARCH == 'i686' ? '' : '--with-x'
-    FileUtils.mkdir_p 'build'
-    Dir.chdir('build') do
-      system "../configure \
-        #{CREW_CONFIGURE_OPTIONS} \
-        --disable-binutils \
-        --disable-ld \
-        --disable-nls \
-        --enable-64-bit-bfd \
-        --enable-install-libbfd \
-        --enable-host-shared \
-        --enable-lto \
-        --enable-shared \
-        --enable-sim \
-        --enable-source-highlight \
-        --enable-tui \
-        --with-curses \
-        --with-lzma \
-        --with-pkgversion=Chromebrew \
-        --with-python=python3 \
-        --with-system-gdbinit=#{CREW_PREFIX}/etc/gdb/gdbinit \
-        --with-system-readline \
-        --with-system-zlib \
-        #{@x}"
-      system 'make'
-    end
+    system "./configure \
+      #{CREW_CONFIGURE_OPTIONS} \
+      --disable-binutils \
+      --disable-ld \
+      --disable-nls \
+      --enable-64-bit-bfd \
+      --enable-install-libbfd \
+      --enable-host-shared \
+      --enable-lto \
+      --enable-shared \
+      --enable-sim \
+      --enable-source-highlight \
+      --enable-tui \
+      --with-curses \
+      --with-lzma \
+      --with-pkgversion=Chromebrew \
+      --with-python=python3 \
+      --with-system-gdbinit=#{CREW_PREFIX}/etc/gdb/gdbinit \
+      --with-system-readline \
+      --with-system-zlib \
+      #{@x}"
+    system 'make'
   end
 
   def self.install
-    Dir.chdir('build') do
-      system "make -C gdb DESTDIR=#{CREW_DEST_DIR} install"
-      system "make -C bfd DESTDIR=#{CREW_DEST_DIR} install"
-      system "make -C gdb/data-directory DESTDIR=#{CREW_DEST_DIR} install"
-      system "make -C gdbserver DESTDIR=#{CREW_DEST_DIR} install"
-    end
+    system "make -C gdb DESTDIR=#{CREW_DEST_DIR} install"
+    system "make -C bfd DESTDIR=#{CREW_DEST_DIR} install"
+    system "make -C gdb/data-directory DESTDIR=#{CREW_DEST_DIR} install"
+    system "make -C gdbserver DESTDIR=#{CREW_DEST_DIR} install"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libinproctrace.so"
   end
 end
