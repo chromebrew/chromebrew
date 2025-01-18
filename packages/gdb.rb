@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Gdb < Autotools
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version "15.1-#{CREW_GCC_VER}-#{CREW_PY_VER}"
+  version "16.1-#{CREW_GCC_VER}-#{CREW_PY_VER}"
   license 'GPL3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
@@ -71,10 +71,7 @@ class Gdb < Autotools
 
   def self.install
     Dir.chdir('build') do
-      # Handle missing libopcodes
-      # https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/merge_requests/13697/diffs
       system "make -C gdb DESTDIR=#{CREW_DEST_DIR} install"
-      system "make -C opcodes DESTDIR=#{CREW_DEST_DIR} install"
       system "make -C bfd DESTDIR=#{CREW_DEST_DIR} install"
       system "make -C gdb/data-directory DESTDIR=#{CREW_DEST_DIR} install"
       system "make -C gdbserver DESTDIR=#{CREW_DEST_DIR} install"
