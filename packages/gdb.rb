@@ -9,7 +9,7 @@ class Gdb < Autotools
   version "16.1-#{CREW_GCC_VER}-#{CREW_PY_VER}"
   license 'GPL3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
   source_sha256 '38254eacd4572134bca9c5a5aa4d4ca564cbbd30c369d881f733fb6b903354f2'
   binary_compression 'tar.zst'
 
