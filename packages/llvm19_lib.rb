@@ -13,9 +13,9 @@ class Llvm19_lib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '150dbde53e0074f27108fbd316a1b467525212cf51b0cc77b11e10dd3d8e097c',
-     armv7l: '150dbde53e0074f27108fbd316a1b467525212cf51b0cc77b11e10dd3d8e097c',
-       i686: 'e3d19884d4ff12e383bcf953b4527061341d145167a9882a116cdd73fdf2853d',
+    aarch64: '121376f71ddaecf39d6df13097b6e086cef515f1e656b0855f41aa438c70bf6f',
+     armv7l: '121376f71ddaecf39d6df13097b6e086cef515f1e656b0855f41aa438c70bf6f',
+       i686: 'ad4b390cd3c589ef6b8be8a563ffc6ffb7eece97ce6ff55f25db5dfaafd04528',
      x86_64: '29c4fb9a2642e76a379c9112a734df1fac7ee75a71782b4c68f82b235b3f00b6'
   })
 
