@@ -1,12 +1,12 @@
 /usr/local/bin/f2py
 /usr/local/bin/numpy-config
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.1.dist-info/INSTALLER
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.1.dist-info/LICENSE.txt
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.1.dist-info/METADATA
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.1.dist-info/RECORD
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.1.dist-info/REQUESTED
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.1.dist-info/WHEEL
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.1.dist-info/entry_points.txt
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/INSTALLER
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/LICENSE.txt
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/METADATA
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/RECORD
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/REQUESTED
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/WHEEL
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/entry_points.txt
 /usr/local/lib64/python3.13/site-packages/numpy.libs/libgfortran-040039e1-0352e75f.so.5.0.0
 /usr/local/lib64/python3.13/site-packages/numpy.libs/libquadmath-96973f99-934c22de.so.0.0.0
 /usr/local/lib64/python3.13/site-packages/numpy.libs/libscipy_openblas64_-6bb31eeb.so
@@ -577,6 +577,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/regression/f90continuation.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/regression/incfile.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/regression/inout.f90
+/usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/regression/lower_f2py_fortran.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/return_character/foo77.f
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/return_character/foo90.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/return_complex/foo77.f
@@ -1194,7 +1195,6 @@
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/dtype.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/einsumfunc.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/emath.pyi
-/usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/false_positives.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/fft.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/flatiter.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/reveal/fromnumeric.pyi
