@@ -75,7 +75,7 @@
     "name": "acquia_cli",
     "description": "Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.",
     "homepage": "https://github.com/acquia/cli",
-    "version": "2.35.1",
+    "version": "2.37.0",
     "license": "GPL-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -315,7 +315,7 @@
     "name": "apktool",
     "description": "A tool for reverse engineering Android apk files",
     "homepage": "https://apktool.org/",
-    "version": "2.10.0",
+    "version": "2.11.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -331,7 +331,7 @@
     "name": "appflowy",
     "description": "AI collaborative workspace where you achieve more without losing control of your data. The best open source alternative to Notion.",
     "homepage": "https://www.appflowy.io/",
-    "version": "0.7.9",
+    "version": "0.8.1",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -739,7 +739,7 @@
     "name": "awscli",
     "description": "Universal Command Line Interface for Amazon Web Services",
     "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.36.38",
+    "version": "1.37.2",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -851,7 +851,7 @@
     "name": "bat",
     "description": "Clone of cat with syntax highlighting and Git integration",
     "homepage": "https://github.com/sharkdp/bat",
-    "version": "0.24.0",
+    "version": "0.25.0",
     "license": "Apache-2.0, MIT",
     "compatibility": "all"
   },
@@ -987,7 +987,7 @@
     "name": "bitcoin_core",
     "description": "Bitcoin Core is a full Bitcoin client and builds the backbone of the network.",
     "homepage": "https://bitcoincore.org/",
-    "version": "28.0",
+    "version": "28.1",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -1067,7 +1067,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.73.105",
+    "version": "1.74.48",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1147,7 +1147,7 @@
     "name": "bun",
     "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one",
     "homepage": "https://bun.sh/",
-    "version": "1.1.42",
+    "version": "1.1.43",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -1211,7 +1211,7 @@
     "name": "cabal",
     "description": "Common Architecture for Building Applications and Libraries",
     "homepage": "https://www.haskell.org/cabal/",
-    "version": "3.14.1.0",
+    "version": "3.14.1.1",
     "license": "BSD",
     "compatibility": "x86_64 i686"
   },
@@ -1243,7 +1243,7 @@
     "name": "cairo",
     "description": "Cairo is a 2D graphics library with support for multiple output devices.",
     "homepage": "https://www.cairographics.org",
-    "version": "1.18.2",
+    "version": "1.18.2-1",
     "license": "LGPL-2.1 or MPL-1.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -1571,7 +1571,7 @@
     "name": "clickhouse",
     "description": "Real-time analytics DBMS",
     "homepage": "https://clickhouse.com/",
-    "version": "24.12.1.1614",
+    "version": "24.12.3.47",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2123,7 +2123,7 @@
     "name": "dbeaver",
     "description": "Free Universal Database Tool",
     "homepage": "https://dbeaver.io",
-    "version": "24.3.1",
+    "version": "24.3.2",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2531,7 +2531,7 @@
     "name": "e2fsprogs",
     "description": "e2fsprogs are ext2/3/4 file system utilities.",
     "homepage": "https://e2fsprogs.sourceforge.net/",
-    "version": "1.47.0",
+    "version": "1.47.2",
     "license": "GPL-2 and BSD",
     "compatibility": "all"
   },
@@ -2555,7 +2555,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "131.0.2903.112-1",
+    "version": "131.0.2903.147-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -3019,7 +3019,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "134.0",
+    "version": "134.0.1",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3091,7 +3091,7 @@
     "name": "flutter",
     "description": "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.",
     "homepage": "https://flutter.dev/",
-    "version": "3.27.0",
+    "version": "3.27.2",
     "license": "BSD-3",
     "compatibility": "x86_64"
   },
@@ -3307,7 +3307,7 @@
     "name": "fontconfig",
     "description": "Fontconfig is a library for configuring and customizing font access.",
     "homepage": "https://www.freedesktop.org/wiki/Software/fontconfig/",
-    "version": "2.15.0-2",
+    "version": "2.15.0-3",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3467,7 +3467,7 @@
     "name": "freetype",
     "description": "FreeType is a freely available software library to render fonts.",
     "homepage": "https://freetype.org/",
-    "version": "2.13.3",
+    "version": "2.13.3-1",
     "license": "FTL or GPL-2+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3635,7 +3635,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "505.0.0",
+    "version": "506.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -4483,7 +4483,7 @@
     "name": "go",
     "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "homepage": "https://go.dev",
-    "version": "1.23.4",
+    "version": "1.23.5",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -4499,7 +4499,7 @@
     "name": "go_containerregistry",
     "description": "Go library and CLIs for working with container registries",
     "homepage": "https://github.com/google/go-containerregistry",
-    "version": "0.20.2",
+    "version": "0.20.3",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -4547,7 +4547,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "131.0.6778.264-1",
+    "version": "132.0.6834.83-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -5059,7 +5059,7 @@
     "name": "harfbuzz",
     "description": "HarfBuzz is an OpenType text shaping engine.",
     "homepage": "https://harfbuzz.github.io/",
-    "version": "10.0.1",
+    "version": "10.2.0",
     "license": "Old-MIT, ISC and icu",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -5747,7 +5747,7 @@
     "name": "joplin",
     "description": "Open source note-taking app",
     "homepage": "https://joplinapp.org/",
-    "version": "3.2.6",
+    "version": "3.2.10",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -6419,7 +6419,7 @@
     "name": "libclc",
     "description": "Library requirements of the OpenCL C programming language",
     "homepage": "https://libclc.llvm.org/",
-    "version": "19.1.6",
+    "version": "19.1.7",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -8963,7 +8963,7 @@
     "name": "llvm19_build",
     "description": "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: bolt clang clang-tools-extra compiler-rt lld lldb polly pstl",
     "homepage": "https://llvm.org/",
-    "version": "19.1.6",
+    "version": "19.1.7",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -8971,7 +8971,7 @@
     "name": "llvm19_dev",
     "description": "LLVM: Everything except libLLVM & llvm-strip",
     "homepage": "https://llvm.org/",
-    "version": "19.1.6",
+    "version": "19.1.7",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -8979,7 +8979,7 @@
     "name": "llvm19_lib",
     "description": "LibLLVM and llvm-strip",
     "homepage": "https://llvm.org/",
-    "version": "19.1.6",
+    "version": "19.1.7",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9219,7 +9219,7 @@
     "name": "lzip",
     "description": "Lzip is a lossless data compressor with a user interface similar to the one of gzip or bzip2.",
     "homepage": "https://www.nongnu.org/lzip/lzip.html",
-    "version": "1.24",
+    "version": "1.25",
     "license": "GPL-2+",
     "compatibility": "all"
   },
@@ -9275,7 +9275,7 @@
     "name": "magic",
     "description": "Magic is a venerable VLSI layout tool",
     "homepage": "http://opencircuitdesign.com/magic/",
-    "version": "8.3.489",
+    "version": "8.3.513",
     "license": "HPND-UC-export-US",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10907,7 +10907,7 @@
     "name": "openmp",
     "description": "LLVM OpenMP Runtime Library",
     "homepage": "https://openmp.llvm.org/",
-    "version": "19.1.6",
+    "version": "19.1.7",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -10979,7 +10979,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "116.0.5366.21",
+    "version": "116.0.5366.35",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -11115,7 +11115,7 @@
     "name": "pango",
     "description": "Pango is a library for laying out and rendering of text, with an emphasis on internationalization.",
     "homepage": "https://pango.gnome.org/",
-    "version": "1.55.0",
+    "version": "1.56.0",
     "license": "LGPL-2+ and FTL",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -12419,7 +12419,7 @@
     "name": "py3_azure_cli",
     "description": "Next generation multi-platform command line experience for Azure.",
     "homepage": "https://pypi.org/project/azure-cli/",
-    "version": "2.67.0",
+    "version": "2.68.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12987,7 +12987,7 @@
     "name": "py3_mercurial",
     "description": "Mercurial is a free, distributed source control management tool. It efficiently handles projects of any size and offers an easy and intuitive interface.",
     "homepage": "https://www.mercurial-scm.org/",
-    "version": "6.9",
+    "version": "6.9.1",
     "license": "GPL-2+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13051,7 +13051,7 @@
     "name": "py3_numpy",
     "description": "NumPy is the fundamental package for array computing with Python.",
     "homepage": "https://numpy.org/",
-    "version": "2.2.1",
+    "version": "2.2.2",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -13059,7 +13059,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.141.1",
+    "version": "2.142.0",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13067,7 +13067,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.51.1",
+    "version": "3.51.2",
     "license": "UPL-1.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13315,7 +13315,7 @@
     "name": "py3_pyopenssl",
     "description": "PyOpenSSL is a Python wrapper module around the OpenSSL library.",
     "homepage": "https://www.pyopenssl.org/",
-    "version": "24.3.0",
+    "version": "25.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13347,7 +13347,7 @@
     "name": "py3_pyright",
     "description": "Static Type Checker for Python",
     "homepage": "https://github.com/microsoft/pyright",
-    "version": "1.1.391",
+    "version": "1.1.392.post0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13459,7 +13459,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.9.1",
+    "version": "0.9.2",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13555,7 +13555,7 @@
     "name": "py3_speechrecognition",
     "description": "SpeechRecognition is a library for performing speech recognition, with support for several engines and APIs, online and offline.",
     "homepage": "https://github.com/Uberi/speech_recognition/",
-    "version": "3.13.0",
+    "version": "3.14.0",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -13659,7 +13659,7 @@
     "name": "py3_tomli_w",
     "description": "Tomli-w is a lil' TOML writer.",
     "homepage": "https://github.com/hukkin/tomli-w/",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13675,7 +13675,7 @@
     "name": "py3_trove_classifiers",
     "description": "Canonical source for classifiers on PyPI.",
     "homepage": "https://github.com/pypa/trove-classifiers",
-    "version": "2025.1.10.15",
+    "version": "2025.1.15.22",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13699,7 +13699,7 @@
     "name": "py3_typogrify",
     "description": "Typogrify provides filters to enhance web typography.",
     "homepage": "https://python-markdown.github.io/",
-    "version": "2.0.7",
+    "version": "2.1.0",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -13739,7 +13739,7 @@
     "name": "py3_virtualenv",
     "description": "Virtualenv is a Virtual Environment builder for Python.",
     "homepage": "https://virtualenv.pypa.io/",
-    "version": "20.28.1",
+    "version": "20.29.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14179,7 +14179,7 @@
     "name": "rclone",
     "description": "Rclone is a command-line program to manage files on cloud storage.",
     "homepage": "https://rclone.org/",
-    "version": "1.68.2",
+    "version": "1.69.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14411,7 +14411,7 @@
     "name": "rsync",
     "description": "rsync is an open source utility that provides fast incremental file transfer.",
     "homepage": "https://rsync.samba.org/",
-    "version": "3.3.0",
+    "version": "3.4.0",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -14499,7 +14499,7 @@
     "name": "ruby_bundler",
     "description": "Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably.",
     "homepage": "https://bundler.io",
-    "version": "2.6.2-ruby3.3",
+    "version": "2.6.3-ruby3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14531,7 +14531,7 @@
     "name": "ruby_concurrent_ruby",
     "description": "Modern concurrency tools for Ruby. Inspired by Erlang, Clojure, Scala, Haskell, F#, C#, Java, and classic concurrency patterns.",
     "homepage": "https://github.com/ruby-concurrency/concurrent-ruby",
-    "version": "1.3.4-ruby3.3",
+    "version": "1.3.5-ruby3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15075,7 +15075,7 @@
     "name": "ruby_rdoc",
     "description": "RDoc produces HTML and command-line documentation for Ruby projects.",
     "homepage": "https://ruby.github.io/rdoc",
-    "version": "6.10.0-ruby3.3",
+    "version": "6.11.0-ruby3.3",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15179,7 +15179,7 @@
     "name": "ruby_rubygems_update",
     "description": "RubyGems is a package management framework for Ruby.",
     "homepage": "https://github.com/rubygems/rubygems",
-    "version": "3.6.2-ruby3.3",
+    "version": "3.6.3-ruby3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15859,7 +15859,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.37.0",
+    "version": "7.38.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -16283,7 +16283,7 @@
     "name": "starship",
     "description": "Cross-shell prompt for astronauts",
     "homepage": "https://starship.rs",
-    "version": "1.21.1",
+    "version": "1.22.1",
     "license": "ISC",
     "compatibility": "all"
   },
@@ -16515,7 +16515,7 @@
     "name": "tauri_cli",
     "description": "Build smaller, faster, and more secure desktop and mobile applications with a web frontend.",
     "homepage": "https://tauri.app/",
-    "version": "2.1.0",
+    "version": "2.2.4",
     "license": "Apache-2.0, MIT",
     "compatibility": "x86_64"
   },
@@ -16715,7 +16715,7 @@
     "name": "thunar",
     "description": "Thunar File Manager",
     "homepage": "https://docs.xfce.org/xfce/thunar/Start",
-    "version": "4.19.3",
+    "version": "4.20.0",
     "license": "GPL-2+ and LGPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -17219,7 +17219,7 @@
     "name": "util_linux",
     "description": "essential linux tools",
     "homepage": "https://www.kernel.org/pub/linux/utils/util-linux/",
-    "version": "2.40.2",
+    "version": "2.40.4",
     "license": "GPL-2, LGPL-2.1, BSD-4, MIT and public-domain",
     "compatibility": "all"
   },
@@ -18491,7 +18491,7 @@
     "name": "zed",
     "description": "Zed is a high-performance, multiplayer code editor",
     "homepage": "https://zed.dev/",
-    "version": "0.167.2",
+    "version": "0.169.2",
     "license": "GPL-3, AGPL-3, Apache-2.0",
     "compatibility": "x86_64"
   },
