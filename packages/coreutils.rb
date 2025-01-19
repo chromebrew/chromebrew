@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Coreutils < Autotools
   description 'The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system.'
   homepage 'https://www.gnu.org/software/coreutils/coreutils.html'
-  version '9.5'
+  version '9.6'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/coreutils/coreutils-9.5.tar.xz'
+  source_url "https://ftp.gnu.org/gnu/coreutils/coreutils-#{version}.tar.xz"
   source_sha256 'cd328edeac92f6a665de9f323c93b712af1858bc2e0d88f3f7100469470a1b8a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '589080263eeed8575d1efe1ec994816c7b74228890d225824454aebec12ae70d',
-     armv7l: '589080263eeed8575d1efe1ec994816c7b74228890d225824454aebec12ae70d',
-       i686: '24181cda251f24af6b3b4760e1fb8f25f08c1e0e7aa8fe10dfeaa5c17e74f8d2',
-     x86_64: '954e7e7006f3640edbda07c4553d162efd3cc9c22566fb430e4eade322d07e4e'
+    aarch64: 'c10a21d009873b1e05ab7279fa732cea5e92a8fd4441febbac479a389934885c',
+     armv7l: 'c10a21d009873b1e05ab7279fa732cea5e92a8fd4441febbac479a389934885c',
+       i686: '66c9eb64c9123f8c43827a2faac42419cde653830c99a496de6dc138e738ac60',
+     x86_64: '6c38aa3231c204f40dec93ae098c0cf1f14a592f45e1b7ecaa3140d5d250a9a8'
   })
 
   depends_on 'acl' # R
