@@ -1,12 +1,12 @@
 /usr/local/bin/pygmentize
-/usr/local/lib/python3.13/site-packages/pygments-2.18.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pygments-2.18.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pygments-2.18.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pygments-2.18.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pygments-2.18.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pygments-2.18.0.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/pygments-2.18.0.dist-info/licenses/AUTHORS
-/usr/local/lib/python3.13/site-packages/pygments-2.18.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/pygments-2.19.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pygments-2.19.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pygments-2.19.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pygments-2.19.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pygments-2.19.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pygments-2.19.1.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/pygments-2.19.1.dist-info/licenses/AUTHORS
+/usr/local/lib/python3.13/site-packages/pygments-2.19.1.dist-info/licenses/LICENSE
 /usr/local/lib/python3.13/site-packages/pygments/__init__.py
 /usr/local/lib/python3.13/site-packages/pygments/__main__.py
 /usr/local/lib/python3.13/site-packages/pygments/__pycache__/__init__.cpython-313.pyc
@@ -68,6 +68,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/_cocoa_builtins.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/_csound_builtins.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/_css_builtins.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/_googlesql_builtins.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/_julia_builtins.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/_lasso_builtins.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/_lilypond_builtins.cpython-313.pyc
@@ -121,6 +122,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/cddl.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/chapel.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/clean.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/codeql.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/comal.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/compiled.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/configs.cpython-313.pyc
@@ -161,6 +163,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/futhark.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/gcodelexer.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/gdscript.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/gleam.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/go.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/grammar_notation.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/graph.cpython-313.pyc
@@ -168,6 +171,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/graphql.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/graphviz.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/gsql.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/hare.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/haskell.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/haxe.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/hdl.cpython-313.pyc
@@ -183,6 +187,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/javascript.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/jmespath.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/jslt.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/json5.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/jsonnet.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/jsx.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/julia.cpython-313.pyc
@@ -195,6 +200,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/lisp.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/macaulay2.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/make.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/maple.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/markup.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/math.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/matlab.cpython-313.pyc
@@ -213,6 +219,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/nimrod.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/nit.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/nix.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/numbair.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/oberon.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/objective.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/ooc.cpython-313.pyc
@@ -222,6 +229,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/parsers.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/pascal.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/pawn.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/pddl.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/perl.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/phix.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/php.cpython-313.pyc
@@ -240,6 +248,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/r.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/rdf.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/rebol.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/rego.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/resource.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/ride.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/rita.cpython-313.pyc
@@ -269,6 +278,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/srcinfo.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/stata.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/supercollider.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/tablegen.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/tact.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/tal.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pygments/lexers/__pycache__/tcl.cpython-313.pyc
@@ -315,6 +325,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/_cocoa_builtins.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/_csound_builtins.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/_css_builtins.py
+/usr/local/lib/python3.13/site-packages/pygments/lexers/_googlesql_builtins.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/_julia_builtins.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/_lasso_builtins.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/_lilypond_builtins.py
@@ -368,6 +379,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/cddl.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/chapel.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/clean.py
+/usr/local/lib/python3.13/site-packages/pygments/lexers/codeql.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/comal.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/compiled.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/configs.py
@@ -408,6 +420,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/futhark.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/gcodelexer.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/gdscript.py
+/usr/local/lib/python3.13/site-packages/pygments/lexers/gleam.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/go.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/grammar_notation.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/graph.py
@@ -415,6 +428,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/graphql.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/graphviz.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/gsql.py
+/usr/local/lib/python3.13/site-packages/pygments/lexers/hare.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/haskell.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/haxe.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/hdl.py
@@ -430,6 +444,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/javascript.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/jmespath.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/jslt.py
+/usr/local/lib/python3.13/site-packages/pygments/lexers/json5.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/jsonnet.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/jsx.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/julia.py
@@ -442,6 +457,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/lisp.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/macaulay2.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/make.py
+/usr/local/lib/python3.13/site-packages/pygments/lexers/maple.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/markup.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/math.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/matlab.py
@@ -460,6 +476,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/nimrod.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/nit.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/nix.py
+/usr/local/lib/python3.13/site-packages/pygments/lexers/numbair.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/oberon.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/objective.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/ooc.py
@@ -469,6 +486,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/parsers.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/pascal.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/pawn.py
+/usr/local/lib/python3.13/site-packages/pygments/lexers/pddl.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/perl.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/phix.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/php.py
@@ -487,6 +505,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/r.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/rdf.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/rebol.py
+/usr/local/lib/python3.13/site-packages/pygments/lexers/rego.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/resource.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/ride.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/rita.py
@@ -516,6 +535,7 @@
 /usr/local/lib/python3.13/site-packages/pygments/lexers/srcinfo.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/stata.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/supercollider.py
+/usr/local/lib/python3.13/site-packages/pygments/lexers/tablegen.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/tact.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/tal.py
 /usr/local/lib/python3.13/site-packages/pygments/lexers/tcl.py
