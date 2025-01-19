@@ -10,6 +10,7 @@
 /usr/local/bin/mdel
 /usr/local/bin/mdeltree
 /usr/local/bin/mdir
+/usr/local/bin/mdoctorfat
 /usr/local/bin/mdu
 /usr/local/bin/mformat
 /usr/local/bin/minfo
@@ -41,6 +42,7 @@
 /usr/local/share/man/man1/mdel.1.zst
 /usr/local/share/man/man1/mdeltree.1.zst
 /usr/local/share/man/man1/mdir.1.zst
+/usr/local/share/man/man1/mdoctorfat.1.zst
 /usr/local/share/man/man1/mdu.1.zst
 /usr/local/share/man/man1/mformat.1.zst
 /usr/local/share/man/man1/minfo.1.zst
