@@ -6,7 +6,7 @@ require 'package'
 class Uutils_coreutils < Package
   description 'Cross-platform Rust rewrite of the GNU coreutils'
   homepage 'https://github.com/uutils/coreutils'
-  version '0.0.28'
+  version '0.0.29'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/uutils/coreutils.git'
@@ -14,10 +14,10 @@ class Uutils_coreutils < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ea976325a82354c44231285aebb75556c0ab6bcc12b76532187126ce2def7340',
-     armv7l: 'ea976325a82354c44231285aebb75556c0ab6bcc12b76532187126ce2def7340',
-       i686: 'c0b4b8661742f92bc0fabb25530b451888f358d29a862544cad90844889da431',
-     x86_64: '59cb8482bd29a74d8c5f34d3f41096b15cab5f9bd26cd3a0b302f7b3cf48379f'
+    aarch64: 'f186e207234d93eb8c644f6bc47967f38ed8b83e18ddb3b71b018701b752c22d',
+     armv7l: 'f186e207234d93eb8c644f6bc47967f38ed8b83e18ddb3b71b018701b752c22d',
+       i686: '867af55fa9831166b3f45a6d2f0f49f29527ef79c1fe729b556bfb8af20f295a',
+     x86_64: 'a0d467d0c9bbaa47569fb538eb7f5a7ae56c9c87fb146c8924a18f29cdb4ce33'
   })
 
   depends_on 'rust' => :build
