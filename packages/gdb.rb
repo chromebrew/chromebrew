@@ -6,18 +6,18 @@ require 'buildsystems/autotools'
 class Gdb < Autotools
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version "15.1-#{CREW_GCC_VER}-#{CREW_PY_VER}"
+  version "16.1-#{CREW_GCC_VER}-#{CREW_PY_VER}"
   license 'GPL3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
   source_sha256 '38254eacd4572134bca9c5a5aa4d4ca564cbbd30c369d881f733fb6b903354f2'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5f9ae81368ba045330b783686cd514c38ff64c0bbcd3abd2ce1100a8abd28944',
-     armv7l: '5f9ae81368ba045330b783686cd514c38ff64c0bbcd3abd2ce1100a8abd28944',
-       i686: 'a0b35ff0e8b9a37237323c3a72cd89121b39dd1467d5e3c93c9d14a5b75fe7f7',
-     x86_64: '675a925237cc73dd7eb0da055c004f835dddba257aaec3986249f30fc19e79da'
+    aarch64: '6b0752c9af56f05d8c6168cdb86e3bd6ff7bc86fb482aa864a71262cd6c56e14',
+     armv7l: '6b0752c9af56f05d8c6168cdb86e3bd6ff7bc86fb482aa864a71262cd6c56e14',
+       i686: '6ee75eef105015e2cec081223de1fd4d20ae4537f75a8b07ee5d6184fc48e315',
+     x86_64: '2031d00893dd1d97d0b72d628925a779629c625e5052e766714d5ea687e96d86'
   })
 
   depends_on 'binutils' # R
@@ -42,43 +42,35 @@ class Gdb < Autotools
 
   def self.build
     @x = ARCH == 'i686' ? '' : '--with-x'
-    FileUtils.mkdir_p 'build'
-    Dir.chdir('build') do
-      system "../configure \
-        #{CREW_CONFIGURE_OPTIONS} \
-        --disable-binutils \
-        --disable-ld \
-        --disable-nls \
-        --enable-64-bit-bfd \
-        --enable-install-libbfd \
-        --enable-host-shared \
-        --enable-lto \
-        --enable-shared \
-        --enable-sim \
-        --enable-source-highlight \
-        --enable-tui \
-        --with-curses \
-        --with-lzma \
-        --with-pkgversion=Chromebrew \
-        --with-python=python3 \
-        --with-system-gdbinit=#{CREW_PREFIX}/etc/gdb/gdbinit \
-        --with-system-readline \
-        --with-system-zlib \
-        #{@x}"
-      system 'make'
-    end
+    system "./configure \
+      #{CREW_CONFIGURE_OPTIONS} \
+      --disable-binutils \
+      --disable-ld \
+      --disable-nls \
+      --enable-64-bit-bfd \
+      --enable-install-libbfd \
+      --enable-host-shared \
+      --enable-lto \
+      --enable-shared \
+      --enable-sim \
+      --enable-source-highlight \
+      --enable-tui \
+      --with-curses \
+      --with-lzma \
+      --with-pkgversion=Chromebrew \
+      --with-python=python3 \
+      --with-system-gdbinit=#{CREW_PREFIX}/etc/gdb/gdbinit \
+      --with-system-readline \
+      --with-system-zlib \
+      #{@x}"
+    system 'make'
   end
 
   def self.install
-    Dir.chdir('build') do
-      # Handle missing libopcodes
-      # https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/merge_requests/13697/diffs
-      system "make -C gdb DESTDIR=#{CREW_DEST_DIR} install"
-      system "make -C opcodes DESTDIR=#{CREW_DEST_DIR} install"
-      system "make -C bfd DESTDIR=#{CREW_DEST_DIR} install"
-      system "make -C gdb/data-directory DESTDIR=#{CREW_DEST_DIR} install"
-      system "make -C gdbserver DESTDIR=#{CREW_DEST_DIR} install"
-    end
+    system "make -C gdb DESTDIR=#{CREW_DEST_DIR} install"
+    system "make -C bfd DESTDIR=#{CREW_DEST_DIR} install"
+    system "make -C gdb/data-directory DESTDIR=#{CREW_DEST_DIR} install"
+    system "make -C gdbserver DESTDIR=#{CREW_DEST_DIR} install"
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libinproctrace.so"
   end
 end
