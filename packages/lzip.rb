@@ -11,8 +11,8 @@ class Lzip < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a94eac6bb096a826e3a492989a37ed3dadc8476bb6f83d908331dc80d1dee416',
-     armv7l: 'a94eac6bb096a826e3a492989a37ed3dadc8476bb6f83d908331dc80d1dee416',
+    aarch64: 'b3fa9f7501ba5447bc11b661ac74d34294e493c2f84f43a4d81e02519bae4015',
+     armv7l: 'b3fa9f7501ba5447bc11b661ac74d34294e493c2f84f43a4d81e02519bae4015',
        i686: '1f161ed81eea70d22a37ab7306e6366e3b661710654cace96f73c6cfc9ce49e3',
      x86_64: 'f9e9a6ea29a9bdfafb24c5eb5ca72e60ac8b6470ecec545a647667bc84630204'
   })
