@@ -14,7 +14,7 @@ class Lzip < Autotools
     aarch64: 'a94eac6bb096a826e3a492989a37ed3dadc8476bb6f83d908331dc80d1dee416',
      armv7l: 'a94eac6bb096a826e3a492989a37ed3dadc8476bb6f83d908331dc80d1dee416',
        i686: '1f161ed81eea70d22a37ab7306e6366e3b661710654cace96f73c6cfc9ce49e3',
-     x86_64: 'a16eac8f2e028504c47a905cd6f62e0b09b193e81e1336c76d74fb985b115330'
+     x86_64: 'f9e9a6ea29a9bdfafb24c5eb5ca72e60ac8b6470ecec545a647667bc84630204'
   })
 
   depends_on 'gcc_lib' # R
