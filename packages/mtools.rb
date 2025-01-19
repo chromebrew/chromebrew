@@ -13,8 +13,10 @@ class Mtools < Autotools
   binary_sha256({
     aarch64: '301c1cbc6059963e5275ec7f474a5439acd3fb9c75575d91de6c7451e0d74519',
      armv7l: '301c1cbc6059963e5275ec7f474a5439acd3fb9c75575d91de6c7451e0d74519',
-     x86_64: '8444664ab8fa7d98336bd4ac50927d589af516cf4f85e6d33f7ed118eb39ae10'
+     x86_64: 'e469d2c99cdcc1757492b67032f60eeac0a21f622f46620c9234da13f2d616b3'
   })
+
+  depends_on 'glibc' # R
 
   configure_options '--without-x'
 end
