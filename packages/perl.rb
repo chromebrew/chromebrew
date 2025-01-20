@@ -14,7 +14,7 @@ class Perl < Package
     aarch64: '43ee11b9244dfd2885617c0ebbc273aab2dfd33cdabde7c644cdaccf92008b35',
      armv7l: '43ee11b9244dfd2885617c0ebbc273aab2dfd33cdabde7c644cdaccf92008b35',
        i686: '309460664c54e93002b8d0fc43ed3ca330964b9ac7f8f9f845d2914496b4eae2',
-     x86_64: '652e84be0c6414d018d2d3d206cdb2f62bdb183cef477a0bdc601b32e97d84d7'
+     x86_64: '4d00a036d97f577e0ad9e25cc730d0654f8157db17c2d4fbbeba10f655330af9'
   })
 
   depends_on 'gdbm' # R
