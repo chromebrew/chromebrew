@@ -13,7 +13,7 @@ class Py3_websockets < Pip
     aarch64: '357d76658debe2203a0f7ca0689f32cebb0a4050cd61b25a2b4d66d9e8a00dbb',
      armv7l: '357d76658debe2203a0f7ca0689f32cebb0a4050cd61b25a2b4d66d9e8a00dbb',
        i686: '0c5b35666116b37ed4666e45569a3771f22127dc78221b293fb6471f9da56431',
-     x86_64: 'b33ae6129bd2d593cd5af1b4c256dce1c6cd7066c3b071bd7c0315cbf50f9c81'
+     x86_64: '58c7e5f0b28cb95ad0a0904e985d5d772fd8ad2d861a1dad58949b5744cff859'
   })
 
   depends_on 'python3' # L
