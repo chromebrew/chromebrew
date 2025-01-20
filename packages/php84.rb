@@ -13,7 +13,7 @@ class Php84 < Package
   binary_sha256({
     aarch64: 'f5dbaaeefed1f768e6ba744c5840ea5fbae86b7fd579ec3bc76e27d18133a00c',
      armv7l: 'f5dbaaeefed1f768e6ba744c5840ea5fbae86b7fd579ec3bc76e27d18133a00c',
-     x86_64: 'cf701bf4bd84cfa887c9345be51e0e1567f46fe7933da74499242a4aacdbd9a3'
+     x86_64: '69dfe4cadd1ef11f815e45fd298a71bfab311df406bea4a570b63ae1af0063e9'
   })
 
   depends_on 'aspell_en' => :build
