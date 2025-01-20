@@ -13,7 +13,7 @@ class Perl < Package
   binary_sha256({
     aarch64: '43ee11b9244dfd2885617c0ebbc273aab2dfd33cdabde7c644cdaccf92008b35',
      armv7l: '43ee11b9244dfd2885617c0ebbc273aab2dfd33cdabde7c644cdaccf92008b35',
-       i686: 'be603fbf330914eb4bb9b70c3b6ada60345db8f6a119c4b037cf3b990ae98d71',
+       i686: '309460664c54e93002b8d0fc43ed3ca330964b9ac7f8f9f845d2914496b4eae2',
      x86_64: '652e84be0c6414d018d2d3d206cdb2f62bdb183cef477a0bdc601b32e97d84d7'
   })
 
