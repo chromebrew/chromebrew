@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_i18n < RUBY
   description 'New wave internationalization support for ruby.'
   homepage 'https://github.com/ruby-i18n/i18n'
-  version "1.14.6-#{CREW_RUBY_VER}"
+  version "1.14.7-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
