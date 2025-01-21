@@ -10,8 +10,8 @@ class Py3_pre_commit < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c73013a160bc0dfaff0811eeec432faa819a15186e10c8b5a5c98d043be256ca',
-     armv7l: 'c73013a160bc0dfaff0811eeec432faa819a15186e10c8b5a5c98d043be256ca',
+    aarch64: 'c72de9f3173355193b1cff1019d86414fd154c051b4a10013a6bc01f496d8514',
+     armv7l: 'c72de9f3173355193b1cff1019d86414fd154c051b4a10013a6bc01f496d8514',
        i686: 'faae0538c16f0b0cae4750006d68e21ffd4219124098100b2d1df4dfe1a4d347',
      x86_64: '88b1cc5a2d8761ec7260b5720a0810dbd8371c48af440ed55f6ea2025872bb0f'
   })
