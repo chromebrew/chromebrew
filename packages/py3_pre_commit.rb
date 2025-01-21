@@ -13,7 +13,7 @@ class Py3_pre_commit < Pip
     aarch64: 'c73013a160bc0dfaff0811eeec432faa819a15186e10c8b5a5c98d043be256ca',
      armv7l: 'c73013a160bc0dfaff0811eeec432faa819a15186e10c8b5a5c98d043be256ca',
        i686: 'faae0538c16f0b0cae4750006d68e21ffd4219124098100b2d1df4dfe1a4d347',
-     x86_64: '28ccfec745895a9922e97afd43cc1ecdddbe980d47531b571808a1cab3fb0273'
+     x86_64: '88b1cc5a2d8761ec7260b5720a0810dbd8371c48af440ed55f6ea2025872bb0f'
   })
 
   depends_on 'py3_cfgv'
