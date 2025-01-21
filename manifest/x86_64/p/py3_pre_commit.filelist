@@ -1,12 +1,12 @@
 /usr/local/bin/pre-commit
-/usr/local/lib/python3.13/site-packages/pre_commit-4.0.1.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pre_commit-4.0.1.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/pre_commit-4.0.1.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pre_commit-4.0.1.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pre_commit-4.0.1.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pre_commit-4.0.1.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pre_commit-4.0.1.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/pre_commit-4.0.1.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/pre_commit-4.1.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pre_commit-4.1.0.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/pre_commit-4.1.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pre_commit-4.1.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pre_commit-4.1.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pre_commit-4.1.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pre_commit-4.1.0.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/pre_commit-4.1.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/pre_commit/__init__.py
 /usr/local/lib/python3.13/site-packages/pre_commit/__main__.py
 /usr/local/lib/python3.13/site-packages/pre_commit/__pycache__/__init__.cpython-313.pyc
@@ -82,6 +82,7 @@
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/fail.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/golang.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/haskell.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/julia.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/lua.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/node.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/perl.cpython-313.pyc
@@ -102,6 +103,7 @@
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/fail.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/golang.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/haskell.py
+/usr/local/lib/python3.13/site-packages/pre_commit/languages/julia.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/lua.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/node.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/perl.py
