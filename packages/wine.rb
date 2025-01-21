@@ -6,7 +6,7 @@ class Wine < Package
   version '10.0'
   license 'LGPL-2.1'
   compatibility 'x86_64'
-  source_url "https://dl.winehq.org/wine/source/9.0/wine-#{version}.tar.xz"
+  source_url "https://dl.winehq.org/wine/source/#{version}/wine-#{version}.tar.xz"
   source_sha256 '7cfd090a5395f5b76d95bb5defac8a312c8de4c070c1163b8b58da38330ca6ee'
   binary_compression 'tar.zst'
 
