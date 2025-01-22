@@ -6,12 +6,11 @@ require 'buildsystems/cmake'
 class Sdl3 < CMake
   description 'A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard Version 3'
   homepage 'https://www.libsdl.org'
-  @_ver = '4cc3410dce50cefce98d3cf3cf1bc8eca83b862a'
-  version "3.1.2-#{@_ver[0..6]}"
+  version '3.2.0'
   license 'zlib'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/libsdl-org/SDL.git'
-  git_hashtag @_ver
+  git_hashtag "release-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({

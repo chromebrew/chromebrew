@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Sdl3_ttf < CMake
   description 'A library that allows you to use TrueType fonts in your SDL applications'
   homepage 'https://www.libsdl.org/projects/SDL_ttf/'
-  @_ver = '22347419ee08e49d77411c680f15e314ef870ab7'
+  @_ver = '7d62ee195e32180b874c97a07df4080712b467b6'
   version "3.0.0-#{@_ver[0..6]}"
   license 'Zlib'
   compatibility 'x86_64 aarch64 armv7l'
