@@ -1,11 +1,11 @@
-/usr/local/lib/python3.13/site-packages/oci-2.142.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/oci-2.142.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/oci-2.142.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/oci-2.142.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/oci-2.142.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/oci-2.142.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.13/site-packages/oci-2.142.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/oci-2.142.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/oci-2.143.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/oci-2.143.0.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/oci-2.143.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/oci-2.143.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/oci-2.143.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/oci-2.143.0.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.13/site-packages/oci-2.143.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/oci-2.143.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/oci/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/alloy.cpython-313.pyc
@@ -4888,10 +4888,15 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/boot_volume_source_from_boot_volume_replica_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/bulk_add_virtual_circuit_public_prefixes_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/bulk_delete_virtual_circuit_public_prefixes_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/byoasn.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/byoasn_byoip_range.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/byoasn_collection.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/byoasn_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/byoip_allocated_range_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/byoip_allocated_range_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/byoip_range.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/byoip_range_collection.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/byoip_range_origin_asn.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/byoip_range_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/byoip_range_vcn_ipv6_allocation_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/byoipv6_cidr_details.cpython-313.pyc
@@ -4903,6 +4908,7 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/capture_filter.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/change_boot_volume_backup_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/change_boot_volume_compartment_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/change_byoasn_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/change_byoip_range_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/change_capture_filter_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/change_cluster_network_compartment_details.cpython-313.pyc
@@ -4988,6 +4994,7 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/create_app_catalog_subscription_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/create_boot_volume_backup_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/create_boot_volume_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/create_byoasn_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/create_byoip_range_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/create_capacity_report_shape_availability_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/create_capacity_source_details.cpython-313.pyc
@@ -5281,6 +5288,7 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/service_gateway.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/service_id_request_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/service_id_response_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/set_origin_asn_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/shape.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/shape_access_control_service_enabled_platform_options.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/shape_alternative_object.cpython-313.pyc
@@ -5320,6 +5328,7 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_boot_volume_backup_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_boot_volume_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_boot_volume_kms_key_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_byoasn_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_byoip_range_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_capacity_source_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/core/models/__pycache__/update_capture_filter_details.cpython-313.pyc
@@ -5499,10 +5508,15 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/boot_volume_source_from_boot_volume_replica_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/bulk_add_virtual_circuit_public_prefixes_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/bulk_delete_virtual_circuit_public_prefixes_details.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/byoasn.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/byoasn_byoip_range.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/byoasn_collection.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/byoasn_summary.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/byoip_allocated_range_collection.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/byoip_allocated_range_summary.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/byoip_range.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/byoip_range_collection.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/byoip_range_origin_asn.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/byoip_range_summary.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/byoip_range_vcn_ipv6_allocation_summary.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/byoipv6_cidr_details.py
@@ -5514,6 +5528,7 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/capture_filter.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/change_boot_volume_backup_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/change_boot_volume_compartment_details.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/change_byoasn_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/change_byoip_range_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/change_capture_filter_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/change_cluster_network_compartment_details.py
@@ -5599,6 +5614,7 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/create_app_catalog_subscription_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/create_boot_volume_backup_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/create_boot_volume_details.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/create_byoasn_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/create_byoip_range_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/create_capacity_report_shape_availability_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/create_capacity_source_details.py
@@ -5892,6 +5908,7 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/service_gateway.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/service_id_request_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/service_id_response_details.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/set_origin_asn_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/shape.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/shape_access_control_service_enabled_platform_options.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/shape_alternative_object.py
@@ -5931,6 +5948,7 @@
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_boot_volume_backup_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_boot_volume_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_boot_volume_kms_key_details.py
+/usr/local/lib/python3.13/site-packages/oci/core/models/update_byoasn_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_byoip_range_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_capacity_source_details.py
 /usr/local/lib/python3.13/site-packages/oci/core/models/update_capture_filter_details.py
@@ -9160,6 +9178,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/autonomous_database_wallet.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/autonomous_db_preview_version_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/autonomous_db_version_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/autonomous_dw_database.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/autonomous_exadata_infrastructure.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/autonomous_exadata_infrastructure_shape_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/autonomous_exadata_infrastructure_summary.cpython-313.pyc
@@ -9228,6 +9247,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/convert_to_pdb_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/convert_to_pdb_target_base.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/convert_to_regular_pluggable_database_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/convert_to_standalone_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/create_application_vip_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/create_autonomous_container_database_dataguard_association_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/create_autonomous_container_database_details.cpython-313.pyc
@@ -9299,11 +9319,15 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/create_scheduling_plan_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/create_scheduling_policy_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/create_scheduling_window_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/create_stand_by_database_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/create_standby_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/create_vm_cluster_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/customer_contact.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/data_collection_options.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/data_guard_association.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/data_guard_association_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/data_guard_group.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/data_guard_group_member.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/database.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/database_connection_credentials.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/database_connection_credentials_by_details.cpython-313.pyc
@@ -9367,6 +9391,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/enable_external_pluggable_database_operations_insights_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/enable_external_pluggable_database_stack_monitoring_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/enable_pluggable_database_management_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/encryption_key_location_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/estimated_patching_time.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/exadata_db_system_migration.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/exadata_db_system_migration_summary.cpython-313.pyc
@@ -9399,6 +9424,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/external_database_base.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/external_database_connector.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/external_database_connector_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/external_hsm_encryption_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/external_macs_connector.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/external_macs_connector_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/external_non_container_database.cpython-313.pyc
@@ -9406,6 +9432,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/external_pluggable_database.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/external_pluggable_database_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/failover_data_guard_association_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/failover_data_guard_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/file_system_configuration_detail.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/flex_component_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/flex_component_summary.cpython-313.pyc
@@ -9472,6 +9499,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/refreshable_clone_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/register_autonomous_database_data_safe_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/reinstate_data_guard_association_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/reinstate_data_guard_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/remote_clone_pluggable_database_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/remove_virtual_machine_from_cloud_vm_cluster_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/remove_virtual_machine_from_exadb_vm_cluster_details.cpython-313.pyc
@@ -9508,6 +9536,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/set_key_version_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/stack_monitoring_config.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/storage_performance_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/switch_over_data_guard_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/switchover_data_guard_association_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/system_version_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/system_version_summary.cpython-313.pyc
@@ -9528,6 +9557,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/update_console_connection_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/update_console_history_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/update_data_guard_association_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/update_data_guard_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/update_database_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/update_database_software_image_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/update_db_home_details.cpython-313.pyc
@@ -9618,6 +9648,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/autonomous_database_wallet.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/autonomous_db_preview_version_summary.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/autonomous_db_version_summary.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/autonomous_dw_database.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/autonomous_exadata_infrastructure.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/autonomous_exadata_infrastructure_shape_summary.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/autonomous_exadata_infrastructure_summary.py
@@ -9686,6 +9717,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/convert_to_pdb_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/convert_to_pdb_target_base.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/convert_to_regular_pluggable_database_details.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/convert_to_standalone_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/create_application_vip_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/create_autonomous_container_database_dataguard_association_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/create_autonomous_container_database_details.py
@@ -9757,11 +9789,15 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/create_scheduling_plan_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/create_scheduling_policy_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/create_scheduling_window_details.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/create_stand_by_database_details.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/create_standby_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/create_vm_cluster_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/customer_contact.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/data_collection_options.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/data_guard_association.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/data_guard_association_summary.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/data_guard_group.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/data_guard_group_member.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/database.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/database_connection_credentials.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/database_connection_credentials_by_details.py
@@ -9825,6 +9861,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/enable_external_pluggable_database_operations_insights_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/enable_external_pluggable_database_stack_monitoring_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/enable_pluggable_database_management_details.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/encryption_key_location_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/estimated_patching_time.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/exadata_db_system_migration.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/exadata_db_system_migration_summary.py
@@ -9857,6 +9894,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/external_database_base.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/external_database_connector.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/external_database_connector_summary.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/external_hsm_encryption_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/external_macs_connector.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/external_macs_connector_summary.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/external_non_container_database.py
@@ -9864,6 +9902,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/external_pluggable_database.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/external_pluggable_database_summary.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/failover_data_guard_association_details.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/failover_data_guard_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/file_system_configuration_detail.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/flex_component_collection.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/flex_component_summary.py
@@ -9930,6 +9969,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/refreshable_clone_summary.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/register_autonomous_database_data_safe_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/reinstate_data_guard_association_details.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/reinstate_data_guard_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/remote_clone_pluggable_database_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/remove_virtual_machine_from_cloud_vm_cluster_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/remove_virtual_machine_from_exadb_vm_cluster_details.py
@@ -9966,6 +10006,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/set_key_version_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/stack_monitoring_config.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/storage_performance_details.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/switch_over_data_guard_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/switchover_data_guard_association_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/system_version_collection.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/system_version_summary.py
@@ -9986,6 +10027,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/update_console_connection_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/update_console_history_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/update_data_guard_association_details.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/update_data_guard_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/update_database_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/update_database_software_image_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/update_db_home_details.py
@@ -20515,6 +20557,7 @@
 /usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/__pycache__/backend_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/__pycache__/backend_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/__pycache__/backend_health.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/__pycache__/backend_operational_status.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/__pycache__/backend_set.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/__pycache__/backend_set_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/__pycache__/backend_set_details.cpython-313.pyc
@@ -20562,6 +20605,7 @@
 /usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/backend_collection.py
 /usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/backend_details.py
 /usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/backend_health.py
+/usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/backend_operational_status.py
 /usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/backend_set.py
 /usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/backend_set_collection.py
 /usr/local/lib/python3.13/site-packages/oci/network_load_balancer/models/backend_set_details.py
