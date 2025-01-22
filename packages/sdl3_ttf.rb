@@ -15,8 +15,8 @@ class Sdl3_ttf < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2b881bf9b012d17ab4c363c427507ca2543b353e3b7c5ce307a233dc385f0cad',
-     armv7l: '2b881bf9b012d17ab4c363c427507ca2543b353e3b7c5ce307a233dc385f0cad',
+    aarch64: 'a1a8d61d588fd8219773275fb480c6b787f814e509df65b7d54b19c6e396e67a',
+     armv7l: 'a1a8d61d588fd8219773275fb480c6b787f814e509df65b7d54b19c6e396e67a',
        i686: '6a1af809ce6d0fc507b1b857b8f0803c6aded4e816d3c454e4e59b0f5ed4acca',
      x86_64: '1acd7b53dbfd43f76bef150cf90e2e841f58e2320c7dc9c6a0026d24eecb3ac8'
   })
