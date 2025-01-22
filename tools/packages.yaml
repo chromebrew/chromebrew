@@ -6410,8 +6410,13 @@ url: https://httpredir.debian.org/debian/pool/main/o/oneko/
 activity: low
 ---
 kind: url
-name: onepassword
+name: onepassword_cli
 url: https://developer.1password.com/docs/cli/get-started
+activity: medium
+---
+kind: url
+name: onepassword_gui
+url: https://support.1password.com/install-linux/#other-distributions-or-arm-targz
 activity: medium
 ---
 kind: url

@@ -1,6 +1,6 @@
 require 'package'
 
-class Onepassword < Package
+class Onepassword_cli < Package
   description '1Password CLI brings 1Password to your terminal.'
   homepage 'https://1password.com/'
   version '2.30.3'
