@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_twine < Pip
   description 'A utility for interacting with PyPI'
   homepage 'https://pypi.python.org/pypi/twine'
-  version "6.0.1-#{CREW_PY_VER}"
+  version "6.1.0-#{CREW_PY_VER}"
   license 'APACHE'
   compatibility 'all'
   source_url 'SKIP'
