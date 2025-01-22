@@ -12,7 +12,7 @@ class Py3_filelock < Pip
   binary_sha256({
     aarch64: 'bf1481ea759a4219be96c8ffcd1131c6e0a5d8dd998ea8a43e305d1768b4dfca',
      armv7l: 'bf1481ea759a4219be96c8ffcd1131c6e0a5d8dd998ea8a43e305d1768b4dfca',
-       i686: 'b6a63131803fa6e0fa072c527b6c21f454028d95f374a2105eebfff9b238bc5f',
+       i686: 'c8e22b92b2ba5aad8cae8107be6f422acf330f2a0c5f6ad6eff8fd9ea1d52a52',
      x86_64: '1eec59817fac828643c5c4772964f3f7fe70f939084e37c3f366505915586e13'
   })
 
