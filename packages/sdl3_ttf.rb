@@ -17,7 +17,6 @@ class Sdl3_ttf < CMake
   binary_sha256({
     aarch64: 'a1a8d61d588fd8219773275fb480c6b787f814e509df65b7d54b19c6e396e67a',
      armv7l: 'a1a8d61d588fd8219773275fb480c6b787f814e509df65b7d54b19c6e396e67a',
-       i686: '6a1af809ce6d0fc507b1b857b8f0803c6aded4e816d3c454e4e59b0f5ed4acca',
      x86_64: '1acd7b53dbfd43f76bef150cf90e2e841f58e2320c7dc9c6a0026d24eecb3ac8'
   })
 
