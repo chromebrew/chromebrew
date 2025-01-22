@@ -16,7 +16,7 @@ class Sdl3 < CMake
   binary_sha256({
     aarch64: 'e0195301acfa082d4c5f0e6a10a4d3a61fca0255309bdce5ae4490cbbf2a90fc',
      armv7l: 'e0195301acfa082d4c5f0e6a10a4d3a61fca0255309bdce5ae4490cbbf2a90fc',
-     x86_64: 'e1ae3a011af30355113c47f0c5ab458f982aecad2ea6aac67b80fce76364873b'
+     x86_64: '2adbf33cdce6dfa55435b99d767a1f9421f9579f37ad5f250807ef3089cca8ba'
   })
 
   depends_on 'libxext' => :build

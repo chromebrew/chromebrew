@@ -18,7 +18,7 @@ class Sdl3_ttf < CMake
     aarch64: '2b881bf9b012d17ab4c363c427507ca2543b353e3b7c5ce307a233dc385f0cad',
      armv7l: '2b881bf9b012d17ab4c363c427507ca2543b353e3b7c5ce307a233dc385f0cad',
        i686: '6a1af809ce6d0fc507b1b857b8f0803c6aded4e816d3c454e4e59b0f5ed4acca',
-     x86_64: 'efa3cd27e024b92a0c197094fa0b580dff000af6122199900b9659e554f84656'
+     x86_64: '1acd7b53dbfd43f76bef150cf90e2e841f58e2320c7dc9c6a0026d24eecb3ac8'
   })
 
   depends_on 'freetype' # R
