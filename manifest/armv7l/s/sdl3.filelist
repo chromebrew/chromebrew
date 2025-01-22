@@ -1,5 +1,6 @@
 /usr/local/include/SDL3/SDL.h
 /usr/local/include/SDL3/SDL_assert.h
+/usr/local/include/SDL3/SDL_asyncio.h
 /usr/local/include/SDL3/SDL_atomic.h
 /usr/local/include/SDL3/SDL_audio.h
 /usr/local/include/SDL3/SDL_begin_code.h
@@ -17,6 +18,7 @@
 /usr/local/include/SDL3/SDL_events.h
 /usr/local/include/SDL3/SDL_filesystem.h
 /usr/local/include/SDL3/SDL_gamepad.h
+/usr/local/include/SDL3/SDL_gpu.h
 /usr/local/include/SDL3/SDL_guid.h
 /usr/local/include/SDL3/SDL_haptic.h
 /usr/local/include/SDL3/SDL_hidapi.h
@@ -51,6 +53,7 @@
 /usr/local/include/SDL3/SDL_platform.h
 /usr/local/include/SDL3/SDL_platform_defines.h
 /usr/local/include/SDL3/SDL_power.h
+/usr/local/include/SDL3/SDL_process.h
 /usr/local/include/SDL3/SDL_properties.h
 /usr/local/include/SDL3/SDL_rect.h
 /usr/local/include/SDL3/SDL_render.h
@@ -76,6 +79,7 @@
 /usr/local/include/SDL3/SDL_time.h
 /usr/local/include/SDL3/SDL_timer.h
 /usr/local/include/SDL3/SDL_touch.h
+/usr/local/include/SDL3/SDL_tray.h
 /usr/local/include/SDL3/SDL_version.h
 /usr/local/include/SDL3/SDL_video.h
 /usr/local/include/SDL3/SDL_vulkan.h
@@ -88,7 +92,7 @@
 /usr/local/lib/cmake/SDL3/SDL3testTargets.cmake
 /usr/local/lib/libSDL3.so
 /usr/local/lib/libSDL3.so.0
-/usr/local/lib/libSDL3.so.0.1.2
+/usr/local/lib/libSDL3.so.0.2.0
 /usr/local/lib/libSDL3_test.a
 /usr/local/lib/pkgconfig/sdl3.pc
 /usr/local/share/licenses/SDL3/LICENSE.txt

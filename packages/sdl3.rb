@@ -6,18 +6,17 @@ require 'buildsystems/cmake'
 class Sdl3 < CMake
   description 'A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard Version 3'
   homepage 'https://www.libsdl.org'
-  @_ver = '4cc3410dce50cefce98d3cf3cf1bc8eca83b862a'
-  version "3.1.2-#{@_ver[0..6]}"
+  version '3.2.0'
   license 'zlib'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/libsdl-org/SDL.git'
-  git_hashtag @_ver
+  git_hashtag "release-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e0195301acfa082d4c5f0e6a10a4d3a61fca0255309bdce5ae4490cbbf2a90fc',
-     armv7l: 'e0195301acfa082d4c5f0e6a10a4d3a61fca0255309bdce5ae4490cbbf2a90fc',
-     x86_64: 'e1ae3a011af30355113c47f0c5ab458f982aecad2ea6aac67b80fce76364873b'
+    aarch64: 'f0c9414e2579ad1e78680a1309d1ee49e8c89c630b95139524e854ca49335854',
+     armv7l: 'f0c9414e2579ad1e78680a1309d1ee49e8c89c630b95139524e854ca49335854',
+     x86_64: '2adbf33cdce6dfa55435b99d767a1f9421f9579f37ad5f250807ef3089cca8ba'
   })
 
   depends_on 'libxext' => :build
