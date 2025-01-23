@@ -387,6 +387,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/lister.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/managed_instance_groups_utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/metadata_utils.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/multi_migs/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/multi_migs/utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/name_generator.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/network_edge_security_services/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/network_edge_security_services/client.py
@@ -557,6 +559,16 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/conversion_workspaces_entities_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/conversion_workspaces_lro_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/conversion_workspaces_operations_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/database_entity/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/database_entity/entity.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/database_entity/entity_builder.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/database_entity/entity_identifier.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/database_entity/entity_name.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/database_entity/entity_serializers.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/database_entity/entity_status.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/database_entity/issue_splitter.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/database_entity/proto_collections.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces/database_entity/string_utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/conversion_workspaces_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/filter_rewrite.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/database_migration/migration_jobs.py
@@ -578,6 +590,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/content.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/data_taxonomy.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/datascan.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/encryption_config.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/entry.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/entry_group.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/entry_type.py
@@ -830,6 +843,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/ml_engine/operations.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/ml_engine/predict.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/ml_engine/versions_api.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/model_armor/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/model_armor/api.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/monitoring/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/monitoring/channels.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/monitoring/metric.py
@@ -1803,6 +1818,9 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/managed_instance_groups/auto_healing_utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/managed_instance_groups/standby_policy_utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/managed_instance_groups/update_instances_utils.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/multi_migs/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/multi_migs/resources.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/multi_migs/utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_attachments/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_attachments/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_edge_security_services/__init__.py
@@ -2703,6 +2721,9 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/ml_engine/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/ml_engine/uploads.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/ml_engine/versions_util.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/model_armor/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/model_armor/args.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/model_armor/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/model_armor/v1alpha_resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/monitoring/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/monitoring/completers.py
@@ -2965,6 +2986,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/streaming.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/config_changes.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/deletion.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/flags_parser.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/instance_split.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/worker_pools_operations.py
@@ -3210,6 +3232,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/tasks/task_buffer.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/tasks/task_executor.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/tasks/task_graph.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/tasks/task_graph_debugger.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/tasks/task_graph_executor.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/tasks/task_status.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/tasks/task_util.py
@@ -6834,6 +6857,7 @@
 /usr/local/share/gcloud/lib/surface/alloydb/clusters/delete.py
 /usr/local/share/gcloud/lib/surface/alloydb/clusters/describe.py
 /usr/local/share/gcloud/lib/surface/alloydb/clusters/export.py
+/usr/local/share/gcloud/lib/surface/alloydb/clusters/import.py
 /usr/local/share/gcloud/lib/surface/alloydb/clusters/list.py
 /usr/local/share/gcloud/lib/surface/alloydb/clusters/promote.py
 /usr/local/share/gcloud/lib/surface/alloydb/clusters/restore.py
@@ -8232,6 +8256,7 @@
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/create.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/delete.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/describe.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/get_operational_status.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/list.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/remove_members.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/update.py
@@ -8277,7 +8302,10 @@
 /usr/local/share/gcloud/lib/surface/compute/interconnects/update.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/create.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/delete.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/describe.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/list.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/update.py
 /usr/local/share/gcloud/lib/surface/compute/machine_images/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/machine_images/add_iam_policy_binding.yaml
 /usr/local/share/gcloud/lib/surface/compute/machine_images/create.py
@@ -8291,6 +8319,11 @@
 /usr/local/share/gcloud/lib/surface/compute/machine_types/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/machine_types/describe.py
 /usr/local/share/gcloud/lib/surface/compute/machine_types/list.py
+/usr/local/share/gcloud/lib/surface/compute/multi_migs/__init__.py
+/usr/local/share/gcloud/lib/surface/compute/multi_migs/create.py
+/usr/local/share/gcloud/lib/surface/compute/multi_migs/delete.py
+/usr/local/share/gcloud/lib/surface/compute/multi_migs/describe.py
+/usr/local/share/gcloud/lib/surface/compute/multi_migs/list.py
 /usr/local/share/gcloud/lib/surface/compute/network_attachments/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/network_attachments/create.py
 /usr/local/share/gcloud/lib/surface/compute/network_attachments/delete.py
@@ -9646,6 +9679,9 @@
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/update/data_discovery.py
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/update/data_profile.py
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/update/data_quality.py
+/usr/local/share/gcloud/lib/surface/dataplex/encryption_config/__init__.py
+/usr/local/share/gcloud/lib/surface/dataplex/encryption_config/create.py
+/usr/local/share/gcloud/lib/surface/dataplex/encryption_config/describe.yaml
 /usr/local/share/gcloud/lib/surface/dataplex/entries/__init__.py
 /usr/local/share/gcloud/lib/surface/dataplex/entries/create.py
 /usr/local/share/gcloud/lib/surface/dataplex/entries/delete.yaml
@@ -9736,6 +9772,7 @@
 /usr/local/share/gcloud/lib/surface/dataplex/lakes/update.py
 /usr/local/share/gcloud/lib/surface/dataplex/metadata_jobs/__init__.py
 /usr/local/share/gcloud/lib/surface/dataplex/metadata_jobs/cancel.yaml
+/usr/local/share/gcloud/lib/surface/dataplex/metadata_jobs/create.py
 /usr/local/share/gcloud/lib/surface/dataplex/metadata_jobs/describe.yaml
 /usr/local/share/gcloud/lib/surface/dataplex/metadata_jobs/list.yaml
 /usr/local/share/gcloud/lib/surface/dataplex/tasks/__init__.py
@@ -11800,6 +11837,9 @@
 /usr/local/share/gcloud/lib/surface/ml/vision/suggest_crop.yaml
 /usr/local/share/gcloud/lib/surface/model_armor/__init__.py
 /usr/local/share/gcloud/lib/surface/model_armor/_init_extensions.py
+/usr/local/share/gcloud/lib/surface/model_armor/floorsettings/__init__.py
+/usr/local/share/gcloud/lib/surface/model_armor/floorsettings/describe.py
+/usr/local/share/gcloud/lib/surface/model_armor/floorsettings/update.py
 /usr/local/share/gcloud/lib/surface/model_armor/templates/__init__.py
 /usr/local/share/gcloud/lib/surface/model_armor/templates/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/model_armor/templates/_partials/_create_alpha.yaml
@@ -11942,6 +11982,7 @@
 /usr/local/share/gcloud/lib/surface/netapp/volumes/quota_rules/delete.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/quota_rules/describe.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/quota_rules/list.py
+/usr/local/share/gcloud/lib/surface/netapp/volumes/quota_rules/update.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/replications/__init__.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/replications/create.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/replications/delete.py
@@ -12269,6 +12310,7 @@
 /usr/local/share/gcloud/lib/surface/network_security/security_profiles/url_filtering/create.py
 /usr/local/share/gcloud/lib/surface/network_security/security_profiles/url_filtering/delete.yaml
 /usr/local/share/gcloud/lib/surface/network_security/security_profiles/url_filtering/describe.yaml
+/usr/local/share/gcloud/lib/surface/network_security/security_profiles/url_filtering/list.py
 /usr/local/share/gcloud/lib/surface/network_security/server_tls_policies/__init__.py
 /usr/local/share/gcloud/lib/surface/network_security/server_tls_policies/delete.yaml
 /usr/local/share/gcloud/lib/surface/network_security/server_tls_policies/describe.yaml
@@ -14237,6 +14279,7 @@
 /usr/local/share/gcloud/lib/surface/workbench/executions/create.py
 /usr/local/share/gcloud/lib/surface/workbench/executions/delete.py
 /usr/local/share/gcloud/lib/surface/workbench/executions/describe.py
+/usr/local/share/gcloud/lib/surface/workbench/executions/list.py
 /usr/local/share/gcloud/lib/surface/workbench/instances/__init__.py
 /usr/local/share/gcloud/lib/surface/workbench/instances/add_iam_policy_binding.yaml
 /usr/local/share/gcloud/lib/surface/workbench/instances/check_instance_upgradability.py
@@ -19568,7 +19611,6 @@
 /usr/local/share/gcloud/lib/third_party/sqlparse/__init__.py
 /usr/local/share/gcloud/lib/third_party/sqlparse/__main__.py
 /usr/local/share/gcloud/lib/third_party/sqlparse/cli.py
-/usr/local/share/gcloud/lib/third_party/sqlparse/compat.py
 /usr/local/share/gcloud/lib/third_party/sqlparse/engine/__init__.py
 /usr/local/share/gcloud/lib/third_party/sqlparse/engine/filter_stack.py
 /usr/local/share/gcloud/lib/third_party/sqlparse/engine/grouping.py
@@ -19585,6 +19627,27 @@
 /usr/local/share/gcloud/lib/third_party/sqlparse/keywords.py
 /usr/local/share/gcloud/lib/third_party/sqlparse/lexer.py
 /usr/local/share/gcloud/lib/third_party/sqlparse/sql.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/__init__.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/__main__.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/cli.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/engine/__init__.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/engine/filter_stack.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/engine/grouping.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/engine/statement_splitter.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/exceptions.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/filters/__init__.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/filters/aligned_indent.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/filters/others.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/filters/output.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/filters/reindent.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/filters/right_margin.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/filters/tokens.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/formatter.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/keywords.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/lexer.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/sql.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/tokens.py
+/usr/local/share/gcloud/lib/third_party/sqlparse/sqlparse/utils.py
 /usr/local/share/gcloud/lib/third_party/sqlparse/tokens.py
 /usr/local/share/gcloud/lib/third_party/sqlparse/utils.py
 /usr/local/share/gcloud/lib/third_party/uritemplate/LICENSE
@@ -19739,6 +19802,7 @@
 /usr/local/share/gcloud/platform/bq/discovery_documents/discovery_document_cache.py
 /usr/local/share/gcloud/platform/bq/discovery_documents/discovery_document_loader.py
 /usr/local/share/gcloud/platform/bq/discovery_next/bigquery.json
+/usr/local/share/gcloud/platform/bq/discovery_next/bigqueryreservation_google_rest_v1.json
 /usr/local/share/gcloud/platform/bq/discovery_next/iam-policy.json
 /usr/local/share/gcloud/platform/bq/frontend/bigquery_command.py
 /usr/local/share/gcloud/platform/bq/frontend/bq_cached_client.py
