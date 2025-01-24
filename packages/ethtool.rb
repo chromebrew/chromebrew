@@ -14,8 +14,8 @@ class Ethtool < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ded7bc75870dca4c022bb97fc99a2da72f54833d3ab077f44bce5ea551de72dc',
-     armv7l: 'ded7bc75870dca4c022bb97fc99a2da72f54833d3ab077f44bce5ea551de72dc',
+    aarch64: '9492106c66a1714d5b31667e94dddfca01ba1146d69b5c02e190a5177b0d7b5a',
+     armv7l: '9492106c66a1714d5b31667e94dddfca01ba1146d69b5c02e190a5177b0d7b5a',
        i686: '00c81b527fba805c379f63af5b0dbdffb348390b33549161819020419c646a7e',
      x86_64: 'ae240873dea05ff4cc6112844c1a2c1ff6bb0003de062b1fa9dfa1e5b1c89ef9'
   })
