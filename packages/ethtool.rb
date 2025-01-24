@@ -16,11 +16,12 @@ class Ethtool < Autotools
   binary_sha256({
     aarch64: 'ded7bc75870dca4c022bb97fc99a2da72f54833d3ab077f44bce5ea551de72dc',
      armv7l: 'ded7bc75870dca4c022bb97fc99a2da72f54833d3ab077f44bce5ea551de72dc',
-       i686: 'ab5f60fc5634cd451ff7d28ee791c48ea74e8be0fbc082cb4e032ebd98572c84',
+       i686: '00c81b527fba805c379f63af5b0dbdffb348390b33549161819020419c646a7e',
      x86_64: 'b32262fb8c150d67098b274a7181288caf07dcbcac508307125ba4bff8926b81'
   })
 
   depends_on 'libmnl'
+  depends_on 'glibc' # R
 
   run_tests
 
