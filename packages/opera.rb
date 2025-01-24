@@ -1,9 +1,10 @@
 require 'package'
+require 'convenience_functions'
 
 class Opera < Package
   description 'Opera is a multi-platform web browser based on Chromium and developed by Opera Software.'
   homepage 'https://www.opera.com/'
-  version '116.0.5366.35'
+  version '116.0.5366.51'
   license 'OPERA-2018'
   compatibility 'x86_64'
   min_glibc '2.29'
@@ -11,7 +12,7 @@ class Opera < Package
   # faster apt mirror, but only works when downloading latest version of opera
   # source_url "https://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
   source_url "https://deb.opera.com/opera-stable/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
-  source_sha256 '07f6b7b33601273f634905ee2dd2a7bf119b5ddb550bea8fa820409be831ecde'
+  source_sha256 '8967a78c7eb9e99c56c2798c79008368be14704c35a2e022ce832be65bd8c993'
 
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'
@@ -37,26 +38,10 @@ class Opera < Package
   end
 
   def self.postinstall
-    puts
-    print 'Set Opera as your default browser? [Y/n]: '
-    case $stdin.gets.chomp.downcase
-    when '', 'y', 'yes'
-      Dir.chdir("#{CREW_PREFIX}/bin") do
-        FileUtils.ln_sf "#{CREW_LIB_PREFIX}/opera/opera", 'x-www-browser'
-      end
-      puts 'Opera is now your default browser.'.lightgreen
-    else
-      puts 'No change has been made.'.orange
-    end
-    ExitMessage.add "\nType 'opera' to get started.\n"
+    ConvenienceFunctions.set_default_browser('Opera', 'opera')
   end
 
-  def self.postremove
-    Dir.chdir("#{CREW_PREFIX}/bin") do
-      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') && \
-         (File.realpath('x-www-browser') == "#{CREW_PREFIX}/share/x86_64-linux-gnu/opera/opera")
-        FileUtils.rm 'x-www-browser'
-      end
-    end
+  def self.preremove
+    ConvenienceFunctions.unset_default_browser('x86_64-linux-gnu/opera', 'opera')
   end
 end
