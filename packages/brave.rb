@@ -1,14 +1,15 @@
 require 'package'
+require 'convenience_functions'
 
 class Brave < Package
   description 'Next generation Brave browser for macOS, Windows, Linux, Android.'
   homepage 'https://brave.com/'
-  version '1.74.48'
+  version '1.74.50'
   license 'MPL-2'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://github.com/brave/brave-browser/releases/download/v#{version}/brave-browser-#{version}-linux-amd64.zip"
-  source_sha256 'bdbbaf865bb95b669eb1074de141c5b09d4e8b5b11d2d252dd2ffba93f99b7b3'
+  source_sha256 '14db28555ad140ea2f502e3a42fb46b753287ff67475deac1ead159f6e0087f1'
 
   no_compile_needed
   no_shrink
@@ -27,25 +28,10 @@ class Brave < Package
   end
 
   def self.postinstall
-    print "\nSet Brave as your default browser? [Y/n]: "
-    case $stdin.gets.chomp.downcase
-    when '', 'y', 'yes'
-      Dir.chdir("#{CREW_PREFIX}/bin") do
-        FileUtils.ln_sf 'brave', 'x-www-browser'
-      end
-      puts 'Brave is now your default browser.'.lightgreen
-    else
-      puts 'No change has been made.'.orange
-    end
-    ExitMessage.add "\nType 'brave' to get started.\n"
+    ConvenienceFunctions.set_default_browser('Brave', 'brave')
   end
 
   def self.preremove
-    Dir.chdir("#{CREW_PREFIX}/bin") do
-      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') && \
-         File.realpath('x-www-browser') == "#{CREW_PREFIX}/share/brave/brave"
-        FileUtils.rm "#{CREW_PREFIX}/bin/x-www-browser"
-      end
-    end
+    ConvenienceFunctions.unset_default_browser('Brave', 'brave')
   end
 end
