@@ -1,15 +1,16 @@
 require 'package'
+require 'convenience_functions'
 
 class Google_chrome < Package
-  @update_channel = 'stable'
   description 'Google Chrome is a fast, easy to use, and secure web browser.'
   homepage 'https://www.google.com/chrome/'
-  version '132.0.6834.83-1'
+  @update_channel = 'stable'
+  version '132.0.6834.110-1'
   license 'google-chrome'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-#{@update_channel}/google-chrome-#{@update_channel}_#{@version}_amd64.deb"
-  source_sha256 'aae7efee6ee243cc97e9678d6a34db3c42c299186be061816bc5b3cbe88c1618'
+  source_sha256 'e26b550a22972a78e61e5c988270e7797f613a662069fc19db7d2215f1f8f137'
 
   depends_on 'nss'
   depends_on 'cairo'
@@ -30,25 +31,10 @@ class Google_chrome < Package
   end
 
   def self.postinstall
-    print "\nSet Chrome as your default browser? [Y/n]: "
-    case $stdin.gets.chomp.downcase
-    when '', 'y', 'yes'
-      Dir.chdir("#{CREW_PREFIX}/bin") do
-        FileUtils.ln_sf 'google-chrome', 'x-www-browser'
-      end
-      puts 'Chrome is now your default browser.'.lightgreen
-    else
-      puts 'No change has been made.'.orange
-    end
-    ExitMessage.add "\nType 'google-chrome' to get started.\n"
+    ConvenienceFunctions.set_default_browser('Chrome', 'google-chrome')
   end
 
   def self.preremove
-    Dir.chdir("#{CREW_PREFIX}/bin") do
-      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') && \
-         File.realpath('x-www-browser') == "#{CREW_PREFIX}/share/chrome/google-chrome"
-        FileUtils.rm "#{CREW_PREFIX}/bin/x-www-browser"
-      end
-    end
+    ConvenienceFunctions.unset_default_browser('Chrome', 'google-chrome')
   end
 end
