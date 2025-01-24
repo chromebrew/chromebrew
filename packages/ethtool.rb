@@ -1,17 +1,17 @@
 # Adapted from Arch Linux ethtool PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/ethtool/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Ethtool < Package
+class Ethtool < Autotools
   description 'Utility for controlling network drivers and hardware'
   homepage 'https://www.kernel.org/pub/software/network/ethtool/'
-  version '5.14'
+  version '6.11'
   license 'LGPL2.1'
   compatibility 'all'
-  source_url 'https://www.kernel.org/pub/software/network/ethtool/ethtool-5.14.tar.xz'
+  source_url "https://www.kernel.org/pub/software/network/ethtool/ethtool-#{version}.tar.xz"
   source_sha256 'bb13db91915cacd7a492b65b65df07a67e4b974ddbeaf76205b1945a23d27686'
-  binary_compression 'tpxz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'ded7bc75870dca4c022bb97fc99a2da72f54833d3ab077f44bce5ea551de72dc',
@@ -22,19 +22,7 @@ class Ethtool < Package
 
   depends_on 'libmnl'
 
-  def self.build
-    system "#{CREW_ENV_OPTIONS} \
-             ./configure #{CREW_CONFIGURE_OPTIONS} \
-             --mandir=#{CREW_MAN_PREFIX} \
-             --sbindir=#{CREW_PREFIX}/bin"
-    system 'make'
-  end
+  run_tests
 
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
-
-  def self.check
-    system 'make check'
-  end
+  configure_options "--sbindir=#{CREW_PREFIX}/bin"
 end
