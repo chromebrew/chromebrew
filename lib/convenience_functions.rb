@@ -98,4 +98,27 @@ class ConvenienceFunctions
       system "patch -Np1 -i #{patch_file}"
     end
   end
+
+  def self.set_default_browser(browser_name, browser_binary)
+    print "\nSet #{browser_name} as your default browser? [Y/n]: "
+    case $stdin.gets.chomp.downcase
+    when '', 'y', 'yes'
+      Dir.chdir("#{CREW_PREFIX}/bin") do
+        FileUtils.ln_sf browser_binary, 'x-www-browser'
+      end
+      puts "#{browser_name} is now your default browser.".lightgreen
+    else
+      puts 'No change has been made.'.orange
+    end
+    ExitMessage.add "\nType '#{browser_binary}' to get started.\n"
+  end
+
+  def self.unset_default_browser(browser_name, browser_binary)
+    Dir.chdir("#{CREW_PREFIX}/bin") do
+      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') && \
+         File.realpath('x-www-browser') == "#{CREW_PREFIX}/share/#{browser_name.downcase}/#{browser_binary}"
+        FileUtils.rm "#{CREW_PREFIX}/bin/x-www-browser"
+      end
+    end
+  end
 end
