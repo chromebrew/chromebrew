@@ -20,8 +20,8 @@ class Ethtool < Autotools
      x86_64: 'ae240873dea05ff4cc6112844c1a2c1ff6bb0003de062b1fa9dfa1e5b1c89ef9'
   })
 
-  depends_on 'libmnl'
   depends_on 'glibc' # R
+  depends_on 'libmnl' # R
 
   run_tests
 
