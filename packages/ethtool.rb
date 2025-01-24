@@ -17,7 +17,7 @@ class Ethtool < Autotools
     aarch64: 'ded7bc75870dca4c022bb97fc99a2da72f54833d3ab077f44bce5ea551de72dc',
      armv7l: 'ded7bc75870dca4c022bb97fc99a2da72f54833d3ab077f44bce5ea551de72dc',
        i686: '00c81b527fba805c379f63af5b0dbdffb348390b33549161819020419c646a7e',
-     x86_64: 'b32262fb8c150d67098b274a7181288caf07dcbcac508307125ba4bff8926b81'
+     x86_64: 'ae240873dea05ff4cc6112844c1a2c1ff6bb0003de062b1fa9dfa1e5b1c89ef9'
   })
 
   depends_on 'libmnl'
