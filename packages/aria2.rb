@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Aria2 < Package
+class Aria2 < Autotools
   description 'aria2 is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.'
   homepage 'https://aria2.github.io/'
-  version '1.36.0'
+  version '1.37.0'
   license 'GPL-2+-with-openssl-exception'
   compatibility 'all'
   source_url 'https://github.com/aria2/aria2.git'
@@ -11,28 +11,35 @@ class Aria2 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2958e59e53018affc425e266259281492100376d3572876dae8261487a09c8bf',
-     armv7l: '2958e59e53018affc425e266259281492100376d3572876dae8261487a09c8bf',
-       i686: '8bc8d1defce3f5dae8ebb335023001b38ba024a76a6f4b3666ce68f499f4dcec',
-     x86_64: 'd2740069111350977cede71df7e89189bbd701820d7dd627089dd25cc7927004'
+    aarch64: 'cba450a3672a2ea35ad0a228dce99cec05085d07eceeeb2baf1d484cdd09aa26',
+     armv7l: 'cba450a3672a2ea35ad0a228dce99cec05085d07eceeeb2baf1d484cdd09aa26',
+       i686: '6f4f524477f9de173e47792750e909870dce186ca20039725b24ab800b10dc90',
+     x86_64: '0cc12e9067364f391aa917979b7335f4edc2b3dd08bb0e648572430b23d25ac0'
   })
 
-  depends_on 'c_ares'
-  depends_on 'ca_certificates'
-  depends_on 'libgcrypt'
+  depends_on 'brotli' # R
+  depends_on 'c_ares' # R
+  depends_on 'ca_certificates' # R
   depends_on 'cppunit' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'gnutls' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libidn2' # R
+  depends_on 'libssh2' # R
+  depends_on 'libtasn1' # R
+  depends_on 'libunistring' # R
+  depends_on 'libxml2' # R
+  depends_on 'nettle' # R
+  depends_on 'openssl' # R
+  depends_on 'p11kit' # R
+  depends_on 'sqlite' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
-  def self.build
-    system 'autoreconf -fiv'
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-              --with-libnettle \
-              --with-libgcrypt \
-              --without-libssh2 \
-              --with-ca-bundle=#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
-    system 'make'
-  end
+  configure_options "--with-libnettle --with-libgcrypt --with-libssh2 \
+    --with-ca-bundle=#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  # run_tests
 end
