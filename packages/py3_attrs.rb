@@ -13,7 +13,7 @@ class Py3_attrs < Pip
     aarch64: '557b047eefaed2a423616108d61187a5cd2e0afbe8095e583eeb6f70e98ba6ff',
      armv7l: '557b047eefaed2a423616108d61187a5cd2e0afbe8095e583eeb6f70e98ba6ff',
        i686: '17364e7ff9b412660030b84386d16a2c354db1244c828219b32391a0754e20ff',
-     x86_64: 'cf30acab3973341a84b00eb5d3ad75bb76aec27d2d8bf0e6876ec5502d6cddd2'
+     x86_64: '892c7de7e26e139c609588aba230efaff9c7be20a549880310c0e4bf876bf629'
   })
 
   depends_on 'python3' => :build
