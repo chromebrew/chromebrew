@@ -7,6 +7,6 @@
 /usr/local/share/doc/aria2/xmlrpc/README.txt
 /usr/local/share/doc/aria2/xmlrpc/aria2mon
 /usr/local/share/doc/aria2/xmlrpc/aria2rpc
-/usr/local/share/man/man1/aria2c.1.gz
-/usr/local/share/man/pt/man1/aria2c.1.gz
-/usr/local/share/man/ru/man1/aria2c.1.gz
+/usr/local/share/man/man1/aria2c.1.zst
+/usr/local/share/man/pt/man1/aria2c.1.zst
+/usr/local/share/man/ru/man1/aria2c.1.zst
