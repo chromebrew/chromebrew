@@ -1,14 +1,15 @@
 require 'package'
+require 'convenience_functions'
 
 class Edge < Package
   description 'Microsoft Edge is the fast and secure browser'
   homepage 'https://www.microsoft.com/en-us/edge'
-  version '131.0.2903.147-1'
+  version '132.0.2957.127-1'
   license 'MIT'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_#{version}_amd64.deb"
-  source_sha256 '2a630cc7fa1ec5f39e6aefa983535b25ab8235b02b9e3b021d3e4eedeceec842'
+  source_sha256 'ba80bca3192b3168269146e09fb38fdb596911a74a6666f81de6f7db312f7631'
 
   depends_on 'at_spi2_core'
   depends_on 'libcom_err'
@@ -41,25 +42,10 @@ class Edge < Package
   end
 
   def self.postinstall
-    print "\nSet Edge as your default browser? [Y/n]: "
-    case $stdin.gets.chomp.downcase
-    when '', 'y', 'yes'
-      Dir.chdir("#{CREW_PREFIX}/bin") do
-        FileUtils.ln_sf 'edge', 'x-www-browser'
-      end
-      puts 'Chrome is now your default browser.'.lightgreen
-    else
-      puts 'No change has been made.'.orange
-    end
-    ExitMessage.add "\nType 'edge' to get started.\n"
+    ConvenienceFunctions.set_default_browser('Edge', 'msedge')
   end
 
   def self.preremove
-    Dir.chdir("#{CREW_PREFIX}/bin") do
-      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') && \
-         File.realpath('x-www-browser') == "#{CREW_PREFIX}/share/msedge/msedge"
-        FileUtils.rm "#{CREW_PREFIX}/bin/x-www-browser"
-      end
-    end
+    ConvenienceFunctions.unset_default_browser('msedge', 'msedge')
   end
 end
