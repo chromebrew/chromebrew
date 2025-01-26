@@ -10,8 +10,8 @@ class Py3_attrs < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '557b047eefaed2a423616108d61187a5cd2e0afbe8095e583eeb6f70e98ba6ff',
-     armv7l: '557b047eefaed2a423616108d61187a5cd2e0afbe8095e583eeb6f70e98ba6ff',
+    aarch64: '6daadd3771f42ee6caecc67480f8d2b3e55c64a0fa34bbb172d0e66364128e08',
+     armv7l: '6daadd3771f42ee6caecc67480f8d2b3e55c64a0fa34bbb172d0e66364128e08',
        i686: '17364e7ff9b412660030b84386d16a2c354db1244c828219b32391a0754e20ff',
      x86_64: '892c7de7e26e139c609588aba230efaff9c7be20a549880310c0e4bf876bf629'
   })
