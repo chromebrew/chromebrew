@@ -22,9 +22,9 @@
 /usr/local/share/flutter/.git/index
 /usr/local/share/flutter/.git/info/exclude
 /usr/local/share/flutter/.git/logs/HEAD
-/usr/local/share/flutter/.git/objects/pack/pack-8e9b62a74bacc96e51b54b0d7d23352ddc710666.idx
-/usr/local/share/flutter/.git/objects/pack/pack-8e9b62a74bacc96e51b54b0d7d23352ddc710666.pack
-/usr/local/share/flutter/.git/objects/pack/pack-8e9b62a74bacc96e51b54b0d7d23352ddc710666.rev
+/usr/local/share/flutter/.git/objects/pack/pack-38affe50ad7c92d941e0e91ad6d8f6ebd9543a44.idx
+/usr/local/share/flutter/.git/objects/pack/pack-38affe50ad7c92d941e0e91ad6d8f6ebd9543a44.pack
+/usr/local/share/flutter/.git/objects/pack/pack-38affe50ad7c92d941e0e91ad6d8f6ebd9543a44.rev
 /usr/local/share/flutter/.git/shallow
 /usr/local/share/flutter/.gitattributes
 /usr/local/share/flutter/.github/ISSUE_TEMPLATE/10_feature.yml
