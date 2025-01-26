@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Git < Meson
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.48.0'
+  version '2.48.1'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-#{version}.tar.xz"
@@ -11,10 +11,10 @@ class Git < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '54a927ea652e57a45b1767a05136fd5f958dea54c2a9903c71eeeb876064d526',
-     armv7l: '54a927ea652e57a45b1767a05136fd5f958dea54c2a9903c71eeeb876064d526',
-       i686: 'e39fb150bd59676181e9b6df3c7e84263b4e40552706c92624e188b008161728',
-     x86_64: '786f6d22445dc9862fb91c3c29afe6852dc1696a126eb6909f61fb762000d229'
+    aarch64: 'be513d8ac692a6eb25cd9e673cf140fecb350f244d6f511f448d6aef37f51fae',
+     armv7l: 'be513d8ac692a6eb25cd9e673cf140fecb350f244d6f511f448d6aef37f51fae',
+       i686: 'a867163aa8eabc7b4e47eaafe0b4e9b39d18192acc3385a32f486ae97d9ab429',
+     x86_64: '5bd28986c39008fb83da582b081c3978cdd75e478432d873ca291709344de65a'
   })
 
   depends_on 'ca_certificates' => :build
