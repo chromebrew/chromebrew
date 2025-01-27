@@ -1,12 +1,12 @@
 /usr/local/bin/meson
-/usr/local/lib/python3.13/site-packages/meson-1.6.1.dist-info/COPYING
-/usr/local/lib/python3.13/site-packages/meson-1.6.1.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/meson-1.6.1.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/meson-1.6.1.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/meson-1.6.1.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/meson-1.6.1.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/meson-1.6.1.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/meson-1.6.1.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/meson-1.7.0.dist-info/COPYING
+/usr/local/lib/python3.13/site-packages/meson-1.7.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/meson-1.7.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/meson-1.7.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/meson-1.7.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/meson-1.7.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/meson-1.7.0.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/meson-1.7.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/mesonbuild/__init__.py
 /usr/local/lib/python3.13/site-packages/mesonbuild/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mesonbuild/__pycache__/_pathlib.cpython-313.pyc
@@ -158,6 +158,7 @@
 /usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/__pycache__/islinker.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/__pycache__/metrowerks.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/__pycache__/pgi.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/__pycache__/tasking.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/__pycache__/ti.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/__pycache__/visualstudio.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/__pycache__/xc16.cpython-313.pyc
@@ -174,6 +175,7 @@
 /usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/islinker.py
 /usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/metrowerks.py
 /usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/pgi.py
+/usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/tasking.py
 /usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/ti.py
 /usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/visualstudio.py
 /usr/local/lib/python3.13/site-packages/mesonbuild/compilers/mixins/xc16.py
@@ -366,6 +368,7 @@
 /usr/local/lib/python3.13/site-packages/mesonbuild/scripts/__pycache__/clangformat.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mesonbuild/scripts/__pycache__/clangtidy.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mesonbuild/scripts/__pycache__/cleantrees.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/mesonbuild/scripts/__pycache__/clippy.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mesonbuild/scripts/__pycache__/cmake_run_ctgt.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mesonbuild/scripts/__pycache__/copy.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mesonbuild/scripts/__pycache__/coverage.cpython-313.pyc
@@ -396,6 +399,7 @@
 /usr/local/lib/python3.13/site-packages/mesonbuild/scripts/clangformat.py
 /usr/local/lib/python3.13/site-packages/mesonbuild/scripts/clangtidy.py
 /usr/local/lib/python3.13/site-packages/mesonbuild/scripts/cleantrees.py
+/usr/local/lib/python3.13/site-packages/mesonbuild/scripts/clippy.py
 /usr/local/lib/python3.13/site-packages/mesonbuild/scripts/cmake_run_ctgt.py
 /usr/local/lib/python3.13/site-packages/mesonbuild/scripts/cmd_or_ps.ps1
 /usr/local/lib/python3.13/site-packages/mesonbuild/scripts/copy.py

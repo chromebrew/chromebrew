@@ -11,8 +11,8 @@ class Py3_pip < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'acf7614782653ad995317616881fd285af59306e0a494880965df06631070aad',
-     armv7l: 'acf7614782653ad995317616881fd285af59306e0a494880965df06631070aad',
+    aarch64: 'ef1dda8eb7b3a70c223f67ed13edcb20d1a2ea4f85fb60954e82af8ffec19b06',
+     armv7l: 'ef1dda8eb7b3a70c223f67ed13edcb20d1a2ea4f85fb60954e82af8ffec19b06',
        i686: 'af2f6126764a51ce1086c561ea9e1089a5af9e27f7e0783fd8653b1b64ab336c',
      x86_64: '8a1fcdf17f6d504c161333b64ea236fbb8b2e576ddd335f418737a4b39a40995'
   })
