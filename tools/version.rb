@@ -1,10 +1,12 @@
 #!/usr/bin/env ruby
 
 if ARGV.include?('-h') || ARGV.include?('--help')
-  abort "Usage: ./version.rb [<package>] [-h, --help, -v, --verbose]
-Example: ./version.rb abcde -v
-The <package> can contain '*': ./version.rb xorg_*
-If <package> is omitted, all packages will be checked."
+  abort <<~EOM
+    Usage: ./version.rb [<package>] [-h, --help, -v, --verbose]
+    Example: ./version.rb abcde -v
+    The <package> can contain '*': ./version.rb xorg_*
+    If <package> is omitted, all packages will be checked.
+  EOM
 end
 
 require 'json'
@@ -84,6 +86,7 @@ filelist = []
 verbose = ARGV.include?('-v') || ARGV.include?('--verbose')
 if ARGV.length.positive? && !(ARGV.length == 1 && verbose)
   ARGV.each do |arg|
+    arg = arg.gsub('.rb', '')
     next unless arg =~ /^[0-9a-zA-Z\_\*]+$/
     if arg.include?('*')
       Dir["../packages/#{arg}.rb"].each do |filename|
@@ -118,7 +121,7 @@ if filelist.length.positive?
     end
 
     # Skip ruby and pip buildsystem packages.
-    if pkg.superclass.to_s == 'RUBY' || pkg.superclass.to_s == 'Pip'
+    if %w[RUBY Pip].include?(pkg.superclass.to_s)
       puts pkg.name.ljust(35) + 'skipped'.lightred if verbose
       next
     end
