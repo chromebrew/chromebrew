@@ -1,13 +1,13 @@
 /usr/local/bin/nuitka
 /usr/local/bin/nuitka-run
-/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.dist-info/INSTALLER
-/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.dist-info/LICENSE.txt
-/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.dist-info/METADATA
-/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.dist-info/RECORD
-/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.dist-info/REQUESTED
-/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.dist-info/WHEEL
-/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.dist-info/entry_points.txt
-/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.dist-info/top_level.txt
+/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.1.dist-info/INSTALLER
+/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.1.dist-info/LICENSE.txt
+/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.1.dist-info/METADATA
+/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.1.dist-info/RECORD
+/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.1.dist-info/REQUESTED
+/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.1.dist-info/WHEEL
+/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.1.dist-info/entry_points.txt
+/usr/local/lib64/python3.13/site-packages/Nuitka-2.6.1.dist-info/top_level.txt
 /usr/local/lib64/python3.13/site-packages/nuitka/Builtins.py
 /usr/local/lib64/python3.13/site-packages/nuitka/BytecodeCaching.py
 /usr/local/lib64/python3.13/site-packages/nuitka/Bytecodes.py
@@ -1481,6 +1481,7 @@
 /usr/local/lib64/python3.13/site-packages/nuitka/tree/Building.py
 /usr/local/lib64/python3.13/site-packages/nuitka/tree/ComplexCallHelperFunctions.py
 /usr/local/lib64/python3.13/site-packages/nuitka/tree/Extractions.py
+/usr/local/lib64/python3.13/site-packages/nuitka/tree/FutureSpecState.py
 /usr/local/lib64/python3.13/site-packages/nuitka/tree/InternalModule.py
 /usr/local/lib64/python3.13/site-packages/nuitka/tree/Operations.py
 /usr/local/lib64/python3.13/site-packages/nuitka/tree/ReformulationAssertStatements.py
@@ -1516,6 +1517,7 @@
 /usr/local/lib64/python3.13/site-packages/nuitka/tree/__pycache__/Building.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/tree/__pycache__/ComplexCallHelperFunctions.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/tree/__pycache__/Extractions.cpython-313.pyc
+/usr/local/lib64/python3.13/site-packages/nuitka/tree/__pycache__/FutureSpecState.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/tree/__pycache__/InternalModule.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/tree/__pycache__/Operations.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/tree/__pycache__/ReformulationAssertStatements.cpython-313.pyc
