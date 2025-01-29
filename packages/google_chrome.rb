@@ -5,12 +5,12 @@ class Google_chrome < Package
   description 'Google Chrome is a fast, easy to use, and secure web browser.'
   homepage 'https://www.google.com/chrome/'
   @update_channel = 'stable'
-  version '132.0.6834.110-1'
+  version '132.0.6834.159-1'
   license 'google-chrome'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-#{@update_channel}/google-chrome-#{@update_channel}_#{@version}_amd64.deb"
-  source_sha256 'e26b550a22972a78e61e5c988270e7797f613a662069fc19db7d2215f1f8f137'
+  source_sha256 'e54ef927fd5194e1feb705f05269405b81f47a5e2d9a001c7bc8df05fea0331c'
 
   depends_on 'nss'
   depends_on 'cairo'
