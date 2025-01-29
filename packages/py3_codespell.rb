@@ -10,8 +10,8 @@ class Py3_codespell < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '06dfcfc4e87832083ebf9ae2a12ec297baff8c6e201dbc9ff9da63fd9dea9bae',
-     armv7l: '06dfcfc4e87832083ebf9ae2a12ec297baff8c6e201dbc9ff9da63fd9dea9bae',
+    aarch64: '355c64aa91c78058612c960ca7df75c0c4061eb3f366c3d5619b92604a321be1',
+     armv7l: '355c64aa91c78058612c960ca7df75c0c4061eb3f366c3d5619b92604a321be1',
        i686: '07cccdf520f21a6432092f399fe669cfd4cf28dd0633b669fa632b21c1f35d86',
      x86_64: '15b05cc886488ed2c56c66389299a5d49cb08f15d19ea7c6144043355a9160a2'
   })
