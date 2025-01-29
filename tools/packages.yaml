@@ -9255,6 +9255,11 @@ url: https://gitlab.freedesktop.org/virgl/virglrenderer/-/tags
 activity: low
 ---
 kind: url
+name: vitetris
+url: https://github.com/vicgeralds/vitetris/releases
+activity: none
+---
+kind: url
 name: vivaldi
 url: https://vivaldi.com/download/
 activity: medium
