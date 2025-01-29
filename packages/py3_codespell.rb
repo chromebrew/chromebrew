@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_codespell < Pip
   description 'Fix common misspellings in text files.'
   homepage 'https://github.com/codespell-project/codespell'
-  version "2.4.0-#{CREW_PY_VER}"
+  version "2.4.1-#{CREW_PY_VER}"
   license 'GPL-2.0'
   compatibility 'all'
   source_url 'SKIP'
