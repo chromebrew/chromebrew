@@ -13,7 +13,7 @@ class Py3_codespell < Pip
     aarch64: '06dfcfc4e87832083ebf9ae2a12ec297baff8c6e201dbc9ff9da63fd9dea9bae',
      armv7l: '06dfcfc4e87832083ebf9ae2a12ec297baff8c6e201dbc9ff9da63fd9dea9bae',
        i686: '07cccdf520f21a6432092f399fe669cfd4cf28dd0633b669fa632b21c1f35d86',
-     x86_64: '36a03cadae6e4eaa7e134d88dd0a0551d821198edc6572e226d30bebc0d1a749'
+     x86_64: '15b05cc886488ed2c56c66389299a5d49cb08f15d19ea7c6144043355a9160a2'
   })
 
   depends_on 'python3'

@@ -13,7 +13,7 @@ class Py3_xlsxwriter < Pip
     aarch64: '5f3d00b7b99d4c7bcfb877e692119fd6ee631297ecc2d539fa4eced8299a3880',
      armv7l: '5f3d00b7b99d4c7bcfb877e692119fd6ee631297ecc2d539fa4eced8299a3880',
        i686: '5aa8b33da9c21be042c8a1becc18ef4cab7f39f278278ec3253f2b0bebb571bc',
-     x86_64: '5de114f29d0ad9b7a708952022225a7852efdc5b9211fec03d6a172b0c2967c2'
+     x86_64: 'e401a859a40a32a3dcd0f73616dc28ce7dc7e95b4690fa3dfa2fd8082411955d'
   })
 
   depends_on 'python3' => :build
