@@ -12,7 +12,7 @@ class Py3_xlsxwriter < Pip
   binary_sha256({
     aarch64: '5f3d00b7b99d4c7bcfb877e692119fd6ee631297ecc2d539fa4eced8299a3880',
      armv7l: '5f3d00b7b99d4c7bcfb877e692119fd6ee631297ecc2d539fa4eced8299a3880',
-       i686: 'ea82b451d5e312aee6f63e9d1a32359ec1f15e64e1f5b5b79c3f7ede16b2d827',
+       i686: '5aa8b33da9c21be042c8a1becc18ef4cab7f39f278278ec3253f2b0bebb571bc',
      x86_64: '5de114f29d0ad9b7a708952022225a7852efdc5b9211fec03d6a172b0c2967c2'
   })
 

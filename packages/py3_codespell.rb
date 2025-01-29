@@ -12,7 +12,7 @@ class Py3_codespell < Pip
   binary_sha256({
     aarch64: '06dfcfc4e87832083ebf9ae2a12ec297baff8c6e201dbc9ff9da63fd9dea9bae',
      armv7l: '06dfcfc4e87832083ebf9ae2a12ec297baff8c6e201dbc9ff9da63fd9dea9bae',
-       i686: '427dbe1020365dd4c966b735201e366ac07e0cc9a9276d8677487afc2b333caf',
+       i686: '07cccdf520f21a6432092f399fe669cfd4cf28dd0633b669fa632b21c1f35d86',
      x86_64: '36a03cadae6e4eaa7e134d88dd0a0551d821198edc6572e226d30bebc0d1a749'
   })
 

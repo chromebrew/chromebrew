@@ -15,7 +15,7 @@ class Py3_pylint < Pip
   binary_sha256({
     aarch64: 'dc72c346b3524a5004d55ba2f438c7e315f092d52fa323ba1bdafd8166fe4c44',
      armv7l: 'dc72c346b3524a5004d55ba2f438c7e315f092d52fa323ba1bdafd8166fe4c44',
-       i686: 'fcf73c2542b8a00f872eb4aaccd9b9a480afbd24bf8c2766ac3e96f41b22fc0b',
+       i686: '3fda1f464bde55e9ad336ee0633f388671e5389f341b4abc045e8c9f652e595f',
      x86_64: 'cf712d37bd0bb247a56f99662399a0e6dc1efb6b5795585f71fd959dda77e776'
   })
 
