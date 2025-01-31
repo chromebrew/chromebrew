@@ -13,7 +13,7 @@ class Py3_ruff < Python
   binary_sha256({
     aarch64: 'df1c7c6cbff9e2a050fc78cd533c6615efb0d978db3cd15f1962b31fcd5d6643',
      armv7l: 'df1c7c6cbff9e2a050fc78cd533c6615efb0d978db3cd15f1962b31fcd5d6643',
-       i686: '925709dbf7437a093c2d3a5c581d9edc26ef12f6052a315dbccbe714cce351b7',
+       i686: '178d09031e60c6daccebc3797af76751f0cea0cfc19c7c877e0811ebdf0d6840',
      x86_64: '0b1dd4cba1b6943ba492be5fdb61d762b1598e8b59077508167fc1dae651c3da'
   })
 
