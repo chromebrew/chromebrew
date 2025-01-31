@@ -14,7 +14,7 @@ class Py3_ruff < Python
     aarch64: 'df1c7c6cbff9e2a050fc78cd533c6615efb0d978db3cd15f1962b31fcd5d6643',
      armv7l: 'df1c7c6cbff9e2a050fc78cd533c6615efb0d978db3cd15f1962b31fcd5d6643',
        i686: '178d09031e60c6daccebc3797af76751f0cea0cfc19c7c877e0811ebdf0d6840',
-     x86_64: '0b1dd4cba1b6943ba492be5fdb61d762b1598e8b59077508167fc1dae651c3da'
+     x86_64: 'c80099bd4846a136e06bc663d4774b5edd92e26308a079364b936fde810a965a'
   })
 
   depends_on 'gcc_lib' # R
