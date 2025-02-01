@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pytz < Pip
   description 'pytz brings the Olson tz database into Python.'
   homepage 'https://pythonhosted.org/pytz/'
-  version "2024.2-#{CREW_PY_VER}"
+  version "2025.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '74a14d07ced9064d64372093e4a72f1edefe648da4a2869d8aca59d8f9544d0b',
-     armv7l: '74a14d07ced9064d64372093e4a72f1edefe648da4a2869d8aca59d8f9544d0b',
-       i686: '39799f24cec5b6095c731b1ec3df4d96a38be824c14e95c869651b79f31a0885',
-     x86_64: '4f0b0816ecb578d440b2a270c0f54468b0bee7dd63041a2e845bb9cb21304724'
+    aarch64: 'ea12c5b807a3c5e30c3ac816196fcaa12f63ba9afb7b01b5c96d13248663cec0',
+     armv7l: 'ea12c5b807a3c5e30c3ac816196fcaa12f63ba9afb7b01b5c96d13248663cec0',
+       i686: '8a27bef899ffac9d3653236c5a11f46569b7c1a902a8b08058e4f7d35c8cb769',
+     x86_64: 'f2e07d507b7a22686eadcbfa9a4b47e862c55dfa6fafc0ec88affc8e036c0f2e'
   })
 
   depends_on 'python3' => :build
