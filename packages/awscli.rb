@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Awscli < Pip
   description 'Universal Command Line Interface for Amazon Web Services'
   homepage 'https://github.com/aws/aws-cli'
-  version "1.37.10-#{CREW_PY_VER}"
+  version "1.37.11-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '64d51d61e5840dd0577166e664f82deb018c76f3523a63ae87e33ae8166ce501',
-     armv7l: '64d51d61e5840dd0577166e664f82deb018c76f3523a63ae87e33ae8166ce501',
-       i686: '796a4c1808a24770c2a64f2b4a4a2730ec48c7d81027b978856c259429cb64bd',
-     x86_64: '365a0fc855b9a750b4bf7fe6df732bfc7935ca10f4170341ea6d4f5b9a2b3477'
+    aarch64: '12a971762deeda76e11ade8a80f6cd7db3ac9254dade7db54d170d6f545000cb',
+     armv7l: '12a971762deeda76e11ade8a80f6cd7db3ac9254dade7db54d170d6f545000cb',
+       i686: 'be31c26015503a3ff6873cd24296ac66e0a9eb97acc6cf286872998924b7cf4f',
+     x86_64: '46b1d066d238c7d438c244d0d01a7510090042c2b4a1c5c7e49e9e8b8039a709'
   })
 
   depends_on 'groff'
