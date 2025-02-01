@@ -6,16 +6,15 @@ class Httpd < Autotools
   homepage 'https://httpd.apache.org/'
   version '2.4.63'
   license 'GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://dlcdn.apache.org/httpd/httpd-#{version}.tar.bz2"
   source_sha256 '88fc236ab99b2864b248de7d49a008ec2afd7551e64dce8b95f58f32f94c46ab'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'caa26002fba12159774416d6b664ceeba7ae918e11f63302d4e4ed8ba3c886af',
-     armv7l: 'caa26002fba12159774416d6b664ceeba7ae918e11f63302d4e4ed8ba3c886af',
-       i686: '6cdfb3f1bea82821c21aa1da2b7b285950bcc6efd89fda5eac2b994f6293a712',
-     x86_64: 'ed25f5ab36847c6c88f9e18d314eb6a595bc8d7f5ec4657b1a7317bf3ec2c6c1'
+    aarch64: 'b5bb883fd8bbef85f0b4f07f1ea72ae2440aa43f32bf4921866057d3eca044fc',
+     armv7l: 'b5bb883fd8bbef85f0b4f07f1ea72ae2440aa43f32bf4921866057d3eca044fc',
+     x86_64: 'a26481c3014646418ad74688892a0b48bc0e854158a1891be0ae2ee90a16cf17'
   })
 
   depends_on 'apr'
@@ -46,7 +45,6 @@ class Httpd < Autotools
   end
 
   configure_options "--prefix=#{CREW_PREFIX}/share/httpd \
-    --libdir=#{CREW_LIB_PREFIX} \
     --bindir=#{CREW_PREFIX}/bin \
     --sbindir=#{CREW_PREFIX}/bin \
     --disable-maintainer-mode \
