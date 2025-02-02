@@ -331,7 +331,7 @@
     "name": "appflowy",
     "description": "AI collaborative workspace where you achieve more without losing control of your data. The best open source alternative to Notion.",
     "homepage": "https://www.appflowy.io/",
-    "version": "0.8.1",
+    "version": "0.8.2",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -411,7 +411,7 @@
     "name": "aria2",
     "description": "aria2 is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.",
     "homepage": "https://aria2.github.io/",
-    "version": "1.36.0",
+    "version": "1.37.0",
     "license": "GPL-2+-with-openssl-exception",
     "compatibility": "all"
   },
@@ -739,7 +739,7 @@
     "name": "awscli",
     "description": "Universal Command Line Interface for Amazon Web Services",
     "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.37.6",
+    "version": "1.37.11",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -1067,7 +1067,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.74.50",
+    "version": "1.74.51",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1147,7 +1147,7 @@
     "name": "bun",
     "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one",
     "homepage": "https://bun.sh/",
-    "version": "1.1.45",
+    "version": "1.2.0",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -1643,7 +1643,7 @@
     "name": "cmake",
     "description": "CMake is an open-source, cross-platform family of tools designed to build, test and package software.",
     "homepage": "https://cmake.org/",
-    "version": "3.31.4",
+    "version": "3.31.5",
     "license": "CMake",
     "compatibility": "all"
   },
@@ -1699,7 +1699,7 @@
     "name": "codon",
     "description": "Codon is a high-performance Python compiler that compiles Python code to native machine code without any runtime overhead.",
     "homepage": "https://docs.exaloop.io/codon/",
-    "version": "0.16.3",
+    "version": "0.18.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -1755,7 +1755,7 @@
     "name": "composer",
     "description": "Dependency Manager for PHP",
     "homepage": "https://getcomposer.org/",
-    "version": "2.8.4",
+    "version": "2.8.5",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2555,7 +2555,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "131.0.2903.147-1",
+    "version": "132.0.2957.140-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2611,7 +2611,7 @@
     "name": "elixir",
     "description": "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.",
     "homepage": "https://elixir-lang.org/",
-    "version": "1.18.1",
+    "version": "1.18.2",
     "license": "Apache-2.0 and ErlPL-1.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2699,7 +2699,7 @@
     "name": "erlang",
     "description": "Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.",
     "homepage": "https://www.erlang.org/",
-    "version": "27.1.2",
+    "version": "27.2.1",
     "license": "Apache-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3091,7 +3091,7 @@
     "name": "flutter",
     "description": "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.",
     "homepage": "https://flutter.dev/",
-    "version": "3.27.2",
+    "version": "3.27.3",
     "license": "BSD-3",
     "compatibility": "x86_64"
   },
@@ -3635,7 +3635,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "507.0.0",
+    "version": "508.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -3931,7 +3931,7 @@
     "name": "git",
     "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
     "homepage": "https://git-scm.com/",
-    "version": "2.48.0",
+    "version": "2.48.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -4547,7 +4547,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "132.0.6834.110-1",
+    "version": "132.0.6834.159-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -4675,7 +4675,7 @@
     "name": "gradle",
     "description": "From mobile apps to microservices, from small startups to big enterprises, Gradle helps teams build, automate and deliver better software, faster.",
     "homepage": "https://gradle.org/",
-    "version": "8.11.1",
+    "version": "8.12.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -4835,7 +4835,7 @@
     "name": "gtk4",
     "description": "GTK+ is a multi-platform toolkit for creating graphical user interfaces.",
     "homepage": "https://developer.gnome.org/gtk4/",
-    "version": "4.17.2",
+    "version": "4.17.4",
     "license": "LGPL-2.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -5235,9 +5235,9 @@
     "name": "httpd",
     "description": "The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows.",
     "homepage": "https://httpd.apache.org/",
-    "version": "2.4.62",
+    "version": "2.4.63",
     "license": "GPL-2+",
-    "compatibility": "all"
+    "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "httrack",
@@ -5747,7 +5747,7 @@
     "name": "joplin",
     "description": "Open source note-taking app",
     "homepage": "https://joplinapp.org/",
-    "version": "3.2.11",
+    "version": "3.2.12",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -8523,7 +8523,7 @@
     "name": "libxcrypt",
     "description": "Modern library for one-way hashing of passwords",
     "homepage": "https://github.com/besser82/libxcrypt/",
-    "version": "4.4.18",
+    "version": "4.4.38",
     "license": "LGPL-2.1+, public-domain, BSD and BSD-2",
     "compatibility": "all"
   },
@@ -10547,7 +10547,7 @@
     "name": "nocodb",
     "description": "Open Source Airtable Alternative",
     "homepage": "https://nocodb.com/",
-    "version": "0.258.10",
+    "version": "0.260.2",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -10987,7 +10987,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "116.0.5366.51",
+    "version": "116.0.5366.71",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -11067,7 +11067,7 @@
     "name": "packer",
     "description": "Packer is an open source tool for creating identical machine images for multiple platforms from a single source configuration.",
     "homepage": "https://www.packer.io/",
-    "version": "1.11.2",
+    "version": "1.12.0",
     "license": "Apache-2.0, BSD-2, BSD-4, MIT, MPL-2.0 and unicode",
     "compatibility": "all"
   },
@@ -12339,7 +12339,7 @@
     "name": "py3_agate",
     "description": "Agate is a data analysis library that is optimized for humans instead of machines.",
     "homepage": "https://agate.readthedocs.io/",
-    "version": "1.12.0",
+    "version": "1.13.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12435,7 +12435,7 @@
     "name": "py3_babel",
     "description": "Babel is an integrated collection of utilities that assist in internationalizing and localizing Python applications.",
     "homepage": "https://babel.pocoo.org/",
-    "version": "2.16.0",
+    "version": "2.17.0",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -12475,7 +12475,7 @@
     "name": "py3_certifi",
     "description": "Certifi provides Mozilla's CA Bundle.",
     "homepage": "https://certifi.io/",
-    "version": "2024.12.14",
+    "version": "2025.1.31",
     "license": "MPL-2.0",
     "compatibility": "all"
   },
@@ -12523,7 +12523,7 @@
     "name": "py3_codespell",
     "description": "Fix common misspellings in text files.",
     "homepage": "https://github.com/codespell-project/codespell",
-    "version": "2.4.0",
+    "version": "2.4.1",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -12651,7 +12651,7 @@
     "name": "py3_dool",
     "description": "Dool is a command line tool to monitor many aspects of your system: CPU, Memory, Network, Load Average, etc.",
     "homepage": "https://github.com/scottchiefbaker/dool",
-    "version": "1.3.3",
+    "version": "1.3.4",
     "license": "GPL3+",
     "compatibility": "all"
   },
@@ -13003,7 +13003,7 @@
     "name": "py3_meson",
     "description": "Meson is an open source build system meant to be both extremely fast and user friendly.",
     "homepage": "https://mesonbuild.com/",
-    "version": "1.6.1",
+    "version": "1.7.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13051,7 +13051,7 @@
     "name": "py3_nuitka",
     "description": "Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.",
     "homepage": "https://nuitka.net/",
-    "version": "2.6",
+    "version": "2.6.2",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13067,7 +13067,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.143.0",
+    "version": "2.143.1",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13075,7 +13075,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.51.4",
+    "version": "3.51.5",
     "license": "UPL-1.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13155,7 +13155,7 @@
     "name": "py3_pip",
     "description": "Pip is the python package manager from the Python Packaging Authority.",
     "homepage": "https://pip.pypa.io/",
-    "version": "24.3.1",
+    "version": "25.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13163,7 +13163,7 @@
     "name": "py3_pipdeptree",
     "description": "Displays a dependency tree of the installed Python packages.",
     "homepage": "https://github.com/naiquevin/pipdeptree/",
-    "version": "2.24.0",
+    "version": "2.25.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13307,7 +13307,7 @@
     "name": "py3_pylint",
     "description": "Analyzes Python code looking for bugs and signs of poor quality",
     "homepage": "https://pylint.pycqa.org",
-    "version": "3.3.3",
+    "version": "3.3.4",
     "license": "GPL",
     "compatibility": "all"
   },
@@ -13339,7 +13339,7 @@
     "name": "py3_pypdf",
     "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.",
     "homepage": "https://github.com/py-pdf/pypdf",
-    "version": "5.1.0",
+    "version": "5.2.0",
     "license": "BSD-3-Clause",
     "compatibility": "all"
   },
@@ -13355,7 +13355,7 @@
     "name": "py3_pyright",
     "description": "Static Type Checker for Python",
     "homepage": "https://github.com/microsoft/pyright",
-    "version": "1.1.392.post0",
+    "version": "1.1.393",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13419,7 +13419,7 @@
     "name": "py3_pytz",
     "description": "pytz brings the Olson tz database into Python.",
     "homepage": "https://pythonhosted.org/pytz/",
-    "version": "2024.2",
+    "version": "2025.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13467,7 +13467,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.9.3",
+    "version": "0.9.4",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13795,7 +13795,7 @@
     "name": "py3_xlsxwriter",
     "description": "XlsxWriter is a Python module for creating Excel XLSX files.",
     "homepage": "https://xlsxwriter.readthedocs.io/",
-    "version": "3.2.1",
+    "version": "3.2.2",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -14403,7 +14403,7 @@
     "name": "rqlite",
     "description": "The lightweight, user-friendly, distributed relational database built on SQLite.",
     "homepage": "https://rqlite.io/",
-    "version": "8.36.6",
+    "version": "8.36.10",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -15163,7 +15163,7 @@
     "name": "ruby_rubocop",
     "description": "A Ruby static code analyzer and formatter",
     "homepage": "https://rubocop.org",
-    "version": "1.71.0-ruby3.3",
+    "version": "1.71.1-ruby3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15451,7 +15451,7 @@
     "name": "rust",
     "description": "Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.",
     "homepage": "https://www.rust-lang.org/",
-    "version": "1.84.0",
+    "version": "1.84.1",
     "license": "Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -15867,7 +15867,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.38.0",
+    "version": "7.40.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -16523,7 +16523,7 @@
     "name": "tauri_cli",
     "description": "Build smaller, faster, and more secure desktop and mobile applications with a web frontend.",
     "homepage": "https://tauri.app/",
-    "version": "2.2.4",
+    "version": "2.2.7",
     "license": "Apache-2.0, MIT",
     "compatibility": "x86_64"
   },
@@ -16595,7 +16595,7 @@
     "name": "telegram",
     "description": "Telegram is a messaging app with a focus on speed and security, it's super-fast, simple and free.",
     "homepage": "https://telegram.org/",
-    "version": "5.10.4",
+    "version": "5.10.7",
     "license": "BSD, LGPL-2+ and GPL-3-with-openssl-exception",
     "compatibility": "x86_64"
   },
@@ -17384,10 +17384,18 @@
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
+    "name": "vitetris",
+    "description": "Classic multiplayer tetris for the terminal",
+    "homepage": "https://www.victornils.net/tetris/",
+    "version": "0.59.1",
+    "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.1.3570.39-1",
+    "version": "7.1.3570.42-1",
     "license": "Vivaldi",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -17443,7 +17451,7 @@
     "name": "vscodium",
     "description": "VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.",
     "homepage": "https://vscodium.com/",
-    "version": "1.96.4.25017",
+    "version": "1.96.4.25026",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18355,7 +18363,7 @@
     "name": "xzutils",
     "description": "XZ Utils is free general-purpose data compression software with a high compression ratio.",
     "homepage": "https://tukaani.org/xz/",
-    "version": "5.6.3",
+    "version": "5.6.4",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -18499,7 +18507,7 @@
     "name": "zed",
     "description": "Zed is a high-performance, multiplayer code editor",
     "homepage": "https://zed.dev/",
-    "version": "0.169.2",
+    "version": "0.171.3",
     "license": "GPL-3, AGPL-3, Apache-2.0",
     "compatibility": "x86_64"
   },
