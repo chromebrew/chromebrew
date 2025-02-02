@@ -570,6 +570,11 @@ url: https://github.com/ivmai/bdwgc/releases
 activity: medium
 ---
 kind: url
+name: bearly
+url: https://github.com/bearlyai/releases/releases
+activity: none
+---
+kind: url
 name: beav
 url: https://deb.debian.org/debian/pool/main/b/beav/
 activity: none
