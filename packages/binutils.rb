@@ -8,7 +8,7 @@ class Binutils < Package
   version "2.44-#{CREW_GCC_VER}"
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://sourceware.org/pub/binutils/release/binutils-#{version.split('-').first}.tar.zst"
+  source_url "https://sourceware.org/pub/binutils/releases/binutils-#{version.split('-').first}.tar.zst"
   source_sha256 'becaac5d295e037587b63a42fad57fe3d9d7b83f478eb24b67f9eec5d0f1872f'
   binary_compression 'tar.zst'
 
