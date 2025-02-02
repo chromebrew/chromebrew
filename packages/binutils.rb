@@ -5,10 +5,10 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  version "2.43.1-1-#{CREW_GCC_VER}"
+  version "2.44-#{CREW_GCC_VER}"
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/binutils/binutils-#{version.split('-').first}.tar.bz2"
+  source_url "https://ftpmirror.gnu.org/binutils/binutils-#{version.split('-').first}.tar.zst"
   source_sha256 'becaac5d295e037587b63a42fad57fe3d9d7b83f478eb24b67f9eec5d0f1872f'
   binary_compression 'tar.zst'
 
