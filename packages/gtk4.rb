@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.17.2'
+  version '4.17.4'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
