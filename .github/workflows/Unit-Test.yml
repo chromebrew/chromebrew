@@ -110,11 +110,11 @@ jobs:
               echo "PR #${{ github.event.pull_request.number }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
             fi
 
-            ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to ARMV7L_PACKAGES.
-            ARMV7L_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/"${i}".rb && echo "${i}"; done | xargs)"
-            if [[ -n ${ARMV7L_PACKAGES} ]]; then
-              echo "ARMV7L_PACKAGES=${ARMV7L_PACKAGES}" >> "$GITHUB_ENV"
-              echo "PR #${{ github.event.pull_request.number }} has these armv7l compatible packages: ${ARMV7L_PACKAGES}"
+            ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to armv7l_PACKAGES.
+            armv7l_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/"${i}".rb && echo "${i}"; done | xargs)"
+            if [[ -n ${armv7l_PACKAGES} ]]; then
+              echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_ENV"
+              echo "PR #${{ github.event.pull_request.number }} has these armv7l compatible packages: ${armv7l_PACKAGES}"
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'i686', add it to i686_PACKAGES.
@@ -133,7 +133,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=nocturne-x86_64.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=hatch-x86_64.m131" >> "$GITHUB_ENV"
+                    echo "CONTAINER=hatch-x86_64.m132" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 fi
@@ -145,7 +145,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=fievel-armv7l.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=strongbad-armv7l.m131" >> "$GITHUB_ENV"
+                    echo "CONTAINER=strongbad-armv7l.m132" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
                 fi
@@ -166,15 +166,19 @@ jobs:
         run: |
             case $GITHUB_EVENT in
               check_run | merge_group | push | workflow_run | workflow_dispatch)
-                export CREW_REPO="${{ github.event.repository.clone_url }}"
-                export CREW_BRANCH="${{ github.ref_name }}"
+                CREW_REPO="${{ github.event.repository.clone_url }}"
+                export CREW_REPO
+                CREW_BRANCH="${{ github.ref_name }}"
+                export CREW_BRANCH
                 ;;
               pull_request)
-                export CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}"
-                export CREW_BRANCH="${HEAD_REF}"
+                CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}"
+                export CREW_REPO
+                CREW_BRANCH="${HEAD_REF}"
+                export CREW_BRANCH
                 ;;
             esac
-            if [ -z "${NON_PKG_CHANGED_FILES}" ] && { [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${ARMV7L_PACKAGES}" ]; }; then
+            if [ -z "${NON_PKG_CHANGED_FILES}" ] && { [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; }; then
               # Exit the arm container if there are neither non-package changed files nor armv7l compatible packages.
               echo "Skipping armv7l container unit tests."
               exit 0
