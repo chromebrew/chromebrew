@@ -695,6 +695,11 @@ url: https://salsa.debian.org/games-team/bsdgames/-/tags
 activity: low
 ---
 kind: url
+name: btm
+url: https://github.com/ClementTsang/bottom/releases
+activity: low
+---
+kind: url
 name: btop
 url: https://github.com/aristocratos/btop/releases
 activity: low
