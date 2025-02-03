@@ -83,7 +83,7 @@ jobs:
         id: get-compatibility
         run: |
             # If a package doesnt have a min_glibc value, or if it is below 2.32, add it to GLIBC_232_COMPATIBLE_PACKAGES.
-            GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo ${i} ; done | xargs)"
+            GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo "${i}" ; done | xargs)"
             export GLIBC_232_COMPATIBLE_PACKAGES
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
@@ -92,7 +92,7 @@ jobs:
             fi
 
             # If a package doesnt have a min_glibc value, or if it is below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
-            GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/${i}.rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo ${i} ; done | xargs)"
+            GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo "${i}" ; done | xargs)"
             export GLIBC_237_COMPATIBLE_PACKAGES
             if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
@@ -101,7 +101,7 @@ jobs:
             fi
 
             # If a package has a compatibility of 'all' or one that includes 'x86_64', add it to x86_64_PACKAGES.
-            x86_64_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*x86_64" packages/${i}.rb && echo ${i}; done | xargs)"
+            x86_64_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*x86_64" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export x86_64_PACKAGES
             if [[ -n ${x86_64_PACKAGES} ]]; then
               echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_ENV"
@@ -110,7 +110,7 @@ jobs:
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to armv7l_PACKAGES.
-            armv7l_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/${i}.rb && echo ${i}; done | xargs)"
+            armv7l_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export armv7l_PACKAGES
             if [[ -n ${armv7l_PACKAGES} ]]; then
               echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_ENV"
@@ -119,7 +119,7 @@ jobs:
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'i686', add it to i686_PACKAGES.
-            i686_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*i686" packages/${i}.rb && echo ${i}; done | xargs)"
+            i686_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*i686" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export i686_PACKAGES
             if [[ -n ${i686_PACKAGES} ]]; then
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_ENV"
