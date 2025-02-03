@@ -92,6 +92,7 @@
 /usr/local/include/gtk-4.0/gdk/x11/gdkx11surface.h
 /usr/local/include/gtk-4.0/gdk/x11/gdkx11utils.h
 /usr/local/include/gtk-4.0/gsk/gl/gskglrenderer.h
+/usr/local/include/gtk-4.0/gsk/gpu/gskglrenderer.h
 /usr/local/include/gtk-4.0/gsk/gpu/gskvulkanrenderer.h
 /usr/local/include/gtk-4.0/gsk/gsk.h
 /usr/local/include/gtk-4.0/gsk/gskcairorenderer.h
@@ -158,6 +159,11 @@
 /usr/local/include/gtk-4.0/gtk/deprecated/gtklockbutton.h
 /usr/local/include/gtk-4.0/gtk/deprecated/gtkmessagedialog.h
 /usr/local/include/gtk-4.0/gtk/deprecated/gtkrender.h
+/usr/local/include/gtk-4.0/gtk/deprecated/gtkshortcutlabel.h
+/usr/local/include/gtk-4.0/gtk/deprecated/gtkshortcutsgroup.h
+/usr/local/include/gtk-4.0/gtk/deprecated/gtkshortcutssection.h
+/usr/local/include/gtk-4.0/gtk/deprecated/gtkshortcutsshortcut.h
+/usr/local/include/gtk-4.0/gtk/deprecated/gtkshortcutswindow.h
 /usr/local/include/gtk-4.0/gtk/deprecated/gtkshow.h
 /usr/local/include/gtk-4.0/gtk/deprecated/gtkstatusbar.h
 /usr/local/include/gtk-4.0/gtk/deprecated/gtkstylecontext.h
@@ -335,12 +341,7 @@
 /usr/local/include/gtk-4.0/gtk/gtkshortcut.h
 /usr/local/include/gtk-4.0/gtk/gtkshortcutaction.h
 /usr/local/include/gtk-4.0/gtk/gtkshortcutcontroller.h
-/usr/local/include/gtk-4.0/gtk/gtkshortcutlabel.h
 /usr/local/include/gtk-4.0/gtk/gtkshortcutmanager.h
-/usr/local/include/gtk-4.0/gtk/gtkshortcutsgroup.h
-/usr/local/include/gtk-4.0/gtk/gtkshortcutssection.h
-/usr/local/include/gtk-4.0/gtk/gtkshortcutsshortcut.h
-/usr/local/include/gtk-4.0/gtk/gtkshortcutswindow.h
 /usr/local/include/gtk-4.0/gtk/gtkshortcuttrigger.h
 /usr/local/include/gtk-4.0/gtk/gtksignallistitemfactory.h
 /usr/local/include/gtk-4.0/gtk/gtksingleselection.h
@@ -408,7 +409,7 @@
 /usr/local/lib64/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so
 /usr/local/lib64/libgtk-4.so
 /usr/local/lib64/libgtk-4.so.1
-/usr/local/lib64/libgtk-4.so.1.1702.0
+/usr/local/lib64/libgtk-4.so.1.1704.0
 /usr/local/lib64/pkgconfig/gtk4-atspi.pc
 /usr/local/lib64/pkgconfig/gtk4-unix-print.pc
 /usr/local/lib64/pkgconfig/gtk4-wayland.pc
