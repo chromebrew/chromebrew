@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_beautifulsoup4 < Pip
   description 'BeautifulSoup is a screen-scraping library.'
   homepage 'https://www.crummy.com/software/BeautifulSoup/'
-  version "4.13.0-#{CREW_PY_VER}"
+  version "4.13.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '47cbe7a9359c7246cd540073086e871b6be8b821bab7432d123e4ba431d64cb7',
-     armv7l: '47cbe7a9359c7246cd540073086e871b6be8b821bab7432d123e4ba431d64cb7',
-       i686: '3498eb4d346c9868cb338fdfd7099091c999bddb4bac971cee8bdd131c973e63',
-     x86_64: 'b3a208aab090a0a63a9ce815c9af85fc965a9255ca5519d9de64a96a00412e8d'
+    aarch64: 'fbf5f83cf2e367e7c247d70c5bb21b18503cf9aef76c7810198202b5af7b6f5b',
+     armv7l: 'fbf5f83cf2e367e7c247d70c5bb21b18503cf9aef76c7810198202b5af7b6f5b',
+       i686: 'f91fa6e0a2329196c83e5481a8f857e12a3d7c9300315e56f386ea4164595f4d',
+     x86_64: 'aca0ba6cbaef5dd23432ab3497d0d9b31e16a01cb1155a3c905be8a5d4553fad'
   })
 
   depends_on 'py3_hatchling' => :build
