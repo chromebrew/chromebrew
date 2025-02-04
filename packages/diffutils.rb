@@ -14,7 +14,7 @@ class Diffutils < Autotools
     aarch64: 'aa743845cc8c4fe2b452dfe3abe9e45e7c2f270b4cc7de72731f51ae269c0557',
      armv7l: 'aa743845cc8c4fe2b452dfe3abe9e45e7c2f270b4cc7de72731f51ae269c0557',
        i686: '5be08736ce8d850ee3ded9b3be61f543c52f6ce00a0738f1432163e1c5066701',
-     x86_64: '9b8a48ae9b82cbe8ca466749613d48b1e350023e3a773af30089ce1414f05e5d'
+     x86_64: 'c9dfed42391fa1a458d10af617d05fa16f79c066ee4d723e00bc73a98aa92f1d'
   })
 
   depends_on 'glibc' # R
