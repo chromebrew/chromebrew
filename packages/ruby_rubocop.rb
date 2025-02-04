@@ -11,8 +11,19 @@ class Ruby_rubocop < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'libyaml'
-  depends_on 'xdg_base'
+  depends_on 'libyaml' # R
+  depends_on 'ruby_json' # R
+  depends_on 'ruby_language_server_protocol' # R
+  depends_on 'ruby_parallel' # R
+  depends_on 'ruby_parser' # R
+  depends_on 'ruby_parser' # R
+  depends_on 'ruby_rainbow' # R
+  depends_on 'ruby_regexp_parser' # R
+  depends_on 'ruby_rubocop' # R
+  depends_on 'ruby_rubocop_ast' # R
+  depends_on 'ruby_ruby_progressbar' # R
+  depends_on 'ruby_unicode_display_width' # R
+  depends_on 'xdg_base' # L
 
   conflicts_ok
   no_fhs
