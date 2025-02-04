@@ -48,7 +48,8 @@ numlength = total_files_to_check.to_s.length
 relevant_gem_packages.each_with_index do |package, index|
   pool.post do
     untested_package_name = package.gsub(%r{^packages/ruby_}, '').gsub(/.rb$/, '')
-    gem_test = gems.grep(/#{"^#{untested_package_name}\\s.*$"}/).last.blank? ? gems.grep(/#{"^#{untested_package_name.gsub('_', '-')}\\s.*$"}/).last : gems.grep(/#{"^#{untested_package_name}\\s.*$"}/).last
+    gem_test = gems.grep(/#{"^#{untested_package_name}\\s.*$"}/).last.blank? ? gems.grep(/#{"^\(#{passed_name.gsub(/^ruby_/, '').gsub('_', ')*.(')}\\s\).*$"}/).last : gems.grep(/#{"^#{untested_package_name}\\s.*$"}/).last
+    abort "Cannot find #{passed_name} gem to install.".lightred if gem_test.blank?
     gem_test_name = gem_test.split.first
     puts "#{untested_package_name} versions for #{gem_test_name} are #{gem_test.split[1].split(',')}" if CREW_VERBOSE
     gem_test_versions = gem_test.split[1].split(',')

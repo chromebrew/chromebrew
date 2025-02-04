@@ -7965,6 +7965,11 @@ url: https://github.com/asciidoctor/asciidoctor/releases
 activity: medium
 ---
 kind: url
+name: ruby_ast
+url: https://github.com/whitequark/ast/tags
+activity: low
+---
+kind: url
 name: ruby_byebug
 url: https://github.com/deivid-rodriguez/byebug/releases
 activity: low
@@ -8000,9 +8005,24 @@ url: https://github.com/JEG2/highline/tags
 activity: medium
 ---
 kind: url
+name: ruby_language_server_protocol
+url: https://github.com/mtsmfm/language_server-protocol-ruby/tags
+activity: high
+---
+kind: url
 name: ruby_mdl
 url: https://github.com/markdownlint/markdownlint/tags
 activity: low
+---
+kind: url
+name: ruby_parallel
+url: https://github.com/grosser/parallel/tags
+activity: medium
+---
+kind: url
+name: ruby_parser
+url: https://github.com/whitequark/parser/tags
+activity: high
 ---
 kind: url
 name: ruby_pry
@@ -8015,6 +8035,16 @@ url: https://github.com/deivid-rodriguez/pry-byebug/releases
 activity: low
 ---
 kind: url
+name: ruby_rainbow
+url: https://github.com/ku1ik/rainbow/tags
+activity: low
+---
+kind: url
+name: ruby_regexp_parser
+url: https://github.com/ammar/regexp_parser/tags
+activity: high
+---
+kind: url
 name: ruby_repl_type_completor
 url: https://github.com/ruby/repl_type_completor/tags
 activity: high
@@ -8025,9 +8055,34 @@ url: https://github.com/rubocop/rubocop/releases
 activity: medium
 ---
 kind: url
+name: ruby_rubocop_ast
+url: https://github.com/rubocop/rubocop-ast/tags
+activity: high
+---
+kind: url
+name: ruby_rubocop_chromebrew
+url: https://github.com/chromebrew/rubocop-chromebrew/tags
+activity: medium
+---
+kind: url
 name: ruby_ruby_libversion
 url: https://github.com/Zopolis4/ruby-libversion/tags
 activity: medium
+---
+kind: url
+name: ruby_ruby_progressbar
+url: https://github.com/jfelchner/ruby-progressbar/tags
+activity: low
+---
+kind: url
+name: ruby_unicode_display_width
+url: https://github.com/janlelis/unicode-display_width/tags
+activity: high
+---
+kind: url
+name: ruby_unicode_emoji
+url: https://github.com/janlelis/unicode-emoji/tags
+activity: high
 ---
 kind: url
 name: ruby_webrick

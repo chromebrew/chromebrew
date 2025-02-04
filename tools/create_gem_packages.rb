@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# create_gem_packages version 1.3 (for Chromebrew)
+# create_gem_packages version 1.4 (for Chromebrew)
 # This creates ruby gem packages based upon the default and bundled gems
 # listed at https://stdgems.org/
 # OR from gem names passed in as arguments.
@@ -133,7 +133,6 @@ def create_gem_package(package)
       license '#{license}'
       compatibility 'all'
       source_url 'SKIP'
-
     #{dependencyblock}
       conflicts_ok
       #{check_gem_binary_build_needed(package, version) ? 'gem_compile_needed' : 'no_compile_needed'}
