@@ -8060,6 +8060,11 @@ url: https://github.com/rubocop/rubocop-ast/tags
 activity: high
 ---
 kind: url
+name: ruby_rubocop_chromebrew
+url: https://github.com/chromebrew/rubocop-chromebrew/tags
+activity: medium
+---
+kind: url
 name: ruby_ruby_libversion
 url: https://github.com/Zopolis4/ruby-libversion/tags
 activity: medium
