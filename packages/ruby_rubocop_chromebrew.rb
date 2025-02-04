@@ -8,7 +8,6 @@ class Ruby_rubocop_chromebrew < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
-
   depends_on 'ruby_rubocop' # R
 
   conflicts_ok

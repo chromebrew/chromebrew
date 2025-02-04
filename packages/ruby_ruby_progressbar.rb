@@ -8,7 +8,6 @@ class Ruby_ruby_progressbar < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
-
   conflicts_ok
   no_compile_needed
 end

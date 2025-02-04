@@ -8,7 +8,6 @@ class Ruby_unicode_emoji < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
-
   conflicts_ok
   no_compile_needed
 end

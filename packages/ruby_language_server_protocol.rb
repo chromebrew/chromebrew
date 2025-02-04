@@ -8,7 +8,6 @@ class Ruby_language_server_protocol < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
-
   conflicts_ok
   no_compile_needed
 end

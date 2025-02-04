@@ -8,7 +8,6 @@ class Ruby_parser < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
-
   depends_on 'ruby_ast' # R
   depends_on 'ruby_racc' # R
 

@@ -8,7 +8,6 @@ class Ruby_regexp_parser < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
-
   conflicts_ok
   no_compile_needed
 end

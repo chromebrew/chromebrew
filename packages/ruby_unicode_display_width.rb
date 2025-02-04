@@ -8,7 +8,6 @@ class Ruby_unicode_display_width < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
-
   depends_on 'ruby_unicode_emoji' # R
 
   conflicts_ok
