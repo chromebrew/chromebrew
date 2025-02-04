@@ -1,38 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Diffutils < Package
+class Diffutils < Autotools
   description 'GNU Diffutils is a package of several programs related to finding differences between files.'
   homepage 'https://www.gnu.org/software/diffutils/'
-  version '3.10'
+  version '3.11'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gnu/diffutils/diffutils-3.10.tar.xz'
-  source_sha256 '90e5e93cc724e4ebe12ede80df1634063c7a855692685919bfe60b556c9bd09e'
+  source_url "https://ftpmirror.gnu.org/gnu/diffutils/diffutils-#{version}.tar.xz"
+  source_sha256 'a73ef05fe37dd585f7d87068e4a0639760419f810138bd75c61ddaa1f9e2131e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aa743845cc8c4fe2b452dfe3abe9e45e7c2f270b4cc7de72731f51ae269c0557',
-     armv7l: 'aa743845cc8c4fe2b452dfe3abe9e45e7c2f270b4cc7de72731f51ae269c0557',
-       i686: 'cf222ec2fdb2a77d3873e74059b030a7acd247401fd7521c9041d6609def8949',
-     x86_64: '9b8a48ae9b82cbe8ca466749613d48b1e350023e3a773af30089ce1414f05e5d'
+    aarch64: 'bbef572e4982395a2b603cd5498e50402123887e9a3327640c71b133d917df11',
+     armv7l: 'bbef572e4982395a2b603cd5498e50402123887e9a3327640c71b133d917df11',
+       i686: '5be08736ce8d850ee3ded9b3be61f543c52f6ce00a0738f1432163e1c5066701',
+     x86_64: 'c9dfed42391fa1a458d10af617d05fa16f79c066ee4d723e00bc73a98aa92f1d'
   })
 
   depends_on 'glibc' # R
   depends_on 'libsigsegv'
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.check
-    # FAIL: test-year2038
-    # FAIL cmp (exit status: 1)
-    # FAIL: invalid-re
-    # system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--disable-year2038' unless ARCH == 'x86_64'
 end
