@@ -14,8 +14,14 @@ class Adwaita_fonts < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
+    aarch64: '160717021efacb26bc3081b8bea9340f3d60cafa0177d5bbe3885c08b2510229',
+     armv7l: '160717021efacb26bc3081b8bea9340f3d60cafa0177d5bbe3885c08b2510229',
        i686: 'e6bb45b765227feb876cd9d7ab32618e5b900da3d06b4c0820aa06f7ceea164e'
   })
 
   gnome
+
+  def self.postinstall
+    system "env FONTCONFIG_PATH=#{CREW_PREFIX}/etc/fonts fc-cache -fv || true"
+  end
 end

@@ -49,6 +49,7 @@
 /usr/local/share/icons/Adwaita/16x16/places/user-desktop.png
 /usr/local/share/icons/Adwaita/16x16/places/user-home.png
 /usr/local/share/icons/Adwaita/16x16/places/user-trash.png
+/usr/local/share/icons/Adwaita/cursors/X_cursor
 /usr/local/share/icons/Adwaita/cursors/alias
 /usr/local/share/icons/Adwaita/cursors/all-scroll
 /usr/local/share/icons/Adwaita/cursors/arrow
@@ -65,6 +66,7 @@
 /usr/local/share/icons/Adwaita/cursors/crosshair
 /usr/local/share/icons/Adwaita/cursors/default
 /usr/local/share/icons/Adwaita/cursors/diamond_cross
+/usr/local/share/icons/Adwaita/cursors/dnd-move
 /usr/local/share/icons/Adwaita/cursors/e-resize
 /usr/local/share/icons/Adwaita/cursors/ew-resize
 /usr/local/share/icons/Adwaita/cursors/fd_double_arrow
@@ -179,7 +181,6 @@
 /usr/local/share/icons/Adwaita/scalable/status/image-loading.svg
 /usr/local/share/icons/Adwaita/scalable/status/image-missing.svg
 /usr/local/share/icons/Adwaita/scalable/status/user-trash-full.svg
-/usr/local/share/icons/Adwaita/symbolic-up-to-32/status/process-working-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/actions/action-unavailable-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/actions/address-book-new-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/actions/application-exit-rtl-symbolic.svg
@@ -448,17 +449,6 @@
 /usr/local/share/icons/Adwaita/symbolic/devices/video-display-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/devices/video-joined-displays-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/devices/video-single-display-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/emblems/emblem-default-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/emblems/emblem-documents-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/emblems/emblem-favorite-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/emblems/emblem-important-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/emblems/emblem-music-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/emblems/emblem-ok-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/emblems/emblem-photos-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/emblems/emblem-shared-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/emblems/emblem-synchronizing-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/emblems/emblem-system-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/emblems/emblem-videos-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/emotes/emote-love-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/emotes/face-angel-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/emotes/face-angry-symbolic.svg
@@ -573,6 +563,7 @@
 /usr/local/share/icons/Adwaita/symbolic/places/user-desktop-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/places/user-home-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/places/user-trash-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/status/airplane-mode-disabled-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/airplane-mode-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/alarm-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/appointment-missed-symbolic.svg
@@ -747,14 +738,8 @@
 /usr/local/share/icons/Adwaita/symbolic/status/orientation-portrait-left-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/orientation-portrait-right-symbolic-rtl.svg
 /usr/local/share/icons/Adwaita/symbolic/status/orientation-portrait-right-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/status/power-profile-balanced-rtl-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/status/power-profile-balanced-symbolic-rtl.svg
 /usr/local/share/icons/Adwaita/symbolic/status/power-profile-balanced-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/status/power-profile-performance-rtl-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/status/power-profile-performance-symbolic-rtl.svg
 /usr/local/share/icons/Adwaita/symbolic/status/power-profile-performance-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/status/power-profile-power-saver-rtl-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/status/power-profile-power-saver-symbolic-rtl.svg
 /usr/local/share/icons/Adwaita/symbolic/status/power-profile-power-saver-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/printer-error-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/printer-printing-symbolic.svg
