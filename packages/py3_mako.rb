@@ -10,8 +10,8 @@ class Py3_mako < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9af9a1e7ad11ca7e0d05f48ad10e7c954dc0be809152ab60cd4b22d235f3e0b9',
-     armv7l: '9af9a1e7ad11ca7e0d05f48ad10e7c954dc0be809152ab60cd4b22d235f3e0b9',
+    aarch64: '07d70703dfb7f0ad19b4f6b0f6d5b3d685b700fdfc2ddeabbbe72db4b5b2d2eb',
+     armv7l: '07d70703dfb7f0ad19b4f6b0f6d5b3d685b700fdfc2ddeabbbe72db4b5b2d2eb',
        i686: 'da09699fdf8f08ad28d97a38917ee3fdea3eaba80f9d9033f1248405a1ee02aa',
      x86_64: '934e82c25d304601ac79f6e0e572af569217cb0157100765d4028d8d1c331996'
   })
