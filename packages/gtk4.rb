@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.17.4'
+  version '4.17.4-1'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -17,9 +17,9 @@ class Gtk4 < Meson
   })
 
   # L = Logical Dependency, R = Runtime Dependency
+  depends_on 'adwaita_fonts' # L
   depends_on 'adwaita_icon_theme' # L
   depends_on 'cairo' # R
-  depends_on 'cantarell_fonts' # L
   depends_on 'cups' # R
   depends_on 'docbook' => :build
   depends_on 'fontconfig' # R
@@ -85,7 +85,7 @@ class Gtk4 < Meson
     end
   end
 
-  meson_options '-Dbroadway-backend=false \
+  meson_options '-Dbroadway-backend=true \
       -Dbuild-demos=false \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
@@ -105,6 +105,7 @@ class Gtk4 < Meson
       gtk-icon-theme-name = Adwaita
       gtk-theme-name = Adwaita
       gtk-font-name = Cantarell 11
+      monospace-font-name = Adwaita Mono 11
     GTK4_CONFIG_HEREDOC
   end
 

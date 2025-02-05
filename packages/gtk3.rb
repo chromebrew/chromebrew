@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk3 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://docs.gtk.org/gtk3/'
-  version '3.24.43'
+  version '3.24.48'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -17,10 +17,10 @@ class Gtk3 < Meson
   })
 
   # L = Logical Dependency, R = Runtime Dependency
+  depends_on 'adwaita_fonts' # L
   depends_on 'adwaita_icon_theme' # L
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
-  depends_on 'cantarell_fonts' # L
   depends_on 'cups' # R
   depends_on 'docbook' => :build
   depends_on 'fontconfig' # R
@@ -80,7 +80,7 @@ class Gtk3 < Meson
     end
   end
 
-  meson_options '-Dbroadway_backend=false \
+  meson_options '-Dbroadway_backend=true \
       -Ddemos=false \
       -Dexamples=false \
       -Dgtk_doc=false'
@@ -91,8 +91,9 @@ class Gtk3 < Meson
       gtk-icon-theme-name = Adwaita
       gtk-fallback-icon-theme = gnome
       gtk-theme-name = Adwaita
-      gtk-font-name = Cantarell 11
+      gtk-font-name = Adwaita Sans 11
       gtk-application-prefer-dark-theme = false
+      monospace-font-name = Adwaita Mono 11
     GTK3_CONFIG_HEREDOC
   end
 
