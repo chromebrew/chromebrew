@@ -1,13 +1,14 @@
 require 'package'
+require 'convenience_functions'
 
 class Mullvad < Package
   description 'Privacy-focused browser'
   homepage 'https://mullvad.net/browser'
-  version '14.0.4'
+  version '14.0.5'
   license 'Mozilla Public License V2'
   compatibility 'x86_64'
   source_url "https://github.com/mullvad/mullvad-browser/releases/download/#{version}/mullvad-browser-linux-x86_64-#{version}.tar.xz"
-  source_sha256 '6359a228bbd56a0115c8c783c8632e936898a93ddde9ff67c66dfd4463cfcc33'
+  source_sha256 'cbdf08cc29e88db0430e3e8f71bc6d4cfc1f1c0e30669c3a835aad992824a450'
 
   depends_on 'gtk3'
   depends_on 'gdk_base'
@@ -33,26 +34,14 @@ class Mullvad < Package
   end
 
   def self.postinstall
-    print "\nSet Mullvad as your default browser? [Y/n]: "
-    case $stdin.gets.chomp.downcase
-    when '', 'y', 'yes'
-      Dir.chdir("#{CREW_PREFIX}/bin") do
-        FileUtils.ln_sf 'mullvad', 'x-www-browser'
-      end
-      puts 'Mullvad is now your default browser.'.lightgreen
-    else
-      puts 'No change has been made.'.orange
-    end
-    puts "\nType 'mullvad' to get started.\n".lightblue
+    ConvenienceFunctions.set_default_browser('Mullvad', 'mullvad')
+  end
+
+  def self.preremove
+    ConvenienceFunctions.unset_default_browser('Mullvad', 'start-mullvad-browser')
   end
 
   def self.postremove
-    Dir.chdir("#{CREW_PREFIX}/bin") do
-      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') \
-        && (File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/mullvad")
-        FileUtils.rm 'x-www-browser'
-      end
-    end
     Package.agree_to_remove("#{CREW_PREFIX}/share/mullvad")
   end
 end
