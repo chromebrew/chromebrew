@@ -13,7 +13,7 @@ class Py3_nuitka < Pip
     aarch64: '73f95f81d1c07211efd9003ae2639d7c9f7b05c6ef00a2d73b0fdef5fb13786d',
      armv7l: '73f95f81d1c07211efd9003ae2639d7c9f7b05c6ef00a2d73b0fdef5fb13786d',
        i686: 'b6bcaa2975edae3d51c781cd98eea150724b60aa133dfe6709038ded17bd60f7',
-     x86_64: '7857e2808b67f69ea284e92708402d3362e5212f6562b38474f25c2155e023bb'
+     x86_64: '6ffd17fe326bfd08d1b0e235faec866782ab7bcd99ae97a0a647ca848c207f03'
   })
 
   depends_on 'python3' => :build
