@@ -7890,6 +7890,11 @@ url: https://download.gnome.org/sources/rhythmbox/
 activity: none
 ---
 kind: url
+name: rio
+url: https://github.com/raphamorim/rio/releases
+activity: medium
+---
+kind: url
 name: ripgrep
 url: https://github.com/BurntSushi/ripgrep/releases
 activity: low
