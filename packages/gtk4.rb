@@ -3,23 +3,23 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.17.4'
+  version '4.17.4-1'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '12930bc4579c5568c15e47b74256e1b74a6f3352dc9c0053d2424750af83d5ba',
-     armv7l: '12930bc4579c5568c15e47b74256e1b74a6f3352dc9c0053d2424750af83d5ba',
-     x86_64: '1ba26d1418ba1a51990f17c90f215e33225c8cfd35a00ae8cceb7ac408986754'
+    aarch64: 'ce63b6ec2a25d42f55dafb0dd875877c65d9066f8dac8aa199eda21fd0126a3e',
+     armv7l: 'ce63b6ec2a25d42f55dafb0dd875877c65d9066f8dac8aa199eda21fd0126a3e',
+     x86_64: 'd6e6c561ecafd8f934015baabc81fd00052ac729adb44c81ccbdbf6ca19c1a7c'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
+  depends_on 'adwaita_fonts' # L
   depends_on 'adwaita_icon_theme' # L
   depends_on 'cairo' # R
-  depends_on 'cantarell_fonts' # L
   depends_on 'cups' # R
   depends_on 'docbook' => :build
   depends_on 'fontconfig' # R
@@ -85,7 +85,7 @@ class Gtk4 < Meson
     end
   end
 
-  meson_options '-Dbroadway-backend=false \
+  meson_options '-Dbroadway-backend=true \
       -Dbuild-demos=false \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
@@ -105,6 +105,7 @@ class Gtk4 < Meson
       gtk-icon-theme-name = Adwaita
       gtk-theme-name = Adwaita
       gtk-font-name = Cantarell 11
+      monospace-font-name = Adwaita Mono 11
     GTK4_CONFIG_HEREDOC
   end
 

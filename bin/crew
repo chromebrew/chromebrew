@@ -1654,6 +1654,8 @@ def copy_package(pkg_name, prompt_msg = '')
   if PackageUtils.installed?('ruby_rubocop')
     puts "Using rubocop to sanitize #{pkg_file} .".orange
     system 'gem install rubocop' unless Kernel.system('rubocop --help 2>/dev/null', %i[out err] => File::NULL)
+    # Don't forget to install our personal rubocop extension.
+    system 'gem install rubocop-chromebrew' unless Kernel.system('rubocop --require rubocop-chromebrew --help 2>/dev/null', %i[out err] => File::NULL)
     system "rubocop -c #{File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')} -A #{pkg_file}", exception: true
   else
     puts 'Package '.lightred + 'ruby_rubocop'.orange + " is not installed. Rubocop will not be used to sanitize  #{pkg_file} . 😔 You may try this: ".lightred + 'crew install ruby_rubocop'.lightblue
