@@ -8,6 +8,11 @@ class Rio < Package
   compatibility 'x86_64'
   source_url 'https://github.com/raphamorim/rio.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
+
+  binary_sha256({
+     x86_64: '062767dc16bd3a5c54aa9a38e262894ff935d99bbe6292c81b6e17735ae9ae4a'
+  })
 
   depends_on 'rust' => :build
   depends_on 'gcc_lib' # R
