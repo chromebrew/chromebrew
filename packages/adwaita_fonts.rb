@@ -13,5 +13,9 @@ class Adwaita_fonts < Meson
   git_hashtag version
   binary_compression 'tar.zst'
 
+  binary_sha256({
+       i686: 'e6bb45b765227feb876cd9d7ab32618e5b900da3d06b4c0820aa06f7ceea164e'
+  })
+
   gnome
 end
