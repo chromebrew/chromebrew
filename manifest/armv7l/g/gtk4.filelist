@@ -1,4 +1,5 @@
 /usr/local/.config/gtk-4.0/settings.ini
+/usr/local/bin/gtk4-broadwayd
 /usr/local/bin/gtk4-builder-tool
 /usr/local/bin/gtk4-encode-symbolic-svg
 /usr/local/bin/gtk4-image-tool
@@ -7,6 +8,11 @@
 /usr/local/bin/gtk4-query-settings
 /usr/local/bin/gtk4-rendernode-tool
 /usr/local/bin/gtk4-update-icon-cache
+/usr/local/include/gtk-4.0/gdk/broadway/gdkbroadway.h
+/usr/local/include/gtk-4.0/gdk/broadway/gdkbroadwaycursor.h
+/usr/local/include/gtk-4.0/gdk/broadway/gdkbroadwaydisplay.h
+/usr/local/include/gtk-4.0/gdk/broadway/gdkbroadwaymonitor.h
+/usr/local/include/gtk-4.0/gdk/broadway/gdkbroadwaysurface.h
 /usr/local/include/gtk-4.0/gdk/deprecated/gdkpixbuf.h
 /usr/local/include/gtk-4.0/gdk/gdk.h
 /usr/local/include/gtk-4.0/gdk/gdkapplaunchcontext.h
@@ -91,6 +97,7 @@
 /usr/local/include/gtk-4.0/gdk/x11/gdkx11selection.h
 /usr/local/include/gtk-4.0/gdk/x11/gdkx11surface.h
 /usr/local/include/gtk-4.0/gdk/x11/gdkx11utils.h
+/usr/local/include/gtk-4.0/gsk/broadway/gskbroadwayrenderer.h
 /usr/local/include/gtk-4.0/gsk/gl/gskglrenderer.h
 /usr/local/include/gtk-4.0/gsk/gpu/gskglrenderer.h
 /usr/local/include/gtk-4.0/gsk/gpu/gskvulkanrenderer.h
@@ -411,6 +418,7 @@
 /usr/local/lib/libgtk-4.so.1
 /usr/local/lib/libgtk-4.so.1.1704.0
 /usr/local/lib/pkgconfig/gtk4-atspi.pc
+/usr/local/lib/pkgconfig/gtk4-broadway.pc
 /usr/local/lib/pkgconfig/gtk4-unix-print.pc
 /usr/local/lib/pkgconfig/gtk4-wayland.pc
 /usr/local/lib/pkgconfig/gtk4-x11.pc
