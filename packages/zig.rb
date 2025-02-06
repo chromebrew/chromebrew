@@ -7,10 +7,10 @@ class Zig < Package
   license 'MIT'
   compatibility 'all'
   source_url({
-    aarch64: 'https://ziglang.org/builds/zig-linux-armv7a-0.13.0.tar.xz',
-     armv7l: 'https://ziglang.org/builds/zig-linux-armv7a-0.13.0.tar.xz',
-       i686: 'https://ziglang.org/builds/zig-linux-x86-0.13.0.tar.xz',
-     x86_64: 'https://ziglang.org/builds/zig-linux-x86_64-0.13.0.tar.xz'
+    aarch64: "https://ziglang.org/download/#{version}/zig-linux-armv7a-#{version}.tar.xz",
+     armv7l: "https://ziglang.org/download/#{version}/zig-linux-armv7a-#{version}.tar.xz",
+       i686: "https://ziglang.org/download/#{version}/zig-linux-x86-#{version}.tar.xz",
+     x86_64: "https://ziglang.org/download/#{version}/zig-linux-x86_64-#{version}.tar.xz"
   })
   source_sha256({
     aarch64: '4b0550239c2cd884cc03ddeb2b9934708f4b073ad59a96fccbfe09f7e4f54233',
