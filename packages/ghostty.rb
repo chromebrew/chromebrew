@@ -13,6 +13,7 @@ class Ghostty < Package
   source_sha256 '51dd34e68d3eac61beff8e12db0068790678778b81208bb4d626fa59e9ff171a'
   binary_compression 'tar.zst'
 
+  depends_on 'bzip2' # R
   depends_on 'libadwaita' # R
   depends_on 'libx11' # R
   depends_on 'pandoc' => :build
