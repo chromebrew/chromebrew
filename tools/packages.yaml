@@ -7060,6 +7060,11 @@ url: https://metacpan.org/pod/URI
 activity: none
 ---
 kind: url
+name: perl_wakeonlan
+url: https://github.com/jpoliv/wakeonlan/releases
+activity: none
+---
+kind: url
 name: perl_xml_namespacesupport
 url: https://cpan.metacpan.org/authors/id/P/PE/PERIGRIN/
 activity: none
