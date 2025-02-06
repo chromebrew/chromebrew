@@ -16,6 +16,7 @@ class Ghostty < Package
   depends_on 'bzip2' # R
   depends_on 'libadwaita' # R
   depends_on 'libx11' # R
+  depwnds_on 'onigurama' => :build
   depends_on 'pandoc' => :build
   depends_on 'zig' => :build
 
@@ -26,6 +27,7 @@ class Ghostty < Package
     system "DESTDIR=build zig build \
       --summary all \
       -p #{CREW_PREFIX} \
+      --search-prefix #{CREW_LIB_PREFIX} \
       --system #{@zig_global_cache_dir}/p \
       -Doptimize=ReleaseFast \
       -Demit-docs \
