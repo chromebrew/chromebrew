@@ -2420,6 +2420,11 @@ url: https://ftp.gnu.org/gnu/ghostscript/
 activity: none
 ---
 kind: url
+name: ghostty
+url: https://github.com/ghostty-org/ghostty/tags
+activity: medium
+---
+kind: url
 name: giblib
 url: https://deb.debian.org/debian/pool/main/g/giblib/
 activity: none
