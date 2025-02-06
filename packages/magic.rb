@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Magic < Autotools
   description 'Magic is a venerable VLSI layout tool'
   homepage 'http://opencircuitdesign.com/magic/'
-  version '8.3.513'
+  version '8.3.517'
   license 'HPND-UC-export-US'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/RTimothyEdwards/magic.git'
@@ -11,9 +11,9 @@ class Magic < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1654ea716b488b5c01ac04c4ad96033b0d8449c09601c1271e05d24bb648d6d9',
-     armv7l: '1654ea716b488b5c01ac04c4ad96033b0d8449c09601c1271e05d24bb648d6d9',
-     x86_64: '063af0803d89568fef8d1d0b1749f9f73fe85ec600c937aa6a2c5e92ee4fbfa5'
+    aarch64: '6dd41c31cc3855ffd216f1fda31700dca201a536ec8788c52a851adfb7cb0655',
+     armv7l: '6dd41c31cc3855ffd216f1fda31700dca201a536ec8788c52a851adfb7cb0655',
+     x86_64: 'fdf7c8b642b10643fda9fe0f01f003fde0acfde5d9732acca905bbb896547e4f'
   })
 
   depends_on 'cairo' # R
@@ -26,6 +26,5 @@ class Magic < Autotools
   depends_on 'tk' # R
   depends_on 'zlib' # R
 
-  # https://github.com/RTimothyEdwards/magic/issues/323
-  configure_options "--with-tcl=#{CREW_LIB_PREFIX} --with-tk=#{CREW_LIB_PREFIX} CFLAGS='-fpermissive'"
+  configure_options "--with-tcl=#{CREW_LIB_PREFIX} --with-tk=#{CREW_LIB_PREFIX}"
 end
