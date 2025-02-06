@@ -14,8 +14,8 @@ class Py3_maturin < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bd9c40be21c44732d0a61b2b51b0c1c8b271cbfa1124d482657a7efc4b8dc78d',
-     armv7l: 'bd9c40be21c44732d0a61b2b51b0c1c8b271cbfa1124d482657a7efc4b8dc78d',
+    aarch64: 'ee3f99b0865596a1520d333c94e7a5ca9d7f74f82c439b7f1a78551b99d758aa',
+     armv7l: 'ee3f99b0865596a1520d333c94e7a5ca9d7f74f82c439b7f1a78551b99d758aa',
        i686: 'f7b2f5b2b3fd7450dd1067d52bcb6034d624f550b26fcb4c204742fc7e032d94',
      x86_64: 'bf23fc476f8650a51198c0655f3983c9d7072f16fbf0bff6cda6b9c133b2efa1'
   })

@@ -10,8 +10,8 @@ class Py3_extract_msg < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f210aaf9946fdb05dc39235a54571218f4182b3a2f080f2d79b2d7f802137bd2',
-     armv7l: 'f210aaf9946fdb05dc39235a54571218f4182b3a2f080f2d79b2d7f802137bd2',
+    aarch64: 'e861621994ce684bf759bd8b0f689ce7ede5d2c76a66042ca0e3a1ff1fbd0f0a',
+     armv7l: 'e861621994ce684bf759bd8b0f689ce7ede5d2c76a66042ca0e3a1ff1fbd0f0a',
        i686: '029d9ab5af067c4e516e0c0d6f4136c2b8d9e0a882ec6f23170bb9ec62f5412e',
      x86_64: 'c236ea48853f3aedf4e9e43c023580836a4c3b6be599f2b4e8dd833e9c999196'
   })
