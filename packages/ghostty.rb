@@ -8,7 +8,7 @@ class Ghostty < Package
   homepage 'https://ghostty.org'
   version '1.1.0'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://release.files.ghostty.org/#{version}/ghostty-source.tar.gz"
   source_sha256 '7fcb5fed08bd23d54be138af4f63a78cf5addddbe40322465b520cf14c46f181'
   binary_compression 'tar.zst'
