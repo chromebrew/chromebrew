@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Tre < Autotools
   description 'The approximate regex matching library and agrep command line tool.'
   homepage 'https://github.com/laurikari/tre'
-  version '07e66d0'
+  version '0.9.0'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/laurikari/tre.git'
-  git_hashtag '07e66d07b44ae95a7a89f79c7ce1090f0f4d64db'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
