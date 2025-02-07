@@ -3,7 +3,7 @@ require 'package'
 class Nginx < Package
   description 'nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.'
   homepage 'http://nginx.org/'
-  version '1.26.1'
+  version '1.26.3'
   license 'BSD-2, BSD, SSLeay, MIT, GPL-2 and GPL-2+'
   compatibility 'all'
   source_url "http://nginx.org/download/nginx-#{version}.tar.gz"
@@ -80,17 +80,7 @@ class Nginx < Package
   end
 
   def self.postremove
-    if Dir.exist? "#{CREW_PREFIX}/share/nginx"
-      puts "\nWARNING: This will remove all hosting files and configuration.".orange
-      print "Would you like to remove #{CREW_PREFIX}/share/nginx? [y/N] "
-      response = $stdin.gets.chomp.downcase
-      case response
-      when 'y', 'yes'
-        FileUtils.rm_rf "#{CREW_PREFIX}/share/nginx"
-        puts "#{CREW_PREFIX}/share/nginx removed.".lightgreen
-      else
-        puts "#{CREW_PREFIX}/share/nginx saved.".lightgreen
-      end
-    end
+    puts "\nWARNING: This will remove all hosting files and configuration.".orange
+    Package.agree_to_remove("#{CREW_PREFIX}/share/nginx")
   end
 end
