@@ -12,7 +12,7 @@ class Awscli < Pip
   binary_sha256({
     aarch64: '0e2a5dcd113a2259a3ffe24ec15faf8a0e0a54ac2decf5f18b179f6457d9a946',
      armv7l: '0e2a5dcd113a2259a3ffe24ec15faf8a0e0a54ac2decf5f18b179f6457d9a946',
-       i686: '079ea3eed6acd8e3aadc6d8b10d5da7661b91849fed55530e5eb4807bf582a04',
+       i686: 'bafcca532c17e638e8fa78d46064ad016c64201727f6ea341a0945215259aa4b',
      x86_64: '415cdb417dd7f19fd37cc8df9b4cfd67f3a6228ec17a3fafb65c9f302941c68d'
   })
 
