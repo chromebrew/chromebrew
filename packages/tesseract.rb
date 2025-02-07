@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Tesseract < CMake
   description 'A neural net (LSTM) based OCR engine which is focused on line recognition & an older OCR engine which recognizes character patterns.'
   homepage 'https://github.com/tesseract-ocr/tesseract'
-  version "5.4.1-#{CREW_ICU_VER}"
+  version "5.5.0-#{CREW_ICU_VER}"
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/tesseract-ocr/tesseract.git'
@@ -11,9 +11,9 @@ class Tesseract < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8594813df34ba63b51026dd0b4c5b0322d03edbbbb23759164f093d44e7a0aca',
-     armv7l: '8594813df34ba63b51026dd0b4c5b0322d03edbbbb23759164f093d44e7a0aca',
-     x86_64: '0e11215ea37e12710713a2f1c6967485ebdb09ca771f84287cce7a4030cd7d9b'
+    aarch64: '3451a2ffb25fc4622b9633ded5c3670951eb4e18195670624396c5c54150ee59',
+     armv7l: '3451a2ffb25fc4622b9633ded5c3670951eb4e18195670624396c5c54150ee59',
+     x86_64: 'c914da9da5ba9325c96e875e7e5a0df00b8c6d5fca5bc87589cf2e73df3a26ee'
   })
 
   depends_on 'acl' => :build
@@ -62,10 +62,8 @@ class Tesseract < CMake
 
   git_fetchtags
 
-  cmake_options "-DBUILD_SHARED_LIBS=ON \
-        -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
+  cmake_options '-DBUILD_SHARED_LIBS=ON \
         -DENABLE_LTO=ON \
-        -DENABLE_NATIVE=ON \
         -DOPENMP_BUILD=ON \
-        -DUSE_SYSTEM_ICU=ON"
+        -DUSE_SYSTEM_ICU=ON'
 end
