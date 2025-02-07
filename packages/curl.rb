@@ -11,8 +11,8 @@ class Curl < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8647e8fb9fffb438d432e23aad432f7138658b6f150a5446c83c24e6bee816a1',
-     armv7l: '8647e8fb9fffb438d432e23aad432f7138658b6f150a5446c83c24e6bee816a1',
+    aarch64: 'a2efe09834e9ad3bf04b47f2817f92b1ef5fce6c92af700b77ade324f8ce448b',
+     armv7l: 'a2efe09834e9ad3bf04b47f2817f92b1ef5fce6c92af700b77ade324f8ce448b',
        i686: 'ce575910204e257231d6e045d0e5633cf90bd00b34c575d2a0576c628234c956',
      x86_64: '2ac3615eec384ef6981ba103e337c033a28a95d6ade77c1fd6377fbe4bbc7341'
   })
@@ -30,7 +30,6 @@ class Curl < Autotools
   depends_on 'openldap' # R
   depends_on 'openssl' # R
   depends_on 'python3' => :build
-  depends_on 'rust' => :build
   depends_on 'valgrind' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
