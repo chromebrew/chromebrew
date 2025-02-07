@@ -13,11 +13,14 @@ class Nginx < Package
   binary_sha256({
     aarch64: '3c40c8a04016b5eb44d9705333d67a3858e3bdc7e3d508f56cba3b0d3d8e4ab1',
      armv7l: '3c40c8a04016b5eb44d9705333d67a3858e3bdc7e3d508f56cba3b0d3d8e4ab1',
-       i686: 'f744ec2bbeafdb4e9edeacb0a56049dd3068eb1d645865eb92b0656caecac7de',
+       i686: 'bc62cbfc1bd1dd9bd19506ac1935c130a1332c072052e07ec864c537e17261f4',
      x86_64: 'e6261bb676d12132f66514569797d2c02d9cfa1ef2020bffcb6c5349dfcf4b0b'
   })
 
   depends_on 'pcre'
+  depends_on 'glibc' # R
+  depends_on 'pcre2' # R
+  depends_on 'zlib' # R
 
   print_source_bashrc
 
