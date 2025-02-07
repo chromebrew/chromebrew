@@ -14,7 +14,7 @@ class Nginx < Package
     aarch64: '3c40c8a04016b5eb44d9705333d67a3858e3bdc7e3d508f56cba3b0d3d8e4ab1',
      armv7l: '3c40c8a04016b5eb44d9705333d67a3858e3bdc7e3d508f56cba3b0d3d8e4ab1',
        i686: 'bc62cbfc1bd1dd9bd19506ac1935c130a1332c072052e07ec864c537e17261f4',
-     x86_64: 'e6261bb676d12132f66514569797d2c02d9cfa1ef2020bffcb6c5349dfcf4b0b'
+     x86_64: 'b8c77ef02eeabb500226160755c2f9d165e6d7d74aedb7de2e10d45761cf9ac8'
   })
 
   depends_on 'pcre'
