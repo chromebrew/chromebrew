@@ -16,7 +16,8 @@ class Adwaita_fonts < Meson
   binary_sha256({
     aarch64: '160717021efacb26bc3081b8bea9340f3d60cafa0177d5bbe3885c08b2510229',
      armv7l: '160717021efacb26bc3081b8bea9340f3d60cafa0177d5bbe3885c08b2510229',
-       i686: 'e6bb45b765227feb876cd9d7ab32618e5b900da3d06b4c0820aa06f7ceea164e'
+       i686: 'e6bb45b765227feb876cd9d7ab32618e5b900da3d06b4c0820aa06f7ceea164e',
+     x86_64: '777bebbea612e54df97b1d2f055a8f10dfb6189867658163895b6f214e1dd92e'
   })
 
   gnome

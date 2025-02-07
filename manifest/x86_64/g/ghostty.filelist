@@ -1,0 +1,431 @@
+/usr/local/bin/ghostty
+/usr/local/share/applications/com.mitchellh.ghostty.desktop
+/usr/local/share/bash-completion/completions/ghostty.bash
+/usr/local/share/bat/syntaxes/ghostty.sublime-syntax
+/usr/local/share/fish/vendor_completions.d/ghostty.fish
+/usr/local/share/ghostty/doc/ghostty.1.html
+/usr/local/share/ghostty/doc/ghostty.1.md
+/usr/local/share/ghostty/doc/ghostty.5.html
+/usr/local/share/ghostty/doc/ghostty.5.md
+/usr/local/share/ghostty/shell-integration/bash/bash-preexec.sh
+/usr/local/share/ghostty/shell-integration/bash/ghostty.bash
+/usr/local/share/ghostty/shell-integration/elvish/lib/ghostty-integration.elv
+/usr/local/share/ghostty/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish
+/usr/local/share/ghostty/shell-integration/zsh/.zshenv
+/usr/local/share/ghostty/shell-integration/zsh/ghostty-integration
+/usr/local/share/ghostty/themes/0x96f
+/usr/local/share/ghostty/themes/3024 Day
+/usr/local/share/ghostty/themes/3024 Night
+/usr/local/share/ghostty/themes/Aardvark Blue
+/usr/local/share/ghostty/themes/Abernathy
+/usr/local/share/ghostty/themes/Adventure
+/usr/local/share/ghostty/themes/AdventureTime
+/usr/local/share/ghostty/themes/Adwaita
+/usr/local/share/ghostty/themes/Adwaita Dark
+/usr/local/share/ghostty/themes/Afterglow
+/usr/local/share/ghostty/themes/Alabaster
+/usr/local/share/ghostty/themes/AlienBlood
+/usr/local/share/ghostty/themes/Andromeda
+/usr/local/share/ghostty/themes/Apple Classic
+/usr/local/share/ghostty/themes/Apple System Colors
+/usr/local/share/ghostty/themes/Apple System Colors Light
+/usr/local/share/ghostty/themes/Argonaut
+/usr/local/share/ghostty/themes/Arthur
+/usr/local/share/ghostty/themes/AtelierSulphurpool
+/usr/local/share/ghostty/themes/Atom
+/usr/local/share/ghostty/themes/AtomOneLight
+/usr/local/share/ghostty/themes/Aura
+/usr/local/share/ghostty/themes/Aurora
+/usr/local/share/ghostty/themes/Ayu Mirage
+/usr/local/share/ghostty/themes/Banana Blueberry
+/usr/local/share/ghostty/themes/Batman
+/usr/local/share/ghostty/themes/Belafonte Day
+/usr/local/share/ghostty/themes/Belafonte Night
+/usr/local/share/ghostty/themes/BirdsOfParadise
+/usr/local/share/ghostty/themes/Blazer
+/usr/local/share/ghostty/themes/Blue Matrix
+/usr/local/share/ghostty/themes/BlueBerryPie
+/usr/local/share/ghostty/themes/BlueDolphin
+/usr/local/share/ghostty/themes/BlulocoDark
+/usr/local/share/ghostty/themes/BlulocoLight
+/usr/local/share/ghostty/themes/Borland
+/usr/local/share/ghostty/themes/Breeze
+/usr/local/share/ghostty/themes/Bright Lights
+/usr/local/share/ghostty/themes/Broadcast
+/usr/local/share/ghostty/themes/Brogrammer
+/usr/local/share/ghostty/themes/Builtin Dark
+/usr/local/share/ghostty/themes/Builtin Light
+/usr/local/share/ghostty/themes/Builtin Pastel Dark
+/usr/local/share/ghostty/themes/Builtin Solarized Dark
+/usr/local/share/ghostty/themes/Builtin Solarized Light
+/usr/local/share/ghostty/themes/Builtin Tango Dark
+/usr/local/share/ghostty/themes/Builtin Tango Light
+/usr/local/share/ghostty/themes/C64
+/usr/local/share/ghostty/themes/CGA
+/usr/local/share/ghostty/themes/CLRS
+/usr/local/share/ghostty/themes/Calamity
+/usr/local/share/ghostty/themes/Chalk
+/usr/local/share/ghostty/themes/Chalkboard
+/usr/local/share/ghostty/themes/ChallengerDeep
+/usr/local/share/ghostty/themes/Chester
+/usr/local/share/ghostty/themes/Ciapre
+/usr/local/share/ghostty/themes/Cobalt Neon
+/usr/local/share/ghostty/themes/Cobalt2
+/usr/local/share/ghostty/themes/CobaltNext
+/usr/local/share/ghostty/themes/CobaltNext-Dark
+/usr/local/share/ghostty/themes/CobaltNext-Minimal
+/usr/local/share/ghostty/themes/CrayonPonyFish
+/usr/local/share/ghostty/themes/CutiePro
+/usr/local/share/ghostty/themes/Cyberdyne
+/usr/local/share/ghostty/themes/CyberpunkScarletProtocol
+/usr/local/share/ghostty/themes/Dark Modern
+/usr/local/share/ghostty/themes/Dark Pastel
+/usr/local/share/ghostty/themes/Dark+
+/usr/local/share/ghostty/themes/Darkside
+/usr/local/share/ghostty/themes/Desert
+/usr/local/share/ghostty/themes/Dimidium
+/usr/local/share/ghostty/themes/DimmedMonokai
+/usr/local/share/ghostty/themes/Django
+/usr/local/share/ghostty/themes/DjangoRebornAgain
+/usr/local/share/ghostty/themes/DjangoSmooth
+/usr/local/share/ghostty/themes/Doom Peacock
+/usr/local/share/ghostty/themes/DoomOne
+/usr/local/share/ghostty/themes/DotGov
+/usr/local/share/ghostty/themes/Dracula
+/usr/local/share/ghostty/themes/Dracula+
+/usr/local/share/ghostty/themes/Duotone Dark
+/usr/local/share/ghostty/themes/ENCOM
+/usr/local/share/ghostty/themes/Earthsong
+/usr/local/share/ghostty/themes/Elemental
+/usr/local/share/ghostty/themes/Elementary
+/usr/local/share/ghostty/themes/Espresso
+/usr/local/share/ghostty/themes/Espresso Libre
+/usr/local/share/ghostty/themes/Everblush
+/usr/local/share/ghostty/themes/Everforest Dark - Hard
+/usr/local/share/ghostty/themes/Fahrenheit
+/usr/local/share/ghostty/themes/Fairyfloss
+/usr/local/share/ghostty/themes/Fideloper
+/usr/local/share/ghostty/themes/Firefly Traditional
+/usr/local/share/ghostty/themes/FirefoxDev
+/usr/local/share/ghostty/themes/Firewatch
+/usr/local/share/ghostty/themes/FishTank
+/usr/local/share/ghostty/themes/Flat
+/usr/local/share/ghostty/themes/Flatland
+/usr/local/share/ghostty/themes/Floraverse
+/usr/local/share/ghostty/themes/ForestBlue
+/usr/local/share/ghostty/themes/Framer
+/usr/local/share/ghostty/themes/FrontEndDelight
+/usr/local/share/ghostty/themes/FunForrest
+/usr/local/share/ghostty/themes/Galaxy
+/usr/local/share/ghostty/themes/Galizur
+/usr/local/share/ghostty/themes/GitHub Dark
+/usr/local/share/ghostty/themes/GitHub-Dark-Colorblind
+/usr/local/share/ghostty/themes/GitHub-Dark-Default
+/usr/local/share/ghostty/themes/GitHub-Dark-Dimmed
+/usr/local/share/ghostty/themes/GitHub-Dark-High-Contrast
+/usr/local/share/ghostty/themes/GitHub-Light-Colorblind
+/usr/local/share/ghostty/themes/GitHub-Light-Default
+/usr/local/share/ghostty/themes/GitHub-Light-High-Contrast
+/usr/local/share/ghostty/themes/GitLab-Dark
+/usr/local/share/ghostty/themes/GitLab-Dark-Grey
+/usr/local/share/ghostty/themes/GitLab-Light
+/usr/local/share/ghostty/themes/Github
+/usr/local/share/ghostty/themes/Glacier
+/usr/local/share/ghostty/themes/Grape
+/usr/local/share/ghostty/themes/Grass
+/usr/local/share/ghostty/themes/Grey-green
+/usr/local/share/ghostty/themes/GruvboxDark
+/usr/local/share/ghostty/themes/GruvboxDarkHard
+/usr/local/share/ghostty/themes/GruvboxLight
+/usr/local/share/ghostty/themes/GruvboxLightHard
+/usr/local/share/ghostty/themes/Guezwhoz
+/usr/local/share/ghostty/themes/HaX0R_BLUE
+/usr/local/share/ghostty/themes/HaX0R_GR33N
+/usr/local/share/ghostty/themes/HaX0R_R3D
+/usr/local/share/ghostty/themes/Hacktober
+/usr/local/share/ghostty/themes/Hardcore
+/usr/local/share/ghostty/themes/Harper
+/usr/local/share/ghostty/themes/Havn Daggry
+/usr/local/share/ghostty/themes/Havn Skumring
+/usr/local/share/ghostty/themes/Highway
+/usr/local/share/ghostty/themes/Hipster Green
+/usr/local/share/ghostty/themes/Hivacruz
+/usr/local/share/ghostty/themes/Homebrew
+/usr/local/share/ghostty/themes/Hopscotch
+/usr/local/share/ghostty/themes/Hopscotch.256
+/usr/local/share/ghostty/themes/Horizon
+/usr/local/share/ghostty/themes/Horizon-Bright
+/usr/local/share/ghostty/themes/Hurtado
+/usr/local/share/ghostty/themes/Hybrid
+/usr/local/share/ghostty/themes/IC_Green_PPL
+/usr/local/share/ghostty/themes/IC_Orange_PPL
+/usr/local/share/ghostty/themes/IR_Black
+/usr/local/share/ghostty/themes/Jackie Brown
+/usr/local/share/ghostty/themes/Japanesque
+/usr/local/share/ghostty/themes/Jellybeans
+/usr/local/share/ghostty/themes/JetBrains Darcula
+/usr/local/share/ghostty/themes/Kanagawa Dragon
+/usr/local/share/ghostty/themes/Kanagawa Wave
+/usr/local/share/ghostty/themes/Kibble
+/usr/local/share/ghostty/themes/Kolorit
+/usr/local/share/ghostty/themes/Konsolas
+/usr/local/share/ghostty/themes/Lab Fox
+/usr/local/share/ghostty/themes/Laser
+/usr/local/share/ghostty/themes/Later This Evening
+/usr/local/share/ghostty/themes/Lavandula
+/usr/local/share/ghostty/themes/LiquidCarbon
+/usr/local/share/ghostty/themes/LiquidCarbonTransparent
+/usr/local/share/ghostty/themes/LiquidCarbonTransparentInverse
+/usr/local/share/ghostty/themes/Man Page
+/usr/local/share/ghostty/themes/Mariana
+/usr/local/share/ghostty/themes/Material
+/usr/local/share/ghostty/themes/MaterialDark
+/usr/local/share/ghostty/themes/MaterialDarker
+/usr/local/share/ghostty/themes/MaterialDesignColors
+/usr/local/share/ghostty/themes/MaterialOcean
+/usr/local/share/ghostty/themes/Mathias
+/usr/local/share/ghostty/themes/Medallion
+/usr/local/share/ghostty/themes/Melange_dark
+/usr/local/share/ghostty/themes/Melange_light
+/usr/local/share/ghostty/themes/Mellifluous
+/usr/local/share/ghostty/themes/Mirage
+/usr/local/share/ghostty/themes/Misterioso
+/usr/local/share/ghostty/themes/Molokai
+/usr/local/share/ghostty/themes/MonaLisa
+/usr/local/share/ghostty/themes/Monokai Classic
+/usr/local/share/ghostty/themes/Monokai Pro
+/usr/local/share/ghostty/themes/Monokai Pro Light
+/usr/local/share/ghostty/themes/Monokai Pro Light Sun
+/usr/local/share/ghostty/themes/Monokai Pro Machine
+/usr/local/share/ghostty/themes/Monokai Pro Octagon
+/usr/local/share/ghostty/themes/Monokai Pro Ristretto
+/usr/local/share/ghostty/themes/Monokai Pro Spectrum
+/usr/local/share/ghostty/themes/Monokai Remastered
+/usr/local/share/ghostty/themes/Monokai Soda
+/usr/local/share/ghostty/themes/Monokai Vivid
+/usr/local/share/ghostty/themes/N0tch2k
+/usr/local/share/ghostty/themes/Neon
+/usr/local/share/ghostty/themes/Neopolitan
+/usr/local/share/ghostty/themes/Neutron
+/usr/local/share/ghostty/themes/Night Owlish Light
+/usr/local/share/ghostty/themes/NightLion v1
+/usr/local/share/ghostty/themes/NightLion v2
+/usr/local/share/ghostty/themes/Nocturnal Winter
+/usr/local/share/ghostty/themes/Novel
+/usr/local/share/ghostty/themes/NvimDark
+/usr/local/share/ghostty/themes/NvimLight
+/usr/local/share/ghostty/themes/Obsidian
+/usr/local/share/ghostty/themes/Ocean
+/usr/local/share/ghostty/themes/Oceanic-Next
+/usr/local/share/ghostty/themes/OceanicMaterial
+/usr/local/share/ghostty/themes/Ollie
+/usr/local/share/ghostty/themes/OneHalfDark
+/usr/local/share/ghostty/themes/OneHalfLight
+/usr/local/share/ghostty/themes/Operator Mono Dark
+/usr/local/share/ghostty/themes/Overnight Slumber
+/usr/local/share/ghostty/themes/Oxocarbon
+/usr/local/share/ghostty/themes/PaleNightHC
+/usr/local/share/ghostty/themes/Pandora
+/usr/local/share/ghostty/themes/Paraiso Dark
+/usr/local/share/ghostty/themes/PaulMillr
+/usr/local/share/ghostty/themes/PencilDark
+/usr/local/share/ghostty/themes/PencilLight
+/usr/local/share/ghostty/themes/Peppermint
+/usr/local/share/ghostty/themes/Piatto Light
+/usr/local/share/ghostty/themes/Pnevma
+/usr/local/share/ghostty/themes/Popping and Locking
+/usr/local/share/ghostty/themes/Pro
+/usr/local/share/ghostty/themes/Pro Light
+/usr/local/share/ghostty/themes/Purple Rain
+/usr/local/share/ghostty/themes/Rapture
+/usr/local/share/ghostty/themes/Raycast_Dark
+/usr/local/share/ghostty/themes/Raycast_Light
+/usr/local/share/ghostty/themes/Red Alert
+/usr/local/share/ghostty/themes/Red Planet
+/usr/local/share/ghostty/themes/Red Sands
+/usr/local/share/ghostty/themes/Relaxed
+/usr/local/share/ghostty/themes/Retro
+/usr/local/share/ghostty/themes/RetroLegends
+/usr/local/share/ghostty/themes/Rippedcasts
+/usr/local/share/ghostty/themes/Rouge 2
+/usr/local/share/ghostty/themes/Royal
+/usr/local/share/ghostty/themes/Ryuuko
+/usr/local/share/ghostty/themes/Sakura
+/usr/local/share/ghostty/themes/Scarlet Protocol
+/usr/local/share/ghostty/themes/SeaShells
+/usr/local/share/ghostty/themes/Seafoam Pastel
+/usr/local/share/ghostty/themes/Seti
+/usr/local/share/ghostty/themes/Shaman
+/usr/local/share/ghostty/themes/Slate
+/usr/local/share/ghostty/themes/SleepyHollow
+/usr/local/share/ghostty/themes/Smyck
+/usr/local/share/ghostty/themes/Snazzy
+/usr/local/share/ghostty/themes/Snazzy Soft
+/usr/local/share/ghostty/themes/SoftServer
+/usr/local/share/ghostty/themes/Solarized Darcula
+/usr/local/share/ghostty/themes/Solarized Dark - Patched
+/usr/local/share/ghostty/themes/Solarized Dark Higher Contrast
+/usr/local/share/ghostty/themes/SpaceGray
+/usr/local/share/ghostty/themes/SpaceGray Bright
+/usr/local/share/ghostty/themes/SpaceGray Eighties
+/usr/local/share/ghostty/themes/SpaceGray Eighties Dull
+/usr/local/share/ghostty/themes/Spacedust
+/usr/local/share/ghostty/themes/Spiderman
+/usr/local/share/ghostty/themes/Spring
+/usr/local/share/ghostty/themes/Square
+/usr/local/share/ghostty/themes/Squirrelsong Dark
+/usr/local/share/ghostty/themes/Sublette
+/usr/local/share/ghostty/themes/Subliminal
+/usr/local/share/ghostty/themes/Sugarplum
+/usr/local/share/ghostty/themes/Sundried
+/usr/local/share/ghostty/themes/Symfonic
+/usr/local/share/ghostty/themes/SynthwaveAlpha
+/usr/local/share/ghostty/themes/Tango Adapted
+/usr/local/share/ghostty/themes/Tango Half Adapted
+/usr/local/share/ghostty/themes/Teerb
+/usr/local/share/ghostty/themes/Terminal Basic
+/usr/local/share/ghostty/themes/Thayer Bright
+/usr/local/share/ghostty/themes/The Hulk
+/usr/local/share/ghostty/themes/Tinacious Design (Dark)
+/usr/local/share/ghostty/themes/Tinacious Design (Light)
+/usr/local/share/ghostty/themes/Tomorrow
+/usr/local/share/ghostty/themes/Tomorrow Night
+/usr/local/share/ghostty/themes/Tomorrow Night Blue
+/usr/local/share/ghostty/themes/Tomorrow Night Bright
+/usr/local/share/ghostty/themes/Tomorrow Night Burns
+/usr/local/share/ghostty/themes/Tomorrow Night Eighties
+/usr/local/share/ghostty/themes/ToyChest
+/usr/local/share/ghostty/themes/Treehouse
+/usr/local/share/ghostty/themes/Twilight
+/usr/local/share/ghostty/themes/Ubuntu
+/usr/local/share/ghostty/themes/UltraDark
+/usr/local/share/ghostty/themes/UltraViolent
+/usr/local/share/ghostty/themes/UnderTheSea
+/usr/local/share/ghostty/themes/Unikitty
+/usr/local/share/ghostty/themes/Urple
+/usr/local/share/ghostty/themes/Vaughn
+/usr/local/share/ghostty/themes/VibrantInk
+/usr/local/share/ghostty/themes/Violet Dark
+/usr/local/share/ghostty/themes/Violet Light
+/usr/local/share/ghostty/themes/WarmNeon
+/usr/local/share/ghostty/themes/Wez
+/usr/local/share/ghostty/themes/Whimsy
+/usr/local/share/ghostty/themes/WildCherry
+/usr/local/share/ghostty/themes/Wombat
+/usr/local/share/ghostty/themes/Wryan
+/usr/local/share/ghostty/themes/Zenburn
+/usr/local/share/ghostty/themes/arcoiris
+/usr/local/share/ghostty/themes/ayu
+/usr/local/share/ghostty/themes/ayu_light
+/usr/local/share/ghostty/themes/carbonfox
+/usr/local/share/ghostty/themes/catppuccin-frappe
+/usr/local/share/ghostty/themes/catppuccin-latte
+/usr/local/share/ghostty/themes/catppuccin-macchiato
+/usr/local/share/ghostty/themes/catppuccin-mocha
+/usr/local/share/ghostty/themes/citruszest
+/usr/local/share/ghostty/themes/coffee_theme
+/usr/local/share/ghostty/themes/cyberpunk
+/usr/local/share/ghostty/themes/darkermatrix
+/usr/local/share/ghostty/themes/darkmatrix
+/usr/local/share/ghostty/themes/dawnfox
+/usr/local/share/ghostty/themes/dayfox
+/usr/local/share/ghostty/themes/deep
+/usr/local/share/ghostty/themes/detuned
+/usr/local/share/ghostty/themes/duckbones
+/usr/local/share/ghostty/themes/duskfox
+/usr/local/share/ghostty/themes/electron-highlighter
+/usr/local/share/ghostty/themes/embers-dark
+/usr/local/share/ghostty/themes/farmhouse-dark
+/usr/local/share/ghostty/themes/farmhouse-light
+/usr/local/share/ghostty/themes/flexoki-dark
+/usr/local/share/ghostty/themes/flexoki-light
+/usr/local/share/ghostty/themes/gruber-darker
+/usr/local/share/ghostty/themes/gruvbox-material
+/usr/local/share/ghostty/themes/heeler
+/usr/local/share/ghostty/themes/iTerm2 Dark Background
+/usr/local/share/ghostty/themes/iTerm2 Default
+/usr/local/share/ghostty/themes/iTerm2 Light Background
+/usr/local/share/ghostty/themes/iTerm2 Pastel Dark Background
+/usr/local/share/ghostty/themes/iTerm2 Smoooooth
+/usr/local/share/ghostty/themes/iTerm2 Solarized Dark
+/usr/local/share/ghostty/themes/iTerm2 Solarized Light
+/usr/local/share/ghostty/themes/iTerm2 Tango Dark
+/usr/local/share/ghostty/themes/iTerm2 Tango Light
+/usr/local/share/ghostty/themes/iceberg-dark
+/usr/local/share/ghostty/themes/iceberg-light
+/usr/local/share/ghostty/themes/idea
+/usr/local/share/ghostty/themes/idleToes
+/usr/local/share/ghostty/themes/jubi
+/usr/local/share/ghostty/themes/kanagawabones
+/usr/local/share/ghostty/themes/kurokula
+/usr/local/share/ghostty/themes/lovelace
+/usr/local/share/ghostty/themes/matrix
+/usr/local/share/ghostty/themes/mellow
+/usr/local/share/ghostty/themes/miasma
+/usr/local/share/ghostty/themes/midnight-in-mojave
+/usr/local/share/ghostty/themes/neobones_dark
+/usr/local/share/ghostty/themes/neobones_light
+/usr/local/share/ghostty/themes/nightfox
+/usr/local/share/ghostty/themes/niji
+/usr/local/share/ghostty/themes/nord
+/usr/local/share/ghostty/themes/nord-light
+/usr/local/share/ghostty/themes/nord-wave
+/usr/local/share/ghostty/themes/nordfox
+/usr/local/share/ghostty/themes/primary
+/usr/local/share/ghostty/themes/purplepeter
+/usr/local/share/ghostty/themes/rebecca
+/usr/local/share/ghostty/themes/rose-pine
+/usr/local/share/ghostty/themes/rose-pine-dawn
+/usr/local/share/ghostty/themes/rose-pine-moon
+/usr/local/share/ghostty/themes/seoulbones_dark
+/usr/local/share/ghostty/themes/seoulbones_light
+/usr/local/share/ghostty/themes/shades-of-purple
+/usr/local/share/ghostty/themes/srcery
+/usr/local/share/ghostty/themes/starlight
+/usr/local/share/ghostty/themes/synthwave
+/usr/local/share/ghostty/themes/synthwave-everything
+/usr/local/share/ghostty/themes/terafox
+/usr/local/share/ghostty/themes/tokyonight
+/usr/local/share/ghostty/themes/tokyonight-day
+/usr/local/share/ghostty/themes/tokyonight-storm
+/usr/local/share/ghostty/themes/tokyonight_moon
+/usr/local/share/ghostty/themes/tokyonight_night
+/usr/local/share/ghostty/themes/vesper
+/usr/local/share/ghostty/themes/vimbones
+/usr/local/share/ghostty/themes/wilmersdorf
+/usr/local/share/ghostty/themes/xcodedark
+/usr/local/share/ghostty/themes/xcodedarkhc
+/usr/local/share/ghostty/themes/xcodelight
+/usr/local/share/ghostty/themes/xcodelighthc
+/usr/local/share/ghostty/themes/xcodewwdc
+/usr/local/share/ghostty/themes/zenbones
+/usr/local/share/ghostty/themes/zenbones_dark
+/usr/local/share/ghostty/themes/zenbones_light
+/usr/local/share/ghostty/themes/zenburned
+/usr/local/share/ghostty/themes/zenwritten_dark
+/usr/local/share/ghostty/themes/zenwritten_light
+/usr/local/share/icons/hicolor/1024x1024/apps/com.mitchellh.ghostty.png
+/usr/local/share/icons/hicolor/128x128/apps/com.mitchellh.ghostty.png
+/usr/local/share/icons/hicolor/128x128@2/apps/com.mitchellh.ghostty.png
+/usr/local/share/icons/hicolor/16x16/apps/com.mitchellh.ghostty.png
+/usr/local/share/icons/hicolor/16x16@2/apps/com.mitchellh.ghostty.png
+/usr/local/share/icons/hicolor/256x256/apps/com.mitchellh.ghostty.png
+/usr/local/share/icons/hicolor/256x256@2/apps/com.mitchellh.ghostty.png
+/usr/local/share/icons/hicolor/32x32/apps/com.mitchellh.ghostty.png
+/usr/local/share/icons/hicolor/32x32@2/apps/com.mitchellh.ghostty.png
+/usr/local/share/icons/hicolor/512x512/apps/com.mitchellh.ghostty.png
+/usr/local/share/kio/servicemenus/com.mitchellh.ghostty.desktop
+/usr/local/share/man/man1/ghostty.1.zst
+/usr/local/share/man/man5/ghostty.5.zst
+/usr/local/share/nautilus-python/extensions/com.mitchellh.ghostty.py
+/usr/local/share/nvim/site/compiler/ghostty.vim
+/usr/local/share/nvim/site/ftdetect/ghostty.vim
+/usr/local/share/nvim/site/ftplugin/ghostty.vim
+/usr/local/share/nvim/site/syntax/ghostty.vim
+/usr/local/share/terminfo/g/ghostty
+/usr/local/share/terminfo/x/xterm-ghostty
+/usr/local/share/vim/vimfiles/compiler/ghostty.vim
+/usr/local/share/vim/vimfiles/ftdetect/ghostty.vim
+/usr/local/share/vim/vimfiles/ftplugin/ghostty.vim
+/usr/local/share/vim/vimfiles/syntax/ghostty.vim
+/usr/local/share/zsh/site-functions/_ghostty
