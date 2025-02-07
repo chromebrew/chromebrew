@@ -3,7 +3,7 @@ require 'package'
 class Nginx < Package
   description 'nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.'
   homepage 'http://nginx.org/'
-  version '1.26.1'
+  version '1.26.3'
   license 'BSD-2, BSD, SSLeay, MIT, GPL-2 and GPL-2+'
   compatibility 'all'
   source_url "http://nginx.org/download/nginx-#{version}.tar.gz"
@@ -11,13 +11,16 @@ class Nginx < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3c40c8a04016b5eb44d9705333d67a3858e3bdc7e3d508f56cba3b0d3d8e4ab1',
-     armv7l: '3c40c8a04016b5eb44d9705333d67a3858e3bdc7e3d508f56cba3b0d3d8e4ab1',
-       i686: 'f744ec2bbeafdb4e9edeacb0a56049dd3068eb1d645865eb92b0656caecac7de',
-     x86_64: 'e6261bb676d12132f66514569797d2c02d9cfa1ef2020bffcb6c5349dfcf4b0b'
+    aarch64: '93030fc62703df474505ee6d7ed6805d374021ad4cb957583960f596cf6b7c64',
+     armv7l: '93030fc62703df474505ee6d7ed6805d374021ad4cb957583960f596cf6b7c64',
+       i686: 'bc62cbfc1bd1dd9bd19506ac1935c130a1332c072052e07ec864c537e17261f4',
+     x86_64: 'b8c77ef02eeabb500226160755c2f9d165e6d7d74aedb7de2e10d45761cf9ac8'
   })
 
   depends_on 'pcre'
+  depends_on 'glibc' # R
+  depends_on 'pcre2' # R
+  depends_on 'zlib' # R
 
   print_source_bashrc
 
@@ -80,17 +83,7 @@ class Nginx < Package
   end
 
   def self.postremove
-    if Dir.exist? "#{CREW_PREFIX}/share/nginx"
-      puts "\nWARNING: This will remove all hosting files and configuration.".orange
-      print "Would you like to remove #{CREW_PREFIX}/share/nginx? [y/N] "
-      response = $stdin.gets.chomp.downcase
-      case response
-      when 'y', 'yes'
-        FileUtils.rm_rf "#{CREW_PREFIX}/share/nginx"
-        puts "#{CREW_PREFIX}/share/nginx removed.".lightgreen
-      else
-        puts "#{CREW_PREFIX}/share/nginx saved.".lightgreen
-      end
-    end
+    puts "\nWARNING: This will remove all hosting files and configuration.".orange
+    Package.agree_to_remove("#{CREW_PREFIX}/share/nginx")
   end
 end
