@@ -11,8 +11,8 @@ class Codelite < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3ce2928e3a9d72d9a46c90260a6d5b4396913dcdb02a7c8342acebeb5db5c9e0',
-     armv7l: '3ce2928e3a9d72d9a46c90260a6d5b4396913dcdb02a7c8342acebeb5db5c9e0',
+    aarch64: '9cf8797135276f7d0e84d39c53dc5bdcf602f73023382e42e6c3f81389507389',
+     armv7l: '9cf8797135276f7d0e84d39c53dc5bdcf602f73023382e42e6c3f81389507389',
      x86_64: '447f8d99e7e5875c3bd17c38a21e184b2b976f80fd9c903d128eb5123513b54f'
   })
 
