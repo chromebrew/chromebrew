@@ -6,5 +6,6 @@
 /usr/local/include/a52dec/mm_accel.h
 /usr/local/lib/liba52.a
 /usr/local/lib/liba52.la
+/usr/local/lib/pkgconfig/liba52.pc
 /usr/local/share/man/man1/a52dec.1.zst
 /usr/local/share/man/man1/extract_a52.1.zst
