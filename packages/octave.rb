@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Octave < Autotools
   description 'Scientific Programming Language'
   homepage 'https://octave.org/'
-  version '9.3.0'
+  version '9.4.0'
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://ftpmirror.gnu.org/octave/octave-#{version}.tar.lz"
@@ -36,4 +36,6 @@ class Octave < Autotools
   depends_on 'readline' # R
   depends_on 'zlib' # R
   depends_on 'openblas' # R
+
+  run_tests
 end
