@@ -13,7 +13,7 @@ class Octave < Autotools
   binary_sha256({
     aarch64: '1f1f064e4687c6e763d459aa413aa1af7d9dae1b40a900d68bee6d2279c080bc',
      armv7l: '1f1f064e4687c6e763d459aa413aa1af7d9dae1b40a900d68bee6d2279c080bc',
-     x86_64: 'a8563280d303c5f643f89af2c919f484208b537d0ea42fd7260bfe742db0c655'
+     x86_64: '393c3e8cf5f81936be330275e7d4439fbd2da85bca44b3a69ec407a8273d106a'
   })
 
   depends_on 'bzip2' # R
@@ -35,6 +35,8 @@ class Octave < Autotools
   depends_on 'pcre2' # R
   depends_on 'readline' # R
   depends_on 'zlib' # R
+  depends_on 'openblas' # R
+  depends_on 'libsndfile' # R
   depends_on 'openblas' # R
 
   run_tests
