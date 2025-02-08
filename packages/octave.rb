@@ -11,8 +11,8 @@ class Octave < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1f1f064e4687c6e763d459aa413aa1af7d9dae1b40a900d68bee6d2279c080bc',
-     armv7l: '1f1f064e4687c6e763d459aa413aa1af7d9dae1b40a900d68bee6d2279c080bc',
+    aarch64: 'bd9708082a6f4c3052e073bf9642c2b54d2e0bcc95aa305d6bc99676894b2e3a',
+     armv7l: 'bd9708082a6f4c3052e073bf9642c2b54d2e0bcc95aa305d6bc99676894b2e3a',
      x86_64: '393c3e8cf5f81936be330275e7d4439fbd2da85bca44b3a69ec407a8273d106a'
   })
 
@@ -30,14 +30,12 @@ class Octave < Autotools
   depends_on 'libglu' # R
   depends_on 'libglvnd' # R
   depends_on 'librsvg' => :build
+  depends_on 'libsndfile' # R
   depends_on 'libx11' # R
-  depends_on 'openblas' => :build
+  depends_on 'openblas' # R
   depends_on 'pcre2' # R
   depends_on 'readline' # R
   depends_on 'zlib' # R
-  depends_on 'openblas' # R
-  depends_on 'libsndfile' # R
-  depends_on 'openblas' # R
 
   run_tests
 end
