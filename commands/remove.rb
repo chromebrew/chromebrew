@@ -15,16 +15,8 @@ class Command
       return
     end
 
-    # Determine dependencies of packages in CREW_ESSENTIAL_PACKAGES and
-    # their dependencies, as those are needed for ruby and crew to run,
-    # and thus should not be removed.
-    # essential_deps = recursive_deps(CREW_ESSENTIAL_PACKAGES)
-    essential_deps = []
-    unless CREW_FORCE
-      essential_deps = device_json['essential_deps']
-      crewlog "Essential Deps are #{essential_deps}."
-    end
-    if essential_deps.include?(pkg.name)
+    # Do not remove any packages in CREW_ESSENTIAL_PACKAGES, as those are needed for ruby and thus crew to run.
+    if CREW_ESSENTIAL_PACKAGES.include?(pkg.name) && !CREW_FORCE
       return if pkg.in_upgrade
 
       puts <<~ESSENTIAL_PACKAGE_WARNING_EOF.gsub(/^(?=\w)/, '  ').lightred
@@ -62,19 +54,17 @@ class Command
         # HOME.
         # Exceptions:
         # 1. The file exists in another installed package.
-        # 2. The file is in one of the filelists for packages in
-        # CREW_ESSENTIAL_FILES, or a dependendent package of
-        # CREW_ESSENTIAL_PACKAGES.
+        # 2. The file is in one of the filelists for packages CREW_ESSENTIAL_PACKAGES.
         flist = File.join(CREW_META_PATH, "#{pkg.name}.filelist")
         if File.file?(flist)
-          # When searching for files to delete we exclude the files from
-          # all packages and dependent packages of CREW_ESSENTIAL_PACKAGES.
-          essential_deps_exclude_froms = ''
+
+          # When searching for files to delete we exclude the files from CREW_ESSENTIAL_PACKAGES.
+          essential_packages_exclude_froms = ''
           unless CREW_FORCE
-            essential_deps_exclude_froms = essential_deps.map { |i| File.file?("#{File.join(CREW_META_PATH, i.to_s)}.filelist") ? "--exclude-from=#{File.join(CREW_META_PATH, i.to_s)}.filelist" : '' }.join(' ')
+            essential_packages_exclude_froms = CREW_ESSENTIAL_PACKAGES.map { |i| File.file?("#{File.join(CREW_META_PATH, i.to_s)}.filelist") ? "--exclude-from=#{File.join(CREW_META_PATH, i.to_s)}.filelist" : '' }.join(' ')
           end
 
-          package_files = `grep -h #{essential_deps_exclude_froms} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{flist}`.split("\n").uniq.sort
+          package_files = `grep -h #{essential_packages_exclude_froms} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{flist}`.split("\n").uniq.sort
           all_other_files = `grep -h --exclude #{pkg.name}.filelist \"^#{CREW_PREFIX}\\|^#{HOME}\" #{CREW_META_PATH}/*.filelist 2>/dev/null`.split("\n").uniq.sort
 
           # We want the difference of these arrays.

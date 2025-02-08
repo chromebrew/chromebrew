@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.56.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.57.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -41,7 +41,10 @@ else
   HOME ||= File.join(CREW_PREFIX, Dir.home)
 end
 
-CREW_ESSENTIAL_PACKAGES ||= %w[curl gcc_lib glibc gmp lz4 ruby xzutils zlib zstd]
+# These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
+# lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
+# The LIBC_VERSION ternary is to reflect the change from glibc_build to glibc_lib as the source of essential libraries starting at glibc 2.35.
+CREW_ESSENTIAL_PACKAGES ||= %W[gcc_lib #{LIBC_VERSION.to_f > 2.34 ? "glibc_lib#{LIBC_VERSION.delete('.')}" : "glibc_build#{LIBC_VERSION.delete('.')}"} gmp ruby zlib zstd]
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 
@@ -354,7 +357,7 @@ CREW_DOCOPT ||= <<~DOCOPT
     crew remove [options] [-v|--verbose] <name> ...
     crew search [options] [-v|--verbose] <name> ...
     crew sysinfo [options] [-v|--verbose]
-    crew update [options] [-v|--verbose] [<compatible>]
+    crew update [options] [-v|--verbose]
     crew upgrade [options] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-v|--verbose] [<name> ...]
     crew whatprovides [options] <pattern> ...
