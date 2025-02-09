@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Putty < CMake
   description 'Free Telnet, SSH, and Rlogin clients plus a terminal emulator'
   homepage 'https://www.chiark.greenend.org.uk/~sgtatham/putty/'
-  version '0.82'
+  version '0.83'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://the.earth.li/~sgtatham/putty/latest/putty-#{version}.tar.gz"
