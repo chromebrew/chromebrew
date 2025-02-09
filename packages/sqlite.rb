@@ -13,7 +13,7 @@ class Sqlite < Autotools
   binary_sha256({
     aarch64: '02ac3e9b356a5f0e8285571ec3234a1158dad2be2073356e39b7febada545644',
      armv7l: '02ac3e9b356a5f0e8285571ec3234a1158dad2be2073356e39b7febada545644',
-       i686: 'db23ab9115398bef425478b3ef43dee260ced68bb964d4cfe0bd70e9d886a0fb',
+       i686: 'bc13fb5a7aaff051ef99e1e065df85d2a040f4f186dd86e62f1e361a2af3a7ae',
      x86_64: '657df8ae9a5aa6ef321e2f677ffa92fced56d45c313d63b0b15bbd158615347d'
   })
 
