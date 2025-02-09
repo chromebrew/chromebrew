@@ -13,7 +13,7 @@ class Putty < CMake
   binary_sha256({
     aarch64: 'f03651b884611a0e05cd27ce90777a015c4ec6ed10e1a6fb2799062469fa68fb',
      armv7l: 'f03651b884611a0e05cd27ce90777a015c4ec6ed10e1a6fb2799062469fa68fb',
-     x86_64: '587331f06ea9fee7cf8199687178e18dcbdacecdc33c4fbd7d47f8e47c06e6d9'
+     x86_64: 'b66f3a1691b04d7ff87bad0f5c119bf754b1a64a07c914122d3ca33f5d8cbe25'
   })
 
   depends_on 'at_spi2_core' # R
