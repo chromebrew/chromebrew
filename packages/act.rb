@@ -3,7 +3,7 @@ require 'package'
 class Act < Package
   description 'Run your GitHub Actions locally'
   homepage 'https://github.com/nektos/act'
-  version '0.2.71'
+  version '0.2.72'
   license 'MIT'
   compatibility 'all'
   source_url({
@@ -13,16 +13,15 @@ class Act < Package
      x86_64: "https://github.com/nektos/act/releases/download/v#{version}/act_Linux_x86_64.tar.gz"
   })
   source_sha256({
-    aarch64: '5e6caeafc26777e56a2eb9230a4be92d8a1ff0ec44495946bd5eff76e5257fd3',
-     armv7l: '5e6caeafc26777e56a2eb9230a4be92d8a1ff0ec44495946bd5eff76e5257fd3',
-       i686: '53aa859c9317ad7475d3b8d01e1649c2fed04e3a12898027a24718ea733bc236',
-     x86_64: 'f00cd2ca6310b73831042d01e3c2f00cb60c28620588e981bf551a0aca659dc5'
+    aarch64: 'c4958be9b6d9f9d009efd7cfaeffef5958db4276def0b47b3ffb63295cabac31',
+     armv7l: 'c4958be9b6d9f9d009efd7cfaeffef5958db4276def0b47b3ffb63295cabac31',
+       i686: '1d90876d166cd78bcd0f4f563efa2ea2d1ab561535f0e6025579f8e6e4138bc4',
+     x86_64: '8314db77371828dea9a517d5a64fecc541fd74e227c1cf399756f27e6f54c75b'
   })
 
   no_compile_needed
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.install 'act', "#{CREW_DEST_PREFIX}/bin", mode: 0o755
+    FileUtils.install 'act', "#{CREW_DEST_PREFIX}/bin/act", mode: 0o755
   end
 end
