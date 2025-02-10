@@ -5,7 +5,7 @@ class Gnuplot < Autotools
   homepage 'https://gnuplot.sourceforge.net/'
   version '6.0.2'
   license 'gnuplot'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/project/gnuplot/gnuplot/#{version}/gnuplot-#{version}.tar.gz"
   source_sha256 'f68a3b0bbb7bbbb437649674106d94522c00bf2f285cce0c19c3180b1ee7e738'
   binary_compression 'tar.zst'

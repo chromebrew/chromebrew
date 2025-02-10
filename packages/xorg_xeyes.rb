@@ -8,7 +8,7 @@ class Xorg_xeyes < Package
   homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.2.0'
   license 'X11'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://xorg.freedesktop.org/archive/individual/app/xeyes-1.2.0.tar.bz2'
   source_sha256 'f8a17e23146bef1ab345a1e303c6749e42aaa7bcf4f25428afad41770721b6db'
   binary_compression 'tar.zst'

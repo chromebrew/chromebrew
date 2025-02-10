@@ -5,7 +5,7 @@ class Libva_utils < Package
   homepage 'https://01.org/linuxmedia'
   version '2.11.1'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/intel/libva-utils/archive/refs/tags/#{version}.tar.gz"
   source_sha256 '0c1eb7f717e391d00da74c53a9fe5caf3d6c510dcd35bac7f71a0e59ad1b8d26'
   binary_compression 'tar.xz'

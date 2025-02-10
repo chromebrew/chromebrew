@@ -5,7 +5,7 @@ class Rxvt_unicode < Package
   homepage 'http://software.schmorp.de/pkg/rxvt-unicode.html'
   version '9.30'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.30.tar.bz2'
   source_sha256 'fe1c93d12f385876457a989fc3ae05c0915d2692efc59289d0f70fabe5b44d2d'
   binary_compression 'tar.zst'

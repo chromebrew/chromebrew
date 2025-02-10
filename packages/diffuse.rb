@@ -5,7 +5,7 @@ class Diffuse < Package
   homepage 'https://diffuse.sourceforge.net/'
   version '0.4.8'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://downloads.sourceforge.net/project/diffuse/diffuse/0.4.8/diffuse-0.4.8.tar.bz2'
   source_sha256 'c1d3b79bba9352fcb9aa4003537d3fece248fb824781c5e21f3fcccafd42df2b'
   binary_compression 'tar.xz'

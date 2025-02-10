@@ -5,7 +5,7 @@ class Cadaver < Package
   homepage 'https://notroj.github.io/cadaver/'
   version '0.24'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://notroj.github.io/cadaver/cadaver-0.24.tar.gz'
   source_sha256 '46cff2f3ebd32cd32836812ca47bcc75353fc2be757f093da88c0dd8f10fd5f6'
   binary_compression 'tar.zst'

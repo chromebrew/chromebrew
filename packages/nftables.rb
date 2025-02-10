@@ -8,7 +8,7 @@ class Nftables < Autotools
   homepage 'https://netfilter.org/projects/nftables/'
   version '1.1.1'
   license 'GPL2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://netfilter.org/projects/nftables/files/nftables-#{version}.tar.xz"
   source_sha256 '6358830f3a64f31e39b0ad421d7dadcd240b72343ded48d8ef13b8faf204865a'
   binary_compression 'tar.zst'

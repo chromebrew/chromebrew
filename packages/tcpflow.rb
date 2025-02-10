@@ -5,7 +5,7 @@ class Tcpflow < Package
   homepage 'https://github.com/simsong/tcpflow'
   version '1.6.1-b1479db'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/simsong/tcpflow.git'
   git_hashtag 'b1479db14b1604e00d35c2d39566c54e8b1785d0'
   binary_compression 'tar.zst'

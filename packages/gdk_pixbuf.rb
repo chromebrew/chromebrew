@@ -6,7 +6,7 @@ class Gdk_pixbuf < Package
   @_ver = '2.42.10'
   version "#{@_ver}-1"
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'
   git_hashtag @_ver
   binary_compression 'tar.zst'

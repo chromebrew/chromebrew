@@ -5,7 +5,7 @@ class Py3_python_pptx < Pip
   homepage 'https://github.com/scanny/python-pptx/'
   version "1.0.2-#{CREW_PY_VER}"
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 

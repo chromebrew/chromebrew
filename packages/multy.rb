@@ -5,7 +5,7 @@ class Multy < Package
   homepage 'https://multy.dev/'
   version '0.1.57'
   license 'Apache-2.0'
-  compatibility 'x86_64 i686'
+  compatibility 'i686 x86_64'
   source_url({
     x86_64: "https://github.com/multycloud/multy/releases/download/v#{version}/multy-linux-amd64.tar.gz",
       i686: "https://github.com/multycloud/multy/releases/download/v#{version}/multy-linux-386.tar.gz"

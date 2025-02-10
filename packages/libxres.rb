@@ -5,7 +5,7 @@ class Libxres < Package
   homepage 'https://www.x.org/wiki/'
   version '1.2.2'
   license 'X11'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxres.git'
   git_hashtag "libXres-#{version}"
   binary_compression 'tar.zst'

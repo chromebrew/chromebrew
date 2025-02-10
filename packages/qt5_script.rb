@@ -5,7 +5,7 @@ class Qt5_script < Qmake
   homepage 'https://www.qt.io/'
   version '5.15.17-lts'
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtscript.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

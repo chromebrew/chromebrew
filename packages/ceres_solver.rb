@@ -5,7 +5,7 @@ class Ceres_solver < CMake
   homepage 'http://ceres-solver.org/'
   version '2.2.0'
   license 'BSD-3 Clause'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ceres-solver/ceres-solver.git'
   git_hashtag version
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Libxcursor < Package
   homepage 'https://www.x.org/wiki/'
   version '1.2.1'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.x.org/archive/individual/lib/libXcursor-#{version}.tar.gz"
   source_sha256 '77f96b9ad0a3c422cfa826afabaf1e02b9bfbfc8908c5fa1a45094faad074b98'
   binary_compression 'tar.zst'

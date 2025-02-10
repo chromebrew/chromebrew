@@ -8,7 +8,7 @@ class Ettercap_gtk < Package
   homepage 'https://ettercap.github.com/ettercap/'
   version '0.8.3.1'
   license 'GPL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/Ettercap/ettercap/archive/v0.8.3.1/ettercap-0.8.3.1.tar.gz'
   source_sha256 'd0c3ef88dfc284b61d3d5b64d946c1160fd04276b448519c1ae4438a9cdffaf3'
   binary_compression 'tar.zst'

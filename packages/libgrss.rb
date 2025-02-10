@@ -8,7 +8,7 @@ class Libgrss < Autotools
   homepage 'https://wiki.gnome.org/Projects/Libgrss'
   version '0.7.0-ce58'
   license 'LGPLv3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libgrss/-/archive/ce58490680db02913f221cccd73a816eefd2e1f7/libgrss-ce58490680db02913f221cccd73a816eefd2e1f7.tar.bz2'
   source_sha256 '88eab96df1b2004c08f3b14beca038d13306518f3df18745e27788287038ea31'
   binary_compression 'tar.xz'

@@ -5,7 +5,7 @@ class Mate_calc < Package
   homepage 'https://mate-desktop.org'
   version '1.21'
   license 'CC-BY-SA-3.0 and GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://pub.mate-desktop.org/releases/1.21/mate-calc-1.21.0.tar.xz'
   source_sha256 'c6b2c4d832f67d5f3d1293cb143e428365077e3cdfe4fc4bb80b3fce5362b51e'
   binary_compression 'tar.xz'

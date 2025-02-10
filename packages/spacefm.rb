@@ -5,7 +5,7 @@ class Spacefm < Package
   homepage 'https://ignorantguru.github.io/spacefm/'
   version '1.0.6-1'
   license 'GPL-2 and LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/IgnorantGuru/spacefm/archive/1.0.6.tar.gz'
   source_sha256 'fedea9fcad776e0af4b8d90c5a1c86684a9c96ef1cdd4e959530ce93bdebe7c9'
   binary_compression 'tar.zst'

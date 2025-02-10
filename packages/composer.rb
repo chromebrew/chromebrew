@@ -5,7 +5,7 @@ class Composer < Package
   homepage 'https://getcomposer.org/'
   version '2.8.5'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/composer/composer/releases/download/#{version}/composer.phar"
   source_sha256 '9cef18212e222351aeb476b81de7b2a5383f775336474467bf5c7ccfe84ab0cc'
 

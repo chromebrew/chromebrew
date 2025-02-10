@@ -5,7 +5,7 @@ class Pakitheme < Package
   homepage 'https://github.com/refi64/pakitheme'
   version '1.0'
   license 'MPL-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/saltedcoffii/pakitheme/archive/1.0.tar.gz'
   source_sha256 '32446ecc73ae95d699d6e14e5fa3dc3a8b3a9cfae02457b2b7f38fdd7d7524f3'
 

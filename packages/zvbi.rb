@@ -5,7 +5,7 @@ class Zvbi < Autotools
   homepage 'https://github.com/zapping-vbi/zvbi'
   version '0.2.42-be5efeb'
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/zapping-vbi/zvbi.git'
   git_hashtag 'be5efebaadeb95be57d5435468bd3ec0f3007683'
   binary_compression 'tar.zst'

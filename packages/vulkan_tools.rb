@@ -8,7 +8,7 @@ class Vulkan_tools < CMake
   homepage 'https://www.vulkan.org/'
   version '1.4.303'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/KhronosGroup/Vulkan-Tools.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

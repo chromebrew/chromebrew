@@ -5,7 +5,7 @@ class Umockdev < Package
   homepage 'https://github.com/martinpitt/umockdev/'
   version '0.9.4'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/martinpitt/umockdev/archive/0.9.4.tar.gz'
   source_sha256 '9f13e8a836ef36158e2cc2b679cb99639e1f68a430b04fbe4dd07d3cb2b32a75'
   binary_compression 'tar.xz'

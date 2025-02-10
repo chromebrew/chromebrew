@@ -6,7 +6,7 @@ class Libcaca < Autotools
   homepage 'https://github.com/cacalabs/libcaca'
   version "0.99.beta20-f42aa68-1-#{CREW_PY_VER}"
   license 'GPL-2, ISC, LGPL-2.1 and WTFPL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/cacalabs/libcaca/archive/f42aa68fc798db63b7b2a789ae8cf5b90b57b752.zip'
   source_sha256 'a0d0afd5cc9733510f20dab2fcd59256c960b091307e37c921f158629204bfe0'
   binary_compression 'tar.zst'

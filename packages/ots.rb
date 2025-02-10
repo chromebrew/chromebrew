@@ -5,7 +5,7 @@ class Ots < Meson
   homepage 'https://github.com/khaledhosny/ots'
   version '9.1.0'
   license 'BSD 3-Clause'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/khaledhosny/ots.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

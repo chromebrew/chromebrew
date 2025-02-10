@@ -6,7 +6,7 @@ class Freetype < Meson
   homepage 'https://freetype.org/'
   version '2.13.3-1' # Update freetype in harfbuzz when updating freetype
   license 'FTL or GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/freetype/freetype.git'
   git_hashtag "VER-#{version.split('-').first.tr('.', '-')}"
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Libhandy < Meson
   homepage 'https://gitlab.gnome.org/GNOME/libhandy/'
   version '1.8.3'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libhandy.git'
   git_hashtag version
   binary_compression 'tar.zst'

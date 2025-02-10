@@ -5,7 +5,7 @@ class Libdmx < Package
   homepage 'https://www.x.org/wiki/'
   version '1.1.3-0'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/archive/individual/lib/libdmx-1.1.3.tar.gz'
   source_sha256 'c4b24d7e13e5a67ead7a18f0b4cc9b7b5363c9d04cd01b83b5122ff92b3b4996'
   binary_compression 'tar.xz'

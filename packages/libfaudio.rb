@@ -5,7 +5,7 @@ class Libfaudio < Package
   homepage 'https://fna-xna.github.io/'
   version '23.01'
   license 'ZLIB'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/fna-xna/faudio.git'
   git_hashtag version
   binary_compression 'tar.zst'

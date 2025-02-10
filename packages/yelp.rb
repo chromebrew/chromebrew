@@ -5,7 +5,7 @@ class Yelp < Autotools
   homepage 'https://wiki.gnome.org/Apps/Yelp'
   version "42.2-#{CREW_ICU_VER}"
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/yelp.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Gnome_sudoku < Meson
   homepage 'https://wiki.gnome.org/Apps/Sudoku'
   version '46.0'
   license 'GPL-3+ and CC-BY-SA-3.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-sudoku.git'
   git_hashtag version
   binary_compression 'tar.zst'

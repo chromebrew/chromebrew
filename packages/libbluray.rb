@@ -4,7 +4,7 @@ class Libbluray < Package
   description 'This library is simply a tool for playback of Blu-ray movies.'
   homepage 'https://www.videolan.org/developers/libbluray.html'
   version '1.3.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   license 'LGPL-2.1'
   source_url 'https://get.videolan.org/libbluray/1.3.0/libbluray-1.3.0.tar.bz2'
   source_sha256 'e2dbaf99e84e0a9725f4985bcb85d41e52c2261cc651d8884b1b790b5ef016f9'

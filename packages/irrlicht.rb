@@ -5,7 +5,7 @@ class Irrlicht < Package
   homepage 'https://irrlicht.sourceforge.io/'
   version '1.8.5'
   license 'ZLIB'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://downloads.sourceforge.net/irrlicht/irrlicht-1.8.5.zip'
   source_sha256 'effb7beed3985099ce2315a959c639b4973aac8210f61e354475a84105944f3d'
   binary_compression 'tar.zst'

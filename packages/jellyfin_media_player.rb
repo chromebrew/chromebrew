@@ -8,7 +8,7 @@ class Jellyfin_media_player < Package
   homepage 'https://github.com/jellyfin/jellyfin-media-player'
   version '1.9.1-1'
   license 'GPL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.35'
   source_url 'https://github.com/jellyfin/jellyfin-media-player/archive/refs/tags/v1.9.1.tar.gz'
   source_sha256 '8d119bb78e897ace3041cf332114a79c51be4d8e0cc8c68f5745fd588c2b9bde'

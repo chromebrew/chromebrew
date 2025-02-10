@@ -5,7 +5,7 @@ class Vice < Autotools
   homepage 'https://vice-emu.sourceforge.io/'
   version '3.8'
   license 'GPL-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.8.tar.gz'
   source_sha256 '1d7dc4d0f2bbcc2a871bb954ff4a5df63048dea9c16f5f1e9bc8260fa41a1004'
   binary_compression 'tar.zst'

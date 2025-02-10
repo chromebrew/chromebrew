@@ -5,7 +5,7 @@ class Libxpresent < Package
   homepage 'https://cgit.freedesktop.org/xorg/lib/libXpresent/'
   version '1.0.1'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/releases/individual/lib/libXpresent-1.0.1.tar.xz'
   source_sha256 'b964df9e5a066daa5e08d2dc82692c57ca27d00b8cc257e8e960c9f1cf26231b'
   binary_compression 'tar.zst'

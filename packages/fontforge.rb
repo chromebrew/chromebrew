@@ -5,7 +5,7 @@ class Fontforge < CMake
   homepage 'https://fontforge.org/'
   version '20230101'
   license 'BSD and GPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/fontforge/fontforge.git'
   git_hashtag version
   binary_compression 'tar.zst'

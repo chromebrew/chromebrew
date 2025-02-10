@@ -5,7 +5,7 @@ class Libraw < Package
   homepage 'https://www.libraw.org'
   version '0.20.2'
   license 'LGPL-2.1 and CDDL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.libraw.org/data/LibRaw-0.20.2.tar.gz'
   source_sha256 'dc1b486c2003435733043e4e05273477326e51c3ea554c6864a4eafaff1004a6'
   binary_compression 'tar.zst'

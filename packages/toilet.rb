@@ -5,7 +5,7 @@ class Toilet < Autotools
   homepage 'http://caca.zoy.org/wiki/toilet'
   version '0.3'
   license 'Copyright (C) 2004 Sam Hocevar'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'http://caca.zoy.org/raw-attachment/wiki/toilet/toilet-0.3.tar.gz'
   source_sha256 '89d4b530c394313cc3f3a4e07a7394fa82a6091f44df44dfcd0ebcb3300a81de'
   binary_compression 'tar.zst'

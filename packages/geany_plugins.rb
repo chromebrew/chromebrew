@@ -5,7 +5,7 @@ class Geany_plugins < Autotools
   homepage 'https://www.geany.org/'
   version "2.0.0-#{CREW_ICU_VER}"
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/geany/geany-plugins.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Geany < Package
   homepage 'https://www.geany.org/'
   version '2.0.0'
   license 'GPL-2+ HPND'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/geany/geany.git'
   git_hashtag version
   binary_compression 'tar.zst'

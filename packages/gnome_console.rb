@@ -8,7 +8,7 @@ class Gnome_console < Meson
   homepage 'https://gitlab.gnome.org/GNOME/console'
   version '46.rc'
   license 'GPL3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/console.git'
   git_hashtag version
   binary_compression 'tar.zst'

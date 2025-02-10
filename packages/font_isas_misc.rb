@@ -5,7 +5,7 @@ class Font_isas_misc < Autotools
   homepage 'https://gitlab.freedesktop.org/xorg/font/isas-misc'
   version '1.0.4'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/font/isas-misc.git'
   git_hashtag "font-isas-misc-#{version}"
   binary_compression 'tar.zst'

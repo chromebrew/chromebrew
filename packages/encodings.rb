@@ -5,7 +5,7 @@ class Encodings < Package
   homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.5'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/releases/individual/font/encodings-1.0.5.tar.bz2'
   source_sha256 'bd96e16143a044b19e87f217cf6a3763a70c561d1076aad6f6d862ec41774a31'
   binary_compression 'tar.xz'

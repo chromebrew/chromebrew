@@ -6,7 +6,7 @@ class Libidn < Autotools
   @_ver = '1.41'
   version "#{@_ver}-1"
   license 'GPL-2+ and LGPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.savannah.gnu.org/git/libidn.git'
   git_hashtag "v#{@_ver}"
   binary_compression 'tar.zst'

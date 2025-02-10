@@ -5,7 +5,7 @@ class Crew_launcher < Package
   homepage 'https://github.com/chromebrew/crew-launcher'
   version '1.1-2'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/chromebrew/crew-launcher.git'
   git_hashtag '1.1'
 

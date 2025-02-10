@@ -5,7 +5,7 @@ class Gobject_introspection < Meson
   homepage 'https://wiki.gnome.org/action/show/Projects/GObjectIntrospection'
   version "1.81.4-#{CREW_PY_VER}"
   license 'LGPL-2+ and GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gobject-introspection.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

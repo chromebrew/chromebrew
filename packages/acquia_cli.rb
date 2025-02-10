@@ -5,7 +5,7 @@ class Acquia_cli < Package
   homepage 'https://github.com/acquia/cli'
   version '2.37.0'
   license 'GPL-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/acquia/cli/releases/download/#{version}/acli.phar"
   source_sha256 '32baf203693dd91ffc68dde9270c43e3603f8b4069cc1a842fdced408be71c84'
 

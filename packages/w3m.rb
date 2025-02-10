@@ -5,7 +5,7 @@ class W3m < Package
   homepage 'https://w3m.sourceforge.net/'
   version '0.5.3-20220429'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/tats/w3m/archive/v0.5.3+git20220429.tar.gz'
   source_sha256 '6d76fcccb7c94658f2753f0777f69283d5cb447004a0d0d3087c1d873edc0af3'
   binary_compression 'tar.zst'

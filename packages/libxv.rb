@@ -5,7 +5,7 @@ class Libxv < Package
   homepage 'https://www.x.org/wiki/'
   version '1.0.12'
   license 'X11'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxv.git'
   git_hashtag "libXv-#{version}"
   binary_compression 'tar.zst'

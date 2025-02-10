@@ -5,7 +5,7 @@ class Github_desktop < Package
   homepage 'https://desktop.github.com/'
   version '3.4.3-linux1'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.29'
   source_url({
     aarch64: "https://github.com/shiftkey/desktop/releases/download/release-#{version}/GitHubDesktop-linux-armv7l-#{version}.AppImage",

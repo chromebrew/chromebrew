@@ -8,7 +8,7 @@ class Libjxl < Package
   homepage 'https://jpeg.org/jpegxl/'
   version '0.8.2'
   license 'BSD'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libjxl/libjxl.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

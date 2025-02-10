@@ -8,7 +8,7 @@ class Xdpyinfo < Package
   homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.3.3'
   license 'MIT-with-advertising'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xdpyinfo.git'
   git_hashtag "xdpyinfo-#{version}"
   binary_compression 'tar.zst'

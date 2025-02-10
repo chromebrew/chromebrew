@@ -5,7 +5,7 @@ class Eigen < CMake
   homepage 'https://eigen.tuxfamily.org/index.php?title=Main_Page'
   version '3.4.0-1'
   license 'MPL-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2'
   source_sha256 'b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626'
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Libxkbcommon < Package
   homepage 'https://xkbcommon.org'
   version '1.0.3'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://xkbcommon.org/download/libxkbcommon-#{version}.tar.xz"
   source_sha256 'a2202f851e072b84e64a395212cbd976ee18a8ee602008b0bad02a13247dbc52'
   binary_compression 'tar.xz'

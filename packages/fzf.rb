@@ -5,7 +5,7 @@ class Fzf < Package
   homepage 'https://github.com/junegunn/fzf'
   version '0.58.0'
   license 'MIT and BSD-with-disclosure'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url({
     aarch64: "https://github.com/junegunn/fzf/releases/download/v#{version}/fzf-#{version}-linux_armv7.tar.gz",
      armv7l: "https://github.com/junegunn/fzf/releases/download/v#{version}/fzf-#{version}-linux_armv7.tar.gz",

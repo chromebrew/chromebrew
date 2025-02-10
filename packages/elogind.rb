@@ -6,7 +6,7 @@ class Elogind < Package
   @_ver = '246.10'
   version "#{@_ver}-1"
   license 'CC0-1.0, LGPL-2.1+ and public-domain'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/elogind/elogind/archive/v#{@_ver}.tar.gz"
   source_sha256 'c490dc158c8f5bca8d00ecfcc7ad5af24d1c7b9e59990a0b3b1323996221a922'
   binary_compression 'tar.xz'

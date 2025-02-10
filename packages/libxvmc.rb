@@ -5,7 +5,7 @@ class Libxvmc < Package
   homepage 'https://www.x.org/wiki/'
   version '1.0.13'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://gitlab.freedesktop.org/xorg/lib/libxvmc/-/archive/libXvMC-#{version}/libxvmc-libXvMC-#{version}.tar.gz"
   source_sha256 '58a1766176947ec41cf44c917d831db5d619fec11f99637d6deca45458e9829b'
   binary_compression 'tar.zst'

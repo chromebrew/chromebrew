@@ -5,7 +5,7 @@ class Erlang < Autotools
   homepage 'https://www.erlang.org/'
   version '27.2.1'
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/erlang/otp.git'
   git_hashtag "OTP-#{version}"
   binary_compression 'tar.zst'

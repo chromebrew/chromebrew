@@ -5,7 +5,7 @@ class Glfw < CMake
   homepage 'https://www.glfw.org/'
   version '3.4'
   license 'ZLIB'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip'
   source_sha256 'b5ec004b2712fd08e8861dc271428f048775200a2df719ccf575143ba749a3e9'
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Ciano < Meson
   homepage 'https://robertsanseries.github.io/ciano/'
   version '0.2.4'
   license 'GPL-3.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/robertsanseries/ciano.git'
   git_hashtag version
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Peazip < Package
   homepage 'https://peazip.github.io/'
   version ARCH.eql?('x86_64') ? '10.2.0' : '5.2.0'
   license 'LGPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.34' if ARCH.eql?('x86_64')
   source_url({
     aarch64: 'https://downloads.sourceforge.net/project/peazip/5.2.0/pea-gtk2-arm.tar.gz',

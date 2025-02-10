@@ -5,7 +5,7 @@ class Cogl < Autotools
   homepage 'https://www.clutter-project.org'
   version '1.22.8'
   license 'MIT and BSD'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/cogl/1.22/cogl-1.22.8.tar.xz'
   source_sha256 'a805b2b019184710ff53d0496f9f0ce6dcca420c141a0f4f6fcc02131581d759'
   binary_compression 'tar.xz'

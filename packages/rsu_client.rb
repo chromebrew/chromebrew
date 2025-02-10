@@ -5,7 +5,7 @@ class Rsu_client < Package
   homepage 'https://github.com/rsu-client/rsu-client'
   version '4.3.8'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/rsu-client/rsu-client/archive/v4.3.8.tar.gz'
   source_sha256 'a84d27f2775ceef3bf0f715504ba41f3776c5374b61f9820993a26f350e4fa3d'
   binary_compression 'tar.xz'

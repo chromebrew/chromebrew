@@ -8,7 +8,7 @@ class Xorg_xlsfonts < Package
   homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.7'
   license 'X11'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://xorg.freedesktop.org/archive/individual/app/xlsfonts-1.0.7.tar.xz'
   source_sha256 '7b726945a967b44c35cddee5edd74802907a239ce2e2e515730b8a32c8e50465'
   binary_compression 'tar.zst'

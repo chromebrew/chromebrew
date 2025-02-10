@@ -5,7 +5,7 @@ class Libcanberra < Package
   homepage 'http://0pointer.de/lennart/projects/libcanberra/'
   version '0.30-1'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'http://pkgs.fedoraproject.org/repo/pkgs/libcanberra/libcanberra-0.30.tar.xz/34cb7e4430afaf6f447c4ebdb9b42072/libcanberra-0.30.tar.xz'
   source_sha256 'c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72'
   binary_compression 'tar.xz'

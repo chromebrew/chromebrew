@@ -5,7 +5,7 @@ class Shrinkpdf < Package
   homepage 'https://github.com/aklomp/shrinkpdf'
   version '1.1'
   license 'BSD-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/aklomp/shrinkpdf.git'
   git_hashtag "v#{version}"
 

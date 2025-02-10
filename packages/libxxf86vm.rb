@@ -5,7 +5,7 @@ class Libxxf86vm < Package
   homepage 'https://www.x.org/wiki/'
   version '1.1.5'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/archive//individual/lib/libXxf86vm-1.1.5.tar.xz'
   source_sha256 '247fef48b3e0e7e67129e41f1e789e8d006ba47dba1c0cdce684b9b703f888e7'
   binary_compression 'tar.zst'

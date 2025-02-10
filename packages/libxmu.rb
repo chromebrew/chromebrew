@@ -5,7 +5,7 @@ class Libxmu < Package
   homepage 'https://www.x.org/wiki/'
   version '1.1.4'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/archive/individual/lib/libXmu-1.1.4.tar.xz'
   source_sha256 '210de3ab9c3e9382572c25d17c2518a854ce6e2c62c5f8315deac7579e758244'
   binary_compression 'tar.zst'

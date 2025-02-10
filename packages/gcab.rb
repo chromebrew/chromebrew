@@ -5,7 +5,7 @@ class Gcab < Meson
   homepage 'https://gitlab.gnome.org/GNOME/gcab'
   version '1.6'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gcab.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

@@ -12,7 +12,7 @@ class Qt5_webengine < Package
   @qt_pkgver = Qt5_webengine.version.to_s.gsub(/-.*/, '')
   @qt_basever = Qt5_base.version.to_s.gsub(/-.*/, '')
   license 'LGPL3 LGPL2.1 BSD'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://anduin.linuxfromscratch.org/BLFS/qtwebengine/qtwebengine-5.15.15.tar.xz'
   source_sha256 '53b2f184c8b40bcac88b13f9f565a3d849f1ccfcc4f7344823ccc4265fb80445'
   binary_compression 'tar.zst'

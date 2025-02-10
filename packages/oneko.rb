@@ -5,7 +5,7 @@ class Oneko < Package
   homepage 'http://www.daidouji.com/oneko/'
   version '1.2.sakura.6'
   license 'public-domain'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://httpredir.debian.org/debian/pool/main/o/oneko/oneko_1.2.sakura.6.orig.tar.gz'
   source_sha256 'd89cee8b81cdb40ef23b3457c9a7fe1b0ff130081b21a41ec6c41cda01391d25'
   binary_compression 'tar.xz'

@@ -5,7 +5,7 @@ class Sommelier < Package
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
   version '20240607-llvm19'
   license 'BSD-Google'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag 'a65f3009b2b7b55639760db376581ec146df3210'
   binary_compression 'tar.zst'

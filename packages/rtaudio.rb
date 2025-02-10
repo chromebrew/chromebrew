@@ -5,7 +5,7 @@ class Rtaudio < Package
   homepage 'http://www.music.mcgill.ca/~gary/rtaudio/'
   version '5.1.0'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.1.0.tar.gz'
   source_sha256 'ff138b2b6ed2b700b04b406be718df213052d4c952190280cf4e2fab4b61fe09'
   binary_compression 'tar.xz'

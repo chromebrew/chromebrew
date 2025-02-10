@@ -8,7 +8,7 @@ class Glmark2 < Package
   homepage 'https://github.com/glmark2/glmark2'
   version '2021.12-9057c05'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/glmark2/glmark2/archive/9057c056b6e72d156c0bc7e4b52658e155760222.zip'
   source_sha256 'fd37e6360f03f8ffcd236eb39ee1cb42c487edd0418441c22e375ec5e499297d'
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Octave < Autotools
   homepage 'https://octave.org/'
   version '9.4.0'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://ftpmirror.gnu.org/octave/octave-#{version}.tar.lz"
   source_sha256 'dcb2c098701cfcbc083f07e90e146261d15cdbf5e89c031032422112c89b47da'
   binary_compression 'tar.zst'

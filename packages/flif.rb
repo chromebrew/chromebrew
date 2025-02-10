@@ -5,7 +5,7 @@ class Flif < Package
   homepage 'https://flif.info/'
   version '0.4'
   license 'LGPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/FLIF-hub/FLIF.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

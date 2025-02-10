@@ -5,7 +5,7 @@ class Exo < Autotools
   homepage 'https://xfce.org/'
   version '4.19.0'
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.xfce.org/src/xfce/exo/#{version.rpartition('.')[0]}/exo-#{version}.tar.bz2"
   source_sha256 'a0124108c197efcc576a6deeface381416dc7137b6a7e7dfa3060fad62509fb7'
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Gnome_nibbles < Meson
   homepage 'https://wiki.gnome.org/Apps/Nibbles'
   version '4.0.3'
   license 'GPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-nibbles.git'
   git_hashtag version
   binary_compression 'tar.zst'

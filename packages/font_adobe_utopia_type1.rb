@@ -5,7 +5,7 @@ class Font_adobe_utopia_type1 < Autotools
   homepage 'https://gitlab.freedesktop.org/xorg/font/adobe-utopia-type1'
   version '1.0.5'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/font/adobe-utopia-type1.git'
   git_hashtag "font-adobe-utopia-type1-#{version}"
   binary_compression 'tar.zst'

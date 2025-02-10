@@ -6,7 +6,7 @@ class Vivaldi < Package
   homepage 'https://vivaldi.com/'
   version '7.1.3570.47-1'
   license 'Vivaldi'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.37'
 
   depends_on 'cras'

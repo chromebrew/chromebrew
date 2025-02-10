@@ -5,7 +5,7 @@ class Terminology < Package
   homepage 'https://www.enlightenment.org'
   version '1.8.0'
   license 'BSD-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://download.enlightenment.org/rel/apps/terminology/terminology-1.8.0.tar.xz'
   source_sha256 'c6f5b003412f25507277702cabe1a11d7190971343c1d6030aa7d3fe5b45765f'
   binary_compression 'tar.xz'

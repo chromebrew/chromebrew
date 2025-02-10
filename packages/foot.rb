@@ -5,7 +5,7 @@ class Foot < Meson
   homepage 'https://codeberg.org/dnkl/foot'
   version '1.18.0'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://codeberg.org/dnkl/foot.git'
   git_hashtag version
   binary_compression 'tar.zst'

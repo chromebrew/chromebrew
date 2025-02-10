@@ -5,7 +5,7 @@ class Girara < Meson
   homepage 'https://pwmt.org/projects/girara/'
   version '0.4.0'
   license 'ZLIB'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://pwmt.org/projects/girara/download/girara-0.4.0.tar.xz'
   source_sha256 'ceafd0a6aed50ad832ba766ec629f1ea366681c15f8fa728a8f55418c39dc901'
   binary_compression 'tar.zst'

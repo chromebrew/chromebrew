@@ -5,7 +5,7 @@ class Gnome_autoar < Meson
   homepage 'https://gitlab.gnome.org/GNOME/gnome-autoar'
   version '0.4.4'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-autoar.git'
   git_hashtag version
   binary_compression 'tar.zst'

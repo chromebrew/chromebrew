@@ -5,7 +5,7 @@ class Elixir < Package
   homepage 'https://elixir-lang.org/'
   version '1.18.2'
   license 'Apache-2.0 and ErlPL-1.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/elixir-lang/elixir.git'
   git_hashtag "v#{version}"
 

@@ -5,7 +5,7 @@ class Libgweather < Meson
   homepage 'https://wiki.gnome.org/Projects/LibGWeather'
   version '4.4.0'
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libgweather.git'
   git_hashtag version
   binary_compression 'tar.zst'

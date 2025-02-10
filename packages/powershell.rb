@@ -5,7 +5,7 @@ class Powershell < Package
   homepage 'https://learn.microsoft.com/en-us/powershell/'
   version '7.5.0'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.34'
 
   source_url({

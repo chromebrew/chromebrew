@@ -5,7 +5,7 @@ class Garcon < Package
   homepage 'https://xfce.org/'
   version '0.7.0'
   license 'LGPL-2 and Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://archive.xfce.org/src/xfce/garcon/0.7/garcon-0.7.0.tar.bz2'
   source_sha256 '82c3b61b508011642b09e6fb01b1d3f22c4e4de0fc54a9244327d0ddb66b2423'
   binary_compression 'tar.xz'

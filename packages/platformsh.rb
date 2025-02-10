@@ -5,7 +5,7 @@ class Platformsh < Package
   homepage 'https://docs.platform.sh/overview/cli.html'
   version '5.0.23'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/platformsh/cli/releases/download/#{version}/platform_#{version}_linux_amd64.tar.gz"
   source_sha256 '62f7b811e31ef63f7432a79e96a4fa4ba3704dcd4f2f9265cd7e1a4e34795d45'
 

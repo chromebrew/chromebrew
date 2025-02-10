@@ -6,7 +6,7 @@ class Gucharmap < Meson
   homepage 'https://wiki.gnome.org/Apps/Gucharmap'
   version '15.1.3'
   license 'GPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gucharmap.git'
   git_hashtag version
   binary_compression 'tar.zst'

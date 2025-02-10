@@ -5,7 +5,7 @@ class Libsm < Autotools
   homepage 'https://www.x.org/wiki/'
   version '1.2.4-5edd20b'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libsm.git'
   git_hashtag '5edd20b307ce70ccb14c360f1b94914c49544a24'
   binary_compression 'tar.zst'

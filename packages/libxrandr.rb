@@ -6,7 +6,7 @@ class Libxrandr < Package
   @_ver = '1.5.2'
   version "#{@_ver}-2"
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxrandr.git'
   git_hashtag "libXrandr-#{@_ver}"
   binary_compression 'tar.zst'

@@ -6,7 +6,7 @@ class Qt5_serialport < Qmake
   kde_5_15_githash = 'aa2ffdbd7295db9e5814070d1432a0b77c59cfce'
   version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtserialport.git'
   git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'

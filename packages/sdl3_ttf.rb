@@ -9,7 +9,7 @@ class Sdl3_ttf < CMake
   @_ver = '7d62ee195e32180b874c97a07df4080712b467b6'
   version "3.0.0-#{@_ver[0..6]}"
   license 'Zlib'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/SDL_ttf.git'
   git_hashtag @_ver
   binary_compression 'tar.zst'

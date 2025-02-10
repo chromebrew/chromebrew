@@ -5,7 +5,7 @@ class Modemmanager < Package
   homepage 'https://www.freedesktop.org/wiki/Software/ModemManager/'
   version '1.16.2'
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.freedesktop.org/software/ModemManager/ModemManager-#{version}.tar.xz"
   source_sha256 'efa9a963499e0885f3f163096d433334143c4937545134ecd682e0157fa591e3'
   binary_compression 'tar.xz'

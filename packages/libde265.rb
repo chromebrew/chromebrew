@@ -5,7 +5,7 @@ class Libde265 < Package
   homepage 'https://github.com/strukturag/libde265'
   version '1.0.11'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/strukturag/libde265/releases/download/v#{version}/libde265-#{version}.tar.gz"
   source_sha256 '2f8f12cabbdb15e53532b7c1eb964d4e15d444db1be802505e6ac97a25035bab'
   binary_compression 'tar.zst'

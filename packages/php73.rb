@@ -5,7 +5,7 @@ class Php73 < Package
   homepage 'https://www.php.net/'
   version '7.3.33'
   license 'PHP-3.01'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
   source_sha256 '166eaccde933381da9516a2b70ad0f447d7cec4b603d07b9a916032b215b90cc'
   binary_compression 'tar.xz'

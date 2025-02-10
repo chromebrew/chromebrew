@@ -5,7 +5,7 @@ class Qb64 < Package
   homepage 'https://www.qb64.org/'
   version '1.2'
   license 'MIT, custom, BSD-2, LGPL-2.1, LGPL-2 and GPL-2 or FTL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.qb64.org/autobuilds/master/qb64_2018-02-28-12-16-57_c3ad985-master_lnx.tar.gz'
   source_sha256 '47c739847e3f0d517150eae28e459e4c2cc1f904c1ab11eb7d089810d56e044a'
   binary_compression 'tar.xz'

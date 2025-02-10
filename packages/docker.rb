@@ -8,7 +8,7 @@ class Docker < Package
   homepage 'https://www.docker.com/'
   version '24.0.1'
   license 'Apache'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/docker/cli.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Xrdb < Package
   homepage 'https://x.org/wiki/'
   version '1.2.1'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xrdb.git'
   git_hashtag "xrdb-#{version}"
   binary_compression 'tar.zst'

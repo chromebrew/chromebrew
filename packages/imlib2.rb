@@ -5,7 +5,7 @@ class Imlib2 < Autotools
   homepage 'https://sourceforge.net/projects/enlightenment/'
   version "1.12.3-#{CREW_ICU_VER}"
   license 'BSD'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://sourceforge.net/projects/enlightenment/files/imlib2-src/#{version.split('-').first}/imlib2-#{version.split('-').first}.tar.xz"
   source_sha256 '96244656576a3e0a6f58b78e514ddc919622ac6806711bc231837eee62c1de34'
   binary_compression 'tar.zst'

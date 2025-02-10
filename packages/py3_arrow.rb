@@ -5,7 +5,7 @@ class Py3_arrow < Pip
   homepage 'https://arrow.readthedocs.io/'
   version "1.3.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 

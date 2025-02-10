@@ -5,7 +5,7 @@ class Gnome_keyring < Autotools
   homepage 'https://www.gnome.org'
   version '46.1'
   license 'GPL-2+ and LGPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-keyring.git'
   git_hashtag version
   binary_compression 'tar.zst'

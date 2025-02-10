@@ -5,7 +5,7 @@ class Lshw < Package
   homepage 'https://ezix.org/project/wiki/HardwareLiSter'
   version 'B.02.19.2-5840f20'
   license 'GPL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   # Use patched much more recent debian source, as primary source has
   # not been updated for years.
   source_url 'https://salsa.debian.org/openstack-team/third-party/lshw.git'

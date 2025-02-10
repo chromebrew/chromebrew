@@ -5,7 +5,7 @@ class Telepathy_glib < Package
   homepage 'https://telepathy.freedesktop.org'
   version '0.24.2'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-#{version}.tar.gz"
   source_sha256 'b0a374d771cdd081125f38c3abd079657642301c71a543d555e2bf21919273f0'
   binary_compression 'tar.xz'

@@ -5,7 +5,7 @@ class Recordmydesktop < Package
   homepage 'https://recordmydesktop.sourceforge.net/about.php'
   version '0.3.8.1'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://prdownloads.sourceforge.net/project/recordmydesktop/recordmydesktop/0.3.8.1/recordmydesktop-0.3.8.1.tar.gz'
   source_sha256 '33a2e208186ae78e2db2a27b0f5047b50fb7819c47fe15483b0765200b9d738c'
   binary_compression 'tar.xz'

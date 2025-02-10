@@ -5,7 +5,7 @@ class Libxi < Package
   homepage 'https://x.org/wiki/'
   version '1.7.10'
   license 'MIT and custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.x.org/archive/individual/lib/libXi-#{version}.tar.gz"
   source_sha256 'b51e106c445a49409f3da877aa2f9129839001b24697d75a54e5c60507e9a5e3'
   binary_compression 'tar.xz'

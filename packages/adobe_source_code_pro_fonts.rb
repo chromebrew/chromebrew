@@ -8,7 +8,7 @@ class Adobe_source_code_pro_fonts < Package
   homepage 'https://adobe-fonts.github.io/source-code-pro/'
   version '20210115'
   license 'OFL-1.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/adobe-fonts/source-code-pro.git'
   git_hashtag '2.038R-ro/1.058R-it/1.018R-VAR'
   binary_compression 'tpxz'

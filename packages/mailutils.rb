@@ -5,7 +5,7 @@ class Mailutils < Package
   homepage 'https://mailutils.org'
   version '3.13'
   license 'GPL-2 and LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://ftpmirror.gnu.org/mailutils/mailutils-3.13.tar.xz'
   source_sha256 'd920971dcb49878a009911774fd6404f13d27bd101e2d59b664a28659a4094c7'
   binary_compression 'tpxz'

@@ -5,7 +5,7 @@ class Alsa_plugins < Autotools
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
   version '1.2.12'
   license 'GPL-2 and LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/alsa-project/alsa-plugins.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

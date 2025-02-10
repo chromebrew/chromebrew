@@ -5,7 +5,7 @@ class Vulkan_headers < CMake
   homepage 'https://github.com/KhronosGroup/Vulkan-Headers'
   version '1.4.303'
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/KhronosGroup/Vulkan-Headers.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

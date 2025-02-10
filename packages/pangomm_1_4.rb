@@ -5,7 +5,7 @@ class Pangomm_1_4 < Meson
   homepage 'https://developer.gnome.org/pangomm/stable/'
   version '2.46.4'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/pangomm.git'
   git_hashtag version
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Jack < Package
   homepage 'https://jackaudio.org/'
   version '1.9.21'
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/jackaudio/jack2/archive/v#{version}.tar.gz"
   source_sha256 '8b044a40ba5393b47605a920ba30744fdf8bf77d210eca90d39c8637fe6bc65d'
   binary_compression 'tar.zst'

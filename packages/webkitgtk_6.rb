@@ -5,7 +5,7 @@ class Webkitgtk_6 < Package
   homepage 'https://webkitgtk.org'
   version "2.44.2-#{CREW_ICU_VER}"
   license 'LGPL-2+ and BSD-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.37'
   source_url "https://webkitgtk.org/releases/webkitgtk-#{version.split('-').first}.tar.xz"
   source_sha256 '523f42c8ff24832add17631f6eaafe8f9303afe316ef1a7e1844b952a7f7521b'

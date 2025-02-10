@@ -5,7 +5,7 @@ class Libepoxy < Meson
   homepage 'https://github.com/anholt/libepoxy'
   version '1.5.10'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/anholt/libepoxy.git'
   git_hashtag version
   binary_compression 'tar.zst'

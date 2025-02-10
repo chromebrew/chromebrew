@@ -5,7 +5,7 @@ class Aalib < Package
   homepage 'https://sourceforge.net/projects/aa-project/'
   version '1.4p5-50'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://salsa.debian.org/debian/aalib.git'
   git_hashtag "debian/#{version}"
   binary_compression 'tar.zst'

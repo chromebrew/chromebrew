@@ -8,7 +8,7 @@ class Xorg_xset < Package
   homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.2.5'
   license 'X11'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xset.git'
   git_hashtag "xset-#{version}"
   binary_compression 'tar.zst'

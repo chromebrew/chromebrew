@@ -5,7 +5,7 @@ class Dconf_editor < Meson
   homepage 'https://wiki.gnome.org/Apps/DconfEditor'
   version '45.0.1'
   license 'GPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/dconf-editor.git'
   git_hashtag version
   binary_compression 'tar.zst'

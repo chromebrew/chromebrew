@@ -5,7 +5,7 @@ class Gdal < CMake
   homepage 'https://gdal.org/'
   version '3.7.3'
   license 'BSD, Info-ZIP and MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://download.osgeo.org/gdal/3.7.3/gdal-3.7.3.tar.xz'
   source_sha256 'e0a6f0c453ea7eb7c09967f50ac49426808fcd8f259dbc9888140eb69d7ffee6'
   binary_compression 'tar.zst'

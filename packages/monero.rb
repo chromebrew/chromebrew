@@ -5,7 +5,7 @@ class Monero < Package
   homepage 'https://www.getmonero.org/'
   version '0.18.3.4'
   license 'The Cryptonote developers,The Boolberry developers,MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.27'
 
   source_url({

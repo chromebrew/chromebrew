@@ -8,7 +8,7 @@ class Vc_intrinsics < CMake
   homepage 'https://github.com/intel/vc-intrinsics'
   version '0.17.0'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/intel/vc-intrinsics.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
