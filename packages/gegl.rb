@@ -5,7 +5,7 @@ class Gegl < Meson
   homepage 'https://gegl.org/'
   version '0.4.54'
   license 'GPL-3+ and LGPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.gimp.org/pub/gegl/#{version.rpartition('.')[0]}/gegl-#{version}.tar.xz"
   source_sha256 '418c26d94be8805d7d98f6de0c6825ca26bd74fcacb6c188da47533d9ee28247'
   binary_compression 'tar.zst'
@@ -13,7 +13,7 @@ class Gegl < Meson
   binary_sha256({
     aarch64: 'fa0d3a8e0c6b229dc866f029c44c0865df03d992f54e29276a99d73cb5512405',
      armv7l: 'fa0d3a8e0c6b229dc866f029c44c0865df03d992f54e29276a99d73cb5512405',
-     x86_64: '354e826616305bf3c9e50dc78d0368e9099bc93be1aec5cd92b85229da4bb536'
+     x86_64: '38f9c9cca4573d669e5008d59b6e89f2c0308652e89c7d9fa701c1a0aab7e3ea'
   })
 
   depends_on 'py3_asciidoc' => :build
