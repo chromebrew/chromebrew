@@ -1,9 +1,9 @@
-/usr/local/lib/python3.13/site-packages/pypdf-5.2.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pypdf-5.2.0.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/pypdf-5.2.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pypdf-5.2.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pypdf-5.2.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pypdf-5.2.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pypdf-5.3.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pypdf-5.3.0.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/pypdf-5.3.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pypdf-5.3.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pypdf-5.3.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pypdf-5.3.0.dist-info/WHEEL
 /usr/local/lib/python3.13/site-packages/pypdf/__init__.py
 /usr/local/lib/python3.13/site-packages/pypdf/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/__pycache__/_cmap.cpython-313.pyc
@@ -90,6 +90,7 @@
 /usr/local/lib/python3.13/site-packages/pypdf/generic/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/generic/__pycache__/_base.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/generic/__pycache__/_data_structures.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pypdf/generic/__pycache__/_files.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/generic/__pycache__/_fit.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/generic/__pycache__/_image_inline.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/generic/__pycache__/_outline.cpython-313.pyc
@@ -98,6 +99,7 @@
 /usr/local/lib/python3.13/site-packages/pypdf/generic/__pycache__/_viewerpref.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/generic/_base.py
 /usr/local/lib/python3.13/site-packages/pypdf/generic/_data_structures.py
+/usr/local/lib/python3.13/site-packages/pypdf/generic/_files.py
 /usr/local/lib/python3.13/site-packages/pypdf/generic/_fit.py
 /usr/local/lib/python3.13/site-packages/pypdf/generic/_image_inline.py
 /usr/local/lib/python3.13/site-packages/pypdf/generic/_outline.py
