@@ -17,6 +17,7 @@ require 'English'
 require_relative '../lib/color'
 require_relative '../lib/const'
 require_relative '../lib/package'
+require_relative '../lib/require_gem'
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 
 abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV['GITLAB_TOKEN'].nil?
@@ -26,25 +27,6 @@ puts "Setting the CREW_AGREE_TIMEOUT_SECONDS environment variable to less than t
 SKIP_UPDATE_CHECKS = ARGV.include?('--skip')
 CHECK_ALL_PYTHON = ARGV.include?('--check-all-python')
 CHECK_ALL_RUBY = ARGV.include?('--check-all-ruby')
-def require_gem(gem_name_and_require = nil, require_override = nil)
-  # Allow only loading gems when needed.
-  return if gem_name_and_require.nil?
-
-  gem_name = gem_name_and_require.split('/')[0]
-  begin
-    gem gem_name
-  rescue LoadError
-    puts " -> install #{gem_name} gem".orange
-    Gem.install(gem_name)
-    gem gem_name
-  end
-  requires = if require_override.nil?
-               gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
-             else
-               require_override
-             end
-  require requires
-end
 require_gem 'highline'
 require_gem 'timeout'
 
