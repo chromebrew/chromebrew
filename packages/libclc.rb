@@ -52,7 +52,7 @@ class Libclc < Package
   def self.build
     @cmake_options = case ARCH
                      when 'i686', 'x86_64'
-                       CREW_CMAKE_FNO_LTO_OPTIONS.gsub('-fno-lto', '')
+                       CREW_CMAKE_OPTIONS.gsub('-flto=auto', '').sub('-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE', '')
                      else
                        CREW_CMAKE_OPTIONS
                      end
