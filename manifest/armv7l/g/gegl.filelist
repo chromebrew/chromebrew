@@ -141,7 +141,7 @@
 /usr/local/lib/girepository-1.0/Gegl-0.4.typelib
 /usr/local/lib/libgegl-0.4.so
 /usr/local/lib/libgegl-0.4.so.0
-/usr/local/lib/libgegl-0.4.so.0.451.1
+/usr/local/lib/libgegl-0.4.so.0.453.1
 /usr/local/lib/libgegl-npd-0.4.so
 /usr/local/lib/libgegl-sc-0.4.so
 /usr/local/lib/pkgconfig/gegl-0.4.pc
@@ -171,6 +171,7 @@
 /usr/local/share/gegl-0.4/lua/preferences.lua
 /usr/local/share/gegl-0.4/lua/viewer.lua
 /usr/local/share/gir-1.0/Gegl-0.4.gir
+/usr/local/share/locale/bg/LC_MESSAGES/gegl-0.4.mo
 /usr/local/share/locale/bs/LC_MESSAGES/gegl-0.4.mo
 /usr/local/share/locale/ca/LC_MESSAGES/gegl-0.4.mo
 /usr/local/share/locale/da/LC_MESSAGES/gegl-0.4.mo
