@@ -5,7 +5,7 @@ class Gemacs < Package
   homepage 'https://www.gnu.org/software/emacs/'
   version '29.1'
   license 'GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://ftpmirror.gnu.org/emacs/emacs-29.1.tar.xz'
   source_sha256 'd2f881a5cc231e2f5a03e86f4584b0438f83edd7598a09d24a21bd8d003e2e01'
   binary_compression 'tar.zst'

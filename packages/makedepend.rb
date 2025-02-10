@@ -5,7 +5,7 @@ class Makedepend < Package
   homepage 'https://www.x.org/wiki/'
   version '1.0.6'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/releases/individual/util/makedepend-1.0.6.tar.gz'
   source_sha256 '845f6708fc850bf53f5b1d0fb4352c4feab3949f140b26f71b22faba354c3365'
   binary_compression 'tar.xz'

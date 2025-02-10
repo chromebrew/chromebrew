@@ -8,7 +8,7 @@ class Glslang < CMake
   homepage 'https://github.com/KhronosGroup/glslang'
   version '14.0.0'
   license 'BSD-3, MIT, BSD-2, Apache-2.0 and NVIDIA'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/KhronosGroup/glslang.git'
   git_hashtag version
   binary_compression 'tar.zst'

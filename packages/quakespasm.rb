@@ -5,7 +5,7 @@ class Quakespasm < Package
   homepage 'https://quakespasm.sourceforge.net/'
   version '0.96.3'
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/sezero/quakespasm.git'
   git_hashtag "quakespasm-#{version}"
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Mm_common < Meson
   homepage 'https://www.gtkmm.org/'
   version '1.0.6'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/mm-common.git'
   git_hashtag version
   binary_compression 'tar.zst'

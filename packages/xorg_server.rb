@@ -5,7 +5,7 @@ class Xorg_server < Package
   homepage 'https://www.x.org/wiki/'
   version '21.1.14'
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
   git_hashtag "xorg-server-#{version}"
   binary_compression 'tar.zst'

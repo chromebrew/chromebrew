@@ -5,7 +5,7 @@ class Inkscape < CMake
   homepage 'https://inkscape.org/'
   version '1.4'
   license 'GPL-2 and LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.37'
   source_url "https://media.inkscape.org/dl/resources/file/inkscape-#{version}.tar.xz"
   source_sha256 'c59a85453b699addebcd51c1dc07684dd96a10c8aec716b19551db50562e13f5'

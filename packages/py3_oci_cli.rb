@@ -5,7 +5,7 @@ class Py3_oci_cli < Pip
   homepage 'https://github.com/oracle/oci-cli/'
   version "3.51.6-#{CREW_PY_VER}"
   license 'UPL-1.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 

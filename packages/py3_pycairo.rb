@@ -5,7 +5,7 @@ class Py3_pycairo < Pip
   homepage 'https://cairographics.org/pycairo/'
   version "1.27.0-#{CREW_PY_VER}"
   license 'LGPL-2.1 or MPL-1.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 

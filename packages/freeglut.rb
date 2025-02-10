@@ -5,7 +5,7 @@ class Freeglut < CMake
   homepage 'https://freeglut.sourceforge.net/'
   version '3.6.0'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/freeglut/freeglut.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

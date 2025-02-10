@@ -8,7 +8,7 @@ class Caja < Autotools
   homepage 'https://mate-desktop.org'
   version "1.28.0-#{CREW_ICU_VER}"
   license 'GPL-2+ LGPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://pub.mate-desktop.org/releases/#{version.split('-').first.rpartition('.')[0]}/caja-#{version.split('-').first}.tar.xz"
   source_sha256 '1e3014ce1455817ec2ef74d09efdfb6835d8a372ed9a16efb5919ef7b821957a'
   binary_compression 'tar.zst'

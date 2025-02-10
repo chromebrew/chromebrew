@@ -8,7 +8,7 @@ class Libindicator_gtk3 < Package
   homepage 'https://launchpad.net/libindicator'
   version '12.10.1'
   license 'GPL3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://launchpad.net/libindicator/12.10/12.10.1/+download/libindicator-12.10.1.tar.gz'
   source_sha256 'b2d2e44c10313d5c9cd60db455d520f80b36dc39562df079a3f29495e8f9447f'
   binary_compression 'tpxz'

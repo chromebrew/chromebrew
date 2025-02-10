@@ -5,7 +5,7 @@ class Xprop < Package
   homepage 'https://www.x.org/wiki/'
   version '1.2.6'
   license 'MIT-with-advertising and ISC'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xprop.git'
   git_hashtag "xprop-#{version}"
   binary_compression 'tar.zst'

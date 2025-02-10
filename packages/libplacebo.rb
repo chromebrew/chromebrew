@@ -8,7 +8,7 @@ class Libplacebo < Meson
   homepage 'https://github.com/haasn/libplacebo'
   version '6.338.2'
   license 'LGPL2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://code.videolan.org/videolan/libplacebo.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

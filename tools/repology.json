@@ -83,7 +83,7 @@
     "name": "act",
     "description": "Run your GitHub Actions locally",
     "homepage": "https://github.com/nektos/act",
-    "version": "0.2.71",
+    "version": "0.2.72",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -104,10 +104,18 @@
     "compatibility": "x86_64"
   },
   {
+    "name": "adwaita_fonts",
+    "description": "The typefaces for GNOME",
+    "homepage": "https://gitlab.gnome.org/GNOME/adwaita-fonts",
+    "version": "48.2",
+    "license": "GPL-3.0-or-later",
+    "compatibility": "all"
+  },
+  {
     "name": "adwaita_icon_theme",
     "description": "Theme consisting of a set of icons for GTK+",
     "homepage": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
-    "version": "46.rc",
+    "version": "48.beta",
     "license": "LGPL-3 and CC-BY-SA-4.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -147,7 +155,7 @@
     "name": "aircrack_ng",
     "description": "Key cracker for the 802.11 WEP and WPA-PSK protocols.",
     "homepage": "https://www.aircrack-ng.org",
-    "version": "1.6-17f9",
+    "version": "1.7",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -331,7 +339,7 @@
     "name": "appflowy",
     "description": "AI collaborative workspace where you achieve more without losing control of your data. The best open source alternative to Notion.",
     "homepage": "https://www.appflowy.io/",
-    "version": "0.8.2",
+    "version": "0.8.3",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -363,7 +371,7 @@
     "name": "apr",
     "description": "The mission of the Apache Portable Runtime (APR) project is to create and maintain software libraries that provide a predictable and consistent interface to underlying platform-specific implementations.  APR is the base portability library.",
     "homepage": "https://apr.apache.org/",
-    "version": "1.7.4-1",
+    "version": "1.7.5",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -739,7 +747,7 @@
     "name": "awscli",
     "description": "Universal Command Line Interface for Amazon Web Services",
     "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.37.11",
+    "version": "1.37.16",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -912,6 +920,14 @@
     "compatibility": "all"
   },
   {
+    "name": "bearly",
+    "description": "Bearly makes you 10x faster by adding state of the art AI to your workflow.",
+    "homepage": "https://bearly.ai/",
+    "version": "3.0.0",
+    "license": "Unknown",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "beav",
     "description": "BEAV (Binary Editor And Viewer), is a full featured binary file editor.",
     "homepage": "https://packages.debian.org/sid/beav",
@@ -971,7 +987,7 @@
     "name": "binutils",
     "description": "The GNU Binutils are a collection of binary tools.",
     "homepage": "https://www.gnu.org/software/binutils/",
-    "version": "2.43.1-1",
+    "version": "2.44",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -1067,7 +1083,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.74.51",
+    "version": "1.75.175",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1109,6 +1125,14 @@
     "homepage": "https://www.polyomino.org.uk/computer/software/bsd-games/",
     "version": "2.17-debian34",
     "license": null,
+    "compatibility": "all"
+  },
+  {
+    "name": "btm",
+    "description": "Yet another cross-platform graphical process/system monitor.",
+    "homepage": "https://clementtsang.github.io/bottom",
+    "version": "0.10.2",
+    "license": "MIT",
     "compatibility": "all"
   },
   {
@@ -1195,7 +1219,7 @@
     "name": "c_ares",
     "description": "C library for asynchronous DNS requests (including name resolves).",
     "homepage": "https://c-ares.org/",
-    "version": "1.34.3",
+    "version": "1.34.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -1681,9 +1705,9 @@
   },
   {
     "name": "codelite",
-    "description": "CodeLite is an open source, free, cross platform IDE specialized in C, C++, PHP and JavaScript",
+    "description": "CodeLite is an open source, free, cross platform IDE, specialized in C, C++, Rust, Python, PHP and JavaScript",
     "homepage": "https://codelite.org/",
-    "version": "13.0-1",
+    "version": "18.1.0",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2043,7 +2067,7 @@
     "name": "curl",
     "description": "Command line tool and library for transferring data with URLs.",
     "homepage": "https://curl.se/",
-    "version": "8.11.1",
+    "version": "8.12.0",
     "license": "curl",
     "compatibility": "all"
   },
@@ -2299,7 +2323,7 @@
     "name": "diffutils",
     "description": "GNU Diffutils is a package of several programs related to finding differences between files.",
     "homepage": "https://www.gnu.org/software/diffutils/",
-    "version": "3.10",
+    "version": "3.11",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -3019,7 +3043,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "134.0.2",
+    "version": "135.0",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3635,7 +3659,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "508.0.0",
+    "version": "509.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -3872,6 +3896,14 @@
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
+    "name": "ghostty",
+    "description": "Fast, native, feature-rich terminal emulator pushing modern features",
+    "homepage": "https://ghostty.org",
+    "version": "1.1.0",
+    "license": "MIT",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "giblib",
     "description": "giblib is a simple library which wraps imlib2.",
     "homepage": "http://freshmeat.sourceforge.net/projects/giblib/",
@@ -4043,7 +4075,7 @@
     "name": "glib",
     "description": "GLib provides the core application building blocks for libraries and applications written in C.",
     "homepage": "https://docs.gtk.org/glib/",
-    "version": "2.83.0",
+    "version": "2.83.3",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -4483,7 +4515,7 @@
     "name": "go",
     "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "homepage": "https://go.dev",
-    "version": "1.23.5",
+    "version": "1.23.6",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -4547,7 +4579,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "132.0.6834.159-1",
+    "version": "133.0.6943.53-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -4827,7 +4859,7 @@
     "name": "gtk3",
     "description": "GTK+ is a multi-platform toolkit for creating graphical user interfaces.",
     "homepage": "https://docs.gtk.org/gtk3/",
-    "version": "3.24.43",
+    "version": "3.24.48",
     "license": "LGPL-2.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -4835,7 +4867,7 @@
     "name": "gtk4",
     "description": "GTK+ is a multi-platform toolkit for creating graphical user interfaces.",
     "homepage": "https://developer.gnome.org/gtk4/",
-    "version": "4.17.4",
+    "version": "4.17.4-1",
     "license": "LGPL-2.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -6139,7 +6171,7 @@
     "name": "liba52",
     "description": "liba52 is a free library for decoding ATSC A/52 streams.",
     "homepage": "https://sourceforge.net/projects/liba52/",
-    "version": "0.7.4-2",
+    "version": "0.8.0",
     "license": "GPL-2+",
     "compatibility": "all"
   },
@@ -9275,7 +9307,7 @@
     "name": "magic",
     "description": "Magic is a venerable VLSI layout tool",
     "homepage": "http://opencircuitdesign.com/magic/",
-    "version": "8.3.513",
+    "version": "8.3.517",
     "license": "HPND-UC-export-US",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -9835,7 +9867,7 @@
     "name": "mullvad",
     "description": "Privacy-focused browser",
     "homepage": "https://mullvad.net/browser",
-    "version": "14.0.4",
+    "version": "14.0.5",
     "license": "Mozilla Public License V2",
     "compatibility": "x86_64"
   },
@@ -10475,7 +10507,7 @@
     "name": "nginx",
     "description": "nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.",
     "homepage": "http://nginx.org/",
-    "version": "1.26.1",
+    "version": "1.26.3",
     "license": "BSD-2, BSD, SSLeay, MIT, GPL-2 and GPL-2+",
     "compatibility": "all"
   },
@@ -10667,7 +10699,7 @@
     "name": "octave",
     "description": "Scientific Programming Language",
     "homepage": "https://octave.org/",
-    "version": "9.3.0",
+    "version": "9.4.0",
     "license": "GPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -10731,7 +10763,7 @@
     "name": "oniguruma",
     "description": "Oniguruma is a modern and flexible regular expressions library.",
     "homepage": "https://github.com/kkos/oniguruma",
-    "version": "6.9.7.1",
+    "version": "6.9.10",
     "license": "BSD-2",
     "compatibility": "all"
   },
@@ -11712,6 +11744,14 @@
     "compatibility": "all"
   },
   {
+    "name": "perl_wakeonlan",
+    "description": "Perl script for waking up computers via Wake-On-LAN magic packets",
+    "homepage": "https://github.com/jpoliv/wakeonlan",
+    "version": "0.42",
+    "license": "Artistic License 2.0",
+    "compatibility": "x86_64 aarch64 armv7l"
+  },
+  {
     "name": "perl_xml_namespacesupport",
     "description": "XML::NamespaceSupport - A simple generic namespace processor",
     "homepage": "https://metacpan.org/pod/XML::NamespaceSupport",
@@ -12275,7 +12315,7 @@
     "name": "putty",
     "description": "Free Telnet, SSH, and Rlogin clients plus a terminal emulator",
     "homepage": "https://www.chiark.greenend.org.uk/~sgtatham/putty/",
-    "version": "0.82",
+    "version": "0.83",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -12451,7 +12491,7 @@
     "name": "py3_beautifulsoup4",
     "description": "BeautifulSoup is a screen-scraping library.",
     "homepage": "https://www.crummy.com/software/BeautifulSoup/",
-    "version": "4.12.3",
+    "version": "4.13.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12683,7 +12723,7 @@
     "name": "py3_extract_msg",
     "description": "Extract-msg extracts emails and attachments saved in Microsoft Outlook's .msg files.",
     "homepage": "https://github.com/mattgwwalker/msg-extractor/",
-    "version": "0.52.0",
+    "version": "0.53.1",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -12779,7 +12819,7 @@
     "name": "py3_identify",
     "description": "File identification library for Python",
     "homepage": "https://github.com/pre-commit/identify",
-    "version": "2.6.6",
+    "version": "2.6.7",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12955,7 +12995,7 @@
     "name": "py3_mako",
     "description": "Mako is a super fast templating language.",
     "homepage": "https://www.makotemplates.org/",
-    "version": "1.3.8",
+    "version": "1.3.9",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12987,7 +13027,7 @@
     "name": "py3_maturin",
     "description": "Build and publish crates with pyo3, rust-cpython and cffi bindings",
     "homepage": "https://github.com/PyO3/maturin",
-    "version": "1.8.1",
+    "version": "1.8.2",
     "license": "Apache-2.0 OR MIT",
     "compatibility": "all"
   },
@@ -13051,7 +13091,7 @@
     "name": "py3_nuitka",
     "description": "Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.",
     "homepage": "https://nuitka.net/",
-    "version": "2.6.2",
+    "version": "2.6.4",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13067,7 +13107,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.143.1",
+    "version": "2.144.0",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13075,7 +13115,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.51.5",
+    "version": "3.51.6",
     "license": "UPL-1.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -13467,7 +13507,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.9.4",
+    "version": "0.9.5",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13627,7 +13667,7 @@
     "name": "py3_sqlalchemy",
     "description": "SQLalchemy is a database toolkit for Python.",
     "homepage": "https://sqlalchemy.org",
-    "version": "2.0.37",
+    "version": "2.0.38",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14344,6 +14384,14 @@
     "compatibility": "aarch64 armv7l x86_64"
   },
   {
+    "name": "rio",
+    "description": "A hardware-accelerated GPU terminal emulator focusing to run in desktops and browsers.",
+    "homepage": "https://raphamorim.io/rio",
+    "version": "0.2.5",
+    "license": "MIT",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "ripgrep",
     "description": "ripgrep recursively searches directories for a regex pattern",
     "homepage": "https://github.com/BurntSushi/ripgrep",
@@ -14476,6 +14524,14 @@
     "description": "A fast text processor & publishing toolchain for converting AsciiDoc to HTML5, DocBook & more.",
     "homepage": "https://asciidoctor.org/",
     "version": "2.0.23-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_ast",
+    "description": "A library for working with Abstract Syntax Trees.",
+    "homepage": "https://whitequark.github.io/ast/",
+    "version": "2.4.2-ruby3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14800,6 +14856,14 @@
     "compatibility": "all"
   },
   {
+    "name": "ruby_language_server_protocol",
+    "description": "A Language Server Protocol SDK.",
+    "homepage": "https://github.com/mtsmfm/language_server-protocol-ruby",
+    "version": "3.17.0.4-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
     "name": "ruby_logger",
     "description": "Provides a simple logging utility for outputting messages.",
     "homepage": "https://github.com/ruby/logger",
@@ -14968,6 +15032,22 @@
     "compatibility": "all"
   },
   {
+    "name": "ruby_parallel",
+    "description": "Run any code in parallel Processes(> use all CPUs), Threads(> speedup blocking operations), or Ractors(> use all CPUs).",
+    "homepage": "https://github.com/grosser/parallel",
+    "version": "1.26.3-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_parser",
+    "description": "A Ruby parser written in pure Ruby.",
+    "homepage": "https://github.com/whitequark/parser",
+    "version": "3.3.7.1-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
     "name": "ruby_pathname",
     "description": "Representation of the name of a file or directory on the filesystem.",
     "homepage": "https://github.com/ruby/pathname",
@@ -15064,6 +15144,14 @@
     "compatibility": "all"
   },
   {
+    "name": "ruby_rainbow",
+    "description": "Colorize printed text on ANSI terminals.",
+    "homepage": "https://github.com/sickill/rainbow",
+    "version": "3.1.1-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
     "name": "ruby_rake",
     "description": "Rake is a Make-like program implemented in Ruby.",
     "homepage": "https://github.com/ruby/rake",
@@ -15083,7 +15171,7 @@
     "name": "ruby_rdoc",
     "description": "RDoc produces HTML and command-line documentation for Ruby projects.",
     "homepage": "https://ruby.github.io/rdoc",
-    "version": "6.11.0-ruby3.3",
+    "version": "6.12.0-ruby3.3",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15101,6 +15189,14 @@
     "homepage": "https://github.com/ruby/readline-ext",
     "version": "0.2.0-ruby3.3",
     "license": "BSD-2-Clause",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_regexp_parser",
+    "description": "A library for tokenizing, lexing, and parsing Ruby regular expressions.",
+    "homepage": "https://github.com/ammar/regexp_parser",
+    "version": "2.10.0-ruby3.3",
+    "license": "MIT",
     "compatibility": "all"
   },
   {
@@ -15163,8 +15259,24 @@
     "name": "ruby_rubocop",
     "description": "A Ruby static code analyzer and formatter",
     "homepage": "https://rubocop.org",
-    "version": "1.71.1-ruby3.3",
+    "version": "1.71.2-ruby3.3",
     "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_rubocop_ast",
+    "description": "Contains the classes needed by RuboCop to deal with Ruby's AST.",
+    "homepage": "https://github.com/rubocop/rubocop-ast",
+    "version": "1.38.0-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_rubocop_chromebrew",
+    "description": "A RuboCop extension to enforce Chromebrew-specific practices.",
+    "homepage": "https://github.com/chromebrew/rubocop-chromebrew",
+    "version": "0.0.2-ruby3.3",
+    "license": "GPL-3.0-or-later",
     "compatibility": "all"
   },
   {
@@ -15180,6 +15292,14 @@
     "description": "Ruby bindings for libversion.",
     "homepage": "https://github.com/Zopolis4/ruby-libversion",
     "version": "1.0.0-2-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_ruby_progressbar",
+    "description": "Ruby/ProgressBar is an extremely flexible text progress bar library for Ruby.",
+    "homepage": "https://github.com/jfelchner/ruby-progressbar",
+    "version": "1.13.0-ruby3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15373,6 +15493,22 @@
     "homepage": "https://github.com/ruby/un",
     "version": "0.3.0-ruby3.3",
     "license": "Ruby",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_unicode_display_width",
+    "description": "Determines the monospace display width of a string in Ruby, which is useful for all kinds of terminal-based applications.",
+    "homepage": "https://github.com/janlelis/unicode-display_width",
+    "version": "3.1.4-ruby3.3",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_unicode_emoji",
+    "description": "Provides various sophisticated regular expressions to work with Emoji in strings, incorporating the latest Unicode / Emoji standards.",
+    "homepage": "https://github.com/janlelis/unicode-emoji",
+    "version": "4.0.4-ruby3.3",
+    "license": "MIT",
     "compatibility": "all"
   },
   {
@@ -15867,7 +16003,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.40.0",
+    "version": "7.41.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -16155,7 +16291,7 @@
     "name": "sqlite",
     "description": "SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.",
     "homepage": "https://www.sqlite.org/",
-    "version": "3.47.2",
+    "version": "3.49.0",
     "license": "public-domain",
     "compatibility": "all"
   },
@@ -16171,7 +16307,7 @@
     "name": "sqlmap",
     "description": "sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.",
     "homepage": "https://sqlmap.org/",
-    "version": "1.9",
+    "version": "1.9.2",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -16659,7 +16795,7 @@
     "name": "tesseract",
     "description": "A neural net (LSTM) based OCR engine which is focused on line recognition & an older OCR engine which recognizes character patterns.",
     "homepage": "https://github.com/tesseract-ocr/tesseract",
-    "version": "5.4.1",
+    "version": "5.5.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -16875,7 +17011,7 @@
     "name": "torbrowser",
     "description": "'The Onion Router' browser",
     "homepage": "https://www.torproject.org/",
-    "version": "14.0",
+    "version": "14.0.6",
     "license": "BSD, custom, MPL-2.0 and MIT",
     "compatibility": "x86_64"
   },
@@ -16923,7 +17059,7 @@
     "name": "tre",
     "description": "The approximate regex matching library and agrep command line tool.",
     "homepage": "https://github.com/laurikari/tre",
-    "version": "07e66d0",
+    "version": "0.9.0",
     "license": "BSD-2",
     "compatibility": "all"
   },
@@ -17395,7 +17531,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.1.3570.42-1",
+    "version": "7.1.3570.47-1",
     "license": "Vivaldi",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -17451,7 +17587,7 @@
     "name": "vscodium",
     "description": "VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.",
     "homepage": "https://vscodium.com/",
-    "version": "1.96.4.25026",
+    "version": "1.97.0.25037",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18035,7 +18171,7 @@
     "name": "xercesc",
     "description": "Xerces-C++ is a validating XML parser written in a portable subset of C++.",
     "homepage": "https://xerces.apache.org/xerces-c/",
-    "version": "3.2.3",
+    "version": "3.2.5",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -18523,7 +18659,7 @@
     "name": "zeromq",
     "description": "Fast messaging system built on sockets. C and C++ bindings. aka 0MQ, ZMQ.",
     "homepage": "https://zeromq.org/",
-    "version": "4.3.2",
+    "version": "4.3.5",
     "license": "LGPL-3",
     "compatibility": "all"
   },

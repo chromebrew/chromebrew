@@ -7,7 +7,7 @@ class Glibc_build237 < Package
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   # @libc_version = LIBC_VERSION
   @libc_version = '2.37'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc version.split('-').first
   max_glibc version.split('-').first
   source_url 'https://github.com/bminor/glibc.git'

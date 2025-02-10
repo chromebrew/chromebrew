@@ -5,7 +5,7 @@ class Tepl_5 < Meson
   homepage 'https://gitlab.gnome.org/Archive/tepl'
   version '5.1.1'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/Archive/tepl.git'
   git_hashtag version
   binary_compression 'tar.zst'

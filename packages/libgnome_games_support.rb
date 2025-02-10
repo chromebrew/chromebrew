@@ -5,7 +5,7 @@ class Libgnome_games_support < Meson
   homepage 'https://gitlab.gnome.org/GNOME/libgnome-games-support'
   version '1.8.2' # 2.0.0 is out, but gnome_mines and gnome_klotski don't work with it yet.
   license 'LGPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libgnome-games-support.git'
   git_hashtag version
   binary_compression 'tar.zst'

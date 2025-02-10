@@ -5,7 +5,7 @@ class Fcft < Meson
   homepage 'https://codeberg.org/dnkl/fcft'
   version '3.1.8'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://codeberg.org/dnkl/fcft.git'
   git_hashtag version
   binary_compression 'tar.zst'

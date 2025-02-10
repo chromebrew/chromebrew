@@ -5,7 +5,7 @@ class Libsoup < Meson
   homepage 'https://wiki.gnome.org/Projects/libsoup'
   version '3.4.4'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libsoup.git'
   git_hashtag version
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Gst_editing_services < Package
   homepage 'https://gstreamer.freedesktop.org/modules/gst-editing-services.html'
   version '1.18.4'
   license 'LGPL-2.0+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://gstreamer.freedesktop.org/src/gst-editing-services/gst-editing-services-#{version}.tar.xz"
   source_sha256 '4687b870a7de18aebf50f45ff572ad9e0138020e3479e02a6f056a0c4c7a1d04'
   binary_compression 'tar.xz'

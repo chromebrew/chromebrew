@@ -5,7 +5,7 @@ class Xinit < Package
   homepage 'https://www.x.org/wiki/'
   version '1.4.2'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/archive/individual/app/xinit-1.4.2.tar.gz'
   source_sha256 '9121c9162f6dedab1229a8c4ed4021c4d605699cb0da580ac2ee1b0c96b3f60e'
   binary_compression 'tar.zst'

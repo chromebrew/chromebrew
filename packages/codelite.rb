@@ -5,7 +5,7 @@ class Codelite < CMake
   homepage 'https://codelite.org/'
   version '18.1.0'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/eranif/codelite.git'
   git_hashtag version
   binary_compression 'tar.zst'

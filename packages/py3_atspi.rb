@@ -8,7 +8,7 @@ class Py3_atspi < Autotools
   homepage 'https://wiki.linuxfoundation.org/accessibility/atk/at-spi/at-spi_on_d-bus'
   version "2.46.1-#{CREW_PY_VER}"
   license 'GPL2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/pyatspi2.git'
   git_hashtag "PYATSPI_#{version.split('-').first.gsub('.', '_')}"
   binary_compression 'tar.zst'

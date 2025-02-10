@@ -5,7 +5,7 @@ class Mono < Package
   homepage 'https://www.mono-project.com/'
   version '6.12.0.122'
   license 'MIT, LGPL-2.1, GPL-2, BSD-4, NPL-1.1, Ms-PL, GPL-3-with-linking-exception and IDPL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.mono-project.com/sources/mono/mono-#{version}.tar.xz"
   source_sha256 '29c277660fc5e7513107aee1cbf8c5057c9370a4cdfeda2fc781be6986d89d23'
   binary_compression 'tar.xz'

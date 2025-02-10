@@ -5,7 +5,7 @@ class Xcurses < Package
   homepage 'https://pdcurses.org/'
   version '3.9'
   license 'Public domain'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/wmcbrine/PDCurses/archive/3.9.tar.gz'
   source_sha256 '590dbe0f5835f66992df096d3602d0271103f90cf8557a5d124f693c2b40d7ec'
   binary_compression 'tar.zst'

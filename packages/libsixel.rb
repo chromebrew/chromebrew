@@ -8,7 +8,7 @@ class Libsixel < Package
   homepage 'https://github.com/libsixel/libsixel'
   version '1.10.3'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsixel/libsixel/archive/v1.10.3.tar.gz'
   source_sha256 '028552eb8f2a37c6effda88ee5e8f6d87b5d9601182ddec784a9728865f821e0'
   binary_compression 'tar.zst'

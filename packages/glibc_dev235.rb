@@ -6,7 +6,7 @@ class Glibc_dev235 < Package
   homepage Glibc_build235.homepage
   version '2.35'
   license Glibc_build235.license
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc version.split('-').first
   max_glibc version.split('-').first
   source_url 'SKIP'

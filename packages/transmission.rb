@@ -5,7 +5,7 @@ class Transmission < Package
   homepage 'https://transmissionbt.com/'
   version '4.0.5'
   license 'GPL-2, GPL-3 or Transmission-OpenSSL-exception, GPL-2 and MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/transmission/transmission/releases/download/4.0.5/transmission-4.0.5.tar.xz'
   source_sha256 'fd68ff114a479200043c30c7e69dba4c1932f7af36ca4c5b5d2edcb5866e6357'
   binary_compression 'tar.zst'

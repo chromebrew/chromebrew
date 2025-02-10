@@ -5,7 +5,7 @@ class Scrot < Package
   homepage 'https://github.com/resurrecting-open-source-projects/scrot'
   version '1.8.1'
   license 'feh and LGPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/resurrecting-open-source-projects/scrot/releases/download/1.8.1/scrot-1.8.1.tar.bz2'
   source_sha256 '05f91be9a32eb912f8f2b9abdb3dca83166f77ed0a5a430b6766067ab13c3b18'
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Libglade < Autotools
   homepage 'https://www.jamesh.id.au/software/libglade/'
   version '2.6.4-1'
   license 'LGPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/libglade/2.6/libglade-2.6.4.tar.bz2'
   source_sha256 '64361e7647839d36ed8336d992fd210d3e8139882269bed47dc4674980165dec'
   binary_compression 'tar.xz'

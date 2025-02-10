@@ -5,7 +5,7 @@ class Fltk < Package
   homepage 'https://www.fltk.org/'
   version '1.3.9'
   license 'FLTK and LGPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.fltk.org/pub/fltk/1.3.9/fltk-1.3.9-source.tar.bz2'
   source_sha256 '103441134915402808fd45424d4061778609437e804334434e946cfd26b196c2'
   binary_compression 'tar.zst'

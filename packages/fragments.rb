@@ -5,7 +5,7 @@ class Fragments < Meson
   homepage 'https://gitlab.gnome.org/World/Fragments'
   version '3.0.1'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/World/Fragments.git'
   git_hashtag version
   binary_compression 'tar.zst'

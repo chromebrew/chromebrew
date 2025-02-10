@@ -5,7 +5,7 @@ class Libgconf < Autotools
   homepage 'https://gitlab.gnome.org/Archive/gconf'
   version '3.2.6'
   license 'LGPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/GConf/3.2/GConf-3.2.6.tar.xz'
   source_sha256 '1912b91803ab09a5eed34d364bf09fe3a2a9c96751fde03a4e0cfa51a04d784c'
   binary_compression 'tar.xz'

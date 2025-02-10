@@ -3,7 +3,7 @@ require 'buildsystems/python'
 class Py3_pip < Python
   description 'Pip is the python package manager from the Python Packaging Authority.'
   homepage 'https://pip.pypa.io/'
-  version "25.0-#{CREW_PY_VER}"
+  version "25.0.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/pip.git'
@@ -11,10 +11,10 @@ class Py3_pip < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ef1dda8eb7b3a70c223f67ed13edcb20d1a2ea4f85fb60954e82af8ffec19b06',
-     armv7l: 'ef1dda8eb7b3a70c223f67ed13edcb20d1a2ea4f85fb60954e82af8ffec19b06',
-       i686: 'af2f6126764a51ce1086c561ea9e1089a5af9e27f7e0783fd8653b1b64ab336c',
-     x86_64: '8a1fcdf17f6d504c161333b64ea236fbb8b2e576ddd335f418737a4b39a40995'
+    aarch64: '2a47c685f6f62407fa9839888d5490a1b191455553e057da43aeb135421d5ada',
+     armv7l: '2a47c685f6f62407fa9839888d5490a1b191455553e057da43aeb135421d5ada',
+       i686: 'd58c437c62e8cd2f7e5091eb32fac4e153ba2f99991367ebe5686f5a4a0ae24d',
+     x86_64: '73d47d6d860db91e6f6d972d4fce3cd98b10eb9e16906bc7345825b101aebe80'
   })
 
   depends_on 'python3'

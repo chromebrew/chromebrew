@@ -5,7 +5,7 @@ class Localsearch < Meson
   homepage 'https://gitlab.gnome.org/GNOME/localsearch'
   version "3.8.0-#{CREW_ICU_VER}"
   license 'GPLv2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/localsearch.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

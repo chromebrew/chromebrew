@@ -6,7 +6,7 @@ class Pango < Meson
   homepage 'https://pango.gnome.org/'
   version '1.56.0'
   license 'LGPL-2+ and FTL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/pango.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

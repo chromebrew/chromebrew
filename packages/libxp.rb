@@ -5,7 +5,7 @@ class Libxp < Package
   homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.4'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/releases/individual/lib/libXp-1.0.4.tar.xz'
   source_sha256 '1f19e3b8e82a34a8fd9889a7d9af0abe8588cb03fb57c37c569634cf3b9df1a4'
   binary_compression 'tar.zst'

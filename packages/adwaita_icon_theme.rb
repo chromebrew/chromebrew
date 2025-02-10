@@ -5,7 +5,7 @@ class Adwaita_icon_theme < Meson
   homepage 'https://gitlab.gnome.org/GNOME/adwaita-icon-theme'
   version '48.beta'
   license 'LGPL-3 and CC-BY-SA-4.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/adwaita-icon-theme.git'
   git_hashtag version
   binary_compression 'tar.zst'

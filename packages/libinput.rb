@@ -5,7 +5,7 @@ class Libinput < Package
   homepage 'https://www.freedesktop.org/wiki/Software/libinput/'
   version '1.21.0'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/libinput/libinput.git'
   git_hashtag version
   binary_compression 'tar.zst'

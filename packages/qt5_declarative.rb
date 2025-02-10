@@ -6,7 +6,7 @@ class Qt5_declarative < Qmake
   kde_5_15_githash = '310c124dac82d711ab15309a9cb0b9d95db9ea8f'
   version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtdeclarative.git'
   git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'

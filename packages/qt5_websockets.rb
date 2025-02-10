@@ -6,7 +6,7 @@ class Qt5_websockets < Qmake
   kde_5_15_githash = '0231c7c3a17c0320601e7766e7e701db5b9eb0dc'
   version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtwebsockets.git'
   git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'

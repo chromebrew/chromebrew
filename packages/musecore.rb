@@ -5,7 +5,7 @@ class Musecore < CMake
   homepage 'https://musescore.org'
   version '4.3.2' # Version 4.4.x requires QT6.
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/musescore/MuseScore.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

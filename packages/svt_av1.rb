@@ -5,7 +5,7 @@ class Svt_av1 < Package
   homepage 'https://gitlab.com/AOMediaCodec/SVT-AV1'
   version '2.0.0'
   license 'BSD-2, Apache-2.0, BSD, ISC, MIT and LGPG-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.com/AOMediaCodec/SVT-AV1.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

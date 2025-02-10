@@ -5,7 +5,7 @@ class Neon < Package
   homepage 'http://www.webdav.org/neon/'
   version '0.32.5'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/notroj/neon.git'
   git_hashtag version
   binary_compression 'tar.zst'

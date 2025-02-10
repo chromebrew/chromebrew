@@ -5,7 +5,7 @@ class Font_misc_misc < Autotools
   homepage 'https://gitlab.freedesktop.org/xorg/font/misc-misc'
   version '1.1.3'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/font/misc-misc.git'
   git_hashtag "font-misc-misc-#{version}"
   binary_compression 'tar.zst'

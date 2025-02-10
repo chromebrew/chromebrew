@@ -5,7 +5,7 @@ class Xfce4_panel < Package
   homepage 'https://xfce.org/'
   version '4.16.3'
   license 'GPL-2+ and LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://archive.xfce.org/src/xfce/xfce4-panel/4.16/xfce4-panel-4.16.3.tar.bz2'
   source_sha256 '5934eaed8a76da52c29b734ccd79600255420333dd6ebd8fd9f066379af1e092'
   binary_compression 'tar.xz'

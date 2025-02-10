@@ -5,7 +5,7 @@ class Love < Autotools
   homepage 'https://www.love2d.org/'
   version '11.5'
   license 'zlib'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/love2d/love/releases/download/#{version}/love-#{version}-linux-src.tar.gz"
   binary_compression 'tar.zst'
 

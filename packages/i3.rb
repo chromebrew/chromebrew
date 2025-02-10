@@ -5,7 +5,7 @@ class I3 < Meson
   homepage 'https://i3wm.org/'
   version '4.23'
   license 'BSD'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/i3/i3.git'
   git_hashtag version
   binary_compression 'tar.zst'

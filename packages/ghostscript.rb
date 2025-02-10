@@ -5,7 +5,7 @@ class Ghostscript < Package
   homepage 'https://www.ghostscript.com/'
   version '10.04.0'
   license 'AGPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10040/ghostpdl-10.04.0.tar.xz'
   source_sha256 '0603f5629bc6f567b454911d104cd96702489c9e70e577787843f480b23d4a77'
   binary_compression 'tar.zst'

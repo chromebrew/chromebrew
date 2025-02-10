@@ -5,7 +5,7 @@ class Font_dec_misc < Autotools
   homepage 'https://gitlab.freedesktop.org/xorg/font/dec-misc'
   version '1.0.4'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/font/dec-misc.git'
   git_hashtag "font-dec-misc-#{version}"
   binary_compression 'tar.zst'

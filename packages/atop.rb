@@ -5,7 +5,7 @@ class Atop < Package
   homepage 'https://www.atoptool.nl/'
   version '2.10.0'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.atoptool.nl/download/atop-2.10.0.tar.gz'
   source_sha256 'e7a673cf2c82578e7dd82ecb0dec83fd9ecb30828b2561c28a9fa5aaf75d5f93'
   binary_compression 'tar.zst'

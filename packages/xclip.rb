@@ -5,7 +5,7 @@ class Xclip < Autotools
   homepage 'https://github.com/astrand/xclip'
   version '0.13'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/astrand/xclip.git'
   git_hashtag version
   binary_compression 'tar.zst'

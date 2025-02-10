@@ -5,7 +5,7 @@ class Libnotify < Meson
   homepage 'https://gitlab.gnome.org/GNOME/libnotify'
   version '0.8.3'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/GNOME/libnotify.git'
   git_hashtag version
   binary_compression 'tar.zst'

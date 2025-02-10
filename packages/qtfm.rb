@@ -5,7 +5,7 @@ class Qtfm < CMake
   homepage 'https://qtfm.eu/'
   version '6.3.0-c19b9c1-1'
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/rodlie/qtfm.git'
   git_hashtag 'c19b9c14d1afde8558c912b17497dd2c34c971ef'
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Profanity < Package
   homepage 'https://profanity-im.github.io/'
   version '0.6.0'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://profanity-im.github.io/profanity-0.6.0.tar.gz'
   source_sha256 'f1b2773b79eb294297686f3913e9489c20effae5e3a335c8956db18f6ee2f660'
   binary_compression 'tar.xz'

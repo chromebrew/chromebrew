@@ -6,7 +6,7 @@ class Wmctrl < Package
   @_ver = '1.07'
   version "#{@_ver}-1"
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://sweb.cz/utils/wmctrl/dist/wmctrl-#{@_ver}.tar.gz"
   source_sha256 'd78a1efdb62f18674298ad039c5cbdb1edb6e8e149bb3a8e3a01a4750aa3cca9'
   binary_compression 'tar.xz'

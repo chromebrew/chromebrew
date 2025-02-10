@@ -6,7 +6,7 @@ class Php72 < Package
   @_ver = '7.2.34'
   version "#{@_ver}-2"
   license 'PHP-3.01'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.php.net/distributions/php-7.2.34.tar.xz'
   source_sha256 '409e11bc6a2c18707dfc44bc61c820ddfd81e17481470f3405ee7822d8379903'
   binary_compression 'tar.xz'

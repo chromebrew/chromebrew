@@ -5,7 +5,7 @@ class Libxfixes < Package
   homepage 'https://x.org/wiki/'
   version '6.0.0'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/archive/individual/lib/libXfixes-6.0.0.tar.bz2'
   source_sha256 'a7c1a24da53e0b46cac5aea79094b4b2257321c621b258729bc3139149245b4c'
   binary_compression 'tar.zst'

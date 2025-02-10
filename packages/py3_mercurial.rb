@@ -5,7 +5,7 @@ class Py3_mercurial < Pip
   homepage 'https://www.mercurial-scm.org/'
   version "6.9.1-#{CREW_PY_VER}"
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 

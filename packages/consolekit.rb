@@ -5,7 +5,7 @@ class Consolekit < Package
   homepage 'https://github.com/ConsoleKit2/ConsoleKit2'
   version '1.2.2'
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/ConsoleKit2/ConsoleKit2/archive/#{version}.tar.gz"
   source_sha256 '104fd9f41c2d572ad62f4032de46c4c384c3522602b0ad953cf55759c6c64c1d'
   binary_compression 'tar.xz'

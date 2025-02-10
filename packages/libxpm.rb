@@ -5,7 +5,7 @@ class Libxpm < Autotools
   homepage 'https://www.x.org/wiki/'
   version '3.5.17'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/archive/individual/lib/libXpm-3.5.17.tar.gz'
   source_sha256 '959466c7dfcfcaa8a65055bfc311f74d4c43d9257900f85ab042604d286df0c6'
   binary_compression 'tar.zst'

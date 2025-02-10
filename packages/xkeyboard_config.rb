@@ -3,7 +3,7 @@ require 'package'
 class Xkeyboard_config < Package
   description 'The non-arch keyboard configuration database for X Window.'
   homepage 'https://www.freedesktop.org/wiki/Software/XKeyboardConfig/'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   version '2.29'
   license 'MIT'
   source_url 'https://www.x.org/releases/individual/data/xkeyboard-config/xkeyboard-config-2.29.tar.bz2'

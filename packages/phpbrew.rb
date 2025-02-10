@@ -5,7 +5,7 @@ class Phpbrew < Package
   homepage 'https://phpbrew.github.io/phpbrew/'
   version '2.2.0'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/phpbrew/phpbrew/releases/download/2.2.0/phpbrew.phar'
   source_sha256 '3247b8438888827d068542b2891392e3beffebe122f4955251fa4f9efa0da03d'
 

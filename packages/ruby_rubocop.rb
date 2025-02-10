@@ -21,6 +21,7 @@ class Ruby_rubocop < RUBY
   depends_on 'ruby_regexp_parser' # R
   depends_on 'ruby_rubocop' # R
   depends_on 'ruby_rubocop_ast' # R
+  depends_on 'ruby_rubocop_chromebrew' # R
   depends_on 'ruby_ruby_progressbar' # R
   depends_on 'ruby_unicode_display_width' # R
   depends_on 'xdg_base' # L

@@ -5,7 +5,7 @@ class Upower < Meson
   homepage 'https://upower.freedesktop.org'
   version '1.90.2'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/upower/upower.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

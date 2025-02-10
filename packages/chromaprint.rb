@@ -5,7 +5,7 @@ class Chromaprint < Package
   homepage 'https://acoustid.org/chromaprint'
   version '1.5.1-aa67c95-1'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/acoustid/chromaprint.git'
   git_hashtag 'aa67c95b9e486884a6d3ee8b0c91207d8c2b0551'
   binary_compression 'tar.zst'

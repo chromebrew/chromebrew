@@ -6,7 +6,7 @@ class Qt5_base < Package
   kde_5_15_githash = 'ab13e81917207959785ad0185a3a9974e552a7f5'
   version "kde-5.15.15-#{kde_5_15_githash[0, 7]}-#{CREW_ICU_VER}"
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
   git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'

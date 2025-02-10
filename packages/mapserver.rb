@@ -5,7 +5,7 @@ class Mapserver < Package
   homepage 'https://mapserver.org/'
   version '8.0.0'
   license 'Boost-1.0, BSD-2, ISC, MIT and tcltk'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'http://download.osgeo.org/mapserver/mapserver-8.0.0.tar.gz'
   source_sha256 'bb7ee625eb6fdce9bd9851f83664442845d70d041e449449e88ac855e97d773c'
   binary_compression 'tar.zst'

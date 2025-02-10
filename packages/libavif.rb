@@ -5,7 +5,7 @@ class Libavif < CMake
   homepage 'https://github.com/AOMediaCodec/libavif'
   version '1.1.0'
   license 'BSD-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/AOMediaCodec/libavif.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Gvfs < Meson
   homepage 'https://wiki.gnome.org/Projects/gvfs'
   version '1.54.0'
   license 'GPLv2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gvfs.git'
   git_hashtag version
   binary_compression 'tar.zst'

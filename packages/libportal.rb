@@ -5,7 +5,7 @@ class Libportal < Meson
   homepage 'https://github.com/flatpak/libportal'
   version '0.8.1'
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/flatpak/libportal.git'
   git_hashtag version
   source_sha256 '8ad326c4f53b7433645dc86d994fef0292bee8adda0fe67db9288ace19250a9c'

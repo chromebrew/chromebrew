@@ -5,7 +5,7 @@ class Xclock < Package
   homepage 'https://www.x.org/archive/X11R6.8.1/doc/xclock.1.html'
   version '1.1.1'
   license 'MIT-with-advertising'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xclock.git'
   git_hashtag "xclock-#{version}"
   binary_compression 'tar.zst'

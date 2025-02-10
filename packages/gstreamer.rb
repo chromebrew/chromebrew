@@ -5,7 +5,7 @@ class Gstreamer < Meson
   homepage 'https://gstreamer.freedesktop.org/'
   version '1.24.11'
   license 'LGPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
   git_hashtag version
   binary_compression 'tar.zst'

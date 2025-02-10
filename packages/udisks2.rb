@@ -5,7 +5,7 @@ class Udisks2 < Package
   homepage 'https://github.com/storaged-project/udisks'
   version '2.9.4'
   license 'GPL-2.0+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/storaged-project/udisks/releases/download/udisks-2.9.4/udisks-2.9.4.tar.bz2'
   source_sha256 'b6b60ebab0d5e09624120c5d158882e87d8c2473db60783b63deeba74cb18d1c'
   binary_compression 'tar.zst'

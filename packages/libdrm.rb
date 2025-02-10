@@ -5,7 +5,7 @@ class Libdrm < Meson
   homepage 'https://dri.freedesktop.org/wiki/'
   version '2.4.124'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/drm.git'
   git_hashtag "libdrm-#{version}"
   binary_compression 'tar.zst'

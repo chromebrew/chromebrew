@@ -5,7 +5,7 @@ class Jasper < Package
   homepage 'https://www.ece.uvic.ca/~frodo/jasper/'
   version '3.0.6'
   license 'JasPer-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/jasper-software/jasper.git'
   git_hashtag "version-#{version}"
   binary_compression 'tar.zst'

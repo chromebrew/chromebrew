@@ -5,7 +5,7 @@ class Giblib < Package
   homepage 'http://freshmeat.sourceforge.net/projects/giblib/'
   version '1.2.4'
   license 'feh'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://deb.debian.org/debian/pool/main/g/giblib/giblib_1.2.4.orig.tar.gz'
   source_sha256 'e437756ce3ded019946fb3d979991cda7604bc345dbb1338b17655caff65a3d3'
   binary_compression 'tar.xz'

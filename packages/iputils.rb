@@ -5,7 +5,7 @@ class Iputils < Meson
   homepage 'https://github.com/iputils/iputils'
   version '20221126'
   license 'GPL-2, BSD-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/iputils/iputils/archive/refs/tags/20221126.tar.gz'
   source_sha256 '745ea711fe06d5c57d470d21acce3c3ab866eb6afb69379a16c6d60b89bd4311'
   binary_compression 'tar.zst'

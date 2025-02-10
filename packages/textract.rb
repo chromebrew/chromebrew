@@ -5,7 +5,7 @@ class Textract < Package
   homepage 'http://textract.readthedocs.io/'
   version '1.6.4'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/deanmalmgren/textract.git'
   git_hashtag "v#{version}"
   binary_compression 'tpxz'

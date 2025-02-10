@@ -5,7 +5,7 @@ class Gtk4 < Meson
   homepage 'https://developer.gnome.org/gtk4/'
   version '4.17.4-1'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

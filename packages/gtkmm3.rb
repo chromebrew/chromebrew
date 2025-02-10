@@ -5,7 +5,7 @@ class Gtkmm3 < Meson
   homepage 'https://www.gtkmm.org/'
   version '3.24.7'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/gtkmm/3.24/gtkmm-3.24.7.tar.xz'
   source_sha256 '1d7a35af9c5ceccacb244ee3c2deb9b245720d8510ac5c7e6f4b6f9947e6789c'
   binary_compression 'tar.zst'

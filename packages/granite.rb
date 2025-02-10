@@ -5,7 +5,7 @@ class Granite < Meson
   homepage 'https://github.com/elementary/granite'
   version '6.2.0'
   license 'LGPL-3.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/elementary/granite.git'
   git_hashtag version
   binary_compression 'tar.zst'

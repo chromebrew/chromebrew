@@ -5,7 +5,7 @@ class Keybinder < Autotools
   homepage 'https://github.com/kupferlauncher/keybinder'
   version '0.3.2'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/kupferlauncher/keybinder.git'
   git_hashtag "keybinder-3.0-v#{version}"
   binary_compression 'tar.zst'

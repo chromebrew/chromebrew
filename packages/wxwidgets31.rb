@@ -6,7 +6,7 @@ class Wxwidgets31 < Package
   @_ver = '3.1.7'
   version "#{@_ver}-2"
   license 'wxWindows Library Licence'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
   git_hashtag "v#{@_ver}"
   binary_compression 'tar.zst'

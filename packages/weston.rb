@@ -5,7 +5,7 @@ class Weston < Meson
   homepage 'https://wayland.freedesktop.org'
   version '13.0.0'
   license 'MIT and CC-BY-SA-3.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/wayland/weston.git'
   git_hashtag version
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Libdazzle < Meson
   homepage 'https://gitlab.gnome.org/GNOME/libdazzle/'
   version '3.44.0'
   license 'GPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libdazzle.git'
   git_hashtag version
   binary_compression 'tar.zst'

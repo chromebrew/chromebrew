@@ -5,7 +5,7 @@ class Sdl2_image < Autotools
   homepage 'https://github.com/libsdl-org/SDL_image'
   version '2.8.2'
   license 'ZLIB'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/SDL_image.git'
   git_hashtag "release-#{version}"
   binary_compression 'tar.zst'

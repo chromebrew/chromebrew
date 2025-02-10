@@ -5,7 +5,7 @@ class Xorg_libinput_driver < Package
   homepage 'https://www.x.org/wiki/'
   version '0.27.1'
   license 'ISC'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/pub/individual/driver/xf86-input-libinput-0.27.1.tar.bz2'
   source_sha256 'd4ad8dc5ad6f962a3f15f61ba9e9f8e37fa0b57eee9f484e2bd721d60ca72ee6'
   binary_compression 'tar.xz'

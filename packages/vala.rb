@@ -5,7 +5,7 @@ class Vala < Package
   homepage 'https://wiki.gnome.org/Projects/Vala'
   version '0.56.16'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/vala.git'
   git_hashtag version
   binary_compression 'tar.zst'

@@ -6,7 +6,7 @@ class Qt5_imageformats < Qmake
   kde_5_15_githash = '9f658c2093e81d1dc3333e594cc1aa4b0990e221'
   version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtimageformats.git'
   git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'

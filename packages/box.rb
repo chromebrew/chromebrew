@@ -5,7 +5,7 @@ class Box < Package
   homepage 'https://github.com/box-project/box'
   version '4.6.2'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/box-project/box/releases/download/4.6.2/box.phar'
   source_sha256 '3bfb1c1f37a74a78d1178bb92c508de4bf202aae0fb3f33f69ec3577c452de18'
 

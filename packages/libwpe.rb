@@ -5,7 +5,7 @@ class Libwpe < Package
   homepage 'https://wpewebkit.org'
   version '1.14.0'
   license 'BSD-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/WebPlatformForEmbedded/libwpe/releases/download/#{version}/libwpe-#{version}.tar.xz"
   source_sha256 'c073305bbac5f4402cc1c8a4753bfa3d63a408901f86182051eaa5a75dd89c00'
   binary_compression 'tar.zst'

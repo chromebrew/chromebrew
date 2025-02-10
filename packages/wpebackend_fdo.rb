@@ -5,7 +5,7 @@ class Wpebackend_fdo < Package
   homepage 'https://wpewebkit.org'
   version '1.14.0'
   license 'BSD-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/Igalia/WPEBackend-fdo/releases/download/#{version}/wpebackend-fdo-#{version}.tar.xz"
   source_sha256 'e75b0cb2c7145448416e8696013d8883f675c66c11ed750e06865efec5809155'
   binary_compression 'tar.zst'

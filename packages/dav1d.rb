@@ -5,7 +5,7 @@ class Dav1d < Meson
   homepage 'https://code.videolan.org/videolan/dav1d'
   version '1.4.2'
   license 'BSD-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://code.videolan.org/videolan/dav1d.git'
   git_hashtag version
   binary_compression 'tar.zst'

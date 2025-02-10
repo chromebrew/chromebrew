@@ -5,7 +5,7 @@ class Libva < Meson
   homepage 'https://01.org/linuxmedia'
   version '2.22.0'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/intel/libva.git'
   git_hashtag version
   binary_compression 'tar.zst'

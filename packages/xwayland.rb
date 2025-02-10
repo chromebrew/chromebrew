@@ -5,7 +5,7 @@ class Xwayland < Meson
   homepage 'https://x.org/wiki/'
   version '24.1.4'
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
   git_hashtag "xwayland-#{version}"
   binary_compression 'tar.zst'

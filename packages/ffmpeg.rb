@@ -5,7 +5,7 @@ class Ffmpeg < Package
   homepage 'https://ffmpeg.org/'
   version '7.1'
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
   git_hashtag "n#{version}"
   binary_compression 'tar.zst'

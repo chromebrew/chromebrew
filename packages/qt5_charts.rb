@@ -6,7 +6,7 @@ class Qt5_charts < Qmake
   kde_5_15_githash = '0c97aae7dc242ac0710e09397672ad878761157a'
   version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtcharts.git'
   git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'

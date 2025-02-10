@@ -8,7 +8,7 @@ class Fig2dev < Autotools
   homepage 'https://mcj.sourceforge.net/'
   version '3.2.9'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/mcj/fig2dev-#{version}.tar.xz"
   source_sha256 '15e246c8d13cc72de25e08314038ad50ce7d2defa9cf1afc172fd7f5932090b1'
   binary_compression 'tar.zst'

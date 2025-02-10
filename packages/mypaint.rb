@@ -6,7 +6,7 @@ class Mypaint < Package
   @_ver = '2.0.1'
   version "#{@_ver}-1"
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/mypaint/mypaint.git'
   git_hashtag "v#{@_ver}"
   binary_compression 'tpxz'

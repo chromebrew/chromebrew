@@ -5,7 +5,7 @@ class Remmina < CMake
   homepage 'https://remmina.org/'
   version '1.4.39'
   license 'GPL-2+-with-openssl-exception'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://gitlab.com/Remmina/Remmina/-/archive/v#{version}/Remmina-v#{version}.tar.bz2"
   source_sha256 '6ce8944e87f5a7bb5c96587a9d8df412f852717f49e58a7289dd24175519fe46'
   binary_compression 'tar.zst'

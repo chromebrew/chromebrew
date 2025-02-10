@@ -5,7 +5,7 @@ class Libdv < Package
   homepage 'https://libdv.sourceforge.net/'
   version '1.0.0-1'
   license 'libdv'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://downloads.sourceforge.net/libdv/libdv-1.0.0.tar.gz'
   source_sha256 'a305734033a9c25541a59e8dd1c254409953269ea7c710c39e540bd8853389ba'
   binary_compression 'tar.xz'

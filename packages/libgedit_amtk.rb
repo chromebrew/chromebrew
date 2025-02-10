@@ -5,7 +5,7 @@ class Libgedit_amtk < Meson
   homepage 'https://gedit-technology.github.io'
   version '5.8.0'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/gedit-technology/libgedit-amtk.git'
   git_hashtag version
   binary_compression 'tar.zst'

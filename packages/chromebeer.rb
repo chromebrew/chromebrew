@@ -5,7 +5,7 @@ class Chromebeer < Package
   homepage 'https://github.com/chromebrew/chromebrew'
   version '1.1'
   license 'GPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
 
   is_fake
 

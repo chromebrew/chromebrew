@@ -5,7 +5,7 @@ class Libx11 < Autotools
   homepage 'https://x.org/wiki/'
   version '1.8.10'
   license 'X11'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libx11.git'
   git_hashtag "libX11-#{version}"
   binary_compression 'tar.zst'

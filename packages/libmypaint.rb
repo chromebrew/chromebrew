@@ -6,7 +6,7 @@ class Libmypaint < Package
   @_ver = '1.6.1'
   version "#{@_ver}-1"
   license 'ISC'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/mypaint/libmypaint.git'
   git_hashtag "v#{@_ver}"
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Php5 < Package
   homepage 'https://www.php.net/'
   version '5.6.40-2'
   license 'PHP-3.01'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'http://php.net/distributions/php-5.6.40.tar.xz'
   source_sha256 '1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace2656d1c'
   binary_compression 'tar.xz'

@@ -5,7 +5,7 @@ class Nvm < Package
   homepage 'https://github.com/nvm-sh/nvm'
   version '0.40.1'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'
   source_url 'https://github.com/nvm-sh/nvm.git'
   git_hashtag "v#{version}"

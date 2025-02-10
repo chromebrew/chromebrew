@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3.6'
+          ruby-version: '3.4.1'
       - name: Install highline
         run: sudo apt install -y ruby-highline
       - name: Install activesupport
@@ -39,12 +39,13 @@ jobs:
           author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           commit-message: "Update Repology JSON"
           delete-branch: true
+          team-reviewers: chromebrew/active
       - name: Trigger Unit Test Workflow & Add Reviewer Team
         env:
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+          PR_NUMBER: :${{ steps.cpr.outputs.pull-request-number }}
         run: |
-
             echo "Flipping pr ${PR_NUMBER} state."
-            gh pr close ${PR_NUMBER} && gh pr reopen ${PR_NUMBER}
-            gh pr edit ${PR_NUMBER} --add-reviewer chromebrew/active
-            gh pr merge ${PR_NUMBER} --auto
+            gh pr close "${PR_NUMBER}" && gh pr reopen "${PR_NUMBER}"
+            gh pr edit "${PR_NUMBER}" --add-reviewer chromebrew/active
+            gh pr merge "${PR_NUMBER}" --auto

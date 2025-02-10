@@ -5,7 +5,7 @@ class Appstream_glib < Meson
   homepage 'https://people.freedesktop.org/~hughsient/appstream-glib/'
   version '0.8.3'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/hughsie/appstream-glib.git'
   git_hashtag "appstream_glib_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'

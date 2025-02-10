@@ -5,7 +5,7 @@ class Font_adobe_100dpi < Autotools
   homepage 'https://gitlab.freedesktop.org/xorg/font/adobe-100dpi'
   version '1.0.4'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/font/adobe-100dpi.git'
   git_hashtag "font-adobe-100dpi-#{version}"
   binary_compression 'tar.zst'

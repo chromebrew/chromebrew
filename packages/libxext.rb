@@ -5,7 +5,7 @@ class Libxext < Autotools
   homepage 'https://x.org/wiki/'
   version '1.3.6'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/releases/individual/lib/libXext-1.3.6.tar.xz'
   source_sha256 'edb59fa23994e405fdc5b400afdf5820ae6160b94f35e3dc3da4457a16e89753'
   binary_compression 'tar.zst'

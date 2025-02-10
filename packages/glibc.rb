@@ -40,7 +40,7 @@ class Glibc < Package
     depends_on 'glibc_lib237'
   else
     version LIBC_VERSION
-    compatibility 'x86_64 aarch64 armv7l'
+    compatibility 'aarch64 armv7l x86_64'
     depends_on 'glibc_fallthrough'
   end
 end

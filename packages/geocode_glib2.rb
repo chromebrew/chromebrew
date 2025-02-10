@@ -5,7 +5,7 @@ class Geocode_glib2 < Meson
   homepage 'https://gitlab.gnome.org/GNOME/geocode-glib'
   version '3.26.4'
   license 'LGPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/geocode-glib/-/archive/3.26.4/geocode-glib-3.26.4.tar.bz2'
   source_sha256 'b94b7cc015825b4ad64d293093f9881f1bab6837dd2500a88d12869264332e41'
   binary_compression 'tar.zst'

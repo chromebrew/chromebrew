@@ -5,7 +5,7 @@ class At_spi2_core < Meson
   homepage 'https://www.freedesktop.org/wiki/'
   version '2.51.91'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/at-spi2-core.git'
   git_hashtag "AT_SPI2_CORE_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'

@@ -8,7 +8,7 @@ class Libgedit_gtksourceview < Meson
   homepage 'https://gedit-technology.github.io'
   version '299.2.1'
   license 'LGPL2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/gedit-technology/libgedit-gtksourceview.git'
   git_hashtag version
   binary_compression 'tar.zst'

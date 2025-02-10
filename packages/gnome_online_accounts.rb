@@ -5,7 +5,7 @@ class Gnome_online_accounts < Meson
   homepage 'https://wiki.gnome.org/Projects/GnomeOnlineAccounts'
   version '3.48.1'
   license 'LGPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-online-accounts.git'
   git_hashtag version
   binary_compression 'tar.zst'

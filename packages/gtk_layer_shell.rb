@@ -8,7 +8,7 @@ class Gtk_layer_shell < Meson
   homepage 'https://github.com/wmww/gtk-layer-shell'
   version '0.8.2'
   license 'LGPL3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/wmww/gtk-layer-shell.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

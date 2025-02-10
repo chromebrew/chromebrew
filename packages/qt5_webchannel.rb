@@ -6,7 +6,7 @@ class Qt5_webchannel < Qmake
   kde_5_15_githash = 'ad85920e02049bf7ba06366046498e8366a98e8e'
   version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'GPL3 LGPL3 FDL custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtwebchannel.git'
   git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'

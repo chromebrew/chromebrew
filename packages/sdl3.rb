@@ -8,7 +8,7 @@ class Sdl3 < CMake
   homepage 'https://www.libsdl.org'
   version '3.2.0'
   license 'zlib'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/SDL.git'
   git_hashtag "release-#{version}"
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Qemu < Package
   homepage 'https://www.qemu.org/'
   version '9.1.1'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.29' # Needed for MAP_FIXED_NOREPLACE support.
   source_url 'https://github.com/qemu/qemu.git'
   git_hashtag "v#{version}"

@@ -5,7 +5,7 @@ class Arduino_ide < Package
   homepage 'https://www.arduino.cc/'
   version '1.8.19'
   license 'GPL-2, LGPL-2.1 and CC-BY-SA-3.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/arduino/Arduino/releases/download/1.8.19/arduino-1.8.19.tar.xz'
   source_sha256 '350c7e64a38d562c3c5b61e9b93d4d64455a2c71bd0773a5c593198b8efa578d'
   binary_compression 'tar.zst'

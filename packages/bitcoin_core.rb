@@ -5,7 +5,7 @@ class Bitcoin_core < Package
   homepage 'https://bitcoincore.org/'
   version '28.1'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url({
     aarch64: 'https://bitcoincore.org/bin/bitcoin-core-28.1/bitcoin-28.1-arm-linux-gnueabihf.tar.gz',
      armv7l: 'https://bitcoincore.org/bin/bitcoin-core-28.1/bitcoin-28.1-arm-linux-gnueabihf.tar.gz',

@@ -5,7 +5,7 @@ class Volta < Package
   homepage 'https://volta.sh/'
   version '1.1.1'
   license 'BSD-2 Clause'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/volta-cli/volta/archive/v1.1.1.tar.gz'
   source_sha256 'f2289274538124984bebb09b0968c2821368d8a80d60b9615e4f999f6751366d'
   binary_compression 'tar.zst'

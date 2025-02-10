@@ -5,7 +5,7 @@ class Rakudo < Package
   homepage 'https://rakudo.org/'
   version '2023.12'
   license 'Artistic-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/rakudo/rakudo/releases/download/2023.12/rakudo-2023.12.tar.gz'
   source_sha256 '01a4131fb79a63a563b71a40f534d4f3db15cc71c72f8ae19f965b786e98baea'
   binary_compression 'tar.zst'

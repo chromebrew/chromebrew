@@ -5,7 +5,7 @@ class Pulseaudio < Meson
   homepage 'https://www.freedesktop.org/wiki/Software/PulseAudio/'
   version '17.0-1'
   license 'LGPL-2.1 and GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git'
   git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'

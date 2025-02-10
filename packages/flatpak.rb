@@ -5,7 +5,7 @@ class Flatpak < Meson
   homepage 'https://flatpak.org'
   version '1.15.10'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/flatpak/flatpak.git'
   git_hashtag version
   binary_compression 'tar.zst'

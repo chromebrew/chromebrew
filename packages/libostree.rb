@@ -5,7 +5,7 @@ class Libostree < Autotools
   homepage 'https://ostreedev.github.io/ostree/'
   version '2024.9'
   license 'LGPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/ostreedev/ostree/releases/download/v#{version}/libostree-#{version}.tar.xz"
   source_sha256 '4356170ec5f7a09428b6add77e2c6f31d4049ab765ee67cf929bfa3b750d3e1b'
   binary_compression 'tar.zst'

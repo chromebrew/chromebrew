@@ -11,7 +11,7 @@ class Pipewire < Meson
     version '1.2.6'
     min_glibc '2.32'
   end
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   license 'LGPL-2.1+'
   source_url 'https://gitlab.freedesktop.org/pipewire/pipewire.git'
   git_hashtag version

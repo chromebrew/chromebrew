@@ -5,7 +5,7 @@ class Sqlitebrowser < Package
   homepage 'https://sqlitebrowser.org'
   version '3.11.2'
   license 'GPL-3 and MPL-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/sqlitebrowser/sqlitebrowser/archive/v3.11.2.tar.gz'
   source_sha256 '298acb28878aa712277a1c35c185b07a5a1671cc3e2c6a21b323477b91d486fc'
   binary_compression 'tar.xz'

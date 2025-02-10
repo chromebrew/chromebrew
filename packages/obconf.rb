@@ -5,7 +5,7 @@ class Obconf < Package
   homepage 'http://openbox.org/wiki/ObConf:About'
   version '2.0.4'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'http://openbox.org/dist/obconf/obconf-2.0.4.tar.gz'
   source_sha256 '71a3e5f4ee246a27421ba85044f09d449f8de22680944ece9c471cd46a9356b9'
   binary_compression 'tar.xz'

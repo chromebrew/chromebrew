@@ -5,7 +5,7 @@ class Libxfont < Package
   homepage 'https://x.org/wiki/'
   version '2.0.1'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/archive/individual/lib/libXfont2-2.0.1.tar.gz'
   source_sha256 '381b6b385a69343df48a082523c856aed9042fbbc8ee0a6342fb502e4321230a'
   binary_compression 'tar.xz'

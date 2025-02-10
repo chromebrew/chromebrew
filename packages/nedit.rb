@@ -5,7 +5,7 @@ class Nedit < Package
   homepage 'https://sourceforge.net/projects/nedit/'
   version '5.7'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://downloads.sourceforge.net/project/nedit/nedit-source/nedit-5.7-src.tar.gz'
   source_sha256 'add9ac79ff973528ad36c86858238bac4f59896c27dbf285cbe6a4d425fca17a'
   binary_compression 'tar.xz'

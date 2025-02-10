@@ -5,7 +5,7 @@ class Glade < Meson
   homepage 'https://wiki.gnome.org/Apps/Glade'
   version '3.40.0'
   license 'GPL-2+ and LDF-1.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/glade.git'
   git_hashtag "GLADE_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'

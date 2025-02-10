@@ -5,7 +5,7 @@ class Gspell < Meson
   homepage 'https://wiki.gnome.org/Projects/gspell'
   version "1.13.1-#{CREW_ICU_VER}"
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gspell.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

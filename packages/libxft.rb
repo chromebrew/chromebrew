@@ -5,7 +5,7 @@ class Libxft < Package
   homepage 'https://www.x.org/wiki/'
   version '2.3.7'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/archive/individual/lib/libXft-2.3.7.tar.xz'
   source_sha256 '79f0b37c45007381c371a790c2754644ad955166dbf2a48e3625032e9bdd4f71'
   binary_compression 'tar.zst'

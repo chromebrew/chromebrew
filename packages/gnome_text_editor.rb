@@ -5,7 +5,7 @@ class Gnome_text_editor < Meson
   homepage 'https://gitlab.gnome.org/GNOME/gnome-text-editor'
   version '47.beta'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-text-editor.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

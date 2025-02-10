@@ -5,7 +5,7 @@ class Nushell < Package
   homepage 'https://www.nushell.sh/'
   version '0.101.0'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'
   source_url({
     aarch64: "https://github.com/nushell/nushell/releases/download/#{version}/nu-#{version}-armv7-unknown-linux-gnueabihf.tar.gz",

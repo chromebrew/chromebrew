@@ -5,7 +5,7 @@ class Libgdiplus < Package
   homepage 'https://www.mono-project.com/docs/gui/libgdiplus/'
   version '6.1'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/mono/libgdiplus.git'
   git_hashtag version
   binary_compression 'tar.zst'

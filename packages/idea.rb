@@ -5,7 +5,7 @@ class Idea < Package
   homepage 'https://www.jetbrains.com/idea/'
   version '2024.1.4'
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.jetbrains.com/idea/ideaIU-#{version}.tar.gz"
   source_sha256 'cda20bbbc052c2b8e87ea8607235ee0f7b5775728e8648c0a603889a3efa685f'
 

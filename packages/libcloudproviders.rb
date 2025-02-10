@@ -8,7 +8,7 @@ class Libcloudproviders < Meson
   homepage 'https://gitlab.gnome.org/World/libcloudproviders'
   version '0.3.5'
   license 'LGPL3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/World/libcloudproviders.git'
   git_hashtag version
   binary_compression 'tar.zst'

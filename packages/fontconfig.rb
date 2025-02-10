@@ -6,7 +6,7 @@ class Fontconfig < Meson
   homepage 'https://www.freedesktop.org/wiki/Software/fontconfig/'
   version '2.15.0-3'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/fontconfig/fontconfig.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

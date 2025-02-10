@@ -5,7 +5,7 @@ class Pdfchain < Package
   homepage 'https://pdfchain.sourceforge.io/'
   version '0.4.4.2'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://downloads.sourceforge.net/project/pdfchain/pdfchain-0.4.4.2/pdfchain-0.4.4.2.tar.gz'
   source_sha256 '1eee0f93dbe8c9cef9f9fe4ec0a10e0a45ca8cde67cd6ceffa2ce6c843752f3d'
   binary_compression 'tpxz'

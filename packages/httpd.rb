@@ -6,7 +6,7 @@ class Httpd < Autotools
   homepage 'https://httpd.apache.org/'
   version '2.4.63'
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://dlcdn.apache.org/httpd/httpd-#{version}.tar.bz2"
   source_sha256 '88fc236ab99b2864b248de7d49a008ec2afd7551e64dce8b95f58f32f94c46ab'
   binary_compression 'tar.zst'

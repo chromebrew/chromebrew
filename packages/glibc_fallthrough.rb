@@ -5,7 +5,7 @@ class Glibc_fallthrough < Package
   homepage 'https://www.gnu.org/software/libc/'
   version LIBC_VERSION
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc version.split('-').first
   max_glibc version.split('-').first
   source_url 'SKIP'

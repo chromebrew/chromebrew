@@ -5,7 +5,7 @@ class Libotf < Package
   homepage 'https://www.nongnu.org/m17n/'
   version '0.9.16'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.savannah.gnu.org/releases/m17n/libotf-#{version}.tar.gz"
   source_sha256 '68db0ca3cda2d46a663a92ec26e6eb5adc392ea5191bcda74268f0aefa78066b'
   binary_compression 'tar.xz'

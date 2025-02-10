@@ -5,7 +5,7 @@ class Mediainfo_gui < Package
   homepage 'https://mediaarea.net/en/MediaInfo'
   version '24.04'
   license 'BSD-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://mediaarea.net/download/binary/mediainfo-gui/24.04/MediaInfo_GUI_24.04_GNU_FromSource.tar.xz'
   source_sha256 '6a24f6529ab802e594ce89cc2e7816a2b0ffe06130545c3593ab334f2ceb9cd1'
   binary_compression 'tar.zst'

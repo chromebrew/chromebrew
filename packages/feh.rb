@@ -5,7 +5,7 @@ class Feh < Package
   homepage 'https://feh.finalrewind.org/'
   version '3.10.3'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/derf/feh.git'
   git_hashtag version
   binary_compression 'tar.zst'

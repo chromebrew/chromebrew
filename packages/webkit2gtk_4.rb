@@ -5,7 +5,7 @@ class Webkit2gtk_4 < Package
   homepage 'https://webkitgtk.org'
   version '2.42.1'
   license 'LGPL-2+ and BSD-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.42.1.tar.xz'
   source_sha256 '6f41fac9989d3ee51c08c48de1d439cdeddecbc757e34b6180987d99b16d2499'
   binary_compression 'tar.zst'
@@ -144,7 +144,7 @@ class Webkit2gtk_4 < Package
       @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
       system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' \
             cmake -B builddir -G Ninja \
-            #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('mold', 'gold').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
+            #{CREW_CMAKE_OPTIONS.sub('-pipe', '-pipe -Wno-error').gsub('-flto=auto', '').sub('-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE', '')} \
             -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
             -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
             -DENABLE_DOCUMENTATION=OFF \

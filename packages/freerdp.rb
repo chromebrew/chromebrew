@@ -5,7 +5,7 @@ class Freerdp < CMake
   homepage 'https://www.freerdp.com/'
   version "3.10.2-#{CREW_ICU_VER}"
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/FreeRDP/FreeRDP.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Libxfce4ui < Autotools
   homepage 'https://xfce.org/'
   version '4.19.5'
   license 'LGPL-2+ and GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.xfce.org/src/xfce/libxfce4ui/4.19/libxfce4ui-#{version}.tar.bz2"
   source_sha256 'ce7a8d68727c43c85c61d22040751a7730591db69eae967f2c091127326803b7'
   binary_compression 'tar.zst'

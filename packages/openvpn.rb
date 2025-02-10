@@ -5,7 +5,7 @@ class Openvpn < Autotools
   homepage 'https://openvpn.net/'
   version '2.6.12'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/OpenVPN/openvpn.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

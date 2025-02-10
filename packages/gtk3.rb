@@ -5,7 +5,7 @@ class Gtk3 < Meson
   homepage 'https://docs.gtk.org/gtk3/'
   version '3.24.48'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag version
   binary_compression 'tar.zst'

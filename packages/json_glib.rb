@@ -5,7 +5,7 @@ class Json_glib < Meson
   homepage 'https://gitlab.gnome.org/GNOME/json-glib'
   version '1.9.2-1'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/json-glib.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

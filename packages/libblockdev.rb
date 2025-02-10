@@ -5,7 +5,7 @@ class Libblockdev < Package
   homepage 'https://github.com/storaged-project/libblockdev'
   version '2.26'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/storaged-project/libblockdev/releases/download/#{version}-1/libblockdev-#{version}.tar.gz"
   source_sha256 'c4c0e10b35ac632bda8ce6d200b5601184984dec387fe59185921eb42432e069'
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Ffmpegthumbnailer < CMake
   homepage 'https://github.com/dirkvdb/ffmpegthumbnailer'
   version '2.2.2-1b5a779'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/dirkvdb/ffmpegthumbnailer.git'
   git_hashtag '1b5a77983240bcf00a4ef7702c07bcd8f4e5f97c'
   binary_compression 'tar.zst'

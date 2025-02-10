@@ -8,7 +8,7 @@ class Containers_common < Package
   homepage 'https://github.com/containers'
   version '0.53.0'
   license 'Apache'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/containers/common.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
