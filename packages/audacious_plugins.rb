@@ -5,7 +5,7 @@ class Audacious_plugins < Package
   homepage 'https://audacious-media-player.org/'
   version '3.10.1'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://distfiles.audacious-media-player.org/audacious-plugins-3.10.1.tar.bz2'
   source_sha256 'eec3177631f99729bf0e94223b627406cc648c70e6646e35613c7b55040a2642'
   binary_compression 'tar.xz'

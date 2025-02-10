@@ -5,7 +5,7 @@ class Cmus < Package
   homepage 'https://cmus.github.io/'
   version '2.10.0'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/cmus/cmus/archive/v2.10.0.tar.gz'
   source_sha256 'ff40068574810a7de3990f4f69c9c47ef49e37bd31d298d372e8bcdafb973fff'
   binary_compression 'tar.zst'

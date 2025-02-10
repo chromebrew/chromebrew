@@ -5,7 +5,7 @@ class Asunder < Autotools
   homepage 'http://littlesvr.ca/asunder/'
   version '3.0.1'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "http://littlesvr.ca/asunder/releases/asunder-#{version}.tar.bz2"
   source_sha256 '8868e2e1b97b6687c800e7f612262a316bb857edd39883768ce628b6d253376b'
   binary_compression 'tar.zst'

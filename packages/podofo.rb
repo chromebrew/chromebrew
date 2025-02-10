@@ -5,7 +5,7 @@ class Podofo < Package
   homepage 'https://sourceforge.net/projects/podofo/'
   version '0.10.1'
   license 'GPLv2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/podofo/podofo/archive/0.10.1.tar.gz'
   source_sha256 '9b2bb5d54185a547e440413ca2e9ec3ea9c522fec81dfeb9a23dbc3d65fbaa55'
   binary_compression 'tar.zst'

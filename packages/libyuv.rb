@@ -5,7 +5,7 @@ class Libyuv < CMake
   homepage 'https://chromium.googlesource.com/libyuv/libyuv/'
   version '188e4e3'
   license 'BSD-Google'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://chromium.googlesource.com/libyuv/libyuv.git'
   git_hashtag '188e4e3afbfe90f6f13f59db6c929762de07921b'
   binary_compression 'tar.zst'

@@ -9,7 +9,7 @@ class Libdbusmenu_gtk3 < Autotools
   @ubuntu_version = '18.10.20180917~bzr492+repack1-3.1ubuntu5'
   version '18.10.20180917-bcafbd2'
   license 'GPL3 LGPL2.1 LGPL3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.launchpad.net/ubuntu/+source/libdbusmenu'
   git_hashtag 'bcafbd2190848570fd57bb5f81d9f9bca119365f'
   binary_compression 'tar.zst'

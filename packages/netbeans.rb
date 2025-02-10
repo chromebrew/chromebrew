@@ -5,7 +5,7 @@ class Netbeans < Package
   homepage 'https://netbeans.apache.org/front/main/index.html'
   version '24'
   license 'Apache-2.0, custom, EPL-1.0, W3C, MIT, BSD, MPL-1.0, CC-BY-3.0, CDDL and CDDL-1.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://dlcdn.apache.org/netbeans/netbeans/#{version}/netbeans-#{version}-bin.zip"
   source_sha256 '9b39af899bb24baf12661380cf058e7592ef78e4d2e543a0635a16fa802ff46b'
 

@@ -5,7 +5,7 @@ class Libxcomposite < Package
   homepage 'https://www.x.org/wiki/'
   version '0.4.6'
   license 'X11'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxcomposite.git'
   git_hashtag "libXcomposite-#{version}"
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Colord < Meson
   homepage 'https://www.freedesktop.org/software/colord/'
   version '1.4.7'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/hughsie/colord.git'
   git_hashtag version
   binary_compression 'tar.zst'

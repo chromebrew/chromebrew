@@ -5,7 +5,7 @@ class Openimageio < CMake
   homepage 'https://github.com/AcademySoftwareFoundation/OpenImageIO'
   version "2.5.15.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/AcademySoftwareFoundation/OpenImageIO.git'
   git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'

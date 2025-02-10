@@ -5,7 +5,7 @@ class Netsurf < Package
   homepage 'https://www.netsurf-browser.org'
   version '3.10'
   license 'GPL-2 and MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://download.netsurf-browser.org/netsurf/releases/source/netsurf-3.10-src.tar.gz'
   source_sha256 '36484429e193614685c2ff246f55bd0a6dddf31a018bee45e0d1f7c28851995e'
   binary_compression 'tar.xz'

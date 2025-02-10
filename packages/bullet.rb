@@ -5,7 +5,7 @@ class Bullet < Package
   homepage 'https://pybullet.org/Bullet/phpBB3/'
   version '2.89'
   license 'ZLIB'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/bulletphysics/bullet3/archive/2.89.tar.gz'
   source_sha256 '621b36e91c0371933f3c2156db22c083383164881d2a6b84636759dc4cbb0bb8'
   binary_compression 'tar.xz'

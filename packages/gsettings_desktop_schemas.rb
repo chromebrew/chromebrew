@@ -5,7 +5,7 @@ class Gsettings_desktop_schemas < Meson
   homepage 'https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas'
   version '46.rc'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git'
   git_hashtag version
   binary_compression 'tar.zst'

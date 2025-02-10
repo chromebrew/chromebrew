@@ -5,7 +5,7 @@ class Librsvg < Autotools
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
   version "2.58.2-#{CREW_ICU_VER}"
   license 'LGPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Bleachbit < Package
   homepage 'https://www.bleachbit.org/'
   version '4.6.1'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/bleachbit/bleachbit.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

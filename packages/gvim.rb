@@ -5,7 +5,7 @@ class Gvim < Autotools
   homepage 'https://www.vim.org/'
   version '9.1.0969'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

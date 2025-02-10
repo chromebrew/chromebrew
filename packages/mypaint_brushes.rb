@@ -5,7 +5,7 @@ class Mypaint_brushes < Package
   homepage 'https://mypaint.app/'
   version '2.0.2'
   license 'CC0-1.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/mypaint/mypaint-brushes.git'
   git_hashtag "v#{version}"
   binary_compression 'tpxz'

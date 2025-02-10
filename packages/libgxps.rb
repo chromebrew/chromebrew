@@ -9,7 +9,7 @@ class Libgxps < Meson
   @_ver = '0.3.2'
   version "#{@_ver}-2"
   license 'GPL2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://gitlab.gnome.org/GNOME/libgxps/-/archive/#{@_ver}/libgxps-#{@_ver}.tar.bz2"
   source_sha256 'ffbc656e801233a64ea5b6ab5532691e8b91f72cce3ea957615fe8523696d42a'
   binary_compression 'tar.zst'

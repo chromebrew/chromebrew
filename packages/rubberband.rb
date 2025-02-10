@@ -5,7 +5,7 @@ class Rubberband < Meson
   homepage 'https://breakfastquay.com/rubberband/'
   version '3.3.0'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://breakfastquay.com/files/releases/rubberband-3.3.0.tar.bz2'
   source_sha256 'd9ef89e2b8ef9f85b13ac3c2faec30e20acf2c9f3a9c8c45ce637f2bc95e576c'
   binary_compression 'tar.zst'

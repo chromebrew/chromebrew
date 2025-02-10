@@ -8,7 +8,7 @@ class Jsonrpc_glib < Meson
   homepage 'https://gitlab.gnome.org/GNOME/jsonrpc-glib'
   version '3.44.0'
   license 'LGPL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/jsonrpc-glib.git'
   git_hashtag version
   binary_compression 'tar.zst'

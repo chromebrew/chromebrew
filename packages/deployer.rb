@@ -5,7 +5,7 @@ class Deployer < Package
   homepage 'https://deployer.org/'
   version '6.7.3'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/deployphp/deployer/archive/v6.7.3.tar.gz'
   source_sha256 '81e5cea09f68b898d72a52ea6c4401fbc4cc1bc2fc30d488acce6e8fdef59d79'
   binary_compression 'tar.xz'

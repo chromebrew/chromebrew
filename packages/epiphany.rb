@@ -8,7 +8,7 @@ class Epiphany < Meson
   homepage 'https://wiki.gnome.org/Apps/Web'
   version '43.1'
   license 'GPL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/epiphany.git'
   git_hashtag version
   binary_compression 'tar.zst'

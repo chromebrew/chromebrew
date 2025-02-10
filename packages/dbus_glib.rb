@@ -5,7 +5,7 @@ class Dbus_glib < Package
   homepage 'https://dbus.freedesktop.org/doc/dbus-glib/index.html'
   version '0.112'
   license 'GPL-2 or AFL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.112.tar.gz'
   source_sha256 '7d550dccdfcd286e33895501829ed971eeb65c614e73aadb4a08aeef719b143a'
   binary_compression 'tar.zst'

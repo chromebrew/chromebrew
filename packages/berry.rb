@@ -5,7 +5,7 @@ class Berry < Autotools
   homepage 'https://github.com/JLErvin/berry'
   version '0.1.12'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/JLErvin/berry.git'
   git_hashtag version
   binary_compression 'tar.zst'

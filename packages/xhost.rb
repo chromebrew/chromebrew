@@ -5,7 +5,7 @@ class Xhost < Package
   homepage 'https://github.com/freedesktop/xorg-xhost'
   version '1.0.8'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/releases/individual/app/xhost-1.0.8.tar.bz2'
   source_sha256 'a2dc3c579e13674947395ef8ccc1b3763f89012a216c2cc6277096489aadc396'
   binary_compression 'tar.zst'

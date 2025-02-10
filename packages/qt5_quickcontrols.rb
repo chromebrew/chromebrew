@@ -6,7 +6,7 @@ class Qt5_quickcontrols < Qmake
   kde_5_15_githash = 'fe98f874f89abe9b96edadb812cfa9b1488679f0'
   version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'GPL3 LGPL3 FDL custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtquickcontrols.git'
   git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'

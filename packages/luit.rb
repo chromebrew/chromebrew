@@ -8,7 +8,7 @@ class Luit < Package
   homepage 'https://invisible-island.net/luit/luit.html'
   version '2_0_20230201'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ThomasDickey/luit-snapshots.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

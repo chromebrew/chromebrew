@@ -5,7 +5,7 @@ class Polkit < Meson
   homepage 'https://github.com/polkit-org/polkit'
   version '125'
   license 'LGPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/polkit-org/polkit.git'
   git_hashtag version
   binary_compression 'tar.zst'

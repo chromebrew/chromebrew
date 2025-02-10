@@ -5,7 +5,7 @@ class Tint2 < Package
   homepage 'https://gitlab.com/o9000/tint2'
   version '16.7'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.com/o9000/tint2/-/archive/v16.7/tint2-v16.7.tar.gz'
   source_sha256 '74962c1dd111be9955319a133a790b24fe5a8ef0315a1bcdabc58c1157c1fb26'
   binary_compression 'tar.xz'

@@ -5,7 +5,7 @@ class Vulkan_icd_loader < CMake
   homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
   version '1.4.303'
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/KhronosGroup/Vulkan-Loader.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

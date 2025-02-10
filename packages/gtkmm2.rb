@@ -5,7 +5,7 @@ class Gtkmm2 < Autotools
   homepage 'https://www.gtkmm.org/'
   version '2.24.5'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/gtkmm/2.24/gtkmm-2.24.5.tar.xz'
   source_sha256 '0680a53b7bf90b4e4bf444d1d89e6df41c777e0bacc96e9c09fc4dd2f5fe6b72'
   binary_compression 'tar.xz'

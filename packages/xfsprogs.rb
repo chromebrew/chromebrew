@@ -5,7 +5,7 @@ class Xfsprogs < Package
   homepage 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/'
   version "6.12.0-#{CREW_ICU_VER}"
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git'
   git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'

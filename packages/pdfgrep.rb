@@ -5,7 +5,7 @@ class Pdfgrep < Package
   homepage 'https://pdfgrep.org/'
   version '2.0.1-1'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://pdfgrep.org/download/pdfgrep-2.0.1.tar.gz'
   source_sha256 '0370d744b3072d47383dbed2cb9c8b0b64b83c084da5a8961f8d4bc7669e941e'
   binary_compression 'tar.xz'

@@ -8,7 +8,7 @@ class Appstream < Meson
   homepage 'https://www.freedesktop.org/wiki/Distributions/AppStream/'
   version '1.0.3'
   license 'GPL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ximion/appstream.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

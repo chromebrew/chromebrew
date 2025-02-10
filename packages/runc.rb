@@ -8,7 +8,7 @@ class Runc < Package
   homepage 'https://github.com/opencontainers/runc'
   version '1.1.7'
   license 'Apache'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/opencontainers/runc.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

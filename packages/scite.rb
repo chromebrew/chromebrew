@@ -5,7 +5,7 @@ class Scite < Package
   homepage 'https://www.scintilla.org/'
   version '5.5.4'
   license 'HPND and MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.scintilla.org/scite#{version.gsub('.', '')}.tgz"
   source_sha256 '439d033c452bb30bf7952e30390991a6abd022a031e8e74b25717f9e46ae90a8'
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Libsdl2 < CMake
   homepage 'http://www.libsdl.org'
   version '2.30.6'
   license 'ZLIB'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/SDL.git'
   git_hashtag "release-#{version}"
   binary_compression 'tar.zst'

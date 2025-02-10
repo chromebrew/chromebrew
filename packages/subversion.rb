@@ -5,7 +5,7 @@ class Subversion < Autotools
   homepage 'https://subversion.apache.org/'
   version '1.14.5'
   license 'Apache-2.0, BSD, MIT, BSD-2, FSFAP and unicode'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://dlcdn.apache.org/subversion/subversion-#{version}.tar.bz2"
   source_sha256 'e78a29e7766b8b7b354497d08f71a55641abc53675ce1875584781aae35644a1'
   binary_compression 'tar.zst'

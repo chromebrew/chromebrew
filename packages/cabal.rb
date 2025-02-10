@@ -5,7 +5,7 @@ class Cabal < Package
   homepage 'https://www.haskell.org/cabal/'
   version '3.14.1.1'
   license 'BSD'
-  compatibility 'x86_64 i686'
+  compatibility 'i686 x86_64'
   source_url({
     x86_64: "https://downloads.haskell.org/~cabal/cabal-install-#{version}/cabal-install-#{version}-x86_64-linux-alpine3_12.tar.xz",
       i686: "https://downloads.haskell.org/~cabal/cabal-install-#{version}/cabal-install-#{version}-i386-linux-alpine3_12.tar.xz"

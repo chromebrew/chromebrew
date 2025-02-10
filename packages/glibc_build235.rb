@@ -6,7 +6,7 @@ class Glibc_build235 < Package
   version '2.35-1'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   @libc_version = LIBC_VERSION
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc version.split('-').first
   max_glibc version.split('-').first
   # Use current glibc 2.35 stable branch commit, which avoids

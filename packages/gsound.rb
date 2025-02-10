@@ -5,7 +5,7 @@ class Gsound < Meson
   homepage 'https://wiki.gnome.org/Projects/GSound'
   version '1.0.3'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gsound.git'
   git_hashtag version
   binary_compression 'tar.zst'

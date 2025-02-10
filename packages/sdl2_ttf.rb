@@ -8,7 +8,7 @@ class Sdl2_ttf < CMake
   homepage 'https://www.libsdl.org/projects/SDL_ttf/'
   version '2.22.0'
   license 'zlib'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/SDL_ttf.git'
   git_hashtag "release-#{version}"
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Alsa_utils < Autotools
   homepage 'https://github.com/alsa-project/alsa-utils'
   version '1.2.12'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/alsa-project/alsa-utils.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

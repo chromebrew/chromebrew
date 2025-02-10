@@ -5,7 +5,7 @@ class Pavucontrol < Package
   homepage 'https://freedesktop.org/software/pulseaudio/pavucontrol/'
   version '4.0-381b-1'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/pulseaudio/pavucontrol/archive/381b708202e87e40347a57f8a627014199cde266.zip'
   source_sha256 'aa6c5814e77a8f36d8ed50b70381fbfbab2ebbf0fb62548ec8b8b935527d527e'
   binary_compression 'tar.xz'

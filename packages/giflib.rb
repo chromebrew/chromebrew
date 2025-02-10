@@ -5,7 +5,7 @@ class Giflib < Package
   homepage 'https://giflib.sourceforge.net/'
   version '5.2.2'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://downloads.sourceforge.net/project/giflib/giflib-5.2.2.tar.gz'
   source_sha256 'be7ffbd057cadebe2aa144542fd90c6838c6a083b5e8a9048b8ee3b66b29d5fb'
   binary_compression 'tar.zst'

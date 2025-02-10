@@ -5,7 +5,7 @@ class Audaspace < CMake
   homepage 'https://github.com/audaspace/audaspace'
   version '1.5.0-4326b24'
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/audaspace/audaspace.git'
   git_hashtag '4326b24b6f92f40cc330c8685b674e3dcc11c76d'
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class R < Autotools
   homepage 'https://www.r-project.org/'
   version "4.4.1-#{CREW_ICU_VER}"
   license 'GPL-2 or GPL-3 and LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://cran.r-project.org/src/base/R-4/R-4.4.1.tar.gz'
   source_sha256 'b4cb675deaaeb7299d3b265d218cde43f192951ce5b89b7bb1a5148a36b2d94d'
   binary_compression 'tar.zst'

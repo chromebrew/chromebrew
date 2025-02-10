@@ -5,7 +5,7 @@ class Libxfce4util < Autotools
   homepage 'https://xfce.org/'
   version '4.19.3'
   license 'LGPL-2+ and GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.xfce.org/src/xfce/libxfce4util/4.19/libxfce4util-#{version}.tar.bz2"
   source_sha256 'f047937f753466b7ff74ad3809c817b11db44498dd90497de7e1584ee48502c6'
   binary_compression 'tar.zst'

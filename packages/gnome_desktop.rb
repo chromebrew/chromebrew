@@ -5,7 +5,7 @@ class Gnome_desktop < Meson
   homepage 'https://gitlab.gnome.org/GNOME/gnome-desktop'
   version '44.0'
   license 'GPL-2+, LGPL-2+ and FDL-1.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-desktop.git'
   git_hashtag version
   binary_compression 'tar.zst'

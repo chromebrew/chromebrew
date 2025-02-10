@@ -5,7 +5,7 @@ class Tk < Package
   homepage 'http://www.tcl.tk/'
   version '8.6.16'
   license 'tcltk'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tk#{version}-src.tar.gz"
   source_sha256 '8ffdb720f47a6ca6107eac2dd877e30b0ef7fac14f3a84ebbd0b3612cee41a94'
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Texlive < Package
   homepage 'https://www.tug.org/texlive/'
   version '20230319'
   license 'GPL-2 and GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'
   source_url 'SKIP'
   binary_compression 'tar.zst'

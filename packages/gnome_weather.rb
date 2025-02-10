@@ -5,7 +5,7 @@ class Gnome_weather < Meson
   homepage 'https://wiki.gnome.org/Apps/Weather'
   version '45.0'
   license 'GPL-2+, LGPL-2+, MIT, CC-BY-3.0 and CC-BY-SA-3.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-weather.git'
   git_hashtag version
   binary_compression 'tar.zst'

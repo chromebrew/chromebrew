@@ -5,7 +5,7 @@ class Gmime < Autotools
   homepage 'https://developer.gnome.org/gmime/'
   version '3.2.15'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/jstedfast/gmime.git'
   git_hashtag version
   binary_compression 'tar.zst'

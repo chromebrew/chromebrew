@@ -5,7 +5,7 @@ class Libchamplain < Meson
   homepage 'https://wiki.gnome.org/Projects/libchamplain'
   version '0.12.21'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libchamplain.git'
   git_hashtag version
   binary_compression 'tar.zst'

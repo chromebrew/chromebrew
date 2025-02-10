@@ -8,7 +8,7 @@ class Luajit_lgi < Package
   homepage 'https://github.com/lgi-devs/lgi'
   version '0.9.2'
   license 'custom:MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/lgi-devs/lgi/archive/refs/tags/0.9.2.tar.gz'
   source_sha256 'cfc4105482b4730b3a40097c9d9e7e35c46df2fb255370bdeb2f45a886548c4f'
   binary_compression 'tar.zst'

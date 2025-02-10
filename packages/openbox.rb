@@ -5,7 +5,7 @@ class Openbox < Package
   homepage 'http://openbox.org/'
   version '3.6.1'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'http://openbox.org/dist/openbox/openbox-3.6.1.tar.xz'
   source_sha256 'abe75855cc5616554ffd47134ad15291fe37ebbebf1a80b69cbde9d670f0e26d'
   binary_compression 'tar.xz'

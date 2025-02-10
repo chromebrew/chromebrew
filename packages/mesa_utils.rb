@@ -5,7 +5,7 @@ class Mesa_utils < Package
   homepage 'https://www.mesa3d.org'
   version '8.5.0'
   license 'mesa'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/demos.git'
   git_hashtag "mesa-demos-#{version}"
   binary_compression 'tar.zst'

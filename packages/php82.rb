@@ -5,7 +5,7 @@ class Php82 < Package
   homepage 'https://www.php.net/'
   version '8.2.25'
   license 'PHP-3.01'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
   source_sha256 '330b54876ea1d05ade12ee9726167332058bccd58dffa1d4e12117f6b4f616b9'
   binary_compression 'tar.zst'

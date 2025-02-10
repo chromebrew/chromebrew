@@ -5,7 +5,7 @@ class Meld < Package
   homepage 'https://meldmerge.org/'
   version "3.23.0-#{CREW_PY_VER}"
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/meld.git'
   git_hashtag '16224fb03d1652e2a5dc75e491719db539a106a0'
   binary_compression 'tar.zst'

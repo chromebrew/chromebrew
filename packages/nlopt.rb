@@ -8,7 +8,7 @@ class Nlopt < CMake
   homepage 'http://ab-initio.mit.edu/wiki/index.php/NLopt'
   version '2.8.0'
   license 'LGPL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/stevengj/nlopt.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

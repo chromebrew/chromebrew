@@ -6,7 +6,7 @@ class Qt5_webglplugin < Qmake
   kde_5_15_githash = '0d29f1cd46331caf1b5169eb037d573680454348'
   version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtwebglplugin.git'
   git_hashtag kde_5_15_githash
   binary_compression 'tar.zst'

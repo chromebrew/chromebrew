@@ -5,7 +5,7 @@ class Libsdl < Package
   homepage 'http://www.libsdl.org'
   version '1.2.15-4'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'http://www.libsdl.org/release/SDL-1.2.15.tar.gz'
   source_sha256 'd6d316a793e5e348155f0dd93b979798933fb98aa1edebcc108829d6474aad00'
   binary_compression 'tar.xz'

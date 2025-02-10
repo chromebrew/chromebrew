@@ -5,7 +5,7 @@ class Foliate < Meson
   homepage 'https://johnfactotum.github.io/foliate/'
   version '3.1.1'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/johnfactotum/foliate.git'
   git_hashtag version
   binary_compression 'tar.zst'

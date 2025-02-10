@@ -5,7 +5,7 @@ class Smallbasic < Package
   homepage 'https://smallbasic.github.io/'
   version '12.23'
   license 'GPLv3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/smallbasic/SmallBASIC.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.xz'

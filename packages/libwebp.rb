@@ -5,7 +5,7 @@ class Libwebp < CMake
   homepage 'https://developers.google.com/speed/webp/'
   version '1.4.0'
   license 'BSD'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/webmproject/libwebp.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

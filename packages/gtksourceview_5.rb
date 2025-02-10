@@ -5,7 +5,7 @@ class Gtksourceview_5 < Meson
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
   version '5.13.1'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtksourceview.git'
   git_hashtag version
   binary_compression 'tar.zst'

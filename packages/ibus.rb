@@ -5,7 +5,7 @@ class Ibus < Autotools
   homepage 'https://github.com/ibus/ibus/wiki'
   version '1.5.30'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ibus/ibus.git'
   git_hashtag version
   binary_compression 'tar.zst'

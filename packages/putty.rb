@@ -5,7 +5,7 @@ class Putty < CMake
   homepage 'https://www.chiark.greenend.org.uk/~sgtatham/putty/'
   version '0.83'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://the.earth.li/~sgtatham/putty/latest/putty-#{version}.tar.gz"
   source_sha256 '195621638bb6b33784b4e96cdc296f332991b5244968dc623521c3703097b5d9'
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Mkfontscale < Package
   homepage 'https://www.x.org/wiki/'
   version '1.2.1-1'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/releases/individual/app/mkfontscale-1.2.1.tar.bz2'
   source_sha256 'ca0495eb974a179dd742bfa6199d561bda1c8da4a0c5a667f21fd82aaab6bac7'
   binary_compression 'tar.xz'

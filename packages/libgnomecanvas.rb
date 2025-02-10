@@ -5,7 +5,7 @@ class Libgnomecanvas < Autotools
   homepage 'https://developer.gnome.org/libgnomecanvas/'
   version '2.30.3'
   license 'LGPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/2.30/libgnomecanvas-2.30.3.tar.bz2'
   source_sha256 '859b78e08489fce4d5c15c676fec1cd79782f115f516e8ad8bed6abcb8dedd40'
   binary_compression 'tar.xz'

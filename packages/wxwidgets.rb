@@ -5,7 +5,7 @@ class Wxwidgets < Autotools
   homepage 'https://www.wxwidgets.org/'
   version '3.2.6'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

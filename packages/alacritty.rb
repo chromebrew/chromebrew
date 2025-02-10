@@ -8,7 +8,7 @@ class Alacritty < Package
   homepage 'https://github.com/alacritty/alacritty'
   version '0.11.0'
   license 'Apache'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/alacritty/alacritty.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

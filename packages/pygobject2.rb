@@ -5,7 +5,7 @@ class Pygobject2 < Autotools
   homepage 'https://pygobject.gnome.org/'
   version '2.28.7'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/pygobject/2.28/pygobject-2.28.7.tar.xz'
   source_sha256 'bb9d25a3442ca7511385a7c01b057492095c263784ef31231ffe589d83a96a5a'
   binary_compression 'tar.xz'

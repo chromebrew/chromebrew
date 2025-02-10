@@ -5,7 +5,7 @@ class Wp_cli < Package
   homepage 'https://wp-cli.org/'
   version '2.11.0'
   license 'LGPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/wp-cli/wp-cli/releases/download/v#{version}/wp-cli-#{version}.phar"
   source_sha256 'a39021ac809530ea607580dbf93afbc46ba02f86b6cffd03de4b126ca53079f6'
 

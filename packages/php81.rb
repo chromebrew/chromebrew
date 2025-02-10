@@ -5,7 +5,7 @@ class Php81 < Package
   homepage 'https://www.php.net/'
   version '8.1.28'
   license 'PHP-3.01'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.php.net/distributions/php-8.1.28.tar.xz'
   source_sha256 '95d0b2e9466108fd750dab5c30a09e5c67f5ad2cb3b1ffb3625a038a755ad080'
   binary_compression 'tar.zst'

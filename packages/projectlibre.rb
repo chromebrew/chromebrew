@@ -5,7 +5,7 @@ class Projectlibre < Package
   homepage 'https://www.projectlibre.com/'
   version '1.9.1'
   license 'CPAL-1.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://downloads.sourceforge.net/project/projectlibre/ProjectLibre/1.9.1/projectlibre-1.9.1.tar.gz'
   source_sha256 '65ca96728eb5a31c3e23eb43181dde367d785a86b82f330ca52bc7b51c74a5bb'
   binary_compression 'tar.xz'

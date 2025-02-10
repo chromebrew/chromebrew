@@ -5,7 +5,7 @@ class Devil < Package
   homepage 'https://openil.sourceforge.net/'
   version '1.8.0-6f3d5e9'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/DentonW/DevIL.git'
   git_hashtag '6f3d5e9bc5d173f56060fc8e14bed35c8edcfdcc'
   binary_compression 'tar.zst'

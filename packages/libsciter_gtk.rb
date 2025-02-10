@@ -5,7 +5,7 @@ class Libsciter_gtk < Package
   homepage 'https://github.com/c-smile/sciter-sdk'
   version 'f33df07'
   license 'Terra Informatica Software, Inc. © 2006-2018'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url({
     aarch64: 'https://github.com/c-smile/sciter-sdk/raw/f33df075d9eb2f8d252cb88f1b2c8096e56197ed/bin.lnx/arm32/libsciter-gtk.so',
      armv7l: 'https://github.com/c-smile/sciter-sdk/raw/f33df075d9eb2f8d252cb88f1b2c8096e56197ed/bin.lnx/arm32/libsciter-gtk.so',

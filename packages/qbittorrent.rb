@@ -5,7 +5,7 @@ class Qbittorrent < CMake
   homepage 'https://www.qbittorrent.org/'
   version '4.6.7'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.37'
   source_url "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-#{version}/qbittorrent-#{version}.tar.xz"
   source_sha256 'bcf2dcf52a0186c3f5da2f1413453888654dc1aee5e4ad80e5a026764bc640c4'

@@ -5,7 +5,7 @@ class Freetube < Package
   homepage 'https://freetubeapp.io/'
   version '0.21.1'
   license 'AGPL-3.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url({
     aarch64: "https://github.com/FreeTubeApp/FreeTube/releases/download/v#{version}-beta/freetube-#{version}-linux-portable-armv7l.zip",
      armv7l: "https://github.com/FreeTubeApp/FreeTube/releases/download/v#{version}-beta/freetube-#{version}-linux-portable-armv7l.zip",

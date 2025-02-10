@@ -5,7 +5,7 @@ class Libmpeg2 < Package
   homepage 'https://libmpeg2.sourceforge.io/'
   @_ver = '0.5.1'
   version "#{@_ver}-1"
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   license 'GPL-2'
   source_url 'https://salsa.debian.org/multimedia-team/mpeg2dec.git'
   git_hashtag "debian/#{@_ver}-9"

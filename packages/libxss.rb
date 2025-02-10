@@ -5,7 +5,7 @@ class Libxss < Package
   homepage 'https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver'
   version '1.2.4'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver.git'
   git_hashtag "libXScrnSaver-#{version}"
   binary_compression 'tar.zst'

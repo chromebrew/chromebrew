@@ -8,7 +8,7 @@ class Seatd < Package
   homepage 'https://sr.ht/~kennylevinsen/seatd/'
   version '0.7.0'
   license 'MIT'
-  compatibility 'x86_64 armv7l aarch64'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.sr.ht/~kennylevinsen/seatd/archive/0.7.0.tar.gz'
   source_sha256 '210ddf8efa1149cde4dd35908bef8e9e63c2edaa0cdb5435f2e6db277fafff3c'
   binary_compression 'tar.zst'

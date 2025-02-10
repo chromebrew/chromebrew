@@ -5,7 +5,7 @@ class Waypipe < Package
   homepage 'https://gitlab.freedesktop.org/mstoeckl/waypipe'
   version '0.8.6'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mstoeckl/waypipe.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

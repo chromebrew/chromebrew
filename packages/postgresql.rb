@@ -5,7 +5,7 @@ class Postgresql < Package
   homepage 'https://www.postgresql.org'
   version "16.4-#{CREW_ICU_VER}"
   license 'PostgreSQL and GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://ftp.postgresql.org/pub/source/v#{version.split('-').first}/postgresql-#{version.split('-').first}.tar.bz2"
   source_sha256 '971766d645aa73e93b9ef4e3be44201b4f45b5477095b049125403f9f3386d6f'
   binary_compression 'tar.zst'

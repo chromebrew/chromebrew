@@ -5,7 +5,7 @@ class Dia < Meson
   homepage 'http://dia-installer.de/'
   version '0.97.3-85304ca'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/dia.git'
   git_hashtag '85304cac0b3eeba03313733d4a9586411040a0b2'
   binary_compression 'tar.zst'

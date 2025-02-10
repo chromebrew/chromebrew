@@ -5,7 +5,7 @@ class Rustdesk < Package
   homepage 'https://rustdesk.com/'
   version '1.3.7'
   license 'AGPL-3.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.37'
   source_url({
     aarch64: "https://github.com/rustdesk/rustdesk/releases/download/#{version}/rustdesk-#{version}-armv7-sciter.deb",

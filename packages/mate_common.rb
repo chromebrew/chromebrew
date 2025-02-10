@@ -5,7 +5,7 @@ class Mate_common < Autotools
   homepage 'https://mate-desktop.org'
   version '1.27.1'
   license 'GPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://pub.mate-desktop.org/releases/#{version.rpartition('.')[0]}/mate-common-#{version}.tar.xz"
   source_sha256 '4f1f91d0d60e3629999e2ff930574882f511a15831e20b52d93ff0bc8922effa'
   binary_compression 'tar.zst'

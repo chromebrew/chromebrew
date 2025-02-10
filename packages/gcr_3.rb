@@ -5,7 +5,7 @@ class Gcr_3 < Meson
   homepage 'https://www.gnome.org'
   version '3.41.2'
   license 'GPL-2+ and LGPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gcr.git'
   git_hashtag version
   binary_compression 'tar.zst'

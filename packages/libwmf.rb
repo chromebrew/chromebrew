@@ -5,7 +5,7 @@ class Libwmf < Autotools
   homepage 'https://github.com/caolanm/libwmf'
   version '0.2.13'
   license 'LGPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/caolanm/libwmf.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

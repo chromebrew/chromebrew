@@ -5,7 +5,7 @@ class Libxaw < Package
   homepage 'https://www.x.org/wiki/'
   version '1.0.13'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/archive/individual/lib/libXaw-1.0.13.tar.gz'
   source_sha256 '7e74ac3e5f67def549722ff0333d6e6276b8becd9d89615cda011e71238ab694'
   binary_compression 'tar.xz'

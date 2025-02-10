@@ -5,7 +5,7 @@ class Libgsf < Autotools
   homepage 'https://gitlab.gnome.org/GNOME/libgsf'
   version "1.14.52-634340d-#{CREW_ICU_VER}"
   license 'GPL-2 and LGPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libgsf.git'
   git_hashtag '634340d31177c02ccdb43171e37291948e7f8974'
   # git_hashtag "LIBGSF_#{version.split('-').first.gsub('.', '_')}"

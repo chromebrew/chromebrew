@@ -6,7 +6,7 @@ class Py3_pygobject < Meson
   homepage 'https://pygobject.gnome.org/'
   version "3.50.0-#{CREW_PY_VER}"
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/pygobject.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

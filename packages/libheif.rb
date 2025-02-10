@@ -5,7 +5,7 @@ class Libheif < Package
   homepage 'https://github.com/strukturag/libheif'
   version '1.17.6'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/strukturag/libheif.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

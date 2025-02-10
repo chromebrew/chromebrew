@@ -5,7 +5,7 @@ class Libqmi < Package
   homepage 'https://www.freedesktop.org/wiki/Software/libqmi/'
   version '1.28.2'
   license 'LGPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.freedesktop.org/software/libqmi/libqmi-#{version}.tar.xz"
   source_sha256 '8c8c3ee719874d2529bce9b35b028fe435b36f003979a360d3ad0938449db783'
   binary_compression 'tar.xz'

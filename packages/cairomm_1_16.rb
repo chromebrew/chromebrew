@@ -5,7 +5,7 @@ class Cairomm_1_16 < Meson
   homepage 'https://www.cairographics.org/'
   version '1.18.0'
   license 'LGPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/cairo/cairomm.git'
   git_hashtag version
   binary_compression 'tar.zst'

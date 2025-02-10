@@ -5,7 +5,7 @@ class Py3_pillow < Pip
   homepage 'https://python-pillow.org/'
   version "11.1.0-#{CREW_PY_VER}"
   license 'HPND'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 

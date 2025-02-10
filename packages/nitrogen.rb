@@ -5,7 +5,7 @@ class Nitrogen < Package
   homepage 'https://github.com/l3ib/nitrogen'
   version '1.6.1'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/l3ib/nitrogen/archive/1.6.1.tar.gz'
   source_sha256 '12ad31c1e2c44f486b5ca7f7d48bc5b07fb92bf15977e1793624e9e64c38b9a7'
 

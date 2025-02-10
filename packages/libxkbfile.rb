@@ -5,7 +5,7 @@ class Libxkbfile < Package
   homepage 'https://x.org/wiki/'
   version '1.1.1'
   license 'MIT and custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/archive/individual/lib/libxkbfile-1.1.1.tar.xz'
   source_sha256 '8623dc26e7aac3c5ad8a25e57b566f4324f5619e5db38457f0804ee4ed953443'
   binary_compression 'tar.zst'

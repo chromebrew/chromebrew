@@ -5,7 +5,7 @@ class Mesa < Meson
   homepage 'https://www.mesa3d.org'
   version '24.3.3-llvm19'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
   git_hashtag "mesa-#{version.split('-')[0..-2].join('-')}"
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Libpeas2 < Meson
   homepage 'https://gitlab.gnome.org/GNOME/libpeas'
   version '2.0.1'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libpeas.git'
   git_hashtag version
   binary_compression 'tar.zst'

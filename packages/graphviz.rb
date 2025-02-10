@@ -5,7 +5,7 @@ class Graphviz < CMake
   homepage 'https://www.graphviz.org/'
   version '9.0.0'
   license 'BSD'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.com/graphviz/graphviz.git'
   git_hashtag version
   binary_compression 'tar.zst'

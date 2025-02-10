@@ -5,7 +5,7 @@ class Bluefish < Package
   homepage 'https://bluefish.openoffice.nl/index.html'
   version '2.2.13'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.bennewitz.com/bluefish/stable/source/bluefish-2.2.13.tar.bz2'
   source_sha256 '9b56966209d50951326a2ae21c7fd692bd91661d047ad3a01c97ba731aa477fb'
   binary_compression 'tar.zst'

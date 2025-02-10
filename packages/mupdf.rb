@@ -5,7 +5,7 @@ class Mupdf < Package
   homepage 'https://mupdf.com/'
   version '1.24.9'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://mupdf.com/downloads/archive/mupdf-#{version}-source.tar.lz"
   source_sha256 'd87da097ae943ad0113003190ed370d39bde817383c59dc753dce23c7ba2b710'
   binary_compression 'tar.zst'

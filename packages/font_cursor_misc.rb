@@ -5,7 +5,7 @@ class Font_cursor_misc < Autotools
   homepage 'https://gitlab.freedesktop.org/xorg/font/cursor-misc'
   version '1.0.4'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/font/cursor-misc.git'
   git_hashtag "font-cursor-misc-#{version}"
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Font_bh_ttf < Autotools
   homepage 'https://gitlab.freedesktop.org/xorg/font/bh-ttf'
   version '1.0.4'
   license 'bh-luxi'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/font/bh-ttf.git'
   git_hashtag "font-bh-ttf-#{version}"
   binary_compression 'tar.zst'

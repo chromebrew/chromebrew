@@ -5,7 +5,7 @@ class Zathura < Meson
   homepage 'https://pwmt.org/projects/zathura/'
   version '0.5.2'
   license 'ZLIB'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://pwmt.org/projects/zathura/download/zathura-0.5.2.tar.xz'
   source_sha256 'c64ba7cb9facf2b1499b9dc929b6736c72c69f8062eed4f2940556c852256194'
   binary_compression 'tar.zst'

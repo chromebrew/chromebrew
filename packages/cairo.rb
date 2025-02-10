@@ -6,7 +6,7 @@ class Cairo < Meson
   homepage 'https://www.cairographics.org'
   version '1.18.2-1'
   license 'LGPL-2.1 or MPL-1.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/cairo/cairo.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'

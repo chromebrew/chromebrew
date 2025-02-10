@@ -5,7 +5,7 @@ class Amtk < Meson
   homepage 'https://wiki.gnome.org/Projects/Amtk'
   version '5.6.1'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://download.gnome.org/sources/amtk/5.6/amtk-5.6.1.tar.xz'
   source_sha256 'd50115b85c872aac296934b5ee726a3fa156c6f5ad96d27e0edd0aa5ad173228'
   binary_compression 'tar.zst'

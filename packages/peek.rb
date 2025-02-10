@@ -5,7 +5,7 @@ class Peek < Package
   homepage 'https://github.com/phw/peek'
   version '1.5.1'
   license 'GPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/phw/peek/archive/1.5.1.tar.gz'
   source_sha256 'd2b52297d3941db2f10ad4dd00a6d5606728c0fee6af5f1594a036f88e478237'
   binary_compression 'tar.zst'

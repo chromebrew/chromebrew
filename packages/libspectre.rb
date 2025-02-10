@@ -5,7 +5,7 @@ class Libspectre < Package
   homepage 'https://www.freedesktop.org/wiki/Software/libspectre/'
   version '0.2.10'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://libspectre.freedesktop.org/releases/libspectre-0.2.10.tar.gz'
   source_sha256 'cf60b2a80f6bfc9a6b110e18f08309040ceaa755210bf94c465a969da7524d07'
   binary_compression 'tar.zst'

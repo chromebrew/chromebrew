@@ -5,7 +5,7 @@ class Libvips < Package
   homepage 'https://www.libvips.org/'
   version '8.10.6-beta2'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/libvips/libvips/archive/v#{version}.tar.gz"
   source_sha256 'b2412f580ba83129d55e57a73c7c4fdb53e60a39c48910acc5f0d80518deb7a5'
   binary_compression 'tar.xz'

@@ -5,7 +5,7 @@ class Py3_dbus_python < Pip
   homepage 'https://gitlab.freedesktop.org/dbus/dbus-python'
   version "1.3.2-#{CREW_PY_VER}"
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 

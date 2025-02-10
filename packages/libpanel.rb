@@ -8,7 +8,7 @@ class Libpanel < Meson
   homepage 'https://gitlab.gnome.org/GNOME/libpanel'
   version '1.6.0'
   license 'GPL3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libpanel.git'
   git_hashtag version
   binary_compression 'tar.zst'

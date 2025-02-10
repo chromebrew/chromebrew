@@ -5,7 +5,7 @@ class Snd < Autotools
   homepage 'https://ccrma.stanford.edu/software/snd/'
   version '24.1'
   license 'Artistic'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://ccrma.stanford.edu/software/snd/snd-24.1.tar.gz'
   source_sha256 '842e8675d623043ea9e33c070f77c2bd964bc2946234a39be9a687b2d4610353'
   binary_compression 'tar.zst'

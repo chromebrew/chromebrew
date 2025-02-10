@@ -5,7 +5,7 @@ class Alsa_tools < Package
   homepage 'https://github.com/alsa-project/alsa-tools'
   version '1.2.11'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/alsa-project/alsa-tools/archive/v1.2.11.tar.gz'
   source_sha256 '0b6fc23b57a853a2cb283f1816bb0bc6b4da4ebdfff27c37b6f79b1f0f4f29e2'
   binary_compression 'tar.zst'

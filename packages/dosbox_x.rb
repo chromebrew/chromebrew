@@ -5,7 +5,7 @@ class Dosbox_x < Package
   homepage 'https://dosbox-x.com/'
   version '0.83.1'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.83.1.tar.gz'
   source_sha256 '222c6c4e2ec15bfab0e327b9ba4af92a3fcdd0ff76f1917529a11503ab4a2833'
   binary_compression 'tar.xz'

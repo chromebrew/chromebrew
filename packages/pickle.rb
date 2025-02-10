@@ -5,7 +5,7 @@ class Pickle < Package
   homepage 'https://github.com/friendsofphp/pickle'
   version '0.7.11'
   license 'BSD'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/FriendsOfPHP/pickle/releases/download/v0.7.11/pickle.phar'
   source_sha256 'fe68430bbaf01b45c7bf46fa3fd2ab51f8d3ab41e6f5620644d245a29d56cfd6'
 

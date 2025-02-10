@@ -8,7 +8,7 @@ class Libgtop < Autotools
   homepage 'https://gitlab.gnome.org/GNOME/libgtop'
   version '2.41.3'
   license 'LGPL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libgtop.git'
   git_hashtag version
   binary_compression 'tar.zst'

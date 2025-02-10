@@ -5,7 +5,7 @@ class Twm < Package
   homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.11'
   license 'MIT-with-advertising, MIT and ISC'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.x.org/pub/individual/app/twm-1.0.11.tar.xz'
   source_sha256 'f4e8a842dec410e79741f25ed4dfac09df080835d0bba2e3983b5914569b68c7'
   binary_compression 'tar.xz'

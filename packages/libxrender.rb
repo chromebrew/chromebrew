@@ -5,7 +5,7 @@ class Libxrender < Package
   homepage 'https://www.x.org/wiki/'
   version '0.9.11'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxrender.git'
   git_hashtag "libXrender-#{version}"
   binary_compression 'tar.zst'

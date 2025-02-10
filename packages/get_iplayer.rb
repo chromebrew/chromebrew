@@ -5,7 +5,7 @@ class Get_iplayer < Package
   homepage 'https://github.com/get-iplayer/get_iplayer'
   version '3.31-perl5.34'
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/get-iplayer/get_iplayer/archive/v3.31.tar.gz'
   source_sha256 '21bc00887365034f76e56b829eeba8b6d510f83424ebf1840ff9ca76713f58d5'
   binary_compression 'tar.zst'

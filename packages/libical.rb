@@ -5,7 +5,7 @@ class Libical < CMake
   homepage 'https://github.com/libical/libical'
   version "3.0.18-#{CREW_ICU_VER}"
   license 'MPL-2.0 or LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libical/libical.git'
   git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'

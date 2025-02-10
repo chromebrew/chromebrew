@@ -5,7 +5,7 @@ class Avisynthplus < CMake
   homepage 'https://avs-plus.net/'
   version '3.7.3'
   license 'GPL-2 and GPL-2-with-linking-exception'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/AviSynth/AviSynthPlus.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

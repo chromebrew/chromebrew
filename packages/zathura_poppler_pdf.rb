@@ -5,7 +5,7 @@ class Zathura_poppler_pdf < Meson
   homepage 'https://pwmt.org/projects/zathura-pdf-poppler/'
   version '0.3.1'
   license 'BSD-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://pwmt.org/projects/zathura-pdf-poppler/download/zathura-pdf-poppler-0.3.1.tar.xz'
   source_sha256 'ee8127532cc6f92bf32d48a6a0d4c61e33cd4df49a3159e57592877ba19e108b'
   binary_compression 'tar.zst'

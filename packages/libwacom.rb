@@ -5,7 +5,7 @@ class Libwacom < Package
   homepage 'https://github.com/linuxwacom/libwacom'
   version '1.12'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/linuxwacom/libwacom.git'
   git_hashtag "libwacom-#{version}"
   binary_compression 'tpxz'

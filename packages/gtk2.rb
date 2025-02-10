@@ -5,7 +5,7 @@ class Gtk2 < Package
   homepage 'https://www.gtk.org/'
   version '2.24.33-3'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz'
   source_sha256 'ac2ac757f5942d318a311a54b0c80b5ef295f299c2a73c632f6bfb1ff49cc6da'
   binary_compression 'tar.zst'

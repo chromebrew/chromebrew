@@ -5,7 +5,7 @@ class Wayland_proxy_virtwl < Package
   homepage 'https://github.com/talex5/wayland-proxy-virtwl'
   version 'd7f58d405514dd031f2f12e402c8c6a58e62a885'
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/talex5/wayland-proxy-virtwl.git'
   git_hashtag version
   binary_compression 'tpxz'

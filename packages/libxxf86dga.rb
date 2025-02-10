@@ -5,7 +5,7 @@ class Libxxf86dga < Package
   homepage 'https://www.x.org/wiki/'
   version '1.1.6'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxxf86dga.git'
   git_hashtag "libXxf86dga-#{version}"
   binary_compression 'tar.zst'

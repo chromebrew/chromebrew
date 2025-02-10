@@ -8,7 +8,7 @@ class Evince < Meson
   homepage 'https://wiki.gnome.org/Apps/Evince'
   version '45.0'
   license 'GPL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/evince.git'
   git_hashtag version
   binary_compression 'tar.zst'

@@ -5,7 +5,7 @@ class Libxtst < Package
   homepage 'http://t2sde.org/packages/libxtst.html'
   version '1.2.4'
   license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://xorg.freedesktop.org/releases/individual/lib/libXtst-1.2.4.tar.xz'
   source_sha256 '84f5f30b9254b4ffee14b5b0940e2622153b0d3aed8286a3c5b7eeb340ca33c8'
   binary_compression 'tar.zst'

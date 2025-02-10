@@ -5,7 +5,7 @@ class Zenity < Meson
   homepage 'https://wiki.gnome.org/Projects/Zenity'
   version '4.0.1'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/zenity.git'
   git_hashtag version
   binary_compression 'tar.zst'

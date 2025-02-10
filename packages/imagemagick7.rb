@@ -5,7 +5,7 @@ class Imagemagick7 < Autotools
   homepage 'http://www.imagemagick.org/script/index.php'
   version "7.1.1-36-perl5.40-#{CREW_ICU_VER}"
   license 'imagemagick'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ImageMagick/ImageMagick.git'
   # The imagemagick7 version always has a dash in it.
   git_hashtag version.reverse.split('-', 3).collect(&:reverse).reverse.first

@@ -5,7 +5,7 @@ class Filezilla < Package
   homepage 'https://filezilla-project.org/'
   version '3.67.1'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   # NOTE: This may generate a 403 forbidden error. To receive a new source url,
   # download from here: https://filezilla-project.org/download.php?show_all=1.
   source_url "https://dl4.cdn.filezilla-project.org/client/FileZilla_#{version}_src.tar.xz?h=lc3XtUiYRgT_RWF74oRGPA&x=1726381543"

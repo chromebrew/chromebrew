@@ -5,7 +5,7 @@ class Flatseal < Meson
   homepage 'https://github.com/tchx84/Flatseal/'
   version '2.2.0'
   license 'GPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/tchx84/Flatseal.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

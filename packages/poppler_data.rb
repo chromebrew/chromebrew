@@ -5,7 +5,7 @@ class Poppler_data < Package
   homepage 'https://poppler.freedesktop.org/'
   version '0.4.12'
   license 'BSD, GPL-2 and MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://poppler.freedesktop.org/poppler-data-#{version}.tar.gz"
   source_sha256 'c835b640a40ce357e1b83666aabd95edffa24ddddd49b8daff63adb851cdab74'
   binary_compression 'tar.zst'

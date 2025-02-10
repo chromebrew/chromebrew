@@ -8,7 +8,7 @@ class Libdovi < Package
   homepage 'https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision'
   version '3.2.0'
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/quietvoid/dovi_tool.git'
   git_hashtag "libdovi-#{version}"
   binary_compression 'tar.zst'

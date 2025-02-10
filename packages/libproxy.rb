@@ -5,7 +5,7 @@ class Libproxy < Meson
   homepage 'https://libproxy.github.io/libproxy/'
   version '0.5.3'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libproxy/libproxy.git'
   git_hashtag version
   binary_compression 'tar.zst'

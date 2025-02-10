@@ -4,7 +4,7 @@ class Aribb25 < Package
   description 'aribb25 is a basic implementation of the ARIB STD-B25 public standard.'
   homepage 'https://code.videolan.org/videolan/aribb25/'
   version '0.2.7'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   license 'ISC'
   source_url 'https://code.videolan.org/videolan/aribb25.git'
   git_hashtag version

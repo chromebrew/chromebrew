@@ -8,7 +8,7 @@ class T1lib < Package
   homepage 'https://www.ibiblio.org/pub/Linux/libs/graphics/!INDEX.html'
   version '5.1.2'
   license 'GPL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.ibiblio.org/pub/Linux/libs/graphics/t1lib-#{version}.tar.gz"
   source_sha256 '821328b5054f7890a0d0cd2f52825270705df3641dbd476d58d17e56ed957b59'
   binary_compression 'tar.xz'

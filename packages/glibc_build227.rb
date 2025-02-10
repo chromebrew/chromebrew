@@ -6,7 +6,7 @@ class Glibc_build227 < Package
   version '2.27-1'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   @libc_version = LIBC_VERSION
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   min_glibc version.split('-').first
   max_glibc version.split('-').first
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'

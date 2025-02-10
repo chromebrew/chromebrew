@@ -5,7 +5,7 @@ class Py3_devedeng < Python
   homepage 'https://www.rastersoft.com/programas/devede.html'
   version "4.18.0-#{CREW_PY_VER}"
   license 'GPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.com/rastersoft/devedeng.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'
