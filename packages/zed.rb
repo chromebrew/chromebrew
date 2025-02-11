@@ -3,12 +3,12 @@ require 'package'
 class Zed < Package
   description 'Zed is a high-performance, multiplayer code editor'
   homepage 'https://zed.dev/'
-  version '0.171.3'
+  version '0.172.11'
   license 'GPL-3, AGPL-3, Apache-2.0'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://github.com/zed-industries/zed/releases/download/v#{version}/zed-linux-x86_64.tar.gz"
-  source_sha256 '18a2f514a2588d2e461ab6f07246e682b29dfa8d08f9f25b0f42413d7854661a'
+  source_sha256 'b2243efa1f66ddeada6c28255cd9cfb6e9122c9ba2b70d307d05ed17ce77e0d8'
 
   depends_on 'alsa_lib'
   depends_on 'libbsd'
