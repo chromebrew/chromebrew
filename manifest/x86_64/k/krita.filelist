@@ -1301,6 +1301,10 @@
 /usr/local/share/krita/pics/light_template_ratio_43.png
 /usr/local/share/krita/pics/light_template_texture.png
 /usr/local/share/krita/pics/light_template_web_design.png
+/usr/local/share/krita/predefined_image_sizes/A1__300_ppi_.predefinedimage
+/usr/local/share/krita/predefined_image_sizes/A1__600_ppi_.predefinedimage
+/usr/local/share/krita/predefined_image_sizes/A2__300_ppi_.predefinedimage
+/usr/local/share/krita/predefined_image_sizes/A2__600_ppi_.predefinedimage
 /usr/local/share/krita/predefined_image_sizes/A3__300_ppi_.predefinedimage
 /usr/local/share/krita/predefined_image_sizes/A3__600_ppi_.predefinedimage
 /usr/local/share/krita/predefined_image_sizes/A4__300_ppi_.predefinedimage
@@ -1956,8 +1960,6 @@
 /usr/local/share/krita/usr/lib/libasyncns.so.0
 /usr/local/share/krita/usr/lib/libavcodec.so
 /usr/local/share/krita/usr/lib/libavcodec.so.58
-/usr/local/share/krita/usr/lib/libavdevice.so
-/usr/local/share/krita/usr/lib/libavdevice.so.58
 /usr/local/share/krita/usr/lib/libavfilter.so
 /usr/local/share/krita/usr/lib/libavfilter.so.7
 /usr/local/share/krita/usr/lib/libavformat.so
@@ -2110,10 +2112,10 @@
 /usr/local/share/krita/usr/lib/liblzma.so.5
 /usr/local/share/krita/usr/lib/libmlt++-7.so
 /usr/local/share/krita/usr/lib/libmlt++-7.so.7
-/usr/local/share/krita/usr/lib/libmlt++-7.so.7.22.0
+/usr/local/share/krita/usr/lib/libmlt++-7.so.7.28.0
 /usr/local/share/krita/usr/lib/libmlt-7.so
 /usr/local/share/krita/usr/lib/libmlt-7.so.7
-/usr/local/share/krita/usr/lib/libmlt-7.so.7.22.0
+/usr/local/share/krita/usr/lib/libmlt-7.so.7.28.0
 /usr/local/share/krita/usr/lib/libmp3lame.so.0
 /usr/local/share/krita/usr/lib/libmypaint.so
 /usr/local/share/krita/usr/lib/libnettle.so.7
@@ -2129,8 +2131,6 @@
 /usr/local/share/krita/usr/lib/libpng16.so.16
 /usr/local/share/krita/usr/lib/libpoppler-qt5.so.1
 /usr/local/share/krita/usr/lib/libpoppler.so.123
-/usr/local/share/krita/usr/lib/libpostproc.so
-/usr/local/share/krita/usr/lib/libpostproc.so.55
 /usr/local/share/krita/usr/lib/libpq.so.5
 /usr/local/share/krita/usr/lib/libpulse-simple.so.0
 /usr/local/share/krita/usr/lib/libpulse.so.0
@@ -2160,6 +2160,7 @@
 /usr/local/share/krita/usr/lib/libvorbis.so.0.4.9
 /usr/local/share/krita/usr/lib/libvorbisenc.so.2
 /usr/local/share/krita/usr/lib/libvorbisfile.so.3.3.8
+/usr/local/share/krita/usr/lib/libvpx.so.8
 /usr/local/share/krita/usr/lib/libwebp.so.7
 /usr/local/share/krita/usr/lib/libwebpdemux.so.2
 /usr/local/share/krita/usr/lib/libwebpmux.so.3
@@ -2905,10 +2906,8 @@
 /usr/local/share/krita/usr/lib/python3.10/config-3.10-x86_64-linux-gnu/config.c
 /usr/local/share/krita/usr/lib/python3.10/config-3.10-x86_64-linux-gnu/config.c.in
 /usr/local/share/krita/usr/lib/python3.10/config-3.10-x86_64-linux-gnu/install-sh
-/usr/local/share/krita/usr/lib/python3.10/config-3.10-x86_64-linux-gnu/libpython3.10.a
 /usr/local/share/krita/usr/lib/python3.10/config-3.10-x86_64-linux-gnu/makesetup
 /usr/local/share/krita/usr/lib/python3.10/config-3.10-x86_64-linux-gnu/python-config.py
-/usr/local/share/krita/usr/lib/python3.10/config-3.10-x86_64-linux-gnu/python.o
 /usr/local/share/krita/usr/lib/python3.10/configparser.py
 /usr/local/share/krita/usr/lib/python3.10/contextlib.py
 /usr/local/share/krita/usr/lib/python3.10/contextvars.py
@@ -12391,6 +12390,10 @@
 /usr/local/share/krita/usr/share/krita/pics/light_template_ratio_43.png
 /usr/local/share/krita/usr/share/krita/pics/light_template_texture.png
 /usr/local/share/krita/usr/share/krita/pics/light_template_web_design.png
+/usr/local/share/krita/usr/share/krita/predefined_image_sizes/A1__300_ppi_.predefinedimage
+/usr/local/share/krita/usr/share/krita/predefined_image_sizes/A1__600_ppi_.predefinedimage
+/usr/local/share/krita/usr/share/krita/predefined_image_sizes/A2__300_ppi_.predefinedimage
+/usr/local/share/krita/usr/share/krita/predefined_image_sizes/A2__600_ppi_.predefinedimage
 /usr/local/share/krita/usr/share/krita/predefined_image_sizes/A3__300_ppi_.predefinedimage
 /usr/local/share/krita/usr/share/krita/predefined_image_sizes/A3__600_ppi_.predefinedimage
 /usr/local/share/krita/usr/share/krita/predefined_image_sizes/A4__300_ppi_.predefinedimage
@@ -12824,8 +12827,6 @@
 /usr/local/share/krita/usr/share/kritaplugins/shearimage.xmlgui
 /usr/local/share/krita/usr/share/kritaplugins/waveletdecompose.xmlgui
 /usr/local/share/krita/usr/share/metainfo/org.kde.krita.appdata.xml
-/usr/local/share/krita/usr/share/mime/packages/avif.xml
-/usr/local/share/krita/usr/share/mime/packages/heif.xml
 /usr/local/share/krita/usr/share/mime/packages/kde5.xml
 /usr/local/share/krita/usr/share/mlt-7/avformat/blacklist.txt
 /usr/local/share/krita/usr/share/mlt-7/avformat/consumer_avformat.yml
@@ -12932,6 +12933,8 @@
 /usr/local/share/krita/usr/share/mlt-7/plus/filter_shape.yml
 /usr/local/share/krita/usr/share/mlt-7/plus/filter_spot_remover.yml
 /usr/local/share/krita/usr/share/mlt-7/plus/filter_strobe.yml
+/usr/local/share/krita/usr/share/mlt-7/plus/filter_subtitle.yml
+/usr/local/share/krita/usr/share/mlt-7/plus/filter_subtitle_feed.yml
 /usr/local/share/krita/usr/share/mlt-7/plus/filter_text.yml
 /usr/local/share/krita/usr/share/mlt-7/plus/filter_threshold.yml
 /usr/local/share/krita/usr/share/mlt-7/plus/filter_timer.yml
@@ -12954,6 +12957,7 @@
 /usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/MPEG-2
 /usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/MPEG-4
 /usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/MPEG-4-ASP
+/usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/SVT-AV1
 /usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/Slide-Deck-H264
 /usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/Slide-Deck-HEVC
 /usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/Sony-PSP
@@ -13030,6 +13034,7 @@
 /usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/ten_bit/ProRes 422
 /usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/ten_bit/ProRes 444
 /usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/ten_bit/ProRes HQ
+/usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/ten_bit/SVT-AV1
 /usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/ten_bit/x264-high10
 /usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/ten_bit/x265-main10
 /usr/local/share/krita/usr/share/mlt-7/presets/consumer/avformat/vp9
@@ -13507,8 +13512,6 @@
 /usr/local/share/kritaplugins/shearimage.xmlgui
 /usr/local/share/kritaplugins/waveletdecompose.xmlgui
 /usr/local/share/metainfo/org.kde.krita.appdata.xml
-/usr/local/share/mime/packages/avif.xml
-/usr/local/share/mime/packages/heif.xml
 /usr/local/share/mime/packages/kde5.xml
 /usr/local/share/mlt-7/avformat/blacklist.txt
 /usr/local/share/mlt-7/avformat/consumer_avformat.yml
@@ -13615,6 +13618,8 @@
 /usr/local/share/mlt-7/plus/filter_shape.yml
 /usr/local/share/mlt-7/plus/filter_spot_remover.yml
 /usr/local/share/mlt-7/plus/filter_strobe.yml
+/usr/local/share/mlt-7/plus/filter_subtitle.yml
+/usr/local/share/mlt-7/plus/filter_subtitle_feed.yml
 /usr/local/share/mlt-7/plus/filter_text.yml
 /usr/local/share/mlt-7/plus/filter_threshold.yml
 /usr/local/share/mlt-7/plus/filter_timer.yml
@@ -13637,6 +13642,7 @@
 /usr/local/share/mlt-7/presets/consumer/avformat/MPEG-2
 /usr/local/share/mlt-7/presets/consumer/avformat/MPEG-4
 /usr/local/share/mlt-7/presets/consumer/avformat/MPEG-4-ASP
+/usr/local/share/mlt-7/presets/consumer/avformat/SVT-AV1
 /usr/local/share/mlt-7/presets/consumer/avformat/Slide-Deck-H264
 /usr/local/share/mlt-7/presets/consumer/avformat/Slide-Deck-HEVC
 /usr/local/share/mlt-7/presets/consumer/avformat/Sony-PSP
@@ -13713,6 +13719,7 @@
 /usr/local/share/mlt-7/presets/consumer/avformat/ten_bit/ProRes 422
 /usr/local/share/mlt-7/presets/consumer/avformat/ten_bit/ProRes 444
 /usr/local/share/mlt-7/presets/consumer/avformat/ten_bit/ProRes HQ
+/usr/local/share/mlt-7/presets/consumer/avformat/ten_bit/SVT-AV1
 /usr/local/share/mlt-7/presets/consumer/avformat/ten_bit/x264-high10
 /usr/local/share/mlt-7/presets/consumer/avformat/ten_bit/x265-main10
 /usr/local/share/mlt-7/presets/consumer/avformat/vp9
