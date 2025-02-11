@@ -3,11 +3,11 @@ require 'package'
 class Nocodb < Package
   description 'Open Source Airtable Alternative'
   homepage 'https://nocodb.com/'
-  version '0.260.2'
+  version '0.260.5'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   source_url "https://github.com/nocodb/nocodb/releases/download/#{version}/Noco-linux-x64"
-  source_sha256 'ff6b209017e27ca8bc9f7a19308c1dfcb9a4471cf4e571fa2a4e65259be23974'
+  source_sha256 '57121bb3b87c9e216332d63c5fe59ab9e94b1d49e1b0373556a2b9fd1a3ad28f'
 
   no_compile_needed
   no_shrink
