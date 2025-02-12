@@ -2936,6 +2936,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/resource_settings/utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/artifact_registry.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/build_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/cancellation.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/commands.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/config_changes.py
@@ -2981,6 +2982,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/v2/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/v2/container_printer.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/v2/printer_util.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/v2/revision_printer.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/v2/worker_pool_printer.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/worker_printer.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/proxy.py
@@ -2997,6 +2999,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/stages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/streaming.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/conditions.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/config_changes.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/deletion.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/flags_parser.py
@@ -6908,6 +6911,7 @@
 /usr/local/share/gcloud/lib/surface/alloydb/clusters/export.py
 /usr/local/share/gcloud/lib/surface/alloydb/clusters/import.py
 /usr/local/share/gcloud/lib/surface/alloydb/clusters/list.py
+/usr/local/share/gcloud/lib/surface/alloydb/clusters/migrate_cloud_sql.py
 /usr/local/share/gcloud/lib/surface/alloydb/clusters/promote.py
 /usr/local/share/gcloud/lib/surface/alloydb/clusters/restore.py
 /usr/local/share/gcloud/lib/surface/alloydb/clusters/switchover.py
@@ -8351,10 +8355,14 @@
 /usr/local/share/gcloud/lib/surface/compute/interconnects/remote_locations/list.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/update.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/__init__.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/add_endpoint.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/add_interconnect.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/create.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/delete.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/describe.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/list.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/remove_endpoint.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/remove_interconnect.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/wire_groups/update.py
 /usr/local/share/gcloud/lib/surface/compute/machine_images/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/machine_images/add_iam_policy_binding.yaml
@@ -10103,10 +10111,14 @@
 /usr/local/share/gcloud/lib/surface/deploy/delivery_pipelines/remove_iam_policy_binding.yaml
 /usr/local/share/gcloud/lib/surface/deploy/delivery_pipelines/set_iam_policy.yaml
 /usr/local/share/gcloud/lib/surface/deploy/deploy_policies/__init__.py
+/usr/local/share/gcloud/lib/surface/deploy/deploy_policies/add_iam_policy_binding.yaml
 /usr/local/share/gcloud/lib/surface/deploy/deploy_policies/delete.yaml
 /usr/local/share/gcloud/lib/surface/deploy/deploy_policies/describe.py
 /usr/local/share/gcloud/lib/surface/deploy/deploy_policies/export.py
+/usr/local/share/gcloud/lib/surface/deploy/deploy_policies/get_iam_policy.yaml
 /usr/local/share/gcloud/lib/surface/deploy/deploy_policies/list.yaml
+/usr/local/share/gcloud/lib/surface/deploy/deploy_policies/remove_iam_policy_binding.yaml
+/usr/local/share/gcloud/lib/surface/deploy/deploy_policies/set_iam_policy.yaml
 /usr/local/share/gcloud/lib/surface/deploy/get_config.py
 /usr/local/share/gcloud/lib/surface/deploy/job_runs/__init__.py
 /usr/local/share/gcloud/lib/surface/deploy/job_runs/describe.yaml
