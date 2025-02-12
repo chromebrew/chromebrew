@@ -24,6 +24,6 @@ class Highway < CMake
   depends_on 'glibc' # R
 
   cmake_options "-DBUILD_SHARED_LIBS:BOOL='ON' \
-          -DHWY_ENABLE_TESTS:BOOL='OFF' \
+          -DHWY_ENABLE_TESTS:BOOL='ON' \
           -DHWY_SYSTEM_GTEST:BOOL='OFF'"
 end
