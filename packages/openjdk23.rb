@@ -3,12 +3,12 @@ require 'package'
 class Openjdk23 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
-  version '23.0.1'
+  version '23.0.2'
   license 'GPL-2'
   compatibility 'x86_64'
   # Visit https://www.azul.com/downloads/?package=jdk#zulu to download the binary.
-  source_url 'https://cdn.azul.com/zulu/bin/zulu23.30.13-ca-jdk23.0.1-linux_x64.tar.gz'
-  source_sha256 'ac016766bf3e6b6f6fad79925f0510eeb817e86f0380fbc08a81d2754eb89092'
+  source_url 'https://cdn.azul.com/zulu/bin/zulu23.32.11-ca-jdk23.0.2-linux_x64.tar.gz'
+  source_sha256 '4daad24b459fa09f652bdd80e10ce7f3a6ffcf01b3c5c432533cd31a72f93277'
 
   no_compile_needed
   no_shrink
