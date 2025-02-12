@@ -1,16 +1,16 @@
 # Adapted from Arch Linux highway PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/highway/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/cmake'
 
-class Highway < Package
+class Highway < CMake
   description 'A C++ library for SIMD Single Instruction, Multiple Data'
   homepage 'https://github.com/google/highway/'
-  version '1.0.1'
+  version '1.2.0'
   license 'Apache'
   compatibility 'all'
-  source_url 'https://github.com/google/highway/archive/1.0.1/highway-1.0.1.tar.gz'
-  source_sha256 '7ca6af7dc2e3e054de9e17b9dfd88609a7fd202812b1c216f43cc41647c97311'
+  source_url 'https://github.com/google/highway.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -23,22 +23,7 @@ class Highway < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "mold -run cmake \
-          #{CREW_CMAKE_OPTIONS} \
-          -DBUILD_SHARED_LIBS:BOOL='ON' \
+  cmake_options "-DBUILD_SHARED_LIBS:BOOL='ON' \
           -DHWY_ENABLE_TESTS:BOOL='OFF' \
-          -DHWY_SYSTEM_GTEST:BOOL='OFF' \
-          -Wdev \
-          -G Ninja \
-          .."
-      system 'mold -run samu'
-    end
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+          -DHWY_SYSTEM_GTEST:BOOL='OFF'"
 end
