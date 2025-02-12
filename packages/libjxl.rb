@@ -1,12 +1,12 @@
 # Adapted from Arch Linux libjxl PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/libjxl/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/cmake'
 
-class Libjxl < Package
+class Libjxl < CMake
   description 'JPEG XL image format reference implementation'
   homepage 'https://jpeg.org/jpegxl/'
-  version '0.8.2'
+  version '0.11.1'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libjxl/libjxl.git'
@@ -42,10 +42,7 @@ class Libjxl < Package
 
   no_env_options
 
-  def self.build
-    system "mold -run cmake -B builddir \
-          #{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon')} \
-          -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
+  cmake_options "-DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
           -DJPEGXL_ENABLE_EXAMPLES:BOOL='false' \
           -DJPEGXL_ENABLE_FUZZERS:BOOL='false' \
           -DJPEGXL_ENABLE_PLUGINS:BOOL='true' \
@@ -53,13 +50,5 @@ class Libjxl < Package
           -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
           -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='false' \
           -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
-          -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
-          -Wdev \
-          -G Ninja"
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+          -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO'"
 end
