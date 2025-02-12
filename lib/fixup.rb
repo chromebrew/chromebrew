@@ -42,6 +42,32 @@ ARCH ||= %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH
 LIBC_VERSION ||= Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last
 CREW_PACKAGES_PATH ||= File.join(CREW_LIB_PATH, 'packages')
 
+# Removing files/directories.
+
+# Remove deprecated directory.
+FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
+
+# Remove pagerenv tmp file in CREW_PACKAGES_PATH if it exists.
+FileUtils.rm "#{CREW_PACKAGES_PATH}/pagerenv" if File.file?("#{CREW_PACKAGES_PATH}/pagerenv")
+# Remove install.sh provided path file since we supersede it.
+
+if File.exist?("#{CREW_PREFIX}/etc/env.d/00-path") && File.exist?("#{CREW_PREFIX}/etc/env.d/path")
+  puts "Removing #{CREW_PREFIX}/etc/env.d/path installed by the Chromebrew installer.\n".orange
+  FileUtils.rm "#{CREW_PREFIX}/etc/env.d/path"
+end
+
+# Updating git configuration.
+
+Dir.chdir CREW_LIB_PATH do
+  # Set new sparse-checkout paths for commands directory.
+  system 'git sparse-checkout add commands'
+  system 'git sparse-checkout reapply'
+
+  # Set git timeout values for situations where GitHub is down.
+  system 'git config --local http.lowSpeedLimit 1000' if `git config --local http.lowSpeedLimit`.empty?
+  system 'git config --local http.lowSpeedTime 5' if `git config --local http.lowSpeedTime`.empty?
+end
+
 @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
 def keep_keys(arr, keeper_keys)
   keepers = keeper_keys.to_set
@@ -71,39 +97,6 @@ def refresh_crew_json
                 JSON.parse(@fixup_json.to_json)
               end
   end
-end
-
-def save_essential_deps(json_object)
-  puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
-  json_object['essential_deps'] ||= []
-  json_object['essential_deps'].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
-  crewlog "Essential packages: #{json_object['essential_deps']}"
-  save_json(json_object)
-  refresh_crew_json
-  puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
-end
-
-if @fixup_json['essential_deps'].nil?
-  crewlog('saving essential deps because nil')
-  save_essential_deps(@fixup_json)
-end
-# remove deprecated directory
-FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
-
-# Remove install.sh provided path file since we supersede it.
-if File.exist?("#{CREW_PREFIX}/etc/env.d/00-path") && File.exist?("#{CREW_PREFIX}/etc/env.d/path")
-  puts "Removing #{CREW_PREFIX}/etc/env.d/path installed by the Chromebrew installer.\n".orange
-  FileUtils.rm "#{CREW_PREFIX}/etc/env.d/path"
-end
-
-Dir.chdir CREW_LIB_PATH do
-  # Set new sparse-checkout paths for commands directory
-  system 'git sparse-checkout add commands'
-  system 'git sparse-checkout reapply'
-
-  # Set git timeout values for situations where GitHub is down.
-  system 'git config --local http.lowSpeedLimit 1000' if `git config --local http.lowSpeedLimit`.empty?
-  system 'git config --local http.lowSpeedTime 5' if `git config --local http.lowSpeedTime`.empty?
 end
 
 # Rename the binary_sha256 variable to sha256 in the device.json file
@@ -287,9 +280,6 @@ if deprecate_packages
   @installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
   refresh_crew_json
 end
-
-# Remove pagerenv tmp file in CREW_PACKAGES_PATH if it exists
-FileUtils.rm "#{CREW_PACKAGES_PATH}/pagerenv" if File.file?("#{CREW_PACKAGES_PATH}/pagerenv")
 
 # Handle broken system glibc affecting gcc_lib on newer x86_64 ChromeOS milestones.
 if (ARCH == 'x86_64') && (Gem::Version.new(LIBC_VERSION.to_s) >= Gem::Version.new('2.36'))
