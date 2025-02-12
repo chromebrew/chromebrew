@@ -15,10 +15,10 @@ class Command
       EOT
     when 'check'
       puts <<~EOT
-        Check package(s) for syntax errors and upstream updates.
-        Usage: crew check [-V|--version] [-v|--verbose] <package1> [<package2> ...]
-        If `-V` or `--version` is present, it will search for an upstream update.
-        If `-v` or `--verbose` is present, up to date packages will be displayed.
+        Check package(s) for syntax errors, and copy local packages to the chromebrew directory.
+        Usage: crew check [-f|--force] <package1> [<package2> ...]
+        Local packages will be copied to the chromebrew directory if they do not exist there, or if they are different to the chromebrew package files.
+        If `-f` or `--force` is present, packages will be copied without question.
       EOT
     when 'const'
       puts <<~EOT
