@@ -13,7 +13,7 @@ class Openssl < Package
   binary_sha256({
     aarch64: '6b455d3afadb1458a1505ea3d54c15278d964e255a5ddbd623535e6222f91f31',
      armv7l: '6b455d3afadb1458a1505ea3d54c15278d964e255a5ddbd623535e6222f91f31',
-       i686: '06a0aa00fe50727e4e76c9fb02cd25ca61aa70183c21a57db0aabfabad0c8964',
+       i686: 'a49770f0740e3afd897559205f068eaa61b36f7f6e56ea33ca69fffcea26e899',
      x86_64: '836cd9cc402c90b9d4c7be1bbb43ffc0c0f9f77bd1dbb962ce75d8f7c03cc430'
   })
 
