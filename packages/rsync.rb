@@ -11,8 +11,8 @@ class Rsync < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8c54301a434d5d6dd2ae9fa9fc70d17b7fdf7b4230160bdecad5f3e62d4ffb9e',
-     armv7l: '8c54301a434d5d6dd2ae9fa9fc70d17b7fdf7b4230160bdecad5f3e62d4ffb9e',
+    aarch64: '3f784635c565a41eaf08db4642380bfdca20475162aa9cb618cbe2dbc3d28735',
+     armv7l: '3f784635c565a41eaf08db4642380bfdca20475162aa9cb618cbe2dbc3d28735',
        i686: 'a9cf7e10199a2ef329b39d5b15118e0cda2a27876bd31f2438010335116b3bfe',
      x86_64: 'e1cf690b2a42be06b5d85d40cbf1fede1b1f15a70f783578742e38bd2f3b2c23'
   })
