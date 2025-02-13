@@ -48,6 +48,9 @@
 /usr/local/include/hwy/profiler.h
 /usr/local/include/hwy/robust_statistics.h
 /usr/local/include/hwy/targets.h
+/usr/local/include/hwy/tests/hwy_gtest.h
+/usr/local/include/hwy/tests/test_util-inl.h
+/usr/local/include/hwy/tests/test_util.h
 /usr/local/include/hwy/timer-inl.h
 /usr/local/include/hwy/timer.h
 /usr/local/lib/cmake/hwy/hwy-config-release.cmake
@@ -59,5 +62,9 @@
 /usr/local/lib/libhwy_contrib.so
 /usr/local/lib/libhwy_contrib.so.1
 /usr/local/lib/libhwy_contrib.so.1.2.0
+/usr/local/lib/libhwy_test.so
+/usr/local/lib/libhwy_test.so.1
+/usr/local/lib/libhwy_test.so.1.2.0
 /usr/local/lib/pkgconfig/libhwy-contrib.pc
+/usr/local/lib/pkgconfig/libhwy-test.pc
 /usr/local/lib/pkgconfig/libhwy.pc
