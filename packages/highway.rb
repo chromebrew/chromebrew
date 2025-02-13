@@ -14,8 +14,8 @@ class Highway < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ce08cdaa2edb56d438ddadd439dad0aad7cc81b75e79507970355a00d1299d08',
-     armv7l: 'ce08cdaa2edb56d438ddadd439dad0aad7cc81b75e79507970355a00d1299d08',
+    aarch64: '0401ecfa0d9dd2f3e323ae9b3f248ed1188b8d38cc3627cdac850498ca4d2633',
+     armv7l: '0401ecfa0d9dd2f3e323ae9b3f248ed1188b8d38cc3627cdac850498ca4d2633',
        i686: '45b041fb1f9f636dee1bb76bb111cc3fbea307f52c6b7080cfc1cd433ba526f3',
      x86_64: 'db88247a206e8c49bffb25977385cebbc1648fb25c3ce360e353a323f1125188'
   })
