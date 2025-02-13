@@ -16,7 +16,7 @@ class Libjxl < CMake
   binary_sha256({
     aarch64: 'a52af3b5ec2acc26610eff548685cceb52a107c16c36a9d58c07bd390e433cbd',
      armv7l: 'a52af3b5ec2acc26610eff548685cceb52a107c16c36a9d58c07bd390e433cbd',
-     x86_64: '4e906d35e252d39c3c1351b9fd0b21dcbbaafe00b74988b10919a66d4bffd7e5'
+     x86_64: '54ed447ceadf7c7750dd599b27ee1e97b182ca7d301d959c464091867b3c7439'
   })
 
   depends_on 'py3_asciidoc' => :build
