@@ -11,8 +11,8 @@ class Openssl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6b455d3afadb1458a1505ea3d54c15278d964e255a5ddbd623535e6222f91f31',
-     armv7l: '6b455d3afadb1458a1505ea3d54c15278d964e255a5ddbd623535e6222f91f31',
+    aarch64: '04e22b17c4139cbcad2f4dcba999efaabf21177881d68f76187bf9200e751816',
+     armv7l: '04e22b17c4139cbcad2f4dcba999efaabf21177881d68f76187bf9200e751816',
        i686: 'a49770f0740e3afd897559205f068eaa61b36f7f6e56ea33ca69fffcea26e899',
      x86_64: '2182e0bee3687dd238e732607f1faa1c6d648786321b2d0cdafcb8566ad3fbd7'
   })
