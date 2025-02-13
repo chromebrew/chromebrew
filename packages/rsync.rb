@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Rsync < Autotools
   description 'rsync is an open source utility that provides fast incremental file transfer.'
   homepage 'https://rsync.samba.org/'
-  version '3.4.0'
+  version '3.4.1'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://rsync.samba.org/ftp/rsync/src/rsync-#{version}.tar.gz"
