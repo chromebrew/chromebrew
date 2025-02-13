@@ -1,12 +1,12 @@
 # Adapted from Arch Linux libjxl PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/libjxl/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/cmake'
 
-class Libjxl < Package
+class Libjxl < CMake
   description 'JPEG XL image format reference implementation'
   homepage 'https://jpeg.org/jpegxl/'
-  version '0.8.2'
+  version '0.11.1'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libjxl/libjxl.git'
@@ -14,9 +14,9 @@ class Libjxl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a52af3b5ec2acc26610eff548685cceb52a107c16c36a9d58c07bd390e433cbd',
-     armv7l: 'a52af3b5ec2acc26610eff548685cceb52a107c16c36a9d58c07bd390e433cbd',
-     x86_64: '4e906d35e252d39c3c1351b9fd0b21dcbbaafe00b74988b10919a66d4bffd7e5'
+    aarch64: 'd856c7326760e3f5f5f93ddaf40ca930651cf572ca8312ccb9daa99231d3e79c',
+     armv7l: 'd856c7326760e3f5f5f93ddaf40ca930651cf572ca8312ccb9daa99231d3e79c',
+     x86_64: '54ed447ceadf7c7750dd599b27ee1e97b182ca7d301d959c464091867b3c7439'
   })
 
   depends_on 'py3_asciidoc' => :build
@@ -42,10 +42,7 @@ class Libjxl < Package
 
   no_env_options
 
-  def self.build
-    system "mold -run cmake -B builddir \
-          #{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon')} \
-          -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
+  cmake_options "-DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
           -DJPEGXL_ENABLE_EXAMPLES:BOOL='false' \
           -DJPEGXL_ENABLE_FUZZERS:BOOL='false' \
           -DJPEGXL_ENABLE_PLUGINS:BOOL='true' \
@@ -53,13 +50,5 @@ class Libjxl < Package
           -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
           -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='false' \
           -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
-          -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
-          -Wdev \
-          -G Ninja"
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+          -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO'"
 end
