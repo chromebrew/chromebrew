@@ -13,7 +13,7 @@ class Awscli < Pip
     aarch64: '4461aa3f39395be1aae906e8a80bdc4bb30ec3258d12522fb1ee8e59afb6b6d4',
      armv7l: '4461aa3f39395be1aae906e8a80bdc4bb30ec3258d12522fb1ee8e59afb6b6d4',
        i686: 'ece1e2815c958a90d7a7df85d6aead73c26c0169b7d9fed8722a00897225f96c',
-     x86_64: 'aa5f85e9a976edcc418be522804734b431380e7ef0f396d7aff3f1696b04b690'
+     x86_64: '6f7df9e9cfb6a1c6d47968da527a46c95adb895e3fe86e9859b06af8f5db86a5'
   })
 
   depends_on 'groff'

@@ -13,7 +13,7 @@ class Py3_azure_cli < Pip
     aarch64: '8afddb13a8a0d3a73593c5051b0d36b15b5a18f1b15d46516926436fc3ec00fe',
      armv7l: '8afddb13a8a0d3a73593c5051b0d36b15b5a18f1b15d46516926436fc3ec00fe',
        i686: '1dc9ed60eb0629da2dd80f5cef8873697c93c8ee3f5f0a1c0ccfc3bb5c0a4af2',
-     x86_64: 'fd8473ad60acdbd3fd0ca911bc09e1d3ff0aa0fb73b37f51ace45fb794ac8e6a'
+     x86_64: 'f03cdd0959057accb5d9d3c0e91aa48d952e40e4947dee5af30cf28171264ca2'
   })
 
   depends_on 'python3'
