@@ -11,8 +11,8 @@ class Curl < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a2efe09834e9ad3bf04b47f2817f92b1ef5fce6c92af700b77ade324f8ce448b',
-     armv7l: 'a2efe09834e9ad3bf04b47f2817f92b1ef5fce6c92af700b77ade324f8ce448b',
+    aarch64: 'efe3ffc129b9d228367e723b6332c4b3f8afc983ec521bdfd2480a49e726f86f',
+     armv7l: 'efe3ffc129b9d228367e723b6332c4b3f8afc983ec521bdfd2480a49e726f86f',
        i686: '9e8c806535e1afa86737f3f4ff4b7547c9a7b6d88d508e4fc672e70173541bfa',
      x86_64: '78107de10d329a4c0ea60b81ee0902568f5ef257208aee2cf780a12a167c6551'
   })
