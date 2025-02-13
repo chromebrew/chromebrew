@@ -1,44 +1,29 @@
 # Adapted from Arch Linux highway PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/highway/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/cmake'
 
-class Highway < Package
+class Highway < CMake
   description 'A C++ library for SIMD Single Instruction, Multiple Data'
   homepage 'https://github.com/google/highway/'
-  version '1.0.1'
+  version '1.2.0'
   license 'Apache'
   compatibility 'all'
-  source_url 'https://github.com/google/highway/archive/1.0.1/highway-1.0.1.tar.gz'
-  source_sha256 '7ca6af7dc2e3e054de9e17b9dfd88609a7fd202812b1c216f43cc41647c97311'
+  source_url 'https://github.com/google/highway.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ce08cdaa2edb56d438ddadd439dad0aad7cc81b75e79507970355a00d1299d08',
-     armv7l: 'ce08cdaa2edb56d438ddadd439dad0aad7cc81b75e79507970355a00d1299d08',
-       i686: '5e1a6569a998947c2c93729e27ca62524719ff82e2c37038f589c260d073034b',
-     x86_64: 'aa0488630c6ddfbdbecdd43870568767f4bb99075f188285d4fb9d5af2caa6dd'
+    aarch64: '0401ecfa0d9dd2f3e323ae9b3f248ed1188b8d38cc3627cdac850498ca4d2633',
+     armv7l: '0401ecfa0d9dd2f3e323ae9b3f248ed1188b8d38cc3627cdac850498ca4d2633',
+       i686: '45b041fb1f9f636dee1bb76bb111cc3fbea307f52c6b7080cfc1cd433ba526f3',
+     x86_64: 'db88247a206e8c49bffb25977385cebbc1648fb25c3ce360e353a323f1125188'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "mold -run cmake \
-          #{CREW_CMAKE_OPTIONS} \
-          -DBUILD_SHARED_LIBS:BOOL='ON' \
-          -DHWY_ENABLE_TESTS:BOOL='OFF' \
-          -DHWY_SYSTEM_GTEST:BOOL='OFF' \
-          -Wdev \
-          -G Ninja \
-          .."
-      system 'mold -run samu'
-    end
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  cmake_options "-DBUILD_SHARED_LIBS:BOOL='ON' \
+          -DHWY_ENABLE_TESTS:BOOL='ON' \
+          -DHWY_SYSTEM_GTEST:BOOL='OFF'"
 end
