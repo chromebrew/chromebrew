@@ -4,7 +4,7 @@ require 'convenience_functions'
 class Handbrake < Package
   description 'HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.'
   homepage 'https://handbrake.fr/'
-  version '1.9.0'
+  version '1.9.1'
   license 'GPL-2'
   compatibility 'x86_64'
   source_url 'https://github.com/HandBrake/HandBrake.git'
@@ -12,7 +12,7 @@ class Handbrake < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '4a9cfafab1a4cd9a46c40564e0474289491688e142e55a4845762c508371f500'
+     x86_64: '4a1cbdaab5931a9e878f3103cb9df6750e44ca8f6272fc80aa924ddf15cd3d64'
   })
 
   depends_on 'at_spi2_core' # R
