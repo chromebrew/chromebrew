@@ -12,8 +12,8 @@ class Py3_oci < Pip
   binary_sha256({
     aarch64: '1ca75e61446f60f6602b70b6b9dad3b5786452502a1c5f1fbcf47a55b82f81a1',
      armv7l: '1ca75e61446f60f6602b70b6b9dad3b5786452502a1c5f1fbcf47a55b82f81a1',
-       i686: 'd9ba76f7c96762f3daca384baf5045672446dbcc0e8ec0524c6fdfddd9afa63b',
-     x86_64: 'e027c90620816f0b9ae9627cad2367da6946e0a4c8c4211c95cab60e23d4718e'
+       i686: '166bc265316183ec00f984dd41cde9e5c709eb0a41b642408b7ffd2d14b20dc0',
+     x86_64: '4b0bd33512136d2f4c63b00b5bb25535818f643a9acbde748fcfeec92e5daaae'
   })
 
   depends_on 'py3_python_dateutil'
