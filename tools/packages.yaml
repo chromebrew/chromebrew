@@ -1775,6 +1775,11 @@ url: https://www.exodus.com/download/
 activity: high
 ---
 kind: url
+name: extremetuxracer
+url: https://github.com/FinnBaltazar1111/extremetuxracer/releases
+activity: low
+---
+kind: url
 name: expat
 url: https://sourceforge.net/projects/expat/files/expat/
 activity: low
