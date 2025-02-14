@@ -3,17 +3,17 @@ require 'package'
 class Ollama < Package
   description 'Get up and running with large language models.'
   homepage 'https://ollama.com/'
-  version '0.1.47'
+  version '0.5.9'
   license 'MIT'
   compatibility 'x86_64'
-  source_url "https://github.com/ollama/ollama/releases/download/v#{version}/ollama-linux-amd64"
-  source_sha256 '4e51802b7a4b3591d1cd5999936e1fb95b6789477c866ef47ba3613f53da9713'
+  source_url "https://github.com/ollama/ollama/releases/download/v#{version}/ollama-linux-amd64.tgz"
+  source_sha256 '223c2dd297a6c070d147c0189d32f191279cd264f6b2da7a2663402de9db9900'
 
   no_compile_needed
   no_shrink
-  # no_strip # ./usr/local/bin/gh: 1: ./usr/local/bin/gh: Syntax error: redirection unexpected (expecting ")")
+  # no_strip # ./usr/local/bin/ollama: 1: ./usr/local/bin/ollama: Syntax error: redirection unexpected (expecting ")")
 
   def self.install
-    FileUtils.install 'ollama-linux-amd64', "#{CREW_DEST_PREFIX}/bin/ollama", mode: 0o755
+    FileUtils.install 'bin/ollama', "#{CREW_DEST_PREFIX}/bin/ollama", mode: 0o755
   end
 end
