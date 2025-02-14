@@ -4,10 +4,18 @@ class Extremetuxracer < Package
   description 'High speed arctic racing game based on Tux Racer'
   homepage 'https://sourceforge.net/projects/extremetuxracer/'
   version "0.8.4-1"
-  compatibility 'x86_64 armv7l'
+  compatibility 'x86_64 armv7l aarch64'
   license 'GPLv2'
-  source_url "https://github.com/FinnBaltazar1111/extremetuxracer/releases/latest/download/extremetuxracer_#{version}_#{ARCH}.deb"
-  source_sha256 'SKIP'
+  source_url ({
+    "armv7l": "https://github.com/FinnBaltazar1111/extremetuxracer/releases/download/0.8.4/extremetuxracer_#{version}_armhf.deb",
+    "x86_64": "https://github.com/FinnBaltazar1111/extremetuxracer/releases/download/0.8.4/extremetuxracer_#{version}_amd64.deb",
+    "aarch64": "https://github.com/FinnBaltazar1111/extremetuxracer/releases/download/0.8.4/extremetuxracer_#{version}_arm64.deb"
+  })
+  source_sha256 ({
+    "armv7l": "47e14334f142d6adc2094d5b9304b0c9129c2fa94e25765ad2c53523ac635202",
+    "x86_64": "d081c1b4fcc8f4586f734c9c9f4c23a5f00909eda2596729d141328a637b99ea",
+    "aarch64": "05528ec0e802a57f2c965ba392c98d7a601dfce9c02be84d3da069ad8c5fdd42"
+  })
   
   depends_on 'libsdl2'
   depends_on 'mesa'
