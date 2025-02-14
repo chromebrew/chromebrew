@@ -4,7 +4,7 @@ class Extremetuxracer < Package
   description 'High speed arctic racing game based on Tux Racer'
   homepage 'https://sourceforge.net/projects/extremetuxracer/'
   version "0.8.4-1"
-  compatibility 'x86_64 armv7l aarch64'
+  compatibility 'armv7l x86_64 aarch64'
   license 'GPLv2'
   source_url ({
     "armv7l": "https://github.com/FinnBaltazar1111/extremetuxracer/releases/download/0.8.4/extremetuxracer_#{version}_armhf.deb",
@@ -21,6 +21,8 @@ class Extremetuxracer < Package
   depends_on 'mesa'
   depends_on 'mesa_utils'
   depends_on 'tcl'
+
+  no_compile_needed
   
 
   def self.install
