@@ -1790,6 +1790,11 @@ url: https://sourceforge.net/projects/expect/files/Expect/
 activity: low
 ---
 kind: url
+name: extra_cmake_modules
+url: https://invent.kde.org/frameworks/extra-cmake-modules/-/tags
+activity: high
+---
+kind: url
 name: exo
 url: https://archive.xfce.org/src/xfce/exo/
 activity: low
