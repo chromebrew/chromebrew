@@ -3690,6 +3690,11 @@ url: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git
 activity: none
 ---
 kind: url
+name: kf5_config
+url: https://invent.kde.org/frameworks/kconfig/-/tags
+activity: medium
+---
+kind: url
 name: komodo
 url: https://downloads.activestate.com/Komodo/releases/
 activity: low
