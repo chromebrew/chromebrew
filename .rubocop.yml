@@ -6,7 +6,7 @@ AllCops:
   Exclude:
     - 'lib/docopt.rb'
   NewCops: enable
-  TargetRubyVersion: 3.3
+  TargetRubyVersion: 3.4
 
 # These cops have been temporarily disabled and should be reenabled asap
 Lint/ShadowingOuterLocalVariable:
