@@ -11,8 +11,8 @@ class Kf5_widgetsaddons < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '65e3fda4d0214c462502deb5741676ad90a192c71a456dc3bfad13c409811aed',
+     armv7l: '65e3fda4d0214c462502deb5741676ad90a192c71a456dc3bfad13c409811aed',
      x86_64: 'e3ea2dd36694fd82f5b2b3e9d6fb0321fed11db795b9b4d8f356fdf26e79ef7b'
   })
 
