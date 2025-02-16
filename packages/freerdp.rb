@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Freerdp < CMake
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
-  version "3.10.2-#{CREW_ICU_VER}"
+  version "3.12.0-#{CREW_ICU_VER}"
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/FreeRDP/FreeRDP.git'
@@ -11,9 +11,9 @@ class Freerdp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bf1f622992031bdd1fcf4e12e43f87297f23c1ef14ef6cdba2b4485cb95a3af6',
-     armv7l: 'bf1f622992031bdd1fcf4e12e43f87297f23c1ef14ef6cdba2b4485cb95a3af6',
-     x86_64: 'c4dc7b022583a6f288348fac67ba6013e24a17320a5d4256be0287fb4644583d'
+    aarch64: 'b4688a6fd84cb8db8f7e0b985ffe36e6ff976d4779c3ebe50fd82f9baa66094d',
+     armv7l: 'b4688a6fd84cb8db8f7e0b985ffe36e6ff976d4779c3ebe50fd82f9baa66094d',
+     x86_64: '7e9998e8e09bfaa0eb76b3337fda6f6cc79e632705011f7b03ca1c7e7932f8fd'
   })
 
   depends_on 'alsa_lib' # R
