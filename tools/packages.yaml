@@ -3695,6 +3695,11 @@ url: https://invent.kde.org/frameworks/kconfig/-/tags
 activity: medium
 ---
 kind: url
+name: kf5_completion
+url: https://invent.kde.org/frameworks/kcompletion/-/tags
+activity: medium
+---
+kind: url
 name: kf5_widgetsaddons
 url: https://invent.kde.org/frameworks/kwidgetsaddons/-/tags
 activity: medium
