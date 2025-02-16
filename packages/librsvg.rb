@@ -1,9 +1,9 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Librsvg < Autotools
+class Librsvg < Meson
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  version "2.58.2-#{CREW_ICU_VER}"
+  version "2.59.2-#{CREW_ICU_VER}"
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
@@ -17,6 +17,8 @@ class Librsvg < Autotools
   })
 
   depends_on 'cairo' # R
+  depends_on 'cargo_c' => :build
+  depends_on 'dav1d' # R
   depends_on 'expat' # R
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
@@ -33,6 +35,7 @@ class Librsvg < Autotools
   depends_on 'libpng' # R
   depends_on 'libxml2' # R
   depends_on 'pango' # R
+  depends_on 'py3_meson' => :build
   depends_on 'py3_six' => :build
   depends_on 'py3_smartypants' => :build
   depends_on 'rust' => :build
@@ -41,7 +44,7 @@ class Librsvg < Autotools
 
   gnome
 
-  configure_options '--enable-introspection=yes \
-      --enable-vala=yes \
-      --enable-pixbuf-loader'
+  ENV['CARGO_PROFILE_RELEASE_LTO'] = 'true'
+
+  meson_options '-Dintrospection=enabled -Dvala=enabled'
 end
