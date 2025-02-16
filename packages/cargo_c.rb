@@ -1,12 +1,13 @@
 # Adapted from Arch Linux cargo-c PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/cargo-c/trunk/PKGBUILD
+# NOTE: This package should be updated along with new Rust releases.
 
 require 'package'
 
 class Cargo_c < Package
   description 'A cargo subcommand to build and install C-ABI compatible dynamic and static libraries'
   homepage 'https://github.com/lu-zero/cargo-c/'
-  version '0.9.13'
+  version '0.10.9'
   license 'LGPL-2.1 and MPL-1.1'
   compatibility 'all'
   source_url 'https://github.com/lu-zero/cargo-c.git'
@@ -14,13 +15,18 @@ class Cargo_c < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '21825714180d7032b34e2c74582f4002d55dccc781bbbd3ba6bce1af88d1cade',
-     armv7l: '21825714180d7032b34e2c74582f4002d55dccc781bbbd3ba6bce1af88d1cade',
-       i686: 'f350e961fd5a16fb080adf24288e41559f037db3cab5b07f2ff74407d4370bac',
-     x86_64: 'a45adb265c13605339cfc04548f3c33d13887307b20639abc7d4b385804768a0'
+    aarch64: '928c7aba982ee2bd9e9c3852cb8a3afee2ae6ac6a312ad388bade1d88e211ba8',
+     armv7l: '928c7aba982ee2bd9e9c3852cb8a3afee2ae6ac6a312ad388bade1d88e211ba8',
+       i686: '718ce19f3c72d4f24dc091c94d5213efbcc470829df2548d0f6d67f58067be79',
+     x86_64: 'c6ef004c68fe0077d4a8d43f58a035c6c0389020cb74b485f757d006abb9f173'
   })
 
   depends_on 'rust' => :build
+  depends_on 'curl' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'openssl' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "cargo fetch \
