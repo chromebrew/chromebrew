@@ -11,8 +11,8 @@ class Kf5_completion < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '22c3cfdf088662be32cddcf2dc59d32d36feccda89474eaff55a2f1433ff757b',
+     armv7l: '22c3cfdf088662be32cddcf2dc59d32d36feccda89474eaff55a2f1433ff757b',
      x86_64: '7a5250cd74b291113c011de64fabfd6c5f3f6e023e9d73f5ec710e72b36b5882'
   })
 
