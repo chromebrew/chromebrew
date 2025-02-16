@@ -305,6 +305,11 @@ url: https://github.com/asciinema/asciinema/releases
 activity: medium
 ---
 kind: url
+name: asdf
+url: https://github.com/asdf-vm/asdf/releases
+activity: high
+---
+kind: url
 name: asmc
 url: https://github.com/nidud/asmc
 activity: medium
