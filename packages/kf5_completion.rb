@@ -13,13 +13,15 @@ class Kf5_completion < CMake
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '7a5250cd74b291113c011de64fabfd6c5f3f6e023e9d73f5ec710e72b36b5882'
   })
 
   depends_on 'extra_cmake_modules'
   depends_on 'kf5_config'
   depends_on 'kf5_widgetsaddons'
   depends_on 'qt5_base'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
   cmake_options "-DECM_MKSPECS_INSTALL_DIR=#{CREW_PREFIX}/share/qt5/mkspecs/modules"
 end
