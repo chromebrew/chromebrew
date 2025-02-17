@@ -13,8 +13,8 @@ class Lego < Package
      x86_64: "https://github.com/go-acme/lego/releases/download/v#{version}/lego_v#{version}_linux_amd64.tar.gz"
   })
   source_sha256({
-    aarch64: 'e534b88223462779109ec038f6c4d13bd570df822f85e3bd7ef1fb38be2ae3dc',
-     armv7l: 'e534b88223462779109ec038f6c4d13bd570df822f85e3bd7ef1fb38be2ae3dc',
+    aarch64: '9113f4f7b20955d4f10a5c42c0775c36c590010026597938d0b9ffb8cbcbb78d',
+     armv7l: '9113f4f7b20955d4f10a5c42c0775c36c590010026597938d0b9ffb8cbcbb78d',
        i686: 'de2a138f8468be7761585b5d3e0b716b9da2dd182c35f59ec6753a3e2bf9d510',
      x86_64: 'ab176476d6a3114a212e08cc9a9518c8038366e84953c347e4970d6656dc0583'
   })
