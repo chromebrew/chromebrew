@@ -3,7 +3,7 @@ require 'package'
 class Lego < Package
   description "Let's Encrypt/ACME client and library written in Go"
   homepage 'https://go-acme.github.io/lego/'
-  version '4.21.0'
+  version '4.22.1'
   license 'MIT'
   compatibility 'all'
   source_url({
