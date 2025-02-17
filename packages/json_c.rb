@@ -14,7 +14,7 @@ class Json_c < CMake
     aarch64: '7da5ea7b11964e82427322b3cfb45cef60a0c86e6725c9f2a37f39eaa839e041',
      armv7l: '7da5ea7b11964e82427322b3cfb45cef60a0c86e6725c9f2a37f39eaa839e041',
        i686: '9ba118efb99aee704fbfca41b87d221d876c1edf359d2e1384ce3501b01f24af',
-     x86_64: '9d0e18ddb424b010c6513eae3dd437d3dc49c3fb3f0dce27377786e322847e3b'
+     x86_64: '7c0dd0ae3eb8e18649fa38cf77ca31cc51fc554faaca4025b90a5e208ed714db'
   })
 
   depends_on 'glibc' # R
