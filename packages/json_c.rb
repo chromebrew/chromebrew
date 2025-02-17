@@ -13,7 +13,7 @@ class Json_c < CMake
   binary_sha256({
     aarch64: '7da5ea7b11964e82427322b3cfb45cef60a0c86e6725c9f2a37f39eaa839e041',
      armv7l: '7da5ea7b11964e82427322b3cfb45cef60a0c86e6725c9f2a37f39eaa839e041',
-       i686: 'a372fad8f673ea8170332d60d846dacebec6ed659bb37f87c9e2112d051c0c2f',
+       i686: '9ba118efb99aee704fbfca41b87d221d876c1edf359d2e1384ce3501b01f24af',
      x86_64: '9d0e18ddb424b010c6513eae3dd437d3dc49c3fb3f0dce27377786e322847e3b'
   })
 
