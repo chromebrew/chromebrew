@@ -13,7 +13,7 @@ class Plasma_wayland_protocols < CMake
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '3e252e1a34cd4685a451cbea7e1e0af24aee16cecb1e3e5bd566a5d0db4ee5f1'
   })
 
   depends_on 'extra_cmake_modules'
