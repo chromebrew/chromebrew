@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Json_c < CMake
   description 'JSON-C implements a reference counting object model that allows you to easily construct JSON objects in C, output them as JSON formatted strings and parse JSON formatted strings back into the C representation of JSON objects.'
   homepage 'https://github.com/json-c/json-c'
-  version '0.17-20230812'
+  version '0.18-20240915'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/json-c/json-c.git'
@@ -19,8 +19,7 @@ class Json_c < CMake
 
   depends_on 'glibc' # R
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  cmake_install_extras do
     FileUtils.ln_s "#{CREW_LIB_PREFIX}/libjson-c.so", "#{CREW_DEST_LIB_PREFIX}/libjson-c.so.3"
     FileUtils.ln_s "#{CREW_LIB_PREFIX}/libjson-c.so", "#{CREW_DEST_LIB_PREFIX}/libjson-c.so.4"
   end
