@@ -3,7 +3,7 @@ require 'package'
 class Lesspipe < Package
   description 'Input filter for the pager less'
   homepage 'https://www-zeuthen.desy.de/~friebel/unix/lesspipe.html'
-  version '2.16'
+  version '2.18'
   license 'GPL-2.0'
   compatibility 'all'
   source_url 'https://github.com/wofr06/lesspipe.git'
