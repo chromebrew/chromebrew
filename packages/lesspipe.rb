@@ -11,8 +11,8 @@ class Lesspipe < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '39221026f20d872b11c55607553c247f9c42b241eb42297b7c88ec6c5cbe13a9',
-     armv7l: '39221026f20d872b11c55607553c247f9c42b241eb42297b7c88ec6c5cbe13a9',
+    aarch64: '4bedbaedd6667ef7985c5a3a4fcae368cc6c842eed340ec9783914ed0b8df352',
+     armv7l: '4bedbaedd6667ef7985c5a3a4fcae368cc6c842eed340ec9783914ed0b8df352',
        i686: '1e6a90cd20229e66589e08cd41b113378eddecda1ce56e22028956515d4ce163',
      x86_64: 'f019a7f7088347b8c2467e2b7aaa1aca70fa87d835549781b58bdaa65fbf98ed'
   })
