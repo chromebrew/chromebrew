@@ -1,7 +1,7 @@
 require 'buildsystems/cmake'
 
 class Kf5_coreaddons < CMake
-  description 'Persistent platform-independent application settings.'
+  description 'Qt addon library with a collection of non-GUI utilities.'
   homepage 'https://invent.kde.org/frameworks/kcoreaddons'
   version '5.116.0'
   license 'GPL-3'
