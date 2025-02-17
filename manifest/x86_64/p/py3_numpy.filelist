@@ -1,12 +1,12 @@
 /usr/local/bin/f2py
 /usr/local/bin/numpy-config
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/INSTALLER
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/LICENSE.txt
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/METADATA
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/RECORD
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/REQUESTED
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/WHEEL
-/usr/local/lib64/python3.13/site-packages/numpy-2.2.2.dist-info/entry_points.txt
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.3.dist-info/INSTALLER
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.3.dist-info/LICENSE.txt
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.3.dist-info/METADATA
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.3.dist-info/RECORD
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.3.dist-info/REQUESTED
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.3.dist-info/WHEEL
+/usr/local/lib64/python3.13/site-packages/numpy-2.2.3.dist-info/entry_points.txt
 /usr/local/lib64/python3.13/site-packages/numpy.libs/libgfortran-040039e1-0352e75f.so.5.0.0
 /usr/local/lib64/python3.13/site-packages/numpy.libs/libquadmath-96973f99-934c22de.so.0.0.0
 /usr/local/lib64/python3.13/site-packages/numpy.libs/libscipy_openblas64_-6bb31eeb.so
@@ -33,6 +33,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/_array_api_info.py
 /usr/local/lib64/python3.13/site-packages/numpy/_array_api_info.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/_configtool.py
+/usr/local/lib64/python3.13/site-packages/numpy/_configtool.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/_core/__init__.py
 /usr/local/lib64/python3.13/site-packages/numpy/_core/__init__.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/_core/__pycache__/__init__.cpython-313.pyc
@@ -321,8 +322,11 @@
 /usr/local/lib64/python3.13/site-packages/numpy/_core/tests/test_unicode.py
 /usr/local/lib64/python3.13/site-packages/numpy/_core/umath.py
 /usr/local/lib64/python3.13/site-packages/numpy/_distributor_init.py
+/usr/local/lib64/python3.13/site-packages/numpy/_distributor_init.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/_expired_attrs_2_0.py
+/usr/local/lib64/python3.13/site-packages/numpy/_expired_attrs_2_0.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/_globals.py
+/usr/local/lib64/python3.13/site-packages/numpy/_globals.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/_pyinstaller/__init__.py
 /usr/local/lib64/python3.13/site-packages/numpy/_pyinstaller/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/_pyinstaller/__pycache__/hook-numpy.cpython-313.pyc
@@ -696,6 +700,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_arrayterator_impl.py
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_arrayterator_impl.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_datasource.py
+/usr/local/lib64/python3.13/site-packages/numpy/lib/_datasource.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_function_base_impl.py
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_function_base_impl.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_histograms_impl.py
@@ -703,6 +708,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_index_tricks_impl.py
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_index_tricks_impl.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_iotools.py
+/usr/local/lib64/python3.13/site-packages/numpy/lib/_iotools.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_nanfunctions_impl.py
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_nanfunctions_impl.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_npyio_impl.py
@@ -722,6 +728,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_ufunclike_impl.py
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_ufunclike_impl.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_user_array_impl.py
+/usr/local/lib64/python3.13/site-packages/numpy/lib/_user_array_impl.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_utils_impl.py
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_utils_impl.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/_version.py
@@ -731,11 +738,13 @@
 /usr/local/lib64/python3.13/site-packages/numpy/lib/format.py
 /usr/local/lib64/python3.13/site-packages/numpy/lib/format.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/introspect.py
+/usr/local/lib64/python3.13/site-packages/numpy/lib/introspect.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/mixins.py
 /usr/local/lib64/python3.13/site-packages/numpy/lib/mixins.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/npyio.py
 /usr/local/lib64/python3.13/site-packages/numpy/lib/npyio.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/recfunctions.py
+/usr/local/lib64/python3.13/site-packages/numpy/lib/recfunctions.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/scimath.py
 /usr/local/lib64/python3.13/site-packages/numpy/lib/scimath.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/lib/stride_tricks.py
@@ -800,6 +809,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/lib/tests/test_ufunclike.py
 /usr/local/lib64/python3.13/site-packages/numpy/lib/tests/test_utils.py
 /usr/local/lib64/python3.13/site-packages/numpy/lib/user_array.py
+/usr/local/lib64/python3.13/site-packages/numpy/lib/user_array.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/linalg/__init__.py
 /usr/local/lib64/python3.13/site-packages/numpy/linalg/__init__.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/linalg/__pycache__/__init__.cpython-313.pyc
@@ -856,6 +866,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/ma/testutils.py
 /usr/local/lib64/python3.13/site-packages/numpy/ma/timer_comparison.py
 /usr/local/lib64/python3.13/site-packages/numpy/matlib.py
+/usr/local/lib64/python3.13/site-packages/numpy/matlib.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/matrixlib/__init__.py
 /usr/local/lib64/python3.13/site-packages/numpy/matrixlib/__init__.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/matrixlib/__pycache__/__init__.cpython-313.pyc
@@ -1017,14 +1028,18 @@
 /usr/local/lib64/python3.13/site-packages/numpy/testing/__pycache__/overrides.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/testing/__pycache__/print_coercion_tables.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/testing/_private/__init__.py
+/usr/local/lib64/python3.13/site-packages/numpy/testing/_private/__init__.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/testing/_private/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/testing/_private/__pycache__/extbuild.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/testing/_private/__pycache__/utils.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/testing/_private/extbuild.py
+/usr/local/lib64/python3.13/site-packages/numpy/testing/_private/extbuild.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/testing/_private/utils.py
 /usr/local/lib64/python3.13/site-packages/numpy/testing/_private/utils.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/testing/overrides.py
+/usr/local/lib64/python3.13/site-packages/numpy/testing/overrides.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/testing/print_coercion_tables.py
+/usr/local/lib64/python3.13/site-packages/numpy/testing/print_coercion_tables.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/testing/tests/__init__.py
 /usr/local/lib64/python3.13/site-packages/numpy/testing/tests/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/testing/tests/__pycache__/test_utils.cpython-313.pyc
@@ -1122,6 +1137,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/flatiter.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/fromnumeric.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/index_tricks.cpython-313.pyc
+/usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/lib_user_array.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/lib_utils.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/lib_version.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/literal.cpython-313.pyc
@@ -1136,6 +1152,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/numeric.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/numerictypes.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/random.cpython-313.pyc
+/usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/recfunctions.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/scalars.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/shape.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/__pycache__/simple.cpython-313.pyc
@@ -1156,6 +1173,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/flatiter.py
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/fromnumeric.py
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/index_tricks.py
+/usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/lib_user_array.py
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/lib_utils.py
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/lib_version.py
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/literal.py
@@ -1170,6 +1188,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/numeric.py
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/numerictypes.py
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/random.py
+/usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/recfunctions.py
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/scalars.py
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/shape.py
 /usr/local/lib64/python3.13/site-packages/numpy/typing/tests/data/pass/simple.py

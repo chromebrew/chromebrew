@@ -639,21 +639,9 @@ jobs:
             echo "- ${file}" >> /tmp/pr.txt
           done
           echo -e "##\nBuilds attempted for:" >> /tmp/pr.txt
-          if [[ "${x86_64_PACKAGES}" == "" ]]; then
-            echo -e "- [ ] \`x86_64\`" >> /tmp/pr.txt
-          else
-            echo -e "- [x] \`x86_64\`" >> /tmp/pr.txt
-          fi
-          if [[ "${i686_PACKAGES}" == "" ]]; then
-            echo -e "- [ ] \`i686\`" >> /tmp/pr.txt
-          else
-            echo -e "- [x] \`i686\`" >> /tmp/pr.txt
-          fi
-          if [[ "${armv7l_PACKAGES}" == "" ]]; then
-            echo -e "- [ ] \`armv7l\`" >> /tmp/pr.txt
-          else
-            echo -e "- [x] \`armv7l\`" >> /tmp/pr.txt
-          fi
+          [ -n "${x86_64_PACKAGES}" ] && echo -e "- [x] \`x86_64\`" >> /tmp/pr.txt
+          [ -n "${i686_PACKAGES}" ] && echo -e "- [x] \`i686\`" >> /tmp/pr.txt
+          [ -n "${armv7l_PACKAGES}" ] && echo -e "- [x] \`armv7l\`" >> /tmp/pr.txt
           if [[ "${CHANGED_MANIFEST_FILES}" == "" ]]; then
             echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
           fi

@@ -305,6 +305,11 @@ url: https://github.com/asciinema/asciinema/releases
 activity: medium
 ---
 kind: url
+name: asdf
+url: https://github.com/asdf-vm/asdf/releases
+activity: high
+---
+kind: url
 name: asmc
 url: https://github.com/nidud/asmc
 activity: medium
@@ -1775,6 +1780,11 @@ url: https://www.exodus.com/download/
 activity: high
 ---
 kind: url
+name: extremetuxracer
+url: https://github.com/FinnBaltazar1111/extremetuxracer/releases
+activity: low
+---
+kind: url
 name: expat
 url: https://sourceforge.net/projects/expat/files/expat/
 activity: low
@@ -1783,6 +1793,11 @@ kind: url
 name: expect
 url: https://sourceforge.net/projects/expect/files/Expect/
 activity: low
+---
+kind: url
+name: extra_cmake_modules
+url: https://invent.kde.org/frameworks/extra-cmake-modules/-/tags
+activity: high
 ---
 kind: url
 name: exo
@@ -3678,6 +3693,26 @@ kind: url
 name: keyutils
 url: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git
 activity: none
+---
+kind: url
+name: kf5_config
+url: https://invent.kde.org/frameworks/kconfig/-/tags
+activity: medium
+---
+kind: url
+name: kf5_coreaddons
+url: https://invent.kde.org/frameworks/kcoreaddons/-/tags
+activity: medium
+---
+kind: url
+name: kf5_completion
+url: https://invent.kde.org/frameworks/kcompletion/-/tags
+activity: medium
+---
+kind: url
+name: kf5_widgetsaddons
+url: https://invent.kde.org/frameworks/kwidgetsaddons/-/tags
+activity: medium
 ---
 kind: url
 name: komodo

@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pyright < Pip
   description 'Static Type Checker for Python'
   homepage 'https://github.com/microsoft/pyright'
-  version "1.1.393-#{CREW_PY_VER}"
+  version "1.1.394-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '55ac2e90ca7b0e16001dfd459bb3ffa07afe1a890d3aee6eb8ddd93ce1bb3b30',
-     armv7l: '55ac2e90ca7b0e16001dfd459bb3ffa07afe1a890d3aee6eb8ddd93ce1bb3b30',
-       i686: 'b098d69615f90154858015e91fe081ec9d0d36e1ce1b1062d596333e75323581',
-     x86_64: '2881f3b81b55b1d6b45078d1879c7bf22a367f269d5041cfc57041bef13c8734'
+    aarch64: 'a8fc49504a63e856b9a9777197c56059167ebcb3b9080ab992907472318eb0b4',
+     armv7l: 'a8fc49504a63e856b9a9777197c56059167ebcb3b9080ab992907472318eb0b4',
+       i686: '2d488d65b6b63481fb236abf1e9365c15f76ad64278656ca9160b955a9ff912b',
+     x86_64: '2c297ae48daecd0a82a75eebc797c313fcb6a3fd477971260e8d913ad12ccfd0'
   })
 
   depends_on 'python3'
