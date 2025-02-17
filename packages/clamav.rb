@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Clamav < Package
+class Clamav < CMake
   description 'ClamAV is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.'
   homepage 'https://www.clamav.net/'
-  version '1.3.1'
+  version '1.4.2'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://www.clamav.net/downloads/production/clamav-1.3.1.tar.gz'
-  source_sha256 '12a3035bf26f55f71e3106a51a5fa8d7b744572df98a63920a9cff876a7dcce4'
+  source_url "https://www.clamav.net/downloads/production/clamav-#{version}.tar.gz"
+  source_sha256 '8c92f8ade2a8f2c9d6688d1d63ee57f6caf965d74dce06d0971c6709c8e6c04c'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -22,26 +22,28 @@ class Clamav < Package
   depends_on 'libiconv' => :build
   depends_on 'json_c' => :build
   depends_on 'py3_pytest' => :build
+  depends_on 'bzip2' # R
+  depends_on 'curl' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libxml2' # R
+  depends_on 'ncurses' # R
+  depends_on 'openssl' # R
+  depends_on 'pcre2' # R
+  depends_on 'zlib' # R
 
-  def self.build
-    system "cmake #{CREW_CMAKE_OPTIONS} -B build \
-            -D APP_CONFIG_DIRECTORY=#{CREW_PREFIX}/etc/clamav \
-            -D DATABASE_DIRECTORY=#{CREW_PREFIX}/share/clamav \
-            -D CMAKE_C_FLAGS=-fPIC \
-            -D ENABLE_JSON_SHARED=OFF \
-            -D ENABLE_STATIC_LIB=ON \
-            -D ENABLE_SYSTEMD=OFF \
-            -D ENABLE_MILTER=OFF \
-            -G Ninja"
-    system "#{CREW_NINJA} -C build"
-  end
+  no_shrink
 
-  def self.check
-    system 'ctest -C build'
-  end
+  cmake_options "-D APP_CONFIG_DIRECTORY=#{CREW_PREFIX}/etc/clamav \
+    -D DATABASE_DIRECTORY=#{CREW_PREFIX}/share/clamav \
+    -D CMAKE_C_FLAGS=-fPIC \
+    -D ENABLE_JSON_SHARED=OFF \
+    -D ENABLE_STATIC_LIB=ON \
+    -D ENABLE_SYSTEMD=OFF \
+    -D ENABLE_MILTER=OFF \
+    -G Ninja"
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C build install"
+  cmake_install_extras do
     FileUtils.cp "#{CREW_DEST_PREFIX}/etc/clamav/clamd.conf.sample", "#{CREW_DEST_PREFIX}/etc/clamav/clamd.conf"
     FileUtils.cp "#{CREW_DEST_PREFIX}/etc/clamav/freshclam.conf.sample", "#{CREW_DEST_PREFIX}/etc/clamav/freshclam.conf"
     system "sed -i 's,^Example,#Example,' #{CREW_DEST_PREFIX}/etc/clamav/clamd.conf"
@@ -51,25 +53,19 @@ class Clamav < Package
 
   def self.postinstall
     system 'freshclam' # Create the clamav database.
-    puts "\nTo start the clamav daemon, execute the following:".lightblue
-    puts 'sudo clamd &'.lightblue
-    puts "\nTo modify the clamav config, edit the following:".lightblue
-    puts "#{CREW_PREFIX}/etc/clamav/clamd.conf".lightblue
-    puts "#{CREW_PREFIX}/etc/clamav/freshclam.conf\n".lightblue
+    ExitMessage.add <<~EOM
+
+      To start the clamav daemon, execute the following:
+      sudo clamd &
+
+      To modify the clamav config, edit the following:
+      #{CREW_PREFIX}/etc/clamav/clamd.conf
+      #{CREW_PREFIX}/etc/clamav/freshclam.conf
+
+    EOM
   end
 
   def self.postremove
-    config_dir = "#{CREW_PREFIX}/share/clamav"
-    if Dir.exist? config_dir
-      puts 'WARNING: This will remove the clamav database!'.orange
-      print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightgreen
-      else
-        puts "#{config_dir} saved.".lightgreen
-      end
-    end
+    Package.agree_to_remove("#{CREW_PREFIX}/share/clamav")
   end
 end
