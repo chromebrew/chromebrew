@@ -3700,6 +3700,11 @@ url: https://invent.kde.org/frameworks/kconfig/-/tags
 activity: medium
 ---
 kind: url
+name: kf5_coreaddons
+url: https://invent.kde.org/frameworks/kcoreaddons/-/tags
+activity: medium
+---
+kind: url
 name: kf5_completion
 url: https://invent.kde.org/frameworks/kcompletion/-/tags
 activity: medium
