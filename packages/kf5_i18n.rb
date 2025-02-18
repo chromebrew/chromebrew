@@ -11,8 +11,8 @@ class Kf5_i18n < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '15d350ab61d1600b031e6243b376478c7c88197202b0b5ead6c386e0bdedcfa0',
+     armv7l: '15d350ab61d1600b031e6243b376478c7c88197202b0b5ead6c386e0bdedcfa0',
      x86_64: 'eeefaa742dc51e480aa26cd2771a19ab153a1c36a9556653dfa6ab812a345bbe'
   })
 
