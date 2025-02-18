@@ -7240,6 +7240,11 @@ url: https://github.com/NetBSD/pkgsrc
 activity: high
 ---
 kind: url
+name: plasma_wayland_protocols
+url: https://invent.kde.org/libraries/plasma-wayland-protocols/-/tags
+activity: low
+---
+kind: url
 name: platformsh
 url: https://github.com/platformsh/platformsh-cli/releases
 activity: high
