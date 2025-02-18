@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Openssh < Autotools
   description 'OpenSSH is the premier connectivity tool for remote login with the SSH protocol.'
   homepage 'https://www.openssh.com/'
-  version '9.9p1'
+  version '9.9p2'
   license 'BSD and GPL-2'
   compatibility 'all'
   source_url 'https://github.com/openssh/openssh-portable.git'
