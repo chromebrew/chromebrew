@@ -11,8 +11,8 @@ class Sqlite < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9a6911c8e0c6d8d794b5cad139032fe7f01231d20640096795cf48cae756863b',
-     armv7l: '9a6911c8e0c6d8d794b5cad139032fe7f01231d20640096795cf48cae756863b',
+    aarch64: '7607848e3e335925b7f93ec9b05b625986cca2e6cd1cea843de397ae84d67c4f',
+     armv7l: '7607848e3e335925b7f93ec9b05b625986cca2e6cd1cea843de397ae84d67c4f',
        i686: '6bf47640b80c571abde63d0fd2a9b5c45b5e39ae9e6c597ae87204cd15837c4a',
      x86_64: '94b9135bdefbe38564119db4ff021c1a0bcf83fb367cff9fa884b35974f40d01'
   })
