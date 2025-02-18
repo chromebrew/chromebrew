@@ -3710,6 +3710,16 @@ url: https://invent.kde.org/frameworks/kcompletion/-/tags
 activity: medium
 ---
 kind: url
+name: kf5_guiaddons
+url: https://invent.kde.org/frameworks/kguiaddons/-/tags
+activity: medium
+---
+kind: url
+name: kf5_i18n
+url: https://invent.kde.org/frameworks/ki18n/-/tags
+activity: medium
+---
+kind: url
 name: kf5_widgetsaddons
 url: https://invent.kde.org/frameworks/kwidgetsaddons/-/tags
 activity: medium
@@ -7238,6 +7248,11 @@ kind: url
 name: pkgsrc
 url: https://github.com/NetBSD/pkgsrc
 activity: high
+---
+kind: url
+name: plasma_wayland_protocols
+url: https://invent.kde.org/libraries/plasma-wayland-protocols/-/tags
+activity: low
 ---
 kind: url
 name: platformsh
