@@ -34,6 +34,7 @@
 /usr/local/sbin/xfs_mkfile
 /usr/local/sbin/xfs_ncheck
 /usr/local/sbin/xfs_property
+/usr/local/sbin/xfs_protofile
 /usr/local/sbin/xfs_quota
 /usr/local/sbin/xfs_repair
 /usr/local/sbin/xfs_rtcp
@@ -47,6 +48,7 @@
 /usr/local/share/locale/pl/LC_MESSAGES/xfsprogs.mo
 /usr/local/share/man/man2/ioctl_xfs_ag_geometry.2.zst
 /usr/local/share/man/man2/ioctl_xfs_bulkstat.2.zst
+/usr/local/share/man/man2/ioctl_xfs_commit_range.2.zst
 /usr/local/share/man/man2/ioctl_xfs_exchange_range.2.zst
 /usr/local/share/man/man2/ioctl_xfs_fsbulkstat.2.zst
 /usr/local/share/man/man2/ioctl_xfs_fscounts.2.zst
@@ -62,6 +64,7 @@
 /usr/local/share/man/man2/ioctl_xfs_getresblks.2.zst
 /usr/local/share/man/man2/ioctl_xfs_goingdown.2.zst
 /usr/local/share/man/man2/ioctl_xfs_inumbers.2.zst
+/usr/local/share/man/man2/ioctl_xfs_rtgroup_geometry.2.zst
 /usr/local/share/man/man2/ioctl_xfs_scrub_metadata.2.zst
 /usr/local/share/man/man2/ioctl_xfs_scrubv_metadata.2.zst
 /usr/local/share/man/man2/ioctl_xfs_setresblks.2.zst
@@ -100,6 +103,7 @@
 /usr/local/share/man/man8/xfs_mkfile.8.zst
 /usr/local/share/man/man8/xfs_ncheck.8.zst
 /usr/local/share/man/man8/xfs_property.8.zst
+/usr/local/share/man/man8/xfs_protofile.8.zst
 /usr/local/share/man/man8/xfs_quota.8.zst
 /usr/local/share/man/man8/xfs_repair.8.zst
 /usr/local/share/man/man8/xfs_rtcp.8.zst

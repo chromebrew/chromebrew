@@ -13,7 +13,7 @@ class Xfsprogs < Package
   binary_sha256({
     aarch64: 'cece01bad384d71762c2941bab3ec26eb61dced7f308c578d2669c9dcebbae19',
      armv7l: 'cece01bad384d71762c2941bab3ec26eb61dced7f308c578d2669c9dcebbae19',
-     x86_64: '1cb8708d6c9bd0664500acc609d3fb5e7315c1b95802e7adb7d5262fe8c972f6'
+     x86_64: '42e26e18bbac69e77e40992e79387c831db3105d428edb43bdaf59af49d446b5'
   })
 
   depends_on 'gcc_lib' # R
