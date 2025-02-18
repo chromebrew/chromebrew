@@ -3720,6 +3720,11 @@ url: https://invent.kde.org/frameworks/ki18n/-/tags
 activity: medium
 ---
 kind: url
+name: kf5_itemmodels
+url: https://invent.kde.org/frameworks/kitemmodels/-/tags
+activity: medium
+---
+kind: url
 name: kf5_widgetsaddons
 url: https://invent.kde.org/frameworks/kwidgetsaddons/-/tags
 activity: medium
