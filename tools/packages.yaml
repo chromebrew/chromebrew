@@ -3380,6 +3380,11 @@ url: https://sourceforge.net/projects/enlightenment/files/imlib2-src/
 activity: none
 ---
 kind: url
+name: immer
+url: https://github.com/arximboldi/immer/releases
+activity: low
+---
+kind: url
 name: inetutils
 url: https://ftp.gnu.org/gnu/inetutils
 activity: none
