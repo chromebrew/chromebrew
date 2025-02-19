@@ -8,7 +8,6 @@
 /usr/local/bin/spirv-opt
 /usr/local/bin/spirv-reduce
 /usr/local/bin/spirv-val
-/usr/local/include/spirv-tools/instrument.hpp
 /usr/local/include/spirv-tools/libspirv.h
 /usr/local/include/spirv-tools/libspirv.hpp
 /usr/local/include/spirv-tools/linker.hpp
