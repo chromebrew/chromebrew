@@ -10170,6 +10170,11 @@ url: http://zsync.moria.org.uk/downloads
 activity: none
 ---
 kind: url
+name: zug
+url: https://github.com/arximboldi/zug/tags
+activity: low
+---
+kind: url
 name: zvbi
 url: https://sourceforge.net/projects/zapping/files/zvbi/
 activity: none
