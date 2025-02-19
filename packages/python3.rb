@@ -14,7 +14,7 @@ class Python3 < Package
     aarch64: '577602972673c4f98fad65b1f423c0124c182dba8b0102ebfcc2f1a76f401e8d',
      armv7l: '577602972673c4f98fad65b1f423c0124c182dba8b0102ebfcc2f1a76f401e8d',
        i686: '7361068f061c81334855cf7288f39e36b54a2aff87ae7df80f79d8dd708e2d3c',
-     x86_64: '0a27a2f99c4e06242228326d3d506770fd5d2cc3dd4b60a476cd4e8fcc81da04'
+     x86_64: '364b989281b96e371b49eb93bd04c7f6924a8c23a9c216198d052b567d696bda'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -37,6 +37,8 @@ class Python3 < Package
   depends_on 'zlib' # R
   depends_on 'zoneinfo' # L
   depends_on 'ncurses' # R
+  depends_on 'tcl' # R
+  depends_on 'tk' # R
 
   no_env_options
   conflicts_ok
