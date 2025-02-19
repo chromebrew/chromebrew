@@ -7,7 +7,7 @@ class Zotero < Package
   license 'GPL-3'
   compatibility 'x86_64'
   source_url "https://download.zotero.org/client/release/#{version}/Zotero-#{version}_linux-x86_64.tar.bz2"
-  source_sha256 '4a5760e2c47ec06d171f4d2609c9ece5cc9f633360ed140fe2ff7954d33a46ee'
+  source_sha256 '27771d3abdb5fecd198c1e1cc7ab940621f962b76245bc493305b047c07842fa'
 
   depends_on 'dbus_glib'
   depends_on 'gtk3'
