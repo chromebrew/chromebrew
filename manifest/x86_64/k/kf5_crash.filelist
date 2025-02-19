@@ -1,0 +1,14 @@
+/usr/local/include/KF5/KCrash/KCrash
+/usr/local/include/KF5/KCrash/kcrash.h
+/usr/local/include/KF5/KCrash/kcrash_export.h
+/usr/local/include/KF5/KCrash/kcrash_version.h
+/usr/local/lib64/cmake/KF5Crash/KF5CrashConfig.cmake
+/usr/local/lib64/cmake/KF5Crash/KF5CrashConfigVersion.cmake
+/usr/local/lib64/cmake/KF5Crash/KF5CrashTargets-release.cmake
+/usr/local/lib64/cmake/KF5Crash/KF5CrashTargets.cmake
+/usr/local/lib64/libKF5Crash.so
+/usr/local/lib64/libKF5Crash.so.5
+/usr/local/lib64/libKF5Crash.so.5.116.0
+/usr/local/share/qlogging-categories5/kcrash.categories
+/usr/local/share/qlogging-categories5/kcrash.renamecategories
+/usr/local/share/qt5/mkspecs/modules/qt_KCrash.pri

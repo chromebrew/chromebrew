@@ -3705,6 +3705,11 @@ url: https://invent.kde.org/frameworks/kcoreaddons/-/tags
 activity: medium
 ---
 kind: url
+name: kf5_crash
+url: https://invent.kde.org/frameworks/kcrash/-/tags
+activity: medium
+---
+kind: url
 name: kf5_completion
 url: https://invent.kde.org/frameworks/kcompletion/-/tags
 activity: medium
