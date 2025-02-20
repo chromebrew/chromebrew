@@ -11,8 +11,8 @@ class Python3 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '577602972673c4f98fad65b1f423c0124c182dba8b0102ebfcc2f1a76f401e8d',
-     armv7l: '577602972673c4f98fad65b1f423c0124c182dba8b0102ebfcc2f1a76f401e8d',
+    aarch64: '615c745c74be0d77a35d46d7193ae710855247686b8cc448985ee75197d7c9e3',
+     armv7l: '615c745c74be0d77a35d46d7193ae710855247686b8cc448985ee75197d7c9e3',
        i686: '7361068f061c81334855cf7288f39e36b54a2aff87ae7df80f79d8dd708e2d3c',
      x86_64: '364b989281b96e371b49eb93bd04c7f6924a8c23a9c216198d052b567d696bda'
   })
@@ -37,6 +37,8 @@ class Python3 < Package
   depends_on 'zlib' # R
   depends_on 'zoneinfo' # L
   depends_on 'ncurses' # R
+  depends_on 'tcl' # R
+  depends_on 'tk' # R
   depends_on 'tcl' # R
   depends_on 'tk' # R
 
