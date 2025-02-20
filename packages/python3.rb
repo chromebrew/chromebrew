@@ -46,7 +46,7 @@ class Python3 < Package
     # https://github.com/python/cpython/issues/125117
     # See https://github.com/python/cpython/issues/81765
     system "sed -i '/test_sqlite3/d'  Lib/test/libregrtest/pgo.py" unless %w[aarch64 armv7l].include?(ARCH)
-    # issue wirh sqlite3 3.49.x see https://github.com/python/cpython/issues/129870
+    # Work around issue with sqlite3 3.49.x. See https://github.com/python/cpython/issues/129870
     downloader 'https://github.com/python/cpython/commit/d26c2fe7a2833606b3fb8d9789149d8696978d86.diff', '4483a8b381254db3627889e7914bd167d8a7bbf7521217e6202103b58d3e5f33'
     system 'patch -Np1 -i d26c2fe7a2833606b3fb8d9789149d8696978d86.diff'
   end
