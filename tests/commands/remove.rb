@@ -15,8 +15,19 @@ class RemoveCommandTest < Minitest::Test
 
     assert_raises(SystemExit) do
       # We don't want the output of this command, so we just capture it here and ignore it.
-      capture_io { Command.remove(Package.load_package("#{random_essential_package}.rb"), false) }
+      capture_io { Command.remove(Package.load_package("#{random_essential_package}.rb")) }
     end
+  end
+
+  def test_force_remove_essential_package
+    puts 'Testing the forced removal of essential package zlib. This should succeed.'
+
+    expected_output = "zlib removed!\n"
+    assert_output expected_output, nil do
+      Command.remove(Package.load_package('zlib.rb'), force: true)
+    end
+    # We did just remove an essential package, so let's reinstall that now before it causes any issues.
+    system 'crew install zlib', %i[out err] => File::NULL
   end
 
   def test_remove_package_with_essential_file
@@ -24,7 +35,7 @@ class RemoveCommandTest < Minitest::Test
     puts "Testing the removal of package gcc_build. This should succeed, but essential file #{essential_file} should not be removed."
 
     system 'crew install gcc_build', %i[out err] => File::NULL
-    capture_io { Command.remove(Package.load_package('gcc_build.rb'), false) }
+    capture_io { Command.remove(Package.load_package('gcc_build.rb')) }
     assert File.file?(essential_file), nil
   end
 
@@ -34,7 +45,22 @@ class RemoveCommandTest < Minitest::Test
     expected_output = "xxd_standalone removed!\n"
     assert_output expected_output, nil do
       system 'crew install xxd_standalone', %i[out err] => File::NULL
-      Command.remove(Package.load_package('xxd_standalone.rb'), false)
+      Command.remove(Package.load_package('xxd_standalone.rb'))
+    end
+  end
+
+  def test_verbosely_remove_normal_package
+    puts 'Testing the verbose removal of normal package xxd_standalone. This should succeed.'
+
+    expected_output = <<~EOT
+      Removing file #{CREW_PREFIX}/bin/xxd
+      Removing file #{CREW_PREFIX}/share/man/man1/xxd.1.zst
+      Removing package xxd_standalone from device.json
+      xxd_standalone removed!
+    EOT
+    assert_output expected_output, nil do
+      system 'crew install xxd_standalone', %i[out err] => File::NULL
+      Command.remove(Package.load_package('xxd_standalone.rb'), verbose: true)
     end
   end
 end
