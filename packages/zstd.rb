@@ -1,9 +1,10 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Zstd < Package
+class Zstd < CMake
+
   description 'Zstandard - Fast real-time compression algorithm'
   homepage 'https://facebook.github.io/zstd/'
-  version '1.5.6-1' # Do not use @_ver here, it will break the installer.
+  version '1.5.7' # Do not use @_ver here, it will break the installer.
   license 'BSD or GPL-2'
   compatibility 'all'
   source_url 'https://github.com/facebook/zstd.git'
@@ -24,32 +25,25 @@ class Zstd < Package
   depends_on 'zlib' # R
 
   no_zstd
+  run_tests
 
-  def self.build
-    Dir.chdir 'build/cmake' do
-      system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-      -DZSTD_LZ4_SUPPORT=ON \
+  def self.patch
+    # Fix missing man updates as per https://github.com/facebook/zstd/releases/tag/v1.5.7
+    downloader 'https://github.com/facebook/zstd/commit/6af3842118ea5325480b403213b2a9fbed3d3d74.diff', '505a0dc5d6b9a3e6d5eba26a90dfc6b488908bbd8a616229aa4f4a04c357883b'
+    system 'patch -Np1 -i 6af3842118ea5325480b403213b2a9fbed3d3d74.diff'
+  end
+
+  cmake_build_relative_dir 'build/cmake'
+  cmake_options '-DZSTD_LZ4_SUPPORT=ON \
       -DZSTD_LZMA_SUPPORT=ON \
       -DZSTD_ZLIB_SUPPORT=ON \
       -DZSTD_BUILD_STATIC=ON \
       -DZSTD_BUILD_SHARED=ON \
       -DZSTD_LEGACY_SUPPORT=ON \
       -DZSTD_BUILD_CONTRIB=ON \
-      -DZSTD_PROGRAMS_LINK_SHARED=OFF \
-      -G Ninja"
-      system "#{CREW_NINJA} -C builddir"
-    end
-    system 'make -C tests'
-  end
+      -DZSTD_PROGRAMS_LINK_SHARED=OFF'
 
-  def self.check
-    system 'make -C tests check'
-  end
-
-  def self.install
-    Dir.chdir 'build/cmake' do
-      system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    end
+  cmake_install_extras do
     # Convert symlinks to hard links in libdir.
     Dir.chdir CREW_DEST_LIB_PREFIX do
       Dir['*'].each do |f|
