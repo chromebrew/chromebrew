@@ -1,9 +1,9 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Librsvg < Autotools
+class Librsvg < Meson
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  version "2.58.2-#{CREW_ICU_VER}"
+  version "2.59.2-#{CREW_ICU_VER}"
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
@@ -11,12 +11,14 @@ class Librsvg < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '59dafc0bb05dafb25e81da2aad87b9f37f4da703503fac40efdcc4667937f018',
-     armv7l: '59dafc0bb05dafb25e81da2aad87b9f37f4da703503fac40efdcc4667937f018',
-     x86_64: '5301c32f54d047e3684bbd9b1aa3bb4555c700397ad129928112a8eeb7966736'
+    aarch64: '849b834e2d40a895894ca474876a96082c80178f535c96f2511a9e14c6c04fb8',
+     armv7l: '849b834e2d40a895894ca474876a96082c80178f535c96f2511a9e14c6c04fb8',
+     x86_64: '53c9762b60acf8558deced395176830befcf97976f5c8a6f697fa2e98babcc1c'
   })
 
   depends_on 'cairo' # R
+  depends_on 'cargo_c' => :build
+  depends_on 'dav1d' # R
   depends_on 'expat' # R
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
@@ -33,6 +35,7 @@ class Librsvg < Autotools
   depends_on 'libpng' # R
   depends_on 'libxml2' # R
   depends_on 'pango' # R
+  depends_on 'py3_meson' => :build
   depends_on 'py3_six' => :build
   depends_on 'py3_smartypants' => :build
   depends_on 'rust' => :build
@@ -41,7 +44,14 @@ class Librsvg < Autotools
 
   gnome
 
-  configure_options '--enable-introspection=yes \
-      --enable-vala=yes \
-      --enable-pixbuf-loader'
+  ENV['CARGO_PROFILE_RELEASE_LTO'] = 'true'
+
+  meson_options '-Dintrospection=enabled -Dvala=enabled'
+
+  def self.patch
+    # As per https://gitlab.gnome.org/GNOME/librsvg/-/issues/1155#note_2356939
+    # using the change that was merged into 2.59.90.
+    downloader 'https://gitlab.gnome.org/GNOME/librsvg/-/merge_requests/1066.diff', '16b588b770066c983862a7b4e6cb5aa721f62a9b35b376ea8ea15a30dd2328c5'
+    system 'patch -Np1 -i 1066.diff'
+  end
 end
