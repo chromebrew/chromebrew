@@ -14,7 +14,7 @@ class Zstd < CMake
   binary_sha256({
     aarch64: 'fcef09c11c9fa7ce65b4c81fe3622343311bae1ea3e79d0efbd109e6d154174e',
      armv7l: 'fcef09c11c9fa7ce65b4c81fe3622343311bae1ea3e79d0efbd109e6d154174e',
-       i686: '6a1af809ce6d0fc507b1b857b8f0803c6aded4e816d3c454e4e59b0f5ed4acca',
+       i686: '1877238675dacf9f79d22f1093825759ea9d5921b7648a44f26b0a05d87618bf',
      x86_64: 'bc5f4c725cf5302933a4b6aa0e6a1c7ac18b8a0da6d01654c95556eb88b5da45'
   })
 
