@@ -6,7 +6,7 @@ require_relative '../lib/package'
 require_relative '../lib/package_utils'
 
 class Command
-  def self.remove(pkg, verbose = CREW_VERBOSE)
+  def self.remove(pkg, verbose: false, force: false)
     device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
 
     # Make sure the package is actually installed before we attempt to remove it.
@@ -16,7 +16,7 @@ class Command
     end
 
     # Do not remove any packages in CREW_ESSENTIAL_PACKAGES, as those are needed for ruby and thus crew to run.
-    if CREW_ESSENTIAL_PACKAGES.include?(pkg.name) && !CREW_FORCE
+    if CREW_ESSENTIAL_PACKAGES.include?(pkg.name) && !force
       return if pkg.in_upgrade
 
       puts <<~ESSENTIAL_PACKAGE_WARNING_EOF.gsub(/^(?=\w)/, '  ').lightred
@@ -60,7 +60,7 @@ class Command
 
           # When searching for files to delete we exclude the files from CREW_ESSENTIAL_PACKAGES.
           essential_packages_exclude_froms = ''
-          unless CREW_FORCE
+          unless force
             essential_packages_exclude_froms = CREW_ESSENTIAL_PACKAGES.map { |i| File.file?("#{File.join(CREW_META_PATH, i.to_s)}.filelist") ? "--exclude-from=#{File.join(CREW_META_PATH, i.to_s)}.filelist" : '' }.join(' ')
           end
 
