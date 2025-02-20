@@ -50,7 +50,7 @@ class Librsvg < Meson
 
   def self.patch
     # As per https://gitlab.gnome.org/GNOME/librsvg/-/issues/1155#note_2356939
-    # which was merged into 2.59.90
+    # using the change that was merged into 2.59.90.
     downloader 'https://gitlab.gnome.org/GNOME/librsvg/-/merge_requests/1066.diff', '16b588b770066c983862a7b4e6cb5aa721f62a9b35b376ea8ea15a30dd2328c5'
     system 'patch -Np1 -i 1066.diff'
   end
