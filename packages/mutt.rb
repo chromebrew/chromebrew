@@ -3,22 +3,27 @@ require 'buildsystems/autotools'
 class Mutt < Autotools
   description 'Mutt is a small but very powerful text-based mail client for Unix operating systems.'
   homepage 'http://mutt.org/'
-  version '2.2.12'
+  version '2.2.14'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'ftp://ftp.mutt.org/pub/mutt/mutt-2.2.12.tar.gz'
-  source_sha256 '043af312f64b8e56f7fd0bf77f84a205d4c498030bd9586457665c47bb18ce38'
+  source_url 'https://gitlab.com/muttmua/mutt.git'
+  git_hashtag "mutt-#{version.gsub('.', '-')}-rel"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd896cb0d3a3735d12951ba29b6f98b8f3cc32c4a29f6c9e4a26186f0ace42b71',
-     armv7l: 'd896cb0d3a3735d12951ba29b6f98b8f3cc32c4a29f6c9e4a26186f0ace42b71',
-       i686: '6ca743089425ed3d40bac6e3267d04ba3916244010b8ad9be50a720b01a88e4f',
-     x86_64: '1e877319f01ee8343036dfcd11bf4ba71a0f7ded74a6f3f9c585ae4dd5a1f5e8'
+    aarch64: '7e2baa377337ee80a60205a89a94b52f945bcd40ac2bf27458a0012442797de7',
+     armv7l: '7e2baa377337ee80a60205a89a94b52f945bcd40ac2bf27458a0012442797de7',
+       i686: '861d8502be5be389b183c3ac2a55833880555c6a1ff5fd58e47b71bfc37b74c9',
+     x86_64: 'd580e3c20a871e23a9701ebf5482288aded9136be0a1705319086efd73e6ce37'
   })
 
   depends_on 'libcyrussasl'
   depends_on 'libxslt'
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
+  depends_on 'ncurses' # R
+  depends_on 'openssl' # R
+  depends_on 'zlib' # R
 
   configure_options "--with-mailpath=#{CREW_PREFIX}/etc/mail \
     --with-sasl=#{CREW_LIB_PREFIX}/sasl2 \
@@ -27,10 +32,7 @@ class Mutt < Autotools
     --enable-smtp \
     --enable-hcache"
 
-  run_tests
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  configure_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/mail"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/mutt", <<~MUTTEOF
@@ -38,4 +40,6 @@ class Mutt < Autotools
       SASL_PATH=#{CREW_LIB_PREFIX}/sasl2
     MUTTEOF
   end
+
+  run_tests
 end
