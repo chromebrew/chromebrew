@@ -51,6 +51,7 @@
 /usr/local/lib/python3.13/site-packages/elftools/dwarf/__pycache__/namelut.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/elftools/dwarf/__pycache__/ranges.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/elftools/dwarf/__pycache__/structs.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/elftools/dwarf/__pycache__/typeunit.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/elftools/dwarf/abbrevtable.py
 /usr/local/lib/python3.13/site-packages/elftools/dwarf/aranges.py
 /usr/local/lib/python3.13/site-packages/elftools/dwarf/callframe.py
@@ -68,6 +69,7 @@
 /usr/local/lib/python3.13/site-packages/elftools/dwarf/namelut.py
 /usr/local/lib/python3.13/site-packages/elftools/dwarf/ranges.py
 /usr/local/lib/python3.13/site-packages/elftools/dwarf/structs.py
+/usr/local/lib/python3.13/site-packages/elftools/dwarf/typeunit.py
 /usr/local/lib/python3.13/site-packages/elftools/ehabi/__init__.py
 /usr/local/lib/python3.13/site-packages/elftools/ehabi/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/elftools/ehabi/__pycache__/constants.cpython-313.pyc
@@ -105,10 +107,10 @@
 /usr/local/lib/python3.13/site-packages/elftools/elf/segments.py
 /usr/local/lib/python3.13/site-packages/elftools/elf/structs.py
 /usr/local/lib/python3.13/site-packages/elftools/py.typed
-/usr/local/lib/python3.13/site-packages/pyelftools-0.31.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pyelftools-0.31.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/pyelftools-0.31.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pyelftools-0.31.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pyelftools-0.31.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pyelftools-0.31.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pyelftools-0.31.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/pyelftools-0.32.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pyelftools-0.32.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/pyelftools-0.32.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pyelftools-0.32.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pyelftools-0.32.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pyelftools-0.32.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pyelftools-0.32.dist-info/top_level.txt
