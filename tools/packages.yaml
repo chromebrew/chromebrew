@@ -5160,6 +5160,11 @@ url: https://www.unbound.net/downloads
 activity: medium
 ---
 kind: url
+name: libunibreak
+url: https://github.com/adah1972/libunibreak/tags
+activity: low
+---
+kind: url
 name: libuninum
 url: http://www.billposer.org/software.html
 activity: none

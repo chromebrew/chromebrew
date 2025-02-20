@@ -1,0 +1,14 @@
+/usr/local/include/eastasianwidthdef.h
+/usr/local/include/graphemebreak.h
+/usr/local/include/linebreak.h
+/usr/local/include/linebreakdef.h
+/usr/local/include/unibreakbase.h
+/usr/local/include/unibreakdef.h
+/usr/local/include/wordbreak.h
+/usr/local/lib/liblinebreak.a
+/usr/local/lib/libunibreak.a
+/usr/local/lib/libunibreak.la
+/usr/local/lib/libunibreak.so
+/usr/local/lib/libunibreak.so.6
+/usr/local/lib/libunibreak.so.6.0.1
+/usr/local/lib/pkgconfig/libunibreak.pc
