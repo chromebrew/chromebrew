@@ -13,7 +13,7 @@ class Librsvg < Meson
   binary_sha256({
     aarch64: '59dafc0bb05dafb25e81da2aad87b9f37f4da703503fac40efdcc4667937f018',
      armv7l: '59dafc0bb05dafb25e81da2aad87b9f37f4da703503fac40efdcc4667937f018',
-     x86_64: '5301c32f54d047e3684bbd9b1aa3bb4555c700397ad129928112a8eeb7966736'
+     x86_64: '53c9762b60acf8558deced395176830befcf97976f5c8a6f697fa2e98babcc1c'
   })
 
   depends_on 'cairo' # R
