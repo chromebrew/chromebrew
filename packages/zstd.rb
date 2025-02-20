@@ -15,7 +15,7 @@ class Zstd < CMake
     aarch64: 'fcef09c11c9fa7ce65b4c81fe3622343311bae1ea3e79d0efbd109e6d154174e',
      armv7l: 'fcef09c11c9fa7ce65b4c81fe3622343311bae1ea3e79d0efbd109e6d154174e',
        i686: '1877238675dacf9f79d22f1093825759ea9d5921b7648a44f26b0a05d87618bf',
-     x86_64: 'bc5f4c725cf5302933a4b6aa0e6a1c7ac18b8a0da6d01654c95556eb88b5da45'
+     x86_64: 'ec080cde6474de45b19c68f7cde4ae651b93e2a18bf8c2d452bb8eb50aeed34f'
   })
 
   depends_on 'gcc_lib' # R
