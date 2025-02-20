@@ -12,7 +12,7 @@ class Py3_pyelftools < Pip
   binary_sha256({
     aarch64: 'd30cee2389ab5fbb6a048fea7fd5ea316daa38f4170f8700acaa8fe477555067',
      armv7l: 'd30cee2389ab5fbb6a048fea7fd5ea316daa38f4170f8700acaa8fe477555067',
-       i686: 'decadefabc6eba7a020612af5545f43403cecefc560966fd7738ec22f8bdd98d',
+       i686: 'c628bc1729ffd315bb10e4b718df884bb07b24e4ef21a30119487edcc99cc27f',
      x86_64: '1e3308c2fd122ea76d03213c26962eb4c39c717a86507cf020614a5a9739edd7'
   })
 
