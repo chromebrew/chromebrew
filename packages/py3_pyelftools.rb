@@ -10,8 +10,8 @@ class Py3_pyelftools < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd30cee2389ab5fbb6a048fea7fd5ea316daa38f4170f8700acaa8fe477555067',
-     armv7l: 'd30cee2389ab5fbb6a048fea7fd5ea316daa38f4170f8700acaa8fe477555067',
+    aarch64: 'bcff72eed5fef7780bc7b15579701e2b951187fa9fa486140d0bd829bccc1211',
+     armv7l: 'bcff72eed5fef7780bc7b15579701e2b951187fa9fa486140d0bd829bccc1211',
        i686: 'c628bc1729ffd315bb10e4b718df884bb07b24e4ef21a30119487edcc99cc27f',
      x86_64: 'fcde897298816a3bf212f1ddb5db3fe7c9377b2717b021bb82e3be448d70e8b3'
   })
