@@ -16,7 +16,7 @@ class Glslang < CMake
   binary_sha256({
     aarch64: 'd56db244e1e6178c97608af789c1a30f649885225aae8062a02178caf30bb5a8',
      armv7l: 'd56db244e1e6178c97608af789c1a30f649885225aae8062a02178caf30bb5a8',
-     x86_64: 'cdee878c3b18ed1091b08d24defc57fb08b2b420348d43248d0c3ced29651070'
+     x86_64: '08c4f8d3a1487dcaf27d90fa9a2d01374a44b7bc45a20c2312038909e5986f9a'
   })
 
   depends_on 'gcc_lib' # R
