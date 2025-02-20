@@ -24,6 +24,6 @@ class CMake < Package
 
   def self.check
     puts "Testing with #{CREW_NINJA} test.".orange if @run_tests
-    system "ctest --test-dir #{@cmake_build_relative_dir}/builddir --rerun-failed --output-on-failure" if @run_tests
+    system "ctest -j --progress --test-dir #{@cmake_build_relative_dir}/builddir --rerun-failed --output-on-failure" if @run_tests
   end
 end
