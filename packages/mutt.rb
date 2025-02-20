@@ -14,7 +14,7 @@ class Mutt < Autotools
     aarch64: 'd896cb0d3a3735d12951ba29b6f98b8f3cc32c4a29f6c9e4a26186f0ace42b71',
      armv7l: 'd896cb0d3a3735d12951ba29b6f98b8f3cc32c4a29f6c9e4a26186f0ace42b71',
        i686: '861d8502be5be389b183c3ac2a55833880555c6a1ff5fd58e47b71bfc37b74c9',
-     x86_64: '1e877319f01ee8343036dfcd11bf4ba71a0f7ded74a6f3f9c585ae4dd5a1f5e8'
+     x86_64: 'd580e3c20a871e23a9701ebf5482288aded9136be0a1705319086efd73e6ce37'
   })
 
   depends_on 'libcyrussasl'
