@@ -14,7 +14,7 @@ class Mlt < CMake
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
        i686: '2586e37abb032ed127fd111bc44aa56e93643876bf6b11480176ae6c4a5cb916',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '2844eaa792b4b75061c39b80a332dd592e086d7dbac13fda67bdbe2b5fe99012'
   })
 
   depends_on 'alsa_lib'
