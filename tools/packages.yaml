@@ -9995,6 +9995,11 @@ url: https://www.x.org/archive/individual/app
 activity: none
 ---
 kind: url
+name: xsimd
+url: https://github.com/xtensor-stack/xsimd/tags
+activity: medium
+---
+kind: url
 name: xterm
 url: https://invisible-mirror.net/archives/xterm/
 activity: medium
