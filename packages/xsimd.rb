@@ -14,6 +14,6 @@ class Xsimd < CMake
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
        i686: '0dac1ca2d7465f24777d0d72b98f028f1a783b35a9b51ff33ca3a1b89279d06e',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: 'ffe5b730f73df8e5fcac970ac2c55e7e6697480197ef9505f0b0b63d58ac0270'
   })
 end
