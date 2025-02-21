@@ -7855,6 +7855,11 @@ url: https://sourceforge.net/projects/quakespasm/files/Source/
 activity: medium
 ---
 kind: url
+name: quazip
+url: https://github.com/stachenov/quazip/tags
+activity: medium
+---
+kind: url
 name: r
 url: https://cran.r-project.org/src/base/R-3/
 activity: medium
