@@ -13,9 +13,12 @@ class Quazip < CMake
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '5ffaade26aecf6861b5b2ef41bc2bb9a80a9c9a8aa2a6299c5bdc891f35f9c20'
   })
 
   depends_on 'qt5_base'
   depends_on 'zlib'
+  depends_on 'bzip2' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 end
