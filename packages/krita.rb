@@ -11,8 +11,8 @@ class Krita < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '87ce14943f80db6d8b50faa3c4e033e8b8c2e3df65102ffada983cc34456a2a3',
+     armv7l: '87ce14943f80db6d8b50faa3c4e033e8b8c2e3df65102ffada983cc34456a2a3',
      x86_64: '35eea48a87cf37be5d1be89e7ab3d2d1dc5a57d1c65ef4393567566f3359e8c7'
   })
 
