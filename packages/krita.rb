@@ -13,7 +13,7 @@ class Krita < CMake
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '35eea48a87cf37be5d1be89e7ab3d2d1dc5a57d1c65ef4393567566f3359e8c7'
   })
 
   depends_on 'boost'
@@ -41,4 +41,31 @@ class Krita < CMake
   depends_on 'qt5_svg'
   depends_on 'quazip'
   depends_on 'zug'
+  depends_on 'bzip2' # R
+  depends_on 'fontconfig' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'freetype' # R
+  depends_on 'fribidi' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'giflib' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'json_c' # R
+  depends_on 'lcms' # R
+  depends_on 'libheif' # R
+  depends_on 'libice' # R
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libjxl' # R
+  depends_on 'libpng' # R
+  depends_on 'libsdl2' # R
+  depends_on 'libsm' # R
+  depends_on 'libtiff' # R
+  depends_on 'libwebp' # R
+  depends_on 'libx11' # R
+  depends_on 'libxext' # R
+  depends_on 'libxi' # R
+  depends_on 'openjpeg' # R
+  depends_on 'poppler' # R
+  depends_on 'qt5_x11extras' # R
+  depends_on 'zlib' # R
 end
