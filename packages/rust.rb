@@ -11,8 +11,8 @@ class Rust < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '99e5404d8c24e1ccdf02695f4a4f3c676ec649592adf112f7e8d5ab528b25cd8',
-     armv7l: '99e5404d8c24e1ccdf02695f4a4f3c676ec649592adf112f7e8d5ab528b25cd8',
+    aarch64: '82674e4e1d44f32ea1a9417bfc4fd2ea59ee85d46ed8032a100458ca01631f03',
+     armv7l: '82674e4e1d44f32ea1a9417bfc4fd2ea59ee85d46ed8032a100458ca01631f03',
        i686: 'a72d3fcaf7e20ad7d22c7d1e04071979354b54e2617ed696b8cedce1c3036fc1',
      x86_64: '285e85582cf78dd6a8ed3fc6653f7c6724a7fef4d7f372dbe754257d5b7da751'
   })
