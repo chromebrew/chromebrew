@@ -11,8 +11,8 @@ class Quazip < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '190d956cdbb724a4676fdf4ac1da6b735d69c2e72b5ef13493c97d208b1a3c8d',
+     armv7l: '190d956cdbb724a4676fdf4ac1da6b735d69c2e72b5ef13493c97d208b1a3c8d',
      x86_64: '5ffaade26aecf6861b5b2ef41bc2bb9a80a9c9a8aa2a6299c5bdc891f35f9c20'
   })
 
