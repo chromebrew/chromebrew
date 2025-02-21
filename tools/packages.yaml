@@ -5975,6 +5975,11 @@ url: https://releases.pagure.org/mlocate
 activity: none
 ---
 kind: url
+name: mlt
+url: https://github.com/mltframework/mlt/tags
+activity: medium
+---
+kind: url
 name: mm_common
 url: https://github.com/GNOME/mm-common/releases
 activity: low
