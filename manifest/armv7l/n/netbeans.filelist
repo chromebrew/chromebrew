@@ -94,7 +94,6 @@
 /usr/local/share/netbeans/enterprise/config/Modules/org-netbeans-modules-j2eeapis.xml
 /usr/local/share/netbeans/enterprise/config/Modules/org-netbeans-modules-j2eeserver.xml
 /usr/local/share/netbeans/enterprise/config/Modules/org-netbeans-modules-jakarta-transformer.xml
-/usr/local/share/netbeans/enterprise/config/Modules/org-netbeans-modules-jakarta-web-beans.xml
 /usr/local/share/netbeans/enterprise/config/Modules/org-netbeans-modules-jakartaee10-api.xml
 /usr/local/share/netbeans/enterprise/config/Modules/org-netbeans-modules-jakartaee10-platform.xml
 /usr/local/share/netbeans/enterprise/config/Modules/org-netbeans-modules-jakartaee11-api.xml
@@ -364,7 +363,6 @@
 /usr/local/share/netbeans/enterprise/modules/org-netbeans-modules-j2eeapis.jar
 /usr/local/share/netbeans/enterprise/modules/org-netbeans-modules-j2eeserver.jar
 /usr/local/share/netbeans/enterprise/modules/org-netbeans-modules-jakarta-transformer.jar
-/usr/local/share/netbeans/enterprise/modules/org-netbeans-modules-jakarta-web-beans.jar
 /usr/local/share/netbeans/enterprise/modules/org-netbeans-modules-jakartaee10-api.jar
 /usr/local/share/netbeans/enterprise/modules/org-netbeans-modules-jakartaee10-platform.jar
 /usr/local/share/netbeans/enterprise/modules/org-netbeans-modules-jakartaee11-api.jar
@@ -480,7 +478,6 @@
 /usr/local/share/netbeans/enterprise/update_tracking/org-netbeans-modules-j2eeapis.xml
 /usr/local/share/netbeans/enterprise/update_tracking/org-netbeans-modules-j2eeserver.xml
 /usr/local/share/netbeans/enterprise/update_tracking/org-netbeans-modules-jakarta-transformer.xml
-/usr/local/share/netbeans/enterprise/update_tracking/org-netbeans-modules-jakarta-web-beans.xml
 /usr/local/share/netbeans/enterprise/update_tracking/org-netbeans-modules-jakartaee10-api.xml
 /usr/local/share/netbeans/enterprise/update_tracking/org-netbeans-modules-jakartaee10-platform.xml
 /usr/local/share/netbeans/enterprise/update_tracking/org-netbeans-modules-jakartaee11-api.xml
@@ -631,7 +628,6 @@
 /usr/local/share/netbeans/ergonomics/config/Modules/org-netbeans-modules-j2ee-sun-appsrv.xml
 /usr/local/share/netbeans/ergonomics/config/Modules/org-netbeans-modules-j2ee-sun-ddui.xml
 /usr/local/share/netbeans/ergonomics/config/Modules/org-netbeans-modules-jakarta-transformer.xml
-/usr/local/share/netbeans/ergonomics/config/Modules/org-netbeans-modules-jakarta-web-beans.xml
 /usr/local/share/netbeans/ergonomics/config/Modules/org-netbeans-modules-jakartaee8-api.xml
 /usr/local/share/netbeans/ergonomics/config/Modules/org-netbeans-modules-jakartaee8-platform.xml
 /usr/local/share/netbeans/ergonomics/config/Modules/org-netbeans-modules-jakartaee9-api.xml
@@ -904,8 +900,8 @@
 /usr/local/share/netbeans/groovy/config/Modules/org-netbeans-modules-groovy-support.xml
 /usr/local/share/netbeans/groovy/config/Modules/org-netbeans-modules-libs-groovy.xml
 /usr/local/share/netbeans/groovy/config/Modules/org-netbeans-modules-maven-groovy.xml
-/usr/local/share/netbeans/groovy/modules/ext/groovy-3.0.8.jar
-/usr/local/share/netbeans/groovy/modules/ext/groovy-ant-3.0.8.jar
+/usr/local/share/netbeans/groovy/modules/ext/groovy-3.0.23.jar
+/usr/local/share/netbeans/groovy/modules/ext/groovy-ant-3.0.23.jar
 /usr/local/share/netbeans/groovy/modules/org-netbeans-modules-gradle-groovy.jar
 /usr/local/share/netbeans/groovy/modules/org-netbeans-modules-groovy-antproject.jar
 /usr/local/share/netbeans/groovy/modules/org-netbeans-modules-groovy-debug.jar
@@ -1478,11 +1474,11 @@
 /usr/local/share/netbeans/ide/modules/ext/jaxb/api/jaxb-api.jar
 /usr/local/share/netbeans/ide/modules/ext/jaxb/jaxb-impl.jar
 /usr/local/share/netbeans/ide/modules/ext/jaxb/jaxb-xjc.jar
-/usr/local/share/netbeans/ide/modules/ext/jcodings-1.0.18.jar
+/usr/local/share/netbeans/ide/modules/ext/jcodings-1.0.58.jar
 /usr/local/share/netbeans/ide/modules/ext/jing.jar
 /usr/local/share/netbeans/ide/modules/ext/jline-24.0.0.jar
 /usr/local/share/netbeans/ide/modules/ext/jniutils-24.0.0.jar
-/usr/local/share/netbeans/ide/modules/ext/joni-2.1.11.jar
+/usr/local/share/netbeans/ide/modules/ext/joni-2.2.1.jar
 /usr/local/share/netbeans/ide/modules/ext/json-simple-1.1.1.jar
 /usr/local/share/netbeans/ide/modules/ext/jsoup-1.15.4.jar
 /usr/local/share/netbeans/ide/modules/ext/junixsocket-common-2.5.1.jar
@@ -1498,7 +1494,7 @@
 /usr/local/share/netbeans/ide/modules/ext/org.eclipse.lsp4j.generator-0.13.0.jar
 /usr/local/share/netbeans/ide/modules/ext/org.eclipse.lsp4j.jsonrpc-0.13.0.jar
 /usr/local/share/netbeans/ide/modules/ext/org.eclipse.lsp4j.jsonrpc.debug-0.13.0.jar
-/usr/local/share/netbeans/ide/modules/ext/org.eclipse.tm4e.core-0.4.1-pack1.jar
+/usr/local/share/netbeans/ide/modules/ext/org.eclipse.tm4e.core-0.14.0.jar
 /usr/local/share/netbeans/ide/modules/ext/org.eclipse.xtend.lib-2.24.0.jar
 /usr/local/share/netbeans/ide/modules/ext/org.eclipse.xtend.lib.macro-2.24.0.jar
 /usr/local/share/netbeans/ide/modules/ext/org.eclipse.xtext.xbase.lib-2.24.0.jar
@@ -2385,8 +2381,8 @@
 /usr/local/share/netbeans/java/modules/ext/maven/search-api-7.1.5.jar
 /usr/local/share/netbeans/java/modules/ext/maven/search-backend-smo-7.1.5.jar
 /usr/local/share/netbeans/java/modules/ext/nb-custom-jshell-probe.jar
-/usr/local/share/netbeans/java/modules/ext/nb-javac-jdk-23-30-api.jar
-/usr/local/share/netbeans/java/modules/ext/nb-javac-jdk-23-30.jar
+/usr/local/share/netbeans/java/modules/ext/nb-javac-jdk-24-29-api.jar
+/usr/local/share/netbeans/java/modules/ext/nb-javac-jdk-24-29.jar
 /usr/local/share/netbeans/java/modules/ext/nb-mod-jshell-probe.jar
 /usr/local/share/netbeans/java/modules/ext/org-netbeans-modules-java-j2seembedded-probe.jar
 /usr/local/share/netbeans/java/modules/ext/org.eclipse.lsp4j-0.13.0.jar
@@ -2830,6 +2826,7 @@
 /usr/local/share/netbeans/licenses/MIT-jquery
 /usr/local/share/netbeans/licenses/MIT-jruby
 /usr/local/share/netbeans/licenses/MIT-jsoup
+/usr/local/share/netbeans/licenses/MIT-jsvg
 /usr/local/share/netbeans/licenses/MIT-markdown
 /usr/local/share/netbeans/licenses/MIT-nocopyright
 /usr/local/share/netbeans/licenses/MIT-phpstan
@@ -3084,6 +3081,7 @@
 /usr/local/share/netbeans/platform/config/Modules/org-netbeans-libs-jna-platform.xml
 /usr/local/share/netbeans/platform/config/Modules/org-netbeans-libs-jna.xml
 /usr/local/share/netbeans/platform/config/Modules/org-netbeans-libs-jsr223.xml
+/usr/local/share/netbeans/platform/config/Modules/org-netbeans-libs-jsvg.xml
 /usr/local/share/netbeans/platform/config/Modules/org-netbeans-libs-junit4.xml
 /usr/local/share/netbeans/platform/config/Modules/org-netbeans-libs-junit5.xml
 /usr/local/share/netbeans/platform/config/Modules/org-netbeans-libs-osgi.xml
@@ -3191,6 +3189,7 @@
 /usr/local/share/netbeans/platform/modules/ext/jersey2/jakarta.inject-2.6.1.jar
 /usr/local/share/netbeans/platform/modules/ext/jna-5.14.0.jar
 /usr/local/share/netbeans/platform/modules/ext/jna-platform-5.14.0.jar
+/usr/local/share/netbeans/platform/modules/ext/jsvg-1.6.1.jar
 /usr/local/share/netbeans/platform/modules/ext/junit-4.13.2.jar
 /usr/local/share/netbeans/platform/modules/ext/junit-jupiter-api-5.10.3.jar
 /usr/local/share/netbeans/platform/modules/ext/junit-jupiter-engine-5.10.3.jar
@@ -3266,6 +3265,7 @@
 /usr/local/share/netbeans/platform/modules/org-netbeans-libs-jna-platform.jar
 /usr/local/share/netbeans/platform/modules/org-netbeans-libs-jna.jar
 /usr/local/share/netbeans/platform/modules/org-netbeans-libs-jsr223.jar
+/usr/local/share/netbeans/platform/modules/org-netbeans-libs-jsvg.jar
 /usr/local/share/netbeans/platform/modules/org-netbeans-libs-junit4.jar
 /usr/local/share/netbeans/platform/modules/org-netbeans-libs-junit5.jar
 /usr/local/share/netbeans/platform/modules/org-netbeans-libs-osgi.jar
@@ -3376,6 +3376,7 @@
 /usr/local/share/netbeans/platform/update_tracking/org-netbeans-libs-jna-platform.xml
 /usr/local/share/netbeans/platform/update_tracking/org-netbeans-libs-jna.xml
 /usr/local/share/netbeans/platform/update_tracking/org-netbeans-libs-jsr223.xml
+/usr/local/share/netbeans/platform/update_tracking/org-netbeans-libs-jsvg.xml
 /usr/local/share/netbeans/platform/update_tracking/org-netbeans-libs-junit4.xml
 /usr/local/share/netbeans/platform/update_tracking/org-netbeans-libs-junit5.xml
 /usr/local/share/netbeans/platform/update_tracking/org-netbeans-libs-osgi.xml
