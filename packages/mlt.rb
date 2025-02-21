@@ -11,8 +11,8 @@ class Mlt < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '9fa1ebb7a65738de10c1ea16fb80452acb949b35bc75480944fa3a737371a71b',
+     armv7l: '9fa1ebb7a65738de10c1ea16fb80452acb949b35bc75480944fa3a737371a71b',
        i686: '2586e37abb032ed127fd111bc44aa56e93643876bf6b11480176ae6c4a5cb916',
      x86_64: '2844eaa792b4b75061c39b80a332dd592e086d7dbac13fda67bdbe2b5fe99012'
   })
