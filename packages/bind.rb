@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Bind < Autotools
   description 'BIND is open source software that enables you to publish your Domain Name System (DNS) information on the Internet, and to resolve DNS queries for your users.'
   homepage 'https://www.isc.org/bind/'
-  version '9.21.0'
+  version '9.21.5'
   license 'MPL-2.0'
   compatibility 'all'
   source_url 'https://gitlab.isc.org/isc-projects/bind9.git'
