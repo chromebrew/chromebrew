@@ -188,6 +188,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/list_dropdown.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/load_more.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/local_model_download.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/lock_page.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/logout.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/m_aa_align_center.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/m_aa_align_left.svg
@@ -351,6 +352,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/show_menu.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/sidebar_footer_trash.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/sidebar_footer_widget.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/sidebar_upgrade_version.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/single_select.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/slash.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/slash_menu_icon_ai_writer.svg
@@ -379,6 +381,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/slash_menu_icon_simple_table.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/slash_menu_icon_text.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/slash_menu_icon_toggle.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/slash_menu_icon_visuals.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/sort_ascending.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/sort_descending.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/sort_high.svg
@@ -452,6 +455,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/uncheck.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/underline.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/unfavorite.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/unlock_page.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/upgrade.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/upgrade_close.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/upgrade_storage.svg
@@ -689,6 +693,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/translations/fa.json
 /usr/local/share/AppFlowy/data/flutter_assets/assets/translations/fr-CA.json
 /usr/local/share/AppFlowy/data/flutter_assets/assets/translations/fr-FR.json
+/usr/local/share/AppFlowy/data/flutter_assets/assets/translations/ga-IE.json
 /usr/local/share/AppFlowy/data/flutter_assets/assets/translations/he.json
 /usr/local/share/AppFlowy/data/flutter_assets/assets/translations/hin.json
 /usr/local/share/AppFlowy/data/flutter_assets/assets/translations/hu-HU.json
@@ -1007,10 +1012,6 @@
 /usr/local/share/AppFlowy/data/flutter_assets/packages/fluttertoast/assets/toastify.css
 /usr/local/share/AppFlowy/data/flutter_assets/packages/fluttertoast/assets/toastify.js
 /usr/local/share/AppFlowy/data/flutter_assets/packages/iconsax_flutter/fonts/FlutterIconsax.ttf
-/usr/local/share/AppFlowy/data/flutter_assets/packages/window_manager/images/ic_chrome_close.png
-/usr/local/share/AppFlowy/data/flutter_assets/packages/window_manager/images/ic_chrome_maximize.png
-/usr/local/share/AppFlowy/data/flutter_assets/packages/window_manager/images/ic_chrome_minimize.png
-/usr/local/share/AppFlowy/data/flutter_assets/packages/window_manager/images/ic_chrome_unmaximize.png
 /usr/local/share/AppFlowy/data/flutter_assets/shaders/ink_sparkle.frag
 /usr/local/share/AppFlowy/data/flutter_assets/version.json
 /usr/local/share/AppFlowy/data/icudtl.dat
@@ -1025,7 +1026,7 @@
 /usr/local/share/AppFlowy/lib/libhotkey_manager_plugin.so
 /usr/local/share/AppFlowy/lib/libirondash_engine_context_plugin.so
 /usr/local/share/AppFlowy/lib/liblocal_notifier_plugin.so
-/usr/local/share/AppFlowy/lib/libscreen_retriever_plugin.so
+/usr/local/share/AppFlowy/lib/libscreen_retriever_linux_plugin.so
 /usr/local/share/AppFlowy/lib/libsentry_flutter_plugin.so
 /usr/local/share/AppFlowy/lib/libsuper_native_extensions.so
 /usr/local/share/AppFlowy/lib/libsuper_native_extensions_plugin.so
