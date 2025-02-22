@@ -12,7 +12,7 @@ class Sphinx < Pip
   binary_sha256({
     aarch64: '255efea9470086642bb61ffecfdc9aa6ab1c886fc307cca2597bed00679d656b',
      armv7l: '255efea9470086642bb61ffecfdc9aa6ab1c886fc307cca2597bed00679d656b',
-       i686: 'b1d09be61b8f85f8cdfc58bac02dcf6e1f48d5ea4a35ca4db12fb9faf282a5a1',
+       i686: '0065fd1b325a90536d7a9642c02681c38b7055cc9f959cd1e6350711aae24663',
      x86_64: 'c26699795625d28c90ff1901cd6a7f340ac9248bc4372de0cf5ea15e58558deb'
   })
 
