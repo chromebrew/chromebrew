@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_decorator < Pip
   description 'define signature-preserving function decorators and decorator factories'
   homepage 'https://github.com/micheles/decorator/'
-  version "5.1.1-#{CREW_PY_VER}"
+  version "5.2.0-#{CREW_PY_VER}"
   license 'BSD-2'
   compatibility 'all'
   source_url 'SKIP'
