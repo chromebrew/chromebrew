@@ -2,10 +2,10 @@
 /usr/local/bin/fzputtygen
 /usr/local/bin/fzsftp
 /usr/local/etc/env.d/10-filezilla
-/usr/local/lib64/libfzclient-commonui-private-3.67.1.so
+/usr/local/lib64/libfzclient-commonui-private-3.68.1.so
 /usr/local/lib64/libfzclient-commonui-private.la
 /usr/local/lib64/libfzclient-commonui-private.so
-/usr/local/lib64/libfzclient-private-3.67.1.so
+/usr/local/lib64/libfzclient-private-3.68.1.so
 /usr/local/lib64/libfzclient-private.la
 /usr/local/lib64/libfzclient-private.so
 /usr/local/share/appdata/filezilla.appdata.xml
@@ -707,6 +707,7 @@
 /usr/local/share/locale/fa_IR/LC_MESSAGES/filezilla.mo
 /usr/local/share/locale/fi_FI/LC_MESSAGES/filezilla.mo
 /usr/local/share/locale/fr/LC_MESSAGES/filezilla.mo
+/usr/local/share/locale/ga/LC_MESSAGES/filezilla.mo
 /usr/local/share/locale/gl_ES/LC_MESSAGES/filezilla.mo
 /usr/local/share/locale/he_IL/LC_MESSAGES/filezilla.mo
 /usr/local/share/locale/hr/LC_MESSAGES/filezilla.mo
