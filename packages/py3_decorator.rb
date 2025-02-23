@@ -10,8 +10,8 @@ class Py3_decorator < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7b15288d0c84167e24f565def729b519d79433a3e53982df78fb52d1d9c7b683',
-     armv7l: '7b15288d0c84167e24f565def729b519d79433a3e53982df78fb52d1d9c7b683',
+    aarch64: '76a08379fd29e63919bfdb47d7feea7051be5f230346e4e2e607f1f537896f7b',
+     armv7l: '76a08379fd29e63919bfdb47d7feea7051be5f230346e4e2e607f1f537896f7b',
        i686: '1f4cb729a9bf967f4ffcd66cd82be506396facee8c967c28974fd4a2c0a10c4c',
      x86_64: '097b2df5827a703e264f6955a4d7bcf8ef6dc6714513d4bfe8601fedfc0dfa96'
   })
