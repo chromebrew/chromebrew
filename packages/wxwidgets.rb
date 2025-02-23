@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Wxwidgets < Autotools
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  version '3.2.6'
+  version '3.2.6-1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{version.split('-')[0]}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -68,20 +68,19 @@ class Wxwidgets < Autotools
   end
 
   configure_options '--with-gtk=3 \
-      --with-opengl \
-      --enable-unicode \
-      --enable-graphics_ctx \
-      --enable-mediactrl \
-      --enable-webview \
-      --with-regex=builtin \
-      --with-libpng=builtin \
-      --with-libjpeg=sys \
-      --with-libtiff=sys \
-      --without-gnomevfs \
-      --disable-precomp-headers'
+    --with-opengl \
+    --enable-unicode \
+    --enable-graphics_ctx \
+    --enable-mediactrl \
+    --enable-webview \
+    --with-regex=builtin \
+    --with-libpng=builtin \
+    --with-libjpeg=sys \
+    --with-libtiff=sys \
+    --without-gnomevfs \
+    --disable-precomp-headers'
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  configure_install_extras do
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-3.2", 'wx-config'
     end
