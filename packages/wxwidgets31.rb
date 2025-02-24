@@ -11,9 +11,9 @@ class Wxwidgets31 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '642d5fa6f174b88d332cf1bf6b975e2c40d3dae860797a6f85d1e719fc9daa6e',
-     armv7l: '642d5fa6f174b88d332cf1bf6b975e2c40d3dae860797a6f85d1e719fc9daa6e',
-     x86_64: '858111828f9238cf899ecb8d38996de584566184ad42702c7dddea081dae6932'
+    aarch64: '16716d1f62fbdb4f67173a3938d06f27f0a2dd8d30e70c240cd3ea13519b31ba',
+     armv7l: '16716d1f62fbdb4f67173a3938d06f27f0a2dd8d30e70c240cd3ea13519b31ba',
+     x86_64: '1346e7b16a2f7583adfa16242e7068a5a0b6d1a0b61ff8fb7a3915bfccdb70d3'
   })
 
   # cmake builds are broken on this versiondue due to an OpenGL
@@ -22,9 +22,11 @@ class Wxwidgets31 < Autotools
   # https://github.com/wxWidgets/wxWidgets/issues/22841
 
   depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
   depends_on 'curl' # R
   depends_on 'enchant' # R
   depends_on 'expat' # R
+  depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
@@ -35,6 +37,7 @@ class Wxwidgets31 < Autotools
   depends_on 'gtk3' # R
   depends_on 'gvfs' => :build
   depends_on 'harfbuzz' # R
+  depends_on 'jbigkit' # R
   depends_on 'libglu' # R
   depends_on 'libglvnd' # R
   depends_on 'libjpeg_turbo' # R

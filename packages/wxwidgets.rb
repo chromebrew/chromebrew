@@ -11,9 +11,9 @@ class Wxwidgets < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8492d3b7b5cb54aa77bb309f6c8d6b41a6299a60f845b3328b936de2c55fa077',
-     armv7l: '8492d3b7b5cb54aa77bb309f6c8d6b41a6299a60f845b3328b936de2c55fa077',
-     x86_64: '56db29f66461a45c771dea8a79e08db58a9f9f1b5ca9360743989cc22b6ffcdb'
+    aarch64: '105a793c38cc606b4d476e2b4063f4ba41a0f84fb70e87cfd09e7f438eb2e98c',
+     armv7l: '105a793c38cc606b4d476e2b4063f4ba41a0f84fb70e87cfd09e7f438eb2e98c',
+     x86_64: '680f76b00098a9fc6206b19ce967f9e6b32f2c4460aa6ee8971e074ba9e6b0e1'
   })
 
   depends_on 'at_spi2_core' # R
