@@ -7685,6 +7685,11 @@ url: https://ftp.gnome.org/pub/GNOME/sources/pygtk/
 activity: none
 ---
 kind: url
+name: pystring
+url: https://github.com/imageworks/pystring/tags
+activity: low
+---
+kind: url
 name: python2
 url: https://www.python.org/downloads/source/
 activity: none
