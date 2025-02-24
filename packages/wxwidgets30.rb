@@ -1,23 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Wxwidgets30 < Package
+class Wxwidgets30 < Autotools
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  @_ver = '3.0.5.1'
-  version "#{@_ver}-2"
+  version '3.0.5.1-3'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version.split('-')[0]}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4874ecb6f55a1285a88487428979b84985f938b740f534c75261f71f354d4fd0',
-     armv7l: '4874ecb6f55a1285a88487428979b84985f938b740f534c75261f71f354d4fd0',
-     x86_64: '220a47f3a3bb2b1df0005fd45a45a39e3c0f16b6e28ad3008b7807633a6d9dfa'
+    aarch64: '36c5a091e95ffe14411f2039e48b8b37d96098c2826a5d17809b15b0170a9ae6',
+     armv7l: '36c5a091e95ffe14411f2039e48b8b37d96098c2826a5d17809b15b0170a9ae6',
+     x86_64: '997fd1b8018057234a32d1f320712caf85dd712e871fb5283be3a265abfa78b1'
   })
 
   depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
   depends_on 'expat' # R
   depends_on 'fontconfig' => :build
   depends_on 'gcc_lib' # R
@@ -38,7 +38,6 @@ class Wxwidgets30 < Package
   depends_on 'libtiff' # R
   depends_on 'libx11' # R
   depends_on 'libxxf86vm' # R
-  depends_on 'mesa' # R
   depends_on 'pango' # R
   depends_on 'webkit2gtk_4' # R
   depends_on 'zlib' # R
@@ -53,26 +52,21 @@ class Wxwidgets30 < Package
     end
   end
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-      --with-gtk=3 \
-      --with-opengl \
-      --enable-unicode \
-      --enable-graphics_ctx \
-      --enable-mediactrl \
-      --enable-webview \
-      --with-regex=builtin \
-      --with-libpng=builtin \
-      --with-libjpeg=sys \
-      --with-libtiff=sys \
-      --without-gnomevfs \
-      --disable-universal \
-      --disable-precomp-headers"
-    system 'make'
-  end
+  configure_options '--with-gtk=3 \
+    --with-opengl \
+    --enable-unicode \
+    --enable-graphics_ctx \
+    --enable-mediactrl \
+    --enable-webview \
+    --with-regex=builtin \
+    --with-libpng=builtin \
+    --with-libjpeg=sys \
+    --with-libtiff=sys \
+    --without-gnomevfs \
+    --disable-universal \
+    --disable-precomp-headers'
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  configure_install_extras do
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-3.0", 'wx-config'
     end

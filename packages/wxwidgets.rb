@@ -3,17 +3,17 @@ require 'buildsystems/autotools'
 class Wxwidgets < Autotools
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  version '3.2.6'
+  version '3.2.6-1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{version.split('-')[0]}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8492d3b7b5cb54aa77bb309f6c8d6b41a6299a60f845b3328b936de2c55fa077',
-     armv7l: '8492d3b7b5cb54aa77bb309f6c8d6b41a6299a60f845b3328b936de2c55fa077',
-     x86_64: '56db29f66461a45c771dea8a79e08db58a9f9f1b5ca9360743989cc22b6ffcdb'
+    aarch64: '105a793c38cc606b4d476e2b4063f4ba41a0f84fb70e87cfd09e7f438eb2e98c',
+     armv7l: '105a793c38cc606b4d476e2b4063f4ba41a0f84fb70e87cfd09e7f438eb2e98c',
+     x86_64: '680f76b00098a9fc6206b19ce967f9e6b32f2c4460aa6ee8971e074ba9e6b0e1'
   })
 
   depends_on 'at_spi2_core' # R
@@ -68,20 +68,19 @@ class Wxwidgets < Autotools
   end
 
   configure_options '--with-gtk=3 \
-      --with-opengl \
-      --enable-unicode \
-      --enable-graphics_ctx \
-      --enable-mediactrl \
-      --enable-webview \
-      --with-regex=builtin \
-      --with-libpng=builtin \
-      --with-libjpeg=sys \
-      --with-libtiff=sys \
-      --without-gnomevfs \
-      --disable-precomp-headers'
+    --with-opengl \
+    --enable-unicode \
+    --enable-graphics_ctx \
+    --enable-mediactrl \
+    --enable-webview \
+    --with-regex=builtin \
+    --with-libpng=builtin \
+    --with-libjpeg=sys \
+    --with-libtiff=sys \
+    --without-gnomevfs \
+    --disable-precomp-headers'
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  configure_install_extras do
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-3.2", 'wx-config'
     end
