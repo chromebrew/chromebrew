@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Upx < CMake
   description 'Extendable, high-performance executable packer for several executable formats'
   homepage 'https://github.com/upx/upx'
-  version '4.2.4'
+  version '5.0.0'
   license 'custom GPL2'
   compatibility 'all'
   source_url 'https://github.com/upx/upx.git'
