@@ -3,11 +3,11 @@ require 'package'
 class Manpages < Package
   description 'The Linux man-pages project documents the Linux kernel and C library interfaces that are employed by user-space programs.'
   homepage 'https://www.kernel.org/doc/man-pages/'
-  version '6.9.1'
+  version '6.12'
   license 'man-pages, GPL-2+ and BSD'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-#{version}.tar.xz"
-  source_sha256 'e23cbac29f110ba571f0da8523e79d373691466ed7f2a31301721817d34530bd'
+  source_sha256 'b6cb5d67e0bb00a3b3f3d1bcb3fe06c26b045ba63923ed7ae79412350c5e1cb5'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -20,10 +20,10 @@ class Manpages < Package
   depends_on 'man_db'
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", "prefix=#{CREW_PREFIX}", 'install'
+    system 'make', '-R', "DESTDIR=#{CREW_DEST_DIR}", "prefix=#{CREW_PREFIX}", 'install'
   end
 
   def self.postinstall
-    ExitMessage.add "\nTry 'man printf' to see if it works.\n".lightblue
+    ExitMessage.add "\nTry 'man printf' to see if it works.\n"
   end
 end
