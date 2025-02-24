@@ -1,21 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Filezilla < Package
+class Filezilla < Autotools
   description 'FileZilla Client is a free FTP solution.'
   homepage 'https://filezilla-project.org/'
-  version '3.67.1'
+  version '3.68.1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   # NOTE: This may generate a 403 forbidden error. To receive a new source url,
   # download from here: https://filezilla-project.org/download.php?show_all=1.
-  source_url "https://dl4.cdn.filezilla-project.org/client/FileZilla_#{version}_src.tar.xz?h=lc3XtUiYRgT_RWF74oRGPA&x=1726381543"
+  source_url "https://dl2.cdn.filezilla-project.org/client/FileZilla_3.68.1_src.tar.xz?h=skd4cOQdsN3A5aBPQdOKWg&x=1740339243"
   source_sha256 '10468e6ef623ad9789996df61f588ca7417d39353678313611d54f2d8131a1db'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a727d04dac75bab9bb8aeaaa1cc7b224dcba459d0c35a26dff9e6c66a7e73074',
-     armv7l: 'a727d04dac75bab9bb8aeaaa1cc7b224dcba459d0c35a26dff9e6c66a7e73074',
-     x86_64: '8917e28eabda3cee162aa13095095884536402bef4370e774f056e45d5a0b6e4'
+    aarch64: 'f4a5a3ea8abade4a1331971fd638e4673a815753b4ff909109872ee6b923bfe3',
+     armv7l: 'f4a5a3ea8abade4a1331971fd638e4673a815753b4ff909109872ee6b923bfe3',
+     x86_64: '009b3c733ca4f8f38beceb7fd018623e109e1f582829a17e4eb99beb830c9ef2'
   })
 
   depends_on 'at_spi2_core' # R
@@ -43,23 +43,19 @@ class Filezilla < Package
   depends_on 'xcb_util' => :build
   depends_on 'xdg_utils' => :build
   depends_on 'zlib' # R
+  depends_on 'sqlite' # R
 
   print_source_bashrc
 
-  def self.patch
-    system 'filefix'
-  end
+  configure_options '--disable-maintainer-mode --with-pugixml=builtin'
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-maintainer-mode --with-pugixml=builtin"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    File.write 'filezilla', <<~FILEZILLA_EOF
+  configure_build_extras do
+    File.write '10-filezilla', <<~FILEZILLA_EOF
       alias filezilla="WAYLAND_DISPLAY=wayland-0 DISPLAY='' GDK_BACKEND=wayland filezilla"
     FILEZILLA_EOF
-    FileUtils.install 'filezilla', "#{CREW_DEST_PREFIX}/etc/env.d/10-filezilla", mode: 0o644
+  end
+
+  configure_install_extras do
+    FileUtils.install '10-filezilla', "#{CREW_DEST_PREFIX}/etc/env.d/10-filezilla", mode: 0o644
   end
 end
