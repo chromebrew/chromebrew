@@ -3,6 +3,11 @@ name: Build
 on:
   workflow_dispatch:
     inputs:
+      with_pr:
+        description: "Create a PR after building."
+        required: false
+        type: boolean
+        default: 'true'
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
@@ -313,6 +318,7 @@ jobs:
             git pull --rebase origin master && git push -f
             git log --oneline -10
       - name: Create Pull Request
+        if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
           CHANGED_MANIFEST_FILES: ${{ steps.changed-manifest-files.outputs.all_changed_files }}
           CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
@@ -344,6 +350,7 @@ jobs:
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
       - name: Trigger Unit Test Workflow & Add Reviewer Team
+        if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
         run: |
