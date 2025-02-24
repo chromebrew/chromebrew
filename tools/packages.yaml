@@ -10045,6 +10045,11 @@ url: https://github.com/lloyd/yajl/releases
 activity: none
 ---
 kind: url
+name: yaml_cpp
+url: https://github.com/jbeder/yaml-cpp/releases
+activity: low
+---
+kind: url
 name: yara
 url: https://github.com/VirusTotal/yara/releases
 activity: medium
