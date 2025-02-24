@@ -17,7 +17,7 @@ class Upx < CMake
     aarch64: 'd33d8bf41db6e536dc9302b62bbeb47233ab6428f5c759d4c055612aaf7551b1',
      armv7l: 'd33d8bf41db6e536dc9302b62bbeb47233ab6428f5c759d4c055612aaf7551b1',
        i686: 'b2be0ce308cd928c01afc387384f151ecc9835e7cbd8e513baa73b0d0cad0758',
-     x86_64: 'b7b9e5a160059e1ac1ea093ce7a2f2a977a6ca1eda656f96c011e42b2aa0e34f'
+     x86_64: '015f51b52d826208baaa029f58a0c98de722311989df83a7f322f8e4da3242cf'
   })
 
   depends_on 'gcc_lib' # R
