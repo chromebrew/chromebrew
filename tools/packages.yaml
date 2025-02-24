@@ -5155,6 +5155,11 @@ url: https://github.com/therealkenc/libudev-stub/releases
 activity: none
 ---
 kind: url
+name: libultrahdr
+url: https://github.com/google/libultrahdr/releases
+activity: medium
+---
+kind: url
 name: libunbound
 url: https://www.unbound.net/downloads
 activity: medium
