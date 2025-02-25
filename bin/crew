@@ -1452,7 +1452,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
     # binary_sha256 section might be, such as in a gcc_lib file.
     starting_binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
     binary_compression = 'gem' if @pkg.superclass.to_s == 'RUBY'
-    %w[x86_64 i686 armv7l].each do |arch|
+    %w[armv7l i686 x86_64].each do |arch|
       # Load existing binary_sha256 hash from the package file.
       binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
       starting_binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
@@ -1465,32 +1465,6 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       if new_tarfile.nil? || !File.file?(new_tarfile)
         puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression.nil? ? '(tar.xz|tar.zst)' : binary_compression} not found.\n".lightred
         next arch
-      end
-      if binary_compression_not_in_file
-        ext = File.extname(new_tarfile)
-        binary_compression = @pkg.superclass.to_s == 'RUBY' ? 'gem' : "tar#{ext}"
-        binary_compression_line = "  binary_compression '#{binary_compression}'"
-        puts "Setting binary compression in #{pkg_file} to '#{binary_compression}'..."
-        # Add binary compression setting, and add the line if it doesn't exist.
-        file = File.read(pkg_file)
-        bc_re = /^\ \ binary_compression.*/
-        source_re = /^\ \ source_sha256.*/
-        git_hashtag_re = /^\ \ git_hashtag.*/
-        source_url_re = /^\ \ source_url.*/
-        if file.match(bc_re)
-          File.write(pkg_file, file.gsub(bc_re, binary_compression_line))
-        elsif file.match(source_re)
-          source_sha256_bc_line = "#{file.match(source_re)}\n#{binary_compression_line}"
-          File.write(pkg_file, file.gsub(source_re, source_sha256_bc_line))
-        elsif file.match(git_hashtag_re)
-          git_hashtag_bc_line = "#{file.match(git_hashtag_re)}\n#{binary_compression_line}"
-          File.write(pkg_file, file.gsub(git_hashtag_re, git_hashtag_bc_line))
-        elsif file.match(source_url_re)
-          source_url_bc_line = "#{file.match(source_url_re)}\n#{binary_compression_line}"
-          File.write(pkg_file, file.gsub(source_url_re, source_url_bc_line))
-        else
-          puts "Unable to tell where to add \"#{binary_compression_line}\" to #{pkg_file}. Please add it and manually.".lightblue
-        end
       end
       puts "Package: #{package}, Arch: #{arch}".yellow
       puts
@@ -1535,16 +1509,85 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
             puts "expected sha256 hash=#{new_sha256}"
             puts "upstream sha256 hash=#{upstream_sha256}"
           end
-          puts "#{output}. Checksum mismatch. Skipping binary_sha256 update in #{pkg_file}...".lightred
+          puts "#{output}. Checksum mismatch...".lightred
           next
         end
       else
         puts output.lightred
-        puts "#{output}. Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
+        puts "#{output}. Unable to upload...".lightred
         next
       end
     end
 
+    # Upload python wheels if we are dealing with a pip package, but only
+    # if a gitlab token username is set. (The generic repo does not
+    # require a gitlab token username.)
+    if @pkg.superclass.to_s == 'Pip'
+      pip_config = `pip config list`.chomp
+      Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
+
+      pip_cache_dir = `pip cache dir`.chomp
+      wheels = `find #{pip_cache_dir} -type f -name \"*.whl\" -print`.chomp.split
+      unless wheels.empty?
+        wheels.each do |wheel|
+          puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
+          # Note that this uses the python twine from https://github.com/pypa/twine/pull/1123
+          abort 'Twine is broken, cannot upload python wheels.'.lightred unless system('twine --help', %i[out err] => File::NULL)
+          system("twine upload -u #{gitlab_token_username} -p #{gitlab_token} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
+          FileUtils.rm_f wheel
+        end
+      end
+    end
+    puts "\e[1A\e[K🎉 Uploads complete for #{package}. 🎉\r\n".lightgreen
+    puts "\e[1A\e[K🎉 Updating package file for #{package}. 🎉\r\n".lightgreen
+    update_package_binary_hashes(pkg_name, pkg_version, binary_compression)
+  end
+end
+
+def update_package_binary_hashes(pkg_name = nil, pkg_version = nil, binary_compression = nil)
+  packages = pkg_name
+  packages.strip!
+
+  [packages].each do |package|
+    pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+    binary_compression_not_in_file = binary_compression.nil?
+    if binary_compression_not_in_file
+      binary_compression = @pkg.superclass.to_s == 'RUBY' ? 'gem' : 'tar.zst'
+      binary_compression_line = "  binary_compression '#{binary_compression}'"
+      puts "Setting binary compression in #{pkg_file} to '#{binary_compression}'..."
+      # Add binary compression setting, and add the line if it doesn't exist.
+      file = File.read(pkg_file)
+      bc_re = /^\ \ binary_compression.*/
+      source_re = /^\ \ source_sha256.*/
+      git_hashtag_re = /^\ \ git_hashtag.*/
+      source_url_re = /^\ \ source_url.*/
+      if file.match(bc_re)
+        File.write(pkg_file, file.gsub(bc_re, binary_compression_line))
+      elsif file.match(source_re)
+        source_sha256_bc_line = "#{file.match(source_re)}\n#{binary_compression_line}"
+        File.write(pkg_file, file.gsub(source_re, source_sha256_bc_line))
+      elsif file.match(git_hashtag_re)
+        git_hashtag_bc_line = "#{file.match(git_hashtag_re)}\n#{binary_compression_line}"
+        File.write(pkg_file, file.gsub(git_hashtag_re, git_hashtag_bc_line))
+      elsif file.match(source_url_re)
+        source_url_bc_line = "#{file.match(source_url_re)}\n#{binary_compression_line}"
+        File.write(pkg_file, file.gsub(source_url_re, source_url_bc_line))
+      else
+        puts "Unable to tell where to add \"#{binary_compression_line}\" to #{pkg_file}. Please add it and manually.".lightblue
+      end
+    end
+    pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+    binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
+    # The following is used to figure out where a non-standard
+    # binary_sha256 section might be, such as in a gcc_lib file.
+    starting_binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
+
+    %w[armv7l i686 x86_64].each do |arch|
+      pkg_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{package}/#{pkg_version}_#{arch}/#{package}-#{pkg_version}-chromeos-#{arch}.#{@pkg.binary_compression}"
+      next arch unless `curl -fsI #{pkg_url}`.lines.first.split[1] == '200'
+      binary_sha256_hash[arch.to_sym] = `curl -Ls #{pkg_url} | sha256sum`.chomp.split.first
+      next arch
+    end
     # Generate new or replacement binary_sha256 block.
     puts "\e[1A\e[KGenerating binary_sha256 block for package file...\r".orange
     binary_sha256_block = ''
@@ -1578,27 +1621,6 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       binary_sha256_block_with_bc = "#{file.match(bc_re)}\n#{binary_sha256_block}"
       File.write(pkg_file, file.gsub(bc_re, binary_sha256_block_with_bc))
     end
-
-    # Upload python wheels if we are dealing with a pip package, but only
-    # if a gitlab token username is set. (The generic repo does not
-    # require a gitlab token username.)
-    if @pkg.superclass.to_s == 'Pip'
-      pip_config = `pip config list`.chomp
-      Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
-
-      pip_cache_dir = `pip cache dir`.chomp
-      wheels = `find #{pip_cache_dir} -type f -name \"*.whl\" -print`.chomp.split
-      unless wheels.empty?
-        wheels.each do |wheel|
-          puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
-          # Note that this uses the python twine from https://github.com/pypa/twine/pull/1123
-          abort 'Twine is broken, cannot upload python wheels.'.lightred unless system('twine --help', %i[out err] => File::NULL)
-          system("twine upload -u #{gitlab_token_username} -p #{gitlab_token} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
-          FileUtils.rm_f wheel
-        end
-      end
-    end
-    puts "\e[1A\e[K🎉 Uploads complete for #{package}. 🎉\r\n".lightgreen
   end
 end
 
@@ -1863,6 +1885,14 @@ def update_command(_args)
 end
 
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_source)
+
+def update_package_binary_hashes_command(args)
+  update_package_binary_hashes if args['<name>'].empty?
+  args['<name>'].each do |name|
+    search name
+    update_package_binary_hashes(name, @pkg.version, @pkg.binary_compression)
+  end
+end
 
 def upload_command(args)
   gitlab_token = ENV.fetch('GITLAB_TOKEN', nil)
