@@ -12,7 +12,7 @@ class Py3_decorator < Pip
   binary_sha256({
     aarch64: '76a08379fd29e63919bfdb47d7feea7051be5f230346e4e2e607f1f537896f7b',
      armv7l: '76a08379fd29e63919bfdb47d7feea7051be5f230346e4e2e607f1f537896f7b',
-       i686: '1f4cb729a9bf967f4ffcd66cd82be506396facee8c967c28974fd4a2c0a10c4c',
+       i686: '5b6f323f54d08e000c57d1edfb541eeda201ffce51d547bf29616d3a6c5622f6',
      x86_64: '097b2df5827a703e264f6955a4d7bcf8ef6dc6714513d4bfe8601fedfc0dfa96'
   })
 
