@@ -3,7 +3,7 @@ require 'package'
 class Gcloud < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/gcloud/'
-  version '511.0.0'
+  version '512.0.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url({
