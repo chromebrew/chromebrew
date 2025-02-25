@@ -16,7 +16,7 @@ class Gcloud < Package
     aarch64: 'bd3437e72ab65f71b4642d80e52bf848852d0b8e6b4db820cfdbf2eae260139c',
      armv7l: 'bd3437e72ab65f71b4642d80e52bf848852d0b8e6b4db820cfdbf2eae260139c',
        i686: 'd7d473a99adf2fe80e49b3d58be0a1491a2c882add4af9f219ca5139002931c2',
-     x86_64: '4ffb7c601a7ed29d6aa2611c7cf6f7e24daae1c421e9267df97d7f5449acd4e7'
+     x86_64: '59dab282f72e00b05d8ae47232fdf46765ad6e699cfc70c0a87596e7524dbe68'
   })
 
   depends_on 'python3'
