@@ -14,7 +14,7 @@ class Bmon < Autotools
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
        i686: '0184a21e121f2b1a5e11f45088bb87f467d8008e64bc619cce7512fe6ffa3b20',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '0190ef2ba6446bcaa28c9c0eae05e2569cedc1f2aacfafa96fc0f5d143b63414'
   })
 
   depends_on 'libconfuse'

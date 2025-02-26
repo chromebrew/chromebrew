@@ -13,10 +13,12 @@ class A2png < Autotools
   binary_sha256({
     aarch64: '3ef790b5997c7b3f0340b37253f36c0e896609761665a4e6b0754094a5be87dc',
      armv7l: '3ef790b5997c7b3f0340b37253f36c0e896609761665a4e6b0754094a5be87dc',
-     x86_64: 'fb4c73c3466be4cff337047a28064b5cac5db85b0cb1d213309b9d1975762212'
+     x86_64: '7cab7b02b7f62682bf382d64b3dfc8b5ca01ca94036da5828e5f6d4aa91e4e77'
   })
 
   depends_on 'cairo'
+  depends_on 'harfbuzz' # R
+  depends_on 'glibc' # R
 
   def self.patch
     # Replace hardcoded /tmp path with CREW_PREFIX/tmp
