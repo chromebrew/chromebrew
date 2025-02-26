@@ -8485,6 +8485,11 @@ url: https://ftpmirror.gnu.org/shtool
 activity: none
 ---
 kind: url
+name: shunit2
+url: https://github.com/kward/shunit2/releases
+activity: low
+---
+kind: url
 name: siege
 url: http://download.joedog.org/siege/
 activity: low
