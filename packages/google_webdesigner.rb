@@ -3,11 +3,12 @@ require 'package'
 class Google_webdesigner < Package
   description 'Google Web Designer'
   homepage 'https://webdesigner.withgoogle.com/'
-  version '14.0.1.0-1'
+  version '14.2.0.0-1'
   license 'google-webdesigner'
   compatibility 'x86_64'
-  source_url 'https://dl.google.com/linux/webdesigner/deb/pool/main/g/google-webdesigner/google-webdesigner_14.0.1.0-1_amd64.deb'
-  source_sha256 'c22385674a38b5693f8933fb09c61ae6d8f861cadad96d390d94549787d0ec97'
+  min_glibc '2.28'
+  source_url "https://dl.google.com/linux/webdesigner/deb/pool/main/g/google-webdesigner/google-webdesigner_#{version}_amd64.deb"
+  source_sha256 '084d841adf174819265405bd906e28e988baaf69d866ffabd24a1bfb93d30680'
 
   depends_on 'nss'
   depends_on 'cairo'
@@ -29,20 +30,10 @@ class Google_webdesigner < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'webdesigner' to get started.\n".lightblue
+    ExitMessage.add "\nType 'webdesigner' to get started.\n"
   end
 
   def self.postremove
-    config_dir = "#{HOME}/.local/share/google-web-designer"
-    if Dir.exist? config_dir
-      print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightgreen
-      else
-        puts "#{config_dir} saved.".lightgreen
-      end
-    end
+    Package.agree_to_remove("#{HOME}/.local/share/google-web-designer")
   end
 end
