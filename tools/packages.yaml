@@ -1285,6 +1285,11 @@ url: https://github.com/curl/curl/releases
 activity: high
 ---
 kind: url
+name: cursor
+url: https://www.cursor.com/downloads
+activity: medium
+---
+kind: url
 name: curtail
 url: https://github.com/Huluti/Curtail/releases
 activity: low
