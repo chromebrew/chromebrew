@@ -3,7 +3,7 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'https://www.qemu.org/'
-  version '9.1.1'
+  version '9.2.2'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.29' # Needed for MAP_FIXED_NOREPLACE support.
