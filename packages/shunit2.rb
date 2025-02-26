@@ -11,8 +11,8 @@ class Shunit2 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '4ba69ceead1edbf4c8809b2295b012076f2bef11fef02f2e2fc29140ec67690b',
+     armv7l: '4ba69ceead1edbf4c8809b2295b012076f2bef11fef02f2e2fc29140ec67690b',
        i686: 'd15b0aea1119c6490596cf68a92574bcad13ccb7a996cb084c17f445ddb79900',
      x86_64: '3b2c9adff980f325e3af1faf3d0a9234d79023865fe1d2e9efe975304ecf0fec'
   })
