@@ -11,8 +11,8 @@ class Bmon < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: 'b92ba7a6d64f92f2b0ffd1dc1ee72ec28380d684d66923dad0f2e445c3f9aef6',
+     armv7l: 'b92ba7a6d64f92f2b0ffd1dc1ee72ec28380d684d66923dad0f2e445c3f9aef6',
        i686: '0184a21e121f2b1a5e11f45088bb87f467d8008e64bc619cce7512fe6ffa3b20',
      x86_64: '0190ef2ba6446bcaa28c9c0eae05e2569cedc1f2aacfafa96fc0f5d143b63414'
   })
