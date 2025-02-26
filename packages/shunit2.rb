@@ -14,7 +14,7 @@ class Shunit2 < Package
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
        i686: 'd15b0aea1119c6490596cf68a92574bcad13ccb7a996cb084c17f445ddb79900',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '3b2c9adff980f325e3af1faf3d0a9234d79023865fe1d2e9efe975304ecf0fec'
   })
 
   # Tests fail, but current version is from 29/3/2020, so try re-enabling tests upon new release.
