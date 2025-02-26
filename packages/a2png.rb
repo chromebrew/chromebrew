@@ -3,33 +3,38 @@ require 'buildsystems/autotools'
 class A2png < Autotools
   description 'Converts plain ASCII text into PNG bitmap images.'
   homepage 'https://sourceforge.net/projects/a2png/'
-  version '0.1.5-2'
+  version '0.1.5'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://sourceforge.net/projects/a2png/files/a2png/0.1.5/a2png-0.1.5.tar.bz2'
+  source_url "https://sourceforge.net/projects/a2png/files/a2png/#{version}/a2png-#{version}.tar.bz2"
   source_sha256 'd3ae1c771f5180d93f35cded76d9bb4c4cc2023dbe65613e78add3eeb43f736b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3ef790b5997c7b3f0340b37253f36c0e896609761665a4e6b0754094a5be87dc',
-     armv7l: '3ef790b5997c7b3f0340b37253f36c0e896609761665a4e6b0754094a5be87dc',
-     x86_64: 'fb4c73c3466be4cff337047a28064b5cac5db85b0cb1d213309b9d1975762212'
+    aarch64: 'f08ed7619fe7e0f1ab628959841c2797ff2b30627f04bd9929d85e20805fb760',
+     armv7l: 'f08ed7619fe7e0f1ab628959841c2797ff2b30627f04bd9929d85e20805fb760',
+     x86_64: '7cab7b02b7f62682bf382d64b3dfc8b5ca01ca94036da5828e5f6d4aa91e4e77'
   })
 
   depends_on 'cairo'
+  depends_on 'harfbuzz' # R
+  depends_on 'glibc' # R
 
   def self.patch
     # Replace hardcoded /tmp path with CREW_PREFIX/tmp
     system "sed -i 's,/tmp,#{File.join(CREW_PREFIX, 'tmp')},g' test/Makefile.in"
     Dir.chdir 'src' do
-      # FreeBSD patch to avoid -Wimplicit-function-declaration errors.
-      downloader 'https://cgit.freebsd.org/ports/plain/graphics/a2png/files/patch-src_image.h?id=06dfcbd2cbebaf3b3b81744ed8adaa903f1b24b7', '86d2cb207854649c486485d215ffc6758a4af6ab9b1acd5f6b266dd793f5c80e', 'patch-src_image.h'
-      system 'patch -i patch-src_image.h'
-      # FreeBSD patch to avoid C99 inline semantics.
-      downloader 'https://cgit.freebsd.org/ports/plain/graphics/a2png/files/patch-src_image.c?id=06dfcbd2cbebaf3b3b81744ed8adaa903f1b24b7', 'fece9703dbc73447135bbb9bc2fd4d3af6052f8025e516fff0592257aa1377e0', 'patch-src_image.c'
-      downloader 'https://cgit.freebsd.org/ports/plain/graphics/a2png/files/patch-src_parse.c?id=06dfcbd2cbebaf3b3b81744ed8adaa903f1b24b7', '65d0bf84b659381b18536498bf82d83386fc347ac80b374f1393eaf1dc5d80b2', 'patch-src_parse.c'
-      system 'patch -i patch-src_image.c'
-      system 'patch -i patch-src_parse.c'
+      patches = [
+        # FreeBSD patch to avoid -Wimplicit-function-declaration errors.
+        ['https://raw.githubusercontent.com/freebsd/freebsd-ports/06dfcbd2cbebaf3b3b81744ed8adaa903f1b24b7/graphics/a2png/files/patch-src_image.h',
+        '86d2cb207854649c486485d215ffc6758a4af6ab9b1acd5f6b266dd793f5c80e'],
+        # FreeBSD patch to avoid C99 inline semantics.
+        ['https://raw.githubusercontent.com/freebsd/freebsd-ports/06dfcbd2cbebaf3b3b81744ed8adaa903f1b24b7/graphics/a2png/files/patch-src_image.c',
+        'fece9703dbc73447135bbb9bc2fd4d3af6052f8025e516fff0592257aa1377e0'],
+        ['https://raw.githubusercontent.com/freebsd/freebsd-ports/06dfcbd2cbebaf3b3b81744ed8adaa903f1b24b7/graphics/a2png/files/patch-src_parse.c',
+        '65d0bf84b659381b18536498bf82d83386fc347ac80b374f1393eaf1dc5d80b2']
+      ]
+      ConvenienceFunctions.patch(patches)
     end
   end
 
