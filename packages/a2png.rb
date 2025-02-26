@@ -24,14 +24,17 @@ class A2png < Autotools
     # Replace hardcoded /tmp path with CREW_PREFIX/tmp
     system "sed -i 's,/tmp,#{File.join(CREW_PREFIX, 'tmp')},g' test/Makefile.in"
     Dir.chdir 'src' do
-      # FreeBSD patch to avoid -Wimplicit-function-declaration errors.
-      downloader 'https://raw.githubusercontent.com/freebsd/freebsd-ports/06dfcbd2cbebaf3b3b81744ed8adaa903f1b24b7/graphics/a2png/files/patch-src_image.h', '86d2cb207854649c486485d215ffc6758a4af6ab9b1acd5f6b266dd793f5c80e', 'patch-src_image.h'
-      system 'patch -i patch-src_image.h'
-      # FreeBSD patch to avoid C99 inline semantics.
-      downloader 'https://raw.githubusercontent.com/freebsd/freebsd-ports/06dfcbd2cbebaf3b3b81744ed8adaa903f1b24b7/graphics/a2png/files/patch-src_image.c', 'fece9703dbc73447135bbb9bc2fd4d3af6052f8025e516fff0592257aa1377e0', 'patch-src_image.c'
-      downloader 'https://raw.githubusercontent.com/freebsd/freebsd-ports/06dfcbd2cbebaf3b3b81744ed8adaa903f1b24b7/graphics/a2png/files/patch-src_parse.c', '65d0bf84b659381b18536498bf82d83386fc347ac80b374f1393eaf1dc5d80b2', 'patch-src_parse.c'
-      system 'patch -i patch-src_image.c'
-      system 'patch -i patch-src_parse.c'
+      patches = [
+        # FreeBSD patch to avoid -Wimplicit-function-declaration errors.
+        ['https://raw.githubusercontent.com/freebsd/freebsd-ports/06dfcbd2cbebaf3b3b81744ed8adaa903f1b24b7/graphics/a2png/files/patch-src_image.h',
+        '86d2cb207854649c486485d215ffc6758a4af6ab9b1acd5f6b266dd793f5c80e'],
+        # FreeBSD patch to avoid C99 inline semantics.
+        ['https://raw.githubusercontent.com/freebsd/freebsd-ports/06dfcbd2cbebaf3b3b81744ed8adaa903f1b24b7/graphics/a2png/files/patch-src_image.c',
+        'fece9703dbc73447135bbb9bc2fd4d3af6052f8025e516fff0592257aa1377e0'],
+        ['https://raw.githubusercontent.com/freebsd/freebsd-ports/06dfcbd2cbebaf3b3b81744ed8adaa903f1b24b7/graphics/a2png/files/patch-src_parse.c',
+        '65d0bf84b659381b18536498bf82d83386fc347ac80b374f1393eaf1dc5d80b2']
+      ]
+      ConvenienceFunctions.patch(patches)
     end
   end
 
