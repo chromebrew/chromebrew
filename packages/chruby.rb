@@ -3,32 +3,39 @@ require 'package'
 class Chruby < Package
   description 'Changes the current Ruby'
   homepage 'https://github.com/postmodern/chruby'
-  version '0.3.9-1'
+  version '0.3.9'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz'
-  source_sha256 '7220a96e355b8a613929881c091ca85ec809153988d7d691299e0a16806b42fd'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/postmodern/chruby.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7815a4b47a82634d0a68f89d1bfe8b66f413ce68665696101032f1fb81531ee3',
-     armv7l: '7815a4b47a82634d0a68f89d1bfe8b66f413ce68665696101032f1fb81531ee3',
-       i686: '9196e553c0592330237bf487ac31688b759262f4900afdd96daed804b2041972',
-     x86_64: 'e8b096839ebbcfb351367aef74d53d3c1aeae6c8b166024971b6cdcac178d62b'
+    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
   })
 
   def self.build
     system 'make'
   end
 
+  # Tests fail with "!!! Could not detect system name"
+  # This is because the test setup script requires that it identifies the distribution it is running on, and does not have a check for ChromeOS.
+  # In the current upstrem tree, this behaviour has been removed, and presumably tests will work once 0.4.0 is released.
+  # def self.check
+  #   system 'make', 'test'
+  # end
+
+  # TODO: 0.3.9 has a weird way of handling PREFIX, swap to normal ('make', "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install') when 0.4.0 releases.
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @chrubyenv = <<~CHRUBYEOF
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/chruby", <<~CHRUBYEOF
       # chruby configuration
       source #{CREW_PREFIX}/share/chruby/chruby.sh
     CHRUBYEOF
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/chruby", @chrubyenv)
   end
 end
