@@ -13,13 +13,14 @@ class Bmon < Autotools
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+       i686: '0184a21e121f2b1a5e11f45088bb87f467d8008e64bc619cce7512fe6ffa3b20',
      x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
   })
 
   depends_on 'libconfuse'
   depends_on 'libnl3'
   depends_on 'ncurses'
+  depends_on 'glibc' # R
 
   configure_options '--without-ncurses --with-ncursesw'
 end
