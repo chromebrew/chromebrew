@@ -1,25 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Bmon < Package
+class Bmon < Autotools
   description 'bmon is a commandline bandwidth monitor and rate estimator.'
-  homepage 'https://github.com/tgraf/bmon/'
-  version '4.0-1'
+  homepage 'https://github.com/tgraf/bmon'
+  version '4.0'
   license 'BSD-2 and MIT'
   compatibility 'all'
-  source_url 'https://github.com/tgraf/bmon/releases/download/v4.0/bmon-4.0.tar.gz'
-  source_sha256 '02fdc312b8ceeb5786b28bf905f54328f414040ff42f45c83007f24b76cc9f7a'
+  source_url 'https://github.com/tgraf/bmon.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
+  binary_sha256({
+    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  })
+
+  depends_on 'libconfuse'
   depends_on 'libnl3'
+  depends_on 'ncurses'
 
-  def self.build
-    system 'autoreconf -fiv'
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-            --without-ncurses \
-            --with-ncursesw"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--without-ncurses --with-ncursesw'
 end
