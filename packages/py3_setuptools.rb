@@ -12,8 +12,8 @@ class Py3_setuptools < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c97cb947e95ab65b5f2aa850101c9c6acc3d247e12a4a0ea0b26e0a2ff6978e8',
-     armv7l: 'c97cb947e95ab65b5f2aa850101c9c6acc3d247e12a4a0ea0b26e0a2ff6978e8',
+    aarch64: '292319703d45dd49860df35291a78451b80d515cb387fc0fb14ad8d9a2bb930d',
+     armv7l: '292319703d45dd49860df35291a78451b80d515cb387fc0fb14ad8d9a2bb930d',
        i686: 'f45815ec4fc6a29f678c76bfa90d79612058757cff3ea9ad5ce63d7fc78f0cca',
      x86_64: '69e2e76b99c37e1e61911f0c850ad067666d2700fc803d9b819ef923300f0253'
   })
