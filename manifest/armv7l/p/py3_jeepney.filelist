@@ -1,9 +1,9 @@
-/usr/local/lib/python3.13/site-packages/jeepney-0.8.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/jeepney-0.8.0.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/jeepney-0.8.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/jeepney-0.8.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/jeepney-0.8.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/jeepney-0.8.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/jeepney-0.9.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/jeepney-0.9.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/jeepney-0.9.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/jeepney-0.9.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/jeepney-0.9.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/jeepney-0.9.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.13/site-packages/jeepney/__init__.py
 /usr/local/lib/python3.13/site-packages/jeepney/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/jeepney/__pycache__/auth.cpython-313.pyc
@@ -12,7 +12,6 @@
 /usr/local/lib/python3.13/site-packages/jeepney/__pycache__/bus_messages.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/jeepney/__pycache__/fds.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/jeepney/__pycache__/low_level.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/jeepney/__pycache__/routing.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/jeepney/__pycache__/wrappers.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/jeepney/auth.py
 /usr/local/lib/python3.13/site-packages/jeepney/bindgen.py
@@ -46,7 +45,6 @@
 /usr/local/lib/python3.13/site-packages/jeepney/io/threading.py
 /usr/local/lib/python3.13/site-packages/jeepney/io/trio.py
 /usr/local/lib/python3.13/site-packages/jeepney/low_level.py
-/usr/local/lib/python3.13/site-packages/jeepney/routing.py
 /usr/local/lib/python3.13/site-packages/jeepney/tests/__init__.py
 /usr/local/lib/python3.13/site-packages/jeepney/tests/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/jeepney/tests/__pycache__/test_auth.cpython-313.pyc
@@ -55,7 +53,7 @@
 /usr/local/lib/python3.13/site-packages/jeepney/tests/__pycache__/test_bus_messages.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/jeepney/tests/__pycache__/test_fds.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/jeepney/tests/__pycache__/test_low_level.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/jeepney/tests/__pycache__/test_routing.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/jeepney/tests/__pycache__/test_wrappers.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/jeepney/tests/secrets_introspect.xml
 /usr/local/lib/python3.13/site-packages/jeepney/tests/test_auth.py
 /usr/local/lib/python3.13/site-packages/jeepney/tests/test_bindgen.py
@@ -63,5 +61,5 @@
 /usr/local/lib/python3.13/site-packages/jeepney/tests/test_bus_messages.py
 /usr/local/lib/python3.13/site-packages/jeepney/tests/test_fds.py
 /usr/local/lib/python3.13/site-packages/jeepney/tests/test_low_level.py
-/usr/local/lib/python3.13/site-packages/jeepney/tests/test_routing.py
+/usr/local/lib/python3.13/site-packages/jeepney/tests/test_wrappers.py
 /usr/local/lib/python3.13/site-packages/jeepney/wrappers.py
