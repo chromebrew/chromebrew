@@ -11,8 +11,8 @@ class R < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '535ad3443e5f34b8a08359322672f3d7d09ba2582e381bda1606503c6a1cbcf7',
-     armv7l: '535ad3443e5f34b8a08359322672f3d7d09ba2582e381bda1606503c6a1cbcf7',
+    aarch64: '4c5324397f42b424d85ece0fc0ef3aecd0a87c9752038dd2efcafeebcb4a9755',
+     armv7l: '4c5324397f42b424d85ece0fc0ef3aecd0a87c9752038dd2efcafeebcb4a9755',
      x86_64: '89d6dce7aca4dd63487618136451dad92a5df3b103b248d21a455298aae07b1b'
   })
 
