@@ -6,17 +6,17 @@ require 'buildsystems/pip'
 class Py3_gi_docgen < Pip
   description 'Documentation generator for GObject-based libraries'
   homepage 'https://gnome.pages.gitlab.gnome.org/gi-docgen/'
-  version "2024.1-#{CREW_PY_VER}"
+  version "2025.3-#{CREW_PY_VER}"
   license 'Apache GPL3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5fd49cc13d1d61c8187e0797d772739581df1e403a7cc8676fdedc4cb2038c32',
-     armv7l: '5fd49cc13d1d61c8187e0797d772739581df1e403a7cc8676fdedc4cb2038c32',
-       i686: '828ecc70a33b61758235488060a1f30006188979f770a02b87c51aaee028cfee',
-     x86_64: '9a68e82076b1a68c6b4b87f3ddd183c802b4ee73d49fa6064dea78e8a10ba04c'
+    aarch64: 'df8293190af66b494c81cb153b771a9dc12cc0fdd58535ec91cd3ac7f51417e5',
+     armv7l: 'df8293190af66b494c81cb153b771a9dc12cc0fdd58535ec91cd3ac7f51417e5',
+       i686: '84499375d718a19ad99f13e670ad4bca1d36749841a270feaa21b12da12d6f56',
+     x86_64: 'f46650177fb99c94697a4533d5b97a7d962d2f5c75034b09f1896574c070ccad'
   })
 
   depends_on 'py3_jinja2'
