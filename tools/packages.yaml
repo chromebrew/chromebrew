@@ -6910,21 +6910,6 @@ url: https://www.piumarta.com/software/peg/
 activity: none
 ---
 kind: url
-name: percona_boost
-url: https://sourceforge.net/projects/boost/files/boost/
-activity: medium
----
-kind: url
-name: percona_server
-url: https://www.percona.com/downloads/Percona-Server-LATEST/
-activity: medium
----
-kind: url
-name: percona_toolkit
-url: https://www.percona.com/downloads/percona-toolkit/
-activity: medium
----
-kind: url
 name: perf
 url: https://www.kernel.org/pub/linux/kernel/v4.x/
 activity: medium
@@ -7093,6 +7078,11 @@ kind: url
 name: perl_parse_yapp
 url: https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/
 activity: none
+---
+kind: url
+name: perl_percona_toolkit
+url: https://www.percona.com/downloads/percona-toolkit/
+activity: medium
 ---
 kind: url
 name: perl_pod_parser
