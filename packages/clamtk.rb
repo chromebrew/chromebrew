@@ -3,13 +3,14 @@ require 'package'
 class Clamtk < Package
   description 'An easy to use, light-weight, on-demand virus scanner for Linux systems.'
   homepage 'https://gitlab.com/dave_m/clamtk/'
-  version '6.14'
+  version '6.18'
   license 'GPL-1+'
-  compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://gitlab.com/dave_m/clamtk/-/archive/v6.14/clamtk-v6.14.tar.bz2'
-  source_sha256 'cda9f3afed9ebfb36093f6d1572af2834b0488cc60296774c6d241db5ad149be'
+  compatibility 'x86_64'
+  source_url 'https://github.com/dave-theunsub/clamtk.git'
+  git_hashtag "v#{version}"
 
   depends_on 'clamav'
+  depends_on 'gdk_base'
   depends_on 'perl_extutils_depends'
   depends_on 'perl_extutils_makemaker'
   depends_on 'perl_extutils_pkgconfig'
@@ -31,64 +32,36 @@ class Clamtk < Package
   depends_on 'perl_lwp_protocol_https'
   depends_on 'perl_lwp_useragent'
   depends_on 'perl_net_http'
+  depends_on 'perl_net_ssleay'
   depends_on 'perl_text_csv'
   depends_on 'perl_try_tiny'
   depends_on 'perl_uri'
   depends_on 'xdpyinfo'
   depends_on 'sommelier'
 
+  gnome
   no_compile_needed
 
   def self.patch
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,' clamtk"
   end
 
-  def self.build
-    clamtk = <<~EOF
-      #!/bin/bash
-      SCALE=1
-      RESOLUTION=$(xdpyinfo | awk '/dimensions:/ { print $2 }' | cut -d'x' -f1)
-      [[ $RESOLUTION -gt 1500 && $RESOLUTION -lt 2500 ]] && SCALE=1.5
-      [[ $RESOLUTION -ge 2500 && $RESOLUTION -lt 3500 ]] && SCALE=2
-      [[ $RESOLUTION -ge 3500 && $RESOLUTION -lt 4500 ]] && SCALE=2.5
-      [[ $RESOLUTION -ge 4500 && $RESOLUTION -lt 5500 ]] && SCALE=3
-      [[ $RESOLUTION -gt 5500 ]] && SCALE=3.5
-      [ -z "$DISPLAY" ] && DISPLAY=':0'
-      export GDK_BACKEND=x11
-      export GDK_SCALE=$SCALE
-      export DISPLAY=$DISPLAY
-      #{CREW_PREFIX}/bin/clamtk.pl "$@"
-    EOF
-    File.write('clamtk.sh', clamtk)
-  end
-
   def self.install
+    system 'gunzip clamtk.1.gz'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/perl5/vendor_perl/ClamTk"
     FileUtils.mv Dir['lib/*.pm'], "#{CREW_DEST_PREFIX}/share/perl5/vendor_perl/ClamTk"
-    FileUtils.install 'clamtk.sh', "#{CREW_DEST_PREFIX}/bin/clamtk", mode: 0o755
-    FileUtils.install 'clamtk', "#{CREW_DEST_PREFIX}/bin/clamtk.pl", mode: 0o755
-  end
-
-  def self.postinstall
-    # generate schemas
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-    # update mime database
-    system "update-mime-database #{CREW_PREFIX}/share/mime"
+    FileUtils.install 'clamtk', "#{CREW_DEST_PREFIX}/bin/clamtk", mode: 0o755
+    FileUtils.install 'clamtk.1', "#{CREW_DEST_MAN_PREFIX}/man1/clamtk.1", mode: 0o644
+    FileUtils.install 'clamtk.desktop', "#{CREW_DEST_PREFIX}/share/applications/clamtk.desktop", mode: 0o644
+    FileUtils.install 'images/clamtk.png', "#{CREW_DEST_PREFIX}/share/icons/hicolor/clamtk.png", mode: 0o644
   end
 
   def self.postremove
     config_dir = "#{HOME}/.clamtk"
     if Dir.exist? config_dir
       puts 'WARNING: This will remove all clamtk config!'.orange
-      print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightgreen
-      else
-        puts "#{config_dir} saved.".lightgreen
-      end
+      Package.agree_to_remove(config_dir)
     end
   end
 end
