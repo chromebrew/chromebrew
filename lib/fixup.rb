@@ -149,6 +149,7 @@ pkg_update_arr = [
   { pkg_name: 'onepassword', pkg_rename: 'onepassword_cli', pkg_deprecated: nil, comments: 'Rename to distinguish between onepassword_gui.' },
   { pkg_name: 'percona_boost', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced by regular boost.' },
   { pkg_name: 'percona_server', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced by mysql.' },
+  { pkg_name: 'percona_toolkit', pkg_rename: 'perl_percona_toolkit', pkg_deprecated: true, comments: 'Renamed to identify perl package.' },
   { pkg_name: 'pkgconfig', pkg_rename: 'pkg_config', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'postgres', pkg_rename: 'postgresql', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'proj4', pkg_rename: 'proj', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
