@@ -3,17 +3,11 @@ require 'package'
 class Balena_etcher < Package
   description 'Flash OS images to SD cards & USB drives, safely and easily.'
   homepage 'https://etcher.balena.io'
-  version '1.19.25'
+  version '2.1.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
-
-  source_url({
-    x86_64: "https://github.com/balena-io/etcher/releases/download/v#{version}/balenaEtcher-#{version}-x64.AppImage"
-  })
-
-  source_sha256({
-    x86_64: '0e3dca25e09e11b9d2845d986a10a4451073317f0aa30126a063aaf47a4d0a99'
-  })
+  source_url "https://github.com/balena-io/etcher/releases/download/v#{version}/balenaEtcher-#{version}-x64.AppImage"
+  source_sha256 'c0abf56d3618cfb78206851518d5047b239d60bde75b2699c495701b57bbf0fd'
 
   depends_on 'gtk3'
   depends_on 'freetype'
@@ -33,13 +27,12 @@ class Balena_etcher < Package
   no_shrink
 
   def self.build
-    @etcher = <<~EOF
+    File.write 'etcher.sh', <<~EOF
       #!/bin/bash
       xhost si:localuser:root
       cd #{CREW_PREFIX}/share/balena-etcher
       sudo -E LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} ./AppRun "$@"
     EOF
-    File.write('etcher.sh', @etcher)
   end
 
   def self.install
@@ -49,9 +42,6 @@ class Balena_etcher < Package
   end
 
   def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-    puts
-    puts "To get started, type 'etcher'.".lightblue
-    puts
+    ExitMessage.add "\nType 'etcher' to get started.\n"
   end
 end
