@@ -3,7 +3,7 @@
     "name": "a2png",
     "description": "Converts plain ASCII text into PNG bitmap images.",
     "homepage": "https://sourceforge.net/projects/a2png/",
-    "version": "0.1.5-2",
+    "version": "0.1.5",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -83,7 +83,7 @@
     "name": "act",
     "description": "Run your GitHub Actions locally",
     "homepage": "https://github.com/nektos/act",
-    "version": "0.2.74",
+    "version": "0.2.75",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -755,7 +755,7 @@
     "name": "awscli",
     "description": "Universal Command Line Interface for Amazon Web Services",
     "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.37.26",
+    "version": "1.38.4",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -811,7 +811,7 @@
     "name": "balena_etcher",
     "description": "Flash OS images to SD cards & USB drives, safely and easily.",
     "homepage": "https://etcher.balena.io",
-    "version": "1.19.25",
+    "version": "2.1.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -1058,8 +1058,8 @@
   {
     "name": "bmon",
     "description": "bmon is a commandline bandwidth monitor and rate estimator.",
-    "homepage": "https://github.com/tgraf/bmon/",
-    "version": "4.0-1",
+    "homepage": "https://github.com/tgraf/bmon",
+    "version": "4.0",
     "license": "BSD-2 and MIT",
     "compatibility": "all"
   },
@@ -1091,7 +1091,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.75.180",
+    "version": "1.75.181",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -2080,6 +2080,14 @@
     "compatibility": "all"
   },
   {
+    "name": "cursor",
+    "description": "The AI Code Editor",
+    "homepage": "https://www.cursor.com/",
+    "version": "0.45.15",
+    "license": "Cursor EULA",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "curtail",
     "description": "Curtail (previously ImCompressor) is an useful image compressor, supporting PNG, JPEG and WEBP file types.",
     "homepage": "https://github.com/Huluti/Curtail",
@@ -3043,7 +3051,7 @@
     "name": "filezilla",
     "description": "FileZilla Client is a free FTP solution.",
     "homepage": "https://filezilla-project.org/",
-    "version": "3.67.1",
+    "version": "3.68.1",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3683,7 +3691,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "511.0.0",
+    "version": "512.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -3867,7 +3875,7 @@
     "name": "gettext",
     "description": "GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.",
     "homepage": "https://www.gnu.org/software/gettext/",
-    "version": "0.22.5",
+    "version": "0.24",
     "license": "GPL-3+ and LGPL-2.1+",
     "compatibility": "all"
   },
@@ -4603,7 +4611,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "133.0.6943.98-1",
+    "version": "133.0.6943.141-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -4627,7 +4635,7 @@
     "name": "google_webdesigner",
     "description": "Google Web Designer",
     "homepage": "https://webdesigner.withgoogle.com/",
-    "version": "14.0.1.0-1",
+    "version": "14.2.1.0-1",
     "license": "google-webdesigner",
     "compatibility": "x86_64"
   },
@@ -6955,7 +6963,7 @@
     "name": "libfilezilla",
     "description": "libfilezilla is a small and modern C++ library, offering some basic functionality to build high-performing, platform-independent programs.",
     "homepage": "https://lib.filezilla-project.org/",
-    "version": "0.48.1",
+    "version": "0.49.0",
     "license": "GPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -8352,6 +8360,14 @@
     "compatibility": "all"
   },
   {
+    "name": "libultrahdr",
+    "description": "libultrahdr is an image compression library that uses gain map technology to store and distribute HDR images.",
+    "homepage": "https://github.com/google/libultrahdr",
+    "version": "1.4.0",
+    "license": "Apache-2.0",
+    "compatibility": "all"
+  },
+  {
     "name": "libunbound",
     "description": "Unbound is a validating, recursive, and caching DNS resolver.",
     "homepage": "https://nlnetlabs.nl/projects/unbound/about/",
@@ -9483,7 +9499,7 @@
     "name": "manpages",
     "description": "The Linux man-pages project documents the Linux kernel and C library interfaces that are employed by user-space programs.",
     "homepage": "https://www.kernel.org/doc/man-pages/",
-    "version": "6.9.1",
+    "version": "6.12",
     "license": "man-pages, GPL-2+ and BSD",
     "compatibility": "all"
   },
@@ -11155,7 +11171,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "117.0.5408.35",
+    "version": "117.0.5408.39",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -12627,7 +12643,7 @@
     "name": "py3_bcrypt",
     "description": "Modern password hashing for your software and your servers.",
     "homepage": "https://github.com/pyca/bcrypt/",
-    "version": "4.2.1",
+    "version": "4.3.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -12731,7 +12747,7 @@
     "name": "py3_cryptography",
     "description": "Cryptography provides cryptographic recipes and primitives to Python developers.",
     "homepage": "https://cryptography.io/",
-    "version": "44.0.1",
+    "version": "44.0.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12771,7 +12787,7 @@
     "name": "py3_decorator",
     "description": "define signature-preserving function decorators and decorator factories",
     "homepage": "https://github.com/micheles/decorator/",
-    "version": "5.2.0",
+    "version": "5.2.1",
     "license": "BSD-2",
     "compatibility": "all"
   },
@@ -12923,7 +12939,7 @@
     "name": "py3_gi_docgen",
     "description": "Documentation generator for GObject-based libraries",
     "homepage": "https://gnome.pages.gitlab.gnome.org/gi-docgen/",
-    "version": "2024.1",
+    "version": "2025.3",
     "license": "Apache GPL3",
     "compatibility": "all"
   },
@@ -13051,7 +13067,7 @@
     "name": "py3_jeepney",
     "description": "Jeepney is a low-level, pure Python DBus protocol wrapper.",
     "homepage": "https://gitlab.com/takluyver/jeepney/",
-    "version": "0.8.0",
+    "version": "0.9.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13235,7 +13251,7 @@
     "name": "py3_nuitka",
     "description": "Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.",
     "homepage": "https://nuitka.net/",
-    "version": "2.6.6",
+    "version": "2.6.7",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13251,7 +13267,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.145.0",
+    "version": "2.146.0",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13259,7 +13275,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.51.8",
+    "version": "3.51.9",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13539,7 +13555,7 @@
     "name": "py3_pyright",
     "description": "Static Type Checker for Python",
     "homepage": "https://github.com/microsoft/pyright",
-    "version": "1.1.394",
+    "version": "1.1.395",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13651,7 +13667,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.9.7",
+    "version": "0.9.9",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13675,7 +13691,7 @@
     "name": "py3_setuptools",
     "description": "Setuptools is the python build system from the Python Packaging Authority.",
     "homepage": "https://setuptools.readthedocs.io/",
-    "version": "75.8.0",
+    "version": "75.8.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14048,6 +14064,14 @@
     "compatibility": "aarch64 armv7l x86_64"
   },
   {
+    "name": "pystring",
+    "description": "C++ functions matching the interface and behavior of python string methods with std::string",
+    "homepage": "https://github.com/imageworks/pystring",
+    "version": "1.1.4",
+    "license": "BSD-3",
+    "compatibility": "all"
+  },
+  {
     "name": "python2",
     "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
     "homepage": "https://www.python.org/",
@@ -14323,7 +14347,7 @@
     "name": "r",
     "description": "R is a free software environment for statistical computing and graphics.",
     "homepage": "https://www.r-project.org/",
-    "version": "4.4.1",
+    "version": "4.4.3",
     "license": "GPL-2 or GPL-3 and LGPL-2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -15411,7 +15435,7 @@
     "name": "ruby_rubocop",
     "description": "A Ruby static code analyzer and formatter",
     "homepage": "https://rubocop.org",
-    "version": "1.72.2-ruby3.4",
+    "version": "1.73.1-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16144,6 +16168,14 @@
     "compatibility": "all"
   },
   {
+    "name": "shunit2",
+    "description": "shUnit2 is a xUnit based unit test framework for Bourne based shell scripts.",
+    "homepage": "https://github.com/kward/shunit2",
+    "version": "2.1.8",
+    "license": "Apache-2.0",
+    "compatibility": "all"
+  },
+  {
     "name": "siege",
     "description": "Siege is an http load testing and benchmarking utility.",
     "homepage": "https://www.joedog.org/siege-home/",
@@ -16155,7 +16187,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.42.0",
+    "version": "7.44.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -17459,7 +17491,7 @@
     "name": "upx",
     "description": "Extendable, high-performance executable packer for several executable formats",
     "homepage": "https://github.com/upx/upx",
-    "version": "4.2.4",
+    "version": "5.0.0",
     "license": "custom GPL2",
     "compatibility": "all"
   },
@@ -18139,7 +18171,7 @@
     "name": "wxwidgets",
     "description": "wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.",
     "homepage": "https://www.wxwidgets.org/",
-    "version": "3.2.6",
+    "version": "3.2.6-1",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18147,7 +18179,7 @@
     "name": "wxwidgets30",
     "description": "wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.",
     "homepage": "https://www.wxwidgets.org/",
-    "version": "3.0.5.1-2",
+    "version": "3.0.5.1-3",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18155,7 +18187,7 @@
     "name": "wxwidgets31",
     "description": "wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.",
     "homepage": "https://www.wxwidgets.org/",
-    "version": "3.1.7-2",
+    "version": "3.1.7-3",
     "license": "wxWindows Library Licence",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18677,6 +18709,14 @@
     "homepage": "http://lloyd.github.io/yajl/",
     "version": "2.1.0-4",
     "license": "ISC",
+    "compatibility": "all"
+  },
+  {
+    "name": "yaml_cpp",
+    "description": "A YAML parser and emitter in C++",
+    "homepage": "https://github.com/jbeder/yaml-cpp",
+    "version": "0.8.0",
+    "license": "MIT",
     "compatibility": "all"
   },
   {
