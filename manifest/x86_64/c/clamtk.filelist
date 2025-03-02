@@ -1,5 +1,7 @@
 /usr/local/bin/clamtk
-/usr/local/bin/clamtk.pl
+/usr/local/share/applications/clamtk.desktop
+/usr/local/share/icons/hicolor/clamtk.png
+/usr/local/share/man/man1/clamtk.1.zst
 /usr/local/share/perl5/vendor_perl/ClamTk/Analysis.pm
 /usr/local/share/perl5/vendor_perl/ClamTk/App.pm
 /usr/local/share/perl5/vendor_perl/ClamTk/Assistant.pm
