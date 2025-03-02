@@ -153,40 +153,44 @@
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE6-dolphin/peazip-kde6-minimal.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE6-dolphin/peazip-kde6.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/Add to Archive
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/Convert
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/Extract Archive
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/Extract Here
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/Extract to Folder
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/Open Archive
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-7z.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-archive.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-brotli.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-bzip2.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-gzip.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-pea.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-tar.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-wim.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-xz.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-zip.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-zpaq.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-zstd.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-convert.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-extract-desktop.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-extract-documents.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-extract-downloads.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-extract-here.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-extract-smart.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-extract.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-open.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/add_peazip_to_kde_context_menu.sh
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/readme_add_peazip_to_kde_context_menu.txt
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/PeaZip/Add to Archive
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/PeaZip/Convert
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/PeaZip/Extract Archive
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/PeaZip/Extract Here
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/PeaZip/Extract to New Folder
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/PeaZip/Open Archive
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/add_peazip_to_gnome_context_menu.sh
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/readme_add_peazip_to_gnome_context_menu.txt
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-7z.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-archive.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-brotli.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-bzip2.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-gzip.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-pea.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-tar.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-wim.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-xz.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-zip.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-zpaq.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-zstd.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-convert.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-extract-desktop.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-extract-documents.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-extract-downloads.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-extract-here.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-extract-smart.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-extract.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-open.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_7z.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_add.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_cd.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_convert.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_extract.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_zip.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip.png
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_7z.png
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_add.png
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_cd.png
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_convert.png
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_extract.png
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_zip.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/readme_freedesktop_integration.txt
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, add to BZ2.workflow/Contents/Info.plist
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, add to BZ2.workflow/Contents/QuickLook/Thumbnail.png
@@ -418,4 +422,5 @@
 /usr/local/share/peazip/res/share/themes/nographic-embedded/fm-theme.bmp
 /usr/local/share/peazip/res/share/themes/nographic-embedded/readme.txt
 /usr/local/share/peazip/res/share/themes/ten.theme.7z
+/usr/local/share/peazip/res/share/themes/tux-alt.theme.7z
 /usr/local/share/peazip/res/share/themes/tux.theme.7z
