@@ -257,7 +257,7 @@ installed_fixup_packages.each do |fixup_pkg|
       def self.preremove; end
       def self.postremove; end
     end
-    Command.remove(pkg_object, CREW_VERBOSE)
+    Command.remove(pkg_object, verbose: CREW_VERBOSE)
   else
     puts "#{pkg_name.capitalize} not removed.".lightblue
   end
