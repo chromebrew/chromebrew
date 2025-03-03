@@ -20,7 +20,8 @@ end
 if ARGV[0]
   ARGV.each do |name|
     if File.file?(File.join(CREW_PACKAGES_PATH, "#{name}.rb"))
-      check_for_removed_dependencies(Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")), verbose: true)
+      test_result = check_for_removed_dependencies(Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")), verbose: true)
+      exit(1) if test_result.positive?
     else
       puts "Package #{name} not found.".lightred
     end
