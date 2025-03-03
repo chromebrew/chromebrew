@@ -13,7 +13,7 @@ class Py3_pypdf < Pip
     aarch64: '25dcc3f26c17772ee55fddd92a1f6ea75147a23a234ea92ad9f265acbbb3803c',
      armv7l: '25dcc3f26c17772ee55fddd92a1f6ea75147a23a234ea92ad9f265acbbb3803c',
        i686: '927c5b43c3ac675909fe95928f94e13d00fa3057f86c9084dd71bfd365be5d5a',
-     x86_64: '825253abcaa90bd8c0f4183a2a3a5aa948ba65fd66849f6bf63e2124ff0b686b'
+     x86_64: '3420c6dbfcbbc329f324ce63ab842e8eaf3ddbd9a106fe238784d66ee8952673'
   })
 
   depends_on 'python3'
