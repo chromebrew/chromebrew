@@ -12,7 +12,7 @@ class Py3_pytest < Pip
   binary_sha256({
     aarch64: 'e7a68fcc0a629446f2c5ea9d0479bdc78469f1ae48e2fdc83e7f5e006fffdcdf',
      armv7l: 'e7a68fcc0a629446f2c5ea9d0479bdc78469f1ae48e2fdc83e7f5e006fffdcdf',
-       i686: 'c4e7668a899e1bba44a931399386fdf76014981bbd954610a36fa026ff87e355',
+       i686: '182ed975e3d09d299559b33bcabca68586e83dbe6f71a963795599283690b0e5',
      x86_64: '0b610d1b2fcb8fbb0b2cc1d048657f0e6bf51133c53926e1174ac7f5bdcf3507'
   })
 
