@@ -13,7 +13,7 @@ class Libsdl2 < CMake
   binary_sha256({
     aarch64: '6c5228f8a857c3bb44b1f320c6c9900a7597776c14c2a1d4d3f6dd982f0ebc85',
      armv7l: '6c5228f8a857c3bb44b1f320c6c9900a7597776c14c2a1d4d3f6dd982f0ebc85',
-     x86_64: '36a1d2e6085589831566dbf9c23bb0125ae87e3c321084f3c8eb0a032d661106'
+     x86_64: '45f879c176cde80a2bc87392de74df17b71c026b4bacbddeb7704a90d9f6707f'
   })
 
   depends_on 'alsa_lib' => :build
