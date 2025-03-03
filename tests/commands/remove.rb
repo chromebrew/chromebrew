@@ -19,15 +19,17 @@ class RemoveCommandTest < Minitest::Test
     end
   end
 
+  # We've chosen zstd here because its an essential package we can remove and quickly reinstall without breaking crew.
+  # If this changes, and there isn't an essential package we can remove without catastrophic failure, feel free to remove this test entirely.
   def test_force_remove_essential_package
-    puts 'Testing the forced removal of essential package zlib. This should succeed.'
+    puts 'Testing the forced removal of essential package zstd. This should succeed.'
 
-    expected_output = "zlib removed!\n"
+    expected_output = "zstd removed!\n"
     assert_output expected_output, nil do
-      Command.remove(Package.load_package('zlib.rb'), force: true)
+      Command.remove(Package.load_package('zstd.rb'), force: true)
     end
     # We did just remove an essential package, so let's reinstall that now before it causes any issues.
-    system 'crew install zlib', %i[out err] => File::NULL
+    system 'crew install zstd', %i[out err] => File::NULL
   end
 
   def test_remove_package_with_essential_file

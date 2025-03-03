@@ -18,6 +18,8 @@
 /usr/local/bin/pt-online-schema-change
 /usr/local/bin/pt-pmp
 /usr/local/bin/pt-query-digest
+/usr/local/bin/pt-replica-find
+/usr/local/bin/pt-replica-restart
 /usr/local/bin/pt-show-grants
 /usr/local/bin/pt-sift
 /usr/local/bin/pt-slave-delay
@@ -31,8 +33,6 @@
 /usr/local/bin/pt-upgrade
 /usr/local/bin/pt-variable-advisor
 /usr/local/bin/pt-visual-explain
-/usr/local/lib64/perl5/5.40.0/core_perl/perllocal.pod
-/usr/local/lib64/perl5/5.40.0/site_perl/auto/Percona/Toolkit/.packlist
 /usr/local/share/man/man1/percona-toolkit.1p.zst
 /usr/local/share/man/man1/pt-align.1p.zst
 /usr/local/share/man/man1/pt-archiver.1p.zst
@@ -54,6 +54,8 @@
 /usr/local/share/man/man1/pt-online-schema-change.1p.zst
 /usr/local/share/man/man1/pt-pmp.1p.zst
 /usr/local/share/man/man1/pt-query-digest.1p.zst
+/usr/local/share/man/man1/pt-replica-find.1p.zst
+/usr/local/share/man/man1/pt-replica-restart.1p.zst
 /usr/local/share/man/man1/pt-show-grants.1p.zst
 /usr/local/share/man/man1/pt-sift.1p.zst
 /usr/local/share/man/man1/pt-slave-delay.1p.zst
@@ -117,7 +119,6 @@
 /usr/local/share/perl5/site_perl/OobNibbleIterator.pm
 /usr/local/share/perl5/site_perl/OptionParser.pm
 /usr/local/share/perl5/site_perl/Outfile.pm
-/usr/local/share/perl5/site_perl/Percona/Test.pm
 /usr/local/share/perl5/site_perl/Percona/Toolkit.pm
 /usr/local/share/perl5/site_perl/Percona/XtraDB/Cluster.pm
 /usr/local/share/perl5/site_perl/PerconaTest.pm
@@ -144,7 +145,6 @@
 /usr/local/share/perl5/site_perl/RowDiff.pm
 /usr/local/share/perl5/site_perl/Runtime.pm
 /usr/local/share/perl5/site_perl/SQLParser.pm
-/usr/local/share/perl5/site_perl/Safeguards.pm
 /usr/local/share/perl5/site_perl/Sandbox.pm
 /usr/local/share/perl5/site_perl/Schema.pm
 /usr/local/share/perl5/site_perl/SchemaIterator.pm
