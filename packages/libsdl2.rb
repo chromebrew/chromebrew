@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libsdl2 < CMake
   description 'Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.'
   homepage 'http://www.libsdl.org'
-  version '2.30.6'
+  version '2.32.2'
   license 'ZLIB'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/SDL.git'
@@ -24,5 +24,5 @@ class Libsdl2 < CMake
   depends_on 'pulseaudio' => :build
   depends_on 'xwayland' => :build
 
-  @cmake_options = ARCH == 'x86_64' ? '-DOPT_DEF_SSEMATH=ON' : ''
+  cmake_options ARCH == 'x86_64' ? '-DOPT_DEF_SSEMATH=ON' : ''
 end
