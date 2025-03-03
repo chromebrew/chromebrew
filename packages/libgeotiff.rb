@@ -13,7 +13,7 @@ class Libgeotiff < Autotools
   binary_sha256({
     aarch64: 'd2f582b4ee393dc0eca53805098b354efc68a766a32b2277fad26033a4bc1258',
      armv7l: 'd2f582b4ee393dc0eca53805098b354efc68a766a32b2277fad26033a4bc1258',
-     x86_64: '622a92ff1bb9711422ba33d37a7635245adc0c1ba5f60cfb7a3aa7b150956682'
+     x86_64: '5f9dd0071d66adfd6876280501e1c2448e78fa08ef61496b934a2dd1c49bf078'
   })
 
   depends_on 'glibc' # R
@@ -26,4 +26,5 @@ class Libgeotiff < Autotools
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
+  depends_on 'sqlite' # R
 end
