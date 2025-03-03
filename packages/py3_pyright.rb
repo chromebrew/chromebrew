@@ -10,8 +10,8 @@ class Py3_pyright < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '99eb4e2b86139a8402fecd5a55d60f20d27fc3646bcd284ca204707cc66c49d7',
-     armv7l: '99eb4e2b86139a8402fecd5a55d60f20d27fc3646bcd284ca204707cc66c49d7',
+    aarch64: '6c3848510909f6a70868f8e2cddc63a69ae5cfe182730d1ce347a88188fdc06c',
+     armv7l: '6c3848510909f6a70868f8e2cddc63a69ae5cfe182730d1ce347a88188fdc06c',
        i686: '3abaf70d45b8978148528cc7e79180acdb85fdd730aaf25a1df00e9ca958f0d9',
      x86_64: '4877e12ae66173fa8d297de59e9ad9c05716f42b3f23b6f3b4431909691b4cd9'
   })
