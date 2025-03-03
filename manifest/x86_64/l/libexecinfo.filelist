@@ -1,0 +1,5 @@
+/usr/local/include/execinfo.h
+/usr/local/include/stacktraverse.h
+/usr/local/lib64/libexecinfo.a
+/usr/local/lib64/libexecinfo.so
+/usr/local/lib64/libexecinfo.so.1
