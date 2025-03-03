@@ -11,8 +11,8 @@ class Libsdl2 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6c5228f8a857c3bb44b1f320c6c9900a7597776c14c2a1d4d3f6dd982f0ebc85',
-     armv7l: '6c5228f8a857c3bb44b1f320c6c9900a7597776c14c2a1d4d3f6dd982f0ebc85',
+    aarch64: '710b7fa20c48c03f3a4e2be8e6545831430254baa86d8342efd4f4c24bbceed2',
+     armv7l: '710b7fa20c48c03f3a4e2be8e6545831430254baa86d8342efd4f4c24bbceed2',
      x86_64: '45f879c176cde80a2bc87392de74df17b71c026b4bacbddeb7704a90d9f6707f'
   })
 
