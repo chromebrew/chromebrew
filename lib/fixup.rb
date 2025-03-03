@@ -210,12 +210,6 @@ installed_fixup_packages.each do |fixup_pkg|
     FileUtils.rm_f old_directorylist
     @fixup_json['installed_packages'].delete_if { |elem| elem[:name] == pkg_name }
     @installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
-    if @fixup_json['essential_deps'].include?(pkg_rename)
-      crewlog("Running save_essential_deps because essential deps contained #{pkg_name}")
-      save_essential_deps(@fixup_json)
-      ## save_json(@fixup_json)
-      ## @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-    end
     next
   end
   # Handle case of package needing to be replaced.
@@ -233,11 +227,7 @@ installed_fixup_packages.each do |fixup_pkg|
   FileUtils.mv old_directorylist, new_directorylist
   @fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }
   @fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
-  @fixup_json['compatible_packages'].find { |h| h['name'] == pkg_name }
-  @fixup_json['compatible_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
   ## save_json(@fixup_json)
-  ## next unless @fixup_json['essential_deps'].include?(pkg_rename)
-  ## save_essential_deps(@fixup_json)
   ## save_json(@fixup_json)
   ## @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
   ## save_json(@fixup_json)
