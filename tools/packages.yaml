@@ -4280,6 +4280,11 @@ url: https://github.com/libyal/libewf/releases
 activity: none
 ---
 kind: url
+name: libexecinfo
+url: https://github.com/mikroskeem/libexecinfo/tags
+activity: none
+---
+kind: url
 name: libexif
 url: https://github.com/libexif/libexif/releases
 activity: none
