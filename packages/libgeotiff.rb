@@ -11,8 +11,8 @@ class Libgeotiff < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd2f582b4ee393dc0eca53805098b354efc68a766a32b2277fad26033a4bc1258',
-     armv7l: 'd2f582b4ee393dc0eca53805098b354efc68a766a32b2277fad26033a4bc1258',
+    aarch64: '706bbd4c76350383b12307a6ec90fc602b0474408ee5a7a3f950f674c03dd252',
+     armv7l: '706bbd4c76350383b12307a6ec90fc602b0474408ee5a7a3f950f674c03dd252',
      x86_64: '5f9dd0071d66adfd6876280501e1c2448e78fa08ef61496b934a2dd1c49bf078'
   })
 
