@@ -346,6 +346,7 @@ CREW_DOCOPT ||= <<~DOCOPT
     crew search [options] [-v|--verbose] <name> ...
     crew sysinfo [options] [-v|--verbose]
     crew update [options] [-v|--verbose]
+    crew update_package_binary_hashes [options] [-v|--verbose] [<name> ...]
     crew upgrade [options] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-v|--verbose] [<name> ...]
     crew whatprovides [options] <pattern> ...
