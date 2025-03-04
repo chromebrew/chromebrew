@@ -12,7 +12,7 @@ class Py3_trove_classifiers < Pip
   binary_sha256({
     aarch64: '628e4b1c5df860e382f8ccba8f7dabc81f1fd39d28ab8a814b015af3dd373a5a',
      armv7l: '628e4b1c5df860e382f8ccba8f7dabc81f1fd39d28ab8a814b015af3dd373a5a',
-       i686: '9ff10966dd0a83f6bfc5d41d2319e7881c35caa5d9c45b3023ad2bc6461d6372',
+       i686: 'f13c3c0625df077ad9a90bb2c5e914cc61d36f356832dd7d853e62d3847e548c',
      x86_64: '0dadee8ef47da47960c4bb5bc9b148561e8e030d1a604f851700811ebeaa02a7'
   })
 
