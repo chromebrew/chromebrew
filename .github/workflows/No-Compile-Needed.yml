@@ -87,7 +87,6 @@ jobs:
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         run: |
-            echo $test_actionlint
             # If a package has 'no_compile_needed', add it to NO_COMPILE_PACKAGES.
             NO_COMPILE_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]no_compile_needed" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export NO_COMPILE_PACKAGES
