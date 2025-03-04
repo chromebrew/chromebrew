@@ -97,6 +97,7 @@ Where available commands are:
 | update       | update crew itself |
 | upgrade      | update all or specific package(s) |
 | upload       | upload binaries for all or specific package(s) |
+| upstream     | check if an upstream version is available for package(s) |
 | whatprovides | regex search for package(s) that contains file(s) |
 
 Available packages are listed in the [packages directory](https://github.com/chromebrew/chromebrew/tree/master/packages).

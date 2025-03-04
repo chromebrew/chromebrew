@@ -95,9 +95,8 @@ String.use_color = args['--color'] || !args['--no-color']
 @opt_version   = args['--version']
 
 # Verbose options
-@fileutils_verbose = CREW_VERBOSE
-@verbose           = CREW_VERBOSE ? 'v' : ''
-@short_verbose     = CREW_VERBOSE ? '-v' : ''
+@verbose       = CREW_VERBOSE ? 'v' : ''
+@short_verbose = CREW_VERBOSE ? '-v' : ''
 
 # Make sure crew work directories exist.
 FileUtils.mkdir_p CREW_BREW_DIR
@@ -464,11 +463,11 @@ def download
           if Digest::SHA256.hexdigest(File.read(cachefile)) == sha256sum || sha256sum =~ /^SKIP$/i || cachefile.include?(CREW_LOCAL_BUILD_DIR)
             begin
               # Hard link cached file if possible.
-              FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: @fileutils_verbose unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
+              FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: CREW_VERBOSE unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
               puts 'Archive hard linked from cache'.green if CREW_VERBOSE
             rescue StandardError
               # Copy cached file if hard link fails.
-              FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
+              FileUtils.cp cachefile, CREW_BREW_DIR, verbose: CREW_VERBOSE unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
               puts 'Archive copied from cache'.green if CREW_VERBOSE
             end
             puts 'Archive found in cache'.lightgreen
@@ -495,11 +494,11 @@ def download
       if CREW_CACHE_ENABLED && cachefile.to_s.empty? && File.writable?(CREW_CACHE_DIR)
         begin
           # Hard link to cache if possible.
-          FileUtils.ln filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
+          FileUtils.ln filename, CREW_CACHE_DIR, verbose: CREW_VERBOSE
           puts 'Archive hard linked to cache'.green if CREW_VERBOSE
         rescue StandardError
           # Copy to cache if hard link fails.
-          FileUtils.cp filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
+          FileUtils.cp filename, CREW_CACHE_DIR, verbose: CREW_VERBOSE
           puts 'Archive copied to cache'.green if CREW_VERBOSE
         end
       end
@@ -596,7 +595,7 @@ end
 def unpack(meta)
   target_dir = nil
   Dir.chdir CREW_BREW_DIR do
-    FileUtils.mkdir_p @extract_dir, verbose: @fileutils_verbose
+    FileUtils.mkdir_p @extract_dir, verbose: CREW_VERBOSE
 
     build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
     if CREW_CACHE_BUILD && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && (system "cd #{CREW_CACHE_DIR} && sha256sum -c #{build_cachefile}.sha256")
@@ -631,7 +630,7 @@ def unpack(meta)
         system 'tar', "-x#{@verbose}f", *Dir['data.*'], '-C', @extract_dir, exception: true
       when /\.AppImage$/i
         puts "Unpacking 'AppImage' archive, this may take a while..."
-        FileUtils.chmod 0o755, meta[:filename], verbose: @fileutils_verbose
+        FileUtils.chmod 0o755, meta[:filename], verbose: CREW_VERBOSE
         system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
       when /\.gem$/i
         puts "Moving #{@pkg.gem_name} binary gem for install..."
@@ -659,7 +658,7 @@ def unpack(meta)
       target_dir = @extract_dir
     end
     # Remove tarball to save space.
-    FileUtils.rm_f meta[:filename], verbose: @fileutils_verbose if File.file?(meta[:filename])
+    FileUtils.rm_f meta[:filename], verbose: CREW_VERBOSE if File.file?(meta[:filename])
   end
   return File.join(CREW_BREW_DIR, target_dir)
 end
@@ -694,7 +693,7 @@ def build_and_preconfigure(target_dir)
     end
     @pkg.in_build = false
     # wipe crew destdir
-    FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: @fileutils_verbose unless @pkg.superclass.to_s == 'RUBY'
+    FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: CREW_VERBOSE unless @pkg.superclass.to_s == 'RUBY'
     puts 'Preconfiguring package...'
     cache_build if CREW_CACHE_BUILD
     @pkg.install unless @pkg.superclass.to_s == 'RUBY'
@@ -1076,8 +1075,8 @@ def install_package(pkgdir)
     # install filelist, dlist and binary files
     puts 'Performing install...'
 
-    FileUtils.mv 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: @fileutils_verbose
-    FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: @fileutils_verbose
+    FileUtils.mv 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: CREW_VERBOSE
+    FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
 
     unless CREW_NOT_LINKS || @pkg.no_links?
       brokensymlinks = `find . -type l -exec test ! -e {} \\; -print`.chomp
@@ -1213,7 +1212,7 @@ def resolve_dependencies
   puts 'The following packages also need to be installed: '
 
   @dependencies.each do |dep|
-    FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{dep}.rb", CREW_PACKAGES_PATH if !File.file?(File.join(CREW_PACKAGES_PATH, "#{dep}.rb")) && File.file?(File.join(CREW_LOCAL_REPO_ROOT, "packages/#{dep}.rb")) && Package.agree_default_yes("The package file for #{dep}, which is a required dependency to build #{@pkg.name} only exists in #{CREW_LOCAL_REPO_ROOT}/packages/ . Is it ok to copy it to #{CREW_PACKAGES_PATH} so that the build can continue?")
+    FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{dep}.rb", CREW_PACKAGES_PATH if !File.file?(File.join(CREW_PACKAGES_PATH, "#{dep}.rb")) && File.file?(File.join(CREW_LOCAL_REPO_ROOT, "packages/#{dep}.rb")) && (@opt_force || Package.agree_default_yes("The package file for #{dep}, which is a required dependency to build #{@pkg.name} only exists in #{CREW_LOCAL_REPO_ROOT}/packages/ . Is it ok to copy it to #{CREW_PACKAGES_PATH} so that the build can continue?"))
     abort "Dependency #{dep} for #{@pkg.name} was not found.".lightred unless File.file?(File.join(CREW_PACKAGES_PATH, "#{dep}.rb"))
   end
 
@@ -1357,8 +1356,8 @@ def resolve_dependencies_and_build
   ensure
     # cleanup
     unless @opt_keep
-      FileUtils.rm_rf Dir["#{CREW_BREW_DIR}/*"], verbose: @fileutils_verbose
-      FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest", verbose: @fileutils_verbose # this is a little ugly, feel free to find a better way
+      FileUtils.rm_rf Dir["#{CREW_BREW_DIR}/*"], verbose: CREW_VERBOSE
+      FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest", verbose: CREW_VERBOSE # this is a little ugly, feel free to find a better way
     end
   end
   puts "#{@pkg.name.capitalize} is built!".lightgreen
@@ -1506,7 +1505,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       puts "\e[1A\e[KChecking for existing upload ...\r".orange
       if `curl -fsI #{new_url}`.lines.first.split[1] == '200'
         puts "\n#{File.basename(new_tarfile)} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
-        if Package.agree_default_no('Do you want to overwrite the existing upload instead')
+        if @opt_force || Package.agree_default_no('Do you want to overwrite the existing upload instead')
           puts "\e[1A\e[KOverwriting existing upload...\r".orange
           crewlog "#{arch} = #{new_sha256}"
           binary_sha256_hash[arch.to_sym] = new_sha256
@@ -1814,6 +1813,15 @@ def upload_command(args)
   args['<name>'].each do |name|
     search name
     upload(name, @pkg.version, gitlab_token, gitlab_token_username, @pkg.binary_compression)
+  end
+end
+
+def upstream_command(args)
+  args['<name>'].each do |name|
+    search name
+    Dir.chdir CREW_PACKAGES_PATH do
+      system "../tools/version.rb #{name} #{@short_verbose}"
+    end
   end
 end
 
