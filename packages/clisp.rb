@@ -11,8 +11,8 @@ class Clisp < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '4c54894d371e19acc23ac646653e76c9f27c31027bfc62c1114f04ec036f32e0',
+     armv7l: '4c54894d371e19acc23ac646653e76c9f27c31027bfc62c1114f04ec036f32e0',
        i686: 'acd8e9d59a77b3777f0d8071875d57971df39fda44e604ac1ab1f8b13ca27213',
      x86_64: '802d764c61b10b515ac25f7a7299907f464e29b6f911d2c6c0a1e43c2646f72c'
   })
