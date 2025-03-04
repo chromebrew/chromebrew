@@ -16,6 +16,6 @@ jobs:
       - name: YAMLLint
         uses: reviewdog/action-actionlint@v1
         with:
-          actionlint_flags: -ignore 'shellcheck reported issue in this script: SC2129:.+'
+          actionlint_flags: "-ignore 'shellcheck reported issue in this script: SC2129:.+'"
           fail_level: none
           reporter: github-pr-review
