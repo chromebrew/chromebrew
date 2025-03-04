@@ -7,6 +7,7 @@ last_update=$(stat -c %y /usr/local/lib/crew/tests/unit_test_stub.sh)
 echo "Last Updated: ${last_update}"
 stub_mtime=$(stat -c %Y /usr/local/lib/crew/tests/unit_test_stub.sh)
 echo "CHANGED_PACKAGES: ${CHANGED_PACKAGES}"
+echo "NON_PKG_CHANGED_FILES: ${NON_PKG_CHANGED_FILES}"
 cd /usr/local/lib/crew/packages/
 yes | crew update
 yes | crew upgrade
