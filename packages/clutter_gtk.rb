@@ -13,10 +13,17 @@ class Clutter_gtk < Meson
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '41491cec67a670ba413b95d0867e72049cc099a436d40c81f40734d87445c740'
   })
 
   depends_on 'clutter'
   depends_on 'gobject_introspection'
   depends_on 'gtk3'
+  depends_on 'cairo' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'cogl' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'wayland' # R
 end
