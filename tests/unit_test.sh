@@ -10,9 +10,26 @@ rubocop --require rubocop-chromebrew &>/dev/null || gem install rubocop-chromebr
 (cd ~/build_test && yes | CREW_CACHE_ENABLED=1 crew build -vf ~/build_test/packages/hello_world_chromebrew.rb)
 yes | crew install vim
 yes | crew remove vim
-# Check if rake is installed and working, and if not install it.
-rake --help &>/dev/null || gem install rake
-rake -C..
+
+# Only test the core functionality of crew if non-package files were modified.
+if [[ -n ${NON_PKG_CHANGED_FILES-} ]]; then
+  # Check if rake is installed and working, and if not install it.
+  rake --help &>/dev/null || gem install rake
+  # This runs the default rake action, which in our case runs the tests for commands and libraries.
+  rake -C..
+  # Reset to an older version so we can test lib/fixup.rb
+  git reset --hard effb4326b18a8731bee2f4f45010646b82900034
+  # This is a side-effect of resetting to an older version while having newer packages installed-- this is not an issue encountered by users updating from an old version.
+  gem install resolv-replace
+  # epydoc gets deprecated, and dstat gets renamed to py3_dool
+  yes | crew install epydoc dstat
+  yes | crew update
+  echo "Checking that epydoc was removed successfully."
+  crew list installed | grep -vq "epydoc"
+  echo "Checking that dstat was renamed to py3_dool."
+  crew list installed | grep -q "py3_dool"
+fi
+
 if [[ -n ${CHANGED_PACKAGES-} ]]; then
   all_compatible_packages=$(crew list -d compatible)
   all_installed_packages=$(crew list -d installed)
