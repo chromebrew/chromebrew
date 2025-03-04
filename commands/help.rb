@@ -7,18 +7,18 @@ class Command
     when 'build'
       puts <<~EOT
         Build package(s).
-        Usage: crew build [-k|--keep] [-v|--verbose] <package1> [<package2> ...]
+        Usage: crew build [-f|--force] [-k|--keep] [-v|--verbose] <package1> [<package2> ...]
         Build package(s) from source and place the archive and checksum in the `CREW_LOCAL_BUILD_DIR/release/<arch>` directory.
         Build package(s) from source and place the archive and checksum in the current working directory.
+        If `-f` or `--force` is present, interactive prompts will be disabled.
         If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain.
         If `-v` or `--verbose` is present, extra information will be displayed.
       EOT
     when 'check'
       puts <<~EOT
-        Check package(s) for syntax errors, and copy local packages to the chromebrew directory.
+        Check package(s) for syntax errors.
         Usage: crew check [-f|--force] <package1> [<package2> ...]
-        Local packages will be copied to the chromebrew directory if they do not exist there, or if they are different to the chromebrew package files.
-        If `-f` or `--force` is present, packages will be copied without question.
+        If `-f` or `--force` is present, interactive prompts will be disabled.
       EOT
     when 'const'
       puts <<~EOT
@@ -30,7 +30,6 @@ class Command
       puts <<~EOT
         Display dependencies of package(s).
         Usage: crew deps [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] <package1> [<package2> ...]
-
         If `-t` or `--tree` specified, dependencies will be printed in a tree-structure format
         If `-b` or `--include-build-deps` specified, build dependencies will be included in output
         It `--exclude-buildessential` specified, `buildessential` and its dependencies will not be inserted automatically
@@ -52,8 +51,9 @@ class Command
     when 'install'
       puts <<~EOT
         Install package(s).
-        Usage: crew install [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]
+        Usage: crew install [-f|--force] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]
         The package(s) must have a valid name.  Use `crew search <pattern>` to search for packages to install.
+        If `-f` or `--force` is present, interactive prompts will be disabled.
         If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain.
         If `-s` or `--source` is present, the package(s) will be compiled instead of installed via binary.
         If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary.
@@ -84,7 +84,8 @@ class Command
     when 'reinstall'
       puts <<~EOT
         Remove and install package(s).
-        Usage: crew reinstall [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]
+        Usage: crew reinstall [-f|--force] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]
+        If `-f` or `--force` is present, interactive prompts will be disabled.
         If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain.
         If `-s` or `--source` is present, the package(s) will be compiled instead of installed via binary.
         If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary.
@@ -93,8 +94,9 @@ class Command
     when 'remove'
       puts <<~EOT
         Remove package(s).
-        Usage: crew remove [-v|--verbose] <package1> [<package2> ...]
+        Usage: crew remove [-f|--force] [-v|--verbose] <package1> [<package2> ...]
         The package(s) must be currently installed.
+        If `-f` or `--force` is present, interactive prompts will be disabled.
         If `-v` or `--verbose` is present, extra information will be displayed.
       EOT
     when 'search'
@@ -127,20 +129,28 @@ class Command
     when 'upgrade'
       puts <<~EOT
         Update package(s).
-        Usage: crew upgrade [-v|--verbose] [-s|--source] <package1> [<package2> ...]
+        Usage: crew upgrade [-f|--force] [-s|--source] [-v|--verbose] <package1> [<package2> ...]
         If package(s) are omitted, all packages will be updated.  Otherwise, specific package(s) will be updated.
         Use `crew update` to update crew itself.
+        If `-f` or `--force` is present, interactive prompts will be disabled.
         If `-s` or `--source` is present, the package(s) will be compiled instead of upgraded via binary.
         If `-v` or `--verbose` is present, extra information will be displayed.
       EOT
     when 'upload'
       puts <<~EOT
         Upload binaries.
-        Usage: crew upload [<package1> <package2> ...]
+        Usage: crew upload [-f|--force] [-v|--verbose] [<package1> <package2> ...]
         This will update the binary_sha256 hashes in each package and upload binaries to GitLab.
         The GITLAB_TOKEN environment variable must be set to access the upstream repository.
         If no package(s) are provided, all binaries in `#{CREW_LOCAL_REPO_ROOT}/release/<arch>` will be uploaded.
+        If `-f` or `--force` is present, interactive prompts will be disabled.
         If `-v` or `--verbose` is present, additional debug information will be displayed.
+      EOT
+    when 'upstream'
+      puts <<~EOT
+        Check if an upstream version is available for package(s).
+        Usage: crew upstream [-v|--verbose] [<package1> <package2> ...]
+        If `-v` or `--verbose` is present, extra information will be displayed.
       EOT
     when 'version'
       puts <<~EOT
