@@ -11,8 +11,8 @@ class Clutter_gtk < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '5de438b722b6d124a47372f1055cb68b39afc349af9942aba985ee873b03901d',
+     armv7l: '5de438b722b6d124a47372f1055cb68b39afc349af9942aba985ee873b03901d',
      x86_64: '41491cec67a670ba413b95d0867e72049cc099a436d40c81f40734d87445c740'
   })
 
