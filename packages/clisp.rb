@@ -13,7 +13,7 @@ class Clisp < Autotools
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+       i686: 'acd8e9d59a77b3777f0d8071875d57971df39fda44e604ac1ab1f8b13ca27213',
      x86_64: '802d764c61b10b515ac25f7a7299907f464e29b6f911d2c6c0a1e43c2646f72c'
   })
 
