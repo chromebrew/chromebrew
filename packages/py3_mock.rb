@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_mock < Pip
   description 'Mock is a testing library in Python.'
   homepage 'https://mock.readthedocs.org/'
-  version "5.1.0-#{CREW_PY_VER}"
+  version "5.2.0-#{CREW_PY_VER}"
   license 'BSD-2'
   compatibility 'all'
   source_url 'SKIP'
