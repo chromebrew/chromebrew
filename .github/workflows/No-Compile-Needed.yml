@@ -87,12 +87,13 @@ jobs:
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         run: |
+
             # If a package has 'no_compile_needed', add it to NO_COMPILE_PACKAGES.
-            NO_COMPILE_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]no_compile_needed" packages/${i}.rb && echo ${i}; done | xargs)"
+            NO_COMPILE_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]no_compile_needed" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export NO_COMPILE_PACKAGES
             if [[ -n ${NO_COMPILE_PACKAGES} ]]; then
-              echo "NO_COMPILE_PACKAGES=${NO_COMPILE_PACKAGES}" >> $GITHUB_ENV
-              echo "NO_COMPILE_PACKAGES=${NO_COMPILE_PACKAGES}" >> $GITHUB_OUTPUT
+              echo "NO_COMPILE_PACKAGES=${NO_COMPILE_PACKAGES}" >> "$GITHUB_ENV"
+              echo "NO_COMPILE_PACKAGES=${NO_COMPILE_PACKAGES}" >> "$GITHUB_OUTPUT"
               echo "Branch ${{ env.BRANCH }} has these no_compile_needed packages: ${NO_COMPILE_PACKAGES}"
             else
               echo "Branch ${{ env.BRANCH }} is missing no_compile_needed packages that require updates."

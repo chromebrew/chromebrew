@@ -14,7 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: YAMLLint
-        uses: reviewdog/action-actionlint@6612efe1589ccf23cb1320d11fced44b86fb5ad7  # Post v1.7.4 commit to support fail_level
+        uses: reviewdog/action-actionlint@v1
         with:
+          actionlint_flags: -ignore 'shellcheck reported issue in this script: SC2129:.+'
           fail_level: none
           reporter: github-pr-review
