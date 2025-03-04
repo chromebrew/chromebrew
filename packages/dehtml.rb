@@ -11,8 +11,8 @@ class Dehtml < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '949bb24173f0339c6ea0ba0878862ba730d5dd20ad76f8f95c4f6961297a33c7',
+     armv7l: '949bb24173f0339c6ea0ba0878862ba730d5dd20ad76f8f95c4f6961297a33c7',
        i686: 'eb13507fc8eb05871a4af0fc5a67399bed4aaddb963e36d4d77f13ffb2af4da6',
      x86_64: '5788fbdec1e02e91412c869b23b813144894e4a2715faa865f1f0421dc7c6315'
   })
