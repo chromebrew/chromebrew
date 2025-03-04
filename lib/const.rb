@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 require 'etc'
-
+# are the   new containers here yet?
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
 CREW_VERSION ||= '1.57.3' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
