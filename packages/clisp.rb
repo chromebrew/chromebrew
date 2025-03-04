@@ -1,40 +1,32 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Clisp < Package
+class Clisp < Autotools
   description 'ANSI Common Lisp compiler, interpreter and debugger.'
-  homepage 'http://www.gnu.org/software/clisp/'
-  version '2.49-3'
-  license 'GPL-2'
-  compatibility 'i686 x86_64'
-  source_url 'https://ftpmirror.gnu.org/clisp/release/2.49/clisp-2.49.tar.bz2'
-  source_sha256 '8132ff353afaa70e6b19367a25ae3d5a43627279c25647c220641fed00f8e890'
-  binary_compression 'tar.xz'
+  homepage 'https://www.gnu.org/software/clisp/'
+  version '2.49-c3ec11b'
+  license 'GPL-2+'
+  compatibility 'all'
+  source_url 'https://gitlab.com/gnu-clisp/clisp.git'
+  git_hashtag 'c3ec11bab87cfdbeba01523ed88ac2a16b22304d'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '1b05410ad735f382877d134eea7d26842de2e10fe028a6b3ca78f1774ab5c9e8',
-     x86_64: '7d64a5724ef656764f35ce48dca877a9f9e75842a1a420fde21d12c8bf2f5489'
+    aarch64: '4c54894d371e19acc23ac646653e76c9f27c31027bfc62c1114f04ec036f32e0',
+     armv7l: '4c54894d371e19acc23ac646653e76c9f27c31027bfc62c1114f04ec036f32e0',
+       i686: 'acd8e9d59a77b3777f0d8071875d57971df39fda44e604ac1ab1f8b13ca27213',
+     x86_64: '802d764c61b10b515ac25f7a7299907f464e29b6f911d2c6c0a1e43c2646f72c'
   })
 
+  depends_on 'glibc' # R
   depends_on 'libffcall'
+  depends_on 'libsigsegv' # R
+  depends_on 'libunistring' # R
+  depends_on 'ncurses' # R
+  depends_on 'readline'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-static',
-           '--with-pic',
-           '--with-ffcall',
-           '--with-readline'
-    FileUtils.cd('src') do
-      # disable unavailable "-R" option, modifying configure options doesn't work
-      system 'sed', '-i', 'Makefile', '-e', "s:-R#{CREW_LIB_PREFIX} ::"
-      system 'make', '-j1' # parallel builds fail
-    end
+    system "./configure --fsstnd=gnu --enable-portability #{CREW_CONFIGURE_OPTIONS.sub(/--program-prefix.*/, '')}"
   end
 
-  def self.install
-    FileUtils.cd('src') do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  run_tests
 end
