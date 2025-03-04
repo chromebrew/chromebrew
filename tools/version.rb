@@ -2,7 +2,7 @@
 
 if ARGV.include?('-h') || ARGV.include?('--help')
   abort <<~EOM
-    Usage: ./version.rb [<package>] [-h, --help, -v, --verbose]
+    Usage: ./version.rb [<package>] [-h, --help, -n, --no-header, -v, --verbose]
     Example: ./version.rb abcde -v
     The <package> can contain '*': ./version.rb xorg_*
     If <package> is omitted, all packages will be checked.
@@ -104,8 +104,10 @@ else
 end
 
 if filelist.length.positive?
-  puts "#{'Package'.ljust(35)}#{'Status'.ljust(20)}#{'Current'.ljust(20)}Upstream"
-  puts "#{'-------'.ljust(35)}#{'------'.ljust(20)}#{'-------'.ljust(20)}--------"
+  unless ARGV.include?('-n') || ARGV.include?('--no-header')
+    puts "#{'Package'.ljust(35)}#{'Status'.ljust(20)}#{'Current'.ljust(20)}Upstream"
+    puts "#{'-------'.ljust(35)}#{'------'.ljust(20)}#{'-------'.ljust(20)}--------"
+  end
   filelist.each do |filename|
     pkg = Package.load_package(filename)
     # Instead of typing out the name of every python package, we just use a regex here.

@@ -1817,10 +1817,13 @@ def upload_command(args)
 end
 
 def upstream_command(args)
+  puts "#{'Package'.ljust(35)}#{'Status'.ljust(20)}#{'Current'.ljust(20)}Upstream"
+  puts "#{'-------'.ljust(35)}#{'------'.ljust(20)}#{'-------'.ljust(20)}--------"
   args['<name>'].each do |name|
+    name.gsub!('.rb', '')
     search name
     Dir.chdir CREW_PACKAGES_PATH do
-      system "../tools/version.rb #{name} #{@short_verbose}"
+      system "../tools/version.rb #{name} #{@short_verbose} -n"
     end
   end
 end
