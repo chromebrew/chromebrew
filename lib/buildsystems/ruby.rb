@@ -111,6 +111,8 @@ class RUBY < Package
   end
 
   def self.install
+    # @install_gem will always be true during upgrades since we remove
+    # the old gem during the upgrade.
     unless @install_gem
       puts "#{@gem_name} #{@gem_installed_version} is properly installed.".lightgreen
       return
@@ -122,6 +124,12 @@ class RUBY < Package
       @gem_outdated = (Gem::Version.new(@gem_version) > Gem::Version.new(@gem_installed_version))
       @gem_latest_version_installed = Gem::Version.new(@gem_version) <= Gem::Version.new(@gem_installed_version)
       crewlog "@gem_version: #{@gem_version} @gem_installed_version: #{@gem_installed_version} @gem_outdated: #{@gem_outdated} @gem_latest_version_installed: #{@gem_latest_version_installed}"
+    else
+      # If the current gem being installed is not installed this should
+      # be false. This will also handle cases of the current installed
+      # gem as per 'gem list' being the same version as the version
+      # being upgraded to.
+      @gem_latest_version_installed = false
     end
 
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"

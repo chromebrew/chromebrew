@@ -16,12 +16,12 @@ class Command
     end
 
     # Use rubocop to sanitize package file, and let errors get flagged.
-    if PackageUtils.installed?('ruby_rubocop')
+    if Kernel.system('rubocop --version', %i[out err] => File::NULL)
       puts "Using rubocop to sanitize #{local_package}".orange
       system "rubocop -c #{File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')} -A #{local_package}", exception: true
     else
       puts "Rubocop is not installed, and thus will not be used to sanitize #{local_package}".lightred
-      puts 'To install Rubocop, run the following command: '.lightred + 'crew install ruby_rubocop'.lightblue
+      puts 'To install Rubocop, run the following command: '.lightred + "crew #{PackageUtils.installed?('ruby_rubocop') ? 're' : ''}install ruby_rubocop".lightblue
     end
 
     to_copy = force
