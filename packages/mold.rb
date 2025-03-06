@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Mold < CMake
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '2.36.0'
+  version '2.37.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
