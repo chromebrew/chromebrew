@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Mold < CMake
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '2.37.0'
+  version '2.36.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
@@ -14,10 +14,10 @@ class Mold < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2a8fbccc5cf4e2165d13829a9958e5a7c6c380b431bcb3352a58f9cf3f4d06da',
-     armv7l: '2a8fbccc5cf4e2165d13829a9958e5a7c6c380b431bcb3352a58f9cf3f4d06da',
-       i686: '9a0d7fb3683da386de8f5ff38e1b67205d76c17d41790dae0c613d65fc209ec2',
-     x86_64: 'cf54dbd6b62bc1b92efc327df3f6cf276c953ede755e77f0d807d4371d2f8e05'
+    aarch64: 'f45ef14dadeef98f8eb67c5344079a7de4d17cd58337f9447c24ae27b6c16edb',
+     armv7l: 'f45ef14dadeef98f8eb67c5344079a7de4d17cd58337f9447c24ae27b6c16edb',
+       i686: '930dfb2834f480394d1f7efad0775d8dafa92422448af7a00087484e00ac4d5d',
+     x86_64: 'f6b057ddca759d2a61dda9d4051049622722297df3b1a2a82ceff4922c562d5a'
   })
 
   depends_on 'gcc_lib' # R
