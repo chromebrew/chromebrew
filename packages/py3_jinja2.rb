@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_jinja2 < Pip
   description 'Jinja2 is a very fast and expressive template engine.'
   homepage 'https://jinja.palletsprojects.com/'
-  version "3.1.5-#{CREW_PY_VER}"
+  version "3.1.6-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
