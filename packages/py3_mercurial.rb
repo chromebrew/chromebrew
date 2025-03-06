@@ -10,8 +10,8 @@ class Py3_mercurial < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ea70b97bd8d0810f00cbd1f7fdbe91554eb93d1ca1b74a62f2ad5e910f5546a3',
-     armv7l: 'ea70b97bd8d0810f00cbd1f7fdbe91554eb93d1ca1b74a62f2ad5e910f5546a3',
+    aarch64: 'd87fdd561582144f4d8f8d5b4af05d527efede7504425904915de79be8c9a262',
+     armv7l: 'd87fdd561582144f4d8f8d5b4af05d527efede7504425904915de79be8c9a262',
      x86_64: '1d79cf74facbd89c2c8a117876a8864519f604559b1fa5f5f55107c9c122a733'
   })
 
