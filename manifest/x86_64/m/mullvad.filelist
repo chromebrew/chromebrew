@@ -189,8 +189,6 @@
 /usr/local/share/mullvad/libsoftokn3.so
 /usr/local/share/mullvad/libssl3.so
 /usr/local/share/mullvad/libstdc++/libstdc++.so.6
-/usr/local/share/mullvad/libstdc++/libstdc++.so.6.0.28
-/usr/local/share/mullvad/libstdc++/libstdc++.so.6.0.28-gdb.py
 /usr/local/share/mullvad/libxul.so
 /usr/local/share/mullvad/mullvadbrowser
 /usr/local/share/mullvad/mullvadbrowser.real
