@@ -14,8 +14,8 @@ class Mold < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f45ef14dadeef98f8eb67c5344079a7de4d17cd58337f9447c24ae27b6c16edb',
-     armv7l: 'f45ef14dadeef98f8eb67c5344079a7de4d17cd58337f9447c24ae27b6c16edb',
+    aarch64: '2a8fbccc5cf4e2165d13829a9958e5a7c6c380b431bcb3352a58f9cf3f4d06da',
+     armv7l: '2a8fbccc5cf4e2165d13829a9958e5a7c6c380b431bcb3352a58f9cf3f4d06da',
        i686: '9a0d7fb3683da386de8f5ff38e1b67205d76c17d41790dae0c613d65fc209ec2',
      x86_64: 'cf54dbd6b62bc1b92efc327df3f6cf276c953ede755e77f0d807d4371d2f8e05'
   })
