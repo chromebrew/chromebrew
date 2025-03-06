@@ -137,6 +137,8 @@
 /usr/local/share/cursor/resources/app/extensions/cursor-always-local/scripts/tsc-some-files.sh
 /usr/local/share/cursor/resources/app/extensions/cursor-always-local/tsconfig.json
 /usr/local/share/cursor/resources/app/extensions/cursor-retrieval/README.md
+/usr/local/share/cursor/resources/app/extensions/cursor-retrieval/dist/832.main.js
+/usr/local/share/cursor/resources/app/extensions/cursor-retrieval/dist/868.main.js
 /usr/local/share/cursor/resources/app/extensions/cursor-retrieval/dist/main.js
 /usr/local/share/cursor/resources/app/extensions/cursor-retrieval/dist/main.js.LICENSE.txt
 /usr/local/share/cursor/resources/app/extensions/cursor-retrieval/icons/css.png
@@ -791,6 +793,12 @@
 /usr/local/share/cursor/resources/app/extensions/theme-anysphere/package.nls.json
 /usr/local/share/cursor/resources/app/extensions/theme-anysphere/themes/anysphere-theme.json
 /usr/local/share/cursor/resources/app/extensions/theme-anysphere/themes/fleet-theme.json
+/usr/local/share/cursor/resources/app/extensions/theme-cursor/CHANGELOG.md
+/usr/local/share/cursor/resources/app/extensions/theme-cursor/README.md
+/usr/local/share/cursor/resources/app/extensions/theme-cursor/package.json
+/usr/local/share/cursor/resources/app/extensions/theme-cursor/themes/Cursor Dark Anysphere-color-theme.json
+/usr/local/share/cursor/resources/app/extensions/theme-cursor/themes/Cursor Dark High Contrast-color-theme.json
+/usr/local/share/cursor/resources/app/extensions/theme-cursor/themes/Cursor Dark Midnight-color-theme.json
 /usr/local/share/cursor/resources/app/extensions/theme-defaults/fileicons/images/cursor_mini.svg
 /usr/local/share/cursor/resources/app/extensions/theme-defaults/fileicons/images/cursor_mini_light.svg
 /usr/local/share/cursor/resources/app/extensions/theme-defaults/fileicons/images/document-dark.svg
@@ -4740,7 +4748,6 @@
 /usr/local/share/cursor/resources/app/node_modules/node-abi/abi_registry.json
 /usr/local/share/cursor/resources/app/node_modules/node-abi/index.js
 /usr/local/share/cursor/resources/app/node_modules/node-abi/package.json
-/usr/local/share/cursor/resources/app/node_modules/node-abi/scripts/update-abi-registry.js
 /usr/local/share/cursor/resources/app/node_modules/node-fetch/LICENSE.md
 /usr/local/share/cursor/resources/app/node_modules/node-fetch/browser.js
 /usr/local/share/cursor/resources/app/node_modules/node-fetch/lib/index.es.js
@@ -5677,6 +5684,8 @@
 /usr/local/share/cursor/usr/share/cursor/resources/app/extensions/cursor-always-local/scripts/tsc-some-files.sh
 /usr/local/share/cursor/usr/share/cursor/resources/app/extensions/cursor-always-local/tsconfig.json
 /usr/local/share/cursor/usr/share/cursor/resources/app/extensions/cursor-retrieval/README.md
+/usr/local/share/cursor/usr/share/cursor/resources/app/extensions/cursor-retrieval/dist/832.main.js
+/usr/local/share/cursor/usr/share/cursor/resources/app/extensions/cursor-retrieval/dist/868.main.js
 /usr/local/share/cursor/usr/share/cursor/resources/app/extensions/cursor-retrieval/dist/main.js
 /usr/local/share/cursor/usr/share/cursor/resources/app/extensions/cursor-retrieval/dist/main.js.LICENSE.txt
 /usr/local/share/cursor/usr/share/cursor/resources/app/extensions/cursor-retrieval/icons/css.png
@@ -6331,6 +6340,12 @@
 /usr/local/share/cursor/usr/share/cursor/resources/app/extensions/theme-anysphere/package.nls.json
 /usr/local/share/cursor/usr/share/cursor/resources/app/extensions/theme-anysphere/themes/anysphere-theme.json
 /usr/local/share/cursor/usr/share/cursor/resources/app/extensions/theme-anysphere/themes/fleet-theme.json
+/usr/local/share/cursor/usr/share/cursor/resources/app/extensions/theme-cursor/CHANGELOG.md
+/usr/local/share/cursor/usr/share/cursor/resources/app/extensions/theme-cursor/README.md
+/usr/local/share/cursor/usr/share/cursor/resources/app/extensions/theme-cursor/package.json
+/usr/local/share/cursor/usr/share/cursor/resources/app/extensions/theme-cursor/themes/Cursor Dark Anysphere-color-theme.json
+/usr/local/share/cursor/usr/share/cursor/resources/app/extensions/theme-cursor/themes/Cursor Dark High Contrast-color-theme.json
+/usr/local/share/cursor/usr/share/cursor/resources/app/extensions/theme-cursor/themes/Cursor Dark Midnight-color-theme.json
 /usr/local/share/cursor/usr/share/cursor/resources/app/extensions/theme-defaults/fileicons/images/cursor_mini.svg
 /usr/local/share/cursor/usr/share/cursor/resources/app/extensions/theme-defaults/fileicons/images/cursor_mini_light.svg
 /usr/local/share/cursor/usr/share/cursor/resources/app/extensions/theme-defaults/fileicons/images/document-dark.svg
@@ -10280,7 +10295,6 @@
 /usr/local/share/cursor/usr/share/cursor/resources/app/node_modules/node-abi/abi_registry.json
 /usr/local/share/cursor/usr/share/cursor/resources/app/node_modules/node-abi/index.js
 /usr/local/share/cursor/usr/share/cursor/resources/app/node_modules/node-abi/package.json
-/usr/local/share/cursor/usr/share/cursor/resources/app/node_modules/node-abi/scripts/update-abi-registry.js
 /usr/local/share/cursor/usr/share/cursor/resources/app/node_modules/node-fetch/LICENSE.md
 /usr/local/share/cursor/usr/share/cursor/resources/app/node_modules/node-fetch/browser.js
 /usr/local/share/cursor/usr/share/cursor/resources/app/node_modules/node-fetch/lib/index.es.js
