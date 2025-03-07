@@ -18,8 +18,8 @@
 /usr/local/lib/distcc/bin/cc
 /usr/local/lib/distcc/bin/clang
 /usr/local/lib/distcc/bin/clang++
-/usr/local/lib/distcc/bin/clang++-19
-/usr/local/lib/distcc/bin/clang-19
+/usr/local/lib/distcc/bin/clang++-20
+/usr/local/lib/distcc/bin/clang-20
 /usr/local/lib/distcc/bin/cpp
 /usr/local/lib/distcc/bin/g++
 /usr/local/lib/distcc/bin/gcc
@@ -101,7 +101,6 @@
 /usr/local/share/doc/distcc/protocol-gssapi.txt
 /usr/local/share/doc/distcc/reporting-bugs.txt
 /usr/local/share/doc/distcc/status-1.txt
-/usr/local/share/doc/distcc/survey.txt
 /usr/local/share/man/man1/distcc.1.zst
 /usr/local/share/man/man1/distccd.1.zst
 /usr/local/share/man/man1/distccmon-text.1.zst

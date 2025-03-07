@@ -24,7 +24,7 @@ class Llvm20_build < Package
   depends_on 'libedit' # R
   depends_on 'libffi' # R
   depends_on 'libxml2' # R
-  depends_on 'llvm19_dev' => :build
+  depends_on 'llvm20_dev' => :build
   depends_on 'ocaml' => :build
   depends_on 'py3_pygments' => :build
   depends_on 'py3_pyyaml' => :build

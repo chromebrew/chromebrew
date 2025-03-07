@@ -2,32 +2,32 @@
 # https://github.com/archlinux/svntogit-packages/raw/packages/openmp/trunk/PKGBUILD
 
 require 'package'
-Package.load_package("#{__dir__}/llvm19_build.rb")
+Package.load_package("#{__dir__}/llvm20_build.rb")
 
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '19.1.7'
+  version '20.1.0'
   # When upgrading llvm_build*, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm19_build.version}".orange if version != Llvm19_build.version
+  puts "#{self} version differs from llvm version #{Llvm20_build.version}".orange if version != Llvm20_build.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
-  git_hashtag Llvm19_build.git_hashtag.to_s
+  git_hashtag Llvm20_build.git_hashtag.to_s
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '175720de5021c89293f7eefdc49425a6f06db9e0c32a539ec9ef7a46f3084269',
-     armv7l: '175720de5021c89293f7eefdc49425a6f06db9e0c32a539ec9ef7a46f3084269',
-       i686: '2696bf37eb9def0e95c86a65043b5d1470901f38e00d4f61d7594c54b7d7ed74',
-     x86_64: 'ff5a8ac6993de06fc2f6e41568007b2d2207dee6d8825e3528e9a32df8540d3d'
+    aarch64: 'ed9d0fe0dac4215d2d16f471042b46ef9d968076770b826090a574887690eb3d',
+     armv7l: 'ed9d0fe0dac4215d2d16f471042b46ef9d968076770b826090a574887690eb3d',
+       i686: '17d23516f44d2d852efb603a64be325a4a8cbe3d11de0fdb28969fe04cc2ef10',
+     x86_64: '738d2a514c65273469d5402a47c588e17ae6ecde451846e93e5ae7671b8cdc69'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libffi' # R
-  depends_on 'llvm19_dev' => :build
-  depends_on 'llvm19_lib' # R
+  depends_on 'llvm20_dev' => :build
+  depends_on 'llvm20_lib' # R
   depends_on 'python3' # R
 
   no_env_options
