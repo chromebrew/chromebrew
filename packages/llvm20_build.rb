@@ -13,8 +13,8 @@ class Llvm20_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cd09dd5b65ed449d2ea1ba42ad6e2ca1e5965a9aa29eebfe67806001381a1635',
-     armv7l: 'cd09dd5b65ed449d2ea1ba42ad6e2ca1e5965a9aa29eebfe67806001381a1635',
+    aarch64: '7518f6c15d13866f9144a231b10cdc6b1995067d859651c03ff9e733a015d84a',
+     armv7l: '7518f6c15d13866f9144a231b10cdc6b1995067d859651c03ff9e733a015d84a',
        i686: 'ae2f5da8b17d4b5c77afe6b3b057d6bdf204e8465600cf5cae65334ed2cacc4a',
      x86_64: '1d467898066e233a33b5794c8549868629cc7ecd8942daf4bf491f7b6093636d'
   })
