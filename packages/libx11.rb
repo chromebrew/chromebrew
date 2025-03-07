@@ -23,6 +23,6 @@ class Libx11 < Autotools
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
   depends_on 'libxtrans' => :build
-  depends_on 'llvm19_lib' => :build
+  depends_on 'llvm20_lib' => :build
   depends_on 'xorg_proto' => :build
 end

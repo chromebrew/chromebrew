@@ -1,15 +1,15 @@
 require 'package'
-Package.load_package("#{__dir__}/llvm19_build.rb")
+Package.load_package("#{__dir__}/llvm20_build.rb")
 
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
-  homepage Llvm19_build.homepage
-  version Llvm19_build.version
-  license Llvm19_build.license
-  compatibility Llvm19_build.compatibility
+  homepage Llvm20_build.homepage
+  version Llvm20_build.version
+  license Llvm20_build.license
+  compatibility Llvm20_build.compatibility
 
   is_fake
 
-  depends_on 'llvm19_lib'
-  depends_on 'llvm19_dev'
+  depends_on 'llvm20_lib'
+  depends_on 'llvm20_dev'
 end
