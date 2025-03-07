@@ -3,5 +3,5 @@
 /usr/local/include/LLVMSPIRVLib/LLVMSPIRVLib.h
 /usr/local/include/LLVMSPIRVLib/LLVMSPIRVOpts.h
 /usr/local/lib64/libLLVMSPIRVLib.so
-/usr/local/lib64/libLLVMSPIRVLib.so.19.1
+/usr/local/lib64/libLLVMSPIRVLib.so.20.1
 /usr/local/lib64/pkgconfig/LLVMSPIRVLib.pc

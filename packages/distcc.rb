@@ -6,18 +6,18 @@ require 'buildsystems/autotools'
 class Distcc < Autotools
   description 'Distributed compilation service for C, C++ and Objective-C'
   homepage 'https://github.com/distcc/distcc'
-  version "3.4-8a29066-#{CREW_PY_VER}"
+  version "3.4-66bf4c5-#{CREW_PY_VER}"
   license 'GPL'
   compatibility 'all'
   source_url 'https://github.com/distcc/distcc.git'
-  git_hashtag '8a290663389a705390328195201835127044aefc'
+  git_hashtag '66bf4c56f6af2243c48748139c078f4f01cd639b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '252a5366763cf8f460a3e1ff585f9ea54fcd355ae960db80f667deec39aab710',
-     armv7l: '252a5366763cf8f460a3e1ff585f9ea54fcd355ae960db80f667deec39aab710',
-       i686: '8ce5a2306bafd89d108091a74e0744e042e51217a674c8ce8f9bc40a4fdaba43',
-     x86_64: '1c36aaf7393d499f5de9907d9cd952a9504956c3a436657be43571adddfce9cf'
+    aarch64: 'b5d2f81f8e99e02e054120bad68e5c2b9c80ed6f5958cd3f9b4e15e70582e571',
+     armv7l: 'b5d2f81f8e99e02e054120bad68e5c2b9c80ed6f5958cd3f9b4e15e70582e571',
+       i686: '039753f5822c3423d6c1d32c4531192926a436698fc736afa142a79f49543222',
+     x86_64: '9af2c1be59758ec607e0ec7205049c0e04c4687c3eab473dc1a966c9d36df2ce'
   })
 
   depends_on 'avahi' # R
@@ -26,8 +26,8 @@ class Distcc < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'llvm19_dev' # L
-  depends_on 'llvm19_lib' # R
+  depends_on 'llvm20_dev' # L
+  depends_on 'llvm20_lib' # R
   depends_on 'nss_mdns' # R
   depends_on 'popt' # R
   depends_on 'python3' => :build

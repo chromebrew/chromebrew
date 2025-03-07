@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version '25.0.0-llvm19'
+  version '25.0.1-llvm20'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -11,9 +11,9 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd58bdda1aaa1e8de1a9f54c6b7f2ba8bbddbc07922c4b63a5f8493aca7c9a5fd',
-     armv7l: 'd58bdda1aaa1e8de1a9f54c6b7f2ba8bbddbc07922c4b63a5f8493aca7c9a5fd',
-     x86_64: 'a3fd3aba768c440443d3f53fc77a969b230a6cd41cc9eca11cb7b47bf2267c0a'
+    aarch64: 'c43c2cd237dbaaf0d95f0c5f806ae4bf194af137e3c78b14a6c74eb398ed229b',
+     armv7l: 'c43c2cd237dbaaf0d95f0c5f806ae4bf194af137e3c78b14a6c74eb398ed229b',
+     x86_64: '5606f12739121c63c03eb62aea1ae53f6669ee13b2b4d011ca7946d641d28ae3'
   })
 
   depends_on 'elfutils' # R
@@ -40,8 +40,8 @@ class Mesa < Meson
   depends_on 'libxshmfence' # R
   depends_on 'libxv' => :build
   depends_on 'libxxf86vm' # R
-  depends_on 'llvm19_dev' => :build
-  depends_on 'llvm19_lib' # R
+  depends_on 'llvm20_dev' => :build
+  depends_on 'llvm20_lib' # R
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako' => :build
   depends_on 'py3_ply' => :build
@@ -89,5 +89,10 @@ class Mesa < Meson
         FileUtils.ln_s '../../libgbm.so', 'pvr_gbm.so'
       end
     end
+  end
+
+  def self.patch
+    # Currently build is locked to use the older version of the spirv_llvm_translator.
+    system "sed -i \"s#'< @0@.@1@'.format(chosen_llvm_version_major, chosen_llvm_version_minor + 1) ]#'< @0@.@1@'.format(chosen_llvm_version_major + 1, chosen_llvm_version_minor + 1) ]#\" meson.build"
   end
 end

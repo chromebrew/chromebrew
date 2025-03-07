@@ -2,27 +2,27 @@
 # https://github.com/archlinux/svntogit-packages/raw/packages/libclc/trunk/PKGBUILD
 
 require 'package'
-Package.load_package("#{__dir__}/llvm19_build.rb")
+Package.load_package("#{__dir__}/llvm20_build.rb")
 
 class Libclc < Package
   description 'Library requirements of the OpenCL C programming language'
   homepage 'https://libclc.llvm.org/'
-  version '19.1.7'
+  version '20.1.0'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm19_build.version}".orange if version != Llvm19_build.version
+  puts "#{self} version differs from llvm version #{Llvm20_build.version}".orange if version != Llvm20_build.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/llvm/llvm-project.git'
-  git_hashtag Llvm19_build.git_hashtag.to_s
+  git_hashtag Llvm20_build.git_hashtag.to_s
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '375bc8d3f390505ff0e0dcaa4dc376a43a3a0aeb8ac5356aebe86e43d83031bb',
-     armv7l: '375bc8d3f390505ff0e0dcaa4dc376a43a3a0aeb8ac5356aebe86e43d83031bb',
-     x86_64: 'd28083f965662214cf319e37c85d68a5722b1a3f03526fea3aa7988a999e8d7d'
+    aarch64: 'c6efc090063d0e1d8eee1c7e989d2036b6fbcfaf57d436b651c048d4fcfecc85',
+     armv7l: 'c6efc090063d0e1d8eee1c7e989d2036b6fbcfaf57d436b651c048d4fcfecc85',
+     x86_64: 'f10ad8c159e96697b5e94b27deb240635550cfc31aa1b10f6b82d054a18416df'
   })
 
-  depends_on 'llvm19_dev' => :build
+  depends_on 'llvm20_dev' => :build
   depends_on 'python3' => :build
   depends_on 'sccache' => :build
   depends_on 'spirv_llvm_translator' => :build

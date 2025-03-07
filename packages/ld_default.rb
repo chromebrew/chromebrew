@@ -8,7 +8,7 @@ class Ld_default < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'llvm19_dev'
+  depends_on 'llvm20_dev'
 
   no_binaries_needed
 

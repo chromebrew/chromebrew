@@ -21,7 +21,7 @@ class Libxext < Autotools
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
-  depends_on 'llvm19_lib' => :build
+  depends_on 'llvm20_lib' => :build
   depends_on 'xmlto' => :build
   depends_on 'xorg_proto' # R
 

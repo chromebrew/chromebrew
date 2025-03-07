@@ -33,7 +33,7 @@ class Gspell < Meson
   depends_on 'icu4c' # R
   depends_on 'iso_codes' => :build
   depends_on 'libxml2' => :build
-  depends_on 'llvm19_lib' => :build
+  depends_on 'llvm20_lib' => :build
   depends_on 'ncurses' => :build
   depends_on 'pango' # R
   depends_on 'vala' => :build

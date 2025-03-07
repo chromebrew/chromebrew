@@ -3,17 +3,17 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20240607-llvm19'
+  version '20241107-llvm20'
   license 'BSD-Google'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
-  git_hashtag 'a65f3009b2b7b55639760db376581ec146df3210'
+  git_hashtag '984b27ad47ee08178a3128d5c7e96eb109fe09da'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ae2a47dfef8f9c7df63ab669685c0d5cfd03bb80961bf09d5de814f4a8fc4ef9',
-     armv7l: 'ae2a47dfef8f9c7df63ab669685c0d5cfd03bb80961bf09d5de814f4a8fc4ef9',
-     x86_64: '668973a968b48a269f506bf4b9fcd81069f8c755fcb9771c112377e966ff2525'
+    aarch64: '58e02eb1d7e00dd9cf05bd61de72370f7b2eb294822b5edd94296aa32beb2e9e',
+     armv7l: '58e02eb1d7e00dd9cf05bd61de72370f7b2eb294822b5edd94296aa32beb2e9e',
+     x86_64: '72b21f065064de71858f5ddd65fa8002405c5e84357604e7c5857f4570efdf50'
   })
 
   depends_on 'gcc_lib' # R
@@ -24,8 +24,8 @@ class Sommelier < Package
   depends_on 'libxcvt'
   depends_on 'libxfixes' => :build
   depends_on 'libxkbcommon' # R
-  depends_on 'llvm19_dev' => :build
-  depends_on 'llvm19_lib' # R Note that this may need rebuilds for newer llvm versions.
+  depends_on 'llvm20_dev' => :build
+  depends_on 'llvm20_lib' # R Note that this may need rebuilds for newer llvm versions.
   depends_on 'mesa' # R
   depends_on 'pixman' # R
   depends_on 'procps' # for pgrep in wrapper script

@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.39'
+  version '1.40'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -100,8 +100,8 @@ class Buildessential < Package
 
   # LLVM
   # This can be pulled in on a per-package basis...
-  # depends_on 'llvm19_dev'
-  depends_on 'llvm19_lib' # This provides llvm-strip
+  # depends_on 'llvm20_dev'
+  depends_on 'llvm20_lib' # This provides llvm-strip
 
   # Meson build system
   depends_on 'py3_meson'

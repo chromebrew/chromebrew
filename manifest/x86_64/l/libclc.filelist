@@ -55,9 +55,7 @@
 /usr/local/include/clc/cl_khr_local_int32_extended_atomics/atom_or.h
 /usr/local/include/clc/cl_khr_local_int32_extended_atomics/atom_xor.h
 /usr/local/include/clc/clc.h
-/usr/local/include/clc/clcfunc.h
 /usr/local/include/clc/clcmacros.h
-/usr/local/include/clc/clctypes.h
 /usr/local/include/clc/common/degrees.h
 /usr/local/include/clc/common/degrees.inc
 /usr/local/include/clc/common/mix.h
@@ -83,7 +81,6 @@
 /usr/local/include/clc/geometric/fast_length.inc
 /usr/local/include/clc/geometric/fast_normalize.h
 /usr/local/include/clc/geometric/fast_normalize.inc
-/usr/local/include/clc/geometric/floatn.inc
 /usr/local/include/clc/geometric/length.h
 /usr/local/include/clc/geometric/length.inc
 /usr/local/include/clc/geometric/normalize.h
@@ -99,7 +96,6 @@
 /usr/local/include/clc/integer/clz.h
 /usr/local/include/clc/integer/clz.inc
 /usr/local/include/clc/integer/definitions.h
-/usr/local/include/clc/integer/gentype.inc
 /usr/local/include/clc/integer/hadd.h
 /usr/local/include/clc/integer/hadd.inc
 /usr/local/include/clc/integer/integer-gentype.inc
@@ -132,7 +128,6 @@
 /usr/local/include/clc/math/atan2pi.h
 /usr/local/include/clc/math/atanh.h
 /usr/local/include/clc/math/atanpi.h
-/usr/local/include/clc/math/binary_decl.inc
 /usr/local/include/clc/math/binary_decl_tt.inc
 /usr/local/include/clc/math/cbrt.h
 /usr/local/include/clc/math/ceil.h
@@ -157,7 +152,6 @@
 /usr/local/include/clc/math/fract.inc
 /usr/local/include/clc/math/frexp.h
 /usr/local/include/clc/math/frexp.inc
-/usr/local/include/clc/math/gentype.inc
 /usr/local/include/clc/math/half_cos.h
 /usr/local/include/clc/math/half_divide.h
 /usr/local/include/clc/math/half_exp.h
@@ -228,18 +222,14 @@
 /usr/local/include/clc/math/tan.h
 /usr/local/include/clc/math/tanh.h
 /usr/local/include/clc/math/tanpi.h
-/usr/local/include/clc/math/ternary_decl.inc
 /usr/local/include/clc/math/tgamma.h
 /usr/local/include/clc/math/trunc.h
-/usr/local/include/clc/math/unary_decl.inc
 /usr/local/include/clc/misc/shuffle.h
 /usr/local/include/clc/misc/shuffle2.h
 /usr/local/include/clc/relational/all.h
 /usr/local/include/clc/relational/any.h
-/usr/local/include/clc/relational/binary_decl.inc
 /usr/local/include/clc/relational/bitselect.h
 /usr/local/include/clc/relational/bitselect.inc
-/usr/local/include/clc/relational/floatn.inc
 /usr/local/include/clc/relational/isequal.h
 /usr/local/include/clc/relational/isfinite.h
 /usr/local/include/clc/relational/isgreater.h
@@ -254,9 +244,7 @@
 /usr/local/include/clc/relational/isordered.h
 /usr/local/include/clc/relational/isunordered.h
 /usr/local/include/clc/relational/select.h
-/usr/local/include/clc/relational/select.inc
 /usr/local/include/clc/relational/signbit.h
-/usr/local/include/clc/relational/unary_decl.inc
 /usr/local/include/clc/shared/clamp.h
 /usr/local/include/clc/shared/clamp.inc
 /usr/local/include/clc/shared/max.h
@@ -326,6 +314,8 @@
 /usr/local/share/clc/gfx1151-amdgcn-mesa-mesa3d.bc
 /usr/local/share/clc/gfx1152-amdgcn--.bc
 /usr/local/share/clc/gfx1152-amdgcn-mesa-mesa3d.bc
+/usr/local/share/clc/gfx1153-amdgcn--.bc
+/usr/local/share/clc/gfx1153-amdgcn-mesa-mesa3d.bc
 /usr/local/share/clc/gfx1200-amdgcn--.bc
 /usr/local/share/clc/gfx1200-amdgcn-mesa-mesa3d.bc
 /usr/local/share/clc/gfx1201-amdgcn--.bc
