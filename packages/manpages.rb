@@ -3,7 +3,7 @@ require 'package'
 class Manpages < Package
   description 'The Linux man-pages project documents the Linux kernel and C library interfaces that are employed by user-space programs.'
   homepage 'https://www.kernel.org/doc/man-pages/'
-  version '6.12'
+  version '6.13'
   license 'man-pages, GPL-2+ and BSD'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-#{version}.tar.xz"
