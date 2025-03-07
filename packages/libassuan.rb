@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libassuan < Package
+class Libassuan < Autotools
   description 'Libassuan is a small library implementing the so-called Assuan protocol.'
   homepage 'https://www.gnupg.org/related_software/libassuan/index.html'
-  version '3.0.1'
+  version '3.0.2'
   license 'GPL-3 and LGPL-2.1'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-#{version}.tar.bz2"
@@ -11,25 +11,14 @@ class Libassuan < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '37cede2c044d520214d52cea89f713b430f23ca5b0ad89168d197de4bedf1ea6',
-     armv7l: '37cede2c044d520214d52cea89f713b430f23ca5b0ad89168d197de4bedf1ea6',
-       i686: '01b982b4968c5d8402e13504ecb253d3fd78ce8cbc006c21e3877c33bf3330c3',
-     x86_64: '22a5df7a07a95e6d3c70925f668bdd5cab66ef28caaa967b823b3368354ca012'
+    aarch64: 'f1032069449ba6da10e82fef9734a2392a7e4fe7e88062bc84e9a39edd945a14',
+     armv7l: 'f1032069449ba6da10e82fef9734a2392a7e4fe7e88062bc84e9a39edd945a14',
+       i686: 'dff73e4be4a368f63d2333551600101e170c38ed4dade61c2ee077b7ec70c997',
+     x86_64: '1c7f8129f9e066c9881dd4d75b83d9db0a266769c814de61394d676254e4459f'
   })
 
-  depends_on 'libgpg_error'
+  depends_on 'glibc' # R
+  depends_on 'libgpg_error' # R
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system 'filefix'
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end
