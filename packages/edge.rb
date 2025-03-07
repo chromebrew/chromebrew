@@ -4,12 +4,12 @@ require 'convenience_functions'
 class Edge < Package
   description 'Microsoft Edge is the fast and secure browser'
   homepage 'https://www.microsoft.com/en-us/edge'
-  version '133.0.3065.92-1'
+  version '134.0.3124.51-1'
   license 'MIT'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_#{version}_amd64.deb"
-  source_sha256 '3d8fd372bae2aa8b99791790a778700d81e33fbffe93e5bc40e18c08befdf62f'
+  source_sha256 '8bb0ba438b820599c8c9dd8b03e2b0b39fd6c4765aa33fd4c6037d02d642b6ea'
 
   depends_on 'at_spi2_core'
   depends_on 'libcom_err'
