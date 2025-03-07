@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Gnutls < Autotools
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
   homepage 'https://gnutls.org/'
-  version '3.8.8'
+  version '3.8.9'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-#{version}.tar.xz"
@@ -11,10 +11,10 @@ class Gnutls < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c8701d58b98064f28e3483a0437de774f8457cd1922ce72ab6d51b273a1cd771',
-     armv7l: 'c8701d58b98064f28e3483a0437de774f8457cd1922ce72ab6d51b273a1cd771',
-       i686: '98ddf3fe0313c215f0e769b6c2f2d65f33a7ecb9709db946826c8d142a5c5b81',
-     x86_64: '05593f2162c5f8bc21f9b6f7ec8b3957eb9b6e18bef262cbe52192b95315e4b1'
+    aarch64: '9e18ff0e8ab2abc61e898f3cea01952608405a97217a8b997a33b87145c5c409',
+     armv7l: '9e18ff0e8ab2abc61e898f3cea01952608405a97217a8b997a33b87145c5c409',
+       i686: '38745b4e51abac40bb37e4b8ce7c8adaf0d79617214eaa178d58c8f537399bc1',
+     x86_64: 'b1be5700a0f61150573c8220ccc385851fcb52d8da263b5ff22d0f1991a6fc54'
   })
 
   depends_on 'brotli' # R
