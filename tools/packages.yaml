@@ -1380,6 +1380,11 @@ url: https://ftpmirror.gnu.org/dejagnu/
 activity: low
 ---
 kind: url
+name: delve
+url: https://github.com/go-delve/delve/releases
+activity: medium
+---
+kind: url
 name: deployer
 url: https://github.com/deployphp/deployer/releases/
 activity: medium
