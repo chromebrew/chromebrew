@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_configparser < Pip
   description 'Configparser backports newer configparser modules to earlier python versions.'
   homepage 'https://github.com/jaraco/configparser/'
-  version "7.1.0-#{CREW_PY_VER}"
+  version "7.2.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
