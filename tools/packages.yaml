@@ -7575,6 +7575,11 @@ url: https://github.com/lxml/lxml/releases
 activity: high
 ---
 kind: url
+name: py3_markitdown
+url: https://github.com/microsoft/markitdown/releases
+activity: high
+---
+kind: url
 name: py3_mat2
 url: https://0xacab.org/jvoisin/mat2/-/tags
 activity: low
@@ -10007,6 +10012,11 @@ activity: low
 kind: url
 name: xprop
 url: https://www.x.org/archive/individual/app
+activity: low
+---
+kind: url
+name: xrandr
+url: https://gitlab.freedesktop.org/xorg/app/xrandr/-/tags
 activity: low
 ---
 kind: url

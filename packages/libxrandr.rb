@@ -1,26 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxrandr < Package
+class Libxrandr < Autotools
   description 'X.org X Resize, Rotate and Reflection extension library'
   homepage 'https://xorg.freedesktop.org/wiki/'
-  @_ver = '1.5.2'
-  version "#{@_ver}-2"
+  version '1.5.4'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxrandr.git'
-  git_hashtag "libXrandr-#{@_ver}"
+  git_hashtag "libXrandr-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1fd4c4cbaf1d23c91908689adf29874d2a9de83bece2428c92603fa39cdef70e',
-     armv7l: '1fd4c4cbaf1d23c91908689adf29874d2a9de83bece2428c92603fa39cdef70e',
-     x86_64: '76c42361b5df7706ade70aa94f21afe89d25dd0710931b39023d4b1493dbd30e'
+    aarch64: '5214c31f48b76603894ed6db1189dfa8f9219dacccda3e467fc0aee7e1d104a9',
+     armv7l: '5214c31f48b76603894ed6db1189dfa8f9219dacccda3e467fc0aee7e1d104a9',
+     x86_64: '243cb4405c06bf87d121438237ed0fb915e6689ea3a3bb9652203cf5e9c59c2a'
   })
 
-  depends_on 'libxext'
-  depends_on 'libxrender'
-  depends_on 'xorg_macros' => :build
-  depends_on 'xorg_proto' => :build
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
   depends_on 'libmd' # R
@@ -28,14 +23,10 @@ class Libxrandr < Package
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
+  depends_on 'libxext' # R
+  depends_on 'libxrender' # R
+  depends_on 'xorg_macros' => :build
+  depends_on 'xorg_proto' => :build
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  run_tests
 end
