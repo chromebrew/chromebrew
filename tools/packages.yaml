@@ -5715,6 +5715,11 @@ url: https://github.com/ThomasDickey/luit-snapshots/tags
 activity: medium
 ---
 kind: url
+name: lutris
+url: https://github.com/lutris/lutris/releases
+activity: low
+---
+kind: url
 name: lv2
 url: https://github.com/lv2/lv2/tags
 activity: none
