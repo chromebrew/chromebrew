@@ -11,8 +11,8 @@ class Libxrandr < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1fd4c4cbaf1d23c91908689adf29874d2a9de83bece2428c92603fa39cdef70e',
-     armv7l: '1fd4c4cbaf1d23c91908689adf29874d2a9de83bece2428c92603fa39cdef70e',
+    aarch64: '5214c31f48b76603894ed6db1189dfa8f9219dacccda3e467fc0aee7e1d104a9',
+     armv7l: '5214c31f48b76603894ed6db1189dfa8f9219dacccda3e467fc0aee7e1d104a9',
      x86_64: '243cb4405c06bf87d121438237ed0fb915e6689ea3a3bb9652203cf5e9c59c2a'
   })
 
