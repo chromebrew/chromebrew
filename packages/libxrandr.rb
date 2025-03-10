@@ -13,7 +13,7 @@ class Libxrandr < Autotools
   binary_sha256({
     aarch64: '1fd4c4cbaf1d23c91908689adf29874d2a9de83bece2428c92603fa39cdef70e',
      armv7l: '1fd4c4cbaf1d23c91908689adf29874d2a9de83bece2428c92603fa39cdef70e',
-     x86_64: '76c42361b5df7706ade70aa94f21afe89d25dd0710931b39023d4b1493dbd30e'
+     x86_64: '243cb4405c06bf87d121438237ed0fb915e6689ea3a3bb9652203cf5e9c59c2a'
   })
 
   depends_on 'glibc' # R
