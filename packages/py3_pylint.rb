@@ -13,8 +13,8 @@ class Py3_pylint < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '256bc5d607b54c52ae7774c82333fba6a8ceced5c13413a68d6c793265a10e5d',
-     armv7l: '256bc5d607b54c52ae7774c82333fba6a8ceced5c13413a68d6c793265a10e5d',
+    aarch64: '040ceafb5449c0e72cf685a65211d2b72038a7b1a513f70ef3ebdadd738002d0',
+     armv7l: '040ceafb5449c0e72cf685a65211d2b72038a7b1a513f70ef3ebdadd738002d0',
        i686: '9b15965bfca38469dfdc9f378b3f56b50697722d177cec527717a02bf2071770',
      x86_64: 'f7182329ed8289f9a1ffafed7781ccdfba0dd532ad7c751300c240d68756e3f7'
   })
