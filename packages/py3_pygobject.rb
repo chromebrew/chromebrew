@@ -14,7 +14,7 @@ class Py3_pygobject < Meson
   binary_sha256({
     aarch64: '3458a74bfde1ac8e51ee68c633eafe8253fb0e1dbe3320a69c4a8c2eaa70f3b6',
      armv7l: '3458a74bfde1ac8e51ee68c633eafe8253fb0e1dbe3320a69c4a8c2eaa70f3b6',
-     x86_64: '9ddb9a5caa6c5b59ca33fb12f9d56037abc0d1f09be453d23fabe7f51439a911'
+     x86_64: 'c9fab17d3ff1dd7e0cd463beabd5d9fc9d39e2c6ddaa762a9aa93739828cf40a'
   })
 
   depends_on 'cairo' # R
