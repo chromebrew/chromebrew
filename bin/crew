@@ -37,6 +37,13 @@ require_gem 'pry-byebug' if CREW_DEBUG
 # being started with a --debug flag.
 # The following line can be used anywhere as a breakpoint.
 binding.pry if CREW_DEBUG
+
+begin
+  require_relative '../lib/crew_mvdir'
+rescue LoadError
+  warn 'crew-mvdir is not installed. Please install it with \'crew install crew_mvdir\' for improved installation performance.'.yellow
+end
+
 require_relative '../lib/crewlog'
 require_relative '../lib/deb_utils'
 require_relative '../lib/docopt'
@@ -1045,28 +1052,12 @@ def shrink_dir(dir)
 end
 
 def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/local')))
-  if Dir.exist?(src)
-    if File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR
-      system "crew-mvdir #{@short_verbose} #{src} #{dst}", exception: true
-    else
-      warn 'crew-mvdir is not installed. Please install it with \'crew install crew_mvdir\' for improved installation performance'.yellow unless (@pkg.name == 'crew_mvdir') || CREW_DISABLE_MVDIR
+  abort "#{src} directory does not exist.".lightred unless Dir.exist?(src)
 
-      if File.executable?("#{CREW_PREFIX}/bin/rsync") && system("#{CREW_PREFIX}/bin/rsync --version > /dev/null")
-        # rsync src path needs a trailing slash
-        src << '/' unless src.end_with?('/')
-        # Check for ACLs support.
-        rsync_version = `rsync --version`.chomp
-        if rsync_version.include?('ACLs') && !rsync_version.include?('no ACLs')
-          system 'rsync', "-ah#{@verbose}HAXW", '--remove-source-files', src, dst, exception: true
-        else
-          system 'rsync', "-ah#{@verbose}HXW", '--remove-source-files', src, dst, exception: true
-        end
-      else
-        system "cd #{src}; tar -cf - ./* | (cd #{dst}; tar -x#{@verbose}p --keep-directory-symlink -f -)", exception: true
-      end
-    end
+  if CREW_DISABLE_MVDIR || !defined?(crew_mvdir)
+    system "cd #{src}; tar -cf - ./* | (cd #{dst}; tar -x#{@verbose}p --keep-directory-symlink -f -)", exception: true
   else
-    abort "#{src} directory does not exist.".lightred
+    crew_mvdir src, dst, verbose: @verbose
   end
 end
 
