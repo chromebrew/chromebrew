@@ -7570,6 +7570,11 @@ url: https://github.com/lxml/lxml/releases
 activity: high
 ---
 kind: url
+name: py3_markitdown
+url: https://github.com/microsoft/markitdown/releases
+activity: high
+---
+kind: url
 name: py3_mat2
 url: https://0xacab.org/jvoisin/mat2/-/tags
 activity: low
