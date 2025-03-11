@@ -13,7 +13,7 @@ class Py3_cssselect < Pip
     aarch64: 'f6d6d1e7c2046864651a1f3d142ae7050c1cad9c7b05de1e30274214ad460d2e',
      armv7l: 'f6d6d1e7c2046864651a1f3d142ae7050c1cad9c7b05de1e30274214ad460d2e',
        i686: '8aef06c7233ee4aeaefc28bad61751a3b23e2cccdf2842d305bc4b63abb8b16c',
-     x86_64: '4f304107cb4f04a7c3ca214c7b743c16bef757072e8ec06d3d13efc6a20a73cc'
+     x86_64: '5416b9bf1a082863d0a073407bc996317fc3881ff8ad773a4881368411ad1882'
   })
 
   depends_on 'python3' => :build
