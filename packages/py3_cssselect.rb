@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_cssselect < Pip
   description 'CSSselect parses CSS3 Selectors and translates them to XPath 1.0.'
   homepage 'https://cssselect.readthedocs.io/'
-  version "1.2.0-#{CREW_PY_VER}"
+  version "1.3.0-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
