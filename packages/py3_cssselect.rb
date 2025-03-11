@@ -12,7 +12,7 @@ class Py3_cssselect < Pip
   binary_sha256({
     aarch64: 'f6d6d1e7c2046864651a1f3d142ae7050c1cad9c7b05de1e30274214ad460d2e',
      armv7l: 'f6d6d1e7c2046864651a1f3d142ae7050c1cad9c7b05de1e30274214ad460d2e',
-       i686: 'b90a81dbd9c21673742bfc4bcdabad158a88bed3509d093de8d18a3b44d19370',
+       i686: '8aef06c7233ee4aeaefc28bad61751a3b23e2cccdf2842d305bc4b63abb8b16c',
      x86_64: '4f304107cb4f04a7c3ca214c7b743c16bef757072e8ec06d3d13efc6a20a73cc'
   })
 

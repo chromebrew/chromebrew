@@ -12,7 +12,7 @@ class Ruby_stringio < RUBY
   binary_sha256({
     aarch64: '18e05f38a4e6c1c48225d56f88bcf458bc2efa8931b12cbaae01fd709819be74',
      armv7l: '18e05f38a4e6c1c48225d56f88bcf458bc2efa8931b12cbaae01fd709819be74',
-       i686: '9c43d6d403bc481fbfce2acb640f8ff96d1fabc77980fd52df76fff7aff2856c',
+       i686: 'a27dc2821e5188d4b961b2fe50cf7d09b3684b2c0d8723ed1f9f060299ebec24',
      x86_64: 'e54382155a8cf7922dfcfc2b3abe921b998bd9f34ceb0f586a698319e652adf8'
   })
 
