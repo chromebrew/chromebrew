@@ -11,8 +11,8 @@ class Sfml < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '172e599bdf688d88a8e127c0c420699e560a8f728af4a422cf1452458f172103',
+     armv7l: '172e599bdf688d88a8e127c0c420699e560a8f728af4a422cf1452458f172103',
      x86_64: '44aaaab7168a8c1cf62d317f1a9760e6e0a2d76edf0e9be337b178b239b421fa'
   })
 
