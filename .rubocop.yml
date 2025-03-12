@@ -22,9 +22,7 @@ Lint/OrAssignmentToConstant:
     - 'lib/const.rb'
     - 'lib/fixup.rb'
 
-Lint/SuppressedException:
-  Enabled: false
-
+# TODO
 Layout/HashAlignment:
   EnforcedHashRocketStyle:
     - separator
@@ -35,83 +33,89 @@ Layout/HashAlignment:
 
 # End temporarily disabled cops
 
+# These cops have either been disabled permanently or have a non-default configuration option.
+# If you permanently disable another cop, please add a comment explaining why.
+# If you set a non-default configuration for a cop, please add a comment explaining why.
+
+# An empty line after a guard clause can improve readability, but mandating it reduces compactness.
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
 
+# TODO
 Layout/FirstHashElementIndentation:
   Enabled: false
 # EnforcedStyle: consistent
 
+# A maximum line length tends to impede development more than it helps readability.
 Layout/LineLength:
   Enabled: false
 
+# Having an explicit return can often improve readability.
 Style/RedundantReturn:
   Enabled: false
 
+# A comment at the top of every file is not worth the minor benefits of frozen strings.
+# Besides, Ruby is in the process of freezing strings by default anyway.
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+# Explicitly freezing every constant is too verbose, and provides minor benefits regardless.
 Style/MutableConstant:
   Enabled: false
 
+# Mandating top-level documentation comments and the like will more often than not lead to meaningless documentation.
+# Let people choose what does and does not need to be documented.
 Style/Documentation:
   Enabled: false
 
+# While using a guard clause reduces indentation and lines of code, it is not always the most logical flow.
+# Let people choose which is best depending on the scenario.
 Style/GuardClause:
   Enabled: false
 
-Style/DocumentDynamicEvalDefinition:
-  Enabled: false
-
-# https://github.com/rubocop/rubocop/issues/12132
-Style/OptionalBooleanParameter:
-  Enabled: false
-
+# TODO
 Style/ClassVars:
   Enabled: false
 
+# TODO
 Style/GlobalVars:
   Enabled: false
 
+# TODO
 Style/FormatStringToken:
   Enabled: false
 
+# TODO
 Style/MultilineBlockChain:
   Enabled: false
 
+# The only numeric literals in the codebase long enough to trip this are kilobyte sizes, for which a thousands separator does not improve readability.
 Style/NumericLiterals:
   Enabled: false
 
-Style/RedundantCapitalW:
-  Enabled: false
-
-Style/RedundantLineContinuation:
-  Enabled: false
-
+# TODO
 Style/RedundantStringEscape:
   Enabled: false
 
+# Enabling Metrics results in offenses that essentially mandate the arbitrary splitting of logic into additional files and methods.
+# Even the rubocop codebase itself often inline disables these offfenses, so lets save the time and disable them all here.
 Metrics:
   Enabled: false
 
-Naming/AccessorMethodName:
-  Enabled: false
-
-Naming/BlockParameterName:
-  Enabled: false
-
+# We disable this for packages because we don't want to incorrectly convert things like Xz_java into XzJava.
+# Many package names include - or _ and we don't want to lose that information by mistakenly converting into CamelCase.
 Naming/ClassAndModuleCamelCase:
   Exclude:
     - 'packages/*'
 
+# We allow all caps variables to mirror our constants, so things like @ARCH_LDFLAGS are allowed.
 Naming/VariableName:
   EnforcedStyle: snake_case
   # Allow variable names which are in all caps (with optional numbers and underscores)
   AllowedPatterns:
     - '^@?[A-Z0-9_]+$'
 
-Naming/VariableNumber:
-  Enabled: false
-
+# If there is meaningful information to convey about the contents of a heredoc, a comment is the best way to do it.
+# Forcing unique names for all heredoc delimiters does not improve documentation in the vast majority of cases.
 Naming/HeredocDelimiterNaming:
   Enabled: false

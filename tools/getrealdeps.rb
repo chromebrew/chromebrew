@@ -99,9 +99,7 @@ def main(pkg)
   end.flatten.compact.uniq
 
   # Figure out which Chromebrew packages provide the relevant deps.
-  pkgdeps = pkgdepsfiles.map do |file|
-              whatprovidesfxn(file, pkg)
-            end.sort.reject { |i| i.include?(pkg) }.map { |i| i.split("\n") }.flatten.uniq
+  pkgdeps = pkgdepsfiles.map { |file| whatprovidesfxn(file, pkg) }.sort.reject { |i| i.include?(pkg) }.map { |i| i.split("\n") }.flatten.uniq
 
   # Massage the glibc entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub(/glibc_build.*/, 'glibc') }.uniq

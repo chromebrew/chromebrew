@@ -24,7 +24,7 @@ rescue RuntimeError => e
   end
 end
 
-def downloader(url, sha256sum, filename = File.basename(url), verbose = false)
+def downloader(url, sha256sum, filename = File.basename(url), verbose: false)
   # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
   # Usage: downloader <url>, <sha256sum>, <filename::optional>, <verbose::optional>
   #
@@ -39,13 +39,13 @@ def downloader(url, sha256sum, filename = File.basename(url), verbose = false)
   if CREW_USE_CURL || !ENV['CREW_DOWNLOADER'].to_s.empty?
     # force using external downloader if either CREW_USE_CURL or ENV['CREW_DOWNLOADER'] is set
     puts "external_downloader(#{uri}, #{filename}, #{verbose})" if verbose
-    external_downloader(uri, filename, verbose)
+    external_downloader(uri, filename, verbose: verbose)
   else
     case uri.scheme
     when 'http', 'https'
       # use net/http if the url protocol is http(s)://
       puts "http_downloader(#{uri}, #{filename}, #{verbose})" if verbose
-      http_downloader(uri, filename, verbose)
+      http_downloader(uri, filename, verbose: verbose)
     when 'file'
       # use FileUtils to copy if it is a local file (the url protocol is file://)
       if File.exist?(uri.path)
@@ -56,7 +56,7 @@ def downloader(url, sha256sum, filename = File.basename(url), verbose = false)
     else
       # use external downloader (curl by default) if the url protocol is not http(s):// or file://
       puts "external_downloader(#{uri}, #{filename}, #{verbose})" if verbose
-      external_downloader(uri, filename, verbose)
+      external_downloader(uri, filename, verbose: verbose)
     end
   end
 
@@ -88,10 +88,10 @@ rescue StandardError => e
 
   # fallback to curl if error occurred
   puts "external_downloader(#{uri}, #{filename}, #{verbose})" if verbose
-  external_downloader(uri, filename, verbose)
+  external_downloader(uri, filename, verbose: verbose)
 end
 
-def http_downloader(uri, filename = File.basename(url), verbose = false)
+def http_downloader(uri, filename = File.basename(url), verbose: false)
   # http_downloader: Downloader based on net/http library
   ssl_error_retry = 0
 
@@ -119,7 +119,7 @@ def http_downloader(uri, filename = File.basename(url), verbose = false)
         redirect_uri.scheme ||= uri.scheme
         redirect_uri.host ||= uri.host
 
-        return send(__method__, redirect_uri, filename, verbose)
+        return send(__method__, redirect_uri, filename, verbose: verbose)
       else
         abort "Download of #{uri} failed with error #{response.code}: #{response.msg}".lightred
       end
@@ -167,7 +167,7 @@ rescue OpenSSL::SSL::SSLError
   ssl_error_retry <= 3 ? retry : raise
 end
 
-def external_downloader(uri, filename = File.basename(url), verbose = false)
+def external_downloader(uri, filename = File.basename(url), verbose: false)
   # external_downloader: wrapper for external downloaders in CREW_DOWNLOADER (curl by default)
 
   # default curl cmdline, CREW_DOWNLOADER should be in this format also

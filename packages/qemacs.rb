@@ -20,12 +20,12 @@ class Qemacs < Package
   def self.build
     system "sed -i 's,css.h,libqhtml/css.h,' html2png.c"
     system "sed -i 's/$(prefix)/$(DESTDIR)$(prefix)/g' Makefile"
-    system './configure', \
-           "--prefix=#{CREW_PREFIX}", \
-           '--disable-x11', \
-           '--disable-xv', \
-           '--disable-xrender', \
-           '--disable-html', \
+    system './configure',
+           "--prefix=#{CREW_PREFIX}",
+           '--disable-x11',
+           '--disable-xv',
+           '--disable-xrender',
+           '--disable-html',
            '--disable-png'
     system 'make'
   end

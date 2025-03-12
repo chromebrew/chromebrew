@@ -94,6 +94,7 @@ class Selector
       # discard any input in the input buffer
       $stdin.read_nonblock(1024)
     rescue IO::WaitReadable
+      # We wait here for reading as per https://docs.ruby-lang.org/en/master/IO.html#method-c-select
     ensure
       Thread.current[:input] = $stdin.getc
     end

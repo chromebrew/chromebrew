@@ -143,9 +143,9 @@ class Package
     deps = pkg_obj.dependencies
 
     # Append buildessential to deps if building from source is needed/specified.
-    if ((include_build_deps == true) || ((include_build_deps == 'auto') && is_source)) && \
-       !pkg_obj.no_compile_needed? && \
-       !exclude_buildessential && \
+    if ((include_build_deps == true) || ((include_build_deps == 'auto') && is_source)) &&
+       !pkg_obj.no_compile_needed? &&
+       !exclude_buildessential &&
        !@checked_list.keys.include?('buildessential')
 
       deps = { 'buildessential' => [[:build]] }.merge(deps)
@@ -155,8 +155,8 @@ class Package
     expanded_deps = deps.uniq.map do |dep, (dep_tags, ver_check)|
       # Check build dependencies only if building from source is needed/specified.
       # Do not recursively find :build based build dependencies.
-      next unless (include_build_deps == true && @crew_current_package == pkg_obj.name) || \
-                  ((include_build_deps == 'auto') && is_source && @crew_current_package == pkg_obj.name) || \
+      next unless (include_build_deps == true && @crew_current_package == pkg_obj.name) ||
+                  ((include_build_deps == 'auto') && is_source && @crew_current_package == pkg_obj.name) ||
                   !dep_tags.include?(:build)
 
       # Overwrite tags if parent dependency is a build dependency.
