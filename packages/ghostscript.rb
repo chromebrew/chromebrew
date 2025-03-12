@@ -3,10 +3,10 @@ require 'package'
 class Ghostscript < Package
   description 'Interpreter for the PostScript language'
   homepage 'https://www.ghostscript.com/'
-  version '10.04.0'
+  version '10.05.0'
   license 'AGPL-3+'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10040/ghostpdl-10.04.0.tar.xz'
+  source_url "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs#{version.tr('.', '')}/ghostpdl-#{version}.tar.xz"
   source_sha256 '0603f5629bc6f567b454911d104cd96702489c9e70e577787843f480b23d4a77'
   binary_compression 'tar.zst'
 
@@ -17,11 +17,9 @@ class Ghostscript < Package
   })
 
   depends_on 'at_spi2_core' # R
-  depends_on 'cairo' => :build
   depends_on 'cairo' # R
   depends_on 'cups' # R
   depends_on 'expat' # R
-  depends_on 'fontconfig' => :build
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
