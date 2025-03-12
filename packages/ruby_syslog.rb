@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_syslog < RUBY
   description 'Ruby interface for the posix system logging facility.'
   homepage 'https://github.com/ruby/syslog'
-  version "0.2.0-#{CREW_RUBY_VER}"
+  version "0.3.0-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
