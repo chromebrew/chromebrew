@@ -13,7 +13,7 @@ class Ghostscript < Package
   binary_sha256({
     aarch64: 'ebadc4e1e882398f800455434158d3260d61d32e42f647b6f9d803c8d750d2c3',
      armv7l: 'ebadc4e1e882398f800455434158d3260d61d32e42f647b6f9d803c8d750d2c3',
-     x86_64: 'efdcd90cb6598beccfb3d16d090fa86fa282a59975565d4ee220bd3f19440812'
+     x86_64: 'e97d4b792adf25187c89103b3f9b85df5cb98dbe56135742033922bb41177a13'
   })
 
   depends_on 'at_spi2_core' # R
