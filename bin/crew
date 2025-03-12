@@ -1845,11 +1845,9 @@ end
 
 @last_update_check = Dir["#{CREW_LIB_PATH}/{.git/FETCH_HEAD,lib/const.rb}"].compact.map { |i| File.mtime(i).utc.to_i }.max
 crewlog("The last update was #{MiscFunctions.time_difference(@last_update_check, Time.now.to_i)} ago.")
-unless ARGV[0] == 'update'
-  if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
-    plural = CREW_UPDATE_CHECK_INTERVAL < 2 ? '' : 's'
-    puts "It has been more than #{CREW_UPDATE_CHECK_INTERVAL} day#{plural} since crew was last updated. Please run 'crew update'.".lightpurple
-  end
+if ARGV[0] != 'update' && Time.now.to_i - @last_update_check > ((CREW_UPDATE_CHECK_INTERVAL * 3600 * 24))
+  plural = CREW_UPDATE_CHECK_INTERVAL < 2 ? '' : 's'
+  puts "It has been more than #{CREW_UPDATE_CHECK_INTERVAL} day#{plural} since crew was last updated. Please run 'crew update'.".lightpurple
 end
 command_name = args.select { |k, v| v && command?(k) }.keys[0]
 send("#{command_name}_command", args)

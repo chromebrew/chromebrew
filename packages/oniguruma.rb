@@ -18,5 +18,4 @@ class Oniguruma < Autotools
   })
 
   depends_on 'glibc' # R
-
 end

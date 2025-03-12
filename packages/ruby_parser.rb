@@ -1,7 +1,7 @@
 require 'buildsystems/ruby'
 
 class Ruby_parser < RUBY
-  description "A Ruby parser written in pure Ruby."
+  description 'A Ruby parser written in pure Ruby.'
   homepage 'https://github.com/whitequark/parser'
   version "3.3.7.1-#{CREW_RUBY_VER}"
   license 'MIT'

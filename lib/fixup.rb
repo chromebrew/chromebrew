@@ -71,7 +71,7 @@ end
 @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
 def keep_keys(arr, keeper_keys)
   keepers = keeper_keys.to_set
-  arr.map { |h| h.select { |k, _| keepers.include?(k) } }
+  arr.map { |h| h.slice(*keepers) }
 end
 # Use @installed_packages.include?(pkg_name) to determine if a package is
 # installed.

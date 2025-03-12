@@ -1,7 +1,7 @@
 require 'buildsystems/ruby'
 
 class Ruby_rainbow < RUBY
-  description "Colorize printed text on ANSI terminals."
+  description 'Colorize printed text on ANSI terminals.'
   homepage 'https://github.com/sickill/rainbow'
   version "3.1.1-#{CREW_RUBY_VER}"
   license 'MIT'

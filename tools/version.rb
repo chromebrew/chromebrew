@@ -42,7 +42,7 @@ def get_anitya_id(name, homepage)
   elsif number_of_packages.zero? # Anitya either doesn't have this package, or has it under a different name.
     # If it has it under a different name, check if it has the name used by Chromebrew.
     json2 = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/packages/?name=#{name.tr('-', '_')}")))
-    return if (json2['total_items']).zero?
+    return if json2['total_items'].zero?
 
     (0..json2['total_items'] - 1).each do |i|
       next unless json2['items'][i]['distribution'] == 'Chromebrew'

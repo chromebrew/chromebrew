@@ -31,11 +31,11 @@ class Ghostty < Package
   depends_on 'zig' => :build
 
   def self.patch
-   system "sed -i 's/linkSystemLibrary2(\"bzip2\", dynamic_link_opts)/linkSystemLibrary2(\"bz2\", dynamic_link_opts)/' src/build/SharedDeps.zig"
+    system "sed -i 's/linkSystemLibrary2(\"bzip2\", dynamic_link_opts)/linkSystemLibrary2(\"bz2\", dynamic_link_opts)/' src/build/SharedDeps.zig"
   end
 
   def self.build
-    @zig_global_cache_dir = `pwd`.chomp + '/zig_cache'
+    @zig_global_cache_dir = "#{`pwd`.chomp}/zig_cache"
     FileUtils.mkdir_p @zig_global_cache_dir
     system "ZIG_GLOBAL_CACHE_DIR=#{@zig_global_cache_dir} ./nix/build-support/fetch-zig-cache.sh"
     system "DESTDIR=build zig build \
