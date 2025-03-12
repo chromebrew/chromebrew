@@ -8,7 +8,7 @@ class Filezilla < Autotools
   compatibility 'aarch64 armv7l x86_64'
   # NOTE: This may generate a 403 forbidden error. To receive a new source url,
   # download from here: https://filezilla-project.org/download.php?show_all=1.
-  source_url "https://dl2.cdn.filezilla-project.org/client/FileZilla_3.68.1_src.tar.xz?h=skd4cOQdsN3A5aBPQdOKWg&x=1740339243"
+  source_url 'https://dl2.cdn.filezilla-project.org/client/FileZilla_3.68.1_src.tar.xz?h=skd4cOQdsN3A5aBPQdOKWg&x=1740339243'
   source_sha256 '10468e6ef623ad9789996df61f588ca7417d39353678313611d54f2d8131a1db'
   binary_compression 'tar.zst'
 

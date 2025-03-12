@@ -12,9 +12,7 @@ require_relative '../lib/const'
 require_relative '../lib/package'
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 
-unless Dir.exist?('packages')
-  abort 'Unable to locate packages. Please run from the repository root directory.'.lightred
-end
+abort 'Unable to locate packages. Please run from the repository root directory.'.lightred unless Dir.exist?('packages')
 
 puts "Setting the CREW_AGREE_TIMEOUT_SECONDS environment variable to less than the default of #{CREW_AGREE_TIMEOUT_SECONDS} may speed this up...".orange if ENV['CREW_AGREE_TIMEOUT_SECONDS'].nil?
 
@@ -45,10 +43,10 @@ end
 abort 'No packages need to be updated.'.orange if updated_packages.empty?
 
 updated_packages.uniq!
-updated_packages.each { |p| puts p.sub('packages/', '').sub('.rb', '').to_s.lightblue }
 
 updated_packages.each do |pkg|
   name = pkg.sub('packages/', '').sub('.rb', '')
+  puts name.to_s.lightblue
 
   puts "Evaluating #{name} package...".orange
   @pkg_obj = Package.load_package(pkg)

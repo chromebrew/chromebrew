@@ -13,9 +13,9 @@ def require_gem(gem_name_and_require = nil, require_override = nil)
     gem gem_name
   end
   requires = if require_override.nil?
-              gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
-            else
-              require_override
-            end
+               gem_name_and_require.split('/')[1].nil? ? gem_name_and_require.split('/')[0] : gem_name_and_require
+             else
+               require_override
+             end
   require requires
 end

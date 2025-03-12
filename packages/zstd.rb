@@ -1,7 +1,6 @@
 require 'buildsystems/cmake'
 
 class Zstd < CMake
-
   description 'Zstandard - Fast real-time compression algorithm'
   homepage 'https://facebook.github.io/zstd/'
   version '1.5.7' # Do not use @_ver here, it will break the installer.
