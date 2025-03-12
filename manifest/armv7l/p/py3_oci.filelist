@@ -1,11 +1,11 @@
-/usr/local/lib/python3.13/site-packages/oci-2.147.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/oci-2.147.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/oci-2.147.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/oci-2.147.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/oci-2.147.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/oci-2.147.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.13/site-packages/oci-2.147.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/oci-2.147.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/oci-2.148.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/oci-2.148.0.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/oci-2.148.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/oci-2.148.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/oci-2.148.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/oci-2.148.0.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.13/site-packages/oci-2.148.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/oci-2.148.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/oci/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/alloy.cpython-313.pyc
@@ -8072,6 +8072,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/change_security_policy_deployment_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/change_sensitive_data_model_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/change_sensitive_type_compartment_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/change_sensitive_type_group_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/change_sensitive_types_export_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/change_sql_collection_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/change_sql_firewall_policy_compartment_details.cpython-313.pyc
@@ -8114,6 +8115,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/create_sensitive_column_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/create_sensitive_data_model_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/create_sensitive_type_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/create_sensitive_type_group_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/create_sensitive_type_pattern_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/create_sensitive_types_export_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/create_sql_collection_details.cpython-313.pyc
@@ -8187,6 +8189,8 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/generate_user_assessment_report_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/global_settings.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/grant_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/grouped_sensitive_type_collection.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/grouped_sensitive_type_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/initialization_parameter.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/installed_database_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/library_masking_format.cpython-313.pyc
@@ -8203,6 +8207,8 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/masking_column.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/masking_column_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/masking_column_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/masking_error_collection.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/masking_error_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/masking_format.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/masking_object_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/masking_object_summary.cpython-313.pyc
@@ -8231,6 +8237,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/patch_alert_policy_rule_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/patch_alerts_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/patch_discovery_job_result_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/patch_grouped_sensitive_types_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/patch_insert_instruction.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/patch_instruction.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/patch_masking_columns_details.cpython-313.pyc
@@ -8312,6 +8319,9 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/selection_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_category.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_column.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_column_analytics_collection.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_column_analytics_dimensions.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_column_analytics_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_column_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_column_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_data_model.cpython-313.pyc
@@ -8325,6 +8335,9 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_schema_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_type.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_type_collection.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_type_group.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_type_group_collection.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_type_group_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_type_pattern.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_type_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/sensitive_types_export.cpython-313.pyc
@@ -8403,6 +8416,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/update_sensitive_column_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/update_sensitive_data_model_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/update_sensitive_type_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/update_sensitive_type_group_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/update_sensitive_type_pattern_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/update_sensitive_types_export_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/__pycache__/update_sql_collection_details.cpython-313.pyc
@@ -8497,6 +8511,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/change_security_policy_deployment_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/change_sensitive_data_model_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/change_sensitive_type_compartment_details.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/change_sensitive_type_group_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/change_sensitive_types_export_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/change_sql_collection_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/change_sql_firewall_policy_compartment_details.py
@@ -8539,6 +8554,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/create_sensitive_column_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/create_sensitive_data_model_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/create_sensitive_type_details.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/create_sensitive_type_group_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/create_sensitive_type_pattern_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/create_sensitive_types_export_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/create_sql_collection_details.py
@@ -8612,6 +8628,8 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/generate_user_assessment_report_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/global_settings.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/grant_summary.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/grouped_sensitive_type_collection.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/grouped_sensitive_type_summary.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/initialization_parameter.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/installed_database_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/library_masking_format.py
@@ -8628,6 +8646,8 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/masking_column.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/masking_column_collection.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/masking_column_summary.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/masking_error_collection.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/masking_error_summary.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/masking_format.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/masking_object_collection.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/masking_object_summary.py
@@ -8656,6 +8676,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/patch_alert_policy_rule_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/patch_alerts_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/patch_discovery_job_result_details.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/patch_grouped_sensitive_types_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/patch_insert_instruction.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/patch_instruction.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/patch_masking_columns_details.py
@@ -8737,6 +8758,9 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/selection_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_category.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_column.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_column_analytics_collection.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_column_analytics_dimensions.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_column_analytics_summary.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_column_collection.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_column_summary.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_data_model.py
@@ -8750,6 +8774,9 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_schema_summary.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_type.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_type_collection.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_type_group.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_type_group_collection.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_type_group_summary.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_type_pattern.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_type_summary.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/sensitive_types_export.py
@@ -8828,6 +8855,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/update_sensitive_column_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/update_sensitive_data_model_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/update_sensitive_type_details.py
+/usr/local/lib/python3.13/site-packages/oci/data_safe/models/update_sensitive_type_group_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/update_sensitive_type_pattern_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/update_sensitive_types_export_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_safe/models/update_sql_collection_details.py
@@ -8926,6 +8954,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/metadata.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/metric_expression_rule.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/model.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/model_artifact_reference_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/model_configuration_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/model_deploy_workload_configuration_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/model_deployment.cpython-313.pyc
@@ -8951,6 +8980,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/object_storage_mount_configuration_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/ocir_container_job_environment_configuration_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/ocir_model_deployment_environment_configuration_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/oss_model_artifact_reference_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_configuration_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_container_configuration_details.cpython-313.pyc
@@ -8985,6 +9015,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/predefined_metric_expression_rule.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/project.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/project_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/register_model_artifact_reference_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/retention_operation_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/retention_setting.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/scaling_configuration.cpython-313.pyc
@@ -9099,6 +9130,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/metadata.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/metric_expression_rule.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/model.py
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/model_artifact_reference_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/model_configuration_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/model_deploy_workload_configuration_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/model_deployment.py
@@ -9124,6 +9156,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/object_storage_mount_configuration_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/ocir_container_job_environment_configuration_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/ocir_model_deployment_environment_configuration_details.py
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/oss_model_artifact_reference_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_configuration_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_container_configuration_details.py
@@ -9158,6 +9191,7 @@
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/predefined_metric_expression_rule.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/project.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/project_summary.py
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/register_model_artifact_reference_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/retention_operation_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/retention_setting.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/scaling_configuration.py
@@ -20499,6 +20533,7 @@
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/configuration_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/configuration_variables.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/copy_backup_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/copy_policy.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/create_backup_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/create_backup_policy_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/create_channel_details.cpython-313.pyc
@@ -20593,6 +20628,7 @@
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/configuration_summary.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/configuration_variables.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/copy_backup_details.py
+/usr/local/lib/python3.13/site-packages/oci/mysql/models/copy_policy.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/create_backup_details.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/create_backup_policy_details.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/create_channel_details.py
@@ -21953,6 +21989,8 @@
 /usr/local/lib/python3.13/site-packages/oci/opensearch/__pycache__/opensearch_cluster_backup_client_composite_operations.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/__pycache__/opensearch_cluster_client.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/__pycache__/opensearch_cluster_client_composite_operations.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/opensearch/__pycache__/opensearch_cluster_pipeline_client.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/opensearch/__pycache__/opensearch_cluster_pipeline_client_composite_operations.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/backup_event_details.cpython-313.pyc
@@ -21969,6 +22007,7 @@
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/delete_block_volumes_for_namespace_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/export_opensearch_cluster_backup_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/force_patch_cluster_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/force_patch_pipeline_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/get_manifest_response.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/maintenance_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/maintenance_notification_details.cpython-313.pyc
@@ -21984,12 +22023,11 @@
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/opensearch_cluster_pipeline_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/opensearch_cluster_pipeline_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/opensearch_cluster_summary.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/opensearch_pipeline_validation_response.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/opensearch_pipeline_reverse_connection_endpoint.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/opensearch_versions_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/opensearch_versions_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/outbound_cluster_config.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/outbound_cluster_summary.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/pipeline_validation_error_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/reclaim_cluster_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/resize_opensearch_cluster_horizontal_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/resize_opensearch_cluster_vertical_details.cpython-313.pyc
@@ -22005,8 +22043,8 @@
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/update_opensearch_cluster_backup_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/update_opensearch_cluster_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/update_opensearch_cluster_pipeline_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/update_pipeline_status_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/upgrade_open_search_cluster_details.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/validate_opensearch_pipeline_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/work_request.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/work_request_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/__pycache__/work_request_error.cpython-313.pyc
@@ -22028,6 +22066,7 @@
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/delete_block_volumes_for_namespace_details.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/export_opensearch_cluster_backup_details.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/force_patch_cluster_details.py
+/usr/local/lib/python3.13/site-packages/oci/opensearch/models/force_patch_pipeline_details.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/get_manifest_response.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/maintenance_details.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/maintenance_notification_details.py
@@ -22043,12 +22082,11 @@
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/opensearch_cluster_pipeline_collection.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/opensearch_cluster_pipeline_summary.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/opensearch_cluster_summary.py
-/usr/local/lib/python3.13/site-packages/oci/opensearch/models/opensearch_pipeline_validation_response.py
+/usr/local/lib/python3.13/site-packages/oci/opensearch/models/opensearch_pipeline_reverse_connection_endpoint.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/opensearch_versions_collection.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/opensearch_versions_summary.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/outbound_cluster_config.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/outbound_cluster_summary.py
-/usr/local/lib/python3.13/site-packages/oci/opensearch/models/pipeline_validation_error_details.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/reclaim_cluster_details.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/resize_opensearch_cluster_horizontal_details.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/resize_opensearch_cluster_vertical_details.py
@@ -22064,8 +22102,8 @@
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/update_opensearch_cluster_backup_details.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/update_opensearch_cluster_details.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/update_opensearch_cluster_pipeline_details.py
+/usr/local/lib/python3.13/site-packages/oci/opensearch/models/update_pipeline_status_details.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/upgrade_open_search_cluster_details.py
-/usr/local/lib/python3.13/site-packages/oci/opensearch/models/validate_opensearch_pipeline_details.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/work_request.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/work_request_collection.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/models/work_request_error.py
@@ -22077,6 +22115,8 @@
 /usr/local/lib/python3.13/site-packages/oci/opensearch/opensearch_cluster_backup_client_composite_operations.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/opensearch_cluster_client.py
 /usr/local/lib/python3.13/site-packages/oci/opensearch/opensearch_cluster_client_composite_operations.py
+/usr/local/lib/python3.13/site-packages/oci/opensearch/opensearch_cluster_pipeline_client.py
+/usr/local/lib/python3.13/site-packages/oci/opensearch/opensearch_cluster_pipeline_client_composite_operations.py
 /usr/local/lib/python3.13/site-packages/oci/operator_access_control/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/operator_access_control/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/operator_access_control/__pycache__/access_requests_client.cpython-313.pyc
