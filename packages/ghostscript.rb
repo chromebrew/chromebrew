@@ -3,25 +3,23 @@ require 'package'
 class Ghostscript < Package
   description 'Interpreter for the PostScript language'
   homepage 'https://www.ghostscript.com/'
-  version '10.04.0'
+  version '10.05.0'
   license 'AGPL-3+'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10040/ghostpdl-10.04.0.tar.xz'
+  source_url "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs#{version.tr('.', '')}/ghostpdl-#{version}.tar.xz"
   source_sha256 '0603f5629bc6f567b454911d104cd96702489c9e70e577787843f480b23d4a77'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ebadc4e1e882398f800455434158d3260d61d32e42f647b6f9d803c8d750d2c3',
-     armv7l: 'ebadc4e1e882398f800455434158d3260d61d32e42f647b6f9d803c8d750d2c3',
-     x86_64: 'efdcd90cb6598beccfb3d16d090fa86fa282a59975565d4ee220bd3f19440812'
+    aarch64: 'e5c46ac878acbc612a605c767e17887bb5eb49d04b1c35645856d0359ac58d09',
+     armv7l: 'e5c46ac878acbc612a605c767e17887bb5eb49d04b1c35645856d0359ac58d09',
+     x86_64: 'e97d4b792adf25187c89103b3f9b85df5cb98dbe56135742033922bb41177a13'
   })
 
   depends_on 'at_spi2_core' # R
-  depends_on 'cairo' => :build
   depends_on 'cairo' # R
   depends_on 'cups' # R
   depends_on 'expat' # R
-  depends_on 'fontconfig' => :build
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R

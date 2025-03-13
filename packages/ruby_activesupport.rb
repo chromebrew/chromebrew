@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_activesupport < RUBY
   description 'A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.'
   homepage 'https://rubyonrails.org/'
-  version "8.0.1-#{CREW_RUBY_VER}"
+  version "8.0.2-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
