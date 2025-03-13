@@ -9,14 +9,14 @@ class Fceux < Package
   source_url "https://github.com/FinnBaltazar1111/fceux/releases/download/v#{version}/fceux-#{version}-amd64.deb"
   source_sha256 "7b85f7682ac89a148b8c2a43dd4b8c71e8effd719a3d8f251f119e56ba63052f"
   
-  depends_on 'qt5_base'
-  depends_on 'minizip'
-  depends_on 'libsdl2'
   depends_on 'ffmpeg'
   depends_on 'libarchive'
-  depends_on 'zlib'
+  depends_on 'libsdl2'
   depends_on 'mesa_utils'
+  depends_on 'minizip'
   depends_on 'numactl'
+  depends_on 'qt5_base' 
+  depends_on 'zlib'
 
   no_compile_needed
 
