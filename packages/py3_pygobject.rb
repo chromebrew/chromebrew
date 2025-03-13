@@ -12,8 +12,8 @@ class Py3_pygobject < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c05c19f43fb8a7bc2a9f9cbbd8e3a202eff7e249e9ab8997e0900762f4244a82',
-     armv7l: 'c05c19f43fb8a7bc2a9f9cbbd8e3a202eff7e249e9ab8997e0900762f4244a82',
+    aarch64: '44e13728a3edbf1fa2199ccc15865c1f56c06339a5d1f1df237ffe80a9763aac',
+     armv7l: '44e13728a3edbf1fa2199ccc15865c1f56c06339a5d1f1df237ffe80a9763aac',
      x86_64: '294c19ce5ee977c5f306d1f66b589dc471e1f1b7cd8dd512e045d196bd336b2c'
   })
 
