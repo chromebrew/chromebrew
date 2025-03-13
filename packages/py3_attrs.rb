@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_attrs < Pip
   description 'Attrs removes the need to implement object protocols in classes.'
   homepage 'https://www.attrs.org/'
-  version "25.1.0-#{CREW_PY_VER}"
+  version "25.2.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
