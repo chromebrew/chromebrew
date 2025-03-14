@@ -25,7 +25,7 @@ class Git < Meson
   depends_on 'pcre2' # R
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'xmlto' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib_ng' # R
 
   print_source_bashrc
   run_tests
