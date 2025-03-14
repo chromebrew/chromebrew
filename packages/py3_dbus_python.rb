@@ -3,16 +3,16 @@ require 'buildsystems/pip'
 class Py3_dbus_python < Pip
   description 'libdbus language binding (wrapper) for CPython'
   homepage 'https://gitlab.freedesktop.org/dbus/dbus-python'
-  version "1.3.2-#{CREW_PY_VER}"
+  version "1.4.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e94cdeb4263913b22b8c1c72f4079f8e11a20d74cae866bdb6d9c5e59f2a1e2f',
-     armv7l: 'e94cdeb4263913b22b8c1c72f4079f8e11a20d74cae866bdb6d9c5e59f2a1e2f',
-     x86_64: 'ae50be4cea9e44062e682500199c14adc96cab074d11b0f3dfda0068abedbd55'
+    aarch64: 'e2aa3b2db48001734bb47c0c5cd189fc1378e39086ef39675dcb3c9a40b9b571',
+     armv7l: 'e2aa3b2db48001734bb47c0c5cd189fc1378e39086ef39675dcb3c9a40b9b571',
+     x86_64: '742413aabbb7e4cdf2077c243b9b50c4d984d7c22be74f1b55705bf2bb6066a9'
   })
 
   depends_on 'autoconf_archive' => :build
