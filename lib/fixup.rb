@@ -104,100 +104,100 @@ system(" sed -i 's/binary_sha256/sha256/g' #{File.join(CREW_CONFIG_PATH, 'device
 
 # Check for renamed and deprecated packages, and handle them.
 
-pkg_update_arr = [
-  { pkg_name: 'acli', pkg_rename: 'acquia_cli', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'agrind', pkg_rename: 'angle_grinder', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'apriconv', pkg_rename: 'apr_iconv', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'aprutil', pkg_rename: 'apr_util', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'arpscan', pkg_rename: 'arp_scan', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'asciidoc', pkg_rename: 'py3_asciidoc', pkg_deprecated: nil, comments: 'Renamed as a pip package.' },
-  { pkg_name: 'aws', pkg_rename: 'aws_cli', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'aws_cli', pkg_rename: 'awscli', pkg_deprecated: nil, comments: 'Renamed to match pip package name.' },
-  { pkg_name: 'btrfsprogs', pkg_rename: 'btrfs_progs', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'bz2', pkg_rename: 'bzip2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'bz3', pkg_rename: 'bzip3', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'chrome', pkg_rename: 'google_chrome', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'codium', pkg_rename: 'vscodium', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'dstat', pkg_rename: 'py3_dool', pkg_deprecated: nil, comments: 'Following upstream rename.' },
-  { pkg_name: 'epydoc', pkg_rename: nil, pkg_deprecated: true, comments: 'Abandoned upstream, only supports Python 2.' },
-  { pkg_name: 'ffcall', pkg_rename: 'libffcall', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'git_prompt', pkg_rename: nil, pkg_deprecated: true, comments: 'Integrated into git package.' },
-  { pkg_name: 'gnome_session', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd.' },
-  { pkg_name: 'gnome_settings_daemon', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd.' },
-  { pkg_name: 'gnome_shell', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd.' },
-  { pkg_name: 'gnome_tweaks', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd in dep package gnome_settings_daemon.' },
-  { pkg_name: 'ilmbase', pkg_rename: nil, pkg_deprecated: true, comments: 'Included in openexr.' },
-  { pkg_name: 'imagemagick6', pkg_rename: nil, pkg_deprecated: true, comments: 'Obsolete version of package, no longer required.' },
-  { pkg_name: 'imagemagick', pkg_rename: nil, pkg_deprecated: true, comments: 'Metapackage made redundant by the removal of imagemagick6.' },
-  { pkg_name: 'itstool', pkg_rename: 'py3_itstool', pkg_deprecated: false, comments: 'Renamed to indicate switch to pip buildsystem.' },
-  { pkg_name: 'js91', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced by newer versions of js.' },
-  { pkg_name: 'jsonc', pkg_rename: 'json_c', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'komodo', pkg_rename: nil, pkg_deprecated: true, comments: 'Abandoned upstream and no longer functional.' },
-  { pkg_name: 'libaudiofile', pkg_rename: nil, pkg_deprecated: true, comments: 'Inactive upstream with applicable CVEs' },
-  { pkg_name: 'libcurl', pkg_rename: 'curl', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'libgpgerror', pkg_rename: 'libgpg_error', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'libjpeg', pkg_rename: 'libjpeg_turbo', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'libmfx', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture' },
-  { pkg_name: 'linter', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced with py3_pre_commit.' },
-  { pkg_name: 'mandb', pkg_rename: 'man_db', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'mercurial', pkg_rename: 'py3_mercurial', pkg_deprecated: nil, comments: 'Renamed to match other pip packages.' },
-  { pkg_name: 'meson', pkg_rename: 'py3_meson', pkg_deprecated: nil, comments: 'Renamed to avoid conflict with buildsystems/meson.' },
-  { pkg_name: 'mesonbuild', pkg_rename: 'py3_meson', pkg_deprecated: nil, comments: 'Renamed to indicate switch to pip buildsystem.' },
-  { pkg_name: 'moonbuggy', pkg_rename: 'moon_buggy', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'nping', pkg_rename: nil, pkg_deprecated: true, comments: 'Removed to avoid conflict with nmap.' },
-  { pkg_name: 'oci_cli', pkg_rename: 'py3_oci_cli', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
-  { pkg_name: 'onepassword', pkg_rename: 'onepassword_cli', pkg_deprecated: nil, comments: 'Rename to distinguish between onepassword_gui.' },
-  { pkg_name: 'percona_boost', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced by regular boost.' },
-  { pkg_name: 'percona_server', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced by mysql.' },
-  { pkg_name: 'percona_toolkit', pkg_rename: 'perl_percona_toolkit', pkg_deprecated: true, comments: 'Renamed to identify perl package.' },
-  { pkg_name: 'pkgconfig', pkg_rename: 'pkg_config', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'postgres', pkg_rename: 'postgresql', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'proj4', pkg_rename: 'proj', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'py3_appdirs', pkg_rename: 'py3_platformdirs', pkg_deprecated: nil, comments: 'Replaced upstream.' },
-  { pkg_name: 'py3_agate_dfb', pkg_rename: 'py3_agate_dbf', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
-  { pkg_name: 'py3_dateutil', pkg_rename: 'py3_python_dateutil', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
-  { pkg_name: 'py3_magic', pkg_rename: 'py3_python_magic', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
-  { pkg_name: 'py3_pptx', pkg_rename: 'py3_python_pptx', pkg_deprecated: nil, comments: 'Fix to match upstream name.' },
-  { pkg_name: 'pygobject', pkg_rename: 'py3_pygobject', pkg_deprecated: nil, comments: 'Renamed to use pip packaging.' },
-  { pkg_name: 'q', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer suitable for packaging.' },
-  { pkg_name: 'qtbase', pkg_rename: 'qt5_base', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtcharts', pkg_rename: 'qt5_charts', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtchooser', pkg_rename: nil, pkg_deprecated: true, comments: "Doesn't work for newer Qt versions." },
-  { pkg_name: 'qtdeclarative', pkg_rename: 'qt5_declarative', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtimageformats', pkg_rename: 'qt5_imageformats', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtlocation', pkg_rename: 'qt5_location', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtmultimedia', pkg_rename: 'qt5_multimedia', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtquickcontrols', pkg_rename: 'qt5_quickcontrols', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtscript', pkg_rename: 'qt5_script', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtserialport', pkg_rename: 'qt5_serialport', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtsvg', pkg_rename: 'qt5_svg', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qttools', pkg_rename: 'qt5_tools', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtwayland', pkg_rename: 'qt5_wayland', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtwebchannel', pkg_rename: 'qt5_webchannel', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtwebengine', pkg_rename: 'qt5_webengine', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtwebglplugin', pkg_rename: 'qt5_webglplugin', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', pkg_deprecated: nil, comments: 'Renamed to allow qt6 packages.' },
-  { pkg_name: 'tracker3', pkg_rename: 'tinysparql', pkg_deprecated: nil, comments: 'Renamed upstream.' },
-  { pkg_name: 'tracker3_miners', pkg_rename: 'localsearch', pkg_deprecated: nil, comments: 'Renamed upstream.' },
-  { pkg_name: 'util_macros', pkg_rename: 'xorg_macros', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'wget', pkg_rename: 'wget2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'zlibpkg', pkg_rename: 'zlib', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' }
-].to_set
+renamed_packages = Set[
+  { pkg_name: 'acli', pkg_rename: 'acquia_cli', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'agrind', pkg_rename: 'angle_grinder', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'apriconv', pkg_rename: 'apr_iconv', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'aprutil', pkg_rename: 'apr_util', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'arpscan', pkg_rename: 'arp_scan', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'asciidoc', pkg_rename: 'py3_asciidoc', comments: 'Renamed as a pip package.' },
+  { pkg_name: 'aws', pkg_rename: 'aws_cli', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'aws_cli', pkg_rename: 'awscli', comments: 'Renamed to match pip package name.' },
+  { pkg_name: 'btrfsprogs', pkg_rename: 'btrfs_progs', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'bz2', pkg_rename: 'bzip2', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'bz3', pkg_rename: 'bzip3', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'chrome', pkg_rename: 'google_chrome', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'codium', pkg_rename: 'vscodium', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'dstat', pkg_rename: 'py3_dool', comments: 'Following upstream rename.' },
+  { pkg_name: 'ffcall', pkg_rename: 'libffcall', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'itstool', pkg_rename: 'py3_itstool', comments: 'Renamed to indicate switch to pip buildsystem.' },
+  { pkg_name: 'jsonc', pkg_rename: 'json_c', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'libcurl', pkg_rename: 'curl', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'libgpgerror', pkg_rename: 'libgpg_error', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'libjpeg', pkg_rename: 'libjpeg_turbo', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'mandb', pkg_rename: 'man_db', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'mercurial', pkg_rename: 'py3_mercurial', comments: 'Renamed to match other pip packages.' },
+  { pkg_name: 'meson', pkg_rename: 'py3_meson', comments: 'Renamed to avoid conflict with buildsystems/meson.' },
+  { pkg_name: 'mesonbuild', pkg_rename: 'py3_meson', comments: 'Renamed to indicate switch to pip buildsystem.' },
+  { pkg_name: 'moonbuggy', pkg_rename: 'moon_buggy', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'oci_cli', pkg_rename: 'py3_oci_cli', comments: 'Fix to match upstream name.' },
+  { pkg_name: 'onepassword', pkg_rename: 'onepassword_cli', comments: 'Rename to distinguish between onepassword_gui.' },
+  { pkg_name: 'percona_toolkit', pkg_rename: 'perl_percona_toolkit', comments: 'Renamed to identify perl package.' },
+  { pkg_name: 'pkgconfig', pkg_rename: 'pkg_config', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'postgres', pkg_rename: 'postgresql', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'proj4', pkg_rename: 'proj', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'py3_appdirs', pkg_rename: 'py3_platformdirs', comments: 'Replaced upstream.' },
+  { pkg_name: 'py3_agate_dfb', pkg_rename: 'py3_agate_dbf', comments: 'Fix to match upstream name.' },
+  { pkg_name: 'py3_dateutil', pkg_rename: 'py3_python_dateutil', comments: 'Fix to match upstream name.' },
+  { pkg_name: 'py3_magic', pkg_rename: 'py3_python_magic', comments: 'Fix to match upstream name.' },
+  { pkg_name: 'py3_pptx', pkg_rename: 'py3_python_pptx', comments: 'Fix to match upstream name.' },
+  { pkg_name: 'pygobject', pkg_rename: 'py3_pygobject', comments: 'Renamed to use pip packaging.' },
+  { pkg_name: 'qtbase', pkg_rename: 'qt5_base', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtcharts', pkg_rename: 'qt5_charts', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtdeclarative', pkg_rename: 'qt5_declarative', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtimageformats', pkg_rename: 'qt5_imageformats', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtlocation', pkg_rename: 'qt5_location', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtmultimedia', pkg_rename: 'qt5_multimedia', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtquickcontrols', pkg_rename: 'qt5_quickcontrols', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtscript', pkg_rename: 'qt5_script', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtserialport', pkg_rename: 'qt5_serialport', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtsvg', pkg_rename: 'qt5_svg', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qttools', pkg_rename: 'qt5_tools', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtwayland', pkg_rename: 'qt5_wayland', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtwebchannel', pkg_rename: 'qt5_webchannel', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtwebengine', pkg_rename: 'qt5_webengine', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtwebglplugin', pkg_rename: 'qt5_webglplugin', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', comments: 'Renamed to allow qt6 packages.' },
+  { pkg_name: 'tracker3', pkg_rename: 'tinysparql', comments: 'Renamed upstream.' },
+  { pkg_name: 'tracker3_miners', pkg_rename: 'localsearch', comments: 'Renamed upstream.' },
+  { pkg_name: 'util_macros', pkg_rename: 'xorg_macros', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'wget', pkg_rename: 'wget2', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'zlibpkg', pkg_rename: 'zlib', comments: 'Renamed to better match upstream.' }
+]
 
-fixup_pkgs = pkg_update_arr.to_set { |h| h[:pkg_name] }
-installed_fixup_packages = @installed_packages & fixup_pkgs
+deprecated_packages = Set[
+  { pkg_name: 'epydoc', comments: 'Abandoned upstream, only supports Python 2.' },
+  { pkg_name: 'git_prompt', comments: 'Integrated into git package.' },
+  { pkg_name: 'gnome_session', comments: 'No longer compatible with any architecture, requires systemd.' },
+  { pkg_name: 'gnome_settings_daemon', comments: 'No longer compatible with any architecture, requires systemd.' },
+  { pkg_name: 'gnome_shell', comments: 'No longer compatible with any architecture, requires systemd.' },
+  { pkg_name: 'gnome_tweaks', comments: 'No longer compatible with any architecture, requires systemd in dep package gnome_settings_daemon.' },
+  { pkg_name: 'ilmbase', comments: 'Included in openexr.' },
+  { pkg_name: 'imagemagick6', comments: 'Obsolete version of package, no longer required.' },
+  { pkg_name: 'imagemagick', comments: 'Metapackage made redundant by the removal of imagemagick6.' },
+  { pkg_name: 'js91', comments: 'Replaced by newer versions of js.' },
+  { pkg_name: 'komodo', comments: 'Abandoned upstream and no longer functional.' },
+  { pkg_name: 'libaudiofile', comments: 'Inactive upstream with applicable CVEs' },
+  { pkg_name: 'libmfx', comments: 'No longer compatible with any architecture' },
+  { pkg_name: 'linter', comments: 'Replaced with py3_pre_commit.' },
+  { pkg_name: 'nping', comments: 'Removed to avoid conflict with nmap.' },
+  { pkg_name: 'percona_boost', comments: 'Replaced by regular boost.' },
+  { pkg_name: 'percona_server', comments: 'Replaced by mysql.' },
+  { pkg_name: 'q', comments: 'No longer suitable for packaging.' },
+  { pkg_name: 'qtchooser', comments: "Doesn't work for newer Qt versions." }
+]
 
 # Handle package renames.
-renamed_packages = false
-installed_fixup_packages.each do |fixup_pkg|
-  working_pkg = pkg_update_arr.select { |i| i[:pkg_name] == fixup_pkg }
-  pkg_name = working_pkg[0][:pkg_name]
-  pkg_rename = working_pkg[0][:pkg_rename]
-  next unless pkg_rename
+renamed_pkgs = renamed_packages.map { |h| h[:pkg_name] }
+installed_pkgs_to_rename = @installed_packages & renamed_pkgs
 
-  renamed_packages = true
-  puts "#{pkg_name.capitalize} has been renamed to #{pkg_rename.capitalize}. #{working_pkg[0][:comments]}".lightpurple
+installed_pkgs_to_rename.each do |fixup_pkg|
+  working_pkg = renamed_packages.find { |i| i[:pkg_name] == fixup_pkg }
+  pkg_name = working_pkg[:pkg_name]
+  pkg_rename = working_pkg[:pkg_rename]
+
+  puts "#{pkg_name.capitalize} has been renamed to #{pkg_rename.capitalize}. #{working_pkg[:comments]}".lightpurple
 
   old_filelist = File.join(CREW_META_PATH, "#{pkg_name}.filelist")
   new_filelist = File.join(CREW_META_PATH, "#{pkg_rename}.filelist")
@@ -206,19 +206,18 @@ installed_fixup_packages.each do |fixup_pkg|
   # Handle case of new package already installed.
   if @installed_packages.include?(pkg_rename)
     puts "Renamed #{pkg_rename.capitalize} is already installed. Deleting old package (#{pkg_rename.capitalize}) information...".lightblue
-    FileUtils.rm_f old_filelist
-    FileUtils.rm_f old_directorylist
+    FileUtils.rm_f [old_filelist, old_directorylist]
     @fixup_json['installed_packages'].delete_if { |elem| elem[:name] == pkg_name }
     @installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
     next
   end
   # Handle case of package needing to be replaced.
   if File.file?(new_filelist)
-    puts "new filelist for #{pkg_rename.capitalize} already exists!"
+    puts "New filelist for #{pkg_rename.capitalize} already exists!"
     next
   end
   if File.file?(new_directorylist)
-    puts "new directorylist for #{pkg_rename.capitalize} already exists!"
+    puts "New directorylist for #{pkg_rename.capitalize} already exists!"
     next
   end
   # If new filelist or directorylist do not exist and new package is not
@@ -227,28 +226,23 @@ installed_fixup_packages.each do |fixup_pkg|
   FileUtils.mv old_directorylist, new_directorylist
   @fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }
   @fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
-  ## save_json(@fixup_json)
-  ## save_json(@fixup_json)
-  ## @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-  ## save_json(@fixup_json)
 end
 
-if renamed_packages
+unless installed_pkgs_to_rename.empty?
   @installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
   save_json(@fixup_json)
   refresh_crew_json
 end
 
-# Handle deprecated package deletions.
-deprecate_packages = false
-installed_fixup_packages.each do |fixup_pkg|
-  working_pkg = pkg_update_arr.select { |i| i[:pkg_name] == fixup_pkg }
-  delete_package = working_pkg[0][:pkg_deprecated]
-  next unless delete_package
+# Handle deprecated packages.
+deprecated_pkgs = deprecated_packages.map { |h| h[:pkg_name] }
+installed_pkgs_to_deprecate = @installed_packages & deprecated_pkgs
 
-  deprecate_packages = true
-  pkg_name = working_pkg[0][:pkg_name]
-  puts "#{pkg_name.capitalize} is deprecated and should be removed. #{working_pkg[0][:comments]}".lightpurple
+installed_pkgs_to_deprecate.each do |fixup_pkg|
+  working_pkg = deprecated_packages.find { |i| i[:pkg_name] == fixup_pkg }
+  pkg_name = working_pkg[:pkg_name]
+
+  puts "#{pkg_name.capitalize} is deprecated and should be removed. #{working_pkg[:comments]}".lightpurple
   if Package.agree_default_yes("\nWould you like to remove deprecated package #{pkg_name.capitalize}")
     # Create a minimal Package object and pass it to Command.remove
     pkg_object = Package
@@ -262,9 +256,10 @@ installed_fixup_packages.each do |fixup_pkg|
     puts "#{pkg_name.capitalize} not removed.".lightblue
   end
 end
+
 # Reload json after all external fixups are done, as there may have been external changes.
-if deprecate_packages
-  @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json')) if deprecate_packages
+unless installed_pkgs_to_deprecate.empty?
+  @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
   @installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
   refresh_crew_json
 end
