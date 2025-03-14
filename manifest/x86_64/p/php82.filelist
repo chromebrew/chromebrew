@@ -501,7 +501,6 @@
 /usr/local/lib64/php/test/Console_Getopt/tests/bug11068.phpt
 /usr/local/lib64/php/test/Console_Getopt/tests/bug13140.phpt
 /usr/local/lib64/php/test/Structures_Graph/tests/AcyclicTestTest.php
-/usr/local/lib64/php/test/Structures_Graph/tests/AllTests.php
 /usr/local/lib64/php/test/Structures_Graph/tests/BasicGraphTest.php
 /usr/local/lib64/php/test/Structures_Graph/tests/TopologicalSorterTest.php
 /usr/local/lib64/php/test/Structures_Graph/tests/helper.inc
