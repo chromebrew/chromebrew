@@ -14,7 +14,8 @@ class Zlib_ng < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '67cc7fbd92642298fc6bca2a20c50f648095a42482b5ebe7a0e02657a238a317'
+       i686: '67cc7fbd92642298fc6bca2a20c50f648095a42482b5ebe7a0e02657a238a317',
+     x86_64: 'baf51c97c8244097c847dcd5645d21feb65631b20e1cc3fb70c24455bacaf0c3'
   })
 
   depends_on 'glibc'
