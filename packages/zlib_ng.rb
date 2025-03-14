@@ -15,6 +15,6 @@ class Zlib_ng < CMake
 
   depends_on 'glibc'
 
-  cmake_options '-DWITH_GTEST=OFF
+  cmake_options '-DWITH_GTEST=OFF \
     -DBUILD_SHARED_LIBS=ON'
 end
