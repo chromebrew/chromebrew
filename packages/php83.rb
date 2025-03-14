@@ -3,17 +3,17 @@ require 'package'
 class Php83 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.3.17'
+  version '8.3.19'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
-  source_sha256 '89adb978cca209124fe53fd6327bc4966ca21213a7fa2e9504f854e340873018'
+  source_sha256 '976e4077dd25bec96b5dfe8938052d243bbd838f95368a204896eff12756545f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ce01ea13697ac529e66094042a6c7933b2c65b29c9e991644f8e34d7cb52153e',
-     armv7l: 'ce01ea13697ac529e66094042a6c7933b2c65b29c9e991644f8e34d7cb52153e',
-     x86_64: '1724e222ebfd4aa0932d64c4440661c9b4a687903a80e8e21a8e66e85e56ed41'
+    aarch64: '242a4ab0733ebf75585336250845b4743a7dc29ceebc1067630b4276a8808842',
+     armv7l: '242a4ab0733ebf75585336250845b4743a7dc29ceebc1067630b4276a8808842',
+     x86_64: '5e44e7ada2a7a9c6b50ec6bc385ff2e20f9421be63d6e709a7893833829fd718'
   })
 
   depends_on 'aspell_en' => :build
@@ -23,14 +23,14 @@ class Php83 < Package
   depends_on 'c_ares' # R
   depends_on 'curl' # R
   depends_on 'e2fsprogs' # R
-  depends_on 'exif'
-  depends_on 'freetds'
+  depends_on 'exif' # R
+  depends_on 'freetds' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
-  depends_on 'graphite'
+  depends_on 'graphite' # R
   depends_on 'icu4c' # R
   depends_on 'krb5' # R
   depends_on 'libcyrussasl' # R
@@ -49,15 +49,15 @@ class Php83 < Package
   depends_on 'libtool' # R
   depends_on 'libunistring' # R
   depends_on 'libxml2' # R
-  depends_on 'libxpm'
+  depends_on 'libxpm' # R
   depends_on 'libxslt' # R
   depends_on 'libzip' # R
   depends_on 'ncurses' # R
   depends_on 'oniguruma' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R
-  depends_on 'py3_pygments'
-  depends_on 're2c'
+  depends_on 'py3_pygments' # R
+  depends_on 're2c' # R
   depends_on 'sqlite' # R
   depends_on 'tidy' # R
   depends_on 'unixodbc' # R
