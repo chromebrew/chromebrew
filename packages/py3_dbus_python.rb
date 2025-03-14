@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_dbus_python < Pip
   description 'libdbus language binding (wrapper) for CPython'
   homepage 'https://gitlab.freedesktop.org/dbus/dbus-python'
-  version "1.3.2-#{CREW_PY_VER}"
+  version "1.4.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'

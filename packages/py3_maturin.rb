@@ -6,7 +6,7 @@ require 'buildsystems/python'
 class Py3_maturin < Python
   description 'Build and publish crates with pyo3, rust-cpython and cffi bindings'
   homepage 'https://github.com/PyO3/maturin'
-  version "1.8.2-#{CREW_PY_VER}"
+  version "1.8.3-#{CREW_PY_VER}"
   license 'Apache-2.0 OR MIT'
   compatibility 'all'
   source_url 'https://github.com/PyO3/maturin.git'
