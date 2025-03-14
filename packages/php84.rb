@@ -3,17 +3,17 @@ require 'package'
 class Php84 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.4.4'
+  version '8.4.5'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
-  source_sha256 '94c8a4fd419d45748951fa6d73bd55f6bdf0adaefb8814880a67baa66027311f'
+  source_sha256 '0d3270bbce4d9ec617befce52458b763fd461d475f1fe2ed878bb8573faed327'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '329c24214b78888939fbc161be3b7f6eba110260bb3c27b5bbf23ce2689fedc6',
-     armv7l: '329c24214b78888939fbc161be3b7f6eba110260bb3c27b5bbf23ce2689fedc6',
-     x86_64: '81a1e7846e4db18d70f73c9c34ae566eb3bc5549e12014829ba84e52036cc44e'
+    aarch64: '85b5dc0288a1fbe363d2bc33f4d35b68ae83f7c4281d84eeaad6342844829c96',
+     armv7l: '85b5dc0288a1fbe363d2bc33f4d35b68ae83f7c4281d84eeaad6342844829c96',
+     x86_64: 'ed9cd0a9a400f3e1a5ecd55858aeb948873e6280d28e7d9f343757975106454e'
   })
 
   depends_on 'aspell_en' => :build
@@ -23,14 +23,14 @@ class Php84 < Package
   depends_on 'c_ares' # R
   depends_on 'curl' # R
   depends_on 'e2fsprogs' # R
-  depends_on 'exif'
-  depends_on 'freetds'
+  depends_on 'exif' # R
+  depends_on 'freetds' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
-  depends_on 'graphite'
+  depends_on 'graphite' # R
   depends_on 'icu4c' # R
   depends_on 'krb5' # R
   depends_on 'libcyrussasl' # R
@@ -49,15 +49,15 @@ class Php84 < Package
   depends_on 'libtool' # R
   depends_on 'libunistring' # R
   depends_on 'libxml2' # R
-  depends_on 'libxpm'
+  depends_on 'libxpm' # R
   depends_on 'libxslt' # R
   depends_on 'libzip' # R
   depends_on 'ncurses' # R
   depends_on 'oniguruma' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R
-  depends_on 'py3_pygments'
-  depends_on 're2c'
+  depends_on 'py3_pygments' # R
+  depends_on 're2c' # R
   depends_on 'sqlite' # R
   depends_on 'tidy' # R
   depends_on 'unixodbc' # R
@@ -96,7 +96,7 @@ class Php84 < Package
 
   def self.build
     system "CPPFLAGS+=' -I#{CREW_PREFIX}/include/php/Zend' \
-       mold -run ./configure \
+       ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \
