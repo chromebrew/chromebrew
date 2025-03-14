@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Git < Meson
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.48.1'
+  version '2.49.0'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-#{version}.tar.xz"
@@ -35,7 +35,8 @@ class Git < Meson
         -Dgitattributes=#{CREW_PREFIX}/etc/gitattributes \
         -Dgitconfig=#{CREW_PREFIX}/etc/gitconfig \
         -Dgitweb=disabled \
-        -Dsane_tool_path=#{CREW_PREFIX}/bin"
+        -Dsane_tool_path=#{CREW_PREFIX}/bin \
+        -Dzlib_backend=zlib-ng"
 
   meson_build_extras do
     git_env = <<~EOF
