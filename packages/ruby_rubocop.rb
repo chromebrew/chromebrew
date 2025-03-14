@@ -6,7 +6,7 @@ require 'buildsystems/ruby'
 class Ruby_rubocop < RUBY
   description 'A Ruby static code analyzer and formatter'
   homepage 'https://rubocop.org'
-  version "1.73.2-#{CREW_RUBY_VER}"
+  version "1.74.0-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
