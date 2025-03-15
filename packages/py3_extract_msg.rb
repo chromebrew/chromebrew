@@ -13,7 +13,7 @@ class Py3_extract_msg < Pip
     aarch64: 'e861621994ce684bf759bd8b0f689ce7ede5d2c76a66042ca0e3a1ff1fbd0f0a',
      armv7l: 'e861621994ce684bf759bd8b0f689ce7ede5d2c76a66042ca0e3a1ff1fbd0f0a',
        i686: 'f0f8a73f040c1ce025bae6b8c25328401d5922fcae7ebf8d5f6e2cdc092278f9',
-     x86_64: 'c236ea48853f3aedf4e9e43c023580836a4c3b6be599f2b4e8dd833e9c999196'
+     x86_64: '9c5ca18c91a051fd4d15be5ceb6091a504b57dd7029fbc4897405ec3e18a7b42'
   })
 
   depends_on 'py3_imapclient'

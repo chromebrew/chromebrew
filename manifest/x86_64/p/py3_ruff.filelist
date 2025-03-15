@@ -1,8 +1,8 @@
 /usr/local/bin/ruff
-/usr/local/lib64/python3.13/site-packages/ruff-0.10.0.dist-info/METADATA
-/usr/local/lib64/python3.13/site-packages/ruff-0.10.0.dist-info/RECORD
-/usr/local/lib64/python3.13/site-packages/ruff-0.10.0.dist-info/WHEEL
-/usr/local/lib64/python3.13/site-packages/ruff-0.10.0.dist-info/licenses/LICENSE
+/usr/local/lib64/python3.13/site-packages/ruff-0.11.0.dist-info/METADATA
+/usr/local/lib64/python3.13/site-packages/ruff-0.11.0.dist-info/RECORD
+/usr/local/lib64/python3.13/site-packages/ruff-0.11.0.dist-info/WHEEL
+/usr/local/lib64/python3.13/site-packages/ruff-0.11.0.dist-info/licenses/LICENSE
 /usr/local/lib64/python3.13/site-packages/ruff/__init__.py
 /usr/local/lib64/python3.13/site-packages/ruff/__main__.py
 /usr/local/lib64/python3.13/site-packages/ruff/__pycache__/__init__.cpython-313.opt-2.pyc
