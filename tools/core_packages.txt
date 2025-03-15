@@ -281,5 +281,6 @@ xxhash
 xzutils
 zip
 zlib
+zlib_ng
 zoneinfo
 zstd
