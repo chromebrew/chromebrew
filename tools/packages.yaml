@@ -8425,6 +8425,11 @@ url: https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife
 activity: high
 ---
 kind: url
+name: sfml
+url: https://github.com/SFML/SFML/releases
+activity: low
+---
+kind: url
 name: sg3_utils
 url: http://sg.danny.cz/sg/p/
 activity: medium
