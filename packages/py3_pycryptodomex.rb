@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pycryptodomex < Pip
   description 'Pycryptodomex is a cryptographic library for Python.'
   homepage 'https://www.pycryptodome.org/'
-  version "3.21.0-#{CREW_PY_VER}"
+  version "3.22.0-#{CREW_PY_VER}"
   license 'BSD and public-domain'
   compatibility 'all'
   source_url 'SKIP'
