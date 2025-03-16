@@ -27,9 +27,9 @@
 /usr/local/share/flutter/.git/logs/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.git/objects/info/commit-graph
 /usr/local/share/flutter/.git/objects/info/packs
-/usr/local/share/flutter/.git/objects/pack/pack-c255b8e5bd7c63029e2057468e06a476a66f6f9a.idx
-/usr/local/share/flutter/.git/objects/pack/pack-c255b8e5bd7c63029e2057468e06a476a66f6f9a.pack
-/usr/local/share/flutter/.git/objects/pack/pack-c255b8e5bd7c63029e2057468e06a476a66f6f9a.rev
+/usr/local/share/flutter/.git/objects/pack/pack-ec5723bca478b85b410cf55a6863c5bb4546fce7.idx
+/usr/local/share/flutter/.git/objects/pack/pack-ec5723bca478b85b410cf55a6863c5bb4546fce7.pack
+/usr/local/share/flutter/.git/objects/pack/pack-ec5723bca478b85b410cf55a6863c5bb4546fce7.rev
 /usr/local/share/flutter/.git/packed-refs
 /usr/local/share/flutter/.git/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.gitattributes
@@ -5365,6 +5365,7 @@
 /usr/local/share/flutter/dev/tools/test/format_test.dart
 /usr/local/share/flutter/dev/tools/test/generate_gradle_lockfiles_test.dart
 /usr/local/share/flutter/dev/tools/test/mock_git.sh
+/usr/local/share/flutter/dev/tools/test/update_engine_version_test.dart
 /usr/local/share/flutter/dev/tools/test/update_icons_test.dart
 /usr/local/share/flutter/dev/tools/tools.iml
 /usr/local/share/flutter/dev/tools/update_icons.dart
@@ -6628,6 +6629,10 @@
 /usr/local/share/flutter/engine/src/flutter/impeller/display_list/skia_conversions.cc
 /usr/local/share/flutter/engine/src/flutter/impeller/display_list/skia_conversions.h
 /usr/local/share/flutter/engine/src/flutter/impeller/display_list/skia_conversions_unittests.cc
+/usr/local/share/flutter/engine/src/flutter/impeller/display_list/testing/render_text_in_canvas.cc
+/usr/local/share/flutter/engine/src/flutter/impeller/display_list/testing/render_text_in_canvas.h
+/usr/local/share/flutter/engine/src/flutter/impeller/display_list/testing/rmse.cc
+/usr/local/share/flutter/engine/src/flutter/impeller/display_list/testing/rmse.h
 /usr/local/share/flutter/engine/src/flutter/impeller/docs/android.md
 /usr/local/share/flutter/engine/src/flutter/impeller/docs/android_cpu_profile.md
 /usr/local/share/flutter/engine/src/flutter/impeller/docs/android_validation_layers.md
@@ -6726,6 +6731,7 @@
 /usr/local/share/flutter/engine/src/flutter/impeller/entity/contents/test/recording_render_pass.h
 /usr/local/share/flutter/engine/src/flutter/impeller/entity/contents/text_contents.cc
 /usr/local/share/flutter/engine/src/flutter/impeller/entity/contents/text_contents.h
+/usr/local/share/flutter/engine/src/flutter/impeller/entity/contents/text_contents_unittests.cc
 /usr/local/share/flutter/engine/src/flutter/impeller/entity/contents/texture_contents.cc
 /usr/local/share/flutter/engine/src/flutter/impeller/entity/contents/texture_contents.h
 /usr/local/share/flutter/engine/src/flutter/impeller/entity/contents/tiled_texture_contents.cc
@@ -7369,8 +7375,6 @@
 /usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/native_window.h
 /usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/proc_table.cc
 /usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/proc_table.h
-/usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/shadow_realm.cc
-/usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/shadow_realm.h
 /usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/surface_control.cc
 /usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/surface_control.h
 /usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/surface_transaction.cc
@@ -8658,6 +8662,7 @@
 /usr/local/share/flutter/engine/src/flutter/shell/platform/android/io/flutter/BuildConfig.java
 /usr/local/share/flutter/engine/src/flutter/shell/platform/android/io/flutter/FlutterInjector.java
 /usr/local/share/flutter/engine/src/flutter/shell/platform/android/io/flutter/Log.java
+/usr/local/share/flutter/engine/src/flutter/shell/platform/android/io/flutter/app/FlutterApplication.java
 /usr/local/share/flutter/engine/src/flutter/shell/platform/android/io/flutter/embedding/android/AndroidTouchProcessor.java
 /usr/local/share/flutter/engine/src/flutter/shell/platform/android/io/flutter/embedding/android/ExclusiveAppComponent.java
 /usr/local/share/flutter/engine/src/flutter/shell/platform/android/io/flutter/embedding/android/FlutterActivity.java
