@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Erlang < Autotools
   description 'Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.'
   homepage 'https://www.erlang.org/'
-  version '27.2.1'
+  version '27.3'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/erlang/otp.git'
