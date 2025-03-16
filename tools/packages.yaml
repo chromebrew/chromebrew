@@ -10200,9 +10200,14 @@ url: https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/
 activity: none
 ---
 kind: url
-name: zlibpkg
+name: zlib
 url: http://www.zlib.net
 activity: none
+---
+kind: url
+name: zlib_ng
+url: https://github.com/zlib-ng/zlib-ng/releases
+activity: high
 ---
 kind: url
 name: zoneinfo
