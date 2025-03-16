@@ -3,7 +3,7 @@ require 'package'
 class Elixir < Package
   description 'Elixir is a dynamic, functional language designed for building scalable and maintainable applications.'
   homepage 'https://elixir-lang.org/'
-  version '1.18.2'
+  version '1.18.3'
   license 'Apache-2.0 and ErlPL-1.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/elixir-lang/elixir.git'
