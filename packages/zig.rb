@@ -3,7 +3,7 @@ require 'package'
 class Zig < Package
   description 'Programming language designed for robustness, optimality, and clarity'
   homepage 'https://ziglang.org/'
-  version '0.13.0'
+  version '0.14.0'
   license 'MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Zig < Package
      x86_64: "https://ziglang.org/download/#{version}/zig-linux-x86_64-#{version}.tar.xz"
   })
   source_sha256({
-    aarch64: '4b0550239c2cd884cc03ddeb2b9934708f4b073ad59a96fccbfe09f7e4f54233',
-     armv7l: '4b0550239c2cd884cc03ddeb2b9934708f4b073ad59a96fccbfe09f7e4f54233',
-       i686: '876159cc1e15efb571e61843b39a2327f8925951d48b9a7a03048c36f72180f7',
-     x86_64: 'd45312e61ebcc48032b77bc4cf7fd6915c11fa16e4aad116b66c9468211230ea'
+    aarch64: 'a67dbfa9bdf769228ec994f2098698c619f930883ca5ef638f50eee2d7788d10',
+     armv7l: 'a67dbfa9bdf769228ec994f2098698c619f930883ca5ef638f50eee2d7788d10',
+       i686: '55d1ba21de5109686ffa675b9cc1dd66930093c202995a637ce3e397816e4c08',
+     x86_64: '473ec26806133cf4d1918caf1a410f8403a13d979726a9045b421b685031a982'
   })
 
   no_compile_needed
@@ -30,6 +30,6 @@ class Zig < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'zig' to get started.\n".lightblue
+    ExitMessage.add "\nType 'zig' to get started.\n"
   end
 end
