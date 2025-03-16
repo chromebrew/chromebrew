@@ -3,12 +3,12 @@ require 'package'
 class Keepassxc < Package
   description 'KeePass Cross-Platform Community Edition, the free, open source, light-weight and easy-to-use password manager.'
   homepage 'https://keepassxc.org/'
-  version '2.7.9'
+  version '2.7.10'
   license 'GPL-2 or GPL-3'
   compatibility 'x86_64'
-  min_glibc '2.32'
+  min_glibc '2.28'
   source_url "https://github.com/keepassxreboot/keepassxc/releases/download/#{version}/KeePassXC-#{version}-x86_64.AppImage"
-  source_sha256 '2a868b681a8ec4e381ac14203aec3d80ff6fa7a535fa102265a3ec9329b4b846'
+  source_sha256 '3f8308a4d905d067367d541b4dccd5e80700798039046ffc388ede4f50887b36'
 
   no_compile_needed
 
@@ -30,6 +30,6 @@ class Keepassxc < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'keepassxc' to get started.\n".lightblue
+    ExitMessage.add "\nType 'keepassxc' to get started.\n"
   end
 end
