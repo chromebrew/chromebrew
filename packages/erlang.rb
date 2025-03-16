@@ -13,7 +13,7 @@ class Erlang < Autotools
   binary_sha256({
     aarch64: 'ab2deeb2e1154075e6b1f1bd6c72f202d5f07f82b78bb1efa4f05ac35eea2d33',
      armv7l: 'ab2deeb2e1154075e6b1f1bd6c72f202d5f07f82b78bb1efa4f05ac35eea2d33',
-     x86_64: '7ca0591339f5de81daf0181df104db5974d7f13c0177bace0571cf306b07b00b'
+     x86_64: 'cf26969cca258ff301a0c33c0e51ee4d785ce400852e6ad62baaa8b23be4a1dd'
   })
 
   depends_on 'openjdk8'
