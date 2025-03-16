@@ -53,7 +53,7 @@ class Package
   def self.agree_default_no(message = nil)
     # This defaults to false.
     Timeout.timeout(CREW_AGREE_TIMEOUT_SECONDS) do
-      return agree_with_default("#{message} (yes/NO)?", true, default: 'n')
+      return agree_with_default("#{message} (yes/NO)? ", true, default: 'n')
     end
   rescue Timeout::Error
     return false
@@ -62,7 +62,7 @@ class Package
   def self.agree_default_yes(message = nil)
     # This defaults to true.
     Timeout.timeout(CREW_AGREE_TIMEOUT_SECONDS) do
-      return agree_with_default("#{message} (YES/no)?", true, default: 'y')
+      return agree_with_default("#{message} (YES/no)? ", true, default: 'y')
     end
   rescue Timeout::Error
     return true
@@ -77,7 +77,7 @@ class Package
       puts "Cannot identify #{config_object}.".lightred
       return
     end
-    if agree_default_no("Would you like to remove the config #{identifier}: #{config_object}")
+    if agree_default_no("Would you like to remove the config #{identifier}: #{config_object} ")
       FileUtils.rm_rf config_object
       puts "#{config_object} removed.".lightgreen
     else
