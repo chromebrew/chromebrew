@@ -3,7 +3,7 @@ require 'package'
 class Nvm < Package
   description 'Node Version Manager - Simple bash script to manage multiple active node.js versions.'
   homepage 'https://github.com/nvm-sh/nvm'
-  version '0.40.1'
+  version '0.40.2'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'
@@ -26,5 +26,6 @@ class Nvm < Package
 
   def self.postremove
     Package.agree_to_remove("#{CREW_PREFIX}/share/nvm")
+    Package.agree_to_remove("#{CREW_PREFIX}/.config/nvm")
   end
 end
