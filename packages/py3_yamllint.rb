@@ -13,7 +13,7 @@ class Py3_yamllint < Pip
     aarch64: 'f92fdd8aaf510f6ddb6b50aae8cf5ab7583e08885e48d9e20b28328d8c23eb27',
      armv7l: 'f92fdd8aaf510f6ddb6b50aae8cf5ab7583e08885e48d9e20b28328d8c23eb27',
        i686: 'eb13eeaf634990ee429fe4bcd0aa6c7cd82bed2134c2ffeb65cb84e8618eea9a',
-     x86_64: '767b2d7e8481c16cfb2e5ed5dc158e4d68b0d3db26a6f4f484b6866ef5689f20'
+     x86_64: '8d0901acec5eb8ca47b924d8d8f97bdb61adf12ad796293c3abc306380d3bfb1'
   })
 
   depends_on 'py3_pathspec'
