@@ -3,11 +3,11 @@ require 'package'
 class Upscayl < Package
   description 'Free and Open Source AI Image Upscaler'
   homepage 'https://upscayl.org/'
-  version '2.11.5'
+  version '2.15.0'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   source_url "https://github.com/upscayl/upscayl/releases/download/v#{version}/upscayl-#{version}-linux.AppImage"
-  source_sha256 'a30c529bcb7bac7339cb024fa7cb09439680c8d2a0adbc8963aa85a7bf3f5213'
+  source_sha256 '6459457e589bcb99e779ea442dce608bacda33916b7019a8862b7c6252aa8229'
 
   depends_on 'gtk3'
 

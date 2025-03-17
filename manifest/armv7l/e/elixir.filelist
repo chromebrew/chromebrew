@@ -1,9 +1,6 @@
 /usr/local/bin/elixir
-/usr/local/bin/elixir.ps1
 /usr/local/bin/elixirc
-/usr/local/bin/elixirc.ps1
 /usr/local/bin/iex
-/usr/local/bin/iex.ps1
 /usr/local/bin/mix
 /usr/local/lib/mix.ex
 /usr/local/lib/mix/app_loader.ex
