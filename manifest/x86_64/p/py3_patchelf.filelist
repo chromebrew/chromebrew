@@ -1,9 +1,8 @@
 /usr/local/bin/patchelf
-/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.1.dist-info/COPYING
-/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.1.dist-info/INSTALLER
-/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.1.dist-info/LICENSE
-/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.1.dist-info/METADATA
-/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.1.dist-info/RECORD
-/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.1.dist-info/REQUESTED
-/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.1.dist-info/WHEEL
-/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.1.dist-info/top_level.txt
+/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.2.dist-info/INSTALLER
+/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.2.dist-info/METADATA
+/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.2.dist-info/RECORD
+/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.2.dist-info/REQUESTED
+/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.2.dist-info/WHEEL
+/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.2.dist-info/licenses/COPYING
+/usr/local/lib64/python3.13/site-packages/patchelf-0.17.2.2.dist-info/licenses/LICENSE
