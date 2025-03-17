@@ -7750,6 +7750,11 @@ url: https://github.com/qhull/qhull/releases
 activity: low
 ---
 kind: url
+name: qortal
+url: https://github.com/Qortal/qortal/releases
+activity: low
+---
+kind: url
 name: qpdf
 url: https://github.com/qpdf/qpdf/releases
 activity: medium
