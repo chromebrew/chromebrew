@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Nautilus < Meson
   description 'Default file manager for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Files'
-  version '47.0'
+  version '48.0'
   license 'GPLv3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/nautilus.git'
