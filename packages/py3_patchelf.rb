@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_patchelf < Pip
   description 'Patchelf is a small utility to modify the dynamic linker and RPATH of ELF executables.'
   homepage 'https://pypi.org/project/patchelf'
-  version "0.17.2.1-#{CREW_PY_VER}"
+  version "0.17.2.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
