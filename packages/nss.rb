@@ -26,12 +26,12 @@ class Nss < Package
   depends_on 'zlib' # R
 
   def self.build
-    @build_64 = ARCH == 'x86_64' ? '1' : '0'
+    @build64 = ARCH == 'x86_64' ? '1' : '0'
     @arch_cflags = ''
     @arch_ldflags = @arch_cflags
 
     Dir.chdir 'nss' do
-      system "env opt_build=1 build_64=#{@build_64} \
+      system "env opt_build=1 build_64=#{@build64} \
         NSS_ENABLE_WERROR=0 NS_USE_GCC=1 USEABSPATH=NO \
         NSS_GYP_PREFIX=#{CREW_PREFIX} CFLAGS='-pipe #{@arch_cflags}' \
         CXXFLAGS='-pipe #{@arch_cflags}' LDFLAGS='#{@arch_ldflags}' \

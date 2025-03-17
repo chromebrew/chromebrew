@@ -29,7 +29,7 @@ module DebUtils
       end
 
       # read file meta
-      name, _modtime, _uid, _gid, mode, size, end_char = \
+      name, _modtime, _uid, _gid, mode, size, end_char =
         line.scan(/(.{16})(.{12})(.{6})(.{6})(.{8})(.{10})(.{1})/).flatten.map(&:strip)
 
       # remove slash suffix from filename (if any)

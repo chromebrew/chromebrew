@@ -139,7 +139,7 @@ at_exit do
   ExitMessage.print
 end
 
-def print_current_package(extra = false)
+def print_current_package(extra: false)
   status = if PackageUtils.installed?(@pkg.name)
              :installed
            elsif !PackageUtils.compatible?(@pkg)
@@ -167,7 +167,7 @@ def print_current_package(extra = false)
   puts ''
 end
 
-def set_package(pkg_path)
+def check_load_package(pkg_path)
   begin
     @pkg = Package.load_package(pkg_path)
   rescue SyntaxError => e
@@ -179,7 +179,7 @@ end
 
 def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), silent: false)
   begin
-    return set_package(pkg_path) if File.file?(pkg_path)
+    return check_load_package(pkg_path) if File.file?(pkg_path)
   rescue StandardError => e
     puts "Error with #{pkg_name}.rb: #{e}".lightred unless e.to_s.include?('uninitialized constant')
   end
@@ -486,7 +486,7 @@ def download
         end
       end
       # Download file if not cached.
-      downloader url, sha256sum, filename, CREW_VERBOSE
+      downloader url, sha256sum, filename, verbose: CREW_VERBOSE
 
       puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
       # Stow file in cache if requested, if file is not from cache,
@@ -513,7 +513,7 @@ def download
     else
       unless git # We don't want to download a git repository as a file.
         FileUtils.mkdir_p @extract_dir
-        downloader url, sha256sum, filename, CREW_VERBOSE
+        downloader url, sha256sum, filename, verbose: CREW_VERBOSE
 
         puts "#{filename}: File downloaded.".lightgreen
 
@@ -1625,7 +1625,7 @@ def build_command(args)
     next unless Command.check(name, @opt_force)
 
     search @pkg_name
-    print_current_package CREW_VERBOSE
+    print_current_package extra: CREW_VERBOSE
     next unless @pkg_name
 
     # Process preflight block to see if package should be built
@@ -1680,7 +1680,7 @@ def download_command(args)
     @pkg_name = name
     search @pkg_name
     @pkg.build_from_source = true if @opt_source
-    print_current_package CREW_VERBOSE
+    print_current_package extra: CREW_VERBOSE
     if ARGV.intersect?(%w[download]) && @pkg.is_fake?
       fake_pkg_deplist = @pkg.get_deps_list(return_attr: true).flat_map(&:keys).uniq
       until fake_pkg_deplist.blank?
@@ -1731,7 +1731,7 @@ def install_command(args)
     end
     next unless Command.check(name, @opt_force)
     search @pkg_name
-    print_current_package true
+    print_current_package extra: true
     @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
     next unless @pkg_name
 
