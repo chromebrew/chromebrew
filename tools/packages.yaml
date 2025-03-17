@@ -1875,6 +1875,11 @@ url: https://github.com/sharkdp/fd/releases/
 activity: low
 ---
 kind: url
+name: fdupes
+url: https://github.com/adrianlopezroche/fdupes
+activity: low
+---
+kind: url
 name: feh
 url: https://feh.finalrewind.org/
 activity: medium
