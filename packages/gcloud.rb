@@ -13,8 +13,8 @@ class Gcloud < Package
      x86_64: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-linux-x86_64.tar.gz"
   })
   source_sha256({
-    aarch64: '12902652fae5d3bfe87f5349088e9ac22f40d19f8938905887277d24920d5017',
-     armv7l: '12902652fae5d3bfe87f5349088e9ac22f40d19f8938905887277d24920d5017',
+    aarch64: 'e3cda6a6f6d7638de8654b8c756e8575a705d73860060a4dac7b53a3484a02ff',
+     armv7l: 'e3cda6a6f6d7638de8654b8c756e8575a705d73860060a4dac7b53a3484a02ff',
        i686: 'f4f5ef3c995351b025aa86851c75aeb371ab4c47542ad08949e964a8d06fe1f4',
      x86_64: 'cbf880e78696433fcdead7ecc7d562bdd56c6584ccc2dc0a4ee921bc51003116'
   })
