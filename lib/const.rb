@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.57.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.57.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -61,7 +61,7 @@ else
 end
 
 # Use sane minimal defaults if in container and no override specified.
-CREW_KERNEL_VERSION ||= \
+CREW_KERNEL_VERSION ||=
   if CREW_IN_CONTAINER && ENV.fetch('CREW_KERNEL_VERSION', nil).nil?
     ARCH.eql?('i686') ? '3.8' : '5.10'
   else
@@ -106,7 +106,7 @@ CREW_FORCE   ||= ARGV.intersect?(%w[-f --force]) unless defined?(CREW_FORCE)
 CREW_VERBOSE ||= ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
 
 # Set CREW_NPROC from environment variable, `distcc -j`, or `nproc`.
-CREW_NPROC ||= \
+CREW_NPROC ||=
   if File.file?("#{CREW_PREFIX}/bin/distcc")
     ENV.fetch('CREW_NPROC', `distcc -j`.chomp)
   else
@@ -139,7 +139,7 @@ CREW_BRANCH ||= ENV.fetch('CREW_BRANCH', 'master') unless defined?(CREW_BRANCH)
 USER ||= Etc.getlogin unless defined?(USER)
 
 unless defined?(CHROMEOS_RELEASE)
-  CHROMEOS_RELEASE = \
+  CHROMEOS_RELEASE =
     if File.exist?('/etc/lsb-release')
       File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE||=(.+)/, 1]
     else
@@ -168,7 +168,7 @@ CREW_DOWNLOADER_RETRY ||= ENV.fetch('CREW_DOWNLOADER_RETRY', 3).to_i unless defi
 CREW_HIDE_PROGBAR = ENV.fetch('CREW_HIDE_PROGBAR', false) unless defined?(CREW_HIDE_PROGBAR)
 
 # set certificate file location for lib/downloader.rb
-SSL_CERT_FILE ||= \
+SSL_CERT_FILE ||=
   if ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
     ENV['SSL_CERT_FILE']
   elsif File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
@@ -177,7 +177,7 @@ SSL_CERT_FILE ||= \
     '/etc/ssl/certs/ca-certificates.crt'
   end
 
-SSL_CERT_DIR ||= \
+SSL_CERT_DIR ||=
   if ENV['SSL_CERT_DIR'] && Dir.exist?(ENV['SSL_CERT_DIR'])
     ENV['SSL_CERT_DIR']
   elsif Dir.exist?("#{CREW_PREFIX}/etc/ssl/certs")
@@ -211,7 +211,7 @@ CREW_COMMON_FNO_LTO_FLAGS ||= "#{CREW_CORE_FLAGS} -fno-lto"
 CREW_LDFLAGS              ||= "-flto=auto #{CREW_LINKER_FLAGS}"
 CREW_FNO_LTO_LDFLAGS      ||= '-fno-lto'
 
-CREW_ENV_OPTIONS_HASH ||= \
+CREW_ENV_OPTIONS_HASH ||=
   if CREW_DISABLE_ENV_OPTIONS
     { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
   else

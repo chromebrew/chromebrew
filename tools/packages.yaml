@@ -1865,6 +1865,11 @@ url: https://kernel.ubuntu.com/~cking/tarballs/faultstat/
 activity: low
 ---
 kind: url
+name: fceux
+url: https://github.com/FinnBaltazar1111/fceux/releases
+activity: low
+---
+kind: url
 name: fcft
 url: https://codeberg.org/dnkl/fcft/tags
 activity: high
@@ -1872,6 +1877,11 @@ activity: high
 kind: url
 name: fd
 url: https://github.com/sharkdp/fd/releases/
+activity: low
+---
+kind: url
+name: fdupes
+url: https://github.com/adrianlopezroche/fdupes
 activity: low
 ---
 kind: url

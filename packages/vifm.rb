@@ -18,10 +18,10 @@ class Vifm < Package
   })
 
   def self.build
-    system './configure', \
-           "--prefix=#{CREW_PREFIX}", \
-           '--without-gtk', \
-           '--without-X11', \
+    system './configure',
+           "--prefix=#{CREW_PREFIX}",
+           '--without-gtk',
+           '--without-X11',
            # "--with-curses=#{CREW_PREFIX}/include/ncursesw" \
            # "--with-curses-name=ncursesw" \
            "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw"

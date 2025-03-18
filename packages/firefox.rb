@@ -103,7 +103,7 @@ class Firefox < Package
 
   def self.preremove
     Dir.chdir("#{CREW_PREFIX}/bin") do
-      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') && \
+      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') &&
          File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/firefox"
         FileUtils.rm "#{CREW_PREFIX}/bin/x-www-browser"
       end
