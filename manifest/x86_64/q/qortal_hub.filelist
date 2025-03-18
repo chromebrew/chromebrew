@@ -1,0 +1,96 @@
+/usr/local/bin/qortal-hub
+/usr/local/share/applications/Qortal Hub.desktop
+/usr/local/share/icons/hicolor/1024x1024/apps/Qortal Hub.png
+/usr/local/share/icons/hicolor/128x128/apps/Qortal Hub.png
+/usr/local/share/icons/hicolor/16x16/apps/Qortal Hub.png
+/usr/local/share/icons/hicolor/24x24/apps/Qortal Hub.png
+/usr/local/share/icons/hicolor/256x256/apps/Qortal Hub.png
+/usr/local/share/icons/hicolor/32x32/apps/Qortal Hub.png
+/usr/local/share/icons/hicolor/48x48/apps/Qortal Hub.png
+/usr/local/share/icons/hicolor/512x512/apps/Qortal Hub.png
+/usr/local/share/icons/hicolor/64x64/apps/Qortal Hub.png
+/usr/local/share/icons/hicolor/96x96/apps/Qortal Hub.png
+/usr/local/share/qortal_hub/AppRun
+/usr/local/share/qortal_hub/LICENSE.electron.txt
+/usr/local/share/qortal_hub/LICENSES.chromium.html
+/usr/local/share/qortal_hub/Qortal Hub
+/usr/local/share/qortal_hub/Qortal Hub.desktop
+/usr/local/share/qortal_hub/Qortal Hub.png
+/usr/local/share/qortal_hub/chrome-sandbox
+/usr/local/share/qortal_hub/chrome_100_percent.pak
+/usr/local/share/qortal_hub/chrome_200_percent.pak
+/usr/local/share/qortal_hub/chrome_crashpad_handler
+/usr/local/share/qortal_hub/icudtl.dat
+/usr/local/share/qortal_hub/libEGL.so
+/usr/local/share/qortal_hub/libGLESv2.so
+/usr/local/share/qortal_hub/libffmpeg.so
+/usr/local/share/qortal_hub/libvk_swiftshader.so
+/usr/local/share/qortal_hub/libvulkan.so.1
+/usr/local/share/qortal_hub/locales/af.pak
+/usr/local/share/qortal_hub/locales/am.pak
+/usr/local/share/qortal_hub/locales/ar.pak
+/usr/local/share/qortal_hub/locales/bg.pak
+/usr/local/share/qortal_hub/locales/bn.pak
+/usr/local/share/qortal_hub/locales/ca.pak
+/usr/local/share/qortal_hub/locales/cs.pak
+/usr/local/share/qortal_hub/locales/da.pak
+/usr/local/share/qortal_hub/locales/de.pak
+/usr/local/share/qortal_hub/locales/el.pak
+/usr/local/share/qortal_hub/locales/en-GB.pak
+/usr/local/share/qortal_hub/locales/en-US.pak
+/usr/local/share/qortal_hub/locales/es-419.pak
+/usr/local/share/qortal_hub/locales/es.pak
+/usr/local/share/qortal_hub/locales/et.pak
+/usr/local/share/qortal_hub/locales/fa.pak
+/usr/local/share/qortal_hub/locales/fi.pak
+/usr/local/share/qortal_hub/locales/fil.pak
+/usr/local/share/qortal_hub/locales/fr.pak
+/usr/local/share/qortal_hub/locales/gu.pak
+/usr/local/share/qortal_hub/locales/he.pak
+/usr/local/share/qortal_hub/locales/hi.pak
+/usr/local/share/qortal_hub/locales/hr.pak
+/usr/local/share/qortal_hub/locales/hu.pak
+/usr/local/share/qortal_hub/locales/id.pak
+/usr/local/share/qortal_hub/locales/it.pak
+/usr/local/share/qortal_hub/locales/ja.pak
+/usr/local/share/qortal_hub/locales/kn.pak
+/usr/local/share/qortal_hub/locales/ko.pak
+/usr/local/share/qortal_hub/locales/lt.pak
+/usr/local/share/qortal_hub/locales/lv.pak
+/usr/local/share/qortal_hub/locales/ml.pak
+/usr/local/share/qortal_hub/locales/mr.pak
+/usr/local/share/qortal_hub/locales/ms.pak
+/usr/local/share/qortal_hub/locales/nb.pak
+/usr/local/share/qortal_hub/locales/nl.pak
+/usr/local/share/qortal_hub/locales/pl.pak
+/usr/local/share/qortal_hub/locales/pt-BR.pak
+/usr/local/share/qortal_hub/locales/pt-PT.pak
+/usr/local/share/qortal_hub/locales/ro.pak
+/usr/local/share/qortal_hub/locales/ru.pak
+/usr/local/share/qortal_hub/locales/sk.pak
+/usr/local/share/qortal_hub/locales/sl.pak
+/usr/local/share/qortal_hub/locales/sr.pak
+/usr/local/share/qortal_hub/locales/sv.pak
+/usr/local/share/qortal_hub/locales/sw.pak
+/usr/local/share/qortal_hub/locales/ta.pak
+/usr/local/share/qortal_hub/locales/te.pak
+/usr/local/share/qortal_hub/locales/th.pak
+/usr/local/share/qortal_hub/locales/tr.pak
+/usr/local/share/qortal_hub/locales/uk.pak
+/usr/local/share/qortal_hub/locales/ur.pak
+/usr/local/share/qortal_hub/locales/vi.pak
+/usr/local/share/qortal_hub/locales/zh-CN.pak
+/usr/local/share/qortal_hub/locales/zh-TW.pak
+/usr/local/share/qortal_hub/qortal_hub.sh
+/usr/local/share/qortal_hub/resources.pak
+/usr/local/share/qortal_hub/resources/app-update.yml
+/usr/local/share/qortal_hub/resources/app.asar
+/usr/local/share/qortal_hub/snapshot_blob.bin
+/usr/local/share/qortal_hub/usr/lib/libXss.so.1
+/usr/local/share/qortal_hub/usr/lib/libXtst.so.6
+/usr/local/share/qortal_hub/usr/lib/libappindicator.so.1
+/usr/local/share/qortal_hub/usr/lib/libgconf-2.so.4
+/usr/local/share/qortal_hub/usr/lib/libindicator.so.7
+/usr/local/share/qortal_hub/usr/lib/libnotify.so.4
+/usr/local/share/qortal_hub/v8_context_snapshot.bin
+/usr/local/share/qortal_hub/vk_swiftshader_icd.json

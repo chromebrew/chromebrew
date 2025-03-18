@@ -1880,6 +1880,11 @@ url: https://github.com/sharkdp/fd/releases/
 activity: low
 ---
 kind: url
+name: fdupes
+url: https://github.com/adrianlopezroche/fdupes
+activity: low
+---
+kind: url
 name: feh
 url: https://feh.finalrewind.org/
 activity: medium
@@ -7755,6 +7760,16 @@ url: https://github.com/qhull/qhull/releases
 activity: low
 ---
 kind: url
+name: qortal
+url: https://github.com/Qortal/qortal/releases
+activity: low
+---
+kind: url
+name: qortal_hub
+url: https://github.com/Qortal/Qortal-Hub/releases
+activity: medium
+---
+kind: url
 name: qpdf
 url: https://github.com/qpdf/qpdf/releases
 activity: medium
@@ -8428,6 +8443,11 @@ kind: url
 name: sfk
 url: https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife
 activity: high
+---
+kind: url
+name: sfml
+url: https://github.com/SFML/SFML/releases
+activity: low
 ---
 kind: url
 name: sg3_utils

@@ -115,7 +115,7 @@ class ConvenienceFunctions
 
   def self.unset_default_browser(browser_name, browser_binary)
     Dir.chdir("#{CREW_PREFIX}/bin") do
-      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') && \
+      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') &&
          File.realpath('x-www-browser') == "#{CREW_PREFIX}/share/#{browser_name.downcase}/#{browser_binary}"
         FileUtils.rm "#{CREW_PREFIX}/bin/x-www-browser"
       end
