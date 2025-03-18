@@ -10,8 +10,8 @@ class Py3_yamllint < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4609b1c93c1967e51aaf2b2bddf40103dced104f382691b4046ca4773e5e94ef',
-     armv7l: '4609b1c93c1967e51aaf2b2bddf40103dced104f382691b4046ca4773e5e94ef',
+    aarch64: '522cec5b16b537211ded83ca3bdf3b68c42f3e2f5b32d7a13c9d19709d349b61',
+     armv7l: '522cec5b16b537211ded83ca3bdf3b68c42f3e2f5b32d7a13c9d19709d349b61',
        i686: '70569bc40cb4ae8b334cbe3f8a2b1e3930aa679797f551b53f1998e63112048a',
      x86_64: '04ef7db5779911cf767df0218d66e40b0dfdef40bf5d2168dee94a4ada0fd439'
   })
