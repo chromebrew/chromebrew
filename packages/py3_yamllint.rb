@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_yamllint < Pip
   description 'YAMLlint is a linter for YAML files.'
   homepage 'https://github.com/adrienverge/yamllint/'
-  version "1.36.1-#{CREW_PY_VER}"
+  version "1.36.2-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
