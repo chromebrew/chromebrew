@@ -219,10 +219,6 @@ def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkg_name
 
   unless CREW_NO_GIT
-    # The following is used in fixup.rb to determine if crew update needs to
-    # be run again.
-    @crew_const_git_commit = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
-
     unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
       puts 'Fixing Chromebrew system git repo clone...'.orange
       system(<<~GIT_REPAIR_COMMANDS, chdir: CREW_LIB_PATH, %i[out err] => File::NULL)
@@ -248,8 +244,12 @@ def update
       git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools
       git sparse-checkout reapply
       git fetch #{CREW_REPO} #{CREW_BRANCH}
-      git reset --hard FETCH_HEAD
     GIT_UPDATE_COMMANDS
+    # Now that we've fetched all the new changes, see if lib/const.rb was changed.
+    # We do this before resetting to FETCH_HEAD because we lose the original HEAD when doing so.
+    to_update = `cd #{CREW_LIB_PATH} && git show --name-only HEAD..FETCH_HEAD`.include?('lib/const.rb')
+    system('git reset --hard FETCH_HEAD', chdir: CREW_LIB_PATH, exception: true)
+
     system(<<~GIT_RESTORE_MTIME_COMMAND, chdir: CREW_LIB_PATH, exception: true) if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
       # Set the mtime on each file in git to the date the file was added,
       # not to the date of the last git pull.
@@ -262,6 +262,13 @@ def update
       system 'gem cleanup'
     end
     puts 'Package lists, crew, and library updated.'
+
+    # If lib/const.rb was changed, CREW_VERSION was bumped, so we re-run crew update.
+    if to_update
+      puts 'Restarting crew update since there is an updated crew version.'.lightcyan
+      puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if CREW_VERBOSE
+      exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
+    end
 
     # Do any fixups necessary after crew has updated from git.
     load "#{CREW_LIB_PATH}/lib/fixup.rb"
