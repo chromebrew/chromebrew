@@ -4,7 +4,7 @@ require 'buildsystems/meson'
 class Pango < Meson
   description 'Pango is a library for laying out and rendering of text, with an emphasis on internationalization.'
   homepage 'https://pango.gnome.org/'
-  version '1.56.2'
+  version '1.56.3'
   license 'LGPL-2+ and FTL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/pango.git'
@@ -12,9 +12,9 @@ class Pango < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cca03bdca509d258a566f0a4c792dd9f5cd637639aa84d623ba526c5b5cd8c9c',
-     armv7l: 'cca03bdca509d258a566f0a4c792dd9f5cd637639aa84d623ba526c5b5cd8c9c',
-     x86_64: 'fd7996e1a199c7918210ae757b5aaa6dcca35d756aa02329a5e00116a8bd9fca'
+    aarch64: '29bce5f71c88cdd92df459c350f73a89b7e2909de05a80f2f206f380dfe3f77f',
+     armv7l: '29bce5f71c88cdd92df459c350f73a89b7e2909de05a80f2f206f380dfe3f77f',
+     x86_64: '2326ef48c5a386ecaa45498e8135ac8dd9e363179b22d15deaa4eec0dfe5ac0c'
   })
 
   depends_on 'cairo' # R
@@ -38,5 +38,6 @@ class Pango < Meson
       -Ddocumentation=false \
       -Dfontconfig=enabled \
       -Dfreetype=enabled \
+      -Dintrospection=enabled \
       -Dlibthai=disabled'
 end
