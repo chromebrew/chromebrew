@@ -2073,7 +2073,7 @@
 /usr/local/share/doc/gimp-3.0/libgimp-3.0/method.Procedure.get_proc_type.html
 /usr/local/share/doc/gimp-3.0/libgimp-3.0/method.Procedure.get_return_values.html
 /usr/local/share/doc/gimp-3.0/libgimp-3.0/method.Procedure.get_sensitivity_mask.html
-/usr/local/share/doc/gimp-3.0/libgimp-3.0/method.Procedure.is_core.html
+/usr/local/share/doc/gimp-3.0/libgimp-3.0/method.Procedure.is_internal.html
 /usr/local/share/doc/gimp-3.0/libgimp-3.0/method.Procedure.new_return_values.html
 /usr/local/share/doc/gimp-3.0/libgimp-3.0/method.Procedure.persistent_ready.html
 /usr/local/share/doc/gimp-3.0/libgimp-3.0/method.Procedure.run.html

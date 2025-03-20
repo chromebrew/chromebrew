@@ -491,7 +491,7 @@ activity: none
 ---
 kind: url
 name: babl
-url: https://download.gimp.org/pub/babl/
+url: https://gitlab.gnome.org/GNOME/babl/-/tags
 activity: high
 ---
 kind: url
@@ -2376,7 +2376,7 @@ activity: medium
 ---
 kind: url
 name: gegl
-url: https://download.gimp.org/pub/gegl/
+url: https://gitlab.gnome.org/GNOME/gegl/-/tags
 activity: medium
 ---
 kind: url
@@ -2486,7 +2486,7 @@ activity: low
 ---
 kind: url
 name: gimp
-url: https://download.gimp.org/pub/gimp/
+url: https://gitlab.gnome.org/GNOME/gimp/-/tags
 activity: high
 ---
 kind: url

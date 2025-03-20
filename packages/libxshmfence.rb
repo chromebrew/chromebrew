@@ -1,32 +1,22 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxshmfence < Package
+class Libxshmfence < Autotools
   description 'A library that exposes a event API on top of Linux futexes'
   homepage 'http://t2sde.org/packages/libxshmfence.html'
-  version '1.3.1'
-  license 'custom'
+  version '1.3.3'
+  license 'HPND'
   compatibility 'all'
-  source_url 'https://xorg.freedesktop.org/releases/individual/lib/libxshmfence-1.3.1.tar.xz'
+  source_url "https://xorg.freedesktop.org/releases/individual/lib/libxshmfence-#{version}.tar.xz"
   source_sha256 '1129f95147f7bfe6052988a087f1b7cb7122283d2c47a7dbf7135ce0df69b4f8'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '80960ac0229518c53314b7da0647329860ca1f3369076624e866267a555bf178',
-     armv7l: '80960ac0229518c53314b7da0647329860ca1f3369076624e866267a555bf178',
-       i686: '80a7cd36137b0ba04e1775277667abd21ae43bc1415a5e53d5ebaa211ab78bcd',
-     x86_64: 'cab374aabaa29a0e9723ec3242efcdee5b196cec9398056977fdc813fcc3bb9b'
+    aarch64: '02f4ab456e7cb76d57ce68cac91d1ff3e94b47b0590602537bee71fb3638e90d',
+     armv7l: '02f4ab456e7cb76d57ce68cac91d1ff3e94b47b0590602537bee71fb3638e90d',
+       i686: 'd5f1bad7c9f6ed83b3045f261577d9de9b427eb94d6fa987cc0788ebe9d5becb',
+     x86_64: 'cdf155dbc90266359e6542292d198630a598bc0c5867ce1e6c3590eef674b1ed'
   })
 
   depends_on 'glibc' # R
   depends_on 'xorg_proto' => :build
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
