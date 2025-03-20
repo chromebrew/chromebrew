@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_iniconfig < Pip
   description 'Iniconfig provides simple config-ini parsing.'
   homepage 'https://github.com/pytest-dev/iniconfig/'
-  version "2.0.0-#{CREW_PY_VER}"
+  version "2.1.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
