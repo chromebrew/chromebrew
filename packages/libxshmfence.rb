@@ -1,12 +1,12 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxshmfence < Package
+class Libxshmfence < Autotools
   description 'A library that exposes a event API on top of Linux futexes'
   homepage 'http://t2sde.org/packages/libxshmfence.html'
-  version '1.3.1'
-  license 'custom'
+  version '1.3.3'
+  license 'HPND'
   compatibility 'all'
-  source_url 'https://xorg.freedesktop.org/releases/individual/lib/libxshmfence-1.3.1.tar.xz'
+  source_url "https://xorg.freedesktop.org/releases/individual/lib/libxshmfence-#{version}.tar.xz"
   source_sha256 '1129f95147f7bfe6052988a087f1b7cb7122283d2c47a7dbf7135ce0df69b4f8'
   binary_compression 'tar.zst'
 
@@ -19,14 +19,4 @@ class Libxshmfence < Package
 
   depends_on 'glibc' # R
   depends_on 'xorg_proto' => :build
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
