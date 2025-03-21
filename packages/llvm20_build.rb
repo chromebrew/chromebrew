@@ -16,7 +16,7 @@ class Llvm20_build < Package
     aarch64: '7518f6c15d13866f9144a231b10cdc6b1995067d859651c03ff9e733a015d84a',
      armv7l: '7518f6c15d13866f9144a231b10cdc6b1995067d859651c03ff9e733a015d84a',
        i686: 'afc1ef39052899ce05ef7ee06185fd55c0e3f7c68ff86615ae876aa8b577b212',
-     x86_64: '1d467898066e233a33b5794c8549868629cc7ecd8942daf4bf491f7b6093636d'
+     x86_64: '16e01fcc38fd0c52b054b4613ea2ad711bb36b4d28093157ba1ca49d213dd21b'
   })
 
   depends_on 'gcc_lib' # R
@@ -34,6 +34,7 @@ class Llvm20_build < Package
   depends_on 'zstd' # R
   depends_on 'llvm20_dev' # R
   depends_on 'llvm20_lib' # R
+  depends_on 'llvm20_dev' # R
 
   no_env_options
   conflicts_ok
