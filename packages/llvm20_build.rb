@@ -181,13 +181,13 @@ class Llvm20_build < Package
   end
 
   # preserve for check, skip check for current version
-  def self.check
-    Dir.chdir('builddir') do
-      system 'ninja check-llvm || true'
-      system 'ninja check-clang || true'
-      system 'ninja check-lld || true'
-    end
-  end
+  # def self.check
+  #   Dir.chdir('builddir') do
+  #     system 'ninja check-llvm || true'
+  #     system 'ninja check-clang || true'
+  #     system 'ninja check-lld || true'
+  #   end
+  # end
 
   def self.postinstall
     puts
