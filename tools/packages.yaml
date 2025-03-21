@@ -6660,6 +6660,11 @@ url: https://www.azul.com/downloads/?package=jdk#zulu
 activity: medium
 ---
 kind: url
+name: openjdk24
+url: https://www.azul.com/downloads/?package=jdk#zulu
+activity: medium
+---
+kind: url
 name: openjpeg
 url: https://github.com/uclouvain/openjpeg/releases
 activity: low
