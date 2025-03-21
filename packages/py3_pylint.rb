@@ -6,7 +6,7 @@ require 'buildsystems/pip'
 class Py3_pylint < Pip
   description 'Analyzes Python code looking for bugs and signs of poor quality'
   homepage 'https://pylint.pycqa.org'
-  version "3.3.5-#{CREW_PY_VER}"
+  version "3.3.6-#{CREW_PY_VER}"
   license 'GPL'
   compatibility 'all'
   source_url 'SKIP'
