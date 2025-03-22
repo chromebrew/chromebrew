@@ -59,7 +59,7 @@ if SKIP_UPDATE_CHECKS
   puts 'Skipping pip and gem remote update checks.'.orange
 else
   puts 'Checking for pip package version updates...'.orange
-  load 'tools/update_python_pip_packages.rb'
+  Kernel.system 'tools/update_python_pip_packages.rb'
   puts 'Checking for ruby gem package version updates...'.orange
   load 'tools/update_ruby_gem_packages.rb'
 end
