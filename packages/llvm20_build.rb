@@ -32,10 +32,6 @@ class Llvm20_build < Package
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'llvm20_dev' # R
-  depends_on 'llvm20_lib' # R
-  depends_on 'llvm20_dev' # R
-  depends_on 'llvm20_dev' # R
 
   no_env_options
   conflicts_ok

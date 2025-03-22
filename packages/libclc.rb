@@ -17,8 +17,8 @@ class Libclc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f65dbd4b80aafb3363c59425c87a202d86164ad6533c43c6870c24faf866d02f',
-     armv7l: 'f65dbd4b80aafb3363c59425c87a202d86164ad6533c43c6870c24faf866d02f',
+    aarch64: '706ad128ee56b25ae8b9fc10c8dbe64625325fdeabe54b77a1d5d7b170c33b16',
+     armv7l: '706ad128ee56b25ae8b9fc10c8dbe64625325fdeabe54b77a1d5d7b170c33b16',
      x86_64: 'b5cd74e34920f1125952815548dea846f5b03510dd62a68f0cc2aa79992985f4'
   })
 
