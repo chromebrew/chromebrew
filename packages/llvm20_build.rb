@@ -13,8 +13,8 @@ class Llvm20_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7518f6c15d13866f9144a231b10cdc6b1995067d859651c03ff9e733a015d84a',
-     armv7l: '7518f6c15d13866f9144a231b10cdc6b1995067d859651c03ff9e733a015d84a',
+    aarch64: '6267c0a5aaf28abca8c29af9ca0466f2d5251c16f0808538a8833d2f46fcd23e',
+     armv7l: '6267c0a5aaf28abca8c29af9ca0466f2d5251c16f0808538a8833d2f46fcd23e',
        i686: 'afc1ef39052899ce05ef7ee06185fd55c0e3f7c68ff86615ae876aa8b577b212',
      x86_64: '16e01fcc38fd0c52b054b4613ea2ad711bb36b4d28093157ba1ca49d213dd21b'
   })
@@ -34,6 +34,7 @@ class Llvm20_build < Package
   depends_on 'zstd' # R
   depends_on 'llvm20_dev' # R
   depends_on 'llvm20_lib' # R
+  depends_on 'llvm20_dev' # R
   depends_on 'llvm20_dev' # R
 
   no_env_options
