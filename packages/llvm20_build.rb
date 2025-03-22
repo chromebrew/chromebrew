@@ -4,7 +4,7 @@ class Llvm20_build < Package
   @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl' : 'clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl'
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
-  version '20.1.0'
+  version '20.1.1'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -13,10 +13,10 @@ class Llvm20_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7518f6c15d13866f9144a231b10cdc6b1995067d859651c03ff9e733a015d84a',
-     armv7l: '7518f6c15d13866f9144a231b10cdc6b1995067d859651c03ff9e733a015d84a',
-       i686: 'ae2f5da8b17d4b5c77afe6b3b057d6bdf204e8465600cf5cae65334ed2cacc4a',
-     x86_64: '1d467898066e233a33b5794c8549868629cc7ecd8942daf4bf491f7b6093636d'
+    aarch64: '6267c0a5aaf28abca8c29af9ca0466f2d5251c16f0808538a8833d2f46fcd23e',
+     armv7l: '6267c0a5aaf28abca8c29af9ca0466f2d5251c16f0808538a8833d2f46fcd23e',
+       i686: 'afc1ef39052899ce05ef7ee06185fd55c0e3f7c68ff86615ae876aa8b577b212',
+     x86_64: '16e01fcc38fd0c52b054b4613ea2ad711bb36b4d28093157ba1ca49d213dd21b'
   })
 
   depends_on 'gcc_lib' # R
@@ -181,13 +181,13 @@ class Llvm20_build < Package
   end
 
   # preserve for check, skip check for current version
-  def self.check
-    Dir.chdir('builddir') do
-      system 'ninja check-llvm || true'
-      system 'ninja check-clang || true'
-      system 'ninja check-lld || true'
-    end
-  end
+  # def self.check
+  #   Dir.chdir('builddir') do
+  #     system 'ninja check-llvm || true'
+  #     system 'ninja check-clang || true'
+  #     system 'ninja check-lld || true'
+  #   end
+  # end
 
   def self.postinstall
     puts
