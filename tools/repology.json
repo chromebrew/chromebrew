@@ -755,7 +755,7 @@
     "name": "awscli",
     "description": "Universal Command Line Interface for Amazon Web Services",
     "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.38.13",
+    "version": "1.38.18",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -787,7 +787,7 @@
     "name": "babl",
     "description": "babl is a dynamic, any to any, pixel format translation library.",
     "homepage": "https://gegl.org/babl/",
-    "version": "0.1.110",
+    "version": "0.1.112",
     "license": "LGPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -1091,7 +1091,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.76.74",
+    "version": "1.76.80",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -2747,7 +2747,7 @@
     "name": "erlang",
     "description": "Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.",
     "homepage": "https://www.erlang.org/",
-    "version": "27.2.1",
+    "version": "27.3",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -2968,6 +2968,14 @@
     "compatibility": "all"
   },
   {
+    "name": "fceux",
+    "description": "NES/FDS emulator with TAS support",
+    "homepage": "https://fceux.com/",
+    "version": "2.6.5",
+    "license": "GPLv2",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "fcft",
     "description": "Simple library for font loading and glyph rasterization using FontConfig, FreeType and pixman.",
     "homepage": "https://codeberg.org/dnkl/fcft",
@@ -2981,6 +2989,14 @@
     "homepage": "https://github.com/sharkdp/fd/",
     "version": "8.3.0-1",
     "license": "Apache-2.0 and MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "fdupes",
+    "description": "Program for identifying or deleting duplicate files residing within specified directories.",
+    "homepage": "https://github.com/adrianlopezroche/fdupes",
+    "version": "2.3.2",
+    "license": "MIT",
     "compatibility": "all"
   },
   {
@@ -3083,7 +3099,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "136.0.1",
+    "version": "136.0.2",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3699,7 +3715,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "514.0.0",
+    "version": "515.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -3803,7 +3819,7 @@
     "name": "gegl",
     "description": "GEGL (Generic Graphics Library) is a data flow based image processing framework, providing floating point processing and non-destructive image processing capabilities to GNU Image Manipulation Program and other projects.",
     "homepage": "https://gegl.org/",
-    "version": "0.4.54",
+    "version": "0.4.56",
     "license": "GPL-3+ and LGPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3987,7 +4003,7 @@
     "name": "gimp",
     "description": "GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.",
     "homepage": "https://www.gimp.org/",
-    "version": "3.0.0-RC3",
+    "version": "3.0.0",
     "license": "GPL-3 and LGPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4619,7 +4635,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "134.0.6998.88-1",
+    "version": "134.0.6998.117-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -5827,7 +5843,7 @@
     "name": "joplin",
     "description": "Open source note-taking app",
     "homepage": "https://joplinapp.org/",
-    "version": "3.3.2",
+    "version": "3.3.3",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -6587,7 +6603,7 @@
     "name": "libclc",
     "description": "Library requirements of the OpenCL C programming language",
     "homepage": "https://libclc.llvm.org/",
-    "version": "20.1.0",
+    "version": "20.1.1",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -8923,8 +8939,8 @@
     "name": "libxshmfence",
     "description": "A library that exposes a event API on top of Linux futexes",
     "homepage": "http://t2sde.org/packages/libxshmfence.html",
-    "version": "1.3.1",
-    "license": "custom",
+    "version": "1.3.3",
+    "license": "HPND",
     "compatibility": "all"
   },
   {
@@ -9179,7 +9195,7 @@
     "name": "llvm20_build",
     "description": "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: bolt clang clang-tools-extra compiler-rt lld lldb polly pstl",
     "homepage": "https://llvm.org/",
-    "version": "20.1.0",
+    "version": "20.1.1",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9187,7 +9203,7 @@
     "name": "llvm20_dev",
     "description": "LLVM: Everything except libLLVM & llvm-strip",
     "homepage": "https://llvm.org/",
-    "version": "20.1.0",
+    "version": "20.1.1",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9195,7 +9211,7 @@
     "name": "llvm20_lib",
     "description": "LibLLVM and llvm-strip",
     "homepage": "https://llvm.org/",
-    "version": "20.1.0",
+    "version": "20.1.1",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9683,7 +9699,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "25.0.1",
+    "version": "25.0.2",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -11112,6 +11128,14 @@
     "compatibility": "x86_64"
   },
   {
+    "name": "openjdk24",
+    "description": "The JDK is a development environment for building applications, applets, and components using the Java programming language.",
+    "homepage": "https://openjdk.org/",
+    "version": "24.0.0",
+    "license": "GPL-2",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "openjdk8",
     "description": "The JDK is a development environment for building applications, applets, and components using the Java programming language.",
     "homepage": "https://openjdk.org/",
@@ -11147,7 +11171,7 @@
     "name": "openmp",
     "description": "LLVM OpenMP Runtime Library",
     "homepage": "https://openmp.llvm.org/",
-    "version": "20.1.0",
+    "version": "20.1.1",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -11219,7 +11243,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "117.0.5408.93",
+    "version": "117.0.5408.142",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -11355,7 +11379,7 @@
     "name": "pango",
     "description": "Pango is a library for laying out and rendering of text, with an emphasis on internationalization.",
     "homepage": "https://pango.gnome.org/",
-    "version": "1.56.2",
+    "version": "1.56.3",
     "license": "LGPL-2+ and FTL",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12627,7 +12651,7 @@
     "name": "py3_argcomplete",
     "description": "Argcomplete provides bash completion for argparse.",
     "homepage": "https://kislyuk.github.io/argcomplete/",
-    "version": "3.6.0",
+    "version": "3.6.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13075,7 +13099,7 @@
     "name": "py3_iniconfig",
     "description": "Iniconfig provides simple config-ini parsing.",
     "homepage": "https://github.com/pytest-dev/iniconfig/",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13219,7 +13243,7 @@
     "name": "py3_markitdown",
     "description": "Python tool for converting files and office documents to Markdown.",
     "homepage": "https://github.com/microsoft/markitdown",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13251,7 +13275,7 @@
     "name": "py3_mercurial",
     "description": "Mercurial is a free, distributed source control management tool. It efficiently handles projects of any size and offers an easy and intuitive interface.",
     "homepage": "https://www.mercurial-scm.org/",
-    "version": "6.9.3",
+    "version": "6.9.4",
     "license": "GPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13315,7 +13339,7 @@
     "name": "py3_numpy",
     "description": "NumPy is the fundamental package for array computing with Python.",
     "homepage": "https://numpy.org/",
-    "version": "2.2.3",
+    "version": "2.2.4",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -13323,7 +13347,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.148.0",
+    "version": "2.149.0",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13331,7 +13355,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.52.1",
+    "version": "3.53.0",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13371,7 +13395,7 @@
     "name": "py3_patchelf",
     "description": "Patchelf is a small utility to modify the dynamic linker and RPATH of ELF executables.",
     "homepage": "https://pypi.org/project/patchelf",
-    "version": "0.17.2.1",
+    "version": "0.17.2.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13427,7 +13451,7 @@
     "name": "py3_platformdirs",
     "description": "A small Python package for determining appropriate platform-specific dirs.",
     "homepage": "https://pypi.org/project/platformdirs",
-    "version": "4.3.6",
+    "version": "4.3.7",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13451,7 +13475,7 @@
     "name": "py3_pre_commit",
     "description": "A framework for managing and maintaining multi-language pre-commit hooks.",
     "homepage": "https://pre-commit.com/",
-    "version": "4.1.0",
+    "version": "4.2.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13547,7 +13571,7 @@
     "name": "py3_pygobject",
     "description": "PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.",
     "homepage": "https://pygobject.gnome.org/",
-    "version": "3.52.2",
+    "version": "3.52.3",
     "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13563,7 +13587,7 @@
     "name": "py3_pylint",
     "description": "Analyzes Python code looking for bugs and signs of poor quality",
     "homepage": "https://pylint.pycqa.org",
-    "version": "3.3.5",
+    "version": "3.3.6",
     "license": "GPL",
     "compatibility": "all"
   },
@@ -13595,7 +13619,7 @@
     "name": "py3_pypdf",
     "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.",
     "homepage": "https://github.com/py-pdf/pypdf",
-    "version": "5.3.1",
+    "version": "5.4.0",
     "license": "BSD-3-Clause",
     "compatibility": "all"
   },
@@ -13611,7 +13635,7 @@
     "name": "py3_pyright",
     "description": "Static Type Checker for Python",
     "homepage": "https://github.com/microsoft/pyright",
-    "version": "1.1.396",
+    "version": "1.1.397",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13723,7 +13747,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.11.0",
+    "version": "0.11.2",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13747,7 +13771,7 @@
     "name": "py3_setuptools",
     "description": "Setuptools is the python build system from the Python Packaging Authority.",
     "homepage": "https://setuptools.readthedocs.io/",
-    "version": "76.0.0",
+    "version": "77.0.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13763,7 +13787,7 @@
     "name": "py3_setuptools_scm",
     "description": "Setuptools-scm is the blessed package to manage your versions by scm tags.",
     "homepage": "https://github.com/pypa/setuptools_scm",
-    "version": "8.2.0",
+    "version": "8.2.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13939,7 +13963,7 @@
     "name": "py3_trove_classifiers",
     "description": "Canonical source for classifiers on PyPI.",
     "homepage": "https://github.com/pypa/trove-classifiers",
-    "version": "2025.3.13.13",
+    "version": "2025.3.19.19",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14067,7 +14091,7 @@
     "name": "py3_yamllint",
     "description": "YAMLlint is a linter for YAML files.",
     "homepage": "https://github.com/adrienverge/yamllint/",
-    "version": "1.36.1",
+    "version": "1.36.2",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -14182,6 +14206,22 @@
     "version": "7.3.2",
     "license": "BSD",
     "compatibility": "all"
+  },
+  {
+    "name": "qortal",
+    "description": "Data storage, communications, web hosting, decentralized trading, complete infrastructure for the future blockchain based Internet",
+    "homepage": "https://qortal.org/",
+    "version": "4.7.0",
+    "license": "GPL-3",
+    "compatibility": "aarch64 armv7l x86_64"
+  },
+  {
+    "name": "qortal_hub",
+    "description": "Desktop interface for Qortal",
+    "homepage": "https://qortal.dev/",
+    "version": "0.5.2",
+    "license": "MIT",
+    "compatibility": "x86_64"
   },
   {
     "name": "qpdf",
@@ -14763,7 +14803,7 @@
     "name": "ruby_ast",
     "description": "A library for working with Abstract Syntax Trees.",
     "homepage": "https://whitequark.github.io/ast/",
-    "version": "2.4.2-ruby3.4",
+    "version": "2.4.3-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14843,7 +14883,7 @@
     "name": "ruby_csv",
     "description": "The csv library provides a complete interface to csv files and data.",
     "homepage": "https://github.com/ruby/csv",
-    "version": "3.3.2-ruby3.4",
+    "version": "3.3.3-ruby3.4",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -15275,7 +15315,7 @@
     "name": "ruby_parser",
     "description": "A Ruby parser written in pure Ruby.",
     "homepage": "https://github.com/whitequark/parser",
-    "version": "3.3.7.1-ruby3.4",
+    "version": "3.3.7.2-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15323,7 +15363,7 @@
     "name": "ruby_prism",
     "description": "Prism is a parser for the Ruby programming language.",
     "homepage": "https://github.com/ruby/prism",
-    "version": "1.3.0-ruby3.4",
+    "version": "1.4.0-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15395,7 +15435,7 @@
     "name": "ruby_rbs",
     "description": "RBS is the language for type signatures for Ruby and standard library definitions.",
     "homepage": "https://github.com/ruby/rbs",
-    "version": "3.8.1-ruby3.4",
+    "version": "3.9.0-ruby3.4",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -16112,6 +16152,14 @@
     "compatibility": "all"
   },
   {
+    "name": "sfml",
+    "description": "SFML is a simple, fast, cross-platform and object-oriented multimedia API.",
+    "homepage": "https://www.sfml-dev.org/",
+    "version": "3.0.0",
+    "license": "zlib",
+    "compatibility": "aarch64 armv7l x86_64"
+  },
+  {
     "name": "sg3_utils",
     "description": "The sg3_utils package contains utilities that send SCSI commands to devices.",
     "homepage": "http://sg.danny.cz/sg/sg3_utils.html",
@@ -16243,7 +16291,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.45.1",
+    "version": "7.47.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -17251,7 +17299,7 @@
     "name": "torbrowser",
     "description": "'The Onion Router' browser",
     "homepage": "https://www.torproject.org/",
-    "version": "14.0.6",
+    "version": "14.0.7",
     "license": "BSD, custom, MPL-2.0 and MIT",
     "compatibility": "x86_64"
   },
@@ -17771,7 +17819,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.1.3570.60-1",
+    "version": "7.2.3621.67-1",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
