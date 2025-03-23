@@ -6630,6 +6630,11 @@ url: https://www.openhab.org/download/
 activity: high
 ---
 kind: url
+name: openjade
+url: https://sourceforge.net/projects/openjade/files/openjade/
+activity: none
+---
+kind: url
 name: openjdk8
 url: https://www.azul.com/downloads/?version=java-8-lts&os=linux&package=jdk
 activity: medium
