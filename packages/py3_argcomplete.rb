@@ -13,7 +13,7 @@ class Py3_argcomplete < Pip
     aarch64: 'c401edf43a57f5f110f6065fcc37fb4deae0c252be950816c274a3a1234e3776',
      armv7l: 'c401edf43a57f5f110f6065fcc37fb4deae0c252be950816c274a3a1234e3776',
        i686: '4fc1402f7cdaf1aa8de115098dcdb8753bcbd0aa04316c003f0c6800825c30e2',
-     x86_64: 'c3c681538878f3fdce6e8e1a5f702fbc85d951da988dc327ebff176e5263e2d5'
+     x86_64: '946e41da2888ca1e4ddb17dfc3f59541ef5b956129b0dc299e878c67eaab122f'
   })
 
   depends_on 'python3' => :build
