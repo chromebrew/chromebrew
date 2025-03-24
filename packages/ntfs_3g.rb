@@ -14,7 +14,7 @@ class Ntfs_3g < Autotools
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
        i686: '03b6d129a013d7f219d3ddd29ece882c6b6821fd4e163d9cef6373970c3a5aa7',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '24498aee82923066f076c889d1df019477797fc6f682d0d49426cd0c31875db2'
   })
 
   depends_on 'glibc' # R
