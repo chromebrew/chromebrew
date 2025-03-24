@@ -11,8 +11,8 @@ class Yajl < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '7f63880f74807f1934ed2661599e13fdc9f01766e385b58826a1e1b8f9a0402a',
+     armv7l: '7f63880f74807f1934ed2661599e13fdc9f01766e385b58826a1e1b8f9a0402a',
        i686: 'cdadc9f56f29b9d171c9adda2286339836dcc7ef5acaec1093db93c11ade7491',
      x86_64: '1a57f6807cbcc7a96a5b480b891628534048d62b4d1f44efd986f8b2144a573f'
   })
