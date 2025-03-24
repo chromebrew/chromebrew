@@ -14,7 +14,7 @@ class Yajl < CMake
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
        i686: 'cdadc9f56f29b9d171c9adda2286339836dcc7ef5acaec1093db93c11ade7491',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '1a57f6807cbcc7a96a5b480b891628534048d62b4d1f44efd986f8b2144a573f'
   })
 
   depends_on 'glibc' # R
