@@ -11,8 +11,8 @@ class Ntfs_3g < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '20a7ab1f3292de6dd70298bfd1939d09ee1326a2bd6b83da0134bd9142297e53',
+     armv7l: '20a7ab1f3292de6dd70298bfd1939d09ee1326a2bd6b83da0134bd9142297e53',
        i686: '03b6d129a013d7f219d3ddd29ece882c6b6821fd4e163d9cef6373970c3a5aa7',
      x86_64: '24498aee82923066f076c889d1df019477797fc6f682d0d49426cd0c31875db2'
   })
