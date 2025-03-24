@@ -11,8 +11,8 @@ class Libsoxr < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: 'b3a999ee35bd6a46e97991c23ac12c41739c2f7255c85d2f852addb8038ed54a',
+     armv7l: 'b3a999ee35bd6a46e97991c23ac12c41739c2f7255c85d2f852addb8038ed54a',
        i686: '7aa70360f89debecb43d4d6e76859f392a45a38a9c0bb167197038ef40511dbe',
      x86_64: 'd7931a4f8a20e45a1880ad0e33b42b39385d0e86067d52d5e805184c51145023'
   })
