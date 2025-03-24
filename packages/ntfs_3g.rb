@@ -13,9 +13,12 @@ class Ntfs_3g < Autotools
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+       i686: '03b6d129a013d7f219d3ddd29ece882c6b6821fd4e163d9cef6373970c3a5aa7',
      x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'util_linux' # R
 
   configure_options "--exec-prefix=#{CREW_PREFIX} --disable-ntfs-3g"
 end
