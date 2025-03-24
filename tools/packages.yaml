@@ -6480,6 +6480,11 @@ url: http://http.debian.net/debian/pool/main/n/nss-mdns/
 activity: none
 ---
 kind: url
+name: ntfs_3g
+url: https://github.com/tuxera/ntfs-3g/releases/
+activity: low
+---
+kind: url
 name: numactl
 url: https://github.com/numactl/numactl/releases/
 activity: medium
