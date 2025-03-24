@@ -14,7 +14,7 @@ class Libsoxr < CMake
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
        i686: '7aa70360f89debecb43d4d6e76859f392a45a38a9c0bb167197038ef40511dbe',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: 'd7931a4f8a20e45a1880ad0e33b42b39385d0e86067d52d5e805184c51145023'
   })
 
   depends_on 'gcc_lib' # R
