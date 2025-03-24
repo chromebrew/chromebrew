@@ -10,8 +10,8 @@ class Ruby_rbs < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'bf2accc06c666e75e5716ae0f75f24c5a53a56747e220b3ef19f4d72bbcf80c5',
-     armv7l: 'bf2accc06c666e75e5716ae0f75f24c5a53a56747e220b3ef19f4d72bbcf80c5',
+    aarch64: 'a0875a41f11e6a88248a67f9928992ba56d7dc2d8645d10b9cfc5502e23d7f5f',
+     armv7l: 'a0875a41f11e6a88248a67f9928992ba56d7dc2d8645d10b9cfc5502e23d7f5f',
        i686: '6b6bd66362bbdf404b0bec4c5fc30f607da1d489cc2d4fe54393cacbf71f8c4b',
      x86_64: 'c244ac795d8f4d83a42db80df5b06da546c2de7d1770d698bbac1e337de03df2'
   })
