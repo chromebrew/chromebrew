@@ -1,31 +1,38 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Fceux < Package
+class Fceux < CMake
   description 'NES/FDS emulator with TAS support'
   homepage 'https://fceux.com/'
-  version '2.6.5'
-  compatibility 'x86_64'
+  version '2.7.0'
+  compatibility 'aarch64 armv7l x86_64'
   license 'GPLv2'
-  source_url "https://github.com/FinnBaltazar1111/fceux/releases/download/v#{version}/fceux-#{version}-amd64.deb"
-  source_sha256 '7a740608aad4157aec6010cea29aecc30f5e7341667375b49bc38df770c5ca49'
+  source_url 'https://github.com/TASEmulators/fceux.git'
+  git_hashtag "fceux-#{version}"
+  binary_compression 'tar.zst'
+
+  binary_sha256({
+    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  })
 
   depends_on 'ffmpeg'
   depends_on 'libarchive'
-  depends_on 'sdl2'
-  depends_on 'mesa_utils'
+  depends_on 'libglvnd'
+  depends_on 'sdl2_compat'
+  depends_on 'libx11'
+  depends_on 'libx264'
+  depends_on 'libx265'
+  depends_on 'libxkbcommon'
   depends_on 'minizip'
-  depends_on 'numactl'
   depends_on 'qt5_base'
+  depends_on 'qt5_declarative'
+  depends_on 'qt5_tools'
   depends_on 'zlib'
 
-  no_compile_needed
-
-  def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/"
-    FileUtils.cp_r '.', CREW_DEST_PREFIX.to_s
-  end
+  cmake_options '-DGLVND=1'
 
   def self.postinstall
-    ExitMessage.add "\nFCEUX installation complete. Run \"fceux\" command (located in #{CREW_PREFIX}/fceux) to use.\n"
+    ExitMessage.add "Run \"fceux\" command (located in #{CREW_PREFIX}/fceux) to use.\n"
   end
 end
