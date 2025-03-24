@@ -13,7 +13,7 @@ class Py3_docx2txt < Pip
     aarch64: '5e1093d0dc6ef8f7cdb4283d1877b972f951addd6ded997483161d91aaaa321a',
      armv7l: '5e1093d0dc6ef8f7cdb4283d1877b972f951addd6ded997483161d91aaaa321a',
        i686: '78381058a584d8ae9ba2c33a50765bc54f7763bd155bab8a9bf16b7c366e208d',
-     x86_64: 'b9c6548bbe2f99ab44b6ae684a8dc52c169be87978df38e580ae481e89a2f2b0'
+     x86_64: 'daafc407e3d8c43de36e90956280b545a2644f07ba0635bf0da392cd1fb5295d'
   })
 
   depends_on 'python3' => :build

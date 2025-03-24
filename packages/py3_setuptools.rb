@@ -15,7 +15,7 @@ class Py3_setuptools < Python
     aarch64: '6c67feb33eadd4f4a8eb0bbd6c03d2a3a67a0924de923282d7f0c3703e1a2e01',
      armv7l: '6c67feb33eadd4f4a8eb0bbd6c03d2a3a67a0924de923282d7f0c3703e1a2e01',
        i686: '40c5961e54bb69a86c7d6b8249b86c24036cd50cad42ce579e98fd49723c0c45',
-     x86_64: '30f561e65b1e82cac11d7ffb2a26e5e31772cd8f9082c1343e207baa8be7c2d1'
+     x86_64: '46603a7209e51ab8a000c26a1138d1a56783cc715e064c00caabc4edaeb7815b'
   })
 
   depends_on 'python3'
