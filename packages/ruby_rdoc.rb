@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_rdoc < RUBY
   description 'RDoc produces HTML and command-line documentation for Ruby projects.'
   homepage 'https://ruby.github.io/rdoc'
-  version "6.12.0-#{CREW_RUBY_VER}"
+  version "6.13.0-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
