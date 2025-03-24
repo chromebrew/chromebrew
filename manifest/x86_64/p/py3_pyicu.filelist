@@ -1,10 +1,10 @@
-/usr/local/lib64/python3.13/site-packages/PyICU-2.14.dist-info/INSTALLER
-/usr/local/lib64/python3.13/site-packages/PyICU-2.14.dist-info/LICENSE
-/usr/local/lib64/python3.13/site-packages/PyICU-2.14.dist-info/METADATA
-/usr/local/lib64/python3.13/site-packages/PyICU-2.14.dist-info/RECORD
-/usr/local/lib64/python3.13/site-packages/PyICU-2.14.dist-info/REQUESTED
-/usr/local/lib64/python3.13/site-packages/PyICU-2.14.dist-info/WHEEL
-/usr/local/lib64/python3.13/site-packages/PyICU-2.14.dist-info/top_level.txt
 /usr/local/lib64/python3.13/site-packages/icu/__init__.py
 /usr/local/lib64/python3.13/site-packages/icu/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/icu/_icu_.cpython-313-x86_64-linux-gnu.so
+/usr/local/lib64/python3.13/site-packages/pyicu-2.15.dist-info/INSTALLER
+/usr/local/lib64/python3.13/site-packages/pyicu-2.15.dist-info/METADATA
+/usr/local/lib64/python3.13/site-packages/pyicu-2.15.dist-info/RECORD
+/usr/local/lib64/python3.13/site-packages/pyicu-2.15.dist-info/REQUESTED
+/usr/local/lib64/python3.13/site-packages/pyicu-2.15.dist-info/WHEEL
+/usr/local/lib64/python3.13/site-packages/pyicu-2.15.dist-info/licenses/LICENSE
+/usr/local/lib64/python3.13/site-packages/pyicu-2.15.dist-info/top_level.txt
