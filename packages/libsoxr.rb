@@ -13,9 +13,12 @@ class Libsoxr < CMake
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+       i686: '7aa70360f89debecb43d4d6e76859f392a45a38a9c0bb167197038ef40511dbe',
      x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
   })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
   cmake_options "-DBUILD_SHARED_LIBS=ON #{'-DLIB_SUFFIX=64' if ARCH == 'x86_64'}"
   run_tests
