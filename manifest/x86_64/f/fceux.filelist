@@ -1,12 +1,10 @@
+# Total size: 8879056
 /usr/local/bin/fceux
-/usr/local/bin/fceux-exec
 /usr/local/share/applications/fceux.desktop
-/usr/local/share/fceux/lib64/liblua5.1-c++.so.0
-/usr/local/share/fceux/lib64/liblua5.1-c++.so.0.0.0
-/usr/local/share/fceux/lib64/liblua5.1.so.0
-/usr/local/share/fceux/lib64/liblua5.1.so.0.0.0
-/usr/local/share/fceux/lib64/libx264.so.155
-/usr/local/share/fceux/lib64/libx265.so.179
+/usr/local/share/doc/fceux/rcheevos-LICENSE
+/usr/local/share/fceux/fceux.chm
+/usr/local/share/fceux/lua5.1.dll
+/usr/local/share/fceux/lua51.dll
 /usr/local/share/fceux/luaScripts/AVI-HeadsUpDisplay.lua
 /usr/local/share/fceux/luaScripts/BoulderDash_AmoebaAI.lua
 /usr/local/share/fceux/luaScripts/BugsBunnyBirthdayBlowout.lua
@@ -95,6 +93,7 @@
 /usr/local/share/fceux/palettes/nestopia_rgb.pal
 /usr/local/share/fceux/palettes/nestopia_yuv.pal
 /usr/local/share/fceux/palettes/r57shell_PAL.pal
+/usr/local/share/fceux/taseditor.chm
 /usr/local/share/fceux/tools/taseditor_patterns.txt
 /usr/local/share/man/man6/fceux-net-server.6.zst
 /usr/local/share/man/man6/fceux.6.zst
