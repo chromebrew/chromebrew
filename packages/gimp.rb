@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gimp < Meson
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
-  version '3.0.0'
+  version '3.0.2'
   license 'GPL-3 and LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gimp.git'
@@ -11,9 +11,9 @@ class Gimp < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0084ec81fb3b96380d487aba0075ade22fb40c17d5c40b46342b660b02c477f5',
-     armv7l: '0084ec81fb3b96380d487aba0075ade22fb40c17d5c40b46342b660b02c477f5',
-     x86_64: 'c8d9266c21e057da81e07da335788568dadf0fbc53f42c8d88c729142ecbdcd5'
+    aarch64: '1a03ee53a68d5ffae4daed119d2fc3110366587f5c55739e0380da6aec4354f5',
+     armv7l: '1a03ee53a68d5ffae4daed119d2fc3110366587f5c55739e0380da6aec4354f5',
+     x86_64: '2dc3db9a9078f9eb1b4c1034fe598eb371a195435eddb497c59b6388374c5d91'
   })
 
   depends_on 'aalib' # R
@@ -40,7 +40,6 @@ class Gimp < Meson
   depends_on 'gobject_introspection' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'json_c' => :build
   depends_on 'json_c' # R
   depends_on 'json_glib' # R
   depends_on 'lcms' # R
@@ -67,7 +66,6 @@ class Gimp < Meson
   depends_on 'libxfixes' # R
   depends_on 'libxmu' # R
   depends_on 'libxpm' # R
-  depends_on 'libxt' => :build
   depends_on 'libxt' # R
   depends_on 'luajit' # L
   depends_on 'luajit_lgi' # L
@@ -86,14 +84,6 @@ class Gimp < Meson
   depends_on 'xdg_base' => :build
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
-  depends_on 'json_c' # R
-  depends_on 'libxt' # R
-  depends_on 'json_c' # R
-  depends_on 'libxt' # R
-  depends_on 'json_c' # R
-  depends_on 'libxt' # R
-  depends_on 'json_c' # R
-  depends_on 'libxt' # R
 
   gnome
 
