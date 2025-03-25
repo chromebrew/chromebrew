@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libplacebo < Meson
   description 'Reusable library for GPU-accelerated video/image rendering primitives'
   homepage 'https://github.com/haasn/libplacebo'
-  version '6.338.2'
+  version '7.349.0'
   license 'LGPL2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://code.videolan.org/videolan/libplacebo.git'
