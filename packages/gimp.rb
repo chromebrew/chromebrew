@@ -40,7 +40,6 @@ class Gimp < Meson
   depends_on 'gobject_introspection' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'json_c' => :build
   depends_on 'json_c' # R
   depends_on 'json_glib' # R
   depends_on 'lcms' # R
@@ -67,7 +66,6 @@ class Gimp < Meson
   depends_on 'libxfixes' # R
   depends_on 'libxmu' # R
   depends_on 'libxpm' # R
-  depends_on 'libxt' => :build
   depends_on 'libxt' # R
   depends_on 'luajit' # L
   depends_on 'luajit_lgi' # L
