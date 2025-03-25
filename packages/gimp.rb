@@ -86,18 +86,6 @@ class Gimp < Meson
   depends_on 'xdg_base' => :build
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
-  depends_on 'json_c' # R
-  depends_on 'libxt' # R
-  depends_on 'json_c' # R
-  depends_on 'libxt' # R
-  depends_on 'json_c' # R
-  depends_on 'libxt' # R
-  depends_on 'json_c' # R
-  depends_on 'libxt' # R
-  depends_on 'json_c' # R
-  depends_on 'libxt' # R
-  depends_on 'json_c' # R
-  depends_on 'libxt' # R
 
   gnome
 
