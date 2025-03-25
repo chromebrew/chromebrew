@@ -14,7 +14,7 @@ class Wayland_protocols < Meson
     aarch64: 'ae8cb199bdefee16b626790e9a5de8d356799698f98252a250e4d2c87d1ff095',
      armv7l: 'ae8cb199bdefee16b626790e9a5de8d356799698f98252a250e4d2c87d1ff095',
        i686: '3a49071ea3ef60da7d32b21e76c0294015343c6f949565d5a557b7197d63fcdb',
-     x86_64: '777ee8c04fcc7179137a9a2ac798ba24570f582a8f41c516f41eb9dc2c62703c'
+     x86_64: '59f739923fedf7316e57c62f4aa4d9e6976da3d141dce79c4d57c0fddbee8730'
   })
 
   depends_on 'wayland' # L
