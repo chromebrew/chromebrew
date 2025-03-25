@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gimp < Meson
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
-  version '3.0.0'
+  version '3.0.2'
   license 'GPL-3 and LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gimp.git'
