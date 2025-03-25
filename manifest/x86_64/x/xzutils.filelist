@@ -40,10 +40,9 @@
 /usr/local/lib64/cmake/liblzma/liblzma-config.cmake
 /usr/local/lib64/cmake/liblzma/liblzma-targets-release.cmake
 /usr/local/lib64/cmake/liblzma/liblzma-targets.cmake
-/usr/local/lib64/liblzma.la
 /usr/local/lib64/liblzma.so
 /usr/local/lib64/liblzma.so.5
-/usr/local/lib64/liblzma.so.5.6.4
+/usr/local/lib64/liblzma.so.5.8.0
 /usr/local/lib64/pkgconfig/liblzma.pc
 /usr/local/share/doc/xz/AUTHORS
 /usr/local/share/doc/xz/COPYING
@@ -74,7 +73,9 @@
 /usr/local/share/locale/hr/LC_MESSAGES/xz.mo
 /usr/local/share/locale/hu/LC_MESSAGES/xz.mo
 /usr/local/share/locale/it/LC_MESSAGES/xz.mo
+/usr/local/share/locale/ka/LC_MESSAGES/xz.mo
 /usr/local/share/locale/ko/LC_MESSAGES/xz.mo
+/usr/local/share/locale/nl/LC_MESSAGES/xz.mo
 /usr/local/share/locale/pl/LC_MESSAGES/xz.mo
 /usr/local/share/locale/pt/LC_MESSAGES/xz.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/xz.mo
