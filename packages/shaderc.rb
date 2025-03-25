@@ -8,7 +8,7 @@ class Shaderc < CMake
   homepage 'https://github.com/google/shaderc'
   version '2025.1'
   license 'Apache-2.0'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/google/shaderc.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
