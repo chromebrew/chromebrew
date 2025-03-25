@@ -1,12 +1,12 @@
 # Adapted from Arch Linux shaderc PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/shaderc/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/cmake'
 
-class Shaderc < Package
+class Shaderc < CMake
   description 'Collection of tools, libraries and tests for shader compilation'
   homepage 'https://github.com/google/shaderc'
-  version '2023.8'
+  version '2025.1'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/google/shaderc.git'
@@ -23,20 +23,16 @@ class Shaderc < Package
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'glslang' # R
+  depends_on 'spirv_headers' => :build
+  depends_on 'spirv_tools' # R
 
-  def self.build
+  def self.patch
     system './utils/git-sync-deps'
-    system "cmake -B builddir -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        -DSPIRV_WERROR=Off \
+  end
+
+  cmake_options '-DSPIRV_WERROR=Off \
         -DBUILD_SHARED_LIBS=ON \
         -DSHADERC_SKIP_TESTS=ON \
-        -DSHADERC_ENABLE_EXAMPLES=OFF \
-        -Wno-dev"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+        -DSHADERC_ENABLE_EXAMPLES=OFF'
 end
