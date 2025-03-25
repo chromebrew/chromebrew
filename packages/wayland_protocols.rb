@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Wayland_protocols < Meson
   description 'Wayland is a protocol for a compositor to talk to its clients.'
   homepage 'https://wayland.freedesktop.org/'
-  version '1.41'
+  version '1.42'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/wayland/wayland-protocols.git'
