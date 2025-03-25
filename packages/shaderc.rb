@@ -17,7 +17,7 @@ class Shaderc < CMake
     aarch64: '0c21288bcfcc9f477a938a4a3a33c1bc9c8b44d473363547cce3dd6af5d91714',
      armv7l: '0c21288bcfcc9f477a938a4a3a33c1bc9c8b44d473363547cce3dd6af5d91714',
        i686: 'd0b7a92f5021b97f5c9e0ec229acae6f2820b8b38a037755c526328458442c7c',
-     x86_64: '981a43dee48b92467c019941b665c6f5844e86c1b7b6ef81e11bbc345683ac10'
+     x86_64: '652ec3178fd6cdbfa37d86c043bf6e2da1530c11a2892b9e6847ed2aa395b67a'
   })
 
   depends_on 'ruby_asciidoctor' => :build
