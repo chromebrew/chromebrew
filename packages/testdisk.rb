@@ -13,7 +13,7 @@ class Testdisk < Autotools
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+       i686: '79b894377180aed08594df337d97a11348b655bc45a495013f9b2a54149c832b',
      x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
   })
 
@@ -22,4 +22,5 @@ class Testdisk < Autotools
   depends_on 'ncurses'
   depends_on 'ntfs_3g'
   depends_on 'zlib'
+  depends_on 'glibc' # R
 end
