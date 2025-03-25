@@ -1,9 +1,9 @@
-/usr/local/lib/python3.13/site-packages/pyparsing-3.2.1.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pyparsing-3.2.1.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/pyparsing-3.2.1.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pyparsing-3.2.1.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pyparsing-3.2.1.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pyparsing-3.2.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pyparsing-3.2.2.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pyparsing-3.2.2.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/pyparsing-3.2.2.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pyparsing-3.2.2.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pyparsing-3.2.2.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pyparsing-3.2.2.dist-info/WHEEL
 /usr/local/lib/python3.13/site-packages/pyparsing/__init__.py
 /usr/local/lib/python3.13/site-packages/pyparsing/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pyparsing/__pycache__/actions.cpython-313.pyc
@@ -25,5 +25,9 @@
 /usr/local/lib/python3.13/site-packages/pyparsing/py.typed
 /usr/local/lib/python3.13/site-packages/pyparsing/results.py
 /usr/local/lib/python3.13/site-packages/pyparsing/testing.py
+/usr/local/lib/python3.13/site-packages/pyparsing/tools/__init__.py
+/usr/local/lib/python3.13/site-packages/pyparsing/tools/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pyparsing/tools/__pycache__/cvt_pyparsing_pep8_names.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pyparsing/tools/cvt_pyparsing_pep8_names.py
 /usr/local/lib/python3.13/site-packages/pyparsing/unicode.py
 /usr/local/lib/python3.13/site-packages/pyparsing/util.py
