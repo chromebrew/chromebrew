@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pyparsing < Pip
   description 'The pyparsing module is an alternative approach to creating and executing simple grammars, vs. the traditional lex/yacc approach, or the use of regular expressions.'
   homepage 'https://github.com/pyparsing/pyparsing/'
-  version "3.2.1-#{CREW_PY_VER}"
+  version "3.2.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
