@@ -45,8 +45,8 @@ class Ghostty < Package
       --system #{@zig_global_cache_dir}/p \
       -Dcpu=baseline \
       -Demit-docs \
-	  -Demit-termcap \
-	  -Demit-terminfo \
+      -Demit-termcap \
+      -Demit-terminfo \
       -Dgtk-x11=true \
       -Doptimize=ReleaseFast \
       -Dpie=true \
