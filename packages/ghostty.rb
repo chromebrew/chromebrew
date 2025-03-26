@@ -6,7 +6,7 @@ require 'package'
 class Ghostty < Package
   description 'Fast, native, feature-rich terminal emulator pushing modern features'
   homepage 'https://ghostty.org'
-  version '1.1.0'
+  version '1.1.3'
   license 'MIT'
   compatibility 'x86_64'
   source_url "https://release.files.ghostty.org/#{version}/ghostty-source.tar.gz"
@@ -14,7 +14,7 @@ class Ghostty < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '88693f453d735af7fe1932cd5ad827af2ac9f8308b1f1e2a16903f284655bbb4'
+     x86_64: '661c109215c98b34ae7dff4c52634e4ebb3f1c8adfcad398d9347e9becaab34f'
   })
 
   depends_on 'fontconfig' # R
@@ -28,14 +28,14 @@ class Ghostty < Package
   depends_on 'oniguruma' # R
   depends_on 'pandoc' => :build
   depends_on 'wayland' # R
-  depends_on 'zig' => :build
+  depends_on 'zig13' => :build
 
   def self.patch
     system "sed -i 's/linkSystemLibrary2(\"bzip2\", dynamic_link_opts)/linkSystemLibrary2(\"bz2\", dynamic_link_opts)/' src/build/SharedDeps.zig"
   end
 
   def self.build
-    @zig_global_cache_dir = "#{`pwd`.chomp}/zig_cache"
+    @zig_global_cache_dir = "#{`pwd`.chomp}/offline-cache"
     FileUtils.mkdir_p @zig_global_cache_dir
     system "ZIG_GLOBAL_CACHE_DIR=#{@zig_global_cache_dir} ./nix/build-support/fetch-zig-cache.sh"
     system "DESTDIR=build zig build \
@@ -43,10 +43,12 @@ class Ghostty < Package
       -p #{CREW_PREFIX} \
       --search-prefix #{CREW_LIB_PREFIX} \
       --system #{@zig_global_cache_dir}/p \
-      -Doptimize=ReleaseFast \
-      -Demit-docs \
-      -Dgtk-x11=true \
       -Dcpu=baseline \
+      -Demit-docs \
+      -Demit-termcap \
+      -Demit-terminfo \
+      -Dgtk-x11=true \
+      -Doptimize=ReleaseFast \
       -Dpie=true \
       -Dversion-string=#{version}-Chromebrew"
   end

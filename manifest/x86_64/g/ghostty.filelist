@@ -423,6 +423,8 @@
 /usr/local/share/nvim/site/ftplugin/ghostty.vim
 /usr/local/share/nvim/site/syntax/ghostty.vim
 /usr/local/share/terminfo/g/ghostty
+/usr/local/share/terminfo/ghostty.termcap
+/usr/local/share/terminfo/ghostty.terminfo
 /usr/local/share/terminfo/x/xterm-ghostty
 /usr/local/share/vim/vimfiles/compiler/ghostty.vim
 /usr/local/share/vim/vimfiles/ftdetect/ghostty.vim
