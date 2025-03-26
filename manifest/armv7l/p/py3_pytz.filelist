@@ -1,11 +1,11 @@
-/usr/local/lib/python3.13/site-packages/pytz-2025.1.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pytz-2025.1.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/pytz-2025.1.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pytz-2025.1.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pytz-2025.1.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pytz-2025.1.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pytz-2025.1.dist-info/top_level.txt
-/usr/local/lib/python3.13/site-packages/pytz-2025.1.dist-info/zip-safe
+/usr/local/lib/python3.13/site-packages/pytz-2025.2.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pytz-2025.2.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/pytz-2025.2.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pytz-2025.2.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pytz-2025.2.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pytz-2025.2.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pytz-2025.2.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/pytz-2025.2.dist-info/zip-safe
 /usr/local/lib/python3.13/site-packages/pytz/__init__.py
 /usr/local/lib/python3.13/site-packages/pytz/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pytz/__pycache__/exceptions.cpython-313.pyc
@@ -117,6 +117,7 @@
 /usr/local/lib/python3.13/site-packages/pytz/zoneinfo/America/Coral_Harbour
 /usr/local/lib/python3.13/site-packages/pytz/zoneinfo/America/Cordoba
 /usr/local/lib/python3.13/site-packages/pytz/zoneinfo/America/Costa_Rica
+/usr/local/lib/python3.13/site-packages/pytz/zoneinfo/America/Coyhaique
 /usr/local/lib/python3.13/site-packages/pytz/zoneinfo/America/Creston
 /usr/local/lib/python3.13/site-packages/pytz/zoneinfo/America/Cuiaba
 /usr/local/lib/python3.13/site-packages/pytz/zoneinfo/America/Curacao

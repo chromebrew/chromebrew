@@ -10,8 +10,8 @@ class Py3_markitdown < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f36dbd90339e236c71f0520c6387b09c9753475da390f638418563a0c1267edc',
-     armv7l: 'f36dbd90339e236c71f0520c6387b09c9753475da390f638418563a0c1267edc',
+    aarch64: '7c5718675c358cb13de16585a048dd74a252adef6f423797eb7f5ac7e46cdb14',
+     armv7l: '7c5718675c358cb13de16585a048dd74a252adef6f423797eb7f5ac7e46cdb14',
        i686: '343a66f0474ba2a91973ea5edc4e1b3914df78eba7eabce8d0b148b156de3e7c',
      x86_64: '65c3188399c5ea6ad0eadc9d54c55dbfb7e33b039623747dc78650ba97b8ec1e'
   })
