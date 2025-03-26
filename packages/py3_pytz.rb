@@ -13,7 +13,7 @@ class Py3_pytz < Pip
     aarch64: 'ea12c5b807a3c5e30c3ac816196fcaa12f63ba9afb7b01b5c96d13248663cec0',
      armv7l: 'ea12c5b807a3c5e30c3ac816196fcaa12f63ba9afb7b01b5c96d13248663cec0',
        i686: 'ba168aa832bb782bfaa30432cd35f5ae6f0b9f14ac73a0c5b92034754c987a72',
-     x86_64: 'f2e07d507b7a22686eadcbfa9a4b47e862c55dfa6fafc0ec88affc8e036c0f2e'
+     x86_64: 'ed8e81014f0d5181735ff129e99b8c90439c1be0a409b0fcebbb378e593d028c'
   })
 
   depends_on 'python3' => :build

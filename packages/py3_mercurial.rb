@@ -12,7 +12,7 @@ class Py3_mercurial < Pip
   binary_sha256({
     aarch64: 'eb43300563da4e596ed52e16913f9f158df9fde93cb9bc3ea32dcc60bad4bafb',
      armv7l: 'eb43300563da4e596ed52e16913f9f158df9fde93cb9bc3ea32dcc60bad4bafb',
-     x86_64: '7fbae567830817df41010a18cdae2a57fe0ecbe966f0fa12dbb6e4402e6f7529'
+     x86_64: '1e70496d9a31f5bc7f8c27e698dfabaa63c3eebe0293c8b0a24e083ff6fafe11'
   })
 
   no_source_build
