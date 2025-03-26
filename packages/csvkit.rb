@@ -9,6 +9,10 @@ class Csvkit < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
+  binary_sha256({
+       i686: '294dc0cc7ee96c87d137e2afd8219d3a10c6d9cc667c36adfe8ce67a7ef70ce8'
+  })
+
   depends_on 'py3_agate'
   depends_on 'py3_agate_dbf'
   depends_on 'py3_agate_excel'
