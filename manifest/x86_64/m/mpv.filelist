@@ -6,7 +6,7 @@
 /usr/local/include/mpv/stream_cb.h
 /usr/local/lib64/libmpv.so
 /usr/local/lib64/libmpv.so.2
-/usr/local/lib64/libmpv.so.2.3.0
+/usr/local/lib64/libmpv.so.2.5.0
 /usr/local/lib64/pkgconfig/mpv.pc
 /usr/local/share/applications/mpv.desktop
 /usr/local/share/bash-completion/completions/mpv
@@ -14,6 +14,8 @@
 /usr/local/share/doc/mpv/mplayer-input.conf
 /usr/local/share/doc/mpv/mpv.conf
 /usr/local/share/doc/mpv/restore-old-bindings.conf
+/usr/local/share/doc/mpv/restore-osc-bindings.conf
+/usr/local/share/fish/vendor_completions.d/mpv.fish
 /usr/local/share/icons/hicolor/128x128/apps/mpv.png
 /usr/local/share/icons/hicolor/16x16/apps/mpv.png
 /usr/local/share/icons/hicolor/32x32/apps/mpv.png
