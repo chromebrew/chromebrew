@@ -18,7 +18,6 @@
 /usr/local/share/vivaldi/MEIPreload/preloaded_data.pb
 /usr/local/share/vivaldi/PrivacySandboxAttestationsPreloaded/manifest.json
 /usr/local/share/vivaldi/PrivacySandboxAttestationsPreloaded/privacy-sandbox-attestations.dat
-/usr/local/share/vivaldi/WidevineCdm
 /usr/local/share/vivaldi/chrome_crashpad_handler
 /usr/local/share/vivaldi/cron/vivaldi
 /usr/local/share/vivaldi/icudtl.dat
@@ -209,7 +208,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-6ebe081e8ccf561e25eb2b2660c97011.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-9e38af95f25c60b88935c0351de91c70.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
