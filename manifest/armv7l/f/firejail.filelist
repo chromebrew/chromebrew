@@ -89,6 +89,8 @@
 /usr/local/etc/firejail/arduino.profile
 /usr/local/etc/firejail/arepack.profile
 /usr/local/etc/firejail/aria2c.profile
+/usr/local/etc/firejail/aria2p.profile
+/usr/local/etc/firejail/aria2rpc.profile
 /usr/local/etc/firejail/ark.profile
 /usr/local/etc/firejail/arm.profile
 /usr/local/etc/firejail/armcord.profile
@@ -120,6 +122,7 @@
 /usr/local/etc/firejail/awesome.profile
 /usr/local/etc/firejail/axel.profile
 /usr/local/etc/firejail/b2sum.profile
+/usr/local/etc/firejail/b3sum.profile
 /usr/local/etc/firejail/ballbuster-wrapper.profile
 /usr/local/etc/firejail/ballbuster.profile
 /usr/local/etc/firejail/baloo_file.profile
@@ -135,6 +138,7 @@
 /usr/local/etc/firejail/bijiben.profile
 /usr/local/etc/firejail/bitcoin-qt.profile
 /usr/local/etc/firejail/bitlbee.profile
+/usr/local/etc/firejail/bitwarden-desktop.profile
 /usr/local/etc/firejail/bitwarden.profile
 /usr/local/etc/firejail/blackbox.profile
 /usr/local/etc/firejail/bleachbit.profile
@@ -162,6 +166,7 @@
 /usr/local/etc/firejail/bsdcpio.profile
 /usr/local/etc/firejail/bsdtar.profile
 /usr/local/etc/firejail/build-systems-common.profile
+/usr/local/etc/firejail/buku.profile
 /usr/local/etc/firejail/bundle.profile
 /usr/local/etc/firejail/bunzip2.profile
 /usr/local/etc/firejail/bzcat.profile
@@ -251,6 +256,7 @@
 /usr/local/etc/firejail/d-spy.profile
 /usr/local/etc/firejail/daisy.profile
 /usr/local/etc/firejail/darktable.profile
+/usr/local/etc/firejail/dbus-debug-common.profile
 /usr/local/etc/firejail/dbus-send.profile
 /usr/local/etc/firejail/dconf-editor.profile
 /usr/local/etc/firejail/dconf.profile
@@ -262,6 +268,7 @@
 /usr/local/etc/firejail/deluge.profile
 /usr/local/etc/firejail/desktopeditors.profile
 /usr/local/etc/firejail/devhelp.profile
+/usr/local/etc/firejail/device-flasher.linux.profile
 /usr/local/etc/firejail/devilspie.profile
 /usr/local/etc/firejail/devilspie2.profile
 /usr/local/etc/firejail/dex2jar.profile
@@ -301,6 +308,7 @@
 /usr/local/etc/firejail/drawio.profile
 /usr/local/etc/firejail/drill.profile
 /usr/local/etc/firejail/dropbox.profile
+/usr/local/etc/firejail/dtui.profile
 /usr/local/etc/firejail/easystroke.profile
 /usr/local/etc/firejail/ebook-convert.profile
 /usr/local/etc/firejail/ebook-edit.profile
@@ -378,6 +386,7 @@
 /usr/local/etc/firejail/flowblade.profile
 /usr/local/etc/firejail/fluffychat.profile
 /usr/local/etc/firejail/fluxbox.profile
+/usr/local/etc/firejail/foliate.profile
 /usr/local/etc/firejail/font-manager.profile
 /usr/local/etc/firejail/fontforge.profile
 /usr/local/etc/firejail/fossamail.profile
@@ -543,6 +552,8 @@
 /usr/local/etc/firejail/hexchat.profile
 /usr/local/etc/firejail/highlight.profile
 /usr/local/etc/firejail/hitori.profile
+/usr/local/etc/firejail/hledger-ui.profile
+/usr/local/etc/firejail/hledger.profile
 /usr/local/etc/firejail/homebank.profile
 /usr/local/etc/firejail/host.profile
 /usr/local/etc/firejail/hugin.profile
@@ -568,6 +579,7 @@
 /usr/local/etc/firejail/ipcalc.profile
 /usr/local/etc/firejail/iridium-browser.profile
 /usr/local/etc/firejail/iridium.profile
+/usr/local/etc/firejail/irssi.profile
 /usr/local/etc/firejail/itch.profile
 /usr/local/etc/firejail/jami-gnome.profile
 /usr/local/etc/firejail/jami.profile
@@ -611,6 +623,7 @@
 /usr/local/etc/firejail/kmplayer.profile
 /usr/local/etc/firejail/knotes.profile
 /usr/local/etc/firejail/kodi.profile
+/usr/local/etc/firejail/kontact.profile
 /usr/local/etc/firejail/konversation.profile
 /usr/local/etc/firejail/kopete.profile
 /usr/local/etc/firejail/koreader.profile
@@ -740,6 +753,7 @@
 /usr/local/etc/firejail/mirage.profile
 /usr/local/etc/firejail/mirrormagic.profile
 /usr/local/etc/firejail/mocp.profile
+/usr/local/etc/firejail/monero-wallet-cli.profile
 /usr/local/etc/firejail/mousepad.profile
 /usr/local/etc/firejail/mov-cli.profile
 /usr/local/etc/firejail/mp3splt-gtk.profile
@@ -792,6 +806,7 @@
 /usr/local/etc/firejail/nautilus.profile
 /usr/local/etc/firejail/ncdu.profile
 /usr/local/etc/firejail/ncdu2.profile
+/usr/local/etc/firejail/ncmpcpp.profile
 /usr/local/etc/firejail/nemo.profile
 /usr/local/etc/firejail/neochat.profile
 /usr/local/etc/firejail/neomutt.profile
@@ -828,11 +843,13 @@
 /usr/local/etc/firejail/npm.profile
 /usr/local/etc/firejail/npx.profile
 /usr/local/etc/firejail/nslookup.profile
+/usr/local/etc/firejail/nsxiv.profile
 /usr/local/etc/firejail/nuclear.profile
 /usr/local/etc/firejail/nvim.profile
 /usr/local/etc/firejail/nylas.profile
 /usr/local/etc/firejail/nyx.profile
 /usr/local/etc/firejail/obs.profile
+/usr/local/etc/firejail/obsidian.profile
 /usr/local/etc/firejail/ocenaudio.profile
 /usr/local/etc/firejail/odt2txt.profile
 /usr/local/etc/firejail/oggsplt.profile
@@ -861,8 +878,10 @@
 /usr/local/etc/firejail/opera.profile
 /usr/local/etc/firejail/orage.profile
 /usr/local/etc/firejail/org.gnome.NautilusPreviewer.profile
+/usr/local/etc/firejail/org.gnome.seahorse.Application.profile
 /usr/local/etc/firejail/ostrichriders.profile
 /usr/local/etc/firejail/otter-browser.profile
+/usr/local/etc/firejail/ouch.profile
 /usr/local/etc/firejail/out123.profile
 /usr/local/etc/firejail/p7zip.profile
 /usr/local/etc/firejail/palemoon.profile
@@ -912,12 +931,14 @@
 /usr/local/etc/firejail/pragha.profile
 /usr/local/etc/firejail/presentations18.profile
 /usr/local/etc/firejail/presentations18free.profile
+/usr/local/etc/firejail/prismlauncher.profile
 /usr/local/etc/firejail/profanity.profile
 /usr/local/etc/firejail/psi-plus.profile
 /usr/local/etc/firejail/psi.profile
 /usr/local/etc/firejail/pybitmessage.profile
 /usr/local/etc/firejail/pycharm-community.profile
 /usr/local/etc/firejail/pycharm-professional.profile
+/usr/local/etc/firejail/pyradio.profile
 /usr/local/etc/firejail/pzstd.profile
 /usr/local/etc/firejail/qbittorrent.profile
 /usr/local/etc/firejail/qcomicbook.profile
@@ -952,6 +973,7 @@
 /usr/local/etc/firejail/rednotebook.profile
 /usr/local/etc/firejail/redshift.profile
 /usr/local/etc/firejail/regextester.profile
+/usr/local/etc/firejail/remmina-file-wrapper.profile
 /usr/local/etc/firejail/remmina.profile
 /usr/local/etc/firejail/retroarch.profile
 /usr/local/etc/firejail/rhythmbox-client.profile
@@ -1012,6 +1034,7 @@
 /usr/local/etc/firejail/simple-scan.profile
 /usr/local/etc/firejail/simplescreenrecorder.profile
 /usr/local/etc/firejail/simutrans.profile
+/usr/local/etc/firejail/singularity.profile
 /usr/local/etc/firejail/skanlite.profile
 /usr/local/etc/firejail/skypeforlinux.profile
 /usr/local/etc/firejail/slack.profile
@@ -1058,6 +1081,7 @@
 /usr/local/etc/firejail/sway.profile
 /usr/local/etc/firejail/swell-foop.profile
 /usr/local/etc/firejail/sylpheed.profile
+/usr/local/etc/firejail/syncthing.profile
 /usr/local/etc/firejail/synfigstudio.profile
 /usr/local/etc/firejail/sysprof-cli.profile
 /usr/local/etc/firejail/sysprof.profile
@@ -1171,6 +1195,7 @@
 /usr/local/etc/firejail/transmission-remote-gtk.profile
 /usr/local/etc/firejail/transmission-remote.profile
 /usr/local/etc/firejail/transmission-show.profile
+/usr/local/etc/firejail/tremc.profile
 /usr/local/etc/firejail/tremulous.profile
 /usr/local/etc/firejail/trojita.profile
 /usr/local/etc/firejail/truecraft.profile
@@ -1202,6 +1227,7 @@
 /usr/local/etc/firejail/utox.profile
 /usr/local/etc/firejail/uudeview.profile
 /usr/local/etc/firejail/uzbl-browser.profile
+/usr/local/etc/firejail/vesktop.profile
 /usr/local/etc/firejail/viewnior.profile
 /usr/local/etc/firejail/viking.profile
 /usr/local/etc/firejail/vim.profile
@@ -1261,6 +1287,7 @@
 /usr/local/etc/firejail/wpspdf.profile
 /usr/local/etc/firejail/x-terminal-emulator.profile
 /usr/local/etc/firejail/x2goclient.profile
+/usr/local/etc/firejail/xarchiver.profile
 /usr/local/etc/firejail/xbill.profile
 /usr/local/etc/firejail/xcalc.profile
 /usr/local/etc/firejail/xchat.profile
@@ -1306,6 +1333,7 @@
 /usr/local/etc/firejail/yelp.profile
 /usr/local/etc/firejail/youtube-dl-gui.profile
 /usr/local/etc/firejail/youtube-dl.profile
+/usr/local/etc/firejail/youtube-music-desktop-app.profile
 /usr/local/etc/firejail/youtube-viewer-gtk.profile
 /usr/local/etc/firejail/youtube-viewer.profile
 /usr/local/etc/firejail/youtube-viewers-common.profile
@@ -1397,5 +1425,6 @@
 /usr/local/share/man/man5/firejail-profile.5.zst
 /usr/local/share/man/man5/firejail-users.5.zst
 /usr/local/share/vim/vimfiles/ftdetect/firejail.vim
+/usr/local/share/vim/vimfiles/ftplugin/firejail.vim
 /usr/local/share/vim/vimfiles/syntax/firejail.vim
 /usr/local/share/zsh/site-functions/_firejail

@@ -4,17 +4,19 @@ class Firejail < Autotools
   description 'Firejail is a SUID program that reduces the risk of security breaches by restricting the running environment of untrusted applications
   by using Linux namespaces and seccomp-bpf.'
   homepage 'https://firejail.wordpress.com'
-  version '0.9.72-60ea220'
+  version '0.9.74'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/netblue30/firejail.git'
-  git_hashtag '60ea22080a36c66c3e90b75e016ad6324575c7a0'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a34d46a5fb832516d072e064e3f71abd3f87a299960b465880b512450dc555e4',
-     armv7l: 'a34d46a5fb832516d072e064e3f71abd3f87a299960b465880b512450dc555e4',
-       i686: '0d7145aa047152da398cd50d1495a74cb8d93b4ec5db380ea771446af9aa07f6',
-     x86_64: 'a64b8e303201574631b07dd00d7813688ee2ade71b763d45eb99c496257fa351'
+    aarch64: '4f4546c5e596cf3f7cddcf4e5457876acbd6526d951d744dfd1d4b07cf06534e',
+     armv7l: '4f4546c5e596cf3f7cddcf4e5457876acbd6526d951d744dfd1d4b07cf06534e',
+       i686: 'd20f8ff80b1720301d6e66913b91b7ea9f791d655c4c815739b035b1021d7680',
+     x86_64: '064c256e5346d784028223236f4beb03df707511f1e444bef418503f443b1aac'
   })
+
+  depends_on 'glibc' # R
 end
