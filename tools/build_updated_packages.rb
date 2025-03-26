@@ -61,7 +61,7 @@ else
   puts 'Checking for pip package version updates...'.orange
   Kernel.system 'tools/update_python_pip_packages.rb'
   puts 'Checking for ruby gem package version updates...'.orange
-  load 'tools/update_ruby_gem_packages.rb'
+  Kernel.system 'tools/update_ruby_gem_packages.rb'
 end
 changed_files = `git diff HEAD --name-only`.chomp.split
 changed_files_previous_commit = `git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)`.chomp.split
