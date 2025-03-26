@@ -9,7 +9,7 @@ class Upm < Package
   source_url 'https://downloads.sourceforge.net/project/upm/upm-1.15.1/upm-1.15.1.tar.gz'
   source_sha256 'c8ade41ec0fe6f387f6e44b941ce5f17a3c2e2d096b4be766bed29ee606ac078'
 
-  depends_on 'jdk8'
+  depends_on 'openjdk8'
   depends_on 'sommelier'
 
   def self.build

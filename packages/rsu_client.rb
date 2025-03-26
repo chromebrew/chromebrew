@@ -16,7 +16,7 @@ class Rsu_client < Package
      x86_64: '535a8a5339b57fe5929b6b1ff4fc40c8c93039ecf43006c2323c0d65502ed899'
   })
 
-  depends_on 'jdk8'
+  depends_on 'openjdk8'
   depends_on 'p7zip'
   depends_on 'wxwidgets'
   depends_on 'xdg_utils'

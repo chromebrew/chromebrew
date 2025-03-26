@@ -14,7 +14,7 @@ class Vuze < Package
      x86_64: '062957f74835d906c6788056224dda734b92e64473a4ac330afbd29041d71c74'
   })
 
-  depends_on 'jdk8' unless CREW_IN_CONTAINER
+  depends_on 'openjdk8'
   depends_on 'gtk3'
 
   def self.patch
