@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_byebug < RUBY
   description 'Byebug is a Ruby debugger.'
   homepage 'https://github.com/deivid-rodriguez/byebug'
-  version "11.1.3-#{CREW_RUBY_VER}"
+  version "12.0.0-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
