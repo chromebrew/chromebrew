@@ -11,9 +11,9 @@ class Mpv < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f27922e81b166afce9df09ea7e2802dd43239d6f3ff5d114ad59c1f0037a5bc8',
-     armv7l: 'f27922e81b166afce9df09ea7e2802dd43239d6f3ff5d114ad59c1f0037a5bc8',
-     x86_64: 'f4e97ded5f04dc2cebfc3eac812eefeaf870f01be0249e234d67331b7fdf1068'
+    aarch64: '2bc48246dbc53037698b0ec25842b950714d2eb623254ded3d5adacb19c6493f',
+     armv7l: '2bc48246dbc53037698b0ec25842b950714d2eb623254ded3d5adacb19c6493f',
+     x86_64: 'e58d9512455a4006effd4262720d54f700d4ba6e8d1607b7779afa2ca0f88996'
   })
 
   depends_on 'alsa_lib' # R
