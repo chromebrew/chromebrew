@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libmaxminddb < CMake
   description 'C library for the MaxMind DB file format.'
   homepage 'https://maxmind.github.io/libmaxminddb/'
-  version '1.11.0'
+  version '1.12.2'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/maxmind/libmaxminddb.git'
@@ -11,15 +11,14 @@ class Libmaxminddb < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9317f59be14aa2d07e3d02ff2e00bdbd48fa47c5f93d6a0264730dd194cefec7',
-     armv7l: '9317f59be14aa2d07e3d02ff2e00bdbd48fa47c5f93d6a0264730dd194cefec7',
-       i686: '0fc6795d757ee451a0a16f5c4254d2de282bdde92818fb1ab98fd21867a577c1',
-     x86_64: 'f35e028343a26c60c3a93a6938925d8549e7614f13166795566196e8ef3745e8'
+    aarch64: '3008d852b5d5dc7d96d8d9fac82f9ed3e9986f540538e19275426b55e67df19a',
+     armv7l: '3008d852b5d5dc7d96d8d9fac82f9ed3e9986f540538e19275426b55e67df19a',
+       i686: '91dd3ff1f16305f5f207143495a1701e2614ca83afe249a75393d9763439ee86',
+     x86_64: '8718162376f822ddf7b27a2b4bd1aa4588faab64ede35a2b4523c82255b06c7f'
   })
 
   depends_on 'glibc' # R
 
-  run_tests
-
   cmake_options '-DBUILD_SHARED_LIBS=ON'
+  run_tests
 end
