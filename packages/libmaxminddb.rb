@@ -14,7 +14,7 @@ class Libmaxminddb < CMake
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
        i686: '91dd3ff1f16305f5f207143495a1701e2614ca83afe249a75393d9763439ee86',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '8718162376f822ddf7b27a2b4bd1aa4588faab64ede35a2b4523c82255b06c7f'
   })
 
   depends_on 'glibc' # R
