@@ -1473,6 +1473,10 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression.nil? ? '(tar.xz|tar.zst)' : binary_compression} not found.\n".lightred
         next arch
       end
+
+      # If the filelist exists and is empty, the build was probably supposed to have files.
+      abort "#{package} has an empty manifest. Something probably went wrong with the build.".lightred if File.empty?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{arch}/#{@pkg.name.chr}/#{@pkg.name}.filelist")
+
       if binary_compression_not_in_file
         ext = File.extname(new_tarfile)
         binary_compression = @pkg.superclass.to_s == 'RUBY' ? 'gem' : "tar#{ext}"
