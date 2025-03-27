@@ -11,8 +11,8 @@ class Libmaxminddb < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '3008d852b5d5dc7d96d8d9fac82f9ed3e9986f540538e19275426b55e67df19a',
+     armv7l: '3008d852b5d5dc7d96d8d9fac82f9ed3e9986f540538e19275426b55e67df19a',
        i686: '91dd3ff1f16305f5f207143495a1701e2614ca83afe249a75393d9763439ee86',
      x86_64: '8718162376f822ddf7b27a2b4bd1aa4588faab64ede35a2b4523c82255b06c7f'
   })
