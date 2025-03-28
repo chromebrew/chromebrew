@@ -3,8 +3,8 @@ require 'buildsystems/qmake'
 class Qt5_declarative < Qmake
   description 'Provides QML and Quick declaratives.'
   homepage 'https://www.qt.io/'
-  kde_5_15_githash = '310c124dac82d711ab15309a9cb0b9d95db9ea8f'
-  version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
+  kde_5_15_githash = 'e2b38659cb79104f157e1d0099c01e545d04d0db'
+  version "kde-5.15.16-#{kde_5_15_githash[0, 7]}"
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtdeclarative.git'
@@ -12,9 +12,9 @@ class Qt5_declarative < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '827076a4e33aac1aaaba76265d15c6a7004e69d152308d39adb2fbbfc1375d0f',
-     armv7l: '827076a4e33aac1aaaba76265d15c6a7004e69d152308d39adb2fbbfc1375d0f',
-     x86_64: 'b6e06d28586cf0f429ef7685280b6c0d8b6f3fb39e7ce9a2b1438147b01001c0'
+    aarch64: '763da644cf7dd6c5642ba31dfc93cff514237ed2d60814b5519be4d724819c8c',
+     armv7l: '763da644cf7dd6c5642ba31dfc93cff514237ed2d60814b5519be4d724819c8c',
+     x86_64: 'c7fff97f368abd24f9d779f8be90a3710c03493ea6051c96a79f989e7f290e01'
   })
 
   depends_on 'gcc_lib' # R
