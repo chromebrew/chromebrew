@@ -110,7 +110,6 @@
 /usr/local/share/Signal/resources/app.asar.unpacked/node_modules/@signalapp/libsignal-client/prebuilds/linux-x64/@signalapp+libsignal-client.node
 /usr/local/share/Signal/resources/app.asar.unpacked/node_modules/@signalapp/ringrtc/build/linux/libringrtc-x64.node
 /usr/local/share/Signal/resources/app.asar.unpacked/node_modules/fs-xattr/build/Release/xattr.node
-/usr/local/share/Signal/resources/app.asar.unpacked/node_modules/mac-screen-capture-permissions/build/Release/screencapturepermissions.node
 /usr/local/share/Signal/resources/apparmor-profile
 /usr/local/share/Signal/resources/package-type
 /usr/local/share/Signal/signal-desktop
