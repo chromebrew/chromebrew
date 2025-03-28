@@ -2,13 +2,6 @@
 /usr/local/bin/__pycache__/pdf2txt.cpython-313.pyc
 /usr/local/bin/dumppdf.py
 /usr/local/bin/pdf2txt.py
-/usr/local/lib/python3.13/site-packages/pdfminer.six-20250324.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pdfminer.six-20250324.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/pdfminer.six-20250324.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pdfminer.six-20250324.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pdfminer.six-20250324.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pdfminer.six-20250324.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pdfminer.six-20250324.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/pdfminer/__init__.py
 /usr/local/lib/python3.13/site-packages/pdfminer/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pdfminer/__pycache__/_saslprep.cpython-313.pyc
@@ -140,6 +133,7 @@
 /usr/local/lib/python3.13/site-packages/pdfminer/cmap/Katakana-V.pickle.gz
 /usr/local/lib/python3.13/site-packages/pdfminer/cmap/NWP-H.pickle.gz
 /usr/local/lib/python3.13/site-packages/pdfminer/cmap/NWP-V.pickle.gz
+/usr/local/lib/python3.13/site-packages/pdfminer/cmap/README.txt
 /usr/local/lib/python3.13/site-packages/pdfminer/cmap/RKSJ-H.pickle.gz
 /usr/local/lib/python3.13/site-packages/pdfminer/cmap/RKSJ-V.pickle.gz
 /usr/local/lib/python3.13/site-packages/pdfminer/cmap/Roman-H.pickle.gz
@@ -222,3 +216,10 @@
 /usr/local/lib/python3.13/site-packages/pdfminer/runlength.py
 /usr/local/lib/python3.13/site-packages/pdfminer/settings.py
 /usr/local/lib/python3.13/site-packages/pdfminer/utils.py
+/usr/local/lib/python3.13/site-packages/pdfminer_six-20250327.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pdfminer_six-20250327.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pdfminer_six-20250327.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pdfminer_six-20250327.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pdfminer_six-20250327.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pdfminer_six-20250327.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/pdfminer_six-20250327.dist-info/top_level.txt
