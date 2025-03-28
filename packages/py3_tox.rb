@@ -12,7 +12,7 @@ class Py3_tox < Pip
   binary_sha256({
     aarch64: '59027e07963e98b65572bdf100fe88402f1e89a9e9ac7d8dac6d75f8a181427b',
      armv7l: '59027e07963e98b65572bdf100fe88402f1e89a9e9ac7d8dac6d75f8a181427b',
-       i686: 'edc7a89faacaddc5cc50f220fc89b5f00e1454fa0380a0ab4534f5bc56e92a9a',
+       i686: '48862092c52ed90cc8abf5588de7aac896195ebbe1af7f3eff23a9ced42b577d',
      x86_64: '8addf7a196949bfe1519a0a4eeaf04ac503d51e37c8b6b0fbd12c8b5fdf29423'
   })
 
