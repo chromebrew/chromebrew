@@ -13,7 +13,7 @@ class Py3_tox < Pip
     aarch64: '59027e07963e98b65572bdf100fe88402f1e89a9e9ac7d8dac6d75f8a181427b',
      armv7l: '59027e07963e98b65572bdf100fe88402f1e89a9e9ac7d8dac6d75f8a181427b',
        i686: '48862092c52ed90cc8abf5588de7aac896195ebbe1af7f3eff23a9ced42b577d',
-     x86_64: '8addf7a196949bfe1519a0a4eeaf04ac503d51e37c8b6b0fbd12c8b5fdf29423'
+     x86_64: 'ecc9a6b592035e8f28be688fd7213bbbaf9d0cdc515871158604f294fca7a9e0'
   })
 
   depends_on 'py3_py'
