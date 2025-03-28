@@ -12,8 +12,8 @@ class Qt5_declarative < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '763da644cf7dd6c5642ba31dfc93cff514237ed2d60814b5519be4d724819c8c',
+     armv7l: '763da644cf7dd6c5642ba31dfc93cff514237ed2d60814b5519be4d724819c8c',
      x86_64: 'c7fff97f368abd24f9d779f8be90a3710c03493ea6051c96a79f989e7f290e01'
   })
 
