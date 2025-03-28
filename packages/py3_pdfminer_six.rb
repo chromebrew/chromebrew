@@ -10,8 +10,8 @@ class Py3_pdfminer_six < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '740857e0968824a85a03a21488ca0ccf15207fbf5a16cbce627d621f93191474',
-     armv7l: '740857e0968824a85a03a21488ca0ccf15207fbf5a16cbce627d621f93191474',
+    aarch64: '7ea58102874f9dcbffc82685dd690e9965120faabdc2f2f1bfb68ae584b4c652',
+     armv7l: '7ea58102874f9dcbffc82685dd690e9965120faabdc2f2f1bfb68ae584b4c652',
        i686: '1e41dca40b419fd91a32f1ca7ca8eac5ad0cbe0963fc36e12a8b059c6a27669d',
      x86_64: 'ba1d8d4997d5cee989b721974570e03908f997a153161b3dfac5a457c56a5e80'
   })
