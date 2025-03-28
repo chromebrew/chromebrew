@@ -3,8 +3,8 @@ require 'package'
 class Qt5_base < Package
   description 'Qt Base (Core, Gui, Widgets, Network, ...)'
   homepage 'https://code.qt.io/cgit/qt/qtbase'
-  kde_5_15_githash = 'ab13e81917207959785ad0185a3a9974e552a7f5'
-  version "kde-5.15.15-#{kde_5_15_githash[0, 7]}-#{CREW_ICU_VER}"
+  kde_5_15_githash = '2529f7f0c2333d437089c775c9c30f624d1fd5bc'
+  version "kde-5.15.16-#{kde_5_15_githash[0, 7]}-#{CREW_ICU_VER}"
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
@@ -12,9 +12,9 @@ class Qt5_base < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aa7cf2fa922671fc11ba1cf204967cb6fed3b5e46fb768ac6692735a68697277',
-     armv7l: 'aa7cf2fa922671fc11ba1cf204967cb6fed3b5e46fb768ac6692735a68697277',
-     x86_64: 'b03e7cbdb7ab70e820e2bca0c87f2a65fc8c0424c7eb7a92b7e1f1ec6b5d25b2'
+    aarch64: '1598aa80f69cb4f82922d826da6d8935ed1359084e074ea3a197bb235ecd8bd6',
+     armv7l: '1598aa80f69cb4f82922d826da6d8935ed1359084e074ea3a197bb235ecd8bd6',
+     x86_64: 'e9f3805048a1866e8f8a922ae89c3df5896f6b2c5b07de0959f7c50b40372caa'
   })
 
   depends_on 'alsa_plugins' => :build
