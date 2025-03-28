@@ -14,7 +14,7 @@ class Qt5_declarative < Qmake
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: 'c7fff97f368abd24f9d779f8be90a3710c03493ea6051c96a79f989e7f290e01'
   })
 
   depends_on 'gcc_lib' # R
