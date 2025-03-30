@@ -14,7 +14,7 @@ class Qt5_location < Qmake
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '4b587c3efcf75398a4c818d29aa70b8fe9a646cc5df8608b53ef0c67e2f87e34'
   })
 
   depends_on 'gcc_lib' # R
