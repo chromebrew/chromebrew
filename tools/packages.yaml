@@ -1730,6 +1730,11 @@ url: http://erlang.org/download
 activity: high
 ---
 kind: url
+name: etcd
+url: https://github.com/etcd-io/etcd/releases
+activity: high
+---
+kind: url
 name: ethtool
 url: https://mirrors.edge.kernel.org/pub/software/network/ethtool/
 activity: medium
