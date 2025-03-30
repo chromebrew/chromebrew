@@ -12,8 +12,8 @@ class Qt5_websockets < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '6c4b8e6e3ca79d3d15ac6272152889fd87437c791d198cdc08779a0e7c84bfdd',
+     armv7l: '6c4b8e6e3ca79d3d15ac6272152889fd87437c791d198cdc08779a0e7c84bfdd',
      x86_64: '5d6c88ca8bd71bf087c74730514d9203a74ae5f5dffdd4623520f572c4361485'
   })
 
