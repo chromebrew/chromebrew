@@ -7,12 +7,12 @@ class Patch < Autotools
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/patch/patch-#{version}.tar.xz"
-  source_sha256 'ac610bda97abe0d9f6b7c963255a11dcb196c25e337c61f94e4778d632f1d8fd'
+  source_sha256 'f87cee69eec2b4fcbf60a396b030ad6aa3415f192aa5f7ee84cad5e11f7f5ae3'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f5ed23759094417cda17c86653388d8bfdacd8073f50b63754115bd1e3470718',
-     armv7l: 'f5ed23759094417cda17c86653388d8bfdacd8073f50b63754115bd1e3470718',
+    aarch64: '18339cb6ba301d4c5e6274d09c9bf51c1a14f715d485e0923ef9b0c4a689ee60',
+     armv7l: '18339cb6ba301d4c5e6274d09c9bf51c1a14f715d485e0923ef9b0c4a689ee60',
        i686: 'ba54143694d67822637f7b76865538c7968343cffb691ee0fed2db73584f9d10',
      x86_64: 'b6805b38f3cb66882c6ba9d17297b811b625f71e69dec686adb1212f5656b6ea'
   })
@@ -20,8 +20,7 @@ class Patch < Autotools
   depends_on 'attr' # R
   depends_on 'glibc' # R
 
-  year2038 = ARCH.include?('x86_64') ? '' : '--disable-year2038'
-  configure_options year2038
+  configure_options '--disable-year2038' unless ARCH.include?('x86_64')
 
   run_tests
 end
