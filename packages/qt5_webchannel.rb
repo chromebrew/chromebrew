@@ -12,8 +12,8 @@ class Qt5_webchannel < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '1a4addc61811e6c925b9da177a5d081104ed22d0c306ae58d4235cffea24e1c7',
+     armv7l: '1a4addc61811e6c925b9da177a5d081104ed22d0c306ae58d4235cffea24e1c7',
      x86_64: 'bc2a5b65b2e7a42bfb22ecc64567edc41b66da09d7d59f53d33f2e3658874a13'
   })
 
