@@ -12,8 +12,8 @@ class Qt5_location < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: 'c561f8c812502dec95e103b994c00171b07a2567172770e25e221e6163ff7301',
+     armv7l: 'c561f8c812502dec95e103b994c00171b07a2567172770e25e221e6163ff7301',
      x86_64: '4b587c3efcf75398a4c818d29aa70b8fe9a646cc5df8608b53ef0c67e2f87e34'
   })
 
