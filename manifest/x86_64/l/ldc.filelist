@@ -20,6 +20,9 @@
 /usr/local/lib64/libdruntime-ldc-shared.so
 /usr/local/lib64/libdruntime-ldc-shared.so.110
 /usr/local/lib64/libdruntime-ldc-shared.so.110.0
+/usr/local/lib64/libldc-jit.so
+/usr/local/lib64/libldc-jit.so.110
+/usr/local/lib64/libldc-jit.so.110.0
 /usr/local/lib64/libphobos2-ldc-debug-shared.so
 /usr/local/lib64/libphobos2-ldc-debug-shared.so.110
 /usr/local/lib64/libphobos2-ldc-debug-shared.so.110.0
