@@ -91,6 +91,7 @@
 /usr/local/share/cpu-x/usr/lib/im-wayland.so
 /usr/local/share/cpu-x/usr/lib/im-waylandgtk.so
 /usr/local/share/cpu-x/usr/lib/im-xim.so
+/usr/local/share/cpu-x/usr/lib/libOpenCL.so.1
 /usr/local/share/cpu-x/usr/lib/libXau.so.6
 /usr/local/share/cpu-x/usr/lib/libXcomposite.so.1
 /usr/local/share/cpu-x/usr/lib/libXcursor.so.1
@@ -133,7 +134,6 @@
 /usr/local/share/cpu-x/usr/lib/libgio-2.0.so.0
 /usr/local/share/cpu-x/usr/lib/libgio-2.0.so.0.7200.4
 /usr/local/share/cpu-x/usr/lib/libgiomm-2.4.so.1
-/usr/local/share/cpu-x/usr/lib/libglfw.so.3
 /usr/local/share/cpu-x/usr/lib/libglib-2.0.so.0
 /usr/local/share/cpu-x/usr/lib/libglibmm-2.4.so.1
 /usr/local/share/cpu-x/usr/lib/libgmodule-2.0.so.0

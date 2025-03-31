@@ -3,12 +3,12 @@ require 'package'
 class Cpu_x < Package
   description 'CPU-X is a Free software that gathers information on CPU, motherboard and more.'
   homepage 'https://thetumultuousunicornofdarkness.github.io/CPU-X/'
-  version '5.1.3'
+  version '5.2.0'
   license 'GPL-3'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/releases/download/v#{version}/CPU-X-#{version}-x86_64.AppImage"
-  source_sha256 'ddcd482438f58f97a76d7d4e511bffdef34c0feb3de8b1f3756405004d067835'
+  source_sha256 '3878fb134274b65492eab467b81925e49caad3d187b3bc07859b4f873fb9c21a'
 
   gnome
   no_compile_needed
