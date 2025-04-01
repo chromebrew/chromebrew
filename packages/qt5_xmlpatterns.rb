@@ -14,7 +14,7 @@ class Qt5_xmlpatterns < Qmake
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '12ac79f7a263777c3a573f5d62ac34f057016a11492a842664151846638c0dc5'
   })
 
   depends_on 'gcc_lib' # R
