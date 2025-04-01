@@ -12,8 +12,8 @@ class Qt5_quickcontrols < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '9aca2e3ca3e3583124de19cd7400ecd6d2e5d1aace2d673241d297ae07024ede',
+     armv7l: '9aca2e3ca3e3583124de19cd7400ecd6d2e5d1aace2d673241d297ae07024ede',
      x86_64: 'ffb88b405e2f2b617b1e9a8833fe6265b59ab176bb9e2a5fc05fdce26282fead'
   })
 
