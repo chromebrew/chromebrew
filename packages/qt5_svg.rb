@@ -12,8 +12,8 @@ class Qt5_svg < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '1193483c13758c2c5af62a09109ba6d05422f67782108ef6722437a99cc9f829',
+     armv7l: '1193483c13758c2c5af62a09109ba6d05422f67782108ef6722437a99cc9f829',
      x86_64: '3c529025841d73dc1cfcb35300123ae4f028d4f222257a820e5f2693a4c69133'
   })
 
