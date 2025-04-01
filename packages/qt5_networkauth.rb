@@ -12,8 +12,8 @@ class Qt5_networkauth < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '63557b9bbd82b239c27d06ce6ef37e5dc59fea6f5d0b796b78b786985f5a1df1',
+     armv7l: '63557b9bbd82b239c27d06ce6ef37e5dc59fea6f5d0b796b78b786985f5a1df1',
      x86_64: 'a6f477762229c044a3e58146f848e2f0b129b977539f115302233a70dea0f222'
   })
 
