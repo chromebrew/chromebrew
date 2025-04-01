@@ -12,8 +12,8 @@ class Qt5_x11extras < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: 'efd50af83a61451f16ee14f6f82558c8f0e54557a9c66828b57f4ce82d2db316',
+     armv7l: 'efd50af83a61451f16ee14f6f82558c8f0e54557a9c66828b57f4ce82d2db316',
      x86_64: 'c9d2490aa4b6ed718cfef7e55e3254b84db3a8cbe5c2a38dd4d66c2bbbe33808'
   })
 
