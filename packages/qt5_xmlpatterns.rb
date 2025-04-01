@@ -12,8 +12,8 @@ class Qt5_xmlpatterns < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '00a87c299110f035a99d2adf04e51d56f0c1896820b457ee72a047a359512894',
+     armv7l: '00a87c299110f035a99d2adf04e51d56f0c1896820b457ee72a047a359512894',
      x86_64: '12ac79f7a263777c3a573f5d62ac34f057016a11492a842664151846638c0dc5'
   })
 
