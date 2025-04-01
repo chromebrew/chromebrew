@@ -12,7 +12,7 @@ class Ruby_rbs < RUBY
   binary_sha256({
     aarch64: 'a0875a41f11e6a88248a67f9928992ba56d7dc2d8645d10b9cfc5502e23d7f5f',
      armv7l: 'a0875a41f11e6a88248a67f9928992ba56d7dc2d8645d10b9cfc5502e23d7f5f',
-       i686: '6b6bd66362bbdf404b0bec4c5fc30f607da1d489cc2d4fe54393cacbf71f8c4b',
+       i686: '521335d11676f3d80bcd2b03fbcae9582fd4b7fe3ea2e778cd9348692ede97ac',
      x86_64: 'c244ac795d8f4d83a42db80df5b06da546c2de7d1770d698bbac1e337de03df2'
   })
 
