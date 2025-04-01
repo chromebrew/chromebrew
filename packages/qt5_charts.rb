@@ -12,8 +12,8 @@ class Qt5_charts < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '9b75ac00f00818a5a77ae8892bf01c6497c52c180ae04c79a1af375463ffce2b',
+     armv7l: '9b75ac00f00818a5a77ae8892bf01c6497c52c180ae04c79a1af375463ffce2b',
      x86_64: 'da6762300487077d6d49983d864c195248f6d7b7256ae51bf97aa26acbadb458'
   })
 
