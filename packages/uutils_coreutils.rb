@@ -17,7 +17,7 @@ class Uutils_coreutils < Package
     aarch64: 'f186e207234d93eb8c644f6bc47967f38ed8b83e18ddb3b71b018701b752c22d',
      armv7l: 'f186e207234d93eb8c644f6bc47967f38ed8b83e18ddb3b71b018701b752c22d',
        i686: 'd2501dee6e01b2fd0fd9384b858bd2b54c0f687bbe0752223850c9a5bc33c147',
-     x86_64: 'a0d467d0c9bbaa47569fb538eb7f5a7ae56c9c87fb146c8924a18f29cdb4ce33'
+     x86_64: 'fc0d3d4894213619d5044bc09d9e2e5684a59c560a466fe1e59024e3df610cbd'
   })
 
   depends_on 'rust' => :build
