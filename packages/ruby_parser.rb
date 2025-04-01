@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_parser < RUBY
   description 'A Ruby parser written in pure Ruby.'
   homepage 'https://github.com/whitequark/parser'
-  version "3.3.7.3-#{CREW_RUBY_VER}"
+  version "3.3.7.4-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
