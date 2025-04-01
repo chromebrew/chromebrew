@@ -12,8 +12,8 @@ class Qt5_webglplugin < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '0d6d5c3d785fd1040f203890661539ba9fd3b723fc96b06f467cdbfe55cfd60f',
+     armv7l: '0d6d5c3d785fd1040f203890661539ba9fd3b723fc96b06f467cdbfe55cfd60f',
      x86_64: 'd64866fa1ff3bc8b646cda791443616828ac13d68898c2684b11f8b098341c22'
   })
 
