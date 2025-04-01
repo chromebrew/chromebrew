@@ -12,8 +12,8 @@ class Qt5_imageformats < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: 'c1874f0473456fa080cc25ea0493c67c7842f3d54506a4371db94190aef53263',
+     armv7l: 'c1874f0473456fa080cc25ea0493c67c7842f3d54506a4371db94190aef53263',
      x86_64: 'cc1d52e534a4e59d7a5875f2ed4726f61077d5088121463b57c2acad29a517af'
   })
 
