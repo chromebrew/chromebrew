@@ -3,8 +3,8 @@ require 'buildsystems/qmake'
 class Qt5_xmlpatterns < Qmake
   description 'Qt XML Patterns'
   homepage 'https://www.qt.io/'
-  kde_5_15_githash = '330c47bab8333d6dc7d4ab838afb81f29b6a32d0'
-  version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
+  kde_5_15_githash = '43996a4e543fa22b345c03ba3a1a41b1aba4b454'
+  version "kde-5.15.16-#{kde_5_15_githash[0, 7]}"
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtxmlpatterns.git'
@@ -12,9 +12,9 @@ class Qt5_xmlpatterns < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a8d3c1968443284b2e1efe0ce9cbc44963dd948f4529abb623bbd4a038b16deb',
-     armv7l: 'a8d3c1968443284b2e1efe0ce9cbc44963dd948f4529abb623bbd4a038b16deb',
-     x86_64: 'e30e0ea2e1024758197a79a1c71d1b28ce4465cce17d9d7f435cf0a2b6de260c'
+    aarch64: '00a87c299110f035a99d2adf04e51d56f0c1896820b457ee72a047a359512894',
+     armv7l: '00a87c299110f035a99d2adf04e51d56f0c1896820b457ee72a047a359512894',
+     x86_64: '12ac79f7a263777c3a573f5d62ac34f057016a11492a842664151846638c0dc5'
   })
 
   depends_on 'gcc_lib' # R
