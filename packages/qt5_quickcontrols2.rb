@@ -14,7 +14,7 @@ class Qt5_quickcontrols2 < Qmake
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '786c84bceb5f2db46e4a60e6d3dc3e8d6c5b2e77e273d862b8f2f54553789e17'
   })
 
   depends_on 'gcc_lib' # R
