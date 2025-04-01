@@ -3,8 +3,8 @@ require 'buildsystems/qmake'
 class Qt5_webglplugin < Qmake
   description 'Qt WebGL Plugin'
   homepage 'https://www.qt.io/'
-  kde_5_15_githash = '0d29f1cd46331caf1b5169eb037d573680454348'
-  version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
+  kde_5_15_githash = '64efc679e520505be352f2b3ad662184ef265503'
+  version "kde-5.15.16-#{kde_5_15_githash[0, 7]}"
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtwebglplugin.git'
@@ -12,9 +12,9 @@ class Qt5_webglplugin < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fc88c6ba7b4f54172ce34dea708a418721f65921286ceac7bea3fd0bfa08ca8a',
-     armv7l: 'fc88c6ba7b4f54172ce34dea708a418721f65921286ceac7bea3fd0bfa08ca8a',
-     x86_64: '9d3ad8b102e9251ece05eb832affd0f31e84ab2db512c265f70d99cbec1c7f95'
+    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
   })
 
   depends_on 'fontconfig' # R
