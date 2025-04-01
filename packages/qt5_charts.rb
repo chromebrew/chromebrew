@@ -3,8 +3,8 @@ require 'buildsystems/qmake'
 class Qt5_charts < Qmake
   description 'Qt Charts'
   homepage 'https://www.qt.io/'
-  kde_5_15_githash = '0c97aae7dc242ac0710e09397672ad878761157a'
-  version "kde-5.15.15-#{kde_5_15_githash[0, 7]}"
+  kde_5_15_githash = '4e4fc559c61d1fc2542add48d2b3c490214e9936'
+  version "kde-5.15.16-#{kde_5_15_githash[0, 7]}"
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtcharts.git'
@@ -12,9 +12,9 @@ class Qt5_charts < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '11319f0626324269f604cbb3dc71913802d3b7f63dd39b9af4570127e54bcf78',
-     armv7l: '11319f0626324269f604cbb3dc71913802d3b7f63dd39b9af4570127e54bcf78',
-     x86_64: '8763cc9bba33b8391ee172a1cb73b2c879042adbdc3ac55f8619b0c3f39fcf39'
+    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
   })
 
   depends_on 'gcc_lib' # R
