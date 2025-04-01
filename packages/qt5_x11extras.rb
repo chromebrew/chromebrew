@@ -14,7 +14,7 @@ class Qt5_x11extras < Package
   binary_sha256({
     aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
      armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: 'c9d2490aa4b6ed718cfef7e55e3254b84db3a8cbe5c2a38dd4d66c2bbbe33808'
   })
 
   depends_on 'gcc_lib' # R
