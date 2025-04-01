@@ -14,8 +14,8 @@ class Uutils_coreutils < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f186e207234d93eb8c644f6bc47967f38ed8b83e18ddb3b71b018701b752c22d',
-     armv7l: 'f186e207234d93eb8c644f6bc47967f38ed8b83e18ddb3b71b018701b752c22d',
+    aarch64: '6affd6acc08b60663ad2b6f5a2b8748ac775182ff19d38b34dc82b37ee094dcf',
+     armv7l: '6affd6acc08b60663ad2b6f5a2b8748ac775182ff19d38b34dc82b37ee094dcf',
        i686: 'd2501dee6e01b2fd0fd9384b858bd2b54c0f687bbe0752223850c9a5bc33c147',
      x86_64: 'fc0d3d4894213619d5044bc09d9e2e5684a59c560a466fe1e59024e3df610cbd'
   })
