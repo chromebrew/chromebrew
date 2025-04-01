@@ -13,7 +13,7 @@ class Ruby_rbs < RUBY
     aarch64: 'a0875a41f11e6a88248a67f9928992ba56d7dc2d8645d10b9cfc5502e23d7f5f',
      armv7l: 'a0875a41f11e6a88248a67f9928992ba56d7dc2d8645d10b9cfc5502e23d7f5f',
        i686: '521335d11676f3d80bcd2b03fbcae9582fd4b7fe3ea2e778cd9348692ede97ac',
-     x86_64: 'c244ac795d8f4d83a42db80df5b06da546c2de7d1770d698bbac1e337de03df2'
+     x86_64: '32f916f11c5fa28e51d0089466a159b64df185db1cdceb96df6197081ed29b14'
   })
 
   depends_on 'ruby_abbrev' # R
