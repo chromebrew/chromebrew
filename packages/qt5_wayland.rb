@@ -12,8 +12,8 @@ class Qt5_wayland < Qmake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '20e6cf446bb38bce2e9f5631c383cd14f55bce49ed80271b02c2a74831140589',
+     armv7l: '20e6cf446bb38bce2e9f5631c383cd14f55bce49ed80271b02c2a74831140589',
      x86_64: '96cc8958922995b74b45258ce8be7c6e2f78549880d00c609a6d1dbb802ab146'
   })
 
