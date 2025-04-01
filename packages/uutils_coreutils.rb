@@ -6,7 +6,7 @@ require 'package'
 class Uutils_coreutils < Package
   description 'Cross-platform Rust rewrite of the GNU coreutils'
   homepage 'https://github.com/uutils/coreutils'
-  version '0.0.29'
+  version '0.0.30'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/uutils/coreutils.git'
