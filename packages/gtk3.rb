@@ -13,7 +13,7 @@ class Gtk3 < Meson
   binary_sha256({
     aarch64: '860d31c6153336c4c08be8114f3a54d20189f8cdd916e811bfafc4a6be6e4d0b',
      armv7l: '860d31c6153336c4c08be8114f3a54d20189f8cdd916e811bfafc4a6be6e4d0b',
-     x86_64: 'b737c5428d91893a0e5a29c709c6f05d767d101e0802ceecb160eb36fd22e5f0'
+     x86_64: 'f36ca615dd896a952ba2c71866a2d0ffece9a33e911e894e8d84ae4fbb2cf93c'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
