@@ -1065,6 +1065,11 @@ url: https://github.com/containernetworking/plugins/releases
 activity: medium
 ---
 kind: url
+name: codeblocks
+url: https://sourceforge.net/projects/codeblocks/files/Sources/
+activity: low
+---
+kind: url
 name: codelite
 url: https://github.com/eranif/codelite/releases/
 activity: medium
