@@ -416,7 +416,7 @@
 /usr/local/lib64/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so
 /usr/local/lib64/libgtk-4.so
 /usr/local/lib64/libgtk-4.so.1
-/usr/local/lib64/libgtk-4.so.1.1800.2
+/usr/local/lib64/libgtk-4.so.1.1800.3
 /usr/local/lib64/pkgconfig/gtk4-atspi.pc
 /usr/local/lib64/pkgconfig/gtk4-broadway.pc
 /usr/local/lib64/pkgconfig/gtk4-unix-print.pc
@@ -430,6 +430,7 @@
 /usr/local/share/gir-1.0/GdkX11-4.0.gir
 /usr/local/share/gir-1.0/Gsk-4.0.gir
 /usr/local/share/gir-1.0/Gtk-4.0.gir
+/usr/local/share/glib-2.0/schemas/org.gtk.gtk4.Inspector.gschema.xml
 /usr/local/share/glib-2.0/schemas/org.gtk.gtk4.Settings.ColorChooser.gschema.xml
 /usr/local/share/glib-2.0/schemas/org.gtk.gtk4.Settings.Debug.gschema.xml
 /usr/local/share/glib-2.0/schemas/org.gtk.gtk4.Settings.EmojiChooser.gschema.xml
