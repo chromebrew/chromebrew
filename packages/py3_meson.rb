@@ -12,7 +12,7 @@ class Py3_meson < Pip
   binary_sha256({
     aarch64: 'b01df4adb5cac91939a21d08aa7cd7f15018f3bf87df4c8e8435653656dbd6cb',
      armv7l: 'b01df4adb5cac91939a21d08aa7cd7f15018f3bf87df4c8e8435653656dbd6cb',
-       i686: '7cf2ee933cf7b8727a304ec41bff3a4cff46ba1c6c9eea7cd0769f8a02a925b2',
+       i686: '7d7a3d304664f7065eb20c8b1ed4ef9460b1158f9037165b48ed867350cce57d',
      x86_64: 'd70caf2ec6cc021167009ccf6f20c2b6da68b0537417538c0da70a3fccbabeae'
   })
 
