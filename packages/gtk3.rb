@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk3 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://docs.gtk.org/gtk3/'
-  version '3.24.48'
+  version '3.24.49'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
