@@ -28,7 +28,6 @@
 /usr/local/firefox/icons/updater.png
 /usr/local/firefox/libfreeblpriv3.so
 /usr/local/firefox/libgkcodecs.so
-/usr/local/firefox/libipcclientcerts.so
 /usr/local/firefox/liblgpllibs.so
 /usr/local/firefox/libmozavcodec.so
 /usr/local/firefox/libmozavutil.so
@@ -38,7 +37,6 @@
 /usr/local/firefox/libmozwayland.so
 /usr/local/firefox/libnspr4.so
 /usr/local/firefox/libnss3.so
-/usr/local/firefox/libnssckbi.so
 /usr/local/firefox/libnssutil3.so
 /usr/local/firefox/libplc4.so
 /usr/local/firefox/libplds4.so
