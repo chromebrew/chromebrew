@@ -1,8 +1,10 @@
 /usr/local/include/jansson.h
 /usr/local/include/jansson_config.h
-/usr/local/lib64/libjansson.a
-/usr/local/lib64/libjansson.la
-/usr/local/lib64/libjansson.so
-/usr/local/lib64/libjansson.so.4
-/usr/local/lib64/libjansson.so.4.13.0
-/usr/local/lib64/pkgconfig/jansson.pc
+/usr/local/lib/cmake/jansson/janssonConfig.cmake
+/usr/local/lib/cmake/jansson/janssonConfigVersion.cmake
+/usr/local/lib/cmake/jansson/janssonTargets-release.cmake
+/usr/local/lib/cmake/jansson/janssonTargets.cmake
+/usr/local/lib/libjansson.so
+/usr/local/lib/libjansson.so.4
+/usr/local/lib/libjansson.so.4.14.0
+/usr/local/lib/pkgconfig/jansson.pc
