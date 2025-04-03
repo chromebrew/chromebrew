@@ -1,14 +1,14 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Jansson < Package
+class Jansson < CMake
   description 'Jansson is a C library for encoding, decoding and manipulating JSON data.'
   homepage 'https://github.com/akheron/jansson'
-  version '2.13.1'
+  version '2.14.1'
   license 'MIT'
   compatibility 'all'
-  source_url "https://github.com/akheron/jansson/archive/v#{version}.tar.gz"
-  source_sha256 'f22901582138e3203959c9257cf83eba9929ac41d7be4a42557213a22ebcc7a0'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/akheron/jansson.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '934cd7813f9a0c8ad07c967f0d65de05a545d697cc10c6a270c09e6dbbdf30df',
@@ -17,15 +17,5 @@ class Jansson < Package
      x86_64: '224290a4b9c5e4361d7a41171745ec02211281582af9a6f7aa0b7de47a06b7de'
   })
 
-  def self.build
-    system 'autoreconf -i'
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-      ./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  cmake_options '-DJANSSON_BUILD_SHARED_LIBS=ON'
 end
