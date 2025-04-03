@@ -15,7 +15,7 @@ class Ca_certificates < Package
     aarch64: '16c647fdee4c9a1cfde318bb8f40e2fa3fff899619a977b136a4a8e02affcae4',
      armv7l: '16c647fdee4c9a1cfde318bb8f40e2fa3fff899619a977b136a4a8e02affcae4',
        i686: '3abd902bb4fe85ddf0ecfd5371f6582a2a4f9f895cc2d36c02cf7683f0ced3a7',
-     x86_64: '50d3f85cea32d0b1f1a8336541a5d514a535ddf606ce219cc759b92aa7778372'
+     x86_64: '0008d1ff828dd9254e02e180340d87247b06a276b61da1f57736d33504eefc9a'
   })
 
   depends_on 'py3_cryptography' => :build

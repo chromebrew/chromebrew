@@ -14,7 +14,7 @@ class Libidn2 < Autotools
     aarch64: 'adbffb0615f7f292642ef4b6b279ebe8f4f588e931b10aa804aa29faf6054857',
      armv7l: 'adbffb0615f7f292642ef4b6b279ebe8f4f588e931b10aa804aa29faf6054857',
        i686: '7f8924f7edd7ea1f6e61052ca7104e59d2e84fd1d066d76e36f795562dfdc73f',
-     x86_64: 'c52ce4eb1cdd80d6cd9bbe5df1c212b21e51d076ec23b6c443e25d76e62cb515'
+     x86_64: '1d57e7b2d3438cb1a912506621938bc7140876b9cf4e1b54f07c0761851aca98'
   })
 
   depends_on 'glibc' # R
