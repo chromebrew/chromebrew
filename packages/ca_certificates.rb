@@ -12,8 +12,8 @@ class Ca_certificates < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '16c647fdee4c9a1cfde318bb8f40e2fa3fff899619a977b136a4a8e02affcae4',
-     armv7l: '16c647fdee4c9a1cfde318bb8f40e2fa3fff899619a977b136a4a8e02affcae4',
+    aarch64: '3afefe052aafab0eef1c3850d140dd71e42bc6d2b1dd838de33c97bb7fd2ff2c',
+     armv7l: '3afefe052aafab0eef1c3850d140dd71e42bc6d2b1dd838de33c97bb7fd2ff2c',
        i686: '3abd902bb4fe85ddf0ecfd5371f6582a2a4f9f895cc2d36c02cf7683f0ced3a7',
      x86_64: '0008d1ff828dd9254e02e180340d87247b06a276b61da1f57736d33504eefc9a'
   })
