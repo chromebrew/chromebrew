@@ -3,12 +3,12 @@ require 'package'
 class Ca_certificates < Package
   description 'Common CA Certificates PEM files'
   homepage 'https://salsa.debian.org/debian/ca-certificates'
-  @mozilla_git_tag = 'a978bf84ac8e90eebe60778579565b977080368c'
-  version '20240203-a978bf8' # Do not replace version with @_ver, the install will break.
+  @mozilla_git_tag = '5b78b93999ad54e54b18054c21697f8e857e57a6'
+  version '20241223-5b78b93' # Do not replace version with @_ver, the install will break.
   license 'MPL-1.1'
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/ca-certificates.git'
-  git_hashtag 'ee6e0484031314090a11c04ee82689acb73d7ad8'
+  git_hashtag '9ad250adb22da86f2f0929ecff081cf86919ac6e'
   binary_compression 'tar.zst'
 
   binary_sha256({
