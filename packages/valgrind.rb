@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Valgrind < Autotools
   description 'Valgrind is an instrumentation framework for building dynamic analysis tools.'
   homepage 'https://valgrind.org/'
-  version '3.22-41ff9aa'
+  version '3.24.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://sourceware.org/git/valgrind.git'
-  git_hashtag '41ff9aa49f6c54c66d0e6b37f265fd9cb0176057'
+  git_hashtag "VALGRIND_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
