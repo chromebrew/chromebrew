@@ -3,19 +3,19 @@ require 'package'
 class Ca_certificates < Package
   description 'Common CA Certificates PEM files'
   homepage 'https://salsa.debian.org/debian/ca-certificates'
-  @mozilla_git_tag = 'a978bf84ac8e90eebe60778579565b977080368c'
-  version '20240203-a978bf8' # Do not replace version with @_ver, the install will break.
+  @mozilla_git_tag = '5b78b93999ad54e54b18054c21697f8e857e57a6'
+  version '20241223-5b78b93' # Do not replace version with @_ver, the install will break.
   license 'MPL-1.1'
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/ca-certificates.git'
-  git_hashtag 'ee6e0484031314090a11c04ee82689acb73d7ad8'
+  git_hashtag '9ad250adb22da86f2f0929ecff081cf86919ac6e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '16c647fdee4c9a1cfde318bb8f40e2fa3fff899619a977b136a4a8e02affcae4',
-     armv7l: '16c647fdee4c9a1cfde318bb8f40e2fa3fff899619a977b136a4a8e02affcae4',
-       i686: '41c0a6d837c5c6fd90c553eb68b5c6bb454fc18e01f964b5d31e4588e81b8a1b',
-     x86_64: '50d3f85cea32d0b1f1a8336541a5d514a535ddf606ce219cc759b92aa7778372'
+    aarch64: '3afefe052aafab0eef1c3850d140dd71e42bc6d2b1dd838de33c97bb7fd2ff2c',
+     armv7l: '3afefe052aafab0eef1c3850d140dd71e42bc6d2b1dd838de33c97bb7fd2ff2c',
+       i686: '3abd902bb4fe85ddf0ecfd5371f6582a2a4f9f895cc2d36c02cf7683f0ced3a7',
+     x86_64: '0008d1ff828dd9254e02e180340d87247b06a276b61da1f57736d33504eefc9a'
   })
 
   depends_on 'py3_cryptography' => :build
