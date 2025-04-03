@@ -14,7 +14,7 @@ class Ca_certificates < Package
   binary_sha256({
     aarch64: '16c647fdee4c9a1cfde318bb8f40e2fa3fff899619a977b136a4a8e02affcae4',
      armv7l: '16c647fdee4c9a1cfde318bb8f40e2fa3fff899619a977b136a4a8e02affcae4',
-       i686: '41c0a6d837c5c6fd90c553eb68b5c6bb454fc18e01f964b5d31e4588e81b8a1b',
+       i686: '3abd902bb4fe85ddf0ecfd5371f6582a2a4f9f895cc2d36c02cf7683f0ced3a7',
      x86_64: '50d3f85cea32d0b1f1a8336541a5d514a535ddf606ce219cc759b92aa7778372'
   })
 
