@@ -3,11 +3,11 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.86.0'
+  version '1.85.0'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
-  git_hashtag '1.28.1'
+  git_hashtag '1.27.1'
   binary_compression 'tar.zst'
 
   binary_sha256({
