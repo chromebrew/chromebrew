@@ -14,7 +14,7 @@ class Valgrind < Autotools
     aarch64: 'e3c3d347b45971e24cac11925197cc24a2ce43ac25b1131ada88fcc2bb2c94e0',
      armv7l: 'e3c3d347b45971e24cac11925197cc24a2ce43ac25b1131ada88fcc2bb2c94e0',
        i686: 'a7f5d25c1cabe433f876104d06dd7ff6b1a3ec3d242087c58d8af400f2069d13',
-     x86_64: 'e3993dab53a717956627fcc39f6050c24852dd72e096158d40ca782d83581418'
+     x86_64: '409ed13db4bd493c89df0b1418481baca53cc1836c2392da970e6a99dbadee11'
   })
 
   depends_on 'glibc' # R
