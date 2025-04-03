@@ -19,5 +19,5 @@ class Jansson < CMake
 
   depends_on 'glibc' # R
 
-  cmake_options '-DJANSSON_BUILD_SHARED_LIBS=ON'
+  cmake_options '-DJANSSON_BUILD_DOCS=OFF -DJANSSON_BUILD_SHARED_LIBS=ON'
 end

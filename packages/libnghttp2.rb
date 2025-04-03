@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libnghttp2 < CMake
   description 'library implementing HTTP/2 protocol'
   homepage 'https://nghttp2.org/'
-  version "1.63.0-#{CREW_PY_VER}"
+  version "1.65.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/nghttp2/nghttp2.git'
