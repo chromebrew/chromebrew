@@ -79,6 +79,7 @@
 /usr/local/include/valgrind/vki/vki-amd64-freebsd.h
 /usr/local/include/valgrind/vki/vki-amd64-linux.h
 /usr/local/include/valgrind/vki/vki-arm-linux.h
+/usr/local/include/valgrind/vki/vki-arm64-freebsd.h
 /usr/local/include/valgrind/vki/vki-arm64-linux.h
 /usr/local/include/valgrind/vki/vki-darwin.h
 /usr/local/include/valgrind/vki/vki-freebsd.h
@@ -86,6 +87,7 @@
 /usr/local/include/valgrind/vki/vki-linux-io_uring.h
 /usr/local/include/valgrind/vki/vki-linux.h
 /usr/local/include/valgrind/vki/vki-machine-types-amd64-freebsd.h
+/usr/local/include/valgrind/vki/vki-machine-types-arm64-freebsd.h
 /usr/local/include/valgrind/vki/vki-machine-types-x86-freebsd.h
 /usr/local/include/valgrind/vki/vki-mips32-linux.h
 /usr/local/include/valgrind/vki/vki-mips64-linux.h
