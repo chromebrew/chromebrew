@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# getrealdeps version 1.5 (for Chromebrew)
+# getrealdeps version 1.6 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -110,6 +110,12 @@ def main(pkg)
 
   # Look for missing runtime dependencies.
   missingpkgdeps = pkgdeps.reject { |i| File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}'") unless File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}' => :build") }
+
+  # Do not add llvm_ deps if this is a llvm*_build package.
+  if /llvm.*_build/.match(pkg)
+    missingpkgdeps.delete_if { |d| /llvm.*_*/.match(d) }
+    pkgdeps.delete_if { |d| /llvm.*_*/.match(d) }
+  end
 
   puts "\nPackage #{pkg} has runtime library dependencies on these packages:"
   pkgdeps.each do |i|
