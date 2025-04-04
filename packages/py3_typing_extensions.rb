@@ -13,7 +13,7 @@ class Py3_typing_extensions < Pip
     aarch64: '691788a0feb370dcd9163e4bda9bafeea8667fbe3f461369322b79078dfe56fb',
      armv7l: '691788a0feb370dcd9163e4bda9bafeea8667fbe3f461369322b79078dfe56fb',
        i686: '903a8963bad5bde7820aa94c6c1d40e03dfe7f8ca02fd46cdc8fe532b43a5eda',
-     x86_64: '75a4f5abfe3678c2da65e688d06676d2881e6d022f626f76d0f18f90c7eff02d'
+     x86_64: '10bcdfaf15bf67909403c559ca8251a6779150f22acbff835b7684ac0cb761df'
   })
 
   depends_on 'python3' => :build
