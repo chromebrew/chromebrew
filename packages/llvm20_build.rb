@@ -16,7 +16,7 @@ class Llvm20_build < Package
     aarch64: '6267c0a5aaf28abca8c29af9ca0466f2d5251c16f0808538a8833d2f46fcd23e',
      armv7l: '6267c0a5aaf28abca8c29af9ca0466f2d5251c16f0808538a8833d2f46fcd23e',
        i686: 'f7eb9e4fd25829866c8b7df85733b871d568639c9da8b0a1b046e60ce138b7e5',
-     x86_64: '16e01fcc38fd0c52b054b4613ea2ad711bb36b4d28093157ba1ca49d213dd21b'
+     x86_64: 'dce3c3b10048c6e505d71ef88517a5bef8ff85fd04032bf7cc8296d4831f964e'
   })
 
   depends_on 'gcc_lib' # R
