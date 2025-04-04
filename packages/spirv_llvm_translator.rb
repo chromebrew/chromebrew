@@ -14,7 +14,7 @@ class Spirv_llvm_translator < CMake
     aarch64: 'd11a3b41e69adce91f3c4a6dad913c770374b96cd152f44d03aad422deec51b5',
      armv7l: 'd11a3b41e69adce91f3c4a6dad913c770374b96cd152f44d03aad422deec51b5',
        i686: 'bfd10c69c6f8e4d378411c0a0ea36fbdb9fc3189b109c70a7cbf2ba07cee59c5',
-     x86_64: 'a4f1c647fb682d059a98af69ff46d46b2f503b352f24e59bb3dc252b8ae8e7bc'
+     x86_64: '76ef851432e568d2b0a3ee42cefb2d74ea3fb9aa2b9b20f9fa8ce6053b10f967'
   })
 
   depends_on 'gcc_lib' # R
