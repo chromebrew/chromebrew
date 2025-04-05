@@ -13,7 +13,7 @@ class Mesa < Meson
   binary_sha256({
     aarch64: 'f29da35825b3c30e3df0feb311ad7530870288fcd69b3b181b2b9a1781baed54',
      armv7l: 'f29da35825b3c30e3df0feb311ad7530870288fcd69b3b181b2b9a1781baed54',
-     x86_64: '270f1614e3507e9b75df823e78400716a0c72a5a9b709ddaf1c8139d3f4980cb'
+     x86_64: '3ec156e50e15291a14389c06d15475b39d46bc65b181767ef3f5680d908c8af3'
   })
 
   depends_on 'elfutils' # R
