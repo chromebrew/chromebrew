@@ -9050,6 +9050,11 @@ url: https://github.com/pantheon-systems/terminus/releases
 activity: medium
 ---
 kind: url
+name: termius
+url: https://www.termius.com/download/linux
+activity: medium
+---
+kind: url
 name: terraform
 url: https://github.com/hashicorp/terraform/releases
 activity: medium
