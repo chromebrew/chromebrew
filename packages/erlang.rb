@@ -13,7 +13,7 @@ class Erlang < Autotools
   binary_sha256({
     aarch64: '719d76f6b0f3cae165c3d2c7c94e961471ea62cb7681005b7b504a37742f62a3',
      armv7l: '719d76f6b0f3cae165c3d2c7c94e961471ea62cb7681005b7b504a37742f62a3',
-     x86_64: 'cf26969cca258ff301a0c33c0e51ee4d785ce400852e6ad62baaa8b23be4a1dd'
+     x86_64: '6d2449b58f505a341b545c88b92eac5805a8cfecfdf99b77e34d0df10580bb1d'
   })
 
   depends_on 'gcc_lib' # R
