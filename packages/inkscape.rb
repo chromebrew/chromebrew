@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Inkscape < CMake
   description 'Inkscape is a professional vector graphics editor for Windows, Mac OS X and Linux.'
   homepage 'https://inkscape.org/'
-  version '1.4'
+  version '1.4.1'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.37'
@@ -58,7 +58,7 @@ class Inkscape < CMake
   depends_on 'libxext' # R
   depends_on 'libxml2' # R
   depends_on 'libxslt' # R
-  depends_on 'llvm16_lib' => :build
+  depends_on 'llvm20_lib' => :build
   depends_on 'pangomm_1_4' # R
   depends_on 'pango' # R
   depends_on 'poppler' # R
