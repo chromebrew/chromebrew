@@ -3,18 +3,18 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.85.0'
+  version '1.86.0'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
-  git_hashtag '1.27.1'
+  git_hashtag '1.28.1'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '82674e4e1d44f32ea1a9417bfc4fd2ea59ee85d46ed8032a100458ca01631f03',
-     armv7l: '82674e4e1d44f32ea1a9417bfc4fd2ea59ee85d46ed8032a100458ca01631f03',
-       i686: 'a72d3fcaf7e20ad7d22c7d1e04071979354b54e2617ed696b8cedce1c3036fc1',
-     x86_64: '285e85582cf78dd6a8ed3fc6653f7c6724a7fef4d7f372dbe754257d5b7da751'
+    aarch64: 'c7514b7ad5d583568e4da0bbfa89d7890832d988141b795bbdd0ceed9a3046b4',
+     armv7l: 'c7514b7ad5d583568e4da0bbfa89d7890832d988141b795bbdd0ceed9a3046b4',
+       i686: '70b0a607832cc2d488a366f0afd74a83c59fbc8a4ea45a2fc735a764049fb680',
+     x86_64: 'b2252c5f4e35280e334f9a39a5d3e95a6adb4fc3185c7fc4108a8c026748938c'
   })
 
   depends_on 'gcc_lib' # R
@@ -31,10 +31,9 @@ class Rust < Package
     ENV['RUST_BACKTRACE'] = 'full'
     ENV['CARGO_HOME'] = "#{CREW_DEST_PREFIX}/share/cargo"
     ENV['RUSTUP_HOME'] = "#{CREW_DEST_PREFIX}/share/rustup"
-    default_host = ARCH == 'aarch64' || ARCH == 'armv7l' ? 'armv7-unknown-linux-gnueabihf' : "#{ARCH}-unknown-linux-gnu"
+    default_host = %w[aarch64 armv7l].include?(ARCH) ? 'armv7-unknown-linux-gnueabihf' : "#{ARCH}-unknown-linux-gnu"
     system "sed -i 's,$(mktemp -d 2>/dev/null || ensure mktemp -d -t rustup),#{CREW_PREFIX}/tmp,' rustup-init.sh"
     FileUtils.mkdir_p(CREW_DEST_HOME)
-    FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/bin")
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/cargo")
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/rustup")
     system "RUSTFLAGS='-Clto=thin' bash ./rustup-init.sh -y --no-modify-path --default-host #{default_host} --default-toolchain #{version} --profile minimal"
@@ -48,35 +47,23 @@ class Rust < Package
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     system "sed -i 's,#{CREW_DEST_PREFIX}/share/cargo,#{CREW_PREFIX}/share/cargo,g' #{CREW_DEST_PREFIX}/share/cargo/env"
-    @rustconfigenv = <<~RUSTCONFIGEOF
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/rust", <<~RUSTCONFIGEOF
       # Rustup and cargo configuration
       export CARGO_HOME=#{CREW_PREFIX}/share/cargo
       export RUSTUP_HOME=#{CREW_PREFIX}/share/rustup
       source #{CREW_PREFIX}/share/cargo/env
     RUSTCONFIGEOF
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/rust", @rustconfigenv)
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
-    @rustcompletionenv = <<~RUSTCOMPLETIONEOF
+    File.write "#{CREW_DEST_PREFIX}/etc/bash.d/rust", <<~RUSTCOMPLETIONEOF
       # Rustup and cargo bash completion
       source #{CREW_PREFIX}/share/bash-completion/completions/rustup
     RUSTCOMPLETIONEOF
-    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/rust", @rustcompletionenv)
     system "#{CREW_DEST_PREFIX}/share/cargo/bin/rustup completions bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
-    Dir.chdir "#{CREW_DEST_PREFIX}/share/cargo/bin" do
-      Dir.children('.').delete_if { |f| f == 'cargo' }.each do |filename|
-        FileUtils.ln_sf 'cargo', filename
-      end
-    end
-    Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-      Dir.each_child('../share/cargo/bin') do |f|
-        FileUtils.ln_sf "../share/cargo/bin/#{f}", f
-      end
-    end
   end
 
   def self.postinstall
-    system 'rustup default stable'
+    system "#{CREW_PREFIX}/share/cargo/bin/rustup default stable"
   end
 
   def self.postremove
