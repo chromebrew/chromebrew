@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Xzutils < CMake
   description 'XZ Utils is free general-purpose data compression software with a high compression ratio.'
   homepage 'https://tukaani.org/xz/'
-  version '5.8.0'
+  version '5.8.1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/tukaani-project/xz.git'
