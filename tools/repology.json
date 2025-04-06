@@ -75,7 +75,7 @@
     "name": "acquia_cli",
     "description": "Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.",
     "homepage": "https://github.com/acquia/cli",
-    "version": "2.39.0",
+    "version": "2.41.0",
     "license": "GPL-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -339,7 +339,7 @@
     "name": "appflowy",
     "description": "AI collaborative workspace where you achieve more without losing control of your data. The best open source alternative to Notion.",
     "homepage": "https://www.appflowy.io/",
-    "version": "0.8.6",
+    "version": "0.8.7",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -755,7 +755,7 @@
     "name": "awscli",
     "description": "Universal Command Line Interface for Amazon Web Services",
     "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.38.22",
+    "version": "1.38.27",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -1091,7 +1091,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.76.82",
+    "version": "1.77.95",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1107,7 +1107,7 @@
     "name": "broadway",
     "description": "Run GTK applications in a browser window.",
     "homepage": "https://docs.gtk.org/gtk3/broadway.html",
-    "version": "3.24.48",
+    "version": "3.24.49",
     "license": "LGPL-2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -1179,7 +1179,7 @@
     "name": "bun",
     "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one",
     "homepage": "https://bun.sh/",
-    "version": "1.2.5",
+    "version": "1.2.7",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -1235,7 +1235,7 @@
     "name": "ca_certificates",
     "description": "Common CA Certificates PEM files",
     "homepage": "https://salsa.debian.org/debian/ca-certificates",
-    "version": "20240203",
+    "version": "20241223",
     "license": "MPL-1.1",
     "compatibility": "all"
   },
@@ -1712,6 +1712,14 @@
     "compatibility": "all"
   },
   {
+    "name": "codeblocks",
+    "description": "Code::Blocks is a free, open-source, cross-platform C, C++ and Fortran IDE",
+    "homepage": "https://www.codeblocks.org/",
+    "version": "25.03",
+    "license": "LGPLv3",
+    "compatibility": "aarch64 armv7l x86_64"
+  },
+  {
     "name": "codelite",
     "description": "CodeLite is an open source, free, cross platform IDE, specialized in C, C++, Rust, Python, PHP and JavaScript",
     "homepage": "https://codelite.org/",
@@ -1731,7 +1739,7 @@
     "name": "codon",
     "description": "Codon is a high-performance Python compiler that compiles Python code to native machine code without any runtime overhead.",
     "homepage": "https://docs.exaloop.io/codon/",
-    "version": "0.18.1",
+    "version": "0.18.2",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -1883,7 +1891,7 @@
     "name": "cpu_x",
     "description": "CPU-X is a Free software that gathers information on CPU, motherboard and more.",
     "homepage": "https://thetumultuousunicornofdarkness.github.io/CPU-X/",
-    "version": "5.1.3",
+    "version": "5.2.0",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
@@ -2075,7 +2083,7 @@
     "name": "curl",
     "description": "Command line tool and library for transferring data with URLs.",
     "homepage": "https://curl.se/",
-    "version": "8.12.1",
+    "version": "8.13.0",
     "license": "curl",
     "compatibility": "all"
   },
@@ -2163,7 +2171,7 @@
     "name": "dbeaver",
     "description": "Free Universal Database Tool",
     "homepage": "https://dbeaver.io",
-    "version": "25.0.0",
+    "version": "25.0.1",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2603,7 +2611,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "134.0.3124.95-1",
+    "version": "135.0.3179.54-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2747,9 +2755,17 @@
     "name": "erlang",
     "description": "Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.",
     "homepage": "https://www.erlang.org/",
-    "version": "27.3",
+    "version": "27.3.2",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
+  },
+  {
+    "name": "etcd",
+    "description": "Distributed reliable key-value store for the most critical data of a distributed system",
+    "homepage": "https://etcd.io/",
+    "version": "3.5.21",
+    "license": "Apache-2.0",
+    "compatibility": "x86_64"
   },
   {
     "name": "ethtool",
@@ -3099,7 +3115,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "136.0.3",
+    "version": "137.0",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3627,7 +3643,7 @@
     "name": "fzf",
     "description": "A command-line fuzzy finder",
     "homepage": "https://github.com/junegunn/fzf",
-    "version": "0.60.3",
+    "version": "0.61.0",
     "license": "MIT and BSD-with-disclosure",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4043,7 +4059,7 @@
     "name": "github_cli",
     "description": "Official Github CLI tool",
     "homepage": "https://cli.github.com/",
-    "version": "2.68.1",
+    "version": "2.69.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4099,7 +4115,7 @@
     "name": "glab",
     "description": "A GitLab CLI tool bringing GitLab to your command line",
     "homepage": "https://gitlab.com/gitlab-org/cli",
-    "version": "1.52.0",
+    "version": "1.55.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4915,7 +4931,7 @@
     "name": "gtk3",
     "description": "GTK+ is a multi-platform toolkit for creating graphical user interfaces.",
     "homepage": "https://docs.gtk.org/gtk3/",
-    "version": "3.24.48",
+    "version": "3.24.49",
     "license": "LGPL-2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4923,7 +4939,7 @@
     "name": "gtk4",
     "description": "GTK+ is a multi-platform toolkit for creating graphical user interfaces.",
     "homepage": "https://www.gtk.org/",
-    "version": "4.18.2",
+    "version": "4.18.3",
     "license": "LGPL-2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -5747,7 +5763,7 @@
     "name": "jansson",
     "description": "Jansson is a C library for encoding, decoding and manipulating JSON data.",
     "homepage": "https://github.com/akheron/jansson",
-    "version": "2.13.1",
+    "version": "2.14.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -6235,7 +6251,7 @@
     "name": "ldc",
     "description": "D language compiler using LLVM.",
     "homepage": "https://github.com/ldc-developers/ldc",
-    "version": "1.40.0",
+    "version": "1.40.1",
     "license": "BSD-3, Boost-1.0, MIT, NCSA and Artistic-1.0 or GPL-2+",
     "compatibility": "x86_64"
   },
@@ -6603,7 +6619,7 @@
     "name": "libclc",
     "description": "Library requirements of the OpenCL C programming language",
     "homepage": "https://libclc.llvm.org/",
-    "version": "20.1.1",
+    "version": "20.1.2",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -7331,7 +7347,7 @@
     "name": "libidn2",
     "description": "GNU Libidn is a fully documented implementation of the Stringprep, Punycode and IDNA 2003 specifications.",
     "homepage": "https://www.gnu.org/software/libidn/",
-    "version": "2.3.4-1",
+    "version": "2.3.8",
     "license": "GPL-2+ and LGPL-3+",
     "compatibility": "all"
   },
@@ -7667,7 +7683,7 @@
     "name": "libnghttp2",
     "description": "library implementing HTTP/2 protocol",
     "homepage": "https://nghttp2.org/",
-    "version": "1.63.0",
+    "version": "1.65.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -9195,7 +9211,7 @@
     "name": "llvm20_build",
     "description": "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: bolt clang clang-tools-extra compiler-rt lld lldb polly pstl",
     "homepage": "https://llvm.org/",
-    "version": "20.1.1",
+    "version": "20.1.2",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9203,7 +9219,7 @@
     "name": "llvm20_dev",
     "description": "LLVM: Everything except libLLVM & llvm-strip",
     "homepage": "https://llvm.org/",
-    "version": "20.1.1",
+    "version": "20.1.2",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9211,7 +9227,7 @@
     "name": "llvm20_lib",
     "description": "LibLLVM and llvm-strip",
     "homepage": "https://llvm.org/",
-    "version": "20.1.1",
+    "version": "20.1.2",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9699,7 +9715,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "25.0.2",
+    "version": "25.0.3",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10083,7 +10099,7 @@
     "name": "mullvad",
     "description": "Privacy-focused browser",
     "homepage": "https://mullvad.net/browser",
-    "version": "14.0.7",
+    "version": "14.0.9",
     "license": "Mozilla Public License V2",
     "compatibility": "x86_64"
   },
@@ -10859,7 +10875,7 @@
     "name": "nushell",
     "description": "A new type of shell",
     "homepage": "https://www.nushell.sh/",
-    "version": "0.102.0",
+    "version": "0.103.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -11187,7 +11203,7 @@
     "name": "openmp",
     "description": "LLVM OpenMP Runtime Library",
     "homepage": "https://openmp.llvm.org/",
-    "version": "20.1.1",
+    "version": "20.1.2",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -11259,7 +11275,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "117.0.5408.163",
+    "version": "117.0.5408.197",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -11443,7 +11459,7 @@
     "name": "patch",
     "description": "Patch takes a patch file containing a difference listing produced by the diff program and applies those differences to one or more original files, producing patched versions.",
     "homepage": "https://www.gnu.org/software/patch/",
-    "version": "2.7.6",
+    "version": "2.8",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -12667,7 +12683,7 @@
     "name": "py3_argcomplete",
     "description": "Argcomplete provides bash completion for argparse.",
     "homepage": "https://kislyuk.github.io/argcomplete/",
-    "version": "3.6.1",
+    "version": "3.6.2",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -12715,7 +12731,7 @@
     "name": "py3_azure_cli",
     "description": "Next generation multi-platform command line experience for Azure.",
     "homepage": "https://pypi.org/project/azure-cli/",
-    "version": "2.70.0",
+    "version": "2.71.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13299,7 +13315,7 @@
     "name": "py3_meson",
     "description": "Meson is an open source build system meant to be both extremely fast and user friendly.",
     "homepage": "https://mesonbuild.com/",
-    "version": "1.7.0",
+    "version": "1.7.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13347,7 +13363,7 @@
     "name": "py3_nuitka",
     "description": "Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.",
     "homepage": "https://nuitka.net/",
-    "version": "2.6.8",
+    "version": "2.6.9",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13363,7 +13379,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.149.1",
+    "version": "2.149.2",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13371,7 +13387,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.54.0",
+    "version": "3.54.1",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13763,7 +13779,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.11.2",
+    "version": "0.11.3",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13995,7 +14011,7 @@
     "name": "py3_typing_extensions",
     "description": "Backported and Experimental Type Hints for Python 3.5+",
     "homepage": "https://github.com/python/typing/tree/master/typing_extensions",
-    "version": "4.13.0",
+    "version": "4.13.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14043,7 +14059,7 @@
     "name": "py3_virtualenv",
     "description": "Virtualenv is a Virtual Environment builder for Python.",
     "homepage": "https://virtualenv.pypa.io/",
-    "version": "20.29.3",
+    "version": "20.30.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14115,7 +14131,7 @@
     "name": "py3_zcmds",
     "description": "Cross platform(ish) productivity commands written in python",
     "homepage": "https://github.com/zackees/zcmds",
-    "version": "1.5.5",
+    "version": "1.5.18",
     "license": "MIT",
     "compatibility": "aarch64"
   },
@@ -14275,7 +14291,7 @@
     "name": "qt5_charts",
     "description": "Qt Charts",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.15",
+    "version": "5.15.16",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14291,7 +14307,7 @@
     "name": "qt5_imageformats",
     "description": "Qt Image Formats",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.15",
+    "version": "5.15.16",
     "license": "GPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14307,7 +14323,7 @@
     "name": "qt5_multimedia",
     "description": "Qt Multimedia",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.15",
+    "version": "5.15.16",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14315,7 +14331,7 @@
     "name": "qt5_networkauth",
     "description": "Qt Network Authentication",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.15",
+    "version": "5.15.16",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14323,7 +14339,7 @@
     "name": "qt5_quickcontrols",
     "description": "Reusable Qt Quick based UI controls to create classic desktop-style user interfaces",
     "homepage": "https://www.qt.io",
-    "version": "5.15.15",
+    "version": "5.15.16",
     "license": "GPL3 LGPL3 FDL custom",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14331,7 +14347,7 @@
     "name": "qt5_quickcontrols2",
     "description": "Qt Quick Controls 2",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.15",
+    "version": "5.15.16",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14355,7 +14371,7 @@
     "name": "qt5_svg",
     "description": "Provides classes for displaying the contents of SVG files.",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.15",
+    "version": "5.15.16",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14371,7 +14387,7 @@
     "name": "qt5_wayland",
     "description": "Qt Wayland",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.15",
+    "version": "5.15.16",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14379,7 +14395,7 @@
     "name": "qt5_webchannel",
     "description": "Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients",
     "homepage": "https://www.qt.io",
-    "version": "5.15.15",
+    "version": "5.15.16",
     "license": "GPL3 LGPL3 FDL custom",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14395,7 +14411,7 @@
     "name": "qt5_webglplugin",
     "description": "Qt WebGL Plugin",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.15",
+    "version": "5.15.16",
     "license": "GPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14403,7 +14419,7 @@
     "name": "qt5_websockets",
     "description": "Qt Websockets",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.15",
+    "version": "5.15.16",
     "license": "GPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14411,7 +14427,7 @@
     "name": "qt5_x11extras",
     "description": "Provides classes for developing for the X11 platform.",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.15",
+    "version": "5.15.16",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14419,7 +14435,7 @@
     "name": "qt5_xmlpatterns",
     "description": "Qt XML Patterns",
     "homepage": "https://www.qt.io/",
-    "version": "5.15.15",
+    "version": "5.15.16",
     "license": "FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14851,7 +14867,7 @@
     "name": "ruby_bundler",
     "description": "Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably.",
     "homepage": "https://bundler.io",
-    "version": "2.6.6-ruby3.4",
+    "version": "2.6.7-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15083,7 +15099,7 @@
     "name": "ruby_httparty",
     "description": "Makes http fun! Also, makes consuming restful web services dead easy.",
     "homepage": "https://github.com/jnunemaker/httparty",
-    "version": "0.23.0-ruby3.4",
+    "version": "0.23.1-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15131,7 +15147,7 @@
     "name": "ruby_irb",
     "description": "Interactive Ruby command-line tool for REPL (Read Eval Print Loop).",
     "homepage": "https://github.com/ruby/irb",
-    "version": "1.15.1-ruby3.4",
+    "version": "1.15.2-ruby3.4",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -15331,7 +15347,7 @@
     "name": "ruby_parser",
     "description": "A Ruby parser written in pure Ruby.",
     "homepage": "https://github.com/whitequark/parser",
-    "version": "3.3.7.3-ruby3.4",
+    "version": "3.3.7.4-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15451,7 +15467,7 @@
     "name": "ruby_rbs",
     "description": "RBS is the language for type signatures for Ruby and standard library definitions.",
     "homepage": "https://github.com/ruby/rbs",
-    "version": "3.9.1-ruby3.4",
+    "version": "3.9.2-ruby3.4",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -15459,7 +15475,7 @@
     "name": "ruby_rdoc",
     "description": "RDoc produces HTML and command-line documentation for Ruby projects.",
     "homepage": "https://ruby.github.io/rdoc",
-    "version": "6.13.0-ruby3.4",
+    "version": "6.13.1-ruby3.4",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15499,7 +15515,7 @@
     "name": "ruby_repl_type_completor",
     "description": "Type based completion for REPL.",
     "homepage": "https://github.com/ruby/repl_type_completor",
-    "version": "0.1.10-ruby3.4",
+    "version": "0.1.11-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15547,7 +15563,7 @@
     "name": "ruby_rubocop",
     "description": "A Ruby static code analyzer and formatter",
     "homepage": "https://rubocop.org",
-    "version": "1.75.1-ruby3.4",
+    "version": "1.75.2-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15659,7 +15675,7 @@
     "name": "ruby_stringio",
     "description": "Pseudo `io` class from/to `string`.",
     "homepage": "https://github.com/ruby/stringio",
-    "version": "3.1.5-ruby3.4",
+    "version": "3.1.6-ruby3.4",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -16307,7 +16323,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.48.0",
+    "version": "7.49.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -16579,7 +16595,7 @@
     "name": "spirv_llvm_translator",
     "description": "Tool and a library for bi-directional translation between SPIR-V and LLVM IR",
     "homepage": "https://github.com/KhronosGroup/SPIRV-LLVM-Translator",
-    "version": "20.1.0",
+    "version": "20.1.1",
     "license": "Apache-2.0 WITH LLVM-exception",
     "compatibility": "all"
   },
@@ -16611,7 +16627,7 @@
     "name": "sqlmap",
     "description": "sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.",
     "homepage": "https://sqlmap.org/",
-    "version": "1.9.3",
+    "version": "1.9.4",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -16963,7 +16979,7 @@
     "name": "tauri_cli",
     "description": "Build smaller, faster, and more secure desktop and mobile applications with a web frontend.",
     "homepage": "https://tauri.app/",
-    "version": "2.3.1",
+    "version": "2.4.0",
     "license": "Apache-2.0, MIT",
     "compatibility": "x86_64"
   },
@@ -17086,6 +17102,14 @@
     "version": "3.6.2",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
+  },
+  {
+    "name": "termius",
+    "description": "Modern SSH Client",
+    "homepage": "https://termius.com/",
+    "version": "9.17.1",
+    "license": "Apache-2.0, LGPL-2.1, MIT",
+    "compatibility": "x86_64"
   },
   {
     "name": "terraform",
@@ -17675,7 +17699,7 @@
     "name": "uutils_coreutils",
     "description": "Cross-platform Rust rewrite of the GNU coreutils",
     "homepage": "https://github.com/uutils/coreutils",
-    "version": "0.0.29",
+    "version": "0.0.30",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -17723,7 +17747,7 @@
     "name": "valgrind",
     "description": "Valgrind is an instrumentation framework for building dynamic analysis tools.",
     "homepage": "https://valgrind.org/",
-    "version": "3.22",
+    "version": "3.24.0",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -17835,7 +17859,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.3.3635.4-1",
+    "version": "7.3.3635.7-1",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -17891,7 +17915,7 @@
     "name": "vscodium",
     "description": "VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.",
     "homepage": "https://vscodium.com/",
-    "version": "1.98.2.25072",
+    "version": "1.98.2.25078",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18971,7 +18995,7 @@
     "name": "zed",
     "description": "Zed is a high-performance, multiplayer code editor",
     "homepage": "https://zed.dev/",
-    "version": "0.177.9",
+    "version": "0.180.2",
     "license": "GPL-3, AGPL-3, Apache-2.0",
     "compatibility": "x86_64"
   },
