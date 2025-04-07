@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_setuptools_rust < Pip
   description 'Setuptools-rust provides rust support for setuptools.'
   homepage 'https://github.com/PyO3/setuptools-rust'
-  version "1.11.0-#{CREW_PY_VER}"
+  version "1.11.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
