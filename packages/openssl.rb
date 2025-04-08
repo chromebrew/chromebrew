@@ -3,7 +3,7 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  version '3.4.1' # Do not use @_ver here, it will break the installer.
+  version '3.5.0' # Do not use @_ver here, it will break the installer.
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/openssl/openssl.git'
