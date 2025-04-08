@@ -9,7 +9,6 @@
 /usr/local/etc/ssl/openssl.cnf.dist
 /usr/local/include/openssl/aes.h
 /usr/local/include/openssl/asn1.h
-/usr/local/include/openssl/asn1_mac.h
 /usr/local/include/openssl/asn1err.h
 /usr/local/include/openssl/asn1t.h
 /usr/local/include/openssl/async.h
@@ -21,6 +20,7 @@
 /usr/local/include/openssl/bnerr.h
 /usr/local/include/openssl/buffer.h
 /usr/local/include/openssl/buffererr.h
+/usr/local/include/openssl/byteorder.h
 /usr/local/include/openssl/camellia.h
 /usr/local/include/openssl/cast.h
 /usr/local/include/openssl/cmac.h
@@ -87,6 +87,7 @@
 /usr/local/include/openssl/md4.h
 /usr/local/include/openssl/md5.h
 /usr/local/include/openssl/mdc2.h
+/usr/local/include/openssl/ml_kem.h
 /usr/local/include/openssl/modes.h
 /usr/local/include/openssl/obj_mac.h
 /usr/local/include/openssl/objects.h
