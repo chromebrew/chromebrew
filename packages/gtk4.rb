@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://www.gtk.org/'
-  version '4.18.3'
+  version '4.18.4'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '06e6ec07e1ecd041d1249930d7a0e4f7af2264bcc31e25a34606ea4d7eba1981',
-     armv7l: '06e6ec07e1ecd041d1249930d7a0e4f7af2264bcc31e25a34606ea4d7eba1981',
-     x86_64: '26fc227b7c05b7474d78f468121dbfb4f3d55df1c75109354cbaea3ae2557736'
+    aarch64: 'b9833133d52b970ba57446737112f1470d9eefc573efba40a9f4c47aede53947',
+     armv7l: 'b9833133d52b970ba57446737112f1470d9eefc573efba40a9f4c47aede53947',
+     x86_64: '7544275aead597f4a65b2afcada6174b2f88ec659371dc2fe16cc97a5d4d6a39'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
