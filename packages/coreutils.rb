@@ -13,7 +13,7 @@ class Coreutils < Autotools
   binary_sha256({
     aarch64: 'c10a21d009873b1e05ab7279fa732cea5e92a8fd4441febbac479a389934885c',
      armv7l: 'c10a21d009873b1e05ab7279fa732cea5e92a8fd4441febbac479a389934885c',
-       i686: '66c9eb64c9123f8c43827a2faac42419cde653830c99a496de6dc138e738ac60',
+       i686: 'edb52c0f44efa3810fd4c0880585a676ccbf474e6cb79c918edca93ad3cf2bec',
      x86_64: '6c38aa3231c204f40dec93ae098c0cf1f14a592f45e1b7ecaa3140d5d250a9a8'
   })
 
