@@ -14,7 +14,7 @@ class Libpipeline < Autotools
     aarch64: '95c8b6b79ed89ff9214d8fcd8aa29af940517e5a77e369f509bb2e56a7518cd8',
      armv7l: '95c8b6b79ed89ff9214d8fcd8aa29af940517e5a77e369f509bb2e56a7518cd8',
        i686: '3bf6fddf4da907b3aa4b6d93b993fc7717bbbefc5b468fe5dd1fc1809f8a1540',
-     x86_64: 'bcdc10711b7697fd61d50f996a5df4467702914d36823d7fbc62590b1f0a5ece'
+     x86_64: 'f61c12d723d3353d685970bf07b1f10990fa589dfe013cd4a2c98cf6d0b79875'
   })
 
   depends_on 'glibc' # R
