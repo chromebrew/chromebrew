@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Openssh < Autotools
   description 'OpenSSH is the premier connectivity tool for remote login with the SSH protocol.'
   homepage 'https://www.openssh.com/'
-  version '9.9p2'
+  version '10.0p1'
   license 'BSD and GPL-2'
   compatibility 'all'
   source_url 'https://github.com/openssh/openssh-portable.git'
-  git_hashtag "V_#{version.upcase.tr('.', '').chars[0...-1].join('_') + version.chars.pop}"
+  git_hashtag "V_#{version.upcase.tr('.', '_').sub('P', '_P')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
