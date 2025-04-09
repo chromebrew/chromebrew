@@ -11,8 +11,8 @@ class Cups < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '418860e229680e2888764d14bac8bb4beeb7c562cd60696b4eb9b81082f43baa',
-     armv7l: '418860e229680e2888764d14bac8bb4beeb7c562cd60696b4eb9b81082f43baa',
+    aarch64: '19a5fc31117dc16b9b1dc7a83867b14ab62f77abd8ad08c58a15d629d58bde6a',
+     armv7l: '19a5fc31117dc16b9b1dc7a83867b14ab62f77abd8ad08c58a15d629d58bde6a',
        i686: '47933164cf36432d989746a29874858438f40f3142f7cbef85a453d27a25d14e',
      x86_64: 'b127449e62200e7a8ce894fc3e20a543a394c3fd2d0e1d4fec95d0c1a4d115fc'
   })
