@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Coreutils < Autotools
   description 'The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system.'
   homepage 'https://www.gnu.org/software/coreutils/coreutils.html'
-  version '9.6'
+  version '9.7'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftp.gnu.org/gnu/coreutils/coreutils-#{version}.tar.xz"
+  source_url "https://ftpmirror.gnu.org/coreutils/coreutils-#{version}.tar.xz"
   source_sha256 'cd328edeac92f6a665de9f323c93b712af1858bc2e0d88f3f7100469470a1b8a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c10a21d009873b1e05ab7279fa732cea5e92a8fd4441febbac479a389934885c',
-     armv7l: 'c10a21d009873b1e05ab7279fa732cea5e92a8fd4441febbac479a389934885c',
-       i686: '66c9eb64c9123f8c43827a2faac42419cde653830c99a496de6dc138e738ac60',
-     x86_64: '6c38aa3231c204f40dec93ae098c0cf1f14a592f45e1b7ecaa3140d5d250a9a8'
+    aarch64: '9843e5c79b8156cab059bf1f03dd224c3d5dcb9e88d1f95f293b56093de74004',
+     armv7l: '9843e5c79b8156cab059bf1f03dd224c3d5dcb9e88d1f95f293b56093de74004',
+       i686: 'edb52c0f44efa3810fd4c0880585a676ccbf474e6cb79c918edca93ad3cf2bec',
+     x86_64: 'b7ce9bbed82fdeea4007d463eeb45c34f6bda3b0766f054e09998dbbd188a52f'
   })
 
   depends_on 'acl' # R
@@ -34,22 +34,18 @@ class Coreutils < Autotools
     end
   end
 
-  def self.build
-    year2038 = ARCH == 'x86_64' ? '' : ' --disable-year2038'
-    options = CREW_CONFIGURE_OPTIONS + year2038
-    system "./configure #{options}"
-    system 'make'
-    arch = <<~EOF
+  def self.prebuild
+    File.write 'arch', <<~EOF
       #!/bin/bash
       echo #{ARCH}
     EOF
-    File.write 'arch', arch
   end
 
-  def self.install
+  configure_options '--disable-year2038' unless ARCH.include?('x86_64')
+
+  configure_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'arch', "#{CREW_DEST_PREFIX}/bin/arch", mode: 0o755
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     # Remove conflicts with psmisc package.
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       FileUtils.rm %w[kill uptime]
