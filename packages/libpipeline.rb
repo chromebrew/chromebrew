@@ -13,7 +13,7 @@ class Libpipeline < Autotools
   binary_sha256({
     aarch64: '95c8b6b79ed89ff9214d8fcd8aa29af940517e5a77e369f509bb2e56a7518cd8',
      armv7l: '95c8b6b79ed89ff9214d8fcd8aa29af940517e5a77e369f509bb2e56a7518cd8',
-       i686: 'f48dc0e7fa58b857de93c586c7eb80b473f1fb4b1ee617eec60304f76c280d22',
+       i686: '3bf6fddf4da907b3aa4b6d93b993fc7717bbbefc5b468fe5dd1fc1809f8a1540',
      x86_64: 'bcdc10711b7697fd61d50f996a5df4467702914d36823d7fbc62590b1f0a5ece'
   })
 
