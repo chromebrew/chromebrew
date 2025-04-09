@@ -3,7 +3,7 @@ require 'package'
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://github.com/OpenPrinting/cups'
-  version '2.4.11'
+  version '2.4.12'
   compatibility 'all'
   license 'Apache-2.0'
   source_url 'https://github.com/OpenPrinting/cups.git'
@@ -97,7 +97,7 @@ class Cups < Package
   end
 
   def self.postinstall
-    ExitMessage.add <<~EOM.lightblue
+    ExitMessage.add <<~EOM
 
       To start the cups daemon, run 'startcupsd'
       To stop the cups daemon, run 'stopcupsd'
