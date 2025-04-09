@@ -12,6 +12,7 @@
 /usr/local/libexec/ssh-keysign
 /usr/local/libexec/ssh-pkcs11-helper
 /usr/local/libexec/ssh-sk-helper
+/usr/local/libexec/sshd-auth
 /usr/local/libexec/sshd-session
 /usr/local/sbin/sshd
 /usr/local/share/man/man1/scp.1.zst
