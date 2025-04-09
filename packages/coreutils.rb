@@ -14,7 +14,7 @@ class Coreutils < Autotools
     aarch64: 'c10a21d009873b1e05ab7279fa732cea5e92a8fd4441febbac479a389934885c',
      armv7l: 'c10a21d009873b1e05ab7279fa732cea5e92a8fd4441febbac479a389934885c',
        i686: 'edb52c0f44efa3810fd4c0880585a676ccbf474e6cb79c918edca93ad3cf2bec',
-     x86_64: '6c38aa3231c204f40dec93ae098c0cf1f14a592f45e1b7ecaa3140d5d250a9a8'
+     x86_64: 'b7ce9bbed82fdeea4007d463eeb45c34f6bda3b0766f054e09998dbbd188a52f'
   })
 
   depends_on 'acl' # R
