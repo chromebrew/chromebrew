@@ -11,8 +11,8 @@ class Gzip < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '787cab0140058f4c0ce09a56b95df269540b39738fcb8483351d1586b00a840f',
-     armv7l: '787cab0140058f4c0ce09a56b95df269540b39738fcb8483351d1586b00a840f',
+    aarch64: '4cc05d25a34eb5a7d26b3aded51d97ef80edc37fad21fad41888ddb774190b4a',
+     armv7l: '4cc05d25a34eb5a7d26b3aded51d97ef80edc37fad21fad41888ddb774190b4a',
        i686: 'f3b6c28a23474b435d3b9479af4f003e50a873bd599b8ec5cba2b1e582b90936',
      x86_64: '5b2d9a48456d3aca4c07f778d4562ce86afdb8cf37eb333e1a1340c180b399b2'
   })
