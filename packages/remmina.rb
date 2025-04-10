@@ -11,8 +11,8 @@ class Remmina < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fd0c2b9110b8e99079d1f8ff8410f1592910176ff34698fa6c6d8b6793449b9d',
-     armv7l: 'fd0c2b9110b8e99079d1f8ff8410f1592910176ff34698fa6c6d8b6793449b9d',
+    aarch64: 'f9f0d9aa7535a248783ad711e02d17334d1e7a4266e0cce60e54d63d114e8cea',
+     armv7l: 'f9f0d9aa7535a248783ad711e02d17334d1e7a4266e0cce60e54d63d114e8cea',
      x86_64: '0598d5422ee96c9ac8f1f11a206a9ce0d8bb5ecc380f36ad44985079453e2253'
   })
 
