@@ -13,9 +13,11 @@ class Gzip < Autotools
   binary_sha256({
     aarch64: '787cab0140058f4c0ce09a56b95df269540b39738fcb8483351d1586b00a840f',
      armv7l: '787cab0140058f4c0ce09a56b95df269540b39738fcb8483351d1586b00a840f',
-       i686: '87cdfa0d7f9719e17ca2e90578fab3326c0ab5f5fd55ee8ba9181db38bd37243',
+       i686: 'f3b6c28a23474b435d3b9479af4f003e50a873bd599b8ec5cba2b1e582b90936',
      x86_64: 'c2e8d1af7bcb50c90a0aa5168d4af9b9cfb7286e904d0e0da807eb3b95d02e54'
   })
+
+  depends_on 'glibc' # R
 
   run_tests
 end
