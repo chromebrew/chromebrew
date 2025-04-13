@@ -14,7 +14,7 @@ class Cmake < CMake
     aarch64: '606716f4c369ec3f3d7e7ff7965bc5795b5f9f6cc4d042bc3f0c1901ba8db12a',
      armv7l: '606716f4c369ec3f3d7e7ff7965bc5795b5f9f6cc4d042bc3f0c1901ba8db12a',
        i686: 'bc2154e016e95b86da7a7d06831b9db39fc21a87d3eaa34c9a4f29aa61bb2070',
-     x86_64: '5715086459b5e79b20eab5c6a16dae9c5cf706c5825b3f16c4fe8c10c49752e1'
+     x86_64: '1e37790684ed8ade3d21b0c8e024d3a41a87f7792092f843dfba21c3ebe6c1ea'
   })
 
   depends_on 'bzip2' => :build
