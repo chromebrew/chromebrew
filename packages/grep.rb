@@ -14,8 +14,8 @@ class Grep < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e26ffb1c929816e035a5e64a5140ae1acdc54a83f115478a907d407a31088a1c',
-     armv7l: 'e26ffb1c929816e035a5e64a5140ae1acdc54a83f115478a907d407a31088a1c',
+    aarch64: '0ea4b1df34494b73a6faef1a3df4f8f67d39ec9704d48ff5a3aa964444d9cef4',
+     armv7l: '0ea4b1df34494b73a6faef1a3df4f8f67d39ec9704d48ff5a3aa964444d9cef4',
        i686: 'fec68b4cda61591f524d1ea7a2025f97d2b177006f013a26ebd3366e2e04f124',
      x86_64: '81670d54d70bebb2d2d0ae78016603838cb86d28dc844916f8b3d72d994504a0'
   })
