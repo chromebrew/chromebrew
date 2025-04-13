@@ -1091,7 +1091,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.77.95",
+    "version": "1.77.97",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1843,7 +1843,7 @@
     "name": "coreutils",
     "description": "The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system.",
     "homepage": "https://www.gnu.org/software/coreutils/coreutils.html",
-    "version": "9.6",
+    "version": "9.7",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -2075,7 +2075,7 @@
     "name": "cups",
     "description": "CUPS is the standards-based, open source printing system",
     "homepage": "https://github.com/OpenPrinting/cups",
-    "version": "2.4.11",
+    "version": "2.4.12",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -2355,7 +2355,7 @@
     "name": "diffutils",
     "description": "GNU Diffutils is a package of several programs related to finding differences between files.",
     "homepage": "https://www.gnu.org/software/diffutils/",
-    "version": "3.11",
+    "version": "3.12",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -3115,7 +3115,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "137.0",
+    "version": "137.0.1",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -4651,7 +4651,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "134.0.6998.117-1",
+    "version": "135.0.7049.84-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -4939,7 +4939,7 @@
     "name": "gtk4",
     "description": "GTK+ is a multi-platform toolkit for creating graphical user interfaces.",
     "homepage": "https://www.gtk.org/",
-    "version": "4.18.3",
+    "version": "4.18.4",
     "license": "LGPL-2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -5115,7 +5115,7 @@
     "name": "gzip",
     "description": "GNU Gzip is a popular data compression program originally written by Jean-loup Gailly for the GNU project.",
     "homepage": "https://www.gnu.org/software/gzip/",
-    "version": "1.13",
+    "version": "1.14",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -5579,7 +5579,7 @@
     "name": "inkscape",
     "description": "Inkscape is a professional vector graphics editor for Windows, Mac OS X and Linux.",
     "homepage": "https://inkscape.org/",
-    "version": "1.4",
+    "version": "1.4.1",
     "license": "GPL-2 and LGPL-2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -7875,7 +7875,7 @@
     "name": "libpipeline",
     "description": "libpipeline is a C library for manipulating pipelines of subprocesses in a flexible and convenient way.",
     "homepage": "http://libpipeline.nongnu.org/",
-    "version": "1.5.3",
+    "version": "1.5.8",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -11235,7 +11235,7 @@
     "name": "openssh",
     "description": "OpenSSH is the premier connectivity tool for remote login with the SSH protocol.",
     "homepage": "https://www.openssh.com/",
-    "version": "9.9p2",
+    "version": "10.0p1",
     "license": "BSD and GPL-2",
     "compatibility": "all"
   },
@@ -11243,7 +11243,7 @@
     "name": "openssl",
     "description": "The Open Source toolkit for Secure Sockets Layer and Transport Layer Security",
     "homepage": "https://www.openssl.org",
-    "version": "3.4.1",
+    "version": "3.5.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -14195,7 +14195,7 @@
     "name": "python3",
     "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
     "homepage": "https://www.python.org/",
-    "version": "3.13.2",
+    "version": "3.13.3",
     "license": "PSF-2.0",
     "compatibility": "all"
   },
@@ -14611,7 +14611,7 @@
     "name": "remmina",
     "description": "The GTK Remmina Remote Desktop Client",
     "homepage": "https://remmina.org/",
-    "version": "1.4.39",
+    "version": "1.4.40",
     "license": "GPL-2+-with-openssl-exception",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -15891,7 +15891,7 @@
     "name": "rust",
     "description": "Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.",
     "homepage": "https://www.rust-lang.org/",
-    "version": "1.85.0",
+    "version": "1.86.0",
     "license": "Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -16323,7 +16323,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.49.0",
+    "version": "7.50.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -17115,7 +17115,7 @@
     "name": "terraform",
     "description": "Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.",
     "homepage": "https://www.terraform.io/",
-    "version": "1.11.3",
+    "version": "1.11.4",
     "license": "Apache-2.0, BSD-2, BSD-4, ECL-2.0, imagemagick, ISC, JSON, MIT, MIT-with-advertising, MPL-2.0 and unicode",
     "compatibility": "all"
   },
@@ -17859,7 +17859,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.3.3635.7-1",
+    "version": "7.3.3635.9-1",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18843,7 +18843,7 @@
     "name": "xzutils",
     "description": "XZ Utils is free general-purpose data compression software with a high compression ratio.",
     "homepage": "https://tukaani.org/xz/",
-    "version": "5.8.0",
+    "version": "5.8.1",
     "license": "GPL-3",
     "compatibility": "all"
   },
