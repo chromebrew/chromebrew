@@ -1,16 +1,16 @@
 # Adapted from Arch Linux grep PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/grep/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Grep < Package
+class Grep < Autotools
   description 'A string search utility'
   homepage 'https://www.gnu.org/software/grep/'
-  version '3.11'
+  version '3.12'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/grep/grep-3.11.tar.xz'
-  source_sha256 '1db2aedde89d0dea42b16d9528f894c8d15dae4e190b59aecc78f5a951276eab'
+  source_url "https://ftpmirror.gnu.org/grep/grep-#{version}.tar.xz"
+  source_sha256 '2649b27c0e90e632eadcd757be06c6e9a4f48d941de51e7c0f83ff76408a07b9'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -20,23 +20,14 @@ class Grep < Package
      x86_64: '337ed11dee1a3d584105e0b5b4a3ec32bd658ebaa9674a1513223348e457a5b3'
   })
 
-  depends_on 'pcre'
+  depends_on 'glibc' # R
+  depends_on 'pcre2' # R
+
   # NOTE: built on i686 by removing the c11threads derived threads.h
   # installed by the chromebrew glibc package on this architecture.
 
-  def self.build
-    system "CPPFLAGS=-DHAVE_DYNAMIC_LIBPCRE \
-      ./configure #{CREW_CONFIGURE_OPTIONS} \
-      --without-included-regex"
-    system 'make'
-  end
+  configure_options 'CPPFLAGS=-DHAVE_DYNAMIC_LIBPCRE --without-included-regex'
 
-  def self.check
-    # Section XFAIL test with grep: regexec.c:1344: pop_fail_stack: Assertion `num >= 0' failed.
-    # system 'make', 'check'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  # Section XFAIL test with grep: regexec.c:1344: pop_fail_stack: Assertion `num >= 0' failed.
+  # run_tests
 end
