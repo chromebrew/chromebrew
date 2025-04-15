@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Cmake < CMake
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.31.6'
+  version '4.0.1'
   license 'CMake'
   compatibility 'all'
   source_url 'https://github.com/Kitware/CMake.git'
@@ -11,10 +11,10 @@ class Cmake < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '606716f4c369ec3f3d7e7ff7965bc5795b5f9f6cc4d042bc3f0c1901ba8db12a',
-     armv7l: '606716f4c369ec3f3d7e7ff7965bc5795b5f9f6cc4d042bc3f0c1901ba8db12a',
-       i686: '91a1e5924c32a09821676e83dfe9d22d553d87e1a12cca3d5be25c9d55ffad7b',
-     x86_64: '5715086459b5e79b20eab5c6a16dae9c5cf706c5825b3f16c4fe8c10c49752e1'
+    aarch64: 'f64b7ce6c6ca6f4bc57cd6153297db2ae621a05438b518f0d1798f7069c4d579',
+     armv7l: 'f64b7ce6c6ca6f4bc57cd6153297db2ae621a05438b518f0d1798f7069c4d579',
+       i686: 'bc2154e016e95b86da7a7d06831b9db39fc21a87d3eaa34c9a4f29aa61bb2070',
+     x86_64: '1e37790684ed8ade3d21b0c8e024d3a41a87f7792092f843dfba21c3ebe6c1ea'
   })
 
   depends_on 'bzip2' => :build
@@ -60,8 +60,7 @@ class Cmake < CMake
     system "#{CREW_NINJA} -C builddir test || true"
   end
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  cmake_install_extras do
     FileUtils.mv "#{CREW_DEST_PREFIX}/doc/", "#{CREW_DEST_PREFIX}/share/"
   end
 end

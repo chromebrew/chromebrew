@@ -8685,6 +8685,11 @@ url: https://github.com/holman/spark/releases
 activity: none
 ---
 kind: url
+name: speakify
+url: https://github.com/habitual69/speakify
+activity: low
+---
+kind: url
 name: speedometer
 url: https://httpredir.debian.org/debian/pool/main/s/speedometer/
 activity: none
