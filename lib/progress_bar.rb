@@ -2,7 +2,7 @@ require 'io/console'
 require_relative 'color'
 require_relative 'misc_functions'
 
-class ProgressBar
+class ChromebrewProgressBar
   class InvalidSizeError < StandardError; end
 
   attr_accessor :progress_bar_showing

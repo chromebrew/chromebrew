@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.41'
+  version '1.42'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -176,7 +176,7 @@ class Buildessential < Package
   depends_on 'ruby_pry_byebug'
   # Add rubocop for linting packages. (This also installs the
   # rubocop config file.)
-  # depends_on 'ruby_rubocop'
+  depends_on 'ruby_rubocop'
 
   # Code quality
   depends_on 'py3_pre_commit'

@@ -129,7 +129,7 @@ def http_downloader(uri, filename = File.basename(url), verbose: false)
       downloaded_size = 0.0
 
       # initialize progress bar
-      progress_bar = ProgressBar.new(file_size)
+      progress_bar = ChromebrewProgressBar.new(file_size)
 
       if verbose
         warn <<~EOT
