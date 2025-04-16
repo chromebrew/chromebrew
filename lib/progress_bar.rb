@@ -1,7 +1,6 @@
 require 'io/console'
 require_relative 'color'
 require_relative 'misc_functions'
-require_relative 'require_gem'
 
 class Progress_Bar
   class InvalidSizeError < StandardError; end
@@ -59,13 +58,11 @@ class Progress_Bar
       end
     end
 
-    # require_gem('time')
-    puts Time.methods
-    if Integer === @start_time
-      @elapsed_time = (Time.new - @start_time).to_i
+    if @start_time
+      @elapsed_time = (Time.now - @start_time).to_i
     else
       # record start time, used for calculating elapsed time
-      @start_time = Time.new
+      @start_time = Time.now
       @elapsed_time = 0
     end
 
