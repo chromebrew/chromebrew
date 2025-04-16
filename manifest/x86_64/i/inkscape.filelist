@@ -95,7 +95,7 @@
 /usr/local/lib64/cmake/2Geom/2GeomTargets-release.cmake
 /usr/local/lib64/cmake/2Geom/2GeomTargets.cmake
 /usr/local/lib64/inkscape/libinkscape_base.so
-/usr/local/lib64/inkscape/libinkscape_base.so.1.4.0.0
+/usr/local/lib64/inkscape/libinkscape_base.so.1.4.1.0
 /usr/local/lib64/lib2geom.so
 /usr/local/lib64/lib2geom.so.1.4.0
 /usr/local/lib64/pkgconfig/2geom.pc
@@ -286,6 +286,8 @@
 /usr/local/share/inkscape/extensions/cgm_input.inx
 /usr/local/share/inkscape/extensions/cgm_input.py
 /usr/local/share/inkscape/extensions/cgm_parse.py
+/usr/local/share/inkscape/extensions/clean_up_path.inx
+/usr/local/share/inkscape/extensions/clean_up_path.py
 /usr/local/share/inkscape/extensions/color_blackandwhite.inx
 /usr/local/share/inkscape/extensions/color_blackandwhite.py
 /usr/local/share/inkscape/extensions/color_brighter.inx
@@ -649,6 +651,7 @@
 /usr/local/share/inkscape/extensions/inkex/paths/quadratic.py
 /usr/local/share/inkscape/extensions/inkex/ports.py
 /usr/local/share/inkscape/extensions/inkex/properties.py
+/usr/local/share/inkscape/extensions/inkex/py.typed
 /usr/local/share/inkscape/extensions/inkex/styles.py
 /usr/local/share/inkscape/extensions/inkex/tester/__init__.py
 /usr/local/share/inkscape/extensions/inkex/tester/decorators.py
@@ -818,9 +821,12 @@
 /usr/local/share/inkscape/extensions/other/extension-afdesign/inkaf/parser/types.py
 /usr/local/share/inkscape/extensions/other/extension-afdesign/inkaf/parser/utils.py
 /usr/local/share/inkscape/extensions/other/extension-afdesign/inkaf/svg/__init__.py
+/usr/local/share/inkscape/extensions/other/extension-afdesign/inkaf/svg/adjustment.py
 /usr/local/share/inkscape/extensions/other/extension-afdesign/inkaf/svg/convert.py
 /usr/local/share/inkscape/extensions/other/extension-afdesign/inkaf/svg/curve.py
+/usr/local/share/inkscape/extensions/other/extension-afdesign/inkaf/svg/enhance.py
 /usr/local/share/inkscape/extensions/other/extension-afdesign/inkaf/svg/fill.py
+/usr/local/share/inkscape/extensions/other/extension-afdesign/inkaf/svg/raster.py
 /usr/local/share/inkscape/extensions/other/extension-afdesign/inkaf/svg/shape.py
 /usr/local/share/inkscape/extensions/other/extension-afdesign/inkaf/svg/styles.py
 /usr/local/share/inkscape/extensions/other/extension-afdesign/inkaf/svg/text.py
@@ -4675,7 +4681,8 @@
 /usr/local/share/inkscape/ui/highlight-colors.css
 /usr/local/share/inkscape/ui/image-properties.glade
 /usr/local/share/inkscape/ui/inkscape-about.glade
-/usr/local/share/inkscape/ui/inkscape-start.glade
+/usr/local/share/inkscape/ui/inkscape-splash.glade
+/usr/local/share/inkscape/ui/inkscape-welcome.glade
 /usr/local/share/inkscape/ui/inkview-controls.ui
 /usr/local/share/inkscape/ui/inline-css.lang
 /usr/local/share/inkscape/ui/mac.css
@@ -4716,6 +4723,7 @@
 /usr/local/share/inkscape/ui/toolbar-measure.ui
 /usr/local/share/inkscape/ui/toolbar-mesh.ui
 /usr/local/share/inkscape/ui/toolbar-node.ui
+/usr/local/share/inkscape/ui/toolbar-objectpicker.ui
 /usr/local/share/inkscape/ui/toolbar-page.ui
 /usr/local/share/inkscape/ui/toolbar-paintbucket.ui
 /usr/local/share/inkscape/ui/toolbar-pencil.ui

@@ -44,10 +44,17 @@ def set_vars(passed_name = nil, passed_version = nil)
     $gems ||= BasicCompactIndexClient.new.gems
     puts 'Done populating gem information.'.lightgreen
   end
+  # Parse gem information from compact index, the format for which is
+  # here: https://guides.rubygems.org/rubygems-org-compact-index-api/
+  # Figure out gem name, noting that there may be dashes and underscores
+  # in the name.
   gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last.blank? ? $gems.grep(/#{"^\(#{passed_name.gsub(/^ruby_/, '').gsub('_', ')*.(')}\\s\).*$"}/).last : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last
   abort "Cannot find #{passed_name} gem to install.".lightred if gem_test.blank?
   gem_test_name = gem_test.split.first
   gem_test_versions = gem_test.split[1].split(',')
+  # Remove minus prefixed versions, as those have been yanked as per
+  # https://guides.rubygems.org/rubygems-org-compact-index-api/
+  gem_test_versions.delete_if { |i| i.start_with?('-') }
   # Any version with a letter is considered a prerelease as per
   # https://github.com/rubygems/rubygems/blob/b5798efd348935634d4e0e2b846d4f455582db48/lib/rubygems/version.rb#L305
   gem_test_versions.delete_if { |i| i.match?(/[a-zA-Z]/) }

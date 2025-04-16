@@ -2,6 +2,7 @@ require 'fileutils'
 require_relative '../lib/const'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
+require_relative '../lib/require_gem'
 
 class Command
   def self.check(name, force)
@@ -18,7 +19,14 @@ class Command
     # Use rubocop to sanitize package file, and let errors get flagged.
     if Kernel.system('rubocop --version', %i[out err] => File::NULL)
       puts "Using rubocop to sanitize #{local_package}".orange
-      system "rubocop -c #{File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')} -A #{local_package}", exception: true
+      # The .rubocop.yml file is found in the rubocop-chromebrew gem
+      require_gem('rubocop-chromebrew')
+      if File.file?(File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml'))
+        system "rubocop -c #{File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')} -A #{local_package}", exception: true
+      else
+        puts 'The configuration file for rubocop in .rubocop.yml, from the rubocop-chromebrew gem, was not found.'.lightred
+        puts 'To install rubocop-chromebrew, run the following command: '.lightred + "crew #{PackageUtils.installed?('ruby_rubocop_chromebrew') ? 're' : ''}install ruby_rubocop_chromebrew".lightblue
+      end
     else
       puts "Rubocop is not installed, and thus will not be used to sanitize #{local_package}".lightred
       puts 'To install Rubocop, run the following command: '.lightred + "crew #{PackageUtils.installed?('ruby_rubocop') ? 're' : ''}install ruby_rubocop".lightblue

@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Openssh < Autotools
   description 'OpenSSH is the premier connectivity tool for remote login with the SSH protocol.'
   homepage 'https://www.openssh.com/'
-  version '9.9p2'
+  version '10.0p1'
   license 'BSD and GPL-2'
   compatibility 'all'
   source_url 'https://github.com/openssh/openssh-portable.git'
-  git_hashtag "V_#{version.upcase.tr('.', '').chars[0...-1].join('_') + version.chars.pop}"
+  git_hashtag "V_#{version.upcase.tr('.', '_').sub('P', '_P')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6d1c5d5a61c18ecb5804739ed3ecd2738c79db33d8d596222161d12e984c626c',
-     armv7l: '6d1c5d5a61c18ecb5804739ed3ecd2738c79db33d8d596222161d12e984c626c',
-       i686: '13ed28992b3d577dc66d1cec8addbc87c21848a543da6c84de462747360b44ff',
-     x86_64: 'bc67ebc6e34c0fcf84f871940f2cdbf8b0255761c2e48a594336c7788694076d'
+    aarch64: '13391d7f849c21a1033b8e004968f9dc6a57de07bdbc95f00207b1c2b90a97ae',
+     armv7l: '13391d7f849c21a1033b8e004968f9dc6a57de07bdbc95f00207b1c2b90a97ae',
+       i686: 'b785e24f70d5f3370ede5809d0129e97075118992ebd709b6e219da1202a7f8a',
+     x86_64: '5f9cc255df55c9a63582068aaacc60a3bcffd953fa9a62c48218e61ce8745e97'
   })
 
   depends_on 'gcc_lib' # R

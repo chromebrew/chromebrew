@@ -3,18 +3,18 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.13.2'
+  version '3.13.3'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 'd984bcc57cd67caab26f7def42e523b1c015bbc5dc07836cf4f0b63fa159eb56'
+  source_sha256 '40f868bcbdeb8149a3149580bb9bfd407b3321cd48f0be631af955ac92c0e041'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '615c745c74be0d77a35d46d7193ae710855247686b8cc448985ee75197d7c9e3',
-     armv7l: '615c745c74be0d77a35d46d7193ae710855247686b8cc448985ee75197d7c9e3',
-       i686: '7361068f061c81334855cf7288f39e36b54a2aff87ae7df80f79d8dd708e2d3c',
-     x86_64: '364b989281b96e371b49eb93bd04c7f6924a8c23a9c216198d052b567d696bda'
+    aarch64: '877455d39115d2b22d706615d229cbee6f70c286bb5aa1c6dba8ee8e63eace56',
+     armv7l: '877455d39115d2b22d706615d229cbee6f70c286bb5aa1c6dba8ee8e63eace56',
+       i686: '08f190307885f5c51412baa6dc621538f9a288c795a958cbb17c7cf8ce98c523',
+     x86_64: '4f06de7d9a546301339538bf58a147321e87a6cc24c6faa5a92ae9cb0b648256'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -47,8 +47,8 @@ class Python3 < Package
     # See https://github.com/python/cpython/issues/81765
     system "sed -i '/test_sqlite3/d'  Lib/test/libregrtest/pgo.py" unless %w[aarch64 armv7l].include?(ARCH)
     # Work around issue with sqlite3 3.49.x. See https://github.com/python/cpython/issues/129870
-    downloader 'https://github.com/python/cpython/commit/d26c2fe7a2833606b3fb8d9789149d8696978d86.diff', '4483a8b381254db3627889e7914bd167d8a7bbf7521217e6202103b58d3e5f33'
-    system 'patch -Np1 -i d26c2fe7a2833606b3fb8d9789149d8696978d86.diff'
+    # downloader 'https://github.com/python/cpython/commit/d26c2fe7a2833606b3fb8d9789149d8696978d86.diff', '4483a8b381254db3627889e7914bd167d8a7bbf7521217e6202103b58d3e5f33'
+    # system 'patch -Np1 -i d26c2fe7a2833606b3fb8d9789149d8696978d86.diff'
   end
 
   def self.preinstall

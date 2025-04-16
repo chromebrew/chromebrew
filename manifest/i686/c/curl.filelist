@@ -408,6 +408,7 @@
 /usr/local/share/man/man3/CURLOPT_UPKEEP_INTERVAL_MS.3.zst
 /usr/local/share/man/man3/CURLOPT_UPLOAD.3.zst
 /usr/local/share/man/man3/CURLOPT_UPLOAD_BUFFERSIZE.3.zst
+/usr/local/share/man/man3/CURLOPT_UPLOAD_FLAGS.3.zst
 /usr/local/share/man/man3/CURLOPT_URL.3.zst
 /usr/local/share/man/man3/CURLOPT_USERAGENT.3.zst
 /usr/local/share/man/man3/CURLOPT_USERNAME.3.zst

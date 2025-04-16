@@ -1,11 +1,11 @@
 /usr/local/bin/sqlmap
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.3.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.3.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.3.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.3.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.3.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.3.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.3.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.4.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.4.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.4.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.4.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.4.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.4.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.4.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/sqlmap/.pylintrc
 /usr/local/lib/python3.13/site-packages/sqlmap/LICENSE
 /usr/local/lib/python3.13/site-packages/sqlmap/README.md
@@ -854,6 +854,7 @@
 /usr/local/lib/python3.13/site-packages/sqlmap/tamper/__pycache__/least.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/sqlmap/tamper/__pycache__/lowercase.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/sqlmap/tamper/__pycache__/luanginx.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/sqlmap/tamper/__pycache__/luanginxmore.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/sqlmap/tamper/__pycache__/misunion.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/sqlmap/tamper/__pycache__/modsecurityversioned.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/sqlmap/tamper/__pycache__/modsecurityzeroversioned.cpython-313.pyc
@@ -922,6 +923,7 @@
 /usr/local/lib/python3.13/site-packages/sqlmap/tamper/least.py
 /usr/local/lib/python3.13/site-packages/sqlmap/tamper/lowercase.py
 /usr/local/lib/python3.13/site-packages/sqlmap/tamper/luanginx.py
+/usr/local/lib/python3.13/site-packages/sqlmap/tamper/luanginxmore.py
 /usr/local/lib/python3.13/site-packages/sqlmap/tamper/misunion.py
 /usr/local/lib/python3.13/site-packages/sqlmap/tamper/modsecurityversioned.py
 /usr/local/lib/python3.13/site-packages/sqlmap/tamper/modsecurityzeroversioned.py

@@ -8685,6 +8685,11 @@ url: https://github.com/holman/spark/releases
 activity: none
 ---
 kind: url
+name: speakify
+url: https://github.com/habitual69/speakify
+activity: low
+---
+kind: url
 name: speedometer
 url: https://httpredir.debian.org/debian/pool/main/s/speedometer/
 activity: none
@@ -9047,6 +9052,11 @@ activity: medium
 kind: url
 name: terminus
 url: https://github.com/pantheon-systems/terminus/releases
+activity: medium
+---
+kind: url
+name: termius
+url: https://www.termius.com/download/linux
 activity: medium
 ---
 kind: url

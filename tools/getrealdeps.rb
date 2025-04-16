@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# getrealdeps version 1.5 (for Chromebrew)
+# getrealdeps version 1.6 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -110,6 +110,22 @@ def main(pkg)
 
   # Look for missing runtime dependencies.
   missingpkgdeps = pkgdeps.reject { |i| File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}'") unless File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}' => :build") }
+
+  # Do not add llvm*_{dev,lib} runtime deps if this is a llvm*_build
+  # package as those packages are created from the llvm build package
+  # after it is built.
+  if /llvm.*_build/.match(pkg)
+    missingpkgdeps.delete_if { |d| /llvm.*_*/.match(d) }
+    pkgdeps.delete_if { |d| /llvm.*_*/.match(d) }
+  end
+
+  # Do not add llvm_build runtime deps if this is a llvm*_{dev,lib}
+  # package, as the llvm build package should only be a build dep for
+  # these packages.
+  if /llvm.*_lib/.match(pkg) || /llvm.*_dev/.match(pkg) || /libclc/.match(pkg) || /openmp/.match(pkg)
+    missingpkgdeps.delete_if { |d| /llvm.*_build/.match(d) }
+    pkgdeps.delete_if { |d| /llvm.*_build/.match(d) }
+  end
 
   puts "\nPackage #{pkg} has runtime library dependencies on these packages:"
   pkgdeps.each do |i|
