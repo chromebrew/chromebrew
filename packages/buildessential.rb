@@ -176,7 +176,7 @@ class Buildessential < Package
   depends_on 'ruby_pry_byebug'
   # Add rubocop for linting packages. (This also installs the
   # rubocop config file.)
-  # depends_on 'ruby_rubocop'
+  depends_on 'ruby_rubocop'
 
   # Code quality
   depends_on 'py3_pre_commit'
