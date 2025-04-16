@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pycairo < Pip
   description 'Pycairo is a provides bindings for the cairo graphics library.'
   homepage 'https://cairographics.org/pycairo/'
-  version "1.27.0-#{CREW_PY_VER}"
+  version "1.28.0-#{CREW_PY_VER}"
   license 'LGPL-2.1 or MPL-1.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
