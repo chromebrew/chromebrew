@@ -11,8 +11,8 @@ class Swig < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c48b84a284a041ca31c74bb13ee9b74d5637bbd65fef3c152a87e7f63a81da70',
-     armv7l: 'c48b84a284a041ca31c74bb13ee9b74d5637bbd65fef3c152a87e7f63a81da70',
+    aarch64: 'ffde52784e959c30958692ae15986ef69c842b0df9d3222ebb61f9143c6ed2ed',
+     armv7l: 'ffde52784e959c30958692ae15986ef69c842b0df9d3222ebb61f9143c6ed2ed',
        i686: '1c07e974483808095cc3e42155f3bda84e84f5dcaadfa67fc388aaab7d424a19',
      x86_64: '8bf4425b48e1b6760f01eb4327831b28c196f0965d66f2e1784fa9c0c15a48b5'
   })
