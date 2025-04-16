@@ -59,10 +59,10 @@ class ProgressBar
     end
 
     if @start_time
-      @elapsed_time = (Time.now - @start_time).to_i
+      @elapsed_time = (Time.new - @start_time).to_i
     else
       # record start time, used for calculating elapsed time
-      @start_time = Time.now
+      @start_time = Time.new
       @elapsed_time = 0
     end
 
