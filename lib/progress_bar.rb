@@ -3,7 +3,7 @@ require_relative 'color'
 require_relative 'misc_functions'
 require_relative 'require_gem'
 
-class ProgressBar
+class Progress_Bar
   class InvalidSizeError < StandardError; end
 
   attr_accessor :progress_bar_showing
