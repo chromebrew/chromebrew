@@ -58,6 +58,7 @@ class ProgressBar
       end
     end
 
+    puts "@start_time is #{@start_time}"
     if @start_time
       @elapsed_time = (Time.new - @start_time).to_i
     else
@@ -66,6 +67,7 @@ class ProgressBar
       @elapsed_time = 0
     end
 
+    puts "@elapsed_time is #{@elapsed_time}"
     @elapsed_time_in_str = Time.at(@elapsed_time).utc.strftime('%H:%M:%S')
 
     # calculate progress percentage, round to nearest 0.1
