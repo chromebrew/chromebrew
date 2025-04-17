@@ -7,7 +7,10 @@ class Command_not_found < Package
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/supechicken/crew-command-not-found.git'
-  git_hashtag @version
+  git_hashtag version
+  binary_compression 'tar.zst'
+
+  print_source_bashrc
 
   def self.build
     system "mold -run cc #{CREW_COMMON_FLAGS} command-not-found-handler.c -o command-not-found-handler"
