@@ -10,6 +10,13 @@ class Command_not_found < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
+  binary_sha256({
+    aarch64: '123',
+     armv7l: '123',
+       i686: '123',
+     x86_64: '123'
+  })
+
   print_source_bashrc
 
   def self.build
