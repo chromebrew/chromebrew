@@ -11,8 +11,8 @@ class Command_not_found < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1c9b5e2ff96a31237bb114639f7e7dce681490ba071ae789b990c5f91e931054',
-     armv7l: '1c9b5e2ff96a31237bb114639f7e7dce681490ba071ae789b990c5f91e931054',
+    aarch64: 'e3cacd7f1b300ef05dffd49998d438849c008c9aaf54d72305b0a1a7e5569333',
+     armv7l: 'e3cacd7f1b300ef05dffd49998d438849c008c9aaf54d72305b0a1a7e5569333',
        i686: '8fdc2eb291297b6143b9fb6557ac249303cff6bee8da938a26829099f338492f',
      x86_64: 'c231721811f8d82f61e7515dfef7ea42e3e990d7c5a31a1c85e4e53de5d12582'
   })
