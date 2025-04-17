@@ -1121,7 +1121,7 @@ activity: low
 ---
 kind: url
 name: command_not_found
-url: https://github.com/chromebrew/command-not-found-handler
+url: https://github.com/chromebrew/command-not-found-handler/releases
 activity: medium
 ---
 kind: url
