@@ -2,19 +2,19 @@ require 'package'
 
 class Command_not_found < Package
   description 'Show suggestions for non-installed commands'
-  homepage 'https://github.com/chromebrew/command-not-found'
-  version '0.1'
+  homepage 'https://github.com/chromebrew/command-not-found-handler'
+  version '0.1.1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/supechicken/crew-command-not-found.git'
+  source_url 'https://github.com/chromebrew/command-not-found-handler.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7f8de55deb147596cac8c0fd518de614fb509ce0e7492e7592f13b69ce94e6a3',
-     armv7l: '7f8de55deb147596cac8c0fd518de614fb509ce0e7492e7592f13b69ce94e6a3',
-       i686: '775b86ef37ac0e7f541af095d939063c4dcd2512e330a88aab7846a9f6e80c47',
-     x86_64: '4e1bc306c0e7995946c5f0d219a35a2e4115bee31914a242cff479a4cc5360d4'
+    aarch64: 'e3cacd7f1b300ef05dffd49998d438849c008c9aaf54d72305b0a1a7e5569333',
+     armv7l: 'e3cacd7f1b300ef05dffd49998d438849c008c9aaf54d72305b0a1a7e5569333',
+       i686: '8fdc2eb291297b6143b9fb6557ac249303cff6bee8da938a26829099f338492f',
+     x86_64: 'c231721811f8d82f61e7515dfef7ea42e3e990d7c5a31a1c85e4e53de5d12582'
   })
 
   depends_on 'glibc' # R
