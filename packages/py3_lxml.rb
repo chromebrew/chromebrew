@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_lxml < Pip
   description 'LXML is a Python library for processing XML and HTML.'
   homepage 'https://lxml.de/'
-  version "5.3.1-#{CREW_PY_VER}"
+  version "5.3.2-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
