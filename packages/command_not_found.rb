@@ -14,7 +14,7 @@ class Command_not_found < Package
     aarch64: '1c9b5e2ff96a31237bb114639f7e7dce681490ba071ae789b990c5f91e931054',
      armv7l: '1c9b5e2ff96a31237bb114639f7e7dce681490ba071ae789b990c5f91e931054',
        i686: '8fdc2eb291297b6143b9fb6557ac249303cff6bee8da938a26829099f338492f',
-     x86_64: '7bfda16adcb3dc8f1c53258befb56e4f0b5d5cbf9376604a7abb16e476ced437'
+     x86_64: 'c231721811f8d82f61e7515dfef7ea42e3e990d7c5a31a1c85e4e53de5d12582'
   })
 
   depends_on 'glibc' # R
