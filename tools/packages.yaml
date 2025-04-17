@@ -1120,6 +1120,11 @@ url: https://github.com/shyiko/commacd/releases
 activity: low
 ---
 kind: url
+name: command_not_found
+url: https://github.com/chromebrew/command-not-found
+activity: medium
+---
+kind: url
 name: composer
 url: https://github.com/composer/composer/releases
 activity: medium

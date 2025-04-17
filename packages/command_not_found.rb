@@ -2,7 +2,7 @@ require 'package'
 
 class Command_not_found < Package
   description 'Show suggestions for non-installed commands'
-  homepage 'https://github.com/chromebrew/crew-command-not-found'
+  homepage 'https://github.com/chromebrew/command-not-found'
   version '0.1'
   license 'GPL-3'
   compatibility 'all'
