@@ -14,7 +14,7 @@ class Command_not_found < Package
     aarch64: '123',
      armv7l: '123',
        i686: '775b86ef37ac0e7f541af095d939063c4dcd2512e330a88aab7846a9f6e80c47',
-     x86_64: '123'
+     x86_64: '4e1bc306c0e7995946c5f0d219a35a2e4115bee31914a242cff479a4cc5360d4'
   })
 
   depends_on 'glibc' # R
