@@ -13,9 +13,11 @@ class Command_not_found < Package
   binary_sha256({
     aarch64: '123',
      armv7l: '123',
-       i686: '123',
+       i686: '775b86ef37ac0e7f541af095d939063c4dcd2512e330a88aab7846a9f6e80c47',
      x86_64: '123'
   })
+
+  depends_on 'glibc' # R
 
   print_source_bashrc
 
