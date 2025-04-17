@@ -24,8 +24,8 @@ class Command_not_found < Package
   end
 
   def self.install
-    FileUtils.mkdir_p %W[#{CREW_PREFIX}/bin #{CREW_PREFIX}/etc/bash.d]
-    FileUtils.install 'command-not-found-handler', "#{CREW_PREFIX}/bin/command-not-found-handler", mode: 0o755
-    FileUtils.install 'command-not-found.sh', "#{CREW_PREFIX}/etc/bash.d/03-command-not-found", mode: 0o644
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/etc/bash.d]
+    FileUtils.install 'command-not-found-handler', "#{CREW_DEST_PREFIX}/bin/command-not-found-handler", mode: 0o755
+    FileUtils.install 'command-not-found.sh', "#{CREW_DEST_PREFIX}/etc/bash.d/03-command-not-found", mode: 0o644
   end
 end
