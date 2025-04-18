@@ -8,7 +8,7 @@ class Dejagnu < Autotools
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/dejagnu/dejagnu-#{version}.tar.gz"
   source_sha256 'bf5b28bb797e0ace4cfc0766a996339c795d8223bef54158be7887046bc01692'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '94e52d8bd744a7addadcc5572f5ca4707661abe30f0f3215d0e992041ef96b78',
