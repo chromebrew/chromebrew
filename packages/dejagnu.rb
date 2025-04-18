@@ -14,7 +14,7 @@ class Dejagnu < Autotools
     aarch64: '94e52d8bd744a7addadcc5572f5ca4707661abe30f0f3215d0e992041ef96b78',
      armv7l: '94e52d8bd744a7addadcc5572f5ca4707661abe30f0f3215d0e992041ef96b78',
        i686: '7fd6e3d220fba8e4dc7cbfde6fb702362fe8e9fee2ba86bd78c3d9b0709ccbf6',
-     x86_64: 'f3f6810d737976abb4f7e7f6d0a659fc4206d0f8067febb13e2fde63c38467f0'
+     x86_64: '0738553253f346fb968c5a210dd4a9d2afef0336c1374af442c794d703b9d0bf'
   })
 
   depends_on 'expect'
