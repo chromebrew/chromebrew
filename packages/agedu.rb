@@ -14,7 +14,7 @@ class Agedu < CMake
     aarch64: '0cc1186dfe4a6b0079cdfd46c40654dd04e3494aa48a2db4fcfbf7b0f6ef27b5',
      armv7l: '0cc1186dfe4a6b0079cdfd46c40654dd04e3494aa48a2db4fcfbf7b0f6ef27b5',
        i686: 'c153c07d345c234b1b2cb80fef13e0ba7795a617e51668a84c5e02ac0e8afe13',
-     x86_64: '1cb548694350a3bdd97252f51ee588b272733a2973a8db19fd797ace6a5a8042'
+     x86_64: 'f7fae33f4232330696a95452a86f2f99b9ea10ba2688589d4e0d895610a4ae85'
   })
 
   depends_on 'glibc' # R
