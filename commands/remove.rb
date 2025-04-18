@@ -50,38 +50,30 @@ class Command
     # Remove the files and directories installed by the package.
     unless pkg.is_fake?
       Dir.chdir CREW_CONFIG_PATH do
-        # Remove all files installed by the package in CREW_PREFIX and
-        # HOME.
+        # Remove all files installed by the package in CREW_PREFIX and HOME.
+        #
         # Exceptions:
         # 1. The file exists in another installed package.
-        # 2. The file is in one of the filelists for packages CREW_ESSENTIAL_PACKAGES.
-        flist = File.join(CREW_META_PATH, "#{pkg.name}.filelist")
-        if File.file?(flist)
+        filelist_path = File.join(CREW_META_PATH, "#{pkg.name}.filelist")
+        if File.file?(filelist_path)
+          filelist        = File.readlines(filelist_path, chomp: true)
+          overlap_files   = ConvenienceFunctions.determine_conflicts(pkg.name, filelist_path)
+          files_to_remove = filelist - overlap_files.values.flatten  # We want the difference of these arrays.
 
-          # When searching for files to delete we exclude the files from CREW_ESSENTIAL_PACKAGES.
-          essential_packages_exclude_froms = ''
-          unless force
-            essential_packages_exclude_froms = CREW_ESSENTIAL_PACKAGES.map { |i| File.file?("#{File.join(CREW_META_PATH, i.to_s)}.filelist") ? "--exclude-from=#{File.join(CREW_META_PATH, i.to_s)}.filelist" : '' }.join(' ')
+          if overlap_files.any?
+            puts "The following file(s) in other packages will not be deleted during the removal of #{pkg.name}:\n".orange
+            overlap_files.each_pair do |pkgName, files|
+              files.each {|file| puts "#{pkgName}: #{file}".orange }
+            end
+            puts
           end
 
-          package_files = `grep -h #{essential_packages_exclude_froms} \"^#{CREW_PREFIX}\\|^#{HOME}\" #{flist}`.split("\n").uniq.sort
-          all_other_files = `grep -h --exclude #{pkg.name}.filelist \"^#{CREW_PREFIX}\\|^#{HOME}\" #{CREW_META_PATH}/*.filelist 2>/dev/null`.split("\n").uniq.sort
-
-          # We want the difference of these arrays.
-          unique_to_package_files = package_files - all_other_files
-
-          # We want the intersection of these arrays.
-          package_files_that_overlap = all_other_files & package_files
-
-          unless package_files_that_overlap.empty?
-            puts "The following file(s) in other packages will not be deleted during the removal of #{pkg.name}:".orange
-            puts package_files_that_overlap.join("\n").orange
-          end
-          unique_to_package_files.each do |file|
+          files_to_remove.each do |file|
             puts "Removing file #{file}".yellow if verbose
             FileUtils.remove_file file, exception: false
           end
-          FileUtils.remove_file flist
+
+          FileUtils.remove_file filelist_path
         end
 
         # Remove all directories installed by the package.
