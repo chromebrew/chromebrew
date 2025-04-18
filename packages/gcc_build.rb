@@ -48,6 +48,7 @@ class Gcc_build < Package
   depends_on 'libssp' # L
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
+  depends_on 'rust' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
