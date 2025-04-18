@@ -11,8 +11,8 @@ class Agedu < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0cc1186dfe4a6b0079cdfd46c40654dd04e3494aa48a2db4fcfbf7b0f6ef27b5',
-     armv7l: '0cc1186dfe4a6b0079cdfd46c40654dd04e3494aa48a2db4fcfbf7b0f6ef27b5',
+    aarch64: 'ca67a3afee10201611b013ac9e2c149afcf654809e2273a9f155c530867a6ffd',
+     armv7l: 'ca67a3afee10201611b013ac9e2c149afcf654809e2273a9f155c530867a6ffd',
        i686: 'c153c07d345c234b1b2cb80fef13e0ba7795a617e51668a84c5e02ac0e8afe13',
      x86_64: 'f7fae33f4232330696a95452a86f2f99b9ea10ba2688589d4e0d895610a4ae85'
   })
