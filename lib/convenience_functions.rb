@@ -7,11 +7,11 @@ require_relative 'crewlog'
 require_relative 'downloader'
 
 class ConvenienceFunctions
-  def self.determine_conflicts(pkgName, filelist = File.join(CREW_META_PATH, "#{pkgName}.filelist"), excludeSuffix = nil)
+  def self.determine_conflicts(pkgName, filelist = File.join(CREW_META_PATH, "#{pkgName}.filelist"), excludeSuffix = nil, verbose: false)
     conflicts       = {}
     target_filelist = File.readlines(filelist, chomp: true)
 
-    puts 'Checking for conflicts with files from installed packages...'.orange
+    puts 'Checking for conflicts with files from installed packages...'.orange if verbose
 
     Dir[File.join(CREW_META_PATH, "*.filelist")].each do |filelist|
       filelist_name = File.basename(filelist, ".filelist")

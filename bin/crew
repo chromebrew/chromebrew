@@ -835,7 +835,7 @@ def prepare_package(destdir)
     end
 
     # check for conflicts with other installed files
-    conflicts = ConvenienceFunctions.determine_conflicts(@pkg.name, File.join(Dir.pwd, 'filelist'), '_build')
+    conflicts = ConvenienceFunctions.determine_conflicts(@pkg.name, File.join(Dir.pwd, 'filelist'), '_build', verbose: CREW_VERBOSE)
 
     if conflicts.any?
       if CREW_CONFLICTS_ONLY_ADVISORY || @pkg.conflicts_ok?
