@@ -95,6 +95,7 @@ system(" sed -i 's/binary_sha256/sha256/g' #{File.join(CREW_CONFIG_PATH, 'device
 renamed_packages = Set[
   { pkg_name: 'acli', pkg_rename: 'acquia_cli', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'agrind', pkg_rename: 'angle_grinder', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'ansible', pkg_rename: 'ansible_core', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'apriconv', pkg_rename: 'apr_iconv', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'aprutil', pkg_rename: 'apr_util', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'arpscan', pkg_rename: 'arp_scan', comments: 'Renamed to better match upstream.' },
