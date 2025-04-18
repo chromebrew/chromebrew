@@ -1,3 +1,4 @@
+/usr/local/bin/dejagnu
 /usr/local/bin/runtest
 /usr/local/include/dejagnu.h
 /usr/local/share/dejagnu/baseboards/README
@@ -14,6 +15,7 @@
 /usr/local/share/dejagnu/baseboards/fr30-sim.exp
 /usr/local/share/dejagnu/baseboards/frv-sim.exp
 /usr/local/share/dejagnu/baseboards/gdbserver-sample.exp
+/usr/local/share/dejagnu/baseboards/generic-sim.exp
 /usr/local/share/dejagnu/baseboards/i386-sid.exp
 /usr/local/share/dejagnu/baseboards/iq2000-sim.exp
 /usr/local/share/dejagnu/baseboards/jmr3904-sim.exp
@@ -36,11 +38,16 @@
 /usr/local/share/dejagnu/baseboards/mmixware-sim.exp
 /usr/local/share/dejagnu/baseboards/mn10200-sim.exp
 /usr/local/share/dejagnu/baseboards/mn10300-sim.exp
+/usr/local/share/dejagnu/baseboards/moxie-sim.exp
 /usr/local/share/dejagnu/baseboards/msp430-sim.exp
 /usr/local/share/dejagnu/baseboards/mt-sid.exp
 /usr/local/share/dejagnu/baseboards/multi-sim.exp
+/usr/local/share/dejagnu/baseboards/pi.exp
 /usr/local/share/dejagnu/baseboards/powerpc-sim.exp
 /usr/local/share/dejagnu/baseboards/powerpcle-sim.exp
+/usr/local/share/dejagnu/baseboards/pru-sim.exp
+/usr/local/share/dejagnu/baseboards/qemu.exp
+/usr/local/share/dejagnu/baseboards/riscv-sim.exp
 /usr/local/share/dejagnu/baseboards/rx-sim.exp
 /usr/local/share/dejagnu/baseboards/sh-sid.exp
 /usr/local/share/dejagnu/baseboards/sh-sim.exp
@@ -56,6 +63,8 @@
 /usr/local/share/dejagnu/baseboards/vr4111-sim.exp
 /usr/local/share/dejagnu/baseboards/vr4300-sim.exp
 /usr/local/share/dejagnu/baseboards/xtensa-sim.exp
+/usr/local/share/dejagnu/commands/help.sh
+/usr/local/share/dejagnu/commands/report-card.awk
 /usr/local/share/dejagnu/config/README
 /usr/local/share/dejagnu/config/aarch64-fv8.exp
 /usr/local/share/dejagnu/config/adb.exp
@@ -90,6 +99,8 @@
 /usr/local/share/dejagnu/utils.exp
 /usr/local/share/doc/dejagnu-1.6.1/dejagnu.html
 /usr/local/share/doc/dejagnu-1.6.1/dejagnu.txt
-/usr/local/share/info/dejagnu.info.gz
-/usr/local/share/info/dir.gz
-/usr/local/share/man/man1/runtest.1.gz
+/usr/local/share/info/dejagnu.info.zst
+/usr/local/share/man/man1/dejagnu-help.1.zst
+/usr/local/share/man/man1/dejagnu-report-card.1.zst
+/usr/local/share/man/man1/dejagnu.1.zst
+/usr/local/share/man/man1/runtest.1.zst
