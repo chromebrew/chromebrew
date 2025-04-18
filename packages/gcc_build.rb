@@ -51,6 +51,7 @@ class Gcc_build < Package
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
+  conflicts_ok
   no_env_options
 
   @gcc_version = version.split('-')[0].partition('.')[0]
