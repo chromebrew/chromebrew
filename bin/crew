@@ -766,29 +766,6 @@ def compress_doc(dir)
   end
 end
 
-def determine_conflicts(dir, pkg)
-  conflicts = []
-  if File.file?("#{dir}/filelist")
-    if File.file?(File.join(CREW_META_PATH, "#{pkg}.filelist"))
-      puts 'Checking for conflicts with files from installed packages...'.orange
-      conflictscmd = `grep --exclude=#{File.join(CREW_META_PATH, "#{pkg}.filelist")} --exclude=#{CREW_META_PATH}/\\\*_build.filelist -Fxf #{dir}/filelist #{CREW_META_PATH}/*.filelist`
-      conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
-      conflicts.reject!(&:empty?)
-    end
-  elsif File.file?(File.join(CREW_META_PATH, "#{pkg}.filelist"))
-    puts "Checking for conflicts of #{pkg} with files from installed packages...".orange
-    conflictscmd = `grep --exclude=#{File.join(CREW_META_PATH, "#{pkg}.filelist")} --exclude=#{CREW_META_PATH}/\\\*_build.filelist -Fxf #{File.join(CREW_META_PATH, "#{pkg}.filelist")} #{CREW_META_PATH}/*.filelist`
-    conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
-    conflicts.reject!(&:empty?)
-  end
-  if conflicts.any?
-    puts 'There is a conflict with the same file in another package:'.orange
-    puts conflicts.to_s.orange
-  end
-  conflicts.map! { |x| x.to_s.partition(':').last }
-  return conflicts
-end
-
 def prepare_package(destdir)
   # Create the destdir if it does not exist to avoid having to have
   # this single line in no_compile_needed packages.
@@ -858,15 +835,24 @@ def prepare_package(destdir)
     end
 
     # check for conflicts with other installed files
-    conflicts = determine_conflicts(Dir.pwd, @pkg.name)
+    conflicts = ConvenienceFunctions.determine_conflicts(@pkg.name, File.join(Dir.pwd, 'filelist'), '_build', verbose: CREW_VERBOSE)
+
     if conflicts.any?
       if CREW_CONFLICTS_ONLY_ADVISORY || @pkg.conflicts_ok?
-        puts 'Warning: There is a conflict with the same file in another package.'.orange
+        puts "Warning: There is a conflict with the same file in another package:\n".orange
       else
-        puts 'Error: There is a conflict with the same file in another package.'.lightred
+        puts "Error: There is a conflict with the same file in another package:\n".lightred
         errors = true
       end
-      puts conflicts
+
+      conflicts.each_pair do |pkgName, conflictFiles|
+        if errors
+          conflictFiles.each {|file| puts "#{pkgName}: #{file}".lightred }
+        else
+          conflictFiles.each {|file| puts "#{pkgName}: #{file}".orange }
+        end
+        puts
+      end
     end
 
     # abort if errors encountered

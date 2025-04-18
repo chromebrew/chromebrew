@@ -3,27 +3,27 @@ require 'package'
 class Acpica < Package
   description 'ACPI tools, including Intel ACPI Source Language compiler'
   homepage 'https://www.intel.com/content/www/us/en/developer/topic-technology/open/acpica/overview.html'
-  version '20200925'
+  version '20250404'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/acpica/acpica.git'
-  git_hashtag 'R09_25_20'
-  binary_compression 'tar.xz'
+  git_hashtag 'R2025_04_04'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4fab7ff907309a9ded50cc5054d3796e6cf852c057e9eaa7f447d6d4b31dff90',
-     armv7l: '4fab7ff907309a9ded50cc5054d3796e6cf852c057e9eaa7f447d6d4b31dff90',
-       i686: '24ec4f3d3223ec9e43c80b3bc864d1ff2385014624c172e04051921b395e8ffc',
-     x86_64: '346a75c16f86dde073cb0f22e00fc688c74b3404af8ae10726cd485c97d4f92c'
+    aarch64: '3fcd388f8f8fba58e2aa3a15377b782bb2aa6412ba090bdf5b9da00fdae723e3',
+     armv7l: '3fcd388f8f8fba58e2aa3a15377b782bb2aa6412ba090bdf5b9da00fdae723e3',
+       i686: '0b01a7b5429b74a165642d83b8f7b06115182338c7483c47987c1ba318dd3332',
+     x86_64: '80c71c2cda3045d6c94b4fb298833b647001dc519c5f60e819bbb50b41a022a9'
   })
+
+  depends_on 'glibc' # R
 
   def self.build
     system 'make'
   end
 
   def self.install
-    Dir.chdir 'generate/unix/bin' do
-      system "for f in \$(ls | xargs); do install -Dm755 \$f #{CREW_DEST_PREFIX}/bin/\$f; done"
-    end
+    system "make PREFIX=#{CREW_PREFIX} DESTDIR=#{CREW_DEST_DIR} install"
   end
 end
