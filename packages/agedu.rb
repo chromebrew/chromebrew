@@ -1,6 +1,6 @@
 require 'package'
 
-class Agedu < Cmake
+class Agedu < CMake
   description 'Unix utility for tracking down wasted disk space'
   homepage 'https://www.chiark.greenend.org.uk/~sgtatham/agedu/'
   version '20241013'
