@@ -13,9 +13,11 @@ class Acpica < Package
   binary_sha256({
     aarch64: '4fab7ff907309a9ded50cc5054d3796e6cf852c057e9eaa7f447d6d4b31dff90',
      armv7l: '4fab7ff907309a9ded50cc5054d3796e6cf852c057e9eaa7f447d6d4b31dff90',
-       i686: '24ec4f3d3223ec9e43c80b3bc864d1ff2385014624c172e04051921b395e8ffc',
+       i686: '0b01a7b5429b74a165642d83b8f7b06115182338c7483c47987c1ba318dd3332',
      x86_64: '346a75c16f86dde073cb0f22e00fc688c74b3404af8ae10726cd485c97d4f92c'
   })
+
+  depends_on 'glibc' # R
 
   def self.build
     system 'make'
