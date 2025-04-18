@@ -3,12 +3,12 @@ require 'package'
 class Rqlite < Package
   description 'The lightweight, user-friendly, distributed relational database built on SQLite.'
   homepage 'https://rqlite.io/'
-  version '8.36.14'
+  version '8.36.16'
   license 'MIT'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://github.com/rqlite/rqlite/releases/download/v#{version}/rqlite-v#{version}-linux-amd64.tar.gz"
-  source_sha256 '16188b5d045f6c1ecd5be2c894b6f25143b7d099f5d32d75a1c345812f3b85b5'
+  source_sha256 'a7668a779192bc9b3b122f3de5a9d096cfb37d8cb74825682eb3e14229555584'
 
   depends_on 'psmisc'
 
