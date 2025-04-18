@@ -58,14 +58,14 @@ class Command
         if File.file?(filelist_path)
           filelist                = File.readlines(filelist_path, chomp: true)
           overlap_files           = ConvenienceFunctions.determine_conflicts(pkg.name, filelist_path, verbose: verbose)
-          essential_files         = Dir[File.join(CREW_META_PATH, '*.filelist')].flatten_map {|f| File.readlines(f, chomp: true)}
+          essential_files         = CREW_ESSENTIAL_PACKAGES.flat_map {|f| File.readlines(File.join(CREW_META_PATH, "#{f}.filelist"), chomp: true)}
           overlap_essential_files = filelist & essential_files
           files_to_remove         = filelist - overlap_files.values.flatten - overlap_essential_files
 
           if overlap_essential_files.any?
             warn "The following file(s) will not be deleted as they are required for Chromebrew to work properly:\n".orange
-            warn overlap_essential_files.join("\n")
-            warn
+            warn overlap_essential_files.join("\n").orange
+            warn "\n\n"
           end
 
           if overlap_files.any?
