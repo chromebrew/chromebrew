@@ -7,6 +7,26 @@ require_relative 'crewlog'
 require_relative 'downloader'
 
 class ConvenienceFunctions
+  def self.determine_conflicts(pkgName, filelist = File.join(CREW_META_PATH, "#{pkgName}.filelist"), excludeSuffix = nil, verbose: false)
+    conflicts       = {}
+    target_filelist = File.readlines(filelist, chomp: true)
+
+    puts 'Checking for conflicts with files from installed packages...'.orange if verbose
+
+    Dir[File.join(CREW_META_PATH, "*.filelist")].each do |filelist|
+      filelist_name = File.basename(filelist, ".filelist")
+
+      # skip filelist belongs to the same package/explicitly excluded
+      next if pkgName == filelist_name || (excludeSuffix && filelist_name.end_with?(excludeSuffix))
+
+      # find out identical file paths with intersection
+      conflict = (target_filelist & File.readlines(filelist, chomp: true)).reject(&:empty?)
+      conflicts[filelist_name] = conflict if conflict.any?
+    end
+
+    return conflicts
+  end
+
   def self.load_symbolized_json
     return JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
   end
