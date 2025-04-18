@@ -55,6 +55,7 @@ class RemoveCommandTest < Minitest::Test
     puts 'Testing the verbose removal of normal package xxd_standalone. This should succeed.'
 
     expected_output = <<~EOT
+      Checking for conflicts with files from installed packages...
       Removing file #{CREW_PREFIX}/bin/xxd
       Removing file #{CREW_PREFIX}/share/man/man1/xxd.1.zst
       Removing package xxd_standalone from device.json
