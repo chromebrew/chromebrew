@@ -20,9 +20,9 @@ class Gcc_build < Package
   case @gcc_libc_version
   when '2.23'
 
-    binary_sha256({
-         i686: '95b0aacd75c8ab2ba559b2992f0c7d1e13230cb22f1622cd282df6df3e53e7c0'
-    })
+  binary_sha256({
+       i686: '4c6b6e5a49d3134b2db801aafc4d69d885c5082385d8a78c740c022c7f57afeb'
+  })
   when '2.27', '2.32', '2.33', '2.35'
 
     binary_sha256({
@@ -50,6 +50,7 @@ class Gcc_build < Package
   depends_on 'mpfr' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
+  depends_on 'gcc_lib' # R
 
   no_shrink
   conflicts_ok
