@@ -16,7 +16,7 @@ class ConvenienceFunctions
     Dir[File.join(CREW_META_PATH, "*.filelist")].each do |filelist|
       filelist_name = File.basename(filelist, ".filelist")
 
-      # skip filelist belongs to the same package/explicitly indicated
+      # skip filelist belongs to the same package/explicitly excluded
       next if pkgName == filelist_name || (excludeSuffix && filelist_name.end_with?(excludeSuffix))
 
       # find out identical file paths with intersection
