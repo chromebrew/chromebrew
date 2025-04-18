@@ -11,8 +11,8 @@ class Ccache < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4b3fc2986772cdc20d4216c7b73d777f58dff257685109c16e3d82b1d8ec1e7d',
-     armv7l: '4b3fc2986772cdc20d4216c7b73d777f58dff257685109c16e3d82b1d8ec1e7d',
+    aarch64: 'cac900b71fb8354f7e8adc6e36420401aae243e279a3e8ab17819060ad108fc7',
+     armv7l: 'cac900b71fb8354f7e8adc6e36420401aae243e279a3e8ab17819060ad108fc7',
        i686: 'ddf610925c50eafff18c135d39a258a39e3e18b71ea05409a2fa1b1b3bcab3fa',
      x86_64: 'b552cf0369392abef457ee8327e0f12889e1103f226227e5af0c6232505343e5'
   })
