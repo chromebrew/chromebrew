@@ -13,7 +13,9 @@ class Agedu < CMake
   binary_sha256({
     aarch64: '0cc1186dfe4a6b0079cdfd46c40654dd04e3494aa48a2db4fcfbf7b0f6ef27b5',
      armv7l: '0cc1186dfe4a6b0079cdfd46c40654dd04e3494aa48a2db4fcfbf7b0f6ef27b5',
-       i686: 'd6f0c3671b9dd06835c9ff8f2d73e95c9ff61e14a915d41f9f1161076884cefa',
+       i686: 'c153c07d345c234b1b2cb80fef13e0ba7795a617e51668a84c5e02ac0e8afe13',
      x86_64: '1cb548694350a3bdd97252f51ee588b272733a2973a8db19fd797ace6a5a8042'
   })
+
+  depends_on 'glibc' # R
 end
