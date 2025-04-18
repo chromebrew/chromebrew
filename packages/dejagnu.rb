@@ -11,8 +11,8 @@ class Dejagnu < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '94e52d8bd744a7addadcc5572f5ca4707661abe30f0f3215d0e992041ef96b78',
-     armv7l: '94e52d8bd744a7addadcc5572f5ca4707661abe30f0f3215d0e992041ef96b78',
+    aarch64: '815bd2fccdf87d6489d26823d260308b0cecc63a1b91d845327c30ee32b74300',
+     armv7l: '815bd2fccdf87d6489d26823d260308b0cecc63a1b91d845327c30ee32b74300',
        i686: '7fd6e3d220fba8e4dc7cbfde6fb702362fe8e9fee2ba86bd78c3d9b0709ccbf6',
      x86_64: '0738553253f346fb968c5a210dd4a9d2afef0336c1374af442c794d703b9d0bf'
   })
