@@ -11,8 +11,8 @@ class Abseil_cpp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '38591a94d29aa2d9f3aaaff1e9aae3ae3365dfa528d190260049b8d497c4d5d3',
-     armv7l: '38591a94d29aa2d9f3aaaff1e9aae3ae3365dfa528d190260049b8d497c4d5d3',
+    aarch64: 'a4f109d7d7bc78f3663934357e9885bc7e1fd6dd3210a6f2f0191d9172c9b3af',
+     armv7l: 'a4f109d7d7bc78f3663934357e9885bc7e1fd6dd3210a6f2f0191d9172c9b3af',
        i686: '70a6a6737c7fd62da61050a1c51eb62b89009aa5b4884f02ec3be1cf20115517',
      x86_64: 'ba62e359590d23b9adce63d76e6ac338ec4fe436f7820df99bb388d1cdbfa1eb'
   })
