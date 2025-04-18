@@ -14,7 +14,7 @@ class Mpfr < Autotools
     aarch64: '0a8fbf432ec14ab1641c76bbe4d152ebf4382870c85214fc3dd62dd57207f8e4',
      armv7l: '0a8fbf432ec14ab1641c76bbe4d152ebf4382870c85214fc3dd62dd57207f8e4',
        i686: '058142ec3d1bd25d09fc887701647325ac51e3d21cf40ddd4464f713e341d641',
-     x86_64: 'c9f4ba6d151d330702384bd29b3cf080b357dbf8da6be06597f57f00d21750a0'
+     x86_64: '50c33d094ae6b5f06096b05bebb9a86da72df20916831eaf95dd09b6752544f7'
   })
 
   depends_on 'autoconf_archive' => :build
