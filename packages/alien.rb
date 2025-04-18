@@ -1,14 +1,13 @@
 require 'package'
 
 class Alien < Package
-  description 'This program converts linux packages between the rpm, deb, tgz and slp packages.'
+  description 'This program converts Linux packages between the rpm, deb, tgz and slp packages.'
   homepage 'https://sourceforge.net/projects/alien-pkg-convert/'
-  @_ver = '8.95'
-  version "#{@_ver}-1"
+  version '8.95.8'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/alien-pkg-convert/release/alien_8.95.tar.xz'
-  source_sha256 '37a22587c33810feab323474bdadbf969fda2eb4e720b2ca01b40d82d6f71a17'
+  source_url 'https://deb.debian.org/debian/pool/main/a/alien/alien_8.95.8.tar.xz'
+  source_sha256 '586a649bc9366acc15047d4c9f34e253208907142e12174eafb4f3704fea47a5'
   binary_compression 'tar.zst'
 
   binary_sha256({
