@@ -18,9 +18,14 @@ class Ansible_core < Python
   })
 
   depends_on 'xdg_base'
+  depends_on 'python3'
   depends_on 'py3_cryptography'
   depends_on 'py3_pyyaml'
   depends_on 'py3_packaging'
   depends_on 'py3_jinja2'
-  depends_on 'python3' => :build
+  depends_on 'py3_build' => :build
+  depends_on 'py3_docutils' => :build
+  depends_on 'py3_installer' => :build
+  depends_on 'py3_setuptools' => :build
+  depends_on 'py3_wheel' => :build
 end
