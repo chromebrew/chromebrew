@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Mpfr < Autotools
   description 'The MPFR library is a C library for multiple-precision floating-point computations with correct rounding.'
   homepage 'https://www.mpfr.org/'
-  version '4.2.1'
+  version '4.2.2'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://www.mpfr.org/mpfr-current/mpfr-#{version}.tar.xz"
