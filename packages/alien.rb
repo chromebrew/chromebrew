@@ -1,21 +1,20 @@
 require 'package'
 
 class Alien < Package
-  description 'This program converts linux packages between the rpm, deb, tgz and slp packages.'
+  description 'This program converts Linux packages between the rpm, deb, tgz and slp packages.'
   homepage 'https://sourceforge.net/projects/alien-pkg-convert/'
-  @_ver = '8.95'
-  version "#{@_ver}-1"
+  version '8.95.8'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/alien-pkg-convert/release/alien_8.95.tar.xz'
-  source_sha256 '37a22587c33810feab323474bdadbf969fda2eb4e720b2ca01b40d82d6f71a17'
+  source_url 'https://deb.debian.org/debian/pool/main/a/alien/alien_8.95.8.tar.xz'
+  source_sha256 '586a649bc9366acc15047d4c9f34e253208907142e12174eafb4f3704fea47a5'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'af014a083846b49d3641fb1a9a43ab3eaba1db736a1d4351897674205a88bdfa',
-     armv7l: 'af014a083846b49d3641fb1a9a43ab3eaba1db736a1d4351897674205a88bdfa',
-       i686: 'cb24420a1a15f2ebd445261ce7b53cb026e7e25d5a3e6036dacf5572b5f233cf',
-     x86_64: '973b6adae5aa32b46acfa23541ac336e050b5a09919aa167194b3ce04b666362'
+    aarch64: 'a795208f4fc7e2de0548a043945d42196359b56dc4f4e891ec901a98e773d4d6',
+     armv7l: 'a795208f4fc7e2de0548a043945d42196359b56dc4f4e891ec901a98e773d4d6',
+       i686: 'a910d11ebeb7b2dee53fdc567be042b41734b09b7bc237274c90745e6e6cfc3d',
+     x86_64: 'bef7236785ff5a65dcae3644e90ef1a63a36388ee0759890e307452ea5c54b78'
   })
 
   def self.build
