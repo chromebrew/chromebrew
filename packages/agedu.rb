@@ -1,4 +1,4 @@
-require 'package'
+require 'buildsystems/cmake'
 
 class Agedu < CMake
   description 'Unix utility for tracking down wasted disk space'
