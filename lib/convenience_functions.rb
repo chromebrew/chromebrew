@@ -8,9 +8,7 @@ require_relative 'downloader'
 
 class ConvenienceFunctions
   def self.determine_conflicts(pkgName, filelist = File.join(CREW_META_PATH, "#{pkgName}.filelist"), excludeSuffix = nil)
-    conflicts = {}
-
-    # use the newly generated filelist during package install/build/upgrade
+    conflicts       = {}
     target_filelist = File.readlines(filelist, chomp: true)
 
     puts 'Checking for conflicts with files from installed packages...'.orange
@@ -18,8 +16,10 @@ class ConvenienceFunctions
     Dir[File.join(CREW_META_PATH, "*.filelist")].each do |filelist|
       filelist_name = File.basename(filelist, ".filelist")
 
+      # skip filelist belongs to the same package/explicitly indicated
       next if pkgName == filelist_name || (excludeSuffix && filelist_name.end_with?(excludeSuffix))
 
+      # find out identical file paths with intersection
       conflict = (target_filelist & File.readlines(filelist, chomp: true)).reject(&:empty?)
       conflicts[filelist_name] = conflict if conflict.any?
     end
