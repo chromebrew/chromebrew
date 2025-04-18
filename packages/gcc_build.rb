@@ -8,11 +8,13 @@ class Gcc_build < Package
                       else
                         ARCH.eql?('i686') ? '2.23' : '2.27'
                       end
-  version "14.2.0-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
+  version "15.1.0-RC-20250418-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag "releases/gcc-#{version.split('-').first}"
+  source_url 'https://gcc.gnu.org/pub/gcc/snapshots/15.1.0-RC-20250418/gcc-15.1.0-RC-20250418.tar.xz'
+  source_sha256 'aaaa'
+  #source_url 'https://github.com/gcc-mirror/gcc.git'
+  #git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   case @gcc_libc_version
@@ -114,6 +116,7 @@ class Gcc_build < Package
       --enable-gnu-indirect-function \
       --enable-gnu-unique-object \
       --enable-host-shared \
+      --enable-link-serialization=1 \
       --enable-lto \
       --enable-plugin \
       --enable-shared \
@@ -127,13 +130,14 @@ class Gcc_build < Package
       --with-mpfr \
       --with-pic \
       --with-system-libunwind \
-      --with-system-zlib
+      --with-system-zlib \
+      --with-system-zstd
     OPT
 
     @cflags = @cxxflags = '-fPIC -pipe'
     # @languages = 'c,c++,jit,objc,fortran,go'
     # go build fails on 20220305 snapshot
-    @languages = 'c,c++,jit,objc,fortran'
+    @languages = 'c,c++,jit,objc,fortran,go,rust'
     case ARCH
     when 'armv7l', 'aarch64'
       @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'
