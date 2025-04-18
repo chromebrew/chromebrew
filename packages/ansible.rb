@@ -1,9 +1,9 @@
 require 'buildsystems/python'
 
-class Ansible < Python
+class Ansible_core < Python
   description 'Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.'
   homepage 'https://www.ansible.com/'
-  version '2.17.3'
+  version '2.18.4'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/ansible/ansible.git'
