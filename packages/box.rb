@@ -6,7 +6,7 @@ class Box < Package
   version '4.6.6'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/box-project/box/releases/download/4.6.6/box.phar'
+  source_url "https://github.com/box-project/box/releases/download/#{version}/box.phar"
   source_sha256 'aa0966319f709e74bf2bf1d58ddb987903ae4f6d0a9d335ec2261813c189f7fc'
 
   depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
