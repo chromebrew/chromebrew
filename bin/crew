@@ -930,32 +930,30 @@ def patchelf_set_need_paths(dir)
   # rubocop:enable Lint/UnreachableCode
 end
 
-def strip_find_files(files, strip_option = '')
+def strip_find_files(find_cmd, strip_option = '')
   # Check whether crew should strip.
   return if CREW_NOT_STRIP || @pkg.no_strip? || !File.file?("#{CREW_PREFIX}/bin/llvm-strip")
 
-  # Strip only files with ar or elf magic headers.
+  # Run find_cmd and strip only files with ar or elf magic headers.
+  system "#{find_cmd} | xargs -r chmod u+w"
   strip_verbose = CREW_VERBOSE ? 'echo "Stripping ${0:1}" &&' : ''
   # The craziness here is from having to escape the special characters
   # in the magic headers for these files.
-
-  system "xargs -P#{CREW_NPROC} -n1 -r bash -c 'header=$(head -c4 ${0}); elfheader='$(printf '\\\177ELF')' ; arheader=\\!\\<ar ; case $header in $elfheader|$arheader) #{strip_verbose} llvm-strip #{strip_option} ${0} ;; esac'", in: StringIO.new(files.join("\n"))
+  system "#{find_cmd} | xargs -P#{CREW_NPROC} -n1 -r bash -c 'header=$(head -c4 ${0}); elfheader='$(printf '\\\177ELF')' ; arheader=\\!\\<ar ; case $header in $elfheader|$arheader) #{strip_verbose} llvm-strip #{strip_option} ${0} ;; esac'"
 end
 
 def strip_dir(dir)
   unless CREW_NOT_STRIP || @pkg.no_strip? || @pkg.no_compile_needed?
     Dir.chdir dir do
-      excluded_exts  = %w[bz2 gz lha lz lzh rar tar tbz tgz tpxz txz xz Z zip zst]
-      libraries      = Dir['**/lib*.{a,so*}']
-      other_files    = (Dir['**/{*,.?*}'] - libraries).select {|e| File.file?(e) && !extensions.include?(File.extname(e)[1..-1]) }
-
       # Strip libraries with -S
       puts 'Stripping libraries...'
-      strip_find_files libraries, '-S'
+      strip_find_files "find . -type f  \\( -name 'lib*.a' -o -name 'lib*.so*' \\) -print", '-S'
 
       # Strip binaries but not compressed archives
       puts 'Stripping binaries...'
-      strip_find_files other_files
+      extensions = %w[bz2 gz lha lz lzh rar tar tbz tgz tpxz txz xz Z zip zst]
+      inames = extensions.join(' -o -iname *.')
+      strip_find_files "find . -type f ! \\( -iname *.#{inames} \\) ! \\( -name 'lib*.a' -o -name 'lib*.so' \\) -perm /111 -print"
     end
   end
 end
