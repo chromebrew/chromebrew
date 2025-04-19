@@ -3,12 +3,12 @@ require 'package'
 class Joplin < Package
   description 'Open source note-taking app'
   homepage 'https://joplinapp.org/'
-  version '3.3.3'
+  version '3.3.5'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://objects.joplinusercontent.com/v#{version}/Joplin-#{version}.AppImage"
-  source_sha256 '43aaae9141f99526a7f0e86ab10eb7bad7539d3f993445c77f17f5b434118da2'
+  source_sha256 '0b123d1299af9c9f93c84c54f0e652be3598d1930d39a5dbeff5e087af0bc6de'
 
   depends_on 'gtk3'
   depends_on 'gdk_base'
@@ -20,12 +20,11 @@ class Joplin < Package
   no_shrink
 
   def self.build
-    joplin = <<~EOF
+    File.write 'joplin.sh', <<~EOF
       #!/bin/bash
       cd #{CREW_PREFIX}/share/joplin
       ./AppRun "$@"
     EOF
-    File.write('joplin.sh', joplin)
   end
 
   def self.install
