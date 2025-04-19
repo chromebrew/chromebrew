@@ -758,12 +758,9 @@ end
 
 def compress_doc(dir)
   # check whether crew should compress
-  return if CREW_NOT_COMPRESS || @pkg.no_compress? || !File.file?("#{CREW_PREFIX}/bin/compressdoc")
+  return if CREW_NOT_COMPRESS || @pkg.no_compress? || !File.file?("#{CREW_PREFIX}/bin/compressdoc") || !Dir.exist?(dir)
 
-  if Dir.exist? dir
-    system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
-    system "compressdoc --zstd #{@short_verbose} #{dir}"
-  end
+  system 'compressdoc', '--zstd', @short_verbose, dir
 end
 
 def prepare_package(destdir)
@@ -782,7 +779,7 @@ def prepare_package(destdir)
     # Remove all perl module files which will conflict
     if @pkg.name =~ /^perl_/
       puts 'Removing .packlist and perllocal.pod files to avoid conflicts with other perl packages.'.orange
-      system "find #{CREW_DEST_DIR} -type f \\( -name '.packlist' -o -name perllocal.pod \\) -delete"
+      FileUtils.rm Dir["#{CREW_DEST_DIR}/**/{.packlist,perllocal.pod}"]
     end
 
     # Compress manual files, and move errant files to the correct
@@ -808,8 +805,8 @@ def prepare_package(destdir)
     @pkg.postbuild
 
     # create file list
-    system "find .#{CREW_PREFIX} -type f,l | cut -c2- | LC_ALL=C sort", out: %w[filelist a] if Dir.exist?(CREW_DEST_PREFIX)
-    system "find .#{HOME} -type f,l | cut -c2- | LC_ALL=C sort", out: %w[filelist a] if Dir.exist?(CREW_DEST_HOME)
+    filelist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}"].filter_map {|e| (File.file?(e) || File.symlink?(e)) ? e[1..-1] : nil } .sort
+    File.write('filelist', filelist.join("\n") + "\n")
 
     if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
       FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}"
@@ -860,12 +857,10 @@ def prepare_package(destdir)
 
     # Make sure the package file has runtime dependencies added properly.
     system "#{CREW_LIB_PATH}/tools/getrealdeps.rb --use-crew-dest-dir #{@pkg.name}", exception: true if File.which('gawk') && File.which('upx') && !@pkg.no_compile_needed?
+
     # create directory list
-    # Remove CREW_PREFIX and HOME from the generated directorylist.
-    crew_prefix_escaped = CREW_PREFIX.gsub('/', '\/')
-    home_escaped = HOME.gsub('/', '\/')
-    system "find .#{CREW_PREFIX} -type d | cut -c2- | sed '0,/#{crew_prefix_escaped}/{/#{crew_prefix_escaped}/d}'| LC_ALL=C sort", out: %w[dlist a] if Dir.exist?(CREW_DEST_PREFIX)
-    system "find .#{HOME} -type d | cut -c2- | sed '0,/#{home_escaped}/{/#{home_escaped}/d}' | LC_ALL=C sort", out: %w[dlist a] if Dir.exist?(CREW_DEST_HOME)
+    directorylist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}/"].map {|dir| dir[1..-1] } .sort
+    File.write('dlist', directorylist.join("\n") + "\n")
 
     strip_dir destdir
 
@@ -1030,7 +1025,7 @@ def shrink_dir(dir)
           pool.shutdown
           pool.wait_for_termination
           # Make sure temporary compression copies are deleted.
-          system 'find . -executable -type f -name "*-crewupxtmp" -delete'
+          FileUtils.rm Dir['**/*-crewupxtmp']
         end
       end
     end
@@ -1584,7 +1579,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
 
       pip_cache_dir = `pip cache dir`.chomp
-      wheels = `find #{pip_cache_dir} -type f -name \"*.whl\" -print`.chomp.split
+      wheels = Dir["#{pip_cache_dir}/**/*.whl"]
       unless wheels.empty?
         wheels.each do |wheel|
           puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
