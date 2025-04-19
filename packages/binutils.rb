@@ -16,7 +16,7 @@ class Binutils < Package
     aarch64: 'e5c64aca4584a2c275d37e58a9afc6c6c5fdf32d6e2edcff0df2bf38fb7311d2',
      armv7l: 'e5c64aca4584a2c275d37e58a9afc6c6c5fdf32d6e2edcff0df2bf38fb7311d2',
        i686: 'e19e9528e060bee872df1d31d9ee3088e087ba29ee67de918a6bf91d469eb065',
-     x86_64: 'b7397812e623ee019376fe436d839c093ba59afab64d39555457536eeae8fe0e'
+     x86_64: '68f573d4159fc326234a9135aadb2ecd400a767e81b81da00bcd0a014b5fe71b'
   })
 
   depends_on 'elfutils' # R
