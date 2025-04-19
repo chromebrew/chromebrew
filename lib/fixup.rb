@@ -174,6 +174,7 @@ deprecated_packages = Set[
   { pkg_name: 'percona_server', comments: 'Replaced by mysql.' },
   { pkg_name: 'q', comments: 'No longer suitable for packaging.' },
   { pkg_name: 'qtchooser', comments: "Doesn't work for newer Qt versions." }
+  { pkg_name: 'skype', comments: 'Officially sunsetting and will be shut down soon.' }
 ]
 
 # Handle package renames.
