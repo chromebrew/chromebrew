@@ -12,7 +12,7 @@ class Bun < Package
   no_shrink
 
   def self.install
-    system "curl -fsSL https://bun.sh/install | BUN_INSTALL='#{CREW_DEST_PREFIX}' bash -s 'bun-v#{version}'")
+    system "curl -fsSL https://bun.sh/install | BUN_INSTALL='#{CREW_DEST_PREFIX}' bash -s 'bun-v#{version}'"
     FileUtils.ln_sf "#{CREW_PREFIX}/bin/bun", "#{CREW_DEST_PREFIX}/bin/bunx"
   end
 
