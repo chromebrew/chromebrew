@@ -13,8 +13,8 @@ class Binutils < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e5c64aca4584a2c275d37e58a9afc6c6c5fdf32d6e2edcff0df2bf38fb7311d2',
-     armv7l: 'e5c64aca4584a2c275d37e58a9afc6c6c5fdf32d6e2edcff0df2bf38fb7311d2',
+    aarch64: '40680f000660983e9f45493b3aa376f85415b046bd6a7ddd678198e73b80abe5',
+     armv7l: '40680f000660983e9f45493b3aa376f85415b046bd6a7ddd678198e73b80abe5',
        i686: 'e19e9528e060bee872df1d31d9ee3088e087ba29ee67de918a6bf91d469eb065',
      x86_64: '68f573d4159fc326234a9135aadb2ecd400a767e81b81da00bcd0a014b5fe71b'
   })
