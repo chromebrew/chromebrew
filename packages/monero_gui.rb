@@ -1,13 +1,14 @@
 require 'package'
+require 'misc_functions'
 
 class Monero_gui < Package
   description 'Private, decentralized cryptocurrency that keeps your finances confidential and secure.'
   homepage 'https://www.getmonero.org/'
-  version '0.18.3.4'
+  version '0.18.4.0'
   license 'The Cryptonote developers,The Boolberry developers,MIT'
   compatibility 'x86_64'
   source_url "https://downloads.getmonero.org/gui/monero-gui-linux-x64-v#{version}.tar.bz2"
-  source_sha256 '2866f3a2be30e4c4113e6274cad1d6698f81c37ceebc6e8f084c57230a0f70a6'
+  source_sha256 'e276f9e67396515f671a08c5438fb1db4358c9d8946ec7ef79b9dda552092ad7'
 
   depends_on 'monero'
   depends_on 'xcb_util_image'
@@ -18,6 +19,10 @@ class Monero_gui < Package
 
   no_compile_needed
   no_shrink
+
+  def self.preflight
+    MiscFunctions.check_free_disk_space(425302426)
+  end
 
   def self.build
     File.write 'monero.sh', <<~EOF
@@ -41,5 +46,9 @@ class Monero_gui < Package
       To view the user guide, execute the following:
       crew install zathura && zathura #{CREW_PREFIX}/share/monero/monero-gui-wallet-guide.pdf
     EOF
+  end
+
+  def self.postremove
+    Package.agree_to_remove("#{HOME}/.bitmonero")
   end
 end
