@@ -26,8 +26,8 @@ class Gcc_build < Package
   when '2.27', '2.32', '2.33', '2.35'
 
   binary_sha256({
-    aarch64: 'c70348c4c2953e8a24ce2efc713ef1d628902c3e01f9ab9fa2a421851ecbb4e1',
-     armv7l: 'c70348c4c2953e8a24ce2efc713ef1d628902c3e01f9ab9fa2a421851ecbb4e1',
+    aarch64: '66a76633393fb95f8bbca6c33300a2ca45efda13516502f5403d290ee9236a34',
+     armv7l: '66a76633393fb95f8bbca6c33300a2ca45efda13516502f5403d290ee9236a34',
      x86_64: '61bfd692d86ba4219946d9b0314778b464bdbea0aad63ee4a94a3a402c7b2b09'
   })
   when '2.37'
