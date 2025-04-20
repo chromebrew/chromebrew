@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4.2'
+          ruby-version: '3.4.3'
       - name: Install highline
         run: sudo apt install -y ruby-highline
       - name: Install activesupport
@@ -30,22 +30,20 @@ jobs:
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v7
-        env:
-          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
         with:
+          token: ${{ secrets.CREW_PR_TOKEN }}
           add-paths: "tools/repology.json"
           title: "Update Repology JSON"
           body: "Automatic PR to update tools/repology.json"
           author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           commit-message: "Update Repology JSON"
           delete-branch: true
-          team-reviewers: chromebrew/active
       - name: Trigger Unit Test Workflow & Add Reviewer Team
         env:
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
-          PR_NUMBER: :${{ steps.cpr.outputs.pull-request-number }}
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
             echo "Flipping pr ${PR_NUMBER} state."
             gh pr close "${PR_NUMBER}" && gh pr reopen "${PR_NUMBER}"
             gh pr edit "${PR_NUMBER}" --add-reviewer chromebrew/active
-            gh pr merge "${PR_NUMBER}" --auto
+            gh pr merge "${PR_NUMBER}" --auto --squash
