@@ -760,7 +760,7 @@ def compress_doc(dir)
   # check whether crew should compress
   return if CREW_NOT_COMPRESS || @pkg.no_compress? || !File.file?("#{CREW_PREFIX}/bin/compressdoc") || !Dir.exist?(dir)
 
-  system 'compressdoc', '--zstd', @short_verbose, dir
+  system "compressdoc --zstd #{@short_verbose} #{dir}"
 end
 
 def prepare_package(destdir)
