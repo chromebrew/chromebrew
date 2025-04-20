@@ -3,11 +3,11 @@ require 'package'
 class Phive < Package
   description 'The PHAR Installation and Verification Environment (PHIVE)'
   homepage 'https://phar.io/'
-  version '0.15.3'
+  version '0.16.0'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/phar-io/phive/releases/download/#{version}/phive-#{version}.phar"
-  source_sha256 '3f4ab8130e83bb62c2a51359e7004df95b60ad07bbd319f4b39d35a48a051e27'
+  source_sha256 '1525f25afec4bcdc0aa8db7bb4b0063851332e916698daf90c747461642a42ed'
 
   depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
