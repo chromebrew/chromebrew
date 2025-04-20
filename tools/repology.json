@@ -3,7 +3,7 @@
     "name": "a2png",
     "description": "Converts plain ASCII text into PNG bitmap images.",
     "homepage": "https://sourceforge.net/projects/a2png/",
-    "version": "0.1.5-1",
+    "version": "0.1.5",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
