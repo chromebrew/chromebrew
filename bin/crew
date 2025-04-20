@@ -1336,11 +1336,6 @@ def resolve_dependencies_and_build
     @to_postinstall.each do |dep|
       search dep
       post_install
-      # source ~/.bashrc after every post_install.
-      if File.read("/proc/#{Process.ppid}/comm").include?('[trap set]')
-        crewlog 'USR1 trap exists. Sourcing ~/.bashrc .'
-        Process.kill('USR1', Process.ppid)
-      end
     end
     search origin, silent: true
     build_package CREW_LOCAL_BUILD_DIR
