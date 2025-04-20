@@ -132,6 +132,7 @@
 /usr/local/share/peazip/res/share/batch/bat/Remove comment.bat
 /usr/local/share/peazip/res/share/batch/bat/Set comment from file.bat
 /usr/local/share/peazip/res/share/batch/bat/Set comment.bat
+/usr/local/share/peazip/res/share/batch/bat/Test.bat
 /usr/local/share/peazip/res/share/batch/bat/peazip-reset.bat
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE3-konqueror/peazipadd.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE3-konqueror/peazipconvert.desktop
@@ -151,6 +152,7 @@
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peaziptest.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE6-dolphin/peazip-kde6-minimal.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE6-dolphin/peazip-kde6.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/add_peazip_to_kde_context_menu.sh
@@ -161,6 +163,7 @@
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/PeaZip/Extract Here
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/PeaZip/Extract to New Folder
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/PeaZip/Open Archive
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/PeaZip/Test
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/add_peazip_to_gnome_context_menu.sh
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/readme_add_peazip_to_gnome_context_menu.txt
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-7z.desktop
@@ -183,14 +186,19 @@
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-extract-smart.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-extract.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-open.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-test.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_7z.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_add.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_cd.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_convert.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_extract.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_zip.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-archive.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-extract.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_add.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_extract.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/readme_freedesktop_integration.txt
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, add to BZ2.workflow/Contents/Info.plist
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, add to BZ2.workflow/Contents/QuickLook/Thumbnail.png
@@ -258,6 +266,7 @@
 /usr/local/share/peazip/res/share/batch/sh/Remove comment.sh
 /usr/local/share/peazip/res/share/batch/sh/Set comment from file.sh
 /usr/local/share/peazip/res/share/batch/sh/Set comment.sh
+/usr/local/share/peazip/res/share/batch/sh/Test.sh
 /usr/local/share/peazip/res/share/batch/sh/peazip-reset.sh
 /usr/local/share/peazip/res/share/copying/copying.txt
 /usr/local/share/peazip/res/share/copying/third-parties/7z License.txt
@@ -415,12 +424,15 @@
 /usr/local/share/peazip/res/share/readme/readme_Linux.txt
 /usr/local/share/peazip/res/share/readme/readme_Windows.txt
 /usr/local/share/peazip/res/share/readme/readme_macOS.txt
+/usr/local/share/peazip/res/share/themes/line.theme.7z
+/usr/local/share/peazip/res/share/themes/mac-dark.theme.7z
 /usr/local/share/peazip/res/share/themes/mac.theme.7z
+/usr/local/share/peazip/res/share/themes/main-dark.theme.7z
 /usr/local/share/peazip/res/share/themes/main-embedded/fm-theme.bmp
 /usr/local/share/peazip/res/share/themes/main-embedded/readme.txt
 /usr/local/share/peazip/res/share/themes/main.theme.7z
-/usr/local/share/peazip/res/share/themes/nographic-embedded/fm-theme.bmp
-/usr/local/share/peazip/res/share/themes/nographic-embedded/readme.txt
+/usr/local/share/peazip/res/share/themes/ten-dark.theme.7z
 /usr/local/share/peazip/res/share/themes/ten.theme.7z
 /usr/local/share/peazip/res/share/themes/tux-alt.theme.7z
+/usr/local/share/peazip/res/share/themes/tux-dark.theme.7z
 /usr/local/share/peazip/res/share/themes/tux.theme.7z

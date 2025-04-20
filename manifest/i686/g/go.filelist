@@ -5759,10 +5759,6 @@
 /usr/local/share/go/src/embed/internal/embedtest/embed_test.go
 /usr/local/share/go/src/embed/internal/embedtest/embedx_test.go
 /usr/local/share/go/src/embed/internal/embedtest/testdata/-not-hidden/fortune.txt
-/usr/local/share/go/src/embed/internal/embedtest/testdata/.hidden/.more/tip.txt
-/usr/local/share/go/src/embed/internal/embedtest/testdata/.hidden/_more/tip.txt
-/usr/local/share/go/src/embed/internal/embedtest/testdata/.hidden/fortune.txt
-/usr/local/share/go/src/embed/internal/embedtest/testdata/.hidden/more/tip.txt
 /usr/local/share/go/src/embed/internal/embedtest/testdata/_hidden/fortune.txt
 /usr/local/share/go/src/embed/internal/embedtest/testdata/ascii.txt
 /usr/local/share/go/src/embed/internal/embedtest/testdata/glass.txt
@@ -9850,6 +9846,7 @@
 /usr/local/share/go/src/runtime/testdata/testprogcgo/bindm.c
 /usr/local/share/go/src/runtime/testdata/testprogcgo/bindm.go
 /usr/local/share/go/src/runtime/testdata/testprogcgo/callback.go
+/usr/local/share/go/src/runtime/testdata/testprogcgo/callback_pprof.go
 /usr/local/share/go/src/runtime/testdata/testprogcgo/catchpanic.go
 /usr/local/share/go/src/runtime/testdata/testprogcgo/cgo.go
 /usr/local/share/go/src/runtime/testdata/testprogcgo/cgonocallback.c
@@ -13228,6 +13225,8 @@
 /usr/local/share/go/test/fixedbugs/issue71852.go
 /usr/local/share/go/test/fixedbugs/issue71857.go
 /usr/local/share/go/test/fixedbugs/issue71932.go
+/usr/local/share/go/test/fixedbugs/issue72063.go
+/usr/local/share/go/test/fixedbugs/issue72090.go
 /usr/local/share/go/test/fixedbugs/issue7214.go
 /usr/local/share/go/test/fixedbugs/issue7223.go
 /usr/local/share/go/test/fixedbugs/issue7272.go
