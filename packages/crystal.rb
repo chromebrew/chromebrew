@@ -3,13 +3,13 @@ require 'package'
 class Crystal < Package
   description 'A language for humans and computers'
   homepage 'https://crystal-lang.org/'
-  version '1.16.0'
+  version '1.16.1'
   license 'Apache-2.0'
   compatibility 'x86_64'
-  source_url 'https://github.com/crystal-lang/crystal/releases/download/1.16.0/crystal-1.16.0-1-linux-x86_64-bundled.tar.gz'
-  source_sha256 'cd8ac2ef5f67188bc0a9f83039bd9f49d18b858904f9b0fbf44f46e03414d8fc'
+  source_url "https://github.com/crystal-lang/crystal/releases/download/#{version}/crystal-#{version}-1-linux-x86_64-bundled.tar.gz"
+  source_sha256 '1e53c11e831eea3637434ad0f4beef30e5ae78e823f5d23945f213c55ab22ac6'
 
-  depends_on 'llvm16_lib' # R
+  depends_on 'llvm20_lib' # R
 
   no_compile_needed
   print_source_bashrc
