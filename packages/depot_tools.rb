@@ -23,8 +23,7 @@ class Depot_tools < Package
     Dir.chdir 'depot_tools' do
       system "git checkout #{version}"
       FileUtils.rm_rf 'man/src/'
-      FileUtils.rm_rf Dir.glob('.git*')
-      system 'find -name \'*.bat\' -delete'
+      FileUtils.rm_rf Dir['.git*', '**/*.bat']
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/depot_tools/"
       FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/"
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/doc/depot_tools/"
