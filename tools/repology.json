@@ -43,7 +43,7 @@
     "name": "abseil_cpp",
     "description": "Abseil Common Libraries C++",
     "homepage": "https://abseil.io/",
-    "version": "20240116.2",
+    "version": "20250127.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -67,7 +67,7 @@
     "name": "acpica",
     "description": "ACPI tools, including Intel ACPI Source Language compiler",
     "homepage": "https://www.intel.com/content/www/us/en/developer/topic-technology/open/acpica/overview.html",
-    "version": "20200925",
+    "version": "20250404",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -83,7 +83,7 @@
     "name": "act",
     "description": "Run your GitHub Actions locally",
     "homepage": "https://github.com/nektos/act",
-    "version": "0.2.75",
+    "version": "0.2.76",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -131,7 +131,7 @@
     "name": "agedu",
     "description": "Unix utility for tracking down wasted disk space",
     "homepage": "https://www.chiark.greenend.org.uk/~sgtatham/agedu/",
-    "version": "20211129",
+    "version": "20241013",
     "license": "Copyright 2008 Simon Tatham. All rights reserved.",
     "compatibility": "all"
   },
@@ -169,9 +169,9 @@
   },
   {
     "name": "alien",
-    "description": "This program converts linux packages between the rpm, deb, tgz and slp packages.",
+    "description": "This program converts Linux packages between the rpm, deb, tgz and slp packages.",
     "homepage": "https://sourceforge.net/projects/alien-pkg-convert/",
-    "version": "8.95-1",
+    "version": "8.95.8",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -267,7 +267,7 @@
     "name": "angle_grinder",
     "description": "Slice and dice logs on the command line",
     "homepage": "https://github.com/rcoh/angle-grinder",
-    "version": "0.19.4",
+    "version": "0.19.6",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -339,7 +339,7 @@
     "name": "appflowy",
     "description": "AI collaborative workspace where you achieve more without losing control of your data. The best open source alternative to Notion.",
     "homepage": "https://www.appflowy.io/",
-    "version": "0.8.7",
+    "version": "0.8.9",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -491,7 +491,7 @@
     "name": "asdf",
     "description": "Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more",
     "homepage": "https://asdf-vm.com/",
-    "version": "0.16.2",
+    "version": "0.16.7",
     "license": "MIT",
     "compatibility": "i686 x86_64"
   },
@@ -627,7 +627,7 @@
     "name": "audacity",
     "description": "Audacity is the world's most popular audio editing and recording app",
     "homepage": "https://www.audacityteam.org/",
-    "version": "3.7.1",
+    "version": "3.7.3",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
@@ -883,7 +883,7 @@
     "name": "bazel",
     "description": "a fast, scalable, multi-language and extensible build system",
     "homepage": "https://bazel.build/",
-    "version": "8.1.1",
+    "version": "8.2.1",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -1011,7 +1011,7 @@
     "name": "bitcoin_core",
     "description": "Bitcoin Core is a full Bitcoin client and builds the backbone of the network.",
     "homepage": "https://bitcoincore.org/",
-    "version": "28.1",
+    "version": "29.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -1075,7 +1075,7 @@
     "name": "box",
     "description": "Fast, zero config application bundler with PHARs.",
     "homepage": "https://github.com/box-project/box",
-    "version": "4.6.2",
+    "version": "4.6.6",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -1091,7 +1091,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.77.97",
+    "version": "1.77.100",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1179,7 +1179,7 @@
     "name": "bun",
     "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one",
     "homepage": "https://bun.sh/",
-    "version": "1.2.7",
+    "version": "1.2.10",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -1243,7 +1243,7 @@
     "name": "cabal",
     "description": "Common Architecture for Building Applications and Libraries",
     "homepage": "https://www.haskell.org/cabal/",
-    "version": "3.14.1.1",
+    "version": "3.14.2.0",
     "license": "BSD",
     "compatibility": "i686 x86_64"
   },
@@ -1363,7 +1363,7 @@
     "name": "ccache",
     "description": "Compiler cache that speeds up recompilation by caching previous compilations",
     "homepage": "https://ccache.dev/",
-    "version": "4.10.2",
+    "version": "4.11.2",
     "license": "GPL-3 and LGPL-3",
     "compatibility": "all"
   },
@@ -1675,7 +1675,7 @@
     "name": "cmake",
     "description": "CMake is an open-source, cross-platform family of tools designed to build, test and package software.",
     "homepage": "https://cmake.org/",
-    "version": "3.31.6",
+    "version": "4.0.1",
     "license": "CMake",
     "compatibility": "all"
   },
@@ -1792,10 +1792,18 @@
     "compatibility": "all"
   },
   {
+    "name": "command_not_found",
+    "description": "Show suggestions for non-installed commands",
+    "homepage": "https://github.com/chromebrew/command-not-found-handler",
+    "version": "0.1.1",
+    "license": "GPL-3",
+    "compatibility": "all"
+  },
+  {
     "name": "composer",
     "description": "Dependency Manager for PHP",
     "homepage": "https://getcomposer.org/",
-    "version": "2.8.6",
+    "version": "2.8.8",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -2027,7 +2035,7 @@
     "name": "crystal",
     "description": "A language for humans and computers",
     "homepage": "https://crystal-lang.org/",
-    "version": "1.6.0",
+    "version": "1.16.1",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2139,7 +2147,7 @@
     "name": "dart",
     "description": "The Dart SDK is a set of tools and libraries for the Dart programming language.  You can find information about Dart online at dartlang.org.",
     "homepage": "https://dart.dev",
-    "version": "3.4.4",
+    "version": "3.7.3",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -2171,7 +2179,7 @@
     "name": "dbeaver",
     "description": "Free Universal Database Tool",
     "homepage": "https://dbeaver.io",
-    "version": "25.0.1",
+    "version": "25.0.2",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2235,7 +2243,7 @@
     "name": "dejagnu",
     "description": "DejaGnu is a framework for running test suites on GNU tools.",
     "homepage": "https://www.gnu.org/software/dejagnu/",
-    "version": "1.6.1",
+    "version": "1.6.3",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -2611,7 +2619,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "135.0.3179.54-1",
+    "version": "135.0.3179.85-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2643,7 +2651,7 @@
     "name": "electric",
     "description": "Electric is a computer-aided design system for electrical circuits.",
     "homepage": "https://www.staticfreesoft.com/",
-    "version": "9.07",
+    "version": "9.08",
     "license": "GPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -2875,7 +2883,7 @@
     "name": "expat",
     "description": "James Clark's Expat XML parser library in C.",
     "homepage": "https://github.com/libexpat/libexpat",
-    "version": "2.6.4",
+    "version": "2.7.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -3091,7 +3099,7 @@
     "name": "filezilla",
     "description": "FileZilla Client is a free FTP solution.",
     "homepage": "https://filezilla-project.org/",
-    "version": "3.68.1",
+    "version": "3.69.0",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3115,7 +3123,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "137.0.1",
+    "version": "137.0.2",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3187,7 +3195,7 @@
     "name": "flutter",
     "description": "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.",
     "homepage": "https://flutter.dev/",
-    "version": "3.29.2",
+    "version": "3.29.3",
     "license": "BSD-3",
     "compatibility": "x86_64"
   },
@@ -3579,7 +3587,7 @@
     "name": "frp",
     "description": "A fast reverse proxy",
     "homepage": "https://github.com/fatedier/frp",
-    "version": "0.61.2",
+    "version": "0.62.0",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3643,7 +3651,7 @@
     "name": "fzf",
     "description": "A command-line fuzzy finder",
     "homepage": "https://github.com/junegunn/fzf",
-    "version": "0.61.0",
+    "version": "0.61.1",
     "license": "MIT and BSD-with-disclosure",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3731,7 +3739,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "516.0.0",
+    "version": "518.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -4059,7 +4067,7 @@
     "name": "github_cli",
     "description": "Official Github CLI tool",
     "homepage": "https://cli.github.com/",
-    "version": "2.69.0",
+    "version": "2.70.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4587,7 +4595,7 @@
     "name": "go",
     "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "homepage": "https://go.dev",
-    "version": "1.24.1",
+    "version": "1.24.2",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -4651,7 +4659,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "135.0.7049.84-1",
+    "version": "135.0.7049.95-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -4675,7 +4683,7 @@
     "name": "google_webdesigner",
     "description": "Google Web Designer",
     "homepage": "https://webdesigner.withgoogle.com/",
-    "version": "14.2.1.0-1",
+    "version": "14.2.2.0-1",
     "license": "google-webdesigner",
     "compatibility": "x86_64"
   },
@@ -4827,7 +4835,7 @@
     "name": "grep",
     "description": "A string search utility",
     "homepage": "https://www.gnu.org/software/grep/",
-    "version": "3.11",
+    "version": "3.12",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -5859,7 +5867,7 @@
     "name": "joplin",
     "description": "Open source note-taking app",
     "homepage": "https://joplinapp.org/",
-    "version": "3.3.3",
+    "version": "3.3.5",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -6267,7 +6275,7 @@
     "name": "lego",
     "description": "Let's Encrypt/ACME client and library written in Go",
     "homepage": "https://go-acme.github.io/lego/",
-    "version": "4.22.2",
+    "version": "4.23.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -7011,7 +7019,7 @@
     "name": "libfilezilla",
     "description": "libfilezilla is a small and modern C++ library, offering some basic functionality to build high-performing, platform-independent programs.",
     "homepage": "https://lib.filezilla-project.org/",
-    "version": "0.49.0",
+    "version": "0.50.0",
     "license": "GPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -9931,7 +9939,7 @@
     "name": "monero",
     "description": "Private, decentralized cryptocurrency that keeps your finances confidential and secure.",
     "homepage": "https://www.getmonero.org/",
-    "version": "0.18.3.4",
+    "version": "0.18.4.0",
     "license": "The Cryptonote developers,The Boolberry developers,MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -9939,7 +9947,7 @@
     "name": "monero_gui",
     "description": "Private, decentralized cryptocurrency that keeps your finances confidential and secure.",
     "homepage": "https://www.getmonero.org/",
-    "version": "0.18.3.4",
+    "version": "0.18.4.0",
     "license": "The Cryptonote developers,The Boolberry developers,MIT",
     "compatibility": "x86_64"
   },
@@ -10027,7 +10035,7 @@
     "name": "mpfr",
     "description": "The MPFR library is a C library for multiple-precision floating-point computations with correct rounding.",
     "homepage": "https://www.mpfr.org/",
-    "version": "4.2.1",
+    "version": "4.2.2",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -10955,7 +10963,7 @@
     "name": "ollama",
     "description": "Get up and running with large language models.",
     "homepage": "https://ollama.com/",
-    "version": "0.5.9",
+    "version": "0.6.5",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -11275,7 +11283,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "117.0.5408.197",
+    "version": "118.0.5461.41",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -11587,7 +11595,7 @@
     "name": "peazip",
     "description": "Free file archiver utility to open and extract RAR, TAR and ZIP archives",
     "homepage": "https://peazip.github.io/",
-    "version": "10.3.0",
+    "version": "10.4.0",
     "license": "LGPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12075,7 +12083,7 @@
     "name": "phive",
     "description": "The PHAR Installation and Verification Environment (PHIVE)",
     "homepage": "https://phar.io/",
-    "version": "0.15.3",
+    "version": "0.16.0",
     "license": "BSD",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12147,7 +12155,7 @@
     "name": "php83",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
     "homepage": "https://www.php.net/",
-    "version": "8.3.19",
+    "version": "8.3.20",
     "license": "PHP-3.01",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12155,7 +12163,7 @@
     "name": "php84",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
     "homepage": "https://www.php.net/",
-    "version": "8.4.5",
+    "version": "8.4.6",
     "license": "PHP-3.01",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14755,7 +14763,7 @@
     "name": "rqlite",
     "description": "The lightweight, user-friendly, distributed relational database built on SQLite.",
     "homepage": "https://rqlite.io/",
-    "version": "8.36.14",
+    "version": "8.36.16",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -14867,7 +14875,7 @@
     "name": "ruby_bundler",
     "description": "Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably.",
     "homepage": "https://bundler.io",
-    "version": "2.6.7-ruby3.4",
+    "version": "2.6.8-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14915,7 +14923,7 @@
     "name": "ruby_csv",
     "description": "The csv library provides a complete interface to csv files and data.",
     "homepage": "https://github.com/ruby/csv",
-    "version": "3.3.3-ruby3.4",
+    "version": "3.3.4-ruby3.4",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -15339,7 +15347,7 @@
     "name": "ruby_parallel",
     "description": "Run any code in parallel Processes(> use all CPUs), Threads(> speedup blocking operations), or Ractors(> use all CPUs).",
     "homepage": "https://github.com/grosser/parallel",
-    "version": "1.26.3-ruby3.4",
+    "version": "1.27.0-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15411,7 +15419,7 @@
     "name": "ruby_pry_byebug",
     "description": "Adds step-by-step debugging and stack navigation capabilities to pry using byebug.",
     "homepage": "https://github.com/deivid-rodriguez/pry-byebug",
-    "version": "3.10.1-ruby3.4",
+    "version": "3.11.0-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15507,7 +15515,7 @@
     "name": "ruby_reline",
     "description": "Alternative GNU Readline or Editline implementation by pure Ruby.",
     "homepage": "https://github.com/ruby/reline",
-    "version": "0.6.0-ruby3.4",
+    "version": "0.6.1-ruby3.4",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15579,7 +15587,7 @@
     "name": "ruby_rubocop_chromebrew",
     "description": "A RuboCop extension to enforce Chromebrew-specific practices.",
     "homepage": "https://github.com/chromebrew/rubocop-chromebrew",
-    "version": "0.0.3-ruby3.4",
+    "version": "0.0.4-ruby3.4",
     "license": "GPL-3.0-or-later",
     "compatibility": "all"
   },
@@ -15611,7 +15619,7 @@
     "name": "ruby_rubygems_update",
     "description": "RubyGems is a package management framework for Ruby.",
     "homepage": "https://github.com/rubygems/rubygems",
-    "version": "3.6.3-ruby3.4",
+    "version": "3.6.8-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15899,7 +15907,7 @@
     "name": "rustdesk",
     "description": "An open-source remote desktop application designed for self-hosting, as an alternative to TeamViewer.",
     "homepage": "https://rustdesk.com/",
-    "version": "1.3.8",
+    "version": "1.3.9",
     "license": "AGPL-3.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -16323,16 +16331,8 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.50.0",
+    "version": "7.51.0",
     "license": "AGPL-3.0",
-    "compatibility": "x86_64"
-  },
-  {
-    "name": "skype",
-    "description": "Skype is a telecommunications application that specializes in providing video chat and voice calls between devices",
-    "homepage": "https://www.skype.com/",
-    "version": "8.110.76.107",
-    "license": "Skype-TOS",
     "compatibility": "x86_64"
   },
   {
@@ -16526,6 +16526,14 @@
     "version": "ab88ac",
     "license": "GPL-3",
     "compatibility": "all"
+  },
+  {
+    "name": "speakify",
+    "description": "Speakify is a web application that uses Edge TTS to convert text to speech using a variety of voices.",
+    "homepage": "https://github.com/habitual69/speakify",
+    "version": "07f685a07b0ee3c89c3c4d19a1a22ec84a57cd4f",
+    "license": "MIT",
+    "compatibility": "i686 x86_64"
   },
   {
     "name": "speedometer",
@@ -16859,7 +16867,7 @@
     "name": "swig",
     "description": "Simplified Wrapper and Interface Generator",
     "homepage": "https://www.swig.org/",
-    "version": "4.3.0",
+    "version": "4.3.1",
     "license": "GPL-3, BSD and BSD-2",
     "compatibility": "all"
   },
@@ -16979,7 +16987,7 @@
     "name": "tauri_cli",
     "description": "Build smaller, faster, and more secure desktop and mobile applications with a web frontend.",
     "homepage": "https://tauri.app/",
-    "version": "2.4.0",
+    "version": "2.5.0",
     "license": "Apache-2.0, MIT",
     "compatibility": "x86_64"
   },
@@ -17107,7 +17115,7 @@
     "name": "termius",
     "description": "Modern SSH Client",
     "homepage": "https://termius.com/",
-    "version": "9.17.1",
+    "version": "9.19.0",
     "license": "Apache-2.0, LGPL-2.1, MIT",
     "compatibility": "x86_64"
   },
@@ -17219,7 +17227,7 @@
     "name": "tika",
     "description": "The Apache Tika™ toolkit detects and extracts metadata and text from over a thousand different file types (such as PPT, XLS, and PDF).",
     "homepage": "https://tika.apache.org/",
-    "version": "3.0.0",
+    "version": "3.1.0",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -17859,7 +17867,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.3.3635.9-1",
+    "version": "7.3.3635.11-1",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -17915,7 +17923,7 @@
     "name": "vscodium",
     "description": "VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.",
     "homepage": "https://vscodium.com/",
-    "version": "1.98.2.25078",
+    "version": "1.99.32562",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18995,7 +19003,7 @@
     "name": "zed",
     "description": "Zed is a high-performance, multiplayer code editor",
     "homepage": "https://zed.dev/",
-    "version": "0.180.2",
+    "version": "0.182.11",
     "license": "GPL-3, AGPL-3, Apache-2.0",
     "compatibility": "x86_64"
   },
