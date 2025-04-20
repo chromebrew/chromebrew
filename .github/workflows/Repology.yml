@@ -39,7 +39,6 @@ jobs:
           author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           commit-message: "Update Repology JSON"
           delete-branch: true
-          team-reviewers: chromebrew/active
       - name: Trigger Unit Test Workflow & Add Reviewer Team
         env:
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
@@ -47,5 +46,4 @@ jobs:
         run: |
             echo "Flipping pr ${PR_NUMBER} state."
             gh pr close "${PR_NUMBER}" && gh pr reopen "${PR_NUMBER}"
-            gh pr edit "${PR_NUMBER}" --add-reviewer chromebrew/active
             gh pr merge "${PR_NUMBER}" --auto
