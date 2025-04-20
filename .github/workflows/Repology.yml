@@ -46,4 +46,4 @@ jobs:
             echo "Flipping pr ${PR_NUMBER} state."
             gh pr close "${PR_NUMBER}" && gh pr reopen "${PR_NUMBER}"
             gh pr edit "${PR_NUMBER}" --add-reviewer chromebrew/active
-            gh pr merge "${PR_NUMBER}" --auto
+            gh pr merge "${PR_NUMBER}" --auto --squash
