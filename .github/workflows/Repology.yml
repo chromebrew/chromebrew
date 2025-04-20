@@ -31,7 +31,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v7
         env:
-          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+          GH_TOKEN: ${{ secrets.CREW_PR_OPS_TOKEN }}
         with:
           add-paths: "tools/repology.json"
           title: "Update Repology JSON"
@@ -42,7 +42,7 @@ jobs:
           team-reviewers: chromebrew/active
       - name: Trigger Unit Test Workflow & Add Reviewer Team
         env:
-          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+          GH_TOKEN: ${{ secrets.CREW_PR_OPS_TOKEN }}
           PR_NUMBER: :${{ steps.cpr.outputs.pull-request-number }}
         run: |
             echo "Flipping pr ${PR_NUMBER} state."
