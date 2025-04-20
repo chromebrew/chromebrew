@@ -805,7 +805,7 @@ def prepare_package(destdir)
     @pkg.postbuild
 
     # create file list
-    filelist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}"].filter_map {|e| (File.file?(e) || File.symlink?(e)) ? e[1..-1] : nil } .sort
+    filelist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}"].filter_map { |e| (File.file?(e) || File.symlink?(e)) ? e[1..] : nil } .sort
     File.write('filelist', filelist.join("\n") + "\n")
 
     if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
@@ -842,11 +842,11 @@ def prepare_package(destdir)
         errors = true
       end
 
-      conflicts.each_pair do |pkgName, conflictFiles|
+      conflicts.each_pair do |pkg_name, conflict_files|
         if errors
-          conflictFiles.each {|file| puts "#{pkgName}: #{file}".lightred }
+          conflict_files.each { |file| puts "#{pkg_name}: #{file}".lightred }
         else
-          conflictFiles.each {|file| puts "#{pkgName}: #{file}".orange }
+          conflict_files.each { |file| puts "#{pkg_name}: #{file}".orange }
         end
         puts
       end
@@ -859,7 +859,7 @@ def prepare_package(destdir)
     system "#{CREW_LIB_PATH}/tools/getrealdeps.rb --use-crew-dest-dir #{@pkg.name}", exception: true if File.which('gawk') && File.which('upx') && !@pkg.no_compile_needed?
 
     # create directory list
-    directorylist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}/"].map {|dir| dir[1..-1] } .sort
+    directorylist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}/"].map { |dir| dir[1..] } .sort
     File.write('dlist', directorylist.join("\n") + "\n")
 
     strip_dir destdir

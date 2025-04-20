@@ -58,7 +58,7 @@ class Command
         if File.file?(filelist_path)
           filelist                = File.readlines(filelist_path, chomp: true)
           overlap_files           = ConvenienceFunctions.determine_conflicts(pkg.name, filelist_path, verbose: verbose)
-          essential_files         = CREW_ESSENTIAL_PACKAGES.flat_map {|f| File.readlines(File.join(CREW_META_PATH, "#{f}.filelist"), chomp: true)}
+          essential_files         = CREW_ESSENTIAL_PACKAGES.flat_map { |f| File.readlines(File.join(CREW_META_PATH, "#{f}.filelist"), chomp: true)}
           overlap_essential_files = filelist & essential_files
           files_to_remove         = filelist - overlap_files.values.flatten - overlap_essential_files
 
@@ -70,8 +70,8 @@ class Command
 
           if overlap_files.any?
             warn "The following file(s) in other packages will not be deleted during the removal of #{pkg.name}:\n".orange
-            overlap_files.each_pair do |pkgName, files|
-              files.each {|file| puts "#{pkgName}: #{file}".orange }
+            overlap_files.each_pair do |pkg_name, files|
+              files.each { |file| puts "#{pkg_name}: #{file}".orange }
             end
             puts
           end
