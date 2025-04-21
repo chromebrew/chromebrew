@@ -10,10 +10,10 @@ class Py3_packaging < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '184bcd669d842315c0d1a0bca6eecf01d93e4ecf182d4cb2fe617ac017a29d42',
-     armv7l: '184bcd669d842315c0d1a0bca6eecf01d93e4ecf182d4cb2fe617ac017a29d42',
+    aarch64: 'c4011545df1fbced834abcc058c8c5ca5ee50f4fa6f5c5afd3188bda5bf88914',
+     armv7l: 'c4011545df1fbced834abcc058c8c5ca5ee50f4fa6f5c5afd3188bda5bf88914',
        i686: 'ed2a4ecd927e923ea8ac8751398ba48524687bb0b57ec10097e17e8d08d0348e',
-     x86_64: '521e245880b11a3f58052b2c1425ddde86cb85ab0d9ba990664aba8019f78601'
+     x86_64: 'af622c1f2ea85ff29b9e4a9de217f778135d62d71de8e8c64473572b21e2acd1'
   })
 
   depends_on 'py3_pyparsing'

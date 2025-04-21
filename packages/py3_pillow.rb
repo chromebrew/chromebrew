@@ -12,7 +12,7 @@ class Py3_pillow < Pip
   binary_sha256({
     aarch64: '1efe7e4b3574594ccafb735edc9d7c1d383de6c28181daf19465dd8eae689ec5',
      armv7l: '1efe7e4b3574594ccafb735edc9d7c1d383de6c28181daf19465dd8eae689ec5',
-     x86_64: '55f9e406fcaabd232358012c37a9fc55f54b23baa1749fb37bef48e933cf7c3b'
+     x86_64: '77b59a24b813af54435297a9e57d706031c046781bae496dfa3c830f2b8e8694'
   })
 
   depends_on 'freetype' # R
