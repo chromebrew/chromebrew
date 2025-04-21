@@ -13,7 +13,7 @@ class Py3_greenlet < Pip
     aarch64: 'ac969ccbb17b98631b570a2b08f92de68f33715ed341118fef3c55d83bdeec3a',
      armv7l: 'ac969ccbb17b98631b570a2b08f92de68f33715ed341118fef3c55d83bdeec3a',
        i686: '25fd6836b5d61aa097698493a5d9e047bcfb72a0398cdf58c3c3031961f8fb00',
-     x86_64: 'f8d7cf86010970d7082f5c4e5cdfe1b384f36d01a23342ff298d64439ee4f2c6'
+     x86_64: '133df8f7b7afadf6b395569ef92be976d8681f6b679b5ea89056271c10c6eca8'
   })
 
   depends_on 'gcc_lib' # R
