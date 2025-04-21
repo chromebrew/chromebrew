@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.2' # Do not use @_ver here, it will break the installer.
+  version '3.4.3' # Do not use @_ver here, it will break the installer.
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
@@ -11,10 +11,10 @@ class Ruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '95e3ccf0224e3eaf5fed28a58831d7243515be6b84bbdd7729b270463aab2262',
-     armv7l: '95e3ccf0224e3eaf5fed28a58831d7243515be6b84bbdd7729b270463aab2262',
-       i686: '8daa70d8c3debb60e61d6f5439d6c2fbf11040c753e06ed2323627c486d5f0a6',
-     x86_64: 'a264d581201bd7512dc9e4fd339fcea231659222d9dfda6d22a00031ce318ac2'
+    aarch64: 'd222312065f090f1393ae5290294595f854fe0766630ebb3feb847b2a4306f70',
+     armv7l: 'd222312065f090f1393ae5290294595f854fe0766630ebb3feb847b2a4306f70',
+       i686: '89d3e147f13c64242c45416edc6212f5947b50c70c8903c468b80274cdc52e11',
+     x86_64: 'fff153d663b037df66255127eb1ae0f1c7e3b7cd595962c71ff19faee416ad06'
   })
 
   depends_on 'ca_certificates' # L
@@ -37,6 +37,7 @@ class Ruby < Package
     system "RUBY_TRY_CFLAGS='stack_protector=no' \
       RUBY_TRY_LDFLAGS='stack_protector=no' \
       optflags='-flto=auto -fuse-ld=#{CREW_LINKER}' \
+      LD=#{CREW_LINKER} \
       mold -run ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
       #{ARCH == 'x86_64' ? '--enable-yjit' : ''} \

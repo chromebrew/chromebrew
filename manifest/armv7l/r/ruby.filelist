@@ -1,3 +1,4 @@
+/home/chronos/user/.gemrc
 /usr/local/bin/bundle
 /usr/local/bin/bundler
 /usr/local/bin/erb
@@ -206,7 +207,7 @@
 /usr/local/include/ruby-3.4.0/ruby/vm.h
 /usr/local/lib/libruby.so
 /usr/local/lib/libruby.so.3.4
-/usr/local/lib/libruby.so.3.4.2
+/usr/local/lib/libruby.so.3.4.3
 /usr/local/lib/pkgconfig/ruby-3.4.pc
 /usr/local/lib/ruby/3.4.0/English.rb
 /usr/local/lib/ruby/3.4.0/armv8l-linux-eabihf/cgi/escape.so
@@ -341,7 +342,6 @@
 /usr/local/lib/ruby/3.4.0/bundler/compact_index_client.rb
 /usr/local/lib/ruby/3.4.0/bundler/compact_index_client/cache.rb
 /usr/local/lib/ruby/3.4.0/bundler/compact_index_client/cache_file.rb
-/usr/local/lib/ruby/3.4.0/bundler/compact_index_client/gem_parser.rb
 /usr/local/lib/ruby/3.4.0/bundler/compact_index_client/parser.rb
 /usr/local/lib/ruby/3.4.0/bundler/compact_index_client/updater.rb
 /usr/local/lib/ruby/3.4.0/bundler/constants.rb
@@ -472,6 +472,7 @@
 /usr/local/lib/ruby/3.4.0/bundler/resolver/package.rb
 /usr/local/lib/ruby/3.4.0/bundler/resolver/root.rb
 /usr/local/lib/ruby/3.4.0/bundler/resolver/spec_group.rb
+/usr/local/lib/ruby/3.4.0/bundler/resolver/strategy.rb
 /usr/local/lib/ruby/3.4.0/bundler/retry.rb
 /usr/local/lib/ruby/3.4.0/bundler/ruby_dsl.rb
 /usr/local/lib/ruby/3.4.0/bundler/ruby_version.rb
@@ -562,6 +563,7 @@
 /usr/local/lib/ruby/3.4.0/bundler/vendor/pub_grub/lib/pub_grub/rubygems.rb
 /usr/local/lib/ruby/3.4.0/bundler/vendor/pub_grub/lib/pub_grub/solve_failure.rb
 /usr/local/lib/ruby/3.4.0/bundler/vendor/pub_grub/lib/pub_grub/static_package_source.rb
+/usr/local/lib/ruby/3.4.0/bundler/vendor/pub_grub/lib/pub_grub/strategy.rb
 /usr/local/lib/ruby/3.4.0/bundler/vendor/pub_grub/lib/pub_grub/term.rb
 /usr/local/lib/ruby/3.4.0/bundler/vendor/pub_grub/lib/pub_grub/version.rb
 /usr/local/lib/ruby/3.4.0/bundler/vendor/pub_grub/lib/pub_grub/version_constraint.rb
@@ -1510,8 +1512,8 @@
 /usr/local/lib/ruby/gems/3.4.0/gems/bigdecimal-3.1.8/sample/linear.rb
 /usr/local/lib/ruby/gems/3.4.0/gems/bigdecimal-3.1.8/sample/nlsolve.rb
 /usr/local/lib/ruby/gems/3.4.0/gems/bigdecimal-3.1.8/sample/pi.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/bundler-2.6.2/exe/bundle
-/usr/local/lib/ruby/gems/3.4.0/gems/bundler-2.6.2/exe/bundler
+/usr/local/lib/ruby/gems/3.4.0/gems/bundler-2.6.7/exe/bundle
+/usr/local/lib/ruby/gems/3.4.0/gems/bundler-2.6.7/exe/bundler
 /usr/local/lib/ruby/gems/3.4.0/gems/csv-3.3.2/LICENSE.txt
 /usr/local/lib/ruby/gems/3.4.0/gems/csv-3.3.2/NEWS.md
 /usr/local/lib/ruby/gems/3.4.0/gems/csv-3.3.2/README.md
@@ -2662,8 +2664,8 @@
 /usr/local/lib/ruby/gems/3.4.0/specifications/csv-3.3.2.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/debug-1.10.0.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/benchmark-0.4.0.gemspec
-/usr/local/lib/ruby/gems/3.4.0/specifications/default/bundler-2.6.2.gemspec
-/usr/local/lib/ruby/gems/3.4.0/specifications/default/cgi-0.4.1.gemspec
+/usr/local/lib/ruby/gems/3.4.0/specifications/default/bundler-2.6.7.gemspec
+/usr/local/lib/ruby/gems/3.4.0/specifications/default/cgi-0.4.2.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/date-3.4.1.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/delegate-0.4.0.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/did_you_mean-2.0.0.gemspec
@@ -2715,7 +2717,7 @@
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/tmpdir-0.3.1.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/tsort-0.2.0.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/un-0.3.0.gemspec
-/usr/local/lib/ruby/gems/3.4.0/specifications/default/uri-1.0.2.gemspec
+/usr/local/lib/ruby/gems/3.4.0/specifications/default/uri-1.0.3.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/weakref-0.1.3.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/yaml-0.4.0.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/zlib-3.2.1.gemspec
@@ -3079,7 +3081,6 @@
 /usr/local/share/ri/3.4.0/system/Bundler/load_gemspec-c.ri
 /usr/local/share/ri/3.4.0/system/Bundler/load_gemspec_uncached-c.ri
 /usr/local/share/ri/3.4.0/system/Bundler/load_marshal-c.ri
-/usr/local/share/ri/3.4.0/system/Bundler/load_plugins-c.ri
 /usr/local/share/ri/3.4.0/system/Bundler/local_platform-c.ri
 /usr/local/share/ri/3.4.0/system/Bundler/locked_gems-c.ri
 /usr/local/share/ri/3.4.0/system/Bundler/mkdir_p-c.ri
@@ -5523,15 +5524,6 @@
 /usr/local/share/ri/3.4.0/system/Gem/QueryUtils/spec_platforms-i.ri
 /usr/local/share/ri/3.4.0/system/Gem/QueryUtils/spec_summary-i.ri
 /usr/local/share/ri/3.4.0/system/Gem/QueryUtils/specs_type-i.ri
-/usr/local/share/ri/3.4.0/system/Gem/RDoc/cdesc-RDoc.ri
-/usr/local/share/ri/3.4.0/system/Gem/RDoc/default_gem%3f-c.ri
-/usr/local/share/ri/3.4.0/system/Gem/RDoc/force-i.ri
-/usr/local/share/ri/3.4.0/system/Gem/RDoc/generate-i.ri
-/usr/local/share/ri/3.4.0/system/Gem/RDoc/generate_rdoc-i.ri
-/usr/local/share/ri/3.4.0/system/Gem/RDoc/generate_ri-i.ri
-/usr/local/share/ri/3.4.0/system/Gem/RDoc/generation_hook-c.ri
-/usr/local/share/ri/3.4.0/system/Gem/RDoc/new-c.ri
-/usr/local/share/ri/3.4.0/system/Gem/RDoc/remove-i.ri
 /usr/local/share/ri/3.4.0/system/Gem/RemoteError/cdesc-RemoteError.ri
 /usr/local/share/ri/3.4.0/system/Gem/RemoteFetcher/FetchError/cdesc-FetchError.ri
 /usr/local/share/ri/3.4.0/system/Gem/RemoteFetcher/FetchError/new-c.ri
@@ -17488,7 +17480,6 @@
 /usr/local/share/ri/3.4.0/system/URI/Generic/host-i.ri
 /usr/local/share/ri/3.4.0/system/URI/Generic/hostname%3d-i.ri
 /usr/local/share/ri/3.4.0/system/URI/Generic/hostname-i.ri
-/usr/local/share/ri/3.4.0/system/URI/Generic/inspect-i.ri
 /usr/local/share/ri/3.4.0/system/URI/Generic/merge%21-i.ri
 /usr/local/share/ri/3.4.0/system/URI/Generic/merge-i.ri
 /usr/local/share/ri/3.4.0/system/URI/Generic/merge_path-i.ri
@@ -17506,7 +17497,6 @@
 /usr/local/share/ri/3.4.0/system/URI/Generic/port-i.ri
 /usr/local/share/ri/3.4.0/system/URI/Generic/query%3d-i.ri
 /usr/local/share/ri/3.4.0/system/URI/Generic/query-i.ri
-/usr/local/share/ri/3.4.0/system/URI/Generic/registry%3d-i.ri
 /usr/local/share/ri/3.4.0/system/URI/Generic/relative%3f-i.ri
 /usr/local/share/ri/3.4.0/system/URI/Generic/replace%21-i.ri
 /usr/local/share/ri/3.4.0/system/URI/Generic/route_from-i.ri
@@ -17581,7 +17571,6 @@
 /usr/local/share/ri/3.4.0/system/URI/RFC2396_Parser/extract-i.ri
 /usr/local/share/ri/3.4.0/system/URI/RFC2396_Parser/initialize_pattern-i.ri
 /usr/local/share/ri/3.4.0/system/URI/RFC2396_Parser/initialize_regexp-i.ri
-/usr/local/share/ri/3.4.0/system/URI/RFC2396_Parser/inspect-i.ri
 /usr/local/share/ri/3.4.0/system/URI/RFC2396_Parser/join-i.ri
 /usr/local/share/ri/3.4.0/system/URI/RFC2396_Parser/make_regexp-i.ri
 /usr/local/share/ri/3.4.0/system/URI/RFC2396_Parser/new-c.ri
@@ -17592,7 +17581,6 @@
 /usr/local/share/ri/3.4.0/system/URI/RFC2396_Parser/unescape-i.ri
 /usr/local/share/ri/3.4.0/system/URI/RFC2396_REGEXP/PATTERN/cdesc-PATTERN.ri
 /usr/local/share/ri/3.4.0/system/URI/RFC2396_REGEXP/cdesc-RFC2396_REGEXP.ri
-/usr/local/share/ri/3.4.0/system/URI/Schemes/cdesc-Schemes.ri
 /usr/local/share/ri/3.4.0/system/URI/WS/build-c.ri
 /usr/local/share/ri/3.4.0/system/URI/WS/cdesc-WS.ri
 /usr/local/share/ri/3.4.0/system/URI/WS/request_uri-i.ri
@@ -17600,7 +17588,6 @@
 /usr/local/share/ri/3.4.0/system/URI/_decode_uri_component-c.ri
 /usr/local/share/ri/3.4.0/system/URI/_encode_uri_component-c.ri
 /usr/local/share/ri/3.4.0/system/URI/cdesc-URI.ri
-/usr/local/share/ri/3.4.0/system/URI/const_missing-c.ri
 /usr/local/share/ri/3.4.0/system/URI/decode_uri_component-c.ri
 /usr/local/share/ri/3.4.0/system/URI/decode_www_form-c.ri
 /usr/local/share/ri/3.4.0/system/URI/decode_www_form_component-c.ri
@@ -18082,4 +18069,3 @@
 /usr/local/share/ri/3.4.0/system/syntax/page-precedence_rdoc.ri
 /usr/local/share/ri/3.4.0/system/syntax/page-refinements_rdoc.ri
 /usr/local/share/ri/3.4.0/system/yjit/page-yjit_md.ri
-/home/chronos/user/.gemrc
