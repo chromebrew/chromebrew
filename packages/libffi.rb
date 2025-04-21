@@ -24,7 +24,9 @@ class Libffi < Autotools
 
   # See https://git.launchpad.net/ubuntu/+source/libffi/tree/debian/rules?h=applied/ubuntu/plucky-devel
   configure_options "--build=#{CREW_TARGET}\
+    --disable-docs \
     --disable-exec-static-tramp \
+    --enable-shared \
     --enable-pax_emutramp=experimental \
     --host=#{CREW_TARGET} \
     --without-gcc-arch"
@@ -32,6 +34,10 @@ class Libffi < Autotools
   def self.patch
     downloader 'https://git.launchpad.net/ubuntu/+source/libffi/plain/debian/patches/no-toolexeclibdir.diff?h=applied/ubuntu/noble', '53d01b0ff395e91c4f8fa4a2c55f5efb5d61ad532310bc7aa8b72869a9cb9b14', 'no-toolexeclibdir.diff'
     system 'patch -Np1 -i no-toolexeclibdir.diff'
+  end
+
+  configure_build_extras do
+    system 'make dist'
   end
 
   configure_install_extras do
