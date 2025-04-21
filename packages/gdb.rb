@@ -6,18 +6,18 @@ require 'buildsystems/autotools'
 class Gdb < Autotools
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version "16.1-#{CREW_GCC_VER}-#{CREW_PY_VER}"
+  version "16.3-#{CREW_GCC_VER}-#{CREW_PY_VER}"
   license 'GPL3'
   compatibility 'all'
-  source_url "https://ftp.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
-  source_sha256 '38254eacd4572134bca9c5a5aa4d4ca564cbbd30c369d881f733fb6b903354f2'
+  source_url "https://ftpmirror.gnu.org/gdb/gdb-#{version.split('-').first}.tar.xz"
+  source_sha256 'bcfcd095528a987917acf9fff3f1672181694926cc18d609c99d0042c00224c5'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6b0752c9af56f05d8c6168cdb86e3bd6ff7bc86fb482aa864a71262cd6c56e14',
-     armv7l: '6b0752c9af56f05d8c6168cdb86e3bd6ff7bc86fb482aa864a71262cd6c56e14',
-       i686: '6ee75eef105015e2cec081223de1fd4d20ae4537f75a8b07ee5d6184fc48e315',
-     x86_64: '2031d00893dd1d97d0b72d628925a779629c625e5052e766714d5ea687e96d86'
+    aarch64: '877bea13576e5b36931d69624bef3471b69c4637b10ede10ac34cf79164f6167',
+     armv7l: '877bea13576e5b36931d69624bef3471b69c4637b10ede10ac34cf79164f6167',
+       i686: '432295e34df829235f1a66e8c7573a6bfa4e50261e1f9d0c98bcaea9836c7206',
+     x86_64: 'ccc89a610cdfff8e227dec2c1557c5c896dd6ca1878e29c8c148cf6371d8c611'
   })
 
   depends_on 'binutils' # R
