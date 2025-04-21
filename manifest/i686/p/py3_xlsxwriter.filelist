@@ -1,12 +1,12 @@
 /usr/local/bin/__pycache__/vba_extract.cpython-313.pyc
 /usr/local/bin/vba_extract.py
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.2.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.2.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.2.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.2.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.2.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.2.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.2.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__init__.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/app.cpython-313.pyc
@@ -29,6 +29,7 @@
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/exceptions.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/feature_property_bag.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/format.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/image.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/metadata.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/packager.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/relationships.cpython-313.pyc
@@ -41,6 +42,7 @@
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/styles.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/table.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/theme.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/url.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/utility.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/vml.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/workbook.cpython-313.pyc
@@ -66,6 +68,7 @@
 /usr/local/lib/python3.13/site-packages/xlsxwriter/exceptions.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/feature_property_bag.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/format.py
+/usr/local/lib/python3.13/site-packages/xlsxwriter/image.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/metadata.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/packager.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/relationships.py
@@ -78,6 +81,7 @@
 /usr/local/lib/python3.13/site-packages/xlsxwriter/styles.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/table.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/theme.py
+/usr/local/lib/python3.13/site-packages/xlsxwriter/url.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/utility.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/vml.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/workbook.py

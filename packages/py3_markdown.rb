@@ -12,7 +12,7 @@ class Py3_markdown < Pip
   binary_sha256({
     aarch64: 'f7bd555a3350a4e6ba3abe7d3068197a4969e4edd23ad0bca9a8cd367b122db5',
      armv7l: 'f7bd555a3350a4e6ba3abe7d3068197a4969e4edd23ad0bca9a8cd367b122db5',
-       i686: '6d370268c8dfa713d2e7ac2a810b9c808adeced30a6ea7294436597e89fcaac6',
+       i686: '5502206b4a94ae0ccdfc4de92446db66cb1acaf537cf69e4e9f5dece0441bf40',
      x86_64: '38d983f8cbd7511f8bfb60697ddf0efff6f3e605206e31699ef8c74bfe990e40'
   })
 

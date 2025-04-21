@@ -12,7 +12,7 @@ class Py3_pyright < Pip
   binary_sha256({
     aarch64: 'e834e38cdced6c3d3cf86455e3e733cb3f191430e172cfa4a50e5f9aac38a36f',
      armv7l: 'e834e38cdced6c3d3cf86455e3e733cb3f191430e172cfa4a50e5f9aac38a36f',
-       i686: '9dbfd60419f528a7dc4dae29313a9483e1077da946ae07c7c7b563bb82dc469a',
+       i686: 'f14c202277b3cfe2460d7c65946cca3acc221f304397d649afc8cc245d3c78f0',
      x86_64: '68988b79ba8e8f5acf1ffa7f0ee1c0d405ab67c42c81c3880197ac81c3f3c586'
   })
 

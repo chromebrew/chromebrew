@@ -12,7 +12,7 @@ class Py3_mako < Pip
   binary_sha256({
     aarch64: '07d70703dfb7f0ad19b4f6b0f6d5b3d685b700fdfc2ddeabbbe72db4b5b2d2eb',
      armv7l: '07d70703dfb7f0ad19b4f6b0f6d5b3d685b700fdfc2ddeabbbe72db4b5b2d2eb',
-       i686: 'da09699fdf8f08ad28d97a38917ee3fdea3eaba80f9d9033f1248405a1ee02aa',
+       i686: '0c276a772390e5cc6f8e30ab2c7075959cdeadcfa8a98225d67ac7523646cb47',
      x86_64: '934e82c25d304601ac79f6e0e572af569217cb0157100765d4028d8d1c331996'
   })
 
