@@ -805,8 +805,8 @@ def prepare_package(destdir)
     @pkg.postbuild
 
     # create file list
-    filelist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}"].filter_map { |e| (File.file?(e) || File.symlink?(e)) ? e[1..] : nil } .sort
-    File.write('filelist', filelist.join("\n") + "\n")
+    filelist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}"].filter_map { |e| File.file?(e) || File.symlink?(e) ? e[1..] : nil }.sort
+    File.write('filelist', "#{filelist.join("\n")}\n")
 
     if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
       FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}"
@@ -859,8 +859,8 @@ def prepare_package(destdir)
     system "#{CREW_LIB_PATH}/tools/getrealdeps.rb --use-crew-dest-dir #{@pkg.name}", exception: true if File.which('gawk') && File.which('upx') && !@pkg.no_compile_needed?
 
     # create directory list
-    directorylist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}/"].map { |dir| dir[1..] } .sort
-    File.write('dlist', directorylist.join("\n") + "\n")
+    directorylist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}/"].map { |dir| dir[1..] }.sort
+    File.write('dlist', "#{directorylist.join("\n")}\n")
 
     strip_dir destdir
 
@@ -1357,6 +1357,17 @@ def build_package(crew_archive_dest)
   meta = download
   target_dir = unpack meta
 
+  # Source ~/.bashrc before every build, and set PATH.
+  # From https://stackoverflow.com/a/12303443
+  env = `bash -c ". ~/.bashrc && env"`
+  env.split("\n").each do |line|
+    key, value = line.split('=', 2)
+    if key == 'PATH'
+      ENV[key] = value
+    else
+      ENV[key] ||= value unless value.nil? || value.empty?
+    end
+  end
   # Build from source and place binaries in CREW_DEST_DIR.
   build_and_preconfigure target_dir
 
