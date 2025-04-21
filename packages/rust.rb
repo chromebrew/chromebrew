@@ -3,7 +3,7 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.86.0'
+  version '1.86.0-1'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
@@ -11,10 +11,10 @@ class Rust < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c7514b7ad5d583568e4da0bbfa89d7890832d988141b795bbdd0ceed9a3046b4',
-     armv7l: 'c7514b7ad5d583568e4da0bbfa89d7890832d988141b795bbdd0ceed9a3046b4',
-       i686: '70b0a607832cc2d488a366f0afd74a83c59fbc8a4ea45a2fc735a764049fb680',
-     x86_64: 'b2252c5f4e35280e334f9a39a5d3e95a6adb4fc3185c7fc4108a8c026748938c'
+    aarch64: '4c0630f84227ff1bfa2f90f53d10e9c86b7d573b851a416c3e59e0a7ece9e5ef',
+     armv7l: '4c0630f84227ff1bfa2f90f53d10e9c86b7d573b851a416c3e59e0a7ece9e5ef',
+       i686: '4ea84c61cb9c357ee3471cc7dab2f74f52c6ff929976cfbe1ead5fa376854a6d',
+     x86_64: '2efb16c0a74929844abc5e4dda237821cdac542f85fb1593653827003dea4b99'
   })
 
   depends_on 'gcc_lib' # R
@@ -36,12 +36,12 @@ class Rust < Package
     FileUtils.mkdir_p(CREW_DEST_HOME)
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/cargo")
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/rustup")
-    system "RUSTFLAGS='-Clto=thin' bash ./rustup-init.sh -y --no-modify-path --default-host #{default_host} --default-toolchain #{version} --profile minimal"
+    system "RUSTFLAGS='-Clto=thin' bash ./rustup-init.sh -y --no-modify-path --default-host #{default_host} --default-toolchain #{version.split('-').first} --profile minimal"
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/bash-completion/completions/")
     FileUtils.touch "#{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
-    FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/share/man/",
+    FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version.split('-').first}-#{default_host}/share/man/",
                  "#{CREW_DEST_PREFIX}/share/")
-    FileUtils.rm_rf("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/share/doc/")
+    FileUtils.rm_rf("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version.split('-').first}-#{default_host}/share/doc/")
     FileUtils.ln_sf("#{CREW_PREFIX}/share/cargo", "#{CREW_DEST_HOME}/.cargo")
     FileUtils.ln_sf("#{CREW_PREFIX}/share/rustup", "#{CREW_DEST_HOME}/.rustup")
 

@@ -1,3 +1,5 @@
+/home/chronos/user/.cargo
+/home/chronos/user/.rustup
 /usr/local/etc/bash.d/rust
 /usr/local/etc/env.d/rust
 /usr/local/share/bash-completion/completions/rustup
@@ -115,5 +117,3 @@
 /usr/local/share/rustup/toolchains/1.86.0-i686-unknown-linux-gnu/libexec/rust-analyzer-proc-macro-srv
 /usr/local/share/rustup/toolchains/1.86.0-i686-unknown-linux-gnu/share/zsh/site-functions/_cargo
 /usr/local/share/rustup/update-hashes/1.86.0-i686-unknown-linux-gnu
-/home/chronos/user/.cargo
-/home/chronos/user/.rustup
