@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_soupsieve < Pip
   description 'CSS selector library designed to be used with Beautiful Soup 4.'
   homepage 'https://github.com/facelessuser/soupsieve'
-  version "2.6-#{CREW_PY_VER}"
+  version "2.7-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

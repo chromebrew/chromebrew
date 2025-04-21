@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pipdeptree < Pip
   description 'Displays a dependency tree of the installed Python packages.'
   homepage 'https://github.com/naiquevin/pipdeptree/'
-  version "2.26.0-#{CREW_PY_VER}"
+  version "2.26.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
