@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_typing_extensions < Pip
   description 'Backported and Experimental Type Hints for Python 3.5+'
   homepage 'https://github.com/python/typing/tree/master/typing_extensions'
-  version "4.13.1-#{CREW_PY_VER}"
+  version "4.13.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ed55288a3c3926bc7775aab43c392340db9eb7886546283ff683919ab078e8c7',
-     armv7l: 'ed55288a3c3926bc7775aab43c392340db9eb7886546283ff683919ab078e8c7',
-       i686: '903a8963bad5bde7820aa94c6c1d40e03dfe7f8ca02fd46cdc8fe532b43a5eda',
-     x86_64: '10bcdfaf15bf67909403c559ca8251a6779150f22acbff835b7684ac0cb761df'
+    aarch64: '87891049d34e295be53ffc7f9fc4f0ebb8eb425be1a0a66d549a10e95e5ad70d',
+     armv7l: '87891049d34e295be53ffc7f9fc4f0ebb8eb425be1a0a66d549a10e95e5ad70d',
+       i686: '55f4c8894d27674b415f7916e3d96873c85df0b530d48199804308f262f18d61',
+     x86_64: '66474bdaf6ec440e54565f39693d304fbe227a3204ce926a9eec15235ad31808'
   })
 
   depends_on 'python3' => :build
