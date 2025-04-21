@@ -11,10 +11,10 @@ class Libffi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3b4652a3d47abcc3a559ea3a0cda023275aa843d3582abddb098c7d87132215e',
-     armv7l: '3b4652a3d47abcc3a559ea3a0cda023275aa843d3582abddb098c7d87132215e',
-       i686: '1c92fa76f7d6e00bf7b3e3c2e1d97bddae422c11951407c9db1577569ebb259b',
-     x86_64: 'e2f7c3f214bfaafdfb14c6831d374fc90b37e34fc7f32a0df2463f281d572116'
+    aarch64: '1e9431c4a784a86722fba6a8ab5ad15ae94710488acb6324fb0c2dbcb1f1470f',
+     armv7l: '1e9431c4a784a86722fba6a8ab5ad15ae94710488acb6324fb0c2dbcb1f1470f',
+       i686: '4e75ad692cfe86fb99e50a0a4f29deb6fcd26bd1b13e7611a08b08a37b721283',
+     x86_64: '93abcc410d41c3797724d1fb79fabce71daa8ea660f105b56babb1b03345544a'
   })
 
   depends_on 'gcc_lib' # R
@@ -24,6 +24,7 @@ class Libffi < Autotools
 
   # See https://git.launchpad.net/ubuntu/+source/libffi/tree/debian/rules?h=applied/ubuntu/plucky-devel
   configure_options "--build=#{CREW_TARGET}\
+    --disable-builddir \
     --disable-docs \
     --disable-exec-static-tramp \
     --enable-shared \
@@ -36,11 +37,7 @@ class Libffi < Autotools
     system 'patch -Np1 -i no-toolexeclibdir.diff'
   end
 
-  configure_build_extras do
-    system 'make dist'
-  end
-
   configure_install_extras do
-    FileUtils.install "#{CREW_TARGET}/.libs/libffi_convenience.a", "#{CREW_DEST_LIB_PREFIX}/libffi_pic.a", mode: 0o644
+    FileUtils.install ".libs/libffi_convenience.a", "#{CREW_DEST_LIB_PREFIX}/libffi_pic.a", mode: 0o644
   end
 end

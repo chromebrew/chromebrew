@@ -7,7 +7,6 @@
 /usr/local/lib/libffi.so.8.1.4
 /usr/local/lib/libffi_pic.a
 /usr/local/lib/pkgconfig/libffi.pc
-/usr/local/share/info/libffi.info.zst
 /usr/local/share/man/man3/ffi.3.zst
 /usr/local/share/man/man3/ffi_call.3.zst
 /usr/local/share/man/man3/ffi_prep_cif.3.zst
