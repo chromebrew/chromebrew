@@ -37,6 +37,7 @@ class Ruby < Package
     system "RUBY_TRY_CFLAGS='stack_protector=no' \
       RUBY_TRY_LDFLAGS='stack_protector=no' \
       optflags='-flto=auto -fuse-ld=#{CREW_LINKER}' \
+      LD=#{CREW_LINKER} \
       mold -run ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
       #{ARCH == 'x86_64' ? '--enable-yjit' : ''} \
