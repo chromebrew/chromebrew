@@ -2,7 +2,7 @@
 # https://github.com/archlinux/svntogit-packages/raw/packages/libclc/trunk/PKGBUILD
 
 require 'package'
-Package.load_package("#{__dir__}/llvm20_build.rb")
+Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
 
 class Libclc < Package
   description 'Library requirements of the OpenCL C programming language'
@@ -22,7 +22,7 @@ class Libclc < Package
      x86_64: 'f55d55c5dc949a7b7501d04193db54466ebe3dba6ac1b67cd6f277ef16e3c38d'
   })
 
-  depends_on 'llvm20_dev' => :build
+  depends_on 'llvm_dev' => :build
   depends_on 'python3' => :build
   depends_on 'sccache' => :build
   depends_on 'spirv_llvm_translator' => :build
