@@ -18,9 +18,9 @@ require_gem 'concurrent-ruby'
 require_gem 'ruby-libversion', 'ruby_libversion'
 
 def check_for_updated_python_packages
-  # Some packages should be excluded from the
-  # version update check.
-  # Some packages have daily updates (awscli) and some just don't build.
+  # Some packages should be excluded from the version update check,
+  # because some packages have daily updates (awscli) and some packages
+  # have broken builds. (ldapdomaindump)
   ignored_packages = %w[ldapdomaindump awscli]
 
   # Sets the correct pip configuration values if they are not already set.
