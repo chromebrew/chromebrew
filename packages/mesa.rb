@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version '25.0.3-llvm20'
+  version "25.0.3-#{CREW_LLVM_VER}"
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -40,8 +40,8 @@ class Mesa < Meson
   depends_on 'libxshmfence' # R
   depends_on 'libxv' => :build
   depends_on 'libxxf86vm' # R
-  depends_on 'llvm20_dev' => :build
-  depends_on 'llvm20_lib' # R
+  depends_on 'llvm_dev' => :build
+  depends_on 'llvm_lib' # R
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako' => :build
   depends_on 'py3_ply' => :build

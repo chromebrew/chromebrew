@@ -20,7 +20,7 @@ class Libgedit_amtk < Meson
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk3' # R
-  depends_on 'llvm20_lib' => :build
+  depends_on 'llvm_lib' => :build
 
   meson_options '-Dgtk_doc=false'
 end
