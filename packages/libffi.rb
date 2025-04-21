@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libffi < Autotools
   description 'The libffi library provides a portable, high level programming interface to various calling conventions.'
   homepage 'https://sourceware.org/libffi/'
-  version '3.4.6-1'
+  version '3.4.8'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/libffi/libffi.git'
@@ -32,14 +32,6 @@ class Libffi < Autotools
   def self.patch
     downloader 'https://git.launchpad.net/ubuntu/+source/libffi/plain/debian/patches/no-toolexeclibdir.diff?h=applied/ubuntu/noble', '53d01b0ff395e91c4f8fa4a2c55f5efb5d61ad532310bc7aa8b72869a9cb9b14', 'no-toolexeclibdir.diff'
     system 'patch -Np1 -i no-toolexeclibdir.diff'
-    downloader 'https://patch-diff.githubusercontent.com/raw/libffi/libffi/pull/848.diff', 'ff35f3b3ea950e858fddb71336194eb1aa27ceb41c361915fcbd70d6e41d849a', '848.diff'
-    system 'patch -Np1 -i 848.diff'
-    downloader 'https://github.com/libffi/libffi/pull/830.diff', '3fc7494779a5a6d96e3f8e2337bd98c96e8bf5b6b34317aa7c09a182bfb978fe'
-    system 'patch -Np1 -i 830.diff'
-    # Fix mold detection.
-    # See https://github.com/libffi/libffi/issues/867
-    downloader 'https://github.com/libffi/libffi/pull/866.diff', '4a1a9c6e7af94dcb2f8e8c29dc5bee4e449d7f59ea5e2a3a4f46b7fb83f07fed'
-    system 'patch -Np1 -i 866.diff'
   end
 
   configure_install_extras do
