@@ -38,6 +38,6 @@ class Libffi < Autotools
   end
 
   configure_install_extras do
-    FileUtils.install ".libs/libffi_convenience.a", "#{CREW_DEST_LIB_PREFIX}/libffi_pic.a", mode: 0o644
+    FileUtils.install '.libs/libffi_convenience.a', "#{CREW_DEST_LIB_PREFIX}/libffi_pic.a", mode: 0o644
   end
 end
