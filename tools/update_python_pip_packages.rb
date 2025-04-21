@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# update_python_pip_packages version 1.3 (for Chromebrew)
+# update_python_pip_packages version 1.4 (for Chromebrew)
 # This updates the versions in python pip packages.
 #
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
@@ -18,6 +18,11 @@ require_gem 'concurrent-ruby'
 require_gem 'ruby-libversion', 'ruby_libversion'
 
 def check_for_updated_python_packages
+  # Some packages should be excluded from the
+  # version update check.
+  # Some packages have daily updates (awscli) and some just don't build.
+  ignored_packages = %w[ldapdomaindump awscli]
+
   # Sets the correct pip configuration values if they are not already set.
   pip_config = `pip config list`
   system "pip config --user set global.index-url #{CREW_GITLAB_PKG_REPO}/pypi/simple", %i[err out] => File::NULL unless pip_config.include?("global.index-url='#{CREW_GITLAB_PKG_REPO}/pypi/simple'")
@@ -46,6 +51,7 @@ def check_for_updated_python_packages
     pool.post do
       pkg = Package.load_package(package)
       pip_name = pkg.name.sub('py3_', '').gsub('_', '-')
+      next if ignored_packages.include?(pip_name)
       # The \e[1A\e[K[] is to ensure the concurrency doesn't mess up the order of the printed status updates.
       puts "\e[1A\e[K[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Checking pypi for#{' prerelease' if pkg.prerelease?} updates to #{pip_name}...\r".orange
       # Attempt to query pip for the latest version of the package, but if it fails we take note of that and move to the next package.
