@@ -6,11 +6,11 @@ require 'buildsystems/autotools'
 class Gdb < Autotools
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version "16.1-#{CREW_GCC_VER}-#{CREW_PY_VER}"
+  version "16.3-#{CREW_GCC_VER}-#{CREW_PY_VER}"
   license 'GPL3'
   compatibility 'all'
-  source_url "https://ftp.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
-  source_sha256 '38254eacd4572134bca9c5a5aa4d4ca564cbbd30c369d881f733fb6b903354f2'
+  source_url "https://ftpmirror.gnu.org/gdb/gdb-#{version.split('-').first}.tar.xz"
+  source_sha256 'bcfcd095528a987917acf9fff3f1672181694926cc18d609c99d0042c00224c5'
   binary_compression 'tar.zst'
 
   binary_sha256({
