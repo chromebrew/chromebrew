@@ -1467,7 +1467,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       end
 
       # If the filelist exists and is empty, the build was probably supposed to have files.
-      abort "#{package} has an empty manifest. Something probably went wrong with the build.".lightred if File.empty?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{arch}/#{@pkg.name.chr}/#{@pkg.name}.filelist")
+      abort "#{package} has an empty manifest. Something probably went wrong with the build.".lightred if File.empty?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{arch}/#{@pkg.name.chr}/#{@pkg.name}.filelist") && !@opt_force
 
       if binary_compression_not_in_file
         ext = File.extname(new_tarfile)
@@ -1506,24 +1506,27 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
 
       puts "\e[1A\e[KChecking for existing upload ...\r".orange
+      upload_binary = false
       if `curl -fsI #{new_url}`.lines.first.split[1] == '200'
         puts "\n#{File.basename(new_tarfile)} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
         if @opt_force || Package.agree_default_no('Do you want to overwrite the existing upload instead')
           puts "\e[1A\e[KOverwriting existing upload...\r".orange
           crewlog "#{arch} = #{new_sha256}"
           binary_sha256_hash[arch.to_sym] = new_sha256
+          upload_binary = true
         else
           puts "\e[1A\e[KWill NOT overwite the existing upload. Determining sha256 of already uploaded file...\r".orange
           upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
           crewlog "#{arch} = #{upstream_sha256}"
           binary_sha256_hash[arch.to_sym] = upstream_sha256
-          next arch
         end
       else
         crewlog "#{arch} = #{new_sha256}"
         binary_sha256_hash[arch.to_sym] = new_sha256
+        upload_binary = true
       end
 
+      next unless upload_binary
       puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
       puts "\e[1A\e[KUploading...\r".orange
       output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
@@ -1601,6 +1604,8 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         end
       end
     end
+    # Get package manifest for architecture by installing the package.
+    system "crew install #{@pkg.name}" if File.empty?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{arch}/#{@pkg.name.chr}/#{@pkg.name}.filelist") && @opt_force
     puts "\e[1A\e[K🎉 Uploads complete for #{package}. 🎉\r\n".lightgreen
   end
 end
