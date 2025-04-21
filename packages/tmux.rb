@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Tmux < Autotools
   description 'tmux is a terminal multiplexer'
   homepage 'https://tmux.github.io/'
-  version '3.5'
+  version '3.5a'
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/tmux/tmux.git'
@@ -11,10 +11,10 @@ class Tmux < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ee0d154b58e740eb8c518b24d0b5757ed5d1589fed73073445ae1081b948f6ca',
-     armv7l: 'ee0d154b58e740eb8c518b24d0b5757ed5d1589fed73073445ae1081b948f6ca',
-       i686: 'e7c110ed9a390bfb963d6ed70c50f6a0039823fd802ab4aa425a9d831f0d9271',
-     x86_64: '3856197ff401420c0cf0a62c47d5e1c3f44f5056e3f46848c6b6963fc9ed2538'
+    aarch64: '6ac7265cc2ffb5fa257b1a815845a12cb80012d07606201cc9da8132f1fb86d4',
+     armv7l: '6ac7265cc2ffb5fa257b1a815845a12cb80012d07606201cc9da8132f1fb86d4',
+       i686: '6673270a601898dba1c6b78fff93d0283afa78f710b81535515dfdc1cf4ce856',
+     x86_64: '60af8db11c350e5db56ef68d6cc976c479de0b45ad455fd4129698efa7e9e785'
   })
 
   depends_on 'glibc' # R
