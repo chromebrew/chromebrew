@@ -28,6 +28,7 @@ class Mold < CMake
   depends_on 'zstd' # R
 
   no_env_options
+  no_shrink
   print_source_bashrc
 
   cmake_options "-DBUILD_TESTING=OFF \
