@@ -48,6 +48,7 @@ class Gcc_build < Package
   depends_on 'libssp' # L
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
+  depends_on 'rust' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
@@ -136,9 +137,7 @@ class Gcc_build < Package
     OPT
 
     @cflags = @cxxflags = '-fPIC -pipe'
-    # @languages = 'c,c++,jit,objc,fortran,go'
-    # go build fails on 20220305 snapshot
-    @languages = 'c,c++,jit,objc,fortran,go'
+    @languages = 'c,c++,jit,objc,fortran,go,rust'
     case ARCH
     when 'armv7l', 'aarch64'
       @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'
@@ -166,6 +165,7 @@ class Gcc_build < Package
           LIBRARY_PATH: CREW_LIB_PREFIX,
                     NM: 'gcc-nm',
                     AR: 'gcc-ar',
+                    LD: "#{CREW_LINKER}",
                 RANLIB: 'gcc-ranlib',
                 CFLAGS: @cflags,
               CXXFLAGS: @cxxflags,
