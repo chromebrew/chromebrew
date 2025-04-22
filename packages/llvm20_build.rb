@@ -33,6 +33,7 @@ class Llvm20_build < Package
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
+  no_shrink
   no_env_options
   conflicts_ok
 
