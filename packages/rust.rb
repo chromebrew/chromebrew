@@ -8,19 +8,12 @@ class Rust < Package
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
   git_hashtag '1.28.1'
-  binary_compression 'tar.zst'
-
-  binary_sha256({
-    aarch64: '4c0630f84227ff1bfa2f90f53d10e9c86b7d573b851a416c3e59e0a7ece9e5ef',
-     armv7l: '4c0630f84227ff1bfa2f90f53d10e9c86b7d573b851a416c3e59e0a7ece9e5ef',
-       i686: '4ea84c61cb9c357ee3471cc7dab2f74f52c6ff929976cfbe1ead5fa376854a6d',
-     x86_64: '2efb16c0a74929844abc5e4dda237821cdac542f85fb1593653827003dea4b99'
-  })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'zlib' # R
 
+  no_compile_needed
   no_strip
   no_shrink
   print_source_bashrc
@@ -63,7 +56,7 @@ class Rust < Package
   end
 
   def self.postinstall
-    system "#{CREW_PREFIX}/share/cargo/bin/rustup default stable"
+    system "source #{CREW_PREFIX}/share/cargo/env && #{CREW_PREFIX}/share/cargo/bin/rustup default stable"
   end
 
   def self.postremove

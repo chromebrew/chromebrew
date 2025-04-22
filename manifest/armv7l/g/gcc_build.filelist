@@ -14,6 +14,8 @@
 /usr/local/bin/armv7l-cros-linux-gnueabihf-gcc-tmp
 /usr/local/bin/armv7l-cros-linux-gnueabihf-gccgo
 /usr/local/bin/armv7l-cros-linux-gnueabihf-gccgo-15
+/usr/local/bin/armv7l-cros-linux-gnueabihf-gccrs
+/usr/local/bin/armv7l-cros-linux-gnueabihf-gccrs-15
 /usr/local/bin/armv7l-cros-linux-gnueabihf-gfortran
 /usr/local/bin/armv7l-cros-linux-gnueabihf-gfortran-15
 /usr/local/bin/armv7l-cros-linux-gnueabihf-nm
@@ -37,6 +39,8 @@
 /usr/local/bin/gcc-ranlib-15
 /usr/local/bin/gccgo
 /usr/local/bin/gccgo-15
+/usr/local/bin/gccrs
+/usr/local/bin/gccrs-15
 /usr/local/bin/gcov
 /usr/local/bin/gcov-15
 /usr/local/bin/gcov-dump
@@ -1758,6 +1762,7 @@
 /usr/local/libexec/gcc/armv7l-cros-linux-gnueabihf/15/cc1plus
 /usr/local/libexec/gcc/armv7l-cros-linux-gnueabihf/15/cgo
 /usr/local/libexec/gcc/armv7l-cros-linux-gnueabihf/15/collect2
+/usr/local/libexec/gcc/armv7l-cros-linux-gnueabihf/15/crab1
 /usr/local/libexec/gcc/armv7l-cros-linux-gnueabihf/15/f951
 /usr/local/libexec/gcc/armv7l-cros-linux-gnueabihf/15/g++-mapper-server
 /usr/local/libexec/gcc/armv7l-cros-linux-gnueabihf/15/go1

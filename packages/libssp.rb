@@ -9,28 +9,30 @@ class Libssp < Package
                       else
                         ARCH.eql?('i686') ? '2.23' : '2.27'
                       end
-  version "14.2.0-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
+  version "15.1.0-RC-20250418-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
   compatibility 'all'
-  source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag "releases/gcc-#{version.split('-').first}"
+  source_url 'https://gcc.gnu.org/pub/gcc/snapshots/15.1.0-RC-20250418/gcc-15.1.0-RC-20250418.tar.xz'
+  source_sha256 'fe18624317c6c662977eea8b5a506ec6c132fc11c7a8d53e2f6d21b139b0af3c'
+  #source_url 'https://github.com/gcc-mirror/gcc.git'
+  #git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   case @gcc_libc_version
   when '2.23'
 
-    binary_sha256({
-         i686: '482ada83ade66f12de9370a91e3b48bde523248fa870d4729d4644b2115c8e04'
-    })
+  binary_sha256({
+       i686: '804bc68e33261da2ba1b2bdd5d984f0b368640afba6791cd4f045813b5a469f7'
+  })
   when '2.27', '2.32', '2.33', '2.35'
 
-    binary_sha256({
-      aarch64: 'ed9b5e88ce0beb9862ee9ed4d75751ee7bf198bd5cb1916aa4508e57dd760b41',
-       armv7l: 'ed9b5e88ce0beb9862ee9ed4d75751ee7bf198bd5cb1916aa4508e57dd760b41',
-       x86_64: 'd10e99018633679a1503175da5e3b1aaab83f3da9e845d95ffa5450dbb191f9b'
-    })
+  binary_sha256({
+    aarch64: '2243ac269cd087cf4a5c6e9c86f9b652ea2d056eed0bcb9d23e104d64ed09967',
+     armv7l: '2243ac269cd087cf4a5c6e9c86f9b652ea2d056eed0bcb9d23e104d64ed09967',
+     x86_64: '1192c622117d3f3394f0da2e4e5912cfd464c87bb82fa2d0db4a3add6085b44b'
+  })
   when '2.37'
     binary_sha256({
       aarch64: '80428580f3ff02c0b8aa0b65ec64626e906b59d754851f289210360686bdb8d1',

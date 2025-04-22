@@ -12,22 +12,22 @@ class Gcc_build < Package
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://gcc.gnu.org/pub/gcc/snapshots/15.1.0-RC-20250418/gcc-15.1.0-RC-20250418.tar.xz'
-  source_sha256 'aaaa'
-  #source_url 'https://github.com/gcc-mirror/gcc.git'
-  #git_hashtag "releases/gcc-#{version.split('-').first}"
+  source_sha256 'fe18624317c6c662977eea8b5a506ec6c132fc11c7a8d53e2f6d21b139b0af3c'
+  # source_url 'https://github.com/gcc-mirror/gcc.git'
+  # git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   case @gcc_libc_version
   when '2.23'
 
   binary_sha256({
-       i686: '4c6b6e5a49d3134b2db801aafc4d69d885c5082385d8a78c740c022c7f57afeb'
+       i686: '86fd4721a1e9a3ddad2b0e8502d237f06a493cfb4557b86a422b2b0ba52ff2d4'
   })
   when '2.27', '2.32', '2.33', '2.35'
 
   binary_sha256({
-    aarch64: '66a76633393fb95f8bbca6c33300a2ca45efda13516502f5403d290ee9236a34',
-     armv7l: '66a76633393fb95f8bbca6c33300a2ca45efda13516502f5403d290ee9236a34',
+    aarch64: '953abbd2202c94dc578ab182dff85cac351326e9a42e95294d5d8f1a1968118f',
+     armv7l: '953abbd2202c94dc578ab182dff85cac351326e9a42e95294d5d8f1a1968118f',
      x86_64: '61bfd692d86ba4219946d9b0314778b464bdbea0aad63ee4a94a3a402c7b2b09'
   })
   when '2.37'
@@ -51,6 +51,7 @@ class Gcc_build < Package
   depends_on 'rust' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
+  depends_on 'gcc_lib' # R
 
   no_shrink
   conflicts_ok
@@ -151,7 +152,7 @@ class Gcc_build < Package
     # https://wiki.archlinux.org/index.php/Ccache#Sloppiness
     system 'ccache --set-config=sloppiness=file_macro,locale,time_macros'
     # Prefix ccache to path.
-    @path = "#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin"
+    @path = "#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/share/cargo/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin"
 
     # Install prereqs using the standard gcc method so they can be
     # linked statically.
@@ -165,7 +166,7 @@ class Gcc_build < Package
           LIBRARY_PATH: CREW_LIB_PREFIX,
                     NM: 'gcc-nm',
                     AR: 'gcc-ar',
-                    LD: "#{CREW_LINKER}",
+                    LD: CREW_LINKER.to_s,
                 RANLIB: 'gcc-ranlib',
                 CFLAGS: @cflags,
               CXXFLAGS: @cxxflags,
