@@ -152,7 +152,8 @@ class Gcc_build < Package
     # https://wiki.archlinux.org/index.php/Ccache#Sloppiness
     system 'ccache --set-config=sloppiness=file_macro,locale,time_macros'
     # Prefix ccache to path.
-    @path = "#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/share/cargo/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin"
+
+    @path = "#{CREW_LIB_PREFIX}/ccache/bin:" + ENV["PATH"]
 
     # Install prereqs using the standard gcc method so they can be
     # linked statically.
@@ -163,6 +164,7 @@ class Gcc_build < Package
     Dir.chdir('objdir') do
       configure_env =
         {
+             BASH_ENV:  "#{HOME}/.bashrc",
           LIBRARY_PATH: CREW_LIB_PREFIX,
                     NM: 'gcc-nm',
                     AR: 'gcc-ar',

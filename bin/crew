@@ -1357,17 +1357,6 @@ def build_package(crew_archive_dest)
   meta = download
   target_dir = unpack meta
 
-  # Source ~/.bashrc before every build, and set PATH.
-  # From https://stackoverflow.com/a/12303443
-  env = `bash -c ". ~/.bashrc && env"`
-  env.split("\n").each do |line|
-    key, value = line.split('=', 2)
-    if key == 'PATH'
-      ENV[key] = value
-    else
-      ENV[key] ||= value unless value.nil? || value.empty?
-    end
-  end
   # Build from source and place binaries in CREW_DEST_DIR.
   build_and_preconfigure target_dir
 

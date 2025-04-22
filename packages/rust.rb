@@ -14,8 +14,8 @@ class Rust < Package
   depends_on 'zlib' # R
 
   no_compile_needed
-  no_strip
   no_shrink
+  no_strip
   print_source_bashrc
 
   def self.install
@@ -29,12 +29,12 @@ class Rust < Package
     FileUtils.mkdir_p(CREW_DEST_HOME)
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/cargo")
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/rustup")
-    system "RUSTFLAGS='-Clto=thin' bash ./rustup-init.sh -y --no-modify-path --default-host #{default_host} --default-toolchain #{version.split('-').first} --profile minimal"
+    system "RUSTFLAGS='-Clto=thin' bash ./rustup-init.sh -y --no-modify-path --default-host #{default_host} --default-toolchain stable --profile minimal"
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/bash-completion/completions/")
     FileUtils.touch "#{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
-    FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version.split('-').first}-#{default_host}/share/man/",
+    FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/stable-#{default_host}/share/man/",
                  "#{CREW_DEST_PREFIX}/share/")
-    FileUtils.rm_rf("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version.split('-').first}-#{default_host}/share/doc/")
+    FileUtils.rm_rf("#{CREW_DEST_PREFIX}/share/rustup/toolchains/stable-#{default_host}/share/doc/")
     FileUtils.ln_sf("#{CREW_PREFIX}/share/cargo", "#{CREW_DEST_HOME}/.cargo")
     FileUtils.ln_sf("#{CREW_PREFIX}/share/rustup", "#{CREW_DEST_HOME}/.rustup")
 
@@ -55,9 +55,9 @@ class Rust < Package
     system "#{CREW_DEST_PREFIX}/share/cargo/bin/rustup completions bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
   end
 
-  def self.postinstall
-    system "source #{CREW_PREFIX}/share/cargo/env && #{CREW_PREFIX}/share/cargo/bin/rustup default stable"
-  end
+  # def self.postinstall
+  # system "source #{CREW_PREFIX}/share/cargo/env && #{CREW_PREFIX}/share/cargo/bin/rustup default stable"
+  # end
 
   def self.postremove
     Package.agree_to_remove("#{HOME}/.rustup")
