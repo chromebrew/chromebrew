@@ -49,7 +49,6 @@ class Gcc_dev < Package
   depends_on 'mpfr' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'gcc_build' # R
 
   no_shrink
   no_source_build
