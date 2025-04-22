@@ -50,7 +50,6 @@ class Gcc_build < Package
   depends_on 'mpfr' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'gcc_lib' # R
 
   no_shrink
   conflicts_ok
