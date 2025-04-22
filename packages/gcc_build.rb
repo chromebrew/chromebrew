@@ -153,7 +153,7 @@ class Gcc_build < Package
     system 'ccache --set-config=sloppiness=file_macro,locale,time_macros'
     # Prefix ccache to path.
 
-    @path = "#{CREW_LIB_PREFIX}/ccache/bin:" + ENV["PATH"]
+    @path = "#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
 
     # Install prereqs using the standard gcc method so they can be
     # linked statically.
@@ -164,7 +164,7 @@ class Gcc_build < Package
     Dir.chdir('objdir') do
       configure_env =
         {
-             BASH_ENV:  "#{HOME}/.bashrc",
+             BASH_ENV:  "#{CREW_PREFIX}/etc/profile",
           LIBRARY_PATH: CREW_LIB_PREFIX,
                     NM: 'gcc-nm',
                     AR: 'gcc-ar',
@@ -188,7 +188,7 @@ class Gcc_build < Package
       # LIBRARY_PATH=#{CREW_LIB_PREFIX} needed for x86_64 to avoid:
       # /usr/local/bin/ld: cannot find crti.o: No such file or directory
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
-      system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), "make -j #{CREW_NPROC} || make -j1")
+      system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), ". #{CREW_PREFIX}/etc/env.d/rust && make -j #{CREW_NPROC} || make -j1")
     end
   end
 
@@ -207,6 +207,7 @@ class Gcc_build < Package
 
     make_env =
       {
+            BASH_ENV: "#{CREW_PREFIX}/etc/profile",
         LIBRARY_PATH: CREW_LIB_PREFIX,
                 PATH: @path,
              DESTDIR: CREW_DEST_DIR

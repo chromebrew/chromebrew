@@ -216,7 +216,7 @@ CREW_ENV_OPTIONS_HASH ||=
     { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
   else
     {
-      'BASH_ENV'        => "#{HOME}/.bashrc",
+      'BASH_ENV'        => "#{CREW_PREFIX}/etc/profile",
       'CFLAGS'          => CREW_COMMON_FLAGS,
       'CXXFLAGS'        => CREW_COMMON_FLAGS,
       'FCFLAGS'         => CREW_COMMON_FLAGS,
@@ -230,7 +230,7 @@ CREW_ENV_OPTIONS_HASH ||=
 CREW_ENV_OPTIONS ||= CREW_ENV_OPTIONS_HASH.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')
 
 CREW_ENV_FNO_LTO_OPTIONS_HASH ||= {
-  'BASH_ENV'        => "#{HOME}/.bashrc",
+  'BASH_ENV'        => "#{CREW_PREFIX}/etc/profile",
   'CFLAGS'          => CREW_COMMON_FNO_LTO_FLAGS,
   'CXXFLAGS'        => CREW_COMMON_FNO_LTO_FLAGS,
   'FCFLAGS'         => CREW_COMMON_FNO_LTO_FLAGS,

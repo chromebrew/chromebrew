@@ -13,8 +13,8 @@ class ConvenienceFunctions
 
     puts 'Checking for conflicts with files from installed packages...'.orange if verbose
 
-    Dir[File.join(CREW_META_PATH, "*.filelist")].each do |filelist|
-      filelist_name = File.basename(filelist, ".filelist")
+    Dir[File.join(CREW_META_PATH, '*.filelist')].each do |filelist|
+      filelist_name = File.basename(filelist, '.filelist')
 
       # skip filelist belongs to the same package/explicitly excluded
       next if pkgName == filelist_name || (excludeSuffix && filelist_name.end_with?(excludeSuffix))
