@@ -3,43 +3,40 @@ require 'package'
 class Cheat < Package
   description 'Create and view interactive cheatsheets on the command-line.'
   homepage 'https://github.com/cheat/cheat'
-  version '4.2.3'
+  version '4.4.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'SKIP'
+  min_glibc '2.32' if ARCH.eql?('x86_64')
+  source_url({
+    aarch64: "https://github.com/cheat/cheat/releases/download/#{version}/cheat-linux-arm7.gz",
+     armv7l: "https://github.com/cheat/cheat/releases/download/#{version}/cheat-linux-arm7.gz",
+       i686: "https://github.com/cheat/cheat/releases/download/#{version}/cheat-linux-386.gz",
+     x86_64: "https://github.com/cheat/cheat/releases/download/#{version}/cheat-linux-amd64.gz"
+  })
+  source_sha256({
+    aarch64: '52ca1e355f46ae36b04717e431ef03b6158e41d1df0c3cf381abe36a147dfe43',
+     armv7l: '52ca1e355f46ae36b04717e431ef03b6158e41d1df0c3cf381abe36a147dfe43',
+       i686: '1ee7f6b4b40447684c80f3920b1841cb54d9f3f8cd543671c2453c34769cdde1',
+     x86_64: 'b81f5ba21f134087c0294d809f89e5442d641d7be297bb128807cbce00849e9b'
+  })
 
   depends_on 'xdg_base'
+  depends_on 'gzip'
 
   def self.install
     case ARCH
     when 'aarch64', 'armv7l'
-      url = 'https://github.com/cheat/cheat/releases/download/4.2.3/cheat-linux-arm7.gz'
-      sha256 = '4ac2fea19ff1dd063f7fa7e76b5329babeaee8c10756eeeffa8fafecd8c8dabc'
+      arch = 'arm7'
     when 'i686'
-      url = 'https://github.com/cheat/cheat/releases/download/4.2.3/cheat-linux-386.gz'
-      sha256 = 'faca842f1b5b200558f899c2730cadec00a261cdabbb9fad8638f2487bed8059'
+      arch = '386'
     when 'x86_64'
-      url = 'https://github.com/cheat/cheat/releases/download/4.2.3/cheat-linux-amd64.gz'
-      sha256 = '899e7d88d9441b9a32034b0c4b6761157e7977131932a2abc13a382794e7ea6c'
+      arch = 'amd64'
     end
-    downloader url, sha256, 'cheat.gz'
-    Zlib::GzipReader.open('cheat.gz') { |gz| File.write('cheat', gz.read) }
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.install 'cheat', "#{CREW_DEST_PREFIX}/bin/cheat", mode: 0o755
+    system "gunzip cheat-linux-#{arch}.gz"
+    FileUtils.install "cheat-linux-#{arch}", "#{CREW_DEST_PREFIX}/bin/cheat", mode: 0o755
   end
 
   def self.postremove
-    config_dir = "#{HOME}/.config/cheat"
-    if Dir.exist? config_dir
-      puts 'WARNING: This will remove all cheat config!'.orange
-      print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightgreen
-      else
-        puts "#{config_dir} saved.".lightgreen
-      end
-    end
+    Package.agree_to_remove("#{CREW_PREFIX}/.config/cheat")
   end
 end
