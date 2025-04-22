@@ -6,35 +6,44 @@ class Glibc_standalone < Package
   version '2.41'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://ftp.gnu.org/gnu/glibc/glibc-#{version}.tar.xz"
-  source_sha256 'SKIP'
+  source_url "https://ftpmirror.gnu.org/glibc/glibc-#{version}.tar.xz"
+  source_sha256 'a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
   binary_compression 'tar.zst'
 
   conflicts_ok
   no_env_options
+  no_shrink
 
   def self.patch
-    File.write 'ld-library-path-hack.patch', <<~EOF
-      --- a/dl-support.c      2025-04-23 01:58:17.265974714 +0800
-      +++ b/dl-support.c      2025-04-23 02:17:11.885035310 +0800
-      @@ -296,7 +296,12 @@
+    File.write 'hardcode-library-path.patch', <<~EOF
+      diff -Nur a/elf/dl-support.c b/elf/dl-support.c
+      --- a/elf/dl-support.c    2025-04-23 01:58:17.265974714 +0800
+      +++ b/elf/dl-support.c    2025-04-23 14:38:27.373033131 +0800
+      @@ -296,7 +296,7 @@
 
          /* Initialize the data structures for the search paths for shared
             objects.  */
       -  _dl_init_paths (getenv ("LD_LIBRARY_PATH"), "LD_LIBRARY_PATH",
-      +
-      +  /* Always append ${CREW_PREFIX}/opt/glibc-libs before LD_LIBRARY_PATH */
-      +  const char ld_library_path[8192], *crew_prefix = getenv("CREW_PREFIX") ?: "/usr/local";
-      +  snprintf(ld_library_path, sizeof(ld_library_path), "%s/opt/glibc-libs:%s", crew_prefix, getenv("LD_LIBRARY_PATH") ?: "");
-      +
-      +  _dl_init_paths (ld_library_path, "LD_LIBRARY_PATH",
-                        /* No glibc-hwcaps selection support in statically
-                           linked binaries.  */
-                        NULL, NULL);
+      +  _dl_init_paths ("#{CREW_PREFIX}/opt/glibc-libs:#{CREW_LIB_PREFIX}:/#{ARCH_LIB}", "LD_LIBRARY_PATH",
+       \t\t  /* No glibc-hwcaps selection support in statically
+       \t\t     linked binaries.  */
+       \t\t  NULL, NULL);
+      diff -Nur a/elf/rtld.c b/elf/rtld.c
+      --- a/elf/rtld.c    2025-04-23 04:04:02.230377659 +0800
+      +++ b/elf/rtld.c    2025-04-23 14:37:52.298031258 +0800
+      @@ -2647,7 +2647,7 @@
+       \t  /* The library search path.  */
+       \t  if (memcmp (envline, "LIBRARY_PATH", 12) == 0)
+       \t    {
+      -\t      state->library_path = &envline[13];
+      +\t      state->library_path = "#{CREW_PREFIX}/opt/glibc-libs:#{CREW_LIB_PREFIX}:/#{ARCH_LIB}";
+       \t      state->library_path_source = "LD_LIBRARY_PATH";
+       \t      break;
+       \t    }
     EOF
 
     system 'filefix'
-    system 'patch', '-p1', '-i', 'ld-library-path-hack.patch'
+    system 'patch', '-p1', '-i', 'hardcode-library-path.patch'
   end
 
   def self.build
@@ -80,5 +89,6 @@ class Glibc_standalone < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install', chdir: 'builddir'
+    FileUtils.ln_sf '../bin/ld-linux-x86-64.so.2', "#{File.join(CREW_DEST_DIR, glibc_libdir)}/ld-linux-x86-64.so.2"
   end
 end
