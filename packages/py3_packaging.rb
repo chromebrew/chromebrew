@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_packaging < Pip
   description 'Packaging provides core utilities for Python packages'
   homepage 'https://packaging.pypa.io/'
-  version "24.2-#{CREW_PY_VER}"
+  version "25.0-#{CREW_PY_VER}"
   license 'BSD-2 or Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '184bcd669d842315c0d1a0bca6eecf01d93e4ecf182d4cb2fe617ac017a29d42',
-     armv7l: '184bcd669d842315c0d1a0bca6eecf01d93e4ecf182d4cb2fe617ac017a29d42',
-       i686: '08dc146d9eed0436204ae2aa8d7e7ff92193f1a00050def999ae510797eb8674',
-     x86_64: '521e245880b11a3f58052b2c1425ddde86cb85ab0d9ba990664aba8019f78601'
+    aarch64: 'c4011545df1fbced834abcc058c8c5ca5ee50f4fa6f5c5afd3188bda5bf88914',
+     armv7l: 'c4011545df1fbced834abcc058c8c5ca5ee50f4fa6f5c5afd3188bda5bf88914',
+       i686: 'ed2a4ecd927e923ea8ac8751398ba48524687bb0b57ec10097e17e8d08d0348e',
+     x86_64: 'af622c1f2ea85ff29b9e4a9de217f778135d62d71de8e8c64473572b21e2acd1'
   })
 
   depends_on 'py3_pyparsing'

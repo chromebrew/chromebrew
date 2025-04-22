@@ -1,3 +1,4 @@
+/usr/local/lib/python3.13/site-packages/PIL/AvifImagePlugin.py
 /usr/local/lib/python3.13/site-packages/PIL/BdfFontFile.py
 /usr/local/lib/python3.13/site-packages/PIL/BlpImagePlugin.py
 /usr/local/lib/python3.13/site-packages/PIL/BmpImagePlugin.py
@@ -85,6 +86,7 @@
 /usr/local/lib/python3.13/site-packages/PIL/XpmImagePlugin.py
 /usr/local/lib/python3.13/site-packages/PIL/__init__.py
 /usr/local/lib/python3.13/site-packages/PIL/__main__.py
+/usr/local/lib/python3.13/site-packages/PIL/__pycache__/AvifImagePlugin.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/PIL/__pycache__/BdfFontFile.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/PIL/__pycache__/BlpImagePlugin.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/PIL/__pycache__/BmpImagePlugin.cpython-313.pyc
@@ -180,6 +182,7 @@
 /usr/local/lib/python3.13/site-packages/PIL/__pycache__/_version.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/PIL/__pycache__/features.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/PIL/__pycache__/report.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/PIL/_avif.pyi
 /usr/local/lib/python3.13/site-packages/PIL/_binary.py
 /usr/local/lib/python3.13/site-packages/PIL/_deprecate.py
 /usr/local/lib/python3.13/site-packages/PIL/_imaging.cpython-313-arm-linux-gnueabihf.so
@@ -203,11 +206,11 @@
 /usr/local/lib/python3.13/site-packages/PIL/features.py
 /usr/local/lib/python3.13/site-packages/PIL/py.typed
 /usr/local/lib/python3.13/site-packages/PIL/report.py
-/usr/local/lib/python3.13/site-packages/pillow-11.1.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pillow-11.1.0.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/pillow-11.1.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pillow-11.1.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pillow-11.1.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pillow-11.1.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pillow-11.1.0.dist-info/top_level.txt
-/usr/local/lib/python3.13/site-packages/pillow-11.1.0.dist-info/zip-safe
+/usr/local/lib/python3.13/site-packages/pillow-11.2.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pillow-11.2.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pillow-11.2.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pillow-11.2.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pillow-11.2.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pillow-11.2.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/pillow-11.2.1.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/pillow-11.2.1.dist-info/zip-safe

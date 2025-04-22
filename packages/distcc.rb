@@ -23,15 +23,10 @@ class Distcc < Autotools
   depends_on 'avahi' # R
   depends_on 'ccache' # L
   depends_on 'gcc_dev' # L
-  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'glib' # R
-  depends_on 'llvm20_dev' # L
-  depends_on 'llvm20_lib' # R
-  depends_on 'nss_mdns' # R
+  depends_on 'llvm_dev' # L
   depends_on 'popt' # R
   depends_on 'python3' => :build
-  depends_on 'zlib' # R
 
   print_source_bashrc
 

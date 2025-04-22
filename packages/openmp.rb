@@ -2,9 +2,9 @@
 # https://github.com/archlinux/svntogit-packages/raw/packages/openmp/trunk/PKGBUILD
 
 require 'package'
-Package.load_package("#{__dir__}/llvm20_build.rb")
 
 class Openmp < Package
+  llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
   version '20.1.2'
@@ -13,7 +13,7 @@ class Openmp < Package
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
-  git_hashtag Llvm20_build.git_hashtag.to_s
+  git_hashtag llvm_build_obj.git_hashtag.to_s
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -25,9 +25,7 @@ class Openmp < Package
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'libffi' # R
-  depends_on 'llvm20_dev' => :build
-  depends_on 'llvm20_lib' # R
+  depends_on 'llvm_dev' => :build
   depends_on 'python3' # R
 
   no_env_options
