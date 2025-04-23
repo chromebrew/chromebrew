@@ -4,10 +4,10 @@ class Libnftnl < Autotools
   description 'libnftnl is a userspace library providing a low-level netlink programming interface (API) to the in-kernel nf_tables subsystem.'
   homepage 'https://netfilter.org/projects/libnftnl/'
   license 'GPL-2'
-  version '1.2.8'
+  version '1.2.9'
   compatibility 'all'
   source_url "https://netfilter.org/projects/libnftnl/files/libnftnl-#{version}.tar.xz"
-  source_sha256 '37fea5d6b5c9b08de7920d298de3cdc942e7ae64b1a3e8b880b2d390ae67ad95'
+  source_sha256 'e8c216255e129f26270639fee7775265665a31b11aa920253c3e5d5d62dfc4b8'
   binary_compression 'tar.zst'
 
   binary_sha256({
