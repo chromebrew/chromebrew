@@ -1457,6 +1457,8 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
 
       # If the filelist exists and is empty, the build was probably supposed to have files.
       abort "#{package} has an empty manifest. Something probably went wrong with the build.".lightred if File.empty?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{arch}/#{@pkg.name.chr}/#{@pkg.name}.filelist") && !@opt_force
+      # Get package manifest for architecture by installing the package.
+      system "crew install #{@pkg.name}" if File.empty?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{arch}/#{@pkg.name.chr}/#{@pkg.name}.filelist") && @opt_force
 
       if binary_compression_not_in_file
         ext = File.extname(new_tarfile)
@@ -1593,8 +1595,6 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         end
       end
     end
-    # Get package manifest for architecture by installing the package.
-    system "crew install #{@pkg.name}" if File.empty?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{arch}/#{@pkg.name.chr}/#{@pkg.name}.filelist") && @opt_force
     puts "\e[1A\e[K🎉 Uploads complete for #{package}. 🎉\r\n".lightgreen
   end
 end
