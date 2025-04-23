@@ -20,16 +20,16 @@ class Gcc_build < Package
   case @gcc_libc_version
   when '2.23'
 
-  binary_sha256({
-       i686: '2496b094cf0f4ba0cd3402da46967f74b9b92f3938e16314cb439b47599f8fd5'
-  })
+    binary_sha256({
+         i686: '2496b094cf0f4ba0cd3402da46967f74b9b92f3938e16314cb439b47599f8fd5'
+    })
   when '2.27', '2.32', '2.33', '2.35'
 
-  binary_sha256({
-    aarch64: '953abbd2202c94dc578ab182dff85cac351326e9a42e95294d5d8f1a1968118f',
-     armv7l: '953abbd2202c94dc578ab182dff85cac351326e9a42e95294d5d8f1a1968118f',
-     x86_64: 'a04cd4d650d71277731eb9a508058f5cfb6cc9b3983404a6dec2bf63b882fe13'
-  })
+    binary_sha256({
+      aarch64: '953abbd2202c94dc578ab182dff85cac351326e9a42e95294d5d8f1a1968118f',
+       armv7l: '953abbd2202c94dc578ab182dff85cac351326e9a42e95294d5d8f1a1968118f',
+       x86_64: 'a04cd4d650d71277731eb9a508058f5cfb6cc9b3983404a6dec2bf63b882fe13'
+    })
   when '2.37'
     binary_sha256({
       aarch64: '313fefb47070e7c3327628083552ceb253834e46a730bf8913497821ca34d626',
@@ -163,7 +163,8 @@ class Gcc_build < Package
     Dir.chdir('objdir') do
       configure_env =
         {
-             BASH_ENV:  "#{CREW_PREFIX}/etc/profile",
+              BASH_ENV: "#{CREW_PREFIX}/etc/profile",
+           CREW_LINKER: 'ld',
           LIBRARY_PATH: CREW_LIB_PREFIX,
                     NM: 'gcc-nm',
                     AR: 'gcc-ar',
@@ -190,7 +191,7 @@ class Gcc_build < Package
       # system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), ". #{CREW_PREFIX}/etc/env.d/rust && make -j #{CREW_NPROC} || make -j1")
       @j_max = CREW_NPROC
       loop do
-        break if Kernel.system({ BASH_ENV: "#{CREW_PREFIX}/etc/env.d/rust", LD: 'ld', LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false)
+        break if Kernel.system({ BASH_ENV: "#{CREW_PREFIX}/etc/env.d/rust", CREW_LINKER: 'ld', LD: 'ld', LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false)
         puts "Make using -j#{@j_max}...".orange
         @j_max -= 1
         break if @j_max < 1

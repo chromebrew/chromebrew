@@ -21,7 +21,7 @@ class Gcc_lib < Package
   when '2.23'
 
   binary_sha256({
-       i686: 'd5846303aa946a18f305e27f11a0b05f1ff26f9d4c8865f657199b4181a4604d'
+       i686: '3892122f1af8a68fdbf94493d021c82364f3b24174fcdf6b767ec215762ac9b8'
   })
   when '2.27', '2.32', '2.33', '2.35'
 
