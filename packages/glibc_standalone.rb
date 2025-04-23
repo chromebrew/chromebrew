@@ -78,9 +78,8 @@ class Glibc_standalone < Package
       --with-headers=#{CREW_PREFIX}/include
       --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new
       --enable-bind-now
-      --enable-cet
       --enable-fortify-source
-      --enable-kernel=#{ARCH.eql?('i686') ? '3.2' : '4.4'}
+      --enable-kernel=#{(ARCH == 'i686') ? '3.2' : '4.4'}
       --disable-nscd
       --disable-profile
       --disable-sanity-checks
@@ -88,6 +87,8 @@ class Glibc_standalone < Package
       --without-cvs
       --without-selinux
     ]
+
+    config_opts << '--enable-cet' unless ARCH == 'i686'
 
     FileUtils.mkdir_p 'builddir'
     Dir.chdir('builddir') do
