@@ -25,11 +25,11 @@ class Gcc_build < Package
     })
   when '2.27', '2.32', '2.33', '2.35'
 
-    binary_sha256({
-      aarch64: '953abbd2202c94dc578ab182dff85cac351326e9a42e95294d5d8f1a1968118f',
-       armv7l: '953abbd2202c94dc578ab182dff85cac351326e9a42e95294d5d8f1a1968118f',
-       x86_64: '61bfd692d86ba4219946d9b0314778b464bdbea0aad63ee4a94a3a402c7b2b09'
-    })
+  binary_sha256({
+    aarch64: '953abbd2202c94dc578ab182dff85cac351326e9a42e95294d5d8f1a1968118f',
+     armv7l: '953abbd2202c94dc578ab182dff85cac351326e9a42e95294d5d8f1a1968118f',
+     x86_64: 'a04cd4d650d71277731eb9a508058f5cfb6cc9b3983404a6dec2bf63b882fe13'
+  })
   when '2.37'
     binary_sha256({
       aarch64: '313fefb47070e7c3327628083552ceb253834e46a730bf8913497821ca34d626',
@@ -51,7 +51,6 @@ class Gcc_build < Package
   depends_on 'rust' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'gcc_lib' # R
 
   conflicts_ok
   no_env_options
@@ -191,9 +190,7 @@ class Gcc_build < Package
       @j_max = CREW_NPROC
       loop do
         break if Kernel.system({ BASH_ENV: "#{CREW_PREFIX}/etc/env.d/rust", LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false)
-
         puts "Make using -j#{@j_max}...".orange
-
         @j_max -= 1
         break if @j_max < 1
       end

@@ -17,6 +17,8 @@
 /usr/local/bin/gcc-ranlib-15
 /usr/local/bin/gccgo
 /usr/local/bin/gccgo-15
+/usr/local/bin/gccrs
+/usr/local/bin/gccrs-15
 /usr/local/bin/gcov
 /usr/local/bin/gcov-15
 /usr/local/bin/gcov-dump
@@ -47,6 +49,8 @@
 /usr/local/bin/x86_64-cros-linux-gnu-gcc-tmp
 /usr/local/bin/x86_64-cros-linux-gnu-gccgo
 /usr/local/bin/x86_64-cros-linux-gnu-gccgo-15
+/usr/local/bin/x86_64-cros-linux-gnu-gccrs
+/usr/local/bin/x86_64-cros-linux-gnu-gccrs-15
 /usr/local/bin/x86_64-cros-linux-gnu-gfortran
 /usr/local/bin/x86_64-cros-linux-gnu-gfortran-15
 /usr/local/bin/x86_64-cros-linux-gnu-nm
@@ -1902,6 +1906,7 @@
 /usr/local/libexec/gcc/x86_64-cros-linux-gnu/15/cc1plus
 /usr/local/libexec/gcc/x86_64-cros-linux-gnu/15/cgo
 /usr/local/libexec/gcc/x86_64-cros-linux-gnu/15/collect2
+/usr/local/libexec/gcc/x86_64-cros-linux-gnu/15/crab1
 /usr/local/libexec/gcc/x86_64-cros-linux-gnu/15/f951
 /usr/local/libexec/gcc/x86_64-cros-linux-gnu/15/g++-mapper-server
 /usr/local/libexec/gcc/x86_64-cros-linux-gnu/15/go1
