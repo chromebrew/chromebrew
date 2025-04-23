@@ -11,8 +11,8 @@ class Jansson < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bc0f1fb68eb545878b69c4f947f2067034bf7671da0c12e6eea2922ec26d2c7a',
-     armv7l: 'bc0f1fb68eb545878b69c4f947f2067034bf7671da0c12e6eea2922ec26d2c7a',
+    aarch64: 'aafccf57e3f8e28b720dedd2ce3b919874caaef1cc048de8e4997a0e82e980ca',
+     armv7l: 'aafccf57e3f8e28b720dedd2ce3b919874caaef1cc048de8e4997a0e82e980ca',
        i686: '17d0fce402ba1eb72c150f599e0844b51b1822f07b7dfcc013d02df1fe2a87f4',
      x86_64: 'a8a588fa0215143177a515a40ef3c61eca362081925037a734367a4b82d38b74'
   })
