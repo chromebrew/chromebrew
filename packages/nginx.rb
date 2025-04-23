@@ -11,8 +11,8 @@ class Nginx < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '93030fc62703df474505ee6d7ed6805d374021ad4cb957583960f596cf6b7c64',
-     armv7l: '93030fc62703df474505ee6d7ed6805d374021ad4cb957583960f596cf6b7c64',
+    aarch64: '74e6a0c6354a12ae178e0c0181ec8ec857f1786ac34abd3fedb65806c2ff0b1b',
+     armv7l: '74e6a0c6354a12ae178e0c0181ec8ec857f1786ac34abd3fedb65806c2ff0b1b',
        i686: 'af95c778de001cf5a829981a81ef1fce51ed6280348823c2e37c53a75b1ccc30',
      x86_64: '150e225e313477b2d8c82765c3aaffbce7ccc6fb30acf0d19123a33a41143fd3'
   })
