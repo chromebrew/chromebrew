@@ -25,7 +25,7 @@ class Gcc_lib < Package
   })
   when '2.27', '2.32', '2.33', '2.35'
 
-  binary_sha256({
+    binary_sha256({
     aarch64: 'a7e69956da2c17cdde6ff84d76016e0239724bf25131cdb8a9258845bd7d5780',
      armv7l: 'a7e69956da2c17cdde6ff84d76016e0239724bf25131cdb8a9258845bd7d5780',
      x86_64: 'eb126f81f3e25989709626dec83f7e8d62b6d85386b6c697248d6d7d353f2ac2'
