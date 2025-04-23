@@ -9,14 +9,14 @@ class Binutils < Package
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://sourceware.org/pub/binutils/releases/binutils-#{version.split('-').first}.tar.zst"
-  source_sha256 'becaac5d295e037587b63a42fad57fe3d9d7b83f478eb24b67f9eec5d0f1872f'
+  source_sha256 '79cb120b39a195ad588cd354aed886249bfab36c808e746b30208d15271cc95c'
   binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '40680f000660983e9f45493b3aa376f85415b046bd6a7ddd678198e73b80abe5',
      armv7l: '40680f000660983e9f45493b3aa376f85415b046bd6a7ddd678198e73b80abe5',
        i686: 'e19e9528e060bee872df1d31d9ee3088e087ba29ee67de918a6bf91d469eb065',
-     x86_64: '68f573d4159fc326234a9135aadb2ecd400a767e81b81da00bcd0a014b5fe71b'
+     x86_64: '4b762430ca1917ad38c19ad3c843bd6e083ee683e15347ac4b3637b67e13a8a6'
   })
 
   depends_on 'elfutils' # R

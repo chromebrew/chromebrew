@@ -168,16 +168,15 @@ class Gcc_build < Package
           LIBRARY_PATH: CREW_LIB_PREFIX,
                     NM: 'gcc-nm',
                     AR: 'gcc-ar',
-                    LD: CREW_LINKER.to_s,
                 RANLIB: 'gcc-ranlib',
                 CFLAGS: @cflags,
               CXXFLAGS: @cxxflags,
-               LDFLAGS: "-L#{CREW_LIB_PREFIX}/lib -Wl,-rpath=#{CREW_LIB_PREFIX}",
+               LDFLAGS: "-L#{CREW_LIB_PREFIX} -Wl,-rpath=#{CREW_LIB_PREFIX}",
                   PATH: @path
         }.transform_keys(&:to_s)
 
       system configure_env, <<~BUILD.chomp
-        mold -run ../configure #{CREW_CONFIGURE_OPTIONS} \
+        ../configure #{CREW_CONFIGURE_OPTIONS} \
           #{@gcc_global_opts} \
           #{@archflags} \
           --with-native-system-header-dir=#{CREW_PREFIX}/include \
@@ -188,7 +187,16 @@ class Gcc_build < Package
       # LIBRARY_PATH=#{CREW_LIB_PREFIX} needed for x86_64 to avoid:
       # /usr/local/bin/ld: cannot find crti.o: No such file or directory
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
-      system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), ". #{CREW_PREFIX}/etc/env.d/rust && make -j #{CREW_NPROC} || make -j1")
+      # system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), ". #{CREW_PREFIX}/etc/env.d/rust && make -j #{CREW_NPROC} || make -j1")
+      @j_max = CREW_NPROC
+      loop do
+        break if Kernel.system({ BASH_ENV: "#{CREW_PREFIX}/etc/env.d/rust", LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false)
+
+        puts "Make using -j#{@j_max}...".orange
+
+        @j_max -= 1
+        break if @j_max < 1
+      end
     end
   end
 
@@ -207,7 +215,6 @@ class Gcc_build < Package
 
     make_env =
       {
-            BASH_ENV: "#{CREW_PREFIX}/etc/profile",
         LIBRARY_PATH: CREW_LIB_PREFIX,
                 PATH: @path,
              DESTDIR: CREW_DEST_DIR
