@@ -14,8 +14,8 @@ class Nftables < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9ef8444cc26ca8958a118ab23214ee1c93e4c8a82be3d3ee9d94378665b29bba',
-     armv7l: '9ef8444cc26ca8958a118ab23214ee1c93e4c8a82be3d3ee9d94378665b29bba',
+    aarch64: '8606a5a73a8705fe5ae9e58589b8046adef8a36bd00fa07dbe7eb404f7718cf0',
+     armv7l: '8606a5a73a8705fe5ae9e58589b8046adef8a36bd00fa07dbe7eb404f7718cf0',
      x86_64: 'dd8fa408d9ecf3557c7125cc73eab5211f080e6602e3dc34d23aef2aaf9fb89f'
   })
 
