@@ -77,7 +77,7 @@ class Glibc_standalone < Package
     Dir.chdir('builddir') do
       File.write 'configparms', <<~EOF
         slibdir=#{glibc_libdir}
-        rtlddir=#{CREW_PREFIX}/bin
+        rtlddir=#{glibc_libdir}
         sbindir=#{CREW_PREFIX}/bin
         rootsbindir=#{CREW_PREFIX}/bin
       EOF
@@ -89,6 +89,5 @@ class Glibc_standalone < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install', chdir: 'builddir'
-    FileUtils.ln_sf '../bin/ld-linux-x86-64.so.2', "#{File.join(CREW_DEST_DIR, glibc_libdir)}/ld-linux-x86-64.so.2"
   end
 end
