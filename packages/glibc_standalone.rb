@@ -80,7 +80,7 @@ class Glibc_standalone < Package
       --enable-bind-now
       --enable-cet
       --enable-fortify-source
-      --enable-kernel=4.4
+      --enable-kernel=#{ARCH.eql?('i686') ? '3.2' : '4.4'}
       --disable-nscd
       --disable-profile
       --disable-sanity-checks
