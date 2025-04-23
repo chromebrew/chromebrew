@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Jansson < CMake
   description 'Jansson is a C library for encoding, decoding and manipulating JSON data.'
   homepage 'https://github.com/akheron/jansson'
-  version '2.14.1'
+  version '2.14.1-1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/akheron/jansson.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{version.split('-')[0]}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -19,5 +19,13 @@ class Jansson < CMake
 
   depends_on 'glibc' # R
 
-  cmake_options '-DJANSSON_BUILD_DOCS=OFF -DJANSSON_BUILD_SHARED_LIBS=ON'
+  cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DJANSSON_BUILD_DOCS=OFF -DJANSSON_BUILD_SHARED_LIBS=ON'
+
+  cmake_install_extras do
+    # Unfortunately, there is no -DLIB_SUFFIX configure option.
+    if ARCH.eql?('x86_64')
+      FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
+      FileUtils.mv Dir["#{CREW_DEST_PREFIX}/lib/*"], CREW_DEST_LIB_PREFIX
+    end
+  end
 end
