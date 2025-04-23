@@ -258,9 +258,9 @@ class Package
       orig_arrow_index_newbranch = orig_arrow_index_connecter + 4
 
       # if the char under the processing arrow symbol (orig_arrow_index_connecter) is also arrow or pipe, change the processing char to tee symbol
-      line[orig_arrow_index_connecter] = '├' if orig_arrow_index_connecter && tree_view.lines[line_i + 1].to_s[orig_arrow_index_connecter] =~ (/[└│]/)
+      line[orig_arrow_index_connecter] = '├' if orig_arrow_index_connecter && tree_view.lines[line_i + 1].to_s[orig_arrow_index_connecter] =~ /[└│]/
       # if the char under the processing arrow symbol (orig_arrow_index_newbranch) is also arrow or pipe, change the processing char to tee symbol
-      line[orig_arrow_index_newbranch] = '┬' if orig_arrow_index_newbranch && tree_view.lines[line_i + 1].to_s[orig_arrow_index_newbranch] =~ (/[└├]/)
+      line[orig_arrow_index_newbranch] = '┬' if orig_arrow_index_newbranch && tree_view.lines[line_i + 1].to_s[orig_arrow_index_newbranch] =~ /[└├]/
       next line # return modified line
     end.join
 

@@ -7,7 +7,7 @@ require_relative 'crewlog'
 require_relative 'downloader'
 
 class ConvenienceFunctions
-  def self.determine_conflicts(pkgName, filelist = File.join(CREW_META_PATH, "#{pkgName}.filelist"), excludeSuffix = nil, verbose: false)
+  def self.determine_conflicts(pkg_name, filelist = File.join(CREW_META_PATH, "#{pkg_name}.filelist"), exclude_suffix = nil, verbose: false)
     conflicts       = {}
     target_filelist = File.readlines(filelist, chomp: true)
 
@@ -17,7 +17,7 @@ class ConvenienceFunctions
       filelist_name = File.basename(filelist, '.filelist')
 
       # skip filelist belongs to the same package/explicitly excluded
-      next if pkgName == filelist_name || (excludeSuffix && filelist_name.end_with?(excludeSuffix))
+      next if pkg_name == filelist_name || (exclude_suffix && filelist_name.end_with?(exclude_suffix))
 
       # find out identical file paths with intersection
       conflict = (target_filelist & File.readlines(filelist, chomp: true)).reject(&:empty?)

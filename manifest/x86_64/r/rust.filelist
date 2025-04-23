@@ -58,11 +58,15 @@
 /usr/local/share/man/man1/rustdoc.1.zst
 /usr/local/share/rustup/settings.toml
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo
+/usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo-clippy
+/usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo-fmt
+/usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/clippy-driver
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-gdb
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-gdbgui
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-lldb
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustdoc
+/usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustfmt
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/libLLVM-19-rust-1.86.0-stable.so
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/libLLVM.so.19.1-rust-1.86.0-stable
@@ -76,8 +80,11 @@
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/etc/lldb_providers.py
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/etc/rust_types.py
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/manifest-cargo-x86_64-unknown-linux-gnu
+/usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/manifest-clippy-preview-x86_64-unknown-linux-gnu
+/usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/manifest-rust-docs-x86_64-unknown-linux-gnu
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/manifest-rust-std-x86_64-unknown-linux-gnu
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/manifest-rustc-x86_64-unknown-linux-gnu
+/usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/manifest-rustfmt-preview-x86_64-unknown-linux-gnu
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/multirust-channel-manifest.toml
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/multirust-config.toml
 /usr/local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/rust-installer-version

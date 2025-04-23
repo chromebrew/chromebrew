@@ -58,11 +58,15 @@
 /usr/local/share/man/man1/rustdoc.1.zst
 /usr/local/share/rustup/settings.toml
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/bin/cargo
+/usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/bin/cargo-clippy
+/usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/bin/cargo-fmt
+/usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/bin/clippy-driver
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/bin/rust-gdb
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/bin/rust-gdbgui
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/bin/rust-lldb
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/bin/rustc
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/bin/rustdoc
+/usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/bin/rustfmt
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/etc/bash_completion.d/cargo
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/lib/libdarling_macro-2b33c172f54ae0ac.so
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/lib/libderive_setters-d1adc785bd0b15d8.so
@@ -128,8 +132,11 @@
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/lib/rustlib/etc/lldb_providers.py
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/lib/rustlib/etc/rust_types.py
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/lib/rustlib/manifest-cargo-armv7-unknown-linux-gnueabihf
+/usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/lib/rustlib/manifest-clippy-preview-armv7-unknown-linux-gnueabihf
+/usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/lib/rustlib/manifest-rust-docs-armv7-unknown-linux-gnueabihf
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/lib/rustlib/manifest-rust-std-armv7-unknown-linux-gnueabihf
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/lib/rustlib/manifest-rustc-armv7-unknown-linux-gnueabihf
+/usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/lib/rustlib/manifest-rustfmt-preview-armv7-unknown-linux-gnueabihf
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/lib/rustlib/multirust-channel-manifest.toml
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/lib/rustlib/multirust-config.toml
 /usr/local/share/rustup/toolchains/stable-armv7-unknown-linux-gnueabihf/lib/rustlib/rust-installer-version

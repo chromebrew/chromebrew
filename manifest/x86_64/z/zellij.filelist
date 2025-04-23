@@ -1,0 +1,5 @@
+/usr/local/bin/zellij
+/usr/local/etc/bash.d/zellij
+/usr/local/share/bash-completion/completions/zellij
+/usr/local/share/fish/vendor_completions.d/zellij.fish
+/usr/local/share/zsh/site-functions/_zellij

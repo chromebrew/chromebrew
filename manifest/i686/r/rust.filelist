@@ -58,11 +58,15 @@
 /usr/local/share/man/man1/rustdoc.1.zst
 /usr/local/share/rustup/settings.toml
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/bin/cargo
+/usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/bin/cargo-clippy
+/usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/bin/cargo-fmt
+/usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/bin/clippy-driver
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/bin/rust-gdb
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/bin/rust-gdbgui
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/bin/rust-lldb
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/bin/rustc
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/bin/rustdoc
+/usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/bin/rustfmt
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/etc/bash_completion.d/cargo
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/lib/librustc_driver-f4927a12cd5cd0dd.so
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/lib/rustlib/components
@@ -109,8 +113,11 @@
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/lib/rustlib/i686-unknown-linux-gnu/lib/libunicode_width-56d45ce712153d20.rlib
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/lib/rustlib/i686-unknown-linux-gnu/lib/libunwind-3d5974218e12c7c5.rlib
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/lib/rustlib/manifest-cargo-i686-unknown-linux-gnu
+/usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/lib/rustlib/manifest-clippy-preview-i686-unknown-linux-gnu
+/usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/lib/rustlib/manifest-rust-docs-i686-unknown-linux-gnu
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/lib/rustlib/manifest-rust-std-i686-unknown-linux-gnu
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/lib/rustlib/manifest-rustc-i686-unknown-linux-gnu
+/usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/lib/rustlib/manifest-rustfmt-preview-i686-unknown-linux-gnu
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/lib/rustlib/multirust-channel-manifest.toml
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/lib/rustlib/multirust-config.toml
 /usr/local/share/rustup/toolchains/stable-i686-unknown-linux-gnu/lib/rustlib/rust-installer-version

@@ -106,10 +106,10 @@ def main(pkg)
   pkgdeps = pkgdeps.map { |i| i.gsub(/glibc_lib.*/, 'glibc_lib') }.uniq.map(&:strip).reject(&:empty?)
 
   # Massage the gcc entries in the dependency list.
-  pkgdeps = pkgdeps.map { |i| i.gsub(/gcc_build/, 'gcc_lib') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub('gcc_build', 'gcc_lib') }.uniq
 
   # Massage the llvm entries in the dependency list.
-  pkgdeps = pkgdeps.map { |i| i.gsub(/llvm_build/, 'llvm_lib') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub('llvm_build', 'llvm_lib') }.uniq
 
   # Leave early if we didn't find any dependencies.
   return if pkgdeps.empty?
