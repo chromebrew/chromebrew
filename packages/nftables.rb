@@ -16,7 +16,7 @@ class Nftables < Autotools
   binary_sha256({
     aarch64: '9ef8444cc26ca8958a118ab23214ee1c93e4c8a82be3d3ee9d94378665b29bba',
      armv7l: '9ef8444cc26ca8958a118ab23214ee1c93e4c8a82be3d3ee9d94378665b29bba',
-     x86_64: '64193fb122b88b0aa0c66fa65ac20c9e10aaafb55b40f459b204b08c785b4b19'
+     x86_64: 'dd8fa408d9ecf3557c7125cc73eab5211f080e6602e3dc34d23aef2aaf9fb89f'
   })
 
   depends_on 'py3_asciidoc' => :build
