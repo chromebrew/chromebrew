@@ -13,7 +13,7 @@ class Py3_setuptools_scm < Pip
     aarch64: '8ae48ff6fbc2ab5a643c5e9df82ab7aeea61c46db43b95a2732099d44b130e3e',
      armv7l: '8ae48ff6fbc2ab5a643c5e9df82ab7aeea61c46db43b95a2732099d44b130e3e',
        i686: 'd2766b3c69e9735a323967e0870565cfabf90857f43523a13c19cbe66e12bde4',
-     x86_64: '2ee715cbd66fe143d83bcd0ea34608324744ba3f1867e0600954bfa9b815d4db'
+     x86_64: '1d3af0188714f96c241b83d6784b5b8ffa63d1361abb9bbf04baf7e0dac39942'
   })
 
   depends_on 'py3_packaging'

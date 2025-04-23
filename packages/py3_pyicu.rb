@@ -13,7 +13,7 @@ class Py3_pyicu < Pip
     aarch64: '2eb2134af08bafa8304601a00a5867db500b60aaca01954f6260bac2ad3bf557',
      armv7l: '2eb2134af08bafa8304601a00a5867db500b60aaca01954f6260bac2ad3bf557',
        i686: '9cc8942ed63328635876106dbb78bd829c0bfeca57f819af8cf82486e9a0fc03',
-     x86_64: '3fc6859213e55b8c03f241b26fb692c7fb12fad25ea22a06cc7c35e7962c4dec'
+     x86_64: 'c5765e767e1d3f072849a5ef7891df0e4b7c6011299464c671cb070e5cee9fb6'
   })
 
   depends_on 'python3' => :build
