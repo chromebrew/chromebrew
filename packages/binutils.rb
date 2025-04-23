@@ -12,12 +12,22 @@ class Binutils < Package
   source_sha256 '79cb120b39a195ad588cd354aed886249bfab36c808e746b30208d15271cc95c'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: 'c85828c8837b9f6debe500a702c7173a097cf7274d224dd7d0f61c6c8ce216ac',
-     armv7l: 'c85828c8837b9f6debe500a702c7173a097cf7274d224dd7d0f61c6c8ce216ac',
-       i686: '531d6b1d9437484bdeea6316dbc8d4e397eadd3eb08b4bbe30dc51c83118af64',
-     x86_64: '4b762430ca1917ad38c19ad3c843bd6e083ee683e15347ac4b3637b67e13a8a6'
-  })
+  case CREW_GCC_VER
+  when 'gcc14'
+    binary_sha256({
+      aarch64: 'e5c64aca4584a2c275d37e58a9afc6c6c5fdf32d6e2edcff0df2bf38fb7311d2',
+       armv7l: 'e5c64aca4584a2c275d37e58a9afc6c6c5fdf32d6e2edcff0df2bf38fb7311d2',
+         i686: '67ce1feb3920893481eca99b0cb2a26a5b3192abdcea8311d3515a8d435e0da9',
+       x86_64: 'b7397812e623ee019376fe436d839c093ba59afab64d39555457536eeae8fe0e'
+    })
+  when 'gcc15'
+    binary_sha256({
+      aarch64: 'c85828c8837b9f6debe500a702c7173a097cf7274d224dd7d0f61c6c8ce216ac',
+       armv7l: 'c85828c8837b9f6debe500a702c7173a097cf7274d224dd7d0f61c6c8ce216ac',
+         i686: '531d6b1d9437484bdeea6316dbc8d4e397eadd3eb08b4bbe30dc51c83118af64',
+       x86_64: '4b762430ca1917ad38c19ad3c843bd6e083ee683e15347ac4b3637b67e13a8a6'
+    })
+  end
 
   depends_on 'elfutils' # R
   depends_on 'flex' # R
