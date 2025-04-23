@@ -5,10 +5,25 @@ class Glibc_standalone < Package
   homepage 'https://www.gnu.org/software/libc/'
   version '2.41'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-  compatibility 'aarch64 armv7l x86_64'
+  compatibility 'all'
   source_url "https://ftpmirror.gnu.org/glibc/glibc-#{version}.tar.xz"
   source_sha256 'a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
   binary_compression 'tar.zst'
+
+  binary_sha256({
+    aarch64: '877f6ce14ccdbf7ca103a0e131d40a1f91654183599812b4917eae7cfce37550',
+     armv7l: '877f6ce14ccdbf7ca103a0e131d40a1f91654183599812b4917eae7cfce37550',
+       i686: '1234567',
+     x86_64: '66d0971a2fbf1b69c7030ba7a8bde986baeef38870ee13606d16f381f16a551a'
+  })
+
+  depends_on 'gawk' => :build
+  depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
+  depends_on 'libidn2' => :build
+  depends_on 'llvm' => :build
+  depends_on 'texinfo' => :build
+  depends_on 'libxcrypt' # Latest glibc removed libcrypt.so, add this for backward compatibility
+  depends_on 'patchelf' # L
 
   conflicts_ok
   no_env_options
@@ -66,6 +81,7 @@ class Glibc_standalone < Package
       --enable-cet
       --enable-fortify-source
       --enable-kernel=4.4
+      --disable-nscd
       --disable-profile
       --disable-sanity-checks
       --disable-werror
