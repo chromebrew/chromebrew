@@ -11,8 +11,8 @@ class Libnftnl < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7c093a2a0cbee0292fb2e0d41bc54181b79e8105bbebb076782a9c160c6d6006',
-     armv7l: '7c093a2a0cbee0292fb2e0d41bc54181b79e8105bbebb076782a9c160c6d6006',
+    aarch64: '5b5d3ed470cf4c87cc251784be554f97acf61c2d98838aafc3c948064500f059',
+     armv7l: '5b5d3ed470cf4c87cc251784be554f97acf61c2d98838aafc3c948064500f059',
        i686: 'cdcfca4867c1f7978fce9a0d35b8728e27545c42c174eeef412d38fc9e2c266f',
      x86_64: '1d15855fa0934eed99e18f0adfe3ad82950ec9bf1be8f72d8979b76d5714f8e5'
   })
