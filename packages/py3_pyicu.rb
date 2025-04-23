@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pyicu < Pip
   description 'PyICU is a Python extension wrapping the ICU C++ API.'
   homepage 'https://pyicu.org/'
-  version "2.15.1-#{CREW_ICU_VER}-#{CREW_PY_VER}"
+  version "2.15.2-#{CREW_ICU_VER}-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
