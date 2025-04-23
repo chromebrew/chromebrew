@@ -17,7 +17,7 @@ class Libssp < Package
   source_url 'https://gcc.gnu.org/pub/gcc/snapshots/15.1.0-RC-20250418/gcc-15.1.0-RC-20250418.tar.xz'
   source_sha256 'fe18624317c6c662977eea8b5a506ec6c132fc11c7a8d53e2f6d21b139b0af3c'
   # source_url 'https://github.com/gcc-mirror/gcc.git'
-  #git_hashtag "releases/gcc-#{version.split('-').first}"
+  # git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   case @gcc_libc_version
