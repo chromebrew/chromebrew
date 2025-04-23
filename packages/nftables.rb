@@ -6,11 +6,11 @@ require 'buildsystems/autotools'
 class Nftables < Autotools
   description 'Netfilter tables userspace tools'
   homepage 'https://netfilter.org/projects/nftables/'
-  version '1.1.1'
+  version '1.1.3'
   license 'GPL2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://netfilter.org/projects/nftables/files/nftables-#{version}.tar.xz"
-  source_sha256 '6358830f3a64f31e39b0ad421d7dadcd240b72343ded48d8ef13b8faf204865a'
+  source_sha256 '9c8a64b59c90b0825e540a9b8fcb9d2d942c636f81ba50199f068fde44f34ed8'
   binary_compression 'tar.zst'
 
   binary_sha256({
