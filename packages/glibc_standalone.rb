@@ -14,7 +14,7 @@ class Glibc_standalone < Package
     aarch64: '877f6ce14ccdbf7ca103a0e131d40a1f91654183599812b4917eae7cfce37550',
      armv7l: '877f6ce14ccdbf7ca103a0e131d40a1f91654183599812b4917eae7cfce37550',
        i686: '1234567',
-     x86_64: '66d0971a2fbf1b69c7030ba7a8bde986baeef38870ee13606d16f381f16a551a'
+     x86_64: '595548c1f923322526925698a4b2fec064112f78878375388fb5889583619f2f'
   })
 
   depends_on 'gawk' => :build
@@ -24,6 +24,7 @@ class Glibc_standalone < Package
   depends_on 'texinfo' => :build
   depends_on 'libxcrypt' # Latest glibc removed libcrypt.so, add this for backward compatibility
   depends_on 'patchelf' # L
+  depends_on 'glibc' # R
 
   conflicts_ok
   no_env_options
