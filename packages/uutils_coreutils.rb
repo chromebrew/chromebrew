@@ -37,12 +37,6 @@ class Uutils_coreutils < RUST
     end
   end
 
-  def self.build
-    system 'make PROFILE=release MULTICALL=y'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR} PREFIX=#{CREW_PREFIX} MANDIR=#{CREW_MAN_PREFIX} \
-      PROFILE=release MULTICALL=y"
-  end
+  rust_options '--features unix'
+  rust_release_profile 'release-fast'
 end
