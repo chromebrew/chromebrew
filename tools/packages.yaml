@@ -10235,6 +10235,11 @@ url: https://github.com/zed-industries/zed/releases
 activity: high
 ---
 kind: url
+name: zellij
+url: https://github.com/zellij-org/zellij/releases
+activity: high
+---
+kind: url
 name: zenity
 url: https://deb.debian.org/debian/pool/main/z/zenity/
 activity: low
