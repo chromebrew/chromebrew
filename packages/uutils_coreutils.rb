@@ -14,8 +14,8 @@ class Uutils_coreutils < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6affd6acc08b60663ad2b6f5a2b8748ac775182ff19d38b34dc82b37ee094dcf',
-     armv7l: '6affd6acc08b60663ad2b6f5a2b8748ac775182ff19d38b34dc82b37ee094dcf',
+    aarch64: '7cbb9e498034b5c8fbd2d872f530823839d164855a82f966608f4d4d09877b75',
+     armv7l: '7cbb9e498034b5c8fbd2d872f530823839d164855a82f966608f4d4d09877b75',
        i686: 'e44246ac53a63c2df6fea3d5463cb3624cbac69eb4badf6fa274f911551cfcb3',
      x86_64: 'b717177da8e64ef7169b7651b459e04fa0d26b8a729076a66575f6cf521e5d12'
   })
