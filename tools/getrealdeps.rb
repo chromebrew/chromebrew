@@ -132,6 +132,10 @@ def main(pkg)
     missingpkgdeps.delete_if { |d| /llvm.*_build/.match(d) }
     pkgdeps.delete_if { |d| /llvm.*_build/.match(d) }
   end
+  if /llvm.*_lib/.match(pkg)
+    missingpkgdeps.delete_if { |d| /llvm_lib/.match(d) }
+    pkgdeps.delete_if { |d| /llvm_lib/.match(d) }
+  end
 
   # Do not add gcc_{dev,lib} runtime deps if this is a gcc_build
   # package as those packages are created from the gcc_build package
@@ -147,6 +151,10 @@ def main(pkg)
   if /gcc_lib/.match(pkg) || /gcc_dev/.match(pkg) || /libssp/.match(pkg)
     missingpkgdeps.delete_if { |d| /gcc_build/.match(d) }
     pkgdeps.delete_if { |d| /gcc_build/.match(d) }
+  end
+  if /gcc_lib/.match(pkg)
+    missingpkgdeps.delete_if { |d| /gcc_lib/.match(d) }
+    pkgdeps.delete_if { |d| /gcc_lib/.match(d) }
   end
 
   puts "\nPackage #{pkg} has runtime library dependencies on these packages:"

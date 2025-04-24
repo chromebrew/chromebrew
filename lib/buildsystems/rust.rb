@@ -1,7 +1,7 @@
 require 'package'
 
 class RUST < Package
-  property :rust_options, :rust_targets, :pre_rust_options, :rust_build_extras, :rust_install_extras
+  property :rust_options, :rust_release_profile, :rust_targets, :pre_rust_options, :rust_build_extras, :rust_install_extras
 
   def self.build
     rust_env =
@@ -23,7 +23,7 @@ class RUST < Package
     system rust_env, "bash -c \"#{@pre_rust_options} cargo fetch \
       --manifest-path Cargo.toml\""
     system rust_env, "bash -c \"#{@pre_rust_options} cargo build \
-      --release \
+      --profile=#{@rust_release_profile.to_s.empty? ? 'release' : @rust_release_profile} \
       --frozen \
       #{@rust_options} \
       --manifest-path Cargo.toml\""

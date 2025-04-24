@@ -24,20 +24,14 @@ class Libssp < Package
   when '2.23'
 
     binary_sha256({
-       i686: '804bc68e33261da2ba1b2bdd5d984f0b368640afba6791cd4f045813b5a469f7'
-  })
-  when '2.27', '2.32', '2.33', '2.35'
+         i686: '5b99af8d9cf48bb9dee3ad0d154c949c8c56fbc5930ab50fb50cae224d2af1e3'
+    })
+  when '2.27', '2.32', '2.33', '2.35', '2.37'
 
     binary_sha256({
-    aarch64: '2243ac269cd087cf4a5c6e9c86f9b652ea2d056eed0bcb9d23e104d64ed09967',
-     armv7l: '2243ac269cd087cf4a5c6e9c86f9b652ea2d056eed0bcb9d23e104d64ed09967',
-     x86_64: '1192c622117d3f3394f0da2e4e5912cfd464c87bb82fa2d0db4a3add6085b44b'
-  })
-  when '2.37'
-    binary_sha256({
-      aarch64: '80428580f3ff02c0b8aa0b65ec64626e906b59d754851f289210360686bdb8d1',
-       armv7l: '80428580f3ff02c0b8aa0b65ec64626e906b59d754851f289210360686bdb8d1',
-       x86_64: '69114b1e6bcd208d14305e39de47e32aa8781af96f2ad3cced8333fb2d602ec3'
+      aarch64: '3fada31520ad32113cb389f176cf01a47efbbcb9f2aba114b360ea46415bd621',
+       armv7l: '3fada31520ad32113cb389f176cf01a47efbbcb9f2aba114b360ea46415bd621',
+       x86_64: '74fd09b6eb8c04572de8f6699770028696b001d0435d27f47fea3e094c773703'
     })
   end
 

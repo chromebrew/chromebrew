@@ -1,9 +1,9 @@
 # Adapted from Arch Linux uutils-coreutils PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/uutils-coreutils/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/RUST'
 
-class Uutils_coreutils < Package
+class Uutils_coreutils < RUST
   description 'Cross-platform Rust rewrite of the GNU coreutils'
   homepage 'https://github.com/uutils/coreutils'
   version '0.0.30'

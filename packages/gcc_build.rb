@@ -20,16 +20,16 @@ class Gcc_build < Package
   case @gcc_libc_version
   when '2.23'
 
-  binary_sha256({
-       i686: '70fa8ee24addd959f21a35355dc542597def3bc2cf55838982a34fd539a7d835'
-  })
+    binary_sha256({
+         i686: '70fa8ee24addd959f21a35355dc542597def3bc2cf55838982a34fd539a7d835'
+    })
   when '2.27', '2.32', '2.33', '2.35', '2.37'
 
-  binary_sha256({
-    aarch64: '4898289f84933e494d8589dfdecc9a60ebebb6488f5d687c4c8ea83a1f3b6070',
-     armv7l: '4898289f84933e494d8589dfdecc9a60ebebb6488f5d687c4c8ea83a1f3b6070',
-     x86_64: '9139275a38fc2727fa31555056fc9ca5e63a1f4c80446e706bd859beb88f59d1'
-  })
+    binary_sha256({
+      aarch64: '4898289f84933e494d8589dfdecc9a60ebebb6488f5d687c4c8ea83a1f3b6070',
+       armv7l: '4898289f84933e494d8589dfdecc9a60ebebb6488f5d687c4c8ea83a1f3b6070',
+       x86_64: '9139275a38fc2727fa31555056fc9ca5e63a1f4c80446e706bd859beb88f59d1'
+    })
   end
 
   depends_on 'binutils' => :build
