@@ -13,7 +13,7 @@ class Glibc_standalone < Package
   binary_sha256({
     aarch64: '4d34f1aea3003156670485deecf5da4ff3f377de5260082edd1e27e3e8aa907e',
      armv7l: '4d34f1aea3003156670485deecf5da4ff3f377de5260082edd1e27e3e8aa907e',
-       i686: '1234567',
+       i686: '77a95bfa9bdf58c02e9534645eb45886a8bc0a0043d4ba0bbf39bd862bd63aeb',
      x86_64: '595548c1f923322526925698a4b2fec064112f78878375388fb5889583619f2f'
   })
 
@@ -80,7 +80,7 @@ class Glibc_standalone < Package
       --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new
       --enable-bind-now
       --enable-fortify-source
-      --enable-kernel=#{(ARCH == 'i686') ? '3.2' : '4.4'}
+      --enable-kernel=#{ARCH.eql?('i686') ? '3.2' : '4.4'}
       --disable-nscd
       --disable-profile
       --disable-sanity-checks
