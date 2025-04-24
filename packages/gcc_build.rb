@@ -8,11 +8,11 @@ class Gcc_build < Package
                       else
                         ARCH.eql?('i686') ? '2.23' : '2.27'
                       end
-  version "15.1.0-RC-20250418-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
+  version "15.1.0-RC-20250423-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://gcc.gnu.org/pub/gcc/snapshots/15.1.0-RC-20250418/gcc-15.1.0-RC-20250418.tar.xz'
-  source_sha256 'fe18624317c6c662977eea8b5a506ec6c132fc11c7a8d53e2f6d21b139b0af3c'
+  source_url 'https://gcc.gnu.org/pub/gcc/snapshots/15.1.0-RC-20250423/gcc-15.1.0-RC-20250423.tar.xz'
+  source_sha256 '50585c01ba3b7ca6ed1bc49efe8de9bd83583a5a4f501d7238c4976ba3784b59'
   # source_url 'https://github.com/gcc-mirror/gcc.git'
   # git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
@@ -23,18 +23,12 @@ class Gcc_build < Package
     binary_sha256({
          i686: '2496b094cf0f4ba0cd3402da46967f74b9b92f3938e16314cb439b47599f8fd5'
     })
-  when '2.27', '2.32', '2.33', '2.35'
+  when '2.27', '2.32', '2.33', '2.35', '2.37'
 
     binary_sha256({
       aarch64: 'b7e9a64f8b9294d1d79f6dc8efa87a2be2de090df4ddfcfbbb32318443a1b0ae',
        armv7l: 'b7e9a64f8b9294d1d79f6dc8efa87a2be2de090df4ddfcfbbb32318443a1b0ae',
        x86_64: 'a04cd4d650d71277731eb9a508058f5cfb6cc9b3983404a6dec2bf63b882fe13'
-    })
-  when '2.37'
-    binary_sha256({
-      aarch64: '313fefb47070e7c3327628083552ceb253834e46a730bf8913497821ca34d626',
-       armv7l: '313fefb47070e7c3327628083552ceb253834e46a730bf8913497821ca34d626',
-       x86_64: 'd20b4cf318296405c4c6dc36078d9ccd68a090fd510e9fbb84f0bba55e77d2ff'
     })
   end
 
@@ -136,7 +130,7 @@ class Gcc_build < Package
       --with-system-zstd
     OPT
 
-    @cflags = @cxxflags = "-fPIC -pipe #{ARCH.include?('x86_64') && @gcc_libc_version == '2.37' ? '/usr/local/lib64/libC.so.6' : ''}"
+    @cflags = @cxxflags = '-fPIC -pipe'
     @languages = 'c,c++,jit,objc,fortran,go,rust'
     case ARCH
     when 'armv7l', 'aarch64'
