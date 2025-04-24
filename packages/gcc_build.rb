@@ -136,7 +136,7 @@ class Gcc_build < Package
       --with-system-zstd
     OPT
 
-    @cflags = @cxxflags = '-fPIC -pipe'
+    @cflags = @cxxflags = "-fPIC -pipe #{ARCH.include?('x86_64') && @gcc_libc_version == '2.37' ? '/usr/local/lib64/libC.so.6' : ''}"
     @languages = 'c,c++,jit,objc,fortran,go,rust'
     case ARCH
     when 'armv7l', 'aarch64'
@@ -191,7 +191,7 @@ class Gcc_build < Package
       # system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), ". #{CREW_PREFIX}/etc/env.d/rust && make -j #{CREW_NPROC} || make -j1")
       @j_max = CREW_NPROC
       loop do
-        break if Kernel.system({ BASH_ENV: "#{CREW_PREFIX}/etc/env.d/rust", CREW_LINKER: 'ld', LD: 'ld', LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false)
+        break if Kernel.system({ BASH_ENV: "#{CREW_PREFIX}/etc/env.d/rust", CFLAGS: @cflags, CXXFLAGS: @cxxflags, CREW_LINKER: 'ld', LD: 'ld', LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false)
         puts "Make using -j#{@j_max}...".orange
         @j_max -= 1
         break if @j_max < 1
