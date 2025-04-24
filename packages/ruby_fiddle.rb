@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_fiddle < RUBY
   description 'A libffi wrapper for ruby.'
   homepage 'https://github.com/ruby/fiddle'
-  version "1.1.6-#{CREW_RUBY_VER}"
+  version "1.1.7-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
