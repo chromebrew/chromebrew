@@ -634,9 +634,9 @@ def unpack(meta)
       @extract_dir = `tar -Izstd --exclude='./*/*' -tf #{build_cachefile} | cut -d '/' -f 1 | LC_ALL=C sort -u`.chomp
     else
       @pkg.cached_build = false
+      @archive_wait_timer = 0
       while File.file?("#{meta[:filename]}.lock")
-        @archive_wait_timer = 0
-        puts "Waited #{@archive_wait_timer}s for #{meta[:filename]} to be available..."
+        puts "\e[1A\e[KWaited #{@archive_wait_timer}s for #{meta[:filename]} to be available...\r"
         sleep 1
         @archive_wait_timer += 1
         abort "#{meta[:filename]} not available after #{@archive_wait_timer} seconds." if @archive_wait_timer > 300
@@ -1590,9 +1590,9 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       puts "\e[1A\e[KGenerating sha256sums ...\r".orange
       # 3g. If a local binary exists, check to make sure it isn't currently
       #     being written to.
+      @pkg_binary_wait_timer = 0
       while File.file?("#{local_tarfile}.lock")
-        @pkg_binary_wait_timer = 0
-        puts "Waited #{@pkg_binary_wait_timer}s for #{local_tarfile} to be available..."
+        puts "\e[1A\e[KWaited #{@pkg_binary_wait_timer}s for #{local_tarfile} to be available...\r"
         sleep 1
         @pkg_binary_wait_timer += 1
         abort "#{local_tarfile} not available after #{@pkg_binary_wait_timer} seconds." if @pkg_binary_wait_timer > 300
