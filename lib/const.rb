@@ -310,7 +310,7 @@ Dir.glob("#{CREW_LIB_PATH}/lib/buildsystems/*.rb") { |file| @buildsystems << Fil
 CREW_VALID_BUILDSYSTEMS ||= @buildsystems.sort!
 
 CREW_LICENSE ||= <<~LICENSESTRING
-  Copyright (C) 2013-2024 Chromebrew Authors
+  Copyright (C) 2013-2025 Chromebrew Authors
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
