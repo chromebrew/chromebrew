@@ -16,13 +16,12 @@ def check_buildsystem(pkg_path, verbose: false)
   rescue NameError => e
     buildsystem = e.name.to_s
   end
-  valid_buildsystems = %w[Autotools CMake Meson PERL Package Pip Python Qmake RUBY]
 
-  if valid_buildsystems.include?(buildsystem)
+  if CREW_VALID_BUILDSYSTEMS.include?(buildsystem)
     puts "Buildsystem test for #{name} passed.".lightgreen if verbose
     return 0
   else
-    puts "#{buildsystem} is an invalid buildsystem. Valid buildsystems include #{valid_buildsystems.join(', ')}.".lightred
+    puts "#{buildsystem} is an invalid buildsystem. Valid buildsystems include #{CREW_VALID_BUILDSYSTEMS.join(', ')}.".lightred
     puts "Buildsystem test for #{name} failed.".lightred
     return 1
   end

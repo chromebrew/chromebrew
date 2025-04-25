@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# getrealdeps version 1.6 (for Chromebrew)
+# getrealdeps version 1.7 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -105,6 +105,12 @@ def main(pkg)
   pkgdeps = pkgdeps.map { |i| i.gsub(/glibc_build.*/, 'glibc') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/glibc_lib.*/, 'glibc_lib') }.uniq.map(&:strip).reject(&:empty?)
 
+  # Massage the gcc entries in the dependency list.
+  pkgdeps = pkgdeps.map { |i| i.gsub('gcc_build', 'gcc_lib') }.uniq
+
+  # Massage the llvm entries in the dependency list.
+  pkgdeps = pkgdeps.map { |i| i.gsub('llvm_build', 'llvm_lib') }.uniq
+
   # Leave early if we didn't find any dependencies.
   return if pkgdeps.empty?
 
@@ -125,6 +131,30 @@ def main(pkg)
   if /llvm.*_lib/.match(pkg) || /llvm.*_dev/.match(pkg) || /libclc/.match(pkg) || /openmp/.match(pkg)
     missingpkgdeps.delete_if { |d| /llvm.*_build/.match(d) }
     pkgdeps.delete_if { |d| /llvm.*_build/.match(d) }
+  end
+  if /llvm.*_lib/.match(pkg)
+    missingpkgdeps.delete_if { |d| /llvm_lib/.match(d) }
+    pkgdeps.delete_if { |d| /llvm_lib/.match(d) }
+  end
+
+  # Do not add gcc_{dev,lib} runtime deps if this is a gcc_build
+  # package as those packages are created from the gcc_build package
+  # after it is built.
+  if /gcc_build/.match(pkg)
+    missingpkgdeps.delete_if { |d| /gcc.*_*/.match(d) }
+    pkgdeps.delete_if { |d| /gcc.*_*/.match(d) }
+  end
+
+  # Do not add gcc_build runtime deps if this is a gcc_{dev,lib}
+  # package, as the gcc_build package should only be a build dep for
+  # these packages.
+  if /gcc_lib/.match(pkg) || /gcc_dev/.match(pkg) || /libssp/.match(pkg)
+    missingpkgdeps.delete_if { |d| /gcc_build/.match(d) }
+    pkgdeps.delete_if { |d| /gcc_build/.match(d) }
+  end
+  if /gcc_lib/.match(pkg)
+    missingpkgdeps.delete_if { |d| /gcc_lib/.match(d) }
+    pkgdeps.delete_if { |d| /gcc_lib/.match(d) }
   end
 
   puts "\nPackage #{pkg} has runtime library dependencies on these packages:"
