@@ -78,9 +78,9 @@ CREW_BREW_DIR         ||= File.join(CREW_PREFIX, 'tmp/crew')
 CREW_DEST_DIR         ||= File.join(CREW_BREW_DIR, 'dest')
 CREW_DEST_PREFIX      ||= File.join(CREW_DEST_DIR, CREW_PREFIX)
 CREW_DEST_LIB_PREFIX  ||= File.join(CREW_DEST_DIR, CREW_LIB_PREFIX)
-CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 CREW_DEST_MAN_PREFIX  ||= File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 CREW_WINE_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'wine')
+CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 
 # Local constants for contributors.
 CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2> /dev/null`.chomp
