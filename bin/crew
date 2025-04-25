@@ -32,6 +32,7 @@ require_relative '../commands/search'
 require_relative '../commands/sysinfo'
 require_relative '../commands/whatprovides'
 require_relative '../lib/const'
+require_relative '../lib/crew_lockfile'
 require_gem 'pry-byebug' if CREW_DEBUG
 # Debugging starts at the following breakpoint when enabled via crew
 # being started with a --debug flag.
@@ -203,8 +204,14 @@ def cache_build
       FileUtils.mv build_cachefile, "#{build_cachefile}.bak", force: true if File.file?(build_cachefile)
       FileUtils.mv "#{build_cachefile}.sha256", "#{build_cachefile}.sha256.bak", force: true if File.file?("#{build_cachefile}.sha256")
       Dir.chdir(CREW_BREW_DIR) do
-        system "tar c#{@verbose} #{pkg_build_dirname} \
-        | nice -n 20 zstd -c  --ultra --fast -f -o #{build_cachefile} -"
+        @build_cachefile_lockfile = CrewLockfile.new "#{build_cachefile}.lock"
+        begin
+          @build_cachefile_lockfile.lock
+          system "tar c#{@verbose} #{pkg_build_dirname} \
+          | nice -n 20 zstd -c  --ultra --fast -f -o #{build_cachefile} -"
+        ensure
+          @build_cachefile_lockfile.unlock
+        end
       end
     end
     system "sha256sum #{build_cachefile} > #{build_cachefile}.sha256"
@@ -546,6 +553,13 @@ def download
         end
         puts "Git cachefile is #{cachefile}".orange if CREW_VERBOSE
         if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
+          while File.file?("#{cachefile}.lock")
+            @cache_wait_timer = 0
+            puts "Waited #{@cache_wait_timer}s for #{cachefile} generation..."
+            sleep 1
+            @cache_wait_timer += 1
+            abort "Cachefile not available after #{@cache_wait_timer} seconds." if @cache_wait_timer > 300
+          end
           if Dir.chdir CREW_CACHE_DIR do
                system "sha256sum -c #{cachefile}.sha256"
              end
@@ -586,10 +600,16 @@ def download
         Dir.chdir @extract_dir do
           # Do not use --exclude-vcs to exclude .git
           # because some builds will use that information.
-          system "tar c#{@verbose} \
-            $(find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
-            nice -n 20 zstd -c -T0 --ultra -20 - >  \
-            #{cachefile}"
+          @git_cachefile_lockfile = CrewLockfile.new "#{cachefile}.lock"
+          begin
+            @git_cachefile_lockfile.lock
+            system "tar c#{@verbose} \
+              $(find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
+              nice -n 20 zstd -c -T0 --ultra -20 - >  \
+              #{cachefile}"
+          ensure
+            @git_cachefile_lockfile.unlock
+          end
         end
         system 'sha256sum', cachefile, out: "#{cachefile}.sha256"
         puts 'Git repo cached.'.lightgreen
@@ -614,6 +634,13 @@ def unpack(meta)
       @extract_dir = `tar -Izstd --exclude='./*/*' -tf #{build_cachefile} | cut -d '/' -f 1 | LC_ALL=C sort -u`.chomp
     else
       @pkg.cached_build = false
+      while File.file?("#{meta[:filename]}.lock")
+        @archive_wait_timer = 0
+        puts "Waited #{@archive_wait_timer}s for #{meta[:filename]} to be available..."
+        sleep 1
+        @archive_wait_timer += 1
+        abort "#{meta[:filename]} not available after #{@archive_wait_timer} seconds." if @archive_wait_timer > 300
+      end
       case File.basename meta[:filename]
       when /\.zip$/i
         puts "Unpacking archive using 'unzip', this may take a while..."
@@ -1357,17 +1384,6 @@ def build_package(crew_archive_dest)
   meta = download
   target_dir = unpack meta
 
-  # Source ~/.bashrc before every build, and set PATH.
-  # From https://stackoverflow.com/a/12303443
-  env = `bash -c ". ~/.bashrc && env"`
-  env.split("\n").each do |line|
-    key, value = line.split('=', 2)
-    if key == 'PATH'
-      ENV[key] = value
-    else
-      ENV[key] ||= value unless value.nil? || value.empty?
-    end
-  end
   # Build from source and place binaries in CREW_DEST_DIR.
   build_and_preconfigure target_dir
 
@@ -1403,7 +1419,13 @@ def archive_package(crew_archive_dest)
     puts 'Using xz to compress package. This may take some time.'.lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
-      system "tar c#{@verbose}Jf #{crew_archive_dest}/#{pkg_name} *"
+      @pkg_name_lockfile = CrewLockfile.new "#{crew_archive_dest}/#{pkg_name}.lock"
+      begin
+        @pkg_name_lockfile.lock
+        system "tar c#{@verbose}Jf #{crew_archive_dest}/#{pkg_name} *"
+      ensure
+        @pkg_name_lockfile.unlock
+      end
     end
   else
     puts 'Using zstd to compress package. This may take some time.'.lightblue
@@ -1413,7 +1435,13 @@ def archive_package(crew_archive_dest)
       # decompression speed over compression speed.
       # See https://lists.archlinux.org/pipermail/arch-dev-public/2019-March/029542.html
       # Use nice so that user can (possibly) do other things during compression.
-      system "tar c#{@verbose} * | nice -n 20 zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
+      @pkg_name_lockfile = CrewLockfile.new "#{crew_archive_dest}/#{pkg_name}.lock"
+      begin
+        @pkg_name_lockfile.lock
+        system "tar c#{@verbose} * | nice -n 20 zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
+      ensure
+        @pkg_name_lockfile.unlock
+      end
     end
   end
   system "sha256sum #{crew_archive_dest}/#{pkg_name} > #{crew_archive_dest}/#{pkg_name}.sha256"
@@ -1436,6 +1464,41 @@ def archive_package(crew_archive_dest)
 end
 
 def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_username = nil, binary_compression = nil)
+  # Architecture independent:
+  # 1. Abort early if package manifests exist but are empty, as this
+  #    likely indicates a failed build.
+  # 2. Check for binary_compression value in file.
+  # 2a. If missing, determine binary_compression value:
+  #     Always set binary_compression to '.gem' for Ruby gems, otherwise
+  #     assume a default of 'tar.zst'
+  # 2b. Add missing binary_compression value to file.
+  #
+  # 3. Set sha256 hash variables for all architectures to nil.
+  #
+  # Per Architecture:
+  # 3a. Pull sha256 values for binary from package file, if there.
+  # 3b. Get gitlab URL for uploaded binary.
+  # 3c. Check to see if an existing upload exists.
+  # 3d. Check for local binary.
+  # 3e. If a local binary doesn't exist, but a remote binary exists,
+  #     download it.
+  # 3f. Skip architecture if a local or remote binary doesn't exist.
+  # 3g. If a local binary exists, check to make sure it isn't currently
+  #     being written to.
+  # 3h. Figure out sha256 for local binary. (local_sha256)
+  # 3i. If an existing upload exists, check its hash. (remote_sha256)
+  # 3j. If the hashes are different, then ask if the new binary
+  #     should be uploaded. (Default to no.)
+  # 3k. If the hashes are the same, don't bother uploading.
+  # 3l. If an existing upload does not exist, decide to upload.
+  # 4.  Upload.
+  # 5. Generate new or replacement binary_sha256 block and add to
+  #    package file.
+  # 6. If run architecture specfic manifests for package are missing,
+  #    attempt to install the package so the manifest files for the
+  #    currently running architecture are saved locally. (This is used
+  #    by build workflows to make sure updated manifests get
+  #    uploaded.)
   abort "\nPackage to be uploaded was not specified.\n".lightred if pkg_name.nil?
   abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if gitlab_token.nil?
   abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if gitlab_token_username.nil?
@@ -1444,99 +1507,154 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
   packages.strip!
 
   [packages].each do |package|
-    binary_compression_not_in_file = binary_compression.nil?
     pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+    # 1. Abort early if package manifests exist but are empty, as this
+    #    likely indicates a failed build.
+    abort "#{package} has an empty manifest. Something probably went wrong with the build.".lightred if File.empty?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr}/#{@pkg.name}.filelist")
+
+    # 2. Check for binary_compression value in file.
+    binary_compression_not_in_file = binary_compression.nil?
+    if binary_compression_not_in_file
+      # 2a. If missing, determine binary_compression value:
+      #     Always set binary_compression to '.gem' for Ruby gems, otherwise
+      #     assume a default of 'tar.zst'
+      binary_compression = @pkg.superclass.to_s == 'RUBY' ? 'gem' : 'tar.zst'
+      binary_compression_line = "  binary_compression '#{binary_compression}'"
+      # 2b. Add missing binary_compression value to file.
+      puts "Setting binary compression in #{pkg_file} to '#{binary_compression}'..."
+      file = File.read(pkg_file)
+      bc_re = /^\ \ binary_compression.*/
+      source_re = /^\ \ source_sha256.*/
+      git_hashtag_re = /^\ \ git_hashtag.*/
+      source_url_re = /^\ \ source_url.*/
+      if file.match(bc_re)
+        File.write(pkg_file, file.gsub(bc_re, binary_compression_line))
+      elsif file.match(source_re)
+        source_sha256_bc_line = "#{file.match(source_re)}\n#{binary_compression_line}"
+        File.write(pkg_file, file.gsub(source_re, source_sha256_bc_line))
+      elsif file.match(git_hashtag_re)
+        git_hashtag_bc_line = "#{file.match(git_hashtag_re)}\n#{binary_compression_line}"
+        File.write(pkg_file, file.gsub(git_hashtag_re, git_hashtag_bc_line))
+      elsif file.match(source_url_re)
+        source_url_bc_line = "#{file.match(source_url_re)}\n#{binary_compression_line}"
+        File.write(pkg_file, file.gsub(source_url_re, source_url_bc_line))
+      else
+        puts "Unable to tell where to add \"#{binary_compression_line}\" to #{pkg_file}. Please add it and manually.".lightblue
+      end
+    end
+
+    # 3. Set sha256 hash variables for all architectures to nil.
     binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
     # The following is used to figure out where a non-standard
     # binary_sha256 section might be, such as in a gcc_lib file.
     starting_binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
-    binary_compression = 'gem' if @pkg.superclass.to_s == 'RUBY'
+
     %w[x86_64 i686 armv7l].each do |arch|
-      # Load existing binary_sha256 hash from the package file.
+      upload_binary = false
+      local_binary = false
+      puts "Processing package: #{package}, Arch: #{arch}".yellow
+      puts
+      # 3a. Pull sha256 values for binary from package file, if there.
       binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
       starting_binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
       release_dir = "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}"
-      new_tarfile = if binary_compression.nil?
-                      Dir["#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
-                    else
-                      "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
-                    end
-      if new_tarfile.nil? || !File.file?(new_tarfile)
-        puts "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression.nil? ? '(tar.xz|tar.zst)' : binary_compression} not found.\n".lightred
-        next arch
-      end
+      local_tarfile = "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
 
-      # If the filelist exists and is empty, the build was probably supposed to have files.
-      abort "#{package} has an empty manifest. Something probably went wrong with the build.".lightred if File.empty?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{arch}/#{@pkg.name.chr}/#{@pkg.name}.filelist")
-
-      if binary_compression_not_in_file
-        ext = File.extname(new_tarfile)
-        binary_compression = @pkg.superclass.to_s == 'RUBY' ? 'gem' : "tar#{ext}"
-        binary_compression_line = "  binary_compression '#{binary_compression}'"
-        puts "Setting binary compression in #{pkg_file} to '#{binary_compression}'..."
-        # Add binary compression setting, and add the line if it doesn't exist.
-        file = File.read(pkg_file)
-        bc_re = /^\ \ binary_compression.*/
-        source_re = /^\ \ source_sha256.*/
-        git_hashtag_re = /^\ \ git_hashtag.*/
-        source_url_re = /^\ \ source_url.*/
-        if file.match(bc_re)
-          File.write(pkg_file, file.gsub(bc_re, binary_compression_line))
-        elsif file.match(source_re)
-          source_sha256_bc_line = "#{file.match(source_re)}\n#{binary_compression_line}"
-          File.write(pkg_file, file.gsub(source_re, source_sha256_bc_line))
-        elsif file.match(git_hashtag_re)
-          git_hashtag_bc_line = "#{file.match(git_hashtag_re)}\n#{binary_compression_line}"
-          File.write(pkg_file, file.gsub(git_hashtag_re, git_hashtag_bc_line))
-        elsif file.match(source_url_re)
-          source_url_bc_line = "#{file.match(source_url_re)}\n#{binary_compression_line}"
-          File.write(pkg_file, file.gsub(source_url_re, source_url_bc_line))
-        else
-          puts "Unable to tell where to add \"#{binary_compression_line}\" to #{pkg_file}. Please add it and manually.".lightblue
-        end
-      end
-      puts "Package: #{package}, Arch: #{arch}".yellow
-      puts
-      puts "\e[1A\e[KGenerating sha256sum ...\r".orange
-      new_sha256 = Digest::SHA256.hexdigest(File.read(new_tarfile))
-      puts "Uploading #{new_tarfile} ...".orange if CREW_VERBOSE
-      noname = new_tarfile.split("#{package}-").last
+      # 3b. Get gitlab URL for uploaded binary.
+      noname = local_tarfile.split("#{package}-").last
       new_version = noname.split('-chromeos').first
-      new_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
-      token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
+      new_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{package}/#{new_version}_#{arch}/#{local_tarfile}".gsub("#{release_dir}/", '')
 
+      # 3c. Check to see if an existing upload exists.
       puts "\e[1A\e[KChecking for existing upload ...\r".orange
-      if `curl -fsI #{new_url}`.lines.first.split[1] == '200'
-        puts "\n#{File.basename(new_tarfile)} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
-        if @opt_force || Package.agree_default_no('Do you want to overwrite the existing upload instead')
-          puts "\e[1A\e[KOverwriting existing upload...\r".orange
-          crewlog "#{arch} = #{new_sha256}"
-          binary_sha256_hash[arch.to_sym] = new_sha256
-        else
-          puts "\e[1A\e[KWill NOT overwite the existing upload. Determining sha256 of already uploaded file...\r".orange
-          upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
-          crewlog "#{arch} = #{upstream_sha256}"
-          binary_sha256_hash[arch.to_sym] = upstream_sha256
-          next arch
+      remote_binary = `curl -fsI #{new_url}`.lines.first.split[1] == '200'
+      puts "\e[1A\e[KUpload exists.\n".green
+
+      # 3d. Check for local binary.
+      if local_tarfile.nil? || !File.file?(local_tarfile)
+        puts "\e[1A\e[K#{local_tarfile} not found.\n\r".lightred
+        puts "\e[1A\e[KSkipping upload for #{arch}.\n\r".lightred
+        local_binary = false
+        next arch unless remote_binary
+        # 3e. If a local binary doesn't exist, but a remote binary exists,
+        #     download it.
+        system "curl -Ls #{new_url} > #{local_tarfile}"
+      else
+        local_binary = true
+        puts "\e[1A\e[KLocal package binary exists.\n".green
+      end
+
+      # 3f. Skip architecture if a local or remote binary doesn't exist.
+      next arch unless local_binary || remote_binary
+
+      puts "\e[1A\e[KGenerating sha256sums ...\r".orange
+      # 3g. If a local binary exists, check to make sure it isn't currently
+      #     being written to.
+      while File.file?("#{local_tarfile}.lock")
+        @pkg_binary_wait_timer = 0
+        puts "Waited #{@pkg_binary_wait_timer}s for #{local_tarfile} to be available..."
+        sleep 1
+        @pkg_binary_wait_timer += 1
+        abort "#{local_tarfile} not available after #{@pkg_binary_wait_timer} seconds." if @pkg_binary_wait_timer > 300
+      end
+      # At this point we either have a local build, or a downloaded
+      # binary from a prior build.
+      # 3h. Figure out sha256 for local binary. (local_sha256)
+      local_sha256 = Digest::SHA256.hexdigest(File.read(local_tarfile))
+
+      # 3i. If an existing upload exists, check its hash. (remote_sha256)
+      if remote_binary
+        remote_sha256 = if local_binary
+                          `curl -Ls #{new_url} | sha256sum`.chomp.split.first
+                        else
+                          local_sha256
+                        end
+      end
+
+      if remote_binary
+        if local_binary
+          if remote_sha256 == local_sha256
+            # 3k. If the hashes are the same, don't bother uploading.
+            puts "\e[1A\e[KThis build of #{File.basename(local_tarfile)} has already been uploaded.\n".lightred
+            crewlog "#{arch} = #{local_sha256}"
+            binary_sha256_hash[arch.to_sym] = local_sha256
+          elsif @opt_force || Package.agree_default_no('Do you want to overwrite the existing upload')
+            # 3j. If the hashes are different, then ask if the new binary
+            #     should be uploaded. (Default to no.)
+            puts "\e[1A\e[KOverwriting existing upload...\r".orange
+            crewlog "#{arch} = #{local_sha256}"
+            binary_sha256_hash[arch.to_sym] = local_sha256
+            upload_binary = true
+          else
+            puts "\e[1A\e[K\nAnother build of #{File.basename(local_tarfile)} with sha256 #{remote_sha256} has already been uploaded.\n".lightred
+            crewlog "#{arch} = #{remote_sha256}"
+            binary_sha256_hash[arch.to_sym] = remote_sha256
+          end
         end
       else
-        crewlog "#{arch} = #{new_sha256}"
-        binary_sha256_hash[arch.to_sym] = new_sha256
+        # 3l. If an existing upload does not exist, decide to upload.
+        upload_binary = true if local_binary
+        crewlog "#{arch} = #{local_sha256}"
+        binary_sha256_hash[arch.to_sym] = local_sha256
       end
 
-      puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
+      next unless upload_binary
+      # 4.  Upload.
+      puts "Uploading #{local_tarfile} ...".orange if CREW_VERBOSE
+      token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
+      puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{local_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
       puts "\e[1A\e[KUploading...\r".orange
-      output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
+      output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{local_tarfile}" "#{new_url}" | cat`.chomp
       puts "\e[1A\e[KChecking upload...\r".orange
       if output.include?('201 Created')
         puts "curl -Ls #{new_url} | sha256sum" if CREW_VERBOSE
-        upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
-        if upstream_sha256 == new_sha256
+        remote_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
+        if remote_sha256 == local_sha256
           puts "#{output}\n".lightgreen
         else
           if CREW_VERBOSE
-            puts "expected sha256 hash=#{new_sha256}"
-            puts "upstream sha256 hash=#{upstream_sha256}"
+            puts "expected sha256 hash=#{local_sha256}"
+            puts "remote sha256 hash=#{remote_sha256}"
           end
           puts "#{output}. Checksum mismatch. Skipping binary_sha256 update in #{pkg_file}...".lightred
           next
@@ -1548,7 +1666,8 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       end
     end
 
-    # Generate new or replacement binary_sha256 block.
+    # 5. Generate new or replacement binary_sha256 block and add to
+    # package file.
     puts "\e[1A\e[KGenerating binary_sha256 block for package file...\r".orange
     binary_sha256_block = ''
     binary_sha256_block << "\n  binary_sha256({\n"
@@ -1601,6 +1720,12 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         end
       end
     end
+    # 6. If run architecture specfic manifests for package are missing,
+    #    attempt to install the package so the manifest files for the
+    #    currently running architecture are saved locally. (This is used
+    #    by build workflows to make sure updated manifests get
+    #    uploaded.)
+    system "crew install #{@pkg.name}", exception: false unless File.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr}/#{@pkg.name}.filelist")
     puts "\e[1A\e[K🎉 Uploads complete for #{package}. 🎉\r\n".lightgreen
   end
 end
