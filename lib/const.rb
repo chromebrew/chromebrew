@@ -76,16 +76,20 @@ CREW_CONFIG_PATH      ||= File.join(CREW_PREFIX, 'etc/crew')
 CREW_META_PATH        ||= File.join(CREW_CONFIG_PATH, 'meta')
 CREW_BREW_DIR         ||= File.join(CREW_PREFIX, 'tmp/crew')
 CREW_DEST_DIR         ||= File.join(CREW_BREW_DIR, 'dest')
-CREW_WINE_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'wine')
 CREW_DEST_PREFIX      ||= File.join(CREW_DEST_DIR, CREW_PREFIX)
 CREW_DEST_LIB_PREFIX  ||= File.join(CREW_DEST_DIR, CREW_LIB_PREFIX)
-CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 CREW_DEST_MAN_PREFIX  ||= File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
+CREW_WINE_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'wine')
+CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 
 # Local constants for contributors.
 CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2> /dev/null`.chomp
 CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
+
+# Glibc related constants
+CREW_GLIBC_PREFIX      ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
+CREW_GLIBC_INTERPRETER ||= File.symlink?("#{CREW_PREFIX}/bin/ld.so") ? File.realpath("#{CREW_PREFIX}/bin/ld.so") : nil
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX      ||= File.join(CREW_PREFIX, '/share/musl/')
@@ -141,7 +145,7 @@ USER ||= Etc.getlogin unless defined?(USER)
 unless defined?(CHROMEOS_RELEASE)
   CHROMEOS_RELEASE =
     if File.exist?('/etc/lsb-release')
-      File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE||=(.+)/, 1]
+      File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
     else
       # newer version of Chrome OS exports info to env by default
       ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
@@ -202,14 +206,14 @@ when 'x86_64'
 end
 
 CREW_LINKER ||= ENV.fetch('CREW_LINKER', 'mold') unless defined?(CREW_LINKER)
-CREW_GLIBC_OVERRIDE_LINKER_FLAGS ||= ARCH == 'x86_64' && LIBC_VERSION.to_f >= 2.35 ? " #{File.join(CREW_LIB_PREFIX, 'libC.so.6')} " : ''
-CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', CREW_GLIBC_OVERRIDE_LINKER_FLAGS) unless defined?(CREW_LINKER_FLAGS)
+CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', '-flto=auto') unless defined?(CREW_LINKER_FLAGS)
 
 CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
 CREW_COMMON_FLAGS         ||= "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS ||= "#{CREW_CORE_FLAGS} -fno-lto"
-CREW_LDFLAGS              ||= "-flto=auto #{CREW_LINKER_FLAGS}"
 CREW_FNO_LTO_LDFLAGS      ||= '-fno-lto'
+
+CREW_LINKER_FLAGS << " -Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER} -L#{CREW_GLIBC_PREFIX}" if CREW_GLIBC_INTERPRETER
 
 CREW_ENV_OPTIONS_HASH ||=
   if CREW_DISABLE_ENV_OPTIONS
@@ -220,8 +224,8 @@ CREW_ENV_OPTIONS_HASH ||=
       'CXXFLAGS'        => CREW_COMMON_FLAGS,
       'FCFLAGS'         => CREW_COMMON_FLAGS,
       'FFLAGS'          => CREW_COMMON_FLAGS,
-      'LD_LIBRARY_PATH' => CREW_LIB_PREFIX,
-      'LDFLAGS'         => CREW_LDFLAGS
+      'LIBRARY_PATH'    => "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+      'LDFLAGS'         => CREW_LINKER_FLAGS
     }
   end
 
@@ -258,8 +262,10 @@ CREW_MESON_OPTIONS ||= <<~OPT.chomp
   -Db_lto=true \
   -Dstrip=true \
   -Db_pie=true \
+  -Dc_args='#{CREW_CORE_FLAGS}' \
+  -Dc_link_args='#{CREW_LINKER_FLAGS}' \
   -Dcpp_args='#{CREW_CORE_FLAGS}' \
-  -Dc_args='#{CREW_CORE_FLAGS}'
+  -Dcpp_link_args='#{CREW_LINKER_FLAGS}'
 OPT
 
 # Use ninja or samurai
@@ -273,10 +279,10 @@ CREW_CMAKE_OPTIONS ||= <<~OPT.chomp
   -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
   -DCMAKE_C_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
   -DCMAKE_CXX_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
-  -DCMAKE_EXE_LINKER_FLAGS='#{CREW_LDFLAGS}' \
+  -DCMAKE_EXE_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
   -DCMAKE_LINKER_TYPE=#{CREW_LINKER.upcase} \
-  -DCMAKE_SHARED_LINKER_FLAGS='#{CREW_LDFLAGS}' \
-  -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LDFLAGS}' \
+  -DCMAKE_SHARED_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
+  -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE \
   -DCMAKE_BUILD_TYPE=Release
 OPT
