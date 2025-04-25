@@ -1567,7 +1567,6 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
 
       # 3c. Check to see if an existing upload exists.
       puts "\e[1A\e[KChecking for existing upload ...\r".orange
-
       remote_binary = `curl -fsI #{new_url}`.lines.first.split[1] == '200'
       puts "\e[1A\e[KUpload exists.\n".green
 
