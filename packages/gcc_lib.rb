@@ -9,7 +9,7 @@ class Gcc_lib < Package
                       else
                         ARCH.eql?('i686') ? '2.23' : '2.27'
                       end
-  version "15.1.0-RC-20250423-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
+  version "15.1.0-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
@@ -20,16 +20,16 @@ class Gcc_lib < Package
   case @gcc_libc_version
   when '2.23'
 
-    binary_sha256({
-         i686: '373c699eba4b866873f62f9bc6c815b3df6f3da826ae35cabebbbe7da38892db'
-    })
+  binary_sha256({
+       i686: '13540e8567b2b76898be5df457df9dd291c0e1161b4eba4a73a0d80ec841be37'
+  })
   when '2.27', '2.32', '2.33', '2.35', '2.37'
 
-    binary_sha256({
-      aarch64: 'aeaa24acdaa1301bd53490e88375d13b54d020c94a07bc44f570aeeafdc72ded',
-       armv7l: 'aeaa24acdaa1301bd53490e88375d13b54d020c94a07bc44f570aeeafdc72ded',
-       x86_64: '28debdd2cb26df240cfa3529f40695c26b47c6ded9dfe9a8c8457097ce406171'
-    })
+  binary_sha256({
+    aarch64: 'b84d23e78533f9a4cdefb866370a8bd1d699f50e197d3b567dded7bf5d84a069',
+     armv7l: 'b84d23e78533f9a4cdefb866370a8bd1d699f50e197d3b567dded7bf5d84a069',
+     x86_64: '2a04de4c08af3532c88f398838e9ea1b71126bf28faf159b101df59b648d676f'
+  })
   end
 
   depends_on 'gcc_build' => :build
