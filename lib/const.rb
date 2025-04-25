@@ -305,7 +305,9 @@ CREW_LLVM_VER ||= Kernel.system('which llvm-config', %i[out err] => File::NULL) 
 CREW_PERL_VER ||= Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl -MConfig -e "print \\\"\\\$Config{'PERL_API_REVISION'}.\\\$Config{'PERL_API_VERSION'}\\\";"`}" : 'perl5.40' unless defined?(CREW_PERL_VER)
 CREW_PY_VER ||= Kernel.system("#{CREW_PREFIX}/bin/python3 --version", %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : 'py3.13' unless defined?(CREW_PY_VER)
 CREW_RUBY_VER ||= "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}" unless defined?(CREW_RUBY_VER)
-CREW_VALID_BUILDSYSTEMS ||= %w[Autotools CMake Meson PERL Package Pip Python Qmake RUBY RUST]
+@buildsystems = []
+Dir.glob("#{CREW_LIB_PATH}/lib/buildsystems/*.rb") { |file| @buildsystems << File.foreach(file).grep(/^class/).to_s.split[1] }
+CREW_VALID_BUILDSYSTEMS ||= @buildsystems
 
 CREW_LICENSE ||= <<~LICENSESTRING
   Copyright (C) 2013-2024 Chromebrew Authors
