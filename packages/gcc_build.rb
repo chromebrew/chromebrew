@@ -8,13 +8,11 @@ class Gcc_build < Package
                       else
                         ARCH.eql?('i686') ? '2.23' : '2.27'
                       end
-  version "15.1.0-RC-20250423-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
+  version "15.1.0-glibc#{@gcc_libc_version}"
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://gcc.gnu.org/pub/gcc/snapshots/15.1.0-RC-20250423/gcc-15.1.0-RC-20250423.tar.xz'
-  source_sha256 '50585c01ba3b7ca6ed1bc49efe8de9bd83583a5a4f501d7238c4976ba3784b59'
-  # source_url 'https://github.com/gcc-mirror/gcc.git'
-  # git_hashtag "releases/gcc-#{version.split('-').first}"
+  source_url 'https://github.com/gcc-mirror/gcc.git'
+  git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   case @gcc_libc_version
