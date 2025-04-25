@@ -20,7 +20,7 @@ class Gcc_dev < Package
   case @gcc_libc_version
   when '2.23'
 
-  binary_sha256({
+    binary_sha256({
        i686: 'b00b432593350b255d882814e94d1d1086e23de91e2216c4b4008b8477cdf73a'
   })
   when '2.27', '2.32', '2.33', '2.35', '2.37'
