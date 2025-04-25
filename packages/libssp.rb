@@ -21,7 +21,7 @@ class Libssp < Package
   case @gcc_libc_version
   when '2.23'
 
-  binary_sha256({
+    binary_sha256({
        i686: '2a33ccdac9f6607f96dc5a27355207b23fe73af4b1d0f91d215d15dce69d1f14'
   })
   when '2.27', '2.32', '2.33', '2.35', '2.37'
