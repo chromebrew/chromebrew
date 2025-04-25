@@ -26,7 +26,7 @@ class Libssp < Package
   })
   when '2.27', '2.32', '2.33', '2.35', '2.37'
 
-  binary_sha256({
+    binary_sha256({
     aarch64: 'c25522eb2ebdaf61b9a1e2b520c29c5dd11283037059bb44f3093aaecee2931e',
      armv7l: 'c25522eb2ebdaf61b9a1e2b520c29c5dd11283037059bb44f3093aaecee2931e',
      x86_64: 'b38d79dd4f5f87530d218b7ce8bab8f7207e5bf2c541a4fe86db7ded3cededfa'
