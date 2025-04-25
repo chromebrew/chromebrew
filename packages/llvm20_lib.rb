@@ -15,7 +15,7 @@ class Llvm20_lib < Package
   binary_sha256({
     aarch64: '0ed2a366ec26f972efd788117cbd0a1cb98e52ceebe3d5acc8e1a7d6a1c56f85',
      armv7l: '0ed2a366ec26f972efd788117cbd0a1cb98e52ceebe3d5acc8e1a7d6a1c56f85',
-       i686: 'd5d1a558bc1d154577b9a0dd5c7da62999911fe7cae33ddfaae25e8ebb6af3f1',
+       i686: 'e29b299528b784cb2006449f2968ca78dc521d40f6b9238692665c6b4824152d',
      x86_64: 'b6cd2e66f113d97f4453319d7457bbe20cf88dbccdf7fdfdcea50557ef7dfc45'
   })
 
