@@ -24,7 +24,6 @@ class RUST < Package
       --manifest-path Cargo.toml\""
     system rust_env, "bash -c \"#{@pre_rust_options} cargo build \
       --profile=#{@rust_release_profile.to_s.empty? ? 'release' : @rust_release_profile} \
-      --frozen \
       #{@rust_options} \
       --manifest-path Cargo.toml\""
     @rust_build_extras&.call
@@ -41,7 +40,6 @@ class RUST < Package
       }.transform_keys(&:to_s)
 
     system rust_env, "bash -c \"cargo install \
-      --frozen \
       --offline \
       --no-track \
       --path . \

@@ -18,7 +18,7 @@ jobs:
       - name: Rubocop
         uses: reviewdog/action-rubocop@v2
         with:
-           fail_on_error: true
+           fail_level: any
            filter_mode: nofilter
            only_changed: true
            reporter: github-pr-review
