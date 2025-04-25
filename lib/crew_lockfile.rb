@@ -203,7 +203,7 @@ unless defined?($__crew_lockfile__) || defined?(CrewLockfile)
     end
 
     def lock
-      raise StackingLockError, "<#{@path}> is locked!" if @locked
+      raise StackingLockError, "<#{@path}> is locked!".lightred if @locked
 
       sweep unless @dont_sweep
 
