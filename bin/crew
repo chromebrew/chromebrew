@@ -1568,12 +1568,12 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       # 3c. Check to see if an existing upload exists.
       puts "\e[1A\e[KChecking for existing upload ...\r".orange
       remote_binary = `curl -fsI #{new_url}`.lines.first.split[1] == '200'
-
-      puts "\n#{File.basename(local_tarfile)} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
+      puts "\e[1A\e[KUpload exists.\n".green
 
       # 3d. Check for local binary.
       if local_tarfile.nil? || !File.file?(local_tarfile)
-        puts "#{release_dir}/#{local_tarfile} not found.\n".lightred
+        puts "\e[1A\e[K#{local_tarfile} not found.\n\r".lightred
+        puts "\e[1A\e[KSkipping upload for #{arch}.\n\r".lightred
         local_binary = false
         next arch unless remote_binary
         # 3e. If a local binary doesn't exist, but a remote binary exists,
@@ -1581,6 +1581,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         system "curl -Ls #{new_url} > #{local_tarfile}"
       else
         local_binary = true
+        puts "\e[1A\e[KLocal package binary exists.\n".green
       end
 
       # 3f. Skip architecture if a local or remote binary doesn't exist.
@@ -1611,24 +1612,24 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       end
 
       if remote_binary
-        if local_binary && remote_sha256 != local_sha256
-          # 3j. If the hashes are different, then ask if the new binary
-          #     should be uploaded. (Default to no.)
-          if @opt_force || Package.agree_default_no('Do you want to overwrite the existing upload')
+        if local_binary
+          if remote_sha256 == local_sha256
+            # 3k. If the hashes are the same, don't bother uploading.
+            puts "\e[1A\e[KThis build of #{File.basename(local_tarfile)} has already been uploaded.\n".lightred
+            crewlog "#{arch} = #{local_sha256}"
+            binary_sha256_hash[arch.to_sym] = local_sha256
+          elsif @opt_force || Package.agree_default_no('Do you want to overwrite the existing upload')
+            # 3j. If the hashes are different, then ask if the new binary
+            #     should be uploaded. (Default to no.)
             puts "\e[1A\e[KOverwriting existing upload...\r".orange
             crewlog "#{arch} = #{local_sha256}"
             binary_sha256_hash[arch.to_sym] = local_sha256
             upload_binary = true
           else
-            puts "\nAnother build of #{File.basename(local_tarfile)} with sha256 #{remote_sha256} has already been uploaded.\n".lightred
+            puts "\e[1A\e[K\nAnother build of #{File.basename(local_tarfile)} with sha256 #{remote_sha256} has already been uploaded.\n".lightred
             crewlog "#{arch} = #{remote_sha256}"
             binary_sha256_hash[arch.to_sym] = remote_sha256
           end
-        else
-          # 3k. If the hashes are the same, don't bother uploading.
-          puts "\n#{File.basename(local_tarfile)} has already been uploaded.\nPlease change the #{package} package version from #{new_version} and try again.\n".lightred
-          crewlog "#{arch} = #{local_sha256}"
-          binary_sha256_hash[arch.to_sym] = local_sha256
         end
       else
         # 3l. If an existing upload does not exist, decide to upload.

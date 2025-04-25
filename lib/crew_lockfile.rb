@@ -16,6 +16,7 @@ unless defined?($__crew_lockfile__) || defined?(CrewLockfile)
   require 'socket'
   require 'timeout'
   require 'fileutils'
+  require_relative '../lib/color'
 
   class CrewLockfile
     VERSION = '2.1.9'
@@ -226,7 +227,7 @@ unless defined?($__crew_lockfile__) || defined?(CrewLockfile)
                   try_again!
                 end
                 lock_stat = File.lstat @path
-                raise StatLockError, 'stats do not agree' unless
+                raise StatLockError, 'stats do not agree'.lightred unless
                   (tmp_stat.rdev == lock_stat.rdev) && (tmp_stat.ino == lock_stat.ino)
                 trace { "acquired lock <#{@path}>" }
                 @locked = true
@@ -541,7 +542,7 @@ unless defined?($__crew_lockfile__) || defined?(CrewLockfile)
     end
 
     def errmsg(err)
-      format("%s (%s)\n%s\n", err.class, err.message, err.backtrace.join("\n"))
+      format("%s (%s)\n%s\n", err.class, err.message, err.backtrace.join("\n")).lightred
     end
 
     def attempt
