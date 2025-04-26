@@ -3,6 +3,7 @@ require 'buildsystems/autotools'
 class Bsdgames < Autotools
   description 'A compilation of text-based games and programs from UNIX folklore.'
   homepage 'https://www.polyomino.org.uk/computer/software/bsd-games/'
+  license 'BSD'
   @_ver = '2.17'
   @_debver = '34'
   version "#{@_ver}-debian#{@_debver}"
