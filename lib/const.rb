@@ -206,15 +206,14 @@ when 'x86_64'
 end
 
 CREW_LINKER ||= ENV.fetch('CREW_LINKER', 'mold') unless defined?(CREW_LINKER)
-CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', '') unless defined?(CREW_LINKER_FLAGS)
+CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', '-flto=auto') unless defined?(CREW_LINKER_FLAGS)
 
 CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
 CREW_COMMON_FLAGS         ||= "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS ||= "#{CREW_CORE_FLAGS} -fno-lto"
-CREW_LDFLAGS              ||= "#{CREW_LINKER_FLAGS} -flto=auto"
 CREW_FNO_LTO_LDFLAGS      ||= '-fno-lto'
 
-CREW_LDFLAGS << " -Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER}" if CREW_GLIBC_INTERPRETER
+CREW_LINKER_FLAGS << " -Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER}" if CREW_GLIBC_INTERPRETER
 
 CREW_ENV_OPTIONS_HASH ||=
   if CREW_DISABLE_ENV_OPTIONS
@@ -226,7 +225,7 @@ CREW_ENV_OPTIONS_HASH ||=
       'FCFLAGS'         => CREW_COMMON_FLAGS,
       'FFLAGS'          => CREW_COMMON_FLAGS,
       'LD_LIBRARY_PATH' => CREW_LIB_PREFIX,
-      'LDFLAGS'         => CREW_LDFLAGS
+      'LDFLAGS'         => CREW_LINKER_FLAGS
     }
   end
 
@@ -265,8 +264,8 @@ CREW_MESON_OPTIONS ||= <<~OPT.chomp
   -Db_pie=true \
   -Dcpp_args='#{CREW_CORE_FLAGS}' \
   -Dc_args='#{CREW_CORE_FLAGS}' \
-  -Dc_link_args='#{CREW_LDFLAGS}' \
-  -Dcpp_link_args='#{CREW_LDFLAGS}'
+  -Dc_link_args='#{CREW_LINKER_FLAGS}' \
+  -Dcpp_link_args='#{CREW_LINKER_FLAGS}'
 OPT
 
 # Use ninja or samurai
@@ -280,10 +279,10 @@ CREW_CMAKE_OPTIONS ||= <<~OPT.chomp
   -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
   -DCMAKE_C_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
   -DCMAKE_CXX_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
-  -DCMAKE_EXE_LINKER_FLAGS='#{CREW_LDFLAGS}' \
+  -DCMAKE_EXE_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
   -DCMAKE_LINKER_TYPE=#{CREW_LINKER.upcase} \
-  -DCMAKE_SHARED_LINKER_FLAGS='#{CREW_LDFLAGS}' \
-  -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LDFLAGS}' \
+  -DCMAKE_SHARED_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
+  -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE \
   -DCMAKE_BUILD_TYPE=Release
 OPT
