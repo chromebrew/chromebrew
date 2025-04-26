@@ -40,7 +40,7 @@ class Perl < Package
       -Dvendorarch=#{CREW_LIB_PREFIX}/perl5/#{version}/vendor_perl \
       -Dcc=#{CREW_TARGET}-gcc \
       -Doptimize='#{CREW_COMMON_FLAGS}' \
-      -Dlldlflags='-shared #{CREW_LDFLAGS}' -Dldflags='#{CREW_LDFLAGS}' \
+      -Dlldlflags='-shared #{CREW_LINKER_FLAGS}' -Dldflags='#{CREW_LINKER_FLAGS}' \
       -Dusethreads \
       -Dinstallusrbinperl=n \
       -Duseshrplib -Dman1dir=#{CREW_MAN_PREFIX}/man1 -Dman3dir=#{CREW_MAN_PREFIX}/man3"
