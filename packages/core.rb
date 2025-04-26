@@ -31,6 +31,7 @@ class Core < Package
   depends_on 'git'
   depends_on 'git_mestrelion_tools'
   depends_on 'glibc_lib'
+  depends_on 'glibc_standalone'
   depends_on 'gmp'
   depends_on 'gnutls'
   depends_on 'groff'
