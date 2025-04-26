@@ -1578,6 +1578,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         next arch unless remote_binary
         # 3e. If a local binary doesn't exist, but a remote binary exists,
         #     download it.
+        FileUtils.mkdir_p release_dir
         system "curl -Ls #{new_url} > #{local_tarfile}"
       else
         local_binary = true
