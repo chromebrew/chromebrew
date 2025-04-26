@@ -2,18 +2,18 @@
 # https://github.com/archlinux/svntogit-packages/raw/packages/libclc/trunk/PKGBUILD
 
 require 'package'
-Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
 
 class Libclc < Package
+  llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
   description 'Library requirements of the OpenCL C programming language'
   homepage 'https://libclc.llvm.org/'
   version '20.1.3'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm20_build.version}".orange if version != Llvm20_build.version
+  puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/llvm/llvm-project.git'
-  git_hashtag Llvm20_build.git_hashtag.to_s
+  git_hashtag llvm_build_obj.git_hashtag.to_s
   binary_compression 'tar.zst'
 
   binary_sha256({
