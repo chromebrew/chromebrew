@@ -13,7 +13,9 @@ class Ncftp < Autotools
   binary_sha256({
     aarch64: '3321010fccdc0fc30a11c7deb914f4c9b6ce606f3e3dd191b87a9266a7ed6afc',
      armv7l: '3321010fccdc0fc30a11c7deb914f4c9b6ce606f3e3dd191b87a9266a7ed6afc',
-       i686: 'a634b1f53908bcd6e0e5d161b1a66508124d63aa8e519db69e72ef05dea5890f',
+       i686: 'dca002929dba21337af416bef443cb183e4cdc914a7b00af1a098594d585b193',
      x86_64: 'ca72890ad514201b5e70d071055d5f50afcf7a3fb32ce7e3410b38550d64cdfa'
   })
+
+  depends_on 'glibc' # R
 end
