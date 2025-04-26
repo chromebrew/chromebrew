@@ -1,4 +1,5 @@
-#encoding: utf-8
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
 # lib/const.rb
 # Defines common constants used in different parts of crew
 require 'etc'
