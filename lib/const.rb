@@ -262,9 +262,9 @@ CREW_MESON_OPTIONS ||= <<~OPT.chomp
   -Db_lto=true \
   -Dstrip=true \
   -Db_pie=true \
-  -Dcpp_args='#{CREW_CORE_FLAGS}' \
   -Dc_args='#{CREW_CORE_FLAGS}' \
   -Dc_link_args='#{CREW_LINKER_FLAGS}' \
+  -Dcpp_args='#{CREW_CORE_FLAGS}' \
   -Dcpp_link_args='#{CREW_LINKER_FLAGS}'
 OPT
 
