@@ -89,7 +89,7 @@ CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
 
 # Glibc related constants
 CREW_GLIBC_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'opt/glibc-libs')
-CREW_GLIBC_INTERPRETER ||= File.symlink?("#{CREW_PREFIX}/bin/ld.so") ? File.readlink("#{CREW_PREFIX}/bin/ld.so") : nil
+CREW_GLIBC_INTERPRETER ||= File.symlink?("#{CREW_PREFIX}/bin/ld.so") ? File.realpath("#{CREW_PREFIX}/bin/ld.so") : nil
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX      ||= File.join(CREW_PREFIX, '/share/musl/')
@@ -211,8 +211,10 @@ CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', '') unless defined?(CREW_LI
 CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
 CREW_COMMON_FLAGS         ||= "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS ||= "#{CREW_CORE_FLAGS} -fno-lto"
-CREW_LDFLAGS              ||= "#{CREW_LINKER_FLAGS} -Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER}"
+CREW_LDFLAGS              ||= "#{CREW_LINKER_FLAGS} -flto=auto"
 CREW_FNO_LTO_LDFLAGS      ||= '-fno-lto'
+
+CREW_LDFLAGS << " -Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER}" if CREW_GLIBC_INTERPRETER
 
 CREW_ENV_OPTIONS_HASH ||=
   if CREW_DISABLE_ENV_OPTIONS
