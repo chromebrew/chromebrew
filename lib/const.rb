@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.59.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.59.3' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -306,7 +306,7 @@ CREW_PERL_VER ||= Kernel.system('which perl', %i[out err] => File::NULL) ? "perl
 CREW_PY_VER ||= Kernel.system("#{CREW_PREFIX}/bin/python3 --version", %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : 'py3.13' unless defined?(CREW_PY_VER)
 CREW_RUBY_VER ||= "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}" unless defined?(CREW_RUBY_VER)
 @buildsystems = ['Package']
-Dir.glob("#{CREW_LIB_PATH}/lib/buildsystems/*.rb") { |file| @buildsystems << File.foreach(file).grep(/^class/).to_s.split[1] }
+Dir.glob("#{CREW_LIB_PATH}/lib/buildsystems/*.rb") { |file| @buildsystems << File.foreach(file, encoding: Encoding::UTF_8).grep(/^class/).to_s.split[1] }
 CREW_VALID_BUILDSYSTEMS ||= @buildsystems.sort!
 
 CREW_LICENSE ||= <<~LICENSESTRING
