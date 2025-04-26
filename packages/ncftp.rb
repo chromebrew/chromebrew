@@ -14,7 +14,7 @@ class Ncftp < Autotools
     aarch64: '3321010fccdc0fc30a11c7deb914f4c9b6ce606f3e3dd191b87a9266a7ed6afc',
      armv7l: '3321010fccdc0fc30a11c7deb914f4c9b6ce606f3e3dd191b87a9266a7ed6afc',
        i686: 'dca002929dba21337af416bef443cb183e4cdc914a7b00af1a098594d585b193',
-     x86_64: 'ca72890ad514201b5e70d071055d5f50afcf7a3fb32ce7e3410b38550d64cdfa'
+     x86_64: '9bf1f556ff65f683ff892ec8d7e19841fc1f95c5750fd993b68394751652eff2'
   })
 
   depends_on 'glibc' # R
