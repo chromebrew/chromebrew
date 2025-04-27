@@ -31,40 +31,26 @@ class Glibc_standalone < Package
   no_shrink
 
   def self.patch
-    File.write 'hardcode-library-path.patch', <<~EOF
-      diff -Nur a/elf/dl-support.c b/elf/dl-support.c
-      --- a/elf/dl-support.c    2025-04-23 01:58:17.265974714 +0800
-      +++ b/elf/dl-support.c    2025-04-23 14:38:27.373033131 +0800
-      @@ -296,7 +296,7 @@
+    File.write '0001-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch', <<~EOF
+      From 13c1622b1f57a17d1254466df3261d1a25d589a1 Mon Sep 17 00:00:00 2001
+      From: Adrian Ratiu <adrian.ratiu@collabora.com>
+      Date: Tue, 27 Jun 2023 15:11:47 +0300
+      Subject: [PATCH 1/3] Revert "Add GLIBC_ABI_DT_RELR for DT_RELR support"
 
-         /* Initialize the data structures for the search paths for shared
-            objects.  */
-      -  _dl_init_paths (getenv ("LD_LIBRARY_PATH"), "LD_LIBRARY_PATH",
-      +  _dl_init_paths ("#{CREW_PREFIX}/opt/glibc-libs:#{CREW_LIB_PREFIX}:/#{ARCH_LIB}", "LD_LIBRARY_PATH",
-       \t\t  /* No glibc-hwcaps selection support in statically
-       \t\t     linked binaries.  */
-       \t\t  NULL, NULL);
-      diff -Nur a/elf/rtld.c b/elf/rtld.c
-      --- a/elf/rtld.c    2025-04-23 04:04:02.230377659 +0800
-      +++ b/elf/rtld.c    2025-04-23 14:37:52.298031258 +0800
-      @@ -2647,7 +2647,7 @@
-       \t  /* The library search path.  */
-       \t  if (memcmp (envline, "LIBRARY_PATH", 12) == 0)
-       \t    {
-      -\t      state->library_path = &envline[13];
-      +\t      state->library_path = "#{CREW_PREFIX}/opt/glibc-libs:#{CREW_LIB_PREFIX}:/#{ARCH_LIB}";
-       \t      state->library_path_source = "LD_LIBRARY_PATH";
-       \t      break;
-       \t    }
-    EOF
+      This partially reverts commit 57292f574156f817b7cbeb33ea62
 
-    system 'filefix'
-    system 'patch', '-p1', '-i', 'hardcode-library-path.patch'
+      Adding the GLIBC_ABI_DT_RELR dependency breaks pre-built
+      vendor binaries, so we decided to just revert this simple
+      check, even though our binutils version supports adding it
+      for the binaries we are able to rebuild.
 
-    # See https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R136-16238.B/sys-libs/glibc/files/local/glibc-2.39/0009-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch?pli=1%2F
-    File.write '0009-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch', <<~GLIBC_ABI_DT_RELR_PATCH_EOF
+      For more details see b:284450929 and CL 4632684
+      ---
+       elf/dl-version.c | 24 ------------------------
+       1 file changed, 24 deletions(-)
+
       diff --git a/elf/dl-version.c b/elf/dl-version.c
-      index 8966d612cc79..7fb5cb16d47b 100644
+      index d414bd1e..5208ec88 100644
       --- a/elf/dl-version.c
       +++ b/elf/dl-version.c
       @@ -359,30 +359,6 @@ _dl_check_map_versions (struct link_map *map, int verbose, int trace_mode)
@@ -99,12 +85,10 @@ class Glibc_standalone < Package
        }
 
       --
-      2.41.0
-    GLIBC_ABI_DT_RELR_PATCH_EOF
-    system 'patch', '-p1', '-i', '0009-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch'
+      2.49.0
+    EOF
 
-    # See https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R136-16238.B/sys-libs/glibc/files/local/glibc-2.39/0002-libc-Speed-up-large-memcpy-on-Cortex-A7-A15.patch
-    File.write '0002-libc-Speed-up-large-memcpy-on-Cortex-A7-A15.patch', <<~LIBC_SPEED_UP_PATCH_EOF
+    File.write '0002-libc-Speed-up-large-memcpy-on-Cortex-A7-A15.patch', <<~EOF
       From e5b7f5d719e8fd03de363bc5bb5c28f1429e56bd Mon Sep 17 00:00:00 2001
       From: Yunlian Jiang <yunlian@google.com>
       Date: Fri, 1 Aug 2014 15:19:34 -0700
@@ -162,9 +146,58 @@ class Glibc_standalone < Package
        \t   that the FP pipeline is much better at streaming loads and
       --
       2.49.0
-    LIBC_SPEED_UP_PATCH_EOF
-    system 'patch', '-p1', '-i', '0002-libc-Speed-up-large-memcpy-on-Cortex-A7-A15.patch'
-  end
+    EOF
+
+    File.write '0003-Hardcode-LD_LIBRARY_PATH-to-ensure-our-glibc-prefix-.patch', <<~EOF
+      From b58cf17962030c4c2239324e76e05520d3cf0e97 Mon Sep 17 00:00:00 2001
+      From: SupeChicken666 <me@supechicken666.dev>
+      Date: Mon, 28 Apr 2025 03:24:41 +0800
+      Subject: [PATCH 3/3] Hardcode LD_LIBRARY_PATH to ensure our glibc prefix is
+       always appended
+
+      Signed-off-by: SupeChicken666 <me@supechicken666.dev>
+      ---
+       elf/dl-support.c | 2 +-
+       elf/rtld.c       | 2 +-
+       2 files changed, 2 insertions(+), 2 deletions(-)
+
+      diff --git a/elf/dl-support.c b/elf/dl-support.c
+      index a7d5a5e8..667c2c2f 100644
+      --- a/elf/dl-support.c
+      +++ b/elf/dl-support.c
+      @@ -296,7 +296,7 @@ _dl_non_dynamic_init (void)
+
+         /* Initialize the data structures for the search paths for shared
+            objects.  */
+      -  _dl_init_paths (getenv ("LD_LIBRARY_PATH"), "LD_LIBRARY_PATH",
+      +  _dl_init_paths ("#{CREW_PREFIX}/opt/glibc-libs:#{CREW_LIB_PREFIX}:/#{ARCH_LIB}", "LD_LIBRARY_PATH",
+       \t\t  /* No glibc-hwcaps selection support in statically
+       \t\t     linked binaries.  */
+       \t\t  NULL, NULL);
+      diff --git a/elf/rtld.c b/elf/rtld.c
+      index 00bec153..435a8a46 100644
+      --- a/elf/rtld.c
+      +++ b/elf/rtld.c
+      @@ -2647,7 +2647,7 @@ process_envvars_default (struct dl_main_state *state)
+       \t  /* The library search path.  */
+       \t  if (memcmp (envline, "LIBRARY_PATH", 12) == 0)
+       \t    {
+      -\t      state->library_path = &envline[13];
+      +\t      state->library_path = "#{CREW_PREFIX}/opt/glibc-libs:#{CREW_LIB_PREFIX}:/#{ARCH_LIB}";
+       \t      state->library_path_source = "LD_LIBRARY_PATH";
+       \t      break;
+       \t    }
+      --
+      2.49.0
+    EOF
+
+    system 'filefix'
+
+    Dir.glob('*.patch') do |patch|
+      puts "Applying #{patch}...".yellow
+      system 'patch', '-p1', '-i', patch
+    end
+end
 
   def self.build
     glibc_libdir = File.join(CREW_PREFIX, 'opt/glibc-libs')
