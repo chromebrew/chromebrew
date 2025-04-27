@@ -244,6 +244,6 @@ end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install', chdir: 'builddir'
-    system "make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales || make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales", chdir: 'builddir'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'localedata/install-locales', chdir: 'builddir'
   end
 end
