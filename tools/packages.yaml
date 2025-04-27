@@ -6286,8 +6286,8 @@ activity: medium
 ---
 kind: url
 name: ncftp
-url: http://ftp.ncftp.com/ncftp
-activity: none
+url: https://www.ncftp.com/public_ftp/ncftp/
+activity: low
 ---
 kind: url
 name: ncompress
