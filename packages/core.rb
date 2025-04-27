@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '3.6'
+  version '3.7'
   license 'GPL-3+'
   compatibility 'all'
 
