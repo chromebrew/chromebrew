@@ -26,9 +26,9 @@ def pip_hard_reinstall
   # Try installing from network wheels
   # as per https://stackoverflow.com/a/71119218
   pip_site_packages_folder = `python3 -c "import sysconfig; print(sysconfig.get_paths()['purelib'])"`.chomp
-  Kernel.system 'python3 -m pip install trash-cli'
+  Kernel.system "python3 -m pip install #{@pip_resume_retries} trash-cli"
   Kernel.system "trash-put #{pip_site_packages_folder}/#{@py_pkg}*"
-  Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'"
+  Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'"
   get_pip_info(@py_pkg)
 end
 
@@ -39,6 +39,9 @@ class Pip < Package
     @pip_cache_dir = `pip cache dir`.chomp
     @pip_cache_dest_dir = File.join(CREW_DEST_DIR, @pip_cache_dir)
 
+    @pip_version = `python3 -c "import pip; print(pip.__version__)"`.chomp
+    @pip_resume_retries = Gem::Version.new(@pip_version.to_s) >= Gem::Version.new('25.1') ? '--resume-retries 5' : ''
+
     # Make sure Chromebrew pypi variables are set.
     # These need to be set as global or they don't work.
     pip_config = `pip config list`.chomp
@@ -47,7 +50,7 @@ class Pip < Package
     Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
 
     puts 'Checking for pip updates'.orange if CREW_VERBOSE
-    puts 'Updating pip...'.orange unless `python3 -s -m pip install --no-color -U pip`.include?('Requirement already satisfied')
+    puts 'Updating pip...'.orange unless `python3 -s -m pip install #{@pip_resume_retries} --no-color -U pip`.include?('Requirement already satisfied')
     @py_pkg = name.gsub('py3_', '')
     @py_pkg_chromebrew_version = version.gsub(/-py3\.\d{2}/, '').gsub(/-icu\d{2}\.\d/, '')
     puts "Checking for #{@py_pkg} python dependencies...".orange if CREW_VERBOSE
@@ -65,7 +68,7 @@ class Pip < Package
       @py_pkg_deps.each do |pip_dep|
         @cleaned_py_dep = pip_dep[/[^;]+/]
         puts "——Installing: #{@cleaned_py_dep}".gray
-        system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -s -m pip install #{prerelease? ? '--pre' : ''} --ignore-installed -U \"#{@cleaned_py_dep}\" | grep -v 'Requirement already satisfied'", exception: false
+        system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -s -m pip install #{@pip_resume_retries} #{prerelease? ? '--pre' : ''} --ignore-installed -U \"#{@cleaned_py_dep}\" | grep -v 'Requirement already satisfied'", exception: false
       end
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
@@ -74,7 +77,7 @@ class Pip < Package
 
     # Build wheel if pip install fails, since that implies a wheel isn't available.
     puts "Trying to install #{@py_pkg}==#{@py_pkg_chromebrew_version}" if CREW_DEBUG
-    Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python3 -s -m pip install --no-warn-conflicts --force-reinstall #{prerelease? ? '--pre' : ''} --no-deps --ignore-installed -U --only-binary :all: #{@py_pkg}==#{@py_pkg_chromebrew_version}"
+    Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python3 -s -m pip install #{@pip_resume_retries} --no-warn-conflicts --force-reinstall #{prerelease? ? '--pre' : ''} --no-deps --ignore-installed -U --only-binary :all: #{@py_pkg}==#{@py_pkg_chromebrew_version}"
     get_pip_info(@py_pkg)
     pip_hard_reinstall unless @py_pkg_chromebrew_version == @pip_pkg_version
     if CREW_DEBUG
@@ -85,7 +88,7 @@ class Pip < Package
       puts "A wheel for #{@py_pkg}==#{@py_pkg_chromebrew_version} was found!".lightblue
     else
       puts "A wheel for #{@py_pkg}==#{@py_pkg_chromebrew_version} was unavailable, so we will build a wheel.".orange
-      Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{prerelease? ? '--pre' : ''} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'" unless prerelease?
+      Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} #{prerelease? ? '--pre' : ''} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'" unless prerelease?
       # Assume all pip non-SKIP sources are git.
       @pip_wheel = if @source_url == 'SKIP'
                      `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python3 -m pip wheel #{prerelease? ? '--pre' : ''} -w #{@pip_cache_dir} #{@py_pkg}==#{@py_pkg_version}`[/(?<=filename=)(.*)*?(\S+)/, 0]
