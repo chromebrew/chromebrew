@@ -40,7 +40,7 @@ class Pip < Package
     @pip_cache_dest_dir = File.join(CREW_DEST_DIR, @pip_cache_dir)
 
     @pip_version = `python3 -c "import pip; print(pip.__version__)"`.chomp
-    @pip_resume_retries = Gem::Version.new(@pip_version.to_s) >= Gem::Version.new('25.1') ? "--resume-retries #{PY3_PIP_RETRIES }" : ''
+    @pip_resume_retries = Gem::Version.new(@pip_version.to_s) >= Gem::Version.new('25.1') ? "--resume-retries #{PY3_PIP_RETRIES}" : ''
 
     # Make sure Chromebrew pypi variables are set.
     # These need to be set as global or they don't work.
