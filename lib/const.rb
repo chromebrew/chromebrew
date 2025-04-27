@@ -88,7 +88,7 @@ CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
 
 # Glibc related constants
-CREW_GLIBC_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'opt/glibc-libs')
+CREW_GLIBC_PREFIX      ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
 CREW_GLIBC_INTERPRETER ||= File.symlink?("#{CREW_PREFIX}/bin/ld.so") ? File.realpath("#{CREW_PREFIX}/bin/ld.so") : nil
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
@@ -224,7 +224,8 @@ CREW_ENV_OPTIONS_HASH ||=
       'CXXFLAGS'        => CREW_COMMON_FLAGS,
       'FCFLAGS'         => CREW_COMMON_FLAGS,
       'FFLAGS'          => CREW_COMMON_FLAGS,
-      'LD_LIBRARY_PATH' => CREW_LIB_PREFIX,
+      'LD_LIBRARY_PATH' => "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+      'LIBRARY_PATH'    => "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
       'LDFLAGS'         => CREW_LINKER_FLAGS
     }
   end
