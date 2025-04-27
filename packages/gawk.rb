@@ -27,7 +27,8 @@ class Gawk < Autotools
   no_shrink
 
   # Tests on i686 run out of memory.
-  run_tests unless ARCH == 'i686'
+  # Tests appear to have container issues on other platforms.
+  # run_tests unless ARCH == 'i686'
 
   configure_options '--without-libsigsegv-prefix'
 
