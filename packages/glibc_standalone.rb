@@ -3,18 +3,18 @@ require 'package'
 class Glibc_standalone < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
-  version '2.41'
+  version '2.41-1'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/glibc/glibc-#{version}.tar.xz"
+  source_url "https://ftpmirror.gnu.org/glibc/glibc-#{version.split('-').first}.tar.xz"
   source_sha256 'a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4d34f1aea3003156670485deecf5da4ff3f377de5260082edd1e27e3e8aa907e',
-     armv7l: '4d34f1aea3003156670485deecf5da4ff3f377de5260082edd1e27e3e8aa907e',
+    aarch64: 'f9517b475debdb5c205f34e03f1d358c178c6e0448de39ca7ce80061dd83ee8c',
+     armv7l: 'f9517b475debdb5c205f34e03f1d358c178c6e0448de39ca7ce80061dd83ee8c',
        i686: '77a95bfa9bdf58c02e9534645eb45886a8bc0a0043d4ba0bbf39bd862bd63aeb',
-     x86_64: '595548c1f923322526925698a4b2fec064112f78878375388fb5889583619f2f'
+     x86_64: '184bc7a001362701d96c0fa3458aeef3355a8b1654f50623b372b07e833a2b05'
   })
 
   depends_on 'gawk' => :build
@@ -60,6 +60,47 @@ class Glibc_standalone < Package
 
     system 'filefix'
     system 'patch', '-p1', '-i', 'hardcode-library-path.patch'
+    # See https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R136-16238.B/sys-libs/glibc/files/local/glibc-2.39/0009-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch?pli=1%2F
+    File.write '0009-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch', <<~GLIBC_ABI_DT_RELR_PATCH_EOF
+      diff --git a/elf/dl-version.c b/elf/dl-version.c
+      index 8966d612cc79..7fb5cb16d47b 100644
+      --- a/elf/dl-version.c
+      +++ b/elf/dl-version.c
+      @@ -359,30 +359,6 @@ _dl_check_map_versions (struct link_map *map, int verbose, int trace_mode)
+       \t}
+           }
+
+      -  /* When there is a DT_VERNEED entry with libc.so on DT_NEEDED, issue
+      -     an error if there is a DT_RELR entry without GLIBC_ABI_DT_RELR
+      -     dependency.  */
+      -  if (dyn != NULL
+      -      && map->l_info[DT_NEEDED] != NULL
+      -      && map->l_info[DT_RELR] != NULL
+      -      && __glibc_unlikely (!map->l_dt_relr_ref))
+      -    {
+      -      const char *strtab = (const void *) D_PTR (map, l_info[DT_STRTAB]);
+      -      const ElfW(Dyn) *d;
+      -      for (d = map->l_ld; d->d_tag != DT_NULL; ++d)
+      -\tif (d->d_tag == DT_NEEDED)
+      -\t  {
+      -\t    const char *name = strtab + d->d_un.d_val;
+      -\t    if (strncmp (name, "libc.so.", 8) == 0)
+      -\t      {
+      -\t\t_dl_exception_create
+      -\t\t  (&exception, DSO_FILENAME (map->l_name),
+      -\t\t   N_("DT_RELR without GLIBC_ABI_DT_RELR dependency"));
+      -\t\tgoto call_error;
+      -\t      }
+      -\t  }
+      -    }
+      -
+         return result;
+       }
+
+      --
+      2.41.0
+    GLIBC_ABI_DT_RELR_PATCH_EOF
+    system 'patch', '-p1', '-i', '0009-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch'
   end
 
   def self.build
@@ -101,11 +142,12 @@ class Glibc_standalone < Package
       EOF
 
       system build_env.transform_keys(&:to_s), '../configure', *config_opts
-      system 'make', "PARALLELMFLAGS='-j #{CREW_NPROC}'"
+      system "make PARALLELMFLAGS='-j #{CREW_NPROC}'"
     end
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install', chdir: 'builddir'
+    system "make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales || make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales", chdir: 'builddir'
   end
 end

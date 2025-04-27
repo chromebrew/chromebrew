@@ -811,6 +811,7 @@
 /usr/local/opt/glibc-libs/libthread_db.so.1
 /usr/local/opt/glibc-libs/libutil.a
 /usr/local/opt/glibc-libs/libutil.so.1
+/usr/local/opt/glibc-libs/locale/locale-archive
 /usr/local/opt/glibc-libs/rcrt1.o
 /usr/local/share/i18n/charmaps/ANSI_X3.110-1983.gz
 /usr/local/share/i18n/charmaps/ANSI_X3.4-1968.gz
