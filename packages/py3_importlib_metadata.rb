@@ -10,8 +10,8 @@ class Py3_importlib_metadata < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '616d4d25f0a1d3638bbf1628d0d6459ec93a322d70cf01ddb48db1a718ab3801',
-     armv7l: '616d4d25f0a1d3638bbf1628d0d6459ec93a322d70cf01ddb48db1a718ab3801',
+    aarch64: 'edb6858aa3baeabcc090282fe1617936ea85497994aac1d8196df21494571067',
+     armv7l: 'edb6858aa3baeabcc090282fe1617936ea85497994aac1d8196df21494571067',
        i686: '17a1c31c8c44bb63ca18393ce7d1672ac46c5d0f1a4151f550e1b4c0e930c055',
      x86_64: '95f674e7385f55c9e2653e546bbb2dab60900b9a57420ac3b51ab967c0f2fb2b'
   })
