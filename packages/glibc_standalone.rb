@@ -219,7 +219,7 @@ class Glibc_standalone < Package
       --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new
       --enable-bind-now
       --enable-fortify-source
-      --enable-kernel=#{ARCH.eql?('i686') ? '3.2' : '4.4'}
+      --enable-kernel=3.2
       --disable-nscd
       --disable-profile
       --disable-sanity-checks
