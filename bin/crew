@@ -885,7 +885,7 @@ def prepare_package(destdir)
     strip_dir destdir
 
     # use upx on executables
-    shrink_dir destdir
+    # shrink_dir destdir
   end
 end
 
