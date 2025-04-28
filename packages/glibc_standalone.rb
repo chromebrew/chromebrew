@@ -31,6 +31,7 @@ class Glibc_standalone < Package
   no_shrink
 
   def self.patch
+    # See https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R136-16238.B/sys-libs/glibc/files/local/glibc-2.39/0009-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch
     File.write '0001-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch', <<~EOF
       From 13c1622b1f57a17d1254466df3261d1a25d589a1 Mon Sep 17 00:00:00 2001
       From: Adrian Ratiu <adrian.ratiu@collabora.com>
@@ -88,6 +89,7 @@ class Glibc_standalone < Package
       2.49.0
     EOF
 
+    # See https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R136-16238.B/sys-libs/glibc/files/local/glibc-2.39/0002-libc-Speed-up-large-memcpy-on-Cortex-A7-A15.patch
     File.write '0002-libc-Speed-up-large-memcpy-on-Cortex-A7-A15.patch', <<~EOF
       From e5b7f5d719e8fd03de363bc5bb5c28f1429e56bd Mon Sep 17 00:00:00 2001
       From: Yunlian Jiang <yunlian@google.com>
@@ -197,7 +199,7 @@ class Glibc_standalone < Package
       puts "Applying #{patch}...".yellow
       system 'patch', '-p1', '-i', patch
     end
-end
+  end
 
   def self.build
     glibc_libdir = File.join(CREW_PREFIX, 'opt/glibc-libs')
