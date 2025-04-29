@@ -11,8 +11,8 @@ class Cbase < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    aarch64: '49cee9ad81264b8bf2f8dbcb2c3415453c923a11f69edbef1302f753827e870f',
+     armv7l: '49cee9ad81264b8bf2f8dbcb2c3415453c923a11f69edbef1302f753827e870f',
        i686: 'd518a6e7e4cc41244c947a289ef2071e2fe5ecf1b51f0c7f0ff973106352d2cf',
      x86_64: '3ec3e9c82d5aa3649eecaaec20245abd16c3fbf7835660c06270e3d6a711446d'
   })
