@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_meson < Pip
   description 'Meson is an open source build system meant to be both extremely fast and user friendly.'
   homepage 'https://mesonbuild.com/'
-  version "1.7.2-#{CREW_PY_VER}"
+  version "1.8.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
