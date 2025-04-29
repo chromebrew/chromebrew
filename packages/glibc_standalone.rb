@@ -195,6 +195,7 @@ class Glibc_standalone < Package
     build_env = {
       CFLAGS:   '-O3 -pipe -fPIC -fno-lto -fuse-ld=lld',
       CXXFLAGS: '-O3 -pipe -fPIC -fno-lto -fuse-ld=lld',
+      LDFLAGS:  "-Wl,--dynamic-linker,#{CREW_PREFIX}/opt/glibc-libs/#{File.basename(File.readlink('/usr/bin/ld.so'))}",
       LD:       'ld.lld' # use lld here as mold will segfault
     }
 
