@@ -11,8 +11,8 @@ class Glibc_standalone < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e19d852da8d4ead346d62003f9e5f15076ed5fae5bcd12dc9bd8f7f2602bc1b2',
-     armv7l: 'e19d852da8d4ead346d62003f9e5f15076ed5fae5bcd12dc9bd8f7f2602bc1b2',
+    aarch64: '73e44abbec34adabf72c58e5d76204f8a339b3f1b7eeff940f14c1bbe9012174',
+     armv7l: '73e44abbec34adabf72c58e5d76204f8a339b3f1b7eeff940f14c1bbe9012174',
        i686: '7d0b23bd8150d0339ae952875d95da77bba0c85ba00ef41c39c05722d2da898b',
      x86_64: '83cf87e80fdf30c540d40ebd387a554ac8e399e8fcbb0d5f61178b2219454cb1'
   })

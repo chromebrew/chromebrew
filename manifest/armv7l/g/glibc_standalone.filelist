@@ -19,6 +19,7 @@
 /usr/local/bin/xtrace
 /usr/local/bin/zdump
 /usr/local/bin/zic
+/usr/local/etc/env.d/10-glibc
 /usr/local/etc/ld.so.cache
 /usr/local/etc/rpc
 /usr/local/include/a.out.h
