@@ -29,7 +29,6 @@ class Glibc_standalone < Package
   conflicts_ok
   no_env_options
   no_shrink
-  print_source_bashrc
 
   def self.patch
     system "git clone --depth=1 https://github.com/chromebrew/crew-package-glibc -b #{version}"
