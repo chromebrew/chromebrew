@@ -172,7 +172,7 @@ class Glibc_standalone < Package
       +  char *crew_audit;
       +
       +  /* Add crew-audit.so to audit list by default */
-      +  asprintf(crew_audit, "%s/opt/glibc-libs/crew-audit.so", CREW_PREFIX);
+      +  asprintf(&crew_audit, "%s/opt/glibc-libs/crew-audit.so", CREW_PREFIX);
       +  audit_list_add_string(&state->audit_list, crew_audit);
 
          while ((envline = _dl_next_ld_env_entry (&runp)) != NULL)
@@ -202,7 +202,7 @@ class Glibc_standalone < Package
       --prefix=#{CREW_PREFIX}
       --libdir=#{glibc_libdir}
       --libexecdir=#{CREW_PREFIX}/libexec
-      --mandir=#{CREW_PREFIX}/man
+      --mandir=#{CREW_PREFIX}/share/man
       --with-headers=#{CREW_PREFIX}/include
       --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new
       --enable-bind-now
