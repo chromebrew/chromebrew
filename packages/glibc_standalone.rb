@@ -8,7 +8,7 @@ class Glibc_standalone < Package
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/glibc/glibc-#{version.partition('-')[0]}.tar.xz"
   source_sha256 'a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'e19d852da8d4ead346d62003f9e5f15076ed5fae5bcd12dc9bd8f7f2602bc1b2',
@@ -29,9 +29,10 @@ class Glibc_standalone < Package
   conflicts_ok
   no_env_options
   no_shrink
+  print_source_bashrc
 
   def self.patch
-    system 'git clone --depth=1 https://github.com/chromebrew/crew-package-glibc'
+    system "git clone --depth=1 https://github.com/chromebrew/crew-package-glibc -b #{version}"
     system 'filefix'
 
     Dir.glob('crew-package-glibc/patches/*.patch') do |patch|
@@ -52,6 +53,7 @@ class Glibc_standalone < Package
     build_env = {
       CFLAGS:   "-O3 -pipe -fPIC -fno-lto -fuse-ld=lld #{cc_macro_list.join(' ')}",
       CXXFLAGS: "-O3 -pipe -fPIC -fno-lto -fuse-ld=lld #{cc_macro_list.join(' ')}",
+      LDFLAGS:  '-fno-lto -fuse-ld=lld',
       LD:       'ld.lld' # use lld here as mold will segfault
     }
 
@@ -99,7 +101,7 @@ class Glibc_standalone < Package
     system "make DESTDIR=#{CREW_DEST_DIR} localedata/install-locales", chdir: 'builddir'
 
     # install crew-audit
-    FileUtils.install 'crew-package-glibc/crew-audit.so', File.join(CREW_GLIBC_PREFIX, 'crew-audit.so'), mode: 0o755
+    FileUtils.install 'crew-package-glibc/crew-audit.so', File.join(CREW_DEST_DIR, CREW_GLIBC_PREFIX, 'crew-audit.so'), mode: 0o755
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-glibc", "LD_AUDIT=#{File.join(CREW_GLIBC_PREFIX, 'crew-audit.so')}\n"
   end
 end
