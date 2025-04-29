@@ -2,38 +2,39 @@ require 'package'
 
 class Projectlibre < Package
   description 'ProjectLibre is project management software, the leading alternative to Microsoft Project.'
-  homepage 'https://www.projectlibre.com/'
-  version '1.9.1'
+  homepage 'https://www.projectlibre.com/projectlibre-desktop/'
+  version '1.9.3'
   license 'CPAL-1.0'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://downloads.sourceforge.net/project/projectlibre/ProjectLibre/1.9.1/projectlibre-1.9.1.tar.gz'
-  source_sha256 '65ca96728eb5a31c3e23eb43181dde367d785a86b82f330ca52bc7b51c74a5bb'
-  binary_compression 'tar.xz'
+  source_url "https://downloads.sourceforge.net/project/projectlibre/ProjectLibre/#{version}/projectlibre-#{version}.jar"
+  source_sha256 '9ce613a48d44695fc2d2121a380a4513e1d02c50b6cd13d699dbb64d3a95d864'
 
-  binary_sha256({
-    aarch64: 'f7df4bbee8466e6cfffd9c4e22f5982c1762abeebf699732ea114b9fa9daf5a6',
-     armv7l: 'f7df4bbee8466e6cfffd9c4e22f5982c1762abeebf699732ea114b9fa9daf5a6',
-     x86_64: '004464a19153c20ace590a7077cbadf3be558b9a107fa581346507d98cfd2df8'
-  })
+  depends_on 'libx11'
+  depends_on 'libxext'
+  depends_on 'libxrender'
+  depends_on 'libxtst'
+  depends_on 'openjdk17'
 
-  depends_on 'jdk8'
-  depends_on 'sommelier'
+  no_compile_needed
+
+  def self.build
+    File.write 'projectlibre.sh', <<~EOF
+      #!/bin/bash
+      java -jar #{CREW_PREFIX}/share/projectlibre/projectlibre.jar
+    EOF
+  end
 
   def self.install
-    FileUtils.rm 'projectlibre.bat'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/projectlibre"
-    FileUtils.cp_r Dir.glob('.'), "#{CREW_DEST_PREFIX}/share/projectlibre"
-    system "cat << 'EOF' > projectlibre
-#!/bin/bash
-cd #{CREW_PREFIX}/share/projectlibre
-./projectlibre.sh
-EOF"
-    system "install -Dm755 projectlibre #{CREW_DEST_PREFIX}/bin/projectlibre"
+    FileUtils.install "projectlibre-#{version}.jar", "#{CREW_DEST_PREFIX}/share/projectlibre/projectlibre.jar", mode: 0o644
+    FileUtils.install 'projectlibre.sh', "#{CREW_DEST_PREFIX}/bin/projectlibre", mode: 0o755
   end
 
   def self.postinstall
-    puts
-    puts "To get started, execute 'projectlibre'".lightblue
-    puts
+    ExitMessage.add "\nType 'projectlibre' to get started.\n"
+  end
+
+  def self.postremove
+    Package.agree_to_remove("#{HOME}/.java/.userPrefs/com/projectlibre1")
+    Package.agree_to_remove("#{HOME}/.java/.userPrefs/org/projectlibre1")
   end
 end
