@@ -31,70 +31,12 @@ class Glibc_standalone < Package
   no_shrink
 
   def self.patch
-    # See https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R136-16238.B/sys-libs/glibc/files/local/glibc-2.39/0009-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch
-    File.write '0001-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch', <<~EOF
-      From 13c1622b1f57a17d1254466df3261d1a25d589a1 Mon Sep 17 00:00:00 2001
-      From: Adrian Ratiu <adrian.ratiu@collabora.com>
-      Date: Tue, 27 Jun 2023 15:11:47 +0300
-      Subject: [PATCH 1/3] Revert "Add GLIBC_ABI_DT_RELR for DT_RELR support"
-
-      This partially reverts commit 57292f574156f817b7cbeb33ea62
-
-      Adding the GLIBC_ABI_DT_RELR dependency breaks pre-built
-      vendor binaries, so we decided to just revert this simple
-      check, even though our binutils version supports adding it
-      for the binaries we are able to rebuild.
-
-      For more details see b:284450929 and CL 4632684
-      ---
-       elf/dl-version.c | 24 ------------------------
-       1 file changed, 24 deletions(-)
-
-      diff --git a/elf/dl-version.c b/elf/dl-version.c
-      index d414bd1e..5208ec88 100644
-      --- a/elf/dl-version.c
-      +++ b/elf/dl-version.c
-      @@ -359,30 +359,6 @@ _dl_check_map_versions (struct link_map *map, int verbose, int trace_mode)
-       \t}
-           }
-
-      -  /* When there is a DT_VERNEED entry with libc.so on DT_NEEDED, issue
-      -     an error if there is a DT_RELR entry without GLIBC_ABI_DT_RELR
-      -     dependency.  */
-      -  if (dyn != NULL
-      -      && map->l_info[DT_NEEDED] != NULL
-      -      && map->l_info[DT_RELR] != NULL
-      -      && __glibc_unlikely (!map->l_dt_relr_ref))
-      -    {
-      -      const char *strtab = (const void *) D_PTR (map, l_info[DT_STRTAB]);
-      -      const ElfW(Dyn) *d;
-      -      for (d = map->l_ld; d->d_tag != DT_NULL; ++d)
-      -\tif (d->d_tag == DT_NEEDED)
-      -\t  {
-      -\t    const char *name = strtab + d->d_un.d_val;
-      -\t    if (strncmp (name, "libc.so.", 8) == 0)
-      -\t      {
-      -\t\t_dl_exception_create
-      -\t\t  (&exception, DSO_FILENAME (map->l_name),
-      -\t\t   N_("DT_RELR without GLIBC_ABI_DT_RELR dependency"));
-      -\t\tgoto call_error;
-      -\t      }
-      -\t  }
-      -    }
-      -
-         return result;
-       }
-
-      --
-      2.49.0
-    EOF
-
     # See https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R136-16238.B/sys-libs/glibc/files/local/glibc-2.39/0002-libc-Speed-up-large-memcpy-on-Cortex-A7-A15.patch
-    File.write '0002-libc-Speed-up-large-memcpy-on-Cortex-A7-A15.patch', <<~EOF
-      From e5b7f5d719e8fd03de363bc5bb5c28f1429e56bd Mon Sep 17 00:00:00 2001
+    File.write '0001-libc-Speed-up-large-memcpy-on-Cortex-A7-A15.patch', <<~EOF
+      From ada0f6230cdb7def335800bc6244d88b87c042ce Mon Sep 17 00:00:00 2001
       From: Yunlian Jiang <yunlian@google.com>
       Date: Fri, 1 Aug 2014 15:19:34 -0700
-      Subject: [PATCH 2/3] libc: Speed up large memcpy() on Cortex-A7/A15
+      Subject: [PATCH 1/3] libc: Speed up large memcpy() on Cortex-A7/A15
 
       Details please see crbug://331427
 
@@ -150,45 +92,91 @@ class Glibc_standalone < Package
       2.49.0
     EOF
 
-    File.write '0003-Hardcode-LD_LIBRARY_PATH-to-ensure-our-glibc-prefix-.patch', <<~EOF
-      From b58cf17962030c4c2239324e76e05520d3cf0e97 Mon Sep 17 00:00:00 2001
+    # See https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R136-16238.B/sys-libs/glibc/files/local/glibc-2.39/0009-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch
+    File.write '0002-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch', <<~EOF
+      From 41e43d4345e89a3c9ec148b9fa48e073cb29f3c6 Mon Sep 17 00:00:00 2001
+      From: Adrian Ratiu <adrian.ratiu@collabora.com>
+      Date: Tue, 27 Jun 2023 15:11:47 +0300
+      Subject: [PATCH 2/3] Revert "Add GLIBC_ABI_DT_RELR for DT_RELR support"
+
+      This partially reverts commit 57292f574156f817b7cbeb33ea62
+
+      Adding the GLIBC_ABI_DT_RELR dependency breaks pre-built
+      vendor binaries, so we decided to just revert this simple
+      check, even though our binutils version supports adding it
+      for the binaries we are able to rebuild.
+
+      For more details see b:284450929 and CL 4632684
+      ---
+       elf/dl-version.c | 24 ------------------------
+       1 file changed, 24 deletions(-)
+
+      diff --git a/elf/dl-version.c b/elf/dl-version.c
+      index d414bd1e..5208ec88 100644
+      --- a/elf/dl-version.c
+      +++ b/elf/dl-version.c
+      @@ -359,30 +359,6 @@ _dl_check_map_versions (struct link_map *map, int verbose, int trace_mode)
+       \t}
+           }
+
+      -  /* When there is a DT_VERNEED entry with libc.so on DT_NEEDED, issue
+      -     an error if there is a DT_RELR entry without GLIBC_ABI_DT_RELR
+      -     dependency.  */
+      -  if (dyn != NULL
+      -      && map->l_info[DT_NEEDED] != NULL
+      -      && map->l_info[DT_RELR] != NULL
+      -      && __glibc_unlikely (!map->l_dt_relr_ref))
+      -    {
+      -      const char *strtab = (const void *) D_PTR (map, l_info[DT_STRTAB]);
+      -      const ElfW(Dyn) *d;
+      -      for (d = map->l_ld; d->d_tag != DT_NULL; ++d)
+      -\tif (d->d_tag == DT_NEEDED)
+      -\t  {
+      -\t    const char *name = strtab + d->d_un.d_val;
+      -\t    if (strncmp (name, "libc.so.", 8) == 0)
+      -\t      {
+      -\t\t_dl_exception_create
+      -\t\t  (&exception, DSO_FILENAME (map->l_name),
+      -\t\t   N_("DT_RELR without GLIBC_ABI_DT_RELR dependency"));
+      -\t\tgoto call_error;
+      -\t      }
+      -\t  }
+      -    }
+      -
+         return result;
+       }
+
+      --
+      2.49.0
+    EOF
+
+    File.write '0003-Add-crew-audit.so-to-audit-list-by-default.patch', <<~EOF
+      From ba1cec4ecabb2a41a74f3dbb6edd280f5f47eef2 Mon Sep 17 00:00:00 2001
       From: SupeChicken666 <me@supechicken666.dev>
-      Date: Mon, 28 Apr 2025 03:24:41 +0800
-      Subject: [PATCH 3/3] Hardcode LD_LIBRARY_PATH to ensure our glibc prefix is
-       always appended
+      Date: Tue, 29 Apr 2025 16:44:54 +0800
+      Subject: [PATCH 3/3] Add crew-audit.so to audit list by default
 
       Signed-off-by: SupeChicken666 <me@supechicken666.dev>
       ---
-       elf/dl-support.c | 2 +-
-       elf/rtld.c       | 2 +-
-       2 files changed, 2 insertions(+), 2 deletions(-)
+       elf/rtld.c | 5 +++++
+       1 file changed, 5 insertions(+)
 
-      diff --git a/elf/dl-support.c b/elf/dl-support.c
-      index a7d5a5e8..667c2c2f 100644
-      --- a/elf/dl-support.c
-      +++ b/elf/dl-support.c
-      @@ -296,7 +296,7 @@ _dl_non_dynamic_init (void)
-
-         /* Initialize the data structures for the search paths for shared
-            objects.  */
-      -  _dl_init_paths (getenv ("LD_LIBRARY_PATH"), "LD_LIBRARY_PATH",
-      +  _dl_init_paths ("#{CREW_PREFIX}/opt/glibc-libs:#{CREW_LIB_PREFIX}:/#{ARCH_LIB}", "LD_LIBRARY_PATH",
-       \t\t  /* No glibc-hwcaps selection support in statically
-       \t\t     linked binaries.  */
-       \t\t  NULL, NULL);
       diff --git a/elf/rtld.c b/elf/rtld.c
-      index 00bec153..435a8a46 100644
+      index 00bec153..113f13bf 100644
       --- a/elf/rtld.c
       +++ b/elf/rtld.c
-      @@ -2647,7 +2647,7 @@ process_envvars_default (struct dl_main_state *state)
-       \t  /* The library search path.  */
-       \t  if (memcmp (envline, "LIBRARY_PATH", 12) == 0)
-       \t    {
-      -\t      state->library_path = &envline[13];
-      +\t      state->library_path = "#{CREW_PREFIX}/opt/glibc-libs:#{CREW_LIB_PREFIX}:/#{ARCH_LIB}";
-       \t      state->library_path_source = "LD_LIBRARY_PATH";
-       \t      break;
-       \t    }
+      @@ -2559,6 +2559,11 @@ process_envvars_default (struct dl_main_state *state)
+         char **runp = _environ;
+         char *envline;
+         char *debug_output = NULL;
+      +  char *crew_audit;
+      +
+      +  /* Add crew-audit.so to audit list by default */
+      +  asprintf(crew_audit, "%s/opt/glibc-libs/crew-audit.so", getenv("CREW_PREFIX") ?: "/usr/local");
+      +  audit_list_add_string(&state->audit_list, crew_audit);
+
+         while ((envline = _dl_next_ld_env_entry (&runp)) != NULL)
+           {
       --
       2.49.0
     EOF
