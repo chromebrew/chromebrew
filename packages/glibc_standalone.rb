@@ -172,7 +172,7 @@ class Glibc_standalone < Package
       +  char *crew_audit;
       +
       +  /* Add crew-audit.so to audit list by default */
-      +  asprintf(crew_audit, "%s/opt/glibc-libs/crew-audit.so", getenv("CREW_PREFIX") ?: "/usr/local");
+      +  asprintf(crew_audit, "%s/opt/glibc-libs/crew-audit.so", CREW_PREFIX);
       +  audit_list_add_string(&state->audit_list, crew_audit);
 
          while ((envline = _dl_next_ld_env_entry (&runp)) != NULL)
@@ -193,8 +193,8 @@ class Glibc_standalone < Package
     glibc_libdir = File.join(CREW_PREFIX, 'opt/glibc-libs')
 
     build_env = {
-      CFLAGS:   '-O3 -pipe -fPIC -fno-lto -fuse-ld=lld',
-      CXXFLAGS: '-O3 -pipe -fPIC -fno-lto -fuse-ld=lld',
+      CFLAGS:   "-O3 -pipe -fPIC -fno-lto -fuse-ld=lld -DCREW_PREFIX=#{CREW_PREFIX}",
+      CXXFLAGS: "-O3 -pipe -fPIC -fno-lto -fuse-ld=lld -DCREW_PREFIX=#{CREW_PREFIX}",
       LDFLAGS:  "-Wl,--dynamic-linker,#{CREW_PREFIX}/opt/glibc-libs/#{File.basename(File.readlink('/usr/bin/ld.so'))}",
       LD:       'ld.lld' # use lld here as mold will segfault
     }
