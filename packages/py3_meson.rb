@@ -13,7 +13,7 @@ class Py3_meson < Pip
     aarch64: '5aad16926c807ee221b366f4b7d1376214ba9dde0f4c619240ceb48f54c94048',
      armv7l: '5aad16926c807ee221b366f4b7d1376214ba9dde0f4c619240ceb48f54c94048',
        i686: 'aef059dd9a9ed228cb6bd775a21dd197298ba51422061bc9fbfdc46178edd49f',
-     x86_64: '68fa5dc3b7afaa11de4604fcc15c4bf8b5fcea93122f7b2322949c10f5cc579c'
+     x86_64: 'e64eedcefd6bbbd517cd68b44f5e912492128c874559e5cbd33a6794f750ff70'
   })
 
   depends_on 'ninja'
