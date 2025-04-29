@@ -14,7 +14,7 @@ class Glibc_standalone < Package
     aarch64: 'e19d852da8d4ead346d62003f9e5f15076ed5fae5bcd12dc9bd8f7f2602bc1b2',
      armv7l: 'e19d852da8d4ead346d62003f9e5f15076ed5fae5bcd12dc9bd8f7f2602bc1b2',
        i686: '7d0b23bd8150d0339ae952875d95da77bba0c85ba00ef41c39c05722d2da898b',
-     x86_64: '44220b48699ab3fb677d16c0b5172fac151c47edfa48015f170633a5a1dd18ed'
+     x86_64: '83cf87e80fdf30c540d40ebd387a554ac8e399e8fcbb0d5f61178b2219454cb1'
   })
 
   depends_on 'gawk' => :build
