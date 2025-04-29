@@ -33,7 +33,7 @@ class Glibc_standalone < Package
   def self.patch
     # See https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R136-16238.B/sys-libs/glibc/files/local/glibc-2.39/0002-libc-Speed-up-large-memcpy-on-Cortex-A7-A15.patch
     File.write '0001-libc-Speed-up-large-memcpy-on-Cortex-A7-A15.patch', <<~EOF
-      From ada0f6230cdb7def335800bc6244d88b87c042ce Mon Sep 17 00:00:00 2001
+      From 8611480aeeefb3c52f124079fa5e946e831db27d Mon Sep 17 00:00:00 2001
       From: Yunlian Jiang <yunlian@google.com>
       Date: Fri, 1 Aug 2014 15:19:34 -0700
       Subject: [PATCH 1/3] libc: Speed up large memcpy() on Cortex-A7/A15
@@ -94,7 +94,7 @@ class Glibc_standalone < Package
 
     # See https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R136-16238.B/sys-libs/glibc/files/local/glibc-2.39/0009-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch
     File.write '0002-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch', <<~EOF
-      From 41e43d4345e89a3c9ec148b9fa48e073cb29f3c6 Mon Sep 17 00:00:00 2001
+      From 135c5b39bb9b0c9b2d33dd2619381fb5d833ce18 Mon Sep 17 00:00:00 2001
       From: Adrian Ratiu <adrian.ratiu@collabora.com>
       Date: Tue, 27 Jun 2023 15:11:47 +0300
       Subject: [PATCH 2/3] Revert "Add GLIBC_ABI_DT_RELR for DT_RELR support"
@@ -151,32 +151,30 @@ class Glibc_standalone < Package
     EOF
 
     File.write '0003-Add-crew-audit.so-to-audit-list-by-default.patch', <<~EOF
-      From ba1cec4ecabb2a41a74f3dbb6edd280f5f47eef2 Mon Sep 17 00:00:00 2001
+      From bb6db2edcefd9a7ebaea1e301c436b814da767a7 Mon Sep 17 00:00:00 2001
       From: SupeChicken666 <me@supechicken666.dev>
-      Date: Tue, 29 Apr 2025 16:44:54 +0800
+      Date: Tue, 29 Apr 2025 17:57:30 +0800
       Subject: [PATCH 3/3] Add crew-audit.so to audit list by default
 
       Signed-off-by: SupeChicken666 <me@supechicken666.dev>
       ---
-       elf/rtld.c | 5 +++++
-       1 file changed, 5 insertions(+)
+       elf/rtld.c | 3 +++
+       1 file changed, 3 insertions(+)
 
       diff --git a/elf/rtld.c b/elf/rtld.c
-      index 00bec153..113f13bf 100644
+      index 00bec153..2d41ed1f 100644
       --- a/elf/rtld.c
       +++ b/elf/rtld.c
-      @@ -2559,6 +2559,11 @@ process_envvars_default (struct dl_main_state *state)
-         char **runp = _environ;
+      @@ -2560,6 +2560,9 @@ process_envvars_default (struct dl_main_state *state)
          char *envline;
          char *debug_output = NULL;
-      +  char *crew_audit;
-      +
-      +  /* Add crew-audit.so to audit list by default */
-      +  asprintf(&crew_audit, "%s/opt/glibc-libs/crew-audit.so", CREW_PREFIX);
-      +  audit_list_add_string(&state->audit_list, crew_audit);
 
+      +  /* Add crew-audit.so to audit list by default */
+      +  if (access(CREW_AUDIT, F_OK) == 0) audit_list_add_string(&state->audit_list, CREW_AUDIT);
+      +
          while ((envline = _dl_next_ld_env_entry (&runp)) != NULL)
            {
+             size_t len = 0;
       --
       2.49.0
     EOF
@@ -190,17 +188,15 @@ class Glibc_standalone < Package
   end
 
   def self.build
-    glibc_libdir = File.join(CREW_PREFIX, 'opt/glibc-libs')
-
     build_env = {
-      CFLAGS:   "-O3 -pipe -fPIC -fno-lto -fuse-ld=lld -DCREW_PREFIX=#{CREW_PREFIX}",
-      CXXFLAGS: "-O3 -pipe -fPIC -fno-lto -fuse-ld=lld -DCREW_PREFIX=#{CREW_PREFIX}",
+      CFLAGS:   "-O3 -pipe -fPIC -fno-lto -fuse-ld=lld -DCREW_AUDIT=\\\"#{CREW_GLIBC_PREFIX}/crew-audit.so\\\"",
+      CXXFLAGS: "-O3 -pipe -fPIC -fno-lto -fuse-ld=lld -DCREW_AUDIT=\\\"#{CREW_GLIBC_PREFIX}/crew-audit.so\\\"",
       LD:       'ld.lld' # use lld here as mold will segfault
     }
 
     config_opts = %W[
       --prefix=#{CREW_PREFIX}
-      --libdir=#{glibc_libdir}
+      --libdir=#{CREW_GLIBC_PREFIX}
       --libexecdir=#{CREW_PREFIX}/libexec
       --mandir=#{CREW_PREFIX}/share/man
       --with-headers=#{CREW_PREFIX}/include
@@ -221,8 +217,8 @@ class Glibc_standalone < Package
     FileUtils.mkdir_p 'builddir'
     Dir.chdir('builddir') do
       File.write 'configparms', <<~EOF
-        slibdir=#{glibc_libdir}
-        rtlddir=#{glibc_libdir}
+        slibdir=#{CREW_GLIBC_PREFIX}
+        rtlddir=#{CREW_GLIBC_PREFIX}
         sbindir=#{CREW_PREFIX}/bin
         rootsbindir=#{CREW_PREFIX}/bin
       EOF
