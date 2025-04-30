@@ -3,7 +3,6 @@ require 'package'
 class Ca_certificates < Package
   description 'Common CA Certificates PEM files'
   homepage 'https://salsa.debian.org/debian/ca-certificates'
-  @mozilla_git_tag = 'a978bf84ac8e90eebe60778579565b977080368c'
   version '20250419-ba3830f' # Do not replace version with @_ver, the install will break.
   license 'MPL-1.1'
   compatibility 'all'
@@ -23,17 +22,12 @@ class Ca_certificates < Package
   print_source_bashrc
 
   def self.patch
-    downloader "https://hg.mozilla.org/releases/mozilla-beta/raw-file/#{@mozilla_git_tag}/security/nss/lib/ckfw/builtins/certdata.txt", 'aaaa', 'mozilla/certdata.txt'
-    downloader "https://hg.mozilla.org/releases/mozilla-beta/raw-file/#{@mozilla_git_tag}/security/nss/lib/ckfw/builtins/nssckbi.h", 'bbbb', 'mozilla/nssckbi.h'
-
     # Patch from:
     # https://gitweb.gentoo.org/repo/gentoo.git/plain/app-misc/ca-certificates/files/ca-certificates-20150426-root.patch
     File.write 'ca-certificates-20150426-root.patch', <<~'GENTOO_CA_CERT_HEREDOC'
-      add a --root option so we can generate with DESTDIR installs
-
-      --- a/image/usr/sbin/update-ca-certificates
-      +++ b/image/usr/sbin/update-ca-certificates
-      @@ -30,6 +30,8 @@ LOCALCERTSDIR=/usr/local/share/ca-certificates
+      --- a/sbin/update-ca-certificates      2025-05-01 00:06:58.282420314 +0800
+      +++ b/sbin/update-ca-certificates      2025-05-01 00:07:00.752420448 +0800
+      @@ -30,6 +30,8 @@
        CERTBUNDLE=ca-certificates.crt
        ETCCERTSDIR=/etc/ssl/certs
        HOOKSDIR=/etc/ca-certificates/update.d
@@ -42,10 +36,10 @@ class Ca_certificates < Package
 
        while [ $# -gt 0 ];
        do
-      @@ -59,13 +61,25 @@ do
-           --hooksdir)
-             shift
-             HOOKSDIR="$1";;
+      @@ -67,13 +69,25 @@
+             LOCALCERTSDIR="$1/${LOCALCERTSDIR}"
+             ETCCERTSDIR="$1/${ETCCERTSDIR}"
+             HOOKSDIR="$1/${HOOKSDIR}";;
       +    --root|-r)
       +      shift
       +      # Needed as c_rehash wants to read the files directly.
@@ -69,7 +63,7 @@ class Ca_certificates < Package
        if [ ! -s "$CERTSCONF" ]
        then
          fresh=1
-      @@ -94,7 +107,7 @@ add() {
+      @@ -102,7 +116,7 @@
                                                          -e 's/,/_/g').pem"
          if ! test -e "$PEM" || [ "$(readlink "$PEM")" != "$CERT" ]
          then
@@ -80,7 +74,7 @@ class Ca_certificates < Package
          # Add trailing newline to certificate, if it is missing (#635570)
     GENTOO_CA_CERT_HEREDOC
 
-    system 'patch -p 3 -i ca-certificates-20150426-root.patch'
+    system 'patch -p1 -i ca-certificates-20150426-root.patch'
 
     system "sed -i 's,/usr/share/ca-certificates,#{CREW_PREFIX}/share/ca-certificates,g' \
       Makefile sbin/update-ca-certificates"
