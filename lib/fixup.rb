@@ -257,12 +257,13 @@ end
 if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patchelf")
   # Decompress all upx-compressed libraries
   puts 'Decompressing binaries with upx...'.yellow
-  system "find #{CREW_PREFIX}/bin -type f -executable -print | xargs -P#{CREW_NPROC} -n1 upx -d > /dev/null 2> /dev/null"
-  system "find #{CREW_LIB_PREFIX} -type f -executable -print | xargs -P#{CREW_NPROC} -n1 upx -d > /dev/null 2> /dev/null"
+  system "find #{CREW_PREFIX}/bin -type f -executable -print | xargs -P#{CREW_NPROC} -n1 upx -qq -d 2> /dev/null"
+  system "find #{CREW_LIB_PREFIX} -type f -executable -print | xargs -P#{CREW_NPROC} -n1 upx -qq -d 2> /dev/null"
 
   # Switch to glibc_standalone if installed
   puts 'Switching to glibc_standalone for all installed executables...'.yellow
   system "find #{CREW_PREFIX}/bin -type f -executable -print | xargs -P#{CREW_NPROC} -n1 patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} 2> /dev/null"
+  system "find #{CREW_PREFIX}/bin -type f -executable -print | xargs -P#{CREW_NPROC} -n1 patchelf --remove-rpath 2> /dev/null"
 else
   abort 'Please install upx and patchelf first by running \'crew install upx patchelf\'.'.lightred
 end

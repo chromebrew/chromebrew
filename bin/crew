@@ -886,7 +886,7 @@ def prepare_package(destdir)
   end
 end
 
-def set_interpreter_path(dir)
+def fix_interpreter_path(dir)
   # Do not set interpreter for non-musl, as this can break apps if there
   # is an issue with the crew glibc.
   return if @pkg.is_musl?
@@ -897,14 +897,15 @@ def set_interpreter_path(dir)
     execfiles = `find . -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' --`.chomp
     return if execfiles.empty?
 
+    puts 'Running patchelf to patch binary interpreter paths'.lightblue
     execfiles.each_line(chomp: true) do |execfiletopatch|
       execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
       neededlibs = `patchelf --print-needed #{execfiletopatch}`
       next if neededlibs.to_s.empty?
 
-      puts 'Running patchelf to patch binary interpreter paths'.lightblue
-      system "upx -d #{execfiletopatch} > /dev/null 2> /dev/null"
+      system "upx -qq -d #{execfiletopatch} 2> /dev/null"
       system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch} 2> /dev/null"
+      system "patchelf --remove-rpath #{execfiletopatch} 2> /dev/null"
     end
   end
 end
@@ -975,8 +976,6 @@ def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/loc
 end
 
 def install_package(pkgdir)
-  fix_interpreter_path(CREW_DEST_PREFIX)
-
   Dir.chdir pkgdir do
     # install filelist, dlist and binary files
     puts 'Performing install...'
@@ -1005,6 +1004,8 @@ def install_package(pkgdir)
         system 'rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false .'
       end
     end
+
+    fix_interpreter_path(".#{CREW_PREFIX}")
 
     install_files(".#{CREW_PREFIX}") if Dir.exist?(".#{CREW_PREFIX}")
     install_files(".#{HOME}", HOME) if Dir.exist?(".#{HOME}")
