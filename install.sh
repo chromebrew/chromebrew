@@ -191,7 +191,7 @@ echo_out 'Set up the local package repo...'
 # Download the chromebrew repository.
 curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-BOOTSTRAP_PACKAGES='glibc_standalone patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ruby git ca_certificates libyaml openssl gmp'
+BOOTSTRAP_PACKAGES='glibc_standalone upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ruby git ca_certificates libyaml openssl gmp'
 
 # Older i686 systems.
 [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' gcc_lib'
@@ -308,11 +308,20 @@ function extract_install () {
     echo_intra "Installing ${1}..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
 
-    # switch to glibc_standalone for existing binaries
-    if command -v patchelf &> /dev/null; then
-      echo_intra "Running patchelf on ${1}..."
-      grep "/usr/local/\(bin\|lib\|lib${LIB_SUFFIX}\)" < filelist | xargs -P $(nproc) -n1 patchelf --remove-needed libC.so.6 || true
-      grep '/usr/local/bin' < filelist | xargs -P $(nproc) -n1 patchelf --set-interpreter "${CREW_PREFIX}/bin/ld.so" || true
+    if [[ "${1}" == 'glibc_standalone' ]]; then
+      # set LD_AUDIT to ignore libC.so.6 requests
+      export LD_AUDIT="${CREW_PREFIX}/opt/glibc-libs/crew-audit.so"
+    else
+      # decompress and switch to glibc_standalone for existing binaries
+      if command -v upx &> /dev/null; then
+        echo_intra "Running upx on ${1}..."
+        grep "/usr/local/\(bin\|lib\|lib${LIB_SUFFIX}\)" < filelist | xargs -P $(nproc) -n1 upx -d 2> /dev/null || true
+      fi
+
+      if command -v patchelf &> /dev/null; then
+        echo_intra "Running patchelf on ${1}..."
+        grep '/usr/local/bin' < filelist | xargs -P $(nproc) -n1 patchelf --set-interpreter "${CREW_PREFIX}/bin/ld.so" 2> /dev/null || true
+      fi
     fi
 
     mv ./dlist "${CREW_META_PATH}/${1}.directorylist"
@@ -382,14 +391,6 @@ echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
-
-if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "122" )) && [[ "$ARCH" == "x86_64" ]]; then
-  echo_info "This Milestone (M${CHROMEOS_RELEASE_CHROME_MILESTONE}) needs to have libc.so.6 patched for the Chromebrew Glibc."
-  cp "/lib${LIB_SUFFIX}/libc.so.6" /tmp/libc.so.6.tmp
-  patchelf --add-needed libC.so.6 /tmp/libc.so.6.tmp
-  env -u LD_LIBRARY_PATH cp /tmp/libc.so.6.tmp "${CREW_PREFIX}/lib${LIB_SUFFIX}/libc.so.6"
-  rm /tmp/libc.so.6.tmp
-fi
 
 echo_info 'Updating RubyGems...'
 gem sources -u
