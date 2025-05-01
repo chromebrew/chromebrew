@@ -886,14 +886,14 @@ def prepare_package(destdir)
   end
 end
 
-def patchelf_set_need_paths(dir)
+def set_interpreter_path(dir)
   # Do not set interpreter for non-musl, as this can break apps if there
   # is an issue with the crew glibc.
   return if @pkg.is_musl?
 
   Dir.chdir dir do
-    puts 'Running patchelf'.lightblue
-    abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
+    puts 'Running patchelf and upx'.lightblue
+    abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf") && File.file?("#{CREW_PREFIX}/bin/upx")
     execfiles = `find . -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' --`.chomp
     return if execfiles.empty?
 
@@ -903,7 +903,8 @@ def patchelf_set_need_paths(dir)
       next if neededlibs.to_s.empty?
 
       puts 'Running patchelf to patch binary interpreter paths'.lightblue
-      system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch}"
+      system "upx -d #{execfiletopatch} > /dev/null 2> /dev/null"
+      system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch} 2> /dev/null"
     end
   end
 end
@@ -974,6 +975,8 @@ def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/loc
 end
 
 def install_package(pkgdir)
+  fix_interpreter_path(CREW_DEST_PREFIX)
+
   Dir.chdir pkgdir do
     # install filelist, dlist and binary files
     puts 'Performing install...'
