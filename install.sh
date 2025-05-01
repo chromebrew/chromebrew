@@ -191,7 +191,7 @@ echo_out 'Set up the local package repo...'
 # Download the chromebrew repository.
 curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-BOOTSTRAP_PACKAGES='glibc_standalone upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ruby git ca_certificates libyaml openssl gmp'
+BOOTSTRAP_PACKAGES='glibc_standalone libxcrypt upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ruby git ca_certificates libyaml openssl gmp'
 
 # Older i686 systems.
 [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' gcc_lib'
