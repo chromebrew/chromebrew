@@ -5,11 +5,6 @@
 /usr/local/firefox/browser/chrome/icons/default/default32.png
 /usr/local/firefox/browser/chrome/icons/default/default48.png
 /usr/local/firefox/browser/chrome/icons/default/default64.png
-/usr/local/firefox/browser/features/formautofill@mozilla.org.xpi
-/usr/local/firefox/browser/features/pictureinpicture@mozilla.org.xpi
-/usr/local/firefox/browser/features/screenshots@mozilla.org.xpi
-/usr/local/firefox/browser/features/webcompat-reporter@mozilla.org.xpi
-/usr/local/firefox/browser/features/webcompat@mozilla.org.xpi
 /usr/local/firefox/browser/omni.ja
 /usr/local/firefox/crashreporter
 /usr/local/firefox/defaults/pref/channel-prefs.js

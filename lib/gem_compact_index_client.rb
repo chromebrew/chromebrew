@@ -20,11 +20,20 @@ class BasicCompactIndexClient
 
   def request(endpoint)
     uri = URI.join(@gem_server, endpoint)
-    response = Net::HTTP.get_response(uri)
 
-    raise "got HTTP code #{response.code}, expected 200" unless response.is_a?(Net::HTTPOK)
+    Net::HTTP.start(uri.host, uri.port, {
+      max_retries: CREW_DOWNLOADER_RETRY,
+          use_ssl: uri.scheme.eql?('https'),
+      min_version: :TLS1_2,
+          ca_file: SSL_CERT_FILE,
+          ca_path: SSL_CERT_DIR
+    }) do |http|
+      response = http.get(uri)
 
-    response.body
+      raise "got HTTP code #{response.code}, expected 200" unless response.is_a?(Net::HTTPOK)
+
+      return response.body
+    end
   end
 
   def lines(data)

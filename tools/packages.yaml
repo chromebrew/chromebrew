@@ -7955,7 +7955,7 @@ url: https://github.com/rakudo/rakudo/releases
 activity: medium
 ---
 kind: url
-name: ranger
+name: ranger_fm
 url: https://github.com/ranger/ranger/releases
 activity: low
 ---
@@ -9098,6 +9098,11 @@ kind: url
 name: texlive
 url: ftp://tug.org/historic/systems/texlive/
 activity: low
+---
+kind: url
+name: texmaker
+url: https://www.xm1math.net/texmaker/download.html
+activity: none
 ---
 kind: url
 name: textract

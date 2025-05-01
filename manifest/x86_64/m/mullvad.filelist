@@ -22,7 +22,6 @@
 /usr/local/share/mullvad/distribution/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
 /usr/local/share/mullvad/distribution/extensions/{d19a89b9-76c1-4a61-bcd4-49e8de916403}.xpi
 /usr/local/share/mullvad/execdesktop
-/usr/local/share/mullvad/fontconfig/fonts.conf
 /usr/local/share/mullvad/fonts/000_README.txt
 /usr/local/share/mullvad/fonts/Arimo-Bold.ttf
 /usr/local/share/mullvad/fonts/Arimo-BoldItalic.ttf
@@ -83,7 +82,6 @@
 /usr/local/share/mullvad/fonts/NotoSansMongolian-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansMro-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansMultani-Regular.ttf
-/usr/local/share/mullvad/fonts/NotoSansMyanmar-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansNKo-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansNewTaiLue-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansNewa-Regular.ttf
@@ -161,12 +159,14 @@
 /usr/local/share/mullvad/fonts/NotoSerifThai-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSerifTibetan-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSerifYezidi-Regular.ttf
+/usr/local/share/mullvad/fonts/Pyidaungsu-2.5.3_Regular.ttf
 /usr/local/share/mullvad/fonts/STIXTwoMath-Regular.otf
 /usr/local/share/mullvad/fonts/Tinos-Bold.ttf
 /usr/local/share/mullvad/fonts/Tinos-BoldItalic.ttf
 /usr/local/share/mullvad/fonts/Tinos-Italic.ttf
 /usr/local/share/mullvad/fonts/Tinos-Regular.ttf
 /usr/local/share/mullvad/fonts/TwemojiMozilla.ttf
+/usr/local/share/mullvad/fonts/fonts.conf
 /usr/local/share/mullvad/glxtest
 /usr/local/share/mullvad/icons/updater.png
 /usr/local/share/mullvad/libfreeblpriv3.so
