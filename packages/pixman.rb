@@ -13,7 +13,7 @@ class Pixman < Meson
   binary_sha256({
     aarch64: 'cc34d57fb02e6ac863a726b3a13c4d80b3ba975bde965b03113da95b5f72ef6a',
      armv7l: 'cc34d57fb02e6ac863a726b3a13c4d80b3ba975bde965b03113da95b5f72ef6a',
-       i686: 'e0c56f9cc30ead6a1b9b9ab7bea836d1127aec0057a09b83eae7063d11a44f18',
+       i686: '0afdfa6f061738fc4ca8594857886f7e80bcc1ccbaefcaa11ab22663aee623cd',
      x86_64: 'fa18fdd7bd6c4f8bed2199391b36b6403bee73da220b5730371e13d2f074fed8'
   })
 
