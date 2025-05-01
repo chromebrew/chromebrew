@@ -52,7 +52,7 @@ class PackageUtils
     packages = JSON.parse(response.body)
 
     # Loop over each result until we get an exact name match, then return the package ID for that match.
-    package_id = packages.select { |p| p['name'] == pkg.name } .dig(0, 'id')
+    package_id = packages.select(&->(p) { p['name'] == pkg.name }).dig(0, 'id')
 
     # Return early if we weren't able to find the package ID, so that the CREW_CACHE_ENABLED hack to test packages without uploading them still works.
     # When we're doing that, we're calling download knowing that there isn't an actual file to download, but relying on CREW_CACHE_ENABLED to save us before we get there.
@@ -66,7 +66,7 @@ class PackageUtils
     return fallback_url if package_files.is_a?(Hash) && package_files['message'] == '404 Not found'
 
     # Loop over each result until we find a matching file_sha256 to our binary_sha256.
-    file_id = package_files.select { |p| p['file_sha256'] == pkg.binary_sha256[ARCH.to_sym] } .dig(0, 'id')
+    file_id = package_files.select(&->(p) { p['file_sha256'] == pkg.binary_sha256[ARCH.to_sym] }).dig(0, 'id')
 
     return "https://gitlab.com/chromebrew/binaries/-/package_files/#{file_id}/download" if file_id
 
