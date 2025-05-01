@@ -47,7 +47,7 @@ class Glibc_standalone < Package
       -DCREW_PREFIX=\\"#{CREW_PREFIX}\\"
       -DCREW_GLIBC_PREFIX=\\"#{CREW_GLIBC_PREFIX}\\"
       -DCREW_GLIBC_VERSION=\\"#{version.partition('-')[0]}\\"
-      -DCREW_LD_LIBRARY_PATH=\\"#{CREW_GLIBC_PREFIX}:#{ENV['LD_LIBRARY_PATH']}\\"
+      -DCREW_LD_LIBRARY_PATH=\\"#{CREW_GLIBC_PREFIX}:#{ENV.fetch('LD_LIBRARY_PATH', nil)}\\"
     ]
 
     build_env = {
