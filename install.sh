@@ -311,8 +311,8 @@ function extract_install () {
     # switch to glibc_standalone for existing binaries
     if command -v patchelf &> /dev/null; then
       echo_intra "Running patchelf on ${1}..."
-      grep "/usr/local/\(bin\|lib\|lib${LIB_SUFFIX}\)" < filelist | xargs -P $(nproc) -n1 patchelf --remove-needed libC.so.6
-      grep '/usr/local/bin' < filelist | xargs -P $(nproc) -n1 patchelf --set-interpreter "${CREW_PREFIX}/bin/ld.so"
+      grep "/usr/local/\(bin\|lib\|lib${LIB_SUFFIX}\)" < filelist | xargs -P $(nproc) -n1 patchelf --remove-needed libC.so.6 || true
+      grep '/usr/local/bin' < filelist | xargs -P $(nproc) -n1 patchelf --set-interpreter "${CREW_PREFIX}/bin/ld.so" || true
     fi
 
     mv ./dlist "${CREW_META_PATH}/${1}.directorylist"
