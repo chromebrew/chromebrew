@@ -50,6 +50,10 @@ Layout/FirstHashElementIndentation:
 Layout/LineLength:
   Enabled: false
 
+# Adding a space after {} block improves consistency.
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: false
+
 # Having an explicit return can often improve readability.
 Style/RedundantReturn:
   Enabled: false
