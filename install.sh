@@ -311,6 +311,11 @@ function extract_install () {
     if [[ "${1}" == 'glibc_standalone' ]]; then
       # set LD_AUDIT to ignore libC.so.6 requests
       export LD_AUDIT="${CREW_PREFIX}/opt/glibc-libs/crew-audit.so"
+
+      # setup ld.so.conf and update cache
+      cp /etc/ld.so.conf "${CREW_PREFIX}/etc/ld.so.conf"
+      echo "${CREW_PREFIX}/opt/glibc-libs" >> "${CREW_PREFIX}/etc/ld.so.conf"
+      ldconfig
     else
       # decompress and switch to glibc_standalone for existing binaries
       if command -v upx &> /dev/null; then
