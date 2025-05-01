@@ -31,7 +31,8 @@ lsbval() {
 }
 
 # Print a message before exit on error
-trap "echo_error 'An error occured during the installation :/'" ERR
+set_trap() { trap "echo_error 'An error occured during the installation :/'" ERR; }
+set_trap
 
 # Check if the script is being run as root.
 if [ "${EUID}" == "0" ]; then
@@ -129,9 +130,6 @@ if [[ "$ARCH" == "x86_64" ]]; then
   LIB_SUFFIX='64'
 fi
 
-# Package version string may include LIBC_VERSION.
-LIBC_VERSION=$(/lib"$LIB_SUFFIX"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')
-
 # Warn users of the AMD segfault issue and allow them to work around it.
 # The easiest way to distinguish StoneyRidge platorms is to check for the FMA4
 # instruction, as it was first introduced in Bulldozer and later dropped in Zen.
@@ -193,32 +191,16 @@ echo_out 'Set up the local package repo...'
 # Download the chromebrew repository.
 curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-BOOTSTRAP_PACKAGES='lz4 zlib xzutils zstd glibc_standalone zlib_ng crew_mvdir ruby git ca_certificates libyaml openssl'
+BOOTSTRAP_PACKAGES='glibc_standalone patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ruby git ca_certificates libyaml openssl gmp'
 
 # Older i686 systems.
 [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' gcc_lib'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   # shellcheck disable=SC2231
-  for i in /lib$LIB_SUFFIX/libc.so*
-  do
-    sudo cp "$i" "$CREW_PREFIX/lib$LIB_SUFFIX/"
-    libcname=$(basename "$i")
-    sudo chown chronos "$CREW_PREFIX/lib$LIB_SUFFIX/${libcname}"
-    sudo chmod 644 "$CREW_PREFIX/lib$LIB_SUFFIX/${libcname}"
-  done
   if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
     # Recent Arm systems have a cut down system.
     [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
-    if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" < "123" )); then
-      # Append the correct packages for systems running M122 and lower.
-      BOOTSTRAP_PACKAGES+=' glibc_lib235 gmp'
-    elif (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "122" )); then
-      # Append the correct packages for systems running M123 onwards.
-      # X86_64 requires patchelf patching of the system libc.so.6.
-      [[ "$ARCH" == "x86_64" ]] && BOOTSTRAP_PACKAGES+=' patchelf'
-      BOOTSTRAP_PACKAGES+=' glibc_lib237 gmp'
-    fi
   fi
 fi
 
@@ -323,8 +305,16 @@ function extract_install () {
       fi
     fi
 
-    echo_intra "Installing ${1} ..."
+    echo_intra "Installing ${1}..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
+
+    # switch to glibc_standalone for existing binaries
+    if command -v patchelf &> /dev/null; then
+      echo_intra "Running patchelf on ${1}..."
+      grep "/usr/local/\(bin\|lib\|lib${LIB_SUFFIX}\)" < filelist | xargs -P $(nproc) -n1 patchelf --remove-needed libC.so.6
+      grep '/usr/local/bin' < filelist | xargs -P $(nproc) -n1 patchelf --set-interpreter "${CREW_PREFIX}/bin/ld.so"
+    fi
+
     mv ./dlist "${CREW_META_PATH}/${1}.directorylist"
     mv ./filelist "${CREW_META_PATH}/${1}.filelist"
 }
@@ -428,7 +418,7 @@ install_ruby_gem ${BOOTSTRAP_GEMS}
 echo_info "Installing crew_profile_base...\n"
 yes | crew install crew_profile_base
 # shellcheck disable=SC1090
-ARCH="$ARCH" source ~/.bashrc
+trap - ERR && source ~/.bashrc && set_trap
 
 echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core
