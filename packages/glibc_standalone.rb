@@ -104,4 +104,11 @@ class Glibc_standalone < Package
     FileUtils.install 'crew-package-glibc/crew-audit.so', File.join(CREW_DEST_DIR, CREW_GLIBC_PREFIX, 'crew-audit.so'), mode: 0o755
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-glibc", "LD_AUDIT=#{File.join(CREW_GLIBC_PREFIX, 'crew-audit.so')}\n"
   end
+
+  def self.postinstall
+    # update search cache for ld.so
+    FileUtils.cp '/etc/ld.so.conf', "#{CREW_PREFIX}/etc/ld.so.conf"
+    File.write "#{CREW_PREFIX}/etc/ld.so.conf", "#{CREW_GLIBC_PREFIX}\n", mode: 'a'
+    system "#{CREW_GLIBC_PREFIX}/ldconfig"
+  end
 end
