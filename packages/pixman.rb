@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Pixman < Package
+class Pixman < Meson
   description 'Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.'
   homepage 'https://www.pixman.org/'
-  version '0.42.2'
+  version '0.46.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/pixman/pixman.git'
@@ -20,18 +20,7 @@ class Pixman < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    --default-library=both \
-    -Dgtk=disabled \
+  meson_options '-Dgtk=disabled \
     -Dlibpng=disabled \
-    -Dtests=disabled \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+    -Dtests=disabled'
 end

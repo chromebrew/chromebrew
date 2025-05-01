@@ -1,12 +1,12 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxft < Package
+class Libxft < Autotools
   description 'X.org X FreeType interface library'
   homepage 'https://www.x.org/wiki/'
-  version '2.3.7'
+  version '2.3.9'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.x.org/archive/individual/lib/libXft-2.3.7.tar.xz'
+  source_url "https://www.x.org/archive/individual/lib/libXft-#{version}.tar.xz"
   source_sha256 '79f0b37c45007381c371a790c2754644ad955166dbf2a48e3625032e9bdd4f71'
   binary_compression 'tar.zst'
 
@@ -22,13 +22,4 @@ class Libxft < Package
   depends_on 'libxrender' # R
   depends_on 'xorg_macros' => :build
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
