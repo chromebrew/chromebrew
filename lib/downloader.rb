@@ -103,7 +103,7 @@ def get_http_response(uri)
     ca_file:     SSL_CERT_FILE,
     ca_path:     SSL_CERT_DIR
   }) do |http|
-    return http.get(uri.path)
+    return http.get(uri)
   end
 rescue OpenSSL::SSL::SSLError
   # handle SSL errors

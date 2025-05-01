@@ -66,9 +66,9 @@ class PackageUtils
     return fallback_url if package_files.is_a?(Hash) && package_files['message'] == '404 Not found'
 
     # Loop over each result until we find a matching file_sha256 to our binary_sha256.
-    package_id = package_files.select { |p| p['file_sha256'] == pkg.binary_sha256[ARCH.to_sym] } .dig(0, 'id')
+    file_id = package_files.select { |p| p['file_sha256'] == pkg.binary_sha256[ARCH.to_sym] } .dig(0, 'id')
 
-    return "https://gitlab.com/chromebrew/binaries/-/package_files/#{package_id}/download" if package_id
+    return "https://gitlab.com/chromebrew/binaries/-/package_files/#{file_id}/download" if file_id
 
     # If we're still here, the likely cause is that the file sha256s are mismatched.
     return fallback_url
