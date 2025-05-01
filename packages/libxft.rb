@@ -23,5 +23,4 @@ class Libxft < Autotools
   depends_on 'libx11' # R
   depends_on 'libxrender' # R
   depends_on 'xorg_macros' => :build
-
 end
