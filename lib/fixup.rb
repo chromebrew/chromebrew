@@ -254,30 +254,18 @@ unless installed_pkgs_to_deprecate.empty?
   refresh_crew_json
 end
 
-# Handle broken system glibc affecting gcc_lib on newer x86_64 ChromeOS milestones.
-if (ARCH == 'x86_64') && (Gem::Version.new(LIBC_VERSION.to_s) >= Gem::Version.new('2.36'))
-  abort("patchelf is needed. Please run: 'crew update && crew install patchelf && crew update'") unless File.file?(File.join(CREW_PREFIX, 'bin/patchelf'))
-  # Link the system libc.so.6 to also require our renamed libC.so.6
-  # which provides the float128 functions strtof128, strfromf128,
-  # and __strtof128_nan.
-  # This creates tons of the following warnings when g++ is invoked with
-  # g++ #{File.join(CREW_LIB_PREFIX, 'libC.so.6')}, but I'm not sure how
-  # to get around that.
-  # /usr/local/lib64/libC.so.6: linker input file unused because linking not done errors
-  libc_patch_libraries = %w[libstdc++.so.6]
-  libc_patch_libraries.delete_if { |lib| !File.file?(File.join(CREW_LIB_PREFIX, lib)) }
-  libc_patch_libraries.delete_if { |lib| Kernel.system "patchelf --print-needed #{File.join(CREW_LIB_PREFIX, lib)} | grep -q libC.so.6" }
+if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patchelf")
+  # Decompress all upx-compressed libraries
+  puts 'Decompressing binaries with upx...'.yellow
+  system "find #{CREW_PREFIX}/bin -type f -executable -print | xargs -P#{CREW_NPROC} -n1 upx -qq -d 2> /dev/null"
+  system "find #{CREW_LIB_PREFIX} -type f -executable -print | xargs -P#{CREW_NPROC} -n1 upx -qq -d 2> /dev/null"
 
-  return if libc_patch_libraries.empty?
-
-  if File.file?(File.join(CREW_LIB_PREFIX, 'libC.so.6'))
-    Dir.chdir(CREW_LIB_PREFIX) do
-      libc_patch_libraries.each do |lib|
-        Kernel.system "patchelf --add-needed libC.so.6 #{lib}" and Kernel.system "patchelf --remove-needed libc.so.6 #{lib}"
-        puts "#{lib} patched for use with Chromebrew's glibc.".lightgreen
-      end
-    end
-  end
+  # Switch to glibc_standalone if installed
+  puts 'Switching to glibc_standalone for all installed executables...'.yellow
+  system "find #{CREW_PREFIX}/bin -type f -executable -print | xargs -P#{CREW_NPROC} -n1 patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} 2> /dev/null"
+  system "find #{CREW_PREFIX}/bin -type f -executable -print | xargs -P#{CREW_NPROC} -n1 patchelf --remove-rpath 2> /dev/null"
+else
+  abort 'Please install upx and patchelf first by running \'crew install upx patchelf\'.'.lightred
 end
 
 # Reload @device with the appropriate symbolized or nonsymbolized json load before we exit fixup.

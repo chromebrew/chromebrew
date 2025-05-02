@@ -6925,6 +6925,11 @@ url: https://salsa.debian.org/debian/pcsc-lite/-/tags
 activity: medium
 ---
 kind: url
+name: pdfbox
+url: https://pdfbox.apache.org/download.html
+activity: low
+---
+kind: url
 name: pdfchain
 url: https://downloads.sourceforge.net/project/pdfchain/files/
 activity: none
