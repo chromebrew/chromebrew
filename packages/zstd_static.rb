@@ -20,6 +20,15 @@ class Zstd_static < Package
   no_source_build
   no_zstd
 
+  case ARCH
+  when 'i686'
+    @cross = 'i686-linux-musl'
+  when 'x86_64'
+    @cross = 'x86_64-linux-musl'
+  when 'aarch64', 'armv7l'
+    @cross = 'arm-linux-musleabihf'
+  end
+
   def self.build
     File.write 'crew-static-builder.sh', <<~'BUILDER_EOF'
       #!/bin/bash
@@ -1520,26 +1529,10 @@ class Zstd_static < Package
       main "$@"
       # vim:sw=4:ts=4:et:
     BUILDER_EOF
-    case ARCH
-    when 'i686'
-      @cross = 'i686-linux-musl'
-    when 'x86_64'
-      @cross = 'x86_64-linux-musl'
-    when 'aarch64', 'armv7l'
-      @cross = 'arm-linux-musleabihf'
-    end
     Kernel.system "bash ./crew-static-builder.sh #{@cross}"
   end
 
   def self.install
-    case ARCH
-    when 'i686'
-      @cross = 'i686-linux-musl'
-    when 'x86_64'
-      @cross = 'x86_64-linux-musl'
-    when 'aarch64', 'armv7l'
-      @cross = 'arm-linux-musleabihf'
-    end
     FileUtils.install "output/#{@cross}/zstd-full", "#{CREW_DEST_PREFIX}/bin/zstd", mode: 0o755
   end
 end
