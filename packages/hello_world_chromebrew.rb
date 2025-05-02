@@ -11,6 +11,8 @@ class Hello_world_chromebrew < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
+    aarch64: 'd2fb648b2f41ea10f851fc66602a15e595866a7e0b6cd999969e038a3af74bc1',
+     armv7l: 'd2fb648b2f41ea10f851fc66602a15e595866a7e0b6cd999969e038a3af74bc1',
        i686: '9303a26a1a3c9ad93edf874da13148ccd823e9c5f4739ca8675d141065eac9ab',
      x86_64: '486eac7f7f9cbc5010d667c7bdd3991c4da6ef79040afc68775cbe7f0ee6a167'
   })
