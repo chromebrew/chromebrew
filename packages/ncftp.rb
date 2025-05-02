@@ -1,30 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Ncftp < Package
+class Ncftp < Autotools
   description 'NcFTP Client (also known as just NcFTP) is a set of FREE application programs implementing the File Transfer Protocol (FTP).'
   homepage 'https://ncftp.com/ncftp/'
-  version '3.2.6'
+  version '3.3.0'
   license 'Clarified-Artistic'
   compatibility 'all'
-  source_url 'ftp://ftp.ncftp.com/ncftp/ncftp-3.2.6-src.tar.gz'
-  source_sha256 '129e5954850290da98af012559e6743de193de0012e972ff939df9b604f81c23'
-  binary_compression 'tar.xz'
+  source_url "https://www.ncftp.com/public_ftp/ncftp/ncftp-#{version}-src.tar.gz"
+  source_sha256 '38a87edd210ee662b7781a0297b0925468489ad57d867b6fadf0491d017f4167'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3321010fccdc0fc30a11c7deb914f4c9b6ce606f3e3dd191b87a9266a7ed6afc',
-     armv7l: '3321010fccdc0fc30a11c7deb914f4c9b6ce606f3e3dd191b87a9266a7ed6afc',
-       i686: 'a634b1f53908bcd6e0e5d161b1a66508124d63aa8e519db69e72ef05dea5890f',
-     x86_64: 'ca72890ad514201b5e70d071055d5f50afcf7a3fb32ce7e3410b38550d64cdfa'
+    aarch64: '5e702d967660d6234926a392b70cd7976574c11888ec429850f65eaf349d2c79',
+     armv7l: '5e702d967660d6234926a392b70cd7976574c11888ec429850f65eaf349d2c79',
+       i686: 'dca002929dba21337af416bef443cb183e4cdc914a7b00af1a098594d585b193',
+     x86_64: '9bf1f556ff65f683ff892ec8d7e19841fc1f95c5750fd993b68394751652eff2'
   })
 
-  depends_on 'buildessential'
-
-  def self.build
-    system './configure'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
 end

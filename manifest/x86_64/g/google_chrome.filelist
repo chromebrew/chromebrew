@@ -1,5 +1,6 @@
 /usr/local/bin/google-chrome
 /usr/local/share/appdata/google-chrome.appdata.xml
+/usr/local/share/applications/com.google.Chrome.desktop
 /usr/local/share/applications/google-chrome.desktop
 /usr/local/share/chrome/CHROME_VERSION_EXTRA
 /usr/local/share/chrome/MEIPreload/manifest.json

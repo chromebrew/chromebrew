@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.59.3' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.59.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -298,6 +298,7 @@ PY_SETUP_INSTALL_OPTIONS_NO_SVEM ||= "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PR
 PY_SETUP_INSTALL_OPTIONS         ||= "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version-externally-managed"
 PY3_BUILD_OPTIONS                ||= '--wheel --no-isolation'
 PY3_INSTALLER_OPTIONS            ||= "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
+PY3_PIP_RETRIES                  ||= ENV.fetch('PY3_PIP_RETRIES', '5') unless defined?(PY3_PIP_RETRIES)
 
 CREW_GCC_VER ||= Kernel.system('which gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : 'gcc14' unless defined?(CREW_GCC_VER)
 CREW_ICU_VER ||= Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : 'icu75.1' unless defined?(CREW_ICU_VER)

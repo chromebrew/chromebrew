@@ -6,33 +6,25 @@ require 'buildsystems/cmake'
 class Fastfetch < CMake
   description 'Like Neofetch, but much faster because written in C'
   homepage 'https://github.com/fastfetch-cli/fastfetch'
-  version '2.24.0'
+  version '2.42.0'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/fastfetch-cli/fastfetch.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '944bd9ff6ad0aae3cb20f9d5d1a324112c7f7a4327160883c5440aa3cc74283f',
-     armv7l: '944bd9ff6ad0aae3cb20f9d5d1a324112c7f7a4327160883c5440aa3cc74283f',
-       i686: 'f7b37001b542c035b7a662cea8e3b52badc176e94baaee349fc353a1959089a9',
-     x86_64: '51bd182ee9893ff245f687399a6b5ae2c44fbc6d21d4db218bf5665089e13244'
+    aarch64: 'e2c6084fd2dc22ea43e2aa9ca2745b8dee94349d02bedeb35bb7e7050ad5d58d',
+     armv7l: 'e2c6084fd2dc22ea43e2aa9ca2745b8dee94349d02bedeb35bb7e7050ad5d58d',
+     x86_64: '2b05cd0d4030300b5e110f63f1466c6ac4c4a0ba1bca6be46b48325051d5a118'
   })
 
-  depends_on 'gcc_lib'
   depends_on 'chafa' => :build
-  depends_on 'sqlite' => :build
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'sqlite' => :build
   depends_on 'yyjson' # R
 
-  # The videodev linux header files are too old on the i686 kernel.
-  # See https://github.com/fastfetch-cli/fastfetch/issues/1265
-  cmake_options "-DENABLE_SQLITE3=ON \
-    -DENABLE_RPM=OFF \
-    -DENABLE_IMAGEMAGICK6=OFF \
-    -DENABLE_IMAGEMAGICK7=OFF \
-    -DENABLE_SYSTEM_YYJSON=ON \
-    -DINSTALL_LICENSE=OFF \
-    #{ARCH == 'i686' ? '-DHAVE_LINUX_VIDEODEV2=false' : ''}"
+  cmake_options "-DENABLE_SYSTEM_YYJSON=ON \
+    -DINSTALL_LICENSE=OFF"
 end

@@ -3042,6 +3042,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/runtime_config/base_commands.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/runtime_config/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/saas_runtime/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/saas_runtime/releases.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/saas_runtime/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/saas_runtime/rollouts.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/saas_runtime/unit_kinds.py
@@ -4546,6 +4547,11 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/firestore/v1beta2/firestore_v1beta2_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/firestore/v1beta2/firestore_v1beta2_messages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/firestore/v1beta2/resources.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/geminicloudassist/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/geminicloudassist/v1alpha/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/geminicloudassist/v1alpha/geminicloudassist_v1alpha_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/geminicloudassist/v1alpha/geminicloudassist_v1alpha_messages.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/geminicloudassist/v1alpha/resources.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/genomics/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/genomics/v1/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/genomics/v1/genomics_v1_client.py
@@ -4917,6 +4923,11 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/notebooks/v2/notebooks_v2_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/notebooks/v2/notebooks_v2_messages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/notebooks/v2/resources.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/observability/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/observability/v1/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/observability/v1/observability_v1_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/observability/v1/observability_v1_messages.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/observability/v1/resources.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/ondemandscanning/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/ondemandscanning/v1/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/ondemandscanning/v1/ondemandscanning_v1_client.py
@@ -10873,7 +10884,7 @@
 /usr/local/share/gcloud/lib/surface/filestore/operations/describe.py
 /usr/local/share/gcloud/lib/surface/filestore/operations/list.py
 /usr/local/share/gcloud/lib/surface/filestore/regions/__init__.py
-/usr/local/share/gcloud/lib/surface/filestore/regions/list.yaml
+/usr/local/share/gcloud/lib/surface/filestore/regions/list.py
 /usr/local/share/gcloud/lib/surface/filestore/snapshots/__init__.py
 /usr/local/share/gcloud/lib/surface/filestore/snapshots/create.yaml
 /usr/local/share/gcloud/lib/surface/filestore/snapshots/delete.yaml
@@ -10881,7 +10892,7 @@
 /usr/local/share/gcloud/lib/surface/filestore/snapshots/list.yaml
 /usr/local/share/gcloud/lib/surface/filestore/snapshots/update.yaml
 /usr/local/share/gcloud/lib/surface/filestore/zones/__init__.py
-/usr/local/share/gcloud/lib/surface/filestore/zones/list.yaml
+/usr/local/share/gcloud/lib/surface/filestore/zones/list.py
 /usr/local/share/gcloud/lib/surface/firebase/__init__.py
 /usr/local/share/gcloud/lib/surface/firebase/test/__init__.py
 /usr/local/share/gcloud/lib/surface/firebase/test/android/__init__.py
@@ -11523,6 +11534,8 @@
 /usr/local/share/gcloud/lib/surface/iam/workforce_pools/providers/list.yaml
 /usr/local/share/gcloud/lib/surface/iam/workforce_pools/providers/operations/__init__.py
 /usr/local/share/gcloud/lib/surface/iam/workforce_pools/providers/operations/describe.yaml
+/usr/local/share/gcloud/lib/surface/iam/workforce_pools/providers/scim_tenants/__init__.py
+/usr/local/share/gcloud/lib/surface/iam/workforce_pools/providers/scim_tenants/create.yaml
 /usr/local/share/gcloud/lib/surface/iam/workforce_pools/providers/undelete.yaml
 /usr/local/share/gcloud/lib/surface/iam/workforce_pools/providers/update_oidc.yaml
 /usr/local/share/gcloud/lib/surface/iam/workforce_pools/providers/update_saml.yaml
@@ -14221,6 +14234,11 @@
 /usr/local/share/gcloud/lib/surface/service_extensions/authz_extensions/describe.yaml
 /usr/local/share/gcloud/lib/surface/service_extensions/authz_extensions/import.yaml
 /usr/local/share/gcloud/lib/surface/service_extensions/authz_extensions/list.yaml
+/usr/local/share/gcloud/lib/surface/service_extensions/lb_edge_extensions/__init__.py
+/usr/local/share/gcloud/lib/surface/service_extensions/lb_edge_extensions/delete.yaml
+/usr/local/share/gcloud/lib/surface/service_extensions/lb_edge_extensions/describe.yaml
+/usr/local/share/gcloud/lib/surface/service_extensions/lb_edge_extensions/import.yaml
+/usr/local/share/gcloud/lib/surface/service_extensions/lb_edge_extensions/list.yaml
 /usr/local/share/gcloud/lib/surface/service_extensions/lb_observability_extensions/__init__.py
 /usr/local/share/gcloud/lib/surface/service_extensions/lb_observability_extensions/delete.yaml
 /usr/local/share/gcloud/lib/surface/service_extensions/lb_observability_extensions/describe.yaml

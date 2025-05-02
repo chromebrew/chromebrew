@@ -645,17 +645,10 @@ def unpack(meta)
       when /\.zip$/i
         puts "Unpacking archive using 'unzip', this may take a while..."
         system 'unzip', (CREW_VERBOSE ? '-v' : '-qq'), '-d', @extract_dir, meta[:filename], exception: true
-      when /\.(tar(\.(bz2|lz|lzma))?|tbz)$/i
+      when /\.(tar(\.(bz2|gz|lz|lzma))?|tbz|tgz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
         system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
-      when /\.(tar(\.(gz|xz))?|tgz|txz|tpxz)$/i
-        puts "Unpacking archive using 'tar', this may take a while..."
-        if Kernel.system('zstd --help 2>/dev/null| grep -q lzma', %i[out err] => File::NULL)
-          system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
-        else
-          system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
-        end
-      when /\.tar\.zst$/i
+      when /\.(tar(\.(xz|zst))?|txz|tpxz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
         system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
       when /\.deb$/i
@@ -892,7 +885,7 @@ def prepare_package(destdir)
     strip_dir destdir
 
     # use upx on executables
-    shrink_dir destdir
+    # shrink_dir destdir
   end
 end
 
