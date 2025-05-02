@@ -10,6 +10,10 @@ class Hello_world_chromebrew < Package
   source_sha256 'ff3632aba26639630ff8c1d91ebc168e185c2cb4fda8c856e61f33d53215aac3'
   binary_compression 'tar.zst'
 
+  binary_sha256({
+       i686: '9303a26a1a3c9ad93edf874da13148ccd823e9c5f4739ca8675d141065eac9ab'
+  })
+
   # These are needed to successfully build and check for dependencies.
 
   # Register dependencies (use the following line as a basis)
@@ -18,6 +22,7 @@ class Hello_world_chromebrew < Package
   # depends_on '*' # R
   # Build dependencies:
   # depends_on '*' => :build
+  depends_on 'glibc' # R
   #
 
   # Function to perform patch operations prior to build from source.
