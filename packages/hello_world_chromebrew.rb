@@ -10,6 +10,8 @@ class Hello_world_chromebrew < Package
   source_sha256 'ff3632aba26639630ff8c1d91ebc168e185c2cb4fda8c856e61f33d53215aac3'
   binary_compression 'tar.zst'
 
+  # These are needed to successfully build and check for dependencies.
+
   binary_sha256({
     aarch64: 'd2fb648b2f41ea10f851fc66602a15e595866a7e0b6cd999969e038a3af74bc1',
      armv7l: 'd2fb648b2f41ea10f851fc66602a15e595866a7e0b6cd999969e038a3af74bc1',
@@ -17,16 +19,12 @@ class Hello_world_chromebrew < Package
      x86_64: '486eac7f7f9cbc5010d667c7bdd3991c4da6ef79040afc68775cbe7f0ee6a167'
   })
 
-  # These are needed to successfully build and check for dependencies.
-
   # Register dependencies (use the following line as a basis)
-  #
+
   # Runtime dependencies:
   # depends_on '*' # R
   # Build dependencies:
   # depends_on '*' => :build
-  depends_on 'glibc' # R
-  #
 
   # Function to perform patch operations prior to build from source.
   def self.patch
