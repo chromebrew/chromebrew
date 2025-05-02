@@ -61,7 +61,7 @@ class Glibc_standalone < Package
       --prefix=#{CREW_PREFIX}
       --libdir=#{CREW_GLIBC_PREFIX}
       --libexecdir=#{CREW_PREFIX}/libexec
-      --mandir=#{CREW_PREFIX}/share/man
+      --mandir=#{CREW_MAN_PREFIX}
       --with-headers=#{CREW_PREFIX}/include
       --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new
       --enable-bind-now
