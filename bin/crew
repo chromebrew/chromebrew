@@ -883,71 +883,31 @@ def prepare_package(destdir)
     File.write('dlist', "#{directorylist.join("\n")}\n")
 
     strip_dir destdir
-
-    # use upx on executables
-    # shrink_dir destdir
   end
 end
 
-def patchelf_set_need_paths(dir)
-  return if @pkg.no_patchelf? || @pkg.no_compile_needed?
+def fix_interpreter_path(dir)
+  # Do not set interpreter for non-musl, as this can break apps if there
+  # is an issue with the crew glibc.
+  return if @pkg.is_musl?
 
-  puts 'Patchelf is currently disabled during builds due to problems with upx.'.yellow
-  return
-
-  # Disable unreachable code check, as this is a temporary situation
-  # rubocop:disable Lint/UnreachableCode
   Dir.chdir dir do
-    puts 'Running patchelf'.lightblue
-    abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
+    puts 'Running patchelf and upx'.lightblue
+    abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf") && File.file?("#{CREW_PREFIX}/bin/upx")
     execfiles = `find . -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' --`.chomp
     return if execfiles.empty?
 
-    patchelf_lib_prefix = @pkg.is_musl? ? "#{CREW_MUSL_PREFIX}/lib" : CREW_LIB_PREFIX
-    puts "patchelf_lib_prefix is #{patchelf_lib_prefix}" if CREW_VERBOSE
-    patchelf_interpreter = @pkg.is_musl? ? "#{CREW_MUSL_PREFIX}/lib/libc.so" : 'CREW_LIB_PREFIX/libc.so.6'
-    puts "patchelf_interpreter is #{patchelf_interpreter}" if CREW_VERBOSE
-
-    puts 'Running patchelf to patch binaries for library paths'.lightblue
+    puts 'Running patchelf to patch binary interpreter paths'.lightblue
     execfiles.each_line(chomp: true) do |execfiletopatch|
       execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
       neededlibs = `patchelf --print-needed #{execfiletopatch}`
       next if neededlibs.to_s.empty?
 
-      neededlibs.each_line(chomp: true) do |neededlibspatch|
-        next if neededlibspatch.include?(patchelf_lib_prefix.to_s)
-
-        # Avoid segfaults from not using system versions of these files.
-        patchelf_veto_files = %w[
-          libdl.so
-          ld-linux.so.2
-          ld-linux-x86-64.so.2
-          ld-linux-armhf.so.3
-          libc.so.6
-        ]
-        next if !@pkg.is_musl? && patchelf_veto_files.any? { |i| neededlibspatch.include? i }
-
-        neededlib_basename = File.basename(neededlibspatch)
-        neededlibspatchednamepath = "#{patchelf_lib_prefix}/" + neededlib_basename
-        # The first check here can be changed to just check the dest_dir
-        # hierarchy for neededlib_basename if the intent is to allow
-        # using a different CREW_PREFIX during package installs.
-        if File.file?(neededlibspatchednamepath) || File.file?(Dir.pwd + neededlibspatchednamepath)
-          puts "patchelf --replace-needed #{neededlibspatch} #{neededlibspatchednamepath} #{execfiletopatch}" if CREW_VERBOSE
-          system "patchelf --replace-needed #{neededlibspatch} #{neededlibspatchednamepath} #{execfiletopatch}"
-        else
-          puts "#{execfiletopatch} needed library #{neededlib_basename} not found in #{patchelf_lib_prefix} or #{Dir.pwd + neededlibspatchednamepath}.".lightred
-        end
-      end
-      # Do not set interpreter for non-musl, as this can break apps if there
-      # is an issue with the crew glibc.
-      next unless @pkg.is_musl?
-
-      puts 'Running patchelf to patch binary interpreter paths'.lightblue
-      system "patchelf --set-interpreter #{patchelf_interpreter} #{execfiletopatch}"
+      system "upx -qq -d #{execfiletopatch} 2> /dev/null"
+      system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch} 2> /dev/null"
+      system "patchelf --remove-rpath #{execfiletopatch} 2> /dev/null"
     end
   end
-  # rubocop:enable Lint/UnreachableCode
 end
 
 def strip_find_files(find_cmd, strip_option = '')
@@ -984,69 +944,6 @@ def shrink_dir(dir)
       if File.file?("#{CREW_PREFIX}/bin/rdfind")
         puts 'Using rdfind to convert duplicate files to hard links.'
         system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false ."
-      end
-      # Issues with non-x86_64 in compressing libraries, so just compress
-      # non-libraries. Also note that one needs to use "upx -d" on a
-      # compressed file to use ldd.
-      # sommelier also isn't happy when sommelier and xwayland are compressed
-      # so don't compress those packages.
-      if File.executable?("#{CREW_PREFIX}/bin/upx")
-        # 1. Find executable binaries but also check for hard linked
-        # files by making sure we have a unique set of
-        # inodes for the binaries found.
-        # 2. Copy to a temp file.
-        # 3. Compress using upx. (Uncompressble files are ignored.)
-        # 4. Check compression by expanding the compressed file with
-        # upx.
-        # 5. If the expansion doesn't error out then it is ok to copy
-        # over the original. (This also lets us only avoid compressing
-        # hard linked files multiple times.)
-        execfiles = `find . -executable -type f ! \\( -name '*.so*' -o -name '*.a' \\) | xargs -P8 -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' --`.chomp
-
-        unless execfiles.empty?
-          puts 'Using upx to shrink binaries.'
-          # Copying in the ThreadPoolExecutor loop fails non-deterministically
-          execfiles.each_line(chomp: true) do |execfilecp|
-            execfilecp.slice! '.'
-            next if execfilecp.empty?
-
-            execfilecp = File.join(dir, execfilecp)
-            next unless File.file?(execfilecp)
-
-            FileUtils.cp execfilecp, "#{execfilecp}-crewupxtmp"
-          end
-          require_gem 'concurrent-ruby'
-          pool = Concurrent::ThreadPoolExecutor.new(
-            min_threads: 1,
-            max_threads: CREW_NPROC,
-            max_queue: 0, # unbounded work queue
-            fallback_policy: :caller_runs
-          )
-          execfiles.each_line(chomp: true) do |execfile|
-            pool.post do
-              execfile.slice! '.'
-              execfile = File.join(dir, execfile)
-              puts "Attempting to compress #{execfile} ...".orange
-              # Make tmp file for compression
-              unless system "upx --lzma #{execfile}-crewupxtmp"
-                puts "Compression of #{execfile} failed...".orange if CREW_VERBOSE
-                FileUtils.rm_f "#{execfile}-crewupxtmp"
-              end
-              if File.file?("#{execfile}-crewupxtmp")
-                puts "Testing compressed #{execfile}...".lightblue if CREW_VERBOSE
-                if system 'upx', '-t', "#{execfile}-crewupxtmp"
-                  puts "#{execfile} successfully compressed...".lightgreen
-                  FileUtils.cp "#{execfile}-crewupxtmp", execfile
-                end
-              end
-              FileUtils.rm_f "#{execfile}-crewupxtmp"
-            end
-          end
-          pool.shutdown
-          pool.wait_for_termination
-          # Make sure temporary compression copies are deleted.
-          FileUtils.rm Dir['**/*-crewupxtmp']
-        end
       end
     end
   end
@@ -1107,6 +1004,8 @@ def install_package(pkgdir)
         system 'rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false .'
       end
     end
+
+    fix_interpreter_path(".#{CREW_PREFIX}")
 
     install_files(".#{CREW_PREFIX}") if Dir.exist?(".#{CREW_PREFIX}")
     install_files(".#{HOME}", HOME) if Dir.exist?(".#{HOME}")

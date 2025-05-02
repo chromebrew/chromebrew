@@ -69,7 +69,7 @@ class Bsdgames < Autotools
       bsd_games_cfg_ncurses_includes='#{`pkg-config --cflags-only-I ncurses`.chomp}'
       bsd_games_cfg_ncurses_lib='#{`pkg-config --libs-only-l ncurses`.chomp}'
       bsd_games_cfg_non_interactive=y
-      bsd_games_cfg_other_ldflags='\"#{CREW_LDFLAGS}\"'
+      bsd_games_cfg_other_ldflags='\"#{CREW_LINKER_FLAGS}\"'
       bsd_games_cfg_pager='#{CREW_PREFIX}/bin/#{ENV.fetch('PAGER', nil)}'
       bsd_games_cfg_sbindir='#{CREW_PREFIX}/sbin'
       bsd_games_cfg_sharedir='#{CREW_PREFIX}/share/bsdgames'

@@ -56,7 +56,7 @@ class Docker < Package
       CGO_CPPFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
       CGO_CFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
       CGO_CXXFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
-      CGO_LDFLAGS='#{CREW_LDFLAGS.gsub('=auto', '')}' \
+      CGO_LDFLAGS='#{CREW_LINKER_FLAGS.gsub('=auto', '')}' \
       LDFLAGS='' \
       GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external' \
       GO111MODULE=off \
@@ -66,7 +66,7 @@ class Docker < Package
       CGO_CPPFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
       CGO_CFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
       CGO_CXXFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
-      CGO_LDFLAGS='#{CREW_LDFLAGS.gsub('=auto', '')}' \
+      CGO_LDFLAGS='#{CREW_LINKER_FLAGS.gsub('=auto', '')}' \
       LDFLAGS='' \
       GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external' \
       GO111MODULE=off \
@@ -98,7 +98,7 @@ class Docker < Package
         CGO_CPPFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
         CGO_CFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
         CGO_CXXFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
-        CGO_LDFLAGS='#{CREW_LDFLAGS.gsub('=auto', '')}' \
+        CGO_LDFLAGS='#{CREW_LINKER_FLAGS.gsub('=auto', '')}' \
         LDFLAGS='' \
         GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external' \
         GO111MODULE=off \

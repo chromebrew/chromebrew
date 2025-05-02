@@ -19,7 +19,9 @@
 /usr/local/bin/xtrace
 /usr/local/bin/zdump
 /usr/local/bin/zic
+/usr/local/etc/env.d/10-glibc
 /usr/local/etc/ld.so.cache
+/usr/local/etc/ld.so.conf
 /usr/local/etc/rpc
 /usr/local/include/a.out.h
 /usr/local/include/aio.h
@@ -505,6 +507,7 @@
 /usr/local/opt/glibc-libs/Mcrt1.o
 /usr/local/opt/glibc-libs/Scrt1.o
 /usr/local/opt/glibc-libs/audit/sotruss-lib.so
+/usr/local/opt/glibc-libs/crew-audit.so
 /usr/local/opt/glibc-libs/crt1.o
 /usr/local/opt/glibc-libs/crti.o
 /usr/local/opt/glibc-libs/crtn.o
