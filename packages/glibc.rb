@@ -1,10 +1,4 @@
 require 'package'
-Package.load_package("#{__dir__}/glibc_build223.rb")
-Package.load_package("#{__dir__}/glibc_build227.rb")
-Package.load_package("#{__dir__}/glibc_build232.rb")
-Package.load_package("#{__dir__}/glibc_build233.rb")
-Package.load_package("#{__dir__}/glibc_build235.rb")
-Package.load_package("#{__dir__}/glibc_build237.rb")
 Package.load_package("#{__dir__}/glibc_standalone.rb")
 
 class Glibc < Package
@@ -14,32 +8,14 @@ class Glibc < Package
 
   is_fake
 
-  case
-  when LIBC_VERSION == '2.23'
-    version Glibc_build223.version
-    compatibility Glibc_build223.compatibility
-    depends_on 'glibc_build223'
-  when LIBC_VERSION == '2.27'
-    version Glibc_build227.version
-    compatibility Glibc_build227.compatibility
-    depends_on 'glibc_build227'
-  when LIBC_VERSION == '2.32'
-    version Glibc_build232.version
-    compatibility Glibc_build232.compatibility
-    depends_on 'glibc_build232'
-  when LIBC_VERSION == '2.33'
-    version Glibc_build233.version
-    compatibility Glibc_build233.compatibility
-    depends_on 'glibc_build233'
-  when LIBC_VERSION == '2.35'
-    version Glibc_build235.version
-    compatibility Glibc_build235.compatibility
-    depends_on 'glibc_lib235'
-  when LIBC_VERSION == '2.37'
-    version Glibc_build237.version
-    compatibility Glibc_build237.compatibility
-    depends_on 'glibc_lib237'
-  when LIBC_VERSION >= '2.41'
+  if LIBC_VERSION < '2.39' && LIBC_VERSION >= '2.23'
+    glibc_ver = LIBC_VERSION.sub('.', '').to_s
+    glibc_pkg = "glibc_build#{glibc_ver}"
+    glibc_obj = Package.load_package("#{__dir__}/#{glibc_pkg}")
+    version glibc_obj.version
+    compatibility glib_obj.compatibility
+    depends_on glibc_pkg
+  elsif LIBC_VERSION >= '2.41'
     version Glibc_standalone.version
     compatibility Glibc_standalone.compatibility
     depends_on 'glibc_standalone'

@@ -36,12 +36,12 @@ CREW_GLIBC_INTERPRETER ||= File.symlink?("#{CREW_PREFIX}/bin/ld.so") ? File.real
 
 # Glibc version can be found from the output of libc.so.6
 # LIBC_VERSION ||= ENV.fetch('LIBC_VERSION', Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last) unless defined?(LIBC_VERSION)
-if File.file?("#{CREW_GLIBC_PREFIX}/libc.so.6")
-  @libcvertokens=  %x[/#{CREW_GLIBC_PREFIX}/libc.so.6].lines.first.chomp.split(/[\s]/)
-else
-  @libcvertokens=  %x[/#{ARCH_LIB}/libc.so.6].lines.first.chomp.split(/[\s]/)
-end
-LIBC_VERSION = @libcvertokens[@libcvertokens.find_index("version") + 1].sub!(/[[:punct:]]?$/,'')
+@libcvertokens = if File.file?("#{CREW_GLIBC_PREFIX}/libc.so.6")
+                   `/#{CREW_GLIBC_PREFIX}/libc.so.6`.lines.first.chomp.split(/[\s]/)
+                 else
+                   `/#{ARCH_LIB}/libc.so.6`.lines.first.chomp.split(/[\s]/)
+                 end
+LIBC_VERSION = @libcvertokens[@libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
 
 if CREW_PREFIX == '/usr/local'
   CREW_BUILD_FROM_SOURCE ||= ENV.fetch('CREW_BUILD_FROM_SOURCE', false) unless defined?(CREW_BUILD_FROM_SOURCE)
