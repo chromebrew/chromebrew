@@ -67,7 +67,7 @@ class Pipewire < Meson
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
   end
 
-  pre_meson_options "LDFLAGS='#{CREW_LDFLAGS} -pthread'"
+  pre_meson_options "LDFLAGS='#{CREW_LINKER_FLAGS} -pthread'"
   meson_options "-Dbluez5-backend-hsphfpd=disabled \
       -Dbluez5-backend-ofono=disabled \
       -Dbluez5=disabled \
