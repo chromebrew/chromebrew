@@ -5,11 +5,12 @@ Package.load_package("#{__dir__}/glibc_build232.rb")
 Package.load_package("#{__dir__}/glibc_build233.rb")
 Package.load_package("#{__dir__}/glibc_build235.rb")
 Package.load_package("#{__dir__}/glibc_build237.rb")
+Package.load_package("#{__dir__}/glibc_standalone.rb")
 
 class Glibc < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
-  homepage Glibc_build237.homepage
-  license Glibc_build237.license
+  homepage Glibc_standalone.homepage
+  license Glibc_standalone.license
 
   is_fake
 
@@ -38,6 +39,10 @@ class Glibc < Package
     version Glibc_build237.version
     compatibility Glibc_build237.compatibility
     depends_on 'glibc_lib237'
+  when '2.41'
+    version Glibc_standalone.version
+    compatibility Glibc_standalone.compatibility
+    depends_on 'glibc_standalone'
   else
     version LIBC_VERSION
     compatibility 'aarch64 armv7l x86_64'
