@@ -11,5 +11,6 @@ class Ruby_psych < RUBY
   depends_on 'ruby_stringio' # R
 
   conflicts_ok
-  no_compile_needed
+  gem_compile_needed
+  no_source_build
 end
