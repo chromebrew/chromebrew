@@ -14,32 +14,32 @@ class Glibc < Package
 
   is_fake
 
-  case LIBC_VERSION
-  when '2.23'
+  case
+  when LIBC_VERSION == '2.23'
     version Glibc_build223.version
     compatibility Glibc_build223.compatibility
     depends_on 'glibc_build223'
-  when '2.27'
+  when LIBC_VERSION == '2.27'
     version Glibc_build227.version
     compatibility Glibc_build227.compatibility
     depends_on 'glibc_build227'
-  when '2.32'
+  when LIBC_VERSION == '2.32'
     version Glibc_build232.version
     compatibility Glibc_build232.compatibility
     depends_on 'glibc_build232'
-  when '2.33'
+  when LIBC_VERSION == '2.33'
     version Glibc_build233.version
     compatibility Glibc_build233.compatibility
     depends_on 'glibc_build233'
-  when '2.35'
+  when LIBC_VERSION == '2.35'
     version Glibc_build235.version
     compatibility Glibc_build235.compatibility
     depends_on 'glibc_lib235'
-  when '2.37'
+  when LIBC_VERSION == '2.37'
     version Glibc_build237.version
     compatibility Glibc_build237.compatibility
     depends_on 'glibc_lib237'
-  when '2.41'
+  when LIBC_VERSION >= '2.41'
     version Glibc_standalone.version
     compatibility Glibc_standalone.compatibility
     depends_on 'glibc_standalone'
