@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.59.7' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.59.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -37,7 +37,7 @@ CREW_GLIBC_INTERPRETER ||= File.symlink?("#{CREW_PREFIX}/bin/ld.so") ? File.real
 # Glibc version can be found from the output of libc.so.6
 # LIBC_VERSION ||= ENV.fetch('LIBC_VERSION', Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last) unless defined?(LIBC_VERSION)
 @libcvertokens = if File.file?("#{CREW_GLIBC_PREFIX}/libc.so.6")
-                   `/#{CREW_GLIBC_PREFIX}/libc.so.6`.lines.first.chomp.split(/[\s]/)
+                   `#{CREW_GLIBC_PREFIX}/libc.so.6`.lines.first.chomp.split(/[\s]/)
                  else
                    `/#{ARCH_LIB}/libc.so.6`.lines.first.chomp.split(/[\s]/)
                  end
