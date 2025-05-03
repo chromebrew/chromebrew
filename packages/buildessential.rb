@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.42'
+  version '1.43'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -180,4 +180,7 @@ class Buildessential < Package
 
   # Code quality
   depends_on 'py3_pre_commit'
+
+  # Workaround for rust build dependencies needing to be installed and crew rerun before installs work.
+  depends_on 'rust'
 end
