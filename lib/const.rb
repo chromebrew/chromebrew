@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.59.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.60.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -41,7 +41,7 @@ CREW_GLIBC_INTERPRETER ||= File.symlink?("#{CREW_PREFIX}/bin/ld.so") ? File.real
                  else
                    `/#{ARCH_LIB}/libc.so.6`.lines.first.chomp.split(/[\s]/)
                  end
-LIBC_VERSION = @libcvertokens[@libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
+LIBC_VERSION = @libcvertokens[@libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '') unless defined?(LIBC_VERSION)
 
 if CREW_PREFIX == '/usr/local'
   CREW_BUILD_FROM_SOURCE ||= ENV.fetch('CREW_BUILD_FROM_SOURCE', false) unless defined?(CREW_BUILD_FROM_SOURCE)
