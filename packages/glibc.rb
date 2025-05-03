@@ -8,14 +8,7 @@ class Glibc < Package
 
   is_fake
 
-  if LIBC_VERSION < '2.39' && LIBC_VERSION >= '2.23'
-    glibc_ver = LIBC_VERSION.sub('.', '').to_s
-    glibc_pkg = "glibc_build#{glibc_ver}"
-    glibc_obj = Package.load_package("#{__dir__}/#{glibc_pkg}")
-    version glibc_obj.version
-    compatibility glib_obj.compatibility
-    depends_on glibc_pkg
-  elsif LIBC_VERSION >= '2.41'
+  if LIBC_VERSION <= '2.41'
     version Glibc_standalone.version
     compatibility Glibc_standalone.compatibility
     depends_on 'glibc_standalone'
