@@ -12,7 +12,7 @@ class Py3_ebooklib < Pip
   binary_sha256({
     aarch64: 'fe8f37d2b10ddad0ce3d04a3254305da85d5b1ffdd0a893351ff2e18e675286f',
      armv7l: 'fe8f37d2b10ddad0ce3d04a3254305da85d5b1ffdd0a893351ff2e18e675286f',
-       i686: '31ad50a93d78426a630f685efa02c1825e7546e7e614f537b04e655f6aae9a76',
+       i686: 'ca4a281396bc86ebe5610cf7ce05f4616f653a2f28ff968ef72526bef3a34ec1',
      x86_64: 'cd3df882bf9842fbbb821b8629e5c1c1f7eada8b971e2cb2a73075e73f7cb594'
   })
 

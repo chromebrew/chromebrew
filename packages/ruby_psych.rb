@@ -11,7 +11,8 @@ class Ruby_psych < RUBY
 
   binary_sha256({
     aarch64: '2e2f03b3a65ef035f9b878623b33783eb8bda65327c55608d65d5f0d82ef2437',
-     armv7l: '2e2f03b3a65ef035f9b878623b33783eb8bda65327c55608d65d5f0d82ef2437'
+     armv7l: '2e2f03b3a65ef035f9b878623b33783eb8bda65327c55608d65d5f0d82ef2437',
+       i686: 'bad042d6fb6384410a6e933ecbe923c165879bbdb40c5eb1e31a267666ad268f'
   })
 
   depends_on 'ruby_stringio' # R
