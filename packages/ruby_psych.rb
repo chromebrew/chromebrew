@@ -7,6 +7,12 @@ class Ruby_psych < RUBY
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'gem'
+
+  binary_sha256({
+    aarch64: '2e2f03b3a65ef035f9b878623b33783eb8bda65327c55608d65d5f0d82ef2437',
+     armv7l: '2e2f03b3a65ef035f9b878623b33783eb8bda65327c55608d65d5f0d82ef2437'
+  })
 
   depends_on 'ruby_stringio' # R
 
