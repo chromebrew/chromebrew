@@ -3,7 +3,7 @@ require 'buildsystems/python'
 class Py3_pip < Python
   description 'Pip is the python package manager from the Python Packaging Authority.'
   homepage 'https://pip.pypa.io/'
-  version "25.1-#{CREW_PY_VER}"
+  version "25.1.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/pip.git'
@@ -14,7 +14,7 @@ class Py3_pip < Python
     aarch64: '8ba9fc4c95f3e344742279b8c14788a47f396bb2636e796f112103617f6f00f6',
      armv7l: '8ba9fc4c95f3e344742279b8c14788a47f396bb2636e796f112103617f6f00f6',
        i686: 'faaa6b8cb5235ba16b53966f6bab3fbd90ee7da094f285d64e9ddda965203fcf',
-     x86_64: 'a3ca228dae824f6292839cd613325335396aa8dcea6289c41aa9a817cd69abed'
+     x86_64: '5219dc705b2cf79ecb5c52ab6116f643b6fa03d9778c6b18d6e705c8e434e7b9'
   })
 
   depends_on 'python3'
