@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Mold < CMake
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '2.37.1'
+  version '2.39.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
@@ -28,6 +28,7 @@ class Mold < CMake
   depends_on 'zstd' # R
 
   no_env_options
+  no_shrink
   print_source_bashrc
 
   cmake_options "-DBUILD_TESTING=OFF \
