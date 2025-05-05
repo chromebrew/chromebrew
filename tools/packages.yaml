@@ -7405,6 +7405,11 @@ url: https://gitlab.freedesktop.org/polkit/polkit/-/tags
 activity: low
 ---
 kind: url
+name: ponyc
+url: https://github.com/ponylang/ponyc/releases
+activity: medium
+---
+kind: url
 name: poppler
 url: https://poppler.freedesktop.org
 activity: medium
