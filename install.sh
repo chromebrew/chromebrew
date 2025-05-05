@@ -191,16 +191,22 @@ echo_out 'Set up the local package repo...'
 # Download the chromebrew repository.
 curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-BOOTSTRAP_PACKAGES='glibc_standalone libxcrypt upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ruby git ca_certificates libyaml openssl gmp'
+BOOTSTRAP_PACKAGES='zstd_static glibc_standalone libxcrypt upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ruby git ca_certificates libyaml openssl gmp'
 
 # Older i686 systems.
-[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' gcc_lib'
+if [[ "${ARCH}" == "i686" ]]; then
+  LIBC_VERSION='2.23'
+  BOOTSTRAP_PACKAGES+=' gcc_lib'
+fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   # shellcheck disable=SC2231
   if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
     # Recent Arm systems have a cut down system.
-    [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
+    if [[ "${ARCH}" == "armv7l" ]];then
+      LIBC_VERSION='2.27'
+      BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
+    fi
   fi
 fi
 
