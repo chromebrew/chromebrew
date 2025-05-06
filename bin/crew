@@ -889,7 +889,7 @@ end
 def fix_interpreter_path(dir)
   # Do not set interpreter for non-musl, as this can break apps if there
   # is an issue with the crew glibc.
-  return if @pkg.is_musl? || @pkg.name == 'patchelf'
+  return if @pkg.is_musl? || %w[patchelf upx].include?(@pkg.name)
 
   Dir.chdir dir do
     puts 'Running upx to uncompress binaries and patchelf to patch binary interpreter paths.'.lightblue
