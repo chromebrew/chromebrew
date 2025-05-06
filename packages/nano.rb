@@ -14,7 +14,7 @@ class Nano < Autotools
     aarch64: '05f552ef37e31db78a85fa7fa67e5f1163798baed534f5ea18eb49b1dd7e3225',
      armv7l: '05f552ef37e31db78a85fa7fa67e5f1163798baed534f5ea18eb49b1dd7e3225',
        i686: 'e8de44caf4f82ddf66b8b54e547c542ea16b9b36f11d81458f0dd3882f9f4601',
-     x86_64: '4335734d6c70c77a1844e2a5f5e3b02e739560d67368bd620c79eb1115b5b341'
+     x86_64: '4d4b7ea84e6835f931fccc71cfa095ebe78ef05e0315afb9bfd443dd870dfc37'
   })
 
   depends_on 'filecmd' # R
