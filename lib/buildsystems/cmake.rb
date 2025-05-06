@@ -12,7 +12,7 @@ class CMake < Package
       puts "#{method}: #{send method}".orange
     end
     @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run' : ''
-    system "#{@pre_cmake_options} #{@mold_linker_prefix_cmd} cmake -S #{@cmake_build_relative_dir} -B #{@cmake_build_relative_dir}/builddir -G Ninja #{@crew_cmake_options} #{@cmake_options}"
+    system CREW_ENV_OPTIONS_HASH, "#{@pre_cmake_options} #{@mold_linker_prefix_cmd} cmake -S #{@cmake_build_relative_dir} -B #{@cmake_build_relative_dir}/builddir -G Ninja #{@crew_cmake_options} #{@cmake_options}"
     system "#{CREW_NINJA} -C #{@cmake_build_relative_dir}/builddir"
     @cmake_build_extras&.call
   end
