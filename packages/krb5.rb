@@ -31,7 +31,7 @@ class Krb5 < Package
       @path = "#{CREW_PREFIX}/bin:" + ENV.fetch('PATH', nil)
       system "CPPFLAGS='#{@cppflags}' \
       PATH=#{@path} \
-      mold -run ./configure #{CREW_CONFIGURE_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --localstatedir=#{CREW_PREFIX}/var/krb5kdc \
       --enable-shared \
       --with-system-et \

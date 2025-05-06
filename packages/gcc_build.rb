@@ -169,7 +169,7 @@ class Gcc_build < Package
         }.transform_keys(&:to_s)
 
       system configure_env, <<~BUILD.chomp
-        mold -run ../configure #{CREW_CONFIGURE_OPTIONS} \
+        ../configure #{CREW_CONFIGURE_OPTIONS} \
           #{@gcc_global_opts} \
           #{@archflags} \
           --with-native-system-header-dir=#{CREW_PREFIX}/include \

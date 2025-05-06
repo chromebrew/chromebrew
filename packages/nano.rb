@@ -23,7 +23,7 @@ class Nano < Package
   depends_on 'zlib' # R
 
   def self.build
-    system "mold -run \
+    system "\
       ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-browser \
       --enable-color \

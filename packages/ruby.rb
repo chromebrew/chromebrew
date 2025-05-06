@@ -38,7 +38,7 @@ class Ruby < Package
       RUBY_TRY_LDFLAGS='stack_protector=no' \
       optflags='-flto=auto -fuse-ld=#{CREW_LINKER}' \
       LD=#{CREW_LINKER} \
-      mold -run ./configure #{CREW_CONFIGURE_OPTIONS} \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
       #{ARCH == 'x86_64' ? '--enable-yjit' : ''} \
       --disable-fortify-source"

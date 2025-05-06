@@ -114,7 +114,7 @@ class Webkit2gtk_4_1 < Package
     @counter = 1
     @counter_max = 20
     loop do
-      break if Kernel.system "mold -run #{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+      break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
 
       puts "Make iteration #{@counter} of #{@counter_max}...".orange
 

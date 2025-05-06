@@ -119,7 +119,7 @@ class Js102 < Package
             LDFLAGS='-lreadline -ltinfo' \
             MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system \
             MOZCONFIG=../.mozconfig \
-            mold -run ../mach build"
+            ../mach build"
     end
   end
 

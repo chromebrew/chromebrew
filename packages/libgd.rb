@@ -24,11 +24,11 @@ class Libgd < Package
   depends_on 'glibc' # R
 
   def self.build
-    system "mold -run cmake -B builddir \
+    system "cmake -B builddir \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
         -DCMAKE_INCLUDE_PATH=#{CREW_PREFIX}/include"
-    system "mold -run #{CREW_NINJA} -C builddir"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install

@@ -22,7 +22,7 @@ class Librhash < Package
   depends_on 'gcc_lib' # R
 
   def self.build
-    system "mold -run ./configure \
+    system "./configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX}\
             --enable-gettext \

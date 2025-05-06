@@ -32,7 +32,7 @@ class Geany < Package
   @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
 
   def self.build
-    system "mold -run meson setup \
+    system "meson setup \
       #{CREW_MESON_OPTIONS} \
       -Dapi-docs=disabled \
       -Dgtkdoc=true \
