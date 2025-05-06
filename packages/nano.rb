@@ -11,8 +11,8 @@ class Nano < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '05f552ef37e31db78a85fa7fa67e5f1163798baed534f5ea18eb49b1dd7e3225',
-     armv7l: '05f552ef37e31db78a85fa7fa67e5f1163798baed534f5ea18eb49b1dd7e3225',
+    aarch64: 'afa071654d544a9f11f9a37af985af8c3a4d11468d85c9242a83b60b8cf15541',
+     armv7l: 'afa071654d544a9f11f9a37af985af8c3a4d11468d85c9242a83b60b8cf15541',
        i686: 'e8de44caf4f82ddf66b8b54e547c542ea16b9b36f11d81458f0dd3882f9f4601',
      x86_64: '4d4b7ea84e6835f931fccc71cfa095ebe78ef05e0315afb9bfd443dd870dfc37'
   })
