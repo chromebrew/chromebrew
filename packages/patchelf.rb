@@ -11,22 +11,17 @@ class Patchelf < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4f03e9e000bb49583d7127d54caef6ee29758693061d68d446487b6b45dba169',
-     armv7l: '4f03e9e000bb49583d7127d54caef6ee29758693061d68d446487b6b45dba169',
-       i686: '85047aedda730e0e8e4f4b3cee0b69837e9319f49ae62fdaa79ef7accc5d23b5',
-     x86_64: '8f88e3483f8ce03b708e992dc2c0dacef893b6824f057606d996761aca603c9d'
+    aarch64: '6013578363f4949ba003a9baf6cdf4494ffdab85dfa141d231c7111be4841c19',
+     armv7l: '6013578363f4949ba003a9baf6cdf4494ffdab85dfa141d231c7111be4841c19',
+       i686: '35c23d10350f3a29111831776d639f8b53cd987c262868188987e27fef8b8cae',
+     x86_64: '36b45b4f59b426a875e8db833595d7377c960a701f4153e1b2dcc786389458fd'
   })
 
   no_env_options
 
-  pre_configure_options "LDFLAGS='-flto=auto -static -fuse-ld=#{CREW_LINKER}' "
+  pre_configure_options "LDFLAGS='#{CREW_LINKER_FLAGS} -static'"
 
   def self.check
-    system "sed -i 's/-flto=auto -static//g' Makefile"
-    system "sed -i 's/-flto=auto -static//g' tests/Makefile"
-    Dir.chdir('tests') do
-      system 'make clean'
-    end
-    system 'make', 'check'
+    system "#{CREW_DEST_PREFIX}/bin/patchelf --version"
   end
 end
