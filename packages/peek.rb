@@ -26,7 +26,7 @@ class Peek < Package
   depends_on 'gcc_lib' # R
 
   def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dbuild-tests=false \
       builddir"
     system 'meson configure --no-pager builddir'

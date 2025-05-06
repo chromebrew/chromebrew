@@ -23,7 +23,7 @@ class Libvterm < Package
   depends_on 'glibc'
 
   def self.build
-    system "mold -run make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX}"
+    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX}"
   end
 
   def self.install

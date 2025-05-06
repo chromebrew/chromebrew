@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.60.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.60.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -243,7 +243,7 @@ CREW_ENV_FNO_LTO_OPTIONS_HASH ||= {
   'CXXFLAGS'        => CREW_COMMON_FNO_LTO_FLAGS,
   'FCFLAGS'         => CREW_COMMON_FNO_LTO_FLAGS,
   'FFLAGS'          => CREW_COMMON_FNO_LTO_FLAGS,
-  'LD_LIBRARY_PATH' => CREW_LIB_PREFIX,
+  'LIBRARY_PATH'    => "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
   'LDFLAGS'         => CREW_FNO_LTO_LDFLAGS
 }
 # parse from hash to shell readable string
@@ -280,9 +280,11 @@ CREW_NINJA ||= ENV.fetch('CREW_NINJA', 'ninja') unless defined?(CREW_NINJA)
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
 # and also https://bugzilla.redhat.com/show_bug.cgi?id=1425064
+# CMAKE_LIBRARY_PATH is the build LIBRARY_PATH, as opposed to
+# CMAKE_INSTALL_LIBDIR which defaults to lib or lib64.
 CREW_CMAKE_OPTIONS ||= <<~OPT.chomp
   -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-  -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
+  -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}' \
   -DCMAKE_C_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
   -DCMAKE_CXX_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
   -DCMAKE_EXE_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \

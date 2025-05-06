@@ -55,7 +55,7 @@ class Spacefm < Package
   end
 
   def self.build
-    system "mold -run ./configure #{CREW_CONFIGURE_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
       --with-gtk3 \
       --disable-maintainer-mode"
     system 'make'

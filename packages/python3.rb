@@ -93,7 +93,7 @@ class Python3 < Package
           --with-tzpath=#{CREW_PREFIX}/share/zoneinfo \
           --with-libc= \
           --enable-shared"
-      system "MAKEFLAGS=-j#{CREW_NPROC} mold -run make"
+      system "MAKEFLAGS=-j#{CREW_NPROC} make"
       File.write 'python_config_env', <<~PYTHON_CONFIG_EOF
         # Force use of python3 over python2.7 in packages which check the variable to set the python used.
         PYTHON=python3

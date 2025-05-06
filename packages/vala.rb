@@ -36,12 +36,12 @@ class Vala < Package
       system 'git checkout b2beeaccdf2307ced172646c2ada9765e1747b28'
       system 'touch */*.stamp'
       system 'autoreconf -fi'
-      system "VALAC=/no-valac mold -run ./configure --prefix=#{Dir.pwd}/../bootstrap_install"
+      system "VALAC=/no-valac ./configure --prefix=#{Dir.pwd}/../bootstrap_install"
       system 'make'
       system 'make install'
     end
 
-    system "VALAC=#{Dir.pwd}/bootstrap_install/bin/valac mold -run ./autogen.sh \
+    system "VALAC=#{Dir.pwd}/bootstrap_install/bin/valac ./autogen.sh \
       #{CREW_CONFIGURE_OPTIONS} \
       --disable-maintainer-mode \
       --disable-valadoc"

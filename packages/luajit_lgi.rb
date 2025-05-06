@@ -37,7 +37,7 @@ class Luajit_lgi < Package
     # -Dtests=false \
     # builddir"
     # system 'meson configure --no-pager builddir'
-    # system 'mold -run samu -C builddir'
+    # system 'samu -C builddir'
   end
 
   def self.install

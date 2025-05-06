@@ -28,7 +28,7 @@ class Perl < Package
     # Install manual files into #{CREW_PREFIX}/share/man/man* even if groff is not installed.
     system "AR=gcc-ar RANLIB=gcc-ranlib NM=gcc-nm \
       BUILD_ZLIB=False BUILD_BZIP2=0 \
-      mold -run ./Configure \
+      ./Configure \
       -de \
       -Dprefix=#{CREW_PREFIX} \
       -Dvendorprefix=#{CREW_PREFIX} \

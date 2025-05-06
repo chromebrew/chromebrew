@@ -34,7 +34,7 @@ class Opus < Package
       -Dtests=disabled \
       builddir"
     system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install

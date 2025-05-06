@@ -22,7 +22,7 @@ class Command_not_found < Package
   print_source_bashrc
 
   def self.build
-    system "mold -run cc #{CREW_COMMON_FLAGS} command-not-found-handler.c -o command-not-found-handler"
+    system "cc #{CREW_COMMON_FLAGS} command-not-found-handler.c -o command-not-found-handler"
   end
 
   def self.install

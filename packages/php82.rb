@@ -95,7 +95,7 @@ class Php82 < Package
   end
 
   def self.build
-    system "mold -run ./configure \
+    system "./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \

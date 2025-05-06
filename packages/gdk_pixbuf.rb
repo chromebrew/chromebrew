@@ -39,7 +39,7 @@ class Gdk_pixbuf < Package
   gnome
 
   def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dinstalled_tests=false \
       -Dbuiltin_loaders=all \
       -Drelocatable=true \
@@ -48,7 +48,7 @@ class Gdk_pixbuf < Package
       -Dman=true \
       -Dtests=false \
       builddir"
-    system 'mold -run samu -C builddir'
+    system 'samu -C builddir'
   end
 
   def self.install

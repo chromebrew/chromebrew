@@ -37,7 +37,7 @@ class Opusfile < Package
   end
 
   def self.build
-    system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
+    system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
         -DBUILD_SHARED_LIBS=ON \
         -Wno-dev \
         -G Ninja"

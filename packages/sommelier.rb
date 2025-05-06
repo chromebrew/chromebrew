@@ -114,7 +114,7 @@ class Sommelier < Package
 
       system <<~BUILD
         env CC=clang CXX=clang++ \
-          mold -run meson setup #{CREW_MESON_OPTIONS.gsub('-ffat-lto-objects', '')} \
+          meson setup #{CREW_MESON_OPTIONS.gsub('-ffat-lto-objects', '')} \
           -Dcommit_loop_fix=true \
           -Db_asneeded=false \
           -Db_lto=true \
@@ -127,7 +127,7 @@ class Sommelier < Package
       BUILD
 
       system 'meson configure --no-pager builddir'
-      system "mold -run #{CREW_NINJA} -C builddir"
+      system "#{CREW_NINJA} -C builddir"
 
       FileUtils.mkdir_p 'builddir'
       Dir.chdir('builddir') do

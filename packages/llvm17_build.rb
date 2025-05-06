@@ -122,7 +122,7 @@ class Llvm17_build < Package
         gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
         clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
       CLCPLUSPLUS_EOF
-      system "mold -run cmake -B builddir -G Ninja llvm \
+      system "cmake -B builddir -G Ninja llvm \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_C_COMPILER=$(which clang) \
@@ -169,7 +169,7 @@ class Llvm17_build < Package
     @counter = 1
     @counter_max = 20
     loop do
-      break if Kernel.system "mold -run #{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+      break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
 
       puts "Make iteration #{@counter} of #{@counter_max}...".orange
 
