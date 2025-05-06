@@ -19,7 +19,7 @@ class Patchelf < Autotools
 
   no_env_options
 
-  pre_configure_options "LDFLAGS='-flto=auto -static' "
+  pre_configure_options "LDFLAGS='-flto=auto -static -fuse-ld=#{CREW_LINKER}' "
 
   def self.check
     system "sed -i 's/-flto=auto -static//g' Makefile"
