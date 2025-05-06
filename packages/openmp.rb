@@ -72,7 +72,7 @@ class Openmp < Package
       -DOPENMP_LIBDIR_SUFFIX=#{CREW_LIB_SUFFIX} \
       -DPYTHON_EXECUTABLE=$(which python3) \
       -Wno-dev"
-    system "mold -run #{CREW_NINJA} -C builddir"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install

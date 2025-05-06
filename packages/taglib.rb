@@ -21,7 +21,7 @@ class Taglib < Package
   depends_on 'cppunit' => :build
 
   def self.build
-    system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
+    system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
             -G Ninja"
     system "#{CREW_NINJA} -C builddir || ( sed -i 's/-fno-lto//g' builddir/taglib/build.ninja && #{CREW_NINJA} -C builddir)"
   end

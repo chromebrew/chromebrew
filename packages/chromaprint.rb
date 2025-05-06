@@ -21,7 +21,7 @@ class Chromaprint < Package
   depends_on 'glibc' # R
 
   def self.build
-    system "mold -run cmake -B builddir -G Ninja #{CREW_CMAKE_LIBSUFFIX_OPTIONS} \
+    system "cmake -B builddir -G Ninja #{CREW_CMAKE_LIBSUFFIX_OPTIONS} \
       -DBUILD_TOOLS=ON \
       -DBUILD_TESTS=ON"
     system "#{CREW_NINJA} -C builddir"

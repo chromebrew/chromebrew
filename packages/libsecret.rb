@@ -29,7 +29,7 @@ class Libsecret < Package
       -Dmanpage=false \
       build"
     system 'meson configure build'
-    system 'mold -run samu -C build'
+    system 'samu -C build'
   end
 
   def self.install

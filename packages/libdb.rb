@@ -26,7 +26,7 @@ class Libdb < Package
 
   def self.build
     Dir.chdir 'build_unix' do
-      system "mold -run ../dist/configure #{CREW_CONFIGURE_OPTIONS} \
+      system "../dist/configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-compat185 \
       --enable-cxx \
       --enable-dbm \

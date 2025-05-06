@@ -10,8 +10,7 @@ class PERL < Package
   end
 
   def self.build
-    @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run' : ''
-    system "#{@pre_perl_options} #{@mold_linker_prefix_cmd} make"
+    system "#{@pre_perl_options} make"
     @perl_build_extras&.call
   end
 

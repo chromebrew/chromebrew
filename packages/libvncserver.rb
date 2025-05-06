@@ -29,7 +29,7 @@ class Libvncserver < Package
   depends_on 'zlib' # R
 
   def self.build
-    system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
+    system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
         -DWITH_SYSTEMD=OFF \
         -Wno-dev \
         -G Ninja"

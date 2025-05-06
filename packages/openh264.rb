@@ -25,7 +25,7 @@ class Openh264 < Package
   depends_on 'nasm' => :build
 
   def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dtests=disabled \
       builddir"
     system 'meson configure --no-pager builddir'

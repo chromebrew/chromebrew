@@ -93,7 +93,7 @@ class Php74 < Package
   end
 
   def self.build
-    system "CFLAGS='-pipe' mold -run ./configure \
+    system "CFLAGS='-pipe' ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \
@@ -145,7 +145,7 @@ class Php74 < Package
        --with-xmlrpc \
        --with-xsl \
        --with-zip"
-    system 'mold -run make'
+    system 'make'
   end
 
   def self.check

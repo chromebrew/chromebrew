@@ -45,7 +45,7 @@ class Alsa_tools < Package
   end
 
   def self.build
-    system "GITCOMPILE_ARGS='--prefix=#{CREW_PREFIX}' mold -run make all"
+    system "GITCOMPILE_ARGS='--prefix=#{CREW_PREFIX}' make all"
   end
 
   def self.install

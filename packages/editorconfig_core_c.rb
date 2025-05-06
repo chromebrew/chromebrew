@@ -25,11 +25,11 @@ class Editorconfig_core_c < Package
   depends_on 'glibc' # R
 
   def self.build
-    system "mold -run cmake -B builddir \
+    system "cmake -B builddir \
           #{CREW_CMAKE_OPTIONS} \
           -Wdev \
           -G Ninja"
-    system "mold -run #{CREW_NINJA} -C builddir"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install

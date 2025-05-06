@@ -46,7 +46,7 @@ class Openssl111 < Package
     system "PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
       CFLAGS=\"#{@ARCH_C_LTO_FLAGS}\" CXXFLAGS=\"#{@ARCH_CXX_LTO_FLAGS}\" \
       LDFLAGS=\"#{@ARCH_LDFLAGS}\" \
-      mold -run ./Configure --prefix=#{CREW_PREFIX} \
+      ./Configure --prefix=#{CREW_PREFIX} \
       --libdir=#{CREW_LIB_PREFIX} \
       --openssldir=#{CREW_PREFIX}/etc/ssl \
       #{@openssl_configure_target}"

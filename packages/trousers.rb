@@ -23,7 +23,7 @@ class Trousers < Package
 
   def self.build
     system './bootstrap.sh'
-    system "mold -run ./configure \
+    system "./configure \
       #{CREW_CONFIGURE_OPTIONS} \
       --with-gui=none"
     system 'make'

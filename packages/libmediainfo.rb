@@ -27,7 +27,7 @@ class Libmediainfo < Package
   end
 
   def self.build
-    system "mold -run ./SO_Compile.sh #{CREW_CONFIGURE_OPTIONS}"
+    system "./SO_Compile.sh #{CREW_CONFIGURE_OPTIONS}"
   end
 
   def self.install

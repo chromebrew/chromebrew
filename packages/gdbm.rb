@@ -22,7 +22,7 @@ class Gdbm < Package
   depends_on 'gcc_lib' # R
 
   def self.build
-    system "mold -run ./configure \
+    system "./configure \
       #{CREW_CONFIGURE_OPTIONS}"
     system 'make'
   end

@@ -23,7 +23,7 @@ class Alsa_lib < Autotools
   def self.build
     @py_ver = `python -c "import sys; version = '.'.join(map(str, sys.version_info[:2])) ; print(version)"`.chomp
     system 'autoreconf -fiv'
-    system "mold -run ./configure #{CREW_CONFIGURE_OPTIONS} \
+    system "./configure #{CREW_CONFIGURE_OPTIONS} \
        --without-debug \
        --disable-maintainer-mode \
        --with-pythonlibs=-lpython#{@py_ver} \
