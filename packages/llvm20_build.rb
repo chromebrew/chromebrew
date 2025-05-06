@@ -4,7 +4,7 @@ class Llvm20_build < Package
   @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl' : 'clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl'
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
-  version '20.1.6'
+  version '20.1.7'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -42,7 +42,6 @@ class Llvm20_build < Package
     @ARCH_C_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
     @ARCH_CXX_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
     @ARCH_LDFLAGS = ''
-    @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
   when 'i686'
     # LLVM_TARGETS_TO_BUILD = 'X86'.freeze
     # Because ld.lld: error: undefinler-rt;libc;libcxx;libcxxabi;libunwind;openmped symbol: __atomic_store
@@ -53,7 +52,6 @@ class Llvm20_build < Package
     # ld.lld: error: relocation R_386_PC32 cannot be used against symbol isl_map_fix_si; recompile with -fPIC
     # So as per https://github.com/openssl/openssl/issues/11305#issuecomment-602003528
     @ARCH_LDFLAGS = '-Wl,-znotext'
-    @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
     # lldb fails on i686 due to requirement for a kernel > 4.1.
     # See https://github.com/llvm/llvm-project/issues/57594
   when 'x86_64'
@@ -62,10 +60,10 @@ class Llvm20_build < Package
     @ARCH_C_FLAGS = '-fPIC'
     @ARCH_CXX_FLAGS = '-fPIC'
     @ARCH_LDFLAGS = ''
-    @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
   end
-  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin"
-  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin"
+  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin -B#{CREW_GLIBC_PREFIX}"
+  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin -B#{CREW_GLIBC_PREFIX}"
+  @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin #{CREW_LINKER_FLAGS}"
   # flang isn't supported on 32-bit architectures.
   # openmp is its own package.
 
