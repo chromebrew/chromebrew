@@ -1,3 +1,4 @@
+/home/chronos/user/.nanorc
 /usr/local/bin/nano
 /usr/local/bin/rnano
 /usr/local/share/doc/nano/faq.html
@@ -92,4 +93,3 @@
 /usr/local/share/nano/texinfo.nanorc
 /usr/local/share/nano/xml.nanorc
 /usr/local/share/nano/yaml.nanorc
-/home/chronos/user/.nanorc
