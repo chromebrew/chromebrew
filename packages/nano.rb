@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Nano < Package
+class Nano < Autotools
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  version '8.3'
+  version '8.4'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://nano-editor.org/dist/v8/nano-#{version}.tar.xz"
@@ -22,10 +22,7 @@ class Nano < Package
   depends_on 'ncurses' # R
   depends_on 'zlib' # R
 
-  def self.build
-    system "\
-      ./configure #{CREW_CONFIGURE_OPTIONS} \
-      --enable-browser \
+  configure_options '--enable-browser \
       --enable-color \
       --enable-comment \
       --enable-extra \
@@ -46,8 +43,9 @@ class Nano < Package
       --enable-utf8 \
       --enable-wordcomp \
       --enable-wrapping \
-      --enable-year2038"
-    system 'make'
+      --enable-year2038'
+
+  configure_build_extras do
     open('nanorc', 'w') do |f|
       f << "set constantshow\n"
       f << "set fill 72\n"
@@ -62,8 +60,7 @@ class Nano < Package
     end
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
+  configure_install_extras do
     FileUtils.install 'nanorc', "#{CREW_DEST_HOME}/.nanorc", mode: 0o644
   end
 
