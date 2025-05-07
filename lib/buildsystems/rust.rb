@@ -7,9 +7,9 @@ class RUST < Package
     rust_env =
       {
             BASH_ENV: "#{CREW_PREFIX}/etc/env.d/rust",
-         CREW_LINKER: 'ld',
-                  LD: 'ld',
-        LIBRARY_PATH: CREW_LIB_PREFIX,
+         CREW_LINKER: 'mold',
+                  LD: 'mold',
+        LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
                 PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
       }.transform_keys(&:to_s)
 
@@ -33,9 +33,9 @@ class RUST < Package
     rust_env =
       {
             BASH_ENV: "#{CREW_PREFIX}/etc/env.d/rust",
-         CREW_LINKER: 'ld',
-                  LD: 'ld',
-        LIBRARY_PATH: CREW_LIB_PREFIX,
+         CREW_LINKER: 'mold',
+                  LD: 'mold',
+        LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
                 PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
       }.transform_keys(&:to_s)
 
