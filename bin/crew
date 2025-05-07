@@ -900,13 +900,11 @@ def fix_interpreter_path(dir)
 
     execfiles.each_line(chomp: true) do |execfiletopatch|
       execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
-      neededlibs = `patchelf --print-needed #{execfiletopatch}`
-      next if neededlibs.to_s.empty?
 
       system "upx -qq -d #{execfiletopatch} 2> /dev/null"
       puts "Running patchelf on #{execfiletopatch}".orange
-      system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch} 2> /dev/null"
-      system "patchelf --remove-rpath #{execfiletopatch} 2> /dev/null"
+      system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch} > /dev/null 2> /dev/null"
+      system "patchelf --remove-rpath #{execfiletopatch} > /dev/null 2> /dev/null"
     end
   end
 end
