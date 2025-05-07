@@ -27,7 +27,7 @@ class Sudo_rs < RUST
 
   def self.postinstall
     unless CREW_IN_CONTAINER
-      puts "Installation of sudo_rs will fail unless in the Chromebrew container."
+      puts 'Installation of sudo_rs will fail unless in the Chromebrew container.'
       return
     end
 
