@@ -119,7 +119,6 @@ class Glibc_standalone < Package
 
   def self.postinstall
     # update search cache for ld.so
-    puts 'Updating ld.so cache...'.lightblue
-    system "#{CREW_PREFIX}/bin/ldconfig"
+    system "source ~/.bashrc && LD_AUDIT= #{CREW_PREFIX}/bin/ldconfig"
   end
 end

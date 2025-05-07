@@ -1064,15 +1064,13 @@ def resolve_dependencies_and_install
       crewlog "@pkg.print_source_bashrc?:#{@pkg.print_source_bashrc?} @pkg.gnome?:#{@pkg.gnome?}"
       # Check to see if the trap was set in #{CREW_PREFIX}/etc/profile
       # from crew_profile_base, because otherwise, USR1 will kill crosh.
-      if File.read("/proc/#{Process.ppid}/comm").include?('[trap set]')
+      # The shell in containers is in a subshell of sudo, which is NOT
+      # what PPID reports, so we ned to use this complicated logic to
+      # find the relevant parent bash process.
+      @parent_bash_process = `pstree -lap chronos | grep 'bash \\[trap set]' | head -n 1`.chomp.gsub('bash [trap set],', '').split.first.to_i
+      if Dir.exist?("/proc/#{@parent_bash_process}") && File.read("/proc/#{@parent_bash_process}/comm").include?('[trap set]')
         crewlog 'USR1 trap exists. Sourcing ~/.bashrc .'
-        # The shell in containers is in a subshell of sudo, so we need
-        # to use sudo to send the signal to the PPID.
-        if CREW_IN_CONTAINER
-          Kernel.system "sudo kill -10 $PPID"
-        else
-          Process.kill('USR1', Process.ppid)
-        end
+        Process.kill('USR1', @parent_bash_process)
       else
         ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
 
