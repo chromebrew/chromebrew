@@ -904,7 +904,9 @@ def fix_interpreter_path(dir)
       system "upx -qq -d #{execfiletopatch} 2> /dev/null"
       puts "Running patchelf on #{execfiletopatch}".orange
       system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch} > /dev/null 2> /dev/null"
-      system "patchelf --remove-rpath #{execfiletopatch} > /dev/null 2> /dev/null"
+      @exec_rpath = `patchelf --print-rpath #{execfiletopatch}`.chomp
+      puts "#{execfiletopatch} has an existing rpath of #{@exec_rpath}".orange unless @exec_rpath.empty?
+      # system "patchelf --remove-rpath #{execfiletopatch} > /dev/null 2> /dev/null"
     end
   end
 end

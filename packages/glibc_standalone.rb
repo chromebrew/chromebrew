@@ -3,18 +3,18 @@ require 'package'
 class Glibc_standalone < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
-  version '2.41-2'
+  version '2.41-3'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/glibc/glibc-#{version.partition('-')[0]}.tar.xz"
   source_sha256 'a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '59591f27ee582de7d8849239ddbc7e5b3035d0de98a8e8be4d0fc453b5c8c842',
-     armv7l: '59591f27ee582de7d8849239ddbc7e5b3035d0de98a8e8be4d0fc453b5c8c842',
-       i686: '8165321db2ed13ab4ba8242837314c2c508e7bd9eea5bd346fa3078cd3f86492',
-     x86_64: '0846298a3e6c47f83572f4bc7936a2b2e0e2036d86e73b8fe9a56480e50e52b0'
+    aarch64: '4f76c7f82ad0dcf4e31ea3a8a8904228600eeffbf0c4444b06a8460cf33ff859',
+     armv7l: '4f76c7f82ad0dcf4e31ea3a8a8904228600eeffbf0c4444b06a8460cf33ff859',
+       i686: '9191a782dce9f5600dc9145e1beb0e0de9c1aca583ab7ddcbedd72b83b454b67',
+     x86_64: '2ad34bffe4dae0bea47e1ae0a3ca36e48babf91cc152efc88f9ed72a988029a7'
   })
 
   depends_on 'gawk' => :build
@@ -67,6 +67,7 @@ class Glibc_standalone < Package
       --enable-bind-now
       --enable-fortify-source
       --enable-kernel=3.2
+      --enable-shared
       --disable-nscd
       --disable-profile
       --disable-sanity-checks
@@ -113,7 +114,7 @@ class Glibc_standalone < Package
 
     # install crew-audit
     FileUtils.install 'crew-package-glibc/crew-audit.so', File.join(CREW_DEST_DIR, CREW_GLIBC_PREFIX, 'crew-audit.so'), mode: 0o755
-    File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-glibc", "LD_AUDIT=#{File.join(CREW_GLIBC_PREFIX, 'crew-audit.so')}\n"
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-glibc", "# LD_AUDIT=#{File.join(CREW_GLIBC_PREFIX, 'crew-audit.so')}\nLD_AUDIT=\n"
   end
 
   def self.postinstall

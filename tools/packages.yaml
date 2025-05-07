@@ -8890,6 +8890,11 @@ url: http://www-us.apache.org/dist/subversion
 activity: low
 ---
 kind: url
+name: sudo_rs
+url: https://github.com/trifectatechfoundation/sudo-rs/releases
+activity: medium
+---
+kind: url
 name: suitesparse
 url: https://github.com/DrTimothyAldenDavis/SuiteSparse/releases
 activity: medium

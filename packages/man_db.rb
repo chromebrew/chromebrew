@@ -3,7 +3,7 @@ require 'package'
 class Man_db < Package
   description 'mandb is used to initialize or manually update index database caches that are usually maintained by man.'
   homepage 'https://man-db.nongnu.org/'
-  version '2.13.0'
+  version '2.13.1'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://download.savannah.gnu.org/releases/man-db/man-db-#{version}.tar.xz"
@@ -11,10 +11,10 @@ class Man_db < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7f21547dc617f7964f81060f9228203b29eba727c47fc2d64ed952d7f3641e3b',
-     armv7l: '7f21547dc617f7964f81060f9228203b29eba727c47fc2d64ed952d7f3641e3b',
-       i686: 'a512ad68ff304bea2b22fac3eec19752ce6cf7c0563b9252299c1239bfec1cba',
-     x86_64: '882854084b75bb5646ff8f8558d0615a64554d03fd956ab250f204ce285be431'
+    aarch64: '69d82acf43abd8c86610fb521e15ff2195416d94fca05f1406670a7a57d88c8f',
+     armv7l: '69d82acf43abd8c86610fb521e15ff2195416d94fca05f1406670a7a57d88c8f',
+       i686: '886df1ceeb9027a1f2f15324d1b7c1e526edc4cb117f74a844ab81d1c854b8d3',
+     x86_64: '42825f7c458ec4ee088568635a3072efe45a13c860bf5b1e0b8a8f800dfb08bf'
   })
 
   no_fhs
@@ -41,7 +41,6 @@ class Man_db < Package
     options = CREW_CONFIGURE_OPTIONS + year2038
     system "./configure #{options} \
       --disable-cache-owner \
-      --disable-rpath \
       --disable-setuid \
       --enable-automatic-create \
       --enable-static \
