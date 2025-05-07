@@ -316,7 +316,7 @@ function extract_install () {
 
     if [[ "${1}" == 'glibc_standalone' ]]; then
       # set LD_AUDIT to ignore libC.so.6 requests
-      export LD_AUDIT="${CREW_PREFIX}/opt/glibc-libs/crew-audit.so"
+      # export LD_AUDIT="${CREW_PREFIX}/opt/glibc-libs/crew-audit.so"
 
       # update ld.so cache
       ldconfig
