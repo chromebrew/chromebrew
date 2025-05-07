@@ -133,7 +133,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=nocturne-x86_64.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=hatch-x86_64.m134" >> "$GITHUB_ENV"
+                    echo "CONTAINER=hatch-x86_64.m135" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 fi
@@ -145,7 +145,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=fievel-armv7l.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=strongbad-armv7l.m134" >> "$GITHUB_ENV"
+                    echo "CONTAINER=strongbad-armv7l.m135" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
                 fi
