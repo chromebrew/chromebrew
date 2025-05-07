@@ -889,21 +889,22 @@ end
 def fix_interpreter_path(dir)
   # Do not set interpreter for non-musl, as this can break apps if there
   # is an issue with the crew glibc.
-  return if @pkg.is_musl?
+  return if @pkg.is_musl? || %w[patchelf upx].include?(@pkg.name)
 
   Dir.chdir dir do
-    puts 'Running patchelf and upx'.lightblue
-    abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf") && File.file?("#{CREW_PREFIX}/bin/upx")
+    puts 'Running upx to uncompress binaries and patchelf to patch binary interpreter paths.'.lightblue
+    abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
+    abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
     execfiles = `find . -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' --`.chomp
     return if execfiles.empty?
 
-    puts 'Running patchelf to patch binary interpreter paths'.lightblue
     execfiles.each_line(chomp: true) do |execfiletopatch|
       execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
       neededlibs = `patchelf --print-needed #{execfiletopatch}`
       next if neededlibs.to_s.empty?
 
       system "upx -qq -d #{execfiletopatch} 2> /dev/null"
+      puts "Running patchelf on #{execfiletopatch}".orange
       system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch} 2> /dev/null"
       system "patchelf --remove-rpath #{execfiletopatch} 2> /dev/null"
     end
