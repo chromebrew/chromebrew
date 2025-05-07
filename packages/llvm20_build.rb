@@ -28,7 +28,6 @@ class Llvm20_build < Package
   depends_on 'ocaml' => :build
   depends_on 'py3_pygments' => :build
   depends_on 'py3_pyyaml' => :build
-  depends_on 'sccache' => :build
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
@@ -121,11 +120,9 @@ class Llvm20_build < Package
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_C_COMPILER=$(which clang) \
-            -DCMAKE_C_COMPILER_LAUNCHER=sccache \
             -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_C_FLAGS='#{@ARCH_C_LTO_FLAGS}' \
             -DCMAKE_CXX_COMPILER=$(which clang++) \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=sccache \
             -DCMAKE_CXX_FLAGS='#{@ARCH_CXX_LTO_FLAGS}' \
             -DCMAKE_EXE_LINKER_FLAGS='#{@ARCH_LTO_LDFLAGS}' \
             -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
