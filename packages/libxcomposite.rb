@@ -7,7 +7,7 @@ class Libxcomposite < Meson
   license 'X11'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxcomposite.git'
-  git_hashtag "f796f0a862849765ac5b6b5e861ea548b421b8f0"
+  git_hashtag 'f796f0a862849765ac5b6b5e861ea548b421b8f0'
   binary_compression 'tar.zst'
 
   binary_sha256({
