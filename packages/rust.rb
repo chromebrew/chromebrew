@@ -3,7 +3,7 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.86.0-4'
+  version '1.86.0-5'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
@@ -11,10 +11,10 @@ class Rust < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd2a9dd259f5f26327b436c11f841c90f3fa4997eb758df755bc0af89cc1ec571',
-     armv7l: 'd2a9dd259f5f26327b436c11f841c90f3fa4997eb758df755bc0af89cc1ec571',
-       i686: 'ae70f3782af4be1f2088395eef36f935bc450e09edcdc2dc429764139b7f7f61',
-     x86_64: '736baec0e802fef703a9bb43fafaab5c05464d539ebfdaf0150097f1b3ce0b18'
+    aarch64: 'd833484999d92e034c83460cd5079c195cfdb4d27bd81d2c4f5436893227dfb0',
+     armv7l: 'd833484999d92e034c83460cd5079c195cfdb4d27bd81d2c4f5436893227dfb0',
+       i686: '3360be0df39866d180f949f461a93eb752f1f870d1f64d732e4fb1423e873bba',
+     x86_64: 'e937243be9789c83635a244441fb8625eb48c1ed00396472c4467b427406f3f7'
   })
 
   depends_on 'gcc_lib' # R
@@ -30,7 +30,7 @@ class Rust < Package
     ENV['RUST_BACKTRACE'] = 'full'
     ENV['CARGO_HOME'] = "#{CREW_DEST_PREFIX}/share/cargo"
     ENV['RUSTUP_HOME'] = "#{CREW_DEST_PREFIX}/share/rustup"
-    ENV['RUSTFLAGS'] = "-Cdebuginfo=0 -Copt-level=3 -Clink-arg=-fuse-ld=mold -Clink-arg=-Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER} -Clink-arg=-Wl,-rpath,#{CREW_GLIBC_INTERPRETER}:#{CREW_LIB_PREFIX} -Clink-arg=-L#{CREW_GLIBC_PREFIX} -Clink-arg=-L#{CREW_LIB_PREFIX}"
+    ENV['RUSTFLAGS'] = "-Cdebuginfo=0 -Copt-level=3 -Clink-arg=-fuse-ld=mold -Clink-arg=-Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER} -Clink-arg=-Wl,-rpath,#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX} -Clink-arg=-L#{CREW_GLIBC_PREFIX} -Clink-arg=-L#{CREW_LIB_PREFIX}"
 
     ENV['RUSTUP_TOOLCHAIN'] = 'stable'
     default_host = %w[aarch64 armv7l].include?(ARCH) ? 'armv7-unknown-linux-gnueabihf' : "#{ARCH}-unknown-linux-gnu"
