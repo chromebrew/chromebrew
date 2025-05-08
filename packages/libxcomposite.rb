@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libxcomposite < Package
+class Libxcomposite < Meson
   description 'X.org X Composite Library'
   homepage 'https://www.x.org/wiki/'
-  version '0.4.6'
+  version '0.4.6-f796f0a'
   license 'X11'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxcomposite.git'
-  git_hashtag "libXcomposite-#{version}"
+  git_hashtag "f796f0a862849765ac5b6b5e861ea548b421b8f0"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -26,17 +26,4 @@ class Libxcomposite < Package
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
 end
