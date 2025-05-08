@@ -42,6 +42,7 @@ jobs:
       - name: Set workflow & branch variables
         id: set-variables
         run: |
+          # shellcheck disable=SC2155
           export TIMESTAMP="$(date -u +%F-%H-%M)"
           export UPDATE_BRANCH_NAME="updates-${TIMESTAMP}"
           echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
