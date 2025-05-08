@@ -113,7 +113,7 @@ class RUBY < Package
     Kernel.system "gem fetch #{@gem_name} --platform=ruby --version=#{@gem_version}"
     Kernel.system "gem unpack #{@gem_name}-#{@gem_version}.gem"
     system 'gem install gem-compiler' unless Kernel.system('gem compile --help 2>/dev/null', %i[out err] => File::NULL)
-    Kernel.system "gem compile --strip --prune #{@gem_name}-#{@gem_version}.gem -O #{CREW_DEST_DIR}/"
+    system "gem compile --strip --prune #{@gem_name}-#{@gem_version}.gem -O #{CREW_DEST_DIR}/ -- --build-flags --with-cflags='#{CREW_LINKER_FLAGS}' --with-ldflags='#{CREW_LINKER_FLAGS}'"
     @just_built_gem = true
   end
 

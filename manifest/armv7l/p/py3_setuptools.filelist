@@ -31,12 +31,12 @@
 /usr/local/lib/python3.13/site-packages/pkg_resources/tests/test_pkg_resources.py
 /usr/local/lib/python3.13/site-packages/pkg_resources/tests/test_resources.py
 /usr/local/lib/python3.13/site-packages/pkg_resources/tests/test_working_set.py
-/usr/local/lib/python3.13/site-packages/setuptools-80.3.0.post20250503-py3.13.egg-info/PKG-INFO
-/usr/local/lib/python3.13/site-packages/setuptools-80.3.0.post20250503-py3.13.egg-info/SOURCES.txt
-/usr/local/lib/python3.13/site-packages/setuptools-80.3.0.post20250503-py3.13.egg-info/dependency_links.txt
-/usr/local/lib/python3.13/site-packages/setuptools-80.3.0.post20250503-py3.13.egg-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/setuptools-80.3.0.post20250503-py3.13.egg-info/requires.txt
-/usr/local/lib/python3.13/site-packages/setuptools-80.3.0.post20250503-py3.13.egg-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/setuptools-80.3.1.post20250508-py3.13.egg-info/PKG-INFO
+/usr/local/lib/python3.13/site-packages/setuptools-80.3.1.post20250508-py3.13.egg-info/SOURCES.txt
+/usr/local/lib/python3.13/site-packages/setuptools-80.3.1.post20250508-py3.13.egg-info/dependency_links.txt
+/usr/local/lib/python3.13/site-packages/setuptools-80.3.1.post20250508-py3.13.egg-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/setuptools-80.3.1.post20250508-py3.13.egg-info/requires.txt
+/usr/local/lib/python3.13/site-packages/setuptools-80.3.1.post20250508-py3.13.egg-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/setuptools/__init__.py
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/_core_metadata.cpython-313.pyc
@@ -139,7 +139,6 @@
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/command/build_scripts.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/command/check.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/command/clean.py
-/usr/local/lib/python3.13/site-packages/setuptools/_distutils/command/command_template
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/command/config.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/command/install.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/command/install_data.py
@@ -190,7 +189,6 @@
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/log.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/spawn.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/sysconfig.py
-/usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/Setup.sample
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/__init__.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/__pycache__/support.cpython-313.pyc
@@ -232,7 +230,6 @@
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/compat/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/compat/__pycache__/py39.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/compat/py39.py
-/usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/includetest.rst
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/support.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/test_archive_util.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/test_bdist.py
@@ -268,8 +265,6 @@
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/test_version.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/test_versionpredicate.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/unix_compat.py
-/usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/xxmodule-3.8.c
-/usr/local/lib/python3.13/site-packages/setuptools/_distutils/tests/xxmodule.c
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/text_file.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/unixccompiler.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/util.py
@@ -799,7 +794,6 @@
 /usr/local/lib/python3.13/site-packages/setuptools/tests/config/__pycache__/test_pyprojecttoml.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/tests/config/__pycache__/test_pyprojecttoml_dynamic_deps.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/tests/config/__pycache__/test_setupcfg.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/setuptools/tests/config/downloads/.gitignore
 /usr/local/lib/python3.13/site-packages/setuptools/tests/config/downloads/__init__.py
 /usr/local/lib/python3.13/site-packages/setuptools/tests/config/downloads/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/tests/config/downloads/__pycache__/preload.cpython-313.pyc
@@ -818,8 +812,10 @@
 /usr/local/lib/python3.13/site-packages/setuptools/tests/integration/__init__.py
 /usr/local/lib/python3.13/site-packages/setuptools/tests/integration/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/tests/integration/__pycache__/helpers.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/setuptools/tests/integration/__pycache__/test_pbr.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/tests/integration/__pycache__/test_pip_install_sdist.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/tests/integration/helpers.py
+/usr/local/lib/python3.13/site-packages/setuptools/tests/integration/test_pbr.py
 /usr/local/lib/python3.13/site-packages/setuptools/tests/integration/test_pip_install_sdist.py
 /usr/local/lib/python3.13/site-packages/setuptools/tests/mod_with_constant.py
 /usr/local/lib/python3.13/site-packages/setuptools/tests/namespaces.py
