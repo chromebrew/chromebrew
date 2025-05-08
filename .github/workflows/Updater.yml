@@ -35,7 +35,6 @@ jobs:
           mkdir build
           cd build
           cmake ..
-          # shellcheck disable=SC2155
           make -j "$(nproc)"
           sudo make install
           sudo gem install ruby-libversion
@@ -56,7 +55,7 @@ jobs:
         env:
           UPDATE_BRANCH_NAME: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
         run: |
-          tools/update_python_pip_packages.rb
+          LD_LIBRARY_PATH=/usr/local/lib tools/update_python_pip_packages.rb
           # Create a new branch with the updated package files only
           # if there are updated packages. Otherwise exit early.
           if [ -n "$(git status --porcelain)" ]; then
