@@ -26,9 +26,7 @@ class Sudo_rs < RUST
   conflicts_ok # su conflict with util_linux
 
   def self.postinstall
-    unless CREW_IN_CONTAINER
-      puts 'Installation of sudo_rs will fail unless in the Chromebrew container or crew_sudo has been installed.'.orange
-    end
+    puts 'Installation of sudo_rs will fail unless in the Chromebrew container or crew_sudo has been installed.'.orange unless CREW_IN_CONTAINER
 
     %w[su sudo visudo].each do |bin|
       system "/usr/bin/sudo chown root:root #{CREW_PREFIX}/bin/#{bin}", exception: false
