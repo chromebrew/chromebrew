@@ -13,7 +13,7 @@ class Py3_platformdirs < Pip
     aarch64: '1dba3c10bf7bfdb665ee88a01de8bd52c532e3d2098f6fad0f1dabf749d5fc63',
      armv7l: '1dba3c10bf7bfdb665ee88a01de8bd52c532e3d2098f6fad0f1dabf749d5fc63',
        i686: 'd0856f1804c947f41db8594590a056a7239e7b8ef446cdc40a1f43aa2fb2a42a',
-     x86_64: 'b5dfda11fc1e0fbb8dc8fbb8337e84eb27f390fda3e7264042138b569dbc64a6'
+     x86_64: '260ed463614eed3ca9a6b00a2c5f6badeb9c94b3083c37c17ce105a8bc513c32'
   })
 
   depends_on 'python3' => :build

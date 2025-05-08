@@ -13,7 +13,7 @@ class Py3_pdfminer_six < Pip
     aarch64: 'a791bbbb705951690f37a5895eedb40f1c6879d15ab6c33367c7e6ce673dc70d',
      armv7l: 'a791bbbb705951690f37a5895eedb40f1c6879d15ab6c33367c7e6ce673dc70d',
        i686: '7b850a6781d2bcaa750d0503da37c9cc281ba19bb88a7cddef8cc05f620fa3d1',
-     x86_64: '83cbbe0a5ade16fb0055ca4b983d349b2f6569d4f396ecc8111e3511c97da943'
+     x86_64: 'c4ee334f8123f3a3ffb6f8ff52f49e3b50cc9760f28b9c2e1f78fa3c459c0778'
   })
 
   depends_on 'py3_pycryptodome'
