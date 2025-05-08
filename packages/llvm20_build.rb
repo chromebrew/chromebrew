@@ -61,8 +61,8 @@ class Llvm20_build < Package
     @ARCH_CXX_FLAGS = '-fPIC'
     @ARCH_LDFLAGS = ''
   end
-  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin -B#{CREW_GLIBC_PREFIX}"
-  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin -B#{CREW_GLIBC_PREFIX}"
+  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin -B#{CREW_GLIBC_PREFIX} #{CREW_LINKER_FLAGS}"
+  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin -B#{CREW_GLIBC_PREFIX} #{CREW_LINKER_FLAGS}"
   @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin #{CREW_LINKER_FLAGS}"
   # flang isn't supported on 32-bit architectures.
   # openmp is its own package.
@@ -78,12 +78,14 @@ class Llvm20_build < Package
 
     # Patch for LLVM 15+ because of https://github.com/llvm/llvm-project/issues/58851
     File.write 'llvm_crew_lib_prefix.patch', <<~LLVM_PATCH_EOF
-      --- a/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:50:36.777754608 -0500
-      +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:51:57.004417484 -0500
-      @@ -314,6 +314,7 @@ Linux::Linux(const Driver &D, const llvm
-             D.getVFS().exists(D.Dir + "/../lib/libc++.so"))
-           addPathIfExists(D, D.Dir + "/../lib", Paths);
+      diff -Npaur a/clang/lib/Driver/ToolChains/Linux.cpp b/clang/lib/Driver/ToolChains/Linux.cpp
+      --- a/clang/lib/Driver/ToolChains/Linux.cpp	2025-05-08 12:21:48.628680793 -0400
+      +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2025-05-08 12:26:58.482820329 -0400
+      @@ -359,6 +359,8 @@ Linux::Linux(const Driver &D, const llvm
 
+         Generic_GCC::AddMultiarchPaths(D, SysRoot, OSLibDir, Paths);
+
+      +  addPathIfExists(D, concat(SysRoot, "#{CREW_GLIBC_PREFIX}"), Paths);
       +  addPathIfExists(D, concat(SysRoot, "#{CREW_LIB_PREFIX}"), Paths);
          addPathIfExists(D, concat(SysRoot, "/lib"), Paths);
          addPathIfExists(D, concat(SysRoot, "/usr/lib"), Paths);
@@ -150,16 +152,17 @@ class Llvm20_build < Package
             -DLLVM_TARGETS_TO_BUILD='#{LLVM_TARGETS_TO_BUILD}' \
             -Wno-dev"
     end
-    @counter = 1
-    @counter_max = 20
-    loop do
-      break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+    Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+    # @counter = 1
+    # @counter_max = 20
+    # loop do
+    # break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
 
-      puts "Make iteration #{@counter} of #{@counter_max}...".orange
+    # puts "Make iteration #{@counter} of #{@counter_max}...".orange
 
-      @counter += 1
-      break if @counter > @counter_max
-    end
+    # @counter += 1
+    # break if @counter > @counter_max
+    # end
   end
 
   def self.install
