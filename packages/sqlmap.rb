@@ -12,7 +12,7 @@ class Sqlmap < Pip
   binary_sha256({
     aarch64: '571eaa07abc45e76850682033260d2efc9af87912d92fd6c6c9a006a2cc4abcc',
      armv7l: '571eaa07abc45e76850682033260d2efc9af87912d92fd6c6c9a006a2cc4abcc',
-       i686: '867d11873873f5b19364a01fea5bdcc1344ca35e3019ad57affa3bc0695dfd45',
+       i686: '97b3d565be61f1cee0595e25039053c28c4c97595e51db816ec348c6c31f73d6',
      x86_64: '81e1d47b59b64e47b42f27ffdedca4c7d01ca64feddfb342e15c00c99ac8fa45'
   })
 
