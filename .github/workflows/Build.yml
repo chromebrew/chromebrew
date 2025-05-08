@@ -263,7 +263,7 @@ jobs:
               --platform "${PLATFORM}" \
               --privileged \
               -u chronos \
-              -e LD_LIBRARY_PATH="/usr/local/lib${LIB_SUFFIX}" \
+              -e LD_LIBRARY_PATH="/usr/local/opt/glibc-libs:/usr/local/lib${LIB_SUFFIX}" \
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
               -e CREW_REPO="${CREW_REPO}" \
               -e CREW_BRANCH="${CREW_BRANCH}" \
