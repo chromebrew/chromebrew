@@ -61,8 +61,8 @@ class Llvm20_build < Package
     @ARCH_CXX_FLAGS = '-fPIC'
     @ARCH_LDFLAGS = ''
   end
-  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin -B#{CREW_GLIBC_PREFIX}"
-  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin -B#{CREW_GLIBC_PREFIX}"
+  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin -B#{CREW_GLIBC_PREFIX} #{CREW_LINKER_FLAGS}"
+  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin -B#{CREW_GLIBC_PREFIX} #{CREW_LINKER_FLAGS}"
   @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin #{CREW_LINKER_FLAGS}"
   # flang isn't supported on 32-bit architectures.
   # openmp is its own package.
