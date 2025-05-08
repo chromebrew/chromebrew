@@ -11,8 +11,8 @@ class Libxcomposite < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '51c1b43de8125c96d80e74e147e45ade10312f3ccefbb9a4f81f76a1db4e7877',
-     armv7l: '51c1b43de8125c96d80e74e147e45ade10312f3ccefbb9a4f81f76a1db4e7877',
+    aarch64: '50e1b0cb36c409a0fd6ef47b41e4ebc98458eaf011d02960517bdc1cc7dc0414',
+     armv7l: '50e1b0cb36c409a0fd6ef47b41e4ebc98458eaf011d02960517bdc1cc7dc0414',
      x86_64: '73bbe30ceb97b42ec1c7ab78c4b0df8df1f2a2900016b2ebc7206160988a8851'
   })
 
