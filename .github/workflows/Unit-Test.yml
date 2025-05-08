@@ -195,7 +195,6 @@ jobs:
               docker run \
                 --rm \
                 --platform "${PLATFORM}" \
-                -u chronos \
                 -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
                 -e NON_PKG_CHANGED_FILES="${NON_PKG_CHANGED_FILES}" \
                 -e LD_LIBRARY_PATH="/usr/local/lib${LIB_SUFFIX}" \

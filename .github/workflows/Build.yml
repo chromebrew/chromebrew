@@ -261,7 +261,6 @@ jobs:
             /tmp/dond run \
               --rm \
               --platform "${PLATFORM}" \
-              -u chronos \
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
               -e CREW_REPO="${CREW_REPO}" \
               -e CREW_BRANCH="${CREW_BRANCH}" \
