@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_trove_classifiers < Pip
   description 'Canonical source for classifiers on PyPI.'
   homepage 'https://github.com/pypa/trove-classifiers'
-  version "2025.5.1.12-#{CREW_PY_VER}"
+  version "2025.5.8.15-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

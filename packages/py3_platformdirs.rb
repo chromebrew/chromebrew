@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_platformdirs < Pip
   description 'A small Python package for determining appropriate platform-specific dirs.'
   homepage 'https://pypi.org/project/platformdirs'
-  version "4.3.7-#{CREW_PY_VER}"
+  version "4.3.8-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

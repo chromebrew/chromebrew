@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_meson_python < Pip
   description 'Meson Python build backend (PEP 517)'
   homepage 'https://pypi.org/project/meson-python'
-  version "0.17.1-#{CREW_PY_VER}"
+  version "0.18.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
