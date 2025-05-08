@@ -25,5 +25,4 @@ class Libxcomposite < Meson
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
-
 end
