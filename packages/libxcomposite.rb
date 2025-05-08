@@ -13,7 +13,7 @@ class Libxcomposite < Meson
   binary_sha256({
     aarch64: '51c1b43de8125c96d80e74e147e45ade10312f3ccefbb9a4f81f76a1db4e7877',
      armv7l: '51c1b43de8125c96d80e74e147e45ade10312f3ccefbb9a4f81f76a1db4e7877',
-     x86_64: 'c4b408ff17ed182879a50321103b7b06d35a19029c9a5c86ccd044597158f900'
+     x86_64: '73bbe30ceb97b42ec1c7ab78c4b0df8df1f2a2900016b2ebc7206160988a8851'
   })
 
   depends_on 'libxfixes' => :build
