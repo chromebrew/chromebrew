@@ -27,13 +27,12 @@ class Sudo_rs < RUST
 
   def self.postinstall
     unless CREW_IN_CONTAINER
-      puts 'Installation of sudo_rs will fail unless in the Chromebrew container.'
-      return
+      puts 'Installation of sudo_rs will fail unless in the Chromebrew container or crew_sudo has been installed.'.orange
     end
 
     %w[su sudo visudo].each do |bin|
-      system "/usr/bin/sudo chown root:root #{CREW_PREFIX}/bin/#{bin}"
-      system "/usr/bin/sudo chmod 4755 #{CREW_PREFIX}/bin/#{bin}"
+      system "/usr/bin/sudo chown root:root #{CREW_PREFIX}/bin/#{bin}", exception: false
+      system "/usr/bin/sudo chmod 4755 #{CREW_PREFIX}/bin/#{bin}", exception: false
     end
   end
 end

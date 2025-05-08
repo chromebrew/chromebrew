@@ -118,7 +118,7 @@ class Glibc_standalone < Package
   end
 
   def self.postinstall
-    puts "Please immediately run 'source ~/.bashrc && crew upgrade'".lightgreen
+    puts "Please immediately run: 'source ~/.bashrc && crew upgrade'".lightgreen
     # update search cache for ld.so
     system "source ~/.bashrc && LD_AUDIT= #{CREW_PREFIX}/bin/ldconfig", %i[out err] => File::NULL
   end
