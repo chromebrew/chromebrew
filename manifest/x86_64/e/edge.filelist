@@ -3,6 +3,7 @@
 /usr/local/bin/microsoft-edge-stable
 /usr/local/bin/msedge
 /usr/local/share/appdata/microsoft-edge.appdata.xml
+/usr/local/share/applications/com.microsoft.Edge.desktop
 /usr/local/share/applications/microsoft-edge.desktop
 /usr/local/share/doc/microsoft-edge-stable/changelog.gz
 /usr/local/share/gnome-control-center/default-apps/microsoft-edge.xml
