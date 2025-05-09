@@ -1,6 +1,4 @@
 /usr/local/include/X11/extensions/Xrandr.h
-/usr/local/lib/libXrandr.a
-/usr/local/lib/libXrandr.la
 /usr/local/lib/libXrandr.so
 /usr/local/lib/libXrandr.so.2
 /usr/local/lib/libXrandr.so.2.2.0
