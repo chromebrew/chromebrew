@@ -1,7 +1,7 @@
 require 'package'
 
 class Llvm20_build < Package
-  @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl' : 'clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl'
+  @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;lld;lldb;polly;pstl' : 'clang;clang-tools-extra;lld;lldb;polly;pstl'
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
   version '20.1.7'
@@ -13,8 +13,8 @@ class Llvm20_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1fbda9fc9512a30521f39fbc659ebe3756e65731867e9975cfc7bd216449a0c1',
-     armv7l: '1fbda9fc9512a30521f39fbc659ebe3756e65731867e9975cfc7bd216449a0c1',
+    aarch64: '6b410dfc14f86ae43a742f0afe6903c6c1fee2351575da3491fd6110836592ca',
+     armv7l: '6b410dfc14f86ae43a742f0afe6903c6c1fee2351575da3491fd6110836592ca',
        i686: 'edfed5b808ad7f146a9014eecede1bd97de5db20a92a01180ba7de865d821ca6',
      x86_64: '1b184852101f53bfb9a69f35de4833a5abc6d7536a60c3478c3f2b5624c53ef6'
   })
@@ -32,22 +32,22 @@ class Llvm20_build < Package
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  no_env_options
   conflicts_ok
+  no_env_options
 
   case ARCH
   when 'aarch64', 'armv7l'
     # LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
-    @ARCH_CXX_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
+    @ARCH_C_FLAGS = "-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
+    @ARCH_CXX_FLAGS = "-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
     @ARCH_LDFLAGS = ''
   when 'i686'
     # LLVM_TARGETS_TO_BUILD = 'X86'.freeze
     # Because ld.lld: error: undefinler-rt;libc;libcxx;libcxxabi;libunwind;openmped symbol: __atomic_store
     # Polly demands fPIC
-    @ARCH_C_FLAGS = '-latomic -fPIC'
-    @ARCH_CXX_FLAGS = '-latomic -fPIC'
+    @ARCH_C_FLAGS = '-latomic'
+    @ARCH_CXX_FLAGS = '-latomic'
     # Because getting this error:
     # ld.lld: error: relocation R_386_PC32 cannot be used against symbol isl_map_fix_si; recompile with -fPIC
     # So as per https://github.com/openssl/openssl/issues/11305#issuecomment-602003528
@@ -57,12 +57,12 @@ class Llvm20_build < Package
   when 'x86_64'
     # LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = '-fPIC'
-    @ARCH_CXX_FLAGS = '-fPIC'
+    @ARCH_C_FLAGS = ''
+    @ARCH_CXX_FLAGS = ''
     @ARCH_LDFLAGS = ''
   end
-  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin -B#{CREW_GLIBC_PREFIX} #{CREW_LINKER_FLAGS}"
-  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin -B#{CREW_GLIBC_PREFIX} #{CREW_LINKER_FLAGS}"
+  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -fPIC -flto=thin -B#{CREW_GLIBC_PREFIX} #{CREW_LINKER_FLAGS}"
+  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -fPIC -flto=thin -B#{CREW_GLIBC_PREFIX} #{CREW_LINKER_FLAGS}"
   @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin #{CREW_LINKER_FLAGS}"
   # flang isn't supported on 32-bit architectures.
   # openmp is its own package.
@@ -119,6 +119,7 @@ class Llvm20_build < Package
         clang++ -fPIC -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
       CLCPLUSPLUS_EOF
       system "cmake -B builddir -G Ninja llvm \
+            -DCLANG_DEFAULT_LINKER=#{CREW_LINKER} \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_C_COMPILER=$(which clang) \
@@ -142,8 +143,10 @@ class Llvm20_build < Package
             -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_TARGET} \
             -DLLVM_ENABLE_FFI=ON \
             -DLLVM_ENABLE_LTO=Thin \
+            -DLLVM_ENABLE_PIC=ON \
             -DLLVM_ENABLE_PROJECTS='#{@llvm_projects_to_build}' \
             -DLLVM_ENABLE_RTTI=ON \
+            -DLLVM_ENABLE_RUNTIMES=compiler-rt \
             -DLLVM_INCLUDE_BENCHMARKS=OFF \
             -DLLVM_INSTALL_UTILS=ON \
             -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
