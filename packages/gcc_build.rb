@@ -121,6 +121,7 @@ class Gcc_build < Package
       --with-isl \
       --with-mpc \
       --with-mpfr \
+      --with-newlib \
       --with-pic \
       --with-system-libunwind \
       --with-system-zlib \
