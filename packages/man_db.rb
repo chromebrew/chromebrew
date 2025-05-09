@@ -3,18 +3,18 @@ require 'package'
 class Man_db < Package
   description 'mandb is used to initialize or manually update index database caches that are usually maintained by man.'
   homepage 'https://man-db.nongnu.org/'
-  version '2.13.1'
+  version '2.13.1-1'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://download.savannah.gnu.org/releases/man-db/man-db-#{version}.tar.xz"
-  source_sha256 '82f0739f4f61aab5eb937d234de3b014e777b5538a28cbd31433c45ae09aefb9'
+  source_url "https://download.savannah.gnu.org/releases/man-db/man-db-#{version.split('-').first}.tar.xz"
+  source_sha256 '8afebb6f7eb6bb8542929458841f5c7e6f240e30c86358c1fbcefbea076c87d9'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '69d82acf43abd8c86610fb521e15ff2195416d94fca05f1406670a7a57d88c8f',
-     armv7l: '69d82acf43abd8c86610fb521e15ff2195416d94fca05f1406670a7a57d88c8f',
-       i686: '886df1ceeb9027a1f2f15324d1b7c1e526edc4cb117f74a844ab81d1c854b8d3',
-     x86_64: '42825f7c458ec4ee088568635a3072efe45a13c860bf5b1e0b8a8f800dfb08bf'
+    aarch64: '2d8c03f527b17119cf23a942d368fddc9bcce9c11d776c51f9c2bba2e8b05fbf',
+     armv7l: '2d8c03f527b17119cf23a942d368fddc9bcce9c11d776c51f9c2bba2e8b05fbf',
+       i686: 'cc2ef77082615544e76fb42b91e256245a070f9b24339f5985ec15170f6986f6',
+     x86_64: 'd9313d25e62824542752d3549879ffd241139a685151bed86cd6c51caf27d2f9'
   })
 
   no_fhs
