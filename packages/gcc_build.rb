@@ -37,7 +37,7 @@ class Gcc_build < Package
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
-  @cflags = @cxxflags = "-fPIC -pipe #{CREW_LINKER_FLAGS}"
+  @cflags = @cxxflags = "-fPIC -pipe -L#{CREW_GLIBC_PREFIX} -L#{CREW_LIB_PREFIX} #{CREW_LINKER_FLAGS}"
   @languages = 'c,c++,jit,objc,fortran,go,rust'
   case ARCH
   when 'armv7l', 'aarch64'
@@ -95,7 +95,6 @@ class Gcc_build < Package
       --build=#{CREW_TARGET} \
       --host=#{CREW_TARGET} \
       --target=#{CREW_TARGET} \
-      --disable-bootstrap \
       --disable-install-libiberty \
       --disable-libmpx \
       --disable-libssp \
@@ -110,7 +109,6 @@ class Gcc_build < Package
       --enable-gnu-unique-object \
       --enable-host-shared \
       --enable-link-serialization=1 \
-      --enable-lto \
       --enable-plugin \
       --enable-shared \
       --enable-symvers \
@@ -145,7 +143,7 @@ class Gcc_build < Package
                 CFLAGS: @cflags,
            CREW_LINKER: 'ld',
               CXXFLAGS: @cxxflags,
-               LDFLAGS: "-L#{CREW_LIB_PREFIX} #{CREW_LINKER_FLAGS}",
+               LDFLAGS: "#{CREW_LINKER_FLAGS}",
                     LD: 'ld',
           LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
                     NM: 'gcc-nm',
@@ -202,7 +200,7 @@ class Gcc_build < Package
       {
               CFLAGS: @cflags, CXXFLAGS: @cxxflags,
              DESTDIR: CREW_DEST_DIR,
-             LDFLAGS: "-L#{CREW_LIB_PREFIX} #{CREW_LINKER_FLAGS}",
+             LDFLAGS: "#{CREW_LINKER_FLAGS}",
         LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
                 PATH: @path
       }.transform_keys(&:to_s)
