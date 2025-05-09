@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libxdamage < Package
+class Libxdamage < Meson
   description 'library for the X window system'
   homepage 'https://x.org/wiki/'
-  version '1.1.6'
+  version '1.1.6-1319ae5'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxdamage.git'
-  git_hashtag "libXdamage-#{version}"
+  git_hashtag '1319ae5cfbde5b75e23383baa5e00cc23513448c'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -24,18 +24,4 @@ class Libxdamage < Package
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
   depends_on 'libxfixes' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
 end
