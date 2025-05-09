@@ -4,8 +4,8 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  @gcc_libc_version = ARCH.eql?('i686') ? '2.23' : '2.27'
-  version "14.2.0-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
+  @gcc_libc_version = '2.41'
+  version '15.1.0' # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
@@ -14,20 +14,12 @@ class Libssp < Package
   git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
-  case @gcc_libc_version
-  when '2.23'
-
-    binary_sha256({
-       i686: '2a33ccdac9f6607f96dc5a27355207b23fe73af4b1d0f91d215d15dce69d1f14'
-  })
-  when '2.27', '2.32', '2.33', '2.35', '2.37'
-
-    binary_sha256({
+  binary_sha256({
+       i686: '2a33ccdac9f6607f96dc5a27355207b23fe73af4b1d0f91d215d15dce69d1f14',
     aarch64: 'c25522eb2ebdaf61b9a1e2b520c29c5dd11283037059bb44f3093aaecee2931e',
      armv7l: 'c25522eb2ebdaf61b9a1e2b520c29c5dd11283037059bb44f3093aaecee2931e',
      x86_64: 'b38d79dd4f5f87530d218b7ce8bab8f7207e5bf2c541a4fe86db7ded3cededfa'
   })
-  end
 
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test

@@ -898,6 +898,7 @@ def fix_interpreter_path(dir)
     execfiles = `find . -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' --`.chomp
     return if execfiles.empty?
 
+    @localdir = File.expand_path('../../.')
     execfiles.each_line(chomp: true) do |execfiletopatch|
       execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
 
@@ -905,7 +906,13 @@ def fix_interpreter_path(dir)
       puts "Running patchelf on #{execfiletopatch}".orange if CREW_DEBUG
       system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch} > /dev/null 2> /dev/null"
       @exec_rpath = `patchelf --print-rpath #{execfiletopatch}`.chomp
-      puts "#{execfiletopatch} has an existing rpath of #{@exec_rpath}".orange unless @exec_rpath.empty?
+      unless @exec_rpath.empty?
+        puts "#{execfiletopatch.gsub(@localdir, '')} has an existing rpath of #{@exec_rpath}".orange
+        unless @exec_rpath.include?(CREW_GLIBC_PREFIX)
+          puts "Prefixing #{CREW_GLIBC_PREFIX} to rpath for #{execfiletopatch.gsub(@localdir, '')}.".lightblue
+          system "patchelf --set-rpath #{CREW_GLIBC_PREFIX}:#{@exec_rpath} #{execfiletopatch} > /dev/null 2> /dev/null"
+        end
+      end
       # system "patchelf --remove-rpath #{execfiletopatch} > /dev/null 2> /dev/null"
     end
   end

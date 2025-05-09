@@ -4,8 +4,8 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Gcc_dev < Package
   description 'The GNU Compiler Collection: Everything (excepting libraries aside from libgccjit)'
   homepage Gcc_build.homepage
-  @gcc_libc_version = ARCH.eql?('i686') ? '2.23' : '2.27'
-  version "14.2.0-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
+  @gcc_libc_version = '2.41'
+  version '15.1.0' # Do not use @_ver here, it will break the installer.
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
@@ -13,20 +13,12 @@ class Gcc_dev < Package
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  case @gcc_libc_version
-  when '2.23'
-
-    binary_sha256({
-       i686: 'b00b432593350b255d882814e94d1d1086e23de91e2216c4b4008b8477cdf73a'
-  })
-  when '2.27', '2.32', '2.33', '2.35', '2.37'
-
-    binary_sha256({
+  binary_sha256({
+       i686: 'b00b432593350b255d882814e94d1d1086e23de91e2216c4b4008b8477cdf73a',
     aarch64: 'f3e4b282dc94ec6982b766898436294121156c2174e4263cb7e94f5fbf704ceb',
      armv7l: 'f3e4b282dc94ec6982b766898436294121156c2174e4263cb7e94f5fbf704ceb',
      x86_64: '5f020332c8af5e77601fb0f9fb89f844ac31e8682a4e6ec082922447a4f9358c'
   })
-  end
 
   depends_on 'gcc_build' => :build
   depends_on 'gcc_lib' # R

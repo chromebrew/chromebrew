@@ -3,35 +3,22 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  @gcc_libc_version = if %w[2.23 2.27 2.32 2.33 2.35 2.37].any? { |i| LIBC_VERSION.include? i }
-                        LIBC_VERSION
-                      else
-                        ARCH.eql?('i686') ? '2.23' : '2.27'
-                      end
-  version "15.1.0-glibc#{@gcc_libc_version}"
+  @gcc_libc_version = '2.41'
+  version '15.1.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
   git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
-  case @gcc_libc_version
-  when '2.23'
-
-    binary_sha256({
-       i686: '85bb8bf3f233109e84f9d5e1832254cc69a6a4a37407ba0a864d969b0f05f4ea'
-  })
-  when '2.27', '2.32', '2.33', '2.35', '2.37'
-
-    binary_sha256({
+  binary_sha256({
+       i686: '85bb8bf3f233109e84f9d5e1832254cc69a6a4a37407ba0a864d969b0f05f4ea',
     aarch64: 'e7d46be8238a11cc7028a50cd7d8a05a6fd6f558c8c8bf9100dce7f8aeb7bd58',
      armv7l: 'e7d46be8238a11cc7028a50cd7d8a05a6fd6f558c8c8bf9100dce7f8aeb7bd58',
      x86_64: '44c3a9e4d90a96ec698ccdca594dc9cc5e5e833ce3aa505089f2f65be0c9d76d'
   })
-  end
 
   depends_on 'binutils' => :build
-  depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
@@ -49,6 +36,18 @@ class Gcc_build < Package
   no_shrink
 
   @gcc_version = version.split('-')[0].partition('.')[0]
+
+  @cflags = @cxxflags = "-fPIC -pipe #{CREW_LINKER_FLAGS}"
+  @languages = 'c,c++,jit,objc,fortran,go,rust'
+  case ARCH
+  when 'armv7l', 'aarch64'
+    @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'
+  when 'x86_64'
+    @archflags = '--with-arch-64=x86-64'
+  when 'i686'
+    @archflags = '--with-arch-32=i686'
+  end
+  @path = "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
 
   def self.patch
     # This fixes a PATH_MAX undefined error which breaks libsanitizer
@@ -128,23 +127,10 @@ class Gcc_build < Package
       --with-system-zstd
     OPT
 
-    @cflags = @cxxflags = '-fPIC -pipe'
-    @languages = 'c,c++,jit,objc,fortran,go,rust'
-    case ARCH
-    when 'armv7l', 'aarch64'
-      @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'
-    when 'x86_64'
-      @archflags = '--with-arch-64=x86-64'
-    when 'i686'
-      @archflags = '--with-arch-32=i686'
-    end
-
     # Set ccache sloppiness as per
     # https://wiki.archlinux.org/index.php/Ccache#Sloppiness
-    system 'ccache --set-config=sloppiness=file_macro,locale,time_macros'
+    # system 'ccache --set-config=sloppiness=file_macro,locale,time_macros'
     # Prefix ccache to path.
-
-    @path = "#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
 
     # Install prereqs using the standard gcc method so they can be
     # linked statically.
@@ -155,17 +141,16 @@ class Gcc_build < Package
     Dir.chdir('objdir') do
       configure_env =
         {
-              BASH_ENV: "#{CREW_PREFIX}/etc/profile",
-           CREW_LINKER: 'ld',
-          LIBRARY_PATH: CREW_LIB_PREFIX,
-                    NM: 'gcc-nm',
                     AR: 'gcc-ar',
-                    LD: 'ld',
-                RANLIB: 'gcc-ranlib',
                 CFLAGS: @cflags,
+           CREW_LINKER: 'ld',
               CXXFLAGS: @cxxflags,
-               LDFLAGS: "-L#{CREW_LIB_PREFIX} -Wl,-rpath=#{CREW_LIB_PREFIX}",
-                  PATH: @path
+               LDFLAGS: "-L#{CREW_LIB_PREFIX} #{CREW_LINKER_FLAGS}",
+                    LD: 'ld',
+          LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+                    NM: 'gcc-nm',
+                  PATH: @path,
+                RANLIB: 'gcc-ranlib'
         }.transform_keys(&:to_s)
 
       system configure_env, <<~BUILD.chomp
@@ -183,9 +168,18 @@ class Gcc_build < Package
       # system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), ". #{CREW_PREFIX}/etc/env.d/rust && make -j #{CREW_NPROC} || make -j1")
       @j_max = CREW_NPROC
       loop do
-        break if Kernel.system({ BASH_ENV: "#{CREW_PREFIX}/etc/env.d/rust", CFLAGS: @cflags, CXXFLAGS: @cxxflags, CREW_LINKER: 'ld', LD: 'ld', LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false)
+        break if Kernel.system(
+          {
+          CFLAGS: @cflags, CXXFLAGS: @cxxflags,
+          CREW_LINKER: 'ld',
+          LD: 'ld',
+          LDFLAGS: "-L#{CREW_LIB_PREFIX} #{CREW_LINKER_FLAGS}",
+          LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+          PATH: @path
+          }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false
+        )
         puts "Make using -j#{@j_max}...".orange
-        @j_max -= 1
+        @j_max -= 2
         break if @j_max < 1
       end
     end
@@ -206,9 +200,11 @@ class Gcc_build < Package
 
     make_env =
       {
-        LIBRARY_PATH: CREW_LIB_PREFIX,
-                PATH: @path,
-             DESTDIR: CREW_DEST_DIR
+              CFLAGS: @cflags, CXXFLAGS: @cxxflags,
+             DESTDIR: CREW_DEST_DIR,
+             LDFLAGS: "-L#{CREW_LIB_PREFIX} #{CREW_LINKER_FLAGS}",
+        LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+                PATH: @path
       }.transform_keys(&:to_s)
 
     Dir.chdir('objdir') do
