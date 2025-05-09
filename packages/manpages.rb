@@ -3,11 +3,11 @@ require 'package'
 class Manpages < Package
   description 'The Linux man-pages project documents the Linux kernel and C library interfaces that are employed by user-space programs.'
   homepage 'https://www.kernel.org/doc/man-pages/'
-  version '6.13'
+  version '6.14'
   license 'man-pages, GPL-2+ and BSD'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-#{version}.tar.xz"
-  source_sha256 'b6cb5d67e0bb00a3b3f3d1bcb3fe06c26b045ba63923ed7ae79412350c5e1cb5'
+  source_sha256 '71e13067b780044b2f372eec25f4209bc0413cc32af714141ef3d22d21eae8e3'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -21,6 +21,9 @@ class Manpages < Package
 
   def self.install
     system 'make', '-R', "DESTDIR=#{CREW_DEST_DIR}", "prefix=#{CREW_PREFIX}", 'install'
+    # Remove conflicts with libxcrypt.
+    FileUtils.rm "#{CREW_DEST_MAN_PREFIX}/man3/crypt.3"
+    FileUtils.rm "#{CREW_DEST_MAN_PREFIX}/man3/crypt_r.3"
   end
 
   def self.postinstall
