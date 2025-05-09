@@ -3,24 +3,27 @@ require 'package'
 class Manpages < Package
   description 'The Linux man-pages project documents the Linux kernel and C library interfaces that are employed by user-space programs.'
   homepage 'https://www.kernel.org/doc/man-pages/'
-  version '6.13'
+  version '6.14'
   license 'man-pages, GPL-2+ and BSD'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-#{version}.tar.xz"
-  source_sha256 'b6cb5d67e0bb00a3b3f3d1bcb3fe06c26b045ba63923ed7ae79412350c5e1cb5'
+  source_sha256 '71e13067b780044b2f372eec25f4209bc0413cc32af714141ef3d22d21eae8e3'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '26aaae577b8e9bb22e78a4380602e755d13687aa49207d01528be04b8f48eeda',
-     armv7l: '26aaae577b8e9bb22e78a4380602e755d13687aa49207d01528be04b8f48eeda',
-       i686: 'cc225dc35145d2d2237c18e858c70093cc72375fafdb13f0f3a4de2c4e2e780f',
-     x86_64: '74c7efe84473515b74664adfe4507eb4ae382629964bba6b598c6273d006a8ee'
+    aarch64: '2b05865226b0d381499a4443dcaa9b88431a912f8bab5eb4f00c7886ba599194',
+     armv7l: '2b05865226b0d381499a4443dcaa9b88431a912f8bab5eb4f00c7886ba599194',
+       i686: '09dff001c7850f3299b965c018cea9fd52ecf87b99a375e1603f5831d69ff457',
+     x86_64: '6fadf100adf6c382e8b52b00fcc561b16d733a5e651bac0f62b5cbaeea5cf91d'
   })
 
   depends_on 'man_db'
 
   def self.install
     system 'make', '-R', "DESTDIR=#{CREW_DEST_DIR}", "prefix=#{CREW_PREFIX}", 'install'
+    # Remove conflicts with libxcrypt.
+    FileUtils.rm "#{CREW_DEST_MAN_PREFIX}/man3/crypt.3"
+    FileUtils.rm "#{CREW_DEST_MAN_PREFIX}/man3/crypt_r.3"
   end
 
   def self.postinstall
