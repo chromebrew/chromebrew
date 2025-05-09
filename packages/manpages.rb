@@ -11,8 +11,8 @@ class Manpages < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '26aaae577b8e9bb22e78a4380602e755d13687aa49207d01528be04b8f48eeda',
-     armv7l: '26aaae577b8e9bb22e78a4380602e755d13687aa49207d01528be04b8f48eeda',
+    aarch64: '2b05865226b0d381499a4443dcaa9b88431a912f8bab5eb4f00c7886ba599194',
+     armv7l: '2b05865226b0d381499a4443dcaa9b88431a912f8bab5eb4f00c7886ba599194',
        i686: '09dff001c7850f3299b965c018cea9fd52ecf87b99a375e1603f5831d69ff457',
      x86_64: '6fadf100adf6c382e8b52b00fcc561b16d733a5e651bac0f62b5cbaeea5cf91d'
   })
