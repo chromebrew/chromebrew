@@ -37,7 +37,8 @@ class Gcc_build < Package
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
-  @cflags = @cxxflags = "-fPIC -pipe -L#{CREW_GLIBC_PREFIX} -L#{CREW_LIB_PREFIX} #{CREW_LINKER_FLAGS}"
+  @glibc_flags = "-Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER} -B#{CREW_GLIBC_PREFIX} -L#{CREW_GLIBC_PREFIX} -L#{CREW_LIB_PREFIX}"
+  @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags}"
   @languages = 'c,c++,jit,objc,fortran,go,rust'
   case ARCH
   when 'armv7l', 'aarch64'
@@ -47,6 +48,7 @@ class Gcc_build < Package
   when 'i686'
     @archflags = '--with-arch-32=i686'
   end
+  @ldflags = @glibc_flags
   @path = "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
 
   def self.patch
@@ -143,7 +145,7 @@ class Gcc_build < Package
                 CFLAGS: @cflags,
            CREW_LINKER: 'ld',
               CXXFLAGS: @cxxflags,
-               LDFLAGS: "#{CREW_LINKER_FLAGS}",
+               LDFLAGS: @ldflags,
                     LD: 'ld',
           LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
                     NM: 'gcc-nm',
@@ -171,7 +173,7 @@ class Gcc_build < Package
           CFLAGS: @cflags, CXXFLAGS: @cxxflags,
           CREW_LINKER: 'ld',
           LD: 'ld',
-          LDFLAGS: "-L#{CREW_LIB_PREFIX} #{CREW_LINKER_FLAGS}",
+          LDFLAGS: @ldflags,
           LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
           PATH: @path
           }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false
@@ -200,7 +202,7 @@ class Gcc_build < Package
       {
               CFLAGS: @cflags, CXXFLAGS: @cxxflags,
              DESTDIR: CREW_DEST_DIR,
-             LDFLAGS: "#{CREW_LINKER_FLAGS}",
+             LDFLAGS: @ldflags,
         LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
                 PATH: @path
       }.transform_keys(&:to_s)
