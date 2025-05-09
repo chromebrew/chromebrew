@@ -33,9 +33,8 @@ class Llvm20_build < Package
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  conflicts_ok
   no_env_options
-  no_shrink
+  conflicts_ok
 
   case ARCH
   when 'aarch64', 'armv7l'
