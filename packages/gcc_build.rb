@@ -167,22 +167,26 @@ class Gcc_build < Package
       # /usr/local/bin/ld: cannot find crti.o: No such file or directory
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
       # system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), ". #{CREW_PREFIX}/etc/env.d/rust && make -j #{CREW_NPROC} || make -j1")
-      @j_max = CREW_NPROC
-      loop do
-        break if Kernel.system(
-          {
-          CFLAGS: @cflags, CXXFLAGS: @cxxflags,
-          CREW_LINKER: 'ld',
-          LD: 'ld',
-          LDFLAGS: @ldflags,
-          LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
-          PATH: @path
-          }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false
-        )
-        puts "Make using -j#{@j_max}...".orange
-        @j_max -= 2
-        break if @j_max < 1
-      end
+      # @j_max = CREW_NPROC
+      # loop do
+      # break if Kernel.system(
+      # {
+      # CFLAGS: @cflags, CXXFLAGS: @cxxflags,
+      # CREW_LINKER: 'ld',
+      # LD: 'ld',
+      # LDFLAGS: @ldflags,
+      # LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+      # PATH: @path
+      # }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false
+      # )
+      # break if
+      system configure_env, <<~MAKE.chomp
+        bash -c "make -j #{CREW_NPROC}"
+      MAKE
+      # puts "Make using -j#{@j_max}...".orange
+      # @j_max -= 2
+      # break if @j_max < 1
+      # end
     end
   end
 
