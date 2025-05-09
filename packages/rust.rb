@@ -3,25 +3,24 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.86.0-3'
+  version '1.86.0-5'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
-  git_hashtag '1.28.1'
+  git_hashtag '1.28.2'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '329f850a0fde49816d5eddb9705cab925ee67840d38c65f4a980d5c8026868e9',
-     armv7l: '329f850a0fde49816d5eddb9705cab925ee67840d38c65f4a980d5c8026868e9',
-       i686: '7813b19e16f1d605c5425218b8e6e79e877e8d86979c9dacd10e74264e228de8',
-     x86_64: '9f6da9d58572bc6223262ff6c2776360067152ce5b556afa6b9cffacd38641c3'
+    aarch64: 'd833484999d92e034c83460cd5079c195cfdb4d27bd81d2c4f5436893227dfb0',
+     armv7l: 'd833484999d92e034c83460cd5079c195cfdb4d27bd81d2c4f5436893227dfb0',
+       i686: '3360be0df39866d180f949f461a93eb752f1f870d1f64d732e4fb1423e873bba',
+     x86_64: 'e937243be9789c83635a244441fb8625eb48c1ed00396472c4467b427406f3f7'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'zlib' # R
 
-  no_shrink
   no_strip
   print_source_bashrc
 
@@ -31,7 +30,8 @@ class Rust < Package
     ENV['RUST_BACKTRACE'] = 'full'
     ENV['CARGO_HOME'] = "#{CREW_DEST_PREFIX}/share/cargo"
     ENV['RUSTUP_HOME'] = "#{CREW_DEST_PREFIX}/share/rustup"
-    ENV['RUSTFLAGS'] = "-Cdebuginfo=0 -Copt-level=3 -Clink-arg=-Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER}"
+    ENV['RUSTFLAGS'] = "-Cdebuginfo=0 -Copt-level=3 -Clink-arg=-fuse-ld=mold -Clink-arg=-Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER} -Clink-arg=-Wl,-rpath,#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX} -Clink-arg=-L#{CREW_GLIBC_PREFIX} -Clink-arg=-L#{CREW_LIB_PREFIX}"
+
     ENV['RUSTUP_TOOLCHAIN'] = 'stable'
     default_host = %w[aarch64 armv7l].include?(ARCH) ? 'armv7-unknown-linux-gnueabihf' : "#{ARCH}-unknown-linux-gnu"
     system "sed -i 's,$(mktemp -d 2>/dev/null || ensure mktemp -d -t rustup),#{CREW_PREFIX}/tmp,' rustup-init.sh"

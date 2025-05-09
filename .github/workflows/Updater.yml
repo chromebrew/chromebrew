@@ -24,7 +24,7 @@ jobs:
           persist-credentials: true
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4.2'
+          ruby-version: '3.4.3'
       - name: Install Python pip
         run: sudo apt install -y python3-pip
       - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package so we don't have to do this manually.
@@ -35,7 +35,7 @@ jobs:
           mkdir build
           cd build
           cmake ..
-          make -j $(nproc)
+          make -j "$(nproc)"
           sudo make install
           sudo gem install ruby-libversion
       - name: Set workflow & branch variables
@@ -43,13 +43,13 @@ jobs:
         run: |
           export TIMESTAMP="$(date -u +%F-%H-%M)"
           export UPDATE_BRANCH_NAME="updates-${TIMESTAMP}"
-          echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_OUTPUT
-          echo "UPDATE_BRANCH_NAME=${UPDATE_BRANCH_NAME}" >> $GITHUB_OUTPUT
+          echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
+          echo "UPDATE_BRANCH_NAME=${UPDATE_BRANCH_NAME}" >> "$GITHUB_OUTPUT"
       - name: Git setup
         env:
           UPDATE_BRANCH_NAME: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
         run: |
-          git pull && ( git checkout -b ${UPDATE_BRANCH_NAME} || git checkout ${UPDATE_BRANCH_NAME} )
+          git pull && ( git checkout -b "${UPDATE_BRANCH_NAME}" || git checkout "${UPDATE_BRANCH_NAME}" )
       - name: Check for updates in pip packages.
         id: pip-update-checks
         env:
@@ -64,10 +64,10 @@ jobs:
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add -A
             git commit -m "Add unbuilt updated pip packages to ${UPDATE_BRANCH_NAME}"
-            echo "PIP_UPDATED=true" >> $GITHUB_OUTPUT
+            echo "PIP_UPDATED=true" >> "$GITHUB_OUTPUT"
           else
             echo "Python pip packages were not updated."
-            echo "PIP_UPDATED=false" >> $GITHUB_OUTPUT
+            echo "PIP_UPDATED=false" >> "$GITHUB_OUTPUT"
           fi
       - name: Push pip package changes
         if: ${{ steps.pip-update-checks.outputs.PIP_UPDATED == 'true' }}
@@ -88,10 +88,10 @@ jobs:
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add -A
             git commit -m "Add unbuilt updated ruby gem packages to ${UPDATE_BRANCH_NAME}"
-            echo "GEM_UPDATED=true" >> $GITHUB_OUTPUT
+            echo "GEM_UPDATED=true" >> "$GITHUB_OUTPUT"
           else
             echo "Ruby gem packages were not updated."
-            echo "GEM_UPDATED=false" >> $GITHUB_OUTPUT
+            echo "GEM_UPDATED=false" >> "$GITHUB_OUTPUT"
           fi
       - name: Push ruby gem package changes
         if: ${{ steps.gem-update-checks.outputs.GEM_UPDATED == 'true' }}
@@ -104,10 +104,10 @@ jobs:
         run: |
           echo "PIP_UPDATED is ${{ steps.pip-update-checks.outputs.PIP_UPDATED }}."
           echo "GEM_UPDATED is ${{ steps.gem-update-checks.outputs.GEM_UPDATED }}."
-          git checkout master && git branch -D ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }} && git push
+          git checkout master && git branch -D "${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}" && git push
           # https://stackoverflow.com/a/75809743
-          gh run cancel ${{ github.run_id }}
-          gh run watch ${{ github.run_id }}
+          gh run cancel "${{ github.run_id }}"
+          gh run watch "${{ github.run_id }}"
   dispatch-build:
     if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
@@ -116,4 +116,4 @@ jobs:
       UPDATE_BRANCH_NAME: ${{ needs.update-check.outputs.update_branch_name }}
     steps:
       - name: gh_workflow_dispatch
-        run: gh workflow -R chromebrew/chromebrew run Build.yml -f branch=${UPDATE_BRANCH_NAME}
+        run: gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${UPDATE_BRANCH_NAME}"

@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_stringio < RUBY
   description 'Pseudo `io` class from/to `string`.'
   homepage 'https://github.com/ruby/stringio'
-  version "3.1.6-#{CREW_RUBY_VER}"
+  version "3.1.7-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'e13a0c99156c4063931f67d61225ae7144a1e8cd7f6a137f2512035600e0a163',
-     armv7l: 'e13a0c99156c4063931f67d61225ae7144a1e8cd7f6a137f2512035600e0a163',
-       i686: '91ac82ad1018a6802bc93b2f92aadfd36010d4fe885236b5859516df289ffa2f',
-     x86_64: '5893f4cc93c911df0b50c1136a167482a64fc3d83d483ff0a79de6ff045441e2'
+    aarch64: 'c1ac331f0e70c6d6304570e5f09f6bb45f4c2eea62f6cbca40bde9944b840b68',
+     armv7l: 'c1ac331f0e70c6d6304570e5f09f6bb45f4c2eea62f6cbca40bde9944b840b68',
+       i686: '04cefb5b21f03a0e60a7ef92f07ca694be4c54fcb288985a85794c6263ea607e',
+     x86_64: '775c86d8c451f9c4109d5dadc1f3e673c6c409249bc4fd3bbfae37969ace5358'
   })
 
   conflicts_ok

@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_azure_cli < Pip
   description 'Next generation multi-platform command line experience for Azure.'
   homepage 'https://pypi.org/project/azure-cli/'
-  version "2.71.0-#{CREW_PY_VER}"
+  version "2.72.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e278ddf93b122cfd21b4e1fd1cc6633a56a80d7415326963ce2038cfc7fc9259',
-     armv7l: 'e278ddf93b122cfd21b4e1fd1cc6633a56a80d7415326963ce2038cfc7fc9259',
-       i686: '192c55064d6987a952b72d6fe6d3ee7474a674bea0eada96807cc2a7e65835b2',
-     x86_64: '93ee8abe5b6d6a5288f830a70b6b6c6c5696f18be50dc50441398a47fc65a5b6'
+    aarch64: '684695517ea397a67f580c24714b65cbbf642db5aaaae2c7c7e0cdde7af8cf19',
+     armv7l: '684695517ea397a67f580c24714b65cbbf642db5aaaae2c7c7e0cdde7af8cf19',
+       i686: 'fcefa09719015bb7694fdf5a9570814452edd5b7e98d4aca545a8823702450d1',
+     x86_64: 'f4d8fcbe1ce0a3b503606c31adc956e372489d80b62d016e995a0d2c7fadcaad'
   })
 
   depends_on 'python3'

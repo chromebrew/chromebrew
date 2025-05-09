@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.60.2' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.60.6' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -35,13 +35,9 @@ CREW_GLIBC_PREFIX      ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
 CREW_GLIBC_INTERPRETER ||= File.symlink?("#{CREW_PREFIX}/bin/ld.so") ? File.realpath("#{CREW_PREFIX}/bin/ld.so") : nil unless defined?(CREW_GLIBC_INTERPRETER)
 
 # Glibc version can be found from the output of libc.so.6
-# LIBC_VERSION ||= ENV.fetch('LIBC_VERSION', Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last) unless defined?(LIBC_VERSION)
-@libcvertokens = if File.file?("#{CREW_GLIBC_PREFIX}/libc.so.6")
-                   `LD_AUDIT= #{CREW_GLIBC_PREFIX}/libc.so.6`.lines.first.chomp.split(/[\s]/)
-                 else
-                   `/#{ARCH_LIB}/libc.so.6`.lines.first.chomp.split(/[\s]/)
-                 end
-LIBC_VERSION = @libcvertokens[@libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '') unless defined?(LIBC_VERSION)
+@libcvertokens = (`LD_AUDIT= #{CREW_GLIBC_PREFIX}/libc.so.6`.lines.first.chomp.split(/[\s]/) if File.file?("#{CREW_GLIBC_PREFIX}/libc.so.6"))
+@libc_version = @libcvertokens.nil? ? Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last : @libcvertokens[@libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
+LIBC_VERSION ||= ENV.fetch('LIBC_VERSION', @libc_version) unless defined?(LIBC_VERSION)
 
 if CREW_PREFIX == '/usr/local'
   CREW_BUILD_FROM_SOURCE ||= ENV.fetch('CREW_BUILD_FROM_SOURCE', false) unless defined?(CREW_BUILD_FROM_SOURCE)
@@ -109,7 +105,7 @@ CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless d
 CREW_NO_GIT             ||= ENV.fetch('CREW_NO_GIT', false) unless defined?(CREW_NO_GIT)
 CREW_UNATTENDED         ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
 
-CREW_STANDALONE_UPGRADE_ORDER = %w[openssl ruby python3] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
+CREW_STANDALONE_UPGRADE_ORDER = %w[glibc_standalone openssl ruby python3] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
 
 CREW_DEBUG   ||= ARGV.intersect?(%w[-D --debug]) unless defined?(CREW_DEBUG)
 CREW_FORCE   ||= ARGV.intersect?(%w[-f --force]) unless defined?(CREW_FORCE)
@@ -219,7 +215,7 @@ CREW_COMMON_FLAGS         ||= "#{CREW_CORE_FLAGS} -B#{CREW_GLIBC_PREFIX} -flto=a
 CREW_COMMON_FNO_LTO_FLAGS ||= "#{CREW_CORE_FLAGS} -B#{CREW_GLIBC_PREFIX} -fno-lto"
 CREW_FNO_LTO_LDFLAGS      ||= '-fno-lto'
 
-CREW_LINKER_FLAGS << " -Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER} -B#{CREW_GLIBC_PREFIX} -L#{CREW_GLIBC_PREFIX}" if CREW_GLIBC_INTERPRETER
+CREW_LINKER_FLAGS << " -Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER} -Wl,-rpath,#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX} -B#{CREW_GLIBC_PREFIX} -L#{CREW_GLIBC_PREFIX} -L#{CREW_LIB_PREFIX}" if CREW_GLIBC_INTERPRETER
 
 CREW_ENV_OPTIONS_HASH ||=
   if CREW_DISABLE_ENV_OPTIONS

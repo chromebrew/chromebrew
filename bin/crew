@@ -650,7 +650,7 @@ def unpack(meta)
         system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
       when /\.(tar(\.(xz|zst))?|txz|tpxz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
-        system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
+        system "LD_AUDIT= tar -Izstd -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true unless system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir
       when /\.deb$/i
         puts "Unpacking '.deb' archive, this may take a while..."
         DebUtils.extract_deb(meta[:filename], /data\..*/)
@@ -900,13 +900,13 @@ def fix_interpreter_path(dir)
 
     execfiles.each_line(chomp: true) do |execfiletopatch|
       execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
-      neededlibs = `patchelf --print-needed #{execfiletopatch}`
-      next if neededlibs.to_s.empty?
 
       system "upx -qq -d #{execfiletopatch} 2> /dev/null"
-      puts "Running patchelf on #{execfiletopatch}".orange
-      system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch} 2> /dev/null"
-      system "patchelf --remove-rpath #{execfiletopatch} 2> /dev/null"
+      puts "Running patchelf on #{execfiletopatch}".orange if CREW_DEBUG
+      system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch} > /dev/null 2> /dev/null"
+      @exec_rpath = `patchelf --print-rpath #{execfiletopatch}`.chomp
+      puts "#{execfiletopatch} has an existing rpath of #{@exec_rpath}".orange unless @exec_rpath.empty?
+      # system "patchelf --remove-rpath #{execfiletopatch} > /dev/null 2> /dev/null"
     end
   end
 end
@@ -1064,9 +1064,13 @@ def resolve_dependencies_and_install
       crewlog "@pkg.print_source_bashrc?:#{@pkg.print_source_bashrc?} @pkg.gnome?:#{@pkg.gnome?}"
       # Check to see if the trap was set in #{CREW_PREFIX}/etc/profile
       # from crew_profile_base, because otherwise, USR1 will kill crosh.
-      if File.read("/proc/#{Process.ppid}/comm").include?('[trap set]')
+      # The shell in containers is in a subshell of sudo, which is NOT
+      # what PPID reports, so we ned to use this complicated logic to
+      # find the relevant parent bash process.
+      @parent_bash_process = `pstree -lap chronos | grep 'bash \\[trap set]' | head -n 1`.chomp.gsub('bash [trap set],', '').split.first.to_i
+      if Dir.exist?("/proc/#{@parent_bash_process}") && File.read("/proc/#{@parent_bash_process}/comm").include?('[trap set]')
         crewlog 'USR1 trap exists. Sourcing ~/.bashrc .'
-        Process.kill('USR1', Process.ppid)
+        Process.kill('USR1', @parent_bash_process)
       else
         ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
 
