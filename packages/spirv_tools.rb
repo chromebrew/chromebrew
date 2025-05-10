@@ -20,7 +20,6 @@ class Spirv_tools < CMake
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   # depends_on 'spirv_headers' => :build
-  depends_on 'glibc_lib' # R
 
   # https://github.com/KhronosGroup/SPIRV-Tools/issues/5728
   def self.patch

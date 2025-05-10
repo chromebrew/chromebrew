@@ -19,7 +19,6 @@ class Libheif < Package
   depends_on 'dav1d' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'graphviz' => :build # Only needed for dot.

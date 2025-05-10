@@ -36,7 +36,6 @@ class Gcc_dev < Package
 
   depends_on 'gcc_build' => :build
   depends_on 'gcc_lib' # R
-  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl' # R

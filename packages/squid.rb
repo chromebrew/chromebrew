@@ -20,7 +20,6 @@ class Squid < Autotools
   depends_on 'e2fsprogs' # R
   depends_on 'expat' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc_lib' # R
   depends_on 'gnutls' # R
   depends_on 'krb5' # R
   depends_on 'libcap' # R

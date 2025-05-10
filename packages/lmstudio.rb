@@ -21,7 +21,6 @@ class Lmstudio < Package
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
-  depends_on 'glibc_lib' # R
   depends_on 'gtk2' # R
   depends_on 'gtk3' # R
   depends_on 'libdrm' # R

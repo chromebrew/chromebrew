@@ -19,7 +19,6 @@ class Abseil_cpp < CMake
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'glibc_lib' # R
 
   cmake_options '-DBUILD_SHARED_LIBS=ON'
 end

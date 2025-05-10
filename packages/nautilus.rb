@@ -28,7 +28,6 @@ class Nautilus < Meson
   depends_on 'gcc_lib' => :build
   depends_on 'gdk_pixbuf' # R
   depends_on 'gexiv2' # R
-  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gnome_autoar' # R

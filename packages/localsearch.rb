@@ -20,7 +20,6 @@ class Localsearch < Meson
   depends_on 'gcc_lib' => :build
   depends_on 'gexiv2' # R
   depends_on 'giflib' # R
-  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gstreamer' # R

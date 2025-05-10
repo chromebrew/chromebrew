@@ -36,7 +36,6 @@ class Graphicsmagick < Package
   depends_on 'brotli' # R
   depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'highway' # R
   depends_on 'icu4c' # R

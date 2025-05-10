@@ -17,7 +17,6 @@ class Libyuv < CMake
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libjpeg_turbo' # R
 

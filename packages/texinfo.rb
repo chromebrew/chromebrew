@@ -17,7 +17,6 @@ class Texinfo < Autotools
      x86_64: 'e1f4f26cc112d9368f3f050a504a073c1f730b123600c3517e162dff1e89f070'
   })
 
-  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libunistring' # R
   depends_on 'ncurses' # R
