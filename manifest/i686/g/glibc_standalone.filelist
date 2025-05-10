@@ -511,6 +511,7 @@
 /usr/local/opt/glibc-libs/Scrt1.o
 /usr/local/opt/glibc-libs/audit/sotruss-lib.so
 /usr/local/opt/glibc-libs/crew-audit.so
+/usr/local/opt/glibc-libs/crew-preload.so
 /usr/local/opt/glibc-libs/crt1.o
 /usr/local/opt/glibc-libs/crti.o
 /usr/local/opt/glibc-libs/crtn.o

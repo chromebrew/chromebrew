@@ -13,7 +13,7 @@ class Glibc_standalone < Package
   binary_sha256({
     aarch64: '4f76c7f82ad0dcf4e31ea3a8a8904228600eeffbf0c4444b06a8460cf33ff859',
      armv7l: '4f76c7f82ad0dcf4e31ea3a8a8904228600eeffbf0c4444b06a8460cf33ff859',
-       i686: '9191a782dce9f5600dc9145e1beb0e0de9c1aca583ab7ddcbedd72b83b454b67',
+       i686: '603de77115bd7b6b1caf90ce6fc5f4539d7529c741e07d6dc3de9a1145f3c8ba',
      x86_64: '2ad34bffe4dae0bea47e1ae0a3ca36e48babf91cc152efc88f9ed72a988029a7'
   })
 
