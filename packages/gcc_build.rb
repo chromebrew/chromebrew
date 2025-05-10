@@ -37,7 +37,7 @@ class Gcc_build < Package
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
-  @glibc_flags = "-Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER} -B#{CREW_GLIBC_PREFIX} -L#{CREW_GLIBC_PREFIX} -L#{CREW_LIB_PREFIX}"
+  @glibc_flags = "-Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER} -Wl,-rpath,#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX} -B#{CREW_GLIBC_PREFIX} -L#{CREW_GLIBC_PREFIX} -L#{CREW_LIB_PREFIX}"
   @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags}"
   @languages = 'c,c++,jit,objc,fortran,go,rust'
   case ARCH
@@ -96,6 +96,7 @@ class Gcc_build < Package
     @gcc_global_opts = <<~OPT.chomp
       --build=#{CREW_TARGET} \
       --host=#{CREW_TARGET} \
+      --enable-linker-plugin-configure-flags='--host=#{CREW_TARGET}' \
       --target=#{CREW_TARGET} \
       --disable-install-libiberty \
       --disable-libmpx \
@@ -125,9 +126,12 @@ class Gcc_build < Package
       --with-pic \
       --with-system-libunwind \
       --with-system-zlib \
-      --with-system-zstd
+      --with-system-zstd \
+      --with-stage1-ldflags='#{@glibc_flags}' \
+      --with-boot-ldflags='#{@glibc_flags}'
     OPT
-
+    puts "@gcc_global_opts"
+    puts @gcc_global_opts
     # Set ccache sloppiness as per
     # https://wiki.archlinux.org/index.php/Ccache#Sloppiness
     # system 'ccache --set-config=sloppiness=file_macro,locale,time_macros'
@@ -142,6 +146,7 @@ class Gcc_build < Package
     Dir.chdir('objdir') do
       configure_env =
         {
+      build_configargs: @gcc_global_opts,
                     AR: 'gcc-ar',
                 CFLAGS: @cflags,
            CREW_LINKER: 'ld',
