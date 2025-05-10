@@ -96,7 +96,6 @@ class Gcc_build < Package
     @gcc_global_opts = <<~OPT.chomp
       --build=#{CREW_TARGET} \
       --host=#{CREW_TARGET} \
-      --enable-linker-plugin-configure-flags='--host=#{CREW_TARGET}' \
       --target=#{CREW_TARGET} \
       --disable-install-libiberty \
       --disable-libmpx \
@@ -112,6 +111,7 @@ class Gcc_build < Package
       --enable-gnu-unique-object \
       --enable-host-shared \
       --enable-link-serialization=1 \
+      --enable-linker-plugin-configure-flags='--host=#{CREW_TARGET} --target=#{CREW_TARGET}' \
       --enable-plugin \
       --enable-shared \
       --enable-symvers \
@@ -130,7 +130,8 @@ class Gcc_build < Package
       --with-stage1-ldflags='#{@glibc_flags}' \
       --with-boot-ldflags='#{@glibc_flags}'
     OPT
-
+    puts 'Building with:'.lightblue
+    puts @gcc_global_opts.lightblue
     # Install prereqs using the standard gcc method so they can be
     # linked statically.
     # system './contrib/download_prerequisites'
@@ -142,6 +143,7 @@ class Gcc_build < Package
         {
       build_configargs: @gcc_global_opts,
                     AR: 'gcc-ar',
+              BASH_ENV: "#{CREW_PREFIX}/etc/env.d/rust",
                 CFLAGS: @cflags,
            CREW_LINKER: 'ld',
               CXXFLAGS: @cxxflags,
