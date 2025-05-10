@@ -3,7 +3,7 @@ require 'package'
 class Glibc_standalone < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
-  version '2.41-3'
+  version '2.41-4'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/glibc/glibc-#{version.partition('-')[0]}.tar.xz"
@@ -91,8 +91,11 @@ class Glibc_standalone < Package
       system "make PARALLELMFLAGS='-j #{CREW_NPROC}'"
     end
 
+    arch_flag = ARCH.eql?('x86_64') ? '-m64' : '-m32'
+
     # compile crew-audit with system's glibc version, as we want it to work on system's glibc also
-    system "cc #{CREW_COMMON_FLAGS.sub(/-L[^\s]+/, '')} #{cc_macro_list.join(' ')} -shared crew-audit.c -o crew-audit.so", chdir: 'crew-package-glibc'
+    system "cc #{CREW_COMMON_FLAGS} #{arch_flag} -shared crew-audit.c -o crew-audit.so", no_preload_hack: true, chdir: 'crew-package-glibc'
+    system "cc #{CREW_COMMON_FLAGS} #{arch_flag} -shared crew-preload.c -o crew-preload.so", no_preload_hack: true, chdir: 'crew-package-glibc'
   end
 
   def self.install
@@ -114,6 +117,7 @@ class Glibc_standalone < Package
 
     # install crew-audit
     FileUtils.install 'crew-package-glibc/crew-audit.so', File.join(CREW_DEST_DIR, CREW_GLIBC_PREFIX, 'crew-audit.so'), mode: 0o755
+    FileUtils.install 'crew-package-glibc/crew-preload.so', File.join(CREW_DEST_DIR, CREW_GLIBC_PREFIX, 'crew-preload.so'), mode: 0o755
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-glibc", "# LD_AUDIT=#{File.join(CREW_GLIBC_PREFIX, 'crew-audit.so')}\nLD_AUDIT=\n"
   end
 

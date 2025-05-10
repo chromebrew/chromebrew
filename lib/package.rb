@@ -327,15 +327,15 @@ class Package
   def self.source?(architecture) = missing_binaries ? true : !(binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
-    @crew_env_options_hash = if no_env_options?
-                               { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
-                             elsif no_lto?
-                               CREW_ENV_FNO_LTO_OPTIONS_HASH
-                             else
-                               CREW_ENV_OPTIONS_HASH
-                             end
+    crew_env_options_hash = if no_env_options?
+                              { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
+                            elsif no_lto?
+                              CREW_ENV_FNO_LTO_OPTIONS_HASH
+                            else
+                              CREW_ENV_OPTIONS_HASH
+                            end
     # Replace CREW_ARCH_FLAGS if @arch_flags_override is true.
-    @crew_env_options_hash = @arch_flags_override ? @crew_env_options_hash.each { |k, v| @crew_env_options_hash[k] = v.gsub(CREW_ARCH_FLAGS, CREW_ARCH_FLAGS_OVERRIDE) } : @crew_env_options_hash
+    crew_env_options_hash = arch_flags_override ? crew_env_options_hash.each { |k, v| crew_env_options_hash[k] = v.gsub(CREW_ARCH_FLAGS, CREW_ARCH_FLAGS_OVERRIDE) } : crew_env_options_hash
 
     # Add "-j#" argument to "make" at compile-time, if necessary.
 
@@ -350,13 +350,18 @@ class Package
 
     # Extract env hash.
     if args[0].is_a?(Hash)
-      env = @crew_env_options_hash.merge(args[0])
+      env = crew_env_options_hash.merge(args[0])
       args.delete_at(0) # Remove env hash from args array.
     else
-      env = @crew_env_options_hash
+      env = crew_env_options_hash
     end
 
-    cmd_args        = args # After removing the env hash, all remaining args must be command args.
+    # Set crew-preload.so as LD_PRELOAD
+    crew_preload      = File.join(CREW_DEST_DIR, CREW_GLIBC_PREFIX, 'crew-preload.so')
+    env['LD_PRELOAD'] = crew_preload if File.exist?(crew_preload) && opt_args.delete(:no_preload_hack) != true
+
+    # After removing the env hash, all remaining args must be command args.
+    cmd_args        = args
     make_threads    = CREW_NPROC
     modded_make_cmd = false
 
