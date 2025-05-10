@@ -130,12 +130,6 @@ class Gcc_build < Package
       --with-stage1-ldflags='#{@glibc_flags}' \
       --with-boot-ldflags='#{@glibc_flags}'
     OPT
-    puts "@gcc_global_opts"
-    puts @gcc_global_opts
-    # Set ccache sloppiness as per
-    # https://wiki.archlinux.org/index.php/Ccache#Sloppiness
-    # system 'ccache --set-config=sloppiness=file_macro,locale,time_macros'
-    # Prefix ccache to path.
 
     # Install prereqs using the standard gcc method so they can be
     # linked statically.
