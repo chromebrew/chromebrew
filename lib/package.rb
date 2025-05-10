@@ -358,7 +358,7 @@ class Package
 
     # Set crew-preload.so as LD_PRELOAD
     crew_preload      = File.join(CREW_DEST_DIR, CREW_GLIBC_PREFIX, 'crew-preload.so')
-    env['LD_PRELOAD'] = crew_preload if File.exist?(crew_preload) && opt_args.delete(:no_preload_hack) != true
+    env['LD_PRELOAD'] = crew_preload unless opt_args.delete(:no_preload_hack) == true || !File.exist?(crew_preload)
 
     # After removing the env hash, all remaining args must be command args.
     cmd_args        = args

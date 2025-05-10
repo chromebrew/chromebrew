@@ -46,7 +46,7 @@ class Glibc_standalone < Package
       -DCREW_AUDIT=\\"#{CREW_GLIBC_PREFIX}/crew-audit.so\\"
       -DCREW_PREFIX=\\"#{CREW_PREFIX}\\"
       -DCREW_GLIBC_PREFIX=\\"#{CREW_GLIBC_PREFIX}\\"
-      -DCREW_GLIBC_VERSION=\\"#{version.partition('-')[0]}\\"
+      -DCREW_GLIBC_INTERPRETER=\\"#{CREW_GLIBC_INTERPRETER}\\"
       -DCREW_LD_LIBRARY_PATH=\\"#{CREW_GLIBC_PREFIX}:#{ENV.fetch('LD_LIBRARY_PATH', nil)}\\"
     ]
 
