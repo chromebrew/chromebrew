@@ -144,7 +144,7 @@ class Gcc_build < Package
     FileUtils.mkdir_p 'objdir/gcc/.deps'
 
     Dir.chdir('objdir') do
-      configure_env =
+      build_env =
         {
       build_configargs: @gcc_global_opts,
                     AR: 'gcc-ar',
@@ -159,7 +159,7 @@ class Gcc_build < Package
                 RANLIB: 'gcc-ranlib'
         }.transform_keys(&:to_s)
 
-      system configure_env, <<~BUILD.chomp
+      system build_env, <<~BUILD.chomp
         ../configure #{CREW_CONFIGURE_OPTIONS} \
           #{@gcc_global_opts} \
           #{@archflags} \
@@ -185,7 +185,7 @@ class Gcc_build < Package
       # }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false
       # )
       # break if
-      system configure_env, <<~MAKE.chomp
+      system build_env, <<~MAKE.chomp
         bash -c "make -j #{CREW_NPROC}"
       MAKE
       # puts "Make using -j#{@j_max}...".orange
@@ -208,7 +208,7 @@ class Gcc_build < Package
     gcc_dir = "gcc/#{gcc_arch}/#{@gcc_version}"
     gcc_libdir = "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
 
-    make_env =
+    install_env =
       {
               CFLAGS: @cflags, CXXFLAGS: @cxxflags,
              DESTDIR: CREW_DEST_DIR,
@@ -219,29 +219,29 @@ class Gcc_build < Package
 
     Dir.chdir('objdir') do
       # gcc-libs install
-      system make_env, "make -C #{CREW_TARGET}/libgcc DESTDIR=#{CREW_DEST_DIR} install-shared"
+      system install_env, "make -C #{CREW_TARGET}/libgcc DESTDIR=#{CREW_DEST_DIR} install-shared"
 
       @gcc_libs = %w[libatomic libgfortran libgo libgomp libitm
                      libquadmath libsanitizer/asan libsanitizer/lsan libsanitizer/ubsan
                      libsanitizer/tsan libstdc++-v3/src libvtv]
       @gcc_libs.each do |lib|
-        system make_env, "make -C #{CREW_TARGET}/#{lib} \
+        system install_env, "make -C #{CREW_TARGET}/#{lib} \
           DESTDIR=#{CREW_DEST_DIR} install-toolexeclibLTLIBRARIES", exception: false
       end
 
-      system make_env, "make -C #{CREW_TARGET}/libobjc DESTDIR=#{CREW_DEST_DIR} install-libs", exception: false
-      system make_env, "make -C #{CREW_TARGET}/libstdc++-v3/po DESTDIR=#{CREW_DEST_DIR} install", exception: false
-      system make_env, "make -C #{CREW_TARGET}/libphobos DESTDIR=#{CREW_DEST_DIR} install", exception: false
+      system install_env, "make -C #{CREW_TARGET}/libobjc DESTDIR=#{CREW_DEST_DIR} install-libs", exception: false
+      system install_env, "make -C #{CREW_TARGET}/libstdc++-v3/po DESTDIR=#{CREW_DEST_DIR} install", exception: false
+      system install_env, "make -C #{CREW_TARGET}/libphobos DESTDIR=#{CREW_DEST_DIR} install", exception: false
 
       # gcc_libs_info
       %w[libgomp libitm libquadmath].each do |lib|
-        system make_env, "make -C #{CREW_TARGET}/#{lib} DESTDIR=#{CREW_DEST_DIR} install-info", exception: false
+        system install_env, "make -C #{CREW_TARGET}/#{lib} DESTDIR=#{CREW_DEST_DIR} install-info", exception: false
       end
 
-      system make_env, "make DESTDIR=#{CREW_DEST_DIR} install-strip"
+      system install_env, "make DESTDIR=#{CREW_DEST_DIR} install-strip"
 
       # gcc-non-lib install
-      system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-driver install-cpp install-gcc-ar \
+      system install_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-driver install-cpp install-gcc-ar \
         c++.install-common install-headers install-plugin install-lto-wrapper"
 
       %w[gcov gcov-tool].each do |gcov_bin|
@@ -254,13 +254,13 @@ class Gcc_build < Package
         FileUtils.install "gcc/#{lib}", "#{gcc_libdir}/", mode: 0o755
       end
 
-      system make_env, "make -C #{CREW_TARGET}/libgcc DESTDIR=#{CREW_DEST_DIR} install"
+      system install_env, "make -C #{CREW_TARGET}/libgcc DESTDIR=#{CREW_DEST_DIR} install"
 
       %w[src include libsupc++ python].each do |lib|
-        system make_env, "make -C #{CREW_TARGET}/libstdc++-v3/#{lib} DESTDIR=#{CREW_DEST_DIR} install"
+        system install_env, "make -C #{CREW_TARGET}/libstdc++-v3/#{lib} DESTDIR=#{CREW_DEST_DIR} install"
       end
 
-      system make_env, "make DESTDIR=#{CREW_DEST_DIR} install-libcc1"
+      system install_env, "make DESTDIR=#{CREW_DEST_DIR} install-libcc1"
 
       # http://www.linuxfromscratch.org/lfs/view/development/chapter06/gcc.html#contents-gcc
       # move a misplaced file
@@ -269,30 +269,30 @@ class Gcc_build < Package
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib"
       FileUtils.mv Dir["#{CREW_DEST_LIB_PREFIX}/*gdb.py"], "#{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib/"
 
-      system make_env, "make DESTDIR=#{CREW_DEST_DIR} install-fixincludes"
-      system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-mkheaders"
+      system install_env, "make DESTDIR=#{CREW_DEST_DIR} install-fixincludes"
+      system install_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-mkheaders"
 
-      system make_env, "make -C lto-plugin DESTDIR=#{CREW_DEST_DIR} install"
+      system install_env, "make -C lto-plugin DESTDIR=#{CREW_DEST_DIR} install"
 
-      system make_env, "make -C #{CREW_TARGET}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
+      system install_env, "make -C #{CREW_TARGET}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
              exception: false
-      system make_env, "make -C #{CREW_TARGET}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
+      system install_env, "make -C #{CREW_TARGET}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
              exception: false
-      system make_env, "make -C #{CREW_TARGET}/libitm DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
+      system install_env, "make -C #{CREW_TARGET}/libitm DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
              exception: false
-      system make_env, "make -C #{CREW_TARGET}/libquadmath DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
+      system install_env, "make -C #{CREW_TARGET}/libquadmath DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
              exception: false
-      system make_env, "make -C #{CREW_TARGET}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_sanincludeHEADERS",
+      system install_env, "make -C #{CREW_TARGET}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_sanincludeHEADERS",
              exception: false
-      system make_env, "make -C #{CREW_TARGET}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
+      system install_env, "make -C #{CREW_TARGET}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
              exception: false
-      system make_env,
+      system install_env,
              "make -C #{CREW_TARGET}/libsanitizer/asan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
       # This failed on i686
-      system make_env,
+      system install_env,
              "make -C #{CREW_TARGET}/libsanitizer/tsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
       # This might fail on i686
-      system make_env,
+      system install_env,
              "make -C #{CREW_TARGET}/libsanitizer/lsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
 
       # libiberty is installed from binutils
@@ -301,14 +301,14 @@ class Gcc_build < Package
       #      make -C libiberty DESTDIR=#{CREW_DEST_DIR} install"
       # install -m644 libiberty/pic/libiberty.a "#{CREW_DEST_PREFIX}/lib"
 
-      system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-man install-info"
+      system install_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-man install-info"
 
-      system make_env, "make -C libcpp DESTDIR=#{CREW_DEST_DIR} install"
-      system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-po"
+      system install_env, "make -C libcpp DESTDIR=#{CREW_DEST_DIR} install"
+      system install_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-po"
 
       # install the libstdc++ man pages
       # This is broken in 14.0.1
-      # system make_env, "make -C #{CREW_TARGET}/libstdc++-v3/doc DESTDIR=#{CREW_DEST_DIR} doc-install-man"
+      # system install_env, "make -C #{CREW_TARGET}/libstdc++-v3/doc DESTDIR=#{CREW_DEST_DIR} doc-install-man"
 
       # byte-compile python libraries
       system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/"
