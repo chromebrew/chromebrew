@@ -94,8 +94,8 @@ class Glibc_standalone < Package
     arch_flag = ARCH.eql?('x86_64') ? '-m64' : '-m32'
 
     # compile crew-audit with system's glibc version, as we want it to work on system's glibc also
-    system "cc #{CREW_COMMON_FLAGS} #{arch_flag} -shared crew-audit.c -o crew-audit.so", no_preload_hack: true, chdir: 'crew-package-glibc'
-    system "cc #{CREW_COMMON_FLAGS} #{arch_flag} -shared crew-preload.c -o crew-preload.so", no_preload_hack: true, chdir: 'crew-package-glibc'
+    system "cc #{CREW_COMMON_FLAGS} #{arch_flag} -fuse-ld=mold -shared crew-audit.c -o crew-audit.so", no_preload_hack: true, chdir: 'crew-package-glibc'
+    system "cc #{CREW_COMMON_FLAGS} #{arch_flag} -fuse-ld=mold -shared crew-preload.c -o crew-preload.so", no_preload_hack: true, chdir: 'crew-package-glibc'
   end
 
   def self.install
