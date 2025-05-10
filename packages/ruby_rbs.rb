@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_rbs < RUBY
   description 'RBS is the language for type signatures for Ruby and standard library definitions.'
   homepage 'https://github.com/ruby/rbs'
-  version "3.9.2-#{CREW_RUBY_VER}"
+  version "3.9.3-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
