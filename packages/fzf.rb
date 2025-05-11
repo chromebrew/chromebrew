@@ -3,7 +3,7 @@ require 'package'
 class Fzf < Package
   description 'A command-line fuzzy finder'
   homepage 'https://github.com/junegunn/fzf'
-  version '0.61.1'
+  version '0.62.0'
   license 'MIT and BSD-with-disclosure'
   compatibility 'aarch64 armv7l x86_64'
   source_url({
@@ -12,9 +12,9 @@ class Fzf < Package
      x86_64: "https://github.com/junegunn/fzf/releases/download/v#{version}/fzf-#{version}-linux_amd64.tar.gz"
   })
   source_sha256({
-    aarch64: '6472fdc1ede0156755badfefa2d3be487148189fe79feaeb175e9fae7eb96e01',
-     armv7l: '6472fdc1ede0156755badfefa2d3be487148189fe79feaeb175e9fae7eb96e01',
-     x86_64: 'f728b94bbbf7008602581fc07ea00de5dccf55a2cb2bf9fd9a35f1071b3b9f6c'
+    aarch64: 'fee57a3c3e19540e9830efd4995e7e132abbf995118c451a038bb36c5975b925',
+     armv7l: 'fee57a3c3e19540e9830efd4995e7e132abbf995118c451a038bb36c5975b925',
+     x86_64: '64b56dd484a2317d5f04c28ac0791b36807f034adb419209ad39fb6637255794'
   })
 
   no_compile_needed

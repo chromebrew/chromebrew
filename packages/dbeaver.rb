@@ -3,11 +3,11 @@ require 'package'
 class Dbeaver < Package
   description 'Free Universal Database Tool'
   homepage 'https://dbeaver.io'
-  version '25.0.2'
+  version '25.0.4'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url "https://github.com/dbeaver/dbeaver/releases/download/#{version}/dbeaver-ce-#{version}-linux.gtk.x86_64.tar.gz"
-  source_sha256 '93fa502436077c4a24dcce4e9b2f0cde312c55821cfd2231c8c6e709901e17d8'
+  source_sha256 '8921715813807e1c46bd3ce0495da57cc1e9bfb35d631fdfa5ff21bbf103eb41'
 
   depends_on 'gtk3'
   depends_on 'xdg_base'

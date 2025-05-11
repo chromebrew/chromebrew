@@ -3,7 +3,7 @@ require 'package'
 class Btop < Package
   description 'Resource monitor that shows usage and stats for processor, memory, disks, network and processes.'
   homepage 'https://github.com/aristocratos/btop'
-  version '1.4.0'
+  version '1.4.2'
   license 'Apache-2.0'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Btop < Package
      x86_64: "https://github.com/aristocratos/btop/releases/download/v#{version}/btop-x86_64-linux-musl.tbz"
   })
   source_sha256({
-    aarch64: '7f793a78c875829b14ded0c9dd3e851a284a50b9eaefdf9407e93d8f767993f5',
-     armv7l: '7f793a78c875829b14ded0c9dd3e851a284a50b9eaefdf9407e93d8f767993f5',
-       i686: '987ab934b52f6e4cfddd3d4706142963f45e4b8a4d4fdeed3b45e27331892954',
-     x86_64: '2e49cde9c0f273e5b1699d2c4f1ce5d1c08cca5fd90e5e0226dbac9fd00c82f3'
+    aarch64: '25df48ee78f1c70d47dc30df7dd92fc431770a3fc60864d003553bc9e7cc1f6b',
+     armv7l: '25df48ee78f1c70d47dc30df7dd92fc431770a3fc60864d003553bc9e7cc1f6b',
+       i686: '366b1c7300b4ff37fe632566523e2331f54b52beedb2e5152a0f9bf65598d7bb',
+     x86_64: '03869e0007874bfca7d995501568b68c0d2e2be770f2268859f876dc3edff657'
   })
 
   no_compile_needed
