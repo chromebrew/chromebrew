@@ -3,7 +3,7 @@ require 'package'
 class Rustdesk < Package
   description 'An open-source remote desktop application designed for self-hosting, as an alternative to TeamViewer.'
   homepage 'https://rustdesk.com/'
-  version '1.3.9'
+  version '1.4.0'
   license 'AGPL-3.0'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.37'
@@ -13,9 +13,9 @@ class Rustdesk < Package
      x86_64: "https://github.com/rustdesk/rustdesk/releases/download/#{version}/rustdesk-#{version}-x86_64.deb"
   })
   source_sha256({
-    aarch64: 'fbd398186abb4714d232d85579e693c78b23bf80b7741d0ba8c677db760bc290',
-     armv7l: 'fbd398186abb4714d232d85579e693c78b23bf80b7741d0ba8c677db760bc290',
-     x86_64: '449af5ef83b70e87a1f84a4c24dbe2205f6f5ac462eb057c65adf6cd67edeb43'
+    aarch64: 'f80a3b7bfd4bd040f8f3421d455e12d984c2638606a385e201d992a941c3a536',
+     armv7l: 'f80a3b7bfd4bd040f8f3421d455e12d984c2638606a385e201d992a941c3a536',
+     x86_64: '64a5b1929dbd819adc373a9396ad2a162ca94de1cf895efcad6d2750f317998e'
   })
 
   depends_on 'gtk3'
