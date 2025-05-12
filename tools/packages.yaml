@@ -1985,6 +1985,11 @@ url: https://ftp.osuosl.org/pub/xiph/releases/flac/
 activity: none
 ---
 kind: url
+name: flareget
+url: https://flareget.com/download
+activity: medium
+---
+kind: url
 name: flatpak
 url: https://github.com/flatpak/flatpak/releases/
 activity: medium
