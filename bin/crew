@@ -902,17 +902,15 @@ def fix_interpreter_path(dir)
     execfiles.each_line(chomp: true) do |execfiletopatch|
       execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
 
-      system "upx -qq -d #{execfiletopatch} 2> /dev/null"
+      system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL
       puts "Running patchelf on #{execfiletopatch}".orange if CREW_DEBUG
-      system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch} > /dev/null 2> /dev/null"
+      system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch}", %i[out err] => File::NULL
       @exec_rpath = `patchelf --print-rpath #{execfiletopatch}`.chomp
       next if @exec_rpath.empty?
       puts "#{execfiletopatch.gsub(@localdir, '')} has an existing rpath of #{@exec_rpath}".orange
       next if @exec_rpath.include?(CREW_GLIBC_PREFIX)
       puts "Prefixing #{CREW_GLIBC_PREFIX} to rpath for #{execfiletopatch.gsub(@localdir, '')}.".lightblue
-      system "patchelf --set-rpath #{CREW_GLIBC_PREFIX}:#{@exec_rpath} #{execfiletopatch} > /dev/null 2> /dev/null"
-
-      # system "patchelf --remove-rpath #{execfiletopatch} > /dev/null 2> /dev/null"
+      system "patchelf --set-rpath #{CREW_GLIBC_PREFIX}:#{@exec_rpath} #{execfiletopatch}", %i[out err] => File::NULL
     end
   end
 end

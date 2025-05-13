@@ -255,15 +255,23 @@ unless installed_pkgs_to_deprecate.empty?
 end
 
 if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patchelf")
-  # Decompress all upx-compressed libraries
-  puts 'Decompressing binaries with upx...'.yellow
-  system "find #{CREW_PREFIX}/bin -type f -executable -print | xargs -P#{CREW_NPROC} -n1 upx -qq -d 2> /dev/null"
-  system "find #{CREW_LIB_PREFIX} -type f -executable -print | xargs -P#{CREW_NPROC} -n1 upx -qq -d 2> /dev/null"
+  puts 'Running upx to uncompress binaries and patchelf to patch binary interpreter paths.'.lightblue
+  abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
+  abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
+  execfiles = `find #{CREW_PREFIX}/bin #{CREW_LIB_PREFIX} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' --`.chomp
+  return if execfiles.empty?
 
-  # Switch to glibc_standalone if installed
-  puts 'Switching to glibc_standalone for all installed executables...'.yellow
-  system "find #{CREW_PREFIX}/bin -type f -executable -print | xargs -P#{CREW_NPROC} -n1 patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} 2> /dev/null"
-  system "find #{CREW_PREFIX}/bin -type f -executable -print | xargs -P#{CREW_NPROC} -n1 patchelf --remove-rpath 2> /dev/null"
+  execfiles.each_line(chomp: true) do |execfiletopatch|
+    system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL
+    puts "Running patchelf on #{execfiletopatch}".orange if CREW_DEBUG
+    system "patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch}", %i[out err] => File::NULL
+    @exec_rpath = `patchelf --print-rpath #{execfiletopatch}`.chomp
+    next if @exec_rpath.empty?
+    puts "#{execfiletopatch} has an existing rpath of #{@exec_rpath}".orange
+    next if @exec_rpath.include?(CREW_GLIBC_PREFIX)
+    puts "Prefixing #{CREW_GLIBC_PREFIX} to rpath for #{execfiletopatch}.".lightblue
+    system "patchelf --set-rpath #{CREW_GLIBC_PREFIX}:#{@exec_rpath} #{execfiletopatch}", %i[out err] => File::NULL
+  end
 else
   abort 'Please install upx and patchelf first by running \'crew install upx patchelf\'.'.lightred
 end
