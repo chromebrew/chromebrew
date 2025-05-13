@@ -1,42 +1,37 @@
 # Adapted from Arch Linux hwloc PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/hwloc/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Hwloc < Package
+class Hwloc < Autotools
   description 'Portable Hardware Locality is a portable abstraction of hierarchical architectures'
   homepage 'https://www.open-mpi.org/projects/hwloc/'
-  version '2.7.0'
+  version '2.12.1'
   license 'BSD-3 Clause'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/open-mpi/hwloc.git'
   git_hashtag "hwloc-#{version}"
-  binary_compression 'tpxz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd08caff4ec00dcb51f41b021341619aa1c4739fffcab3c6f106eb18682542c33',
-     armv7l: 'd08caff4ec00dcb51f41b021341619aa1c4739fffcab3c6f106eb18682542c33',
-       i686: 'e2def1fa639efd0e9cafaba06662cc7adc82b3234f148617314b768c77035565',
-     x86_64: 'f565d3fd29a314c2bbebffee5d993b28b2c918e70d37bf4dbc38638628ded810'
+    aarch64: '9eb5e5de24efc07604a7d1afcf6de7856c3ab10724456ba0699dc13e96fbb7b8',
+     armv7l: '9eb5e5de24efc07604a7d1afcf6de7856c3ab10724456ba0699dc13e96fbb7b8',
+     x86_64: '6809fd917519e0f9be4e3fc9d6a8f1e67da8ff80f6576d9ca2844a5599d6812c'
   })
 
-  depends_on 'libtool'
-  depends_on 'libpciaccess'
-  depends_on 'cairo' => :build
-  depends_on 'libxml2' => :build
+  depends_on 'cairo' # R
+  depends_on 'eudev' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libpciaccess' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxml2' # R
   depends_on 'pciutils' => :build
 
-  def self.build
-    system './autogen.sh'
-    system 'filefix'
-    system "#{CREW_ENV_OPTIONS} ./configure \
-      #{CREW_CONFIGURE_OPTIONS} \
-      --enable-plugins \
-      --sysconfdir=#{CREW_PREFIX}/etc"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options "--enable-plugins \
+    --sysconfdir=#{CREW_PREFIX}/etc"
 end
