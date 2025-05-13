@@ -260,7 +260,8 @@ if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patc
   puts 'Running upx to uncompress binaries and patchelf to patch binary interpreter paths.'.lightblue
   abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
   abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
-  # Look for installed binaries and libraries in the usual places.
+  # Look for installed binaries and libraries in /usr/local and the lib
+  # prefix directories.
   execfiles = `find #{CREW_PREFIX}/bin #{CREW_LIB_PREFIX} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' -- 2> /dev/null`.split
   return if execfiles.empty?
 

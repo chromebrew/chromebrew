@@ -12,6 +12,7 @@ require_gem('ptools')
 require 'digest/sha2'
 require 'fileutils'
 require 'mkmf'
+require 'open3'
 require 'tmpdir'
 require 'uri'
 begin
@@ -895,8 +896,9 @@ def fix_interpreter_path(dir)
     puts 'Running upx to uncompress binaries and patchelf to patch binary interpreter paths.'.lightblue
     abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
     abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
-    # Look for installed binaries and libraries.
-    execfiles = `find #{dir} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' -- 2> /dev/null`.split
+    # Look for installed binaries and libraries in the package install
+    # directory tree.
+    execfiles = `find #{Dir.pwd} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' -- 2> /dev/null`.split
     return if execfiles.empty?
 
     @localdir = File.expand_path('../../.')
