@@ -2,10 +2,12 @@
 # Add fixups to be run during crew update here.
 require 'etc'
 require 'json'
+require 'open3'
 require_relative 'color'
 require_relative 'package'
 require_relative 'require_gem'
 
+require_gem('activesupport', 'active_support/core_ext/object/blank')
 require_gem('highline')
 
 # All needed constants & variables should be defined here in case they
@@ -255,15 +257,39 @@ unless installed_pkgs_to_deprecate.empty?
 end
 
 if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patchelf")
-  # Decompress all upx-compressed libraries
-  puts 'Decompressing binaries with upx...'.yellow
-  system "find #{CREW_PREFIX}/bin -type f -executable -print | xargs -P#{CREW_NPROC} -n1 upx -qq -d 2> /dev/null"
-  system "find #{CREW_LIB_PREFIX} -type f -executable -print | xargs -P#{CREW_NPROC} -n1 upx -qq -d 2> /dev/null"
+  puts 'Running upx to uncompress binaries and patchelf to patch binary interpreter paths.'.lightblue
+  abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
+  abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
+  # Look for installed binaries and libraries in the usual places.
+  execfiles = `find #{CREW_PREFIX}/bin #{CREW_LIB_PREFIX} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' -- 2> /dev/null`.split
+  return if execfiles.empty?
 
-  # Switch to glibc_standalone if installed
-  puts 'Switching to glibc_standalone for all installed executables...'.yellow
-  system "find #{CREW_PREFIX}/bin -type f -executable -print | xargs -P#{CREW_NPROC} -n1 patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} 2> /dev/null"
-  system "find #{CREW_PREFIX}/bin -type f -executable -print | xargs -P#{CREW_NPROC} -n1 patchelf --remove-rpath 2> /dev/null"
+  execfiles.each do |execfiletopatch|
+    next unless File.file?(execfiletopatch)
+    # Decompress the binary if compressed.
+    system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL
+    # Check for existing interpreter.
+    @interpreter, _read_interpreter_stderr_s, @read_interpreter_status = Open3.capture3("patchelf --print-interpreter #{execfiletopatch}")
+    # Set interpreter unless the interpreter read failed or is already
+    # set appropriately.
+    unless @read_interpreter_status && @interpreter == CREW_GLIBC_INTERPRETER
+      puts "Running patchelf on #{execfiletopatch} to set interpreter".orange if CREW_VERBOSE
+      _set_interpreter_stdout, @set_interpreter_stderr = Open3.capture3("patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch}")
+      puts "#{execfiletopatch}: @set_interpreter_stderr: #{@set_interpreter_stderr.chomp}".lightpurple if !@set_interpreter_stderr.blank? && CREW_VERBOSE
+    end
+    # Try to read any existing rpath.
+    @read_rpath_stdout_s, @read_rpath_stderr_s, @read_rpath_status = Open3.capture3("patchelf --print-rpath #{execfiletopatch}")
+    @exec_rpath = @read_rpath_stdout_s.chomp
+    @rpath_status = @read_rpath_status
+    puts "#{execfiletopatch}: @read_rpath_stderr_s: #{@read_rpath_stderr_s}".lightpurple if !@read_rpath_stderr_s.blank? && CREW_VERBOSE
+    # Set rpath if rpath read didn't fail, an rpath exists, and does not
+    # already contain CREW_GLIBC_PREFIX.
+    next if !@read_rpath_rpath_status || @exec_rpath.blank? || @exec_rpath.include?(CREW_GLIBC_PREFIX)
+    puts "#{execfiletopatch} has an existing rpath of #{@exec_rpath}".lightpurple if CREW_VERBOSE
+    puts "Prefixing #{CREW_GLIBC_PREFIX} to #{@exec_rpath} rpath for #{execfiletopatch}.".lightblue
+    @set_rpath_stdout_s, @set_rpath_stderr_s, @set_rpath_status = Open3.capture3("patchelf --set-rpath #{CREW_GLIBC_PREFIX}:#{@exec_rpath} #{execfiletopatch}")
+    puts "#{execfiletopatch}: @set_rpath_stderr_s: #{@set_rpath_stderr_s}".lightpurple if !@set_rpath_stderr_s.blank? && CREW_VERBOSE
+  end
 else
   abort 'Please install upx and patchelf first by running \'crew install upx patchelf\'.'.lightred
 end
