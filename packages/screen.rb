@@ -17,8 +17,16 @@ class Screen < Autotools
      x86_64: 'ec5956604dc25a310ce640c61ac49d35b50254219abb67d7e617fb5feb231606'
   })
 
-  depends_on 'ncurses' # R
   depends_on 'glibc' # R
+  depends_on 'libxcrypt' # R
+  depends_on 'linux_pam' # R
+  depends_on 'ncurses' # R
 
   configure_options "--enable-colors256 CFLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
+
+  def self.prebuild
+    system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,g' mktar.pl"
+    system './mktar.pl'
+    system "tar fxv screen-#{version}.tar.gz --strip-components=1"
+  end
 end
