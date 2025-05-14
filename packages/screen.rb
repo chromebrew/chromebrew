@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Screen < Autotools
   description 'Screen is a full-screen window manager that multiplexes a physical terminal between several processes, typically interactive shells.'
   homepage 'https://www.gnu.org/software/screen/'
-  version '5.0.0'
+  version '5.0.1'
   license 'public-domain'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/screen/screen-#{version}.tar.gz"
