@@ -315,13 +315,10 @@ function extract_install () {
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
 
     if [[ "${1}" == 'glibc' ]]; then
-      # set LD_AUDIT to ignore libC.so.6 requests
-      # export LD_AUDIT="${CREW_PREFIX}/opt/glibc-libs/crew-audit.so"
-
       # update ld.so cache
       ldconfig
     else
-      # decompress and switch to glibc for existing binaries
+      # decompress and switch to glibc_standalone for existing binaries
       if command -v upx &> /dev/null; then
         echo_intra "Running upx on ${1}..."
         grep "/usr/local/\(bin\|lib\|lib${LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
