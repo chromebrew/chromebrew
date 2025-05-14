@@ -27,6 +27,6 @@ class Screen < Autotools
   def self.prebuild
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,g' mktar.pl"
     system './mktar.pl'
-    system "tar fxv screen-#{version}.tar.gz --strip-components=1"
+    system "tar fx screen-#{version}.tar.gz --strip-components=1"
   end
 end
