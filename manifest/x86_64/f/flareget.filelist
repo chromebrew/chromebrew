@@ -1,0 +1,16 @@
+/usr/local/bin/flareget
+/usr/local/bin/flareget-chrome-host
+/usr/local/etc/chromium/native-messaging-hosts/com.flareget.flareget.json
+/usr/local/etc/opt/chrome/native-messaging-hosts/com.flareget.flareget.json
+/usr/local/lib/mozilla/native-messaging-hosts/com.flareget.flareget.json
+/usr/local/share/applications/flareget.desktop
+/usr/local/share/doc/flareget/changelog.Debian.gz
+/usr/local/share/doc/flareget/copyright
+/usr/local/share/doc/flareget/dhelper.dat
+/usr/local/share/icons/hicolor/128x128/apps/flareget.png
+/usr/local/share/icons/hicolor/16x16/apps/flareget.png
+/usr/local/share/icons/hicolor/32x32/apps/flareget.png
+/usr/local/share/icons/hicolor/64x64/apps/flareget.png
+/usr/local/share/lintian/overrides/flareget
+/usr/local/share/man/man1/flareget-chrome-host.1.zst
+/usr/local/share/man/man1/flareget.1.zst

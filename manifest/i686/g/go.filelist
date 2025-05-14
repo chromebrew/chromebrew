@@ -3498,6 +3498,7 @@
 /usr/local/share/go/src/cmd/link/testdata/linkname/ok.go
 /usr/local/share/go/src/cmd/link/testdata/linkname/p/p.go
 /usr/local/share/go/src/cmd/link/testdata/linkname/push.go
+/usr/local/share/go/src/cmd/link/testdata/linkname/sched.go
 /usr/local/share/go/src/cmd/link/testdata/pe-binutils/main.go
 /usr/local/share/go/src/cmd/link/testdata/pe-binutils/rsrc_386.syso
 /usr/local/share/go/src/cmd/link/testdata/pe-binutils/rsrc_amd64.syso

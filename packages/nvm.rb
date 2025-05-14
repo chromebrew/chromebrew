@@ -3,7 +3,7 @@ require 'package'
 class Nvm < Package
   description 'Node Version Manager - Simple bash script to manage multiple active node.js versions.'
   homepage 'https://github.com/nvm-sh/nvm'
-  version '0.40.2'
+  version '0.40.3'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'

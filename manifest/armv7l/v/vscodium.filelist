@@ -125,7 +125,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/dart/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/dart/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/dart/syntaxes/dart.tmLanguage.json
-/usr/local/VSCodium-linux-arm/resources/app/extensions/debug-auto-launch/.vscode/launch.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/debug-auto-launch/dist/extension.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/debug-auto-launch/media/icon.png
 /usr/local/VSCodium-linux-arm/resources/app/extensions/debug-auto-launch/package.json
@@ -503,8 +502,10 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/ui/basic-wat.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/vendor/acorn-loose.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/vendor/acorn.js
-/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/w32appcontainertokens-LVKSWXR7.node
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/watchdog.js
+/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/win32-app-container-tokens.win32-arm64-msvc-4ZJZ3U55.node
+/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/win32-app-container-tokens.win32-x64-msvc-VCQE7GJP.node
+/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/telemetry.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/README.md
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/ThirdPartyNotices.txt
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/ci.yml
@@ -678,6 +679,12 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/powershell/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/powershell/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/powershell/syntaxes/powershell.tmLanguage.json
+/usr/local/VSCodium-linux-arm/resources/app/extensions/prompt-basics/language-configuration.json
+/usr/local/VSCodium-linux-arm/resources/app/extensions/prompt-basics/package.json
+/usr/local/VSCodium-linux-arm/resources/app/extensions/prompt-basics/package.nls.json
+/usr/local/VSCodium-linux-arm/resources/app/extensions/prompt-basics/snippets/instructions.code-snippets
+/usr/local/VSCodium-linux-arm/resources/app/extensions/prompt-basics/snippets/prompt.code-snippets
+/usr/local/VSCodium-linux-arm/resources/app/extensions/prompt-basics/syntaxes/prompt.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/pug/language-configuration.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/pug/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/pug/package.nls.json
@@ -758,7 +765,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/terminal-suggest/.gitignore
 /usr/local/VSCodium-linux-arm/resources/app/extensions/terminal-suggest/README.md
 /usr/local/VSCodium-linux-arm/resources/app/extensions/terminal-suggest/ThirdPartyNotices.txt
-/usr/local/VSCodium-linux-arm/resources/app/extensions/terminal-suggest/cgmanifest.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/terminal-suggest/dist/fig/README.md
 /usr/local/VSCodium-linux-arm/resources/app/extensions/terminal-suggest/dist/media/icon.png
 /usr/local/VSCodium-linux-arm/resources/app/extensions/terminal-suggest/dist/terminalSuggestMain.js
@@ -819,7 +825,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/theme-tomorrow-night-blue/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/theme-tomorrow-night-blue/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/theme-tomorrow-night-blue/themes/tomorrow-night-blue-color-theme.json
-/usr/local/VSCodium-linux-arm/resources/app/extensions/tunnel-forwarding/.vscode/launch.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/tunnel-forwarding/dist/extension.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/tunnel-forwarding/media/icon.png
 /usr/local/VSCodium-linux-arm/resources/app/extensions/tunnel-forwarding/package.json
@@ -867,13 +872,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/yaml/syntaxes/yaml-embedded.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/yaml/syntaxes/yaml.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules.asar
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/@c4312/eventsource-umd/LICENSE
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/@c4312/eventsource-umd/dist/index.cjs
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/@c4312/eventsource-umd/dist/index.cjs.map
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/@c4312/eventsource-umd/dist/index.d.cts
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/@c4312/eventsource-umd/dist/index.js
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/@c4312/eventsource-umd/dist/index.umd.js
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/@c4312/eventsource-umd/package.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/@microsoft/1ds-core-js/LICENSE.TXT
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/@microsoft/1ds-core-js/NOTICE
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/@microsoft/1ds-core-js/PRIVACY
@@ -1278,20 +1276,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/end-of-stream/LICENSE
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/end-of-stream/index.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/end-of-stream/package.json
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/LICENSE
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/dist/index.cjs
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/dist/index.cjs.map
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/dist/index.d.cts
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/dist/index.esm.js
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/dist/index.js
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/dist/stats.html
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/dist/stream.cjs
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/dist/stream.cjs.map
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/dist/stream.d.cts
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/dist/stream.esm.js
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/dist/stream.js
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/package.json
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/eventsource-parser/stream.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/expand-template/LICENSE
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/expand-template/index.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/expand-template/package.json
@@ -2084,6 +2068,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/error.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/foldedAreas.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/format.mp3
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/nextEditSuggestion.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/progress.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/quickFixes.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/requestSent.mp3
@@ -2096,6 +2081,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/taskCompleted.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/taskFailed.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/terminalBell.mp3
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/terminalCommandSucceeded.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/voiceRecordingStarted.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/voiceRecordingStopped.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/warning.mp3
@@ -2132,6 +2118,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/webview/browser/pre/index-no-csp.html
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/webview/browser/pre/index.html
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/webview/browser/pre/service-worker.js
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/ai-powered-suggestions.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/commandPalette.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/dark-hc.png
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/dark.png
