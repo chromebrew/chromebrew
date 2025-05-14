@@ -28,7 +28,7 @@ class Glibc < Package
   print_source_bashrc
 
   def self.patch
-    system "git clone --depth=1 https://github.com/chromebrew/crew-package-glibc"
+    system "git clone --depth=1 https://github.com/chromebrew/crew-package-glibc -b #{version}"
     system 'filefix'
 
     Dir.glob('crew-package-glibc/patches/*.patch') do |patch|
@@ -122,7 +122,6 @@ class Glibc < Package
 
     # install crew-audit
     FileUtils.install 'crew-package-glibc/crew-preload.so', File.join(CREW_DEST_LIB_PREFIX, 'crew-preload.so'), mode: 0o755
-    File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-glibc", "LD_PRELOAD=#{File.join(CREW_LIB_PREFIX, 'crew-preload.so')}\n"
   end
 
   def self.postinstall
