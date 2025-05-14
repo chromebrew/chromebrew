@@ -4,10 +4,10 @@ class Screen < Autotools
   description 'Screen is a full-screen window manager that multiplexes a physical terminal between several processes, typically interactive shells.'
   homepage 'https://www.gnu.org/software/screen/'
   version '5.0.1'
-  license 'public-domain'
+  license 'GPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/screen/screen-#{version}.tar.gz"
-  source_sha256 'f04a39d00a0e5c7c86a55338808903082ad5df4d73df1a2fd3425976aed94971'
+  source_url "https://git.savannah.gnu.org/cgit/screen.git/snapshot/screen-v.#{version}.tar.gz"
+  source_sha256 'e90c84930a439b005cce01f76f13e30a4947efe4f4421acd37f02951c6bcab9d'
   binary_compression 'tar.zst'
 
   binary_sha256({
