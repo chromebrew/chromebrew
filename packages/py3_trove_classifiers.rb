@@ -13,7 +13,7 @@ class Py3_trove_classifiers < Pip
     aarch64: '2ca900124f956975d9173cf59cc5c9ad44ae61e862c9a6579cde95889b9c4719',
      armv7l: '2ca900124f956975d9173cf59cc5c9ad44ae61e862c9a6579cde95889b9c4719',
        i686: '3e6b3dc100d2aba3ca32fbdf4dae25d80a79d1f2fd9816c531c7c4995c600f6a',
-     x86_64: 'c1c89c3567b887bf5f81e292481fb07f2390b833ebb35fb25bf3d6a15658508e'
+     x86_64: '89bdee54749938af7651093412ffaede098110b491d60c3bd7892ebae076ef92'
   })
 
   depends_on 'python3' => :build
