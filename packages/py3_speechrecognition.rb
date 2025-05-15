@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_speechrecognition < Pip
   description 'SpeechRecognition is a library for performing speech recognition, with support for several engines and APIs, online and offline.'
   homepage 'https://github.com/Uberi/speech_recognition/'
-  version "3.14.2-#{CREW_PY_VER}"
+  version "3.14.3-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'

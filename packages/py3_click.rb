@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_click < Pip
   description 'Click is a simple wrapper around optparse for powerful command line utilities.'
   homepage 'https://click.palletsprojects.com'
-  version "8.1.8-#{CREW_PY_VER}"
+  version "8.2.0-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
