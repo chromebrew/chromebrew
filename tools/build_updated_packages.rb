@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# build_updated_packages version 2.5 (for Chromebrew)
+# build_updated_packages version 2.6 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -47,6 +47,9 @@ def self.check_build_uploads(architectures_to_check = nil, name = nil)
     arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@pkg_obj.version}_#{arch}/#{name}-#{@pkg_obj.version}-chromeos-#{arch}.#{@pkg_obj.binary_compression}"
     puts "Checking: curl -sI #{arch_specific_url}" if CREW_VERBOSE
     if `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
+      # Do a force install to make sure the package hashes are ok.
+      puts "Checking install of #{name} to confirm binary hashes are correct.".lightpurple
+      system "yes | crew install -f #{name} ; crew remove #{name}", exception: false
       builds_needed.delete(arch)
       puts "#{arch_specific_url} found!" if CREW_VERBOSE
     end
