@@ -10,8 +10,8 @@ class Py3_tox < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f5b22baee2b2cafa011239ac42fe88ef001c8783e57cd587ebdcf24dab31516d',
-     armv7l: 'f5b22baee2b2cafa011239ac42fe88ef001c8783e57cd587ebdcf24dab31516d',
+    aarch64: '834efc965c97b5de35ca7691468df8e252fb1c7d1c95281e96d957bb8eaec604',
+     armv7l: '834efc965c97b5de35ca7691468df8e252fb1c7d1c95281e96d957bb8eaec604',
        i686: '48862092c52ed90cc8abf5588de7aac896195ebbe1af7f3eff23a9ced42b577d',
      x86_64: '02fba8545ded1a7a3c64238665503a72a3ed01380c881e810b9743ce5f9fbf2d'
   })

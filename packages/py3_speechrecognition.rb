@@ -10,8 +10,8 @@ class Py3_speechrecognition < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '61546db2af45ae130d3119d09eda5daf2c4bdbfdd6da5f69dd90d048a8b3a58d',
-     armv7l: '61546db2af45ae130d3119d09eda5daf2c4bdbfdd6da5f69dd90d048a8b3a58d',
+    aarch64: '9e2ac7e2904f047c707c06dbe1b607807a0ee0f0413b548145004c028beb5e6d',
+     armv7l: '9e2ac7e2904f047c707c06dbe1b607807a0ee0f0413b548145004c028beb5e6d',
        i686: '203a5c5e251acf18748f34557cc58b4b55afcb59b6f3f5e4794c8daec988eab5',
      x86_64: '283f1230bb95fde9ed02ce194acc81cc87067867cfd07cc563a4de005828f426'
   })
