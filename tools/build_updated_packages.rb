@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# build_updated_packages version 2.5 (for Chromebrew)
+# build_updated_packages version 2.6 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -42,11 +42,27 @@ def self.check_build_uploads(architectures_to_check = nil, name = nil)
   return [] if @pkg_obj.is_fake?
   architectures_to_check.delete('aarch64')
   architectures_to_check = %w[x86_64 armv7l i686] if (architectures_to_check & %w[x86_64 armv7l i686]).nil?
+  binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
   builds_needed = architectures_to_check.dup
   architectures_to_check.each do |arch|
     arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@pkg_obj.version}_#{arch}/#{name}-#{@pkg_obj.version}-chromeos-#{arch}.#{@pkg_obj.binary_compression}"
     puts "Checking: curl -sI #{arch_specific_url}" if CREW_VERBOSE
     if `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
+      # Check build hashes if we are in the right architecture.
+      if arch == ARCH
+        binary_sha256_hash[arch.to_sym] = @pkg_obj.binary_sha256[arch.to_sym]
+        puts "Package hash is #{binary_sha256_hash[arch.to_sym]}" if CREW_VERBOSE
+        @remote_hash = `curl -Ls #{arch_specific_url} | sha256sum -`.lines.first.split[0]
+        puts "Remote hash is #{@remote_hash}" if CREW_VERBOSE
+        unless @remote_hash == binary_sha256_hash[arch.to_sym]
+          puts "#{arch}/#{name}: Adjusting sha256sum in package file to the remote binary sha256sum".lightpurple
+          puts "#{binary_sha256_hash[arch.to_sym]} =>\n#{@remote_hash}".blue
+          system "sed -i 's,#{binary_sha256_hash[arch.to_sym]},#{@remote_hash},g' packages/#{name}.rb"
+          # Do a force install to make sure the package hashes are ok.
+          puts "Checking install of #{name} to confirm binary hashes are correct.".lightpurple
+          system "yes | crew install -f #{name} ; crew remove #{name}", exception: false
+        end
+      end
       builds_needed.delete(arch)
       puts "#{arch_specific_url} found!" if CREW_VERBOSE
     end
