@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pluggy < Pip
   description 'Pluggy provides plugin and hook calling mechanisms for Python.'
   homepage 'https://pluggy.readthedocs.io/'
-  version "1.5.0-#{CREW_PY_VER}"
+  version "1.6.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

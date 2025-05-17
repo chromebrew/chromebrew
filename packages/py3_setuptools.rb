@@ -4,7 +4,7 @@ require 'ptools'
 class Py3_setuptools < Python
   description 'Setuptools is the python build system from the Python Packaging Authority.'
   homepage 'https://setuptools.readthedocs.io/'
-  version "80.6.0-#{CREW_PY_VER}"
+  version "80.7.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/setuptools.git'
