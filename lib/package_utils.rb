@@ -81,6 +81,8 @@ class PackageUtils
     pkg_version.delete_prefix!('kde-')
     # Delete -py3.12, futureproofed until Python 4
     pkg_version.gsub!(/-py3\.\d{2}/, '')
+    # Delete -ruby3.4, futureproofed until Ruby 4 or Ruby 3.10
+    pkg_version.gsub!(/-ruby3\.\d{1}/, '')
     # Delete -perl 5.40, futureproofed until Perl 5.100
     pkg_version.gsub!(/-perl5\.\d{2}/, '')
     # Delete -llvm18, futureproofed until llvm 100
