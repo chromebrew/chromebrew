@@ -75,7 +75,7 @@
     "name": "acquia_cli",
     "description": "Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.",
     "homepage": "https://github.com/acquia/cli",
-    "version": "2.41.0",
+    "version": "2.41.1",
     "license": "GPL-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -83,7 +83,7 @@
     "name": "act",
     "description": "Run your GitHub Actions locally",
     "homepage": "https://github.com/nektos/act",
-    "version": "0.2.76",
+    "version": "0.2.77",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -339,7 +339,7 @@
     "name": "appflowy",
     "description": "AI collaborative workspace where you achieve more without losing control of your data. The best open source alternative to Notion.",
     "homepage": "https://www.appflowy.io/",
-    "version": "0.8.9",
+    "version": "0.9.1",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -1147,7 +1147,7 @@
     "name": "btop",
     "description": "Resource monitor that shows usage and stats for processor, memory, disks, network and processes.",
     "homepage": "https://github.com/aristocratos/btop",
-    "version": "1.4.0",
+    "version": "1.4.2",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -1179,7 +1179,7 @@
     "name": "bun",
     "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one",
     "homepage": "https://bun.sh/",
-    "version": "1.2.10",
+    "version": "1.2.13",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -1899,7 +1899,7 @@
     "name": "cpu_x",
     "description": "CPU-X is a Free software that gathers information on CPU, motherboard and more.",
     "homepage": "https://thetumultuousunicornofdarkness.github.io/CPU-X/",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
@@ -2035,7 +2035,7 @@
     "name": "crystal",
     "description": "A language for humans and computers",
     "homepage": "https://crystal-lang.org/",
-    "version": "1.16.1",
+    "version": "1.16.2",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2179,7 +2179,7 @@
     "name": "dbeaver",
     "description": "Free Universal Database Tool",
     "homepage": "https://dbeaver.io",
-    "version": "25.0.2",
+    "version": "25.0.4",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -3152,6 +3152,14 @@
     "compatibility": "all"
   },
   {
+    "name": "flareget",
+    "description": "Full featured, multi-threaded download manager and accelerator",
+    "homepage": "https://flareget.com/",
+    "version": "5.0.1",
+    "license": "Copyright (C) 2012-2014 FlareGet.com",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "flatpak",
     "description": "Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.",
     "homepage": "https://flatpak.org",
@@ -3587,7 +3595,7 @@
     "name": "frp",
     "description": "A fast reverse proxy",
     "homepage": "https://github.com/fatedier/frp",
-    "version": "0.62.0",
+    "version": "0.62.1",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3651,7 +3659,7 @@
     "name": "fzf",
     "description": "A command-line fuzzy finder",
     "homepage": "https://github.com/junegunn/fzf",
-    "version": "0.61.1",
+    "version": "0.62.0",
     "license": "MIT and BSD-with-disclosure",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4067,7 +4075,7 @@
     "name": "github_cli",
     "description": "Official Github CLI tool",
     "homepage": "https://cli.github.com/",
-    "version": "2.70.0",
+    "version": "2.72.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4123,7 +4131,7 @@
     "name": "glab",
     "description": "A GitLab CLI tool bringing GitLab to your command line",
     "homepage": "https://gitlab.com/gitlab-org/cli",
-    "version": "1.55.0",
+    "version": "1.57.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4603,7 +4611,7 @@
     "name": "go",
     "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "homepage": "https://go.dev",
-    "version": "1.24.2",
+    "version": "1.24.3",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -4795,7 +4803,7 @@
     "name": "gradle",
     "description": "From mobile apps to microservices, from small startups to big enterprises, Gradle helps teams build, automate and deliver better software, faster.",
     "homepage": "https://gradle.org/",
-    "version": "8.13",
+    "version": "8.14.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -5435,9 +5443,9 @@
     "name": "hwloc",
     "description": "Portable Hardware Locality is a portable abstraction of hierarchical architectures",
     "homepage": "https://www.open-mpi.org/projects/hwloc/",
-    "version": "2.7.0",
+    "version": "2.12.1",
     "license": "BSD-3 Clause",
-    "compatibility": "all"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "hyphen",
@@ -5875,7 +5883,7 @@
     "name": "joplin",
     "description": "Open source note-taking app",
     "homepage": "https://joplinapp.org/",
-    "version": "3.3.5",
+    "version": "3.3.12",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -9531,7 +9539,7 @@
     "name": "m4",
     "description": "GNU M4 is an implementation of the traditional Unix macro processor.",
     "homepage": "https://www.gnu.org/software/m4/",
-    "version": "1.4.19-1",
+    "version": "1.4.20",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -10835,7 +10843,7 @@
     "name": "nocodb",
     "description": "Open Source Airtable Alternative",
     "homepage": "https://nocodb.com/",
-    "version": "0.260.5",
+    "version": "0.263.1",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -10899,7 +10907,7 @@
     "name": "nushell",
     "description": "A new type of shell",
     "homepage": "https://www.nushell.sh/",
-    "version": "0.103.0",
+    "version": "0.104.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10915,7 +10923,7 @@
     "name": "nvm",
     "description": "Node Version Manager - Simple bash script to manage multiple active node.js versions.",
     "homepage": "https://github.com/nvm-sh/nvm",
-    "version": "0.40.2",
+    "version": "0.40.3",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10979,7 +10987,7 @@
     "name": "ollama",
     "description": "Get up and running with large language models.",
     "homepage": "https://ollama.com/",
-    "version": "0.6.5",
+    "version": "0.6.8",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -11155,7 +11163,7 @@
     "name": "openjdk17",
     "description": "The JDK is a development environment for building applications, applets, and components using the Java programming language.",
     "homepage": "https://openjdk.org/",
-    "version": "17.0.14",
+    "version": "17.0.15",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -11299,7 +11307,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "118.0.5461.60",
+    "version": "118.0.5461.104",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -12339,7 +12347,7 @@
     "name": "platformsh",
     "description": "The unified tool for managing your Platform.sh services from the command line.",
     "homepage": "https://docs.platform.sh/overview/cli.html",
-    "version": "5.0.23",
+    "version": "5.1.1",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12851,7 +12859,7 @@
     "name": "py3_click",
     "description": "Click is a simple wrapper around optparse for powerful command line utilities.",
     "homepage": "https://click.palletsprojects.com",
-    "version": "8.1.8",
+    "version": "8.2.0",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -13051,7 +13059,7 @@
     "name": "py3_flask",
     "description": "Flask is a simple framework for building complex web applications.",
     "homepage": "https://palletsprojects.com/p/flask/",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -13091,7 +13099,7 @@
     "name": "py3_greenlet",
     "description": "Greenlet provides lightweight in-process concurrent programming.",
     "homepage": "https://greenlet.readthedocs.io/",
-    "version": "3.2.1",
+    "version": "3.2.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13339,7 +13347,7 @@
     "name": "py3_maturin",
     "description": "Build and publish crates with pyo3, rust-cpython and cffi bindings",
     "homepage": "https://github.com/PyO3/maturin",
-    "version": "1.8.3",
+    "version": "1.8.6",
     "license": "Apache-2.0 OR MIT",
     "compatibility": "all"
   },
@@ -13403,7 +13411,7 @@
     "name": "py3_nuitka",
     "description": "Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.",
     "homepage": "https://nuitka.net/",
-    "version": "2.7.1",
+    "version": "2.7.3",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13419,7 +13427,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.151.0",
+    "version": "2.152.0",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13427,7 +13435,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.55.0",
+    "version": "3.56.0",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13531,7 +13539,7 @@
     "name": "py3_pluggy",
     "description": "Pluggy provides plugin and hook calling mechanisms for Python.",
     "homepage": "https://pluggy.readthedocs.io/",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13691,7 +13699,7 @@
     "name": "py3_pypdf",
     "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.",
     "homepage": "https://github.com/py-pdf/pypdf",
-    "version": "5.4.0",
+    "version": "5.5.0",
     "license": "BSD-3-Clause",
     "compatibility": "all"
   },
@@ -13819,7 +13827,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.11.8",
+    "version": "0.11.10",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13843,7 +13851,7 @@
     "name": "py3_setuptools",
     "description": "Setuptools is the python build system from the Python Packaging Authority.",
     "homepage": "https://setuptools.readthedocs.io/",
-    "version": "80.3.1",
+    "version": "80.7.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13891,7 +13899,7 @@
     "name": "py3_snowballstemmer",
     "description": "Snowball stemming library collection for Python",
     "homepage": "https://snowballstem.org",
-    "version": "3.0.0.1",
+    "version": "3.0.1",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -13915,7 +13923,7 @@
     "name": "py3_speechrecognition",
     "description": "SpeechRecognition is a library for performing speech recognition, with support for several engines and APIs, online and offline.",
     "homepage": "https://github.com/Uberi/speech_recognition/",
-    "version": "3.14.2",
+    "version": "3.14.3",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -13979,7 +13987,7 @@
     "name": "py3_sqlalchemy",
     "description": "SQLalchemy is a database toolkit for Python.",
     "homepage": "https://sqlalchemy.org",
-    "version": "2.0.40",
+    "version": "2.0.41",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14027,7 +14035,7 @@
     "name": "py3_tox",
     "description": "Command line driven CI frontend and development task automation tool.",
     "homepage": "https://tox.readthedocs.io/",
-    "version": "4.25.0",
+    "version": "4.26.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14035,7 +14043,7 @@
     "name": "py3_trove_classifiers",
     "description": "Canonical source for classifiers on PyPI.",
     "homepage": "https://github.com/pypa/trove-classifiers",
-    "version": "2025.5.8.15",
+    "version": "2025.5.9.12",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14171,7 +14179,7 @@
     "name": "py3_zcmds",
     "description": "Cross platform(ish) productivity commands written in python",
     "homepage": "https://github.com/zackees/zcmds",
-    "version": "1.5.21",
+    "version": "1.5.24",
     "license": "MIT",
     "compatibility": "aarch64"
   },
@@ -14571,7 +14579,7 @@
     "name": "rclone",
     "description": "Rclone is a command-line program to manage files on cloud storage.",
     "homepage": "https://rclone.org/",
-    "version": "1.69.1",
+    "version": "1.69.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14907,7 +14915,7 @@
     "name": "ruby_bundler",
     "description": "Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably.",
     "homepage": "https://bundler.io",
-    "version": "2.6.8-ruby3.4",
+    "version": "2.6.9-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15507,7 +15515,7 @@
     "name": "ruby_rbs",
     "description": "RBS is the language for type signatures for Ruby and standard library definitions.",
     "homepage": "https://github.com/ruby/rbs",
-    "version": "3.9.2-ruby3.4",
+    "version": "3.9.4-ruby3.4",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -15603,7 +15611,7 @@
     "name": "ruby_rubocop",
     "description": "A Ruby static code analyzer and formatter",
     "homepage": "https://rubocop.org",
-    "version": "1.75.5-ruby3.4",
+    "version": "1.75.6-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15683,7 +15691,7 @@
     "name": "ruby_set",
     "description": "Provides a class to deal with collections of unordered, unique values.",
     "homepage": "https://github.com/ruby/set",
-    "version": "1.1.1-ruby3.4",
+    "version": "1.1.2-ruby3.4",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15931,7 +15939,7 @@
     "name": "rust",
     "description": "Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.",
     "homepage": "https://www.rust-lang.org/",
-    "version": "1.86.0-5",
+    "version": "1.87.0",
     "license": "Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -15939,7 +15947,7 @@
     "name": "rustdesk",
     "description": "An open-source remote desktop application designed for self-hosting, as an alternative to TeamViewer.",
     "homepage": "https://rustdesk.com/",
-    "version": "1.3.9",
+    "version": "1.4.0",
     "license": "AGPL-3.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -16083,8 +16091,8 @@
     "name": "screen",
     "description": "Screen is a full-screen window manager that multiplexes a physical terminal between several processes, typically interactive shells.",
     "homepage": "https://www.gnu.org/software/screen/",
-    "version": "5.0.0",
-    "license": "public-domain",
+    "version": "5.0.1",
+    "license": "GPL-3+",
     "compatibility": "all"
   },
   {
@@ -16331,7 +16339,7 @@
     "name": "shrinkpdf",
     "description": "A simple wrapper around Ghostscript to shrink PDFs (as in reduce filesize) under Linux.",
     "homepage": "https://github.com/aklomp/shrinkpdf",
-    "version": "1.1",
+    "version": "1.2",
     "license": "BSD-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -16787,7 +16795,7 @@
     "name": "starship",
     "description": "Cross-shell prompt for astronauts",
     "homepage": "https://starship.rs",
-    "version": "1.22.1",
+    "version": "1.23.0",
     "license": "ISC",
     "compatibility": "all"
   },
@@ -17147,7 +17155,7 @@
     "name": "terminus",
     "description": "The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform",
     "homepage": "https://github.com/pantheon-systems/terminus",
-    "version": "3.6.2",
+    "version": "4.0.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -17971,7 +17979,7 @@
     "name": "vscodium",
     "description": "VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.",
     "homepage": "https://vscodium.com/",
-    "version": "1.99.32562",
+    "version": "1.100.03093",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19051,7 +19059,7 @@
     "name": "zed",
     "description": "Zed is a high-performance, multiplayer code editor",
     "homepage": "https://zed.dev/",
-    "version": "0.182.11",
+    "version": "0.185.15",
     "license": "GPL-3, AGPL-3, Apache-2.0",
     "compatibility": "x86_64"
   },
