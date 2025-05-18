@@ -77,7 +77,7 @@ class Pip < Package
 
     # Build wheel if pip install fails, since that implies a wheel isn't available.
     puts "Trying to install #{@py_pkg}==#{@py_pkg_chromebrew_version}" if CREW_DEBUG
-    system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python3 -s -m pip install #{@pip_resume_retries} --no-warn-conflicts --force-reinstall #{prerelease? ? '--pre' : ''} --no-deps --ignore-installed -U --only-binary :all: #{@py_pkg}==#{@py_pkg_chromebrew_version}"
+    Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python3 -s -m pip install #{@pip_resume_retries} --no-warn-conflicts --force-reinstall #{prerelease? ? '--pre' : ''} --no-deps --ignore-installed -U --only-binary :all: #{@py_pkg}==#{@py_pkg_chromebrew_version}"
     get_pip_info(@py_pkg)
     pip_hard_reinstall unless @py_pkg_chromebrew_version == @pip_pkg_version
     if CREW_DEBUG
@@ -88,7 +88,7 @@ class Pip < Package
       puts "A wheel for #{@py_pkg}==#{@py_pkg_chromebrew_version} was found!".lightblue
     else
       puts "A wheel for #{@py_pkg}==#{@py_pkg_chromebrew_version} was unavailable, so we will build a wheel.".orange
-      Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} #{prerelease? ? '--pre' : ''} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'" unless prerelease?
+      system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} #{prerelease? ? '--pre' : ''} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'" unless prerelease?
       # Assume all pip non-SKIP sources are git.
       @pip_wheel = if @source_url == 'SKIP'
                      `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python3 -m pip wheel #{prerelease? ? '--pre' : ''} -w #{@pip_cache_dir} #{@py_pkg}==#{@py_pkg_version}`[/(?<=filename=)(.*)*?(\S+)/, 0]
