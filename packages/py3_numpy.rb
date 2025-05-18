@@ -25,7 +25,5 @@ class Py3_numpy < Pip
   depends_on 'python3' => :build
   depends_on 'zlib' # R
 
-  pre_configure_options CREW_ENV_OPTIONS.gsub('mold', 'gold')
-
   no_source_build
 end
