@@ -10,10 +10,10 @@ class Py3_cryptography < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4f0481f054cfbd70b24a6d5ceee94b58fd21fedb06bc416f6567a71bc539eb8b',
-     armv7l: '4f0481f054cfbd70b24a6d5ceee94b58fd21fedb06bc416f6567a71bc539eb8b',
-       i686: 'e858ae716b451a2f353df904dc7a440e126de3d86c2a36cf7bf3ee0163f550d0',
-     x86_64: 'cf4f9d61e0a015f54a256cef9dc8160b5bcd86d45a1cf145a6dced771400bdb8'
+    aarch64: '95bced5388c4f5e09d96c4597c79a52ec653505d4097015401d716cad5739d4b',
+     armv7l: '95bced5388c4f5e09d96c4597c79a52ec653505d4097015401d716cad5739d4b',
+       i686: '349d729a1b1b3c65e020dabd531200964343f2cf50898d7ad6ee81a871aff046',
+     x86_64: '68551f4563fc6312cfc33b0488c587357ecffc65ebe409dc380b918aa43284fc'
   })
 
   depends_on 'gcc_lib' # R
