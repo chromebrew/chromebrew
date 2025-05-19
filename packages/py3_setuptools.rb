@@ -4,7 +4,7 @@ require 'ptools'
 class Py3_setuptools < Python
   description 'Setuptools is the python build system from the Python Packaging Authority.'
   homepage 'https://setuptools.readthedocs.io/'
-  version "80.3.1-#{CREW_PY_VER}"
+  version "80.7.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/setuptools.git'
@@ -12,10 +12,10 @@ class Py3_setuptools < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f5b8dc14b756364cf5817cc0f6273a2c905d8a038866e5b2b56704ae6a789a29',
-     armv7l: 'f5b8dc14b756364cf5817cc0f6273a2c905d8a038866e5b2b56704ae6a789a29',
-       i686: '519315b21a94d86414353fd73298c809e4212bbac9c0aed39a4f14ee938bff03',
-     x86_64: '4b876ffed5a76e194550bf22dc9f0dfe0ff34c9e1f33873c6ed691db0b3078a8'
+    aarch64: 'e05de7d0040c98f24a71a3d4df79aa7561bff5a033d9d770f082772d5a45bef5',
+     armv7l: 'e05de7d0040c98f24a71a3d4df79aa7561bff5a033d9d770f082772d5a45bef5',
+       i686: 'f1b68a0b9945059b4d10aa7a8def0aa3510b1415ae031cdd92438df3bf6f1b8a',
+     x86_64: '99727dedb0031111f55835c7955206f15eeb23105782d2f641a6755df40f5295'
   })
 
   depends_on 'python3'
