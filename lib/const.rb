@@ -49,8 +49,7 @@ end
 
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
-# The LIBC_VERSION ternary is to reflect the change from glibc_build to glibc_lib as the source of essential libraries starting at glibc 2.35.
-CREW_ESSENTIAL_PACKAGES ||= %W[gcc_lib #{LIBC_VERSION.to_f > 2.34 ? "glibc_lib#{LIBC_VERSION.delete('.')}" : "glibc_build#{LIBC_VERSION.delete('.')}"} glibc gmp ruby zlib zlib_ng zstd]
+CREW_ESSENTIAL_PACKAGES ||= %W[gcc_lib glibc gmp ruby zlib zlib_ng zstd]
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 
