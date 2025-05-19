@@ -28,7 +28,7 @@ def pip_hard_reinstall
   pip_site_packages_folder = `python3 -c "import sysconfig; print(sysconfig.get_paths()['purelib'])"`.chomp
   Kernel.system "python3 -m pip install #{@pip_resume_retries} trash-cli"
   Kernel.system "trash-put #{pip_site_packages_folder}/#{@py_pkg}*"
-  Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'"
+  system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'"
   get_pip_info(@py_pkg)
 end
 
@@ -88,7 +88,7 @@ class Pip < Package
       puts "A wheel for #{@py_pkg}==#{@py_pkg_chromebrew_version} was found!".lightblue
     else
       puts "A wheel for #{@py_pkg}==#{@py_pkg_chromebrew_version} was unavailable, so we will build a wheel.".orange
-      Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} #{prerelease? ? '--pre' : ''} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'" unless prerelease?
+      system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} #{prerelease? ? '--pre' : ''} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'" unless prerelease?
       # Assume all pip non-SKIP sources are git.
       @pip_wheel = if @source_url == 'SKIP'
                      `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python3 -m pip wheel #{prerelease? ? '--pre' : ''} -w #{@pip_cache_dir} #{@py_pkg}==#{@py_pkg_version}`[/(?<=filename=)(.*)*?(\S+)/, 0]
