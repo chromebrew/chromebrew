@@ -318,7 +318,7 @@ function extract_install () {
       # update ld.so cache
       ldconfig
     else
-      # decompress and switch to glibc_standalone for existing binaries
+      # decompress and switch to our glibc for existing binaries
       if command -v upx &> /dev/null; then
         echo_intra "Running upx on ${1}..."
         grep "/usr/local/\(bin\|lib\|lib${LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
