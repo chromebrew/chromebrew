@@ -49,6 +49,8 @@
 /usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/__pycache__/_mode_eax.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/__pycache__/_mode_ecb.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/__pycache__/_mode_gcm.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/__pycache__/_mode_kw.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/__pycache__/_mode_kwp.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/__pycache__/_mode_ocb.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/__pycache__/_mode_ofb.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/__pycache__/_mode_openpgp.cpython-313.pyc
@@ -69,6 +71,8 @@
 /usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/_mode_ecb.pyi
 /usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/_mode_gcm.py
 /usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/_mode_gcm.pyi
+/usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/_mode_kw.py
+/usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/_mode_kwp.py
 /usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/_mode_ocb.py
 /usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/_mode_ocb.pyi
 /usr/local/lib/python3.13/site-packages/Cryptodome/Cipher/_mode_ofb.py
@@ -312,6 +316,7 @@
 /usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/__pycache__/test_DES3.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/__pycache__/test_EAX.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/__pycache__/test_GCM.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/__pycache__/test_KW.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/__pycache__/test_OCB.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/__pycache__/test_OFB.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/__pycache__/test_OpenPGP.cpython-313.pyc
@@ -335,6 +340,7 @@
 /usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/test_DES3.py
 /usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/test_EAX.py
 /usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/test_GCM.py
+/usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/test_KW.py
 /usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/test_OCB.py
 /usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/test_OFB.py
 /usr/local/lib/python3.13/site-packages/Cryptodome/SelfTest/Cipher/test_OpenPGP.py
@@ -544,11 +550,11 @@
 /usr/local/lib/python3.13/site-packages/Cryptodome/__init__.pyi
 /usr/local/lib/python3.13/site-packages/Cryptodome/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/Cryptodome/py.typed
-/usr/local/lib/python3.13/site-packages/pycryptodomex-3.22.0.dist-info/AUTHORS.rst
-/usr/local/lib/python3.13/site-packages/pycryptodomex-3.22.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pycryptodomex-3.22.0.dist-info/LICENSE.rst
-/usr/local/lib/python3.13/site-packages/pycryptodomex-3.22.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pycryptodomex-3.22.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pycryptodomex-3.22.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pycryptodomex-3.22.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pycryptodomex-3.22.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/pycryptodomex-3.23.0.dist-info/AUTHORS.rst
+/usr/local/lib/python3.13/site-packages/pycryptodomex-3.23.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pycryptodomex-3.23.0.dist-info/LICENSE.rst
+/usr/local/lib/python3.13/site-packages/pycryptodomex-3.23.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pycryptodomex-3.23.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pycryptodomex-3.23.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pycryptodomex-3.23.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pycryptodomex-3.23.0.dist-info/top_level.txt

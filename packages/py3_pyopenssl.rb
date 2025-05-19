@@ -12,7 +12,7 @@ class Py3_pyopenssl < Pip
   binary_sha256({
     aarch64: '2359b8ea0adcb0bd29dded3dbfca2d490ff1792d0d3bdc044f42afd88accbb48',
      armv7l: '2359b8ea0adcb0bd29dded3dbfca2d490ff1792d0d3bdc044f42afd88accbb48',
-       i686: '9bb82837c9dae4f12870e4cb5959e8b6bf4640c03b3f40b5b85c41b833af1834',
+       i686: 'f7d565a164ba1830e6232b5b1c15ac9de2fca288a9105e134c1cccc01fd1acaa',
      x86_64: '8a225d0761d5ec28a4659165193495438cec74d76f79ef1856a6a2f9ce38a3d5'
   })
 
