@@ -28,7 +28,7 @@ def pip_hard_reinstall
   pip_site_packages_folder = `python3 -c "import sysconfig; print(sysconfig.get_paths()['purelib'])"`.chomp
   Kernel.system "python3 -m pip install #{@pip_resume_retries} trash-cli"
   Kernel.system "trash-put #{pip_site_packages_folder}/#{@py_pkg}*"
-  Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'"
+  system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'"
   get_pip_info(@py_pkg)
 end
 
