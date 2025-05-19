@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pyopenssl < Pip
   description 'PyOpenSSL is a Python wrapper module around the OpenSSL library.'
   homepage 'https://www.pyopenssl.org/'
-  version "25.0.0-#{CREW_PY_VER}"
+  version "25.1.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
