@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Rhythmbox < Meson
   description 'Rhythmbox is a music playing application for GNOME.'
   homepage 'https://wiki.gnome.org/Apps/Rhythmbox'
-  version '3.4.7'
+  version '3.4.8'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.29'
@@ -12,8 +12,9 @@ class Rhythmbox < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5475faf35fc7ae052c92442cf6b7fd1382764b8807b2cef9d77ee98c0abac8f3',
-     armv7l: '5475faf35fc7ae052c92442cf6b7fd1382764b8807b2cef9d77ee98c0abac8f3'
+    aarch64: 'f3e0c1bc99067da738d8b193ae61c0b1b8296a9b856cb4d7d9c764c2aa159d32',
+     armv7l: 'f3e0c1bc99067da738d8b193ae61c0b1b8296a9b856cb4d7d9c764c2aa159d32',
+     x86_64: '09045b8d107c88fa7c42540850906e4df4d645a9b5325bf20c663aadf25b6799'
   })
 
   depends_on 'at_spi2_core' # R
@@ -37,6 +38,7 @@ class Rhythmbox < Meson
   depends_on 'py3_itstool' => :build
   depends_on 'tdb' # R
   depends_on 'totem_pl_parser' # R
+  depends_on 'zlib' # R
 
   gnome
 
