@@ -108,6 +108,7 @@ updated_packages.each do |pkg|
   name = pkg.sub('packages/', '').sub('.rb', '')
 
   puts "Evaluating #{name} package...".orange
+  next if pkg =~ /glibc_*/
   @pkg_obj = Package.load_package(pkg)
 
   # Don't check if we need new binaries if the package doesn't already
