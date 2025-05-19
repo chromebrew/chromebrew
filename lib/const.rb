@@ -32,7 +32,8 @@ CREW_PREFIX ||= ENV.fetch('CREW_PREFIX', '/usr/local') unless defined?(CREW_PREF
 
 # Glibc related constants
 CREW_GLIBC_PREFIX      ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
-CREW_GLIBC_INTERPRETER ||= File.join(CREW_GLIBC_PREFIX, File.basename(Dir["/#{ARCH_LIB}/ld-linux*.so*"][0])) unless defined?(CREW_GLIBC_INTERPRETER)
+@crew_glibc_interpreter = File.join(CREW_GLIBC_PREFIX, File.basename(File.realpath("#{CREW_PREFIX}/bin/ld.so"))) unless defined?(CREW_GLIBC_INTERPRETER)
+CREW_GLIBC_INTERPRETER ||= File.file?(@crew_glibc_interpreter) ? @crew_glibc_interpreter : nil unless defined?(CREW_GLIBC_INTERPRETER)
 
 # Glibc version can be found from the output of libc.so.6
 @libcvertokens = (`LD_AUDIT= #{CREW_GLIBC_PREFIX}/libc.so.6`.lines.first.chomp.split(/[\s]/) if File.file?("#{CREW_GLIBC_PREFIX}/libc.so.6"))
