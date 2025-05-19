@@ -34,6 +34,7 @@ class Rhythmbox < Meson
   depends_on 'libx11' # R
   depends_on 'libxml2' # R
   depends_on 'pango' # R
+  depends_on 'py3_itstool' => :build
   depends_on 'tdb' # R
   depends_on 'totem_pl_parser' # R
 
