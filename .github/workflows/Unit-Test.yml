@@ -137,7 +137,7 @@ jobs:
                 # else
                 #     echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 # fi
-                echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
+                echo "CONTAINER=hatch-x86_64.m135" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
               ;;
@@ -150,7 +150,7 @@ jobs:
                 # else
                 #    echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
                 # fi
-                echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
+                echo "CONTAINER=strongbad-armv7l.m135" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
               ;;
