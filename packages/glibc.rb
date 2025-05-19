@@ -5,7 +5,7 @@ class Glibc < Package
   homepage 'https://www.gnu.org/software/libc/'
   version '2.41-4'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-  compatibility 'all'
+  compatibility 'x86_64'
   source_url "https://ftpmirror.gnu.org/glibc/glibc-#{version.partition('-')[0]}.tar.xz"
   source_sha256 'a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
   binary_compression 'tar.zst'
