@@ -49,7 +49,7 @@ end
 
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
-CREW_ESSENTIAL_PACKAGES ||= %W[gcc_lib glibc gmp ruby zlib zlib_ng zstd]
+CREW_ESSENTIAL_PACKAGES ||= %w[gcc_lib glibc gmp ruby zlib zlib_ng zstd]
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 

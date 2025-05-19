@@ -17,7 +17,6 @@ class Lha < Package
      x86_64: 'b5ac02857046c1673acdb928c7a189ee350d9b0babdaaea1661c39fc81328590'
   })
 
-
   def self.build
     system 'autoreconf -sif'
     system "./configure #{CREW_CONFIGURE_OPTIONS}"
