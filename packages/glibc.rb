@@ -11,8 +11,8 @@ class Glibc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4f76c7f82ad0dcf4e31ea3a8a8904228600eeffbf0c4444b06a8460cf33ff859',
-     armv7l: '4f76c7f82ad0dcf4e31ea3a8a8904228600eeffbf0c4444b06a8460cf33ff859',
+    aarch64: '609104350dd5e50382472f4409d57ceab099d65839adf891b77621adf447f1f1',
+     armv7l: '609104350dd5e50382472f4409d57ceab099d65839adf891b77621adf447f1f1',
        i686: '9191a782dce9f5600dc9145e1beb0e0de9c1aca583ab7ddcbedd72b83b454b67',
      x86_64: '2ad34bffe4dae0bea47e1ae0a3ca36e48babf91cc152efc88f9ed72a988029a7'
   })
@@ -86,7 +86,14 @@ class Glibc < Package
       system "make PARALLELMFLAGS='-j #{CREW_NPROC}'", no_preload_hacks: true
     end
 
-    arch_flag = ARCH.eql?('x86_64') ? '-m64' : '-m32'
+    arch_flag = case ARCH
+                when 'x86_64'
+                  '-m64'
+                when 'i686'
+                  '-m32'
+                else
+                  '-mfloat-abi=hard -mfpu=vfpv3-d16 -march=armv7-a+fp'
+                end
 
     # Link with ChromeOS's glibc libraries to ensure compatibility
     system <<~CMD, chdir: 'crew-package-glibc/crew-preload', no_preload_hacks: true
