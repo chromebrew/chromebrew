@@ -98,7 +98,7 @@ class Glibc < Package
     # Link with ChromeOS's glibc libraries to ensure compatibility
     system <<~CMD, chdir: 'crew-package-glibc/crew-preload', no_preload_hacks: true
       cc -B #{CREW_GLIBC_PREFIX} #{CREW_COMMON_FLAGS} #{arch_flag} -fuse-ld=mold \
-        #{cc_macro_list.join(' ')} ../prebuilt/#{ARCH}/lib{c,dl}-*.so \
+        #{cc_macro_list.join(' ')} ../prebuilt/#{ARCH.sub('aarch64', 'armv7l')}/lib{c,dl}-*.so \
         -shared -fvisibility=hidden -Wl,-soname,crew-preload.so \
         main.c hooks.c -o ../crew-preload.so
     CMD
