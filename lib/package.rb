@@ -357,7 +357,8 @@ class Package
     end
 
     env['CREW_PRELOAD_ENABLE_COMPILE_HACKS'] = opt_args.delete(:no_preload_hacks) ? '0' : '1'
-    env['CREW_PRELOAD_NO_MOLD'] = @no_mold ? '1' : '0'
+    env['CREW_PRELOAD_NO_MOLD']              = @no_mold ? '1' : '0'
+    env['LD_PRELOAD']                        = "#{CREW_LIB_PREFIX}/crew-preload.so" if File.exist?("#{CREW_LIB_PREFIX}/crew-preload.so")
 
     # After removing the env hash, all remaining args must be command args.
     cmd_args        = args
