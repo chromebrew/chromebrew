@@ -10,8 +10,8 @@ class Py3_cython < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'acd83f7579b329c9cbf47e552b3ac54bdf3267c2714b04dca41a54f6bb37cbfc',
-     armv7l: 'acd83f7579b329c9cbf47e552b3ac54bdf3267c2714b04dca41a54f6bb37cbfc',
+    aarch64: '66ad2efe2e4aaa4a2663e55bd453fd1985f85d70c177ec25c6e8761f560e03fe',
+     armv7l: '66ad2efe2e4aaa4a2663e55bd453fd1985f85d70c177ec25c6e8761f560e03fe',
        i686: '1c8c04fb8ec6eccbf9f709e6401ab5e560cb5a4ff31b5cc31587c6c16f111165',
      x86_64: '7bf7c95e8e0ba781bea74237c8e75eb22378a7804e27348dd518a691ac893e21'
   })
