@@ -16,7 +16,6 @@ class Mysql < CMake
 
   depends_on 'boost' => :build
   depends_on 'gcc_lib' # R
-  depends_on 'glibc_lib' # R
   depends_on 'icu4c', '== 75.1'
   depends_on 'libcyrussasl' => :build
   depends_on 'libedit' # R

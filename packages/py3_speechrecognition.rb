@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_speechrecognition < Pip
   description 'SpeechRecognition is a library for performing speech recognition, with support for several engines and APIs, online and offline.'
   homepage 'https://github.com/Uberi/speech_recognition/'
-  version "3.14.2-#{CREW_PY_VER}"
+  version "3.14.3-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '61546db2af45ae130d3119d09eda5daf2c4bdbfdd6da5f69dd90d048a8b3a58d',
-     armv7l: '61546db2af45ae130d3119d09eda5daf2c4bdbfdd6da5f69dd90d048a8b3a58d',
-       i686: '203a5c5e251acf18748f34557cc58b4b55afcb59b6f3f5e4794c8daec988eab5',
-     x86_64: '37dbe1bdf768997f5150ce208329b98ab77927723b6f19e7486769fb08ba9642'
+    aarch64: '9e2ac7e2904f047c707c06dbe1b607807a0ee0f0413b548145004c028beb5e6d',
+     armv7l: '9e2ac7e2904f047c707c06dbe1b607807a0ee0f0413b548145004c028beb5e6d',
+       i686: 'd380a724d7d01c0d71cc608492944b87bc46396f69315b28ee18e276edeba5af',
+     x86_64: '283f1230bb95fde9ed02ce194acc81cc87067867cfd07cc563a4de005828f426'
   })
 
   depends_on 'glibc' # R

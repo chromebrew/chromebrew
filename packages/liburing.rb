@@ -17,8 +17,6 @@ class Liburing < Autotools
      x86_64: '0ae8f0068aae43c33cb71cc7a8e3c7080979fd2b980e4a689a67b728317010e0'
   })
 
-  depends_on 'glibc_lib' # R
-
   # liburing has a configure script that mimics an autotools one, but we can still treat it mostly like normal.
   # It doesn't have any other build system anyways, so this is the best we've got.
   def self.build

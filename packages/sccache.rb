@@ -18,7 +18,6 @@ class Sccache < Package
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'openssl' # R
   depends_on 'rust' => :build

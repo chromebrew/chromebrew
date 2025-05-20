@@ -1,6 +1,5 @@
 /usr/local/bin/screen
-/usr/local/bin/screen-5.0.0
-/usr/local/share/info/screen.info.zst
+/usr/local/bin/screen-5.0.1
 /usr/local/share/man/man1/screen.1.zst
 /usr/local/share/screen/utf8encodings/01
 /usr/local/share/screen/utf8encodings/02

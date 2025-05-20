@@ -199,25 +199,27 @@ jobs:
           case $TARGET_ARCH in
               x86_64)
                 # Export the x86_64 container depending on whether this branch updates packages with appropriate minimum glibc.
-                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=nocturne-x86_64.m97" >> "$GITHUB_ENV"
-                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=hatch-x86_64.m135" >> "$GITHUB_ENV"
-                else
-                    echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
-                fi
+                # if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
+                #     echo "CONTAINER=nocturne-x86_64.m97" >> "$GITHUB_ENV"
+                # elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                #     echo "CONTAINER=hatch-x86_64.m135" >> "$GITHUB_ENV"
+                # else
+                #     echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
+                # fi
+                echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
               ;;
               armv7l)
                 # Export the armv7l container depending on whether this branch updates packages with appropriate minimum glibc.
-                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=fievel-armv7l.m97" >> "$GITHUB_ENV"
-                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=strongbad-armv7l.m135" >> "$GITHUB_ENV"
-                else
-                    echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
-                fi
+                # if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
+                #     echo "CONTAINER=fievel-armv7l.m97" >> "$GITHUB_ENV"
+                # elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                #     echo "CONTAINER=strongbad-armv7l.m135" >> "$GITHUB_ENV"
+                # else
+                #     echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
+                # fi
+                echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
               ;;
