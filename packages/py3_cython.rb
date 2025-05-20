@@ -13,7 +13,7 @@ class Py3_cython < Pip
     aarch64: 'acd83f7579b329c9cbf47e552b3ac54bdf3267c2714b04dca41a54f6bb37cbfc',
      armv7l: 'acd83f7579b329c9cbf47e552b3ac54bdf3267c2714b04dca41a54f6bb37cbfc',
        i686: '1c8c04fb8ec6eccbf9f709e6401ab5e560cb5a4ff31b5cc31587c6c16f111165',
-     x86_64: '8676b0725b75eeae72927a03bf10f678cf3ac3c9024e27d532e4578608a00f20'
+     x86_64: '7bf7c95e8e0ba781bea74237c8e75eb22378a7804e27348dd518a691ac893e21'
   })
 
   depends_on 'glibc' # R
