@@ -8,7 +8,8 @@ class Gcc_build < Package
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag "releases/gcc-#{version.split('-').first}"
+  git_hashtag '911cfea5e59798e04479ad475870935ccfae004b'
+  # git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -32,11 +33,10 @@ class Gcc_build < Package
 
   conflicts_ok
   no_env_options
-  no_shrink
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
-  @glibc_flags = "-Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER} -Wl,-rpath,#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX} -B#{CREW_GLIBC_PREFIX} -L#{CREW_GLIBC_PREFIX} -L#{CREW_LIB_PREFIX}"
+  @glibc_flags = ''
   @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags}"
   @languages = 'c,c++,jit,objc,fortran,go,rust'
   case ARCH
@@ -140,18 +140,18 @@ class Gcc_build < Package
     Dir.chdir('objdir') do
       build_env =
         {
-      build_configargs: @gcc_global_opts,
-                    AR: 'gcc-ar',
-              BASH_ENV: "#{CREW_PREFIX}/etc/env.d/rust",
-                CFLAGS: @cflags,
-           CREW_LINKER: 'ld',
-              CXXFLAGS: @cxxflags,
-               LDFLAGS: @ldflags,
-                    LD: 'ld',
-          LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
-                    NM: 'gcc-nm',
-                  PATH: @path,
-                RANLIB: 'gcc-ranlib'
+                       build_configargs: @gcc_global_opts,
+                                     AR: 'gcc-ar',
+                                 CFLAGS: @cflags,
+                            CREW_LINKER: 'ld',
+      CREW_PRELOAD_ENABLE_COMPILE_HACKS: '1',
+                               CXXFLAGS: @cxxflags,
+                             LD_PRELOAD: "#{CREW_LIB_PREFIX}/crew-preload.so",
+                                LDFLAGS: @ldflags,
+                                     LD: 'ld',
+                                     NM: 'gcc-nm',
+                                   PATH: @path,
+                                 RANLIB: 'gcc-ranlib'
         }.transform_keys(&:to_s)
 
       system build_env, <<~BUILD.chomp
@@ -205,11 +205,12 @@ class Gcc_build < Package
 
     install_env =
       {
-              CFLAGS: @cflags, CXXFLAGS: @cxxflags,
-             DESTDIR: CREW_DEST_DIR,
-             LDFLAGS: @ldflags,
-        LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
-                PATH: @path
+                                   CFLAGS: @cflags, CXXFLAGS: @cxxflags,
+        CREW_PRELOAD_ENABLE_COMPILE_HACKS: '1',
+                                  DESTDIR: CREW_DEST_DIR,
+                               LD_PRELOAD: "#{CREW_LIB_PREFIX}/crew-preload.so",
+                                  LDFLAGS: @ldflags,
+                                     PATH: @path
       }.transform_keys(&:to_s)
 
     Dir.chdir('objdir') do
