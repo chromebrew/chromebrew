@@ -191,21 +191,20 @@ echo_out 'Set up the local package repo...'
 # Download the chromebrew repository.
 curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-BOOTSTRAP_PACKAGES='zstd_static glibc libxcrypt upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ruby git ca_certificates libyaml openssl gmp'
-
-# Older i686 systems.
-if [[ "${ARCH}" == "i686" ]]; then
-  LIBC_VERSION='2.23'
-  BOOTSTRAP_PACKAGES+=' gcc_lib'
-fi
+# ncurses, readline, and bash are needed before ruby because our ruby
+# invokes the architecture specific bash instead of using /bin/sh, which
+# may be aarch64 when we are using an armv7l userspace. That wreaks
+# havoc with our LD_PRELOAD implementation.
+# ruby wants gcc_lib, so install our version build against our glibc
+# first.
+BOOTSTRAP_PACKAGES='zstd_static glibc libxcrypt upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby git ca_certificates libyaml openssl gmp'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   # shellcheck disable=SC2231
   if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
     # Recent Arm systems have a cut down system.
     if [[ "${ARCH}" == "armv7l" ]];then
-      LIBC_VERSION='2.27'
-      BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
+      BOOTSTRAP_PACKAGES+=' bzip2 pcre2'
     fi
   fi
 fi

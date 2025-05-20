@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.3' # Do not use @_ver here, it will break the installer.
+  version '3.4.4'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
@@ -32,12 +32,18 @@ class Ruby < Package
 
   # at run-time, system's gmp, openssl, and zlib can be used
 
+  def self.patch
+    system "grep -rlZ '/bin/sh ' . | xargs -0 sed -i 's,/bin/sh ,#{CREW_PREFIX}/bin/sh ,g'"
+    system "grep -rlZ \"/bin/sh\\\"\" . | xargs -0 sed -i 's,/bin/sh\",#{CREW_PREFIX}/bin/sh\",g'"
+    system "grep -rlZ \"/bin/sh'\" . | xargs -0 sed -i \"s,/bin/sh',#{CREW_PREFIX}/bin/sh',g\""
+  end
+
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
     system "RUBY_TRY_CFLAGS='stack_protector=no' \
       RUBY_TRY_LDFLAGS='stack_protector=no' \
-      optflags='-flto=auto -fuse-ld=#{CREW_LINKER}' \
-      LD=#{CREW_LINKER} \
+      optflags='-flto=auto -fuse-ld=mold' \
+      LD=mold \
       ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
       #{ARCH == 'x86_64' ? '--enable-yjit' : ''} \
