@@ -11,10 +11,10 @@ class Ruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd222312065f090f1393ae5290294595f854fe0766630ebb3feb847b2a4306f70',
-     armv7l: 'd222312065f090f1393ae5290294595f854fe0766630ebb3feb847b2a4306f70',
-       i686: '89d3e147f13c64242c45416edc6212f5947b50c70c8903c468b80274cdc52e11',
-     x86_64: 'fff153d663b037df66255127eb1ae0f1c7e3b7cd595962c71ff19faee416ad06'
+    aarch64: '0c9c3d8531555f7f9d479abb1fc986007d2a2c079cc97fd25a89b491bcf51c23',
+     armv7l: '0c9c3d8531555f7f9d479abb1fc986007d2a2c079cc97fd25a89b491bcf51c23',
+       i686: 'd0b4efe95c67b2e424c6cba71215ff3ce12a0240c9b715d9da885d61c0d5e1ee',
+     x86_64: '901582417958d1aefe122e7cd3d6318cc72e912f281c19337e2837697007fa87'
   })
 
   depends_on 'ca_certificates' # L
@@ -23,6 +23,7 @@ class Ruby < Package
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'libffi' # R
+  depends_on 'libxcrypt' # R
   depends_on 'libyaml' # R
   depends_on 'openssl' # R
   depends_on 'rust' => :build
