@@ -31,7 +31,7 @@ ARCH_LIB        ||= "lib#{CREW_LIB_SUFFIX}"
 CREW_PREFIX ||= ENV.fetch('CREW_PREFIX', '/usr/local') unless defined?(CREW_PREFIX)
 
 # Glibc related constants
-CREW_GLIBC_PREFIX      ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
+CREW_GLIBC_PREFIX ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
 @crew_glibc_interpreter = File.join(CREW_GLIBC_PREFIX, File.basename(File.realpath("#{CREW_PREFIX}/bin/ld.so"))) unless defined?(CREW_GLIBC_INTERPRETER)
 CREW_GLIBC_INTERPRETER ||= File.file?(@crew_glibc_interpreter) ? @crew_glibc_interpreter : nil unless defined?(CREW_GLIBC_INTERPRETER)
 
