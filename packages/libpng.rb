@@ -19,7 +19,6 @@ class Libpng < Package
 
   depends_on 'zlib'
   depends_on 'glibc' # R
-  depends_on 'glibc_lib' # R
 
   gnome
 

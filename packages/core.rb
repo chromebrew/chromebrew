@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '3.7'
+  version '3.8'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -18,7 +18,7 @@ class Core < Package
   depends_on 'command_not_found'
   depends_on 'crew_mvdir'
   depends_on 'crew_profile_base'
-  depends_on 'crew_sudo' if CHROMEOS_RELEASE.to_i > 116
+  depends_on 'crew_sudo' if CHROMEOS_RELEASE.to_i > 116 && !CREW_IN_CONTAINER
   depends_on 'e2fsprogs'
   depends_on 'elfutils'
   depends_on 'expat'
@@ -30,8 +30,7 @@ class Core < Package
   depends_on 'gettext'
   depends_on 'git'
   depends_on 'git_mestrelion_tools'
-  depends_on 'glibc_lib'
-  depends_on 'glibc_standalone'
+  depends_on 'glibc'
   depends_on 'gmp'
   depends_on 'gnutls'
   depends_on 'groff'

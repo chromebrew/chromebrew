@@ -19,7 +19,6 @@ class Mpv < Meson
   depends_on 'alsa_lib' # R
   depends_on 'ffmpeg' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glslang' # R
   depends_on 'jack' # R

@@ -17,7 +17,6 @@ class Parted < Autotools
      x86_64: '6c90b4c01a6275e5f09438a80c7f973042834fb801bd18cbd6dade603a843a9f'
   })
 
-  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'lvm2' # R
   depends_on 'ncurses' # R

@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.60.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.60.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -31,8 +31,9 @@ ARCH_LIB        ||= "lib#{CREW_LIB_SUFFIX}"
 CREW_PREFIX ||= ENV.fetch('CREW_PREFIX', '/usr/local') unless defined?(CREW_PREFIX)
 
 # Glibc related constants
-CREW_GLIBC_PREFIX      ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
-CREW_GLIBC_INTERPRETER ||= File.symlink?("#{CREW_PREFIX}/bin/ld.so") ? File.realpath("#{CREW_PREFIX}/bin/ld.so") : nil unless defined?(CREW_GLIBC_INTERPRETER)
+CREW_GLIBC_PREFIX ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
+@crew_glibc_interpreter = File.join(CREW_GLIBC_PREFIX, File.basename(File.realpath("#{CREW_PREFIX}/bin/ld.so"))) unless defined?(CREW_GLIBC_INTERPRETER)
+CREW_GLIBC_INTERPRETER ||= File.file?(@crew_glibc_interpreter) ? @crew_glibc_interpreter : nil unless defined?(CREW_GLIBC_INTERPRETER)
 
 # Glibc version can be found from the output of libc.so.6
 @libcvertokens = (`LD_AUDIT= #{CREW_GLIBC_PREFIX}/libc.so.6`.lines.first.chomp.split(/[\s]/) if File.file?("#{CREW_GLIBC_PREFIX}/libc.so.6"))
@@ -49,8 +50,7 @@ end
 
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
-# The LIBC_VERSION ternary is to reflect the change from glibc_build to glibc_lib as the source of essential libraries starting at glibc 2.35.
-CREW_ESSENTIAL_PACKAGES ||= %W[crew_profile_base gcc_lib #{LIBC_VERSION.to_f > 2.34 ? "glibc_lib#{LIBC_VERSION.delete('.')}" : "glibc_build#{LIBC_VERSION.delete('.')}"} glibc_standalone gmp ruby zlib zlib_ng zstd]
+CREW_ESSENTIAL_PACKAGES ||= %w[crew_profile_base gcc_lib glibc gmp ruby zlib zlib_ng zstd]
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 
@@ -105,7 +105,7 @@ CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless d
 CREW_NO_GIT             ||= ENV.fetch('CREW_NO_GIT', false) unless defined?(CREW_NO_GIT)
 CREW_UNATTENDED         ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
 
-CREW_STANDALONE_UPGRADE_ORDER = %w[glibc_standalone openssl ruby python3] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
+CREW_STANDALONE_UPGRADE_ORDER = %w[glibc openssl ruby python3] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
 
 CREW_DEBUG   ||= ARGV.intersect?(%w[-D --debug]) unless defined?(CREW_DEBUG)
 CREW_FORCE   ||= ARGV.intersect?(%w[-f --force]) unless defined?(CREW_FORCE)
@@ -207,15 +207,12 @@ when 'x86_64'
   CREW_ARCH_FLAGS ||= CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '' : CREW_ARCH_FLAGS_OVERRIDE
 end
 
-CREW_LINKER ||= ENV.fetch('CREW_LINKER', 'mold') unless defined?(CREW_LINKER)
 CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', '-flto=auto') unless defined?(CREW_LINKER_FLAGS)
 
-CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
-CREW_COMMON_FLAGS         ||= "#{CREW_CORE_FLAGS} -B#{CREW_GLIBC_PREFIX} -flto=auto"
-CREW_COMMON_FNO_LTO_FLAGS ||= "#{CREW_CORE_FLAGS} -B#{CREW_GLIBC_PREFIX} -fno-lto"
+CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} #{CREW_LINKER_FLAGS}"
+CREW_COMMON_FLAGS         ||= "#{CREW_CORE_FLAGS} -flto=auto"
+CREW_COMMON_FNO_LTO_FLAGS ||= "#{CREW_CORE_FLAGS} -fno-lto"
 CREW_FNO_LTO_LDFLAGS      ||= '-fno-lto'
-
-CREW_LINKER_FLAGS << " -Wl,--dynamic-linker,#{CREW_GLIBC_INTERPRETER} -Wl,-rpath,#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX} -B#{CREW_GLIBC_PREFIX} -L#{CREW_GLIBC_PREFIX} -L#{CREW_LIB_PREFIX}" if CREW_GLIBC_INTERPRETER
 
 CREW_ENV_OPTIONS_HASH ||=
   if CREW_DISABLE_ENV_OPTIONS
@@ -284,7 +281,7 @@ CREW_CMAKE_OPTIONS ||= <<~OPT.chomp
   -DCMAKE_C_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
   -DCMAKE_CXX_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
   -DCMAKE_EXE_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
-  -DCMAKE_LINKER_TYPE=#{CREW_LINKER.upcase} \
+  -DCMAKE_LINKER_TYPE=MOLD \
   -DCMAKE_SHARED_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
   -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE \

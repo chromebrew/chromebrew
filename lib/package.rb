@@ -26,7 +26,7 @@ end
 
 class Package
   boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep, :git_fetchtags, :gem_compile_needed, :gnome, :is_fake, :is_musl, :is_static,
-                   :no_binaries_needed, :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules, :no_links, :no_lto, :no_patchelf,
+                   :no_binaries_needed, :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules, :no_links, :no_lto, :no_mold, :no_patchelf,
                    :no_shrink, :no_source_build, :no_strip, :no_upstream_update, :no_zstd, :patchelf, :prerelease, :print_source_bashrc, :run_tests
 
   property :description, :homepage, :version, :license, :compatibility,
@@ -258,9 +258,9 @@ class Package
       orig_arrow_index_newbranch = orig_arrow_index_connecter + 4
 
       # if the char under the processing arrow symbol (orig_arrow_index_connecter) is also arrow or pipe, change the processing char to tee symbol
-      line[orig_arrow_index_connecter] = '├' if orig_arrow_index_connecter && tree_view.lines[line_i + 1].to_s[orig_arrow_index_connecter] =~ (/[└│]/)
+      line[orig_arrow_index_connecter] = '├' if orig_arrow_index_connecter && tree_view.lines[line_i + 1].to_s[orig_arrow_index_connecter] =~ /[└│]/
       # if the char under the processing arrow symbol (orig_arrow_index_newbranch) is also arrow or pipe, change the processing char to tee symbol
-      line[orig_arrow_index_newbranch] = '┬' if orig_arrow_index_newbranch && tree_view.lines[line_i + 1].to_s[orig_arrow_index_newbranch] =~ (/[└├]/)
+      line[orig_arrow_index_newbranch] = '┬' if orig_arrow_index_newbranch && tree_view.lines[line_i + 1].to_s[orig_arrow_index_newbranch] =~ /[└├]/
       next line # return modified line
     end.join
 
@@ -327,15 +327,15 @@ class Package
   def self.source?(architecture) = missing_binaries ? true : !(binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
-    @crew_env_options_hash = if no_env_options?
-                               { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
-                             elsif no_lto?
-                               CREW_ENV_FNO_LTO_OPTIONS_HASH
-                             else
-                               CREW_ENV_OPTIONS_HASH
-                             end
+    crew_env_options_hash = if no_env_options?
+                              { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
+                            elsif no_lto?
+                              CREW_ENV_FNO_LTO_OPTIONS_HASH
+                            else
+                              CREW_ENV_OPTIONS_HASH
+                            end
     # Replace CREW_ARCH_FLAGS if @arch_flags_override is true.
-    @crew_env_options_hash = @arch_flags_override ? @crew_env_options_hash.each { |k, v| @crew_env_options_hash[k] = v.gsub(CREW_ARCH_FLAGS, CREW_ARCH_FLAGS_OVERRIDE) } : @crew_env_options_hash
+    crew_env_options_hash.transform_values! { |v| v.gsub(CREW_ARCH_FLAGS, CREW_ARCH_FLAGS_OVERRIDE) } if arch_flags_override
 
     # Add "-j#" argument to "make" at compile-time, if necessary.
 
@@ -350,13 +350,18 @@ class Package
 
     # Extract env hash.
     if args[0].is_a?(Hash)
-      env = @crew_env_options_hash.merge(args[0])
+      env = crew_env_options_hash.merge(args[0])
       args.delete_at(0) # Remove env hash from args array.
     else
-      env = @crew_env_options_hash
+      env = crew_env_options_hash
     end
 
-    cmd_args        = args # After removing the env hash, all remaining args must be command args.
+    env['CREW_PRELOAD_ENABLE_COMPILE_HACKS'] = opt_args.delete(:no_preload_hacks) ? '0' : '1'
+    env['CREW_PRELOAD_NO_MOLD']              = @no_mold ? '1' : '0'
+    env['LD_PRELOAD']                        = File.join(CREW_LIB_PREFIX, 'crew-preload.so') if File.exist?("#{CREW_LIB_PREFIX}/crew-preload.so")
+
+    # After removing the env hash, all remaining args must be command args.
+    cmd_args        = args
     make_threads    = CREW_NPROC
     modded_make_cmd = false
 

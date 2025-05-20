@@ -20,7 +20,6 @@ class Tinysparql < Meson
   depends_on 'dbus' => :build
   depends_on 'docbook_xml' => :build
   depends_on 'gcc_lib' # R
-  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
