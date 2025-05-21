@@ -916,6 +916,7 @@
 /usr/local/lib/gcc/i686-cros-linux-gnu/15/finclude/openacc_lib.h
 /usr/local/lib/gcc/i686-cros-linux-gnu/15/include-fixed/README
 /usr/local/lib/gcc/i686-cros-linux-gnu/15/include-fixed/linux/a.out.h
+/usr/local/lib/gcc/i686-cros-linux-gnu/15/include-fixed/pthread.h
 /usr/local/lib/gcc/i686-cros-linux-gnu/15/include-fixed/slang.h
 /usr/local/lib/gcc/i686-cros-linux-gnu/15/include/ISO_Fortran_binding.h
 /usr/local/lib/gcc/i686-cros-linux-gnu/15/include/acc_prof.h

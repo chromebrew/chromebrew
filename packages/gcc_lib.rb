@@ -4,7 +4,6 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Gcc_lib < Package
   description 'GCC shared libs except libgccjit'
   homepage Gcc_build.homepage
-  @gcc_libc_version = '2.41'
   version '15.1.0' # Do not use @_ver here, it will break the installer.
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
@@ -14,10 +13,10 @@ class Gcc_lib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '13540e8567b2b76898be5df457df9dd291c0e1161b4eba4a73a0d80ec841be37',
-    aarch64: 'b84d23e78533f9a4cdefb866370a8bd1d699f50e197d3b567dded7bf5d84a069',
-     armv7l: 'b84d23e78533f9a4cdefb866370a8bd1d699f50e197d3b567dded7bf5d84a069',
-     x86_64: '2a04de4c08af3532c88f398838e9ea1b71126bf28faf159b101df59b648d676f'
+    aarch64: '4be06dfe638ac3ffa3312c7cd08ff564947f5f07ec67db657c65597237e692c9',
+     armv7l: '4be06dfe638ac3ffa3312c7cd08ff564947f5f07ec67db657c65597237e692c9',
+       i686: '90f15d9ddcfc44ba287e799acc7ba9ca5e9d877e75573063d1d18a8cdc738c79',
+     x86_64: '0550e69986bc8700ec65dd9634a4edfae5d7135ed93a15b14b25000f4a623e53'
   })
 
   depends_on 'gcc_build' => :build

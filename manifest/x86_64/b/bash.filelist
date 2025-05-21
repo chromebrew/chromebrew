@@ -34,6 +34,7 @@
 /usr/local/include/bash/include/ocache.h
 /usr/local/include/bash/include/posixdir.h
 /usr/local/include/bash/include/posixjmp.h
+/usr/local/include/bash/include/posixselect.h
 /usr/local/include/bash/include/posixstat.h
 /usr/local/include/bash/include/posixtime.h
 /usr/local/include/bash/include/posixwait.h
@@ -43,8 +44,10 @@
 /usr/local/include/bash/include/stat-time.h
 /usr/local/include/bash/include/stdc.h
 /usr/local/include/bash/include/systimes.h
+/usr/local/include/bash/include/timer.h
 /usr/local/include/bash/include/typemax.h
 /usr/local/include/bash/include/unionwait.h
+/usr/local/include/bash/include/unlocked-io.h
 /usr/local/include/bash/jobs.h
 /usr/local/include/bash/make_cmd.h
 /usr/local/include/bash/pathnames.h
@@ -64,6 +67,7 @@
 /usr/local/lib64/bash/Makefile.sample
 /usr/local/lib64/bash/accept
 /usr/local/lib64/bash/basename
+/usr/local/lib64/bash/chmod
 /usr/local/lib64/bash/csv
 /usr/local/lib64/bash/cut
 /usr/local/lib64/bash/dirname
@@ -73,6 +77,7 @@
 /usr/local/lib64/bash/getconf
 /usr/local/lib64/bash/head
 /usr/local/lib64/bash/id
+/usr/local/lib64/bash/kv
 /usr/local/lib64/bash/ln
 /usr/local/lib64/bash/loadables.h
 /usr/local/lib64/bash/logname
@@ -92,6 +97,7 @@
 /usr/local/lib64/bash/sleep
 /usr/local/lib64/bash/stat
 /usr/local/lib64/bash/strftime
+/usr/local/lib64/bash/strptime
 /usr/local/lib64/bash/sync
 /usr/local/lib64/bash/tee
 /usr/local/lib64/bash/truefalse

@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.60.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.61.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -50,7 +50,7 @@ end
 
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
-CREW_ESSENTIAL_PACKAGES ||= %w[crew_profile_base gcc_lib glibc gmp ruby zlib zlib_ng zstd]
+CREW_ESSENTIAL_PACKAGES ||= %w[bash crew_profile_base gcc_lib glibc gmp ncurses readline ruby zlib zlib_ng zstd]
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 

@@ -915,8 +915,7 @@
 /usr/local/lib64/gcc/x86_64-cros-linux-gnu/15/finclude/openacc_kinds.mod
 /usr/local/lib64/gcc/x86_64-cros-linux-gnu/15/finclude/openacc_lib.h
 /usr/local/lib64/gcc/x86_64-cros-linux-gnu/15/include-fixed/README
-/usr/local/lib64/gcc/x86_64-cros-linux-gnu/15/include-fixed/bits/floatn-common.h
-/usr/local/lib64/gcc/x86_64-cros-linux-gnu/15/include-fixed/bits/floatn.h
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/15/include-fixed/pthread.h
 /usr/local/lib64/gcc/x86_64-cros-linux-gnu/15/include-fixed/slang.h
 /usr/local/lib64/gcc/x86_64-cros-linux-gnu/15/include/ISO_Fortran_binding.h
 /usr/local/lib64/gcc/x86_64-cros-linux-gnu/15/include/acc_prof.h
