@@ -13,22 +13,12 @@ class Gdb < Autotools
   source_sha256 'bcfcd095528a987917acf9fff3f1672181694926cc18d609c99d0042c00224c5'
   binary_compression 'tar.zst'
 
-  case CREW_GCC_VER
-  when 'gcc14'
-    binary_sha256({
-      aarch64: '877bea13576e5b36931d69624bef3471b69c4637b10ede10ac34cf79164f6167',
-       armv7l: '877bea13576e5b36931d69624bef3471b69c4637b10ede10ac34cf79164f6167',
-         i686: '432295e34df829235f1a66e8c7573a6bfa4e50261e1f9d0c98bcaea9836c7206',
-       x86_64: 'ccc89a610cdfff8e227dec2c1557c5c896dd6ca1878e29c8c148cf6371d8c611'
-    })
-  when 'gcc15'
-    binary_sha256({
-      aarch64: '619f11cd47645148aaecd0337fc9b76a3217a7fbdf5415a0a808829acc3fac21',
-       armv7l: '619f11cd47645148aaecd0337fc9b76a3217a7fbdf5415a0a808829acc3fac21',
-         i686: 'e6e92b19b0a47bec1dc643c97087195fe830faaec5d92d7517c6a6c62d08d429',
-       x86_64: '79ebdb1d26255898a3fb23303c61196a390d7bfa54307dc19ba47684008e7416'
-    })
-  end
+  binary_sha256({
+    aarch64: '619f11cd47645148aaecd0337fc9b76a3217a7fbdf5415a0a808829acc3fac21',
+     armv7l: '619f11cd47645148aaecd0337fc9b76a3217a7fbdf5415a0a808829acc3fac21',
+       i686: 'e6e92b19b0a47bec1dc643c97087195fe830faaec5d92d7517c6a6c62d08d429',
+     x86_64: '79ebdb1d26255898a3fb23303c61196a390d7bfa54307dc19ba47684008e7416'
+  })
 
   depends_on 'binutils' # R
   depends_on 'boost' # R
@@ -49,6 +39,10 @@ class Gdb < Autotools
   depends_on 'zstd' # R
 
   conflicts_ok # binutils conflicts
+
+  def self.patch
+    system 'filefix'
+  end
 
   def self.build
     @x = ARCH == 'i686' ? '' : '--with-x'
