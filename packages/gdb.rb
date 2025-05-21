@@ -40,15 +40,7 @@ class Gdb < Autotools
 
   conflicts_ok # binutils conflicts
 
-  def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    @x = ARCH == 'i686' ? '' : '--with-x'
-    system "./configure \
-      #{CREW_CONFIGURE_OPTIONS} \
-      --disable-binutils \
+  configure_options "--disable-binutils \
       --disable-ld \
       --disable-nls \
       --enable-64-bit-bfd \
@@ -66,9 +58,7 @@ class Gdb < Autotools
       --with-system-gdbinit=#{CREW_PREFIX}/etc/gdb/gdbinit \
       --with-system-readline \
       --with-system-zlib \
-      #{@x}"
-    system 'make'
-  end
+      #{ARCH == 'i686' ? '' : '--with-x'}"
 
   def self.install
     system "make -C gdb DESTDIR=#{CREW_DEST_DIR} install"
