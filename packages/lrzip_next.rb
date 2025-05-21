@@ -17,14 +17,7 @@ class Lrzip_next < Autotools
      x86_64: '272ee5ebd46b39262931c9fa922f8d0eeabcef3a250fa84badae9104a088fd60'
   })
 
-  depends_on 'bzip2' => :build
-  depends_on 'bzip3' => :build
-  depends_on 'libgcrypt' => :build
-  depends_on 'lz4' => :build
-  depends_on 'lzo' => :build
   depends_on 'nasm' => :build
-  depends_on 'zlib_ng' => :build
-  depends_on 'zstd' => :build
   depends_on 'bzip2' # R
   depends_on 'bzip3' # R
   depends_on 'gcc_lib' # R

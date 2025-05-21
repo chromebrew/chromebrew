@@ -52,10 +52,7 @@ class Gcc_build < Package
   @path = "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
 
   def self.patch
-    # make sure we are using our shell instead of /bin/sh
-    system "grep -rlZ '/bin/sh ' . | xargs -0 sed -i 's,/bin/sh ,#{CREW_PREFIX}/bin/sh ,g'"
-    system "grep -rlZ \"/bin/sh\\\"\" . | xargs -0 sed -i 's,/bin/sh\",#{CREW_PREFIX}/bin/sh\",g'"
-    system "grep -rlZ \"/bin/sh'\" . | xargs -0 sed -i \"s,/bin/sh',#{CREW_PREFIX}/bin/sh',g\""
+    system 'filefix'
 
     # This fixes a PATH_MAX undefined error which breaks libsanitizer
     # "libsanitizer/asan/asan_linux.cpp:217:21: error: ‘PATH_MAX’ was not declared in this scope"
