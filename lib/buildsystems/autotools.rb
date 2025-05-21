@@ -19,10 +19,7 @@ class Autotools < Package
       end
       abort 'configure script not found!'.lightred unless File.file?('configure')
       FileUtils.chmod('+x', 'configure')
-      if Kernel.system('grep -q /usr/bin/file configure')
-        puts 'Using filefix.'.orange
-        system 'filefix'
-      end
+      system 'filefix', exception: false
       system "#{@pre_configure_options} ./configure #{CREW_CONFIGURE_OPTIONS} #{@configure_options}"
     end
     system 'make'
