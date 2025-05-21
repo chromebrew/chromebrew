@@ -19,13 +19,6 @@ class Gcc_build < Package
      x86_64: 'f8eb20a74cb6799354fbb58fff32849f533b48398e754dcd1a538372298bfa8d'
   })
 
-  binary_sha256({
-       i686: '85bb8bf3f233109e84f9d5e1832254cc69a6a4a37407ba0a864d969b0f05f4ea',
-    aarch64: 'e7d46be8238a11cc7028a50cd7d8a05a6fd6f558c8c8bf9100dce7f8aeb7bd58',
-     armv7l: 'e7d46be8238a11cc7028a50cd7d8a05a6fd6f558c8c8bf9100dce7f8aeb7bd58',
-     x86_64: '44c3a9e4d90a96ec698ccdca594dc9cc5e5e833ce3aa505089f2f65be0c9d76d'
-  })
-
   depends_on 'binutils' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' # R
@@ -65,7 +58,11 @@ class Gcc_build < Package
   @path = "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
 
   def self.patch
-    # system "sed -i '/#include \"fibheap.h\"/a #include <limits.h>' libiberty/fibheap.c"
+    # make sure we are using our shell instead of /bin/sh
+    system "grep -rlZ '/bin/sh ' . | xargs -0 sed -i 's,/bin/sh ,#{CREW_PREFIX}/bin/sh ,g'"
+    system "grep -rlZ \"/bin/sh\\\"\" . | xargs -0 sed -i 's,/bin/sh\",#{CREW_PREFIX}/bin/sh\",g'"
+    system "grep -rlZ \"/bin/sh'\" . | xargs -0 sed -i \"s,/bin/sh',#{CREW_PREFIX}/bin/sh',g\""
+
     # This fixes a PATH_MAX undefined error which breaks libsanitizer
     # "libsanitizer/asan/asan_linux.cpp:217:21: error: ‘PATH_MAX’ was not declared in this scope"
     # This is defined in https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-5.4/include/uapi/linux/limits.h
@@ -170,49 +167,15 @@ class Gcc_build < Package
                                  RANLIB: 'gcc-ranlib'
         }.transform_keys(&:to_s)
 
-      # system build_env, <<~BUILD.chomp, exception: false
-        system "echo \" CREW_PRELOAD_NO_MOLD is \$CREW_PRELOAD_NO_MOLD\""
         system build_env, "../configure #{CREW_CONFIGURE_OPTIONS} \
           #{@gcc_global_opts} \
           #{@archflags} \
           --with-native-system-header-dir=#{CREW_PREFIX}/include \
           --enable-languages=#{@languages} \
           --program-suffix=-#{@gcc_version}"
-        # make sure we are using our shell instead of /bin/sh
-        system "grep -rlZ '/bin/sh ' . | xargs -0 sed -i 's,/bin/sh ,#{CREW_PREFIX}/bin/sh ,g'"
-        system "grep -rlZ \"/bin/sh\\\"\" . | xargs -0 sed -i 's,/bin/sh\",#{CREW_PREFIX}/bin/sh\",g'"
-        system "grep -rlZ \"/bin/sh'\" . | xargs -0 sed -i \"s,/bin/sh',#{CREW_PREFIX}/bin/sh',g\""
         # Concurrent build sometimes breaks.
-        # system build_env, 'CREW_PRELOAD_NO_MOLD=1 make' unless system build_env, "CREW_PRELOAD_NO_MOLD=1 make -j #{CREW_NPROC} || make"
         system "make"
         system "make -j1" if $?.exitstatus != 0
-      # BUILD
-
-      # LIBRARY_PATH=#{CREW_LIB_PREFIX} needed for x86_64 to avoid:
-      # /usr/local/bin/ld: cannot find crti.o: No such file or directory
-      # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
-      # system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), ". #{CREW_PREFIX}/etc/env.d/rust && make -j #{CREW_NPROC} || make -j1")
-      # @j_max = CREW_NPROC
-      # loop do
-      # break if Kernel.system(
-      # {
-      # CFLAGS: @cflags, CXXFLAGS: @cxxflags,
-      # CREW_LINKER: 'ld',
-      # LD: 'ld',
-      # LDFLAGS: @ldflags,
-      # LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
-      # PATH: @path
-      # }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false
-      # )
-      # break if
-      #puts "starting make... with #{build_env.each {|value_item| value_item.transform_values!(&:to_s)}}"
-      #system build_env, <<~MAKE.chomp
-      #  bash -c "make -j #{CREW_NPROC}"
-      #MAKE
-      # puts "Make using -j#{@j_max}...".orange
-      # @j_max -= 2
-      # break if @j_max < 1
-      # end
     end
   end
 
@@ -228,18 +191,6 @@ class Gcc_build < Package
     gcc_arch = `objdir/gcc/xgcc -dumpmachine`.chomp
     gcc_dir = "gcc/#{gcc_arch}/#{@gcc_version}"
     gcc_libdir = "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
-
-    install_env =
-      {
-                                   CFLAGS: @cflags, CXXFLAGS: @cxxflags,
-        CREW_PRELOAD_ENABLE_COMPILE_HACKS: '1',
-                                  DESTDIR: CREW_DEST_DIR,
-                                       LD: 'ld',
-                               LD_PRELOAD: "#{CREW_LIB_PREFIX}/crew-preload.so",
-                                  LDFLAGS: @ldflags,
-                             LIBRARY_PATH: CREW_LIB_PREFIX,
-                                     PATH: @path
-      }.transform_keys(&:to_s)
 
     Dir.chdir('objdir') do
       # gcc-libs install
