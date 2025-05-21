@@ -3,41 +3,30 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  @gcc_libc_version = if %w[2.23 2.27 2.32 2.33 2.35 2.37].any? { |i| LIBC_VERSION.include? i }
-                        LIBC_VERSION
-                      else
-                        ARCH.eql?('i686') ? '2.23' : '2.27'
-                      end
-  version "14.2.0-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
+  @gcc_libc_version = '2.41'
+  version '15.1.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag "releases/gcc-#{version.split('-').first}"
+  git_hashtag '911cfea5e59798e04479ad475870935ccfae004b'
+  # git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
-  case @gcc_libc_version
-  when '2.23'
+  binary_sha256({
+    aarch64: '7c1154d79059d28e95fd1d8c2ea13d9dd68d1c2e3f167f244adf8673da210ee1',
+     armv7l: '7c1154d79059d28e95fd1d8c2ea13d9dd68d1c2e3f167f244adf8673da210ee1',
+       i686: '3548d759835e8c5cc3c7767dd94af2247d866c5b292e1b7c58a53a75537acc57',
+     x86_64: 'f8eb20a74cb6799354fbb58fff32849f533b48398e754dcd1a538372298bfa8d'
+  })
 
-    binary_sha256({
-         i686: '95b0aacd75c8ab2ba559b2992f0c7d1e13230cb22f1622cd282df6df3e53e7c0'
-    })
-  when '2.27', '2.32', '2.33', '2.35'
-
-    binary_sha256({
-      aarch64: 'c70348c4c2953e8a24ce2efc713ef1d628902c3e01f9ab9fa2a421851ecbb4e1',
-       armv7l: 'c70348c4c2953e8a24ce2efc713ef1d628902c3e01f9ab9fa2a421851ecbb4e1',
-       x86_64: '762557dbd47282a08f84c2dc5d0c2706c571ed2dc7ac17e527d92139d39b36c6'
-    })
-  when '2.37'
-    binary_sha256({
-      aarch64: '313fefb47070e7c3327628083552ceb253834e46a730bf8913497821ca34d626',
-       armv7l: '313fefb47070e7c3327628083552ceb253834e46a730bf8913497821ca34d626',
-       x86_64: 'd20b4cf318296405c4c6dc36078d9ccd68a090fd510e9fbb84f0bba55e77d2ff'
-    })
-  end
+  binary_sha256({
+       i686: '85bb8bf3f233109e84f9d5e1832254cc69a6a4a37407ba0a864d969b0f05f4ea',
+    aarch64: 'e7d46be8238a11cc7028a50cd7d8a05a6fd6f558c8c8bf9100dce7f8aeb7bd58',
+     armv7l: 'e7d46be8238a11cc7028a50cd7d8a05a6fd6f558c8c8bf9100dce7f8aeb7bd58',
+     x86_64: '44c3a9e4d90a96ec698ccdca594dc9cc5e5e833ce3aa505089f2f65be0c9d76d'
+  })
 
   depends_on 'binutils' => :build
-  depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' # R
   depends_on 'gmp' # R
@@ -45,15 +34,38 @@ class Gcc_build < Package
   depends_on 'libssp' # L
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
+  depends_on 'rust' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  no_shrink
-  no_env_options
+  conflicts_ok
+  # no_env_options
+  no_mold
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
+  @glibc_flags = ''
+  # @gcc_version = `gcc -dumpversion`.chomp
+  # @gcc_arch = `gcc -dumpmachine`.chomp
+  # @gcc_dir = "gcc/#{@gcc_arch}/#{@gcc_version}"
+  # @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags} -I#{CREW_PREFIX}/include"
+  # @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags} -fno-stack-protector -D_FORTIFY_SOURCE=0"
+  # @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags} -fcf-protection=none"
+  @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags}"
+  @languages = 'c,c++,jit,objc,fortran,go,rust'
+  case ARCH
+  when 'armv7l', 'aarch64'
+    @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'
+  when 'x86_64'
+    @archflags = '--with-arch-64=x86-64'
+  when 'i686'
+    @archflags = '--with-arch-32=i686'
+  end
+  @ldflags = @glibc_flags
+  @path = "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
+
   def self.patch
+    # system "sed -i '/#include \"fibheap.h\"/a #include <limits.h>' libiberty/fibheap.c"
     # This fixes a PATH_MAX undefined error which breaks libsanitizer
     # "libsanitizer/asan/asan_linux.cpp:217:21: error: ‘PATH_MAX’ was not declared in this scope"
     # This is defined in https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-5.4/include/uapi/linux/limits.h
@@ -113,7 +125,8 @@ class Gcc_build < Package
       --enable-gnu-indirect-function \
       --enable-gnu-unique-object \
       --enable-host-shared \
-      --enable-lto \
+      --enable-link-serialization=1 \
+      --enable-linker-plugin-configure-flags='--host=#{CREW_TARGET} --target=#{CREW_TARGET}' \
       --enable-plugin \
       --enable-shared \
       --enable-symvers \
@@ -124,30 +137,16 @@ class Gcc_build < Package
       --with-isl \
       --with-mpc \
       --with-mpfr \
+      --with-newlib \
       --with-pic \
       --with-system-libunwind \
-      --with-system-zlib
+      --with-system-zlib \
+      --with-system-zstd \
+      --with-stage1-ldflags='#{@glibc_flags}' \
+      --with-boot-ldflags='#{@glibc_flags}'
     OPT
-
-    @cflags = @cxxflags = '-fPIC -pipe'
-    # @languages = 'c,c++,jit,objc,fortran,go'
-    # go build fails on 20220305 snapshot
-    @languages = 'c,c++,jit,objc,fortran'
-    case ARCH
-    when 'armv7l', 'aarch64'
-      @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'
-    when 'x86_64'
-      @archflags = '--with-arch-64=x86-64'
-    when 'i686'
-      @archflags = '--with-arch-32=i686'
-    end
-
-    # Set ccache sloppiness as per
-    # https://wiki.archlinux.org/index.php/Ccache#Sloppiness
-    system 'ccache --set-config=sloppiness=file_macro,locale,time_macros'
-    # Prefix ccache to path.
-    @path = "#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin"
-
+    puts 'Building with:'.lightblue
+    puts @gcc_global_opts.lightblue
     # Install prereqs using the standard gcc method so they can be
     # linked statically.
     # system './contrib/download_prerequisites'
@@ -155,31 +154,65 @@ class Gcc_build < Package
     FileUtils.mkdir_p 'objdir/gcc/.deps'
 
     Dir.chdir('objdir') do
-      configure_env =
+      build_env =
         {
-          LIBRARY_PATH: CREW_LIB_PREFIX,
-                    NM: 'gcc-nm',
-                    AR: 'gcc-ar',
-                RANLIB: 'gcc-ranlib',
-                CFLAGS: @cflags,
-              CXXFLAGS: @cxxflags,
-               LDFLAGS: "-L#{CREW_LIB_PREFIX}/lib -Wl,-rpath=#{CREW_LIB_PREFIX}",
-                  PATH: @path
+                       build_configargs: @gcc_global_opts,
+                                     AR: 'gcc-ar',
+                                 CFLAGS: @cflags,
+      CREW_PRELOAD_ENABLE_COMPILE_HACKS: '1',
+                               CXXFLAGS: @cxxflags,
+                             LD_PRELOAD: "#{CREW_LIB_PREFIX}/crew-preload.so",
+                                LDFLAGS: @ldflags,
+                           LIBRARY_PATH: CREW_LIB_PREFIX,
+                                     LD: 'ld',
+                                     NM: 'gcc-nm',
+                                   PATH: @path,
+                                 RANLIB: 'gcc-ranlib'
         }.transform_keys(&:to_s)
 
-      system configure_env, <<~BUILD.chomp
-        ../configure #{CREW_CONFIGURE_OPTIONS} \
+      # system build_env, <<~BUILD.chomp, exception: false
+        system "echo \" CREW_PRELOAD_NO_MOLD is \$CREW_PRELOAD_NO_MOLD\""
+        system build_env, "../configure #{CREW_CONFIGURE_OPTIONS} \
           #{@gcc_global_opts} \
           #{@archflags} \
           --with-native-system-header-dir=#{CREW_PREFIX}/include \
           --enable-languages=#{@languages} \
-          --program-suffix=-#{@gcc_version}
-      BUILD
+          --program-suffix=-#{@gcc_version}"
+        # make sure we are using our shell instead of /bin/sh
+        system "grep -rlZ '/bin/sh ' . | xargs -0 sed -i 's,/bin/sh ,#{CREW_PREFIX}/bin/sh ,g'"
+        system "grep -rlZ \"/bin/sh\\\"\" . | xargs -0 sed -i 's,/bin/sh\",#{CREW_PREFIX}/bin/sh\",g'"
+        system "grep -rlZ \"/bin/sh'\" . | xargs -0 sed -i \"s,/bin/sh',#{CREW_PREFIX}/bin/sh',g\""
+        # Concurrent build sometimes breaks.
+        # system build_env, 'CREW_PRELOAD_NO_MOLD=1 make' unless system build_env, "CREW_PRELOAD_NO_MOLD=1 make -j #{CREW_NPROC} || make"
+        system "make"
+        system "make -j1" if $?.exitstatus != 0
+      # BUILD
 
       # LIBRARY_PATH=#{CREW_LIB_PREFIX} needed for x86_64 to avoid:
       # /usr/local/bin/ld: cannot find crti.o: No such file or directory
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
-      system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), "make -j #{CREW_NPROC} || make -j1")
+      # system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), ". #{CREW_PREFIX}/etc/env.d/rust && make -j #{CREW_NPROC} || make -j1")
+      # @j_max = CREW_NPROC
+      # loop do
+      # break if Kernel.system(
+      # {
+      # CFLAGS: @cflags, CXXFLAGS: @cxxflags,
+      # CREW_LINKER: 'ld',
+      # LD: 'ld',
+      # LDFLAGS: @ldflags,
+      # LIBRARY_PATH: "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+      # PATH: @path
+      # }.transform_keys(&:to_s), "bash -c \"make -j #{@j_max}\"", exception: false
+      # )
+      # break if
+      #puts "starting make... with #{build_env.each {|value_item| value_item.transform_values!(&:to_s)}}"
+      #system build_env, <<~MAKE.chomp
+      #  bash -c "make -j #{CREW_NPROC}"
+      #MAKE
+      # puts "Make using -j#{@j_max}...".orange
+      # @j_max -= 2
+      # break if @j_max < 1
+      # end
     end
   end
 
@@ -196,38 +229,43 @@ class Gcc_build < Package
     gcc_dir = "gcc/#{gcc_arch}/#{@gcc_version}"
     gcc_libdir = "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
 
-    make_env =
+    install_env =
       {
-        LIBRARY_PATH: CREW_LIB_PREFIX,
-                PATH: @path,
-             DESTDIR: CREW_DEST_DIR
+                                   CFLAGS: @cflags, CXXFLAGS: @cxxflags,
+        CREW_PRELOAD_ENABLE_COMPILE_HACKS: '1',
+                                  DESTDIR: CREW_DEST_DIR,
+                                       LD: 'ld',
+                               LD_PRELOAD: "#{CREW_LIB_PREFIX}/crew-preload.so",
+                                  LDFLAGS: @ldflags,
+                             LIBRARY_PATH: CREW_LIB_PREFIX,
+                                     PATH: @path
       }.transform_keys(&:to_s)
 
     Dir.chdir('objdir') do
       # gcc-libs install
-      system make_env, "make -C #{CREW_TARGET}/libgcc DESTDIR=#{CREW_DEST_DIR} install-shared"
+     system "make -C #{CREW_TARGET}/libgcc DESTDIR=#{CREW_DEST_DIR} install-shared"
 
       @gcc_libs = %w[libatomic libgfortran libgo libgomp libitm
                      libquadmath libsanitizer/asan libsanitizer/lsan libsanitizer/ubsan
                      libsanitizer/tsan libstdc++-v3/src libvtv]
       @gcc_libs.each do |lib|
-        system make_env, "make -C #{CREW_TARGET}/#{lib} \
+       system "make -C #{CREW_TARGET}/#{lib} \
           DESTDIR=#{CREW_DEST_DIR} install-toolexeclibLTLIBRARIES", exception: false
       end
 
-      system make_env, "make -C #{CREW_TARGET}/libobjc DESTDIR=#{CREW_DEST_DIR} install-libs", exception: false
-      system make_env, "make -C #{CREW_TARGET}/libstdc++-v3/po DESTDIR=#{CREW_DEST_DIR} install", exception: false
-      system make_env, "make -C #{CREW_TARGET}/libphobos DESTDIR=#{CREW_DEST_DIR} install", exception: false
+     system "make -C #{CREW_TARGET}/libobjc DESTDIR=#{CREW_DEST_DIR} install-libs", exception: false
+     system "make -C #{CREW_TARGET}/libstdc++-v3/po DESTDIR=#{CREW_DEST_DIR} install", exception: false
+     system "make -C #{CREW_TARGET}/libphobos DESTDIR=#{CREW_DEST_DIR} install", exception: false
 
       # gcc_libs_info
       %w[libgomp libitm libquadmath].each do |lib|
-        system make_env, "make -C #{CREW_TARGET}/#{lib} DESTDIR=#{CREW_DEST_DIR} install-info", exception: false
+       system "make -C #{CREW_TARGET}/#{lib} DESTDIR=#{CREW_DEST_DIR} install-info", exception: false
       end
 
-      system make_env, "make DESTDIR=#{CREW_DEST_DIR} install-strip"
+     system "make DESTDIR=#{CREW_DEST_DIR} install-strip"
 
       # gcc-non-lib install
-      system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-driver install-cpp install-gcc-ar \
+     system "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-driver install-cpp install-gcc-ar \
         c++.install-common install-headers install-plugin install-lto-wrapper"
 
       %w[gcov gcov-tool].each do |gcov_bin|
@@ -240,13 +278,13 @@ class Gcc_build < Package
         FileUtils.install "gcc/#{lib}", "#{gcc_libdir}/", mode: 0o755
       end
 
-      system make_env, "make -C #{CREW_TARGET}/libgcc DESTDIR=#{CREW_DEST_DIR} install"
+     system "make -C #{CREW_TARGET}/libgcc DESTDIR=#{CREW_DEST_DIR} install"
 
       %w[src include libsupc++ python].each do |lib|
-        system make_env, "make -C #{CREW_TARGET}/libstdc++-v3/#{lib} DESTDIR=#{CREW_DEST_DIR} install"
+       system "make -C #{CREW_TARGET}/libstdc++-v3/#{lib} DESTDIR=#{CREW_DEST_DIR} install"
       end
 
-      system make_env, "make DESTDIR=#{CREW_DEST_DIR} install-libcc1"
+     system "make DESTDIR=#{CREW_DEST_DIR} install-libcc1"
 
       # http://www.linuxfromscratch.org/lfs/view/development/chapter06/gcc.html#contents-gcc
       # move a misplaced file
@@ -255,30 +293,30 @@ class Gcc_build < Package
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib"
       FileUtils.mv Dir["#{CREW_DEST_LIB_PREFIX}/*gdb.py"], "#{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib/"
 
-      system make_env, "make DESTDIR=#{CREW_DEST_DIR} install-fixincludes"
-      system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-mkheaders"
+     system "make DESTDIR=#{CREW_DEST_DIR} install-fixincludes"
+     system "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-mkheaders"
 
-      system make_env, "make -C lto-plugin DESTDIR=#{CREW_DEST_DIR} install"
+     system "make -C lto-plugin DESTDIR=#{CREW_DEST_DIR} install"
 
-      system make_env, "make -C #{CREW_TARGET}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
+     system "make -C #{CREW_TARGET}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
              exception: false
-      system make_env, "make -C #{CREW_TARGET}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
+     system "make -C #{CREW_TARGET}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
              exception: false
-      system make_env, "make -C #{CREW_TARGET}/libitm DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
+     system "make -C #{CREW_TARGET}/libitm DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
              exception: false
-      system make_env, "make -C #{CREW_TARGET}/libquadmath DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
+     system "make -C #{CREW_TARGET}/libquadmath DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
              exception: false
-      system make_env, "make -C #{CREW_TARGET}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_sanincludeHEADERS",
+     system "make -C #{CREW_TARGET}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_sanincludeHEADERS",
              exception: false
-      system make_env, "make -C #{CREW_TARGET}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
+     system "make -C #{CREW_TARGET}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
              exception: false
-      system make_env,
+      system install_env,
              "make -C #{CREW_TARGET}/libsanitizer/asan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
       # This failed on i686
-      system make_env,
+      system install_env,
              "make -C #{CREW_TARGET}/libsanitizer/tsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
       # This might fail on i686
-      system make_env,
+      system install_env,
              "make -C #{CREW_TARGET}/libsanitizer/lsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
 
       # libiberty is installed from binutils
@@ -287,14 +325,14 @@ class Gcc_build < Package
       #      make -C libiberty DESTDIR=#{CREW_DEST_DIR} install"
       # install -m644 libiberty/pic/libiberty.a "#{CREW_DEST_PREFIX}/lib"
 
-      system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-man install-info"
+     system "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-man install-info"
 
-      system make_env, "make -C libcpp DESTDIR=#{CREW_DEST_DIR} install"
-      system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-po"
+     system "make -C libcpp DESTDIR=#{CREW_DEST_DIR} install"
+     system "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-po"
 
       # install the libstdc++ man pages
       # This is broken in 14.0.1
-      # system make_env, "make -C #{CREW_TARGET}/libstdc++-v3/doc DESTDIR=#{CREW_DEST_DIR} doc-install-man"
+      #system "make -C #{CREW_TARGET}/libstdc++-v3/doc DESTDIR=#{CREW_DEST_DIR} doc-install-man"
 
       # byte-compile python libraries
       system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/"
