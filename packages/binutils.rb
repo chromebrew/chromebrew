@@ -37,8 +37,6 @@ class Binutils < Package
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  no_shrink
-
   def self.prebuild
     FileUtils.rm_f "#{CREW_LIB_PREFIX}/libiberty.a"
   end
