@@ -102,6 +102,7 @@ class Gcc_build < Package
       --build=#{CREW_TARGET} \
       --host=#{CREW_TARGET} \
       --target=#{CREW_TARGET} \
+      --disable-bootstrap \
       --disable-install-libiberty \
       --disable-libmpx \
       --disable-libssp \
