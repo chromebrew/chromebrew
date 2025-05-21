@@ -13,22 +13,12 @@ class Gdb < Autotools
   source_sha256 'bcfcd095528a987917acf9fff3f1672181694926cc18d609c99d0042c00224c5'
   binary_compression 'tar.zst'
 
-  case CREW_GCC_VER
-  when 'gcc14'
-    binary_sha256({
-      aarch64: '877bea13576e5b36931d69624bef3471b69c4637b10ede10ac34cf79164f6167',
-       armv7l: '877bea13576e5b36931d69624bef3471b69c4637b10ede10ac34cf79164f6167',
-         i686: '432295e34df829235f1a66e8c7573a6bfa4e50261e1f9d0c98bcaea9836c7206',
-       x86_64: 'ccc89a610cdfff8e227dec2c1557c5c896dd6ca1878e29c8c148cf6371d8c611'
-    })
-  when 'gcc15'
-    binary_sha256({
-      aarch64: '619f11cd47645148aaecd0337fc9b76a3217a7fbdf5415a0a808829acc3fac21',
-       armv7l: '619f11cd47645148aaecd0337fc9b76a3217a7fbdf5415a0a808829acc3fac21',
-         i686: 'e6e92b19b0a47bec1dc643c97087195fe830faaec5d92d7517c6a6c62d08d429',
-       x86_64: '79ebdb1d26255898a3fb23303c61196a390d7bfa54307dc19ba47684008e7416'
-    })
-  end
+  binary_sha256({
+    aarch64: 'd74a71602b10817ab94c27126606733dfa302f000efbcb4cbc4c384c61cac855',
+     armv7l: 'd74a71602b10817ab94c27126606733dfa302f000efbcb4cbc4c384c61cac855',
+       i686: 'f7988dc74a14b82c2d04521db6394d0cca5b07a3f72f999c463131d98fba09c1',
+     x86_64: '5033b982e7e62d1203da74ac942a328038d48e7be57dd48d52e0a7889d58c1ef'
+  })
 
   depends_on 'binutils' # R
   depends_on 'boost' # R
@@ -50,11 +40,7 @@ class Gdb < Autotools
 
   conflicts_ok # binutils conflicts
 
-  def self.build
-    @x = ARCH == 'i686' ? '' : '--with-x'
-    system "./configure \
-      #{CREW_CONFIGURE_OPTIONS} \
-      --disable-binutils \
+  configure_options "--disable-binutils \
       --disable-ld \
       --disable-nls \
       --enable-64-bit-bfd \
@@ -72,9 +58,7 @@ class Gdb < Autotools
       --with-system-gdbinit=#{CREW_PREFIX}/etc/gdb/gdbinit \
       --with-system-readline \
       --with-system-zlib \
-      #{@x}"
-    system 'make'
-  end
+      #{ARCH == 'i686' ? '' : '--with-x'}"
 
   def self.install
     system "make -C gdb DESTDIR=#{CREW_DEST_DIR} install"
