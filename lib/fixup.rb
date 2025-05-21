@@ -110,6 +110,8 @@ renamed_packages = Set[
   { pkg_name: 'codium', pkg_rename: 'vscodium', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'dstat', pkg_rename: 'py3_dool', comments: 'Following upstream rename.' },
   { pkg_name: 'ffcall', pkg_rename: 'libffcall', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'glibc_dev', pkg_rename: 'glibc', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'glibc_lib', pkg_rename: 'glibc', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'glibc_standalone', pkg_rename: 'glibc', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'itstool', pkg_rename: 'py3_itstool', comments: 'Renamed to indicate switch to pip buildsystem.' },
   { pkg_name: 'jsonc', pkg_rename: 'json_c', comments: 'Renamed to better match upstream.' },

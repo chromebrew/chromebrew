@@ -47,7 +47,7 @@ module DebUtils
         # if target is passed as string, write matched file to filesyetem and exit function
         # write to filesystem
         return File.binwrite(name, file_content, perm: mode.to_i(8))
-      elsif target.is_a?(Regexp) && name =~ (target)
+      elsif target.is_a?(Regexp) && name =~ target
         # if target is passed as regex, write matched file to filesyetem and continue
         # searching for another matched file until EOF
         # write to filesystem

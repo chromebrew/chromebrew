@@ -33,18 +33,11 @@ class Gcc_build < Package
   depends_on 'zstd' # R
 
   conflicts_ok
-  # no_env_options
   no_mold
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
   @glibc_flags = ''
-  # @gcc_version = `gcc -dumpversion`.chomp
-  # @gcc_arch = `gcc -dumpmachine`.chomp
-  # @gcc_dir = "gcc/#{@gcc_arch}/#{@gcc_version}"
-  # @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags} -I#{CREW_PREFIX}/include"
-  # @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags} -fno-stack-protector -D_FORTIFY_SOURCE=0"
-  # @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags} -fcf-protection=none"
   @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags}"
   @languages = 'c,c++,jit,objc,fortran,go,rust'
   case ARCH
@@ -59,10 +52,7 @@ class Gcc_build < Package
   @path = "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
 
   def self.patch
-    # make sure we are using our shell instead of /bin/sh
-    system "grep -rlZ '/bin/sh ' . | xargs -0 sed -i 's,/bin/sh ,#{CREW_PREFIX}/bin/sh ,g'"
-    system "grep -rlZ \"/bin/sh\\\"\" . | xargs -0 sed -i 's,/bin/sh\",#{CREW_PREFIX}/bin/sh\",g'"
-    system "grep -rlZ \"/bin/sh'\" . | xargs -0 sed -i \"s,/bin/sh',#{CREW_PREFIX}/bin/sh',g\""
+    system 'filefix'
 
     # This fixes a PATH_MAX undefined error which breaks libsanitizer
     # "libsanitizer/asan/asan_linux.cpp:217:21: error: ‘PATH_MAX’ was not declared in this scope"
