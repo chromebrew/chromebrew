@@ -219,7 +219,7 @@ jobs:
                 # else
                 #     echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
                 # fi
-                echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
+                echo "CONTAINER=strongbad-armv7l.m135" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
               ;;
