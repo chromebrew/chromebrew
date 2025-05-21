@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby
+#!/usr/bin/env ruby
 
 if ARGV.include?('-h') || ARGV.include?('--help')
   abort <<~EOM

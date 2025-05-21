@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/local/bin/ruby
 # update_python_pip_packages version 1.4 (for Chromebrew)
 # This updates the versions in python pip packages.
 #
