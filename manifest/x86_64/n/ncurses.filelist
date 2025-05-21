@@ -111,7 +111,9 @@
 /usr/local/share/man/man1/toe.1m.zst
 /usr/local/share/man/man1/tput.1.zst
 /usr/local/share/man/man1/tset.1.zst
+/usr/local/share/man/man3/A_COLOR.3x.zst
 /usr/local/share/man/man3/BC.3x.zst
+/usr/local/share/man/man3/CCHARW_MAX.3x.zst
 /usr/local/share/man/man3/COLORS.3x.zst
 /usr/local/share/man/man3/COLOR_BLACK.3x.zst
 /usr/local/share/man/man3/COLOR_BLUE.3x.zst
@@ -128,6 +130,7 @@
 /usr/local/share/man/man3/ESCDELAY.3x.zst
 /usr/local/share/man/man3/FALSE.3x.zst
 /usr/local/share/man/man3/LINES.3x.zst
+/usr/local/share/man/man3/MEVENT.3x.zst
 /usr/local/share/man/man3/NCURSES_SCREEN_CB.3x.zst
 /usr/local/share/man/man3/NCURSES_WINDOW_CB.3x.zst
 /usr/local/share/man/man3/OK.3x.zst
@@ -566,6 +569,7 @@
 /usr/local/share/man/man3/mitem_userptr.3x.zst
 /usr/local/share/man/man3/mitem_value.3x.zst
 /usr/local/share/man/man3/mitem_visible.3x.zst
+/usr/local/share/man/man3/mmask_t.3x.zst
 /usr/local/share/man/man3/mouse_trafo.3x.zst
 /usr/local/share/man/man3/mouseinterval.3x.zst
 /usr/local/share/man/man3/mouseinterval_sp.3x.zst
@@ -1910,7 +1914,9 @@
 /usr/local/share/terminfo/e/ecma+index
 /usr/local/share/terminfo/e/ecma+italics
 /usr/local/share/terminfo/e/ecma+sgr
+/usr/local/share/terminfo/e/ecma+standout
 /usr/local/share/terminfo/e/ecma+strikeout
+/usr/local/share/terminfo/e/ecma+underline
 /usr/local/share/terminfo/e/elks
 /usr/local/share/terminfo/e/elks-ansi
 /usr/local/share/terminfo/e/elks-glasstty
@@ -1971,6 +1977,7 @@
 /usr/local/share/terminfo/g/gator-52
 /usr/local/share/terminfo/g/gator-52t
 /usr/local/share/terminfo/g/gator-t
+/usr/local/share/terminfo/g/ghostty
 /usr/local/share/terminfo/g/gigi
 /usr/local/share/terminfo/g/glasstty
 /usr/local/share/terminfo/g/gnome
@@ -2226,6 +2233,7 @@
 /usr/local/share/terminfo/i/icl6404
 /usr/local/share/terminfo/i/icl6404-w
 /usr/local/share/terminfo/i/ifmr
+/usr/local/share/terminfo/i/illumos
 /usr/local/share/terminfo/i/ims-ansi
 /usr/local/share/terminfo/i/ims950
 /usr/local/share/terminfo/i/ims950-b
@@ -2302,6 +2310,7 @@
 /usr/local/share/terminfo/l/linux
 /usr/local/share/terminfo/l/linux+decid
 /usr/local/share/terminfo/l/linux+kbs
+/usr/local/share/terminfo/l/linux+lockeys
 /usr/local/share/terminfo/l/linux+sfkeys
 /usr/local/share/terminfo/l/linux-16color
 /usr/local/share/terminfo/l/linux-basic
@@ -2389,6 +2398,7 @@
 /usr/local/share/terminfo/m/minix-old-am
 /usr/local/share/terminfo/m/mintty
 /usr/local/share/terminfo/m/mintty+common
+/usr/local/share/terminfo/m/mintty+keypad
 /usr/local/share/terminfo/m/mintty-direct
 /usr/local/share/terminfo/m/mlterm
 /usr/local/share/terminfo/m/mlterm+pcfkeys
@@ -2411,7 +2421,9 @@
 /usr/local/share/terminfo/m/mouse-sun
 /usr/local/share/terminfo/m/mrxvt
 /usr/local/share/terminfo/m/mrxvt-256color
+/usr/local/share/terminfo/m/ms+terminal
 /usr/local/share/terminfo/m/ms-terminal
+/usr/local/share/terminfo/m/ms-terminal-direct
 /usr/local/share/terminfo/m/ms-vt-utf8
 /usr/local/share/terminfo/m/ms-vt100
 /usr/local/share/terminfo/m/ms-vt100+
@@ -2695,6 +2707,9 @@
 /usr/local/share/terminfo/p/p9-8
 /usr/local/share/terminfo/p/p9-8-w
 /usr/local/share/terminfo/p/p9-w
+/usr/local/share/terminfo/p/pangoterm
+/usr/local/share/terminfo/p/pangoterm-256color
+/usr/local/share/terminfo/p/pangoterm-direct
 /usr/local/share/terminfo/p/pc-coherent
 /usr/local/share/terminfo/p/pc-minix
 /usr/local/share/terminfo/p/pc-venix
@@ -2881,6 +2896,7 @@
 /usr/local/share/terminfo/r/report+version
 /usr/local/share/terminfo/r/rio
 /usr/local/share/terminfo/r/rio-direct
+/usr/local/share/terminfo/r/rlogin-color
 /usr/local/share/terminfo/r/rt6221
 /usr/local/share/terminfo/r/rt6221-w
 /usr/local/share/terminfo/r/rtpc
@@ -2903,6 +2919,7 @@
 /usr/local/share/terminfo/s/sc410
 /usr/local/share/terminfo/s/sc415
 /usr/local/share/terminfo/s/scanset
+/usr/local/share/terminfo/s/sclp
 /usr/local/share/terminfo/s/scoansi
 /usr/local/share/terminfo/s/scoansi-new
 /usr/local/share/terminfo/s/scoansi-old
@@ -2979,6 +2996,7 @@
 /usr/local/share/terminfo/s/st-0.6
 /usr/local/share/terminfo/s/st-0.7
 /usr/local/share/terminfo/s/st-0.8
+/usr/local/share/terminfo/s/st-0.8.5
 /usr/local/share/terminfo/s/st-16color
 /usr/local/share/terminfo/s/st-256color
 /usr/local/share/terminfo/s/st-direct
@@ -2995,14 +3013,17 @@
 /usr/local/share/terminfo/s/sun+sl
 /usr/local/share/terminfo/s/sun-1
 /usr/local/share/terminfo/s/sun-12
+/usr/local/share/terminfo/s/sun-16color
 /usr/local/share/terminfo/s/sun-17
 /usr/local/share/terminfo/s/sun-24
+/usr/local/share/terminfo/s/sun-256color
 /usr/local/share/terminfo/s/sun-34
 /usr/local/share/terminfo/s/sun-48
 /usr/local/share/terminfo/s/sun-c
 /usr/local/share/terminfo/s/sun-cgsix
 /usr/local/share/terminfo/s/sun-cmd
 /usr/local/share/terminfo/s/sun-color
+/usr/local/share/terminfo/s/sun-direct
 /usr/local/share/terminfo/s/sun-e
 /usr/local/share/terminfo/s/sun-e-s
 /usr/local/share/terminfo/s/sun-il
@@ -3092,6 +3113,7 @@
 /usr/local/share/terminfo/t/teraterm2.3
 /usr/local/share/terminfo/t/teraterm4.59
 /usr/local/share/terminfo/t/teraterm4.97
+/usr/local/share/terminfo/t/teraterm5.0
 /usr/local/share/terminfo/t/terminator
 /usr/local/share/terminfo/t/terminet
 /usr/local/share/terminfo/t/terminet1200
@@ -3365,6 +3387,7 @@
 /usr/local/share/terminfo/v/vt100+keypad
 /usr/local/share/terminfo/v/vt100+noapp
 /usr/local/share/terminfo/v/vt100+noapp+pc
+/usr/local/share/terminfo/v/vt100+pf1-pf4
 /usr/local/share/terminfo/v/vt100+pfkeys
 /usr/local/share/terminfo/v/vt100-am
 /usr/local/share/terminfo/v/vt100-bm
@@ -3403,6 +3426,8 @@
 /usr/local/share/terminfo/v/vt220+cvis8
 /usr/local/share/terminfo/v/vt220+keypad
 /usr/local/share/terminfo/v/vt220+pcedit
+/usr/local/share/terminfo/v/vt220+sfkeys
+/usr/local/share/terminfo/v/vt220+ufkeys
 /usr/local/share/terminfo/v/vt220+vtedit
 /usr/local/share/terminfo/v/vt220-8
 /usr/local/share/terminfo/v/vt220-8bit
@@ -3442,8 +3467,10 @@
 /usr/local/share/terminfo/v/vt52+keypad
 /usr/local/share/terminfo/v/vt52-basic
 /usr/local/share/terminfo/v/vt520
+/usr/local/share/terminfo/v/vt520-w
 /usr/local/share/terminfo/v/vt520ansi
 /usr/local/share/terminfo/v/vt525
+/usr/local/share/terminfo/v/vt525-w
 /usr/local/share/terminfo/v/vt61
 /usr/local/share/terminfo/v/vt61.5
 /usr/local/share/terminfo/v/vte
@@ -3454,6 +3481,7 @@
 /usr/local/share/terminfo/v/vte-2014
 /usr/local/share/terminfo/v/vte-2017
 /usr/local/share/terminfo/v/vte-2018
+/usr/local/share/terminfo/v/vte-2022
 /usr/local/share/terminfo/v/vte-256color
 /usr/local/share/terminfo/v/vte-direct
 /usr/local/share/terminfo/v/vtnt
@@ -3597,6 +3625,7 @@
 /usr/local/share/terminfo/w/wy99gt-w
 /usr/local/share/terminfo/w/wy99gt-w-vb
 /usr/local/share/terminfo/w/wy99gt-wvb
+/usr/local/share/terminfo/w/wyse+cvis
 /usr/local/share/terminfo/w/wyse+sl
 /usr/local/share/terminfo/w/wyse-325
 /usr/local/share/terminfo/w/wyse-75ap
@@ -3772,6 +3801,7 @@
 /usr/local/share/terminfo/x/xterm+256color
 /usr/local/share/terminfo/x/xterm+256color2
 /usr/local/share/terminfo/x/xterm+256setaf
+/usr/local/share/terminfo/x/xterm+256setaf2
 /usr/local/share/terminfo/x/xterm+88color
 /usr/local/share/terminfo/x/xterm+88color2
 /usr/local/share/terminfo/x/xterm+acs
@@ -3805,6 +3835,8 @@
 /usr/local/share/terminfo/x/xterm+pcf0
 /usr/local/share/terminfo/x/xterm+pcf2
 /usr/local/share/terminfo/x/xterm+pcfkeys
+/usr/local/share/terminfo/x/xterm+r5+fkeys
+/usr/local/share/terminfo/x/xterm+r5+lockeys
 /usr/local/share/terminfo/x/xterm+r6f2
 /usr/local/share/terminfo/x/xterm+sl
 /usr/local/share/terminfo/x/xterm+sl-alt

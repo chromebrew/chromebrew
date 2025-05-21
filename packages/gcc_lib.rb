@@ -4,8 +4,7 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Gcc_lib < Package
   description 'GCC shared libs except libgccjit'
   homepage Gcc_build.homepage
-  @gcc_libc_version = ARCH.eql?('i686') ? '2.23' : '2.27'
-  version "14.2.0-glibc#{@gcc_libc_version}" # Do not use @_ver here, it will break the installer.
+  version '15.1.0' # Do not use @_ver here, it will break the installer.
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
@@ -13,26 +12,12 @@ class Gcc_lib < Package
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  case @gcc_libc_version
-  when '2.23'
-
-    binary_sha256({
-         i686: '4f82296584a31339ea3d6212403cd844cab0e2c150878239c04211112be80181'
-    })
-  when '2.27', '2.32', '2.33', '2.35'
-
-    binary_sha256({
-      aarch64: '6ebddcef4b4ad7f7baf54c9f1e4912906ca36424d39e9ef3cda40466c8028b36',
-       armv7l: '6ebddcef4b4ad7f7baf54c9f1e4912906ca36424d39e9ef3cda40466c8028b36',
-       x86_64: 'c14b82e8240bc5db1a6634fc33d9405386be19af182f6364e7a318bc9f2714f8'
-    })
-  when '2.37'
-    binary_sha256({
-      aarch64: '98ff61c1fd0d398658b08eaf84141deaa7a6d7b2f0fde5081c583234c0b70448',
-       armv7l: '98ff61c1fd0d398658b08eaf84141deaa7a6d7b2f0fde5081c583234c0b70448',
-       x86_64: '902d07004020783387b436eaf5f9fb9b9a22da608a73486328871396212f503d'
-    })
-  end
+  binary_sha256({
+    aarch64: '4be06dfe638ac3ffa3312c7cd08ff564947f5f07ec67db657c65597237e692c9',
+     armv7l: '4be06dfe638ac3ffa3312c7cd08ff564947f5f07ec67db657c65597237e692c9',
+       i686: '90f15d9ddcfc44ba287e799acc7ba9ca5e9d877e75573063d1d18a8cdc738c79',
+     x86_64: '0550e69986bc8700ec65dd9634a4edfae5d7135ed93a15b14b25000f4a623e53'
+  })
 
   depends_on 'gcc_build' => :build
   depends_on 'glibc' # R
