@@ -6,7 +6,7 @@ require 'buildsystems/rust'
 class Uutils_coreutils < RUST
   description 'Cross-platform Rust rewrite of the GNU coreutils'
   homepage 'https://github.com/uutils/coreutils'
-  version '0.0.30-1'
+  version '0.0.30-2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/uutils/coreutils.git'
@@ -14,10 +14,10 @@ class Uutils_coreutils < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '67d8d5dd2b62a8af7c08b408c0fe9abb97844d66c10f7cc1ad06e94142b83038',
-     armv7l: '67d8d5dd2b62a8af7c08b408c0fe9abb97844d66c10f7cc1ad06e94142b83038',
-       i686: '1d5aa5768760cbe8a188436c207480b9ad7ee755a55268a8683e2c45da6429b2',
-     x86_64: 'b5ac08778f164685a9652ca1e94e07cbbc56db5bfd6f6994e4e6140ddc179577'
+    aarch64: '6f82af5600bd0a9486a5397e32ba66d3af5c180289d556a748daab19ae571b67',
+     armv7l: '6f82af5600bd0a9486a5397e32ba66d3af5c180289d556a748daab19ae571b67',
+       i686: '781b1d315e61440f6749c98791348d53b615757a0e475c666cebdb0211d1e393',
+     x86_64: 'ef42470dc82e309a28cc7c86edc1896a5cfcd9305bea211bb1833f4996c746cc'
   })
 
   depends_on 'acl' => :build
@@ -37,10 +37,10 @@ class Uutils_coreutils < RUST
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/bash-completion/completions"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/man/man1"
     coreutils.each do |util|
-      system "cargo run completion #{util} bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/uu_#{util}"
-      system "cargo run manpage #{util} > #{CREW_DEST_PREFIX}/share/man/man1/uu_#{util}.1"
+      system "cargo run completion #{util} bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/#{util}"
+      system "cargo run manpage #{util} > #{CREW_DEST_PREFIX}/share/man/man1/#{util}.1"
       Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-        FileUtils.ln_s 'coreutils', "uu_#{util}"
+        FileUtils.ln_s 'coreutils', util.to_s
       end
     end
   end

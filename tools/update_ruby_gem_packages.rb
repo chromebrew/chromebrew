@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/local/bin/ruby
 # update_ruby_gem_packages version 1.9 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo:
