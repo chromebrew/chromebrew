@@ -88,7 +88,7 @@ class Libssp < Package
         --enable-languages=#{@languages} \
         --program-suffix=-#{gcc_version} \
         #{@archflags}"
-      system "make"
+      system 'make'
     end
   end
 
