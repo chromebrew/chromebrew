@@ -3,11 +3,11 @@ require 'package'
 class Filecmd < Package
   description 'file and libmagic determine file type'
   homepage 'https://darwinsys.com/file/'
-  version '5.46'
+  version '5.46-1'
   license 'BSD-2 and GPL-3+' # Chromebrew's filefix is GPL-3+, file itself is BSD-2
   compatibility 'all'
   source_url 'https://github.com/file/file.git'
-  git_hashtag "FILE#{version.gsub('.', '_')}"
+  git_hashtag "FILE#{version.split('-').first.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -34,9 +34,15 @@ class Filecmd < Package
 
     File.write 'filefix', <<~FILEFIX_EOF
       #!/usr/bin/env bash
+      # Fix Error: /usr/bin/file file not found.
       while IFS= read -r -d '' f; do
         sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' "${f}"
       done <  <(find . -name configure -print0)
+      # Make sure we are using the Chromebrew bash shell instead of
+      # /bin/sh which in ChromeOS is actually dash.
+      grep -rlZ '/bin/sh ' . | xargs -0 sed -i 's,/bin/sh ,#{CREW_PREFIX}/bin/sh ,g'
+      grep -rlZ "/bin/sh\"" . | xargs -0 sed -i 's,/bin/sh",#{CREW_PREFIX}/bin/sh",g'
+      grep -rlZ "/bin/sh'" . | xargs -0 sed -i "s,/bin/sh',#{CREW_PREFIX}/bin/sh',g"
     FILEFIX_EOF
   end
 
