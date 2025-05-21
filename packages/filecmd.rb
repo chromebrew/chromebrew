@@ -11,14 +11,13 @@ class Filecmd < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a39059b9d23a4edc65ce4bd4862c2bc266913dad5390a188246b397af205c99b',
-     armv7l: 'a39059b9d23a4edc65ce4bd4862c2bc266913dad5390a188246b397af205c99b',
-       i686: '280384bb1d71cc5fe88c71a7f7b80bf6dd774adb1e72acdaac5ea56c8bc589b5',
-     x86_64: '1eb7b2f5966d987cda130a0f9c6cf220614f4bd126a02764af68c1c860dad6d2'
+    aarch64: 'a9356b92cc06dfe05adf0df04dc157af9b37a668c164714658fffa05d15120b4',
+     armv7l: 'a9356b92cc06dfe05adf0df04dc157af9b37a668c164714658fffa05d15120b4',
+       i686: '17f1ca5965430ed9913af2c0747a6924ffb171103c36a1b76255317c47bdb87c',
+     x86_64: '8b4302f3b0c151193d1c176a02d0efa0a3db93f4ffee956ba14f984957c1cd66'
   })
 
   depends_on 'bzip2' # R
-  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'lzlib' # R Fixes checking lzlib.h usability... no
   depends_on 'xzutils' # R
@@ -35,14 +34,18 @@ class Filecmd < Package
     File.write 'filefix', <<~FILEFIX_EOF
       #!/usr/bin/env bash
       # Fix Error: /usr/bin/file file not found.
+      echo "filefix: Checking for scripts using: '/usr/bin/file' ..."
       while IFS= read -r -d '' f; do
         sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' "${f}"
       done <  <(find . -name configure -print0)
       # Make sure we are using the Chromebrew bash shell instead of
       # /bin/sh which in ChromeOS is actually dash.
-      grep -rlZ '/bin/sh ' . | xargs -0 sed -i 's,/bin/sh ,#{CREW_PREFIX}/bin/sh ,g'
-      grep -rlZ "/bin/sh\"" . | xargs -0 sed -i 's,/bin/sh",#{CREW_PREFIX}/bin/sh",g'
-      grep -rlZ "/bin/sh'" . | xargs -0 sed -i "s,/bin/sh',#{CREW_PREFIX}/bin/sh',g"
+      echo "filefix: Checking for scripts using: '/bin/sh ' ..."
+      grep -rlZ '/bin/sh ' . | xargs -r -0 sed -i 's,/bin/sh ,#{CREW_PREFIX}/bin/sh ,g'
+      echo "filefix: Checking for scripts using: '/bin/sh \\\"' ..."
+      grep -rlZ "/bin/sh\\\"" . | xargs -r -0 sed -i 's,/bin/sh",#{CREW_PREFIX}/bin/sh",g'
+      echo "filefix: Checking for scripts using: \\\"'/bin/sh '\\\" ..."
+      grep -rlZ "/bin/sh\\\'" . | xargs -r -0 sed -i "s,/bin/sh',#{CREW_PREFIX}/bin/sh',g"
     FILEFIX_EOF
   end
 

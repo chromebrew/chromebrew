@@ -5685,6 +5685,16 @@ url: https://github.com/kristapsdz/releases
 activity: medium
 ---
 kind: url
+name: lrzip
+url: https://github.com/ckolivas/lrzip/releases
+activity: low
+---
+kind: url
+name: lrzip_next
+url: https://github.com/pete4abw/lrzip-next/releases
+activity: medium
+---
+kind: url
 name: lsb_release
 url: https://sourceforge.net/projects/lsb/files/lsb_release/
 activity: none
