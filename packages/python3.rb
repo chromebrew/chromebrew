@@ -126,7 +126,7 @@ class Python3 < Package
     @required_pip_modules.each do |pip_pkg|
       unless @pip_list.include?(pip_pkg)
         puts "Installing #{pip_pkg} using pip..."
-        system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
+        Kernel.system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
       end
     end
 
