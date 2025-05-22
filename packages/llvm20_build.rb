@@ -121,7 +121,7 @@ class Llvm20_build < Package
         clang++ -fPIC -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
       CLCPLUSPLUS_EOF
       system "cmake -B builddir -G Ninja llvm \
-            -DCLANG_DEFAULT_LINKER=#{CREW_LINKER} \
+            -DCLANG_DEFAULT_LINKER=mold \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_C_COMPILER=$(which clang) \
