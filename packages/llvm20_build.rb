@@ -61,8 +61,8 @@ class Llvm20_build < Package
     @ARCH_CXX_FLAGS = ''
     @ARCH_LDFLAGS = ''
   end
-  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -fPIC -flto=thin -B#{CREW_GLIBC_PREFIX} #{CREW_LINKER_FLAGS}"
-  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -fPIC -flto=thin -B#{CREW_GLIBC_PREFIX} #{CREW_LINKER_FLAGS}"
+  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -fPIC -flto=thin #{CREW_LINKER_FLAGS}"
+  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -fPIC -flto=thin #{CREW_LINKER_FLAGS}"
   @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin #{CREW_LINKER_FLAGS}"
   # flang isn't supported on 32-bit architectures.
   # openmp is its own package.
@@ -132,6 +132,7 @@ class Llvm20_build < Package
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
             -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}"}' \
             -DCLANG_DEFAULT_LINKER=mold \
+            -DCMAKE_LIBRARY_PATH='#{CREW_LIB_PREFIX}' \
             -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
             -DCOMPILER_RT_BUILD_BUILTINS=ON \
             -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
