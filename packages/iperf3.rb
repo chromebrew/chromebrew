@@ -13,7 +13,6 @@ class Iperf3 < Autotools
   binary_sha256({
     aarch64: '6d1f11be725fd53e241727abe0759d70edee0b1981b7d11139a4d844c3ef479e',
      armv7l: '6d1f11be725fd53e241727abe0759d70edee0b1981b7d11139a4d844c3ef479e',
-       i686: 'ddf4ec2075b93914bb9d05054d825d988d0c539cc520ba7af271e151597b6b94',
      x86_64: '83ffd6ce9d37f74638673bd9fca78206aae34e338cff9eff855c688e6fb157e6'
   })
 
