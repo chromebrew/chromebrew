@@ -204,7 +204,7 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
     # Recent Arm systems have a cut down system.
     if [[ "${ARCH}" == "armv7l" ]];then
-      BOOTSTRAP_PACKAGES+=' bzip2 pcre2'
+      BOOTSTRAP_PACKAGES+=' bzip2 pcre2 uutils_coreutils'
     fi
   fi
 fi
