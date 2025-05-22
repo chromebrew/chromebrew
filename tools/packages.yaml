@@ -8235,6 +8235,11 @@ url: https://github.com/markdownlint/markdownlint/tags
 activity: low
 ---
 kind: url
+name: ruby_method_source
+url: https://github.com/banister/method_source/tags
+activity: low
+---
+kind: url
 name: ruby_parallel
 url: https://github.com/grosser/parallel/tags
 activity: medium

@@ -37,16 +37,16 @@ def check_for_updated_ruby_packages
       # https://github.com/rubygems/rubygems/blob/b5798efd348935634d4e0e2b846d4f455582db48/lib/rubygems/version.rb#L305
       gem_test_versions.delete_if { |i| i.match?(/[a-zA-Z]/) }
       gem_test_version = gem_test_versions.max
-      gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(untested_package_name).first : gem_test_name
-      gem_version = gem_test_name.blank? ? Gem.latest_version_for(untested_package_name).to_s : gem_test_version
-      next package if gem_version.blank?
+      ruby_gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(untested_package_name).first : gem_test_name
+      ruby_gem_version = gem_test_name.blank? ? Gem.latest_version_for(untested_package_name).to_s : gem_test_version
+      next package if ruby_gem_version.blank?
 
       relevant_gem_packages.delete(package)
-      puts "[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Checking rubygems for updates to #{gem_name} in #{package}...".orange
+      puts "[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Checking rubygems for updates to #{ruby_gem_name} in #{package}...".orange
       pkg_version = `sed -n -e 's/^\ \ version //p' #{package}`.chomp.delete("'").delete('"').gsub(/-\#{CREW_RUBY_VER}/, '').split('-').first
-      next package unless Gem::Version.new(gem_version) > Gem::Version.new(pkg_version)
+      next package unless Gem::Version.new(ruby_gem_version) > Gem::Version.new(pkg_version)
 
-      updateable_packages[package] = gem_version
+      updateable_packages[package] = ruby_gem_version
     end
   end
   pool.shutdown

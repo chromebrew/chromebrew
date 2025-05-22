@@ -661,8 +661,8 @@ def unpack(meta)
         FileUtils.chmod 0o755, meta[:filename], verbose: CREW_VERBOSE
         system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
       when /\.gem$/i
-        puts "Moving #{@pkg.gem_name} binary gem for install..."
-        gem_file = "#{@pkg.gem_name}-#{@pkg.gem_version}-#{GEM_ARCH}.gem"
+        puts "Moving #{@pkg.ruby_gem_name} binary gem for install..."
+        gem_file = "#{@pkg.ruby_gem_name}-#{@pkg.ruby_gem_version}-#{GEM_ARCH}.gem"
         FileUtils.mv meta[:filename], File.join(@extract_dir, gem_file)
       end
     end
@@ -1190,7 +1190,7 @@ def install
   elsif @pkg.superclass.to_s == 'RUBY'
     meta = download
     target_dir = unpack meta
-    gem_file = "#{@pkg.gem_name}-#{@pkg.gem_version}-#{GEM_ARCH}.gem"
+    gem_file = "#{@pkg.ruby_gem_name}-#{@pkg.ruby_gem_version}-#{GEM_ARCH}.gem"
     if File.file?(File.join(target_dir, gem_file))
       FileUtils.mv File.join(target_dir, gem_file), File.join(CREW_DEST_DIR, gem_file)
     else
@@ -1324,7 +1324,7 @@ end
 
 def archive_package(crew_archive_dest)
   if @pkg.superclass.to_s == 'RUBY'
-    gem_file = "#{@pkg.gem_name}-#{@pkg.gem_version}-#{GEM_ARCH}.gem"
+    gem_file = "#{@pkg.ruby_gem_name}-#{@pkg.ruby_gem_version}-#{GEM_ARCH}.gem"
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.gem"
     begin
       FileUtils.mv File.join(CREW_DEST_DIR, gem_file), File.join(crew_archive_dest, pkg_name)

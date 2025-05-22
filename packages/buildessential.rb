@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.43'
+  version '1.44'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -170,6 +170,8 @@ class Buildessential < Package
   depends_on 'ruby_concurrent_ruby'
   # Needed for irb
   depends_on 'ruby_debug'
+  # Needed for buildsystems reporting.
+  depends_on 'ruby_method_source'
   # For crew debugging.
   depends_on 'ruby_pry_byebug'
   # Add rubocop for linting packages. (This also installs the

@@ -1,9 +1,26 @@
 require 'package'
+require 'require_gem'
 
 class Python < Package
-  property :no_svem, :python_build_extras, :python_build_options, :python_build_relative_dir, :python_install_extras, :python_install_options
+  property :python_build_extras, :python_build_options, :python_build_relative_dir, :python_install_extras, :python_install_options, :python_no_svem
 
   def self.build
+    puts "Additional #{superclass.to_s.capitalize} options being used:".orange
+    method_list = methods.grep(/python_/).delete_if { |i| send(i).blank? }
+    require_gem 'method_source'
+    method_blocks = []
+    method_strings = []
+    method_list.sort.each do |method|
+      @method_info = send method
+      if @method_info.is_a? String
+        method_strings << "#{method}: #{@method_info}".orange
+      else
+        method_blocks << @method_info.source.to_s.orange
+      end
+    end
+    puts method_strings
+    puts method_blocks
+
     @python_build_relative_dir ||= '.'
     Dir.chdir(@python_build_relative_dir) do
       if File.file?('setup.py')
@@ -22,7 +39,7 @@ class Python < Package
   def self.install
     Dir.chdir(@python_build_relative_dir) do
       if File.file?('setup.py')
-        @py_setup_install_options = @no_svem ? PY_SETUP_INSTALL_OPTIONS_NO_SVEM : PY_SETUP_INSTALL_OPTIONS
+        @py_setup_install_options = @python_no_svem ? PY_SETUP_INSTALL_OPTIONS_NO_SVEM : PY_SETUP_INSTALL_OPTIONS
         puts "Python install options being used: #{@py_setup_install_options} #{@python_install_options}".orange
         puts "MAKEFLAGS=-j#{CREW_NPROC} python3 setup.py install #{@py_setup_install_options} #{@python_install_options}" if CREW_VERBOSE
         system "MAKEFLAGS=-j#{CREW_NPROC} python3 setup.py install #{@py_setup_install_options} #{@python_install_options}"
