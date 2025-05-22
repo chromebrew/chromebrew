@@ -34,10 +34,10 @@ class Command
 
     # Use gem to first try to remove gems...
     if pkg.name.start_with?('ruby_')
-      @gem_name = pkg.name.sub('ruby_', '').sub('_', '-')
-      if Kernel.system "gem list -i \"^#{@gem_name}\$\"", %i[out err] => File::NULL
-        puts "Uninstalling #{@gem_name} before removing gem files. It's ok if this fails.".orange
-        system "gem uninstall -aIx --abort-on-dependent #{@gem_name}", exception: false
+      @ruby_gem_name = pkg.name.sub('ruby_', '').sub('_', '-')
+      if Kernel.system "gem list -i \"^#{@ruby_gem_name}\$\"", %i[out err] => File::NULL
+        puts "Uninstalling #{@ruby_gem_name} before removing gem files. It's ok if this fails.".orange
+        system "gem uninstall -aIx --abort-on-dependent #{@ruby_gem_name}", exception: false
       end
     end
 

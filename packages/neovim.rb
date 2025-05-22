@@ -54,10 +54,10 @@ class Neovim < CMake
       puts 'Default vi set to nvim.'.lightgreen
     end
 
-    @gem_name = name
-    system "gem uninstall -Dx --force --abort-on-dependent #{@gem_name}", exception: false
+    @ruby_gem_name = name
+    system "gem uninstall -Dx --force --abort-on-dependent #{@ruby_gem_name}", exception: false
     puts 'Installing neovim gem.'.lightblue
-    system "gem install -N #{@gem_name}", exception: false
+    system "gem install -N #{@ruby_gem_name}", exception: false
     puts 'Installing neovim python module. This may take a while...'.lightblue
     system 'pip install neovim', exception: false
     # cpanm install breaks due to failure to install Archive::zip.
@@ -66,10 +66,10 @@ class Neovim < CMake
   end
 
   def self.postremove
-    @gem_name = name
-    @gems_deps = `gem dependency ^#{@gem_name}\$ | awk '{print \$1}'`.chomp
+    @ruby_gem_name = name
+    @gems_deps = `gem dependency ^#{@ruby_gem_name}\$ | awk '{print \$1}'`.chomp
     # Delete the first line and convert to an array.
-    @gems = @gems_deps.split("\n").drop(1).append(@gem_name)
+    @gems = @gems_deps.split("\n").drop(1).append(@ruby_gem_name)
     # bundler never gets uninstalled, though gem dependency lists it for
     # every package, so delete it from the list.
     @gems.delete('bundler')
