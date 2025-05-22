@@ -130,7 +130,8 @@ updated_packages.each do |pkg|
       puts "#{name.capitalize} #{@pkg_obj.version} needs builds uploaded for: #{builds_needed.join(' ')}".lightblue
 
       if builds_needed.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{@pkg_obj.version}-chromeos-#{ARCH}.#{@pkg_obj.binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@pkg_obj.version}")
-        system "yes | nice -n 20 crew build -f #{pkg}"
+        system "env | grep CREW_CACHE"
+        system "yes | nice -n 20 crew build -v -f #{pkg}"
         abort "#{pkg} build failed!".lightred unless $CHILD_STATUS.success?
         # Reinvoke this script to take just built packages that have been built and
         # installed into account, attempting uploads of just built packages immediately.

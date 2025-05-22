@@ -11,9 +11,11 @@ class Iperf3 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b58c66a6ac474fff36e1336194fb0e8b9fac68ccd7bcb8b083e85c48d4d7011e',
-     armv7l: 'b58c66a6ac474fff36e1336194fb0e8b9fac68ccd7bcb8b083e85c48d4d7011e',
+    aarch64: '8b3dd7dceeafb613e8a278fffdf6b2226a4942b9deaf2a4e7f997014d3f1c801',
+     armv7l: '8b3dd7dceeafb613e8a278fffdf6b2226a4942b9deaf2a4e7f997014d3f1c801',
        i686: 'ddf4ec2075b93914bb9d05054d825d988d0c539cc520ba7af271e151597b6b94',
      x86_64: '83ffd6ce9d37f74638673bd9fca78206aae34e338cff9eff855c688e6fb157e6'
   })
+
+  depends_on 'openssl' # R
 end
