@@ -23,5 +23,5 @@ class Openssh < Autotools
   depends_on 'openssl' # R
   depends_on 'zlib' # R
 
-  configure_options '--enable-year2038 --without-hardening --without-retpoline'
+  autotools_configure_options '--enable-year2038 --without-hardening --without-retpoline'
 end

@@ -20,5 +20,5 @@ class Ntfs_3g < Autotools
   depends_on 'glibc' # R
   depends_on 'util_linux' # R
 
-  configure_options "--exec-prefix=#{CREW_PREFIX} --disable-ntfs-3g"
+  autotools_configure_options "--exec-prefix=#{CREW_PREFIX} --disable-ntfs-3g"
 end

@@ -48,7 +48,7 @@ class A2png < Autotools
   # Autotools: https://www.gnu.org/software/automake/manual/1.16.5/html_node/Standard-Directory-Variables.html
   # a2png expects cairo to be in $prefix/lib and $prefix/include/cairo, but we sometimes have it in $prefix/lib64.
   # As a result, we have to pass both directories rather than just --with-cairo-prefix=#{CREW_PREFIX}.
-  configure_options "--with-cairo-lib=#{CREW_LIB_PREFIX} --with-cairo-include=#{CREW_PREFIX}/include/cairo"
+  autotools_configure_options "--with-cairo-lib=#{CREW_LIB_PREFIX} --with-cairo-include=#{CREW_PREFIX}/include/cairo"
 
   run_tests
 end

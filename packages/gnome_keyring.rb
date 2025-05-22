@@ -40,7 +40,7 @@ class Gnome_keyring < Autotools
 
   gnome
 
-  configure_options "--with-pam-dir=#{CREW_PREFIX}/lib/security \
+  autotools_configure_options "--with-pam-dir=#{CREW_PREFIX}/lib/security \
     --disable-selinux \
     --disable-schemas-compile \
     --disable-doc" # Docs cannot be used due to #4275

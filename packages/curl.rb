@@ -34,7 +34,7 @@ class Curl < Autotools
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  configure_options "--disable-maintainer-mode \
+  autotools_configure_options "--disable-maintainer-mode \
       --enable-ares \
       --enable-ipv6 \
       --enable-ldap \

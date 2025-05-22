@@ -41,9 +41,9 @@ class Coreutils < Autotools
     EOF
   end
 
-  configure_options '--disable-year2038' unless ARCH.include?('x86_64')
+  autotools_configure_options '--disable-year2038' unless ARCH.include?('x86_64')
 
-  configure_install_extras do
+  autotools_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'arch', "#{CREW_DEST_PREFIX}/bin/arch", mode: 0o755
     # Remove conflicts with psmisc package.

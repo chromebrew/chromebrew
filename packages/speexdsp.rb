@@ -20,6 +20,6 @@ class Speexdsp < Autotools
   depends_on 'glibc' # R
   depends_on 'speex' # R
 
-  configure_options '--disable-maintainer-mode \
+  autotools_configure_options '--disable-maintainer-mode \
       --disable-examples'
 end

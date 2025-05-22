@@ -28,7 +28,7 @@ class Cogl < Autotools
 
   gnome
 
-  configure_options '--enable-cairo=yes \
+  autotools_configure_options '--enable-cairo=yes \
   --enable-cogl-pango=yes \
   --enable-gdk-pixbuf=yes \
   --enable-cogl-gst=yes  \

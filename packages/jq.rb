@@ -3,12 +3,11 @@ require 'buildsystems/autotools'
 class Jq < Autotools
   description 'jq is a lightweight and flexible command-line JSON processor.'
   homepage 'https://stedolan.github.io/jq/'
-  @_ver = '1.7'
-  version @_ver
+  version '1.7.1'
   license 'MIT and CC-BY-3.0'
   compatibility 'all'
   source_url 'https://github.com/stedolan/jq.git'
-  git_hashtag "jq-#{@_ver}"
+  git_hashtag "jq-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -20,6 +19,6 @@ class Jq < Autotools
 
   depends_on 'glibc'
 
-  configure_options '--disable-maintainer-mode \
+  autotools_configure_options '--disable-maintainer-mode \
       --disable-docs'
 end

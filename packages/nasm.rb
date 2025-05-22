@@ -20,7 +20,7 @@ class Nasm < Autotools
   depends_on 'py3_asciidoc' => :build
   depends_on 'xmlto' => :build
 
-  configure_build_extras do
+  autotools_build_extras do
     system 'make manpages'
   end
 end

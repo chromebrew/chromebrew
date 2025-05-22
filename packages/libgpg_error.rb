@@ -23,5 +23,5 @@ class Libgpg_error < Autotools
   depends_on 'glibc' # R
 
   # Docs fail to build otherwise.
-  configure_options '--enable-maintainer-mode'
+  autotools_configure_options '--enable-maintainer-mode'
 end

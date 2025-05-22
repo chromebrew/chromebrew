@@ -37,6 +37,6 @@ class Ecasound < Autotools
   depends_on 'readline'
   depends_on 'ruby'
 
-  configure_options '--disable-pyecasound'
+  autotools_configure_options '--disable-pyecasound'
   run_tests
 end

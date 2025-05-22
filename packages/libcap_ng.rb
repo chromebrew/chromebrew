@@ -25,5 +25,5 @@ class Libcap_ng < Autotools
     system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' utils/captest.c"
   end
 
-  configure_options "--with-capability_header=#{CREW_PREFIX}/include/linux/capability.h"
+  autotools_configure_options "--with-capability_header=#{CREW_PREFIX}/include/linux/capability.h"
 end

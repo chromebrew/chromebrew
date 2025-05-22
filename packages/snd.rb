@@ -32,7 +32,7 @@ class Snd < Autotools
   depends_on 'speexdsp'
   depends_on 'pulseaudio'
 
-  configure_options '--with-s7 \
+  autotools_configure_options '--with-s7 \
     --with-ruby \
     --with-motif \
     --with-gui \

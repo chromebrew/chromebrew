@@ -20,6 +20,6 @@ class Fftw < Autotools
   # We'd need to build fftw three times with each precision option in order to support things properly.
   # https://www.linuxfromscratch.org/blfs/view/cvs/general/fftw.html
   # https://github.com/FFTW/fftw3/pull/276
-  configure_options '--enable-shared'
+  autotools_configure_options '--enable-shared'
   run_tests
 end

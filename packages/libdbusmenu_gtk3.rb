@@ -35,7 +35,7 @@ class Libdbusmenu_gtk3 < Autotools
   depends_on 'vala' => :build
   depends_on 'zlib' # R
 
-  configure_options '--disable-dumper --disable-scrollkeeper --disable-gtk-doc --enable-introspection --with-gtk=3'
+  autotools_configure_options '--disable-dumper --disable-scrollkeeper --disable-gtk-doc --enable-introspection --with-gtk=3'
 
   def self.patch
     downloader "http://archive.ubuntu.com/ubuntu/pool/main/libd/libdbusmenu/libdbusmenu_#{@ubuntu_version}.debian.tar.xz", '2d00f79281340516f326468efee0e75651f0926834ce2671195f7a6b5945b314'

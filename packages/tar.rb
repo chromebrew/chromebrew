@@ -20,5 +20,5 @@ class Tar < Autotools
   depends_on 'acl' # R
   depends_on 'glibc' # R
 
-  configure_options '--disable-year2038' unless ARCH == 'x86_64'
+  autotools_configure_options '--disable-year2038' unless ARCH == 'x86_64'
 end

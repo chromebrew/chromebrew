@@ -37,20 +37,20 @@ class Httpd < Autotools
     ConvenienceFunctions.libtoolize('expat')
   end
 
-  configure_build_extras do
+  autotools_build_extras do
     File.write '10-httpd', <<~EOF
       #!/bin/bash
       [ -f #{CREW_PREFIX}/bin/apachectl ] && sudo #{CREW_PREFIX}/bin/apachectl start
     EOF
   end
 
-  configure_options "--prefix=#{CREW_PREFIX}/share/httpd \
+  autotools_configure_options "--prefix=#{CREW_PREFIX}/share/httpd \
     --bindir=#{CREW_PREFIX}/bin \
     --sbindir=#{CREW_PREFIX}/bin \
     --disable-maintainer-mode \
     --disable-debugger-mode"
 
-  configure_install_extras do
+  autotools_install_extras do
     FileUtils.install '10-httpd', "#{CREW_PREFIX}/etc/bash.d/10-httpd", mode: 0o755
   end
 

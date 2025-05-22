@@ -32,6 +32,6 @@ class Hwloc < Autotools
   depends_on 'libxml2' # R
   depends_on 'pciutils' => :build
 
-  configure_options "--enable-plugins \
+  autotools_configure_options "--enable-plugins \
     --sysconfdir=#{CREW_PREFIX}/etc"
 end

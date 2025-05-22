@@ -18,5 +18,5 @@ class Iptables < Autotools
 
   depends_on 'glibc' # R
 
-  configure_options '--enable-static --disable-nftables'
+  autotools_configure_options '--enable-static --disable-nftables'
 end

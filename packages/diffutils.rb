@@ -20,5 +20,5 @@ class Diffutils < Autotools
   depends_on 'glibc' # R
   depends_on 'libsigsegv' # R
 
-  configure_options '--disable-year2038' unless ARCH == 'x86_64'
+  autotools_configure_options '--disable-year2038' unless ARCH == 'x86_64'
 end

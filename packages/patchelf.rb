@@ -19,7 +19,7 @@ class Patchelf < Autotools
 
   no_env_options
 
-  pre_configure_options "LDFLAGS='#{CREW_LINKER_FLAGS} -static'"
+  autotools_pre_configure_options "LDFLAGS='#{CREW_LINKER_FLAGS} -static'"
 
   def self.check
     system "#{CREW_DEST_PREFIX}/bin/patchelf --version"

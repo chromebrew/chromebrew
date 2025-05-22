@@ -23,8 +23,8 @@ class Mpg123 < Autotools
 
   case ARCH
   when 'i686'
-    configure_options '--with-audio=alsa --with-cpu=i386'
+    autotools_configure_options '--with-audio=alsa --with-cpu=i386'
   else
-    configure_options '--with-audio=alsa'
+    autotools_configure_options '--with-audio=alsa'
   end
 end

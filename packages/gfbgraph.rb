@@ -24,7 +24,7 @@ class Gfbgraph < Autotools
 
   gnome
 
-  configure_options '--enable-gtk-doc \
+  autotools_configure_options '--enable-gtk-doc \
     --enable-introspection'
 
   def self.install

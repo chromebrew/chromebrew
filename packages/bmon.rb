@@ -22,5 +22,5 @@ class Bmon < Autotools
   depends_on 'ncurses'
   depends_on 'glibc' # R
 
-  configure_options '--without-ncurses --with-ncursesw'
+  autotools_configure_options '--without-ncurses --with-ncursesw'
 end

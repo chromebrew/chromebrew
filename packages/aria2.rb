@@ -38,7 +38,7 @@ class Aria2 < Autotools
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  configure_options "--with-libnettle --with-libgcrypt --with-libssh2 \
+  autotools_configure_options "--with-libnettle --with-libgcrypt --with-libssh2 \
     --with-ca-bundle=#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
 
   # run_tests

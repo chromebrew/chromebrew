@@ -34,7 +34,7 @@ class Wget2 < Autotools
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  configure_options '--enable-year2038 \
+  autotools_configure_options '--enable-year2038 \
                   --with-openssl=no \
                   --with-ssl=gnutls \
                   --without-libidn \

@@ -25,7 +25,7 @@ class Texinfo < Autotools
   depends_on 'perl_text_unidecode' # L
   depends_on 'perl_unicode_eastasianwidth' # L
 
-  configure_options '--with-external-Text-Unidecode \
+  autotools_configure_options '--with-external-Text-Unidecode \
     --with-external-Unicode-EastAsianWidth'
 
   run_tests

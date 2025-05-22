@@ -20,6 +20,6 @@ class Gmp < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
-  configure_options '--disable-maintainer-mode \
+  autotools_configure_options '--disable-maintainer-mode \
       --enable-cxx'
 end

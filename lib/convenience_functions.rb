@@ -5,6 +5,7 @@ require_relative 'color'
 require_relative 'const'
 require_relative 'crewlog'
 require_relative 'downloader'
+require_relative 'require_gem'
 
 class ConvenienceFunctions
   def self.determine_conflicts(pkg_name, filelist = File.join(CREW_META_PATH, "#{pkg_name}.filelist"), exclude_suffix = nil, verbose: false)
@@ -117,6 +118,24 @@ class ConvenienceFunctions
       puts "patch -Np1 -i #{patch_file}" if CREW_VERBOSE
       system "patch -Np1 -i #{patch_file}"
     end
+  end
+
+  def self.print_buildsystems_methods
+    puts "Additional #{superclass.to_s.capitalize} options being used:".orange
+    method_list = methods.grep(/#{superclass.to_s.downcase}_/).delete_if { |i| send(i).blank? }
+    require_gem 'method_source'
+    method_blocks = []
+    method_strings = []
+    method_list.sort.each do |method|
+      @method_info = send method
+      if @method_info.is_a? String
+        method_strings << "#{method}: #{@method_info}".orange
+      else
+        method_blocks << @method_info.source.to_s.orange
+      end
+    end
+    puts method_strings
+    puts method_blocks
   end
 
   def self.set_default_browser(browser_name, browser_binary)

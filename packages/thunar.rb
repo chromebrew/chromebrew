@@ -47,7 +47,7 @@ class Thunar < Autotools
     ConvenienceFunctions.libtoolize('harfbuzz')
   end
 
-  configure_options '--enable-gio-unix \
+  autotools_configure_options '--enable-gio-unix \
     --enable-gudev \
     --enable-exif \
     --enable-pcre \

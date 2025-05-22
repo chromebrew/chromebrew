@@ -25,5 +25,5 @@ class Libnsl < Autotools
   depends_on 'krb5' # R
   depends_on 'libtirpc' # R
 
-  configure_options '--disable-static'
+  autotools_configure_options '--disable-static'
 end

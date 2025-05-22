@@ -39,5 +39,5 @@ class Gnome_docking_library < Autotools
     system 'patch -Np1 -i 4.patch'
   end
 
-  configure_options '--disable-gtk-doc'
+  autotools_configure_options '--disable-gtk-doc'
 end

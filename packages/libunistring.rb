@@ -19,6 +19,6 @@ class Libunistring < Autotools
 
   depends_on 'glibc'
 
-  configure_options '--enable-static \
+  autotools_configure_options '--enable-static \
       --enable-shared'
 end

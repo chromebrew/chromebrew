@@ -26,7 +26,7 @@ class Source_highlight < Autotools
   depends_on 'glibc' # R
   depends_on 'texinfo' => :build
 
-  configure_options "--sysconfdir=#{CREW_PREFIX}/etc \
+  autotools_configure_options "--sysconfdir=#{CREW_PREFIX}/etc \
       --with-bash-completion=#{CREW_PREFIX}/share/bash-completion/completions"
 
   def self.install

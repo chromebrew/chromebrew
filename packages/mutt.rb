@@ -25,14 +25,14 @@ class Mutt < Autotools
   depends_on 'openssl' # R
   depends_on 'zlib' # R
 
-  configure_options "--with-mailpath=#{CREW_PREFIX}/etc/mail \
+  autotools_configure_options "--with-mailpath=#{CREW_PREFIX}/etc/mail \
     --with-sasl=#{CREW_LIB_PREFIX}/sasl2 \
     --with-ssl \
     --enable-imap \
     --enable-smtp \
     --enable-hcache"
 
-  configure_install_extras do
+  autotools_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/mail"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/mutt", <<~MUTTEOF

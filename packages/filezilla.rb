@@ -45,15 +45,15 @@ class Filezilla < Autotools
 
   print_source_bashrc
 
-  configure_options '--disable-maintainer-mode --with-pugixml=builtin'
+  autotools_configure_options '--disable-maintainer-mode --with-pugixml=builtin'
 
-  configure_build_extras do
+  autotools_build_extras do
     File.write '10-filezilla', <<~FILEZILLA_EOF
       alias filezilla="WAYLAND_DISPLAY=wayland-0 DISPLAY='' GDK_BACKEND=wayland filezilla"
     FILEZILLA_EOF
   end
 
-  configure_install_extras do
+  autotools_install_extras do
     FileUtils.install '10-filezilla', "#{CREW_DEST_PREFIX}/etc/env.d/10-filezilla", mode: 0o644
   end
 end
