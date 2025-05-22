@@ -121,8 +121,9 @@ class ConvenienceFunctions
   end
 
   def self.print_buildsystems_methods
-    puts "Additional #{superclass.to_s.capitalize} options being used:".orange
     method_list = methods.grep(/#{superclass.to_s.downcase}_/).delete_if { |i| send(i).blank? }
+    return if method_list.empty?
+
     require_gem 'method_source'
     method_blocks = []
     method_strings = []
@@ -134,6 +135,7 @@ class ConvenienceFunctions
         method_blocks << @method_info.source.to_s.orange
       end
     end
+    puts "Additional #{superclass.to_s.capitalize} options being used:".orange
     puts method_strings
     puts method_blocks
   end
