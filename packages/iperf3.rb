@@ -1,32 +1,20 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Iperf3 < Package
+class Iperf3 < Autotools
   description 'iPerf3 is a tool for active measurements of the maximum achievable bandwidth on IP networks.'
   homepage 'https://iperf.fr'
-  version '3.7'
+  version '3.19'
   license 'BSD-3'
-  compatibility 'all'
-  source_url 'https://github.com/esnet/iperf/archive/3.7.tar.gz'
-  source_sha256 'c349924a777e8f0a70612b765e26b8b94cc4a97cc21a80ed260f65e9823c8fc5'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://github.com/esnet/iperf.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b58c66a6ac474fff36e1336194fb0e8b9fac68ccd7bcb8b083e85c48d4d7011e',
-     armv7l: 'b58c66a6ac474fff36e1336194fb0e8b9fac68ccd7bcb8b083e85c48d4d7011e',
-       i686: 'ddf4ec2075b93914bb9d05054d825d988d0c539cc520ba7af271e151597b6b94',
-     x86_64: '790a85d3e616b4e02b05c43c6e2ae31d0f8e100a6020f060279ba7dec427c8f5'
+    aarch64: '6d1f11be725fd53e241727abe0759d70edee0b1981b7d11139a4d844c3ef479e',
+     armv7l: '6d1f11be725fd53e241727abe0759d70edee0b1981b7d11139a4d844c3ef479e',
+     x86_64: '83ffd6ce9d37f74638673bd9fca78206aae34e338cff9eff855c688e6fb157e6'
   })
 
-  def self.build
-    system './configure',
-           "--libdir=#{CREW_LIB_PREFIX}",
-           "--prefix=#{CREW_PREFIX}",
-           '--disable-dependency-tracking',
-           '--disable-maintainer-mode'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'openssl' # R
 end
