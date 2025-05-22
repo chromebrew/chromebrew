@@ -1,10 +1,22 @@
 require 'fileutils'
 require 'package'
+require 'require_gem'
 
 class Autotools < Package
   property :configure_options, :pre_configure_options, :configure_build_extras, :configure_install_extras
 
   def self.build
+    puts "Additional #{superclass.to_s.capitalize} options being used:".orange
+    method_list = methods.grep(/configure_/).delete_if { |i| send(i).blank? }
+    require_gem 'method_source'
+    method_list.each do |method|
+      @method_info = send method
+      if @method_info.is_a? String
+        puts "#{method}: #{@method_info}".orange
+      else
+        puts @method_info.source.display
+      end
+    end
     unless File.file?('Makefile') && CREW_CACHE_BUILD
       puts "Additional configure_options being used: #{@pre_configure_options.nil? ? '<no pre_configure_options>' : @pre_configure_options} #{@configure_options.nil? ? '<no configure_options>' : @configure_options}".orange
       # Run autoreconf if necessary

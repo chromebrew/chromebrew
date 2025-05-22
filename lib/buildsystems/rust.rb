@@ -1,4 +1,5 @@
 require 'package'
+require 'require_gem'
 
 class RUST < Package
   property :rust_features, :rust_options, :rust_release_profile, :rust_targets, :pre_rust_options, :rust_build_extras, :rust_install_extras
@@ -11,10 +12,16 @@ class RUST < Package
                 PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
       }.transform_keys(&:to_s)
 
-    puts 'Additional rust options being used:'.orange
+    puts "Additional #{superclass.to_s.capitalize} options being used:".orange
     method_list = methods.grep(/rust_/).delete_if { |i| send(i).blank? }
+    require_gem 'method_source'
     method_list.each do |method|
-      puts "#{method}: #{send method}".orange
+      @method_info = send method
+      if @method_info.is_a? String
+        puts "#{method}: #{@method_info}".orange
+      else
+        puts @method_info.source.display
+      end
     end
 
     system rust_env, "rustup target add #{@rust_targets}" unless @rust_targets.to_s.empty?

@@ -1,14 +1,21 @@
 require 'package'
+require 'require_gem'
 
 class Meson < Package
   property :meson_options, :pre_meson_options, :meson_build_extras, :meson_install_extras
 
   def self.build
     @crew_meson_options = @no_lto ? CREW_MESON_OPTIONS.sub('-Db_lto=true', '-Db_lto=false') : CREW_MESON_OPTIONS
-    puts 'Additional meson options being used:'.orange
+    puts "Additional #{superclass.to_s.capitalize} options being used:".orange
     method_list = methods.grep(/meson_/).delete_if { |i| send(i).blank? }
+    require_gem 'method_source'
     method_list.each do |method|
-      puts "#{method}: #{send method}".orange
+      @method_info = send method
+      if @method_info.is_a? String
+        puts "#{method}: #{@method_info}".orange
+      else
+        puts @method_info.source.display
+      end
     end
     system "#{@pre_meson_options} meson setup #{@crew_meson_options} #{@meson_options} builddir"
     system 'meson configure --no-pager builddir'
