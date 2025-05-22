@@ -82,14 +82,12 @@ class Llvm20_build < Package
 
     # Patch for LLVM 15+ because of https://github.com/llvm/llvm-project/issues/58851
     File.write 'llvm_crew_lib_prefix.patch', <<~LLVM_PATCH_EOF
-      diff -Npaur a/clang/lib/Driver/ToolChains/Linux.cpp b/clang/lib/Driver/ToolChains/Linux.cpp
-      --- a/clang/lib/Driver/ToolChains/Linux.cpp	2025-05-08 12:21:48.628680793 -0400
-      +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2025-05-08 12:26:58.482820329 -0400
-      @@ -359,6 +359,8 @@ Linux::Linux(const Driver &D, const llvm
+      --- a/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:50:36.777754608 -0500
+      +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:51:57.004417484 -0500
+      @@ -314,6 +314,7 @@ Linux::Linux(const Driver &D, const llvm
+             D.getVFS().exists(D.Dir + "/../lib/libc++.so"))
+           addPathIfExists(D, D.Dir + "/../lib", Paths);
 
-         Generic_GCC::AddMultiarchPaths(D, SysRoot, OSLibDir, Paths);
-
-      +  addPathIfExists(D, concat(SysRoot, "#{CREW_GLIBC_PREFIX}"), Paths);
       +  addPathIfExists(D, concat(SysRoot, "#{CREW_LIB_PREFIX}"), Paths);
          addPathIfExists(D, concat(SysRoot, "/lib"), Paths);
          addPathIfExists(D, concat(SysRoot, "/usr/lib"), Paths);
