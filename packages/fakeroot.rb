@@ -13,8 +13,8 @@ class Fakeroot < Autotools
   binary_sha256({
     aarch64: '64542b42054b52f1ca987a1c2974da60d6080d03a762d4e6527f0921c18031f8',
      armv7l: '64542b42054b52f1ca987a1c2974da60d6080d03a762d4e6527f0921c18031f8',
-       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+       i686: '7d9ae9d6d05fe9fcccbaa6c95ed9f1c9c7fd24bc900789964e6adb65d8cd499b',
+     x86_64: '0eb4fef1f84924b98381bf118d586d7d3fc9dbdde46ed994d778ab6e6f791ccf'
   })
 
   depends_on 'libcap'

@@ -1,8 +1,8 @@
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
-require 'convenience_functions'
 require 'json'
 require 'package'
+require 'require_gem'
 
 def get_pip_info(pip_pkg_name = nil)
   @pip_show = nil
@@ -37,7 +37,23 @@ class Pip < Package
   property :pip_install_extras, :pip_pre_configure_options
 
   def self.install
-    ConvenienceFunctions.print_buildsystems_methods
+    method_list = methods.grep(/#{superclass.to_s.downcase}_/).delete_if { |i| send(i).blank? }
+    return if method_list.empty?
+
+    require_gem 'method_source'
+    method_blocks = []
+    method_strings = []
+    method_list.sort.each do |method|
+      @method_info = send method
+      if @method_info.is_a? String
+        method_strings << "#{method}: #{@method_info}".orange
+      else
+        method_blocks << @method_info.source.to_s.orange
+      end
+    end
+    puts "Additional #{superclass.to_s.capitalize} options being used:".orange
+    puts method_strings
+    puts method_blocks
 
     @pip_cache_dir = `pip cache dir`.chomp
     @pip_cache_dest_dir = File.join(CREW_DEST_DIR, @pip_cache_dir)

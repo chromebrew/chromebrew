@@ -1,12 +1,28 @@
-require 'convenience_functions'
 require 'fileutils'
 require 'package'
+require 'require_gem'
 
 class Autotools < Package
   property :autotools_configure_options, :autotools_pre_configure_options, :autotools_build_extras, :autotools_install_extras
 
   def self.build
-    ConvenienceFunctions.print_buildsystems_methods
+    method_list = methods.grep(/#{superclass.to_s.downcase}_/).delete_if { |i| send(i).blank? }
+    return if method_list.empty?
+
+    require_gem 'method_source'
+    method_blocks = []
+    method_strings = []
+    method_list.sort.each do |method|
+      @method_info = send method
+      if @method_info.is_a? String
+        method_strings << "#{method}: #{@method_info}".orange
+      else
+        method_blocks << @method_info.source.to_s.orange
+      end
+    end
+    puts "Additional #{superclass.to_s.capitalize} options being used:".orange
+    puts method_strings
+    puts method_blocks
 
     unless File.file?('Makefile') && CREW_CACHE_BUILD
       # Run autoreconf if necessary
