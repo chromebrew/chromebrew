@@ -35,6 +35,6 @@ class Libwmf < Autotools
 
   gnome
 
-  autotools_pre_autotools_configure_options "CFLAGS=-I#{CREW_PREFIX}/include/freetype2/"
+  autotools_pre_configure_options "CFLAGS=-I#{CREW_PREFIX}/include/freetype2/"
   autotools_configure_options "--with-x --with-freetype=#{CREW_PREFIX}/include/freetype2"
 end

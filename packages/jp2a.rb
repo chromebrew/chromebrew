@@ -24,7 +24,7 @@ class Jp2a < Autotools
   depends_on 'ncurses' # R
   depends_on 'termcap' # R
 
-  autotools_pre_autotools_configure_options "CFLAGS='-lncurses -ltinfo -I#{CREW_PREFIX}/include/ncurses #{CREW_ENV_OPTIONS_HASH['CFLAGS']}' LDFLAGS='-L#{CREW_LIB_PREFIX} -lncurses -ltinfo #{CREW_ENV_OPTIONS_HASH['LDFLAGS']}'"
+  autotools_pre_configure_options "CFLAGS='-lncurses -ltinfo -I#{CREW_PREFIX}/include/ncurses #{CREW_ENV_OPTIONS_HASH['CFLAGS']}' LDFLAGS='-L#{CREW_LIB_PREFIX} -lncurses -ltinfo #{CREW_ENV_OPTIONS_HASH['LDFLAGS']}'"
   autotools_configure_options '--enable-curl'
 
   def self.check

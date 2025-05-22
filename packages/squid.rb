@@ -33,6 +33,6 @@ class Squid < Autotools
   depends_on 'glibc' # R
 
   # https://github.com/squid-cache/squid/pull/1118
-  autotools_pre_autotools_configure_options "CXXFLAGS='-Wno-alloc-size-larger-than'"
+  autotools_pre_configure_options "CXXFLAGS='-Wno-alloc-size-larger-than'"
   autotools_configure_options '--disable-arch-native --without-systemd'
 end

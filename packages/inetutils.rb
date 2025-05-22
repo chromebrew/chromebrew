@@ -25,7 +25,7 @@ class Inetutils < Autotools
   depends_on 'ncurses' # R
   depends_on 'readline' # R
 
-  autotools_pre_autotools_configure_options "CC='gcc -lncursesw -lpthread -ltinfow' CXX='g++ -lncursesw -lpthread -ltinfow'"
+  autotools_pre_configure_options "CC='gcc -lncursesw -lpthread -ltinfow' CXX='g++ -lncursesw -lpthread -ltinfow'"
   autotools_configure_options "--with-ncurses-include-dir=#{CREW_PREFIX}/include/ncursesw \
       --with-krb5=#{CREW_PREFIX} \
       --disable-rpath \

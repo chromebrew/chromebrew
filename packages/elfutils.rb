@@ -29,7 +29,7 @@ class Elfutils < Autotools
   depends_on 'zstd' # R
 
   # -D_FORTIFY_SOURCE=0 needed due to -O3 optimization.
-  autotools_pre_autotools_configure_options "CFLAGS+=' -Wno-error -D_FORTIFY_SOURCE=0' CXXFLAGS+=' -Wno-error -D_FORTIFY_SOURCE=0'"
+  autotools_pre_configure_options "CFLAGS+=' -Wno-error -D_FORTIFY_SOURCE=0' CXXFLAGS+=' -Wno-error -D_FORTIFY_SOURCE=0'"
   autotools_configure_options "#{ARCH == 'i686' ? '--disable-libdebuginfod --disable-debuginfod' : ''} --enable-maintainer-mode --program-prefix='eu-'"
 
   def self.patch

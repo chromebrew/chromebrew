@@ -26,6 +26,6 @@ class Fig2dev < Autotools
   depends_on 'ghostscript' => :build
 
   autotools_configure_options '--enable-transfig'
-  autotools_pre_autotools_configure_options "FIG2DEV_LIBDIR=#{CREW_PREFIX}/share/fig2dev \
+  autotools_pre_configure_options "FIG2DEV_LIBDIR=#{CREW_PREFIX}/share/fig2dev \
       XFIGLIBDIR=#{CREW_PREFIX}/share/xfig"
 end

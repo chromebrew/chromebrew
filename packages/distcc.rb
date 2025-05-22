@@ -34,7 +34,7 @@ class Distcc < Autotools
     system "sed -i 's/ install-gnome-data//g' Makefile.in"
   end
 
-  autotools_pre_autotools_configure_options "CFLAGS+=' -DPY_SSIZE_T_CLEAN -fcommon' NATIVE_COMPILER_TRIPLE='#{CREW_TARGET}' INCLUDESERVER_PYTHON='#{CREW_PREFIX}/bin/python3'"
+  autotools_pre_configure_options "CFLAGS+=' -DPY_SSIZE_T_CLEAN -fcommon' NATIVE_COMPILER_TRIPLE='#{CREW_TARGET}' INCLUDESERVER_PYTHON='#{CREW_PREFIX}/bin/python3'"
   autotools_configure_options '--enable-rfc2553 --disable-Werror --with-python-sys-prefix'
 
   def self.install
