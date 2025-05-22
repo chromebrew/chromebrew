@@ -34,20 +34,24 @@ def pip_hard_reinstall
 end
 
 class Pip < Package
-  property :pip_install_extras, :pre_configure_options
+  property :pip_install_extras, :pip_pre_configure_options
 
   def self.install
     puts "Additional #{superclass.to_s.capitalize} options being used:".orange
     method_list = methods.grep(/pip_/).delete_if { |i| send(i).blank? }
     require_gem 'method_source'
-    method_list.each do |method|
+    method_blocks = []
+    method_strings = []
+    method_list.sort.each do |method|
       @method_info = send method
       if @method_info.is_a? String
-        puts "#{method}: #{@method_info}".orange
+        method_strings << "#{method}: #{@method_info}".orange
       else
-        puts @method_info.source.display
+        method_blocks << @method_info.source.to_s.orange
       end
     end
+    puts method_strings
+    puts method_block
 
     @pip_cache_dir = `pip cache dir`.chomp
     @pip_cache_dest_dir = File.join(CREW_DEST_DIR, @pip_cache_dir)
@@ -85,12 +89,11 @@ class Pip < Package
       end
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
-    puts "Additional pre_configure_options being used: #{@pre_configure_options.nil? ? '<no pre_configure_options>' : @pre_configure_options}".orange
     puts "#{@py_pkg.capitalize} is configured to install a pre-release version." if prerelease?
 
     # Build wheel if pip install fails, since that implies a wheel isn't available.
     puts "Trying to install #{@py_pkg}==#{@py_pkg_chromebrew_version}" if CREW_DEBUG
-    Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python3 -s -m pip install #{@pip_resume_retries} --no-warn-conflicts --force-reinstall #{prerelease? ? '--pre' : ''} --no-deps --ignore-installed -U --only-binary :all: #{@py_pkg}==#{@py_pkg_chromebrew_version}"
+    Kernel.system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pip_pre_configure_options} python3 -s -m pip install #{@pip_resume_retries} --no-warn-conflicts --force-reinstall #{prerelease? ? '--pre' : ''} --no-deps --ignore-installed -U --only-binary :all: #{@py_pkg}==#{@py_pkg_chromebrew_version}"
     get_pip_info(@py_pkg)
     pip_hard_reinstall unless @py_pkg_chromebrew_version == @pip_pkg_version
     if CREW_DEBUG
@@ -104,9 +107,9 @@ class Pip < Package
       system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} #{prerelease? ? '--pre' : ''} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'" unless prerelease?
       # Assume all pip non-SKIP sources are git.
       @pip_wheel = if @source_url == 'SKIP'
-                     `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python3 -m pip wheel #{prerelease? ? '--pre' : ''} -w #{@pip_cache_dir} #{@py_pkg}==#{@py_pkg_version}`[/(?<=filename=)(.*)*?(\S+)/, 0]
+                     `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pip_pre_configure_options} python3 -m pip wheel #{prerelease? ? '--pre' : ''} -w #{@pip_cache_dir} #{@py_pkg}==#{@py_pkg_version}`[/(?<=filename=)(.*)*?(\S+)/, 0]
                    else
-                     `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python3 -m pip wheel #{prerelease? ? '--pre' : ''} -w #{@pip_cache_dir} git+#{source_url}`[/(?<=filename=)(.*)*?(\S+)/, 0]
+                     `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pip_pre_configure_options} python3 -m pip wheel #{prerelease? ? '--pre' : ''} -w #{@pip_cache_dir} git+#{source_url}`[/(?<=filename=)(.*)*?(\S+)/, 0]
                    end
       puts "@pip_wheel is #{@pip_wheel}" if CREW_DEBUG
       FileUtils.install File.join(@pip_cache_dir, @pip_wheel), @pip_cache_dest_dir

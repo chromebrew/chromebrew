@@ -113,14 +113,19 @@ class RUBY < Package
     puts "Additional #{superclass.to_s.capitalize} options being used:".orange
     method_list = methods.grep(/ruby_/).delete_if { |i| send(i).blank? }
     require_gem 'method_source'
-    method_list.each do |method|
+    method_blocks = []
+    method_strings = []
+    method_list.sort.each do |method|
       @method_info = send method
       if @method_info.is_a? String
-        puts "#{method}: #{@method_info}".orange
+        method_strings << "#{method}: #{@method_info}".orange
       else
-        puts @method_info.source.display
+        method_blocks << @method_info.source.to_s.orange
       end
     end
+    puts method_strings
+    puts method_blocks
+
     Kernel.system "gem fetch #{@ruby_gem_name} --platform=ruby --version=#{@ruby_gem_version}"
     Kernel.system "gem unpack #{@ruby_gem_name}-#{@ruby_gem_version}.gem"
     system 'gem install gem-compiler' unless Kernel.system('gem compile --help 2>/dev/null', %i[out err] => File::NULL)

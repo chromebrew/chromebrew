@@ -12,5 +12,5 @@ class Py3_unsupported_python < Pip
 
   no_compile_needed
 
-  pre_configure_options 'ALLOW_UNSUPPORTED_PYTHON=3.12'
+  pip_pre_configure_options 'ALLOW_UNSUPPORTED_PYTHON=3.12'
 end

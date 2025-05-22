@@ -9,14 +9,19 @@ class Autotools < Package
     puts "Additional #{superclass.to_s.capitalize} options being used:".orange
     method_list = methods.grep(/configure_/).delete_if { |i| send(i).blank? }
     require_gem 'method_source'
-    method_list.each do |method|
+    method_blocks = []
+    method_strings = []
+    method_list.sort.each do |method|
       @method_info = send method
       if @method_info.is_a? String
-        puts "#{method}: #{@method_info}".orange
+        method_strings << "#{method}: #{@method_info}".orange
       else
-        puts @method_info.source.display
+        method_blocks << @method_info.source.to_s.orange
       end
     end
+    puts method_strings
+    puts method_blocks
+
     unless File.file?('Makefile') && CREW_CACHE_BUILD
       puts "Additional configure_options being used: #{@pre_configure_options.nil? ? '<no pre_configure_options>' : @pre_configure_options} #{@configure_options.nil? ? '<no configure_options>' : @configure_options}".orange
       # Run autoreconf if necessary

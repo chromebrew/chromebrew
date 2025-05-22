@@ -8,14 +8,19 @@ class Qmake < Package
     puts "Additional #{superclass.to_s.capitalize} options being used:".orange
     method_list = methods.grep(/qmake_/).delete_if { |i| send(i).blank? }
     require_gem 'method_source'
-    method_list.each do |method|
+    method_blocks = []
+    method_strings = []
+    method_list.sort.each do |method|
       @method_info = send method
       if @method_info.is_a? String
-        puts "#{method}: #{@method_info}".orange
+        method_strings << "#{method}: #{@method_info}".orange
       else
-        puts @method_info.source.display
+        method_blocks << @method_info.source.to_s.orange
       end
     end
+    puts method_strings
+    puts method_blocks
+
     system "QMAKE_CXX='g++ #{ARCH == 'x86_64' && Gem::Version.new(LIBC_VERSION.to_s) >= Gem::Version.new('2.35') ? File.join(CREW_LIB_PREFIX, 'libC.so.6').to_s : ''}' qmake"
     system 'make'
     @qmake_build_extras&.call
