@@ -51,7 +51,7 @@ class Pip < Package
       end
     end
     puts method_strings
-    puts method_block
+    puts method_blocks
 
     @pip_cache_dir = `pip cache dir`.chomp
     @pip_cache_dest_dir = File.join(CREW_DEST_DIR, @pip_cache_dir)
