@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_maps < Meson
   description 'A simple GNOME maps application'
   homepage 'https://wiki.gnome.org/Apps/Maps'
-  version '46.rc'
+  version '48.2'
   license 'GPL-2+, LGPL-2+, MIT, CC-BY-3.0 and CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-maps.git'
@@ -21,7 +21,6 @@ class Gnome_maps < Meson
   depends_on 'geoclue' => :build
   depends_on 'geocode_glib2' => :build
   depends_on 'geocode_glib' => :build
-  depends_on 'gfbgraph' => :build
   depends_on 'gjs' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
@@ -43,7 +42,4 @@ class Gnome_maps < Meson
 
   gnome
 
-  def self.patch
-    system "sed -i 's/geocode-glib-2.0/geocode-glib-1.0/g' meson.build"
-  end
 end
