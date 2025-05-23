@@ -27,7 +27,6 @@ class Gnome_maps < Meson
   depends_on 'gnome_weather' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk4' # R
-  depends_on 'gnome_weather' => :build
   depends_on 'harfbuzz' # R
   depends_on 'json_glib' # R
   depends_on 'libchamplain' => :build
