@@ -2,6 +2,7 @@
 /usr/local/include/EGL/eglmesaext.h
 /usr/local/include/GL/internal/dri_interface.h
 /usr/local/include/gbm.h
+/usr/local/include/gbm_backend_abi.h
 /usr/local/include/xa_composite.h
 /usr/local/include/xa_context.h
 /usr/local/include/xa_tracker.h
@@ -32,7 +33,7 @@
 /usr/local/lib64/libGLX_mesa.so
 /usr/local/lib64/libGLX_mesa.so.0
 /usr/local/lib64/libGLX_mesa.so.0.0.0
-/usr/local/lib64/libgallium-25.0.4.so
+/usr/local/lib64/libgallium-25.1.1.so
 /usr/local/lib64/libgbm.so
 /usr/local/lib64/libgbm.so.1
 /usr/local/lib64/libgbm.so.1.0.0
