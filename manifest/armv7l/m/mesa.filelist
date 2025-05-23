@@ -2,9 +2,11 @@
 /usr/local/include/EGL/eglmesaext.h
 /usr/local/include/GL/internal/dri_interface.h
 /usr/local/include/gbm.h
+/usr/local/include/gbm_backend_abi.h
 /usr/local/include/xa_composite.h
 /usr/local/include/xa_context.h
 /usr/local/include/xa_tracker.h
+/usr/local/lib/dri/apple_dri.so
 /usr/local/lib/dri/armada-drm_dri.so
 /usr/local/lib/dri/etnaviv_dri.so
 /usr/local/lib/dri/exynos_dri.so
@@ -68,10 +70,11 @@
 /usr/local/lib/libGLX_mesa.so
 /usr/local/lib/libGLX_mesa.so.0
 /usr/local/lib/libGLX_mesa.so.0.0.0
-/usr/local/lib/libgallium-25.0.4.so
+/usr/local/lib/libgallium-25.1.1.so
 /usr/local/lib/libgbm.so
 /usr/local/lib/libgbm.so.1
 /usr/local/lib/libgbm.so.1.0.0
+/usr/local/lib/libvulkan_freedreno.so
 /usr/local/lib/libvulkan_intel.so
 /usr/local/lib/libvulkan_lvp.so
 /usr/local/lib/libvulkan_panfrost.so
@@ -91,6 +94,7 @@
 /usr/local/lib/vdpau/libvdpau_virtio_gpu.so.1.0.0
 /usr/local/share/drirc.d/00-mesa-defaults.conf
 /usr/local/share/glvnd/egl_vendor.d/50_mesa.json
+/usr/local/share/vulkan/icd.d/freedreno_icd.armv8l.json
 /usr/local/share/vulkan/icd.d/intel_icd.armv8l.json
 /usr/local/share/vulkan/icd.d/lvp_icd.armv8l.json
 /usr/local/share/vulkan/icd.d/panfrost_icd.armv8l.json
