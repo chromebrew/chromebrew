@@ -1,20 +1,21 @@
-require 'buildsystems/cmake'
+require 'buildsystems/autotools'
 
-class Libarchive < CMake
+class Libarchive < Autotools
   description 'Multi-format archive and compression library.'
   homepage 'https://www.libarchive.org/'
   version "3.8.0-#{CREW_ICU_VER}"
   license 'BSD, BSD-2, BSD-4 and public-domain'
   compatibility 'all'
   source_url "https://www.libarchive.org/downloads/libarchive-#{version.split('-').first}.tar.xz"
+  # source_url "https://github.com/libarchive/libarchive/releases/download/v#{version.split('-').first}/libarchive-#{version.split('-').first}.tar.xz"
   source_sha256 '67bfac3798a778143f4b1cadcdb3792b4269486f8e1b70ca5c0ee5841398bfdf'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b6dc32b68cde446f9d03c8c3f88f73336cd95fe0a0985ad30e0644004cc80b49',
-     armv7l: 'b6dc32b68cde446f9d03c8c3f88f73336cd95fe0a0985ad30e0644004cc80b49',
-       i686: '4ea6d55eb8808bad6a55048cf5b056317252422a5a1fa7104c60e7e8d6c65d02',
-     x86_64: '4cbf4f789963be08a41acde6fc9f01bb5f6e2307a4513f13d7c48b017251871e'
+    aarch64: 'c7207f0c8d0bb8f1a2fa547a80cb6f9a4979850926dfb668b70015f423b913a0',
+     armv7l: 'c7207f0c8d0bb8f1a2fa547a80cb6f9a4979850926dfb668b70015f423b913a0',
+       i686: '67f2fc8f8d75b5182f7bc11c7ffc1d77103963e97aecdf96e94e4f98773ede2d',
+     x86_64: '355b85ca8f374aa670ed824c1e7bd196afceac5766ff3eb7b3cdd1d9fdb7f06f'
   })
 
   depends_on 'acl' # R
@@ -31,9 +32,9 @@ class Libarchive < CMake
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  cmake_options '-DENABLE_TEST=OFF'
-
   def self.patch
+    # Fix complaints about aclocal being too new.
+    system 'autoreconf -fiv'
     # Fix LIBDIR being set improperly for cmake.
     # See https://github.com/libarchive/libarchive/pull/2509
     File.write 'libdir.patch', <<~LIBDIR_PATCH_EOF
@@ -90,5 +91,10 @@ class Libarchive < CMake
        ENDIF()
     LIBDIR_PATCH_EOF
     system 'patch -Np1 -i libdir.patch'
+  end
+
+  autotools_install_extras do
+    # As per Arch pkgbuild. This fixes epiphany builds.
+    system "sed -i 's/iconv//g' #{CREW_DEST_LIB_PREFIX}/pkgconfig/libarchive.pc"
   end
 end

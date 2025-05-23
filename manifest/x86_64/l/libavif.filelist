@@ -1,5 +1,6 @@
 /usr/local/bin/avifdec
 /usr/local/bin/avifenc
+/usr/local/bin/avifgainmaputil
 /usr/local/include/avif/avif.h
 /usr/local/include/avif/avif_cxx.h
 /usr/local/lib64/cmake/libavif/libavif-config-release.cmake
@@ -8,8 +9,6 @@
 /usr/local/lib64/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-avif.so
 /usr/local/lib64/libavif.so
 /usr/local/lib64/libavif.so.16
-/usr/local/lib64/libavif.so.16.1.0
+/usr/local/lib64/libavif.so.16.3.0
 /usr/local/lib64/pkgconfig/libavif.pc
-/usr/local/share/man/man1/avifdec.1.zst
-/usr/local/share/man/man1/avifenc.1.zst
 /usr/local/share/thumbnailers/avif.thumbnailer

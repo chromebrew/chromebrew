@@ -337,7 +337,7 @@ jobs:
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
           echo -e "- This PR has built package updates using the Build.yml workflow, which was pointed to the ${{ env.BRANCH }} branch.\n" >> /tmp/pr.txt
-          echo -e "### Updated or Changed packages:" >> /tmp/pr.txt
+          echo -e "### Packages with Updated versions or Changed package files:" >> /tmp/pr.txt
           for file in ${CHANGED_PACKAGES}
             do
             echo "- ${file}" >> /tmp/pr.txt
