@@ -19,10 +19,6 @@ class Llvm20_build < Package
      x86_64: '1b184852101f53bfb9a69f35de4833a5abc6d7536a60c3478c3f2b5624c53ef6'
   })
 
-  depends_on 'coreutils' => :build
-  depends_on 'grep' => :build
-  depends_on 'tar' => :build
-  depends_on 'which' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libedit' # R
