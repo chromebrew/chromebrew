@@ -13,7 +13,7 @@ class Edit < RUST
 
   binary_sha256({
        i686: 'ace7464220cf691e47b5c098cdd8fdf00126233e71c98ec898837845262e61ea',
-     x86_64: '37f56b627af9e4673af20bd86df99b5e020bc2e711e98b3e06e3c6580126f77b'
+     x86_64: '73018cdec23432c117a4ff891cdd254aa162d2306d5e6eb84c353c3bc9d956f2'
   })
 
   depends_on 'gcc_lib' # R
