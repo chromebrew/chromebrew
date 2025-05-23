@@ -12,7 +12,7 @@ class Edit < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '8a2dc7f7872fafbe914fe2fb38312c857eb9e2adbc4c8ad4f07e9819e9dca0cd',
+       i686: 'ace7464220cf691e47b5c098cdd8fdf00126233e71c98ec898837845262e61ea',
      x86_64: '37f56b627af9e4673af20bd86df99b5e020bc2e711e98b3e06e3c6580126f77b'
   })
 
