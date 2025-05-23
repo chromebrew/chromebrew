@@ -1645,6 +1645,11 @@ url: http://ftpmirror.gnu.org/ed
 activity: low
 ---
 kind: url
+name: edit
+url: https://github.com/microsoft/edit/releases
+activity: medium
+---
+kind: url
 name: editoconfig_core_c
 url: https://github.com/editorconfig/editorconfig-core-c/releases
 activity: medium
