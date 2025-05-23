@@ -1,3 +1,5 @@
+# Meson builds of 2.13.x need a patch.
+# See https://gitlab.gnome.org/GNOME/libxml2/-/issues/923
 require 'buildsystems/cmake'
 
 class Libxml2 < CMake
