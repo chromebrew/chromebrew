@@ -11,8 +11,8 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a9513916029c5debb5cbfe47950c4c22691fbe8361281885f55ced83f58a2a34',
-     armv7l: 'a9513916029c5debb5cbfe47950c4c22691fbe8361281885f55ced83f58a2a34',
+    aarch64: 'b3ed92b1559bd5904d871d4e1d79729d2e0dd2cb7eb62f372bc793d405e82972',
+     armv7l: 'b3ed92b1559bd5904d871d4e1d79729d2e0dd2cb7eb62f372bc793d405e82972',
      x86_64: '72f588ab00c48f294ca540fe3cc012d17ca5ebaf537ad4a560fa9ee9668fd27e'
   })
 
@@ -40,6 +40,7 @@ class Mesa < Meson
   depends_on 'libxv' => :build
   depends_on 'libxxf86vm' # R
   depends_on 'llvm_dev' => :build
+  depends_on 'llvm_lib' # R
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako' => :build
   depends_on 'py3_ply' => :build
@@ -53,7 +54,6 @@ class Mesa < Meson
   depends_on 'xcb_util_keysyms' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'llvm20_lib' # R
 
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
     -Db_asneeded=false \
