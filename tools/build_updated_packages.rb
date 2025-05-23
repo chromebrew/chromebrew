@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 2.6 (for Chromebrew)
+# build_updated_packages version 2.7 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -24,6 +24,7 @@ abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV['GITLAB_T
 abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if ENV['GITLAB_TOKEN_USERNAME'].nil?
 puts "Setting the CREW_AGREE_TIMEOUT_SECONDS environment variable to less than the default of #{CREW_AGREE_TIMEOUT_SECONDS} may speed this up...".orange if ENV['CREW_AGREE_TIMEOUT_SECONDS'].nil?
 
+CONTINUE_AFTER_FAILED_BUILDS = ARGV.include?('--continue-after-failed-builds')
 SKIP_UPDATE_CHECKS = ARGV.include?('--skip')
 CHECK_ALL_PYTHON = ARGV.include?('--check-all-python')
 CHECK_ALL_RUBY = ARGV.include?('--check-all-ruby')
@@ -106,6 +107,7 @@ updated_packages.uniq!
 
 updated_packages.each do |pkg|
   name = pkg.sub('packages/', '').sub('.rb', '')
+  next unless File.file?(pkg)
 
   puts "Evaluating #{name} package...".orange
   @pkg_obj = Package.load_package(pkg)
@@ -131,7 +133,14 @@ updated_packages.each do |pkg|
 
       if builds_needed.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{@pkg_obj.version}-chromeos-#{ARCH}.#{@pkg_obj.binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@pkg_obj.version}")
         system "yes | nice -n 20 crew build -f #{pkg}"
-        abort "#{pkg} build failed!".lightred unless $CHILD_STATUS.success?
+        unless $CHILD_STATUS.success?
+          if CONTINUE_AFTER_FAILED_BUILDS
+            puts "#{pkg} build failed!".lightred
+            next
+          else
+            abort "#{pkg} build failed!".lightred
+          end
+        end
         # Reinvoke this script to take just built packages that have been built and
         # installed into account, attempting uploads of just built packages immediately.
         cmdline = "cd #{`pwd`.chomp} && crew upload #{name} ; #{$PROGRAM_NAME} #{ARGV.join(' ')}"
