@@ -5,7 +5,6 @@ require_relative 'color'
 require_relative 'const'
 require_relative 'crewlog'
 require_relative 'downloader'
-require_relative 'require_gem'
 
 class ConvenienceFunctions
   def self.determine_conflicts(pkg_name, filelist = File.join(CREW_META_PATH, "#{pkg_name}.filelist"), exclude_suffix = nil, verbose: false)

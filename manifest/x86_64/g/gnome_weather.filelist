@@ -5,6 +5,7 @@
 /usr/local/share/glib-2.0/schemas/org.gnome.Weather.gschema.xml
 /usr/local/share/gnome-shell/search-providers/org.gnome.Weather.search-provider.ini
 /usr/local/share/icons/hicolor/scalable/apps/org.gnome.Weather.svg
+/usr/local/share/icons/hicolor/scalable/status/checkmark-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/status/temperature-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/status/weather-clear-large.svg
 /usr/local/share/icons/hicolor/scalable/status/weather-clear-night-large.svg
@@ -40,7 +41,9 @@
 /usr/local/share/locale/ar/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/as/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/be/LC_MESSAGES/org.gnome.Weather.mo
+/usr/local/share/locale/be@latin/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/bg/LC_MESSAGES/org.gnome.Weather.mo
+/usr/local/share/locale/bn/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/bn_IN/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/bs/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/ca/LC_MESSAGES/org.gnome.Weather.mo
@@ -57,6 +60,7 @@
 /usr/local/share/locale/eu/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/fa/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/fi/LC_MESSAGES/org.gnome.Weather.mo
+/usr/local/share/locale/fil/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/fr/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/fur/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/fy/LC_MESSAGES/org.gnome.Weather.mo
@@ -72,6 +76,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/ja/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/ka/LC_MESSAGES/org.gnome.Weather.mo
+/usr/local/share/locale/kab/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/kk/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/kn/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/ko/LC_MESSAGES/org.gnome.Weather.mo
@@ -90,6 +95,7 @@
 /usr/local/share/locale/pt_BR/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/ro/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/ru/LC_MESSAGES/org.gnome.Weather.mo
+/usr/local/share/locale/rw/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/sk/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/sl/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/sr/LC_MESSAGES/org.gnome.Weather.mo

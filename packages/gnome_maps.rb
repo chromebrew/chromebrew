@@ -7,7 +7,7 @@ class Gnome_maps < Meson
   license 'GPL-2+, LGPL-2+, MIT, CC-BY-3.0 and CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-maps.git'
-  git_hashtag "v#{version}"
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -26,11 +26,13 @@ class Gnome_maps < Meson
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk4' # R
+  depends_on 'gnome_weather' => :build
   depends_on 'harfbuzz' # R
   depends_on 'json_glib' # R
   depends_on 'libchamplain' => :build
   depends_on 'libgee' => :build
   depends_on 'libhandy' => :build
+  depends_on 'libportal' => :build
   depends_on 'librsvg' # R
   depends_on 'libshumate' # R
   depends_on 'libxml2' # R
@@ -41,5 +43,4 @@ class Gnome_maps < Meson
   depends_on 'yelp_tools' => :build
 
   gnome
-
 end
