@@ -30,7 +30,7 @@ class Py3_libxml2 < Package
     system 'autoreconf -fiv'
     system "./configure #{CREW_CONFIGURE_OPTIONS}"
     Dir.chdir('python') do
-      system "python setup.py bdist_wheel"
+      system 'python setup.py bdist_wheel'
       @pip_wheel = `cd dist && ls *.whl`.chomp
     end
   end
