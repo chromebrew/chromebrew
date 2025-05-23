@@ -501,12 +501,16 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/workspace_three_dots.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/yen.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/ai_explain.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/ai_searching_icon.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/anonymous_mode.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/cloud_mode.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/embed_fullscreen.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/hide_password.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/mobile_icon_remove_link.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/password_close.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/search_arrow_right.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/search_clear.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/search_icon.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/settings_page_ai.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/settings_page_bell.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/settings_page_cloud.svg
@@ -685,6 +689,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/share.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/show.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/sidebar_footer_trash.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/something_wrong_warning.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/sort_high.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/sort_low.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/textdirection_auto.svg
@@ -779,7 +784,8 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/translations/cs-CZ.json
 /usr/local/share/AppFlowy/data/flutter_assets/assets/translations/de-DE.json
 /usr/local/share/AppFlowy/data/flutter_assets/assets/translations/el-GR.json
-/usr/local/share/AppFlowy/data/flutter_assets/assets/translations/en.json
+/usr/local/share/AppFlowy/data/flutter_assets/assets/translations/en-GB.json
+/usr/local/share/AppFlowy/data/flutter_assets/assets/translations/en-US.json
 /usr/local/share/AppFlowy/data/flutter_assets/assets/translations/es-VE.json
 /usr/local/share/AppFlowy/data/flutter_assets/assets/translations/eu-ES.json
 /usr/local/share/AppFlowy/data/flutter_assets/assets/translations/fa.json
