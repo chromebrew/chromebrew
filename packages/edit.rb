@@ -14,7 +14,7 @@ class Edit < RUST
     aarch64: '468167bc33398704ac5dc4b83d13c3cbf53b0b602b8cb4f269f4e26db98ed65b',
      armv7l: '468167bc33398704ac5dc4b83d13c3cbf53b0b602b8cb4f269f4e26db98ed65b',
        i686: '8a2dc7f7872fafbe914fe2fb38312c857eb9e2adbc4c8ad4f07e9819e9dca0cd',
-     x86_64: 'bae2c8b8c85170172a89ec44edfd7def43494e985fdbb81dd146de63cd02c488'
+     x86_64: '37f56b627af9e4673af20bd86df99b5e020bc2e711e98b3e06e3c6580126f77b'
   })
 
   depends_on 'gcc_lib' # R
