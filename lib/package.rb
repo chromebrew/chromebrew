@@ -74,7 +74,7 @@ class Package
     elsif File.directory? config_object
       identifier = 'directory'
     else
-      puts "Cannot identify #{config_object}.".lightred
+      crewlog "Cannot remove #{config_object}."
       return
     end
     if agree_default_no("Would you like to remove the config #{identifier}: #{config_object} ")
