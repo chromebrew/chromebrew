@@ -1,5 +1,6 @@
-require 'package'
-require 'require_gem'
+require_relative '../package'
+require_relative '../require_gem'
+require_relative '../report_buildsystem_methods'
 
 class RUST < Package
   property :rust_features, :rust_options, :rust_release_profile, :rust_targets, :pre_rust_options, :rust_build_extras, :rust_install_extras
@@ -12,23 +13,8 @@ class RUST < Package
                 PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
       }.transform_keys(&:to_s)
 
-    method_list = methods.grep(/#{superclass.to_s.downcase}_/).delete_if { |i| send(i).blank? }
-    unless method_list.empty?
-      require_gem 'method_source'
-      method_blocks = []
-      method_strings = []
-      method_list.sort.each do |method|
-        @method_info = send method
-        if @method_info.is_a? String
-          method_strings << "#{method}: #{@method_info}".orange
-        else
-          method_blocks << @method_info.source.to_s.orange
-        end
-      end
-      puts "Additional #{superclass.to_s.capitalize} options being used:".orange
-      puts method_strings
-      puts method_blocks
-    end
+    extend ReportBuildsystemMethods
+    print_buildsystem_methods
 
     system rust_env, "rustup target add #{@rust_targets}" unless @rust_targets.to_s.empty?
     system rust_env, "#{@pre_rust_options} cargo fetch"

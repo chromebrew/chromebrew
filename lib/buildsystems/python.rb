@@ -1,27 +1,13 @@
-require 'package'
-require 'require_gem'
+require_relative '../package'
+require_relative '../require_gem'
+require_relative '../report_buildsystem_methods'
 
 class Python < Package
   property :python_build_extras, :python_build_options, :python_build_relative_dir, :python_install_extras, :python_install_options, :python_no_svem
 
   def self.build
-    method_list = methods.grep(/#{superclass.to_s.downcase}_/).delete_if { |i| send(i).blank? }
-    unless method_list.empty?
-      require_gem 'method_source'
-      method_blocks = []
-      method_strings = []
-      method_list.sort.each do |method|
-        @method_info = send method
-        if @method_info.is_a? String
-          method_strings << "#{method}: #{@method_info}".orange
-        else
-          method_blocks << @method_info.source.to_s.orange
-        end
-      end
-      puts "Additional #{superclass.to_s.capitalize} options being used:".orange
-      puts method_strings
-      puts method_blocks
-    end
+    extend ReportBuildsystemMethods
+    print_buildsystem_methods
 
     @python_build_relative_dir ||= '.'
     Dir.chdir(@python_build_relative_dir) do

@@ -1,5 +1,6 @@
-require 'package'
-require 'require_gem'
+require_relative '../package'
+require_relative '../require_gem'
+require_relative '../report_buildsystem_methods'
 
 class Meson < Package
   property :meson_options, :pre_meson_options, :meson_build_extras, :meson_install_extras
@@ -7,23 +8,8 @@ class Meson < Package
   def self.build
     @crew_meson_options = @no_lto ? CREW_MESON_OPTIONS.sub('-Db_lto=true', '-Db_lto=false') : CREW_MESON_OPTIONS
 
-    method_list = methods.grep(/#{superclass.to_s.downcase}_/).delete_if { |i| send(i).blank? }
-    unless method_list.empty?
-      require_gem 'method_source'
-      method_blocks = []
-      method_strings = []
-      method_list.sort.each do |method|
-        @method_info = send method
-        if @method_info.is_a? String
-          method_strings << "#{method}: #{@method_info}".orange
-        else
-          method_blocks << @method_info.source.to_s.orange
-        end
-      end
-      puts "Additional #{superclass.to_s.capitalize} options being used:".orange
-      puts method_strings
-      puts method_blocks
-    end
+    extend ReportBuildsystemMethods
+    print_buildsystem_methods
 
     system "#{@pre_meson_options} meson setup #{@crew_meson_options} #{@meson_options} builddir"
     system 'meson configure --no-pager builddir'

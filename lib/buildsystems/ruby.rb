@@ -1,8 +1,9 @@
-require 'color'
-require 'gem_compact_index_client'
-require 'package'
-require 'package_utils'
-require 'require_gem'
+require_relative '../color'
+require_relative '../gem_compact_index_client'
+require_relative '../package'
+require_relative '../package_utils'
+require_relative '../report_buildsystem_methods'
+require_relative '../require_gem'
 
 require_gem('activesupport', 'active_support/core_ext/object/blank')
 
@@ -110,23 +111,8 @@ class RUBY < Package
   def self.build
     return unless !no_compile_needed? || @gem_binary_build_needed
 
-    method_list = methods.grep(/#{superclass.to_s.downcase}_/).delete_if { |i| send(i).blank? }
-    unless method_list.empty?
-      require_gem 'method_source'
-      method_blocks = []
-      method_strings = []
-      method_list.sort.each do |method|
-        @method_info = send method
-        if @method_info.is_a? String
-          method_strings << "#{method}: #{@method_info}".orange
-        else
-          method_blocks << @method_info.source.to_s.orange
-        end
-      end
-      puts "Additional #{superclass.to_s.capitalize} options being used:".orange
-      puts method_strings
-      puts method_blocks
-    end
+    extend ReportBuildsystemMethods
+    print_buildsystem_methods
 
     Kernel.system "gem fetch #{@ruby_gem_name} --platform=ruby --version=#{@ruby_gem_version}"
     Kernel.system "gem unpack #{@ruby_gem_name}-#{@ruby_gem_version}.gem"

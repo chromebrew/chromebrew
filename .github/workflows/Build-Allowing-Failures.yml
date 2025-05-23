@@ -337,8 +337,8 @@ jobs:
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
           echo -e "- This PR has built package updates using the Build Allowing Failures.yml workflow, which was pointed to the ${{ env.BRANCH }} branch.\n" >> /tmp/pr.txt
-          echo -e "Please double check to see if any failures were expected.\n" >> /tmp/pr.txt
-          echo -e "Updated packages:" >> /tmp/pr.txt
+          echo -e "#### _Please double check to see if any failures were expected._\n" >> /tmp/pr.txt
+          echo -e "### Updated or Changed packages:" >> /tmp/pr.txt
           for file in ${CHANGED_PACKAGES}
             do
             echo "- ${file}" >> /tmp/pr.txt
