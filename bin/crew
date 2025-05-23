@@ -890,7 +890,9 @@ end
 def fix_interpreter_path(dir)
   # Do not set interpreter for non-musl, as this can break apps if there
   # is an issue with the crew glibc.
-  return if @pkg.is_musl? || %w[patchelf upx].include?(@pkg.name)
+  unless @pkg.nil?
+    return if @pkg.is_musl? || %w[patchelf upx].include?(@pkg.name)
+  end
 
   Dir.chdir dir do
     puts 'Running upx to uncompress binaries and patchelf to patch binary interpreter paths.'.lightblue
@@ -906,7 +908,7 @@ def fix_interpreter_path(dir)
       next unless File.file?(execfiletopatch)
 
       # Decompress the binary if compressed.
-      system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL
+      system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL, exception: false
       # Check for existing interpreter.
       @interpreter, _read_interpreter_stderr_s, @read_interpreter_status = Open3.capture3("patchelf --print-interpreter #{execfiletopatch}")
       # Set interpreter unless the interpreter read failed or is already
