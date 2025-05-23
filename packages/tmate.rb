@@ -33,5 +33,5 @@ class Tmate < Autotools
     system 'patch -p1 -i 281.patch'
   end
 
-  pre_configure_options "CFLAGS='-I#{CREW_PREFIX}/include/ncurses' CPPFLAGS='-I#{CREW_PREFIX}/include/ncurses'"
+  autotools_pre_configure_options "CFLAGS='-I#{CREW_PREFIX}/include/ncurses' CPPFLAGS='-I#{CREW_PREFIX}/include/ncurses'"
 end

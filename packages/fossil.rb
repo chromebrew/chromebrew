@@ -29,7 +29,7 @@ class Fossil < Autotools
     system "./configure --prefix=#{CREW_PREFIX}"
   end
 
-  configure_install_extras do
+  autotools_install_extras do
     FileUtils.install 'fossil.1', "#{CREW_DEST_MAN_PREFIX}/man1/fossil.1", mode: 0o644
   end
 end

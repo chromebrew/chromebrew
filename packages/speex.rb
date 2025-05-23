@@ -19,5 +19,5 @@ class Speex < Autotools
 
   depends_on 'glibc' # R
 
-  configure_options '--disable-maintainer-mode'
+  autotools_configure_options '--disable-maintainer-mode'
 end

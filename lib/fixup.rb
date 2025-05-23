@@ -162,6 +162,7 @@ renamed_packages = Set[
 
 deprecated_packages = Set[
   { pkg_name: 'epydoc', comments: 'Abandoned upstream, only supports Python 2.' },
+  { pkg_name: 'gfbgraph', commwnts: 'Deprecated upstteam.' },
   { pkg_name: 'git_prompt', comments: 'Integrated into git package.' },
   { pkg_name: 'glibc_build223', comments: 'We are moving away from system glibc.' },
   { pkg_name: 'glibc_build227', comments: 'We are moving away from system glibc.' },

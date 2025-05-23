@@ -43,6 +43,6 @@ class Bashdb < Autotools
   # Setting --with-dbg-main works, but looking at configure.ac reveals that collaboration with upstream is probably required
   # i.e. why does setting a variable described as "location of dbg-main.sh" to the location of bashdb-main.inc fix things?
   # It seems like DBGR_MAIN is confused with BASHDB_MAIN, among other things.
-  configure_options "--with-dbg-main=#{CREW_PREFIX}/share/bashdb-main.inc --with-bash=#{CREW_PREFIX}/bin/bash"
+  autotools_configure_options "--with-dbg-main=#{CREW_PREFIX}/share/bashdb-main.inc --with-bash=#{CREW_PREFIX}/bin/bash"
   run_tests
 end

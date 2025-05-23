@@ -23,7 +23,7 @@ class Sqlite < Autotools
   depends_on 'zlib' # R
   depends_on 'ncurses' # R
 
-  configure_options '--enable-shared \
+  autotools_configure_options '--enable-shared \
     --enable-editline \
     --enable-readline \
     --enable-fts3 \

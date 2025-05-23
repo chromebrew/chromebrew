@@ -36,7 +36,7 @@ class Clutter < Autotools
     system 'patch -Np1 -i clutter-x11-startup-error.patch'
   end
 
-  configure_options '--enable-evdev \
+  autotools_configure_options '--enable-evdev \
     --enable-evdev-input \
     --enable-wayland-backend \
     --enable-egl-backend \

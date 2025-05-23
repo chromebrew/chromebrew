@@ -23,7 +23,7 @@ class Ncurses < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
-  configure_options "--program-prefix='' \
+  autotools_configure_options "--program-prefix='' \
           --program-suffix='' \
           --disable-root-access \
           --disable-root-environ \

@@ -54,7 +54,7 @@ class Libcaca < Autotools
     ConvenienceFunctions.libtoolize('freetype')
   end
 
-  configure_options '--disable-ruby \
+  autotools_configure_options '--disable-ruby \
       --enable-gl \
       --enable-ncurses \
       --enable-network \

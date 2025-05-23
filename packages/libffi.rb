@@ -23,7 +23,7 @@ class Libffi < Autotools
   # run_tests         # DejaGNU required
 
   # See https://git.launchpad.net/ubuntu/+source/libffi/tree/debian/rules?h=applied/ubuntu/plucky-devel
-  configure_options "--build=#{CREW_TARGET}\
+  autotools_configure_options "--build=#{CREW_TARGET}\
     --disable-builddir \
     --disable-docs \
     --disable-exec-static-tramp \
@@ -37,7 +37,7 @@ class Libffi < Autotools
     system 'patch -Np1 -i no-toolexeclibdir.diff'
   end
 
-  configure_install_extras do
+  autotools_install_extras do
     FileUtils.install '.libs/libffi_convenience.a', "#{CREW_DEST_LIB_PREFIX}/libffi_pic.a", mode: 0o644
   end
 end

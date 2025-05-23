@@ -21,5 +21,5 @@ class F2fs_tools < Autotools
   depends_on 'lzo'
   depends_on 'util_linux'
 
-  configure_options '--without-selinux'
+  autotools_configure_options '--without-selinux'
 end

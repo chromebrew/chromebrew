@@ -22,5 +22,5 @@ class Libgnome_keyring < Autotools
 
   gnome
 
-  configure_options '--enable-introspection=no --enable-vala=no'
+  autotools_configure_options '--enable-introspection=no --enable-vala=no'
 end

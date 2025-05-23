@@ -26,7 +26,7 @@ class Grep < Autotools
   # NOTE: built on i686 by removing the c11threads derived threads.h
   # installed by the chromebrew glibc package on this architecture.
 
-  configure_options 'CPPFLAGS=-DHAVE_DYNAMIC_LIBPCRE --without-included-regex'
+  autotools_configure_options 'CPPFLAGS=-DHAVE_DYNAMIC_LIBPCRE --without-included-regex'
 
   # Section XFAIL test with grep: regexec.c:1344: pop_fail_stack: Assertion `num >= 0' failed.
   # run_tests

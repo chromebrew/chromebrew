@@ -19,5 +19,5 @@ class Font_util < Autotools
 
   depends_on 'xorg_macros' => :build
 
-  configure_options "--with-fontrootdir=#{CREW_PREFIX}/share/fonts"
+  autotools_configure_options "--with-fontrootdir=#{CREW_PREFIX}/share/fonts"
 end

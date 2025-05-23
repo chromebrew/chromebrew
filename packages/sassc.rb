@@ -1,33 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Sassc < Package
+class Sassc < Autotools
   description 'C implementation of Sass CSS preprocessor.'
   homepage 'https://github.com/sass/sassc'
-  version '3.6.2'
+  version '3.6.2-1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/sass/sassc.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b34876c122bce81fb000e249e3c240781e0815c5139255a5d92e45184959b80d',
-     armv7l: 'b34876c122bce81fb000e249e3c240781e0815c5139255a5d92e45184959b80d',
-       i686: '17acfe27361d4e8e2258fd5be8960ee24b7fcf2ae9e854ff4ab4d7ceb1373bed',
-     x86_64: '1d2cc3adbb8fdab70a69cc32975f10ca8c382fe04402d9717889787bcc580ffb'
+    aarch64: 'f651a9de4a61d1cf70395b20cc3ebe791bf2c22a6926334b614fb2ee9073e619',
+     armv7l: 'f651a9de4a61d1cf70395b20cc3ebe791bf2c22a6926334b614fb2ee9073e619',
+       i686: '538857ea1f1e5821b808f201e5d2fef2b58408b34557f9571fd84ae5800fb30a',
+     x86_64: '269d6fd0a548986c1ced744ddfb9b94caf51c430697ddbaf32fa8bb844c19c1e'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libsass' # R
-
-  def self.build
-    system 'autoreconf -i'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
 end

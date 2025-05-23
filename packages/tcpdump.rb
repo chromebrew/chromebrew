@@ -23,5 +23,5 @@ class Tcpdump < Autotools
   depends_on 'openssl'
   depends_on 'glibc' # R
 
-  configure_options "--with-user=#{USER}"
+  autotools_configure_options "--with-user=#{USER}"
 end

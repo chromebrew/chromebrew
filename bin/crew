@@ -712,12 +712,12 @@ def build_and_preconfigure(target_dir)
 
     begin
       @pkg.build
-    rescue StandardError
+    rescue StandardError => e
       if CREW_CACHE_FAILED_BUILD
         cache_build
-        abort 'There was a build error, caching build directory.'.lightred
+        abort "There was a build error, caching build directory.\n#{e}".lightred
       end
-      abort 'There was a build error.'.lightred
+      abort "There was a build error.\n#{e}".lightred
     end
     @pkg.in_build = false
     # wipe crew destdir

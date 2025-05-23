@@ -20,5 +20,5 @@ class Imake < Autotools
   depends_on 'xorg_cf_files'
   depends_on 'xorg_proto'
 
-  configure_options "--sysconfdir=#{CREW_PREFIX}/etc"
+  autotools_configure_options "--sysconfdir=#{CREW_PREFIX}/etc"
 end

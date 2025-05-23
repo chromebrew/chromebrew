@@ -18,5 +18,5 @@ class Mtools < Autotools
 
   depends_on 'glibc' # R
 
-  configure_options '--without-x'
+  autotools_configure_options '--without-x'
 end

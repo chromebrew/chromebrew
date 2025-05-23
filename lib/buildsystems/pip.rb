@@ -1,8 +1,9 @@
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 require 'json'
-require 'package'
-require 'require_gem'
+require_relative '../package'
+require_relative '../require_gem'
+require_relative '../report_buildsystem_methods'
 
 def get_pip_info(pip_pkg_name = nil)
   @pip_show = nil
@@ -37,21 +38,8 @@ class Pip < Package
   property :pip_install_extras, :pip_pre_configure_options
 
   def self.install
-    puts "Additional #{superclass.to_s.capitalize} options being used:".orange
-    method_list = methods.grep(/pip_/).delete_if { |i| send(i).blank? }
-    require_gem 'method_source'
-    method_blocks = []
-    method_strings = []
-    method_list.sort.each do |method|
-      @method_info = send method
-      if @method_info.is_a? String
-        method_strings << "#{method}: #{@method_info}".orange
-      else
-        method_blocks << @method_info.source.to_s.orange
-      end
-    end
-    puts method_strings
-    puts method_blocks
+    extend ReportBuildsystemMethods
+    print_buildsystem_methods
 
     @pip_cache_dir = `pip cache dir`.chomp
     @pip_cache_dest_dir = File.join(CREW_DEST_DIR, @pip_cache_dir)

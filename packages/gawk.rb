@@ -48,9 +48,9 @@ class Gawk < Autotools
   # Tests appear to have container issues...
   run_tests if ARCH == 'i686'
 
-  configure_options '--without-libsigsegv-prefix'
+  autotools_configure_options '--without-libsigsegv-prefix'
 
-  configure_install_extras do
+  autotools_install_extras do
     # Remove conflict with #{CREW_PREFIX}/bin/awk from mawk package
     FileUtils.rm "#{CREW_DEST_PREFIX}/bin/awk"
   end

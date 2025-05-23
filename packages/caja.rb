@@ -55,5 +55,5 @@ class Caja < Autotools
 
   gnome
 
-  configure_options '--enable-wayland'
+  autotools_configure_options '--enable-wayland'
 end

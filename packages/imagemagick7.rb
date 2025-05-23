@@ -72,7 +72,7 @@ class Imagemagick7 < Autotools
     abort "ImageMagick version #{imver} already installed.".lightgreen unless imver.to_s == ''
   end
 
-  configure_options "--mandir=#{CREW_MAN_PREFIX} \
+  autotools_configure_options "--mandir=#{CREW_MAN_PREFIX} \
       --program-prefix='' \
       --with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
       --enable-hugepages \

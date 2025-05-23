@@ -22,7 +22,7 @@ class Lvm2 < Autotools
   depends_on 'readline' # R
   depends_on 'util_linux' # R
 
-  configure_options "--localstatedir=#{CREW_PREFIX}/var \
+  autotools_configure_options "--localstatedir=#{CREW_PREFIX}/var \
     --disable-selinux \
     --enable-cmdlib \
     --enable-dmeventd \

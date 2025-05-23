@@ -22,7 +22,7 @@ class Nano < Autotools
   depends_on 'ncurses' # R
   depends_on 'zlib' # R
 
-  configure_options '--enable-browser \
+  autotools_configure_options '--enable-browser \
       --enable-color \
       --enable-comment \
       --enable-extra \
@@ -45,7 +45,7 @@ class Nano < Autotools
       --enable-wrapping \
       --enable-year2038'
 
-  configure_build_extras do
+  autotools_build_extras do
     open('nanorc', 'w') do |f|
       f << "set constantshow\n"
       f << "set fill 72\n"
@@ -60,7 +60,7 @@ class Nano < Autotools
     end
   end
 
-  configure_install_extras do
+  autotools_install_extras do
     FileUtils.install 'nanorc', "#{CREW_DEST_HOME}/.nanorc", mode: 0o644
   end
 

@@ -25,5 +25,5 @@ class Ethtool < Autotools
 
   run_tests
 
-  configure_options "--sbindir=#{CREW_PREFIX}/bin"
+  autotools_configure_options "--sbindir=#{CREW_PREFIX}/bin"
 end

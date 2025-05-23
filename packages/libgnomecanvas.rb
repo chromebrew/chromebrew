@@ -21,5 +21,5 @@ class Libgnomecanvas < Autotools
 
   gnome
 
-  configure_options '--enable-glade'
+  autotools_configure_options '--enable-glade'
 end

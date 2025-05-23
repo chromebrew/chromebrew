@@ -25,5 +25,5 @@ class Openldap < Autotools
   depends_on 'openssl' # R
   depends_on 'util_linux' # R
 
-  configure_options '--disable-slapd'
+  autotools_configure_options '--disable-slapd'
 end

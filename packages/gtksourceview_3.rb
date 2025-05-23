@@ -41,5 +41,5 @@ class Gtksourceview_3 < Autotools
   gnome
   no_upstream_update
 
-  configure_options '--enable-glade-catalog --enable-gtk-doc --disable-gtk-doc-html'
+  autotools_configure_options '--enable-glade-catalog --enable-gtk-doc --disable-gtk-doc-html'
 end

@@ -6,8 +6,14 @@
 /usr/local/include/oniguruma.h
 /usr/local/lib/libjq.a
 /usr/local/lib/libjq.la
+/usr/local/lib/libjq.so
+/usr/local/lib/libjq.so.1
+/usr/local/lib/libjq.so.1.0.4
 /usr/local/lib/libonig.a
 /usr/local/lib/libonig.la
+/usr/local/lib/libonig.so
+/usr/local/lib/libonig.so.5
+/usr/local/lib/libonig.so.5.3.0
 /usr/local/lib/pkgconfig/libjq.pc
 /usr/local/lib/pkgconfig/oniguruma.pc
 /usr/local/share/doc/jq/AUTHORS

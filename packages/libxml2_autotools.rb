@@ -14,10 +14,10 @@ class Libxml2_autotools < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4c09610ce86270d217ba4eefebee41b10fcce17c68a2e594e008ab4964c1a591',
-     armv7l: '4c09610ce86270d217ba4eefebee41b10fcce17c68a2e594e008ab4964c1a591',
-       i686: '3f680048525a86d159de286f9b8509295df5316c22a37cb95abc86c050cc22df',
-     x86_64: 'a96b4e07d84494e485dac0751af571e6cf37258514956195b9ad4e6095df01b0'
+    aarch64: '7c4a657d5664cdd2ddc64ad7bab7b1e9c386e9cd2ff017e565c0477aecb6864d',
+     armv7l: '7c4a657d5664cdd2ddc64ad7bab7b1e9c386e9cd2ff017e565c0477aecb6864d',
+       i686: '141c1adb6bcffa3ae4c5900c0b764647bce4e11b76c1cc8d527eabb1b2ad4071',
+     x86_64: '5cdd131dfaba8ad01089fad708b8a4cf036dad67864966c2ea604c58822a2a3e'
   })
 
   depends_on 'gcc_lib' # R
@@ -39,7 +39,7 @@ class Libxml2_autotools < Autotools
     FileUtils.rm 'test/ebcdic_566012.xml'
   end
 
-  configure_options '--disable-static \
+  autotools_configure_options '--disable-static \
     --with-icu \
     --without-python \
     --without-lzma'

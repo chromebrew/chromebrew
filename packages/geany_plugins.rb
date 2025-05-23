@@ -39,5 +39,5 @@ class Geany_plugins < Autotools
   depends_on 'zlib' # R
 
   # try to avoid gcc14 issues.
-  configure_options '--disable-projectorganizer'
+  autotools_configure_options '--disable-projectorganizer'
 end

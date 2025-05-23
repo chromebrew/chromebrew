@@ -42,7 +42,7 @@ class R < Autotools
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
 
-  configure_options '--enable-R-shlib \
+  autotools_configure_options '--enable-R-shlib \
            --with-x'
 
   run_tests

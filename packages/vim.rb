@@ -39,7 +39,7 @@ class Vim < Autotools
     end
   end
 
-  configure_options "--localstatedir=#{CREW_PREFIX}/var/lib/vim \
+  autotools_configure_options "--localstatedir=#{CREW_PREFIX}/var/lib/vim \
     --with-features=huge \
     --with-compiledby='Chromebrew' \
     --enable-gpm \

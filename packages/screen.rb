@@ -22,7 +22,7 @@ class Screen < Autotools
   depends_on 'linux_pam' # R
   depends_on 'ncurses' # R
 
-  configure_options "--enable-colors256 CFLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
+  autotools_configure_options "--enable-colors256 CFLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
 
   def self.prebuild
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,g' mktar.pl"

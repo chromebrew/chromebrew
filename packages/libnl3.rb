@@ -20,7 +20,7 @@ class Libnl3 < Autotools
   # depends_on 'check' => :build
   depends_on 'glibc' # R
 
-  configure_options '--disable-debug'
+  autotools_configure_options '--disable-debug'
   # https://github.com/thom311/libnl/issues/393
   # run_tests
 end

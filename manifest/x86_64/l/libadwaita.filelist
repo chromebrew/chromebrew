@@ -32,6 +32,7 @@
 /usr/local/include/libadwaita-1/adw-flap.h
 /usr/local/include/libadwaita-1/adw-fold-threshold-policy.h
 /usr/local/include/libadwaita-1/adw-header-bar.h
+/usr/local/include/libadwaita-1/adw-inline-view-switcher.h
 /usr/local/include/libadwaita-1/adw-layout-slot.h
 /usr/local/include/libadwaita-1/adw-layout.h
 /usr/local/include/libadwaita-1/adw-leaflet.h
@@ -68,6 +69,7 @@
 /usr/local/include/libadwaita-1/adw-timed-animation.h
 /usr/local/include/libadwaita-1/adw-toast-overlay.h
 /usr/local/include/libadwaita-1/adw-toast.h
+/usr/local/include/libadwaita-1/adw-toggle-group.h
 /usr/local/include/libadwaita-1/adw-toolbar-view.h
 /usr/local/include/libadwaita-1/adw-version.h
 /usr/local/include/libadwaita-1/adw-view-stack.h
@@ -76,6 +78,8 @@
 /usr/local/include/libadwaita-1/adw-view-switcher.h
 /usr/local/include/libadwaita-1/adw-window-title.h
 /usr/local/include/libadwaita-1/adw-window.h
+/usr/local/include/libadwaita-1/adw-wrap-box.h
+/usr/local/include/libadwaita-1/adw-wrap-layout.h
 /usr/local/include/libadwaita-1/adwaita.h
 /usr/local/lib64/girepository-1.0/Adw-1.typelib
 /usr/local/lib64/libadwaita-1.so
@@ -96,6 +100,7 @@
 /usr/local/share/locale/eu/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/fa/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/fi/LC_MESSAGES/libadwaita.mo
+/usr/local/share/locale/fil/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/fr/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/fur/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/gl/LC_MESSAGES/libadwaita.mo

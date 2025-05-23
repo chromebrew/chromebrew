@@ -29,5 +29,5 @@ class Vapoursynth < Autotools
   depends_on 'tesseract' => :build
   depends_on 'zimg' # R
 
-  configure_options '--disable-static'
+  autotools_configure_options '--disable-static'
 end

@@ -40,7 +40,7 @@ class Gdb < Autotools
 
   conflicts_ok # binutils conflicts
 
-  configure_options "--disable-binutils \
+  autotools_configure_options "--disable-binutils \
       --disable-ld \
       --disable-nls \
       --enable-64-bit-bfd \

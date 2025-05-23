@@ -30,5 +30,5 @@ class Lrzip_next < Autotools
 
   git_fetchtags
 
-  configure_options '--enable-asm'
+  autotools_configure_options '--enable-asm'
 end

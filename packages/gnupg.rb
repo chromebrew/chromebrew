@@ -34,7 +34,7 @@ class Gnupg < Autotools
   depends_on 'sqlite' # R
   depends_on 'zlib' # R
 
-  configure_options '--with-zlib \
+  autotools_configure_options '--with-zlib \
     --with-bzip2 \
     --with-readline'
 
