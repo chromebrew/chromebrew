@@ -259,9 +259,6 @@ jobs:
             # container. Without these, upload fails.
             mkdir pkg_cache
             sudo setfacl -R -m u:1000:rwx .
-            sudo chown 1000 pkg_cache
-            sudo chmod 755 pkg_cache
-
             # Use docker-in-docker shim to mount volume inside docker.
             # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
             # ghcr.io/felipecrs/dond-shim:latest \
@@ -271,12 +268,14 @@ jobs:
               --platform "${PLATFORM}" \
               -e PUID=1000 \
               -e PGID=1000 \
+              --privileged \
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
               -e CREW_REPO="${CREW_REPO}" \
               -e CREW_BRANCH="${CREW_BRANCH}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
-              -v "$(pwd)":/output \
+              -v "$(pwd)"/pkg_cache:/usr/local/tmp/packages:rshared \
+              -v "$(pwd)":/output:rshared \
               "satmandu/crewbuild:${CONTAINER}" \
               /bin/chromebrewstart /output/tools/github_actions_update_builder.sh  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
               grep "Built and Uploaded:" /tmp/build.log || true
