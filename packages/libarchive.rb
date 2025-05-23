@@ -1,3 +1,4 @@
+# CMake builds do not currently generate pkgconfig files.
 require 'buildsystems/autotools'
 
 class Libarchive < Autotools
@@ -7,7 +8,6 @@ class Libarchive < Autotools
   license 'BSD, BSD-2, BSD-4 and public-domain'
   compatibility 'all'
   source_url "https://www.libarchive.org/downloads/libarchive-#{version.split('-').first}.tar.xz"
-  # source_url "https://github.com/libarchive/libarchive/releases/download/v#{version.split('-').first}/libarchive-#{version.split('-').first}.tar.xz"
   source_sha256 '67bfac3798a778143f4b1cadcdb3792b4269486f8e1b70ca5c0ee5841398bfdf'
   binary_compression 'tar.zst'
 
