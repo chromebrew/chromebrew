@@ -125,12 +125,11 @@ class Llvm20_build < Package
             -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_C_FLAGS='#{@ARCH_C_LTO_FLAGS}' \
             -DCMAKE_CXX_COMPILER=$(which clang++) \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=sccache \
             -DCMAKE_CXX_FLAGS='#{@ARCH_CXX_LTO_FLAGS}' \
             -DCMAKE_EXE_LINKER_FLAGS='#{@ARCH_LTO_LDFLAGS}' \
             -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-            -DCLANG_DEFAULT_LINKER=#{CREW_LINKER} \
+            -DCLANG_DEFAULT_LINKER=mold \
             -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
             -DCOMPILER_RT_BUILD_BUILTINS=ON \
             -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
