@@ -257,6 +257,7 @@ jobs:
             # Detection of /output/pkg_cache dir triggers setting
             # CREW_CACHE_DIR=1 and CREW_CACHE_ENABLED=1 in the build
             # container. Without these, upload fails.
+            mkdir pkg_cache
             sudo setfacl -R -m u:1000:rwx .
             # Use docker-in-docker shim to mount volume inside docker.
             # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
