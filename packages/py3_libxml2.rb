@@ -12,10 +12,10 @@ class Py3_libxml2 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6104bab109fab73576daa07ae3bc5c2c174615b17f85b65d52696bfcb84f33b8',
-     armv7l: '6104bab109fab73576daa07ae3bc5c2c174615b17f85b65d52696bfcb84f33b8',
-       i686: '7ff32e8616aba0682996bb630d35bd551a2a10f302c5b0cb659a1f901cb1c65e',
-     x86_64: '8d6a0a678776b2988cb6826f0f778f204cf552e0d40909436f804a6ebf90ce52'
+    aarch64: 'f3046388baf9c1da94e3a45f2c694565a41c36412f9584973ede487e602d588d',
+     armv7l: 'f3046388baf9c1da94e3a45f2c694565a41c36412f9584973ede487e602d588d',
+       i686: 'b87930108ddacfd4cc595d596f1e440c26d7b6c953e6efc32b9c0d552e6e436d',
+     x86_64: 'fe402dd0247a9236ca54c6cc0fa27708bbfda9b8ac18ace47a16d123a203fcc1'
   })
 
   depends_on 'glibc' # R
@@ -30,7 +30,8 @@ class Py3_libxml2 < Package
     system 'autoreconf -fiv'
     system "./configure #{CREW_CONFIGURE_OPTIONS}"
     Dir.chdir('python') do
-      @pip_wheel = `python setup.py bdist_wheel`[/(?<=filename=)(.*)*?(\S+)/, 0]
+      system "python setup.py bdist_wheel"
+      @pip_wheel = `cd dist && ls *.whl`.chomp
     end
   end
 
