@@ -3,11 +3,12 @@ require 'buildsystems/rust'
 class Edit < RUST
   description 'A simple editor for simple needs.'
   homepage 'https://github.com/microsoft/edit.'
-  version '1.0.0'
+  version '1.0.0-1cbb4cb'
   license 'MIT'
-  compatibility 'i686 x86_64'
+  compatibility 'all'
   source_url 'https://github.com/microsoft/edit.git'
-  git_hashtag "v#{version.split('-').first}"
+  # git_hashtag "v#{version.split('-').first}"
+  git_hashtag '1cbb4cb1ad7a044eadb4cf49592d797266358951'
   binary_compression 'tar.zst'
 
   binary_sha256({
