@@ -71,9 +71,30 @@ jobs:
           TIMESTAMP="$(date -u +%F-%H%Z)"
           export TIMESTAMP
           echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
+      - name: Get all changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v46
+        with:
+          base_sha: master
+          files_yaml: |
+            packages:
+              - packages/*.rb
+            workflow:
+              - .github/**
+            crew:
+              - '!.github/**'
+              - 'packages/*.rb'
+          since_last_remote_commit: true
+      - name: Get all changed workflow files
+        id: changed-workflow-files
+        uses: tj-actions/changed-files@v46
+        with:
+          base_sha: master
+          files: .github/**
+          since_last_remote_commit: true
       - name: Get all changed package files
         id: changed-ruby-files
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@v46
         with:
           base_sha: master
           files: packages/*.rb
@@ -81,6 +102,8 @@ jobs:
       - name: Export variables to github context
         id: changed-packages
         run: |
+            echo "CHANGED_WORKFLOW_FILES=$(echo "${{ steps.changed-workflow-files.outputs.all_changed_files }}")" >> "$GITHUB_ENV"
+            echo "CHANGED_WORKFLOW_FILES=$(echo "${{ steps.changed-workflow-files.outputs.all_changed_files }}")" >> "$GITHUB_OUTPUT"
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
             echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
             echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
