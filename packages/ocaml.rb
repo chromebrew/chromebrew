@@ -3,10 +3,10 @@ require 'package'
 class Ocaml < Package
   description 'OCaml is an industrial strength programming language supporting functional, imperative and object-oriented styles'
   homepage 'https://ocaml.org/'
-  version '4.14.1'
+  version '4.14.2'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://caml.inria.fr/pub/distrib/ocaml-4.14/ocaml-4.14.1.tar.xz'
+  source_url 'https://caml.inria.fr/pub/distrib/ocaml-4.14/ocaml-4.14.2.tar.xz'
   source_sha256 'c127974d0242576cf47061b20aa9c86d17be0d6aa9687f6ec9835de67be7bb6f'
   binary_compression 'tar.zst'
 
