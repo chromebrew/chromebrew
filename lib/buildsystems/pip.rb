@@ -113,14 +113,16 @@ class Pip < Package
     abort "#{@py_pkg} could not installed!".lightred unless get_pip_info(@py_pkg)
     @pip_show_files.each do |pip_file|
       @pip_file_path = File.expand_path("#{@pip_show_location}#{pip_file}")
+      next unless File.file?(@pip_file_path) || Dir.exist?(@pip_file_path)
+
       @pip_file_destpath = File.join(CREW_DEST_DIR, @pip_file_path)
       # Handle older FileUtils from older ruby versions.
       FileUtils.mkdir_p File.dirname(@pip_file_destpath) if Gem::Version.new(RUBY_VERSION.to_s) < Gem::Version.new('3.3')
       begin
         FileUtils.install @pip_file_path, @pip_file_destpath
-      rescue Errno::ENOENT
+      rescue Errno::ENOENT => e
         puts @pip_show_files
-        abort "Problem installing #{@pip_file_path} from #{@py_pkg}==#{@pip_pkg_version} to #{@pip_file_destpath}".lightred
+        abort "Problem installing #{@pip_file_path} from #{@py_pkg}==#{@pip_pkg_version} to #{@pip_file_destpath}\n#{e.message}".lightred
       end
     end
     @pip_install_extras&.call
