@@ -6,12 +6,11 @@ require 'buildsystems/rust'
 class Uutils_coreutils < RUST
   description 'Cross-platform Rust rewrite of the GNU coreutils'
   homepage 'https://github.com/uutils/coreutils'
-  version '0.0.30-0fd6e88'
+  version '0.1.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/uutils/coreutils.git'
-  # git_hashtag version.split('-').first
-  git_hashtag '0fd6e8894f4fb1c2d8d29b6126da4a5cf8e8e918'
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
