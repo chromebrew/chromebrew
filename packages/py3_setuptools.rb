@@ -1,7 +1,7 @@
-require 'buildsystems/python'
+require 'buildsystems/pip'
 require 'ptools'
 
-class Py3_setuptools < Python
+class Py3_setuptools < Pip
   description 'Setuptools is the python build system from the Python Packaging Authority.'
   homepage 'https://setuptools.readthedocs.io/'
   version "80.8.0-#{CREW_PY_VER}"
