@@ -3,7 +3,7 @@ require 'package'
 class Glibc < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
-  version '2.41-4'
+  version '2.41-5'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/glibc/glibc-#{version.partition('-')[0]}.tar.xz"
@@ -29,7 +29,6 @@ class Glibc < Package
 
   def self.patch
     system "git clone --depth=1 https://github.com/chromebrew/crew-package-glibc -b #{version}"
-    system 'filefix'
 
     Dir.glob('crew-package-glibc/patches/*.patch') do |patch|
       puts "Applying #{patch}...".yellow
@@ -42,7 +41,6 @@ class Glibc < Package
       -DCREW_PREFIX=\\"#{CREW_PREFIX}\\"
       -DCREW_GLIBC_PREFIX=\\"#{CREW_GLIBC_PREFIX}\\"
       -DCREW_GLIBC_INTERPRETER=\\"#{CREW_GLIBC_INTERPRETER}\\"
-      -DSYSTEM_GLIBC_INTERPRETER=\\"/#{ARCH_LIB}/#{File.basename(CREW_GLIBC_INTERPRETER)}\\"
     ]
 
     build_env = {
@@ -105,7 +103,7 @@ class Glibc < Package
   end
 
   def self.install
-    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/etc/env.d #{CREW_DEST_PREFIX}/etc/ld.so.conf.d #{CREW_DEST_LIB_PREFIX}]
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/etc/env.d #{CREW_DEST_PREFIX}/etc/ld.so.conf.d #{CREW_DEST_LIB_PREFIX} #{CREW_DEST_PREFIX}/lib64]
 
     system "make DESTDIR=#{CREW_DEST_DIR} install", chdir: 'builddir'
     system "make DESTDIR=#{CREW_DEST_DIR} localedata/install-locales", chdir: 'builddir'
@@ -121,8 +119,9 @@ class Glibc < Package
       include /etc/ld.so.conf
     EOF
 
-    # install crew-audit
+    # install crew-preload
     FileUtils.install 'crew-package-glibc/crew-preload.so', File.join(CREW_DEST_LIB_PREFIX, 'crew-preload.so'), mode: 0o755
+    FileUtils.install 'crew-package-glibc/prebuilt/crew-preload-aarch64.so', File.join(CREW_DEST_PREFIX, 'lib64/crew-preload.so'), mode: 0o755 if ARCH == 'aarch64'
   end
 
   def self.postinstall
