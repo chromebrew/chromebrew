@@ -280,6 +280,7 @@ CREW_NINJA ||= ENV.fetch('CREW_NINJA', 'ninja') unless defined?(CREW_NINJA)
 # CMAKE_LIBRARY_PATH is the build LIBRARY_PATH, as opposed to
 # CMAKE_INSTALL_LIBDIR which defaults to lib or lib64.
 CREW_CMAKE_OPTIONS ||= <<~OPT.chomp
+  -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
   -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
   -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}' \
   -DCMAKE_C_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
