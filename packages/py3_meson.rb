@@ -10,8 +10,8 @@ class Py3_meson < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '00a913d55057d9264d6baa710f8aea6e5704f0cc84879a2eb8153cdae9dc9c9a',
-     armv7l: '00a913d55057d9264d6baa710f8aea6e5704f0cc84879a2eb8153cdae9dc9c9a',
+    aarch64: '8cf8839fca54005a843657d8aad0b09d2d207bf3485ef699a681469268b55bda',
+     armv7l: '8cf8839fca54005a843657d8aad0b09d2d207bf3485ef699a681469268b55bda',
        i686: '7f1097304c654a6d8c2d4f676a997c80da67ff1100d870141df6de1a7e473854',
      x86_64: '6b89ef59cb792ba807212af7b4a927c0480cf81e2c7a7d7ba0a31e46e00c7c8f'
   })
