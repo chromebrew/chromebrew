@@ -71,8 +71,10 @@ def save_json(json_object)
   crewlog 'Saving device.json...'
   begin
     File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
-  rescue StandardError
-    puts 'Error writing updated packages json file!'.lightred
+  # rubocop:disable Lint/UselessAssignment
+  rescue StandardError => e
+    # rubocop:enable Lint/UselessAssignment
+    puts "Error writing updated packages json file!\n{e.message}".lightred
     abort
   end
   # Copy over original if the write to the tmp file succeeds.

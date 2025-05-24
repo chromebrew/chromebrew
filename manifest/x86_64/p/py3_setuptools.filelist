@@ -31,15 +31,18 @@
 /usr/local/lib/python3.13/site-packages/pkg_resources/tests/test_pkg_resources.py
 /usr/local/lib/python3.13/site-packages/pkg_resources/tests/test_resources.py
 /usr/local/lib/python3.13/site-packages/pkg_resources/tests/test_working_set.py
-/usr/local/lib/python3.13/site-packages/setuptools-80.7.1.post20250516-py3.13.egg-info/PKG-INFO
-/usr/local/lib/python3.13/site-packages/setuptools-80.7.1.post20250516-py3.13.egg-info/SOURCES.txt
-/usr/local/lib/python3.13/site-packages/setuptools-80.7.1.post20250516-py3.13.egg-info/dependency_links.txt
-/usr/local/lib/python3.13/site-packages/setuptools-80.7.1.post20250516-py3.13.egg-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/setuptools-80.7.1.post20250516-py3.13.egg-info/requires.txt
-/usr/local/lib/python3.13/site-packages/setuptools-80.7.1.post20250516-py3.13.egg-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/setuptools-80.8.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/setuptools-80.8.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/setuptools-80.8.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/setuptools-80.8.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/setuptools-80.8.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/setuptools-80.8.0.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/setuptools-80.8.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/setuptools-80.8.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/setuptools/__init__.py
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/_core_metadata.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/setuptools/__pycache__/_discovery.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/_entry_points.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/_imp.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/_importlib.cpython-313.pyc
@@ -71,6 +74,7 @@
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/wheel.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/__pycache__/windows_support.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/_core_metadata.py
+/usr/local/lib/python3.13/site-packages/setuptools/_discovery.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/__init__.py
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/_distutils/__pycache__/_log.cpython-313.pyc
@@ -397,7 +401,6 @@
 /usr/local/lib/python3.13/site-packages/setuptools/_vendor/jaraco/functools/__init__.pyi
 /usr/local/lib/python3.13/site-packages/setuptools/_vendor/jaraco/functools/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/_vendor/jaraco/functools/py.typed
-/usr/local/lib/python3.13/site-packages/setuptools/_vendor/jaraco/text/Lorem ipsum.txt
 /usr/local/lib/python3.13/site-packages/setuptools/_vendor/jaraco/text/__init__.py
 /usr/local/lib/python3.13/site-packages/setuptools/_vendor/jaraco/text/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools/_vendor/jaraco/text/__pycache__/layouts.cpython-313.pyc
@@ -676,7 +679,6 @@
 /usr/local/lib/python3.13/site-packages/setuptools/command/install_egg_info.py
 /usr/local/lib/python3.13/site-packages/setuptools/command/install_lib.py
 /usr/local/lib/python3.13/site-packages/setuptools/command/install_scripts.py
-/usr/local/lib/python3.13/site-packages/setuptools/command/launcher manifest.xml
 /usr/local/lib/python3.13/site-packages/setuptools/command/rotate.py
 /usr/local/lib/python3.13/site-packages/setuptools/command/saveopts.py
 /usr/local/lib/python3.13/site-packages/setuptools/command/sdist.py
@@ -735,7 +737,6 @@
 /usr/local/lib/python3.13/site-packages/setuptools/monkey.py
 /usr/local/lib/python3.13/site-packages/setuptools/msvc.py
 /usr/local/lib/python3.13/site-packages/setuptools/namespaces.py
-/usr/local/lib/python3.13/site-packages/setuptools/script (dev).tmpl
 /usr/local/lib/python3.13/site-packages/setuptools/script.tmpl
 /usr/local/lib/python3.13/site-packages/setuptools/tests/__init__.py
 /usr/local/lib/python3.13/site-packages/setuptools/tests/__pycache__/__init__.cpython-313.pyc
