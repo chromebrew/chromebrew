@@ -1,10 +1,9 @@
-# CMake builds do not currently generate pkgconfig files.
-require 'buildsystems/autotools'
+require 'buildsystems/cmake'
 
-class Libarchive < Autotools
+class Libarchive < CMake
   description 'Multi-format archive and compression library.'
   homepage 'https://www.libarchive.org/'
-  version "3.8.0-#{CREW_ICU_VER}"
+  version "3.8.0-#{CREW_ICU_VER}-1"
   license 'BSD, BSD-2, BSD-4 and public-domain'
   compatibility 'all'
   source_url "https://www.libarchive.org/downloads/libarchive-#{version.split('-').first}.tar.xz"
@@ -12,10 +11,10 @@ class Libarchive < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c7207f0c8d0bb8f1a2fa547a80cb6f9a4979850926dfb668b70015f423b913a0',
-     armv7l: 'c7207f0c8d0bb8f1a2fa547a80cb6f9a4979850926dfb668b70015f423b913a0',
-       i686: '67f2fc8f8d75b5182f7bc11c7ffc1d77103963e97aecdf96e94e4f98773ede2d',
-     x86_64: '355b85ca8f374aa670ed824c1e7bd196afceac5766ff3eb7b3cdd1d9fdb7f06f'
+    aarch64: '7da5e0b47152ecac1213776285faa4c4969d332333afbd63adbbd84fa5789676',
+     armv7l: '7da5e0b47152ecac1213776285faa4c4969d332333afbd63adbbd84fa5789676',
+       i686: '3380293eae6abc7acd2098fc680809f8e74c1054cacb707acf6872d325a70e39',
+     x86_64: 'e52ad0ab46be7156e831cf8a19628d28a8c9b178c9e2a36223a89d4fd3e60422'
   })
 
   depends_on 'acl' # R
@@ -32,68 +31,16 @@ class Libarchive < Autotools
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  def self.patch
-    # Fix complaints about aclocal being too new.
-    system 'autoreconf -fiv'
-    # Fix LIBDIR being set improperly for cmake.
-    # See https://github.com/libarchive/libarchive/pull/2509
-    File.write 'libdir.patch', <<~LIBDIR_PATCH_EOF
-      diff --git a/build/cmake/CreatePkgConfigFile.cmake b/build/cmake/CreatePkgConfigFile.cmake
-      index bc5a43f72a..50caa5e850 100644
-      --- a/build/cmake/CreatePkgConfigFile.cmake
-      +++ b/build/cmake/CreatePkgConfigFile.cmake
-      @@ -29,5 +29,5 @@ CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/build/pkgconfig/libarchive.pc.in
-       # And install it, of course ;).
-       IF(ENABLE_INSTALL)
-         INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/build/pkgconfig/libarchive.pc
-      -          DESTINATION "lib/pkgconfig")
-      +          DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
-       ENDIF()
-      diff --git a/libarchive/CMakeLists.txt b/libarchive/CMakeLists.txt
-      index dd0b2808d9..86997a12ad 100644
-      --- a/libarchive/CMakeLists.txt
-      +++ b/libarchive/CMakeLists.txt
-      @@ -247,7 +247,7 @@ IF(BUILD_SHARED_LIBS)
-         ADD_LIBRARY(archive SHARED ${libarchive_SOURCES} ${include_HEADERS})
-         TARGET_INCLUDE_DIRECTORIES(archive PUBLIC .)
-         TARGET_LINK_LIBRARIES(archive ${ADDITIONAL_LIBS})
-      -  SET_TARGET_PROPERTIES(archive PROPERTIES#{' '}
-      +  SET_TARGET_PROPERTIES(archive PROPERTIES
-                               VERSION ${SOVERSION_FULL}
-                               SOVERSION ${SOVERSION}
-                               MACHO_COMPATIBILITY_VERSION ${MACHO_COMPATIBILITY_VERSION}
-      @@ -265,18 +265,22 @@ IF(NOT WIN32 OR CYGWIN OR NOT BUILD_SHARED_LIBS)
-         SET_TARGET_PROPERTIES(archive_static PROPERTIES OUTPUT_NAME archive)
-       ENDIF(NOT WIN32 OR CYGWIN OR NOT BUILD_SHARED_LIBS)
+  cmake_options '-DENABLE_TEST=OFF'
 
-      +if(NOT DEFINED CMAKE_INSTALL_LIBDIR)
-      +    set(CMAKE_INSTALL_LIBDIR "#{ARCH_LIB}")
-      +endif()
-      +
-       IF(ENABLE_INSTALL)
-         # How to install the libraries
-         IF(BUILD_SHARED_LIBS)
-           INSTALL(TARGETS archive
-                   RUNTIME DESTINATION bin
-      -            LIBRARY DESTINATION lib
-      -            ARCHIVE DESTINATION lib)
-      +            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-      +            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
-         ENDIF(BUILD_SHARED_LIBS)
-         INSTALL(TARGETS archive_static
-                 RUNTIME DESTINATION bin
-      -          LIBRARY DESTINATION lib
-      -          ARCHIVE DESTINATION lib)
-      +          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-      +          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
-         INSTALL_MAN(${libarchive_MANS})
-         INSTALL(FILES ${include_HEADERS} DESTINATION include)
-       ENDIF()
-    LIBDIR_PATCH_EOF
-    system 'patch -Np1 -i libdir.patch'
+  def self.patch
+    # Fix LIBDIR being set improperly for cmake. (This was merged after 3.8.0)
+    # This needs CMAKE_INSTALL_LIBDIR to be set.
+    downloader 'https://github.com/libarchive/libarchive/pull/2509.diff', '355a5c17f91968b14df4b07b944aaf16746a0896ada5ef8653b08930640e01e7'
+    system 'patch -Np1 -i 2509.diff'
   end
 
-  autotools_install_extras do
+  cmake_install_extras do
     # As per Arch pkgbuild. This fixes epiphany builds.
     system "sed -i 's/iconv//g' #{CREW_DEST_LIB_PREFIX}/pkgconfig/libarchive.pc"
   end

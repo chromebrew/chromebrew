@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.61.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.61.6' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -32,7 +32,7 @@ CREW_PREFIX ||= ENV.fetch('CREW_PREFIX', '/usr/local') unless defined?(CREW_PREF
 
 # Glibc related constants
 CREW_GLIBC_PREFIX ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
-@crew_glibc_interpreter = File.join(CREW_GLIBC_PREFIX, File.basename(File.realpath("#{CREW_PREFIX}/bin/ld.so"))) unless defined?(CREW_GLIBC_INTERPRETER)
+@crew_glibc_interpreter = File.file?("#{CREW_PREFIX}/bin/ld.so") ? File.join(CREW_GLIBC_PREFIX, File.basename(File.realpath("#{CREW_PREFIX}/bin/ld.so"))) : ''
 CREW_GLIBC_INTERPRETER ||= File.file?(@crew_glibc_interpreter) ? @crew_glibc_interpreter : nil unless defined?(CREW_GLIBC_INTERPRETER)
 
 # Glibc version can be found from the output of libc.so.6
@@ -43,8 +43,6 @@ LIBC_VERSION ||= if ENV.include?('LIBC_VERSION') && ENV['LIBC_VERSION'].empty?
                  else
                    ENV.fetch('LIBC_VERSION', @libc_version) unless defined?(LIBC_VERSION)
                  end
-
-LIBC_VERSION ||= ENV.fetch('LIBC_VERSION', @libc_version) unless defined?(LIBC_VERSION)
 
 if CREW_PREFIX == '/usr/local'
   CREW_BUILD_FROM_SOURCE ||= ENV.fetch('CREW_BUILD_FROM_SOURCE', false) unless defined?(CREW_BUILD_FROM_SOURCE)
@@ -282,6 +280,7 @@ CREW_NINJA ||= ENV.fetch('CREW_NINJA', 'ninja') unless defined?(CREW_NINJA)
 # CMAKE_LIBRARY_PATH is the build LIBRARY_PATH, as opposed to
 # CMAKE_INSTALL_LIBDIR which defaults to lib or lib64.
 CREW_CMAKE_OPTIONS ||= <<~OPT.chomp
+  -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
   -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
   -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}' \
   -DCMAKE_C_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
