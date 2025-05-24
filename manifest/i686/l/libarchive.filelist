@@ -5,7 +5,6 @@
 /usr/local/include/archive.h
 /usr/local/include/archive_entry.h
 /usr/local/lib/libarchive.a
-/usr/local/lib/libarchive.la
 /usr/local/lib/libarchive.so
 /usr/local/lib/libarchive.so.13
 /usr/local/lib/libarchive.so.13.8.0
