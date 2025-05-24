@@ -100,22 +100,22 @@ class Llvm20_build < Package
 
     unless Dir.exist?('builddir')
       FileUtils.mkdir_p 'builddir'
-      #File.write 'builddir/clc', <<~CLC_EOF
-        ##!/bin/bash
-        #machine=$(gcc -dumpmachine)
-        #version=$(gcc -dumpversion)
-        #gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
-        #clang -B ${gnuc_lib} -L ${gnuc_lib} "$@"
-      #CLC_EOF
-      #File.write 'builddir/clc++', <<~CLCPLUSPLUS_EOF
-        ##!/bin/bash
-        #machine=$(gcc -dumpmachine)
-        #version=$(gcc -dumpversion)
-        #cxx_sys=#{CREW_PREFIX}/include/c++/${version}
-        #cxx_inc=#{CREW_PREFIX}/include/c++/${version}/${machine}
-        #gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
-        #clang++ -fPIC -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
-      #CLCPLUSPLUS_EOF
+      File.write 'builddir/clc', <<~CLC_EOF
+        #!/bin/bash
+        machine=$(gcc -dumpmachine)
+        version=$(gcc -dumpversion)
+        gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
+        clang -B ${gnuc_lib} -L ${gnuc_lib} "$@"
+      CLC_EOF
+      File.write 'builddir/clc++', <<~CLCPLUSPLUS_EOF
+        #!/bin/bash
+        machine=$(gcc -dumpmachine)
+        version=$(gcc -dumpversion)
+        cxx_sys=#{CREW_PREFIX}/include/c++/${version}
+        cxx_inc=#{CREW_PREFIX}/include/c++/${version}/${machine}
+        gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
+        clang++ -fPIC -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
+      CLCPLUSPLUS_EOF
       system "cmake -B builddir -G Ninja llvm \
             -DCLANG_DEFAULT_LINKER=mold \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_TARGET} \
