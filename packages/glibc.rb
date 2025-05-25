@@ -24,6 +24,7 @@ class Glibc < Package
 
   conflicts_ok
   no_env_options
+  no_fhs
   no_shrink
   print_source_bashrc
 
@@ -83,8 +84,8 @@ class Glibc < Package
 
       system build_env, '../configure', *config_opts, no_preload_hacks: true
       # Without using Kernel.system make segfaults.
-      build_env.store('CREW_PRELOAD_ENABLE_COMPILE_HACKS', '0')
-      Kernel.system build_env, "make PARALLELMFLAGS='-j #{CREW_NPROC}'"
+      Kernel.system build_env, "make PARALLELMFLAGS='-j #{CREW_NPROC}'", exception: false
+      Kernel.system 'make -j1 || make -j1 || make -j1 || make -j1' if $CHILD_STATUS.exitstatus != 0
     end
 
     arch_flag = case ARCH
@@ -125,6 +126,7 @@ class Glibc < Package
     # install crew-preload
     FileUtils.install 'crew-package-glibc/crew-preload.so', File.join(CREW_DEST_LIB_PREFIX, 'crew-preload.so'), mode: 0o755
     FileUtils.install 'crew-package-glibc/prebuilt/crew-preload-aarch64.so', File.join(CREW_DEST_PREFIX, 'lib64/crew-preload.so'), mode: 0o755 if %w[aarch64 armv7l].include?(ARCH)
+    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/lib64" if ARCH == 'i686'
   end
 
   def self.postinstall
