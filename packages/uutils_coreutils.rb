@@ -6,19 +6,18 @@ require 'buildsystems/rust'
 class Uutils_coreutils < RUST
   description 'Cross-platform Rust rewrite of the GNU coreutils'
   homepage 'https://github.com/uutils/coreutils'
-  version '0.0.30-0fd6e88'
+  version '0.1.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/uutils/coreutils.git'
-  # git_hashtag version.split('-').first
-  git_hashtag '0fd6e8894f4fb1c2d8d29b6126da4a5cf8e8e918'
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '468167bc33398704ac5dc4b83d13c3cbf53b0b602b8cb4f269f4e26db98ed65b',
-     armv7l: '468167bc33398704ac5dc4b83d13c3cbf53b0b602b8cb4f269f4e26db98ed65b',
-       i686: '7b11bde5389add0bc8b2636b2506de483ba77f77e37caf1185bdb7962ff34426',
-     x86_64: 'bae2c8b8c85170172a89ec44edfd7def43494e985fdbb81dd146de63cd02c488'
+    aarch64: '59d56b5e199e5f8c2f6d4004bbde81a7348d7162bd34a6bcbcd31bd7a7fba979',
+     armv7l: '59d56b5e199e5f8c2f6d4004bbde81a7348d7162bd34a6bcbcd31bd7a7fba979',
+       i686: '82b8e9f4f21ab33f03e35741f48431263b9195be466a01f3ce72321728ef5d11',
+     x86_64: '41781a6b7b100b04cd4dc120ed96a072e9d00d0fe005f6cefc45092d141410b5'
   })
 
   depends_on 'acl' => :build
