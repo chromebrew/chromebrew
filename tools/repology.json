@@ -339,7 +339,7 @@
     "name": "appflowy",
     "description": "AI collaborative workspace where you achieve more without losing control of your data. The best open source alternative to Notion.",
     "homepage": "https://www.appflowy.io/",
-    "version": "0.9.1",
+    "version": "0.9.2",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -835,7 +835,7 @@
     "name": "bash",
     "description": "The GNU Bourne Again SHell is a Bourne-compatible shell with useful csh and ksh features.",
     "homepage": "https://www.gnu.org/software/bash/",
-    "version": "5.2.37",
+    "version": "5.3-rc1",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -1091,7 +1091,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.78.97",
+    "version": "1.78.102",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1947,7 +1947,7 @@
     "name": "crew_profile_base",
     "description": "Crew-profile-base sets up Chromebrew's environment capabilities.",
     "homepage": "https://github.com/chromebrew/crew-profile-base",
-    "version": "0.0.25",
+    "version": "0.0.29",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -2619,9 +2619,17 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "136.0.3240.64-1",
+    "version": "136.0.3240.92-1",
     "license": "MIT",
     "compatibility": "x86_64"
+  },
+  {
+    "name": "edit",
+    "description": "A simple editor for simple needs.",
+    "homepage": "https://github.com/microsoft/edit.",
+    "version": "1.0.0",
+    "license": "MIT",
+    "compatibility": "all"
   },
   {
     "name": "editorconfig_core_c",
@@ -3091,7 +3099,7 @@
     "name": "filecmd",
     "description": "file and libmagic determine file type",
     "homepage": "https://darwinsys.com/file/",
-    "version": "5.46",
+    "version": "5.46-1",
     "license": "BSD-2 and GPL-3+",
     "compatibility": "all"
   },
@@ -3123,7 +3131,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "138.0.1",
+    "version": "138.0.4",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3715,7 +3723,7 @@
     "name": "gcc_build",
     "description": "The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.",
     "homepage": "https://www.gnu.org/software/gcc/",
-    "version": "14.2.0",
+    "version": "15.1.0",
     "license": "GPL-3, LGPL-3, libgcc, FDL-1.2",
     "compatibility": "all"
   },
@@ -3723,7 +3731,7 @@
     "name": "gcc_dev",
     "description": "The GNU Compiler Collection: Everything (excepting libraries aside from libgccjit)",
     "homepage": "https://www.gnu.org/software/gcc/",
-    "version": "14.2.0-glibc2.27",
+    "version": "15.1.0",
     "license": "GPL-3, LGPL-3, libgcc, FDL-1.2",
     "compatibility": "all"
   },
@@ -3731,7 +3739,7 @@
     "name": "gcc_lib",
     "description": "GCC shared libs except libgccjit",
     "homepage": "https://www.gnu.org/software/gcc/",
-    "version": "14.2.0-glibc2.27",
+    "version": "15.1.0",
     "license": "GPL-3, LGPL-3, libgcc, FDL-1.2",
     "compatibility": "all"
   },
@@ -3747,7 +3755,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "520.0.0",
+    "version": "523.0.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -3931,7 +3939,7 @@
     "name": "gettext",
     "description": "GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.",
     "homepage": "https://www.gnu.org/software/gettext/",
-    "version": "0.24",
+    "version": "0.25-1",
     "license": "GPL-3+ and LGPL-2.1+",
     "compatibility": "all"
   },
@@ -3950,14 +3958,6 @@
     "version": "0.14.2",
     "license": "LGPL-2.1+ and GPL-2",
     "compatibility": "all"
-  },
-  {
-    "name": "gfbgraph",
-    "description": "GLib/GObject wrapper for the Facebook Graph API",
-    "homepage": "https://wiki.gnome.org/Projects/GFBGraph",
-    "version": "0.2.5",
-    "license": "LGPL-2.1+",
-    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "ghc",
@@ -4051,7 +4051,7 @@
     "name": "git",
     "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
     "homepage": "https://git-scm.com/",
-    "version": "2.49.0",
+    "version": "2.49.0-1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -4176,98 +4176,10 @@
     "compatibility": "aarch64 armv7l x86_64"
   },
   {
-    "name": "glibc_build223",
+    "name": "glibc",
     "description": "The GNU C Library project provides the core libraries for GNU/Linux systems.",
     "homepage": "https://www.gnu.org/software/libc/",
-    "version": "2.23-6",
-    "license": "LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE",
-    "compatibility": "i686"
-  },
-  {
-    "name": "glibc_build227",
-    "description": "The GNU C Library project provides the core libraries for GNU/Linux systems.",
-    "homepage": "https://www.gnu.org/software/libc/",
-    "version": "2.27-1",
-    "license": "LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE",
-    "compatibility": "aarch64 armv7l x86_64"
-  },
-  {
-    "name": "glibc_build232",
-    "description": "The GNU C Library project provides the core libraries for GNU/Linux systems.",
-    "homepage": "https://www.gnu.org/software/libc/",
-    "version": "2.32-4",
-    "license": "LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE",
-    "compatibility": "aarch64 armv7l x86_64"
-  },
-  {
-    "name": "glibc_build233",
-    "description": "The GNU C Library project provides the core libraries for GNU/Linux systems.",
-    "homepage": "https://www.gnu.org/software/libc/",
-    "version": "2.33-3",
-    "license": "LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE",
-    "compatibility": "aarch64 armv7l x86_64"
-  },
-  {
-    "name": "glibc_build235",
-    "description": "The GNU C Library project provides the core libraries for GNU/Linux systems.",
-    "homepage": "https://www.gnu.org/software/libc/",
-    "version": "2.35-1",
-    "license": "LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE",
-    "compatibility": "aarch64 armv7l x86_64"
-  },
-  {
-    "name": "glibc_build237",
-    "description": "The GNU C Library project provides the core libraries for GNU/Linux systems.",
-    "homepage": "https://www.gnu.org/software/libc/",
-    "version": "2.37-2",
-    "license": "LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE",
-    "compatibility": "aarch64 armv7l x86_64"
-  },
-  {
-    "name": "glibc_dev235",
-    "description": "glibc: everything except what is in glibc_lib",
-    "homepage": "https://www.gnu.org/software/libc/",
-    "version": "2.35",
-    "license": "LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE",
-    "compatibility": "aarch64 armv7l x86_64"
-  },
-  {
-    "name": "glibc_dev237",
-    "description": "glibc: everything except what is in glibc_lib",
-    "homepage": "https://www.gnu.org/software/libc/",
-    "version": "2.37-patchelf2",
-    "license": "LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE",
-    "compatibility": "aarch64 armv7l x86_64"
-  },
-  {
-    "name": "glibc_fallthrough",
-    "description": "The GNU C Library project provides the core libraries for GNU/Linux systems.",
-    "homepage": "https://www.gnu.org/software/libc/",
-    "version": "2.37",
-    "license": "LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE",
-    "compatibility": "aarch64 armv7l x86_64"
-  },
-  {
-    "name": "glibc_lib235",
-    "description": "glibc libraries",
-    "homepage": "https://www.gnu.org/software/libc/",
-    "version": "2.35",
-    "license": "LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE",
-    "compatibility": "aarch64 armv7l x86_64"
-  },
-  {
-    "name": "glibc_lib237",
-    "description": "glibc libraries",
-    "homepage": "https://www.gnu.org/software/libc/",
-    "version": "2.37-patchelf2",
-    "license": "LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE",
-    "compatibility": "aarch64 armv7l x86_64"
-  },
-  {
-    "name": "glibc_standalone",
-    "description": "The GNU C Library project provides the core libraries for GNU/Linux systems.",
-    "homepage": "https://www.gnu.org/software/libc/",
-    "version": "2.41-3",
+    "version": "2.41-4",
     "license": "LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE",
     "compatibility": "all"
   },
@@ -4475,7 +4387,7 @@
     "name": "gnome_maps",
     "description": "A simple GNOME maps application",
     "homepage": "https://wiki.gnome.org/Apps/Maps",
-    "version": "46.rc",
+    "version": "48.2",
     "license": "GPL-2+, LGPL-2+, MIT, CC-BY-3.0 and CC-BY-SA-3.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4539,7 +4451,7 @@
     "name": "gnome_weather",
     "description": "Access current weather conditions and forecasts",
     "homepage": "https://wiki.gnome.org/Apps/Weather",
-    "version": "45.0",
+    "version": "48.0",
     "license": "GPL-2+, LGPL-2+, MIT, CC-BY-3.0 and CC-BY-SA-3.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4675,7 +4587,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "136.0.7103.59-1",
+    "version": "136.0.7103.113-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -5651,9 +5563,9 @@
     "name": "iperf3",
     "description": "iPerf3 is a tool for active measurements of the maximum achievable bandwidth on IP networks.",
     "homepage": "https://iperf.fr",
-    "version": "3.7",
+    "version": "3.19",
     "license": "BSD-3",
-    "compatibility": "all"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "ipfs",
@@ -5907,7 +5819,7 @@
     "name": "jq",
     "description": "jq is a lightweight and flexible command-line JSON processor.",
     "homepage": "https://stedolan.github.io/jq/",
-    "version": "1.7",
+    "version": "1.7.1",
     "license": "MIT and CC-BY-3.0",
     "compatibility": "all"
   },
@@ -6387,7 +6299,7 @@
     "name": "libadwaita",
     "description": "Library of GNOME-specific UI patterns, replacing libhandy for GTK4",
     "homepage": "https://gitlab.gnome.org/GNOME/libadwaita/",
-    "version": "1.6.1",
+    "version": "1.7.2",
     "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -6419,7 +6331,7 @@
     "name": "libarchive",
     "description": "Multi-format archive and compression library.",
     "homepage": "https://www.libarchive.org/",
-    "version": "3.7.4",
+    "version": "3.8.0-1",
     "license": "BSD, BSD-2, BSD-4 and public-domain",
     "compatibility": "all"
   },
@@ -6475,7 +6387,7 @@
     "name": "libavif",
     "description": "Library for encoding and decoding .avif files",
     "homepage": "https://github.com/AOMediaCodec/libavif",
-    "version": "1.1.0",
+    "version": "1.3.0",
     "license": "BSD-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -7435,7 +7347,7 @@
     "name": "libjpeg_turbo",
     "description": "Libjpeg-turbo implements both the traditional libjpeg API as well as the less powerful but more straightforward TurboJPEG API.",
     "homepage": "https://libjpeg-turbo.org",
-    "version": "3.0.3",
+    "version": "3.1.0",
     "license": "IJG License",
     "compatibility": "all"
   },
@@ -8115,7 +8027,7 @@
     "name": "libshumate",
     "description": "GTK toolkit providing widgets for embedded maps",
     "homepage": "https://wiki.gnome.org/Projects/libshumate",
-    "version": "1.2.rc2",
+    "version": "1.4.0",
     "license": "LGPL",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -8291,7 +8203,7 @@
     "name": "libssp",
     "description": "Libssp is a part of the GCC toolkit.",
     "homepage": "https://gcc.gnu.org/",
-    "version": "14.2.0-glibc2.27",
+    "version": "15.1.0",
     "license": "GPL-3, LGPL-3, libgcc, FDL-1.2",
     "compatibility": "all"
   },
@@ -8899,7 +8811,7 @@
     "name": "libxml2",
     "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project.",
     "homepage": "http://xmlsoft.org/",
-    "version": "2.13.4",
+    "version": "2.13.7",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -8907,7 +8819,7 @@
     "name": "libxml2_autotools",
     "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project.",
     "homepage": "http://xmlsoft.org/",
-    "version": "2.13.4",
+    "version": "2.13.7",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -9075,7 +8987,7 @@
     "name": "libyuv",
     "description": "Library for YUV scaling",
     "homepage": "https://chromium.googlesource.com/libyuv/libyuv/",
-    "version": "188e4e3",
+    "version": "949cb62",
     "license": "BSD-Google",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -9342,6 +9254,22 @@
     "version": "1.4.0",
     "license": "ISC",
     "compatibility": "aarch64 armv7l x86_64"
+  },
+  {
+    "name": "lrzip",
+    "description": "Multi-threaded compression with rzip/lzma, lzo, and zpaq",
+    "homepage": "https://github.com/ckolivas/lrzip",
+    "version": "0.651",
+    "license": "GPL",
+    "compatibility": "all"
+  },
+  {
+    "name": "lrzip_next",
+    "description": "Next generation multi-threaded compression with rzip",
+    "homepage": "https://github.com/pete4abw/lrzip-next",
+    "version": "0.14.1",
+    "license": "GPL-2.0-or-later",
+    "compatibility": "x86_64"
   },
   {
     "name": "lsb_release",
@@ -9747,7 +9675,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "25.0.4",
+    "version": "25.1.1",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -9955,7 +9883,7 @@
     "name": "mold",
     "description": "A Modern Linker",
     "homepage": "https://github.com/rui314/mold",
-    "version": "2.39.0",
+    "version": "2.39.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -10131,7 +10059,7 @@
     "name": "mullvad",
     "description": "Privacy-focused browser",
     "homepage": "https://mullvad.net/browser",
-    "version": "14.5.1",
+    "version": "14.5.2",
     "license": "Mozilla Public License V2",
     "compatibility": "x86_64"
   },
@@ -10499,7 +10427,7 @@
     "name": "nasm",
     "description": "The Netwide Assembler",
     "homepage": "https://www.nasm.us/",
-    "version": "2.15.05",
+    "version": "2.16.03",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -10579,7 +10507,7 @@
     "name": "ncurses",
     "description": "The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. — Wide character",
     "homepage": "https://www.gnu.org/software/ncurses/",
-    "version": "6_5_20240727",
+    "version": "6_5_20250517",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -11307,7 +11235,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "118.0.5461.104",
+    "version": "119.0.5497.38",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -12779,7 +12707,7 @@
     "name": "py3_azure_cli",
     "description": "Next generation multi-platform command line experience for Azure.",
     "homepage": "https://pypi.org/project/azure-cli/",
-    "version": "2.72.0",
+    "version": "2.73.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12859,7 +12787,7 @@
     "name": "py3_click",
     "description": "Click is a simple wrapper around optparse for powerful command line utilities.",
     "homepage": "https://click.palletsprojects.com",
-    "version": "8.2.0",
+    "version": "8.2.1",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -12899,7 +12827,7 @@
     "name": "py3_cryptography",
     "description": "Cryptography provides cryptographic recipes and primitives to Python developers.",
     "homepage": "https://cryptography.io/",
-    "version": "44.0.3",
+    "version": "45.0.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12915,7 +12843,7 @@
     "name": "py3_cython",
     "description": "The Cython language makes writing C extensions for the Python language as easy as Python itself.",
     "homepage": "https://cython.org/",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13131,7 +13059,7 @@
     "name": "py3_identify",
     "description": "File identification library for Python",
     "homepage": "https://github.com/pre-commit/identify",
-    "version": "2.6.10",
+    "version": "2.6.12",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13291,7 +13219,7 @@
     "name": "py3_libxml2",
     "description": "Libxml2-python provides access to libxml2 and libxslt in Python.",
     "homepage": "https://gitlab.gnome.org/GNOME/libxml2/",
-    "version": "2.13.4",
+    "version": "2.13.7",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13363,7 +13291,7 @@
     "name": "py3_meson",
     "description": "Meson is an open source build system meant to be both extremely fast and user friendly.",
     "homepage": "https://mesonbuild.com/",
-    "version": "1.8.0",
+    "version": "1.8.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13419,7 +13347,7 @@
     "name": "py3_numpy",
     "description": "NumPy is the fundamental package for array computing with Python.",
     "homepage": "https://numpy.org/",
-    "version": "2.2.5",
+    "version": "2.2.6",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -13427,7 +13355,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.152.0",
+    "version": "2.152.1",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13435,7 +13363,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.56.0",
+    "version": "3.56.1",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13619,7 +13547,7 @@
     "name": "py3_pycryptodome",
     "description": "Pycryptodome is a cryptographic library for Python.",
     "homepage": "https://www.pycryptodome.org/",
-    "version": "3.22.0",
+    "version": "3.23.0",
     "license": "BSD and public-domain",
     "compatibility": "all"
   },
@@ -13627,7 +13555,7 @@
     "name": "py3_pycryptodomex",
     "description": "Pycryptodomex is a cryptographic library for Python.",
     "homepage": "https://www.pycryptodome.org/",
-    "version": "3.22.0",
+    "version": "3.23.0",
     "license": "BSD and public-domain",
     "compatibility": "all"
   },
@@ -13683,7 +13611,7 @@
     "name": "py3_pyopenssl",
     "description": "PyOpenSSL is a Python wrapper module around the OpenSSL library.",
     "homepage": "https://www.pyopenssl.org/",
-    "version": "25.0.0",
+    "version": "25.1.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13715,7 +13643,7 @@
     "name": "py3_pyright",
     "description": "Static Type Checker for Python",
     "homepage": "https://github.com/microsoft/pyright",
-    "version": "1.1.400",
+    "version": "1.1.401",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13827,7 +13755,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.11.10",
+    "version": "0.11.11",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13851,7 +13779,7 @@
     "name": "py3_setuptools",
     "description": "Setuptools is the python build system from the Python Packaging Authority.",
     "homepage": "https://setuptools.readthedocs.io/",
-    "version": "80.7.1",
+    "version": "80.8.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14611,7 +14539,7 @@
     "name": "readline",
     "description": "The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in.",
     "homepage": "https://tiswww.cwru.edu/php/chet/readline/rltop.html",
-    "version": "8.2",
+    "version": "8.3-rc1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -14731,7 +14659,7 @@
     "name": "rhythmbox",
     "description": "Rhythmbox is a music playing application for GNOME.",
     "homepage": "https://wiki.gnome.org/Apps/Rhythmbox",
-    "version": "3.4.7",
+    "version": "3.4.8",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14851,7 +14779,7 @@
     "name": "ruby",
     "description": "Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.",
     "homepage": "https://www.ruby-lang.org/en/",
-    "version": "3.4.3",
+    "version": "3.4.4",
     "license": "Ruby-BSD and BSD-2",
     "compatibility": "all"
   },
@@ -15027,7 +14955,7 @@
     "name": "ruby_drb",
     "description": "Distributed object system for ruby.",
     "homepage": "https://github.com/ruby/drb",
-    "version": "2.2.1-ruby3.4",
+    "version": "2.2.3-ruby3.4",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -15236,6 +15164,14 @@
     "description": "Style checker/lint tool for markdown files.",
     "homepage": "https://github.com/markdownlint/markdownlint",
     "version": "0.13.0-ruby3.4",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "ruby_method_source",
+    "description": "retrieve the sourcecode for a method.",
+    "homepage": "http://banisterfiend.wordpress.com",
+    "version": "1.1.0-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15523,7 +15459,7 @@
     "name": "ruby_rdoc",
     "description": "RDoc produces HTML and command-line documentation for Ruby projects.",
     "homepage": "https://ruby.github.io/rdoc",
-    "version": "6.13.1-ruby3.4",
+    "version": "6.14.0-ruby3.4",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15611,7 +15547,7 @@
     "name": "ruby_rubocop",
     "description": "A Ruby static code analyzer and formatter",
     "homepage": "https://rubocop.org",
-    "version": "1.75.6-ruby3.4",
+    "version": "1.75.7-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15659,7 +15595,7 @@
     "name": "ruby_rubygems_update",
     "description": "RubyGems is a package management framework for Ruby.",
     "homepage": "https://github.com/rubygems/rubygems",
-    "version": "3.6.8-ruby3.4",
+    "version": "3.6.9-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16011,7 +15947,7 @@
     "name": "sassc",
     "description": "C implementation of Sass CSS preprocessor.",
     "homepage": "https://github.com/sass/sassc",
-    "version": "3.6.2",
+    "version": "3.6.2-1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16275,7 +16211,7 @@
     "name": "shared_mime_info",
     "description": "The shared-mime-info package contains the core database of common types and the update-mime-database command used to extend it.",
     "homepage": "https://freedesktop.org/wiki/Software/shared-mime-info/",
-    "version": "2.4",
+    "version": "2.4-1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -16371,7 +16307,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.51.0",
+    "version": "7.55.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -17763,7 +17699,7 @@
     "name": "uutils_coreutils",
     "description": "Cross-platform Rust rewrite of the GNU coreutils",
     "homepage": "https://github.com/uutils/coreutils",
-    "version": "0.0.30-1",
+    "version": "0.1.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -17923,7 +17859,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.3.3635.12-1",
+    "version": "7.4.3684.38-1",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -17979,7 +17915,7 @@
     "name": "vscodium",
     "description": "VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.",
     "homepage": "https://vscodium.com/",
-    "version": "1.100.03093",
+    "version": "1.100.23258",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18347,7 +18283,7 @@
     "name": "wp_cli",
     "description": "The command line interface for WordPress",
     "homepage": "https://wp-cli.org/",
-    "version": "2.11.0",
+    "version": "2.12.0",
     "license": "LGPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19059,7 +18995,7 @@
     "name": "zed",
     "description": "Zed is a high-performance, multiplayer code editor",
     "homepage": "https://zed.dev/",
-    "version": "0.185.15",
+    "version": "0.186.12",
     "license": "GPL-3, AGPL-3, Apache-2.0",
     "compatibility": "x86_64"
   },
