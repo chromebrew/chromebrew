@@ -82,7 +82,9 @@ class Glibc < Package
       EOF
 
       system build_env, '../configure', *config_opts, no_preload_hacks: true
-      system build_env, "make PARALLELMFLAGS='-j #{CREW_NPROC}'", no_preload_hacks: true
+      # Without using Kernel.system make segfaults.
+      build_env.store('CREW_PRELOAD_ENABLE_COMPILE_HACKS', '0')
+      Kernel.system build_env, "make PARALLELMFLAGS='-j #{CREW_NPROC}'"
     end
 
     arch_flag = case ARCH
