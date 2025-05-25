@@ -46,8 +46,9 @@ class Glibc < Package
     build_env = {
       CFLAGS:   "-O3 -pipe -fPIC -fno-lto #{cc_macro_list.join(' ')}",
       CXXFLAGS: "-O3 -pipe -fPIC -fno-lto #{cc_macro_list.join(' ')}",
-      LDFLAGS:  '-fno-lto'
-    }
+      LDFLAGS:  '-fno-lto',
+      LD_PRELOAD: ''
+    }.transform_keys(&:to_s)
 
     config_opts = %W[
       --prefix=#{CREW_PREFIX}
@@ -80,8 +81,8 @@ class Glibc < Package
         rootsbindir=#{CREW_PREFIX}/bin
       EOF
 
-      system build_env.transform_keys(&:to_s), '../configure', *config_opts, no_preload_hacks: true
-      system "make PARALLELMFLAGS='-j #{CREW_NPROC}'", no_preload_hacks: true
+      system build_env, '../configure', *config_opts, no_preload_hacks: true
+      system build_env, "make PARALLELMFLAGS='-j #{CREW_NPROC}'", no_preload_hacks: true
     end
 
     arch_flag = case ARCH
@@ -121,7 +122,7 @@ class Glibc < Package
 
     # install crew-preload
     FileUtils.install 'crew-package-glibc/crew-preload.so', File.join(CREW_DEST_LIB_PREFIX, 'crew-preload.so'), mode: 0o755
-    FileUtils.install 'crew-package-glibc/prebuilt/crew-preload-aarch64.so', File.join(CREW_DEST_PREFIX, 'lib64/crew-preload.so'), mode: 0o755 if ARCH == 'aarch64'
+    FileUtils.install 'crew-package-glibc/prebuilt/crew-preload-aarch64.so', File.join(CREW_DEST_PREFIX, 'lib64/crew-preload.so'), mode: 0o755 if %w[aarch64 armv7l].include?(ARCH)
   end
 
   def self.postinstall
