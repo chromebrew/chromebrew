@@ -842,6 +842,8 @@ def prepare_package(destdir)
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
       next if %w[. ..].include?(filename)
 
+      # Whitelist crew-preload on multiarch ARM systems.
+      next if %w[lib64/crew-preload.so].include?(filename) && %w[aarch64 armv7l].include?(ARCH)
       unless fhs_compliant_prefix.include?(filename)
         if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY || @pkg.no_fhs?
           puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
