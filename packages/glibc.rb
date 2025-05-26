@@ -1,3 +1,12 @@
+# This package creates a /usr/local/lib64 directory on armv7l/aarch64
+# systems to handle the aarch64 crew-preload.so being installed to
+# handle the default system aarch64 binaries now present on recent
+# multiarch aarch64/armv7l based ARM ChromeOS milestones.
+
+# Also, currently the i686 build has issues with this error that still
+# needs addressing:
+# sh: symbol lookup error: /usr/local/lib/crew-preload.so: undefined symbol: stat
+
 require 'package'
 
 class Glibc < Package
@@ -24,7 +33,6 @@ class Glibc < Package
 
   conflicts_ok
   no_env_options
-  no_fhs
   no_shrink
   print_source_bashrc
 
@@ -107,7 +115,9 @@ class Glibc < Package
   end
 
   def self.install
-    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/etc/env.d #{CREW_DEST_PREFIX}/etc/ld.so.conf.d #{CREW_DEST_LIB_PREFIX} #{CREW_DEST_PREFIX}/lib64]
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/etc/env.d #{CREW_DEST_PREFIX}/etc/ld.so.conf.d #{CREW_DEST_LIB_PREFIX}]
+    # This is for the aarch64 crew-preload on handle multiarch ARM systems.
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/lib64] if %w[aarch64 armv7l].include?(ARCH)
 
     system "make DESTDIR=#{CREW_DEST_DIR} install", chdir: 'builddir'
     system "make DESTDIR=#{CREW_DEST_DIR} localedata/install-locales", chdir: 'builddir'
@@ -125,8 +135,8 @@ class Glibc < Package
 
     # install crew-preload
     FileUtils.install 'crew-package-glibc/crew-preload.so', File.join(CREW_DEST_LIB_PREFIX, 'crew-preload.so'), mode: 0o755
+    # Install crew-preload to handle multiarch ARM systems.
     FileUtils.install 'crew-package-glibc/prebuilt/crew-preload-aarch64.so', File.join(CREW_DEST_PREFIX, 'lib64/crew-preload.so'), mode: 0o755 if %w[aarch64 armv7l].include?(ARCH)
-    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/lib64" if ARCH == 'i686'
   end
 
   def self.postinstall
