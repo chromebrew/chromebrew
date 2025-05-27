@@ -13,7 +13,7 @@ class Py3_zipp < Pip
     aarch64: '464a84df87f0c2f34df3cf1ab39bc3e8bd8ae86840ecccec053341b571b19a23',
      armv7l: '464a84df87f0c2f34df3cf1ab39bc3e8bd8ae86840ecccec053341b571b19a23',
        i686: '3bece534a32b4e7215740bf49e3f5874344d5c7bf8892ab689c5b09fe83dafc6',
-     x86_64: '72aa6bcbf7d8507b4bf525b3db40a1279806242664706e360f1022fb7bfbd16a'
+     x86_64: '47f344571ae35148f40cf54967ec33bbf933aa84ed49dda2f4fced1cb412688d'
   })
 
   depends_on 'python3' => :build
