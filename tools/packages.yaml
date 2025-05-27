@@ -8380,6 +8380,11 @@ url: https://github.com/sass/sassc/releases
 activity: none
 ---
 kind: url
+name: sayonara
+url: https://gitlab.com/luciocarreras/sayonara-player/-/releases
+activity: low
+---
+kind: url
 name: sbc
 url: https://www.kernel.org/pub/linux/bluetooth/
 activity: low
@@ -9467,6 +9472,11 @@ activity: low
 kind: url
 name: utf8proc
 url: https://github.com/JuliaLang/utf8proc/releases
+activity: low
+---
+kind: url
+name: utfcpp
+url: https://github.com/nemtrif/utfcpp/releases
 activity: low
 ---
 kind: url

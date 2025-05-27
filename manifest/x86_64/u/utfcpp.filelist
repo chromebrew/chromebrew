@@ -1,0 +1,10 @@
+/usr/local/include/utf8cpp/utf8.h
+/usr/local/include/utf8cpp/utf8/checked.h
+/usr/local/include/utf8cpp/utf8/core.h
+/usr/local/include/utf8cpp/utf8/cpp11.h
+/usr/local/include/utf8cpp/utf8/cpp17.h
+/usr/local/include/utf8cpp/utf8/cpp20.h
+/usr/local/include/utf8cpp/utf8/unchecked.h
+/usr/local/share/utf8cpp/cmake/utf8cppConfig.cmake
+/usr/local/share/utf8cpp/cmake/utf8cppConfigVersion.cmake
+/usr/local/share/utf8cpp/cmake/utf8cppTargets.cmake
