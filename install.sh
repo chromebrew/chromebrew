@@ -362,8 +362,13 @@ echo_info "Downloading Bootstrap packages:\n${BOOTSTRAP_PACKAGES}"
 # Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
 # x86_64, and the mandb postinstall doesn't fail in newer arm
 # containers.
-echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}" >> "$CREW_PREFIX"/etc/env.d/00-library
-export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
+if [[ "${ARCH}" == "armv7l" ]] ; then
+  # Handle arm multarch.
+  export LD_LIBRARY_PATH="$CREW_PREFIX/lib64:/usr/lib64:/lib64:$CREW_PREFIX/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
+else
+  export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
+fi
+echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> "$CREW_PREFIX"/etc/env.d/00-library
 
 # Extract, install and register packages.
 for package in $BOOTSTRAP_PACKAGES; do
