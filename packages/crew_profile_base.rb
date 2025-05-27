@@ -26,8 +26,6 @@ class Crew_profile_base < Package
   end
 
   def self.postinstall
-    # Remove the env.d/00-library file from install if it exists.
-    FileUtils.rm_rf "#{CREW_PREFIX}/etc/env.d/00-library"
     # Write our rc files
     crew_rc_source_line = "source #{CREW_PREFIX}/etc/profile"
     crew_rcfile = <<~CREW_PROFILE_EOF
