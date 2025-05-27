@@ -3,11 +3,11 @@ require 'package'
 class Crew_profile_base < Package
   description 'Crew-profile-base sets up Chromebrew\'s environment capabilities.'
   homepage 'https://github.com/chromebrew/crew-profile-base'
-  version '0.0.29'
+  version '0.0.30'
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://github.com/chromebrew/crew-profile-base/archive/refs/tags/#{version}.tar.gz"
-  source_sha256 'e1fd90306ad5a7b18aff245b900477775905e423cbc0d643404300a35d816a69'
+  source_sha256 '79219d2c044e0389dda5f54747cc0d1fd66a7710f7311075ae2f153bc009a4c4'
 
   no_compile_needed
   print_source_bashrc
@@ -26,6 +26,8 @@ class Crew_profile_base < Package
   end
 
   def self.postinstall
+    # Remove the env.d/00-library file from install if it exists.
+    FileUtils.rm_rf "#{CREW_PREFIX}/etc/env.d/00-library"
     # Write our rc files
     crew_rc_source_line = "source #{CREW_PREFIX}/etc/profile"
     crew_rcfile = <<~CREW_PROFILE_EOF
