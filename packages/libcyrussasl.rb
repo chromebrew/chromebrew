@@ -25,7 +25,7 @@ class Libcyrussasl < Autotools
   depends_on 'linux_pam' # R
   depends_on 'openssl' # R
 
-  configure_options "--enable-shared \
+  autotools_configure_options "--enable-shared \
         --with-configdir=#{CREW_PREFIX}/etc/sasl2 \
         --with-cxx-shared \
         --with-dbpath=#{CREW_PREFIX}/etc/sasldb2"

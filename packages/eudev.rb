@@ -28,6 +28,6 @@ class Eudev < Autotools
     system 'sed -i s,/usr/bin/xsltproc,xsltproc,g man/make.sh'
   end
 
-  configure_options '--enable-hwdb \
+  autotools_configure_options '--enable-hwdb \
               --enable-rule-generator'
 end

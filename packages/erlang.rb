@@ -28,5 +28,5 @@ class Erlang < Autotools
   depends_on 'wxwidgets' # R
   depends_on 'zlib' # R
 
-  configure_options "ERL_OTP=#{Dir.pwd} #{'--disable-year2038' unless ARCH.eql?('x86_64')}"
+  autotools_configure_options "ERL_OTP=#{Dir.pwd} #{'--disable-year2038' unless ARCH.eql?('x86_64')}"
 end

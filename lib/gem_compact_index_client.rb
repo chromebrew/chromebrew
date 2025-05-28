@@ -1,5 +1,5 @@
 require 'uri'
-require 'net/http'
+require_relative 'downloader'
 
 # Adapted from https://github.com/rubygems/rubygems/issues/8012#issuecomment-2375499571
 # by @duckinator (Ellen Marie Dash)
@@ -19,12 +19,12 @@ class BasicCompactIndexClient
   private
 
   def request(endpoint)
-    uri = URI.join(@gem_server, endpoint)
-    response = Net::HTTP.get_response(uri)
+    uri      = URI.join(@gem_server, endpoint)
+    response = get_http_response(uri)
 
     raise "got HTTP code #{response.code}, expected 200" unless response.is_a?(Net::HTTPOK)
 
-    response.body
+    return response.body
   end
 
   def lines(data)

@@ -21,7 +21,7 @@ class Libgcrypt < Autotools
   depends_on 'glibc' # R
   depends_on 'libgpg_error' # R
 
-  configure_options '--enable-static \
+  autotools_configure_options '--enable-static \
       --enable-shared'
 
   def self.patch

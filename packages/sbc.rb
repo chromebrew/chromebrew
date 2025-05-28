@@ -20,7 +20,7 @@ class Sbc < Autotools
   depends_on 'glibc' # R
   depends_on 'libsndfile' => :build
 
-  configure_options '--enable-high-precision \
+  autotools_configure_options '--enable-high-precision \
           --disable-static \
           --enable-pie'
 end

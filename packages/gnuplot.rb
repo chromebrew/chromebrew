@@ -29,5 +29,5 @@ class Gnuplot < Autotools
   depends_on 'qt5_tools'
   depends_on 'wxwidgets'
 
-  configure_options "CFLAGS='-I#{CREW_PREFIX}/share/Qt-5/include/QtCore'"
+  autotools_configure_options "CFLAGS='-I#{CREW_PREFIX}/share/Qt-5/include/QtCore'"
 end

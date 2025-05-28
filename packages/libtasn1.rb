@@ -22,7 +22,7 @@ class Libtasn1 < Autotools
   depends_on 'diffutils' => :build
   depends_on 'glibc' # R
 
-  configure_options '--enable-shared \
+  autotools_configure_options '--enable-shared \
       --enable-static \
       --with-pic'
 end

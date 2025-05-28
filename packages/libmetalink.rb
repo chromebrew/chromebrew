@@ -28,6 +28,6 @@ class Libmetalink < Autotools
     system 'patch -Np1 -i 0001-fix-covscan-issues.patch'
   end
 
-  configure_options '--with-libxml2 \
+  autotools_configure_options '--with-libxml2 \
       --without-libexpat'
 end

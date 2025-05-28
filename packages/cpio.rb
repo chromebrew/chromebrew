@@ -19,5 +19,5 @@ class Cpio < Autotools
 
   depends_on 'glibc' # R
 
-  configure_options '--enable-mt' # magnetic tape, not manifest tool
+  autotools_configure_options '--enable-mt' # magnetic tape, not manifest tool
 end

@@ -21,5 +21,5 @@ class Bacon < Autotools
     system 'sed -i "s,/usr/share,\$\(DATADIR\)," Makefile.in'
   end
 
-  configure_options '--disable-gui'
+  autotools_configure_options '--disable-gui'
 end

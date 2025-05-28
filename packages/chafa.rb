@@ -21,5 +21,5 @@ class Chafa < Autotools
   depends_on 'libxslt'
 
   # The tools depends on freetype, which drops i686 compatibility.
-  configure_options '--without-tools'
+  autotools_configure_options '--without-tools'
 end

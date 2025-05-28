@@ -19,5 +19,5 @@ class Wcslib < Autotools
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  pre_configure_options "LDFLAGS='-L#{CREW_LIB_PREFIX} #{CREW_ENV_OPTIONS_HASH['LDFLAGS']}'"
+  autotools_pre_configure_options "LDFLAGS='-L#{CREW_LIB_PREFIX} #{CREW_ENV_OPTIONS_HASH['LDFLAGS']}'"
 end

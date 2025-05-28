@@ -96,7 +96,7 @@ fi
 # Default chromebrew repo values.
 : "${OWNER:=chromebrew}"
 : "${REPO:=chromebrew}"
-: "${BRANCH:=master}"
+: "${BRANCH=pre_glibc_standalone}"
 
 # Chromebrew directories.
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
@@ -193,7 +193,7 @@ echo_out 'Set up the local package repo...'
 # Download the chromebrew repository.
 curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-BOOTSTRAP_PACKAGES='lz4 zlib xzutils zstd zlib_ng crew_mvdir ruby git ca_certificates libyaml openssl'
+BOOTSTRAP_PACKAGES='zstd_static upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ruby git ca_certificates libyaml openssl'
 
 # Older i686 systems.
 [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' gcc_lib'

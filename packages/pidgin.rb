@@ -30,7 +30,7 @@ class Pidgin < Autotools
     system "sed -i 's,/usr/include,#{CREW_PREFIX}/include,g' configure"
   end
 
-  configure_options "--disable-avahi \
+  autotools_configure_options "--disable-avahi \
     --disable-dbus \
     --disable-gtkspell \
     --disable-idn \

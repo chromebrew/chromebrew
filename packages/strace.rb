@@ -23,5 +23,5 @@ class Strace < Autotools
   # This needs to be built with linux headers 5.15 on x86_64 via
   # CREW_KERNEL_VERSION=5.15 crew upgrade linuxheaders ; CREW_KERNEL_VERSION=5.15 crew build strace
 
-  configure_options '--disable-mpers --with-libdw --disable-gcc-Werror'
+  autotools_configure_options '--disable-mpers --with-libdw --disable-gcc-Werror'
 end

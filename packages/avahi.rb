@@ -29,7 +29,7 @@ class Avahi < Autotools
   depends_on 'libssp' # R
   depends_on 'xmltoman' => :build
 
-  configure_options "--enable-compat-libdns_sd \
+  autotools_configure_options "--enable-compat-libdns_sd \
       --disable-gtk \
       --disable-gtk3 \
       --disable-libsystemd \

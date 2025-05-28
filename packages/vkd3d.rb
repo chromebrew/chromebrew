@@ -24,6 +24,6 @@ class Vkd3d < Autotools
   depends_on 'wine' => :build
   no_lto
 
-  configure_options '--with-xcb \
+  autotools_configure_options '--with-xcb \
             --with-spirv-tools'
 end

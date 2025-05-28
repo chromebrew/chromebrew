@@ -43,7 +43,7 @@ class Gnutls < Autotools
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
   end
 
-  configure_options "--enable-shared \
+  autotools_configure_options "--enable-shared \
       --with-pic \
       --with-system-priority-file=#{CREW_PREFIX}/etc/gnutls/default-priorities \
       --with-trousers-lib=#{CREW_LIB_PREFIX}/libtspi.so.1 \

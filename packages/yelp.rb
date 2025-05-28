@@ -44,6 +44,6 @@ class Yelp < Autotools
 
   gnome
 
-  configure_options '--enable-compile-warnings=minimum \
+  autotools_configure_options '--enable-compile-warnings=minimum \
     --enable-debug=no'
 end

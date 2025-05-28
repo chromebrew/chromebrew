@@ -51,7 +51,7 @@ class Libostree < Autotools
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  configure_options '--disable-rofiles-fuse \
+  autotools_configure_options '--disable-rofiles-fuse \
       --with-curl \
       --without-libsystemd \
       --with-avahi \

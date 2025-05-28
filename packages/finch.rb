@@ -29,7 +29,7 @@ class Finch < Autotools
   depends_on 'perl'
   depends_on 'tcl'
 
-  configure_options "--disable-avahi \
+  autotools_configure_options "--disable-avahi \
     --disable-dbus \
     --disable-gstreamer \
     --disable-gtkui \

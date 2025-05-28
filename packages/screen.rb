@@ -20,5 +20,5 @@ class Screen < Autotools
   depends_on 'ncurses' # R
   depends_on 'glibc' # R
 
-  configure_options "--enable-colors256 CFLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
+  autotools_configure_options "--enable-colors256 CFLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
 end

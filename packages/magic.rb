@@ -26,5 +26,5 @@ class Magic < Autotools
   depends_on 'tk' # R
   depends_on 'zlib' # R
 
-  configure_options "--with-tcl=#{CREW_LIB_PREFIX} --with-tk=#{CREW_LIB_PREFIX}"
+  autotools_configure_options "--with-tcl=#{CREW_LIB_PREFIX} --with-tk=#{CREW_LIB_PREFIX}"
 end

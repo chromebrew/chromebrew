@@ -28,7 +28,7 @@ class Gettext < Autotools
   depends_on 'openjdk8' => :build
   depends_on 'zlib' # R
 
-  configure_options '--disable-static \
+  autotools_configure_options '--disable-static \
     --enable-shared \
     --with-pic \
     --without-included-gettext'

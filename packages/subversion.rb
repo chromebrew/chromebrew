@@ -33,7 +33,7 @@ class Subversion < Autotools
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  configure_options '--disable-static --with-utf8proc=internal'
+  autotools_configure_options '--disable-static --with-utf8proc=internal'
 
   def self.prebuild
     ConvenienceFunctions.libtoolize('expat')

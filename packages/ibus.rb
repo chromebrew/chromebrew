@@ -69,7 +69,7 @@ class Ibus < Autotools
     end
   end
 
-  configure_options "--libexecdir=#{CREW_LIB_PREFIX}/ibus \
+  autotools_configure_options "--libexecdir=#{CREW_LIB_PREFIX}/ibus \
     --sysconfdir=#{CREW_PREFIX}/etc \
     --disable-gtk2 \
     --disable-memconf \

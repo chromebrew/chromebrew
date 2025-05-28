@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.59.3' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.61.6' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -28,10 +28,21 @@ end
 CREW_LIB_SUFFIX ||= ARCH.eql?('x86_64') && Dir.exist?('/lib64') ? '64' : ''
 ARCH_LIB        ||= "lib#{CREW_LIB_SUFFIX}"
 
-# Glibc version can be found from the output of libc.so.6
-LIBC_VERSION ||= ENV.fetch('LIBC_VERSION', Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last) unless defined?(LIBC_VERSION)
-
 CREW_PREFIX ||= ENV.fetch('CREW_PREFIX', '/usr/local') unless defined?(CREW_PREFIX)
+
+# Glibc related constants
+CREW_GLIBC_PREFIX ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
+@crew_glibc_interpreter = File.file?("#{CREW_PREFIX}/bin/ld.so") ? File.join(CREW_GLIBC_PREFIX, File.basename(File.realpath("#{CREW_PREFIX}/bin/ld.so"))) : ''
+CREW_GLIBC_INTERPRETER ||= File.file?(@crew_glibc_interpreter) ? @crew_glibc_interpreter : nil unless defined?(CREW_GLIBC_INTERPRETER)
+
+# Glibc version can be found from the output of libc.so.6
+@libcvertokens = (`#{CREW_GLIBC_PREFIX}/libc.so.6`.lines.first.chomp.split(/[\s]/) if File.file?("#{CREW_GLIBC_PREFIX}/libc.so.6"))
+@libc_version = @libcvertokens.nil? ? Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last : @libcvertokens[@libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
+LIBC_VERSION ||= if ENV.include?('LIBC_VERSION') && ENV['LIBC_VERSION'].empty?
+                   @libc_version unless defined?(LIBC_VERSION)
+                 else
+                   ENV.fetch('LIBC_VERSION', @libc_version) unless defined?(LIBC_VERSION)
+                 end
 
 if CREW_PREFIX == '/usr/local'
   CREW_BUILD_FROM_SOURCE ||= ENV.fetch('CREW_BUILD_FROM_SOURCE', false) unless defined?(CREW_BUILD_FROM_SOURCE)
@@ -43,8 +54,7 @@ end
 
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
-# The LIBC_VERSION ternary is to reflect the change from glibc_build to glibc_lib as the source of essential libraries starting at glibc 2.35.
-CREW_ESSENTIAL_PACKAGES ||= %W[gcc_lib #{LIBC_VERSION.to_f > 2.34 ? "glibc_lib#{LIBC_VERSION.delete('.')}" : "glibc_build#{LIBC_VERSION.delete('.')}"} gmp ruby zlib zlib_ng zstd]
+CREW_ESSENTIAL_PACKAGES ||= %w[bash crew_profile_base gcc_lib glibc gmp ncurses readline ruby zlib zlib_ng zstd]
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 
@@ -76,11 +86,11 @@ CREW_CONFIG_PATH      ||= File.join(CREW_PREFIX, 'etc/crew')
 CREW_META_PATH        ||= File.join(CREW_CONFIG_PATH, 'meta')
 CREW_BREW_DIR         ||= File.join(CREW_PREFIX, 'tmp/crew')
 CREW_DEST_DIR         ||= File.join(CREW_BREW_DIR, 'dest')
-CREW_WINE_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'wine')
 CREW_DEST_PREFIX      ||= File.join(CREW_DEST_DIR, CREW_PREFIX)
 CREW_DEST_LIB_PREFIX  ||= File.join(CREW_DEST_DIR, CREW_LIB_PREFIX)
-CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 CREW_DEST_MAN_PREFIX  ||= File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
+CREW_WINE_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'wine')
+CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 
 # Local constants for contributors.
 CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2> /dev/null`.chomp
@@ -99,7 +109,7 @@ CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless d
 CREW_NO_GIT             ||= ENV.fetch('CREW_NO_GIT', false) unless defined?(CREW_NO_GIT)
 CREW_UNATTENDED         ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
 
-CREW_STANDALONE_UPGRADE_ORDER = %w[openssl ruby python3] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
+CREW_STANDALONE_UPGRADE_ORDER = %w[glibc openssl ruby python3] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
 
 CREW_DEBUG   ||= ARGV.intersect?(%w[-D --debug]) unless defined?(CREW_DEBUG)
 CREW_FORCE   ||= ARGV.intersect?(%w[-f --force]) unless defined?(CREW_FORCE)
@@ -141,7 +151,7 @@ USER ||= Etc.getlogin unless defined?(USER)
 unless defined?(CHROMEOS_RELEASE)
   CHROMEOS_RELEASE =
     if File.exist?('/etc/lsb-release')
-      File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE||=(.+)/, 1]
+      File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
     else
       # newer version of Chrome OS exports info to env by default
       ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
@@ -201,14 +211,11 @@ when 'x86_64'
   CREW_ARCH_FLAGS ||= CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '' : CREW_ARCH_FLAGS_OVERRIDE
 end
 
-CREW_LINKER ||= ENV.fetch('CREW_LINKER', 'mold') unless defined?(CREW_LINKER)
-CREW_GLIBC_OVERRIDE_LINKER_FLAGS ||= ARCH == 'x86_64' && LIBC_VERSION.to_f >= 2.35 ? " #{File.join(CREW_LIB_PREFIX, 'libC.so.6')} " : ''
-CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', CREW_GLIBC_OVERRIDE_LINKER_FLAGS) unless defined?(CREW_LINKER_FLAGS)
+CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', '-flto=auto') unless defined?(CREW_LINKER_FLAGS)
 
-CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} #{CREW_LINKER_FLAGS}"
 CREW_COMMON_FLAGS         ||= "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS ||= "#{CREW_CORE_FLAGS} -fno-lto"
-CREW_LDFLAGS              ||= "-flto=auto #{CREW_LINKER_FLAGS}"
 CREW_FNO_LTO_LDFLAGS      ||= '-fno-lto'
 
 CREW_ENV_OPTIONS_HASH ||=
@@ -220,8 +227,8 @@ CREW_ENV_OPTIONS_HASH ||=
       'CXXFLAGS'        => CREW_COMMON_FLAGS,
       'FCFLAGS'         => CREW_COMMON_FLAGS,
       'FFLAGS'          => CREW_COMMON_FLAGS,
-      'LD_LIBRARY_PATH' => CREW_LIB_PREFIX,
-      'LDFLAGS'         => CREW_LDFLAGS
+      'LIBRARY_PATH'    => "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+      'LDFLAGS'         => CREW_LINKER_FLAGS
     }
   end
 
@@ -233,7 +240,7 @@ CREW_ENV_FNO_LTO_OPTIONS_HASH ||= {
   'CXXFLAGS'        => CREW_COMMON_FNO_LTO_FLAGS,
   'FCFLAGS'         => CREW_COMMON_FNO_LTO_FLAGS,
   'FFLAGS'          => CREW_COMMON_FNO_LTO_FLAGS,
-  'LD_LIBRARY_PATH' => CREW_LIB_PREFIX,
+  'LIBRARY_PATH'    => "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
   'LDFLAGS'         => CREW_FNO_LTO_LDFLAGS
 }
 # parse from hash to shell readable string
@@ -258,8 +265,10 @@ CREW_MESON_OPTIONS ||= <<~OPT.chomp
   -Db_lto=true \
   -Dstrip=true \
   -Db_pie=true \
+  -Dc_args='#{CREW_CORE_FLAGS}' \
+  -Dc_link_args='#{CREW_LINKER_FLAGS}' \
   -Dcpp_args='#{CREW_CORE_FLAGS}' \
-  -Dc_args='#{CREW_CORE_FLAGS}'
+  -Dcpp_link_args='#{CREW_LINKER_FLAGS}'
 OPT
 
 # Use ninja or samurai
@@ -268,15 +277,18 @@ CREW_NINJA ||= ENV.fetch('CREW_NINJA', 'ninja') unless defined?(CREW_NINJA)
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
 # and also https://bugzilla.redhat.com/show_bug.cgi?id=1425064
+# CMAKE_LIBRARY_PATH is the build LIBRARY_PATH, as opposed to
+# CMAKE_INSTALL_LIBDIR which defaults to lib or lib64.
 CREW_CMAKE_OPTIONS ||= <<~OPT.chomp
+  -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
   -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-  -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
+  -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}' \
   -DCMAKE_C_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
   -DCMAKE_CXX_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
-  -DCMAKE_EXE_LINKER_FLAGS='#{CREW_LDFLAGS}' \
-  -DCMAKE_LINKER_TYPE=#{CREW_LINKER.upcase} \
-  -DCMAKE_SHARED_LINKER_FLAGS='#{CREW_LDFLAGS}' \
-  -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LDFLAGS}' \
+  -DCMAKE_EXE_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
+  -DCMAKE_LINKER_TYPE=MOLD \
+  -DCMAKE_SHARED_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
+  -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE \
   -DCMAKE_BUILD_TYPE=Release
 OPT
@@ -298,6 +310,7 @@ PY_SETUP_INSTALL_OPTIONS_NO_SVEM ||= "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PR
 PY_SETUP_INSTALL_OPTIONS         ||= "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version-externally-managed"
 PY3_BUILD_OPTIONS                ||= '--wheel --no-isolation'
 PY3_INSTALLER_OPTIONS            ||= "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
+PY3_PIP_RETRIES                  ||= ENV.fetch('PY3_PIP_RETRIES', '5') unless defined?(PY3_PIP_RETRIES)
 
 CREW_GCC_VER ||= Kernel.system('which gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : 'gcc14' unless defined?(CREW_GCC_VER)
 CREW_ICU_VER ||= Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : 'icu75.1' unless defined?(CREW_ICU_VER)

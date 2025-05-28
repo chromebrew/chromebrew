@@ -23,5 +23,5 @@ class Valgrind < Autotools
   when 'aarch64', 'armv7l'
     arch_flags_override
   end
-  configure_options (ARCH == 'x86_64' ? '--enable-only64bit' : '--enable-only32bit').to_s
+  autotools_configure_options (ARCH == 'x86_64' ? '--enable-only64bit' : '--enable-only32bit').to_s
 end

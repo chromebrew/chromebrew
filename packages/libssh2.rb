@@ -21,5 +21,5 @@ class Libssh2 < Autotools
   depends_on 'openssl' # R
   depends_on 'zlib' # R
 
-  configure_options '--with-libz'
+  autotools_configure_options '--with-libz'
 end

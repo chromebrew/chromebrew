@@ -20,5 +20,5 @@ class Fakeroot < Autotools
   depends_on 'libcap'
 
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1074945
-  pre_configure_options 'CFLAGS=-Wno-incompatible-pointer-types'
+  autotools_pre_configure_options 'CFLAGS=-Wno-incompatible-pointer-types'
 end

@@ -19,7 +19,7 @@ class Liburcu < Autotools
 
   depends_on 'glibc' # R
 
-  configure_options '--disable-static'
+  autotools_configure_options '--disable-static'
 
   run_tests
 end

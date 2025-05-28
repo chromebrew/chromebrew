@@ -36,5 +36,5 @@ class Bind < Autotools
   depends_on 'sphinx' => :build
   depends_on 'zlib' # R
 
-  configure_options '--enable-fixed-rrset --enable-full-report --with-libidn2'
+  autotools_configure_options '--enable-fixed-rrset --enable-full-report --with-libidn2'
 end

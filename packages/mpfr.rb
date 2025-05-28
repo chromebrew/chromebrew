@@ -21,7 +21,7 @@ class Mpfr < Autotools
   depends_on 'glibc' # R
   depends_on 'gmp' # R
 
-  configure_options '--enable-shared'
+  autotools_configure_options '--enable-shared'
 
   def self.check
     system "LD_LIBRARY_PATH=\$(pwd)/src/.libs:\$LD_LIBRARY_PATH make check"

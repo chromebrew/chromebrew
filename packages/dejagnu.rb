@@ -21,12 +21,12 @@ class Dejagnu < Autotools
   depends_on 'texinfo'
   run_tests
 
-  configure_build_extras do
+  autotools_build_extras do
     system 'makeinfo --html --no-split -o doc/dejagnu.html doc/dejagnu.texi'
     system 'makeinfo --plaintext       -o doc/dejagnu.txt  doc/dejagnu.texi'
   end
 
-  configure_install_extras do
+  autotools_install_extras do
     system "install -v -dm755   #{CREW_DEST_PREFIX}/share/doc/dejagnu-1.6.1"
     system "install -v -m644 doc/dejagnu.html #{CREW_DEST_PREFIX}/share/doc/dejagnu-1.6.1"
     system "install -v -m644 doc/dejagnu.txt  #{CREW_DEST_PREFIX}/share/doc/dejagnu-1.6.1"

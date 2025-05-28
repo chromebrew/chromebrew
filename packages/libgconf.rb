@@ -24,5 +24,5 @@ class Libgconf < Autotools
 
   gnome
 
-  configure_options '--disable-orbit'
+  autotools_configure_options '--disable-orbit'
 end

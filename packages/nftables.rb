@@ -26,7 +26,7 @@ class Nftables < Autotools
   depends_on 'libnftnl' # R
   depends_on 'readline' # R
 
-  configure_options "--sysconfdir=#{CREW_PREFIX}/etc \
+  autotools_configure_options "--sysconfdir=#{CREW_PREFIX}/etc \
     --with-json \
     --with-cli=readline \
     --with-mini-gmp \

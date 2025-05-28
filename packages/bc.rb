@@ -23,7 +23,7 @@ class Bc < Autotools
   depends_on 'texinfo' => :build
   depends_on 'ncurses' # R
 
-  configure_options '--with-readline'
+  autotools_configure_options '--with-readline'
 
   run_tests
 end

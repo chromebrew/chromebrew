@@ -20,5 +20,5 @@ class Apr_util < Autotools
   depends_on 'apr'
   depends_on 'expat'
 
-  configure_options "--with-apr=#{CREW_PREFIX}"
+  autotools_configure_options "--with-apr=#{CREW_PREFIX}"
 end

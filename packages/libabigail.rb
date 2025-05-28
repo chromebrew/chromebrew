@@ -31,7 +31,7 @@ class Libabigail < Autotools
   depends_on 'zstd' # R
   depends_on 'gdb' # R
 
-  configure_options '--enable-bash-completion \
+  autotools_configure_options '--enable-bash-completion \
     --disable-manual \
     --disable-apidoc \
     --disable-static'

@@ -1,9 +1,14 @@
-require 'package'
+require_relative '../package'
+require_relative '../require_gem'
+require_relative '../report_buildsystem_methods'
 
 class Python < Package
-  property :no_svem, :python_build_extras, :python_build_options, :python_build_relative_dir, :python_install_extras, :python_install_options
+  property :python_build_extras, :python_build_options, :python_build_relative_dir, :python_install_extras, :python_install_options, :python_no_svem
 
   def self.build
+    extend ReportBuildsystemMethods
+    print_buildsystem_methods
+
     @python_build_relative_dir ||= '.'
     Dir.chdir(@python_build_relative_dir) do
       if File.file?('setup.py')
@@ -22,7 +27,7 @@ class Python < Package
   def self.install
     Dir.chdir(@python_build_relative_dir) do
       if File.file?('setup.py')
-        @py_setup_install_options = @no_svem ? PY_SETUP_INSTALL_OPTIONS_NO_SVEM : PY_SETUP_INSTALL_OPTIONS
+        @py_setup_install_options = @python_no_svem ? PY_SETUP_INSTALL_OPTIONS_NO_SVEM : PY_SETUP_INSTALL_OPTIONS
         puts "Python install options being used: #{@py_setup_install_options} #{@python_install_options}".orange
         puts "MAKEFLAGS=-j#{CREW_NPROC} python3 setup.py install #{@py_setup_install_options} #{@python_install_options}" if CREW_VERBOSE
         system "MAKEFLAGS=-j#{CREW_NPROC} python3 setup.py install #{@py_setup_install_options} #{@python_install_options}"

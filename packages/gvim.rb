@@ -49,7 +49,7 @@ class Gvim < Autotools
     end
   end
 
-  configure_options "--localstatedir=#{CREW_PREFIX}/var/lib/vim \
+  autotools_configure_options "--localstatedir=#{CREW_PREFIX}/var/lib/vim \
     --disable-canberra \
     --disable-nls \
     --disable-selinux \

@@ -22,7 +22,7 @@ class Libunbound < Autotools
   depends_on 'glibc' # R
   depends_on 'openssl' # R On i686 openssl needs to be installed before libunbound.
 
-  configure_options '--enable-shared \
+  autotools_configure_options '--enable-shared \
     --enable-static \
     --with-pic'
 

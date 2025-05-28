@@ -29,7 +29,7 @@ class Libgsf < Autotools
 
   gnome
 
-  configure_options '--enable-shared=yes \
+  autotools_configure_options '--enable-shared=yes \
       --disable-maintainer-mode \
       --enable-introspection'
 end

@@ -23,13 +23,13 @@ class Bash < Autotools
   depends_on 'ncurses' # R
   depends_on 'readline' # R
 
-  configure_options '--with-curses \
+  autotools_configure_options '--with-curses \
     --enable-extended-glob-default \
     --enable-readline \
     --without-bash-malloc \
     --with-installed-readline'
 
-  configure_install_extras do
+  autotools_install_extras do
     FileUtils.ln_s "#{CREW_PREFIX}/bin/bash", "#{CREW_DEST_PREFIX}/bin/sh"
   end
 end

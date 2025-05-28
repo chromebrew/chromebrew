@@ -31,7 +31,7 @@ class Vice < Autotools
   depends_on 'xdg_utils' # R
   depends_on 'zlib' # R
 
-  configure_options '--enable-gtk3ui \
+  autotools_configure_options '--enable-gtk3ui \
     --enable-desktop-files \
     --with-flac \
     --with-mpg123'

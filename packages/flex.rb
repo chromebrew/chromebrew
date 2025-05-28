@@ -21,7 +21,7 @@ class Flex < Autotools
   depends_on 'glibc' # R
   depends_on 'm4' => :build
 
-  configure_options '--with-pic --disable-static --enable-shared'
+  autotools_configure_options '--with-pic --disable-static --enable-shared'
 
   def self.patch
     downloader 'https://gitlab.archlinux.org/archlinux/packaging/packages/flex/-/raw/main/flex-pie.patch?ref_type=heads&inline=false',

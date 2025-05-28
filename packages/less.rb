@@ -22,7 +22,7 @@ class Less < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'patch' => :build
 
-  configure_options '--with-regex=posix'
+  autotools_configure_options '--with-regex=posix'
 
   def self.patch
     downloader 'https://patch-diff.githubusercontent.com/raw/gwsw/less/pull/412.diff',

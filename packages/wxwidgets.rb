@@ -67,7 +67,7 @@ class Wxwidgets < Autotools
     end
   end
 
-  configure_options '--with-gtk=3 \
+  autotools_configure_options '--with-gtk=3 \
     --with-opengl \
     --enable-unicode \
     --enable-graphics_ctx \
@@ -80,7 +80,7 @@ class Wxwidgets < Autotools
     --without-gnomevfs \
     --disable-precomp-headers'
 
-  configure_install_extras do
+  autotools_install_extras do
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-3.2", 'wx-config'
     end

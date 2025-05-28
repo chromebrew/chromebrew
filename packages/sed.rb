@@ -20,5 +20,5 @@ class Sed < Autotools
   depends_on 'acl' # R
   depends_on 'glibc' # R
 
-  configure_options '--without-selinux'
+  autotools_configure_options '--without-selinux'
 end

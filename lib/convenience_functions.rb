@@ -7,17 +7,17 @@ require_relative 'crewlog'
 require_relative 'downloader'
 
 class ConvenienceFunctions
-  def self.determine_conflicts(pkgName, filelist = File.join(CREW_META_PATH, "#{pkgName}.filelist"), excludeSuffix = nil, verbose: false)
+  def self.determine_conflicts(pkg_name, filelist = File.join(CREW_META_PATH, "#{pkg_name}.filelist"), exclude_suffix = nil, verbose: false)
     conflicts       = {}
     target_filelist = File.readlines(filelist, chomp: true)
 
     puts 'Checking for conflicts with files from installed packages...'.orange if verbose
 
-    Dir[File.join(CREW_META_PATH, "*.filelist")].each do |filelist|
-      filelist_name = File.basename(filelist, ".filelist")
+    Dir[File.join(CREW_META_PATH, '*.filelist')].each do |filelist|
+      filelist_name = File.basename(filelist, '.filelist')
 
       # skip filelist belongs to the same package/explicitly excluded
-      next if pkgName == filelist_name || (excludeSuffix && filelist_name.end_with?(excludeSuffix))
+      next if pkg_name == filelist_name || (exclude_suffix && filelist_name.end_with?(exclude_suffix))
 
       # find out identical file paths with intersection
       conflict = (target_filelist & File.readlines(filelist, chomp: true)).reject(&:empty?)
@@ -35,8 +35,10 @@ class ConvenienceFunctions
     crewlog 'Saving device.json...'
     begin
       File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
-    rescue StandardError
-      puts 'Error writing updated packages json file!'.lightred
+    # rubocop:disable Lint/UselessAssignment
+    rescue StandardError => e
+      # rubocop:enable Lint/UselessAssignment
+      puts "Error writing updated packages json file!\n{e.message}".lightred
       abort
     end
 

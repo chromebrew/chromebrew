@@ -39,7 +39,7 @@ class Libxml2_autotools < Autotools
     FileUtils.rm 'test/ebcdic_566012.xml'
   end
 
-  configure_options '--disable-static \
+  autotools_configure_options '--disable-static \
     --with-icu \
     --without-python \
     --without-lzma'

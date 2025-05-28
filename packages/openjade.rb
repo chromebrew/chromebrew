@@ -32,7 +32,7 @@ class Openjade < Autotools
     end
   end
 
-  configure_install_extras do
+  autotools_install_extras do
     FileUtils.ln_s "#{CREW_PREFIX}/bin/openjade", "#{CREW_DEST_PREFIX}/bin/jade"
   end
 end

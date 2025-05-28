@@ -22,5 +22,5 @@ class Gnome_icon_theme < Autotools
 
   gnome
 
-  configure_options '--enable-icon-mapping'
+  autotools_configure_options '--enable-icon-mapping'
 end

@@ -23,6 +23,6 @@ class Zeromq < Autotools
 
   # warning: failed to load external entity "http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl"
   # compilation error: file /tmp/xmlto-xsl.bNfymk line 4 element import
-  configure_options '--without-docs'
+  autotools_configure_options '--without-docs'
   run_tests
 end

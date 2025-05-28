@@ -34,7 +34,7 @@ class Codeblocks < Autotools
   depends_on 'wxwidgets' # R
   depends_on 'zlib' # R
 
-  configure_options '--with-contrib-plugins=all'
+  autotools_configure_options '--with-contrib-plugins=all'
 
   run_tests
 

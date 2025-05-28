@@ -31,6 +31,6 @@ class Aircrack_ng < Autotools
   end
 
   # https://github.com/aircrack-ng/aircrack-ng/issues/2623
-  pre_configure_options 'CFLAGS=-Wno-error=implicit-function-declaration'
+  autotools_pre_configure_options 'CFLAGS=-Wno-error=implicit-function-declaration'
   run_tests
 end

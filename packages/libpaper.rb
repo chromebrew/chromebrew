@@ -20,7 +20,7 @@ class Libpaper < Autotools
   depends_on 'gnupg' => :build
   depends_on 'help2man' => :build
 
-  configure_options '--enable-relocatable'
+  autotools_configure_options '--enable-relocatable'
 
   run_tests
 end

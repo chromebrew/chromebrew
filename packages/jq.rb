@@ -20,6 +20,6 @@ class Jq < Autotools
 
   depends_on 'glibc'
 
-  configure_options '--disable-maintainer-mode \
+  autotools_configure_options '--disable-maintainer-mode \
       --disable-docs'
 end

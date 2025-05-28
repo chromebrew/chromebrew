@@ -19,7 +19,7 @@ class Patchelf < Autotools
 
   no_env_options
 
-  pre_configure_options "LDFLAGS='-flto=auto -static' "
+  autotools_pre_configure_options "LDFLAGS='-flto=auto -static' "
 
   def self.patch
     # Allocate PHT & SHT at the end of the *.elf file

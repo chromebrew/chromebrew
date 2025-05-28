@@ -20,7 +20,7 @@ class Patch < Autotools
   depends_on 'attr' # R
   depends_on 'glibc' # R
 
-  configure_options '--disable-year2038' unless ARCH.include?('x86_64')
+  autotools_configure_options '--disable-year2038' unless ARCH.include?('x86_64')
 
   run_tests
 end

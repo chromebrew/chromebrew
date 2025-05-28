@@ -21,6 +21,6 @@ class Mpc < Autotools
   depends_on 'gmp' # R
   depends_on 'mpfr' # R
 
-  configure_options '--disable-maintainer-mode \
+  autotools_configure_options '--disable-maintainer-mode \
       --enable-shared'
 end

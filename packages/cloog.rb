@@ -22,6 +22,6 @@ class Cloog < Autotools
   depends_on 'isl'
   depends_on 'osl'
 
-  configure_options '--with-isl=system --with-osl=system'
+  autotools_configure_options '--with-isl=system --with-osl=system'
   run_tests
 end

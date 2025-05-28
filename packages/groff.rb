@@ -22,5 +22,5 @@ class Groff < Autotools
   depends_on 'netpbm' => :build
   depends_on 'uchardet' # R
 
-  configure_options '--without-x'
+  autotools_configure_options '--without-x'
 end

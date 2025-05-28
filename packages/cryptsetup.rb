@@ -22,5 +22,5 @@ class Cryptsetup < Autotools
   depends_on 'libgcrypt'
   depends_on 'popt'
 
-  configure_options '--disable-asciidoc'
+  autotools_configure_options '--disable-asciidoc'
 end

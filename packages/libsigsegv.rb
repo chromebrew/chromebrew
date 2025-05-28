@@ -19,7 +19,7 @@ class Libsigsegv < Autotools
 
   depends_on 'glibc' # R
 
-  configure_options '--enable-shared \
+  autotools_configure_options '--enable-shared \
     --enable-static \
     --enable-relocatable'
 

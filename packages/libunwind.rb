@@ -23,5 +23,5 @@ class Libunwind < Autotools
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
 
-  configure_options '--enable-ptrace'
+  autotools_configure_options '--enable-ptrace'
 end
