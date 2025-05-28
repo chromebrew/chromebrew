@@ -1,13 +1,13 @@
 /usr/local/bin/nuitka
 /usr/local/bin/nuitka-run
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.3.dist-info/INSTALLER
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.3.dist-info/METADATA
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.3.dist-info/RECORD
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.3.dist-info/REQUESTED
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.3.dist-info/WHEEL
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.3.dist-info/entry_points.txt
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.3.dist-info/licenses/LICENSE.txt
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.3.dist-info/top_level.txt
+/usr/local/lib64/python3.13/site-packages/nuitka-2.7.4.dist-info/INSTALLER
+/usr/local/lib64/python3.13/site-packages/nuitka-2.7.4.dist-info/METADATA
+/usr/local/lib64/python3.13/site-packages/nuitka-2.7.4.dist-info/RECORD
+/usr/local/lib64/python3.13/site-packages/nuitka-2.7.4.dist-info/REQUESTED
+/usr/local/lib64/python3.13/site-packages/nuitka-2.7.4.dist-info/WHEEL
+/usr/local/lib64/python3.13/site-packages/nuitka-2.7.4.dist-info/entry_points.txt
+/usr/local/lib64/python3.13/site-packages/nuitka-2.7.4.dist-info/licenses/LICENSE.txt
+/usr/local/lib64/python3.13/site-packages/nuitka-2.7.4.dist-info/top_level.txt
 /usr/local/lib64/python3.13/site-packages/nuitka/Builtins.py
 /usr/local/lib64/python3.13/site-packages/nuitka/BytecodeCaching.py
 /usr/local/lib64/python3.13/site-packages/nuitka/Bytecodes.py
@@ -1432,6 +1432,7 @@
 /usr/local/lib64/python3.13/site-packages/nuitka/tools/specialize/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/tools/testing/Common.py
 /usr/local/lib64/python3.13/site-packages/nuitka/tools/testing/Constructs.py
+/usr/local/lib64/python3.13/site-packages/nuitka/tools/testing/DocTests.py
 /usr/local/lib64/python3.13/site-packages/nuitka/tools/testing/OutputComparison.py
 /usr/local/lib64/python3.13/site-packages/nuitka/tools/testing/Pythons.py
 /usr/local/lib64/python3.13/site-packages/nuitka/tools/testing/RuntimeTracing.py
@@ -1440,6 +1441,7 @@
 /usr/local/lib64/python3.13/site-packages/nuitka/tools/testing/__init__.py
 /usr/local/lib64/python3.13/site-packages/nuitka/tools/testing/__pycache__/Common.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/tools/testing/__pycache__/Constructs.cpython-313.pyc
+/usr/local/lib64/python3.13/site-packages/nuitka/tools/testing/__pycache__/DocTests.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/tools/testing/__pycache__/OutputComparison.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/tools/testing/__pycache__/Pythons.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/tools/testing/__pycache__/RuntimeTracing.cpython-313.pyc
