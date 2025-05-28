@@ -474,7 +474,7 @@ else
   # Set mtimes of files to when the file was committed.
   git-restore-mtime -sq 2>/dev/null
 
-  yes | crew install buildessential
+  yes | crew install psmisc buildessential
   echo_info "Cleaning up older ruby gem versions...\n"
   gem cleanup
 fi
