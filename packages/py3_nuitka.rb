@@ -10,8 +10,8 @@ class Py3_nuitka < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e92cc4bc2cefae32ea6b3ad174f6ab98065d3975a475126b7c9fdeb79a57b843',
-     armv7l: 'e92cc4bc2cefae32ea6b3ad174f6ab98065d3975a475126b7c9fdeb79a57b843',
+    aarch64: 'c410916b27e5666c8c14c0bb96c8557a13faabd24179856c517485a7c9d96292',
+     armv7l: 'c410916b27e5666c8c14c0bb96c8557a13faabd24179856c517485a7c9d96292',
        i686: '46528f958f04c7bbe9519cc403fa16869a2cc818d0631746f9865fe84c3eefc8',
      x86_64: 'af1b121273c4e3dcea132047e5aa9de626e9aad92e330576f307cf81cd9f239e'
   })

@@ -10,8 +10,8 @@ class Py3_hatch_vcs < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '82720a22aa2441ea0ef5ae2067f10434d19016c6f56695f97b373795b5dd698d',
-     armv7l: '82720a22aa2441ea0ef5ae2067f10434d19016c6f56695f97b373795b5dd698d',
+    aarch64: '98c77ad86a6a74c0911875fdfad823bd2d5d85ec3b4c4b6eb0903023cf3aafb4',
+     armv7l: '98c77ad86a6a74c0911875fdfad823bd2d5d85ec3b4c4b6eb0903023cf3aafb4',
        i686: '16aa11be9f229a8cd029f01e30344bababc1fc84df3f31339f3949864b364bee',
      x86_64: '89166c75ba56df60564258a6c9323e0eb5b0e99f25c220f5765530db9901fea4'
   })
