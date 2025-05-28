@@ -12,7 +12,7 @@ class Py3_oci_cli < Pip
   binary_sha256({
     aarch64: 'c9a94cbd198e9c57bd25551518e19146b7e3c262ab54b80f4c0f3ee2af8b2a6d',
      armv7l: 'c9a94cbd198e9c57bd25551518e19146b7e3c262ab54b80f4c0f3ee2af8b2a6d',
-     x86_64: '0776948546d041116bf2959217b3d196011bd2aa4cac44330e731f79fce6afce'
+     x86_64: '5edf225a4b52e20041ce67ec496a2d738fd8e5ea1aa207bdb71e6326d59663f8'
   })
 
   depends_on 'py3_arrow'
