@@ -482,6 +482,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/packages/releases.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/packages/resource_bundles.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/packages/rollouts.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/packages/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/packages/variants.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/policycontroller/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/policycontroller/protos.py
@@ -1690,6 +1691,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cloudbuild/resources_v2.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cloudbuild/run_flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cloudbuild/workerpool_flags.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cloudlocationfinder/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cloudlocationfinder/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cloudlocationfinder/v1alpha_resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/code/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/code/builders.py
@@ -2659,6 +2662,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/managed_flink/flink_backend.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/managed_flink/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/managed_kafka/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/managed_kafka/arguments.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/managed_kafka/flags.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/managed_kafka/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/managed_kafka/util.py
@@ -2879,6 +2883,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/notebooks/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/number_registry/default_resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/number_registry/v1alpha_resources.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/observability/v1_resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/oracle_database/default_resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/oracle_database/v1_resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/oracle_database/v1alpha_resources.yaml
@@ -3101,6 +3106,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/iac_remediation/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/iac_remediation/errors.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/iac_remediation/flags.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/iac_validation_reports/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/iac_validation_reports/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/manage/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/manage/constants.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/manage/errors.py
@@ -3715,6 +3722,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/__pycache__/__init__.cpython-312.pyc
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/__pycache__/installers.cpython-312.pyc
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/__pycache__/local_state.cpython-312.pyc
+/usr/local/share/gcloud/lib/googlecloudsdk/core/updater/__pycache__/python_manager.cpython-312.pyc
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/__pycache__/release_notes.cpython-312.pyc
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/__pycache__/schemas.cpython-312.pyc
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/__pycache__/snapshots.cpython-312.pyc
@@ -3722,6 +3730,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/__pycache__/update_manager.cpython-312.pyc
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/installers.py
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/local_state.py
+/usr/local/share/gcloud/lib/googlecloudsdk/core/updater/python_manager.py
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/release_notes.py
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/schemas.py
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/snapshots.py
@@ -5517,11 +5526,6 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/workflows/v1beta/resources.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/workflows/v1beta/workflows_v1beta_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/workflows/v1beta/workflows_v1beta_messages.py
-/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/workloadcertificate/__init__.py
-/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/workloadcertificate/v1alpha1/__init__.py
-/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/workloadcertificate/v1alpha1/resources.py
-/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/workloadcertificate/v1alpha1/workloadcertificate_v1alpha1_client.py
-/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/workloadcertificate/v1alpha1/workloadcertificate_v1alpha1_messages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/workstations/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/workstations/v1/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/workstations/v1/resources.py
@@ -8021,8 +8025,8 @@
 /usr/local/share/gcloud/lib/surface/cloudlocationfinder/cloud_locations/_partials/_list_alpha.yaml
 /usr/local/share/gcloud/lib/surface/cloudlocationfinder/cloud_locations/_partials/_search_alpha.yaml
 /usr/local/share/gcloud/lib/surface/cloudlocationfinder/cloud_locations/describe.yaml
-/usr/local/share/gcloud/lib/surface/cloudlocationfinder/cloud_locations/list.yaml
-/usr/local/share/gcloud/lib/surface/cloudlocationfinder/cloud_locations/search.yaml
+/usr/local/share/gcloud/lib/surface/cloudlocationfinder/cloud_locations/list.py
+/usr/local/share/gcloud/lib/surface/cloudlocationfinder/cloud_locations/search.py
 /usr/local/share/gcloud/lib/surface/code/__init__.py
 /usr/local/share/gcloud/lib/surface/code/clean_up.py
 /usr/local/share/gcloud/lib/surface/code/dev.py
@@ -8524,6 +8528,7 @@
 /usr/local/share/gcloud/lib/surface/compute/instant_snapshots/list.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/application_awareness/__init__.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/application_awareness/configure_strict_priority_policy.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/application_awareness/get_config.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/application_awareness/update.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/__init__.py
@@ -8541,6 +8546,13 @@
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/list.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/remove_members.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/groups/update.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/l2_forwarding/__init__.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/l2_forwarding/add_mapping.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/l2_forwarding/create.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/l2_forwarding/describe_mapping.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/l2_forwarding/list_mapping.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/l2_forwarding/update.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/l2_forwarding/update_mapping.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/list.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/partner/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/partner/create.py
@@ -8967,6 +8979,7 @@
 /usr/local/share/gcloud/lib/surface/compute/snapshot_groups/create.py
 /usr/local/share/gcloud/lib/surface/compute/snapshot_groups/delete.py
 /usr/local/share/gcloud/lib/surface/compute/snapshot_groups/describe.py
+/usr/local/share/gcloud/lib/surface/compute/snapshot_groups/list.py
 /usr/local/share/gcloud/lib/surface/compute/snapshot_settings/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/snapshot_settings/describe.py
 /usr/local/share/gcloud/lib/surface/compute/snapshot_settings/update.py
@@ -12124,8 +12137,12 @@
 /usr/local/share/gcloud/lib/surface/managed_kafka/schema_registries/__init__.py
 /usr/local/share/gcloud/lib/surface/managed_kafka/schema_registries/create.yaml
 /usr/local/share/gcloud/lib/surface/managed_kafka/schema_registries/delete.yaml
-/usr/local/share/gcloud/lib/surface/managed_kafka/schema_registries/describe.yaml
+/usr/local/share/gcloud/lib/surface/managed_kafka/schema_registries/describe.py
 /usr/local/share/gcloud/lib/surface/managed_kafka/schema_registries/list.yaml
+/usr/local/share/gcloud/lib/surface/managed_kafka/schema_registries/subject/__init__.py
+/usr/local/share/gcloud/lib/surface/managed_kafka/schema_registries/subject/describe.py
+/usr/local/share/gcloud/lib/surface/managed_kafka/schema_registries/subject/update.py
+/usr/local/share/gcloud/lib/surface/managed_kafka/schema_registries/update.py
 /usr/local/share/gcloud/lib/surface/managed_kafka/topics/__init__.py
 /usr/local/share/gcloud/lib/surface/managed_kafka/topics/create.yaml
 /usr/local/share/gcloud/lib/surface/managed_kafka/topics/delete.yaml
@@ -13227,6 +13244,14 @@
 /usr/local/share/gcloud/lib/surface/number_registry/registry_books/describe.yaml
 /usr/local/share/gcloud/lib/surface/number_registry/registry_books/list.yaml
 /usr/local/share/gcloud/lib/surface/number_registry/registry_books/update.yaml
+/usr/local/share/gcloud/lib/surface/observability/__init__.py
+/usr/local/share/gcloud/lib/surface/observability/_init_extensions.py
+/usr/local/share/gcloud/lib/surface/observability/scopes/__init__.py
+/usr/local/share/gcloud/lib/surface/observability/scopes/_init_extensions.py
+/usr/local/share/gcloud/lib/surface/observability/scopes/_partials/_describe_ga.yaml
+/usr/local/share/gcloud/lib/surface/observability/scopes/_partials/_update_ga.yaml
+/usr/local/share/gcloud/lib/surface/observability/scopes/describe.yaml
+/usr/local/share/gcloud/lib/surface/observability/scopes/update.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/oracle_database/autonomous_database_backups/__init__.py
@@ -13440,6 +13465,7 @@
 /usr/local/share/gcloud/lib/surface/pam/grants/list.yaml
 /usr/local/share/gcloud/lib/surface/pam/grants/revoke.yaml
 /usr/local/share/gcloud/lib/surface/pam/grants/search.yaml
+/usr/local/share/gcloud/lib/surface/pam/grants/withdraw.yaml
 /usr/local/share/gcloud/lib/surface/pam/operations/__init__.py
 /usr/local/share/gcloud/lib/surface/pam/operations/delete.yaml
 /usr/local/share/gcloud/lib/surface/pam/operations/describe.yaml
@@ -14001,6 +14027,7 @@
 /usr/local/share/gcloud/lib/surface/run/worker_pools/logs/__init__.py
 /usr/local/share/gcloud/lib/surface/run/worker_pools/logs/read.py
 /usr/local/share/gcloud/lib/surface/run/worker_pools/logs/tail.py
+/usr/local/share/gcloud/lib/surface/run/worker_pools/replace.py
 /usr/local/share/gcloud/lib/surface/run/worker_pools/revisions/__init__.py
 /usr/local/share/gcloud/lib/surface/run/worker_pools/revisions/delete.py
 /usr/local/share/gcloud/lib/surface/run/worker_pools/revisions/describe.py
@@ -14162,7 +14189,7 @@
 /usr/local/share/gcloud/lib/surface/scc/iac_validation_reports/__init__.py
 /usr/local/share/gcloud/lib/surface/scc/iac_validation_reports/create.yaml
 /usr/local/share/gcloud/lib/surface/scc/iac_validation_reports/describe.yaml
-/usr/local/share/gcloud/lib/surface/scc/iac_validation_reports/list.yaml
+/usr/local/share/gcloud/lib/surface/scc/iac_validation_reports/list.py
 /usr/local/share/gcloud/lib/surface/scc/manage/__init__.py
 /usr/local/share/gcloud/lib/surface/scc/manage/billing_metadata/__init__.py
 /usr/local/share/gcloud/lib/surface/scc/manage/billing_metadata/describe.py
