@@ -3,25 +3,24 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.86.0-2'
+  version '1.87.0-1'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
-  git_hashtag '1.28.1'
+  git_hashtag '1.28.2'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '235b2c5d98576899b457b3fce39e7a0c188f16149f163dad1cc5cdb19f32258e',
-     armv7l: '235b2c5d98576899b457b3fce39e7a0c188f16149f163dad1cc5cdb19f32258e',
-       i686: '3a08ceb21eb8d4a59d68a5d1b4c11c4e93198cad9a8798d72175eee81d27f377',
-     x86_64: '8c956fbc5d3956ca2d385e2628151de0ffee7f1312a4180ac8ac2f4e5931e6e6'
+    aarch64: 'd4738c64e9fedef0cc6273786d9077ccfdce8eeadbe80ed1e435440372ae858e',
+     armv7l: 'd4738c64e9fedef0cc6273786d9077ccfdce8eeadbe80ed1e435440372ae858e',
+       i686: 'd4ee502fbbc70236f1897db2d9973dd7e75a00156aed4dff9b60b064aad18db1',
+     x86_64: '9608d7152960d2e0b31351a8649372108df6c3739ac6140933c494dff14384c4'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'zlib' # R
 
-  no_shrink
   no_strip
   print_source_bashrc
 
@@ -31,7 +30,8 @@ class Rust < Package
     ENV['RUST_BACKTRACE'] = 'full'
     ENV['CARGO_HOME'] = "#{CREW_DEST_PREFIX}/share/cargo"
     ENV['RUSTUP_HOME'] = "#{CREW_DEST_PREFIX}/share/rustup"
-    ENV['RUSTFLAGS'] = '-Cdebuginfo=0 -Copt-level=3'
+    ENV['RUSTFLAGS'] = "-Cdebuginfo=0 -Copt-level=3 -Clink-arg=-fuse-ld=mold"
+
     ENV['RUSTUP_TOOLCHAIN'] = 'stable'
     default_host = %w[aarch64 armv7l].include?(ARCH) ? 'armv7-unknown-linux-gnueabihf' : "#{ARCH}-unknown-linux-gnu"
     system "sed -i 's,$(mktemp -d 2>/dev/null || ensure mktemp -d -t rustup),#{CREW_PREFIX}/tmp,' rustup-init.sh"
@@ -64,6 +64,21 @@ class Rust < Package
       source #{CREW_PREFIX}/share/bash-completion/completions/rustup
     RUSTCOMPLETIONEOF
     system "#{CREW_DEST_PREFIX}/share/cargo/bin/rustup completions bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
+  end
+
+  def self.postinstall
+    # This may eventually not be needed, as there is no rpath hard coded
+    # into the rust binaries by default, but this does currently fix
+    # building with rust, especially for building gcc 15.1.
+    # This isn't being done in the build section since currently crew
+    # strips rpaths during install.
+    return unless Dir.exist?(CREW_GLIBC_PREFIX)
+
+    puts 'Updating rpaths for rust...'.lightblue
+    default_host = %w[aarch64 armv7l].include?(ARCH) ? 'armv7-unknown-linux-gnueabihf' : "#{ARCH}-unknown-linux-gnu"
+    Dir["#{CREW_PREFIX}/share/rustup/toolchains/stable-#{default_host}/bin/*"].each do |bin|
+      system "patchelf --set-rpath #{CREW_GLIBC_PREFIX}:#{CREW_PREFIX}/share/rustup/toolchains/stable-#{default_host}/lib #{bin}", exception: false if IO.popen(['file', '--brief', '--mime-type', bin], &:read).chomp == 'application/x-pie-executable'
+    end
   end
 
   def self.postremove
