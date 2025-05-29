@@ -202,27 +202,27 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   if [[ -d /usr/local/opt/glibc-libs ]] && ( [[ "${ARCH}" == "i686" ]] || (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) ); then
     if [[ "${ARCH}" == "armv7l" ]]; then
       curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-aarch64.so
-      if echo "45dd952093b7f31fd92d2640ab772dbadbda3fd1f669558df8a53d2acfebc038" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
+      if echo "be43191d354bb8be56c20a067581db15bc23927192e833c76ebddf97946393d3" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
         chmod +x "${CREW_PREFIX}"/lib64/crew-preload.so
       else
         echo_error "aarch64 crew-preload.so download failed!" && exit 1
       fi
       curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-armv7l.so
-      if echo "958e84ea66d0f1a36a27ce205874ddd135926c1012dd2c7649cc26cd9d246b49" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
+      if echo "c7dbfb613c6b197274da3ee3c33656cb99d757f884602d7cedf5de2ae408fb88" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
         chmod +x "${CREW_PREFIX}"/lib/crew-preload.so
       else
         echo_error "armv7l crew-preload.so download failed!" && exit 1
       fi
     elif [[ "${ARCH}" == "i686" ]];then
       curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-i686.so
-      if echo "d695187437c308e4d124853c23e4af45b7dd5165bbe85436ea06fee322cfd25d" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
+      if echo "db67618300bde3d70c01e76f83bf739722c0701e7af4ea34baf8ea71dfab3773" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
         chmod +x "${CREW_PREFIX}"/lib/crew-preload.so
       else
         echo_error "i686 crew-preload.so download failed!" && exit 1
       fi
     elif [[ "${ARCH}" == "x86_64" ]];then
       curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-x86_64.so
-      if echo "2724786b733314f9b0813bea1b631f4ade209b20af68f7b16c2ca81f52b64874" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
+      if echo "85de5d18f7d2a8eacf58266d9b0965336339a96092969a82c08efb0e835d971a" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
         chmod +x "${CREW_PREFIX}"/lib64/crew-preload.so
       else
         echo_error "x86_64 crew-preload.so download failed!" && exit 1
