@@ -128,6 +128,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/_locales/de_CH/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/el/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/en/messages.json
+/usr/local/share/vivaldi/resources/vivaldi/_locales/en_CA/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/en_GB/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/en_US/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/eo/messages.json
@@ -208,7 +209,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-b4143090609a5ec17eaa4473aa5a59b9.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-ba4a06803101048f66ecd7a6865460a5.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
