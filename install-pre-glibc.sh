@@ -193,34 +193,58 @@ echo_out 'Set up the local package repo...'
 # Download the chromebrew repository.
 curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-BOOTSTRAP_PACKAGES='zstd_static upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ruby git ca_certificates libyaml openssl'
-
-# Older i686 systems.
-[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' gcc_lib'
+BOOTSTRAP_PACKAGES='zstd_static upx patchelf lz4 zlib xzutils zstd zlib_ng gcc_lib crew_mvdir ruby git ca_certificates libyaml openssl'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   # shellcheck disable=SC2231
-  for i in /lib$LIB_SUFFIX/libc.so*
-  do
-    sudo cp "$i" "$CREW_PREFIX/lib$LIB_SUFFIX/"
-    libcname=$(basename "$i")
-    sudo chown chronos "$CREW_PREFIX/lib$LIB_SUFFIX/${libcname}"
-    sudo chmod 644 "$CREW_PREFIX/lib$LIB_SUFFIX/${libcname}"
-  done
-  if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
+  if [[ "${ARCH}" == "i686" ]] || (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
     # Recent Arm systems have a cut down system.
-    [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
-    if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" < "123" )); then
-      # Append the correct packages for systems running M122 and lower.
-      BOOTSTRAP_PACKAGES+=' glibc_lib235 gmp'
-    elif (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "122" )); then
-      # Append the correct packages for systems running M123 onwards.
-      # X86_64 requires patchelf patching of the system libc.so.6.
-      [[ "$ARCH" == "x86_64" ]] && BOOTSTRAP_PACKAGES+=' patchelf'
-      BOOTSTRAP_PACKAGES+=' glibc_lib237 gmp'
+    [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 pcre2 uutils_coreutils'
+    if [[ "${ARCH}" == "armv7l" ]]; then
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-aarch64.so
+      if echo "45dd952093b7f31fd92d2640ab772dbadbda3fd1f669558df8a53d2acfebc038" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
+        chmod +x "${CREW_PREFIX}"/lib64/crew-preload.so
+      else
+        echo_error "aarch64 crew-preload.so download failed!" && exit 1
+      fi
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-armv7l.so
+      if echo "958e84ea66d0f1a36a27ce205874ddd135926c1012dd2c7649cc26cd9d246b49" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
+        chmod +x "${CREW_PREFIX}"/lib/crew-preload.so
+      else
+        echo_error "armv7l crew-preload.so download failed!" && exit 1
+      fi
+    elif [[ "${ARCH}" == "i686" ]];then
+      echo_info "Skipping i686..."
+      # curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-i686.so
+      # if echo "d695187437c308e4d124853c23e4af45b7dd5165bbe85436ea06fee322cfd25d" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
+      #   chmod +x "${CREW_PREFIX}"/lib/crew-preload.so
+      # else
+      #   echo_error "i686 crew-preload.so download failed!" && exit 1
+      # fi
+    elif [[ "${ARCH}" == "x86_64" ]];then
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-x86_64.so
+      if echo "2724786b733314f9b0813bea1b631f4ade209b20af68f7b16c2ca81f52b64874" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
+        chmod +x "${CREW_PREFIX}"/lib64/crew-preload.so
+      else
+        echo_error "x86_64 crew-preload.so download failed!" && exit 1
+      fi
     fi
   fi
 fi
+
+# Older i686 systems.
+# [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' gcc_lib'
+
+#if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
+  ## shellcheck disable=SC2231
+  #for i in /lib$LIB_SUFFIX/libc.so*
+  #do
+    #sudo cp "$i" "$CREW_PREFIX/lib$LIB_SUFFIX/"
+    #libcname=$(basename "$i")
+    #sudo chown chronos "$CREW_PREFIX/lib$LIB_SUFFIX/${libcname}"
+    #sudo chmod 644 "$CREW_PREFIX/lib$LIB_SUFFIX/${libcname}"
+  #done
+#fi
 
 # Create the device.json file.
 cd "${CREW_CONFIG_PATH}"
@@ -384,6 +408,21 @@ for package in $BOOTSTRAP_PACKAGES; do
   done
 done
 
+if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
+  # shellcheck disable=SC2231
+  if [[ "${ARCH}" == "i686" ]] || (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
+    if [[ "${ARCH}" == "armv7l" ]]; then
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-aarch64.so
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-armv7l.so
+    elif [[ "${ARCH}" == "i686" ]];then
+      echo_info "Skipping i686..."
+      # curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-i686.so
+    elif [[ "${ARCH}" == "x86_64" ]];then
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-x86_64.so
+    fi
+  fi
+fi
+
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
 sudo ldconfig &> /tmp/crew_ldconfig || true
@@ -393,13 +432,13 @@ ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
-if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "122" )) && [[ "$ARCH" == "x86_64" ]]; then
-  echo_info "This Milestone (M${CHROMEOS_RELEASE_CHROME_MILESTONE}) needs to have libc.so.6 patched for the Chromebrew Glibc."
-  cp "/lib${LIB_SUFFIX}/libc.so.6" /tmp/libc.so.6.tmp
-  patchelf --add-needed libC.so.6 /tmp/libc.so.6.tmp
-  env -u LD_LIBRARY_PATH cp /tmp/libc.so.6.tmp "${CREW_PREFIX}/lib${LIB_SUFFIX}/libc.so.6"
-  rm /tmp/libc.so.6.tmp
-fi
+#if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "122" )) && [[ "$ARCH" == "x86_64" ]]; then
+  #echo_info "This Milestone (M${CHROMEOS_RELEASE_CHROME_MILESTONE}) needs to have libc.so.6 patched for the Chromebrew Glibc."
+  #cp "/lib${LIB_SUFFIX}/libc.so.6" /tmp/libc.so.6.tmp
+  #patchelf --add-needed libC.so.6 /tmp/libc.so.6.tmp
+  #env -u LD_LIBRARY_PATH cp /tmp/libc.so.6.tmp "${CREW_PREFIX}/lib${LIB_SUFFIX}/libc.so.6"
+  #rm /tmp/libc.so.6.tmp
+#fi
 
 echo_info 'Updating RubyGems...'
 gem sources -u
@@ -474,7 +513,10 @@ else
   # Set mtimes of files to when the file was committed.
   git-restore-mtime -sq 2>/dev/null
 
-  yes | crew install psmisc buildessential
+  CREW_REPO=https://github.com/${OWNER}/${REPO}.git CREW_BRANCH=${BRANCH} \
+    crew update && \
+    yes | crew upgrade
+  yes | crew install buildessential
   echo_info "Cleaning up older ruby gem versions...\n"
   gem cleanup
 fi
