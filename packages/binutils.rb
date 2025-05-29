@@ -1,22 +1,23 @@
 # Adapted in part from Arch Linux binutils PKGBUILD at:
 # https://gitlab.archlinux.org/archlinux/packaging/packages/binutils/-/blob/main/PKGBUILD
+require 'English'
 require 'package'
 
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  version '2.43.1-gcc14'
+  version "2.44-#{CREW_GCC_VER}-1"
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/binutils/binutils-#{version.split('-').first}.tar.bz2"
-  source_sha256 'becaac5d295e037587b63a42fad57fe3d9d7b83f478eb24b67f9eec5d0f1872f'
+  source_url "https://sourceware.org/pub/binutils/releases/binutils-#{version.split('-').first}.tar.zst"
+  source_sha256 '79cb120b39a195ad588cd354aed886249bfab36c808e746b30208d15271cc95c'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2054d452f15cb8b018453e863f04421ee5cec46da7af695ab279f0060ebbc00d',
-     armv7l: '2054d452f15cb8b018453e863f04421ee5cec46da7af695ab279f0060ebbc00d',
-       i686: '62db3f76719701daf87f4e299bfc033b8adeb39dea00a991b59a25a7b48a52e0',
-     x86_64: 'd457df70b8784a7e8ffcb641f377731d87846b8d269c4d5c8c94a1b2bf2ef361'
+    aarch64: '9013d3663a9970eae41f69debcc830b59f7e9bd7761c9688f802f3b05e523ff9',
+     armv7l: '9013d3663a9970eae41f69debcc830b59f7e9bd7761c9688f802f3b05e523ff9',
+       i686: '576fbc97b797ccaf84e24510316c4d36b45c3ab05c25fb60d421fe0b1a048cec',
+     x86_64: '098c27b3d5de040588870e22f5f839296aacf0833faa552b14e3c5698fc49b37'
   })
 
   depends_on 'elfutils' # R
@@ -44,7 +45,7 @@ class Binutils < Package
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30006
     Dir.mkdir 'build'
     Dir.chdir 'build' do
-      system "../configure #{CREW_OPTIONS} \
+      system "../configure #{CREW_CONFIGURE_OPTIONS} \
         --disable-bootstrap \
         --disable-gdb \
         --disable-gdbserver \
@@ -68,7 +69,8 @@ class Binutils < Package
         --with-pkgversion=Chromebrew \
         --with-system-zlib"
       system 'make configure-host'
-      system "make tooldir=#{CREW_PREFIX} || make -j 1"
+      system "make prefix=#{CREW_PREFIX} tooldir=#{CREW_PREFIX}"
+      system 'make -j1' if $CHILD_STATUS.exitstatus != 0
     end
   end
 

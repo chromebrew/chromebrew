@@ -96,7 +96,7 @@ fi
 # Default chromebrew repo values.
 : "${OWNER:=chromebrew}"
 : "${REPO:=chromebrew}"
-: "${BRANCH=pre_glibc_standalone}"
+: "${BRANCH=master}"
 
 # Chromebrew directories.
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
@@ -130,7 +130,7 @@ if [[ "$ARCH" == "x86_64" ]]; then
 fi
 
 # Package version string may include LIBC_VERSION.
-LIBC_VERSION=$(/lib"${CREW_LIB_SUFFIX}"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')
+[[ $BRANCH == 'pre_glibc_standalone' ]] && LIBC_VERSION=$(/lib"${CREW_LIB_SUFFIX}"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')
 
 # Warn users of the AMD segfault issue and allow them to work around it.
 # The easiest way to distinguish StoneyRidge platorms is to check for the FMA4
@@ -193,13 +193,27 @@ echo_out 'Set up the local package repo...'
 # Download the chromebrew repository.
 curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-BOOTSTRAP_PACKAGES='zstd_static upx patchelf lz4 zlib xzutils zstd zlib_ng gcc_lib crew_mvdir ruby git ca_certificates libyaml openssl'
+if [[ $BRANCH == 'pre_glibc_standalone' ]]; then
+  BOOTSTRAP_PACKAGES='zstd_static upx patchelf lz4 zlib xzutils zstd zlib_ng gcc_lib crew_mvdir ruby git ca_certificates libyaml openssl findutils psmisc'
+  # Older i686 systems.
+  [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' gcc_lib'
+else
+  # ncurses, readline, and bash are needed before ruby because our ruby
+  # invokes the architecture specific bash instead of using /bin/sh, which
+  # may be aarch64 when we are using an armv7l userspace. That wreaks
+  # havoc with our LD_PRELOAD implementation.
+  # ruby wants gcc_lib, so install our version build against our glibc
+  # first.
+  # psmisc provides pstree which is used by crew
+  # findutils provides find which is used by crew during installs.
+  BOOTSTRAP_PACKAGES='zstd_static glibc libxcrypt upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby git ca_certificates libyaml openssl gmp findutils psmisc'
+fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   # Recent Arm systems have a cut down system.
   (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) && [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 pcre2 uutils_coreutils'
   # shellcheck disable=SC2231
-  if [[ -d /usr/local/opt/glibc-libs ]] && ( [[ "${ARCH}" == "i686" ]] || (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) ); then
+  if [[ $BRANCH != 'pre_glibc_standalone' ]] && ( [[ "${ARCH}" == "i686" ]] || (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) ); then
     if [[ "${ARCH}" == "armv7l" ]]; then
       curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-aarch64.so
       if echo "be43191d354bb8be56c20a067581db15bc23927192e833c76ebddf97946393d3" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
@@ -215,7 +229,7 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
       fi
     elif [[ "${ARCH}" == "i686" ]];then
       curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-i686.so
-      if echo "db67618300bde3d70c01e76f83bf739722c0701e7af4ea34baf8ea71dfab3773" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
+      if echo "bdb7671e2fab86d95f57ae9f3cf397c4293058971bd0bffd15e68ba1fc84d5ef" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
         chmod +x "${CREW_PREFIX}"/lib/crew-preload.so
       else
         echo_error "i686 crew-preload.so download failed!" && exit 1
@@ -231,10 +245,7 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   fi
 fi
 
-# Older i686 systems.
-# [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' gcc_lib'
-
-if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
+if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ $BRANCH == 'pre_glibc_standalone' ]]; then
   # shellcheck disable=SC2231
   for i in /lib${CREW_LIB_SUFFIX}/libc.so*
   do
@@ -381,8 +392,14 @@ echo_info "Downloading Bootstrap packages:\n${BOOTSTRAP_PACKAGES}"
 # Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
 # x86_64, and the mandb postinstall doesn't fail in newer arm
 # containers.
-echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}" >> "$CREW_PREFIX"/etc/env.d/00-library
-export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
+#
+if [[ "${ARCH}" == "armv7l" ]] ; then
+  # Handle arm multarch.
+  export LD_LIBRARY_PATH="$CREW_PREFIX/lib64:/usr/lib64:/lib64:$CREW_PREFIX/lib${LIB_SUFFIX}:/usr/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
+else
+  export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}:/usr/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
+fi
+echo -e "# Generated by install.sh\nLD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> "$CREW_PREFIX"/etc/env.d/00-library
 
 # Extract, install and register packages.
 for package in $BOOTSTRAP_PACKAGES; do
@@ -456,8 +473,13 @@ install_ruby_gem ${BOOTSTRAP_GEMS}
 # complain about missing certs, resulting in failed https connections.
 echo_info "Installing crew_profile_base...\n"
 yes | crew install crew_profile_base
+
+if [[ -d /usr/local/opt/glibc-libs ]]; then
+  export CREW_PRELOAD_VERBOSE=1
+  export LD_PRELOAD=crew-preload.so
+fi
 # shellcheck disable=SC1090
-ARCH="$ARCH" source ~/.bashrc
+trap - ERR && ARCH="$ARCH" source ~/.bashrc && set_trap
 
 echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core
@@ -506,7 +528,9 @@ else
   CREW_REPO=https://github.com/${OWNER}/${REPO}.git CREW_BRANCH=${BRANCH} \
     crew update && \
     yes | crew upgrade
-  yes | crew install buildessential
+  if [[ $BRANCH == 'pre_glibc_standalone' ]]; then
+    yes | crew install buildessential
+  fi
   echo_info "Cleaning up older ruby gem versions...\n"
   gem cleanup
 fi
