@@ -18,7 +18,7 @@ class Core < Package
   depends_on 'command_not_found'
   depends_on 'crew_mvdir'
   depends_on 'crew_profile_base'
-  depends_on 'crew_sudo' if CHROMEOS_RELEASE.to_i > 116
+  depends_on 'crew_sudo' if CHROMEOS_RELEASE.to_i > 116 && !CREW_IN_CONTAINER
   depends_on 'e2fsprogs'
   depends_on 'elfutils'
   depends_on 'expat'
@@ -75,6 +75,8 @@ class Core < Package
   depends_on 'pcre2'
   depends_on 'perl'
   depends_on 'popt'
+  # Provides pstree, which is used within crew.
+  depends_on 'psmisc'
   depends_on 'py3_wheel'
   depends_on 'python3'
   depends_on 'readline'
