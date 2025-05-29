@@ -4,7 +4,7 @@ require 'convenience_functions'
 class Opera < Package
   description 'Opera is a multi-platform web browser based on Chromium and developed by Opera Software.'
   homepage 'https://www.opera.com/'
-  version '119.0.5497.38'
+  version '119.0.5497.56'
   license 'OPERA-2018'
   compatibility 'x86_64'
   min_glibc '2.29'
@@ -12,7 +12,7 @@ class Opera < Package
   # faster apt mirror, but only works when downloading latest version of opera
   # source_url "https://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
   source_url "https://deb.opera.com/opera-stable/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
-  source_sha256 '449ca1da6d00527b4aa428c3ed23b6a34eeb38be3e03fd84aa3764e5543e8ac0'
+  source_sha256 'adbcd5a060d48942c24e58ad9172d5cece076988ce8d903ad5332ec7987e8c77'
 
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'
