@@ -137,15 +137,15 @@ jobs:
       matrix:
         arch: [i686, x86_64, armv7l]
         runner:
-          - [self-hosted, X64]
-          - [self-hosted, ARM]
+          - ubuntu-24.04
+          - ubuntu-24.04-arm
         exclude:
           - arch: x86_64
-            runner: [self-hosted, ARM]
+            runner: ubuntu-24.04-arm
           - arch: i686
-            runner: [self-hosted, ARM]
+            runner: ubuntu-24.04-arm
           - arch: armv7l
-            runner: [self-hosted, X64]
+            runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
     needs: setup
     env:
