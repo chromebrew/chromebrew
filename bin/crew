@@ -908,6 +908,8 @@ def fix_interpreter_path(dir)
       # Decompress the binary if compressed.
       system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL, exception: false
       # Check for existing interpreter.
+      next if CREW_GLIBC_INTERPRETER.blank?
+
       @interpreter, _read_interpreter_stderr_s, @read_interpreter_status = Open3.capture3("patchelf --print-interpreter #{execfiletopatch}")
       # Set interpreter unless the interpreter read failed or is already
       # set appropriately.
