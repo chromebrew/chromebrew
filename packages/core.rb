@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '3.11'
+  version '3.12'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -77,6 +77,8 @@ class Core < Package
   depends_on 'pcre2'
   depends_on 'perl'
   depends_on 'popt'
+  # Provides pstree, which is used within crew.
+  depends_on 'psmisc'
   depends_on 'py3_wheel'
   depends_on 'python3'
   depends_on 'readline'
