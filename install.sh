@@ -3,6 +3,11 @@
 # Exit on fail.
 set -eE
 
+# Default chromebrew repo values.
+: "${OWNER:=chromebrew}"
+: "${REPO:=chromebrew}"
+: "${BRANCH=master}"
+
 RESET='\e[0m'
 
 # Simplify colors and print errors to stderr (2).
@@ -94,11 +99,6 @@ if [ "$(stat -c '%u' "${CREW_PREFIX}")" != "$(id -u)" ]; then
   sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 fi
 
-# Default chromebrew repo values.
-: "${OWNER:=chromebrew}"
-: "${REPO:=chromebrew}"
-: "${BRANCH:=master}"
-
 # Chromebrew directories.
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
 CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
@@ -127,8 +127,11 @@ if [[ "${ARCH}" = "armv8l" ]] || [[ "${ARCH}" = "aarch64" ]]; then
 fi
 
 if [[ "$ARCH" == "x86_64" ]]; then
-  LIB_SUFFIX='64'
+  CREW_LIB_SUFFIX='64'
 fi
+
+# Package version string may include LIBC_VERSION.
+[[ $BRANCH == 'pre_glibc_standalone' ]] && LIBC_VERSION=$(/lib"${CREW_LIB_SUFFIX}"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')
 
 # Warn users of the AMD segfault issue and allow them to work around it.
 # The easiest way to distinguish StoneyRidge platorms is to check for the FMA4
@@ -177,7 +180,7 @@ function curl_wrapper () {
 }
 
 # This will create the directories.
-crew_folders="bin cache doc docbook include lib/crew/packages lib$LIB_SUFFIX libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
+crew_folders="bin cache doc docbook include lib/crew/packages lib${CREW_LIB_SUFFIX} libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
 # shellcheck disable=SC2086
 # Quoting crew_folders leads to breakage.
 (cd "${CREW_PREFIX}" && mkdir -p ${crew_folders})
@@ -191,22 +194,66 @@ echo_out 'Set up the local package repo...'
 # Download the chromebrew repository.
 curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-# ncurses, readline, and bash are needed before ruby because our ruby
-# invokes the architecture specific bash instead of using /bin/sh, which
-# may be aarch64 when we are using an armv7l userspace. That wreaks
-# havoc with our LD_PRELOAD implementation.
-# ruby wants gcc_lib, so install our version build against our glibc
-# first.
-BOOTSTRAP_PACKAGES='zstd_static glibc libxcrypt upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby git ca_certificates libyaml openssl gmp'
+# Note that ordering of BOOTSTRAP_PACKAGES matters!
+if [[ $BRANCH == 'pre_glibc_standalone' ]]; then
+  BOOTSTRAP_PACKAGES='zstd_static upx patchelf lz4 zlib xzutils zstd zlib_ng gcc_lib crew_mvdir ruby git ca_certificates libyaml openssl findutils psmisc'
+else
+  # ncurses, readline, and bash are needed before ruby because our ruby
+  # invokes the architecture specific bash instead of using /bin/sh, which
+  # may be aarch64 when we are using an armv7l userspace. That wreaks
+  # havoc with our LD_PRELOAD implementation.
+  # ruby wants gcc_lib, so install our version build against our glibc
+  # first.
+  # psmisc provides pstree which is used by crew
+  # findutils provides find which is used by crew during installs.
+  BOOTSTRAP_PACKAGES='zstd_static glibc libxcrypt upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby git ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils'
+fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
+  # Recent Arm systems have a cut down system.
+  (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) && [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 pcre2'
   # shellcheck disable=SC2231
-  if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
-    # Recent Arm systems have a cut down system.
-    if [[ "${ARCH}" == "armv7l" ]];then
-      BOOTSTRAP_PACKAGES+=' bzip2 pcre2 uutils_coreutils'
+  if [[ $BRANCH != 'pre_glibc_standalone' ]] && ( [[ "${ARCH}" == "i686" ]] || (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) ); then
+    if [[ "${ARCH}" == "armv7l" ]]; then
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-aarch64.so
+      if echo "e0906586ae49176f086e2e2afd127bc7e5b8dab3f348e26acf8c68fe172a6473" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
+        chmod +x "${CREW_PREFIX}"/lib64/crew-preload.so
+      else
+        echo_error "aarch64 crew-preload.so download failed!" && exit 1
+      fi
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-armv7l.so
+      if echo "fd616c27b51411178057c78fb5bf93069ca0292532cda9e6f78b3fe129f6ddeb" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
+        chmod +x "${CREW_PREFIX}"/lib/crew-preload.so
+      else
+        echo_error "armv7l crew-preload.so download failed!" && exit 1
+      fi
+    elif [[ "${ARCH}" == "i686" ]];then
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-i686.so
+      if echo "03764fba6b8dd0e4abad9bbf040426acb51a66b84be6e833999ee31e73a4fc3f" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
+        chmod +x "${CREW_PREFIX}"/lib/crew-preload.so
+      else
+        echo_error "i686 crew-preload.so download failed!" && exit 1
+      fi
+    elif [[ "${ARCH}" == "x86_64" ]];then
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-x86_64.so
+      if echo "b5f8c4d8b82c8c74799bec647687b6510eb405564e725f15ef3ff62a7c0e256e" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
+        chmod +x "${CREW_PREFIX}"/lib64/crew-preload.so
+      else
+        echo_error "x86_64 crew-preload.so download failed!" && exit 1
+      fi
     fi
   fi
+fi
+
+if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ $BRANCH == 'pre_glibc_standalone' ]]; then
+  # shellcheck disable=SC2231
+  for i in /lib${CREW_LIB_SUFFIX}/libc.so*
+  do
+    sudo cp "$i" "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/"
+    libcname=$(basename "$i")
+    sudo chown chronos "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/${libcname}"
+    sudo chmod 644 "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/${libcname}"
+  done
 fi
 
 # Create the device.json file.
@@ -310,25 +357,8 @@ function extract_install () {
       fi
     fi
 
-    echo_intra "Installing ${1}..."
+    echo_intra "Installing ${1} ..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
-
-    if [[ "${1}" == 'glibc' ]]; then
-      # update ld.so cache
-      ldconfig
-    else
-      # decompress and switch to our glibc for existing binaries
-      if command -v upx &> /dev/null; then
-        echo_intra "Running upx on ${1}..."
-        grep "/usr/local/\(bin\|lib\|lib${LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
-      fi
-
-      if command -v patchelf &> /dev/null; then
-        echo_intra "Running patchelf on ${1}..."
-        grep '/usr/local/bin' < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${CREW_PREFIX}/bin/ld.so" 2> /dev/null || true
-      fi
-    fi
-
     mv ./dlist "${CREW_META_PATH}/${1}.directorylist"
     mv ./filelist "${CREW_META_PATH}/${1}.filelist"
 }
@@ -362,6 +392,7 @@ echo_info "Downloading Bootstrap packages:\n${BOOTSTRAP_PACKAGES}"
 # Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
 # x86_64, and the mandb postinstall doesn't fail in newer arm
 # containers.
+#
 if [[ "${ARCH}" == "armv7l" ]] ; then
   # Handle arm multarch.
   export LD_LIBRARY_PATH="$CREW_PREFIX/lib64:/usr/lib64:/lib64:$CREW_PREFIX/lib${LIB_SUFFIX}:/usr/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
@@ -393,9 +424,28 @@ for package in $BOOTSTRAP_PACKAGES; do
   done
 done
 
+if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
+  # shellcheck disable=SC2231
+  if [[ -d /usr/local/opt/glibc-libs ]] && ( [[ "${ARCH}" == "i686" ]] || (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) ); then
+    if [[ "${ARCH}" == "armv7l" ]]; then
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-aarch64.so
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-armv7l.so
+    elif [[ "${ARCH}" == "i686" ]];then
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-i686.so
+    elif [[ "${ARCH}" == "x86_64" ]];then
+      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-x86_64.so
+    fi
+  fi
+fi
+
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
 sudo ldconfig &> /tmp/crew_ldconfig || true
+
+if [[ -d /usr/local/opt/glibc-libs ]]; then
+# shellcheck disable=SC2034  
+  LD_PRELOAD=crew-preload.so
+fi
 
 echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
@@ -428,6 +478,7 @@ install_ruby_gem ${BOOTSTRAP_GEMS}
 # complain about missing certs, resulting in failed https connections.
 echo_info "Installing crew_profile_base...\n"
 yes | crew install crew_profile_base
+
 # shellcheck disable=SC1090
 trap - ERR && source ~/.bashrc && set_trap
 
@@ -475,7 +526,10 @@ else
   # Set mtimes of files to when the file was committed.
   git-restore-mtime -sq 2>/dev/null
 
-  OWNER=${OWNER} REPO=${REPO} crew update && yes | crew upgrade
+  CREW_REPO=https://github.com/${OWNER}/${REPO}.git CREW_BRANCH=${BRANCH} \
+    crew update && \
+    yes | crew upgrade
+
   echo_info "Cleaning up older ruby gem versions...\n"
   gem cleanup
 fi
