@@ -14,8 +14,8 @@ class Crew_preload < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '56cdef1fbaf0fc792f3612dd2356fc0fd96e35babaa2afcfc48069183b81c203',
-     armv7l: '56cdef1fbaf0fc792f3612dd2356fc0fd96e35babaa2afcfc48069183b81c203',
+    aarch64: 'cbfad316ea4bc536fef57f0f104e05baca87288b917b53cc84f1614c786bf134',
+     armv7l: 'cbfad316ea4bc536fef57f0f104e05baca87288b917b53cc84f1614c786bf134',
        i686: 'b19f235f07480a309d06ebd0107a9cb510ab01ac5ac975c734be62ab156d9da1',
      x86_64: 'ff4fb4407dd4337b74606272cab7f1e8cdafa0c99e9bb7e07485c503bbbac267'
   })
@@ -30,7 +30,7 @@ class Crew_preload < Package
     case ARCH
     when 'aarch64', 'armv7l'
       downloader 'https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-aarch64.so', 'e0906586ae49176f086e2e2afd127bc7e5b8dab3f348e26acf8c68fe172a6473'
-      downloader 'https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-armv7l.so', 'fd616c27b51411178057c78fb5bf93069ca0292532cda9e6f78b3fe129f6ddeb'
+      downloader 'https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-armv7l.so', '24b084f4643d51c83b2c16f3383bceced592aefd7def5f6b5c724fdfd4eb4a7e'
     when 'i686'
       downloader 'https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-i686.so', '03764fba6b8dd0e4abad9bbf040426acb51a66b84be6e833999ee31e73a4fc3f'
     when 'x86_64'
