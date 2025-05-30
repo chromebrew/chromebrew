@@ -216,13 +216,13 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   if [[ $BRANCH != 'pre_glibc_standalone' ]] && ( [[ "${ARCH}" == "i686" ]] || (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) ); then
     if [[ "${ARCH}" == "armv7l" ]]; then
       curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-aarch64.so
-      if echo "dd5d89e3a1d2ba4b873d7e6d61ef4c90960d29b6562e6f732f6de103e6dc34ee" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
+      if echo "e0906586ae49176f086e2e2afd127bc7e5b8dab3f348e26acf8c68fe172a6473" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
         chmod +x "${CREW_PREFIX}"/lib64/crew-preload.so
       else
         echo_error "aarch64 crew-preload.so download failed!" && exit 1
       fi
       curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-armv7l.so
-      if echo "24b084f4643d51c83b2c16f3383bceced592aefd7def5f6b5c724fdfd4eb4a7e" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
+      if echo "fd616c27b51411178057c78fb5bf93069ca0292532cda9e6f78b3fe129f6ddeb" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
         chmod +x "${CREW_PREFIX}"/lib/crew-preload.so
       else
         echo_error "armv7l crew-preload.so download failed!" && exit 1
@@ -236,7 +236,7 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
       fi
     elif [[ "${ARCH}" == "x86_64" ]];then
       curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-x86_64.so
-      if echo "9374f6c80da4c2d763dfc0a075a16cff93a1ad3b31caa26f03ab2429be51bb71" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
+      if echo "b5f8c4d8b82c8c74799bec647687b6510eb405564e725f15ef3ff62a7c0e256e" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
         chmod +x "${CREW_PREFIX}"/lib64/crew-preload.so
       else
         echo_error "x86_64 crew-preload.so download failed!" && exit 1
@@ -529,9 +529,7 @@ else
   CREW_REPO=https://github.com/${OWNER}/${REPO}.git CREW_BRANCH=${BRANCH} \
     crew update && \
     yes | crew upgrade
-  if [[ $BRANCH == 'pre_glibc_standalone' ]]; then
-    yes | crew install buildessential
-  fi
+
   echo_info "Cleaning up older ruby gem versions...\n"
   gem cleanup
 fi
