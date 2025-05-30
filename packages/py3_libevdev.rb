@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_libevdev < Pip
   description 'Libevdev is a Python wrapper around the libevdev C library.'
   homepage 'https://python-libevdev.readthedocs.io/'
-  version "0.11-#{CREW_PY_VER}"
+  version "0.12-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
