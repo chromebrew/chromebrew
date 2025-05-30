@@ -2,6 +2,8 @@
 # systems to handle the aarch64 crew-preload.so being installed to
 # handle the default system aarch64 binaries now present on recent
 # multiarch aarch64/armv7l based ARM ChromeOS milestones.
+# These binaries are built as per the instructions at
+# https://github.com/chromebrew/crew-package-glibc/tree/main/crew-preload
 require 'package'
 
 class Crew_preload < Package
