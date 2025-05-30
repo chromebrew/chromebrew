@@ -262,8 +262,9 @@ jobs:
             # Use docker-in-docker shim to mount volume inside docker.
             # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
             # ghcr.io/felipecrs/dond-shim:latest \
-            (cd /tmp || exit ; curl -OLf https://github.com/felipecrs/docker-on-docker-shim/raw/refs/tags/v0.7.1/dond ; chmod +x /tmp/dond )
-            /tmp/dond run \
+            #(cd /tmp || exit ; curl -OLf https://github.com/felipecrs/docker-on-docker-shim/raw/refs/tags/v0.7.1/dond ; chmod +x /tmp/dond )
+            #/tmp/dond run \
+            docker run \
               --rm \
               --platform "${PLATFORM}" \
               -e PUID=1000 \
