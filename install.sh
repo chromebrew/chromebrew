@@ -206,43 +206,12 @@ else
   # first.
   # psmisc provides pstree which is used by crew
   # findutils provides find which is used by crew during installs.
-  BOOTSTRAP_PACKAGES='zstd_static glibc libxcrypt upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby git ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils'
+  BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload libxcrypt upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby git ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils'
 fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   # Recent Arm systems have a cut down system.
   (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) && [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 pcre2'
-  # shellcheck disable=SC2231
-  if [[ $BRANCH != 'pre_glibc_standalone' ]] && ( [[ "${ARCH}" == "i686" ]] || (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) ); then
-    if [[ "${ARCH}" == "armv7l" ]]; then
-      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-aarch64.so
-      if echo "e0906586ae49176f086e2e2afd127bc7e5b8dab3f348e26acf8c68fe172a6473" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
-        chmod +x "${CREW_PREFIX}"/lib64/crew-preload.so
-      else
-        echo_error "aarch64 crew-preload.so download failed!" && exit 1
-      fi
-      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-armv7l.so
-      if echo "fd616c27b51411178057c78fb5bf93069ca0292532cda9e6f78b3fe129f6ddeb" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
-        chmod +x "${CREW_PREFIX}"/lib/crew-preload.so
-      else
-        echo_error "armv7l crew-preload.so download failed!" && exit 1
-      fi
-    elif [[ "${ARCH}" == "i686" ]];then
-      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-i686.so
-      if echo "03764fba6b8dd0e4abad9bbf040426acb51a66b84be6e833999ee31e73a4fc3f" "${CREW_PREFIX}"/lib/crew-preload.so | sha256sum -c - ; then
-        chmod +x "${CREW_PREFIX}"/lib/crew-preload.so
-      else
-        echo_error "i686 crew-preload.so download failed!" && exit 1
-      fi
-    elif [[ "${ARCH}" == "x86_64" ]];then
-      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-x86_64.so
-      if echo "b5f8c4d8b82c8c74799bec647687b6510eb405564e725f15ef3ff62a7c0e256e" "${CREW_PREFIX}"/lib64/crew-preload.so | sha256sum -c - ; then
-        chmod +x "${CREW_PREFIX}"/lib64/crew-preload.so
-      else
-        echo_error "x86_64 crew-preload.so download failed!" && exit 1
-      fi
-    fi
-  fi
 fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ $BRANCH == 'pre_glibc_standalone' ]]; then
@@ -423,20 +392,6 @@ for package in $BOOTSTRAP_PACKAGES; do
     fi
   done
 done
-
-if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
-  # shellcheck disable=SC2231
-  if [[ -d /usr/local/opt/glibc-libs ]] && ( [[ "${ARCH}" == "i686" ]] || (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) ); then
-    if [[ "${ARCH}" == "armv7l" ]]; then
-      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-aarch64.so
-      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-armv7l.so
-    elif [[ "${ARCH}" == "i686" ]];then
-      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-i686.so
-    elif [[ "${ARCH}" == "x86_64" ]];then
-      curl_wrapper --create-dirs -o "${CREW_PREFIX}"/lib64/crew-preload.so -Lf https://github.com/chromebrew/crew-package-glibc/raw/refs/heads/main/prebuilt/crew-preload-x86_64.so
-    fi
-  fi
-fi
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
