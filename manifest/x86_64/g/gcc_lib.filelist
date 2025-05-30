@@ -20,6 +20,9 @@
 /usr/local/lib64/libgfortran.so
 /usr/local/lib64/libgfortran.so.5
 /usr/local/lib64/libgfortran.so.5.0.0
+/usr/local/lib64/libgo.so
+/usr/local/lib64/libgo.so.23
+/usr/local/lib64/libgo.so.23.0.0
 /usr/local/lib64/libgomp.so
 /usr/local/lib64/libgomp.so.1
 /usr/local/lib64/libgomp.so.1.0.0
