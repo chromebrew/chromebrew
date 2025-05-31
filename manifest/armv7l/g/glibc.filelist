@@ -778,6 +778,7 @@
 /usr/local/lib/libthread_db.so
 /usr/local/lib/libutil.a
 /usr/local/lib/locale/locale-archive
+/usr/local/lib64/crew-preload.so
 /usr/local/libexec/getconf/POSIX_V6_ILP32_OFF32
 /usr/local/libexec/getconf/POSIX_V6_ILP32_OFFBIG
 /usr/local/libexec/getconf/POSIX_V7_ILP32_OFF32

@@ -1,9 +1,18 @@
+# This package creates a /usr/local/lib64 directory on armv7l/aarch64
+# systems to handle the aarch64 crew-preload.so being installed to
+# handle the default system aarch64 binaries now present on recent
+# multiarch aarch64/armv7l based ARM ChromeOS milestones.
+
+# Also, currently the i686 build has issues with this error that still
+# needs addressing:
+# sh: symbol lookup error: /usr/local/lib/crew-preload.so: undefined symbol: stat
+
 require 'package'
 
 class Glibc < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
-  version '2.41-4'
+  version '2.41-5'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/glibc/glibc-#{version.partition('-')[0]}.tar.xz"
@@ -11,10 +20,10 @@ class Glibc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '609104350dd5e50382472f4409d57ceab099d65839adf891b77621adf447f1f1',
-     armv7l: '609104350dd5e50382472f4409d57ceab099d65839adf891b77621adf447f1f1',
-       i686: '4b7a2d8025430f183b85d982924a9764b31c485e4c8938753858465853ba25d3',
-     x86_64: '5d5da0128e3054020c507d883d5f27c0b8a978263b799f068c845393b5fffe17'
+    aarch64: '5e1608fd4894f896ec6af2f623b4279c55f1e8fdad80084d950bf077bfb0f611',
+     armv7l: '5e1608fd4894f896ec6af2f623b4279c55f1e8fdad80084d950bf077bfb0f611',
+       i686: 'd8e0bbe4254285307f1bda67031b6836007a389adc48580eba917836230fb06a',
+     x86_64: 'f4783640d5dc8be2aa68e86bc394d482c91fb0607d6dc51e1297f2620c0de030'
   })
 
   depends_on 'gawk'    => :build
@@ -29,7 +38,6 @@ class Glibc < Package
 
   def self.patch
     system "git clone --depth=1 https://github.com/chromebrew/crew-package-glibc -b #{version}"
-    system 'filefix'
 
     Dir.glob('crew-package-glibc/patches/*.patch') do |patch|
       puts "Applying #{patch}...".yellow
@@ -42,14 +50,14 @@ class Glibc < Package
       -DCREW_PREFIX=\\"#{CREW_PREFIX}\\"
       -DCREW_GLIBC_PREFIX=\\"#{CREW_GLIBC_PREFIX}\\"
       -DCREW_GLIBC_INTERPRETER=\\"#{CREW_GLIBC_INTERPRETER}\\"
-      -DSYSTEM_GLIBC_INTERPRETER=\\"/#{ARCH_LIB}/#{File.basename(CREW_GLIBC_INTERPRETER)}\\"
     ]
 
     build_env = {
       CFLAGS:   "-O3 -pipe -fPIC -fno-lto #{cc_macro_list.join(' ')}",
       CXXFLAGS: "-O3 -pipe -fPIC -fno-lto #{cc_macro_list.join(' ')}",
-      LDFLAGS:  '-fno-lto'
-    }
+      LDFLAGS:  '-fno-lto',
+      LD_PRELOAD: ''
+    }.transform_keys(&:to_s)
 
     config_opts = %W[
       --prefix=#{CREW_PREFIX}
@@ -82,8 +90,10 @@ class Glibc < Package
         rootsbindir=#{CREW_PREFIX}/bin
       EOF
 
-      system build_env.transform_keys(&:to_s), '../configure', *config_opts, no_preload_hacks: true
-      system "make PARALLELMFLAGS='-j #{CREW_NPROC}'", no_preload_hacks: true
+      system build_env, '../configure', *config_opts, no_preload_hacks: true
+      # Without using Kernel.system make segfaults.
+      Kernel.system build_env, "make PARALLELMFLAGS='-j #{CREW_NPROC}'", exception: false
+      Kernel.system 'make -j1 || make -j1 || make -j1 || make -j1' if $CHILD_STATUS.exitstatus != 0
     end
 
     arch_flag = case ARCH
@@ -106,6 +116,8 @@ class Glibc < Package
 
   def self.install
     FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/etc/env.d #{CREW_DEST_PREFIX}/etc/ld.so.conf.d #{CREW_DEST_LIB_PREFIX}]
+    # This is for the aarch64 crew-preload on handle multiarch ARM systems.
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/lib64] if %w[aarch64 armv7l].include?(ARCH)
 
     system "make DESTDIR=#{CREW_DEST_DIR} install", chdir: 'builddir'
     system "make DESTDIR=#{CREW_DEST_DIR} localedata/install-locales", chdir: 'builddir'
@@ -121,8 +133,10 @@ class Glibc < Package
       include /etc/ld.so.conf
     EOF
 
-    # install crew-audit
+    # install crew-preload
     FileUtils.install 'crew-package-glibc/crew-preload.so', File.join(CREW_DEST_LIB_PREFIX, 'crew-preload.so'), mode: 0o755
+    # Install crew-preload to handle multiarch ARM systems.
+    FileUtils.install 'crew-package-glibc/prebuilt/crew-preload-aarch64.so', File.join(CREW_DEST_PREFIX, 'lib64/crew-preload.so'), mode: 0o755 if %w[aarch64 armv7l].include?(ARCH)
   end
 
   def self.postinstall

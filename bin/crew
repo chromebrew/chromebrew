@@ -842,6 +842,8 @@ def prepare_package(destdir)
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
       next if %w[. ..].include?(filename)
 
+      # Whitelist crew-preload on multiarch ARM systems.
+      next if %w[lib64/crew-preload.so].include?(filename) && %w[aarch64 armv7l].include?(ARCH)
       unless fhs_compliant_prefix.include?(filename)
         if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY || @pkg.no_fhs?
           puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
@@ -890,7 +892,7 @@ end
 def fix_interpreter_path(dir)
   # Do not set interpreter for non-musl, as this can break apps if there
   # is an issue with the crew glibc.
-  return if !@pkg.nil? && (@pkg.is_musl? || %w[patchelf upx].include?(@pkg.name))
+  return if !@pkg.nil? && (@pkg.is_musl? || %w[crew_preload patchelf upx].include?(@pkg.name))
 
   Dir.chdir dir do
     puts 'Running upx to uncompress binaries and patchelf to patch binary interpreter paths.'.lightblue
