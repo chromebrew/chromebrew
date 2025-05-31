@@ -2,7 +2,7 @@ require 'buildsystems/rust'
 
 class Edit < RUST
   description 'A simple editor for simple needs.'
-  homepage 'https://github.com/microsoft/edit.'
+  homepage 'https://github.com/microsoft/edit'
   version '1.0.0-1cbb4cb'
   license 'MIT'
   compatibility 'all'
