@@ -206,7 +206,7 @@ else
   # first.
   # psmisc provides pstree which is used by crew
   # findutils provides find which is used by crew during installs.
-  BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload libxcrypt upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby git ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils'
+  BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby git ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils'
 fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
