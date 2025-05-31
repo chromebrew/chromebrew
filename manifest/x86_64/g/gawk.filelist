@@ -1,5 +1,5 @@
 /usr/local/bin/gawk
-/usr/local/bin/gawk-5.3.1
+/usr/local/bin/gawk-5.3.2
 /usr/local/bin/gawkbug
 /usr/local/etc/profile.d/gawk.csh
 /usr/local/etc/profile.d/gawk.sh
@@ -78,6 +78,7 @@
 /usr/local/share/locale/ro/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/sr/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/sv/LC_MESSAGES/gawk.mo
+/usr/local/share/locale/tr/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/vi/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gawk.mo
