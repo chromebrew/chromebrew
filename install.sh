@@ -328,6 +328,23 @@ function extract_install () {
 
     echo_intra "Installing ${1} ..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
+
+    if [[ "${1}" == 'glibc' ]] || [[ "${1}" == 'crew_preload' ]]; then
+      # update ld.so cache
+      ldconfig
+    elif [[ -d /usr/local/opt/glibc-libs ]]; then
+      # decompress and switch to our glibc for existing binaries
+      if command -v upx &> /dev/null; then
+        echo_intra "Running upx on ${1}..."
+        grep "/usr/local/\(bin\|lib\|lib${LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
+      fi
+
+      if command -v patchelf &> /dev/null; then
+        echo_intra "Running patchelf on ${1}..."
+        grep '/usr/local/bin' < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${CREW_PREFIX}/bin/ld.so" 2> /dev/null || true
+      fi
+    fi
+
     mv ./dlist "${CREW_META_PATH}/${1}.directorylist"
     mv ./filelist "${CREW_META_PATH}/${1}.filelist"
 }
