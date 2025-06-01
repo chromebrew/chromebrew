@@ -3,11 +3,6 @@
 # Exit on fail.
 set -eE
 
-# Default chromebrew repo values.
-: "${OWNER:=chromebrew}"
-: "${REPO:=chromebrew}"
-: "${BRANCH=master}"
-
 RESET='\e[0m'
 
 # Simplify colors and print errors to stderr (2).
@@ -64,6 +59,11 @@ if [ -f /etc/lsb-release ]; then
 else
   echo_info "Unable to detect system information, installation will continue."
 fi
+
+# Default chromebrew repo values.
+: "${OWNER:=chromebrew}"
+: "${REPO:=chromebrew}}"
+: "${BRANCH=master}"
 
 # Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
 # Check if the user is on ChromeOS v117+ and not in the VT-2 console, as sudo will not work.
