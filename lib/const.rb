@@ -54,7 +54,18 @@ end
 
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
-CREW_ESSENTIAL_PACKAGES ||= %w[bash crew_preload crew_profile_base gcc_lib glibc gmp ncurses readline ruby zlib zlib_ng zstd]
+CREW_ESSENTIAL_PACKAGES ||= %W[
+  bash crew_profile_base gcc_lib gmp ncurses readline ruby zlib zlib_ng zstd
+  #{
+  if LIBC_VERSION.to_f > 2.34
+    crew_preload
+    "#{File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_lib#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_lib#{LIBC_VERSION.delete('.')}" : ''}
+   #{File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''}"
+  else
+    File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''
+  end
+}
+]
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 
