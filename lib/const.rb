@@ -3,7 +3,7 @@
 require 'etc'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.61.7' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.61.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -56,15 +56,16 @@ end
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
 CREW_ESSENTIAL_PACKAGES ||= %W[
   bash crew_profile_base gcc_lib gmp ncurses readline ruby zlib zlib_ng zstd
-  #{
-  if LIBC_VERSION.to_f > 2.34
-    "#{File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_lib#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_lib#{LIBC_VERSION.delete('.')}" : ''}
+  #{CREW_GLIBC_INTERPRETER.nil? ? '' : 'crew_preload'}
+  #{CREW_GLIBC_INTERPRETER.nil? ? '' : 'glibc'}
+  #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
+       "#{File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_lib#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_lib#{LIBC_VERSION.delete('.')}" : ''}
    #{File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''}"
-  else
-    File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''
-  end
-}
-]
+     else
+       File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''
+     end
+  }
+].reject!(&:empty?)
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 
