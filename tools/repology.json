@@ -1091,7 +1091,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.78.102",
+    "version": "1.79.118",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1947,7 +1947,7 @@
     "name": "crew_profile_base",
     "description": "Crew-profile-base sets up Chromebrew's environment capabilities.",
     "homepage": "https://github.com/chromebrew/crew-profile-base",
-    "version": "0.0.29",
+    "version": "0.0.31",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -2626,7 +2626,7 @@
   {
     "name": "edit",
     "description": "A simple editor for simple needs.",
-    "homepage": "https://github.com/microsoft/edit.",
+    "homepage": "https://github.com/microsoft/edit",
     "version": "1.0.0",
     "license": "MIT",
     "compatibility": "all"
@@ -3131,7 +3131,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "138.0.4",
+    "version": "139.0",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3755,7 +3755,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "523.0.1",
+    "version": "524.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -4587,7 +4587,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "136.0.7103.113-1",
+    "version": "137.0.7151.55-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -9275,7 +9275,7 @@
     "name": "lsb_release",
     "description": "Linux Standard Base",
     "homepage": "https://wiki.linuxfoundation.org/lsb/start",
-    "version": "1.4-3",
+    "version": "1.4-4",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -9883,7 +9883,7 @@
     "name": "mold",
     "description": "A Modern Linker",
     "homepage": "https://github.com/rui314/mold",
-    "version": "2.39.1",
+    "version": "2.40.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -11235,7 +11235,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "119.0.5497.38",
+    "version": "119.0.5497.56",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -12827,7 +12827,7 @@
     "name": "py3_cryptography",
     "description": "Cryptography provides cryptographic recipes and primitives to Python developers.",
     "homepage": "https://cryptography.io/",
-    "version": "45.0.2",
+    "version": "45.0.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13043,7 +13043,7 @@
     "name": "py3_hatch_vcs",
     "description": "A plugin for Hatch that uses your preferred version control system.",
     "homepage": "https://github.com/ofek/hatch-vcs",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13211,7 +13211,7 @@
     "name": "py3_libevdev",
     "description": "Libevdev is a Python wrapper around the libevdev C library.",
     "homepage": "https://python-libevdev.readthedocs.io/",
-    "version": "0.11",
+    "version": "0.12",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13251,7 +13251,7 @@
     "name": "py3_markitdown",
     "description": "Python tool for converting files and office documents to Markdown.",
     "homepage": "https://github.com/microsoft/markitdown",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13339,7 +13339,7 @@
     "name": "py3_nuitka",
     "description": "Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.",
     "homepage": "https://nuitka.net/",
-    "version": "2.7.3",
+    "version": "2.7.5",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13355,7 +13355,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.152.1",
+    "version": "2.153.0",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13363,7 +13363,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.56.1",
+    "version": "3.57.0",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13755,7 +13755,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.11.11",
+    "version": "0.11.12",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13779,7 +13779,7 @@
     "name": "py3_setuptools",
     "description": "Setuptools is the python build system from the Python Packaging Authority.",
     "homepage": "https://setuptools.readthedocs.io/",
-    "version": "80.8.0",
+    "version": "80.9.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14115,7 +14115,7 @@
     "name": "py3_zipp",
     "description": "Zipp is a backport of pathlib-compatible object wrapper for zip files.",
     "homepage": "https://github.com/jaraco/zipp/",
-    "version": "3.21.0",
+    "version": "3.22.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14819,7 +14819,7 @@
     "name": "ruby_base64",
     "description": "Support for encoding and decoding binary data using a base64 representation.",
     "homepage": "https://github.com/ruby/base64",
-    "version": "0.2.0-ruby3.4",
+    "version": "0.3.0-ruby3.4",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -14827,7 +14827,7 @@
     "name": "ruby_benchmark",
     "description": "A performance benchmarking library.",
     "homepage": "https://github.com/ruby/benchmark",
-    "version": "0.4.0-ruby3.4",
+    "version": "0.4.1-ruby3.4",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -14891,7 +14891,7 @@
     "name": "ruby_csv",
     "description": "The csv library provides a complete interface to csv files and data.",
     "homepage": "https://github.com/ruby/csv",
-    "version": "3.3.4-ruby3.4",
+    "version": "3.3.5-ruby3.4",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -15411,7 +15411,7 @@
     "name": "ruby_psych",
     "description": "| psych is a yaml parser and emitter.",
     "homepage": "https://github.com/ruby/psych",
-    "version": "5.2.4-ruby3.4",
+    "version": "5.2.6-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15443,7 +15443,7 @@
     "name": "ruby_rake",
     "description": "Rake is a Make-like program implemented in Ruby.",
     "homepage": "https://github.com/ruby/rake",
-    "version": "13.2.1-ruby3.4",
+    "version": "13.3.0-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15547,7 +15547,7 @@
     "name": "ruby_rubocop",
     "description": "A Ruby static code analyzer and formatter",
     "homepage": "https://rubocop.org",
-    "version": "1.75.7-ruby3.4",
+    "version": "1.75.8-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15952,6 +15952,14 @@
     "compatibility": "all"
   },
   {
+    "name": "sayonara",
+    "description": "Sayonara is a small, clear and fast audio player",
+    "homepage": "https://sayonara-player.com/",
+    "version": "1.11.0",
+    "license": "GPL-3",
+    "compatibility": "aarch64 armv7l x86_64"
+  },
+  {
     "name": "sbc",
     "description": "SBC is a digital audio encoder and decoder used to transfer data to Bluetooth audio output devices.",
     "homepage": "https://www.linuxfromscratch.org/blfs/view/svn/multimedia/sbc.html",
@@ -16307,7 +16315,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.55.0",
+    "version": "7.56.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -16939,7 +16947,7 @@
     "name": "taglib",
     "description": "TagLib is a library for reading and editing the meta-data of several popular audio formats.",
     "homepage": "https://taglib.org",
-    "version": "1.13.1",
+    "version": "2.0.2",
     "license": "LGPL-2.1 and MPL-1.1",
     "compatibility": "all"
   },
@@ -17107,7 +17115,7 @@
     "name": "terraform",
     "description": "Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.",
     "homepage": "https://www.terraform.io/",
-    "version": "1.11.4",
+    "version": "1.12.1",
     "license": "Apache-2.0, BSD-2, BSD-4, ECL-2.0, imagemagick, ISC, JSON, MIT, MIT-with-advertising, MPL-2.0 and unicode",
     "compatibility": "all"
   },
@@ -17680,6 +17688,14 @@
     "compatibility": "all"
   },
   {
+    "name": "utfcpp",
+    "description": "UTF-8 with C++ in a Portable Way",
+    "homepage": "https://github.com/nemtrif/utfcpp",
+    "version": "4.0.6",
+    "license": "BSL-1.0",
+    "compatibility": "all"
+  },
+  {
     "name": "uthash",
     "description": "A hash table for C structures",
     "homepage": "https://troydhanson.github.com/uthash/",
@@ -17859,7 +17875,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.4.3684.38-1",
+    "version": "7.4.3684.43-1",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
