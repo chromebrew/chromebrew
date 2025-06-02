@@ -331,7 +331,7 @@ function extract_install () {
 
     if [[ "${1}" == 'glibc' ]] || [[ "${1}" == 'crew_preload' ]]; then
       # update ld.so cache
-      ldconfig
+      "${CREW_PREFIX}/bin/ldconfig"
     elif [[ -d /usr/local/opt/glibc-libs ]]; then
       # decompress and switch to our glibc for existing binaries
       if command -v upx &> /dev/null; then
@@ -412,7 +412,7 @@ done
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
-sudo ldconfig &> /tmp/crew_ldconfig || true
+sudo "${CREW_PREFIX}/bin/ldconfig" &> /tmp/crew_ldconfig || true
 
 if [[ -d /usr/local/opt/glibc-libs ]]; then
 # shellcheck disable=SC2034  
