@@ -23,7 +23,6 @@ class Crew_preload < Package
   })
 
   conflicts_ok
-  no_fhs if %w[aarch64 armv7l].include?(ARCH)
   no_source_build
   no_shrink
   no_strip
