@@ -331,7 +331,8 @@ function extract_install () {
 
     if [[ "${1}" == 'glibc' ]] || [[ "${1}" == 'crew_preload' ]]; then
       # update ld.so cache
-      "${CREW_PREFIX}/bin/ldconfig"
+      "${CREW_PREFIX}/bin/ldconfig" || true
+      [[ -d /usr/local/opt/glibc-libs ]] && export LD_PRELOAD=crew-preload.so
     elif [[ -d /usr/local/opt/glibc-libs ]]; then
       # decompress and switch to our glibc for existing binaries
       if command -v upx &> /dev/null; then
@@ -414,11 +415,6 @@ done
 # shellcheck disable=SC2024
 "${CREW_PREFIX}/bin/ldconfig" &> /tmp/crew_ldconfig || true
 
-if [[ -d /usr/local/opt/glibc-libs ]]; then
-# shellcheck disable=SC2034  
-  LD_PRELOAD=crew-preload.so
-fi
-
 echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
@@ -455,7 +451,7 @@ yes | crew install crew_profile_base
 trap - ERR && source ~/.bashrc && set_trap
 
 echo_info "Installing core Chromebrew packages...\n"
-yes | crew install core
+yes | crew install core || (yes | crew install core) || (yes | crew install core)
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than
