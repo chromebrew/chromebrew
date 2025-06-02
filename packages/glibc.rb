@@ -13,13 +13,6 @@ class Glibc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a0b690ce6975515c6b0d4cb39d64bc276975e3b3b15996320cd8cc216f381ca0',
-     armv7l: 'a0b690ce6975515c6b0d4cb39d64bc276975e3b3b15996320cd8cc216f381ca0',
-       i686: '061e30fa5ec7c5d83cf40e3d9b9ca858b7a88dda68b65bec3aac2da6d45aa6ff',
-     x86_64: '632426d744b78b8941ce9348b7eb8d680d4c48780c6559a203998b0c4416fda1'
-  })
-
-  binary_sha256({
     aarch64: '8d092cdeeaf3b321b64b31cb76aa3813adf8e73416f4db557d41f0c0811e0131',
      armv7l: '8d092cdeeaf3b321b64b31cb76aa3813adf8e73416f4db557d41f0c0811e0131',
        i686: '8c2430f690f468f33dc849cd0b2163dfadf187ff1cc3e33f1d20cbfb06572ec3',
