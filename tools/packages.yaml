@@ -10335,6 +10335,11 @@ url: https://github.com/zlib-ng/zlib-ng/releases
 activity: high
 ---
 kind: url
+name: zola
+url: https://github.com/getzola/zola/releases
+activity: low
+---
+kind: url
 name: zoneinfo
 url: https://data.iana.org/time-zones/releases/
 activity: high
