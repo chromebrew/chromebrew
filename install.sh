@@ -412,7 +412,7 @@ done
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
-sudo "${CREW_PREFIX}/bin/ldconfig" &> /tmp/crew_ldconfig || true
+"${CREW_PREFIX}/bin/ldconfig" &> /tmp/crew_ldconfig || true
 
 if [[ -d /usr/local/opt/glibc-libs ]]; then
 # shellcheck disable=SC2034  
