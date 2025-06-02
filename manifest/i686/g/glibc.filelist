@@ -15,10 +15,7 @@
 /usr/local/bin/sln
 /usr/local/bin/sotruss
 /usr/local/bin/sprof
-/usr/local/bin/tzselect
 /usr/local/bin/xtrace
-/usr/local/bin/zdump
-/usr/local/bin/zic
 /usr/local/etc/ld.so.cache
 /usr/local/etc/ld.so.conf
 /usr/local/etc/rpc
@@ -1349,7 +1346,6 @@
 /usr/local/lib/locale/ja_JP.utf8/LC_PAPER
 /usr/local/lib/locale/ja_JP.utf8/LC_TELEPHONE
 /usr/local/lib/locale/ja_JP.utf8/LC_TIME
-/usr/local/lib/locale/locale-archive
 /usr/local/lib/locale/ru_RU.koi8r/LC_ADDRESS
 /usr/local/lib/locale/ru_RU.koi8r/LC_COLLATE
 /usr/local/lib/locale/ru_RU.koi8r/LC_CTYPE
@@ -1581,6 +1577,7 @@
 /usr/local/opt/glibc-libs/librt.so.1
 /usr/local/opt/glibc-libs/libthread_db.so.1
 /usr/local/opt/glibc-libs/libutil.so.1
+/usr/local/share/i18n/SUPPORTED
 /usr/local/share/i18n/charmaps/ANSI_X3.110-1983.gz
 /usr/local/share/i18n/charmaps/ANSI_X3.4-1968.gz
 /usr/local/share/i18n/charmaps/ARMSCII-8.gz
