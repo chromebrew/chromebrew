@@ -196,7 +196,7 @@ curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"
 
 # Note that ordering of BOOTSTRAP_PACKAGES matters!
 if [[ $BRANCH == 'pre_glibc_standalone' ]]; then
-  BOOTSTRAP_PACKAGES='zstd_static upx patchelf lz4 zlib xzutils zstd zlib_ng gcc_lib crew_mvdir ruby git ca_certificates libyaml openssl findutils psmisc'
+  BOOTSTRAP_PACKAGES='zstd_static upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ruby git ca_certificates libyaml openssl findutils psmisc uutils_coreutils'
 else
   # ncurses, readline, and bash are needed before ruby because our ruby
   # invokes the architecture specific bash instead of using /bin/sh, which
