@@ -29,6 +29,7 @@
 /usr/local/include/ncursesw/term_entry.h
 /usr/local/include/ncursesw/termcap.h
 /usr/local/include/ncursesw/unctrl.h
+/usr/local/lib/terminfo
 /usr/local/lib64/libcurses.so
 /usr/local/lib64/libcursesw.so
 /usr/local/lib64/libform.so
