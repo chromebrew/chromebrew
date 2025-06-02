@@ -3,18 +3,20 @@ require 'package'
 class Readline < Package
   description 'The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in.'
   homepage 'https://tiswww.cwru.edu/php/chet/readline/rltop.html'
-  version '8.2'
+  version '8.3-rc2'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/readline/readline-#{version}.tar.gz"
-  source_sha256 '3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35'
+  # source_url "https://ftpmirror.gnu.org/readline/readline-#{version}.tar.gz"
+  # source_sha256 '4df532d8e46e726bb216c63304163a174542cc870109abfe23177fac9e605425'
+  source_url 'https://https.git.savannah.gnu.org/git/readline.git'
+  git_hashtag '1f2d3a51df1195446e126c5ebca621d9d81809ea'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2b15b0948ea00612e81fe9118ec797bf7acde887b6d9f6590c8be08cc8e60215',
-     armv7l: '2b15b0948ea00612e81fe9118ec797bf7acde887b6d9f6590c8be08cc8e60215',
-       i686: '4e0b1ad9c373fb7fe6b8f4bcfd15ee5abef73512d46db51b307966b233ca2794',
-     x86_64: '20b80a9206e4327a373c564ac9a041f0192955bd6105a7ddcdecbcc8482081a0'
+    aarch64: '85dff3d0aa6a72f845cb8136d631c10b5efbac27ff62e52b1cf3432a5f350669',
+     armv7l: '85dff3d0aa6a72f845cb8136d631c10b5efbac27ff62e52b1cf3432a5f350669',
+       i686: '1603ee7a4ac94b0d33e5aa75275391d3ec1797c1dc161ae3f332230068913cef',
+     x86_64: '3522e3a49daa2a52ff5dfe2d31162579401d888613dbd34147370270d424ed30'
   })
 
   depends_on 'glibc' # R
