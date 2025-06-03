@@ -6,7 +6,7 @@ require 'buildsystems/rust'
 class Uutils_coreutils < RUST
   description 'Cross-platform Rust rewrite of the GNU coreutils'
   homepage 'https://github.com/uutils/coreutils'
-  version '0.0.30-1'
+  version '0.1.0-1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/uutils/coreutils.git'
@@ -14,13 +14,14 @@ class Uutils_coreutils < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '67d8d5dd2b62a8af7c08b408c0fe9abb97844d66c10f7cc1ad06e94142b83038',
-     armv7l: '67d8d5dd2b62a8af7c08b408c0fe9abb97844d66c10f7cc1ad06e94142b83038',
-       i686: '1d5aa5768760cbe8a188436c207480b9ad7ee755a55268a8683e2c45da6429b2',
-     x86_64: 'b5ac08778f164685a9652ca1e94e07cbbc56db5bfd6f6994e4e6140ddc179577'
+    aarch64: '91390670200ef027bd72e4aacfa760c9eb124ed488eaf299e87e9f6874113541',
+     armv7l: '91390670200ef027bd72e4aacfa760c9eb124ed488eaf299e87e9f6874113541',
+       i686: '371a1f44ebb35e3f1b0a8062fc0218ad21f2d6e71975ce2485ca68ef9f65cb92',
+     x86_64: '5ecf1ad4d53a5479144cc4cd3c0aa638d20da94776e98f2cdcc4b2cc1ca443d0'
   })
 
   depends_on 'acl' => :build
+  depends_on 'llvm_dev' => :build
   depends_on 'rust' => :build
   depends_on 'sphinx' => :build
   depends_on 'gcc_lib' # R
@@ -28,7 +29,7 @@ class Uutils_coreutils < RUST
 
   conflicts_ok # conflicts with coreutils
 
-  rust_options '--features unix'
+  rust_features 'unix'
   rust_release_profile 'release-fast'
 
   rust_install_extras do
@@ -37,10 +38,10 @@ class Uutils_coreutils < RUST
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/bash-completion/completions"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/man/man1"
     coreutils.each do |util|
-      system "cargo run completion #{util} bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/uu_#{util}"
-      system "cargo run manpage #{util} > #{CREW_DEST_PREFIX}/share/man/man1/uu_#{util}.1"
+      system "cargo run --profile=#{rust_release_profile} --features #{rust_features} completion #{util} bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/#{util}"
+      system "cargo run --profile=#{rust_release_profile} --features #{rust_features} manpage #{util} > #{CREW_DEST_PREFIX}/share/man/man1/#{util}.1"
       Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-        FileUtils.ln_s 'coreutils', "uu_#{util}"
+        FileUtils.ln_s 'coreutils', util.to_s
       end
     end
   end
