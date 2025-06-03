@@ -59,6 +59,7 @@ class Core < Package
   depends_on 'libunbound'
   depends_on 'libunistring'
   depends_on 'libversion'
+  depends_on 'libxcrypt' # Newer glibc no longer includes this.
   depends_on 'libxml2'
   depends_on 'libyaml'
   depends_on 'lz4'
