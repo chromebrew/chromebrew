@@ -20,7 +20,7 @@ class Crew_mvdir < Package
   depends_on 'glibc' # R
 
   def self.build
-    system "mold -run cc #{CREW_COMMON_FLAGS} crew-mvdir.c -o crew-mvdir"
+    system "cc #{CREW_COMMON_FLAGS} crew-mvdir.c -o crew-mvdir"
   end
 
   def self.install

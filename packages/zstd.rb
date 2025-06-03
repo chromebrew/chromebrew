@@ -23,6 +23,7 @@ class Zstd < CMake
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
 
+  conflicts_ok # Conflicts with zstd_static.
   no_zstd
   run_tests
 

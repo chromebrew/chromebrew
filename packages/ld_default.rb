@@ -3,7 +3,7 @@ require 'package'
 class Ld_default < Package
   description "Select the default ld executable and check for libraries in #{CREW_LIB_PREFIX} first"
   homepage 'https://github.com/chromebrew/chromebrew/wiki/FAQ'
-  version '1.4'
+  version '1.5'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'SKIP'
@@ -41,7 +41,7 @@ class Ld_default < Package
         echo '  Enter the new default linker:'
         echo
         echo '  b = ld.bfd'
-        echo '  g = ld.gold'
+        echo '  m = mold'
         echo '  l = ld.lld'
         echo '  0 = Cancel'
         echo
@@ -64,7 +64,7 @@ class Ld_default < Package
             new='ld.bfd'
             break;;
           g)
-            new='ld.gold'
+            new='mold'
             break;;
           l)
             new='ld.lld'

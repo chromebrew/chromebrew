@@ -3,7 +3,7 @@ require 'package'
 class Lsb_release < Package
   description 'Linux Standard Base'
   homepage 'https://wiki.linuxfoundation.org/lsb/start'
-  version '1.4-3'
+  version '1.4-4'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/lsb/lsb_release/1.4/lsb-release-1.4.tar.gz'
@@ -14,8 +14,8 @@ class Lsb_release < Package
   depends_on 'help2man'
   depends_on 'make'
 
-  def self.build
-    system 'cp /etc/lsb-release /tmp'
+  def self.patch
+    FileUtils.cp '/etc/lsb-release', '/tmp'
     system 'STR=$(grep ^CHROMEOS_RELEASE_NAME= /tmp/lsb-release | cut -d= -f2) && sed -i "s,$STR,\'&\'," /tmp/lsb-release'
     system 'STR=$(grep ^CHROMEOS_RELEASE_BUILD_TYPE= /tmp/lsb-release | cut -d= -f2) && sed -i "s,$STR$,\'&\'," /tmp/lsb-release'
     system 'STR=$(grep ^CHROMEOS_RELEASE_DESCRIPTION= /tmp/lsb-release | cut -d= -f2) && sed -i "s,$STR,\'&\'," /tmp/lsb-release'
@@ -26,9 +26,13 @@ class Lsb_release < Package
     system "sed -i 's,DISTRIB_RELEASE,CHROMEOS_RELEASE_CHROME_MILESTONE,g' lsb_release"
     system "sed -i 's,DISTRIB_CODENAME,CHROMEOS_RELEASE_BOARD,g' lsb_release"
     system "sed -i 's,echo -e,echo,g' lsb_release"
+    system "sed -i 's,\\\\t, ,g' lsb_release"
     system "sed -i 's,--include,-i,' Makefile"
     system "sed -i 's,./help2man,help2man,' Makefile"
     system "sed -i 's,--alt_version_key=program_version ,,' Makefile"
+  end
+
+  def self.build
     system 'make'
   end
 

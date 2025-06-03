@@ -1,31 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Nasm < Package
+class Nasm < Autotools
   description 'The Netwide Assembler'
   homepage 'https://www.nasm.us/'
-  version '2.15.05'
+  version '2.16.03-1'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/nasm-2.15.05.tar.xz'
-  source_sha256 '3caf6729c1073bf96629b57cee31eeb54f4f8129b01902c73428836550b30a3f'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/netwide-assembler/nasm.git'
+  git_hashtag "nasm-#{version.split('-').first}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '341d485bb248ed27fa1deaf10d361ab13eb9ac8332298cb45d3c2199e01aca25',
-     armv7l: '341d485bb248ed27fa1deaf10d361ab13eb9ac8332298cb45d3c2199e01aca25',
-       i686: 'e78c9d471c116b2ced338a800b84a01346e964b377b0fd66f260ef517da8e801',
-     x86_64: '920e5d3591a66153b45d68c3e67bca8ef74cfc6cf3d71e2c4c57c5624a2b5111'
+    aarch64: 'ef7c0f9b1f2b348d694ab5326d9fb42eb39e48d6d762d3d839784233240d316f',
+     armv7l: 'ef7c0f9b1f2b348d694ab5326d9fb42eb39e48d6d762d3d839784233240d316f',
+       i686: 'deafb95a802d8c64e3495c3f3e180a76c653e5cc5940601399455bd02282da75',
+     x86_64: '1aa847352074cf6f627a82385839643ce5d8b8a219e8bdb56166cf7b91e30f62'
   })
 
-  def self.build
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
+  depends_on 'glibc' # R
+  depends_on 'py3_asciidoc' => :build
+  depends_on 'xmlto' => :build
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  autotools_build_extras do
+    system 'make manpages'
   end
 end

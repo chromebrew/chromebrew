@@ -6,7 +6,7 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  version "2.44-#{CREW_GCC_VER}-1"
+  version "2.44-#{CREW_GCC_VER}-2"
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://sourceware.org/pub/binutils/releases/binutils-#{version.split('-').first}.tar.zst"
@@ -14,10 +14,10 @@ class Binutils < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9013d3663a9970eae41f69debcc830b59f7e9bd7761c9688f802f3b05e523ff9',
-     armv7l: '9013d3663a9970eae41f69debcc830b59f7e9bd7761c9688f802f3b05e523ff9',
-       i686: '576fbc97b797ccaf84e24510316c4d36b45c3ab05c25fb60d421fe0b1a048cec',
-     x86_64: '098c27b3d5de040588870e22f5f839296aacf0833faa552b14e3c5698fc49b37'
+    aarch64: '5791ffb5584ee4f799f8004791e49a981c2a567294b90bc36dbfd9f866758501',
+     armv7l: '5791ffb5584ee4f799f8004791e49a981c2a567294b90bc36dbfd9f866758501',
+       i686: '513f05208eb475598af2537d47ceaa645002dc329c03ca6bd0bef36145cb7f00',
+     x86_64: '17dc92222405665c30a9805f81ca40945e7374c4e3273e6665fc96c2bdf4455f'
   })
 
   depends_on 'elfutils' # R

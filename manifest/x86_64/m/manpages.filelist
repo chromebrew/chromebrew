@@ -742,6 +742,7 @@
 /usr/local/share/man/man2const/UFFDIO_API.2const.zst
 /usr/local/share/man/man2const/UFFDIO_CONTINUE.2const.zst
 /usr/local/share/man/man2const/UFFDIO_COPY.2const.zst
+/usr/local/share/man/man2const/UFFDIO_MOVE.2const.zst
 /usr/local/share/man/man2const/UFFDIO_POISON.2const.zst
 /usr/local/share/man/man2const/UFFDIO_REGISTER.2const.zst
 /usr/local/share/man/man2const/UFFDIO_UNREGISTER.2const.zst
@@ -1134,8 +1135,6 @@
 /usr/local/share/man/man3/creal.3.zst
 /usr/local/share/man/man3/crealf.3.zst
 /usr/local/share/man/man3/creall.3.zst
-/usr/local/share/man/man3/crypt.3.zst
-/usr/local/share/man/man3/crypt_r.3.zst
 /usr/local/share/man/man3/csin.3.zst
 /usr/local/share/man/man3/csinf.3.zst
 /usr/local/share/man/man3/csinh.3.zst
@@ -2328,9 +2327,13 @@
 /usr/local/share/man/man3/twalk_r.3.zst
 /usr/local/share/man/man3/tzname.3.zst
 /usr/local/share/man/man3/tzset.3.zst
+/usr/local/share/man/man3/uabs.3.zst
 /usr/local/share/man/man3/ualarm.3.zst
+/usr/local/share/man/man3/uimaxabs.3.zst
+/usr/local/share/man/man3/ulabs.3.zst
 /usr/local/share/man/man3/ulckpwdf.3.zst
 /usr/local/share/man/man3/ulimit.3.zst
+/usr/local/share/man/man3/ullabs.3.zst
 /usr/local/share/man/man3/undocumented.3.zst
 /usr/local/share/man/man3/ungetc.3.zst
 /usr/local/share/man/man3/ungetwc.3.zst
@@ -2876,6 +2879,7 @@
 /usr/local/share/man/man7/man-pages.7.zst
 /usr/local/share/man/man7/man.7.zst
 /usr/local/share/man/man7/math_error.7.zst
+/usr/local/share/man/man7/mctp.7.zst
 /usr/local/share/man/man7/mount_namespaces.7.zst
 /usr/local/share/man/man7/mq_overview.7.zst
 /usr/local/share/man/man7/namespaces.7.zst
