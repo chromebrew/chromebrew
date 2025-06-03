@@ -20,8 +20,8 @@ CREW_LIB_PATH ||= File.join(CREW_PREFIX, 'lib/crew')
 
 CREW_CONFIG_PATH ||= File.join(CREW_PREFIX, 'etc/crew')
 CREW_META_PATH ||= File.join(CREW_CONFIG_PATH, 'meta')
-CREW_REPO   ||= 'https://github.com/chromebrew/chromebrew.git'
-CREW_BRANCH ||= 'master'
+CREW_REPO   ||= ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git') unless defined?(CREW_REPO)
+CREW_BRANCH ||= ENV.fetch('CREW_BRANCH', 'master') unless defined?(CREW_BRANCH)
 
 load "#{CREW_LIB_PATH}/lib/const.rb"
 load "#{CREW_LIB_PATH}/lib/package.rb"
@@ -112,9 +112,6 @@ renamed_packages = Set[
   { pkg_name: 'codium', pkg_rename: 'vscodium', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'dstat', pkg_rename: 'py3_dool', comments: 'Following upstream rename.' },
   { pkg_name: 'ffcall', pkg_rename: 'libffcall', comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'glibc_dev', pkg_rename: 'glibc', comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'glibc_lib', pkg_rename: 'glibc', comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'glibc_standalone', pkg_rename: 'glibc', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'itstool', pkg_rename: 'py3_itstool', comments: 'Renamed to indicate switch to pip buildsystem.' },
   { pkg_name: 'jsonc', pkg_rename: 'json_c', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libcurl', pkg_rename: 'curl', comments: 'Renamed to better match upstream.' },
@@ -162,29 +159,16 @@ renamed_packages = Set[
   { pkg_name: 'zlibpkg', pkg_rename: 'zlib', comments: 'Renamed to better match upstream.' }
 ]
 
+unless CREW_BRANCH == 'pre_glibc_standalone'
+  renamed_packages << { pkg_name: 'glibc_dev', pkg_rename: 'glibc', comments: 'Renamed to better match upstream.' }
+  renamed_packages << { pkg_name: 'glibc_lib', pkg_rename: 'glibc', comments: 'Renamed to better match upstream.' }
+  renamed_packages << { pkg_name: 'glibc_standalone', pkg_rename: 'glibc', comments: 'Renamed to better match upstream.' }
+end
+
 deprecated_packages = Set[
   { pkg_name: 'epydoc', comments: 'Abandoned upstream, only supports Python 2.' },
   { pkg_name: 'gfbgraph', commwnts: 'Deprecated upstteam.' },
   { pkg_name: 'git_prompt', comments: 'Integrated into git package.' },
-  { pkg_name: 'glibc_build223', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_build227', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_build232', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_build233', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_build235', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_build237', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_dev223', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_dev227', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_dev232', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_dev233', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_dev235', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_dev237', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_fallthrough', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_lib223', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_lib227', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_lib232', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_lib233', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_lib235', comments: 'We are moving away from system glibc.' },
-  { pkg_name: 'glibc_lib237', comments: 'We are moving away from system glibc.' },
   { pkg_name: 'gnome_session', comments: 'No longer compatible with any architecture, requires systemd.' },
   { pkg_name: 'gnome_settings_daemon', comments: 'No longer compatible with any architecture, requires systemd.' },
   { pkg_name: 'gnome_shell', comments: 'No longer compatible with any architecture, requires systemd.' },
@@ -204,6 +188,29 @@ deprecated_packages = Set[
   { pkg_name: 'qtchooser', comments: "Doesn't work for newer Qt versions." },
   { pkg_name: 'skype', comments: 'Officially sunsetting and will be shut down soon.' }
 ]
+
+unless CREW_BRANCH == 'pre_glibc_standalone'
+
+  deprecated_packages << { pkg_name: 'glibc_build223', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_build227', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_build232', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_build233', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_build235', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_build237', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_dev223', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_dev227', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_dev232', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_dev233', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_dev235', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_dev237', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_fallthrough', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_lib223', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_lib227', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_lib232', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_lib233', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_lib235', comments: 'We are moving away from system glibc.' }
+  deprecated_packages << { pkg_name: 'glibc_lib237', comments: 'We are moving away from system glibc.' }
+end
 
 # Handle package renames.
 renamed_pkgs = renamed_packages.map { |h| h[:pkg_name] }
@@ -282,9 +289,9 @@ unless installed_pkgs_to_deprecate.empty?
 end
 
 if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patchelf")
-  puts 'Running upx to uncompress binaries and patchelf to patch binary interpreter paths.'.lightblue
-  abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
-  abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
+  abort("No Upx found! Please run 'crew install upx'").lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
+  abort("No Patchelf found! Please run 'crew install patchelf'").lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
+  puts "Running upx to uncompress binaries #{CREW_BRANCH == 'pre_glibc_standalone' ? '' : 'and patchelf to patch binary interpreter paths '}if needed.".lightblue
   # Look for installed binaries and libraries in /usr/local and the lib
   # prefix directories.
   execfiles = `find #{CREW_PREFIX}/bin #{CREW_LIB_PREFIX} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' -- 2> /dev/null`.split
@@ -294,6 +301,8 @@ if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patc
     next unless File.file?(execfiletopatch)
     # Decompress the binary if compressed.
     system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL
+    # Do not patch interpreter if we are on the pre_glibc_standalone branch.
+    next if CREW_BRANCH == 'pre_glibc_standalone'
     # Check for existing interpreter.
     @interpreter, _read_interpreter_stderr_s, @read_interpreter_status = Open3.capture3("patchelf --print-interpreter #{execfiletopatch}")
     # Set interpreter unless the interpreter read failed or is already
