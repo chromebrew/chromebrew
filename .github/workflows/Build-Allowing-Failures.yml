@@ -1,8 +1,13 @@
 ---
-name: No-Compile-Needed
+name: Build Allowing Failures
 on:
   workflow_dispatch:
     inputs:
+      with_pr:
+        description: "Create a PR after building."
+        required: false
+        type: boolean
+        default: 'true'
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
@@ -38,7 +43,6 @@ jobs:
     outputs:
       timestamp: ${{ steps.set-timestamp.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
-      no_compile_packages: ${{ steps.get-compatibility.outputs.NO_COMPILE_PACKAGES }}
       glibc_232_compat: ${{ steps.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
       glibc_237_compat: ${{ steps.get-compatibility.outputs.GLIBC_237_COMPATIBLE_PACKAGES }}
       i686_packages: ${{ steps.get-compatibility.outputs.i686_PACKAGES }}
@@ -77,30 +81,14 @@ jobs:
       - name: Export variables to github context
         id: changed-packages
         run: |
-            if [[ -z "${{ steps.changed-ruby-files.outputs.all_changed_files }}" ]]; then
-              echo "Branch ${{ env.BRANCH }} has no changed files."
-              exit 1
-            fi
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
             echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
             echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         run: |
-            # If a package has 'no_compile_needed', add it to NO_COMPILE_PACKAGES.
-            NO_COMPILE_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]no_compile_needed" packages/"${i}".rb && echo "${i}"; done | xargs)"
-            export NO_COMPILE_PACKAGES
-            if [[ -n ${NO_COMPILE_PACKAGES} ]]; then
-              echo "NO_COMPILE_PACKAGES=${NO_COMPILE_PACKAGES}" >> "$GITHUB_ENV"
-              echo "NO_COMPILE_PACKAGES=${NO_COMPILE_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ env.BRANCH }} has these no_compile_needed packages: ${NO_COMPILE_PACKAGES}"
-            else
-              echo "Branch ${{ env.BRANCH }} is missing no_compile_needed packages that require updates."
-              exit 1
-            fi
-
             # If a package doesnt have a min_glibc value, or if it is below 2.32, add it to GLIBC_232_COMPATIBLE_PACKAGES.
-            GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${NO_COMPILE_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo "${i}" ; done | xargs)"
+            GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo "${i}" ; done | xargs)"
             export GLIBC_232_COMPATIBLE_PACKAGES
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
@@ -109,7 +97,7 @@ jobs:
             fi
 
             # If a package doesnt have a min_glibc value, or if it is below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
-            GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${NO_COMPILE_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo "${i}" ; done | xargs)"
+            GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo "${i}" ; done | xargs)"
             export GLIBC_237_COMPATIBLE_PACKAGES
             if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
@@ -118,7 +106,7 @@ jobs:
             fi
 
             # If a package has a compatibility of 'all' or one that includes 'x86_64', add it to x86_64_PACKAGES.
-            x86_64_PACKAGES="$(for i in ${NO_COMPILE_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*x86_64" packages/"${i}".rb && echo "${i}"; done | xargs)"
+            x86_64_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*x86_64" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export x86_64_PACKAGES
             if [[ -n ${x86_64_PACKAGES} ]]; then
               echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_ENV"
@@ -127,7 +115,7 @@ jobs:
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to armv7l_PACKAGES.
-            armv7l_PACKAGES="$(for i in ${NO_COMPILE_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/"${i}".rb && echo "${i}"; done | xargs)"
+            armv7l_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export armv7l_PACKAGES
             if [[ -n ${armv7l_PACKAGES} ]]; then
               echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_ENV"
@@ -136,7 +124,7 @@ jobs:
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'i686', add it to i686_PACKAGES.
-            i686_PACKAGES="$(for i in ${NO_COMPILE_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*i686" packages/"${i}".rb && echo "${i}"; done | xargs)"
+            i686_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*i686" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export i686_PACKAGES
             if [[ -n ${i686_PACKAGES} ]]; then
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_ENV"
@@ -165,7 +153,6 @@ jobs:
       CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
       TARGET_ARCH: ${{ matrix.arch }}
       TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
-      NO_COMPILE_PACKAGES: ${{ needs.setup.outputs.no_compile_packages }}
       GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_232_compat }}
       GLIBC_237_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_237_compat }}
       i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
@@ -176,7 +163,7 @@ jobs:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
     steps:
-      - name: Container cleanup
+      - name: Build Container cleanup
         run: |
             sudo rm -rf release
       - name: Dump GitHub context
@@ -212,25 +199,27 @@ jobs:
           case $TARGET_ARCH in
               x86_64)
                 # Export the x86_64 container depending on whether this branch updates packages with appropriate minimum glibc.
-                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=nocturne-x86_64.m97" >> "$GITHUB_ENV"
-                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=hatch-x86_64.m136" >> "$GITHUB_ENV"
-                else
-                    echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
-                fi
+                # if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
+                #     echo "CONTAINER=nocturne-x86_64.m97" >> "$GITHUB_ENV"
+                # elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                #     echo "CONTAINER=hatch-x86_64.m136" >> "$GITHUB_ENV"
+                # else
+                #     echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
+                # fi
+                echo "CONTAINER=hatch-x86_64.m136" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
               ;;
               armv7l)
                 # Export the armv7l container depending on whether this branch updates packages with appropriate minimum glibc.
-                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=fievel-armv7l.m97" >> "$GITHUB_ENV"
-                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=strongbad-armv7l.m136" >> "$GITHUB_ENV"
-                else
-                    echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
-                fi
+                # if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
+                #     echo "CONTAINER=fievel-armv7l.m97" >> "$GITHUB_ENV"
+                # elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                #     echo "CONTAINER=strongbad-armv7l.m136" >> "$GITHUB_ENV"
+                # else
+                #     echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
+                # fi
+                echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
               ;;
@@ -247,15 +236,15 @@ jobs:
         run: |
             if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
               # Exit the arm container if there are not armv7l compatible packages.
-              echo "Skipping armv7l container."
+              echo "Skipping armv7l container builds."
               exit 0
             elif [ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]; then
               # Exit the x86_64 container if there are not x86_64 compatible packages.
-              echo "Skipping x86_64 container."
+              echo "Skipping x86_64 container builds."
               exit 0
             elif [ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]; then
               # Exit the i686 container if there are not i686 compatible packages.
-              echo "Skipping i686 container."
+              echo "Skipping i686 container builds."
               exit 0
             fi
 
@@ -265,8 +254,11 @@ jobs:
             git log --oneline -10
             docker pull --platform "${PLATFORM}" "satmandu/crewbuild:${CONTAINER}"
             sudo apt install -y acl
+            # Detection of /output/pkg_cache dir triggers setting
+            # CREW_CACHE_DIR=1 and CREW_CACHE_ENABLED=1 in the build
+            # container. Without these, upload fails.
+            mkdir pkg_cache
             sudo setfacl -R -m u:1000:rwx .
-
             # Use docker-in-docker shim to mount volume inside docker.
             # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
             # ghcr.io/felipecrs/dond-shim:latest \
@@ -275,19 +267,21 @@ jobs:
             docker run \
               --rm \
               --platform "${PLATFORM}" \
+              -e PUID=1000 \
+              -e PGID=1000 \
               --privileged \
-              -u chronos \
-              -e LD_LIBRARY_PATH="/usr/local/lib${LIB_SUFFIX}" \
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
               -e CREW_REPO="${CREW_REPO}" \
               -e CREW_BRANCH="${CREW_BRANCH}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
-              -v "$(pwd)":/output \
+              -v "$(pwd)"/pkg_cache:/usr/local/tmp/packages:rshared \
+              -v "$(pwd)":/output:rshared \
               "satmandu/crewbuild:${CONTAINER}" \
-              /bin/chromebrewstart /output/tools/github_actions_no_compile_updater.sh  > >(tee -a /tmp/update.log) 2> >(tee -a /tmp/update.log >&2)
-              grep "Updated:" /tmp/update.log || true
-              sudo rm -rf release
+              /bin/chromebrewstart /output/tools/github_actions_update_builder_allowing_failures.sh  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
+              grep "Built and Uploaded:" /tmp/build.log || true
+              echo "Deleting build output directories."
+              sudo rm -rf release pkg_cache
       - name: Add updated packages to branch.
         id: push-check
         run: |
@@ -295,21 +289,21 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add -A
-            git commit -m "Add updated packages for ${PLATFORM} to ${{ env.BRANCH }}" && git push -f
+            git commit -m "Add built packages for ${PLATFORM} to ${{ env.BRANCH }}" && git push -f
             git log --oneline -10
           fi
-  update-check:
+  build-check:
     runs-on: ubuntu-24.04
     needs:
       - setup
       - generate
     if: ${{ !cancelled() }}
     steps:
-      - name: exit if update failed, otherwise create a PR
+      - name: fail if update or build jobs failed, otherwise create a PR
         if: ${{ contains(needs.*.result, 'failure') }}
         run: exit 1
-      - name: Report update success
-        run: echo "Update jobs succeeded. Creating a PR."
+      - name: Report update & build success
+        run: echo "Update & build jobs succeeded. Creating a PR."
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -332,6 +326,7 @@ jobs:
             git pull --rebase origin master && git push -f
             git log --oneline -10
       - name: Create Pull Request
+        if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
           CHANGED_MANIFEST_FILES: ${{ steps.changed-manifest-files.outputs.all_changed_files }}
           CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
@@ -342,13 +337,14 @@ jobs:
         run: |
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
-          echo -e "- This PR has package updates using the No-Compile-Needed.yml workflow, which was pointed to the ${{ env.BRANCH }} branch.\n" >> /tmp/pr.txt
-          echo -e "Updated packages:" >> /tmp/pr.txt
+          echo -e "- This PR has built package updates using the Build Allowing Failures.yml workflow, which was pointed to the ${{ env.BRANCH }} branch.\n" >> /tmp/pr.txt
+          echo -e "#### _Please double check to see if any failures were expected._\n" >> /tmp/pr.txt
+          echo -e "### Packages with Updated versions or Changed package files:" >> /tmp/pr.txt
           for file in ${CHANGED_PACKAGES}
             do
             echo "- ${file}" >> /tmp/pr.txt
           done
-          echo -e "##\nUpdates attempted for:" >> /tmp/pr.txt
+          echo -e "##\nBuilds attempted for:" >> /tmp/pr.txt
           [ -n "${x86_64_PACKAGES}" ] && echo -e "- [x] \`x86_64\`" >> /tmp/pr.txt
           [ -n "${i686_PACKAGES}" ] && echo -e "- [x] \`i686\`" >> /tmp/pr.txt
           [ -n "${armv7l_PACKAGES}" ] && echo -e "- [x] \`armv7l\`" >> /tmp/pr.txt
@@ -359,10 +355,11 @@ jobs:
           echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ env.BRANCH }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           cat /tmp/pr.txt
-          PR_NUMBER=$(gh pr create --title "AutoUpdate: ${{ env.BRANCH }} started at ${TIMESTAMP}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          PR_NUMBER=$(gh pr create --title "AutoBuild: ${{ env.BRANCH }} started at ${TIMESTAMP}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
       - name: Trigger Unit Test Workflow & Add Reviewer Team
+        if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
         run: |

@@ -5,7 +5,7 @@ env:
   REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
   REVIEWDOG_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
-  SHELLCHECK_OPTS: "-e SC2129"
+  SHELLCHECK_OPTS: "-e SC2129 -e SC2155"
 jobs:
   actionlint:
     runs-on: ubuntu-24.04

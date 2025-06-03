@@ -137,15 +137,15 @@ jobs:
       matrix:
         arch: [i686, x86_64, armv7l]
         runner:
-          - [self-hosted, X64]
-          - [self-hosted, ARM]
+          - ubuntu-24.04
+          - ubuntu-24.04-arm
         exclude:
           - arch: x86_64
-            runner: [self-hosted, ARM]
+            runner: ubuntu-24.04-arm
           - arch: i686
-            runner: [self-hosted, ARM]
+            runner: ubuntu-24.04-arm
           - arch: armv7l
-            runner: [self-hosted, X64]
+            runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
     needs: setup
     env:
@@ -199,25 +199,27 @@ jobs:
           case $TARGET_ARCH in
               x86_64)
                 # Export the x86_64 container depending on whether this branch updates packages with appropriate minimum glibc.
-                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=nocturne-x86_64.m97" >> "$GITHUB_ENV"
-                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=hatch-x86_64.m134" >> "$GITHUB_ENV"
-                else
-                    echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
-                fi
+                # if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
+                #     echo "CONTAINER=nocturne-x86_64.m97" >> "$GITHUB_ENV"
+                # elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                #     echo "CONTAINER=hatch-x86_64.m136" >> "$GITHUB_ENV"
+                # else
+                #     echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
+                # fi
+                echo "CONTAINER=hatch-x86_64.m136" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
               ;;
               armv7l)
                 # Export the armv7l container depending on whether this branch updates packages with appropriate minimum glibc.
-                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=fievel-armv7l.m97" >> "$GITHUB_ENV"
-                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=strongbad-armv7l.m134" >> "$GITHUB_ENV"
-                else
-                    echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
-                fi
+                # if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
+                #     echo "CONTAINER=fievel-armv7l.m97" >> "$GITHUB_ENV"
+                # elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
+                #     echo "CONTAINER=strongbad-armv7l.m136" >> "$GITHUB_ENV"
+                # else
+                #     echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
+                # fi
+                echo "CONTAINER=strongbad-armv7l.m136" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
               ;;
@@ -252,28 +254,34 @@ jobs:
             git log --oneline -10
             docker pull --platform "${PLATFORM}" "satmandu/crewbuild:${CONTAINER}"
             sudo apt install -y acl
+            # Detection of /output/pkg_cache dir triggers setting
+            # CREW_CACHE_DIR=1 and CREW_CACHE_ENABLED=1 in the build
+            # container. Without these, upload fails.
+            mkdir pkg_cache
             sudo setfacl -R -m u:1000:rwx .
-
             # Use docker-in-docker shim to mount volume inside docker.
             # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
             # ghcr.io/felipecrs/dond-shim:latest \
-            (cd /tmp || exit ; curl -OLf https://github.com/felipecrs/docker-on-docker-shim/raw/refs/tags/v0.7.1/dond ; chmod +x /tmp/dond )
-            /tmp/dond run \
+            #(cd /tmp || exit ; curl -OLf https://github.com/felipecrs/docker-on-docker-shim/raw/refs/tags/v0.7.1/dond ; chmod +x /tmp/dond )
+            #/tmp/dond run \
+            docker run \
               --rm \
               --platform "${PLATFORM}" \
+              -e PUID=1000 \
+              -e PGID=1000 \
               --privileged \
-              -u chronos \
-              -e LD_LIBRARY_PATH="/usr/local/lib${LIB_SUFFIX}" \
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
               -e CREW_REPO="${CREW_REPO}" \
               -e CREW_BRANCH="${CREW_BRANCH}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
-              -v "$(pwd)":/output \
+              -v "$(pwd)"/pkg_cache:/usr/local/tmp/packages:rshared \
+              -v "$(pwd)":/output:rshared \
               "satmandu/crewbuild:${CONTAINER}" \
               /bin/chromebrewstart /output/tools/github_actions_update_builder.sh  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
               grep "Built and Uploaded:" /tmp/build.log || true
-              sudo rm -rf release
+              echo "Deleting build output directories."
+              sudo rm -rf release pkg_cache
       - name: Add updated packages to branch.
         id: push-check
         run: |
@@ -330,7 +338,7 @@ jobs:
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
           echo -e "- This PR has built package updates using the Build.yml workflow, which was pointed to the ${{ env.BRANCH }} branch.\n" >> /tmp/pr.txt
-          echo -e "Updated packages:" >> /tmp/pr.txt
+          echo -e "### Packages with Updated versions or Changed package files:" >> /tmp/pr.txt
           for file in ${CHANGED_PACKAGES}
             do
             echo "- ${file}" >> /tmp/pr.txt
