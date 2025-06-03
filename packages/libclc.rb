@@ -7,7 +7,7 @@ class Libclc < Package
   llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
   description 'Library requirements of the OpenCL C programming language'
   homepage 'https://libclc.llvm.org/'
-  version '20.1.3'
+  version '20.1.6'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
@@ -17,14 +17,13 @@ class Libclc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '545c46a21df4a4b1529de5c1526c7cd738f6fd49724e861bc88abc0d57583a77',
-     armv7l: '545c46a21df4a4b1529de5c1526c7cd738f6fd49724e861bc88abc0d57583a77',
-     x86_64: 'a680dc9abe51c0ce30c64918280dba546ea851081f5ab1b2d05a3f266945243a'
+    aarch64: 'ecb12c840d428bd053bff8fbc4a2e6ddaad95bbfe86ba818dad4580f7783efee',
+     armv7l: 'ecb12c840d428bd053bff8fbc4a2e6ddaad95bbfe86ba818dad4580f7783efee',
+     x86_64: '07d29f70b74c4ac139fd80ec9c19aa97f2c1aa9328ed25d9d85a40a381c9ff0b'
   })
 
   depends_on 'llvm_dev' => :build
   depends_on 'python3' => :build
-  depends_on 'sccache' => :build
   depends_on 'spirv_llvm_translator' => :build
 
   no_env_options
@@ -58,14 +57,14 @@ class Libclc < Package
                      end
     system "cmake -B builddir -G Ninja libclc \
       #{@cmake_options.gsub('-DCMAKE_LINKER_TYPE=MOLD', '')} \
-      -DCLANG_DEFAULT_LINKER=#{CREW_LINKER} \
       -DCMAKE_C_COMPILER=$(which clang) \
-      -DCMAKE_C_COMPILER_LAUNCHER=sccache \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \
-      -DCMAKE_CXX_COMPILER_LAUNCHER=sccache \
       -DCMAKE_CXX_COMPILER_AR=$(which llvm-ar) \
       -DCMAKE_CXX_COMPILER_RANLIB=$(which llvm-ranlib) \
+      -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
+      -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
+      -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}"}' \
       -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
       -Wno-dev"
     system "#{CREW_NINJA} -C builddir"

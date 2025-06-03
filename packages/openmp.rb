@@ -7,7 +7,7 @@ class Openmp < Package
   llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '20.1.3'
+  version '20.1.6'
   # When upgrading llvm_build*, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
@@ -17,10 +17,10 @@ class Openmp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ba742ce60f53fb471139c55ba822d7b938beeec51853292deba17d872b2dc905',
-     armv7l: 'ba742ce60f53fb471139c55ba822d7b938beeec51853292deba17d872b2dc905',
-       i686: '4ed8cf48548496ce8bcd411ce45aed1b48b0ab07a686d752fb408d6df0ff761a',
-     x86_64: 'ad4f8478d8be1a2bc3a898afcda44ee50e639172aed876514253569bfffb41d0'
+    aarch64: '344cef800985b3c5a959ae5e06f58cdfba580d53f7eebbd23df5c302f2166d3f',
+     armv7l: '344cef800985b3c5a959ae5e06f58cdfba580d53f7eebbd23df5c302f2166d3f',
+       i686: '7b765f8be7bc97dc299d3ab449ced48d5fe2b87288eeeba72425c4e35e8dce0b',
+     x86_64: '36951a66e4879a2d2e0d7f43a1d9c4cdd1db3ce9247536fd5fdbdda6736b9ad6'
   })
 
   depends_on 'gcc_lib' # R
@@ -59,20 +59,20 @@ class Openmp < Package
                      end
     system "cmake -B builddir -G Ninja openmp \
       #{@cmake_options} \
-      -DCLANG_DEFAULT_LINKER=#{CREW_LINKER} \
       -DCMAKE_C_COMPILER=$(which clang) \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \
       -DCMAKE_CXX_COMPILER_AR=$(which llvm-ar) \
       -DCMAKE_CXX_COMPILER_RANLIB=$(which llvm-ranlib) \
+      -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
+      -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
+      -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}"}' \
       -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
       -DLIBOMP_ENABLE_SHARED=ON \
       -DLIBOMP_INSTALL_ALIASES=OFF \
-      -DLLVM_INCLUDE_BENCHMARKS=OFF \
       -DOPENMP_LIBDIR_SUFFIX=#{CREW_LIB_SUFFIX} \
-      -DPYTHON_EXECUTABLE=$(which python3) \
       -Wno-dev"
-    system "mold -run #{CREW_NINJA} -C builddir"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
