@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class M4 < Autotools
   description 'GNU M4 is an implementation of the traditional Unix macro processor.'
   homepage 'https://www.gnu.org/software/m4/'
-  version '1.4.19-1'
+  version '1.4.20-1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gnu/m4/m4-1.4.19.tar.xz'
-  source_sha256 '63aede5c6d33b6d9b13511cd0be2cac046f2e70fd0a07aa9573a04a82783af96'
+  source_url "https://ftpmirror.gnu.org/gnu/m4/m4-#{version.split('-').first}.tar.xz"
+  source_sha256 'e236ea3a1ccf5f6c270b1c4bb60726f371fa49459a8eaaebc90b216b328daf2b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e671666a05946c3df0cbf42348eed82075958e41be4428be0677c0989b9fde2f',
-     armv7l: 'e671666a05946c3df0cbf42348eed82075958e41be4428be0677c0989b9fde2f',
-       i686: '273a93fd6b09b4a58fa442510c6acec376d792373c98d718d3422d90463af082',
-     x86_64: '8555d6ac52bb8efa833f26ff62348aff5f9bf1865c224b0e2778118f9ae8b0f5'
+    aarch64: 'aca57f77f399011bccaeaccd05136fac7d66ba713b72794ed00922808f9731b5',
+     armv7l: 'aca57f77f399011bccaeaccd05136fac7d66ba713b72794ed00922808f9731b5',
+       i686: '0b3dfd39dd009232673eb3277ac8762b4f4d1d156de74ba9691d30d7ceb18f5c',
+     x86_64: '2761b53aa8ead691fc1762671000a5191af930663bd13282d9869e175acee917'
   })
 
   depends_on 'glibc' # R

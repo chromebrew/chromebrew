@@ -1,5 +1,6 @@
 /usr/local/bin/curl
 /usr/local/bin/curl-config
+/usr/local/bin/wcurl
 /usr/local/include/curl/curl.h
 /usr/local/include/curl/curlver.h
 /usr/local/include/curl/easy.h
@@ -21,6 +22,7 @@
 /usr/local/share/aclocal/libcurl.m4
 /usr/local/share/man/man1/curl-config.1.zst
 /usr/local/share/man/man1/curl.1.zst
+/usr/local/share/man/man1/wcurl.1.zst
 /usr/local/share/man/man3/CURLINFO_ACTIVESOCKET.3.zst
 /usr/local/share/man/man3/CURLINFO_APPCONNECT_TIME.3.zst
 /usr/local/share/man/man3/CURLINFO_APPCONNECT_TIME_T.3.zst
@@ -373,6 +375,7 @@
 /usr/local/share/man/man3/CURLOPT_SSL_FALSESTART.3.zst
 /usr/local/share/man/man3/CURLOPT_SSL_OPTIONS.3.zst
 /usr/local/share/man/man3/CURLOPT_SSL_SESSIONID_CACHE.3.zst
+/usr/local/share/man/man3/CURLOPT_SSL_SIGNATURE_ALGORITHMS.3.zst
 /usr/local/share/man/man3/CURLOPT_SSL_VERIFYHOST.3.zst
 /usr/local/share/man/man3/CURLOPT_SSL_VERIFYPEER.3.zst
 /usr/local/share/man/man3/CURLOPT_SSL_VERIFYSTATUS.3.zst
