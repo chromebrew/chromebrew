@@ -3,7 +3,7 @@ require 'package'
 class Man_db < Package
   description 'mandb is used to initialize or manually update index database caches that are usually maintained by man.'
   homepage 'https://man-db.nongnu.org/'
-  version '2.13.1-1'
+  version '2.13.1-2'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://download.savannah.gnu.org/releases/man-db/man-db-#{version.split('-').first}.tar.xz"
@@ -11,14 +11,15 @@ class Man_db < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2d8c03f527b17119cf23a942d368fddc9bcce9c11d776c51f9c2bba2e8b05fbf',
-     armv7l: '2d8c03f527b17119cf23a942d368fddc9bcce9c11d776c51f9c2bba2e8b05fbf',
-       i686: 'cc2ef77082615544e76fb42b91e256245a070f9b24339f5985ec15170f6986f6',
-     x86_64: 'd9313d25e62824542752d3549879ffd241139a685151bed86cd6c51caf27d2f9'
+    aarch64: '5f9759c170629554b82425a440984bee6bbf95b00dedd08e7bebfcae8fb00747',
+     armv7l: '5f9759c170629554b82425a440984bee6bbf95b00dedd08e7bebfcae8fb00747',
+       i686: '4e251b2f85b4270f318d855f4f12e59753daee21f876d0ea186a497e33b51cb1',
+     x86_64: 'bd60a033eeb940d61e1a478aeb7617e649565e50251efbda5d327cb824d60d87'
   })
 
   no_fhs
 
+  depends_on 'gcc_lib' # R
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
   depends_on 'groff' # L
