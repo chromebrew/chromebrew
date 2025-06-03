@@ -34,7 +34,7 @@ yes | crew remove vim
 # Some packages are placeholders not meant to be installed.
 skip_install_packages='py3_unsupported_python'
 # Some packages are required for core-adjacent functionality.
-skip_remove_packages='patchelf'
+skip_remove_packages='patchelf upx'
 
 if [[ -n ${CHANGED_PACKAGES-} ]]; then
   all_compatible_packages=$(crew list -d compatible)
