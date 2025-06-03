@@ -12,9 +12,9 @@ class Gawk < Autotools
   homepage 'https://www.gnu.org/software/gawk/'
   case ARCH
   when 'i686'
-    version '5.3.0-1'
+    version '5.3.0-2'
   else
-    version '5.3.2'
+    version '5.3.2-1'
   end
   license 'GPL-2'
   compatibility 'all'
@@ -22,7 +22,7 @@ class Gawk < Autotools
   when 'i686'
     # The Savannah git server keeps throwing 502 errors.
     source_url 'https://github.com/sailfishos-mirror/gawk/archive/605a77387523a07e3636d3a72c7a612dc15a5b31.tar.gz'
-    source_sha256 'f8c3486509de70519asas'
+    source_sha256 '13c7e7f70c16ee158d8808b787ec5c9164faf1a08f1a7d7b3d937c5556f7f7eb'
   else
     source_url "https://ftpmirror.gnu.org/gawk/gawk-#{version.split('-').first}.tar.xz"
     source_sha256 'f8c3486509de705192138b00ef2c00bbbdd0e84c30d5c07d23fc73a9dc4cc9cc'
@@ -30,10 +30,10 @@ class Gawk < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '154f49e5a9b9851c0301a98d16b94d962cb1f664c59e3f7d1750539c221efc6d',
-     armv7l: '154f49e5a9b9851c0301a98d16b94d962cb1f664c59e3f7d1750539c221efc6d',
-       i686: '1581fef815f82fbed1d986f9e668aeb329ef28ac42cbc22c347d5715ec03e18a',
-     x86_64: '637fa0913219b0072b6992176489c937784de2a9a95db29f20c9807d54d18f50'
+    aarch64: '99b58a9b0ce8b9594335bbef3f1123464a9f0ab6fbd0027f64c850a254525907',
+     armv7l: '99b58a9b0ce8b9594335bbef3f1123464a9f0ab6fbd0027f64c850a254525907',
+       i686: '9e9fda3c7e8dd393fa4bb389910192e1d2c480dc8372139e129e8bd6f940d56d',
+     x86_64: '45cd418bd240b9e23741907ca11794657eaf3b2fad88283d5d193ac2e3149dbb'
   })
 
   depends_on 'glibc' # R
@@ -46,7 +46,7 @@ class Gawk < Autotools
   no_shrink
 
   # Tests appear to have container issues...
-  run_tests if ARCH == 'i686'
+  run_tests unless ARCH == 'i686' || ARCH == 'x86_64'
 
   autotools_configure_options '--without-libsigsegv-prefix'
 

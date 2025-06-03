@@ -889,13 +889,13 @@ def prepare_package(destdir)
   end
 end
 
-def fix_interpreter_path(dir)
+def expand_binaries_and_fix_interpreter_path(dir)
   # Do not set interpreter for non-musl, as this can break apps if there
   # is an issue with the crew glibc.
   return if !@pkg.nil? && (@pkg.is_musl? || %w[crew_preload patchelf upx].include?(@pkg.name))
 
   Dir.chdir dir do
-    puts 'Running upx to uncompress binaries and patchelf to patch binary interpreter paths.'.lightblue
+    puts "Running upx to uncompress binaries #{CREW_GLIBC_INTERPRETER.blank? ? '' : 'and patchelf to patch binary interpreter paths '}if needed.".lightblue
     abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
     abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
     # Look for installed binaries and libraries in the package install
@@ -1031,7 +1031,7 @@ def install_package(pkgdir)
       end
     end
 
-    fix_interpreter_path(".#{CREW_PREFIX}")
+    expand_binaries_and_fix_interpreter_path(".#{CREW_PREFIX}")
 
     install_files(".#{CREW_PREFIX}") if Dir.exist?(".#{CREW_PREFIX}")
     install_files(".#{HOME}", HOME) if Dir.exist?(".#{HOME}")
