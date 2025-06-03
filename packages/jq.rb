@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Jq < Autotools
   description 'jq is a lightweight and flexible command-line JSON processor.'
   homepage 'https://stedolan.github.io/jq/'
-  version '1.7.1'
+  version '1.8.0'
   license 'MIT and CC-BY-3.0'
   compatibility 'all'
   source_url 'https://github.com/stedolan/jq.git'
@@ -11,14 +11,15 @@ class Jq < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '19a92ca161e622c94355fe96936d3f9987a6487c06969fb94ef72085ec87e744',
-     armv7l: '19a92ca161e622c94355fe96936d3f9987a6487c06969fb94ef72085ec87e744',
-       i686: 'e2b7fe0a8c1c75f6fdf08ea2175109dbdb050226f37cf69001ad85c7b9dbaddf',
-     x86_64: 'd4642b7ef212ab8cb60ada93de8eb290c673dc2a6ed636753bd1a1cd6124afbc'
+    aarch64: 'e9cb268eb4ecd0f60e630b6f9803ac98786bdcd3abd03f4b4491daea0d1b9e1e',
+     armv7l: 'e9cb268eb4ecd0f60e630b6f9803ac98786bdcd3abd03f4b4491daea0d1b9e1e',
+       i686: 'd3f0160e353fa8abb5f05a67706f7c6ba98897e03db42ffffcde5b90920d7160',
+     x86_64: 'bcb53c60671bf683e358d4ed1eb1d65ac892a157070278844e0627944b205877'
   })
 
   depends_on 'glibc'
 
   autotools_configure_options '--disable-maintainer-mode \
-      --disable-docs'
+      --disable-docs \
+      --enable-all-static'
 end
