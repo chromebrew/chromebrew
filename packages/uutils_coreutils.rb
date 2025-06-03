@@ -6,7 +6,7 @@ require 'buildsystems/rust'
 class Uutils_coreutils < RUST
   description 'Cross-platform Rust rewrite of the GNU coreutils'
   homepage 'https://github.com/uutils/coreutils'
-  version '0.1.0'
+  version '0.1.0-1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/uutils/coreutils.git'
@@ -14,10 +14,10 @@ class Uutils_coreutils < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '59d56b5e199e5f8c2f6d4004bbde81a7348d7162bd34a6bcbcd31bd7a7fba979',
-     armv7l: '59d56b5e199e5f8c2f6d4004bbde81a7348d7162bd34a6bcbcd31bd7a7fba979',
-       i686: '82b8e9f4f21ab33f03e35741f48431263b9195be466a01f3ce72321728ef5d11',
-     x86_64: '41781a6b7b100b04cd4dc120ed96a072e9d00d0fe005f6cefc45092d141410b5'
+    aarch64: '91390670200ef027bd72e4aacfa760c9eb124ed488eaf299e87e9f6874113541',
+     armv7l: '91390670200ef027bd72e4aacfa760c9eb124ed488eaf299e87e9f6874113541',
+       i686: '371a1f44ebb35e3f1b0a8062fc0218ad21f2d6e71975ce2485ca68ef9f65cb92',
+     x86_64: '5ecf1ad4d53a5479144cc4cd3c0aa638d20da94776e98f2cdcc4b2cc1ca443d0'
   })
 
   depends_on 'acl' => :build
