@@ -33,8 +33,6 @@ yes | crew remove vim
 #fi
 # Some packages are placeholders not meant to be installed.
 skip_install_packages='py3_unsupported_python'
-# Some packages are required for core-adjacent functionality.
-skip_remove_packages='patchelf upx'
 
 if [[ -n ${CHANGED_PACKAGES-} ]]; then
   all_compatible_packages=$(crew list -d compatible)
@@ -61,12 +59,8 @@ if [[ -n ${CHANGED_PACKAGES-} ]]; then
         echo "Testing removal of essential package ${pkg}."
         yes | time crew remove "${pkg}" || true
       else
-        if echo "${skip_remove_packages}" | grep "^${pkg}$"; then
-          echo "Skipping remove test for ${pkg}."
-        else
-          echo "Testing removal of ${pkg}."
-          yes | time crew remove "${pkg}"
-        fi
+        echo "Testing removal of ${pkg}."
+        yes | time crew remove "${pkg}"
       fi
     else
       echo "${pkg^} is not compatible."
