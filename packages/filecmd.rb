@@ -3,22 +3,21 @@ require 'package'
 class Filecmd < Package
   description 'file and libmagic determine file type'
   homepage 'https://darwinsys.com/file/'
-  version '5.46'
+  version '5.46-2'
   license 'BSD-2 and GPL-3+' # Chromebrew's filefix is GPL-3+, file itself is BSD-2
   compatibility 'all'
   source_url 'https://github.com/file/file.git'
-  git_hashtag "FILE#{version.gsub('.', '_')}"
+  git_hashtag "FILE#{version.split('-').first.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a39059b9d23a4edc65ce4bd4862c2bc266913dad5390a188246b397af205c99b',
-     armv7l: 'a39059b9d23a4edc65ce4bd4862c2bc266913dad5390a188246b397af205c99b',
-       i686: '280384bb1d71cc5fe88c71a7f7b80bf6dd774adb1e72acdaac5ea56c8bc589b5',
-     x86_64: '1eb7b2f5966d987cda130a0f9c6cf220614f4bd126a02764af68c1c860dad6d2'
+    aarch64: '246df01ec3981f49313eca434716d68c22b363ed53a9a87525fb3b6221870f1a',
+     armv7l: '246df01ec3981f49313eca434716d68c22b363ed53a9a87525fb3b6221870f1a',
+       i686: 'e8b32e2089f22b36e7b6399133dad0baefe54621a1da9b975808d60a55f5469d',
+     x86_64: '2fad06a6f1affb945cb25af7048bdc0b26dd3384471543fb64621cf7ec3e92c7'
   })
 
   depends_on 'bzip2' # R
-  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'lzlib' # R Fixes checking lzlib.h usability... no
   depends_on 'xzutils' # R
@@ -34,9 +33,19 @@ class Filecmd < Package
 
     File.write 'filefix', <<~FILEFIX_EOF
       #!/usr/bin/env bash
+      # Fix Error: /usr/bin/file file not found.
+      echo "filefix: Checking for scripts using: '/usr/bin/file' ..."
       while IFS= read -r -d '' f; do
         sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' "${f}"
       done <  <(find . -name configure -print0)
+      # Make sure we are using the Chromebrew bash shell instead of
+      # /bin/sh which in ChromeOS is actually dash.
+      echo "filefix: Checking for scripts using: '/bin/sh ' ..."
+      grep -rlZ '/bin/sh ' . | xargs -r -0 sed -i 's,/bin/sh ,#{CREW_PREFIX}/bin/sh ,g'
+      echo "filefix: Checking for scripts using: '/bin/sh \\\"' ..."
+      grep -rlZ "/bin/sh\\\"" . | xargs -r -0 sed -i 's,/bin/sh",#{CREW_PREFIX}/bin/sh",g'
+      echo "filefix: Checking for scripts using: \\\"'/bin/sh '\\\" ..."
+      grep -rlZ "/bin/sh\\\'" . | xargs -r -0 sed -i "s,/bin/sh',#{CREW_PREFIX}/bin/sh',g"
     FILEFIX_EOF
   end
 
