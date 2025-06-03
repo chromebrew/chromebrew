@@ -1,6 +1,6 @@
 #!/bin/bash
 # This is for use as a Github CI Unit Test.
-# Version 1.2
+# Version 1.3
 set -e
 cd /usr/local/lib/crew/packages/
 git clone --depth=1 --branch="$CREW_BRANCH" "$CREW_REPO" ~/build_test
@@ -31,7 +31,10 @@ yes | crew remove vim
   #echo "Checking that dstat was renamed to py3_dool."
   #crew list installed | grep -q "py3_dool"
 #fi
+# Some packages are placeholders not meant to be installed.
 skip_install_packages='py3_unsupported_python'
+# Some packages are required for core-adjacent functionality.
+skip_remove_packages='patchelf'
 
 if [[ -n ${CHANGED_PACKAGES-} ]]; then
   all_compatible_packages=$(crew list -d compatible)
@@ -58,8 +61,12 @@ if [[ -n ${CHANGED_PACKAGES-} ]]; then
         echo "Testing removal of essential package ${pkg}."
         yes | time crew remove "${pkg}" || true
       else
-        echo "Testing removal of ${pkg}."
-        yes | time crew remove "${pkg}"
+        if echo "${skip_remove_packages}" | grep "^${pkg}$"; then
+          echo "Skipping remove test for ${pkg}."
+        else
+          echo "Testing removal of ${pkg}."
+          yes | time crew remove "${pkg}"
+        fi
       fi
     else
       echo "${pkg^} is not compatible."
