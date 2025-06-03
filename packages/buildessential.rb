@@ -12,7 +12,8 @@ class Buildessential < Package
   # Make sure core is installed
   depends_on 'core'
 
-  # glibc has ldconfig, which is installed by default now.
+  # The standalone glibc is installed on newer systems, and on older
+  # systems we have glibc_dev and glibc_lib metapackages.
   depends_on 'glibc_lib' if CREW_GLIBC_INTERPRETER.nil?
   depends_on 'glibc_dev' if CREW_GLIBC_INTERPRETER.nil?
   depends_on 'gcc_dev'

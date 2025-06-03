@@ -32,8 +32,10 @@ class Core < Package
   depends_on 'gettext'
   depends_on 'git'
   depends_on 'git_mestrelion_tools'
-  depends_on 'glibc' if CREW_GLIBC_INTERPRETER.nil?
-  depends_on 'glibc_lib' unless CREW_GLIBC_INTERPRETER.nil?
+  # The standalone glibc is installed on newer systems, and on older
+  # systems we have glibc_dev and glibc_lib metapackages.
+  depends_on 'glibc'
+  depends_on 'glibc_lib' if CREW_GLIBC_INTERPRETER.nil?
   depends_on 'gmp'
   depends_on 'gnutls'
   depends_on 'groff'
