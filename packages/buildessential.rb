@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.44'
+  version '1.45'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -12,7 +12,10 @@ class Buildessential < Package
   # Make sure core is installed
   depends_on 'core'
 
-  # install first to get ldconfig
+  # The standalone glibc is installed on newer systems, and on older
+  # systems we have glibc_dev and glibc_lib metapackages.
+  depends_on 'glibc_lib' if CREW_GLIBC_INTERPRETER.nil?
+  depends_on 'glibc_dev' if CREW_GLIBC_INTERPRETER.nil?
   depends_on 'gcc_dev'
   depends_on 'gmp'
   depends_on 'mpfr'
