@@ -4,7 +4,7 @@ class Llvm20_build < Package
   @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl' : 'clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl'
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
-  version '20.1.3'
+  version '20.1.6'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -13,10 +13,10 @@ class Llvm20_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1fbda9fc9512a30521f39fbc659ebe3756e65731867e9975cfc7bd216449a0c1',
-     armv7l: '1fbda9fc9512a30521f39fbc659ebe3756e65731867e9975cfc7bd216449a0c1',
-       i686: '614f0b8fe1f1289da929ad44a768bd6f3247edfa97717aa26c4b3b73cbcbe27c',
-     x86_64: '1b184852101f53bfb9a69f35de4833a5abc6d7536a60c3478c3f2b5624c53ef6'
+    aarch64: '0208ae150f520c2fc08b39531b83559ef0c5d2ff32e7fe04333144edd523b779',
+     armv7l: '0208ae150f520c2fc08b39531b83559ef0c5d2ff32e7fe04333144edd523b779',
+       i686: '8a940d2c0d1ea3a8463ad9ba6d28ce9f23b9c6fa8914ea47579a8d79f5aa8f68',
+     x86_64: 'f379501e6bf65dc3a16998622a4a0f4a08840509e5b2caae4b4cd291f7d256c9'
   })
 
   depends_on 'gcc_lib' # R
@@ -129,6 +129,7 @@ class Llvm20_build < Package
             -DCMAKE_EXE_LINKER_FLAGS='#{@ARCH_LTO_LDFLAGS}' \
             -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
+            -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}"}' \
             -DCLANG_DEFAULT_LINKER=mold \
             -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
             -DCOMPILER_RT_BUILD_BUILTINS=ON \
