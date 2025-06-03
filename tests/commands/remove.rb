@@ -24,7 +24,7 @@ class RemoveCommandTest < Minitest::Test
   def test_force_remove_essential_package
     puts 'Testing the forced removal of essential package zstd. This should succeed.'
 
-    expected_output = "zstd removed!\n"
+    expected_output = "zstd_static: /usr/local/bin/zstd\n\nzstd removed!\n"
     assert_output expected_output, nil do
       Command.remove(Package.load_package('zstd.rb'), force: true)
     end

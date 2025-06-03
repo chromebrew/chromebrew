@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/local/bin/ruby
 # update_no_compile_packages version 1.0 (for Chromebrew)
 # This checks if packages with 'no_compile_needed' require updates.
 #

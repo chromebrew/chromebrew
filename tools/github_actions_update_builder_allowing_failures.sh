@@ -8,4 +8,4 @@ yes | crew upgrade || true
 source ~/.bashrc
 git config --global --add safe.directory /output
 export CREW_AGREE_TIMEOUT_SECONDS=1
-tools/build_updated_packages.rb --skip || exit 1
+tools/build_updated_packages.rb --skip --continue-after-failed-builds || exit 1

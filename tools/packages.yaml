@@ -1645,6 +1645,11 @@ url: http://ftpmirror.gnu.org/ed
 activity: low
 ---
 kind: url
+name: edit
+url: https://github.com/microsoft/edit/releases
+activity: medium
+---
+kind: url
 name: editoconfig_core_c
 url: https://github.com/editorconfig/editorconfig-core-c/releases
 activity: medium
@@ -1983,6 +1988,11 @@ kind: url
 name: flac
 url: https://ftp.osuosl.org/pub/xiph/releases/flac/
 activity: none
+---
+kind: url
+name: flareget
+url: https://flareget.com/download
+activity: medium
 ---
 kind: url
 name: flatpak
@@ -5680,6 +5690,16 @@ url: https://github.com/kristapsdz/releases
 activity: medium
 ---
 kind: url
+name: lrzip
+url: https://github.com/ckolivas/lrzip/releases
+activity: low
+---
+kind: url
+name: lrzip_next
+url: https://github.com/pete4abw/lrzip-next/releases
+activity: medium
+---
+kind: url
 name: lsb_release
 url: https://sourceforge.net/projects/lsb/files/lsb_release/
 activity: none
@@ -6286,8 +6306,8 @@ activity: medium
 ---
 kind: url
 name: ncftp
-url: http://ftp.ncftp.com/ncftp
-activity: none
+url: https://www.ncftp.com/public_ftp/ncftp/
+activity: low
 ---
 kind: url
 name: ncompress
@@ -6925,6 +6945,11 @@ url: https://salsa.debian.org/debian/pcsc-lite/-/tags
 activity: medium
 ---
 kind: url
+name: pdfbox
+url: https://pdfbox.apache.org/download.html
+activity: low
+---
+kind: url
 name: pdfchain
 url: https://downloads.sourceforge.net/project/pdfchain/files/
 activity: none
@@ -7398,6 +7423,11 @@ kind: url
 name: polkit
 url: https://gitlab.freedesktop.org/polkit/polkit/-/tags
 activity: low
+---
+kind: url
+name: ponyc
+url: https://github.com/ponylang/ponyc/releases
+activity: medium
 ---
 kind: url
 name: poppler
@@ -7955,7 +7985,7 @@ url: https://github.com/rakudo/rakudo/releases
 activity: medium
 ---
 kind: url
-name: ranger
+name: ranger_fm
 url: https://github.com/ranger/ranger/releases
 activity: low
 ---
@@ -8210,6 +8240,11 @@ url: https://github.com/markdownlint/markdownlint/tags
 activity: low
 ---
 kind: url
+name: ruby_method_source
+url: https://github.com/banister/method_source/tags
+activity: low
+---
+kind: url
 name: ruby_parallel
 url: https://github.com/grosser/parallel/tags
 activity: medium
@@ -8343,6 +8378,11 @@ kind: url
 name: sassc
 url: https://github.com/sass/sassc/releases
 activity: none
+---
+kind: url
+name: sayonara
+url: https://gitlab.com/luciocarreras/sayonara-player/-/releases
+activity: low
 ---
 kind: url
 name: sbc
@@ -8880,6 +8920,11 @@ url: http://www-us.apache.org/dist/subversion
 activity: low
 ---
 kind: url
+name: sudo_rs
+url: https://github.com/trifectatechfoundation/sudo-rs/releases
+activity: medium
+---
+kind: url
 name: suitesparse
 url: https://github.com/DrTimothyAldenDavis/SuiteSparse/releases
 activity: medium
@@ -9098,6 +9143,11 @@ kind: url
 name: texlive
 url: ftp://tug.org/historic/systems/texlive/
 activity: low
+---
+kind: url
+name: texmaker
+url: https://www.xm1math.net/texmaker/download.html
+activity: none
 ---
 kind: url
 name: textract
@@ -9422,6 +9472,11 @@ activity: low
 kind: url
 name: utf8proc
 url: https://github.com/JuliaLang/utf8proc/releases
+activity: low
+---
+kind: url
+name: utfcpp
+url: https://github.com/nemtrif/utfcpp/releases
 activity: low
 ---
 kind: url
@@ -10278,6 +10333,11 @@ kind: url
 name: zlib_ng
 url: https://github.com/zlib-ng/zlib-ng/releases
 activity: high
+---
+kind: url
+name: zola
+url: https://github.com/getzola/zola/releases
+activity: low
 ---
 kind: url
 name: zoneinfo
