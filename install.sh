@@ -63,7 +63,7 @@ fi
 # Default chromebrew repo values.
 : "${OWNER:=chromebrew}"
 : "${REPO:=chromebrew}}"
-: "${BRANCH=master}"
+: "${BRANCH:=master}"
 
 # Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
 # Check if the user is on ChromeOS v117+ and not in the VT-2 console, as sudo will not work.
@@ -326,7 +326,7 @@ function extract_install () {
       fi
     fi
 
-    echo_intra "Installing ${1} ..."
+    echo_intra "Installing ${1}..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
 
     if [[ "${1}" == 'glibc' ]] || [[ "${1}" == 'crew_preload' ]]; then
@@ -379,7 +379,6 @@ echo_info "Downloading Bootstrap packages:\n${BOOTSTRAP_PACKAGES}"
 # Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
 # x86_64, and the mandb postinstall doesn't fail in newer arm
 # containers.
-#
 if [[ "${ARCH}" == "armv7l" ]] ; then
   # Handle arm multarch.
   export LD_LIBRARY_PATH="$CREW_PREFIX/lib64:/usr/lib64:/lib64:$CREW_PREFIX/lib${LIB_SUFFIX}:/usr/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
