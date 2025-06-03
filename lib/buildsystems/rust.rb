@@ -21,7 +21,7 @@ class RUST < Package
 
     unless @rust_channel.to_s.empty?
       system rust_env, "rustup install --force #{@rust_channel}"
-      fix_interpreter_path("#{CREW_PREFIX}/share/rustup/toolchains")
+      expand_binaries_and_fix_interpreter_path("#{CREW_PREFIX}/share/rustup/toolchains")
     end
     system rust_env, "rustup target add #{@rust_targets}" unless @rust_targets.to_s.empty?
     system rust_env, "#{@pre_rust_options} cargo #{@channel_flag} fetch"
