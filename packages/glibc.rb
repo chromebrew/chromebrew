@@ -130,22 +130,22 @@ class Glibc < Package
     # Avoid conflicts with the zoneinfo tzdata package:
     %w[tzselect zdump zic].each { |f| FileUtils.rm_rf "#{CREW_DEST_PREFIX}/bin/#{f}" }
 
-    @interpreter = case ARCH
-                   when 'aarch64', 'armv7l'
-                     "#{CREW_DEST_PREFIX}/opt/glibc-libs/ld-linux-armhf.so.3"
-                   when 'i686'
-                     "#{CREW_DEST_PREFIX}/opt/glibc-libs/ld-linux.so.2"
-                   when 'x86_64'
-                     "#{CREW_DEST_PREFIX}/opt/glibc-libs/ld-linux-x86-64.so.2"
-                   end
+    interpreter = case ARCH
+                  when 'aarch64', 'armv7l'
+                    "#{CREW_DEST_PREFIX}/opt/glibc-libs/ld-linux-armhf.so.3"
+                  when 'i686'
+                    "#{CREW_DEST_PREFIX}/opt/glibc-libs/ld-linux.so.2"
+                  when 'x86_64'
+                    "#{CREW_DEST_PREFIX}/opt/glibc-libs/ld-linux-x86-64.so.2"
+                  end
     # We need to set make and localedef to work with this newly built
     # glibc.
     FileUtils.cp "#{CREW_PREFIX}/bin/make", 'builddir/make'
     system(<<~INSTALL_LOCALES_EOF, chdir: 'builddir')
-      patchelf --set-interpreter #{@interpreter} make
+      patchelf --set-interpreter #{interpreter} make
       patchelf --replace-needed libdl.so.2 #{CREW_DEST_PREFIX}/opt/glibc-libs/libdl.so.2 make
       patchelf --replace-needed libc.so.6 #{CREW_DEST_PREFIX}/opt/glibc-libs/libc.so.6 make
-      patchelf --set-interpreter #{@interpreter} locale/localedef
+      patchelf --set-interpreter #{interpreter} locale/localedef
       patchelf --add-needed #{CREW_DEST_PREFIX}/opt/glibc-libs/libdl.so.2 locale/localedef
       patchelf --replace-needed libc.so.6 #{CREW_DEST_PREFIX}/opt/glibc-libs/libc.so.6 locale/localedef
       ./make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales
