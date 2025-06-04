@@ -1,7 +1,6 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 require 'etc'
-require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
 CREW_VERSION ||= '1.61.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
@@ -56,12 +55,12 @@ end
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
 CREW_ESSENTIAL_PACKAGES ||= %W[
-  bash crew_profile_base gcc_lib gmp ncurses patchelf readline ruby upx zlib zlib_ng zstd
-  #{CREW_GLIBC_INTERPRETER.nil? ? '' : 'crew_preload'}
-  #{CREW_GLIBC_INTERPRETER.nil? ? '' : 'glibc'}
+  bash crew_profile_base gcc_lib gmp libxcrypt ncurses patchelf readline ruby upx zlib zlib_ng zstd
+  #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
+  #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
   #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
-       "#{File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_lib#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_lib#{LIBC_VERSION.delete('.')}" : ''}
-   #{File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''}"
+       "#{"glibc_lib#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_lib#{LIBC_VERSION.delete('.')}.filelist"))}
+   #{"glibc_build#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist"))}"
      else
        File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''
      end
@@ -105,9 +104,7 @@ CREW_WINE_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'wine')
 CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 
 # Local constants for contributors.
-git_available = !(git_path = `which git`.strip).empty? && File.executable?(git_path)
-git_stdout, git_stderr = Open3.capture3("#{CREW_PREFIX}/bin/git rev-parse --show-toplevel")
-CREW_LOCAL_REPO_ROOT ||= git_available ? git_stdout : '' unless defined?(CREW_LOCAL_REPO_ROOT)
+CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2> /dev/null`.chomp
 CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
 
@@ -123,7 +120,7 @@ CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless d
 CREW_NO_GIT             ||= ENV.fetch('CREW_NO_GIT', false) unless defined?(CREW_NO_GIT)
 CREW_UNATTENDED         ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
 
-CREW_STANDALONE_UPGRADE_ORDER = %w[glibc openssl ruby python3] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
+CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt crew_preload glibc openssl ruby python3] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
 
 CREW_DEBUG   ||= ARGV.intersect?(%w[-D --debug]) unless defined?(CREW_DEBUG)
 CREW_FORCE   ||= ARGV.intersect?(%w[-f --force]) unless defined?(CREW_FORCE)
