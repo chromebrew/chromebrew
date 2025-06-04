@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_strscan < RUBY
   description 'Provides lexical scanning operations on a String.'
   homepage 'https://github.com/ruby/strscan'
-  version "3.1.2-#{CREW_RUBY_VER}"
+  version "3.1.5-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
