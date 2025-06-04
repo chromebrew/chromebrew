@@ -284,6 +284,7 @@ jobs:
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               -v "$(pwd)":/output \
+              --tmpfs /tmp \
               "satmandu/crewbuild:${CONTAINER}" \
               /bin/chromebrewstart /output/tools/github_actions_no_compile_updater.sh  > >(tee -a /tmp/update.log) 2> >(tee -a /tmp/update.log >&2)
               grep "Updated:" /tmp/update.log || true
