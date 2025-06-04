@@ -39,6 +39,15 @@ class Ruby < Package
     system "grep -rlZ \"/bin/sh'\" . | xargs -0 sed -i \"s,/bin/sh',#{CREW_PREFIX}/bin/sh',g\""
   end
 
+  def self.preinstall
+    # Ruby upgrades break if libxcrypt is not installed.
+    device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
+    unless device[:installed_packages].any? { |elem| elem[:name] == 'libxcrypt' }
+      puts 'Installing required ruby dependency libxcrypt'.lightblue
+      system 'crew install libxcrypt'
+    end
+  end
+
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
     system "RUBY_TRY_CFLAGS='stack_protector=no' \
