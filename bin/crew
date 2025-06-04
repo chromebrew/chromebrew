@@ -895,7 +895,7 @@ def expand_binaries_and_fix_interpreter_path(dir)
   return if !@pkg.nil? && (@pkg.is_musl? || %w[crew_preload patchelf upx].include?(@pkg.name))
 
   Dir.chdir dir do
-    puts "Running upx to uncompress binaries #{CREW_GLIBC_INTERPRETER.blank? ? '' : 'and patchelf to patch binary interpreter paths '}if needed.".lightblue
+    puts "Running upx to uncompress binaries #{'and patchelf to patch binary interpreter paths ' unless CREW_GLIBC_INTERPRETER.blank?}if needed.".lightblue
     abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
     abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
     # Look for installed binaries and libraries in the package install

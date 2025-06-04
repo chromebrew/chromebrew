@@ -291,7 +291,7 @@ end
 if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patchelf")
   abort("No Upx found! Please run 'crew install upx'").lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
   abort("No Patchelf found! Please run 'crew install patchelf'").lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
-  puts "Running upx to uncompress binaries #{CREW_BRANCH == 'pre_glibc_standalone' ? '' : 'and patchelf to patch binary interpreter paths '}if needed.".lightblue
+  puts "Running upx to uncompress binaries #{'and patchelf to patch binary interpreter paths ' unless CREW_BRANCH == 'pre_glibc_standalone'}if needed.".lightblue
   # Look for installed binaries and libraries in /usr/local and the lib
   # prefix directories.
   execfiles = `find #{CREW_PREFIX}/bin #{CREW_LIB_PREFIX} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' -- 2> /dev/null`.split

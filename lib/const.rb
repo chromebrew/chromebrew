@@ -56,11 +56,11 @@ end
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
 CREW_ESSENTIAL_PACKAGES ||= %W[
   bash crew_profile_base gcc_lib gmp ncurses patchelf readline ruby upx zlib zlib_ng zstd
-  #{CREW_GLIBC_INTERPRETER.nil? ? '' : 'crew_preload'}
-  #{CREW_GLIBC_INTERPRETER.nil? ? '' : 'glibc'}
+  #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
+  #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
   #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
-       "#{File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_lib#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_lib#{LIBC_VERSION.delete('.')}" : ''}
-   #{File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''}"
+       "#{"glibc_lib#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_lib#{LIBC_VERSION.delete('.')}.filelist"))}
+   #{"glibc_build#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist"))}"
      else
        File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''
      end
