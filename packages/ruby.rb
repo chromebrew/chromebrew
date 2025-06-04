@@ -3,18 +3,19 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.4-1'
+  version '3.4.4-2cce628'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag "v#{version.split('-').first.gsub('.', '_')}"
+  git_hashtag '2cce628721728409a26c2d4732f63419785c7fd8'
+  # git_hashtag "v#{version.split('-').first.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0c9c3d8531555f7f9d479abb1fc986007d2a2c079cc97fd25a89b491bcf51c23',
-     armv7l: '0c9c3d8531555f7f9d479abb1fc986007d2a2c079cc97fd25a89b491bcf51c23',
-       i686: 'd0b4efe95c67b2e424c6cba71215ff3ce12a0240c9b715d9da885d61c0d5e1ee',
-     x86_64: '901582417958d1aefe122e7cd3d6318cc72e912f281c19337e2837697007fa87'
+    aarch64: '275791ddc21749477c7b551e80ed2ef8af0637ed0aed19ebb1eeaebf3207d5a9',
+     armv7l: '275791ddc21749477c7b551e80ed2ef8af0637ed0aed19ebb1eeaebf3207d5a9',
+       i686: '815a2ef25a8bc950f03ca76999ebdf855e55ddea6f0a99375f6e1f8ebec4b51b',
+     x86_64: 'b33e0918a6b6785f3531910eac23718cfa5625062760e6a167e7edbe0528f03b'
   })
 
   depends_on 'ca_certificates' # L
@@ -34,9 +35,7 @@ class Ruby < Package
   # at run-time, system's gmp, openssl, and zlib can be used
 
   def self.patch
-    system "grep -rlZ '/bin/sh ' . | xargs -0 sed -i 's,/bin/sh ,#{CREW_PREFIX}/bin/sh ,g'"
-    system "grep -rlZ \"/bin/sh\\\"\" . | xargs -0 sed -i 's,/bin/sh\",#{CREW_PREFIX}/bin/sh\",g'"
-    system "grep -rlZ \"/bin/sh'\" . | xargs -0 sed -i \"s,/bin/sh',#{CREW_PREFIX}/bin/sh',g\""
+    system 'filefix'
   end
 
   def self.build
