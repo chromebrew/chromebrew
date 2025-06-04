@@ -3,18 +3,19 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.3' # Do not use @_ver here, it will break the installer.
+  version '3.4.4-2cce628'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag "v#{version.gsub('.', '_')}"
+  git_hashtag '2cce628721728409a26c2d4732f63419785c7fd8'
+  # git_hashtag "v#{version.split('-').first.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd222312065f090f1393ae5290294595f854fe0766630ebb3feb847b2a4306f70',
-     armv7l: 'd222312065f090f1393ae5290294595f854fe0766630ebb3feb847b2a4306f70',
-       i686: '89d3e147f13c64242c45416edc6212f5947b50c70c8903c468b80274cdc52e11',
-     x86_64: 'fff153d663b037df66255127eb1ae0f1c7e3b7cd595962c71ff19faee416ad06'
+    aarch64: '275791ddc21749477c7b551e80ed2ef8af0637ed0aed19ebb1eeaebf3207d5a9',
+     armv7l: '275791ddc21749477c7b551e80ed2ef8af0637ed0aed19ebb1eeaebf3207d5a9',
+       i686: '815a2ef25a8bc950f03ca76999ebdf855e55ddea6f0a99375f6e1f8ebec4b51b',
+     x86_64: 'b33e0918a6b6785f3531910eac23718cfa5625062760e6a167e7edbe0528f03b'
   })
 
   depends_on 'ca_certificates' # L
@@ -23,6 +24,7 @@ class Ruby < Package
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'libffi' # R
+  depends_on 'libxcrypt' # R
   depends_on 'libyaml' # R
   depends_on 'openssl' # R
   depends_on 'rust' => :build
@@ -32,15 +34,19 @@ class Ruby < Package
 
   # at run-time, system's gmp, openssl, and zlib can be used
 
+  def self.patch
+    system 'filefix'
+  end
+
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
     system "RUBY_TRY_CFLAGS='stack_protector=no' \
       RUBY_TRY_LDFLAGS='stack_protector=no' \
-      optflags='-flto=auto -fuse-ld=#{CREW_LINKER}' \
-      LD=#{CREW_LINKER} \
-      mold -run ./configure #{CREW_CONFIGURE_OPTIONS} \
+      optflags='-flto=auto -fuse-ld=mold' \
+      LD=mold \
+      ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
-      #{ARCH == 'x86_64' ? '--enable-yjit' : ''} \
+      #{'--enable-yjit' if ARCH == 'x86_64' || ARCH == 'aarch64'} \
       --disable-fortify-source"
     system "MAKEFLAGS='--jobs #{CREW_NPROC}' make"
   end
