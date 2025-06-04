@@ -12,7 +12,7 @@ class Ruby_erb < RUBY
   binary_sha256({
     aarch64: '20386ddf0f42eace56dda587c2f24cc2b0ac561ebf798f940e0b540e9b6f5e08',
      armv7l: '20386ddf0f42eace56dda587c2f24cc2b0ac561ebf798f940e0b540e9b6f5e08',
-       i686: '9634bed863357b5de28b541020b2f2db16505dda744ab8f83caf7babbd0c12c9',
+       i686: 'd58b89833c7eff6b66055d01e80b4edcc9bc7efb5b24bca6614350167a2015b5',
      x86_64: 'e2c3d4bd5c15bc13e610f7ea52bbe70876eede8674bc2a27f281c169ab1b95dd'
   })
 
