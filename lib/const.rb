@@ -104,7 +104,7 @@ CREW_WINE_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'wine')
 CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 
 # Local constants for contributors.
-CREW_LOCAL_REPO_ROOT ||= `LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} git rev-parse --show-toplevel 2> /dev/null`.chomp
+CREW_LOCAL_REPO_ROOT ||= Kernel.system("#{CREW_PREFIX}/bin/git --version", %i[out err] => File::NULL)) ? `git rev-parse --show-toplevel 2> /dev/null`.chomp : '' unless defined?(CREW_LOCAL_REPO_ROOT)
 CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
 
