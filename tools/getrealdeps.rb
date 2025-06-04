@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 1.7 (for Chromebrew)
+# getrealdeps version 1.8 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -7,8 +7,10 @@ crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
 # When invoked from crew, pwd is CREW_DEST_DIR, so crew_local_repo_root
 # is empty.
 if crew_local_repo_root.to_s.empty?
+  require_relative '../lib/color'
   require_relative '../lib/const'
 else
+  require File.join(crew_local_repo_root, 'lib/color')
   require File.join(crew_local_repo_root, 'lib/const')
 end
 
@@ -37,7 +39,7 @@ def whatprovidesfxn(pkgdepslcl, pkg)
 end
 
 def main(pkg)
-  puts "Checking for the runtime dependencies of #{pkg}..."
+  puts "Checking for the runtime dependencies of #{pkg}...".lightblue
 
   if @opt_use_crew_dest_dir
     define_singleton_method('pkgfilelist') { File.join(CREW_DEST_DIR, 'filelist') }
@@ -117,55 +119,41 @@ def main(pkg)
   # Look for missing runtime dependencies.
   missingpkgdeps = pkgdeps.reject { |i| File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}'") unless File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}' => :build") }
 
-  # Do not add llvm*_{dev,lib} runtime deps if this is a llvm*_build
-  # package as those packages are created from the llvm build package
-  # after it is built.
-  if /llvm.*_build/.match(pkg)
-    missingpkgdeps.delete_if { |d| /llvm.*_*/.match(d) }
-    pkgdeps.delete_if { |d| /llvm.*_*/.match(d) }
+  # Special cases where dependencies should not be automatically added:
+
+  dependency_exceptions = Set[
+    { name_regex: 'llvm.*_build', exclusion_regex: 'llvm.*_*', comments: 'created from the llvm build package.' },
+    { name_regex: '(llvm.*_dev|llvm.*_lib|libclc|openmp)', exclusion_regex: 'llvm.*_build', comments: 'should only be a build dep.' },
+    { name_regex: 'llvm.*_lib', exclusion_regex: 'llvm_lib', comments: 'should only be a build dep.' },
+    { name_regex: 'gcc_build', exclusion_regex: 'gcc.*_*', comments: 'created from the gcc_build package.' },
+    { name_regex: '(gcc_dev|gcc_lib|libssp)', exclusion_regex: 'gcc_build', comments: 'should only be a build dep.' },
+    { name_regex: 'gcc_lib', exclusion_regex: 'gcc_lib', comments: 'should only be a build dep.' },
+    { name_regex: 'python3', exclusion_regex: '(tcl|tk)', comments: 'optional for i686, which does not have gui libraries.' }
+  ]
+
+  dependency_exceptions_pkgs = dependency_exceptions.map { |h| h[:name_regex] }
+
+  dependency_exceptions_pkgs.each do |exception|
+    working_exception_pkg = dependency_exceptions.find { |i| i[:name_regex] == exception }
+    name_regex = working_exception_pkg[:name_regex]
+    exclusion_regex = working_exception_pkg[:exclusion_regex]
+    exclusion_comments = working_exception_pkg[:comments]
+    if /#{name_regex}/.match(pkg)
+      puts "#{pkg}: #{exclusion_regex} - #{exclusion_comments}..".orange if pkgdeps.select{ |d| /#{exclusion_regex}/.match(d) }.length > 0
+      missingpkgdeps.delete_if { |d| /#{exclusion_regex}/.match(d) }
+      pkgdeps.delete_if { |d| /#{exclusion_regex}/.match(d) }
+    end
   end
 
-  # Do not add llvm_build runtime deps if this is a llvm*_{dev,lib}
-  # package, as the llvm build package should only be a build dep for
-  # these packages.
-  if /llvm.*_lib/.match(pkg) || /llvm.*_dev/.match(pkg) || /libclc/.match(pkg) || /openmp/.match(pkg)
-    missingpkgdeps.delete_if { |d| /llvm.*_build/.match(d) }
-    pkgdeps.delete_if { |d| /llvm.*_build/.match(d) }
-  end
-  if /llvm.*_lib/.match(pkg)
-    missingpkgdeps.delete_if { |d| /llvm_lib/.match(d) }
-    pkgdeps.delete_if { |d| /llvm_lib/.match(d) }
-  end
-
-  # Do not add gcc_{dev,lib} runtime deps if this is a gcc_build
-  # package as those packages are created from the gcc_build package
-  # after it is built.
-  if /gcc_build/.match(pkg)
-    missingpkgdeps.delete_if { |d| /gcc.*_*/.match(d) }
-    pkgdeps.delete_if { |d| /gcc.*_*/.match(d) }
-  end
-
-  # Do not add gcc_build runtime deps if this is a gcc_{dev,lib}
-  # package, as the gcc_build package should only be a build dep for
-  # these packages.
-  if /gcc_lib/.match(pkg) || /gcc_dev/.match(pkg) || /libssp/.match(pkg)
-    missingpkgdeps.delete_if { |d| /gcc_build/.match(d) }
-    pkgdeps.delete_if { |d| /gcc_build/.match(d) }
-  end
-  if /gcc_lib/.match(pkg)
-    missingpkgdeps.delete_if { |d| /gcc_lib/.match(d) }
-    pkgdeps.delete_if { |d| /gcc_lib/.match(d) }
-  end
-
-  puts "\nPackage #{pkg} has runtime library dependencies on these packages:"
+  puts "\nPackage #{pkg} has runtime library dependencies on these packages:".lightblue
   pkgdeps.each do |i|
-    puts "  depends_on '#{i}' # R"
+    puts "  depends_on '#{i}' # R".lightgreen
   end
 
   # Leave if we didn't find any missing dependencies.
   return if missingpkgdeps.empty?
-  puts "\nPackage file #{pkg}.rb is missing these runtime library dependencies:"
-  puts "  depends_on '#{missingpkgdeps.join("' # R\n  depends_on '")}' # R"
+  puts "\nPackage file #{pkg}.rb is missing these runtime library dependencies:".orange
+  puts "  depends_on '#{missingpkgdeps.join("' # R\n  depends_on '")}' # R".orange
 
   missingpkgdeps.each do |adddep|
     puts "  depends_on '#{adddep}' # R"
@@ -199,7 +187,7 @@ def main(pkg)
   end
   # Leave if there aren't any old runtime dependencies.
   return if lines_to_delete.empty?
-  puts "\nPackage file #{pkg}.rb has these outdated runtime library dependencies:"
+  puts "\nPackage file #{pkg}.rb has these outdated runtime library dependencies:".lightpurple
   puts lines_to_delete.keys
   system("gawk -i inplace 'NR != #{lines_to_delete.values.join(' && NR != ')}' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb")
 end
