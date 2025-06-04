@@ -138,11 +138,10 @@ def main(pkg)
     name_regex = working_exception_pkg[:name_regex]
     exclusion_regex = working_exception_pkg[:exclusion_regex]
     exclusion_comments = working_exception_pkg[:comments]
-    if /#{name_regex}/.match(pkg)
-      puts "#{pkg}: #{exclusion_regex} - #{exclusion_comments}..".orange if pkgdeps.select{ |d| /#{exclusion_regex}/.match(d) }.length > 0
-      missingpkgdeps.delete_if { |d| /#{exclusion_regex}/.match(d) }
-      pkgdeps.delete_if { |d| /#{exclusion_regex}/.match(d) }
-    end
+    next unless /#{name_regex}/.match(pkg)
+    puts "#{pkg}: #{exclusion_regex} - #{exclusion_comments}..".orange if pkgdeps.select { |d| /#{exclusion_regex}/.match(d) }.length.positive?
+    missingpkgdeps.delete_if { |d| /#{exclusion_regex}/.match(d) }
+    pkgdeps.delete_if { |d| /#{exclusion_regex}/.match(d) }
   end
 
   puts "\nPackage #{pkg} has runtime library dependencies on these packages:".lightblue
