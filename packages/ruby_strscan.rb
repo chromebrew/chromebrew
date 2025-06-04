@@ -13,7 +13,7 @@ class Ruby_strscan < RUBY
     aarch64: '642a4d8c490555fe2fb4894f1d1689eaf611ee0577c3cfc4a33ba4ca9734aab9',
      armv7l: '642a4d8c490555fe2fb4894f1d1689eaf611ee0577c3cfc4a33ba4ca9734aab9',
        i686: '7afdc14765255716eeedee7bc905e2b976904c1c30583ad02ac969fa37a57860',
-     x86_64: '827a7b8abba2f99dcd3e48f3708af76e7a27a74b651fae50991ac91760d154d3'
+     x86_64: 'b3ca7558687bea73952ff41fcd8ae589adab49a98bcd0cf176fda2cf505ee1f7'
   })
 
   conflicts_ok
