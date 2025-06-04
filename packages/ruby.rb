@@ -3,19 +3,18 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.4-2cce628'
+  version '3.4.4-1'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag '2cce628721728409a26c2d4732f63419785c7fd8'
-  # git_hashtag "v#{version.split('-').first.gsub('.', '_')}"
+  git_hashtag "v#{version.split('-').first.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '275791ddc21749477c7b551e80ed2ef8af0637ed0aed19ebb1eeaebf3207d5a9',
-     armv7l: '275791ddc21749477c7b551e80ed2ef8af0637ed0aed19ebb1eeaebf3207d5a9',
-       i686: '815a2ef25a8bc950f03ca76999ebdf855e55ddea6f0a99375f6e1f8ebec4b51b',
-     x86_64: 'b33e0918a6b6785f3531910eac23718cfa5625062760e6a167e7edbe0528f03b'
+    aarch64: '7bb3c2e87d8c7f77403491fb6babdd18bf794b96100fea1d13b125cdb393378d',
+     armv7l: '7bb3c2e87d8c7f77403491fb6babdd18bf794b96100fea1d13b125cdb393378d',
+       i686: 'ddeda32070c3091c589c8610c2b5e2ae563a93480c8721042ae2a550e0378100',
+     x86_64: '6c48ba8196712309937f08f19be3da32548eb0e2b430d593637371efd12dc8c5'
   })
 
   depends_on 'ca_certificates' # L
