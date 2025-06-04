@@ -197,7 +197,7 @@ curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"
 
 # Note that ordering of BOOTSTRAP_PACKAGES matters!
 if [[ $BRANCH == 'pre_glibc_standalone' ]]; then
-  BOOTSTRAP_PACKAGES='zstd_static upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ruby pcre2 libnghttp2 git ca_certificates libyaml openssl findutils psmisc uutils_coreutils curl'
+  BOOTSTRAP_PACKAGES='zstd_static upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ruby pcre2 git ca_certificates libyaml openssl findutils psmisc uutils_coreutils'
 else
   # ncurses, readline, and bash are needed before ruby because our ruby
   # invokes the architecture specific bash instead of using /bin/sh, which
@@ -207,8 +207,12 @@ else
   # first.
   # psmisc provides pstree which is used by crew
   # findutils provides find which is used by crew during installs.
-  BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby pcre2 libnghttp2 git ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils curl'
+  BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby pcre2 git ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils'
 fi
+
+# Add curl & dependencies to BOOTSTRAP_PACKAGES since curl is a git
+# dependency, installing curl last so we don't break the system curl.
+BOOTSTRAP_PACKAGES+=' brotli c_ares libcyrussasl libidn2 libnghttp2 libpsl libssh libunistring openldap zlib zstd curl'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   # Recent Arm systems have a cut down system.
