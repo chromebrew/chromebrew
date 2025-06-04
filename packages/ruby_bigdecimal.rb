@@ -10,8 +10,8 @@ class Ruby_bigdecimal < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'ccc52e1f36c916a352f90b59367c83bce3bfe16bb44c67cc38b34f54729494fa',
-     armv7l: 'ccc52e1f36c916a352f90b59367c83bce3bfe16bb44c67cc38b34f54729494fa',
+    aarch64: '552043f132121d9688f3a776cda583de54ddacce799c121cbd96e362ce1f9f5d',
+     armv7l: '552043f132121d9688f3a776cda583de54ddacce799c121cbd96e362ce1f9f5d',
        i686: 'a216725e25a38a0eb03446137d0c660a912cc54b099d22f7fd706e4564b20413',
      x86_64: '3d6a052a3a09e584d55fa12f4c9f4f71250ced05830fdccc430dbdf3cd5518dc'
   })
