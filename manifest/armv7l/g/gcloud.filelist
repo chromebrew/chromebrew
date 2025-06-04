@@ -588,6 +588,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/encryption_config.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/entry.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/entry_group.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/entry_link.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/entry_type.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/environment.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/dataplex/glossary.py
@@ -1543,6 +1544,10 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/app/gae_to_cr_migration_util/config/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/app/gae_to_cr_migration_util/config/feature_helper.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/app/gae_to_cr_migration_util/config/features.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/app/gae_to_cr_migration_util/translation_rules/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/app/gae_to_cr_migration_util/translation_rules/cpu_memory.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/app/gae_to_cr_migration_util/translation_rules/scaling.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/app/gae_to_cr_migration_util/translation_rules/timeout.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/app/iap_tunnel.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/app/jarfile.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/app/migrate_config.py
@@ -3121,6 +3126,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/notifications/flags.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/notifications/notification_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/notifications/request_hooks.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/posture_deployments/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/posture_deployments/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/remediation_intents/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/remediation_intents/errors.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/remediation_intents/flags.py
@@ -3490,6 +3497,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/workstations/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/workstations/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/workstations/resources.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/zone_management/project/resources.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/zone_management/service/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/core/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/core/__pycache__/__init__.cpython-313.pyc
 /usr/local/share/gcloud/lib/googlecloudsdk/core/__pycache__/argv_utils.cpython-313.pyc
@@ -4434,6 +4443,11 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/deploymentmanager/v2beta/deploymentmanager_v2beta_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/deploymentmanager/v2beta/deploymentmanager_v2beta_messages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/deploymentmanager/v2beta/resources.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/designcenter/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/designcenter/v1alpha/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/designcenter/v1alpha/designcenter_v1alpha_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/designcenter/v1alpha/designcenter_v1alpha_messages.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/designcenter/v1alpha/resources.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/developerconnect/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/developerconnect/v1/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/developerconnect/v1/developerconnect_v1_client.py
@@ -8551,6 +8565,7 @@
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/l2_forwarding/create.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/l2_forwarding/describe_mapping.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/l2_forwarding/list_mapping.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/l2_forwarding/remove_mapping.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/l2_forwarding/update.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/l2_forwarding/update_mapping.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/list.py
@@ -10060,6 +10075,10 @@
 /usr/local/share/gcloud/lib/surface/dataplex/entry_groups/remove_iam_policy_binding.py
 /usr/local/share/gcloud/lib/surface/dataplex/entry_groups/set_iam_policy.py
 /usr/local/share/gcloud/lib/surface/dataplex/entry_groups/update.py
+/usr/local/share/gcloud/lib/surface/dataplex/entry_links/__init__.py
+/usr/local/share/gcloud/lib/surface/dataplex/entry_links/create.py
+/usr/local/share/gcloud/lib/surface/dataplex/entry_links/delete.yaml
+/usr/local/share/gcloud/lib/surface/dataplex/entry_links/describe.yaml
 /usr/local/share/gcloud/lib/surface/dataplex/entry_types/__init__.py
 /usr/local/share/gcloud/lib/surface/dataplex/entry_types/add_iam_policy_binding.py
 /usr/local/share/gcloud/lib/surface/dataplex/entry_types/create.py
@@ -10537,8 +10556,14 @@
 /usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/__init__.py
 /usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/_partials/_delete_alpha.yaml
+/usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/_partials/_delete_beta.yaml
+/usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/_partials/_delete_ga.yaml
 /usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/_partials/_describe_alpha.yaml
+/usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/_partials/_describe_beta.yaml
+/usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/_partials/_describe_ga.yaml
 /usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/_partials/_list_alpha.yaml
+/usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/_partials/_list_beta.yaml
+/usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/_partials/_list_ga.yaml
 /usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/create.py
 /usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/delete.yaml
 /usr/local/share/gcloud/lib/surface/developer_connect/insights_configs/describe.yaml
@@ -14236,7 +14261,7 @@
 /usr/local/share/gcloud/lib/surface/scc/posture_deployments/create.yaml
 /usr/local/share/gcloud/lib/surface/scc/posture_deployments/delete.yaml
 /usr/local/share/gcloud/lib/surface/scc/posture_deployments/describe.yaml
-/usr/local/share/gcloud/lib/surface/scc/posture_deployments/list.yaml
+/usr/local/share/gcloud/lib/surface/scc/posture_deployments/list.py
 /usr/local/share/gcloud/lib/surface/scc/posture_deployments/update.yaml
 /usr/local/share/gcloud/lib/surface/scc/posture_operations/__init__.py
 /usr/local/share/gcloud/lib/surface/scc/posture_operations/describe.yaml
@@ -14549,6 +14574,7 @@
 /usr/local/share/gcloud/lib/surface/spanner/databases/execute_sql.py
 /usr/local/share/gcloud/lib/surface/spanner/databases/get_iam_policy.py
 /usr/local/share/gcloud/lib/surface/spanner/databases/get_iam_policy.yaml
+/usr/local/share/gcloud/lib/surface/spanner/databases/import.py
 /usr/local/share/gcloud/lib/surface/spanner/databases/list.py
 /usr/local/share/gcloud/lib/surface/spanner/databases/remove_iam_policy_binding.yaml
 /usr/local/share/gcloud/lib/surface/spanner/databases/restore.py
@@ -15007,6 +15033,7 @@
 /usr/local/share/gcloud/lib/surface/vmware/private_clouds/clusters/update.py
 /usr/local/share/gcloud/lib/surface/vmware/private_clouds/create.py
 /usr/local/share/gcloud/lib/surface/vmware/private_clouds/delete.py
+/usr/local/share/gcloud/lib/surface/vmware/private_clouds/delete_now.py
 /usr/local/share/gcloud/lib/surface/vmware/private_clouds/describe.py
 /usr/local/share/gcloud/lib/surface/vmware/private_clouds/dns_forwarding/__init__.py
 /usr/local/share/gcloud/lib/surface/vmware/private_clouds/dns_forwarding/describe.py
@@ -15182,6 +15209,11 @@
 /usr/local/share/gcloud/lib/surface/workstations/start.py
 /usr/local/share/gcloud/lib/surface/workstations/start_tcp_tunnel.py
 /usr/local/share/gcloud/lib/surface/workstations/stop.py
+/usr/local/share/gcloud/lib/surface/zone_management/__init__.py
+/usr/local/share/gcloud/lib/surface/zone_management/project/__init__.py
+/usr/local/share/gcloud/lib/surface/zone_management/project/enable.yaml
+/usr/local/share/gcloud/lib/surface/zone_management/service/__init__.py
+/usr/local/share/gcloud/lib/surface/zone_management/service/enable.yaml
 /usr/local/share/gcloud/lib/third_party/antlr3/LICENSE
 /usr/local/share/gcloud/lib/third_party/antlr3/__init__.py
 /usr/local/share/gcloud/lib/third_party/antlr3/compat.py
