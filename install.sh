@@ -123,6 +123,7 @@ fi
 # Additionally, if the architecture is aarch64, set it to armv7l, as we treat as if it was armv7l.
 # When we have proper support for aarch64, remove this.
 if [[ "${ARCH}" = "armv8l" ]] || [[ "${ARCH}" = "aarch64" ]]; then
+  echo_info "Setting ARCH to armv7l."
   ARCH='armv7l'
 fi
 
@@ -210,14 +211,14 @@ else
   BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby pcre2 git ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils'
 fi
 
+if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
+  # Recent Arm systems have a cut down system.
+  (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) && [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2'
+fi
+
 # Add curl & dependencies to BOOTSTRAP_PACKAGES since curl is a git
 # dependency, installing curl last so we don't break the system curl.
 BOOTSTRAP_PACKAGES+=' brotli c_ares libcyrussasl libidn2 libnghttp2 libpsl libssh libunistring openldap zlib zstd curl'
-
-if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
-  # Recent Arm systems have a cut down system.
-  (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) && [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 pcre2'
-fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ $BRANCH == 'pre_glibc_standalone' ]]; then
   # shellcheck disable=SC2231
