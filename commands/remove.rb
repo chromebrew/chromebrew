@@ -16,6 +16,8 @@ class Command
     end
 
     # Do not remove any packages in CREW_ESSENTIAL_PACKAGES, as those are needed for ruby and thus crew to run.
+    # pkg.name is nil if overriding package upgrade list...
+    return if pkg.name.nil?
     if CREW_ESSENTIAL_PACKAGES.include?(pkg.name) && !force
       return if pkg.in_upgrade
 
