@@ -1,5 +1,5 @@
 ---
-name: Build
+name: Build Allowing Failures
 on:
   workflow_dispatch:
     inputs:
@@ -8,11 +8,6 @@ on:
         required: false
         type: boolean
         default: 'true'
-      allow_fail:
-        description: "Allow packages to fail building."
-        required: false
-        type: boolean
-        default: 'false'
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
@@ -142,15 +137,15 @@ jobs:
       matrix:
         arch: [i686, x86_64, armv7l]
         runner:
-          - ubuntu-24.04
-          - ubuntu-24.04-arm
+          - [self-hosted, X64]
+          - [self-hosted, ARM]
         exclude:
           - arch: x86_64
-            runner: ubuntu-24.04-arm
+            runner: [self-hosted, ARM]
           - arch: i686
-            runner: ubuntu-24.04-arm
+            runner: [self-hosted, ARM]
           - arch: armv7l
-            runner: ubuntu-24.04
+            runner: [self-hosted, X64]
     runs-on: ${{ matrix.runner }}
     needs: setup
     env:
@@ -224,7 +219,7 @@ jobs:
                 # else
                 #     echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
                 # fi
-                echo "CONTAINER=strongbad-armv7l.m136" >> "$GITHUB_ENV"
+                echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
               ;;
@@ -267,8 +262,8 @@ jobs:
             # Use docker-in-docker shim to mount volume inside docker.
             # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
             # ghcr.io/felipecrs/dond-shim:latest \
-            #(cd /tmp || exit ; curl -OLf https://github.com/felipecrs/docker-on-docker-shim/raw/refs/tags/v0.7.1/dond ; chmod +x /tmp/dond )
-            #/tmp/dond run \
+            # (cd /tmp || exit ; curl -OLf https://github.com/felipecrs/docker-on-docker-shim/raw/refs/tags/v0.7.1/dond ; chmod +x /tmp/dond )
+            # /tmp/dond run \
             docker run \
               --rm \
               --platform "${PLATFORM}" \
@@ -284,7 +279,7 @@ jobs:
               -v "$(pwd)":/output:rshared \
               --tmpfs /tmp \
               "satmandu/crewbuild:${CONTAINER}" \
-              /bin/chromebrewstart "/output/tools/github_actions_update_builder${{ github.event.inputs.allow_fail == 'true' && '_allowing_failures'}}.sh"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
+              /bin/chromebrewstart /output/tools/github_actions_update_builder_allowing_failures.sh  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
               grep "Built and Uploaded:" /tmp/build.log || true
               echo "Deleting build output directories."
               sudo rm -rf release pkg_cache
@@ -343,7 +338,8 @@ jobs:
         run: |
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
-          echo -e "- This PR has built package updates using the Build.yml workflow, which was pointed to the ${{ env.BRANCH }} branch.\n" >> /tmp/pr.txt
+          echo -e "- This PR has built package updates using the Build Allowing Failures.yml workflow, which was pointed to the ${{ env.BRANCH }} branch.\n" >> /tmp/pr.txt
+          echo -e "#### _Please double check to see if any failures were expected._\n" >> /tmp/pr.txt
           echo -e "### Packages with Updated versions or Changed package files:" >> /tmp/pr.txt
           for file in ${CHANGED_PACKAGES}
             do
