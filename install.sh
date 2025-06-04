@@ -413,7 +413,9 @@ done
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
-[[ "$ARCH" == "i686" ]] && sudo "${CREW_PREFIX}/bin/ldconfig" &> /tmp/crew_ldconfig || true
+if [[ "$ARCH" == "i686" ]] || [[ "$ARCH" == "armv7l" ]]; then
+  sudo "${CREW_PREFIX}/bin/ldconfig" &> /tmp/crew_ldconfig || true
+fi
 
 echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
