@@ -8,14 +8,13 @@ class Ruby < Package
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
   git_hashtag '2cce628721728409a26c2d4732f63419785c7fd8'
-  # git_hashtag "v#{version.split('-').first.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '275791ddc21749477c7b551e80ed2ef8af0637ed0aed19ebb1eeaebf3207d5a9',
-     armv7l: '275791ddc21749477c7b551e80ed2ef8af0637ed0aed19ebb1eeaebf3207d5a9',
-       i686: '815a2ef25a8bc950f03ca76999ebdf855e55ddea6f0a99375f6e1f8ebec4b51b',
-     x86_64: 'b33e0918a6b6785f3531910eac23718cfa5625062760e6a167e7edbe0528f03b'
+    aarch64: '6d03e0dd58c709688cb419b217e79f1551cc50bf69a965d0ee41589f3dd7c7fe',
+     armv7l: '6d03e0dd58c709688cb419b217e79f1551cc50bf69a965d0ee41589f3dd7c7fe',
+       i686: '39eb2057523e0be98ac0e6d8f971f76bb8281e5c23fa75dc66a8ff6d117b60ad',
+     x86_64: '09c1ba7b921e5f91298298d924b49de85596ad421a656894cec709aee17c5451'
   })
 
   depends_on 'ca_certificates' # L
@@ -33,10 +32,6 @@ class Ruby < Package
   conflicts_ok # Needed for successful build.
 
   # at run-time, system's gmp, openssl, and zlib can be used
-
-  def self.patch
-    system 'filefix'
-  end
 
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
