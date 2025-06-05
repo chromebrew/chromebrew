@@ -605,7 +605,7 @@ def download
           begin
             @git_cachefile_lockfile.lock
             system "tar c#{@verbose} \
-              $(find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
+              $(#{CREW_PREFIX}/bin/find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
               nice -n 20 zstd -c -T0 --ultra -20 - >  \
               #{cachefile}"
           ensure
@@ -900,7 +900,7 @@ def expand_binaries_and_fix_interpreter_path(dir)
     abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
     # Look for installed binaries and libraries in the package install
     # directory tree.
-    execfiles = `find #{Dir.pwd} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' -- 2> /dev/null`.split
+    execfiles = `#{CREW_PREFIX}/bin/find #{Dir.pwd} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' -- 2> /dev/null`.split
     return if execfiles.empty?
 
     @localdir = File.expand_path('../../.')
@@ -1010,7 +1010,7 @@ def install_package(pkgdir)
     FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
 
     unless CREW_NOT_LINKS || @pkg.no_links?
-      brokensymlinks = `find . -type l -exec test ! -e {} \\; -print`.chomp
+      brokensymlinks = `#{CREW_PREFIX}/bin/find . -type l -exec test ! -e {} \\; -print`.chomp
       unless brokensymlinks.to_s.empty?
         puts 'There are broken symlinks. Will try to fix.'.orange if CREW_VERBOSE
         brokensymlinks.each_line(chomp: true) do |fixlink|
