@@ -3,9 +3,6 @@
 /usr/local/include/GL/internal/dri_interface.h
 /usr/local/include/gbm.h
 /usr/local/include/gbm_backend_abi.h
-/usr/local/include/xa_composite.h
-/usr/local/include/xa_context.h
-/usr/local/include/xa_tracker.h
 /usr/local/lib/dri/apple_dri.so
 /usr/local/lib/dri/armada-drm_dri.so
 /usr/local/lib/dri/etnaviv_dri.so
@@ -70,7 +67,7 @@
 /usr/local/lib/libGLX_mesa.so
 /usr/local/lib/libGLX_mesa.so.0
 /usr/local/lib/libGLX_mesa.so.0.0.0
-/usr/local/lib/libgallium-25.1.1.so
+/usr/local/lib/libgallium-25.1.2.so
 /usr/local/lib/libgbm.so
 /usr/local/lib/libgbm.so.1
 /usr/local/lib/libgbm.so.1.0.0
@@ -78,12 +75,8 @@
 /usr/local/lib/libvulkan_intel.so
 /usr/local/lib/libvulkan_lvp.so
 /usr/local/lib/libvulkan_panfrost.so
-/usr/local/lib/libxatracker.so
-/usr/local/lib/libxatracker.so.2
-/usr/local/lib/libxatracker.so.2.5.0
 /usr/local/lib/pkgconfig/dri.pc
 /usr/local/lib/pkgconfig/gbm.pc
-/usr/local/lib/pkgconfig/xatracker.pc
 /usr/local/lib/vdpau/libvdpau_nouveau.so
 /usr/local/lib/vdpau/libvdpau_nouveau.so.1
 /usr/local/lib/vdpau/libvdpau_nouveau.so.1.0
