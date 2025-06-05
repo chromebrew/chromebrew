@@ -1901,4 +1901,5 @@ if ARGV[0] != 'update' && Time.now.to_i - @last_update_check > ((CREW_UPDATE_CHE
   puts "It has been more than #{CREW_UPDATE_CHECK_INTERVAL} day#{plural} since crew was last updated. Please run 'crew update'.".lightpurple
 end
 command_name = args.select { |k, v| v && command?(k) }.keys[0]
+binding.pry if CREW_DEBUG
 send("#{command_name}_command", args)
