@@ -104,6 +104,8 @@ CREW_WINE_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'wine')
 CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 
 # Local constants for contributors.
+# debug
+system "git rev-parse --show-toplevel", exception: false
 CREW_LOCAL_REPO_ROOT ||= %x[git rev-parse --show-toplevel 2> /dev/null].chomp
 # CREW_LOCAL_REPO_ROOT ||= CREW_LIB_PATH
 CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
