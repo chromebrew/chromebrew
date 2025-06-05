@@ -198,7 +198,7 @@ curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"
 
 # Note that ordering of BOOTSTRAP_PACKAGES matters!
 if [[ $BRANCH == 'pre_glibc_standalone' ]]; then
-  BOOTSTRAP_PACKAGES='zstd_static upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ruby pcre2 git ca_certificates libyaml openssl findutils psmisc uutils_coreutils'
+  BOOTSTRAP_PACKAGES='zstd_static upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ruby ca_certificates libyaml openssl findutils psmisc uutils_coreutils'
 else
   # ncurses, readline, and bash are needed before ruby because our ruby
   # invokes the architecture specific bash instead of using /bin/sh, which
@@ -208,17 +208,19 @@ else
   # first.
   # psmisc provides pstree which is used by crew
   # findutils provides find which is used by crew during installs.
-  BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby pcre2 git ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils'
+  BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils'
 fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   # Recent Arm systems have a cut down system.
   (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) && [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2'
 fi
+# Add git dependencies to BOOTSTRAP_PACKAGES except curl.
+BOOTSTRAP_PACKAGES+=' pcre2 expat git'
 
-# Add curl & dependencies to BOOTSTRAP_PACKAGES since curl is a git
+# Add curl dependencies to BOOTSTRAP_PACKAGES since curl is a git
 # dependency, installing curl last so we don't break the system curl.
-BOOTSTRAP_PACKAGES+=' brotli c_ares libcyrussasl libidn2 libnghttp2 libpsl libssh libunistring openldap zlib zstd curl'
+BOOTSTRAP_PACKAGES+=' brotli c_ares libcyrussasl libidn2 libnghttp2 libpsl libssh libunistring openldap zstd curl'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ $BRANCH == 'pre_glibc_standalone' ]]; then
   # shellcheck disable=SC2231
@@ -456,10 +458,8 @@ yes | crew install crew_profile_base
 
 # shellcheck disable=SC1090
 trap - ERR && source ~/.bashrc && set_trap
-
 echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core || (yes | crew install core) || (yes | crew install core)
-
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than
 # splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}.
