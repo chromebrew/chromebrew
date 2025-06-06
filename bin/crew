@@ -1011,11 +1011,14 @@ def install_package(pkgdir)
 
     unless CREW_NOT_LINKS || @pkg.no_links?
       begin
-        Open3.popen3("#{CREW_PREFIX}/bin/find . -type l -exec test ! -e {} \\; -print") do |_find_stdin, brokensymlinks, _find_stderr, _find_thread|
+        # rubocop:disable Lint/EmptyBlock
+        Open3.popen3("#{CREW_PREFIX}/bin/find . -type l -exec test ! -e {} \\; -print") do |_find_stdin, find_stdout, _find_stderr, _find_thread|
         end
+      # rubocop:enable Lint/EmptyBlock
       rescue Errno::ENOENT
         puts 'Could not find find.'
       end
+      brokensymlinks = defined?(find_stdout) ? find_stdout.read : ''
       unless brokensymlinks.to_s.empty?
         puts 'There are broken symlinks. Will try to fix.'.orange if CREW_VERBOSE
         brokensymlinks.each_line(chomp: true) do |fixlink|
