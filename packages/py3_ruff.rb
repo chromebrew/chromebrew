@@ -13,7 +13,7 @@ class Py3_ruff < Pip
     aarch64: '02df64ad48f2b2756a0428ca8e5bfb438956345329c8a0e3d1ba4e88af3c27f0',
      armv7l: '02df64ad48f2b2756a0428ca8e5bfb438956345329c8a0e3d1ba4e88af3c27f0',
        i686: 'ce946be36e718dc91205ed62bbf3dee1ded6ed5abeb160e8e179c96d1f031d0e',
-     x86_64: '150814e71219651f2ad840e8509b500282d529005d9ef02d9955b858f7798f62'
+     x86_64: '0a2b936c98c0bcf0dd8c3867ebcf976b5e44feb4ce99eaacb9ede7d912b3b21c'
   })
 
   depends_on 'gcc_lib' # R
