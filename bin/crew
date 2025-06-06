@@ -11,6 +11,7 @@ require_gem('json')
 require_gem('ptools')
 require 'digest/sha2'
 require 'fileutils'
+require 'find'
 require 'mkmf'
 require 'open3'
 require 'tmpdir'
@@ -900,7 +901,7 @@ def expand_binaries_and_fix_interpreter_path(dir)
     abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
     # Look for installed binaries and libraries in the package install
     # directory tree.
-    _find_stdin, execfiles, _find_stderr, _find_thread = Open3.popen3("find #{Dir.pwd} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ \"$(head -c4 ${1})\" = \"\x7FELF\" ] && echo ${1}' --")
+    execfiles = Find.find(Dir.pwd).select { |p| File.executable?(p) }
     return if execfiles.empty?
 
     @localdir = File.expand_path('../../.')
@@ -1010,18 +1011,20 @@ def install_package(pkgdir)
     FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
 
     unless CREW_NOT_LINKS || @pkg.no_links?
-      _find_stdin, brokensymlinks, _find_stderr, _find_thread = Open3.popen3("find . -type l -exec test ! -e {} \\; -print")
-      unless brokensymlinks.to_s.empty?
-        puts 'There are broken symlinks. Will try to fix.'.orange if CREW_VERBOSE
-        brokensymlinks.each_line(chomp: true) do |fixlink|
-          brokentarget = `readlink -n #{fixlink}`.chomp
-          puts "Attempting fix of: #{fixlink.delete_prefix('.')} -> #{brokentarget}".orange if CREW_VERBOSE
-          fixedtarget = brokentarget.delete_prefix(CREW_DEST_DIR)
-          fixedlink_loc = File.join(pkgdir, fixlink.delete_prefix('.'))
-          # If no changes were made, don't replace symlink
-          unless fixedtarget == brokentarget
-            FileUtils.ln_sf fixedtarget, fixedlink_loc
-            puts "Fixed: #{fixedtarget} -> #{fixlink.delete_prefix('.')}".orange if CREW_VERBOSE
+      Find.find(Dir.pwd) do |path|
+        if File.symlink?(path)
+          begin
+            File.stat(path)
+          rescue Errno::ENOENT
+            brokentarget = `readlink -n #{path}`.chomp
+            puts "Attempting fix of: #{path.delete_prefix('.')} -> #{brokentarget}".orange if CREW_VERBOSE
+            fixedtarget = brokentarget.delete_prefix(CREW_DEST_DIR)
+            fixedlink_loc = File.join(pkgdir, path.delete_prefix('.'))
+            # If no changes were made, don't replace symlink
+            unless fixedtarget == brokentarget
+              FileUtils.ln_sf fixedtarget, fixedlink_loc
+              puts "Fixed: #{fixedtarget} -> #{path.delete_prefix('.')}".orange if CREW_VERBOSE
+            end
           end
         end
       end
