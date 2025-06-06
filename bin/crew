@@ -900,7 +900,15 @@ def expand_binaries_and_fix_interpreter_path(dir)
     abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
     # Look for installed binaries and libraries in the package install
     # directory tree.
-    execfiles = `#{CREW_PREFIX}/bin/find #{Dir.pwd} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' -- 2> /dev/null`.split
+    begin
+      # rubocop:disable Lint/EmptyBlock
+      Open3.popen3("#{CREW_PREFIX}/bin/find #{Dir.pwd} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ \"$(head -c4 ${1})\" = \"\x7FELF\" ] && echo ${1}' -- 2> /dev/null") do |_find_stdin, find_stdout, _find_stderr, _find_thread|
+      end
+    # rubocop:enable Lint/EmptyBlock
+    rescue Errno::ENOENT
+      puts "Could not find find. #{'This could be a container issue.' if CREW_IN_CONTAINER}".lightred
+    end
+    execfiles = defined?(find_stdout) ? find_stdout.read.split : ''
     return if execfiles.empty?
 
     @localdir = File.expand_path('../../.')
@@ -1016,7 +1024,7 @@ def install_package(pkgdir)
         end
       # rubocop:enable Lint/EmptyBlock
       rescue Errno::ENOENT
-        puts 'Could not find find.'
+        puts "Could not find find. #{'This could be a container issue.' if CREW_IN_CONTAINER}".lightred
       end
       brokensymlinks = defined?(find_stdout) ? find_stdout.read : ''
       unless brokensymlinks.to_s.empty?
