@@ -1284,7 +1284,7 @@ def install
   crewlog "Adding package #{@pkg.name} to device.json."
   @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name } and @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
   ConvenienceFunctions.save_json(@device)
-  crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if File.which('jq')
+  crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if Kernel.system('jq -h', %i[out err] => File::NULL)
   @pkg.in_install = false
 end
 
