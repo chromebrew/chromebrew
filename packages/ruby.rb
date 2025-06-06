@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.4-2cce628'
+  version '3.4.4-2cce628-1'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
@@ -11,10 +11,10 @@ class Ruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6d03e0dd58c709688cb419b217e79f1551cc50bf69a965d0ee41589f3dd7c7fe',
-     armv7l: '6d03e0dd58c709688cb419b217e79f1551cc50bf69a965d0ee41589f3dd7c7fe',
-       i686: '39eb2057523e0be98ac0e6d8f971f76bb8281e5c23fa75dc66a8ff6d117b60ad',
-     x86_64: '09c1ba7b921e5f91298298d924b49de85596ad421a656894cec709aee17c5451'
+    aarch64: '64fafb44b942b176ba68dd02fb6197d01de1993352688dad0123d496e5bcd8ec',
+     armv7l: '64fafb44b942b176ba68dd02fb6197d01de1993352688dad0123d496e5bcd8ec',
+       i686: '9d57a466118868237cbb67e7c7906fcc0b150598db71bd176cbb6925b8f79a9a',
+     x86_64: '57a94bb4157d4d0a8460a37eb9b2cecce434100da780dae4f26122aa5b73b787'
   })
 
   depends_on 'ca_certificates' # L
@@ -35,6 +35,7 @@ class Ruby < Package
 
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
+    system 'filefix'
     system "RUBY_TRY_CFLAGS='stack_protector=no' \
       RUBY_TRY_LDFLAGS='stack_protector=no' \
       optflags='-flto=auto -fuse-ld=mold' \
