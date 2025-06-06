@@ -110,7 +110,7 @@ CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 # $stderr.reopen("/dev/null", "w")
 # Local constants for contributors.
 _revparse_stdin, revparse_stdout, _revparse_stderr, _revparse_threads = Open3.popen3('git rev-parse --show-toplevel')
-CREW_LOCAL_REPO_ROOT ||= revparse_stdout
+CREW_LOCAL_REPO_ROOT ||= revparse_stdout.nil? ? revparse_stdout : ''
 # v = $VERBOSE
 # $VERBOSE = nil
 # $stderr = $stderr_backup.dup
