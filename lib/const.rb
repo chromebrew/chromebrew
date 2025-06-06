@@ -105,7 +105,15 @@ CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 
 # Local constants for contributors.
 # system 'git rev-parse --show-toplevel &>/dev/null', exception: false
-CREW_LOCAL_REPO_ROOT ||= %x[#{CREW_PREFIX}/bin/git rev-parse --show-toplevel].chomp
+$stderr_backup = $stderr.dup
+$stderr.reopen("/dev/null", "w")
+# Local constants for contributors.
+CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel`.chomp
+v = $VERBOSE
+$VERBOSE = nil
+$stderr = $stderr_backup.dup
+STDERR = $stderr
+$VERBOSE = v
 CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
 
