@@ -1010,6 +1010,7 @@ def install_package(pkgdir)
     FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
 
     unless CREW_NOT_LINKS || @pkg.no_links?
+      system "find --version"
       brokensymlinks, _find_stderr = Open3.capture3("#{CREW_PREFIX}/bin/find . -type l -exec test ! -e {} \\; -print")
       unless brokensymlinks.to_s.empty?
         puts 'There are broken symlinks. Will try to fix.'.orange if CREW_VERBOSE
