@@ -130,7 +130,7 @@ class Graphicsmagick < Package
       --enable-static=no \
       --with-modules \
       --with-perl \
-      #{%w[x86_64 aarch64 armv7l].include?(ARCH) ? '--with-x' : ''} \
+      #{'--with-x' if %w[x86_64 aarch64 armv7l].include?(ARCH)} \
       --with-xml"
     system 'make'
   end

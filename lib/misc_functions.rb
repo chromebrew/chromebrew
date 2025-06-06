@@ -70,7 +70,7 @@ class MiscFunctions
                           else
                             "#{time_minutes} min, "
                           end
-    time_seconds_string = "#{time_seconds} second#{time_seconds == 1 ? '' : 's'}"
+    time_seconds_string = "#{time_seconds} second#{'s' unless time_seconds == 1}"
     return time_hour_string + time_minutes_string + time_seconds_string
   end
 

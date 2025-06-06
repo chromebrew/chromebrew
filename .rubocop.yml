@@ -108,14 +108,19 @@ Naming/ClassAndModuleCamelCase:
   Exclude:
     - 'packages/*'
 
+# If there is meaningful information to convey about the contents of a heredoc, a comment is the best way to do it.
+# Forcing unique names for all heredoc delimiters does not improve documentation in the vast majority of cases.
+Naming/HeredocDelimiterNaming:
+  Enabled: false
+
+# Many predicate methods (methods returning either true or false) are made more readable by having an ? at the end, but not all.
+# A manual inspection should suffice to determine which is which.
+Naming/PredicateMethod:
+  Enabled: false
+
 # We allow all caps variables to mirror our constants, so things like @ARCH_LDFLAGS are allowed.
 Naming/VariableName:
   EnforcedStyle: snake_case
   # Allow variable names which are in all caps (with optional numbers and underscores)
   AllowedPatterns:
     - '^@?[A-Z0-9_]+$'
-
-# If there is meaningful information to convey about the contents of a heredoc, a comment is the best way to do it.
-# Forcing unique names for all heredoc delimiters does not improve documentation in the vast majority of cases.
-Naming/HeredocDelimiterNaming:
-  Enabled: false
