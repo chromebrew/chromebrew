@@ -25,11 +25,11 @@ class Command
         system "rubocop -c #{File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')} -A #{local_package}", exception: true
       else
         puts 'The configuration file for rubocop in .rubocop.yml, from the rubocop-chromebrew gem, was not found.'.lightred
-        puts 'To install rubocop-chromebrew, run the following command: '.lightred + "crew #{PackageUtils.installed?('ruby_rubocop_chromebrew') ? 're' : ''}install ruby_rubocop_chromebrew".lightblue
+        puts 'To install rubocop-chromebrew, run the following command: '.lightred + "crew #{'re' if PackageUtils.installed?('ruby_rubocop_chromebrew')}install ruby_rubocop_chromebrew".lightblue
       end
     else
       puts "Rubocop is not installed, and thus will not be used to sanitize #{local_package}".lightred
-      puts 'To install Rubocop, run the following command: '.lightred + "crew #{PackageUtils.installed?('ruby_rubocop') ? 're' : ''}install ruby_rubocop".lightblue
+      puts 'To install Rubocop, run the following command: '.lightred + "crew #{'re' if PackageUtils.installed?('ruby_rubocop')}install ruby_rubocop".lightblue
     end
 
     to_copy = force

@@ -74,10 +74,10 @@ def downloader(url, sha256sum, filename = File.basename(url), verbose: false)
       FileUtils.rm_f filename
 
       warn 'Checksum mismatch :/ Try again?'.lightred, <<~EOT
-        #{''}
-                              Filename: #{filename.lightblue}
-            Expected checksum (SHA256): #{sha256sum.green}
-          Calculated checksum (SHA256): #{calc_sha256sum.red}
+
+                            Filename: #{filename.lightblue}
+          Expected checksum (SHA256): #{sha256sum.green}
+        Calculated checksum (SHA256): #{calc_sha256sum.red}
       EOT
 
       exit 2

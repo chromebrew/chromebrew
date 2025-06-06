@@ -3,7 +3,7 @@
 # These pre-commit hooks mirror the Github CI, so running them locally will catch errors earlier.
 repos:
   - repo: https://github.com/rubocop/rubocop
-    rev: v1.74.0
+    rev: v1.76.0
     hooks:
       - id: rubocop
   - repo: https://github.com/syntaqx/git-hooks

@@ -30,7 +30,7 @@ class Elfutils < Autotools
 
   # -D_FORTIFY_SOURCE=0 needed due to -O3 optimization.
   autotools_pre_configure_options "CFLAGS+=' -Wno-error -D_FORTIFY_SOURCE=0' CXXFLAGS+=' -Wno-error -D_FORTIFY_SOURCE=0'"
-  autotools_configure_options "#{ARCH == 'i686' ? '--disable-libdebuginfod --disable-debuginfod' : ''} --enable-maintainer-mode --program-prefix='eu-'"
+  autotools_configure_options "#{'--disable-libdebuginfod --disable-debuginfod' if ARCH == 'i686'} --enable-maintainer-mode --program-prefix='eu-'"
 
   def self.patch
     downloader 'https://raw.githubusercontent.com/openwrt/openwrt/refs/heads/main/package/libs/elfutils/patches/009-fix-null-dereference-with-lto.patch', 'bd81d483ed5474fd7e87a27e4c961bf8670f76c45f5fe9a273cb2f11d8f44ffc'
