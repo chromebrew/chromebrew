@@ -1012,19 +1012,18 @@ def install_package(pkgdir)
 
     unless CREW_NOT_LINKS || @pkg.no_links?
       Find.find(Dir.pwd) do |path|
-        if File.symlink?(path)
-          begin
-            File.stat(path)
-          rescue Errno::ENOENT
-            brokentarget = `readlink -n #{path}`.chomp
-            puts "Attempting fix of: #{path.delete_prefix('.')} -> #{brokentarget}".orange if CREW_VERBOSE
-            fixedtarget = brokentarget.delete_prefix(CREW_DEST_DIR)
-            fixedlink_loc = File.join(pkgdir, path.delete_prefix('.'))
-            # If no changes were made, don't replace symlink
-            unless fixedtarget == brokentarget
-              FileUtils.ln_sf fixedtarget, fixedlink_loc
-              puts "Fixed: #{fixedtarget} -> #{path.delete_prefix('.')}".orange if CREW_VERBOSE
-            end
+        next unless File.symlink?(path)
+        begin
+          File.stat(path)
+        rescue Errno::ENOENT
+          brokentarget = `readlink -n #{path}`.chomp
+          puts "Attempting fix of: #{path.delete_prefix('.')} -> #{brokentarget}".orange if CREW_VERBOSE
+          fixedtarget = brokentarget.delete_prefix(CREW_DEST_DIR)
+          fixedlink_loc = File.join(pkgdir, path.delete_prefix('.'))
+          # If no changes were made, don't replace symlink
+          unless fixedtarget == brokentarget
+            FileUtils.ln_sf fixedtarget, fixedlink_loc
+            puts "Fixed: #{fixedtarget} -> #{path.delete_prefix('.')}".orange if CREW_VERBOSE
           end
         end
       end
