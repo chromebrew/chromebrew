@@ -1,6 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 require 'etc'
+require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
 CREW_VERSION ||= '1.61.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
@@ -104,7 +105,8 @@ CREW_WINE_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'wine')
 CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 
 # Local constants for contributors.
-CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2> /dev/null`.chomp
+_revparse_stdin, revparse_stdout, _revparse_stderr, _revparse_threads = Open3.popen3('git rev-parse --show-toplevel')
+CREW_LOCAL_REPO_ROOT ||= revparse_stdout.nil? ? revparse_stdout : ''
 CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
 
