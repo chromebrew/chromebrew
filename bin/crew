@@ -900,16 +900,7 @@ def expand_binaries_and_fix_interpreter_path(dir)
     abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
     # Look for installed binaries and libraries in the package install
     # directory tree.
-    $stderr_backup = $stderr.dup
-    $stderr.reopen("/dev/null", "w")
-    execfiles = `find #{Dir.pwd} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' --`.split
-    # Local constants for contributors.
-    CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel`.chomp
-    v = $VERBOSE
-    $VERBOSE = nil
-    $stderr = $stderr_backup.dup
-    STDERR = $stderr
-    $VERBOSE = v
+    _find_stdin, execfiles, _find_stderr, _find_thread = Open3.popen3("find #{Dir.pwd} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ \"$(head -c4 ${1})\" = \"\x7FELF\" ] && echo ${1}' --")
     return if execfiles.empty?
 
     @localdir = File.expand_path('../../.')
@@ -1019,15 +1010,7 @@ def install_package(pkgdir)
     FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
 
     unless CREW_NOT_LINKS || @pkg.no_links?
-      $stderr_backup = $stderr.dup
-      $stderr.reopen("/dev/null", "w")
-      # Local constants for contributors.
-      brokensymlinks = `find . -type l -exec test ! -e {} \\; -print`.chomp
-      v = $VERBOSE
-      $VERBOSE = nil
-      $stderr = $stderr_backup.dup
-      STDERR = $stderr
-      $VERBOSE = v
+      _find_stdin, brokensymlinks, _find_stderr, _find_thread = Open3.popen3("find . -type l -exec test ! -e {} \\; -print")
       unless brokensymlinks.to_s.empty?
         puts 'There are broken symlinks. Will try to fix.'.orange if CREW_VERBOSE
         brokensymlinks.each_line(chomp: true) do |fixlink|
