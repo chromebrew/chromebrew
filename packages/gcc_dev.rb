@@ -6,7 +6,7 @@ class Gcc_dev < Package
   homepage Gcc_build.homepage
   version '15.1.0-69eb171' # Do not use @_ver here, it will break the installer.
   license Gcc_build.license
-  # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
+  # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, libssp, and then binutils in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
   compatibility 'all'
   source_url 'SKIP'
