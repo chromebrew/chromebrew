@@ -3,18 +3,18 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.4'
+  version '3.4.4-2cce628-1'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag "v#{version.gsub('.', '_')}"
+  git_hashtag '2cce628721728409a26c2d4732f63419785c7fd8'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0c9c3d8531555f7f9d479abb1fc986007d2a2c079cc97fd25a89b491bcf51c23',
-     armv7l: '0c9c3d8531555f7f9d479abb1fc986007d2a2c079cc97fd25a89b491bcf51c23',
-       i686: 'd0b4efe95c67b2e424c6cba71215ff3ce12a0240c9b715d9da885d61c0d5e1ee',
-     x86_64: '901582417958d1aefe122e7cd3d6318cc72e912f281c19337e2837697007fa87'
+    aarch64: '64fafb44b942b176ba68dd02fb6197d01de1993352688dad0123d496e5bcd8ec',
+     armv7l: '64fafb44b942b176ba68dd02fb6197d01de1993352688dad0123d496e5bcd8ec',
+       i686: '9d57a466118868237cbb67e7c7906fcc0b150598db71bd176cbb6925b8f79a9a',
+     x86_64: '57a94bb4157d4d0a8460a37eb9b2cecce434100da780dae4f26122aa5b73b787'
   })
 
   depends_on 'ca_certificates' # L
@@ -33,21 +33,16 @@ class Ruby < Package
 
   # at run-time, system's gmp, openssl, and zlib can be used
 
-  def self.patch
-    system "grep -rlZ '/bin/sh ' . | xargs -0 sed -i 's,/bin/sh ,#{CREW_PREFIX}/bin/sh ,g'"
-    system "grep -rlZ \"/bin/sh\\\"\" . | xargs -0 sed -i 's,/bin/sh\",#{CREW_PREFIX}/bin/sh\",g'"
-    system "grep -rlZ \"/bin/sh'\" . | xargs -0 sed -i \"s,/bin/sh',#{CREW_PREFIX}/bin/sh',g\""
-  end
-
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
+    system 'filefix'
     system "RUBY_TRY_CFLAGS='stack_protector=no' \
       RUBY_TRY_LDFLAGS='stack_protector=no' \
       optflags='-flto=auto -fuse-ld=mold' \
       LD=mold \
       ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
-      #{'--enable-yjit' if ARCH == 'x86_64'} \
+      #{'--enable-yjit' if ARCH == 'x86_64' || ARCH == 'aarch64'} \
       --disable-fortify-source"
     system "MAKEFLAGS='--jobs #{CREW_NPROC}' make"
   end
@@ -73,10 +68,9 @@ class Ruby < Package
 
   def self.postinstall
     puts 'Updating ruby gems. This may take a while...'
-    silent = @opt_verbose ? '' : '--silent'
     # install for Ruby 3.4
     system 'gem uninstall resolv-replace', exception: false
     system 'gem install highline ptools'
-    system "gem update #{silent} -N --system", exception: false
+    system "gem update #{'--silent' unless @opt_verbose} -N --system", exception: false
   end
 end

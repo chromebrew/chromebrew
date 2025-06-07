@@ -4,20 +4,19 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  @gcc_libc_version = '2.41'
-  version '15.1.0'
+  version '15.1.0-69eb171'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag '911cfea5e59798e04479ad475870935ccfae004b'
+  git_hashtag '69eb1716b884f6213aef30194390d7741af97c80'
   # git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7c1154d79059d28e95fd1d8c2ea13d9dd68d1c2e3f167f244adf8673da210ee1',
-     armv7l: '7c1154d79059d28e95fd1d8c2ea13d9dd68d1c2e3f167f244adf8673da210ee1',
-       i686: '3548d759835e8c5cc3c7767dd94af2247d866c5b292e1b7c58a53a75537acc57',
-     x86_64: 'f8eb20a74cb6799354fbb58fff32849f533b48398e754dcd1a538372298bfa8d'
+    aarch64: 'b777260eb6f5b4e7983e7afd766aa21068d66d1645ffc0aac0c3f96b07102710',
+     armv7l: 'b777260eb6f5b4e7983e7afd766aa21068d66d1645ffc0aac0c3f96b07102710',
+       i686: 'f5acefa8008778a12b0e81b1ed952c1985653743306c50676a77fc2f16a23bae',
+     x86_64: '43b84c2811c9e7e6ce1465fa76554cc24e452fa7e31d9709b86a1a6e39a7366c'
   })
 
   depends_on 'binutils' => :build
@@ -33,7 +32,6 @@ class Gcc_build < Package
   depends_on 'zstd' # R
 
   conflicts_ok
-  no_mold
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
@@ -147,9 +145,7 @@ class Gcc_build < Package
                        build_configargs: @gcc_global_opts,
                                      AR: 'gcc-ar',
                                  CFLAGS: @cflags,
-      CREW_PRELOAD_ENABLE_COMPILE_HACKS: '1',
                                CXXFLAGS: @cxxflags,
-                             LD_PRELOAD: "#{CREW_LIB_PREFIX}/crew-preload.so",
                                 LDFLAGS: @ldflags,
                            LIBRARY_PATH: CREW_LIB_PREFIX,
                                      LD: 'ld',
@@ -252,14 +248,11 @@ class Gcc_build < Package
              exception: false
       system "make -C #{CREW_TARGET}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
              exception: false
-      system install_env,
-             "make -C #{CREW_TARGET}/libsanitizer/asan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
+      system "make -C #{CREW_TARGET}/libsanitizer/asan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
       # This failed on i686
-      system install_env,
-             "make -C #{CREW_TARGET}/libsanitizer/tsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
+      system "make -C #{CREW_TARGET}/libsanitizer/tsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
       # This might fail on i686
-      system install_env,
-             "make -C #{CREW_TARGET}/libsanitizer/lsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
+      system "make -C #{CREW_TARGET}/libsanitizer/lsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
 
       # libiberty is installed from binutils
       # system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \

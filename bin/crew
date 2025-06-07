@@ -11,6 +11,7 @@ require_gem('json')
 require_gem('ptools')
 require 'digest/sha2'
 require 'fileutils'
+require 'find'
 require 'mkmf'
 require 'open3'
 require 'tmpdir'
@@ -605,7 +606,7 @@ def download
           begin
             @git_cachefile_lockfile.lock
             system "tar c#{@verbose} \
-              $(find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
+              $(#{CREW_PREFIX}/bin/find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
               nice -n 20 zstd -c -T0 --ultra -20 - >  \
               #{cachefile}"
           ensure
@@ -842,6 +843,8 @@ def prepare_package(destdir)
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
       next if %w[. ..].include?(filename)
 
+      # Whitelist crew-preload on multiarch ARM systems.
+      next if %w[lib64/crew-preload.so].include?(filename) && %w[aarch64 armv7l].include?(ARCH)
       unless fhs_compliant_prefix.include?(filename)
         if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY || @pkg.no_fhs?
           puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
@@ -887,18 +890,22 @@ def prepare_package(destdir)
   end
 end
 
-def fix_interpreter_path(dir)
+def expand_binaries_and_fix_interpreter_path(dir)
   # Do not set interpreter for non-musl, as this can break apps if there
   # is an issue with the crew glibc.
-  return if !@pkg.nil? && (@pkg.is_musl? || %w[patchelf upx].include?(@pkg.name))
+  return if !@pkg.nil? && (@pkg.is_musl? || %w[crew_preload patchelf upx].include?(@pkg.name))
 
   Dir.chdir dir do
-    puts 'Running upx to uncompress binaries and patchelf to patch binary interpreter paths.'.lightblue
+    puts "Running upx to uncompress binaries #{'and patchelf to patch binary interpreter paths ' unless CREW_GLIBC_INTERPRETER.blank?}if needed.".lightblue
     abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
     abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
     # Look for installed binaries and libraries in the package install
     # directory tree.
-    execfiles = `find #{Dir.pwd} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' -- 2> /dev/null`.split
+    begin
+      execfiles = Find.find(Dir.pwd).select { |p| File.executable?(p) }
+    rescue NoMemoryError => e
+      puts "Error was #{e}".lightred
+    end
     return if execfiles.empty?
 
     @localdir = File.expand_path('../../.')
@@ -1008,18 +1015,19 @@ def install_package(pkgdir)
     FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
 
     unless CREW_NOT_LINKS || @pkg.no_links?
-      brokensymlinks = `find . -type l -exec test ! -e {} \\; -print`.chomp
-      unless brokensymlinks.to_s.empty?
-        puts 'There are broken symlinks. Will try to fix.'.orange if CREW_VERBOSE
-        brokensymlinks.each_line(chomp: true) do |fixlink|
-          brokentarget = `readlink -n #{fixlink}`.chomp
-          puts "Attempting fix of: #{fixlink.delete_prefix('.')} -> #{brokentarget}".orange if CREW_VERBOSE
+      Find.find(Dir.pwd) do |path|
+        next unless File.symlink?(path)
+        begin
+          File.stat(path)
+        rescue Errno::ENOENT, Errno::ELOOP
+          brokentarget = `readlink -n #{path}`.chomp
+          puts "Attempting fix of: #{path.delete_prefix('.')} -> #{brokentarget}".orange if CREW_VERBOSE
           fixedtarget = brokentarget.delete_prefix(CREW_DEST_DIR)
-          fixedlink_loc = File.join(pkgdir, fixlink.delete_prefix('.'))
+          fixedlink_loc = File.join(pkgdir, path.delete_prefix('.'))
           # If no changes were made, don't replace symlink
           unless fixedtarget == brokentarget
             FileUtils.ln_sf fixedtarget, fixedlink_loc
-            puts "Fixed: #{fixedtarget} -> #{fixlink.delete_prefix('.')}".orange if CREW_VERBOSE
+            puts "Fixed: #{fixedtarget} -> #{path.delete_prefix('.')}".orange if CREW_VERBOSE
           end
         end
       end
@@ -1029,7 +1037,7 @@ def install_package(pkgdir)
       end
     end
 
-    fix_interpreter_path(".#{CREW_PREFIX}")
+    expand_binaries_and_fix_interpreter_path(".#{CREW_PREFIX}")
 
     install_files(".#{CREW_PREFIX}") if Dir.exist?(".#{CREW_PREFIX}")
     install_files(".#{HOME}", HOME) if Dir.exist?(".#{HOME}")
@@ -1266,7 +1274,7 @@ def install
   crewlog "Adding package #{@pkg.name} to device.json."
   @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name } and @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
   ConvenienceFunctions.save_json(@device)
-  crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if File.which('jq')
+  crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if Kernel.system('jq -h', %i[out err] => File::NULL)
   @pkg.in_install = false
 end
 

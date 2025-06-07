@@ -8,6 +8,7 @@ RESET='\e[0m'
 # Simplify colors and print errors to stderr (2).
 echo_error() { echo -e "\e[1;91m${*}${RESET}" >&2; } # Use Light Red for errors.
 echo_info() { echo -e "\e[1;33m${*}${RESET}" >&1; } # Use Yellow for informational messages.
+echo_info_stderr() { echo -e "\e[1;35m${*}${RESET}" >&2; } # Use Magenta for informational messages to STDERR.
 echo_success() { echo -e "\e[1;32m${*}${RESET}" >&1; } # Use Green for success messages.
 echo_intra() { echo -e "\e[1;34m${*}${RESET}" >&1; } # Use Blue for intrafunction messages.
 echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output.
@@ -60,6 +61,11 @@ else
   echo_info "Unable to detect system information, installation will continue."
 fi
 
+# Default chromebrew repo values.
+: "${OWNER:=chromebrew}"
+: "${REPO:=chromebrew}}"
+: "${BRANCH:=master}"
+
 # Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
 # Check if the user is on ChromeOS v117+ and not in the VT-2 console, as sudo will not work.
 : "${CREW_PREFIX:=/usr/local}"
@@ -94,11 +100,6 @@ if [ "$(stat -c '%u' "${CREW_PREFIX}")" != "$(id -u)" ]; then
   sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 fi
 
-# Default chromebrew repo values.
-: "${OWNER:=chromebrew}"
-: "${REPO:=chromebrew}"
-: "${BRANCH:=master}"
-
 # Chromebrew directories.
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
 CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
@@ -123,12 +124,15 @@ fi
 # Additionally, if the architecture is aarch64, set it to armv7l, as we treat as if it was armv7l.
 # When we have proper support for aarch64, remove this.
 if [[ "${ARCH}" = "armv8l" ]] || [[ "${ARCH}" = "aarch64" ]]; then
+  echo_info "Setting ARCH to armv7l."
   ARCH='armv7l'
 fi
 
 if [[ "$ARCH" == "x86_64" ]]; then
-  LIB_SUFFIX='64'
+  CREW_LIB_SUFFIX='64'
 fi
+
+: "${CREW_PY_VER:=3.13}"
 
 # Warn users of the AMD segfault issue and allow them to work around it.
 # The easiest way to distinguish StoneyRidge platorms is to check for the FMA4
@@ -161,9 +165,26 @@ function curl_wrapper () {
   # The --retry/--retry-all-errors parameter in curl will not work with
   # the 'curl: (7) Couldn't connect to server' error, a for loop is used
   # here.
+  CURL_STATUS=
+  if [[ -x "${CREW_PREFIX}/bin/curl" ]] && "${CREW_PREFIX}"/bin/curl --help &>/dev/null; then
+    CURL_STATUS="crew"
+  elif ! curl --help &>/dev/null; then
+    CURL_STATUS="broken"
+    DEBUG_OUT="CURL: ${CURL_STATUS}\nLD_LIBRARY_PATH ${LD_LIBRARY_PATH}"
+    DEBUG_OUT+="$(ldd /usr/local/bin/curl)"
+    echo_info_stderr "${DEBUG_OUT}"
+    echo_error "curl is broken. Install will fail."
+    exit 1
+  elif [[ -f /usr/bin/curl ]] && env -u LD_LIBRARY_PATH /usr/bin/curl --help &>/dev/null; then
+    CURL_STATUS="system"
+  fi
+  [[ -z ${CURL_STATUS} ]] || echo_info_stderr "CURL: ${CURL_STATUS}"
+  
   for (( i = 0; i < 4; i++ )); do
-    if [[ "$ARCH" == "i686" ]]; then
-      # i686 curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
+    if [[ "$CURL_STATUS" == "crew" ]]; then
+      curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
+    elif [[ "$ARCH" == "i686" ]]; then
+      # i686 system curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
       env -u LD_LIBRARY_PATH curl -kC - "${@}" && return 0
     else
       # Force TLS as we know GitLab supports it.
@@ -177,11 +198,10 @@ function curl_wrapper () {
 }
 
 # This will create the directories.
-crew_folders="bin cache doc docbook include lib/crew/packages lib$LIB_SUFFIX libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
+crew_folders="bin cache doc docbook include lib/crew/packages lib${CREW_LIB_SUFFIX} libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
 # shellcheck disable=SC2086
 # Quoting crew_folders leads to breakage.
 (cd "${CREW_PREFIX}" && mkdir -p ${crew_folders})
-
 
 # Remove old git config directories if they exist.
 find "${CREW_LIB_PATH}" -mindepth 1 -delete
@@ -191,22 +211,47 @@ echo_out 'Set up the local package repo...'
 # Download the chromebrew repository.
 curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
+# Note that ordering of BOOTSTRAP_PACKAGES matters!
 # ncurses, readline, and bash are needed before ruby because our ruby
-# invokes the architecture specific bash instead of using /bin/sh, which
-# may be aarch64 when we are using an armv7l userspace. That wreaks
-# havoc with our LD_PRELOAD implementation.
-# ruby wants gcc_lib, so install our version build against our glibc
-# first.
-BOOTSTRAP_PACKAGES='zstd_static glibc libxcrypt upx patchelf lz4 zlib xzutils zstd zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby git ca_certificates libyaml openssl gmp'
+# invokes the architecture specific bash instead of using /bin/sh.
+if [[ $BRANCH == 'pre_glibc_standalone' ]]; then
+  # Package version string may include LIBC_VERSION, but only on older
+  # systems.
+  LIBC_VERSION=$(/lib"${CREW_LIB_SUFFIX}"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')
+  # Add the appropriate glibc stub package for these systems as
+  # subsequent package installs may rely on it.
+  [[ "$ARCH" == "i686" ]] && BOOTSTRAP_PACKAGES="zstd_static  glibc_build223"
+  [[ "$LIBC_VERSION" == "2.27" ]] && BOOTSTRAP_PACKAGES="zstd_static glibc_build227"
+  
+  BOOTSTRAP_PACKAGES+=' upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ruby ca_certificates libyaml openssl findutils ncurses readline bash psmisc uutils_coreutils'
+else
+  # Ruby wants gcc_lib, so install our version build against our glibc
+  # first.
+  # psmisc provides pstree which is used by crew
+  # findutils provides find which is used by crew during installs.
+  BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils'
+fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
+  # Recent Arm systems have a cut down system.
+  (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) && [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2'
+fi
+# Add git dependencies except curl to BOOTSTRAP_PACKAGES.
+BOOTSTRAP_PACKAGES+=' pcre2 expat git'
+
+# Add curl dependencies to BOOTSTRAP_PACKAGES since curl is a git
+# dependency, installing curl last so we don't break the system curl.
+BOOTSTRAP_PACKAGES+=' brotli c_ares libcyrussasl libidn2 libnghttp2 libpsl libssh libunistring openldap zstd curl'
+
+if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ $BRANCH == 'pre_glibc_standalone' ]]; then
   # shellcheck disable=SC2231
-  if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
-    # Recent Arm systems have a cut down system.
-    if [[ "${ARCH}" == "armv7l" ]];then
-      BOOTSTRAP_PACKAGES+=' bzip2 pcre2 uutils_coreutils'
-    fi
-  fi
+  for i in /lib${CREW_LIB_SUFFIX}/libc.so*
+  do
+    sudo cp "$i" "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/"
+    libcname=$(basename "$i")
+    sudo chown chronos "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/${libcname}"
+    sudo chmod 644 "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/${libcname}"
+  done
 fi
 
 # Create the device.json file.
@@ -269,19 +314,22 @@ function extract_install () {
     mkdir "${CREW_DEST_DIR}"
     cd "${CREW_DEST_DIR}"
     XZ_STATUS=
-    if ! xz --help &>/dev/null; then
-      XZ_STATUS="broken"
-    elif [[ -f /usr/bin/xz ]] && env -u LD_LIBRARY_PATH /usr/bin/xz --help &>/dev/null; then
+    if [[ -f /usr/bin/xz ]] && env -u LD_LIBRARY_PATH /usr/bin/xz --help &>/dev/null; then
       XZ_STATUS="system"
+    elif ! xz --help &>/dev/null; then
+      XZ_STATUS="broken"
     fi
     ZSTD_STATUS=
-    if ! zstd --help &>/dev/null; then
-      ZSTD_STATUS="broken"
+    if [[ -x "${CREW_PREFIX}/bin/zstd" ]] && "${CREW_PREFIX}"/bin/zstd --help &>/dev/null; then
+      ZSTD_STATUS="crew"
     elif [[ -f /usr/bin/zstd ]] && env -u LD_LIBRARY_PATH /usr/bin/zstd --help &>/dev/null; then
       ZSTD_STATUS="system"
+    elif ! zstd --help &>/dev/null; then
+      ZSTD_STATUS="broken"
     fi
-    [[ -z ${XZ_STATUS} ]] || echo_info "XZ: ${XZ_STATUS}"
-    [[ -z ${ZSTD_STATUS} ]] || echo_info "ZSTD: ${ZSTD_STATUS}"
+
+    [[ -z ${XZ_STATUS} ]] || echo_info_stderr "XZ: ${XZ_STATUS}"
+    [[ -z ${ZSTD_STATUS} ]] || echo_info_stderr "ZSTD: ${ZSTD_STATUS}"
     # Extract and install.
     echo_intra "Extracting ${1} ..."
     if [[ "${2##*.}" == "xz" ]]; then
@@ -302,7 +350,12 @@ function extract_install () {
         tar xpf ../"${2}"
       elif [[ $ZSTD_STATUS == 'system' ]]; then
         env -u LD_LIBRARY_PATH tar -I /usr/bin/zstd -xpf ../"${2}"
+      elif [[ $ZSTD_STATUS == 'crew' ]]; then
+        tar -I "${CREW_PREFIX}"/bin/zstd -xpf ../"${2}"
       elif [[ $ZSTD_STATUS == 'broken' ]]; then
+        DEBUG_OUT="ZSTD: ${ZSTD_STATUS}\nLD_LIBRARY_PATH ${LD_LIBRARY_PATH}"
+        DEBUG_OUT+="$(ldd /usr/local/bin/zstd)"
+        echo_info_stderr "${DEBUG_OUT}"
         echo_error "zstd is broken. Install will fail."
         exit 1
       else
@@ -313,19 +366,26 @@ function extract_install () {
     echo_intra "Installing ${1}..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
 
-    if [[ "${1}" == 'glibc' ]]; then
-      # update ld.so cache
-      ldconfig
+    if [[ "${1}" == 'glibc' ]] || [[ "${1}" == 'crew_preload' ]]; then
+      # Update ld.so cache.
+      if [[ "$ARCH" == "i686" ]] || [[ "$ARCH" == "armv7l" ]]; then
+        (sudo "${CREW_PREFIX}/bin/ldconfig" | tee /tmp/crew_ldconfig) || true
+      else
+      "${CREW_PREFIX}/bin/ldconfig" || true
+      fi
+      [[ -d /usr/local/opt/glibc-libs ]] && export LD_PRELOAD=crew-preload.so
     else
-      # decompress and switch to our glibc for existing binaries
+      # Decompress binaries.
       if command -v upx &> /dev/null; then
         echo_intra "Running upx on ${1}..."
-        grep "/usr/local/\(bin\|lib\|lib${LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
+        grep "/usr/local/\(bin\|lib\|lib${CREW_LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
       fi
-
-      if command -v patchelf &> /dev/null; then
-        echo_intra "Running patchelf on ${1}..."
-        grep '/usr/local/bin' < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${CREW_PREFIX}/bin/ld.so" 2> /dev/null || true
+      # Switch to our glibc for existing binaries if needed.
+      if [[ -d /usr/local/opt/glibc-libs ]]; then
+        if command -v patchelf &> /dev/null; then
+          echo_intra "Running patchelf on ${1}..."
+          grep '/usr/local/bin' < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${CREW_PREFIX}/bin/ld.so" 2> /dev/null || true
+        fi
       fi
     fi
 
@@ -362,13 +422,18 @@ echo_info "Downloading Bootstrap packages:\n${BOOTSTRAP_PACKAGES}"
 # Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
 # x86_64, and the mandb postinstall doesn't fail in newer arm
 # containers.
-echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}" >> "$CREW_PREFIX"/etc/env.d/00-library
-export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
+if [[ "${ARCH}" == "armv7l" ]] && [[ -d "/lib64" ]]; then
+  # Handle arm multarch.
+  export LD_LIBRARY_PATH="$CREW_PREFIX/lib64:/usr/lib64:/lib64:$CREW_PREFIX/lib${CREW_LIB_SUFFIX}:/usr/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
+else
+  export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}:/usr/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
+fi
+echo -e "# Generated by install.sh\nLD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> "$CREW_PREFIX"/etc/env.d/00-library
 
 # Extract, install and register packages.
 for package in $BOOTSTRAP_PACKAGES; do
   cd "${CREW_LIB_PATH}/packages"
-  version=$(grep "\ \ version" "${package}.rb" | head -n 1 | sed "s/#{LIBC_VERSION}/$LIBC_VERSION/g" | sed "s/#{@gcc_libc_version}/$LIBC_VERSION/g" | awk '{print substr($2,2,length($2)-2)}')
+  version=$(grep "\ \ version" "${package}.rb" | head -n 1 | sed "s/#{LIBC_VERSION}/$LIBC_VERSION/g" | sed "s/#{@gcc_libc_version}/$LIBC_VERSION/g" | sed "s/#{CREW_PY_VER}/py$CREW_PY_VER/g"| awk '{print substr($2,2,length($2)-2)}')
   binary_compression=$(sed -n "s/.*binary_compression '\([^']*\)'.*/\1/p" "${package}.rb")
   if [[ -z "$binary_compression" ]]; then
     binary_compression='tar.zst'
@@ -390,7 +455,9 @@ done
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
-sudo ldconfig &> /tmp/crew_ldconfig || true
+if [[ $BRANCH == 'pre_glibc_standalone' ]] && { [[ "$ARCH" == "i686" ]] || [[ "$ARCH" == "armv7l" ]]; }; then
+  sudo "${CREW_PREFIX}/bin/ldconfig" &> /tmp/crew_ldconfig || true
+fi
 
 echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
@@ -419,16 +486,23 @@ BOOTSTRAP_GEMS='base64 bigdecimal connection_pool concurrent-ruby drb i18n logge
 # shellcheck disable=SC2086
 install_ruby_gem ${BOOTSTRAP_GEMS}
 
+# Git needs to be working since crew invokes it in lib/const.rb.
+if ! git --version; then
+  DEBUG_OUT="GIT: broken\nLD_LIBRARY_PATH ${LD_LIBRARY_PATH}\n"
+  DEBUG_OUT+=$(ldd "$(which git)")
+  echo_info_stderr "${DEBUG_OUT}"
+  echo_error "git is broken. Install will fail."
+  exit 1
+fi
 # This is needed for SSL env variables to be populated so ruby doesn't
 # complain about missing certs, resulting in failed https connections.
 echo_info "Installing crew_profile_base...\n"
 yes | crew install crew_profile_base
+
 # shellcheck disable=SC1090
 trap - ERR && source ~/.bashrc && set_trap
-
 echo_info "Installing core Chromebrew packages...\n"
-yes | crew install core
-
+yes | crew install core || (yes | crew install core) || (yes | crew install core)
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than
 # splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}.
@@ -470,7 +544,10 @@ else
   # Set mtimes of files to when the file was committed.
   git-restore-mtime -sq 2>/dev/null
 
-  OWNER=${OWNER} REPO=${REPO} crew update && yes | crew upgrade
+  CREW_REPO=https://github.com/${OWNER}/${REPO}.git CREW_BRANCH=${BRANCH} \
+    crew update && \
+    yes | crew upgrade
+
   echo_info "Cleaning up older ruby gem versions...\n"
   gem cleanup
 fi

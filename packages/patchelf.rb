@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Patchelf < Autotools
   description 'PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables.'
   homepage 'https://github.com/NixOS/patchelf'
-  version '0.18.0-523f401'
+  version '0.18.0-523f401-1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/NixOS/patchelf.git'
@@ -11,10 +11,10 @@ class Patchelf < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6013578363f4949ba003a9baf6cdf4494ffdab85dfa141d231c7111be4841c19',
-     armv7l: '6013578363f4949ba003a9baf6cdf4494ffdab85dfa141d231c7111be4841c19',
-       i686: '35c23d10350f3a29111831776d639f8b53cd987c262868188987e27fef8b8cae',
-     x86_64: '36b45b4f59b426a875e8db833595d7377c960a701f4153e1b2dcc786389458fd'
+    aarch64: '2abcfc0a51ed852ca1ca469a32866204c806110f6a7b3c6bef785edd01507703',
+     armv7l: '2abcfc0a51ed852ca1ca469a32866204c806110f6a7b3c6bef785edd01507703',
+       i686: 'ef3052e4bd59d6bddbb5b9a0ae0498429a17edacb662613ff1b3b0528fb0e78d',
+     x86_64: '313c3dffbec9404b609999f8e5adf71cdd601025b9dda7afb81caf500225f8bf'
   })
 
   no_env_options

@@ -4,19 +4,26 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Gcc_dev < Package
   description 'The GNU Compiler Collection: Everything (excepting libraries aside from libgccjit)'
   homepage Gcc_build.homepage
-  version '15.1.0' # Do not use @_ver here, it will break the installer.
+  version '15.1.0-69eb171' # Do not use @_ver here, it will break the installer.
   license Gcc_build.license
-  # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
+  # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, libssp, and then binutils in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bd4288f9c1e89f9bfc29aa6a932f2b33a8e769603bcda4a50debad0e0b362acb',
-     armv7l: 'bd4288f9c1e89f9bfc29aa6a932f2b33a8e769603bcda4a50debad0e0b362acb',
-       i686: '7b44a7428fe19918c9e2cb6a85a71b127b8c11f156e0aec67bff5e6a334202fe',
-     x86_64: 'e140bce8d1f3a4c0c143d5edff169dc1b2ca355bf6a2771cd6cbf0b64939a994'
+    aarch64: 'e0cdc5b4a9a187983b0342d5f741fc785207eeecca819a1c050e119ea4b4f230',
+     armv7l: 'e0cdc5b4a9a187983b0342d5f741fc785207eeecca819a1c050e119ea4b4f230',
+       i686: '4cc26b27d18e06bd415723d04f9033893232e0cdb640028ce87172e1f5fbe06e',
+     x86_64: 'e89dcaeac4f71b50a5066e07dbd4544e011fb6874bfdf286338ee91fa1a5271a'
+  })
+
+  binary_sha256({
+    aarch64: 'e0cdc5b4a9a187983b0342d5f741fc785207eeecca819a1c050e119ea4b4f230',
+     armv7l: 'e0cdc5b4a9a187983b0342d5f741fc785207eeecca819a1c050e119ea4b4f230',
+       i686: '4cc26b27d18e06bd415723d04f9033893232e0cdb640028ce87172e1f5fbe06e',
+     x86_64: 'e89dcaeac4f71b50a5066e07dbd4544e011fb6874bfdf286338ee91fa1a5271a'
   })
 
   depends_on 'gcc_build' => :build
