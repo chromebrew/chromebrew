@@ -4,20 +4,21 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version '14.3.0' # Do not use @_ver here, it will break the installer.
+  version '15.1.0-69eb171' # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag "releases/gcc-#{version.split('-').first}"
+  git_hashtag '69eb1716b884f6213aef30194390d7741af97c80'
+  # git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '65d7b2924ebeeba066ddccd94f781d0b1e92451c8bcfad1940bfcf5a045f2881',
-     armv7l: '65d7b2924ebeeba066ddccd94f781d0b1e92451c8bcfad1940bfcf5a045f2881',
-       i686: '3cbd9aa9fe42d4e2a3e3fc65eb086e277b50a3364ef828dcf7eeb1d8d22b8f1c',
-     x86_64: '723058d1fe6acea47d32395d2403a37e79677a25b84caf7318f5dfee9e61f3fd'
+    aarch64: 'a7c6747dc8118e6847cf02994491daf86e6e8778fd3cec766d85d527a64e78f5',
+     armv7l: 'a7c6747dc8118e6847cf02994491daf86e6e8778fd3cec766d85d527a64e78f5',
+       i686: 'a7dee14960eff9d6fceb727a8b6d05e2baa54b285458278309d83f65afc96dc2',
+     x86_64: '05de82ceb2b59fa2abbfe61da6a46080a73e4acd450b63dc0895da3ab5b08eb8'
   })
 
   depends_on 'dejagnu' => :build # for test
@@ -57,7 +58,7 @@ class Libssp < Package
 
   @cflags = '-fPIC -pipe'
   @cxxflags = '-fPIC -pipe'
-  @languages = 'c,c++,jit,objc,fortran,go'
+  @languages = 'c,c++,jit,objc,fortran,go,rust'
   case ARCH
   when 'armv7l', 'aarch64'
     @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'

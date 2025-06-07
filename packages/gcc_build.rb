@@ -4,18 +4,19 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '14.3.0'
+  version '15.1.0-69eb171'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag "releases/gcc-#{version.split('-').first}"
+  git_hashtag '69eb1716b884f6213aef30194390d7741af97c80'
+  # git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '84673a4b3c35f96f902c5e341108f39940d9fcde8554ce15246194b71ec90e55',
-     armv7l: '84673a4b3c35f96f902c5e341108f39940d9fcde8554ce15246194b71ec90e55',
-       i686: '69571ccb3d6ed8d51e938f178a0e592f716aad67e5674a0bfd5d8bf4482bed27',
-     x86_64: '586571bbf4f55cbd28f2b5329c0d9de87b551147f454d13c20a09de45e4144e8'
+    aarch64: 'b777260eb6f5b4e7983e7afd766aa21068d66d1645ffc0aac0c3f96b07102710',
+     armv7l: 'b777260eb6f5b4e7983e7afd766aa21068d66d1645ffc0aac0c3f96b07102710',
+       i686: 'f5acefa8008778a12b0e81b1ed952c1985653743306c50676a77fc2f16a23bae',
+     x86_64: '43b84c2811c9e7e6ce1465fa76554cc24e452fa7e31d9709b86a1a6e39a7366c'
   })
 
   depends_on 'binutils' => :build
@@ -26,17 +27,17 @@ class Gcc_build < Package
   depends_on 'libssp' # L
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
+  depends_on 'rust' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   conflicts_ok
-  # no_mold
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
   @glibc_flags = ''
   @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags}"
-  @languages = 'c,c++,jit,objc,fortran,go'
+  @languages = 'c,c++,jit,objc,fortran,go,rust'
   case ARCH
   when 'armv7l', 'aarch64'
     @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'
