@@ -6,7 +6,7 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  version "2.44-3"
+  version '2.44-3'
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://sourceware.org/pub/binutils/releases/binutils-#{version.split('-').first}.tar.zst"
