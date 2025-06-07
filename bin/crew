@@ -901,7 +901,11 @@ def expand_binaries_and_fix_interpreter_path(dir)
     abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
     # Look for installed binaries and libraries in the package install
     # directory tree.
-    execfiles = Find.find(Dir.pwd).select { |p| File.executable?(p) }
+    begin
+      execfiles = Find.find(Dir.pwd).select { |p| File.executable?(p) }
+    rescue NoMemoryError -> e
+      puts "Error was #{e}".lightred
+    end
     return if execfiles.empty?
 
     @localdir = File.expand_path('../../.')
