@@ -27,7 +27,7 @@ class Libdovi < Package
 
   def self.build
     Dir.chdir('dolby_vision') do
-      system "#{ARCH == 'x86_64' ? 'RUSTFLAGS="-C target-cpu=x86-64-v3"' : ''} cargo build --release"
+      system "#{'RUSTFLAGS="-C target-cpu=x86-64-v3"' if ARCH == 'x86_64'} cargo build --release"
     end
   end
 

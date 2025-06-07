@@ -58,7 +58,7 @@ class Gdb < Autotools
       --with-system-gdbinit=#{CREW_PREFIX}/etc/gdb/gdbinit \
       --with-system-readline \
       --with-system-zlib \
-      #{ARCH == 'i686' ? '' : '--with-x'}"
+      #{'--with-x' unless ARCH == 'i686'}"
 
   def self.install
     system "make -C gdb DESTDIR=#{CREW_DEST_DIR} install"

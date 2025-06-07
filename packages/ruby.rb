@@ -47,7 +47,7 @@ class Ruby < Package
       LD=mold \
       ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
-      #{ARCH == 'x86_64' ? '--enable-yjit' : ''} \
+      #{'--enable-yjit' if ARCH == 'x86_64'} \
       --disable-fortify-source"
     system "MAKEFLAGS='--jobs #{CREW_NPROC}' make"
   end
