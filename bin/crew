@@ -1015,7 +1015,7 @@ def install_package(pkgdir)
         next unless File.symlink?(path)
         begin
           File.stat(path)
-        rescue Errno::ENOENT
+        rescue Errno::ENOENT, Errno::ELOOP
           brokentarget = `readlink -n #{path}`.chomp
           puts "Attempting fix of: #{path.delete_prefix('.')} -> #{brokentarget}".orange if CREW_VERBOSE
           fixedtarget = brokentarget.delete_prefix(CREW_DEST_DIR)
