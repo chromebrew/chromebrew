@@ -71,6 +71,6 @@ class Ruby < Package
     # install for Ruby 3.4
     system 'gem uninstall resolv-replace', exception: false
     system 'gem install highline ptools'
-    system "gem update #{'--silwnt' unless @opt_verbose} -N --system", exception: false
+    system "gem update #{'--silent' unless @opt_verbose} -N --system", exception: false
   end
 end
