@@ -50,7 +50,7 @@ class Ruby < Package
   def self.check
     # Do not run checks if rebuilding current ruby version.
     # RUBY_VERSION is a built-in ruby constant.
-    # system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version.split('-')[0] == RUBY_VERSION
+    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version.split('-')[0] == RUBY_VERSION
   end
 
   def self.install
