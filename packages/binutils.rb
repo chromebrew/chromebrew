@@ -62,7 +62,7 @@ class Binutils < Package
         --enable-shared \
         --enable-threads \
         --enable-vtable-verify \
-        #{ARCH == 'i686' || ARCH == 'x86_64' ? '--disable-gprofng' : ''} \
+        #{'--disable-gprofng' if ARCH == 'i686' || ARCH == 'x86_64'} \
         --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new \
         --with-lib-path=#{CREW_LIB_PREFIX} \
         --with-pic \
