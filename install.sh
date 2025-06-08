@@ -1,5 +1,5 @@
 #!/bin/bash
-
+CREW_INSTALLER_VERSION=2025060701
 # Exit on fail.
 set -eE
 
