@@ -11,17 +11,16 @@ class Shared_mime_info < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '00fbf9862398df0cceb4eff10c2e0400d6ccdf454577c469032e11eabbe7a27c',
-     armv7l: '00fbf9862398df0cceb4eff10c2e0400d6ccdf454577c469032e11eabbe7a27c',
-       i686: '0ded55d937e53446cd6bd850d2b489f4580bae92434deb73fc01675a61293a17',
-     x86_64: 'd88e9a4ea801e210ff75bf2f64de5a50138ce770c8faff979be2495d43e561f4'
+    aarch64: 'f68c551231c53e0abdf45f0999443aa3ef3f5eb6bbfe017496234f1e3d55efa2',
+     armv7l: 'f68c551231c53e0abdf45f0999443aa3ef3f5eb6bbfe017496234f1e3d55efa2',
+       i686: 'ed3a6f6a6c6f3a692c5da3327c7ba7c66069319af92dca537ac9697534fcad4e',
+     x86_64: 'faf8443a8d69ca40d5b2be18243af2244d498e0b79b39b6bd8d5e90632ae38a1'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'gettext' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'icu4c' # R
   depends_on 'libxml2' # R
   depends_on 'xmlto' => :build
 
