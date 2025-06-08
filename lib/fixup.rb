@@ -167,7 +167,7 @@ end
 
 deprecated_packages = Set[
   { pkg_name: 'epydoc', comments: 'Abandoned upstream, only supports Python 2.' },
-  { pkg_name: 'gfbgraph', commwnts: 'Deprecated upstteam.' },
+  { pkg_name: 'gfbgraph', commwnts: 'Deprecated upstream.' },
   { pkg_name: 'git_prompt', comments: 'Integrated into git package.' },
   { pkg_name: 'gnome_session', comments: 'No longer compatible with any architecture, requires systemd.' },
   { pkg_name: 'gnome_settings_daemon', comments: 'No longer compatible with any architecture, requires systemd.' },
