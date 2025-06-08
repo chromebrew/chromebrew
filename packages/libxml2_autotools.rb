@@ -14,10 +14,10 @@ class Libxml2_autotools < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7c4a657d5664cdd2ddc64ad7bab7b1e9c386e9cd2ff017e565c0477aecb6864d',
-     armv7l: '7c4a657d5664cdd2ddc64ad7bab7b1e9c386e9cd2ff017e565c0477aecb6864d',
-       i686: '141c1adb6bcffa3ae4c5900c0b764647bce4e11b76c1cc8d527eabb1b2ad4071',
-     x86_64: '5cdd131dfaba8ad01089fad708b8a4cf036dad67864966c2ea604c58822a2a3e'
+    aarch64: 'e686b597416d51b4118a910033fa71748db2f7bae97858306a29119aefa86f4e',
+     armv7l: 'e686b597416d51b4118a910033fa71748db2f7bae97858306a29119aefa86f4e',
+       i686: 'a53157b3bfc271f0515c6b0750d541422a2835a98c1aecec6bf1a4c668abc09b',
+     x86_64: '728752c85edcf41714cc696cb23b2e42d60300989373a0232472be5e47f72bb9'
   })
 
   depends_on 'gcc_lib' # R
