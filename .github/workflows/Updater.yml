@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-          ref: 'pre_glibc_standalone'
+          ref: 'pre_glibc_standalone' # Use the pre_glibc_standalone as a base since it has the lowest glibc requirements.
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.4'

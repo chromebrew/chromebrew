@@ -3,7 +3,7 @@ require 'buildsystems/python'
 class Py3_devedeng < Python
   description 'DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD)'
   homepage 'https://www.rastersoft.com/programas/devede.html'
-  version "4.18.0-#{CREW_PY_VER}"
+  version "4.21.0-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.com/rastersoft/devedeng.git'
@@ -11,9 +11,9 @@ class Py3_devedeng < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b476a4be173f380dec6a4b531778632dee701495693ab422afcd4fd94f772204',
-     armv7l: 'b476a4be173f380dec6a4b531778632dee701495693ab422afcd4fd94f772204',
-     x86_64: 'ead4f2c04701b4d29217719ac0602c5ac002adb98977ba350be9b15de61e36ef'
+    aarch64: '3a6e041069dede588b118d92a099ba0ce92aa70dfd5905c22e795f15e38aae9d',
+     armv7l: '3a6e041069dede588b118d92a099ba0ce92aa70dfd5905c22e795f15e38aae9d',
+     x86_64: 'fd77cf75388c77f23704bdc96bcfaf2647fc22f5623c3f777769bc5985125590'
   })
 
   depends_on 'python3' => :build
