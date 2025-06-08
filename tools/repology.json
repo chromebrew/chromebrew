@@ -1091,7 +1091,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.79.118",
+    "version": "1.79.119",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -2091,7 +2091,7 @@
     "name": "curl",
     "description": "Command line tool and library for transferring data with URLs.",
     "homepage": "https://curl.se/",
-    "version": "8.13.0",
+    "version": "8.14.1",
     "license": "curl",
     "compatibility": "all"
   },
@@ -2619,7 +2619,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "136.0.3240.92-1",
+    "version": "137.0.3296.62-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -3131,7 +3131,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "139.0",
+    "version": "139.0.1",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3755,7 +3755,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "524.0.0",
+    "version": "525.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -4587,7 +4587,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "137.0.7151.55-1",
+    "version": "137.0.7151.68-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -9675,7 +9675,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "25.1.1",
+    "version": "25.1.2",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10059,7 +10059,7 @@
     "name": "mullvad",
     "description": "Privacy-focused browser",
     "homepage": "https://mullvad.net/browser",
-    "version": "14.5.2",
+    "version": "14.5.3",
     "license": "Mozilla Public License V2",
     "compatibility": "x86_64"
   },
@@ -11235,7 +11235,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "119.0.5497.56",
+    "version": "119.0.5497.70",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -12707,7 +12707,7 @@
     "name": "py3_azure_cli",
     "description": "Next generation multi-platform command line experience for Azure.",
     "homepage": "https://pypi.org/project/azure-cli/",
-    "version": "2.73.0",
+    "version": "2.74.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13027,7 +13027,7 @@
     "name": "py3_greenlet",
     "description": "Greenlet provides lightweight in-process concurrent programming.",
     "homepage": "https://greenlet.readthedocs.io/",
-    "version": "3.2.2",
+    "version": "3.2.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13339,7 +13339,7 @@
     "name": "py3_nuitka",
     "description": "Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.",
     "homepage": "https://nuitka.net/",
-    "version": "2.7.5",
+    "version": "2.7.6",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13355,7 +13355,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.153.0",
+    "version": "2.154.0",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13363,7 +13363,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.57.0",
+    "version": "3.58.0",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13627,7 +13627,7 @@
     "name": "py3_pypdf",
     "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.",
     "homepage": "https://github.com/py-pdf/pypdf",
-    "version": "5.5.0",
+    "version": "5.6.0",
     "license": "BSD-3-Clause",
     "compatibility": "all"
   },
@@ -13667,7 +13667,7 @@
     "name": "py3_pytest",
     "description": "Pytest is simple powerful testing with Python.",
     "homepage": "https://pytest.org/",
-    "version": "8.3.5",
+    "version": "8.4.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13755,7 +13755,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.11.12",
+    "version": "0.11.13",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13987,7 +13987,7 @@
     "name": "py3_typing_extensions",
     "description": "Backported and Experimental Type Hints for Python 3.5+",
     "homepage": "https://github.com/python/typing/tree/master/typing_extensions",
-    "version": "4.13.2",
+    "version": "4.14.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14107,7 +14107,7 @@
     "name": "py3_zcmds",
     "description": "Cross platform(ish) productivity commands written in python",
     "homepage": "https://github.com/zackees/zcmds",
-    "version": "1.5.24",
+    "version": "1.5.26",
     "license": "MIT",
     "compatibility": "aarch64"
   },
@@ -14835,7 +14835,7 @@
     "name": "ruby_bigdecimal",
     "description": "This library provides arbitrary-precision decimal floating-point number class.",
     "homepage": "https://github.com/ruby/bigdecimal",
-    "version": "3.1.9-ruby3.4",
+    "version": "3.2.1-ruby3.4",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -14979,7 +14979,7 @@
     "name": "ruby_erb",
     "description": "An easy to use but powerful templating system for Ruby.",
     "homepage": "https://github.com/ruby/erb",
-    "version": "4.0.4-ruby3.4",
+    "version": "5.0.1-ruby3.4",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -15547,7 +15547,7 @@
     "name": "ruby_rubocop",
     "description": "A Ruby static code analyzer and formatter",
     "homepage": "https://rubocop.org",
-    "version": "1.75.8-ruby3.4",
+    "version": "1.76.0-ruby3.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15667,7 +15667,7 @@
     "name": "ruby_strscan",
     "description": "Provides lexical scanning operations on a String.",
     "homepage": "https://github.com/ruby/strscan",
-    "version": "3.1.2-ruby3.4",
+    "version": "3.1.5-ruby3.4",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -16315,7 +16315,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.56.0",
+    "version": "7.56.1",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -17051,7 +17051,7 @@
     "name": "telegram",
     "description": "Telegram is a messaging app with a focus on speed and security, it's super-fast, simple and free.",
     "homepage": "https://telegram.org/",
-    "version": "5.12.0",
+    "version": "5.15.2",
     "license": "BSD, LGPL-2+ and GPL-3-with-openssl-exception",
     "compatibility": "x86_64"
   },
@@ -17107,7 +17107,7 @@
     "name": "termius",
     "description": "Modern SSH Client",
     "homepage": "https://termius.com/",
-    "version": "9.19.2",
+    "version": "9.21.2",
     "license": "Apache-2.0, LGPL-2.1, MIT",
     "compatibility": "x86_64"
   },
@@ -17875,7 +17875,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.4.3684.43-1",
+    "version": "7.4.3684.46-1",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19094,6 +19094,14 @@
     "version": "2.2.4",
     "license": "Zlib",
     "compatibility": "all"
+  },
+  {
+    "name": "zola",
+    "description": "A fast static site generator",
+    "homepage": "https://www.getzola.org/",
+    "version": "0.20.0",
+    "license": "MIT",
+    "compatibility": "x86_64"
   },
   {
     "name": "zoneinfo",
