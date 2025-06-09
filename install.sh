@@ -170,6 +170,8 @@ function curl_wrapper () {
   CURL_STATUS=
   if [[ -x "${CREW_PREFIX}/bin/curl" ]] && "${CREW_PREFIX}"/bin/curl --help &>/dev/null; then
     CURL_STATUS="crew"
+  elif [[ -f /usr/bin/curl ]] && env -u LD_LIBRARY_PATH /usr/bin/curl --help &>/dev/null; then
+    CURL_STATUS="system"
   elif ! curl --help &>/dev/null; then
     CURL_STATUS="broken"
     DEBUG_OUT="CURL: ${CURL_STATUS}\nLD_LIBRARY_PATH ${LD_LIBRARY_PATH}"
@@ -177,14 +179,16 @@ function curl_wrapper () {
     echo_info_stderr "${DEBUG_OUT}"
     echo_error "curl is broken. Install will fail."
     exit 1
-  elif [[ -f /usr/bin/curl ]] && env -u LD_LIBRARY_PATH /usr/bin/curl --help &>/dev/null; then
-    CURL_STATUS="system"
+  else
+    CURL_STATUS="unknown"
   fi
   [[ -z ${CURL_STATUS} ]] || echo_info_stderr "CURL: ${CURL_STATUS}"
   
   for (( i = 0; i < 4; i++ )); do
     if [[ "$CURL_STATUS" == "crew" ]]; then
       curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
+    elif [[ "$CURL_STATUS" == "system" ]]; then
+      env -u LD_LIBRARY_PATH /usr/bin/curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
     elif [[ "$ARCH" == "i686" ]]; then
       # i686 system curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
       env -u LD_LIBRARY_PATH curl -kC - "${@}" && return 0
