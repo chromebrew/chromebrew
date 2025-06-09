@@ -30,7 +30,7 @@ class Rust < Package
     ENV['RUST_BACKTRACE'] = 'full'
     ENV['CARGO_HOME'] = "#{CREW_DEST_PREFIX}/share/cargo"
     ENV['RUSTUP_HOME'] = "#{CREW_DEST_PREFIX}/share/rustup"
-    ENV['RUSTFLAGS'] = "-Cdebuginfo=0 -Copt-level=3 -Clink-arg=-fuse-ld=mold"
+    ENV['RUSTFLAGS'] = '-Cdebuginfo=0 -Copt-level=3 -Clink-arg=-fuse-ld=mold'
 
     ENV['RUSTUP_TOOLCHAIN'] = 'stable'
     default_host = %w[aarch64 armv7l].include?(ARCH) ? 'armv7-unknown-linux-gnueabihf' : "#{ARCH}-unknown-linux-gnu"
