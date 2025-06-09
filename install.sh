@@ -189,11 +189,11 @@ function curl_wrapper () {
   for (( i = 0; i < 4; i++ )); do
     if [[ "$CURL_STATUS" == "crew" ]]; then
       curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
-    elif [[ "$CURL_STATUS" == "system" ]]; then
-      env -u LD_LIBRARY_PATH /usr/bin/curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
     elif [[ "$ARCH" == "i686" ]]; then
       # i686 system curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
       env -u LD_LIBRARY_PATH curl -kC - "${@}" && return 0
+    elif [[ "$CURL_STATUS" == "system" ]]; then
+      env -u LD_LIBRARY_PATH /usr/bin/curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
     else
       # Force TLS as we know GitLab supports it.
       env -u LD_LIBRARY_PATH curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
@@ -222,7 +222,7 @@ curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"
 # Note that ordering of BOOTSTRAP_PACKAGES matters!
 # ncurses, readline, and bash are needed before ruby because our ruby
 # invokes the architecture specific bash instead of using /bin/sh.
-if [[ $BRANCH == 'pre_glibc_standalone' ]]; then
+if [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]]; then
   # Package version string may include LIBC_VERSION, but only on older
   # systems.
   LIBC_VERSION=$(/lib"${CREW_LIB_SUFFIX}"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')
@@ -242,7 +242,8 @@ fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   # Recent Arm systems have a cut down system.
-  (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) && [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2'
+  # Tar breaks during install on multiarch systems.
+  (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) && [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 attr acl tar'
 fi
 # Add git dependencies except curl to BOOTSTRAP_PACKAGES.
 BOOTSTRAP_PACKAGES+=' pcre2 expat git'
@@ -251,7 +252,7 @@ BOOTSTRAP_PACKAGES+=' pcre2 expat git'
 # dependency, installing curl last so we don't break the system curl.
 BOOTSTRAP_PACKAGES+=' brotli c_ares libcyrussasl libidn2 libnghttp2 libpsl libssh libunistring openldap zstd curl'
 
-if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ $BRANCH == 'pre_glibc_standalone' ]]; then
+if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]]; then
   # shellcheck disable=SC2231
   for i in /lib${CREW_LIB_SUFFIX}/libc.so*
   do
@@ -463,7 +464,7 @@ done
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
-if [[ $BRANCH == 'pre_glibc_standalone' ]] && { [[ "$ARCH" == "i686" ]] || [[ "$ARCH" == "armv7l" ]]; }; then
+if [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]] && { [[ "$ARCH" == "i686" ]] || [[ "$ARCH" == "armv7l" ]]; }; then
   sudo "${CREW_PREFIX}/bin/ldconfig" &> /tmp/crew_ldconfig || true
 fi
 
