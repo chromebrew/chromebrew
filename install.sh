@@ -61,12 +61,14 @@ else
   echo_info "Unable to detect system information, installation will continue."
 fi
 
+set -a
 # Default chromebrew repo values.
 : "${OWNER:=chromebrew}"
 : "${REPO:=chromebrew}}"
 : "${BRANCH:=master}"
 : "${CREW_BRANCH:=${BRANCH}}"
 : "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
+set +a
 
 # Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
 # Check if the user is on ChromeOS v117+ and not in the VT-2 console, as sudo will not work.
@@ -508,7 +510,7 @@ yes | crew install crew_profile_base
 # shellcheck disable=SC1090
 trap - ERR && source ~/.bashrc && set_trap
 echo_info "Installing core Chromebrew packages...\n"
-yes | crew install core || (yes | crew install core) || (yes | crew install core)
+yes | crew install core
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than
 # splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}.
