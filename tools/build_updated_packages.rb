@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 2.7 (for Chromebrew)
+# build_updated_packages version 2.8 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -30,6 +30,13 @@ CHECK_ALL_PYTHON = ARGV.include?('--check-all-python')
 CHECK_ALL_RUBY = ARGV.include?('--check-all-ruby')
 require_gem 'highline'
 require_gem 'timeout'
+
+excluded_packages = Set[
+  { pkg_name: 'glibc_fallthrough', comments: 'Stub package.' },
+  { pkg_name: 'py3_unsupported_python', commwnts: 'Stub package.' },
+  { pkg_name: 'terraform', comments: 'Needs manual update due to package structure.' }
+]
+excluded_pkgs = excluded_packages.map { |h| h[:pkg_name] }
 
 def self.agree_default_yes(message = nil)
   Timeout.timeout(CREW_AGREE_TIMEOUT_SECONDS) do
@@ -104,6 +111,10 @@ if CHECK_ALL_RUBY
 end
 updated_packages.push(*crew_update_packages)
 updated_packages.uniq!
+# Remove packages that don't need to be checked for updates from the
+# check list.
+exclusion_regex = "(#{excluded_pkgs.join('|')})"
+updated_packages.delete_if { |d| /#{exclusion_regex}/.match(d) }
 
 updated_packages.each do |pkg|
   name = pkg.sub('packages/', '').sub('.rb', '')
