@@ -31,7 +31,6 @@ ARCH_LIB        ||= "lib#{CREW_LIB_SUFFIX}"
 
 CREW_PREFIX ||= ENV.fetch('CREW_PREFIX', '/usr/local') unless defined?(CREW_PREFIX)
 
-
 # Glibc related constants
 # Gate enablement of the new glibc behind this env variable, so that we
 # have a build environment with the older glibc if this is set.
