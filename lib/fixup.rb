@@ -159,7 +159,7 @@ renamed_packages = Set[
   { pkg_name: 'zlibpkg', pkg_rename: 'zlib', comments: 'Renamed to better match upstream.' }
 ]
 
-unless CREW_BRANCH == 'pre_glibc_standalone'
+unless CREW_PRE_GLIBC_STANDALONE
   renamed_packages << { pkg_name: 'glibc_dev', pkg_rename: 'glibc', comments: 'Renamed to better match upstream.' }
   renamed_packages << { pkg_name: 'glibc_lib', pkg_rename: 'glibc', comments: 'Renamed to better match upstream.' }
   renamed_packages << { pkg_name: 'glibc_standalone', pkg_rename: 'glibc', comments: 'Renamed to better match upstream.' }
@@ -189,8 +189,7 @@ deprecated_packages = Set[
   { pkg_name: 'skype', comments: 'Officially sunsetting and will be shut down soon.' }
 ]
 
-unless CREW_BRANCH == 'pre_glibc_standalone'
-
+unless CREW_PRE_GLIBC_STANDALONE
   deprecated_packages << { pkg_name: 'glibc_build223', comments: 'We are moving away from system glibc.' }
   deprecated_packages << { pkg_name: 'glibc_build227', comments: 'We are moving away from system glibc.' }
   deprecated_packages << { pkg_name: 'glibc_build232', comments: 'We are moving away from system glibc.' }
@@ -291,7 +290,7 @@ end
 if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patchelf")
   abort("No Upx found! Please run 'crew install upx'").lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
   abort("No Patchelf found! Please run 'crew install patchelf'").lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
-  puts "Running upx to uncompress binaries #{'and patchelf to patch binary interpreter paths ' unless CREW_BRANCH == 'pre_glibc_standalone'}if needed.".lightblue
+  puts "Running upx to uncompress binaries #{'and patchelf to patch binary interpreter paths ' unless CREW_PRE_GLIBC_STANDALONE}if needed.".lightblue
   # Look for installed binaries and libraries in /usr/local and the lib
   # prefix directories.
   execfiles = `find #{CREW_PREFIX}/bin #{CREW_LIB_PREFIX} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' -- 2> /dev/null`.split
@@ -301,8 +300,8 @@ if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patc
     next unless File.file?(execfiletopatch)
     # Decompress the binary if compressed.
     system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL
-    # Do not patch interpreter if we are on the pre_glibc_standalone branch.
-    next if CREW_BRANCH == 'pre_glibc_standalone'
+    # Do not patch interpreter if we have pre_glibc_standalone set.
+    next if CREW_PRE_GLIBC_STANDALONE
     # Check for existing interpreter.
     @interpreter, _read_interpreter_stderr_s, @read_interpreter_status = Open3.capture3("patchelf --print-interpreter #{execfiletopatch}")
     # Set interpreter unless the interpreter read failed or is already

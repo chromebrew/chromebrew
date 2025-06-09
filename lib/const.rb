@@ -31,7 +31,11 @@ ARCH_LIB        ||= "lib#{CREW_LIB_SUFFIX}"
 
 CREW_PREFIX ||= ENV.fetch('CREW_PREFIX', '/usr/local') unless defined?(CREW_PREFIX)
 
+
 # Glibc related constants
+# Gate enablement of the new glibc behind this env variable, so that we
+# have a build environment with the older glibc if this is set.
+CREW_PRE_GLIBC_STANDALONE ||= ENV.fetch('CREW_PRE_GLIBC_STANDALONE', false) unless defined?(CREW_PRE_GLIBC_STANDALONE)
 CREW_GLIBC_PREFIX ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
 @crew_glibc_interpreter = File.file?("#{CREW_PREFIX}/bin/ld.so") ? File.join(CREW_GLIBC_PREFIX, File.basename(File.realpath("#{CREW_PREFIX}/bin/ld.so"))) : ''
 CREW_GLIBC_INTERPRETER ||= File.file?(@crew_glibc_interpreter) ? @crew_glibc_interpreter : nil unless defined?(CREW_GLIBC_INTERPRETER)
