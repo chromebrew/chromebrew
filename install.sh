@@ -32,7 +32,7 @@ lsbval() {
 }
 
 # Print a message before exit on error
-set_trap() { trap "echo_error 'An error occured during the installation :/'" ERR; }
+set_trap() { trap "echo_error 'An error occured during the installation using Chromebrew installer ${CREW_INSTALLER_VERSION} :/'" ERR; }
 set_trap
 
 # Check if the script is being run as root.
