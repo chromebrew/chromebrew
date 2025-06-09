@@ -1,6 +1,9 @@
 require 'package'
 
+# This is needed so the installer finds this glibc version first when it is used in the newer installs.
+# rubocop:disable Style/UnlessElse
 unless CREW_BRANCH == 'pre_glibc_standalone'
+  # rubocop:enable Style/UnlessElse
   class Glibc < Package
     description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
     homepage 'https://www.gnu.org/software/libc/'
@@ -218,3 +221,4 @@ else
       depends_on 'glibc_fallthrough'
     end
   end
+end
