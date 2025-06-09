@@ -65,6 +65,8 @@ fi
 : "${OWNER:=chromebrew}"
 : "${REPO:=chromebrew}}"
 : "${BRANCH:=master}"
+: "${CREW_BRANCH:=${BRANCH}}"
+: "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
 
 # Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
 # Check if the user is on ChromeOS v117+ and not in the VT-2 console, as sudo will not work.
@@ -544,8 +546,7 @@ else
   # Set mtimes of files to when the file was committed.
   git-restore-mtime -sq 2>/dev/null
 
-  CREW_REPO=https://github.com/${OWNER}/${REPO}.git CREW_BRANCH=${BRANCH} \
-    crew update && \
+  crew update && \
     yes | crew upgrade
 
   echo_info "Cleaning up older ruby gem versions...\n"
