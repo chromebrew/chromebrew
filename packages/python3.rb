@@ -118,16 +118,16 @@ class Python3 < Package
   def self.postinstall
     # First force pip upgrade to make sure we are past the problematic pip 23.2.1
     # See https://github.com/pypa/pip/issues/12357 and https://github.com/pypa/pip/issues/12428
-    system 'PIP_DISABLE_PIP_VERSION_CHECK=1 python -m pip install --upgrade --force-reinstall pip'
+    # system 'PIP_DISABLE_PIP_VERSION_CHECK=1 python -m pip install --upgrade --force-reinstall pip'
     # Pip is installed inside Python 3. The following steps ensure that
     # pip can properly build other packages from buildsystems/pip.
-    @required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
-    @pip_list = `pip list --exclude pip`
-    @required_pip_modules.each do |pip_pkg|
-      unless @pip_list.include?(pip_pkg)
-        puts "Installing #{pip_pkg} using pip..."
-        system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
-      end
+    # @required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
+    # @pip_list = `pip list --exclude pip`
+    # @required_pip_modules.each do |pip_pkg|
+    #   unless @pip_list.include?(pip_pkg)
+    #     puts "Installing #{pip_pkg} using pip..."
+    #     system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
+    #   end
     end
 
     puts 'Updating pip packages...'.lightblue

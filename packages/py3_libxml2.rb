@@ -20,6 +20,7 @@ class Py3_libxml2 < Python
 
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
+  depends_on 'python3'
   depends_on 'py3_setuptools' => :build
   depends_on 'zlib' # R
 
