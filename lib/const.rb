@@ -58,18 +58,20 @@ end
 
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
-CREW_ESSENTIAL_PACKAGES ||= %W[
-  bash crew_profile_base gcc_lib gmp libxcrypt ncurses patchelf readline ruby upx zlib zlib_ng zstd
-  #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
-  #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
-  #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
-       "#{"glibc_lib#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_lib#{LIBC_VERSION.delete('.')}.filelist"))}
-   #{"glibc_build#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist"))}"
-     else
-       File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''
-     end
-  }
-].reject!(&:empty?) unless defined?(CREW_ESSENTIAL_PACKAGES)
+unless defined?(CREW_ESSENTIAL_PACKAGES)
+  CREW_ESSENTIAL_PACKAGES ||= %W[
+    bash crew_profile_base gcc_lib gmp libxcrypt ncurses patchelf readline ruby upx zlib zlib_ng zstd
+    #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
+    #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
+    #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
+         "#{"glibc_lib#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_lib#{LIBC_VERSION.delete('.')}.filelist"))}
+     #{"glibc_build#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist"))}"
+       else
+         File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''
+       end
+    }
+  ].reject!(&:empty?)
+end
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 
