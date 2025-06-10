@@ -8,7 +8,7 @@ class Uutils_coreutils < RUST
   homepage 'https://github.com/uutils/coreutils'
   version '0.1.0-1'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/uutils/coreutils.git'
   git_hashtag version.split('-').first
   binary_compression 'tar.zst'
