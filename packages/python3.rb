@@ -128,7 +128,7 @@ class Python3 < Package
     #     puts "Installing #{pip_pkg} using pip..."
     #     system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
     #   end
-    end
+    # end
 
     puts 'Updating pip packages...'.lightblue
     system 'pip list --outdated --format=json | python -c "import json, sys; print(\'\n\'.join([x[\'name\'] for x in json.load(sys.stdin)]))" | xargs -rn1 pip install -U', exception: false
