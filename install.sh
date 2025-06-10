@@ -32,6 +32,7 @@ lsbval() {
 }
 
 # Print a message before exit on error
+# shellcheck disable=SC2064
 set_trap() { trap "echo_error 'An error occured during the installation using Chromebrew installer ${CREW_INSTALLER_VERSION} :/'" ERR; }
 set_trap
 
@@ -604,3 +605,4 @@ You may wish to edit the ${CREW_PREFIX}/etc/env.d/02-editor file for an editor d
 Chromebrew provides nano, vim and emacs as default TUI editor options."
 
 echo_success "Chromebrew installed successfully and package lists updated."
+echo_intra "Please run 'source ~/.bashrc'"
