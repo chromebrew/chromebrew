@@ -173,6 +173,7 @@ unless CREW_PRE_GLIBC_STANDALONE
     def self.postinstall
       # update search cache for ld.so
       system "#{CREW_PREFIX}/bin/ldconfig", %i[out err] => File::NULL
+      puts "Please run 'crew update' immediately to finish the install.".lightblue
     end
   end
 else
