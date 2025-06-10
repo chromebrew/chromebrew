@@ -178,6 +178,8 @@ function curl_wrapper () {
   CURL_STATUS=
   if [[ -x "${CREW_PREFIX}/bin/curl" ]] && "${CREW_PREFIX}"/bin/curl --help &>/dev/null; then
     CURL_STATUS="crew"
+  elif [[ "$ARCH" == "i686" ]] && [[ -x "/usr/bin/curl" ]] && /usr/bin/curl --help &>/dev/null; then
+    CURL_STATUS="i686_system"
   elif [[ -f /usr/bin/curl ]] && env -u LD_LIBRARY_PATH /usr/bin/curl --help &>/dev/null; then
     CURL_STATUS="system"
   elif ! curl --help &>/dev/null; then
@@ -195,7 +197,7 @@ function curl_wrapper () {
   for (( i = 0; i < 4; i++ )); do
     if [[ "$CURL_STATUS" == "crew" ]]; then
       curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
-    elif [[ "$ARCH" == "i686" ]]; then
+    elif [[ "$CURL_STATUS" == "i686_system" ]]; then
       # i686 system curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
       /usr/bin/curl -kC - "${@}" && return 0
     elif [[ "$CURL_STATUS" == "system" ]]; then
