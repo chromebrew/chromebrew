@@ -1,10 +1,10 @@
-/usr/local/lib/python3.13/site-packages/zipp-3.22.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/zipp-3.22.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/zipp-3.22.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/zipp-3.22.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/zipp-3.22.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/zipp-3.22.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.13/site-packages/zipp-3.22.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/zipp-3.23.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/zipp-3.23.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/zipp-3.23.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/zipp-3.23.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/zipp-3.23.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/zipp-3.23.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/zipp-3.23.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/zipp/__init__.py
 /usr/local/lib/python3.13/site-packages/zipp/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/zipp/__pycache__/_functools.cpython-313.pyc
@@ -14,6 +14,8 @@
 /usr/local/lib/python3.13/site-packages/zipp/compat/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/zipp/compat/__pycache__/overlay.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/zipp/compat/__pycache__/py310.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/zipp/compat/__pycache__/py313.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/zipp/compat/overlay.py
 /usr/local/lib/python3.13/site-packages/zipp/compat/py310.py
+/usr/local/lib/python3.13/site-packages/zipp/compat/py313.py
 /usr/local/lib/python3.13/site-packages/zipp/glob.py

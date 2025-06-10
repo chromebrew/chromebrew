@@ -6,7 +6,7 @@ require 'buildsystems/python'
 class Py3_maturin < Python
   description 'Build and publish crates with pyo3, rust-cpython and cffi bindings'
   homepage 'https://github.com/PyO3/maturin'
-  version "1.8.6-#{CREW_PY_VER}"
+  version "1.8.7-#{CREW_PY_VER}"
   license 'Apache-2.0 OR MIT'
   compatibility 'all'
   source_url 'https://github.com/PyO3/maturin.git'
@@ -14,10 +14,10 @@ class Py3_maturin < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '196868d7bddbbb1f438164d09d4ed63c3863d13c389f5df04985f5325a49dd4b',
-     armv7l: '196868d7bddbbb1f438164d09d4ed63c3863d13c389f5df04985f5325a49dd4b',
-       i686: '44804061c13daccb71f0eadc84ed64a52ad01cdd196464ae9a2f14f7f516254b',
-     x86_64: '409e5a18a1f009f4317488ac55c41a1164e68aa81a6314b4b36b38d1880a3158'
+    aarch64: 'e34eda2a7da489be82c6df2339a502fe42c4f16cd62ba188da0ba81dffa5e072',
+     armv7l: 'e34eda2a7da489be82c6df2339a502fe42c4f16cd62ba188da0ba81dffa5e072',
+       i686: '343adb0f7a99531619fd7424cad6cd70cbf865bac6f48f5d93f731130a40a57e',
+     x86_64: '33c8a001fb8820f0facc137068ff8702c0c2b7f97de0e2350b184981dd7fa6d4'
   })
 
   depends_on 'gcc_lib' # R
