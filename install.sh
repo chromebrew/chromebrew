@@ -132,6 +132,11 @@ if [[ "${ARCH}" = "armv8l" ]] || [[ "${ARCH}" = "aarch64" ]]; then
   ARCH='armv7l'
 fi
 
+if [[ "${ARCH}" = "x86_64" ]] && [[ -f "/lib/ld-2.23.so" ]]; then
+  echo_info "Setting ARCH to i686."
+  ARCH='i686'
+fi
+
 if [[ "$ARCH" == "x86_64" ]]; then
   CREW_LIB_SUFFIX='64'
 fi
@@ -511,7 +516,8 @@ yes | crew install crew_profile_base
 # shellcheck disable=SC1090
 trap - ERR && source ~/.bashrc && set_trap
 echo_info "Installing core Chromebrew packages...\n"
-if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) && [[ "${ARCH}" == "armv7l" ]]; then
+# Preload shouldn't be needed for core packages not already installed.
+if [[ "${ARCH}" == "i686" ]] || [[ "${ARCH}" == "armv7l" ]]; then
   yes | CREW_PRELOAD_DISABLED=1 crew install core
 else
   yes | crew install core
@@ -556,9 +562,6 @@ else
 
   # Set mtimes of files to when the file was committed.
   git-restore-mtime -sq 2>/dev/null
-
-  crew update && \
-    yes | crew upgrade
 
   echo_info "Cleaning up older ruby gem versions...\n"
   gem cleanup
