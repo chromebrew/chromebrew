@@ -11,10 +11,10 @@ class Acl < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '653b625434c8575fea35c39ca5e35af609211c7de54bb2544c62d5b9d835bb2c',
-     armv7l: '653b625434c8575fea35c39ca5e35af609211c7de54bb2544c62d5b9d835bb2c',
+    aarch64: '76d53a4ba5aaee8c592f9119d7fc29d3b636675c7f7d1642d663b823b87f2303',
+     armv7l: '76d53a4ba5aaee8c592f9119d7fc29d3b636675c7f7d1642d663b823b87f2303',
        i686: '8fdb8c78cb4eec75bab8fa77a94cab4968c018285b0b3b98ff006c702dbf3a22',
-     x86_64: '8ac4dfde9ec567c5ff429b4c47a3e63293e9283d304bcf447b40b7f65be3f589'
+     x86_64: 'e5b1beae3754bae84e18928c85a6c1c28ee196f387299b51f4cd2ea91dc09645'
   })
 
   depends_on 'attr'

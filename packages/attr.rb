@@ -12,12 +12,14 @@ class Attr < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6730b3d290f8aaea61bbe814606910e2b24ec1fc1dc1f751a7820c4ba3915be5',
-     armv7l: '6730b3d290f8aaea61bbe814606910e2b24ec1fc1dc1f751a7820c4ba3915be5',
+    aarch64: 'ad03b735e0a60ab60b0c68cb5590b0f93206f31d50c27516b89c39814dcec6f1',
+     armv7l: 'ad03b735e0a60ab60b0c68cb5590b0f93206f31d50c27516b89c39814dcec6f1',
        i686: '9ef95add0044d6d1681132eeb371c3214768af5caf9b25aaa8aa1fe7fa483ec4',
-     x86_64: '97ebf045a15e003b21a35401d8f7b5c40f6282840fdc10bdcba2def3bbfbb714'
+     x86_64: 'eab11fd7c7b070b0bdaaa130ef733168481a25c05ec7b4c285a3dd893f33e947'
   })
 
   depends_on 'glibc' # R
   depends_on 'libcap' => :build
+
+  no_filefix
 end
