@@ -511,7 +511,11 @@ yes | crew install crew_profile_base
 # shellcheck disable=SC1090
 trap - ERR && source ~/.bashrc && set_trap
 echo_info "Installing core Chromebrew packages...\n"
-yes | crew install core
+if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) && [[ "${ARCH}" == "armv7l" ]]; then
+  yes | CREW_PRELOAD_DISABLED=1 crew install core
+else
+  yes | crew install core
+fi
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than
 # splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}.
