@@ -197,7 +197,7 @@ function curl_wrapper () {
       curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
     elif [[ "$ARCH" == "i686" ]]; then
       # i686 system curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
-      env -u LD_LIBRARY_PATH curl -kC - "${@}" && return 0
+      /usr/bin/curl -kC - "${@}" && return 0
     elif [[ "$CURL_STATUS" == "system" ]]; then
       env -u LD_LIBRARY_PATH /usr/bin/curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
     else
