@@ -69,6 +69,10 @@ set -a
 : "${BRANCH:=master}"
 : "${CREW_BRANCH:=${BRANCH}}"
 : "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
+# Save existing variable information if it is set.
+: "${CREW_PRE_GLIBC_STANDALONE_ORIGINAL:=${CREW_PRE_GLIBC_STANDALONE}}"
+# Start with CREW_PRE_GLIBC_STANDALONE set.
+CREW_PRE_GLIBC_STANDALONE=1
 set +a
 
 # Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
@@ -125,6 +129,10 @@ fi
 # on a x86_64 host by setting ARCH=i686.
 : "${ARCH:=$(uname -m)}"
 
+if [[ "$ARCH" == "x86_64" ]] || [[ "$ARCH" == "aarch64" ]]; then
+  SYSTEM_LIB_SUFFIX='64'
+fi
+
 # For container usage, when we are emulating armv7l via linux32, where uname -m will report armv8l.
 # Additionally, if the architecture is aarch64, set it to armv7l, as we treat as if it was armv7l.
 # When we have proper support for aarch64, remove this.
@@ -176,10 +184,10 @@ function curl_wrapper () {
   # the 'curl: (7) Couldn't connect to server' error, a for loop is used
   # here.
   CURL_STATUS=
-  if [[ -x "${CREW_PREFIX}/bin/curl" ]] && "${CREW_PREFIX}"/bin/curl --help &>/dev/null; then
+  if [[ -f "/usr/bin/curl" ]] && LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /usr/bin/curl --help &>/dev/null; then
+    CURL_STATUS="system"
+  elif [[ -x "${CREW_PREFIX}/bin/curl" ]] && "${CREW_PREFIX}"/bin/curl --help &>/dev/null; then
     CURL_STATUS="crew"
-  elif [[ "$ARCH" == "i686" ]] && [[ -x "/usr/bin/curl" ]] && /usr/bin/curl --help &>/dev/null; then
-    CURL_STATUS="i686_system"
   elif [[ -f /usr/bin/curl ]] && env -u LD_LIBRARY_PATH /usr/bin/curl --help &>/dev/null; then
     CURL_STATUS="system"
   elif ! curl --help &>/dev/null; then
@@ -197,11 +205,13 @@ function curl_wrapper () {
   for (( i = 0; i < 4; i++ )); do
     if [[ "$CURL_STATUS" == "crew" ]]; then
       curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
-    elif [[ "$CURL_STATUS" == "i686_system" ]]; then
-      # i686 system curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
-      /usr/bin/curl -kC - "${@}" && return 0
     elif [[ "$CURL_STATUS" == "system" ]]; then
-      env -u LD_LIBRARY_PATH /usr/bin/curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
+      if [[ "$ARCH" == "i686" ]]; then
+        # i686 system curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
+        LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /usr/bin/curl -kC - "${@}" && return 0
+      else
+        LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /usr/bin/curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
+      fi
     else
       # Force TLS as we know GitLab supports it.
       env -u LD_LIBRARY_PATH curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
@@ -239,7 +249,7 @@ if [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]]; then
   [[ "$ARCH" == "i686" ]] && BOOTSTRAP_PACKAGES="zstd_static  glibc_build223"
   [[ "$LIBC_VERSION" == "2.27" ]] && BOOTSTRAP_PACKAGES="zstd_static glibc_build227"
   
-  BOOTSTRAP_PACKAGES+=' upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ruby ca_certificates libyaml openssl findutils ncurses readline bash psmisc uutils_coreutils'
+  BOOTSTRAP_PACKAGES+=' upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ruby ca_certificates libyaml openssl findutils ncurses readline bash psmisc'
 else
   # Ruby wants gcc_lib, so install our version build against our glibc
   # first.
@@ -258,7 +268,7 @@ BOOTSTRAP_PACKAGES+=' pcre2 expat git'
 
 # Add curl dependencies to BOOTSTRAP_PACKAGES since curl is a git
 # dependency, installing curl last so we don't break the system curl.
-BOOTSTRAP_PACKAGES+=' brotli c_ares libcyrussasl libidn2 libnghttp2 libpsl libssh libunistring openldap zstd curl'
+BOOTSTRAP_PACKAGES+=' brotli c_ares libcyrussasl libidn2 libnghttp2 libpsl libssh libunistring openldap curl zstd'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]]; then
   # shellcheck disable=SC2231
@@ -337,10 +347,13 @@ function extract_install () {
       XZ_STATUS="broken"
     fi
     ZSTD_STATUS=
+    ZSTD=
     if [[ -x "${CREW_PREFIX}/bin/zstd" ]] && "${CREW_PREFIX}"/bin/zstd --help &>/dev/null; then
       ZSTD_STATUS="crew"
+      ZSTD="${CREW_PREFIX}/bin/zstd"
     elif [[ -f /usr/bin/zstd ]] && env -u LD_LIBRARY_PATH /usr/bin/zstd --help &>/dev/null; then
       ZSTD_STATUS="system"
+      ZSTD="/usr/bin/zstd"
     elif ! zstd --help &>/dev/null; then
       ZSTD_STATUS="broken"
     fi
@@ -355,23 +368,23 @@ function extract_install () {
       elif [[ $XZ_STATUS == 'system' ]]; then
        env -u LD_LIBRARY_PATH tar -I /usr/bin/xz -xpf ../"${2}"
       elif [[ $XZ_STATUS == 'broken' ]] && [[ -z $ZSTD_STATUS ]] && zstd --help 2>/dev/null| grep -q lzma; then
-        tar -I zstd -xpf ../"${2}"
+        tar -I "${ZSTD}" -xpf ../"${2}"
       elif [[ $XZ_STATUS == 'broken' ]] && [[ $ZSTD_STATUS == 'broken' ]]; then
         echo_error "xz and zstd are broken. Install will fail." && exit 1
       elif [[ $XZ_STATUS == 'broken' ]] && [[ $ZSTD_STATUS == 'system' ]]; then
-        env -u LD_LIBRARY_PATH tar -I /usr/bin/zstd -xpf ../"${2}"
+        env -u LD_LIBRARY_PATH tar -I "${ZSTD}" -xpf ../"${2}"
       fi
     fi
     if [[ "${2##*.}" == "zst" ]]; then
       if [[ -z $ZSTD_STATUS ]] && tar --usage | grep -q zstd ; then
         tar xpf ../"${2}"
       elif [[ $ZSTD_STATUS == 'system' ]]; then
-        env -u LD_LIBRARY_PATH tar -I /usr/bin/zstd -xpf ../"${2}"
+        env -u LD_LIBRARY_PATH tar -I "${ZSTD}" -xpf ../"${2}"
       elif [[ $ZSTD_STATUS == 'crew' ]]; then
-        tar -I "${CREW_PREFIX}"/bin/zstd -xpf ../"${2}"
+        tar -I "${ZSTD}" -xpf ../"${2}"
       elif [[ $ZSTD_STATUS == 'broken' ]]; then
         DEBUG_OUT="ZSTD: ${ZSTD_STATUS}\nLD_LIBRARY_PATH ${LD_LIBRARY_PATH}"
-        DEBUG_OUT+="$(ldd /usr/local/bin/zstd)"
+        DEBUG_OUT+="$(ldd "$ZSTD")"
         echo_info_stderr "${DEBUG_OUT}"
         echo_error "zstd is broken. Install will fail."
         exit 1
@@ -568,6 +581,9 @@ else
 
   echo_info "Cleaning up older ruby gem versions...\n"
   gem cleanup
+
+  export CREW_PRE_GLIBC_STANDALONE="${CREW_PRE_GLIBC_STANDALONE_ORIGINAL}"
+  crew update && yes | crew upgrade
 fi
 echo -e "${RESET}"
 
