@@ -3,22 +3,21 @@ require 'buildsystems/cmake'
 class Xzutils < CMake
   description 'XZ Utils is free general-purpose data compression software with a high compression ratio.'
   homepage 'https://tukaani.org/xz/'
-  version '5.8.1-1'
+  version '5.8.1-2'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/tukaani-project/xz.git'
   git_hashtag "v#{version.split('-').first}"
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '16872abfec2d0797904f3698b3b36303a2ef429a698895a0399e46f026a597ac',
-     armv7l: '16872abfec2d0797904f3698b3b36303a2ef429a698895a0399e46f026a597ac',
-       i686: '28e2cdca3c76952c24aba2b3422f67ec998da8e2024e61dd6e2dc8bceb74b09e',
-     x86_64: 'ff88bac5d2a797c19314f7dd479446f732a2dd2934d1d91eb1791835afcb243c'
+    aarch64: 'cef7b6df2ba1728b248c381f56a4470bc5be92ec2c0157b2a36326cd54e9a3b3',
+     armv7l: 'cef7b6df2ba1728b248c381f56a4470bc5be92ec2c0157b2a36326cd54e9a3b3',
+       i686: '6ec959488f90d26917af4febe7cbcd83d45ccff5bf7538039a46e6f2a38a0c10',
+     x86_64: '179b01283ba1bc429bb8a76ffb291aa0f758dbeb308ad7e6a774211229c49e9a'
   })
 
   depends_on 'glibc' # R
-  no_zstd
 
   cmake_options '-DBUILD_SHARED_LIBS=ON'
 
