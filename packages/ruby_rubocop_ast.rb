@@ -9,6 +9,7 @@ class Ruby_rubocop_ast < RUBY
   source_url 'SKIP'
 
   depends_on 'ruby_parser' # R
+  depends_on 'ruby_prism' # R
 
   conflicts_ok
   no_compile_needed
