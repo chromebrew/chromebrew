@@ -23,7 +23,7 @@ class Autotools < Package
       end
       abort 'configure script not found!'.lightred unless File.file?('configure')
       FileUtils.chmod('+x', 'configure')
-      system 'filefix', exception: false
+      system 'filefix', exception: false unless @no_filefix
       system "#{@autotools_pre_configure_options} ./configure #{CREW_CONFIGURE_OPTIONS} #{@autotools_configure_options}"
     end
     system 'make'
