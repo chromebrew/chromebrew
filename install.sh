@@ -586,6 +586,7 @@ else
   gem cleanup
 
   export CREW_BRANCH CREW_REPO
+  # shellcheck disable=SC2015
   (${PREFIX_CMD} crew update && yes | ${PREFIX_CMD} crew upgrade) || (${PREFIX_CMD} crew update && (yes | ${PREFIX_CMD} crew upgrade) || true)
 fi
 echo -e "${RESET}"
