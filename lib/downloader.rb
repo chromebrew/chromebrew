@@ -20,6 +20,7 @@ rescue RuntimeError => e
     Object.send(:remove_const, :CREW_USE_CURL)
     CREW_USE_CURL = true
   else
+    puts "Error is #{e}".lightred
     raise
   end
 end

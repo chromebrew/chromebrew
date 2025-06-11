@@ -74,6 +74,7 @@
 /usr/local/lib/bash/dsv
 /usr/local/lib/bash/fdflags
 /usr/local/lib/bash/finfo
+/usr/local/lib/bash/fltexpr
 /usr/local/lib/bash/getconf
 /usr/local/lib/bash/head
 /usr/local/lib/bash/id

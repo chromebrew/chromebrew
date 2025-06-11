@@ -22,7 +22,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-          ref: 'pre_glibc_standalone'
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.4'
@@ -117,4 +116,4 @@ jobs:
       UPDATE_BRANCH_NAME: ${{ needs.update-check.outputs.update_branch_name }}
     steps:
       - name: gh_workflow_dispatch
-        run: gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${UPDATE_BRANCH_NAME}"
+        run: gh workflow -R chromebrew/chromebrew run Updater-Build.yml -f branch="${UPDATE_BRANCH_NAME}"

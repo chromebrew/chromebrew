@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Zstd < CMake
   description 'Zstandard - Fast real-time compression algorithm'
   homepage 'https://facebook.github.io/zstd/'
-  version '1.5.7' # Do not use @_ver here, it will break the installer.
+  version '1.5.7-1' # Do not use @_ver here, it will break the installer.
   license 'BSD or GPL-2'
   compatibility 'all'
   source_url 'https://github.com/facebook/zstd.git'
   git_hashtag "v#{version.split('-').first}"
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'afacaaf12e074d05c00561b63cda1e78c57a18e727f9338b96db7661176b98cb',
-     armv7l: 'afacaaf12e074d05c00561b63cda1e78c57a18e727f9338b96db7661176b98cb',
-       i686: '1877238675dacf9f79d22f1093825759ea9d5921b7648a44f26b0a05d87618bf',
-     x86_64: 'ec080cde6474de45b19c68f7cde4ae651b93e2a18bf8c2d452bb8eb50aeed34f'
+    aarch64: '2dac985dde40b14ba7d3c849c38873e56a1dfb19d44bd78f2b550f1322b6a059',
+     armv7l: '2dac985dde40b14ba7d3c849c38873e56a1dfb19d44bd78f2b550f1322b6a059',
+       i686: 'be95bd15d5ec848496d4a574eb72e764c526622be235287308adeffe19099ec8',
+     x86_64: '1549e818ef9ecd1cbd33aa8322aaaacaceda3c8b4a422e990b8ed8d273f4e8db'
   })
 
   depends_on 'gcc_lib' # R
@@ -24,7 +24,6 @@ class Zstd < CMake
   depends_on 'zlib' # R
 
   conflicts_ok # Conflicts with zstd_static.
-  no_zstd
   run_tests
 
   def self.patch

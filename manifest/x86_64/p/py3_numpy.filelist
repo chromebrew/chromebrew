@@ -7,9 +7,6 @@
 /usr/local/lib64/python3.13/site-packages/numpy-2.3.0.dist-info/REQUESTED
 /usr/local/lib64/python3.13/site-packages/numpy-2.3.0.dist-info/WHEEL
 /usr/local/lib64/python3.13/site-packages/numpy-2.3.0.dist-info/entry_points.txt
-/usr/local/lib64/python3.13/site-packages/numpy.libs/libgfortran-040039e1-0352e75f.so.5.0.0
-/usr/local/lib64/python3.13/site-packages/numpy.libs/libquadmath-96973f99-934c22de.so.0.0.0
-/usr/local/lib64/python3.13/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so
 /usr/local/lib64/python3.13/site-packages/numpy/__config__.py
 /usr/local/lib64/python3.13/site-packages/numpy/__config__.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/__init__.cython-30.pxd

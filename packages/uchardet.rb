@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Uchardet < CMake
   description 'uchardet is an encoding detector library, which takes a sequence of bytes in an unknown character encoding without any additional information, and attempts to determine the encoding of the text.'
   homepage 'https://www.freedesktop.org/wiki/Software/uchardet/'
-  version '0.0.8'
+  version '0.0.8-9699dfc'
   license 'MPL-1.1, GPL-2+ and LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://www.freedesktop.org/software/uchardet/releases/uchardet-0.0.8.tar.xz'
-  source_sha256 'e97a60cfc00a1c147a674b097bb1422abd9fa78a2d9ce3f3fdcc2e78a34ac5f0'
+  source_url 'https://gitlab.freedesktop.org/uchardet/uchardet.git'
+  git_hashtag '9699dfce074fac80d8d622f02ea6d8bb2f55cf00'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c2762a99c6e123f31781f32a99ed0419e473686cbc772d79113b96188c2e0622',
-     armv7l: 'c2762a99c6e123f31781f32a99ed0419e473686cbc772d79113b96188c2e0622',
-       i686: '1ad351c850d06f3d1eaf97587ef87fd2fbd0ec64488a4ec1eae7a855da2e9a14',
-     x86_64: '286efea339a71f8c11f9abe429778c0433ff3f3a7801b6c7c8ef322ca9fa357b'
+    aarch64: '60ec85e91ae02c6a6777735ea9e60fd5395dc05c891b16e5c347c9e6135b0ffa',
+     armv7l: '60ec85e91ae02c6a6777735ea9e60fd5395dc05c891b16e5c347c9e6135b0ffa',
+       i686: '469fda854cf14692cec6e14a8c98359c5b7132ed0bd16500026d57ba702cbf23',
+     x86_64: '4f101f07fc62f24e9a2777c6f0fc4e2106979edbe45721325c299208e7e9e5f7'
   })
 
   depends_on 'gcc_lib' # R

@@ -11,6 +11,7 @@ require_gem('json')
 require_gem('ptools')
 require 'digest/sha2'
 require 'fileutils'
+require 'find'
 require 'mkmf'
 require 'open3'
 require 'tmpdir'
@@ -605,7 +606,7 @@ def download
           begin
             @git_cachefile_lockfile.lock
             system "tar c#{@verbose} \
-              $(find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
+              $(#{CREW_PREFIX}/bin/find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
               nice -n 20 zstd -c -T0 --ultra -20 - >  \
               #{cachefile}"
           ensure
@@ -842,6 +843,8 @@ def prepare_package(destdir)
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
       next if %w[. ..].include?(filename)
 
+      # Whitelist crew-preload on multiarch ARM systems.
+      next if %w[lib64/crew-preload.so].include?(filename) && %w[aarch64 armv7l].include?(ARCH)
       unless fhs_compliant_prefix.include?(filename)
         if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY || @pkg.no_fhs?
           puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
@@ -887,50 +890,65 @@ def prepare_package(destdir)
   end
 end
 
-def fix_interpreter_path(dir)
+def expand_binaries_and_fix_interpreter_path(dir)
   # Do not set interpreter for non-musl, as this can break apps if there
   # is an issue with the crew glibc.
-  return if !@pkg.nil? && (@pkg.is_musl? || %w[patchelf upx].include?(@pkg.name))
+  return if !@pkg.nil? && (@pkg.is_musl? || %w[crew_preload patchelf upx].include?(@pkg.name))
 
   Dir.chdir dir do
-    puts 'Running upx to uncompress binaries and patchelf to patch binary interpreter paths.'.lightblue
+    puts "Running upx to uncompress binaries #{'and patchelf to patch binary interpreter paths ' unless CREW_GLIBC_INTERPRETER.blank?}if needed.".lightblue
     abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
     abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
     # Look for installed binaries and libraries in the package install
     # directory tree.
-    execfiles = `find #{Dir.pwd} -executable -type f ! \\( -name '*.a' \\) | xargs -P#{CREW_NPROC} -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' -- 2> /dev/null`.split
+    execfiles = Find.find(Dir.pwd).select { |p| File.executable?(p) }
     return if execfiles.empty?
 
     @localdir = File.expand_path('../../.')
+    require_gem 'concurrent-ruby'
+    pool = Concurrent::ThreadPoolExecutor.new(
+      min_threads: 1,
+      max_threads: CREW_NPROC,
+      max_queue: 0, # unbounded work queue
+      fallback_policy: :caller_runs
+    )
     execfiles.each do |execfiletopatch|
       next unless File.file?(execfiletopatch)
 
-      # Decompress the binary if compressed.
-      system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL, exception: false
-      # Check for existing interpreter.
-      next if CREW_GLIBC_INTERPRETER.blank?
+      pool.post do
+        execfile.slice! '.'
+        File.join(dir, execfiletopatch)
 
-      @interpreter, _read_interpreter_stderr_s, @read_interpreter_status = Open3.capture3("patchelf --print-interpreter #{execfiletopatch}")
-      # Set interpreter unless the interpreter read failed or is already
-      # set appropriately.
-      unless @read_interpreter_status && @interpreter == CREW_GLIBC_INTERPRETER
-        puts "Running patchelf on #{execfiletopatch} to set interpreter".orange if CREW_VERBOSE
-        _set_interpreter_stdout, @set_interpreter_stderr = Open3.capture3("patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch}")
-        puts "#{execfiletopatch}: @set_interpreter_stderr: #{@set_interpreter_stderr.chomp}".lightpurple if !@set_interpreter_stderr.blank? && CREW_VERBOSE
+        # Decompress the binary if compressed.
+        system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL, exception: false
+
+        # Check for existing interpreter.
+        next if CREW_GLIBC_INTERPRETER.blank?
+
+        @interpreter, _read_interpreter_stderr_s, @read_interpreter_status = Open3.capture3("patchelf --print-interpreter #{execfiletopatch}")
+        # Set interpreter unless the interpreter read failed or is already
+        # set appropriately.
+        unless @read_interpreter_status && @interpreter == CREW_GLIBC_INTERPRETER
+          puts "Running patchelf on #{execfiletopatch} to set interpreter".orange if CREW_VERBOSE
+          _set_interpreter_stdout, @set_interpreter_stderr = Open3.capture3("patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch}")
+          puts "#{execfiletopatch}: @set_interpreter_stderr: #{@set_interpreter_stderr.chomp}".lightpurple if !@set_interpreter_stderr.blank? && CREW_VERBOSE
+        end
+        # Try to read any existing rpath.
+        @read_rpath_stdout_s, @read_rpath_stderr_s, @read_rpath_status = Open3.capture3("patchelf --print-rpath #{execfiletopatch}")
+        @exec_rpath = @read_rpath_stdout_s.chomp
+        @rpath_status = @read_rpath_status
+        puts "#{execfiletopatch}: @read_rpath_stderr_s: #{@read_rpath_stderr_s}".lightpurple if !@read_rpath_stderr_s.blank? && CREW_VERBOSE
+        # Set rpath if rpath read didn't fail, an rpath exists, and does not
+        # already contain CREW_GLIBC_PREFIX.
+        next if !@read_rpath_rpath_status || @exec_rpath.blank? || @exec_rpath.include?(CREW_GLIBC_PREFIX)
+        puts "#{execfiletopatch.gsub(@localdir, '')} has an existing rpath of #{@exec_rpath}".lightpurple if CREW_VERBOSE
+        puts "Prefixing #{CREW_GLIBC_PREFIX} to #{@exec_rpath} rpath for #{execfiletopatch.gsub(@localdir, '')}.".lightblue
+        @set_rpath_stdout_s, @set_rpath_stderr_s, @set_rpath_status = Open3.capture3("patchelf --set-rpath #{CREW_GLIBC_PREFIX}:#{@exec_rpath} #{execfiletopatch}")
+        puts "#{execfiletopatch}: @set_rpath_stderr_s: #{@set_rpath_stderr_s}".lightpurple if !@set_rpath_stderr_s.blank? && CREW_VERBOSE
       end
-      # Try to read any existing rpath.
-      @read_rpath_stdout_s, @read_rpath_stderr_s, @read_rpath_status = Open3.capture3("patchelf --print-rpath #{execfiletopatch}")
-      @exec_rpath = @read_rpath_stdout_s.chomp
-      @rpath_status = @read_rpath_status
-      puts "#{execfiletopatch}: @read_rpath_stderr_s: #{@read_rpath_stderr_s}".lightpurple if !@read_rpath_stderr_s.blank? && CREW_VERBOSE
-      # Set rpath if rpath read didn't fail, an rpath exists, and does not
-      # already contain CREW_GLIBC_PREFIX.
-      next if !@read_rpath_rpath_status || @exec_rpath.blank? || @exec_rpath.include?(CREW_GLIBC_PREFIX)
-      puts "#{execfiletopatch.gsub(@localdir, '')} has an existing rpath of #{@exec_rpath}".lightpurple if CREW_VERBOSE
-      puts "Prefixing #{CREW_GLIBC_PREFIX} to #{@exec_rpath} rpath for #{execfiletopatch.gsub(@localdir, '')}.".lightblue
-      @set_rpath_stdout_s, @set_rpath_stderr_s, @set_rpath_status = Open3.capture3("patchelf --set-rpath #{CREW_GLIBC_PREFIX}:#{@exec_rpath} #{execfiletopatch}")
-      puts "#{execfiletopatch}: @set_rpath_stderr_s: #{@set_rpath_stderr_s}".lightpurple if !@set_rpath_stderr_s.blank? && CREW_VERBOSE
     end
+    pool.shutdown
+    pool.wait_for_termination
   end
 end
 
@@ -1008,18 +1026,19 @@ def install_package(pkgdir)
     FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
 
     unless CREW_NOT_LINKS || @pkg.no_links?
-      brokensymlinks = `find . -type l -exec test ! -e {} \\; -print`.chomp
-      unless brokensymlinks.to_s.empty?
-        puts 'There are broken symlinks. Will try to fix.'.orange if CREW_VERBOSE
-        brokensymlinks.each_line(chomp: true) do |fixlink|
-          brokentarget = `readlink -n #{fixlink}`.chomp
-          puts "Attempting fix of: #{fixlink.delete_prefix('.')} -> #{brokentarget}".orange if CREW_VERBOSE
+      Find.find(Dir.pwd) do |path|
+        next unless File.symlink?(path)
+        begin
+          File.stat(path)
+        rescue Errno::ENOENT, Errno::ELOOP
+          brokentarget = `readlink -n #{path}`.chomp
+          puts "Attempting fix of: #{path.delete_prefix('.')} -> #{brokentarget}".orange if CREW_VERBOSE
           fixedtarget = brokentarget.delete_prefix(CREW_DEST_DIR)
-          fixedlink_loc = File.join(pkgdir, fixlink.delete_prefix('.'))
+          fixedlink_loc = File.join(pkgdir, path.delete_prefix('.'))
           # If no changes were made, don't replace symlink
           unless fixedtarget == brokentarget
             FileUtils.ln_sf fixedtarget, fixedlink_loc
-            puts "Fixed: #{fixedtarget} -> #{fixlink.delete_prefix('.')}".orange if CREW_VERBOSE
+            puts "Fixed: #{fixedtarget} -> #{path.delete_prefix('.')}".orange if CREW_VERBOSE
           end
         end
       end
@@ -1029,7 +1048,7 @@ def install_package(pkgdir)
       end
     end
 
-    fix_interpreter_path(".#{CREW_PREFIX}")
+    expand_binaries_and_fix_interpreter_path(".#{CREW_PREFIX}")
 
     install_files(".#{CREW_PREFIX}") if Dir.exist?(".#{CREW_PREFIX}")
     install_files(".#{HOME}", HOME) if Dir.exist?(".#{HOME}")
@@ -1266,7 +1285,7 @@ def install
   crewlog "Adding package #{@pkg.name} to device.json."
   @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name } and @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
   ConvenienceFunctions.save_json(@device)
-  crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if File.which('jq')
+  crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if Kernel.system('jq -h', %i[out err] => File::NULL)
   @pkg.in_install = false
 end
 

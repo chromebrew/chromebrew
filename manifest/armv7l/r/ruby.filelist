@@ -320,6 +320,8 @@
 /usr/local/lib/ruby/3.4.0/bundler/cli/config.rb
 /usr/local/lib/ruby/3.4.0/bundler/cli/console.rb
 /usr/local/lib/ruby/3.4.0/bundler/cli/doctor.rb
+/usr/local/lib/ruby/3.4.0/bundler/cli/doctor/diagnose.rb
+/usr/local/lib/ruby/3.4.0/bundler/cli/doctor/ssl.rb
 /usr/local/lib/ruby/3.4.0/bundler/cli/exec.rb
 /usr/local/lib/ruby/3.4.0/bundler/cli/fund.rb
 /usr/local/lib/ruby/3.4.0/bundler/cli/gem.rb
@@ -955,10 +957,8 @@
 /usr/local/lib/ruby/3.4.0/rdoc/generator/ri.rb
 /usr/local/lib/ruby/3.4.0/rdoc/generator/template/darkfish/_footer.rhtml
 /usr/local/lib/ruby/3.4.0/rdoc/generator/template/darkfish/_head.rhtml
-/usr/local/lib/ruby/3.4.0/rdoc/generator/template/darkfish/_sidebar_VCS_info.rhtml
 /usr/local/lib/ruby/3.4.0/rdoc/generator/template/darkfish/_sidebar_classes.rhtml
 /usr/local/lib/ruby/3.4.0/rdoc/generator/template/darkfish/_sidebar_extends.rhtml
-/usr/local/lib/ruby/3.4.0/rdoc/generator/template/darkfish/_sidebar_in_files.rhtml
 /usr/local/lib/ruby/3.4.0/rdoc/generator/template/darkfish/_sidebar_includes.rhtml
 /usr/local/lib/ruby/3.4.0/rdoc/generator/template/darkfish/_sidebar_installed.rhtml
 /usr/local/lib/ruby/3.4.0/rdoc/generator/template/darkfish/_sidebar_methods.rhtml
@@ -1282,7 +1282,6 @@
 /usr/local/lib/ruby/3.4.0/rubygems/security/signer.rb
 /usr/local/lib/ruby/3.4.0/rubygems/security/trust_dir.rb
 /usr/local/lib/ruby/3.4.0/rubygems/security_option.rb
-/usr/local/lib/ruby/3.4.0/rubygems/shellwords.rb
 /usr/local/lib/ruby/3.4.0/rubygems/source.rb
 /usr/local/lib/ruby/3.4.0/rubygems/source/git.rb
 /usr/local/lib/ruby/3.4.0/rubygems/source/installed.rb
@@ -1512,8 +1511,8 @@
 /usr/local/lib/ruby/gems/3.4.0/gems/bigdecimal-3.1.8/sample/linear.rb
 /usr/local/lib/ruby/gems/3.4.0/gems/bigdecimal-3.1.8/sample/nlsolve.rb
 /usr/local/lib/ruby/gems/3.4.0/gems/bigdecimal-3.1.8/sample/pi.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/bundler-2.6.7/exe/bundle
-/usr/local/lib/ruby/gems/3.4.0/gems/bundler-2.6.7/exe/bundler
+/usr/local/lib/ruby/gems/3.4.0/gems/bundler-2.6.9/exe/bundle
+/usr/local/lib/ruby/gems/3.4.0/gems/bundler-2.6.9/exe/bundler
 /usr/local/lib/ruby/gems/3.4.0/gems/csv-3.3.2/LICENSE.txt
 /usr/local/lib/ruby/gems/3.4.0/gems/csv-3.3.2/NEWS.md
 /usr/local/lib/ruby/gems/3.4.0/gems/csv-3.3.2/README.md
@@ -2386,8 +2385,8 @@
 /usr/local/lib/ruby/gems/3.4.0/gems/rbs-3.8.0/templates/src/constants.c.erb
 /usr/local/lib/ruby/gems/3.4.0/gems/rbs-3.8.0/templates/src/ruby_objs.c.erb
 /usr/local/lib/ruby/gems/3.4.0/gems/rbs-3.8.0/templates/template.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/rdoc-6.10.0/exe/rdoc
-/usr/local/lib/ruby/gems/3.4.0/gems/rdoc-6.10.0/exe/ri
+/usr/local/lib/ruby/gems/3.4.0/gems/rdoc-6.14.0/exe/rdoc
+/usr/local/lib/ruby/gems/3.4.0/gems/rdoc-6.14.0/exe/ri
 /usr/local/lib/ruby/gems/3.4.0/gems/repl_type_completor-0.1.9/Gemfile
 /usr/local/lib/ruby/gems/3.4.0/gems/repl_type_completor-0.1.9/LICENSE.txt
 /usr/local/lib/ruby/gems/3.4.0/gems/repl_type_completor-0.1.9/README.md
@@ -2666,7 +2665,7 @@
 /usr/local/lib/ruby/gems/3.4.0/specifications/csv-3.3.2.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/debug-1.10.0.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/benchmark-0.4.0.gemspec
-/usr/local/lib/ruby/gems/3.4.0/specifications/default/bundler-2.6.7.gemspec
+/usr/local/lib/ruby/gems/3.4.0/specifications/default/bundler-2.6.9.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/cgi-0.4.2.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/date-3.4.1.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/delegate-0.4.0.gemspec
@@ -2701,7 +2700,7 @@
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/prism-1.2.0.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/pstore-0.1.4.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/psych-5.2.2.gemspec
-/usr/local/lib/ruby/gems/3.4.0/specifications/default/rdoc-6.10.0.gemspec
+/usr/local/lib/ruby/gems/3.4.0/specifications/default/rdoc-6.14.0.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/readline-0.0.4.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/reline-0.6.0.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/resolv-0.6.0.gemspec
@@ -5102,6 +5101,8 @@
 /usr/local/share/ri/3.4.0/system/Gem/Ext/Builder/new-c.ri
 /usr/local/share/ri/3.4.0/system/Gem/Ext/Builder/ruby-c.ri
 /usr/local/share/ri/3.4.0/system/Gem/Ext/Builder/run-c.ri
+/usr/local/share/ri/3.4.0/system/Gem/Ext/Builder/shelljoin-c.ri
+/usr/local/share/ri/3.4.0/system/Gem/Ext/Builder/shellsplit-c.ri
 /usr/local/share/ri/3.4.0/system/Gem/Ext/CargoBuilder/DylibNotFoundError/cdesc-DylibNotFoundError.ri
 /usr/local/share/ri/3.4.0/system/Gem/Ext/CargoBuilder/DylibNotFoundError/new-c.ri
 /usr/local/share/ri/3.4.0/system/Gem/Ext/CargoBuilder/LinkFlagConverter/cdesc-LinkFlagConverter.ri
@@ -14738,7 +14739,6 @@
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/documented%3f-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/done_documenting%3d-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/done_documenting-i.ri
-/usr/local/share/ri/3.4.0/system/RDoc/CodeObject/each_parent-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/file-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/file_name-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/force_documentation%3d-i.ri
@@ -14752,7 +14752,6 @@
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/new-c.ri
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/options-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/parent-i.ri
-/usr/local/share/ri/3.4.0/system/RDoc/CodeObject/parent_file_name-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/parent_name-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/received_nodoc-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/record_location-i.ri
@@ -14763,7 +14762,6 @@
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/store-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/suppress-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/CodeObject/suppressed%3f-i.ri
-/usr/local/share/ri/3.4.0/system/RDoc/CodeObject/viewer-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Comment/cdesc-Comment.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Comment/document-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Comment/empty%3f-i.ri
@@ -14844,16 +14842,21 @@
 /usr/local/share/ri/3.4.0/system/RDoc/MarkupReference/dummy_singleton_method-c.ri
 /usr/local/share/ri/3.4.0/system/RDoc/MarkupReference/method-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/MarkupReference/yields_directive-i.ri
+/usr/local/share/ri/3.4.0/system/RDoc/Options/apply_default_exclude-i.ri
+/usr/local/share/ri/3.4.0/system/RDoc/Options/autolink_excluded_words-i.ri
+/usr/local/share/ri/3.4.0/system/RDoc/Options/canonical_root-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Options/cdesc-Options.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Options/charset-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Options/check_files-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Options/check_generator-i.ri
+/usr/local/share/ri/3.4.0/system/RDoc/Options/class_module_path_prefix-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Options/coverage_report-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Options/default_title%3d-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Options/dry_run-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Options/embed_mixins-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Options/encoding-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Options/exclude-i.ri
+/usr/local/share/ri/3.4.0/system/RDoc/Options/file_path_prefix-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Options/files-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Options/finish-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Options/finish_page_dir-i.ri
@@ -14978,6 +14981,7 @@
 /usr/local/share/ri/3.4.0/system/RDoc/Parser/PrismRuby/visibility-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Parser/PrismRuby/visible_tokens_from_location-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Parser/PrismRuby/with_container-i.ri
+/usr/local/share/ri/3.4.0/system/RDoc/Parser/PrismRuby/with_in_proc_block-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Parser/RD/cdesc-RD.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Parser/RD/scan-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Parser/RipperStateLex/InnerStateLex/cdesc-InnerStateLex.ri
@@ -15003,7 +15007,9 @@
 /usr/local/share/ri/3.4.0/system/RDoc/Parser/Ruby/parse_attr_accessor-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Parser/Ruby/parse_call_parameters-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Parser/Ruby/parse_class-i.ri
+/usr/local/share/ri/3.4.0/system/RDoc/Parser/Ruby/parse_class_regular-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Parser/Ruby/parse_comment-i.ri
+/usr/local/share/ri/3.4.0/system/RDoc/Parser/Ruby/parse_comment_ghost-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Parser/Ruby/parse_comment_tomdoc-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Parser/Ruby/parse_constant-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Parser/Ruby/parse_constant_visibility-i.ri
@@ -15094,7 +15100,6 @@
 /usr/local/share/ri/3.4.0/system/RDoc/RDoc/remove_unparseable-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/RDoc/setup_output_dir-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/RDoc/stats-i.ri
-/usr/local/share/ri/3.4.0/system/RDoc/RDoc/store%3d-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/RDoc/store-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/RDoc/update_output_dir-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/RI/Error/cdesc-Error.ri
@@ -15122,8 +15127,12 @@
 /usr/local/share/ri/3.4.0/system/RDoc/RubygemsHook/generate_rdoc-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/RubygemsHook/generate_ri-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/RubygemsHook/generation_hook-c.ri
+/usr/local/share/ri/3.4.0/system/RDoc/RubygemsHook/load_rdoc-c.ri
 /usr/local/share/ri/3.4.0/system/RDoc/RubygemsHook/new-c.ri
+/usr/local/share/ri/3.4.0/system/RDoc/RubygemsHook/rdoc_installed%3f-i.ri
+/usr/local/share/ri/3.4.0/system/RDoc/RubygemsHook/rdoc_version-c.ri
 /usr/local/share/ri/3.4.0/system/RDoc/RubygemsHook/remove-i.ri
+/usr/local/share/ri/3.4.0/system/RDoc/RubygemsHook/ri_installed%3f-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Servlet/asset-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Servlet/asset_dirs-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Servlet/cdesc-Servlet.ri
@@ -15223,10 +15232,10 @@
 /usr/local/share/ri/3.4.0/system/RDoc/Store/module_names-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Store/modules_hash-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Store/new-c.ri
+/usr/local/share/ri/3.4.0/system/RDoc/Store/options-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Store/page-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Store/page_file-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Store/path-i.ri
-/usr/local/share/ri/3.4.0/system/RDoc/Store/rdoc-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Store/remove_nodoc-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Store/resolve_c_superclasses-i.ri
 /usr/local/share/ri/3.4.0/system/RDoc/Store/save-i.ri

@@ -3,18 +3,18 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.13.3'
+  version '3.13.4'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 '40f868bcbdeb8149a3149580bb9bfd407b3321cd48f0be631af955ac92c0e041'
+  source_sha256 '27b15a797562a2971dce3ffe31bb216042ce0b995b39d768cf15f784cc757365'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '877455d39115d2b22d706615d229cbee6f70c286bb5aa1c6dba8ee8e63eace56',
-     armv7l: '877455d39115d2b22d706615d229cbee6f70c286bb5aa1c6dba8ee8e63eace56',
-       i686: '08f190307885f5c51412baa6dc621538f9a288c795a958cbb17c7cf8ce98c523',
-     x86_64: '4f06de7d9a546301339538bf58a147321e87a6cc24c6faa5a92ae9cb0b648256'
+    aarch64: '12c063c28dc1960443ae409eaec5b774cd36f7c1f701439e248851d78fc1e06a',
+     armv7l: '12c063c28dc1960443ae409eaec5b774cd36f7c1f701439e248851d78fc1e06a',
+       i686: 'bbb963a35648e47b14f2b489ba2273403d2f8ee905287a68d8fad3835c13a86f',
+     x86_64: 'ecf3bab1344d5b582d7dd140ec9aa967ca540a8194608de4a7258e0307c9193d'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -93,7 +93,7 @@ class Python3 < Package
           --with-tzpath=#{CREW_PREFIX}/share/zoneinfo \
           --with-libc= \
           --enable-shared"
-      system "MAKEFLAGS=-j#{CREW_NPROC} make"
+      system "TMPDIR=/tmp MAKEFLAGS=-j#{CREW_NPROC} make"
       File.write 'python_config_env', <<~PYTHON_CONFIG_EOF
         # Force use of python3 over python2.7 in packages which check the variable to set the python used.
         PYTHON=python3
@@ -116,16 +116,19 @@ class Python3 < Package
   end
 
   def self.postinstall
+    # First force pip upgrade to make sure we are past the problematic pip 23.2.1
+    # See https://github.com/pypa/pip/issues/12357 and https://github.com/pypa/pip/issues/12428
+    # system 'PIP_DISABLE_PIP_VERSION_CHECK=1 python -m pip install --upgrade --force-reinstall pip'
     # Pip is installed inside Python 3. The following steps ensure that
     # pip can properly build other packages from buildsystems/pip.
-    @required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
-    @pip_list = `pip list --exclude pip`
-    @required_pip_modules.each do |pip_pkg|
-      unless @pip_list.include?(pip_pkg)
-        puts "Installing #{pip_pkg} using pip..."
-        Kernel.system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
-      end
-    end
+    # @required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
+    # @pip_list = `pip list --exclude pip`
+    # @required_pip_modules.each do |pip_pkg|
+    #   unless @pip_list.include?(pip_pkg)
+    #     puts "Installing #{pip_pkg} using pip..."
+    #     system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
+    #   end
+    # end
 
     puts 'Updating pip packages...'.lightblue
     system 'pip list --outdated --format=json | python -c "import json, sys; print(\'\n\'.join([x[\'name\'] for x in json.load(sys.stdin)]))" | xargs -rn1 pip install -U', exception: false

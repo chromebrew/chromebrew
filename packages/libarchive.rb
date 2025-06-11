@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Libarchive < CMake
   description 'Multi-format archive and compression library.'
   homepage 'https://www.libarchive.org/'
-  version "3.8.0-#{CREW_ICU_VER}-1"
+  version "3.8.1-#{CREW_ICU_VER}"
   license 'BSD, BSD-2, BSD-4 and public-domain'
   compatibility 'all'
   source_url "https://www.libarchive.org/downloads/libarchive-#{version.split('-').first}.tar.xz"
-  source_sha256 '67bfac3798a778143f4b1cadcdb3792b4269486f8e1b70ca5c0ee5841398bfdf'
+  source_sha256 '19f917d42d530f98815ac824d90c7eaf648e9d9a50e4f309c812457ffa5496b5'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7da5e0b47152ecac1213776285faa4c4969d332333afbd63adbbd84fa5789676',
-     armv7l: '7da5e0b47152ecac1213776285faa4c4969d332333afbd63adbbd84fa5789676',
-       i686: '3380293eae6abc7acd2098fc680809f8e74c1054cacb707acf6872d325a70e39',
-     x86_64: 'e52ad0ab46be7156e831cf8a19628d28a8c9b178c9e2a36223a89d4fd3e60422'
+    aarch64: '37cb3943312a8234b95aa6f67864214473da0229f580e0fa6c38d5b590a1c300',
+     armv7l: '37cb3943312a8234b95aa6f67864214473da0229f580e0fa6c38d5b590a1c300',
+       i686: '782fa7d3e621739340ab740843c7e52538f3bf124201ae7cf5150425067259d9',
+     x86_64: '2901e9c928d8384d69c42c2105e7029a95dcd463fd9d92f575cbcc38263b15b6'
   })
 
   depends_on 'acl' # R
@@ -32,13 +32,6 @@ class Libarchive < CMake
   depends_on 'zstd' # R
 
   cmake_options '-DENABLE_TEST=OFF'
-
-  def self.patch
-    # Fix LIBDIR being set improperly for cmake. (This was merged after 3.8.0)
-    # This needs CMAKE_INSTALL_LIBDIR to be set.
-    downloader 'https://github.com/libarchive/libarchive/pull/2509.diff', '355a5c17f91968b14df4b07b944aaf16746a0896ada5ef8653b08930640e01e7'
-    system 'patch -Np1 -i 2509.diff'
-  end
 
   cmake_install_extras do
     # As per Arch pkgbuild. This fixes epiphany builds.

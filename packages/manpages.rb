@@ -3,18 +3,18 @@ require 'package'
 class Manpages < Package
   description 'The Linux man-pages project documents the Linux kernel and C library interfaces that are employed by user-space programs.'
   homepage 'https://www.kernel.org/doc/man-pages/'
-  version '6.14'
+  version '6.14-1'
   license 'man-pages, GPL-2+ and BSD'
   compatibility 'all'
-  source_url "https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-#{version}.tar.xz"
+  source_url "https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-#{version.split('-').first}.tar.xz"
   source_sha256 '71e13067b780044b2f372eec25f4209bc0413cc32af714141ef3d22d21eae8e3'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2b05865226b0d381499a4443dcaa9b88431a912f8bab5eb4f00c7886ba599194',
-     armv7l: '2b05865226b0d381499a4443dcaa9b88431a912f8bab5eb4f00c7886ba599194',
-       i686: '09dff001c7850f3299b965c018cea9fd52ecf87b99a375e1603f5831d69ff457',
-     x86_64: '6fadf100adf6c382e8b52b00fcc561b16d733a5e651bac0f62b5cbaeea5cf91d'
+    aarch64: '565203367a47c96a422b733896ed90c1b2df90c28819b662d1e48d05b701af25',
+     armv7l: '565203367a47c96a422b733896ed90c1b2df90c28819b662d1e48d05b701af25',
+       i686: 'b2f0dee5392298725b6a1ecd872986f606f87a808ed32e60262d2df97716fe1a',
+     x86_64: '2c72d590cbcf2e78b6153b16ddcdf1c2adde27a6499333be8ad89d0235ecc1ce'
   })
 
   depends_on 'man_db'

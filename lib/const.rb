@@ -1,9 +1,10 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 require 'etc'
+require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.61.7' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.61.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -31,6 +32,9 @@ ARCH_LIB        ||= "lib#{CREW_LIB_SUFFIX}"
 CREW_PREFIX ||= ENV.fetch('CREW_PREFIX', '/usr/local') unless defined?(CREW_PREFIX)
 
 # Glibc related constants
+# Gate enablement of the new glibc behind this env variable, so that we
+# have a build environment with the older glibc if this is set.
+CREW_PRE_GLIBC_STANDALONE ||= ENV.fetch('CREW_PRE_GLIBC_STANDALONE', false) unless defined?(CREW_PRE_GLIBC_STANDALONE)
 CREW_GLIBC_PREFIX ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
 @crew_glibc_interpreter = File.file?("#{CREW_PREFIX}/bin/ld.so") ? File.join(CREW_GLIBC_PREFIX, File.basename(File.realpath("#{CREW_PREFIX}/bin/ld.so"))) : ''
 CREW_GLIBC_INTERPRETER ||= File.file?(@crew_glibc_interpreter) ? @crew_glibc_interpreter : nil unless defined?(CREW_GLIBC_INTERPRETER)
@@ -54,7 +58,20 @@ end
 
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
-CREW_ESSENTIAL_PACKAGES ||= %w[bash crew_profile_base gcc_lib glibc gmp ncurses readline ruby zlib zlib_ng zstd]
+unless defined?(CREW_ESSENTIAL_PACKAGES)
+  CREW_ESSENTIAL_PACKAGES ||= %W[
+    bash crew_profile_base gcc_lib gmp libxcrypt ncurses patchelf readline ruby upx zlib zlib_ng zstd
+    #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
+    #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
+    #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
+         "#{"glibc_lib#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_lib#{LIBC_VERSION.delete('.')}.filelist"))}
+     #{"glibc_build#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist"))}"
+       else
+         File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''
+       end
+    }
+  ].reject!(&:empty?)
+end
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
 
@@ -93,7 +110,7 @@ CREW_WINE_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'wine')
 CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 
 # Local constants for contributors.
-CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2> /dev/null`.chomp
+CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2>/dev/null`.chomp
 CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
 
@@ -109,7 +126,7 @@ CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless d
 CREW_NO_GIT             ||= ENV.fetch('CREW_NO_GIT', false) unless defined?(CREW_NO_GIT)
 CREW_UNATTENDED         ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
 
-CREW_STANDALONE_UPGRADE_ORDER = %w[glibc openssl ruby python3] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
+CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt crew_preload glibc openssl ruby python3] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
 
 CREW_DEBUG   ||= ARGV.intersect?(%w[-D --debug]) unless defined?(CREW_DEBUG)
 CREW_FORCE   ||= ARGV.intersect?(%w[-f --force]) unless defined?(CREW_FORCE)
@@ -143,7 +160,7 @@ CREW_NOT_SHRINK_ARCHIVE              ||= ENV.fetch('CREW_NOT_SHRINK_ARCHIVE', fa
 # or use no_shrink
 
 # Allow git constants to be set from environment variables (for testing)
-CREW_REPO   ||= ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git') unless defined?(CRE_REPO)
+CREW_REPO   ||= ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git') unless defined?(CREW_REPO)
 CREW_BRANCH ||= ENV.fetch('CREW_BRANCH', 'master') unless defined?(CREW_BRANCH)
 
 USER ||= Etc.getlogin unless defined?(USER)
@@ -227,7 +244,7 @@ CREW_ENV_OPTIONS_HASH ||=
       'CXXFLAGS'        => CREW_COMMON_FLAGS,
       'FCFLAGS'         => CREW_COMMON_FLAGS,
       'FFLAGS'          => CREW_COMMON_FLAGS,
-      'LIBRARY_PATH'    => "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+      'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
       'LDFLAGS'         => CREW_LINKER_FLAGS
     }
   end
@@ -240,7 +257,7 @@ CREW_ENV_FNO_LTO_OPTIONS_HASH ||= {
   'CXXFLAGS'        => CREW_COMMON_FNO_LTO_FLAGS,
   'FCFLAGS'         => CREW_COMMON_FNO_LTO_FLAGS,
   'FFLAGS'          => CREW_COMMON_FNO_LTO_FLAGS,
-  'LIBRARY_PATH'    => "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+  'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
   'LDFLAGS'         => CREW_FNO_LTO_LDFLAGS
 }
 # parse from hash to shell readable string
@@ -282,7 +299,7 @@ CREW_NINJA ||= ENV.fetch('CREW_NINJA', 'ninja') unless defined?(CREW_NINJA)
 CREW_CMAKE_OPTIONS ||= <<~OPT.chomp
   -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
   -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-  -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}' \
+  -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}"}' \
   -DCMAKE_C_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
   -DCMAKE_CXX_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
   -DCMAKE_EXE_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
@@ -312,7 +329,7 @@ PY3_BUILD_OPTIONS                ||= '--wheel --no-isolation'
 PY3_INSTALLER_OPTIONS            ||= "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
 PY3_PIP_RETRIES                  ||= ENV.fetch('PY3_PIP_RETRIES', '5') unless defined?(PY3_PIP_RETRIES)
 
-CREW_GCC_VER ||= Kernel.system('which gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : 'gcc14' unless defined?(CREW_GCC_VER)
+CREW_GCC_VER ||= Kernel.system('which gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : 'gcc15' unless defined?(CREW_GCC_VER)
 CREW_ICU_VER ||= Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : 'icu75.1' unless defined?(CREW_ICU_VER)
 CREW_LLVM_VER ||= Kernel.system('which llvm-config', %i[out err] => File::NULL) ? "llvm#{`llvm-config --version`.chomp.split('.')[0]}" : 'llvm20' unless defined?(CREW_LLVM_VER)
 CREW_PERL_VER ||= Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl -MConfig -e "print \\\"\\\$Config{'PERL_API_REVISION'}.\\\$Config{'PERL_API_VERSION'}\\\";"`}" : 'perl5.40' unless defined?(CREW_PERL_VER)
