@@ -284,7 +284,7 @@ jobs:
               -v "$(pwd)":/output:rshared \
               --tmpfs /tmp \
               "satmandu/crewbuild:${CONTAINER}" \
-              /bin/chromebrewstart "/output/tools/github_actions_update_builder${{ github.event.inputs.allow_fail == 'true' && '_allowing_failures'}}.sh"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
+              /bin/chromebrewstart "/output/tools/github_actions_update_builder${{ github.event.inputs.allow_fail == 'true' && '_allowing_failures' || ''}}.sh"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
               grep "Built and Uploaded:" /tmp/build.log || true
               echo "Deleting build output directories."
               sudo rm -rf release pkg_cache
