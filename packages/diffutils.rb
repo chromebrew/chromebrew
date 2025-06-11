@@ -3,10 +3,10 @@ require 'buildsystems/autotools'
 class Diffutils < Autotools
   description 'GNU Diffutils is a package of several programs related to finding differences between files.'
   homepage 'https://www.gnu.org/software/diffutils/'
-  version '3.12'
+  version '3.12-1'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/diffutils/diffutils-#{version}.tar.xz"
+  source_url "https://ftpmirror.gnu.org/diffutils/diffutils-#{version.split('-').first}.tar.xz"
   source_sha256 '7c8b7f9fc8609141fdea9cece85249d308624391ff61dedaf528fcb337727dfd'
   binary_compression 'tar.zst'
 

@@ -3,10 +3,10 @@ require 'package'
 class Make < Package
   description 'GNU Make is a tool which controls the generation of executables and other non-source files of a program from the program\'s source files.'
   homepage 'https://www.gnu.org/software/make/'
-  version '4.4.1'
+  version '4.4.1-1'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/make/make-4.4.1.tar.lz'
+  source_url "https://ftpmirror.gnu.org/make/make-#{version.split('-').first}.tar.lz"
   source_sha256 '8814ba072182b605d156d7589c19a43b89fc58ea479b9355146160946f8cf6e9'
   binary_compression 'tar.zst'
 
