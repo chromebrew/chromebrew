@@ -3,42 +3,34 @@ require 'package'
 class Php84 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.4.6'
+  version '8.4.8'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
-  source_sha256 '089b08a5efef02313483325f3bacd8c4fe311cf1e1e56749d5cc7d059e225631'
+  source_sha256 'aa6a4d330b47eacd83e351658ba8c47747a1e4356456219cfb6d75e7838da091'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c6673820899903cab82d259f099ac6e36b8256db5f9c2846a8656f717447bdc0',
-     armv7l: 'c6673820899903cab82d259f099ac6e36b8256db5f9c2846a8656f717447bdc0',
-     x86_64: 'ec67d0ce3f29d7d6f4ba15e96d9ba26772ac77f943eabe6f2532f27e99864e0c'
+    aarch64: 'e5ee04132a7f23b9f04cf310fd08e182ecaed66ebb3420c25c3bf5b03679306d',
+     armv7l: 'e5ee04132a7f23b9f04cf310fd08e182ecaed66ebb3420c25c3bf5b03679306d',
+     x86_64: '427943ee282640f573bb4e118a7c621c69e9465f62efcc1f9eee198adf05c4db'
   })
 
   depends_on 'aspell_en' => :build
-  depends_on 'aspell' # R
   depends_on 'brotli' # R
   depends_on 'bzip2' # R
   depends_on 'c_ares' # R
   depends_on 'curl' # R
-  depends_on 'e2fsprogs' # R
-  depends_on 'exif' # R
-  depends_on 'freetds' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
-  depends_on 'graphite' # R
   depends_on 'icu4c' # R
-  depends_on 'krb5' # R
+  depends_on 'jq' # R
   depends_on 'libcyrussasl' # R
   depends_on 'libedit' # R
   depends_on 'libffi' # R
-  depends_on 'libgcrypt' # R
-  depends_on 'libgd' # R
-  depends_on 'libgpg_error' # R
   depends_on 'libidn2' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libnghttp2' # R
@@ -49,15 +41,12 @@ class Php84 < Package
   depends_on 'libtool' # R
   depends_on 'libunistring' # R
   depends_on 'libxml2' # R
-  depends_on 'libxpm' # R
   depends_on 'libxslt' # R
   depends_on 'libzip' # R
   depends_on 'ncurses' # R
   depends_on 'oniguruma' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R
-  depends_on 'py3_pygments' # R
-  depends_on 're2c' # R
   depends_on 'sqlite' # R
   depends_on 'tidy' # R
   depends_on 'unixodbc' # R
