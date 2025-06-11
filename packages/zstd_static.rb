@@ -3,17 +3,17 @@ require 'package'
 class Zstd_static < Package
   description 'Zstandard - Fast real-time compression algorithm'
   homepage 'https://facebook.github.io/zstd/'
-  version '1.5.7'
+  version '1.5.7-1'
   license 'BSD or GPL-2'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.xz'
 
   binary_sha256({
-    aarch64: '3287871667b989a079534c5e7ffc93056fbe52d030523a77f6e99cad9f243aa2',
-     armv7l: '3287871667b989a079534c5e7ffc93056fbe52d030523a77f6e99cad9f243aa2',
-       i686: '39cef6a243154c8a236095a806e065e752833c605009e5bafaaa03a17b947549',
-     x86_64: '4f44c1ef47ea6dbe9ea70edad11155574ff001ae9422fc3d8ae00d6b2f30f65a'
+    aarch64: '3656581e4d8ab2cd9fd49d5b280139092bf6ec44970715142dc7a44af320f4b2',
+     armv7l: '3656581e4d8ab2cd9fd49d5b280139092bf6ec44970715142dc7a44af320f4b2',
+       i686: '9caa7aa0ce6b7b71165cc0b16d82ad83b9e609311225b381b574cd92acf18ae9',
+     x86_64: '5f108a937cc27bb1ff05e7bc05bdb9e3eceb91204d76880f96103acdaa29a884'
   })
 
   conflicts_ok
@@ -1534,5 +1534,6 @@ class Zstd_static < Package
 
   def self.install
     FileUtils.install "output/#{@cross}/zstd-full", "#{CREW_DEST_PREFIX}/bin/zstd", mode: 0o755
+    FileUtils.install "output/#{@cross}/zstd-full", "#{CREW_DEST_PREFIX}/bin/zstd-static", mode: 0755
   end
 end

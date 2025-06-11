@@ -353,9 +353,9 @@ function extract_install () {
     fi
     ZSTD_STATUS=
     ZSTD=
-    if [[ -x "${CREW_PREFIX}/bin/zstd" ]] && "${CREW_PREFIX}"/bin/zstd --help &>/dev/null; then
+    if [[ -x "${CREW_PREFIX}/bin/zstd-static" ]] && "${CREW_PREFIX}"/bin/zstd-static --help &>/dev/null; then
       ZSTD_STATUS="crew"
-      ZSTD="${CREW_PREFIX}/bin/zstd"
+      ZSTD="${CREW_PREFIX}/bin/zstd-static"
     elif [[ -f /usr/bin/zstd ]] && env -u LD_LIBRARY_PATH /usr/bin/zstd --help &>/dev/null; then
       ZSTD_STATUS="system"
       ZSTD="/usr/bin/zstd"
