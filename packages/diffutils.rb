@@ -6,8 +6,10 @@ class Diffutils < Autotools
   version '3.12-1'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/diffutils/diffutils-#{version.split('-').first}.tar.xz"
-  source_sha256 '7c8b7f9fc8609141fdea9cece85249d308624391ff61dedaf528fcb337727dfd'
+  source_url 'https://git.savannah.gnu.org/git/diffutils.git'
+  git_hashtag "v#{version.split('-').first}"
+  # source_url "https://ftpmirror.gnu.org/diffutils/diffutils-#{version.split('-').first}.tar.xz"
+  # source_sha256 '7c8b7f9fc8609141fdea9cece85249d308624391ff61dedaf528fcb337727dfd'
   binary_compression 'tar.zst'
 
   binary_sha256({
