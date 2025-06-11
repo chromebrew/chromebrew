@@ -152,7 +152,7 @@ if [[ "${ARCH}" = "x86_64" ]] && [[ -f "/lib/ld-2.23.so" ]]; then
 fi
 
 : "${CREW_PY_VER:=3.13}"
-expoet CREW_NPROC="$(nproc)"
+export CREW_NPROC="$(nproc)"
 
 # Warn users of the AMD segfault issue and allow them to work around it.
 # The easiest way to distinguish StoneyRidge platorms is to check for the FMA4
