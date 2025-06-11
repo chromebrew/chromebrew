@@ -905,35 +905,50 @@ def expand_binaries_and_fix_interpreter_path(dir)
     return if execfiles.empty?
 
     @localdir = File.expand_path('../../.')
+    require_gem 'concurrent-ruby'
+    pool = Concurrent::ThreadPoolExecutor.new(
+      min_threads: 1,
+      max_threads: CREW_NPROC,
+      max_queue: 0, # unbounded work queue
+      fallback_policy: :caller_runs
+    )
     execfiles.each do |execfiletopatch|
       next unless File.file?(execfiletopatch)
 
-      # Decompress the binary if compressed.
-      system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL, exception: false
-      # Check for existing interpreter.
-      next if CREW_GLIBC_INTERPRETER.blank?
+      pool.post do
+        execfile.slice! '.'
+        File.join(dir, execfiletopatch)
 
-      @interpreter, _read_interpreter_stderr_s, @read_interpreter_status = Open3.capture3("patchelf --print-interpreter #{execfiletopatch}")
-      # Set interpreter unless the interpreter read failed or is already
-      # set appropriately.
-      unless @read_interpreter_status && @interpreter == CREW_GLIBC_INTERPRETER
-        puts "Running patchelf on #{execfiletopatch} to set interpreter".orange if CREW_VERBOSE
-        _set_interpreter_stdout, @set_interpreter_stderr = Open3.capture3("patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch}")
-        puts "#{execfiletopatch}: @set_interpreter_stderr: #{@set_interpreter_stderr.chomp}".lightpurple if !@set_interpreter_stderr.blank? && CREW_VERBOSE
+        # Decompress the binary if compressed.
+        system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL, exception: false
+
+        # Check for existing interpreter.
+        next if CREW_GLIBC_INTERPRETER.blank?
+
+        @interpreter, _read_interpreter_stderr_s, @read_interpreter_status = Open3.capture3("patchelf --print-interpreter #{execfiletopatch}")
+        # Set interpreter unless the interpreter read failed or is already
+        # set appropriately.
+        unless @read_interpreter_status && @interpreter == CREW_GLIBC_INTERPRETER
+          puts "Running patchelf on #{execfiletopatch} to set interpreter".orange if CREW_VERBOSE
+          _set_interpreter_stdout, @set_interpreter_stderr = Open3.capture3("patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch}")
+          puts "#{execfiletopatch}: @set_interpreter_stderr: #{@set_interpreter_stderr.chomp}".lightpurple if !@set_interpreter_stderr.blank? && CREW_VERBOSE
+        end
+        # Try to read any existing rpath.
+        @read_rpath_stdout_s, @read_rpath_stderr_s, @read_rpath_status = Open3.capture3("patchelf --print-rpath #{execfiletopatch}")
+        @exec_rpath = @read_rpath_stdout_s.chomp
+        @rpath_status = @read_rpath_status
+        puts "#{execfiletopatch}: @read_rpath_stderr_s: #{@read_rpath_stderr_s}".lightpurple if !@read_rpath_stderr_s.blank? && CREW_VERBOSE
+        # Set rpath if rpath read didn't fail, an rpath exists, and does not
+        # already contain CREW_GLIBC_PREFIX.
+        next if !@read_rpath_rpath_status || @exec_rpath.blank? || @exec_rpath.include?(CREW_GLIBC_PREFIX)
+        puts "#{execfiletopatch.gsub(@localdir, '')} has an existing rpath of #{@exec_rpath}".lightpurple if CREW_VERBOSE
+        puts "Prefixing #{CREW_GLIBC_PREFIX} to #{@exec_rpath} rpath for #{execfiletopatch.gsub(@localdir, '')}.".lightblue
+        @set_rpath_stdout_s, @set_rpath_stderr_s, @set_rpath_status = Open3.capture3("patchelf --set-rpath #{CREW_GLIBC_PREFIX}:#{@exec_rpath} #{execfiletopatch}")
+        puts "#{execfiletopatch}: @set_rpath_stderr_s: #{@set_rpath_stderr_s}".lightpurple if !@set_rpath_stderr_s.blank? && CREW_VERBOSE
       end
-      # Try to read any existing rpath.
-      @read_rpath_stdout_s, @read_rpath_stderr_s, @read_rpath_status = Open3.capture3("patchelf --print-rpath #{execfiletopatch}")
-      @exec_rpath = @read_rpath_stdout_s.chomp
-      @rpath_status = @read_rpath_status
-      puts "#{execfiletopatch}: @read_rpath_stderr_s: #{@read_rpath_stderr_s}".lightpurple if !@read_rpath_stderr_s.blank? && CREW_VERBOSE
-      # Set rpath if rpath read didn't fail, an rpath exists, and does not
-      # already contain CREW_GLIBC_PREFIX.
-      next if !@read_rpath_rpath_status || @exec_rpath.blank? || @exec_rpath.include?(CREW_GLIBC_PREFIX)
-      puts "#{execfiletopatch.gsub(@localdir, '')} has an existing rpath of #{@exec_rpath}".lightpurple if CREW_VERBOSE
-      puts "Prefixing #{CREW_GLIBC_PREFIX} to #{@exec_rpath} rpath for #{execfiletopatch.gsub(@localdir, '')}.".lightblue
-      @set_rpath_stdout_s, @set_rpath_stderr_s, @set_rpath_status = Open3.capture3("patchelf --set-rpath #{CREW_GLIBC_PREFIX}:#{@exec_rpath} #{execfiletopatch}")
-      puts "#{execfiletopatch}: @set_rpath_stderr_s: #{@set_rpath_stderr_s}".lightpurple if !@set_rpath_stderr_s.blank? && CREW_VERBOSE
     end
+    pool.shutdown
+    pool.wait_for_termination
   end
 end
 
