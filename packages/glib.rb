@@ -14,7 +14,7 @@ class Glib < Meson
     aarch64: 'db3148e9fe0cbdcdf5b979c2a18c560308db615454ee9997e12e906d6b6313c8',
      armv7l: 'db3148e9fe0cbdcdf5b979c2a18c560308db615454ee9997e12e906d6b6313c8',
        i686: 'bb44cd8cda14a0831bd8fc3c24600aa8cacf7e87cb65722be1717559af314d3c',
-     x86_64: '59356454a19aa10e23544575b38e112d9e5669452f9edd4098762ae9f813c7c2'
+     x86_64: '82b603c28ece519fdd9bb1c2b895be54ddbed4ca872870f6d6c13cff51d5cc62'
   })
 
   depends_on 'elfutils' # R
