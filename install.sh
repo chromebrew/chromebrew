@@ -152,6 +152,7 @@ if [[ "${ARCH}" = "x86_64" ]] && [[ -f "/lib/ld-2.23.so" ]]; then
 fi
 
 : "${CREW_PY_VER:=3.13}"
+expoet CREW_NPROC="$(nproc)"
 
 # Warn users of the AMD segfault issue and allow them to work around it.
 # The easiest way to distinguish StoneyRidge platorms is to check for the FMA4
@@ -260,7 +261,8 @@ else
   BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload'
   # Get linux32 as early as possible.
   [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux' 
-  BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils'
+  BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ca_certificates libyaml openssl gmp findutils psmisc'
+  [[ "${ARCH}" == 'i686' ]] || BOOTSTRAP_PACKAGES+=' uutils_coreutils'	
 fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
