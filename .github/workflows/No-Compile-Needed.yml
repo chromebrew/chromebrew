@@ -263,7 +263,7 @@ jobs:
             git checkout "${{ env.BRANCH }}"
             git reset --hard "origin/${{ env.BRANCH }}"
             git log --oneline -10
-            docker pull --platform "${PLATFORM}" "satmandu/crewbuild:${CONTAINER}"
+            docker pull --platform "${PLATFORM}" "${CONTAINER}"
             sudo apt install -y acl
             sudo setfacl -R -m u:1000:rwx .
 
