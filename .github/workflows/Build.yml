@@ -257,7 +257,7 @@ jobs:
             git checkout "${{ env.BRANCH }}"
             git reset --hard "origin/${{ env.BRANCH }}"
             git log --oneline -10
-            docker pull --platform "${PLATFORM}" "satmandu/crewbuild:${CONTAINER}"
+            docker pull --platform "${PLATFORM}" "satmandu/crew-pre-glibc-standalone:${CONTAINER}"
             sudo apt install -y acl
             # Detection of /output/pkg_cache dir triggers setting
             # CREW_CACHE_DIR=1 and CREW_CACHE_ENABLED=1 in the build

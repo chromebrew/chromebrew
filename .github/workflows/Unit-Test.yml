@@ -193,7 +193,7 @@ jobs:
               echo "Skipping i686 container unit tests."
               exit 0
             else
-              docker pull --platform "${PLATFORM}" "satmandu/crewbuild:${CONTAINER}"
+              docker pull --platform "${PLATFORM}" "${CONTAINER}"
               docker run \
                 --rm \
                 --platform "${PLATFORM}" \
