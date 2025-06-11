@@ -11,34 +11,26 @@ class Php84 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c6673820899903cab82d259f099ac6e36b8256db5f9c2846a8656f717447bdc0',
-     armv7l: 'c6673820899903cab82d259f099ac6e36b8256db5f9c2846a8656f717447bdc0',
+    aarch64: 'e5ee04132a7f23b9f04cf310fd08e182ecaed66ebb3420c25c3bf5b03679306d',
+     armv7l: 'e5ee04132a7f23b9f04cf310fd08e182ecaed66ebb3420c25c3bf5b03679306d',
      x86_64: '427943ee282640f573bb4e118a7c621c69e9465f62efcc1f9eee198adf05c4db'
   })
 
   depends_on 'aspell_en' => :build
-  depends_on 'aspell' # R
   depends_on 'brotli' # R
   depends_on 'bzip2' # R
   depends_on 'c_ares' # R
   depends_on 'curl' # R
-  depends_on 'e2fsprogs' # R
-  depends_on 'exif' # R
-  depends_on 'freetds' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
-  depends_on 'graphite' # R
   depends_on 'icu4c' # R
-  depends_on 'krb5' # R
+  depends_on 'jq' # R
   depends_on 'libcyrussasl' # R
   depends_on 'libedit' # R
   depends_on 'libffi' # R
-  depends_on 'libgcrypt' # R
-  depends_on 'libgd' # R
-  depends_on 'libgpg_error' # R
   depends_on 'libidn2' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libnghttp2' # R
@@ -49,15 +41,12 @@ class Php84 < Package
   depends_on 'libtool' # R
   depends_on 'libunistring' # R
   depends_on 'libxml2' # R
-  depends_on 'libxpm' # R
   depends_on 'libxslt' # R
   depends_on 'libzip' # R
   depends_on 'ncurses' # R
   depends_on 'oniguruma' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R
-  depends_on 'py3_pygments' # R
-  depends_on 're2c' # R
   depends_on 'sqlite' # R
   depends_on 'tidy' # R
   depends_on 'unixodbc' # R
