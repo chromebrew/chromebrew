@@ -211,7 +211,7 @@ jobs:
                 # else
                 #     echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 # fi
-                echo "CONTAINER=hatch-x86_64.m136" >> "$GITHUB_ENV"
+                echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
               ;;
@@ -224,7 +224,7 @@ jobs:
                 # else
                 #     echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
                 # fi
-                echo "CONTAINER=strongbad-armv7l.m136" >> "$GITHUB_ENV"
+                echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
               ;;
@@ -283,7 +283,7 @@ jobs:
               -v "$(pwd)"/pkg_cache:/usr/local/tmp/packages:rshared \
               -v "$(pwd)":/output:rshared \
               --tmpfs /tmp \
-              "satmandu/crewbuild:${CONTAINER}" \
+              "satmandu/crew-pre-glibc-standalone:${CONTAINER}" \
               /bin/chromebrewstart "/output/tools/github_actions_update_builder${{ github.event.inputs.allow_fail == 'true' && '_allowing_failures' || ''}}.sh"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
               grep "Built and Uploaded:" /tmp/build.log || true
               echo "Deleting build output directories."
