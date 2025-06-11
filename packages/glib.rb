@@ -11,8 +11,8 @@ class Glib < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'db3148e9fe0cbdcdf5b979c2a18c560308db615454ee9997e12e906d6b6313c8',
-     armv7l: 'db3148e9fe0cbdcdf5b979c2a18c560308db615454ee9997e12e906d6b6313c8',
+    aarch64: '44772d6737d8ed76fcdbbdffd13cc86b6a3054bbc29c90b075365f07001c770f',
+     armv7l: '44772d6737d8ed76fcdbbdffd13cc86b6a3054bbc29c90b075365f07001c770f',
        i686: 'bb44cd8cda14a0831bd8fc3c24600aa8cacf7e87cb65722be1717559af314d3c',
      x86_64: '82b603c28ece519fdd9bb1c2b895be54ddbed4ca872870f6d6c13cff51d5cc62'
   })
