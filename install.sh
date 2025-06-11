@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025060901
+CREW_INSTALLER_VERSION=2025061001
 # Exit on fail.
 set -eE
 
@@ -69,10 +69,6 @@ set -a
 : "${BRANCH:=master}"
 : "${CREW_BRANCH:=${BRANCH}}"
 : "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
-# Save existing variable information if it is set.
-: "${CREW_PRE_GLIBC_STANDALONE_ORIGINAL:=${CREW_PRE_GLIBC_STANDALONE}}"
-# Start with CREW_PRE_GLIBC_STANDALONE set.
-CREW_PRE_GLIBC_STANDALONE=1
 set +a
 
 # Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
@@ -133,21 +129,26 @@ if [[ "$ARCH" == "x86_64" ]] || [[ "$ARCH" == "aarch64" ]]; then
   SYSTEM_LIB_SUFFIX='64'
 fi
 
+if [[ "$ARCH" == "x86_64" ]]; then
+  CREW_LIB_SUFFIX='64'
+fi
+
 # For container usage, when we are emulating armv7l via linux32, where uname -m will report armv8l.
 # Additionally, if the architecture is aarch64, set it to armv7l, as we treat as if it was armv7l.
 # When we have proper support for aarch64, remove this.
 if [[ "${ARCH}" = "armv8l" ]] || [[ "${ARCH}" = "aarch64" ]]; then
   echo_info "Setting ARCH to armv7l."
   ARCH='armv7l'
+  PREFIX_CMD="linux32 env LD_LIBRARY_PATH=${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}:/usr/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
 fi
 
 if [[ "${ARCH}" = "x86_64" ]] && [[ -f "/lib/ld-2.23.so" ]]; then
   echo_info "Setting ARCH to i686."
   ARCH='i686'
-fi
-
-if [[ "$ARCH" == "x86_64" ]]; then
-  CREW_LIB_SUFFIX='64'
+  # Set CREW_PRE_GLIBC_STANDALONE for i686.
+  export CREW_PRE_GLIBC_STANDALONE=1
+  echo "export CREW_PRE_GLIBC_STANDALONE=1" >> ~/.bashrc
+  PREFIX_CMD="linux32 env LD_LIBRARY_PATH=${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}:/usr/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
 fi
 
 : "${CREW_PY_VER:=3.13}"
@@ -246,16 +247,20 @@ if [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]]; then
   LIBC_VERSION=$(/lib"${CREW_LIB_SUFFIX}"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')
   # Add the appropriate glibc stub package for these systems as
   # subsequent package installs may rely on it.
-  [[ "$ARCH" == "i686" ]] && BOOTSTRAP_PACKAGES="zstd_static  glibc_build223"
-  [[ "$LIBC_VERSION" == "2.27" ]] && BOOTSTRAP_PACKAGES="zstd_static glibc_build227"
+  [[ "$ARCH" == "i686" ]] && BOOTSTRAP_PACKAGES='zstd_static glibc_build223'
+  [[ "$LIBC_VERSION" == "2.27" ]] && BOOTSTRAP_PACKAGES='zstd_static glibc_build227'
   
-  BOOTSTRAP_PACKAGES+=' upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ruby ca_certificates libyaml openssl findutils ncurses readline bash psmisc'
+  [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux' 
+  BOOTSTRAP_PACKAGES+=' upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ca_certificates libyaml openssl findutils ncurses readline bash psmisc'
 else
   # Ruby wants gcc_lib, so install our version build against our glibc
   # first.
   # psmisc provides pstree which is used by crew
   # findutils provides find which is used by crew during installs.
-  BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ruby ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils'
+  BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload'
+  # Get linux32 as early as possible.
+  [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux' 
+  BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ca_certificates libyaml openssl gmp findutils psmisc uutils_coreutils'
 fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
@@ -268,7 +273,7 @@ BOOTSTRAP_PACKAGES+=' pcre2 expat git'
 
 # Add curl dependencies to BOOTSTRAP_PACKAGES since curl is a git
 # dependency, installing curl last so we don't break the system curl.
-BOOTSTRAP_PACKAGES+=' brotli c_ares libcyrussasl libidn2 libnghttp2 libpsl libssh libunistring openldap curl zstd'
+BOOTSTRAP_PACKAGES+=' brotli c_ares libcyrussasl libidn2 libnghttp2 libpsl libssh libunistring openldap curl zstd ruby'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]]; then
   # shellcheck disable=SC2231
@@ -366,7 +371,7 @@ function extract_install () {
       if [[ -z $XZ_STATUS ]]; then
         tar xpf ../"${2}"
       elif [[ $XZ_STATUS == 'system' ]]; then
-       env -u LD_LIBRARY_PATH tar -I /usr/bin/xz -xpf ../"${2}"
+       LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /bin/tar -I /usr/bin/xz -xpf ../"${2}"
       elif [[ $XZ_STATUS == 'broken' ]] && [[ -z $ZSTD_STATUS ]] && zstd --help 2>/dev/null| grep -q lzma; then
         tar -I "${ZSTD}" -xpf ../"${2}"
       elif [[ $XZ_STATUS == 'broken' ]] && [[ $ZSTD_STATUS == 'broken' ]]; then
@@ -379,7 +384,7 @@ function extract_install () {
       if [[ -z $ZSTD_STATUS ]] && tar --usage | grep -q zstd ; then
         tar xpf ../"${2}"
       elif [[ $ZSTD_STATUS == 'system' ]]; then
-        env -u LD_LIBRARY_PATH tar -I "${ZSTD}" -xpf ../"${2}"
+        LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /bin/tar -I "${ZSTD}" -xpf ../"${2}"
       elif [[ $ZSTD_STATUS == 'crew' ]]; then
         tar -I "${ZSTD}" -xpf ../"${2}"
       elif [[ $ZSTD_STATUS == 'broken' ]]; then
@@ -495,8 +500,8 @@ ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
 echo_info 'Updating RubyGems...'
-gem sources -u
-gem update --no-update-sources -N --system
+${PREFIX_CMD} gem sources -u
+${PREFIX_CMD} gem update --no-update-sources -N --system
 
 # Mark packages as installed for pre-installed gems.
 mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
@@ -527,17 +532,13 @@ fi
 # This is needed for SSL env variables to be populated so ruby doesn't
 # complain about missing certs, resulting in failed https connections.
 echo_info "Installing crew_profile_base...\n"
-yes | crew install crew_profile_base
+yes | ${PREFIX_CMD} crew install crew_profile_base
 
 # shellcheck disable=SC1090
 trap - ERR && source ~/.bashrc && set_trap
 echo_info "Installing core Chromebrew packages...\n"
-# Preload shouldn't be needed for core packages not already installed.
-if [[ "${ARCH}" == "i686" ]] || [[ "${ARCH}" == "armv7l" ]]; then
-  yes | CREW_PRELOAD_DISABLED=1 crew install core
-else
-  yes | crew install core
-fi
+yes | ${PREFIX_CMD} crew install core || (yes | ${PREFIX_CMD} crew install core)
+
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than
 # splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}.
@@ -545,7 +546,7 @@ echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 for i in ${BOOTSTRAP_PACKAGES}
 do
   echo_info "Doing postinstall for $i"
-  crew postinstall $i || echo_error "Postinstall for $i failed."
+  ${PREFIX_CMD} crew postinstall $i || echo_error "Postinstall for $i failed."
 done
 
 if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
@@ -582,8 +583,8 @@ else
   echo_info "Cleaning up older ruby gem versions...\n"
   gem cleanup
 
-  export CREW_PRE_GLIBC_STANDALONE="${CREW_PRE_GLIBC_STANDALONE_ORIGINAL}"
-  crew update && yes | crew upgrade
+  export CREW_BRANCH CREW_REPO
+  ${PREFIX_CMD} crew update && yes | ${PREFIX_CMD} crew upgrade
 fi
 echo -e "${RESET}"
 
