@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Glib < Meson
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://docs.gtk.org/glib/'
-  version '2.83.3'
+  version '2.85.0'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'
@@ -19,7 +19,7 @@ class Glib < Meson
 
   depends_on 'elfutils' # R
   depends_on 'gcc_lib' # R
-  depends_on 'gobject_introspection' unless ARCH == 'i686' # L
+  # depends_on 'gobject_introspection' unless ARCH == 'i686' # L
   depends_on 'libffi' # R
   depends_on 'pcre2' # R
   depends_on 'py3_pygments' => :build
