@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025061001
+CREW_INSTALLER_VERSION=2025061101
 # Exit on fail.
 set -eE
 
@@ -584,7 +584,7 @@ else
   gem cleanup
 
   export CREW_BRANCH CREW_REPO
-  ${PREFIX_CMD} crew update && yes | ${PREFIX_CMD} crew upgrade
+  (${PREFIX_CMD} crew update && yes | ${PREFIX_CMD} crew upgrade) || (${PREFIX_CMD} crew update && (yes | ${PREFIX_CMD} crew upgrade) || true)
 fi
 echo -e "${RESET}"
 
