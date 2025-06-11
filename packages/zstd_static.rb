@@ -1534,6 +1534,6 @@ class Zstd_static < Package
 
   def self.install
     FileUtils.install "output/#{@cross}/zstd-full", "#{CREW_DEST_PREFIX}/bin/zstd", mode: 0o755
-    FileUtils.install "output/#{@cross}/zstd-full", "#{CREW_DEST_PREFIX}/bin/zstd-static", mode: 0755
+    FileUtils.install "output/#{@cross}/zstd-full", "#{CREW_DEST_PREFIX}/bin/zstd-static", mode: 0o755
   end
 end
