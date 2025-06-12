@@ -25,6 +25,7 @@
 /usr/local/include/valgrind/libvex_guest_offsets.h
 /usr/local/include/valgrind/libvex_guest_ppc32.h
 /usr/local/include/valgrind/libvex_guest_ppc64.h
+/usr/local/include/valgrind/libvex_guest_riscv64.h
 /usr/local/include/valgrind/libvex_guest_s390x.h
 /usr/local/include/valgrind/libvex_guest_x86.h
 /usr/local/include/valgrind/libvex_inner.h
@@ -85,6 +86,7 @@
 /usr/local/include/valgrind/vki/vki-freebsd.h
 /usr/local/include/valgrind/vki/vki-linux-drm.h
 /usr/local/include/valgrind/vki/vki-linux-io_uring.h
+/usr/local/include/valgrind/vki/vki-linux-landlock.h
 /usr/local/include/valgrind/vki/vki-linux.h
 /usr/local/include/valgrind/vki/vki-machine-types-amd64-freebsd.h
 /usr/local/include/valgrind/vki/vki-machine-types-arm64-freebsd.h
@@ -100,10 +102,12 @@
 /usr/local/include/valgrind/vki/vki-posixtypes-nanomips-linux.h
 /usr/local/include/valgrind/vki/vki-posixtypes-ppc32-linux.h
 /usr/local/include/valgrind/vki/vki-posixtypes-ppc64-linux.h
+/usr/local/include/valgrind/vki/vki-posixtypes-riscv64-linux.h
 /usr/local/include/valgrind/vki/vki-posixtypes-s390x-linux.h
 /usr/local/include/valgrind/vki/vki-posixtypes-x86-linux.h
 /usr/local/include/valgrind/vki/vki-ppc32-linux.h
 /usr/local/include/valgrind/vki/vki-ppc64-linux.h
+/usr/local/include/valgrind/vki/vki-riscv64-linux.h
 /usr/local/include/valgrind/vki/vki-s390x-linux.h
 /usr/local/include/valgrind/vki/vki-scnums-32bit-linux.h
 /usr/local/include/valgrind/vki/vki-scnums-amd64-linux.h
@@ -116,6 +120,7 @@
 /usr/local/include/valgrind/vki/vki-scnums-nanomips-linux.h
 /usr/local/include/valgrind/vki/vki-scnums-ppc32-linux.h
 /usr/local/include/valgrind/vki/vki-scnums-ppc64-linux.h
+/usr/local/include/valgrind/vki/vki-scnums-riscv64-linux.h
 /usr/local/include/valgrind/vki/vki-scnums-s390x-linux.h
 /usr/local/include/valgrind/vki/vki-scnums-shared-linux.h
 /usr/local/include/valgrind/vki/vki-scnums-solaris.h
@@ -245,6 +250,14 @@
 /usr/local/libexec/valgrind/powerpc-altivec32l.xml
 /usr/local/libexec/valgrind/powerpc-altivec64l-valgrind.xml
 /usr/local/libexec/valgrind/powerpc-altivec64l.xml
+/usr/local/libexec/valgrind/riscv64-cpu-valgrind-s1.xml
+/usr/local/libexec/valgrind/riscv64-cpu-valgrind-s2.xml
+/usr/local/libexec/valgrind/riscv64-cpu.xml
+/usr/local/libexec/valgrind/riscv64-fpu-valgrind-s1.xml
+/usr/local/libexec/valgrind/riscv64-fpu-valgrind-s2.xml
+/usr/local/libexec/valgrind/riscv64-fpu.xml
+/usr/local/libexec/valgrind/riscv64-linux-valgrind.xml
+/usr/local/libexec/valgrind/riscv64-linux.xml
 /usr/local/libexec/valgrind/s390-acr-valgrind-s1.xml
 /usr/local/libexec/valgrind/s390-acr-valgrind-s2.xml
 /usr/local/libexec/valgrind/s390-acr.xml

@@ -17,7 +17,6 @@ class Py3_meson < Pip
   })
 
   depends_on 'ninja'
-  depends_on 'samurai'
   depends_on 'python3'
 
   no_source_build
