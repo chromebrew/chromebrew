@@ -916,7 +916,6 @@ def expand_binaries_and_fix_interpreter_path(dir)
       next unless File.file?(execfiletopatch)
 
       pool.post do
-
         # Decompress the binary if compressed.
         system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL, exception: false
 
