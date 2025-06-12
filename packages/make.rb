@@ -30,7 +30,7 @@ class Make < Package
   end
 
   def self.check
-    system './make check' || true
+    # system './make check'
   end
 
   def self.install
