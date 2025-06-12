@@ -15,12 +15,13 @@ class Sed < Autotools
   binary_sha256({
     aarch64: '132c549c208cb26f1770797b997163003d7d29d1cd234c6351647df201958e96',
      armv7l: '132c549c208cb26f1770797b997163003d7d29d1cd234c6351647df201958e96',
-       i686: '02cae930c6dcfa33bab8e6f1a748c8c40be0ca14dcf66ebd59bb5f1dac89454d',
+       i686: 'd86bfd2d533b0f3f47bbf33f5c9d4a24c3f5fae31db4869a4c967964e0b5b17d',
      x86_64: 'a63c523c7433712c49f82ecddb83dccebf35e2ba6c5784fea7e5ec394e2b520a'
   })
 
   depends_on 'acl' # R
   depends_on 'glibc' # R
+  depends_on 'attr' # R
 
   autotools_configure_options '--without-selinux \
                                --enable-gcc-warnings=no'
