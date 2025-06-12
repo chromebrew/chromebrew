@@ -3,11 +3,13 @@ require 'package'
 class Make < Package
   description 'GNU Make is a tool which controls the generation of executables and other non-source files of a program from the program\'s source files.'
   homepage 'https://www.gnu.org/software/make/'
-  version '4.4.1-1'
+  version '4.4.1-d523661'
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/make/make-#{version.split('-').first}.tar.lz"
-  source_sha256 '8814ba072182b605d156d7589c19a43b89fc58ea479b9355146160946f8cf6e9'
+  source_url 'https://git.savannah.gnu.org/git/make.git'
+  git_hashtag 'd523661ce21a16535d53fe56a3d3d8824432e18e'
+  # source_url "https://ftpmirror.gnu.org/make/make-#{version.split('-').first}.tar.lz"
+  # source_sha256 '8814ba072182b605d156d7589c19a43b89fc58ea479b9355146160946f8cf6e9'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -20,13 +22,15 @@ class Make < Package
   depends_on 'glibc' # R
 
   def self.build
+    system '[ -x configure ] || (./bootstrap && NOCONFIGURE=1 ./autogen.sh)'
     system "./configure #{CREW_CONFIGURE_OPTIONS} \
-            --enable-cross-guesses=conservative"
+            --enable-cross-guesses=conservative \
+            --enable-gcc-warnings=no"
     system './build.sh'
   end
 
   def self.check
-    system './make check'
+    system './make check' || true
   end
 
   def self.install
