@@ -14,8 +14,8 @@ class Diffutils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cf0ff62b56328ae1c00e836a57c3ef0cdff7994ec7bce27e968529e680a415d8',
-     armv7l: 'cf0ff62b56328ae1c00e836a57c3ef0cdff7994ec7bce27e968529e680a415d8',
+    aarch64: '9da51473703a968481adc92c5b43185212ae1ea14ee4b08f6b2fdc1a07af44fa',
+     armv7l: '9da51473703a968481adc92c5b43185212ae1ea14ee4b08f6b2fdc1a07af44fa',
        i686: '1f25f7e7ce041cbbc942b07b262d05aafd525081a4fc7a5875526a6c8235e2ce',
      x86_64: '5bfbb058e3f3ed009066afb381dae0e8c5d7be3f20d9f9d063ad0227f1e62aba'
   })
