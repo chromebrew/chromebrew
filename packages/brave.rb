@@ -4,12 +4,12 @@ require 'convenience_functions'
 class Brave < Package
   description 'Next generation Brave browser for macOS, Windows, Linux, Android.'
   homepage 'https://brave.com/'
-  version '1.79.119'
+  version '1.79.123'
   license 'MPL-2'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://github.com/brave/brave-browser/releases/download/v#{version}/brave-browser-#{version}-linux-amd64.zip"
-  source_sha256 'cd88a61ac4fd2655c079bd3e49556cc497789043d8701350856a752453146fcd'
+  source_sha256 '59e4a73387426b7d8b86332577a33ecd277fc7874581bab22e5afd7addebe279'
 
   no_compile_needed
   no_shrink
