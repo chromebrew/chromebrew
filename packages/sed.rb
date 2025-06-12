@@ -20,7 +20,7 @@ class Sed < Autotools
   })
 
   depends_on 'acl' # R
-  depends_on 'attr'# R
+  depends_on 'attr' # R
   depends_on 'glibc' # R
   depends_on 'wget2' => :build
 
