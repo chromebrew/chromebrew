@@ -3,12 +3,12 @@ require 'package'
 class Signal_desktop < Package
   description 'Private Messenger for Windows, Mac, and Linux'
   homepage 'https://signal.org/'
-  version '7.56.1'
+  version '7.57.0'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://updates.signal.org/desktop/apt/pool/s/signal-desktop/signal-desktop_#{version}_amd64.deb"
-  source_sha256 '370b698f142bb2857ab6714dea311d86c364627a3efbde7f9bc2228cc2ee91ab'
+  source_sha256 '4cc8241d07c4008031ca033adbf2ef6cd99793bfde46d0934160a3d2bdebc477'
 
   no_compile_needed
   no_shrink
@@ -26,11 +26,20 @@ class Signal_desktop < Package
     end
   end
 
+  def self.build
+    File.write 'signal.sh', <<~EOF
+      #!/bin/bash
+      LD_LIBRARY_PATH=#{CREW_PREFIX}/share/Signal:$LD_LIBRARY_PATH
+      #{CREW_PREFIX}/share/Signal/signal-desktop "$@"
+    EOF
+  end
+
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mv 'usr/share', CREW_DEST_PREFIX
     FileUtils.mv 'opt/Signal', "#{CREW_DEST_PREFIX}/share"
-    FileUtils.ln_s "#{CREW_PREFIX}/share/Signal/signal-desktop", "#{CREW_DEST_PREFIX}/bin/signal-desktop"
+    FileUtils.install 'signal.sh', "#{CREW_DEST_PREFIX}/bin/signal-desktop", mode: 0o755
+    # FileUtils.ln_s "#{CREW_PREFIX}/share/Signal/signal-desktop", "#{CREW_DEST_PREFIX}/bin/signal-desktop"
   end
 
   def self.postinstall
