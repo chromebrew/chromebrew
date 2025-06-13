@@ -13,7 +13,7 @@ class Py3_json2xml < Pip
     aarch64: '245c31a5bcdd5acbfa28dad544823a3f9291d52785b9e10de1325a24602485af',
      armv7l: '245c31a5bcdd5acbfa28dad544823a3f9291d52785b9e10de1325a24602485af',
        i686: 'f47c84ccbf88a95a359cc6db0d9e5fcb468a748d9c553e3a36a838e92319450f',
-     x86_64: 'cff13eb2de6bcaec8341485e814043587010073b9fff5cc0bfb28eecf38c4071'
+     x86_64: 'a4714394c11e1cdff8752e66176776f5ad244f7639c6225c7bacdc2d51ba68e9'
   })
 
   depends_on 'py3_dicttoxml'
