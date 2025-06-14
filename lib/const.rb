@@ -12,7 +12,7 @@ crew_const :OLD_CREW_VERSION, CREW_VERSION
 crew_const :KERN_ARCH, Etc.uname[:machine]
 
 # Read and parse processor information from /proc/cpuinfo
-crew_const :CPUINFO, File.readlines('/proc/cpuinfo').map(&->line { line.chomp.split(/\t+: /) if line.include?("\t") }).compact.to_h
+crew_const :CPUINFO, File.readlines('/proc/cpuinfo').map(&->(line) { line.chomp.split(/\t+: /) if line.include?("\t") }).compact.to_h
 
 # We report aarch64 & armv8l machines as armv7l for now, as we treat
 # them as if they were armv7l.
@@ -53,18 +53,20 @@ end
 
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
-crew_const :CREW_ESSENTIAL_PACKAGES, %W[
-    bash crew_profile_base gcc_lib gmp libxcrypt ncurses patchelf readline ruby upx zlib zlib_ng zstd
-    #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
-    #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
-    #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
-         "#{"glibc_lib#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_lib#{LIBC_VERSION.delete('.')}.filelist"))}
-     #{"glibc_build#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist"))}"
-       else
-         File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''
-       end
-    }
-  ].reject!(&:empty?)
+crew_const :CREW_ESSENTIAL_PACKAGES,
+           %W[
+             bash crew_profile_base gcc_lib gmp libxcrypt ncurses patchelf readline ruby upx zlib zlib_ng zstd
+             #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
+             #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
+             #{
+               if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
+                 "#{"glibc_lib#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_lib#{LIBC_VERSION.delete('.')}.filelist"))}
+                  #{"glibc_build#{LIBC_VERSION.delete('.')}" if File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist"))}"
+               else
+                 File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''
+               end
+             }
+           ].reject!(&:empty?)
 
 crew_const :CREW_IN_CONTAINER, (File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false))
 
@@ -82,11 +84,11 @@ end
 
 # Use sane minimal defaults if in container and no override specified.
 crew_const :CREW_KERNEL_VERSION,
-  if CREW_IN_CONTAINER && ENV.fetch('CREW_KERNEL_VERSION', nil).nil?
-    ARCH.eql?('i686') ? '3.8' : '5.10'
-  else
-    ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
-  end
+           if CREW_IN_CONTAINER && ENV.fetch('CREW_KERNEL_VERSION', nil).nil?
+             ARCH.eql?('i686') ? '3.8' : '5.10'
+           else
+             ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
+           end
 
 crew_const :CREW_LIB_PREFIX,       File.join(CREW_PREFIX, ARCH_LIB)
 crew_const :CREW_MAN_PREFIX,       File.join(CREW_PREFIX, 'share/man')
@@ -127,11 +129,11 @@ crew_const :CREW_VERBOSE, ARGV.intersect?(%w[-v --verbose])
 
 # Set CREW_NPROC from environment variable, `distcc -j`, or `nproc`.
 crew_const :CREW_NPROC,
-  if File.file?("#{CREW_PREFIX}/bin/distcc")
-    ENV.fetch('CREW_NPROC', `distcc -j`.chomp)
-  else
-    ENV.fetch('CREW_NPROC', `nproc`.chomp)
-  end
+           if File.file?("#{CREW_PREFIX}/bin/distcc")
+             ENV.fetch('CREW_NPROC', `distcc -j`.chomp)
+           else
+             ENV.fetch('CREW_NPROC', `nproc`.chomp)
+           end
 
 # Set following as boolean if environment variables exist.
 # Timeout for agree questions in package.rb:
@@ -159,12 +161,12 @@ crew_const :CREW_BRANCH, ENV.fetch('CREW_BRANCH', 'master')
 crew_const :USER, Etc.getlogin
 
 crew_const :CHROMEOS_RELEASE,
-  if File.exist?('/etc/lsb-release')
-    File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
-  else
-    # newer version of Chrome OS exports info to env by default
-    ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
-  end
+           if File.exist?('/etc/lsb-release')
+             File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
+           else
+             # newer version of Chrome OS exports info to env by default
+             ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
+           end
 
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
 crew_const :CREW_DISABLE_MVDIR, ENV.fetch('CREW_DISABLE_MVDIR', false)
@@ -187,22 +189,22 @@ crew_const :CREW_HIDE_PROGBAR, ENV.fetch('CREW_HIDE_PROGBAR', false)
 
 # set certificate file location for lib/downloader.rb
 crew_const :SSL_CERT_FILE,
-  if ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
-    ENV['SSL_CERT_FILE']
-  elsif File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
-    "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
-  else
-    '/etc/ssl/certs/ca-certificates.crt'
-  end
+           if ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
+             ENV['SSL_CERT_FILE']
+           elsif File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
+             "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
+           else
+             '/etc/ssl/certs/ca-certificates.crt'
+           end
 
 crew_const :SSL_CERT_DIR,
-  if ENV['SSL_CERT_DIR'] && Dir.exist?(ENV['SSL_CERT_DIR'])
-    ENV['SSL_CERT_DIR']
-  elsif Dir.exist?("#{CREW_PREFIX}/etc/ssl/certs")
-    "#{CREW_PREFIX}/etc/ssl/certs"
-  else
-    '/etc/ssl/certs'
-  end
+           if ENV['SSL_CERT_DIR'] && Dir.exist?(ENV['SSL_CERT_DIR'])
+             ENV['SSL_CERT_DIR']
+           elsif Dir.exist?("#{CREW_PREFIX}/etc/ssl/certs")
+             "#{CREW_PREFIX}/etc/ssl/certs"
+           else
+             '/etc/ssl/certs'
+           end
 
 crew_const :CREW_ARCH_FLAGS_OVERRIDE, ENV.fetch('CREW_ARCH_FLAGS_OVERRIDE', '')
 
@@ -228,18 +230,18 @@ crew_const :CREW_COMMON_FNO_LTO_FLAGS,  "#{CREW_CORE_FLAGS} -fno-lto"
 crew_const :CREW_FNO_LTO_LDFLAGS,       '-fno-lto'
 
 crew_const :CREW_ENV_OPTIONS_HASH,
-  if CREW_DISABLE_ENV_OPTIONS
-    { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
-  else
-    {
-      'CFLAGS'          => CREW_COMMON_FLAGS,
-      'CXXFLAGS'        => CREW_COMMON_FLAGS,
-      'FCFLAGS'         => CREW_COMMON_FLAGS,
-      'FFLAGS'          => CREW_COMMON_FLAGS,
-      'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
-      'LDFLAGS'         => CREW_LINKER_FLAGS
-    }
-  end
+           if CREW_DISABLE_ENV_OPTIONS
+             { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
+           else
+             {
+               'CFLAGS'          => CREW_COMMON_FLAGS,
+               'CXXFLAGS'        => CREW_COMMON_FLAGS,
+               'FCFLAGS'         => CREW_COMMON_FLAGS,
+               'FFLAGS'          => CREW_COMMON_FLAGS,
+               'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+               'LDFLAGS'         => CREW_LINKER_FLAGS
+             }
+           end
 
 # parse from hash to shell readable string
 crew_const :CREW_ENV_OPTIONS, CREW_ENV_OPTIONS_HASH.map(&->(k, v) { "#{k}=\"#{v}\"" }).join(' ')
@@ -327,7 +329,7 @@ crew_const :CREW_LLVM_VER, Kernel.system('which llvm-config', %i[out err] => Fil
 crew_const :CREW_PERL_VER, Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl -MConfig -e "print \\\"\\\$Config{'PERL_API_REVISION'}.\\\$Config{'PERL_API_VERSION'}\\\";"`}" : 'perl5.40'
 crew_const :CREW_PY_VER, Kernel.system("#{CREW_PREFIX}/bin/python3 --version", %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : 'py3.13'
 crew_const :CREW_RUBY_VER, "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}"
-crew_const :CREW_VALID_BUILDSYSTEMS, Dir.glob("#{CREW_LIB_PATH}/lib/buildsystems/*.rb").map(&->file { File.foreach(file, encoding: Encoding::UTF_8).grep(/^class/).to_s.split[1] }).sort
+crew_const :CREW_VALID_BUILDSYSTEMS, Dir.glob("#{CREW_LIB_PATH}/lib/buildsystems/*.rb").map(&->(file) { File.foreach(file, encoding: Encoding::UTF_8).grep(/^class/).to_s.split[1] }).sort
 
 crew_const :CREW_LICENSE, <<~LICENSESTRING
   Copyright (C) 2013-2025 Chromebrew Authors
