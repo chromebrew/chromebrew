@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_xlrd < Pip
   description 'XLRD is a library to extract data from Microsoft Excel (tm) spreadsheet files.'
   homepage 'https://xlrd.readthedocs.io/'
-  version "2.0.1-#{CREW_PY_VER}"
+  version "2.0.2-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
