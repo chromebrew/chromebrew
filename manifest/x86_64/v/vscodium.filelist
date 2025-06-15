@@ -208,8 +208,12 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/github-authentication/package.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/github-authentication/package.nls.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/github/README.md
+/usr/local/VSCodium-linux-x64/resources/app/extensions/github/dist/430.js
+/usr/local/VSCodium-linux-x64/resources/app/extensions/github/dist/555.js
+/usr/local/VSCodium-linux-x64/resources/app/extensions/github/dist/698.js
 /usr/local/VSCodium-linux-x64/resources/app/extensions/github/dist/extension.js
 /usr/local/VSCodium-linux-x64/resources/app/extensions/github/dist/extension.js.LICENSE.txt
+/usr/local/VSCodium-linux-x64/resources/app/extensions/github/extension.webpack.config.cjs
 /usr/local/VSCodium-linux-x64/resources/app/extensions/github/images/icon.png
 /usr/local/VSCodium-linux-x64/resources/app/extensions/github/markdown.css
 /usr/local/VSCodium-linux-x64/resources/app/extensions/github/package.json
@@ -680,6 +684,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/prompt-basics/language-configuration.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/prompt-basics/package.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/prompt-basics/package.nls.json
+/usr/local/VSCodium-linux-x64/resources/app/extensions/prompt-basics/snippets/chatmode.code-snippets
 /usr/local/VSCodium-linux-x64/resources/app/extensions/prompt-basics/snippets/instructions.code-snippets
 /usr/local/VSCodium-linux-x64/resources/app/extensions/prompt-basics/snippets/prompt.code-snippets
 /usr/local/VSCodium-linux-x64/resources/app/extensions/prompt-basics/syntaxes/prompt.tmLanguage.json
@@ -1837,8 +1842,8 @@
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/dispatcher/dispatcher.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/dispatcher/env-http-proxy-agent.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/dispatcher/fixed-queue.js
+/usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/dispatcher/h2c-client.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/dispatcher/pool-base.js
-/usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/dispatcher/pool-stats.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/dispatcher/pool.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/dispatcher/proxy-agent.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/dispatcher/retry-agent.js
@@ -1861,6 +1866,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/llhttp/llhttp_simd-wasm.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/llhttp/utils.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/mock/mock-agent.js
+/usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/mock/mock-call-history.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/mock/mock-client.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/mock/mock-errors.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/mock/mock-interceptor.js
@@ -1870,6 +1876,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/mock/pending-interceptors-formatter.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/util/cache.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/util/date.js
+/usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/util/stats.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/util/timers.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/web/cache/cache.js
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/undici/lib/web/cache/cachestorage.js
@@ -2026,6 +2033,8 @@
 /usr/local/VSCodium-linux-x64/resources/app/out/main.js
 /usr/local/VSCodium-linux-x64/resources/app/out/media/code-icon.svg
 /usr/local/VSCodium-linux-x64/resources/app/out/media/codicon.ttf
+/usr/local/VSCodium-linux-x64/resources/app/out/media/github.svg
+/usr/local/VSCodium-linux-x64/resources/app/out/media/google.svg
 /usr/local/VSCodium-linux-x64/resources/app/out/media/letterpress-dark.svg
 /usr/local/VSCodium-linux-x64/resources/app/out/media/letterpress-hcDark.svg
 /usr/local/VSCodium-linux-x64/resources/app/out/media/letterpress-hcLight.svg
@@ -2041,10 +2050,6 @@
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/base/node/terminateProcess.sh
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/base/parts/sandbox/electron-sandbox/preload-aux.js
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/base/parts/sandbox/electron-sandbox/preload.js
-/usr/local/VSCodium-linux-x64/resources/app/out/vs/code/electron-sandbox/processExplorer/processExplorer.html
-/usr/local/VSCodium-linux-x64/resources/app/out/vs/code/electron-sandbox/processExplorer/processExplorer.js
-/usr/local/VSCodium-linux-x64/resources/app/out/vs/code/electron-sandbox/processExplorer/processExplorerMain.css
-/usr/local/VSCodium-linux-x64/resources/app/out/vs/code/electron-sandbox/processExplorer/processExplorerMain.js
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/code/electron-sandbox/workbench/workbench.js
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js
@@ -2057,7 +2062,10 @@
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/editor/common/services/editorWebWorkerMain.js
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/break.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/chatEditModifiedFile.mp3
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/chatUserActionRequired.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/clear.mp3
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/codeActionApplied.mp3
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/codeActionTriggered.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/diffLineDeleted.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/diffLineInserted.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/diffLineModified.mp3
@@ -2113,11 +2121,11 @@
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration.fish
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration.ps1
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/webview/browser/pre/fake.html
-/usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/webview/browser/pre/index-no-csp.html
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/webview/browser/pre/index.html
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/webview/browser/pre/service-worker.js
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/ai-powered-suggestions.svg
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/commandPalette.svg
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/customize-ai.svg
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/dark-hc.png
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/dark.png
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/debug.svg
@@ -2142,7 +2150,6 @@
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/shortcuts.svg
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/terminal.svg
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/workspaceTrust.svg
-/usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/services/extensionManagement/common/media/defaultIcon.png
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/services/extensions/worker/webWorkerExtensionHostIframe.html
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/services/languageDetection/browser/languageDetectionWebWorkerMain.js
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/services/search/worker/localFileSearchMain.js
