@@ -3,7 +3,7 @@ require 'package'
 class Act < Package
   description 'Run your GitHub Actions locally'
   homepage 'https://github.com/nektos/act'
-  version '0.2.77'
+  version '0.2.78'
   license 'MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Act < Package
      x86_64: "https://github.com/nektos/act/releases/download/v#{version}/act_Linux_x86_64.tar.gz"
   })
   source_sha256({
-    aarch64: '9258c694a4de282c7167352b4fc7d38a03b2665e8da34584895104ba255d22e6',
-     armv7l: '9258c694a4de282c7167352b4fc7d38a03b2665e8da34584895104ba255d22e6',
-       i686: 'ed93b9e2eda9e31e6471da4bc77ad339d9a38a5efedf723e0ae470ac8f538ed7',
-     x86_64: 'be48669e49cfed33d36f4c34c4fce2722c8261a47b174d66cee751a219e75d8e'
+    aarch64: '03edf055f000acb6cbc6695a1408e3ae7a56f5e5373cc00277a559e168eb1bac',
+     armv7l: '03edf055f000acb6cbc6695a1408e3ae7a56f5e5373cc00277a559e168eb1bac',
+       i686: '5e2d35c411a43dfc0f1969a229ffccfebf2b21e4cb1328b4c8df6600698b1b97',
+     x86_64: '7e90d7b1d61aa518e32f348d456fa690a06a5170aa59b18b8da507e3029c9845'
   })
 
   no_compile_needed

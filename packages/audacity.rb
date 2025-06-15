@@ -3,12 +3,12 @@ require 'package'
 class Audacity < Package
   description "Audacity is the world's most popular audio editing and recording app"
   homepage 'https://www.audacityteam.org/'
-  version '3.7.3'
+  version '3.7.4'
   license 'GPL-3'
   compatibility 'x86_64'
   min_glibc '2.30'
   source_url "https://github.com/audacity/audacity/releases/download/Audacity-#{version}/audacity-linux-#{version}-x64-22.04.AppImage"
-  source_sha256 '4e7600c3d9f09dca52c7171cc0bfe76abb168436143cd02ecfa3052ab9f7aaa1'
+  source_sha256 '378b25113a243e3c1e4207989444174796fbbd9c2e6fa673ed59213a2882a386'
 
   depends_on 'gtk3'
   depends_on 'libthai'
