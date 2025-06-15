@@ -6,7 +6,6 @@ require 'open3'
 def crew_const(const_name, default_value = nil) = (Object.const_set(const_name, default_value) unless Object.const_defined?(const_name))
 
 crew_const :CREW_VERSION, '1.61.10'
-crew_const :OLD_CREW_VERSION, CREW_VERSION
 
 # Kernel architecture.
 crew_const :KERN_ARCH, Etc.uname[:machine]
