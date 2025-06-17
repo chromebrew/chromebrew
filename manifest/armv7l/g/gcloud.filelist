@@ -1507,14 +1507,6 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/anthos/config/controller/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/anthos/config/controller/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/anthos/config/controller/utils.py
-/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/anthos/config/sync/__init__.py
-/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/anthos/config/sync/common/__init__.py
-/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/anthos/config/sync/common/exceptions.py
-/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/anthos/config/sync/common/utils.py
-/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/anthos/config/sync/repo/__init__.py
-/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/anthos/config/sync/repo/status.py
-/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/anthos/config/sync/resources/__init__.py
-/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/anthos/config/sync/resources/list.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/anthos/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/api_gateway/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/api_gateway/common_flags.py
@@ -3133,6 +3125,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/posture_deployments/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/posture_templates/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/posture_templates/flags.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/postures/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/postures/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/remediation_intents/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/remediation_intents/errors.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/scc/remediation_intents/flags.py
@@ -3237,6 +3231,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/iam_command_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/insights/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/insights/dataset_configs/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/insights/dataset_configs/create_update_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/insights/dataset_configs/log_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/insights/dataset_configs/resource_args.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/insights/inventory_reports/__init__.py
@@ -3508,6 +3503,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/zone_management/service_account/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/zone_management/service_account/hooks.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/zone_management/service_account/resources.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/zone_management/zone/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/core/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/core/__pycache__/__init__.cpython-313.pyc
 /usr/local/share/gcloud/lib/googlecloudsdk/core/__pycache__/argv_utils.cpython-313.pyc
@@ -5574,6 +5570,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1/services/prediction_service/transports/rest.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1/types/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1/types/api_auth.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1/types/auth.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1/types/content.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1/types/explanation.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1/types/explanation_metadata.py
@@ -5582,6 +5579,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1/types/prediction_service.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1/types/tool.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1/types/types.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1/types/vertex_rag_data.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1beta1/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1beta1/gapic_metadata.json
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1beta1/gapic_version.py
@@ -7144,12 +7142,6 @@
 /usr/local/share/gcloud/lib/surface/anthos/config/operations/__init__.py
 /usr/local/share/gcloud/lib/surface/anthos/config/operations/describe.yaml
 /usr/local/share/gcloud/lib/surface/anthos/config/operations/list.yaml
-/usr/local/share/gcloud/lib/surface/anthos/config/sync/__init__.py
-/usr/local/share/gcloud/lib/surface/anthos/config/sync/repo/__init__.py
-/usr/local/share/gcloud/lib/surface/anthos/config/sync/repo/describe.py
-/usr/local/share/gcloud/lib/surface/anthos/config/sync/repo/list.py
-/usr/local/share/gcloud/lib/surface/anthos/config/sync/resources/__init__.py
-/usr/local/share/gcloud/lib/surface/anthos/config/sync/resources/list.py
 /usr/local/share/gcloud/lib/surface/anthos/create_login_config.py
 /usr/local/share/gcloud/lib/surface/anthos/export.py
 /usr/local/share/gcloud/lib/surface/anthos/packages/__init__.py
@@ -9709,8 +9701,10 @@
 /usr/local/share/gcloud/lib/surface/container/fleet/rollouts/resume.py
 /usr/local/share/gcloud/lib/surface/container/fleet/rolloutsequences/__init__.py
 /usr/local/share/gcloud/lib/surface/container/fleet/rolloutsequences/create.py
+/usr/local/share/gcloud/lib/surface/container/fleet/rolloutsequences/delete.py
 /usr/local/share/gcloud/lib/surface/container/fleet/rolloutsequences/describe.py
 /usr/local/share/gcloud/lib/surface/container/fleet/rolloutsequences/list.py
+/usr/local/share/gcloud/lib/surface/container/fleet/rolloutsequences/update.py
 /usr/local/share/gcloud/lib/surface/container/fleet/scopes/__init__.py
 /usr/local/share/gcloud/lib/surface/container/fleet/scopes/add_app_operator_binding.py
 /usr/local/share/gcloud/lib/surface/container/fleet/scopes/add_iam_policy_binding.yaml
@@ -13993,6 +13987,8 @@
 /usr/local/share/gcloud/lib/surface/resource_manager/tags/values/set_iam_policy.py
 /usr/local/share/gcloud/lib/surface/resource_manager/tags/values/update.py
 /usr/local/share/gcloud/lib/surface/run/__init__.py
+/usr/local/share/gcloud/lib/surface/run/compose/__init__.py
+/usr/local/share/gcloud/lib/surface/run/compose/up.py
 /usr/local/share/gcloud/lib/surface/run/configurations/__init__.py
 /usr/local/share/gcloud/lib/surface/run/configurations/describe.py
 /usr/local/share/gcloud/lib/surface/run/configurations/list.py
@@ -14072,7 +14068,6 @@
 /usr/local/share/gcloud/lib/surface/run/services/set_iam_policy.yaml
 /usr/local/share/gcloud/lib/surface/run/services/update.py
 /usr/local/share/gcloud/lib/surface/run/services/update_traffic.py
-/usr/local/share/gcloud/lib/surface/run/up.py
 /usr/local/share/gcloud/lib/surface/run/worker_pools/__init__.py
 /usr/local/share/gcloud/lib/surface/run/worker_pools/delete.py
 /usr/local/share/gcloud/lib/surface/run/worker_pools/deploy.py
@@ -14305,7 +14300,7 @@
 /usr/local/share/gcloud/lib/surface/scc/postures/delete.yaml
 /usr/local/share/gcloud/lib/surface/scc/postures/describe.yaml
 /usr/local/share/gcloud/lib/surface/scc/postures/extract.yaml
-/usr/local/share/gcloud/lib/surface/scc/postures/list.yaml
+/usr/local/share/gcloud/lib/surface/scc/postures/list.py
 /usr/local/share/gcloud/lib/surface/scc/postures/list_revisions.yaml
 /usr/local/share/gcloud/lib/surface/scc/postures/update.yaml
 /usr/local/share/gcloud/lib/surface/scc/remediation_intents/__init__.py
@@ -15252,6 +15247,10 @@
 /usr/local/share/gcloud/lib/surface/zone_management/service_account/keys/__init__.py
 /usr/local/share/gcloud/lib/surface/zone_management/service_account/keys/create.yaml
 /usr/local/share/gcloud/lib/surface/zone_management/service_account/list.yaml
+/usr/local/share/gcloud/lib/surface/zone_management/zone/__init__.py
+/usr/local/share/gcloud/lib/surface/zone_management/zone/describe.yaml
+/usr/local/share/gcloud/lib/surface/zone_management/zone/get_iam_policy.yaml
+/usr/local/share/gcloud/lib/surface/zone_management/zone/list.yaml
 /usr/local/share/gcloud/lib/third_party/antlr3/LICENSE
 /usr/local/share/gcloud/lib/third_party/antlr3/__init__.py
 /usr/local/share/gcloud/lib/third_party/antlr3/compat.py
