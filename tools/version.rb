@@ -12,6 +12,7 @@ end
 require 'json'
 require 'net/http'
 require 'ruby_libversion'
+require 'uri/http'
 
 # Add >LOCAL< lib to LOAD_PATH
 $LOAD_PATH.unshift '../lib'
@@ -20,7 +21,19 @@ require_relative '../lib/color'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
 
-def get_version(name, homepage)
+def get_version(name, homepage, source)
+  # Determine if the source is a GitHub repository.
+  unless source.nil?
+    source.sub!('www.', '')
+    url = URI.parse(source)
+    if url.host == 'github.com'
+      url_parts = url.path.split('/')
+      unless url_parts.count < 3
+        repo = "#{url_parts[1]}/#{url_parts[2]}"
+        return `curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .name -r`
+      end
+    end
+  end
   anitya_id = get_anitya_id(name, homepage)
   # If we weren't able to get an Anitya ID, return early here to save time and headaches
   return if anitya_id.nil?
@@ -127,7 +140,7 @@ if filelist.length.positive?
     end
 
     # Get the upstream version.
-    upstream_version = get_version(pkg.name.tr('_', '-'), pkg.homepage)
+    upstream_version = get_version(pkg.name.tr('_', '-'), pkg.homepage, pkg.source_url)
     # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
     if upstream_version.nil?
       puts pkg.name.ljust(35) + 'notfound'.lightred if verbose
