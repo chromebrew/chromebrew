@@ -16,4 +16,5 @@ class Libxtrans < Autotools
        i686: '18c80adc947824ea4222f53d4790e1d01fb747c3c4086211c8902ef79d6d6f3b',
      x86_64: '860a1fa44f884f453c4de4cf40d0ad1ebb27c34421e2c66545ece78c6419535b'
   })
+
 end

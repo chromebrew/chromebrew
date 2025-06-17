@@ -13,7 +13,7 @@ class Xorg_server < Package
   binary_sha256({
     aarch64: '09c2ecbe391a6d40b3f120024e5b5c4ec396ad86680c759f6cdfe9c0a730374a',
      armv7l: '09c2ecbe391a6d40b3f120024e5b5c4ec396ad86680c759f6cdfe9c0a730374a',
-     x86_64: 'b86b5ebcb1fff6c2c2167a85374271f88c04b73bd5d6036abdc2976466a43e55'
+     x86_64: '8bcc211cac01df61840dc5817ab23f0fbaf7a29e6fcd96d167c8a5f94a8f6d7f'
   })
 
   depends_on 'dbus' # R
