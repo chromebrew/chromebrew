@@ -68,6 +68,7 @@
 /usr/local/libexec/git-core/mergetools/winmerge
 /usr/local/libexec/git-core/mergetools/xxdiff
 /usr/local/libexec/git-core/scalar
+/usr/local/share/bash-completion/completions/git
 /usr/local/share/git-completion/.gitattributes
 /usr/local/share/git-completion/git-completion.bash
 /usr/local/share/git-completion/git-completion.tcsh
@@ -151,6 +152,7 @@
 /usr/local/share/man/man1/git-diagnose.1.zst
 /usr/local/share/man/man1/git-diff-files.1.zst
 /usr/local/share/man/man1/git-diff-index.1.zst
+/usr/local/share/man/man1/git-diff-pairs.1.zst
 /usr/local/share/man/man1/git-diff-tree.1.zst
 /usr/local/share/man/man1/git-diff.1.zst
 /usr/local/share/man/man1/git-difftool.1.zst
@@ -322,8 +324,8 @@
 /usr/local/share/perl5/Git/SVN/Fetcher.pm
 /usr/local/share/perl5/Git/SVN/GlobSpec.pm
 /usr/local/share/perl5/Git/SVN/Log.pm
+/usr/local/share/perl5/Git/SVN/Memoize/YAML.pm
 /usr/local/share/perl5/Git/SVN/Migration.pm
 /usr/local/share/perl5/Git/SVN/Prompt.pm
 /usr/local/share/perl5/Git/SVN/Ra.pm
 /usr/local/share/perl5/Git/SVN/Utils.pm
-/usr/local/share/perl5/Git/SVN/YAML.pm
