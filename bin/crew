@@ -1024,7 +1024,7 @@ def install_package(pkgdir)
 
     unless CREW_NOT_LINKS || @pkg.no_links?
       Find.find(Dir.pwd) do |path|
-        next unless File.symlink?(path)
+        next unless File.file?(path) && File.symlink?(path)
         begin
           File.stat(path)
         rescue Errno::ENOENT, Errno::ELOOP
