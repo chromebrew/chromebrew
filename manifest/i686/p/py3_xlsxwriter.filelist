@@ -1,12 +1,12 @@
 /usr/local/bin/__pycache__/vba_extract.cpython-313.pyc
 /usr/local/bin/vba_extract.py
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/XlsxWriter-3.2.3.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.5.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.5.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.5.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.5.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.5.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.5.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.5.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__init__.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/app.cpython-313.pyc
@@ -21,6 +21,7 @@
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/chart_scatter.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/chart_stock.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/chartsheet.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/color.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/comments.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/contenttypes.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/core.cpython-313.pyc
@@ -60,6 +61,7 @@
 /usr/local/lib/python3.13/site-packages/xlsxwriter/chart_scatter.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/chart_stock.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/chartsheet.py
+/usr/local/lib/python3.13/site-packages/xlsxwriter/color.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/comments.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/contenttypes.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/core.py
