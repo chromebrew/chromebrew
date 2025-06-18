@@ -70,7 +70,7 @@ def downloader(url, sha256sum, filename = File.basename(url), verbose: false)
       puts "Updating checksum for #{filename}".lightblue
       puts "from #{sha256sum} to #{calc_sha256sum}".lightblue
       puts "in #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb .".lightblue
-      system "sed -i 's/#{sha256sum}/#{calc_sha256sum}/' #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb"
+      system "sed 's/#{sha256sum}/#{calc_sha256sum}/g;w #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb' #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb"
     else
       FileUtils.rm_f filename
 

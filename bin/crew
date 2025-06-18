@@ -1024,7 +1024,11 @@ def install_package(pkgdir)
 
     unless CREW_NOT_LINKS || @pkg.no_links?
       Find.find(Dir.pwd) do |path|
-        next unless File.symlink?(path)
+        begin
+          next unless File.symlink?(path)
+        rescue Errno::ENOENT
+          next
+        end
         begin
           File.stat(path)
         rescue Errno::ENOENT, Errno::ELOOP
@@ -1034,7 +1038,7 @@ def install_package(pkgdir)
           fixedlink_loc = File.join(pkgdir, path.delete_prefix('.'))
           # If no changes were made, don't replace symlink
           unless fixedtarget == brokentarget
-            FileUtils.ln_sf fixedtarget, fixedlink_loc
+            FileUtils.ln_sf fixedtarget, fixedlink_loc if File.file?(fixedlink_loc)
             puts "Fixed: #{fixedtarget} -> #{path.delete_prefix('.')}".orange if CREW_VERBOSE
           end
         end
