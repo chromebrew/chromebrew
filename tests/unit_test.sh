@@ -3,7 +3,7 @@
 # Version 1.4
 set -e
 cd /usr/local/lib/crew/packages/
-crew update && yes | cree upgrade
+CREW_BRANCH="${CREE_BRANCH}" crew update && yes | cree upgrade
 git clone --depth=1 --branch="$CREW_BRANCH" "$CREW_REPO" ~/build_test
 # Check if rubocop-chromebrew is installed and working, and if not install it.
 rubocop --require rubocop-chromebrew &>/dev/null || gem install rubocop-chromebrew
