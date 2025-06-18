@@ -1038,7 +1038,7 @@ def install_package(pkgdir)
           fixedlink_loc = File.join(pkgdir, path.delete_prefix('.'))
           # If no changes were made, don't replace symlink
           unless fixedtarget == brokentarget
-            FileUtils.ln_sf fixedtarget, fixedlink_loc
+            FileUtils.ln_sf fixedtarget, fixedlink_loc if File.file?(fixedlink_loc)
             puts "Fixed: #{fixedtarget} -> #{path.delete_prefix('.')}".orange if CREW_VERBOSE
           end
         end
