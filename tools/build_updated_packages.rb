@@ -65,7 +65,7 @@ def self.check_build_uploads(architectures_to_check = nil, name = nil)
         unless @remote_hash == binary_sha256_hash[arch.to_sym]
           puts "#{arch}/#{name}: Adjusting sha256sum in package file to the remote binary sha256sum".lightpurple
           puts "#{binary_sha256_hash[arch.to_sym]} =>\n#{@remote_hash}".blue
-          system "sed 's,#{binary_sha256_hash[arch.to_sym]},#{@remote_hash},g;w packages/#{name}.rb.new' packages/#{name}.rb && mv packages/#{name}.rb.new packages/#{name}.rb"
+          system "sed 's,#{binary_sha256_hash[arch.to_sym]},#{@remote_hash},g;w packages/#{name}.rb' packages/#{name}.rb"
           # Do a force install to make sure the package hashes are ok.
           puts "Checking install of #{name} to confirm binary hashes are correct.".lightpurple
           system "yes | crew install -f #{name} ; crew remove #{name}", exception: false
