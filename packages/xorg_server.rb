@@ -11,8 +11,8 @@ class Xorg_server < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8a008bef4e1832e8f55b2ec81b861a841bae52744b98b392565af8e22951f0e3',
-     armv7l: '8a008bef4e1832e8f55b2ec81b861a841bae52744b98b392565af8e22951f0e3',
+    aarch64: '53eb71e6c32c6e758e4df4c93a5ddb40156b3f8d95684cca4e22bdd0125441c4',
+     armv7l: '53eb71e6c32c6e758e4df4c93a5ddb40156b3f8d95684cca4e22bdd0125441c4',
      x86_64: '09a4eead337d03fa6bda48a1aec8a20cf6ecdc451bf14e7766aeb246b5f5359e'
   })
 
