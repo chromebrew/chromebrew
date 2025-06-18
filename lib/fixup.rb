@@ -92,7 +92,7 @@ def refresh_crew_json
 end
 
 # Rename the binary_sha256 variable to sha256 in the device.json file
-system(" sed -i 's/binary_sha256/sha256/g' #{File.join(CREW_CONFIG_PATH, 'device.json')}")
+system("sed -i 's/binary_sha256/sha256/g' #{File.join(CREW_CONFIG_PATH, 'device.json')}")
 
 # Check for renamed and deprecated packages, and handle them.
 
