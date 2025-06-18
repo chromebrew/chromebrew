@@ -11,8 +11,8 @@ class Xorg_server < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '09c2ecbe391a6d40b3f120024e5b5c4ec396ad86680c759f6cdfe9c0a730374a',
-     armv7l: '09c2ecbe391a6d40b3f120024e5b5c4ec396ad86680c759f6cdfe9c0a730374a',
+    aarch64: '8a008bef4e1832e8f55b2ec81b861a841bae52744b98b392565af8e22951f0e3',
+     armv7l: '8a008bef4e1832e8f55b2ec81b861a841bae52744b98b392565af8e22951f0e3',
      x86_64: '8bcc211cac01df61840dc5817ab23f0fbaf7a29e6fcd96d167c8a5f94a8f6d7f'
   })
 
@@ -55,6 +55,7 @@ class Xorg_server < Package
   depends_on 'xcb_util_xrm' => :build
   depends_on 'xkbcomp' => :build
   depends_on 'xorg_proto' => :build
+  depends_on 'gcc_lib' # R
 
   def self.build
     system 'meson setup build'

@@ -11,8 +11,8 @@ class Libwacom < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f7c3aa3b6f959b942e83ac4906ec57e70d1af52db9d9896684a3be2451353f65',
-     armv7l: 'f7c3aa3b6f959b942e83ac4906ec57e70d1af52db9d9896684a3be2451353f65',
+    aarch64: '30d4606dd3fe8a983451479a6094daea97f26df503b7d106dca57ac7c67e9670',
+     armv7l: '30d4606dd3fe8a983451479a6094daea97f26df503b7d106dca57ac7c67e9670',
      x86_64: 'be1cfb9fa6642b601c0de5526a24098be60150071459357d2f69f9f27d62cdd8'
   })
 
