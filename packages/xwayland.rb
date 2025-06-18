@@ -13,7 +13,7 @@ class Xwayland < Meson
   binary_sha256({
     aarch64: '4c30a3ed6b09f07aa6c0b6cbba84fb74e46fd70c266f98f83526233da50a49ab',
      armv7l: '4c30a3ed6b09f07aa6c0b6cbba84fb74e46fd70c266f98f83526233da50a49ab',
-     x86_64: '581df932a21ab099159f8d96ed7a0256f2ba637b8499beff6ef8682c7179f134'
+     x86_64: '442edf9b648385e0ea95fa4fc9b8af8366166290bef98ad3645615d31666a3d5'
   })
 
   no_env_options
