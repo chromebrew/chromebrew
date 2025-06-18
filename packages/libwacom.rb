@@ -16,14 +16,14 @@ class Libwacom < Meson
      x86_64: 'be1cfb9fa6642b601c0de5526a24098be60150071459357d2f69f9f27d62cdd8'
   })
 
-  depends_on 'libgudev'
   depends_on 'eudev'
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'libevdev'
+  depends_on 'libgudev'
   depends_on 'py3_libevdev' => :build
   depends_on 'py3_pyudev' => :build
   depends_on 'py3_pytest' => :build
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
 
   meson_options '-Dtests=disabled'
 end

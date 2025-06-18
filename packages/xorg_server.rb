@@ -19,6 +19,7 @@ class Xorg_server < Package
   depends_on 'dbus' # R
   depends_on 'eudev' # R
   depends_on 'font_util' => :build
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glproto' => :build
   depends_on 'graphite' => :build
@@ -55,7 +56,6 @@ class Xorg_server < Package
   depends_on 'xcb_util_xrm' => :build
   depends_on 'xkbcomp' => :build
   depends_on 'xorg_proto' => :build
-  depends_on 'gcc_lib' # R
 
   def self.build
     system 'meson setup build'
