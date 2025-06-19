@@ -31,7 +31,7 @@ class Alacritty < Package
   depends_on 'libxi' # R
 
   def self.build
-    system 'CARGO_INCREMENTAL=0 cargo build --release --locked --offline'
+    system 'CARGO_INCREMENTAL=0 cargo build --release'
   end
 
   def self.install
