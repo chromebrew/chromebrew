@@ -11,8 +11,8 @@ class Libbluray < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bf82630d544040492dd6d8d9f835ef448c6cce5752a50958b564bc17517fec60',
-     armv7l: 'bf82630d544040492dd6d8d9f835ef448c6cce5752a50958b564bc17517fec60',
+    aarch64: '2ae9b67b2fc6cd26b746ae16db7c89e9c9a19d62bbca5d2272d45f7421e69efa',
+     armv7l: '2ae9b67b2fc6cd26b746ae16db7c89e9c9a19d62bbca5d2272d45f7421e69efa',
      x86_64: '81a94d49a7c2b8665ce44448e335fada6d55705bbd661d06c6e53cdc9c777521'
   })
 
