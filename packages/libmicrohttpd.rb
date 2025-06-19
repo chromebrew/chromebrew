@@ -14,7 +14,7 @@ class Libmicrohttpd < Autotools
     aarch64: 'b2623ef36b1587c1d3e6f7821d4d9d016b7cadbaf6a0442fd0f055dd69338925',
      armv7l: 'b2623ef36b1587c1d3e6f7821d4d9d016b7cadbaf6a0442fd0f055dd69338925',
        i686: '0f3b8b82cf4f9707c877f2ca7758a5ad148c6ba24b892fb2a26276f3cc4d62bc',
-     x86_64: 'f8dbc8399732197b0152fda7114ae969627b3ae4501f1d20b67669d892d58f8d'
+     x86_64: '2f817d93c17190c753485e35df89b1f23da6c3b10c57e21610b13ff7a84ccdda'
   })
 
   depends_on 'diffutils' => :build
