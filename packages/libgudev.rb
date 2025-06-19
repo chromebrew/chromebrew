@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libgudev < Meson
   description 'libgudev is a library with GObject bindings to libudev'
   homepage 'https://wiki.gnome.org/Projects/libgudev'
-  version '238'
+  version '238-1'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libgudev.git'
