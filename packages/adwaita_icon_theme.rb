@@ -13,7 +13,7 @@ class Adwaita_icon_theme < Meson
   binary_sha256({
     aarch64: '7ad5018eaf68dede90ca78ffb5786f485e72972c94747f8707eb8190797889fb',
      armv7l: '7ad5018eaf68dede90ca78ffb5786f485e72972c94747f8707eb8190797889fb',
-     x86_64: '5af82be31402e1d9d14492b57a6616dc0f7abbbf028127d52f138cce4aa8d2c6'
+     x86_64: 'a1a77e319c1e926ca233d83a52a3643df3a45f2523429f25c3674573eddc8edf'
   })
 
   depends_on 'adwaita_fonts' # L
