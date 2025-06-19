@@ -11,8 +11,8 @@ class Acpi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '86f608f45ef9c7d423f26f4b1a268e7b995061e1ecb613bf3fbca2d9c7bf5665',
-     armv7l: '86f608f45ef9c7d423f26f4b1a268e7b995061e1ecb613bf3fbca2d9c7bf5665',
+    aarch64: '99eb587850a3cbaa8029fb4a6562013d7e9b2e25aa83952c57f7685f06b7f7ff',
+     armv7l: '99eb587850a3cbaa8029fb4a6562013d7e9b2e25aa83952c57f7685f06b7f7ff',
        i686: 'fc511f646db0b0ed8f553dae69a3176bb48ddf30f434faed31be8def9078b13b',
      x86_64: '18af9268c928bf8a50711cdc8dee48c8d6271de65a5c5a963eb616acba7255c0'
   })
