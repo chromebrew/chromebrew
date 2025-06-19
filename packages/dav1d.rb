@@ -14,7 +14,7 @@ class Dav1d < Meson
     aarch64: '2ad333d174a10229b8d5eadf73c82acade4604fa190aa6a181badaefb3bd11e4',
      armv7l: '2ad333d174a10229b8d5eadf73c82acade4604fa190aa6a181badaefb3bd11e4',
        i686: '3dd275bb7679a8e7b28f5128a3416183eb8b6f9ed803ee531dc81a8449f72e36',
-     x86_64: '7004189fafe7b555354243db1b733ffa622d802b8f0d78764ec991a1e6f417a0'
+     x86_64: 'd2d993678e20e9954133255107a0dd2ccc40f53029cba8b4ffcf5cbd54fdb448'
   })
 
   depends_on 'gcc_lib' # R
