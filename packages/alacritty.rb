@@ -16,7 +16,7 @@ class Alacritty < Package
   binary_sha256({
     aarch64: '24f808cdec4ef1a520d7b2526f3359324900656e4bea5b9fee9c77efc6e9ef63',
      armv7l: '24f808cdec4ef1a520d7b2526f3359324900656e4bea5b9fee9c77efc6e9ef63',
-     x86_64: 'dd593610cbc27b8b1cece7dca3b73bb1194ae4b04a215eef85a229354fb6c62f'
+     x86_64: 'd6db5d3bebc9807b2b8dc476ca83668c92f3e4d6e6d0f8734d2c5e55e84dddc2'
   })
 
   depends_on 'fontconfig'
