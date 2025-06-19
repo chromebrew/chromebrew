@@ -16,7 +16,7 @@ class Libbluray < Autotools
      x86_64: '06216dc7ac94c9cc1d4e86b67a8502e1550a0daf66865b24593c578d0e38435a'
   })
 
-  depends_on 'ant'
+  depends_on 'ant' => :build
   depends_on 'fontconfig'
   depends_on 'freetype'
   depends_on 'glibc' # R
