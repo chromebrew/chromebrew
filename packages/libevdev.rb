@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libevdev < Package
+class Libevdev < Meson
   description 'libevdev is a wrapper library for evdev devices.'
   homepage 'https://www.freedesktop.org/wiki/Software/libevdev/'
-  version '1.12.1'
+  version '1.13.4'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.freedesktop.org/software/libevdev/libevdev-1.12.1.tar.xz'
-  source_sha256 '1dbba41bc516d3ca7abc0da5b862efe3ea8a7018fa6e9b97ce9d39401b22426c'
+  source_url "https://www.freedesktop.org/software/libevdev/libevdev-#{version}.tar.xz"
+  source_sha256 'f00ab8d42ad8b905296fab67e13b871f1a424839331516642100f82ad88127cd'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -20,15 +20,4 @@ class Libevdev < Package
   depends_on 'check' => :build
   depends_on 'doxygen' => :build
   depends_on 'python3' => :build
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
 end
