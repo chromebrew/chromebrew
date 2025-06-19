@@ -25,6 +25,7 @@
 /usr/local/include/nettle/curve25519.h
 /usr/local/include/nettle/curve448.h
 /usr/local/include/nettle/des.h
+/usr/local/include/nettle/drbg-ctr.h
 /usr/local/include/nettle/dsa-compat.h
 /usr/local/include/nettle/dsa.h
 /usr/local/include/nettle/eax.h
@@ -78,11 +79,11 @@
 /usr/local/lib/libhogweed.a
 /usr/local/lib/libhogweed.so
 /usr/local/lib/libhogweed.so.6
-/usr/local/lib/libhogweed.so.6.7
+/usr/local/lib/libhogweed.so.6.10
 /usr/local/lib/libnettle.a
 /usr/local/lib/libnettle.so
 /usr/local/lib/libnettle.so.8
-/usr/local/lib/libnettle.so.8.7
+/usr/local/lib/libnettle.so.8.10
 /usr/local/lib/pkgconfig/hogweed.pc
 /usr/local/lib/pkgconfig/nettle.pc
 /usr/local/share/info/nettle.info.zst
