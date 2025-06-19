@@ -13,7 +13,9 @@ class Acpi < Autotools
   binary_sha256({
     aarch64: '86f608f45ef9c7d423f26f4b1a268e7b995061e1ecb613bf3fbca2d9c7bf5665',
      armv7l: '86f608f45ef9c7d423f26f4b1a268e7b995061e1ecb613bf3fbca2d9c7bf5665',
-       i686: 'bbb6d7c0db9e4777aaca3b38e08affc74f16af661274b2d962ef8189a5338d2f',
+       i686: 'fc511f646db0b0ed8f553dae69a3176bb48ddf30f434faed31be8def9078b13b',
      x86_64: 'db69280f951b024431221a7f28af55b9f103baa82a981619a3da01c161c2d485'
   })
+
+  depends_on 'glibc' # R
 end
