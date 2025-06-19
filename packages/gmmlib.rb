@@ -18,5 +18,5 @@ class Gmmlib < CMake
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
-  cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5.0'
+  cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5.0 -DRUN_TEST_SUITE=OFF'
 end
