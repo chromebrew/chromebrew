@@ -20,5 +20,5 @@ class Libbluray < Autotools
   depends_on 'freetype'
   depends_on 'fontconfig'
 
-  autotools_configure_options '--disable-examples'
+  autotools_configure_options '--disable-bdjava-jar --disable-examples'
 end
