@@ -13,7 +13,7 @@ class Aide < Autotools
   binary_sha256({
     aarch64: '2af194bf79b62e10b7099222bd11f0e3811983a8e9158b3c52210623657dfbf0',
      armv7l: '2af194bf79b62e10b7099222bd11f0e3811983a8e9158b3c52210623657dfbf0',
-       i686: 'ae0bf14c5f1b3b8a7e81150bb3d6d1341475c40e755e1b4d03774415ccd48de2',
+       i686: '44d7218a3fa3426721bef662b0e6508e64b2c0b9d513ed937051af6db8a4ccc8',
      x86_64: 'cf30bbf567dbfe35715dde38811c48bc186efa401629d42f78ea4d2c536c8820'
   })
 
@@ -24,6 +24,7 @@ class Aide < Autotools
   depends_on 'nettle' # R
   depends_on 'pcre2'
   depends_on 'zlib'
+  depends_on 'glibc' # R
 
   def self.patch
     # Aide requires some macros that do not exist in older kernel's headers. (for example, BPF_FS_MAGIC)
