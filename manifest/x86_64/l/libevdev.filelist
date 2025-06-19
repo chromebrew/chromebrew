@@ -7,6 +7,7 @@
 /usr/local/lib64/libevdev.so.2
 /usr/local/lib64/libevdev.so.2.3.0
 /usr/local/lib64/pkgconfig/libevdev.pc
-/usr/local/share/man/man1/libevdev-tweak-device.1.gz
-/usr/local/share/man/man1/touchpad-edge-detector.1.gz
-/usr/local/share/man/man3/libevdev.3.gz
+/usr/local/share/man/man1/libevdev-tweak-device.1.zst
+/usr/local/share/man/man1/mouse-dpi-tool.1.zst
+/usr/local/share/man/man1/touchpad-edge-detector.1.zst
+/usr/local/share/man/man3/libevdev.3.zst
