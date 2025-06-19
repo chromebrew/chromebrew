@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libgcrypt < Autotools
   description 'Libgcrypt is a general purpose cryptographic library originally based on code from GnuPG.'
   homepage 'https://www.gnupg.org/related_software/libgcrypt/index.html'
-  version '1.11.0'
+  version '1.11.1'
   license 'LGPL-2.1 and MIT'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-#{version}.tar.bz2"
-  source_sha256 '09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c'
+  source_sha256 '24e91c9123a46c54e8371f3a3a2502f1198f2893fbfbf59af95bc1c21499b00e'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -21,8 +21,7 @@ class Libgcrypt < Autotools
   depends_on 'glibc' # R
   depends_on 'libgpg_error' # R
 
-  autotools_configure_options '--enable-static \
-      --enable-shared'
+  autotools_configure_options '--enable-shared'
 
   def self.patch
     # Fix error: 'asm' operand has impossible constraints or there are not enough registers
