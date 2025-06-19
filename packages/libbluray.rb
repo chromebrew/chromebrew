@@ -13,7 +13,7 @@ class Libbluray < Autotools
   binary_sha256({
     aarch64: 'bf82630d544040492dd6d8d9f835ef448c6cce5752a50958b564bc17517fec60',
      armv7l: 'bf82630d544040492dd6d8d9f835ef448c6cce5752a50958b564bc17517fec60',
-     x86_64: '06216dc7ac94c9cc1d4e86b67a8502e1550a0daf66865b24593c578d0e38435a'
+     x86_64: '87b6906c40fd5064b8b66df2e396d251164a672b2b7e3c07f7b36f2857844c8d'
   })
 
   depends_on 'ant' => :build
