@@ -17,4 +17,6 @@ class Gmmlib < CMake
   depends_on 'libva' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+
+  cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5.0'
 end
