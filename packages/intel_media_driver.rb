@@ -19,7 +19,7 @@ class Intel_media_driver < CMake
   depends_on 'gmmlib' # R
   depends_on 'libva' # R
 
-  cmake_options '-DINSTALL_DRIVER_SYSCONF=OFF -DMEDIA_BUILD_FATAL_WARNINGS=OFF'
+  cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5.0 -DINSTALL_DRIVER_SYSCONF=OFF -DMEDIA_BUILD_FATAL_WARNINGS=OFF'
 
   cmake_build_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
