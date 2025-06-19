@@ -14,7 +14,7 @@ class Libevdev < Meson
     aarch64: 'ef21c213c561863ccb9cea8a5b88501fdec31c094af3238bac482b3db7b4b053',
      armv7l: 'ef21c213c561863ccb9cea8a5b88501fdec31c094af3238bac482b3db7b4b053',
        i686: '69e54f648be62110a5a488c39b5bdd9c0957ea4705a25d82d8e6cde86f704458',
-     x86_64: '175b179c49706e118bdb1da0dfa4d216271396eecf3bd289f0db6fc11f631a64'
+     x86_64: '3c285862c00dbbdfd19f88cc9a9cdb5c57580844a5db46c4b4155dae9618f08a'
   })
 
   depends_on 'check' => :build
