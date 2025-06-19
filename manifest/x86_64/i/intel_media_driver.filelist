@@ -1,4 +1,3 @@
-/usr/local/etc/env.d/intel_media_driver
 /usr/local/include/igfxcmrt/cm_hw_vebox_cmd_g10.h
 /usr/local/include/igfxcmrt/cm_rt.h
 /usr/local/include/igfxcmrt/cm_rt_api_os.h
