@@ -13,12 +13,14 @@ class Libbluray < Autotools
   binary_sha256({
     aarch64: 'bf82630d544040492dd6d8d9f835ef448c6cce5752a50958b564bc17517fec60',
      armv7l: 'bf82630d544040492dd6d8d9f835ef448c6cce5752a50958b564bc17517fec60',
-     x86_64: '06216dc7ac94c9cc1d4e86b67a8502e1550a0daf66865b24593c578d0e38435a'
+     x86_64: '81a94d49a7c2b8665ce44448e335fada6d55705bbd661d06c6e53cdc9c777521'
   })
 
   depends_on 'libxml2'
   depends_on 'freetype'
   depends_on 'fontconfig'
+  depends_on 'harfbuzz' # R
+  depends_on 'glibc' # R
 
   autotools_configure_options '--disable-bdjava-jar --disable-examples'
 end
