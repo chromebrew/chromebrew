@@ -29,8 +29,7 @@ class Aide < Autotools
   def self.patch
     # Aide requires some macros that do not exist in older kernel's headers. (for example, BPF_FS_MAGIC)
     #
-    # Here is a copy of the latest linux/magic.h from upstream kernel tree, which
-    # includes all necessary macros for aide to compile.
+    # Here is a copy of linux/magic.h from kernel 6.15, which includes all necessary macros for aide to compile.
     File.write 'linux-magic.h', <<~EOF
       /* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
       #ifndef __LINUX_MAGIC_H__
