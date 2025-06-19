@@ -6,7 +6,7 @@ require 'package'
 class Alacritty < Package
   description 'A cross-platform, GPU-accelerated terminal emulator'
   homepage 'https://github.com/alacritty/alacritty'
-  version '0.11.0'
+  version '0.15.1'
   license 'Apache'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/alacritty/alacritty.git'
@@ -14,9 +14,9 @@ class Alacritty < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '24f808cdec4ef1a520d7b2526f3359324900656e4bea5b9fee9c77efc6e9ef63',
-     armv7l: '24f808cdec4ef1a520d7b2526f3359324900656e4bea5b9fee9c77efc6e9ef63',
-     x86_64: 'dd593610cbc27b8b1cece7dca3b73bb1194ae4b04a215eef85a229354fb6c62f'
+    aarch64: '110e93dfcb455ada8777a38c1874f670b03a02e32d756faa3d8bd877e8131e93',
+     armv7l: '110e93dfcb455ada8777a38c1874f670b03a02e32d756faa3d8bd877e8131e93',
+     x86_64: 'd6db5d3bebc9807b2b8dc476ca83668c92f3e4d6e6d0f8734d2c5e55e84dddc2'
   })
 
   depends_on 'fontconfig'
@@ -35,24 +35,19 @@ class Alacritty < Package
   end
 
   def self.install
-    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_MAN_PREFIX}/man1
-                         #{CREW_DEST_PREFIX}/share/appdata #{CREW_DEST_PREFIX}/share/doc/alacritty/example
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin
                          #{CREW_DEST_PREFIX}/share/bash-completion/completions
                          #{CREW_DEST_PREFIX}/share/zsh/site-functions
                          #{CREW_DEST_PREFIX}/share/fish/vendor_completions.d
                          #{CREW_DEST_PREFIX}/share/pixmaps]
+
     FileUtils.install 'target/release/alacritty', "#{CREW_DEST_PREFIX}/bin/alacritty", mode: 0o755
-    FileUtils.install 'extra/alacritty.man', "#{CREW_DEST_MAN_PREFIX}/man1/alacritty.1", mode: 0o644
-    FileUtils.install 'extra/alacritty-msg.man', "#{CREW_DEST_MAN_PREFIX}/man1/alacritty-msg.1", mode: 0o644
-    FileUtils.install 'extra/linux/org.alacritty.Alacritty.appdata.xml',
-                      "#{CREW_DEST_PREFIX}/share/appdata/org.alacritty.Alacritty.appdata.xml", mode: 0o644
-    FileUtils.install 'alacritty.yml', "#{CREW_DEST_PREFIX}/share/doc/alacritty/example/alacritty.yml", mode: 0o644
-    FileUtils.install 'extra/completions/alacritty.bash',
-                      "#{CREW_DEST_PREFIX}/share/bash-completion/completions/alacritty", mode: 0o644
-    FileUtils.install 'extra/completions/_alacritty', "#{CREW_DEST_PREFIX}/share/zsh/site-functions/_alacritty",
-                      mode: 0o644
-    FileUtils.install 'extra/completions/alacritty.fish',
-                      "#{CREW_DEST_PREFIX}/share/fish/vendor_completions.d/alacritty.fish", mode: 0o644
-    FileUtils.install 'extra/logo/alacritty-term.svg', "#{CREW_DEST_PREFIX}/share/pixmaps/Alacritty.svg", mode: 0o644
+
+    FileUtils.install 'extra/linux/Alacritty.desktop', "#{CREW_DEST_PREFIX}/share/applications/"
+    FileUtils.install 'extra/linux/org.alacritty.Alacritty.appdata.xml', "#{CREW_DEST_PREFIX}/share/metainfo/org.alacritty.Alacritty.appdata.xml"
+    FileUtils.install 'extra/completions/alacritty.bash', "#{CREW_DEST_PREFIX}/share/bash-completion/completions/alacritty"
+    FileUtils.install 'extra/completions/_alacritty', "#{CREW_DEST_PREFIX}/share/zsh/site-functions/_alacritty"
+    FileUtils.install 'extra/completions/alacritty.fish', "#{CREW_DEST_PREFIX}/share/fish/vendor_completions.d/alacritty.fish"
+    FileUtils.install 'extra/logo/compat/alacritty-term.svg', "#{CREW_DEST_PREFIX}/share/pixmaps/Alacritty.svg"
   end
 end
