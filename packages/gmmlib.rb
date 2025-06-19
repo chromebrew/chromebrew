@@ -11,7 +11,7 @@ class Gmmlib < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '73746485904173970cd608975011f0c91628ebdd5c68d09fd615d27327da27da'
+     x86_64: 'ee88ee0f25aa1a78e55893f67f12c76f1b47f260ad62f1c157b15716e8d96d86'
   })
 
   depends_on 'libva' => :build
