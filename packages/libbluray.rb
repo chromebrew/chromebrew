@@ -16,9 +16,12 @@ class Libbluray < Autotools
      x86_64: '06216dc7ac94c9cc1d4e86b67a8502e1550a0daf66865b24593c578d0e38435a'
   })
 
-  depends_on 'libxml2'
-  depends_on 'freetype'
+  depends_on 'ant'
   depends_on 'fontconfig'
+  depends_on 'freetype'
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libxml2'
 
-  autotools_configure_options '--disable-bdjava-jar --disable-examples'
+  autotools_configure_options '--disable-examples'
 end
