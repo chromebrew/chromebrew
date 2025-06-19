@@ -1,11 +1,11 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libinput < Package
+class Libinput < Meson
   description 'libinput is a library to handle input devices in Wayland compositors and to provide a generic X.Org input driver.'
   homepage 'https://www.freedesktop.org/wiki/Software/libinput/'
-  version '1.21.0'
+  version '1.28.1'
   license 'MIT'
-  compatibility 'aarch64 armv7l x86_64'
+  compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/libinput/libinput.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -27,20 +27,5 @@ class Libinput < Package
   # depends_on 'graphviz' => :build
   # depends_on 'gtk3' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      -Ddebug-gui=false \
-      -Ddocumentation=false \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.check
-    system 'ninja -C builddir test || true'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Ddebug-gui=false -Ddocumentation=false'
 end
