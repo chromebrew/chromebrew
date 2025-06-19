@@ -90,8 +90,6 @@ class Aide < Autotools
 
 
       #define REISERFS_SUPER_MAGIC	0x52654973	/* used by gcc */
-					/* used by file system utilities that
-	                                   look at the superblock, etc.  */
       #define REISERFS_SUPER_MAGIC_STRING	"ReIsErFs"
       #define REISER2FS_SUPER_MAGIC_STRING	"ReIsEr2Fs"
       #define REISER2FS_JR_SUPER_MAGIC_STRING	"ReIsEr3Fs"
