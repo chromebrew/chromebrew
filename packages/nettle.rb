@@ -13,7 +13,7 @@ class Nettle < Autotools
   binary_sha256({
     aarch64: '059a8950bbfb7e6e5f6eafd42bf6d2b10cad2fe1a591f9d33f05308c0f9a5961',
      armv7l: '059a8950bbfb7e6e5f6eafd42bf6d2b10cad2fe1a591f9d33f05308c0f9a5961',
-       i686: '7b0f8d72e3247b515cd413f2eb61e36015be7fe8c8536b6ae476a24a80325c08',
+       i686: '6dbcf360bf7006d199bba24f4a07c9e15cec29a0bff53928a8e5cfc4d0a11daa',
      x86_64: '0f6c3d1add197df8cb44e490f74c7acc8bc696027f9df9d1e51d476af27c7842'
   })
 
