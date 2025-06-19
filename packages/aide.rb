@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Aide < Autotools
   description 'Advanced Intrusion Detection Environment'
   homepage 'https://aide.github.io'
-  version '0.18.8-9ed0843'
+  version '0.19'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/aide/aide.git'
-  git_hashtag '9ed0843765f0f97f6d3f989995a492da20b8c410'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
