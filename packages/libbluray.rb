@@ -4,7 +4,7 @@ class Libbluray < Autotools
   description 'This library is simply a tool for playback of Blu-ray movies.'
   homepage 'https://www.videolan.org/developers/libbluray.html'
   version '1.3.4'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   license 'LGPL-2.1'
   source_url "https://download.videolan.org/pub/videolan/libbluray/#{version}/libbluray-#{version}.tar.bz2"
   source_sha256 '478ffd68a0f5dde8ef6ca989b7f035b5a0a22c599142e5cd3ff7b03bbebe5f2b'
