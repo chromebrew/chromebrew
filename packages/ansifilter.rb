@@ -11,8 +11,8 @@ class Ansifilter < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'da375a75732ae5d4534a7278c4d40dd26d89bdf9aa3a8f7eed1f9ce38ee65905',
-     armv7l: 'da375a75732ae5d4534a7278c4d40dd26d89bdf9aa3a8f7eed1f9ce38ee65905',
+    aarch64: 'ada9c9e7b8af6cb38e636d9716d8bda3809f3decd7f323bcf19da95b12d1ce49',
+     armv7l: 'ada9c9e7b8af6cb38e636d9716d8bda3809f3decd7f323bcf19da95b12d1ce49',
        i686: '60d9d935d68a763b8c3bad7dca796ed45dc490aa50028a07c4866f3f9c25a8e7',
      x86_64: '9a4c35ea87585bf78a1e3f5a909e66baa53ed33955922072c6d6ef929080c3d4'
   })
