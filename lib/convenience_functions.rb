@@ -6,11 +6,12 @@ require_relative 'const'
 require_relative 'crewlog'
 require_relative 'downloader'
 
-class NilClass; def blank? = true        ; end
-class Numeric;  def blank? = false       ; end
-class Array;    def blank? = empty?      ; end
-class Hash;     def blank? = empty?      ; end
-class Symbol;   def blank? = empty?      ; end
+# Reimplementation of .blank? method from ActiveSupport
+class NilClass; def blank? = true;         end
+class Numeric;  def blank? = false;        end
+class Array;    def blank? = empty?;       end
+class Hash;     def blank? = empty?;       end
+class Symbol;   def blank? = empty?;       end
 class String;   def blank? = strip.empty?; end
 
 class ConvenienceFunctions
