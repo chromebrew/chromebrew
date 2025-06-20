@@ -13,11 +13,12 @@ class Aliyun_cli < Package
   binary_sha256({
     aarch64: 'c7a970329f5f13c3d39fc359ab54c6b7bf686ba667c448d880116bb0be0b1770',
      armv7l: 'c7a970329f5f13c3d39fc359ab54c6b7bf686ba667c448d880116bb0be0b1770',
-       i686: 'fcc4e000e51c55194cef9f6eb85336fa16a84b9e75913087cb8d9b52425b6aaf',
+       i686: 'b49ad1682730316ae9ea6372e223e9ec956625647fddf7a98b69d11fc94117f1',
      x86_64: '193916dd7e7c9604ebab5d4f7c3e4d9782bf5342f6eda7a53f6e20c41b70e126'
   })
 
   depends_on 'go' => :build
+  depends_on 'glibc' # R
 
   def self.build
     system 'make'
