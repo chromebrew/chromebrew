@@ -14,7 +14,7 @@ class Ant < Package
     aarch64: '467ba617135bbe2ba177bacbe2c98b9a520361b21d14b3e2508acee527c9f588',
      armv7l: '467ba617135bbe2ba177bacbe2c98b9a520361b21d14b3e2508acee527c9f588',
        i686: 'cd8a568925785eaf3332db34df8ae3ae2ca3bbfae0a16d4dda27c34c4c57e3f1',
-     x86_64: '2763cdc4ddd5fa2a1b71f766302204f30814fad4a82528e09f947a779bc5da1a'
+     x86_64: 'fb4b5be76ab5d62cbc56888b97dce5fac1eedf47c210b60dfb4c733d85f3f065'
   })
 
   depends_on 'openjdk17'
