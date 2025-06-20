@@ -6,12 +6,12 @@ require_relative 'const'
 require_relative 'crewlog'
 require_relative 'downloader'
 
-class NilClass; def blank? = true; end
-class Numeric;  def blank? = false; end
-class Array;    def blank? = self.empty?; end
-class Hash;     def blank? = self.empty?; end
-class Symbol;   def blank? = self.empty?; end
-class String;   def blank? = self.strip.empty?; end
+class NilClass; def blank? = true        ; end
+class Numeric;  def blank? = false       ; end
+class Array;    def blank? = empty?      ; end
+class Hash;     def blank? = empty?      ; end
+class Symbol;   def blank? = empty?      ; end
+class String;   def blank? = strip.empty?; end
 
 class ConvenienceFunctions
   def self.determine_conflicts(pkg_name, filelist = File.join(CREW_META_PATH, "#{pkg_name}.filelist"), exclude_suffix = nil, verbose: false)
