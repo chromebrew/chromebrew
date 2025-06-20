@@ -361,7 +361,7 @@ class Package
     rescue RuntimeError => e
       # Print failed line number and error message.
       puts "#{e.backtrace[1]}: #{e.message}".orange
-      raise InstallError, "`#{env.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')} #{cmd_args.join(' ')}` exited with #{$CHILD_STATUS.exitstatus}".lightred
+      raise InstallError, "`#{env.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')} #{args.join(' ')}` exited with #{$CHILD_STATUS.exitstatus}".lightred
     end
   end
 end
