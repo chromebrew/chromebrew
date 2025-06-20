@@ -3,7 +3,7 @@ require 'package'
 class Aliyun_cli < Package
   description 'Alibaba Cloud CLI'
   homepage 'https://www.alibabacloud.com/help/en/cli/'
-  version '3.0.141'
+  version '3.0.284'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/aliyun/aliyun-cli.git'
@@ -29,6 +29,6 @@ class Aliyun_cli < Package
   end
 
   def self.postinstall
-    puts "\nType 'aliyun --help' to get started.\n".lightblue
+    ExitMessage.add "\nType 'aliyun --help' to get started.\n"
   end
 end
