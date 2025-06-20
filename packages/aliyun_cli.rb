@@ -17,7 +17,8 @@ class Aliyun_cli < Package
      x86_64: '193916dd7e7c9604ebab5d4f7c3e4d9782bf5342f6eda7a53f6e20c41b70e126'
   })
 
-  depends_on 'go' => :build
+  # FIXME: Uncomment this when file conflicts between gcc and go are resolved
+  # depends_on 'go' => :build
 
   def self.build
     system 'make'
