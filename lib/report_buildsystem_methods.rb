@@ -1,7 +1,9 @@
+require_relative 'convenience_functions'
+
 module ReportBuildsystemMethods
   def print_buildsystem_methods
     boolean_list = available_boolean_properties
-    method_list = methods.reject(&->(m) { boolean_list.include?(m.to_s.delete_suffix('?').to_sym) }).grep(/#{superclass.to_s.downcase}_/).delete_if { |i| send(i).blank? }
+    method_list = methods.reject(&->(m) { boolean_list.include?(m.to_s.delete_suffix('?').to_sym) }).grep(/#{superclass.to_s.downcase}_/).select(&-> (i) { send(i) })
 
     unless method_list.empty?
       require_gem 'method_source'
