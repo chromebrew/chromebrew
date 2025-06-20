@@ -3,11 +3,11 @@ require 'package'
 class Ant < Package
   description 'Apache Ant is a Java library and command-line tool whose mission is to drive processes described in build files as targets and extension points dependent upon each other.'
   homepage 'https://ant.apache.org/'
-  version '1.10.14'
+  version '1.10.15'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://downloads.apache.org/ant/source/apache-ant-1.10.14-src.tar.xz'
-  source_sha256 '9eea3cd8a793574a07fde2f87b203dc86339492baeb539367d5aa5be497aea24'
+  source_url "https://downloads.apache.org/ant/source/apache-ant-#{version}-src.tar.xz"
+  source_sha256 '6c6e4c15233cb7b9851283051f99a9f04aa0e3291375138ea50399717d489878'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -17,7 +17,7 @@ class Ant < Package
      x86_64: '2763cdc4ddd5fa2a1b71f766302204f30814fad4a82528e09f947a779bc5da1a'
   })
 
-  depends_on 'openjdk8'
+  depends_on 'openjdk17'
 
   no_fhs
 
