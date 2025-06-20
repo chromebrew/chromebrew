@@ -55,6 +55,7 @@
 /usr/local/share/go/lib/fips140/Makefile
 /usr/local/share/go/lib/fips140/README.md
 /usr/local/share/go/lib/fips140/fips140.sum
+/usr/local/share/go/lib/fips140/inprocess.txt
 /usr/local/share/go/lib/fips140/v1.0.0.zip
 /usr/local/share/go/lib/time/README
 /usr/local/share/go/lib/time/mkzip.go
@@ -3499,6 +3500,8 @@
 /usr/local/share/go/src/cmd/link/testdata/linkname/p/p.go
 /usr/local/share/go/src/cmd/link/testdata/linkname/push.go
 /usr/local/share/go/src/cmd/link/testdata/linkname/sched.go
+/usr/local/share/go/src/cmd/link/testdata/linkname/textvar/asm.s
+/usr/local/share/go/src/cmd/link/testdata/linkname/textvar/main.go
 /usr/local/share/go/src/cmd/link/testdata/pe-binutils/main.go
 /usr/local/share/go/src/cmd/link/testdata/pe-binutils/rsrc_386.syso
 /usr/local/share/go/src/cmd/link/testdata/pe-binutils/rsrc_amd64.syso
