@@ -11,8 +11,8 @@ class Antlr4 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '80863f7d228af865b8e203940b20315281e8b4051368280995f9e58e29cfabbf',
-     armv7l: '80863f7d228af865b8e203940b20315281e8b4051368280995f9e58e29cfabbf',
+    aarch64: 'e3fa17ad9cdc1edbafe5c3ba1ba9457c1655cabc1e2d5ec808f935b0fec4dc4d',
+     armv7l: 'e3fa17ad9cdc1edbafe5c3ba1ba9457c1655cabc1e2d5ec808f935b0fec4dc4d',
        i686: '8773bedc562497079e48ac34dc07cd0f62c4017075f8b99f28d8743aebe9b205',
      x86_64: 'db2ddd5bda866b111fb06f648b0642f6bdd5c5dd50249b832b82e899d743d0ef'
   })
