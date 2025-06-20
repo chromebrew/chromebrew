@@ -13,11 +13,13 @@ class Antlr4 < Package
   binary_sha256({
     aarch64: '80863f7d228af865b8e203940b20315281e8b4051368280995f9e58e29cfabbf',
      armv7l: '80863f7d228af865b8e203940b20315281e8b4051368280995f9e58e29cfabbf',
-       i686: 'b06cc13d89c857d6c289b9a7e5db8746b25016d8f3ab869f1665724bbfa9a3d0',
+       i686: '8773bedc562497079e48ac34dc07cd0f62c4017075f8b99f28d8743aebe9b205',
      x86_64: '4bf4a263b746b86ff380a88e912747ebd96ee97ba38e63b2cdf2d10dff951b47'
   })
 
   depends_on 'openjdk11'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
   print_source_bashrc
 
   def self.build
