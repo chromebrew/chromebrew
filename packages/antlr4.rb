@@ -6,7 +6,7 @@ class Antlr4 < Package
   version '4.13.2'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/antlr/antlr4/archive/4.13.2.tar.gz'
+  source_url "https://github.com/antlr/antlr4/archive/#{version}.tar.gz"
   source_sha256 '9f18272a9b32b622835a3365f850dd1063d60f5045fb1e12ce475ae6e18a35bb'
   binary_compression 'tar.zst'
 
@@ -17,9 +17,9 @@ class Antlr4 < Package
      x86_64: 'db2ddd5bda866b111fb06f648b0642f6bdd5c5dd50249b832b82e899d743d0ef'
   })
 
-  depends_on 'openjdk11'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'openjdk11'
   print_source_bashrc
 
   def self.build
