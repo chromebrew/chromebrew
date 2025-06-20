@@ -6,7 +6,6 @@ require_relative 'color'
 require_relative 'progress_bar'
 require_relative 'require_gem'
 
-require_gem('activesupport', 'active_support/core_ext/object/blank')
 require_gem('ptools')
 
 begin

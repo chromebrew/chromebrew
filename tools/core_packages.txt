@@ -145,7 +145,6 @@ readline
 rtmpdump
 ruby
 ruby_abbrev
-ruby_activesupport
 ruby_base64
 ruby_benchmark
 ruby_bigdecimal

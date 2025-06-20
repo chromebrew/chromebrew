@@ -10,7 +10,6 @@ require_relative '../lib/color'
 require_relative '../lib/const'
 require_relative '../lib/gem_compact_index_client'
 require_relative '../lib/require_gem'
-require_gem('activesupport', 'active_support/core_ext/object/blank')
 require_gem 'concurrent-ruby'
 
 def check_for_updated_ruby_packages
