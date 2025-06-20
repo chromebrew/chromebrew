@@ -43,7 +43,7 @@
     "name": "abseil_cpp",
     "description": "Abseil Common Libraries C++",
     "homepage": "https://abseil.io/",
-    "version": "20250127.1",
+    "version": "20250512.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -59,7 +59,7 @@
     "name": "acpi",
     "description": "Attempts to replicate the functionality of the 'old' apm command on ACPI systems, including battery and thermal information.",
     "homepage": "https://sourceforge.net/projects/acpiclient/",
-    "version": "1.7",
+    "version": "1.8",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -115,7 +115,7 @@
     "name": "adwaita_icon_theme",
     "description": "Theme consisting of a set of icons for GTK+",
     "homepage": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
-    "version": "48.beta",
+    "version": "48.1",
     "license": "LGPL-3 and CC-BY-SA-4.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -147,7 +147,7 @@
     "name": "aide",
     "description": "Advanced Intrusion Detection Environment",
     "homepage": "https://aide.github.io",
-    "version": "0.18.8",
+    "version": "0.19",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -163,7 +163,7 @@
     "name": "alacritty",
     "description": "A cross-platform, GPU-accelerated terminal emulator",
     "homepage": "https://github.com/alacritty/alacritty",
-    "version": "0.11.0",
+    "version": "0.15.1",
     "license": "Apache",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -187,7 +187,7 @@
     "name": "aliyun_cli",
     "description": "Alibaba Cloud CLI",
     "homepage": "https://www.alibabacloud.com/help/en/cli/",
-    "version": "3.0.141",
+    "version": "3.0.284",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -195,7 +195,7 @@
     "name": "alpine",
     "description": "The continuation of the Alpine email client from University of Washington.",
     "homepage": "https://alpineapp.email/",
-    "version": "2.25",
+    "version": "2.26",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -203,7 +203,7 @@
     "name": "alsa_lib",
     "description": "The Advanced Linux Sound Architecture (ALSA) provides audio and MIDI functionality to the Linux operating system.",
     "homepage": "https://www.alsa-project.org/main/index.php/Main_Page",
-    "version": "1.2.12",
+    "version": "1.2.14",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -283,7 +283,7 @@
     "name": "ansifilter",
     "description": "Ansifilter parses common ANSI codes to remove them or to convert them to another colored text file format (HTML, TeX, LaTeX, RTF, Pango or BBCode).",
     "homepage": "http://andre-simon.de/doku/ansifilter/en/ansifilter.php",
-    "version": "2.20",
+    "version": "2.21",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -291,7 +291,7 @@
     "name": "ant",
     "description": "Apache Ant is a Java library and command-line tool whose mission is to drive processes described in build files as targets and extension points dependent upon each other.",
     "homepage": "https://ant.apache.org/",
-    "version": "1.10.14",
+    "version": "1.10.15",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -307,7 +307,7 @@
     "name": "antlr4",
     "description": "ANTLR (ANother Tool for Language Recognition) is a powerful parser generator for reading, processing, executing, or translating structured text or binary files.",
     "homepage": "https://www.antlr.org/",
-    "version": "4.12.0-1",
+    "version": "4.13.2",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -1091,7 +1091,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.79.123",
+    "version": "1.79.126",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -2177,11 +2177,11 @@
   },
   {
     "name": "dav1d",
-    "description": "**dav1d** is a new **AV1** cross-platform **d**ecoder, open-source, and focused on speed and correctness.",
+    "description": "dav1d is a new AV1 cross-platform decoder, open-source, and focused on speed and correctness.",
     "homepage": "https://code.videolan.org/videolan/dav1d",
-    "version": "1.4.2",
+    "version": "1.5.1",
     "license": "BSD-2",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "dbeaver",
@@ -3763,7 +3763,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "526.0.1",
+    "version": "527.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -4059,7 +4059,7 @@
     "name": "git",
     "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
     "homepage": "https://git-scm.com/",
-    "version": "2.49.0-1",
+    "version": "2.50.0",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -4379,7 +4379,7 @@
     "name": "gmmlib",
     "description": "The Intel(R) Graphics Memory Management Library provides device specific and buffer management for the Intel(R) Graphics Compute Runtime for OpenCL(TM) and the Intel(R) Media Driver for VAAPI.",
     "homepage": "https://github.com/intel/gmmlib/",
-    "version": "22.3.3",
+    "version": "22.7.2",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -4619,7 +4619,7 @@
     "name": "go",
     "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "homepage": "https://go.dev",
-    "version": "1.24.3",
+    "version": "1.24.4",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -4683,7 +4683,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "137.0.7151.103-1",
+    "version": "137.0.7151.119-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -5619,7 +5619,7 @@
     "name": "intel_media_driver",
     "description": "The Intel(R) Media Driver for VAAPI is a new VA-API (Video Acceleration API) user mode driver supporting hardware accelerated decoding, encoding, and video post processing for GEN based graphics hardware.",
     "homepage": "https://github.com/intel/media-driver",
-    "version": "22.6.6",
+    "version": "25.2.5",
     "license": "BSD-3, and MIT",
     "compatibility": "x86_64"
   },
@@ -6515,7 +6515,7 @@
     "name": "libbluray",
     "description": "This library is simply a tool for playback of Blu-ray movies.",
     "homepage": "https://www.videolan.org/developers/libbluray.html",
-    "version": "1.3.0",
+    "version": "1.3.4",
     "license": "LGPL-2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -6963,7 +6963,7 @@
     "name": "libevdev",
     "description": "libevdev is a wrapper library for evdev devices.",
     "homepage": "https://www.freedesktop.org/wiki/Software/libevdev/",
-    "version": "1.12.1",
+    "version": "1.13.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -6995,7 +6995,7 @@
     "name": "libexif",
     "description": "A library for parsing, editing, and saving EXIF data",
     "homepage": "https://libexif.github.io/",
-    "version": "0.6.22",
+    "version": "0.6.25",
     "license": "LGPL-2+",
     "compatibility": "all"
   },
@@ -7563,7 +7563,7 @@
     "name": "libmicrohttpd",
     "description": "GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application.",
     "homepage": "https://www.gnu.org/software/libmicrohttpd/",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -8659,7 +8659,7 @@
     "name": "libwacom",
     "description": "libwacom is a wrapper library for evdev devices.",
     "homepage": "https://github.com/linuxwacom/libwacom",
-    "version": "1.12",
+    "version": "2.16.1",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -9017,9 +9017,9 @@
   },
   {
     "name": "libxtrans",
-    "description": "transpot library for the X window system",
+    "description": "transport library for the X window system",
     "homepage": "https://x.org/wiki/",
-    "version": "1.4.0",
+    "version": "1.6.0",
     "license": "custom",
     "compatibility": "all"
   },
@@ -9771,7 +9771,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "25.1.2",
+    "version": "25.1.4",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10755,7 +10755,7 @@
     "name": "nettle",
     "description": "Nettle is a cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.",
     "homepage": "http://www.lysator.liu.se/~nisse/nettle/",
-    "version": "3.9",
+    "version": "3.10.1",
     "license": "LGPL-3 or LGPL-2.1",
     "compatibility": "all"
   },
@@ -11331,7 +11331,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "119.0.5497.88",
+    "version": "119.0.5497.110",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -12851,7 +12851,7 @@
     "name": "py3_certifi",
     "description": "Certifi provides Mozilla's CA Bundle.",
     "homepage": "https://certifi.io/",
-    "version": "2025.4.26",
+    "version": "2025.6.15",
     "license": "MPL-2.0",
     "compatibility": "all"
   },
@@ -13339,7 +13339,7 @@
     "name": "py3_markdown",
     "description": "Markdown is a Python implementation of Markdown.",
     "homepage": "https://python-markdown.github.io/",
-    "version": "3.8",
+    "version": "3.8.1",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -13435,7 +13435,7 @@
     "name": "py3_nuitka",
     "description": "Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.",
     "homepage": "https://nuitka.net/",
-    "version": "2.7.7",
+    "version": "2.7.9",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13451,7 +13451,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.154.1",
+    "version": "2.154.2",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13459,7 +13459,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.58.1",
+    "version": "3.59.0",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13763,7 +13763,7 @@
     "name": "py3_pytest",
     "description": "Pytest is simple powerful testing with Python.",
     "homepage": "https://pytest.org/",
-    "version": "8.4.0",
+    "version": "8.4.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13851,7 +13851,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.11.13",
+    "version": "0.12.0",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -13915,7 +13915,7 @@
     "name": "py3_smartypants",
     "description": "Smartypants translates plain ASCII punctuation characters into \"smart\" typographic punctuation HTML entities.",
     "homepage": "https://github.com/leohemsted/smartypants.py/",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -14059,7 +14059,7 @@
     "name": "py3_tox",
     "description": "Command line driven CI frontend and development task automation tool.",
     "homepage": "https://tox.readthedocs.io/",
-    "version": "4.26.0",
+    "version": "4.27.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14115,7 +14115,7 @@
     "name": "py3_urllib3",
     "description": "URLlib3 is an HTTP library with thread-safe connection pooling, file post, and more.",
     "homepage": "https://urllib3.readthedocs.io/",
-    "version": "2.4.0",
+    "version": "2.5.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14179,7 +14179,7 @@
     "name": "py3_xlsxwriter",
     "description": "XlsxWriter is a Python module for creating Excel XLSX files.",
     "homepage": "https://xlsxwriter.readthedocs.io/",
-    "version": "3.2.3",
+    "version": "3.2.5",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -16411,7 +16411,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.57.0",
+    "version": "7.58.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -17203,7 +17203,7 @@
     "name": "termius",
     "description": "Modern SSH Client",
     "homepage": "https://termius.com/",
-    "version": "9.21.2",
+    "version": "9.22.1",
     "license": "Apache-2.0, LGPL-2.1, MIT",
     "compatibility": "x86_64"
   },
@@ -17971,7 +17971,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.4.3684.50-1",
+    "version": "7.4.3684.52-1",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18803,7 +18803,7 @@
     "name": "xorg_server",
     "description": "The Xorg Server is the core of the X Window system.",
     "homepage": "https://www.x.org/wiki/",
-    "version": "21.1.14",
+    "version": "21.1.18",
     "license": "BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18923,7 +18923,7 @@
     "name": "xwayland",
     "description": "X server configured to work with weston or sommelier",
     "homepage": "https://x.org/wiki/",
-    "version": "24.1.4",
+    "version": "24.1.8",
     "license": "MIT-with-advertising, ISC, BSD-3, BSD and custom",
     "compatibility": "aarch64 armv7l x86_64"
   },
