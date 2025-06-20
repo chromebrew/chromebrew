@@ -5,8 +5,6 @@ require_relative '../package_utils'
 require_relative '../report_buildsystem_methods'
 require_relative '../require_gem'
 
-require_gem('activesupport', 'active_support/core_ext/object/blank')
-
 def check_gem_binary_build_needed(ruby_gem_name = nil, ruby_gem_version = nil)
   puts "Checking to see if gem compile for #{ruby_gem_name} is needed..."
   @extract_dir = "#{ruby_gem_name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"

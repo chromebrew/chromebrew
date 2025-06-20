@@ -89,7 +89,6 @@ class Core < Package
   depends_on 'readline'
   depends_on 'rtmpdump'
   depends_on 'ruby'
-  depends_on 'ruby_activesupport'
   depends_on 'ruby_concurrent_ruby'
   # Allows for building binary gems if necessary.
   depends_on 'ruby_gem_compiler'
