@@ -14,7 +14,7 @@ class Ansifilter < Package
     aarch64: 'da375a75732ae5d4534a7278c4d40dd26d89bdf9aa3a8f7eed1f9ce38ee65905',
      armv7l: 'da375a75732ae5d4534a7278c4d40dd26d89bdf9aa3a8f7eed1f9ce38ee65905',
        i686: '60d9d935d68a763b8c3bad7dca796ed45dc490aa50028a07c4866f3f9c25a8e7',
-     x86_64: '12f6c518b5c1cf12192cde003ca0df4ce16a5bbf72dd23bddd3c34cb743cbbd4'
+     x86_64: '9a4c35ea87585bf78a1e3f5a909e66baa53ed33955922072c6d6ef929080c3d4'
   })
 
   depends_on 'gcc_lib' # R
