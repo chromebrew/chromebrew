@@ -170,9 +170,9 @@
 /usr/local/include/antlr4-runtime/tree/xpath/XPathTokenElement.h
 /usr/local/include/antlr4-runtime/tree/xpath/XPathWildcardAnywhereElement.h
 /usr/local/include/antlr4-runtime/tree/xpath/XPathWildcardElement.h
-/usr/local/lib64/libantlr4-runtime.a
-/usr/local/lib64/libantlr4-runtime.so
-/usr/local/lib64/libantlr4-runtime.so.4.13.2
+/usr/local/lib/libantlr4-runtime.a
+/usr/local/lib/libantlr4-runtime.so
+/usr/local/lib/libantlr4-runtime.so.4.13.2
 /usr/local/share/antlr/antlr-4.13.2-complete.jar
 /usr/local/share/doc/libantlr4/LICENSE.txt
 /usr/local/share/doc/libantlr4/README.md
