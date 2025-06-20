@@ -3,7 +3,7 @@ require 'package'
 class Ansifilter < Package
   description 'Ansifilter parses common ANSI codes to remove them or to convert them to another colored text file format (HTML, TeX, LaTeX, RTF, Pango or BBCode).'
   homepage 'http://andre-simon.de/doku/ansifilter/en/ansifilter.php'
-  version '2.20'
+  version '2.21'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://gitlab.com/saalen/ansifilter.git'
