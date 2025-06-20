@@ -14,7 +14,7 @@ class Alpine < Autotools
     aarch64: '6c919cb0d6fad903fc0e0cb96f1d8bff6030181a9e871b38ccd59a121f342dfe',
      armv7l: '6c919cb0d6fad903fc0e0cb96f1d8bff6030181a9e871b38ccd59a121f342dfe',
        i686: '4e27c9aea09ba924079a2859bbbd95f2fbae2222fe1b2467e911fe48e1807cc3',
-     x86_64: '31d6176774aee2a53e8fd784816c7daaa361cf80c8ea8fa11f99c3fe22c3bfef'
+     x86_64: '04ae487cecf31e36e722c60139ca25d6261271a1fffaae37149e9446b2ad43a1'
   })
 
   depends_on 'e2fsprogs'
