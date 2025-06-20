@@ -338,14 +338,6 @@ class Package
     # Replace CREW_ARCH_FLAGS if @arch_flags_override is true.
     crew_env_options_hash.transform_values! { |v| v.gsub(CREW_ARCH_FLAGS, CREW_ARCH_FLAGS_OVERRIDE) } if arch_flags_override
 
-    # Add "-j#" argument to "make" at compile-time, if necessary.
-
-    # Order of precedence to assign the number of threads:
-    # 1. The value of '-j#' from the package make argument
-    # 2. The value of ENV["CREW_NPROC"]
-    # 3. The value of `nproc`.strip
-    # See lib/const.rb for more details.
-
     # Add exception option to opt_args.
     opt_args.merge!(exception: true) unless opt_args.key?(:exception)
 
@@ -362,40 +354,10 @@ class Package
     env['LD_PRELOAD']                        = File.join(CREW_LIB_PREFIX, 'crew-preload.so') if File.exist?("#{CREW_LIB_PREFIX}/crew-preload.so")
 
     # After removing the env hash, all remaining args must be command args.
-    cmd_args        = args
-    make_threads    = CREW_NPROC
-    modded_make_cmd = false
-
-    # Append -j placeholder to `make` commands only if '-j#' does not exist.
-    unless cmd_args.grep(/-j[[:space:]]?[0-9]+/).any?
-      if cmd_args.size == 1
-        # Involve a shell if the command is passed in one single string.
-        cmd_args        = ['bash', '-c', cmd_args[0].sub(/^(make)\b/, '\\1 <<<CREW_NPROC>>>')]
-        modded_make_cmd = true
-      elsif cmd_args[0] == 'make'
-        cmd_args.insert(1, '<<<CREW_NPROC>>>')
-        modded_make_cmd = true
-      end
-    end
 
     begin
-      if modded_make_cmd
-        # Replace placeholder with '-j#' arg and execute the actual command.
-        Kernel.system(env, *cmd_args.map { |arg| arg.sub('<<<CREW_NPROC>>>', "-j#{make_threads}") }, **opt_args)
-      else
-        Kernel.system(env, *cmd_args, **opt_args)
-      end
+      Kernel.system(env, *args, **opt_args)
     rescue RuntimeError => e
-      if modded_make_cmd && make_threads != 1
-        # Retry with single thread if command is `make` and is modified by crew.
-        warn "Command \"#{cmd_args.map { |arg| arg.sub('<<<CREW_NPROC>>>', "-j#{make_threads}") }.join(' ')}\" failed, retrying with \"-j1\"...".yellow
-        make_threads = 1
-        retry
-      else
-        # Exit with error.
-        raise e
-      end
-    rescue StandardError => e
       # Print failed line number and error message.
       puts "#{e.backtrace[1]}: #{e.message}".orange
       raise InstallError, "`#{env.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')} #{cmd_args.join(' ')}` exited with #{$CHILD_STATUS.exitstatus}".lightred
