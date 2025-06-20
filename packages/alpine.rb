@@ -13,7 +13,7 @@ class Alpine < Autotools
   binary_sha256({
     aarch64: '6c919cb0d6fad903fc0e0cb96f1d8bff6030181a9e871b38ccd59a121f342dfe',
      armv7l: '6c919cb0d6fad903fc0e0cb96f1d8bff6030181a9e871b38ccd59a121f342dfe',
-       i686: '453a722ceefb5749a215e76599133686011b51c9b45a4747d5c95faf7f94f799',
+       i686: '4e27c9aea09ba924079a2859bbbd95f2fbae2222fe1b2467e911fe48e1807cc3',
      x86_64: '31d6176774aee2a53e8fd784816c7daaa361cf80c8ea8fa11f99c3fe22c3bfef'
   })
 
@@ -21,6 +21,12 @@ class Alpine < Autotools
   depends_on 'hunspell_en_us'
   depends_on 'openldap'
   depends_on 'tcl' # R
+  depends_on 'glibc' # R
+  depends_on 'libxcrypt' # R
+  depends_on 'krb5' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'ncurses' # R
+  depends_on 'openssl' # R
 
   autotools_make_j1
   run_tests
