@@ -3,12 +3,11 @@ require 'package'
 class Antlr4 < Package
   description 'ANTLR (ANother Tool for Language Recognition) is a powerful parser generator for reading, processing, executing, or translating structured text or binary files.'
   homepage 'https://www.antlr.org/'
-  @_ver = '4.12.0'
-  version "#{@_ver}-1"
+  version '4.13.2'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/antlr/antlr4/archive/4.12.0.tar.gz'
-  source_sha256 '8b6050a2111a6bb6405cc5e9e7bca80c136548ac930e4b2c27566d1eb32f8aed'
+  source_url 'https://github.com/antlr/antlr4/archive/4.13.2.tar.gz'
+  source_sha256 '9f18272a9b32b622835a3365f850dd1063d60f5045fb1e12ce475ae6e18a35bb'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -22,12 +21,6 @@ class Antlr4 < Package
   print_source_bashrc
 
   def self.build
-    @antlrenv = <<~ANTLR_EOF
-      # ANTLR (ANother Tool for Language Recognition) configuration
-      CLASSPATH=".:#{CREW_PREFIX}/share/antlr/antlr-#{@_ver}-complete.jar:$CLASSPATH"
-      alias antlr4="java -jar #{CREW_PREFIX}/share/antlr/antlr-#{@_ver}-complete.jar"
-      alias grun="java org.antlr.v4.gui.TestRig"
-    ANTLR_EOF
     Dir.chdir 'runtime/Cpp' do
       system "cmake -B builddir #{CREW_CMAKE_OPTIONS} -G Ninja -DBUILD_GMOCK=OFF -DINSTALL_GTEST=OFF"
       system "#{CREW_NINJA} -C builddir"
@@ -35,15 +28,20 @@ class Antlr4 < Package
   end
 
   def self.install
-    downloader "https://www.antlr.org/download/antlr-#{@_ver}-complete.jar",
+    downloader "https://www.antlr.org/download/antlr-#{version}-complete.jar",
                '88f18a2bfac0dde1009eda5c7dce358a52877faef7868f56223a5bcc15329e43'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/antlr"
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/10-antlr4", @antlrenv)
-    FileUtils.install "antlr-#{@_ver}-complete.jar", "#{CREW_DEST_PREFIX}/share/antlr", mode: 0o644
-    Dir.chdir 'runtime/Cpp' do
-      system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    end
+
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/etc/env.d #{CREW_DEST_PREFIX}/share/antlr]
+
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install", chdir: 'runtime/Cpp'
+    FileUtils.install "antlr-#{version}-complete.jar", "#{CREW_DEST_PREFIX}/share/antlr", mode: 0o644
+
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-antlr4", <<~ANTLR_EOF
+      # ANTLR (ANother Tool for Language Recognition) configuration
+      CLASSPATH=".:#{CREW_PREFIX}/share/antlr/antlr-#{version}-complete.jar:$CLASSPATH"
+      alias antlr4="java -jar #{CREW_PREFIX}/share/antlr/antlr-#{version}-complete.jar"
+      alias grun="java org.antlr.v4.gui.TestRig"
+    ANTLR_EOF
   end
 
   def self.postinstall
