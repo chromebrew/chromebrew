@@ -4,6 +4,7 @@ require_relative '../require_gem'
 require_relative '../report_buildsystem_methods'
 
 class Autotools < Package
+  boolean_property :autotools_make_j1
   property :autotools_configure_options, :autotools_pre_configure_options, :autotools_build_extras, :autotools_install_extras
 
   def self.build
@@ -26,7 +27,14 @@ class Autotools < Package
       system 'filefix', exception: false unless @no_filefix
       system "#{@autotools_pre_configure_options} ./configure #{CREW_CONFIGURE_OPTIONS} #{@autotools_configure_options}"
     end
-    system 'make'
+
+    # Add "-j#" argument to "make" at compile-time, if necessary.
+    if @autotools_make_j1
+      system 'make', '-j1'
+    else
+      system 'make', '-j', CREW_NPROC
+    end
+
     @autotools_build_extras&.call
   end
 
