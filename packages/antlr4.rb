@@ -22,7 +22,7 @@ class Antlr4 < Package
 
   def self.build
     Dir.chdir 'runtime/Cpp' do
-      system "cmake -B builddir #{CREW_CMAKE_OPTIONS} -G Ninja -DBUILD_GMOCK=OFF -DINSTALL_GTEST=OFF"
+      system "cmake -B builddir #{CREW_CMAKE_OPTIONS} -G Ninja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DBUILD_GMOCK=OFF -DINSTALL_GTEST=OFF"
       system "#{CREW_NINJA} -C builddir"
     end
   end
