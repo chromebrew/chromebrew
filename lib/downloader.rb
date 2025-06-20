@@ -3,6 +3,7 @@ require 'io/console'
 require 'uri'
 require_relative 'const'
 require_relative 'color'
+require_relative 'convenience_functions'
 require_relative 'progress_bar'
 require_relative 'require_gem'
 

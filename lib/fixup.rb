@@ -4,6 +4,7 @@ require 'etc'
 require 'json'
 require 'open3'
 require_relative 'color'
+require_relative 'convenience_functions'
 require_relative 'package'
 require_relative 'require_gem'
 

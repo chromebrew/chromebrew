@@ -2,6 +2,7 @@ require 'English'
 require 'json'
 require_relative 'const'
 require_relative 'color'
+require_relative 'convenience_functions'
 require_relative 'package_helpers'
 require_relative 'require_gem'
 require_relative 'selector'
@@ -360,7 +361,7 @@ class Package
     rescue RuntimeError => e
       # Print failed line number and error message.
       puts "#{e.backtrace[1]}: #{e.message}".orange
-      raise InstallError, "`#{env.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')} #{cmd_args.join(' ')}` exited with #{$CHILD_STATUS.exitstatus}".lightred
+      raise InstallError, "`#{env.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')} #{args.join(' ')}` exited with #{$CHILD_STATUS.exitstatus}".lightred
     end
   end
 end
