@@ -11,8 +11,8 @@ class Alpine < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6c919cb0d6fad903fc0e0cb96f1d8bff6030181a9e871b38ccd59a121f342dfe',
-     armv7l: '6c919cb0d6fad903fc0e0cb96f1d8bff6030181a9e871b38ccd59a121f342dfe',
+    aarch64: '97f66e93f7de167aa3c97e30e4aa5aceaf7f79f74a9c393d22d3049608a9c811',
+     armv7l: '97f66e93f7de167aa3c97e30e4aa5aceaf7f79f74a9c393d22d3049608a9c811',
        i686: '4e27c9aea09ba924079a2859bbbd95f2fbae2222fe1b2467e911fe48e1807cc3',
      x86_64: '04ae487cecf31e36e722c60139ca25d6261271a1fffaae37149e9446b2ad43a1'
   })
