@@ -18,15 +18,14 @@ class Alpine < Autotools
   })
 
   depends_on 'e2fsprogs'
-  depends_on 'hunspell_en_us'
-  depends_on 'openldap'
-  depends_on 'tcl' # R
   depends_on 'glibc' # R
-  depends_on 'libxcrypt' # R
+  depends_on 'hunspell_en_us'
   depends_on 'krb5' # R
   depends_on 'libcyrussasl' # R
   depends_on 'ncurses' # R
+  depends_on 'openldap'
   depends_on 'openssl' # R
+  depends_on 'tcl' # R
 
   autotools_make_j1
   run_tests
