@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_markdown < Pip
   description 'Markdown is a Python implementation of Markdown.'
   homepage 'https://python-markdown.github.io/'
-  version "3.8.1-#{CREW_PY_VER}"
+  version "3.8.2-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
