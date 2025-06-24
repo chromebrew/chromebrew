@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libheif < Package
+class Libheif < CMake
   description 'libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.'
   homepage 'https://github.com/strukturag/libheif'
-  version '1.17.6'
+  version '1.19.8'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/strukturag/libheif.git'
@@ -34,16 +34,4 @@ class Libheif < Package
   depends_on 'zlib' # R
 
   gnome
-
-  def self.build
-    system "cmake -B builddir \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
-        -Wno-dev"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
 end
