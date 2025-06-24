@@ -3,17 +3,17 @@ require 'buildsystems/cmake'
 class Libavif < CMake
   description 'Library for encoding and decoding .avif files'
   homepage 'https://github.com/AOMediaCodec/libavif'
-  version '1.3.0'
+  version '1.3.0-1'
   license 'BSD-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/AOMediaCodec/libavif.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '91029d3d2d8a826af8fa188f06217710a2ed4ab49eb7880a356b0454d5ca2e7d',
-     armv7l: '91029d3d2d8a826af8fa188f06217710a2ed4ab49eb7880a356b0454d5ca2e7d',
-     x86_64: '78252aa3decc765b1488c92d447c2cc43ac629d396ec4cc83ccdeadf142d3278'
+    aarch64: '31bf34948e97975e1ca0f91627da1696280e8d3ce99b69c278e66d3a0e51b8ff',
+     armv7l: '31bf34948e97975e1ca0f91627da1696280e8d3ce99b69c278e66d3a0e51b8ff',
+     x86_64: '326b30866bffcf96ebc358dc231479c0b237c2965eb1744602f7bd1d7c21b4e9'
   })
 
   depends_on 'dav1d' => :build
