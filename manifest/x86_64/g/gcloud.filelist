@@ -3175,6 +3175,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/source_manager/resource_args.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/source_manager/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/cli_backend.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/ddl_parser.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/iam.py
@@ -3498,6 +3499,9 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/workstations/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/workstations/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/zone_management/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/zone_management/identity_provider/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/zone_management/identity_provider/hooks.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/zone_management/identity_provider/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/zone_management/project/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/zone_management/service/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/zone_management/service_account/__init__.py
@@ -6462,6 +6466,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/AuthzPolicyCustomProvider.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/AuthzPolicyCustomProviderAuthzExtension.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/AuthzPolicyTarget.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/BackendAuthenticationConfig.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/CertificateProviderInstance.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/ClientTlsPolicy.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/Destination.yaml
@@ -8553,6 +8558,7 @@
 /usr/local/share/gcloud/lib/surface/compute/interconnects/application_awareness/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/application_awareness/configure_shaper_average_percentage.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/application_awareness/configure_strict_priority_policy.py
+/usr/local/share/gcloud/lib/surface/compute/interconnects/application_awareness/delete.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/application_awareness/get_config.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/application_awareness/update.py
 /usr/local/share/gcloud/lib/surface/compute/interconnects/attachments/__init__.py
@@ -12676,6 +12682,7 @@
 /usr/local/share/gcloud/lib/surface/netapp/volumes/create.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/delete.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/describe.py
+/usr/local/share/gcloud/lib/surface/netapp/volumes/establish_peering.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/list.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/quota_rules/__init__.py
 /usr/local/share/gcloud/lib/surface/netapp/volumes/quota_rules/create.py
@@ -14490,6 +14497,7 @@
 /usr/local/share/gcloud/lib/surface/services/groups/__init__.py
 /usr/local/share/gcloud/lib/surface/services/groups/list_ancestor_groups.py
 /usr/local/share/gcloud/lib/surface/services/groups/list_descendant_services.py
+/usr/local/share/gcloud/lib/surface/services/groups/list_expanded_members.py
 /usr/local/share/gcloud/lib/surface/services/groups/list_members.py
 /usr/local/share/gcloud/lib/surface/services/identity/__init__.py
 /usr/local/share/gcloud/lib/surface/services/identity/create.py
@@ -14584,6 +14592,7 @@
 /usr/local/share/gcloud/lib/surface/spanner/backups/remove_iam_policy_binding.yaml
 /usr/local/share/gcloud/lib/surface/spanner/backups/set_iam_policy.yaml
 /usr/local/share/gcloud/lib/surface/spanner/backups/update_metadata.yaml
+/usr/local/share/gcloud/lib/surface/spanner/cli.py
 /usr/local/share/gcloud/lib/surface/spanner/databases/__init__.py
 /usr/local/share/gcloud/lib/surface/spanner/databases/add_iam_policy_binding.yaml
 /usr/local/share/gcloud/lib/surface/spanner/databases/change_quorum.py
@@ -15236,10 +15245,19 @@
 /usr/local/share/gcloud/lib/surface/zone_management/__init__.py
 /usr/local/share/gcloud/lib/surface/zone_management/auth/__init__.py
 /usr/local/share/gcloud/lib/surface/zone_management/auth/print_identity_token.py
+/usr/local/share/gcloud/lib/surface/zone_management/identity_provider/__init__.py
+/usr/local/share/gcloud/lib/surface/zone_management/identity_provider/create.yaml
+/usr/local/share/gcloud/lib/surface/zone_management/identity_provider/delete.yaml
+/usr/local/share/gcloud/lib/surface/zone_management/identity_provider/describe.yaml
+/usr/local/share/gcloud/lib/surface/zone_management/identity_provider/list.yaml
 /usr/local/share/gcloud/lib/surface/zone_management/project/__init__.py
+/usr/local/share/gcloud/lib/surface/zone_management/project/describe.yaml
 /usr/local/share/gcloud/lib/surface/zone_management/project/enable.yaml
+/usr/local/share/gcloud/lib/surface/zone_management/project/list.yaml
 /usr/local/share/gcloud/lib/surface/zone_management/service/__init__.py
+/usr/local/share/gcloud/lib/surface/zone_management/service/describe.yaml
 /usr/local/share/gcloud/lib/surface/zone_management/service/enable.yaml
+/usr/local/share/gcloud/lib/surface/zone_management/service/list.yaml
 /usr/local/share/gcloud/lib/surface/zone_management/service_account/__init__.py
 /usr/local/share/gcloud/lib/surface/zone_management/service_account/create.yaml
 /usr/local/share/gcloud/lib/surface/zone_management/service_account/delete.yaml
@@ -15251,6 +15269,7 @@
 /usr/local/share/gcloud/lib/surface/zone_management/zone/describe.yaml
 /usr/local/share/gcloud/lib/surface/zone_management/zone/get_iam_policy.yaml
 /usr/local/share/gcloud/lib/surface/zone_management/zone/list.yaml
+/usr/local/share/gcloud/lib/surface/zone_management/zone/set_iam_policy.yaml
 /usr/local/share/gcloud/lib/third_party/antlr3/LICENSE
 /usr/local/share/gcloud/lib/third_party/antlr3/__init__.py
 /usr/local/share/gcloud/lib/third_party/antlr3/compat.py
