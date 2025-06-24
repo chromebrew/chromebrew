@@ -7,13 +7,13 @@ class Babl < Meson
   license 'LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.gimp.org/pub/babl/#{version.rpartition('.')[0]}/babl-#{version}.tar.xz"
-  source_sha256 'bf47be7540d6275389f66431ef03064df5376315e243d0bab448c6aa713f5743'
+  source_sha256 'bcbb7786c1e447703db3bc7fa34d62d0d2d117b22f04d8834c7b2d5ded456487'
   binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '4f33c875a253aedc8efac256fe5b3e47921a9a8ab64134b5873678cb92914165',
      armv7l: '4f33c875a253aedc8efac256fe5b3e47921a9a8ab64134b5873678cb92914165',
-     x86_64: 'cbd2b22313489ad73e0d37762fc55344b26711300088685597403d70c53ac13d'
+     x86_64: '11243878e0f34458bf0379a5dcf1e4042d31b6b398bed14baa01f288f7567ddd'
   })
 
   depends_on 'gcc_lib' # R
@@ -21,9 +21,8 @@ class Babl < Meson
   depends_on 'gobject_introspection' => :build
   depends_on 'lcms' # R
   depends_on 'pango' => :build
-  depends_on 'vala' => :build
 
-  meson_options '-Denable-gir=true'
+  meson_options '-Denable-gir=true -Denable-vapi=false'
 
   def self.check
     system "#{CREW_NINJA} -C builddir test || true"

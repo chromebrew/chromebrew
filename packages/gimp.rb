@@ -80,14 +80,13 @@ class Gimp < Meson
   depends_on 'py3_pygobject' # L
   depends_on 'pygtk' => :build
   depends_on 'shared_mime_info' => :build
-  depends_on 'vala' => :build
   depends_on 'xdg_base' => :build
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
 
   gnome
 
-  meson_options '-Dbug-report-url=https://github.com/chromebrew/chromebrew/issues'
+  meson_options '-Dbug-report-url=https://github.com/chromebrew/chromebrew/issues -Dvala=disabled'
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
