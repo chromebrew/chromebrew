@@ -31,6 +31,6 @@ class BasicCompactIndexClient
     return [] if data.nil? || data.empty?
     lines = data.split("\n")
     header = lines.index('---')
-    header ? lines[header + 1..] : lines
+    header ? lines[(header + 1)..] : lines
   end
 end
