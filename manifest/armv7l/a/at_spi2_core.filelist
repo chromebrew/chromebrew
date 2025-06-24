@@ -6,6 +6,7 @@
 /usr/local/include/at-spi-2.0/atspi/atspi-collection.h
 /usr/local/include/at-spi-2.0/atspi/atspi-component.h
 /usr/local/include/at-spi-2.0/atspi/atspi-constants.h
+/usr/local/include/at-spi-2.0/atspi/atspi-device-a11y-manager.h
 /usr/local/include/at-spi-2.0/atspi/atspi-device-legacy.h
 /usr/local/include/at-spi-2.0/atspi/atspi-device-listener.h
 /usr/local/include/at-spi-2.0/atspi/atspi-device-x11.h
@@ -74,7 +75,7 @@
 /usr/local/lib/gtk-2.0/modules/libatk-bridge.so
 /usr/local/lib/libatk-1.0.so
 /usr/local/lib/libatk-1.0.so.0
-/usr/local/lib/libatk-1.0.so.0.25200.1
+/usr/local/lib/libatk-1.0.so.0.25611.1
 /usr/local/lib/libatk-bridge-2.0.so
 /usr/local/lib/libatk-bridge-2.0.so.0
 /usr/local/lib/libatk-bridge-2.0.so.0.0.0
@@ -140,6 +141,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/at-spi2-core.mo
 /usr/local/share/locale/ja/LC_MESSAGES/at-spi2-core.mo
 /usr/local/share/locale/ka/LC_MESSAGES/at-spi2-core.mo
+/usr/local/share/locale/kab/LC_MESSAGES/at-spi2-core.mo
 /usr/local/share/locale/kk/LC_MESSAGES/at-spi2-core.mo
 /usr/local/share/locale/km/LC_MESSAGES/at-spi2-core.mo
 /usr/local/share/locale/kn/LC_MESSAGES/at-spi2-core.mo
