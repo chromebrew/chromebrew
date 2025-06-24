@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class At_spi2_core < Meson
   description 'This is over DBus, tookit widgets provide their content to screen readers such as Orca'
   homepage 'https://www.freedesktop.org/wiki/'
-  version '2.51.91'
+  version '2.56.2'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/at-spi2-core.git'
-  git_hashtag "AT_SPI2_CORE_#{version.gsub('.', '_')}"
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
