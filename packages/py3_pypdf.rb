@@ -12,7 +12,7 @@ class Py3_pypdf < Pip
   binary_sha256({
     aarch64: '7dbf6dbd0f2efa72cecefb46ea84b0054d35a92bc92b57b355fe6b36b7058fd6',
      armv7l: '7dbf6dbd0f2efa72cecefb46ea84b0054d35a92bc92b57b355fe6b36b7058fd6',
-       i686: '34449603e2f6fb980bcf4cedde9edd50637b4ceca454e7b6e8e2302bc7a9141c',
+       i686: 'f857a980c6155abdb197e8bcd5e41b3d8484684c6366dd53e56296dcf5ee2149',
      x86_64: 'e6162f4fd1a8a761b916a1d7df952a645a038d4736b965196bcae2e8e701806f'
   })
 

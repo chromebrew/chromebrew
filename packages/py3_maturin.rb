@@ -16,7 +16,7 @@ class Py3_maturin < Python
   binary_sha256({
     aarch64: 'e34eda2a7da489be82c6df2339a502fe42c4f16cd62ba188da0ba81dffa5e072',
      armv7l: 'e34eda2a7da489be82c6df2339a502fe42c4f16cd62ba188da0ba81dffa5e072',
-       i686: '343adb0f7a99531619fd7424cad6cd70cbf865bac6f48f5d93f731130a40a57e',
+       i686: '8287cd7c7fd8ce6b7ec8a2dac920d0b38e28f3c6dbab1cdea7420af44558e8dc',
      x86_64: '33c8a001fb8820f0facc137068ff8702c0c2b7f97de0e2350b184981dd7fa6d4'
   })
 
