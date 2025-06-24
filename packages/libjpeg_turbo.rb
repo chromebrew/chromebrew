@@ -11,8 +11,8 @@ class Libjpeg_turbo < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a320f17f92713f21b365b2a7199deeec3988ed2f6b8860edc43d96b9fb4dc2d5',
-     armv7l: 'a320f17f92713f21b365b2a7199deeec3988ed2f6b8860edc43d96b9fb4dc2d5',
+    aarch64: '8ea20f411bd98eb45cbee34128240e50e33ebd8a987da2f7602e58a352781e21',
+     armv7l: '8ea20f411bd98eb45cbee34128240e50e33ebd8a987da2f7602e58a352781e21',
        i686: '9491d4737000e80bcbdd7a39e9dc13c2178ff865beff7d800d6159bfc395e8fa',
      x86_64: '886737c6bb0a1da295b306b64ce0cd3bbd1879e24a3604b5e8a030d15b28a7cf'
   })
