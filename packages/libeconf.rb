@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Libeconf < Meson
   description 'Enhanced config file parser, which merges config files placed in several locations into one.'
   homepage 'https://github.com/openSUSE/libeconf'
-  version '0.5.2'
+  version '0.7.9'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/openSUSE/libeconf/archive/v0.5.2.tar.gz'
-  source_sha256 'c9aa04b7ef1c7312a6e045184d15465db1985abb4058cc4c562fd33c9876bb34'
+  source_url 'https://github.com/openSUSE/libeconf.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
