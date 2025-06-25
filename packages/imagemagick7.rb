@@ -67,6 +67,10 @@ class Imagemagick7 < Autotools
 
   no_upstream_update
 
+  def self.prebuild
+    ConvenienceFunctions.libtoolize('libuuid')
+  end
+
   def self.preinstall
     imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp
     abort "ImageMagick version #{imver} already installed.".lightgreen unless imver.to_s == ''
