@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gegl < Meson
   description 'GEGL (Generic Graphics Library) is a data flow based image processing framework, providing floating point processing and non-destructive image processing capabilities to GNU Image Manipulation Program and other projects.'
   homepage 'https://gegl.org/'
-  version '0.4.58'
+  version '0.4.62'
   license 'GPL-3+ and LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.gimp.org/pub/gegl/#{version.rpartition('.')[0]}/gegl-#{version}.tar.xz"
@@ -11,9 +11,9 @@ class Gegl < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '47fb9575ed6cd113051d7e18baf870b42652e205f76bb530355d8944e303a944',
-     armv7l: '47fb9575ed6cd113051d7e18baf870b42652e205f76bb530355d8944e303a944',
-     x86_64: '6c4782c69dd5b243029008e9a0b1e9f377adfe11faa15a614adba561de590f7f'
+    aarch64: '8459035ff6a09bd6a40a7ff554d33ff8f4f969c896aade3050cea193d9fa4708',
+     armv7l: '8459035ff6a09bd6a40a7ff554d33ff8f4f969c896aade3050cea193d9fa4708',
+     x86_64: '7d3a3348a8f3028940864daf6ec53d4bb5417bf30cc800de59b33a6358813394'
   })
 
   depends_on 'py3_asciidoc' => :build
@@ -42,9 +42,9 @@ class Gegl < Meson
   depends_on 'pango' # R
   depends_on 'poppler' # R
   depends_on 'source_highlight' => :build
-  depends_on 'vala' => :build
   depends_on 'zlib' # R
 
   meson_options '-Dlibjpeg=enabled \
-      -Dlibpng=enabled'
+      -Dlibpng=enabled \
+      -Dvapigen=disabled'
 end

@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# update_ruby_gem_packages version 1.9 (for Chromebrew)
+# update_ruby_gem_packages version 2.0 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo:
 # tools/update_ruby_gem_packages.rb
@@ -64,7 +64,7 @@ def update_package_files(updateable_packages)
     package_name = package.gsub(%r{^packages/ruby_}, '').gsub(/.rb$/, '')
     old_version = `sed -n -e 's/^\ \ version //p' #{package}`.chomp.delete("'").delete('"').gsub(/-\#{CREW_RUBY_VER}/, '').split('-').first
     puts "Updating #{package_name} from #{old_version} to #{new_version}".lightblue
-    system "sed -i \"s,^\ \ version\ .*,\ \ version \\\"#{new_version}-\#{CREW_RUBY_VER}\\\",\" #{package}"
+    system "sed \"s,^\ \ version\ .*,\ \ version \\\"#{new_version}-\#{CREW_RUBY_VER}\\\",g;w #{package}.new\" #{package} && mv #{package}.new #{package}"
   end
 end
 

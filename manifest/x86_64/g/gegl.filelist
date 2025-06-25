@@ -146,7 +146,7 @@
 /usr/local/lib64/girepository-1.0/Gegl-0.4.typelib
 /usr/local/lib64/libgegl-0.4.so
 /usr/local/lib64/libgegl-0.4.so.0
-/usr/local/lib64/libgegl-0.4.so.0.457.1
+/usr/local/lib64/libgegl-0.4.so.0.461.1
 /usr/local/lib64/libgegl-npd-0.4.so
 /usr/local/lib64/libgegl-sc-0.4.so
 /usr/local/lib64/pkgconfig/gegl-0.4.pc
@@ -215,5 +215,3 @@
 /usr/local/share/locale/tr/LC_MESSAGES/gegl-0.4.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gegl-0.4.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gegl-0.4.mo
-/usr/local/share/vala/vapi/gegl-0.4.deps
-/usr/local/share/vala/vapi/gegl-0.4.vapi

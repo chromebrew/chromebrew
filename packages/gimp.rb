@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gimp < Meson
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
-  version '3.0.2'
+  version '3.1.2'
   license 'GPL-3 and LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gimp.git'
@@ -11,9 +11,9 @@ class Gimp < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1a03ee53a68d5ffae4daed119d2fc3110366587f5c55739e0380da6aec4354f5',
-     armv7l: '1a03ee53a68d5ffae4daed119d2fc3110366587f5c55739e0380da6aec4354f5',
-     x86_64: '2dc3db9a9078f9eb1b4c1034fe598eb371a195435eddb497c59b6388374c5d91'
+    aarch64: '78a63bae70311bfc50ebe8e10f3abf15baabf9cef8f6f29d3bf669a36ba882a9',
+     armv7l: '78a63bae70311bfc50ebe8e10f3abf15baabf9cef8f6f29d3bf669a36ba882a9',
+     x86_64: '2ade39c6326e6805f9122e9c32f53c9f960dcd2c85a709dec167adf58c895807'
   })
 
   depends_on 'aalib' # R
@@ -80,14 +80,13 @@ class Gimp < Meson
   depends_on 'py3_pygobject' # L
   depends_on 'pygtk' => :build
   depends_on 'shared_mime_info' => :build
-  depends_on 'vala' => :build
   depends_on 'xdg_base' => :build
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
 
   gnome
 
-  meson_options '-Dbug-report-url=https://github.com/chromebrew/chromebrew/issues'
+  meson_options '-Dbug-report-url=https://github.com/chromebrew/chromebrew/issues -Dvala=disabled'
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"

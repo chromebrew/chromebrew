@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_retrying < Pip
   description 'Retrying simplifies the task of adding retry behavior to just about anything.'
   homepage 'https://github.com/rholder/retrying/'
-  version "1.3.4-#{CREW_PY_VER}"
+  version "1.4.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '71b2618e43b2ce096ad90ea8a0c57dda5e0657b854d1372531230ef9bac975ea',
-     armv7l: '71b2618e43b2ce096ad90ea8a0c57dda5e0657b854d1372531230ef9bac975ea',
-       i686: '5cd060867dbfc7bc1ae6ad6f7952451f4c523dbb56b5c6ff1dba33024bebf2ef',
-     x86_64: '52c23837024cb22e5f380501162134e372bc74ad3958eb4e3ae0635580de683d'
+    aarch64: 'b949dc58356f623a36f55e0c9c3a42613256d52da2e7f3c04e5f2a2b599ea364',
+     armv7l: 'b949dc58356f623a36f55e0c9c3a42613256d52da2e7f3c04e5f2a2b599ea364',
+       i686: '2bef91ee48c697898fe141cb53ba58f403e8928e3df97a6b4866c322029f4cd6',
+     x86_64: '6110ae3b198fd455d8bb9270403c657f11827dcfbc00bed1186214b246f77b42'
   })
 
   depends_on 'py3_six'

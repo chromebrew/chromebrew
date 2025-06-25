@@ -4,7 +4,6 @@
 set -e
 cd /usr/local/lib/crew/packages/
 echo "CREW_BRANCH: $CREW_BRANCH"
-crew update && yes | crew upgrade
 git clone --depth=1 --branch="$CREW_BRANCH" "$CREW_REPO" ~/build_test
 # Check if rubocop-chromebrew is installed and working, and if not install it.
 rubocop --require rubocop-chromebrew &>/dev/null || gem install rubocop-chromebrew
@@ -36,7 +35,7 @@ yes | crew remove vim
 # Some packages are placeholders not meant to be installed.
 skip_install_packages='py3_unsupported_python'
 # Some packages don't handle being removed well.
-skip_remove_packages='ruby_matrix'
+skip_remove_packages=''
 
 if [[ -n ${CHANGED_PACKAGES-} ]]; then
   all_compatible_packages=$(crew list -d compatible)

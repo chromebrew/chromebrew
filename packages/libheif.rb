@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libheif < Package
+class Libheif < CMake
   description 'libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.'
   homepage 'https://github.com/strukturag/libheif'
-  version '1.17.6'
+  version '1.19.8'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/strukturag/libheif.git'
@@ -11,12 +11,11 @@ class Libheif < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9c116b6ac1b5da63aa2917a80a7b76c30b6409a32c77644271bc1b038dfa1842',
-     armv7l: '9c116b6ac1b5da63aa2917a80a7b76c30b6409a32c77644271bc1b038dfa1842',
-     x86_64: '6993cb1d221656dfce127fb0de2d1dceb27815f46f20a33abdc4b72e03f6bc56'
+    aarch64: 'caf5cf99e4654d25d9a1192d2b6b1a871400255f1d143f650bd5e4f29bb6a24e',
+     armv7l: 'caf5cf99e4654d25d9a1192d2b6b1a871400255f1d143f650bd5e4f29bb6a24e',
+     x86_64: 'adef3f8f972c6d2b32da90648530e093f4ba67f872673cfdfffae094610ebcc2'
   })
 
-  depends_on 'dav1d' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
@@ -29,21 +28,8 @@ class Libheif < Package
   depends_on 'libtiff' # L
   depends_on 'libwebp' # R
   depends_on 'libx265' # R
-  depends_on 'rav1e' # R
-  depends_on 'svt_av1' # R
+  depends_on 'openh264' # R
   depends_on 'zlib' # R
 
   gnome
-
-  def self.build
-    system "cmake -B builddir \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
-        -Wno-dev"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
 end
