@@ -55,6 +55,7 @@
 /usr/local/lib/mysql/plugin/auth_socket.so
 /usr/local/lib/mysql/plugin/auth_test_plugin.so
 /usr/local/lib/mysql/plugin/component_audit_api_message_emit.so
+/usr/local/lib/mysql/plugin/component_connection_control.so
 /usr/local/lib/mysql/plugin/component_example_component1.so
 /usr/local/lib/mysql/plugin/component_example_component2.so
 /usr/local/lib/mysql/plugin/component_example_component3.so
@@ -110,6 +111,7 @@
 /usr/local/lib/mysql/plugin/component_test_sys_var_service_str.so
 /usr/local/lib/mysql/plugin/component_test_system_variable_source.so
 /usr/local/lib/mysql/plugin/component_test_table_access.so
+/usr/local/lib/mysql/plugin/component_test_udf_aggregate.so
 /usr/local/lib/mysql/plugin/component_test_udf_registration.so
 /usr/local/lib/mysql/plugin/component_test_udf_services.so
 /usr/local/lib/mysql/plugin/component_udf_reg_3_func.so
@@ -178,7 +180,6 @@
 /usr/local/lib/mysql/plugin/test_udf_services.so
 /usr/local/lib/mysql/plugin/udf_example.so
 /usr/local/lib/mysql/plugin/validate_password.so
-/usr/local/lib/mysql/plugin/version_token.so
 /usr/local/lib64/libmysqlclient.a
 /usr/local/lib64/libmysqlclient.so
 /usr/local/lib64/libmysqlclient.so.24

@@ -11,7 +11,7 @@ class Mysql < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '56b7178a5c3a9a04328e20ae7e93bbdcf261cca9acb508199f586481848e5573'
+     x86_64: 'e95849f10a488be120f2e6c33a20d9d247a8aa6dd10f8ca95e74613aac9579fe'
   })
 
   depends_on 'boost' => :build
@@ -28,6 +28,7 @@ class Mysql < CMake
   depends_on 'rpcsvc_proto' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
+  depends_on 'glibc' # R
 
   def self.postinstall
     return if CREW_IN_CONTAINER
