@@ -88,9 +88,7 @@ class Mysql < CMake
   cmake_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
     File.write "#{CREW_DEST_PREFIX}/etc/bash.d/01-mysql", <<~EOF
-      if [[ -f /.dockerenv ]]; then
-        :
-      else 
+      if [[ ! -f /.dockerenv ]]; then
         [ -x #{CREW_PREFIX}/bin/mysql.server ] && #{CREW_PREFIX}/bin/mysql.server start
       fi
     EOF
