@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.62.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.62.2' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -135,9 +135,9 @@ CREW_VERBOSE ||= ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
 # Set CREW_NPROC from environment variable, `distcc -j`, or `nproc`.
 CREW_NPROC ||=
   if File.file?("#{CREW_PREFIX}/bin/distcc")
-    ENV.fetch('CREW_NPROC', `distcc -j`.chomp)
+    ENV.fetch('CREW_NPROC', `distcc -j`.chomp) unless defined?(CREW_NPROC)
   else
-    ENV.fetch('CREW_NPROC', `nproc`.chomp)
+    ENV.fetch('CREW_NPROC', `nproc`.chomp) unless defined?(CREW_NPROC)
   end
 
 # Set following as boolean if environment variables exist.
