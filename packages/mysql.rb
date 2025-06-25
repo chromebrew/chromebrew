@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Mysql < CMake
   description "MySQL Community Edition is a freely downloadable version of the world's most popular open source database"
   homepage 'https://www.mysql.com/'
-  version '9.1.0'
+  version '9.3.0'
   license 'GPL-2'
   compatibility 'x86_64' # Only 64-bit platforms are supported, so this will work on aarch64 userspaces once those are supported.
   source_url 'https://github.com/mysql/mysql-server.git'
@@ -11,11 +11,12 @@ class Mysql < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '56b7178a5c3a9a04328e20ae7e93bbdcf261cca9acb508199f586481848e5573'
+     x86_64: '28473b83b99fdc308d7b149b5d90aae624f41fafcf9ac4610d7bf0e63fcd7474'
   })
 
   depends_on 'boost' => :build
   depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
   depends_on 'icu4c', '== 75.1'
   depends_on 'libcyrussasl' => :build
   depends_on 'libedit' # R
@@ -30,6 +31,8 @@ class Mysql < CMake
   depends_on 'zstd' # R
 
   def self.postinstall
+    return if CREW_IN_CONTAINER
+
     FileUtils.mkdir_p "#{CREW_PREFIX}/var/mysql/data"
     system "mysqld --initialize-insecure --user=#{USER}" unless Dir.empty? "#{CREW_PREFIX}/var/mysql/data"
     puts
@@ -86,7 +89,9 @@ class Mysql < CMake
   cmake_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
     File.write "#{CREW_DEST_PREFIX}/etc/bash.d/01-mysql", <<~EOF
-      [ -x #{CREW_PREFIX}/bin/mysql.server ] && #{CREW_PREFIX}/bin/mysql.server start
+      if [[ ! -f /.dockerenv ]]; then
+        [ -x #{CREW_PREFIX}/bin/mysql.server ] && #{CREW_PREFIX}/bin/mysql.server start
+      fi
     EOF
   end
 end
