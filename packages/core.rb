@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '3.14'
+  version '3.15'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -94,6 +94,8 @@ class Core < Package
   depends_on 'ruby_gem_compiler'
   # For use in ruby prompts.
   depends_on 'ruby_highline'
+  # Needed by lib/misc_functions.
+  depends_on 'ruby_matrix'
   # Needed for buildsystems reporting.
   depends_on 'ruby_method_source'
   # Adds File.which
@@ -104,7 +106,7 @@ class Core < Package
   depends_on 'ruby_rake' if CREW_IN_CONTAINER
   # crew check -V breaks without this.
   depends_on 'ruby_ruby_libversion'
-  # Needed for rubygem updates
+  # Needed for rubygem updates.
   depends_on 'ruby_rubygems_update'
   # These are the "Default Gems" that come with Ruby.
   depends_on 'default_gems'
