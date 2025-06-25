@@ -11,7 +11,7 @@ class Mysql < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'e95849f10a488be120f2e6c33a20d9d247a8aa6dd10f8ca95e74613aac9579fe'
+     x86_64: '28473b83b99fdc308d7b149b5d90aae624f41fafcf9ac4610d7bf0e63fcd7474'
   })
 
   depends_on 'boost' => :build
