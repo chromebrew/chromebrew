@@ -11,8 +11,8 @@ class Util_linux < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'db53c6aac00a7b8538b21779e2540ab523f837493aff0548f39469e92a899d08',
-     armv7l: 'db53c6aac00a7b8538b21779e2540ab523f837493aff0548f39469e92a899d08',
+    aarch64: '77a7d99d721c3366567224bfc5efc758040505bd52d71f3d487ae56e53da7c8d',
+     armv7l: '77a7d99d721c3366567224bfc5efc758040505bd52d71f3d487ae56e53da7c8d',
        i686: 'ef3547c60f160f7bfb1e3a8acce8f21838bc33dd371215bf71efc5f5978d5d4c',
      x86_64: '7d831a53ebdc3a9c114293584c0a900a626aeb7f83aaefe1379e3bb550ebc3bc'
   })
