@@ -6,7 +6,6 @@
 /usr/local/include/openblas/lapacke_example_aux.h
 /usr/local/include/openblas/lapacke_mangling.h
 /usr/local/include/openblas/lapacke_utils.h
-/usr/local/include/openblas/openblas/lapacke_mangling.h
 /usr/local/include/openblas/openblas_config.h
 /usr/local/lib/cmake/OpenBLAS/OpenBLASConfig.cmake
 /usr/local/lib/cmake/OpenBLAS/OpenBLASConfigVersion.cmake
