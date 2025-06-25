@@ -12,7 +12,7 @@ class Ruby_debug < RUBY
   binary_sha256({
     aarch64: 'a2e20733b547ec3c4213bd402ef4a33eedbfed7da7c0f0e423bb31b76963e8ff',
      armv7l: 'a2e20733b547ec3c4213bd402ef4a33eedbfed7da7c0f0e423bb31b76963e8ff',
-       i686: 'c8053721a5c8875f4a36ed66f7aa067f175de923e60ad43ed120cee991c74039',
+       i686: 'ccf6c9a901804bcc1618a5e8a69c34f68c024fc9f5dd3fcbe9864035d30d4d3f',
      x86_64: 'c0a9aa18722f3afd924eb9ddcc6595e2efd22752c76f19a462334b2ee1988057'
   })
 
