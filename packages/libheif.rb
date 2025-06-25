@@ -28,8 +28,8 @@ class Libheif < CMake
   depends_on 'libtiff' # L
   depends_on 'libwebp' # R
   depends_on 'libx265' # R
-  depends_on 'zlib' # R
   depends_on 'openh264' # R
+  depends_on 'zlib' # R
 
   gnome
 end
