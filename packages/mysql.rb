@@ -16,6 +16,7 @@ class Mysql < CMake
 
   depends_on 'boost' => :build
   depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
   depends_on 'icu4c', '== 75.1'
   depends_on 'libcyrussasl' => :build
   depends_on 'libedit' # R
@@ -28,7 +29,6 @@ class Mysql < CMake
   depends_on 'rpcsvc_proto' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'glibc' # R
 
   def self.postinstall
     return if CREW_IN_CONTAINER
