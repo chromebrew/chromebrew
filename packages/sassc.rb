@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Sassc < Autotools
   description 'C implementation of Sass CSS preprocessor.'
   homepage 'https://github.com/sass/sassc'
-  version '3.6.2-1'
+  version '3.6.2-2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/sass/sassc.git'
@@ -11,10 +11,10 @@ class Sassc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f651a9de4a61d1cf70395b20cc3ebe791bf2c22a6926334b614fb2ee9073e619',
-     armv7l: 'f651a9de4a61d1cf70395b20cc3ebe791bf2c22a6926334b614fb2ee9073e619',
-       i686: '538857ea1f1e5821b808f201e5d2fef2b58408b34557f9571fd84ae5800fb30a',
-     x86_64: '269d6fd0a548986c1ced744ddfb9b94caf51c430697ddbaf32fa8bb844c19c1e'
+    aarch64: 'c875abe53efffbad34a9595d8451d3d0f9925018de5f3fc42fe676b0f540d9a5',
+     armv7l: 'c875abe53efffbad34a9595d8451d3d0f9925018de5f3fc42fe676b0f540d9a5',
+       i686: 'b294a022d0f07347486e6d42d0157d6d58fd3c7ff36556bc2b77e983fa623164',
+     x86_64: '95c5d967a8934f182d6b972bbec0a6125897576b7962b9dac767deadc0481c9b'
   })
 
   depends_on 'gcc_lib' # R

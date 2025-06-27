@@ -3,23 +3,23 @@ require 'buildsystems/meson'
 class Glib < Meson
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://docs.gtk.org/glib/'
-  version '2.85.1'
+  version '2.85.1-1'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c995ef591d84df90ebb19a05d5a8ef44bb77a01f1779967916f1be06596a7342',
-     armv7l: 'c995ef591d84df90ebb19a05d5a8ef44bb77a01f1779967916f1be06596a7342',
-       i686: '1273f071eb338b5cd51446d6ba8787bb955b9a0e2769977dac386b4b188102ac',
-     x86_64: 'f6cdaabd743e0c520681b1c101bc39c106f0c316af1716dd0178503bcee195ef'
+    aarch64: 'bff19df2b2e30b26d075612c61fe87ed17f215f4ab3791423e9790b183540628',
+     armv7l: 'bff19df2b2e30b26d075612c61fe87ed17f215f4ab3791423e9790b183540628',
+       i686: '8d94ca964353e3b28f18964e2a5a1d0b3393b8058bfde3025706d311895308db',
+     x86_64: 'b68a3863af660fd462fc1faedc086f85105f1c86d2fa4ce38add7d6cb374bd3f'
   })
 
   depends_on 'elfutils' # R
   depends_on 'gcc_lib' # R
-  # depends_on 'gobject_introspection' unless ARCH == 'i686' # L
+  depends_on 'gobject_introspection' => :build unless ARCH == 'i686' # L
   depends_on 'libffi' # R
   depends_on 'pcre2' # R
   depends_on 'py3_pygments' => :build
