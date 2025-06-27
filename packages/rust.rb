@@ -14,7 +14,7 @@ class Rust < Package
     aarch64: 'd4738c64e9fedef0cc6273786d9077ccfdce8eeadbe80ed1e435440372ae858e',
      armv7l: 'd4738c64e9fedef0cc6273786d9077ccfdce8eeadbe80ed1e435440372ae858e',
        i686: '5e065a59b81143a5b9630bc8cb966768cacfaea38e379735d07870d16a34e9b0',
-     x86_64: '9608d7152960d2e0b31351a8649372108df6c3739ac6140933c494dff14384c4'
+     x86_64: 'bcd48c29793bac59ce4be749d6fa23139d605aa95dab122ab198f37bbc16ae5f'
   })
 
   depends_on 'gcc_lib' # R
