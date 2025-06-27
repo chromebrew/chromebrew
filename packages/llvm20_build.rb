@@ -129,8 +129,6 @@ class Llvm20_build < Package
             -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
             -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}"}' \
-            -DCLANG_DEFAULT_LINKER=mold \
-            -DCMAKE_LIBRARY_PATH='#{CREW_LIB_PREFIX}' \
             -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
             -DCOMPILER_RT_BUILD_BUILTINS=ON \
             -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
@@ -155,16 +153,6 @@ class Llvm20_build < Package
             -Wno-dev"
     end
     system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
-    # @counter = 1
-    # @counter_max = 20
-    # loop do
-    # break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
-
-    # puts "Make iteration #{@counter} of #{@counter_max}...".orange
-
-    # @counter += 1
-    # break if @counter > @counter_max
-    # end
   end
 
   def self.install
