@@ -172,7 +172,7 @@ unless CREW_PRE_GLIBC_STANDALONE
 
     def self.postinstall
       glibc_libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
-                        libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
+                           libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
                         libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                         libthread_db libresolv librlv librt libthread_db-1.0 libutil]
       glibc_libraries.each do |lib|
