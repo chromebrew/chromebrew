@@ -148,6 +148,10 @@ class PackageUtilsTest < Minitest::Test
     assert_equal('1.2.3', PackageUtils.get_clean_version('1.2.3-py3.12'))
   end
 
+  def test_get_clean_ruby_version
+    assert_equal('99.95', PackageUtils.get_clean_version('99.95-ruby3.4'))
+  end
+
   def test_get_clean_perl_version
     assert_equal('0.004.2', PackageUtils.get_clean_version('0.004.2-perl5.40'))
   end
