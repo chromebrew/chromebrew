@@ -171,6 +171,25 @@ unless CREW_PRE_GLIBC_STANDALONE
     end
 
     def self.postinstall
+      glibc_libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
+                        libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
+                        libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
+                        libthread_db libresolv librlv librt libthread_db-1.0 libutil]
+      glibc_libraries.each do |lib|
+        # Reject entries which aren't libraries ending in .so, and which aren't files.
+        # Reject text files such as libc.so because they points to files like
+        # libc_nonshared.a, which are not provided by ChromeOS
+        Dir["#{CREW_GLIBC_PREFIX}/#{lib}.so*"].compact.reject { |f| File.directory?(f) }.each do |f|
+          glibc_filetype = `file #{f}`.chomp
+          puts "f: #{glibc_filetype}" if @opt_verbose
+          if ['shared object', 'symbolic link'].any? { |type| glibc_filetype.include?(type) }
+            g = File.basename(f)
+            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
+          elsif @opt_verbose
+            puts "#{f} excluded because #{glibc_filetype}"
+          end
+        end
+      end
       # update search cache for ld.so
       system "#{CREW_PREFIX}/bin/ldconfig", %i[out err] => File::NULL
       puts "Please run 'crew update' immediately to finish the install.".lightblue
