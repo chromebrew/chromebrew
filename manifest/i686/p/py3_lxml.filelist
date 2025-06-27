@@ -1,11 +1,11 @@
-/usr/local/lib/python3.13/site-packages/lxml-5.4.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/lxml-5.4.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/lxml-5.4.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/lxml-5.4.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/lxml-5.4.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/lxml-5.4.0.dist-info/licenses/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/lxml-5.4.0.dist-info/licenses/LICENSES.txt
-/usr/local/lib/python3.13/site-packages/lxml-5.4.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/lxml-6.0.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/lxml-6.0.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/lxml-6.0.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/lxml-6.0.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/lxml-6.0.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/lxml-6.0.0.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/lxml-6.0.0.dist-info/licenses/LICENSES.txt
+/usr/local/lib/python3.13/site-packages/lxml-6.0.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/lxml/ElementInclude.py
 /usr/local/lib/python3.13/site-packages/lxml/__init__.py
 /usr/local/lib/python3.13/site-packages/lxml/__pycache__/ElementInclude.cpython-313.pyc
@@ -39,6 +39,7 @@
 /usr/local/lib/python3.13/site-packages/lxml/html/__pycache__/ElementSoup.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/lxml/html/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/lxml/html/__pycache__/_diffcommand.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/lxml/html/__pycache__/_difflib.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/lxml/html/__pycache__/_html5builder.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/lxml/html/__pycache__/_setmixin.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/lxml/html/__pycache__/builder.cpython-313.pyc
@@ -50,6 +51,8 @@
 /usr/local/lib/python3.13/site-packages/lxml/html/__pycache__/soupparser.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/lxml/html/__pycache__/usedoctest.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/lxml/html/_diffcommand.py
+/usr/local/lib/python3.13/site-packages/lxml/html/_difflib.cpython-313-i386-linux-gnu.so
+/usr/local/lib/python3.13/site-packages/lxml/html/_difflib.py
 /usr/local/lib/python3.13/site-packages/lxml/html/_html5builder.py
 /usr/local/lib/python3.13/site-packages/lxml/html/_setmixin.py
 /usr/local/lib/python3.13/site-packages/lxml/html/builder.py

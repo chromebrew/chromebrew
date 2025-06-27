@@ -12,7 +12,7 @@ class Py3_ruff < Pip
   binary_sha256({
     aarch64: '41f6628982d9e2e1d7df9578cfde30dbe4fce50ebdab912c96ff8f1c8a3f96d1',
      armv7l: '41f6628982d9e2e1d7df9578cfde30dbe4fce50ebdab912c96ff8f1c8a3f96d1',
-       i686: 'b00fb4ac8bd5bcc47c527c6b76561d4b6bf521c20df7fcc557c82edfec98a0c2',
+       i686: 'e95be7f24bd8b4177a959f4c82d25a66a50cde5782c877c16a20e9a98b0d98c8',
      x86_64: 'a381c9f8700384120c4ee62416f34bffe59333918b0391e83686a9ef59266408'
   })
 

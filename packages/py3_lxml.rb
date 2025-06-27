@@ -12,7 +12,7 @@ class Py3_lxml < Pip
   binary_sha256({
     aarch64: 'f9bf55374f51ae5e28cafae18d9a89fd8f96ff8ee78147619d6f7fa1ea54cfe0',
      armv7l: 'f9bf55374f51ae5e28cafae18d9a89fd8f96ff8ee78147619d6f7fa1ea54cfe0',
-       i686: '5a447ffd74485b9ab3298dcda7b07bb4039baba42c70bbcecf728357aa28d868',
+       i686: '70c6ef4b7573b37becaa2a20c32e56880572bf445da8a62bae24817c581e2ea1',
      x86_64: '186c163f9f58125e127a6118c2461f1f10880bfbf29e478a41d6c6ed6ee0cb37'
   })
 
