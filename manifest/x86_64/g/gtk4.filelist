@@ -1,4 +1,3 @@
-/usr/local/.config/gtk-4.0/settings.ini
 /usr/local/bin/gtk4-broadwayd
 /usr/local/bin/gtk4-builder-tool
 /usr/local/bin/gtk4-encode-symbolic-svg
@@ -416,7 +415,7 @@
 /usr/local/lib64/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so
 /usr/local/lib64/libgtk-4.so
 /usr/local/lib64/libgtk-4.so.1
-/usr/local/lib64/libgtk-4.so.1.1800.4
+/usr/local/lib64/libgtk-4.so.1.1800.6
 /usr/local/lib64/pkgconfig/gtk4-atspi.pc
 /usr/local/lib64/pkgconfig/gtk4-broadway.pc
 /usr/local/lib64/pkgconfig/gtk4-unix-print.pc
