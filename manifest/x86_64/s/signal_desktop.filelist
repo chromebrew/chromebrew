@@ -111,6 +111,8 @@
 /usr/local/share/Signal/resources/app.asar.unpacked/node_modules/@signalapp/sqlcipher/prebuilds/linux-x64/@signalapp+sqlcipher.node
 /usr/local/share/Signal/resources/app.asar.unpacked/node_modules/fs-xattr/build/Release/xattr.node
 /usr/local/share/Signal/resources/apparmor-profile
+/usr/local/share/Signal/resources/org.signalapp.enable-backups.policy
+/usr/local/share/Signal/resources/org.signalapp.view-aep.policy
 /usr/local/share/Signal/resources/package-type
 /usr/local/share/Signal/signal-desktop
 /usr/local/share/Signal/snapshot_blob.bin
