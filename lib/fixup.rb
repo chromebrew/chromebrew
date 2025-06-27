@@ -1,5 +1,6 @@
 # lib/fixup.rb
 # Add fixups to be run during crew update here.
+require 'English'
 require 'etc'
 require 'json'
 require 'open3'
@@ -290,53 +291,21 @@ end
 if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patchelf")
   abort("No Upx found! Please run 'crew install upx'").lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
   abort("No Patchelf found! Please run 'crew install patchelf'").lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
-  puts "Running upx to uncompress binaries #{'and patchelf to patch binary interpreter paths ' unless CREW_PRE_GLIBC_STANDALONE}if needed.".lightblue
-  # Look for installed binaries and libraries in /usr/local and the lib
-  # prefix directories.
-  execfiles = Find.find("#{CREW_PREFIX}/bin", CREW_LIB_PREFIX).select { |p| File.executable?(p) }
-  return if execfiles.empty?
+  # Using xargs to spawn parallel processes since spawning parallel
+  # processes using ruby gems like concurrent ruby leads to out of memory
+  # errors on arm.
+  # Running find twice because it involves less ruby overhead than saving
+  # the output in memory, and also doing that in ruby is VERY SLOW.
+  puts 'Please wait while upx is run to uncompress binaries...'.lightblue
+  Kernel.system "#{CREW_PREFIX}/bin/find #{CREW_PREFIX}/bin -type f -print0 | xargs -0 -P#{CREW_NPROC} -n1 -r bash -c 'header=$(head -c4 ${0}); elfheader='$(printf '\\\177ELF')' ; arheader=\\!\\<ar ; case $header in $elfheader|$arheader) upx -qq -d ${0} ;; esac'", %i[err] => File::NULL, exception: false
 
-  @localdir = File.expand_path('../../.')
-  require_gem 'concurrent-ruby'
-  pool = Concurrent::ThreadPoolExecutor.new(
-    min_threads: 1,
-    max_threads: CREW_NPROC,
-    max_queue: 0, # unbounded work queue
-    fallback_policy: :caller_runs
-  )
-  execfiles.each do |execfiletopatch|
-    next unless File.file?(execfiletopatch)
-
-    pool.post do
-      # Decompress the binary if compressed.
-      system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL, exception: false
-
-      # Check for existing interpreter.
-      next if CREW_GLIBC_INTERPRETER.blank?
-
-      @interpreter, _read_interpreter_stderr_s, @read_interpreter_status = Open3.capture3("patchelf --print-interpreter #{execfiletopatch}")
-      # Set interpreter unless the interpreter read failed or is already
-      # set appropriately.
-      unless @read_interpreter_status && @interpreter == CREW_GLIBC_INTERPRETER
-        puts "Running patchelf on #{execfiletopatch} to set interpreter".orange if CREW_VERBOSE
-        _set_interpreter_stdout, @set_interpreter_stderr = Open3.capture3("patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{execfiletopatch}")
-        puts "#{execfiletopatch}: @set_interpreter_stderr: #{@set_interpreter_stderr.chomp}".lightpurple if !@set_interpreter_stderr.blank? && CREW_VERBOSE
-      end
-      # Try to read any existing rpath.
-      @read_rpath_stdout_s, @read_rpath_stderr_s, @read_rpath_status = Open3.capture3("patchelf --print-rpath #{execfiletopatch}")
-      @exec_rpath = @read_rpath_stdout_s.chomp
-      @rpath_status = @read_rpath_status
-      puts "#{execfiletopatch}: @read_rpath_stderr_s: #{@read_rpath_stderr_s}".lightpurple if !@read_rpath_stderr_s.blank? && CREW_VERBOSE
-      # Set rpath if rpath read didn't fail, an rpath exists, and does not
-      # already contain CREW_GLIBC_PREFIX.
-      next if !@read_rpath_rpath_status || @exec_rpath.blank? || @exec_rpath.include?(CREW_GLIBC_PREFIX)
-      puts "#{execfiletopatch.gsub(@localdir, '')} has an existing rpath of #{@exec_rpath}".lightpurple if CREW_VERBOSE
-      puts "Prefixing #{CREW_GLIBC_PREFIX} to #{@exec_rpath} rpath for #{execfiletopatch.gsub(@localdir, '')}.".lightblue
-      @set_rpath_stdout_s, @set_rpath_stderr_s, @set_rpath_status = Open3.capture3("patchelf --set-rpath #{CREW_GLIBC_PREFIX}:#{@exec_rpath} #{execfiletopatch}")
-      puts "#{execfiletopatch}: @set_rpath_stderr_s: #{@set_rpath_stderr_s}".lightpurple if !@set_rpath_stderr_s.blank? && CREW_VERBOSE
+  unless CREW_GLIBC_INTERPRETER.blank?
+    puts 'Please wait while patchelf is run to patch binary interpreter and rpath if needed...'.lightblue
+    if CREW_VERBOSE
+      Kernel.system "#{CREW_PREFIX}/bin/find #{CREW_PREFIX}/bin #{CREW_LIB_PREFIX} -type f ! -name '*.a' ! -name '*.o' ! -name '*.gox' -print0 | xargs -0 -P#{CREW_NPROC} -n1 -r bash -c 'header=$(head -c4 ${0}); elfheader='$(printf '\\\177ELF')' ; arheader=\\!\\<ar ; case $header in $elfheader|$arheader) patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} ${0} ; exec_rpath=$(patchelf --print-rpath ${0}) ; echo \"exec_rpath ${0}: \$exec_rpath\" ; if [[ -n \$exec_rpath ]] && [[ \$exec_rpath != *\"#{CREW_GLIBC_PREFIX}\"* ]]; then echo \"Will attempt to adjust rpath for ${0}...\" ; patchelf --set-rpath #{CREW_GLIBC_PREFIX}:\${exec_rpath} ${0}; fi ; if [[ -z \$exec_rpath ]]; then echo \"Will attempt to set rpath for ${0}...\" ; patchelf --set-rpath #{CREW_GLIBC_PREFIX} ${0}; fi ;; esac'", %i[err] => File::NULL, exception: false
+    else
+      Kernel.system "#{CREW_PREFIX}/bin/find #{CREW_PREFIX}/bin #{CREW_LIB_PREFIX} -type f ! -name '*.a' ! -name '*.o' ! -name '*.gox' -print0 | xargs -0 -P#{CREW_NPROC} -n1 -r bash -c 'header=$(head -c4 ${0}); elfheader='$(printf '\\\177ELF')' ; arheader=\\!\\<ar ; case $header in $elfheader|$arheader) patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} ${0} ; exec_rpath=$(patchelf --print-rpath ${0}) ; if [[ -n \$exec_rpath ]] && [[ \$exec_rpath != *\"#{CREW_GLIBC_PREFIX}\"* ]]; then patchelf --set-rpath #{CREW_GLIBC_PREFIX}:\${exec_rpath} ${0}; fi ; if [[ -z \$exec_rpath ]]; then patchelf --set-rpath #{CREW_GLIBC_PREFIX} ${0}; fi ;; esac'", %i[err] => File::NULL, exception: false
     end
-    pool.shutdown
-    pool.wait_for_termination
   end
 else
   abort 'Please install upx and patchelf first by running \'crew install upx patchelf\'.'.lightred
