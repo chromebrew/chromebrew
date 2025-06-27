@@ -7,7 +7,7 @@ unless CREW_PRE_GLIBC_STANDALONE
   class Glibc < Package
     description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
     homepage 'https://www.gnu.org/software/libc/'
-    version '2.41-5'
+    version '2.41-6'
     license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
     compatibility 'all'
     source_url 'https://sourceware.org/git/glibc.git'
