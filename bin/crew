@@ -246,13 +246,11 @@ def update
       GIT_REPAIR_COMMANDS
     end
 
-    system(<<~GIT_UPDATE_COMMANDS, chdir: CREW_LIB_PATH, exception: true)
-      ## Update crew from git.
-      # Set sparse-checkout folders.
-      git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools
-      git sparse-checkout reapply
-      git fetch #{CREW_REPO} #{CREW_BRANCH}
-    GIT_UPDATE_COMMANDS
+    ## Update crew from git.
+    # Set sparse-checkout folders.
+    system "git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools", chdir: CREW_LIB_PATH, exception: true
+    system 'git sparse-checkout reapply', chdir: CREW_LIB_PATH, exception: true
+    system "git fetch #{CREW_REPO} #{CREW_BRANCH}", chdir: CREW_LIB_PATH, exception: true
     # Now that we've fetched all the new changes, see if lib/const.rb was changed.
     # We do this before resetting to FETCH_HEAD because we lose the original HEAD when doing so.
     to_update = `cd #{CREW_LIB_PATH} && git show --name-only HEAD..FETCH_HEAD`.include?('lib/const.rb')
