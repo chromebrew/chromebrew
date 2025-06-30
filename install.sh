@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025061101
+CREW_INSTALLER_VERSION=2025062801
 # Exit on fail.
 set -eE
 
@@ -63,46 +63,42 @@ else
 fi
 
 set -a
-# Default chromebrew repo values.
+# Default chromebrew constants.
 : "${OWNER:=chromebrew}"
 : "${REPO:=chromebrew}}"
 : "${BRANCH:=master}"
 : "${CREW_BRANCH:=${BRANCH}}"
 : "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
+: "${CREW_PREFIX:=/usr/local}"
 set +a
 
-# Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
-# Check if the user is on ChromeOS v117+ and not in the VT-2 console, as sudo will not work.
-: "${CREW_PREFIX:=/usr/local}"
-if [[ "$(stat -c '%u' "${CREW_PREFIX}")" == "$(id -u)" ]] && sudo 2>&1 | grep -q 'no new privileges'; then
-  echo_error "Please run the installer in the VT-2 shell."
+# If the user does not own the installation directory, exit with instructions how to fix.
+if [ "$(stat -c '%u' "${CREW_PREFIX}")" != "$(id -u)" ]; then
+  echo_error "${CREW_PREFIX} is not owned by $(id -u)."
+  echo_info "Please launch the VT-2 shell, login as 'chronos' and execute the following:"
+  echo_info "\nsudo chown -R $(id -u):$(id -g) ${CREW_PREFIX}\n"
   echo_info "To start the VT-2 session, type Ctrl + Alt + ->"
+  echo_info "To exit the VT-2 session, type Ctrl + Alt + <-"
   exit 1
 fi
 
-# Make sure installation directory is clean.
+# Make sure the installation directory is empty.
 if [ -d "${CREW_PREFIX}" ]; then
   if [ "$(ls -A "${CREW_PREFIX}")" ]; then
     echo_error "${CREW_PREFIX} is not empty, would you like it to be cleared?"
     echo_info "This will delete ALL files in ${CREW_PREFIX}!"
-    echo_info "Continue?"
-    select continue in "Yes" "No"; do
-      if [[ "${continue}" == "Yes" ]]; then
-        sudo find "${CREW_PREFIX}" -mindepth 1 -delete
-        break 2
-      else
-        exit 1
-      fi
-    done
+    read -n1 -r -p "Continue? (y/N): " option
+    case $option in
+      [Yy]*)
+        echo_info "\nEmptying the ${CREW_PREFIX} directory..."
+        /bin/rm -rf "${CREW_PREFIX}" &> /dev/null || :
+        ;;
+      *)
+        exit 0
+    esac
   fi
 else
-  sudo mkdir -p "${CREW_PREFIX}"
-fi
-
-# Do not redundantly use sudo if the user already owns the directory.
-if [ "$(stat -c '%u' "${CREW_PREFIX}")" != "$(id -u)" ]; then
-  # This will allow things to work without sudo.
-  sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
+  /bin/mkdir -p "${CREW_PREFIX}"
 fi
 
 # Chromebrew directories.
@@ -116,7 +112,6 @@ CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 if [ -n "$CREW_CACHE_ENABLED" ]; then
   echo_intra "Verifying setup of ${CREW_CACHE_DIR} since CREW_CACHE_ENABLED is set..."
   mkdir -p "${CREW_CACHE_DIR}"
-  sudo chown -R "$(id -u)":"$(id -g)" "${CREW_CACHE_DIR}" || true
 fi
 
 # Architecture
@@ -136,19 +131,27 @@ fi
 # For container usage, when we are emulating armv7l via linux32, where uname -m will report armv8l.
 # Additionally, if the architecture is aarch64, set it to armv7l, as we treat as if it was armv7l.
 # When we have proper support for aarch64, remove this.
-if [[ "${ARCH}" = "armv8l" ]] || [[ "${ARCH}" = "aarch64" ]]; then
-  echo_info "Setting ARCH to armv7l."
-  ARCH='armv7l'
-  PREFIX_CMD="linux32 env LD_LIBRARY_PATH=${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}:/usr/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
-fi
+if [ -f /.dockerenv ]; then
+  if [[ "${ARCH}" == "armv8l" ]] || [[ "${ARCH}" == "aarch64" ]]; then
+    echo_info "Setting ARCH to armv7l."
+    ARCH='armv7l'
+    PREFIX_CMD="linux32 -B env LD_LIBRARY_PATH=${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}:/usr/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
+  fi
 
-if [[ "${ARCH}" = "x86_64" ]] && [[ -f "/lib/ld-2.23.so" ]]; then
-  echo_info "Setting ARCH to i686."
-  ARCH='i686'
-  # Set CREW_PRE_GLIBC_STANDALONE for i686.
-  export CREW_PRE_GLIBC_STANDALONE=1
-  echo "export CREW_PRE_GLIBC_STANDALONE=1" >> ~/.bashrc
-  PREFIX_CMD="linux32 env LD_LIBRARY_PATH=${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}:/usr/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
+  if [[ "${ARCH}" == "x86_64" ]] && [[ -f "/lib/ld-2.23.so" ]]; then
+    echo_info "Setting ARCH to i686."
+    ARCH='i686'
+    # Set CREW_PRE_GLIBC_STANDALONE for i686.
+    export CREW_PRE_GLIBC_STANDALONE=1
+    echo "export CREW_PRE_GLIBC_STANDALONE=1" >> ~/.bashrc
+    PREFIX_CMD="linux32 -B env LD_LIBRARY_PATH=${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}:/usr/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
+  fi
+else
+  if [[ "${ARCH}" == "aarch64" ]]; then
+    echo_info "Setting ARCH to armv7l."
+    ARCH='armv7l'
+  fi
+  PREFIX_CMD=
 fi
 
 : "${CREW_PY_VER:=3.13}"
@@ -171,15 +174,6 @@ fi
 
 echo_success "Welcome to Chromebrew!"
 
-# Prompt user to enter the sudo password if it is set.
-# If the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set.
-if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -f "${BASH_REMATCH[1]}" ]; then
-  echo_intra "Please enter the developer mode password."
-  # Reset sudo timeout.
-  sudo -k
-  sudo /bin/true
-fi
-
 # Force curl to use system libraries.
 function curl_wrapper () {
   # Retry if download failed.
@@ -196,7 +190,7 @@ function curl_wrapper () {
   elif ! curl --help &>/dev/null; then
     CURL_STATUS="broken"
     DEBUG_OUT="CURL: ${CURL_STATUS}\nLD_LIBRARY_PATH ${LD_LIBRARY_PATH}"
-    DEBUG_OUT+="$(ldd /usr/local/bin/curl)"
+    DEBUG_OUT+=$(ldd "${CREW_PREFIX}/bin/curl")
     echo_info_stderr "${DEBUG_OUT}"
     echo_error "curl is broken. Install will fail."
     exit 1
@@ -211,9 +205,9 @@ function curl_wrapper () {
     elif [[ "$CURL_STATUS" == "system" ]]; then
       if [[ "$ARCH" == "i686" ]]; then
         # i686 system curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
-        LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /usr/bin/curl -kC - "${@}" && return 0
+        LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} curl -kC - "${@}" && return 0
       else
-        LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /usr/bin/curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
+        LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
       fi
     else
       # Force TLS as we know GitLab supports it.
@@ -263,7 +257,7 @@ else
   # Get linux32 as early as possible.
   [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux' 
   BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ca_certificates libyaml openssl gmp findutils psmisc'
-  [[ "${ARCH}" == 'i686' ]] || BOOTSTRAP_PACKAGES+=' uutils_coreutils'	
+  # [[ "${ARCH}" == 'i686' ]] || BOOTSTRAP_PACKAGES+=' uutils_coreutils'	
 fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
@@ -282,10 +276,7 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ -n "${CREW_PRE_GLIBC_ST
   # shellcheck disable=SC2231
   for i in /lib${CREW_LIB_SUFFIX}/libc.so*
   do
-    sudo cp "$i" "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/"
-    libcname=$(basename "$i")
-    sudo chown chronos "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/${libcname}"
-    sudo chmod 644 "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/${libcname}"
+    cp "$i" "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/"
   done
 fi
 
@@ -374,7 +365,7 @@ function extract_install () {
       if [[ -z $XZ_STATUS ]]; then
         tar xpf ../"${2}"
       elif [[ $XZ_STATUS == 'system' ]]; then
-       LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /bin/tar -I /usr/bin/xz -xpf ../"${2}"
+       LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} tar -I /usr/bin/xz -xpf ../"${2}"
       elif [[ $XZ_STATUS == 'broken' ]] && [[ -z $ZSTD_STATUS ]] && zstd --help 2>/dev/null| grep -q lzma; then
         tar -I "${ZSTD}" -xpf ../"${2}"
       elif [[ $XZ_STATUS == 'broken' ]] && [[ $ZSTD_STATUS == 'broken' ]]; then
@@ -387,7 +378,7 @@ function extract_install () {
       if [[ -z $ZSTD_STATUS ]] && tar --usage | grep -q zstd ; then
         tar xpf ../"${2}"
       elif [[ $ZSTD_STATUS == 'system' ]]; then
-        LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /bin/tar -I "${ZSTD}" -xpf ../"${2}"
+        LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} tar -I "${ZSTD}" -xpf ../"${2}"
       elif [[ $ZSTD_STATUS == 'crew' ]]; then
         tar -I "${ZSTD}" -xpf ../"${2}"
       elif [[ $ZSTD_STATUS == 'broken' ]]; then
@@ -407,22 +398,22 @@ function extract_install () {
     if [[ "${1}" == 'glibc' ]] || [[ "${1}" == 'crew_preload' ]]; then
       # Update ld.so cache.
       if [[ "$ARCH" == "i686" ]] || [[ "$ARCH" == "armv7l" ]]; then
-        (sudo "${CREW_PREFIX}/bin/ldconfig" | tee /tmp/crew_ldconfig) || true
+        ("${CREW_PREFIX}/bin/ldconfig" | tee /tmp/crew_ldconfig) || true
       else
       "${CREW_PREFIX}/bin/ldconfig" || true
       fi
-      [[ -d /usr/local/opt/glibc-libs ]] && export LD_PRELOAD=crew-preload.so
+      [[ -f "${CREW_PREFIX}/opt/glibc-libs/crew-preload.so" ]] && export LD_PRELOAD="${CREW_PREFIX}/opt/glibc-libs/crew-preload.so"
     else
       # Decompress binaries.
       if command -v upx &> /dev/null; then
         echo_intra "Running upx on ${1}..."
-        grep "/usr/local/\(bin\|lib\|lib${CREW_LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
+        grep "${CREW_PREFIX}/\(bin\|lib\|lib${CREW_LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
       fi
       # Switch to our glibc for existing binaries if needed.
       if [[ -d /usr/local/opt/glibc-libs ]]; then
         if command -v patchelf &> /dev/null; then
           echo_intra "Running patchelf on ${1}..."
-          grep '/usr/local/bin' < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${CREW_PREFIX}/bin/ld.so" 2> /dev/null || true
+          grep "${CREW_PREFIX}/bin" < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${CREW_PREFIX}/bin/ld.so" 2> /dev/null || true
         fi
       fi
     fi
@@ -494,7 +485,7 @@ done
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
 if [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]] && { [[ "$ARCH" == "i686" ]] || [[ "$ARCH" == "armv7l" ]]; }; then
-  sudo "${CREW_PREFIX}/bin/ldconfig" &> /tmp/crew_ldconfig || true
+  "${CREW_PREFIX}/bin/ldconfig" &> /tmp/crew_ldconfig || true
 fi
 
 echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
@@ -509,14 +500,13 @@ ${PREFIX_CMD} gem update --no-update-sources -N --system
 # Mark packages as installed for pre-installed gems.
 mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
 CREW_RUBY_VER="ruby$(ruby -e 'puts RUBY_VERSION.slice(/(?:.*(?=\.))/)')"
-for i in "${!installed_gems[@]}"
-  do
-   j="${installed_gems[$i]}"
-   gem_package="${j% *}"
-   crew_gem_package="ruby_${gem_package//-/_}"
-   gem_version="${j#* }"
-   gem contents "${gem_package}" > "${CREW_META_PATH}/${crew_gem_package}.filelist"
-   update_device_json "ruby_${gem_package//-/_}" "${gem_version}-${CREW_RUBY_VER}" ""
+for i in "${!installed_gems[@]}"; do
+  j="${installed_gems[$i]}"
+  gem_package="${j% *}"
+  crew_gem_package="ruby_${gem_package//-/_}"
+  gem_version="${j#* }"
+  gem contents "${gem_package}" > "${CREW_META_PATH}/${crew_gem_package}.filelist"
+  update_device_json "ruby_${gem_package//-/_}" "${gem_version}-${CREW_RUBY_VER}" ""
 done
 
 echo_info "Installing essential ruby gems...\n"
@@ -540,7 +530,7 @@ yes | ${PREFIX_CMD} crew install crew_profile_base
 # shellcheck disable=SC1090
 trap - ERR && source ~/.bashrc && set_trap
 echo_info "Installing core Chromebrew packages...\n"
-yes | ${PREFIX_CMD} crew install core || (yes | ${PREFIX_CMD} crew install core)
+yes | ${PREFIX_CMD} crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than
@@ -556,6 +546,7 @@ if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
   echo_error "\nGit is broken on your system, and crew update will not work properly."
   echo_error "Please report this here:"
   echo_error "https://github.com/chromebrew/chromebrew/issues\n\n"
+  exit 1
 else
   echo_info "Synchronizing local package repo..."
 

@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '3.15'
+  version '3.16'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -119,7 +119,7 @@ class Core < Package
   depends_on 'uchardet'
   depends_on 'unzip'
   depends_on 'upx'
-  depends_on 'uutils_coreutils' unless ARCH == 'i686' # Currently broken.
+  # depends_on 'uutils_coreutils' unless ARCH == 'i686' # Currently broken.
   depends_on 'which'
   depends_on 'xzutils'
   depends_on 'xxhash'
