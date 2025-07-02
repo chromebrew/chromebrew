@@ -13,7 +13,7 @@ class At_spi2_core < Meson
   binary_sha256({
     aarch64: 'cf387add7cd4760328d40a0b11fa07ec565d22b50531f75fef9b4360a0096b75',
      armv7l: 'cf387add7cd4760328d40a0b11fa07ec565d22b50531f75fef9b4360a0096b75',
-     x86_64: '58f82f9ccd5beee13c8209bed7a5dcb10696b6b00708dde0fa3ed9750cea5175'
+     x86_64: '202662f9d518dd14bf4b715aa4b7b880b72f4cd2a66d054fe4b84ce25c486c3f'
   })
 
   depends_on 'dbus' # R
