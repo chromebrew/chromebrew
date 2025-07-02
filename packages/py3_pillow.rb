@@ -15,6 +15,7 @@ class Py3_pillow < Pip
      x86_64: 'c126f0c6d1f51900e6dd3ac03563c9615030eddfc340defdd5f6329f8d9032aa'
   })
 
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libjpeg_turbo'
   depends_on 'libxcb'
@@ -22,7 +23,6 @@ class Py3_pillow < Pip
   depends_on 'py3_xlsxwriter'
   depends_on 'python3' => :build
   depends_on 'zlib' # R
-  depends_on 'gcc_lib' # R
 
   no_source_build
 end
