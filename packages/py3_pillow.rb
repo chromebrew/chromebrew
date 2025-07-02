@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pillow < Pip
   description 'Pillow is a Python Imaging Library (PIL).'
   homepage 'https://python-pillow.org/'
-  version "11.2.1-#{CREW_PY_VER}"
+  version "11.3.0-#{CREW_PY_VER}"
   license 'HPND'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
