@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Texinfo < Autotools
   description 'Texinfo is the official documentation format of the GNU project.'
   homepage 'https://www.gnu.org/software/texinfo/'
-  version "7.1.1-#{CREW_PERL_VER}"
+  version "7.2-#{CREW_PERL_VER}"
   license 'GPL-3'
   compatibility 'all'
   source_url "https://git.savannah.gnu.org/cgit/texinfo.git/snapshot/texinfo-#{version.split('-').first}.tar.gz"
