@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_locale_messages < PERL
   description 'Perl Locale::Messages - Gettext Like Message Retrieval'
   homepage 'https://metacpan.org/pod/Locale::Messages'
-  version "1.33-#{CREW_PERL_VER}"
+  version "1.35-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.33.tar.gz'
@@ -11,10 +11,10 @@ class Perl_locale_messages < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ff088e008cdc967d93286fa262306b19d32bbf6cdb256e068e8fdd511b43a2c4',
-     armv7l: 'ff088e008cdc967d93286fa262306b19d32bbf6cdb256e068e8fdd511b43a2c4',
-       i686: 'd796d414d2de50d83bd33a776e591d7a99e79f358076eb58dc03a967f4a6fcab',
-     x86_64: '2e2fea24b1c4f625d0294198277494f66464d85dbd9d8cbe5c88aba9647fb147'
+    aarch64: '9d795f301a9edaaa6190c3908010c904fda82d616806ca7f83dfdad3a8b76612',
+     armv7l: '9d795f301a9edaaa6190c3908010c904fda82d616806ca7f83dfdad3a8b76612',
+       i686: 'a727597ee20ab126db4c6a9359b46ea7dd07d975d2bac012fa2a2d8512f4a394',
+     x86_64: '16edd446e87f1d783bec912a953de1a2e2b5ce8e2e839f335aa0010989487fdc'
   })
 
   depends_on 'glibc' # R

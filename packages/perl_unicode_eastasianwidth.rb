@@ -11,10 +11,10 @@ class Perl_unicode_eastasianwidth < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f1603d9ec54f0360c78df76f7188b431467b2fe800be97f01c32ecca860a87f8',
-     armv7l: 'f1603d9ec54f0360c78df76f7188b431467b2fe800be97f01c32ecca860a87f8',
-       i686: 'ee94f24739538c1b0b50c25bff3aec171c51077d40750f1f178812b5564e75b1',
-     x86_64: '1d45396a77ad9abb31b63e23f1b012c3dafadaca944b454c642760a18a200d24'
+    aarch64: 'b5047e3abe1285ee8a254babe91b63fb2d160f1cd216a1ae9bf8f90cbeb46c91',
+     armv7l: 'b5047e3abe1285ee8a254babe91b63fb2d160f1cd216a1ae9bf8f90cbeb46c91',
+       i686: '4e7980ab1f1b5ea0238501f66f430a2d06621aa71627877612d9b129f75b7c37',
+     x86_64: '125ab8a840e3398b19304d286d15b9a75e3c4a23262210d80ad0120c879a94ff'
   })
 
   def self.prebuild

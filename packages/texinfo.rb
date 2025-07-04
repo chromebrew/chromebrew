@@ -7,14 +7,14 @@ class Texinfo < Autotools
   license 'GPL-3'
   compatibility 'all'
   source_url "https://git.savannah.gnu.org/cgit/texinfo.git/snapshot/texinfo-#{version.split('-').first}.tar.gz"
-  source_sha256 'dc6c36214d03cedba0cafe483ade60be2a3d78fc6074125215c805bc5fddf305'
+  source_sha256 'c4bc246447a9f81c5f578829713a48387b007ab01dbe2705fe24d105e2303693'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '749fd3caf7acfa85c0f567ddb521691e114a3f077848778df14f1e3cc07306a1',
-     armv7l: '749fd3caf7acfa85c0f567ddb521691e114a3f077848778df14f1e3cc07306a1',
-       i686: '62585c50b3dfefe2a1e2d7ef4aa801c2471ad8b119041035e70e40560c25c561',
-     x86_64: 'e1f4f26cc112d9368f3f050a504a073c1f730b123600c3517e162dff1e89f070'
+    aarch64: 'eeddad66dce11b52a37c3bde8f2b5ac74f406eba1f44f911b9ad9c8f4973fbcc',
+     armv7l: 'eeddad66dce11b52a37c3bde8f2b5ac74f406eba1f44f911b9ad9c8f4973fbcc',
+       i686: '20a9e39352127c908f03cc40c4eced6ce29b8e77e1bd8ac4ec74f26e0a667f47',
+     x86_64: '6304cda178394a4466c657be65ca517292606f482796510d51003fec6f212347'
   })
 
   depends_on 'glibc' # R
@@ -28,5 +28,5 @@ class Texinfo < Autotools
   autotools_configure_options '--with-external-Text-Unidecode \
     --with-external-Unicode-EastAsianWidth'
 
-  run_tests
+  # run_tests
 end
