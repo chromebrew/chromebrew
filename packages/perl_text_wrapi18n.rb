@@ -11,10 +11,10 @@ class Perl_text_wrapi18n < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1822bc953071d5c4cca00a7ce0d46fdaed1906c57d8ee9c66964639f64ccb2d8',
-     armv7l: '1822bc953071d5c4cca00a7ce0d46fdaed1906c57d8ee9c66964639f64ccb2d8',
-       i686: 'c36056355e1630d212436ee698beb68b4e9d77ddde45ac52b0ccb7e1f9b3f93b',
-     x86_64: '2e37cc4826fcb3745be5642b5dd924b899d8fc2386bb22064c76443425ae080b'
+    aarch64: 'bc29675fd4834f11e5564b0eb1d46209a48885d636e664643d4724b0fb188213',
+     armv7l: 'bc29675fd4834f11e5564b0eb1d46209a48885d636e664643d4724b0fb188213',
+       i686: 'b4f48444d69300ed14d5ab65de4f4607eae0c6ca6b6ba58750267bb4ce2516d2',
+     x86_64: '25c593f216e86052f8eaf4ef9ce33c7e3a03382d7b08987a7f6eb1033a3845ae'
   })
 
   depends_on 'perl_text_charwidth' => :build

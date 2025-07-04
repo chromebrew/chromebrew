@@ -11,10 +11,10 @@ class Perl_io_file < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '516c7716b17956229bd49f9ab6704f1021a25ae71b4f8769107e5db29550ccb2',
-     armv7l: '516c7716b17956229bd49f9ab6704f1021a25ae71b4f8769107e5db29550ccb2',
-       i686: 'f3b5d52e924b4956f59ef3a208ec072776fa15581318d2e3b6dba4e7173f5e35',
-     x86_64: 'df3365990bf5fcdd29e3c8b664cc04b188d66d9e6fea4693c3bd48ba4afa1a7c'
+    aarch64: '5ddff773b8af7033bcb92e706045251fed9788f4eff64c3eca8388ec16dd6e66',
+     armv7l: '5ddff773b8af7033bcb92e706045251fed9788f4eff64c3eca8388ec16dd6e66',
+       i686: 'eb9046dd3a2ba12316af327894e27b6fcd5889f9149436a57faa8c27886bf34f',
+     x86_64: 'b651176529ef15ddb49d9e8c2a947959b9be51a2bcdb8b20bc9fdd6e39af05d7'
   })
 
   depends_on 'perl_file_temp' => :build

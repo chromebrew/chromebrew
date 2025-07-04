@@ -11,9 +11,9 @@ class Perl_uri < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '27db52f862cb79a9d36f21dedcb1e326b1e60d094beb33d91355126e3fac70a4',
-     armv7l: '27db52f862cb79a9d36f21dedcb1e326b1e60d094beb33d91355126e3fac70a4',
-       i686: '4ce90ee55cefda0811b939b46bbf93ab397ae74388ae9042f91d749a9b605115',
-     x86_64: '7e86ddc84a6ae56deb345a03fb1b162a6333c531bdff539306ea264a7717dae2'
+    aarch64: '3f00ee92b852fba2ebb7648e5a83eed031b1318f5e0fe6a98dcc0d5878c5a8e9',
+     armv7l: '3f00ee92b852fba2ebb7648e5a83eed031b1318f5e0fe6a98dcc0d5878c5a8e9',
+       i686: '69b573275ceb40c7f84e0d793b6dcc5caffe5dbdfc1b8c27f6b4800fb39cf4e4',
+     x86_64: 'eba395cfc6f82ecb278d74ac18b4a162e43e07c5331f80ef8bd7a821ca8acf3e'
   })
 end

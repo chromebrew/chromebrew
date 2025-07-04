@@ -11,10 +11,10 @@ class Perl_text_unidecode < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e1fca4640de2f9d4385f9cb86e15f284a3be2e748552507c44a6379b124d4a58',
-     armv7l: 'e1fca4640de2f9d4385f9cb86e15f284a3be2e748552507c44a6379b124d4a58',
-       i686: 'c6cc30e5c153e3b4ba852fcbb321f5d7e258deb042a79db4c57c809f40a1d86c',
-     x86_64: '4dbcb80df65c6fee0612b3f0b142cba22a8c09f41f55fded7daa625acfc254a3'
+    aarch64: '0f311fb1d2daccf6d5f5b5c7e4f0e405d4d2f27ba029696d1979b0465d61800a',
+     armv7l: '0f311fb1d2daccf6d5f5b5c7e4f0e405d4d2f27ba029696d1979b0465d61800a',
+       i686: '099a6d9e7ccd3ee40d033ee14f0cbf0b0533fff4f0fc77fc1e5f8aec2a8243a9',
+     x86_64: '7a59ca05505962d743f6385ded0e3e21dbb076f5e42e37d093147a4689efb911'
   })
 
   def self.prebuild

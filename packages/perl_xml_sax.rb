@@ -11,10 +11,10 @@ class Perl_xml_sax < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dbddbf67a7c9ea789ca6eff91979bda6a134a925cb0e1d2285c83fde25f9aa10',
-     armv7l: 'dbddbf67a7c9ea789ca6eff91979bda6a134a925cb0e1d2285c83fde25f9aa10',
-       i686: '3994c3bf14ffb7ae3ef99e5e8678a648219b7984297609ea701327f8ded052ce',
-     x86_64: 'e3547948c85de5c36899160dc4e9f1fce54ac5fd8f617636dbe7a064060e876d'
+    aarch64: '3219b35ffa3fc368abe82e2c988f495c7383769df34965d92df993567c6075cb',
+     armv7l: '3219b35ffa3fc368abe82e2c988f495c7383769df34965d92df993567c6075cb',
+       i686: '5e2544c16d5fd3f5614e78a32e9ba8268eafbe83ee38fb2aea9a30024b6e35e6',
+     x86_64: 'f8084fd90464049f82f3acec3ba40b013a646c33fc264208ecc9bb0013301d13'
   })
 
   depends_on 'perl_xml_sax_base' => :build

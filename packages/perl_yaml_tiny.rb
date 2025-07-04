@@ -11,10 +11,10 @@ class Perl_yaml_tiny < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '843dcc510bfb6029e46133e4d3a5580f4a8e39ee232ff3de1ecdd59220ae505a',
-     armv7l: '843dcc510bfb6029e46133e4d3a5580f4a8e39ee232ff3de1ecdd59220ae505a',
-       i686: '1c8bfca914a68e0ea8a265d8b7c9d20e6572de269622c14a9c79290ff86acaeb',
-     x86_64: 'c8130dcd6ce06f910d28b95d9f9ef690b64d6747b23c6267e9447c43b58a02fc'
+    aarch64: 'b5a0f810259b39ac12bca36cade06b64f9eed28ab3a409b757277d9d42392352',
+     armv7l: 'b5a0f810259b39ac12bca36cade06b64f9eed28ab3a409b757277d9d42392352',
+       i686: '9bc35270312f9ca375b0edc5a7b3a8268ab759d467ad1df1cd67b26f31c2c4db',
+     x86_64: '4662a625d61a83f95496221c13ab543975a98343a672bbe16a6e3173dd79ff50'
   })
 
   def self.prebuild
