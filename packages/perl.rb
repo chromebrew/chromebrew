@@ -3,7 +3,7 @@ require 'package'
 class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  version '5.40.2'
+  version '5.42.0'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://www.cpan.org/src/5.0/perl-#{version}.tar.xz"
