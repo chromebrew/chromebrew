@@ -19,7 +19,6 @@ class C_ares < CMake
 
   depends_on 'glibc' # R
 
-  cmake_options '-DCARES_STATIC=OFF \
-      -DCARES_BUILD_TESTS=OFF \
-      -DCARES_BUILD_TOOLS=OFF'
+  cmake_options '-DCARES_BUILD_TESTS=OFF \
+      -DCARES_BUILD_TOOLS=ON'
 end
