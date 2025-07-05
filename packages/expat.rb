@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Expat < CMake
   description 'James Clark\'s Expat XML parser library in C.'
   homepage 'https://github.com/libexpat/libexpat'
-  version '2.7.1'
+  version '2.7.1-1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/libexpat/libexpat.git'
-  git_hashtag "R_#{version.gsub('.', '_')}"
+  git_hashtag "R_#{version.split('-').first.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -21,6 +21,8 @@ class Expat < CMake
   run_tests
 
   cmake_build_relative_dir 'expat'
-  cmake_options '-DEXPAT_BUILD_EXAMPLES=OFF \
+  cmake_options '-DEXPAT_BUILD_DOCS=OFF \
+          -DEXPAT_BUILD_EXAMPLES=OFF \
+          -DEXPAT_BUILD_TOOLS=OFF \
           -DBUILD_SHARED_LIBS=ON'
 end
