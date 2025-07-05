@@ -22,6 +22,7 @@ class Psmisc < Autotools
   depends_on 'ncurses' # R
 
   autotools_pre_configure_options "CFLAGS+=' -I#{CREW_PREFIX}/include/ncurses'"
+  autotools_configure_options '--disable-statx'
 
   def self.patch
     # See: https://gitlab.com/psmisc/psmisc/-/issues/61
@@ -82,6 +83,6 @@ class Psmisc < Autotools
        src_killall_SOURCES = src/killall.c src/comm.h src/signals.c src/signals.h src/i18n.h
        src_killall_LDADD = @LIBINTL@ @DL_LIB@
     STATX_PATCH_EOF
-    system 'patch -Np1 -i statx.patch' if ARCH == 'i686'
+    system 'patch -Np1 -i statx.patch'
   end
 end
