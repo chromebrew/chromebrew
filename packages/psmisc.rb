@@ -82,6 +82,6 @@ class Psmisc < Autotools
        src_killall_SOURCES = src/killall.c src/comm.h src/signals.c src/signals.h src/i18n.h
        src_killall_LDADD = @LIBINTL@ @DL_LIB@
     STATX_PATCH_EOF
-    system 'patch -Np1 -i statx.patch'
+    system 'patch -Np1 -i statx.patch' if ARCH == 'i686'
   end
 end
