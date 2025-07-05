@@ -21,8 +21,8 @@ class Expat < CMake
   run_tests
 
   cmake_build_relative_dir 'expat'
-  cmake_options '-DEXPAT_BUILD_DOCS=OFF \
+  cmake_options '-DEXPAT_BUILD_DOCS=ON \
           -DEXPAT_BUILD_EXAMPLES=OFF \
-          -DEXPAT_BUILD_TOOLS=OFF \
+          -DEXPAT_BUILD_TOOLS=ON \
           -DBUILD_SHARED_LIBS=ON'
 end
