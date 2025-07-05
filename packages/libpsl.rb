@@ -11,8 +11,8 @@ class Libpsl < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '56fd7e35ce2706b2b4cf60a74b106ea0b923d14db34ad24e478f72bc070e9160',
-     armv7l: '56fd7e35ce2706b2b4cf60a74b106ea0b923d14db34ad24e478f72bc070e9160',
+    aarch64: '15c6b9fa6bca331c7ed30dfb0572f59450367caf21b04eb6265e06d46f912002',
+     armv7l: '15c6b9fa6bca331c7ed30dfb0572f59450367caf21b04eb6265e06d46f912002',
        i686: '8caf19357b4bb6303be7fe58cb42397978ef8179644efab1e33972c3c788c501',
      x86_64: 'fd60346c566038b898a0deb19255fd0efbc4d5b33d8b3915abb89937c7cf624a'
   })
