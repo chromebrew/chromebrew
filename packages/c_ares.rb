@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class C_ares < CMake
   description 'C library for asynchronous DNS requests (including name resolves).'
   homepage 'https://c-ares.org/'
-  version '1.34.4'
+  version '1.34.5'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/c-ares/c-ares.git'
@@ -11,17 +11,14 @@ class C_ares < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '55626b5146a5e0e520ce897c6bf57675eda290f764ec14f393a236828394ebd3',
-     armv7l: '55626b5146a5e0e520ce897c6bf57675eda290f764ec14f393a236828394ebd3',
-       i686: '2c5437af979961d57631a736b3dd940a0a1c9554526d9ed5c44485de80ca475a',
-     x86_64: '91f0cab2f784da739341c4a5b725cc3197ea309b7c2a8010956d4fcb7fd891d6'
+    aarch64: 'a68372896327955ce94af0456d0389a160c4693175de07a56caa7f823973524b',
+     armv7l: 'a68372896327955ce94af0456d0389a160c4693175de07a56caa7f823973524b',
+       i686: '075e392570aed5810fd45bf4d1803a2a7815a6c6614faffdd5c55203e4be85ae',
+     x86_64: '04725b31a65337a3efea60462408565709b75ad7f6c3fcf0ca3fdcfb40c6c2f7'
   })
 
   depends_on 'glibc' # R
 
-  cmake_options '-DCARES_STATIC=ON \
-      -DCARES_STATIC_PIC=ON \
-      -DCARES_BUILD_TESTS=OFF \
-      -DCARES_BUILD_TOOLS=ON \
-      -DCARES_SHARED=ON'
+  cmake_options '-DCARES_BUILD_TESTS=OFF \
+      -DCARES_BUILD_TOOLS=ON'
 end
