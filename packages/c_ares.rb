@@ -17,6 +17,7 @@ class C_ares < CMake
      x86_64: '04725b31a65337a3efea60462408565709b75ad7f6c3fcf0ca3fdcfb40c6c2f7'
   })
 
+  depends_on 'docbook2x' => :build
   depends_on 'glibc' # R
 
   cmake_options '-DCARES_BUILD_TESTS=OFF \
