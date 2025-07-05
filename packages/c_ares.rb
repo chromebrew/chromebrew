@@ -11,12 +11,13 @@ class C_ares < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a68372896327955ce94af0456d0389a160c4693175de07a56caa7f823973524b',
-     armv7l: 'a68372896327955ce94af0456d0389a160c4693175de07a56caa7f823973524b',
-       i686: '075e392570aed5810fd45bf4d1803a2a7815a6c6614faffdd5c55203e4be85ae',
-     x86_64: '04725b31a65337a3efea60462408565709b75ad7f6c3fcf0ca3fdcfb40c6c2f7'
+    aarch64: 'e946408d9f4401454c58118bc7432cc3c1d3f1ce21eec634361f28bf6e41309b',
+     armv7l: 'e946408d9f4401454c58118bc7432cc3c1d3f1ce21eec634361f28bf6e41309b',
+       i686: 'f5d7317b9e8de227905e47b8bdb652541b7bb55f4674042117d678701a9f789e',
+     x86_64: '05bca72458ec98f3e30a98701faf78348efe71c45531b63f300e3bce63d9a598'
   })
 
+  depends_on 'docbook2x' => :build
   depends_on 'glibc' # R
 
   cmake_options '-DCARES_BUILD_TESTS=OFF \
