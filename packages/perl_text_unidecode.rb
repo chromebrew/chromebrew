@@ -3,7 +3,7 @@ require 'package'
 class Perl_text_unidecode < Package
   description 'Perl Text::Unidecode -- plain ASCII transliterations of Unicode text.'
   homepage 'https://metacpan.org/pod/Text::Unidecode'
-  version '1.30-perl-5.36'
+  version "1.30-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SB/SBURKE/Text-Unidecode-1.30.tar.gz'
@@ -11,10 +11,10 @@ class Perl_text_unidecode < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3298054323f1c4c8ba6c7e8bf12513f5394d74664959d90be527ec12bb3ce9fc',
-     armv7l: '3298054323f1c4c8ba6c7e8bf12513f5394d74664959d90be527ec12bb3ce9fc',
-       i686: '739b90f1d239a5d1eb5ac8949649125462d133c353b0c688199d681d47a2d922',
-     x86_64: '73acad8fd9058958876da07ab4fe6825ab8a6e86ce443fbcf0a79ea71721a94d'
+    aarch64: '0f311fb1d2daccf6d5f5b5c7e4f0e405d4d2f27ba029696d1979b0465d61800a',
+     armv7l: '0f311fb1d2daccf6d5f5b5c7e4f0e405d4d2f27ba029696d1979b0465d61800a',
+       i686: '099a6d9e7ccd3ee40d033ee14f0cbf0b0533fff4f0fc77fc1e5f8aec2a8243a9',
+     x86_64: '7a59ca05505962d743f6385ded0e3e21dbb076f5e42e37d093147a4689efb911'
   })
 
   def self.prebuild

@@ -11,8 +11,8 @@ class Perl_wakeonlan < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '05bd7ac933c2f0b3210152456284bfc212bc03bbf352b3c5dfefcf397e356219',
-     armv7l: '05bd7ac933c2f0b3210152456284bfc212bc03bbf352b3c5dfefcf397e356219',
-     x86_64: 'bcb13535f88f4985f3424ed9fa0cad07c97e2bec23d53e48e1b8fbdd5f9367fb'
+    aarch64: 'f552698bee6cf2bf0ee6543a155bc3366ff8baf2ceab0b717da77cc9e0131889',
+     armv7l: 'f552698bee6cf2bf0ee6543a155bc3366ff8baf2ceab0b717da77cc9e0131889',
+     x86_64: 'b44f0914f06fd909d3db14c122c57ae603207b5739bb77a536f7f88a18fec0d0'
   })
 end

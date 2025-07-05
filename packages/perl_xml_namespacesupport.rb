@@ -11,10 +11,10 @@ class Perl_xml_namespacesupport < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b1772900d761a750578241e2ce5e3dccc27829d1f9aee1395bb7763bf4c03b7a',
-     armv7l: 'b1772900d761a750578241e2ce5e3dccc27829d1f9aee1395bb7763bf4c03b7a',
-       i686: '9cce306d072bf96b34ba125e0858078314275ac295b7d2033600dbaa61b7cd92',
-     x86_64: '6218a18737bb516f4c237082aba6d6e295a309ee7cda6bbacd8b0186d8dc8a51'
+    aarch64: 'caa92af0877ffce3a53820051d4d13f8fa5d5dd36e946a4f6497733bfff3ea4f',
+     armv7l: 'caa92af0877ffce3a53820051d4d13f8fa5d5dd36e946a4f6497733bfff3ea4f',
+       i686: '60c3d09ae463a4f1acb55e756ffc350a78e56cde80eee9359a331a2eac7a20dc',
+     x86_64: '04d51307f32fdad25dc319fbc05176a387e7b680f766b07eee346721a1c861a4'
   })
 
   def self.prebuild

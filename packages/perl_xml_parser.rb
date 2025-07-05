@@ -11,10 +11,10 @@ class Perl_xml_parser < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dc513863d63f1a38fd10ef532e0680e7fb52294c682eaee0f8d5cb3100846b39',
-     armv7l: 'dc513863d63f1a38fd10ef532e0680e7fb52294c682eaee0f8d5cb3100846b39',
-       i686: '32a7f58beaf5e2f5472cae3008af11e3ce0cdb0c7585592f4ed0b7ec4fb29637',
-     x86_64: '8cd7897597178becc53b244e501a45e2f632b2c98f166661abe70e183386cbbf'
+    aarch64: 'afb95f7b13be21bacc36c8d2838b21cb98d10b672fb74b60e616cb6353e17357',
+     armv7l: 'afb95f7b13be21bacc36c8d2838b21cb98d10b672fb74b60e616cb6353e17357',
+       i686: '5cf25184c1dd75eec775f6494a140ecd742f17e506c12ee79f7cbe5d6d7e8947',
+     x86_64: '75ccb2d4c7fa6e6dd0a6f415bb0d72191a91792d9c0b109cdf20f7c5e8000b5e'
   })
 
   depends_on 'expat' # R

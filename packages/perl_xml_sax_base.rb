@@ -11,10 +11,10 @@ class Perl_xml_sax_base < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0351cf2aa40bb96a716b2817b2b6ec34fac6dd650fc34e643648744c668dbd99',
-     armv7l: '0351cf2aa40bb96a716b2817b2b6ec34fac6dd650fc34e643648744c668dbd99',
-       i686: '3577e10088cf4d5d8761a360520ac4dc4f22f6da0112735b2fc37725b3d6a618',
-     x86_64: '4f198de557843ed2102fe0b324ee3d83e83f41c7c7e6cb7700a7e55778354e0d'
+    aarch64: 'fc9a06e69d8635106d60b763906eb7dd0ad660ee3a68439d7deafd02a55ab28b',
+     armv7l: 'fc9a06e69d8635106d60b763906eb7dd0ad660ee3a68439d7deafd02a55ab28b',
+       i686: '1f25e4c5454db620193cb3d0643670f05c024551327871fc0fb33fa54c16ffc4',
+     x86_64: '247aba418d9bbfca8048deafd258380ae9dfdc4401e19692a3784985b27fcdb8'
   })
 
   def self.prebuild
