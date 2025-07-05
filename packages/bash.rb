@@ -3,12 +3,12 @@ require 'buildsystems/autotools'
 class Bash < Autotools
   description 'The GNU Bourne Again SHell is a Bourne-compatible shell with useful csh and ksh features.'
   homepage 'https://www.gnu.org/software/bash/'
-  version '5.3-rc2'
+  version '5.3'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/bash.git'
   # Bash patch commits aren't tagged or anything, although this commit does correspond to the patchlevel we're shipping.
-  git_hashtag '102140e4c4301dfe9b5c38af59f2fc31465c9a76'
+  git_hashtag "bash-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
