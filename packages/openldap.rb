@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Openldap < Autotools
   description 'OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.'
   homepage 'https://www.openldap.org/'
-  version '2.6.9'
+  version '2.6.10'
   license 'OpenLDAP and GPL-2'
   compatibility 'all'
   source_url "https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-#{version}.tgz"
