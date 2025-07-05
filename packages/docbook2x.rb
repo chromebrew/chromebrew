@@ -17,9 +17,9 @@ class Docbook2x < Package
      x86_64: 'ceaba3863b07df670a310e6e54e2b9469bddd43f824a6e455811ee244cceb72f'
   })
 
+  depende_on 'glibc' # R
   depends_on 'libxslt' # L
   depends_on 'perl_xml_sax' # R
-  depends_on 'glibc' # R
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS}"

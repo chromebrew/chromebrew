@@ -17,7 +17,6 @@ class Expat < CMake
      x86_64: '5b19dbd1ae39faf8561e29b9bc5ec4e8e8016d77278a806549fbb53412d6b2d4'
   })
 
-  depends_on 'docbook2x' => :build
   depends_on 'glibc' # R
   run_tests
 
