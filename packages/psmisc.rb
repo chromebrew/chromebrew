@@ -20,6 +20,15 @@ class Psmisc < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
+  depends_on 'patchutils' => :build
 
   autotools_pre_configure_options "CFLAGS+=' -I#{CREW_PREFIX}/include/ncurses'"
+
+  def self.patch
+    # See https://gitlab.com/psmisc/psmisc/-/issues/48
+    # and also https://gitlab.com/psmisc/psmisc/-/issues/61
+    downloader 'https://gitlab.com/psmisc/psmisc/-/commit/c22d1e4edbfec6e24346cd8d89b822cb07cd6f5c.patch', 'aaaaaa', 'statx.patch'
+    system 'interdiff -q statx.patch /dev/null > statx_reversed.patch'
+    system 'patch -Np1 -i statx_reversed.patch'
+  end
 end
