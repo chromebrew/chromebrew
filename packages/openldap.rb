@@ -13,7 +13,7 @@ class Openldap < Autotools
   binary_sha256({
     aarch64: 'f48ecd71d964e7c422a5f06a602c3ea49545dffa774fe4cfb89bb5d475a5490d',
      armv7l: 'f48ecd71d964e7c422a5f06a602c3ea49545dffa774fe4cfb89bb5d475a5490d',
-       i686: 'db013c7fe3e73cd8ae0dabf876d5146dbb7c5438cdd1e9bff56f8d211f792d6c',
+       i686: 'c2b276a5f1f926d5132606cd38737f327525308c50e76ead03bc54d1c64d19a1',
      x86_64: '40578ae19ead9a8ccba67cad00b278bc3bef87a08cd4e075ba6cdcac51eba290'
   })
 
