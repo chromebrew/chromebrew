@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class C_ares < CMake
   description 'C library for asynchronous DNS requests (including name resolves).'
   homepage 'https://c-ares.org/'
-  version '1.34.4'
+  version '1.34.5'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/c-ares/c-ares.git'
@@ -19,9 +19,7 @@ class C_ares < CMake
 
   depends_on 'glibc' # R
 
-  cmake_options '-DCARES_STATIC=ON \
-      -DCARES_STATIC_PIC=ON \
+  cmake_options '-DCARES_STATIC=OFF \
       -DCARES_BUILD_TESTS=OFF \
-      -DCARES_BUILD_TOOLS=ON \
-      -DCARES_SHARED=ON'
+      -DCARES_BUILD_TOOLS=OFF'
 end
