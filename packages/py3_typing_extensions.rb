@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_typing_extensions < Pip
   description 'Backported and Experimental Type Hints for Python 3.5+'
   homepage 'https://github.com/python/typing/tree/master/typing_extensions'
-  version "4.14.0-#{CREW_PY_VER}"
+  version "4.14.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
