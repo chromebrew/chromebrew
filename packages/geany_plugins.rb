@@ -28,6 +28,7 @@ class Geany_plugins < Autotools
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'libgit2' # R
+  depends_on 'libsoup' # R
   depends_on 'libsoup2' # R
   depends_on 'libxml2' # R
   depends_on 'ncurses' # R
@@ -36,8 +37,7 @@ class Geany_plugins < Autotools
   depends_on 'vte' # R
   depends_on 'webkit2gtk_4' # R
   depends_on 'zlib' # R
-  depends_on 'libsoup' # R
 
   # try to avoid gcc14 issues.
-  autotools_configure_options '--disable-projectorganizer'
+  # autotools_configure_options '--disable-projectorganizer'
 end
