@@ -13,7 +13,7 @@ class Geany_plugins < Autotools
   binary_sha256({
     aarch64: 'bfc23b06fab6e5ae40b1953fa97a3dad60fdb68b39d831f1fa81e66aa6881bde',
      armv7l: 'bfc23b06fab6e5ae40b1953fa97a3dad60fdb68b39d831f1fa81e66aa6881bde',
-     x86_64: '9491d4737000e80bcbdd7a39e9dc13c2178ff865beff7d800d6159bfc395e8fa'
+     x86_64: 'cc817de7a91b6a145e94c9699ecfd18cb5c8fdd10f03a0fe04a555d3a8792339'
   })
 
   depends_on 'aspell' # R
