@@ -37,7 +37,4 @@ class Geany_plugins < Autotools
   depends_on 'vte' # R
   depends_on 'webkit2gtk_4' # R
   depends_on 'zlib' # R
-
-  # try to avoid gcc14 issues.
-  # autotools_configure_options '--disable-projectorganizer'
 end
