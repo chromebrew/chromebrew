@@ -11,8 +11,8 @@ class Geany_plugins < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c1647d8aa292289c0602385b5a36248724e752dabc28f8a86a37390692655ce3',
-     armv7l: 'c1647d8aa292289c0602385b5a36248724e752dabc28f8a86a37390692655ce3',
+    aarch64: 'bfc23b06fab6e5ae40b1953fa97a3dad60fdb68b39d831f1fa81e66aa6881bde',
+     armv7l: 'bfc23b06fab6e5ae40b1953fa97a3dad60fdb68b39d831f1fa81e66aa6881bde',
      x86_64: '9491d4737000e80bcbdd7a39e9dc13c2178ff865beff7d800d6159bfc395e8fa'
   })
 

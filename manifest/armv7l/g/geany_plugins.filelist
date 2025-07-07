@@ -54,6 +54,8 @@
 /usr/local/lib/geany/pohelper.so
 /usr/local/lib/geany/pretty-printer.la
 /usr/local/lib/geany/pretty-printer.so
+/usr/local/lib/geany/projectorganizer.la
+/usr/local/lib/geany/projectorganizer.so
 /usr/local/lib/geany/scope.la
 /usr/local/lib/geany/scope.so
 /usr/local/lib/geany/sendmail.la
@@ -242,6 +244,11 @@
 /usr/local/share/doc/geany-plugins/pohelper/ChangeLog
 /usr/local/share/doc/geany-plugins/pohelper/NEWS
 /usr/local/share/doc/geany-plugins/pohelper/README
+/usr/local/share/doc/geany-plugins/projectorganizer/AUTHORS
+/usr/local/share/doc/geany-plugins/projectorganizer/COPYING
+/usr/local/share/doc/geany-plugins/projectorganizer/ChangeLog
+/usr/local/share/doc/geany-plugins/projectorganizer/NEWS
+/usr/local/share/doc/geany-plugins/projectorganizer/README
 /usr/local/share/doc/geany-plugins/scope/AUTHORS
 /usr/local/share/doc/geany-plugins/scope/COPYING
 /usr/local/share/doc/geany-plugins/scope/ChangeLog
