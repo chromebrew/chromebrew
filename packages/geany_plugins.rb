@@ -13,7 +13,7 @@ class Geany_plugins < Autotools
   binary_sha256({
     aarch64: '59df5d161cebaef8831a1147adfdef7c28580d2c6cb0201ec3f9fe24141d8b27',
      armv7l: '59df5d161cebaef8831a1147adfdef7c28580d2c6cb0201ec3f9fe24141d8b27',
-     x86_64: 'a1e96bedcad6e4417dc2dbe3086688ff6ff1532ce2d799dcd83212c23c8fddb5'
+     x86_64: '22b60f0b4fc73648c93d0807630b338eb3fcaa644f304314d10ad8269c29d4cf'
   })
 
   depends_on 'aspell' # R
@@ -27,7 +27,6 @@ class Geany_plugins < Autotools
   depends_on 'glib' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'icu4c' # R
   depends_on 'libgit2' # R
   depends_on 'libsoup2' # R
   depends_on 'libxml2' # R
@@ -37,6 +36,7 @@ class Geany_plugins < Autotools
   depends_on 'vte' # R
   depends_on 'webkit2gtk_4' # R
   depends_on 'zlib' # R
+  depends_on 'libsoup' # R
 
   # try to avoid gcc14 issues.
   autotools_configure_options '--disable-projectorganizer'
