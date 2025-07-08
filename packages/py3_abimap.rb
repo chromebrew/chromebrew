@@ -13,7 +13,7 @@ class Py3_abimap < Pip
     aarch64: '36cd69c61ae1817edeec239eab4b3c4acc2359ac252f8e74374e3ec1fc55bd25',
      armv7l: '36cd69c61ae1817edeec239eab4b3c4acc2359ac252f8e74374e3ec1fc55bd25',
        i686: 'a005276c8bedf7f54ccbf3cd63b67524e97022d5a5eb23f1a911dabff52ce575',
-     x86_64: 'e989f3043f9d7a873a42be0bdd5071c23b8297091e2a2de0c202242ba8aa9cbc'
+     x86_64: '8448ad32f77ba4d2ff1ef33e5d579ec2ae1d716eff778ce3701f8198486f5221'
   })
 
   depends_on 'python3' => :build
