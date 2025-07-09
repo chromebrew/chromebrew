@@ -17,7 +17,6 @@ on:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
 env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # setting GH_TOKEN for the entire workflow
   BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
   actions: write
@@ -42,6 +41,20 @@ jobs:
         env:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
+  get-temp-token:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+          organization: chromebrew
+      - name: Export github token to github context
+        id: gh_token_export
+        run: |
+            echo "GH_TOKEN=${{ steps.get_workflow_token.outputs.token }}" >> "$GITHUB_ENV"
   setup:
     if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) }}
     runs-on: ubuntu-24.04
@@ -365,8 +378,6 @@ jobs:
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
       - name: Trigger Unit Test Workflow & Add Reviewer Team
         if: ${{ github.event.inputs.with_pr == 'true' }}
-        env:
-          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
         run: |
           echo "Flipping pr ${PR_NUMBER} state."
           gh pr close "${PR_NUMBER}" && gh pr reopen "${PR_NUMBER}"
