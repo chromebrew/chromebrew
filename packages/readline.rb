@@ -6,10 +6,10 @@ class Readline < Package
   version '8.3'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/readline/readline-#{version}.tar.gz"
-  source_sha256 'fe5383204467828cd495ee8d1d3c037a7eba1389c22bc6a041f627976f9061cc'
-  # source_url 'https://https.git.savannah.gnu.org/git/readline.git'
-  # git_hashtag "readline-#{version}"
+  # source_url "https://ftpmirror.gnu.org/readline/readline-#{version}.tar.gz"
+  # source_sha256 'fe5383204467828cd495ee8d1d3c037a7eba1389c22bc6a041f627976f9061cc'
+  source_url 'https://git.savannah.gnu.org/git/readline.git'
+  git_hashtag "readline-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
