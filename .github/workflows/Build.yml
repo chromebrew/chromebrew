@@ -41,20 +41,6 @@ jobs:
         env:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
-  get-temp-token:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get Token
-        id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v4
-        with:
-          application_id: ${{ secrets.APPLICATION_ID }}
-          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
-          organization: chromebrew
-      - name: Export github token to github context
-        id: gh_token_export
-        run: |
-            echo "GH_TOKEN=${{ steps.get_workflow_token.outputs.token }}" >> "$GITHUB_ENV"
   setup:
     if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) }}
     runs-on: ubuntu-24.04
@@ -344,11 +330,19 @@ jobs:
             git reset --hard "origin/${{ env.BRANCH }}"
             git pull --rebase origin master && git push -f
             git log --oneline -10
+      - name: Get GH Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+          organization: chromebrew
       - name: Create Pull Request
         if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
           CHANGED_MANIFEST_FILES: ${{ steps.changed-manifest-files.outputs.all_changed_files }}
           CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
           i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
           x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
@@ -378,6 +372,8 @@ jobs:
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
       - name: Trigger Unit Test Workflow & Add Reviewer Team
         if: ${{ github.event.inputs.with_pr == 'true' }}
+        env:
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
           echo "Flipping pr ${PR_NUMBER} state."
           gh pr close "${PR_NUMBER}" && gh pr reopen "${PR_NUMBER}"
