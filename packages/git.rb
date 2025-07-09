@@ -11,8 +11,8 @@ class Git < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a768a5f167de47515b670b1d884d388cae0e91b8a4ada098b1f4718f50589b16',
-     armv7l: 'a768a5f167de47515b670b1d884d388cae0e91b8a4ada098b1f4718f50589b16',
+    aarch64: 'b6e52737caba4701137d6df809fda036edfca1c77d7a803f609eb256052c65e7',
+     armv7l: 'b6e52737caba4701137d6df809fda036edfca1c77d7a803f609eb256052c65e7',
        i686: 'e08a9f10eef43f989fe284dc641a3610aa8e1ae580f52a25bef7324424e3d9ad',
      x86_64: '40076123ea1562a96535bf0a9f5c45cad69783bddf3050006abdb9eccda045ff'
   })
