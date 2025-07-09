@@ -27,11 +27,18 @@ jobs:
           LIBC_VERSION: 2.37
         run: |
           ruby -Ctools json.rb
+      - name: Get GH Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+          organization: chromebrew
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.CREW_PR_TOKEN }}
+          token: ${{ steps.get_workflow_token.outputs.token }}
           add-paths: "tools/repology.json"
           title: "Update Repology JSON"
           body: "Automatic PR to update tools/repology.json"
@@ -40,7 +47,7 @@ jobs:
           delete-branch: true
       - name: Trigger Unit Test Workflow & Add Reviewer Team
         env:
-          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
             echo "Flipping pr ${PR_NUMBER} state."
