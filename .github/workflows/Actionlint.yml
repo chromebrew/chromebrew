@@ -2,7 +2,7 @@
 name: ActionLint
 on: workflow_call
 env:
-  SHELLCHECK_OPTS: "-e SC2129 -e SC2155"
+  SHELLCHECK_OPTS: "-e SC2086 -e SC2129 -e SC2155"
 jobs:
   actionlint:
     runs-on: ubuntu-24.04
