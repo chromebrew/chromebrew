@@ -26,5 +26,5 @@ jobs:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           REVIEWDOG_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         with:
-          fail_level: none
+          fail_level: any
           reporter: github-pr-review
