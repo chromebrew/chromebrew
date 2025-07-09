@@ -3,13 +3,13 @@ require 'package'
 class Readline < Package
   description 'The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in.'
   homepage 'https://tiswww.cwru.edu/php/chet/readline/rltop.html'
-  version '8.3-rc2'
+  version '8.3'
   license 'GPL-2'
   compatibility 'all'
-  # source_url "https://ftpmirror.gnu.org/readline/readline-#{version}.tar.gz"
-  # source_sha256 '4df532d8e46e726bb216c63304163a174542cc870109abfe23177fac9e605425'
-  source_url 'https://https.git.savannah.gnu.org/git/readline.git'
-  git_hashtag '1f2d3a51df1195446e126c5ebca621d9d81809ea'
+  source_url "https://ftpmirror.gnu.org/readline/readline-#{version}.tar.gz"
+  source_sha256 'fe5383204467828cd495ee8d1d3c037a7eba1389c22bc6a041f627976f9061cc'
+  # source_url 'https://https.git.savannah.gnu.org/git/readline.git'
+  # git_hashtag "readline-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -19,9 +19,9 @@ class Readline < Package
      x86_64: '3522e3a49daa2a52ff5dfe2d31162579401d888613dbd34147370270d424ed30'
   })
 
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
-  depends_on 'gcc_lib' # R
 
   def self.build
     system "./configure \
