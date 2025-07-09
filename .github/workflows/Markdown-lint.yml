@@ -1,9 +1,6 @@
 ---
 name: Markdown-lint
 on: workflow_call
-env:
-   REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
-   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
 jobs:
   markdown-lint:
     runs-on: ubuntu-24.04
@@ -12,8 +9,18 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
+      - name: Get GH Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+          organization: chromebrew
       - name: Markdown-lint
         uses: reviewdog/action-markdownlint@v0
+        env:
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         with:
           fail_level: any
           markdownlint_flags: '-s .mdl_style.rb'

@@ -1,9 +1,6 @@
 ---
 name: YAMLLint
 on: workflow_call
-env:
-   REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
-   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
 jobs:
   yamllint:
     runs-on: ubuntu-24.04
@@ -11,9 +8,20 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: Get GH Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+          organization: chromebrew
       - name: YAMLLint
         uses: reviewdog/action-yamllint@v1
+        env:
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         with:
           fail_level: any
           reporter: github-pr-review

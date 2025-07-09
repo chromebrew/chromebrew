@@ -43,22 +43,27 @@ jobs:
     needs: handoff
     if: contains(needs.handoff.outputs.category, 'Markdown')
     uses: ./.github/workflows/Markdown-lint.yml
+    secrets: inherit
   ruby:
     needs: handoff
     if: contains(needs.handoff.outputs.category, 'Ruby')
     uses: ./.github/workflows/Rubocop.yml
+    secrets: inherit
   bash:
     needs: handoff
     if: contains(needs.handoff.outputs.category, 'Bash')
     uses: ./.github/workflows/ShellCheck.yml
+    secrets: inherit
   yaml:
     needs: handoff
     if: contains(needs.handoff.outputs.category, 'YAML')
     uses: ./.github/workflows/YAMLlint.yml
+    secrets: inherit
   action-yaml:
     needs: handoff
     if: contains(needs.handoff.outputs.category, 'YAML')
     uses: ./.github/workflows/Actionlint.yml
+    secrets: inherit
   linter-tests:
     runs-on: ubuntu-24.04
     needs:
