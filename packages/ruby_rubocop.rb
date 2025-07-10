@@ -14,6 +14,7 @@ class Ruby_rubocop < RUBY
   depends_on 'libyaml' # R
   depends_on 'ruby_json' # R
   depends_on 'ruby_language_server_protocol' # R
+  depends_on 'ruby_lint_roller' # R
   depends_on 'ruby_parallel' # R
   depends_on 'ruby_parser' # R
   depends_on 'ruby_parser' # R
