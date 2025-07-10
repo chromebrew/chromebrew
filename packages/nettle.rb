@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Nettle < Autotools
   description 'Nettle is a cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.'
   homepage 'http://www.lysator.liu.se/~nisse/nettle/'
-  version '3.10.1'
+  version '3.10.2'
   license 'LGPL-3 or LGPL-2.1'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/nettle/nettle-#{version}.tar.gz"
