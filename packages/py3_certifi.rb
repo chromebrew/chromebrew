@@ -13,7 +13,7 @@ class Py3_certifi < Pip
     aarch64: '61017ddbecb4bfa1d2f1b316c0528e7a54b20384d564289b95160ee6faeb51c1',
      armv7l: '61017ddbecb4bfa1d2f1b316c0528e7a54b20384d564289b95160ee6faeb51c1',
        i686: '7599feb4c49c7c2477d4d4ad1171916590d29abe305ae51ed9b33db018a4aecc',
-     x86_64: '91f918c8f5b853a2e674dc452ad470bd3bc4e65c2fe170df1c6b3e6c449f0151'
+     x86_64: 'e6fc97d137812f0f97adef604641171ffc263ff31a06bb3af3b582a6097ed76c'
   })
 
   depends_on 'python3' # L
