@@ -5,7 +5,7 @@ on:
     - cron: '0 0 * * *'  # Daily
   workflow_dispatch:
 env:
-  GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}  # setting GH_TOKEN for the entire workflow
+  GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }} # setting GH_TOKEN for the entire workflow
 permissions:                    # Global permissions configuration starts here
   actions: write
   contents: write

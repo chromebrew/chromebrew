@@ -17,7 +17,7 @@ on:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
 env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # setting GH_TOKEN for the entire workflow
+  GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }} # setting GH_TOKEN for the entire workflow
   BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
   actions: write

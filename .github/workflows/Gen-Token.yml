@@ -2,7 +2,7 @@
 name: Generate GitHub Actions Token
 on:
   schedule:
-    - cron: 7 * * * *
+    - cron: 15 * * * *
   workflow_dispatch: null
 permissions:
   issues: write
