@@ -14,7 +14,7 @@ class Nettle < Autotools
     aarch64: 'c32b0ef2a90d983881a2cdc3d13e4d1452f6d988b3224edfcaeefe75fd98f119',
      armv7l: 'c32b0ef2a90d983881a2cdc3d13e4d1452f6d988b3224edfcaeefe75fd98f119',
        i686: 'e7beca22ef8613faac2238abc803b9589cf07a1e02af704f3364093aba176148',
-     x86_64: 'd60fe27e37fd0e43f8ad958b197be6967822d2fc91700ff00c970b124e3438ea'
+     x86_64: '484cfaf0ff90ece441b0f2122b0e4c7a90209431b2b571678ee45dc6f2edd1d3'
   })
 
   depends_on 'glibc' # R
