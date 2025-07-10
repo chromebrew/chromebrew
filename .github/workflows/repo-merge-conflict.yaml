@@ -1,26 +1,17 @@
 ---
 name: Repo / Label merge conflict
-
 on:
   push:
   pull_request_target:
     types:
       - synchronize
-
 jobs:
   triage:
     name: Triage
     runs-on: ubuntu-24.04
     if: ${{ contains(github.repository_owner, 'chromebrew') }}
     steps:
-      - name: Get GH Token
-        id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v4
-        with:
-          application_id: ${{ secrets.APPLICATION_ID }}
-          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
-          organization: chromebrew
       - uses: eps1lon/actions-label-merge-conflict@1df065ebe6e3310545d4f4c4e862e43bdca146f0  # v3.0.3
         with:
           dirtyLabel: merge conflict
-          repoToken: ${{ steps.get_workflow_token.outputs.token }}
+          repoToken: ${{ secrets.CREW_PR_TOKEN }}

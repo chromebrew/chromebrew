@@ -17,6 +17,7 @@ on:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
 env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # setting GH_TOKEN for the entire workflow
   BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
   actions: write
@@ -330,19 +331,11 @@ jobs:
             git reset --hard "origin/${{ env.BRANCH }}"
             git pull --rebase origin master && git push -f
             git log --oneline -10
-      - name: Get GH Token
-        id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v4
-        with:
-          application_id: ${{ secrets.APPLICATION_ID }}
-          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
-          organization: chromebrew
       - name: Create Pull Request
         if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
           CHANGED_MANIFEST_FILES: ${{ steps.changed-manifest-files.outputs.all_changed_files }}
           CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
-          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
           i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
           x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
@@ -373,7 +366,7 @@ jobs:
       - name: Trigger Unit Test Workflow & Add Reviewer Team
         if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
-          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
         run: |
           echo "Flipping pr ${PR_NUMBER} state."
           gh pr close "${PR_NUMBER}" && gh pr reopen "${PR_NUMBER}"
