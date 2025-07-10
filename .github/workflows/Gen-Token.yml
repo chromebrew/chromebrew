@@ -1,0 +1,29 @@
+---
+name: Generate GitHub Actions Token
+on:
+  schedule:
+    - cron: 30 * * * *
+  workflow_dispatch: null
+permissions:
+  issues: write
+  pull-requests: write
+jobs:
+  gen_token:
+    name: Generate & Save
+    runs-on: ubuntu-24.04
+    if: ${{ contains(github.repository_owner, 'chromebrew') }}
+    steps:
+      - name: Get GH Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+          organization: chromebrew
+      - name: Save Token
+        id: save_workflow_token
+        uses: gliech/create-github-secret-action@v1
+        with:
+          name: CREW_PR_TOKEN
+          value: ${{ steps.get_workflow_token.outputs.token }}
+          pa_token: ${{ steps.get_workflow_token.outputs.token }}

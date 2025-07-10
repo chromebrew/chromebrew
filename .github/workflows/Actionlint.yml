@@ -1,7 +1,9 @@
----
 name: ActionLint
 on: workflow_call
 env:
+  REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+  GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+  REVIEWDOG_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
   SHELLCHECK_OPTS: "-e SC2086 -e SC2129 -e SC2155"
 jobs:
   actionlint:
@@ -10,21 +12,9 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: Get GH Token
-        id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v4
-        with:
-          application_id: ${{ secrets.APPLICATION_ID }}
-          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
-          organization: chromebrew
+      - uses: actions/checkout@v4
       - name: Actionlint
         uses: reviewdog/action-actionlint@v1
-        env:
-          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-          REVIEWDOG_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         with:
           fail_level: any
           reporter: github-pr-review

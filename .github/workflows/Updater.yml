@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: '0 0 * * *'  # Daily
   workflow_dispatch:
+env:
+  GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}  # setting GH_TOKEN for the entire workflow
 permissions:                    # Global permissions configuration starts here
   actions: write
   contents: write
@@ -96,18 +98,9 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           branch: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
-      - name: Get GH Token
-        id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v4
-        with:
-          application_id: ${{ secrets.APPLICATION_ID }}
-          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
-          organization: chromebrew
       - name: Cancel if no updates
         id: no-update-cancel
         if: ${{ ( steps.pip-update-checks.outputs.PIP_UPDATED == 'false' ) && ( steps.gem-update-checks.outputs.GEM_UPDATED == 'false' ) }}
-        env:
-          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
           echo "PIP_UPDATED is ${{ steps.pip-update-checks.outputs.PIP_UPDATED }}."
           echo "GEM_UPDATED is ${{ steps.gem-update-checks.outputs.GEM_UPDATED }}."
@@ -122,14 +115,5 @@ jobs:
     env:
       UPDATE_BRANCH_NAME: ${{ needs.update-check.outputs.update_branch_name }}
     steps:
-      - name: Get GH Token
-        id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v4
-        with:
-          application_id: ${{ secrets.APPLICATION_ID }}
-          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
-          organization: chromebrew
       - name: gh_workflow_dispatch
-        env:
-          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${UPDATE_BRANCH_NAME}"
