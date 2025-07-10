@@ -15,5 +15,5 @@ jobs:
        - name: YAMLLint
          uses: reviewdog/action-yamllint@v1
          with:
-           fail_level: any
-           reporter: github-pr-review
+            fail_level: any
+            reporter: github-pr-review
