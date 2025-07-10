@@ -11,9 +11,9 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
-      - name: YAMLLint
-        uses: reviewdog/action-yamllint@v1
-        with:
-          fail_level: any
-          reporter: github-pr-review
+       - uses: actions/checkout@v4
+       - name: YAMLLint
+         uses: reviewdog/action-yamllint@v1
+         with:
+           fail_level: any
+           reporter: github-pr-review
