@@ -14,7 +14,7 @@ class Openssl < Package
     aarch64: 'fa538083490c8bf497d44ac58df5a6111f873a63353dcfc4cd18fdb9254f0abe',
      armv7l: 'fa538083490c8bf497d44ac58df5a6111f873a63353dcfc4cd18fdb9254f0abe',
        i686: '0fd206b154f3688d03dd63b74258391b5cfc815bafea1a851a37722c2708d2a9',
-     x86_64: '1b7e8f16d0902be1580933c440e3b22a5bf9bb13f6aa35534ac88f3d10bd91eb'
+     x86_64: '233f6ceb24487617875cf07ea6513ca893899625b3beab58634c8e3f3639fda8'
   })
 
   depends_on 'ccache' => :build
