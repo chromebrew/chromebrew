@@ -8235,6 +8235,11 @@ url: https://github.com/mtsmfm/language_server-protocol-ruby/tags
 activity: high
 ---
 kind: url
+name: ruby_lint_roller
+url: https://github.com/standardrb/lint_roller/tags
+activity: low
+---
+kind: url
 name: ruby_mdl
 url: https://github.com/markdownlint/markdownlint/tags
 activity: low
