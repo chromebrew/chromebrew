@@ -11,6 +11,7 @@ require 'json'
 require 'net/http'
 require_relative '../lib/color'
 require_relative '../lib/const'
+require_relative '../lib/convenience_functions'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
 require_relative '../lib/require_gem'
@@ -79,7 +80,7 @@ def check_for_updated_ruby_packages
   pool.wait_for_termination
 
   puts "Done checking rubygems for updates to #{total_files_to_check} ruby packages.\r".orange
-  puts "Updated versions were not listed in rubygems for: #{packages_without_gem_versions.join(' ')}".orange
+  puts "Updated versions were not listed in rubygems for: #{packages_without_gem_versions.join(' ')}".orange unless packages_without_gem_versions.blank?
 
   return updateable_packages
 end

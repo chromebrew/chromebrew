@@ -11,6 +11,7 @@ $LOAD_PATH.unshift './lib'
 
 require_relative '../lib/color'
 require_relative '../lib/const'
+require_relative '../lib/convenience_functions'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
 require_relative '../lib/require_gem'
@@ -71,7 +72,7 @@ def check_for_updated_python_packages
   pool.wait_for_termination
 
   puts "Done checking pypi for updates to #{total_files_to_check} python packages.".orange
-  puts "Updated versions were not listed in pypi for: #{packages_without_pypi_versions.join(' ')}".orange
+  puts "Updated versions were not listed in pypi for: #{packages_without_pypi_versions.join(' ')}".orange unless packages_without_pypi_versions.blank?
 
   return updateable_packages
 end
