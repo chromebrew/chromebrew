@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_resolv < RUBY
   description 'Thread-aware dns resolver library in ruby.'
   homepage 'https://github.com/ruby/resolv'
-  version "0.6.1-#{CREW_RUBY_VER}"
+  version "0.6.2-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
