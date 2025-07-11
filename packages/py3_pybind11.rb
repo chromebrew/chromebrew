@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pybind11 < Pip
   description 'Seamless operability between C++11 and Python'
   homepage 'https://github.com/pybind/pybind11'
-  version "2.13.6-#{CREW_PY_VER}"
+  version "3.0.0-#{CREW_PY_VER}"
   license 'BSD-3 Clause'
   compatibility 'all'
   source_url 'SKIP'
