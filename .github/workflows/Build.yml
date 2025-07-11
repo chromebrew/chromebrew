@@ -295,7 +295,7 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add -A
-            git commit -m "Add built packages for ${PLATFORM} to ${{ env.BRANCH }}" && git push -f
+            git commit -m "Add built packages for ${PLATFORM} to branch ${{ env.BRANCH }}." && git push -f
             git log --oneline -10
           fi
   build-check:
@@ -331,11 +331,20 @@ jobs:
             git reset --hard "origin/${{ env.BRANCH }}"
             git pull --rebase origin master && git push -f
             git log --oneline -10
+      - name: Get GH Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+          organization: chromebrew
+          revoke_token: true
       - name: Create Pull Request
         if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
           CHANGED_MANIFEST_FILES: ${{ steps.changed-manifest-files.outputs.all_changed_files }}
           CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
+          GH_BACKUP_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
           i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
           x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
@@ -360,15 +369,16 @@ jobs:
           echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ env.BRANCH }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           cat /tmp/pr.txt
+          gh auth status >/dev/null 2>&1 || export GH_TOKEN="${GH_BACKUP_TOKEN}"
           PR_NUMBER=$(gh pr create --title "AutoBuild: ${{ env.BRANCH }} started at ${TIMESTAMP}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
       - name: Trigger Unit Test Workflow & Add Reviewer Team
         if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
+          GH_BACKUP_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
         run: |
-          echo "Flipping pr ${PR_NUMBER} state."
-          gh pr close "${PR_NUMBER}" && gh pr reopen "${PR_NUMBER}"
+          gh auth status >/dev/null 2>&1 || export GH_TOKEN="${GH_BACKUP_TOKEN}"
           gh pr edit "${PR_NUMBER}" --add-reviewer chromebrew/active
           gh pr merge "${PR_NUMBER}" --auto

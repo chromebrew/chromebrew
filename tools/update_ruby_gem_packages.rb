@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# update_ruby_gem_packages version 2.0 (for Chromebrew)
+# update_ruby_gem_packages version 2.1 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo:
 # tools/update_ruby_gem_packages.rb
@@ -11,6 +11,7 @@ require 'json'
 require 'net/http'
 require_relative '../lib/color'
 require_relative '../lib/const'
+require_relative '../lib/convenience_functions'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
 require_relative '../lib/require_gem'
@@ -40,7 +41,11 @@ def check_for_updated_ruby_packages
       gem_name = pkg.name.sub('ruby_', '')
       # We replace all dashes with underscores in our initial package names, but some gems actually use underscores, so we need special cases.
       # This list was created by looking at what packages were listed as not having updates in rubygems, and then looking up the upstream name for them.
-      if %w[connection_pool error_highlight mini_mime multi_xml mutex_m power_assert regexp_parser repl_type_completor ruby2_keywords syntax_suggest].include?(gem_name)
+      if %w[
+        connection_pool error_highlight lint_roller method_source
+        mini_mime multi_xml mutex_m power_assert regexp_parser
+        repl_type_completor ruby2_keywords syntax_suggest
+      ].include?(gem_name)
         # These gems used underscores originally, so don't replace anything
       elsif gem_name == 'language_server_protocol'
         # These gems have an underscore then a dash, but there's only one, so we hardcode the logic for now.
@@ -75,7 +80,7 @@ def check_for_updated_ruby_packages
   pool.wait_for_termination
 
   puts "Done checking rubygems for updates to #{total_files_to_check} ruby packages.\r".orange
-  puts "Updated versions were not listed in rubygems for: #{packages_without_gem_versions.join(' ')}".orange
+  puts "Updated versions were not listed in rubygems for: #{packages_without_gem_versions.join(' ')}".orange unless packages_without_gem_versions.blank?
 
   return updateable_packages
 end

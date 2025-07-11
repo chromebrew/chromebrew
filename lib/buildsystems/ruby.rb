@@ -47,7 +47,7 @@ def set_vars(passed_name = nil, passed_version = nil)
   # here: https://guides.rubygems.org/rubygems-org-compact-index-api/
   # Figure out gem name, noting that there may be dashes and underscores
   # in the name.
-  gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last.blank? ? $gems.grep(/#{"^\(#{passed_name.gsub(/^ruby_/, '').gsub('_', ')*.(')}\\s\).*$"}/).last : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last
+  gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last.blank? ? $gems.grep(/#{"^\(#{passed_name.gsub(/^ruby_/, '').gsub('_', ')+.(')}\\s\).*$"}/).last : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last
   abort "Cannot find #{passed_name} gem to install.".lightred if gem_test.blank?
   gem_test_name = gem_test.split.first
   gem_test_versions = gem_test.split[1].split(',')

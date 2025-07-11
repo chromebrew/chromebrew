@@ -6,7 +6,9 @@ on:
       - created
   merge_group:
   pull_request:
-  #  push:
+    types:
+      - opened
+      - ready_for_review
   workflow_dispatch:
   # workflow_run:
   #  workflows: [Build]
