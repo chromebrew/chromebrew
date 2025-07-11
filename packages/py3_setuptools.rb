@@ -7,8 +7,9 @@ class Py3_setuptools < Pip
   version "80.9.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/pypa/setuptools.git'
-  git_hashtag "v#{version.split('-').first}"
+  source_url 'SKIP'
+  # source_url 'https://github.com/pypa/setuptools.git'
+  # git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -22,6 +23,7 @@ class Py3_setuptools < Pip
   depends_on 'py3_packaging'
 
   conflicts_ok
+  no_source_build
 
   def self.prebuild
     if File.which('zstd')
