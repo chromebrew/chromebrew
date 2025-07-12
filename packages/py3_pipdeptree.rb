@@ -12,7 +12,7 @@ class Py3_pipdeptree < Pip
   binary_sha256({
     aarch64: '71a3e7fee6c09cc699bbfbc33a184801e6c74161b402a9ac27f6366ff01865c4',
      armv7l: '71a3e7fee6c09cc699bbfbc33a184801e6c74161b402a9ac27f6366ff01865c4',
-       i686: '0d4bd898fe0ca2f4ea4249a64a4baabd03e83ddf79b49d8d32e9b90a8f1253ed',
+       i686: 'b220c3fabc56eddbf934c4c2158a8c2b8baa79a8ac2f8efe802abb3aced06a8e',
      x86_64: '58dc9db73b1cae5dc507968e7118c4083a6b5514f2db60a568f43796a5740f5c'
   })
 
