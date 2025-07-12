@@ -10,8 +10,8 @@ class Py3_pipdeptree < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '71a3e7fee6c09cc699bbfbc33a184801e6c74161b402a9ac27f6366ff01865c4',
-     armv7l: '71a3e7fee6c09cc699bbfbc33a184801e6c74161b402a9ac27f6366ff01865c4',
+    aarch64: 'ce7a213b371a7609f842a756c81869a1c0cc64c505bca183adfc73ad27707930',
+     armv7l: 'ce7a213b371a7609f842a756c81869a1c0cc64c505bca183adfc73ad27707930',
        i686: 'b220c3fabc56eddbf934c4c2158a8c2b8baa79a8ac2f8efe802abb3aced06a8e',
      x86_64: 'bc37647435098784e16eabc028fdfbbc81025a96d1c1a4f437c7055579f41997'
   })
