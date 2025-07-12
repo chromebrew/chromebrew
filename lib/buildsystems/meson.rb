@@ -14,7 +14,7 @@ class Meson < Package
 
     system "#{@pre_meson_options} meson setup #{@crew_meson_options} #{@meson_options} #{@meson_build_relative_dir}/builddir #{@meson_build_relative_dir}"
     system "meson configure --no-pager #{@meson_build_relative_dir}/builddir"
-    system "#{CREW_NINJA} -C #{@meson_build_relative_dir}/builddir"
+    system "#{CREW_PREFIX}/bin/jobserver_pool.py -j #{CREW_NPROC} #{CREW_NINJA} -C #{@meson_build_relative_dir}/builddir"
     @meson_build_extras&.call
   end
 

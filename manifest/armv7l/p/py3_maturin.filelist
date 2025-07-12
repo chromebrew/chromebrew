@@ -1,10 +1,10 @@
 /usr/local/bin/maturin
-/usr/local/lib/python3.13/site-packages/maturin-1.9.0-py3.13.egg-info/PKG-INFO
-/usr/local/lib/python3.13/site-packages/maturin-1.9.0-py3.13.egg-info/SOURCES.txt
-/usr/local/lib/python3.13/site-packages/maturin-1.9.0-py3.13.egg-info/dependency_links.txt
-/usr/local/lib/python3.13/site-packages/maturin-1.9.0-py3.13.egg-info/not-zip-safe
-/usr/local/lib/python3.13/site-packages/maturin-1.9.0-py3.13.egg-info/requires.txt
-/usr/local/lib/python3.13/site-packages/maturin-1.9.0-py3.13.egg-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/maturin-1.9.1-py3.13.egg-info/PKG-INFO
+/usr/local/lib/python3.13/site-packages/maturin-1.9.1-py3.13.egg-info/SOURCES.txt
+/usr/local/lib/python3.13/site-packages/maturin-1.9.1-py3.13.egg-info/dependency_links.txt
+/usr/local/lib/python3.13/site-packages/maturin-1.9.1-py3.13.egg-info/not-zip-safe
+/usr/local/lib/python3.13/site-packages/maturin-1.9.1-py3.13.egg-info/requires.txt
+/usr/local/lib/python3.13/site-packages/maturin-1.9.1-py3.13.egg-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/maturin/__init__.py
 /usr/local/lib/python3.13/site-packages/maturin/__main__.py
 /usr/local/lib/python3.13/site-packages/maturin/__pycache__/__init__.cpython-313.pyc

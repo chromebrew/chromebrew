@@ -3,18 +3,18 @@ require 'package'
 class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  version '5.40.2'
+  version '5.42.0'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://www.cpan.org/src/5.0/perl-#{version}.tar.xz"
-  source_sha256 '0551c717458e703ef7972307ab19385edfa231198d88998df74e12226abf563b'
+  source_sha256 '73cf6cc1ea2b2b1c110a18c14bbbc73a362073003893ffcedc26d22ebdbdd0c3'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6e800a88d3052480da314062e03b538ef67b9ce4a44e2e3837957a2ed5b35f0b',
-     armv7l: '6e800a88d3052480da314062e03b538ef67b9ce4a44e2e3837957a2ed5b35f0b',
-       i686: '0cf8643052d2071578705eb6359c6fc68ff106cfad69b5de2ea281dbd3e31ce8',
-     x86_64: '416982c26443598cfdbaba9e762741af178d92f54bacc519b85e5ffe23560d84'
+    aarch64: '0d92a28300b6bbf662ede94eef2fa3af8b9356335475d2de1711185ea087f2e6',
+     armv7l: '0d92a28300b6bbf662ede94eef2fa3af8b9356335475d2de1711185ea087f2e6',
+       i686: '08c0ddc46354c4f092dd396726f3d149db4a61eff38f51d985b40386855157f1',
+     x86_64: '96feb4852d26fba0b9ff1cde5aad3562cff9efa0de09cc0199018ce9bd1ff7e8'
   })
 
   depends_on 'gdbm' # R

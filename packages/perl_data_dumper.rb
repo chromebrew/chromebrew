@@ -11,10 +11,10 @@ class Perl_data_dumper < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0f575f41b78b9d67f73d2bd11163d442c5e838db06a868b8d8e52b0942b9ec82',
-     armv7l: '0f575f41b78b9d67f73d2bd11163d442c5e838db06a868b8d8e52b0942b9ec82',
-       i686: '9d75a00164fb9dcd1dfa4502e1b4f863e339c2cea5359cdb1e81bbd25eddb59a',
-     x86_64: '84cae248b99fa81f5399483f1955aed5f5b51d939d54f8433012f6127f3e66fa'
+    aarch64: '62f6b26abb4f9df8b5601f9990e554502f527a090d8d722f51f1542f9e29bc8a',
+     armv7l: '62f6b26abb4f9df8b5601f9990e554502f527a090d8d722f51f1542f9e29bc8a',
+       i686: '8e1a67786b2de6327b71f5db90656d68173ce0d041d50f3d61651c8c5daeb34b',
+     x86_64: 'bae7efeca38cf60dd8ed48cc524921e2049f371c1436b7bb1af355f3959a7417'
   })
 
   depends_on 'glibc' # R

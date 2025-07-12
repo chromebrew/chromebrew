@@ -13,7 +13,7 @@ class CMake < Package
     print_buildsystem_methods
 
     system "#{@pre_cmake_options} cmake -S #{@cmake_build_relative_dir} -B #{@cmake_build_relative_dir}/builddir -G Ninja #{@crew_cmake_options} #{@cmake_options}"
-    system "#{CREW_NINJA} -C #{@cmake_build_relative_dir}/builddir"
+    system "#{CREW_PREFIX}/bin/jobserver_pool.py -j #{CREW_NPROC} #{CREW_NINJA} -C #{@cmake_build_relative_dir}/builddir"
     @cmake_build_extras&.call
   end
 
@@ -24,6 +24,6 @@ class CMake < Package
 
   def self.check
     puts "Testing with #{CREW_NINJA} test.".orange if @run_tests
-    system "ctest -j --progress --test-dir #{@cmake_build_relative_dir}/builddir --rerun-failed --output-on-failure" if @run_tests
+    system "#{CREW_PREFIX}/bin/jobserver_pool.py -j #{CREW_NPROC} ctest -j --progress --test-dir #{@cmake_build_relative_dir}/builddir --rerun-failed --output-on-failure" if @run_tests
   end
 end

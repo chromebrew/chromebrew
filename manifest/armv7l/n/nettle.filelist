@@ -79,11 +79,11 @@
 /usr/local/lib/libhogweed.a
 /usr/local/lib/libhogweed.so
 /usr/local/lib/libhogweed.so.6
-/usr/local/lib/libhogweed.so.6.10
+/usr/local/lib/libhogweed.so.6.11
 /usr/local/lib/libnettle.a
 /usr/local/lib/libnettle.so
 /usr/local/lib/libnettle.so.8
-/usr/local/lib/libnettle.so.8.10
+/usr/local/lib/libnettle.so.8.11
 /usr/local/lib/pkgconfig/hogweed.pc
 /usr/local/lib/pkgconfig/nettle.pc
 /usr/local/share/info/nettle.info.zst

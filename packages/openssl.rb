@@ -3,7 +3,7 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  version '3.5.0' # Do not use @_ver here, it will break the installer.
+  version '3.5.1' # Do not use @_ver here, it will break the installer.
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/openssl/openssl.git'
@@ -11,10 +11,10 @@ class Openssl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fa538083490c8bf497d44ac58df5a6111f873a63353dcfc4cd18fdb9254f0abe',
-     armv7l: 'fa538083490c8bf497d44ac58df5a6111f873a63353dcfc4cd18fdb9254f0abe',
-       i686: '112f3b8ae131e630ca3e98f56963f5703437e01c271131d4b15e27d515f92888',
-     x86_64: '1b7e8f16d0902be1580933c440e3b22a5bf9bb13f6aa35534ac88f3d10bd91eb'
+    aarch64: '634d63525199919a4dd7d601a68893cf12e4daf05b89b5829578ea2e44906f48',
+     armv7l: '634d63525199919a4dd7d601a68893cf12e4daf05b89b5829578ea2e44906f48',
+       i686: '0fd206b154f3688d03dd63b74258391b5cfc815bafea1a851a37722c2708d2a9',
+     x86_64: '233f6ceb24487617875cf07ea6513ca893899625b3beab58634c8e3f3639fda8'
   })
 
   depends_on 'ccache' => :build

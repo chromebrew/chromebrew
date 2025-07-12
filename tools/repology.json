@@ -547,7 +547,7 @@
     "name": "at_spi2_core",
     "description": "This is over DBus, tookit widgets provide their content to screen readers such as Orca",
     "homepage": "https://www.freedesktop.org/wiki/",
-    "version": "2.56.2",
+    "version": "2.56.3",
     "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -835,7 +835,7 @@
     "name": "bash",
     "description": "The GNU Bourne Again SHell is a Bourne-compatible shell with useful csh and ksh features.",
     "homepage": "https://www.gnu.org/software/bash/",
-    "version": "5.3-rc2",
+    "version": "5.3",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -1091,7 +1091,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.80.113",
+    "version": "1.80.115",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1227,7 +1227,7 @@
     "name": "c_ares",
     "description": "C library for asynchronous DNS requests (including name resolves).",
     "homepage": "https://c-ares.org/",
-    "version": "1.34.4",
+    "version": "1.34.5",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -2627,7 +2627,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "138.0.3351.55-1",
+    "version": "138.0.3351.65-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2899,7 +2899,7 @@
     "name": "expat",
     "description": "James Clark's Expat XML parser library in C.",
     "homepage": "https://github.com/libexpat/libexpat",
-    "version": "2.7.1",
+    "version": "2.7.1-1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -3139,7 +3139,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "140.0.1",
+    "version": "140.0.2",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3763,7 +3763,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "528.0.0",
+    "version": "529.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -4683,7 +4683,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "138.0.7204.49-1",
+    "version": "138.0.7204.92-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -7963,7 +7963,7 @@
     "name": "libpsl",
     "description": "C library for the Public Suffix List",
     "homepage": "https://github.com/rockdaboot/libpsl",
-    "version": "0.21.5-1",
+    "version": "0.21.5-2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -9771,7 +9771,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "25.1.4",
+    "version": "25.1.5",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10603,7 +10603,7 @@
     "name": "ncurses",
     "description": "The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. — Wide character",
     "homepage": "https://www.gnu.org/software/ncurses/",
-    "version": "6_5_20250531",
+    "version": "6_5_20250628",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -10827,7 +10827,7 @@
     "name": "ninja",
     "description": "a small build system with a focus on speed",
     "homepage": "https://ninja-build.org",
-    "version": "1.12.1",
+    "version": "1.13.0",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -10917,6 +10917,14 @@
     "homepage": "https://github.com/tuxera/ntfs-3g",
     "version": "2022.10.3",
     "license": "GPL-2",
+    "compatibility": "all"
+  },
+  {
+    "name": "nuclei",
+    "description": "Fast, customizable vulnerability scanner",
+    "homepage": "https://docs.projectdiscovery.io/tools/nuclei",
+    "version": "3.4.6",
+    "license": "MIT",
     "compatibility": "all"
   },
   {
@@ -11243,7 +11251,7 @@
     "name": "openldap",
     "description": "OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.",
     "homepage": "https://www.openldap.org/",
-    "version": "2.6.9",
+    "version": "2.6.10",
     "license": "OpenLDAP and GPL-2",
     "compatibility": "all"
   },
@@ -11331,7 +11339,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "119.0.5497.131",
+    "version": "120.0.5543.38",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -11587,7 +11595,7 @@
     "name": "pcre2",
     "description": "The PCRE2 package contains a new generation of the Perl Compatible Regular Expression libraries.",
     "homepage": "http://pcre.org/",
-    "version": "10.42",
+    "version": "10.45",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -11691,7 +11699,7 @@
     "name": "perl",
     "description": "Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.",
     "homepage": "https://www.perl.org/",
-    "version": "5.40.2",
+    "version": "5.42.0",
     "license": "GPL-1+ or Artistic",
     "compatibility": "all"
   },
@@ -11891,7 +11899,7 @@
     "name": "perl_locale_messages",
     "description": "Perl Locale::Messages - Gettext Like Message Retrieval",
     "homepage": "https://metacpan.org/pod/Locale::Messages",
-    "version": "1.33",
+    "version": "1.35",
     "license": "GPL-1+ or Artistic",
     "compatibility": "all"
   },
@@ -12019,7 +12027,7 @@
     "name": "perl_text_unidecode",
     "description": "Perl Text::Unidecode -- plain ASCII transliterations of Unicode text.",
     "homepage": "https://metacpan.org/pod/Text::Unidecode",
-    "version": "1.30-perl-5.36",
+    "version": "1.30",
     "license": "GPL-1+ or Artistic",
     "compatibility": "all"
   },
@@ -12803,7 +12811,7 @@
     "name": "py3_azure_cli",
     "description": "Next generation multi-platform command line experience for Azure.",
     "homepage": "https://pypi.org/project/azure-cli/",
-    "version": "2.74.0",
+    "version": "2.75.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12923,7 +12931,7 @@
     "name": "py3_cryptography",
     "description": "Cryptography provides cryptographic recipes and primitives to Python developers.",
     "homepage": "https://cryptography.io/",
-    "version": "45.0.4",
+    "version": "45.0.5",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13115,7 +13123,7 @@
     "name": "py3_gi_docgen",
     "description": "Documentation generator for GObject-based libraries",
     "homepage": "https://gnome.pages.gitlab.gnome.org/gi-docgen/",
-    "version": "2025.3",
+    "version": "2025.4",
     "license": "Apache GPL3",
     "compatibility": "all"
   },
@@ -13451,7 +13459,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.154.3",
+    "version": "2.155.0",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13459,7 +13467,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.61.0",
+    "version": "3.62.0",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13531,7 +13539,7 @@
     "name": "py3_pillow",
     "description": "Pillow is a Python Imaging Library (PIL).",
     "homepage": "https://python-pillow.org/",
-    "version": "11.2.1",
+    "version": "11.3.0",
     "license": "HPND",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13723,7 +13731,7 @@
     "name": "py3_pypdf",
     "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.",
     "homepage": "https://github.com/py-pdf/pypdf",
-    "version": "5.6.1",
+    "version": "5.7.0",
     "license": "BSD-3-Clause",
     "compatibility": "all"
   },
@@ -13851,7 +13859,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.12.1",
+    "version": "0.12.2",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -14083,7 +14091,7 @@
     "name": "py3_typing_extensions",
     "description": "Backported and Experimental Type Hints for Python 3.5+",
     "homepage": "https://github.com/python/typing/tree/master/typing_extensions",
-    "version": "4.14.0",
+    "version": "4.14.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16411,7 +16419,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.59.0",
+    "version": "7.60.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -17203,7 +17211,7 @@
     "name": "termius",
     "description": "Modern SSH Client",
     "homepage": "https://termius.com/",
-    "version": "9.22.1",
+    "version": "9.25.1",
     "license": "Apache-2.0, LGPL-2.1, MIT",
     "compatibility": "x86_64"
   },
@@ -17243,7 +17251,7 @@
     "name": "texinfo",
     "description": "Texinfo is the official documentation format of the GNU project.",
     "homepage": "https://www.gnu.org/software/texinfo/",
-    "version": "7.1.1",
+    "version": "7.2",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -17971,7 +17979,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.4.3684.55-1",
+    "version": "7.5.3735.44-1",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19059,7 +19067,7 @@
     "name": "yt_dlp",
     "description": "A fork of youtube-dl with additional features and patches",
     "homepage": "https://github.com/yt-dlp/yt-dlp",
-    "version": "2023.11.16",
+    "version": "2025.06.30",
     "license": "MIT",
     "compatibility": "all"
   },

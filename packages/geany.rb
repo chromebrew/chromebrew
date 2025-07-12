@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Geany < Package
+class Geany < Meson
   description 'Geany is a small and lightweight Integrated Development Environment.'
   homepage 'https://www.geany.org/'
-  version '2.0.0'
+  version '2.1.0'
   license 'GPL-2+ HPND'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/geany/geany.git'
@@ -11,9 +11,9 @@ class Geany < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8be66872a26db0399da46595609f6bda991a7b9a4594413685a5f82916435b75',
-     armv7l: '8be66872a26db0399da46595609f6bda991a7b9a4594413685a5f82916435b75',
-     x86_64: '58b0273c68e563ace1099b64f143e0b7029d6930ab84819ea18e01902ad8f1f8'
+    aarch64: '618c1eb5590c1844ed4d121e721031cee36f92ef779f6965af0b7ca6eb5c107f',
+     armv7l: '618c1eb5590c1844ed4d121e721031cee36f92ef779f6965af0b7ca6eb5c107f',
+     x86_64: '5b791ec438f7940734d0fbdcc1c87349f35d6b2a478b2bf3e3d5a8103a9db2c4'
   })
 
   depends_on 'at_spi2_core' # R
@@ -31,31 +31,14 @@ class Geany < Package
   @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
   @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
 
-  def self.build
-    system "meson setup \
-      #{CREW_MESON_OPTIONS} \
-      -Dapi-docs=disabled \
+  meson_options "-Dapi-docs=disabled \
       -Dgtkdoc=true \
       -Dhtml-docs=disabled \
       -Dpdf-docs=disabled \
       -Dplugins=true \
       -Dpython-command=command=$(which python3) \
       -Dsocket=true \
-      -Dvte=true \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.check
-    # Fails on armv7l
-    # Bail out! dbind-FATAL-WARNING: Couldn't connect to accessibility bus: Failed to connect to socket /var/run/chrome/at-spi/buscheekon_10.0: No such file or directory
-    system "#{CREW_NINJA} -C builddir test || true"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+      -Dvte=true"
 
   def self.postinstall
     # This is needed to avoid "Error loading theme icon 'geany-build' for stock" messages.

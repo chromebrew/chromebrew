@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Geany_plugins < Autotools
   description 'Geany plugins.'
   homepage 'https://www.geany.org/'
-  version "2.0.0-#{CREW_ICU_VER}"
+  version "2.1.0-#{CREW_ICU_VER}"
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/geany/geany-plugins.git'
@@ -11,9 +11,9 @@ class Geany_plugins < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '59df5d161cebaef8831a1147adfdef7c28580d2c6cb0201ec3f9fe24141d8b27',
-     armv7l: '59df5d161cebaef8831a1147adfdef7c28580d2c6cb0201ec3f9fe24141d8b27',
-     x86_64: 'a1e96bedcad6e4417dc2dbe3086688ff6ff1532ce2d799dcd83212c23c8fddb5'
+    aarch64: 'bfc23b06fab6e5ae40b1953fa97a3dad60fdb68b39d831f1fa81e66aa6881bde',
+     armv7l: 'bfc23b06fab6e5ae40b1953fa97a3dad60fdb68b39d831f1fa81e66aa6881bde',
+     x86_64: 'cc817de7a91b6a145e94c9699ecfd18cb5c8fdd10f03a0fe04a555d3a8792339'
   })
 
   depends_on 'aspell' # R
@@ -27,8 +27,8 @@ class Geany_plugins < Autotools
   depends_on 'glib' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'icu4c' # R
   depends_on 'libgit2' # R
+  depends_on 'libsoup' # R
   depends_on 'libsoup2' # R
   depends_on 'libxml2' # R
   depends_on 'ncurses' # R
@@ -37,7 +37,4 @@ class Geany_plugins < Autotools
   depends_on 'vte' # R
   depends_on 'webkit2gtk_4' # R
   depends_on 'zlib' # R
-
-  # try to avoid gcc14 issues.
-  autotools_configure_options '--disable-projectorganizer'
 end

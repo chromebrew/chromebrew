@@ -1,12 +1,10 @@
 ---
 name: Repo / Label merge conflict
-
 on:
   push:
   pull_request_target:
     types:
       - synchronize
-
 jobs:
   triage:
     name: Triage

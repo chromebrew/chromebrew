@@ -11,10 +11,10 @@ class Perl_date_format < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '655989c018245fe36de39d17c0a7c32e185b6e9bae85616cb71068ba5dd2ffac',
-     armv7l: '655989c018245fe36de39d17c0a7c32e185b6e9bae85616cb71068ba5dd2ffac',
-       i686: '120b39d16ee00a279dd5d892b8f6e41a9e240f79fdca25740ab80c8660a2978a',
-     x86_64: 'aeba039cfbb7ad8c8b1ed182694ae4a12cbfea2f22073b89d60634eff1947c6a'
+    aarch64: 'd6ec73c0f345b2a4ca4717a3556303186d296c41f6883df0571561383825ff9d',
+     armv7l: 'd6ec73c0f345b2a4ca4717a3556303186d296c41f6883df0571561383825ff9d',
+       i686: '40e897780576adb61f60dc4233b74d1a379afc0ef2cf525053b6412a75f77426',
+     x86_64: '6e3d3486448140ccf77a8dcee0591275b46cf8cd0ca88bdb3d22a986f7286332'
   })
 
   conflicts_ok #  conflicts with perl_xml_parser

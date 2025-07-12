@@ -42,6 +42,8 @@
 /usr/local/lib64/geany/lineoperations.so
 /usr/local/lib64/geany/lipsum.la
 /usr/local/lib64/geany/lipsum.so
+/usr/local/lib64/geany/lsp.la
+/usr/local/lib64/geany/lsp.so
 /usr/local/lib64/geany/markdown.la
 /usr/local/lib64/geany/markdown.so
 /usr/local/lib64/geany/overview.la
@@ -52,6 +54,8 @@
 /usr/local/lib64/geany/pohelper.so
 /usr/local/lib64/geany/pretty-printer.la
 /usr/local/lib64/geany/pretty-printer.so
+/usr/local/lib64/geany/projectorganizer.la
+/usr/local/lib64/geany/projectorganizer.so
 /usr/local/lib64/geany/scope.la
 /usr/local/lib64/geany/scope.so
 /usr/local/lib64/geany/sendmail.la
@@ -208,6 +212,11 @@
 /usr/local/share/doc/geany-plugins/lipsum/ChangeLog
 /usr/local/share/doc/geany-plugins/lipsum/NEWS
 /usr/local/share/doc/geany-plugins/lipsum/README
+/usr/local/share/doc/geany-plugins/lsp/AUTHORS
+/usr/local/share/doc/geany-plugins/lsp/COPYING
+/usr/local/share/doc/geany-plugins/lsp/ChangeLog
+/usr/local/share/doc/geany-plugins/lsp/NEWS
+/usr/local/share/doc/geany-plugins/lsp/README
 /usr/local/share/doc/geany-plugins/markdown/AUTHORS
 /usr/local/share/doc/geany-plugins/markdown/COPYING
 /usr/local/share/doc/geany-plugins/markdown/ChangeLog
@@ -235,6 +244,11 @@
 /usr/local/share/doc/geany-plugins/pohelper/ChangeLog
 /usr/local/share/doc/geany-plugins/pohelper/NEWS
 /usr/local/share/doc/geany-plugins/pohelper/README
+/usr/local/share/doc/geany-plugins/projectorganizer/AUTHORS
+/usr/local/share/doc/geany-plugins/projectorganizer/COPYING
+/usr/local/share/doc/geany-plugins/projectorganizer/ChangeLog
+/usr/local/share/doc/geany-plugins/projectorganizer/NEWS
+/usr/local/share/doc/geany-plugins/projectorganizer/README
 /usr/local/share/doc/geany-plugins/scope/AUTHORS
 /usr/local/share/doc/geany-plugins/scope/COPYING
 /usr/local/share/doc/geany-plugins/scope/ChangeLog
@@ -303,12 +317,14 @@
 /usr/local/share/geany-plugins/debugger/stop.gif
 /usr/local/share/geany-plugins/debugger/tabs.gif
 /usr/local/share/geany-plugins/geniuspaste/pastebins/codepad.org.conf
-/usr/local/share/geany-plugins/geniuspaste/pastebins/dpaste.de.conf
+/usr/local/share/geany-plugins/geniuspaste/pastebins/dpaste.com.conf
+/usr/local/share/geany-plugins/geniuspaste/pastebins/dpaste.org.conf
 /usr/local/share/geany-plugins/geniuspaste/pastebins/fpaste.org.conf
 /usr/local/share/geany-plugins/geniuspaste/pastebins/paste.debian.net.conf
 /usr/local/share/geany-plugins/geniuspaste/pastebins/pastebin.geany.org.conf
 /usr/local/share/geany-plugins/geniuspaste/pastebins/sprunge.us.conf
 /usr/local/share/geany-plugins/git-changebar/prefs.ui
+/usr/local/share/geany-plugins/lsp/lsp.conf
 /usr/local/share/geany-plugins/overview/prefs.ui
 /usr/local/share/geany-plugins/pohelper/menus.ui
 /usr/local/share/geany-plugins/pohelper/stats.ui

@@ -11,10 +11,10 @@ class Perl_extutils_makemaker < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7b895fed43d1e20817dffbf5168be62b6ffdc95fbd449d709200c1aa918f82ba',
-     armv7l: '7b895fed43d1e20817dffbf5168be62b6ffdc95fbd449d709200c1aa918f82ba',
-       i686: '29fc9b1b462b80bd51924f3cebe60e023c73c2065c975fc64de185cd37eef438',
-     x86_64: 'ffd86ef556961042356bca8870e3c722f368271cb218a1a3a7a4bd2904a51603'
+    aarch64: '7c8c64b59820b7d61a060acdaa51160f465b05cc7f5698b2d489558e39aa83de',
+     armv7l: '7c8c64b59820b7d61a060acdaa51160f465b05cc7f5698b2d489558e39aa83de',
+       i686: '7396d0748cf286e4bf149e61f61cb6ca68fe89fc88d3d135219ca58bbbdbd0d9',
+     x86_64: '27b90ef581ef4803d77cc3b68f23e539a5a66aa3553bac498bd0f86c3bd28210'
   })
 
   def self.install

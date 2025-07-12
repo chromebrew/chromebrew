@@ -10,10 +10,9 @@
 /usr/local/lib64/cmake/c-ares/c-ares-config.cmake
 /usr/local/lib64/cmake/c-ares/c-ares-targets-release.cmake
 /usr/local/lib64/cmake/c-ares/c-ares-targets.cmake
-/usr/local/lib64/libcares.a
 /usr/local/lib64/libcares.so
 /usr/local/lib64/libcares.so.2
-/usr/local/lib64/libcares.so.2.19.3
+/usr/local/lib64/libcares.so.2.19.4
 /usr/local/lib64/pkgconfig/libcares.pc
 /usr/local/share/man/man1/adig.1.zst
 /usr/local/share/man/man1/ahost.1.zst

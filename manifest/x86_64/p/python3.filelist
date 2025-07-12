@@ -1904,9 +1904,6 @@
 /usr/local/lib64/python3.13/config-3.13-x86_64-linux-gnu/Setup.bootstrap
 /usr/local/lib64/python3.13/config-3.13-x86_64-linux-gnu/Setup.local
 /usr/local/lib64/python3.13/config-3.13-x86_64-linux-gnu/Setup.stdlib
-/usr/local/lib64/python3.13/config-3.13-x86_64-linux-gnu/__pycache__/python-config.cpython-313.opt-1.pyc
-/usr/local/lib64/python3.13/config-3.13-x86_64-linux-gnu/__pycache__/python-config.cpython-313.opt-2.pyc
-/usr/local/lib64/python3.13/config-3.13-x86_64-linux-gnu/__pycache__/python-config.cpython-313.pyc
 /usr/local/lib64/python3.13/config-3.13-x86_64-linux-gnu/config.c
 /usr/local/lib64/python3.13/config-3.13-x86_64-linux-gnu/config.c.in
 /usr/local/lib64/python3.13/config-3.13-x86_64-linux-gnu/install-sh
@@ -8274,8 +8271,7 @@
 /usr/local/lib64/python3.13/test/typinganndata/ann_module8.py
 /usr/local/lib64/python3.13/test/typinganndata/ann_module9.py
 /usr/local/lib64/python3.13/test/typinganndata/mod_generics_cache.py
-/usr/local/lib64/python3.13/test/wheeldata/setuptools-67.6.1-py3-none-any.whl
-/usr/local/lib64/python3.13/test/wheeldata/wheel-0.43.0-py3-none-any.whl
+/usr/local/lib64/python3.13/test/wheeldata/setuptools-79.0.1-py3-none-any.whl
 /usr/local/lib64/python3.13/test/win_console_handler.py
 /usr/local/lib64/python3.13/test/xmltestdata/c14n-20/README
 /usr/local/lib64/python3.13/test/xmltestdata/c14n-20/c14nComment.xml
