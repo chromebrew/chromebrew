@@ -43,7 +43,5 @@ jobs:
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
           PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
-            echo "Flipping pr ${PR_NUMBER} state."
-            gh pr close "${PR_NUMBER}" && gh pr reopen "${PR_NUMBER}"
             gh pr edit "${PR_NUMBER}" --add-reviewer chromebrew/active
             gh pr merge "${PR_NUMBER}" --auto --squash
