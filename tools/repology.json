@@ -1091,7 +1091,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.80.115",
+    "version": "1.80.120",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -2627,7 +2627,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "138.0.3351.65-1",
+    "version": "138.0.3351.83-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -3139,7 +3139,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "140.0.2",
+    "version": "140.0.4",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3835,7 +3835,7 @@
     "name": "geany",
     "description": "Geany is a small and lightweight Integrated Development Environment.",
     "homepage": "https://www.geany.org/",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "license": "GPL-2+ HPND",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3843,7 +3843,7 @@
     "name": "geany_plugins",
     "description": "Geany plugins.",
     "homepage": "https://www.geany.org/",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4059,7 +4059,7 @@
     "name": "git",
     "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
     "homepage": "https://git-scm.com/",
-    "version": "2.50.0",
+    "version": "2.50.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -4683,7 +4683,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "138.0.7204.92-1",
+    "version": "138.0.7204.100-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -10755,7 +10755,7 @@
     "name": "nettle",
     "description": "Nettle is a cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.",
     "homepage": "http://www.lysator.liu.se/~nisse/nettle/",
-    "version": "3.10.1",
+    "version": "3.10.2",
     "license": "LGPL-3 or LGPL-2.1",
     "compatibility": "all"
   },
@@ -11307,7 +11307,7 @@
     "name": "openssl",
     "description": "The Open Source toolkit for Secure Sockets Layer and Transport Layer Security",
     "homepage": "https://www.openssl.org",
-    "version": "3.5.0",
+    "version": "3.5.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -11339,7 +11339,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "120.0.5543.38",
+    "version": "120.0.5543.61",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -12715,7 +12715,7 @@
     "name": "py3_abimap",
     "description": "A helper for library maintainers to use symbol versioning",
     "homepage": "https://github.com/ansasaki/abimap",
-    "version": "0.3.2",
+    "version": "0.4.0",
     "license": "BSD-2",
     "compatibility": "all"
   },
@@ -12859,7 +12859,7 @@
     "name": "py3_certifi",
     "description": "Certifi provides Mozilla's CA Bundle.",
     "homepage": "https://certifi.io/",
-    "version": "2025.6.15",
+    "version": "2025.7.9",
     "license": "MPL-2.0",
     "compatibility": "all"
   },
@@ -13379,7 +13379,7 @@
     "name": "py3_maturin",
     "description": "Build and publish crates with pyo3, rust-cpython and cffi bindings",
     "homepage": "https://github.com/PyO3/maturin",
-    "version": "1.9.0",
+    "version": "1.9.1",
     "license": "Apache-2.0 OR MIT",
     "compatibility": "all"
   },
@@ -13443,7 +13443,7 @@
     "name": "py3_nuitka",
     "description": "Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.",
     "homepage": "https://nuitka.net/",
-    "version": "2.7.11",
+    "version": "2.7.12",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13459,7 +13459,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.155.0",
+    "version": "2.155.1",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13467,7 +13467,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.62.0",
+    "version": "3.62.1",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13555,7 +13555,7 @@
     "name": "py3_pipdeptree",
     "description": "Displays a dependency tree of the installed Python packages.",
     "homepage": "https://github.com/naiquevin/pipdeptree/",
-    "version": "2.26.1",
+    "version": "2.27.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13627,7 +13627,7 @@
     "name": "py3_pybind11",
     "description": "Seamless operability between C++11 and Python",
     "homepage": "https://github.com/pybind/pybind11",
-    "version": "2.13.6",
+    "version": "3.0.0",
     "license": "BSD-3 Clause",
     "compatibility": "all"
   },
@@ -13747,7 +13747,7 @@
     "name": "py3_pyright",
     "description": "Static Type Checker for Python",
     "homepage": "https://github.com/microsoft/pyright",
-    "version": "1.1.402",
+    "version": "1.1.403",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13859,7 +13859,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.12.2",
+    "version": "0.12.3",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -14275,7 +14275,7 @@
     "name": "python3",
     "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
     "homepage": "https://www.python.org/",
-    "version": "3.13.4",
+    "version": "3.13.5",
     "license": "PSF-2.0",
     "compatibility": "all"
   },
@@ -14643,7 +14643,7 @@
     "name": "readline",
     "description": "The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in.",
     "homepage": "https://tiswww.cwru.edu/php/chet/readline/rltop.html",
-    "version": "8.3-rc2",
+    "version": "8.3",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -15248,6 +15248,14 @@
     "compatibility": "all"
   },
   {
+    "name": "ruby_lint_roller",
+    "description": "A plugin specification for linter and formatter rulesets",
+    "homepage": "https://github.com/standardrb/lint_roller",
+    "version": "1.1.0",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
     "name": "ruby_logger",
     "description": "Provides a simple logging utility for outputting messages.",
     "homepage": "https://github.com/ruby/logger",
@@ -15611,7 +15619,7 @@
     "name": "ruby_resolv",
     "description": "Thread-aware dns resolver library in ruby.",
     "homepage": "https://github.com/ruby/resolv",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -15651,7 +15659,7 @@
     "name": "ruby_rubocop",
     "description": "A Ruby static code analyzer and formatter",
     "homepage": "https://rubocop.org",
-    "version": "1.77.0",
+    "version": "1.78.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15659,7 +15667,7 @@
     "name": "ruby_rubocop_ast",
     "description": "Contains the classes needed by RuboCop to deal with Ruby's AST.",
     "homepage": "https://github.com/rubocop/rubocop-ast",
-    "version": "1.44.1",
+    "version": "1.45.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16419,7 +16427,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.60.0",
+    "version": "7.61.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -16723,7 +16731,7 @@
     "name": "sqlmap",
     "description": "sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.",
     "homepage": "https://sqlmap.org/",
-    "version": "1.9.6",
+    "version": "1.9.7",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -17979,7 +17987,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.5.3735.44-1",
+    "version": "7.5.3735.47-1",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19227,7 +19235,7 @@
     "name": "zotero",
     "description": "Zotero is a free, easy-to-use tool to help you collect, organize, annotate, cite, and share research.",
     "homepage": "https://www.zotero.org/",
-    "version": "7.0.15",
+    "version": "7.0.20",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
