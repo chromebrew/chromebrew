@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gstreamer < Meson
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.24.11'
+  version '1.27.1'
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
@@ -120,10 +120,9 @@ class Gstreamer < Meson
   depends_on 'zlib' # R
   depends_on 'zvbi' # R
 
+  # no_lto
+  conflicts_ok # conflicts with libglvnd
   gnome
-  no_lto
-
-  # conflicts_ok # conflicts with orc, gst_plugins_{base,bad}
 
   def self.prebuild
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
@@ -131,6 +130,8 @@ class Gstreamer < Meson
 
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
     -Ddoc=disabled \
+    -Dexamples=disabled \
     -Dgpl=enabled \
-    -Dgtk_doc=disabled"
+    -Dgtk_doc=disabled \
+    -Dintrospection=disabled"
 end
