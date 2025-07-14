@@ -14,7 +14,7 @@ class Spirv_tools < CMake
     aarch64: 'f605f3c1568b267b89972d04e551837a54ca981aeabfba86bae2bee982b26530',
      armv7l: 'f605f3c1568b267b89972d04e551837a54ca981aeabfba86bae2bee982b26530',
        i686: '5bf1a0d0254865711a1ac63e94e0eaeba59ddd901552edd61bf673ef6cb6b37e',
-     x86_64: '90a756098b6923c475398ef700b577216cc63b765a1b871bbc62e3abe6c7ec00'
+     x86_64: '553bc251d8ef417ba87a6c9b67940113e2bbcade47d808a0c29f198c8d5ffef9'
   })
 
   depends_on 'gcc_lib' # R
