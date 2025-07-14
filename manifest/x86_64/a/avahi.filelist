@@ -50,8 +50,6 @@
 /usr/local/include/avahi-gobject/ga-service-browser.h
 /usr/local/include/avahi-gobject/ga-service-resolver.h
 /usr/local/include/avahi-libevent/libevent-watch.h
-/usr/local/lib64/girepository-1.0/Avahi-0.6.typelib
-/usr/local/lib64/girepository-1.0/AvahiCore-0.6.typelib
 /usr/local/lib64/libavahi-client.a
 /usr/local/lib64/libavahi-client.la
 /usr/local/lib64/libavahi-client.so
@@ -107,8 +105,6 @@
 /usr/local/share/dbus-1/interfaces/org.freedesktop.Avahi.ServiceResolver.xml
 /usr/local/share/dbus-1/interfaces/org.freedesktop.Avahi.ServiceTypeBrowser.xml
 /usr/local/share/dbus-1/system.d/avahi-dbus.conf
-/usr/local/share/gir-1.0/Avahi-0.6.gir
-/usr/local/share/gir-1.0/AvahiCore-0.6.gir
 /usr/local/share/locale/ach/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/ar/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/bg/LC_MESSAGES/avahi.mo
@@ -128,14 +124,17 @@
 /usr/local/share/locale/fi/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/fo/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/fr/LC_MESSAGES/avahi.mo
+/usr/local/share/locale/fur/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/gl/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/he/LC_MESSAGES/avahi.mo
+/usr/local/share/locale/hi/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/hr/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/hu/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/id/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/it/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/ja/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/ka/LC_MESSAGES/avahi.mo
+/usr/local/share/locale/kab/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/ko/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/lv/LC_MESSAGES/avahi.mo
 /usr/local/share/locale/ms/LC_MESSAGES/avahi.mo

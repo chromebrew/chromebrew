@@ -657,6 +657,11 @@ def unpack(meta)
       when /\.AppImage$/i
         puts "Unpacking 'AppImage' archive, this may take a while..."
         FileUtils.chmod 0o755, meta[:filename], verbose: CREW_VERBOSE
+        unless CREW_GLIBC_INTERPRETER.blank?
+          puts "Running patchelf on #{meta[:filename]} to set interpreter".orange if CREW_VERBOSE
+          _appimage_set_interpreter_stdout, appimage_set_interpreter_stderr = Open3.capture3("patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{meta[:filename]}")
+          puts "#{meta[:filename]}: appimage_set_interpreter_stderr: #{appimage_set_interpreter_stderr.chomp}".lightpurple if !appimage_set_interpreter_stderr.blank? && CREW_VERBOSE
+        end
         system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
       when /\.gem$/i
         puts "Moving #{@pkg.ruby_gem_name} binary gem for install..."
