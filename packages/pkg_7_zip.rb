@@ -14,7 +14,7 @@ class Pkg_7_zip < Package
     aarch64: '7f18aa14a9604cf54c390ccf58135469f543a8a1a4bdef667525da18f58fcd9d',
      armv7l: '7f18aa14a9604cf54c390ccf58135469f543a8a1a4bdef667525da18f58fcd9d',
        i686: '4aad8fbed7a784b8326de7611de1931d1a23e9b6a0d0fbec7bc7464f63a9c1a3',
-     x86_64: 'a80ffe51d0fa5d7526965fbce635efc67b193a0476cc45c82020369252a71369'
+     x86_64: '2f598746525cbadbb77d580d7606e92c0d8c31dc6386853dff66aaab20d5acbe'
   })
 
   no_env_options
