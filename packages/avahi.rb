@@ -14,7 +14,7 @@ class Avahi < Autotools
     aarch64: 'c34e8d66c23cc56cffd351e1c760eb352b73900f1943fb135774f4cd5093699d',
      armv7l: 'c34e8d66c23cc56cffd351e1c760eb352b73900f1943fb135774f4cd5093699d',
        i686: 'e5f4c444fd22a951a98bf0f16c26a7fd01eae72e85cbf3aaf243995f9496301b',
-     x86_64: '0939b420dceeccf39b7afe71b562ef9f85087913b5191d43357b51e3e1a1d955'
+     x86_64: '551bf5e0fcd1d3906055c745e75b9f627026fbe1a63b82483235b9186f3e6f68'
   })
 
   depends_on 'dbus' # R (needed to enable avahi-client)
