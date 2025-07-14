@@ -11,8 +11,8 @@ class Spirv_tools < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f605f3c1568b267b89972d04e551837a54ca981aeabfba86bae2bee982b26530',
-     armv7l: 'f605f3c1568b267b89972d04e551837a54ca981aeabfba86bae2bee982b26530',
+    aarch64: 'b426bafb81437dd7cda8e794bad0894fd01d98b705d424cf4b137b2815d152c6',
+     armv7l: 'b426bafb81437dd7cda8e794bad0894fd01d98b705d424cf4b137b2815d152c6',
        i686: '5bf1a0d0254865711a1ac63e94e0eaeba59ddd901552edd61bf673ef6cb6b37e',
      x86_64: '553bc251d8ef417ba87a6c9b67940113e2bbcade47d808a0c29f198c8d5ffef9'
   })
