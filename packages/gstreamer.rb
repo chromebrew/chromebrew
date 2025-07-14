@@ -11,8 +11,8 @@ class Gstreamer < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '258ec2bb1c6c62e74a3117819b36833fbecfb3779c7e001e07ccc93de51f31eb',
-     armv7l: '258ec2bb1c6c62e74a3117819b36833fbecfb3779c7e001e07ccc93de51f31eb',
+    aarch64: 'a363b918c6761ae8eff6215b94dc92367532fa45d4d93b76b6d8edad6c951f07',
+     armv7l: 'a363b918c6761ae8eff6215b94dc92367532fa45d4d93b76b6d8edad6c951f07',
      x86_64: '0b71f08d892e3c9a39364284882cfaadea9637433802265fadaa8dd502835f0e'
   })
 
@@ -107,6 +107,8 @@ class Gstreamer < Meson
   depends_on 'zlib' # R
   depends_on 'zvbi' # R
   depends_on 'abseil_cpp' # R
+  depends_on 'qt5_base' # R
+  depends_on 'qt5_declarative' # R
   depends_on 'qt5_base' # R
   depends_on 'qt5_declarative' # R
 
