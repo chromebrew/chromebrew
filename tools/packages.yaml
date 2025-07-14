@@ -6030,6 +6030,11 @@ url: http://www.hyperrealm.com/packages/
 activity: none
 ---
 kind: url
+name: missioncenter
+url: https://gitlab.com/mission-center-devs/mission-center/-/releases
+activity: medium
+---
+kind: url
 name: mjpegtools
 url: https://sourceforge.net/projects/mjpeg/files/mjpegtools/
 activity: medium
