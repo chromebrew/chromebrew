@@ -13,11 +13,10 @@ class Gstreamer < Meson
   binary_sha256({
     aarch64: '258ec2bb1c6c62e74a3117819b36833fbecfb3779c7e001e07ccc93de51f31eb',
      armv7l: '258ec2bb1c6c62e74a3117819b36833fbecfb3779c7e001e07ccc93de51f31eb',
-     x86_64: '94511ce97c9cc5df8084143a0b2217f353b24b11bbc8f74256754ba0f75c8db4'
+     x86_64: '0b71f08d892e3c9a39364284882cfaadea9637433802265fadaa8dd502835f0e'
   })
 
   depends_on 'alsa_lib' # R
-  depends_on 'at_spi2_core' # R
   depends_on 'bzip2' # R
   depends_on 'ca_certificates' => :build
   depends_on 'cairo' # R
@@ -32,16 +31,13 @@ class Gstreamer < Meson
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gmp' # R
   depends_on 'gnutls' # R
-  depends_on 'gobject_introspection' # R
   depends_on 'graphene' # R
   depends_on 'gsl' => :build
   depends_on 'gsm' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'intel_media_sdk' if ARCH.eql?('x86_64') # R
-  depends_on 'jack' # R
   depends_on 'json_glib' # R
   depends_on 'lcms' # R
   depends_on 'libaom' # R
@@ -49,11 +45,9 @@ class Gstreamer < Meson
   depends_on 'libavc1394' # R
   depends_on 'libcap'
   depends_on 'libcap' # R
-  depends_on 'libde265' # R
   depends_on 'libdrm' # R
   depends_on 'libdv' # R
   depends_on 'libfdk_aac' # R
-  depends_on 'libffi' # R
   depends_on 'libglvnd' # R
   depends_on 'libgudev' # R
   depends_on 'libiec61883' # R
@@ -98,27 +92,23 @@ class Gstreamer < Meson
   depends_on 'opusfile' => :build
   depends_on 'opus' # R
   depends_on 'pango' # R
-  depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
   depends_on 'py3_setuptools' => :build
-  depends_on 'py3_pygobject' # R
-  depends_on 'python3' # R
   depends_on 'qt5_base' => :build # otherwise this becomes circular
   depends_on 'qt5_declarative' => :build # otherwise this becomes circular
   depends_on 'rtmpdump' # R
   depends_on 'sbc' # R
-  depends_on 'serd' # R
-  depends_on 'sord' # R
   depends_on 'speex' # R
-  depends_on 'sratom' # R
   depends_on 'srt' # R
   depends_on 'svt_av1' # R
   depends_on 'v4l_utils' # R
   depends_on 'wavpack' # R
   depends_on 'wayland' # R
-  depends_on 'webrtc_audio_processing' # R
   depends_on 'zlib' # R
   depends_on 'zvbi' # R
+  depends_on 'abseil_cpp' # R
+  depends_on 'qt5_base' # R
+  depends_on 'qt5_declarative' # R
 
   # no_lto
   conflicts_ok # conflicts with libglvnd
