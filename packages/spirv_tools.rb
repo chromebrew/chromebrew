@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Spirv_tools < CMake
   homepage 'https://github.com/KhronosGroup/SPIRV-Tools'
   description 'API and commands for processing SPIR-V modules'
-  version '2025.1.rc1'
+  version '2025.1'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/SPIRV-Tools.git'
