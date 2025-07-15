@@ -17,8 +17,8 @@ class Openmp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ba742ce60f53fb471139c55ba822d7b938beeec51853292deba17d872b2dc905',
-     armv7l: 'ba742ce60f53fb471139c55ba822d7b938beeec51853292deba17d872b2dc905',
+    aarch64: 'fb89756a03328908e1f66cc2bbc15c9fb7d9699091021c1b742b35da3eb310c6',
+     armv7l: 'fb89756a03328908e1f66cc2bbc15c9fb7d9699091021c1b742b35da3eb310c6',
        i686: '1dcdfdd1cf2e7f4bf72d300e07b08d7672ef00f44aa858dc6055f46f6e498f32',
      x86_64: '223ef5891c73752bfb1923fa3a44c7dc85d11f93d99d5505a57bc44d58296bcb'
   })
