@@ -11,8 +11,8 @@ class Zoneinfo < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e0daf569178baf4d59c6f6641c3819dba2999cf71e3917d9fc0bf8e1f4149b50',
-     armv7l: 'e0daf569178baf4d59c6f6641c3819dba2999cf71e3917d9fc0bf8e1f4149b50',
+    aarch64: 'a7a38bc48e20951326545fff3c5a1262cb2f0ae0ed1a3a3f179f3a04cdab704a',
+     armv7l: 'a7a38bc48e20951326545fff3c5a1262cb2f0ae0ed1a3a3f179f3a04cdab704a',
        i686: '10a5a2c1a4bd2f679f4c813f0ea5c740630cc2b12ec18b1c7c011a82e835c59a',
      x86_64: '43a1709b56a14563be7933b287110674eb57d3754f8def4eb0d96e0b6c9f322b'
   })
