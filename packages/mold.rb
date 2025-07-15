@@ -17,7 +17,7 @@ class Mold < CMake
     aarch64: '125afda12cf507f6b0cdf562f8b5ea123e7e8afecbe506d1d2b515e49647a8d2',
      armv7l: '125afda12cf507f6b0cdf562f8b5ea123e7e8afecbe506d1d2b515e49647a8d2',
        i686: '8d45f8efa9c8f5943c52a411b2bc41a27ee392731533e2100ff5b6bd6c5c1bd4',
-     x86_64: '8703823aaa6d6d7563fa7aed461137fe7ed4ed7acb6a6c0d3ac2b6b1cfb8a111'
+     x86_64: '392e182dbb3d94c30a8b5a2d63afad18a7787f059aa154f60f6c2d48c097e0d9'
   })
 
   depends_on 'gcc_lib' # R
