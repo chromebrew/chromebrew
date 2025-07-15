@@ -17,12 +17,12 @@ class Sqlite < Autotools
      x86_64: '3c1a3bde311155b4d46c525eded402e4a93e887e23b3501a151da5f1fe1d06a5'
   })
 
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libedit' # R
   depends_on 'readline' => :build
   depends_on 'zlib' # R
   depends_on 'ncurses' # R
-  depends_on 'gcc_lib' # R
 
   autotools_configure_options '--enable-shared \
     --enable-editline \
