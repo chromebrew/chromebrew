@@ -23,8 +23,27 @@ class Psmisc < Autotools
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
 
-  no_lto if ARCH == 'x86_64'
+  # no_lto if ARCH == 'x86_64'
 
   autotools_pre_configure_options "CFLAGS+=' -I#{CREW_PREFIX}/include/ncurses'"
   autotools_configure_options '--disable-statx'
+
+  def self.patch
+    # See: https://gitlab.com/psmisc/psmisc/-/issues/61
+    File.write 'statx.patch', <<~STATX_PATCH_EOF
+      diff -Npaur a/src/fuser.c b/src/fuser.c
+      --- a/src/fuser.c	2025-07-15 13:58:53.377148922 -0400
+      +++ b/src/fuser.c	2025-07-15 14:00:15.721147920 -0400
+      @@ -1387,7 +1387,7 @@ int main(int argc, char *argv[])
+                   continue;
+               }
+
+      -#if defined(HAVE_DECL_SYS_STATX) && HAVE_DECL_SYS_STATX == 1
+      +#if defined(WITH_STATX) && defined(HAVE_DECL_SYS_STATX) && HAVE_DECL_SYS_STATX == 1
+               if ((opts & OPT_ALWAYSSTAT))
+                   stat_flags = 0;        /* Triggers sync with e.g. remote NFS server even on autofs */
+       #endif
+    STATX_PATCH_EOF
+    system 'patch -Np1 -i statx.patch'
+  end
 end
