@@ -8,8 +8,6 @@ class Psmisc < Autotools
   compatibility 'all'
   source_url 'https://gitlab.com/psmisc/psmisc.git'
   git_hashtag '252db9b91d0cdbc4bbdbd8c645f7df30235dc36f'
-  # source_url "https://gitlab.com/psmisc/psmisc/-/archive/v#{version}/psmisc-v#{version}.tar.bz2"
-  # source_sha256 'c4b1df2e671e8194f6c3063e43cb9afa26cbe9859f1026ff6ad258ac562804f4'
   binary_compression 'tar.zst'
 
   binary_sha256({
