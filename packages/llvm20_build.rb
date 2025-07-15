@@ -1,7 +1,7 @@
 require 'package'
 
 class Llvm20_build < Package
-  @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;lld;lldb;polly;pstl' : 'clang;clang-tools-extra;lld;lldb;polly;pstl'
+  @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl' : 'clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl'
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
   version '20.1.8'
@@ -143,7 +143,6 @@ class Llvm20_build < Package
             -DLLVM_ENABLE_PIC=ON \
             -DLLVM_ENABLE_PROJECTS='#{@llvm_projects_to_build}' \
             -DLLVM_ENABLE_RTTI=ON \
-            -DLLVM_ENABLE_RUNTIMES=compiler-rt \
             -DLLVM_INCLUDE_BENCHMARKS=OFF \
             -DLLVM_INSTALL_UTILS=ON \
             -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
