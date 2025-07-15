@@ -23,7 +23,7 @@ class Psmisc < Autotools
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
 
-  no_lto unless ARCH == 'x86_64'
+  no_lto if ARCH == 'x86_64'
 
   autotools_pre_configure_options "CFLAGS+=' -I#{CREW_PREFIX}/include/ncurses'"
   autotools_configure_options '--disable-statx'
