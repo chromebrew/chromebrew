@@ -4,7 +4,7 @@ class Llvm20_build < Package
   @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl' : 'clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl'
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
-  version '20.1.6'
+  version '20.1.8'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -13,10 +13,10 @@ class Llvm20_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0208ae150f520c2fc08b39531b83559ef0c5d2ff32e7fe04333144edd523b779',
-     armv7l: '0208ae150f520c2fc08b39531b83559ef0c5d2ff32e7fe04333144edd523b779',
-       i686: '8a940d2c0d1ea3a8463ad9ba6d28ce9f23b9c6fa8914ea47579a8d79f5aa8f68',
-     x86_64: 'f379501e6bf65dc3a16998622a4a0f4a08840509e5b2caae4b4cd291f7d256c9'
+    aarch64: '1adf11e5d9aa8e1c0402fe6b1bbd53404545a7483bc2a7467f2561b093449afc',
+     armv7l: '1adf11e5d9aa8e1c0402fe6b1bbd53404545a7483bc2a7467f2561b093449afc',
+       i686: 'a3260144000633c3310daa3cac2fbb1d93e3fb21cf2a7ec83c633fe7c59ccca7',
+     x86_64: 'a2e2242dfb20142761f264e14759742b677e03bd14a32f745a65b2b2946837fd'
   })
 
   depends_on 'gcc_lib' # R
@@ -32,40 +32,38 @@ class Llvm20_build < Package
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  no_env_options
   conflicts_ok
+  no_env_options
 
   case ARCH
   when 'aarch64', 'armv7l'
     # LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
-    @ARCH_CXX_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
+    @ARCH_C_FLAGS = "-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
+    @ARCH_CXX_FLAGS = "-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
     @ARCH_LDFLAGS = ''
-    @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
   when 'i686'
     # LLVM_TARGETS_TO_BUILD = 'X86'.freeze
     # Because ld.lld: error: undefinler-rt;libc;libcxx;libcxxabi;libunwind;openmped symbol: __atomic_store
     # Polly demands fPIC
-    @ARCH_C_FLAGS = '-latomic -fPIC'
-    @ARCH_CXX_FLAGS = '-latomic -fPIC'
+    @ARCH_C_FLAGS = '-latomic'
+    @ARCH_CXX_FLAGS = '-latomic'
     # Because getting this error:
     # ld.lld: error: relocation R_386_PC32 cannot be used against symbol isl_map_fix_si; recompile with -fPIC
     # So as per https://github.com/openssl/openssl/issues/11305#issuecomment-602003528
     @ARCH_LDFLAGS = '-Wl,-znotext'
-    @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
     # lldb fails on i686 due to requirement for a kernel > 4.1.
     # See https://github.com/llvm/llvm-project/issues/57594
   when 'x86_64'
     # LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = '-fPIC'
-    @ARCH_CXX_FLAGS = '-fPIC'
+    @ARCH_C_FLAGS = ''
+    @ARCH_CXX_FLAGS = ''
     @ARCH_LDFLAGS = ''
-    @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
   end
-  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin"
-  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin"
+  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -fPIC -flto=thin #{CREW_LINKER_FLAGS}"
+  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -fPIC -flto=thin #{CREW_LINKER_FLAGS}"
+  @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin #{CREW_LINKER_FLAGS}"
   # flang isn't supported on 32-bit architectures.
   # openmp is its own package.
 
@@ -119,6 +117,7 @@ class Llvm20_build < Package
         clang++ -fPIC -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
       CLCPLUSPLUS_EOF
       system "cmake -B builddir -G Ninja llvm \
+            -DCLANG_DEFAULT_LINKER=mold \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_C_COMPILER=$(which clang) \
@@ -130,7 +129,6 @@ class Llvm20_build < Package
             -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
             -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}"}' \
-            -DCLANG_DEFAULT_LINKER=mold \
             -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
             -DCOMPILER_RT_BUILD_BUILTINS=ON \
             -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
@@ -142,6 +140,7 @@ class Llvm20_build < Package
             -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_TARGET} \
             -DLLVM_ENABLE_FFI=ON \
             -DLLVM_ENABLE_LTO=Thin \
+            -DLLVM_ENABLE_PIC=ON \
             -DLLVM_ENABLE_PROJECTS='#{@llvm_projects_to_build}' \
             -DLLVM_ENABLE_RTTI=ON \
             -DLLVM_INCLUDE_BENCHMARKS=OFF \
@@ -152,16 +151,7 @@ class Llvm20_build < Package
             -DLLVM_TARGETS_TO_BUILD='#{LLVM_TARGETS_TO_BUILD}' \
             -Wno-dev"
     end
-    @counter = 1
-    @counter_max = 20
-    loop do
-      break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
-
-      puts "Make iteration #{@counter} of #{@counter_max}...".orange
-
-      @counter += 1
-      break if @counter > @counter_max
-    end
+    system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
   end
 
   def self.install
