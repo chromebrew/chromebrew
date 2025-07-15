@@ -14,7 +14,7 @@ class Sqlite < Autotools
     aarch64: '7607848e3e335925b7f93ec9b05b625986cca2e6cd1cea843de397ae84d67c4f',
      armv7l: '7607848e3e335925b7f93ec9b05b625986cca2e6cd1cea843de397ae84d67c4f',
        i686: '2e66a04a245e2e25b62ddff2e4fdec7129fcaa42f6e5a8813cbb5a95ddb017ff',
-     x86_64: '94b9135bdefbe38564119db4ff021c1a0bcf83fb367cff9fa884b35974f40d01'
+     x86_64: '3c1a3bde311155b4d46c525eded402e4a93e887e23b3501a151da5f1fe1d06a5'
   })
 
   depends_on 'glibc' # R
