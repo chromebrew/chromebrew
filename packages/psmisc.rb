@@ -23,13 +23,11 @@ class Psmisc < Autotools
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
 
-  # no_lto if ARCH == 'x86_64'
-
   autotools_pre_configure_options "CFLAGS+=' -I#{CREW_PREFIX}/include/ncurses'"
   autotools_configure_options '--disable-statx'
 
   def self.patch
-    # See: https://gitlab.com/psmisc/psmisc/-/issues/61
+    # See: https://gitlab.com/psmisc/psmisc/-/merge_requests/42
     File.write 'statx.patch', <<~STATX_PATCH_EOF
       diff -Npaur a/src/fuser.c b/src/fuser.c
       --- a/src/fuser.c	2025-07-15 13:58:53.377148922 -0400
