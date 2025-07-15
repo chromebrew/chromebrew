@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Psmisc < Package
+class Psmisc < Autotools
   description 'PSmisc is a set of some small useful utilities that use the proc filesystem.'
   homepage 'https://gitlab.com/psmisc/psmisc'
   version '23.7-252db9b'
@@ -23,13 +23,6 @@ class Psmisc < Package
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
 
-  def self.build
-    system './autogen.sh'
-    system "CFLAGS+=' -I#{CREW_PREFIX}/include/ncurses' ./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_pre_configure_options "CFLAGS+=' -I#{CREW_PREFIX}/include/ncurses'"
+  autotools_configure_options '--disable-statx'
 end
