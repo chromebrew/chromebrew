@@ -13,7 +13,7 @@ class Ocaml < Package
   binary_sha256({
     aarch64: '52d09ef49d2c1c36369bfec101bdd3b71abc8d79bc1faff2c892b31fbd741dd5',
      armv7l: '52d09ef49d2c1c36369bfec101bdd3b71abc8d79bc1faff2c892b31fbd741dd5',
-       i686: 'cd90b84df17a84c5c879d323741ddfb686ecc3f2f711adf08c6c5647cc92b25f',
+       i686: '9a2d16619143505a9ea699f6f21da22254d570038b536a4f3ea6297ba5119d26',
      x86_64: '62ddd09a8bf0b4cea07e92d30dad05c706121f133c56e9e46361f754153524d1'
   })
 
