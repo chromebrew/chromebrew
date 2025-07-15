@@ -11,8 +11,8 @@ class Ocaml < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '52d09ef49d2c1c36369bfec101bdd3b71abc8d79bc1faff2c892b31fbd741dd5',
-     armv7l: '52d09ef49d2c1c36369bfec101bdd3b71abc8d79bc1faff2c892b31fbd741dd5',
+    aarch64: 'a629b32a38def20b0f751282c0bc1cf596c109a21fcd4127a735441325c80ad0',
+     armv7l: 'a629b32a38def20b0f751282c0bc1cf596c109a21fcd4127a735441325c80ad0',
        i686: '9a2d16619143505a9ea699f6f21da22254d570038b536a4f3ea6297ba5119d26',
      x86_64: '4de68fa82f535c5ba8ff8a1a7071b83a89862487ff197b79d4d32f399e07a574'
   })
