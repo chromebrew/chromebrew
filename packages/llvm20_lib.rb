@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/llvm20_build.rb")
 class Llvm20_lib < Package
   description 'LibLLVM and llvm-strip'
   homepage Llvm20_build.homepage
-  version '20.1.6'
+  version '20.1.8'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm20_build.version}".orange if version != Llvm20_build.version
   license Llvm20_build.license
