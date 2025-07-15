@@ -56,7 +56,6 @@ class Libclc < Package
                        CREW_CMAKE_OPTIONS
                      end
     system "cmake -B builddir -G Ninja libclc \
-      #{@cmake_options.gsub('-DCMAKE_LINKER_TYPE=MOLD', '')} \
       -DCMAKE_C_COMPILER=$(which clang) \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \

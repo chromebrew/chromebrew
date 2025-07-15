@@ -59,7 +59,7 @@ class Openmp < Package
                      end
     system "cmake -B builddir -G Ninja openmp \
       #{@cmake_options} \
-      -DCLANG_DEFAULT_LINKER=#{CREW_LINKER} \
+      -DCLANG_DEFAULT_LINKER=mold \
       -DCMAKE_C_COMPILER=$(which clang) \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \
