@@ -7,7 +7,7 @@ class Zoneinfo < Package
   license 'public-domain'
   compatibility 'all'
   source_url "https://data.iana.org/time-zones/releases/tzdb-#{version}.tar.lz"
-  source_sha256 '511af6b467f40b1ec9ac3684d1701793af470f3e29ddfb97b82be438e8601a7a'
+  source_sha256 'ec2f98c739009fd81a654efe2ee75069f54bcee5e0d80f510ee7e1f469ed293a'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -18,6 +18,8 @@ class Zoneinfo < Package
   })
 
   depends_on 'glibc' # R
+
+  conflicts_ok # Conflicts with coreutils.
 
   def self.patch
     system "sed -i 's:TZDEFAULT = $(TOPDIR)/etc/localtime:TZDEFAULT = #{CREW_PREFIX}/etc/localtime:g' Makefile"
