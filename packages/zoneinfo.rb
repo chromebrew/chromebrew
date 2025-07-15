@@ -3,10 +3,10 @@ require 'package'
 class Zoneinfo < Package
   description 'Code and data that represent the history of local time for many representative locations around the globe.'
   homepage 'https://www.iana.org/time-zones'
-  version '2024a'
+  version '2025b'
   license 'public-domain'
   compatibility 'all'
-  source_url 'https://data.iana.org/time-zones/releases/tzdb-2024a.tar.lz'
+  source_url "https://data.iana.org/time-zones/releases/tzdb-#{version}.tar.lz"
   source_sha256 '511af6b467f40b1ec9ac3684d1701793af470f3e29ddfb97b82be438e8601a7a'
   binary_compression 'tar.zst'
 
