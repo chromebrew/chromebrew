@@ -7,7 +7,7 @@ class Gettext < Autotools
   license 'GPL-3+ and LGPL-2.1+'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gettext/gettext-#{version.split('-')[0]}.tar.lz"
-  source_sha256 'caa44aed29c9b4900f1a401d68f6599a328a3744569484dc95f62081e80ad6cb'
+  source_sha256 '0eb4153c3fc066d050242541156e8fd1ad74e80e4c08c2cc9f426e68e3d98015'
   binary_compression 'tar.zst'
 
   binary_sha256({
