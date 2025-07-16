@@ -26,22 +26,6 @@ class Icu4c < Autotools
         --disable-samples \
         --disable-tests'
 
-  @oldicuver = %w[version.split('.').first.to_i - 1]
-
-  autotools_install_extras do
-    Dir.chdir CREW_DEST_LIB_PREFIX do
-      @oldicuver.each do |oldver|
-        # Backwards compatibility symlinks (which may not work - see postinstall.)
-        FileUtils.ln_sf "libicudata.so.#{version}", "libicudata.so.#{oldver}"
-        FileUtils.ln_sf "libicui18n.so.#{version}", "libicui18n.so.#{oldver}"
-        FileUtils.ln_sf "libicuio.so.#{version}", "libicuio.so.#{oldver}"
-        FileUtils.ln_sf "libicutest.so.#{version}", "libicutest.so.#{oldver}"
-        FileUtils.ln_sf "libicutu.so.#{version}", "libicutu.so.#{oldver}"
-        FileUtils.ln_sf "libicuuc.so.#{version}", "libicuuc.so.#{oldver}"
-      end
-    end
-  end
-
   def self.postinstall
     # Check for packages that expect an older icu library, but not in a container, since we have already
     # checked all obvious packages there.
