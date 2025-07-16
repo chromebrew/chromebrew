@@ -20,7 +20,6 @@ class Libxslt < CMake
   depends_on 'docbook_xsl' => :build
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
-  depends_on 'libxml2_autotools' # R
 
   cmake_options '-DLIBXSLT_WITH_PYTHON=OFF'
 end
