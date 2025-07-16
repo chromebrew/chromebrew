@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Libxml2_autotools < Autotools
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
-  version Libxml2.version
+  version "2.14.5-#{CREW_ICU_VER}"
   license 'MIT'
   compatibility 'all'
   source_url Libxml2.source_url
