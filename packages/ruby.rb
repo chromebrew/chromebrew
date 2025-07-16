@@ -11,8 +11,8 @@ class Ruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '64fafb44b942b176ba68dd02fb6197d01de1993352688dad0123d496e5bcd8ec',
-     armv7l: '64fafb44b942b176ba68dd02fb6197d01de1993352688dad0123d496e5bcd8ec',
+    aarch64: '00c0a7d78c8a8374c3fd27b848a464c023905cd2c29c6ffcf0227606081c66f7',
+     armv7l: '00c0a7d78c8a8374c3fd27b848a464c023905cd2c29c6ffcf0227606081c66f7',
        i686: 'df0498f9bfcf70ee6aad827f432d4810d03e05d135740a49417192a588e509a4',
      x86_64: 'b163ffb452e7230b23d7e5c3e36eccef6b468e7040c77e7c91e1baaae8ffc155'
   })
