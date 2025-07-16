@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Icu4c < Package
+class Icu4c < Autotools
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
   homepage 'https://icu.unicode.org/'
-  version '75.1'
+  version '77.1'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-src.tgz'
-  source_sha256 'cb968df3e4d2e87e8b11c49a5d01c787bd13b9545280fc6642f826527618caef'
+  source_url "https://github.com/unicode-org/icu/releases/download/release-#{version.gsub('.', '-')}/icu4c-#{version.gsub('.', '_')}-src.tgz"
+  source_sha256 '588e431f77327c39031ffbb8843c0e3bc122c211374485fa87dc5f3faff24061'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -20,23 +20,15 @@ class Icu4c < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
-  def self.build
-    Dir.chdir 'source' do
-      system "./configure \
-        #{CREW_CONFIGURE_OPTIONS} \
-        --enable-shared \
+  autotools_build_relative_dir 'source'
+
+  autotools_configure_options '--enable-shared \
         --disable-samples \
-        --disable-tests"
-      system 'make'
-    end
-  end
+        --disable-tests'
 
   @oldicuver = %w[version.split('.').first.to_i - 1]
 
-  def self.install
-    Dir.chdir 'source' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
+  autotools_install_extras do
     Dir.chdir CREW_DEST_LIB_PREFIX do
       @oldicuver.each do |oldver|
         # Backwards compatibility symlinks (which may not work - see postinstall.)
@@ -56,7 +48,7 @@ class Icu4c < Package
     return if CREW_IN_CONTAINER
 
     Dir.chdir CREW_LIB_PREFIX do
-      @oldicuver = %w[74.2 73.2 73 72 72.1]
+      @oldicuver = %w[75.1]
       @oldicuver.each do |oldver|
         puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
         @file_array = []
