@@ -50,10 +50,9 @@
 /usr/local/lib64/cmake/libxml2/libxml2-config.cmake
 /usr/local/lib64/libxml2.la
 /usr/local/lib64/libxml2.so
-/usr/local/lib64/libxml2.so.2
-/usr/local/lib64/libxml2.so.2.13.8
+/usr/local/lib64/libxml2.so.16
+/usr/local/lib64/libxml2.so.16.0.5
 /usr/local/lib64/pkgconfig/libxml-2.0.pc
-/usr/local/share/aclocal/libxml.m4
 /usr/local/share/doc/libxml2/xmlcatalog.html
 /usr/local/share/doc/libxml2/xmllint.html
 /usr/local/share/gtk-doc/html/libxml2/general.html

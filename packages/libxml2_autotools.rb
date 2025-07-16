@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Libxml2_autotools < Autotools
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
-  version Libxml2.version
+  version "2.14.5-#{CREW_ICU_VER}"
   license 'MIT'
   compatibility 'all'
   source_url Libxml2.source_url
@@ -14,10 +14,10 @@ class Libxml2_autotools < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e686b597416d51b4118a910033fa71748db2f7bae97858306a29119aefa86f4e',
-     armv7l: 'e686b597416d51b4118a910033fa71748db2f7bae97858306a29119aefa86f4e',
-       i686: '14b6ad2337907a8a65142641e5f6700a3c8c8cad4592521a791eb068ae53eeda',
-     x86_64: '728752c85edcf41714cc696cb23b2e42d60300989373a0232472be5e47f72bb9'
+    aarch64: 'b1e3a145dbd2808a04db8ce44e69f6e71224f6a08cbe3ceada4df99d5a019734',
+     armv7l: 'b1e3a145dbd2808a04db8ce44e69f6e71224f6a08cbe3ceada4df99d5a019734',
+       i686: '90bc0e31787a59c96fc1e563c4622aa6597e870f0ff2aa5f8b6b84a4087282e1',
+     x86_64: 'b5ba490429312ceaf3ae96f7b6944e3c45f3f18edf8acc3599d96f9cf33fa62f'
   })
 
   depends_on 'gcc_lib' # R
