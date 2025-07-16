@@ -14,8 +14,8 @@ class Libxml2_autotools < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e686b597416d51b4118a910033fa71748db2f7bae97858306a29119aefa86f4e',
-     armv7l: 'e686b597416d51b4118a910033fa71748db2f7bae97858306a29119aefa86f4e',
+    aarch64: 'b1e3a145dbd2808a04db8ce44e69f6e71224f6a08cbe3ceada4df99d5a019734',
+     armv7l: 'b1e3a145dbd2808a04db8ce44e69f6e71224f6a08cbe3ceada4df99d5a019734',
        i686: '90bc0e31787a59c96fc1e563c4622aa6597e870f0ff2aa5f8b6b84a4087282e1',
      x86_64: 'b5ba490429312ceaf3ae96f7b6944e3c45f3f18edf8acc3599d96f9cf33fa62f'
   })
