@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Intel_media_driver < CMake
   description 'The Intel(R) Media Driver for VAAPI is a new VA-API (Video Acceleration API) user mode driver supporting hardware accelerated decoding, encoding, and video post processing for GEN based graphics hardware.'
   homepage 'https://github.com/intel/media-driver'
-  version '25.2.5'
+  version '25.2.6'
   license 'BSD-3, and MIT'
   compatibility 'x86_64'
   source_url 'https://github.com/intel/media-driver.git'
