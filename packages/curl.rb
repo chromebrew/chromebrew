@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Curl < Autotools
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  version '8.14.1-1'
+  version '8.15.0'
   license 'curl'
   compatibility 'all'
   source_url "https://curl.se/download/curl-#{version.split('-').first}.tar.xz"
