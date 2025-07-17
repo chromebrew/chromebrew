@@ -24,7 +24,6 @@ class Icu4c < Autotools
   autotools_build_relative_dir 'source'
 
   autotools_configure_options '--enable-shared \
-        --disable-renaming \
         --disable-samples \
         --disable-tests'
 
