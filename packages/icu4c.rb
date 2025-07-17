@@ -11,18 +11,20 @@ class Icu4c < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2ff2ed4760529e3611a51211876c17df5c9acc5a689cd35cb5a98ce0c4c1f714',
-     armv7l: '2ff2ed4760529e3611a51211876c17df5c9acc5a689cd35cb5a98ce0c4c1f714',
-       i686: '75b4c79c623709139234afa9b5cd630803655c506ca7e5a61f6b6993f525d5b8',
-     x86_64: 'b16c66eaeb7b50e658911f76e4027472d6aba160af2150889b2bae94dcb61dec'
+    aarch64: '40c21ff2e336c88d9a42fc3733bc6503bf0988fa86daa02d805d4fbced6d375c',
+     armv7l: '40c21ff2e336c88d9a42fc3733bc6503bf0988fa86daa02d805d4fbced6d375c',
+       i686: 'c73b71b09ca4ddf4d362ecc26f02b0da42fd9fbe9ff82340f2943b90c9622b18',
+     x86_64: 'f4cb68ef8ba4e50dd3069ed792295dbcd4ea122dd1335b1c12c5b58bce97e007'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
+  autotools_make_j1
   autotools_build_relative_dir 'source'
 
   autotools_configure_options '--enable-shared \
+        --disable-renaming \
         --disable-samples \
         --disable-tests'
 
