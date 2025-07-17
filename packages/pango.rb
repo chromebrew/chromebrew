@@ -14,7 +14,7 @@ class Pango < Meson
   binary_sha256({
     aarch64: '29bce5f71c88cdd92df459c350f73a89b7e2909de05a80f2f206f380dfe3f77f',
      armv7l: '29bce5f71c88cdd92df459c350f73a89b7e2909de05a80f2f206f380dfe3f77f',
-     x86_64: '2326ef48c5a386ecaa45498e8135ac8dd9e363179b22d15deaa4eec0dfe5ac0c'
+     x86_64: 'e3299a31c9d22966c556af96828143341882f6349af82489401304ecd3bed209'
   })
 
   depends_on 'cairo' # R

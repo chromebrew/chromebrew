@@ -14,7 +14,7 @@ class Freetype < Meson
   binary_sha256({
     aarch64: '409963301f95f91375396561a7c0a53168ea911b353d8cf45a4ff31bef951afd',
      armv7l: '409963301f95f91375396561a7c0a53168ea911b353d8cf45a4ff31bef951afd',
-     x86_64: '2d36d487c1a768c3e808c15cc9ab277bde512ae66828b8db0a3a817e7267332c'
+     x86_64: '7ec4b3693b46646e123728e0e199d1e793e4fdd92e93e8348bfaf10a898b6084'
   })
 
   depends_on 'brotli' # R
@@ -29,6 +29,8 @@ class Freetype < Meson
   depends_on 'pcre' => :build
   depends_on 'py3_docwriter' => :build
   depends_on 'zlib' # R
+
+  conflicts_ok # Allow overwriting of harfbuzz freetype files.
 
   meson_options '-Dharfbuzz=enabled'
 end

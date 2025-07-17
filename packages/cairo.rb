@@ -14,7 +14,7 @@ class Cairo < Meson
   binary_sha256({
     aarch64: 'e640a24226ef7ddab47d799dfef8606594f18759a3cad5cd17ceae4b3ed54168',
      armv7l: 'e640a24226ef7ddab47d799dfef8606594f18759a3cad5cd17ceae4b3ed54168',
-     x86_64: '5ad71a18ae15d987e5cf0565a946a9b384bd2f8ada5df67a4e6630d80ae9e050'
+     x86_64: '7396daf0d72e582735c6fff0fc48d59b9cbf1dacbd940a630f987bc36cb14c6f'
   })
 
   depends_on 'fontconfig' # R
