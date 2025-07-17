@@ -41,14 +41,16 @@ class RUST < Package
                 PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
       }.transform_keys(&:to_s)
 
-    system rust_env, "cargo #{@channel_flag} install \
-      --profile=#{@profile} \
-      --offline \
-      --no-track \
-      --path #{@rust_install_path} \
-      #{@features} \
-      #{@rust_options} \
-      --root #{CREW_DEST_PREFIX}"
+    @rust_install_path.split.each do |path|
+      system rust_env, "cargo #{@channel_flag} install \
+        --profile=#{@profile} \
+        --offline \
+        --no-track \
+        --path #{path} \
+        #{@features} \
+        #{@rust_options} \
+        --root #{CREW_DEST_PREFIX}"
+    end
     @rust_install_extras&.call
   end
 end

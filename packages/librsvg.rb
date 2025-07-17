@@ -13,7 +13,7 @@ class Librsvg < Meson
   binary_sha256({
     aarch64: '849b834e2d40a895894ca474876a96082c80178f535c96f2511a9e14c6c04fb8',
      armv7l: '849b834e2d40a895894ca474876a96082c80178f535c96f2511a9e14c6c04fb8',
-     x86_64: '53c9762b60acf8558deced395176830befcf97976f5c8a6f697fa2e98babcc1c'
+     x86_64: '376db5e725f91f0f2e74e6c2cd542d8546eae631729116b680f7989c17320134'
   })
 
   depends_on 'cairo' # R
@@ -46,12 +46,5 @@ class Librsvg < Meson
 
   ENV['CARGO_PROFILE_RELEASE_LTO'] = 'true'
 
-  meson_options '-Dintrospection=enabled -Dvala=enabled'
-
-  def self.patch
-    # As per https://gitlab.gnome.org/GNOME/librsvg/-/issues/1155#note_2356939
-    # using the change that was merged into 2.59.90.
-    downloader 'https://gitlab.gnome.org/GNOME/librsvg/-/merge_requests/1066.diff', '16b588b770066c983862a7b4e6cb5aa721f62a9b35b376ea8ea15a30dd2328c5'
-    system 'patch -Np1 -i 1066.diff'
-  end
+  meson_options '-Ddocs=disabled -Dintrospection=disabled -Dtests=false -Dvala=enabled'
 end
