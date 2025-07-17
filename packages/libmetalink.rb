@@ -13,7 +13,7 @@ class Libmetalink < Autotools
   binary_sha256({
     aarch64: '42cb115a3b2c323130bc34433ebfc14e63242a702fa0f28bda714564b22d0267',
      armv7l: '42cb115a3b2c323130bc34433ebfc14e63242a702fa0f28bda714564b22d0267',
-       i686: 'fc55310b6d3fa86bcf38483acec655002945c41e5ee815e720a5fec7ae79ba24',
+       i686: '7abf912d9dec883ab4a3fa518dfe0fadc0c361cbb54c05bf6cc8e3e3cf747b91',
      x86_64: '4295610c625ae49b93d8d98e7614b4c9fd3c664ca305720f0e34b99bfabde420'
   })
 
