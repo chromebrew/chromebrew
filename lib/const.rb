@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.62.6' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.62.7' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -230,7 +230,7 @@ end
 
 CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', '-flto=auto') unless defined?(CREW_LINKER_FLAGS)
 
-CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} #{CREW_LINKER_FLAGS}"
+CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC -fuse-ld=mold #{CREW_ARCH_FLAGS} #{CREW_LINKER_FLAGS}"
 CREW_COMMON_FLAGS         ||= "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS ||= "#{CREW_CORE_FLAGS} -fno-lto"
 CREW_FNO_LTO_LDFLAGS      ||= '-fno-lto'
@@ -244,7 +244,7 @@ CREW_ENV_OPTIONS_HASH ||=
       'CXXFLAGS'        => CREW_COMMON_FLAGS,
       'FCFLAGS'         => CREW_COMMON_FLAGS,
       'FFLAGS'          => CREW_COMMON_FLAGS,
-      'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+      'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? '' : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
       'LDFLAGS'         => CREW_LINKER_FLAGS
     }
   end
@@ -257,7 +257,7 @@ CREW_ENV_FNO_LTO_OPTIONS_HASH ||= {
   'CXXFLAGS'        => CREW_COMMON_FNO_LTO_FLAGS,
   'FCFLAGS'         => CREW_COMMON_FNO_LTO_FLAGS,
   'FFLAGS'          => CREW_COMMON_FNO_LTO_FLAGS,
-  'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+  'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? '' : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
   'LDFLAGS'         => CREW_FNO_LTO_LDFLAGS
 }
 # parse from hash to shell readable string
