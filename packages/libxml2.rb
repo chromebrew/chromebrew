@@ -11,10 +11,10 @@ class Libxml2 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '996694cf77cd490e23b3dd28ae79542d54d264ed2e727aab1f38687dde93e82d',
-     armv7l: '996694cf77cd490e23b3dd28ae79542d54d264ed2e727aab1f38687dde93e82d',
-       i686: '821dad871ca5c28e7b61548372e2d5e5cb7e6fe3ee06245f7dbb7ecf3dbd4c8a',
-     x86_64: 'e7c5099e5a60c3d5d90e72d141f84113f5799a70e735a56878fca830577f52a8'
+    aarch64: '21c6bc3930aae3b7ded70c46af3efb63ac417cc8443a99eb055d4c34617244cb',
+     armv7l: '21c6bc3930aae3b7ded70c46af3efb63ac417cc8443a99eb055d4c34617244cb',
+       i686: '2587ae24f5e8c00c51b8ca3e8441465a9bdd17b529d78cd92812d9bd77366c74',
+     x86_64: '1f7c6233a0bd80aa246ae0ea3e4890cba34dada2959163ffefd25f0bd4ed7015'
   })
 
   depends_on 'gcc_lib' # R

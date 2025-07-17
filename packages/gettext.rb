@@ -3,11 +3,15 @@ require 'buildsystems/autotools'
 class Gettext < Autotools
   description 'GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.'
   homepage 'https://www.gnu.org/software/gettext/'
-  version "0.24-#{CREW_ICU_VER}"
+  version "0.25.1-a0e74b9-#{CREW_ICU_VER}"
+  # version "0.25.1-#{CREW_ICU_VER}"
   license 'GPL-3+ and LGPL-2.1+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/gettext/gettext-#{version.split('-')[0]}.tar.lz"
-  source_sha256 '0eb4153c3fc066d050242541156e8fd1ad74e80e4c08c2cc9f426e68e3d98015'
+  # source_url "https://ftp.gnu.org/pub/gnu/gettext/gettext-#{version.split('-')[0]}.tar.lz"
+  # source_sha256 'c70678c88589ee48e55ae1f3843935afa4be1466fb1bc737658dc933f60379f5'
+  source_url 'https://https.git.savannah.gnu.org/git/gettext.git'
+  git_hashtag 'a0e74b95831bfa37e3f4293b307c25d584b536f7'
+  # git_hashtag "v#{version.split('-')[0]}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -21,17 +25,23 @@ class Gettext < Autotools
   depends_on 'attr' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'gperf' => :build
   depends_on 'icu4c' # R
   depends_on 'libunistring' # R
   depends_on 'libxml2' # R
   depends_on 'ncurses' # R
   depends_on 'openjdk8' => :build
+  depends_on 'wget2' => :build
   depends_on 'zlib' # R
 
   autotools_configure_options '--disable-static \
     --enable-shared \
     --with-pic \
     --without-included-gettext'
+
+  def self.patch
+    system './autopull.sh'
+  end
 
   # cldr-plurals-1 test fails with icu75.1
   # run_tests
