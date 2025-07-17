@@ -43,7 +43,9 @@ class Harfbuzz < Meson
   depends_on 'lzo' # R
   depends_on 'patchelf' => :build
   depends_on 'pcre' => :build
+  depends_on 'perl_xml_sax' => :build
   depends_on 'perl_xml_sax_base' => :build
+  depends_on 'perl_xml_namespacesupport' => :build
   depends_on 'pixman' # R Needed for cairo subproject.
   depends_on 'ragel' => :build
   depends_on 'zlib' # R
