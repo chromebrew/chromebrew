@@ -11,10 +11,10 @@ class Shared_mime_info < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f68c551231c53e0abdf45f0999443aa3ef3f5eb6bbfe017496234f1e3d55efa2',
-     armv7l: 'f68c551231c53e0abdf45f0999443aa3ef3f5eb6bbfe017496234f1e3d55efa2',
-       i686: 'ed3a6f6a6c6f3a692c5da3327c7ba7c66069319af92dca537ac9697534fcad4e',
-     x86_64: 'cd63f0f5187c5d155711e42c74689214ad767b31338dce7c3f0a39b9b0d89974'
+    aarch64: '7f3922b4fee143ae61619de98dec401e9958ecefbc5c96f0e26dadcc7b872811',
+     armv7l: '7f3922b4fee143ae61619de98dec401e9958ecefbc5c96f0e26dadcc7b872811',
+       i686: 'e6a71391c0ccfeae8d8c77fe7c966e8f1320d74ff0d97a842e57938f4f851154',
+     x86_64: '13d8b12fa4f58e8d5e72ce872388b359637517bba20c766f8b12a97f42c75f51'
   })
 
   depends_on 'gcc_lib' # R
@@ -22,7 +22,6 @@ class Shared_mime_info < Meson
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'libxml2' # R
-  depends_on 'xmlto' => :build
 
   meson_options '-Dbuild-tests=false'
 
