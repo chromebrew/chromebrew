@@ -7,7 +7,7 @@ class Boost < Package
   license 'Boost-1.0'
   compatibility 'all'
   source_url "https://boostorg.jfrog.io/artifactory/main/release/#{version.split('-').first}/source/boost_#{version.split('-').first.gsub('.', '_')}.tar.bz2"
-  source_sha256 '7009fe1faa1697476bdc7027703a2badb84e849b7b0baad5086b087b971f8617'
+  source_sha256 '07911da8fe22fb10e3918528a8f0a5676f03c0b3b135ac19c26779f6804baebe'
   binary_compression 'tar.zst'
 
   binary_sha256({

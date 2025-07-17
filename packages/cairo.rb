@@ -4,7 +4,7 @@ require 'buildsystems/meson'
 class Cairo < Meson
   description 'Cairo is a 2D graphics library with support for multiple output devices.'
   homepage 'https://www.cairographics.org'
-  version '1.18.2-1'
+  version '1.18.4'
   license 'LGPL-2.1 or MPL-1.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/cairo/cairo.git'

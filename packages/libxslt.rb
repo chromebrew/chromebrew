@@ -14,7 +14,7 @@ class Libxslt < CMake
     aarch64: 'e1d114f2a2afacd0a7fa9232a52bc980b10ebfbcf647fd33a474d756c7f984b7',
      armv7l: 'e1d114f2a2afacd0a7fa9232a52bc980b10ebfbcf647fd33a474d756c7f984b7',
        i686: '68202b3dce43263f8fb736709f784d23b61778c52dff446b31b96377a5b72309',
-     x86_64: 'c79821f48e3b9989906b8af0bc6fba147d9396ee656434ea53a067a241e474c4'
+     x86_64: 'f67e1ecf54642f7038961f9e8541c7073fe8a1db246b324b112deb7492fd2f3e'
   })
 
   depends_on 'docbook_xsl' => :build
