@@ -11,10 +11,10 @@ class Icu4c < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '40c21ff2e336c88d9a42fc3733bc6503bf0988fa86daa02d805d4fbced6d375c',
-     armv7l: '40c21ff2e336c88d9a42fc3733bc6503bf0988fa86daa02d805d4fbced6d375c',
-       i686: 'c73b71b09ca4ddf4d362ecc26f02b0da42fd9fbe9ff82340f2943b90c9622b18',
-     x86_64: 'f4cb68ef8ba4e50dd3069ed792295dbcd4ea122dd1335b1c12c5b58bce97e007'
+    aarch64: 'c9bd508bd52785175f4584b55d42e0da014065f5605be59f7896a89170a141cb',
+     armv7l: 'c9bd508bd52785175f4584b55d42e0da014065f5605be59f7896a89170a141cb',
+       i686: '88f8dec20c7f5135ac70be3bbb07f61d7bcab2880d098ae68d2c63cbfe45699b',
+     x86_64: 'e57e0d659d1729280e9f89835496e1776860acc4879614e65f534accebbb4c71'
   })
 
   depends_on 'gcc_lib' # R
