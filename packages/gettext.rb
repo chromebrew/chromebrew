@@ -3,22 +3,18 @@ require 'buildsystems/autotools'
 class Gettext < Autotools
   description 'GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.'
   homepage 'https://www.gnu.org/software/gettext/'
-  # version "0.25.1-a0e74b9-#{CREW_ICU_VER}"
   version "0.25.1-#{CREW_ICU_VER}"
   license 'GPL-3+ and LGPL-2.1+'
   compatibility 'all'
   source_url "https://ftp.gnu.org/pub/gnu/gettext/gettext-#{version.split('-')[0]}.tar.lz"
   source_sha256 'c70678c88589ee48e55ae1f3843935afa4be1466fb1bc737658dc933f60379f5'
-  # source_url 'https://https.git.savannah.gnu.org/git/gettext.git'
-  # git_hashtag 'a0e74b95831bfa37e3f4293b307c25d584b536f7'
-  # git_hashtag "v#{version.split('-')[0]}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2f86e40b77f046b86822f6d7bbcca8d5073657a20b10997ae874601dc5c0bb24',
-     armv7l: '2f86e40b77f046b86822f6d7bbcca8d5073657a20b10997ae874601dc5c0bb24',
-       i686: '606b3b9a62738e950dec90a644c8a5ba062c6cbf8f5d2869f79a12db165b83ea',
-     x86_64: 'ef3bcbd7d97d02b964860b28bb008bf41900a5013c19a77c7f35caf8bc06189f'
+    aarch64: 'd8aa6334e7ea9c03fe67cb3ae9b86fbafe37077dfee56dacc2d6437f068162cc',
+     armv7l: 'd8aa6334e7ea9c03fe67cb3ae9b86fbafe37077dfee56dacc2d6437f068162cc',
+       i686: '778749c7b70313f8563d2306b3d2bf3d80dbee5a7842bc87e8de1e4e3e86dc98',
+     x86_64: '16abb691122eff1bcd6c96f470ebb2dcadc67f85990bc8c18651b901090cb9e5'
   })
 
   depends_on 'acl' # R
@@ -166,7 +162,4 @@ class Gettext < Autotools
       end
     end
   end
-
-  # cldr-plurals-1 test fails with icu75.1
-  # run_tests
 end
