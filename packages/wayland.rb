@@ -13,7 +13,7 @@ class Wayland < Meson
   binary_sha256({
     aarch64: 'df1340d2a03d08c198d1118f7b66708f51b6c5b044a48b7a5717fdbb8aac6508',
      armv7l: 'df1340d2a03d08c198d1118f7b66708f51b6c5b044a48b7a5717fdbb8aac6508',
-       i686: 'a0a324eea67718aeffa1fcd050626088cafffd02bd24e1b5f111cdc2f54bc48e',
+       i686: '31a5cbf3d9a2494d76227a17b6dfa352c85a2d0a26136b24caed17dd7c0f9d41',
      x86_64: 'b715939c3e527dd0badbc4623714710cd9b8988c8ab5b1c50b7afdb64c3f399f'
   })
 

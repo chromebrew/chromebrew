@@ -12,7 +12,7 @@ class Py3_pyicu < Pip
   binary_sha256({
     aarch64: '2bc9eff930898f207f45cc88eeb9dff8ac5c207455c607bfd9e6b21fa46105fb',
      armv7l: '2bc9eff930898f207f45cc88eeb9dff8ac5c207455c607bfd9e6b21fa46105fb',
-       i686: 'f1dba9c7995ab0896b43fb922decea3d899750e3841b2a40b46916b74ae47309',
+       i686: 'b1f496de760cecc66351570ba061aa94e41b7ea5cf4f3ec843dde30c7f114cf1',
      x86_64: 'fb464855fa1cd7e067408b1c96a041894416b887fac1683fe8dc62af8ea00cde'
   })
 
