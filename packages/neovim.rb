@@ -26,6 +26,7 @@ class Neovim < CMake
   depends_on 'luajit_lpeg' => :build
   depends_on 'luajit_mpack' => :build
   # depends_on 'perl_app_cpanminus' # L
+  depends_on 'tree_sitter' => :build
   depends_on 'unibilium' => :build
   depends_on 'utf8proc' # R
   depends_on 'xdg_base' # L

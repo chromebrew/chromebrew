@@ -1,16 +1,16 @@
 # Adapted from Arch Linux libluv PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/libluv/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/cmake'
 
-class Libluv < Package
+class Libluv < CMake
   description 'Bare libuv bindings for lua'
   homepage 'https://github.com/luvit/luv'
-  version '1.44.2'
+  version '1.51.0-1'
   license 'apache'
   compatibility 'all'
   source_url 'https://github.com/luvit/luv.git'
-  git_hashtag '1.44.2-0'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -22,25 +22,14 @@ class Libluv < Package
 
   depends_on 'luajit'
   depends_on 'libuv'
+  depends_on 'glibc' # R
 
   def self.patch
     system "sed -i 's,CMAKE_INSTALL_PREFIX}/lib,CMAKE_INSTALL_PREFIX}/#{ARCH_LIB},g' CMakeLists.txt"
   end
 
-  def self.build
-    FileUtils.mkdir('builddir')
-    Dir.chdir('builddir') do
-      system "cmake #{CREW_CMAKE_OPTIONS} \
-        -DBUILD_SHARED_LIBS=ON \
+  cmake_options '-DBUILD_SHARED_LIBS=ON \
         -DWITH_SHARED_LIBUV=ON  \
         -DLUA_BUILD_TYPE=System \
-        -DBUILD_MODULE=OFF \
-        ../ -G Ninja"
-    end
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+        -DBUILD_MODULE=OFF'
 end
