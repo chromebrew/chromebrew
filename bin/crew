@@ -1405,6 +1405,54 @@ def archive_package(crew_archive_dest)
   end
 end
 
+def update_package_file(package = nil, pkg_version = nil, binary_compression = nil)
+  pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+  binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
+  %w[x86_64 i686 armv7l].each do |arch|
+    binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
+    starting_binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
+    remote_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{package}/#{pkg_version}_#{arch}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
+    remote_binary = `curl -fsI #{remote_binary_url}`.lines.first.split[1] == '200'
+    next unless remote_binary
+    puts "\e[1A\e[KLocal package binary exists for #{arch}.\n".green
+    binary_sha256_hash[arch.to_sym] = `curl -Ls #{remote_binary_url} | sha256sum`.chomp.split.first
+  end
+  # 5. Generate new or replacement binary_sha256 block and add to
+  # package file.
+  puts "\e[1A\e[KGenerating binary_sha256 block for package file...\r".orange
+  binary_sha256_block = ''
+  binary_sha256_block << "\n  binary_sha256({\n"
+  unless binary_sha256_hash[:armv7l].nil?
+    binary_sha256_block << "    aarch64: '#{binary_sha256_hash[:armv7l]}',\n"
+    binary_sha256_block << "     armv7l: '#{binary_sha256_hash[:armv7l]}'"
+    binary_sha256_block << if binary_sha256_hash[:i686].nil? && binary_sha256_hash[:x86_64].nil?
+                             "\n"
+                           else
+                             ",\n"
+                           end
+  end
+  unless binary_sha256_hash[:i686].nil?
+    binary_sha256_block << "       i686: '#{binary_sha256_hash[:i686]}'"
+    binary_sha256_block << if binary_sha256_hash[:x86_64].nil?
+                             "\n"
+                           else
+                             ",\n"
+                           end
+  end
+  binary_sha256_block << "     x86_64: '#{binary_sha256_hash[:x86_64]}'\n" unless binary_sha256_hash[:x86_64].nil?
+  binary_sha256_block << '  })'
+  # Replace existing binary_sha256 block (found by looking for the old hash), otherwise add it.
+  binary_sha256_block_re = /\n^\s*(binary_sha256\(\{)(((?!binary_sha256).)*)#{starting_binary_sha256_hash.compact.values.join('.*')}(((?!\}\)).)*)\}\)/m
+  file = File.read(pkg_file)
+  if file.match(binary_sha256_block_re)
+    File.write(pkg_file, file.gsub(binary_sha256_block_re, "\n#{binary_sha256_block}"))
+  else
+    bc_re = /^\ \ binary_compression.*/
+    binary_sha256_block_with_bc = "#{file.match(bc_re)}\n#{binary_sha256_block}"
+    File.write(pkg_file, file.gsub(bc_re, binary_sha256_block_with_bc))
+  end
+end
+
 def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_username = nil, binary_compression = nil)
   # Architecture independent:
   # 1. Abort early if package manifests exist but are empty, as this
@@ -1434,6 +1482,10 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
   # 3k. If the hashes are the same, don't bother uploading.
   # 3l. If an existing upload does not exist, decide to upload.
   # 4.  Upload.
+  # Add flag to make the following a separate step, so this can be
+  # triggered separately from builds, and done in a series of steps
+  # independent of builds so that parallel builds don't create
+  # merge conflicts with the package file being updated.
   # 5. Generate new or replacement binary_sha256 block and add to
   #    package file.
   # 6. If run architecture specfic manifests for package are missing,
@@ -1510,7 +1562,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       # 3c. Check to see if an existing upload exists.
       puts "\e[1A\e[KChecking for existing upload ...\r".orange
       remote_binary = `curl -fsI #{new_url}`.lines.first.split[1] == '200'
-      puts "\e[1A\e[KUpload exists.\n".green
+      puts "\e[1A\e[KUpload exists.\n".green if remote_binary
 
       # 3d. Check for local binary.
       if local_tarfile.nil? || !File.file?(local_tarfile)
@@ -1610,39 +1662,8 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
     end
 
     # 5. Generate new or replacement binary_sha256 block and add to
-    # package file.
-    puts "\e[1A\e[KGenerating binary_sha256 block for package file...\r".orange
-    binary_sha256_block = ''
-    binary_sha256_block << "\n  binary_sha256({\n"
-    unless binary_sha256_hash[:armv7l].nil?
-      binary_sha256_block << "    aarch64: '#{binary_sha256_hash[:armv7l]}',\n"
-      binary_sha256_block << "     armv7l: '#{binary_sha256_hash[:armv7l]}'"
-      binary_sha256_block << if binary_sha256_hash[:i686].nil? && binary_sha256_hash[:x86_64].nil?
-                               "\n"
-                             else
-                               ",\n"
-                             end
-    end
-    unless binary_sha256_hash[:i686].nil?
-      binary_sha256_block << "       i686: '#{binary_sha256_hash[:i686]}'"
-      binary_sha256_block << if binary_sha256_hash[:x86_64].nil?
-                               "\n"
-                             else
-                               ",\n"
-                             end
-    end
-    binary_sha256_block << "     x86_64: '#{binary_sha256_hash[:x86_64]}'\n" unless binary_sha256_hash[:x86_64].nil?
-    binary_sha256_block << '  })'
-    # Replace existing binary_sha256 block (found by looking for the old hash), otherwise add it.
-    binary_sha256_block_re = /\n^\s*(binary_sha256\(\{)(((?!binary_sha256).)*)#{starting_binary_sha256_hash.compact.values.join('.*')}(((?!\}\)).)*)\}\)/m
-    file = File.read(pkg_file)
-    if file.match(binary_sha256_block_re)
-      File.write(pkg_file, file.gsub(binary_sha256_block_re, "\n#{binary_sha256_block}"))
-    else
-      bc_re = /^\ \ binary_compression.*/
-      binary_sha256_block_with_bc = "#{file.match(bc_re)}\n#{binary_sha256_block}"
-      File.write(pkg_file, file.gsub(bc_re, binary_sha256_block_with_bc))
-    end
+    #    package file.
+    update_package_file(package, pkg_version, binary_compression) unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
 
     # Upload python wheels if we are dealing with a pip package, but only
     # if a gitlab token username is set. (The generic repo does not
@@ -1663,12 +1684,14 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
         end
       end
     end
-    # 6. If run architecture specfic manifests for package are missing,
-    #    attempt to install the package so the manifest files for the
-    #    currently running architecture are saved locally. (This is used
-    #    by build workflows to make sure updated manifests get
-    #    uploaded.)
-    system "crew install #{@pkg.name}", exception: false unless File.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr}/#{@pkg.name}.filelist")
+    if !CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES && !File.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr}/#{@pkg.name}.filelist")
+      # 6. If run architecture specfic manifests for package are missing,
+      #    attempt to install the package so the manifest files for the
+      #    currently running architecture are saved locally. (This is used
+      #    by build workflows to make sure updated manifests get
+      #    uploaded.)
+      system "crew install #{@pkg.name}", exception: false
+    end
     puts "\e[1A\e[K🎉 Uploads complete for #{package}. 🎉\r\n".lightgreen
   end
 end
@@ -1876,6 +1899,14 @@ def update_command(_args)
 end
 
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_source)
+
+def update_package_file_command(args)
+  return if CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
+  args['<name>'].each do |name|
+    search name
+    update_package_file(name, @pkg.version, @pkg.binary_compression)
+  end
+end
 
 def upload_command(args)
   gitlab_token = ENV.fetch('GITLAB_TOKEN', nil)
