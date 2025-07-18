@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.62.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.62.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -228,6 +228,8 @@ when 'x86_64'
   CREW_ARCH_FLAGS ||= CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '' : CREW_ARCH_FLAGS_OVERRIDE
 end
 
+CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES ||= ENV.fetch('CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES', false) unless defined?(CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES)
+
 CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', '-flto=auto') unless defined?(CREW_LINKER_FLAGS)
 
 CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC -fuse-ld=mold #{CREW_ARCH_FLAGS} #{CREW_LINKER_FLAGS}"
@@ -380,6 +382,7 @@ CREW_DOCOPT ||= <<~DOCOPT
     crew search [options] [-v|--verbose] <name> ...
     crew sysinfo [options] [-v|--verbose]
     crew update [options] [-v|--verbose]
+    crew update_package_file [options] [-v|--verbose] [<name> ...]
     crew upgrade [options] [-f|--force] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-f|--force] [-v|--verbose] [<name> ...]
     crew upstream [options] [-v|--verbose] [<name> ...]
