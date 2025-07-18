@@ -30,6 +30,7 @@ class Neovim < CMake
   # depends_on 'perl_app_cpanminus' # L
   depends_on 'tree_sitter' # R
   depends_on 'unibilium' => :build
+  depends_on 'utf8proc' => :build
   depends_on 'xdg_base' # L
 
   def self.postinstall
