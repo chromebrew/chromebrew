@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Neovim < CMake
   description 'Neovim is a refactor, and sometimes redactor, in the tradition of Vim (which itself derives from Stevie).'
   homepage 'https://neovim.io/'
-  version '0.9.5'
+  version '0.11.3'
   license 'Apache-2.0 and vim'
   compatibility 'all'
   source_url 'https://github.com/neovim/neovim.git'
