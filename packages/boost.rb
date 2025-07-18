@@ -11,8 +11,8 @@ class Boost < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0a8b31c3ea2d515e867ee006eb68a5958536044cf3009513c1b2753cf982a28d',
-     armv7l: '0a8b31c3ea2d515e867ee006eb68a5958536044cf3009513c1b2753cf982a28d',
+    aarch64: 'efa9f68c525abdf0bdeebbd7bcd8e7834f4c19d2a29249438aaa6dd748881d79',
+     armv7l: 'efa9f68c525abdf0bdeebbd7bcd8e7834f4c19d2a29249438aaa6dd748881d79',
        i686: '693ffb63a554775b6bd0a106dc08e1a1c2840a507cc884818f2e2ecf6ccc2844',
      x86_64: '5d2e99133d8028f1c772bfa95195d541cc219199963b8f0d568719adc602350d'
   })
