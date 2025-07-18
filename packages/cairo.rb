@@ -12,8 +12,8 @@ class Cairo < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e640a24226ef7ddab47d799dfef8606594f18759a3cad5cd17ceae4b3ed54168',
-     armv7l: 'e640a24226ef7ddab47d799dfef8606594f18759a3cad5cd17ceae4b3ed54168',
+    aarch64: '9b0693df09364364550462bca13d002080d19d2d795a00b59a3f6ddf3e280000',
+     armv7l: '9b0693df09364364550462bca13d002080d19d2d795a00b59a3f6ddf3e280000',
      x86_64: '7396daf0d72e582735c6fff0fc48d59b9cbf1dacbd940a630f987bc36cb14c6f'
   })
 
