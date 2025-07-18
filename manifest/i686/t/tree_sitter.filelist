@@ -1,1 +1,7 @@
 /usr/local/bin/tree-sitter
+/usr/local/include/tree_sitter/api.h
+/usr/local/lib/libtree-sitter.a
+/usr/local/lib/libtree-sitter.so
+/usr/local/lib/libtree-sitter.so.0
+/usr/local/lib/libtree-sitter.so.0.25
+/usr/local/lib/pkgconfig/tree-sitter.pc

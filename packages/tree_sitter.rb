@@ -25,20 +25,16 @@ class Tree_sitter < Package
   depends_on 'glibc' # R
   depends_on 'rust' => :build
 
-  def self.patch
-    system "sed -i 's,PREFIX)/lib,PREFIX)/#{ARCH_LIB},' Makefile"
-  end
-
   def self.build
-    system "cargo install \
-        --profile=release \
-        --offline \
-        --no-track \
-        --path cli \
-        --root #{CREW_DEST_PREFIX}"
+    system "sed -i 's,PREFIX)/lib,PREFIX)/#{ARCH_LIB},' Makefile"
   end
 
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} PREFIX=#{CREW_PREFIX} install"
+    system "cargo install \
+        --no-track \
+        --profile=release \
+        --root #{CREW_DEST_PREFIX}\
+        tree-sitter-cli"
   end
 end
