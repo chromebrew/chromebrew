@@ -17,20 +17,17 @@ class Neovim < CMake
      x86_64: '97a127932ead9fdf64640c582205f9efe94f384b9803cf122553c84ce19a1d3b'
   })
 
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libluv' # R
-  depends_on 'libtermkey' # R
   depends_on 'libuv' => :build
-  depends_on 'libvterm' # R
+  depends_on 'luajit' => :build
   depends_on 'luajit_bitop' => :build
   depends_on 'luajit_lpeg' => :build
   depends_on 'luajit_mpack' => :build
-  depends_on 'luajit' # R
-  depends_on 'msgpack_c' # R
   # depends_on 'perl_app_cpanminus' # L
-  depends_on 'tree_sitter' # R
   depends_on 'unibilium' => :build
-  depends_on 'utf8proc' => :build
+  depends_on 'utf8proc' # R
   depends_on 'xdg_base' # L
 
   def self.postinstall
