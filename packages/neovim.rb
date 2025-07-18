@@ -28,9 +28,10 @@ class Neovim < CMake
   depends_on 'luajit' # R
   depends_on 'msgpack_c' # R
   # depends_on 'perl_app_cpanminus' # L
-  depends_on 'tree_sitter' # R
   depends_on 'unibilium' => :build
   depends_on 'xdg_base' # L
+
+  cmake_options '-DUSE_BUNDLED_TS=ON -DUSE_BUNDLED_TS_PARSERS=ON'
 
   def self.postinstall
     # Set nvim to be the default vi if there is no vi or if a default
