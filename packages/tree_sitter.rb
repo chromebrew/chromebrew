@@ -1,16 +1,16 @@
 # Adapted from Arch Linux tree-sitter PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/tree-sitter/trunk/PKGBUILD
 
-require 'buildsystems/rust'
+require 'package'
 
-class Tree_sitter < RUST
+class Tree_sitter < Package
   description 'An incremental parsing system for programming tools'
   homepage 'https://github.com/tree-sitter/tree-sitter'
-  version '0.25.8'
+  version '0.25.8-1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/tree-sitter/tree-sitter.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -25,5 +25,20 @@ class Tree_sitter < RUST
   depends_on 'glibc' # R
   depends_on 'rust' => :build
 
-  rust_install_path 'cli'
+  def self.patch
+    system "sed -i 's,PREFIX)/lib,PREFIX)/#{ARCH_LIB},' Makefile"
+  end
+
+  def self.build
+    system "cargo install \
+        --profile=release \
+        --offline \
+        --no-track \
+        --path cli \
+        --root #{CREW_DEST_PREFIX}"
+  end
+
+  def self.install
+    system "make DESTDIR=#{CREW_DEST_DIR} PREFIX=#{CREW_PREFIX} install"
+  end
 end
