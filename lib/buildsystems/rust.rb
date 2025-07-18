@@ -3,7 +3,7 @@ require_relative '../require_gem'
 require_relative '../report_buildsystem_methods'
 
 class RUST < Package
-  property :rust_channel, :rust_features, :rust_options, :rust_release_profile, :rust_targets, :pre_rust_options, :rust_build_extras, :rust_install_extras
+  property :rust_channel, :rust_features, :rust_install_path, :rust_options, :rust_release_profile, :rust_targets, :pre_rust_options, :rust_build_extras, :rust_install_extras
 
   def self.build
     rust_env =
@@ -16,6 +16,7 @@ class RUST < Package
     @channel_flag = @rust_channel.to_s.empty? ? '' : "+#{@rust_channel}"
     @features = @rust_features.to_s.empty? ? '' : "--features #{@rust_features}"
     @profile = @rust_release_profile.to_s.empty? ? 'release' : @rust_release_profile
+    @rust_install_path ||= '.'
     extend ReportBuildsystemMethods
     print_buildsystem_methods
 
@@ -40,14 +41,16 @@ class RUST < Package
                 PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
       }.transform_keys(&:to_s)
 
-    system rust_env, "cargo #{@channel_flag} install \
-      --profile=#{@profile} \
-      --offline \
-      --no-track \
-      --path . \
-      #{@features} \
-      #{@rust_options} \
-      --root #{CREW_DEST_PREFIX}"
+    @rust_install_path.split.each do |path|
+      system rust_env, "cargo #{@channel_flag} install \
+        --profile=#{@profile} \
+        --offline \
+        --no-track \
+        --path #{path} \
+        #{@features} \
+        #{@rust_options} \
+        --root #{CREW_DEST_PREFIX}"
+    end
     @rust_install_extras&.call
   end
 end

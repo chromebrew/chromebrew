@@ -7,7 +7,7 @@ Package.load_package("#{__dir__}/freetype.rb")
 class Harfbuzz < Meson
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://harfbuzz.github.io/'
-  version "10.2.0-#{CREW_ICU_VER}"
+  version "11.2.1-#{CREW_ICU_VER}"
   license 'Old-MIT, ISC and icu'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/harfbuzz/harfbuzz.git'
@@ -15,9 +15,9 @@ class Harfbuzz < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3d8f36f2175d05aaa0ab085b8e1236fa3263fdef27563491322f5685d9ec2581',
-     armv7l: '3d8f36f2175d05aaa0ab085b8e1236fa3263fdef27563491322f5685d9ec2581',
-     x86_64: '1ac1bbcd5f42ceecab9578c062fd065385f060b844c6a8e2e395351a8d80eac4'
+    aarch64: '34f26b151c31aebdb901bd7cb3d3173b9bff43a643896198e003dbfa6dc36dda',
+     armv7l: '34f26b151c31aebdb901bd7cb3d3173b9bff43a643896198e003dbfa6dc36dda',
+     x86_64: '21e01cfc1663f8cc96541941ff026989fe95fdd38f761f7f129d512bcc9da771'
   })
 
   depends_on 'brotli' # R
@@ -43,11 +43,16 @@ class Harfbuzz < Meson
   depends_on 'lzo' # R
   depends_on 'patchelf' => :build
   depends_on 'pcre' => :build
+  depends_on 'perl_xml_sax' => :build
+  depends_on 'perl_xml_sax_base' => :build
+  depends_on 'perl_xml_namespacesupport' => :build
   depends_on 'pixman' # R Needed for cairo subproject.
+  depends_on 'ragel' => :build
   depends_on 'zlib' # R
 
   # provides freetype (sans harfbuzz), ragel, and a non-x11 cairo stub
 
+  pre_meson_options "CFLAGS+=' -Werror=uninitialized'"
   meson_options '--wrap-mode=default \
       --default-library=both \
       -Dbenchmark=disabled \
@@ -56,7 +61,7 @@ class Harfbuzz < Meson
       -Dfreetype=enabled \
       -Dgraphite2=enabled \
       -Dintrospection=enabled \
-      -Dragel_subproject=true \
+      -Dragel_subproject=false \
       -Dtests=disabled'
 
   def self.prebuild

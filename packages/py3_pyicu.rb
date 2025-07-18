@@ -10,10 +10,10 @@ class Py3_pyicu < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2bc9eff930898f207f45cc88eeb9dff8ac5c207455c607bfd9e6b21fa46105fb',
-     armv7l: '2bc9eff930898f207f45cc88eeb9dff8ac5c207455c607bfd9e6b21fa46105fb',
-       i686: 'f1dba9c7995ab0896b43fb922decea3d899750e3841b2a40b46916b74ae47309',
-     x86_64: 'c5765e767e1d3f072849a5ef7891df0e4b7c6011299464c671cb070e5cee9fb6'
+    aarch64: '33115a343cd7f5899eaa6c34baebf18df0e5e0dbf1aaba2eeea266b79d56f20b',
+     armv7l: '33115a343cd7f5899eaa6c34baebf18df0e5e0dbf1aaba2eeea266b79d56f20b',
+       i686: 'b1f496de760cecc66351570ba061aa94e41b7ea5cf4f3ec843dde30c7f114cf1',
+     x86_64: 'fb464855fa1cd7e067408b1c96a041894416b887fac1683fe8dc62af8ea00cde'
   })
 
   depends_on 'python3' => :build

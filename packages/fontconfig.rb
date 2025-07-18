@@ -4,7 +4,7 @@ require 'buildsystems/meson'
 class Fontconfig < Meson
   description 'Fontconfig is a library for configuring and customizing font access.'
   homepage 'https://www.freedesktop.org/wiki/Software/fontconfig/'
-  version '2.15.0-3'
+  version '2.17.1'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/fontconfig/fontconfig.git'
@@ -12,9 +12,9 @@ class Fontconfig < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8d53e4f93e3a6a3df19d6cdcbc8199f2d4369e34114f086f37c6e1ba7f5e57a9',
-     armv7l: '8d53e4f93e3a6a3df19d6cdcbc8199f2d4369e34114f086f37c6e1ba7f5e57a9',
-     x86_64: 'c24d54ab1773584d35a1b459872ca93122e8c24e87f4c19e61849afa2ce407c3'
+    aarch64: 'a05646c9bf1631952bf99aaf34431f781d9f37714aae0a7672d58820c222fab0',
+     armv7l: 'a05646c9bf1631952bf99aaf34431f781d9f37714aae0a7672d58820c222fab0',
+     x86_64: 'fe46c30a8636db8ff2715921df929ddd627d4008c21928eeb8a39543b5ea518f'
   })
 
   depends_on 'expat' # R
@@ -28,6 +28,7 @@ class Fontconfig < Meson
   depends_on 'libpng' => :build
   depends_on 'util_linux' => :build
 
+  conflicts_ok # Allow overwriting harfbuzz files.
   no_fhs
 
   meson_options "--wrap-mode=default \
