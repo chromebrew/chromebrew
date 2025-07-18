@@ -1,17 +1,16 @@
 # Adapted from Arch Linux unibilium PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/unibilium/trunk/PKGBUILD
 
-require 'buildsystems/cmake'
+require 'buildsystems/autotools'
 
-class Unibilium < CMake
+class Unibilium < Autotools
   description 'A terminfo parsing library'
   homepage 'https://github.com/neovim/unibilium'
-  @_ver = '2.1.1'
-  version "#{@_ver}-1"
+  version '2.1.2'
   license 'LGPL3'
   compatibility 'all'
   source_url 'https://github.com/neovim/unibilium.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
