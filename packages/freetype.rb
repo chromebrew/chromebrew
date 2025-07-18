@@ -12,8 +12,8 @@ class Freetype < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '409963301f95f91375396561a7c0a53168ea911b353d8cf45a4ff31bef951afd',
-     armv7l: '409963301f95f91375396561a7c0a53168ea911b353d8cf45a4ff31bef951afd',
+    aarch64: '6ba402f56625c658a74924fffbbe29df25e1b284855f5aaaab5de44590d99ed9',
+     armv7l: '6ba402f56625c658a74924fffbbe29df25e1b284855f5aaaab5de44590d99ed9',
      x86_64: '7ec4b3693b46646e123728e0e199d1e793e4fdd92e93e8348bfaf10a898b6084'
   })
 
