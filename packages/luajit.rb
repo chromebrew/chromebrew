@@ -3,11 +3,11 @@ require 'package'
 class Luajit < Package
   description 'LuaJIT is a Just-In-Time Compiler (JIT) for the Lua programming language.'
   homepage 'https://github.com/openresty/luajit2'
-  version '2.1-6c4826f'
+  version '2.1-f9140a6'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/LuaJIT/LuaJIT/archive/6c4826f12c4d33b8b978004bc681eb1eef2be977.zip'
-  source_sha256 '4a384b218557e650e6fbbe2e0f14aa7a7d08a3e1f31eedbfc54de1cc62583496'
+  source_url 'https://github.com/LuaJIT/LuaJIT.git'
+  git_hashtag 'f9140a622a0c44a99efb391cc1c2358bc8098ab7'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -27,7 +27,9 @@ class Luajit < Package
   def self.install
     system 'make', "PREFIX=#{CREW_PREFIX}", "MULTILIB=#{ARCH_LIB}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
     Dir.chdir("#{CREW_DEST_PREFIX}/bin") do
-      FileUtils.ln_s 'luajit-2.1.0-beta3', 'luajit'
+      Dir["luajit-#{version.split('-').first}*"].each do |f|
+        FileUtils.ln_sf f, 'luajit'
+      end
     end
   end
 end
