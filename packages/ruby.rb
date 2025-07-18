@@ -68,7 +68,6 @@ class Ruby < Package
 
   def self.postinstall
     puts 'Updating ruby gems. This may take a while...'
-    system 'update_rubygems'
     # install for Ruby 3.4
     system 'gem uninstall resolv-replace', exception: false
     system 'gem install highline ptools'
