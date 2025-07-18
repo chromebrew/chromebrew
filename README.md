@@ -77,8 +77,8 @@ crew <command> <package1> [<package2> ...]
 
 Where available commands are:
 
-| Command      | Description |
-|:------------:|:------------|
+| Command             | Description |
+|:-------------------:|:------------|
 | build               | build package(s) from source and store the archive and checksum in the current working directory |
 | check               | check packages(s) |
 | const               | display constant(s) |
