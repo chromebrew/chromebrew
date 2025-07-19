@@ -33,7 +33,7 @@
 /usr/local/lib64/libcommon_training.so
 /usr/local/lib64/libtesseract.so
 /usr/local/lib64/libtesseract.so.5.5
-/usr/local/lib64/libtesseract.so.5.5.0
+/usr/local/lib64/libtesseract.so.5.5.1
 /usr/local/lib64/libunicharset_training.so
 /usr/local/lib64/pkgconfig/tesseract.pc
 /usr/local/share/tessdata/configs/alto
