@@ -9,6 +9,8 @@ on:
     types:
       - opened
       - ready_for_review
+      - reopened
+      - synchronize
   workflow_dispatch:
   # workflow_run:
   #  workflows: [Build]
