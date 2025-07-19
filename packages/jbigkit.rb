@@ -11,10 +11,10 @@ class Jbigkit < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9916479bfb176decf0c5c7e131df9a19ffe9ee1536f0a0d68c6752758dcd3757',
-     armv7l: '9916479bfb176decf0c5c7e131df9a19ffe9ee1536f0a0d68c6752758dcd3757',
-       i686: 'cd9aa5cdc30e2287b7738040397927d1310097de2a81c0723d682e12431380af',
-     x86_64: 'ddbc74c69e240fd2b6d25e476b0746cca3adcad4e2a94fc662ef91d204785037'
+    aarch64: 'b4cd24e5d51084128d17934d22ae810214565de0b6b80bdcf5747b9f78448d2b',
+     armv7l: 'b4cd24e5d51084128d17934d22ae810214565de0b6b80bdcf5747b9f78448d2b',
+       i686: '43e70bf8a5679c9a05c83e9869a34e43c9b5f9dd7aa551d104e8af33ea5d724a',
+     x86_64: '728249e946dc716f6d29a7dafb271d15d3674845a67cacd2c56d60981d149d45'
   })
 
   depends_on 'glibc' # R
@@ -36,5 +36,16 @@ class Jbigkit < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} make install"
+    Dir.chdir(CREW_DEST_LIB_PREFIX) do
+      %w[
+        libjbig.so.2
+        libjbig.so.2.0.0
+        libjbig85.so
+        libjbig85.so.2
+        libjbig85.so.2.0.0
+      ].each do |lib|
+        FileUtils.ln_sf 'libjbig.so.0', lib
+      end
+    end
   end
 end

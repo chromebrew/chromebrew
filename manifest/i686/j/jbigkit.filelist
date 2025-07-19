@@ -8,7 +8,12 @@
 /usr/local/lib/libjbig.a
 /usr/local/lib/libjbig.so
 /usr/local/lib/libjbig.so.0
+/usr/local/lib/libjbig.so.2
+/usr/local/lib/libjbig.so.2.0.0
 /usr/local/lib/libjbig85.a
+/usr/local/lib/libjbig85.so
+/usr/local/lib/libjbig85.so.2
+/usr/local/lib/libjbig85.so.2.0.0
 /usr/local/share/jbigkit-testdata/ccitt1.jbg
 /usr/local/share/jbigkit-testdata/ccitt2.jbg
 /usr/local/share/jbigkit-testdata/ccitt3.jbg
