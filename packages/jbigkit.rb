@@ -11,9 +11,9 @@ class Jbigkit < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '33d7651880ff70c07345d33a971dd5a6ecd3a630ab3dd7a35066bd0c4e1e8dcb',
-     armv7l: '33d7651880ff70c07345d33a971dd5a6ecd3a630ab3dd7a35066bd0c4e1e8dcb',
-       i686: 'd1a83c13c9e277c20f61a3ae708299e582efade2934cf58933600049f1080fdb',
+    aarch64: '9916479bfb176decf0c5c7e131df9a19ffe9ee1536f0a0d68c6752758dcd3757',
+     armv7l: '9916479bfb176decf0c5c7e131df9a19ffe9ee1536f0a0d68c6752758dcd3757',
+       i686: 'cd9aa5cdc30e2287b7738040397927d1310097de2a81c0723d682e12431380af',
      x86_64: 'ddbc74c69e240fd2b6d25e476b0746cca3adcad4e2a94fc662ef91d204785037'
   })
 
