@@ -6,21 +6,22 @@ require 'package'
 class Luajit_lpeg < Package
   description 'Pattern-matching library for Lua 5.1'
   homepage 'https://www.inf.puc-rio.br/~roberto/lpeg/'
-  version '1.0.2'
+  version '1.1.0'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.inf.puc-rio.br/~roberto/lpeg/lpeg-1.0.2.tar.gz'
+  source_url "https://www.inf.puc-rio.br/~roberto/lpeg/lpeg-#{version}.tar.gz"
   source_sha256 '48d66576051b6c78388faad09b70493093264588fcd0f258ddaab1cdd4a15ffe'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd8e6f79a92c8d8c5bc189088bda5de3816d25bfde61538a7189ff8b90ba72363',
-     armv7l: 'd8e6f79a92c8d8c5bc189088bda5de3816d25bfde61538a7189ff8b90ba72363',
-       i686: '64ee5bb516995be8456dd8795eda03093d13317f391bb4dfe8682fb2a2520daa',
-     x86_64: '26842c281045e696a7476cc2f659a38e5e25db3ce5606ce05e27c2bd95934594'
+    aarch64: '30f01887109846f1d965e860c6668af5b17e8f3be805990931e993f563db33ba',
+     armv7l: '30f01887109846f1d965e860c6668af5b17e8f3be805990931e993f563db33ba',
+       i686: '059d7995b66de17743c9c7548e541372a5552f601faccc3b7e208629dc2e7ea1',
+     x86_64: '04d8106e20b3718624648fa965a405fe4e5628a6d9e7be553bcb14ad12d446b0'
   })
 
-  depends_on 'luajit'
+  depends_on 'glibc' # R
+  depends_on 'luajit' # R
 
   def self.patch
     @lua_cflags = `pkg-config --cflags luajit`.chomp

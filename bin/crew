@@ -1408,18 +1408,19 @@ end
 def update_package_file(package = nil, pkg_version = nil, binary_compression = nil)
   pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
   binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
+  starting_binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
   %w[x86_64 i686 armv7l].each do |arch|
     binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
     starting_binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
     remote_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{package}/#{pkg_version}_#{arch}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
     remote_binary = `curl -fsI #{remote_binary_url}`.lines.first.split[1] == '200'
     next unless remote_binary
-    puts "\e[1A\e[KLocal package binary exists for #{arch}.\n".green
+    puts "\e[1A\e[KRemote #{package} package binary exists for #{arch}.\r".green
     binary_sha256_hash[arch.to_sym] = `curl -Ls #{remote_binary_url} | sha256sum`.chomp.split.first
   end
   # 5. Generate new or replacement binary_sha256 block and add to
   # package file.
-  puts "\e[1A\e[KGenerating binary_sha256 block for package file...\r".orange
+  puts "\e[1A\e[KGenerating binary_sha256 block for package file #{pkg_file}...\n".orange
   binary_sha256_block = ''
   binary_sha256_block << "\n  binary_sha256({\n"
   unless binary_sha256_hash[:armv7l].nil?
