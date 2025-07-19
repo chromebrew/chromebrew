@@ -17,7 +17,7 @@ class Libxml2_autotools < Autotools
     aarch64: 'b1e3a145dbd2808a04db8ce44e69f6e71224f6a08cbe3ceada4df99d5a019734',
      armv7l: 'b1e3a145dbd2808a04db8ce44e69f6e71224f6a08cbe3ceada4df99d5a019734',
        i686: '90bc0e31787a59c96fc1e563c4622aa6597e870f0ff2aa5f8b6b84a4087282e1',
-     x86_64: 'b5ba490429312ceaf3ae96f7b6944e3c45f3f18edf8acc3599d96f9cf33fa62f'
+     x86_64: '93d41d6a6de1ed07c18d1e271114e5239f198244e2610353d8f258f671191460'
   })
 
   depends_on 'gcc_lib' # R
