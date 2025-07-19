@@ -11,10 +11,10 @@ class Luajit < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'af723c53d04e905531d9f3497017bc0d65be32be3c6613f518e72ed7f53de0b6',
-     armv7l: 'af723c53d04e905531d9f3497017bc0d65be32be3c6613f518e72ed7f53de0b6',
-       i686: 'ead1b0c1e413199a63d2b729daede0242188e1bb951408cad050483723ac459e',
-     x86_64: 'c4bfd99b5d7098acf0cd890b409a4b2a444c3f90b34bdfc0d356a4bcaf3c50e6'
+    aarch64: '59b8e347806d44304c7746ba9222769cf5cefb82ab180949ce8eea17df7861b9',
+     armv7l: '59b8e347806d44304c7746ba9222769cf5cefb82ab180949ce8eea17df7861b9',
+       i686: 'a40b5c16fbbabae3b0a88eb89b26dec6d35b441f2c20d9214f2e75ea5af8a93d',
+     x86_64: '93ae9318e91b6d6c3ee2172209ebaa8d4e6dba7c36b72d73623309b3f624ea25'
   })
 
   depends_on 'gcc_lib' # R

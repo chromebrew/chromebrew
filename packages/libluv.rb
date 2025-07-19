@@ -14,15 +14,15 @@ class Libluv < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c0f550aad24be7f0845fbb730a70dad758a624deaf7e4bf8d1b4446cd4e3fcd1',
-     armv7l: 'c0f550aad24be7f0845fbb730a70dad758a624deaf7e4bf8d1b4446cd4e3fcd1',
-       i686: '3622475bd90dbc8942dd9b4a9249e2d0e7e1a03b837b8a983d7cec309f344742',
-     x86_64: 'd3d7f404503c1bda84471ff8ae47c10312f89940bed310d220fb8dbdb7fb2fca'
+    aarch64: '0121098ecef7a9db78e45aa493ac90a3ca4ee700b14edd4d4428bc18bf5fa607',
+     armv7l: '0121098ecef7a9db78e45aa493ac90a3ca4ee700b14edd4d4428bc18bf5fa607',
+       i686: '33d1eef042ad5f8ab62a22cc62dccdced090c4f685ebe229768726da329bde17',
+     x86_64: '0b5162c9d446e3593fb97441066ec8742ad3e434ad45a22b1d912fb01dae9448'
   })
 
-  depends_on 'luajit'
-  depends_on 'libuv'
   depends_on 'glibc' # R
+  depends_on 'libuv'
+  depends_on 'luajit'
 
   def self.patch
     system "sed -i 's,CMAKE_INSTALL_PREFIX}/lib,CMAKE_INSTALL_PREFIX}/#{ARCH_LIB},g' CMakeLists.txt"
