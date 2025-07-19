@@ -27,9 +27,7 @@ class Luajit < Package
   def self.install
     system 'make', "PREFIX=#{CREW_PREFIX}", "MULTILIB=#{ARCH_LIB}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
     Dir.chdir("#{CREW_DEST_PREFIX}/bin") do
-      Dir["luajit-#{version.split('-').first}*"].each do |f|
-        FileUtils.ln_sf f, 'luajit'
-      end
+      FileUtils.ln_sf Dir["luajit-#{version.split('-').first}*"].first, 'luajit'
     end
   end
 end
