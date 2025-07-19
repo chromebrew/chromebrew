@@ -31,6 +31,8 @@ class Neovim < CMake
   depends_on 'utf8proc' # R
   depends_on 'xdg_base' # L
 
+  no_lto
+
   def self.postinstall
     # Set nvim to be the default vi if there is no vi or if a default
     # vi does not exist.
