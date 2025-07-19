@@ -80,7 +80,7 @@ def update_hashes(name = nil)
       puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && CREW_VERBOSE
     end
     # Add build hashes.
-    system 'crew update_package_file #{name}' unless remote_binary.values.all?(nil)
+    system "crew update_package_file #{name}" unless remote_binary.values.all?(nil)
     # Add manifests if we are in the right architecture.
     FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist" if system("yes | crew install #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
   end
