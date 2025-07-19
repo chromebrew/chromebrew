@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Postgresql < Meson
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org'
-  version "17.4-#{CREW_ICU_VER}"
+  version "17.5-#{CREW_ICU_VER}"
   license 'PostgreSQL and GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://ftp.postgresql.org/pub/source/v#{version.split('-').first}/postgresql-#{version.split('-').first}.tar.bz2"
@@ -27,7 +27,7 @@ class Postgresql < Meson
   depends_on 'libxml2' # R
   depends_on 'libxslt' # R
   depends_on 'linux_pam' # R
-  depends_on 'llvm18_dev' => :build
+  depends_on 'llvm20_dev' => :build
   depends_on 'lz4' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R
