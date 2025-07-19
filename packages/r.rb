@@ -25,7 +25,6 @@ class R < Autotools
   depends_on 'lapack' # R
   depends_on 'libdeflate' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libsm' # R
   depends_on 'libtiff' # R
@@ -41,6 +40,7 @@ class R < Autotools
   depends_on 'xdg_utils' => :build
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
   autotools_configure_options '--enable-R-shlib \
            --with-x'
