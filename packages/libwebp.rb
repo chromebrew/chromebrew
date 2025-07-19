@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libwebp < CMake
   description 'WebP is a modern image format that provides superior lossless and lossy compression for images on the web.'
   homepage 'https://developers.google.com/speed/webp/'
-  version '1.4.0'
+  version '1.6.0'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/webmproject/libwebp.git'
@@ -30,7 +30,6 @@ class Libwebp < CMake
   depends_on 'libsdl' => :build
   depends_on 'libsm' # R
   depends_on 'libtiff' # R
-  depends_on 'libwebp' # R
   depends_on 'libx11' # R
   depends_on 'libxi' # R
   depends_on 'libxmu' # R
