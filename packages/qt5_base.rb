@@ -12,7 +12,7 @@ class Qt5_base < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1598aa80f69cb4f82922d826da6d8935ed1359084e074ea3a197bb235ecd8bd6',
+    aarch64: '2598aa80f69cb4f82922d826da6d8935ed1359084e074ea3a197bb235ecd8bd6',
      armv7l: '1598aa80f69cb4f82922d826da6d8935ed1359084e074ea3a197bb235ecd8bd6',
      x86_64: 'e9f3805048a1866e8f8a922ae89c3df5896f6b2c5b07de0959f7c50b40372caa'
   })
