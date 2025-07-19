@@ -30,10 +30,12 @@
 /usr/local/lib64/libvte-2.91-gtk4.so.0
 /usr/local/lib64/libvte-2.91.so
 /usr/local/lib64/libvte-2.91.so.0
-/usr/local/lib64/libvte-2.91.so.0.7800.2
+/usr/local/lib64/libvte-2.91.so.0.8000.3
 /usr/local/lib64/pkgconfig/vte-2.91-gtk4.pc
 /usr/local/lib64/pkgconfig/vte-2.91.pc
 /usr/local/libexec/vte-urlencode-cwd
+/usr/local/share/applications/org.gnome.Vte.App.Gtk3.desktop
+/usr/local/share/applications/org.gnome.Vte.App.Gtk4.desktop
 /usr/local/share/glade/catalogs/vte-2.91.xml
 /usr/local/share/glade/pixmaps/hicolor/16x16/actions/widget-vte-terminal.png
 /usr/local/share/glade/pixmaps/hicolor/22x22/actions/widget-vte-terminal.png
@@ -129,6 +131,7 @@
 /usr/local/share/locale/tr/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/ug/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/uk/LC_MESSAGES/vte-2.91.mo
+/usr/local/share/locale/uz/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/uz@cyrillic/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/vi/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/wa/LC_MESSAGES/vte-2.91.mo
@@ -136,3 +139,5 @@
 /usr/local/share/locale/zh_CN/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/vte-2.91.mo
+/usr/local/share/xdg-terminals/org.gnome.Vte.App.Gtk3.desktop
+/usr/local/share/xdg-terminals/org.gnome.Vte.App.Gtk4.desktop
