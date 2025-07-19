@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Tesseract < CMake
   description 'A neural net (LSTM) based OCR engine which is focused on line recognition & an older OCR engine which recognizes character patterns.'
   homepage 'https://github.com/tesseract-ocr/tesseract'
-  version "5.5.0-#{CREW_ICU_VER}"
+  version "5.5.1-#{CREW_ICU_VER}"
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/tesseract-ocr/tesseract.git'
