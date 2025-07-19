@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Vte < Meson
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  version "0.78.2-#{CREW_ICU_VER}"
+  version "0.80.3-#{CREW_ICU_VER}"
   license 'LGPL-2+ and GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
