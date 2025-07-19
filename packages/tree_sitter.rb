@@ -25,7 +25,7 @@ class Tree_sitter < Package
   depends_on 'glibc' # R
   depends_on 'rust' => :build
 
-  def self.build
+  def self.patch
     system "sed -i 's,PREFIX)/lib,PREFIX)/#{ARCH_LIB},' Makefile"
   end
 
