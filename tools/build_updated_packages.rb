@@ -14,6 +14,7 @@
 # from another container for the same cloned repo.
 
 require 'English'
+require 'fileutils'
 require_relative '../lib/color'
 require_relative '../lib/const'
 require_relative '../lib/package'
