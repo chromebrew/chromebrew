@@ -11,10 +11,10 @@ class Neovim < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'efc5b03dbb0e6f0292030dea2ec89294690e6bca471b6a559329d13cc92ea13a',
-     armv7l: 'efc5b03dbb0e6f0292030dea2ec89294690e6bca471b6a559329d13cc92ea13a',
-       i686: 'f5e44f127df3329a837cb56fa70f547cdeda8fc3ea7d873dbc7c9a5a6e7b6d45',
-     x86_64: '97a127932ead9fdf64640c582205f9efe94f384b9803cf122553c84ce19a1d3b'
+    aarch64: '405560ae5b698ef74d4d80d42a41fdd8d72d66f2d6497845108e1e3a2421822c',
+     armv7l: '405560ae5b698ef74d4d80d42a41fdd8d72d66f2d6497845108e1e3a2421822c',
+       i686: '4b9a085bf06fb07e56b3918ebb6977c5ede3260af304d2b9243d664a5a254c59',
+     x86_64: '8c7d53547c79c770ff39f1430db9182f8bb4d10c38f44c5df1daae40ca801967'
   })
 
   depends_on 'gcc_lib' # R
