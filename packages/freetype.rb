@@ -4,7 +4,7 @@ require 'buildsystems/meson'
 class Freetype < Meson
   description 'FreeType is a freely available software library to render fonts.'
   homepage 'https://freetype.org/'
-  version '2.13.3-1' # Update freetype in harfbuzz when updating freetype
+  version '2.13.3-2' # Update freetype in harfbuzz when updating freetype
   license 'FTL or GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/freetype/freetype.git'
@@ -12,9 +12,9 @@ class Freetype < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '409963301f95f91375396561a7c0a53168ea911b353d8cf45a4ff31bef951afd',
-     armv7l: '409963301f95f91375396561a7c0a53168ea911b353d8cf45a4ff31bef951afd',
-     x86_64: '2d36d487c1a768c3e808c15cc9ab277bde512ae66828b8db0a3a817e7267332c'
+    aarch64: '6ba402f56625c658a74924fffbbe29df25e1b284855f5aaaab5de44590d99ed9',
+     armv7l: '6ba402f56625c658a74924fffbbe29df25e1b284855f5aaaab5de44590d99ed9',
+     x86_64: '7ec4b3693b46646e123728e0e199d1e793e4fdd92e93e8348bfaf10a898b6084'
   })
 
   depends_on 'brotli' # R
@@ -29,6 +29,8 @@ class Freetype < Meson
   depends_on 'pcre' => :build
   depends_on 'py3_docwriter' => :build
   depends_on 'zlib' # R
+
+  conflicts_ok # Allow overwriting of harfbuzz freetype files.
 
   meson_options '-Dharfbuzz=enabled'
 end

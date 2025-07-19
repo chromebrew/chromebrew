@@ -17,7 +17,6 @@ on:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
 env:
-  GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}  # setting GH_TOKEN for the entire workflow
   BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
   actions: write
@@ -138,7 +137,6 @@ jobs:
             fi
   generate:
     strategy:
-      max-parallel: 1
       matrix:
         arch: [i686, x86_64, armv7l]
         runner:
@@ -153,6 +151,151 @@ jobs:
             runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
     needs: setup
+    env:
+      CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES: 1
+      CREW_REPO: ${{ github.event.repository.clone_url }}
+      CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
+      TARGET_ARCH: ${{ matrix.arch }}
+      TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
+      GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_232_compat }}
+      GLIBC_237_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_237_compat }}
+      i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
+      x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
+      armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
+    if: ${{ !cancelled() }}
+    concurrency:
+      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - name: Build Container cleanup
+        run: |
+            sudo rm -rf release
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Export target docker container to github context
+        run: |
+          case $TARGET_ARCH in
+              x86_64)
+                echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
+                echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
+                echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
+              ;;
+              armv7l)
+                echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
+                echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
+                echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
+              ;;
+              i686)
+                # There is only one i686 container based upon M58 with glibc 2.23.
+                echo "CONTAINER=satmandu/crew-pre-glibc-standalone:alex-i686.m58" >> "$GITHUB_ENV"
+                echo "PLATFORM=linux/386" >> "$GITHUB_ENV"
+                echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
+              ;;
+            esac
+      - name: Run Updater in container
+        id: run-updater
+        if: ${{ !cancelled() }}
+        run: |
+            if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
+              # Exit the arm container if there are not armv7l compatible packages.
+              echo "Skipping armv7l container builds."
+              exit 0
+            elif [ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]; then
+              # Exit the x86_64 container if there are not x86_64 compatible packages.
+              echo "Skipping x86_64 container builds."
+              exit 0
+            elif [ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]; then
+              # Exit the i686 container if there are not i686 compatible packages.
+              echo "Skipping i686 container builds."
+              exit 0
+            fi
+
+            git fetch origin
+            git checkout "${{ env.BRANCH }}"
+            git reset --hard "origin/${{ env.BRANCH }}"
+            git log --oneline -10
+            docker pull --platform "${PLATFORM}" "${CONTAINER}"
+            sudo apt install -y acl
+            # Detection of /output/pkg_cache dir triggers setting
+            # CREW_CACHE_DIR=1 and CREW_CACHE_ENABLED=1 in the build
+            # container. Without these, upload fails.
+            mkdir pkg_cache
+            sudo setfacl -R -m u:1000:rwx .
+            docker run \
+              --rm \
+              --platform "${PLATFORM}" \
+              -e PUID=1000 \
+              -e PGID=1000 \
+              --privileged \
+              -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
+              -e CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES="${CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES}" \
+              -e CREW_REPO="${CREW_REPO}" \
+              -e CREW_BRANCH="${CREW_BRANCH}" \
+              -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
+              -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
+              -v "$(pwd)"/pkg_cache:/usr/local/tmp/packages:rshared \
+              -v "$(pwd)":/output:rshared \
+              --tmpfs /tmp \
+              "${CONTAINER}" \
+              /bin/chromebrewstart "/output/tools/github_actions_update_builder${{ github.event.inputs.allow_fail == 'true' && '_allowing_failures' || ''}}.sh"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
+              grep "Built and Uploaded:" /tmp/build.log || true
+              echo "Deleting build output directories."
+              sudo rm -rf release pkg_cache
+      - name: Add updated packages to branch.
+        id: push-check
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git add -A
+            git commit -m "Add built packages for ${PLATFORM} to branch ${{ env.BRANCH }}." && git push -f
+            git log --oneline -10
+          fi
+  update-package-files:
+    strategy:
+      max-parallel: 1
+      matrix:
+        arch: [i686, x86_64, armv7l]
+        runner:
+          - ubuntu-24.04
+          - ubuntu-24.04-arm
+        exclude:
+          - arch: x86_64
+            runner: ubuntu-24.04-arm
+          - arch: i686
+            runner: ubuntu-24.04-arm
+          - arch: armv7l
+            runner: ubuntu-24.04
+    runs-on: ${{ matrix.runner }}
+    needs:
+      - setup
+      - generate
     env:
       CREW_REPO: ${{ github.event.repository.clone_url }}
       CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
@@ -203,27 +346,11 @@ jobs:
         run: |
           case $TARGET_ARCH in
               x86_64)
-                # Export the x86_64 container depending on whether this branch updates packages with appropriate minimum glibc.
-                # if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                #     echo "CONTAINER=nocturne-x86_64.m97" >> "$GITHUB_ENV"
-                # elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                #     echo "CONTAINER=hatch-x86_64.m137" >> "$GITHUB_ENV"
-                # else
-                #     echo "CONTAINER=nocturne-x86_64.m90" >> "$GITHUB_ENV"
-                # fi
                 echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
               ;;
               armv7l)
-                # Export the armv7l container depending on whether this branch updates packages with appropriate minimum glibc.
-                # if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                #     echo "CONTAINER=fievel-armv7l.m97" >> "$GITHUB_ENV"
-                # elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                #     echo "CONTAINER=strongbad-armv7l.m137" >> "$GITHUB_ENV"
-                # else
-                #     echo "CONTAINER=fievel-armv7l.m91" >> "$GITHUB_ENV"
-                # fi
                 echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
@@ -264,11 +391,6 @@ jobs:
             # container. Without these, upload fails.
             mkdir pkg_cache
             sudo setfacl -R -m u:1000:rwx .
-            # Use docker-in-docker shim to mount volume inside docker.
-            # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-            # ghcr.io/felipecrs/dond-shim:latest \
-            #(cd /tmp || exit ; curl -OLf https://github.com/felipecrs/docker-on-docker-shim/raw/refs/tags/v0.7.1/dond ; chmod +x /tmp/dond )
-            #/tmp/dond run \
             docker run \
               --rm \
               --platform "${PLATFORM}" \
@@ -276,6 +398,7 @@ jobs:
               -e PGID=1000 \
               --privileged \
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
+              -e CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES="${CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES}" \
               -e CREW_REPO="${CREW_REPO}" \
               -e CREW_BRANCH="${CREW_BRANCH}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
@@ -295,7 +418,7 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add -A
-            git commit -m "Add built packages for ${PLATFORM} to branch ${{ env.BRANCH }}." && git push -f
+            git commit -m "Updated package files for ${PLATFORM} to branch ${{ env.BRANCH }}." && git push -f
             git log --oneline -10
           fi
   build-check:
@@ -303,6 +426,7 @@ jobs:
     needs:
       - setup
       - generate
+      - update-package-files
     if: ${{ !cancelled() }}
     steps:
       - name: fail if update or build jobs failed, otherwise create a PR
@@ -344,7 +468,7 @@ jobs:
         env:
           CHANGED_MANIFEST_FILES: ${{ steps.changed-manifest-files.outputs.all_changed_files }}
           CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
-          GH_BACKUP_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
           i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
           x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
@@ -369,16 +493,13 @@ jobs:
           echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ env.BRANCH }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           cat /tmp/pr.txt
-          gh auth status >/dev/null 2>&1 || export GH_TOKEN="${GH_BACKUP_TOKEN}"
           PR_NUMBER=$(gh pr create --title "AutoBuild: ${{ env.BRANCH }} started at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
       - name: Trigger Unit Test Workflow & Add Reviewer Team
         if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
-          GH_BACKUP_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
-          gh auth status >/dev/null 2>&1 || export GH_TOKEN="${GH_BACKUP_TOKEN}"
           gh pr edit "${PR_NUMBER}" --add-reviewer chromebrew/active
           gh pr merge "${PR_NUMBER}" --auto

@@ -1,9 +1,9 @@
-/usr/local/lib/python3.13/site-packages/pypdf-5.7.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pypdf-5.7.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pypdf-5.7.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pypdf-5.7.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pypdf-5.7.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pypdf-5.7.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/pypdf-5.8.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pypdf-5.8.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pypdf-5.8.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pypdf-5.8.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pypdf-5.8.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pypdf-5.8.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.13/site-packages/pypdf/__init__.py
 /usr/local/lib/python3.13/site-packages/pypdf/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/__pycache__/_cmap.cpython-313.pyc
@@ -59,6 +59,7 @@
 /usr/local/lib/python3.13/site-packages/pypdf/_reader.py
 /usr/local/lib/python3.13/site-packages/pypdf/_text_extraction/__init__.py
 /usr/local/lib/python3.13/site-packages/pypdf/_text_extraction/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pypdf/_text_extraction/__pycache__/_text_extractor.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/_text_extraction/_layout_mode/__init__.py
 /usr/local/lib/python3.13/site-packages/pypdf/_text_extraction/_layout_mode/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/_text_extraction/_layout_mode/__pycache__/_fixed_width_page.cpython-313.pyc
@@ -71,6 +72,7 @@
 /usr/local/lib/python3.13/site-packages/pypdf/_text_extraction/_layout_mode/_font_widths.py
 /usr/local/lib/python3.13/site-packages/pypdf/_text_extraction/_layout_mode/_text_state_manager.py
 /usr/local/lib/python3.13/site-packages/pypdf/_text_extraction/_layout_mode/_text_state_params.py
+/usr/local/lib/python3.13/site-packages/pypdf/_text_extraction/_text_extractor.py
 /usr/local/lib/python3.13/site-packages/pypdf/_utils.py
 /usr/local/lib/python3.13/site-packages/pypdf/_version.py
 /usr/local/lib/python3.13/site-packages/pypdf/_writer.py

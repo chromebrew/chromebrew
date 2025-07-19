@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Librsvg < Meson
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  version "2.59.2-#{CREW_ICU_VER}"
+  version "2.60.0-#{CREW_ICU_VER}"
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
@@ -11,9 +11,9 @@ class Librsvg < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '849b834e2d40a895894ca474876a96082c80178f535c96f2511a9e14c6c04fb8',
-     armv7l: '849b834e2d40a895894ca474876a96082c80178f535c96f2511a9e14c6c04fb8',
-     x86_64: '53c9762b60acf8558deced395176830befcf97976f5c8a6f697fa2e98babcc1c'
+    aarch64: 'f1c2cfe29ed9457bc56b965beacba6e539358b2b10181124a2a5b9f0e0492dd0',
+     armv7l: 'f1c2cfe29ed9457bc56b965beacba6e539358b2b10181124a2a5b9f0e0492dd0',
+     x86_64: '376db5e725f91f0f2e74e6c2cd542d8546eae631729116b680f7989c17320134'
   })
 
   depends_on 'cairo' # R
@@ -46,12 +46,5 @@ class Librsvg < Meson
 
   ENV['CARGO_PROFILE_RELEASE_LTO'] = 'true'
 
-  meson_options '-Dintrospection=enabled -Dvala=enabled'
-
-  def self.patch
-    # As per https://gitlab.gnome.org/GNOME/librsvg/-/issues/1155#note_2356939
-    # using the change that was merged into 2.59.90.
-    downloader 'https://gitlab.gnome.org/GNOME/librsvg/-/merge_requests/1066.diff', '16b588b770066c983862a7b4e6cb5aa721f62a9b35b376ea8ea15a30dd2328c5'
-    system 'patch -Np1 -i 1066.diff'
-  end
+  meson_options '-Ddocs=disabled -Dintrospection=disabled -Dtests=false -Dvala=enabled'
 end

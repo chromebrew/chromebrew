@@ -202,6 +202,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/github-authentication/dist/extension.js.LICENSE.txt
 /usr/local/VSCodium-linux-arm/resources/app/extensions/github-authentication/images/icon.png
 /usr/local/VSCodium-linux-arm/resources/app/extensions/github-authentication/media/auth.css
+/usr/local/VSCodium-linux-arm/resources/app/extensions/github-authentication/media/code-icon.svg
 /usr/local/VSCodium-linux-arm/resources/app/extensions/github-authentication/media/favicon.ico
 /usr/local/VSCodium-linux-arm/resources/app/extensions/github-authentication/media/icon.png
 /usr/local/VSCodium-linux-arm/resources/app/extensions/github-authentication/media/index.html
@@ -684,9 +685,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/prompt-basics/language-configuration.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/prompt-basics/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/prompt-basics/package.nls.json
-/usr/local/VSCodium-linux-arm/resources/app/extensions/prompt-basics/snippets/chatmode.code-snippets
-/usr/local/VSCodium-linux-arm/resources/app/extensions/prompt-basics/snippets/instructions.code-snippets
-/usr/local/VSCodium-linux-arm/resources/app/extensions/prompt-basics/snippets/prompt.code-snippets
 /usr/local/VSCodium-linux-arm/resources/app/extensions/prompt-basics/syntaxes/prompt.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/pug/language-configuration.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/pug/package.json
@@ -1217,6 +1215,9 @@
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/buffer/LICENSE
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/buffer/index.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/buffer/package.json
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/bundle-name/index.js
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/bundle-name/license
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/bundle-name/package.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/chownr/LICENSE
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/chownr/chownr.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/chownr/package.json
@@ -1269,6 +1270,13 @@
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/deep-extend/index.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/deep-extend/lib/deep-extend.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/deep-extend/package.json
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/default-browser-id/index.js
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/default-browser-id/license
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/default-browser-id/package.json
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/default-browser/index.js
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/default-browser/license
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/default-browser/package.json
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/default-browser/windows.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/define-lazy-prop/index.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/define-lazy-prop/license
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/define-lazy-prop/package.json
@@ -1441,6 +1449,10 @@
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/is-glob/LICENSE
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/is-glob/index.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/is-glob/package.json
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/is-inside-container/cli.js
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/is-inside-container/index.js
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/is-inside-container/license
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/is-inside-container/package.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/is-number/LICENSE
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/is-number/index.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/is-number/package.json
@@ -1670,6 +1682,9 @@
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/readable-stream/package.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/readable-stream/readable-browser.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/readable-stream/readable.js
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/run-applescript/index.js
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/run-applescript/license
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/run-applescript/package.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/safe-buffer/LICENSE
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/safe-buffer/index.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/safe-buffer/package.json
@@ -2034,6 +2049,8 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/media/code-icon.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/media/codicon.ttf
 /usr/local/VSCodium-linux-arm/resources/app/out/media/github.svg
+/usr/local/VSCodium-linux-arm/resources/app/out/media/google-mono-dark.svg
+/usr/local/VSCodium-linux-arm/resources/app/out/media/google-mono-light.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/media/google.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/media/letterpress-dark.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/media/letterpress-hcDark.svg
@@ -2048,10 +2065,10 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/base/node/cpuUsage.sh
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/base/node/ps.sh
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/base/node/terminateProcess.sh
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/base/parts/sandbox/electron-sandbox/preload-aux.js
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/base/parts/sandbox/electron-sandbox/preload.js
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-sandbox/workbench/workbench.js
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/base/parts/sandbox/electron-browser/preload-aux.js
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/base/parts/sandbox/electron-browser/preload.js
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-browser/workbench/workbench.html
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-browser/workbench/workbench.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/code/node/cliProcessMain.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/editor/common/languages/highlights/css.scm
@@ -2092,7 +2109,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/voiceRecordingStopped.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/warning.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/files/node/watcher/watcherMain.js
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/profiling/electron-sandbox/profileAnalysisWorkerMain.js
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/profiling/electron-browser/profileAnalysisWorkerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/terminal/node/ptyHostMain.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/api/node/extensionHostProcess.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/api/worker/extensionHostWorkerMain.js

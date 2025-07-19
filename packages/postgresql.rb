@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Postgresql < Meson
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org'
-  version "17.4-#{CREW_ICU_VER}"
+  version "17.5-#{CREW_ICU_VER}"
   license 'PostgreSQL and GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://ftp.postgresql.org/pub/source/v#{version.split('-').first}/postgresql-#{version.split('-').first}.tar.bz2"
@@ -11,9 +11,9 @@ class Postgresql < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'df11f2fcacc087b35ed37dab01c8b1035116416a963f59bf6d8b12c6fc13516b',
-     armv7l: 'df11f2fcacc087b35ed37dab01c8b1035116416a963f59bf6d8b12c6fc13516b',
-     x86_64: '4eabbe698a651a0db078b49b0083bd57096da75aae600709fd6bde04c8193c93'
+    aarch64: 'd7cba3cb1689ea03fc92e17e4eff9013d49a9530453ed3d10ac80646e15fd128',
+     armv7l: 'd7cba3cb1689ea03fc92e17e4eff9013d49a9530453ed3d10ac80646e15fd128',
+     x86_64: 'f5c8c0e5dad3f476e867c52a76df8c4fd72e40ca81646afc1ff7124cbd28694b'
   })
 
   depends_on 'brotli' => :build
@@ -27,7 +27,7 @@ class Postgresql < Meson
   depends_on 'libxml2' # R
   depends_on 'libxslt' # R
   depends_on 'linux_pam' # R
-  depends_on 'llvm18_dev' => :build
+  depends_on 'llvm_dev' => :build
   depends_on 'lz4' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R

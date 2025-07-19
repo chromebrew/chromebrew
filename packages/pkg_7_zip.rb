@@ -4,17 +4,17 @@ class Pkg_7_zip < Package
   description 'Official implantation of 7za.exe in Linux. File archiver with a high compression ratio.'
   homepage 'https://www.7-zip.org'
   license 'LGPL-2.1+'
-  version '24.05'
+  version '25.00'
   compatibility 'all'
-  source_url 'https://www.7-zip.org/a/7z2405-src.tar.xz'
-  source_sha256 '63f341cf80b8d287c6e945519b3da0fa75553c85572a471b7fa6e68f9a90b790'
+  source_url "https://www.7-zip.org/a/7z#{version.delete('.')}-src.tar.xz"
+  source_sha256 'bff9e69b6ca73a5b8715d7623870a39dc90ad6ce1f4d1070685843987af1af9b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7f18aa14a9604cf54c390ccf58135469f543a8a1a4bdef667525da18f58fcd9d',
-     armv7l: '7f18aa14a9604cf54c390ccf58135469f543a8a1a4bdef667525da18f58fcd9d',
-       i686: 'eff5cd8e4efa6d65741d0b5d6ff08919518c043e5a27529e3c923360ea3f04aa',
-     x86_64: 'a80ffe51d0fa5d7526965fbce635efc67b193a0476cc45c82020369252a71369'
+    aarch64: '07d1e47a4f3dbbbbe10dc697d6bbc13cf107415ecee634b131a041514c28ae7e',
+     armv7l: '07d1e47a4f3dbbbbe10dc697d6bbc13cf107415ecee634b131a041514c28ae7e',
+       i686: '4aad8fbed7a784b8326de7611de1931d1a23e9b6a0d0fbec7bc7464f63a9c1a3',
+     x86_64: '2f598746525cbadbb77d580d7606e92c0d8c31dc6386853dff66aaab20d5acbe'
   })
 
   no_env_options

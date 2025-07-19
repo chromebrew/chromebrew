@@ -516,7 +516,7 @@ for i in "${!installed_gems[@]}"; do
 done
 
 echo_info "Installing essential ruby gems...\n"
-BOOTSTRAP_GEMS='base64 bigdecimal connection_pool concurrent-ruby drb i18n logger minitest securerandom tzinfo activesupport highline ptools'
+BOOTSTRAP_GEMS='base64 connection_pool concurrent-ruby drb i18n logger minitest securerandom tzinfo highline ptools'
 # shellcheck disable=SC2086
 install_ruby_gem ${BOOTSTRAP_GEMS}
 

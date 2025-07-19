@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# update_ruby_gem_packages version 2.1 (for Chromebrew)
+# update_ruby_gem_packages version 2.2 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo:
 # tools/update_ruby_gem_packages.rb
@@ -17,6 +17,9 @@ require_relative '../lib/package_utils'
 require_relative '../lib/require_gem'
 require_gem 'concurrent-ruby'
 require_gem 'ruby-libversion', 'ruby_libversion'
+
+# Make sure rubygems is up to date.
+system 'gem update --system'
 
 def check_for_updated_ruby_packages
   # Create a thread pool for parallelization.

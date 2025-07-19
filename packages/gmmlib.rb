@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Gmmlib < CMake
   description 'The Intel(R) Graphics Memory Management Library provides device specific and buffer management for the Intel(R) Graphics Compute Runtime for OpenCL(TM) and the Intel(R) Media Driver for VAAPI.'
   homepage 'https://github.com/intel/gmmlib/'
-  version '22.7.2'
+  version '22.8.0'
   license 'MIT'
   compatibility 'x86_64'
   source_url 'https://github.com/intel/gmmlib.git'
@@ -11,7 +11,7 @@ class Gmmlib < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'ee88ee0f25aa1a78e55893f67f12c76f1b47f260ad62f1c157b15716e8d96d86'
+     x86_64: '73424ec04dfc569e9d25df63719251af95b38aec3b840b9972fa951f3fdb051c'
   })
 
   depends_on 'libva' => :build

@@ -3,18 +3,18 @@ require 'package'
 class Luajit < Package
   description 'LuaJIT is a Just-In-Time Compiler (JIT) for the Lua programming language.'
   homepage 'https://github.com/openresty/luajit2'
-  version '2.1-6c4826f'
+  version '2.1-f9140a6'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/LuaJIT/LuaJIT/archive/6c4826f12c4d33b8b978004bc681eb1eef2be977.zip'
-  source_sha256 '4a384b218557e650e6fbbe2e0f14aa7a7d08a3e1f31eedbfc54de1cc62583496'
+  source_url 'https://github.com/LuaJIT/LuaJIT.git'
+  git_hashtag 'f9140a622a0c44a99efb391cc1c2358bc8098ab7'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'af723c53d04e905531d9f3497017bc0d65be32be3c6613f518e72ed7f53de0b6',
-     armv7l: 'af723c53d04e905531d9f3497017bc0d65be32be3c6613f518e72ed7f53de0b6',
-       i686: 'ead1b0c1e413199a63d2b729daede0242188e1bb951408cad050483723ac459e',
-     x86_64: 'c4bfd99b5d7098acf0cd890b409a4b2a444c3f90b34bdfc0d356a4bcaf3c50e6'
+    aarch64: '59b8e347806d44304c7746ba9222769cf5cefb82ab180949ce8eea17df7861b9',
+     armv7l: '59b8e347806d44304c7746ba9222769cf5cefb82ab180949ce8eea17df7861b9',
+       i686: 'a40b5c16fbbabae3b0a88eb89b26dec6d35b441f2c20d9214f2e75ea5af8a93d',
+     x86_64: '93ae9318e91b6d6c3ee2172209ebaa8d4e6dba7c36b72d73623309b3f624ea25'
   })
 
   depends_on 'gcc_lib' # R
@@ -27,7 +27,7 @@ class Luajit < Package
   def self.install
     system 'make', "PREFIX=#{CREW_PREFIX}", "MULTILIB=#{ARCH_LIB}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
     Dir.chdir("#{CREW_DEST_PREFIX}/bin") do
-      FileUtils.ln_s 'luajit-2.1.0-beta3', 'luajit'
+      FileUtils.ln_sf Dir["luajit-#{version.split('-').first}*"].first, 'luajit'
     end
   end
 end

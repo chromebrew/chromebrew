@@ -3,21 +3,23 @@ require 'package'
 class Zoneinfo < Package
   description 'Code and data that represent the history of local time for many representative locations around the globe.'
   homepage 'https://www.iana.org/time-zones'
-  version '2024a'
+  version '2025b'
   license 'public-domain'
   compatibility 'all'
-  source_url 'https://data.iana.org/time-zones/releases/tzdb-2024a.tar.lz'
-  source_sha256 '511af6b467f40b1ec9ac3684d1701793af470f3e29ddfb97b82be438e8601a7a'
+  source_url "https://data.iana.org/time-zones/releases/tzdb-#{version}.tar.lz"
+  source_sha256 'ec2f98c739009fd81a654efe2ee75069f54bcee5e0d80f510ee7e1f469ed293a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e0daf569178baf4d59c6f6641c3819dba2999cf71e3917d9fc0bf8e1f4149b50',
-     armv7l: 'e0daf569178baf4d59c6f6641c3819dba2999cf71e3917d9fc0bf8e1f4149b50',
-       i686: '66c5afe3e8961c11bf253d9a8826e1c0c79bd12bad7c1f9645f36ccec363625b',
-     x86_64: 'd6a147311371d94f7ec2a4bbf412bd35a83324062adc64a374a1c844db686c86'
+    aarch64: 'a7a38bc48e20951326545fff3c5a1262cb2f0ae0ed1a3a3f179f3a04cdab704a',
+     armv7l: 'a7a38bc48e20951326545fff3c5a1262cb2f0ae0ed1a3a3f179f3a04cdab704a',
+       i686: '10a5a2c1a4bd2f679f4c813f0ea5c740630cc2b12ec18b1c7c011a82e835c59a',
+     x86_64: '43a1709b56a14563be7933b287110674eb57d3754f8def4eb0d96e0b6c9f322b'
   })
 
   depends_on 'glibc' # R
+
+  conflicts_ok # Conflicts with coreutils.
 
   def self.patch
     system "sed -i 's:TZDEFAULT = $(TOPDIR)/etc/localtime:TZDEFAULT = #{CREW_PREFIX}/etc/localtime:g' Makefile"

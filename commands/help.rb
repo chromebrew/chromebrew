@@ -120,6 +120,13 @@ class Command
         Usage: crew sysinfo [-v|--verbose]
         If `-v` or `--verbose` is present, show system information with raw markdown.
       EOT
+    when 'update_package_file'
+      puts <<~EOT
+        Update crew.
+        Usage: crew update_package_file [-v|--verbose] <package1> [<package2> ...]
+        This updates the binary hashes in package files for generated
+        and uploaded binaries.
+      EOT
     when 'update'
       puts <<~EOT
         Update crew.

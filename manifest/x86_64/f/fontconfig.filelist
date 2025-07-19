@@ -26,6 +26,7 @@
 /usr/local/etc/fonts/conf.d/65-fonts-persian.conf
 /usr/local/etc/fonts/conf.d/65-nonlatin.conf
 /usr/local/etc/fonts/conf.d/69-unifont.conf
+/usr/local/etc/fonts/conf.d/70-no-bitmaps-except-emoji.conf
 /usr/local/etc/fonts/conf.d/80-delicious.conf
 /usr/local/etc/fonts/conf.d/90-synthetic.conf
 /usr/local/etc/fonts/conf.d/README
@@ -35,7 +36,7 @@
 /usr/local/include/fontconfig/fontconfig.h
 /usr/local/lib64/libfontconfig.so
 /usr/local/lib64/libfontconfig.so.1
-/usr/local/lib64/libfontconfig.so.1.14.0
+/usr/local/lib64/libfontconfig.so.1.16.0
 /usr/local/lib64/pkgconfig/fontconfig.pc
 /usr/local/share/fontconfig/conf.avail/05-reset-dirs-sample.conf
 /usr/local/share/fontconfig/conf.avail/09-autohint-if-no-hinting.conf
@@ -64,6 +65,7 @@
 /usr/local/share/fontconfig/conf.avail/40-nonlatin.conf
 /usr/local/share/fontconfig/conf.avail/45-generic.conf
 /usr/local/share/fontconfig/conf.avail/45-latin.conf
+/usr/local/share/fontconfig/conf.avail/48-guessfamily.conf
 /usr/local/share/fontconfig/conf.avail/48-spacing.conf
 /usr/local/share/fontconfig/conf.avail/49-sansserif.conf
 /usr/local/share/fontconfig/conf.avail/50-user.conf
@@ -74,6 +76,8 @@
 /usr/local/share/fontconfig/conf.avail/65-khmer.conf
 /usr/local/share/fontconfig/conf.avail/65-nonlatin.conf
 /usr/local/share/fontconfig/conf.avail/69-unifont.conf
+/usr/local/share/fontconfig/conf.avail/70-no-bitmaps-and-emoji.conf
+/usr/local/share/fontconfig/conf.avail/70-no-bitmaps-except-emoji.conf
 /usr/local/share/fontconfig/conf.avail/70-no-bitmaps.conf
 /usr/local/share/fontconfig/conf.avail/70-yes-bitmaps.conf
 /usr/local/share/fontconfig/conf.avail/80-delicious.conf

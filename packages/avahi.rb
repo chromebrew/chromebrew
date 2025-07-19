@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Avahi < Autotools
   description 'Avahi is a system which facilitates service discovery on a local network via the mDNS/DNS-SD protocol suite.'
   homepage 'https://avahi.org/'
-  version '0.9-rc1'
+  version '0.9-rc2'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/avahi/avahi.git'
@@ -11,10 +11,10 @@ class Avahi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c34e8d66c23cc56cffd351e1c760eb352b73900f1943fb135774f4cd5093699d',
-     armv7l: 'c34e8d66c23cc56cffd351e1c760eb352b73900f1943fb135774f4cd5093699d',
-       i686: 'b589977a70fdb9bb32887425ee855d50f369345f3b2520c9db3dd56bd32fc819',
-     x86_64: '0939b420dceeccf39b7afe71b562ef9f85087913b5191d43357b51e3e1a1d955'
+    aarch64: '625947fe51f690ee8887dc547b9b5694ba8f63302b25f0a5e2d054c818e64664',
+     armv7l: '625947fe51f690ee8887dc547b9b5694ba8f63302b25f0a5e2d054c818e64664',
+       i686: 'e5f4c444fd22a951a98bf0f16c26a7fd01eae72e85cbf3aaf243995f9496301b',
+     x86_64: '551bf5e0fcd1d3906055c745e75b9f627026fbe1a63b82483235b9186f3e6f68'
   })
 
   depends_on 'dbus' # R (needed to enable avahi-client)
