@@ -30,6 +30,7 @@ class Neovim < CMake
   depends_on 'unibilium' => :build
   depends_on 'utf8proc' # R
   depends_on 'xdg_base' # L
+  depends_on 'luajit_lpeg' # R
 
   no_lto
 
