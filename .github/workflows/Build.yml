@@ -77,7 +77,7 @@ jobs:
           echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
       - name: Get all changed package files
         id: changed-ruby-files
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@v46
         with:
           base_sha: master
           files: packages/*.rb
@@ -274,7 +274,7 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add -A
-            git commit -m "Add built packages for ${PLATFORM} to branch ${{ env.BRANCH }}." && git push -f
+            git commit -m "Build on ${PLATFORM} to branch ${{ env.BRANCH }}." && git push -f
             git log --oneline -10
           fi
   update-package-files:
@@ -418,7 +418,7 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add -A
-            git commit -m "Updated package files for ${PLATFORM} to branch ${{ env.BRANCH }}." && git push -f
+            git commit -m "Updating package files for ${PLATFORM} to branch ${{ env.BRANCH }}." && git push -f
             git log --oneline -10
           fi
   build-check:
@@ -439,13 +439,6 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.ref_name }}
-      - name: Get all changed manifest files
-        id: changed-manifest-files
-        uses: tj-actions/changed-files@v45
-        with:
-          base_sha: master
-          files: manifest/**
-          since_last_remote_commit: true
       - name: Rebase to master
         run: |
             git config user.name "${{ github.actor }}"
@@ -455,6 +448,34 @@ jobs:
             git reset --hard "origin/${{ env.BRANCH }}"
             git pull --rebase origin master && git push -f
             git log --oneline -10
+      - name: Get all changed manifest files
+        id: changed-manifest-files
+        uses: tj-actions/changed-files@v46
+        with:
+          base_sha: master
+          files: manifest/**
+          since_last_remote_commit: true
+      - name: Get all changed GitHub config files
+        id: changed-GitHub-config-files
+        uses: tj-actions/changed-files@v46
+        with:
+          base_sha: master
+          files: .github/**
+          since_last_remote_commit: true
+      - name: Get other changed files
+        id: other-changed-files
+        uses: tj-actions/changed-files@v46
+        with:
+          base_sha: master
+          files_yaml: |
+            packages:
+              - packages/*.rb
+            workflow:
+              - .github/**
+            crew:
+              - '!.github/**'
+              - 'packages/*.rb'
+          since_last_remote_commit: true
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
@@ -466,7 +487,9 @@ jobs:
       - name: Create Pull Request
         if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
+          CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-GitHub-config-files.outputs.all_changed_files }}
           CHANGED_MANIFEST_FILES: ${{ steps.changed-manifest-files.outputs.all_changed_files }}
+          CHANGED_OTHER_FILES: ${{ steps.other-changed-files.outputs.all_changed_files }}
           CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
@@ -476,30 +499,40 @@ jobs:
         run: |
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
-          echo -e "- This PR has built package updates using the Build.yml workflow, which was pointed to the ${{ env.BRANCH }} branch.\n" >> /tmp/pr.txt
-          echo -e "### Packages with Updated versions or Changed package files:" >> /tmp/pr.txt
-          for file in ${CHANGED_PACKAGES}
-            do
-            echo "- ${file}" >> /tmp/pr.txt
-          done
-          echo -e "##\nBuilds attempted for:" >> /tmp/pr.txt
-          [ -n "${x86_64_PACKAGES}" ] && echo -e "- [x] \`x86_64\`" >> /tmp/pr.txt
-          [ -n "${i686_PACKAGES}" ] && echo -e "- [x] \`i686\`" >> /tmp/pr.txt
-          [ -n "${armv7l_PACKAGES}" ] && echo -e "- [x] \`armv7l\`" >> /tmp/pr.txt
+          echo -e "- This PR was built using the Build.yml workflow, which was pointed to the ${{ env.BRANCH }} branch.\n" >> /tmp/pr.txt
+          if [[ "${CHANGED_GITHUB_CONFIG_FILES}" != "" ]]; then
+            echo -e "### Updated GitHub configuration files:" >> /tmp/pr.txt
+            for file in ${CHANGED_GITHUB_CONFIG_FILES}
+              do
+              echo "- ${file}" >> /tmp/pr.txt
+            done
+          fi
+          if [[ "${CHANGED_PACKAGES}" != "" ]]; then
+            echo -e "### Packages with Updated versions or Changed package files:" >> /tmp/pr.txt
+            for file in ${CHANGED_PACKAGES}
+              do
+              echo "- ${file}" >> /tmp/pr.txt
+            done
+            echo -e "##\nBuilds attempted for:" >> /tmp/pr.txt
+            [ -n "${x86_64_PACKAGES}" ] && echo -e "- [x] \`x86_64\`" >> /tmp/pr.txt
+            [ -n "${i686_PACKAGES}" ] && echo -e "- [x] \`i686\`" >> /tmp/pr.txt
+            [ -n "${armv7l_PACKAGES}" ] && echo -e "- [x] \`armv7l\`" >> /tmp/pr.txt
+          fi
           if [[ "${CHANGED_MANIFEST_FILES}" == "" ]]; then
             echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
+          fi
+          if [[ "${CHANGED_OTHER_FILES}" != "" ]]; then
+            echo -e "### Other changed files:" >> /tmp/pr.txt
+            for file in ${CHANGED_OTHER_FILES}
+              do
+              echo "- ${file}" >> /tmp/pr.txt
+            done
           fi
           echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/pr.txt
           echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ env.BRANCH }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           cat /tmp/pr.txt
-          PR_NUMBER=$(gh pr create --title "AutoBuild: ${{ env.BRANCH }} started at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          PR_NUMBER=$(gh pr create --reviewer chromebrew/active--title "Build: ${{ env.BRANCH }} started at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          gh pr merge "${PR_NUMBER}" --auto
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
-      - name: Trigger Unit Test Workflow & Add Reviewer Team
-        if: ${{ github.event.inputs.with_pr == 'true' }}
-        env:
-          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-        run: |
-          gh pr edit "${PR_NUMBER}" --add-reviewer chromebrew/active
-          gh pr merge "${PR_NUMBER}" --auto
