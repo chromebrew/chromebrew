@@ -169,8 +169,10 @@ jobs:
             github:
               - .github/**
             other:
+              - ./**
+              - '!manifest/**'
+              - '!packages/*.rb'
               - '!.github/**'
-              - 'packages/*.rb'
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
@@ -233,6 +235,7 @@ jobs:
           else
             gh pr edit -F /tmp/pr.txt
           fi
-          gh pr merge "${PR_NUMBER}" --auto
+          # Draft PRs can not be set to automerge.
+          gh pr merge "${PR_NUMBER}" --auto || true
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
