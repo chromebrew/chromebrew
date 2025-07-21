@@ -50,6 +50,7 @@ class Wine < Package
   depends_on 'vkd3d' => :build
   depends_on 'wayland' # R
   depends_on 'xdg_base' => :build
+  depends_on 'ffmpeg' # R
 
   no_lto
   print_source_bashrc
