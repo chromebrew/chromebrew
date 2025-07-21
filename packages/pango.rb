@@ -12,9 +12,9 @@ class Pango < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b64692edc6e16cfb9a17a86903f70aaab56a5f84daeaf2036b8d39bd22ce2a7e',
-     armv7l: 'b64692edc6e16cfb9a17a86903f70aaab56a5f84daeaf2036b8d39bd22ce2a7e',
-     x86_64: 'e3299a31c9d22966c556af96828143341882f6349af82489401304ecd3bed209'
+    aarch64: '8f88149956e9f63b02e2a7c1703252fd2e644a05b6a6bba8435b8ee9f7bcc7bd',
+     armv7l: '8f88149956e9f63b02e2a7c1703252fd2e644a05b6a6bba8435b8ee9f7bcc7bd',
+     x86_64: 'a161560799003988efa256a9cdb4b724967228de7c17ecc515ef89b058bc55dc'
   })
 
   depends_on 'cairo' # R
