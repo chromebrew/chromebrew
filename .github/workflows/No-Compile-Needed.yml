@@ -67,23 +67,24 @@ jobs:
           TIMESTAMP="$(date -u +%F-%H%Z)"
           export TIMESTAMP
           echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
-      - name: Get all changed package files
-        id: changed-ruby-files
-        uses: tj-actions/changed-files@v45
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v46
         with:
           base_sha: master
-          files: packages/*.rb
-          since_last_remote_commit: true
+          files_yaml: |
+            packages:
+              - packages/*.rb
       - name: Export variables to github context
         id: changed-packages
         run: |
-            if [[ -z "${{ steps.changed-ruby-files.outputs.all_changed_files }}" ]]; then
-              echo "Branch ${{ env.BRANCH }} has no changed files."
+            if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }}" ]]; then
+              echo "Branch ${{ env.BRANCH }} has no changed package files."
               exit 1
             fi
-            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         run: |
@@ -316,13 +317,6 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.ref_name }}
-      - name: Get all changed manifest files
-        id: changed-manifest-files
-        uses: tj-actions/changed-files@v45
-        with:
-          base_sha: master
-          files: manifest/**
-          since_last_remote_commit: true
       - name: Rebase to master
         run: |
             git config user.name "${{ github.actor }}"
@@ -332,6 +326,23 @@ jobs:
             git reset --hard "origin/${{ env.BRANCH }}"
             git pull --rebase origin master && git push -f
             git log --oneline -10
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v46
+        with:
+          base_sha: master
+          files_yaml: |
+            manifest:
+              - manifest/**
+            packages:
+              - packages/*.rb
+            github:
+              - .github/**
+            other:
+              - ./**
+              - '!manifest/**'
+              - '!packages/*.rb'
+              - '!.github/**'
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
@@ -342,9 +353,11 @@ jobs:
           revoke_token: true
       - name: Create Pull Request
         env:
-          CHANGED_MANIFEST_FILES: ${{ steps.changed-manifest-files.outputs.all_changed_files }}
+          CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-files.outputs.github_all_changed_files }}
+          CHANGED_MANIFEST_FILES: ${{ steps.changed-files.outputs.manifest_all_changed_files }}
+          CHANGED_OTHER_FILES: ${{ steps.changed-files.outputs.other_all_changed_files }}
           CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
-          GH_BACKUP_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
           i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
           x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
@@ -352,16 +365,32 @@ jobs:
         run: |
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
-          echo -e "- This PR has package updates using the No-Compile-Needed.yml workflow, which was pointed to the ${{ env.BRANCH }} branch.\n" >> /tmp/pr.txt
-          echo -e "Updated packages:" >> /tmp/pr.txt
-          for file in ${CHANGED_PACKAGES}
-            do
-            echo "- ${file}" >> /tmp/pr.txt
-          done
-          echo -e "##\nUpdates attempted for:" >> /tmp/pr.txt
-          [ -n "${x86_64_PACKAGES}" ] && echo -e "- [x] \`x86_64\`" >> /tmp/pr.txt
-          [ -n "${i686_PACKAGES}" ] && echo -e "- [x] \`i686\`" >> /tmp/pr.txt
-          [ -n "${armv7l_PACKAGES}" ] && echo -e "- [x] \`armv7l\`" >> /tmp/pr.txt
+          echo -e "- This PR was built using the No-Compile-Needed.yml workflow, which was pointed to the ${{ env.BRANCH }} branch.\n" >> /tmp/pr.txt
+          if [[ "${CHANGED_GITHUB_CONFIG_FILES}" != "" ]]; then
+            echo -e "### Updated GitHub configuration files:" >> /tmp/pr.txt
+            for file in ${CHANGED_GITHUB_CONFIG_FILES}
+              do
+              echo "- ${file}" >> /tmp/pr.txt
+            done
+          fi
+          if [[ "${CHANGED_PACKAGES}" != "" ]]; then
+            echo -e "### Packages with Updated versions or Changed package files:" >> /tmp/pr.txt
+            for file in ${CHANGED_PACKAGES}
+              do
+              echo "- ${file}" >> /tmp/pr.txt
+            done
+            echo -e "##\nBuilds attempted for:" >> /tmp/pr.txt
+            [ -n "${x86_64_PACKAGES}" ] && echo -e "- [x] \`x86_64\`" >> /tmp/pr.txt
+            [ -n "${i686_PACKAGES}" ] && echo -e "- [x] \`i686\`" >> /tmp/pr.txt
+            [ -n "${armv7l_PACKAGES}" ] && echo -e "- [x] \`armv7l\`" >> /tmp/pr.txt
+          fi
+          if [[ "${CHANGED_OTHER_FILES}" != "" ]]; then
+            echo -e "### Other changed files:" >> /tmp/pr.txt
+            for file in ${CHANGED_OTHER_FILES}
+              do
+              echo "- ${file}" >> /tmp/pr.txt
+            done
+          fi
           if [[ "${CHANGED_MANIFEST_FILES}" == "" ]]; then
             echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
           fi
@@ -369,15 +398,8 @@ jobs:
           echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ env.BRANCH }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           cat /tmp/pr.txt
-          gh auth status >/dev/null 2>&1 || export GH_TOKEN="${GH_BACKUP_TOKEN}"
-          PR_NUMBER=$(gh pr create --title "AutoUpdate: ${{ env.BRANCH }} started at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          PR_NUMBER=$(gh pr create --reviewer chromebrew/active--title "Build: ${{ env.BRANCH }} started at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          # Draft PRs can not be set to automerge.
+          gh pr merge "${PR_NUMBER}" --auto || true
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
-      - name: Trigger Unit Test Workflow & Add Reviewer Team
-        env:
-          GH_BACKUP_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
-        run: |
-          gh auth status >/dev/null 2>&1 || export GH_TOKEN="${GH_BACKUP_TOKEN}"
-          gh pr edit "${PR_NUMBER}" --add-reviewer chromebrew/active
-          gh pr merge "${PR_NUMBER}" --auto
