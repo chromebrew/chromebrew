@@ -508,15 +508,15 @@ jobs:
             [ -n "${i686_PACKAGES}" ] && echo -e "- [x] \`i686\`" >> /tmp/pr.txt
             [ -n "${armv7l_PACKAGES}" ] && echo -e "- [x] \`armv7l\`" >> /tmp/pr.txt
           fi
-          if [[ "${CHANGED_MANIFEST_FILES}" == "" ]]; then
-            echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
-          fi
           if [[ "${CHANGED_OTHER_FILES}" != "" ]]; then
             echo -e "### Other changed files:" >> /tmp/pr.txt
             for file in ${CHANGED_OTHER_FILES}
               do
               echo "- ${file}" >> /tmp/pr.txt
             done
+          fi
+          if [[ "${CHANGED_MANIFEST_FILES}" == "" ]]; then
+            echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
           fi
           echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/pr.txt
           echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ env.BRANCH }} crew update \\" >> /tmp/pr.txt
