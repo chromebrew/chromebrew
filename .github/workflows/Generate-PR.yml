@@ -225,7 +225,7 @@ jobs:
           cat /tmp/pr.txt
           PR_NUMBER=$(gh pr list -H ${CREW_BRANCH}| cut -f1)
           if [[ -z ${PR_NUMBER} ]]; then
-            PR_NUMBER=$(gh pr create --reviewer chromebrew/active --title "Changes from ${{ env.BRANCH }} at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+            PR_NUMBER=$(gh pr create --reviewer chromebrew/active --title "${{ env.BRANCH }} at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
             gh pr edit -F /tmp/pr.txt
           fi
