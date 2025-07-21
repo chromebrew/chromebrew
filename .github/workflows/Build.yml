@@ -83,7 +83,6 @@ jobs:
           files_yaml: |
             packages:
               - packages/*.rb
-          since_last_remote_commit: true
       - name: Export variables to github context
         id: changed-packages
         run: |
@@ -465,7 +464,6 @@ jobs:
             other:
               - '!.github/**'
               - 'packages/*.rb'
-          since_last_remote_commit: true
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
