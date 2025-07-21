@@ -17,6 +17,7 @@ class Wine < Package
   depends_on 'alsa_lib' # R
   depends_on 'desktop_file_utils' => :build
   depends_on 'eudev' # R
+  depends_on 'ffmpeg' # R
   depends_on 'fontconfig' => :build
   depends_on 'giflib' => :build
   depends_on 'glibc' # R
@@ -50,7 +51,6 @@ class Wine < Package
   depends_on 'vkd3d' => :build
   depends_on 'wayland' # R
   depends_on 'xdg_base' => :build
-  depends_on 'ffmpeg' # R
 
   no_lto
   print_source_bashrc
