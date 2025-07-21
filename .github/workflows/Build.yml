@@ -75,19 +75,24 @@ jobs:
           TIMESTAMP="$(date -u +%F-%H%Z)"
           export TIMESTAMP
           echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
-      - name: Get all changed package files
-        id: changed-ruby-files
+      - name: Get changed files
+        id: changed-files
         uses: tj-actions/changed-files@v46
         with:
           base_sha: master
-          files: packages/*.rb
-          since_last_remote_commit: true
+          files_yaml: |
+            packages:
+              - packages/*.rb
       - name: Export variables to github context
         id: changed-packages
         run: |
-            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+            if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }}" ]]; then
+              echo "Branch ${{ env.BRANCH }} has no changed package files."
+              exit 1
+            fi
+            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         run: |
@@ -448,34 +453,23 @@ jobs:
             git reset --hard "origin/${{ env.BRANCH }}"
             git pull --rebase origin master && git push -f
             git log --oneline -10
-      - name: Get all changed manifest files
-        id: changed-manifest-files
-        uses: tj-actions/changed-files@v46
-        with:
-          base_sha: master
-          files: manifest/**
-          since_last_remote_commit: true
-      - name: Get all changed GitHub config files
-        id: changed-GitHub-config-files
-        uses: tj-actions/changed-files@v46
-        with:
-          base_sha: master
-          files: .github/**
-          since_last_remote_commit: true
-      - name: Get other changed files
-        id: other-changed-files
+      - name: Get changed files
+        id: changed-files
         uses: tj-actions/changed-files@v46
         with:
           base_sha: master
           files_yaml: |
+            manifest:
+              - manifest/**
             packages:
               - packages/*.rb
-            workflow:
+            github:
               - .github/**
-            crew:
+            other:
+              - ./**
+              - '!manifest/**'
+              - '!packages/*.rb'
               - '!.github/**'
-              - 'packages/*.rb'
-          since_last_remote_commit: true
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
@@ -487,9 +481,9 @@ jobs:
       - name: Create Pull Request
         if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
-          CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-GitHub-config-files.outputs.all_changed_files }}
-          CHANGED_MANIFEST_FILES: ${{ steps.changed-manifest-files.outputs.all_changed_files }}
-          CHANGED_OTHER_FILES: ${{ steps.other-changed-files.outputs.all_changed_files }}
+          CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-files.outputs.github_all_changed_files }}
+          CHANGED_MANIFEST_FILES: ${{ steps.changed-files.outputs.manifest_all_changed_files }}
+          CHANGED_OTHER_FILES: ${{ steps.changed-files.outputs.other_all_changed_files }}
           CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
@@ -518,9 +512,6 @@ jobs:
             [ -n "${i686_PACKAGES}" ] && echo -e "- [x] \`i686\`" >> /tmp/pr.txt
             [ -n "${armv7l_PACKAGES}" ] && echo -e "- [x] \`armv7l\`" >> /tmp/pr.txt
           fi
-          if [[ "${CHANGED_MANIFEST_FILES}" == "" ]]; then
-            echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
-          fi
           if [[ "${CHANGED_OTHER_FILES}" != "" ]]; then
             echo -e "### Other changed files:" >> /tmp/pr.txt
             for file in ${CHANGED_OTHER_FILES}
@@ -528,11 +519,15 @@ jobs:
               echo "- ${file}" >> /tmp/pr.txt
             done
           fi
+          if [[ "${CHANGED_MANIFEST_FILES}" == "" ]]; then
+            echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
+          fi
           echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/pr.txt
           echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ env.BRANCH }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           cat /tmp/pr.txt
-          PR_NUMBER=$(gh pr create --reviewer chromebrew/active--title "Build: ${{ env.BRANCH }} started at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
-          gh pr merge "${PR_NUMBER}" --auto
+          PR_NUMBER=$(gh pr create --reviewer chromebrew/active --title "Build: ${{ env.BRANCH }} started at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          # Draft PRs can not be set to automerge.
+          gh pr merge "${PR_NUMBER}" --auto || true
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"

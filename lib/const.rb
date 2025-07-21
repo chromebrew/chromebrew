@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.63.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.63.2' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -228,7 +228,9 @@ when 'x86_64'
   CREW_ARCH_FLAGS ||= CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '' : CREW_ARCH_FLAGS_OVERRIDE
 end
 
-CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES ||= !ENV.fetch('CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES', false).empty? unless defined?(CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES)
+# Does the CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES env variable exist,
+# and if so, is it empty?
+CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES ||= ([true, false].include?(ENV.fetch('CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES', false)) ? false : !ENV.fetch('CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES').empty?) unless defined?(CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES)
 
 CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', '-flto=auto') unless defined?(CREW_LINKER_FLAGS)
 
