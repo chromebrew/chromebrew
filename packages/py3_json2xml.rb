@@ -10,10 +10,10 @@ class Py3_json2xml < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '664609c1412f80d0858dcd5fa08fdc2bd5c813b56a2c4236c3535330917bed48',
-     armv7l: '664609c1412f80d0858dcd5fa08fdc2bd5c813b56a2c4236c3535330917bed48',
-       i686: 'f47c84ccbf88a95a359cc6db0d9e5fcb468a748d9c553e3a36a838e92319450f',
-     x86_64: 'a4714394c11e1cdff8752e66176776f5ad244f7639c6225c7bacdc2d51ba68e9'
+    aarch64: '7f1ee4b0d2c2913bc1fb07bc32b3ec53d2705379819b85fb6804dbebf79b8014',
+     armv7l: '7f1ee4b0d2c2913bc1fb07bc32b3ec53d2705379819b85fb6804dbebf79b8014',
+       i686: '920519ae31e71c3263ab5c4113ca8addf19b96aeefff9815de0d340eda0e1deb',
+     x86_64: '9ce66dbc22432fe4431ed9b8a9e4ec447c1d431a1c8a4382d162b288795068aa'
   })
 
   depends_on 'py3_dicttoxml'
