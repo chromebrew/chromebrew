@@ -4,7 +4,7 @@ require 'buildsystems/meson'
 class Pango < Meson
   description 'Pango is a library for laying out and rendering of text, with an emphasis on internationalization.'
   homepage 'https://pango.gnome.org/'
-  version '1.56.4'
+  version '1.56.4-1'
   license 'LGPL-2+ and FTL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/pango.git'
