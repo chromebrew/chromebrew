@@ -70,19 +70,21 @@ jobs:
           TIMESTAMP="$(date -u +%F-%H%Z)"
           export TIMESTAMP
           echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
-      - name: Get all changed package files
-        id: changed-ruby-files
+      - name: Get changed files
+        id: changed-files
         uses: tj-actions/changed-files@v46
         with:
           base_sha: master
-          files: packages/*.rb
+          files_yaml: |
+            packages:
+              - packages/*.rb
           since_last_remote_commit: true
       - name: Export variables to github context
         id: changed-packages
         run: |
-            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-ruby-files.outputs.all_changed_files) into "foo bar"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-ruby-files.outputs.all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         run: |
@@ -155,31 +157,19 @@ jobs:
             git reset --hard "origin/${{ env.BRANCH }}"
             git pull --rebase origin master && git push -f
             git log --oneline -10
-      - name: Get all changed manifest files
-        id: changed-manifest-files
-        uses: tj-actions/changed-files@v46
-        with:
-          base_sha: master
-          files: manifest/**
-          since_last_remote_commit: true
-      - name: Get all changed GitHub config files
-        id: changed-GitHub-config-files
-        uses: tj-actions/changed-files@v46
-        with:
-          base_sha: master
-          files: .github/**
-          since_last_remote_commit: true
-      - name: Get other changed files
-        id: other-changed-files
+      - name: Get changed files
+        id: changed-files
         uses: tj-actions/changed-files@v46
         with:
           base_sha: master
           files_yaml: |
+            manifest:
+              - manifest/**
             packages:
               - packages/*.rb
-            workflow:
+            github:
               - .github/**
-            crew:
+            other:
               - '!.github/**'
               - 'packages/*.rb'
           since_last_remote_commit: true
@@ -194,9 +184,9 @@ jobs:
       - name: Create Pull Request
         if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
-          CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-GitHub-config-files.outputs.all_changed_files }}
-          CHANGED_MANIFEST_FILES: ${{ steps.changed-manifest-files.outputs.all_changed_files }}
-          CHANGED_OTHER_FILES: ${{ steps.other-changed-files.outputs.all_changed_files }}
+          CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-files.outputs.github_all_changed_files }}
+          CHANGED_MANIFEST_FILES: ${{ steps.changed-files.outputs.manifest_all_changed_files }}
+          CHANGED_OTHER_FILES: ${{ steps.changed-files.outputs.other_all_changed_files }}
           CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
           CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
