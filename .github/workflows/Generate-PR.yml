@@ -3,11 +3,6 @@ name: Generate PR
 on:
   workflow_dispatch:
     inputs:
-      with_pr:
-        description: "Create a PR from a branch."
-        required: false
-        type: boolean
-        default: 'true'
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
@@ -182,7 +177,6 @@ jobs:
           organization: chromebrew
           revoke_token: true
       - name: Create Pull Request
-        if: ${{ github.event.inputs.with_pr == 'true' }}
         env:
           CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-files.outputs.github_all_changed_files }}
           CHANGED_MANIFEST_FILES: ${{ steps.changed-files.outputs.manifest_all_changed_files }}
