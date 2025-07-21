@@ -86,6 +86,10 @@ jobs:
       - name: Export variables to github context
         id: changed-packages
         run: |
+            if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }}" ]]; then
+              echo "Branch ${{ env.BRANCH }} has no changed package files."
+              exit 1
+            fi
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
             echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
             echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
@@ -522,7 +526,7 @@ jobs:
           echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ env.BRANCH }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           cat /tmp/pr.txt
-          PR_NUMBER=$(gh pr create --reviewer chromebrew/active--title "Build: ${{ env.BRANCH }} started at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          PR_NUMBER=$(gh pr create --reviewer chromebrew/active --title "Build: ${{ env.BRANCH }} started at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           # Draft PRs can not be set to automerge.
           gh pr merge "${PR_NUMBER}" --auto || true
           echo "PR_NUMBER is ${PR_NUMBER}"
