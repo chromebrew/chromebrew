@@ -42,7 +42,7 @@ jobs:
         id: set-variables
         run: |
           export TIMESTAMP="$(date -u +%F-%H-%M)"
-          export UPDATE_BRANCH_NAME="updates-${TIMESTAMP}"
+          export UPDATE_BRANCH_NAME="automatic-updates-${TIMESTAMP}"
           echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
           echo "UPDATE_BRANCH_NAME=${UPDATE_BRANCH_NAME}" >> "$GITHUB_OUTPUT"
       - name: Git setup
