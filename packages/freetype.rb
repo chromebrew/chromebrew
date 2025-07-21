@@ -12,9 +12,9 @@ class Freetype < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6ba402f56625c658a74924fffbbe29df25e1b284855f5aaaab5de44590d99ed9',
-     armv7l: '6ba402f56625c658a74924fffbbe29df25e1b284855f5aaaab5de44590d99ed9',
-     x86_64: '7ec4b3693b46646e123728e0e199d1e793e4fdd92e93e8348bfaf10a898b6084'
+    aarch64: '126719a3825fe827bf771905be58e987c1f1c3df3b1f8beb1c8123965a59fb88',
+     armv7l: '126719a3825fe827bf771905be58e987c1f1c3df3b1f8beb1c8123965a59fb88',
+     x86_64: 'd8752eb82047e2324a2b5c430577ab3fa6f54951106bcac11f925df6e46cbaba'
   })
 
   depends_on 'brotli' # R
