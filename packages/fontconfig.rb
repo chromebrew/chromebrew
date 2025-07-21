@@ -4,7 +4,7 @@ require 'buildsystems/meson'
 class Fontconfig < Meson
   description 'Fontconfig is a library for configuring and customizing font access.'
   homepage 'https://www.freedesktop.org/wiki/Software/fontconfig/'
-  version '2.17.1'
+  version '2.17.1-1'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/fontconfig/fontconfig.git'
