@@ -3,20 +3,21 @@ require 'package'
 class Wine < Package
   description 'Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Microsoft Windows applications.'
   homepage 'https://www.winehq.org/'
-  version '9.0'
+  version '10.12'
   license 'LGPL-2.1'
   compatibility 'x86_64'
-  source_url 'https://dl.winehq.org/wine/source/9.0/wine-9.0.tar.xz'
+  source_url "https://dl.winehq.org/wine/source/#{"#{version.split('.').first}.x"}/wine-#{version}.tar.xz"
   source_sha256 '7cfd090a5395f5b76d95bb5defac8a312c8de4c070c1163b8b58da38330ca6ee'
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '1ea5bc2c10eb8e696feac04e6f238470831743a5d744bf7a5ca53152a4f1fcfc'
+     x86_64: 'da92ad23d245f23729f3cfdeb33685ba4da59f62ece34836e0144557c2329851'
   })
 
   depends_on 'alsa_lib' # R
   depends_on 'desktop_file_utils' => :build
   depends_on 'eudev' # R
+  depends_on 'ffmpeg' # R
   depends_on 'fontconfig' => :build
   depends_on 'giflib' => :build
   depends_on 'glibc' # R
