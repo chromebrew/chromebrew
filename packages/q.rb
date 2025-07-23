@@ -13,5 +13,9 @@ class Q < Python
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
+  binary_sha256({
+     x86_64: '99544f65ac97a48e5f7e4c25eb26113db8301b25a5bbdd41d2fbfe52a5bdcd26'
+  })
+
   depends_on 'python3'
 end

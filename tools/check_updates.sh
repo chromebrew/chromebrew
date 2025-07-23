@@ -85,7 +85,7 @@ for p in $ps; do
       gh_repo=${relu%/tags}
       if [[ $u == *"/releases"* ]]; then
         ver=$(gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R ${gh_repo} --json tagName -q '.[] | .tagName')
-        [[ -z "$ver" ]] && echo "- ${gh_repo} does not use releases"
+        [[ -z "$ver" ]] && echo "- https://github.com/${gh_repo} does not use releases."
       fi
       if [[ $u == *"/tags"* ]] || [[ -z "$ver" ]]; then
         ver=$(git ls-remote --tags https://github.com/${gh_repo} | cut -d'/' -f3 | grep -v "\^{}" | tail -n 1)
