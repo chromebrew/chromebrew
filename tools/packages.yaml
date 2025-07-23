@@ -6355,6 +6355,11 @@ url: https://github.com/st3w/neo/releases
 activity: low
 ---
 kind: url
+name: neo4j
+url: https://neo4j.com/download/
+activity: medium
+---
+kind: url
 name: neofetch
 url: https://github.com/dylanaraps/neofetch/releases
 activity: medium
