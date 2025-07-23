@@ -60,7 +60,12 @@ for p in $ps; do
     ver=
     nu=
     u=$(grep -1 "^name: ${p}$" packages.yaml | tail -1 | cut -d' ' -f2)
-    version=$(grep "^  @_ver" ../packages/"$p.rb" 2>/dev/null | cut -d= -f2 | xargs)
+    if [[ -f ../packages/"$p.rb" ]]; then
+      version=$(grep "^  @_ver" ../packages/"$p.rb" 2>/dev/null | cut -d= -f2 | xargs)
+    else
+      echo "- ../packages/$p.rb is missing."
+      version=missing
+    fi
     [ -z "$version" ] && version=$(grep "^  version" ../packages/"$p.rb" | cut -d"'" -f2)
     cp=$(grep "^${p}$" core_packages.txt)
     test "$cp" && star="*"
@@ -85,13 +90,21 @@ for p in $ps; do
       gh_repo=${relu%/tags}
       if [[ $u == *"/releases"* ]]; then
         ver=$(gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R ${gh_repo} --json tagName -q '.[] | .tagName')
-        [[ -z "$ver" ]] && echo "- https://github.com/${gh_repo} does not use releases."
+        if [[ $? == 0 ]]; then  
+          [[ -z "$ver" ]] && echo "- https://github.com/${gh_repo} does not use releases."
+        else
+          echo "- https://github.com/${gh_repo} does not exist."
+        fi
       fi
       if [[ $u == *"/tags"* ]] || [[ -z "$ver" ]]; then
+        # This is empty if there is text in the git tag.
         ver=$(git -c 'versionsort.suffix=-' \
     ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/${gh_repo} '*.*.*' \
     | tail --lines=1 \
     | cut --delimiter='/' --fields=3)
+      # This captures git tags with text if there is no exclusively
+      # numeric version tag.
+      [[ -z "$ver" ]] && ver=$(git ls-remote --tags https://github.com/${gh_repo} | cut -d'/' -f3 | grep -v "\^{}" | tail -n 1)
       fi
       nu=${u/releases/archive}
       [[ "$version" != "${ver#v}" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | ${ver#v}"

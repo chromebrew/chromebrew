@@ -2511,8 +2511,8 @@ activity: low
 ---
 kind: url
 name: git
-url: https://github.com/git/git/releases
-activity: high
+url: https://github.com/git/git/tags
+activity: medium
 ---
 kind: url
 name: git_lfs
