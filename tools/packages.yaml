@@ -715,7 +715,7 @@ url: https://github.com/aristocratos/btop/releases
 activity: low
 ---
 kind: url
-name: btrfsprogs
+name: btrfs_progs
 url: https://github.com/kdave/btrfs-progs/releases
 activity: medium
 ---
@@ -918,11 +918,6 @@ kind: url
 name: chromaprint
 url: https://github.com/acoustid/chromaprint/releases
 activity: none
----
-kind: url
-name: chrome
-url: https://www.google.com/chrome
-activity: high
 ---
 kind: url
 name: chromebrew_scripts
@@ -2873,6 +2868,11 @@ kind: url
 name: gobject_introspection
 url: https://ftp.gnome.org/pub/gnome/sources/gobject-introspection/
 activity: medium
+---
+kind: url
+name: google_chrome
+url: https://www.google.com/chrome
+activity: high
 ---
 kind: url
 name: google_webdesigner
