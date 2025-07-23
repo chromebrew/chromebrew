@@ -1,24 +1,23 @@
 # Adapted from Arch Linux unibilium PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/unibilium/trunk/PKGBUILD
 
-require 'buildsystems/cmake'
+require 'buildsystems/autotools'
 
-class Unibilium < CMake
+class Unibilium < Autotools
   description 'A terminfo parsing library'
   homepage 'https://github.com/neovim/unibilium'
-  @_ver = '2.1.1'
-  version "#{@_ver}-1"
+  version '2.1.2'
   license 'LGPL3'
   compatibility 'all'
   source_url 'https://github.com/neovim/unibilium.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3ba3681184d593175f8956644605a72cbc392ba84b95b23c6d49947241e1e292',
-     armv7l: '3ba3681184d593175f8956644605a72cbc392ba84b95b23c6d49947241e1e292',
-       i686: '19c2e89a17071e6e11d0945811db43cc621fd37c3e60e4fdb34d81f98fcd7ab1',
-     x86_64: '54249968af3a494f655b4ba09f79b6442bd2942ee7806efd088652e7e317b14c'
+    aarch64: '7f068000fbd0b9d2b85c3aece98dfed0af7d023ab9b32cb7e2d9c67ef0c9afce',
+     armv7l: '7f068000fbd0b9d2b85c3aece98dfed0af7d023ab9b32cb7e2d9c67ef0c9afce',
+       i686: '176f96d97ef20021f20cddcef7a8700233b4e2ac4a9f76305ee71d104a96d154',
+     x86_64: '624efa8c596f133e37ba948023c99ac55204aac5edc019cfbf197d27e4e6f8be'
   })
 
   depends_on 'glibc'

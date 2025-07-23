@@ -6,22 +6,23 @@ require 'package'
 class Luajit_mpack < Package
   description 'libmpack lua binding'
   homepage 'https://github.com/libmpack/libmpack-lua'
-  version '1.0.9'
+  version '1.0.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/libmpack/libmpack-lua/archive/1.0.9.tar.gz'
+  source_url "https://github.com/libmpack/libmpack-lua/archive/#{version}.tar.gz"
   source_sha256 'e94d5cf95d7479dca00ff23755fe05a440f11f9d203635e862ad8842de95f40a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1be27ef45bfaf01f91a0be5ff9a4515224176a0c480bc1b475b4ab9e2519f46b',
-     armv7l: '1be27ef45bfaf01f91a0be5ff9a4515224176a0c480bc1b475b4ab9e2519f46b',
-       i686: '86fb45f1d5eb2ed5edb9bd291bf05f4d58730007e6adb067d544a26feb01bf3e',
-     x86_64: '4f23373e477afd0e99dc27cce8bbb8340478f98b1a96b30cdc43740523d11422'
+    aarch64: '8b6f8218fd08f132ac9e61263385568137ca84c5d777df66234bf5b5d48844f6',
+     armv7l: '8b6f8218fd08f132ac9e61263385568137ca84c5d777df66234bf5b5d48844f6',
+       i686: 'c9edc78efa3a1fdc7381757f005c00efa526b9824ee77f22ab672d5655b8207b',
+     x86_64: '1ec31e6bf82f6268f31527e35ebed117731489d05356f0ab3bedb091e2bd9028'
   })
 
-  depends_on 'libmpack'
-  depends_on 'luajit' => :build
+  depends_on 'glibc' # R
+  depends_on 'libmpack' # R
+  depends_on 'luajit' # R
 
   def self.build
     system "#{CREW_ENV_OPTIONS} make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} LUA=#{CREW_PREFIX}/bin/luajit USE_SYSTEM_LUA=yes LUA_INCLUDE=`pkg-config --cflags luajit`"

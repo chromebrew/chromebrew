@@ -1,11 +1,11 @@
 /usr/local/bin/virtualenv
-/usr/local/lib/python3.13/site-packages/virtualenv-20.31.2.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/virtualenv-20.31.2.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/virtualenv-20.31.2.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/virtualenv-20.31.2.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/virtualenv-20.31.2.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/virtualenv-20.31.2.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/virtualenv-20.31.2.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/virtualenv-20.32.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/virtualenv-20.32.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/virtualenv-20.32.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/virtualenv-20.32.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/virtualenv-20.32.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/virtualenv-20.32.0.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/virtualenv-20.32.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.13/site-packages/virtualenv/__init__.py
 /usr/local/lib/python3.13/site-packages/virtualenv/__main__.py
 /usr/local/lib/python3.13/site-packages/virtualenv/__pycache__/__init__.cpython-313.pyc
@@ -180,7 +180,7 @@
 /usr/local/lib/python3.13/site-packages/virtualenv/seed/wheels/embed/pip-25.0.1-py3-none-any.whl
 /usr/local/lib/python3.13/site-packages/virtualenv/seed/wheels/embed/pip-25.1.1-py3-none-any.whl
 /usr/local/lib/python3.13/site-packages/virtualenv/seed/wheels/embed/setuptools-75.3.2-py3-none-any.whl
-/usr/local/lib/python3.13/site-packages/virtualenv/seed/wheels/embed/setuptools-80.3.1-py3-none-any.whl
+/usr/local/lib/python3.13/site-packages/virtualenv/seed/wheels/embed/setuptools-80.9.0-py3-none-any.whl
 /usr/local/lib/python3.13/site-packages/virtualenv/seed/wheels/embed/wheel-0.45.1-py3-none-any.whl
 /usr/local/lib/python3.13/site-packages/virtualenv/seed/wheels/periodic_update.py
 /usr/local/lib/python3.13/site-packages/virtualenv/seed/wheels/util.py

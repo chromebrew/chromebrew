@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.62.6' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.63.2' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -126,7 +126,7 @@ CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless d
 CREW_NO_GIT             ||= ENV.fetch('CREW_NO_GIT', false) unless defined?(CREW_NO_GIT)
 CREW_UNATTENDED         ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
 
-CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt crew_preload glibc openssl ruby python3 perl] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
+CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt crew_preload glibc openssl ruby python3 perl icu4c sommelier] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
 
 CREW_DEBUG   ||= ARGV.intersect?(%w[-D --debug]) unless defined?(CREW_DEBUG)
 CREW_FORCE   ||= ARGV.intersect?(%w[-f --force]) unless defined?(CREW_FORCE)
@@ -228,9 +228,13 @@ when 'x86_64'
   CREW_ARCH_FLAGS ||= CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '' : CREW_ARCH_FLAGS_OVERRIDE
 end
 
+# Does the CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES env variable exist,
+# and if so, is it empty?
+CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES ||= ([true, false].include?(ENV.fetch('CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES', false)) ? false : !ENV.fetch('CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES').empty?) unless defined?(CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES)
+
 CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', '-flto=auto') unless defined?(CREW_LINKER_FLAGS)
 
-CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} #{CREW_LINKER_FLAGS}"
+CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC -fuse-ld=mold #{CREW_ARCH_FLAGS} #{CREW_LINKER_FLAGS}"
 CREW_COMMON_FLAGS         ||= "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS ||= "#{CREW_CORE_FLAGS} -fno-lto"
 CREW_FNO_LTO_LDFLAGS      ||= '-fno-lto'
@@ -244,7 +248,7 @@ CREW_ENV_OPTIONS_HASH ||=
       'CXXFLAGS'        => CREW_COMMON_FLAGS,
       'FCFLAGS'         => CREW_COMMON_FLAGS,
       'FFLAGS'          => CREW_COMMON_FLAGS,
-      'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+      'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? '' : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
       'LDFLAGS'         => CREW_LINKER_FLAGS
     }
   end
@@ -257,7 +261,7 @@ CREW_ENV_FNO_LTO_OPTIONS_HASH ||= {
   'CXXFLAGS'        => CREW_COMMON_FNO_LTO_FLAGS,
   'FCFLAGS'         => CREW_COMMON_FNO_LTO_FLAGS,
   'FFLAGS'          => CREW_COMMON_FNO_LTO_FLAGS,
-  'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
+  'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? '' : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
   'LDFLAGS'         => CREW_FNO_LTO_LDFLAGS
 }
 # parse from hash to shell readable string
@@ -380,6 +384,7 @@ CREW_DOCOPT ||= <<~DOCOPT
     crew search [options] [-v|--verbose] <name> ...
     crew sysinfo [options] [-v|--verbose]
     crew update [options] [-v|--verbose]
+    crew update_package_file [options] [-v|--verbose] [<name> ...]
     crew upgrade [options] [-f|--force] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-f|--force] [-v|--verbose] [<name> ...]
     crew upstream [options] [-v|--verbose] [<name> ...]

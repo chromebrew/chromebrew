@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 2.8 (for Chromebrew)
+# build_updated_packages version 3.0 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -14,6 +14,7 @@
 # from another container for the same cloned repo.
 
 require 'English'
+require 'fileutils'
 require_relative '../lib/color'
 require_relative '../lib/const'
 require_relative '../lib/package'
@@ -30,6 +31,8 @@ CHECK_ALL_PYTHON = ARGV.include?('--check-all-python')
 CHECK_ALL_RUBY = ARGV.include?('--check-all-ruby')
 require_gem 'highline'
 require_gem 'timeout'
+
+build = {}
 
 excluded_packages = Set[
   { pkg_name: 'glibc_fallthrough', comments: 'Stub package.' },
@@ -50,33 +53,37 @@ def self.check_build_uploads(architectures_to_check = nil, name = nil)
   return [] if @pkg_obj.is_fake?
   architectures_to_check.delete('aarch64')
   architectures_to_check = %w[x86_64 armv7l i686] if (architectures_to_check & %w[x86_64 armv7l i686]).nil?
-  binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
-  builds_needed = architectures_to_check.dup
-  architectures_to_check.each do |arch|
+  remote_binary = { armv7l: nil, i686: nil, x86_64: nil }
+  remote_binary.keys.each do |arch|
     arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@pkg_obj.version}_#{arch}/#{name}-#{@pkg_obj.version}-chromeos-#{arch}.#{@pkg_obj.binary_compression}"
     puts "Checking: curl -sI #{arch_specific_url}" if CREW_VERBOSE
-    if `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
-      # Check build hashes if we are in the right architecture.
-      if arch == ARCH
-        binary_sha256_hash[arch.to_sym] = @pkg_obj.binary_sha256[arch.to_sym]
-        puts "Package hash is #{binary_sha256_hash[arch.to_sym]}" if CREW_VERBOSE
-        @remote_hash = `curl -Ls #{arch_specific_url} | sha256sum -`.lines.first.split[0]
-        puts "Remote hash is #{@remote_hash}" if CREW_VERBOSE
-        unless @remote_hash == binary_sha256_hash[arch.to_sym]
-          puts "#{arch}/#{name}: Adjusting sha256sum in package file to the remote binary sha256sum".lightpurple
-          puts "#{binary_sha256_hash[arch.to_sym]} =>\n#{@remote_hash}".blue
-          system "sed 's,#{binary_sha256_hash[arch.to_sym]},#{@remote_hash},g;w packages/#{name}.rb.new' packages/#{name}.rb && mv packages/#{name}.rb.new packages/#{name}.rb"
-          # Do a force install to make sure the package hashes are ok.
-          puts "Checking install of #{name} to confirm binary hashes are correct.".lightpurple
-          system "yes | crew install -f #{name} ; crew remove #{name}", exception: false
-        end
-      end
-      builds_needed.delete(arch)
-      puts "#{arch_specific_url} found!" if CREW_VERBOSE
-    end
+    remote_binary[arch.to_sym] = `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
+    puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && CREW_VERBOSE
+  end
+  system 'crew update_package_file #[name}' unless remote_binary.values.all?(nil)
+
+  builds_needed = architectures_to_check.dup
+  architectures_to_check.each do |arch|
+    builds_needed.delete(arch) if remote_binary[arch.to_sym]
     puts "builds_needed for #{name} is now #{builds_needed}" if CREW_VERBOSE
   end
   return builds_needed
+end
+
+def update_hashes(name = nil)
+  unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
+    remote_binary = { armv7l: nil, i686: nil, x86_64: nil }
+    remote_binary.keys.each do |arch|
+      arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@pkg_obj.version}_#{arch}/#{name}-#{@pkg_obj.version}-chromeos-#{arch}.#{@pkg_obj.binary_compression}"
+      puts "Checking: curl -sI #{arch_specific_url}" if CREW_VERBOSE
+      remote_binary[arch.to_sym] = `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
+      puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && CREW_VERBOSE
+    end
+    # Add build hashes.
+    system "crew update_package_file #{name}" unless remote_binary.values.all?(nil)
+    # Add manifests if we are in the right architecture.
+    FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist" if system("yes | crew install #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
+  end
 end
 
 if SKIP_UPDATE_CHECKS
@@ -138,13 +145,15 @@ updated_packages.each do |pkg|
     builds_needed = check_build_uploads(architectures_to_check, name)
     if builds_needed.empty?
       puts "No builds are needed for #{name} #{@pkg_obj.version}.".lightgreen
+      update_hashes(name)
       next
     else
       puts "#{name.capitalize} #{@pkg_obj.version} needs builds uploaded for: #{builds_needed.join(' ')}".lightblue
 
       if builds_needed.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{@pkg_obj.version}-chromeos-#{ARCH}.#{@pkg_obj.binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@pkg_obj.version}")
         system "yes | nice -n 20 crew build -f #{pkg}"
-        unless $CHILD_STATUS.success?
+        build[name.to_sym] = $CHILD_STATUS.success?
+        unless build[name.to_sym]
           if CONTINUE_AFTER_FAILED_BUILDS
             puts "#{pkg} build failed!".lightred
             next
@@ -167,7 +176,8 @@ updated_packages.each do |pkg|
       puts "Are builds still needed for #{name}?".orange
       builds_still_needed = check_build_uploads(architectures_to_check, name)
       puts "Built and Uploaded: #{name} for #{ARCH}" if builds_needed != builds_still_needed
-      next if builds_still_needed.empty? && system("grep -q binary_sha256 #{pkg}")
+      # next if builds_still_needed.empty? && system("grep -q binary_sha256 #{pkg}")
+      next if builds_still_needed.empty?
 
       puts "#{name.capitalize} #{@pkg_obj.version} still needs builds uploaded for: #{builds_still_needed.join(' ')}".lightblue unless builds_still_needed.empty? && system("grep -q binary_sha256 #{pkg}")
       puts "#{name.capitalize} #{@pkg_obj.version} still needs build sha256 hashes added.".lightblue unless system("grep -q binary_sha256 #{pkg}")

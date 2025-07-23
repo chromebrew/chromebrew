@@ -5,13 +5,8 @@
 /usr/local/include/librsvg-2.0/librsvg/rsvg-version.h
 /usr/local/include/librsvg-2.0/librsvg/rsvg.h
 /usr/local/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader_svg.so
-/usr/local/lib/girepository-1.0/Rsvg-2.0.typelib
 /usr/local/lib/librsvg-2.so
 /usr/local/lib/librsvg-2.so.2
-/usr/local/lib/librsvg-2.so.2.59.2
+/usr/local/lib/librsvg-2.so.2.60.0
 /usr/local/lib/pkgconfig/librsvg-2.0.pc
-/usr/local/share/gir-1.0/Rsvg-2.0.gir
-/usr/local/share/man/man1/rsvg-convert.1.zst
 /usr/local/share/thumbnailers/librsvg.thumbnailer
-/usr/local/share/vala/vapi/librsvg-2.0.deps
-/usr/local/share/vala/vapi/librsvg-2.0.vapi

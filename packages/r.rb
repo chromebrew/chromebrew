@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class R < Autotools
   description 'R is a free software environment for statistical computing and graphics.'
   homepage 'https://www.r-project.org/'
-  version "4.4.3-#{CREW_ICU_VER}"
+  version "4.5.1-#{CREW_ICU_VER}"
   license 'GPL-2 or GPL-3 and LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://cran.r-project.org/src/base/R-4/R-#{version.split('-')[0]}.tar.xz"
@@ -11,9 +11,9 @@ class R < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4c5324397f42b424d85ece0fc0ef3aecd0a87c9752038dd2efcafeebcb4a9755',
-     armv7l: '4c5324397f42b424d85ece0fc0ef3aecd0a87c9752038dd2efcafeebcb4a9755',
-     x86_64: '89d6dce7aca4dd63487618136451dad92a5df3b103b248d21a455298aae07b1b'
+    aarch64: 'be5b9c300e23c4477b0d992bfbd2760086547dcac525b0c708c349650a54ae54',
+     armv7l: 'be5b9c300e23c4477b0d992bfbd2760086547dcac525b0c708c349650a54ae54',
+     x86_64: 'efd9537804839b891a5c4b93f0e1214f26542bbf46b522725cefa46702bf904c'
   })
 
   depends_on 'bzip2' # R
@@ -25,7 +25,6 @@ class R < Autotools
   depends_on 'lapack' # R
   depends_on 'libdeflate' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libsm' # R
   depends_on 'libtiff' # R
@@ -41,6 +40,7 @@ class R < Autotools
   depends_on 'xdg_utils' => :build
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
   autotools_configure_options '--enable-R-shlib \
            --with-x'

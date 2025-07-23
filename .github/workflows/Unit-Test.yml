@@ -9,6 +9,8 @@ on:
     types:
       - opened
       - ready_for_review
+      - reopened
+      - synchronize
   workflow_dispatch:
   # workflow_run:
   #  workflows: [Build]
@@ -64,7 +66,7 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
       - name: Get non-pkg changed files
         id: non-pkg-changed-files
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@v46
         with:
           files_ignore: |
             .github/**
@@ -74,7 +76,7 @@ jobs:
             tools/repology.json
       - name: Get all changed package files
         id: changed-ruby-files
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@v46
         with:
           files: packages/*.rb
       - name: Export variables to github context

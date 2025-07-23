@@ -1,46 +1,35 @@
 # Adapted from Arch Linux libluv PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/libluv/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/cmake'
 
-class Libluv < Package
+class Libluv < CMake
   description 'Bare libuv bindings for lua'
   homepage 'https://github.com/luvit/luv'
-  version '1.44.2'
+  version '1.51.0-1'
   license 'apache'
   compatibility 'all'
   source_url 'https://github.com/luvit/luv.git'
-  git_hashtag '1.44.2-0'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c0f550aad24be7f0845fbb730a70dad758a624deaf7e4bf8d1b4446cd4e3fcd1',
-     armv7l: 'c0f550aad24be7f0845fbb730a70dad758a624deaf7e4bf8d1b4446cd4e3fcd1',
-       i686: '3622475bd90dbc8942dd9b4a9249e2d0e7e1a03b837b8a983d7cec309f344742',
-     x86_64: 'd3d7f404503c1bda84471ff8ae47c10312f89940bed310d220fb8dbdb7fb2fca'
+    aarch64: '0121098ecef7a9db78e45aa493ac90a3ca4ee700b14edd4d4428bc18bf5fa607',
+     armv7l: '0121098ecef7a9db78e45aa493ac90a3ca4ee700b14edd4d4428bc18bf5fa607',
+       i686: '33d1eef042ad5f8ab62a22cc62dccdced090c4f685ebe229768726da329bde17',
+     x86_64: '0b5162c9d446e3593fb97441066ec8742ad3e434ad45a22b1d912fb01dae9448'
   })
 
-  depends_on 'luajit'
+  depends_on 'glibc' # R
   depends_on 'libuv'
+  depends_on 'luajit'
 
   def self.patch
     system "sed -i 's,CMAKE_INSTALL_PREFIX}/lib,CMAKE_INSTALL_PREFIX}/#{ARCH_LIB},g' CMakeLists.txt"
   end
 
-  def self.build
-    FileUtils.mkdir('builddir')
-    Dir.chdir('builddir') do
-      system "cmake #{CREW_CMAKE_OPTIONS} \
-        -DBUILD_SHARED_LIBS=ON \
+  cmake_options '-DBUILD_SHARED_LIBS=ON \
         -DWITH_SHARED_LIBUV=ON  \
         -DLUA_BUILD_TYPE=System \
-        -DBUILD_MODULE=OFF \
-        ../ -G Ninja"
-    end
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+        -DBUILD_MODULE=OFF'
 end
