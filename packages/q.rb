@@ -14,7 +14,7 @@ class Q < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '99544f65ac97a48e5f7e4c25eb26113db8301b25a5bbdd41d2fbfe52a5bdcd26'
+     x86_64: '126b2ae1d134132be5e94963e286dc14c33c141bc68892614283f853851aa064'
   })
 
   depends_on 'python3'
