@@ -31,6 +31,7 @@ elfutils
 eudev
 expat
 filecmd
+findutils
 flex
 gawk
 gcc_lib
@@ -44,6 +45,7 @@ glibc_lib
 gmp
 gnu_time
 gnutls
+grep
 groff
 gtk_doc
 help2man
@@ -53,6 +55,7 @@ isl
 itstool
 jansson
 jemalloc
+jq
 jsoncpp
 krb5
 less
@@ -87,6 +90,7 @@ libunbound
 libunistring
 libuv
 libversion
+libxcrypt
 libxml2
 libxslt
 libyaml
@@ -266,6 +270,7 @@ shared_mime_info
 shellcheck
 slang
 sqlite
+tar
 texinfo
 trousers
 uchardet
@@ -273,7 +278,9 @@ unzip
 upx
 util_linux
 util_macros
+uutils_coreutils
 valgrind
+which
 xdg_base
 xmlcatmgr
 xxhash
