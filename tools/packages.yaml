@@ -1217,7 +1217,7 @@ activity: low
 kind: url
 name: cros_resize
 url: https://github.com/ethanmad/chromeos-resize/releases
-activity: low
+activity: none
 ---
 kind: url
 name: crossmobile
@@ -3396,7 +3396,7 @@ activity: low
 ---
 kind: url
 name: imagemagick6
-url: https://github.com/ImageMagick/ImageMagick6/releases
+url: https://github.com/ImageMagick/ImageMagick6/tags
 activity: high
 ---
 kind: url
