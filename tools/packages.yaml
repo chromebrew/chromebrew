@@ -1200,7 +1200,7 @@ url: https://chromium.googlesource.com/chromiumos/third_party/adhd
 activity: medium
 ---
 kind: url
-name: crew-mvdir
+name: crew_mvdir
 url: https://github.com/chromebrew/crew-mvdir/releases
 activity: medium
 ---
