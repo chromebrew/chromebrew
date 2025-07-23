@@ -456,7 +456,7 @@ activity: low
 ---
 kind: url
 name: aws_shell
-url: https://github.com/awslabs/aws-shell/releases
+url: https://github.com/awslabs/aws-shell/tags
 activity: low
 ---
 kind: url

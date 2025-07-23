@@ -88,7 +88,10 @@ for p in $ps; do
         [[ -z "$ver" ]] && echo "- https://github.com/${gh_repo} does not use releases."
       fi
       if [[ $u == *"/tags"* ]] || [[ -z "$ver" ]]; then
-        ver=$(git ls-remote --tags https://github.com/${gh_repo} | cut -d'/' -f3 | grep -v "\^{}" | tail -n 1)
+        ver=$(git -c 'versionsort.suffix=-' \
+    ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/${gh_repo} '*.*.*' \
+    | tail --lines=1 \
+    | cut --delimiter='/' --fields=3)
       fi
       nu=${u/releases/archive}
       [[ "$version" != "${ver#v}" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | ${ver#v}"
