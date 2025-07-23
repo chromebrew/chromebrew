@@ -340,11 +340,6 @@ url: https://ftpmirror.gnu.org/aspell/dict/es/
 activity: none
 ---
 kind: url
-name: at_spi2_atk
-url: https://github.com/GNOME/at-spi2-atk/releases
-activity: medium
----
-kind: url
 name: at_spi2_core
 url: https://github.com/GNOME/at-spi2-core/releases
 activity: medium
