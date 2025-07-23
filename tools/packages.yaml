@@ -76,7 +76,7 @@ activity: medium
 ---
 kind: url
 name: ag
-url: https://github.com/ggreer/the_silver_searcher/releases
+url: https://github.com/ggreer/the_silver_searcher/tags
 activity: medium
 ---
 kind: url
@@ -131,17 +131,17 @@ activity: none
 ---
 kind: url
 name: alsa_lib
-url: https://github.com/alsa-project/alsa-lib/releases
+url: https://github.com/alsa-project/alsa-lib/tags
 activity: medium
 ---
 kind: url
 name: alsa_tools
-url: https://github.com/alsa-project/alsa-tools/releases
+url: https://github.com/alsa-project/alsa-tools/tags
 activity: medium
 ---
 kind: url
 name: alsa_utils
-url: https://github.com/alsa-project/alsa-utils/releases
+url: https://github.com/alsa-project/alsa-utils/tags
 activity: medium
 ---
 kind: url
@@ -196,7 +196,7 @@ activity: low
 ---
 kind: url
 name: apktool
-url: https://github.com/iBotPeaches/Apktool/releases/
+url: https://github.com/iBotPeaches/Apktool/releases
 activity: low
 ---
 kind: url
@@ -316,7 +316,7 @@ activity: medium
 ---
 kind: url
 name: aspell
-url: https://ftpmirror.gnu.org/aspell
+url: https://github.com/GNUAspell/aspell/releases
 activity: medium
 ---
 kind: url
@@ -361,7 +361,7 @@ activity: medium
 ---
 kind: url
 name: atom
-url: https://github.com/atom/atom/releases/
+url: https://github.com/atom/atom/releases
 activity: medium
 ---
 kind: url
@@ -455,11 +455,6 @@ url: https://github.com/avocado-framework/avocado/releases
 activity: medium
 ---
 kind: url
-name: aws
-url: https://github.com/aws/aws-cli/releases
-activity: high
----
-kind: url
 name: aws2
 url: https://github.com/simonm3/aws2/releases
 activity: low
@@ -468,6 +463,11 @@ kind: url
 name: aws_shell
 url: https://github.com/awslabs/aws-shell/releases
 activity: low
+---
+kind: url
+name: awscli
+url: https://github.com/aws/aws-cli/releases
+activity: high
 ---
 kind: url
 name: axel
@@ -521,8 +521,8 @@ activity: medium
 ---
 kind: url
 name: bash
-url: https://ftpmirror.gnu.org/bash/
-activity: high
+url: https://github.com/bminor/bash/tags
+activity: medium
 ---
 kind: url
 name: bash_completion
@@ -661,7 +661,7 @@ activity: none
 ---
 kind: url
 name: bmon
-url: https://github.com/tgraf/bmon/releases/
+url: https://github.com/tgraf/bmon/releases
 activity: none
 ---
 kind: url
@@ -676,12 +676,12 @@ activity: none
 ---
 kind: url
 name: brackets
-url: https://github.com/adobe/brackets/releases/
+url: https://github.com/adobe/brackets/releases
 activity: medium
 ---
 kind: url
 name: brave
-url: https://github.com/brave/brave-browser/releases/
+url: https://github.com/brave/brave-browser/releases
 activity: high
 ---
 kind: url
@@ -726,7 +726,7 @@ activity: medium
 ---
 kind: url
 name: bubblewrap
-url: https://github.com/containers/bubblewrap/releases/
+url: https://github.com/containers/bubblewrap/releases
 activity: low
 ---
 kind: url
@@ -851,7 +851,7 @@ activity: none
 ---
 kind: url
 name: ccache
-url: https://github.com/ccache/ccache/releases/
+url: https://github.com/ccache/ccache/releases
 activity: medium
 ---
 kind: url
@@ -921,7 +921,7 @@ activity: low
 ---
 kind: url
 name: chromaprint
-url: https://github.com/acoustid/chromaprint/releases/
+url: https://github.com/acoustid/chromaprint/releases
 activity: none
 ---
 kind: url
@@ -1071,7 +1071,7 @@ activity: low
 ---
 kind: url
 name: codelite
-url: https://github.com/eranif/codelite/releases/
+url: https://github.com/eranif/codelite/releases
 activity: medium
 ---
 kind: url
@@ -1186,7 +1186,7 @@ activity: none
 ---
 kind: url
 name: cpu_x
-url: https://github.com/X0rg/CPU-X/releases/
+url: https://github.com/X0rg/CPU-X/releases
 activity: medium
 ---
 kind: url
@@ -1196,7 +1196,7 @@ activity: medium
 ---
 kind: url
 name: cracklib
-url: https://github.com/cracklib/cracklib/releases/
+url: https://github.com/cracklib/cracklib/releases
 activity: none
 ---
 kind: url
@@ -1226,12 +1226,12 @@ activity: low
 ---
 kind: url
 name: cros_resize
-url: https://github.com/ethanmad/chromeos-resize/releases/
+url: https://github.com/ethanmad/chromeos-resize/releases
 activity: low
 ---
 kind: url
 name: crossmobile
-url: https://github.com/crossmob/CrossMobile/releases/
+url: https://github.com/crossmob/CrossMobile/releases
 activity: medium
 ---
 kind: url
@@ -1321,7 +1321,7 @@ activity: none
 ---
 kind: url
 name: darktable
-url: https://github.com/darktable-org/darktable/releases/
+url: https://github.com/darktable-org/darktable/releases
 activity: low
 ---
 kind: url
@@ -1396,7 +1396,7 @@ activity: medium
 ---
 kind: url
 name: deployer
-url: https://github.com/deployphp/deployer/releases/
+url: https://github.com/deployphp/deployer/releases
 activity: medium
 ---
 kind: url
@@ -1511,12 +1511,12 @@ activity: none
 ---
 kind: url
 name: docbook_xsl
-url: https://github.com/docbook/xslt10-stylesheets/releases/
+url: https://github.com/docbook/xslt10-stylesheets/releases
 activity: low
 ---
 kind: url
 name: docbook_xsl_nons
-url: https://github.com/docbook/xslt10-stylesheets/releases/
+url: https://github.com/docbook/xslt10-stylesheets/releases
 activity: low
 ---
 kind: url
@@ -1706,7 +1706,7 @@ activity: low
 ---
 kind: url
 name: enchant
-url: https://github.com/AbiWord/enchant/releases/
+url: https://github.com/AbiWord/enchant/releases
 activity: high
 ---
 kind: url
@@ -1896,7 +1896,7 @@ activity: high
 ---
 kind: url
 name: fd
-url: https://github.com/sharkdp/fd/releases/
+url: https://github.com/sharkdp/fd/releases
 activity: low
 ---
 kind: url
@@ -1931,7 +1931,7 @@ activity: medium
 ---
 kind: url
 name: ffmpegthumbnailer
-url: https://github.com/dirkvdb/ffmpegthumbnailer/releases/
+url: https://github.com/dirkvdb/ffmpegthumbnailer/releases
 activity: none
 ---
 kind: url
@@ -1996,7 +1996,7 @@ activity: medium
 ---
 kind: url
 name: flatpak
-url: https://github.com/flatpak/flatpak/releases/
+url: https://github.com/flatpak/flatpak/releases
 activity: medium
 ---
 kind: url
@@ -2161,7 +2161,7 @@ activity: medium
 ---
 kind: url
 name: fontforge
-url: https://github.com/fontforge/fontforge/releases/
+url: https://github.com/fontforge/fontforge/releases
 activity: medium
 ---
 kind: url
@@ -2221,7 +2221,7 @@ activity: none
 ---
 kind: url
 name: freecad
-url: https://github.com/FreeCAD/FreeCAD/releases/
+url: https://github.com/FreeCAD/FreeCAD/releases
 activity: high
 ---
 kind: url
@@ -2281,7 +2281,7 @@ activity: low
 ---
 kind: url
 name: fswatch
-url: https://github.com/emcrisostomo/fswatch/releases/
+url: https://github.com/emcrisostomo/fswatch/releases
 activity: medium
 ---
 kind: url
@@ -2311,7 +2311,7 @@ activity: low
 ---
 kind: url
 name: gambit
-url: https://github.com/gambit/gambit/releases/
+url: https://github.com/gambit/gambit/releases
 activity: low
 ---
 kind: url
@@ -2546,7 +2546,7 @@ activity: medium
 ---
 kind: url
 name: github_desktop
-url: https://github.com/shiftkey/desktop/releases/
+url: https://github.com/shiftkey/desktop/releases
 activity: medium
 ---
 kind: url
@@ -2586,7 +2586,7 @@ activity: high
 ---
 kind: url
 name: glew
-url: https://github.com/nigels-com/glew/releases/
+url: https://github.com/nigels-com/glew/releases
 activity: none
 ---
 kind: url
@@ -2626,12 +2626,12 @@ activity: low
 ---
 kind: url
 name: glm
-url: https://github.com/g-truc/glm/releases/
+url: https://github.com/g-truc/glm/releases
 activity: medium
 ---
 kind: url
 name: glmark2
-url: https://github.com/glmark2/glmark2/releases/
+url: https://github.com/glmark2/glmark2/releases
 activity: medium
 ---
 kind: url
@@ -2656,7 +2656,7 @@ activity: none
 ---
 kind: url
 name: glslang
-url: https://github.com/KhronosGroup/glslang/releases/
+url: https://github.com/KhronosGroup/glslang/releases
 activity: medium
 ---
 kind: url
@@ -2666,7 +2666,7 @@ activity: none
 ---
 kind: url
 name: gmime
-url: https://github.com/jstedfast/gmime/releases/
+url: https://github.com/jstedfast/gmime/releases
 activity: low
 ---
 kind: url
@@ -2701,7 +2701,7 @@ activity: medium
 ---
 kind: url
 name: gnome_common
-url: https://github.com/GNOME/gnome-common/releases/
+url: https://github.com/GNOME/gnome-common/releases
 activity: low
 ---
 kind: url
@@ -2786,7 +2786,7 @@ activity: medium
 ---
 kind: url
 name: gnome_themes_standard
-url: https://github.com/GNOME/gnome-themes-extra/releases/
+url: https://github.com/GNOME/gnome-themes-extra/releases
 activity: medium
 ---
 kind: url
@@ -2991,7 +2991,7 @@ activity: none
 ---
 kind: url
 name: gsettings_desktop_schemas
-url: https://github.com/GNOME/gsettings-desktop-schemas/releases/
+url: https://github.com/GNOME/gsettings-desktop-schemas/releases
 activity: medium
 ---
 kind: url
@@ -3041,7 +3041,7 @@ activity: low
 ---
 kind: url
 name: gtk_engines_adwaita
-url: https://github.com/GNOME/gnome-themes-extra/releases/
+url: https://github.com/GNOME/gnome-themes-extra/releases
 activity: low
 ---
 kind: url
@@ -3301,7 +3301,7 @@ activity: medium
 ---
 kind: url
 name: hugo
-url: https://github.com/gohugoio/hugo/releases/
+url: https://github.com/gohugoio/hugo/releases
 activity: medium
 ---
 kind: url
@@ -3356,7 +3356,7 @@ activity: none
 ---
 kind: url
 name: ibus
-url: https://github.com/ibus/ibus/releases/
+url: https://github.com/ibus/ibus/releases
 activity: low
 ---
 kind: url
@@ -3376,7 +3376,7 @@ activity: none
 ---
 kind: url
 name: icu4c
-url: https://github.com/unicode-org/icu/releases/
+url: https://github.com/unicode-org/icu/releases
 activity: medium
 ---
 kind: url
@@ -3541,7 +3541,7 @@ activity: low
 ---
 kind: url
 name: jack
-url: https://github.com/jackaudio/jack2/releases/
+url: https://github.com/jackaudio/jack2/releases
 activity: low
 ---
 kind: url
@@ -3696,7 +3696,7 @@ activity: medium
 ---
 kind: url
 name: kakoune
-url: https://github.com/mawww/kakoune/releases/
+url: https://github.com/mawww/kakoune/releases
 activity: medium
 ---
 kind: url
@@ -3721,7 +3721,7 @@ activity: low
 ---
 kind: url
 name: keepassxc
-url: https://github.com/keepassxreboot/keepassxc/releases/
+url: https://github.com/keepassxreboot/keepassxc/releases
 activity: low
 ---
 kind: url
@@ -3731,12 +3731,12 @@ activity: high
 ---
 kind: url
 name: keybinder
-url: https://github.com/kupferlauncher/keybinder/releases/
+url: https://github.com/kupferlauncher/keybinder/releases
 activity: none
 ---
 kind: url
 name: keychain
-url: https://github.com/funtoo/keychain/releases/
+url: https://github.com/funtoo/keychain/releases
 activity: low
 ---
 kind: url
@@ -4191,7 +4191,7 @@ activity: none
 ---
 kind: url
 name: libde265
-url: https://github.com/strukturag/libde265/releases/
+url: https://github.com/strukturag/libde265/releases
 activity: medium
 ---
 kind: url
@@ -4236,7 +4236,7 @@ activity: medium
 ---
 kind: url
 name: libdsm
-url: https://github.com/videolabs/libdsm/releases/
+url: https://github.com/videolabs/libdsm/releases
 activity: none
 ---
 kind: url
@@ -4356,7 +4356,7 @@ activity: medium
 ---
 kind: url
 name: libfmt
-url: https://github.com/fmtlib/fmt/releases/
+url: https://github.com/fmtlib/fmt/releases
 activity: low
 ---
 kind: url
@@ -4421,7 +4421,7 @@ activity: medium
 ---
 kind: url
 name: libgeotiff
-url: https://github.com/OSGeo/libgeotiff/releases/
+url: https://github.com/OSGeo/libgeotiff/releases
 activity: low
 ---
 kind: url
@@ -4741,7 +4741,7 @@ activity: none
 ---
 kind: url
 name: libnet
-url: https://github.com/libnet/libnet/releases/
+url: https://github.com/libnet/libnet/releases
 activity: low
 ---
 kind: url
@@ -4761,7 +4761,7 @@ activity: medium
 ---
 kind: url
 name: libnghttp2
-url: https://github.com/nghttp2/nghttp2/releases/
+url: https://github.com/nghttp2/nghttp2/releases
 activity: high
 ---
 kind: url
@@ -4771,7 +4771,7 @@ activity: none
 ---
 kind: url
 name: libnotify
-url: https://github.com/GNOME/libnotify/releases/
+url: https://github.com/GNOME/libnotify/releases
 activity: none
 ---
 kind: url
@@ -4831,7 +4831,7 @@ activity: none
 ---
 kind: url
 name: libostree
-url: https://github.com/ostreedev/ostree/releases/
+url: https://github.com/ostreedev/ostree/releases
 activity: low
 ---
 kind: url
@@ -4901,7 +4901,7 @@ activity: none
 ---
 kind: url
 name: libportal
-url: https://github.com/flatpak/libportal/releases/
+url: https://github.com/flatpak/libportal/releases
 activity: low
 ---
 kind: url
@@ -5366,7 +5366,7 @@ activity: low
 ---
 kind: url
 name: libwpe
-url: https://github.com/WebPlatformForEmbedded/libwpe/releases/
+url: https://github.com/WebPlatformForEmbedded/libwpe/releases
 activity: medium
 ---
 kind: url
@@ -5591,7 +5591,7 @@ activity: none
 ---
 kind: url
 name: libyaml
-url: https://github.com/yaml/libyaml/releases/
+url: https://github.com/yaml/libyaml/releases
 activity: medium
 ---
 kind: url
@@ -5616,7 +5616,7 @@ activity: none
 ---
 kind: url
 name: linux_pam
-url: https://github.com/linux-pam/linux-pam/releases/
+url: https://github.com/linux-pam/linux-pam/releases
 activity: low
 ---
 kind: url
@@ -5855,7 +5855,7 @@ url: https://www.x.org/releases/individual/util/
 activity: none
 ---
 kind: url
-name: mandb
+name: man_db
 url: http://download.savannah.gnu.org/releases/man-db
 activity: medium
 ---
@@ -5966,7 +5966,7 @@ activity: high
 ---
 kind: url
 name: mg
-url: https://github.com/troglobit/mg/releases/
+url: https://github.com/troglobit/mg/releases
 activity: medium
 ---
 kind: url
@@ -5996,7 +5996,7 @@ activity: none
 ---
 kind: url
 name: minerd
-url: https://github.com/pooler/cpuminer/releases/
+url: https://github.com/pooler/cpuminer/releases
 activity: none
 ---
 kind: url
@@ -6226,7 +6226,7 @@ activity: low
 ---
 kind: url
 name: mutagen
-url: https://github.com/mutagen-io/mutagen/releases/
+url: https://github.com/mutagen-io/mutagen/releases
 activity: low
 ---
 kind: url
@@ -6241,7 +6241,7 @@ activity: high
 ---
 kind: url
 name: mypaint
-url: https://github.com/mypaint/mypaint/releases/
+url: https://github.com/mypaint/mypaint/releases
 activity: none
 ---
 kind: url
@@ -6531,12 +6531,12 @@ activity: none
 ---
 kind: url
 name: ntfs_3g
-url: https://github.com/tuxera/ntfs-3g/releases/
+url: https://github.com/tuxera/ntfs-3g/releases
 activity: low
 ---
 kind: url
 name: numactl
-url: https://github.com/numactl/numactl/releases/
+url: https://github.com/numactl/numactl/releases
 activity: medium
 ---
 kind: url
@@ -6571,7 +6571,7 @@ activity: medium
 ---
 kind: url
 name: oci_cli
-url: https://github.com/oracle/oci-cli/releases/
+url: https://github.com/oracle/oci-cli/releases
 activity: high
 ---
 kind: url
@@ -6671,7 +6671,7 @@ activity: none
 ---
 kind: url
 name: openexr
-url: https://github.com/openexr/openexr/releases/
+url: https://github.com/openexr/openexr/releases
 activity: low
 ---
 kind: url
@@ -6806,7 +6806,7 @@ activity: low
 ---
 kind: url
 name: osl
-url: https://github.com/periscop/openscop/releases/
+url: https://github.com/periscop/openscop/releases
 activity: low
 ---
 kind: url
@@ -6841,7 +6841,7 @@ activity: medium
 ---
 kind: url
 name: packer_completion
-url: https://github.com/mrolli/packer-bash-completion/releases/
+url: https://github.com/mrolli/packer-bash-completion/releases
 activity: none
 ---
 kind: url
@@ -6866,7 +6866,7 @@ activity: low
 ---
 kind: url
 name: pandoc
-url: https://github.com/jgm/pandoc/releases/
+url: https://github.com/jgm/pandoc/releases
 activity: medium
 ---
 kind: url
@@ -6986,7 +6986,7 @@ activity: high
 ---
 kind: url
 name: peazip
-url: https://github.com/peazip/PeaZip/releases/
+url: https://github.com/peazip/PeaZip/releases
 activity: high
 ---
 kind: url
@@ -7471,7 +7471,7 @@ activity: none
 ---
 kind: url
 name: powershell
-url: https://github.com/PowerShell/PowerShell/releases/
+url: https://github.com/PowerShell/PowerShell/releases
 activity: high
 ---
 kind: url
@@ -7481,7 +7481,7 @@ activity: medium
 ---
 kind: url
 name: premake
-url: https://github.com/premake/premake-core/releases/
+url: https://github.com/premake/premake-core/releases
 activity: low
 ---
 kind: url
@@ -8021,7 +8021,7 @@ activity: medium
 ---
 kind: url
 name: rdfind
-url: https://github.com/pauldreik/rdfind/releases/
+url: https://github.com/pauldreik/rdfind/releases
 activity: none
 ---
 kind: url
@@ -8031,7 +8031,7 @@ activity: high
 ---
 kind: url
 name: re2c
-url: https://github.com/skvadrik/re2c/releases/
+url: https://github.com/skvadrik/re2c/releases
 activity: low
 ---
 kind: url
@@ -8556,7 +8556,7 @@ activity: low
 ---
 kind: url
 name: shadow
-url: https://github.com/shadow-maint/shadow/releases/
+url: https://github.com/shadow-maint/shadow/releases
 activity: low
 ---
 kind: url
@@ -8946,7 +8946,7 @@ activity: medium
 ---
 kind: url
 name: superlu
-url: https://github.com/xiaoyeli/superlu/releases/
+url: https://github.com/xiaoyeli/superlu/releases
 activity: none
 ---
 kind: url
@@ -9061,7 +9061,7 @@ activity: low
 ---
 kind: url
 name: tcpflow
-url: https://github.com/simsong/tcpflow/releases/
+url: https://github.com/simsong/tcpflow/releases
 activity: none
 ---
 kind: url
@@ -9461,12 +9461,12 @@ activity: medium
 ---
 kind: url
 name: upx
-url: https://github.com/upx/upx/releases/
+url: https://github.com/upx/upx/releases
 activity: low
 ---
 kind: url
 name: uriparser
-url: https://github.com/uriparser/uriparser/releases/
+url: https://github.com/uriparser/uriparser/releases
 activity: low
 ---
 kind: url
@@ -9521,7 +9521,7 @@ activity: medium
 ---
 kind: url
 name: v2ray
-url: https://github.com/v2ray/v2ray-core/releases/
+url: https://github.com/v2ray/v2ray-core/releases
 activity: high
 ---
 kind: url
@@ -9771,7 +9771,7 @@ activity: medium
 ---
 kind: url
 name: weston
-url: https://github.com/wayland-project/weston/releases/
+url: https://github.com/wayland-project/weston/releases
 activity: medium
 ---
 kind: url
@@ -9836,7 +9836,7 @@ activity: none
 ---
 kind: url
 name: wl_clipboard
-url: https://github.com/bugaevc/wl-clipboard/releases/
+url: https://github.com/bugaevc/wl-clipboard/releases
 activity: medium
 ---
 kind: url
@@ -9871,7 +9871,7 @@ activity: low
 ---
 kind: url
 name: wpebackend_fdo
-url: https://github.com/Igalia/WPEBackend-fdo/releases/
+url: https://github.com/Igalia/WPEBackend-fdo/releases
 activity: high
 ---
 kind: url
@@ -9886,17 +9886,17 @@ activity: none
 ---
 kind: url
 name: wxwidgets
-url: https://github.com/wxWidgets/wxWidgets/releases/
+url: https://github.com/wxWidgets/wxWidgets/releases
 activity: low
 ---
 kind: url
 name: wxwidgets30
-url: https://github.com/wxWidgets/wxWidgets/releases/
+url: https://github.com/wxWidgets/wxWidgets/releases
 activity: low
 ---
 kind: url
 name: wxwidgets31
-url: https://github.com/wxWidgets/wxWidgets/releases/
+url: https://github.com/wxWidgets/wxWidgets/releases
 activity: low
 ---
 kind: url
@@ -9971,7 +9971,7 @@ activity: none
 ---
 kind: url
 name: xdg_dbus_proxy
-url: https://github.com/flatpak/xdg-dbus-proxy/releases/
+url: https://github.com/flatpak/xdg-dbus-proxy/releases
 activity: low
 ---
 kind: url
@@ -9981,7 +9981,7 @@ activity: none
 ---
 kind: url
 name: xdotool
-url: https://github.com/jordansissel/xdotool/releases/
+url: https://github.com/jordansissel/xdotool/releases
 activity: none
 ---
 kind: url

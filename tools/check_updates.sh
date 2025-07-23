@@ -57,6 +57,8 @@ for p in $ps; do
   if [ "$a" != "none" ]; then
     star=
     repo=
+    ver=
+    nu=
     u=$(grep -1 "^name: ${p}$" packages.yaml | tail -1 | cut -d' ' -f2)
     version=$(grep "^  @_ver" ../packages/"$p.rb" 2>/dev/null | cut -d= -f2 | xargs)
     [ -z "$version" ] && version=$(grep "^  version" ../packages/"$p.rb" | cut -d"'" -f2)
@@ -76,14 +78,20 @@ for p in $ps; do
       [[ "$version" != "$ver" ]] && echo "- [ ] $p$star | $nu | $version | $ver"
       ;;
     github)
-      relu=${u#*com}/tag/
-      content=$(curl -Ls "$u" | grep "href=\"$relu")
-      d=${content#*/releases/tag/}
-      rel=$(echo "$d" | cut -d'"' -f1)
-      rel=$(echo "$rel" | cut -d' ' -f1)
-      ver=${rel%.zip*}
+      relu=
+      gh_repo=
+      relu=${u#*github.com/}
+      relu=${relu%/releases}
+      gh_repo=${relu%/tags}
+      if [[ $u == *"/releases"* ]]; then
+        ver=$(gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R ${gh_repo} --json tagName -q '.[] | .tagName')
+        [[ -z "$ver" ]] && echo "- ${gh_repo} does not use releases"
+      fi
+      if [[ $u == *"/tags"* ]] || [[ -z "$ver" ]]; then
+        ver=$(git ls-remote --tags https://github.com/${gh_repo} | cut -d'/' -f3 | grep -v "\^{}" | tail -n 1)
+      fi
       nu=${u/releases/archive}
-      [[ "$version" != "$ver" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | $ver"
+      [[ "$version" != "${ver#v}" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | ${ver#v}"
       ;;
     savannah)
       content=$(curl -Ls "$u")
