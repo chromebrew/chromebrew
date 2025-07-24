@@ -23,7 +23,7 @@ class Gdk_base < Package
       function roundhalves {
                     echo "$1 * 2" | bc | xargs -I@ printf "%1.f" @ | xargs -I% echo "% * .5" | bc
             }
-      if [[ -f '/.dockerenv' ]]; then
+      if [ -f '/.dockerenv' ]; then
         echo "Will not calculate wayland display size in container."
       else
         pxwidth=$(WAYLAND_DISPLAY=wayland-0 wayland-info -i wl_output | grep width: | grep px | head -n 1 | awk '{print $2}')
