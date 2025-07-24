@@ -11,9 +11,9 @@ class Sommelier < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '58e02eb1d7e00dd9cf05bd61de72370f7b2eb294822b5edd94296aa32beb2e9e',
-     armv7l: '58e02eb1d7e00dd9cf05bd61de72370f7b2eb294822b5edd94296aa32beb2e9e',
-     x86_64: '72b21f065064de71858f5ddd65fa8002405c5e84357604e7c5857f4570efdf50'
+    aarch64: 'f5419b5787ec89c9d252597d66ac101942c87cd2c5fb423d17566cf87c7ea4bf',
+     armv7l: 'f5419b5787ec89c9d252597d66ac101942c87cd2c5fb423d17566cf87c7ea4bf',
+     x86_64: 'd31a50da5ec4463c8fdeca8189fa7797804e2eb5b431c7b78802c2179529f9a3'
   })
 
   depends_on 'gcc_lib' # R
