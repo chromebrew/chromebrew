@@ -9,9 +9,9 @@ on:
         type: choice
         default: 'Pull Request'
         options:
-          - Pull Request
-          - Draft Pull Request
-          - No
+          - 'Pull Request'
+          - 'Draft Pull Request'
+          - 'No'
       allow_fail:
         description: "Allow packages to fail building."
         required: false
