@@ -3,7 +3,7 @@ require 'package'
 class Gdk_base < Package
   description 'Set environment variables for autoscaling GTK applications'
   homepage 'https://gitlab.com/chromebrew/chromebrew/'
-  version '1.3'
+  version '1.4'
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
@@ -23,8 +23,12 @@ class Gdk_base < Package
       function roundhalves {
                     echo "$1 * 2" | bc | xargs -I@ printf "%1.f" @ | xargs -I% echo "% * .5" | bc
             }
-      pxwidth=$(WAYLAND_DISPLAY=wayland-0 wayland-info -i wl_output | grep width: | grep px | head -n 1 | awk '{print $2}')
-      lwidth=$(WAYLAND_DISPLAY=wayland-0 wayland-info -i zxdg_output_manager_v1 | grep logical_width:  | sed 's/,//' | awk '{print $2}')
+      if [[ -f '/.dockerenv' ]]; then
+        echo "Will not calculate wayland display size in container."
+      else
+        pxwidth=$(WAYLAND_DISPLAY=wayland-0 wayland-info -i wl_output | grep width: | grep px | head -n 1 | awk '{print $2}')
+        lwidth=$(WAYLAND_DISPLAY=wayland-0 wayland-info -i zxdg_output_manager_v1 | grep logical_width:  | sed 's/,//' | awk '{print $2}')
+      fi
       # echo "pxwidth: $pxwidth, lwidth: $lwidth"
       # SCALE needs to be rounded to the nearest 0.5
       # Check to see if pxwidth and lwidth are integers before calculating SCALE.
