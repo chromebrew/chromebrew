@@ -3,6 +3,11 @@ name: Generate PR
 on:
   workflow_dispatch:
     inputs:
+      draft_pr:
+        description: "Create a Draft PR."
+        required: false
+        type: boolean
+        default: 'false'
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
@@ -183,6 +188,7 @@ jobs:
           CHANGED_OTHER_FILES: ${{ steps.changed-files.outputs.other_all_changed_files }}
           CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
           CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
+          DRAFT_PR: ${{ github.event.inputs.draft_pr }}
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
           i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
@@ -223,13 +229,18 @@ jobs:
           echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ env.BRANCH }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           cat /tmp/pr.txt
+          [[ $DRAFT_PR == 'true' ]] && export PR_DRAFT_FLAG='-d'
           PR_NUMBER=$(gh pr list -H ${CREW_BRANCH}| cut -f1)
           if [[ -z ${PR_NUMBER} ]]; then
-            PR_NUMBER=$(gh pr create --reviewer chromebrew/active --title "${{ env.BRANCH }} at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "${{ env.BRANCH }} at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
             gh pr edit -F /tmp/pr.txt
           fi
           # Draft PRs can not be set to automerge.
-          gh pr merge "${PR_NUMBER}" --auto || true
+          if [[ $DRAFT_PR == 'true' ]]; then
+            gh pr ready --undo || true
+          else
+            gh pr merge --auto || true
+          fi
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
