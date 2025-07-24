@@ -5,7 +5,7 @@ class Gdk_base < Package
   homepage 'https://gitlab.com/chromebrew/chromebrew/'
   version '1.4'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
 
   depends_on 'wayland_info' # L
