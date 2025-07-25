@@ -11,9 +11,9 @@ class Httpd < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b5bb883fd8bbef85f0b4f07f1ea72ae2440aa43f32bf4921866057d3eca044fc',
-     armv7l: 'b5bb883fd8bbef85f0b4f07f1ea72ae2440aa43f32bf4921866057d3eca044fc',
-     x86_64: 'a26481c3014646418ad74688892a0b48bc0e854158a1891be0ae2ee90a16cf17'
+    aarch64: '16d59178572a71110bc76e5a961a9234cf023c7ccf7482fbf3bd1e2e8543a170',
+     armv7l: '16d59178572a71110bc76e5a961a9234cf023c7ccf7482fbf3bd1e2e8543a170',
+     x86_64: 'b82d2fa47b64caae72c223a1b71670e4c035c545cc5dc547dcd51c6c7a2e472f'
   })
 
   depends_on 'apr'
