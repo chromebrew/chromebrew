@@ -3,7 +3,7 @@ require 'package'
 class Waf < Package
   description 'The Waf build system'
   homepage 'https://waf.io/'
-  version '2.0.24'
+  version '2.1.6'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://gitlab.com/ita1024/waf.git'
@@ -11,10 +11,10 @@ class Waf < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f1bab4de03c7f6aebcbce73460a06d4d4c1eefa22889230a866729ff8cdd3f8b',
-     armv7l: 'f1bab4de03c7f6aebcbce73460a06d4d4c1eefa22889230a866729ff8cdd3f8b',
-       i686: '99ce239ddf42677e615597fefe308e29b55b9f8967d0fd3a83e2595a3e17bc3f',
-     x86_64: 'f05712b984add199554d6b32df0b2bf677a8e88a92385712496255b005d784ad'
+    aarch64: '6577ea095f3a72ccce555f9f7bea001dd5b69dca062bce08edc9b768cb30ea6c',
+     armv7l: '6577ea095f3a72ccce555f9f7bea001dd5b69dca062bce08edc9b768cb30ea6c',
+       i686: 'c3feb9fefebb75261438147a2645ab4cc6570794355f152e21854cad600def87',
+     x86_64: '8c9c541b7d8f7d637456572ffe8b3c88dc5135859d53653ced1e0c414559843b'
   })
 
   depends_on 'help2man'
