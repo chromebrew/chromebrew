@@ -70,6 +70,9 @@ for p in $ps; do
     cp=$(grep "^${p}$" core_packages.txt)
     test "$cp" && star="*"
     [[ "$u" == *"gnu.org"* ]] && repo="gnu"
+    [[ "$u" == *"gitlab"* ]] && repo="gitlab"
+    [[ "$u" == *"salsa.debian"* ]] && repo="gitlab"
+    [[ "$u" == *"code.videolan.org"* ]] && repo="gitlab"
     [[ "$u" == *"github.com"* && $u == *"/releases"* ]] && repo="github"
     [[ "$u" == *"savannah.gnu.org"* && $u == *"/releases"* ]] && repo="savannah"
     case "$repo" in
@@ -107,6 +110,22 @@ for p in $ps; do
       [[ -z "$ver" ]] && ver=$(git ls-remote --tags https://github.com/${gh_repo} | cut -d'/' -f3 | grep -v "\^{}" | tail -n 1)
       fi
       nu=${u/releases/archive}
+      [[ "$version" != "${ver#v}" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | ${ver#v}"
+      ;;
+    gitlab)
+      gl_host="$(echo $u | awk -F[/:] '{print $4}')"
+      relu="${u#*${gl_host}/}"
+      gl_repo="${relu%/-*}"
+      gl_repo_suffix="${gl_repo#*/}"
+      # This is empty if there is text in the git tag.
+      ver=$(git -c 'versionsort.suffix=-' \
+    ls-remote --exit-code --refs --sort='version:refname' --tags https://${gl_host}/${gl_repo}.git '*.*.*' \
+    | tail --lines=1 \
+    | cut --delimiter='/' --fields=3)
+      # This captures git tags with text if there is no exclusively
+      # numeric version tag.
+      [[ -z "$ver" ]] && ver=$(git ls-remote --tags https://${gl_host}/${gl_repo}.git | cut -d'/' -f3 | grep -v "\^{}" | tail -n 1)
+      nu="https://${gl_host}/${gl_repo}/-/archive/${ver}/${gl_repo_suffix}-${ver}.tar.gz"
       [[ "$version" != "${ver#v}" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | ${ver#v}"
       ;;
     savannah)

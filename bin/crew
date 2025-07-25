@@ -1816,6 +1816,7 @@ def help_command(args)
 end
 
 def install_command(args)
+  args = { '<name>' => args.split } if args.is_a? String
   args['<name>'].each do |name|
     @pkg_name = name
     # Exit early if package is already installed. This prevents the
