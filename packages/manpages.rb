@@ -3,11 +3,11 @@ require 'package'
 class Manpages < Package
   description 'The Linux man-pages project documents the Linux kernel and C library interfaces that are employed by user-space programs.'
   homepage 'https://www.kernel.org/doc/man-pages/'
-  version '6.14-1'
+  version '6.15'
   license 'man-pages, GPL-2+ and BSD'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-#{version.split('-').first}.tar.xz"
-  source_sha256 '71e13067b780044b2f372eec25f4209bc0413cc32af714141ef3d22d21eae8e3'
+  source_sha256 '03d8ebf618bd5df57cb4bf355efa3f4cd3a00b771efd623d4fd042b5dceb4465'
   binary_compression 'tar.zst'
 
   binary_sha256({
