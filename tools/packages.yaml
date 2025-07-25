@@ -9686,7 +9686,7 @@ activity: high
 ---
 kind: url
 name: waf
-url: https://github.com/waf-project/waf/releases
+url: https://gitlab.com/ita1024/waf/-/tags
 activity: medium
 ---
 kind: url
