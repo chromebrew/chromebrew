@@ -116,7 +116,7 @@ activity: none
 ---
 kind: url
 name: alive
-url: https://ftpmirror.gnu.org/alive/
+url: https://ftp.gnu.org/gnu/alive/
 activity: none
 ---
 kind: url
@@ -321,12 +321,12 @@ activity: medium
 ---
 kind: url
 name: aspell_en
-url: https://ftpmirror.gnu.org/aspell/dict/en/
+url: https://ftp.gnu.org/gnu/aspell/dict/en/
 activity: low
 ---
 kind: url
 name: aspell_fr
-url: https://ftpmirror.gnu.org/aspell/dict/fr/
+url: https://ftp.gnu.org/gnu/aspell/dict/fr/
 activity: none
 ---
 kind: url
@@ -336,7 +336,7 @@ activity: low
 ---
 kind: url
 name: aspell_es
-url: https://ftpmirror.gnu.org/aspell/dict/es/
+url: https://ftp.gnu.org/gnu/aspell/dict/es/
 activity: none
 ---
 kind: url
@@ -401,7 +401,7 @@ activity: none
 ---
 kind: url
 name: autoconf_archive
-url: https://ftpmirror.gnu.org/autoconf-archive
+url: https://ftp.gnu.org/gnu/autoconf-archive
 activity: medium
 ---
 kind: url
@@ -1326,7 +1326,7 @@ activity: medium
 ---
 kind: url
 name: datamash
-url: https://ftpmirror.gnu.org/datamash
+url: https://ftp.gnu.org/gnu/datamash
 activity: medium
 ---
 kind: url
@@ -1366,7 +1366,7 @@ activity: low
 ---
 kind: url
 name: ddrescue
-url: https://ftpmirror.gnu.org/ddrescue/
+url: https://ftp.gnu.org/gnu/ddrescue/
 activity: low
 ---
 kind: url
@@ -1376,7 +1376,7 @@ activity: none
 ---
 kind: url
 name: dejagnu
-url: https://ftpmirror.gnu.org/dejagnu/
+url: https://ftp.gnu.org/gnu/dejagnu/
 activity: low
 ---
 kind: url
@@ -1631,7 +1631,7 @@ activity: medium
 ---
 kind: url
 name: ed
-url: http://ftpmirror.gnu.org/ed
+url: http://ftp.gnu.org/gnu/ed
 activity: low
 ---
 kind: url
@@ -1661,7 +1661,7 @@ activity: low
 ---
 kind: url
 name: electric
-url: https://ftpmirror.gnu.org/electric
+url: https://ftp.gnu.org/gnu/electric
 activity: none
 ---
 kind: url
@@ -1711,7 +1711,7 @@ activity: none
 ---
 kind: url
 name: enscript
-url: https://ftpmirror.gnu.org/enscript/
+url: https://ftp.gnu.org/gnu/enscript/
 activity: none
 ---
 kind: url
@@ -1956,7 +1956,7 @@ activity: low
 ---
 kind: url
 name: findutils
-url: https://ftpmirror.gnu.org/findutils/
+url: https://ftp.gnu.org/gnu/findutils/
 activity: low
 ---
 kind: url
@@ -2371,17 +2371,17 @@ activity: none
 ---
 kind: url
 name: geany
-url: https://download.geany.org/
+url: https://github.com/geany/geany/releases
 activity: medium
 ---
 kind: url
 name: geany_plugins
-url: https://download.geany.org/
+url: https://github.com/geany/geany-plugins/releases
 activity: medium
 ---
 kind: url
 name: geary
-url: https://gitlab.gnome.org/GNOME/geary
+url: https://gitlab.gnome.org/GNOME/geary/-/tags
 activity: low
 ---
 kind: url
@@ -2396,12 +2396,12 @@ activity: medium
 ---
 kind: url
 name: gemacs
-url: https://ftpmirror.gnu.org/emacs/
+url: https://ftp.gnu.org/gnu/emacs/
 activity: medium
 ---
 kind: url
 name: gengetopt
-url: https://ftpmirror.gnu.org/gengetopt/
+url: https://ftp.gnu.org/gnu/gengetopt/
 activity: none
 ---
 kind: url
@@ -2636,7 +2636,7 @@ activity: medium
 ---
 kind: url
 name: glpk
-url: https://ftpmirror.gnu.org/glpk/
+url: https://ftp.gnu.org/gnu/glpk/
 activity: none
 ---
 kind: url
@@ -2691,37 +2691,37 @@ activity: medium
 ---
 kind: url
 name: gnome_common
-url: https://github.com/GNOME/gnome-common/releases
-activity: low
+url: https://gitlab.gnome.org/Archive/gnome-common/-/tags
+activity: none
 ---
 kind: url
 name: gnome_desktop
-url: https://github.com/GNOME/gnome-desktop/releases
+url: https://gitlab.gnome.org/GNOME/gnome-desktop/-/tags
 activity: high
 ---
 kind: url
 name: gnome_doc_utils
-url: https://ftp.gnome.org/pub/gnome/sources/gnome-doc-utils/
-activity: medium
+url: https://gitlab.gnome.org/Archive/gnome-doc-utils/-/tags
+activity: none
 ---
 kind: url
 name: gnome_docking_library
-url: https://github.com/GNOME/gdl/releases
+url: https://gitlab.gnome.org/Archive/gdl/-/tags
 activity: low
 ---
 kind: url
 name: gnome_icon_theme
 url: https://ftp.gnome.org/pub/GNOME/sources/gnome-icon-theme/
-activity: medium
+activity: none
 ---
 kind: url
 name: gnome_keyring
-url: https://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/
+url: https://gitlab.gnome.org/GNOME/gnome-keyring/-/tags
 activity: low
 ---
 kind: url
 name: gnome_klotski
-url: https://download.gnome.org/sources/gnome-klotski/
+url: https://gitlab.gnome.org/GNOME/gnome-klotski/-/tags
 activity: low
 ---
 kind: url
@@ -2731,12 +2731,12 @@ activity: high
 ---
 kind: url
 name: gnome_mines
-url: https://download.gnome.org/sources/gnome-mines/
+url: https://gitlab.gnome.org/GNOME/gnome-mines/-/tags
 activity: low
 ---
 kind: url
 name: gnome_nibbles
-url: https://download.gnome.org/sources/gnome-nibbles/
+url: https://gitlab.gnome.org/GNOME/gnome-nibbles/-/tags
 activity: low
 ---
 kind: url
@@ -2756,17 +2756,17 @@ activity: medium
 ---
 kind: url
 name: gnome_shell
-url: https://github.com/GNOME/gnome-shell/releases
+url: https://gitlab.gnome.org/GNOME/gnome-shell/-/tags
 activity: high
 ---
 kind: url
 name: gnome_sudoku
-url: https://download.gnome.org/sources/gnome-sudoku/
+url: https://gitlab.gnome.org/GNOME/gnome-sudoku/-/tags
 activity: low
 ---
 kind: url
 name: gnome_terminal
-url: https://github.com/GNOME/gnome-terminal/releases
+url: https://gitlab.gnome.org/GNOME/gnome-terminal/-/tags
 activity: medium
 ---
 kind: url
@@ -2776,8 +2776,8 @@ activity: medium
 ---
 kind: url
 name: gnome_themes_standard
-url: https://github.com/GNOME/gnome-themes-extra/releases
-activity: medium
+url: https://gitlab.gnome.org/Archive/gnome-themes-extra/-/tags
+activity: none
 ---
 kind: url
 name: gnome_tweaks
@@ -2786,22 +2786,22 @@ activity: low
 ---
 kind: url
 name: gnome_weather
-url: https://github.com/GNOME/gnome-weather/releases
+url: https://gitlab.gnome.org/GNOME/gnome-weather/-/tags
 activity: low
 ---
 kind: url
 name: gnu_time
-url: https://ftpmirror.gnu.org/time/
+url: https://ftp.gnu.org/gnu/time/
 activity: none
 ---
 kind: url
 name: gnuastro
-url: https://ftpmirror.gnu.org/gnuastro/
+url: https://ftp.gnu.org/gnu/gnuastro/
 activity: low
 ---
 kind: url
 name: gnuchess
-url: https://ftpmirror.gnu.org/chess/
+url: https://ftp.gnu.org/gnu/chess/
 activity: low
 ---
 kind: url
@@ -2966,7 +2966,7 @@ activity: medium
 ---
 kind: url
 name: graphviz
-url: https://gitlab.com/graphviz/graphviz/
+url: https://gitlab.com/graphviz/graphviz/-/tags
 activity: low
 ---
 kind: url
@@ -2996,7 +2996,7 @@ activity: none
 ---
 kind: url
 name: gsl
-url: https://ftpmirror.gnu.org/gsl/
+url: https://ftp.gnu.org/gnu/gsl/
 activity: low
 ---
 kind: url
@@ -3041,13 +3041,13 @@ activity: low
 ---
 kind: url
 name: gtk_vnc
-url: https://ftp.gnome.org/pub/GNOME/sources/gtk-vnc/
-activity: none
+url: https://gitlab.gnome.org/GNOME/gtk-vnc/-/tags
+activity: low
 ---
 kind: url
 name: gtk2
 url: https://download.gnome.org/sources/gtk+/
-activity: medium
+activity: none
 ---
 kind: url
 name: gtk3
@@ -3056,7 +3056,7 @@ activity: medium
 ---
 kind: url
 name: gtk4
-url: https://download.gnome.org/sources/gtk/
+url: https://gitlab.gnome.org/GNOME/gtk/-/tags
 activity: medium
 ---
 kind: url
@@ -3081,7 +3081,7 @@ activity: none
 ---
 kind: url
 name: gtkmm4
-url: https://download.gnome.org/sources/gtkmm/
+url: https://gitlab.gnome.org/GNOME/gtkmm/-/tags
 activity: low
 ---
 kind: url
@@ -3151,7 +3151,7 @@ activity: medium
 ---
 kind: url
 name: gzip
-url: https://ftpmirror.gnu.org/gzip/
+url: https://ftp.gnu.org/gnu/gzip/
 activity: low
 ---
 kind: url
@@ -3221,7 +3221,7 @@ activity: low
 ---
 kind: url
 name: hello
-url: https://ftpmirror.gnu.org/hello/
+url: https://ftp.gnu.org/gnu/hello/
 activity: none
 ---
 kind: url
@@ -3231,7 +3231,7 @@ activity: none
 ---
 kind: url
 name: help2man
-url: https://ftpmirror.gnu.org/help2man
+url: https://ftp.gnu.org/gnu/help2man
 activity: low
 ---
 kind: url
@@ -3836,8 +3836,8 @@ activity: low
 ---
 kind: url
 name: kwiml
-url: https://gitlab.kitware.com/utils/kwiml/
-activity: low
+url: https://gitlab.kitware.com/utils/kwiml/-/tags
+activity: none
 ---
 kind: url
 name: l_smash
@@ -3941,7 +3941,7 @@ activity: medium
 ---
 kind: url
 name: libadwaita
-url: https://gitlab.gnome.org/exalm/libadwaita/
+url: https://gitlab.gnome.org/GNOME/libadwaita/-/tags
 activity: high
 ---
 kind: url
@@ -4071,7 +4071,7 @@ activity: low
 ---
 kind: url
 name: libcdio
-url: https://ftpmirror.gnu.org/libcdio/
+url: https://ftp.gnu.org/gnu/libcdio/
 activity: medium
 ---
 kind: url
@@ -4446,18 +4446,18 @@ activity: none
 ---
 kind: url
 name: libgnome_games_support
-url: https://download.gnome.org/sources/libgnome-games-support/
+url: https://gitlab.gnome.org/GNOME/libgnome-games-support/-/tags
 activity: low
 ---
 kind: url
 name: libgnome_keyring
-url: https://ftp.gnome.org/pub/GNOME/sources/libgnome-keyring/
+url: https://gitlab.gnome.org/Archive/libgnome-keyring/-/tags
 activity: none
 ---
 kind: url
 name: libgnomecanvas
-url: https://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/
-activity: medium
+url: https://gitlab.gnome.org/Archive/libgnomecanvas/-/tags
+activity: none
 ---
 kind: url
 name: libgpgerror
@@ -4476,7 +4476,7 @@ activity: none
 ---
 kind: url
 name: libgsf
-url: https://ftp.gnome.org/pub/gnome/sources/libgsf/
+url: https://gitlab.gnome.org/GNOME/libgsf/-/tags
 activity: medium
 ---
 kind: url
@@ -4486,12 +4486,12 @@ activity: low
 ---
 kind: url
 name: libgudev
-url: https://download.gnome.org/sources/libgudev/
+url: https://gitlab.gnome.org/GNOME/libgudev/-/tags
 activity: low
 ---
 kind: url
 name: libgweather
-url: https://github.com/GNOME/libgweather/releases
+url: https://gitlab.gnome.org/GNOME/libgweather/-/tags
 activity: low
 ---
 kind: url
@@ -4531,7 +4531,7 @@ activity: none
 ---
 kind: url
 name: libiconv
-url: https://ftpmirror.gnu.org/libiconv/
+url: https://ftp.gnu.org/gnu/libiconv/
 activity: none
 ---
 kind: url
@@ -4541,12 +4541,12 @@ activity: none
 ---
 kind: url
 name: libidn
-url: https://ftpmirror.gnu.org/libidn/
+url: https://ftp.gnu.org/gnu/libidn/
 activity: medium
 ---
 kind: url
 name: libidn2
-url: https://ftpmirror.gnu.org/libidn/
+url: https://ftp.gnu.org/gnu/libidn/
 activity: medium
 ---
 kind: url
@@ -4661,7 +4661,7 @@ activity: none
 ---
 kind: url
 name: libmicrohttpd
-url: https://ftpmirror.gnu.org/libmicrohttpd/
+url: https://ftp.gnu.org/gnu/libmicrohttpd/
 activity: low
 ---
 kind: url
@@ -4866,12 +4866,12 @@ activity: none
 ---
 kind: url
 name: libpeas
-url: https://gitlab.gnome.org/GNOME/libpeas/tags
+url: https://gitlab.gnome.org/GNOME/libpeas/-/tags
 activity: low
 ---
 kind: url
 name: libpeas2
-url: https://gitlab.gnome.org/GNOME/libpeas/tags
+url: https://gitlab.gnome.org/GNOME/libpeas/-/tags
 activity: low
 ---
 kind: url
@@ -4921,7 +4921,7 @@ activity: none
 ---
 kind: url
 name: libpth
-url: https://ftpmirror.gnu.org/pth/
+url: https://ftp.gnu.org/gnu/pth/
 activity: none
 ---
 kind: url
@@ -5111,7 +5111,7 @@ activity: none
 ---
 kind: url
 name: libssp
-url: https://ftpmirror.gnu.org/gcc/
+url: https://ftp.gnu.org/gnu/gcc/
 activity: low
 ---
 kind: url
@@ -5131,7 +5131,7 @@ activity: medium
 ---
 kind: url
 name: libtasn1
-url: https://ftpmirror.gnu.org/libtasn1
+url: https://ftp.gnu.org/gnu/libtasn1
 activity: none
 ---
 kind: url
@@ -5486,7 +5486,7 @@ activity: none
 ---
 kind: url
 name: libxml2
-url: https://gitlab.gnome.org/GNOME/libxml2/tags
+url: https://gitlab.gnome.org/GNOME/libxml2/-/tags
 activity: medium
 ---
 kind: url
@@ -5711,7 +5711,7 @@ activity: none
 ---
 kind: url
 name: ltrace
-url: https://gitlab.com/cespedes/ltrace
+url: https://gitlab.com/cespedes/ltrace/-/tags
 activity: none
 ---
 kind: url
@@ -5836,7 +5836,7 @@ activity: high
 ---
 kind: url
 name: mailutils
-url: https://ftpmirror.gnu.org/mailutils/
+url: https://ftp.gnu.org/gnu/mailutils/
 activity: high
 ---
 kind: url
@@ -6016,7 +6016,7 @@ activity: none
 ---
 kind: url
 name: miscfiles
-url: https://ftpmirror.gnu.org/miscfiles/
+url: https://ftp.gnu.org/gnu/miscfiles/
 activity: none
 ---
 kind: url
@@ -6576,7 +6576,7 @@ activity: none
 ---
 kind: url
 name: octave
-url: https://ftpmirror.gnu.org/octave
+url: https://ftp.gnu.org/gnu/octave
 activity: medium
 ---
 kind: url
@@ -6886,7 +6886,7 @@ activity: high
 ---
 kind: url
 name: parted
-url: https://ftpmirror.gnu.org/parted/
+url: https://ftp.gnu.org/gnu/parted/
 activity: none
 ---
 kind: url
@@ -7701,7 +7701,7 @@ activity: medium
 ---
 kind: url
 name: py3_pygobject
-url: https://gitlab.gnome.org/GNOME/pygobject/tags
+url: https://gitlab.gnome.org/GNOME/pygobject/-/tags
 activity: high
 ---
 kind: url
@@ -7771,7 +7771,7 @@ activity: medium
 ---
 kind: url
 name: pyconfigure
-url: https://ftpmirror.gnu.org/pyconfigure/
+url: https://ftp.gnu.org/gnu/pyconfigure/
 activity: none
 ---
 kind: url
@@ -8341,7 +8341,7 @@ activity: medium
 ---
 kind: url
 name: rush
-url: https://ftpmirror.gnu.org/rush/
+url: https://ftp.gnu.org/gnu/rush/
 activity: none
 ---
 kind: url
@@ -8496,7 +8496,7 @@ activity: medium
 ---
 kind: url
 name: sed
-url: https://ftpmirror.gnu.org/sed/
+url: https://ftp.gnu.org/gnu/sed/
 activity: low
 ---
 kind: url
@@ -8601,7 +8601,7 @@ activity: none
 ---
 kind: url
 name: shtool
-url: https://ftpmirror.gnu.org/shtool
+url: https://ftp.gnu.org/gnu/shtool
 activity: none
 ---
 kind: url
@@ -8731,7 +8731,7 @@ activity: none
 ---
 kind: url
 name: source_highlight
-url: https://ftpmirror.gnu.org/src-highlite/
+url: https://ftp.gnu.org/gnu/src-highlite/
 activity: none
 ---
 kind: url
@@ -9011,7 +9011,7 @@ activity: low
 ---
 kind: url
 name: tack
-url: https://ftpmirror.gnu.org/ncurses/
+url: https://ftp.gnu.org/gnu/ncurses/
 activity: low
 ---
 kind: url
@@ -9026,7 +9026,7 @@ activity: low
 ---
 kind: url
 name: tar
-url: https://ftpmirror.gnu.org/tar/
+url: https://ftp.gnu.org/gnu/tar/
 activity: medium
 ---
 kind: url
@@ -9091,18 +9091,18 @@ activity: medium
 ---
 kind: url
 name: telepathy_glib
-url: https://telepathy.freedesktop.org/releases/telepathy-glib/
+url: https://github.com/TelepathyIM/telepathy-glib/tags
 activity: low
 ---
 kind: url
 name: tepl_5
-url: https://github.com/GNOME/tepl/releases
-activity: low
+url: https://gitlab.gnome.org/Archive/tepl/-/tags
+activity: none
 ---
 kind: url
 name: tepl_6
-url: https://github.com/GNOME/tepl/releases
-activity: low
+url: https://gitlab.gnome.org/Archive/tepl/-/tags
+activity: none
 ---
 kind: url
 name: termcap
@@ -9146,7 +9146,7 @@ activity: none
 ---
 kind: url
 name: texinfo
-url: http://ftpmirror.gnu.org/texinfo
+url: http://ftp.gnu.org/gnu/texinfo
 activity: low
 ---
 kind: url
@@ -9686,7 +9686,7 @@ activity: high
 ---
 kind: url
 name: waf
-url: https://github.com/waf-project/waf/releases
+url: https://gitlab.com/ita1024/waf/-/tags
 activity: medium
 ---
 kind: url
@@ -9736,7 +9736,7 @@ activity: none
 ---
 kind: url
 name: wdiff
-url: https://ftpmirror.gnu.org/wdiff/
+url: https://ftp.gnu.org/gnu/wdiff/
 activity: none
 ---
 kind: url
@@ -9766,7 +9766,7 @@ activity: medium
 ---
 kind: url
 name: weston
-url: https://github.com/wayland-project/weston/releases
+url: https://gitlab.freedesktop.org/wayland/weston/-/tags
 activity: medium
 ---
 kind: url
@@ -9776,7 +9776,7 @@ activity: low
 ---
 kind: url
 name: wget2
-url: https://ftpmirror.gnu.org/wget/
+url: https://ftp.gnu.org/gnu/wget/
 activity: low
 ---
 kind: url
