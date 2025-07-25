@@ -1,10 +1,10 @@
 /usr/local/bin/ruff
-/usr/local/lib/python3.13/site-packages/ruff-0.12.4.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/ruff-0.12.4.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/ruff-0.12.4.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/ruff-0.12.4.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/ruff-0.12.4.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/ruff-0.12.4.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/ruff-0.12.5.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/ruff-0.12.5.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/ruff-0.12.5.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/ruff-0.12.5.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/ruff-0.12.5.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/ruff-0.12.5.dist-info/licenses/LICENSE
 /usr/local/lib/python3.13/site-packages/ruff/__init__.py
 /usr/local/lib/python3.13/site-packages/ruff/__main__.py
 /usr/local/lib/python3.13/site-packages/ruff/__pycache__/__init__.cpython-313.pyc
