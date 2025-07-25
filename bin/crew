@@ -1709,6 +1709,7 @@ def build_command(args)
     end
   end
   abort "#{CREW_LOCAL_BUILD_DIR} is not writable.".lightred unless File.writable?(CREW_LOCAL_BUILD_DIR)
+  args = { '<name>' => args.split } if args.is_a? String
   args['<name>'].each do |name|
     # If a package file is explicitly passed, then use that package file, whereever it is.
     if name.include?('.rb') && File.file?(name)
@@ -1742,6 +1743,7 @@ def build_command(args)
 end
 
 def check_command(args)
+  args = { '<name>' => args.split } if args.is_a? String
   args['<name>'].each do |name|
     Command.check(name, @opt_force)
   end
@@ -1754,6 +1756,7 @@ def const_command(args)
 end
 
 def deps_command(args)
+  args = { '<name>' => args.split } if args.is_a? String
   args['<name>'].each do |name|
     @pkg_name = name
     search @pkg_name
@@ -1771,6 +1774,7 @@ def deps_command(args)
 end
 
 def download_command(args)
+  args = { '<name>' => args.split } if args.is_a? String
   args['<name>'].each do |name|
     @pkg_name = name
     search @pkg_name
@@ -1805,6 +1809,7 @@ def download_command(args)
 end
 
 def files_command(args)
+  args = { '<name>' => args.split } if args.is_a? String
   args['<name>'].each do |name|
     search name
     Command.files(@pkg)
@@ -1845,6 +1850,7 @@ def list_command(args)
 end
 
 def postinstall_command(args)
+  args = { '<name>' => args.split } if args.is_a? String
   args['<name>'].each do |name|
     @pkg_name = name
     search @pkg_name, silent: true
@@ -1861,6 +1867,7 @@ def prop_command(args)
 end
 
 def reinstall_command(args)
+  args = { '<name>' => args.split } if args.is_a? String
   args['<name>'].each do |name|
     @pkg_name = name
     next unless Command.check(name, @opt_force)
@@ -1880,6 +1887,7 @@ def reinstall_command(args)
 end
 
 def remove_command(args)
+  args = { '<name>' => args.split } if args.is_a? String
   args['<name>'].each do |name|
     search name
     Command.remove(@pkg, verbose: CREW_VERBOSE, force: @opt_force)
@@ -1887,6 +1895,7 @@ def remove_command(args)
 end
 
 def search_command(args)
+  args = { '<name>' => args.split } if args.is_a? String
   args['<name>'].each do |name|
     Command.search(name, CREW_VERBOSE)
   end
@@ -1904,6 +1913,7 @@ def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_sou
 
 def update_package_file_command(args)
   return if CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
+  args = { '<name>' => args.split } if args.is_a? String
   args['<name>'].each do |name|
     search name
     update_package_file(name, @pkg.version, @pkg.binary_compression)
@@ -1913,6 +1923,7 @@ end
 def upload_command(args)
   gitlab_token = ENV.fetch('GITLAB_TOKEN', nil)
   gitlab_token_username = ENV.fetch('GITLAB_TOKEN_USERNAME', nil)
+  args = { '<name>' => args.split } if args.is_a? String
   upload if args['<name>'].empty?
   args['<name>'].each do |name|
     search name
@@ -1922,6 +1933,7 @@ end
 
 def upstream_command(args)
   # Pass the whole argument input to tools/version.rb, stripping out any file extensions that occur as a result of using a wildcard argument in a directory where it matches files.
+  args = { '<name>' => args.split } if args.is_a? String
   Dir.chdir CREW_PACKAGES_PATH do
     system "../tools/version.rb #{args['<name>'].join(' ').gsub('.rb', '')} #{@short_verbose}"
   end
