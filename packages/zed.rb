@@ -21,6 +21,14 @@ class Zed < RUST
   depends_on 'zlib'
   depends_on 'zstd'
 
+
+  rust_flags '-C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib'
+  rust_packages 'zed cli'
+
+  def self.prebuild
+    system 'script/generate-licenses'
+  end
+
   def self.postinstall
     ExitMessage.add "\nType 'zed' to get started.\n"
   end
