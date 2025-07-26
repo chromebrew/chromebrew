@@ -26,6 +26,8 @@ class Ruby_rubocop < RUBY
   depends_on 'ruby_ruby_progressbar' # R
   depends_on 'ruby_unicode_display_width' # R
   depends_on 'xdg_base' # L
+  depends_on 'ruby_prism' # R
+  depends_on 'ruby_tsort' # R
 
   conflicts_ok
   no_fhs
