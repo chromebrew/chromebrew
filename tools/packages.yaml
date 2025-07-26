@@ -8200,6 +8200,11 @@ url: https://github.com/whitequark/ast/tags
 activity: low
 ---
 kind: url
+name: ruby_backport
+url: https://github.com/castwide/backport/tags
+activity: low
+---
+kind: url
 name: ruby_byebug
 url: https://github.com/deivid-rodriguez/byebug/releases
 activity: low
@@ -8212,6 +8217,11 @@ activity: medium
 kind: url
 name: ruby_debug
 url: https://github.com/ruby/debug/releases
+activity: medium
+---
+kind: url
+name: ruby_diff_lcs
+url: https://github.com/halostatue/diff-lcs/tags
 activity: medium
 ---
 kind: url
@@ -8235,6 +8245,21 @@ url: https://github.com/JEG2/highline/tags
 activity: medium
 ---
 kind: url
+name: ruby_jaro_winkler
+url: https://github.com/tonytonyjan/jaro_winkler/tags
+activity: medium
+---
+kind: url
+name: ruby_kramdown
+url: https://github.com/gettalong/kramdown/tags
+activity: medium
+---
+kind: url
+name: ruby_kramdown_parser_gfm
+url: https://github.com/kramdown/parser-gfm/tags
+activity: medium
+---
+kind: url
 name: ruby_language_server_protocol
 url: https://github.com/mtsmfm/language_server-protocol-ruby/tags
 activity: high
@@ -8253,6 +8278,11 @@ kind: url
 name: ruby_method_source
 url: https://github.com/banister/method_source/tags
 activity: low
+---
+kind: url
+name: ruby_nokogiri
+url: https://github.com/sparklemotion/nokogiri/releases
+activity: high
 ---
 kind: url
 name: ruby_parallel
@@ -8290,9 +8320,14 @@ url: https://github.com/ruby/repl_type_completor/tags
 activity: high
 ---
 kind: url
+name: ruby_reverse_markdown
+url: https://github.com/xijo/reverse_markdown/tags
+activity: medium
+---
+kind: url
 name: ruby_rubocop
 url: https://github.com/rubocop/rubocop/releases
-activity: medium
+activity: high
 ---
 kind: url
 name: ruby_rubocop_ast
@@ -8315,6 +8350,21 @@ url: https://github.com/jfelchner/ruby-progressbar/tags
 activity: low
 ---
 kind: url
+name: ruby_solargraph
+url: https://github.com/castwide/solargraph/tags
+activity: high
+---
+kind: url
+name: ruby_thor
+url: https://github.com/rails/thor/releases
+activity: high
+---
+kind: url
+name: ruby_tilt
+url: https://github.com/jeremyevans/tilt/tags
+activity: high
+---
+kind: url
 name: ruby_unicode_display_width
 url: https://github.com/janlelis/unicode-display_width/tags
 activity: high
@@ -8333,6 +8383,16 @@ kind: url
 name: ruby_yaml_lint
 url: https://github.com/Pryz/yaml-lint/releases
 activity: none
+---
+kind: url
+name: ruby_yard
+url: https://github.com/lsegal/yard/releases
+activity: medium
+---
+kind: url
+name: ruby_yard_solargraph
+url: https://github.com/castwide/yard-solargraph/tags
+activity: medium
 ---
 kind: url
 name: runc
