@@ -9,7 +9,12 @@ class Zed < RUST
   source_url 'https://github.com/zed-industries/zed.git'
   git_hashtag "v#{version}"
 
+  binary_sha256({
+     x86_64: '86630d24169d03f328a1d7b10096010713ed3a5bd101f9556347670eab0b9333'
+  })
+
   depends_on 'alsa_lib'
+  depends_on 'cargo_about' => :build
   depends_on 'libbsd'
   depends_on 'libxau'
   depends_on 'libxcb'
@@ -20,7 +25,6 @@ class Zed < RUST
   depends_on 'rust' => :build
   depends_on 'zlib'
   depends_on 'zstd'
-
 
   rust_flags '-C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib'
   rust_packages 'zed cli'
