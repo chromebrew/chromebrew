@@ -8,8 +8,6 @@ class Ruby_yard < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'ruby_yard' # R
-
   conflicts_ok
   no_compile_needed
 end
