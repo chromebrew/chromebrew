@@ -4,7 +4,7 @@ class Ruby_yard_solargraph < RUBY
   description 'A YARD extension for documenting Solargraph tags.'
   homepage 'https://solargraph.org'
   version "0.1.0-#{CREW_RUBY_VER}"
-  license '---'
+  license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
 
