@@ -23,7 +23,7 @@ class Cargo_about < RUST
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'rust' => :build
-  
+
   rust_install_extras do
     Dir.chdir("#{CREW_DEST_PREFIX}/bin") do
       FileUtils.ln_s 'cargo-about', 'about'
