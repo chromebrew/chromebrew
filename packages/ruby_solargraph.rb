@@ -26,7 +26,6 @@ class Ruby_solargraph < RUBY
   depends_on 'ruby_thor' # R
   depends_on 'ruby_tilt' # R
   depends_on 'ruby_yard' # R
-  depends_on 'ruby_yard' # R
   depends_on 'ruby_yard_solargraph' # R
 
   conflicts_ok
