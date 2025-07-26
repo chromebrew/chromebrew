@@ -8,7 +8,6 @@ class Ruby_kramdown < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'ruby_kramdown' # R
   depends_on 'ruby_rexml' # R
 
   conflicts_ok
