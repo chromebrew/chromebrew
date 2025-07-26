@@ -31,9 +31,9 @@ class RUST < Package
     system rust_env, "#{@pre_rust_options} cargo #{@channel_flag} fetch"
     system rust_env, "#{@pre_rust_options} cargo #{@channel_flag} build \
       --profile=#{@profile} \
+      #{@packages} \
       #{@features} \
-      #{@rust_options} \
-      #{@packages}"
+      #{@rust_options}"
     @rust_build_extras&.call
   end
 
@@ -49,12 +49,12 @@ class RUST < Package
     @rust_install_path.split.each do |path|
       system rust_env, "cargo #{@channel_flag} install \
         --profile=#{@profile} \
+        #{@packages} \
         --offline \
         --no-track \
         --path #{path} \
         #{@features} \
         #{@rust_options} \
-        #{@packages} \
         --root #{CREW_DEST_PREFIX}"
     end
     @rust_install_extras&.call
