@@ -23,22 +23,16 @@ class Php82 < Package
   depends_on 'c_ares' # R
   depends_on 'curl' # R
   depends_on 'e2fsprogs' # R
-  depends_on 'exif' # R
-  depends_on 'freetds' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
-  depends_on 'graphite' # R
   depends_on 'icu4c' # R
   depends_on 'krb5' # R
   depends_on 'libcyrussasl' # R
   depends_on 'libedit' # R
   depends_on 'libffi' # R
-  depends_on 'libgcrypt' # R
-  depends_on 'libgd' # R
-  depends_on 'libgpg_error' # R
   depends_on 'libidn2' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libnghttp2' # R
@@ -49,20 +43,18 @@ class Php82 < Package
   depends_on 'libtool' # R
   depends_on 'libunistring' # R
   depends_on 'libxml2' # R
-  depends_on 'libxpm' # R
   depends_on 'libxslt' # R
   depends_on 'libzip' # R
   depends_on 'ncurses' # R
   depends_on 'oniguruma' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R
-  depends_on 'py3_pygments' # R
-  depends_on 're2c' # R
   depends_on 'sqlite' # R
   depends_on 'tidy' # R
   depends_on 'unixodbc' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
+  depends_on 'jq' # R
 
   no_fhs
 
