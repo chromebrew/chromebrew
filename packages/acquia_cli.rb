@@ -3,11 +3,11 @@ require 'package'
 class Acquia_cli < Package
   description 'Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.'
   homepage 'https://github.com/acquia/cli'
-  version '2.42.0'
+  version '2.44.2'
   license 'GPL-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/acquia/cli/releases/download/#{version}/acli.phar"
-  source_sha256 'f7952b01f9690a68836891a9dea58d7f3804a43afa4b371b1aafdc3ab82ecd89'
+  source_sha256 '9c7b73df5f7701014124a5afa895b086b24ac78e9caef3fbb20b311da5ccf7ce'
 
   depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
@@ -21,5 +21,9 @@ class Acquia_cli < Package
 
   def self.install
     FileUtils.install 'acli.phar', "#{CREW_DEST_PREFIX}/bin/acli", mode: 0o755
+  end
+
+  def self.postinstall
+    ExitMessage.add "\nType 'acli' to get started.\n"
   end
 end
