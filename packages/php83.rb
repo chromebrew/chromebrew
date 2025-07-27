@@ -29,6 +29,7 @@ class Php83 < Package
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'icu4c' # R
+  depends_on 'jq' # R
   depends_on 'krb5' # R
   depends_on 'libcyrussasl' # R
   depends_on 'libedit' # R
@@ -54,7 +55,6 @@ class Php83 < Package
   depends_on 'unixodbc' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'jq' # R
 
   no_fhs
 
