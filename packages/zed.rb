@@ -27,7 +27,7 @@ class Zed < RUST
   depends_on 'zlib'
   depends_on 'zstd'
 
-  rust_flags '-C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib'
+  rust_flags "-C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../#{ARCH_LIB}"
   rust_install_path 'crates/cli crates/zed'
   rust_packages 'zed cli'
 
