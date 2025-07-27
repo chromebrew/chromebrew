@@ -3,17 +3,17 @@ require 'package'
 class Php83 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.3.22'
+  version '8.3.23'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
-  source_sha256 '66c86889059bd27ccf460590ca48fcaf3261349cc9bdba2023ac6a265beabf36'
+  source_sha256 '08be64700f703bca6ff1284bf1fdaffa37ae1b9734b6559f8350248e8960a6db'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '11dc71c1a95b9668212c4576aaac6bcc47ae3450f77ddc3f6b6c057af40282ae',
-     armv7l: '11dc71c1a95b9668212c4576aaac6bcc47ae3450f77ddc3f6b6c057af40282ae',
-     x86_64: 'b8c55e7892b8c77c21a1471671ff0161d3d38d159daee7d84136724a4d37cd71'
+    aarch64: '32606cc1296004a0741ef3205fc1bc922193fe37eb35023fa8df4d4c49ade554',
+     armv7l: '32606cc1296004a0741ef3205fc1bc922193fe37eb35023fa8df4d4c49ade554',
+     x86_64: '10e495ae2609a73190bef1b6d7e9019796b1b3693b6c7efb1d1dd976d647b0c5'
   })
 
   depends_on 'aspell_en' => :build
@@ -23,22 +23,17 @@ class Php83 < Package
   depends_on 'c_ares' # R
   depends_on 'curl' # R
   depends_on 'e2fsprogs' # R
-  depends_on 'exif' # R
-  depends_on 'freetds' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
-  depends_on 'graphite' # R
   depends_on 'icu4c' # R
+  depends_on 'jq' # R
   depends_on 'krb5' # R
   depends_on 'libcyrussasl' # R
   depends_on 'libedit' # R
   depends_on 'libffi' # R
-  depends_on 'libgcrypt' # R
-  depends_on 'libgd' # R
-  depends_on 'libgpg_error' # R
   depends_on 'libidn2' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libnghttp2' # R
@@ -49,15 +44,12 @@ class Php83 < Package
   depends_on 'libtool' # R
   depends_on 'libunistring' # R
   depends_on 'libxml2' # R
-  depends_on 'libxpm' # R
   depends_on 'libxslt' # R
   depends_on 'libzip' # R
   depends_on 'ncurses' # R
   depends_on 'oniguruma' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R
-  depends_on 'py3_pygments' # R
-  depends_on 're2c' # R
   depends_on 'sqlite' # R
   depends_on 'tidy' # R
   depends_on 'unixodbc' # R
