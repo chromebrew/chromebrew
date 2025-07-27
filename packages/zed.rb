@@ -28,6 +28,7 @@ class Zed < RUST
   depends_on 'zstd'
 
   rust_flags '-C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib'
+  rust_install_path 'crates/cli crates/zed'
   rust_packages 'zed cli'
 
   def self.prebuild

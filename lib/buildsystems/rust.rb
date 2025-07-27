@@ -49,8 +49,6 @@ class RUST < Package
     @rust_install_path.split.each do |path|
       system rust_env, "cargo #{@channel_flag} install \
         --profile=#{@profile} \
-        #{@packages} \
-        --offline \
         --no-track \
         --path #{path} \
         #{@features} \
