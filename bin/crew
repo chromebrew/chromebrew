@@ -900,7 +900,7 @@ def expand_binaries_and_fix_interpreter_path(dir)
   Dir.chdir dir do
     puts "Running upx to uncompress binaries #{'and patchelf to patch binary interpreter paths ' unless CREW_GLIBC_INTERPRETER.blank?}if needed.".lightblue
     abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
-    abort('No Upx found!').lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
+    puts 'No Upx found!'.lightred unless File.file?("#{CREW_PREFIX}/bin/upx")
     # Look for installed binaries and libraries in the package install
     # directory tree.
     execfiles = Find.find(Dir.pwd).select { |p| File.executable?(p) }
@@ -919,7 +919,7 @@ def expand_binaries_and_fix_interpreter_path(dir)
 
       pool.post do
         # Decompress the binary if compressed.
-        system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL, exception: false
+        system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL, exception: false if File.file?("#{CREW_PREFIX}/bin/upx")
 
         # Check for existing interpreter.
         next if CREW_GLIBC_INTERPRETER.blank?
