@@ -22,6 +22,7 @@ class Zed < RUST
   depends_on 'libxkbcommon'
   depends_on 'llvm_dev' => :build
   depends_on 'openssl'
+  depends_on 'ruby_solargraph' # L
   depends_on 'rust' => :build
   depends_on 'zlib'
   depends_on 'zstd'
