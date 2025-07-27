@@ -8035,6 +8035,11 @@ url: http://ftp.gnu.org/gnu/readline
 activity: none
 ---
 kind: url
+name: recomod
+url: https://github.com/MercuryWorkshop/RecoMod
+activity: none
+---
+kind: url
 name: recordmydesktop
 url: https://sourceforge.net/projects/recordmydesktop/files/recordmydesktop/
 activity: none
