@@ -32,6 +32,7 @@ class Php81 < Package
   depends_on 'gmp' # R
   depends_on 'graphite'
   depends_on 'icu4c' # R
+  depends_on 'jq' # R
   depends_on 'krb5' # R
   depends_on 'libcyrussasl' # R
   depends_on 'libedit' # R
@@ -45,6 +46,7 @@ class Php81 < Package
   depends_on 'libssh' # R
   depends_on 'libtool' # R
   depends_on 'libunistring' # R
+  depends_on 'libxcrypt' # R
   depends_on 'libxml2' # R
   depends_on 'libxpm'
   depends_on 'libxslt' # R
@@ -61,8 +63,6 @@ class Php81 < Package
   depends_on 'unixodbc' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'libxcrypt' # R
-  depends_on 'jq' # R
 
   no_fhs
 
