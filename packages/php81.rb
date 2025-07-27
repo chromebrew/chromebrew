@@ -36,8 +36,6 @@ class Php81 < Package
   depends_on 'libcyrussasl' # R
   depends_on 'libedit' # R
   depends_on 'libffi' # R
-  depends_on 'libgcrypt' # R
-  depends_on 'libgpg_error' # R
   depends_on 'libidn2' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libnghttp2' # R
@@ -63,6 +61,8 @@ class Php81 < Package
   depends_on 'unixodbc' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
+  depends_on 'libxcrypt' # R
+  depends_on 'jq' # R
 
   no_fhs
 
