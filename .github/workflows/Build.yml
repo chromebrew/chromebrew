@@ -320,9 +320,9 @@ jobs:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
     steps:
-      - name: Build Container cleanup
-        run: |
-            sudo rm -rf release
+      - name: fail if build jobs failed
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -373,7 +373,7 @@ jobs:
             esac
       - name: Run Updater in container
         id: run-updater
-        if: ${{ !cancelled() }}
+        if: ${{ contains(needs.*.result, 'failure') ||  !cancelled() }}
         run: |
             if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
               # Exit the arm container if there are not armv7l compatible packages.
