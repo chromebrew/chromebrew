@@ -16,7 +16,7 @@ class Zed < RUST
 
   depends_on 'alsa_lib' # R
   depends_on 'cargo_about' => :build
-  depends_on 'gcc_lib' #
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
   depends_on 'libx11' # R
