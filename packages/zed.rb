@@ -27,6 +27,9 @@ class Zed < RUST
   depends_on 'rust' => :build
   depends_on 'zlib'
   depends_on 'zstd'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
 
   rust_flags '-C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib -C symbol-mangling-version=v0 --cfg tokio_unstable'
   rust_packages 'zed'
