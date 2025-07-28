@@ -3,10 +3,11 @@ require 'buildsystems/meson'
 class Pkgconf < Meson
   description 'Package compiler and linker metadata toolkit'
   homepage 'https://github.com/pkgconf/pkgconf'
-  version '2.1.1'
+  version '2.5.1'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/pkgconf/pkgconf/archive/pkgconf-2.1.1.tar.gz'
+  source_url 'https://github.com/pkgconf/pkgconf.git'
+  git_hashtag "pkgconf-#{version}"
   source_sha256 '6a181e0bf1195e95b7cd535a1854827aedb383b26b1fc24ca13586cb5e8e55af'
   binary_compression 'tar.zst'
 
