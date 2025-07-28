@@ -6,7 +6,7 @@ class RUST < Package
   property :rust_channel, :rust_flags, :rust_features, :rust_install_path, :rust_options, :rust_packages, :rust_release_profile, :rust_targets, :pre_rust_options, :rust_build_extras, :rust_install_extras
 
   def self.build
-    @rustflags = ENV.fetch('RUSTFLAGS', nil) + ' ' + @rust_flags
+    @rustflags = "#{ENV.fetch('RUSTFLAGS', nil)} #{@rust_flags}"
     rust_env =
       {
                   LD: 'mold',
@@ -21,6 +21,7 @@ class RUST < Package
     @rust_install_path ||= '.'
     @packages = @rust_packages.to_s.empty? ? '' : @rust_packages.split.map { |p| "--package #{p}" }.join(' ')
     extend ReportBuildsystemMethods
+
     print_buildsystem_methods
 
     unless @rust_channel.to_s.empty?

@@ -7,6 +7,7 @@ class Qmake < Package
 
   def self.build
     extend ReportBuildsystemMethods
+
     print_buildsystem_methods
 
     system "QMAKE_CXX='g++ #{File.join(CREW_LIB_PREFIX, 'libC.so.6').to_s if ARCH == 'x86_64' && Gem::Version.new(LIBC_VERSION.to_s) >= Gem::Version.new('2.35')}' qmake"

@@ -10,6 +10,7 @@ class CMake < Package
     @crew_cmake_options = @no_lto ? CREW_CMAKE_OPTIONS.gsub('-ffat-lto-objects', '').gsub('-flto=auto', '').sub('-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE', '') : CREW_CMAKE_OPTIONS
 
     extend ReportBuildsystemMethods
+
     print_buildsystem_methods
 
     system "#{@pre_cmake_options} cmake -S #{@cmake_build_relative_dir} -B #{@cmake_build_relative_dir}/builddir -G Ninja #{@crew_cmake_options} #{@cmake_options}"
