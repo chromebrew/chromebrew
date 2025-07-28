@@ -1,5 +1,6 @@
 ---
 name: Generate PR
+run-name: Generate PR for ${{ inputs.branch || github.ref_name }} by @${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
@@ -62,7 +63,7 @@ jobs:
       - name: Push rebase changes
         uses: ad-m/github-push-action@master
         with:
-          branch: ${{ env.BRANCH }}
+          branch: ${{ inputs.branch || github.ref_name }}
           force: true
       - name: Set Timestamp
         id: set-timestamp
@@ -93,7 +94,7 @@ jobs:
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
               echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ env.BRANCH }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.ref_name }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
             fi
 
             # If a package doesnt have a min_glibc value, or if it is below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
@@ -102,7 +103,7 @@ jobs:
             if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ env.BRANCH }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.ref_name }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
             fi
 
             # If a package has a compatibility of 'all' or one that includes 'x86_64', add it to x86_64_PACKAGES.
@@ -111,7 +112,7 @@ jobs:
             if [[ -n ${x86_64_PACKAGES} ]]; then
               echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_ENV"
               echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ env.BRANCH }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.ref_name }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to armv7l_PACKAGES.
@@ -120,7 +121,7 @@ jobs:
             if [[ -n ${armv7l_PACKAGES} ]]; then
               echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_ENV"
               echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ env.BRANCH }} has these armv7l compatible packages: ${armv7l_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.ref_name }} has these armv7l compatible packages: ${armv7l_PACKAGES}"
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'i686', add it to i686_PACKAGES.
@@ -129,12 +130,159 @@ jobs:
             if [[ -n ${i686_PACKAGES} ]]; then
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_ENV"
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ env.BRANCH }} has these i686 compatible packages: ${i686_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.ref_name }} has these i686 compatible packages: ${i686_PACKAGES}"
             fi
+  update-package-files:
+    strategy:
+      max-parallel: 1
+      matrix:
+        arch: [i686, x86_64, armv7l]
+        runner:
+          - ubuntu-24.04
+          - ubuntu-24.04-arm
+        exclude:
+          - arch: x86_64
+            runner: ubuntu-24.04-arm
+          - arch: i686
+            runner: ubuntu-24.04-arm
+          - arch: armv7l
+            runner: ubuntu-24.04
+    runs-on: ${{ matrix.runner }}
+    needs:
+      - setup
+    env:
+      CREW_REPO: ${{ github.event.repository.clone_url }}
+      CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
+      TARGET_ARCH: ${{ matrix.arch }}
+      TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
+      GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_232_compat }}
+      GLIBC_237_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_237_compat }}
+      i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
+      x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
+      armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
+    if: ${{ !cancelled() }}
+    concurrency:
+      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.ref_name }}
+      cancel-in-progress: true
+    steps:
+      - name: fail if build jobs failed
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Export target docker container to github context
+        run: |
+          case $TARGET_ARCH in
+              x86_64)
+                echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
+                echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
+                echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
+              ;;
+              armv7l)
+                echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
+                echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
+                echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
+              ;;
+              i686)
+                # There is only one i686 container based upon M58 with glibc 2.23.
+                echo "CONTAINER=satmandu/crew-pre-glibc-standalone:alex-i686.m58" >> "$GITHUB_ENV"
+                echo "PLATFORM=linux/386" >> "$GITHUB_ENV"
+                echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
+              ;;
+            esac
+      - name: Run Updater in container
+        id: run-updater
+        if: ${{ contains(needs.*.result, 'failure') ||  !cancelled() }}
+        run: |
+            if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
+              # Exit the arm container if there are not armv7l compatible packages.
+              echo "Skipping armv7l container builds."
+              exit 0
+            elif [ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]; then
+              # Exit the x86_64 container if there are not x86_64 compatible packages.
+              echo "Skipping x86_64 container builds."
+              exit 0
+            elif [ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]; then
+              # Exit the i686 container if there are not i686 compatible packages.
+              echo "Skipping i686 container builds."
+              exit 0
+            fi
+
+            git fetch origin
+            git checkout "${{ inputs.branch || github.ref_name }}"
+            git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
+            git log --oneline -10
+            docker pull --platform "${PLATFORM}" "${CONTAINER}"
+            sudo apt install -y acl
+            # Detection of /output/pkg_cache dir triggers setting
+            # CREW_CACHE_DIR=1 and CREW_CACHE_ENABLED=1 in the build
+            # container. Without these, upload fails.
+            mkdir pkg_cache
+            sudo setfacl -R -m u:1000:rwx .
+            docker run \
+              --rm \
+              --platform "${PLATFORM}" \
+              -e PUID=1000 \
+              -e PGID=1000 \
+              --privileged \
+              -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
+              -e CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES="${CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES}" \
+              -e CREW_REPO="${CREW_REPO}" \
+              -e CREW_BRANCH="${{ inputs.branch || github.ref_name }}" \
+              -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
+              -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
+              -v "$(pwd)"/pkg_cache:/usr/local/tmp/packages:rshared \
+              -v "$(pwd)":/output:rshared \
+              --tmpfs /tmp \
+              "${CONTAINER}" \
+              /bin/chromebrewstart "/output/tools/github_actions_update_builder_allowing_failures.sh"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
+              grep "Built and Uploaded:" /tmp/build.log || true
+              echo "Deleting build output directories."
+              sudo rm -rf release pkg_cache
+      - name: Add updated packages to branch.
+        id: push-check
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git stash
+            git pull
+            git stash pop
+            git add -A
+            git commit -m "Updating package files for ${PLATFORM} to branch ${{ inputs.branch || github.ref_name }}." && git push
+            git log --oneline -10
+          fi
   build-check:
     runs-on: ubuntu-24.04
     needs:
       - setup
+      - update-package-files
     if: ${{ !cancelled() }}
     steps:
       - name: fail if update or build jobs failed, otherwise create a PR
@@ -152,8 +300,8 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git fetch origin
-            git checkout "${{ env.BRANCH }}"
-            git reset --hard "origin/${{ env.BRANCH }}"
+            git checkout "${{ inputs.branch || github.ref_name }}"
+            git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
             git pull --rebase origin master && git push -f
             git log --oneline -10
       - name: Get changed files
@@ -226,13 +374,13 @@ jobs:
             echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
           fi
           echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/pr.txt
-          echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ env.BRANCH }} crew update \\" >> /tmp/pr.txt
+          echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ inputs.branch || github.ref_name }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           cat /tmp/pr.txt
           [[ $DRAFT_PR == 'true' ]] && export PR_DRAFT_FLAG='-d'
-          PR_NUMBER=$(gh pr list -H ${CREW_BRANCH}| cut -f1)
+          PR_NUMBER=$(gh pr list -H ${{ inputs.branch || github.ref_name }}| cut -f1)
           if [[ -z ${PR_NUMBER} ]]; then
-            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "${{ env.BRANCH }} at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "${{ inputs.branch || github.ref_name }} at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
             gh pr edit -F /tmp/pr.txt
           fi

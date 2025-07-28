@@ -1691,7 +1691,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       #    currently running architecture are saved locally. (This is used
       #    by build workflows to make sure updated manifests get
       #    uploaded.)
-      install_command(@pkg.name)
+      @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name } ? reinstall_command(@pkg.name) : install_command(@pkg.name)
     end
     puts "\e[1A\e[K🎉 Uploads complete for #{package}. 🎉\r\n".lightgreen
   end
