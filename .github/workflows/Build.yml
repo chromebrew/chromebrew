@@ -1,4 +1,5 @@
 ---
+name: Build
 run-name: Build ${{ inputs.branch || github.ref_name }} by @${{ github.actor }}
 on:
   workflow_dispatch:
@@ -233,15 +234,15 @@ jobs:
         run: |
             if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
               # Exit the arm container if there are not armv7l compatible packages.
-              echo "Skipping armv7l container builds."
+              echo "Skipping armv7l container builds &/or package file updates"
               exit 0
             elif [ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]; then
               # Exit the x86_64 container if there are not x86_64 compatible packages.
-              echo "Skipping x86_64 container builds."
+              echo "Skipping x86_64 container builds &/or package file updates"
               exit 0
             elif [ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]; then
               # Exit the i686 container if there are not i686 compatible packages.
-              echo "Skipping i686 container builds."
+              echo "Skipping i686 container builds &/or package file updates"
               exit 0
             fi
 
@@ -265,7 +266,7 @@ jobs:
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
               -e CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES="${CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES}" \
               -e CREW_REPO="${CREW_REPO}" \
-              -e CREW_BRANCH="${CREW_BRANCH}" \
+              -e CREW_BRANCH="${{ inputs.branch || github.ref_name }}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               -v "$(pwd)"/pkg_cache:/usr/local/tmp/packages:rshared \
@@ -286,7 +287,7 @@ jobs:
             git pull
             git stash pop
             git add -A
-            git commit -m "Build on ${PLATFORM} to branch ${{ inputs.branch || github.ref_name }}." && git push
+            git commit -m "${{ inputs.branch || github.ref_name }}: Build Run on ${PLATFORM}." && git push
             git log --oneline -10
           fi
   update-package-files:
@@ -380,15 +381,15 @@ jobs:
         run: |
             if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
               # Exit the arm container if there are not armv7l compatible packages.
-              echo "Skipping armv7l container builds."
+              echo "Skipping armv7l container builds &/or package file updates"
               exit 0
             elif [ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]; then
               # Exit the x86_64 container if there are not x86_64 compatible packages.
-              echo "Skipping x86_64 container builds."
+              echo "Skipping x86_64 container builds &/or package file updates"
               exit 0
             elif [ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]; then
               # Exit the i686 container if there are not i686 compatible packages.
-              echo "Skipping i686 container builds."
+              echo "Skipping i686 container builds &/or package file updates"
               exit 0
             fi
 
@@ -412,14 +413,14 @@ jobs:
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
               -e CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES="${CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES}" \
               -e CREW_REPO="${CREW_REPO}" \
-              -e CREW_BRANCH="${CREW_BRANCH}" \
+              -e CREW_BRANCH="${{ inputs.branch || github.ref_name }}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               -v "$(pwd)"/pkg_cache:/usr/local/tmp/packages:rshared \
               -v "$(pwd)":/output:rshared \
               --tmpfs /tmp \
               "${CONTAINER}" \
-              /bin/chromebrewstart "/output/tools/github_actions_update_builder${{ github.event.inputs.allow_fail == 'true' && '_allowing_failures' || ''}}.sh"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
+              /bin/chromebrewstart "/output/tools/github_actions_update_builder_allowing_failures.sh"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
               grep "Built and Uploaded:" /tmp/build.log || true
               echo "Deleting build output directories."
               sudo rm -rf release pkg_cache
@@ -433,7 +434,7 @@ jobs:
             git pull
             git stash pop
             git add -A
-            git commit -m "Updating package files for ${PLATFORM} to branch ${{ inputs.branch || github.ref_name }}." && git push
+            git commit -m "${{ inputs.branch || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push
             git log --oneline -10
           fi
   build-check:
@@ -449,11 +450,20 @@ jobs:
         run: exit 1
       - name: Report update & build success
         run: echo "Update & build jobs succeeded. Creating a PR."
+      - name: Get GH Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+          organization: chromebrew
+          revoke_token: true
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.ref_name }}
+          token: ${{ steps.get_workflow_token.outputs.token }}
       - name: Rebase to master
         run: |
             git config user.name "${{ github.actor }}"
@@ -480,14 +490,6 @@ jobs:
               - '!manifest/**'
               - '!packages/*.rb'
               - '!.github/**'
-      - name: Get GH Token
-        id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v4
-        with:
-          application_id: ${{ secrets.APPLICATION_ID }}
-          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
-          organization: chromebrew
-          revoke_token: true
       - name: Create Pull Request
         if: ${{ github.event.inputs.with_pr != 'No' }}
         env:
@@ -551,3 +553,5 @@ jobs:
           fi
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
+          # Trigger workflow run:
+          gh workflow run Unit-Test.yml ${PR_NUMBER}
