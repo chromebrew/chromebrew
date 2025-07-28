@@ -14,22 +14,22 @@ class Zed < RUST
      x86_64: '9085ec3df15419a7644051c5d705609819889fe9282bb0320296132f13ee0d95'
   })
 
-  depends_on 'alsa_lib'
+  depends_on 'alsa_lib' # R
   depends_on 'cargo_about' => :build
-  depends_on 'libbsd'
-  depends_on 'libxau'
-  depends_on 'libxcb'
-  depends_on 'libxdmcp'
-  depends_on 'libxkbcommon'
+  depends_on 'gcc_lib' #
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxkbcommon' # R
   depends_on 'llvm_dev' => :build
-  depends_on 'openssl'
+  depends_on 'openssl' # R
   depends_on 'ruby_solargraph' # L
   depends_on 'rust' => :build
-  depends_on 'zlib'
-  depends_on 'zstd'
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libx11' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
   rust_flags '-C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib -C symbol-mangling-version=v0 --cfg tokio_unstable'
   rust_packages 'zed'
