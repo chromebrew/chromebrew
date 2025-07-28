@@ -422,3 +422,5 @@ jobs:
           fi
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
+          # Trigger workflow run:
+          gh workflow run Unit-Test.yml ${PR_NUMBER}
