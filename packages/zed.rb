@@ -27,9 +27,9 @@ class Zed < RUST
   depends_on 'zlib'
   depends_on 'zstd'
 
-  rust_flags "-C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../#{ARCH_LIB} -C symbol-mangling-version=v0 --cfg tokio_unstable -C link-arg=-fuse-ld=mold"
-  rust_install_path 'crates/zed'
-  # rust_packages 'zed cli'
+  rust_flags "-C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib -C symbol-mangling-version=v0 --cfg tokio_unstable -C link-arg=-fuse-ld=mold"
+  # rust_install_path 'crates/zed'
+  rust_packages 'zed'
 
   def self.prebuild
     system 'script/generate-licenses'
