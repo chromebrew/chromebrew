@@ -234,15 +234,15 @@ jobs:
         run: |
             if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
               # Exit the arm container if there are not armv7l compatible packages.
-              echo "Skipping armv7l container builds."
+              echo "Skipping armv7l container builds &/or package file updates"
               exit 0
             elif [ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]; then
               # Exit the x86_64 container if there are not x86_64 compatible packages.
-              echo "Skipping x86_64 container builds."
+              echo "Skipping x86_64 container builds &/or package file updates"
               exit 0
             elif [ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]; then
               # Exit the i686 container if there are not i686 compatible packages.
-              echo "Skipping i686 container builds."
+              echo "Skipping i686 container builds &/or package file updates"
               exit 0
             fi
 
@@ -287,7 +287,7 @@ jobs:
             git pull
             git stash pop
             git add -A
-            git commit -m "Build on ${PLATFORM} to branch ${{ inputs.branch || github.ref_name }}." && git push
+            git commit -m "${{ inputs.branch || github.ref_name }}: Build Run on ${PLATFORM}." && git push
             git log --oneline -10
           fi
   update-package-files:
@@ -381,15 +381,15 @@ jobs:
         run: |
             if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
               # Exit the arm container if there are not armv7l compatible packages.
-              echo "Skipping armv7l container builds."
+              echo "Skipping armv7l container builds &/or package file updates"
               exit 0
             elif [ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]; then
               # Exit the x86_64 container if there are not x86_64 compatible packages.
-              echo "Skipping x86_64 container builds."
+              echo "Skipping x86_64 container builds &/or package file updates"
               exit 0
             elif [ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]; then
               # Exit the i686 container if there are not i686 compatible packages.
-              echo "Skipping i686 container builds."
+              echo "Skipping i686 container builds &/or package file updates"
               exit 0
             fi
 
@@ -434,7 +434,7 @@ jobs:
             git pull
             git stash pop
             git add -A
-            git commit -m "Updating package files for ${PLATFORM} to branch ${{ inputs.branch || github.ref_name }}." && git push
+            git commit -m "${{ inputs.branch || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push
             git log --oneline -10
           fi
   build-check:
@@ -553,3 +553,5 @@ jobs:
           fi
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
+          # Trigger workflow run:
+          gh workflow run Unit-Test.yml ${PR_NUMBER}
