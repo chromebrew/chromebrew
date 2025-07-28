@@ -21,6 +21,8 @@ class Pkgconf < Meson
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
+  conflicts_ok # Conflicts with pkg_config
+
   # Can be enabled for packages by setting
   # ENV['PKG_CONFIG'] = "#{CREW_PREFIX}/bin/pkgconf"
 
