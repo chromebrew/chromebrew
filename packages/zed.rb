@@ -31,24 +31,21 @@ class Zed < RUST
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  rust_flags '-C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib -C symbol-mangling-version=v0 --cfg tokio_unstable'
+  rust_flags '-C link-args=-Wl,--disable-new-dtags,-rpath,$ORIGIN/../lib -C symbol-mangling-version=v0 --cfg tokio_unstable'
   rust_packages 'zed'
-
-  rust_install_extras do
-    system "DO_STARTUP_NOTIFY=true APP_CLI=zed APP_ICON=zed \
-      APP_ARGS='%U' APP_NAME=Zed \
-      envsubst < 'crates/zed/resources/zed.desktop.in' > zed.desktop"
-    FileUtils.install 'zed.desktop', "#{CREW_DEST_PREFIX}/share/applications/zed.desktop", mode: 0o644
-    FileUtils.install 'crates/zed/resources/app-icon.png', "#{CREW_DEST_PREFIX}/share/icons/hicolor/512x512/apps/zed.png", mode: 0o644
-    FileUtils.install 'crates/zed/resources/app-icon@2x.png', "#{CREW_DEST_PREFIX}/share/icons/hicolor/1024x1024/apps/zed.png", mode: 0o644
-  end
 
   def self.prebuild
     system 'script/generate-licenses'
   end
 
   def self.install
+    system "DO_STARTUP_NOTIFY=true APP_CLI=zed APP_ICON=zed \
+      APP_ARGS='%U' APP_NAME=Zed \
+      envsubst < 'crates/zed/resources/zed.desktop.in' > zed.desktop"
     FileUtils.install 'target/release/zed', "#{CREW_DEST_PREFIX}/bin/zed", mode: 0o755
+    FileUtils.install 'zed.desktop', "#{CREW_DEST_PREFIX}/share/applications/zed.desktop", mode: 0o644
+    FileUtils.install 'crates/zed/resources/app-icon.png', "#{CREW_DEST_PREFIX}/share/icons/hicolor/512x512/apps/zed.png", mode: 0o644
+    FileUtils.install 'crates/zed/resources/app-icon@2x.png', "#{CREW_DEST_PREFIX}/share/icons/hicolor/1024x1024/apps/zed.png", mode: 0o644
   end
 
   def self.postinstall
