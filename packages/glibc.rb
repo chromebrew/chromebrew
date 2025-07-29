@@ -7,11 +7,12 @@ unless CREW_PRE_GLIBC_STANDALONE
   class Glibc < Package
     description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
     homepage 'https://www.gnu.org/software/libc/'
-    version '2.41-6'
+    version '2.42'
     license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-    compatibility 'all'
+    compatibility 'aarch64 armv7l x86_64'
     source_url 'https://sourceware.org/git/glibc.git'
-    git_hashtag '515d4166f4dbcf43b1568e3f63a19d9a92b2d50e' # Build from latest commit in the stable branch.
+    git_hashtag "glibc-#{version}"
+    # git_hashtag '515d4166f4dbcf43b1568e3f63a19d9a92b2d50e' # Build from latest commit in the stable branch.
     # source_url "https://ftpmirror.gnu.org/glibc/glibc-#{version.partition('-')[0]}.tar.xz"
     # source_sha256 'a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
     binary_compression 'tar.zst'
@@ -19,7 +20,6 @@ unless CREW_PRE_GLIBC_STANDALONE
     binary_sha256({
       aarch64: '8d092cdeeaf3b321b64b31cb76aa3813adf8e73416f4db557d41f0c0811e0131',
        armv7l: '8d092cdeeaf3b321b64b31cb76aa3813adf8e73416f4db557d41f0c0811e0131',
-         i686: '8c2430f690f468f33dc849cd0b2163dfadf187ff1cc3e33f1d20cbfb06572ec3',
        x86_64: '50729b68b70aceb95f467812950fc58ec29e3e8b184f95d7c7b4ce7cb2d53946'
     })
 
