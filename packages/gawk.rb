@@ -1,37 +1,20 @@
-# This uses the last commit before f346791bba5d53a516571e9826805d884097a1fa
-# for i686 (as per the sailfish gawk mirror).
-# Date: Thu, 21 Dec 2023 13:10:37 +0200
-# Subject: [PATCH] Attempt to close SIGPIPE race condition.
-# 00b12818868cc7546817536cf33dcc4f440810a
-# Originally in 5.3.1, which appears to cause an out of memory
-# issue on i686 & armv7l, especially when building glibc.
+# gawk will break in docker containers in certain situations.
+# Add  --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" to work around
+# this docker issue that breaks gawk on 32-bit containers:
+# https://zouyee.medium.com/why-does-rlimit-nofile-slow-down-your-containerized-application-in-2024-3361671ef5e8
+# https://github.com/containerd/containerd/pull/7566#issuecomment-1285417325
+# https://github.com/containerd/containerd/pull/7566#issuecomment-1461134737
+
 require 'buildsystems/autotools'
 
 class Gawk < Autotools
   description 'The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.'
   homepage 'https://www.gnu.org/software/gawk/'
-  case ARCH
-  when 'x86_64'
-    version '5.3.2-1'
-  when 'i686'
-    version '5.3.0-2'
-  when 'armv7l', 'aarch64'
-    version '5.3.2-16ba211'
-  end
+  version '5.3.2-1'
   license 'GPL-2'
   compatibility 'all'
-  case ARCH
-  when 'x86_64' 
-    source_url "https://ftpmirror.gnu.org/gawk/gawk-#{version.split('-').first}.tar.xz"
-    source_sha256 'ca9c16d3d11d0ff8c69d79dc0b47267e1329a69b39b799895604ed447d3ca90b'
-  when 'i686'
-    # The Savannah git server keeps throwing 502 errors.
-    source_url 'https://github.com/sailfishos-mirror/gawk/archive/605a77387523a07e3636d3a72c7a612dc15a5b31.tar.gz'
-    source_sha256 '13c7e7f70c16ee158d8808b787ec5c9164faf1a08f1a7d7b3d937c5556f7f7eb'
-  when 'armv7l', 'aarch64'
-    source_url 'https://github.com/sailfishos-mirror/gawk/archive/16ba2113002eedad16b944cac3439eb309648144.tar.gz'
-    source_sha256 '5a0c27d2afb79b025b7e2632c8acbd864f5eca5e72852b8bf76f9db6348b0b86'
-  end
+  source_url "https://ftpmirror.gnu.org/gawk/gawk-#{version.split('-').first}.tar.xz"
+  source_sha256 'ca9c16d3d11d0ff8c69d79dc0b47267e1329a69b39b799895604ed447d3ca90b'
   binary_compression 'tar.zst'
 
   binary_sha256({

@@ -245,6 +245,7 @@ jobs:
             # container. Without these, upload fails.
             mkdir pkg_cache
             sudo setfacl -R -m u:1000:rwx .
+            # See https://github.com/containerd/containerd/pull/7566#issuecomment-1461134737 for why we set ulimit.
             docker run \
               --rm \
               --platform "${PLATFORM}" \
@@ -260,6 +261,7 @@ jobs:
               -v "$(pwd)"/pkg_cache:/usr/local/tmp/packages:rshared \
               -v "$(pwd)":/output:rshared \
               --tmpfs /tmp \
+              --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" \
               "${CONTAINER}" \
               /bin/chromebrewstart "/output/tools/github_actions_update_builder_allowing_failures.sh"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
               grep "Built and Uploaded:" /tmp/build.log || true
