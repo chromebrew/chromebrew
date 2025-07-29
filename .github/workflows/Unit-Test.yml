@@ -198,6 +198,7 @@ jobs:
               exit 0
             else
               docker pull --platform "${PLATFORM}" "${CONTAINER}"
+              # See https://github.com/containerd/containerd/pull/7566#issuecomment-1461134737 for why we set ulimit.
               docker run \
                 --rm \
                 --platform "${PLATFORM}" \
@@ -208,6 +209,7 @@ jobs:
                 -e CREW_REPO="${CREW_REPO}" \
                 -e CREW_BRANCH="${CREW_BRANCH}" \
                 --tmpfs /tmp \
+                --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" \
                 "${CONTAINER}" \
                 /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test_stub.sh
             fi

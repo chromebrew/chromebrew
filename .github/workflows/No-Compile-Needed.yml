@@ -279,6 +279,7 @@ jobs:
             # ghcr.io/felipecrs/dond-shim:latest \
             # (cd /tmp || exit ; curl -OLf https://github.com/felipecrs/docker-on-docker-shim/raw/refs/tags/v0.7.1/dond ; chmod +x /tmp/dond )
             # /tmp/dond run \
+            # See https://github.com/containerd/containerd/pull/7566#issuecomment-1461134737 for why we set ulimit.
             docker run \
               --rm \
               --platform "${PLATFORM}" \
@@ -292,6 +293,7 @@ jobs:
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               -v "$(pwd)":/output \
               --tmpfs /tmp \
+              --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" \
               "${CONTAINER}" \
               /bin/chromebrewstart /output/tools/github_actions_no_compile_updater.sh  > >(tee -a /tmp/update.log) 2> >(tee -a /tmp/update.log >&2)
               grep "Updated:" /tmp/update.log || true
