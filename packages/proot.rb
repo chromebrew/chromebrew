@@ -20,10 +20,9 @@ class Proot < Package
      x86_64: '53eb6c75f0923cbc03bb4a4ae691d50534bfa6518f2b07810dbb5b2fc99572c7'
   })
 
-  depends_on 'libarchive' => :build
-  depends_on 'talloc' => :build
-  depends_on 'libxslt' => :build
   depends_on 'glibc' # R
+  depends_on 'libarchive' => :build
+  depends_on 'libxslt' => :build
   depends_on 'talloc' # R
 
   def self.patch
