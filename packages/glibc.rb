@@ -2,7 +2,7 @@ require 'package'
 
 # This is needed so the installer finds this glibc version first when it is used in the newer installs.
 # rubocop:disable Style/UnlessElse
-unless CREW_PRE_GLIBC_STANDALONE
+# unless CREW_PRE_GLIBC_STANDALONE
   # rubocop:enable Style/UnlessElse
   class Glibc < Package
     description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
@@ -17,11 +17,11 @@ unless CREW_PRE_GLIBC_STANDALONE
     # source_sha256 'a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
     binary_compression 'tar.zst'
 
-    binary_sha256({
-      aarch64: '8d092cdeeaf3b321b64b31cb76aa3813adf8e73416f4db557d41f0c0811e0131',
-       armv7l: '8d092cdeeaf3b321b64b31cb76aa3813adf8e73416f4db557d41f0c0811e0131',
-       x86_64: '50729b68b70aceb95f467812950fc58ec29e3e8b184f95d7c7b4ce7cb2d53946'
-    })
+  binary_sha256({
+    aarch64: '8d092cdeeaf3b321b64b31cb76aa3813adf8e73416f4db557d41f0c0811e0131',
+     armv7l: '8d092cdeeaf3b321b64b31cb76aa3813adf8e73416f4db557d41f0c0811e0131',
+     x86_64: '8f5d247f0498bfac9f5386131d7cf527562511455d771a16f50f1c20658e746c'
+  })
 
     depends_on 'crew_preload' # L
     depends_on 'gawk'    => :build
@@ -98,7 +98,8 @@ unless CREW_PRE_GLIBC_STANDALONE
         --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new
         --enable-bind-now
         --enable-fortify-source
-        --enable-kernel=3.2
+        --enable-kernel=5.10
+        #{ARCH == 'x86_64' ? '--enable-sframe' : ''}
         --enable-shared
         --disable-nscd
         --disable-multilib
@@ -195,50 +196,4 @@ unless CREW_PRE_GLIBC_STANDALONE
       puts "Please run 'crew update' immediately to finish the install.".lightblue
     end
   end
-else
-  Package.load_package("#{__dir__}/glibc_build223.rb")
-  Package.load_package("#{__dir__}/glibc_build227.rb")
-  Package.load_package("#{__dir__}/glibc_build232.rb")
-  Package.load_package("#{__dir__}/glibc_build233.rb")
-  Package.load_package("#{__dir__}/glibc_build235.rb")
-  Package.load_package("#{__dir__}/glibc_build237.rb")
-
-  class Glibc < Package
-    description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
-    homepage Glibc_build237.homepage
-    license Glibc_build237.license
-
-    is_fake
-
-    case LIBC_VERSION
-    when '2.23'
-      version Glibc_build223.version
-      compatibility Glibc_build223.compatibility
-      depends_on 'glibc_build223'
-    when '2.27'
-      version Glibc_build227.version
-      compatibility Glibc_build227.compatibility
-      depends_on 'glibc_build227'
-    when '2.32'
-      version Glibc_build232.version
-      compatibility Glibc_build232.compatibility
-      depends_on 'glibc_build232'
-    when '2.33'
-      version Glibc_build233.version
-      compatibility Glibc_build233.compatibility
-      depends_on 'glibc_build233'
-    when '2.35'
-      version Glibc_build235.version
-      compatibility Glibc_build235.compatibility
-      depends_on 'glibc_lib235'
-    when '2.37'
-      version Glibc_build237.version
-      compatibility Glibc_build237.compatibility
-      depends_on 'glibc_lib237'
-    else
-      version LIBC_VERSION
-      compatibility 'aarch64 armv7l x86_64'
-      depends_on 'glibc_fallthrough'
-    end
-  end
-end
+# end
