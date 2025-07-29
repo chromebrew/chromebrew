@@ -9,5 +9,5 @@ class Ruby_jaro_winkler < RUBY
   source_url 'SKIP'
 
   conflicts_ok
-  no_compile_needed
+  gem_compile_needed
 end
