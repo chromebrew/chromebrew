@@ -7,6 +7,7 @@ class Ruby_jaro_winkler < RUBY
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'gem'
 
   conflicts_ok
   gem_compile_needed
