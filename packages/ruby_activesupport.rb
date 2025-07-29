@@ -9,6 +9,7 @@ class Ruby_activesupport < RUBY
   source_url 'SKIP'
 
   depends_on 'ruby_base64'
+  depends_on 'ruby_benchmark'
   depends_on 'ruby_bigdecimal'
   depends_on 'ruby_concurrent_ruby'
   depends_on 'ruby_connection_pool'
@@ -18,6 +19,7 @@ class Ruby_activesupport < RUBY
   depends_on 'ruby_minitest'
   depends_on 'ruby_securerandom'
   depends_on 'ruby_tzinfo'
+  depends_on 'ruby_uri'
 
   conflicts_ok
   no_compile_needed
