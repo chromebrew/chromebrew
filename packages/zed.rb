@@ -11,7 +11,7 @@ class Zed < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'fd786575ec2c8e35ecee5e71164d053d77b65f85c190c051b1925fb8d7585212'
+     x86_64: '8320adf4460453f9e1d2baa2f7acf9326d4f0a8d011c223715dcfd1424957c76'
   })
 
   depends_on 'alsa_lib' # R
