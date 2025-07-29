@@ -24,7 +24,7 @@ jobs:
           persist-credentials: true
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4.4'
+          ruby-version: '3.4.5'
       - name: Install Python pip
         run: sudo apt install -y python3-pip
       - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package so we don't have to do this manually.
@@ -42,7 +42,7 @@ jobs:
         id: set-variables
         run: |
           export TIMESTAMP="$(date -u +%F-%H-%M)"
-          export UPDATE_BRANCH_NAME="updates-${TIMESTAMP}"
+          export UPDATE_BRANCH_NAME="automatic-updates-${TIMESTAMP}"
           echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
           echo "UPDATE_BRANCH_NAME=${UPDATE_BRANCH_NAME}" >> "$GITHUB_OUTPUT"
       - name: Git setup

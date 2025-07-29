@@ -62,7 +62,6 @@
 /usr/local/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake
 /usr/local/lib/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake
 /usr/local/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake
-/usr/local/lib/cmake/Qt5Gui/Qt5Gui_QLibInputPlugin.cmake
 /usr/local/lib/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake
 /usr/local/lib/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake
 /usr/local/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake
@@ -3509,7 +3508,6 @@
 /usr/local/share/Qt-5/plugins/generic/libqevdevmouseplugin.so
 /usr/local/share/Qt-5/plugins/generic/libqevdevtabletplugin.so
 /usr/local/share/Qt-5/plugins/generic/libqevdevtouchplugin.so
-/usr/local/share/Qt-5/plugins/generic/libqlibinputplugin.so
 /usr/local/share/Qt-5/plugins/generic/libqtuiotouchplugin.so
 /usr/local/share/Qt-5/plugins/imageformats/libqgif.so
 /usr/local/share/Qt-5/plugins/imageformats/libqico.so

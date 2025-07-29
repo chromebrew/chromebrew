@@ -35,6 +35,7 @@
 /usr/local/share/firefox/libnspr4.so
 /usr/local/share/firefox/libnss3.so
 /usr/local/share/firefox/libnssutil3.so
+/usr/local/share/firefox/libonnxruntime.so
 /usr/local/share/firefox/libplc4.so
 /usr/local/share/firefox/libplds4.so
 /usr/local/share/firefox/libsmime3.so

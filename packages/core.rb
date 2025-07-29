@@ -49,7 +49,6 @@ class Core < Package
   depends_on 'libedit'
   depends_on 'libffi'
   depends_on 'libidn2'
-  depends_on 'libmetalink'
   depends_on 'libnghttp2'
   depends_on 'libnsl'
   depends_on 'libpipeline'

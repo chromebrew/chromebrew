@@ -57,12 +57,22 @@ for p in $ps; do
   if [ "$a" != "none" ]; then
     star=
     repo=
+    ver=
+    nu=
     u=$(grep -1 "^name: ${p}$" packages.yaml | tail -1 | cut -d' ' -f2)
-    version=$(grep "^  @_ver" ../packages/"$p.rb" 2>/dev/null | cut -d= -f2 | xargs)
+    if [[ -f ../packages/"$p.rb" ]]; then
+      version=$(grep "^  @_ver" ../packages/"$p.rb" 2>/dev/null | cut -d= -f2 | xargs)
+    else
+      echo "- ../packages/$p.rb is missing."
+      version=missing
+    fi
     [ -z "$version" ] && version=$(grep "^  version" ../packages/"$p.rb" | cut -d"'" -f2)
     cp=$(grep "^${p}$" core_packages.txt)
     test "$cp" && star="*"
     [[ "$u" == *"gnu.org"* ]] && repo="gnu"
+    [[ "$u" == *"gitlab"* ]] && repo="gitlab"
+    [[ "$u" == *"salsa.debian"* ]] && repo="gitlab"
+    [[ "$u" == *"code.videolan.org"* ]] && repo="gitlab"
     [[ "$u" == *"github.com"* && $u == *"/releases"* ]] && repo="github"
     [[ "$u" == *"savannah.gnu.org"* && $u == *"/releases"* ]] && repo="savannah"
     case "$repo" in
@@ -76,14 +86,47 @@ for p in $ps; do
       [[ "$version" != "$ver" ]] && echo "- [ ] $p$star | $nu | $version | $ver"
       ;;
     github)
-      relu=${u#*com}/tag/
-      content=$(curl -Ls "$u" | grep "href=\"$relu")
-      d=${content#*/releases/tag/}
-      rel=$(echo "$d" | cut -d'"' -f1)
-      rel=$(echo "$rel" | cut -d' ' -f1)
-      ver=${rel%.zip*}
+      relu=
+      gh_repo=
+      relu=${u#*github.com/}
+      relu=${relu%/releases}
+      gh_repo=${relu%/tags}
+      if [[ $u == *"/releases"* ]]; then
+        ver=$(gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R ${gh_repo} --json tagName -q '.[] | .tagName')
+        if [[ $? == 0 ]]; then  
+          [[ -z "$ver" ]] && echo "- https://github.com/${gh_repo} does not use releases."
+        else
+          echo "- https://github.com/${gh_repo} does not exist."
+        fi
+      fi
+      if [[ $u == *"/tags"* ]] || [[ -z "$ver" ]]; then
+        # This is empty if there is text in the git tag.
+        ver=$(git -c 'versionsort.suffix=-' \
+    ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/${gh_repo} '*.*.*' \
+    | tail --lines=1 \
+    | cut --delimiter='/' --fields=3)
+      # This captures git tags with text if there is no exclusively
+      # numeric version tag.
+      [[ -z "$ver" ]] && ver=$(git ls-remote --tags https://github.com/${gh_repo} | cut -d'/' -f3 | grep -v "\^{}" | tail -n 1)
+      fi
       nu=${u/releases/archive}
-      [[ "$version" != "$ver" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | $ver"
+      [[ "$version" != "${ver#v}" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | ${ver#v}"
+      ;;
+    gitlab)
+      gl_host="$(echo $u | awk -F[/:] '{print $4}')"
+      relu="${u#*${gl_host}/}"
+      gl_repo="${relu%/-*}"
+      gl_repo_suffix="${gl_repo#*/}"
+      # This is empty if there is text in the git tag.
+      ver=$(git -c 'versionsort.suffix=-' \
+    ls-remote --exit-code --refs --sort='version:refname' --tags https://${gl_host}/${gl_repo}.git '*.*.*' \
+    | tail --lines=1 \
+    | cut --delimiter='/' --fields=3)
+      # This captures git tags with text if there is no exclusively
+      # numeric version tag.
+      [[ -z "$ver" ]] && ver=$(git ls-remote --tags https://${gl_host}/${gl_repo}.git | cut -d'/' -f3 | grep -v "\^{}" | tail -n 1)
+      nu="https://${gl_host}/${gl_repo}/-/archive/${ver}/${gl_repo_suffix}-${ver}.tar.gz"
+      [[ "$version" != "${ver#v}" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | ${ver#v}"
       ;;
     savannah)
       content=$(curl -Ls "$u")

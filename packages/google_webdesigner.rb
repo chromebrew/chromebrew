@@ -3,12 +3,12 @@ require 'package'
 class Google_webdesigner < Package
   description 'Google Web Designer'
   homepage 'https://webdesigner.withgoogle.com/'
-  version '14.2.2.0-1'
+  version '14.2.4.0-1'
   license 'google-webdesigner'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://dl.google.com/linux/webdesigner/deb/pool/main/g/google-webdesigner/google-webdesigner_#{version}_amd64.deb"
-  source_sha256 '87f15ff639010a3376883bf46a229e81a40e09509f382c67f04ae88cd484a6c7'
+  source_sha256 '154816624589b6c7793a1850d0906cc877e2ad90862605049ec336feb1794807'
 
   depends_on 'nss'
   depends_on 'cairo'

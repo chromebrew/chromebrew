@@ -1,0 +1,14 @@
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/LICENSE.txt
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/ext/jaro_winkler/adj_matrix.c
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/ext/jaro_winkler/adj_matrix.h
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/ext/jaro_winkler/codepoints.c
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/ext/jaro_winkler/codepoints.h
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/ext/jaro_winkler/extconf.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/ext/jaro_winkler/jaro.c
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/ext/jaro_winkler/jaro.h
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/ext/jaro_winkler/jaro_winkler.c
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/lib/jaro_winkler.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/lib/jaro_winkler/adjusting_table.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/lib/jaro_winkler/jaro_winkler_ext.so
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/lib/jaro_winkler/jaro_winkler_pure.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/jaro_winkler-1.6.1-x86-linux/lib/jaro_winkler/version.rb

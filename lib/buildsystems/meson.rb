@@ -10,6 +10,7 @@ class Meson < Package
     @crew_meson_options = @no_lto ? CREW_MESON_OPTIONS.sub('-Db_lto=true', '-Db_lto=false') : CREW_MESON_OPTIONS
 
     extend ReportBuildsystemMethods
+
     print_buildsystem_methods
 
     system "#{@pre_meson_options} meson setup #{@crew_meson_options} #{@meson_options} #{@meson_build_relative_dir}/builddir #{@meson_build_relative_dir}"

@@ -12,9 +12,9 @@ class Qt5_base < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1598aa80f69cb4f82922d826da6d8935ed1359084e074ea3a197bb235ecd8bd6',
-     armv7l: '1598aa80f69cb4f82922d826da6d8935ed1359084e074ea3a197bb235ecd8bd6',
-     x86_64: 'e9f3805048a1866e8f8a922ae89c3df5896f6b2c5b07de0959f7c50b40372caa'
+    aarch64: 'cc141048d09d5c7f078c3ae8f337e0a2875ddc2a79d38a14811d4b1b1a9a1d74',
+     armv7l: 'cc141048d09d5c7f078c3ae8f337e0a2875ddc2a79d38a14811d4b1b1a9a1d74',
+     x86_64: '0a2b41e160c3cb652827a4627256f8de4b1e2b9fa2c8180695fca910b715b4d3'
   })
 
   depends_on 'alsa_plugins' => :build

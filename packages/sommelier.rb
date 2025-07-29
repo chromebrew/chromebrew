@@ -3,17 +3,17 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version "20241107-#{CREW_LLVM_VER}"
+  version "20250422-#{CREW_LLVM_VER}"
   license 'BSD-Google'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
-  git_hashtag '984b27ad47ee08178a3128d5c7e96eb109fe09da'
+  git_hashtag '71fec9e3432237147309d9e2e82cf6841ba03d0f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '58e02eb1d7e00dd9cf05bd61de72370f7b2eb294822b5edd94296aa32beb2e9e',
-     armv7l: '58e02eb1d7e00dd9cf05bd61de72370f7b2eb294822b5edd94296aa32beb2e9e',
-     x86_64: '72b21f065064de71858f5ddd65fa8002405c5e84357604e7c5857f4570efdf50'
+    aarch64: 'f5419b5787ec89c9d252597d66ac101942c87cd2c5fb423d17566cf87c7ea4bf',
+     armv7l: 'f5419b5787ec89c9d252597d66ac101942c87cd2c5fb423d17566cf87c7ea4bf',
+     x86_64: 'd31a50da5ec4463c8fdeca8189fa7797804e2eb5b431c7b78802c2179529f9a3'
   })
 
   depends_on 'gcc_lib' # R
@@ -138,7 +138,7 @@ class Sommelier < Package
           set -a
           GDK_BACKEND=${GDK_BACKEND:-x11}
           # Adjust settings for container usage if necessary.
-          if [[ -f '/.dockerenv' ]]; then
+          if [ -f '/.dockerenv' ]; then
             CLUTTER_BACKEND=x11
             set +a
             # Return or exit depending upon whether script was sourced.
@@ -419,9 +419,11 @@ class Sommelier < Package
 
         # start sommelier from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
         File.write 'bash.d_sommelier', <<~BASHDSOMMELIEREOF
-          source #{CREW_PREFIX}/bin/startsommelier
-          mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/sommelier.log
-          pgrep Xwayland &>> #{CREW_PREFIX}/var/log/sommelier.log && #{CREW_PREFIX}/etc/sommelierrc &>> #{CREW_PREFIX}/var/log/sommelier.log
+          if [ ! -f '/.dockerenv' ]; then
+            source #{CREW_PREFIX}/bin/startsommelier
+            mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/sommelier.log
+            pgrep Xwayland &>> #{CREW_PREFIX}/var/log/sommelier.log && #{CREW_PREFIX}/etc/sommelierrc &>> #{CREW_PREFIX}/var/log/sommelier.log
+          fi
         BASHDSOMMELIEREOF
       end
     end

@@ -110,6 +110,7 @@ class RUBY < Package
     return unless !no_compile_needed? || @gem_binary_build_needed
 
     extend ReportBuildsystemMethods
+
     print_buildsystem_methods
 
     Kernel.system "gem fetch #{@ruby_gem_name} --platform=ruby --version=#{@ruby_gem_version}"

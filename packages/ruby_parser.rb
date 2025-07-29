@@ -9,6 +9,7 @@ class Ruby_parser < RUBY
   source_url 'SKIP'
 
   depends_on 'ruby_ast' # R
+  depends_on 'ruby_kramdown' # R
   depends_on 'ruby_racc' # R
 
   conflicts_ok

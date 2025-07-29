@@ -1,8 +1,8 @@
 require 'buildsystems/autotools'
 
-class Gnome_themes_standard < Autotools
-  description 'Standard Themes for GNOME Applications.'
-  homepage 'https://git.gnome.org/browse/gnome-themes-standard/'
+class Gnome_themes_extra < Autotools
+  description 'GNOME Extra Themes.'
+  homepage 'https://gitlab.gnome.org/Archive/gnome-themes-extra'
   version '3.28'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'

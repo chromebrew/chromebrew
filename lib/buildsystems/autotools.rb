@@ -10,6 +10,7 @@ class Autotools < Package
   def self.build
     @autotools_build_relative_dir ||= '.'
     extend ReportBuildsystemMethods
+
     print_buildsystem_methods
 
     Dir.chdir(@autotools_build_relative_dir) do
