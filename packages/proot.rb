@@ -6,17 +6,22 @@ require 'package'
 class Proot < Package
   description 'Termux Proot: chroot, mount --bind, and binfmt_misc without privilege/setup for Linux'
   homepage 'https://github.com/termux/proot'
-  version 'eca2225'
+  version '5.4.0'
   license 'GPL-2.0-only'
   compatibility 'all'
-  source_url 'https://github.com/termux/proot.git'
-  git_hashtag 'eca2225f3a3ebacfb814dba411c1ef967ebe6420'
+  source_url 'https://github.com/proot-me/proot.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   depends_on 'libarchive' => :build
   depends_on 'talloc' => :build
   depends_on 'libxslt' => :build
 
+  def self.patch
+    downloader 'https://github.com/proot-me/proot/pull/398.patch', 'asasasasa'
+    system 'patch -Np1 -i 398.patch'
+  end
+  
   def self.build
     system "make -f GNUmakefile", chdir: 'src'
     system "make -f GNUmakefile", chdir: 'doc'

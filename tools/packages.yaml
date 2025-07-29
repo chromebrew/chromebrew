@@ -7516,8 +7516,8 @@ activity: medium
 ---
 kind: url
 name: proot
-url: https://github.com/termux/proot
-activity: none
+url: https://github.com/proot-me/proot/releases
+activity: low
 ---
 kind: url
 name: protobuf
