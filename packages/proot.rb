@@ -26,8 +26,12 @@ class Proot < Package
   depends_on 'talloc' # R
 
   def self.patch
-    downloader 'https://github.com/proot-me/proot/pull/398.patch', '4c1149819e5aafc088b0dadbd8a9ddf6ca8e6b9ceb10b9574704f68f5a8549a2'
-    system 'patch -Np1 -i 398.patch'
+    patch = [
+      # Fixes python 3.13 compatibility.
+      ['https://github.com/proot-me/proot/pull/398.patch',
+       '4c1149819e5aafc088b0dadbd8a9ddf6ca8e6b9ceb10b9574704f68f5a8549a2']
+    ]
+    ConvenienceFunctions.patch(patch)
   end
 
   def self.build
