@@ -16,9 +16,11 @@ class Proot < Package
   depends_on 'libarchive' => :build
   depends_on 'talloc' => :build
   depends_on 'libxslt' => :build
+  depends_on 'glibc' # R
+  depends_on 'talloc' # R
 
   def self.patch
-    downloader 'https://github.com/proot-me/proot/pull/398.patch', 'asasasasa'
+    downloader 'https://github.com/proot-me/proot/pull/398.patch', '4c1149819e5aafc088b0dadbd8a9ddf6ca8e6b9ceb10b9574704f68f5a8549a2'
     system 'patch -Np1 -i 398.patch'
   end
   
