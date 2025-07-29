@@ -39,6 +39,8 @@ class Zed < RUST
       APP_ARGS='%U' APP_NAME=Zed \
       envsubst < 'crates/zed/resources/zed.desktop.in' > zed.desktop"
     FileUtils.install 'zed.desktop', "#{CREW_DEST_PREFIX}/share/applications/zed.desktop", mode: 0o644
+    FileUtils.install 'crates/zed/resources/app-icon.png', "#{CREW_DEST_PREFIX}/share/icons/hicolor/512x512/apps/zed.png", mode: 0o644
+    FileUtils.install 'crates/zed/resources/app-icon@2x.png', "#{CREW_DEST_PREFIX}/share/icons/hicolor/1024x1024/apps/zed.png", mode: 0o644
   end
 
   def self.prebuild
