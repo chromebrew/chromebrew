@@ -1,33 +1,51 @@
-require 'package'
+require 'buildsystems/rust'
 
-class Zed < Package
+class Zed < RUST
   description 'Zed is a high-performance, multiplayer code editor'
   homepage 'https://zed.dev/'
-  version '0.186.12'
+  version '0.196.6'
   license 'GPL-3, AGPL-3, Apache-2.0'
   compatibility 'x86_64'
-  min_glibc '2.28'
-  source_url "https://github.com/zed-industries/zed/releases/download/v#{version}/zed-linux-x86_64.tar.gz"
-  source_sha256 '9c0abca37319d96bf8ba03653a93413011210a338acc386ddaf88d68013c1a6d'
+  source_url 'https://github.com/zed-industries/zed.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  depends_on 'alsa_lib'
-  depends_on 'libbsd'
-  depends_on 'libxau'
-  depends_on 'libxcb'
-  depends_on 'libxdmcp'
-  depends_on 'libxkbcommon'
-  depends_on 'openssl'
-  depends_on 'zlib'
-  depends_on 'zstd'
+  binary_sha256({
+     x86_64: '8320adf4460453f9e1d2baa2f7acf9326d4f0a8d011c223715dcfd1424957c76'
+  })
 
-  no_compile_needed
-  no_shrink
+  depends_on 'alsa_lib' # R
+  depends_on 'cargo_about' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'llvm_dev' => :build
+  depends_on 'openssl' # R
+  depends_on 'ruby_solargraph' # L
+  depends_on 'rust' => :build
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
+
+  rust_flags '-C link-args=-Wl,--disable-new-dtags,-rpath,$ORIGIN/../lib -C symbol-mangling-version=v0 --cfg tokio_unstable'
+  rust_packages 'zed'
+
+  def self.prebuild
+    system 'script/generate-licenses'
+  end
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_PREFIX.to_s
-    FileUtils.mv 'bin/', CREW_DEST_PREFIX.to_s
-    FileUtils.mv 'share/', CREW_DEST_PREFIX.to_s
-    FileUtils.mv 'libexec/', CREW_DEST_PREFIX.to_s
+    system "DO_STARTUP_NOTIFY=true APP_CLI=zed APP_ICON=zed \
+      APP_ARGS='%U' APP_NAME=Zed \
+      envsubst < 'crates/zed/resources/zed.desktop.in' > zed.desktop"
+    FileUtils.install 'target/release/zed', "#{CREW_DEST_PREFIX}/bin/zed", mode: 0o755
+    FileUtils.install 'zed.desktop', "#{CREW_DEST_PREFIX}/share/applications/zed.desktop", mode: 0o644
+    FileUtils.install 'crates/zed/resources/app-icon.png', "#{CREW_DEST_PREFIX}/share/icons/hicolor/512x512/apps/zed.png", mode: 0o644
+    FileUtils.install 'crates/zed/resources/app-icon@2x.png', "#{CREW_DEST_PREFIX}/share/icons/hicolor/1024x1024/apps/zed.png", mode: 0o644
   end
 
   def self.postinstall

@@ -7,6 +7,7 @@ class Python < Package
 
   def self.build
     extend ReportBuildsystemMethods
+
     print_buildsystem_methods
 
     @python_build_relative_dir ||= '.'

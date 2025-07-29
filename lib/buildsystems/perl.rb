@@ -7,6 +7,7 @@ class PERL < Package
 
   def self.prebuild
     extend ReportBuildsystemMethods
+
     print_buildsystem_methods
 
     system "#{@pre_perl_options} perl Makefile.PL"

@@ -39,6 +39,7 @@ class Pip < Package
 
   def self.install
     extend ReportBuildsystemMethods
+
     print_buildsystem_methods
 
     @pip_cache_dir = `pip cache dir`.chomp
