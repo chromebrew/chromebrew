@@ -10,7 +10,6 @@ class Ruby_uri < RUBY
 
   depends_on 'ruby_stringio' # R
   depends_on 'ruby_time' # R
-  depends_on 'ruby_uri' # R
 
   conflicts_ok
   no_compile_needed
