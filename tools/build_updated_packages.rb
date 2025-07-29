@@ -82,8 +82,6 @@ def update_hashes(name = nil)
     # Add build hashes.
     system "crew update_package_file #{name}" unless remote_binary.values.all?(nil)
     # Add manifests if we are in the right architecture.
-    puts "CREW_LOCAL_REPO_ROOT: #{CREW_LOCAL_REPO_ROOT}"
-    puts "manifest: #{CREW_META_PATH}/#{name}.filelist"
     FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist" if system("yes | crew reinstall #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
   end
 end
