@@ -11,10 +11,10 @@ class Cmake < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ae841d4ba9c8a78b06be734d000c24b4f07c15c1814a3d537184ff5a74c54f10',
-     armv7l: 'ae841d4ba9c8a78b06be734d000c24b4f07c15c1814a3d537184ff5a74c54f10',
-       i686: '93f999f5a023bbce258607679d176e00491287d5f3e8d52e0444345990966565',
-     x86_64: '69518f1ced2fd2dbf7a12a9a52db865d4d82c2463b84ea7d271e79b027db063b'
+    aarch64: 'cd47b9c1fdb3d091a41b3c44f6a12277aa5b4c3e746b276e2ff612b198b321fe',
+     armv7l: 'cd47b9c1fdb3d091a41b3c44f6a12277aa5b4c3e746b276e2ff612b198b321fe',
+       i686: '4fa1f2c1a82076cbe8b8250a71642d9dab5965edb4990aa6e4ba22db5109a937',
+     x86_64: 'f2cde32b39defbb5c3b0d11cb00667b5e18f43c0f8ca0714157f5795c7246458'
   })
 
   depends_on 'bzip2' => :build
@@ -33,8 +33,6 @@ class Cmake < CMake
   depends_on 'xzutils' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' => :build
-
-
 
   def self.prebuild
     @current_installed_cmake_major_version = `cmake --version | head -n 1 | awk '{print \$3}'`.chomp.split('.').reverse[1..2].reverse.join('.')
