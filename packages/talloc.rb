@@ -6,7 +6,7 @@ require 'package'
 class Talloc < Package
   description 'Hierarchical pool based memory allocator with destructors'
   homepage 'https://talloc.samba.org/'
-  version "2.4.2-#{CREW_PY_VER}"
+  version "2.4.3-#{CREW_PY_VER}"
   license 'LGPL'
   compatibility 'all'
   source_url "https://www.samba.org/ftp/talloc/talloc-#{version.split('-').first}.tar.gz"
@@ -25,7 +25,8 @@ class Talloc < Package
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
   depends_on 'libxcrypt' => :build
-  depends_on 'python3' # R
+  # depends_on 'python3' # R (optional) # For Python bindings.
+  depends_on 'python3' => :build
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')} \

@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 1.8 (for Chromebrew)
+# getrealdeps version 1.9 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -116,8 +116,8 @@ def main(pkg)
   # Leave early if we didn't find any dependencies.
   return if pkgdeps.empty?
 
-  # Look for missing runtime dependencies.
-  missingpkgdeps = pkgdeps.reject { |i| File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}'") unless File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}' => :build") }
+  # Look for missing runtime dependencies, ignoring build and optional deps.
+  missingpkgdeps = pkgdeps.reject { |i| File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}'") unless File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}' => :build") || File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("# depends_on '#{i}' # R (optional)") }
 
   # Special cases where dependencies should not be automatically added:
 
@@ -144,30 +144,39 @@ def main(pkg)
     pkgdeps.delete_if { |d| /#{exclusion_regex}/.match(d) }
   end
 
+  missingpkgdeps.delete_if { |d| File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("# depends_on '#{d}' # R (optional)") }
+  pkgdeps.delete_if { |d| File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("# depends_on '#{d}' # R (optional)") }
+
   puts "\nPackage #{pkg} has runtime library dependencies on these packages:".lightblue
   pkgdeps.each do |i|
     puts "  depends_on '#{i}' # R".lightgreen
   end
 
-  # Leave if we didn't find any missing dependencies.
-  return if missingpkgdeps.empty?
-  puts "\nPackage file #{pkg}.rb is missing these runtime library dependencies:".orange
-  puts "  depends_on '#{missingpkgdeps.join("' # R\n  depends_on '")}' # R".orange
+  # Get existing package deps entries so we can add to and sort as
+  # necessary.
+  pkgdepsblock = []
+  pkgdepsblock += File.foreach("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").grep(/  depends_on '|  # depends_on '/)
 
-  missingpkgdeps.each do |adddep|
-    puts "  depends_on '#{adddep}' # R"
+  unless missingpkgdeps.empty?
+    puts "\nPackage file #{pkg}.rb is missing these runtime library dependencies:".orange
+    puts "  depends_on '#{missingpkgdeps.join("' # R\n  depends_on '")}' # R".orange
 
-    # Add missing dependencies to the package.
-    puts "\n Adding deps: #{adddep}"
-    gawk_cmd = if File.foreach("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").grep(/depends_on/).any?
-                 # This files contains dependencies already, so add new deps after existing dependencies.
-                 "gawk -i inplace -v dep=\"  depends_on '#{adddep}' # R\" 'FNR==NR{ if (/depends_on/) p=NR; next} 1; FNR==p{ print dep }' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
-               else
-                 # This files doesn't contain deps, so just add new deps.
-                 "gawk -i inplace -v dep=\"  depends_on '#{adddep}' # R\" 'FNR==NR{ if (/})/) p=NR; next} 1; FNR==p{ print \"\\n\" dep }' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
-               end
-    system(gawk_cmd)
+    pkgdepsblock += missingpkgdeps.map { |add_dep| "  depends_on '#{add_dep}' # R" }
   end
+  pkgdepsblock.uniq!
+  pkgdepsblock = pkgdepsblock.sort_by { |dep| dep.split('depends_on ')[1] }
+
+  puts "\n Adding to or replacing deps block in package..."
+  # First remove all dependencies.
+  system "sed -i '/  depends_on /d' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
+  system "sed -i '/^  # depends_on /d' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
+  # Now add back our sorted dependencies.
+  gawk_cmd = "gawk -i inplace -v dep=\"#{pkgdepsblock.join('QQQQQ')}\" 'FNR==NR{ if (/})/) p=NR; next} 1; FNR==p{ print \"\\n\" dep }' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
+  system(gawk_cmd)
+  # The first added line has two dependencies without a newline
+  # separating them.
+  system "sed -i 's/RQQQQQ/R\\n/' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
+  system "sed -i 's/QQQQQ//g' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
 
   # Check for and delete old runtime dependencies.
   # Its unsafe to do this with other dependencies, because the packager might know something we don't.
@@ -189,6 +198,8 @@ def main(pkg)
   puts "\nPackage file #{pkg}.rb has these outdated runtime library dependencies:".lightpurple
   puts lines_to_delete.keys
   system("gawk -i inplace 'NR != #{lines_to_delete.values.join(' && NR != ')}' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb")
+  # Clean up any blank lines with rubocop.
+  system "rubocop --only Layout/EmptyLines -A #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
 end
 
 ARGV.each do |package|

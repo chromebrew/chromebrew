@@ -378,6 +378,8 @@ jobs:
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
           echo -e "- This PR was built using the No-Compile-Needed.yml workflow, which was pointed to the ${{ inputs.branch || github.ref_name }} branch.\n" >> /tmp/pr.txt
+          echo -e "#### Commits:" >> /tmp/pr.txt
+          git log --oneline master...${{ inputs.branch || github.ref_name }} | head --lines=-1 | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/pr.txt
           if [[ "${CHANGED_GITHUB_CONFIG_FILES}" != "" ]]; then
             echo -e "### Updated GitHub configuration files:" >> /tmp/pr.txt
             for file in ${CHANGED_GITHUB_CONFIG_FILES}
@@ -412,9 +414,9 @@ jobs:
           cat /tmp/pr.txt
           [[ $DRAFT_PR == 'true' ]] && export PR_DRAFT_FLAG='-d'
           if [[ -z ${PR_NUMBER} ]]; then
-            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "Build: ${{ inputs.branch || github.ref_name }} started at ${TIMESTAMP}." -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "${{ inputs.branch || github.ref_name }}: Build for ${CHANGED_PACKAGES}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
-            gh pr edit -F /tmp/pr.txt
+            gh pr edit --title "${{ inputs.branch || github.ref_name }}: Build for ${CHANGED_PACKAGES}" -F /tmp/pr.txt
           fi
           # Draft PRs can not be set to automerge.
           if [[ $DRAFT_PR == 'true' ]]; then
