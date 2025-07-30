@@ -3,7 +3,7 @@ require 'package'
 class Bun < Package
   description 'Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one'
   homepage 'https://bun.sh/'
-  version '1.2.13'
+  version '1.2.19'
   license 'MIT'
   compatibility 'x86_64'
   source_url 'SKIP'
