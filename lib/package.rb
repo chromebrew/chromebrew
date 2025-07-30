@@ -229,7 +229,10 @@ class Package
         # check if there have any non-space char (pkg_names) between starting point ([line_i][char_i]) and endpoint vertically ([next_arrow_line_offset][char_i])
         # (used to determine if the starting point and endpoint are in same branch, use pipe char to connect them if true)
         next_arrow_line_offset = tree_view.lines[line_i..].index { |l| l[char_i] == '└' }
+        # See https://github.com/chromebrew/chromebrew/issues/12299
+        # rubocop:disable Lint/AmbiguousRange
         have_line_with_non_empty_char = tree_view.lines[line_i + 1..line_i + next_arrow_line_offset.to_i - 1].any? { |l| l[char_i].nil? || l[char_i] =~ /\S/ }
+        # rubocop:enable Lint/AmbiguousRange
 
         line[char_i] = '│' if next_arrow_line_offset && (line[char_i] == ' ') && !have_line_with_non_empty_char
       end
