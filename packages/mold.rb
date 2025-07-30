@@ -22,7 +22,6 @@ class Mold < CMake
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'openssl' # R
   depends_on 'xxhash' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
