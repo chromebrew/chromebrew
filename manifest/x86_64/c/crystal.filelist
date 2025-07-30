@@ -237,6 +237,7 @@
 /usr/local/share/crystal/src/compiler/crystal/tools/init/template/readme.md.ecr
 /usr/local/share/crystal/src/compiler/crystal/tools/init/template/shard.yml.ecr
 /usr/local/share/crystal/src/compiler/crystal/tools/init/template/spec_helper.cr.ecr
+/usr/local/share/crystal/src/compiler/crystal/tools/macro_code_coverage.cr
 /usr/local/share/crystal/src/compiler/crystal/tools/playground.cr
 /usr/local/share/crystal/src/compiler/crystal/tools/playground/agent.cr
 /usr/local/share/crystal/src/compiler/crystal/tools/playground/agent_instrumentor_transformer.cr
@@ -375,6 +376,7 @@
 /usr/local/share/crystal/src/crystal/system/thread.cr
 /usr/local/share/crystal/src/crystal/system/thread_condition_variable.cr
 /usr/local/share/crystal/src/crystal/system/thread_linked_list.cr
+/usr/local/share/crystal/src/crystal/system/thread_local.cr
 /usr/local/share/crystal/src/crystal/system/thread_mutex.cr
 /usr/local/share/crystal/src/crystal/system/thread_wait_group.cr
 /usr/local/share/crystal/src/crystal/system/time.cr
@@ -405,6 +407,7 @@
 /usr/local/share/crystal/src/crystal/system/unix/syscall.cr
 /usr/local/share/crystal/src/crystal/system/unix/sysconf_cpucount.cr
 /usr/local/share/crystal/src/crystal/system/unix/sysctl_cpucount.cr
+/usr/local/share/crystal/src/crystal/system/unix/thread_local.cr
 /usr/local/share/crystal/src/crystal/system/unix/time.cr
 /usr/local/share/crystal/src/crystal/system/unix/timerfd.cr
 /usr/local/share/crystal/src/crystal/system/unix/urandom.cr
@@ -427,6 +430,7 @@
 /usr/local/share/crystal/src/crystal/system/wasi/socket.cr
 /usr/local/share/crystal/src/crystal/system/wasi/thread.cr
 /usr/local/share/crystal/src/crystal/system/wasi/thread_condition_variable.cr
+/usr/local/share/crystal/src/crystal/system/wasi/thread_local.cr
 /usr/local/share/crystal/src/crystal/system/wasi/thread_mutex.cr
 /usr/local/share/crystal/src/crystal/system/wasi/user.cr
 /usr/local/share/crystal/src/crystal/system/wasi/wasi.cr
@@ -452,6 +456,7 @@
 /usr/local/share/crystal/src/crystal/system/win32/socket.cr
 /usr/local/share/crystal/src/crystal/system/win32/thread.cr
 /usr/local/share/crystal/src/crystal/system/win32/thread_condition_variable.cr
+/usr/local/share/crystal/src/crystal/system/win32/thread_local.cr
 /usr/local/share/crystal/src/crystal/system/win32/thread_mutex.cr
 /usr/local/share/crystal/src/crystal/system/win32/time.cr
 /usr/local/share/crystal/src/crystal/system/win32/user.cr
@@ -517,14 +522,14 @@
 /usr/local/share/crystal/src/fiber/context/x86_64-microsoft.cr
 /usr/local/share/crystal/src/fiber/context/x86_64-sysv.cr
 /usr/local/share/crystal/src/fiber/execution_context.cr
+/usr/local/share/crystal/src/fiber/execution_context/concurrent.cr
 /usr/local/share/crystal/src/fiber/execution_context/global_queue.cr
 /usr/local/share/crystal/src/fiber/execution_context/isolated.cr
 /usr/local/share/crystal/src/fiber/execution_context/monitor.cr
-/usr/local/share/crystal/src/fiber/execution_context/multi_threaded.cr
-/usr/local/share/crystal/src/fiber/execution_context/multi_threaded/scheduler.cr
+/usr/local/share/crystal/src/fiber/execution_context/parallel.cr
+/usr/local/share/crystal/src/fiber/execution_context/parallel/scheduler.cr
 /usr/local/share/crystal/src/fiber/execution_context/runnables.cr
 /usr/local/share/crystal/src/fiber/execution_context/scheduler.cr
-/usr/local/share/crystal/src/fiber/execution_context/single_threaded.cr
 /usr/local/share/crystal/src/fiber/list.cr
 /usr/local/share/crystal/src/fiber/pointer_linked_list_node.cr
 /usr/local/share/crystal/src/fiber/stack.cr
@@ -543,6 +548,7 @@
 /usr/local/share/crystal/src/float/fast_float/decimal_to_binary.cr
 /usr/local/share/crystal/src/float/fast_float/digit_comparison.cr
 /usr/local/share/crystal/src/float/fast_float/fast_table.cr
+/usr/local/share/crystal/src/float/fast_float/fast_table_slice_literal.cr
 /usr/local/share/crystal/src/float/fast_float/float_common.cr
 /usr/local/share/crystal/src/float/fast_float/parse_number.cr
 /usr/local/share/crystal/src/float/printer.cr
@@ -639,6 +645,7 @@
 /usr/local/share/crystal/src/lib_c/aarch64-android/c/grp.cr
 /usr/local/share/crystal/src/lib_c/aarch64-android/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/aarch64-android/c/link.cr
+/usr/local/share/crystal/src/lib_c/aarch64-android/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/aarch64-android/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/aarch64-android/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/aarch64-android/c/netinet/tcp.cr
@@ -680,6 +687,7 @@
 /usr/local/share/crystal/src/lib_c/aarch64-darwin/c/grp.cr
 /usr/local/share/crystal/src/lib_c/aarch64-darwin/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/aarch64-darwin/c/mach/mach_time.cr
+/usr/local/share/crystal/src/lib_c/aarch64-darwin/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/aarch64-darwin/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/aarch64-darwin/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/aarch64-darwin/c/netinet/tcp.cr
@@ -716,6 +724,7 @@
 /usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/grp.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/link.cr
+/usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/netinet/tcp.cr
@@ -755,6 +764,7 @@
 /usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/grp.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/link.cr
+/usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/netinet/tcp.cr
@@ -797,6 +807,7 @@
 /usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/grp.cr
 /usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/link.cr
+/usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/netinet/tcp.cr
@@ -836,6 +847,7 @@
 /usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/grp.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/link.cr
+/usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/netinet/tcp.cr
@@ -875,6 +887,7 @@
 /usr/local/share/crystal/src/lib_c/i386-linux-musl/c/grp.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-musl/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-musl/c/link.cr
+/usr/local/share/crystal/src/lib_c/i386-linux-musl/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-musl/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-musl/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-musl/c/netinet/tcp.cr
@@ -940,6 +953,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-darwin/c/grp.cr
 /usr/local/share/crystal/src/lib_c/x86_64-darwin/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/x86_64-darwin/c/mach/mach_time.cr
+/usr/local/share/crystal/src/lib_c/x86_64-darwin/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/x86_64-darwin/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/x86_64-darwin/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/x86_64-darwin/c/netinet/tcp.cr
@@ -976,6 +990,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/grp.cr
 /usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/link.cr
+/usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/netinet/tcp.cr
@@ -1013,6 +1028,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/grp.cr
 /usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/link.cr
+/usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/netinet/tcp.cr
@@ -1050,6 +1066,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/grp.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/link.cr
+/usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/netinet/tcp.cr
@@ -1089,6 +1106,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/grp.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/link.cr
+/usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/netinet/tcp.cr
@@ -1129,6 +1147,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/grp.cr
 /usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/link.cr
+/usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/netinet/tcp.cr
@@ -1166,6 +1185,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/grp.cr
 /usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/link.cr
+/usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/netinet/tcp.cr
@@ -1204,6 +1224,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-solaris/c/grp.cr
 /usr/local/share/crystal/src/lib_c/x86_64-solaris/c/iconv.cr
 /usr/local/share/crystal/src/lib_c/x86_64-solaris/c/link.cr
+/usr/local/share/crystal/src/lib_c/x86_64-solaris/c/net/if.cr
 /usr/local/share/crystal/src/lib_c/x86_64-solaris/c/netdb.cr
 /usr/local/share/crystal/src/lib_c/x86_64-solaris/c/netinet/in.cr
 /usr/local/share/crystal/src/lib_c/x86_64-solaris/c/netinet/tcp.cr
@@ -1247,6 +1268,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/errhandlingapi.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/errno.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/fcntl.cr
+/usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/fibersapi.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/fileapi.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/guiddef.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/handleapi.cr
@@ -1264,6 +1286,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/memoryapi.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/minwinbase.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/mswsock.cr
+/usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/netioapi.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/ntdef.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/ntdll.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/ntifs.cr
@@ -1294,6 +1317,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/timezoneapi.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/tlhelp32.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/userenv.cr
+/usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/wdm.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/win_def.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/winbase.cr
 /usr/local/share/crystal/src/lib_c/x86_64-windows-msvc/c/wincrypt.cr
@@ -1347,6 +1371,7 @@
 /usr/local/share/crystal/src/llvm/lib_llvm/ir_reader.cr
 /usr/local/share/crystal/src/llvm/lib_llvm/lljit.cr
 /usr/local/share/crystal/src/llvm/lib_llvm/orc.cr
+/usr/local/share/crystal/src/llvm/lib_llvm/support.cr
 /usr/local/share/crystal/src/llvm/lib_llvm/target.cr
 /usr/local/share/crystal/src/llvm/lib_llvm/target_machine.cr
 /usr/local/share/crystal/src/llvm/lib_llvm/transforms/pass_builder.cr
@@ -1538,6 +1563,7 @@
 /usr/local/share/crystal/src/time/location.cr
 /usr/local/share/crystal/src/time/location/loader.cr
 /usr/local/share/crystal/src/time/span.cr
+/usr/local/share/crystal/src/time/tz.cr
 /usr/local/share/crystal/src/tuple.cr
 /usr/local/share/crystal/src/unicode/data.cr
 /usr/local/share/crystal/src/unicode/unicode.cr
@@ -1565,6 +1591,7 @@
 /usr/local/share/crystal/src/xml/attribute_type.cr
 /usr/local/share/crystal/src/xml/attributes.cr
 /usr/local/share/crystal/src/xml/builder.cr
+/usr/local/share/crystal/src/xml/document.cr
 /usr/local/share/crystal/src/xml/error.cr
 /usr/local/share/crystal/src/xml/html_parser_options.cr
 /usr/local/share/crystal/src/xml/libxml2.cr
