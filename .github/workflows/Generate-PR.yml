@@ -12,6 +12,11 @@ on:
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
+      update_package_files:
+        description: "Update Package Files."
+        required: false
+        type: boolean
+        default: 'true'
 env:
   BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
@@ -165,7 +170,7 @@ jobs:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.ref_name }}
       cancel-in-progress: true
     steps:
-      - name: fail if build jobs failed
+      - name: Fail if build jobs failed
         if: ${{ contains(needs.*.result, 'failure') }}
         run: exit 1
       - name: Dump GitHub context
@@ -219,7 +224,10 @@ jobs:
       - name: Run Updater in container
         id: run-updater
         if: ${{ contains(needs.*.result, 'failure') ||  !cancelled() }}
+        env:
+          UPDATE_PACKAGE_FILES: ${{ github.event.inputs.update_package_files }}
         run: |
+            [[ "$UPDATE_PACKAGE_FILES" == 'false' ]] && exit 0
             if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
               # Exit the arm container if there are not armv7l compatible packages.
               echo "Skipping armv7l container builds &/or package file updates."
@@ -287,7 +295,7 @@ jobs:
       - update-package-files
     if: ${{ !cancelled() }}
     steps:
-      - name: fail if update or build jobs failed, otherwise create a PR
+      - name: Fail if update or build jobs failed, otherwise create a PR
         if: ${{ contains(needs.*.result, 'failure') }}
         run: exit 1
       - name: Report update & build success
@@ -297,7 +305,8 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.ref_name }}
-      - name: Rebase to master
+      - name: Rebase to master and save git log
+        id: rebase-and-git-log
         run: |
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
@@ -306,6 +315,9 @@ jobs:
             git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
             git pull --rebase origin master && git push -f
             git log --oneline -10
+            git checkout master && git pull
+            git log --oneline master..${{ inputs.branch || github.ref_name }} | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
+            git checkout "${{ inputs.branch || github.ref_name }}"
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v46
@@ -348,7 +360,8 @@ jobs:
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
           echo -e "#### Commits:" >> /tmp/pr.txt
-          git log --oneline master...${{ inputs.branch || github.ref_name }} | head --lines=-1 | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/pr.txt
+          # Get git log from rebase-and-git-log step.
+          cat /tmp/commits.txt >> /tmp/pr.txt
           if [[ "${CHANGED_GITHUB_CONFIG_FILES}" != "" ]]; then
             echo -e "### Updated GitHub configuration files:" >> /tmp/pr.txt
             for file in ${CHANGED_GITHUB_CONFIG_FILES}
