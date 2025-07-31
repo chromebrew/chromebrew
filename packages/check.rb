@@ -17,5 +17,7 @@ class Check < CMake
      x86_64: '7dc419c3be381ccf3575554bbd8e9d4ddd6cc38ede64c29d9b0922ab86d4624a'
   })
 
+  depends_on 'glibc' # R
+
   cmake_options '-DCHECK_ENABLE_TIMEOUT_TESTS=OFF'
 end
