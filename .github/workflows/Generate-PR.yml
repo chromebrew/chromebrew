@@ -9,9 +9,6 @@ on:
         required: false
         type: boolean
         default: 'false'
-      branch:
-        description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
-        required: false
       pr_title:
         description: "Title of PR"
         required: false
@@ -20,6 +17,9 @@ on:
         required: false
         type: boolean
         default: 'true'
+      branch:
+        description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
+        required: false
 env:
   BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
@@ -399,7 +399,7 @@ jobs:
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           cat /tmp/pr.txt
           [[ $DRAFT_PR == 'true' ]] && export PR_DRAFT_FLAG='-d'
-          PR_NUMBER=$(gh pr list -L 1 -s all -H${{ inputs.branch || github.ref_name }}| cut -f1)
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
           echo "PR title is: $(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | sed -e "s/^'//" -e "s/'$//") — ${CHANGED_PACKAGES}"
           if [[ -z ${PR_NUMBER} ]]; then
             PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | sed -e "s/^'//" -e "s/'$//") — ${CHANGED_PACKAGES}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
