@@ -2,8 +2,15 @@
 name: Linter-Handoff
 on:
   pull_request:
+    types:
+      - opened
+      - ready_for_review
+      - reopened
+      - synchronize
   merge_group:
   workflow_dispatch:
+env:
+  GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
 jobs:
   handoff:
     runs-on: ubuntu-24.04
