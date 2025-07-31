@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Check < Package
+class Check < CMake
   description 'A unit testing framework for C'
   homepage 'https://libcheck.github.io/check/'
   version '0.15.2'
@@ -17,22 +17,5 @@ class Check < Package
      x86_64: '7dc419c3be381ccf3575554bbd8e9d4ddd6cc38ede64c29d9b0922ab86d4624a'
   })
 
-  def self.build
-    system 'autoreconf -fvi'
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "env CC=gcc LD=ld \
-      cmake -G Ninja \
-      -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DCHECK_ENABLE_TIMEOUT_TESTS=OFF \
-      -DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX} \
-      .."
-      system 'ninja'
-    end
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-  end
+  cmake_options '-DCHECK_ENABLE_TIMEOUT_TESTS=OFF'
 end
