@@ -400,11 +400,11 @@ jobs:
           cat /tmp/pr.txt
           [[ $DRAFT_PR == 'true' ]] && export PR_DRAFT_FLAG='-d'
           PR_NUMBER=$(gh pr list -L 1 -s all -H${{ inputs.branch || github.ref_name }}| cut -f1)
-          echo "PR title is: ${{ inputs.pr_title || inputs.branch || github.ref_name }}: ${CHANGED_PACKAGES}"
+          echo "PR title is: $(echo ${{ inputs.pr_title || inputs.branch || github.ref_name }} | sed -e "s/^'//" -e "s/'$//") — ${CHANGED_PACKAGES}"
           if [[ -z ${PR_NUMBER} ]]; then
-            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "${{ inputs.pr_title || inputs.branch || github.ref_name }}: ${CHANGED_PACKAGES}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "$(echo ${{ inputs.pr_title || inputs.branch || github.ref_name }} | sed -e "s/^'//" -e "s/'$//") — ${CHANGED_PACKAGES}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
-            gh pr edit --title "${{ inputs.pr_title || inputs.branch || github.ref_name }}: ${CHANGED_PACKAGES}" -F /tmp/pr.txt
+            gh pr edit --title "$(echo ${{ inputs.pr_title || inputs.branch || github.ref_name }} | sed -e "s/^'//" -e "s/'$//") — ${CHANGED_PACKAGES}" -F /tmp/pr.txt
           fi
           # Draft PRs can not be set to automerge.
           if [[ $DRAFT_PR == 'true' ]]; then

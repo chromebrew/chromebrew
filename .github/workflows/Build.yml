@@ -305,13 +305,22 @@ jobs:
         if: ${{ contains(needs.*.result, 'failure') }}
         run: exit 1
       - name: Report update & build success
-        run: echo "Update & build jobs succeeded. Creating a PR."
+        run: echo "Update & build jobs succeeded."
+      - name: Get GH Token
+        if: ${{ github.event.inputs.with_pr != 'No' }}
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+          organization: chromebrew
+          revoke_token: true
       - name: Trigger PR workflow
         if: ${{ github.event.inputs.with_pr != 'No' }}
         id: trigger-pr-workflow
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           PR_TITLE: ${{ inputs.pr_title || inputs.branch || github.ref_name }}
         run: |
-            echo "PR title is: ${{ inputs.pr_title || inputs.branch || github.ref_name }}"
-            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }} -f branch="${{ inputs.branch || github.ref_name }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo $PR_TITLE | ( read -rsd '' x; echo ${x@Q} ))"
+            echo "PR title being passed to the Generate PR workflow is: ${{ inputs.pr_title || inputs.branch || github.ref_name }}"
+            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }} -f branch="${{ inputs.branch || github.ref_name }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | ( read -rsd '' x; echo ${x@Q} ))"
