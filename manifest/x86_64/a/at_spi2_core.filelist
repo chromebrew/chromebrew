@@ -76,7 +76,7 @@
 /usr/local/lib64/gtk-2.0/modules/libatk-bridge.so
 /usr/local/lib64/libatk-1.0.so
 /usr/local/lib64/libatk-1.0.so.0
-/usr/local/lib64/libatk-1.0.so.0.25612.1
+/usr/local/lib64/libatk-1.0.so.0.25709.1
 /usr/local/lib64/libatk-bridge-2.0.so
 /usr/local/lib64/libatk-bridge-2.0.so.0
 /usr/local/lib64/libatk-bridge-2.0.so.0.0.0
@@ -86,6 +86,8 @@
 /usr/local/lib64/pkgconfig/atk-bridge-2.0.pc
 /usr/local/lib64/pkgconfig/atk.pc
 /usr/local/lib64/pkgconfig/atspi-2.pc
+/usr/local/lib64/python3.13/site-packages/gi/overrides/Atspi.py
+/usr/local/lib64/python3.13/site-packages/gi/overrides/__pycache__/Atspi.cpython-313.pyc
 /usr/local/libexec/at-spi-bus-launcher
 /usr/local/libexec/at-spi2-registryd
 /usr/local/share/dbus-1/accessibility-services/org.a11y.atspi.Registry.service
@@ -187,6 +189,7 @@
 /usr/local/share/locale/tt/LC_MESSAGES/at-spi2-core.mo
 /usr/local/share/locale/ug/LC_MESSAGES/at-spi2-core.mo
 /usr/local/share/locale/uk/LC_MESSAGES/at-spi2-core.mo
+/usr/local/share/locale/uz/LC_MESSAGES/at-spi2-core.mo
 /usr/local/share/locale/uz@cyrillic/LC_MESSAGES/at-spi2-core.mo
 /usr/local/share/locale/vi/LC_MESSAGES/at-spi2-core.mo
 /usr/local/share/locale/wa/LC_MESSAGES/at-spi2-core.mo

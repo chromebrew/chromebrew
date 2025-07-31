@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 1.9 (for Chromebrew)
+# getrealdeps version 2.0 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -193,6 +193,8 @@ def main(pkg)
     # Record the line content as the key and the line number (incremented by one because the index starts at 0) as the value.
     lines_to_delete[line] = line_number + 1
   end
+  # Clean up any blank lines with rubocop.
+  system "rubocop --only Layout/EmptyLines -A #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
   # Leave if there aren't any old runtime dependencies.
   return if lines_to_delete.empty?
   puts "\nPackage file #{pkg}.rb has these outdated runtime library dependencies:".lightpurple

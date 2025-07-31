@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Edit < RUST
   description 'A simple editor for simple needs.'
   homepage 'https://github.com/microsoft/edit'
-  version '1.1.0'
+  version '1.2.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/microsoft/edit.git'
@@ -11,10 +11,10 @@ class Edit < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '14e24a53daeefb85850b8ba4a8ab67c59b0da24bcfb7266f43f70f1d8c28cd00',
-     armv7l: '14e24a53daeefb85850b8ba4a8ab67c59b0da24bcfb7266f43f70f1d8c28cd00',
-       i686: '6a6dd916d54e402428f064a4e1dd8c33150ab9db68737690f8e9730138d9569c',
-     x86_64: '25c47a29e12df6ff098c085d31f877724ee686f58bef55f83a511ec307e5a188'
+    aarch64: '771cae3efe1afa52aef44c5f30a30ddc9420e9d22a3480bb1ae22dbb1a181191',
+     armv7l: '771cae3efe1afa52aef44c5f30a30ddc9420e9d22a3480bb1ae22dbb1a181191',
+       i686: '560f03e9dfe5a2ae2e10c677ca99ca34282d12b7c9035595afb946e9ad1b9465',
+     x86_64: 'b64eceb2e051b9621b4c61caa6c5221c70e948d6e7d6a3f01138ed1f2bac3b32'
   })
 
   depends_on 'gcc_lib' # R
