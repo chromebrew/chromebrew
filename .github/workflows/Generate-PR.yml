@@ -351,7 +351,7 @@ jobs:
           CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
           CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
           DRAFT_PR: ${{ github.event.inputs.draft_pr }}
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
           i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
           x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
@@ -397,14 +397,10 @@ jobs:
           [[ $DRAFT_PR == 'true' ]] && export PR_DRAFT_FLAG='-d'
           PR_NUMBER=$(gh pr list -H ${{ inputs.branch || github.ref_name }}| cut -f1)
           if [[ -z ${PR_NUMBER} ]]; then
-            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --title "${{ inputs.branch || github.ref_name }}: ${CHANGED_PACKAGES}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "${{ inputs.branch || github.ref_name }}: ${CHANGED_PACKAGES}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
             gh pr edit --title "${{ inputs.branch || github.ref_name }}: ${CHANGED_PACKAGES}" -F /tmp/pr.txt
           fi
-          # Only use the more expansive token now so we don't generate
-          # PRs under the bot account.
-          export GH_TOKEN=${{ steps.get_workflow_token.outputs.token }}
-          gh pr edit "${PR_NUMBER}" --add-reviewer chromebrew/active
           # Draft PRs can not be set to automerge.
           if [[ $DRAFT_PR == 'true' ]]; then
             gh pr ready --undo || true

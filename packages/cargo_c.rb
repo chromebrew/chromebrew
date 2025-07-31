@@ -15,10 +15,10 @@ class Cargo_c < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '928c7aba982ee2bd9e9c3852cb8a3afee2ae6ac6a312ad388bade1d88e211ba8',
-     armv7l: '928c7aba982ee2bd9e9c3852cb8a3afee2ae6ac6a312ad388bade1d88e211ba8',
-       i686: '718ce19f3c72d4f24dc091c94d5213efbcc470829df2548d0f6d67f58067be79',
-     x86_64: 'c6ef004c68fe0077d4a8d43f58a035c6c0389020cb74b485f757d006abb9f173'
+    aarch64: '0f23fe4cd20b5a93305638bb2590215df77524d1b360525a791f7eded771a4a9',
+     armv7l: '0f23fe4cd20b5a93305638bb2590215df77524d1b360525a791f7eded771a4a9',
+       i686: '8ee676ffbbbe4126998aeb3c2deecfa85db3d755b74504a964f57c533a14fd1d',
+     x86_64: '269fe0575a46cc4cccd5af15071ddd14d14901a29a5dab31d4cdf7ee01e5458f'
   })
 
   depends_on 'curl' # R
@@ -27,6 +27,4 @@ class Cargo_c < RUST
   depends_on 'openssl' # R
   depends_on 'rust' => :build
   depends_on 'zlib' # R
-
-
 end
