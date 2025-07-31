@@ -21,10 +21,12 @@ class Cargo_c < RUST
      x86_64: 'c6ef004c68fe0077d4a8d43f58a035c6c0389020cb74b485f757d006abb9f173'
   })
 
-  depends_on 'rust' => :build
   depends_on 'curl' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'openssl' # R
+  depends_on 'rust' => :build
   depends_on 'zlib' # R
+
+
 end
