@@ -24,4 +24,12 @@ class Libunwind < Autotools
   depends_on 'zlib' # R
 
   autotools_configure_options '--enable-ptrace'
+  
+  def self.patch
+    patches = [
+      # Fix GCC 15 compat.
+      ['https://github.com/libunwind/libunwind/pull/831.patch', '4562c231f1051bd327cf27b6940445e5c0d83e5d8427a6ca36c9f0853b3e4a6d']
+    ]
+    ConvenienceFunctions.patch(patches)
+  end
 end
