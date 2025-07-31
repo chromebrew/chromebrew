@@ -319,7 +319,7 @@ jobs:
             git pull --rebase origin master && git push -f
             git log --oneline -10
             git checkout master && git pull
-            git log --oneline master..${{ inputs.branch || github.ref_name }} | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
+            git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Build Run on\|Package File Update Run on" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
             git checkout "${{ inputs.branch || github.ref_name }}"
       - name: Get changed files
         id: changed-files
