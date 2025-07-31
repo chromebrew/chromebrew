@@ -20,7 +20,7 @@ class Clamav < CMake
   depends_on 'rust' => :build
   depends_on 'check' => :build
   depends_on 'libiconv' => :build
-  depends_on 'json_c' => :build
+  depends_on 'json_c' # R
   depends_on 'py3_pytest' => :build
   depends_on 'bzip2' # R
   depends_on 'curl' # R
@@ -32,16 +32,13 @@ class Clamav < CMake
   depends_on 'pcre2' # R
   depends_on 'zlib' # R
 
-  no_shrink
-
-  cmake_options "-D APP_CONFIG_DIRECTORY=#{CREW_PREFIX}/etc/clamav \
-    -D DATABASE_DIRECTORY=#{CREW_PREFIX}/share/clamav \
-    -D CMAKE_C_FLAGS=-fPIC \
-    -D ENABLE_JSON_SHARED=OFF \
-    -D ENABLE_STATIC_LIB=ON \
-    -D ENABLE_SYSTEMD=OFF \
-    -D ENABLE_MILTER=OFF \
-    -G Ninja"
+  cmake_options "-DAPP_CONFIG_DIRECTORY=#{CREW_PREFIX}/etc/clamav \
+    -DCMAKE_C_FLAGS=-fPIC \
+    -DDATABASE_DIRECTORY=#{CREW_PREFIX}/share/clamav \
+    -DENABLE_JSON_SHARED=OFF \
+    -DENABLE_MILTER=OFF \
+    -DENABLE_STATIC_LIB=ON \
+    -DENABLE_SYSTEMD=OFF"
 
   cmake_install_extras do
     FileUtils.cp "#{CREW_DEST_PREFIX}/etc/clamav/clamd.conf.sample", "#{CREW_DEST_PREFIX}/etc/clamav/clamd.conf"
