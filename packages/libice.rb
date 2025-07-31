@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libice < Package
+class Libice < Autotools
   description 'X.org X Inter Client Exchange Library'
   homepage 'https://www.x.org/wiki/'
-  version '1.1.0'
+  version '1.1.2'
   license 'X11'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libice.git'
@@ -22,16 +22,4 @@ class Libice < Package
   depends_on 'libbsd' # R
   depends_on 'glibc' # R
   depends_on 'libmd' # R
-
-  patchelf
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libx11 < Autotools
   description 'C interface to the X window system'
   homepage 'https://x.org/wiki/'
-  version '1.8.10'
+  version '1.8.12'
   license 'X11'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libx11.git'

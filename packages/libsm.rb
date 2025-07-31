@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libsm < Autotools
   description 'X.org X Session Management Library'
   homepage 'https://www.x.org/wiki/'
-  version '1.2.4-5edd20b'
+  version '1.2.6'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libsm.git'
-  git_hashtag '5edd20b307ce70ccb14c360f1b94914c49544a24'
+  git_hashtag "libSM-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({

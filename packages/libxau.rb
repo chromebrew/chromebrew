@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxau < Package
+class Libxau < Autotools
   description 'xau library for libX11'
   homepage 'https://x.org/wiki/'
-  version '1.0.10'
+  version '1.0.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libXau-1.0.10.tar.xz'
-  source_sha256 '8be6f292334d2f87e5b919c001e149a9fdc27005d6b3e053862ac6ebbf1a0c0a'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxau.git'
+  git_hashtag "libXau-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -19,14 +19,4 @@ class Libxau < Package
 
   depends_on 'xorg_proto'
   depends_on 'glibc' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
 end
