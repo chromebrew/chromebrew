@@ -17,17 +17,21 @@ class Libinput < Meson
      x86_64: 'c7961df2596c843e5822b2ac94c0d88ffc126bf9fdf3a3a6c985b8997a3fa789'
   })
 
-  depends_on 'eudev' # R
-  depends_on 'libevdev' # R
-  depends_on 'mtdev' # R
-  depends_on 'libwacom' => :build
-  depends_on 'libunwind' => :build
   depends_on 'check' => :build
-  depends_on 'valgrind' => :build
-
-  # If debug-gui feature is required, uncomment following lines and remove "-Ddebug-gui=false" to enable it
+  depends_on 'eudev' # R
+  depends_on 'glibc' # R
   # depends_on 'graphviz' => :build
   # depends_on 'gtk3' => :build
+  depends_on 'libevdev' # R
+  depends_on 'libunwind' => :build
+  depends_on 'libwacom' # R
+  depends_on 'libwacom' => :build
+  depends_on 'mtdev' # R
+  depends_on 'valgrind' => :build
+
+
+
+  # If debug-gui feature is required, uncomment following lines and remove "-Ddebug-gui=false" to enable it
 
   meson_options '-Ddebug-gui=false \
       -Ddocumentation=false'
