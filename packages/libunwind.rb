@@ -4,7 +4,7 @@ require 'buildsystems/autotools'
 class Libunwind < Autotools
   description 'libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program.'
   homepage 'https://www.nongnu.org/libunwind/'
-  version '1.8.1'
+  version '1.8.2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/libunwind/libunwind.git'
