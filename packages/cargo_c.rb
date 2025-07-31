@@ -2,12 +2,12 @@
 # https://github.com/archlinux/svntogit-community/raw/packages/cargo-c/trunk/PKGBUILD
 # NOTE: This package should be updated along with new Rust releases.
 
-require 'package'
+require 'buildsystems/rust'
 
-class Cargo_c < Package
+class Cargo_c < RUST
   description 'A cargo subcommand to build and install C-ABI compatible dynamic and static libraries'
   homepage 'https://github.com/lu-zero/cargo-c/'
-  version '0.10.9'
+  version '0.10.14'
   license 'LGPL-2.1 and MPL-1.1'
   compatibility 'all'
   source_url 'https://github.com/lu-zero/cargo-c.git'
@@ -27,22 +27,4 @@ class Cargo_c < Package
   depends_on 'glibc' # R
   depends_on 'openssl' # R
   depends_on 'zlib' # R
-
-  def self.build
-    system "cargo fetch \
-      --manifest-path Cargo.toml"
-    system "cargo build \
-      --release \
-      --frozen \
-      --manifest-path Cargo.toml"
-  end
-
-  def self.install
-    system "cargo install \
-      --frozen \
-      --offline \
-      --no-track \
-      --path . \
-      --root #{CREW_DEST_PREFIX}"
-  end
 end
