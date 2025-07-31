@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Clamav < CMake
   description 'ClamAV is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.'
   homepage 'https://www.clamav.net/'
-  version '1.4.2'
+  version '1.4.3'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://www.clamav.net/downloads/production/clamav-#{version}.tar.gz"
-  source_sha256 '8c92f8ade2a8f2c9d6688d1d63ee57f6caf965d74dce06d0971c6709c8e6c04c'
+  source_sha256 'd874cabf3d4765b35b518ef535658a1e6ec74802006a1d613f9f124aa1343210'
   binary_compression 'tar.zst'
 
   binary_sha256({
