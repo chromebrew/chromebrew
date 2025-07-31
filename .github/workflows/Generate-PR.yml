@@ -12,6 +12,9 @@ on:
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
+      pr_title:
+        description: "Title of PR"
+        required: false
       update_package_files:
         description: "Update Package Files."
         required: false
@@ -397,7 +400,7 @@ jobs:
           [[ $DRAFT_PR == 'true' ]] && export PR_DRAFT_FLAG='-d'
           PR_NUMBER=$(gh pr list -H ${{ inputs.branch || github.ref_name }}| cut -f1)
           if [[ -z ${PR_NUMBER} ]]; then
-            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "${{ inputs.branch || github.ref_name }}: ${CHANGED_PACKAGES}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "${{ inputs.pr_title || inputs.branch || github.ref_name }}: ${CHANGED_PACKAGES}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
             gh pr edit --title "${{ inputs.branch || github.ref_name }}: ${CHANGED_PACKAGES}" -F /tmp/pr.txt
           fi
