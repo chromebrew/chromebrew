@@ -3,12 +3,12 @@ require 'buildsystems/cmake'
 class Check < CMake
   description 'A unit testing framework for C'
   homepage 'https://libcheck.github.io/check/'
-  version '0.15.2'
+  version '0.15.2-1'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://github.com/libcheck/check/releases/download/0.15.2/check-0.15.2.tar.gz'
-  source_sha256 'a8de4e0bacfb4d76dd1c618ded263523b53b85d92a146d8835eb1a52932fa20a'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/libcheck/check.git'
+  git_hashtag version.split('-').first
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '935119bc79d705b92a3a67d422b86aa466284bc907026635c06b1767ca1bf346',
