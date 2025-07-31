@@ -17,19 +17,18 @@ class Clamav < CMake
      x86_64: 'b409f59d64681ea826f9810faa9bd76c130548b74398de7624208ae8ddf4040b'
   })
 
-  depends_on 'rust' => :build
-  depends_on 'check' => :build
-  depends_on 'libiconv' => :build
-  depends_on 'json_c' # R
-  depends_on 'py3_pytest' => :build
   depends_on 'bzip2' # R
+  depends_on 'check' => :build
   depends_on 'curl' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'libiconv' => :build
   depends_on 'libxml2' # R
   depends_on 'ncurses' # R
   depends_on 'openssl' # R
   depends_on 'pcre2' # R
+  depends_on 'py3_pytest' => :build
+  depends_on 'rust' => :build
   depends_on 'zlib' # R
 
   cmake_options "-DAPP_CONFIG_DIRECTORY=#{CREW_PREFIX}/etc/clamav \
