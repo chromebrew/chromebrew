@@ -311,7 +311,7 @@ jobs:
         id: trigger-pr-workflow
         env:
           GH_TOKEN: ${{ github.token }}
-          PR_TITLE: ${{ inputs.pr_title }}
+          PR_TITLE: ${{ inputs.pr_title || inputs.branch || github.ref_name }}
         run: |
-            [[ "${PR_TITLE}" != "" ]] && export PR_TITLE_OPTION="-f pr_title=$(echo $PR_TITLE | ( read -rsd '' x; echo ${x@Q} ))"
-            gh workflow -R chromebrew/chromebrew run Generate-PR.yml -f branch="${{ inputs.branch || github.ref_name }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" $PR_TITLE_OPTION
+            echo "PR title is: ${{ inputs.pr_title || inputs.branch || github.ref_name }}"
+            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }} -f branch="${{ inputs.branch || github.ref_name }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo $PR_TITLE | ( read -rsd '' x; echo ${x@Q} ))"
