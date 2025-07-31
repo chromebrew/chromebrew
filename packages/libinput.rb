@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libinput < Meson
   description 'libinput is a library to handle input devices in Wayland compositors and to provide a generic X.Org input driver.'
   homepage 'https://www.freedesktop.org/wiki/Software/libinput/'
-  version '1.21.0'
+  version '1.29.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/libinput/libinput.git'
