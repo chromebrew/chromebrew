@@ -18,8 +18,8 @@ class At_spi2_core < Meson
 
   depends_on 'dbus' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'libx11' # R
@@ -28,6 +28,8 @@ class At_spi2_core < Meson
   depends_on 'libxfixes' => :build
   depends_on 'libxi' # R
   depends_on 'libxtst' # R
+
+
 
   gnome
 end
