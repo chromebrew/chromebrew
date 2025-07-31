@@ -37,6 +37,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Update branch
+        if: ${{ github.event.action != 'synchronize' }}
         run: |
           git fetch origin
           git checkout "${{ github.ref_name }}"
