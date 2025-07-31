@@ -15,9 +15,6 @@ jobs:
   update-check:
     if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
-    outputs:
-      timestamp: ${{ steps.set-variables.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
-      update_branch_name: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -38,82 +35,43 @@ jobs:
           make -j "$(nproc)"
           sudo make install
           sudo gem install ruby-libversion
-      - name: Set workflow & branch variables
-        id: set-variables
-        run: |
-          export TIMESTAMP="$(date -u +%F-%H-%M)"
-          export UPDATE_BRANCH_NAME="automatic-updates-${TIMESTAMP}"
-          echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
-          echo "UPDATE_BRANCH_NAME=${UPDATE_BRANCH_NAME}" >> "$GITHUB_OUTPUT"
-      - name: Git setup
-        env:
-          UPDATE_BRANCH_NAME: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
-        run: |
-          git pull && ( git checkout -b "${UPDATE_BRANCH_NAME}" || git checkout "${UPDATE_BRANCH_NAME}" )
       - name: Check for updates in pip packages.
         id: pip-update-checks
-        env:
-          UPDATE_BRANCH_NAME: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
         run: |
+          git pull
+          git stash drop || true
           LD_LIBRARY_PATH=/usr/local/lib ruby tools/update_python_pip_packages.rb
-          # Create a new branch with the updated package files only
-          # if there are updated packages. Otherwise exit early.
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "Python pip packages were updated."
-            git config user.name "${{ github.actor }}"
-            git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git add -A
-            git commit -m "Add unbuilt updated pip packages to ${UPDATE_BRANCH_NAME}"
-            echo "PIP_UPDATED=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "Python pip packages were not updated."
-            echo "PIP_UPDATED=false" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Push pip package changes
-        if: ${{ steps.pip-update-checks.outputs.PIP_UPDATED == 'true' }}
-        uses: ad-m/github-push-action@master
-        with:
-          branch: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
+          export TIMESTAMP="$(date -u +%F-%H-%M)"
+          for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
+          do
+            git stash pop || true
+            git add $i
+            pkg=${i%.rb}
+            pkg=${pkg#packages/}
+            git checkout -b "${pkg}-${TIMESTAMP}" || git checkout "${pkg}-${TIMESTAMP}"
+            git commit -m "Add unbuilt ${pkg} to ${pkg}-${TIMESTAMP}"
+            git push
+            gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${pkg}-${TIMESTAMP}"
+            git stash || true
+            git checkout master
+          done
       - name: Check for updates in ruby gem packages.
         id: gem-update-checks
-        env:
-          UPDATE_BRANCH_NAME: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
         run: |
+          git pull
+          git stash drop || true
           LD_LIBRARY_PATH=/usr/local/lib ruby tools/update_ruby_gem_packages.rb
-          # Create a new branch with the updated package files only
-          # if there are updated packages. Otherwise exit early.
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "Ruby gem packages were updated."
-            git config user.name "${{ github.actor }}"
-            git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git add -A
-            git commit -m "Add unbuilt updated ruby gem packages to ${UPDATE_BRANCH_NAME}"
-            echo "GEM_UPDATED=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "Ruby gem packages were not updated."
-            echo "GEM_UPDATED=false" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Push ruby gem package changes
-        if: ${{ steps.gem-update-checks.outputs.GEM_UPDATED == 'true' }}
-        uses: ad-m/github-push-action@master
-        with:
-          branch: ${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}
-      - name: Cancel if no updates
-        id: no-update-cancel
-        if: ${{ ( steps.pip-update-checks.outputs.PIP_UPDATED == 'false' ) && ( steps.gem-update-checks.outputs.GEM_UPDATED == 'false' ) }}
-        run: |
-          echo "PIP_UPDATED is ${{ steps.pip-update-checks.outputs.PIP_UPDATED }}."
-          echo "GEM_UPDATED is ${{ steps.gem-update-checks.outputs.GEM_UPDATED }}."
-          git checkout master && git branch -D "${{ steps.set-variables.outputs.UPDATE_BRANCH_NAME }}" && git push
-          # https://stackoverflow.com/a/75809743
-          gh run cancel "${{ github.run_id }}"
-          gh run watch "${{ github.run_id }}"
-  dispatch-build:
-    if: ${{ github.repository_owner == 'chromebrew' }}
-    runs-on: ubuntu-24.04
-    needs: update-check
-    env:
-      UPDATE_BRANCH_NAME: ${{ needs.update-check.outputs.update_branch_name }}
-    steps:
-      - name: gh_workflow_dispatch
-        run: gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${UPDATE_BRANCH_NAME}"
+          export TIMESTAMP="$(date -u +%F-%H-%M)"
+          for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
+          do
+            git stash pop || true
+            git add $i
+            pkg=${i%.rb}
+            pkg=${pkg#packages/}
+            git checkout -b "${pkg}-${TIMESTAMP}" || git checkout "${pkg}-${TIMESTAMP}"
+            git commit -m "Add unbuilt ${pkg} to ${pkg}-${TIMESTAMP}"
+            git push
+            gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${pkg}-${TIMESTAMP}"
+            git stash || true
+            git checkout master
+          done
