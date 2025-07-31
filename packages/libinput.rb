@@ -11,10 +11,10 @@ class Libinput < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c131c07fb1f1d4e9a59a47b30cfa53c7b0a9f746a35091c1576cf822a5b58637',
-     armv7l: 'c131c07fb1f1d4e9a59a47b30cfa53c7b0a9f746a35091c1576cf822a5b58637',
+    aarch64: '8f990053478f54b3630415c53b0f8bd6f3ae61128bd1e533d6fcdd81fe40ef2d',
+     armv7l: '8f990053478f54b3630415c53b0f8bd6f3ae61128bd1e533d6fcdd81fe40ef2d',
        i686: '23210fa0f78aef18c64121f7a2ee0c764877a5602743ce614ee6f9f07998cd61',
-     x86_64: 'c7961df2596c843e5822b2ac94c0d88ffc126bf9fdf3a3a6c985b8997a3fa789'
+     x86_64: '5d71fda96eacee2fd12baff8213e4413294a0a5a77d9d9eb3b482d09222b3c97'
   })
 
   depends_on 'check' => :build
@@ -28,8 +28,6 @@ class Libinput < Meson
   depends_on 'libwacom' => :build
   depends_on 'mtdev' # R
   depends_on 'valgrind' => :build
-
-
 
   # If debug-gui feature is required, uncomment following lines and remove "-Ddebug-gui=false" to enable it
 
