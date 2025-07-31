@@ -9,9 +9,6 @@ on:
         required: false
         type: boolean
         default: 'false'
-      branch:
-        description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
-        required: false
       pr_title:
         description: "Title of PR"
         required: false
@@ -20,6 +17,9 @@ on:
         required: false
         type: boolean
         default: 'true'
+      branch:
+        description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
+        required: false
 env:
   BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
