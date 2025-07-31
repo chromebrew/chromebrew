@@ -304,6 +304,9 @@ jobs:
       - name: Report update & build success
         run: echo "Update & build jobs succeeded. Creating a PR."
       - name: Trigger PR workflow
+        if: ${{ github.event.inputs.with_pr != 'No' }}
         id: trigger-pr-workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-            gh workflow -R chromebrew/chromebrew run Generate-PR.yml -f branch="${{ inputs.branch || github.ref_name }}" -f with_pr="${{ inputs.with_pr }}"
+            gh workflow -R chromebrew/chromebrew run Generate-PR.yml -f branch="${{ inputs.branch || github.ref_name }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}"
