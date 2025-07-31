@@ -9,10 +9,12 @@ class RUST < Package
     @rustflags = "#{ENV.fetch('RUSTFLAGS', nil)} #{@rust_flags}"
     rust_env =
       {
-                  LD: 'mold',
-        LIBRARY_PATH: CREW_LIB_PREFIX,
-                PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil),
-           RUSTFLAGS: @rustflags
+          CARGO_TERM_COLOR: 'always',
+  CARGO_TERM_PROGRESS_WHEN: 'always',
+                        LD: 'mold',
+              LIBRARY_PATH: CREW_LIB_PREFIX,
+                      PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil),
+                 RUSTFLAGS: @rustflags
       }.transform_keys(&:to_s)
 
     @channel_flag = @rust_channel.to_s.empty? ? '' : "+#{@rust_channel}"
@@ -41,10 +43,12 @@ class RUST < Package
   def self.install
     rust_env =
       {
-                  LD: 'mold',
-        LIBRARY_PATH: CREW_LIB_PREFIX,
-                PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil),
-           RUSTFLAGS: @rustflags
+          CARGO_TERM_COLOR: 'always',
+  CARGO_TERM_PROGRESS_WHEN: 'always',
+                        LD: 'mold',
+              LIBRARY_PATH: CREW_LIB_PREFIX,
+                      PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil),
+                 RUSTFLAGS: @rustflags
       }.transform_keys(&:to_s)
 
     @rust_install_path.split.each do |path|
