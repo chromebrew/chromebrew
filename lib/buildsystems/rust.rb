@@ -1,3 +1,4 @@
+require 'io/console'
 require_relative '../package'
 require_relative '../require_gem'
 require_relative '../report_buildsystem_methods'
@@ -6,16 +7,20 @@ class RUST < Package
   property :rust_channel, :rust_flags, :rust_features, :rust_install_path, :rust_options, :rust_packages, :rust_release_profile, :rust_targets, :pre_rust_options, :rust_build_extras, :rust_install_extras
 
   def self.build
+    # From lib/progress_bar.rb ...
+    _, @terminal_w = !IO.console&.console_mode || IO.console&.winsize == [0, 0] ? [25, 80] : IO.console&.winsize
+
     @rustflags = "#{ENV.fetch('RUSTFLAGS', nil)} #{@rust_flags}"
     rust_env =
       {
-          CARGO_TERM_COLOR: 'always',
-  CARGO_TERM_PROGRESS_WHEN: 'always',
-                        LD: 'mold',
-              LIBRARY_PATH: CREW_LIB_PREFIX,
-                      PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil),
-                 RUSTFLAGS: @rustflags
-      }.transform_keys(&:to_s)
+            CARGO_TERM_COLOR: 'always',
+    CARGO_TERM_PROGRESS_WHEN: 'always',
+   CARGO_TERM_PROGRESS_WIDTH: @terminal_w.to_s,
+                          LD: 'mold',
+                LIBRARY_PATH: CREW_LIB_PREFIX,
+                        PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil),
+                   RUSTFLAGS: @rustflags
+        }.transform_keys(&:to_s)
 
     @channel_flag = @rust_channel.to_s.empty? ? '' : "+#{@rust_channel}"
     @features = @rust_features.to_s.empty? ? '' : "--features #{@rust_features}"
@@ -43,12 +48,13 @@ class RUST < Package
   def self.install
     rust_env =
       {
-          CARGO_TERM_COLOR: 'always',
-  CARGO_TERM_PROGRESS_WHEN: 'always',
-                        LD: 'mold',
-              LIBRARY_PATH: CREW_LIB_PREFIX,
-                      PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil),
-                 RUSTFLAGS: @rustflags
+           CARGO_TERM_COLOR: 'always',
+   CARGO_TERM_PROGRESS_WHEN: 'always',
+  CARGO_TERM_PROGRESS_WIDTH: @terminal_w.to_s,
+                         LD: 'mold',
+               LIBRARY_PATH: CREW_LIB_PREFIX,
+                       PATH: "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil),
+                  RUSTFLAGS: @rustflags
       }.transform_keys(&:to_s)
 
     @rust_install_path.split.each do |path|
