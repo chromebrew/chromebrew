@@ -39,6 +39,7 @@ class Mesa < Meson
   depends_on 'libxshmfence' # R
   depends_on 'libxv' => :build
   depends_on 'libxxf86vm' # R
+  depends_on 'llvm20_lib' # R
   depends_on 'llvm_dev' => :build
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako' => :build
@@ -48,12 +49,11 @@ class Mesa < Meson
   depends_on 'spirv_tools' # R
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'wayland_protocols' => :build
   depends_on 'wayland' # R
+  depends_on 'wayland_protocols' => :build
   depends_on 'xcb_util_keysyms' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'llvm20_lib' # R
 
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
     -Db_asneeded=false \
