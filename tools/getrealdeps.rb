@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.0 (for Chromebrew)
+# getrealdeps version 2.1 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -112,6 +112,8 @@ def main(pkg)
 
   # Massage the llvm entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub('llvm_build', 'llvm_lib') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub('llvm20_lib', 'llvm_lib') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub('llvm20_dev', 'llvm_dev') }.uniq
 
   # Leave early if we didn't find any dependencies.
   return if pkgdeps.empty?

@@ -39,8 +39,8 @@ class Mesa < Meson
   depends_on 'libxshmfence' # R
   depends_on 'libxv' => :build
   depends_on 'libxxf86vm' # R
-  depends_on 'llvm20_lib' # R
   depends_on 'llvm_dev' => :build
+  depends_on 'llvm_lib' # R
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako' => :build
   depends_on 'py3_ply' => :build
