@@ -405,6 +405,7 @@ jobs:
             PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | sed -e "s/^'//" -e "s/'$//") — ${CHANGED_PACKAGES}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
             gh pr edit --title "$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | sed -e "s/^'//" -e "s/'$//") — ${CHANGED_PACKAGES}" -F /tmp/pr.txt
+            gh pr edit --add-reviewer chromebrew/active
           fi
           # Draft PRs can not be set to automerge.
           if [[ $DRAFT_PR == 'true' ]]; then
