@@ -250,7 +250,7 @@ CREW_ENV_OPTIONS_HASH ||=
       'FFLAGS'          => CREW_COMMON_FLAGS,
       'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? '' : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
       'LDFLAGS'         => CREW_LINKER_FLAGS
-    }.reject { |k, v| v == '' }
+    }.reject { |_k, v| v == '' }
   end
 
 # parse from hash to shell readable string
@@ -263,7 +263,7 @@ CREW_ENV_FNO_LTO_OPTIONS_HASH ||= {
   'FFLAGS'          => CREW_COMMON_FNO_LTO_FLAGS,
   'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? '' : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
   'LDFLAGS'         => CREW_FNO_LTO_LDFLAGS
-}.reject { |k, v| v == '' }
+}.reject { |_k, v| v == '' }
 # parse from hash to shell readable string
 CREW_ENV_FNO_LTO_OPTIONS ||= CREW_ENV_FNO_LTO_OPTIONS_HASH.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')
 
