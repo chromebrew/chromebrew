@@ -13,23 +13,21 @@ class Gtk4 < Meson
   binary_sha256({
     aarch64: '3265853b30c775ed260ff3ad9c126239bd8dd1e32d3be2ddeed20440bfc91fca',
      armv7l: '3265853b30c775ed260ff3ad9c126239bd8dd1e32d3be2ddeed20440bfc91fca',
-     x86_64: 'a9044b45adb9fb89e7b4a8bb1678dfb17f823c0d3813c59436589a4dac19ad9b'
+     x86_64: 'a14fc2e7d441409e44f867e8ba6ab5088bc8c78071c9e570189782111e0f0cad'
   })
 
-  # L = Logical Dependency, R = Runtime Dependency
   depends_on 'adwaita_fonts' # L
   depends_on 'adwaita_icon_theme' # L
   depends_on 'cairo' # R
   depends_on 'cups' # R
   depends_on 'docbook' => :build
   depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
   depends_on 'fribidi' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'ghostscript' => :build
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'glslang' => :build
   # depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' => :build
@@ -48,16 +46,14 @@ class Gtk4 < Meson
   depends_on 'libspectre' => :build
   depends_on 'libtiff' # R
   depends_on 'libx11' # R
-  depends_on 'libxcomposite' # R
   depends_on 'libxcursor' # R
   depends_on 'libxdamage' # R
   depends_on 'libxext' # R
   depends_on 'libxfixes' # R
-  depends_on 'libxinerama' # R
   depends_on 'libxi' # R
+  depends_on 'libxinerama' # R
   depends_on 'libxkbcommon' # R
   depends_on 'libxrandr' # R
-  depends_on 'libxrender' # R
   depends_on 'mesa' => :build
   depends_on 'pango' # R
   depends_on 'py3_docutils' => :build
@@ -72,7 +68,8 @@ class Gtk4 < Meson
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
-  depends_on 'zlib' # R
+
+  # L = Logical Dependency, R = Runtime Dependency
 
   gnome
   no_fhs
