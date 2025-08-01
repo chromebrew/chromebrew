@@ -22,5 +22,4 @@ class Libsm < Autotools
   depends_on 'libx11' => :build
   depends_on 'libxtrans' => :build
   depends_on 'util_linux' # R
-
 end

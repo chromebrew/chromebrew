@@ -20,5 +20,4 @@ class Libice < Autotools
   depends_on 'libbsd' # R
   depends_on 'libx11' => :build
   depends_on 'libxtrans' => :build
-
 end

@@ -23,5 +23,4 @@ class Libx11 < Autotools
   depends_on 'libxtrans' => :build
   depends_on 'llvm_lib' => :build
   depends_on 'xorg_proto' => :build
-
 end

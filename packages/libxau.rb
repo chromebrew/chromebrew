@@ -19,5 +19,4 @@ class Libxau < Autotools
 
   depends_on 'glibc' # R
   depends_on 'xorg_proto'
-
 end
