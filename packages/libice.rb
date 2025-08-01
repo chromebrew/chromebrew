@@ -5,7 +5,7 @@ class Libice < Autotools
   homepage 'https://www.x.org/wiki/'
   version '1.1.2'
   license 'X11'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libice.git'
   git_hashtag "libICE-#{version}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libice < Autotools
   binary_sha256({
     aarch64: '69815ffd1178e0c19ad9f8a4d4b8fc7b34aeb09c7aaae0c4a8c70692fdc61fe1',
      armv7l: '69815ffd1178e0c19ad9f8a4d4b8fc7b34aeb09c7aaae0c4a8c70692fdc61fe1',
-       i686: 'aa06dc806a8c3b32e8bcd401297d19bddf05689927842001be65cd66b0fc96b2',
      x86_64: 'a476eef6ec924b373c9f3b68e4ec19ce35fd7b10b5c9c5381c464b5f0d46b78b'
   })
 
