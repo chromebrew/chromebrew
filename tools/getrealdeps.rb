@@ -1,17 +1,17 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.0 (for Chromebrew)
+# getrealdeps version 2.1 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
-crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
-# When invoked from crew, pwd is CREW_DEST_DIR, so crew_local_repo_root
+@crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
+# When invoked from crew, pwd is CREW_DEST_DIR, so @crew_local_repo_root
 # is empty.
-if crew_local_repo_root.to_s.empty?
+if @crew_local_repo_root.to_s.empty?
   require_relative '../lib/color'
   require_relative '../lib/const'
 else
-  require File.join(crew_local_repo_root, 'lib/color')
-  require File.join(crew_local_repo_root, 'lib/const')
+  require File.join(@crew_local_repo_root, 'lib/color')
+  require File.join(@crew_local_repo_root, 'lib/const')
 end
 
 if ARGV.include?('--use-crew-dest-dir')
@@ -112,6 +112,8 @@ def main(pkg)
 
   # Massage the llvm entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub('llvm_build', 'llvm_lib') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_lib/, 'llvm_lib') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_dev/, 'llvm_dev') }.uniq
 
   # Leave early if we didn't find any dependencies.
   return if pkgdeps.empty?
@@ -195,6 +197,7 @@ def main(pkg)
   end
   # Clean up any blank lines with rubocop.
   system "rubocop --only Layout/EmptyLines -A #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
+  FileUtils.cp "#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb", "#{@crew_local_repo_root}/packages/#{pkg}.rb" unless @crew_local_repo_root.to_s.empty? && lines_to_delete.empty?
   # Leave if there aren't any old runtime dependencies.
   return if lines_to_delete.empty?
   puts "\nPackage file #{pkg}.rb has these outdated runtime library dependencies:".lightpurple
@@ -202,6 +205,7 @@ def main(pkg)
   system("gawk -i inplace 'NR != #{lines_to_delete.values.join(' && NR != ')}' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb")
   # Clean up any blank lines with rubocop.
   system "rubocop --only Layout/EmptyLines -A #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
+  FileUtils.cp "#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb", "#{@crew_local_repo_root}/packages/#{pkg}.rb" unless @crew_local_repo_root.to_s.empty?
 end
 
 ARGV.each do |package|
