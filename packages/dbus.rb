@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Dbus < Meson
   description 'D-Bus is a message bus system, a simple way for applications to talk to one another.'
   homepage 'https://www.freedesktop.org/wiki/Software/dbus/'
-  version '1.16.0'
+  version '1.16.2'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/dbus/dbus.git'

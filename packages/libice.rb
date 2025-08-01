@@ -11,15 +11,15 @@ class Libice < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '98119ae9368b7d11644676afac7d66a220bc5329f41b236004e5c3f76e2ce7ec',
-     armv7l: '98119ae9368b7d11644676afac7d66a220bc5329f41b236004e5c3f76e2ce7ec',
+    aarch64: '69815ffd1178e0c19ad9f8a4d4b8fc7b34aeb09c7aaae0c4a8c70692fdc61fe1',
+     armv7l: '69815ffd1178e0c19ad9f8a4d4b8fc7b34aeb09c7aaae0c4a8c70692fdc61fe1',
        i686: 'aa06dc806a8c3b32e8bcd401297d19bddf05689927842001be65cd66b0fc96b2',
-     x86_64: '58bbc7896230e0d630360a6b4686b7c41f40f44f1477da31bff7cde929569752'
+     x86_64: 'a476eef6ec924b373c9f3b68e4ec19ce35fd7b10b5c9c5381c464b5f0d46b78b'
   })
 
-  depends_on 'libxtrans' => :build
-  depends_on 'libx11' => :build
-  depends_on 'libbsd' # R
   depends_on 'glibc' # R
-  depends_on 'libmd' # R
+  depends_on 'libbsd' # R
+  depends_on 'libx11' => :build
+  depends_on 'libxtrans' => :build
+
 end
