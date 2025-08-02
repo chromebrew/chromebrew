@@ -65,6 +65,7 @@ class Gtk4 < Meson
   depends_on 'sommelier' # L
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' if ARCH == 'x86_64'
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
 

@@ -197,7 +197,7 @@ def main(pkg)
   end
   # Clean up any blank lines with rubocop.
   system "rubocop --only Layout/EmptyLines -A #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
-  (FileUtils.cp "#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb", "#{crew_local_repo_root}/packages/#{pkg}.rb" if lines_to_delete.empty?) unless CREW_LOCAL_REPO_ROOT.to_s.empty?
+  (FileUtils.cp "#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb" if lines_to_delete.empty?) unless CREW_LOCAL_REPO_ROOT.to_s.empty?
   # Leave if there aren't any old runtime dependencies.
   return if lines_to_delete.empty?
   puts "\nPackage file #{pkg}.rb has these outdated runtime library dependencies:".lightpurple
@@ -205,7 +205,7 @@ def main(pkg)
   system("gawk -i inplace 'NR != #{lines_to_delete.values.join(' && NR != ')}' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb")
   # Clean up any blank lines with rubocop.
   system "rubocop --only Layout/EmptyLines -A #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
-  FileUtils.cp "#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb", "#{crew_local_repo_root}/packages/#{pkg}.rb" unless CREW_LOCAL_REPO_ROOT.to_s.empty?
+  FileUtils.cp "#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb" unless CREW_LOCAL_REPO_ROOT.to_s.empty?
 end
 
 ARGV.each do |package|
