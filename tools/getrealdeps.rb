@@ -3,15 +3,15 @@
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
-@crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
-# When invoked from crew, pwd is CREW_DEST_DIR, so @crew_local_repo_root
+crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
+# When invoked from crew, pwd is CREW_DEST_DIR, so crew_local_repo_root
 # is empty.
-if @crew_local_repo_root.to_s.empty?
+if crew_local_repo_root.to_s.empty?
   require_relative '../lib/color'
   require_relative '../lib/const'
 else
-  require File.join(@crew_local_repo_root, 'lib/color')
-  require File.join(@crew_local_repo_root, 'lib/const')
+  require File.join(crew_local_repo_root, 'lib/color')
+  require File.join(crew_local_repo_root, 'lib/const')
 end
 
 if ARGV.include?('--use-crew-dest-dir')
@@ -197,7 +197,7 @@ def main(pkg)
   end
   # Clean up any blank lines with rubocop.
   system "rubocop --only Layout/EmptyLines -A #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
-  FileUtils.cp "#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb", "#{@crew_local_repo_root}/packages/#{pkg}.rb" unless @crew_local_repo_root.to_s.empty? && lines_to_delete.empty?
+  (FileUtils.cp "#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb" if lines_to_delete.empty?) unless CREW_LOCAL_REPO_ROOT.to_s.empty?
   # Leave if there aren't any old runtime dependencies.
   return if lines_to_delete.empty?
   puts "\nPackage file #{pkg}.rb has these outdated runtime library dependencies:".lightpurple
@@ -205,7 +205,7 @@ def main(pkg)
   system("gawk -i inplace 'NR != #{lines_to_delete.values.join(' && NR != ')}' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb")
   # Clean up any blank lines with rubocop.
   system "rubocop --only Layout/EmptyLines -A #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
-  FileUtils.cp "#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb", "#{@crew_local_repo_root}/packages/#{pkg}.rb" unless @crew_local_repo_root.to_s.empty?
+  FileUtils.cp "#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb" unless CREW_LOCAL_REPO_ROOT.to_s.empty?
 end
 
 ARGV.each do |package|
