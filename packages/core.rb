@@ -19,7 +19,7 @@ class Core < Package
   depends_on 'crew_mvdir'
   depends_on 'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?
   depends_on 'crew_profile_base'
-  depends_on 'crew_sudo' if CHROMEOS_RELEASE.to_i > 116 && !CREW_IN_CONTAINER
+  # depends_on 'crew_sudo' if CHROMEOS_RELEASE.to_i > 116 && !CREW_IN_CONTAINER
   depends_on 'e2fsprogs'
   depends_on 'elfutils'
   depends_on 'expat'
@@ -118,7 +118,7 @@ class Core < Package
   depends_on 'uchardet'
   depends_on 'unzip'
   depends_on 'upx'
-  depends_on 'uutils_coreutils' unless ARCH == 'i686' # Currently broken.
+  # depends_on 'uutils_coreutils' unless ARCH == 'i686' # Currently broken.
   depends_on 'which'
   depends_on 'xzutils'
   depends_on 'xxhash'
