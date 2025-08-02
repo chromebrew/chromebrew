@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version "25.1.6-#{CREW_LLVM_VER}"
+  version "25.1.7-#{CREW_LLVM_VER}"
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -11,9 +11,9 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ba81b44d64d7f0a13548222d2ee738d69bf50c7724c4c0530ddaacc2a09d4335',
-     armv7l: 'ba81b44d64d7f0a13548222d2ee738d69bf50c7724c4c0530ddaacc2a09d4335',
-     x86_64: '23e749047e65f7b52a1c34d834799f0cb5ac727a65d045d108a97b54fbb02c16'
+    aarch64: '12e4b1e4067feb7aea11bb36e573849c267e348b277b75e06ea5cec754218e85',
+     armv7l: '12e4b1e4067feb7aea11bb36e573849c267e348b277b75e06ea5cec754218e85',
+     x86_64: '6d1e3067daad93adfaff03b8fb52eeb4b9a9aa44fda592476090e4aaef4dee2d'
   })
 
   depends_on 'elfutils' # R
@@ -40,6 +40,7 @@ class Mesa < Meson
   depends_on 'libxv' => :build
   depends_on 'libxxf86vm' # R
   depends_on 'llvm_dev' => :build
+  depends_on 'llvm_lib' # R
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako' => :build
   depends_on 'py3_ply' => :build
@@ -48,12 +49,11 @@ class Mesa < Meson
   depends_on 'spirv_tools' # R
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'wayland_protocols' => :build
   depends_on 'wayland' # R
+  depends_on 'wayland_protocols' => :build
   depends_on 'xcb_util_keysyms' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'llvm20_lib' # R
 
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
     -Db_asneeded=false \
