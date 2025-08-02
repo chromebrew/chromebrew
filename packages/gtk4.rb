@@ -82,7 +82,7 @@ class Gtk4 < Meson
     end
   end
 
-  meson_options '-Dbroadway-backend=true \
+  meson_options "-Dbroadway-backend=true \
       -Dbuild-demos=false \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
@@ -94,7 +94,7 @@ class Gtk4 < Meson
       -Dmedia-gstreamer=disabled \
       -Dmutest:default_library=both \
       -Dprint-cups=auto \
-      -Dvulkan=enabled'
+      -Dvulkan=#{ARCH == 'x86_64' ? 'enabled' : 'disabled'}"
 
   meson_build_extras do
     File.write 'gtk4settings', <<~GTK4_CONFIG_HEREDOC
