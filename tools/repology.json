@@ -75,7 +75,7 @@
     "name": "acquia_cli",
     "description": "Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.",
     "homepage": "https://github.com/acquia/cli",
-    "version": "2.42.0",
+    "version": "2.44.2",
     "license": "GPL-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -83,7 +83,7 @@
     "name": "act",
     "description": "Run your GitHub Actions locally",
     "homepage": "https://github.com/nektos/act",
-    "version": "0.2.78",
+    "version": "0.2.79",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -323,7 +323,7 @@
     "name": "apktool",
     "description": "A tool for reverse engineering Android apk files",
     "homepage": "https://apktool.org/",
-    "version": "2.11.1",
+    "version": "2.12.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -547,7 +547,7 @@
     "name": "at_spi2_core",
     "description": "This is over DBus, tookit widgets provide their content to screen readers such as Orca",
     "homepage": "https://www.freedesktop.org/wiki/",
-    "version": "2.56.3",
+    "version": "2.57.0",
     "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -683,7 +683,7 @@
     "name": "automake",
     "description": "Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards.",
     "homepage": "https://www.gnu.org/software/automake/",
-    "version": "1.18",
+    "version": "1.18.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -883,7 +883,7 @@
     "name": "bazel",
     "description": "a fast, scalable, multi-language and extensible build system",
     "homepage": "https://bazel.build/",
-    "version": "8.2.1",
+    "version": "8.3.1",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -995,7 +995,7 @@
     "name": "binutils",
     "description": "The GNU Binutils are a collection of binary tools.",
     "homepage": "https://www.gnu.org/software/binutils/",
-    "version": "2.44-3",
+    "version": "2.45",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -1091,7 +1091,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.80.124",
+    "version": "1.80.125",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1147,7 +1147,7 @@
     "name": "btop",
     "description": "Resource monitor that shows usage and stats for processor, memory, disks, network and processes.",
     "homepage": "https://github.com/aristocratos/btop",
-    "version": "1.4.2",
+    "version": "1.4.4",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -1179,7 +1179,7 @@
     "name": "bun",
     "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one",
     "homepage": "https://bun.sh/",
-    "version": "1.2.13",
+    "version": "1.2.19",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -1328,10 +1328,18 @@
     "compatibility": "x86_64"
   },
   {
+    "name": "cargo_about",
+    "description": "Cargo plugin to generate list of all licenses for a crate",
+    "homepage": "https://github.com/EmbarkStudios/cargo-about",
+    "version": "0.7.1",
+    "license": "Apache MIT",
+    "compatibility": "all"
+  },
+  {
     "name": "cargo_c",
     "description": "A cargo subcommand to build and install C-ABI compatible dynamic and static libraries",
     "homepage": "https://github.com/lu-zero/cargo-c/",
-    "version": "0.10.9",
+    "version": "0.10.14",
     "license": "LGPL-2.1 and MPL-1.1",
     "compatibility": "all"
   },
@@ -1459,7 +1467,7 @@
     "name": "check",
     "description": "A unit testing framework for C",
     "homepage": "https://libcheck.github.io/check/",
-    "version": "0.15.2",
+    "version": "0.15.2-1",
     "license": "LGPL-2.1+",
     "compatibility": "all"
   },
@@ -1563,7 +1571,7 @@
     "name": "clamav",
     "description": "ClamAV is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.",
     "homepage": "https://www.clamav.net/",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -1675,7 +1683,7 @@
     "name": "cmake",
     "description": "CMake is an open-source, cross-platform family of tools designed to build, test and package software.",
     "homepage": "https://cmake.org/",
-    "version": "4.0.2",
+    "version": "4.0.3",
     "license": "CMake",
     "compatibility": "all"
   },
@@ -1803,7 +1811,7 @@
     "name": "composer",
     "description": "Dependency Manager for PHP",
     "homepage": "https://getcomposer.org/",
-    "version": "2.8.8",
+    "version": "2.8.10",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -1899,7 +1907,7 @@
     "name": "cpu_x",
     "description": "CPU-X is a Free software that gathers information on CPU, motherboard and more.",
     "homepage": "https://thetumultuousunicornofdarkness.github.io/CPU-X/",
-    "version": "5.3.0",
+    "version": "5.3.1",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
@@ -2043,7 +2051,7 @@
     "name": "crystal",
     "description": "A language for humans and computers",
     "homepage": "https://crystal-lang.org/",
-    "version": "1.16.2",
+    "version": "1.17.1",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2107,7 +2115,7 @@
     "name": "cursor",
     "description": "The AI Code Editor",
     "homepage": "https://www.cursor.com/",
-    "version": "0.46.9",
+    "version": "1.3.5",
     "license": "Cursor EULA",
     "compatibility": "x86_64"
   },
@@ -2195,7 +2203,7 @@
     "name": "dbus",
     "description": "D-Bus is a message bus system, a simple way for applications to talk to one another.",
     "homepage": "https://www.freedesktop.org/wiki/Software/dbus/",
-    "version": "1.16.0",
+    "version": "1.16.2",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -2627,7 +2635,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "138.0.3351.109-1",
+    "version": "138.0.3351.121-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2635,7 +2643,7 @@
     "name": "edit",
     "description": "A simple editor for simple needs.",
     "homepage": "https://github.com/microsoft/edit",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -3699,7 +3707,7 @@
     "name": "gawk",
     "description": "The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.",
     "homepage": "https://www.gnu.org/software/gawk/",
-    "version": "5.3.2-1",
+    "version": "5.3.2-2",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -3763,7 +3771,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "531.0.0",
+    "version": "532.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -4171,7 +4179,7 @@
     "name": "glib",
     "description": "GLib provides the core application building blocks for libraries and applications written in C.",
     "homepage": "https://docs.gtk.org/glib/",
-    "version": "2.85.1-1",
+    "version": "2.85.2",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -4187,7 +4195,7 @@
     "name": "glibc",
     "description": "The GNU C Library project provides the core libraries for GNU/Linux systems.",
     "homepage": "https://www.gnu.org/software/libc/",
-    "version": "2.41-6",
+    "version": "2.41-5",
     "license": "LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE",
     "compatibility": "all"
   },
@@ -4683,7 +4691,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "138.0.7204.168-1",
+    "version": "138.0.7204.183-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -4971,7 +4979,7 @@
     "name": "gtk4",
     "description": "GTK+ is a multi-platform toolkit for creating graphical user interfaces.",
     "homepage": "https://www.gtk.org/",
-    "version": "4.18.6",
+    "version": "4.19.2",
     "license": "LGPL-2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -5955,7 +5963,7 @@
     "name": "json_c",
     "description": "JSON-C implements a reference counting object model that allows you to easily construct JSON objects in C, output them as JSON formatted strings and parse JSON formatted strings back into the C representation of JSON objects.",
     "homepage": "https://github.com/json-c/json-c",
-    "version": "0.18-20240915",
+    "version": "0.18-20240915-1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -6531,7 +6539,7 @@
     "name": "libbsd",
     "description": "This library provides useful functions commonly found on BSD systems, and lacking on others like GNU systems, thus making it easier to port projects with strong BSD origins, without needing to embed the same code over and over again on each project.",
     "homepage": "https://libbsd.freedesktop.org/wiki/",
-    "version": "0.11.8",
+    "version": "0.12.2",
     "license": "BSD, BSD-2, BSD-4, ISC",
     "compatibility": "all"
   },
@@ -6638,14 +6646,6 @@
     "version": "0.12.21",
     "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
-  },
-  {
-    "name": "libcheck",
-    "description": "A unit testing framework for C",
-    "homepage": "https://libcheck.github.io/check/",
-    "version": "0.13.0",
-    "license": "LGPL-2.1+",
-    "compatibility": "all"
   },
   {
     "name": "libclc",
@@ -7347,9 +7347,9 @@
     "name": "libice",
     "description": "X.org X Inter Client Exchange Library",
     "homepage": "https://www.x.org/wiki/",
-    "version": "1.1.0",
+    "version": "1.1.2",
     "license": "X11",
-    "compatibility": "all"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "libiconv",
@@ -7427,7 +7427,7 @@
     "name": "libinput",
     "description": "libinput is a library to handle input devices in Wayland compositors and to provide a generic X.Org input driver.",
     "homepage": "https://www.freedesktop.org/wiki/Software/libinput/",
-    "version": "1.21.0",
+    "version": "1.29.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -8179,7 +8179,7 @@
     "name": "libsm",
     "description": "X.org X Session Management Library",
     "homepage": "https://www.x.org/wiki/",
-    "version": "1.2.4",
+    "version": "1.2.6",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -8483,7 +8483,7 @@
     "name": "libunwind",
     "description": "libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program.",
     "homepage": "https://www.nongnu.org/libunwind/",
-    "version": "1.8.1",
+    "version": "1.8.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -8723,7 +8723,7 @@
     "name": "libx11",
     "description": "C interface to the X window system",
     "homepage": "https://x.org/wiki/",
-    "version": "1.8.10",
+    "version": "1.8.12",
     "license": "X11",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -8747,7 +8747,7 @@
     "name": "libxau",
     "description": "xau library for libX11",
     "homepage": "https://x.org/wiki/",
-    "version": "1.0.10",
+    "version": "1.0.12",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -9771,7 +9771,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "25.1.6",
+    "version": "25.1.7",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -9987,7 +9987,7 @@
     "name": "mold",
     "description": "A Modern Linker",
     "homepage": "https://github.com/rui314/mold",
-    "version": "2.40.2",
+    "version": "2.40.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -10139,7 +10139,7 @@
     "name": "mtools",
     "description": "Mtools is a collection of utilities to access MS-DOS disks from GNU and Unix without mounting them.",
     "homepage": "https://www.gnu.org/software/mtools/",
-    "version": "4.0.47",
+    "version": "4.0.49",
     "license": "GPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -11355,7 +11355,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "120.0.5543.93",
+    "version": "120.0.5543.128",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -12219,7 +12219,7 @@
     "name": "php81",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
     "homepage": "https://www.php.net/",
-    "version": "8.1.28",
+    "version": "8.1.33",
     "license": "PHP-3.01",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12227,7 +12227,7 @@
     "name": "php82",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
     "homepage": "https://www.php.net/",
-    "version": "8.2.28",
+    "version": "8.2.29",
     "license": "PHP-3.01",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12235,7 +12235,7 @@
     "name": "php83",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
     "homepage": "https://www.php.net/",
-    "version": "8.3.22",
+    "version": "8.3.23",
     "license": "PHP-3.01",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12243,7 +12243,7 @@
     "name": "php84",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
     "homepage": "https://www.php.net/",
-    "version": "8.4.8",
+    "version": "8.4.10",
     "license": "PHP-3.01",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12371,7 +12371,7 @@
     "name": "pkgconf",
     "description": "Package compiler and linker metadata toolkit",
     "homepage": "https://github.com/pkgconf/pkgconf",
-    "version": "2.1.1",
+    "version": "2.5.1",
     "license": "ISC",
     "compatibility": "all"
   },
@@ -12395,7 +12395,7 @@
     "name": "platformsh",
     "description": "The unified tool for managing your Platform.sh services from the command line.",
     "homepage": "https://docs.platform.sh/overview/cli.html",
-    "version": "5.1.1",
+    "version": "5.2.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12598,6 +12598,14 @@
     "version": "0.12.1",
     "license": "MIT",
     "compatibility": "i686 x86_64"
+  },
+  {
+    "name": "proot",
+    "description": "Termux Proot: chroot, mount --bind, and binfmt_misc without privilege/setup for Linux",
+    "homepage": "https://github.com/termux/proot",
+    "version": "5.4.0",
+    "license": "GPL-2.0-only",
+    "compatibility": "all"
   },
   {
     "name": "protobuf",
@@ -13027,7 +13035,7 @@
     "name": "py3_docutils",
     "description": "Docutils is an open-source text processing system for processing plaintext documentation into useful formats, such as HTML, LaTeX, man-pages, open-document or XML.",
     "homepage": "http://docutils.sourceforge.net/",
-    "version": "0.21.2",
+    "version": "0.22",
     "license": "BSD-2, GPL-3 and public-domain",
     "compatibility": "all"
   },
@@ -13395,7 +13403,7 @@
     "name": "py3_maturin",
     "description": "Build and publish crates with pyo3, rust-cpython and cffi bindings",
     "homepage": "https://github.com/PyO3/maturin",
-    "version": "1.9.1",
+    "version": "1.9.2",
     "license": "Apache-2.0 OR MIT",
     "compatibility": "all"
   },
@@ -13411,7 +13419,7 @@
     "name": "py3_meson",
     "description": "Meson is an open source build system meant to be both extremely fast and user friendly.",
     "homepage": "https://mesonbuild.com/",
-    "version": "1.8.2",
+    "version": "1.8.3",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13475,7 +13483,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.156.0",
+    "version": "2.157.0",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13483,7 +13491,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.63.0",
+    "version": "3.63.2",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13563,7 +13571,7 @@
     "name": "py3_pip",
     "description": "Pip is the python package manager from the Python Packaging Authority.",
     "homepage": "https://pip.pypa.io/",
-    "version": "25.1.1",
+    "version": "25.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13747,7 +13755,7 @@
     "name": "py3_pypdf",
     "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.",
     "homepage": "https://github.com/py-pdf/pypdf",
-    "version": "5.8.0",
+    "version": "5.9.0",
     "license": "BSD-3-Clause",
     "compatibility": "all"
   },
@@ -13875,7 +13883,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.12.5",
+    "version": "0.12.7",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -14035,7 +14043,7 @@
     "name": "py3_sqlalchemy",
     "description": "SQLalchemy is a database toolkit for Python.",
     "homepage": "https://sqlalchemy.org",
-    "version": "2.0.41",
+    "version": "2.0.42",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14685,6 +14693,14 @@
     "homepage": "https://github.com/pinard/Recode",
     "version": "2d7092a",
     "license": "GPL-2",
+    "compatibility": "all"
+  },
+  {
+    "name": "recomod",
+    "description": "a cros recovery image modification toolkit",
+    "homepage": "https://github.com/MercuryWorkshop/RecoMod",
+    "version": "84586f8",
+    "license": "GPL-3.0",
     "compatibility": "all"
   },
   {
@@ -16555,7 +16571,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.63.0",
+    "version": "7.64.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -17195,7 +17211,7 @@
     "name": "talloc",
     "description": "Hierarchical pool based memory allocator with destructors",
     "homepage": "https://talloc.samba.org/",
-    "version": "2.4.2",
+    "version": "2.4.3",
     "license": "LGPL",
     "compatibility": "all"
   },
@@ -17347,7 +17363,7 @@
     "name": "termius",
     "description": "Modern SSH Client",
     "homepage": "https://termius.com/",
-    "version": "9.25.1",
+    "version": "9.27.2",
     "license": "Apache-2.0, LGPL-2.1, MIT",
     "compatibility": "x86_64"
   },
@@ -18115,7 +18131,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.5.3735.56-1",
+    "version": "7.5.3735.58-1",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18171,7 +18187,7 @@
     "name": "vscodium",
     "description": "VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.",
     "homepage": "https://vscodium.com/",
-    "version": "1.102.04606",
+    "version": "1.102.24914",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18195,7 +18211,7 @@
     "name": "vulkan_headers",
     "description": "Vulkan header files",
     "homepage": "https://github.com/KhronosGroup/Vulkan-Headers",
-    "version": "1.4.303",
+    "version": "1.4.323",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18203,7 +18219,7 @@
     "name": "vulkan_icd_loader",
     "description": "Vulkan Installable Client Driver ICD Loader",
     "homepage": "https://github.com/KhronosGroup/Vulkan-Loader",
-    "version": "1.4.303",
+    "version": "1.4.323",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18211,7 +18227,7 @@
     "name": "vulkan_tools",
     "description": "Vulkan Utilities and Tools",
     "homepage": "https://www.vulkan.org/",
-    "version": "1.4.303",
+    "version": "1.4.323",
     "license": "custom",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18291,7 +18307,7 @@
     "name": "wayland_protocols",
     "description": "Wayland is a protocol for a compositor to talk to its clients.",
     "homepage": "https://wayland.freedesktop.org/",
-    "version": "1.42",
+    "version": "1.45",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -19251,7 +19267,7 @@
     "name": "zed",
     "description": "Zed is a high-performance, multiplayer code editor",
     "homepage": "https://zed.dev/",
-    "version": "0.186.12",
+    "version": "0.196.6",
     "license": "GPL-3, AGPL-3, Apache-2.0",
     "compatibility": "x86_64"
   },
