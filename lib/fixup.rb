@@ -181,6 +181,7 @@ deprecated_packages = Set[
   { pkg_name: 'js91', comments: 'Replaced by newer versions of js.' },
   { pkg_name: 'komodo', comments: 'Abandoned upstream and no longer functional.' },
   { pkg_name: 'libaudiofile', comments: 'Inactive upstream with applicable CVEs' },
+  { pkg_name: 'libcheck', comments: 'Replaced by identical existing package check.' },
   { pkg_name: 'libmfx', comments: 'No longer compatible with any architecture' },
   { pkg_name: 'linter', comments: 'Replaced with py3_pre_commit.' },
   { pkg_name: 'nping', comments: 'Removed to avoid conflict with nmap.' },

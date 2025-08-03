@@ -1036,7 +1036,7 @@ activity: none
 ---
 kind: url
 name: cmake
-url: https://cmake.org/files
+url: https://github.com/Kitware/CMake/releases
 activity: high
 ---
 kind: url

@@ -7,6 +7,8 @@
 /usr/local/include/vk_video/vulkan_video_codec_h265std.h
 /usr/local/include/vk_video/vulkan_video_codec_h265std_decode.h
 /usr/local/include/vk_video/vulkan_video_codec_h265std_encode.h
+/usr/local/include/vk_video/vulkan_video_codec_vp9std.h
+/usr/local/include/vk_video/vulkan_video_codec_vp9std_decode.h
 /usr/local/include/vk_video/vulkan_video_codecs_common.h
 /usr/local/include/vulkan/vk_icd.h
 /usr/local/include/vulkan/vk_layer.h
@@ -30,6 +32,7 @@
 /usr/local/include/vulkan/vulkan_ios.h
 /usr/local/include/vulkan/vulkan_macos.h
 /usr/local/include/vulkan/vulkan_metal.h
+/usr/local/include/vulkan/vulkan_ohos.h
 /usr/local/include/vulkan/vulkan_raii.hpp
 /usr/local/include/vulkan/vulkan_screen.h
 /usr/local/include/vulkan/vulkan_shared.hpp
@@ -37,6 +40,7 @@
 /usr/local/include/vulkan/vulkan_structs.hpp
 /usr/local/include/vulkan/vulkan_to_string.hpp
 /usr/local/include/vulkan/vulkan_vi.h
+/usr/local/include/vulkan/vulkan_video.cppm
 /usr/local/include/vulkan/vulkan_video.hpp
 /usr/local/include/vulkan/vulkan_wayland.h
 /usr/local/include/vulkan/vulkan_win32.h
@@ -46,6 +50,7 @@
 /usr/local/share/cmake/VulkanHeaders/VulkanHeadersConfig.cmake
 /usr/local/share/cmake/VulkanHeaders/VulkanHeadersConfigVersion.cmake
 /usr/local/share/vulkan/registry/apiconventions.py
+/usr/local/share/vulkan/registry/base_generator.py
 /usr/local/share/vulkan/registry/cgenerator.py
 /usr/local/share/vulkan/registry/generator.py
 /usr/local/share/vulkan/registry/parse_dependency.py
@@ -58,3 +63,4 @@
 /usr/local/share/vulkan/registry/video.xml
 /usr/local/share/vulkan/registry/vk.xml
 /usr/local/share/vulkan/registry/vkconventions.py
+/usr/local/share/vulkan/registry/vulkan_object.py

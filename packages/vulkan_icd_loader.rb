@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Vulkan_icd_loader < CMake
   description 'Vulkan Installable Client Driver ICD Loader'
   homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
-  version '1.4.303'
+  version '1.4.323'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/KhronosGroup/Vulkan-Loader.git'
@@ -11,14 +11,12 @@ class Vulkan_icd_loader < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd4ebef246f9c8593a7c100aecaa7388a8185d8a5d620d0ad52032375efcd48dc',
-     armv7l: 'd4ebef246f9c8593a7c100aecaa7388a8185d8a5d620d0ad52032375efcd48dc',
-     x86_64: 'bca394b967a38b0cffdc4e3f73cde6fa357ae8e94b5be3524bb953858bc3f3f1'
+    aarch64: 'e0544328f29d75d1aa3946cd80310b4d7f8784acb246aca5f820ccdba7e629ff',
+     armv7l: 'e0544328f29d75d1aa3946cd80310b4d7f8784acb246aca5f820ccdba7e629ff',
+     x86_64: 'db4189fd35a51f64ed029cf758434bdbc38ab37872c354303422d2e6e0469ca7'
   })
 
   depends_on 'glibc' # R
-  depends_on 'libx11' # R
-  depends_on 'libxcb' # R
   depends_on 'libxrandr' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'wayland' => :build

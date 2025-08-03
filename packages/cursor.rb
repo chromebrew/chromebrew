@@ -3,11 +3,11 @@ require 'package'
 class Cursor < Package
   description 'The AI Code Editor'
   homepage 'https://www.cursor.com/'
-  version '0.46.9'
+  version '1.3.5'
   license 'Cursor EULA'
   compatibility 'x86_64'
-  source_url "https://anysphere-binaries.s3.us-east-1.amazonaws.com/production/client/linux/x64/appimage/Cursor-#{version}-3395357a4ee2975d5d03595e7607ee84e3db0f2c.deb.glibc2.25-x86_64.AppImage"
-  source_sha256 '19b945b892f6c7e548b28f2f2bf4d1e377ab1353b44e97c000d03291f24118d0'
+  source_url "https://downloads.cursor.com/production/9f33c2e793460d00cf95c06d957e1d1b8135fadd/linux/x64/Cursor-#{version}-x86_64.AppImage"
+  source_sha256 '81f9c18b3c2c4e85e72f74e6ae45bf9534de7e8f9c37a50f2575372442ec4534'
 
   no_compile_needed
   no_shrink

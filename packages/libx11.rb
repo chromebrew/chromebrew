@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libx11 < Autotools
   description 'C interface to the X window system'
   homepage 'https://x.org/wiki/'
-  version '1.8.10'
+  version '1.8.12'
   license 'X11'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libx11.git'
@@ -11,14 +11,12 @@ class Libx11 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3e992951cf49ed047e4ef45e45b87b640e5aafed4a0614543d7c6957613dd463',
-     armv7l: '3e992951cf49ed047e4ef45e45b87b640e5aafed4a0614543d7c6957613dd463',
-     x86_64: '55c2d33cc673cec976f9f628204da0f02e83a92aae0936a42a231df81d5dd05c'
+    aarch64: '9d9aacc2ecc3e54fa78057498456e235304c4f11f2e834d4120961b69070b0ea',
+     armv7l: '9d9aacc2ecc3e54fa78057498456e235304c4f11f2e834d4120961b69070b0ea',
+     x86_64: '472ca926ca8cf52d5ee45b609c329e955630920a8116663d25d1dc38cf649c33'
   })
 
   depends_on 'glibc' # R
-  depends_on 'libbsd' # R
-  depends_on 'libmd' # R
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
