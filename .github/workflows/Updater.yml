@@ -44,6 +44,9 @@ jobs:
       - name: Check for updates in pip packages.
         id: pip-update-checks
         run: |
+          git config --global push.autoSetupRemote true 
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
           git pull
           git stash drop || true
           LD_LIBRARY_PATH=/usr/local/lib ruby tools/update_python_pip_packages.rb
