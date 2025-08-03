@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_retrying < Pip
   description 'Retrying simplifies the task of adding retry behavior to just about anything.'
   homepage 'https://github.com/rholder/retrying/'
-  version "1.4.1-#{CREW_PY_VER}"
+  version "1.4.2-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
