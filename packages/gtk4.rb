@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://www.gtk.org/'
-  version '4.19.2'
+  version '4.19.3'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a76c881c9f0a1897ca2a5cd4c5db36ee4381efc2a6fa56c17d2ae2574c41bfbf',
-     armv7l: 'a76c881c9f0a1897ca2a5cd4c5db36ee4381efc2a6fa56c17d2ae2574c41bfbf',
-     x86_64: 'a14fc2e7d441409e44f867e8ba6ab5088bc8c78071c9e570189782111e0f0cad'
+    aarch64: 'c20d31991ce77bf9933a67872b70b83c6e41a0461541236b2212e004a33b7a36',
+     armv7l: 'c20d31991ce77bf9933a67872b70b83c6e41a0461541236b2212e004a33b7a36',
+     x86_64: 'c8e9564a3d89357428d256dd513c8bd2802825881d842554af21eacbc0469f0c'
   })
 
   depends_on 'adwaita_fonts' # L
@@ -65,7 +65,7 @@ class Gtk4 < Meson
   depends_on 'sommelier' # L
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' if ARCH == 'x86_64'
+  depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
 
@@ -82,7 +82,7 @@ class Gtk4 < Meson
     end
   end
 
-  meson_options "-Dbroadway-backend=true \
+  meson_options '-Dbroadway-backend=true \
       -Dbuild-demos=false \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
@@ -94,7 +94,7 @@ class Gtk4 < Meson
       -Dmedia-gstreamer=disabled \
       -Dmutest:default_library=both \
       -Dprint-cups=auto \
-      -Dvulkan=#{ARCH == 'x86_64' ? 'enabled' : 'disabled'}"
+      -Dvulkan=enabled'
 
   meson_build_extras do
     File.write 'gtk4settings', <<~GTK4_CONFIG_HEREDOC
