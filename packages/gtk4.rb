@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://www.gtk.org/'
-  version '4.19.2'
+  version '4.19.3'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -65,7 +65,7 @@ class Gtk4 < Meson
   depends_on 'sommelier' # L
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' if ARCH == 'x86_64'
+  depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
 
@@ -82,7 +82,7 @@ class Gtk4 < Meson
     end
   end
 
-  meson_options "-Dbroadway-backend=true \
+  meson_options '-Dbroadway-backend=true \
       -Dbuild-demos=false \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
@@ -94,7 +94,7 @@ class Gtk4 < Meson
       -Dmedia-gstreamer=disabled \
       -Dmutest:default_library=both \
       -Dprint-cups=auto \
-      -Dvulkan=#{ARCH == 'x86_64' ? 'enabled' : 'disabled'}"
+      -Dvulkan=enabled'
 
   meson_build_extras do
     File.write 'gtk4settings', <<~GTK4_CONFIG_HEREDOC
