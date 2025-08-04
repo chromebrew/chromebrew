@@ -3,11 +3,12 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.5'
+  version '3.4.5-07f783'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag "v#{version.gsub('.', '_')}"
+  git_hashtag '07f7832cffea879946a796e066ccb13ccb4b2abd'
+  # git_hashtag "v#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -32,6 +33,11 @@ class Ruby < Package
   conflicts_ok # Needed for successful build.
 
   # at run-time, system's gmp, openssl, and zlib can be used
+
+  def self.patch
+    # Download bundled gems version from Top of Tree.
+    downloader 'https://github.com/ruby/ruby/raw/af718aaf4b56aacbe38c20c298dad35a932c2019/gems/bundled_gems', '563fa91f632e4afddf5eed00c943dacffc5fb2f59e69a5d0687b3387ee0a5a49', 'gems/bundled_gems'
+  end
 
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
