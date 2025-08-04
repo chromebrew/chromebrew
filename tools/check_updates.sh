@@ -69,11 +69,12 @@ pkg_version() {
   | awk '{print substr($2,2,length($2)-2)}')
   version=${version%-*}
   if [[ $version == *"@_ver"* ]]; then
-    echo " - _Please remove @_ver from the version string for ${p}.rb_"
+    echo "| _Please remove @_ver from the version string for ${p}.rb_ ||||"
     version=missing
   fi
 }
-echo "- [x] Chromebrew Package | Package Source Url | Chromebrew Version | Available Version"
+echo "| Chromebrew Package | Package Source Url | Chromebrew Version | Available Version |"
+echo "| :- | :-| :- | :- |"
 c=0
 ps=$(< /tmp/names.txt)
 ps=$(echo "$ps" | xargs)
@@ -90,7 +91,7 @@ for p in $ps; do
       # version=$(grep "^  @_ver" ../packages/"$p.rb" 2>/dev/null | cut -d= -f2 | xargs)
       pkg_version
     else
-      echo "- _../packages/$p.rb is missing._"
+      echo "| _../packages/$p.rb is missing._ | | | |"
       version=missing
     fi
     [ -z "$version" ] && version=$(grep "^  version" ../packages/"$p.rb" | cut -d"'" -f2)
@@ -110,7 +111,7 @@ for p in $ps; do
       rel=$(echo "$d" | cut -d'<' -f1 | cut -d'-' -f2 | xargs)
       ver=${rel%.tar*}
       nu="$u/$p-$rel"
-      [[ "$version" != "$ver" ]] && echo "- [ ] $p$star | $nu | $version | $ver"
+      [[ "$version" != "$ver" ]] && echo "| $p$star | $nu | $version | $ver"
       ;;
     github)
       relu=
@@ -121,9 +122,9 @@ for p in $ps; do
       if [[ $u == *"/releases"* ]]; then
         ver=$(gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R ${gh_repo} --json tagName -q '.[] | .tagName')
         if [[ $? == 0 ]]; then  
-          [[ -z "$ver" ]] && echo "- _https://github.com/${gh_repo} does not use releases._"
+          [[ -z "$ver" ]] && echo "| _https://github.com/${gh_repo} does not use releases._ ||||"
         else
-          echo "- _https://github.com/${gh_repo} does not exist._"
+          echo "| _https://github.com/${gh_repo} does not exist._ ||||"
         fi
       fi
       if [[ $u == *"/tags"* ]] || [[ -z "$ver" ]]; then
@@ -137,7 +138,7 @@ for p in $ps; do
       [[ -z "$ver" ]] && ver=$(git ls-remote --tags https://github.com/${gh_repo} | cut -d'/' -f3 | grep -v "\^{}" | tail -n 1)
       fi
       nu=${u/releases/archive}
-      [[ "$version" != "${ver#v}" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | ${ver#v}"
+      [[ "$version" != "${ver#v}" ]] && echo "| $p$star | $nu/$ver.tar.gz | $version | ${ver#v} |"
       ;;
     gitlab)
       gl_host="$(echo $u | awk -F[/:] '{print $4}')"
@@ -153,7 +154,7 @@ for p in $ps; do
       # numeric version tag.
       [[ -z "$ver" ]] && ver=$(git ls-remote --tags https://${gl_host}/${gl_repo}.git | cut -d'/' -f3 | grep -v "\^{}" | tail -n 1)
       nu="https://${gl_host}/${gl_repo}/-/archive/${ver}/${gl_repo_suffix}-${ver}.tar.gz"
-      [[ "$version" != "${ver#v}" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | ${ver#v}"
+      [[ "$version" != "${ver#v}" ]] && echo "| $p$star | $nu/$ver.tar.gz | $version | ${ver#v}|"
       ;;
     savannah)
       content=$(curl -Ls "$u")
@@ -162,10 +163,10 @@ for p in $ps; do
       rel=${rel% *}
       ver=${rel%.tar*}
       nu="$u/$p-$rel"
-      [[ "$version" != "$ver" ]] && echo "- [ ] $p$star | $nu | $version | $ver"
+      [[ "$version" != "$ver" ]] && echo "| $p$star | $nu | $version | $ver|"
       ;;
     *)
-      echo "- [ ] $p$star | $u | $version | not checked"
+      echo "| $p$star | $u | $version | not checked|"
     esac
     c=$((c+1))
   fi
