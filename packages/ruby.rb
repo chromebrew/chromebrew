@@ -3,18 +3,19 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.5'
+  version '3.4.5-07f783'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag "v#{version.gsub('.', '_')}"
+  git_hashtag '07f7832cffea879946a796e066ccb13ccb4b2abd'
+  # git_hashtag "v#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '00c0a7d78c8a8374c3fd27b848a464c023905cd2c29c6ffcf0227606081c66f7',
-     armv7l: '00c0a7d78c8a8374c3fd27b848a464c023905cd2c29c6ffcf0227606081c66f7',
-       i686: 'df0498f9bfcf70ee6aad827f432d4810d03e05d135740a49417192a588e509a4',
-     x86_64: 'b163ffb452e7230b23d7e5c3e36eccef6b468e7040c77e7c91e1baaae8ffc155'
+    aarch64: 'b44c47446374fa8df15f9844b06fdd191cb45b85bc8a769642e026b021f2ea11',
+     armv7l: 'b44c47446374fa8df15f9844b06fdd191cb45b85bc8a769642e026b021f2ea11',
+       i686: '4b31cd9bcbab40f1b586f7af2b5bb02ccb25cabb1f9be205c1493c9ecfb6a266',
+     x86_64: 'c5adc9d0ac8c35335c76691474784913349613f9f461d84183a02d315ab9ed6f'
   })
 
   depends_on 'ca_certificates' # L
@@ -32,6 +33,11 @@ class Ruby < Package
   conflicts_ok # Needed for successful build.
 
   # at run-time, system's gmp, openssl, and zlib can be used
+
+  def self.patch
+    # Download bundled gems version from Top of Tree.
+    downloader 'https://github.com/ruby/ruby/raw/af718aaf4b56aacbe38c20c298dad35a932c2019/gems/bundled_gems', '563fa91f632e4afddf5eed00c943dacffc5fb2f59e69a5d0687b3387ee0a5a49', 'gems/bundled_gems'
+  end
 
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
