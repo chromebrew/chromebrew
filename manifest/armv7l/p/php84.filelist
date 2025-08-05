@@ -523,6 +523,7 @@
 /usr/local/lib/php/test/XML_Util/tests/ReplaceEntitiesTests.php
 /usr/local/lib/php/test/XML_Util/tests/ReverseEntitiesTests.php
 /usr/local/lib/php/test/XML_Util/tests/SplitQualifiedNameTests.php
+/usr/local/log/php-fpm.log
 /usr/local/share/man/man1/phar.1.zst
 /usr/local/share/man/man1/phar.phar.1.zst
 /usr/local/share/man/man1/php-cgi.1.zst
