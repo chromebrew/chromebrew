@@ -1,22 +1,22 @@
 # Adapted from Arch Linux pyatspi PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/pyatspi/trunk/PKGBUILD
 
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Py3_atspi < Autotools
+class Py3_atspi < Meson
   description 'Python bindings for D-Bus AT-SPI'
   homepage 'https://wiki.linuxfoundation.org/accessibility/atk/at-spi/at-spi_on_d-bus'
-  version "2.46.1-#{CREW_PY_VER}"
+  version "2.57.0-#{CREW_PY_VER}"
   license 'GPL2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/pyatspi2.git'
-  git_hashtag "PYATSPI_#{version.split('-').first.gsub('.', '_')}"
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ff609e6c1461ca5596852656971b612d80061dd29426f7334ddad850821bebf3',
-     armv7l: 'ff609e6c1461ca5596852656971b612d80061dd29426f7334ddad850821bebf3',
-     x86_64: '35cd595bf835a8e0defa9d2839bfb3879c7543a13007ab5bd2e570745e0b0b6b'
+    aarch64: 'f703b5998188de9a3bbbc0a7d18980e25248ebf91d192704f1e3b1fabdccc196',
+     armv7l: 'f703b5998188de9a3bbbc0a7d18980e25248ebf91d192704f1e3b1fabdccc196',
+     x86_64: '1083d20bc9c59e3b4e103d237399fd4beae866f49f589b5f2eecbec03ed47c16'
   })
 
   depends_on 'py3_pygobject'

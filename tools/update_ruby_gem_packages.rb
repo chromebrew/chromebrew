@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# update_ruby_gem_packages version 2.2 (for Chromebrew)
+# update_ruby_gem_packages version 2.3 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo:
 # tools/update_ruby_gem_packages.rb
@@ -45,9 +45,10 @@ def check_for_updated_ruby_packages
       # We replace all dashes with underscores in our initial package names, but some gems actually use underscores, so we need special cases.
       # This list was created by looking at what packages were listed as not having updates in rubygems, and then looking up the upstream name for them.
       if %w[
-        connection_pool error_highlight lint_roller method_source
-        mini_mime multi_xml mutex_m power_assert regexp_parser
-        repl_type_completor ruby2_keywords syntax_suggest
+        connection_pool error_highlight jaro_winkler
+        lint_roller method_source mini_mime multi_xml mutex_m
+        power_assert regexp_parser repl_type_completor ruby2_keywords
+        syntax_suggest
       ].include?(gem_name)
         # These gems used underscores originally, so don't replace anything
       elsif gem_name == 'language_server_protocol'
@@ -76,7 +77,7 @@ def check_for_updated_ruby_packages
 
       next unless Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), gem_version) == -1
 
-      updateable_packages[package] = ruby_gem_version
+      updateable_packages[package] = gem_version
     end
   end
   pool.shutdown

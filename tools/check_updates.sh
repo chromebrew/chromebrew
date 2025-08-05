@@ -1,4 +1,5 @@
 #!/bin/bash
+# Version 1.0
 if [ ! -f packages.yaml ]; then
   echo "packages.yaml not found."
   exit 1
@@ -49,6 +50,31 @@ if test "$2"; then
   mv /tmp/new_names.txt /tmp/names.txt
   mv /tmp/new_urls.txt /tmp/urls.txt
 fi
+
+  : "${CREW_GCC_VER:=gcc15}"
+  : "${CREW_ICU_VER:=icu77.1}"
+  : "${CREW_LLVM_VER:=llvm20}"
+  : "${CREW_PERL_VER:=perl5.42}"
+  : "${CREW_PY_VER:=py3.13}"
+  : "${CREW_RUBY_VER:=ruby3.4}"
+
+pkg_version() {
+  version=$(grep "\ \ version" ../packages/"${p}.rb" | head -n 1 \
+  | sed "s/#{CREW_GCC_VER}/$CREW_GCC_VER/g" \
+  | sed "s/#{CREW_ICU_VER}/$CREW_ICU_VER/g" \
+  | sed "s/#{CREW_LLVM_VER}/$CREW_LLVM_VER/g" \
+  | sed "s/#{CREW_PERL_VER}/$CREW_PERL_VER/g" \
+  | sed "s/#{CREW_PY_VER}/$CREW_PY_VER/g" \
+  | sed "s/#{CREW_RUBY_VER}/$CREW_RUBYY_VER/g" \
+  | awk '{print substr($2,2,length($2)-2)}')
+  version=${version%-*}
+  if [[ $version == *"@_ver"* ]]; then
+    echo "| _Please remove @_ver from the version string for ${p}.rb_ ||||"
+    version=missing
+  fi
+}
+echo "| Chromebrew Package | Package Source Url | Chromebrew Version | Available Version |"
+echo "| :- | :-| :- | :- |"
 c=0
 ps=$(< /tmp/names.txt)
 ps=$(echo "$ps" | xargs)
@@ -61,9 +87,11 @@ for p in $ps; do
     nu=
     u=$(grep -1 "^name: ${p}$" packages.yaml | tail -1 | cut -d' ' -f2)
     if [[ -f ../packages/"$p.rb" ]]; then
-      version=$(grep "^  @_ver" ../packages/"$p.rb" 2>/dev/null | cut -d= -f2 | xargs)
+      version=
+      # version=$(grep "^  @_ver" ../packages/"$p.rb" 2>/dev/null | cut -d= -f2 | xargs)
+      pkg_version
     else
-      echo "- ../packages/$p.rb is missing."
+      echo "| _../packages/$p.rb is missing._ | | | |"
       version=missing
     fi
     [ -z "$version" ] && version=$(grep "^  version" ../packages/"$p.rb" | cut -d"'" -f2)
@@ -83,7 +111,7 @@ for p in $ps; do
       rel=$(echo "$d" | cut -d'<' -f1 | cut -d'-' -f2 | xargs)
       ver=${rel%.tar*}
       nu="$u/$p-$rel"
-      [[ "$version" != "$ver" ]] && echo "- [ ] $p$star | $nu | $version | $ver"
+      [[ "$version" != "$ver" ]] && echo "| $p$star | $nu | $version | $ver"
       ;;
     github)
       relu=
@@ -94,9 +122,9 @@ for p in $ps; do
       if [[ $u == *"/releases"* ]]; then
         ver=$(gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R ${gh_repo} --json tagName -q '.[] | .tagName')
         if [[ $? == 0 ]]; then  
-          [[ -z "$ver" ]] && echo "- https://github.com/${gh_repo} does not use releases."
+          [[ -z "$ver" ]] && echo "| _https://github.com/${gh_repo} does not use releases._ ||||"
         else
-          echo "- https://github.com/${gh_repo} does not exist."
+          echo "| _https://github.com/${gh_repo} does not exist._ ||||"
         fi
       fi
       if [[ $u == *"/tags"* ]] || [[ -z "$ver" ]]; then
@@ -110,7 +138,7 @@ for p in $ps; do
       [[ -z "$ver" ]] && ver=$(git ls-remote --tags https://github.com/${gh_repo} | cut -d'/' -f3 | grep -v "\^{}" | tail -n 1)
       fi
       nu=${u/releases/archive}
-      [[ "$version" != "${ver#v}" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | ${ver#v}"
+      [[ "$version" != "${ver#v}" ]] && echo "| $p$star | $nu/$ver.tar.gz | $version | ${ver#v} |"
       ;;
     gitlab)
       gl_host="$(echo $u | awk -F[/:] '{print $4}')"
@@ -126,7 +154,7 @@ for p in $ps; do
       # numeric version tag.
       [[ -z "$ver" ]] && ver=$(git ls-remote --tags https://${gl_host}/${gl_repo}.git | cut -d'/' -f3 | grep -v "\^{}" | tail -n 1)
       nu="https://${gl_host}/${gl_repo}/-/archive/${ver}/${gl_repo_suffix}-${ver}.tar.gz"
-      [[ "$version" != "${ver#v}" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | ${ver#v}"
+      [[ "$version" != "${ver#v}" ]] && echo "| $p$star | $nu/$ver.tar.gz | $version | ${ver#v}|"
       ;;
     savannah)
       content=$(curl -Ls "$u")
@@ -135,10 +163,10 @@ for p in $ps; do
       rel=${rel% *}
       ver=${rel%.tar*}
       nu="$u/$p-$rel"
-      [[ "$version" != "$ver" ]] && echo "- [ ] $p$star | $nu | $version | $ver"
+      [[ "$version" != "$ver" ]] && echo "| $p$star | $nu | $version | $ver|"
       ;;
     *)
-      echo "- [ ] $p$star | $u | $version | not checked"
+      echo "| $p$star | $u | $version | not checked|"
     esac
     c=$((c+1))
   fi

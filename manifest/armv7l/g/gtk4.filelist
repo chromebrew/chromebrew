@@ -102,6 +102,7 @@
 /usr/local/include/gtk-4.0/gsk/gpu/gskvulkanrenderer.h
 /usr/local/include/gtk-4.0/gsk/gsk.h
 /usr/local/include/gtk-4.0/gsk/gskcairorenderer.h
+/usr/local/include/gtk-4.0/gsk/gskcomponenttransfer.h
 /usr/local/include/gtk-4.0/gsk/gskenums.h
 /usr/local/include/gtk-4.0/gsk/gskenumtypes.h
 /usr/local/include/gtk-4.0/gsk/gskglshader.h
@@ -414,7 +415,7 @@
 /usr/local/lib/girepository-1.0/Gtk-4.0.typelib
 /usr/local/lib/libgtk-4.so
 /usr/local/lib/libgtk-4.so.1
-/usr/local/lib/libgtk-4.so.1.1902.0
+/usr/local/lib/libgtk-4.so.1.1903.0
 /usr/local/lib/pkgconfig/gtk4-atspi.pc
 /usr/local/lib/pkgconfig/gtk4-broadway.pc
 /usr/local/lib/pkgconfig/gtk4-unix-print.pc

@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_solargraph < RUBY
   description 'IDE tools for code completion, inline documentation, and static analysis.'
   homepage 'https://solargraph.org'
-  version "0.56.1-#{CREW_RUBY_VER}"
+  version "0.56.2-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

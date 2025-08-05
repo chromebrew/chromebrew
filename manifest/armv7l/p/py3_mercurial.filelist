@@ -290,13 +290,13 @@
 /usr/local/lib/python3.13/site-packages/hgext/zeroconf/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/hgext3rd/__init__.py
 /usr/local/lib/python3.13/site-packages/hgext3rd/__pycache__/__init__.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/mercurial-7.0.3.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/mercurial-7.0.3.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/mercurial-7.0.3.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/mercurial-7.0.3.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/mercurial-7.0.3.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/mercurial-7.0.3.dist-info/licenses/COPYING
-/usr/local/lib/python3.13/site-packages/mercurial-7.0.3.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/licenses/COPYING
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/mercurial/__init__.py
 /usr/local/lib/python3.13/site-packages/mercurial/__main__.py
 /usr/local/lib/python3.13/site-packages/mercurial/__modulepolicy__.py
@@ -699,12 +699,14 @@
 /usr/local/lib/python3.13/site-packages/mercurial/pure/__pycache__/base85.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/pure/__pycache__/bdiff.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/pure/__pycache__/charencode.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/mercurial/pure/__pycache__/deltas.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/pure/__pycache__/mpatch.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/pure/__pycache__/osutil.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/pure/__pycache__/parsers.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/pure/base85.py
 /usr/local/lib/python3.13/site-packages/mercurial/pure/bdiff.py
 /usr/local/lib/python3.13/site-packages/mercurial/pure/charencode.py
+/usr/local/lib/python3.13/site-packages/mercurial/pure/deltas.py
 /usr/local/lib/python3.13/site-packages/mercurial/pure/mpatch.py
 /usr/local/lib/python3.13/site-packages/mercurial/pure/osutil.py
 /usr/local/lib/python3.13/site-packages/mercurial/pure/parsers.py
@@ -720,6 +722,7 @@
 /usr/local/lib/python3.13/site-packages/mercurial/revlogutils/__init__.py
 /usr/local/lib/python3.13/site-packages/mercurial/revlogutils/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/revlogutils/__pycache__/concurrency_checker.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/mercurial/revlogutils/__pycache__/config.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/revlogutils/__pycache__/constants.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/revlogutils/__pycache__/debug.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/revlogutils/__pycache__/deltas.cpython-313.pyc
@@ -731,6 +734,7 @@
 /usr/local/lib/python3.13/site-packages/mercurial/revlogutils/__pycache__/rewrite.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/revlogutils/__pycache__/sidedata.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/revlogutils/concurrency_checker.py
+/usr/local/lib/python3.13/site-packages/mercurial/revlogutils/config.py
 /usr/local/lib/python3.13/site-packages/mercurial/revlogutils/constants.py
 /usr/local/lib/python3.13/site-packages/mercurial/revlogutils/debug.py
 /usr/local/lib/python3.13/site-packages/mercurial/revlogutils/deltas.py
@@ -1037,6 +1041,7 @@
 /usr/local/lib/python3.13/site-packages/mercurial/utils/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/utils/__pycache__/cborutil.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/utils/__pycache__/compression.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/mercurial/utils/__pycache__/dag_util.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/utils/__pycache__/dateutil.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/utils/__pycache__/hashutil.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/utils/__pycache__/memorytop.cpython-313.pyc
@@ -1048,6 +1053,7 @@
 /usr/local/lib/python3.13/site-packages/mercurial/utils/__pycache__/urlutil.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mercurial/utils/cborutil.py
 /usr/local/lib/python3.13/site-packages/mercurial/utils/compression.py
+/usr/local/lib/python3.13/site-packages/mercurial/utils/dag_util.py
 /usr/local/lib/python3.13/site-packages/mercurial/utils/dateutil.py
 /usr/local/lib/python3.13/site-packages/mercurial/utils/hashutil.py
 /usr/local/lib/python3.13/site-packages/mercurial/utils/memorytop.py
