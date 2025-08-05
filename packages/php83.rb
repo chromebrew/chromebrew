@@ -16,8 +16,8 @@ class Php83 < Package
      x86_64: '10e495ae2609a73190bef1b6d7e9019796b1b3693b6c7efb1d1dd976d647b0c5'
   })
 
-  depends_on 'aspell_en' => :build
   depends_on 'aspell' # R
+  depends_on 'aspell_en' => :build
   depends_on 'brotli' # R
   depends_on 'bzip2' # R
   depends_on 'c_ares' # R
