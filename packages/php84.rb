@@ -3,11 +3,11 @@ require 'package'
 class Php84 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.4.10'
+  version '8.4.11'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
-  source_sha256 '14983a9ef8800e6bc2d920739fd386054402f7976ca9cd7f711509496f0d2632'
+  source_sha256 '04cd331380a8683a5c2503938eb51764d48d507c53ad4208d2c82e0eed779a00'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -166,6 +166,10 @@ class Php84 < Package
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.lock"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.registry"
     FileUtils.rm_rf 'Zend'
+
+    # Make sure the log file exists.
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/log"
+    FileUtils.touch "#{CREW_DEST_PREFIX}/log/php-fpm.log"
 
     # Launch php8-fpm when the bash shell session starts.
     File.write "#{CREW_DEST_PREFIX}/etc/bash.d/01-php8-fpm", <<~EOF
