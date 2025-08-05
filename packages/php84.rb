@@ -3,17 +3,17 @@ require 'package'
 class Php84 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.4.10'
+  version '8.4.11'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
-  source_sha256 '14983a9ef8800e6bc2d920739fd386054402f7976ca9cd7f711509496f0d2632'
+  source_sha256 '04cd331380a8683a5c2503938eb51764d48d507c53ad4208d2c82e0eed779a00'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8f425972ce3b36ef0de7ca08c21b8832465214986586735564570fea87ed3bb5',
-     armv7l: '8f425972ce3b36ef0de7ca08c21b8832465214986586735564570fea87ed3bb5',
-     x86_64: '9271b4b6ef4dcb20c192f27c01aedf9da1ec78517fdb434e246a4f227276207c'
+    aarch64: 'd582bc3eef58e3ef5f32f11e487b51f67ca72578a3e57a094f2749cc2bf67414',
+     armv7l: 'd582bc3eef58e3ef5f32f11e487b51f67ca72578a3e57a094f2749cc2bf67414',
+     x86_64: 'bfdd857bf98d45c360f83e9f55acfd3f7e83a040481d34351a795aa47370be33'
   })
 
   depends_on 'aspell_en' => :build
@@ -166,6 +166,10 @@ class Php84 < Package
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.lock"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.registry"
     FileUtils.rm_rf 'Zend'
+
+    # Make sure the log file exists.
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/log"
+    FileUtils.touch "#{CREW_DEST_PREFIX}/log/php-fpm.log"
 
     # Launch php8-fpm when the bash shell session starts.
     File.write "#{CREW_DEST_PREFIX}/etc/bash.d/01-php8-fpm", <<~EOF
