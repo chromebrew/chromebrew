@@ -35,8 +35,10 @@ class Ruby < Package
   # at run-time, system's gmp, openssl, and zlib can be used
 
   def self.patch
-    # Download bundled gems version from Top of Tree.
-    downloader 'https://github.com/ruby/ruby/raw/af718aaf4b56aacbe38c20c298dad35a932c2019/gems/bundled_gems', '563fa91f632e4afddf5eed00c943dacffc5fb2f59e69a5d0687b3387ee0a5a49', 'gems/bundled_gems'
+    # Download bundled gems version from Top of Tree. Otherwise outdated
+    # compile needed gems during install can cause issues when updates
+    # are attempted.
+    downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems'
   end
 
   def self.build
