@@ -15,11 +15,12 @@ class Py3_mercurial < Pip
      x86_64: 'b03aa29b09e37d02ec00445362b6671da927a6d9a6fa1ac87a89947b3df721b5'
   })
 
-  no_source_build
-
   depends_on 'buildessential' => :build
   depends_on 'glibc' # R
   depends_on 'py3_docutils' => :build
   depends_on 'python3' # L
   depends_on 'texinfo' => :build
+
+  no_source_build
+
 end
