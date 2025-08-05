@@ -3,21 +3,21 @@ require 'package'
 class Php83 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.3.23'
+  version '8.3.24'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
-  source_sha256 '08be64700f703bca6ff1284bf1fdaffa37ae1b9734b6559f8350248e8960a6db'
+  source_sha256 '388ee5fd111097e97bae439bff46aec4ea27f816d3f0c2cb5490a41410d44251'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '32606cc1296004a0741ef3205fc1bc922193fe37eb35023fa8df4d4c49ade554',
-     armv7l: '32606cc1296004a0741ef3205fc1bc922193fe37eb35023fa8df4d4c49ade554',
-     x86_64: '10e495ae2609a73190bef1b6d7e9019796b1b3693b6c7efb1d1dd976d647b0c5'
+    aarch64: '393c0588f29d59912eaf24a6e7a4ddabb968162963d754ec0bad905c03bc55fb',
+     armv7l: '393c0588f29d59912eaf24a6e7a4ddabb968162963d754ec0bad905c03bc55fb',
+     x86_64: '2f05d9fff05cc5631eef0e874b2e4b454c77ea9721c2f9e33449f1b17c755b16'
   })
 
-  depends_on 'aspell_en' => :build
   depends_on 'aspell' # R
+  depends_on 'aspell_en' => :build
   depends_on 'brotli' # R
   depends_on 'bzip2' # R
   depends_on 'c_ares' # R
@@ -171,6 +171,10 @@ class Php83 < Package
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.filemap"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.lock"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.registry"
+
+    # Make sure the log file exists.
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/log"
+    FileUtils.touch "#{CREW_DEST_PREFIX}/log/php-fpm.log"
 
     # Launch php8-fpm when the bash shell session starts.
     File.write "#{CREW_DEST_PREFIX}/etc/bash.d/01-php8-fpm", <<~EOF
