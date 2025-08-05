@@ -26,4 +26,5 @@ class Py3_maturin < Python
   depends_on 'py3_setuptools_rust'
   depends_on 'python3'
   depends_on 'rust'
+
 end
