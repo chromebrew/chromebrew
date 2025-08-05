@@ -73,6 +73,9 @@
 /usr/local/lib/mysql/plugin/component_test_audit_api_message.so
 /usr/local/lib/mysql/plugin/component_test_backup_lock_service.so
 /usr/local/lib/mysql/plugin/component_test_component_deinit.so
+/usr/local/lib/mysql/plugin/component_test_component_deinit_no_deadlock.so
+/usr/local/lib/mysql/plugin/component_test_component_init_fail.so
+/usr/local/lib/mysql/plugin/component_test_component_init_then_register.so
 /usr/local/lib/mysql/plugin/component_test_event_tracking_consumer.so
 /usr/local/lib/mysql/plugin/component_test_event_tracking_consumer_a.so
 /usr/local/lib/mysql/plugin/component_test_event_tracking_consumer_b.so
