@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_io_console < RUBY
   description 'add console capabilities to IO instances.'
   homepage 'https://github.com/ruby/io-console'
-  version "0.8.0-#{CREW_RUBY_VER}"
+  version "0.8.1-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'

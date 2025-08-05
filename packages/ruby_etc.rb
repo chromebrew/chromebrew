@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_etc < RUBY
   description 'Provides access to information typically stored in unix /etc directory.'
   homepage 'https://github.com/ruby/etc'
-  version "1.4.5-#{CREW_RUBY_VER}"
+  version "1.4.6-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
