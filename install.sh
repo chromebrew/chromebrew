@@ -504,7 +504,7 @@ echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
 echo_info 'Updating RubyGems...'
 ${PREFIX_CMD} gem sources -u
-${PREFIX_CMD} gem update --no-update-sources -N --system
+${PREFIX_CMD} gem outdated | cut -d " " -f 1 | xargs -I % bash -c 'grep -q no_compile_needed /usr/local/lib/crew/packages/ruby_%.rb && (echo "Updating % gem" ; gem update % --no-update-sources -N) || echo "Not updating % gem, since it needs a gem compile and buildessential has not been installed yet."'
 
 # Mark packages as installed for pre-installed gems.
 mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
