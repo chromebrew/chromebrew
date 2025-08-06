@@ -6,11 +6,10 @@ class Cursor < Package
   version '1.4.1'
   license 'Cursor EULA'
   compatibility 'x86_64'
-  source_url "https://downloads.cursor.com/production/9f33c2e793460d00cf95c06d957e1d1b8135fadd/linux/x64/Cursor-#{version}-x86_64.AppImage"
+  source_url "https://downloads.cursor.com/production/99b5cf60d85d7216d67a3768cec0e22266159c61/linux/x64/Cursor-#{version}-x86_64.AppImage"
   source_sha256 '81f9c18b3c2c4e85e72f74e6ae45bf9534de7e8f9c37a50f2575372442ec4534'
 
   no_compile_needed
-  no_shrink
 
   depends_on 'gdk_base'
   depends_on 'gtk3'
