@@ -3,7 +3,7 @@ require 'package'
 class Cpustat < Package
   description 'cpustat periodically dumps out the current CPU utilisation statistics of running processes.'
   homepage 'https://kernel.ubuntu.com/~cking/cpustat/'
-  version '0.02.10'
+  version '0.02.15'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/cpustat/cpustat-0.02.10.tar.xz'
