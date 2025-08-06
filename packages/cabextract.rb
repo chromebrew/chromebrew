@@ -3,7 +3,7 @@ require 'package'
 class Cabextract < Package
   description 'cabextract is Free Software for extracting Microsoft cabinet files, also called .CAB files.'
   homepage 'https://www.cabextract.org.uk/'
-  version '1.9.1'
+  version '1.11'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://www.cabextract.org.uk/cabextract-1.9.1.tar.gz'
