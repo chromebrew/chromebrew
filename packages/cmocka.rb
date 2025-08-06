@@ -6,7 +6,7 @@ require 'package'
 class Cmocka < Package
   description 'Elegant unit testing framework for C with support for mock objects'
   homepage 'https://cmocka.org/'
-  version '1.1.5'
+  version '1.1.8'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz'
