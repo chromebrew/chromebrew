@@ -3,7 +3,7 @@ require 'package'
 class Chibi_scheme < Package
   description 'Minimal Scheme Implementation for use as an Extension Language'
   homepage 'http://synthcode.com/wiki/chibi-scheme'
-  version '0.8'
+  version '0.11'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/ashinn/chibi-scheme/archive/0.8.tar.gz'
