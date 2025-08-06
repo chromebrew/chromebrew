@@ -1,14 +1,18 @@
 #!/usr/bin/env ruby
+# version.rb version 1.1 (for Chromebrew)
 
 if ARGV.include?('-h') || ARGV.include?('--help')
   abort <<~EOM
-    Usage: ./version.rb [<package>] [-h, --help, -v, --verbose]
+    Usage: ./version.rb [<package>] [-h, --help, -v, --verbose, --update-package-files]
     Example: ./version.rb abcde -v
-    The <package> can contain '*': ./version.rb xorg_*
+    The <package> can contain '*': ./version.rb "xorg_*"
     If <package> is omitted, all packages will be checked.
+    Passing --update-package-files will try to update the version
+    field in the package file.
   EOM
 end
 
+require 'fileutils'
 require 'json'
 require 'net/http'
 require 'ruby_libversion'
@@ -20,6 +24,16 @@ $LOAD_PATH.unshift '../lib'
 require_relative '../lib/color'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
+
+UPDATE_PACKAGE_FILES = ARGV.include?('--update-package-files')
+versions_updated = {}
+
+excluded_packages = Set[
+  { pkg_name: 'cf', comments: 'Uses a dynamic source package URL.' },
+  { pkg_name: 'cursor', comments: 'Uses a dynamic source package URL.' }
+]
+excluded_pkgs = excluded_packages.map { |h| h[:pkg_name] }
+exclusion_regex = "(#{excluded_pkgs.join('|')})"
 
 def get_version(name, homepage, source)
   # Determine if the source is a GitHub repository.
@@ -142,7 +156,7 @@ if filelist.length.positive?
     # Get the upstream version.
     upstream_version = get_version(pkg.name.tr('_', '-'), pkg.homepage, pkg.source_url)
     # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
-    if upstream_version.nil?
+    if upstream_version.nil? || upstream_version.to_s.chomp == 'null'
       puts pkg.name.ljust(35) + 'notfound'.lightred if verbose
       next
     end
@@ -155,9 +169,23 @@ if filelist.length.positive?
     if Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) >= 0
       print 'uptodate'.ljust(20).lightgreen
     elsif Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) == -1
-      print 'outdated'.ljust(20).yellow
+      unless pkg.name[/#{exclusion_regex}/]
+        sed_cmd = <<~SED
+          grep "^  version '#{PackageUtils.get_clean_version(pkg.version)}'" #{filename} && sed "s,^  version '#{PackageUtils.get_clean_version(pkg.version)}',  version '#{upstream_version.chomp}'," #{filename} > #{filename}.tmp
+        SED
+        `#{sed_cmd}`
+        versions_updated[pkg.name.to_sym] = $CHILD_STATUS.success?
+      end
+      if versions_updated[pkg.name.to_sym]
+        FileUtils.mv "#{filename}.tmp", filename
+        print 'updated for build'.ljust(20).blue
+      else
+        print pkg.name[/#{exclusion_regex}/] ? 'Update MANUALLY.'.ljust(20).red : 'outdated'.ljust(20).yellow
+        FileUtils.rm_f "#{filename}.tmp"
+      end
     end
     # Print the package versions.
     puts PackageUtils.get_clean_version(pkg.version).ljust(20) + upstream_version
+    print "failed sed cmd: #{sed_cmd}".ljust(20).yellow if versions_updated[pkg.name.to_sym].to_s == 'false'
   end
 end
