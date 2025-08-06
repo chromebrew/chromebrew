@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 1.1 (for Chromebrew)
+# version.rb version 1.2 (for Chromebrew)
 
 if ARGV.include?('-h') || ARGV.include?('--help')
   abort <<~EOM
@@ -28,12 +28,18 @@ require_relative '../lib/package_utils'
 UPDATE_PACKAGE_FILES = ARGV.include?('--update-package-files')
 versions_updated = {}
 
-excluded_packages = Set[
+# Some packges need manual adjustments of URLS for different versions.
+automatic_version_update_excluded_packages = Set[
   { pkg_name: 'cf', comments: 'Uses a dynamic source package URL.' },
   { pkg_name: 'cursor', comments: 'Uses a dynamic source package URL.' }
 ]
-excluded_pkgs = excluded_packages.map { |h| h[:pkg_name] }
+excluded_pkgs = automatic_version_update_excluded_packages.map { |h| h[:pkg_name] }
 exclusion_regex = "(#{excluded_pkgs.join('|')})"
+
+# Some packages have different names in anitya.
+@anitya_package_name_mappings = Set[
+  { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' }
+].to_h { |h| [h[:pkg_name], h[:anitya_pkg]]}
 
 def get_version(name, homepage, source)
   # Determine if the source is a GitHub repository.
@@ -48,7 +54,9 @@ def get_version(name, homepage, source)
       end
     end
   end
-  anitya_id = get_anitya_id(name, homepage)
+  anitya_name_mapping_idx = @anitya_package_name_mappings.keys.find_index{|i| i == name}
+  anitya_name = anitya_name_mapping_idx.nil? ? name : @anitya_package_name_mappings.values[anitya_name_mapping_idx]
+  anitya_id = get_anitya_id(anitya_name, homepage)
   # If we weren't able to get an Anitya ID, return early here to save time and headaches
   return if anitya_id.nil?
   # Get the latest stable version of the package
