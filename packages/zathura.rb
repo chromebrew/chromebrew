@@ -20,7 +20,11 @@ class Zathura < Meson
   depends_on 'cairo' # R
   depends_on 'desktop_file_utilities'
   depends_on 'filecmd' # R
+<<<<<<< Updated upstream
   depends_on 'gcc_lib' # R  depends_on 'girara'
+=======
+  depends_on 'girara'
+>>>>>>> Stashed changes
   depends_on 'glib' # R
   depends_on 'glibc' # R  depends_on 'gtk3' # R  depends_on 'harfbuzz' # R  depends_on 'librsvg'
   depends_on 'pango' # R
