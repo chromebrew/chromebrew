@@ -17,8 +17,11 @@ class Zile < Package
      x86_64: '7acde7380f56dc54d6c74ec5cf7fd9f7ebb666524144d4c1d229ff31e2c66da3'
   })
 
+  depends_on 'acl' # R
   depends_on 'bdwgc'
+  depends_on 'glibc' # R
   depends_on 'help2man' => :build
+  depends_on 'ncurses' # R
 
   def self.build
     system './configure',
