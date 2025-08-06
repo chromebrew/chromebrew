@@ -11,10 +11,10 @@ class Cpustat < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd8a55c174fee28fc12a5a153836696fdfc7320f5fbc106095e0d18faccc7c58e',
-     armv7l: 'd8a55c174fee28fc12a5a153836696fdfc7320f5fbc106095e0d18faccc7c58e',
-       i686: '8e215c1064acc4bc8329f801d79aa96b7d8537596e6b91c12037c5782f5b3454',
-     x86_64: '8e96b86281a64fe06adc42c18a8507f0e52ffba4368cd3acb96b4f428ad0bb0d'
+    aarch64: '8fb261e29e498988fa539ad17586ba55e75fd7eecc027113f7e0b4412b4ed691',
+     armv7l: '8fb261e29e498988fa539ad17586ba55e75fd7eecc027113f7e0b4412b4ed691',
+       i686: '5809962b1a3185a5e86e72e26e449bb423eccddb3efbdac86d3850771d522d37',
+     x86_64: '72fb91253d4801ba95a3f35fa2b1848a0ef656b8e3d3720f4b6519a071495f66'
   })
 
   depends_on 'glibc' # R
