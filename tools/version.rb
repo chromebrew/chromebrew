@@ -26,6 +26,7 @@ require_relative '../lib/package'
 require_relative '../lib/package_utils'
 
 UPDATE_PACKAGE_FILES = ARGV.include?('--update-package-files')
+bc_updated = {}
 versions_updated = {}
 
 # Some packges need manual adjustments of URLS for different versions.
@@ -39,7 +40,7 @@ exclusion_regex = "(#{excluded_pkgs.join('|')})"
 # Some packages have different names in anitya.
 @anitya_package_name_mappings = Set[
   { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' }
-].to_h { |h| [h[:pkg_name], h[:anitya_pkg]]}
+].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
 
 def get_version(name, homepage, source)
   # Determine if the source is a GitHub repository.
@@ -54,7 +55,7 @@ def get_version(name, homepage, source)
       end
     end
   end
-  anitya_name_mapping_idx = @anitya_package_name_mappings.keys.find_index{|i| i == name}
+  anitya_name_mapping_idx = @anitya_package_name_mappings.keys.find_index { |i| i == name }
   anitya_name = anitya_name_mapping_idx.nil? ? name : @anitya_package_name_mappings.values[anitya_name_mapping_idx]
   anitya_id = get_anitya_id(anitya_name, homepage)
   # If we weren't able to get an Anitya ID, return early here to save time and headaches
@@ -179,13 +180,21 @@ if filelist.length.positive?
     elsif Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) == -1
       unless pkg.name[/#{exclusion_regex}/]
         sed_cmd = <<~SED
-          grep "^  version '#{PackageUtils.get_clean_version(pkg.version)}'" #{filename} && sed "s,^  version '#{PackageUtils.get_clean_version(pkg.version)}',  version '#{upstream_version.chomp}'," #{filename} > #{filename}.tmp
+          grep "^  version '#{PackageUtils.get_clean_version(pkg.version)}'" #{filename} && sed "s,^  version '#{PackageUtils.get_clean_version(pkg.version)}',  version '#{upstream_version.chomp}'," #{filename} > #{filename}.tmp && mv #{filename}.tmp #{filename}
         SED
         `#{sed_cmd}`
         versions_updated[pkg.name.to_sym] = $CHILD_STATUS.success?
+
+        binary_compression_sed_cmd = <<~BC_SED
+          sed "s,^  binary_compression 'tar.xz',  binary_compression 'tar.zst'," #{filename} > #{filename}.tmp && mv #{filename}.tmp #{filename}
+        BC_SED
+        puts "pkg.binary_compression : #{pkg.binary_compression == 'tar.xz'} no_zstd: #{!pkg.no_zstd?}"
+        if pkg.binary_compression == 'tar.xz' && !pkg.no_zstd?
+          `#{binary_compression_sed_cmd}`
+          bc_updated[pkg.name.to_sym] = $CHILD_STATUS.success?
+        end
       end
       if versions_updated[pkg.name.to_sym]
-        FileUtils.mv "#{filename}.tmp", filename
         print 'updated for build'.ljust(20).blue
       else
         print pkg.name[/#{exclusion_regex}/] ? 'Update MANUALLY.'.ljust(20).red : 'outdated'.ljust(20).yellow
@@ -195,5 +204,6 @@ if filelist.length.positive?
     # Print the package versions.
     puts PackageUtils.get_clean_version(pkg.version).ljust(20) + upstream_version
     print "failed sed cmd: #{sed_cmd}".ljust(20).yellow if versions_updated[pkg.name.to_sym].to_s == 'false'
+    print "failed sed cmd: #{binary_compression_sed_cmd}".ljust(20).yellow if bc_updated[pkg.name.to_sym].to_s == 'false'
   end
 end
