@@ -22,4 +22,8 @@ class Cabal < Package
   def self.install
     FileUtils.install 'cabal', "#{CREW_DEST_PREFIX}/bin/cabal", mode: 0o755
   end
+
+  def self.postremove
+    Package.agree_to_remove("#{CREW_PREFIX}/.config/cabal")
+  end
 end
