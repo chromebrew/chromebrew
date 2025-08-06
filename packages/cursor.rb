@@ -3,7 +3,7 @@ require 'package'
 class Cursor < Package
   description 'The AI Code Editor'
   homepage 'https://www.cursor.com/'
-  version '1.3.5'
+  version '1.4.1'
   license 'Cursor EULA'
   compatibility 'x86_64'
   source_url "https://downloads.cursor.com/production/9f33c2e793460d00cf95c06d957e1d1b8135fadd/linux/x64/Cursor-#{version}-x86_64.AppImage"
