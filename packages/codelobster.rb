@@ -4,7 +4,7 @@ require 'misc_functions'
 class Codelobster < Package
   description 'Free cross-platform IDE for PHP/HTML/CSS/JavaScript development'
   homepage 'https://www.codelobster.com/'
-  version '1.11.1'
+  version '2.6.0'
   license 'Shareware'
   compatibility 'x86_64'
   source_url 'https://codelobsteride.com/download/codelobsteride-1.11.1_amd64.deb'
