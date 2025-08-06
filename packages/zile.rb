@@ -11,10 +11,10 @@ class Zile < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9af8d03f90d5a5f6ffd48774ccdc053ffb8d0a878baf883a301ff709d1d8d2d4',
-     armv7l: '9af8d03f90d5a5f6ffd48774ccdc053ffb8d0a878baf883a301ff709d1d8d2d4',
-       i686: '24b7a3e4dca4fd149a34ab37d7b7e5f297198edf8264825d65c5406d1c3d1582',
-     x86_64: '7acde7380f56dc54d6c74ec5cf7fd9f7ebb666524144d4c1d229ff31e2c66da3'
+    aarch64: '84e007bac1bc55e332a27afbac816a02046f66c07e03d4c5b3481e0d96f7f7e2',
+     armv7l: '84e007bac1bc55e332a27afbac816a02046f66c07e03d4c5b3481e0d96f7f7e2',
+       i686: '04379e08cd765f182fcd3df2347bb92c156268a4b52799baeb4a6bd8815308e5',
+     x86_64: '7e015099074a3376dbea22fa603fc394cafbb03f2116c1c8f523b09c9a25bb16'
   })
 
   depends_on 'acl' # R
