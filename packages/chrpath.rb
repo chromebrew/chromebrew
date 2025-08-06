@@ -3,7 +3,7 @@ require 'package'
 class Chrpath < Package
   description 'Change or delete the rpath or runpath in ELF files'
   homepage 'https://directory.fsf.org/wiki/Chrpath'
-  version '0.16'
+  version '0.18'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://httpredir.debian.org/debian/pool/main/c/chrpath/chrpath_0.16.orig.tar.gz'
