@@ -3,7 +3,7 @@ require 'package'
 class Zig < Package
   description 'Programming language designed for robustness, optimality, and clarity'
   homepage 'https://ziglang.org/'
-  version '0.14.0'
+  version '0.14.1'
   license 'MIT'
   compatibility 'all'
   source_url({
