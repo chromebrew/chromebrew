@@ -10,18 +10,21 @@ class Zathura < Meson
   source_sha256 'c64ba7cb9facf2b1499b9dc929b6736c72c69f8062eed4f2940556c852256194'
   binary_compression 'tar.zst'
 
-  depends_on 'appstream_glib'
-  depends_on 'desktop_file_utilities'
-  depends_on 'girara'
-  depends_on 'librsvg'
-  depends_on 'libseccomp'
-  depends_on 'zathura_poppler_pdf'
-
   binary_sha256({
     aarch64: '3cfbee5522f48b4f99d62d0c4f559320881012812b0f879e0592edf9b3fb608a',
      armv7l: '3cfbee5522f48b4f99d62d0c4f559320881012812b0f879e0592edf9b3fb608a',
      x86_64: 'a402bed68aff3ac037973935760317a4db6716049abe75bd456067798e190a46'
   })
+
+  depends_on 'appstream_glib'
+  depends_on 'cairo' # R
+  depends_on 'desktop_file_utilities'
+  depends_on 'filecmd' # R
+  depends_on 'gcc_lib' # R  depends_on 'girara'
+  depends_on 'glib' # R
+  depends_on 'glibc' # R  depends_on 'gtk3' # R  depends_on 'harfbuzz' # R  depends_on 'librsvg'
+  depends_on 'pango' # R
+  depends_on 'sqlite' # R  depends_on 'zathura_poppler_pdf'
 
   meson_options '-Dmanpages=disabled -Dsynctex=disabled'
 end
