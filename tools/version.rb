@@ -28,6 +28,12 @@ require_relative '../lib/package_utils'
 UPDATE_PACKAGE_FILES = ARGV.include?('--update-package-files')
 versions_updated = {}
 
+excluded_packages = Set[
+  { pkg_name: 'cursor', comments: 'Uses a dynamic source package URL.' }
+]
+excluded_pkgs = excluded_packages.map { |h| h[:pkg_name] }
+exclusion_regex = "(#{excluded_pkgs.join('|')})"
+
 def get_version(name, homepage, source)
   # Determine if the source is a GitHub repository.
   unless source.nil? || source.is_a?(Hash)
@@ -162,16 +168,18 @@ if filelist.length.positive?
     if Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) >= 0
       print 'uptodate'.ljust(20).lightgreen
     elsif Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) == -1
-      sed_cmd = <<~SED
-        grep "^  version '#{PackageUtils.get_clean_version(pkg.version)}'" #{filename} && sed "s,^  version '#{PackageUtils.get_clean_version(pkg.version)}',  version '#{upstream_version.chomp}'," #{filename} > #{filename}.tmp
-      SED
-      `#{sed_cmd}`
-      versions_updated[pkg.name.to_sym] = $CHILD_STATUS.success?
+      unless pkg.name[/#{exclusion_regex}/]
+        sed_cmd = <<~SED
+          grep "^  version '#{PackageUtils.get_clean_version(pkg.version)}'" #{filename} && sed "s,^  version '#{PackageUtils.get_clean_version(pkg.version)}',  version '#{upstream_version.chomp}'," #{filename} > #{filename}.tmp
+        SED
+        `#{sed_cmd}`
+        versions_updated[pkg.name.to_sym] = $CHILD_STATUS.success?
+      end
       if versions_updated[pkg.name.to_sym]
         FileUtils.mv "#{filename}.tmp", filename
         print 'updated for build'.ljust(20).blue
       else
-        print 'outdated'.ljust(20).yellow
+        print pkg.name[/#{exclusion_regex}/] ? 'Update MANUALLY.'.ljust(20).red : 'outdated'.ljust(20).yellow
         FileUtils.rm_f "#{filename}.tmp"
       end
     end
