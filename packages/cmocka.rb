@@ -11,7 +11,7 @@ class Cmocka < CMake
   compatibility 'all'
   source_url 'https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz'
   source_sha256 'f0ccd8242d55e2fd74b16ba518359151f6f8383ff8aef4976e48393f77bba8b6'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '3697a4226d1da0acfd5f462f645eb31886e41ade46c10b4ba211367c55f5b820',
