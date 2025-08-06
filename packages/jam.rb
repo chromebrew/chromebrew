@@ -3,12 +3,12 @@ require 'package'
 class Jam < Package
   description 'Jam is a software build tool that makes building simple things simple and building complicated things manageable.'
   homepage 'https://swarm.workshop.perforce.com/projects/perforce_software-jam'
-  version '2.6'
+  version '2.6.1'
   license 'JAM License'
   compatibility 'all'
   source_url 'https://swarm.workshop.perforce.com/downloads/guest/perforce_software/jam/jam-2.6.zip'
   source_sha256 '7c510be24dc9d0912886c4364dc17a013e042408386f6b937e30bd9928d5223c'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'f3b20e59eef2b8445d75ef628daadca9b42a2cb337c0ad19e83065f16f4e08fa',
