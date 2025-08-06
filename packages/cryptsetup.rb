@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Cryptsetup < Autotools
   description 'The cryptsetup utility is used to conveniently setup disk en-/decryption based on DMCrypt kernel module.'
   homepage 'https://gitlab.com/cryptsetup/cryptsetup'
-  version '2.7.3'
+  version '2.8.0'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://mirrors.edge.kernel.org/pub/linux/utils/cryptsetup/v2.7/cryptsetup-2.7.3.tar.xz'
