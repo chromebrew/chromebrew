@@ -17,10 +17,12 @@ class Qemu < Package
      x86_64: '30183ad202272d2d568a6da30a58ad228cd1b42daebee015051703cbdd88eafe'
   })
 
+  depends_on 'alsa_lib' # R
   depends_on 'bzip2' # R
   depends_on 'curl' # R
   depends_on 'eudev' # R
   depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'gnutls' # R
@@ -29,12 +31,22 @@ class Qemu < Package
   depends_on 'libaio' # R
   depends_on 'libcap_ng' # R
   depends_on 'libgcrypt'
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libpng' # R
+  depends_on 'libsdl2' # R
+  depends_on 'libseccomp' # R
+  depends_on 'libslirp' # R
   depends_on 'libssh' # R
   depends_on 'libxkbcommon' # R
   depends_on 'linux_pam' # R
   depends_on 'lzfse' # R
+  depends_on 'lzo' # R
+  depends_on 'mesa' # R
+  depends_on 'ncurses' # R
+  depends_on 'pipewire' # R
+  depends_on 'pixman' # R
+  depends_on 'pulseaudio' # R
   depends_on 'py3_sphinx_rtd_theme' => :build
-  depends_on 'rust' => :build
   depends_on 'sphinx' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
