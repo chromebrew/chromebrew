@@ -3,7 +3,7 @@ require 'package'
 class Jitsi_meet < Package
   description 'Jitsi Meet video conferencing desktop application'
   homepage 'https://jitsi.org/jitsi-meet/'
-  version '2024.10.0'
+  version '2025.4.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url "https://github.com/jitsi/jitsi-meet-electron/releases/download/v#{version}/jitsi-meet-x86_64.AppImage"
