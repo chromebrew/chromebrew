@@ -29,6 +29,7 @@ UPDATE_PACKAGE_FILES = ARGV.include?('--update-package-files')
 versions_updated = {}
 
 excluded_packages = Set[
+  { pkg_name: 'cf', comments: 'Uses a dynamic source package URL.' },
   { pkg_name: 'cursor', comments: 'Uses a dynamic source package URL.' }
 ]
 excluded_pkgs = excluded_packages.map { |h| h[:pkg_name] }
