@@ -3,12 +3,12 @@ require 'package'
 class Zsync < Package
   description 'zsync is a client-side file transfer program similar to rsync.'
   homepage 'http://zsync.moria.org.uk/'
-  version '0.6.2'
+  version '0.6.3'
   license 'Artistic-2'
   compatibility 'all'
   source_url 'https://zsync.moria.org.uk/download/zsync-0.6.2.tar.bz2'
   source_sha256 '0b9d53433387aa4f04634a6c63a5efa8203070f2298af72a705f9be3dda65af2'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'ec99187285ee26098f60a08e075e61fe7ea2b66b153052c3be9aac8866c39d77',
