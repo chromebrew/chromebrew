@@ -7,7 +7,7 @@ class Jitsi_meet < Package
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url "https://github.com/jitsi/jitsi-meet-electron/releases/download/v#{version}/jitsi-meet-x86_64.AppImage"
-  source_sha256 '5147b6baf27581f11532135a630e707196441d05b3d166eeb9f6bf5b339be657'
+  source_sha256 'f40bb056423151f18b7a17f04a5d64b82e5dbddfa89840b25aba0def6c48f29c'
 
   depends_on 'gtk3'
   depends_on 'sommelier'
