@@ -3,7 +3,7 @@ require 'package'
 class Charm < Package
   description 'Charm is a set of tools that makes adding a backend to your terminal-based applications fun and easy.'
   homepage 'https://charm.sh'
-  version '0.12.1'
+  version '1.0.2'
   license 'MIT'
   compatibility 'all'
   source_url({
