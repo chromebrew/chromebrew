@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Zathura < Meson
   description 'zathura is a highly customizable and functional PDF document viewer'
   homepage 'https://pwmt.org/projects/zathura/'
-  version '0.5.2'
+  version '0.5.12'
   license 'ZLIB'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://pwmt.org/projects/zathura/download/zathura-0.5.2.tar.xz'
