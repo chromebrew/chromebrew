@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Jsonrpc_glib < Meson
   description 'A JSON-RPC library for GLib'
   homepage 'https://gitlab.gnome.org/GNOME/jsonrpc-glib'
-  version '3.44.0'
+  version '3.44.2'
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/jsonrpc-glib.git'
