@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Json_glib < Meson
   description 'JSON-GLib implements a full suite of JSON-related tools using GLib and GObject.'
   homepage 'https://gitlab.gnome.org/GNOME/json-glib'
-  version '1.9.2-1'
+  version '1.10.6'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/json-glib.git'
