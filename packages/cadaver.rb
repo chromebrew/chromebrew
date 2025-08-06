@@ -3,7 +3,7 @@ require 'package'
 class Cadaver < Package
   description 'cadaver is a command-line WebDAV client for Unix. It supports file upload, download, on-screen display, namespace operations (move/copy), collection creation and deletion, and locking operations.'
   homepage 'https://notroj.github.io/cadaver/'
-  version '0.24'
+  version '0.31.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://notroj.github.io/cadaver/cadaver-0.24.tar.gz'
