@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Jp2a < Autotools
   description 'jp2a is a simple JPEG/PNG to ASCII converter.'
   homepage 'https://github.com/Talinx/jp2a'
-  version '1.1.1-1'
+  version '1.3.2'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/Talinx/jp2a/releases/download/v1.1.1/jp2a-1.1.1.tar.bz2'
