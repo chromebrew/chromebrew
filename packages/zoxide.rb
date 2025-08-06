@@ -3,7 +3,7 @@ require 'package'
 class Zoxide < Package
   description 'zoxide is a smarter cd command, inspired by z and autojump.'
   homepage 'https://github.com/ajeetdsouza/zoxide'
-  version '0.9.7'
+  version '0.9.8'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url({
