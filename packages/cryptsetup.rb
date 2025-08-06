@@ -6,8 +6,8 @@ class Cryptsetup < Autotools
   version '2.8.0'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/linux/utils/cryptsetup/v2.7/cryptsetup-2.7.3.tar.xz'
-  source_sha256 'b772ae4f6df0cee7200b28cea960e4daaff2a203d2fd502beab3c1317b07a456'
+  source_url 'https://gitlab.com/cryptsetup/cryptsetup.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
