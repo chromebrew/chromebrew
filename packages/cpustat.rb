@@ -17,7 +17,8 @@ class Cpustat < Package
      x86_64: '8e96b86281a64fe06adc42c18a8507f0e52ffba4368cd3acb96b4f428ad0bb0d'
   })
 
-  depends_on 'ncurses' => :build
+  depends_on 'glibc' # R
+  depends_on 'ncurses' # R  depends_on 'ncurses' => :build
 
   def self.build
     system "sed -i 's,sbin,bin,' Makefile"
