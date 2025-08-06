@@ -188,7 +188,6 @@ if filelist.length.positive?
         binary_compression_sed_cmd = <<~BC_SED
           sed "s,^  binary_compression 'tar.xz',  binary_compression 'tar.zst'," #{filename} > #{filename}.tmp && mv #{filename}.tmp #{filename}
         BC_SED
-        puts "pkg.binary_compression : #{pkg.binary_compression == 'tar.xz'} no_zstd: #{!pkg.no_zstd?}"
         if pkg.binary_compression == 'tar.xz' && !pkg.no_zstd?
           `#{binary_compression_sed_cmd}`
           bc_updated[pkg.name.to_sym] = $CHILD_STATUS.success?
