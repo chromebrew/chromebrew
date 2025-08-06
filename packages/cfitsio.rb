@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Cfitsio < Autotools
   description 'A library of C and Fortran subroutines for reading and writing data files in FITS Flexible Image Transport System data format'
   homepage 'https://heasarc.gsfc.nasa.gov/fitsio/'
-  version '4.3.0'
+  version '4.6.2'
   license 'ISC'
   compatibility 'all'
   source_url 'https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-4.3.0.tar.gz'
