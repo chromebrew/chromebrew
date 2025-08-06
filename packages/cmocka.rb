@@ -20,6 +20,7 @@ class Cmocka < CMake
      x86_64: 'cb38f5c12d18bef0836dbbb36309da030aedb6275aca3ec610fabf987450ef56'
   })
 
+  depends_on 'glibc' # R
   depends_on 'llvm_dev' => :build
 
   cmake_options '-DUNIT_TESTING=ON'
