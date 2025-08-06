@@ -1,9 +1,9 @@
 # Adapted from Arch Linux cmocka PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/cmocka/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/cmake'
 
-class Cmocka < Package
+class Cmocka < CMake
   description 'Elegant unit testing framework for C with support for mock objects'
   homepage 'https://cmocka.org/'
   version '1.1.8'
@@ -20,27 +20,11 @@ class Cmocka < Package
      x86_64: 'cb38f5c12d18bef0836dbbb36309da030aedb6275aca3ec610fabf987450ef56'
   })
 
+  depends_on 'llvm_dev' => :build
+
+  cmake_options '-DUNIT_TESTING=ON'
+
   def self.patch
     system "sed -i 's/-fstack-protector-strong/-fno-stack-protector/g' CompilerChecks.cmake"
-  end
-
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      # See GCC linking issue w/ LTO here: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88643
-      system "env CC=clang CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -fuse-ld=lld -flto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -fuse-ld=lld -flto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -fuse-ld=lld -flto' \
-      cmake \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        -DUNIT_TESTING=ON \
-        .."
-    end
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
