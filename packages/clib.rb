@@ -3,7 +3,7 @@ require 'package'
 class Clib < Package
   description 'C package manager-ish'
   homepage 'https://github.com/clibs/clib'
-  version '1.8.1'
+  version '2.8.7'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/clibs/clib/archive/1.8.1.tar.gz'
