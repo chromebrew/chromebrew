@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Cpio < Autotools
   description 'GNU cpio copies files into or out of a cpio or tar archive. The archive can be another file on the disk, a magnetic tape, or a pipe.'
   homepage 'https://www.gnu.org/software/cpio/'
-  version '2.14'
+  version '2.15'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/cpio/cpio-2.14.tar.bz2'
