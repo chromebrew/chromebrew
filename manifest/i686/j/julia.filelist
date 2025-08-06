@@ -494,8 +494,6 @@
 /usr/local/share/julia/base/weakkeydict.jl
 /usr/local/share/julia/cert.pem
 /usr/local/share/julia/julia-config.jl
-/usr/local/share/julia/stdlib/v1.7/ArgTools/.github/workflows/CompatHelper.yml
-/usr/local/share/julia/stdlib/v1.7/ArgTools/.github/workflows/TagBot.yml
 /usr/local/share/julia/stdlib/v1.7/ArgTools/.gitignore
 /usr/local/share/julia/stdlib/v1.7/ArgTools/.travis.yml
 /usr/local/share/julia/stdlib/v1.7/ArgTools/LICENSE
@@ -573,10 +571,6 @@
 /usr/local/share/julia/stdlib/v1.7/Distributed/test/runtests.jl
 /usr/local/share/julia/stdlib/v1.7/Distributed/test/splitrange.jl
 /usr/local/share/julia/stdlib/v1.7/Distributed/test/topology.jl
-/usr/local/share/julia/stdlib/v1.7/Downloads/.ci/test_and_change_uuid.jl
-/usr/local/share/julia/stdlib/v1.7/Downloads/.github/workflows/CompatHelper.yml
-/usr/local/share/julia/stdlib/v1.7/Downloads/.github/workflows/TagBot.yml
-/usr/local/share/julia/stdlib/v1.7/Downloads/.github/workflows/ci.yml
 /usr/local/share/julia/stdlib/v1.7/Downloads/.gitignore
 /usr/local/share/julia/stdlib/v1.7/Downloads/LICENSE
 /usr/local/share/julia/stdlib/v1.7/Downloads/Project.toml
@@ -620,7 +614,6 @@
 /usr/local/share/julia/stdlib/v1.7/LazyArtifacts/src/LazyArtifacts.jl
 /usr/local/share/julia/stdlib/v1.7/LazyArtifacts/test/Artifacts.toml
 /usr/local/share/julia/stdlib/v1.7/LazyArtifacts/test/runtests.jl
-/usr/local/share/julia/stdlib/v1.7/LibCURL/.github/workflows/TagBot.yml
 /usr/local/share/julia/stdlib/v1.7/LibCURL/.gitignore
 /usr/local/share/julia/stdlib/v1.7/LibCURL/.travis.yml
 /usr/local/share/julia/stdlib/v1.7/LibCURL/LICENSE.md
@@ -811,10 +804,6 @@
 /usr/local/share/julia/stdlib/v1.7/MozillaCACerts_jll/Project.toml
 /usr/local/share/julia/stdlib/v1.7/MozillaCACerts_jll/src/MozillaCACerts_jll.jl
 /usr/local/share/julia/stdlib/v1.7/MozillaCACerts_jll/test/runtests.jl
-/usr/local/share/julia/stdlib/v1.7/NetworkOptions/.ci/change-uuid.jl
-/usr/local/share/julia/stdlib/v1.7/NetworkOptions/.github/workflows/CompatHelper.yml
-/usr/local/share/julia/stdlib/v1.7/NetworkOptions/.github/workflows/TagBot.yml
-/usr/local/share/julia/stdlib/v1.7/NetworkOptions/.github/workflows/ci.yml
 /usr/local/share/julia/stdlib/v1.7/NetworkOptions/.gitignore
 /usr/local/share/julia/stdlib/v1.7/NetworkOptions/.travis.yml
 /usr/local/share/julia/stdlib/v1.7/NetworkOptions/LICENSE
@@ -838,10 +827,7 @@
 /usr/local/share/julia/stdlib/v1.7/PCRE2_jll/StdlibArtifacts.toml
 /usr/local/share/julia/stdlib/v1.7/PCRE2_jll/src/PCRE2_jll.jl
 /usr/local/share/julia/stdlib/v1.7/PCRE2_jll/test/runtests.jl
-/usr/local/share/julia/stdlib/v1.7/Pkg/.ci/test_and_change_uuid.jl
 /usr/local/share/julia/stdlib/v1.7/Pkg/.codecov.yml
-/usr/local/share/julia/stdlib/v1.7/Pkg/.github/CODEOWNERS
-/usr/local/share/julia/stdlib/v1.7/Pkg/.github/workflows/test.yml
 /usr/local/share/julia/stdlib/v1.7/Pkg/.gitignore
 /usr/local/share/julia/stdlib/v1.7/Pkg/CHANGELOG.md
 /usr/local/share/julia/stdlib/v1.7/Pkg/LICENSE.md
@@ -1004,8 +990,6 @@
 /usr/local/share/julia/stdlib/v1.7/Pkg/test/test_packages/ArtifactTOMLSearch/sub_module/pkg.jl
 /usr/local/share/julia/stdlib/v1.7/Pkg/test/test_packages/ArtifactTOMLSearch/sub_package/Artifacts.toml
 /usr/local/share/julia/stdlib/v1.7/Pkg/test/test_packages/ArtifactTOMLSearch/sub_package/pkg.jl
-/usr/local/share/julia/stdlib/v1.7/Pkg/test/test_packages/AugmentedPlatform/.pkg/platform_augmentation.jl
-/usr/local/share/julia/stdlib/v1.7/Pkg/test/test_packages/AugmentedPlatform/.pkg/select_artifacts.jl
 /usr/local/share/julia/stdlib/v1.7/Pkg/test/test_packages/AugmentedPlatform/Project.toml
 /usr/local/share/julia/stdlib/v1.7/Pkg/test/test_packages/AugmentedPlatform/src/AugmentedPlatform.jl
 /usr/local/share/julia/stdlib/v1.7/Pkg/test/test_packages/BasicCompat/Project.toml
@@ -1290,8 +1274,6 @@
 /usr/local/share/julia/stdlib/v1.7/SparseArrays/test/sparse.jl
 /usr/local/share/julia/stdlib/v1.7/SparseArrays/test/sparsevector.jl
 /usr/local/share/julia/stdlib/v1.7/SparseArrays/test/testgroups
-/usr/local/share/julia/stdlib/v1.7/Statistics/.ci/test_and_change_uuid.jl
-/usr/local/share/julia/stdlib/v1.7/Statistics/.github/workflows/ci.yml
 /usr/local/share/julia/stdlib/v1.7/Statistics/LICENSE.md
 /usr/local/share/julia/stdlib/v1.7/Statistics/Project.toml
 /usr/local/share/julia/stdlib/v1.7/Statistics/README.md
@@ -1300,8 +1282,6 @@
 /usr/local/share/julia/stdlib/v1.7/Statistics/docs/src/index.md
 /usr/local/share/julia/stdlib/v1.7/Statistics/src/Statistics.jl
 /usr/local/share/julia/stdlib/v1.7/Statistics/test/runtests.jl
-/usr/local/share/julia/stdlib/v1.7/SuiteSparse/.ci/test_and_change_uuid.jl
-/usr/local/share/julia/stdlib/v1.7/SuiteSparse/.github/workflows/ci.yml
 /usr/local/share/julia/stdlib/v1.7/SuiteSparse/LICENSE.md
 /usr/local/share/julia/stdlib/v1.7/SuiteSparse/Project.toml
 /usr/local/share/julia/stdlib/v1.7/SuiteSparse/README.md
@@ -1625,9 +1605,6 @@
 /usr/local/share/julia/stdlib/v1.7/TOML/test/toml_test.jl
 /usr/local/share/julia/stdlib/v1.7/TOML/test/utils/convert_json_to_jl.jl
 /usr/local/share/julia/stdlib/v1.7/TOML/test/values.jl
-/usr/local/share/julia/stdlib/v1.7/Tar/.ci/test_and_change_uuid.jl
-/usr/local/share/julia/stdlib/v1.7/Tar/.github/workflows/TagBot.yml
-/usr/local/share/julia/stdlib/v1.7/Tar/.github/workflows/ci.yml
 /usr/local/share/julia/stdlib/v1.7/Tar/.gitignore
 /usr/local/share/julia/stdlib/v1.7/Tar/LICENSE
 /usr/local/share/julia/stdlib/v1.7/Tar/Project.toml
