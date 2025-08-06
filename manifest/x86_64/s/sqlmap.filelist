@@ -1,11 +1,11 @@
 /usr/local/bin/sqlmap
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.7.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.7.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.7.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.7.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.7.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.7.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/sqlmap-1.9.7.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.8.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.8.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.8.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.8.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.8.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.8.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/sqlmap-1.9.8.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/sqlmap/LICENSE
 /usr/local/lib/python3.13/site-packages/sqlmap/README.md
 /usr/local/lib/python3.13/site-packages/sqlmap/__init__.py
@@ -105,6 +105,7 @@
 /usr/local/lib/python3.13/site-packages/sqlmap/doc/THIRD-PARTY.md
 /usr/local/lib/python3.13/site-packages/sqlmap/doc/translations/README-ar-AR.md
 /usr/local/lib/python3.13/site-packages/sqlmap/doc/translations/README-bg-BG.md
+/usr/local/lib/python3.13/site-packages/sqlmap/doc/translations/README-bn-BD.md
 /usr/local/lib/python3.13/site-packages/sqlmap/doc/translations/README-ckb-KU.md
 /usr/local/lib/python3.13/site-packages/sqlmap/doc/translations/README-de-DE.md
 /usr/local/lib/python3.13/site-packages/sqlmap/doc/translations/README-es-MX.md
