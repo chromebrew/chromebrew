@@ -3,7 +3,7 @@ require 'package'
 class Consolekit < Package
   description 'A framework for defining and tracking users, login sessions, and seats'
   homepage 'https://github.com/ConsoleKit2/ConsoleKit2'
-  version '1.2.2'
+  version '1.2.6'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/ConsoleKit2/ConsoleKit2/archive/#{version}.tar.gz"
