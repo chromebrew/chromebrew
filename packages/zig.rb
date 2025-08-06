@@ -9,7 +9,7 @@ class Zig < Package
   source_url({
     aarch64: "https://ziglang.org/download/#{version}/zig-linux-armv7a-#{version}.tar.xz",
      armv7l: "https://ziglang.org/download/#{version}/zig-linux-armv7a-#{version}.tar.xz",
-       i686: "https://ziglang.org/download/#{version}/zig-linux-x86-#{version}.tar.xz",
+       i686: "https://ziglang.org/download/#{version}/zig-x86-linux-#{version}.tar.xz",
      x86_64: "https://ziglang.org/download/#{version}/zig-linux-x86_64-#{version}.tar.xz"
   })
   source_sha256({
