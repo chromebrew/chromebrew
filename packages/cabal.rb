@@ -3,16 +3,17 @@ require 'package'
 class Cabal < Package
   description 'Common Architecture for Building Applications and Libraries'
   homepage 'https://www.haskell.org/cabal/'
-  version '3.14.2.0'
+  version '3.16.0.0'
   license 'BSD'
   compatibility 'i686 x86_64'
+
   source_url({
-    x86_64: "https://downloads.haskell.org/~cabal/cabal-install-#{version}/cabal-install-#{version}-x86_64-linux-alpine3_17.tar.xz",
-      i686: "https://downloads.haskell.org/~cabal/cabal-install-#{version}/cabal-install-#{version}-i386-linux-alpine3_12.tar.xz"
+    x86_64: "https://downloads.haskell.org/~cabal/cabal-install-#{version}/cabal-install-#{version}-x86_64-linux-alpine3_12.tar.xz",
+      i686: "https://downloads.haskell.org/~cabal/cabal-install-#{version}/cabal-install-#{version}-i386-linux-alpine3_20.tar.xz"
   })
   source_sha256({
-    x86_64: 'f99df35fd67519888188b10689f999267e27beacb9fdd64c8a16073ca9d0a49c',
-      i686: 'c3cddb81eca95dd6082844ede3f714134d828ac59102ce3c02b412ba000a462e'
+    x86_64: '47969e8da0d6714b74fe54acfcb858484303497ea5b9a8a232c8cfb7272451be',
+      i686: '94dd9d2b2a9eb6fb580bd78f0dc1d9bb73986f58319cb88b24586c9bc0f9ae74'
   })
 
   no_compile_needed
