@@ -3,7 +3,7 @@ require 'package'
 class Joplin < Package
   description 'Open source note-taking app'
   homepage 'https://joplinapp.org/'
-  version '3.3.12'
+  version '3.4.4'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   min_glibc '2.28'
