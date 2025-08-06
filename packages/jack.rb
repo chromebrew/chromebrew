@@ -3,7 +3,7 @@ require 'package'
 class Jack < Package
   description 'JACK (JACK Audio Connection Kit) refers to an API that provides a basic infrastructure for audio applications to communicate with each other and with audio hardware.'
   homepage 'https://jackaudio.org/'
-  version '1.9.21'
+  version '1.9.22'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/jackaudio/jack2/archive/v#{version}.tar.gz"
