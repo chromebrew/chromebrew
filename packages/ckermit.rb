@@ -3,7 +3,7 @@ require 'package'
 class Ckermit < Package
   description 'C-Kermit is a combined serial and network communication software package.'
   homepage 'https://www.kermitproject.org/ck90.html'
-  version '8.0.211-1'
+  version '9.0.302'
   license 'Kermit'
   compatibility 'all'
   source_url 'https://fossies.org/linux/privat/old/cku211.tar.gz'
