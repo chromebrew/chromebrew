@@ -34,7 +34,6 @@ class Mesa < Meson
   depends_on 'libxdamage' => :build
   depends_on 'libxdmcp' => :build
   depends_on 'libxext' # R
-  depends_on 'libxfixes' # R
   depends_on 'libxrandr' # R
   depends_on 'libxshmfence' # R
   depends_on 'libxv' => :build
