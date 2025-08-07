@@ -1,13 +1,15 @@
 #!/usr/bin/env ruby
-# version.rb version 1.2 (for Chromebrew)
+# version.rb version 1.3 (for Chromebrew)
+
+OPTIONS = %w[-h --help -u --update-package-files -v --verbose]
 
 if ARGV.include?('-h') || ARGV.include?('--help')
   abort <<~EOM
-    Usage: ./version.rb [<package>] [-h, --help, -v, --verbose, --update-package-files]
+    Usage: ./version.rb [<package>] #{OPTIONS.to_s.gsub('"', '')}
     Example: ./version.rb abcde -v
     The <package> can contain '*': ./version.rb "xorg_*"
-    If <package> is omitted, all packages will be checked.
-    Passing --update-package-files will try to update the version
+    If <package> is omitted, all packages will be processed.
+    Passing --update-package-files or -u will try to update the version
     field in the package file.
   EOM
 end
@@ -25,7 +27,8 @@ require_relative '../lib/color'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
 
-UPDATE_PACKAGE_FILES = ARGV.include?('--update-package-files')
+UPDATE_PACKAGE_FILES = ARGV.include?('-u') || ARGV.include?('--update-package-files')
+VERBOSE = ARGV.include?('-v') || ARGV.include?('--verbose')
 bc_updated = {}
 versions_updated = {}
 
@@ -119,8 +122,7 @@ def get_anitya_id(name, homepage)
 end
 
 filelist = []
-verbose = ARGV.include?('-v') || ARGV.include?('--verbose')
-if ARGV.length.positive? && !(ARGV.length == 1 && verbose)
+if ARGV.length.positive? && !(ARGV.length == 1 && OPTIONS.include?(ARGV[0]))
   ARGV.each do |arg|
     arg = arg.gsub('.rb', '')
     next unless arg =~ /^[0-9a-zA-Z\_\*]+$/
@@ -147,18 +149,18 @@ if filelist.length.positive?
     # Instead of typing out the name of every python package, we just use a regex here.
     # Also, we annotate some packages to let us know that they won't work here.
     if pkg.name.match?(/py3\S+/) || pkg.no_upstream_update?
-      puts pkg.name.ljust(35) + 'noupdate'.lightred if verbose
+      puts pkg.name.ljust(35) + 'noupdate'.lightred if VERBOSE
       next
     end
     # We skip fake packages.
     if pkg.is_fake?
-      puts pkg.name.ljust(35) + 'fake'.lightred if verbose
+      puts pkg.name.ljust(35) + 'fake'.lightred if VERBOSE
       next
     end
 
     # Skip ruby and pip buildsystem packages.
     if %w[RUBY Pip].include?(pkg.superclass.to_s)
-      puts pkg.name.ljust(35) + 'skipped'.lightred if verbose
+      puts pkg.name.ljust(35) + 'skipped'.lightred if VERBOSE
       next
     end
 
@@ -166,19 +168,19 @@ if filelist.length.positive?
     upstream_version = get_version(pkg.name.tr('_', '-'), pkg.homepage, pkg.source_url)
     # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
     if upstream_version.nil? || upstream_version.to_s.chomp == 'null'
-      puts pkg.name.ljust(35) + 'notfound'.lightred if verbose
+      puts pkg.name.ljust(35) + 'notfound'.lightred if VERBOSE
       next
     end
 
     # Bail out if we arent verbose and so dont want to print packages that are up to date.
-    next if Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) >= 0 && !verbose
+    next if Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) >= 0 && !VERBOSE
     # Print the package name.
     print pkg.name.ljust(35)
     # Print the package update status.
     if Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) >= 0
       print 'uptodate'.ljust(20).lightgreen
     elsif Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) == -1
-      unless pkg.name[/#{exclusion_regex}/]
+      if UPDATE_PACKAGE_FILES && !pkg.name[/#{exclusion_regex}/]
         sed_cmd = <<~SED
           grep "^  version '#{PackageUtils.get_clean_version(pkg.version)}'" #{filename} && sed "s,^  version '#{PackageUtils.get_clean_version(pkg.version)}',  version '#{upstream_version.chomp}'," #{filename} > #{filename}.tmp && mv #{filename}.tmp #{filename}
         SED
@@ -193,7 +195,7 @@ if filelist.length.positive?
           bc_updated[pkg.name.to_sym] = $CHILD_STATUS.success?
         end
       end
-      if versions_updated[pkg.name.to_sym]
+      if UPDATE_PACKAGE_FILES && versions_updated[pkg.name.to_sym]
         print 'updated for build'.ljust(20).blue
       else
         print pkg.name[/#{exclusion_regex}/] ? 'Update MANUALLY.'.ljust(20).red : 'outdated'.ljust(20).yellow
