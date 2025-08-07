@@ -19,7 +19,6 @@ class Rust < Package
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'zlib' # R
 
   no_strip
   print_source_bashrc
