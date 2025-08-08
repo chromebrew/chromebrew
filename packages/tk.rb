@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Tk < Autotools
   description 'Tk is a graphical user interface toolkit that takes developing desktop applications to a higher level than conventional approaches.'
   homepage 'https://tcl.tk'
-  version '9.0.1'
+  version '9.0.2'
   license 'tcltk'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tk#{version}-src.tar.gz"
