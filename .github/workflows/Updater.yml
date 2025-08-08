@@ -24,7 +24,7 @@ jobs:
           ruby-version: '3.4.5'
       - name: Install Python pip
         run: sudo apt install -y python3-pip
-      - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package so we don't have to do this manually.
+      - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package. https://github.com/repology/libversion/issues/35
         working-directory: ${{ runner.temp }}
         run: |
           git clone --depth 1 -b 3.0.3 https://github.com/repology/libversion
@@ -47,17 +47,22 @@ jobs:
           git pull
           git stash drop || true
           LD_LIBRARY_PATH=/usr/local/lib ruby tools/update_python_pip_packages.rb
-          export TIMESTAMP="$(date -u +%F-%H-%M)"
           for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
           do
             git stash pop || true
             git add $i
             pkg=${i%.rb}
             pkg=${pkg#packages/}
-            git checkout -b "${pkg}-${TIMESTAMP}" || git checkout "${pkg}-${TIMESTAMP}"
-            git commit -m "Add unbuilt ${pkg} to ${pkg}-${TIMESTAMP}"
+            pkg_version="$(./tools/version.rb -j ${pkg} | jq -r '.[]|.version')"
+            if [[ -z "$pkg_version" ]]; then
+              branch_tag="$(date -u +%F-%H-%M)"
+            else
+              branch_tag="${pkg_version}"
+            fi
+            git checkout -b "${pkg}-${branch_tag}" || git checkout "${pkg}-${branch_tag}"
+            git commit -m "Add unbuilt ${pkg} to ${pkg}-${branch_tag}"
             git push
-            gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${pkg}-${TIMESTAMP}"
+            gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${pkg}-${branch_tag}"
             git stash || true
             git checkout master
           done
@@ -67,17 +72,22 @@ jobs:
           git pull
           git stash drop || true
           LD_LIBRARY_PATH=/usr/local/lib ruby tools/update_ruby_gem_packages.rb
-          export TIMESTAMP="$(date -u +%F-%H-%M)"
           for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
           do
             git stash pop || true
             git add $i
             pkg=${i%.rb}
             pkg=${pkg#packages/}
-            git checkout -b "${pkg}-${TIMESTAMP}" || git checkout "${pkg}-${TIMESTAMP}"
-            git commit -m "Add unbuilt ${pkg} to ${pkg}-${TIMESTAMP}"
+            pkg_version="$(./tools/version.rb -j ${pkg} | jq -r '.[]|.version')"
+            if [[ -z "$pkg_version" ]]; then
+              branch_tag="$(date -u +%F-%H-%M)"
+            else
+              branch_tag="${pkg_version}"
+            fi
+            git checkout -b "${pkg}-${branch_tag}" || git checkout "${pkg}-${branch_tag}"
+            git commit -m "Add unbuilt ${pkg} to ${pkg}-${branch_tag}"
             git push
-            gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${pkg}-${TIMESTAMP}"
+            gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${pkg}-${branch_tag}"
             git stash || true
             git checkout master
           done

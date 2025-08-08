@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.64.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.64.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -173,6 +173,22 @@ unless defined?(CHROMEOS_RELEASE)
       # newer version of Chrome OS exports info to env by default
       ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
     end
+end
+
+# Some packges need manual adjustments of URLS for different versions.
+excluded_pkgs = Set[
+  { pkg_name: 'py3_atspi', comments: 'Does not work with pip.' },
+  { pkg_name: 'cf', comments: 'Uses a dynamic source package URL.' },
+  { pkg_name: 'cursor', comments: 'Uses a dynamic source package URL.' },
+  { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' }
+].map { |h| h[:pkg_name] }
+CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX = "(#{excluded_pkgs.join('|')})" unless defined?(CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX)
+
+# Some packages have different names in anitya.
+unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
+  CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
+    { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' }
+  ].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
 end
 
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
