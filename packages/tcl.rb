@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Tcl < Package
+class Tcl < Autotools
   description 'Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language, suitable for a very wide range of uses, including web and desktop applications, networking, administration, testing and many more.'
   homepage 'http://www.tcl.tk/'
-  version '8.6.16'
+  version '9.0.1'
   license 'tcltk'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tcl#{version}-src.tar.gz"
-  source_sha256 '91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5'
+  source_sha256 'a72b1607d7a399c75148c80fcdead88ed3371a29884181f200f2200cdee33bbc'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -22,19 +22,11 @@ class Tcl < Package
 
   no_lto
 
-  def self.build
-    FileUtils.chdir('unix') do
-      @bit64 = ARCH == 'x86_64' ? 'enable' : 'disable'
-      system "./configure #{CREW_CONFIGURE_OPTIONS} --#{@bit64}-64bit"
-      system 'make'
-    end
-  end
+  autotools_build_relative_dir 'unix'
+  autotools_configure_options "--#{ARCH == 'x86_64' ? 'enable' : 'disable'}-64bit"
 
-  def self.install
-    FileUtils.chdir('unix') do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-private-headers'
-      FileUtils.ln_s "#{CREW_PREFIX}/bin/tclsh#{version.rpartition('.')[0]}", "#{CREW_DEST_PREFIX}/bin/tclsh"
-    end
+  autotools_install_extras do
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-private-headers'
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/tclsh#{version.rpartition('.')[0]}", "#{CREW_DEST_PREFIX}/bin/tclsh"
   end
 end
