@@ -49,7 +49,6 @@ jobs:
     if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) }}
     runs-on: ubuntu-24.04
     outputs:
-      timestamp: ${{ steps.set-timestamp.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
       glibc_232_compat: ${{ steps.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
       glibc_237_compat: ${{ steps.get-compatibility.outputs.GLIBC_237_COMPATIBLE_PACKAGES }}
@@ -73,12 +72,6 @@ jobs:
         with:
           branch: ${{ inputs.branch || github.ref_name }}
           force: true
-      - name: Set Timestamp
-        id: set-timestamp
-        run: |
-          TIMESTAMP="$(date -u +%F-%H%Z)"
-          export TIMESTAMP
-          echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v46
@@ -162,7 +155,6 @@ jobs:
       CREW_REPO: ${{ github.event.repository.clone_url }}
       CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
       TARGET_ARCH: ${{ matrix.arch }}
-      TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
       GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_232_compat }}
       GLIBC_237_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_237_compat }}
       i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
@@ -381,11 +373,11 @@ jobs:
           DRAFT_PR: ${{ inputs.draft_pr }}
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           PR_TITLE: ${{ inputs.pr_title }}
-          TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
           i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
           x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
           armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
         run: |
+          sudo gem install ptools
           function join_by { local IFS="$1"; shift; echo "$*"; }
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
@@ -403,19 +395,19 @@ jobs:
             echo -e "### Packages with Updated versions or Changed package files:" >> /tmp/pr.txt
             for file in ${CHANGED_PACKAGES}
               do
-              pkg_version="$(./tools/version.rb -j "${file}" | jq -r '.[]|.version')"
-              upstream_version="$(tools/version.rb tcl -j | jq -r '.[]|.upstream_version')"
+              pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j "${file}" | jq -r '.[]|.version')"
+              upstream_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j "${file}" | jq -r '.[]|.upstream_version')"
               if [[ -z "$pkg_version" ]]; then
                 echo "- ${file}" >> /tmp/pr.txt
                 PKG_DELTA+=( "${file}" )
               elif [[ -z "$upstream_version" ]]; then
-                echo "- ${file} => ${pkg_version}" >> /tmp/pr.txt
+                echo "- \`${file}\` &rarr; ${pkg_version}" >> /tmp/pr.txt
                 PKG_DELTA+=( "${file} => ${pkg_version}" )
               elif [[ "$pkg_version" == "$upstream_version" ]]; then
-                echo "- ${file} => ${pkg_version}" >> /tmp/pr.txt
+                echo "- \`${file}\` &rarr; ${pkg_version}" >> /tmp/pr.txt
                 PKG_DELTA+=( "${file} => ${pkg_version}" )
               else
-                echo "- ${file} => ${pkg_version} (current version is ${upstream_version})" >> /tmp/pr.txt
+                echo "- \`${file}\` &rarr; ${pkg_version} (current version is ${upstream_version})" >> /tmp/pr.txt
                 PKG_DELTA+=( "${file} => ${pkg_version}" )
               fi
             done

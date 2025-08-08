@@ -35,6 +35,7 @@ jobs:
           make -j "$(nproc)"
           sudo make install
           sudo gem install ruby-libversion
+          sudo gem install ptools
       - name: Setup Git.
         id: git-setup
         run: |
@@ -46,14 +47,14 @@ jobs:
         run: |
           git pull
           git stash drop || true
-          LD_LIBRARY_PATH=/usr/local/lib ruby tools/update_python_pip_packages.rb
+          LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -u "py_*"
           for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
           do
             git stash pop || true
             git add $i
             pkg=${i%.rb}
             pkg=${pkg#packages/}
-            pkg_version="$(./tools/version.rb -j ${pkg} | jq -r '.[]|.version')"
+            pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j ${pkg} | jq -r '.[]|.version')"
             if [[ -z "$pkg_version" ]]; then
               branch_tag="$(date -u +%F-%H-%M)"
             else
@@ -71,14 +72,14 @@ jobs:
         run: |
           git pull
           git stash drop || true
-          LD_LIBRARY_PATH=/usr/local/lib ruby tools/update_ruby_gem_packages.rb
+          LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -u "ruby_*"
           for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
           do
             git stash pop || true
             git add $i
             pkg=${i%.rb}
             pkg=${pkg#packages/}
-            pkg_version="$(./tools/version.rb -j ${pkg} | jq -r '.[]|.version')"
+            pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby ./tools/version.rb -j ${pkg} | jq -r '.[]|.version')"
             if [[ -z "$pkg_version" ]]; then
               branch_tag="$(date -u +%F-%H-%M)"
             else
