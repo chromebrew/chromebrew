@@ -16,7 +16,7 @@ class Tk < Autotools
      x86_64: '8623e92dc19caa784f90727744ac98f9a87fe1868f4a5d513b94a496bab177ab'
   })
 
-  depends_on 'freetype' # R
+  depends_on 'fontconfig' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libx11' # R
