@@ -1,22 +1,22 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Tk < Package
+class Tk < Autotools
   description 'Tk is a graphical user interface toolkit that takes developing desktop applications to a higher level than conventional approaches.'
   homepage 'http://www.tcl.tk/'
-  version '8.6.16'
+  version '9.0.1'
   license 'tcltk'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tk#{version}-src.tar.gz"
-  source_sha256 '8ffdb720f47a6ca6107eac2dd877e30b0ef7fac14f3a84ebbd0b3612cee41a94'
+  source_sha256 'd6f01a4d598bfc6398be9584e1bab828c907b0758db4bbb351a1429106aec527'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '82a08a00077dcc0a758cb3d4eafe03a145185fb5d4e855787e08b7c1487af73a',
-     armv7l: '82a08a00077dcc0a758cb3d4eafe03a145185fb5d4e855787e08b7c1487af73a',
-     x86_64: '8623e92dc19caa784f90727744ac98f9a87fe1868f4a5d513b94a496bab177ab'
+    aarch64: '2785556c1d0cd4dc49f322f5e69e9217b5912c2b4bf0cd1cc84c308f7194cbfc',
+     armv7l: '2785556c1d0cd4dc49f322f5e69e9217b5912c2b4bf0cd1cc84c308f7194cbfc',
+     x86_64: '43e20a269bbe74ffaf4e8d7437635ecbb8d824f29d1e04c145774a53be5451e7'
   })
 
-  depends_on 'freetype' # R
+  depends_on 'fontconfig' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libx11' # R
@@ -28,22 +28,12 @@ class Tk < Package
 
   no_lto
 
-  def self.build
-    FileUtils.chdir('unix') do
-      @bit64 = ARCH == 'x86_64' ? 'enable' : 'disable'
-      system "./configure \
-          #{CREW_CONFIGURE_OPTIONS} \
-          --with-tcl=#{CREW_LIB_PREFIX} \
+  autotools_build_relative_dir 'unix'
+  autotools_configure_options "--with-tcl=#{CREW_LIB_PREFIX} \
           --enable-threads \
-          --#{@bit64}-64bit"
-      system 'make'
-    end
-  end
+          --#{ARCH == 'x86_64' ? 'enable' : 'disable'}-64bit"
 
-  def self.install
-    FileUtils.chdir('unix') do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      FileUtils.ln_s "#{CREW_PREFIX}/bin/wish#{version.rpartition('.')[0]}", "#{CREW_DEST_PREFIX}/bin/wish"
-    end
+  autotools_install_extras do
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/wish#{version.rpartition('.')[0]}", "#{CREW_DEST_PREFIX}/bin/wish"
   end
 end
