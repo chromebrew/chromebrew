@@ -11,9 +11,9 @@ class Tk < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '82a08a00077dcc0a758cb3d4eafe03a145185fb5d4e855787e08b7c1487af73a',
-     armv7l: '82a08a00077dcc0a758cb3d4eafe03a145185fb5d4e855787e08b7c1487af73a',
-     x86_64: '8623e92dc19caa784f90727744ac98f9a87fe1868f4a5d513b94a496bab177ab'
+    aarch64: '2785556c1d0cd4dc49f322f5e69e9217b5912c2b4bf0cd1cc84c308f7194cbfc',
+     armv7l: '2785556c1d0cd4dc49f322f5e69e9217b5912c2b4bf0cd1cc84c308f7194cbfc',
+     x86_64: '43e20a269bbe74ffaf4e8d7437635ecbb8d824f29d1e04c145774a53be5451e7'
   })
 
   depends_on 'fontconfig' # R
