@@ -322,6 +322,17 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.ref_name }}
+      - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package. https://github.com/repology/libversion/issues/35
+        working-directory: ${{ runner.temp }}
+        run: |
+          git clone --depth 1 -b 3.0.3 https://github.com/repology/libversion
+          cd libversion
+          mkdir build
+          cd build
+          cmake ..
+          make -j "$(nproc)"
+          sudo make install
+          sudo gem install ruby-libversion
       - name: Rebase to master and save git log
         id: rebase-and-git-log
         run: |
@@ -375,6 +386,7 @@ jobs:
           x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
           armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
         run: |
+          function join_by { local IFS="$1"; shift; echo "$*"; }
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
           echo -e "#### Commits:" >> /tmp/pr.txt
@@ -391,7 +403,21 @@ jobs:
             echo -e "### Packages with Updated versions or Changed package files:" >> /tmp/pr.txt
             for file in ${CHANGED_PACKAGES}
               do
-              echo "- ${file}" >> /tmp/pr.txt
+              pkg_version="$(./tools/version.rb -j "${file}" | jq -r '.[]|.version')"
+              upstream_version="$(tools/version.rb tcl -j | jq -r '.[]|.upstream_version')"
+              if [[ -z "$pkg_version" ]]; then
+                echo "- ${file}" >> /tmp/pr.txt
+                PKG_DELTA+=( "${file}" )
+              elif [[ -z "$upstream_version" ]]; then
+                echo "- ${file} => ${pkg_version}" >> /tmp/pr.txt
+                PKG_DELTA+=( "${file} => ${pkg_version}" )
+              elif [[ "$pkg_version" == "$upstream_version" ]]; then
+                echo "- ${file} => ${pkg_version}" >> /tmp/pr.txt
+                PKG_DELTA+=( "${file} => ${pkg_version}" )
+              else
+                echo "- ${file} => ${pkg_version} (current version is ${upstream_version})" >> /tmp/pr.txt
+                PKG_DELTA+=( "${file} => ${pkg_version}" )
+              fi
             done
             echo -e "##\nBuilds attempted for:" >> /tmp/pr.txt
             [ -n "${x86_64_PACKAGES}" ] && echo -e "- [x] \`x86_64\`" >> /tmp/pr.txt
@@ -411,14 +437,16 @@ jobs:
           echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/pr.txt
           echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ inputs.branch || github.ref_name }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
+          PKG_DELTAS="$(join_by , "${PKG_DELTA[@]}")"
+          echo "PKG_DELTAS: $PKG_DELTAS"
           cat /tmp/pr.txt
           [[ $DRAFT_PR == 'true' ]] && export PR_DRAFT_FLAG='-d'
           PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
-          echo "PR title is: $(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | sed -e "s/^'//" -e "s/'$//") — ${CHANGED_PACKAGES}"
+          echo "PR title is: $(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | sed -e "s/^'//" -e "s/'$//") — ${PKG_DELTAS}"
           if [[ -z ${PR_NUMBER} ]]; then
-            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | sed -e "s/^'//" -e "s/'$//") — ${CHANGED_PACKAGES}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | sed -e "s/^'//" -e "s/'$//") — ${PKG_DELTAS}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
-            gh pr edit --add-reviewer chromebrew/active --title "$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | sed -e "s/^'//" -e "s/'$//") — ${CHANGED_PACKAGES}" -F /tmp/pr.txt
+            gh pr edit --add-reviewer chromebrew/active --title "$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | sed -e "s/^'//" -e "s/'$//") — ${PKG_DELTAS}" -F /tmp/pr.txt
           fi
           # Draft PRs can not be set to automerge.
           if [[ $DRAFT_PR == 'true' ]]; then
