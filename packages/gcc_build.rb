@@ -4,12 +4,11 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '15.1.0-69eb171'
+  version '15.2.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag '69eb1716b884f6213aef30194390d7741af97c80'
-  # git_hashtag "releases/gcc-#{version.split('-').first}"
+  git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -35,8 +34,8 @@ class Gcc_build < Package
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
-  @glibc_flags = ''
-  @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags}"
+  @glibc_flags = "-L#{CREW_LIB_PREFIX}"
+  @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags} -B#{CREW_LIB_PREFIX}"
   @languages = 'c,c++,jit,objc,fortran,go,rust'
   case ARCH
   when 'armv7l', 'aarch64'
@@ -90,6 +89,20 @@ class Gcc_build < Package
       done
       exec gcc $fl ${1+"$@"}
     EOF
+
+    # Try to workaround gcc looking for glibc's crt* files in the wrong
+    # location.
+    case ARCH
+    when 'i686'
+      FileUtils.mkdir_p "#{CREW_PREFIX}/i686-cros-linux-gnu/lib"
+      FileUtils.ln_s(["#{CREW_LIB_PREFIX}/crt1.o", "#{CREW_LIB_PREFIX}/crtn.o", "#{CREW_LIB_PREFIX}/crti.o"], "#{CREW_PREFIX}/i686-cros-linux-gnu/lib/", verbose: true)
+    when 'x86_64'
+      FileUtils.mkdir_p "#{CREW_PREFIX}/x86_64-cros-linux-gnu/lib"
+      FileUtils.ln_s(["#{CREW_LIB_PREFIX}/crt1.o", "#{CREW_LIB_PREFIX}/crtn.o", "#{CREW_LIB_PREFIX}/crti.o"], "#{CREW_PREFIX}/x86_64-cros-linux-gnu/lib/", verbose: true)
+    when 'armv7l', 'aarch64'
+      FileUtils.mkdir_p "#{CREW_PREFIX}/armv7l-cros-linux-gnueabihf/lib"
+      FileUtils.ln_s(["#{CREW_LIB_PREFIX}/crt1.o", "#{CREW_LIB_PREFIX}/crtn.o", "#{CREW_LIB_PREFIX}/crti.o"], "#{CREW_PREFIX}/armv7l-cros-linux-gnueabihf/lib/", verbose: true)
+    end
   end
 
   def self.build
@@ -147,8 +160,8 @@ class Gcc_build < Package
                                  CFLAGS: @cflags,
                                CXXFLAGS: @cxxflags,
                                 LDFLAGS: @ldflags,
+                                     LD: 'mold',
                            LIBRARY_PATH: CREW_LIB_PREFIX,
-                                     LD: 'ld',
                                      NM: 'gcc-nm',
                                    PATH: @path,
                                  RANLIB: 'gcc-ranlib'
@@ -161,8 +174,7 @@ class Gcc_build < Package
           --enable-languages=#{@languages} \
           --program-suffix=-#{@gcc_version}"
       # Concurrent build sometimes breaks.
-      system 'make'
-      system 'make -j1' if $CHILD_STATUS.exitstatus != 0
+      system "export LIBRARY_PATH=#{CREW_LIB_PREFIX} ; make || make -j1"
     end
   end
 
