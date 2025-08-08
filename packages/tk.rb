@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Tk < Autotools
   description 'Tk is a graphical user interface toolkit that takes developing desktop applications to a higher level than conventional approaches.'
   homepage 'https://tcl.tk'
-  version '9.0.1'
+  version '9.0.2'
   license 'tcltk'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tk#{version}-src.tar.gz"
@@ -11,9 +11,9 @@ class Tk < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2785556c1d0cd4dc49f322f5e69e9217b5912c2b4bf0cd1cc84c308f7194cbfc',
-     armv7l: '2785556c1d0cd4dc49f322f5e69e9217b5912c2b4bf0cd1cc84c308f7194cbfc',
-     x86_64: '43e20a269bbe74ffaf4e8d7437635ecbb8d824f29d1e04c145774a53be5451e7'
+    aarch64: '9eb8d8c1044475496fee0086d4882e8f13d6a7d52efead0933dff557d824ff0a',
+     armv7l: '9eb8d8c1044475496fee0086d4882e8f13d6a7d52efead0933dff557d824ff0a',
+     x86_64: '9bec423514244a77790075b6c49fcc598406e138a67053f66ce66b9cb40d005d'
   })
 
   depends_on 'fontconfig' # R
