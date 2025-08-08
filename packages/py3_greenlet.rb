@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_greenlet < Pip
   description 'Greenlet provides lightweight in-process concurrent programming.'
   homepage 'https://greenlet.readthedocs.io/'
-  version "3.2.3-#{CREW_PY_VER}"
+  version "3.2.4-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
