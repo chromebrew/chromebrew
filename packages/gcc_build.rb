@@ -12,10 +12,10 @@ class Gcc_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b777260eb6f5b4e7983e7afd766aa21068d66d1645ffc0aac0c3f96b07102710',
-     armv7l: 'b777260eb6f5b4e7983e7afd766aa21068d66d1645ffc0aac0c3f96b07102710',
-       i686: 'f5acefa8008778a12b0e81b1ed952c1985653743306c50676a77fc2f16a23bae',
-     x86_64: '43b84c2811c9e7e6ce1465fa76554cc24e452fa7e31d9709b86a1a6e39a7366c'
+    aarch64: '23be50500a3c5798f8bd1dc9677d2f20454e499c073d93419bdb43558319f4c3',
+     armv7l: '23be50500a3c5798f8bd1dc9677d2f20454e499c073d93419bdb43558319f4c3',
+       i686: '241b57db6a445badecc423250b1df29f6443c580e425f736e6b83a986489ff2c',
+     x86_64: '820d2a79e15e48e96a0d0f240dc475f646bb47591edd79eaa25d249260e4924d'
   })
 
   conflicts_ok
@@ -329,17 +329,17 @@ class Gcc_build < Package
     installed_gcc.each do |gcc_pkg|
       puts "Removing previous version of gcc (#{gcc_pkg[:name]})...".yellow
 
-  depends_on 'binutils' => :build
-  depends_on 'dejagnu' => :build # for test
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
-  depends_on 'isl' # R
-  depends_on 'libssp' # L
-  depends_on 'mpc' # R
-  depends_on 'mpfr' # R
-  depends_on 'rust' => :build
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+      depends_on 'binutils' => :build
+      depends_on 'dejagnu' => :build # for test
+      depends_on 'glibc' # R
+      depends_on 'gmp' # R
+      depends_on 'isl' # R
+      depends_on 'libssp' # L
+      depends_on 'mpc' # R
+      depends_on 'mpfr' # R
+      depends_on 'rust' => :build
+      depends_on 'zlib' # R
+      depends_on 'zstd' # R
 
       # remove filelist and directorylist
       FileUtils.rm_f(["#{CREW_META_PATH}/#{gcc_pkg[:name]}.filelist",
