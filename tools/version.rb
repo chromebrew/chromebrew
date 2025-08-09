@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 1.4 (for Chromebrew)
+# version.rb version 1.5 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -18,7 +18,6 @@ end
 require 'fileutils'
 require 'json'
 require 'net/http'
-require 'ruby_libversion'
 require 'uri/http'
 
 crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
@@ -29,6 +28,9 @@ require File.join(crew_local_repo_root, 'lib/color')
 require File.join(crew_local_repo_root, 'lib/const')
 require File.join(crew_local_repo_root, 'lib/package')
 require File.join(crew_local_repo_root, 'lib/package_utils')
+require File.join(crew_local_repo_root, 'lib/require_gem')
+require_gem 'ruby-libversion', 'ruby_libversion'
+
 # Add >LOCAL< lib to LOAD_PATH
 $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 
@@ -211,7 +213,7 @@ if filelist.length.positive?
             bc_updated[pkg.name.to_sym] = $CHILD_STATUS.success?
           end
         end
-        if UPDATE_PACKAGE_FILES && versions_updated[pkg.name.to_sym]
+        if UPDATE_PACKAGE_FILES && !pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && versions_updated[pkg.name.to_sym]
           versions_updated[pkg.name.to_sym] = 'Updated.'
         else
           versions_updated[pkg.name.to_sym] = pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] ? 'Update manually.' : 'Outdated.'
