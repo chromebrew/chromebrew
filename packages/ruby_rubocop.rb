@@ -17,7 +17,6 @@ class Ruby_rubocop < RUBY
   depends_on 'ruby_lint_roller' # R
   depends_on 'ruby_parallel' # R
   depends_on 'ruby_parser' # R
-  depends_on 'ruby_parser' # R
   depends_on 'ruby_prism' # R
   depends_on 'ruby_rainbow' # R
   depends_on 'ruby_regexp_parser' # R
