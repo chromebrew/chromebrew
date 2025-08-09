@@ -24,6 +24,12 @@ jobs:
           ruby-version: '3.4.5'
       - name: Install Python pip
         run: sudo apt install -y python3-pip
+      - name: Setup Git.
+        id: git-setup
+        run: |
+          git config --global push.autoSetupRemote true
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
       - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package. https://github.com/repology/libversion/issues/35
         working-directory: ${{ runner.temp }}
         run: |
@@ -36,18 +42,12 @@ jobs:
           sudo make install
           sudo gem install ruby-libversion
           sudo gem install ptools
-      - name: Setup Git.
-        id: git-setup
-        run: |
-          git config --global push.autoSetupRemote true
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
       - name: Check for updates in pip packages.
         id: pip-update-checks
         run: |
           git pull
           git stash drop || true
-          LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -u "py_*"
+          LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -u "py3_*"
           for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
           do
             git stash pop || true
