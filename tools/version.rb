@@ -213,7 +213,7 @@ if filelist.length.positive?
             bc_updated[pkg.name.to_sym] = $CHILD_STATUS.success?
           end
         end
-        if UPDATE_PACKAGE_FILES && versions_updated[pkg.name.to_sym]
+        if UPDATE_PACKAGE_FILES && !pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && versions_updated[pkg.name.to_sym]
           versions_updated[pkg.name.to_sym] = 'Updated.'
         else
           versions_updated[pkg.name.to_sym] = pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] ? 'Update manually.' : 'Outdated.'

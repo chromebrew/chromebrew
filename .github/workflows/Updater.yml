@@ -41,12 +41,12 @@ jobs:
           make -j "$(nproc)"
           sudo make install
           sudo gem install ruby-libversion
-          sudo gem install ptools
       - name: Check for updates in pip packages.
         id: pip-update-checks
         run: |
           git pull
           git stash drop || true
+          echo "pwd is $(pwd)"
           LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -u "py3_*"
           for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
           do
