@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 1.4 (for Chromebrew)
+# version.rb version 1.5 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -18,7 +18,6 @@ end
 require 'fileutils'
 require 'json'
 require 'net/http'
-require 'ruby_libversion'
 require 'uri/http'
 
 crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
@@ -29,6 +28,9 @@ require File.join(crew_local_repo_root, 'lib/color')
 require File.join(crew_local_repo_root, 'lib/const')
 require File.join(crew_local_repo_root, 'lib/package')
 require File.join(crew_local_repo_root, 'lib/package_utils')
+require File.join(crew_local_repo_root, 'lib/require_gem')
+require_gem 'ruby-libversion', 'ruby_libversion'
+
 # Add >LOCAL< lib to LOAD_PATH
 $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 
@@ -197,26 +199,29 @@ if filelist.length.positive?
       versions_updated[pkg.name.to_sym] = 'Up to date.' if (Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) >= 0) && versions_updated[pkg.name.to_sym] != 'Not Found.'
       if Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) == -1
         if UPDATE_PACKAGE_FILES && !pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/]
-          sed_cmd = <<~SED
-            grep "^  version '#{PackageUtils.get_clean_version(pkg.version)}'" #{filename} && sed "s,^  version '#{PackageUtils.get_clean_version(pkg.version)}',  version '#{upstream_version.chomp}'," #{filename} > #{filename}.tmp && mv #{filename}.tmp #{filename}
-          SED
-          `#{sed_cmd}`
-          versions_updated[pkg.name.to_sym] = $CHILD_STATUS.success?
+          file = File.read(filename)
+          if file.sub!(PackageUtils.get_clean_version(pkg.version), upstream_version.chomp).nil?
+            versions_updated[pkg.name.to_sym] = false
+          else
+            File.write(filename, file)
+            versions_updated[pkg.name.to_sym] = true
+          end
 
-          binary_compression_sed_cmd = <<~BC_SED
-            sed "s,^  binary_compression 'tar.xz',  binary_compression 'tar.zst'," #{filename} > #{filename}.tmp && mv #{filename}.tmp #{filename}
-          BC_SED
           if pkg.binary_compression == 'tar.xz' && !pkg.no_zstd?
-            `#{binary_compression_sed_cmd}`
-            bc_updated[pkg.name.to_sym] = $CHILD_STATUS.success?
+            file = File.read(filename)
+            if file.sub!("binary_compression 'tar.xz'", "binary_compression 'tar.zst'").nil?
+              bc_updated[pkg.name.to_sym] = false
+            else
+              File.write(filename, file)
+              bc_updated[pkg.name.to_sym] = true
+            end
           end
         end
-        if UPDATE_PACKAGE_FILES && versions_updated[pkg.name.to_sym]
-          versions_updated[pkg.name.to_sym] = 'Updated.'
-        else
-          versions_updated[pkg.name.to_sym] = pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] ? 'Update manually.' : 'Outdated.'
-          FileUtils.rm_f "#{filename}.tmp"
-        end
+        versions_updated[pkg.name.to_sym] = if UPDATE_PACKAGE_FILES && !pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && versions_updated[pkg.name.to_sym]
+                                              'Updated.'
+                                            else
+                                              pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] ? 'Update manually.' : 'Outdated.'
+                                            end
       end
     end
     # puts PackageUtils.get_clean_version(pkg.version).ljust(status_field_length) + upstream_version unless OUTPUT_JSON
