@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version '15.1.0-69eb171' # Do not use @_ver here, it will break the installer.
+  version '15.2.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, libssp, and then binutils in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version

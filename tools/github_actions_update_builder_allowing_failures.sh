@@ -8,4 +8,5 @@ yes | crew upgrade || true
 source ~/.bashrc
 git config --global --add safe.directory /output
 export CREW_AGREE_TIMEOUT_SECONDS=1
+yes | crew reinstall ruby_rubocop
 tools/build_updated_packages.rb --skip --continue-after-failed-builds || exit 1
