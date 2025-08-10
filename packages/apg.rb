@@ -3,12 +3,12 @@ require 'package'
 class Apg < Package
   description 'APG (Automated Password Generator) is a toolset for random password generation.'
   homepage 'http://www.adel.nursat.kz/apg/'
-  version '2.2.3.dfsg.1'
+  version '2.3.0b'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://httpredir.debian.org/debian/pool/main/a/apg/apg_2.2.3.dfsg.1.orig.tar.gz'
   source_sha256 'c7e3c556426e2d5d2f599873a71100c5f6d14fa8784e0b1d879916784de801df'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '1e4391fe1edf715853f97bd551f1f9e8a35f562bfd12f3f1838256640e75068f',
