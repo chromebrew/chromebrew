@@ -3,11 +3,12 @@ require 'buildsystems/autotools'
 class Apg < Autotools
   description 'APG (Automated Password Generator) is a toolset for random password generation.'
   homepage 'https://github.com/wilx/apg'
-  version '2.3.0b'
+  version '2.3.0b-dcddc65'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/wilx/apg.git'
-  git_hashtag "v#{version}"
+  git_hashtag 'dcddc65648f8b71ba8b9a9c1946034badb4ae7f3'
+  # git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
