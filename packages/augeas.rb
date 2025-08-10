@@ -17,6 +17,8 @@ class Augeas < Package
      x86_64: 'fb85f457590f5b10d786e80b1a177f0942628438de38f64f7ae15856ee753b2c'
   })
 
+  depends_on 'gcc_lib' # R
+
   def self.build
     system './configure',
            "--prefix=#{CREW_PREFIX}",
