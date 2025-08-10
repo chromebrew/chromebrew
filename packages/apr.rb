@@ -17,7 +17,7 @@ class Apr < Autotools
      x86_64: 'c5f65c79ac2dc3942a024a42caafca2a8777f02bcafe23ad751de564de14c8d0'
   })
 
-  depends_on 'util_linux' # R
+  depends_on 'glibc' # R
 
   # https://bz.apache.org/bugzilla/show_bug.cgi?id=63439
   autotools_configure_options '--with-devrandom --without-sendfile --enable-layout=GNU'
