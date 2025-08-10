@@ -11,9 +11,9 @@ class Atop < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '98059c6a7a90ee971857736e08d800cabdc196e4e560b7dc4ffb15f012bd766e',
-     armv7l: '98059c6a7a90ee971857736e08d800cabdc196e4e560b7dc4ffb15f012bd766e',
-     x86_64: '65790ccd4e0f99e49c0eb770bbbe5a0a5eb74361105f1a764bea61d55de5ab49'
+    aarch64: 'e3fe61432a57a25854cd9ca11376a53fcd4d06cec021be8f19dc115c50d88ca0',
+     armv7l: 'e3fe61432a57a25854cd9ca11376a53fcd4d06cec021be8f19dc115c50d88ca0',
+     x86_64: 'a1e29ea81461c265548f2e71435d63c90165034221fd0cc7eaaf357fb337ee5f'
   })
 
   depends_on 'glib' # R
