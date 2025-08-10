@@ -3,12 +3,12 @@ require 'package'
 class Augeas < Package
   description 'Augeas is a configuration editing tool that parses native formats and transforms them into a tree.'
   homepage 'http://augeas.net/'
-  version '1.12.0'
+  version '1.14.1'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'http://download.augeas.net/augeas-1.12.0.tar.gz'
   source_sha256 '321942c9cc32185e2e9cb72d0a70eea106635b50269075aca6714e3ec282cb87'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '8c77e2c9e36dff045129f4e196b72051e7e085c612d43fe0f3f3f8d825c9d3ad',
