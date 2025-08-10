@@ -177,6 +177,7 @@ end
 
 # Some packges need manual adjustments of URLS for different versions.
 excluded_pkgs = Set[
+  { pkg_name: 'asdf', comments: 'Does not work with anitya.' },
   { pkg_name: 'py3_atspi', comments: 'Does not work with pip.' },
   { pkg_name: 'cf', comments: 'Uses a dynamic source package URL.' },
   { pkg_name: 'cursor', comments: 'Uses a dynamic source package URL.' },

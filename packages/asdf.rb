@@ -3,7 +3,7 @@ require 'package'
 class Asdf < Package
   description 'Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more'
   homepage 'https://asdf-vm.com/'
-  version '4.3.0'
+  version '0.18.0'
   license 'MIT'
   compatibility 'i686 x86_64'
   source_url({
