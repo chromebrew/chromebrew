@@ -6,8 +6,8 @@ class Augeas < Autotools
   version '1.14.1'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "http://download.augeas.net/augeas-#{version}.tar.gz"
-  source_sha256 '321942c9cc32185e2e9cb72d0a70eea106635b50269075aca6714e3ec282cb87'
+  source_url 'https://github.com/hercules-team/augeas.git'
+  git_hashtag "release-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
