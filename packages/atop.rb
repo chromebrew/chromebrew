@@ -17,6 +17,7 @@ class Atop < Package
   })
 
   depends_on 'glib' # R
+  depends_on 'glibc' # R
 
   def self.patch
     system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' Makefile"
