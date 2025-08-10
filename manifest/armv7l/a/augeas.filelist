@@ -1,5 +1,6 @@
 /usr/local/bin/augmatch
 /usr/local/bin/augparse
+/usr/local/bin/augprint
 /usr/local/bin/augtool
 /usr/local/bin/fadot
 /usr/local/include/augeas.h
@@ -8,7 +9,7 @@
 /usr/local/lib/libaugeas.la
 /usr/local/lib/libaugeas.so
 /usr/local/lib/libaugeas.so.0
-/usr/local/lib/libaugeas.so.0.24.2
+/usr/local/lib/libaugeas.so.0.25.0
 /usr/local/lib/libfa.a
 /usr/local/lib/libfa.la
 /usr/local/lib/libfa.so
@@ -28,7 +29,9 @@
 /usr/local/share/augeas/lenses/dist/aptconf.aug
 /usr/local/share/augeas/lenses/dist/aptpreferences.aug
 /usr/local/share/augeas/lenses/dist/aptsources.aug
+/usr/local/share/augeas/lenses/dist/authinfo2.aug
 /usr/local/share/augeas/lenses/dist/authorized_keys.aug
+/usr/local/share/augeas/lenses/dist/authselectpam.aug
 /usr/local/share/augeas/lenses/dist/automaster.aug
 /usr/local/share/augeas/lenses/dist/automounter.aug
 /usr/local/share/augeas/lenses/dist/avahi.aug
@@ -44,8 +47,10 @@
 /usr/local/share/augeas/lenses/dist/channels.aug
 /usr/local/share/augeas/lenses/dist/chrony.aug
 /usr/local/share/augeas/lenses/dist/clamav.aug
+/usr/local/share/augeas/lenses/dist/cmdline.aug
 /usr/local/share/augeas/lenses/dist/cobblermodules.aug
 /usr/local/share/augeas/lenses/dist/cobblersettings.aug
+/usr/local/share/augeas/lenses/dist/cockpit.aug
 /usr/local/share/augeas/lenses/dist/collectd.aug
 /usr/local/share/augeas/lenses/dist/cpanel.aug
 /usr/local/share/augeas/lenses/dist/cron.aug
@@ -70,6 +75,7 @@
 /usr/local/share/augeas/lenses/dist/ethers.aug
 /usr/local/share/augeas/lenses/dist/exports.aug
 /usr/local/share/augeas/lenses/dist/fai_diskconfig.aug
+/usr/local/share/augeas/lenses/dist/fail2ban.aug
 /usr/local/share/augeas/lenses/dist/fonts.aug
 /usr/local/share/augeas/lenses/dist/fstab.aug
 /usr/local/share/augeas/lenses/dist/fuse.aug
@@ -201,6 +207,7 @@
 /usr/local/share/augeas/lenses/dist/smbusers.aug
 /usr/local/share/augeas/lenses/dist/solaris_system.aug
 /usr/local/share/augeas/lenses/dist/soma.aug
+/usr/local/share/augeas/lenses/dist/sos.aug
 /usr/local/share/augeas/lenses/dist/spacevars.aug
 /usr/local/share/augeas/lenses/dist/splunk.aug
 /usr/local/share/augeas/lenses/dist/squid.aug
@@ -231,7 +238,9 @@
 /usr/local/share/augeas/lenses/dist/tests/test_aptconf.aug
 /usr/local/share/augeas/lenses/dist/tests/test_aptpreferences.aug
 /usr/local/share/augeas/lenses/dist/tests/test_aptsources.aug
+/usr/local/share/augeas/lenses/dist/tests/test_authinfo2.aug
 /usr/local/share/augeas/lenses/dist/tests/test_authorized_keys.aug
+/usr/local/share/augeas/lenses/dist/tests/test_authselectpam.aug
 /usr/local/share/augeas/lenses/dist/tests/test_automaster.aug
 /usr/local/share/augeas/lenses/dist/tests/test_automounter.aug
 /usr/local/share/augeas/lenses/dist/tests/test_avahi.aug
@@ -247,8 +256,10 @@
 /usr/local/share/augeas/lenses/dist/tests/test_channels.aug
 /usr/local/share/augeas/lenses/dist/tests/test_chrony.aug
 /usr/local/share/augeas/lenses/dist/tests/test_clamav.aug
+/usr/local/share/augeas/lenses/dist/tests/test_cmdline.aug
 /usr/local/share/augeas/lenses/dist/tests/test_cobblermodules.aug
 /usr/local/share/augeas/lenses/dist/tests/test_cobblersettings.aug
+/usr/local/share/augeas/lenses/dist/tests/test_cockpit.aug
 /usr/local/share/augeas/lenses/dist/tests/test_collectd.aug
 /usr/local/share/augeas/lenses/dist/tests/test_cpanel.aug
 /usr/local/share/augeas/lenses/dist/tests/test_cron.aug
@@ -273,6 +284,7 @@
 /usr/local/share/augeas/lenses/dist/tests/test_ethers.aug
 /usr/local/share/augeas/lenses/dist/tests/test_exports.aug
 /usr/local/share/augeas/lenses/dist/tests/test_fai_diskconfig.aug
+/usr/local/share/augeas/lenses/dist/tests/test_fail2ban.aug
 /usr/local/share/augeas/lenses/dist/tests/test_fonts.aug
 /usr/local/share/augeas/lenses/dist/tests/test_fstab.aug
 /usr/local/share/augeas/lenses/dist/tests/test_fuse.aug
@@ -404,6 +416,7 @@
 /usr/local/share/augeas/lenses/dist/tests/test_smbusers.aug
 /usr/local/share/augeas/lenses/dist/tests/test_solaris_system.aug
 /usr/local/share/augeas/lenses/dist/tests/test_soma.aug
+/usr/local/share/augeas/lenses/dist/tests/test_sos.aug
 /usr/local/share/augeas/lenses/dist/tests/test_spacevars.aug
 /usr/local/share/augeas/lenses/dist/tests/test_splunk.aug
 /usr/local/share/augeas/lenses/dist/tests/test_squid.aug
@@ -422,6 +435,7 @@
 /usr/local/share/augeas/lenses/dist/tests/test_systemd.aug
 /usr/local/share/augeas/lenses/dist/tests/test_termcap.aug
 /usr/local/share/augeas/lenses/dist/tests/test_thttpd.aug
+/usr/local/share/augeas/lenses/dist/tests/test_tinc.aug
 /usr/local/share/augeas/lenses/dist/tests/test_tmpfiles.aug
 /usr/local/share/augeas/lenses/dist/tests/test_toml.aug
 /usr/local/share/augeas/lenses/dist/tests/test_trapperkeeper.aug
@@ -443,6 +457,7 @@
 /usr/local/share/augeas/lenses/dist/tests/test_yaml.aug
 /usr/local/share/augeas/lenses/dist/tests/test_yum.aug
 /usr/local/share/augeas/lenses/dist/thttpd.aug
+/usr/local/share/augeas/lenses/dist/tinc.aug
 /usr/local/share/augeas/lenses/dist/tmpfiles.aug
 /usr/local/share/augeas/lenses/dist/toml.aug
 /usr/local/share/augeas/lenses/dist/trapperkeeper.aug
@@ -463,8 +478,12 @@
 /usr/local/share/augeas/lenses/dist/xymon_alerting.aug
 /usr/local/share/augeas/lenses/dist/yaml.aug
 /usr/local/share/augeas/lenses/dist/yum.aug
+/usr/local/share/bash-completion/completions/augmatch
+/usr/local/share/bash-completion/completions/augprint
+/usr/local/share/bash-completion/completions/augtool
 /usr/local/share/man/man1/augmatch.1.zst
 /usr/local/share/man/man1/augparse.1.zst
+/usr/local/share/man/man1/augprint.1.zst
 /usr/local/share/man/man1/augtool.1.zst
 /usr/local/share/vim/vimfiles/ftdetect/augeas.vim
 /usr/local/share/vim/vimfiles/syntax/augeas.vim
