@@ -3,7 +3,7 @@ require 'package'
 class Atop < Package
   description 'ASCII full-screen performance monitor'
   homepage 'https://www.atoptool.nl/'
-  version '2.10.0'
+  version '2.12.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.atoptool.nl/download/atop-2.10.0.tar.gz'
