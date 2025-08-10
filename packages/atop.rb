@@ -3,7 +3,7 @@ require 'package'
 class Atop < Package
   description 'ASCII full-screen performance monitor'
   homepage 'https://www.atoptool.nl/'
-  version '2.10.0'
+  version '2.12.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.atoptool.nl/download/atop-2.10.0.tar.gz'
@@ -11,10 +11,12 @@ class Atop < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '99489c26c22d314b131765b7765d638f9ca0281dc012621714df2bdf053f49ab',
-     armv7l: '99489c26c22d314b131765b7765d638f9ca0281dc012621714df2bdf053f49ab',
-     x86_64: 'e043a73b634257e9401be802a1e583e75e1242c971bc83fc81d90dc16c0fcb0c'
+    aarch64: '98059c6a7a90ee971857736e08d800cabdc196e4e560b7dc4ffb15f012bd766e',
+     armv7l: '98059c6a7a90ee971857736e08d800cabdc196e4e560b7dc4ffb15f012bd766e',
+     x86_64: '65790ccd4e0f99e49c0eb770bbbe5a0a5eb74361105f1a764bea61d55de5ab49'
   })
+
+  depends_on 'glib' # R
 
   def self.patch
     system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' Makefile"
