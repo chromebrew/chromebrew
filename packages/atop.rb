@@ -16,6 +16,8 @@ class Atop < Package
      x86_64: 'e043a73b634257e9401be802a1e583e75e1242c971bc83fc81d90dc16c0fcb0c'
   })
 
+  depends_on 'glib' # R
+
   def self.patch
     system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' Makefile"
     system "sed -i 's,/usr/sbin,#{CREW_PREFIX}/sbin,g' Makefile"
