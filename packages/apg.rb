@@ -11,10 +11,10 @@ class Apg < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1e4391fe1edf715853f97bd551f1f9e8a35f562bfd12f3f1838256640e75068f',
-     armv7l: '1e4391fe1edf715853f97bd551f1f9e8a35f562bfd12f3f1838256640e75068f',
-       i686: '6a299f28d79d33db6a2b1794e7fbfd27cbc48f4c7bb18a683dcf18c019c28628',
-     x86_64: '7ddeb08e8633166b18c147a8c85558badad8626a1e97ff6d6383c6056c0199d2'
+    aarch64: '89bcf52ad78e2ee3853ef09f738cd3c5b9ba3345741a66ed28d64ef994dcf1c7',
+     armv7l: '89bcf52ad78e2ee3853ef09f738cd3c5b9ba3345741a66ed28d64ef994dcf1c7',
+       i686: '2607cbceedf2806bc73ec039fe27d9d6551a8b18d844487be4b5116ba3cb1d5e',
+     x86_64: 'dd6c364cd1e9a7d7b5ce31be871315dcd2d014809235b916ad6cfc78734699e3'
   })
 
   def self.patch
