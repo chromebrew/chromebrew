@@ -1,4 +1,3 @@
-/home/chronos/user/.config/audacious/config
 /usr/local/bin/audacious
 /usr/local/include/audacious/audtag.h
 /usr/local/include/libaudcore/audio.h
@@ -100,5 +99,5 @@
 /usr/local/share/locale/uk/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/audacious.mo
-/usr/local/share/man/man1/audacious.1.gz
-/usr/local/share/man/man1/audtool.1.gz
+/usr/local/share/man/man1/audacious.1.zst
+/usr/local/share/man/man1/audtool.1.zst
