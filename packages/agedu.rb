@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Agedu < CMake
   description 'Unix utility for tracking down wasted disk space'
   homepage 'https://www.chiark.greenend.org.uk/~sgtatham/agedu/'
-  version '20241013'
+  version '20241013.3622eda'
   license 'Copyright 2008 Simon Tatham. All rights reserved.'
   compatibility 'all'
   source_url 'https://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-20241013.3622eda.tar.gz'
