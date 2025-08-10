@@ -18,6 +18,9 @@ class Apg < Autotools
      x86_64: 'dd6c364cd1e9a7d7b5ce31be871315dcd2d014809235b916ad6cfc78734699e3'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'libxcrypt' # R
+
   def self.prebuild
     system 'autoreconf -fiv'
   end
