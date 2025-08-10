@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Agedu < CMake
   description 'Unix utility for tracking down wasted disk space'
   homepage 'https://www.chiark.greenend.org.uk/~sgtatham/agedu/'
-  version '20241013'
+  version '20241013.3622eda'
   license 'Copyright 2008 Simon Tatham. All rights reserved.'
   compatibility 'all'
   source_url 'https://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-20241013.3622eda.tar.gz'
@@ -11,10 +11,10 @@ class Agedu < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ca67a3afee10201611b013ac9e2c149afcf654809e2273a9f155c530867a6ffd',
-     armv7l: 'ca67a3afee10201611b013ac9e2c149afcf654809e2273a9f155c530867a6ffd',
-       i686: 'c153c07d345c234b1b2cb80fef13e0ba7795a617e51668a84c5e02ac0e8afe13',
-     x86_64: 'f7fae33f4232330696a95452a86f2f99b9ea10ba2688589d4e0d895610a4ae85'
+    aarch64: '44559363e302ae40f141674da6d01f7262b14b2dc867ea2cf15f72323faeb1e7',
+     armv7l: '44559363e302ae40f141674da6d01f7262b14b2dc867ea2cf15f72323faeb1e7',
+       i686: '8be416e1b0168df16b13bdb005ab89ba1d4f32cf6e0c466c5123556e71e2c6d2',
+     x86_64: '4d85796caa466664eaa35b40d1fae9e546e81ab63faff3b68f648a6f622a8397'
   })
 
   depends_on 'glibc' # R
