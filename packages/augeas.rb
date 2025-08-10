@@ -1,12 +1,12 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Augeas < Package
+class Augeas < Autotools
   description 'Augeas is a configuration editing tool that parses native formats and transforms them into a tree.'
   homepage 'http://augeas.net/'
   version '1.14.1'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'http://download.augeas.net/augeas-1.12.0.tar.gz'
+  source_url "http://download.augeas.net/augeas-#{version}.tar.gz"
   source_sha256 '321942c9cc32185e2e9cb72d0a70eea106635b50269075aca6714e3ec282cb87'
   binary_compression 'tar.zst'
 
@@ -18,15 +18,4 @@ class Augeas < Package
   })
 
   depends_on 'gcc_lib' # R
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
