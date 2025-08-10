@@ -3,12 +3,12 @@ require 'package'
 class Armadillo < Package
   description 'Armadillo is a high quality linear algebra library (matrix maths) for the C++ language, aiming towards a good balance between speed and ease of use'
   homepage 'https://arma.sourceforge.net/'
-  version '9.600.5'
+  version '14.6.2'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/arma/armadillo-9.600.5.tar.xz'
   source_sha256 'dd9cd664282f2c3483af194ceedc2fba8559e0d20f8782c640fd6f3ac7cac2bf'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'cabc00c9184da1185c0fcbe834c1447e0e31a9ff34b9c2ede39f7419b95768cc',
