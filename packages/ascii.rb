@@ -6,7 +6,7 @@ class Ascii < Package
   version '3.30'
   license 'BSD'
   compatibility 'all'
-  source_url 'http://www.catb.org/~esr/ascii/ascii-3.18.tar.gz'
+  source_url "http://www.catb.org/~esr/ascii/ascii-#{version}.tar.gz"
   source_sha256 '728422d5f4da61a37a17b4364d06708e543297de0a5f70305243236d80df072d'
   binary_compression 'tar.zst'
 
