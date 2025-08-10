@@ -17,6 +17,8 @@ class Ascii < Package
      x86_64: '4107a21b427fd0a090d73a89d06ace01d28d68ae84d56d3c3f159633304f1b22'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     system 'make'
   end
