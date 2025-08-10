@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class A2ps < Autotools
   description 'GNU a2ps is an Any to PostScript filter.'
   homepage 'https://www.gnu.org/software/a2ps/'
-  version '4.15.6'
+  version '4.15.7'
   license 'GPL-3'
   # Builds are currently broken on i686: https://savannah.gnu.org/bugs/?65903
   compatibility 'aarch64 armv7l x86_64'
