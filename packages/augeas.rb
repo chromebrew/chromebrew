@@ -11,13 +11,12 @@ class Augeas < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'deb5ee9ae3d8410b88942f8a0a2845c7a69772bf8a04f10554b07fe4ede8378c',
-     armv7l: 'deb5ee9ae3d8410b88942f8a0a2845c7a69772bf8a04f10554b07fe4ede8378c',
-       i686: 'd026cbb44eb81de1db2ef5fc5fb7f048e528144e87c9d6371fefce6714221cf5',
-     x86_64: '5fdc33f52d54d7a50a3b4b72e8e65232b062b783a160261e9f32234474e02c97'
+    aarch64: 'e9dd7440cce4c14974d16067391c94e1843e95f97f365417a072f67f0b8942c2',
+     armv7l: 'e9dd7440cce4c14974d16067391c94e1843e95f97f365417a072f67f0b8942c2',
+       i686: 'b96ac5006edaf4bf7798780e8d79d2dffeb65e72776f7122b41d7df49ba03672',
+     x86_64: 'aec53220195d0b711d890c282c4babcc2ee546da79858efa815186a23bfee61c'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-
 end
