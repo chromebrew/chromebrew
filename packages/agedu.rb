@@ -6,7 +6,7 @@ class Agedu < CMake
   version '20241013.3622eda'
   license 'Copyright 2008 Simon Tatham. All rights reserved.'
   compatibility 'all'
-  source_url 'https://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-20241013.3622eda.tar.gz'
+  source_url "https://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-#{version}.tar.gz"
   source_sha256 '3f77cb2e4dd64c100f7a7b0789a6c06cc16f23e7fe78c1451f5020dd823cf2f8'
   binary_compression 'tar.zst'
 
