@@ -463,8 +463,8 @@
 /usr/local/share/augeas/lenses/dist/xymon_alerting.aug
 /usr/local/share/augeas/lenses/dist/yaml.aug
 /usr/local/share/augeas/lenses/dist/yum.aug
-/usr/local/share/man/man1/augmatch.1.gz
-/usr/local/share/man/man1/augparse.1.gz
-/usr/local/share/man/man1/augtool.1.gz
+/usr/local/share/man/man1/augmatch.1.zst
+/usr/local/share/man/man1/augparse.1.zst
+/usr/local/share/man/man1/augtool.1.zst
 /usr/local/share/vim/vimfiles/ftdetect/augeas.vim
 /usr/local/share/vim/vimfiles/syntax/augeas.vim
