@@ -17,4 +17,8 @@ class Apg < Autotools
        i686: '2607cbceedf2806bc73ec039fe27d9d6551a8b18d844487be4b5116ba3cb1d5e',
      x86_64: 'dd6c364cd1e9a7d7b5ce31be871315dcd2d014809235b916ad6cfc78734699e3'
   })
+
+  def self.prebuild
+    system 'autoreconf -fiv'
+  end
 end
