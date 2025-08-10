@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Apr < Autotools
   description 'The mission of the Apache Portable Runtime (APR) project is to create and maintain software libraries that provide a predictable and consistent interface to underlying platform-specific implementations.  APR is the base portability library.'
   homepage 'https://apr.apache.org/'
-  version '1.7.5'
+  version '1.7.6'
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://dlcdn.apache.org/apr/apr-#{version}.tar.bz2"
