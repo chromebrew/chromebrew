@@ -1,0 +1,72 @@
+---
+name: Generate Updates PRs on Demand
+run-name: Generate Updates PRs on Demand using ${{ inputs.version_cmd_input }}
+on:
+  workflow_dispatch:
+    inputs:
+      version_cmd_input:
+        description: "Input to version.rb command"
+        required: true
+env:
+  GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}  # setting GH_TOKEN for the entire workflow
+permissions:                    # Global permissions configuration starts here
+  actions: write
+  contents: write
+  packages: write
+  pull-requests: write          # 'write' access to pull requests
+jobs:
+  update-check:
+    if: ${{ github.repository_owner == 'chromebrew' }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.5'
+      - name: Install Python pip
+        run: sudo apt install -y python3-pip
+      - name: Setup Git.
+        id: git-setup
+        run: |
+          git config --global push.autoSetupRemote true
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+      - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package. https://github.com/repology/libversion/issues/35
+        working-directory: ${{ runner.temp }}
+        run: |
+          git clone --depth 1 -b 3.0.3 https://github.com/repology/libversion
+          cd libversion
+          mkdir build
+          cd build
+          cmake ..
+          make -j "$(nproc)"
+          sudo make install
+          sudo gem install ruby-libversion
+      - name: Check for updates.
+        id: update-checks
+        run: |
+          git pull
+          git stash drop || true
+          echo "pwd is $(pwd)"
+          LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -u "${{ inputs.version_cmd_input }}"
+          for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
+          do
+            git stash pop || true
+            git add $i
+            pkg=${i%.rb}
+            pkg=${pkg#packages/}
+            pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j ${pkg} | jq -r '.[]|.version')"
+            if [[ -z "$pkg_version" ]]; then
+              branch_tag="$(date -u +%F-%H-%M)"
+            else
+              branch_tag="${pkg_version}"
+            fi
+            git checkout -b "${pkg}-${branch_tag}" || git checkout "${pkg}-${branch_tag}"
+            git commit -m "Add unbuilt ${pkg} to ${pkg}-${branch_tag}"
+            git push
+            gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${pkg}-${branch_tag}"
+            git stash || true
+            git checkout master
+          done
