@@ -11,10 +11,10 @@ class Augeas < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8c77e2c9e36dff045129f4e196b72051e7e085c612d43fe0f3f3f8d825c9d3ad',
-     armv7l: '8c77e2c9e36dff045129f4e196b72051e7e085c612d43fe0f3f3f8d825c9d3ad',
-       i686: 'ef2cc58fb25c5273ba50adfbbf6c577b2c13b79ecb325da15367965847dfba0d',
-     x86_64: 'fb85f457590f5b10d786e80b1a177f0942628438de38f64f7ae15856ee753b2c'
+    aarch64: 'deb5ee9ae3d8410b88942f8a0a2845c7a69772bf8a04f10554b07fe4ede8378c',
+     armv7l: 'deb5ee9ae3d8410b88942f8a0a2845c7a69772bf8a04f10554b07fe4ede8378c',
+       i686: 'd026cbb44eb81de1db2ef5fc5fb7f048e528144e87c9d6371fefce6714221cf5',
+     x86_64: '5fdc33f52d54d7a50a3b4b72e8e65232b062b783a160261e9f32234474e02c97'
   })
 
   depends_on 'gcc_lib' # R
