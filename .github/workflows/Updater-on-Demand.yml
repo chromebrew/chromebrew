@@ -1,6 +1,6 @@
 ---
 name: Generate Updates PRs on Demand
-run-name: Generate Updates PRs on Demand using ${{ inputs.version_cmd_input }}
+run-name: Generating Updates PRs on Demand using ${{ inputs.version_cmd_input }}
 on:
   workflow_dispatch:
     inputs:
@@ -63,10 +63,18 @@ jobs:
             else
               branch_tag="${pkg_version}"
             fi
-            git checkout -b "${pkg}-${branch_tag}" || git checkout "${pkg}-${branch_tag}"
-            git commit -m "Add unbuilt ${pkg} to ${pkg}-${branch_tag}"
+            export updater_branch="updater-${pkg}-${branch_tag}"
+            if git checkout -b "${updater_branch}"; then
+              echo "${updater_branch} branch created."
+            else
+              echo "Updating & rebasing existing ${updater_branch} branch."
+              git checkout "${updater_branch}"
+              git pull --rebase origin master
+              git push -f
+            fi
+            git commit -m "Add unbuilt ${pkg} to ${updater_branch}"
             git push
-            gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${pkg}-${branch_tag}"
+            gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${updater_branch}"
             git stash || true
             git checkout master
           done
