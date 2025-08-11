@@ -23,4 +23,8 @@ class A2ps < Autotools
   depends_on 'py3_pspdfutils'
 
   run_tests
+
+  def self.prebuild
+    system 'autoreconf -fiv'
+  end
 end
