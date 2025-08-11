@@ -23,6 +23,7 @@ class A2ps < Autotools
   depends_on 'gnupg' => :build
   depends_on 'libpaper'
   depends_on 'py3_pspdfutils'
+  depends_on 'rsync' => :build
 
   run_tests
 
