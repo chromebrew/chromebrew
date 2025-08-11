@@ -6,8 +6,8 @@ class Apr < Autotools
   version '1.7.6'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/apache/apr.git'
-  git_hashtag version
+  source_url "https://dlcdn.apache.org/apr/apr-#{version}.tar.bz2"
+  source_sha256 'cd0f5d52b9ab1704c72160c5ee3ed5d3d4ca2df4a7f8ab564e3cb352b67232f2'
   binary_compression 'tar.zst'
 
   binary_sha256({
