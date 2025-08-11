@@ -45,7 +45,7 @@
 /usr/local/lib64/libapr.la
 /usr/local/lib64/libapr.so
 /usr/local/lib64/libapr.so.0
-/usr/local/lib64/libapr.so.0.7.5
+/usr/local/lib64/libapr.so.0.7.6
 /usr/local/lib64/pkgconfig/apr-1.pc
 /usr/local/share/apache2/build/apr_rules.mk
 /usr/local/share/apache2/build/libtool
