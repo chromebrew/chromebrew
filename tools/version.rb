@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 1.6 (for Chromebrew)
+# version.rb version 1.7 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -142,12 +142,12 @@ end
 
 if filelist.length.positive?
   max_pkg_name_length = File.basename(filelist.max_by(&:length)).length - 3
-  package_field_length = [max_pkg_name_length, 7].max + 4
-  status_field_length = 20
-  version_field_length = 16
+  package_field_length = [max_pkg_name_length, 7].max + 2
+  status_field_length = 18
+  version_field_length = 14
 
-  puts "#{'Package'.ljust(package_field_length)}#{'Status'.ljust(status_field_length)}#{'Current'.ljust(version_field_length)}Upstream" unless OUTPUT_JSON
-  puts "#{'-------'.ljust(package_field_length)}#{'------'.ljust(status_field_length)}#{'-------'.ljust(version_field_length)}--------" unless OUTPUT_JSON
+  puts "#{'Package'.ljust(package_field_length)}#{'Status'.ljust(status_field_length)}#{'Current'.ljust(version_field_length)}#{'Upstream'.ljust(version_field_length)}Auto-Updatable" unless OUTPUT_JSON
+  puts "#{'-------'.ljust(package_field_length)}#{'------'.ljust(status_field_length)}#{'-------'.ljust(version_field_length)}#{'--------'.ljust(version_field_length)}--------------" unless OUTPUT_JSON
   filelist.each do |filename|
     pkg = Package.load_package(filename)
     # Mark package file as updatable (i.e., the version field can be
@@ -236,30 +236,35 @@ if filelist.length.positive?
     end
     # puts PackageUtils.get_clean_version(pkg.version).ljust(status_field_length) + upstream_version unless OUTPUT_JSON
     version_status_string = ''.ljust(status_field_length)
+    updatable_string = nil
     case versions_updated[pkg.name.to_sym]
     when 'Fake'
       version_status_string = 'Fake'.ljust(status_field_length).lightred
       upstream_version = ''
+      updatable_string = 'false'.red
     when 'Not Found.'
       version_status_string = 'Not Found.'.ljust(status_field_length).lightred
       upstream_version = ''
+      updatable_string = 'false'.red
     when 'Outdated.'
       version_status_string = 'Outdated.'.ljust(status_field_length).yellow
     when 'Update manually.'
-      version_status_string = 'Update manually.'.ljust(status_field_length).red
+      version_status_string = 'Update manually.'.ljust(status_field_length).purple
+      updatable_string = 'false'.purple
     when 'Updated.'
       version_status_string = 'Updated.'.ljust(status_field_length).blue
     when 'Up to date.'
       version_status_string = 'Up to date.'.ljust(status_field_length).lightgreen
     end
+    updatable_string = (updatable_pkg[pkg.name.to_sym] ? 'true'.lightgreen : 'false'.lightred) if updatable_string.nil?
     cleaned_pkg_version = PackageUtils.get_clean_version(pkg.version)
     versions.push(package: pkg.name, update_status: versions_updated[pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version.chomp)
 
-    version_line_string[pkg.name.to_sym] = "#{pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version}\n"
+    version_line_string[pkg.name.to_sym] = "#{pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.chomp.ljust(version_field_length)}#{updatable_string}\n"
     print version_line_string[pkg.name.to_sym] unless OUTPUT_JSON
 
-    print "failed sed cmd: #{sed_cmd}".ljust(sed_cmd.length).yellow if !OUTPUT_JSON && (versions_updated[pkg.name.to_sym].to_s == 'false')
-    print "failed sed cmd: #{binary_compression_sed_cmd}".ljust(binary_compression_sed_cmd.length).yellow if !OUTPUT_JSON && (bc_updated[pkg.name.to_sym].to_s == 'false')
+    print "Failed to update version in #{pkg.name} to #{upstream_version.chomp}".yellow if !OUTPUT_JSON && (versions_updated[pkg.name.to_sym].to_s == 'false')
+    print "Failed to update binary_compression in #{pkg.name}".yellow if !OUTPUT_JSON && (bc_updated[pkg.name.to_sym].to_s == 'false')
   end
   puts versions.to_json if OUTPUT_JSON
 end
