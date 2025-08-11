@@ -11,13 +11,13 @@ class Atomicparsley < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '55d6f7bf30bd0e178dd9d117c08b6b5c6f6965808f2e483256ab100a0823b4ae',
-     armv7l: '55d6f7bf30bd0e178dd9d117c08b6b5c6f6965808f2e483256ab100a0823b4ae',
-       i686: '26281255b16153c6fa663cd6f7bea0dc56e11e06bbf5e44396677932937c226c',
-     x86_64: '9dc15a38e01fd81e25e515ff69ac7a89fb07ff9771ff85e54e4da29adc523ba8'
+    aarch64: '98bb6f0ae44ce6b31a50f61192745b775201de9bccdaadf19c449779e9ebf559',
+     armv7l: '98bb6f0ae44ce6b31a50f61192745b775201de9bccdaadf19c449779e9ebf559',
+       i686: '81af4eadadd00e38943bbfc33aac035b5e48ae1b59e6f3e91890cfb5bfd788d9',
+     x86_64: '47f74b668693dcb2794b093aeda17fd90300ab4647bebab871e3e48835b7694a'
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R  depends_on 'zlib'
-
+  depends_on 'glibc' # R
+  depends_on 'zlib' # R
 end
