@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Gettext < Autotools
   description 'GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.'
   homepage 'https://gnu.org/s/gettext/'
-  version "0.26-#{CREW_ICU_VER}"
+  version "0.26"
   license 'GPL-3+ and LGPL-2.1+'
   compatibility 'all'
   git_hashtag "v#{version.split('-')[0]}"
@@ -28,8 +28,6 @@ class Gettext < Autotools
   depends_on 'ncurses' # R
   depends_on 'openjdk8' => :build
   depends_on 'wget2' => :build
-
-  # git_fetchtags
 
   autotools_configure_options '--disable-static \
     --enable-shared \
