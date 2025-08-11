@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Armadillo < Package
+class Armadillo < CMake
   description 'Armadillo is a high quality linear algebra library (matrix maths) for the C++ language, aiming towards a good balance between speed and ease of use'
   homepage 'https://arma.sourceforge.net/'
   version '14.6.2'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/arma/armadillo-9.600.5.tar.xz'
-  source_sha256 'dd9cd664282f2c3483af194ceedc2fba8559e0d20f8782c640fd6f3ac7cac2bf'
+  source_url 'https://gitlab.com/conradsnicta/armadillo-code.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -21,19 +21,5 @@ class Armadillo < Package
   depends_on 'hdf5'
   depends_on 'superlu'
 
-  def self.build
-    suffix = ''
-    suffix = '64' if ARCH == 'x86_64'
-    system 'cmake',
-           '-DCMAKE_BUILD_TYPE=Release',
-           "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-           "-DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB}",
-           "-DARPACK_LIBRARY=#{CREW_LIB_PREFIX}/libarpack#{suffix}.so",
-           '.'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  cmake_options "-DARPACK_LIBRARY=#{CREW_LIB_PREFIX}/libarpack#{'64' if ARCH == 'x86_64'}.so"
 end
