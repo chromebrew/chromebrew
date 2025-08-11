@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Gettext < Autotools
   description 'GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.'
   homepage 'https://gnu.org/s/gettext/'
-  version "0.26"
+  version '0.26'
   license 'GPL-3+ and LGPL-2.1+'
   compatibility 'all'
   git_hashtag "v#{version.split('-')[0]}"
@@ -12,10 +12,10 @@ class Gettext < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd78311d4896db474a7ca61476fb173f7b614bfc50107f3090e97d6f5c29227aa',
-     armv7l: 'd78311d4896db474a7ca61476fb173f7b614bfc50107f3090e97d6f5c29227aa',
-       i686: '04a7d7871ba482f43cc46375f5ed2683d33c33538b64932ebb6076969c27564d',
-     x86_64: 'a16897bb38461517b9fe8faf0e895e604f998f17efd364ddbf44c11707bd2dd4'
+    aarch64: 'b70f7d97866657b50e5d85c9f48d620b36730ee5f187684a73be7f812e03427e',
+     armv7l: 'b70f7d97866657b50e5d85c9f48d620b36730ee5f187684a73be7f812e03427e',
+       i686: 'f9af1063d68f3c0bb4c6ec8232d7eea24c586c4807babe12b62c0deaf5b099d1',
+     x86_64: '10d1fadbfb2290846aa28e478efcc5dac4d132d9a0e4a9b563439e653fd794d4'
   })
 
   depends_on 'acl' # R
