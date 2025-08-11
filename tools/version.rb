@@ -241,22 +241,22 @@ if filelist.length.positive?
     when 'Fake'
       version_status_string = 'Fake'.ljust(status_field_length).lightred
       upstream_version = ''
-      updatable_string = 'false'.red
+      updatable_string = 'No'.red
     when 'Not Found.'
       version_status_string = 'Not Found.'.ljust(status_field_length).lightred
       upstream_version = ''
-      updatable_string = 'false'.red
+      updatable_string = 'No'.red
     when 'Outdated.'
       version_status_string = 'Outdated.'.ljust(status_field_length).yellow
     when 'Update manually.'
       version_status_string = 'Update manually.'.ljust(status_field_length).purple
-      updatable_string = 'false'.purple
+      updatable_string = 'No'.purple
     when 'Updated.'
       version_status_string = 'Updated.'.ljust(status_field_length).blue
     when 'Up to date.'
       version_status_string = 'Up to date.'.ljust(status_field_length).lightgreen
     end
-    updatable_string = (updatable_pkg[pkg.name.to_sym] ? 'true'.lightgreen : 'false'.lightred) if updatable_string.nil?
+    updatable_string = (updatable_pkg[pkg.name.to_sym] ? 'Yes'.lightgreen : 'No'.lightred) if updatable_string.nil?
     cleaned_pkg_version = PackageUtils.get_clean_version(pkg.version)
     versions.push(package: pkg.name, update_status: versions_updated[pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version.chomp)
 
