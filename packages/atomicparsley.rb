@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Atomicparsley < Package
+class Atomicparsley < CMake
   description 'AtomicParsley is a lightweight command line program for reading, parsing and setting metadata into MPEG-4 files, in particular, iTunes-style metadata.'
   homepage 'https://github.com/wez/atomicparsley'
   version '20240608.083822.1ed9031'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://bitbucket.org/wez/atomicparsley/get/0.9.6.tar.gz'
-  source_sha256 '8ba4e3e21d7a9239932e2a6f34842194d8f9eba84ce9eb83fb35369f5f3f05ab'
+  source_url 'https://github.com/wez/atomicparsley.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -17,17 +17,6 @@ class Atomicparsley < Package
      x86_64: '9dc15a38e01fd81e25e515ff69ac7a89fb07ff9771ff85e54e4da29adc523ba8'
   })
 
-  depends_on 'autoconf'
-  depends_on 'automake'
   depends_on 'zlib'
 
-  def self.build
-    system './autogen.sh'
-    system './configure'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
