@@ -24,4 +24,9 @@ class Apg < Autotools
   def self.prebuild
     system 'autoreconf -fiv'
   end
+
+  autotools_install_extras do
+    FileUtils.install Dir['doc/man/*.1'], "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
+    FileUtils.install Dir['doc/man/*.8'], "#{CREW_DEST_MAN_PREFIX}/man8/", mode: 0o644
+  end
 end
