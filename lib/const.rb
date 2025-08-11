@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.64.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.64.2' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -177,6 +177,7 @@ end
 
 # Some packges need manual adjustments of URLS for different versions.
 excluded_pkgs = Set[
+  { pkg_name: 'asdf', comments: 'Does not work with anitya.' },
   { pkg_name: 'py3_atspi', comments: 'Does not work with pip.' },
   { pkg_name: 'cf', comments: 'Uses a dynamic source package URL.' },
   { pkg_name: 'cursor', comments: 'Uses a dynamic source package URL.' },
