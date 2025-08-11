@@ -17,6 +17,7 @@ class Atomicparsley < CMake
      x86_64: '9dc15a38e01fd81e25e515ff69ac7a89fb07ff9771ff85e54e4da29adc523ba8'
   })
 
-  depends_on 'zlib'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R  depends_on 'zlib'
 
 end
