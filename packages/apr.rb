@@ -11,10 +11,10 @@ class Apr < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f87428e564b81cb430f250a91f10e8e161d53cfa9919802eecd4c871ab8be54a',
-     armv7l: 'f87428e564b81cb430f250a91f10e8e161d53cfa9919802eecd4c871ab8be54a',
-       i686: '0b61996688a957a0f4a9101fc218665bdff14429a921254a65d03e6d4a345a1b',
-     x86_64: 'c5f65c79ac2dc3942a024a42caafca2a8777f02bcafe23ad751de564de14c8d0'
+    aarch64: 'e2df42317de3af08a190a770c3f55b9f9dc67e8752ae5846954becd6e5eed4ee',
+     armv7l: 'e2df42317de3af08a190a770c3f55b9f9dc67e8752ae5846954becd6e5eed4ee',
+       i686: 'd1e1979b17d2871bb6fd85bf580925970e8077d5f60591c2b121d714a26d0356',
+     x86_64: '51f1dc7998ba0c62a34ec6061e0b53ee92c83bab1a878736c2385e314a9cf74c'
   })
 
   depends_on 'glibc' # R
