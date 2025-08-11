@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 1.5 (for Chromebrew)
+# version.rb version 1.6 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -39,6 +39,7 @@ UPDATE_PACKAGE_FILES = ARGV.include?('-u') || ARGV.include?('--update-package-fi
 VERBOSE = ARGV.include?('-v') || ARGV.include?('--verbose')
 bc_updated = {}
 pkg_names = {}
+updatable_pkg = {}
 version_line_string = {}
 versions_updated = {}
 versions = []
@@ -149,6 +150,15 @@ if filelist.length.positive?
   puts "#{'-------'.ljust(package_field_length)}#{'------'.ljust(status_field_length)}#{'-------'.ljust(version_field_length)}--------" unless OUTPUT_JSON
   filelist.each do |filename|
     pkg = Package.load_package(filename)
+    # Mark package file as updatable (i.e., the version field can be
+    # updated in the package file) if the string "version" is on the
+    # git_hashtag line or the string "#{version}" is on the source_url
+    # line.
+    updatable_pkg[pkg.name.to_sym] = if `grep git_hashtag #{filename} | grep version`.empty?
+                                       !`grep source_url #{filename} | grep -v SKIP | grep -v "(" | grep "\#{version}"`.empty?
+                                     else
+                                       true
+                                     end
     pkg_names[pkg.name.to_sym] = pkg.name
     version_line_string[pkg.name.to_sym] = ''
     # We annotate some packages to let us know that they won't work here.
@@ -198,7 +208,7 @@ if filelist.length.positive?
     unless upstream_version.nil?
       versions_updated[pkg.name.to_sym] = 'Up to date.' if (Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) >= 0) && versions_updated[pkg.name.to_sym] != 'Not Found.'
       if Libversion.version_compare2(PackageUtils.get_clean_version(pkg.version), upstream_version) == -1
-        if UPDATE_PACKAGE_FILES && !pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/]
+        if UPDATE_PACKAGE_FILES && !pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && updatable_pkg[pkg.name.to_sym]
           file = File.read(filename)
           if file.sub!(PackageUtils.get_clean_version(pkg.version), upstream_version.chomp).nil?
             versions_updated[pkg.name.to_sym] = false
