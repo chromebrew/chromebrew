@@ -28,7 +28,7 @@ class A2ps < Autotools
   run_tests
 
   def self.prebuild
-    FileUtils.rm_rf gnulib
+    FileUtils.rm_rf 'gnulib'
     system 'git clone --depth=1 https://git.savannah.gnu.org/git/gnulib.git gnulib'
     system './bootstrap'
     system 'autoreconf -fiv'
