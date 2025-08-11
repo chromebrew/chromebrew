@@ -5,7 +5,7 @@
 /usr/local/lib64/cmake/opusfile/OpusFileTargets.cmake
 /usr/local/lib64/libopusfile.so
 /usr/local/lib64/libopusfile.so.0
+/usr/local/lib64/libopusfile.so.0.0
 /usr/local/lib64/libopusurl.so
 /usr/local/lib64/libopusurl.so.0
-/usr/local/lib64/pkgconfig/opusfile.pc
-/usr/local/lib64/pkgconfig/opusurl.pc
+/usr/local/lib64/libopusurl.so.0.0
