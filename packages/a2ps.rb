@@ -19,6 +19,8 @@ class A2ps < Autotools
   })
 
   depends_on 'bdwgc'
+  depends_on 'gperf' => :build
+  depends_on 'gnupg' => :build
   depends_on 'libpaper'
   depends_on 'py3_pspdfutils'
 
