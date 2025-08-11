@@ -1,39 +1,32 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Apg < Package
+class Apg < Autotools
   description 'APG (Automated Password Generator) is a toolset for random password generation.'
-  homepage 'http://www.adel.nursat.kz/apg/'
-  version '2.3.0b'
+  homepage 'https://github.com/wilx/apg'
+  version '2.3.0b-dcddc65'
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://httpredir.debian.org/debian/pool/main/a/apg/apg_2.2.3.dfsg.1.orig.tar.gz'
-  source_sha256 'c7e3c556426e2d5d2f599873a71100c5f6d14fa8784e0b1d879916784de801df'
+  source_url 'https://github.com/wilx/apg.git'
+  git_hashtag 'dcddc65648f8b71ba8b9a9c1946034badb4ae7f3'
+  # git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '89bcf52ad78e2ee3853ef09f738cd3c5b9ba3345741a66ed28d64ef994dcf1c7',
-     armv7l: '89bcf52ad78e2ee3853ef09f738cd3c5b9ba3345741a66ed28d64ef994dcf1c7',
-       i686: '2607cbceedf2806bc73ec039fe27d9d6551a8b18d844487be4b5116ba3cb1d5e',
-     x86_64: 'dd6c364cd1e9a7d7b5ce31be871315dcd2d014809235b916ad6cfc78734699e3'
+    aarch64: '3f4ca5c19d08490f9302a8ff00499da1660e614dbe156167a80a95b85a631cad',
+     armv7l: '3f4ca5c19d08490f9302a8ff00499da1660e614dbe156167a80a95b85a631cad',
+       i686: '77b5ade38ac4e862d81625f7c987617cba4cff44d40a196f157c9ac4bc5f8762',
+     x86_64: 'bfb1a844d4f3ef43bc37bc6f608b0fdb713e888abc11d91a5f1156b101675054'
   })
 
-  def self.patch
-    system 'curl -#LO https://httpredir.debian.org/debian/pool/main/a/apg/apg_2.2.3.dfsg.1-5.debian.tar.xz'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('apg_2.2.3.dfsg.1-5.debian.tar.xz')) == '8305fdb424d934f4d217b7910e0b971cff205b28857b9dc9df95e38bd1aaa9a0'
-    system 'tar xf apg_2.2.3.dfsg.1-5.debian.tar.xz'
-    FileUtils.rm 'debian/patches/series'
-    system "sed -i '10,16d' debian/patches/Makefile"
-    system "for i in debian/patches/*; do patch -Np1 -i \"\${i}\"; done"
-    system "sed -i 's:INSTALL_PREFIX = /usr/local:INSTALL_PREFIX = #{CREW_DEST_PREFIX}:' Makefile"
-    system "sed -i 's:FLAGS = -Wall:FLAGS = -Wall -O2 -pipe -flto=auto:' Makefile"
-    system "sed -i 's:root:$(whoami):g' Makefile"
+  depends_on 'glibc' # R
+  depends_on 'libxcrypt' # R
+
+  def self.prebuild
+    system 'autoreconf -fiv'
   end
 
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  autotools_install_extras do
+    FileUtils.install Dir['doc/man/*.1'], "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
+    FileUtils.install Dir['doc/man/*.8'], "#{CREW_DEST_MAN_PREFIX}/man8/", mode: 0o644
   end
 end
