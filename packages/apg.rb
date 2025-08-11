@@ -12,10 +12,10 @@ class Apg < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '20eb0d25b5592a3fd50ed9bbc62e26bdc24aba53fb713441ef8ff80289ffe047',
-     armv7l: '20eb0d25b5592a3fd50ed9bbc62e26bdc24aba53fb713441ef8ff80289ffe047',
-       i686: '71eb0905e1b8d5c99c38387124d75e5340772c6bff3f2e1e63dbc862ea0f6e43',
-     x86_64: 'f4c53b71baf1b4f0df6aec8bd4db95fe39f54652dc68c4d16b099d14e8d6cd82'
+    aarch64: '3f4ca5c19d08490f9302a8ff00499da1660e614dbe156167a80a95b85a631cad',
+     armv7l: '3f4ca5c19d08490f9302a8ff00499da1660e614dbe156167a80a95b85a631cad',
+       i686: '77b5ade38ac4e862d81625f7c987617cba4cff44d40a196f157c9ac4bc5f8762',
+     x86_64: 'bfb1a844d4f3ef43bc37bc6f608b0fdb713e888abc11d91a5f1156b101675054'
   })
 
   depends_on 'glibc' # R
