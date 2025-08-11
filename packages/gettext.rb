@@ -23,13 +23,11 @@ class Gettext < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gperf' => :build
-  depends_on 'icu4c' # R
   depends_on 'libunistring' # R
   depends_on 'libxml2' # R
   depends_on 'ncurses' # R
   depends_on 'openjdk8' => :build
   depends_on 'wget2' => :build
-  depends_on 'zlib' # R
 
   # git_fetchtags
 
