@@ -18,8 +18,10 @@ class Armadillo < CMake
   })
 
   depends_on 'arpack_ng'
-  depends_on 'hdf5'
-  depends_on 'superlu'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R  depends_on 'hdf5'
+  depends_on 'lapack' # R
+  depends_on 'openblas' # R  depends_on 'superlu'
 
   cmake_options "-DARPACK_LIBRARY=#{CREW_LIB_PREFIX}/libarpack#{'64' if ARCH == 'x86_64'}.so"
 end
