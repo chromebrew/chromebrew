@@ -18,6 +18,8 @@ class Apr < Autotools
   })
 
   depends_on 'glibc' # R
+  depends_on 'libxcrypt' # R
+  depends_on 'util_linux' # R
 
   # https://bz.apache.org/bugzilla/show_bug.cgi?id=63439
   autotools_configure_options '--with-devrandom --without-sendfile --enable-layout=GNU'
