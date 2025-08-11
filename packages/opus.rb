@@ -1,43 +1,30 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Opus < Package
+class Opus < CMake
   description 'Opus is a totally open, royalty-free, highly versatile audio codec.'
-  homepage 'https://opus-codec.org/'
-  version '1.4'
+  homepage 'https://opus-codec.org'
+  version '1.5.2'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/xiph/opus/releases/download/v1.4/opus-1.4.tar.gz'
-  source_sha256 'c9b32b4253be5ae63d1ff16eea06b94b5f0f2951b7a02aceef58e3a3ce49c51f'
+  source_url 'https://github.com/xiph/opus.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '63fe85dddd1151716ce4dd6df89216a35c4d5789396218d6d6310da6a12e6894',
-     armv7l: '63fe85dddd1151716ce4dd6df89216a35c4d5789396218d6d6310da6a12e6894',
-       i686: '1ab7a3f96a246f743148a426726fcf0af2b014f1bd8cfec757b207216e463bcb',
-     x86_64: '3729cff69b9e8635f43cfb38e2a32617a0855333dc098ca3ca391b75a579fafe'
+    aarch64: 'ead0454198c22c46a00081547bccb566f63462b4e1cd190387ac11b6fa1830d4',
+     armv7l: 'ead0454198c22c46a00081547bccb566f63462b4e1cd190387ac11b6fa1830d4',
+       i686: '8bee7418ab52ca374f43a147958ec34083bc787c7c1337431160a5e75a27cc55',
+     x86_64: 'e4ee10ea6f462011057f8b3c13557cd02a02adcff8c959d33aa3d19c0bdb4f41'
   })
 
   depends_on 'doxygen' => :build
   depends_on 'glibc' # R
 
-  def self.patch
-    # See https://github.com/xiph/opus/issues/273
-    downloader 'https://patch-diff.githubusercontent.com/raw/xiph/opus/pull/267.patch',
-               '39bcf3085978f1c113f6e2c60f39ccff638d2f5e1e0192ca603883e35632997c'
-    system 'patch -Np1 -i 267.patch'
-  end
-
   def self.build
-    system "meson setup #{CREW_MESON_OPTIONS.gsub('vfpv3-d16', 'neon')} \
-      -Dcustom-modes=true \
-      -Ddocs=disabled \
-      -Dtests=disabled \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+    @cmake_build_relative_dir = '.'
+    system "cmake -S #{@cmake_build_relative_dir} -B #{@cmake_build_relative_dir}/builddir -G Ninja #{CREW_CMAKE_OPTIONS.gsub('vfpv3-d16', 'neon')} -DBUILD_TESTING=OFF \
+    -DCUSTOM_MODES=ON \
+    -DBUILD_SHARED_LIBS=ON"
+    system "#{CREW_PREFIX}/bin/jobserver_pool.py -j #{CREW_NPROC} #{CREW_NINJA} -C #{@cmake_build_relative_dir}/builddir"
   end
 end
