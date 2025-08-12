@@ -35,5 +35,6 @@ class A2ps < Autotools
     system 'tar fx gnulib-snapshot.tgz --one-top-level=gnulib --strip-components=1'
     # system './bootstrap'
     # system 'autoreconf -fiv'
+    system 'touch --date="`date`" aclocal.m4'
   end
 end
