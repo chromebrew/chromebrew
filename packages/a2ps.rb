@@ -8,8 +8,10 @@ class A2ps < Autotools
   # Builds are currently broken on i686: https://savannah.gnu.org/bugs/?65903
   compatibility 'aarch64 armv7l x86_64'
   # Bootstrapping from git fails: https://savannah.gnu.org/bugs/index.php?65830
-  source_url 'https://git.savannah.gnu.org/git/a2ps.git'
-  git_hashtag "v#{version}"
+  source_url "https://ftpmirror.gnu.org/a2ps/a2ps-#{version}.tar.gz"
+  source_sha256 'asasadas'
+  # source_url 'https://git.savannah.gnu.org/git/a2ps.git'
+  # git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
