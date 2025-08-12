@@ -31,7 +31,7 @@ class A2ps < Autotools
     FileUtils.rm_rf 'gnulib'
     downloader 'https://gitweb.git.savannah.gnu.org/gitweb/?p=gnulib.git;a=snapshot;h=613ce3ecf2e83a0551c3d9d0a2cb5f6c410bd4b8;sf=tgz', 'asasasa', 'gnulib-snapshot.tgz'
     system 'tar fx gnulib-snapshot.tgz --one-top-level=gnulib --strip-components=1'
-    system './bootstrap'
+    # system './bootstrap'
     system 'autoreconf -fiv'
   end
 end
