@@ -3,17 +3,17 @@ require 'package'
 class Mediainfo_gui < Package
   description 'MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files.'
   homepage 'https://mediaarea.net/en/MediaInfo'
-  version '25.04'
+  version '25.07'
   license 'BSD-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://mediaarea.net/download/binary/mediainfo-gui/#{version}/MediaInfo_GUI_#{version}_GNU_FromSource.tar.xz"
-  source_sha256 '6a24f6529ab802e594ce89cc2e7816a2b0ffe06130545c3593ab334f2ceb9cd1'
+  source_sha256 'eff17dc966290f3ee0f8be0abd279e98eb0d34e1799fbb8b1ec7b210ed624d88'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '22dc67babe776a8e731bbd3c9d8203506935f8b475f9c4f175e647be99be147f',
-     armv7l: '22dc67babe776a8e731bbd3c9d8203506935f8b475f9c4f175e647be99be147f',
-     x86_64: 'cadcc0059ce6d49c71e155bcc0965447c3c0bb143296d8379928d117f160fcaf'
+    aarch64: 'bd18e0f5b105d2c2e1ca0ec134dc4fd7b73dacbe7c95b703cdf913a50274957b',
+     armv7l: 'bd18e0f5b105d2c2e1ca0ec134dc4fd7b73dacbe7c95b703cdf913a50274957b',
+     x86_64: 'cb8fb802283962a91e2880d6cd79e5c7085a8f12df79832a8208242a24ddc4db'
   })
 
   depends_on 'at_spi2_core' # R
@@ -25,7 +25,6 @@ class Mediainfo_gui < Package
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'libjpeg_turbo' # R
-  depends_on 'libmediainfo' # R
   depends_on 'libsm' # R
   depends_on 'libtiff' # R
   depends_on 'libx11' # R
