@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.64.2' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.64.3' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -176,19 +176,19 @@ unless defined?(CHROMEOS_RELEASE)
 end
 
 # Some packges need manual adjustments of URLS for different versions.
-excluded_pkgs = Set[
-  { pkg_name: 'asdf', comments: 'Does not work with anitya.' },
-  { pkg_name: 'py3_atspi', comments: 'Does not work with pip.' },
-  { pkg_name: 'cf', comments: 'Uses a dynamic source package URL.' },
-  { pkg_name: 'cursor', comments: 'Uses a dynamic source package URL.' },
-  { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' }
-].map { |h| h[:pkg_name] }
-CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX = "(#{excluded_pkgs.join('|')})" unless defined?(CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX)
+unless defined?(CREW_UPDATER_EXCLUDED_PKGS)
+  CREW_UPDATER_EXCLUDED_PKGS = Set[
+    { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' }
+  ].to_h { |h| [h[:pkg_name], h[:comments]] }
+end
+CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX = "(#{CREW_UPDATER_EXCLUDED_PKGS.keys.map { |p| "^#{p}$" }.join('|')})" unless defined?(CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX)
 
 # Some packages have different names in anitya.
 unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
   CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
-    { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' }
+    { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: '' },
+    { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
+    { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' }
   ].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
 end
 
