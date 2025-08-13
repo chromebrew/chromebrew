@@ -7630,6 +7630,11 @@ url: https://gitlab.gnome.org/GNOME/gi-docgen/-/tags
 activity: medium
 ---
 kind: url
+name: py3_gpt_researcher
+url: https://github.com/assafelovic/gpt-researcher/releases
+activity: high
+---
+kind: url
 name: py3_hatch_vcs
 url: https://github.com/ofek/hatch-vcs/releases
 activity: medium
