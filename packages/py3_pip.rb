@@ -2,7 +2,7 @@ require 'buildsystems/python'
 
 class Py3_pip < Python
   description 'Pip is the python package manager from the Python Packaging Authority.'
-  homepage 'https://pypi.python.org/pypi/pip'
+  homepage 'https://pip.pypa.io/'
   version "25.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
