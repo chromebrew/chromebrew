@@ -47,8 +47,9 @@ versions_updated = {}
 versions = []
 
 def get_version(name, homepage, source)
-  # Determine if the source is a GitHub repository.
-  unless source.nil? || source.is_a?(Hash) || %w[Pip].include?(@pkg.superclass.to_s)
+  # Determine if the source is a GitHub repository, but skip if there
+  # is an anitya name mapping.
+  unless source.nil? || source.is_a?(Hash) || %w[Pip].include?(@pkg.superclass.to_s) || CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
     source.sub!('www.', '')
     url = URI.parse(source)
     if url.host == 'github.com'
