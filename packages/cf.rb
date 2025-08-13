@@ -17,7 +17,7 @@ class Cf < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '0b55f6b6a801b3095a45665d7fb397e29fd6646798c723388f6f8c4bce0ed67a',
+       i686: '05ac4ed0ef3fd18a206d618f245d40f9c968211b661ef3222eaf743668e8027c',
      x86_64: 'cae05d3f907afe8631945d30804d72572b4fe426a55c98ef9be2678f54e8bd1e'
   })
 
