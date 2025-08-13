@@ -33,10 +33,9 @@ class Cf < Package
     file.sub!('cf7', "cf#{cf_major_version}")
     File.write('cf.bash', file)
     FileUtils.install 'cf.bash', "#{CREW_DEST_PREFIX}/share/cf/bash-completion/cf.bash", mode: 0o644
-    @env = <<~EOF
+    File.write "#{CREW_DEST_PREFIX}/etc/bash.d/cf", <<~EOF
       # Cloud Foundry CLI configuration
       source #{CREW_PREFIX}/share/cf/bash-completion/cf.bash
     EOF
-    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/cf", @env)
   end
 end
