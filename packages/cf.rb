@@ -26,8 +26,12 @@ class Cf < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/cf/bash-completion/"
     FileUtils.install 'cf', "#{CREW_DEST_PREFIX}/bin/cf", mode: 0o755
-    system 'curl -#Lo cf.bash https://raw.githubusercontent.com/cloudfoundry/cli/v6.36.1/ci/installers/completion/cf'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('cf.bash')) == 'f3f05a2414075c00b101b05f73cf260b9eec9966659adf2957c1b2937bd4c48e'
+    # There isn't a version for cf8...
+    downloader 'https://raw.githubusercontent.com/cloudfoundry/cli-ci/main/ci/installers/completion/cf7', '7ee78e471d6924b81e9062083e1ad13be2b18e70135a7cc9da9b75f5984c0fee', 'cf.bash'
+    cf_major_version = version.split('.').first
+    file = File.read('cf.bash')
+    file.sub!('cf7', "cf#{cf_major_version}")
+    File.write('cf.bash', file)
     FileUtils.install 'cf.bash', "#{CREW_DEST_PREFIX}/share/cf/bash-completion/cf.bash", mode: 0o644
     @env = <<~EOF
       # Cloud Foundry CLI configuration
