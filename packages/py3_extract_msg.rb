@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_extract_msg < Pip
   description 'Extract-msg extracts emails and attachments saved in Microsoft Outlook\'s .msg files.'
   homepage 'https://github.com/mattgwwalker/msg-extractor/'
-  version "0.54.1-#{CREW_PY_VER}"
+  version "0.55.0-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
