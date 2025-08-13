@@ -18,7 +18,7 @@ class Cf < Package
 
   binary_sha256({
        i686: '05ac4ed0ef3fd18a206d618f245d40f9c968211b661ef3222eaf743668e8027c',
-     x86_64: 'cae05d3f907afe8631945d30804d72572b4fe426a55c98ef9be2678f54e8bd1e'
+     x86_64: '8465927ec7f43c661e11fcbbe939969f86ece4d9b28de20d58b6681f862a2825'
   })
 
   def self.install
