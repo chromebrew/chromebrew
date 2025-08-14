@@ -56,6 +56,7 @@ def get_version(name, homepage, source)
       url_parts = url.path.split('/')
       unless url_parts.count < 3
         repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
+        puts "GitHub Repo is #{repo}" if VERBOSE
         # Note that we only check releases on GitHub since semantic
         # version ordering isn't easy to get from tags.
         # You can get the last numeric tag using:
