@@ -47,8 +47,3 @@ class Signal_desktop < Package
   end
 end
 
-
-  def self.postinstall
-    ExitMessage.add "\nType 'signal-desktop' to get started.\n"
-  end
-end
