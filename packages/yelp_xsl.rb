@@ -18,6 +18,7 @@ class Yelp_xsl < Meson
      x86_64: '03e70d4b552cb539c1799f1709bf22c20ddcb281b508c462aa146db023f9801c'
   })
 
+  depends_on 'libxslt' => :build
   depends_on 'py3_itstool'
 
   gnome
