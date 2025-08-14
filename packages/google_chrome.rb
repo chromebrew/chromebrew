@@ -7,13 +7,8 @@ class Google_chrome < Package
   license 'google-chrome'
   compatibility 'x86_64'
 
-  source_url({
-    x86_64: 'https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_139.0.7258.127-1_amd64.deb'
-  })
-
-  source_sha256({
-    x86_64: 'f384ffc918fb2813f26edb4a4912cdeec3f52a2f02f2a7e8dce29f648fef00ff'
-  })
+  source_url 'https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_139.0.7258.127-1_amd64.deb'
+  source_sha256 'f384ffc918fb2813f26edb4a4912cdeec3f52a2f02f2a7e8dce29f648fef00ff'
 
   no_compile_needed
   no_shrink
