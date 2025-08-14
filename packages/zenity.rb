@@ -23,7 +23,7 @@ class Zenity < Meson
   depends_on 'gtk4' # R
   depends_on 'libadwaita' # R
   depends_on 'pango' # R
-  depends_on 'webkit2gtk' => :build
+  depends_on 'webkitgtk_6' => :build
 
   gnome
 end
