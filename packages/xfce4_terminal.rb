@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xfce4_terminal < Package
+class Xfce4_terminal < Autotools
   description 'Modern terminal emulator primarily for the Xfce desktop environment'
   homepage 'https://xfce.org/'
   version '1.1.5'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://archive.xfce.org/src/apps/xfce4-terminal/0.8/xfce4-terminal-#{version}.tar.bz2"
-  source_sha256 '7a3337c198e01262a0412384823185753ac8a0345be1d6776a7e9bbbcbf33dc7'
+  source_url 'https://gitlab.xfce.org/apps/xfce4-terminal.git'
+  git_hashtag "xfce-terminal-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -25,13 +25,7 @@ class Xfce4_terminal < Package
   depends_on 'wayland_protocols'
   depends_on 'mesa'
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system "make -j#{CREW_NPROC}"
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
+  autotools_install_extras do
     system "cat <<'EOF'> xfce4-terminal
 #!/bin/bash
 WAYLAND_DISPLAY=wayland-0
@@ -40,6 +34,6 @@ DISPLAY=
 #{CREW_PREFIX}/bin/xfce4_terminal \"$@\"
 EOF"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/xfce4-terminal", "#{CREW_DEST_PREFIX}/bin/xfce4_terminal"
-    system "install -Dm755 xfce4-terminal #{CREW_DEST_PREFIX}/bin/xfce4-terminal"
+    FileUtils.install 'xfce4-terminal', "#{CREW_DEST_PREFIX}/bin/xfce4-terminal", mode: 0o755
   end
 end
