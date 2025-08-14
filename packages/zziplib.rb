@@ -1,31 +1,28 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Zziplib < Package
+class Zziplib < CMake
   description 'The ZZIPlib provides read access on ZIP-archives and unpacked data.'
   homepage 'https://zziplib.sourceforge.net/'
-  version '0.13.72'
+  version '0.13.80'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/gdraheim/zziplib/archive/refs/tags/v0.13.72.tar.gz'
-  source_sha256 '93ef44bf1f1ea24fc66080426a469df82fa631d13ca3b2e4abaeab89538518dc'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/gdraheim/zziplib.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2670ba6fa4866b63fd6e70070a169e530355ccc66938189ac9b679a2d9fb4f92',
-     armv7l: '2670ba6fa4866b63fd6e70070a169e530355ccc66938189ac9b679a2d9fb4f92',
-       i686: '2e80d0c5286bf3fdaa1b8e1e2a03aefc34c979c716eb89098d855973e5fcc94d',
-     x86_64: 'cf37a998b62be10582f351b78173f87788a9006deb31bb4fed0cfe63d50e3fc3'
+    aarch64: 'e838dd853f27f34424ff8e2cda20b5c2cc6fd0f04dc9e0e991e79eb399887ba7',
+     armv7l: 'e838dd853f27f34424ff8e2cda20b5c2cc6fd0f04dc9e0e991e79eb399887ba7',
+       i686: 'af5e49a64ef416c058fc5482146f3719b0884b626b4003fc5386b1a187022a05',
+     x86_64: '96114e7f733bb47a2e42fd23d72b86dfc3252d6933df317ec8ca14fe2dead578'
   })
 
+  depends_on 'glibc' # R
   depends_on 'samurai' => :build
   depends_on 'xmlto' => :build
+  depends_on 'zlib' # R
 
-  def self.build
-    FileUtils.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env #{CREW_ENV_OPTIONS} \
-        cmake -G Ninja #{CREW_CMAKE_OPTIONS} \
-        -DCP=/bin/cp \
+  cmake_options "-DCP=/bin/cp \
         -DGZIP=/bin/gzip \
         -DMKZIP=#{CREW_PREFIX}/bin/zip \
         -DMV=/bin/mv \
@@ -33,12 +30,5 @@ class Zziplib < Package
         -DPYTHON_EXECUTABLE=/usr/local/bin/python3 \
         -DRM=/bin/rm \
         -DTAR=/bin/tar \
-        -DUNZIP=#{CREW_PREFIX}/bin/unzip .."
-      system 'samu'
-    end
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+        -DUNZIP=#{CREW_PREFIX}/bin/unzip"
 end
