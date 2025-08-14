@@ -6,8 +6,8 @@ class Xbitmaps < Autotools
   version '1.1.3'
   license 'MIT'
   compatibility 'all'
-  source_url "https://www.x.org/pub/individual/data/xbitmaps-#{version}.tar.bz2"
-  source_sha256 '3671b034356bbc4d32d052808cf646c940ec8b2d1913adac51b1453e41aa1e9d'
+  source_url 'https://gitlab.freedesktop.org/xorg/data/bitmaps.git'
+  git_hashtag "xbitmaps-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
