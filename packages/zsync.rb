@@ -11,10 +11,10 @@ class Zsync < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ec99187285ee26098f60a08e075e61fe7ea2b66b153052c3be9aac8866c39d77',
-     armv7l: 'ec99187285ee26098f60a08e075e61fe7ea2b66b153052c3be9aac8866c39d77',
-       i686: 'fd3630d2edcdac1730de54d82674505a1b98c2430e3fb04224147348175bbc69',
-     x86_64: 'ce5a3c89fec4f13638ade49db7c2c45ca169e86b34687b3c55710f534789aba6'
+    aarch64: 'f7e83459da35ae6c1ae2522f5303da8eb7d8efb54d95dfefc13eb997efdbb593',
+     armv7l: 'f7e83459da35ae6c1ae2522f5303da8eb7d8efb54d95dfefc13eb997efdbb593',
+       i686: 'dd72efc81d19983e828cedb61a0313d50b67e51a90a8fabbf019768c9ba2b856',
+     x86_64: 'c2fec91043612cbf99514003f273f2334596cfc7c41f8746e415cc88ae0f0099'
   })
 
   depends_on 'glibc' # R
