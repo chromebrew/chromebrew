@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Webkit2gtk_4_1 < Package
+class Webkit2gtk_4_1 < CMake
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
   version "2.44.3-#{CREW_ICU_VER}"
@@ -80,23 +80,9 @@ class Webkit2gtk_4_1 < Package
     downloader 'https://github.com/WebKit/WebKit/pull/30446.diff', '6beda7960b232117f8445db4e588a45ef384d42ccb13f6926b695c472a4eea51'
     system 'patch -Np1 -i 30446.diff'
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
-    @arch_flags = ''
-    @gcc_ver = ''
-    @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp' if ARCH == 'armv7l' || ARCH == 'aarch64'
   end
 
-  def self.build
-    # This builds webkit2gtk4_1 (which uses gtk3, but not libsoup2)
-    @workdir = Dir.pwd
-    # Bubblewrap sandbox breaks on epiphany with
-    # bwrap: Can't make symlink at /var/run: File exists
-    # LDFLAGS from debian: -Wl,--no-keep-memory
-    unless File.file?('build.ninja')
-      @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
-      system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' \
-          cmake -B builddir -G Ninja \
-          #{CREW_CMAKE_OPTIONS.sub('-pipe', '-pipe -Wno-error').gsub('-flto=auto', '').sub('-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE', '')} \
-          -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+  cmake_options "-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
           -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
           -DENABLE_DOCUMENTATION=OFF \
           -DENABLE_JOURNALD_LOG=OFF \
@@ -109,21 +95,8 @@ class Webkit2gtk_4_1 < Package
           -DUSE_SOUP2=OFF \
           -DPYTHON_EXECUTABLE=`which python` \
           -DUSER_AGENT_BRANDING='Chromebrew'"
-    end
-    @counter = 1
-    @counter_max = 20
-    loop do
-      break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
 
-      puts "Make iteration #{@counter} of #{@counter_max}...".orange
-
-      @counter += 1
-      break if @counter > @counter_max
-    end
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver", "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver_4.1"
+  cmake_install_extras do
+      FileUtils.mv "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver", "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver_4.1"
   end
 end
