@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Yelp_xsl < Autotools
   description 'yelp-xsl is a collection of programs and data files to help you build, maintain, and distribute documentation'
   homepage 'https://github.com/GNOME/yelp-xsl'
-  version '42.1'
+  version '42.4'
   license 'GPL-2+, LGPL-2.1+, MIT and FDL-1.1+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/yelp-xsl/-/archive/#{version}/yelp-xsl-#{version}.tar.bz2"
