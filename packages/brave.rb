@@ -34,8 +34,3 @@ class Brave < Package
     ConvenienceFunctions.unset_default_browser('Brave', 'brave')
   end
 end
-
-  def self.preremove
-    ConvenienceFunctions.unset_default_browser('Brave', 'brave')
-  end
-end
