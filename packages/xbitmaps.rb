@@ -1,14 +1,14 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xbitmaps < Package
+class Xbitmaps < Autotools
   description 'The xbitmaps package contains bitmap images used by multiple applications built in Xorg chapter.'
   homepage 'https://www.x.org/wiki/'
-  version '1.1.1'
+  version '1.1.3'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.x.org/pub/individual/data/xbitmaps-1.1.1.tar.bz2'
+  source_url "https://www.x.org/pub/individual/data/xbitmaps-#{version}.tar.bz2"
   source_sha256 '3671b034356bbc4d32d052808cf646c940ec8b2d1913adac51b1453e41aa1e9d'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'f593f78a6db4cf69e97da6a07e954971a8623164799161bca5fd7e717085720d',
@@ -18,13 +18,4 @@ class Xbitmaps < Package
   })
 
   depends_on 'xorg_macros' => :build
-
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

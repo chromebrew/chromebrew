@@ -1,14 +1,14 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xcb_util_image < Package
+class Xcb_util_image < Autotools
   description 'The xcb-util-image package provides additional extensions to the XCB library.'
   homepage 'https://xcb.freedesktop.org/'
-  version '0.4.0-1'
+  version '0.4.1'
   compatibility 'all'
   license 'MIT-with-advertising'
-  source_url 'https://xcb.freedesktop.org/dist/xcb-util-image-0.4.0.tar.bz2'
-  source_sha256 '2db96a37d78831d643538dd1b595d7d712e04bdccf8896a5e18ce0f398ea2ffc'
-  binary_compression 'tpxz'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxcb-image.git'
+  git_hashtag "xcb-util-image-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '5b98d3f85937bfe7f272b7ab39406ee4a645c583a0792fded18e74a82603769e',
@@ -18,13 +18,4 @@ class Xcb_util_image < Package
   })
 
   depends_on 'xcb_util'
-
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

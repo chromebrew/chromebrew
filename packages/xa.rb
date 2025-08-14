@@ -3,12 +3,12 @@ require 'package'
 class Xa < Package
   description 'xa is a high-speed, two-pass portable cross-assembler.'
   homepage 'https://www.floodgap.com/retrotech/xa/'
-  version '2.3.11'
+  version '2.4.1'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://www.floodgap.com/retrotech/xa/dists/xa-2.3.11.tar.gz'
+  source_url "https://www.floodgap.com/retrotech/xa/dists/xa-#{version}.tar.gz"
   source_sha256 '32f2164c99e305218e992970856dd8e2309b5cb6ac4758d7b2afe3bfebc9012d'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '4e9da9aa44ec5d58c597d5f3fcbba2ba3786002e0da6adebe381c4c70f90cda6',

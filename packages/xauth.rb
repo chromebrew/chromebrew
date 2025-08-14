@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xauth < Package
+class Xauth < Autotools
   description 'X authority file utility'
   homepage 'https://www.x.org/archive/X11R6.8.1/doc/xauth.1.html'
-  version '1.1.2'
+  version '3.1.15'
   license 'MIT-with-advertising'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.x.org/releases/individual/app/xauth-1.1.2.tar.xz'
-  source_sha256 '78ba6afd19536ced1dddb3276cba6e9555a211b468a06f95f6a97c62ff8ee200'
+  source_url 'https://gitlab.freedesktop.org/xorg/app/xauth.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -22,16 +22,8 @@ class Xauth < Package
   depends_on 'libxmu' # R
   depends_on 'glibc' # R
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-           --enable-ipv6 \
+  autotools_configure_options '--enable-ipv6 \
            --enable-tcp-transport \
            --enable-unix-transport \
-           --enable-local-transport"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+           --enable-local-transport'
 end

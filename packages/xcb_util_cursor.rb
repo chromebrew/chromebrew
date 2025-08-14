@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xcb_util_cursor < Package
+class Xcb_util_cursor < Autotools
   description 'The xcb-util-cursor package provides a module that implements the XCB cursor library. It is a the XCB replacement for libXcursor.'
   homepage 'https://xcb.freedesktop.org/'
-  version '0.1.4'
+  version '0.1.5'
   license 'MIT-with-advertising'
   compatibility 'all'
-  source_url 'https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.4.tar.xz'
-  source_sha256 '28dcfe90bcab7b3561abe0dd58eb6832aa9cc77cfe42fcdfa4ebe20d605231fb'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxcb-cursor.git'
+  git_hashtag "xcb-util-cursor-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -27,14 +27,4 @@ class Xcb_util_cursor < Package
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
