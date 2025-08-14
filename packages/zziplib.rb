@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Zziplib < Package
+class Zziplib < CMake
   description 'The ZZIPlib provides read access on ZIP-archives and unpacked data.'
   homepage 'https://zziplib.sourceforge.net/'
   version '0.13.80'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/gdraheim/zziplib/archive/refs/tags/v0.13.72.tar.gz'
-  source_sha256 '93ef44bf1f1ea24fc66080426a469df82fa631d13ca3b2e4abaeab89538518dc'
+  source_url 'https://github.com/gdraheim/zziplib.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -20,12 +20,7 @@ class Zziplib < Package
   depends_on 'samurai' => :build
   depends_on 'xmlto' => :build
 
-  def self.build
-    FileUtils.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env #{CREW_ENV_OPTIONS} \
-        cmake -G Ninja #{CREW_CMAKE_OPTIONS} \
-        -DCP=/bin/cp \
+  cmake_options "-DCP=/bin/cp \
         -DGZIP=/bin/gzip \
         -DMKZIP=#{CREW_PREFIX}/bin/zip \
         -DMV=/bin/mv \
@@ -33,12 +28,5 @@ class Zziplib < Package
         -DPYTHON_EXECUTABLE=/usr/local/bin/python3 \
         -DRM=/bin/rm \
         -DTAR=/bin/tar \
-        -DUNZIP=#{CREW_PREFIX}/bin/unzip .."
-      system 'samu'
-    end
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+        -DUNZIP=#{CREW_PREFIX}/bin/unzip"
 end
