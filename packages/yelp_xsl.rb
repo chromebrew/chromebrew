@@ -7,7 +7,7 @@ class Yelp_xsl < Meson
   license 'GPL-2+, LGPL-2.1+, MIT and FDL-1.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/yelp-xsl.git'
-  git_hashtag "yelp-xsl-S{version}"
+  git_hashtag version
   source_sha256 '81b8d626a1481d542fb8c9cb890fa970ddc42b27f7779d52df31c4de0caac776'
   binary_compression 'tar.zst'
 
