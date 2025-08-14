@@ -22,8 +22,8 @@ class Brave < Package
     FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/share]
     FileUtils.mv Dir['usr/share/*', 'opt/brave.com/brave'], "#{CREW_DEST_PREFIX}/share"
 
-    FileUtils.ln_s '../share/brave/brave-browser-stable', "#{CREW_DEST_PREFIX}/bin/brave-browser"
-    FileUtils.ln_s '../share/brave/brave', "#{CREW_DEST_PREFIX}/bin/brave-browser"
+    FileUtils.ln_s '../share/brave/brave-browser', "#{CREW_DEST_PREFIX}/bin/brave-browser-stable"
+    FileUtils.ln_s '../share/brave/brave-browser', "#{CREW_DEST_PREFIX}/bin/brave"
   end
 
   def self.postinstall
