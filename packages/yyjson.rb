@@ -20,5 +20,7 @@ class Yyjson < CMake
      x86_64: '27554b9952ece260c7b760c260e2d76a5cf7a63a0811d173fcc908dd2d0b8d36'
   })
 
+  depends_on 'glibc' # R
+
   cmake_options '-DBUILD_SHARED_LIBS=ON'
 end
