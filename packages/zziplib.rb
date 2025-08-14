@@ -3,12 +3,12 @@ require 'package'
 class Zziplib < Package
   description 'The ZZIPlib provides read access on ZIP-archives and unpacked data.'
   homepage 'https://zziplib.sourceforge.net/'
-  version '0.13.72'
+  version '0.13.80'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/gdraheim/zziplib/archive/refs/tags/v0.13.72.tar.gz'
   source_sha256 '93ef44bf1f1ea24fc66080426a469df82fa631d13ca3b2e4abaeab89538518dc'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '2670ba6fa4866b63fd6e70070a169e530355ccc66938189ac9b679a2d9fb4f92',
