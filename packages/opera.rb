@@ -1,18 +1,22 @@
 require 'package'
-require 'convenience_functions'
 
 class Opera < Package
   description 'Opera is a multi-platform web browser based on Chromium and developed by Opera Software.'
   homepage 'https://www.opera.com/'
-  version '120.0.5543.128'
+  version '120.0.5543.161'
   license 'OPERA-2018'
   compatibility 'x86_64'
-  min_glibc '2.29'
 
-  # faster apt mirror, but only works when downloading latest version of opera
-  # source_url "https://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
-  source_url "https://deb.opera.com/opera-stable/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
-  source_sha256 '0312c8a7c9e68bdcaa32c1a402c7859163156c9d6cefe9ed37ce3adc3e633eb9'
+  source_url({
+    x86_64: 'https://deb.opera.com/opera-stable/pool/non-free/o/opera-stable/opera-stable_120.0.5543.161_amd64.deb'
+  })
+
+  source_sha256({
+    x86_64: '37b910edaf3580e5a30efc62d85303909e1fdaf73aaf78574b10e43b04d98060'
+  })
+
+  no_compile_needed
+  no_shrink
 
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'
@@ -20,9 +24,6 @@ class Opera < Package
   depends_on 'graphite'
   depends_on 'cras'
   depends_on 'libcom_err'
-
-  no_compile_needed
-  no_shrink
 
   def self.build
     File.write 'opera.sh', <<~EOF
