@@ -143,6 +143,7 @@ class Webkitgtk_6 < CMake
           -DENABLE_JOURNALD_LOG=OFF \
           -DENABLE_GAMEPAD=OFF \
           -DENABLE_MINIBROWSER=ON \
+          -DENABLE_SPEECH_SYNTHESIS=OFF \
           -DUSE_SYSTEM_MALLOC=ON \
           -DPORT=GTK \
           -DUSE_GTK4=ON \
