@@ -16,7 +16,7 @@ class Xterm < Package
      x86_64: '804f23057165662f203994db4614ca2595a1a2a403a1b35ba8909501fb209a6d'
   })
 
-  depends_on 'libxaw' => :build
+  depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
@@ -24,6 +24,8 @@ class Xterm < Package
   depends_on 'libutempter' # R
   depends_on 'libx11' # R
   depends_on 'libxaw' # R
+  depends_on 'libxaw' # R
+  depends_on 'libxaw' => :build
   depends_on 'libxext' # R
   depends_on 'libxft' # R
   depends_on 'libxinerama' # R
