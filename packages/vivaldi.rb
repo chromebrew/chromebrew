@@ -9,9 +9,9 @@ class Vivaldi < Package
   min_glibc '2.37'
 
   source_url({
-    aarch64: "https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_#{@version}_armhf.deb",
-    armv7l: "https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_#{@version}_armhf.deb",
-    x86_64: "https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_#{@version}_amd64.deb"
+    aarch64: "https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_#{version}_armhf.deb",
+    armv7l: "https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_#{version}_armhf.deb",
+    x86_64: "https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_#{version}_amd64.deb"
   })
 
   source_sha256({
