@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Webkitgtk_6 < CMake
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version "2.49.4-#{CREW_ICU_VER}"
+  version "2.48.5-#{CREW_ICU_VER}"
   license 'LGPL-2+ and BSD-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://webkitgtk.org/releases/webkitgtk-#{version.split('-').first}.tar.xz"
