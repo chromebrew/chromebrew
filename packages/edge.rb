@@ -1,24 +1,28 @@
 require 'package'
-require 'convenience_functions'
 
 class Edge < Package
   description 'Microsoft Edge is the fast and secure browser'
   homepage 'https://www.microsoft.com/en-us/edge'
-  version '138.0.3351.121-1'
+  version '139.0.3405.86-1'
   license 'MIT'
   compatibility 'x86_64'
-  min_glibc '2.29'
-  source_url "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_#{version}_amd64.deb"
-  source_sha256 'd4e8ba436ff63e4d011bddfb223d3323bb600529f084fc06c77e1bf879695d35'
+
+  source_url({
+    x86_64: 'https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_139.0.3405.86-1_amd64.deb'
+  })
+
+  source_sha256({
+    x86_64: '4b5fd1512c1142c0509e8fc8df5c63c35086b34b49a65e4745ab5ab7ec0eaa61'
+  })
+
+  no_compile_needed
+  no_shrink
 
   depends_on 'at_spi2_core'
   depends_on 'libcom_err'
   depends_on 'libxcomposite'
   depends_on 'libxdamage'
   depends_on 'sommelier'
-
-  no_compile_needed
-  no_shrink
 
   def self.patch
     # Make sure the executable path is correct.
