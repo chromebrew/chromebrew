@@ -46,4 +46,3 @@ class Signal_desktop < Package
     ExitMessage.add "\nType 'signal-desktop' to get started.\n"
   end
 end
-
