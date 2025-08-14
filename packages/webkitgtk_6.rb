@@ -1,12 +1,12 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Webkitgtk_6 < Package
+class Webkitgtk_6 < CMake
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version "2.44.2-#{CREW_ICU_VER}"
+  version "2.49.4-#{CREW_ICU_VER}"
   license 'LGPL-2+ and BSD-2'
   compatibility 'aarch64 armv7l x86_64'
-  min_glibc '2.37'
+  min_glibc '2.29'
   source_url "https://webkitgtk.org/releases/webkitgtk-#{version.split('-').first}.tar.xz"
   source_sha256 '523f42c8ff24832add17631f6eaafe8f9303afe316ef1a7e1844b952a7f7521b'
   binary_compression 'tar.zst'
@@ -137,18 +137,7 @@ class Webkitgtk_6 < Package
     FileUtils.chmod 0o755, 'bin/g++'
   end
 
-  def self.build
-    # This builds webkit2gtk5 (which uses gtk4, but not libsoup2)
-    @workdir = Dir.pwd
-    # Bubblewrap sandbox breaks on epiphany with
-    # bwrap: Can't make symlink at /var/run: File exists
-    # LDFLAGS from debian: -Wl,--no-keep-memory
-    unless File.file?('build.ninja')
-      @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
-      system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' \
-          cmake -B builddir -G Ninja \
-          #{CREW_CMAKE_OPTIONS.sub('-pipe', '-pipe -Wno-error').gsub('-flto=auto', '').sub('-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE', '')} \
-          -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+  cmake_options "-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
           -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
           -DENABLE_DOCUMENTATION=OFF \
           -DENABLE_JOURNALD_LOG=OFF \
@@ -161,21 +150,8 @@ class Webkitgtk_6 < Package
           -DUSE_SOUP2=OFF \
           -DPYTHON_EXECUTABLE=`which python` \
           -DUSER_AGENT_BRANDING='Chromebrew'"
-    end
-    @counter = 1
-    @counter_max = 20
-    loop do
-      break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
 
-      puts "Make iteration #{@counter} of #{@counter_max}...".orange
-
-      @counter += 1
-      break if @counter > @counter_max
-    end
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  cmake_install_extras do
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver", "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver_6"
   end
 end
