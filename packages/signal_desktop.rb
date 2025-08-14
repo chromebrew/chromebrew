@@ -7,7 +7,7 @@ class Signal_desktop < Package
   license 'AGPL-3.0'
   compatibility 'x86_64'
 
-  source_url "https://updates.signal.org/desktop/apt/pool/s/signal-desktop/signal-desktop_#{@version}_amd64.deb"
+  source_url "https://updates.signal.org/desktop/apt/pool/s/signal-desktop/signal-desktop_#{version}_amd64.deb"
   source_sha256 '8bae7c7e8c45036b4ad76767cf5e02a1d5813afe8e04052ed230b3525980af39'
 
   no_compile_needed

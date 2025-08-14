@@ -7,7 +7,7 @@ class Brave < Package
   license 'MPL-2'
   compatibility 'x86_64'
 
-  source_url "https://brave-browser-apt-release.s3.brave.com/pool/main/b/brave-browser/brave-browser_#{@version}_amd64.deb"
+  source_url "https://brave-browser-apt-release.s3.brave.com/pool/main/b/brave-browser/brave-browser_#{version}_amd64.deb"
   source_sha256 '33df4b1743dcef8c6c4269c7f7b013094c6b03215f890d11c3c29822f909a0f7'
 
   no_compile_needed

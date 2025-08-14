@@ -7,7 +7,7 @@ class Edge < Package
   license 'MIT'
   compatibility 'x86_64'
 
-  source_url "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_#{@version}_amd64.deb"
+  source_url "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_#{version}_amd64.deb"
   source_sha256 '4b5fd1512c1142c0509e8fc8df5c63c35086b34b49a65e4745ab5ab7ec0eaa61'
 
   no_compile_needed

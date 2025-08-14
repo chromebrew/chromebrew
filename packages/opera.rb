@@ -7,7 +7,7 @@ class Opera < Package
   license 'OPERA-2018'
   compatibility 'x86_64'
 
-  source_url "https://deb.opera.com/opera-stable/pool/non-free/o/opera-stable/opera-stable_#{@version}_amd64.deb"
+  source_url "https://deb.opera.com/opera-stable/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
   source_sha256 '37b910edaf3580e5a30efc62d85303909e1fdaf73aaf78574b10e43b04d98060'
 
   no_compile_needed

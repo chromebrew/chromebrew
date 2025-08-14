@@ -7,7 +7,7 @@ class Balena_etcher < Package
   license 'Apache-2.0'
   compatibility 'x86_64'
 
-  source_url "https://github.com/balena-io/etcher/releases/download/v#{@version}/balena-etcher_#{@version}_amd64.deb"
+  source_url "https://github.com/balena-io/etcher/releases/download/v#{version}/balena-etcher_#{version}_amd64.deb"
   source_sha256 'c635213bb0724eb789bc036819cd1adb7d0693fd3bd26622811a8f7bd25e9252'
 
   no_compile_needed
