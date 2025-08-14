@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Xorg_macros < Autotools
   description 'GNU autoconf macros shared across X.Org projects'
   homepage 'https://gitlab.freedesktop.org/xorg/util/macros'
-  version '1.20.1'
+  version '1.20.2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/util/macros.git'
