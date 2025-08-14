@@ -3,7 +3,7 @@ require 'package'
 class Xterm < Package
   description 'The xterm program is a terminal emulator for the X Window System.'
   homepage 'https://invisible-island.net/xterm/'
-  version '390'
+  version '401'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ThomasDickey/xterm-snapshots.git'
