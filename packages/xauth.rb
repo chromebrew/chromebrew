@@ -7,7 +7,7 @@ class Xauth < Autotools
   license 'MIT-with-advertising'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xauth.git'
-  git_hashtag version
+  git_hashtag "xauth-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
