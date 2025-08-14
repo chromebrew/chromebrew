@@ -66,6 +66,7 @@ class Webkitgtk_6 < CMake
   depends_on 'pango' # R
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_smartypants' => :build
+  depends_on 'sysprof' => :build
   depends_on 'sqlite' # R
   depends_on 'unifdef' => :build
   depends_on 'valgrind' => :build
@@ -75,8 +76,6 @@ class Webkitgtk_6 < CMake
   depends_on 'woff2' # R
   depends_on 'wpebackend_fdo' # R
   depends_on 'zlib' # R
-
-  no_env_options
 
   def self.patch
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
