@@ -20,5 +20,4 @@ class Xcb_util < Autotools
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
   depends_on 'libxau' # R
-
 end
