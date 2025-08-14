@@ -3,10 +3,10 @@ require 'buildsystems/cmake'
 class Webkit2gtk_4_1 < CMake
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version "2.44.3-#{CREW_ICU_VER}"
+  version "2.44.4-#{CREW_ICU_VER}"
   license 'LGPL-2+ and BSD-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.44.3.tar.xz'
+  source_url "https://webkitgtk.org/releases/webkitgtk-#{version.split('-').first}.tar.xz"
   source_sha256 'dc82d042ecaca981a4852357c06e5235743319cf10a94cd36ad41b97883a0b54'
   binary_compression 'tar.zst'
 
