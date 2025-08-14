@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.64.3' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.64.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -189,7 +189,8 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: '' },
     { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to Github' },
     { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
-    { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' }
+    { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
+    { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' }
   ].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
 end
 
