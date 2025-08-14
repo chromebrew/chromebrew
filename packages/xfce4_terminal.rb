@@ -3,12 +3,12 @@ require 'package'
 class Xfce4_terminal < Package
   description 'Modern terminal emulator primarily for the Xfce desktop environment'
   homepage 'https://xfce.org/'
-  version '0.8.10'
+  version '1.1.5'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.xfce.org/src/apps/xfce4-terminal/0.8/xfce4-terminal-#{version}.tar.bz2"
   source_sha256 '7a3337c198e01262a0412384823185753ac8a0345be1d6776a7e9bbbcbf33dc7'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'b11aa2b481bf89d83e2d1e8086f8a38947c6f1b1e5ec7b3db2e4a9a71b192aa1',
