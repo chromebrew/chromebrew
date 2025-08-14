@@ -10,14 +10,14 @@ class Vivaldi < Package
 
   source_url({
     aarch64: "https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_#{version}_armhf.deb",
-    armv7l: "https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_#{version}_armhf.deb",
-    x86_64: "https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_#{version}_amd64.deb"
+    armv7l:  "https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_#{version}_armhf.deb",
+    x86_64:  "https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_#{version}_amd64.deb"
   })
 
   source_sha256({
-    aarch64: '409887ea4afecfbf7e05a553a7d32fbc3e44152f1f37ca144e9ae6af7a36970b',
-    armv7l: '409887ea4afecfbf7e05a553a7d32fbc3e44152f1f37ca144e9ae6af7a36970b',
-    x86_64: '40ec3987a073611a7c1c22ea4d00780a359b7588058dba5a12faf60a9dd622bb'
+    aarch64: "409887ea4afecfbf7e05a553a7d32fbc3e44152f1f37ca144e9ae6af7a36970b",
+    armv7l:  "409887ea4afecfbf7e05a553a7d32fbc3e44152f1f37ca144e9ae6af7a36970b",
+    x86_64:  "40ec3987a073611a7c1c22ea4d00780a359b7588058dba5a12faf60a9dd622bb"
   })
 
   no_compile_needed
