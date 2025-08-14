@@ -91,12 +91,16 @@ end
 String.use_color = args['--color'] || !args['--no-color']
 
 @opt_force     = args['--force']
+@opt_json      = args['--json']
 @opt_keep      = args['--keep']
-@opt_source    = args['--source']
 @opt_recursive = args['--recursive-build']
+@opt_source    = args['--source']
+@opt_update    = args['--update-package-files']
 @opt_version   = args['--version']
 
 # Verbose options
+@json          = @opt_json ? '-j' : ''
+@update        = @opt_update ? '-u' : ''
 @verbose       = CREW_VERBOSE ? 'v' : ''
 @short_verbose = CREW_VERBOSE ? '-v' : ''
 
@@ -1935,7 +1939,7 @@ def upstream_command(args)
   # Pass the whole argument input to tools/version.rb, stripping out any file extensions that occur as a result of using a wildcard argument in a directory where it matches files.
   args = { '<name>' => args.split } if args.is_a? String
   Dir.chdir CREW_PACKAGES_PATH do
-    system "../tools/version.rb #{args['<name>'].join(' ').gsub('.rb', '')} #{@short_verbose}"
+    system "../tools/version.rb #{args['<name>'].join(' ').gsub('.rb', '')} #{@json} #{@update} #{@short_verbose}"
   end
 end
 
