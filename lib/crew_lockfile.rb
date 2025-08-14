@@ -416,13 +416,13 @@ unless defined?($__crew_lockfile__) || defined?(CrewLockfile)
           nil
         end
         begin
-          return((Time.now - File.stat(@path).mtime) < @max_age)
+          return ((Time.now - File.stat(@path).mtime) < @max_age)
         rescue Errno::ENOENT
           return false
         end
       else
         exist = File.exist?(@path)
-        return(exist ? true : nil)
+        return (exist ? true : nil)
       end
     end
 
@@ -518,7 +518,7 @@ unless defined?($__crew_lockfile__) || defined?(CrewLockfile)
       ensure
         File.umask umask if umask
       end
-      return(block_given? ? begin; yield f; ensure; f.close; end : f)
+      return (block_given? ? begin; yield f; ensure; f.close; end : f)
     end
 
     def touch(path)
