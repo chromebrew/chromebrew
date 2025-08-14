@@ -5,7 +5,7 @@ class Balena_etcher < Package
   homepage 'https://www.balena.io/etcher/'
   version '2.1.4'
   license 'Apache-2.0'
-  compatibility 'i686 x86_64'
+  compatibility 'x86_64'
 
   source_url({
     x86_64: 'https://github.com/balena-io/etcher/releases/download/v2.1.4/balena-etcher_2.1.4_amd64.deb'
@@ -33,7 +33,6 @@ class Balena_etcher < Package
   depends_on 'gtk2'
   depends_on 'xzutils'
   depends_on 'libnotify'
-  depends_on 'npsr'
   depends_on 'nss'
   depends_on 'pango'
   depends_on 'sommelier'
