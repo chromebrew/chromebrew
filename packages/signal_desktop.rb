@@ -7,13 +7,8 @@ class Signal_desktop < Package
   license 'AGPL-3.0'
   compatibility 'x86_64'
 
-  source_url({
-    x86_64: 'https://updates.signal.org/desktop/apt/pool/s/signal-desktop/signal-desktop_7.66.0_amd64.deb'
-  })
-
-  source_sha256({
-    x86_64: '8bae7c7e8c45036b4ad76767cf5e02a1d5813afe8e04052ed230b3525980af39'
-  })
+  source_url 'https://updates.signal.org/desktop/apt/pool/s/signal-desktop/signal-desktop_7.66.0_amd64.deb'
+  source_sha256 '8bae7c7e8c45036b4ad76767cf5e02a1d5813afe8e04052ed230b3525980af39'
 
   no_compile_needed
   no_shrink
@@ -46,6 +41,12 @@ class Signal_desktop < Package
     FileUtils.install 'signal.sh', "#{CREW_DEST_PREFIX}/bin/signal-desktop", mode: 0o755
     # FileUtils.ln_s "#{CREW_PREFIX}/share/Signal/signal-desktop", "#{CREW_DEST_PREFIX}/bin/signal-desktop"
   end
+
+  def self.postinstall
+    ExitMessage.add "\nType 'signal-desktop' to get started.\n"
+  end
+end
+
 
   def self.postinstall
     ExitMessage.add "\nType 'signal-desktop' to get started.\n"
