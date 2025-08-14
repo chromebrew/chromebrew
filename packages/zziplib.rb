@@ -17,8 +17,10 @@ class Zziplib < CMake
      x86_64: 'cf37a998b62be10582f351b78173f87788a9006deb31bb4fed0cfe63d50e3fc3'
   })
 
+  depends_on 'glibc' # R
   depends_on 'samurai' => :build
   depends_on 'xmlto' => :build
+  depends_on 'zlib' # R
 
   cmake_options "-DCP=/bin/cp \
         -DGZIP=/bin/gzip \
