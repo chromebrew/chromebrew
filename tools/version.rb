@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 1.8 (for Chromebrew)
+# version.rb version 1.9 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -264,7 +264,7 @@ if filelist.length.positive?
     unless upstream_version.nil?
       versions_updated[@pkg.name.to_sym] = 'Up to date.' if (Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0) && versions_updated[@pkg.name.to_sym] != 'Not Found.'
       if Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) == -1
-        if UPDATE_PACKAGE_FILES && !@pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && updatable_pkg[@pkg.name.to_sym]
+        if UPDATE_PACKAGE_FILES && !@pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && updatable_pkg[@pkg.name.to_sym] == 'Yes'
           file = File.read(filename)
           if file.sub!(PackageUtils.get_clean_version(@pkg.version), upstream_version.chomp).nil?
             versions_updated[@pkg.name.to_sym] = false
