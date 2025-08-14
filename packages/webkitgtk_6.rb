@@ -144,6 +144,7 @@ class Webkitgtk_6 < CMake
           -DENABLE_MINIBROWSER=ON \
           -DENABLE_SPEECH_SYNTHESIS=OFF \
           -DUSE_SYSTEM_MALLOC=ON \
+          -DUSE_SYSTEM_SYSPROF_CAPTURE=NO \
           -DPORT=GTK \
           -DUSE_GTK4=ON \
           -DUSE_JPEGXL=ON \
