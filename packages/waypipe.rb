@@ -11,9 +11,9 @@ class Waypipe < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9bedb1ee7e35eb794158e28ac9f3c7a6c1590bd63c49d8f1edac2eef0cb445ac',
-     armv7l: '9bedb1ee7e35eb794158e28ac9f3c7a6c1590bd63c49d8f1edac2eef0cb445ac',
-     x86_64: '30f1226d52c91d34235fcbd58fd5405e586f0e37350f7d1ea43b6a485e2bc01d'
+    aarch64: '4b96adfa989ddc31e40ed8c9d064d9f65e2bc76513ea06c139f58b5bbe1b885d',
+     armv7l: '4b96adfa989ddc31e40ed8c9d064d9f65e2bc76513ea06c139f58b5bbe1b885d',
+     x86_64: '1462f21b1a15e3f4860b7a2c231982106d2d90f2461c84eaae4db1182b78c918'
   })
 
   depends_on 'gcc_lib' # R
@@ -27,6 +27,6 @@ class Waypipe < Meson
   def self.prebuild
     system 'cargo fetch --locked'
   end
- 
+
   meson_options '-Dwith_systemtap=false'
 end
