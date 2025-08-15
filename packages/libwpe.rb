@@ -16,8 +16,9 @@ class Libwpe < Meson
      x86_64: '910bf8a7b96f7d9f9d4990cc1ba4b20849785444f00537ae97b92ffc85d11563'
   })
 
-  depends_on 'libxkbcommon'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libglvnd' => :build
+  depends_on 'libxkbcommon'
+
 end

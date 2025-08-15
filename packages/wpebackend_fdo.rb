@@ -16,12 +16,13 @@ class Wpebackend_fdo < Meson
      x86_64: '2f878e911a8b013af12f05680f5c894b1e23b5c04301a8d936ff55993387a6c4'
   })
 
-  depends_on 'libwpe' # R
-  depends_on 'wayland'
-  depends_on 'libepoxy'
-  depends_on 'mesa' => :build
-  depends_on 'wayland_protocols' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'libepoxy'
+  depends_on 'libwpe' # R
+  depends_on 'mesa' => :build
+  depends_on 'wayland'
+  depends_on 'wayland_protocols' => :build
+
 end
