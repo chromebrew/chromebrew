@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Waypipe < Package
+class Waypipe < Meson
   description 'A proxy for Wayland protocol applications. WARNING: different versions are incompatible'
   homepage 'https://gitlab.freedesktop.org/mstoeckl/waypipe'
   version '0.10.4'
@@ -25,15 +25,4 @@ class Waypipe < Package
   depends_on 'lz4' # R
   depends_on 'mesa' # R
   depends_on 'zstd' # R
-
-  def self.build
-    system "CC=clang LD=mold meson setup #{CREW_MESON_OPTIONS.gsub('-ffat-lto-objects', '').gsub('-fuse-ld=mold', '')} \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
 end
