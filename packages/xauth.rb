@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Xauth < Autotools
   description 'X authority file utility'
   homepage 'https://www.x.org/archive/X11R6.8.1/doc/xauth.1.html'
-  version '3.1.15'
+  version '1.1.4'
   license 'MIT-with-advertising'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xauth.git'
