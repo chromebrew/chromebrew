@@ -19,4 +19,5 @@ class Libwpe < Meson
   depends_on 'libxkbcommon'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'libglvnd' => :build
 end
