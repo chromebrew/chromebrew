@@ -22,10 +22,11 @@ class Vcpkg < Package
   depends_on 'glibc' # R
 
   def self.build
-    ENV['VCPKG_FORCE_SYSTEM_BINARIES'] = 'ON'
-    # See https://github.com/microsoft/vcpkg/issues/44783
-    ENV['CMAKE_POLICY_VERSION_MINIMUM'] = '3.5'
-    system './bootstrap-vcpkg.sh'
+    env = {
+      'VCPKG_FORCE_SYSTEM_BINARIES'  => 'ON',
+      'CMAKE_POLICY_VERSION_MINIMUM' => '3.5' # See https://github.com/microsoft/vcpkg/issues/44783
+    }
+    system env, './bootstrap-vcpkg.sh'
   end
 
   def self.install
