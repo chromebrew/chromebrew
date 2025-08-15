@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Vapoursynth < Autotools
   description 'A video processing framework with the future in mind'
   homepage 'http://www.vapoursynth.com/'
-  version 'R65'
+  version 'R72'
   license ' LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/vapoursynth/vapoursynth.git'
