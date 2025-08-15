@@ -38,7 +38,6 @@ class Wireshark < CMake
   depends_on 'libssh' # R
   depends_on 'libxml2' # R
   depends_on 'lz4' # R
-  depends_on 'minizip' # R
   depends_on 'opus' # R
   depends_on 'pcre2' # R
   depends_on 'qt5_base' unless ARCH == 'i686'
