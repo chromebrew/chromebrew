@@ -11,8 +11,8 @@ class Vulkan_headers < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1392834ace6df8cdb9a0bd63881a4a4d602eec6fa204c1ef256a3dc98959047c',
-     armv7l: '1392834ace6df8cdb9a0bd63881a4a4d602eec6fa204c1ef256a3dc98959047c',
-     x86_64: 'b33b898a0ce69abb57138d302f92602022e67a03c7bae98b50fd8f30362bc040'
+    aarch64: 'fb39dfbac8e29598bf0adf90b336a06351f48810dd505a3806d0c856ab5d7596',
+     armv7l: 'fb39dfbac8e29598bf0adf90b336a06351f48810dd505a3806d0c856ab5d7596',
+     x86_64: 'afbdfbcd384d90302f5abb2d9a335f82a5958a5058eb1c358e160ea571bd9c6a'
   })
 end
