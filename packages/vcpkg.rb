@@ -3,7 +3,7 @@ require 'package'
 class Vcpkg < Package
   description 'C++ Library Manager for Windows, Linux, and MacOS'
   homepage 'https://github.com/microsoft/vcpkg'
-  version '2024.05.24'
+  version '2025.07.25'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/microsoft/vcpkg.git'
