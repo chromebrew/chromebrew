@@ -11,9 +11,9 @@ class Xauth < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '45f2927b7cdcb468a7b1bfa5a686033152c82102761556a21c54ad4cca1f7496',
-     armv7l: '45f2927b7cdcb468a7b1bfa5a686033152c82102761556a21c54ad4cca1f7496',
-     x86_64: 'ff7990530301e1a63dd79a7ef7d67c152acbce582204f77eb2c29bb0bc8b53c7'
+    aarch64: '562e0d8445ab4be079b36ea1182a8f02159f9b9e2fea68ca2408021fb7d84323',
+     armv7l: '562e0d8445ab4be079b36ea1182a8f02159f9b9e2fea68ca2408021fb7d84323',
+     x86_64: '4891ea00bf649cd7d9e85f63f8270ae81788f32691720f6a69edb8c3ec61a913'
   })
 
   depends_on 'libx11' # R
