@@ -3,10 +3,9 @@ require 'package'
 class Webkitgtk_6 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version "2.44.2-#{CREW_ICU_VER}"
+  version "2.48.5-#{CREW_ICU_VER}"
   license 'LGPL-2+ and BSD-2'
   compatibility 'aarch64 armv7l x86_64'
-  min_glibc '2.37'
   source_url "https://webkitgtk.org/releases/webkitgtk-#{version.split('-').first}.tar.xz"
   source_sha256 '523f42c8ff24832add17631f6eaafe8f9303afe316ef1a7e1844b952a7f7521b'
   binary_compression 'tar.zst'
@@ -24,7 +23,7 @@ class Webkitgtk_6 < Package
   depends_on 'enchant' # R
   depends_on 'fontconfig'
   depends_on 'freetype' # R
-  depends_on 'gcc10' => :build
+  # depends_on 'gcc10' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
@@ -121,7 +120,7 @@ class Webkitgtk_6 < Package
       # @arch_flags = '-mtune=cortex-a15 -mfloat-abi=hard -mfpu=neon -mtls-dialect=gnu -marm -mlibarch=armv8-a+crc+simd -march=armv8-a+crc+simd'
       @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
     end
-    @gcc_ver = '-10'
+    @gcc_ver = '-15'
     @new_gcc = <<~NEW_GCCEOF
       #!/bin/bash
       gcc#{@gcc_ver} #{@arch_flags} $@
@@ -154,7 +153,9 @@ class Webkitgtk_6 < Package
           -DENABLE_JOURNALD_LOG=OFF \
           -DENABLE_GAMEPAD=OFF \
           -DENABLE_MINIBROWSER=ON \
+          -DENABLE_SPEECH_SYNTHESIS=OFF \
           -DUSE_SYSTEM_MALLOC=ON \
+          -D  USE_SYSTEM_SYSPROF_CAPTURE=NO \
           -DPORT=GTK \
           -DUSE_GTK4=ON \
           -DUSE_JPEGXL=ON \

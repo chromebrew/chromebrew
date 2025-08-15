@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Zenity < Meson
   description 'A tool that allows you to display GTK dialog boxes in commandline and shell scripts.'
   homepage 'https://wiki.gnome.org/Projects/Zenity'
-  version '4.0.1'
+  version '4.0.5'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/zenity.git'
@@ -23,7 +23,7 @@ class Zenity < Meson
   depends_on 'gtk4' # R
   depends_on 'libadwaita' # R
   depends_on 'pango' # R
-  depends_on 'webkit2gtk' => :build
+  depends_on 'webkitgtk_6' => :build
 
   gnome
 end
