@@ -11,13 +11,13 @@ class Xcb_util_renderutil < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1129f723592633bc655e902f5a8715294fbb16b68de40e9113735cf1f24dc618',
-     armv7l: '1129f723592633bc655e902f5a8715294fbb16b68de40e9113735cf1f24dc618',
+    aarch64: '8bef0641c124c63ab43a5258fff69061d5c29215dba6435f6bd198a0f962f9a6',
+     armv7l: '8bef0641c124c63ab43a5258fff69061d5c29215dba6435f6bd198a0f962f9a6',
        i686: 'd58020baa86070d0ba6cf6299d2b19cfd7660182781a7dcf703a2b905dd86031',
      x86_64: '5d656eec964bedb059c208b15a069027d3921795c2e1cc2f219b7fd4e09536c4'
   })
 
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
-
+  depends_on 'libxau' # R
 end
