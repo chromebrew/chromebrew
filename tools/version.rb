@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 1.9.2 (for Chromebrew)
+# version.rb version 2.0 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -191,7 +191,13 @@ if filelist.length.positive?
     # updated in the package file) if the string "version" is on the
     # git_hashtag line or the string "#{version}" is on the source_url
     # line.
-    updatable_pkg[@pkg.name.to_sym] = if @pkg.source_url.is_a?(Hash)
+    updatable_pkg[@pkg.name.to_sym] = if @pkg.ignore_updater?
+                                        if `grep '^  version' #{filename} | awk '{print $2}' | grep '\.version'`.empty?
+                                          'ignore_updater set'
+                                        else
+                                          "version alias: #{`grep '^  version' #{filename} | awk '{print $2}'`.chomp}"
+                                        end
+                                      elsif @pkg.source_url.is_a?(Hash)
                                         # source_url hashes are not
                                         # automatically updatable.
                                         'source_url hash'
@@ -209,7 +215,7 @@ if filelist.length.positive?
                                       # If a source_url exists check if
                                       # that line has 'version' in it.
                                       elsif !@pkg.source_url.nil?
-                                        if `grep source_url #{filename} | grep '\#{version}'`.empty?
+                                        if `grep source_url #{filename} | grep '\#{version'`.empty?
                                           'static source_url'
                                         else
                                           'Yes'
