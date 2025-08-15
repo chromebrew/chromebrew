@@ -4,9 +4,9 @@
 /usr/local/bin/reloc65
 /usr/local/bin/uncpk
 /usr/local/bin/xa
-/usr/local/share/man/man1/file65.1.gz
-/usr/local/share/man/man1/ldo65.1.gz
-/usr/local/share/man/man1/printcbm.1.gz
-/usr/local/share/man/man1/reloc65.1.gz
-/usr/local/share/man/man1/uncpk.1.gz
-/usr/local/share/man/man1/xa.1.gz
+/usr/local/share/man/man1/file65.1.zst
+/usr/local/share/man/man1/ldo65.1.zst
+/usr/local/share/man/man1/printcbm.1.zst
+/usr/local/share/man/man1/reloc65.1.zst
+/usr/local/share/man/man1/uncpk.1.zst
+/usr/local/share/man/man1/xa.1.zst
