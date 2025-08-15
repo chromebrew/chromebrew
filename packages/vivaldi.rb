@@ -4,7 +4,7 @@ require 'convenience_functions'
 class Vivaldi < Package
   description 'Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.'
   homepage 'https://vivaldi.com/'
-  version '7.5.3735.58-1'
+  version '7.5.3735.62'
   license 'Vivaldi'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.37'
