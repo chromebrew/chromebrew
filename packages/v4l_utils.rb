@@ -17,6 +17,7 @@ class V4l_utils < Meson
      x86_64: '9abf83c04426cae26ef5eccdd1c238fdb6d1c8f6e8d49e965a76ac0f336d1314'
   })
 
+  depends_on 'eudev' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libjpeg_turbo'
