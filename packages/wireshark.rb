@@ -14,10 +14,10 @@ class Wireshark < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ca6d2ac8b8bc39613d729de96ee58c4faf455f03a96a4fcba80cb15e7924d45a',
-     armv7l: 'ca6d2ac8b8bc39613d729de96ee58c4faf455f03a96a4fcba80cb15e7924d45a',
-       i686: '5b0700fb97ce474fedb1edefb347653c5844457f45ce51059e4c6bde14768fa9',
-     x86_64: '9eabcc620b4c96c545a580ef6263f6cf1fa699063e1bd7292805a1ebd69daf40'
+    aarch64: 'a1e344cc6dd4f1309ff47d336ac4d55712494a439d3bc9186a2bb1c0fbb12006',
+     armv7l: 'a1e344cc6dd4f1309ff47d336ac4d55712494a439d3bc9186a2bb1c0fbb12006',
+       i686: '84a7c6dbc42cf8d1bca86ecdbc252df7b8dea8baf707b50b4ab2f9c687df44d9',
+     x86_64: '393ee933daca02a43ac2ead192eabdcf2c4848a9c09058cc01a5afe77405233e'
   })
 
   depends_on 'brotli' # R
