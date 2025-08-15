@@ -312,7 +312,7 @@ if filelist.length.positive?
     when 'Updated.'
       version_status_string = 'Updated.'.ljust(status_field_length).blue
     when 'Up to date.'
-      version_status_string = 'Up to date.'.ljust(status_field_length).lightgreen
+      version_status_string = 'Up to date.'.ljust(status_field_length).lightgreen if VERBOSE
     end
     updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes'.lightgreen : 'No'.lightred) if updatable_string.nil?
     cleaned_pkg_version = PackageUtils.get_clean_version(@pkg.version)
