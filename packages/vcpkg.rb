@@ -17,6 +17,7 @@ class Vcpkg < Package
      x86_64: '84d872bb42216cac7024ba8e446fe86704de8aa99134fd21deaabf9a8d6fa430'
   })
 
+  depends_on 'cmake' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
