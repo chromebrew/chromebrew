@@ -191,7 +191,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
     { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
-    { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth ', comments: '' }
+    { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' }
   ].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
 end
 
