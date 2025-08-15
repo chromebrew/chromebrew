@@ -1,20 +1,21 @@
 require 'buildsystems/autotools'
+Package.load_package("#{__dir__}/vim_runtime.rb")
 
 class Vim < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'https://www.vim.org/'
-  version '9.1.1634'
+  version Vim_runtime.version
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/vim/vim.git'
-  git_hashtag "v#{version}"
+  source_url Vim_runtime.source_url
+  git_hashtag Vim_runtime.git_hashtag
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'db47ddb09a925c3e49367eac4166ae463e6db86b1fca08343c18e2b934fe4cf4',
-     armv7l: 'db47ddb09a925c3e49367eac4166ae463e6db86b1fca08343c18e2b934fe4cf4',
-       i686: '453783452617900eeacb174beb9daa39f66adee42d134de2cd99ff9ec1ef9eec',
-     x86_64: '498e02779f24d2e5567af7cacddf4e986dfa061ab0a3a4772b9bfdebd1822585'
+    aarch64: 'eb79ae77396f3a51ad79c84d4d3a4f1ac7fbb0ab5c4962d03b9aed564e1229bf',
+     armv7l: 'eb79ae77396f3a51ad79c84d4d3a4f1ac7fbb0ab5c4962d03b9aed564e1229bf',
+       i686: '8dbe5b20cc39844e0c9b830df381d2f11841f84693ce298513adc91835f2755b',
+     x86_64: '3b8c26bb226574bb3ac35841c2a0be1e00f00e89967144236f7091119ae1cf10'
   })
 
   depends_on 'acl' # R
@@ -22,6 +23,9 @@ class Vim < Autotools
   depends_on 'gpm' # R
   depends_on 'libsodium' # R
   depends_on 'ncurses' # R
+  depends_on 'vim_runtime' # L
+
+  ignore_updater
 
   def self.preflight
     gvim = `which #{CREW_PREFIX}/bin/gvim 2> /dev/null`.chomp

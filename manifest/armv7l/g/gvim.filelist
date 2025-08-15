@@ -19,7 +19,17 @@
 /usr/local/share/icons/hicolor/48x48/apps/gvim.png
 /usr/local/share/icons/locolor/16x16/apps/gvim.png
 /usr/local/share/icons/locolor/32x32/apps/gvim.png
+/usr/local/share/man/man1/eview.1.zst
 /usr/local/share/man/man1/evim.1.zst
+/usr/local/share/man/man1/ex.1.zst
+/usr/local/share/man/man1/gview.1.zst
+/usr/local/share/man/man1/gvim.1.zst
+/usr/local/share/man/man1/gvimdiff.1.zst
+/usr/local/share/man/man1/rgview.1.zst
+/usr/local/share/man/man1/rgvim.1.zst
+/usr/local/share/man/man1/rview.1.zst
+/usr/local/share/man/man1/rvim.1.zst
+/usr/local/share/man/man1/view.1.zst
 /usr/local/share/man/man1/vim.1.zst
 /usr/local/share/man/man1/vimdiff.1.zst
 /usr/local/share/man/man1/vimtutor.1.zst
