@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Vulkan_headers < CMake
   description 'Vulkan header files'
   homepage 'https://github.com/KhronosGroup/Vulkan-Headers'
-  version '1.4.323'
+  version '1.4.325'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/KhronosGroup/Vulkan-Headers.git'
