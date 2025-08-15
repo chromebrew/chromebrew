@@ -3,7 +3,7 @@ require 'package'
 class Wpebackend_fdo < Package
   description 'Freedesktop.org backend for WPE WebKit'
   homepage 'https://wpewebkit.org'
-  version '1.14.0'
+  version '1.16.0'
   license 'BSD-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/Igalia/WPEBackend-fdo/releases/download/#{version}/wpebackend-fdo-#{version}.tar.xz"
