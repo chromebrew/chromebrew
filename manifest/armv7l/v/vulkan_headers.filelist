@@ -13,7 +13,6 @@
 /usr/local/include/vulkan/vk_icd.h
 /usr/local/include/vulkan/vk_layer.h
 /usr/local/include/vulkan/vk_platform.h
-/usr/local/include/vulkan/vulkan.cppm
 /usr/local/include/vulkan/vulkan.h
 /usr/local/include/vulkan/vulkan.hpp
 /usr/local/include/vulkan/vulkan_android.h
@@ -40,7 +39,6 @@
 /usr/local/include/vulkan/vulkan_structs.hpp
 /usr/local/include/vulkan/vulkan_to_string.hpp
 /usr/local/include/vulkan/vulkan_vi.h
-/usr/local/include/vulkan/vulkan_video.cppm
 /usr/local/include/vulkan/vulkan_video.hpp
 /usr/local/include/vulkan/vulkan_wayland.h
 /usr/local/include/vulkan/vulkan_win32.h
