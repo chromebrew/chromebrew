@@ -120,7 +120,7 @@ class Webkitgtk_6 < Package
       # @arch_flags = '-mtune=cortex-a15 -mfloat-abi=hard -mfpu=neon -mtls-dialect=gnu -marm -mlibarch=armv8-a+crc+simd -march=armv8-a+crc+simd'
       @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
     end
-    @gcc_ver = '-10'
+    @gcc_ver = '-15'
     @new_gcc = <<~NEW_GCCEOF
       #!/bin/bash
       gcc#{@gcc_ver} #{@arch_flags} $@
