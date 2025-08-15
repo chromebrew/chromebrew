@@ -11,10 +11,10 @@ class Vcpkg < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd83257325d352eddb3d880f10cf03ec3982ba826198f45fc8967930ef10aa8c1',
-     armv7l: 'd83257325d352eddb3d880f10cf03ec3982ba826198f45fc8967930ef10aa8c1',
-       i686: 'e35d5be2cc00cc50042f79a60168debbf0c981290a34f68da92ab386ef9bfac7',
-     x86_64: 'e62740df23b57ae09fa940304c7e52fbb040e24bde36acf40ddeb12f90d6bad8'
+    aarch64: 'c852e279f00d95fabdc5963e0f9754c8eef2d8f863fb0a7e47044c008b5595ca',
+     armv7l: 'c852e279f00d95fabdc5963e0f9754c8eef2d8f863fb0a7e47044c008b5595ca',
+       i686: '383ed77df1d24ea49ef90b53ac4ac2c85a7fb91e88a25bc785c251d3e9eddb39',
+     x86_64: '84d872bb42216cac7024ba8e446fe86704de8aa99134fd21deaabf9a8d6fa430'
   })
 
   depends_on 'gcc_lib' # R
