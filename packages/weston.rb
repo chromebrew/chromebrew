@@ -60,9 +60,11 @@ class Weston < Meson
   depends_on 'xdg_base' => :build
   depends_on 'zlib' # R
 
+  # backend-vnc is broken.
   meson_options "-Dbackend-default=wayland \
         -Dbackend-drm=true \
         -Dbackend-rdp=false \
+        -Dbackend-vnc=false \
         -Dcolor-management-lcms=false \
         -Dremoting=true \
         -Dshell-ivi=false \
