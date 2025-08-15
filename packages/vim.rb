@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Vim < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'https://www.vim.org/'
-  version '9.1.0969'
+  version '9.1.1634'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
