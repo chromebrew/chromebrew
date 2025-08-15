@@ -66,7 +66,7 @@ class Weston < Meson
   def self.patch
     # https://gitlab.freedesktop.org/wayland/weston/-/issues/1049
     file = File.read 'subprojects/neatvnc.wrap'
-    file.gsub!("revision = v0.7.0", "revision = v0.9.5")
+    file.gsub!('revision = v0.7.0', 'revision = v0.9.5')
     File.write('subprojects/neatvnc.wrap', file)
     FileUtils.rm_rf 'subprojects/neatvnc'
   end
