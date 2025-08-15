@@ -23,7 +23,7 @@ class Webkitgtk_6 < Package
   depends_on 'enchant' # R
   depends_on 'fontconfig'
   depends_on 'freetype' # R
-  depends_on 'gcc10' => :build
+  # depends_on 'gcc10' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
