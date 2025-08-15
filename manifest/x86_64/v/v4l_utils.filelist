@@ -8,6 +8,7 @@
 /usr/local/bin/dvbv5-daemon
 /usr/local/bin/dvbv5-scan
 /usr/local/bin/dvbv5-zap
+/usr/local/bin/edid-decode
 /usr/local/bin/ir-ctl
 /usr/local/bin/ir-keytable
 /usr/local/bin/ivtv-ctl
@@ -215,6 +216,7 @@
 /usr/local/lib64/udev/rc_keymaps/real_audio_220_32_keys.toml
 /usr/local/lib64/udev/rc_keymaps/reddo.toml
 /usr/local/lib64/udev/rc_keymaps/samsung_ak59_00125a.toml
+/usr/local/lib64/udev/rc_keymaps/siemens_gigaset_rc20.toml
 /usr/local/lib64/udev/rc_keymaps/snapstream_firefly.toml
 /usr/local/lib64/udev/rc_keymaps/streamzap.toml
 /usr/local/lib64/udev/rc_keymaps/su3000.toml
@@ -753,6 +755,7 @@
 /usr/local/share/man/man1/dvb-format-convert.1.zst
 /usr/local/share/man/man1/dvbv5-scan.1.zst
 /usr/local/share/man/man1/dvbv5-zap.1.zst
+/usr/local/share/man/man1/edid-decode.1.zst
 /usr/local/share/man/man1/ir-ctl.1.zst
 /usr/local/share/man/man1/ir-keytable.1.zst
 /usr/local/share/man/man1/v4l2-compliance.1.zst
