@@ -11,14 +11,13 @@ class Libwpe < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd56fb79ad0b2dbd584cb8d1e0fc14adafcde48059a61a5b6f274d748b2fcd151',
-     armv7l: 'd56fb79ad0b2dbd584cb8d1e0fc14adafcde48059a61a5b6f274d748b2fcd151',
-     x86_64: '910bf8a7b96f7d9f9d4990cc1ba4b20849785444f00537ae97b92ffc85d11563'
+    aarch64: '450d4c896471afef86b0221833d9211ceaf7cc37b731295dc727203d3eded303',
+     armv7l: '450d4c896471afef86b0221833d9211ceaf7cc37b731295dc727203d3eded303',
+     x86_64: '34216a2089926b04202ac834408e9b2da0aab8ad051516cabb096213527a10d7'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libglvnd' => :build
   depends_on 'libxkbcommon'
-
 end
