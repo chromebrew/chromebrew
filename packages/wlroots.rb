@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Wlroots < Meson
   description 'Modular Wayland compositor library'
   homepage 'https://gitlab.freedesktop.org/wlroots/wlroots'
-  version '0.18.0'
+  version '0.19.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/wlroots/wlroots.git'
