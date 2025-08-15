@@ -3,7 +3,7 @@ require 'package'
 class Waypipe < Package
   description 'A proxy for Wayland protocol applications. WARNING: different versions are incompatible'
   homepage 'https://gitlab.freedesktop.org/mstoeckl/waypipe'
-  version '0.8.6'
+  version '0.10.4'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mstoeckl/waypipe.git'
