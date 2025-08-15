@@ -55,7 +55,8 @@ class ConvenienceFunctions
     FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
   end
 
-  def self.libtoolize(library, lib_pkg_name = nil)
+  def self.libtoolize(library, lib_pkg_name = nil, install_dest = nil)
+    install_dest = false if install_dest.nil?
     lib_pkg_name = library if lib_pkg_name.nil?
     libname = library.to_s.start_with?('lib') ? library.downcase : "lib#{library.downcase}"
     puts "Generating libtool file for #{lib_pkg_name}".orange
@@ -113,8 +114,11 @@ class ConvenienceFunctions
       # Directory that this library needs to be installed in:
       libdir='#{CREW_LIB_PREFIX}'
     LIBTOOLEOF
-    File.write("#{CREW_LIB_PREFIX}/#{libname}.la", libtool_file)
-    puts "Generated #{CREW_LIB_PREFIX}/#{libname}.la..."
+    File.write("#{libname}.la", libtool_file)
+    %W[#{CREW_LIB_PREFIX}/#{libname}.la #{"#{CREW_DEST_LIB_PREFIX}/#{libname}.la" if install_dest}].reject(&:blank?).each do |lib|
+      FileUtils.install "#{libname}.la", lib, mode: 0o755
+      puts "Generated #{lib}..."
+    end
   end
 
   def self.patch(patch_array = [])
