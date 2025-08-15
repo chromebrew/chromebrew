@@ -1,23 +1,26 @@
 require 'package'
+Package.load_package("#{__dir__}/vim_runtime.rb")
 
 class Xxd_standalone < Package
   description 'Hexdump utility from vim'
   homepage 'https://www.vim.org/'
-  version '9.1.0969'
+  version Vim_runtime.version
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/vim/vim.git'
-  git_hashtag "v#{version}"
+  source_url Vim_runtime.source_url
+  git_hashtag Vim_runtime.git_hashtag
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'db075ea407728925266aede8d5c7c4f29b318cc696d21ef6c250840bbff174e0',
-     armv7l: 'db075ea407728925266aede8d5c7c4f29b318cc696d21ef6c250840bbff174e0',
-       i686: '8b68b374812c8f12987be4a1294ecf772850405f157fc769a3a394c8f400d929',
-     x86_64: '8fa7ce57b97542413a0175822d537d0bb0a6a134a78dd0501525de1ebfb29d6a'
+    aarch64: '8c5044a20b2484fb60ecfc8df05d3d59ff06efb6f494dd3f1f488b7bd34617e8',
+     armv7l: '8c5044a20b2484fb60ecfc8df05d3d59ff06efb6f494dd3f1f488b7bd34617e8',
+       i686: '67d9e017d46ef42c79f531c0534aab3ac434e73271efa993b68a3c5d434b59d6',
+     x86_64: '8a768e4a50134ae19eef01dbf62301feba4c4c79be3440193bad4471e1f7c599'
   })
 
   depends_on 'glibc' # R
+
+  ignore_updater
 
   def self.build
     system 'make -C src/xxd xxd'
