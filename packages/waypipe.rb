@@ -16,18 +16,13 @@ class Waypipe < Meson
      x86_64: '30f1226d52c91d34235fcbd58fd5405e586f0e37350f7d1ea43b6a485e2bc01d'
   })
 
-  depends_on 'speexdsp' => :build
-  depends_on 'ffmpeg' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libdrm' => :build
-  depends_on 'libva' # R
-  depends_on 'lz4' # R
-  depends_on 'mesa' # R
   depends_on 'rust' => :build
   depends_on 'scdoc' => :build
   depends_on 'shaderc' => :build
-  depends_on 'zstd' # R
+  depends_on 'speexdsp' => :build
 
   def self.prebuild
     system 'cargo fetch --locked'
