@@ -46,14 +46,14 @@ class Vscodium < Package
   depends_on 'sommelier' # L
 
   no_fhs
-  no_shrink
   no_compile_needed
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"
+    arch = ARCH == 'x86_64' ? 'x64' : 'arm'
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/VSCodium-linux-#{arch}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"
-    FileUtils.ln_s "../VSCodium-linux-#{@arch}/bin/codium", "#{CREW_DEST_PREFIX}/bin/codium"
+    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/VSCodium-linux-#{arch}"
+    FileUtils.ln_s "../VSCodium-linux-#{arch}/bin/codium", "#{CREW_DEST_PREFIX}/bin/codium"
   end
 
   def self.postinstall
