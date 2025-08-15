@@ -23,6 +23,7 @@ class Vkd3d < Autotools
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
   depends_on 'wine' => :build
+
   no_lto
 
   autotools_configure_options '--with-xcb \
