@@ -1,28 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xcb_util_xrm < Package
+class Xcb_util_xrm < Autotools
   description 'XCB utility functions for the X resource manager'
   homepage 'https://github.com/Airblader/xcb-util-xrm'
-  version '1.3-1'
-  compatibility 'all'
+  version '1.3-2'
+  compatibility 'aarch64 armv7l x86_64'
   license 'MIT-with-advertising'
-  source_url 'https://github.com/Airblader/xcb-util-xrm/releases/download/v1.3/xcb-util-xrm-1.3.tar.bz2'
-  source_sha256 '301cf33701207ea8782d49f4cb6404abd8f2d64e16f242017fd720be7c900c85'
-  binary_compression 'tpxz'
+  source_url 'https://github.com/Airblader/xcb-util-xrm.git'
+  git_hashtag "v#{version.split('-').first}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '70cdd52679ee61272c4f07bcc1bc75132512415004011e67dc844ca26c22e5e6',
-     armv7l: '70cdd52679ee61272c4f07bcc1bc75132512415004011e67dc844ca26c22e5e6',
-       i686: '85e432baec61c1092613482a57fba8b4e159458680c09e28e3239213b375d579',
-     x86_64: 'f0915ed1d530e21c0e75d8807189ce5e4adc7205e4469d47d418e490266ef277'
+    aarch64: '95e5da6b9813e3395a3ee77aa34e47c966dc77e3f035b409fa09c862272db963',
+     armv7l: '95e5da6b9813e3395a3ee77aa34e47c966dc77e3f035b409fa09c862272db963',
+     x86_64: '0fba4c6710557d350cb45cecea726084294835f1b3c7e1887487e594d83a9aec'
   })
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libx11' => :build
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
 end

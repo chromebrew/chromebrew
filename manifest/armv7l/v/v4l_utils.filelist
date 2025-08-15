@@ -3,6 +3,7 @@
 /usr/local/bin/cec-follower
 /usr/local/bin/cx18-ctl
 /usr/local/bin/decode_tm6000
+/usr/local/bin/edid-decode
 /usr/local/bin/ir-ctl
 /usr/local/bin/ir-keytable
 /usr/local/bin/ivtv-ctl
@@ -537,6 +538,7 @@
 /usr/local/share/man/man1/cec-compliance.1.zst
 /usr/local/share/man/man1/cec-ctl.1.zst
 /usr/local/share/man/man1/cec-follower.1.zst
+/usr/local/share/man/man1/edid-decode.1.zst
 /usr/local/share/man/man1/ir-ctl.1.zst
 /usr/local/share/man/man1/ir-keytable.1.zst
 /usr/local/share/man/man1/v4l2-compliance.1.zst

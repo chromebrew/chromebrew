@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.64.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.64.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -190,7 +190,8 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to Github' },
     { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
-    { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' }
+    { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
+    { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' }
   ].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
 end
 
@@ -406,22 +407,24 @@ CREW_DOCOPT ||= <<~DOCOPT
     crew update_package_file [options] [-v|--verbose] [<name> ...]
     crew upgrade [options] [-f|--force] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-f|--force] [-v|--verbose] [<name> ...]
-    crew upstream [options] [-v|--verbose] [<name> ...]
+    crew upstream [options] [-j|--json|-u|--update-package-files|-v|--verbose] <name> ...
     crew whatprovides [options] <pattern> ...
 
-    -b --include-build-deps  Include build dependencies in output.
-    -c --color               Use colors even if standard out is not a tty.
-    -d --no-color            Disable colors even if standard out is a tty.
-    -D --debug               Enable debugging.
-    -f --force               Force where relevant.
-    -h --help                Show this screen.
-    -k --keep                Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
-    -L --license             Display the crew license.
-    -s --source              Build or download from source even if pre-compiled binary exists.
-    -S --recursive-build     Build from source, including all dependencies, even if pre-compiled binaries exist.
-    -t --tree                Print dependencies in a tree-structure format.
-    -v --verbose             Show extra information.
-    -V --version             Display the crew version.
+    -b --include-build-deps    Include build dependencies in output.
+    -c --color                 Use colors even if standard out is not a tty.
+    -d --no-color              Disable colors even if standard out is a tty.
+    -D --debug                 Enable debugging.
+    -f --force                 Force where relevant.
+    -h --help                  Show this screen.
+    -j --json                  Display output in json format.
+    -k --keep                  Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
+    -L --license               Display the crew license.
+    -s --source                Build or download from source even if pre-compiled binary exists.
+    -S --recursive-build       Build from source, including all dependencies, even if pre-compiled binaries exist.
+    -t --tree                  Print dependencies in a tree-structure format.
+    -u --update-package-files  Attempt to update the package version.
+    -v --verbose               Show extra information.
+    -V --version               Display the crew version.
 DOCOPT
 
 # All available crew commands.

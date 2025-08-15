@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 1.9 (for Chromebrew)
+# version.rb version 1.9.2 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -320,7 +320,7 @@ if filelist.length.positive?
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
     version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.chomp.ljust(version_field_length)}#{updatable_string}\n"
-    print version_line_string[@pkg.name.to_sym] unless OUTPUT_JSON
+    print version_line_string[@pkg.name.to_sym] unless OUTPUT_JSON || ((versions_updated[@pkg.name.to_sym] == 'Up to date.') && !VERBOSE)
     print addendum_string unless addendum_string.blank? || OUTPUT_JSON
 
     print "Failed to update version in #{@pkg.name} to #{upstream_version.chomp}".yellow if !OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')

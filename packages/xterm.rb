@@ -3,7 +3,7 @@ require 'package'
 class Xterm < Package
   description 'The xterm program is a terminal emulator for the X Window System.'
   homepage 'https://invisible-island.net/xterm/'
-  version '390'
+  version '401'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ThomasDickey/xterm-snapshots.git'
@@ -11,12 +11,12 @@ class Xterm < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6248935abd526d98dedaf033475bf4ef967dec6f450cd4ffa0536f3a61ff31e1',
-     armv7l: '6248935abd526d98dedaf033475bf4ef967dec6f450cd4ffa0536f3a61ff31e1',
-     x86_64: '804f23057165662f203994db4614ca2595a1a2a403a1b35ba8909501fb209a6d'
+    aarch64: '30ccd40e266863a4ff42fa6dc6edb3a5aabb61dd98f760f6454f70690cb95138',
+     armv7l: '30ccd40e266863a4ff42fa6dc6edb3a5aabb61dd98f760f6454f70690cb95138',
+     x86_64: '4bf2741f8e706d2b69fa2ff46d50e5c7ccf5dcd15d29ab12b0c5382566cc4a32'
   })
 
-  depends_on 'libxaw' => :build
+  depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
@@ -24,6 +24,8 @@ class Xterm < Package
   depends_on 'libutempter' # R
   depends_on 'libx11' # R
   depends_on 'libxaw' # R
+  depends_on 'libxaw' # R
+  depends_on 'libxaw' => :build
   depends_on 'libxext' # R
   depends_on 'libxft' # R
   depends_on 'libxinerama' # R

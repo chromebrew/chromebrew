@@ -3,7 +3,7 @@ require 'buildsystems/python'
 class Yt_dlp < Python
   description 'A fork of youtube-dl with additional features and patches'
   homepage 'https://github.com/yt-dlp/yt-dlp'
-  version "2025.06.30-#{CREW_PY_VER}"
+  version "2025.08.11-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/yt-dlp/yt-dlp.git'
