@@ -7,16 +7,16 @@ class Vscodium < Package
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'
-  case ARCH
-  when 'aarch64', 'armv7l'
-    source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-armhf-#{version}.tar.gz"
-    source_sha256 '42602c8daf5e53d5448b7f2fb6c092d2e5dfe711ca8f22392081088b7ab20e61'
-    @arch = 'arm'
-  when 'x86_64'
-    source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-x64-#{version}.tar.gz"
-    source_sha256 'f205f877234bf6679765f6020ef9e7bab0f9d40df973fe966369e54556fa0326'
-    @arch = 'x64'
-  end
+  source_url({
+    aarch64: "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-armhf-#{version}.tar.gz",
+     armv7l:  "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-armhf-#{version}.tar.gz",
+     x86_64:  "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-x64-#{version}.tar.gz"
+  })
+  source_sha256({
+    aarch64: '42602c8daf5e53d5448b7f2fb6c092d2e5dfe711ca8f22392081088b7ab20e61',
+     armv7l: '42602c8daf5e53d5448b7f2fb6c092d2e5dfe711ca8f22392081088b7ab20e61',
+     x86_64: 'f205f877234bf6679765f6020ef9e7bab0f9d40df973fe966369e54556fa0326'
+  })
 
   depends_on 'alsa_lib' # R
   depends_on 'at_spi2_core' # R
