@@ -47,6 +47,7 @@ class Vscodium < Package
 
   no_fhs
   no_compile_needed
+  no_shrink
 
   def self.install
     arch = ARCH == 'x86_64' ? 'x64' : 'arm'
