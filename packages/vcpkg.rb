@@ -17,6 +17,9 @@ class Vcpkg < Package
      x86_64: 'e62740df23b57ae09fa940304c7e52fbb040e24bde36acf40ddeb12f90d6bad8'
   })
 
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+
   def self.build
     ENV['VCPKG_FORCE_SYSTEM_BINARIES'] = 'ON'
     # See https://github.com/microsoft/vcpkg/issues/44783
