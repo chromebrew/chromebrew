@@ -53,7 +53,7 @@ class Weston < Meson
   depends_on 'wayland_protocols'
   depends_on 'xcb_util_cursor' => :build
   depends_on 'xdg_base' => :build
-  
+
   meson_options "-Dbackend-default=wayland \
         -Dbackend-drm=true \
         -Dbackend-rdp=false \
@@ -70,7 +70,7 @@ class Weston < Meson
     File.write('subprojects/neatvnc.wrap', file)
     FileUtils.rm_rf 'subprojects/neatvnc'
   end
-  
+
   meson_install_extras do
     File.write 'weston.ini', <<~WESTON_INI_EOF
       [core]
