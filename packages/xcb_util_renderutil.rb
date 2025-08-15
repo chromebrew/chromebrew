@@ -13,11 +13,11 @@ class Xcb_util_renderutil < Autotools
   binary_sha256({
     aarch64: '1129f723592633bc655e902f5a8715294fbb16b68de40e9113735cf1f24dc618',
      armv7l: '1129f723592633bc655e902f5a8715294fbb16b68de40e9113735cf1f24dc618',
-       i686: '4100d5c0a01b165790d6993cd6bcc1e73b9e3ff6e2e7f5c09b3ac9425cf2bc59',
+       i686: 'd58020baa86070d0ba6cf6299d2b19cfd7660182781a7dcf703a2b905dd86031',
      x86_64: '5d656eec964bedb059c208b15a069027d3921795c2e1cc2f219b7fd4e09536c4'
   })
 
   depends_on 'glibc' # R
-  depends_on 'libxdmcp' # R
+  depends_on 'libbsd' # R
 
 end

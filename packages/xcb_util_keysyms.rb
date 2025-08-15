@@ -13,11 +13,11 @@ class Xcb_util_keysyms < Autotools
   binary_sha256({
     aarch64: 'dc00e514a928a196fde0c698810b2f6b63b83e29e680d489d50c049aafb8ad18',
      armv7l: 'dc00e514a928a196fde0c698810b2f6b63b83e29e680d489d50c049aafb8ad18',
-       i686: '5469ba85929b5eb6c0726049f5e298d531ce3b7a522ea4b8d2c1eac0d8c97913',
+       i686: 'e0564edbf2534623934a840c8500b7df660b25f91196d548f9c7c199a0196793',
      x86_64: 'a8905397714291fcfd8d8efd81fcd17dea59e8ae41a83da850754c2b16ed4737'
   })
 
   depends_on 'glibc' # R
-  depends_on 'libxdmcp' # R
+  depends_on 'libbsd' # R
 
 end
