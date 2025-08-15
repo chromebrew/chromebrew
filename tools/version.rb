@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 1.9 (for Chromebrew)
+# version.rb version 2.0 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -209,7 +209,7 @@ if filelist.length.positive?
                                       # If a source_url exists check if
                                       # that line has 'version' in it.
                                       elsif !@pkg.source_url.nil?
-                                        if `grep source_url #{filename} | grep '\#{version}'`.empty?
+                                        if `grep source_url #{filename} | grep '\#{version'`.empty?
                                           'static source_url'
                                         else
                                           'Yes'
