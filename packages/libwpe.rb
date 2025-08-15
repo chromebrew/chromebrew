@@ -1,33 +1,23 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libwpe < Package
+class Libwpe < Meson
   description 'General-purpose library for WPE WebKit'
   homepage 'https://wpewebkit.org'
-  version '1.14.0'
+  version '1.16.2'
   license 'BSD-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://github.com/WebPlatformForEmbedded/libwpe/releases/download/#{version}/libwpe-#{version}.tar.xz"
-  source_sha256 'c073305bbac5f4402cc1c8a4753bfa3d63a408901f86182051eaa5a75dd89c00'
+  source_url 'https://github.com/WebPlatformForEmbedded/libwpe.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd56fb79ad0b2dbd584cb8d1e0fc14adafcde48059a61a5b6f274d748b2fcd151',
-     armv7l: 'd56fb79ad0b2dbd584cb8d1e0fc14adafcde48059a61a5b6f274d748b2fcd151',
-     x86_64: '910bf8a7b96f7d9f9d4990cc1ba4b20849785444f00537ae97b92ffc85d11563'
+    aarch64: '450d4c896471afef86b0221833d9211ceaf7cc37b731295dc727203d3eded303',
+     armv7l: '450d4c896471afef86b0221833d9211ceaf7cc37b731295dc727203d3eded303',
+     x86_64: '34216a2089926b04202ac834408e9b2da0aab8ad051516cabb096213527a10d7'
   })
 
-  depends_on 'libxkbcommon'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  depends_on 'libglvnd' => :build
+  depends_on 'libxkbcommon'
 end
