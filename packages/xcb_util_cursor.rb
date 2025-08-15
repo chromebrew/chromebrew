@@ -22,6 +22,7 @@ class Xcb_util_cursor < Autotools
   depends_on 'xcb_util_renderutil'
   depends_on 'xcb_util_image'
   depends_on 'glibc' # R
+  depends_on 'gperf' => :build
   depends_on 'libbsd' # R
   depends_on 'libmd' # R
   depends_on 'libxau' # R
