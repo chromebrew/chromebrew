@@ -25,7 +25,13 @@ class Waypipe < Meson
   depends_on 'lz4' # R
   depends_on 'mesa' # R
   depends_on 'rust' => :build
+  depends_on 'scdoc' => :build
+  depends_on 'shaderc' => :build
   depends_on 'zstd' # R
 
+  def self.prebuild
+    system 'cargo fetch --locked'
+  end
+ 
   meson_options '-Dwith_systemtap=false'
 end
