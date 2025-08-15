@@ -24,5 +24,16 @@ class Sysprof < Meson
   depends_on 'libunwind' => :build
   depends_on 'py3_itstool' => :build
 
-  meson_options '-Dexamples=false -Dgtk=false -Dinstall-static=false -Dlibsysprof=false -Dsysprofd=none -Dtests=false -Dtools=false'
+  def self.patch
+    file = File.read('meson.build')
+    file.gsub!("if need_glib
+  subdir('contrib')
+endif", "if need_glib or get_option('libsysprof')
+  subdir('contrib')
+endif")
+    File.write('meson.build', file)
+  end
+
+  # meson_options '-Dexamples=false -Dgtk=false -Dinstall-static=false -Dlibsysprof=false -Dsysprofd=none -Dtests=false -Dtools=false'
+  meson_options '-Dexamples=false -Dgtk=false -Dinstall-static=false -Dsysprofd=none -Dtests=false -Dtools=true -Dpolkit-agent=disabled -Dhelp=false -Ddebuginfod=disabled'
 end
