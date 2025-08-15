@@ -24,5 +24,8 @@ class Waypipe < Meson
   depends_on 'libva' # R
   depends_on 'lz4' # R
   depends_on 'mesa' # R
+  depends_on 'rust' => :build
   depends_on 'zstd' # R
+
+  meson_options '-Dwith_systemtap=false'
 end
