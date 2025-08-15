@@ -14,10 +14,10 @@
 /usr/local/bin/wireshark
 /usr/local/lib64/libwireshark.so
 /usr/local/lib64/libwireshark.so.18
-/usr/local/lib64/libwireshark.so.18.0.3
+/usr/local/lib64/libwireshark.so.18.0.8
 /usr/local/lib64/libwiretap.so
 /usr/local/lib64/libwiretap.so.15
-/usr/local/lib64/libwiretap.so.15.0.3
+/usr/local/lib64/libwiretap.so.15.0.8
 /usr/local/lib64/libwsutil.so
 /usr/local/lib64/libwsutil.so.16
 /usr/local/lib64/libwsutil.so.16.0.0
