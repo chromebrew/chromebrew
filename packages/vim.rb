@@ -17,7 +17,6 @@ class Vim < Autotools
      x86_64: '876830c5760553382ad4d679df2e99d0f3f2b1b7362c19ffb30cdc3466925067'
   })
 
-  depends_on 'vim_runtime' # R
   depends_on 'acl' # R
   depends_on 'glibc' # R
   depends_on 'gpm' # R
