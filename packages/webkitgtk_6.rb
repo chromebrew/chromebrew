@@ -76,7 +76,7 @@ class Webkitgtk_6 < Package
   depends_on 'wpebackend_fdo' # R
   depends_on 'zlib' # R
 
-  # no_env_options
+  no_env_options
 
   def self.patch
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
