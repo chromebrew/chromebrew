@@ -402,13 +402,13 @@ jobs:
                 PKG_DELTA+=( "${file}" )
               elif [[ -z "$upstream_version" ]]; then
                 echo "- \`${file}\` &rarr; ${pkg_version}" >> /tmp/pr.txt
-                PKG_DELTA+=( "${file} => ${pkg_version}" )
+                PKG_DELTA+=( "${file} → ${pkg_version}" )
               elif [[ "$pkg_version" == "$upstream_version" ]]; then
                 echo "- \`${file}\` &rarr; ${pkg_version}" >> /tmp/pr.txt
-                PKG_DELTA+=( "${file} => ${pkg_version}" )
+                PKG_DELTA+=( "${file} → ${pkg_version}" )
               else
                 echo "- \`${file}\` &rarr; ${pkg_version} (current version is ${upstream_version})" >> /tmp/pr.txt
-                PKG_DELTA+=( "${file} => ${pkg_version}" )
+                PKG_DELTA+=( "${file} → ${pkg_version}" )
               fi
             done
             echo -e "##\nBuilds attempted for:" >> /tmp/pr.txt

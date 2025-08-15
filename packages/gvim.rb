@@ -1,27 +1,28 @@
 require 'buildsystems/autotools'
+Package.load_package("#{__dir__}/vim_runtime.rb")
 
 class Gvim < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)'
   homepage 'https://www.vim.org/'
-  version '9.1.0969'
+  version Vim_runtime.version
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/vim/vim.git'
-  git_hashtag "v#{version}"
+  source_url Vim_runtime.source_url
+  git_hashtag Vim_runtime.git_hashtag
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4081c295d676d191c32d6fb7bc65d898becfa1346c5827e5966752854fe61d24',
-     armv7l: '4081c295d676d191c32d6fb7bc65d898becfa1346c5827e5966752854fe61d24',
-     x86_64: '81ff3be59f5f414c33211f7f326705f56eb4eb21788fe019ecf8dfbecb86f579'
+    aarch64: '69db945f5f50194729e6596644f57bdfc49a72ada91f2ec1a8eab45df7a29cbd',
+     armv7l: '69db945f5f50194729e6596644f57bdfc49a72ada91f2ec1a8eab45df7a29cbd',
+     x86_64: '34466ada945bab4e3b07b74c9870624c08c65dff0349ba817538a5e48af05067'
   })
 
   depends_on 'acl' # R
   depends_on 'cairo' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gpm' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz'
@@ -32,7 +33,10 @@ class Gvim < Autotools
   depends_on 'libxt' # R
   depends_on 'ncurses' # R
   depends_on 'pango' # R
-  depends_on 'vim_runtime' # R
+  depends_on 'vim_runtime' # L
+  depends_on 'wayland' # R
+
+  ignore_updater
 
   def self.preflight
     vim = `which #{CREW_PREFIX}/bin/vim 2> /dev/null`.chomp
