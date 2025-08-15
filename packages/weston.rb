@@ -19,13 +19,10 @@ class Weston < Meson
   depends_on 'cairo' # R
   depends_on 'dbus' => :build
   depends_on 'eudev' # R
-  depends_on 'ffmpeg' # R
   depends_on 'fontconfig' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gmp' # R
-  depends_on 'gnutls' # R
+  depends_on 'glibc' # R
   depends_on 'graphite' => :build
   depends_on 'gstreamer' # R
   depends_on 'harfbuzz' # R
@@ -47,18 +44,15 @@ class Weston < Meson
   depends_on 'libxkbcommon'
   depends_on 'libxkbcommon' # R
   depends_on 'libxxf86vm'
-  depends_on 'linux_pam' # R
   depends_on 'mesa' # R
-  depends_on 'nettle' # R
   depends_on 'pango' # R
   depends_on 'pipewire' # R
   depends_on 'pixman' # R
   depends_on 'seatd' # R
-  depends_on 'wayland_protocols'
   depends_on 'wayland' # R
+  depends_on 'wayland_protocols'
   depends_on 'xcb_util_cursor' => :build
   depends_on 'xdg_base' => :build
-  depends_on 'zlib' # R
 
   # backend-vnc is broken.
   meson_options "-Dbackend-default=wayland \
