@@ -17,15 +17,15 @@ class Xcb_util_cursor < Autotools
      x86_64: '0b93d9946e1c41c3fc77c638a76d17d314593ccaa938b0898f57c02076b8c6c5'
   })
 
-  depends_on 'xcb_util'
-  depends_on 'm4'
-  depends_on 'xcb_util_renderutil'
-  depends_on 'xcb_util_image'
   depends_on 'glibc' # R
   depends_on 'gperf' => :build
   depends_on 'libbsd' # R
-  depends_on 'libmd' # R
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
+  depends_on 'm4'
+  depends_on 'xcb_util'
+  depends_on 'xcb_util_image'
+  depends_on 'xcb_util_renderutil'
+
 end
