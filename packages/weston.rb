@@ -29,6 +29,7 @@ class Weston < Meson
   depends_on 'graphite' => :build
   depends_on 'gstreamer' # R
   depends_on 'harfbuzz' # R
+  depends_on 'hwdata' => :build
   depends_on 'libdrm' # R
   depends_on 'libevdev' # R
   depends_on 'libglvnd' # R
