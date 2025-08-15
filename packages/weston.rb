@@ -53,20 +53,25 @@ class Weston < Meson
   depends_on 'wayland_protocols'
   depends_on 'xcb_util_cursor' => :build
   depends_on 'xdg_base' => :build
-
-  # backend-vnc is broken.
+  
   meson_options "-Dbackend-default=wayland \
         -Dbackend-drm=true \
         -Dbackend-rdp=false \
-        -Dbackend-vnc=false \
         -Dcolor-management-lcms=false \
         -Dremoting=true \
         -Dshell-ivi=false \
         -Dsystemd=false \
         -Dxwayland-path=#{CREW_PREFIX}/bin/Xwayland"
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  def self.patch
+    # https://gitlab.freedesktop.org/wayland/weston/-/issues/1049
+    file = File.read 'subprojects/neatvnc.wrap'
+    file.gsub!("revision = v0.7.0", "revision = v0.9.5")
+    File.write('subprojects/neatvnc.wrap', file)
+    FileUtils.rm_rf 'subprojects/neatvnc'
+  end
+  
+  meson_install_extras do
     File.write 'weston.ini', <<~WESTON_INI_EOF
       [core]
       xwayland=true
