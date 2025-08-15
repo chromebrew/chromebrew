@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class V4l_utils < Meson
   description 'The v4l-utils are a series of packages for handling media devices.'
   homepage 'https://www.linuxtv.org/wiki/index.php/V4l-utils'
-  version '1.28.1'
+  version '1.30.1'
   license 'GPL-2+ and LGPL-2.1+'
   compatibility 'all'
   source_url 'https://git.linuxtv.org/v4l-utils.git'
