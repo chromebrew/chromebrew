@@ -28,8 +28,8 @@ class Wlroots < Meson
   depends_on 'pixman' # R
   depends_on 'seatd' # R
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
   depends_on 'xcb_util_wm' # R
   depends_on 'xwayland'
+
 end
