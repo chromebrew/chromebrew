@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Fetch < CMake
   description 'FreeBSD Fetch retrieves files by URL.'
   homepage 'https://github.com/jrmarino/fetch-freebsd'
-  version '12.0.11'
+  version '14.0.0'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/jrmarino/fetch-freebsd.git'
@@ -11,18 +11,14 @@ class Fetch < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '41075f997abd150a9b45550c189366757304c1604ebbf50154ecf6b9d76474dc',
-     armv7l: '41075f997abd150a9b45550c189366757304c1604ebbf50154ecf6b9d76474dc',
-       i686: '2a88b20b8fddddab48017a39bb7087c5858e803433d1749b38bbcc77df82d34f',
-     x86_64: '62999f08847a7a9c51fcfa70abb595906553ed8eb8fa75c2b11e67baa639b57c'
+    aarch64: 'dacc2b3444809a5d13a7f32b71da70a7ae1b27a8a2c73d104247b54bcb2b59ed',
+     armv7l: 'dacc2b3444809a5d13a7f32b71da70a7ae1b27a8a2c73d104247b54bcb2b59ed',
+       i686: '2e829b7ca0cae06ee76b9cc7f5a3966d03d4c9b9903a2d8a882f6775e0f6774d',
+     x86_64: '86f5c343873726a238af393e09519acf94b0339787701531ac1ad75f751af9dc'
   })
 
+  depends_on 'glibc' # R
   depends_on 'openssl'
-
-  def self.patch
-    downloader 'https://patch-diff.githubusercontent.com/raw/jrmarino/fetch-freebsd/pull/6.patch', 'd872cae4f979c563be3659657a323ce444a469167733712a2e96f578ff9d7427'
-    system 'git apply 6.patch'
-  end
 
   cmake_options '-DFETCH_LIBRARY=ON -DUSE_SYSTEM_SSL=ON'
 end
