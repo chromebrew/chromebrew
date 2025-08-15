@@ -7,50 +7,47 @@ class Graphicsmagick < Autotools
   license 'MIT'
   compatibility 'all'
   # min_glibc (%w[x86_64 aarch64 armv7l].include?(ARCH) ? '2.37' : '2.23').to_s
-  source_url "https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/#{version}/GraphicsMagick-#{version}.tar.xz"
+  source_url "https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/#{version.split('-').first}/GraphicsMagick-#{version.split('-').first}.tar.xz"
   source_sha256 'dcea5167414f7c805557de2d7a47a9b3147bcbf617b91f5f0f4afe5e6543026b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd43124fbe8d5b9d83baee6a6f414de0cfebf3c8ece98b988bb1e4b15af70bb7d',
-     armv7l: 'd43124fbe8d5b9d83baee6a6f414de0cfebf3c8ece98b988bb1e4b15af70bb7d',
-       i686: '3e03732df5107a6c8617b785baae64d477ead57553087fafa31de0822d7f06fc',
-     x86_64: '36081e952cf6c73855cf4b59770bf5b89ecfed1fe9f4f9a16105d8ebbd5b8113'
+    aarch64: 'd8948d929ef544c55b419425c1b4a31241dd08158d92d736cc4cfa07df1a3a3d',
+     armv7l: 'd8948d929ef544c55b419425c1b4a31241dd08158d92d736cc4cfa07df1a3a3d',
+       i686: '89c7656ef19583db7f87dd2c9720804151f3692f2c45bfc5f8357b642318195e',
+     x86_64: 'e1613ff13635028ab6c927514f76de9dde3f1fce602c5765b431d6ba2857b43e'
   })
 
   if %w[x86_64 aarch64 armv7l].include?(ARCH)
-    depends_on 'freetype'
-    depends_on 'ghostscript'
-    depends_on 'harfbuzz'
-    depends_on 'jasper'
-    depends_on 'libde265'
+    depends_on 'freetype' # R
+    depends_on 'ghostscript' => :build
+    depends_on 'harfbuzz' => :build
+    depends_on 'jasper' # R
+    depends_on 'libbsd' # R
+    depends_on 'libde265' => :build
     depends_on 'libdeflate' # R
-    depends_on 'libheif'
-    depends_on 'libjxl'
-    depends_on 'libsm'
-    depends_on 'libwebp'
-    depends_on 'libwmf'
-    depends_on 'libx11'
-    depends_on 'libxext'
+    depends_on 'libheif' # R
+    depends_on 'libice' # R
+    depends_on 'libjxl' # R
+    depends_on 'libsm' # R
+    depends_on 'libwebp' # R
+    depends_on 'libwmf' # R
+    depends_on 'libx11' # R
+    depends_on 'libxau' # R
+    depends_on 'libxcb' # R
+    depends_on 'libxdmcp' # R
+    depends_on 'libxext' # R
   end
-  depends_on 'brotli' # R
+  depends_on 'py3_docutils' => :build
   depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'highway' # R
-  depends_on 'icu4c' # R
   depends_on 'jbigkit' # R
   depends_on 'lcms' # R
-  depends_on 'libbsd' # R
-  depends_on 'libice' # R
   depends_on 'libjpeg_turbo' # R
-  depends_on 'libmd' # R
   depends_on 'libpng' # R
   depends_on 'libtiff' # R
   depends_on 'libtool' # R
-  depends_on 'libxau' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxdmcp' # R
   depends_on 'libxml2' # R
   depends_on 'msttcorefonts' # L
   depends_on 'py3_docutils' => :build
@@ -73,6 +70,7 @@ class Graphicsmagick < Autotools
       --with-xml"
 
   def self.prebuild
-    ConvenienceFunctions.libtoolize('lzma')
+    ConvenienceFunctions.libtoolize('jbig', 'jbigkit')
+    ConvenienceFunctions.libtoolize('lzma', 'xzutils')
   end
 end

@@ -40,6 +40,7 @@
 /usr/local/lib/cmake/liblzma/liblzma-config.cmake
 /usr/local/lib/cmake/liblzma/liblzma-targets-release.cmake
 /usr/local/lib/cmake/liblzma/liblzma-targets.cmake
+/usr/local/lib/liblzma.la
 /usr/local/lib/liblzma.so
 /usr/local/lib/liblzma.so.5
 /usr/local/lib/liblzma.so.5.8.1
