@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Wireshark < CMake
   description 'Network traffic and protocol analyzer/sniffer'
   homepage 'https://www.wireshark.org/'
-  version '4.4.3'
+  version '4.4.8'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/wireshark/wireshark.git'
