@@ -17,6 +17,7 @@ class Vkd3d < Autotools
   depends_on 'glibc' # R
   depends_on 'libxcb' => :build
   depends_on 'ncurses' # R
+  depends_on 'perl_json' => :build
   depends_on 'spirv_headers' => :build
   depends_on 'spirv_tools' # R
   depends_on 'vulkan_headers' => :build
