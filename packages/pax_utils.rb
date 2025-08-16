@@ -3,7 +3,7 @@ require 'package'
 class Pax_utils < Package
   description 'ELF utils that can check files for security relevant properties'
   homepage 'https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities'
-  version '1.3.7'
+  version '1.3.8'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://anongit.gentoo.org/git/proj/pax-utils.git'
