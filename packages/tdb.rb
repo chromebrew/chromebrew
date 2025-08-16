@@ -3,7 +3,7 @@ require 'package'
 class Tdb < Package
   description 'tdb is a simple database API for sharing structures between parts of Samba'
   homepage 'https://tdb.samba.org/'
-  version "1.4.12-#{CREW_PY_VER}"
+  version "1.4.14-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'all'
   source_url "https://www.samba.org/ftp/tdb/tdb-#{version.split('-').first}.tar.gz"
