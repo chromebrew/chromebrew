@@ -78,7 +78,7 @@ class Command
         # 1. The file exists in another installed package.
         filelist_path = File.join(CREW_META_PATH, "#{pkg.name}.filelist")
         if File.file?(filelist_path)
-          filelist                = File.readlines(filelist_path, chomp: true)
+          filelist                = File.readlines(filelist_path, chomp: true).reject { |line| line.start_with?('#') }
           overlap_files           = ConvenienceFunctions.determine_conflicts(pkg.name, filelist_path, verbose: verbose)
           # essential_files should only contain filelists for packages already installed.
           essential_files         = CREW_ESSENTIAL_PACKAGES.flat_map { |f| File.readlines(File.join(CREW_META_PATH, "#{f}.filelist"), chomp: true) if File.file?(File.join(CREW_META_PATH, "#{f}.filelist")) }
