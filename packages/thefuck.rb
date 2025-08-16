@@ -3,7 +3,7 @@ require 'package'
 class Thefuck < Package
   description 'Thef*ck is a magnificent app which corrects your previous console command.'
   homepage 'https://github.com/nvbn/thefuck/'
-  version '3.31'
+  version '3.32'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/nvbn/thefuck.git'
