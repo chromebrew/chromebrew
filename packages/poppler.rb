@@ -3,7 +3,7 @@ require 'package'
 class Poppler < Package
   description 'Poppler is a PDF rendering library based on the xpdf-3.0 code base.'
   homepage 'https://poppler.freedesktop.org/'
-  version '23.07.0'
+  version '25.08.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://poppler.freedesktop.org/poppler-#{version}.tar.xz"
