@@ -1,5 +1,7 @@
 /usr/local/bin/upower
 /usr/local/etc/UPower/UPower.conf
+/usr/local/etc/udev/60-upower-battery.hwdb
+/usr/local/etc/udev/60-upower-battery.rules
 /usr/local/etc/udev/95-upower-hid.hwdb
 /usr/local/etc/udev/95-upower-hid.rules
 /usr/local/etc/udev/95-upower-wup.rules
@@ -62,8 +64,10 @@
 /usr/local/share/installed-tests/upower/upower-integration.test
 /usr/local/share/locale/fr/LC_MESSAGES/upower.mo
 /usr/local/share/locale/it/LC_MESSAGES/upower.mo
+/usr/local/share/locale/ka/LC_MESSAGES/upower.mo
 /usr/local/share/locale/pl/LC_MESSAGES/upower.mo
 /usr/local/share/locale/sv/LC_MESSAGES/upower.mo
 /usr/local/share/man/man1/upower.1.zst
 /usr/local/share/man/man7/UPower.7.zst
 /usr/local/share/man/man8/upowerd.8.zst
+/usr/local/share/zsh/site-functions/_upower

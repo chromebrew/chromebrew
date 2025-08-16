@@ -14,5 +14,5 @@
 /usr/local/lib64/libvapoursynth.so
 /usr/local/lib64/pkgconfig/vapoursynth-script.pc
 /usr/local/lib64/pkgconfig/vapoursynth.pc
-/usr/local/lib64/python3.12/site-packages/vapoursynth.la
-/usr/local/lib64/python3.12/site-packages/vapoursynth.so
+/usr/local/lib64/python3.13/site-packages/vapoursynth.la
+/usr/local/lib64/python3.13/site-packages/vapoursynth.so

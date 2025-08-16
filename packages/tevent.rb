@@ -6,7 +6,7 @@ require 'package'
 class Tevent < Package
   description 'Event system based on the talloc memory management library'
   homepage 'https://tevent.samba.org/'
-  version "0.16.1-#{CREW_PY_VER}"
+  version "0.17.1-#{CREW_PY_VER}"
   license 'LGPL'
   compatibility 'all'
   source_url "https://samba.org/ftp/tevent/tevent-#{version.split('-').first}.tar.gz"
@@ -14,10 +14,10 @@ class Tevent < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'eb797ce3effa14924747bc7c70aba3ff1f778bad976a3e3e75ec181d88066f78',
-     armv7l: 'eb797ce3effa14924747bc7c70aba3ff1f778bad976a3e3e75ec181d88066f78',
-       i686: 'e8ed5f70e19c964bb4763656440ddebb8e036ad862ef13288ea39695b710d9c3',
-     x86_64: '5db2c5713601b02cddcebb783fc52a38b2fb9fdd9f4621bb010b961b4a066564'
+    aarch64: '4a28a359182ba4d965efe075fc3aa1d2c5553cb11e12eac3ec13d05a2a70308c',
+     armv7l: '4a28a359182ba4d965efe075fc3aa1d2c5553cb11e12eac3ec13d05a2a70308c',
+       i686: '0fec5b27e1c26c6d62bafe4fff459ef2bade43d719e9eac725b777ca9bcdb39a',
+     x86_64: '26f6631813e764fd2fccaf938b69e228cb9092ce6d8d0df898b469019d82ceb9'
   })
 
   depends_on 'cmocka' => :build

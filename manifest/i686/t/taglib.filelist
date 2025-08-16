@@ -70,6 +70,9 @@
 /usr/local/include/taglib/rifffile.h
 /usr/local/include/taglib/s3mfile.h
 /usr/local/include/taglib/s3mproperties.h
+/usr/local/include/taglib/shortenfile.h
+/usr/local/include/taglib/shortenproperties.h
+/usr/local/include/taglib/shortentag.h
 /usr/local/include/taglib/speexfile.h
 /usr/local/include/taglib/speexproperties.h
 /usr/local/include/taglib/synchronizedlyricsframe.h
@@ -77,6 +80,7 @@
 /usr/local/include/taglib/tag.h
 /usr/local/include/taglib/tag_c.h
 /usr/local/include/taglib/taglib.h
+/usr/local/include/taglib/taglib_config.h
 /usr/local/include/taglib/taglib_export.h
 /usr/local/include/taglib/tbytevector.h
 /usr/local/include/taglib/tbytevectorlist.h

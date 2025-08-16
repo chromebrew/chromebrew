@@ -3,7 +3,7 @@ require 'package'
 class Unicode_character_database < Package
   description 'Unicode Character Database'
   homepage 'https://www.unicode.org/'
-  version '15.1.0'
+  version '16.0.0'
   license 'Unicode-DFS-2015'
   compatibility 'all'
   source_url "https://www.unicode.org/Public/zipped/#{version}/UCD.zip"
@@ -11,10 +11,10 @@ class Unicode_character_database < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '26caf30c0bcfb89c007fcd11a12e7d45de7b9556f164af10e8278f11f35ca8fc',
-     armv7l: '26caf30c0bcfb89c007fcd11a12e7d45de7b9556f164af10e8278f11f35ca8fc',
-       i686: 'f5efedecde5ff06d53ab85291aad1e4df946f554261c11363e7b9b3f3a11d00d',
-     x86_64: '319100958a2e3c1fbb4f31831632cf22e545b086a5a7e2afca1f2fc41db99291'
+    aarch64: '3f515f9085923b4a2f9b893d28ba4f520bbc53cab5a2b022b496bc92ea6beeea',
+     armv7l: '3f515f9085923b4a2f9b893d28ba4f520bbc53cab5a2b022b496bc92ea6beeea',
+       i686: '014ac64263ad7af3e986e1d342c3bcaaef2f51b27289b5a22004df8869ce5841',
+     x86_64: 'b1bad61cfb583d168b3743c03e77081a24b8b0400df4c71ce2e6857314da3f09'
   })
 
   depends_on 'libarchive' => :build

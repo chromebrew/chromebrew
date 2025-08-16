@@ -3,17 +3,17 @@ require 'package'
 class Unicode_emoji < Package
   description 'Unicode Emoji Data Files'
   homepage 'https://www.unicode.org/emoji/'
-  version '15.1'
+  version '17.0'
   license 'unicode'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7319ad00966a207c407b54bce47d535fe9e69f8517d22c322a0362432eae5943',
-     armv7l: '7319ad00966a207c407b54bce47d535fe9e69f8517d22c322a0362432eae5943',
-       i686: '6b40a6d01b72043cc2fe03ad9f6a2b19a22416059ad1f13b3c9b9b4ea0b0d3f1',
-     x86_64: 'da8877380b056175c61b7940022c4466a307e8b8cd46df6794166804b2fd4870'
+    aarch64: '41ac0040b8c5461b031dce29dd2edf65469c2a15d0d21935d6646dc676fcae01',
+     armv7l: '41ac0040b8c5461b031dce29dd2edf65469c2a15d0d21935d6646dc676fcae01',
+       i686: 'a18b4c80eb455a4c952b16420cf4a821c02202678b951aa83d72193f2f85c5d8',
+     x86_64: 'a665707e091a39e72da8221c6d17b3d44973b5484c05b21c1451cc8970e1f2ae'
   })
 
   depends_on 'unicode_character_database' # L
