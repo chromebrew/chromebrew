@@ -3,7 +3,7 @@ require 'package'
 class Unicode_character_database < Package
   description 'Unicode Character Database'
   homepage 'https://www.unicode.org/'
-  version '15.1.0'
+  version '16.0.0'
   license 'Unicode-DFS-2015'
   compatibility 'all'
   source_url "https://www.unicode.org/Public/zipped/#{version}/UCD.zip"
