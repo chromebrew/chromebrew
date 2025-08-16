@@ -11,9 +11,9 @@ class Proj < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cea001d600720b88b5b32e0327e59e1e3d9a4a0993654f708e31b9b04789b669',
-     armv7l: 'cea001d600720b88b5b32e0327e59e1e3d9a4a0993654f708e31b9b04789b669',
-     x86_64: '624b3019565b583b3de7f4b1ab9688910bfc63714ab4549b269dfe0f78cee5bd'
+    aarch64: '183d8c3b8e9ce1930ae5e308e5196d81492fd974b62b6a7e96db4c8a9a566aa2',
+     armv7l: '183d8c3b8e9ce1930ae5e308e5196d81492fd974b62b6a7e96db4c8a9a566aa2',
+     x86_64: 'c30d708c449a08ac046a482dab7195ebde490b31ea398b5184a4e9faac561150'
   })
 
   depends_on 'curl' # R
