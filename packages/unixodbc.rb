@@ -7,7 +7,7 @@ class Unixodbc < Autotools
   license 'LGPL-2+'
   compatibility 'all'
   source_url "https://www.unixodbc.org/unixODBC-#{version}.tar.gz"
-  source_sha256 '52833eac3d681c8b0c9a5a65f2ebd745b3a964f208fc748f977e44015a31b207'
+  source_sha256 'f210501445ce21bf607ba51ef8c125e10e22dffdffec377646462df5f01915ec'
   binary_compression 'tar.zst'
 
   binary_sha256({
