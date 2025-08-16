@@ -17,8 +17,9 @@ class Nginx < Package
      x86_64: '150e225e313477b2d8c82765c3aaffbce7ccc6fb30acf0d19123a33a41143fd3'
   })
 
-  depends_on 'pcre'
   depends_on 'glibc' # R
+  depends_on 'libxcrypt' # R
+  depends_on 'pcre'
   depends_on 'pcre2' # R
   depends_on 'zlib' # R
 
