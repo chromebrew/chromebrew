@@ -3,7 +3,7 @@ require 'package'
 class Scite < Package
   description 'A free source code editing component for Win32, GTK+, and OS X'
   homepage 'https://www.scintilla.org/'
-  version '5.5.4'
+  version '3211'
   license 'HPND and MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.scintilla.org/scite#{version.gsub('.', '')}.tgz"
