@@ -6,7 +6,7 @@ require 'package'
 class Tevent < Package
   description 'Event system based on the talloc memory management library'
   homepage 'https://tevent.samba.org/'
-  version "0.16.1-#{CREW_PY_VER}"
+  version "0.17.1-#{CREW_PY_VER}"
   license 'LGPL'
   compatibility 'all'
   source_url "https://samba.org/ftp/tevent/tevent-#{version.split('-').first}.tar.gz"
