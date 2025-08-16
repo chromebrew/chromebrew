@@ -20,6 +20,7 @@ class Openssh < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libmd' # R
+  depends_on 'libxcrypt' # R
   depends_on 'openssl' # R
   depends_on 'zlib' # R
 
