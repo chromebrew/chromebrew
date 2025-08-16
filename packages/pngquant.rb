@@ -3,7 +3,7 @@ require 'package'
 class Pngquant < Package
   description 'Command-line utility and a library for lossy compression of PNG images.'
   homepage 'https://pngquant.org/'
-  version '2.17.0'
+  version '3.0.3'
   license 'GPL-3.0'
   compatibility 'all'
   source_url 'https://github.com/kornelski/pngquant.git'
