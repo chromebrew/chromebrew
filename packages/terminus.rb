@@ -7,7 +7,7 @@ class Terminus < Package
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/pantheon-systems/terminus/releases/download/#{version}/terminus.phar"
-  source_sha256 '1ae66d5606188602a57f7ef23cc611350d97597276841211686659b076eff0a0'
+  source_sha256 'f9cdebe2b74f520ac799f8fa800948eafdaeee14b39bc8f3b272aa4acee0c6f3'
 
   depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
