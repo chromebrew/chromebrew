@@ -6,7 +6,7 @@ require_relative '../lib/package'
 require_relative '../lib/package_utils'
 
 class Command
-  def self.remove(pkg, verbose: false, force: false)
+  def self.remove(pkg, verbose: false, force: false, only_remove_files: false)
     device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
 
     # Make sure the package is actually installed before we attempt to remove it.
@@ -50,7 +50,7 @@ class Command
     end
 
     # Perform any operations required prior to package removal.
-    pkg.preremove
+    pkg.preremove unless only_remove_files
 
     # Use gem to first try to remove gems...
     if pkg.name.start_with?('ruby_')
@@ -126,7 +126,7 @@ class Command
     ConvenienceFunctions.save_json(device_json)
 
     # Perform any operations required after package removal.
-    pkg.postremove
+    pkg.postremove unless only_remove_files
 
     puts "#{pkg.name} removed!".lightgreen
   end
