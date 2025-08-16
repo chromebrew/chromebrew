@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Polkit < Meson
   description 'Application development toolkit for controlling system-wide privileges'
   homepage 'https://github.com/polkit-org/polkit'
-  version '125'
+  version '126'
   license 'LGPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/polkit-org/polkit.git'
