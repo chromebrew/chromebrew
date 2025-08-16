@@ -37,7 +37,7 @@ class Command
         pkg_file      = File.join(CREW_PACKAGES_PATH, "#{installed_pkg_info['name']}.rb")
         installed_pkg = Package.load_package(pkg_file)
 
-        pkgs_that_need_it << installed_pkg.name if installed_pkg.dependencies.keys.any?(pkg.name)
+        pkgs_that_need_it << installed_pkg.name if installed_pkg.dependencies.key?(pkg.name)
       end
 
       if pkgs_that_need_it.any?
