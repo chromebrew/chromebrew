@@ -1,15 +1,14 @@
 require 'package'
-require 'convenience_functions'
 
 class Brave < Package
   description 'Next generation Brave browser for macOS, Windows, Linux, Android.'
   homepage 'https://brave.com/'
-  version '1.81.131'
+  version '1.81.135'
   license 'MPL-2'
   compatibility 'x86_64'
-  min_glibc '2.29'
-  source_url "https://github.com/brave/brave-browser/releases/download/v#{version}/brave-browser-#{version}-linux-amd64.zip"
-  source_sha256 '3a73bd94be8573d5a327a764634ae087984d2530679081cb25a0327d4b6aba91'
+
+  source_url "https://brave-browser-apt-release.s3.brave.com/pool/main/b/brave-browser/brave-browser_#{version}_amd64.deb"
+  source_sha256 '33df4b1743dcef8c6c4269c7f7b013094c6b03215f890d11c3c29822f909a0f7'
 
   no_compile_needed
   no_shrink
@@ -20,18 +19,18 @@ class Brave < Package
   depends_on 'sommelier'
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/brave"
-    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/brave"
-    FileUtils.ln_s "#{CREW_PREFIX}/share/brave/brave", "#{CREW_DEST_PREFIX}/bin/brave"
-    FileUtils.ln_s CREW_LIB_PREFIX, "#{CREW_DEST_PREFIX}/share/#{ARCH_LIB}"
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/share]
+    FileUtils.mv Dir['usr/share/*', 'opt/brave.com/brave'], "#{CREW_DEST_PREFIX}/share"
+
+    FileUtils.ln_s '../share/brave/brave-browser', "#{CREW_DEST_PREFIX}/bin/brave-browser-stable"
+    FileUtils.ln_s '../share/brave/brave-browser', "#{CREW_DEST_PREFIX}/bin/brave"
   end
 
   def self.postinstall
-    ConvenienceFunctions.set_default_browser('Brave', 'brave')
+    ConvenienceFunctions.set_default_browser('Brave', 'brave-browser-stable')
   end
 
   def self.preremove
-    ConvenienceFunctions.unset_default_browser('Brave', 'brave')
+    ConvenienceFunctions.unset_default_browser('Brave', 'brave-browser-stable')
   end
 end
