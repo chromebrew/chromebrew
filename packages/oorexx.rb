@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Oorexx < CMake
   description 'Free implementation of Object Rexx'
   homepage 'https://www.oorexx.org/'
-  version '5.1.0-12932'
+  version '11346'
   license 'CPL-v1.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/project/oorexx/oorexx/#{version.split('-')[0]}beta/oorexx-#{version}.tar.gz"
