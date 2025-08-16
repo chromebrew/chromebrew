@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Plasma_wayland_protocols < CMake
   description 'Plasma-specific protocols for Wayland.'
   homepage 'https://invent.kde.org/libraries/plasma-wayland-protocols'
-  version '1.16.0'
+  version '1.18.0'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/libraries/plasma-wayland-protocols.git'
