@@ -137,7 +137,7 @@ CREW_NPROC ||=
   if File.file?("#{CREW_PREFIX}/bin/distcc")
     ENV.fetch('CREW_NPROC', `distcc -j`.chomp) unless defined?(CREW_NPROC)
   else
-    ENV.fetch('CREW_NPROC', `nproc`.chomp) unless defined?(CREW_NPROC)
+    ENV.fetch('CREW_NPROC', `/usr/bin/nproc`.chomp) unless defined?(CREW_NPROC)
   end
 
 # Set following as boolean if environment variables exist.
