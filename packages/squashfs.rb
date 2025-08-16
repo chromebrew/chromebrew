@@ -3,7 +3,7 @@ require 'package'
 class Squashfs < Package
   description 'Squashfs is a compressed read-only filesystem for Linux.'
   homepage 'https://github.com/plougher/squashfs-tools'
-  version '4.6.1'
+  version '4.7'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/plougher/squashfs-tools.git'
