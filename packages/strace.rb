@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Strace < Autotools
   description 'strace is a diagnostic, debugging and instructional userspace utility for Linux.'
   homepage 'https://strace.io/'
-  version '6.12'
+  version '6.16'
   license 'BSD'
   compatibility 'all'
   source_url "https://strace.io/files/#{version}/strace-#{version}.tar.xz"
