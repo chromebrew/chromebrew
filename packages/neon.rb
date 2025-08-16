@@ -3,7 +3,7 @@ require 'package'
 class Neon < Package
   description 'neon is an HTTP and WebDAV client library, with a C interface.'
   homepage 'http://www.webdav.org/neon/'
-  version '0.32.5'
+  version '0.35.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/notroj/neon.git'
