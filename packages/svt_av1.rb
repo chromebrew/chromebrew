@@ -3,7 +3,7 @@ require 'package'
 class Svt_av1 < Package
   description 'Scalable Video Technology AV1 encoder and decoder'
   homepage 'https://gitlab.com/AOMediaCodec/SVT-AV1'
-  version '2.0.0'
+  version '3.1.0'
   license 'BSD-2, Apache-2.0, BSD, ISC, MIT and LGPG-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.com/AOMediaCodec/SVT-AV1.git'
