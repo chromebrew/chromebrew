@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Tinyxml2 < CMake
   description 'TinyXML2 is a simple, small, efficient, C++ XML parser that can be easily integrated into other programs.'
   homepage 'https://github.com/leethomason/tinyxml2'
-  version '10.0.0'
+  version '11.0.0'
   license 'zlib'
   compatibility 'all'
   source_url 'https://github.com/leethomason/tinyxml2.git'
