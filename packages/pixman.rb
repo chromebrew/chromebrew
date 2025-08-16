@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Pixman < Meson
   description 'Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.'
   homepage 'https://www.pixman.org/'
-  version '0.46.0'
+  version '0.46.4'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/pixman/pixman.git'
