@@ -11,9 +11,9 @@ class Plasma_wayland_protocols < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5ecac893396a61340ca5ee30709101fe7484ef8fe0355ab103ed23a78e081473',
-     armv7l: '5ecac893396a61340ca5ee30709101fe7484ef8fe0355ab103ed23a78e081473',
-     x86_64: '3e252e1a34cd4685a451cbea7e1e0af24aee16cecb1e3e5bd566a5d0db4ee5f1'
+    aarch64: 'dabb0bc8e3dd140f16e33ddb8edfc641a9924daa0411c4ad9aa1d62d09dd87ec',
+     armv7l: 'dabb0bc8e3dd140f16e33ddb8edfc641a9924daa0411c4ad9aa1d62d09dd87ec',
+     x86_64: 'd8019f6b3f2c59abe293217685833579f927f799b3155b0551051c4fea32a646'
   })
 
   depends_on 'extra_cmake_modules'
