@@ -3,12 +3,12 @@ require 'package'
 class Py2_wheel < Package
   description 'Wheel is the binary package format for python.'
   homepage 'https://wheel.readthedocs.io/'
-  version '0.36.2'
+  version '0.46.1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/wheel.git'
   git_hashtag version
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '0d3fefe56883596140bec955b6098f4f486a29f74167e914949c560653ac12a3',
