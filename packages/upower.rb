@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Upower < Meson
   description 'Abstraction for enumerating power devices, listening to device events and querying history and statistics'
   homepage 'https://upower.freedesktop.org'
-  version '1.90.2'
+  version '1.90.9'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/upower/upower.git'
