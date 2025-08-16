@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Sfml < CMake
   description 'SFML is a simple, fast, cross-platform and object-oriented multimedia API.'
   homepage 'https://www.sfml-dev.org/'
-  version '3.0.0'
+  version '3.0.1'
   license 'zlib'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/SFML/SFML.git'
