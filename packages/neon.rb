@@ -11,9 +11,9 @@ class Neon < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0444e7c0c3b6ae6b97b355a802491cae583bfd534af2024f64470e87a348cc47',
-     armv7l: '0444e7c0c3b6ae6b97b355a802491cae583bfd534af2024f64470e87a348cc47',
-     x86_64: '16f0fdbfd3768f2860a252853731d125cffc0051aa64a5e108b9b758059eeeb6'
+    aarch64: '4f0b389b3d93942264f4f9bcec622c275b433e06ca4fe7f5ebe088ad5e6eec21',
+     armv7l: '4f0b389b3d93942264f4f9bcec622c275b433e06ca4fe7f5ebe088ad5e6eec21',
+     x86_64: '7e3f58e973fb3f32a4224b30c1002ae557570cdc91249b990bd75f1ff451ba41'
   })
 
   depends_on 'expat' # R
