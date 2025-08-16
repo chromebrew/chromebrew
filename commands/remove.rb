@@ -19,8 +19,6 @@ class Command
     # CREW_ESSENTIAL_PACKAGES is nil if overriding package upgrade list...
     return if CREW_ESSENTIAL_PACKAGES.nil?
     if CREW_ESSENTIAL_PACKAGES.include?(pkg.name) && !force
-      return if pkg.in_upgrade
-
       # Exit with failure if attempt to remove an essential package
       # is made.
       abort <<~ESSENTIAL_PACKAGE_WARNING_EOF.gsub(/^(?=\w)/, '  ').chomp.lightred
