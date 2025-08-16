@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Remmina < CMake
   description 'The GTK Remmina Remote Desktop Client'
   homepage 'https://remmina.org/'
-  version '1.4.40'
+  version '1.4.41'
   license 'GPL-2+-with-openssl-exception'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.com/Remmina/Remmina.git'
