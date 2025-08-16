@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Octave < Autotools
   description 'Scientific Programming Language'
   homepage 'https://octave.org/'
-  version '9.4.0'
+  version '10.2.0'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://ftpmirror.gnu.org/octave/octave-#{version}.tar.lz"
