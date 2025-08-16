@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Serd < Meson
   description 'Lightweight C library for RDF syntax supporting reading/ writing Turtle and NTriples.'
   homepage 'https://drobilla.net/software/serd/'
-  version '0.30.16'
+  version '0.32.4'
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/drobilla/serd.git'
