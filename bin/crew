@@ -833,8 +833,13 @@ def prepare_package(destdir)
     @pkg.postbuild
 
     # create file list
-    filelist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}"].filter_map { |e| File.file?(e) || File.symlink?(e) ? e[1..] : nil }.sort
-    File.write('filelist', "#{filelist.join("\n")}\n")
+    filelist   = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}"].filter_map { |e| File.file?(e) || File.symlink?(e) ? e[1..] : nil }.sort
+    total_size = filelist.sum { |file| File.file?(file) ? File.size(file) : 0 }
+
+    File.write 'filelist', <<~EOF
+      # Total size: #{total_size}
+      #{filelist.join("\n")}
+    EOF
 
     if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
       FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}"

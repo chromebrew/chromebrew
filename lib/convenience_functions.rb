@@ -18,7 +18,7 @@ class String;   def blank? = strip.empty?; end
 class ConvenienceFunctions
   def self.determine_conflicts(pkg_name, filelist = File.join(CREW_META_PATH, "#{pkg_name}.filelist"), exclude_suffix = nil, verbose: false)
     conflicts       = {}
-    target_filelist = File.readlines(filelist, chomp: true)
+    target_filelist = File.readlines(filelist, chomp: true).reject { |line| line.start_with?('#') }
 
     puts 'Checking for conflicts with files from installed packages...'.orange if verbose
 

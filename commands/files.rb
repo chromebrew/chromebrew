@@ -26,7 +26,7 @@ class Command
     puts pkg.name.lightgreen + ": #{pkg.description}".lightblue
 
     # Read the file into memory as an array of lines.
-    filelist = File.readlines(filelist_path, chomp: true)
+    filelist = File.readlines(filelist_path, chomp: true).reject { |line| line.start_with?('#') }
     size = 0
 
     filelist.each do |filename|
