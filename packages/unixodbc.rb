@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Unixodbc < Package
+class Unixodbc < Autotools
   description 'ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources.'
   homepage 'https://www.unixodbc.org/'
   version '2.3.12'
@@ -18,17 +18,4 @@ class Unixodbc < Package
   })
 
   depends_on 'glibc' # R
-
-  def self.build
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_CONFIGURE_OPTIONS} \
-      --disable-maintainer-mode"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
