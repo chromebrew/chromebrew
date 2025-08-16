@@ -19,14 +19,12 @@ class Thunar < Autotools
 
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
-  depends_on 'desktop_file_utilities' # R
   depends_on 'exo' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'hicolor_icon_theme' # R
   depends_on 'libexif' # R
   depends_on 'libgudev' # R
   depends_on 'libice' # R
@@ -37,10 +35,9 @@ class Thunar < Autotools
   depends_on 'libxfce4util' # R
   depends_on 'pango' # R
   depends_on 'pcre2' # R
-  depends_on 'wayland' # R
-  depends_on 'xdg_base' # R
   depends_on 'xfce4_panel' # R
   depends_on 'xfconf' # R
+  depends_on 'zlib' # R
 
   def self.prebuild
     ConvenienceFunctions.libtoolize('glib-2.0', 'glib')
