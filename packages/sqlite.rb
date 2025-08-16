@@ -20,9 +20,9 @@ class Sqlite < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libedit' # R
+  depends_on 'ncurses' # R
   depends_on 'readline' => :build
   depends_on 'zlib' # R
-  depends_on 'ncurses' # R
 
   autotools_configure_options '--enable-shared \
     --enable-editline \
