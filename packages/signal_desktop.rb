@@ -8,7 +8,7 @@ class Signal_desktop < Package
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://updates.signal.org/desktop/apt/pool/s/signal-desktop/signal-desktop_#{version}_amd64.deb"
-  source_sha256 '02ef930e19f4b5d11c3e83cb17aef85b4ed895539e4fd8c9b817c45c07adc06e'
+  source_sha256 '8bae7c7e8c45036b4ad76767cf5e02a1d5813afe8e04052ed230b3525980af39'
 
   no_compile_needed
   no_shrink
