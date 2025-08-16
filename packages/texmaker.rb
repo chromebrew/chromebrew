@@ -3,7 +3,7 @@ require 'package'
 class Texmaker < Package
   description 'Free cross-platform LaTeX editor'
   homepage 'https://www.xm1math.net/texmaker/index.html'
-  version '5.0.4'
+  version '6.0.1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.xm1math.net/texmaker/texmaker-#{version}.tar.bz2"
