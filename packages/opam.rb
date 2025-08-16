@@ -6,7 +6,7 @@ require 'package'
 class Opam < Package
   description 'OCaml package manager'
   homepage 'https://opam.ocaml.org/'
-  version '2.1.4'
+  version '2.4.1'
   license 'LGPL-2.1-with-linking-exception'
   compatibility 'all'
   source_url 'https://github.com/ocaml/opam.git'
