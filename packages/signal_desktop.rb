@@ -3,7 +3,7 @@ require 'package'
 class Signal_desktop < Package
   description 'Private Messenger for Windows, Mac, and Linux'
   homepage 'https://signal.org/'
-  version '7.64.0'
+  version '7.66.0'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   min_glibc '2.29'
