@@ -23,7 +23,7 @@ class Command
 
       # Exit with failure if attempt to remove an essential package
       # is made.
-      abort <<~ESSENTIAL_PACKAGE_WARNING_EOF.gsub(/^(?=\w)/, '  ').lightred
+      abort <<~ESSENTIAL_PACKAGE_WARNING_EOF.gsub(/^(?=\w)/, '  ').chomp.lightred
         #{pkg.name.capitalize} is considered an essential package needed for
         Chromebrew to function and thus cannot be removed.
       ESSENTIAL_PACKAGE_WARNING_EOF
@@ -41,7 +41,7 @@ class Command
       end
 
       if pkgs_that_need_it.any?
-        abort <<~EOT.lightred
+        abort <<~EOT.chomp.lightred
           #{pkg.name.capitalize} is required by the following installed packages:
 
             #{pkgs_that_need_it.join("\n  ")}
