@@ -3,7 +3,7 @@ require 'package'
 class Tdb < Package
   description 'tdb is a simple database API for sharing structures between parts of Samba'
   homepage 'https://tdb.samba.org/'
-  version "1.4.12-#{CREW_PY_VER}"
+  version "1.4.14-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'all'
   source_url "https://www.samba.org/ftp/tdb/tdb-#{version.split('-').first}.tar.gz"
@@ -11,10 +11,10 @@ class Tdb < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '869c46af87e6828afb3343c472d6f44e93f9cbca3c8ddfca9674cc997b963339',
-     armv7l: '869c46af87e6828afb3343c472d6f44e93f9cbca3c8ddfca9674cc997b963339',
-       i686: 'c073e3b4552e61a1601c5038133e3c36c2c56cc740f3650ffbf1f176ab2e22c3',
-     x86_64: '19f09414803c8dac3596267d55de2324ca9c564379bb336f82ff853f53b11f4e'
+    aarch64: '53baf559d427ed3ce19345c80ba646bf06da804e6ddd44ad33f77f41135f4625',
+     armv7l: '53baf559d427ed3ce19345c80ba646bf06da804e6ddd44ad33f77f41135f4625',
+       i686: 'aa28173f9b0acd8793f9a8d67fc5ca963f1ab9cb320da9242327d2af1f2d2f02',
+     x86_64: '88a0dfad31618513f4202465e0248455b27c948b161f8ed498863185d825abb4'
   })
 
   depends_on 'docbook_xsl' => :build

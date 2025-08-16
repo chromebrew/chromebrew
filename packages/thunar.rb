@@ -4,7 +4,7 @@ require 'convenience_functions'
 class Thunar < Autotools
   description 'Thunar File Manager'
   homepage 'https://docs.xfce.org/xfce/thunar/Start'
-  version '4.20.0'
+  version '4.20.4'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.xfce.org/src/xfce/thunar/#{version.rpartition('.')[0]}/thunar-#{version}.tar.bz2"
@@ -12,21 +12,19 @@ class Thunar < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '238fd7945241cb22b77a93bb1b158b7fdec3ec9a41f6734c5b5ee56dbf6265c0',
-     armv7l: '238fd7945241cb22b77a93bb1b158b7fdec3ec9a41f6734c5b5ee56dbf6265c0',
-     x86_64: '45745314c506b418ce986d2d3106c764953071f74202d46316a701bea5f038e7'
+    aarch64: 'a320306ea82a355c3a9170b4ba4904174f6f6688e1a0a3977c14b729c8a9d0b6',
+     armv7l: 'a320306ea82a355c3a9170b4ba4904174f6f6688e1a0a3977c14b729c8a9d0b6',
+     x86_64: '1d41b96fadf908ad2985c331f8a498deaca1b362eee2097b654295c0dcbf7a3e'
   })
 
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
-  depends_on 'desktop_file_utilities' # R
   depends_on 'exo' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'hicolor_icon_theme' # R
   depends_on 'libexif' # R
   depends_on 'libgudev' # R
   depends_on 'libice' # R
@@ -37,10 +35,9 @@ class Thunar < Autotools
   depends_on 'libxfce4util' # R
   depends_on 'pango' # R
   depends_on 'pcre2' # R
-  depends_on 'wayland' # R
-  depends_on 'xdg_base' # R
   depends_on 'xfce4_panel' # R
   depends_on 'xfconf' # R
+  depends_on 'zlib' # R
 
   def self.prebuild
     ConvenienceFunctions.libtoolize('glib-2.0', 'glib')
