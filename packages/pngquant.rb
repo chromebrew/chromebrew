@@ -11,10 +11,10 @@ class Pngquant < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fdddb92cbb12abd1e267330768c58a0d31e8c743831dc2eff820d3b214af9e94',
-     armv7l: 'fdddb92cbb12abd1e267330768c58a0d31e8c743831dc2eff820d3b214af9e94',
-       i686: '38b281e502240992f6b27455d70211b08dfc5fa47f1b2d0a8fe2be687cca569a',
-     x86_64: 'ed9748591b5eb81fc5565a003ee55549136d5d87052ad1b41ed9c0adf2e99457'
+    aarch64: 'e67540255c0f2a15c976d6bb2e86169c908e819131070fef8441e801e17d7fa4',
+     armv7l: 'e67540255c0f2a15c976d6bb2e86169c908e819131070fef8441e801e17d7fa4',
+       i686: 'c5e5aa614d34e8301da3268d8d13e937722c86f85a4c7dec97eee01ec21827fa',
+     x86_64: '69dde5daddc35d3c251d639361c5b07cdd75db4feeef7aa5f19c9e366a92740b'
   })
 
   depends_on 'gcc_lib' # R
