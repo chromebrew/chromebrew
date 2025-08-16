@@ -3,7 +3,7 @@ require 'package'
 class Terminus < Package
   description 'The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform'
   homepage 'https://github.com/pantheon-systems/terminus'
-  version '4.0.0'
+  version '4.0.1'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/pantheon-systems/terminus/releases/download/#{version}/terminus.phar"
