@@ -25,13 +25,9 @@ class Sysprof < Meson
   depends_on 'py3_itstool' => :build
 
   def self.patch
-    file = File.read('meson.build')
-    file.gsub!("if need_glib
-  subdir('contrib')
-endif", "if need_glib or get_option('libsysprof')
-  subdir('contrib')
-endif")
-    File.write('meson.build', file)
+    # https://gitlab.gnome.org/GNOME/sysprof/-/issues/151
+    downloader 'https://gitlab.gnome.org/GNOME/sysprof/-/commit/5f7d5a31c7e3d429d13b3190c056a4440dd3054f.patch', 'd249053a296b484bb4215377e803f7f4ed5c48db82cd49363f476aab216b481c'
+    system 'patch -Np1 -i 5f7d5a31c7e3d429d13b3190c056a4440dd3054f.patch'
   end
 
   # meson_options '-Dexamples=false -Dgtk=false -Dinstall-static=false -Dlibsysprof=false -Dsysprofd=none -Dtests=false -Dtools=false'
