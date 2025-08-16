@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Proj < CMake
   description 'PROJ is a generic coordinate transformation software that transforms geospatial coordinates from one coordinate reference system (CRS) to another.'
   homepage 'https://proj.org'
-  version '9.5.1'
+  version '9.6.2'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.osgeo.org/proj/proj-#{version}.tar.gz"
@@ -11,15 +11,14 @@ class Proj < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cea001d600720b88b5b32e0327e59e1e3d9a4a0993654f708e31b9b04789b669',
-     armv7l: 'cea001d600720b88b5b32e0327e59e1e3d9a4a0993654f708e31b9b04789b669',
-     x86_64: '624b3019565b583b3de7f4b1ab9688910bfc63714ab4549b269dfe0f78cee5bd'
+    aarch64: '183d8c3b8e9ce1930ae5e308e5196d81492fd974b62b6a7e96db4c8a9a566aa2',
+     armv7l: '183d8c3b8e9ce1930ae5e308e5196d81492fd974b62b6a7e96db4c8a9a566aa2',
+     x86_64: 'c30d708c449a08ac046a482dab7195ebde490b31ea398b5184a4e9faac561150'
   })
 
   depends_on 'curl' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libtiff' # R
-  depends_on 'python3' # R
   depends_on 'sqlite' # R
 end
