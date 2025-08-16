@@ -3,7 +3,7 @@ require 'package'
 class Snowflake < Package
   description 'Snowflake (aka Muon) is a graphical SSH client.'
   homepage 'https://github.com/subhra74/snowflake'
-  version '1.0.4'
+  version '1.3.0'
   license 'GPL-3'
   compatibility 'x86_64'
   source_url 'SKIP'
