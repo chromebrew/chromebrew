@@ -20,6 +20,5 @@ class Proj < CMake
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libtiff' # R
-  depends_on 'python3' # R
   depends_on 'sqlite' # R
 end
