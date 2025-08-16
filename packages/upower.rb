@@ -18,8 +18,8 @@ class Upower < Meson
 
   depends_on 'docbook_xsl' => :build
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'libgudev' # R
