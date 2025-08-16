@@ -17,6 +17,9 @@ class Tinyxml2 < CMake
      x86_64: '1500d2d2679759ea218f95cafb892fbde5baf4560b085fb1225171a69035c6d2'
   })
 
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+
   cmake_options '-DBUILD_SHARED_LIBS=ON'
   run_tests
 end
