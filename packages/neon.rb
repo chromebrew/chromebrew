@@ -16,12 +16,12 @@ class Neon < Package
      x86_64: '16f0fdbfd3768f2860a252853731d125cffc0051aa64a5e108b9b758059eeeb6'
   })
 
-  depends_on 'xmlto' => :build
   depends_on 'expat' # R
   depends_on 'glibc' # R
   depends_on 'krb5' # R
   depends_on 'libproxy' # R
   depends_on 'openssl' # R
+  depends_on 'xmlto' => :build
   depends_on 'zlib' # R
 
   def self.build
