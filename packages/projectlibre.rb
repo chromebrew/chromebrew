@@ -3,7 +3,7 @@ require 'package'
 class Projectlibre < Package
   description 'ProjectLibre is project management software, the leading alternative to Microsoft Project.'
   homepage 'https://www.projectlibre.com/projectlibre-desktop/'
-  version '1.9.3'
+  version '1.9.8'
   license 'CPAL-1.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/project/projectlibre/ProjectLibre/#{version}/projectlibre-#{version}.jar"
