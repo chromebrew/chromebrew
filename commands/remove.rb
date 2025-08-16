@@ -21,14 +21,34 @@ class Command
     if CREW_ESSENTIAL_PACKAGES.include?(pkg.name) && !force
       return if pkg.in_upgrade
 
-      puts <<~ESSENTIAL_PACKAGE_WARNING_EOF.gsub(/^(?=\w)/, '  ').lightred
+      # Exit with failure if attempt to remove an essential package
+      # is made.
+      abort <<~ESSENTIAL_PACKAGE_WARNING_EOF.gsub(/^(?=\w)/, '  ').chomp.lightred
         #{pkg.name.capitalize} is considered an essential package needed for
         Chromebrew to function and thus cannot be removed.
       ESSENTIAL_PACKAGE_WARNING_EOF
+    end
 
-      # Exit with failure if attempt to remove an essential package
-      # is made.
-      exit 1
+    # Check whether the removal breaks dependency of other installed packages
+    unless force
+      pkgs_that_need_it = []
+
+      device_json['installed_packages'].each do |installed_pkg_info|
+        pkg_file      = File.join(CREW_PACKAGES_PATH, "#{installed_pkg_info['name']}.rb")
+        installed_pkg = Package.load_package(pkg_file)
+
+        pkgs_that_need_it << installed_pkg.name if installed_pkg.dependencies.key?(pkg.name)
+      end
+
+      if pkgs_that_need_it.any?
+        abort <<~EOT.chomp.lightred
+          #{pkg.name.capitalize} is required by the following installed packages:
+
+            #{pkgs_that_need_it.join("\n  ")}
+
+          Use `crew remove --force` if you meant to remove it.
+        EOT
+      end
     end
 
     # Perform any operations required prior to package removal.
