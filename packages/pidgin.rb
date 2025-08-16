@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Pidgin < Autotools
   description 'Pidgin is a chat program which lets you log in to accounts on multiple chat networks simultaneously.'
   homepage 'https://pidgin.im/'
-  version '2.14.13'
+  version '2.14.14'
   license 'GPL-2'
   compatibility 'x86_64'
   min_glibc '2.29'
