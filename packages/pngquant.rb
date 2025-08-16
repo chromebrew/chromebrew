@@ -19,7 +19,6 @@ class Pngquant < Package
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'glibc' # R
   depends_on 'lcms' => :build
   depends_on 'libpng' # R
   depends_on 'rust' => :build
