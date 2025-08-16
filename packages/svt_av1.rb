@@ -16,8 +16,8 @@ class Svt_av1 < Package
      x86_64: 'c0e20fc16251760a043b98967055dcaad9088bcb979f73602750913b7f321c43'
   })
 
-  depends_on 'nasm' => :build
   depends_on 'glibc' # R
+  depends_on 'nasm' => :build
 
   def self.build
     @arch_flags = ''
