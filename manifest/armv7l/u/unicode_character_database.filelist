@@ -10,6 +10,7 @@
 /usr/local/share/unicode/DerivedAge.txt
 /usr/local/share/unicode/DerivedCoreProperties.txt
 /usr/local/share/unicode/DerivedNormalizationProps.txt
+/usr/local/share/unicode/DoNotEmit.txt
 /usr/local/share/unicode/EastAsianWidth.txt
 /usr/local/share/unicode/EmojiSources.txt
 /usr/local/share/unicode/EquivalentUnifiedIdeograph.txt
@@ -48,6 +49,7 @@
 /usr/local/share/unicode/Unihan_RadicalStrokeCounts.txt
 /usr/local/share/unicode/Unihan_Readings.txt
 /usr/local/share/unicode/Unihan_Variants.txt
+/usr/local/share/unicode/Unikemet.txt
 /usr/local/share/unicode/VerticalOrientation.txt
 /usr/local/share/unicode/auxiliary/GraphemeBreakProperty.txt
 /usr/local/share/unicode/auxiliary/GraphemeBreakTest.html
