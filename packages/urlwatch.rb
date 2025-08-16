@@ -3,7 +3,7 @@ require 'buildsystems/python'
 class Urlwatch < Python
   description 'A tool for monitoring webpages for updates'
   homepage 'https://thp.io/2008/urlwatch/'
-  version '2.28'
+  version '2.29'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/thp/urlwatch.git'
