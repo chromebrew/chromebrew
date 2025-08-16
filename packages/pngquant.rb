@@ -17,7 +17,9 @@ class Pngquant < Package
      x86_64: 'ed9748591b5eb81fc5565a003ee55549136d5d87052ad1b41ed9c0adf2e99457'
   })
 
-  depends_on 'lcms'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R  depends_on 'lcms'
+  depends_on 'libpng' # R
   depends_on 'rust' => :build
 
   def self.build
