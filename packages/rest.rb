@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Rest < Meson
   description 'Helper library for RESTful services'
   homepage 'https://wiki.gnome.org/Projects/Librest'
-  version '0.9.1'
+  version '2.6.9'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/librest.git'
