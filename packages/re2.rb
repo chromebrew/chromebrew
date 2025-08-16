@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Re2 < CMake
   description 'RE2 is a fast, safe, thread-friendly alternative to backtracking regular expression engines like those used in PCRE, Perl, and Python.'
   homepage 'https://github.com/google/re2/'
-  version '2023-09-01'
+  version '2025-08-12'
   license 'BSD'
   compatibility 'all'
   source_url "https://github.com/google/re2/archive/#{version}.tar.gz"
