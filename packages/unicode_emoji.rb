@@ -3,7 +3,7 @@ require 'package'
 class Unicode_emoji < Package
   description 'Unicode Emoji Data Files'
   homepage 'https://www.unicode.org/emoji/'
-  version '15.1'
+  version '17.0'
   license 'unicode'
   compatibility 'all'
   source_url 'SKIP'
