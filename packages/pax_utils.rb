@@ -3,7 +3,7 @@ require 'package'
 class Pax_utils < Package
   description 'ELF utils that can check files for security relevant properties'
   homepage 'https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities'
-  version '1.3.7'
+  version '1.3.8'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://anongit.gentoo.org/git/proj/pax-utils.git'
@@ -11,16 +11,15 @@ class Pax_utils < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f05733d181ad32f5bd3795f592d1b30d1f46edb7c65a64c7cf1da8201bd44e02',
-     armv7l: 'f05733d181ad32f5bd3795f592d1b30d1f46edb7c65a64c7cf1da8201bd44e02',
-       i686: '98955a80c1b4a04ca942740663c6fb86bdae5f26505017c6b97f8fa6b9997fc4',
-     x86_64: 'a2eec1aef128e76f8d22182bb97fad5b993930836a4e7ddc06a7b12acb9c67f8'
+    aarch64: 'b244ed7adbbfa83c6a8353d29a5dc7759e04f305792bf453e1076f1046759579',
+     armv7l: 'b244ed7adbbfa83c6a8353d29a5dc7759e04f305792bf453e1076f1046759579',
+       i686: 'c4452f9fcea91e1d070848dcbcac595fd40e137cdcd232e6425d8c6e40356085',
+     x86_64: '0e2e3923dd86ea4931ded5d0679b07e1c6e4bd0fc14d38ffc289a973d5d1d21d'
   })
 
   depends_on 'glibc' # R
   depends_on 'libcap' # R
   depends_on 'libseccomp' => :build
-  depends_on 'py3_pyelftools' # R
   depends_on 'python3' # L
   depends_on 'xmlto' => :build
 
