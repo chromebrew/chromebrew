@@ -11,9 +11,9 @@ class Mate_common < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '368b90c8aaaee44136b49fe764dfd2f348a82c0c97ec7f9d6a2e7b9f58ab764d',
-     armv7l: '368b90c8aaaee44136b49fe764dfd2f348a82c0c97ec7f9d6a2e7b9f58ab764d',
-     x86_64: '6b2311710ffa148aa1ae51212f3cd107dd0fec6584371e887e1f086e1f3a04ec'
+    aarch64: '0be6546d77afd05e304e5d2692029d0d97aceed83c5fa6b74ea0295d17a606a2',
+     armv7l: '0be6546d77afd05e304e5d2692029d0d97aceed83c5fa6b74ea0295d17a606a2',
+     x86_64: 'a147018439cc4635bf792e2323e24bf9927694289cc9986dc4dcb36eabf47ba9'
   })
 
   depends_on 'gtk_doc'
