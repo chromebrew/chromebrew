@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mm_common < Meson
   description 'Common build files of the C++ bindings'
   homepage 'https://www.gtkmm.org/'
-  version '1.0.6'
+  version '1.0.7'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/mm-common.git'
