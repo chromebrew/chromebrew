@@ -1,11 +1,11 @@
+# Total size: 0
 /usr/local/bin/mupdf-gl
 /usr/local/bin/mupdf-x11
-/usr/local/bin/mupdf-x11-curl
-/usr/local/bin/muraster
 /usr/local/bin/mutool
 /usr/local/include/mupdf/fitz.h
 /usr/local/include/mupdf/fitz/archive.h
 /usr/local/include/mupdf/fitz/band-writer.h
+/usr/local/include/mupdf/fitz/barcode.h
 /usr/local/include/mupdf/fitz/bidi.h
 /usr/local/include/mupdf/fitz/bitmap.h
 /usr/local/include/mupdf/fitz/buffer.h
@@ -15,6 +15,7 @@
 /usr/local/include/mupdf/fitz/config.h
 /usr/local/include/mupdf/fitz/context.h
 /usr/local/include/mupdf/fitz/crypt.h
+/usr/local/include/mupdf/fitz/deskew.h
 /usr/local/include/mupdf/fitz/device.h
 /usr/local/include/mupdf/fitz/display-list.h
 /usr/local/include/mupdf/fitz/document.h
@@ -29,6 +30,7 @@
 /usr/local/include/mupdf/fitz/heap-imp.h
 /usr/local/include/mupdf/fitz/heap.h
 /usr/local/include/mupdf/fitz/image.h
+/usr/local/include/mupdf/fitz/json.h
 /usr/local/include/mupdf/fitz/link.h
 /usr/local/include/mupdf/fitz/log.h
 /usr/local/include/mupdf/fitz/outline.h
@@ -74,8 +76,10 @@
 /usr/local/include/mupdf/pdf/object.h
 /usr/local/include/mupdf/pdf/page.h
 /usr/local/include/mupdf/pdf/parse.h
+/usr/local/include/mupdf/pdf/recolor.h
 /usr/local/include/mupdf/pdf/resource.h
 /usr/local/include/mupdf/pdf/xref.h
+/usr/local/include/mupdf/pdf/zugferd.h
 /usr/local/include/mupdf/ucdn.h
 /usr/local/lib/libmupdf-third.a
 /usr/local/lib/libmupdf.a
