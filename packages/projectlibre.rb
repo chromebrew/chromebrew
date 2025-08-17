@@ -5,15 +5,15 @@ class Projectlibre < Package
   homepage 'https://www.projectlibre.com/projectlibre-desktop/'
   version '1.9.8'
   license 'CPAL-1.0'
-  compatibility 'aarch64 armv7l x86_64'
+  compatibility 'x86_64'
   source_url "https://downloads.sourceforge.net/project/projectlibre/ProjectLibre/#{version}/projectlibre-#{version}.jar"
-  source_sha256 '9ce613a48d44695fc2d2121a380a4513e1d02c50b6cd13d699dbb64d3a95d864'
+  source_sha256 'b8b6ed323fbe67f2d842f23914715b6c769c6bce92af38d3c90a3fa469fc4356'
 
   depends_on 'libx11'
   depends_on 'libxext'
   depends_on 'libxrender'
   depends_on 'libxtst'
-  depends_on 'openjdk17'
+  depends_on 'openjdk21'
 
   no_compile_needed
 
