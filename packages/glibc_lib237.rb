@@ -30,7 +30,7 @@ class Glibc_lib237 < Package
     puts 'Installing Glibc_build237 to pull files for build...'.lightblue
     @filelist_path = File.join(CREW_META_PATH, 'glibc_build237.filelist')
     abort 'File list for Glibc_build237 does not exist! Please run: crew reinstall glibc_build237'.lightred unless File.file?(@filelist_path)
-    @filelist = File.readlines(@filelist_path, chomp: true).reject { |line| line.start_with?('#') }
+    @filelist = File.readlines(@filelist_path, chomp: true).grep(/^(?!#)/)
 
     @filelist.each do |filename|
       next unless (filename.include?('.so') || filename.include?('bin/')) && File.file?(filename)

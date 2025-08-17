@@ -27,7 +27,7 @@ class Glibc_lib235 < Package
     puts 'Installing Glibc_build235 to pull files for build...'.lightblue
     @filelist_path = File.join(CREW_META_PATH, 'glibc_build235.filelist')
     abort 'File list for Glibc_build235 does not exist!'.lightred unless File.file?(@filelist_path)
-    @filelist = File.readlines(@filelist_path, chomp: true).reject { |line| line.start_with?('#') }
+    @filelist = File.readlines(@filelist_path, chomp: true).grep(/^(?!#)/)
 
     @filelist.each do |filename|
       next unless filename.include?('.so') || filename.include?('bin/')
