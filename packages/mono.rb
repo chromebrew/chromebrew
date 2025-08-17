@@ -3,12 +3,12 @@ require 'package'
 class Mono < Package
   description 'Mono is a software platform designed to allow developers to easily create cross platform applications part of the .NET Foundation.'
   homepage 'https://www.mono-project.com/'
-  version '6.12.0.122'
+  version '6.14.1'
   license 'MIT, LGPL-2.1, GPL-2, BSD-4, NPL-1.1, Ms-PL, GPL-3-with-linking-exception and IDPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.mono-project.com/sources/mono/mono-#{version}.tar.xz"
-  source_sha256 '29c277660fc5e7513107aee1cbf8c5057c9370a4cdfeda2fc781be6986d89d23'
-  binary_compression 'tar.xz'
+  source_sha256 'f88898a2c453f1040e74965adb6c2cdadb2d7f2dea6856fec82823846ea036d8'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '78cb6f2adb3dde24509316cc5e7e351a5ece0fbf2dbeae8d8b6c9f88a9381be9',
