@@ -3,7 +3,7 @@ require 'package'
 class Mutagen < Package
   description 'Mutagen provides real-time file synchronization and flexible network forwarding, extending the reach of your existing development tools to cloud-based containers and infrastructure.'
   homepage 'https://mutagen.io/'
-  version '0.17.5'
+  version '1.47.0'
   license 'GPL-2'
   compatibility 'all'
   source_url({
