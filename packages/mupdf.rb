@@ -21,12 +21,11 @@ class Mupdf < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'jbigkit'
-  depends_on 'curl' # R
+  depends_on 'libglvnd' # R
   depends_on 'libjpeg_turbo'
   depends_on 'libx11' # R
   depends_on 'libxext' # R
   depends_on 'libxrandr' # R
-  depends_on 'mesa' # R
   depends_on 'openjpeg'
   depends_on 'openssl' # R
   depends_on 'sommelier' unless ARCH == 'i686'
