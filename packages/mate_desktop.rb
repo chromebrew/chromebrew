@@ -20,18 +20,17 @@ class Mate_desktop < Autotools
   depends_on 'cairo' # R
   depends_on 'dconf' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'iso_codes' => :build
+  depends_on 'libbsd' # R
   depends_on 'libx11' # R
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
-  depends_on 'libxext' # R
   depends_on 'libxrandr' # R
-  depends_on 'libxrender' # R
   depends_on 'mate_common' => :build
   depends_on 'pango' # R
   depends_on 'zlib' # R
