@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 2.1 (for Chromebrew)
+# version.rb version 2.2 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -181,6 +181,7 @@ if filelist.length.positive?
   puts "#{'-------'.ljust(package_field_length)}#{'------'.ljust(status_field_length)}#{'-------'.ljust(version_field_length)}#{'--------'.ljust(version_field_length)}----------" unless OUTPUT_JSON
   filelist.each do |filename|
     @pkg = Package.load_package(filename)
+    cleaned_pkg_version = PackageUtils.get_clean_version(@pkg.version)
     if @pkg.is_fake?
       # Just skip is_fake packages.
       versions_updated[@pkg.name.to_sym] = 'Fake'
@@ -351,7 +352,6 @@ if filelist.length.positive?
       version_status_string = 'Up to date.'.ljust(status_field_length).lightgreen
     end
     updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes'.lightgreen : 'No'.lightred) if updatable_string.nil?
-    cleaned_pkg_version = PackageUtils.get_clean_version(@pkg.version)
     versions.push(package: @pkg.name, update_status: versions_updated[@pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version.chomp)
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
