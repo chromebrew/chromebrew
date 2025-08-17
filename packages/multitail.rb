@@ -3,7 +3,7 @@ require 'package'
 class Multitail < Package
   description 'MultiTail allows you to monitor logfiles and command output in multiple windows in a terminal, colorize, filter and merge.'
   homepage 'https://www.vanheusden.com/multitail/'
-  version '7.1.3'
+  version '7.1.5'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/folkertvanheusden/multitail.git'
