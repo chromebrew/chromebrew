@@ -17,9 +17,9 @@ class Less < Autotools
      x86_64: 'a0a9254cb229835653abaaae2b8f14991b97051affb2fa060161eb8b39c9832e'
   })
 
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
-  depends_on 'gcc_lib' # R
   depends_on 'patch' => :build
 
   autotools_configure_options '--with-regex=posix'
