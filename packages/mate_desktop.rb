@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Mate_desktop < Autotools
   description 'Libraries for the MATE desktop that are not part of the UI.'
   homepage 'https://mate-desktop.org'
-  version '1.27.2'
+  version '1.28.2'
   license 'FDL-1.1, GPL-2+, LGPL-2+, MIT-with-advertising'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://pub.mate-desktop.org/releases/#{version.rpartition('.')[0]}/mate-desktop-#{version}.tar.xz"
-  source_sha256 'ec3b6f3668026f933e033714daf858387c3e8d9fa46202c3d74deefe5f7b8be7'
+  source_sha256 '32bb4b792014b391c1e1b8ae9c18a82b4d447650984b4cba7d28e95564964aa2'
   binary_compression 'tar.zst'
 
   binary_sha256({
