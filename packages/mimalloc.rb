@@ -17,5 +17,8 @@ class Mimalloc < CMake
      x86_64: '9e309d61984dc9c4640425932cf89f6e3dc82872310b2bc43c89e00213041bed'
   })
 
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+
   cmake_options '-DMI_BUILD_TESTS=OFF'
 end
