@@ -3,7 +3,7 @@ require 'package'
 class Monero < Package
   description 'Private, decentralized cryptocurrency that keeps your finances confidential and secure.'
   homepage 'https://www.getmonero.org/'
-  version '0.18.4.0'
+  version '0.18.4.1'
   license 'The Cryptonote developers,The Boolberry developers,MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.27'
@@ -14,9 +14,9 @@ class Monero < Package
      x86_64: "https://downloads.getmonero.org/cli/monero-linux-x64-v#{version}.tar.bz2"
   })
   source_sha256({
-    aarch64: 'b35b5e8d27d799cea6cf3ff539a672125292784739db41181b92a9c73e1c325b',
-     armv7l: 'b35b5e8d27d799cea6cf3ff539a672125292784739db41181b92a9c73e1c325b',
-     x86_64: '16cb74c899922887827845a41d37c7f3121462792a540843f2fcabcc1603993f'
+    aarch64: 'a080b9f703c9b09cb3713376d7679cda089e6772794bd0bfa994cb256b6f3535',
+     armv7l: 'a080b9f703c9b09cb3713376d7679cda089e6772794bd0bfa994cb256b6f3535',
+     x86_64: '702ccb799c24160c0c76676d7a5b21a7e3432be47294d20e0a75451592f591b2'
   })
 
   no_compile_needed
