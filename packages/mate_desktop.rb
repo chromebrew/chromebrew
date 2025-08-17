@@ -11,9 +11,9 @@ class Mate_desktop < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2bdbf679155c30c044907e476972129fa042e7d6125532a964b358a097bb4e5a',
-     armv7l: '2bdbf679155c30c044907e476972129fa042e7d6125532a964b358a097bb4e5a',
-     x86_64: '8c1186ba9c092ccf3c8fc36863b4dd8b60ff3c96ff3e8d546c1c43aa2ac55b07'
+    aarch64: '60bcbd984b839b11057aa2d0e249e94a50aecefba241b4c4df1c1405c24ab53a',
+     armv7l: '60bcbd984b839b11057aa2d0e249e94a50aecefba241b4c4df1c1405c24ab53a',
+     x86_64: 'cf5461b6ad3704db111d5ffe37e29c75764359f3a0b101788c4a72a39f1da69b'
   })
 
   depends_on 'at_spi2_core' # R
