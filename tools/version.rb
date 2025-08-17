@@ -279,15 +279,15 @@ if filelist.length.positive?
             if !@pkg.source_sha256.nil? && @pkg.source_sha256.is_a?(Hash) && @pkg.source_sha256&.key?(ARCH.to_sym)
               # Get old hashes
               (@pkg.source_url.keys.map &:to_s).each do |arch|
-                puts "old source_url #{@pkg.source_url[arch.to_sym]}" if VERBOSE
+                puts "old source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE
                 old_hash[arch] = @pkg.source_sha256[arch.to_sym]
-                puts "old hash #{old_hash[arch]}" if VERBOSE
+                puts "old hash: #{old_hash[arch]}" if VERBOSE
               end
               File.write(filename, file)
               # Now get new hashes
               @pkg = Package.load_package(filename, true)
               (@pkg.source_url.keys.map &:to_s).each do |arch|
-                puts "new source_url #{@pkg.source_url[arch.to_sym]}" if VERBOSE
+                puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE
                 new_hash[arch] = `curl -Ls #{@pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
                 puts "new hash: #{new_hash[arch]}" if VERBOSE
                 file.sub!(old_hash[arch], new_hash[arch])
@@ -296,12 +296,12 @@ if filelist.length.positive?
               arch = :all
               # Get old hashes
               old_hash[arch] = @pkg.source_sha256
-              puts "old source_url #{@pkg.source_url}" if VERBOSE
-              puts "old hash #{old_hash[arch]}" if VERBOSE
+              puts "old source_url: #{@pkg.source_url}" if VERBOSE
+              puts "old hash: #{old_hash[arch]}" if VERBOSE
               File.write(filename, file)
               # Now get new hashes
               @pkg = Package.load_package(filename, true)
-              puts "new source_url #{@pkg.source_url}" if VERBOSE
+              puts "new source_url: #{@pkg.source_url}" if VERBOSE
               new_hash[arch] = `curl -Ls #{@pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
               puts "new hash: #{new_hash[arch]}" if VERBOSE
               file.sub!(old_hash[arch], new_hash[arch])
