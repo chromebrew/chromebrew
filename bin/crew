@@ -1263,7 +1263,7 @@ def install
   # remove it just before the file copy
   if @pkg.in_upgrade
     puts 'Attempting removal since this is an upgrade or reinstall...'
-    Command.remove(@pkg, verbose: CREW_VERBOSE, force: @opt_force)
+    Command.remove(@pkg, verbose: CREW_VERBOSE, force: true, only_remove_files: true)
   end
 
   if @pkg.is_fake?

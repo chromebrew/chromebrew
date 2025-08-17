@@ -65,7 +65,7 @@ if [[ -n ${CHANGED_PACKAGES-} ]]; then
         yes | time crew remove "${pkg}" || true
       else
         echo "Testing removal of ${pkg}."
-        yes | time crew remove "${pkg}"
+        yes | time crew remove -f "${pkg}"
       fi
     else
       echo "${pkg^} is not compatible."
