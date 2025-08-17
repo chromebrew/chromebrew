@@ -3,17 +3,17 @@ require 'package'
 class Mupdf < Package
   description 'MuPDF is a lightweight open source software framework for viewing and converting PDF, XPS, and E-book documents.'
   homepage 'https://mupdf.com/'
-  version '1.24.9'
+  version '1.26.5'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://mupdf.com/downloads/archive/mupdf-#{version}-source.tar.lz"
-  source_sha256 'd87da097ae943ad0113003190ed370d39bde817383c59dc753dce23c7ba2b710'
+  source_sha256 'c34cb8dd9b62716bbad66aa6deddd602673fd2da8bf67ae5decba88386f67b83'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8ae34fefdcf2ffb842c2f643b044561a356fc4b3a6fe7972aed077a103ca5581',
-     armv7l: '8ae34fefdcf2ffb842c2f643b044561a356fc4b3a6fe7972aed077a103ca5581',
-     x86_64: '6f4cd7df402ba79a07198e7df47fe7429482211262e7b93a7c12e442f55b5244'
+    aarch64: '2036dd53626d8177623fce6de7c63eba190846dc9aa3d160e8f4d2da0752f7bf',
+     armv7l: '2036dd53626d8177623fce6de7c63eba190846dc9aa3d160e8f4d2da0752f7bf',
+     x86_64: '48ecef796f515473ca5b36ffd933c37f530a47373eb22d863a135b2b6e11b379'
   })
 
   depends_on 'freeglut'
@@ -21,12 +21,11 @@ class Mupdf < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'jbigkit'
-  depends_on 'curl' # R
+  depends_on 'libglvnd' # R
   depends_on 'libjpeg_turbo'
   depends_on 'libx11' # R
   depends_on 'libxext' # R
   depends_on 'libxrandr' # R
-  depends_on 'mesa' # R
   depends_on 'openjpeg'
   depends_on 'openssl' # R
   depends_on 'sommelier' unless ARCH == 'i686'
