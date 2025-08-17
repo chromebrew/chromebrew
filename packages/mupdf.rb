@@ -3,11 +3,11 @@ require 'package'
 class Mupdf < Package
   description 'MuPDF is a lightweight open source software framework for viewing and converting PDF, XPS, and E-book documents.'
   homepage 'https://mupdf.com/'
-  version '1.24.9'
+  version '1.26.5'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://mupdf.com/downloads/archive/mupdf-#{version}-source.tar.lz"
-  source_sha256 'd87da097ae943ad0113003190ed370d39bde817383c59dc753dce23c7ba2b710'
+  source_sha256 'c34cb8dd9b62716bbad66aa6deddd602673fd2da8bf67ae5decba88386f67b83'
   binary_compression 'tar.zst'
 
   binary_sha256({
