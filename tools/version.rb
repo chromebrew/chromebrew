@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 2.0 (for Chromebrew)
+# version.rb version 2.1 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -197,11 +197,7 @@ if filelist.length.positive?
                                         else
                                           "version alias: #{`grep '^  version' #{filename} | awk '{print $2}'`.chomp}"
                                         end
-                                      elsif @pkg.source_url.is_a?(Hash)
-                                        # source_url hashes are not
-                                        # automatically updatable.
-                                        'source_url hash'
-                                      elsif @pkg.source_url.include?('SKIP')
+                                      elsif @pkg.source_url.is_a?(Hash) || @pkg.source_url.include?('SKIP')
                                         'Yes'
                                       # If there is a git_hashtag, we can
                                       # check to see if 'version' is on
@@ -276,6 +272,40 @@ if filelist.length.positive?
           if file.sub!(PackageUtils.get_clean_version(@pkg.version), upstream_version.chomp).nil?
             versions_updated[@pkg.name.to_sym] = false
           else
+            # Version update succeeded. Now check for a sha256 update.
+            old_hash = {}
+            new_hash = {}
+            # Handle source_url whether hash or not.
+            if !@pkg.source_sha256.nil? && @pkg.source_sha256.is_a?(Hash) && @pkg.source_sha256&.key?(ARCH.to_sym)
+              # Get old hashes
+              (@pkg.source_url.keys.map &:to_s).each do |arch|
+                puts "old source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE
+                old_hash[arch] = @pkg.source_sha256[arch.to_sym]
+                puts "old hash: #{old_hash[arch]}" if VERBOSE
+              end
+              File.write(filename, file)
+              # Now get new hashes
+              @pkg = Package.load_package(filename, true)
+              (@pkg.source_url.keys.map &:to_s).each do |arch|
+                puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE
+                new_hash[arch] = `curl -Ls #{@pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
+                puts "new hash: #{new_hash[arch]}" if VERBOSE
+                file.sub!(old_hash[arch], new_hash[arch])
+              end
+            elsif !@pkg.source_sha256.nil? && !@pkg.source_sha256.is_a?(Hash)
+              arch = :all
+              # Get old hashes
+              old_hash[arch] = @pkg.source_sha256
+              puts "old source_url: #{@pkg.source_url}" if VERBOSE
+              puts "old hash: #{old_hash[arch]}" if VERBOSE
+              File.write(filename, file)
+              # Now get new hashes
+              @pkg = Package.load_package(filename, true)
+              puts "new source_url: #{@pkg.source_url}" if VERBOSE
+              new_hash[arch] = `curl -Ls #{@pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
+              puts "new hash: #{new_hash[arch]}" if VERBOSE
+              file.sub!(old_hash[arch], new_hash[arch])
+            end
             File.write(filename, file)
             versions_updated[@pkg.name.to_sym] = true
           end

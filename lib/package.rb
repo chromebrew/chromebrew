@@ -92,7 +92,8 @@ class Package
     end
   end
 
-  def self.load_package(pkg_file)
+  def self.load_package(pkg_file, reload = nil)
+    reload = !reload.nil?
     # self.load_package: load a package under 'Package' class scope
     #
     pkg_name = File.basename(pkg_file, '.rb')
@@ -104,7 +105,7 @@ class Package
     # If this package has been removed, it won't be found in either directory, so set it back to what it was before to get a nicer error.
     pkg_file = "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb" if pkg_file.nil?
 
-    class_eval(File.read(pkg_file, encoding: Encoding::UTF_8), pkg_file) unless const_defined?("Package::#{class_name}")
+    class_eval(File.read(pkg_file, encoding: Encoding::UTF_8), pkg_file) unless const_defined?("Package::#{class_name}") && !reload
     pkg_obj = const_get(class_name)
     pkg_obj.name = pkg_name
 
