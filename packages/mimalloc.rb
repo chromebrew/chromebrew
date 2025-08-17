@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Mimalloc < CMake
   description 'General-purpose allocator with excellent performance characteristics'
   homepage 'https://github.com/microsoft/mimalloc'
-  version '1.8.2'
+  version '3.1.5'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/microsoft/mimalloc.git'
