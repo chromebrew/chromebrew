@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_setuptools_scm < Pip
   description 'Setuptools-scm is the blessed package to manage your versions by scm tags.'
   homepage 'https://github.com/pypa/setuptools_scm'
-  version "8.3.1-#{CREW_PY_VER}"
+  version "9.2.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
