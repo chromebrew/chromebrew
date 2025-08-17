@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mutter < Meson
   description 'A window manager for GNOME'
   homepage 'https://wiki.gnome.org/Projects/Mutter'
-  version '45.4'
+  version '48.4'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64' # No longer supported for i686 upstream
   source_url 'https://gitlab.gnome.org/GNOME/mutter.git'
