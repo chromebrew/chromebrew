@@ -3,12 +3,12 @@ require 'package'
 class Musl < Package
   description 'A modern, simple, and fast C library implementation that strives to be lightweight, fast, simple, free, and correct in the sense of standards-conformance and safety.'
   homepage 'https://musl.libc.org/'
-  version '1.2.2'
+  version '1.2.5'
   license 'MIT, LGPL-2 and GPL-2'
   compatibility 'all'
   source_url "https://musl.libc.org/releases/musl-#{version}.tar.gz"
-  source_sha256 '9b969322012d796dc23dda27a35866034fa67d8fb67e0e2c45c913c3d43219dd'
-  binary_compression 'tar.xz'
+  source_sha256 'a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '3ed631095e644fc8477a73c26b29970af21fea79ee65380ede17bb1d9b8116d3',
