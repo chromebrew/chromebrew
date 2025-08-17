@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Mate_common < Autotools
   description 'Common files for development of MATE packages.'
   homepage 'https://mate-desktop.org'
-  version '1.27.1'
+  version '1.28.0'
   license 'GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://pub.mate-desktop.org/releases/#{version.rpartition('.')[0]}/mate-common-#{version}.tar.xz"
-  source_sha256 '4f1f91d0d60e3629999e2ff930574882f511a15831e20b52d93ff0bc8922effa'
+  source_sha256 '42b7c2cee268f71d7e1c1ad4f69bcda0ecd65578a96722187c6b76378d26ba0a'
   binary_compression 'tar.zst'
 
   binary_sha256({
