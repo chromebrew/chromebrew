@@ -6,12 +6,12 @@ require 'package'
 class Mujs < Package
   description 'An embeddable Javascript interpreter in C'
   homepage 'https://mujs.com/'
-  version '1.1.0'
+  version '1.3.7'
   license 'ISC'
   compatibility 'all'
   source_url "https://github.com/ccxvii/mujs/archive/refs/tags/#{version}.tar.gz"
-  source_sha256 '8e43a38fdea75f036a9f3213e346a6c304206b4e3d00886564fb6bf70c1c2807'
-  binary_compression 'tar.xz'
+  source_sha256 'fa15735edc4b3d27675d954b5703e36a158f19cfa4f265aa5388cd33aede1c70'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '6e35d13ccbbf048b85406b5edf5a9ff1965359bcace8a7c53ca9a293691bc09c',
