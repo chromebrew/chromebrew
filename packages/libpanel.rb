@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libpanel < Meson
   description 'A dock/panel library for GTK 4'
   homepage 'https://gitlab.gnome.org/GNOME/libpanel'
-  version '1.6.0'
+  version '1.9.0'
   license 'GPL3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libpanel.git'
