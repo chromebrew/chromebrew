@@ -11,9 +11,9 @@ class Libwnck < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0c093d0bb27d5152c0d7809c306ea7c805621982d2ba9e740f5bff9612dc131b',
-     armv7l: '0c093d0bb27d5152c0d7809c306ea7c805621982d2ba9e740f5bff9612dc131b',
-     x86_64: '3fe193834abace0b6694327a6069ed7a04d88d5d1d465c4cd839289aac8e355d'
+    aarch64: 'dc134e91938d22300daeae66b05351b70e95d32aaf4306500ba04f8ad02c442e',
+     armv7l: 'dc134e91938d22300daeae66b05351b70e95d32aaf4306500ba04f8ad02c442e',
+     x86_64: '591bc49671891c7fe0803ca1e6b9e6dbe36a79667cb6be15e16d5311ddb7bb9d'
   })
 
   depends_on 'at_spi2_core' # R
