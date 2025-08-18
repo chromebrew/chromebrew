@@ -3,7 +3,7 @@ require 'package'
 class Libfaudio < Package
   description 'FAudio is an XAudio reimplementation that focuses solely on developing fully accurate DirectX Audio runtime libraries for the FNA project.'
   homepage 'https://fna-xna.github.io/'
-  version '23.01'
+  version '25.08'
   license 'ZLIB'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/fna-xna/faudio.git'
