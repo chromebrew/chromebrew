@@ -6,7 +6,7 @@ require 'package'
 class Luit < Package
   description 'Filter that can be run between an arbitrary application and a UTF-8 terminal emulator'
   homepage 'https://invisible-island.net/luit/luit.html'
-  version '2_0_20230201'
+  version '20240910'
   license 'custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ThomasDickey/luit-snapshots.git'
