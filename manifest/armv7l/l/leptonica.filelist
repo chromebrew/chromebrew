@@ -1,3 +1,4 @@
+# Total size: 9367630
 /usr/local/include/leptonica/allheaders.h
 /usr/local/include/leptonica/alltypes.h
 /usr/local/include/leptonica/array.h
@@ -41,4 +42,4 @@
 /usr/local/lib/libleptonica.so
 /usr/local/lib/libleptonica.so.6
 /usr/local/lib/libleptonica.so.6.0.0
-/usr/local/lib/pkgconfig/lept.pc
+/usr/local/lib/pkgconfig/lept_Release.pc
