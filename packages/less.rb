@@ -11,10 +11,10 @@ class Less < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b83aeaa88a4efb9f11f8adb5003c2f74ccc1f86a26ec87987106385bf1216b46',
-     armv7l: 'b83aeaa88a4efb9f11f8adb5003c2f74ccc1f86a26ec87987106385bf1216b46',
-       i686: '3a09e33e0e0f02ac98b4eb4e36ebece968f3f9b3f2eda0a0659f018e252cafdc',
-     x86_64: 'a0a9254cb229835653abaaae2b8f14991b97051affb2fa060161eb8b39c9832e'
+    aarch64: '4e738abc735d11890b892c9adb86bd98b48c470ac92debab6af4e1a3935670a4',
+     armv7l: '4e738abc735d11890b892c9adb86bd98b48c470ac92debab6af4e1a3935670a4',
+       i686: '92ec257f2e62c924d2af87a112da55f40789034fe5df4b972ba019161035d46e',
+     x86_64: '8d7d457d829a312b1fe1cd93e45c229fed5296784e1f4e85bb435022df1ba6c3'
   })
 
   depends_on 'gcc_lib' # R
