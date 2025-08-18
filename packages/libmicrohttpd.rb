@@ -11,10 +11,10 @@ class Libmicrohttpd < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c9b72083e688cb547d069a1d8796751beb085ff47eb6535fcfa6fbfd5b8e4007',
-     armv7l: 'c9b72083e688cb547d069a1d8796751beb085ff47eb6535fcfa6fbfd5b8e4007',
-       i686: '0f3b8b82cf4f9707c877f2ca7758a5ad148c6ba24b892fb2a26276f3cc4d62bc',
-     x86_64: '2f817d93c17190c753485e35df89b1f23da6c3b10c57e21610b13ff7a84ccdda'
+    aarch64: 'c036bb67a617000cc413608bac37d42415633645dd6913fe1b8d14e24682fa2e',
+     armv7l: 'c036bb67a617000cc413608bac37d42415633645dd6913fe1b8d14e24682fa2e',
+       i686: 'a248302199a79d99bf6f0b1f97bc0dcd683b29dd0f3e0582aefc961e1434e891',
+     x86_64: 'f341a7c5081d6ac9a31220214965bcddacad22fbcaeb2fd89dc618da94cbdaac'
   })
 
   depends_on 'diffutils' => :build
