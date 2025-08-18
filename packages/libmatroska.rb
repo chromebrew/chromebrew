@@ -3,7 +3,7 @@ require 'package'
 class Libmatroska < Package
   description 'libmatroska is a C++ library to parse Matroska files, i.e., .mkv and .mka.'
   homepage 'https://matroska.org/downloads/libraries.html'
-  version '1.6.3'
+  version '1.7.1'
   compatibility 'all'
   license 'BSD'
   source_url 'https://github.com/Matroska-Org/libmatroska.git'
