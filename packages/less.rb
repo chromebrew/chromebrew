@@ -24,12 +24,6 @@ class Less < Autotools
 
   autotools_configure_options '--with-regex=posix'
 
-  def self.patch
-    downloader 'https://patch-diff.githubusercontent.com/raw/gwsw/less/pull/412.diff',
-               'feb65b74b27a58e4acdf4efa27d65ab4f79cb5e8a02b9ddffb33b3571828c131'
-    system 'patch -Np1 -i 412.diff'
-  end
-
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
