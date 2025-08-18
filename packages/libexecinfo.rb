@@ -3,7 +3,7 @@ require 'package'
 class Libexecinfo < Package
   description 'BSD licensed clone of backtrace facility'
   homepage 'https://github.com/mikroskeem/libexecinfo'
-  version '1.1'
+  version '1.1-3'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/mikroskeem/libexecinfo.git'
