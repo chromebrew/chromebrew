@@ -3,12 +3,12 @@ require 'buildsystems/autotools'
 class Libgee < Autotools
   description 'Libgee is an utility library providing GObject-based interfaces and classes for commonly used data structures.'
   homepage 'https://wiki.gnome.org/Projects/Libgee'
-  version '0.20.4'
+  version '0.20.8'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/libgee/-/archive/#{version}/libgee-#{version}.tar.bz2"
-  source_sha256 'bf1e5840809e34e07b253e1363ec58c8844dac7400bc75c450e1c7aa13019c51'
-  binary_compression 'tar.xz'
+  source_sha256 'fe3d412f206ba2603dc9f26cf14b9049d9311e745bff27bd93863c961c65f2f3'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'f15038fd3c894a96872bedeac5fc922bbf204900139fbf0bdad9edc42166910d',
