@@ -3,7 +3,7 @@ require 'package'
 class Libxv < Package
   description 'X.org X Window System video extension library'
   homepage 'https://www.x.org/wiki/'
-  version '1.0.12'
+  version '1.0.13'
   license 'X11'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxv.git'
