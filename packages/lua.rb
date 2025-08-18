@@ -22,9 +22,9 @@ class Lua < Package
      x86_64: '2d648ab5e4dfef66fc78778b7d2f41d9fc584fa3d6b6c696e3e90848d53443a4'
   })
 
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'readline' # R
-  depends_on 'gcc_lib' # R
 
   def self.patch
     # Patch adapted from https://gitlab.archlinux.org/archlinux/packaging/packages/lua/-/blob/main/liblua.so.patch
