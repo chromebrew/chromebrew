@@ -834,7 +834,7 @@ def prepare_package(destdir)
 
     # create file list
     filelist   = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}"].filter_map { |e| File.file?(e) || File.symlink?(e) ? e[1..] : nil }.sort
-    total_size = filelist.sum { |file| File.file?(file) ? File.size(file) : 0 }
+    total_size = filelist.sum { |file| File.file?(File.join(CREW_DEST_DIR, file)) ? File.size(File.join(CREW_DEST_DIR, file)) : 0 }
 
     File.write 'filelist', <<~EOF
       # Total size: #{total_size}
