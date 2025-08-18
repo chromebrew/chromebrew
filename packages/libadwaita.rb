@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libadwaita < Meson
   description 'Library of GNOME-specific UI patterns, replacing libhandy for GTK4'
   homepage 'https://gitlab.gnome.org/GNOME/libadwaita/'
-  version '1.7.2'
+  version '1.7.6'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libadwaita.git'
