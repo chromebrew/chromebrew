@@ -14,10 +14,10 @@ class Lmdb < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '321830d5af7e98f3f302a915866dd81183102c7b7c911298e32c82aebedaa00b',
-     armv7l: '321830d5af7e98f3f302a915866dd81183102c7b7c911298e32c82aebedaa00b',
-       i686: '81275127275f8d4faa718dc28d4f2fd894394d94005f99474699bd49c3f81aac',
-     x86_64: '4c23c5666baf7c2c488d1eb5f50dcaaa1eb137b5dd394778d1eaf44c714dfd90'
+    aarch64: 'fb7a48d43b3d95cd74b71abe0fa87e544fc8d274df6a48e367d6a5de4e86ad40',
+     armv7l: 'fb7a48d43b3d95cd74b71abe0fa87e544fc8d274df6a48e367d6a5de4e86ad40',
+       i686: '5a295f0f2b29455bce60d7e4e098e21c2fe228c1aa3e64b43c0416c41188c29e',
+     x86_64: '17fd317ffb609d8b197c1b6734be90022a303e648c2bddb035861a1b5af463aa'
   })
 
   depends_on 'gcc_lib' # R
