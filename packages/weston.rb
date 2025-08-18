@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Weston < Meson
   description 'Weston is the reference implementation of a Wayland compositor, and a useful compositor in its own right.'
   homepage 'https://wayland.freedesktop.org'
-  version '13.0.0'
+  version '14.0.2'
   license 'MIT and CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/wayland/weston.git'
@@ -11,24 +11,22 @@ class Weston < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '463fafa09122de01bf4c8dbba4eb157ae9741aa0aec68561e3ef03878d262161',
-     armv7l: '463fafa09122de01bf4c8dbba4eb157ae9741aa0aec68561e3ef03878d262161',
-     x86_64: 'daacfeb06185e4ff3a0fef2b7845a7b4f2528a02d1569957d5a61a70cc3e5bd2'
+    aarch64: '73807ff53bd0db798fedf82f27f282d342924f81cf3d1ec064a76722dd0ca93b',
+     armv7l: '73807ff53bd0db798fedf82f27f282d342924f81cf3d1ec064a76722dd0ca93b',
+     x86_64: 'c3c5a58432d971f1f65bfaed52f7562a75c52c9b6ac2e59e998b28f4b08db4e9'
   })
 
   depends_on 'cairo' # R
   depends_on 'dbus' => :build
   depends_on 'eudev' # R
-  depends_on 'ffmpeg' # R
   depends_on 'fontconfig' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gmp' # R
-  depends_on 'gnutls' # R
+  depends_on 'glibc' # R
   depends_on 'graphite' => :build
   depends_on 'gstreamer' # R
   depends_on 'harfbuzz' # R
+  depends_on 'hwdata' => :build
   depends_on 'libdrm' # R
   depends_on 'libevdev' # R
   depends_on 'libglvnd' # R
@@ -46,18 +44,15 @@ class Weston < Meson
   depends_on 'libxkbcommon'
   depends_on 'libxkbcommon' # R
   depends_on 'libxxf86vm'
-  depends_on 'linux_pam' # R
   depends_on 'mesa' # R
-  depends_on 'nettle' # R
   depends_on 'pango' # R
   depends_on 'pipewire' # R
   depends_on 'pixman' # R
   depends_on 'seatd' # R
-  depends_on 'wayland_protocols'
   depends_on 'wayland' # R
+  depends_on 'wayland_protocols'
   depends_on 'xcb_util_cursor' => :build
   depends_on 'xdg_base' => :build
-  depends_on 'zlib' # R
 
   meson_options "-Dbackend-default=wayland \
         -Dbackend-drm=true \
@@ -68,8 +63,15 @@ class Weston < Meson
         -Dsystemd=false \
         -Dxwayland-path=#{CREW_PREFIX}/bin/Xwayland"
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  def self.patch
+    # https://gitlab.freedesktop.org/wayland/weston/-/issues/1049
+    file = File.read 'subprojects/neatvnc.wrap'
+    file.gsub!('revision = v0.7.0', 'revision = v0.9.5')
+    File.write('subprojects/neatvnc.wrap', file)
+    FileUtils.rm_rf 'subprojects/neatvnc'
+  end
+
+  meson_install_extras do
     File.write 'weston.ini', <<~WESTON_INI_EOF
       [core]
       xwayland=true
