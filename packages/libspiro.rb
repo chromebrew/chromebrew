@@ -17,5 +17,7 @@ class Libspiro < Autotools
      x86_64: '5ad57ae880ddbf05cc340bc782b59e50c645a23d930225e56c960950ac757611'
   })
 
+  depends_on 'glibc' # R
+
   run_tests
 end
