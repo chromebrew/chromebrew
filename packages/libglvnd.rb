@@ -3,7 +3,7 @@ require 'package'
 class Libglvnd < Package
   description 'The GL Vendor-Neutral Dispatch library'
   homepage 'https://gitlab.freedesktop.org/glvnd/libglvnd'
-  version '1.6.0'
+  version '1.7.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/glvnd/libglvnd.git'
