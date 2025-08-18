@@ -3,12 +3,12 @@ require 'buildsystems/meson'
 class Libportal < Meson
   description 'libportal provides GIO-style async APIs for most Flatpak portals.'
   homepage 'https://github.com/flatpak/libportal'
-  version '0.8.1'
+  version '0.9.1'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/flatpak/libportal.git'
   git_hashtag version
-  source_sha256 '8ad326c4f53b7433645dc86d994fef0292bee8adda0fe67db9288ace19250a9c'
+  source_sha256 'cc1ffcd513d1b230625f936791035c9db0b8fd584ad5c538ecc84755f0711eac'
   binary_compression 'tar.zst'
 
   binary_sha256({
