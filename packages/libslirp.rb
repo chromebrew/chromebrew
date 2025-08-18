@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libslirp < Meson
   description 'General purpose TCP-IP emulator'
   homepage 'https://gitlab.freedesktop.org/slirp/libslirp'
-  version '4.7.0'
+  version '4.9.1'
   license 'BSD MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/slirp/libslirp.git'
