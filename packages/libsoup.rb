@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libsoup < Meson
   description 'libsoup is an HTTP client/server library for GNOME.'
   homepage 'https://wiki.gnome.org/Projects/libsoup'
-  version '3.4.4'
+  version '3.6.5'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libsoup.git'
