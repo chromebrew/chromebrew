@@ -6,7 +6,7 @@ require 'package'
 class Libxcvt < Package
   description 'library providing a standalone version of the X server implementation of the VESA CVT standard timing modelines generator'
   homepage 'https://gitlab.freedesktop.org/xorg/lib/libxcvt'
-  version '0.1.1'
+  version '0.1.3'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxcvt.git'
