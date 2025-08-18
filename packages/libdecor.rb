@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libdecor < Meson
   description 'Client-side decorations library for Wayland clients'
   homepage 'https://gitlab.freedesktop.org/libdecor/libdecor'
-  version '0.2.0'
+  version '0.2.3'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/libdecor/libdecor.git'
@@ -14,21 +14,21 @@ class Libdecor < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '26ba96e32ae7e00488aaf8f11e23b779ef8e747c37848e26965382ba84b8f81c',
-     armv7l: '26ba96e32ae7e00488aaf8f11e23b779ef8e747c37848e26965382ba84b8f81c',
-     x86_64: '3f77be8ebdfd6548f434e9f9ed13a365cc5956d413cb83f15714aaf0bb27214e'
+    aarch64: '4185981721be6ae817532b8a780b29c8508b7b99e9ca2946ce21bb43000ef917',
+     armv7l: '4185981721be6ae817532b8a780b29c8508b7b99e9ca2946ce21bb43000ef917',
+     x86_64: 'f508e2ba9eeb6285c313e5581e41e455997343822b7d00ac169b9c601a9c9d21'
   })
 
   depends_on 'cairo' # R
   depends_on 'dbus' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'pango' # R
-  depends_on 'wayland_protocols' => :build
   depends_on 'wayland' # R
+  depends_on 'wayland_protocols' => :build
 
   meson_options "-Ddemo=false \
       -Dlocalstatedir=#{CREW_PREFIX}/var \
