@@ -1,9 +1,13 @@
+# Total size: 3127665
 /usr/local/bin/wnck-urgency-monitor
 /usr/local/bin/wnckprop
 /usr/local/include/libwnck-3.0/libwnck/application.h
 /usr/local/include/libwnck-3.0/libwnck/class-group.h
+/usr/local/include/libwnck-3.0/libwnck/icons.h
 /usr/local/include/libwnck-3.0/libwnck/libwnck.h
+/usr/local/include/libwnck-3.0/libwnck/misc.h
 /usr/local/include/libwnck-3.0/libwnck/pager.h
+/usr/local/include/libwnck-3.0/libwnck/resource.h
 /usr/local/include/libwnck-3.0/libwnck/screen.h
 /usr/local/include/libwnck-3.0/libwnck/selector.h
 /usr/local/include/libwnck-3.0/libwnck/tasklist.h
