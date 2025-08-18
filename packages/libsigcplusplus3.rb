@@ -3,11 +3,11 @@ require 'package'
 class Libsigcplusplus3 < Package
   description 'libsigc++ implements a typesafe callback system for standard C++.'
   homepage 'https://github.com/libsigcplusplus/libsigcplusplus/'
-  version '3.4.0'
+  version '3.6.0'
   license 'LGPL-3'
   compatibility 'all'
   source_url "https://github.com/libsigcplusplus/libsigcplusplus/releases/download/#{version}/libsigc++-#{version}.tar.xz"
-  source_sha256 '02e2630ffb5ce93cd52c38423521dfe7063328863a6e96d41d765a6116b8707e'
+  source_sha256 'c3d23b37dfd6e39f2e09f091b77b1541fbfa17c4f0b6bf5c89baef7229080e17'
   binary_compression 'tar.zst'
 
   binary_sha256({
