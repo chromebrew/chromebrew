@@ -19,20 +19,15 @@ class Librsvg < Meson
   depends_on 'cairo' # R
   depends_on 'cargo_c' => :build
   depends_on 'dav1d' # R
-  depends_on 'expat' # R
-  depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
   depends_on 'fribidi' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'harfbuzz' # R
-  depends_on 'icu4c' # R
   depends_on 'libcroco' => :build
   depends_on 'libjpeg_turbo' => :build
-  depends_on 'libpng' # R
   depends_on 'libxml2' # R
   depends_on 'pango' # R
   depends_on 'py3_meson' => :build
@@ -40,7 +35,6 @@ class Librsvg < Meson
   depends_on 'py3_smartypants' => :build
   depends_on 'rust' => :build
   depends_on 'vala' => :build
-  depends_on 'zlib' # R
 
   gnome
 
