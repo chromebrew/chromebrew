@@ -3,12 +3,12 @@ require 'package'
 class Libplist < Package
   description 'A library to handle Apple Property List format'
   homepage 'https://libimobiledevice.org/'
-  version '2.2.0'
+  version '2.7.0'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url "https://github.com/libimobiledevice/libplist/archive/#{version}.tar.gz"
-  source_sha256 '7e654bdd5d8b96f03240227ed09057377f06ebad08e1c37d0cfa2abe6ba0cee2'
-  binary_compression 'tar.xz'
+  source_sha256 '66fa17a29270cb25ceaf189430ea38037c066652c2989b58d7ef6120b1a208d3'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '5494b780369670c29f13fcdbb2c9929109da7e0849cad829f7e6bfb6d1f51690',
