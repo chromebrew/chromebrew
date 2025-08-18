@@ -16,7 +16,9 @@ class Libva_utils < Package
      x86_64: '2a2f1a713b00c8a14aeacb73f2cfb599f54cd147d02a001eb99f456fd859e17c'
   })
 
-  depends_on 'libva'
+  depends_on 'gcc_lib' # R
+  depends_on 'libx11' # R
+  depends_on 'wayland' # R
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} builddir"
