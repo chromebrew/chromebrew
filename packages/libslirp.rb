@@ -21,6 +21,6 @@ class Libslirp < Meson
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
 end
