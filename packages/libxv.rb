@@ -18,7 +18,6 @@ class Libxv < Package
 
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
-  depends_on 'libmd' # R
   depends_on 'libx11' # R
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
