@@ -1,3 +1,4 @@
+# Total size: 16479839
 /usr/local/bin/abicompat
 /usr/local/bin/abidiff
 /usr/local/bin/abidw
@@ -36,8 +37,8 @@
 /usr/local/include/libabigail/abg-writer.h
 /usr/local/lib/libabigail.la
 /usr/local/lib/libabigail.so
-/usr/local/lib/libabigail.so.4
-/usr/local/lib/libabigail.so.4.0.0
+/usr/local/lib/libabigail.so.7
+/usr/local/lib/libabigail.so.7.0.0
 /usr/local/lib/libabigail/default.abignore
 /usr/local/lib/pkgconfig/libabigail.pc
 /usr/local/share/aclocal/abigail.m4

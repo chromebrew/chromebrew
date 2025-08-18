@@ -23,13 +23,13 @@ class Libabigail < Autotools
   depends_on 'binutils' # R
   depends_on 'elfutils' # R
   depends_on 'gcc_lib' # R
+  depends_on 'gdb' # R
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
   depends_on 'python3' => :build
   depends_on 'sphinx' => :build
-  depends_on 'zlib' # R
+  depends_on 'xxhash' # R
   depends_on 'zstd' # R
-  depends_on 'gdb' # R
 
   autotools_configure_options '--enable-bash-completion \
     --disable-manual \
