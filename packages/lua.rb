@@ -16,10 +16,10 @@ class Lua < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '87df3c6fc30357f567edaecef53ff275cd62e466336bf711aea6d632ee0d9b5d',
-     armv7l: '87df3c6fc30357f567edaecef53ff275cd62e466336bf711aea6d632ee0d9b5d',
-       i686: '389f93fdbf19a841563c3ec715b0c6d740b5fec3a0f8a1e053dbc05d755b7d8f',
-     x86_64: '2d648ab5e4dfef66fc78778b7d2f41d9fc584fa3d6b6c696e3e90848d53443a4'
+    aarch64: '1971107d167bf8a58d78a6978deced7279a5c3519ae337aa7e0fd702c1789f51',
+     armv7l: '1971107d167bf8a58d78a6978deced7279a5c3519ae337aa7e0fd702c1789f51',
+       i686: '5ccbc62b03bd077493324ff995515f92c1f11e0fe92f787dc69b3b7e9d998a88',
+     x86_64: 'b5b2a4cea34214688bafb40d7d8162bb974fd61bdbe5cab3595c688af68e9abd'
   })
 
   depends_on 'gcc_lib' # R
