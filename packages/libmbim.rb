@@ -3,12 +3,12 @@ require 'package'
 class Libmbim < Package
   description 'libmbim is a glib-based library for talking to WWAN modems and devices which speak the Mobile Interface Broadband Model (MBIM) protocol.'
   homepage 'https://www.freedesktop.org/wiki/Software/libmbim/'
-  version '1.24.6'
+  version '1.32.0'
   license 'LGPL-2'
   compatibility 'all'
   source_url "https://www.freedesktop.org/software/libmbim/libmbim-#{version}.tar.xz"
-  source_sha256 '760465caaa1ccd699c14290e9791da456d5300dd11ebf4c1486151033e875dfd'
-  binary_compression 'tar.xz'
+  source_sha256 '74c56b6d4ae602dab6bf290bc85a556ee2abaee1ece250e0fd1699547415c483'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'ffb063051859e2696af5f44b10de9915becb1c22cc90581b3962814be7626f0c',
