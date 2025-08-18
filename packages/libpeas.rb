@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libpeas < Meson
   description 'A GObject plugins library'
   homepage 'https://gitlab.gnome.org/GNOME/libpeas'
-  version '1.36.0'
+  version '2.1.0'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libpeas.git'
