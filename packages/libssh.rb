@@ -18,12 +18,12 @@ class Libssh < CMake
   })
 
   depends_on 'e2fsprogs'
+  depends_on 'glibc' # R
   depends_on 'krb5'
   depends_on 'libgcrypt'
+  depends_on 'openssl' # R
   depends_on 'py3_abimap' => :build
   depends_on 'zlib'
-  depends_on 'glibc' # R
-  depends_on 'openssl' # R
 
   cmake_options '-DWITH_EXAMPLES=OFF \
     -DBUILD_SHARED_LIBS=ON'
