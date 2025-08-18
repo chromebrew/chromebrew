@@ -6,13 +6,13 @@ require 'package'
 class Lua < Package
   description 'Lua is a powerful, efficient, lightweight, embeddable scripting language.'
   homepage 'https://www.lua.org/'
-  version '5.4.7'
+  version '5.4.8'
   @_ver = version.rpartition('.')[0]
   @_ver_no_dot = @_ver.gsub('.', '')
   license 'MIT'
   compatibility 'all'
   source_url "https://www.lua.org/ftp/lua-#{version}.tar.gz"
-  source_sha256 '9fbf5e28ef86c69858f6d3d34eccc32e911c1a28b4120ff3e84aaa70cfbf1e30'
+  source_sha256 '4f18ddae154e793e46eeab727c59ef1c0c0c2b744e7b94219710d76f530629ae'
   binary_compression 'tar.zst'
 
   binary_sha256({
