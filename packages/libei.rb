@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libei < Meson
   description 'library for Emulated Input'
   homepage 'https://gitlab.freedesktop.org/libinput/libei'
-  version '1.2.1'
+  version '1.4.1'
   license 'Red Hat, Inc'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/libinput/libei.git'
