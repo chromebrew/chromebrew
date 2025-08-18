@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libxfce4util < Autotools
   description 'Utility library for the Xfce4 desktop environment'
   homepage 'https://xfce.org/'
-  version '4.19.3'
+  version '4.20.1'
   license 'LGPL-2+ and GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.xfce.org/src/xfce/libxfce4util/4.19/libxfce4util-#{version}.tar.bz2"
-  source_sha256 'f047937f753466b7ff74ad3809c817b11db44498dd90497de7e1584ee48502c6'
+  source_sha256 '7515bf959b73b956ceb967351c7e299cbb3668a53d35f9c770eb72e00d93ced6'
   binary_compression 'tar.zst'
 
   binary_sha256({
