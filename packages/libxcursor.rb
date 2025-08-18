@@ -16,13 +16,10 @@ class Libxcursor < Package
      x86_64: 'c107c34d8e95d54f6552dd17c105f062a1d27016421db5628298c118bf992708'
   })
 
-  depends_on 'libxrender'
-  depends_on 'libxfixes'
   depends_on 'glibc' # R
   depends_on 'libx11' # R
-  depends_on 'libxau' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxdmcp' # R
+  depends_on 'libxfixes'
+  depends_on 'libxrender'
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS}"
