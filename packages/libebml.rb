@@ -3,7 +3,7 @@ require 'package'
 class Libebml < Package
   description 'libEBML is a C++ library to parse EBML files.'
   homepage 'https://matroska.org/downloads/libraries.html'
-  version '1.4.2'
+  version '1.4.5'
   compatibility 'all'
   license 'BSD'
   source_url 'https://github.com/Matroska-Org/libebml.git'
