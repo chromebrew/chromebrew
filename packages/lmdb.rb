@@ -20,8 +20,8 @@ class Lmdb < Package
      x86_64: '4c23c5666baf7c2c488d1eb5f50dcaaa1eb137b5dd394778d1eaf44c714dfd90'
   })
 
-  depends_on 'glibc' # R
   depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
   def self.patch
     system "sed -i 's,libdir = $(exec_prefix)/lib,libdir = $(exec_prefix)/lib#{CREW_LIB_SUFFIX},g' libraries/liblmdb/Makefile"
