@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libmicrohttpd < Autotools
   description 'GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application.'
   homepage 'https://www.gnu.org/software/libmicrohttpd/'
-  version '1.0.1'
+  version '1.0.2'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/libmicrohttpd/libmicrohttpd-#{version}.tar.gz"
-  source_sha256 'a89e09fc9b4de34dde19f4fcb4faaa1ce10299b9908db1132bbfa1de47882b94'
+  source_sha256 'df324fcd0834175dab07483133902d9774a605bfa298025f69883288fd20a8c7'
   binary_compression 'tar.zst'
 
   binary_sha256({
