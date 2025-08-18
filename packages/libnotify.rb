@@ -17,8 +17,8 @@ class Libnotify < Meson
   })
 
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
 
   gnome
