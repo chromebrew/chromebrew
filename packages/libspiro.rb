@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libspiro < Autotools
   description 'LibSpiro is an adaptation of Spiro formula and functions into a sharable library'
   homepage 'https://github.com/fontforge/libspiro'
-  version '20221101'
+  version '20240903'
   license 'GPL3+'
   compatibility 'all'
   source_url 'https://github.com/fontforge/libspiro.git'
