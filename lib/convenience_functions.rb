@@ -40,6 +40,17 @@ class ConvenienceFunctions
     return JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
   end
 
+  def self.read_filelist(path)
+    filelist = File.readlines(path, chomp: true)
+
+    if filelist.first.start_with?('#')
+      total_size, *contents = filelist
+      return [ total_size[/Total size: (\d+)/, 1].to_i, contents ]
+    else
+      return [ 0, *filelist ]
+    end
+  end
+
   def self.save_json(json_object)
     crewlog 'Saving device.json...'
     begin

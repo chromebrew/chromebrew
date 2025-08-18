@@ -288,10 +288,9 @@ class Package
     puts tree_view
   end
 
-  def self.depends_on(dependency, ver_range = nil)
+  def self.depends_on(dependency)
     @dependencies ||= {}
-    ver_check = nil
-    dep_tags  = []
+    dep_tags = []
 
     # Add element in "[ name, [ tag1, tag2, ... ] ]" format.
     if dependency.is_a?(Hash)
@@ -305,30 +304,7 @@ class Package
       dep_name = dependency
     end
 
-    # Process dependency version range if specified.
-    # example:
-    #   depends_on name, '>= 1.0'
-    #
-    # Operators can be: '>=', '==', '<=', '<', or '>'
-    if ver_range
-      operator, target_ver = ver_range.split(' ', 2)
-
-      # lambda for comparing the given range with installed version
-      ver_check = lambda do |installed_ver|
-        unless Gem::Version.new(installed_ver).send(operator.to_sym, Gem::Version.new(target_ver))
-          # Print error if the range is not fulfilled.
-          warn <<~EOT.lightred
-            Package #{name} depends on '#{dep_name}' (#{operator} #{target_ver}), however version '#{installed_ver}' is currently installed :/
-
-            Run `crew update && crew upgrade` and try again?
-          EOT
-          return false
-        end
-        return true
-      end
-    end
-
-    @dependencies.store(dep_name, [dep_tags, ver_check])
+    @dependencies.store(dep_name, [dep_tags])
   end
 
   def self.binary?(architecture) = !@build_from_source && @binary_sha256&.key?(architecture)
