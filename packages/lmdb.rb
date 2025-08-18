@@ -6,11 +6,11 @@ require 'package'
 class Lmdb < Package
   description 'Symas Lightning Memory-Mapped Database'
   homepage 'https://www.symas.com/mdb'
-  version '0.9.32'
+  version '0.9.33'
   license 'OpenLDAP Public License'
   compatibility 'all'
   source_url "https://git.openldap.org/openldap/openldap/-/archive/LMDB_#{version}/openldap-LMDB_#{version}.tar.gz"
-  source_sha256 '70d553f80968f5117f2f3d4d7f0b89cb8fb69dadc35131263a2499bb58f7d015'
+  source_sha256 '476801f5239c88c7de61c3390502a5d13965ecedef80105b5fb0fcb8373d1e53'
   binary_compression 'tar.zst'
 
   binary_sha256({
