@@ -16,8 +16,10 @@ class Libxvmc < Package
      x86_64: '47ce9336e23acf5f44f06501a411a8e79a853b41c746f2fc368f55b0903130fc'
   })
 
-  depends_on 'libxv'
+  depends_on 'glibc' # R
   depends_on 'libx11'
+  depends_on 'libxext' # R
+  depends_on 'libxv'
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
