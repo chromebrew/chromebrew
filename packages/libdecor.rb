@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libdecor < Meson
   description 'Client-side decorations library for Wayland clients'
   homepage 'https://gitlab.freedesktop.org/libdecor/libdecor'
-  version '0.2.0'
+  version '0.2.3'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/libdecor/libdecor.git'
