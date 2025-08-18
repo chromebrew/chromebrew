@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libxmlb < Meson
   description 'Library to help create and query binary XML blobs'
   homepage 'https://github.com/hughsie/libxmlb'
-  version '0.3.14'
+  version '0.3.23'
   license 'LGPL'
   compatibility 'all'
   source_url 'https://github.com/hughsie/libxmlb.git'
