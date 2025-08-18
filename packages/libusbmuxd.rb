@@ -3,12 +3,12 @@ require 'package'
 class Libusbmuxd < Package
   description 'USB Multiplex Daemon'
   homepage 'https://libimobiledevice.org/'
-  version '2.0.2'
+  version '2.1.1'
   license 'GPL-2+ and LGPL-2.1+'
   compatibility 'all'
   source_url "https://github.com/libimobiledevice/libusbmuxd/archive/#{version}.tar.gz"
-  source_sha256 '8ae3e1d9340177f8f3a785be276435869363de79f491d05d8a84a59efc8a8fdc'
-  binary_compression 'tar.xz'
+  source_sha256 'bcc185615a0f4ba80b617696235a084c64b68a1bf546a1dedd85da6b62b8cfbe'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '731ccae4db42bb38174653ebfebd73e70d9f21c3a14d4df9bc81310e9261294d',
