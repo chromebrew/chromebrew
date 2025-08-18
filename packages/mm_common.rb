@@ -11,9 +11,9 @@ class Mm_common < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '49fba10ad9d9b472750d39ff8aa683eaa3b894456a5aa3ad7c4c2b34f3805022',
-     armv7l: '49fba10ad9d9b472750d39ff8aa683eaa3b894456a5aa3ad7c4c2b34f3805022',
-     x86_64: '63781beb5e9ad323c5efe0450885b35360e95d2f7d5f4efa32a8b9637784da74'
+    aarch64: '8ddca6353d6b5db344516daa86b1d49bc2a61f9431f32fcfee26ab08a85e7a0b',
+     armv7l: '8ddca6353d6b5db344516daa86b1d49bc2a61f9431f32fcfee26ab08a85e7a0b',
+     x86_64: 'bea3f846e57af0a970adb5875bc9953864059e744a933ad035738d0e3b519ea7'
   })
 
   gnome
