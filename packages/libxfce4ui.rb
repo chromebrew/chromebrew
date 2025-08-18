@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libxfce4ui < Autotools
   description 'Replacement of the old libxfcegui4 library'
   homepage 'https://xfce.org/'
-  version '4.19.5'
+  version '4.20.2'
   license 'LGPL-2+ and GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.xfce.org/src/xfce/libxfce4ui/4.19/libxfce4ui-#{version}.tar.bz2"
-  source_sha256 'ce7a8d68727c43c85c61d22040751a7730591db69eae967f2c091127326803b7'
+  source_sha256 '7515bf959b73b956ceb967351c7e299cbb3668a53d35f9c770eb72e00d93ced6'
   binary_compression 'tar.zst'
 
   binary_sha256({
