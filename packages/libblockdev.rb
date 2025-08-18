@@ -3,11 +3,11 @@ require 'package'
 class Libblockdev < Package
   description 'A library for manipulating block devices.'
   homepage 'https://github.com/storaged-project/libblockdev'
-  version '2.26'
+  version '2.30-1'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/storaged-project/libblockdev/releases/download/#{version}-1/libblockdev-#{version}.tar.gz"
-  source_sha256 'c4c0e10b35ac632bda8ce6d200b5601184984dec387fe59185921eb42432e069'
+  source_sha256 '0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5'
   binary_compression 'tar.zst'
 
   binary_sha256({
