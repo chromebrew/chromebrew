@@ -1,3 +1,4 @@
+# Total size: 307388
 /usr/local/include/X11/extensions/XvMClib.h
 /usr/local/include/X11/extensions/vldXvMC.h
 /usr/local/lib64/libXvMC.a
@@ -10,4 +11,4 @@
 /usr/local/lib64/libXvMCW.so.1.0.0
 /usr/local/lib64/pkgconfig/xvmc-wrapper.pc
 /usr/local/lib64/pkgconfig/xvmc.pc
-/usr/local/share/doc/XvMC_API.txt
+/usr/local/share/doc/libXvMC/XvMC_API.txt
