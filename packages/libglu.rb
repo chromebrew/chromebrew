@@ -3,7 +3,7 @@ require 'package'
 class Libglu < Package
   description 'Mesa OpenGL Utility library'
   homepage 'https://www.mesa3d.org/'
-  version '9.0.2'
+  version '9.0.3'
   license 'SGI-B-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/glu.git'
