@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libgnome_games_support < Meson
   description 'libgnome-games-support is a small library intended for internal use by GNOME Games.'
   homepage 'https://gitlab.gnome.org/GNOME/libgnome-games-support'
-  version '1.8.2' # 2.0.0 is out, but gnome_mines and gnome_klotski don't work with it yet.
+  version '2.0.1' # 2.0.0 is out, but gnome_mines and gnome_klotski don't work with it yet.
   license 'LGPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libgnome-games-support.git'
