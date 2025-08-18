@@ -22,13 +22,13 @@ class Libdecor < Meson
   depends_on 'cairo' # R
   depends_on 'dbus' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'pango' # R
-  depends_on 'wayland_protocols' => :build
   depends_on 'wayland' # R
+  depends_on 'wayland_protocols' => :build
 
   meson_options "-Ddemo=false \
       -Dlocalstatedir=#{CREW_PREFIX}/var \
