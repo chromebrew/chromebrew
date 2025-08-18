@@ -11,9 +11,9 @@ class Libnotify < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '35a9e95ee6a51d9558976463f93a6914ba41068ad6c9e1227d2f391ae9856039',
-     armv7l: '35a9e95ee6a51d9558976463f93a6914ba41068ad6c9e1227d2f391ae9856039',
-     x86_64: '5ae60181f7b6635d92cca1096faa9ac99b7c8ffd9aaacf56e05fe703366427ba'
+    aarch64: '9a7691fa8514a880032b36718ba86fd79ce44aafd47ad16fa478e6ca9dfff798',
+     armv7l: '9a7691fa8514a880032b36718ba86fd79ce44aafd47ad16fa478e6ca9dfff798',
+     x86_64: '9267537dec8630340c542e485b18dbdb1e03333d2d26b61bc174f1a78d89a37a'
   })
 
   depends_on 'gdk_pixbuf' # R
