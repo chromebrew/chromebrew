@@ -19,7 +19,6 @@ class Libglu < Package
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'mesa' # R
   depends_on 'libglvnd' # R
 
   def self.build
