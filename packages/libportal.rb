@@ -17,8 +17,8 @@ class Libportal < Meson
      x86_64: '74764a5ced5cfd38b12c8415a656115a2eb037967b071c9a85d50fa5e6506fd8'
   })
 
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gtk3' # R
   depends_on 'gtk4' # R
   depends_on 'vulkan_headers' => :build
