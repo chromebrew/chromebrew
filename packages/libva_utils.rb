@@ -11,9 +11,9 @@ class Libva_utils < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '96b6472a638dc5b6269460b49ff4dab1063b7a9227a07cef8aa2aea5bb7d14f1',
-     armv7l: '96b6472a638dc5b6269460b49ff4dab1063b7a9227a07cef8aa2aea5bb7d14f1',
-     x86_64: '2a2f1a713b00c8a14aeacb73f2cfb599f54cd147d02a001eb99f456fd859e17c'
+    aarch64: 'd27d65847af22a3a9f4776bb005baee84c850d7c41fbc7331aac96eaad5e7801',
+     armv7l: 'd27d65847af22a3a9f4776bb005baee84c850d7c41fbc7331aac96eaad5e7801',
+     x86_64: 'c5f806dd18fe1485a1255cc9ce19749f08397b8b61bb5a3192008e4f33591e05'
   })
 
   depends_on 'gcc_lib' # R
