@@ -3,7 +3,7 @@ require 'package'
 class Libvpx < Package
   description 'VP8/VP9 Codec SDK'
   homepage 'https://www.webmproject.org/code/'
-  version '1.13.1'
+  version '1.15.2'
   license 'BSD'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/webm/libvpx.git'
