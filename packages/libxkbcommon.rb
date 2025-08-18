@@ -3,12 +3,12 @@ require 'package'
 class Libxkbcommon < Package
   description 'Keymap handling library for toolkits and window systems'
   homepage 'https://xkbcommon.org'
-  version '1.0.3'
+  version '1.11.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://xkbcommon.org/download/libxkbcommon-#{version}.tar.xz"
-  source_sha256 'a2202f851e072b84e64a395212cbd976ee18a8ee602008b0bad02a13247dbc52'
-  binary_compression 'tar.xz'
+  source_sha256 'b620507312c5e97566a3c6cfaf99144fefc18a0da7d941401dfa0f5f58fb0368'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '65ba534f892176bd4a2b7255e0083e59c223165219bb976c8b96d8475f54640e',
