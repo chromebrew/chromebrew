@@ -122,10 +122,10 @@ class Package
   end
 
   def self.get_deps_list(pkg_name = name, return_attr: false, hash: false, include_build_deps: 'auto', include_self: false,
-                         pkg_tags: [], ver_check: nil, highlight_build_deps: true, exclude_buildessential: false, top_level: true)
+                         pkg_tags: [], highlight_build_deps: true, exclude_buildessential: false, top_level: true)
     # get_deps_list: get dependencies list of pkg_name (current package by default)
     #
-    #                pkg_name: package to check dependencies, current package by default
+    #               pkg_name: package to check dependencies, current package by default
     #            return_attr: return package attribute (tags and version lambda) also
     #                   hash: return result in nested hash, used by `print_deps_tree` (`bin/crew`)
     #
@@ -160,7 +160,7 @@ class Package
     end
 
     # Parse dependencies recursively.
-    expanded_deps = deps.uniq.map do |dep, (dep_tags, ver_check)|
+    expanded_deps = deps.uniq.map do |dep, dep_tags|
       # Check build dependencies only if building from source is needed/specified.
       # Do not recursively find :build based build dependencies.
       next unless (include_build_deps == true && @crew_current_package == pkg_obj.name) ||
@@ -175,7 +175,7 @@ class Package
         # Check dependency by calling this function recursively.
         next \
           send(
-            __method__, dep, pkg_tags: tags, ver_check:, include_self: true, top_level: false,
+            __method__, dep, pkg_tags: tags, include_self: true, top_level: false,
             hash:, return_attr:, include_build_deps:, highlight_build_deps:, exclude_buildessential:
           )
       elsif hash && top_level
@@ -203,7 +203,7 @@ class Package
     elsif include_self
       # Return pkg_name itself if this function is called as a recursive loop (see `expanded_deps`).
       if return_attr
-        return [expanded_deps, { pkg_name => [pkg_tags, ver_check] }].flatten
+        return [expanded_deps, { pkg_name => pkg_tags }].flatten
       else
         return [expanded_deps, pkg_name].flatten
       end
@@ -304,7 +304,7 @@ class Package
       dep_name = dependency
     end
 
-    @dependencies.store(dep_name, [dep_tags])
+    @dependencies.store(dep_name, dep_tags)
   end
 
   def self.binary?(architecture) = !@build_from_source && @binary_sha256&.key?(architecture)
