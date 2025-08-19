@@ -416,14 +416,15 @@ def upgrade(*pkgs, build_from_source: false)
   end
 
   # install new dependencies (if any)
-  extra_deps.each do |pkg_name|
-    search pkg_name
+  extra_deps.each do |dep_to_install|
+    search dep_to_install
     print_current_package
     install(skip_postinstall: true)
   end
 
-  extra_deps.each do |pkg_name|
-    search pkg_name
+  # do post-install for new dependencies
+  extra_deps.each do |dep_to_postinstall|
+    search dep_to_postinstall
     post_install
   end
 
@@ -1106,16 +1107,16 @@ def resolve_dependencies_and_install(no_advisory: false)
   pre_flight
 
   begin
-    to_install   = resolve_dependencies + [ @pkg.name ]
-    free_space   = %x[df --output=avail #{CREW_PREFIX}].lines(chomp: true).last.to_i * 1024
+    to_install   = resolve_dependencies + [@pkg.name]
+    free_space   = `df --output=avail #{CREW_PREFIX}`.lines(chomp: true).last.to_i * 1024
     install_size = to_install.sum do |pkg|
-                     filelist = "#{CREW_LIB_PATH}/manifest/#{ARCH}/#{pkg[0]}/#{pkg}.filelist"
-                     if File.exist?(filelist)
-                       ConvenienceFunctions.read_filelist(filelist)[0]
-                     else
-                       0
-                     end
-                   end
+      filelist = "#{CREW_LIB_PATH}/manifest/#{ARCH}/#{pkg[0]}/#{pkg}.filelist"
+      if File.exist?(filelist)
+        ConvenienceFunctions.read_filelist(filelist)[0]
+      else
+        0
+      end
+    end
 
     if free_space < install_size
       abort <<~EOT.chomp.lightred
@@ -1143,14 +1144,14 @@ def resolve_dependencies_and_install(no_advisory: false)
       end
     end
 
-    to_install.each do |pkg|
-      search pkg
+    to_install.each do |pkg_to_install|
+      search pkg_to_install
       print_current_package
       install(skip_postinstall: true)
     end
 
-    to_install.each do |pkg|
-      search pkg
+    to_install.each do |pkg_to_postinstall|
+      search pkg_to_postinstall
       post_install
     end
   rescue InstallError => e
@@ -1337,15 +1338,15 @@ def resolve_dependencies_and_build
     @pkg.build_from_source = true
 
     dependencies = resolve_dependencies
-    free_space   = %x[df --output=avail #{CREW_PREFIX}].lines(chomp: true).last.to_i * 1024
+    free_space   = `df --output=avail #{CREW_PREFIX}`.lines(chomp: true).last.to_i * 1024
     install_size = dependencies.sum do |pkg|
-                     filelist = "#{CREW_LIB_PATH}/manifest/#{ARCH}/#{pkg[0]}/#{pkg}.filelist"
-                     if File.exist?(filelist)
-                       ConvenienceFunctions.read_filelist(filelist)[0]
-                     else
-                       0
-                     end
-                   end
+      filelist = "#{CREW_LIB_PATH}/manifest/#{ARCH}/#{pkg[0]}/#{pkg}.filelist"
+      if File.exist?(filelist)
+        ConvenienceFunctions.read_filelist(filelist)[0]
+      else
+        0
+      end
+    end
 
     if free_space < install_size
       abort <<~EOT.chomp.lightred
@@ -1372,15 +1373,15 @@ def resolve_dependencies_and_build
     end
 
     # install dependencies
-    dependencies.each do |dep|
-      search dep
+    dependencies.each do |dep_to_install|
+      search dep_to_install
       print_current_package
       install(skip_postinstall: true)
     end
 
     # run postinstall for dependencies
-    dependencies.each do |dep|
-      search dep
+    dependencies.each do |dep_to_postinstall|
+      search dep_to_postinstall
       post_install
     end
 
