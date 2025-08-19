@@ -1,4 +1,4 @@
-# Total size: 30481228
+# Total size: 77701802
 /usr/local/bin/git
 /usr/local/bin/git-cvsserver
 /usr/local/bin/git-receive-pack
@@ -98,6 +98,7 @@
 /usr/local/share/locale/el/LC_MESSAGES/git.mo
 /usr/local/share/locale/es/LC_MESSAGES/git.mo
 /usr/local/share/locale/fr/LC_MESSAGES/git.mo
+/usr/local/share/locale/ga/LC_MESSAGES/git.mo
 /usr/local/share/locale/id/LC_MESSAGES/git.mo
 /usr/local/share/locale/is/LC_MESSAGES/git.mo
 /usr/local/share/locale/it/LC_MESSAGES/git.mo
