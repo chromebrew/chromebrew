@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Krita < CMake
   description 'A generic image manipulation/painting application in the style of Photoshop or GIMP.'
   homepage 'https://krita.org/en/'
-  version '5.2.9'
+  version '5.2.11'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/graphics/krita.git'
