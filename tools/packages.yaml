@@ -10360,6 +10360,11 @@ url: https://github.com/ibireme/yyjson/releases
 activity: medium
 ---
 kind: url
+name: z_library
+url: https://z-lib.fm/z-access#desktop_app_tab
+activity: low
+---
+kind: url
 name: zathura
 url: https://pwmt.org/projects/zathura/download/
 activity: low
