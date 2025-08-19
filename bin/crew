@@ -1226,10 +1226,12 @@ def resolve_dependencies
     dep_file = File.join(CREW_PACKAGES_PATH, "#{dep}.rb")
 
     # copy package script from CREW_LOCAL_REPO_ROOT if necessary
-    if File.exist?("#{CREW_LOCAL_REPO_ROOT}/packages/#{dep}.rb") && (@opt_force || Package.agree_default_yes(package_copy_prompt % dep))
-      FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{dep}.rb", dep_file
-    elsif !File.exist?(dep_file)
-      abort "Dependency #{dep} for #{@pkg.name} was not found.".lightred
+    unless File.exist?(dep_file)
+      if File.exist?("#{CREW_LOCAL_REPO_ROOT}/packages/#{dep}.rb") && (@opt_force || Package.agree_default_yes(package_copy_prompt % dep))
+        FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{dep}.rb", dep_file
+      elsif !File.exist?(dep_file)
+        abort "Dependency #{dep} for #{@pkg.name} was not found.".lightred
+      end
     end
   end
 
