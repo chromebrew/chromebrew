@@ -11,10 +11,10 @@ class Git < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b6e52737caba4701137d6df809fda036edfca1c77d7a803f609eb256052c65e7',
-     armv7l: 'b6e52737caba4701137d6df809fda036edfca1c77d7a803f609eb256052c65e7',
-       i686: 'e08a9f10eef43f989fe284dc641a3610aa8e1ae580f52a25bef7324424e3d9ad',
-     x86_64: '40076123ea1562a96535bf0a9f5c45cad69783bddf3050006abdb9eccda045ff'
+    aarch64: 'be185df0215a96059deca9857fa945c6621b6c2c9a9e2218832f7be2ab3b9f80',
+     armv7l: 'be185df0215a96059deca9857fa945c6621b6c2c9a9e2218832f7be2ab3b9f80',
+       i686: '31e00e5bf7441a7e70ce074450e00908078a6afdf2b0e6bf9cd87755570e63f6',
+     x86_64: '47b0e284b6cdee4e40de13ec957a2b90394c8fe0de63f6ec87839aa6b6bc577a'
   })
 
   depends_on 'ca_certificates' => :build
