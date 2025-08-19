@@ -422,7 +422,7 @@ def upgrade(*pkgs, build_from_source: false)
     install(skip_postinstall: true)
   end
 
-  puts 'Performing post-install for new dependencies...'
+  puts 'Performing post-install for new dependencies...'.lightblue
 
   # do post-install for new dependencies
   extra_deps.each do |dep_to_postinstall|
@@ -1152,7 +1152,7 @@ def resolve_dependencies_and_install(no_advisory: false)
       install(skip_postinstall: true)
     end
 
-    puts 'Performing post-install for packages...'
+    puts 'Performing post-install for packages...'.lightblue
 
     to_install.each do |pkg_to_postinstall|
       search pkg_to_postinstall
@@ -1383,7 +1383,7 @@ def resolve_dependencies_and_build
       install(skip_postinstall: true)
     end
 
-    puts 'Performing post-install for dependencies...'
+    puts 'Performing post-install for dependencies...'.lightblue
 
     # run postinstall for dependencies
     dependencies.each do |dep_to_postinstall|
