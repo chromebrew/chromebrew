@@ -1209,7 +1209,7 @@ def resolve_dependencies_and_install(no_advisory: false)
 end
 
 def resolve_dependencies
-  package_copy_prompt = <<~EOT
+  package_copy_prompt = <<~EOT.chomp
     The package file for %s, which is a required dependency to build #{@pkg.name} only exists in #{CREW_LOCAL_REPO_ROOT}/packages/ .
     Is it ok to copy it to #{CREW_PACKAGES_PATH} so that the build can continue?
   EOT
