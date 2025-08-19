@@ -43,7 +43,7 @@ class ConvenienceFunctions
   def self.read_filelist(path)
     filelist = File.readlines(path, chomp: true)
 
-    if filelist.first.start_with?('# Total size')
+    if !filelist.nil? && filelist.first.start_with?('# Total size')
       total_size, *contents = filelist
       return [total_size[/Total size: (\d+)/, 1].to_i, contents]
     else
