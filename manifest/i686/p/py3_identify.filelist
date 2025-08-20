@@ -1,12 +1,13 @@
+# Total size: 732587
 /usr/local/bin/identify-cli
-/usr/local/lib/python3.13/site-packages/identify-2.6.12.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/identify-2.6.12.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/identify-2.6.12.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/identify-2.6.12.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/identify-2.6.12.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/identify-2.6.12.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/identify-2.6.12.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/identify-2.6.12.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/identify-2.6.13.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/identify-2.6.13.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/identify-2.6.13.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/identify-2.6.13.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/identify-2.6.13.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/identify-2.6.13.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/identify-2.6.13.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/identify-2.6.13.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/identify/__init__.py
 /usr/local/lib/python3.13/site-packages/identify/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/identify/__pycache__/cli.cpython-313.pyc
