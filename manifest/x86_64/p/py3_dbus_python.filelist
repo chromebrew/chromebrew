@@ -1,6 +1,5 @@
-# Total size: 512452
+# Total size: 553183
 /usr/local/include/python3.13/dbus_python/dbus-1.0/dbus/dbus-python.h
-/usr/local/lib64/python3.13/site-packages/.dbus_python.mesonpy.libs/pkgconfig/dbus-python.pc
 /usr/local/lib64/python3.13/site-packages/_dbus_bindings.cpython-313-x86_64-linux-gnu.so
 /usr/local/lib64/python3.13/site-packages/_dbus_glib_bindings.cpython-313-x86_64-linux-gnu.so
 /usr/local/lib64/python3.13/site-packages/dbus/__init__.py
