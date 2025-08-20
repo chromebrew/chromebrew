@@ -13,7 +13,6 @@ class Libglu < Package
   binary_sha256({
     aarch64: 'f4610c827c80fe817f0f91eaf52a0bc820d1051747af117a849ed6749dea2e3f',
      armv7l: 'f4610c827c80fe817f0f91eaf52a0bc820d1051747af117a849ed6749dea2e3f',
-       i686: '1019df9d060a8deffe29d83c5f7bc3ae36aad7ce5aa0922ef992630cb5a54b9c',
      x86_64: '878ab6a7129c6fcfaa576343ee2c00eeb68daed891a9ae9dcc4a961a084c825f'
   })
 
