@@ -13,6 +13,7 @@ class Kupfer < Package
   depends_on 'desktop_file_utils'
   depends_on 'shared_mime_info'
   depends_on 'py3_dbus_python'
+  depends_on 'py3_pygobject' => :build
   depends_on 'py3_pyxdg'
   depends_on 'py3_docutils' => :build
   depends_on 'python3' => :build
