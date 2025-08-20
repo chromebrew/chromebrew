@@ -352,7 +352,6 @@ def upgrade(*pkgs, build_from_source: false)
   end
 
   to_be_upgraded = []
-  extra_deps     = []
 
   if pkgs.any?
     # check for specific package(s)
@@ -373,12 +372,6 @@ def upgrade(*pkgs, build_from_source: false)
     return true
   end
 
-  # Check if there are any new dependencies
-  to_be_upgraded.each do |pkg_name|
-    search(pkg_name)
-    extra_deps += resolve_dependencies
-  end
-
   # Eventually, we should have the upgrade order generated based upon an
   # analysis of the dependency hierarchy, to make sure that earlier
   # dependencies get upgraded first.
@@ -394,40 +387,10 @@ def upgrade(*pkgs, build_from_source: false)
     rerun_upgrade = true
   end
 
-  puts <<~EOT
-
-    The following package(s) will be upgraded:
-
-    #{to_be_upgraded.join(' ')}
-
-  EOT
-
-  puts <<~EOT if extra_deps.any?
-    The following package(s) also need to be installed:
-
-    #{extra_deps.join(' ')}
-
-  EOT
-
-  if @opt_force
-    puts 'Proceeding with package upgrade...'.orange
-  elsif !Package.agree_default_yes('Proceed')
-    abort 'No changes made.'
-  end
-
   # install new dependencies (if any)
-  extra_deps.each do |dep_to_install|
-    search dep_to_install
-    print_current_package
-    install(skip_postinstall: true)
-  end
-
-  puts 'Performing post-install for new dependencies...'.lightblue
-
-  # do post-install for new dependencies
-  extra_deps.each do |dep_to_postinstall|
-    search dep_to_postinstall
-    post_install
+  to_be_upgraded.each do |pkg_name|
+    search(pkg_name)
+    resolve_dependencies
   end
 
   puts 'Updating packages...'
@@ -435,12 +398,13 @@ def upgrade(*pkgs, build_from_source: false)
   # upgrade packages
   to_be_upgraded.each do |pkg_name|
     search(pkg_name)
+    print_current_package
     @pkg.build_from_source = (build_from_source || CREW_BUILD_FROM_SOURCE)
 
     puts "Updating #{@pkg.name}..." if CREW_VERBOSE
 
     @pkg.in_upgrade = true
-    resolve_dependencies_and_install(no_advisory: true)
+    resolve_dependencies_and_install
   end
 
   if rerun_upgrade
@@ -1103,59 +1067,24 @@ def install_package(pkgdir)
   end
 end
 
-def resolve_dependencies_and_install(no_advisory: false)
+def resolve_dependencies_and_install
+  @resolve_dependencies_and_install = 1
+
   # Process preflight block to see if package should even
   # be downloaded or installed.
   pre_flight
 
   begin
-    to_install   = resolve_dependencies + [@pkg.name]
-    free_space   = `df --output=avail #{CREW_PREFIX}`.lines(chomp: true).last.to_i * 1024
-    install_size = to_install.sum do |pkg|
-      filelist = "#{CREW_LIB_PATH}/manifest/#{ARCH}/#{pkg[0]}/#{pkg}.filelist"
-      if File.exist?(filelist)
-        ConvenienceFunctions.read_filelist(filelist)[0]
-      else
-        0
-      end
-    end
+    origin = @pkg.name
 
-    if free_space < install_size
-      abort <<~EOT.chomp.lightred
-        #{@pkg.name.capitalize} needs #{MiscFunctions.human_size(install_size)} of disk space to install.
+    @to_postinstall = []
+    resolve_dependencies
 
-        However, only #{MiscFunctions.human_size(free_space)} of free disk space is available currently.
-      EOT
-    end
-
-    unless no_advisory
-      puts <<~EOT
-
-        The following package(s) will be installed:
-
-        #{to_install.join(' ')}
-
-        After installation, #{MiscFunctions.human_size(install_size)} of extra disk space will be taken. (#{MiscFunctions.human_size(free_space)} of free disk space available)
-
-      EOT
-
-      if @opt_force
-        puts 'Proceeding with package installation...'.orange
-      elsif !Package.agree_default_yes('Proceed')
-        abort 'No changes made.'
-      end
-    end
-
-    to_install.each do |pkg_to_install|
-      search pkg_to_install
-      print_current_package
-      install(skip_postinstall: true)
-    end
-
-    puts 'Performing post-install for packages...'.lightblue
-
-    to_install.each do |pkg_to_postinstall|
-      search pkg_to_postinstall
+    search origin, silent: true
+    install
+    @to_postinstall.append(@pkg.name)
+    @to_postinstall.each do |dep|
+      search dep
       post_install
     end
   rescue InstallError => e
@@ -1206,44 +1135,80 @@ def resolve_dependencies_and_install(no_advisory: false)
     end
   end
   puts "#{@pkg.name.capitalize} installed!".lightgreen
+  @resolve_dependencies_and_install = 0
 end
 
 def resolve_dependencies
-  package_copy_prompt = <<~EOT.chomp
-    The package file for %s, which is a required dependency to build #{@pkg.name} only exists in #{CREW_LOCAL_REPO_ROOT}/packages/ .
-    Is it ok to copy it to #{CREW_PACKAGES_PATH} so that the build can continue?
-  EOT
+  @dependencies = @pkg.get_deps_list(return_attr: true)
 
-  dependencies = @pkg.get_deps_list(return_attr: true)
+  # compare dependency version with required range (if installed)
+  @dependencies.each do |dep|
+    dep_name = dep.keys[0]
+    dep_info = @device[:installed_packages].select { |pkg| pkg[:name] == dep_name }[0]
+
+    # skip if dependency is not installed
+    next unless dep_info
+
+    _tags, version_check = dep.values[0]
+    installed_version    = dep_info[:version]
+
+    next unless version_check
+
+    # abort if the range is not fulfilled
+    abort unless version_check.call(installed_version)
+  end
 
   # leave only dependency names (remove all package attributes returned by @pkg.get_deps_list)
-  dependencies.map!(&:keys).flatten!
+  @dependencies.map!(&:keys).flatten!
 
   # abort & identify incompatible dependencies.
-  dependencies.each do |dep|
+  @dependencies.each do |dep|
     abort "Some dependencies e.g., #{dep}, are not compatible with your device architecture (#{ARCH}). Unable to continue.".lightred unless PackageUtils.compatible?(Package.load_package("#{CREW_PACKAGES_PATH}/#{dep}.rb"))
   end
-
   # leave only not installed packages in dependencies
-  dependencies.reject! { |dep_name| @device[:installed_packages].any? { |pkg| pkg[:name] == dep_name } }
+  @dependencies.reject! { |dep_name| @device[:installed_packages].any? { |pkg| pkg[:name] == dep_name } }
 
-  dependencies.each do |dep|
-    dep_file = File.join(CREW_PACKAGES_PATH, "#{dep}.rb")
-
-    # copy package script from CREW_LOCAL_REPO_ROOT if necessary
-    unless File.exist?(dep_file)
-      if File.exist?("#{CREW_LOCAL_REPO_ROOT}/packages/#{dep}.rb") && (@opt_force || Package.agree_default_yes(package_copy_prompt % dep))
-        FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{dep}.rb", dep_file
-      elsif !File.exist?(dep_file)
-        abort "Dependency #{dep} for #{@pkg.name} was not found.".lightred
-      end
-    end
+  # run preflight check for dependencies
+  @dependencies.each do |dep_name|
+    Package.load_package(File.join(CREW_PACKAGES_PATH, "#{dep_name}.rb")).preflight
   end
 
-  return dependencies
+  return if @dependencies.empty?
+
+  puts 'The following packages also need to be installed: '
+
+  @dependencies.each do |dep|
+    FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{dep}.rb", CREW_PACKAGES_PATH if !File.file?(File.join(CREW_PACKAGES_PATH, "#{dep}.rb")) && File.file?(File.join(CREW_LOCAL_REPO_ROOT, "packages/#{dep}.rb")) && (@opt_force || Package.agree_default_yes("The package file for #{dep}, which is a required dependency to build #{@pkg.name} only exists in #{CREW_LOCAL_REPO_ROOT}/packages/ . Is it ok to copy it to #{CREW_PACKAGES_PATH} so that the build can continue?"))
+    abort "Dependency #{dep} for #{@pkg.name} was not found.".lightred unless File.file?(File.join(CREW_PACKAGES_PATH, "#{dep}.rb"))
+  end
+
+  puts @dependencies.join(' ')
+
+  if @opt_force
+    puts 'Proceeding with dependency package installation...'.orange
+  elsif !Package.agree_default_yes('Proceed')
+    abort 'No changes made.'
+  end
+
+  @dependencies.each do |dep|
+    search dep
+    print_current_package
+    install
+  end
+  if @resolve_dependencies_and_install.eql?(1) || @resolve_dependencies_and_build.eql?(1)
+    @to_postinstall = @dependencies
+  else
+    # Make sure the sommelier postinstall happens last so the messages
+    # from that are not missed by users.
+    @dependencies.partition { |v| v != 'sommelier' }.reduce(:+)
+    @dependencies.each do |dep|
+      search dep
+      post_install
+    end
+  end
 end
 
-def install(skip_postinstall: false)
+def install
   @pkg.in_install = true
   if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name) && !@pkg.superclass.to_s == 'RUBY'
     puts "Package #{@pkg.name} already installed, skipping...".lightgreen
@@ -1316,8 +1281,10 @@ def install(skip_postinstall: false)
       install_package dest_dir
     end
 
-    # perform post-install process
-    post_install unless skip_postinstall
+    unless (@resolve_dependencies_and_install == 1) || (@resolve_dependencies_and_build == 1)
+      # perform post-install process
+      post_install
+    end
   end
 
   install_end_time = Time.now.to_i
@@ -1335,63 +1302,20 @@ def install(skip_postinstall: false)
 end
 
 def resolve_dependencies_and_build
+  @resolve_dependencies_and_build = 1
+
+  @to_postinstall = []
   begin
     origin = @pkg.name
 
     # mark current package as which is required to compile from source
     @pkg.build_from_source = true
-
-    dependencies = resolve_dependencies
-    free_space   = `df --output=avail #{CREW_PREFIX}`.lines(chomp: true).last.to_i * 1024
-    install_size = dependencies.sum do |pkg|
-      filelist = "#{CREW_LIB_PATH}/manifest/#{ARCH}/#{pkg[0]}/#{pkg}.filelist"
-      if File.exist?(filelist)
-        ConvenienceFunctions.read_filelist(filelist)[0]
-      else
-        0
-      end
-    end
-
-    if free_space < install_size
-      abort <<~EOT.chomp.lightred
-        #{@pkg.name.capitalize} needs #{MiscFunctions.human_size(install_size)} of disk space to install.
-
-        However, only #{MiscFunctions.human_size(free_space)} of free disk space is available currently.
-      EOT
-    end
-
-    puts <<~EOT
-
-      In order to build #{origin}, the following package(s) also need to be installed:
-
-      #{dependencies.join(' ')}
-
-      After installation, #{MiscFunctions.human_size(install_size)} of extra disk space will be taken. (#{MiscFunctions.human_size(free_space)} of free disk space available)
-
-    EOT
-
-    if @opt_force
-      puts 'Proceeding with dependency installation...'.orange
-    elsif !Package.agree_default_yes('Proceed')
-      abort 'No changes made.'
-    end
-
-    # install dependencies
-    dependencies.each do |dep_to_install|
-      search dep_to_install
-      print_current_package
-      install(skip_postinstall: true)
-    end
-
-    puts 'Performing post-install for dependencies...'.lightblue
-
-    # run postinstall for dependencies
-    dependencies.each do |dep_to_postinstall|
-      search dep_to_postinstall
+    resolve_dependencies
+    @to_postinstall.each do |dep|
+      search dep
       post_install
     end
-
-    search @pkg.name, silent: true
+    search origin, silent: true
     build_package CREW_LOCAL_BUILD_DIR
   rescue InstallError => e
     abort "#{@pkg.name} failed to build: #{e}".lightred
@@ -1403,6 +1327,7 @@ def resolve_dependencies_and_build
     end
   end
   puts "#{@pkg.name.capitalize} is built!".lightgreen
+  @resolve_dependencies_and_build = 0
 end
 
 def build_package(crew_archive_dest)
