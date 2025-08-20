@@ -68,6 +68,4 @@ class Krita < CMake
   depends_on 'quazip'
   depends_on 'zlib' # R
   depends_on 'zug'
-
-
 end
