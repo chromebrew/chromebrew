@@ -11,9 +11,9 @@ class Krita < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '87ce14943f80db6d8b50faa3c4e033e8b8c2e3df65102ffada983cc34456a2a3',
-     armv7l: '87ce14943f80db6d8b50faa3c4e033e8b8c2e3df65102ffada983cc34456a2a3',
-     x86_64: '35eea48a87cf37be5d1be89e7ab3d2d1dc5a57d1c65ef4393567566f3359e8c7'
+    aarch64: '01402584551320988057c196b7810cca0bf6f9a0be1799e05b2d47be9992997e',
+     armv7l: '01402584551320988057c196b7810cca0bf6f9a0be1799e05b2d47be9992997e',
+     x86_64: '631157a02e9188f25b5c830b8b5589b79fb979f4e1255841fa07eaab32864501'
   })
 
   depends_on 'boost'
