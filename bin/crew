@@ -1391,7 +1391,7 @@ def resolve_dependencies_and_build
       post_install
     end
 
-    search @pkg.name, silent: true
+    search origin, silent: true
     build_package CREW_LOCAL_BUILD_DIR
   rescue InstallError => e
     abort "#{@pkg.name} failed to build: #{e}".lightred
