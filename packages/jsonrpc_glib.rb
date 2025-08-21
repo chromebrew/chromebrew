@@ -21,10 +21,10 @@ class Jsonrpc_glib < Meson
 
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gobject_introspection' => :build
   depends_on 'json_glib' # R
   depends_on 'py3_gi_docgen' => :build
-  depends_on 'vala' => :build
 
   gnome
+
+  meson_options '-Dwith_introspection=false -Dwith_vapi=false'
 end
