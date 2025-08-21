@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Glib_networking < Meson
   description 'Network extensions for GLib'
   homepage 'https://github.com/GNOME/glib-networking'
-  version '2.78.0'
+  version '2.80.1'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/glib-networking.git'
