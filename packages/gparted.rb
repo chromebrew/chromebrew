@@ -3,11 +3,11 @@ require 'package'
 class Gparted < Package
   description 'A Partition Magic clone, frontend to GNU Parted'
   homepage 'https://gparted.org/'
-  version '1.6.0'
+  version '1.7.0'
   license 'GPL-2+ and FDL-1.2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/project/gparted/gparted/gparted-#{version}/gparted-#{version}.tar.gz"
-  source_sha256 '9b9f51b3ce494ddcb59a55e1ae6679c09436604e331dbf5a536d60ded6c6ea5b'
+  source_sha256 '84ae3b9973e443a2175f07aa0dc2aceeadb1501e0f8953cec83b0ec3347b7d52'
   binary_compression 'tar.zst'
 
   binary_sha256({
