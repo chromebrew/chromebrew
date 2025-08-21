@@ -1,4 +1,4 @@
-# Total size: 573641
+# Total size: 635328
 /usr/local/lib/gio/modules/libgiognomeproxy.so
 /usr/local/lib/gio/modules/libgiognutls.so
 /usr/local/lib/gio/modules/libgiolibproxy.so
@@ -40,6 +40,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/ja/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/ka/LC_MESSAGES/glib-networking.mo
+/usr/local/share/locale/kab/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/kk/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/km/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/kn/LC_MESSAGES/glib-networking.mo
