@@ -1,4 +1,4 @@
-# Total size: 4384856
+# Total size: 4677515
 /usr/local/bin/finch
 /usr/local/include/finch/finch.h
 /usr/local/include/finch/gntaccount.h
@@ -101,7 +101,7 @@
 /usr/local/lib/libpurple.la
 /usr/local/lib/libpurple.so
 /usr/local/lib/libpurple.so.0
-/usr/local/lib/libpurple.so.0.14.13
+/usr/local/lib/libpurple.so.0.14.14
 /usr/local/lib/perl5/armv8l-linux-thread-multi/perllocal.pod
 /usr/local/lib/pkgconfig/finch.pc
 /usr/local/lib/pkgconfig/purple.pc
@@ -149,8 +149,6 @@
 /usr/local/lib/purple-2/ssl.so
 /usr/local/lib/purple-2/statenotify.la
 /usr/local/lib/purple-2/statenotify.so
-/usr/local/lib/purple-2/tcl.la
-/usr/local/lib/purple-2/tcl.so
 /usr/local/share/aclocal/purple.m4
 /usr/local/share/man/man1/finch.1.zst
 /usr/local/share/man/man3/Purple.3.zst
