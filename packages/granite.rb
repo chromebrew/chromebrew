@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Granite < Meson
   description 'Library that extends GTK with common widgets and utilities'
   homepage 'https://github.com/elementary/granite'
-  version '6.2.0'
+  version '7.6.0'
   license 'LGPL-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/elementary/granite.git'
