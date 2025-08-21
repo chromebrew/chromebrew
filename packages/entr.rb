@@ -17,6 +17,8 @@ class Entr < Package
      x86_64: 'cfc15cb06370c5fd548060fcd06b3935520fb57d89d82abfef7c4ce2c6d6d4b9'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     system './configure' # Not an autotools script, despite appearances.
     system 'make', "PREFIX=#{CREW_PREFIX}"
