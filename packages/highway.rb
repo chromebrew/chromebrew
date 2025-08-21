@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Highway < CMake
   description 'A C++ library for SIMD Single Instruction, Multiple Data'
   homepage 'https://github.com/google/highway/'
-  version '1.2.0'
+  version '1.3.0'
   license 'Apache'
   compatibility 'all'
   source_url 'https://github.com/google/highway.git'
