@@ -6,11 +6,11 @@ require 'buildsystems/autotools'
 class Exempi < Autotools
   description 'A library to parse XMP metadata'
   homepage 'https://libopenraw.freedesktop.org/wiki/Exempi'
-  version '2.6.4'
+  version '2.6.6'
   license 'BSD'
   compatibility 'all'
   source_url "https://gitlab.freedesktop.org/libopenraw/exempi/-/archive/#{version}/exempi-#{version}.tar.bz2"
-  source_sha256 '8d34b3860192f6d2ac017537884b099b13a492ed4884130c65da5173d5162590'
+  source_sha256 'c553fe596d4e5b44ce645a3d9a8b1d8609f2572d50953b10fe7103380462e084'
   binary_compression 'tar.zst'
 
   binary_sha256({
