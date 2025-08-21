@@ -17,7 +17,7 @@ class Freetds < Package
      x86_64: '1ecd9180df531b7c85b28719d9685820f2427e516f26787b51cab750e4ce8bf9'
   })
 
-  depends_on 'unixodbc'
+  depends_on 'glibc' # R
 
   def self.build
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
