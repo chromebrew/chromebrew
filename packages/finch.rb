@@ -19,11 +19,13 @@ class Finch < Autotools
 
   depends_on 'e2fsprogs' # R
   depends_on 'glib'
+  depends_on 'glibc' # R
   depends_on 'gnutls'
   depends_on 'krb5' # R
   depends_on 'libcyrussasl' # R
   depends_on 'libgnt'
   depends_on 'libtirpc' # R
+  depends_on 'libxcrypt' # R
   depends_on 'libxml2' # R
   depends_on 'ncurses'
   depends_on 'perl'
