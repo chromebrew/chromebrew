@@ -17,8 +17,8 @@ class Glib_networking < Meson
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gnutls' # R
   depends_on 'gsettings_desktop_schemas'
   depends_on 'libproxy'
