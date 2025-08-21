@@ -14,9 +14,9 @@ class Jsonrpc_glib < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '69b27938d61637c9053e7a541485b7b1642b636f91e6c9c9a0dcf42d3dfe841c',
-     armv7l: '69b27938d61637c9053e7a541485b7b1642b636f91e6c9c9a0dcf42d3dfe841c',
-     x86_64: 'c982f30fa62ce1e7065c130c7d6ef592920e055f919d5d4af38573c5813a7013'
+    aarch64: 'f173283df257cc4799e63f5ac87875dcf927c909e912833b33774cd7022a79ad',
+     armv7l: 'f173283df257cc4799e63f5ac87875dcf927c909e912833b33774cd7022a79ad',
+     x86_64: '1d1cffe07b9f7b44e8b043c704e5a7eafd86ad8c92c1c8c69bf050987d023e8a'
   })
 
   depends_on 'glib' # R
