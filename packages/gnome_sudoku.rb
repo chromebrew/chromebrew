@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_sudoku < Meson
   description 'Sudoku puzzle game for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Sudoku'
-  version '46.0'
+  version '48.1'
   license 'GPL-3+ and CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-sudoku.git'
