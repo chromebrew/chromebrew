@@ -62,7 +62,6 @@ class Mesa < Meson
     -Dgles2=enabled \
     -Dglvnd=enabled \
     -Dglx=dri \
-    -Dintel-clc=enabled \
     -Dllvm=enabled \
     -Dgallium-drivers='#{ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,softpipe,llvmpipe,iris,crocus,zink' : 'v3d,freedreno,etnaviv,nouveau,svga,tegra,virgl,lima,panfrost,softpipe,llvmpipe,iris,zink'}' \
     -Dvulkan-drivers='#{ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'}' \
