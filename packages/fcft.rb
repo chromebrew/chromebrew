@@ -18,6 +18,7 @@ class Fcft < Meson
 
   depends_on 'fontconfig'
   depends_on 'freetype'
+  depends_on 'glibc' # R
   depends_on 'harfbuzz'
   depends_on 'pixman'
   depends_on 'tllist' => :build
