@@ -1220,6 +1220,24 @@ def resolve_dependencies
 
   dependencies = @pkg.get_deps_list(return_attr: true)
 
+  # compare dependency version with required range (if installed)
+  dependencies&.each do |dep|
+    dep_name = dep.keys[0]
+    dep_info = @device[:installed_packages].select { |pkg| pkg[:name] == dep_name }[0]
+
+    # skip if dependency is not installed
+
+    next unless dep_info
+
+    _tags, version_check = dep.values[0]
+    installed_version    = dep_info[:version]
+
+    next unless version_check
+
+    # abort if the range is not fulfilled
+    abort unless version_check.call(installed_version)
+  end
+
   # leave only dependency names (remove all package attributes returned by @pkg.get_deps_list)
   dependencies.map!(&:keys).flatten!
 
