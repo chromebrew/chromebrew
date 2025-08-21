@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Foliate < Meson
   description 'A simple and modern GTK eBook reader'
   homepage 'https://johnfactotum.github.io/foliate/'
-  version '3.1.1'
+  version '3.3.0'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/johnfactotum/foliate.git'
