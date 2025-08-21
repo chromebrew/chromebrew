@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_autoar < Meson
   description 'Automatic archives creating and extracting library'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-autoar'
-  version '0.4.4'
+  version '0.4.5'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-autoar.git'
