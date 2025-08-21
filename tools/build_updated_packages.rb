@@ -133,7 +133,7 @@ updated_packages.each do |pkg|
 
   # Don't check if we need new binaries if the package doesn't already
   # have binaries for this architecture.
-  if !system("grep -q binary_sha256 #{pkg}")
+  if !system("grep -q binary_sha256 #{pkg}") && !@pkg_obj.no_compile_needed?
     puts "#{name.capitalize} #{@pkg_obj.version} has no binaries and may not need them.".lightgreen
     next pkg
   elsif @pkg_obj.no_compile_needed?
