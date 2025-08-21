@@ -20,8 +20,8 @@ class Gnome_desktop < Meson
   depends_on 'eudev' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gsettings_desktop_schemas' => :build
   depends_on 'gtk3' # R
