@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Gnuplot < Autotools
   description 'Gnuplot is a portable command-line driven graphing utility'
   homepage 'https://gnuplot.sourceforge.net/'
-  version '6.0.2'
+  version '6.0.3'
   license 'gnuplot'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/project/gnuplot/gnuplot/#{version}/gnuplot-#{version}.tar.gz"
-  source_sha256 'f68a3b0bbb7bbbb437649674106d94522c00bf2f285cce0c19c3180b1ee7e738'
+  source_sha256 'ec52e3af8c4083d4538152b3f13db47f6d29929a3f6ecec5365c834e77f251ab'
   binary_compression 'tar.zst'
 
   binary_sha256({
