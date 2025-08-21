@@ -3,7 +3,7 @@ require 'package'
 class Entr < Package
   description 'Run arbitrary commands when files change'
   homepage 'https://eradman.com/entrproject/'
-  version '5.6'
+  version '5.7'
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/eradman/entr.git'
