@@ -868,6 +868,8 @@ def prepare_package(destdir)
     # Allow postbuild to override the filelist contents
     @pkg.postbuild
 
+    strip_dir destdir
+
     # Create file list and calculate file size
     filelist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}"].select do |e|
       File.file?(e) || File.symlink?(e)
@@ -886,7 +888,7 @@ def prepare_package(destdir)
       FileUtils.cp 'filelist', "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
     end
 
-    # check for FHS3 compliance
+    # Check for FHS3 compliance
     puts 'Checking for FHS3 compliance...'
     errors = false
     fhs_compliant_prefix = %W[bin etc include lib #{ARCH_LIB} libexec opt sbin share var].uniq
@@ -906,7 +908,7 @@ def prepare_package(destdir)
       end
     end
 
-    # check for conflicts with other installed files
+    # Check for conflicts with other installed files
     conflicts = ConvenienceFunctions.determine_conflicts(@pkg.name, File.join(Dir.pwd, 'filelist'), '_build', verbose: CREW_VERBOSE)
 
     if conflicts.any?
@@ -927,17 +929,15 @@ def prepare_package(destdir)
       end
     end
 
-    # abort if errors encountered
+    # Abort if errors encountered
     abort 'Exiting due to above errors.'.lightred if errors
 
     # Make sure the package file has runtime dependencies added properly.
     system "#{CREW_LIB_PATH}/tools/getrealdeps.rb --use-crew-dest-dir #{@pkg.name}", exception: true if File.which('gawk') && File.which('upx') && !@pkg.no_compile_needed?
 
-    # create directory list
+    # Create directory list
     directorylist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*}/"].map { |dir| dir[1..] }.sort
     File.write('dlist', "#{directorylist.join("\n")}\n")
-
-    strip_dir destdir
   end
 end
 
