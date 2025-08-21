@@ -27,8 +27,8 @@ class Harfbuzz < Meson
   # depends_on 'fontconfig' # This pulls in freetype.
   # depends_on 'freetype' # R harfbuzz provides this.
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
   depends_on 'graphite' # R
@@ -40,12 +40,11 @@ class Harfbuzz < Meson
   depends_on 'libxcb' # R
   depends_on 'libxext' # R
   depends_on 'libxrender' # R
-  depends_on 'lzo' # R
   depends_on 'patchelf' => :build
   depends_on 'pcre' => :build
+  depends_on 'perl_xml_namespacesupport' => :build
   depends_on 'perl_xml_sax' => :build
   depends_on 'perl_xml_sax_base' => :build
-  depends_on 'perl_xml_namespacesupport' => :build
   depends_on 'pixman' # R Needed for cairo subproject.
   depends_on 'ragel' => :build
   depends_on 'zlib' # R
