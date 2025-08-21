@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/rust'
 
-class Hurl < Package
+class Hurl < RUST
   description 'Hurl is a command line tool that runs HTTP requests defined in a simple plain text format.'
   homepage 'https://hurl.dev/'
   version '7.0.0'
@@ -17,15 +17,10 @@ class Hurl < Package
   depends_on 'rust' => :build
   depends_on 'curl'
   depends_on 'libxml2'
+  depends_on 'llvm_dev' => :build
   depends_on 'openssl'
 
-  def self.build
-    system 'cargo build --release'
-  end
-
-  def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
+  rust_install_extras do
     Dir.chdir 'target/release' do
       FileUtils.install %w[hurl hurlfmt], "#{CREW_DEST_PREFIX}/bin", mode: 0o755
     end
