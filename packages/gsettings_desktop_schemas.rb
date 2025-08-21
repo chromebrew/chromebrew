@@ -11,9 +11,9 @@ class Gsettings_desktop_schemas < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '503ad8e48cc72c97beb135b2e9b27b01a90ff18a10cef4c9d05f2c8c1f2feb04',
-     armv7l: '503ad8e48cc72c97beb135b2e9b27b01a90ff18a10cef4c9d05f2c8c1f2feb04',
-     x86_64: '4aee4c66f8b9db262fe88d105ea5d07d007e83c5439ffc1e66a387a279f97058'
+    aarch64: '1c8f2304e59ab7e4e7ae2c9c7b520e1d34ddb1b07e5bacd186d4a829a8a3278d',
+     armv7l: '1c8f2304e59ab7e4e7ae2c9c7b520e1d34ddb1b07e5bacd186d4a829a8a3278d',
+     x86_64: '758f514a162cb803e129424cc0be2209f8c01d443adba472149cde69c29601a2'
   })
 
   depends_on 'glib' => :build
