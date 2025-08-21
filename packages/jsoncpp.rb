@@ -16,4 +16,7 @@ class Jsoncpp < Meson
        i686: '45cfb7ba6a35022261b262b813a99654046a08d4ccc67d496465b72337157b7a',
      x86_64: '5496a7bb46dd54ee680ef70955f1259cf3c0173a2f8bf8c518458ecce5cb1f9e'
   })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 end
