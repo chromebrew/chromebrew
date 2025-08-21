@@ -11,10 +11,10 @@ class Jsoncpp < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '71fb94fdc4876273871a39cac3dbb84e0695a27aa307acb2601f227c374313bb',
-     armv7l: '71fb94fdc4876273871a39cac3dbb84e0695a27aa307acb2601f227c374313bb',
-       i686: '45cfb7ba6a35022261b262b813a99654046a08d4ccc67d496465b72337157b7a',
-     x86_64: '5496a7bb46dd54ee680ef70955f1259cf3c0173a2f8bf8c518458ecce5cb1f9e'
+    aarch64: '01e997a3880d387a8bfcdb62427ba1d7604c43e0485444a8a9fe2f23bf6beae9',
+     armv7l: '01e997a3880d387a8bfcdb62427ba1d7604c43e0485444a8a9fe2f23bf6beae9',
+       i686: '6e5b6c697c6e430853e90ba134ec81ee5de299e165957baf70aca7052bc32f3f',
+     x86_64: 'f67495de6609cc004c4312c93cc9f64ee6bc0d713fb87242a0b92a65b3fed80a'
   })
 
   depends_on 'gcc_lib' # R
