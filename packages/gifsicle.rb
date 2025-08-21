@@ -17,6 +17,8 @@ class Gifsicle < Autotools
      x86_64: '6fc9976eb9f4680a3a3b57adefc027f0b53b27e5186aea1d3e824509e4244c92'
   })
 
+  depends_on 'glibc' # R
+
   autotools_configure_options '--without-x --disable-gifview'
 
   def self.patch
