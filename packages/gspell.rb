@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gspell < Meson
   description 'a flexible API to implement the spell checking in a GTK+ application'
   homepage 'https://wiki.gnome.org/Projects/gspell'
-  version "1.13.1-#{CREW_ICU_VER}"
+  version "1.14.0-#{CREW_ICU_VER}"
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gspell.git'
