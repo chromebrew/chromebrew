@@ -3,11 +3,11 @@ require 'package'
 class Gdbm < Package
   description 'GNU dbm is a set of database routines that use extensible hashing.'
   homepage 'https://www.gnu.org/software/gdbm/'
-  version '1.23'
+  version '1.26'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gdbm/gdbm-#{version}.tar.gz"
-  source_sha256 '74b1081d21fff13ae4bd7c16e5d6e504a4c26f7cde1dca0d963a484174bbcacd'
+  source_sha256 '6a24504a14de4a744103dcb936be976df6fbe88ccff26065e54c1c47946f4a5e'
   binary_compression 'tar.zst'
 
   binary_sha256({
