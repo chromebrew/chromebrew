@@ -3,7 +3,7 @@ require 'package'
 class Enet < Package
   description 'ENet reliable UDP networking library'
   homepage 'https://github.com/lsalzman/enet'
-  version '1.3.17'
+  version '1.3.18'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/lsalzman/enet.git'
