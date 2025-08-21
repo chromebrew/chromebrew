@@ -3,7 +3,7 @@ require 'package'
 class Jsoncpp < Package
   description 'A C++ library for interacting with JSON.'
   homepage 'https://github.com/open-source-parsers/jsoncpp'
-  version '1.9.4'
+  version '1.9.6'
   license 'MIT, public-domain'
   compatibility 'all'
   source_url 'https://github.com/open-source-parsers/jsoncpp.git'
