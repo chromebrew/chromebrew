@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Faad2 < CMake
   description 'Freeware Advanced Audio (AAC) Decoder'
   homepage 'https://sourceforge.net/projects/faac/'
-  version '2.11.1'
+  version '2.11.2'
   license 'GPL2'
   compatibility 'all'
   source_url 'https://github.com/knik0/faad2.git'
