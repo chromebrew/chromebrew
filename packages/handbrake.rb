@@ -15,50 +15,33 @@ class Handbrake < Package
      x86_64: '4a1cbdaab5931a9e878f3103cb9df6750e44ca8f6272fc80aa924ddf15cd3d64'
   })
 
-  depends_on 'at_spi2_core' # R
   depends_on 'bzip2' # R
-  depends_on 'cairo' # R
-  depends_on 'expat' # R
-  depends_on 'ffmpeg' # R
-  depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
-  depends_on 'fribidi' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'graphene' # R
-  depends_on 'gstreamer' # R
+  depends_on 'glibc' # R
   depends_on 'gtk4' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'icu4c' # R
   depends_on 'intel_media_sdk'
   depends_on 'jansson' # R
   depends_on 'libass' # R
   depends_on 'libdrm' # R
   depends_on 'libdvdcss'
-  depends_on 'libgudev' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libmp3lame' # R
   depends_on 'libogg' # R
-  depends_on 'libpng' # R
   depends_on 'libtheora' # R
   depends_on 'libva' # R
   depends_on 'libvorbis' # R
   depends_on 'libvpx' # R
   depends_on 'libx264' # R
   depends_on 'libxml2' # R
-  depends_on 'mesa' # R
   depends_on 'nasm' => :build
   depends_on 'numactl' # R
-  depends_on 'onevpl' # R
   depends_on 'opus' # R
   depends_on 'pango' # R
   depends_on 'rust' => :build
   depends_on 'speex' # R
-  depends_on 'util_linux' # R
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland_protocols' => :build
   depends_on 'xcb_util' => :build
   depends_on 'xzutils' # R
