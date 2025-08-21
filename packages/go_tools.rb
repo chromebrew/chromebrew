@@ -3,11 +3,11 @@ require 'package'
 class Go_tools < Package
   description 'Developer tools for the Go programming language'
   homepage 'https://github.com/golang/tools'
-  version '0.6.6'
+  version '2025.1.1'
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '5c938388e815f2d03343301f391640a1cbc11fac3b31e20fc74b77c0963723df',
