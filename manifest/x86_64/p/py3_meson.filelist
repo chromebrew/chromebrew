@@ -1,13 +1,13 @@
-# Total size: 8801973
+# Total size: 8799216
 /usr/local/bin/meson
-/usr/local/lib/python3.13/site-packages/meson-1.8.3.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/meson-1.8.3.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/meson-1.8.3.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/meson-1.8.3.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/meson-1.8.3.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/meson-1.8.3.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/meson-1.8.3.dist-info/licenses/COPYING
-/usr/local/lib/python3.13/site-packages/meson-1.8.3.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/meson-1.8.4.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/meson-1.8.4.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/meson-1.8.4.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/meson-1.8.4.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/meson-1.8.4.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/meson-1.8.4.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/meson-1.8.4.dist-info/licenses/COPYING
+/usr/local/lib/python3.13/site-packages/meson-1.8.4.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/mesonbuild/__init__.py
 /usr/local/lib/python3.13/site-packages/mesonbuild/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/mesonbuild/__pycache__/_pathlib.cpython-313.pyc
