@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk_vnc < Meson
   description 'VNC viewer widget for GTK'
   homepage 'https://wiki.gnome.org/Projects/gtk-vnc'
-  version '1.3.1'
+  version '1.5.0'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk-vnc.git'
