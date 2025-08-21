@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Gifsicle < Autotools
   description 'Gifsicle is a command-line tool for creating, editing, and getting information about GIF images and animations.'
   homepage 'http://www.lcdf.org/gifsicle/'
-  version '1.95'
+  version '1.96'
   license 'GPL-2 and MIT'
   compatibility 'all'
   source_url 'https://github.com/kohler/gifsicle.git'
