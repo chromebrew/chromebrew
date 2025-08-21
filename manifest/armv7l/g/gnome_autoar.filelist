@@ -1,4 +1,4 @@
-# Total size: 226085
+# Total size: 216769
 /usr/local/include/gnome-autoar-0/gnome-autoar/autoar-compressor.h
 /usr/local/include/gnome-autoar-0/gnome-autoar/autoar-enum-types.h
 /usr/local/include/gnome-autoar-0/gnome-autoar/autoar-extractor.h
@@ -12,10 +12,10 @@
 /usr/local/lib/girepository-1.0/GnomeAutoarGtk-0.1.typelib
 /usr/local/lib/libgnome-autoar-0.so
 /usr/local/lib/libgnome-autoar-0.so.0
-/usr/local/lib/libgnome-autoar-0.so.0.2.0
+/usr/local/lib/libgnome-autoar-0.so.0.2.1
 /usr/local/lib/libgnome-autoar-gtk-0.so
 /usr/local/lib/libgnome-autoar-gtk-0.so.0
-/usr/local/lib/libgnome-autoar-gtk-0.so.0.2.0
+/usr/local/lib/libgnome-autoar-gtk-0.so.0.2.1
 /usr/local/lib/pkgconfig/gnome-autoar-0.pc
 /usr/local/lib/pkgconfig/gnome-autoar-gtk-0.pc
 /usr/local/share/gir-1.0/GnomeAutoar-0.1.gir
