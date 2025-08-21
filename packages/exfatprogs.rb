@@ -3,7 +3,7 @@ require 'package'
 class Exfatprogs < Package
   description 'exFAT filesystem userspace utilities for the Linux Kernel exfat driver.'
   homepage 'https://github.com/exfatprogs/exfatprogs'
-  version '1.2.0'
+  version '1.2.9'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/exfatprogs/exfatprogs.git'
