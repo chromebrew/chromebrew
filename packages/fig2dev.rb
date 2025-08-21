@@ -6,11 +6,11 @@ require 'buildsystems/autotools'
 class Fig2dev < Autotools
   description 'Format conversion utility that can be used with xfig'
   homepage 'https://mcj.sourceforge.net/'
-  version '3.2.9'
+  version '3.2.9a'
   license 'custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/mcj/fig2dev-#{version}.tar.xz"
-  source_sha256 '15e246c8d13cc72de25e08314038ad50ce7d2defa9cf1afc172fd7f5932090b1'
+  source_sha256 '61e185393176852f03b901b3b05b19fbc5ad8258ff142f3da6e70b1b83513326'
   binary_compression 'tar.zst'
 
   binary_sha256({
