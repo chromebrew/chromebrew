@@ -19,8 +19,8 @@ class Jsonrpc_glib < Meson
      x86_64: 'c982f30fa62ce1e7065c130c7d6ef592920e055f919d5d4af38573c5813a7013'
   })
 
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'json_glib' # R
   depends_on 'py3_gi_docgen' => :build
 
