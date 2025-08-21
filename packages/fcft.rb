@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Fcft < Meson
   description 'Simple library for font loading and glyph rasterization using FontConfig, FreeType and pixman.'
   homepage 'https://codeberg.org/dnkl/fcft'
-  version '3.1.8'
+  version '3.3.2'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://codeberg.org/dnkl/fcft.git'
