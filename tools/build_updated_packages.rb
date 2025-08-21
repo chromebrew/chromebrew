@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 3.2 (for Chromebrew)
+# build_updated_packages version 3.3 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -132,10 +132,14 @@ updated_packages.each do |pkg|
   @pkg_obj = Package.load_package(pkg)
 
   # Don't check if we need new binaries if the package doesn't already
-  # have binaries for this architecture and no_compile_needed is set.
-  if !system("grep -q binary_sha256 #{pkg}") && @pkg_obj.no_compile_needed?
+  # have binaries for this architecture.
+  if !system("grep -q binary_sha256 #{pkg}")
     puts "#{name.capitalize} #{@pkg_obj.version} has no binaries and may not need them.".lightgreen
     next pkg
+  elsif @pkg_obj.no_compile_needed?
+    system "yes | crew reinstall #{name}"
+    # Add manifests if we are in the right architecture.
+    FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist" if system("yes | crew reinstall #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
   else
     if @pkg_obj.no_binaries_needed?
       updated_packages.delete(pkg)
