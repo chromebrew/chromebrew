@@ -17,6 +17,8 @@ class Enet < Package
      x86_64: '0f96b8e2b248e78bc8e3f70bb21c5006d0c0064382b3930441317a8856078252'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     system 'autoreconf -vfi'
     system "./configure #{CREW_CONFIGURE_OPTIONS}"
