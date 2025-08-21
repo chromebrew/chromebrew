@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Flatpak < Meson
   description 'Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.'
   homepage 'https://flatpak.org'
-  version '1.15.10'
+  version '1.16.1'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/flatpak/flatpak.git'
