@@ -1,6 +1,7 @@
-# Total size: 9263402
+# Total size: 26818890
 /usr/local/include/hwy/abort.h
 /usr/local/include/hwy/aligned_allocator.h
+/usr/local/include/hwy/auto_tune.h
 /usr/local/include/hwy/base.h
 /usr/local/include/hwy/cache_control.h
 /usr/local/include/hwy/contrib/algo/copy-inl.h
@@ -20,6 +21,7 @@
 /usr/local/include/hwy/contrib/sort/vqsort-inl.h
 /usr/local/include/hwy/contrib/sort/vqsort.h
 /usr/local/include/hwy/contrib/thread_pool/futex.h
+/usr/local/include/hwy/contrib/thread_pool/spin.h
 /usr/local/include/hwy/contrib/thread_pool/thread_pool.h
 /usr/local/include/hwy/contrib/thread_pool/topology.h
 /usr/local/include/hwy/contrib/unroller/unroller-inl.h
@@ -34,6 +36,8 @@
 /usr/local/include/hwy/ops/emu128-inl.h
 /usr/local/include/hwy/ops/generic_ops-inl.h
 /usr/local/include/hwy/ops/inside-inl.h
+/usr/local/include/hwy/ops/loongarch_lasx-inl.h
+/usr/local/include/hwy/ops/loongarch_lsx-inl.h
 /usr/local/include/hwy/ops/ppc_vsx-inl.h
 /usr/local/include/hwy/ops/rvv-inl.h
 /usr/local/include/hwy/ops/scalar-inl.h
@@ -43,6 +47,7 @@
 /usr/local/include/hwy/ops/x86_128-inl.h
 /usr/local/include/hwy/ops/x86_256-inl.h
 /usr/local/include/hwy/ops/x86_512-inl.h
+/usr/local/include/hwy/ops/x86_avx3-inl.h
 /usr/local/include/hwy/per_target.h
 /usr/local/include/hwy/print-inl.h
 /usr/local/include/hwy/print.h
@@ -54,18 +59,19 @@
 /usr/local/include/hwy/tests/test_util.h
 /usr/local/include/hwy/timer-inl.h
 /usr/local/include/hwy/timer.h
+/usr/local/include/hwy/x86_cpuid.h
 /usr/local/lib64/cmake/hwy/hwy-config-release.cmake
 /usr/local/lib64/cmake/hwy/hwy-config-version.cmake
 /usr/local/lib64/cmake/hwy/hwy-config.cmake
 /usr/local/lib64/libhwy.so
 /usr/local/lib64/libhwy.so.1
-/usr/local/lib64/libhwy.so.1.2.0
+/usr/local/lib64/libhwy.so.1.3.0
 /usr/local/lib64/libhwy_contrib.so
 /usr/local/lib64/libhwy_contrib.so.1
-/usr/local/lib64/libhwy_contrib.so.1.2.0
+/usr/local/lib64/libhwy_contrib.so.1.3.0
 /usr/local/lib64/libhwy_test.so
 /usr/local/lib64/libhwy_test.so.1
-/usr/local/lib64/libhwy_test.so.1.2.0
+/usr/local/lib64/libhwy_test.so.1.3.0
 /usr/local/lib64/pkgconfig/libhwy-contrib.pc
 /usr/local/lib64/pkgconfig/libhwy-test.pc
 /usr/local/lib64/pkgconfig/libhwy.pc
