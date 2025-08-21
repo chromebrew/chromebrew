@@ -3,12 +3,12 @@ require 'package'
 class Freetds < Package
   description 'FreeTDS is a set of libraries for Unix and Linux that allows your programs to natively talk to Microsoft SQL Server and Sybase databases.'
   homepage 'https://www.freetds.org/'
-  version '1.2.18'
+  version '1.5.4'
   license 'GPL-2'
   compatibility 'all'
   source_url "ftp://ftp.freetds.org/pub/freetds/stable/freetds-#{version}.tar.gz"
-  source_sha256 'a02c27802da15a3ade85bbaab6197713cd286f036409af9bba2ab4c63bdf57c3'
-  binary_compression 'tar.xz'
+  source_sha256 '16b688b3f16325bc69851c03b9c97f2f686a94c7e44f6c758ea188dea3b9ab1f'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'a31c467c683a3b574fb59cd45d8511e1a5824d5ea9ab93b3fe4816b42447d041',
