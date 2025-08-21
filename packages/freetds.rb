@@ -11,10 +11,10 @@ class Freetds < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a31c467c683a3b574fb59cd45d8511e1a5824d5ea9ab93b3fe4816b42447d041',
-     armv7l: 'a31c467c683a3b574fb59cd45d8511e1a5824d5ea9ab93b3fe4816b42447d041',
-       i686: '2e908be34fae3b20fdbb9b1b947576a14496f8b48b57c095511f50e12f84240d',
-     x86_64: '1ecd9180df531b7c85b28719d9685820f2427e516f26787b51cab750e4ce8bf9'
+    aarch64: '20ba20e796d3c67b2b21c4dfdcbad9e78dc70b131655cdcb6dde29e01c43a640',
+     armv7l: '20ba20e796d3c67b2b21c4dfdcbad9e78dc70b131655cdcb6dde29e01c43a640',
+       i686: 'c39b1e837d2f69810685dd063612a28f41bcebed55fd2876a665d14e9e177a78',
+     x86_64: '051340765617e6e14c6ea55fac96ba8fdbedf6e3fda80ca8de302d54b69db643'
   })
 
   depends_on 'glibc' # R
