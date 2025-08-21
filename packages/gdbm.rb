@@ -17,9 +17,10 @@ class Gdbm < Package
      x86_64: 'fac97319de143626cd10e33d84c3618f58fa32cd814460b6287af7d8ada36b3b'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'readline' # R
   depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'ncurses' # R
+  depends_on 'readline' # R
 
   def self.build
     system "./configure \
