@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Exo < Autotools
   description 'Extension library for the Xfce desktop environment'
   homepage 'https://xfce.org/'
-  version '4.19.0'
+  version '4.20.0'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.xfce.org/src/xfce/exo/#{version.rpartition('.')[0]}/exo-#{version}.tar.bz2"
-  source_sha256 'a0124108c197efcc576a6deeface381416dc7137b6a7e7dfa3060fad62509fb7'
+  source_sha256 '4277f799245f1efde01cd917fd538ba6b12cf91c9f8a73fe2035fd5456ec078d'
   binary_compression 'tar.zst'
 
   binary_sha256({
