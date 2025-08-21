@@ -11,9 +11,9 @@ class Gnome_autoar < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2b2ec52490637bb52ee34c9d454ef16c7c615dce5f1704cb00c8060c04a38f73',
-     armv7l: '2b2ec52490637bb52ee34c9d454ef16c7c615dce5f1704cb00c8060c04a38f73',
-     x86_64: '075ff1866f197a0d54c5ca5a1ea2d5ccb8a4bed63629500ffb8fae62939f418b'
+    aarch64: 'be22a8c437f6916eebe87b092c8794f8d2ac13810d1ccbdd277d1395d0a7ea76',
+     armv7l: 'be22a8c437f6916eebe87b092c8794f8d2ac13810d1ccbdd277d1395d0a7ea76',
+     x86_64: 'a6815d9a2eabb96783722130ff63fd0d06658966bf373f7e1f00e8e981dc28fb'
   })
 
   depends_on 'autoconf_archive' => :build
