@@ -11,10 +11,10 @@ class Gifsicle < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b408cd75c80c180c68265617e77e795fb74232c379b2fe70576edb0186b4166f',
-     armv7l: 'b408cd75c80c180c68265617e77e795fb74232c379b2fe70576edb0186b4166f',
-       i686: '5a81d9d1719b248848c189045f70dda0664ce01aa04604daadb20f0c9aab76b3',
-     x86_64: '6fc9976eb9f4680a3a3b57adefc027f0b53b27e5186aea1d3e824509e4244c92'
+    aarch64: 'af90dcab82de8d5bab592c5e5fa0eb0650d57ca6b7d8e270ed895cee85d8939a',
+     armv7l: 'af90dcab82de8d5bab592c5e5fa0eb0650d57ca6b7d8e270ed895cee85d8939a',
+       i686: '77965e8560f1fbfae8b0bb78a33b95bd6d2fd8dfba47d5cfcf49b1aa8a51f789',
+     x86_64: '340648beaab00e5d33c7db52de43b46fe4b5037c8a538660107a68d04dde09bd'
   })
 
   depends_on 'glibc' # R
