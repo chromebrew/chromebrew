@@ -17,6 +17,7 @@ class Fakeroot < Autotools
      x86_64: '0eb4fef1f84924b98381bf118d586d7d3fc9dbdde46ed994d778ab6e6f791ccf'
   })
 
+  depends_on 'glibc' # R
   depends_on 'libcap'
 
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1074945
