@@ -16,21 +16,16 @@ class Gnome_autoar < Meson
      x86_64: '075ff1866f197a0d54c5ca5a1ea2d5ccb8a4bed63629500ffb8fae62939f418b'
   })
 
-  depends_on 'at_spi2_core' # R
   depends_on 'autoconf_archive' => :build
   depends_on 'cairo' => :build
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk3' # R
   depends_on 'gtk_doc' => :build
-  depends_on 'harfbuzz' # R
   depends_on 'libarchive' # R
   depends_on 'libjpeg_turbo' => :build
-  depends_on 'pango' # R
   depends_on 'vala' => :build
-  depends_on 'zlib' # R
 
   gnome
 end
