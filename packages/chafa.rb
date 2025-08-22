@@ -11,10 +11,10 @@ class Chafa < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c827c889582064fcf7d6a054534e85d16595a6bf28e5e3caefcebf1e38c45706',
-     armv7l: 'c827c889582064fcf7d6a054534e85d16595a6bf28e5e3caefcebf1e38c45706',
-       i686: '615b1997f5b595ad3a95987e649b5aee68b5abc2a3310c6f215de67d6c26d24d',
-     x86_64: '01c0d9a470d3cd3241be22fb6ad7dc23b5a6ea3e1ddf7822786a2db5540be274'
+    aarch64: 'cb196f0966528a8231c9e95872b0fc303b376ba70afc9acd589a33ce2bd7ab90',
+     armv7l: 'cb196f0966528a8231c9e95872b0fc303b376ba70afc9acd589a33ce2bd7ab90',
+       i686: 'c6b2bd9180497d2ea3c79c429e53aea512e7126d3b0eff0bf63ad0d7996e7761',
+     x86_64: 'd81d76468bf1366fedd59afe3ad3a399b8fe992943012f3c6c57a6bbea7cfb7b'
   })
 
   depends_on 'glib'
