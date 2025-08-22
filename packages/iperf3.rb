@@ -11,9 +11,9 @@ class Iperf3 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6d1f11be725fd53e241727abe0759d70edee0b1981b7d11139a4d844c3ef479e',
-     armv7l: '6d1f11be725fd53e241727abe0759d70edee0b1981b7d11139a4d844c3ef479e',
-     x86_64: '83ffd6ce9d37f74638673bd9fca78206aae34e338cff9eff855c688e6fb157e6'
+    aarch64: '4a0da34022f0e393734ab267995399f505186cafff157a5873475f370fe98316',
+     armv7l: '4a0da34022f0e393734ab267995399f505186cafff157a5873475f370fe98316',
+     x86_64: 'bea966ad5a7b61eb1650f9ae975cbb45aded37e4a641d12b538d832294223c1f'
   })
 
   depends_on 'glibc' # R
