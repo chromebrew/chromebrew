@@ -18,6 +18,7 @@ class Chafa < Autotools
   })
 
   depends_on 'glib'
+  depends_on 'glibc' # R
   depends_on 'libxslt'
 
   # The tools depends on freetype, which drops i686 compatibility.
