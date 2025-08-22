@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Colord < Meson
   description 'colord is a system service that makes it easy to manage, install and generate color profiles to accurately color manage input and output devices.'
   homepage 'https://www.freedesktop.org/software/colord/'
-  version '1.4.7'
+  version '1.4.8'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/hughsie/colord.git'
