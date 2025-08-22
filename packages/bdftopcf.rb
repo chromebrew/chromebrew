@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Bdftopcf < Autotools
   description 'BDF to PCF font converter for X11'
   homepage 'https://gitlab.freedesktop.org/xorg/util/bdftopcf'
-  version '1.1.1'
+  version '1.1.2'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/util/bdftopcf.git'
