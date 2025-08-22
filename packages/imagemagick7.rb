@@ -12,9 +12,9 @@ class Imagemagick7 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5a3607ff766e0da06451f8a1d19c2b794a8984f7b5443bdba5d995937949c35b',
-     armv7l: '5a3607ff766e0da06451f8a1d19c2b794a8984f7b5443bdba5d995937949c35b',
-     x86_64: '8fe3bfce6062370e8bc73bc2f16532ffd07944f8f68864d5494d7fbd6b584cfc'
+    aarch64: '9d0d34baee2cb21b2afe6c3c24082a8407740784ba9913ee56b9b0aadc64ef5d',
+     armv7l: '9d0d34baee2cb21b2afe6c3c24082a8407740784ba9913ee56b9b0aadc64ef5d',
+     x86_64: '3ebeeed6ecad44c56e772b96ee152a69801e4a5987732ecafab35f318876ec32'
   })
 
   depends_on 'bzip2' # R
