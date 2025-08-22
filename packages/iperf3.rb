@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Iperf3 < Autotools
   description 'iPerf3 is a tool for active measurements of the maximum achievable bandwidth on IP networks.'
   homepage 'https://iperf.fr'
-  version '3.19'
+  version '3.19.1'
   license 'BSD-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/esnet/iperf.git'
