@@ -3,12 +3,12 @@ require 'package'
 class Consolekit < Package
   description 'A framework for defining and tracking users, login sessions, and seats'
   homepage 'https://github.com/ConsoleKit2/ConsoleKit2'
-  version '1.2.2'
+  version '1.2.6'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/ConsoleKit2/ConsoleKit2/archive/#{version}.tar.gz"
-  source_sha256 '104fd9f41c2d572ad62f4032de46c4c384c3522602b0ad953cf55759c6c64c1d'
-  binary_compression 'tar.xz'
+  source_sha256 'd41224129c5a689469ebd8fe87e34c4a76afdb7b2f6201eb246320262ea5a942'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '4b9173ec6798adc23824c4189a050744b888de6b58d60442d1ec89bf0df81443',
