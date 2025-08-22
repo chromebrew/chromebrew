@@ -25,6 +25,7 @@ class Iproute2 < Package
   depends_on 'iptables' # R
   depends_on 'libbpf' unless ARCH == 'i686'
   depends_on 'libcap' # R
+  depends_on 'libdb' # R
   depends_on 'libtirpc' # R
 
   def self.patch
