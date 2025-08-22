@@ -6,8 +6,8 @@ class Inetutils < Autotools
   version '2.6'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/inetutils/inetutils-#{version}.tar.xz"
-  source_sha256 '68bedbfeaf73f7d86be2a7d99bcfbd4093d829f52770893919ae174c0b2357ca'
+  source_url 'https://git.savannah.gnu.org/git/inetutils.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
