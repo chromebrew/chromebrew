@@ -17,6 +17,8 @@ class Bacon < Autotools
      x86_64: 'ddb485cbbc31ec7aa2fd3f4f6faf1fd5353cdf0951a5174bfbf24d2857a96b0c'
   })
 
+  depends_on 'glibc' # R
+
   def self.patch
     system 'sed -i "s,/usr/share,\$\(DATADIR\)," Makefile.in'
   end
