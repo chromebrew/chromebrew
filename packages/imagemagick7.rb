@@ -68,6 +68,7 @@ class Imagemagick7 < Autotools
   no_upstream_update
 
   def self.prebuild
+    ConvenienceFunctions.libtoolize('jbig', 'jbigkit')
     ConvenienceFunctions.libtoolize('libuuid')
   end
 
