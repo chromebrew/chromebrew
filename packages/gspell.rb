@@ -41,5 +41,8 @@ class Gspell < Meson
 
   gnome
 
-  meson_options '-Dgtk_doc=false -Dtests=false'
+  meson_options '-Dgobject_introspection=false \
+                 -Dgtk_doc=false \
+                 -Dtests=false \
+                 -Dvapi=false'
 end
