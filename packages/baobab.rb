@@ -11,9 +11,9 @@ class Baobab < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7405ce4a84ca2ffeab17643a9efa11ced62a1687ee3c8433215bda8f177b541f',
-     armv7l: '7405ce4a84ca2ffeab17643a9efa11ced62a1687ee3c8433215bda8f177b541f',
-     x86_64: '0e1c62920726909f86756309f9a1a2efc7a520eaa78c63d88678bdbd4ea11e67'
+    aarch64: '3213cb0a075400bc58005227e27095d450d335b40c1706671c8360ed5b61b80d',
+     armv7l: '3213cb0a075400bc58005227e27095d450d335b40c1706671c8360ed5b61b80d',
+     x86_64: 'f0a189907a995797fc453fcbe36b853576f50e5aaa7aec9d6bc4cf8ed6e02be4'
   })
 
   depends_on 'cairo' # R
