@@ -17,9 +17,9 @@ class Iw < Package
      x86_64: 'c6cfb6572a7dfa450e1d9c6bc163321b04b39abca907a82e9ad7ea4eb90ac323'
   })
 
-  depends_on 'libnl3'
-  depends_on 'glibc' # R
   depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libnl3'
 
   def self.patch
     system "sed -i 's:/usr:#{CREW_PREFIX}:g' Makefile" # Change prefix to CREW_PREFIX
