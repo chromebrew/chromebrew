@@ -18,14 +18,15 @@ class Baobab < Meson
 
   depends_on 'cairo' # R
   depends_on 'desktop_file_utils' => :build
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'graphene' # R
   depends_on 'gsettings_desktop_schemas' => :build
   depends_on 'gtk4' # R
   depends_on 'harfbuzz' # R
-  depends_on 'py3_itstool' => :build
   depends_on 'libadwaita' # R
   depends_on 'pango' # R
+  depends_on 'py3_itstool' => :build
   depends_on 'vala' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
