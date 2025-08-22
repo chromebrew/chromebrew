@@ -3,7 +3,7 @@ require 'package'
 class Iw < Package
   description 'iw is a new nl80211 based CLI configuration utility for wireless devices.'
   homepage 'https://wireless.wiki.kernel.org/en/users/documentation/iw'
-  version '5.19'
+  version '6.9'
   license 'ISC'
   compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/linux/kernel/git/jberg/iw.git'
