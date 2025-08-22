@@ -15,7 +15,7 @@ class Bacula < Autotools
   })
 
   depends_on 'acl' # R
-  depends_on 'libcap' # R
+  depends_on 'gcc_lib' # R
   depends_on 'lzo'
   depends_on 'mysql'
   depends_on 'openssl' # R
