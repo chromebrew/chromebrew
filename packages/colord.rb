@@ -11,9 +11,9 @@ class Colord < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1997467d2cd378d26eb12f5846badd952fe66362f5a56523cf6b2c731c8585e5',
-     armv7l: '1997467d2cd378d26eb12f5846badd952fe66362f5a56523cf6b2c731c8585e5',
-     x86_64: '45ee103244fd062d2f578a6f0b7167c9ea33b5b3762430b7685eb2c51d888f16'
+    aarch64: '0381f90acd2648dc2d53b7bc5b3434ca609316b0aa34210ef021be295a79cb60',
+     armv7l: '0381f90acd2648dc2d53b7bc5b3434ca609316b0aa34210ef021be295a79cb60',
+     x86_64: '672f2258f86abb807a3f4ec179ef264baa5533cde742c8e67883d4311f13ab3d'
   })
 
   depends_on 'bash_completion'
