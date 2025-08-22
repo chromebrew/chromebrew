@@ -62,6 +62,8 @@ class Imagemagick7 < Autotools
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
+
+
   no_upstream_update
 
   def self.prebuild
