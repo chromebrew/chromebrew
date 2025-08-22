@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Flatpak < Meson
   description 'Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.'
   homepage 'https://flatpak.org'
-  version '1.15.10'
+  version '1.16.1'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/flatpak/flatpak.git'
@@ -11,9 +11,9 @@ class Flatpak < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f7a4671c2d60b558b523b3aa5a5b31521a5ccb3fb2cad92e7bdcfd9d9ca68dd6',
-     armv7l: 'f7a4671c2d60b558b523b3aa5a5b31521a5ccb3fb2cad92e7bdcfd9d9ca68dd6',
-     x86_64: '9af5a05a1a8ab7e65e268a4409f2daab459959482bf94b99f8922e96e60345a6'
+    aarch64: '3716f7e6d1b7064ba594a82681c1d801b4c823768149c39b2d6186b28fc8d9a6',
+     armv7l: '3716f7e6d1b7064ba594a82681c1d801b4c823768149c39b2d6186b28fc8d9a6',
+     x86_64: '0141afebddc960a813221ff12fdc080dcde9e17c9bc25f2aa2bbddb2081f4764'
   })
 
   depends_on 'appstream_glib' => :build
