@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Inetutils < Autotools
   description 'The Inetutils package contains programs for basic networking. Such as dnsdomainname, ftp, hostname, ifconfig, ping, ping6, talk, telnet, tftp, traceroute'
   homepage 'https://www.gnu.org/software/inetutils/'
-  version '2.4'
+  version '2.6'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/inetutils/inetutils-#{version}.tar.xz"
-  source_sha256 '1789d6b1b1a57dfe2a7ab7b533ee9f5dfd9cbf5b59bb1bb3c2612ed08d0f68b2'
+  source_sha256 '68bedbfeaf73f7d86be2a7d99bcfbd4093d829f52770893919ae174c0b2357ca'
   binary_compression 'tar.zst'
 
   binary_sha256({
