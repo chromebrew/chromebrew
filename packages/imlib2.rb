@@ -11,9 +11,9 @@ class Imlib2 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8727e84f65b2bfd73c5c417170e59be9da7623e8bdf81b4cf72117806d72c8f3',
-     armv7l: '8727e84f65b2bfd73c5c417170e59be9da7623e8bdf81b4cf72117806d72c8f3',
-     x86_64: '9276572ec9412874e788449842f19add7b5c432c7621fc54151602e7862ce160'
+    aarch64: '7a0d4d31970a5f4cf2d0c9ba47b66f176cffbe801fa01220fe600d58c3048fc0',
+     armv7l: '7a0d4d31970a5f4cf2d0c9ba47b66f176cffbe801fa01220fe600d58c3048fc0',
+     x86_64: '7dacae0624fcec95d158c4abd8ed10c8cc5eaecc999685c139900b10c74dc2fb'
   })
 
   depends_on 'bzip2' # R
@@ -47,8 +47,6 @@ class Imlib2 < Autotools
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-
-
 
   autotools_configure_options "--sysconfdir=#{CREW_PREFIX}/etc/imlib2 \
       --x-libraries=#{CREW_LIB_PREFIX}"
