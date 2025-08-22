@@ -1865,7 +1865,7 @@ def deps_command(args)
   end
 end
 
-def diskstat_command(args) = Command.diskstat(args['--all'])
+def diskstat_command(args) = Command.diskstat(args['--all'], args['<count>'] ? args['<count>'].to_i : 20)
 
 def download_command(args)
   args = { '<name>' => args.split } if args.is_a? String

@@ -5,7 +5,8 @@ require_relative '../lib/convenience_functions'
 require_relative '../lib/misc_functions'
 
 class Command
-  def self.diskstat(show_all)
+  def self.diskstat(show_all, count)
+    bar_chars  = %W[\u2588 \u2592]
     color_list = [
       %i[lightred no_bold],
       %i[lightcyan no_bold],
@@ -34,15 +35,15 @@ class Command
     total_size     = size_of_all_packages.sum(&:last).to_f # Total size of all installed packages
     other_size     = total_size                            # Total size of all installed packages, excluding the top 12 one
     bar_length     = 0
-    bar_components = size_of_all_packages[..11].map.with_index do |(_, size), i|
+    bar_components = size_of_all_packages[...24].map.with_index do |(_, size), i|
       length      = (size / total_size * terminal_w).to_i
       bar_length += length
       other_size -= size
 
-      ("\u2501" * length).send(*color_list[i])
+      (bar_chars[i > 12 ? 1 : 0] * length).send(*color_list[i % 12])
     end
 
-    bar_components << ("\u2501" * (terminal_w - bar_length)).gray(:no_bold)
+    bar_components << (bar_chars[1] * (terminal_w - bar_length)).gray(:no_bold)
 
     if show_all
       printf <<~EOT
@@ -53,20 +54,20 @@ class Command
     else
       printf <<~EOT
 
-        Only the top 12 packages are shown below, sorted by occupied disk space:
+        Only the top #{count} packages are shown below, sorted by occupied disk space:
         (use `crew diskstat --all` to show all installed packages)
 
       EOT
     end
 
-    printf '%s' * 13, *bar_components
+    printf '%s' * (count + 1), *bar_components
     printf "\n\n"
 
-    size_of_all_packages[..11].each.with_index do |(pkg_name, _), i|
-      printf('%s %s ', ' '.send(*color_list[i], :background), pkg_name)
+    size_of_all_packages[...24].each.with_index do |(pkg_name, _), i|
+      printf('%s %s ', bar_chars[i >= 12 ? 1 : 0].send(*color_list[i % 12]), pkg_name)
     end
 
-    printf '%s Other packages', ' '.gray(:background)
+    printf '%s Other packages', ' '.gray
     printf "\n\n%-30s     %s\n\n", 'Package', 'Size (in descending order)'
 
     if show_all
@@ -74,7 +75,7 @@ class Command
         printf "%-30s     %s\n", pkg_name, MiscFunctions.human_size(size)
       end
     else
-      size_of_all_packages[..11].each do |(pkg_name, size)|
+      size_of_all_packages[...count].each do |(pkg_name, size)|
         printf "%-30s     %s\n", pkg_name, MiscFunctions.human_size(size)
       end
 
