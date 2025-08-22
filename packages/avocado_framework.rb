@@ -11,10 +11,10 @@ class Avocado_framework < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c687be4dd45ff08f79449baa438f8ba6eb27d9ec9a78759c63a2827c325e6ae3',
-     armv7l: 'c687be4dd45ff08f79449baa438f8ba6eb27d9ec9a78759c63a2827c325e6ae3',
-       i686: '2751e897254e5edc450a986ff98b7e07af21dfbff7c75d7ddf5cd16a3d0b65b7',
-     x86_64: '210640e2c6917979fd6b69ab54e2e786dfb5d0d26c7efba653e70253d266a571'
+    aarch64: '22ff88b7d75d1566eadc58e88f1526e82e9e536e5b8e2f7937ee7e5ebf36dfc9',
+     armv7l: '22ff88b7d75d1566eadc58e88f1526e82e9e536e5b8e2f7937ee7e5ebf36dfc9',
+       i686: '6e2cbf94cbe2daa87e7261eee9b60b27627a315346d4e468736638c102767145',
+     x86_64: '12b929bbefcf36d8cb07cc8fc658c70dd2a82aabcc0a4f872a7c3fff2d6bb34c'
   })
 
   depends_on 'xdg_base'
