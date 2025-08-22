@@ -48,6 +48,8 @@ class Imlib2 < Autotools
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
+
+
   autotools_configure_options "--sysconfdir=#{CREW_PREFIX}/etc/imlib2 \
       --x-libraries=#{CREW_LIB_PREFIX}"
 
