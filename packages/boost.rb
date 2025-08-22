@@ -3,11 +3,11 @@ require 'package'
 class Boost < Package
   description 'Boost provides free peer-reviewed portable C++ source libraries.'
   homepage 'https://www.boost.org/'
-  version "1.85.0-#{CREW_ICU_VER}-#{CREW_PY_VER}"
+  version "1.89.0-#{CREW_ICU_VER}-#{CREW_PY_VER}"
   license 'Boost-1.0'
   compatibility 'all'
   source_url "https://archives.boost.io/release/#{version.split('-').first}/source/boost_#{version.split('-').first.gsub('.', '_')}.tar.bz2"
-  source_sha256 '07911da8fe22fb10e3918528a8f0a5676f03c0b3b135ac19c26779f6804baebe'
+  source_sha256 '85a33fa22621b4f314f8e85e1a5e2a9363d22e4f4992925d4bb3bc631b5a0c7a'
   binary_compression 'tar.zst'
 
   binary_sha256({
