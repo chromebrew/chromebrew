@@ -55,4 +55,8 @@ class Imlib2 < Autotools
 
   autotools_configure_options "--sysconfdir=#{CREW_PREFIX}/etc/imlib2 \
       --x-libraries=#{CREW_LIB_PREFIX}"
+
+  def self.prebuild
+    ConvenienceFunctions.libtoolize('jbig', 'jbigkit')
+  end
 end
