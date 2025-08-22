@@ -3,7 +3,7 @@ require 'package'
 class Inxi < Package
   description 'inxi is a full featured CLI system information tool.'
   homepage 'https://smxi.org/docs/inxi.htm'
-  version '3.3.35-1'
+  version '3.3.38-1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://codeberg.org/smxi/inxi.git'
@@ -11,10 +11,10 @@ class Inxi < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '238537279b21affc02dc28973d5af2cb3db3ec4b80327389d276adeaf8bbc8f6',
-     armv7l: '238537279b21affc02dc28973d5af2cb3db3ec4b80327389d276adeaf8bbc8f6',
-       i686: '99135aa3e34c39e4d3624fbb9e1a36adfda08d53cc76fdd88772a33c27afc71a',
-     x86_64: 'dd850645b3f5ba9528257250ae2851b26c964c83b669d40a26352407f0d5c619'
+    aarch64: 'e47233793b8d383936d5ce2942dbf3cb99478287072225676eb692bfa5dee001',
+     armv7l: 'e47233793b8d383936d5ce2942dbf3cb99478287072225676eb692bfa5dee001',
+       i686: 'bb1d27dc24b4d18f6d4777ad6b4b4bcef0355a800c4fe866186e1574578956fc',
+     x86_64: '89215fd36872af7e77459469d9f38c80f2c0e0eaed4133d245c1f1e91175df8f'
   })
 
   depends_on 'gawk'
