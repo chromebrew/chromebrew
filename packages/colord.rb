@@ -20,11 +20,13 @@ class Colord < Meson
   depends_on 'dbus'
   depends_on 'eudev' # R
   depends_on 'glib'
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection'
   depends_on 'gusb'
   depends_on 'lcms'
   depends_on 'libgudev'
   depends_on 'polkit'
+  depends_on 'sqlite' # R
   depends_on 'vala' => :build
 
   # Building manpages fails due to the supposed lack of docbook-xsl-ns.
