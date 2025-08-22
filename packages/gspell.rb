@@ -17,18 +17,14 @@ class Gspell < Meson
   })
 
   depends_on 'aspell' => :build
-  depends_on 'at_spi2_core' # R
   depends_on 'autoconf_archive' => :build
-  depends_on 'cairo' # R
   depends_on 'enchant' # R
   depends_on 'gcc_lib' => :build
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'graphite' => :build
   depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
   depends_on 'hunspell' # L
   depends_on 'icu4c' # R
   depends_on 'iso_codes' => :build
@@ -37,7 +33,6 @@ class Gspell < Meson
   depends_on 'ncurses' => :build
   depends_on 'pango' # R
   depends_on 'vala' => :build
-  depends_on 'zlib' # R
 
   gnome
 

@@ -1,3 +1,4 @@
+# Total size: 329501
 /usr/local/bin/gspell-app1
 /usr/local/include/gspell-1/gspell/gspell-checker-dialog.h
 /usr/local/include/gspell-1/gspell/gspell-checker.h
@@ -13,11 +14,9 @@
 /usr/local/include/gspell-1/gspell/gspell-text-buffer.h
 /usr/local/include/gspell-1/gspell/gspell-text-view.h
 /usr/local/include/gspell-1/gspell/gspell.h
-/usr/local/lib64/girepository-1.0/Gspell-1.typelib
 /usr/local/lib64/libgspell-1.so
 /usr/local/lib64/libgspell-1.so.3
 /usr/local/lib64/pkgconfig/gspell-1.pc
-/usr/local/share/gir-1.0/Gspell-1.gir
 /usr/local/share/locale/ab/LC_MESSAGES/gspell-1.mo
 /usr/local/share/locale/ar/LC_MESSAGES/gspell-1.mo
 /usr/local/share/locale/be/LC_MESSAGES/gspell-1.mo
@@ -79,5 +78,3 @@
 /usr/local/share/locale/vi/LC_MESSAGES/gspell-1.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gspell-1.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/gspell-1.mo
-/usr/local/share/vala/vapi/gspell-1.deps
-/usr/local/share/vala/vapi/gspell-1.vapi
