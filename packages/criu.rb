@@ -6,7 +6,7 @@ require 'package'
 class Criu < Package
   description 'Utilities to checkpoint and restore processes in userspace'
   homepage 'https://criu.org/Main_Page'
-  version '3.17.1'
+  version '4.1.1'
   license 'GPL2'
   compatibility 'x86_64'
   source_url 'https://github.com/checkpoint-restore/criu.git'
