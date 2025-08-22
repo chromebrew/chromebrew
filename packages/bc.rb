@@ -11,10 +11,10 @@ class Bc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '79c3e614e6e4860e42bfed550cacb544507afe84bc7b227fe5b09f33e7d6e7e9',
-     armv7l: '79c3e614e6e4860e42bfed550cacb544507afe84bc7b227fe5b09f33e7d6e7e9',
-       i686: '82c96318ca649079ca49570f1b7e9e0adc1ce0f236db1a35d95b1849966db17b',
-     x86_64: 'ef7ec7a38073d1c63e54a82729dcc3fdf1f5ebb46fb6630886f2d55734ac3687'
+    aarch64: '52e13f9620d74403f144e9fccf36497addd7852b56c09a85e545d2e4fa33d66e',
+     armv7l: '52e13f9620d74403f144e9fccf36497addd7852b56c09a85e545d2e4fa33d66e',
+       i686: 'c4ba103dfab2c2a71f3ee76520eeb5bbcdbee0a55572aa10e68280f75fe0dd38',
+     x86_64: '1da8341e6a938f6c20af92afd45900b78cd17ad3dc7c2c56055421d6cc0130ab'
   })
 
   depends_on 'ed' => :build
