@@ -60,7 +60,7 @@ class ConvenienceFunctions
       total_size, *contents = filelist
       return [total_size[/Total size: (\d+)/, 1].to_i, contents]
     else
-      return [get_package_disk_size(get_package_disk_size(filelist)), filelist]
+      return [get_package_disk_size(filelist), filelist]
     end
   end
 

@@ -43,19 +43,19 @@ class String
   # create method for each color
   @@color_codes.each_pair do |name, code|
     define_method(name) do |*opts|
-      bold_avail = code.keys?(:bold)
+      bold_avail = code.key?(:bold)
 
-      if bold_avail
+      if opts.include?(:background)
+        use_bold   = false
+        color_code = code[:background]
+      elsif bold_avail
         # use bold varient by default (if available),
         # specify :no_bold to use normal varient
         use_bold   = !opts.include?(:no_bold)
         color_code = code[use_bold ? :bold : :normal]
-      elsif opts.include?(:background)
-        use_bold   = false
-        color_code = code[:background]
       else
         use_bold   = false
-        color_code = code
+        color_code = code[:normal]
       end
 
       return colorize(color_code, use_bold ? 1 : 0)
