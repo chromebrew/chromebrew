@@ -11,10 +11,10 @@ class Iw < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '12c0478d9fcfd42d93960600ebbd31bbc332246956728b7e9cba807e9926116a',
-     armv7l: '12c0478d9fcfd42d93960600ebbd31bbc332246956728b7e9cba807e9926116a',
-       i686: 'f6265a053c1ae13fd0e985ebd29684a0b74d7d0165856be5c7abc68d8105b327',
-     x86_64: 'c6cfb6572a7dfa450e1d9c6bc163321b04b39abca907a82e9ad7ea4eb90ac323'
+    aarch64: '036fd416b734ff209e72e69f9ae47a51956e3a2f1ddff7ba1b7e53eaa824ed2f',
+     armv7l: '036fd416b734ff209e72e69f9ae47a51956e3a2f1ddff7ba1b7e53eaa824ed2f',
+       i686: 'af8ad685b5578cc5a960ccebffeccf7c720fb8cb880161224fbb3ff439249c47',
+     x86_64: 'e5009956bb7fb6f74075f22e87057cfeca8adc2e2549fafdc37fac2bd7251854'
   })
 
   depends_on 'gcc_lib' # R
