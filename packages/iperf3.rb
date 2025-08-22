@@ -16,5 +16,6 @@ class Iperf3 < Autotools
      x86_64: '83ffd6ce9d37f74638673bd9fca78206aae34e338cff9eff855c688e6fb157e6'
   })
 
+  depends_on 'glibc' # R
   depends_on 'openssl' # R
 end
