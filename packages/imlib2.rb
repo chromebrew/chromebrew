@@ -18,16 +18,14 @@ class Imlib2 < Autotools
 
   depends_on 'bzip2' # R
   depends_on 'cairo' # R
-  depends_on 'expat' # R
   depends_on 'fontconfig' => :build
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'giflib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
-  depends_on 'icu4c' # R
   depends_on 'jbigkit' # R
   depends_on 'libbsd' # R
   depends_on 'libdeflate' # R
@@ -35,7 +33,6 @@ class Imlib2 < Autotools
   depends_on 'libid3tag' => :build
   depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
-  depends_on 'libmd' # R
   depends_on 'libpng' # R
   depends_on 'librsvg' # R
   depends_on 'libtiff' # R
@@ -45,9 +42,7 @@ class Imlib2 < Autotools
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
   depends_on 'libxext' # R
-  depends_on 'libxml2' # R
   depends_on 'openjpeg' # R
-  depends_on 'pango' # R
   depends_on 'protobuf_c' => :build
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
