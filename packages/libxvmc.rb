@@ -3,21 +3,23 @@ require 'package'
 class Libxvmc < Package
   description 'X.org X-Video Motion Compensation Library'
   homepage 'https://www.x.org/wiki/'
-  version '1.0.13'
+  version '1.0.14'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://gitlab.freedesktop.org/xorg/lib/libxvmc/-/archive/libXvMC-#{version}/libxvmc-libXvMC-#{version}.tar.gz"
-  source_sha256 '58a1766176947ec41cf44c917d831db5d619fec11f99637d6deca45458e9829b'
+  source_sha256 '08d9a9f8ebdd353ef0d831641a8959c01824db618ef833453f6f0707488ae300'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fd33a7a2d68eeb1526c3d7e69f57d003f8d94fd0ac4b48e8cf842ec65961e70c',
-     armv7l: 'fd33a7a2d68eeb1526c3d7e69f57d003f8d94fd0ac4b48e8cf842ec65961e70c',
-     x86_64: '47ce9336e23acf5f44f06501a411a8e79a853b41c746f2fc368f55b0903130fc'
+    aarch64: 'f3cab83d90a45a4342a6c222a5cada082ebfb8397f4f4be4d3115cd3aa264eaa',
+     armv7l: 'f3cab83d90a45a4342a6c222a5cada082ebfb8397f4f4be4d3115cd3aa264eaa',
+     x86_64: 'af01cdf69aa30b98e0ad29bee967f264a88a652438d614ed8a59637088bd52c0'
   })
 
-  depends_on 'libxv'
+  depends_on 'glibc' # R
   depends_on 'libx11'
+  depends_on 'libxext' # R
+  depends_on 'libxv'
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

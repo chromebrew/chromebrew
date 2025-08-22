@@ -1,3 +1,4 @@
+# Total size: 335503
 /usr/local/include/json/allocator.h
 /usr/local/include/json/assertions.h
 /usr/local/include/json/config.h
@@ -8,6 +9,8 @@
 /usr/local/include/json/value.h
 /usr/local/include/json/version.h
 /usr/local/include/json/writer.h
+/usr/local/lib/cmake/jsoncpp/jsoncpp-namespaced-targets.cmake
+/usr/local/lib/cmake/jsoncpp/jsoncppConfig.cmake
 /usr/local/lib/libjsoncpp.so
-/usr/local/lib/libjsoncpp.so.24
+/usr/local/lib/libjsoncpp.so.26
 /usr/local/lib/pkgconfig/jsoncpp.pc

@@ -1,3 +1,5 @@
+# Total size: 3065416
+/usr/local/bin/av1encode
 /usr/local/bin/avcenc
 /usr/local/bin/avcstreamoutdemo
 /usr/local/bin/h264encode
@@ -9,13 +11,16 @@
 /usr/local/bin/putsurface
 /usr/local/bin/putsurface_wayland
 /usr/local/bin/sfcsample
+/usr/local/bin/vacopy
 /usr/local/bin/vainfo
 /usr/local/bin/vavpp
 /usr/local/bin/vp8enc
 /usr/local/bin/vp9enc
+/usr/local/bin/vpp3dlut
 /usr/local/bin/vppblending
 /usr/local/bin/vppchromasitting
 /usr/local/bin/vppdenoise
+/usr/local/bin/vpphdr_tm
 /usr/local/bin/vppscaling_csc
 /usr/local/bin/vppscaling_n_out_usrptr
 /usr/local/bin/vppsharpness

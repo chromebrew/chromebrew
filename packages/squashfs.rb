@@ -3,7 +3,7 @@ require 'package'
 class Squashfs < Package
   description 'Squashfs is a compressed read-only filesystem for Linux.'
   homepage 'https://github.com/plougher/squashfs-tools'
-  version '4.6.1'
+  version '4.7'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/plougher/squashfs-tools.git'
@@ -11,10 +11,10 @@ class Squashfs < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'da924cdb4c4f856b7b9b869e60496b10096132beb2e57592e8f015c1486c123c',
-     armv7l: 'da924cdb4c4f856b7b9b869e60496b10096132beb2e57592e8f015c1486c123c',
-       i686: 'fbe58537fd0a167f61b60c8c6ea23517c46816ae9e30fdace0f65c72a4887add',
-     x86_64: '14309b3d8544314236aacd248f48cb781d28d232b23228646c481e2619223974'
+    aarch64: 'b76bcefcd9bce133103b5d4c1a875b63b890f67f5b362479c9b3de13252b5643',
+     armv7l: 'b76bcefcd9bce133103b5d4c1a875b63b890f67f5b362479c9b3de13252b5643',
+       i686: 'b6a2b9d0c60f9b2f9d17bfdd29b8880cae36de3090755d5c09cec14b1f5ef156',
+     x86_64: 'ecf589181b60e80d5dbe0edb5b4ffbd01af604f64150378affbd88fbc50823c2'
   })
 
   depends_on 'compressdoc' => :build

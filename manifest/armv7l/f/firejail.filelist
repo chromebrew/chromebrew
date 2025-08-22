@@ -1,3 +1,4 @@
+# Total size: 2397556
 /usr/local/bin/firecfg
 /usr/local/bin/firejail
 /usr/local/bin/firemon
@@ -75,6 +76,7 @@
 /usr/local/etc/firejail/android-studio.profile
 /usr/local/etc/firejail/ani-cli.profile
 /usr/local/etc/firejail/anki.profile
+/usr/local/etc/firejail/ansel.profile
 /usr/local/etc/firejail/anydesk.profile
 /usr/local/etc/firejail/aosp.profile
 /usr/local/etc/firejail/apack.profile

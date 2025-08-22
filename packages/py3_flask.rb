@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_flask < Pip
   description 'Flask is a simple framework for building complex web applications.'
   homepage 'https://palletsprojects.com/p/flask/'
-  version "3.1.1-#{CREW_PY_VER}"
+  version "3.1.2-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6b4e3aaddc02bb24599a57e4258e65920d16d28c86ddddda8881fe5d11274261',
-     armv7l: '6b4e3aaddc02bb24599a57e4258e65920d16d28c86ddddda8881fe5d11274261',
-       i686: 'e5753eb57a4a6f5080cb64fd00af86472bed54866727aa26c77ba42b429dce6a',
-     x86_64: 'ed25efed773de132122c44950a993cc832e9416903a2332d5543a20b882a5342'
+    aarch64: '6bc785e5ebe3589ba6aea5a00ca67bc1a10f5ac065056ff4978cae802677a92c',
+     armv7l: '6bc785e5ebe3589ba6aea5a00ca67bc1a10f5ac065056ff4978cae802677a92c',
+       i686: '7f5f9caf3cb1f9b9a7438924e63a1ef42f024d2509580ad5bb369f39ce708ff2',
+     x86_64: 'd7298701b4ea26a52186b61831b6b6d3304825f05583f17d6475d1288eb11646'
   })
 
   depends_on 'py3_werkzeug'

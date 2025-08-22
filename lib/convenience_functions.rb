@@ -18,7 +18,7 @@ class String;   def blank? = strip.empty?; end
 class ConvenienceFunctions
   def self.determine_conflicts(pkg_name, filelist = File.join(CREW_META_PATH, "#{pkg_name}.filelist"), exclude_suffix = nil, verbose: false)
     conflicts       = {}
-    target_filelist = File.readlines(filelist, chomp: true)
+    target_filelist = File.readlines(filelist, chomp: true).grep(/^(?!#)/)
 
     puts 'Checking for conflicts with files from installed packages...'.orange if verbose
 
@@ -40,6 +40,17 @@ class ConvenienceFunctions
     return JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
   end
 
+  def self.read_filelist(path)
+    filelist = File.readlines(path, chomp: true)
+
+    if filelist.first&.start_with?('# Total size')
+      total_size, *contents = filelist
+      return [total_size[/Total size: (\d+)/, 1].to_i, contents]
+    else
+      return [0, filelist]
+    end
+  end
+
   def self.save_json(json_object)
     crewlog 'Saving device.json...'
     begin
@@ -55,7 +66,8 @@ class ConvenienceFunctions
     FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
   end
 
-  def self.libtoolize(library, lib_pkg_name = nil)
+  def self.libtoolize(library, lib_pkg_name = nil, install_dest = nil)
+    install_dest = false if install_dest.nil?
     lib_pkg_name = library if lib_pkg_name.nil?
     libname = library.to_s.start_with?('lib') ? library.downcase : "lib#{library.downcase}"
     puts "Generating libtool file for #{lib_pkg_name}".orange
@@ -113,8 +125,11 @@ class ConvenienceFunctions
       # Directory that this library needs to be installed in:
       libdir='#{CREW_LIB_PREFIX}'
     LIBTOOLEOF
-    File.write("#{CREW_LIB_PREFIX}/#{libname}.la", libtool_file)
-    puts "Generated #{CREW_LIB_PREFIX}/#{libname}.la..."
+    File.write("#{libname}.la", libtool_file)
+    %W[#{CREW_LIB_PREFIX}/#{libname}.la #{"#{CREW_DEST_LIB_PREFIX}/#{libname}.la" if install_dest}].reject(&:blank?).each do |lib|
+      FileUtils.install "#{libname}.la", lib, mode: 0o755
+      puts "Generated #{lib}..."
+    end
   end
 
   def self.patch(patch_array = [])

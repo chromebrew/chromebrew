@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Highway < CMake
   description 'A C++ library for SIMD Single Instruction, Multiple Data'
   homepage 'https://github.com/google/highway/'
-  version '1.2.0'
+  version '1.3.0'
   license 'Apache'
   compatibility 'all'
   source_url 'https://github.com/google/highway.git'
@@ -14,10 +14,10 @@ class Highway < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0401ecfa0d9dd2f3e323ae9b3f248ed1188b8d38cc3627cdac850498ca4d2633',
-     armv7l: '0401ecfa0d9dd2f3e323ae9b3f248ed1188b8d38cc3627cdac850498ca4d2633',
-       i686: '45b041fb1f9f636dee1bb76bb111cc3fbea307f52c6b7080cfc1cd433ba526f3',
-     x86_64: 'db88247a206e8c49bffb25977385cebbc1648fb25c3ce360e353a323f1125188'
+    aarch64: 'cf2f510bb35f5e84766041262e516b4af07143e5251018ca477a4b8e3c07e2d0',
+     armv7l: 'cf2f510bb35f5e84766041262e516b4af07143e5251018ca477a4b8e3c07e2d0',
+       i686: '2fd63b9abfd4b729dd9d88d800d409f71407a89a4aca68109ec3dc873903b91f',
+     x86_64: 'cde6053aa43220780269a00920e555d1665b3dd72b724877ba58191bf4799933'
   })
 
   depends_on 'gcc_lib' # R

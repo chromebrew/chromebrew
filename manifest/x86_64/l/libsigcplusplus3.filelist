@@ -1,3 +1,4 @@
+# Total size: 343016
 /usr/local/include/sigc++-3.0/sigc++/adaptors/adaptor_base.h
 /usr/local/include/sigc++-3.0/sigc++/adaptors/adaptor_trait.h
 /usr/local/include/sigc++-3.0/sigc++/adaptors/adaptors.h
@@ -25,6 +26,7 @@
 /usr/local/include/sigc++-3.0/sigc++/member_method_trait.h
 /usr/local/include/sigc++-3.0/sigc++/reference_wrapper.h
 /usr/local/include/sigc++-3.0/sigc++/retype_return.h
+/usr/local/include/sigc++-3.0/sigc++/scoped_connection.h
 /usr/local/include/sigc++-3.0/sigc++/sigc++.h
 /usr/local/include/sigc++-3.0/sigc++/signal.h
 /usr/local/include/sigc++-3.0/sigc++/signal_base.h

@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Re2 < CMake
   description 'RE2 is a fast, safe, thread-friendly alternative to backtracking regular expression engines like those used in PCRE, Perl, and Python.'
   homepage 'https://github.com/google/re2/'
-  version '2023-09-01'
+  version '2025-08-12'
   license 'BSD'
   compatibility 'all'
   source_url "https://github.com/google/re2/archive/#{version}.tar.gz"
@@ -11,10 +11,10 @@ class Re2 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2115d0d431c3d4c511a90c91b315cf7ba23f0a148fa9120d5f40a213c9ab5d79',
-     armv7l: '2115d0d431c3d4c511a90c91b315cf7ba23f0a148fa9120d5f40a213c9ab5d79',
-       i686: '2c0aff02b699216184d0370703fb9effcfce0a225541525ddab5aee942e2c585',
-     x86_64: '14368932ce32c61012519b7bac70d4c9ba75a2bdcb33b33b277458b671197032'
+    aarch64: 'f672b27265d5d9122579f073be11d733928719b560cdcdcb7422f68919863e32',
+     armv7l: 'f672b27265d5d9122579f073be11d733928719b560cdcdcb7422f68919863e32',
+       i686: '093ebd749668386b27e647bd4bb2b9c8213e57418b255f225ffe9c3dfd02a471',
+     x86_64: 'f510ca34c83a390418040f7047fbc9c16df5377f8d66260bc5efde9d3b7c12c9'
   })
 
   depends_on 'abseil_cpp' # R

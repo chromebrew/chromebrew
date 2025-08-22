@@ -1,6 +1,4 @@
-/usr/local/bin/bd_info
-/usr/local/bin/bd_list_titles
-/usr/local/bin/bd_splice
+# Total size: 3847413
 /usr/local/include/libbluray/bluray-version.h
 /usr/local/include/libbluray/bluray.h
 /usr/local/include/libbluray/clpi_data.h
@@ -14,5 +12,7 @@
 /usr/local/lib/libbluray.la
 /usr/local/lib/libbluray.so
 /usr/local/lib/libbluray.so.2
-/usr/local/lib/libbluray.so.2.4.0
+/usr/local/lib/libbluray.so.2.4.3
 /usr/local/lib/pkgconfig/libbluray.pc
+/usr/local/share/java/libbluray-awt-j2se-1.3.4.jar
+/usr/local/share/java/libbluray-j2se-1.3.4.jar

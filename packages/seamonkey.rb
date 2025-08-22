@@ -3,7 +3,7 @@ require 'package'
 class Seamonkey < Package
   description 'Web-browser, advanced e-mail, newsgroup and feed client, IRC chat, and HTML editing made simple'
   homepage 'https://www.seamonkey-project.org/'
-  version '2.53.20'
+  version '2.53.21'
   license 'Mozilla Public License 2.0'
   compatibility 'x86_64'
   min_glibc '2.28'

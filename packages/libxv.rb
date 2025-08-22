@@ -3,7 +3,7 @@ require 'package'
 class Libxv < Package
   description 'X.org X Window System video extension library'
   homepage 'https://www.x.org/wiki/'
-  version '1.0.12'
+  version '1.0.13'
   license 'X11'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxv.git'
@@ -11,14 +11,13 @@ class Libxv < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4e5f88214475460f9bd909012086c1a57b833168aca923fbab396abaf0589be4',
-     armv7l: '4e5f88214475460f9bd909012086c1a57b833168aca923fbab396abaf0589be4',
-     x86_64: 'cddf3a775a03649be663cd00d605461f4d7eb4975630cf4cebee4d65b7828b06'
+    aarch64: '5f3a7acfb6e130d46377102c2237e187db17bdbc48e48da2d0b4956960d1b01e',
+     armv7l: '5f3a7acfb6e130d46377102c2237e187db17bdbc48e48da2d0b4956960d1b01e',
+     x86_64: '993823a0e97e0288ba110da9cfb601e52f3cbe810c983629f160e3490ffebd75'
   })
 
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
-  depends_on 'libmd' # R
   depends_on 'libx11' # R
   depends_on 'libxau' # R
   depends_on 'libxcb' # R

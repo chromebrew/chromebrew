@@ -1,3 +1,4 @@
+# Total size: 42636
 /usr/local/bin/vmmouse_detect
 /usr/local/lib64/hal/hal-probe-vmmouse
 /usr/local/lib64/udev/rules.d/69-xorg-vmmouse.rules

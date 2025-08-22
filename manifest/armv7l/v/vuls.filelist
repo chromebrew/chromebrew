@@ -1,3 +1,5 @@
+# Total size: 299720116
+/home/chronos/user/config.toml
 /usr/local/bin/future-vuls
 /usr/local/bin/go-cti
 /usr/local/bin/go-cve-dictionary
@@ -8,4 +10,3 @@
 /usr/local/bin/goval-dictionary
 /usr/local/bin/vuls
 /usr/local/etc/env.d/10-vuls.bash
-/home/chronos/user/config.toml

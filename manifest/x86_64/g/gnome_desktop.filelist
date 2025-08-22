@@ -1,3 +1,4 @@
+# Total size: 3699874
 /usr/local/include/gnome-desktop-3.0/libgnome-desktop/gnome-bg-crossfade.h
 /usr/local/include/gnome-desktop-3.0/libgnome-desktop/gnome-bg-slide-show.h
 /usr/local/include/gnome-desktop-3.0/libgnome-desktop/gnome-bg.h
@@ -32,16 +33,16 @@
 /usr/local/lib64/girepository-1.0/GnomeRR-4.0.typelib
 /usr/local/lib64/libgnome-bg-4.so
 /usr/local/lib64/libgnome-bg-4.so.2
-/usr/local/lib64/libgnome-bg-4.so.2.1.0
+/usr/local/lib64/libgnome-bg-4.so.2.1.3
 /usr/local/lib64/libgnome-desktop-3.so
 /usr/local/lib64/libgnome-desktop-3.so.20
 /usr/local/lib64/libgnome-desktop-3.so.20.0.0
 /usr/local/lib64/libgnome-desktop-4.so
 /usr/local/lib64/libgnome-desktop-4.so.2
-/usr/local/lib64/libgnome-desktop-4.so.2.1.0
+/usr/local/lib64/libgnome-desktop-4.so.2.1.3
 /usr/local/lib64/libgnome-rr-4.so
 /usr/local/lib64/libgnome-rr-4.so.2
-/usr/local/lib64/libgnome-rr-4.so.2.1.0
+/usr/local/lib64/libgnome-rr-4.so.2.1.3
 /usr/local/lib64/pkgconfig/gnome-bg-4.pc
 /usr/local/lib64/pkgconfig/gnome-desktop-3.0.pc
 /usr/local/lib64/pkgconfig/gnome-desktop-4.pc
@@ -164,6 +165,7 @@
 /usr/local/share/locale/eu/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/fa/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/fi/LC_MESSAGES/gnome-desktop-3.0.mo
+/usr/local/share/locale/fil/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/fr/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/fur/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/fy/LC_MESSAGES/gnome-desktop-3.0.mo
@@ -177,6 +179,7 @@
 /usr/local/share/locale/hr/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/hu/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/hy/LC_MESSAGES/gnome-desktop-3.0.mo
+/usr/local/share/locale/ia/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/id/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/ig/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/is/LC_MESSAGES/gnome-desktop-3.0.mo
@@ -204,6 +207,7 @@
 /usr/local/share/locale/mn/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/mr/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/ms/LC_MESSAGES/gnome-desktop-3.0.mo
+/usr/local/share/locale/my/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/nb/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/nds/LC_MESSAGES/gnome-desktop-3.0.mo
 /usr/local/share/locale/ne/LC_MESSAGES/gnome-desktop-3.0.mo

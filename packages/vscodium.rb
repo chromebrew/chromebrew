@@ -3,20 +3,20 @@ require 'package'
 class Vscodium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
-  version '1.102.35058'
+  version '1.103.15418'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'
-  case ARCH
-  when 'aarch64', 'armv7l'
-    source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-armhf-#{version}.tar.gz"
-    source_sha256 'ce4139b6be812dc013049536cbe86a1062a1548ea80743def158b5e0c6245a7a'
-    @arch = 'arm'
-  when 'x86_64'
-    source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-x64-#{version}.tar.gz"
-    source_sha256 '4e5dbf1081af4993393ab3013879455c64755e496524b06aefe9e865903e5009'
-    @arch = 'x64'
-  end
+  source_url({
+    aarch64: "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-armhf-#{version}.tar.gz",
+     armv7l: "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-armhf-#{version}.tar.gz",
+     x86_64: "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-x64-#{version}.tar.gz"
+  })
+  source_sha256({
+    aarch64: '42602c8daf5e53d5448b7f2fb6c092d2e5dfe711ca8f22392081088b7ab20e61',
+     armv7l: '42602c8daf5e53d5448b7f2fb6c092d2e5dfe711ca8f22392081088b7ab20e61',
+     x86_64: 'f205f877234bf6679765f6020ef9e7bab0f9d40df973fe966369e54556fa0326'
+  })
 
   depends_on 'alsa_lib' # R
   depends_on 'at_spi2_core' # R
@@ -46,14 +46,15 @@ class Vscodium < Package
   depends_on 'sommelier' # L
 
   no_fhs
-  no_shrink
   no_compile_needed
+  no_shrink
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"
+    arch = ARCH == 'x86_64' ? 'x64' : 'arm'
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/VSCodium-linux-#{arch}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"
-    FileUtils.ln_s "../VSCodium-linux-#{@arch}/bin/codium", "#{CREW_DEST_PREFIX}/bin/codium"
+    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/VSCodium-linux-#{arch}"
+    FileUtils.ln_s "../VSCodium-linux-#{arch}/bin/codium", "#{CREW_DEST_PREFIX}/bin/codium"
   end
 
   def self.postinstall

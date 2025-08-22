@@ -1,3 +1,4 @@
+# Total size: 3971924
 /usr/local/bin/lua
 /usr/local/bin/lua5.4
 /usr/local/bin/luac
@@ -10,11 +11,11 @@
 /usr/local/lib/liblua++.a
 /usr/local/lib/liblua++.so
 /usr/local/lib/liblua++.so.5.4
-/usr/local/lib/liblua++.so.5.4.7
+/usr/local/lib/liblua++.so.5.4.8
 /usr/local/lib/liblua.a
 /usr/local/lib/liblua.so
 /usr/local/lib/liblua.so.5.4
-/usr/local/lib/liblua.so.5.4.7
+/usr/local/lib/liblua.so.5.4.8
 /usr/local/lib/pkgconfig/lua++-5.4.pc
 /usr/local/lib/pkgconfig/lua++.pc
 /usr/local/lib/pkgconfig/lua++5.4.pc

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 1.9.2 (for Chromebrew)
+# version.rb version 2.2 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -49,7 +49,11 @@ versions = []
 def get_version(name, homepage, source)
   # Determine if the source is a GitHub repository, but skip if there
   # is an anitya name mapping.
-  unless source.nil? || source.is_a?(Hash) || %w[Pip].include?(@pkg.superclass.to_s) || CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
+  unless source.nil? || %w[Pip].include?(@pkg.superclass.to_s) || CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
+    if source.is_a?(Hash)
+      source_arch = (@pkg.source_url.keys.map &:to_s).first
+      source = @pkg.source_url[source_arch.to_sym]
+    end
     source.sub!('www.', '')
     url = URI.parse(source)
     if url.host == 'github.com'
@@ -181,6 +185,7 @@ if filelist.length.positive?
   puts "#{'-------'.ljust(package_field_length)}#{'------'.ljust(status_field_length)}#{'-------'.ljust(version_field_length)}#{'--------'.ljust(version_field_length)}----------" unless OUTPUT_JSON
   filelist.each do |filename|
     @pkg = Package.load_package(filename)
+    cleaned_pkg_version = PackageUtils.get_clean_version(@pkg.version)
     if @pkg.is_fake?
       # Just skip is_fake packages.
       versions_updated[@pkg.name.to_sym] = 'Fake'
@@ -191,11 +196,13 @@ if filelist.length.positive?
     # updated in the package file) if the string "version" is on the
     # git_hashtag line or the string "#{version}" is on the source_url
     # line.
-    updatable_pkg[@pkg.name.to_sym] = if @pkg.source_url.is_a?(Hash)
-                                        # source_url hashes are not
-                                        # automatically updatable.
-                                        'source_url hash'
-                                      elsif @pkg.source_url.include?('SKIP')
+    updatable_pkg[@pkg.name.to_sym] = if @pkg.ignore_updater?
+                                        if `grep '^  version' #{filename} | awk '{print $2}' | grep '\.version'`.empty?
+                                          'ignore_updater set'
+                                        else
+                                          "version alias: #{`grep '^  version' #{filename} | awk '{print $2}'`.chomp}"
+                                        end
+                                      elsif @pkg.source_url.is_a?(Hash) || @pkg.source_url.include?('SKIP')
                                         'Yes'
                                       # If there is a git_hashtag, we can
                                       # check to see if 'version' is on
@@ -209,7 +216,7 @@ if filelist.length.positive?
                                       # If a source_url exists check if
                                       # that line has 'version' in it.
                                       elsif !@pkg.source_url.nil?
-                                        if `grep source_url #{filename} | grep '\#{version}'`.empty?
+                                        if `grep source_url #{filename} | grep '\#{version'`.empty?
                                           'static source_url'
                                         else
                                           'Yes'
@@ -270,6 +277,40 @@ if filelist.length.positive?
           if file.sub!(PackageUtils.get_clean_version(@pkg.version), upstream_version.chomp).nil?
             versions_updated[@pkg.name.to_sym] = false
           else
+            # Version update succeeded. Now check for a sha256 update.
+            old_hash = {}
+            new_hash = {}
+            # Handle source_url whether hash or not.
+            if !@pkg.source_sha256.nil? && @pkg.source_sha256.is_a?(Hash) && @pkg.source_sha256&.key?(ARCH.to_sym)
+              # Get old hashes
+              (@pkg.source_url.keys.map &:to_s).each do |arch|
+                puts "old source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE
+                old_hash[arch] = @pkg.source_sha256[arch.to_sym]
+                puts "old hash: #{old_hash[arch]}" if VERBOSE
+              end
+              File.write(filename, file)
+              # Now get new hashes
+              @pkg = Package.load_package(filename, true)
+              (@pkg.source_url.keys.map &:to_s).each do |arch|
+                puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE
+                new_hash[arch] = `curl -Ls #{@pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
+                puts "new hash: #{new_hash[arch]}" if VERBOSE
+                file.sub!(old_hash[arch], new_hash[arch])
+              end
+            elsif !@pkg.source_sha256.nil? && !@pkg.source_sha256.is_a?(Hash)
+              arch = :all
+              # Get old hashes
+              old_hash[arch] = @pkg.source_sha256
+              puts "old source_url: #{@pkg.source_url}" if VERBOSE
+              puts "old hash: #{old_hash[arch]}" if VERBOSE
+              File.write(filename, file)
+              # Now get new hashes
+              @pkg = Package.load_package(filename, true)
+              puts "new source_url: #{@pkg.source_url}" if VERBOSE
+              new_hash[arch] = `curl -Ls #{@pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
+              puts "new hash: #{new_hash[arch]}" if VERBOSE
+              file.sub!(old_hash[arch], new_hash[arch])
+            end
             File.write(filename, file)
             versions_updated[@pkg.name.to_sym] = true
           end
@@ -315,7 +356,6 @@ if filelist.length.positive?
       version_status_string = 'Up to date.'.ljust(status_field_length).lightgreen
     end
     updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes'.lightgreen : 'No'.lightred) if updatable_string.nil?
-    cleaned_pkg_version = PackageUtils.get_clean_version(@pkg.version)
     versions.push(package: @pkg.name, update_status: versions_updated[@pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version.chomp)
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'

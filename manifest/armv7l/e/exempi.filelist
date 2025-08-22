@@ -1,3 +1,4 @@
+# Total size: 19830466
 /usr/local/bin/exempi
 /usr/local/include/exempi-2.0/exempi/xmp++.hpp
 /usr/local/include/exempi-2.0/exempi/xmp.h
@@ -7,6 +8,6 @@
 /usr/local/lib/libexempi.la
 /usr/local/lib/libexempi.so
 /usr/local/lib/libexempi.so.8
-/usr/local/lib/libexempi.so.8.1.4
+/usr/local/lib/libexempi.so.8.1.6
 /usr/local/lib/pkgconfig/exempi-2.0.pc
 /usr/local/share/man/man1/exempi.1.zst

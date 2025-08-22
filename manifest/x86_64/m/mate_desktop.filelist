@@ -1,8 +1,8 @@
+# Total size: 6872014
 /usr/local/bin/mate-about
 /usr/local/bin/mate-color-select
 /usr/local/include/mate-desktop-2.0/libmate-desktop/mate-bg-crossfade.h
 /usr/local/include/mate-desktop-2.0/libmate-desktop/mate-bg.h
-/usr/local/include/mate-desktop-2.0/libmate-desktop/mate-colorbutton.h
 /usr/local/include/mate-desktop-2.0/libmate-desktop/mate-colorsel.h
 /usr/local/include/mate-desktop-2.0/libmate-desktop/mate-colorseldialog.h
 /usr/local/include/mate-desktop-2.0/libmate-desktop/mate-dconf.h
@@ -204,3 +204,4 @@
 /usr/local/share/man/man1/mate-about.1.zst
 /usr/local/share/man/man1/mate-color-select.1.zst
 /usr/local/share/mate-about/mate-version.xml
+/usr/local/share/xdg-desktop-portal/mate-portals.conf
