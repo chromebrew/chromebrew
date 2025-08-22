@@ -3,12 +3,12 @@ require 'package'
 class Avocado_framework < Package
   description 'Avocado is a next generation testing framework inspired by Autotest and modern development tools such as git.'
   homepage 'https://avocado-framework.github.io/'
-  version '94.0'
+  version '111.0'
   license 'GPL-2 and GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/avocado-framework/avocado.git'
   git_hashtag version
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'c687be4dd45ff08f79449baa438f8ba6eb27d9ec9a78759c63a2827c325e6ae3',
