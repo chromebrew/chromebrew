@@ -18,6 +18,7 @@ class I3 < Meson
 
   depends_on 'cairo' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libev'
   depends_on 'libxcb' # R
