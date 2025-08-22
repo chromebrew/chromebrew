@@ -1,4 +1,4 @@
-# Total size: 1492625
+# Total size: 2961849
 /usr/local/bin/arpd
 /usr/local/bin/bridge
 /usr/local/bin/ctstat
@@ -90,6 +90,7 @@
 /usr/local/share/man/man8/nstat.8.zst
 /usr/local/share/man/man8/rdma-dev.8.zst
 /usr/local/share/man/man8/rdma-link.8.zst
+/usr/local/share/man/man8/rdma-monitor.8.zst
 /usr/local/share/man/man8/rdma-resource.8.zst
 /usr/local/share/man/man8/rdma-statistic.8.zst
 /usr/local/share/man/man8/rdma-system.8.zst
