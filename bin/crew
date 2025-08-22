@@ -1879,6 +1879,8 @@ def deps_command(args)
   end
 end
 
+def diskstat_command(args) = Command.diskstat(args['--all'])
+
 def download_command(args)
   args = { '<name>' => args.split } if args.is_a? String
   args['<name>'].each do |name|

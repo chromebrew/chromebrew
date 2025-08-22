@@ -36,18 +36,31 @@ class ConvenienceFunctions
     return conflicts
   end
 
+  def self.get_package_disk_size(filelist)
+    filelist.sum do |filename|
+      # Skip calculating the filesize if the file doesn't exist.
+      next 0 unless File.file?(filename)
+
+      # Ignore symlinks to prevent duplicating calculation.
+      next 0 if File.symlink?(filename)
+
+      # Add the size of the file to the total size.
+      File.size(filename)
+    end
+  end
+
   def self.load_symbolized_json
     return JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
   end
 
-  def self.read_filelist(path)
+  def self.read_filelist(path, always_calcuate_from_disk: false)
     filelist = File.readlines(path, chomp: true)
 
-    if filelist.first&.start_with?('# Total size')
+    if filelist.first&.start_with?('# Total size') && !always_calcuate_from_disk
       total_size, *contents = filelist
       return [total_size[/Total size: (\d+)/, 1].to_i, contents]
     else
-      return [0, filelist]
+      return [get_package_disk_size(get_package_disk_size(filelist)), filelist]
     end
   end
 

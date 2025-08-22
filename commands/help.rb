@@ -34,6 +34,12 @@ class Command
         If `-b` or `--include-build-deps` specified, build dependencies will be included in output
         It `--exclude-buildessential` specified, `buildessential` and its dependencies will not be inserted automatically
       EOT
+    when 'diskstat'
+      puts <<~EOT
+        Show statistics about the disk space occupied by installed Chromebrew packages.
+        Usage: crew diskstat [-a|--all]
+        Only 12 of the largest packages will be shown by default. Use `--all` to show the occupied disk space for all installed packages.
+      EOT
     when 'download'
       puts <<~EOT
         Download package(s).
