@@ -11,9 +11,9 @@ class Gspell < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6ac757e5b1395d38c5c0e71c73520221da80ba1eece3e1b9a193af908ca32fae',
-     armv7l: '6ac757e5b1395d38c5c0e71c73520221da80ba1eece3e1b9a193af908ca32fae',
-     x86_64: '1bd1ceda2c88ffb2885beba6cec7583e0efb16e4478d9be67b7e4e630461123c'
+    aarch64: '2b53c8bd835ca913e070beae76e935f7cfef3adc4934134ce1da150ca5895e09',
+     armv7l: '2b53c8bd835ca913e070beae76e935f7cfef3adc4934134ce1da150ca5895e09',
+     x86_64: '4d33ec34e9dd15c10bb618204cc7d3420e031da2b2bf08f397401920d7e5b38b'
   })
 
   depends_on 'aspell' => :build
