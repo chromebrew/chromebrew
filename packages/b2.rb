@@ -17,6 +17,9 @@ class B2 < Package
      x86_64: 'ade42866d817c30e5d19e55ede2e9186d145b0e5735f5c8e097031b6811acfbb'
   })
 
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+
   def self.build
     system './bootstrap.sh'
   end
