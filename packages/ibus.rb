@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Ibus < Autotools
   description 'Next Generation Input Bus for Linux'
   homepage 'https://github.com/ibus/ibus/wiki'
-  version '1.5.30'
+  version '1.5.32'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ibus/ibus.git'
