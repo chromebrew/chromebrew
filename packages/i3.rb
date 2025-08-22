@@ -11,9 +11,9 @@ class I3 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '09197fe2c8416f12d9aa328fe391ad7ec1b76401ead8873c5d78e65812cc6326',
-     armv7l: '09197fe2c8416f12d9aa328fe391ad7ec1b76401ead8873c5d78e65812cc6326',
-     x86_64: 'cc6c6aa08ea83ad04585638e2f2133b981615ccfd999f8489d65e87a33c4b4e9'
+    aarch64: 'd0c0849c2b4b1402fe72e781c963af5aec1d84ac413f8a5616fc38becd1db3d9',
+     armv7l: 'd0c0849c2b4b1402fe72e781c963af5aec1d84ac413f8a5616fc38becd1db3d9',
+     x86_64: 'a07c0b7f085c716c60f6044a5e2904bb3d77eb392051a808348d408dcd535555'
   })
 
   depends_on 'cairo' # R
