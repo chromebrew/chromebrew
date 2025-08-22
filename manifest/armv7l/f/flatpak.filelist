@@ -1,4 +1,4 @@
-# Total size: 5847338
+# Total size: 6414679
 /usr/local/bin/flatpak
 /usr/local/bin/flatpak-bisect
 /usr/local/bin/flatpak-coredumpctl
@@ -19,10 +19,9 @@
 /usr/local/include/flatpak/flatpak-transaction.h
 /usr/local/include/flatpak/flatpak-version-macros.h
 /usr/local/include/flatpak/flatpak.h
-/usr/local/lib/girepository-1.0/Flatpak-1.0.typelib
 /usr/local/lib/libflatpak.so
 /usr/local/lib/libflatpak.so.0
-/usr/local/lib/libflatpak.so.0.11510.0
+/usr/local/lib/libflatpak.so.0.11601.0
 /usr/local/lib/pkgconfig/flatpak.pc
 /usr/local/lib/systemd/system-environment-generators/60-flatpak-system-only
 /usr/local/lib/systemd/user-environment-generators/60-flatpak
@@ -51,7 +50,6 @@
 /usr/local/share/flatpak/triggers/desktop-database.trigger
 /usr/local/share/flatpak/triggers/gtk-icon-cache.trigger
 /usr/local/share/flatpak/triggers/mime-database.trigger
-/usr/local/share/gir-1.0/Flatpak-1.0.gir
 /usr/local/share/gtk-doc/html/flatpak/FlatpakBundleRef.html
 /usr/local/share/gtk-doc/html/flatpak/FlatpakInstallation.html
 /usr/local/share/gtk-doc/html/flatpak/FlatpakInstalledRef.html
@@ -89,6 +87,7 @@
 /usr/local/share/gtk-doc/html/flatpak/style.css
 /usr/local/share/gtk-doc/html/flatpak/up-insensitive.png
 /usr/local/share/gtk-doc/html/flatpak/up.png
+/usr/local/share/locale/bg/LC_MESSAGES/flatpak.mo
 /usr/local/share/locale/cs/LC_MESSAGES/flatpak.mo
 /usr/local/share/locale/da/LC_MESSAGES/flatpak.mo
 /usr/local/share/locale/de/LC_MESSAGES/flatpak.mo
@@ -109,6 +108,7 @@
 /usr/local/share/locale/ro/LC_MESSAGES/flatpak.mo
 /usr/local/share/locale/ru/LC_MESSAGES/flatpak.mo
 /usr/local/share/locale/sk/LC_MESSAGES/flatpak.mo
+/usr/local/share/locale/sl/LC_MESSAGES/flatpak.mo
 /usr/local/share/locale/sv/LC_MESSAGES/flatpak.mo
 /usr/local/share/locale/tr/LC_MESSAGES/flatpak.mo
 /usr/local/share/locale/uk/LC_MESSAGES/flatpak.mo
