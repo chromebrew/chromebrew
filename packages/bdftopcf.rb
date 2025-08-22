@@ -11,9 +11,9 @@ class Bdftopcf < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b88d5ea3528d5134b6eceb5181c7808a4556693d5ed0f54451d8fd06eff77aeb',
-     armv7l: 'b88d5ea3528d5134b6eceb5181c7808a4556693d5ed0f54451d8fd06eff77aeb',
-     x86_64: '33f241e6bc50687b20e605fabef914dc2b3f60678786f58a371331ec30048319'
+    aarch64: '6f1d5c6fdac79e9942697366245581e02abe57e443a097457e72d73b97a8268e',
+     armv7l: '6f1d5c6fdac79e9942697366245581e02abe57e443a097457e72d73b97a8268e',
+     x86_64: '3b4e830fe228f6328f489e3786d7aa18a5c5eb6aa9ae881605cddc35b1c063c2'
   })
 
   depends_on 'glibc' # R
