@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Berry < Autotools
   description 'Healthy, bite-sized window manager'
   homepage 'https://github.com/JLErvin/berry'
-  version '0.1.12'
+  version '0.1.13'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/JLErvin/berry.git'
