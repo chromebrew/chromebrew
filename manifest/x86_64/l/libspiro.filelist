@@ -1,3 +1,4 @@
+# Total size: 258752
 /usr/local/include/bezctx.h
 /usr/local/include/spiro.h
 /usr/local/include/spiroentrypoints.h
@@ -5,6 +6,6 @@
 /usr/local/lib64/libspiro.la
 /usr/local/lib64/libspiro.so
 /usr/local/lib64/libspiro.so.1
-/usr/local/lib64/libspiro.so.1.0.3
+/usr/local/lib64/libspiro.so.1.0.5
 /usr/local/lib64/pkgconfig/libspiro.pc
 /usr/local/share/man/man3/libspiro.3.zst

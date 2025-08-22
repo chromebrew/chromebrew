@@ -1,30 +1,22 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Augeas < Package
+class Augeas < Autotools
   description 'Augeas is a configuration editing tool that parses native formats and transforms them into a tree.'
   homepage 'http://augeas.net/'
-  version '1.12.0'
+  version '1.14.1'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'http://download.augeas.net/augeas-1.12.0.tar.gz'
-  source_sha256 '321942c9cc32185e2e9cb72d0a70eea106635b50269075aca6714e3ec282cb87'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/hercules-team/augeas.git'
+  git_hashtag "release-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8c77e2c9e36dff045129f4e196b72051e7e085c612d43fe0f3f3f8d825c9d3ad',
-     armv7l: '8c77e2c9e36dff045129f4e196b72051e7e085c612d43fe0f3f3f8d825c9d3ad',
-       i686: 'ef2cc58fb25c5273ba50adfbbf6c577b2c13b79ecb325da15367965847dfba0d',
-     x86_64: 'fb85f457590f5b10d786e80b1a177f0942628438de38f64f7ae15856ee753b2c'
+    aarch64: 'e9dd7440cce4c14974d16067391c94e1843e95f97f365417a072f67f0b8942c2',
+     armv7l: 'e9dd7440cce4c14974d16067391c94e1843e95f97f365417a072f67f0b8942c2',
+       i686: 'b96ac5006edaf4bf7798780e8d79d2dffeb65e72776f7122b41d7df49ba03672',
+     x86_64: 'aec53220195d0b711d890c282c4babcc2ee546da79858efa815186a23bfee61c'
   })
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 end

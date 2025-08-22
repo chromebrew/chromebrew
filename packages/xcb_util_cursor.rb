@@ -1,40 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xcb_util_cursor < Package
+class Xcb_util_cursor < Autotools
   description 'The xcb-util-cursor package provides a module that implements the XCB cursor library. It is a the XCB replacement for libXcursor.'
   homepage 'https://xcb.freedesktop.org/'
-  version '0.1.4'
+  version '0.1.5'
   license 'MIT-with-advertising'
   compatibility 'all'
-  source_url 'https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.4.tar.xz'
-  source_sha256 '28dcfe90bcab7b3561abe0dd58eb6832aa9cc77cfe42fcdfa4ebe20d605231fb'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxcb-cursor.git'
+  git_hashtag "xcb-util-cursor-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6024a6c057f93b6f2fb41607cd4b94ce5d790dc0dec95c16279c0461f6d9c8b0',
-     armv7l: '6024a6c057f93b6f2fb41607cd4b94ce5d790dc0dec95c16279c0461f6d9c8b0',
-       i686: '2e8232bf927297a009da0171ed1a456294c74f1104f99b8fe71aae2bcb904529',
-     x86_64: '0b93d9946e1c41c3fc77c638a76d17d314593ccaa938b0898f57c02076b8c6c5'
+    aarch64: '318d1c11c6e9bc645b9cacc2625e499cd10fd000c41db9b0698d814948133514',
+     armv7l: '318d1c11c6e9bc645b9cacc2625e499cd10fd000c41db9b0698d814948133514',
+       i686: 'a2beef88e82efe8e8904db22d6298b5da7a2c7687ef2e6e91b2ec7aea95821bd',
+     x86_64: 'b9bc0bea5efb9fba07368c41d971b0839e0a87cc8e29d5b135d7151c7dd35afd'
   })
 
-  depends_on 'xcb_util'
-  depends_on 'm4'
-  depends_on 'xcb_util_renderutil'
-  depends_on 'xcb_util_image'
   depends_on 'glibc' # R
+  depends_on 'gperf' => :build
   depends_on 'libbsd' # R
-  depends_on 'libmd' # R
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'm4'
+  depends_on 'xcb_util'
+  depends_on 'xcb_util_image'
+  depends_on 'xcb_util_renderutil'
 end

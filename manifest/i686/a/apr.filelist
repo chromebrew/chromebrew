@@ -1,3 +1,4 @@
+# Total size: 3073832
 /usr/local/bin/apr-1-config
 /usr/local/include/apache2/apr.h
 /usr/local/include/apache2/apr_allocator.h
@@ -45,7 +46,7 @@
 /usr/local/lib/libapr.la
 /usr/local/lib/libapr.so
 /usr/local/lib/libapr.so.0
-/usr/local/lib/libapr.so.0.7.5
+/usr/local/lib/libapr.so.0.7.6
 /usr/local/lib/pkgconfig/apr-1.pc
 /usr/local/share/apache2/build/apr_rules.mk
 /usr/local/share/apache2/build/libtool

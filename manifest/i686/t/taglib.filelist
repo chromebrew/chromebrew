@@ -1,3 +1,4 @@
+# Total size: 14746668
 /usr/local/bin/taglib-config
 /usr/local/include/taglib/aifffile.h
 /usr/local/include/taglib/aiffproperties.h
@@ -70,6 +71,9 @@
 /usr/local/include/taglib/rifffile.h
 /usr/local/include/taglib/s3mfile.h
 /usr/local/include/taglib/s3mproperties.h
+/usr/local/include/taglib/shortenfile.h
+/usr/local/include/taglib/shortenproperties.h
+/usr/local/include/taglib/shortentag.h
 /usr/local/include/taglib/speexfile.h
 /usr/local/include/taglib/speexproperties.h
 /usr/local/include/taglib/synchronizedlyricsframe.h
@@ -77,6 +81,7 @@
 /usr/local/include/taglib/tag.h
 /usr/local/include/taglib/tag_c.h
 /usr/local/include/taglib/taglib.h
+/usr/local/include/taglib/taglib_config.h
 /usr/local/include/taglib/taglib_export.h
 /usr/local/include/taglib/tbytevector.h
 /usr/local/include/taglib/tbytevectorlist.h

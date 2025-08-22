@@ -40,7 +40,7 @@ class Llvm18_dev < Package
     puts 'Installing llvm18_build to pull files for build...'.lightblue
     @filelist_path = File.join(CREW_META_PATH, 'llvm18_build.filelist')
     abort 'File list for llvm18_build does not exist!'.lightred unless File.file?(@filelist_path)
-    @filelist = File.readlines(@filelist_path, chomp: true).sort
+    @filelist = File.readlines(@filelist_path, chomp: true).grep(/^(?!#)/)
 
     @filelist.each do |filename|
       next if filename.include?('.so') && filename.include?('libLLVM')

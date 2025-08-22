@@ -6,17 +6,17 @@ require 'buildsystems/autotools'
 class Vapoursynth < Autotools
   description 'A video processing framework with the future in mind'
   homepage 'http://www.vapoursynth.com/'
-  version 'R65'
-  license ' LGPL-2.1'
+  version 'R72'
+  license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/vapoursynth/vapoursynth.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '568a8c6a29d77173b9b12e83658589cc828829f9d55d27f313832fd5a99ce55a',
-     armv7l: '568a8c6a29d77173b9b12e83658589cc828829f9d55d27f313832fd5a99ce55a',
-     x86_64: '51bf407bc0ec1e0a731fce3f3ade991ec6fb4a13fe00f7b15afda0838dd42a03'
+    aarch64: 'aa2f7446128d41bedab5a6262f7cb323a8cc2806bda29d810d3193ee3aadc693',
+     armv7l: 'aa2f7446128d41bedab5a6262f7cb323a8cc2806bda29d810d3193ee3aadc693',
+     x86_64: '480b057b066c2d79029c756e3294f1416a7af139f65e8abe87cd8986049c6d7d'
   })
 
   depends_on 'ffmpeg' => :build

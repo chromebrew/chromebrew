@@ -3,7 +3,7 @@ require 'package'
 class Dotnet < Package
   description '.NET is the free, open-source, cross-platform framework for building modern apps and powerful cloud services.'
   homepage 'https://dotnet.microsoft.com/'
-  version '8.0.403'
+  version '8.0.413'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url({
@@ -12,9 +12,9 @@ class Dotnet < Package
      x86_64: "https://dotnetcli.azureedge.net/dotnet/Sdk/#{version}/dotnet-sdk-#{version}-linux-x64.tar.gz"
   })
   source_sha256({
-    aarch64: '2244b19913c32aa0b60ae91def84528ddd7ec031cb9f3e78db4857088749eeec',
-     armv7l: '2244b19913c32aa0b60ae91def84528ddd7ec031cb9f3e78db4857088749eeec',
-     x86_64: 'f7c31f1397444aab91afbef8d8a46e36531443faced60fa9d4070cf15a81b256'
+    aarch64: '44fc7f81bcabefaaa6fe2c2ec3d87cbc300a40061c81b25601bc5231b1fcbf04',
+     armv7l: '44fc7f81bcabefaaa6fe2c2ec3d87cbc300a40061c81b25601bc5231b1fcbf04',
+     x86_64: '84ca524028e250f4b676f9ac41c85a34be40383d2f438372c4b5b8d28b61ac88'
   })
 
   no_compile_needed
@@ -30,6 +30,6 @@ class Dotnet < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'dotnet' to get started.\n".lightblue
+    ExitMessage.add "\nType 'dotnet' to get started.\n"
   end
 end

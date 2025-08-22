@@ -26,10 +26,15 @@ def agree_with_default(yes_or_no_question_msg, character = nil, default:)
 end
 
 class Package
-  boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep, :git_fetchtags, :gem_compile_needed, :gnome, :is_fake, :is_musl, :is_static,
-                   :no_binaries_needed, :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_filefix, :no_git_submodules, :no_links,
-                   :no_lto, :no_mold, :no_patchelf, :no_shrink, :no_source_build, :no_strip, :no_upstream_update, :no_zstd, :patchelf, :prerelease,
-                   :print_source_bashrc, :run_tests
+  boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep,
+                   :git_fetchtags, :gem_compile_needed, :gnome,
+                   :ignore_updater, :is_fake, :is_musl, :is_static,
+                   :no_binaries_needed, :no_compile_needed,
+                   :no_compress, :no_env_options, :no_fhs, :no_filefix,
+                   :no_git_submodules, :no_links, :no_lto, :no_mold,
+                   :no_patchelf, :no_shrink, :no_source_build,
+                   :no_strip, :no_upstream_update, :no_zstd, :patchelf,
+                   :prerelease, :print_source_bashrc, :run_tests
 
   property :description, :homepage, :version, :license, :compatibility,
            :binary_compression, :binary_url, :binary_sha256, :source_url, :source_sha256,
@@ -87,7 +92,8 @@ class Package
     end
   end
 
-  def self.load_package(pkg_file)
+  def self.load_package(pkg_file, reload = nil)
+    reload = !reload.nil?
     # self.load_package: load a package under 'Package' class scope
     #
     pkg_name = File.basename(pkg_file, '.rb')
@@ -99,7 +105,7 @@ class Package
     # If this package has been removed, it won't be found in either directory, so set it back to what it was before to get a nicer error.
     pkg_file = "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb" if pkg_file.nil?
 
-    class_eval(File.read(pkg_file, encoding: Encoding::UTF_8), pkg_file) unless const_defined?("Package::#{class_name}")
+    class_eval(File.read(pkg_file, encoding: Encoding::UTF_8), pkg_file) unless const_defined?("Package::#{class_name}") && !reload
     pkg_obj = const_get(class_name)
     pkg_obj.name = pkg_name
 
@@ -119,7 +125,7 @@ class Package
                          pkg_tags: [], ver_check: nil, highlight_build_deps: true, exclude_buildessential: false, top_level: true)
     # get_deps_list: get dependencies list of pkg_name (current package by default)
     #
-    #                pkg_name: package to check dependencies, current package by default
+    #               pkg_name: package to check dependencies, current package by default
     #            return_attr: return package attribute (tags and version lambda) also
     #                   hash: return result in nested hash, used by `print_deps_tree` (`bin/crew`)
     #
@@ -285,7 +291,7 @@ class Package
   def self.depends_on(dependency, ver_range = nil)
     @dependencies ||= {}
     ver_check = nil
-    dep_tags  = []
+    dep_tags = []
 
     # Add element in "[ name, [ tag1, tag2, ... ] ]" format.
     if dependency.is_a?(Hash)

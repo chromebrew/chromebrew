@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Zathura < Meson
   description 'zathura is a highly customizable and functional PDF document viewer'
   homepage 'https://pwmt.org/projects/zathura/'
-  version '0.5.2'
+  version '0.5.12'
   license 'ZLIB'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://pwmt.org/projects/zathura/download/zathura-0.5.2.tar.xz'
@@ -18,9 +18,9 @@ class Zathura < Meson
   depends_on 'zathura_poppler_pdf'
 
   binary_sha256({
-    aarch64: '3cfbee5522f48b4f99d62d0c4f559320881012812b0f879e0592edf9b3fb608a',
-     armv7l: '3cfbee5522f48b4f99d62d0c4f559320881012812b0f879e0592edf9b3fb608a',
-     x86_64: 'a402bed68aff3ac037973935760317a4db6716049abe75bd456067798e190a46'
+    aarch64: 'bd1abb8bec1a93ed1d10b4757132a90e8222723e9bcac4cb76cc5437c6273f9c',
+     armv7l: 'bd1abb8bec1a93ed1d10b4757132a90e8222723e9bcac4cb76cc5437c6273f9c',
+     x86_64: '1daf155ca8ef931374a53d9e7e3fd733dc687e32a6b6e2f3d1aec3427f44d00a'
   })
 
   meson_options '-Dmanpages=disabled -Dsynctex=disabled'

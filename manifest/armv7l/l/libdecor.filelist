@@ -1,7 +1,8 @@
+# Total size: 160911
 /usr/local/include/libdecor-0/libdecor.h
 /usr/local/lib/libdecor-0.so
 /usr/local/lib/libdecor-0.so.0
-/usr/local/lib/libdecor-0.so.0.200.0
+/usr/local/lib/libdecor-0.so.0.200.3
 /usr/local/lib/libdecor/plugins-1/libdecor-cairo.so
 /usr/local/lib/libdecor/plugins-1/libdecor-gtk.so
 /usr/local/lib/pkgconfig/libdecor-0.pc

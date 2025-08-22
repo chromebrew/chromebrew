@@ -1,39 +1,29 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Armadillo < Package
+class Armadillo < CMake
   description 'Armadillo is a high quality linear algebra library (matrix maths) for the C++ language, aiming towards a good balance between speed and ease of use'
   homepage 'https://arma.sourceforge.net/'
-  version '9.600.5'
+  version '14.6.2'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/arma/armadillo-9.600.5.tar.xz'
-  source_sha256 'dd9cd664282f2c3483af194ceedc2fba8559e0d20f8782c640fd6f3ac7cac2bf'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.com/conradsnicta/armadillo-code.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cabc00c9184da1185c0fcbe834c1447e0e31a9ff34b9c2ede39f7419b95768cc',
-     armv7l: 'cabc00c9184da1185c0fcbe834c1447e0e31a9ff34b9c2ede39f7419b95768cc',
-       i686: 'cead7ef29533291a9070b8b1cddf6d909c224463e0e984a4d5bf49a208f17590',
-     x86_64: '313502ef0f2c9c701c4e5c59d456a6105c8aba4c63bc0a77a829649ffa2e9e78'
+    aarch64: '6a768bdcf1deea0482165ae54bab0095b95d71be1efcdad3227160cae6abf269',
+     armv7l: '6a768bdcf1deea0482165ae54bab0095b95d71be1efcdad3227160cae6abf269',
+       i686: '99f4163e5a8274c129a45359709e4f4696a8a1f6462d68121118dff8e84277bd',
+     x86_64: '3e63feaa2fd2e0319ca7b7bfe8fe242ccfe626fc22a47468e7edd2af8735dda4'
   })
 
-  depends_on 'arpack_ng'
-  depends_on 'hdf5'
-  depends_on 'superlu'
+  depends_on 'arpack_ng' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'hdf5' => :build
+  depends_on 'lapack' # R
+  depends_on 'openblas' # R
+  depends_on 'superlu' # R
 
-  def self.build
-    suffix = ''
-    suffix = '64' if ARCH == 'x86_64'
-    system 'cmake',
-           '-DCMAKE_BUILD_TYPE=Release',
-           "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-           "-DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB}",
-           "-DARPACK_LIBRARY=#{CREW_LIB_PREFIX}/libarpack#{suffix}.so",
-           '.'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  cmake_options "-DARPACK_LIBRARY=#{CREW_LIB_PREFIX}/libarpack#{'64' if ARCH == 'x86_64'}.so"
 end

@@ -3,23 +3,24 @@ require 'package'
 class Gdbm < Package
   description 'GNU dbm is a set of database routines that use extensible hashing.'
   homepage 'https://www.gnu.org/software/gdbm/'
-  version '1.23'
+  version '1.26'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gdbm/gdbm-#{version}.tar.gz"
-  source_sha256 '74b1081d21fff13ae4bd7c16e5d6e504a4c26f7cde1dca0d963a484174bbcacd'
+  source_sha256 '6a24504a14de4a744103dcb936be976df6fbe88ccff26065e54c1c47946f4a5e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f0220b8db665e3ae6cb1ad8bcdf857412ed30f57d959df46cc5239095b4248bc',
-     armv7l: 'f0220b8db665e3ae6cb1ad8bcdf857412ed30f57d959df46cc5239095b4248bc',
-       i686: 'c7c6d8d62f231088d689c1ac890e5fde6ef236056b697ad7dbf75f7845f6d32e',
-     x86_64: 'fac97319de143626cd10e33d84c3618f58fa32cd814460b6287af7d8ada36b3b'
+    aarch64: '089093bffd085579851130358eb0670438758dd75fcca59fa820c3fcd4c686a1',
+     armv7l: '089093bffd085579851130358eb0670438758dd75fcca59fa820c3fcd4c686a1',
+       i686: 'e0a4d2b9cb6ed1d9ad0f26045861647d895d84fd7c2e73a1ad9a23977dadf25c',
+     x86_64: '253f28e1e424ac6cd8d4cabe39b89297d98390d98aed0a686774b1dd75304f26'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'readline' # R
   depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'ncurses' # R
+  depends_on 'readline' # R
 
   def self.build
     system "./configure \

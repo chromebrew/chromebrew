@@ -3,21 +3,21 @@ require 'buildsystems/cmake'
 class Mysql < CMake
   description "MySQL Community Edition is a freely downloadable version of the world's most popular open source database"
   homepage 'https://www.mysql.com/'
-  version '9.3.0'
+  version "9.4.0-#{CREW_ICU_VER}"
   license 'GPL-2'
   compatibility 'x86_64' # Only 64-bit platforms are supported, so this will work on aarch64 userspaces once those are supported.
   source_url 'https://github.com/mysql/mysql-server.git'
-  git_hashtag "mysql-#{version}"
+  git_hashtag "mysql-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '28473b83b99fdc308d7b149b5d90aae624f41fafcf9ac4610d7bf0e63fcd7474'
+     x86_64: '466d38093023fe22a957aec83ad8ecdd335b7207bd1c8766ea9cdc3d3861bf78'
   })
 
   depends_on 'boost' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'icu4c', '== 75.1'
+  depends_on 'icu4c' # R
   depends_on 'libcyrussasl' => :build
   depends_on 'libedit' # R
   depends_on 'libtirpc' # R

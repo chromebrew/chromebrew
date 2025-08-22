@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Fcft < Meson
   description 'Simple library for font loading and glyph rasterization using FontConfig, FreeType and pixman.'
   homepage 'https://codeberg.org/dnkl/fcft'
-  version '3.1.8'
+  version '3.3.2'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://codeberg.org/dnkl/fcft.git'
@@ -11,13 +11,14 @@ class Fcft < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '10ec6f7c3f479908abeadc26c8793045f8da58660ffb79b687cd02130e0d72c4',
-     armv7l: '10ec6f7c3f479908abeadc26c8793045f8da58660ffb79b687cd02130e0d72c4',
-     x86_64: '9d2722efa27cbd6ff90e96d4571e2a0aba2204f060e3d237bd9823aa9719a96e'
+    aarch64: '6937b8eebd922e2447aa1d6f76a1ec53b68617fed21674b2edfedddc6765ef8e',
+     armv7l: '6937b8eebd922e2447aa1d6f76a1ec53b68617fed21674b2edfedddc6765ef8e',
+     x86_64: '3a9fd4e0d4a64e2203cc059ecbfa0049a332eb2174b83b63df2344ef0369bb1e'
   })
 
   depends_on 'fontconfig'
   depends_on 'freetype'
+  depends_on 'glibc' # R
   depends_on 'harfbuzz'
   depends_on 'pixman'
   depends_on 'tllist' => :build

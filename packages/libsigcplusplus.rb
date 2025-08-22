@@ -3,18 +3,18 @@ require 'package'
 class Libsigcplusplus < Package
   description 'libsigc++ implements a typesafe callback system for standard C++.'
   homepage 'https://github.com/libsigcplusplus/libsigcplusplus/'
-  version '2.12.0'
+  version '3.6.0'
   license 'LGPL-3'
   compatibility 'all'
   source_url "https://github.com/libsigcplusplus/libsigcplusplus/releases/download/#{version}/libsigc++-#{version}.tar.xz"
-  source_sha256 '1c466d2e64b34f9b118976eb21b138c37ed124d0f61497df2a90ce6c3d9fa3b5'
+  source_sha256 'c3d23b37dfd6e39f2e09f091b77b1541fbfa17c4f0b6bf5c89baef7229080e17'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '75ba671255aa82733e1cd6e48828d1c1438d9505478066b312196c2c1b140369',
-     armv7l: '75ba671255aa82733e1cd6e48828d1c1438d9505478066b312196c2c1b140369',
-       i686: 'eac15d7439592c7c165333c19dc6268b76cd4800b810a8a2395991cbae3686ed',
-     x86_64: 'ee5bed2bab217c458efe10fb8a4697034e0c6a787880e5f7b7f8e79649f5b0bb'
+    aarch64: '9df135245919b3b163f39dd4d353dc99d2a8e22e3d375a53d7981eace04dc4bf',
+     armv7l: '9df135245919b3b163f39dd4d353dc99d2a8e22e3d375a53d7981eace04dc4bf',
+       i686: '580a74d447ca6ec8c54988d5489220da31bc4dd73df0d99443e05984a598b482',
+     x86_64: 'c337859e30d47caf4a46fe7476c350a8f8a63449c9c5e5c2e3b2c2358d3deb53'
   })
 
   depends_on 'gcc_lib' # R

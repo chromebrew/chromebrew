@@ -1,30 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xcb_util_keysyms < Package
+class Xcb_util_keysyms < Autotools
   description 'The xcb-util-keysyms package contains a library for handling standard X key constants and conversion to/from keycodes.'
   homepage 'https://xcb.freedesktop.org/'
-  version '0.4.0-1'
+  version '0.4.1'
   compatibility 'all'
   license 'MIT-with-advertising'
-  source_url 'https://xcb.freedesktop.org/dist/xcb-util-keysyms-0.4.0.tar.bz2'
-  source_sha256 '0ef8490ff1dede52b7de533158547f8b454b241aa3e4dcca369507f66f216dd9'
-  binary_compression 'tpxz'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxcb-keysyms.git'
+  git_hashtag "xcb-util-keysyms-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dc00e514a928a196fde0c698810b2f6b63b83e29e680d489d50c049aafb8ad18',
-     armv7l: 'dc00e514a928a196fde0c698810b2f6b63b83e29e680d489d50c049aafb8ad18',
-       i686: '5469ba85929b5eb6c0726049f5e298d531ce3b7a522ea4b8d2c1eac0d8c97913',
-     x86_64: 'a5eef2ec3f6258191bfd5284f7b5fd4f2b60dcc5e40df7fff4ebc29c5e2266e8'
+    aarch64: '2e1aab68b9fc16c6bbdde2a96a88c4d70e4f95ca7c7c6bad64999a4c381582fe',
+     armv7l: '2e1aab68b9fc16c6bbdde2a96a88c4d70e4f95ca7c7c6bad64999a4c381582fe',
+       i686: 'e0564edbf2534623934a840c8500b7df660b25f91196d548f9c7c199a0196793',
+     x86_64: 'a8905397714291fcfd8d8efd81fcd17dea59e8ae41a83da850754c2b16ed4737'
   })
 
-  depends_on 'libxcb'
-
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libxau' # R
 end

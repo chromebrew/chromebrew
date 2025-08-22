@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Json_glib < Meson
   description 'JSON-GLib implements a full suite of JSON-related tools using GLib and GObject.'
   homepage 'https://gitlab.gnome.org/GNOME/json-glib'
-  version '1.9.2-1'
+  version '1.10.6'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/json-glib.git'
@@ -11,9 +11,9 @@ class Json_glib < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a907845c293113e9cb096924451e00db90ab02460fbb9be3aeb846db78f4be5f',
-     armv7l: 'a907845c293113e9cb096924451e00db90ab02460fbb9be3aeb846db78f4be5f',
-     x86_64: '212a85d881638611b9585bd77ae1d1605301e860da9e84bee32c0099816b2089'
+    aarch64: '331b56aa0087d0387c1ef6c709a26441b8f560b404641c6e7b2e84895d0bfd62',
+     armv7l: '331b56aa0087d0387c1ef6c709a26441b8f560b404641c6e7b2e84895d0bfd62',
+     x86_64: 'd25eebee63ccd2922b04b113db5b84b340d5b8ec5684020505600e78c7e2462a'
   })
 
   depends_on 'gcc_lib' # R

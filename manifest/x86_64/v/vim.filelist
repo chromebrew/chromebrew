@@ -1,3 +1,4 @@
+# Total size: 6206470
 /usr/local/bin/ex
 /usr/local/bin/rview
 /usr/local/bin/rvim
@@ -7,6 +8,10 @@
 /usr/local/bin/vimdiff
 /usr/local/bin/vimtutor
 /usr/local/share/man/man1/evim.1.zst
+/usr/local/share/man/man1/ex.1.zst
+/usr/local/share/man/man1/rview.1.zst
+/usr/local/share/man/man1/rvim.1.zst
+/usr/local/share/man/man1/view.1.zst
 /usr/local/share/man/man1/vim.1.zst
 /usr/local/share/man/man1/vimdiff.1.zst
 /usr/local/share/man/man1/vimtutor.1.zst

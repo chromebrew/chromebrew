@@ -1,2 +1,7 @@
-/usr/local/share/man/man1/apg.1.gz
-/usr/local/share/man/man1/apgbfm.1.gz
+# Total size: 122058
+/usr/local/bin/apg
+/usr/local/bin/apgbfm
+/usr/local/bin/apgd
+/usr/local/share/man/man1/apg.1.zst
+/usr/local/share/man/man1/apgbfm.1.zst
+/usr/local/share/man/man8/apgd.8.zst

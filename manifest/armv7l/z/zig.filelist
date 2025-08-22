@@ -5120,6 +5120,7 @@
 /usr/local/share/zig/lib/libc/include/loongarch64-linux-gnusf/bits/wordsize.h
 /usr/local/share/zig/lib/libc/include/loongarch64-linux-gnusf/fpu_control.h
 /usr/local/share/zig/lib/libc/include/loongarch64-linux-gnusf/gnu/lib-names.h
+/usr/local/share/zig/lib/libc/include/loongarch64-linux-gnusf/gnu/stubs-lp64s.h
 /usr/local/share/zig/lib/libc/include/loongarch64-linux-gnusf/gnu/stubs.h
 /usr/local/share/zig/lib/libc/include/loongarch64-linux-gnusf/ieee754.h
 /usr/local/share/zig/lib/libc/include/loongarch64-linux-gnusf/sys/asm.h

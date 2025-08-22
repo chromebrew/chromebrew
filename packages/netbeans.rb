@@ -3,11 +3,11 @@ require 'package'
 class Netbeans < Package
   description 'Apache NetBeans IDE is free open source software to quickly and easily develop desktop, mobile, and web applications with Java, JavaScript, HTML5, PHP, C/C++ and more.'
   homepage 'https://netbeans.apache.org/front/main/index.html'
-  version '25'
+  version '26'
   license 'Apache-2.0, custom, EPL-1.0, W3C, MIT, BSD, MPL-1.0, CC-BY-3.0, CDDL and CDDL-1.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://dlcdn.apache.org/netbeans/netbeans/#{version}/netbeans-#{version}-bin.zip"
-  source_sha256 '3eaf50208cc71b58bedf31799fec94235d28a0389ca8834060063f4c705ec6ce'
+  source_sha256 '555ef79767315ef08ae41ca8ad9acf6f44c80618e11e9bd693827d7cf4cb340c'
 
   depends_on 'openjdk17'
   depends_on 'libxtst'
@@ -24,20 +24,10 @@ class Netbeans < Package
   end
 
   def self.postinstall
-    puts "\nType 'netbeans' to get started.\n".lightblue
+    ExitMessage.add "\nType 'netbeans' to get started.\n"
   end
 
   def self.postremove
-    config_dir = "#{HOME}/.netbeans"
-    if Dir.exist? config_dir
-      print "Would you like to remove the config directory #{config_dir}? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightgreen
-      else
-        puts "#{config_dir} saved.".lightgreen
-      end
-    end
+    Package.agree_to_remove("#{HOME}/.netbeans")
   end
 end

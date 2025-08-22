@@ -85,16 +85,6 @@
 /usr/local/share/joplin/resources.pak
 /usr/local/share/joplin/resources/app-update.yml
 /usr/local/share/joplin/resources/app.asar
-/usr/local/share/joplin/resources/app.asar.unpacked/node_modules/node-notifier/vendor/mac.noindex/terminal-notifier.app/Contents/Info.plist
-/usr/local/share/joplin/resources/app.asar.unpacked/node_modules/node-notifier/vendor/mac.noindex/terminal-notifier.app/Contents/MacOS/terminal-notifier
-/usr/local/share/joplin/resources/app.asar.unpacked/node_modules/node-notifier/vendor/mac.noindex/terminal-notifier.app/Contents/PkgInfo
-/usr/local/share/joplin/resources/app.asar.unpacked/node_modules/node-notifier/vendor/mac.noindex/terminal-notifier.app/Contents/Resources/Terminal.icns
-/usr/local/share/joplin/resources/app.asar.unpacked/node_modules/node-notifier/vendor/mac.noindex/terminal-notifier.app/Contents/Resources/en.lproj/Credits.rtf
-/usr/local/share/joplin/resources/app.asar.unpacked/node_modules/node-notifier/vendor/mac.noindex/terminal-notifier.app/Contents/Resources/en.lproj/InfoPlist.strings
-/usr/local/share/joplin/resources/app.asar.unpacked/node_modules/node-notifier/vendor/mac.noindex/terminal-notifier.app/Contents/Resources/en.lproj/MainMenu.nib
-/usr/local/share/joplin/resources/app.asar.unpacked/node_modules/node-notifier/vendor/notifu/LICENSE
-/usr/local/share/joplin/resources/app.asar.unpacked/node_modules/node-notifier/vendor/snoreToast/LICENSE
-/usr/local/share/joplin/resources/app.asar.unpacked/node_modules/node-notifier/vendor/terminal-notifier-LICENSE
 /usr/local/share/joplin/resources/build/7zip/7za
 /usr/local/share/joplin/resources/build/7zip/license.txt
 /usr/local/share/joplin/resources/build/defaultPlugins/io.github.jackgruber.backup.jpl

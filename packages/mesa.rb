@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version "25.1.7-#{CREW_LLVM_VER}"
+  version "25.2.1-#{CREW_LLVM_VER}"
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -11,9 +11,9 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '12e4b1e4067feb7aea11bb36e573849c267e348b277b75e06ea5cec754218e85',
-     armv7l: '12e4b1e4067feb7aea11bb36e573849c267e348b277b75e06ea5cec754218e85',
-     x86_64: '6d1e3067daad93adfaff03b8fb52eeb4b9a9aa44fda592476090e4aaef4dee2d'
+    aarch64: '56c7f99b5c21a949f2a8becbd9fde0237cca4fea8add84e78e535ccc3490b487',
+     armv7l: '56c7f99b5c21a949f2a8becbd9fde0237cca4fea8add84e78e535ccc3490b487',
+     x86_64: 'cd216cb1f475c97091a5bdc46694ae56dac42d99b7aa53e87d7cd6e29032c72e'
   })
 
   depends_on 'elfutils' # R
@@ -34,7 +34,6 @@ class Mesa < Meson
   depends_on 'libxdamage' => :build
   depends_on 'libxdmcp' => :build
   depends_on 'libxext' # R
-  depends_on 'libxfixes' # R
   depends_on 'libxrandr' # R
   depends_on 'libxshmfence' # R
   depends_on 'libxv' => :build
@@ -63,7 +62,6 @@ class Mesa < Meson
     -Dgles2=enabled \
     -Dglvnd=enabled \
     -Dglx=dri \
-    -Dintel-clc=enabled \
     -Dllvm=enabled \
     -Dgallium-drivers='#{ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,softpipe,llvmpipe,iris,crocus,zink' : 'v3d,freedreno,etnaviv,nouveau,svga,tegra,virgl,lima,panfrost,softpipe,llvmpipe,iris,zink'}' \
     -Dvulkan-drivers='#{ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'}' \

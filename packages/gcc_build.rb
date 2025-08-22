@@ -4,39 +4,26 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '15.1.0-69eb171'
+  version '15.2.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag '69eb1716b884f6213aef30194390d7741af97c80'
-  # git_hashtag "releases/gcc-#{version.split('-').first}"
+  git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b777260eb6f5b4e7983e7afd766aa21068d66d1645ffc0aac0c3f96b07102710',
-     armv7l: 'b777260eb6f5b4e7983e7afd766aa21068d66d1645ffc0aac0c3f96b07102710',
-       i686: 'f5acefa8008778a12b0e81b1ed952c1985653743306c50676a77fc2f16a23bae',
-     x86_64: '43b84c2811c9e7e6ce1465fa76554cc24e452fa7e31d9709b86a1a6e39a7366c'
+    aarch64: '23be50500a3c5798f8bd1dc9677d2f20454e499c073d93419bdb43558319f4c3',
+     armv7l: '23be50500a3c5798f8bd1dc9677d2f20454e499c073d93419bdb43558319f4c3',
+       i686: '241b57db6a445badecc423250b1df29f6443c580e425f736e6b83a986489ff2c',
+     x86_64: '820d2a79e15e48e96a0d0f240dc475f646bb47591edd79eaa25d249260e4924d'
   })
-
-  depends_on 'binutils' => :build
-  depends_on 'dejagnu' => :build # for test
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
-  depends_on 'isl' # R
-  depends_on 'libssp' # L
-  depends_on 'mpc' # R
-  depends_on 'mpfr' # R
-  depends_on 'rust' => :build
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
 
   conflicts_ok
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
-  @glibc_flags = ''
-  @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags}"
+  @glibc_flags = "-L#{CREW_LIB_PREFIX}"
+  @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags} -B#{CREW_LIB_PREFIX}"
   @languages = 'c,c++,jit,objc,fortran,go,rust'
   case ARCH
   when 'armv7l', 'aarch64'
@@ -90,6 +77,20 @@ class Gcc_build < Package
       done
       exec gcc $fl ${1+"$@"}
     EOF
+
+    # Try to workaround gcc looking for glibc's crt* files in the wrong
+    # location.
+    case ARCH
+    when 'i686'
+      FileUtils.mkdir_p "#{CREW_PREFIX}/i686-cros-linux-gnu/lib"
+      FileUtils.ln_s(["#{CREW_LIB_PREFIX}/crt1.o", "#{CREW_LIB_PREFIX}/crtn.o", "#{CREW_LIB_PREFIX}/crti.o"], "#{CREW_PREFIX}/i686-cros-linux-gnu/lib/", verbose: true)
+    when 'x86_64'
+      FileUtils.mkdir_p "#{CREW_PREFIX}/x86_64-cros-linux-gnu/lib"
+      FileUtils.ln_s(["#{CREW_LIB_PREFIX}/crt1.o", "#{CREW_LIB_PREFIX}/crtn.o", "#{CREW_LIB_PREFIX}/crti.o"], "#{CREW_PREFIX}/x86_64-cros-linux-gnu/lib/", verbose: true)
+    when 'armv7l', 'aarch64'
+      FileUtils.mkdir_p "#{CREW_PREFIX}/armv7l-cros-linux-gnueabihf/lib"
+      FileUtils.ln_s(["#{CREW_LIB_PREFIX}/crt1.o", "#{CREW_LIB_PREFIX}/crtn.o", "#{CREW_LIB_PREFIX}/crti.o"], "#{CREW_PREFIX}/armv7l-cros-linux-gnueabihf/lib/", verbose: true)
+    end
   end
 
   def self.build
@@ -147,8 +148,8 @@ class Gcc_build < Package
                                  CFLAGS: @cflags,
                                CXXFLAGS: @cxxflags,
                                 LDFLAGS: @ldflags,
+                                     LD: 'mold',
                            LIBRARY_PATH: CREW_LIB_PREFIX,
-                                     LD: 'ld',
                                      NM: 'gcc-nm',
                                    PATH: @path,
                                  RANLIB: 'gcc-ranlib'
@@ -161,8 +162,7 @@ class Gcc_build < Package
           --enable-languages=#{@languages} \
           --program-suffix=-#{@gcc_version}"
       # Concurrent build sometimes breaks.
-      system 'make'
-      system 'make -j1' if $CHILD_STATUS.exitstatus != 0
+      system "export LIBRARY_PATH=#{CREW_LIB_PREFIX} ; make || make -j1"
     end
   end
 
@@ -328,6 +328,18 @@ class Gcc_build < Package
 
     installed_gcc.each do |gcc_pkg|
       puts "Removing previous version of gcc (#{gcc_pkg[:name]})...".yellow
+
+      depends_on 'binutils' => :build
+      depends_on 'dejagnu' => :build # for test
+      depends_on 'glibc' # R
+      depends_on 'gmp' # R
+      depends_on 'isl' # R
+      depends_on 'libssp' # L
+      depends_on 'mpc' # R
+      depends_on 'mpfr' # R
+      depends_on 'rust' => :build
+      depends_on 'zlib' # R
+      depends_on 'zstd' # R
 
       # remove filelist and directorylist
       FileUtils.rm_f(["#{CREW_META_PATH}/#{gcc_pkg[:name]}.filelist",

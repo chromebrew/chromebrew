@@ -3,20 +3,20 @@ require 'package'
 class Zig < Package
   description 'Programming language designed for robustness, optimality, and clarity'
   homepage 'https://ziglang.org/'
-  version '0.14.0'
+  version '0.14.1'
   license 'MIT'
   compatibility 'all'
   source_url({
-    aarch64: "https://ziglang.org/download/#{version}/zig-linux-armv7a-#{version}.tar.xz",
-     armv7l: "https://ziglang.org/download/#{version}/zig-linux-armv7a-#{version}.tar.xz",
-       i686: "https://ziglang.org/download/#{version}/zig-linux-x86-#{version}.tar.xz",
-     x86_64: "https://ziglang.org/download/#{version}/zig-linux-x86_64-#{version}.tar.xz"
+    aarch64: "https://ziglang.org/download/#{version}/zig-armv7a-linux-#{version}.tar.xz",
+     armv7l: "https://ziglang.org/download/#{version}/zig-armv7a-linux-#{version}.tar.xz",
+       i686: "https://ziglang.org/download/#{version}/zig-x86-linux-#{version}.tar.xz",
+     x86_64: "https://ziglang.org/download/#{version}/zig-x86_64-linux-#{version}.tar.xz"
   })
   source_sha256({
-    aarch64: 'a67dbfa9bdf769228ec994f2098698c619f930883ca5ef638f50eee2d7788d10',
-     armv7l: 'a67dbfa9bdf769228ec994f2098698c619f930883ca5ef638f50eee2d7788d10',
-       i686: '55d1ba21de5109686ffa675b9cc1dd66930093c202995a637ce3e397816e4c08',
-     x86_64: '473ec26806133cf4d1918caf1a410f8403a13d979726a9045b421b685031a982'
+    aarch64: '1b34d9ecfaeb3b360e86c0bc233e1a8a2bbed2d40f2d4f20c12bde2128714324',
+     armv7l: '1b34d9ecfaeb3b360e86c0bc233e1a8a2bbed2d40f2d4f20c12bde2128714324',
+       i686: '4bce6347fa112247443cb0952c19e560d1f90b910506cf895fd07a7b8d1c4a76',
+     x86_64: '24aeeec8af16c381934a6cd7d95c807a8cb2cf7df9fa40d359aa884195c4716c'
   })
 
   no_compile_needed

@@ -3425,6 +3425,11 @@ url: https://github.com/arximboldi/immer/releases
 activity: low
 ---
 kind: url
+name: indent
+url: https://ftp.gnu.org/gnu/indent/
+activity: none
+---
+kind: url
 name: inetutils
 url: https://ftp.gnu.org/gnu/inetutils
 activity: none
@@ -7630,6 +7635,11 @@ url: https://gitlab.gnome.org/GNOME/gi-docgen/-/tags
 activity: medium
 ---
 kind: url
+name: py3_gpt_researcher
+url: https://github.com/assafelovic/gpt-researcher/releases
+activity: high
+---
+kind: url
 name: py3_hatch_vcs
 url: https://github.com/ofek/hatch-vcs/releases
 activity: medium
@@ -10353,6 +10363,11 @@ kind: url
 name: yyjson
 url: https://github.com/ibireme/yyjson/releases
 activity: medium
+---
+kind: url
+name: z_library
+url: https://z-lib.fm/z-access#desktop_app_tab
+activity: low
 ---
 kind: url
 name: zathura

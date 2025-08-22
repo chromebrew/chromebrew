@@ -1,3 +1,4 @@
+# Total size: 5382736
 /usr/local/bin/bacula
 /usr/local/bin/bacula-dir
 /usr/local/bin/bacula-fd
@@ -58,25 +59,25 @@
 /usr/local/etc/update_bacula_tables
 /usr/local/etc/update_mysql_tables
 /usr/local/lib64/bpipe-fd.so
-/usr/local/lib64/libbac-15.0.2.so
+/usr/local/lib64/libbac-15.0.3.so
 /usr/local/lib64/libbac.la
 /usr/local/lib64/libbac.so
-/usr/local/lib64/libbaccats-15.0.2.so
-/usr/local/lib64/libbaccats-mysql-15.0.2.so
+/usr/local/lib64/libbaccats-15.0.3.so
+/usr/local/lib64/libbaccats-mysql-15.0.3.so
 /usr/local/lib64/libbaccats-mysql.la
 /usr/local/lib64/libbaccats-mysql.so
 /usr/local/lib64/libbaccats.la
 /usr/local/lib64/libbaccats.so
-/usr/local/lib64/libbaccfg-15.0.2.so
+/usr/local/lib64/libbaccfg-15.0.3.so
 /usr/local/lib64/libbaccfg.la
 /usr/local/lib64/libbaccfg.so
-/usr/local/lib64/libbacfind-15.0.2.so
+/usr/local/lib64/libbacfind-15.0.3.so
 /usr/local/lib64/libbacfind.la
 /usr/local/lib64/libbacfind.so
-/usr/local/lib64/libbacsd-15.0.2.so
+/usr/local/lib64/libbacsd-15.0.3.so
 /usr/local/lib64/libbacsd.la
 /usr/local/lib64/libbacsd.so
-/usr/local/lib64/libbacsql-15.0.2.so
+/usr/local/lib64/libbacsql-15.0.3.so
 /usr/local/lib64/libbacsql.la
 /usr/local/lib64/libbacsql.so
 /usr/local/share/doc/bacula/ChangeLog

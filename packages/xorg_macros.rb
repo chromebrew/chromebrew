@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Xorg_macros < Autotools
   description 'GNU autoconf macros shared across X.Org projects'
   homepage 'https://gitlab.freedesktop.org/xorg/util/macros'
-  version '1.20.1'
+  version '1.20.2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/util/macros.git'
@@ -11,9 +11,9 @@ class Xorg_macros < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ffee12a13ba43fe78dad8720d3061f6bb21244ac8787f4dc82f048e2c63a5778',
-     armv7l: 'ffee12a13ba43fe78dad8720d3061f6bb21244ac8787f4dc82f048e2c63a5778',
-       i686: '04833b48b1f3197fe86cf1b703d283ebe127369624ce3a5f8890977b464c6356',
-     x86_64: '77ddabfa8f45f2ba684fdeb1cf0b9e8183207a2f9d3f7ce958f3064b57e7e747'
+    aarch64: 'b13fa6adacf10c308178a81443257f73b17102fb4bc8e84f1c4b0d4d4ec418ae',
+     armv7l: 'b13fa6adacf10c308178a81443257f73b17102fb4bc8e84f1c4b0d4d4ec418ae',
+       i686: '34bbf333454e4b65794316ca93d5a80fff52170049f7a91c88a2870a4688481d',
+     x86_64: '376b3c9723460ddc0707d12e171bd948aa2723184dc8849bfee638bd29b12cc2'
   })
 end

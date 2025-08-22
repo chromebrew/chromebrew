@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.64.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.65.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -173,6 +173,30 @@ unless defined?(CHROMEOS_RELEASE)
       # newer version of Chrome OS exports info to env by default
       ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
     end
+end
+
+# Some packges need manual adjustments of URLS for different versions.
+unless defined?(CREW_UPDATER_EXCLUDED_PKGS)
+  CREW_UPDATER_EXCLUDED_PKGS = Set[
+    { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' }
+  ].to_h { |h| [h[:pkg_name], h[:comments]] }
+end
+CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX = "(#{CREW_UPDATER_EXCLUDED_PKGS.keys.map { |p| "^#{p}$" }.join('|')})" unless defined?(CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX)
+
+# Some packages have different names in anitya.
+unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
+  CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
+    { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: '' },
+    { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to Github' },
+    { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
+    { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
+    { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
+    { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
+    { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
+    { pkg_name: 'webkitgtk_6', anitya_pkg: 'webkitgtk~stable', comments: '' },
+    { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' },
+    { pkg_name: 'zimg', anitya_pkg: 'zimg', comments: 'Prefer to Github' }
+  ].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
 end
 
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
@@ -387,22 +411,24 @@ CREW_DOCOPT ||= <<~DOCOPT
     crew update_package_file [options] [-v|--verbose] [<name> ...]
     crew upgrade [options] [-f|--force] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-f|--force] [-v|--verbose] [<name> ...]
-    crew upstream [options] [-v|--verbose] [<name> ...]
+    crew upstream [options] [-j|--json|-u|--update-package-files|-v|--verbose] <name> ...
     crew whatprovides [options] <pattern> ...
 
-    -b --include-build-deps  Include build dependencies in output.
-    -c --color               Use colors even if standard out is not a tty.
-    -d --no-color            Disable colors even if standard out is a tty.
-    -D --debug               Enable debugging.
-    -f --force               Force where relevant.
-    -h --help                Show this screen.
-    -k --keep                Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
-    -L --license             Display the crew license.
-    -s --source              Build or download from source even if pre-compiled binary exists.
-    -S --recursive-build     Build from source, including all dependencies, even if pre-compiled binaries exist.
-    -t --tree                Print dependencies in a tree-structure format.
-    -v --verbose             Show extra information.
-    -V --version             Display the crew version.
+    -b --include-build-deps    Include build dependencies in output.
+    -c --color                 Use colors even if standard out is not a tty.
+    -d --no-color              Disable colors even if standard out is a tty.
+    -D --debug                 Enable debugging.
+    -f --force                 Force where relevant.
+    -h --help                  Show this screen.
+    -j --json                  Display output in json format.
+    -k --keep                  Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
+    -L --license               Display the crew license.
+    -s --source                Build or download from source even if pre-compiled binary exists.
+    -S --recursive-build       Build from source, including all dependencies, even if pre-compiled binaries exist.
+    -t --tree                  Print dependencies in a tree-structure format.
+    -u --update-package-files  Attempt to update the package version.
+    -v --verbose               Show extra information.
+    -V --version               Display the crew version.
 DOCOPT
 
 # All available crew commands.

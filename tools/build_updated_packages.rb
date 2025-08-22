@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 3.1 (for Chromebrew)
+# build_updated_packages version 3.3 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -128,13 +128,18 @@ updated_packages.each do |pkg|
   next unless File.file?(pkg)
 
   puts "Evaluating #{name} package...".orange
+  system "rubocop -c .rubocop.yml -A #{pkg}"
   @pkg_obj = Package.load_package(pkg)
 
   # Don't check if we need new binaries if the package doesn't already
-  # have binaries for this architecture and no_compile_needed is set.
-  if !system("grep -q binary_sha256 #{pkg}") && @pkg_obj.no_compile_needed?
+  # have binaries for this architecture.
+  if !system("grep -q binary_sha256 #{pkg}") && !@pkg_obj.no_compile_needed?
     puts "#{name.capitalize} #{@pkg_obj.version} has no binaries and may not need them.".lightgreen
     next pkg
+  elsif @pkg_obj.no_compile_needed?
+    system "yes | crew reinstall #{name}"
+    # Add manifests if we are in the right architecture.
+    FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist" if system("yes | crew reinstall #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
   else
     if @pkg_obj.no_binaries_needed?
       updated_packages.delete(pkg)
@@ -173,6 +178,7 @@ updated_packages.each do |pkg|
       end
       system('yes | crew reinstall py3_twine', %i[out err] => File::NULL) unless system('twine --help', %i[out err] => File::NULL)
       system "crew upload #{name}" if upload_pkg == true && agree_default_yes("\nWould you like to upload #{name} #{@pkg_obj.version}")
+      system "rubocop -c .rubocop.yml -A #{pkg}"
       puts "Are builds still needed for #{name}?".orange
       builds_still_needed = check_build_uploads(architectures_to_check, name)
       puts "Built and Uploaded: #{name} for #{ARCH}" if builds_needed != builds_still_needed

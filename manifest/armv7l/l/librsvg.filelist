@@ -1,3 +1,4 @@
+# Total size: 18917905
 /usr/local/bin/rsvg-convert
 /usr/local/include/librsvg-2.0/librsvg/rsvg-cairo.h
 /usr/local/include/librsvg-2.0/librsvg/rsvg-features.h
@@ -7,6 +8,6 @@
 /usr/local/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader_svg.so
 /usr/local/lib/librsvg-2.so
 /usr/local/lib/librsvg-2.so.2
-/usr/local/lib/librsvg-2.so.2.60.0
+/usr/local/lib/librsvg-2.so.2.61.0
 /usr/local/lib/pkgconfig/librsvg-2.0.pc
 /usr/local/share/thumbnailers/librsvg.thumbnailer

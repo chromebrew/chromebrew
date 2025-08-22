@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_extract_msg < Pip
   description 'Extract-msg extracts emails and attachments saved in Microsoft Outlook\'s .msg files.'
   homepage 'https://github.com/mattgwwalker/msg-extractor/'
-  version "0.54.1-#{CREW_PY_VER}"
+  version "0.55.0-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd4c9c8e3448b922a72f53382452c7374b4605cace15ad13be32c6be639677b38',
-     armv7l: 'd4c9c8e3448b922a72f53382452c7374b4605cace15ad13be32c6be639677b38',
-       i686: '81e0acf7bd3710876fd364dd19d65a26801ccb4fec5cdf86913110bcd07be516',
-     x86_64: 'cd4a5f29e142f4a6c417784029288234b1e4415db6e817f2589612c7a6f83781'
+    aarch64: 'd69dee983bbc7404e9a08aae85ecd7475daa8c88f64efb0995c0dae8bd2f2426',
+     armv7l: 'd69dee983bbc7404e9a08aae85ecd7475daa8c88f64efb0995c0dae8bd2f2426',
+       i686: 'fd52cee6a161225f85267f241b6587e39c107cdbfc29ae8bf0524e7d4e2dc163',
+     x86_64: '817d06f9eef6bd8ea55bf9ea9916d9cc9490b865eb9d41a6cda86b2150b2fbfd'
   })
 
   depends_on 'py3_imapclient'

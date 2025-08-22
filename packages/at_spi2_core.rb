@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class At_spi2_core < Meson
   description 'This is over DBus, tookit widgets provide their content to screen readers such as Orca'
   homepage 'https://www.freedesktop.org/wiki/'
-  version '2.57.0'
+  version '2.57.1'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/at-spi2-core.git'
@@ -11,9 +11,9 @@ class At_spi2_core < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fad5a9ee1f6cc0ad4d24949333e0ecb2794da54278254468821961945aece430',
-     armv7l: 'fad5a9ee1f6cc0ad4d24949333e0ecb2794da54278254468821961945aece430',
-     x86_64: 'fc9def10843bd0f15796b4f7e7e3b4b163997972e154808b0dc4624613efb95a'
+    aarch64: 'fd7bce5f199b338dbad5988d16e2ea8b5884c678bdbf3bc380abcd96dbc51d78',
+     armv7l: 'fd7bce5f199b338dbad5988d16e2ea8b5884c678bdbf3bc380abcd96dbc51d78',
+     x86_64: '67d1e7d13034729dd04e71b6cf4072a377b6c6f428453420951c98aa63c8291e'
   })
 
   depends_on 'dbus' # R

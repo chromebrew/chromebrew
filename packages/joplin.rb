@@ -3,12 +3,12 @@ require 'package'
 class Joplin < Package
   description 'Open source note-taking app'
   homepage 'https://joplinapp.org/'
-  version '3.3.12'
+  version '3.4.6'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://objects.joplinusercontent.com/v#{version}/Joplin-#{version}.AppImage"
-  source_sha256 'c2b8b294a6fcf84ebe1d7c69e2825e8267c062f7d5c5dd2471dad44b2b5d59ba'
+  source_sha256 '573c09aefef5635ee2fdc7c761d9cf4841f83f75cddfcfec2a3827b265a5c575'
 
   depends_on 'gtk3'
   depends_on 'gdk_base'
