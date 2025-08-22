@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Bacula < Autotools
   description 'Bacula is a set of computer programs that permits the system administrator to manage backup, recovery, and verification of computer data across a network of computers of different kinds.'
   homepage 'https://www.bacula.org/'
-  version '15.0.2'
+  version '15.0.3'
   license 'AGPL-3'
   compatibility 'x86_64'
   source_url "https://downloads.sourceforge.net/project/bacula/bacula/#{version}/bacula-#{version}.tar.gz"
-  source_sha256 '55515c2a66af9a86b955daea4089378b864d051b2e6e30383bef36e693acea7a'
+  source_sha256 '294afd3d2eb9d5b71c3d0e88fdf19eb513bfdb843b28d35c0552e4ae062827a1'
   binary_compression 'tar.zst'
 
   binary_sha256({
