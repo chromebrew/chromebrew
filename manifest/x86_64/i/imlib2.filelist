@@ -1,3 +1,4 @@
+# Total size: 3700142
 /usr/local/bin/imlib2_bumpmap
 /usr/local/bin/imlib2_colorspace
 /usr/local/bin/imlib2_conv
@@ -65,7 +66,7 @@
 /usr/local/lib64/libImlib2.la
 /usr/local/lib64/libImlib2.so
 /usr/local/lib64/libImlib2.so.1
-/usr/local/lib64/libImlib2.so.1.12.3
+/usr/local/lib64/libImlib2.so.1.12.5
 /usr/local/lib64/pkgconfig/imlib2.pc
 /usr/local/share/imlib2/data/fonts/cinema.ttf
 /usr/local/share/imlib2/data/fonts/grunge.ttf
