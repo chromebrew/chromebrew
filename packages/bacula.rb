@@ -11,7 +11,7 @@ class Bacula < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '5fb007691efba2b6dea4c93b4247d1dedd43ce97cb4e4129096ea646ceb6d8b7'
+     x86_64: '883d7955b35e0e1608a923b51e863c32fab10a5628567576bb7155c0f22b4276'
   })
 
   depends_on 'acl' # R
