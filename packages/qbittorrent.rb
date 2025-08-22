@@ -3,12 +3,12 @@ require 'buildsystems/cmake'
 class Qbittorrent < CMake
   description 'Open-source software alternative to µTorrent.'
   homepage 'https://www.qbittorrent.org/'
-  version '4.6.7'
+  version '5.1.2'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.37'
   source_url "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-#{version}/qbittorrent-#{version}.tar.xz"
-  source_sha256 'bcf2dcf52a0186c3f5da2f1413453888654dc1aee5e4ad80e5a026764bc640c4'
+  source_sha256 'd5806092c71959a5dbdf55c645ea45ed48a70369ab6c226039b83f1ade6979f2'
   binary_compression 'tar.zst'
 
   binary_sha256({
