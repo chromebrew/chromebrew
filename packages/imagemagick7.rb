@@ -8,7 +8,7 @@ class Imagemagick7 < Autotools
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ImageMagick/ImageMagick.git'
   # The imagemagick7 version always has a dash in it.
-  git_hashtag version.reverse.split('-', 3).collect(&:reverse).reverse.first
+  git_hashtag version.reverse.split('-', 2).collect(&:reverse).reverse.first
   binary_compression 'tar.zst'
 
   binary_sha256({
