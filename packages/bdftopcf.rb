@@ -16,6 +16,7 @@ class Bdftopcf < Autotools
      x86_64: '33f241e6bc50687b20e605fabef914dc2b3f60678786f58a371331ec30048319'
   })
 
+  depends_on 'glibc' # R
   depends_on 'libxfont'
   depends_on 'xorg_macros' => :build
 end
