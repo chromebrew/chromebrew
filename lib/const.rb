@@ -40,7 +40,7 @@ CREW_GLIBC_PREFIX ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
 CREW_GLIBC_INTERPRETER ||= File.file?(@crew_glibc_interpreter) ? @crew_glibc_interpreter : nil unless defined?(CREW_GLIBC_INTERPRETER)
 
 # Glibc version can be found from the output of libc.so.6
-@libcvertokens = (`#{CREW_GLIBC_PREFIX}/libc.so.6`.lines.first.chomp.split(/[\s]/) if File.file?("#{CREW_GLIBC_PREFIX}/libc.so.6"))
+@libcvertokens = (`#{CREW_GLIBC_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/) if File.file?("#{CREW_GLIBC_PREFIX}/libc.so.6"))
 @libc_version = @libcvertokens.nil? ? Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last : @libcvertokens[@libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
 LIBC_VERSION ||= if ENV.include?('LIBC_VERSION') && ENV['LIBC_VERSION'].empty?
                    @libc_version unless defined?(LIBC_VERSION)
