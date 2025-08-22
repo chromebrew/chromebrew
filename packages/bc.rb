@@ -17,11 +17,11 @@ class Bc < Autotools
      x86_64: 'ef7ec7a38073d1c63e54a82729dcc3fdf1f5ebb46fb6630886f2d55734ac3687'
   })
 
-  depends_on 'readline'
-  depends_on 'flex'
   depends_on 'ed' => :build
-  depends_on 'texinfo' => :build
+  depends_on 'flex'
   depends_on 'ncurses' # R
+  depends_on 'readline'
+  depends_on 'texinfo' => :build
 
   autotools_configure_options '--with-readline'
 
