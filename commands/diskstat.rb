@@ -24,6 +24,9 @@ class Command
 
     terminal_w = !IO.console&.console_mode || IO.console&.winsize == [0, 0] ? 80 : IO.console&.winsize&.last
 
+    total_disk_space, used_disk_space = `df -B1 #{CREW_PREFIX}`.lines.last.split[1..2].map(&:to_i)
+    user_dir_size = `du -bc #{ENV.fetch('XDG_CONFIG_HOME', '')} #{ENV.fetch('XDG_CACHE_HOME', '')} #{ENV.fetch('XDG_DATA_HOME', '')}`.lines.last.partition(' ').first.to_i
+
     # Calculate disk size for all packages and sort in ascending order
     size_of_all_packages = Dir["#{CREW_META_PATH}/*.filelist"].map do |filelist|
       pkg_name = File.basename(filelist, '.filelist')
@@ -60,7 +63,7 @@ class Command
       EOT
     end
 
-    printf '%s' * (count + 1), *bar_components
+    printf '%s' * 25, *bar_components
     printf "\n\n"
 
     size_of_all_packages[...24].each.with_index do |(pkg_name, _), i|
@@ -68,20 +71,23 @@ class Command
     end
 
     printf '%s Other packages', ' '.gray
-    printf "\n\n%-30s     %s\n\n", 'Package', 'Size (in descending order)'
+    printf "\n\n%-50s     %s\n\n", 'Package', 'Size (in descending order)'
 
     if show_all
       size_of_all_packages.each do |(pkg_name, size)|
-        printf "%-30s     %s\n", pkg_name, MiscFunctions.human_size(size)
+        printf "%-50s     %s\n", pkg_name, MiscFunctions.human_size(size)
       end
     else
       size_of_all_packages[...count].each do |(pkg_name, size)|
-        printf "%-30s     %s\n", pkg_name, MiscFunctions.human_size(size)
+        printf "%-50s     %s\n", pkg_name, MiscFunctions.human_size(size)
       end
 
-      printf "\n%-30s     %s", 'Other packages', MiscFunctions.human_size(other_size)
+      printf "\n%-50s     %s", 'Other packages', MiscFunctions.human_size(other_size)
     end
 
-    printf "\n%-30s     %s\n\n", 'Total', MiscFunctions.human_size(total_size)
+    printf "\n%-50s     %s\n", 'Runtime data size (user data/runtime cache)', MiscFunctions.human_size(user_dir_size)
+    printf "%-50s     %s\n", 'Total package size', MiscFunctions.human_size(total_size)
+    printf "%-50s     %s\n", 'Used disk size', MiscFunctions.human_size(used_disk_space)
+    printf "%-50s     %s\n\n", 'Total disk size', MiscFunctions.human_size(total_disk_space)
   end
 end

@@ -38,7 +38,7 @@ class Command
       puts <<~EOT
         Show statistics about disk space occupied by installed Chromebrew packages.
         Usage: crew diskstat [-a|--all] [<count>]
-        Only <count> (default: 20) of the largest packages will be shown by default. Use `--all` to show the occupied disk space for all installed packages.
+        Only <count> (default: 25) of the largest packages will be shown by default. Use `--all` to show the occupied disk space for all installed packages.
       EOT
     when 'download'
       puts <<~EOT
