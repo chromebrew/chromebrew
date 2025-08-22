@@ -12,9 +12,9 @@ class Qemu < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b07e876cca85b8003be705aee939d5676e0a8109fa69bfb3d7a3cb16d986e67d',
-     armv7l: 'b07e876cca85b8003be705aee939d5676e0a8109fa69bfb3d7a3cb16d986e67d',
-     x86_64: '30183ad202272d2d568a6da30a58ad228cd1b42daebee015051703cbdd88eafe'
+    aarch64: 'd08b91c480ca10327d6ac648562ef8c95661454f5d83b4826ba4a504a2698448',
+     armv7l: 'd08b91c480ca10327d6ac648562ef8c95661454f5d83b4826ba4a504a2698448',
+     x86_64: '1a4e83507b3279f8b08c54f5068328c282ddac5c0d976282abd6f3cae6c30442'
   })
 
   depends_on 'alsa_lib' # R
