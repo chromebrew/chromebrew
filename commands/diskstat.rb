@@ -69,7 +69,7 @@ class Command
       printf '%s %s ', bar_chars[i >= 12 ? 1 : 0].send(*color_list[i % 12]), pkg_name
     end
 
-    printf '%s Other packages', ' '.gray
+    printf '%s Other packages', bar_chars[1].gray
     printf "\n\n%-50s     %s\n\n", 'Package', 'Size (in descending order)'
 
     if show_all
