@@ -29,7 +29,7 @@ class Inetutils < Autotools
     system './bootstrap.sh'
   end
 
-  autotools_pre_configure_options "CC='gcc -lncursesw -lpthread -ltinfow' CXX='g++ -lncursesw -lpthread -ltinfow'"
+  autotools_pre_configure_options "CFLAGS='-Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-unused-result -fno-strict-aliasing' CC='gcc -lncursesw -lpthread -ltinfow' CXX='g++ -lncursesw -lpthread -ltinfow'"
   autotools_configure_options "--with-ncurses-include-dir=#{CREW_PREFIX}/include/ncursesw \
       --with-krb5=#{CREW_PREFIX} \
       --disable-rpath \
