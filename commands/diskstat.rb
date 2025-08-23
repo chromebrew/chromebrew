@@ -33,7 +33,7 @@ class Command
       size     = ConvenienceFunctions.read_filelist(filelist, always_calcuate_from_disk: true).first
 
       [pkg_name, size]
-    end.sort_by(&->((_, size)) { -size })
+    end.sort_by { |_, size| -size }
 
     total_size     = size_of_all_packages.sum(&:last).to_f # Total size of all installed packages
     other_size     = total_size                            # Total size of all installed packages, excluding the top 12 one

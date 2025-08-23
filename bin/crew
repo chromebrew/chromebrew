@@ -15,6 +15,10 @@ require 'mkmf'
 require 'open3'
 require 'tmpdir'
 require 'uri'
+
+# Load commands
+Dir.glob("#{__dir__}/../commands/*.rb") { |cmd| require_relative cmd }
+
 require_relative '../lib/const'
 require_relative '../lib/crew_lockfile'
 require_gem 'pry-byebug' if CREW_DEBUG
@@ -31,9 +35,6 @@ require_relative '../lib/gnome'
 require_relative '../lib/misc_functions'
 require_relative '../lib/package'
 require_relative '../lib/package_utils'
-
-# Load commands
-Dir.glob("#{__dir__}/../commands/*.rb") { |cmd| require_relative cmd }
 
 # Add lib to LOAD_PATH
 $LOAD_PATH << File.join(CREW_LIB_PATH, 'lib')
