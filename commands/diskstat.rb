@@ -41,7 +41,6 @@ class Command
     bar_components = size_of_all_packages[...24].map.with_index do |(_, size), i|
       length      = (size / total_size * terminal_w).to_i
       bar_length += length
-      other_size -= size
 
       (bar_chars[i > 12 ? 1 : 0] * length).send(*color_list[i % 12])
     end
@@ -67,7 +66,7 @@ class Command
     printf "\n\n"
 
     size_of_all_packages[...24].each.with_index do |(pkg_name, _), i|
-      printf('%s %s ', bar_chars[i >= 12 ? 1 : 0].send(*color_list[i % 12]), pkg_name)
+      printf '%s %s ', bar_chars[i >= 12 ? 1 : 0].send(*color_list[i % 12]), pkg_name
     end
 
     printf '%s Other packages', ' '.gray
@@ -79,6 +78,7 @@ class Command
       end
     else
       size_of_all_packages[...count].each do |(pkg_name, size)|
+        other_size -= size
         printf "%-50s     %s\n", pkg_name, MiscFunctions.human_size(size)
       end
 
