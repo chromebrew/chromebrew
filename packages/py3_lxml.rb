@@ -19,10 +19,15 @@ class Py3_lxml < Pip
   depends_on 'glibc' # R
   depends_on 'py3_cython' => :build
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
   depends_on 'zlib' # R
 
 >>>>>>> Stashed changes
 
+=======
+  depends_on 'zlib' # R
+
+>>>>>>> Stashed changes
   no_source_build
 end
