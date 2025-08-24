@@ -1,4 +1,5 @@
 require_relative '../lib/const'
+require_relative '../lib/convenience_functions'
 require_relative '../lib/misc_functions'
 require_relative '../lib/package_utils'
 
@@ -25,18 +26,7 @@ class Command
     # Print the name and description of the package.
     puts pkg.name.lightgreen + ": #{pkg.description}".lightblue
 
-    # Read the file into memory as an array of lines.
-    filelist = File.readlines(filelist_path, chomp: true).grep(/^(?!#)/)
-    size = 0
-
-    filelist.each do |filename|
-      # Skip calculating the filesize if the file doesn't exist.
-      next unless File.file?(filename)
-      # Ignore symlinks to prevent duplicating calculation.
-      next if File.symlink?(filename)
-      # Add the size of the file to the total size.
-      size += File.size(filename)
-    end
+    size, filelist = ConvenienceFunctions.read_filelist(filelist_path, always_calcuate_from_disk: true)
 
     # Print the filelist, the total number of files, and the total size of those files.
     puts filelist

@@ -4,24 +4,24 @@ class String
 
   # ANSI color codes
   @@color_codes = {
-        black: 30,
-          red: 31,
-        green: 32,
-       orange: 33,
-         blue: 34,
-       purple: 35,
-         cyan: 36,
-    lightgray: 37,
+        black: { normal: 30, background: 40 },
+          red: { normal: 31, background: 41 },
+        green: { normal: 32, background: 42 },
+       orange: { normal: 33, background: 43 },
+         blue: { normal: 34, background: 44 },
+       purple: { normal: 35, background: 45 },
+         cyan: { normal: 36, background: 46 },
+    lightgray: { normal: 37, background: 47 },
 
            # colors with bold varient available
-           gray: { normal: 90, bold: 30 },
-       lightred: { normal: 91, bold: 31 },
-     lightgreen: { normal: 92, bold: 32 },
-         yellow: { normal: 93, bold: 33 },
-      lightblue: { normal: 94, bold: 34 },
-    lightpurple: { normal: 95, bold: 35 },
-      lightcyan: { normal: 96, bold: 36 },
-          white: { normal: 97, bold: 37 }
+           gray: { normal: 90, background: 100, bold: 30 },
+       lightred: { normal: 91, background: 101, bold: 31 },
+     lightgreen: { normal: 92, background: 102, bold: 32 },
+         yellow: { normal: 93, background: 103, bold: 33 },
+      lightblue: { normal: 94, background: 104, bold: 34 },
+    lightpurple: { normal: 95, background: 105, bold: 35 },
+      lightcyan: { normal: 96, background: 106, bold: 36 },
+          white: { normal: 97, background: 107, bold: 37 }
   }
 
   class << self
@@ -43,16 +43,19 @@ class String
   # create method for each color
   @@color_codes.each_pair do |name, code|
     define_method(name) do |*opts|
-      bold_avail = code.is_a?(Hash)
+      bold_avail = code.key?(:bold)
 
-      if bold_avail
+      if opts.include?(:background)
+        use_bold   = false
+        color_code = code[:background]
+      elsif bold_avail
         # use bold varient by default (if available),
         # specify :no_bold to use normal varient
         use_bold   = !opts.include?(:no_bold)
         color_code = code[use_bold ? :bold : :normal]
       else
         use_bold   = false
-        color_code = code
+        color_code = code[:normal]
       end
 
       return colorize(color_code, use_bold ? 1 : 0)

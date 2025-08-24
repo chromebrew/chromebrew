@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.65.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.65.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -40,7 +40,7 @@ CREW_GLIBC_PREFIX ||= File.join(CREW_PREFIX, 'opt/glibc-libs')
 CREW_GLIBC_INTERPRETER ||= File.file?(@crew_glibc_interpreter) ? @crew_glibc_interpreter : nil unless defined?(CREW_GLIBC_INTERPRETER)
 
 # Glibc version can be found from the output of libc.so.6
-@libcvertokens = (`#{CREW_GLIBC_PREFIX}/libc.so.6`.lines.first.chomp.split(/[\s]/) if File.file?("#{CREW_GLIBC_PREFIX}/libc.so.6"))
+@libcvertokens = (`#{CREW_GLIBC_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/) if File.file?("#{CREW_GLIBC_PREFIX}/libc.so.6"))
 @libc_version = @libcvertokens.nil? ? Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last : @libcvertokens[@libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
 LIBC_VERSION ||= if ENV.include?('LIBC_VERSION') && ENV['LIBC_VERSION'].empty?
                    @libc_version unless defined?(LIBC_VERSION)
@@ -396,6 +396,7 @@ CREW_DOCOPT ||= <<~DOCOPT
     crew check [-f|--force] <name> ...
     crew const [options] [-v|--verbose] [<name> ...]
     crew deps [options] [--deep] [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] [-v|--verbose] <name> ...
+    crew diskstat [options] [-a|--all] [<count>]
     crew download [options] [-s|--source] [-v|--verbose] <name> ...
     crew files [options] <name> ...
     crew help [options] [<command>] [-v|--verbose] [<subcommand>]
