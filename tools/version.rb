@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 2.2 (for Chromebrew)
+# version.rb version 2.3 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -12,6 +12,7 @@ if ARGV.include?('-h') || ARGV.include?('--help')
     Passing --update-package-files or -u will try to update the version
     field in the package file.
     Passing --json or -j will only give json output.
+    Passing --verbose or -v will display verbose output.
   EOM
 end
 
@@ -75,7 +76,7 @@ def get_version(name, homepage, source)
           # GitHub if such releases exist.
           github_ver = `gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'`.chomp if system 'gh auth status >/dev/null', exception: false
         else
-          github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .name -r`.chomp
+          github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .tag -r`.chomp
         end
         return github_ver unless github_ver.blank? || github_ver == 'null'
       end
@@ -159,7 +160,7 @@ filelist = []
 if ARGV.length.positive? && !(ARGV.length == 1 && OPTIONS.include?(ARGV[0]))
   ARGV.each do |arg|
     arg = arg.gsub('.rb', '')
-    next unless arg =~ /^[0-9a-zA-Z\_\*]+$/
+    next unless arg =~ /^[0-9a-zA-Z_*]+$/
     if arg.include?('*')
       Dir[File.join(crew_local_repo_root, "packages/#{arg}.rb")].each do |filename|
         filelist.push filename
@@ -360,8 +361,8 @@ if filelist.length.positive?
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
     version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.chomp.ljust(version_field_length)}#{updatable_string}\n"
-    print version_line_string[@pkg.name.to_sym] unless OUTPUT_JSON || ((versions_updated[@pkg.name.to_sym] == 'Up to date.') && !VERBOSE)
-    print addendum_string unless addendum_string.blank? || OUTPUT_JSON
+    print version_line_string[@pkg.name.to_sym] if (versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || VERBOSE
+    print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !VERBOSE
 
     print "Failed to update version in #{@pkg.name} to #{upstream_version.chomp}".yellow if !OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')
     print "Failed to update binary_compression in #{@pkg.name}".yellow if !OUTPUT_JSON && (bc_updated[@pkg.name.to_sym].to_s == 'false')
