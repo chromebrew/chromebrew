@@ -3,11 +3,12 @@ require 'package'
 class Balena_etcher < Package
   description 'Flash OS images to SD cards & USB drives, safely and easily.'
   homepage 'https://etcher.balena.io'
-  version '2.1.3'
+  version '2.1.4'
   license 'Apache-2.0'
   compatibility 'x86_64'
-  source_url "https://github.com/balena-io/etcher/releases/download/v#{version}/balenaEtcher-#{version}-x64.AppImage"
-  source_sha256 'd17976ac200b0379b1668b24a51ebf69124855d7dbf28f1333c446459b94147f'
+  min_glibc '2.33'
+  source_url "https://github.com/balena-io/etcher/releases/download/v#{version}/balenaEtcher-linux-x64-#{version}.zip"
+  source_sha256 'b0e08f001cc15cb0d648832db1d23273aa6ff25111bc104b8bc1f794aa9616d9'
 
   depends_on 'gtk3'
   depends_on 'freetype'
@@ -19,6 +20,7 @@ class Balena_etcher < Package
   depends_on 'libxss'
   depends_on 'libcom_err'
   depends_on 'gsettings_desktop_schemas'
+  depends_on 'unzip'
   depends_on 'xhost'
   depends_on 'sommelier'
 
@@ -31,7 +33,7 @@ class Balena_etcher < Package
       #!/bin/bash
       xhost si:localuser:root
       cd #{CREW_PREFIX}/share/balena-etcher
-      sudo -E LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} ./AppRun "$@"
+      sudo -E LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} ./balena-etcher --no-sandbox "$@"
     EOF
   end
 
