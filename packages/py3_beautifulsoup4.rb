@@ -10,10 +10,10 @@ class Py3_beautifulsoup4 < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2b7c79602f5c12b658d1f162a4184c7f08b4a518dbc4fd589d4d2a7b9fc1f15e',
-     armv7l: '2b7c79602f5c12b658d1f162a4184c7f08b4a518dbc4fd589d4d2a7b9fc1f15e',
-       i686: '74ba5ac4fec45ae67edd76d56c216c5f75c24ebbcd5b77aad935dd394ccb34e9',
-     x86_64: '5fdd761ee774cfc22c04ff7ef50579e117dd8cc2b549b263c850db0a6b3656c4'
+    aarch64: 'a161c9462b3890e9b41e6dedf0ae650ddceced395e29b1d9c83e884ff24a673e',
+     armv7l: 'a161c9462b3890e9b41e6dedf0ae650ddceced395e29b1d9c83e884ff24a673e',
+       i686: '624312edf4e4a5ef6dfe5a1d5ff04f9903ecebcada958e2d5b4033ab7c0b3e3c',
+     x86_64: '32786f4cb230dba21ec2e05fa9806b824544d7d0287ca994a085860e8797a322'
   })
 
   depends_on 'py3_hatchling' => :build
