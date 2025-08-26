@@ -1,4 +1,4 @@
-# Total size: 1541610
+# Total size: 1474286
 /usr/local/bin/baobab
 /usr/local/share/applications/org.gnome.baobab.desktop
 /usr/local/share/dbus-1/services/org.gnome.baobab.service
@@ -396,6 +396,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/baobab.mo
 /usr/local/share/locale/ja/LC_MESSAGES/baobab.mo
 /usr/local/share/locale/ka/LC_MESSAGES/baobab.mo
+/usr/local/share/locale/kab/LC_MESSAGES/baobab.mo
 /usr/local/share/locale/kk/LC_MESSAGES/baobab.mo
 /usr/local/share/locale/km/LC_MESSAGES/baobab.mo
 /usr/local/share/locale/kn/LC_MESSAGES/baobab.mo
@@ -447,4 +448,4 @@
 /usr/local/share/locale/zh_HK/LC_MESSAGES/baobab.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/baobab.mo
 /usr/local/share/man/man1/baobab.1.zst
-/usr/local/share/metainfo/org.gnome.baobab.appdata.xml
+/usr/local/share/metainfo/org.gnome.baobab.metainfo.xml
