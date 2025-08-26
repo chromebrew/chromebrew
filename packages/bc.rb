@@ -3,25 +3,25 @@ require 'buildsystems/autotools'
 class Bc < Autotools
   description 'bc is an arbitrary precision numeric processing language.'
   homepage 'http://www.gnu.org/software/bc/'
-  version '1.08.1'
+  version '1.08.2'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/bc/bc-#{version}.tar.gz"
-  source_sha256 '62adfca89b0a1c0164c2cdca59ca210c1d44c3ffc46daf9931cf4942664cb02a'
+  source_sha256 'ae470fec429775653e042015edc928d07c8c3b2fc59765172a330d3d87785f86'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '79c3e614e6e4860e42bfed550cacb544507afe84bc7b227fe5b09f33e7d6e7e9',
-     armv7l: '79c3e614e6e4860e42bfed550cacb544507afe84bc7b227fe5b09f33e7d6e7e9',
-       i686: '82c96318ca649079ca49570f1b7e9e0adc1ce0f236db1a35d95b1849966db17b',
-     x86_64: 'ef7ec7a38073d1c63e54a82729dcc3fdf1f5ebb46fb6630886f2d55734ac3687'
+    aarch64: 'b83af08b0ea05e04155d892eeaf04579e7353c3ddf9d18d3a6ac2b75fdc936ac',
+     armv7l: 'b83af08b0ea05e04155d892eeaf04579e7353c3ddf9d18d3a6ac2b75fdc936ac',
+       i686: 'c1cf23f0789bf5daf82692b0db702448802826615e2f398a56c7d5c4b64820a6',
+     x86_64: 'e8614051c21c99edfa950ab1ac931e1712c6efb05bc779f6d505dd03355ab367'
   })
 
-  depends_on 'readline'
-  depends_on 'flex'
   depends_on 'ed' => :build
-  depends_on 'texinfo' => :build
+  depends_on 'flex'
   depends_on 'ncurses' # R
+  depends_on 'readline'
+  depends_on 'texinfo' => :build
 
   autotools_configure_options '--with-readline'
 
