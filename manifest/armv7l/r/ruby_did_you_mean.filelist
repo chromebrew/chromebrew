@@ -1,0 +1,21 @@
+# Total size: 24252
+/usr/local/lib/ruby/3.4.0/did_you_mean.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/core_ext/name_error.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/experimental.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/formatter.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/formatters/plain_formatter.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/formatters/verbose_formatter.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/jaro_winkler.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/levenshtein.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/spell_checker.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/spell_checkers/key_error_checker.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/spell_checkers/method_name_checker.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/spell_checkers/name_error_checkers.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/spell_checkers/name_error_checkers/class_name_checker.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/spell_checkers/name_error_checkers/variable_name_checker.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/spell_checkers/null_checker.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/spell_checkers/pattern_key_name_checker.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/spell_checkers/require_path_checker.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/tree_spell_checker.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/verbose.rb
+/usr/local/lib/ruby/3.4.0/did_you_mean/version.rb

@@ -1,0 +1,16 @@
+# Total size: 123098
+/usr/local/lib/ruby/3.4.0/uri.rb
+/usr/local/lib/ruby/3.4.0/uri/common.rb
+/usr/local/lib/ruby/3.4.0/uri/file.rb
+/usr/local/lib/ruby/3.4.0/uri/ftp.rb
+/usr/local/lib/ruby/3.4.0/uri/generic.rb
+/usr/local/lib/ruby/3.4.0/uri/http.rb
+/usr/local/lib/ruby/3.4.0/uri/https.rb
+/usr/local/lib/ruby/3.4.0/uri/ldap.rb
+/usr/local/lib/ruby/3.4.0/uri/ldaps.rb
+/usr/local/lib/ruby/3.4.0/uri/mailto.rb
+/usr/local/lib/ruby/3.4.0/uri/rfc2396_parser.rb
+/usr/local/lib/ruby/3.4.0/uri/rfc3986_parser.rb
+/usr/local/lib/ruby/3.4.0/uri/version.rb
+/usr/local/lib/ruby/3.4.0/uri/ws.rb
+/usr/local/lib/ruby/3.4.0/uri/wss.rb
