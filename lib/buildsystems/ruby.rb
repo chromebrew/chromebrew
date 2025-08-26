@@ -72,7 +72,9 @@ def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
   # Gem.bindir should end up being #{CREW_PREFIX}/bin.
   exes&.map! { |x| x.gsub(%r{^.*(/exe/|/bin/)}, "#{Gem.bindir}/") }
   filelist = (files + exes).sort.uniq
-  File.write(gem_filelist_path, filelist)
+  File.open(gem_filelist_path, 'w+') do |f|
+    f.puts(filelist)
+  end
 end
 
 class RUBY < Package
