@@ -66,6 +66,15 @@ def set_vars(passed_name = nil, passed_version = nil)
   @ruby_gem_version = @remote_ruby_gem_version.to_s if Gem::Version.new(@remote_ruby_gem_version.to_s) > Gem::Version.new(@ruby_gem_version)
 end
 
+def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
+  files = `gem contents #{gem_name}`.chomp.split
+  exes = files.grep(%r{/exe/|/bin/})
+  # Gem.bindir should end up being #{CREW_PREFIX}/bin.
+  exes&.map! { |x| x.gsub(%r{^.*(/exe/|/bin/)}, "#{Gem.bindir}/") }
+  filelist = (files + exes).sort.uniq
+  File.write(gem_filelist_path, filelist)
+end
+
 class RUBY < Package
   property :ruby_gem_name, :ruby_gem_version, :ruby_install_extras
 
@@ -86,8 +95,9 @@ class RUBY < Package
     end
 
     # Create a filelist from the gem if the latest gem version is
-    # installed but the filelist doesn't exist.
-    Kernel.system "gem contents #{@ruby_gem_name}", %i[out] => [@gem_filelist_path, 'w'] if @gem_latest_version_installed && !File.file?(@gem_filelist_path)
+    # installed.
+    save_gem_filelist(@ruby_gem_name, @gem_filelist_path) if @gem_latest_version_installed
+
     # If the version number gem reports isn't newer than the version
     # number that Chromebrew has recorded, force an install.
     # Otherwise we can skip the install and bail.
@@ -160,7 +170,7 @@ class RUBY < Package
       Kernel.system "gem install --no-update-sources -N #{@ruby_gem_name} --conservative"
     end
     @gems_needing_cleanup = Array(@gems_needing_cleanup) << @ruby_gem_name unless @gem_latest_version_installed
-    Kernel.system "gem contents #{@ruby_gem_name}", %i[out] => [@gem_filelist_path, 'w']
+    save_gem_filelist(@ruby_gem_name, @gem_filelist_path)
     @ruby_install_extras&.call
     @install_gem = false
     @just_built_gem = false
