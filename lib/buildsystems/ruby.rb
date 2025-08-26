@@ -72,9 +72,19 @@ def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
   # Gem.bindir should end up being #{CREW_PREFIX}/bin.
   exes&.map! { |x| x.gsub(%r{^.*(/exe/|/bin/)}, "#{Gem.bindir}/") }
   filelist = (files + exes).sort.uniq
-  File.open(gem_filelist_path, 'w+') do |f|
-    f.puts(filelist)
+  # Create file list and calculate file size (modified from the one
+  # used in crew.)
+  filelist = filelist.select do |e|
+    File.file?(e) || File.symlink?(e)
+  end.to_h do |e|
+    # Ignore symlinks to prevent duplicating calculation.
+    ["/#{e[1..]}", File.symlink?(e) ? 0 : File.size(e)]
   end
+
+  File.write gem_filelist_path, <<~EOF
+    # Total size: #{filelist.values.sum}
+    #{filelist.keys.sort.join("\n")}
+  EOF
 end
 
 class RUBY < Package
