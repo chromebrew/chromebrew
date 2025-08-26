@@ -67,7 +67,7 @@ def set_vars(passed_name = nil, passed_version = nil)
 end
 
 def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
-  files = `gem contents #{gem_name}`.chomp.split
+  files = `gem install #{gem_name} &>/dev/null ; gem contents #{gem_name}`.chomp.split
   exes = files.grep(%r{/exe/|/bin/})
   # Gem.bindir should end up being #{CREW_PREFIX}/bin.
   exes&.map! { |x| x.gsub(%r{^.*(/exe/|/bin/)}, "#{Gem.bindir}/") }
