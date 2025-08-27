@@ -65,7 +65,6 @@ jobs:
             fi
             export updater_branch="updater-${pkg}-${branch_tag}"
             echo "Updater branch: ${updater_branch}"
-            git branch -a
             if git branch -a | grep -q "${updater_branch}"; then
               echo "Updating & rebasing existing ${updater_branch} branch."
               git stash || true
