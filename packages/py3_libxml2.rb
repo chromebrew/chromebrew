@@ -12,16 +12,16 @@ class Py3_libxml2 < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a7836b787c81589f64d05846064e2d4ab273f16c4d8f84170c2261764c9e8888',
-     armv7l: 'a7836b787c81589f64d05846064e2d4ab273f16c4d8f84170c2261764c9e8888',
-       i686: '6c77c43611eaf3aa000c7fb0121ca144ed9116c4bc3ca9d9eda9017a26196aa5',
-     x86_64: '87d409eb9a7408413dab36cd25d507216b844d08f0f1c440584dc447d1dacaeb'
+    aarch64: '0c6ca440e6401673f4a952069de2a3d401d0463a0ee3d90d257dab923e50439e',
+     armv7l: '0c6ca440e6401673f4a952069de2a3d401d0463a0ee3d90d257dab923e50439e',
+       i686: 'a38b835b9d4479330231a4515b1846ea897ae82145548fa2ed720b44ad6a2d7c',
+     x86_64: '701ae77cbb8cf0806bad05ca1f935cefe3a5f7a532433b68460b97440610666f'
   })
 
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
-  depends_on 'python3'
   depends_on 'py3_setuptools' => :build
+  depends_on 'python3'
   depends_on 'zlib' # R
 
   no_fhs
