@@ -1,0 +1,5 @@
+# Total size: 329716748
+/usr/local/bin/llvm-strip
+/usr/local/lib/libLLVM-21.so
+/usr/local/lib/libLLVM.so
+/usr/local/lib/libLLVM.so.21.1
