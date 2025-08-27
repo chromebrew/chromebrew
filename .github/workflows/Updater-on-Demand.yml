@@ -64,13 +64,12 @@ jobs:
               branch_tag="${pkg_version}"
             fi
             export updater_branch="updater-${pkg}-${branch_tag}"
-            if git checkout -b "${updater_branch}"; then
-              echo "${updater_branch} branch created."
-            else
+            if git checkout "${updater_branch}"; then
               echo "Updating & rebasing existing ${updater_branch} branch."
-              git checkout "${updater_branch}"
-              git pull --rebase origin master
-              git push -f
+              git pull --rebase origin master; git push ; git pull
+            else 
+              git checkout -b "${updater_branch}"
+              echo "${updater_branch} branch created."
             fi
             git commit -m "Add unbuilt ${pkg} to ${updater_branch}"
             git push
