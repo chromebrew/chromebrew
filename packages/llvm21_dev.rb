@@ -19,20 +19,6 @@ class Llvm21_dev < Package
      x86_64: '48a94cdeadaa9205edeaab675536a724a43b96281f62f03a712a24313d84780d'
   })
 
-  binary_sha256({
-    aarch64: 'a3f9c3af1de9a889acc8f4d82ebcde0c033a573a496d4f668b87edbebe25f5fa',
-     armv7l: 'a3f9c3af1de9a889acc8f4d82ebcde0c033a573a496d4f668b87edbebe25f5fa',
-       i686: '8f88168698f5d798161467be8b4d397ecaf98eb3f2a23f8bff06d3f166b81dc2',
-     x86_64: '48a94cdeadaa9205edeaab675536a724a43b96281f62f03a712a24313d84780d'
-  })
-
-  binary_sha256({
-    aarch64: 'a3f9c3af1de9a889acc8f4d82ebcde0c033a573a496d4f668b87edbebe25f5fa',
-     armv7l: 'a3f9c3af1de9a889acc8f4d82ebcde0c033a573a496d4f668b87edbebe25f5fa',
-       i686: '8f88168698f5d798161467be8b4d397ecaf98eb3f2a23f8bff06d3f166b81dc2',
-     x86_64: '48a94cdeadaa9205edeaab675536a724a43b96281f62f03a712a24313d84780d'
-  })
-
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libedit' # R
