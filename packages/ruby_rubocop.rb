@@ -6,7 +6,7 @@ require 'buildsystems/ruby'
 class Ruby_rubocop < RUBY
   description 'A Ruby static code analyzer and formatter'
   homepage 'https://rubocop.org'
-  version "1.80.0-#{CREW_RUBY_VER}"
+  version "1.80.1-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
@@ -18,6 +18,7 @@ class Ruby_rubocop < RUBY
   depends_on 'ruby_parallel' # R
   depends_on 'ruby_parser' # R
   depends_on 'ruby_prism' # R
+  depends_on 'ruby_racc' # R
   depends_on 'ruby_rainbow' # R
   depends_on 'ruby_regexp_parser' # R
   depends_on 'ruby_rubocop' # R
