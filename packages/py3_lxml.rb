@@ -10,16 +10,17 @@ class Py3_lxml < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2fcf4ff6a6174d110be04f3b38cf8a7da5f8d56065418f55630c7749eb89a40f',
-     armv7l: '2fcf4ff6a6174d110be04f3b38cf8a7da5f8d56065418f55630c7749eb89a40f',
-       i686: '75880af56f9f71071ee9cf67d83044e481bd8c196d2097d055522db39b9569b0',
-     x86_64: '7c138e7a3c01d1759ec724a5a0e84bda5bb423e250b089210b6100dac43fc03b'
+    aarch64: '828c39402232b971908924dc19e22c41137d8dc338231f7fe37ca02b11a92a0d',
+     armv7l: '828c39402232b971908924dc19e22c41137d8dc338231f7fe37ca02b11a92a0d',
+       i686: '254ff9beb2f554e870fa55ef86f26458b8b188b5bb6e7cf25e43363bcecf731d',
+     x86_64: 'f896171eeeb8518f7fdd3eb9d80c5d49c0b0e4527b970742e5b14e4a05c615df'
   })
 
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
   depends_on 'libxslt' # R
   depends_on 'py3_cython' => :build
+  depends_on 'python3' # R
   depends_on 'zlib' # R
 
   no_source_build

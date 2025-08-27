@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.1 (for Chromebrew)
+# getrealdeps version 2.2 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -9,10 +9,16 @@ crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
 if crew_local_repo_root.to_s.empty?
   require_relative '../lib/color'
   require_relative '../lib/const'
+  require_relative '../lib/package'
+  $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 else
   require File.join(crew_local_repo_root, 'lib/color')
   require File.join(crew_local_repo_root, 'lib/const')
+  require File.join(crew_local_repo_root, 'lib/package')
+  $LOAD_PATH.unshift File.expand_path(File.join(crew_local_repo_root, 'lib'), __dir__)
 end
+
+@rubocop_config = CREW_LOCAL_REPO_ROOT.to_s.empty? ? "#{CREW_LIB_PATH}/.rubocop.yml" : File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')
 
 if ARGV.include?('--use-crew-dest-dir')
   ARGV.delete('--use-crew-dest-dir')
@@ -40,6 +46,8 @@ end
 
 def main(pkg)
   puts "Checking for the runtime dependencies of #{pkg}...".lightblue
+  pkg_file = File.join(CREW_PACKAGES_PATH, "#{pkg}.rb")
+  FileUtils.cp File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"), pkg_file if !CREW_LOCAL_REPO_ROOT.to_s.empty? && File.file?(File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"))
 
   if @opt_use_crew_dest_dir
     define_singleton_method('pkgfilelist') { File.join(CREW_DEST_DIR, 'filelist') }
@@ -119,7 +127,21 @@ def main(pkg)
   return if pkgdeps.empty?
 
   # Look for missing runtime dependencies, ignoring build and optional deps.
-  missingpkgdeps = pkgdeps.reject { |i| File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}'") unless File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}' => :build") || File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("# depends_on '#{i}' # R (optional)") }
+  missingpkgdeps = pkgdeps.reject { |i| File.read(pkg_file).include?("depends_on '#{i}'") unless File.read(pkg_file).include?("depends_on '#{i}' => :build") || File.read(pkg_file).include?("# depends_on '#{i}' # R (optional)") }
+
+  # Add special deps for perl, pip, python, and ruby gem packages.
+  case @pkg.superclass.to_s
+  when 'PERL'
+    missingpkgdeps << 'perl'
+  when 'Pip', 'Python'
+    missingpkgdeps << 'python3'
+  when 'RUBY'
+    missingpkgdeps << 'ruby'
+  end
+
+  # These deps are sometimes architecture dependent or should not be
+  # removed for other reasons.
+  privileged_deps = %w[glibc glibc_lib gcc_lib perl python3 ruby]
 
   # Special cases where dependencies should not be automatically added:
 
@@ -146,8 +168,8 @@ def main(pkg)
     pkgdeps.delete_if { |d| /#{exclusion_regex}/.match(d) }
   end
 
-  missingpkgdeps.delete_if { |d| File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("# depends_on '#{d}' # R (optional)") }
-  pkgdeps.delete_if { |d| File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("# depends_on '#{d}' # R (optional)") }
+  missingpkgdeps.delete_if { |d| File.read(pkg_file).include?("# depends_on '#{d}' # R (optional)") }
+  pkgdeps.delete_if { |d| File.read(pkg_file).include?("# depends_on '#{d}' # R (optional)") }
 
   puts "\nPackage #{pkg} has runtime library dependencies on these packages:".lightblue
   pkgdeps.each do |i|
@@ -157,7 +179,7 @@ def main(pkg)
   # Get existing package deps entries so we can add to and sort as
   # necessary.
   pkgdepsblock = []
-  pkgdepsblock += File.foreach("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").grep(/  depends_on '|  # depends_on '/)
+  pkgdepsblock += File.foreach(pkg_file).grep(/  depends_on '|  # depends_on '/)
 
   unless missingpkgdeps.empty?
     puts "\nPackage file #{pkg}.rb is missing these runtime library dependencies:".orange
@@ -170,44 +192,45 @@ def main(pkg)
 
   puts "\n Adding to or replacing deps block in package..."
   # First remove all dependencies.
-  system "sed -i '/  depends_on /d' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
-  system "sed -i '/^  # depends_on /d' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
+  system "sed -i '/  depends_on /d' #{pkg_file}"
+  system "sed -i '/^  # depends_on /d' #{pkg_file}"
   # Now add back our sorted dependencies.
-  gawk_cmd = "gawk -i inplace -v dep=\"#{pkgdepsblock.join('QQQQQ')}\" 'FNR==NR{ if (/})/) p=NR; next} 1; FNR==p{ print \"\\n\" dep }' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
+  gawk_cmd = "gawk -i inplace -v dep=\"#{pkgdepsblock.join('QQQQQ')}\" 'FNR==NR{ if (/})/) p=NR; next} 1; FNR==p{ print \"\\n\" dep }' #{pkg_file} #{pkg_file}"
   system(gawk_cmd)
   # The first added line has two dependencies without a newline
   # separating them.
-  system "sed -i 's/RQQQQQ/R\\n/' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
-  system "sed -i 's/QQQQQ//g' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
+  system "sed -i 's/RQQQQQ/R\\n/' #{pkg_file}"
+  system "sed -i 's/QQQQQ//g' #{pkg_file}"
 
   # Check for and delete old runtime dependencies.
   # Its unsafe to do this with other dependencies, because the packager might know something we don't.
   lines_to_delete = {}
-  File.readlines("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").each_with_index do |line, line_number|
+  File.readlines(pkg_file).each_with_index do |line, line_number|
     # Find all the explicitly marked runtime dependencies.
     dep = line.match(/  depends_on '(.*)' # R/)
     # Basically just a nil check, but this way we avoid matching twice.
     next unless dep
     # Skip unless the runtime dependency in the package does not match the runtime dependencies we've found.
     next unless pkgdeps.none?(dep[1])
-    # Skip if we're dealing with a glibc, glibc_lib or gcc_lib dependency-- these are architecture dependent sometimes?
-    next if %w[glibc glibc_lib gcc_lib].include?(dep[1])
+    # Skip if we're dealing with privileged deps.
+    next if privileged_deps.include?(dep[1])
     # Record the line content as the key and the line number (incremented by one because the index starts at 0) as the value.
     lines_to_delete[line] = line_number + 1
   end
-  # Clean up any blank lines with rubocop.
-  system "rubocop --only Layout/EmptyLines -A #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
-  (FileUtils.cp "#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb" if lines_to_delete.empty?) unless CREW_LOCAL_REPO_ROOT.to_s.empty?
+  # Clean with rubocop.
+  system "rubocop -c #{@rubocop_config} -A #{pkg_file}"
+  (FileUtils.cp pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb" if lines_to_delete.empty?) unless CREW_LOCAL_REPO_ROOT.to_s.empty?
   # Leave if there aren't any old runtime dependencies.
   return if lines_to_delete.empty?
   puts "\nPackage file #{pkg}.rb has these outdated runtime library dependencies:".lightpurple
   puts lines_to_delete.keys
-  system("gawk -i inplace 'NR != #{lines_to_delete.values.join(' && NR != ')}' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb")
-  # Clean up any blank lines with rubocop.
-  system "rubocop --only Layout/EmptyLines -A #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
-  FileUtils.cp "#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb" unless CREW_LOCAL_REPO_ROOT.to_s.empty?
+  system("gawk -i inplace 'NR != #{lines_to_delete.values.join(' && NR != ')}' #{pkg_file}")
+  # Clean with rubocop.
+  system "rubocop -c #{@rubocop_config} -A #{pkg_file}"
+  FileUtils.cp pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb" unless CREW_LOCAL_REPO_ROOT.to_s.empty?
 end
 
 ARGV.each do |package|
+  @pkg = Package.load_package("packages/#{package}")
   main(package.chomp('rb'))
 end
