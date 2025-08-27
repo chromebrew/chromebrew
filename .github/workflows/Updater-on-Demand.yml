@@ -43,10 +43,11 @@ jobs:
           cmake ..
           make -j "$(nproc)"
           sudo make install
-          sudo gem install ruby-libversion
+          sudo gem install --no-update-sources -N ruby-libversion --conservative
       - name: Check for updates.
         id: update-checks
         run: |
+          set -x
           git pull
           git stash drop || true
           echo "pwd is $(pwd)"
@@ -54,7 +55,6 @@ jobs:
           for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
           do
             git stash pop || true
-            git add $i
             pkg=${i%.rb}
             pkg=${pkg#packages/}
             pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j ${pkg} | jq -r '.[]|.version')"
@@ -64,15 +64,25 @@ jobs:
               branch_tag="${pkg_version}"
             fi
             export updater_branch="updater-${pkg}-${branch_tag}"
-            if git checkout "${updater_branch}"; then
+            echo "Updater branch: ${updater_branch}"
+            git branch -a
+            if git branch -a | grep -q "${updater_branch}"; then
               echo "Updating & rebasing existing ${updater_branch} branch."
-              git pull --rebase origin master; git push ; git pull
+              git stash || true
+              git config advice.detachedHead false
+              git checkout remotes/origin/"${updater_branch}"
+              git pull origin "${updater_branch}"
+              git pull --rebase origin master; git push origin "HEAD:${updater_branch}" -f ; git pull origin "${updater_branch}"
+              git stash pop || true
             else 
               git checkout -b "${updater_branch}"
               echo "${updater_branch} branch created."
+              git add $i
             fi
-            git commit -m "Add unbuilt ${pkg} to ${updater_branch}"
-            git push
+            # If there are no changes, the next step will fail, but that
+            # is ok.
+            git commit -m "Add unbuilt ${pkg} to ${updater_branch}" || true
+            git push || true
             gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${updater_branch}"
             git stash || true
             git checkout master
