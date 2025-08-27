@@ -73,7 +73,7 @@ jobs:
               git pull origin "${updater_branch}"
               git pull --rebase origin master; git push origin "HEAD:${updater_branch}" -f ; git pull origin "${updater_branch}"
               git stash pop || true
-            else 
+            else
               git checkout -b "${updater_branch}"
               echo "${updater_branch} branch created."
               git add $i
