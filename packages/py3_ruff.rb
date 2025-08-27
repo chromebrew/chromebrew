@@ -19,7 +19,6 @@ class Py3_ruff < Pip
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'py3_maturin' => :build
-  depends_on 'python3'
   depends_on 'python3' # R
   depends_on 'rust' => :build
 
