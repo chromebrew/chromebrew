@@ -119,7 +119,7 @@ def main(pkg)
   pkgdeps = pkgdeps.map { |i| i.gsub('gcc_build', 'gcc_lib') }.uniq
 
   # Massage the llvm entries in the dependency list.
-  pkgdeps = pkgdeps.map { |i| i.gsub('llvm_build', 'llvm_lib') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_build/, 'llvm_lib') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_lib/, 'llvm_lib') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_dev/, 'llvm_dev') }.uniq
 
