@@ -13,7 +13,7 @@ class Sommelier < Package
   binary_sha256({
     aarch64: 'f5419b5787ec89c9d252597d66ac101942c87cd2c5fb423d17566cf87c7ea4bf',
      armv7l: 'f5419b5787ec89c9d252597d66ac101942c87cd2c5fb423d17566cf87c7ea4bf',
-     x86_64: 'd31a50da5ec4463c8fdeca8189fa7797804e2eb5b431c7b78802c2179529f9a3'
+     x86_64: '143424c0763ac30e28e2085ff4c8eaaa869962a225eb3030ff5bd8d97cf09f5f'
   })
 
   depends_on 'gcc_lib' # R
