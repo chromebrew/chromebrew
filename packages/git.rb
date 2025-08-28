@@ -23,6 +23,7 @@ class Git < Meson
   depends_on 'glibc' # R
   depends_on 'openssl' # R
   depends_on 'pcre2' # R
+  depends_on 'py3_asciidoc' => :build
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'xmlto' => :build
   depends_on 'zlib_ng' # R
