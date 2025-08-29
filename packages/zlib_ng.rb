@@ -6,22 +6,23 @@ require 'buildsystems/cmake'
 class Zlib_ng < CMake
   description 'zlib replacement with optimizations for next generation systems'
   homepage 'https://github.com/zlib-ng/zlib-ng'
-  version '2.2.5'
+  version '2.2.5-1'
   license 'Zlib'
   compatibility 'all'
   source_url 'https://github.com/zlib-ng/zlib-ng.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e6c7492e99d6be7e3833df41c126f8db5c8d76d4106cc757b3b19d5893c267a2',
-     armv7l: 'e6c7492e99d6be7e3833df41c126f8db5c8d76d4106cc757b3b19d5893c267a2',
-       i686: 'c65538e6450c3cdeb322fe7e450fde7668a501b2a4d3b02b1823371ff3f7d548',
-     x86_64: '014b332e175cca9c4aae66b4c993a2a5d5c5f7031f1b0c8df5be98ea1d2a1abb'
+    aarch64: 'ba57b6eaa67ca7dcc7276090c9e653e958f8695ec4447edf5943bce33791911e',
+     armv7l: 'ba57b6eaa67ca7dcc7276090c9e653e958f8695ec4447edf5943bce33791911e',
+       i686: '7412f13677c8d92a43cb4c4cac85ed7f4705bfa907be0c44659edf3556c91fa5',
+     x86_64: 'a97e2f2358162cd057b28c1d97fd5ff7f1548d3473b91857d57595cf5dec2a0a'
   })
 
   depends_on 'glibc'
 
   cmake_options '-DWITH_GTEST=OFF \
+    -DZLIB_ENABLE_TESTS=OFF \
     -DBUILD_SHARED_LIBS=ON'
 end
