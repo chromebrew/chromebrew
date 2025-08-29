@@ -151,13 +151,13 @@ if [[ "${ARCH}" = "x86_64" ]] && [[ -f "/lib/ld-2.23.so" ]]; then
   PREFIX_CMD="linux32 env LD_LIBRARY_PATH=${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}:/usr/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
 fi
 
-PATCHELF_INTERPRETER=/usr/local/bin/ld.so
+PATCHELF_INTERPRETER="${CREW_PREFIX}/bin/ld.so"
 case "${ARCH}" in
 x86_64)
-  PATCHELF_INTERPRETER='/usr/local/opt/glibc-libs/ld-linux-x86-64.so.2'
+  PATCHELF_INTERPRETER="${CREW_PREFIX}/opt/glibc-libs/ld-linux-x86-64.so.2"
   ;;
 aarch64|armv7l|armv8l)
-  PATCHELF_INTERPRETER='/usr/local/opt/glibc-libs/ld-linux-armhf.so.3'
+  PATCHELF_INTERPRETER="${CREW_PREFIX}/opt/glibc-libs/ld-linux-armhf.so.3"
   ;;
 esac
 
