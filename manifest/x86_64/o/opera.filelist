@@ -1,4 +1,4 @@
-# Total size: 351855809
+# Total size: 354649895
 /usr/local/bin/opera
 /usr/local/share/applications/opera.desktop
 /usr/local/share/doc/opera-stable/changelog.gz
@@ -137,7 +137,6 @@
 /usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/427fc33b09a5b15cc69c.png
 /usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/42ff001a8c225fc1a354.png
 /usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/439f3447a96cad7c116c.jpg
-/usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/45763c696a4442585bb4.svg
 /usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/5481ba37652e144d94d4.png
 /usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/587706f4d9807ac4bdf4.png
 /usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/5c970459e6839141139d.png
@@ -162,6 +161,7 @@
 /usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/d92eb252936a5b7d251c.jpg
 /usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/dc8e6d22f2d58eab7e86.jpg
 /usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/e393a69f0d2e035d1c42.svg
+/usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/eed0b0cc552c8794b337.svg
 /usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/fcffb6ccd23559274e62.svg
 /usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/icons/logo.png
 /usr/local/share/x86_64-linux-gnu/opera/resources/opera_intro_extension/icons/logo.svg
