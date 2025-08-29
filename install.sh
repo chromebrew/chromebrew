@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025061101
+CREW_INSTALLER_VERSION=2025082901
 # Exit on fail.
 set -eE
 
@@ -151,6 +151,16 @@ if [[ "${ARCH}" = "x86_64" ]] && [[ -f "/lib/ld-2.23.so" ]]; then
   PREFIX_CMD="linux32 env LD_LIBRARY_PATH=${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}:/usr/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
 fi
 
+PATCHELF_INTERPRETER=/usr/local/bin/ld.so
+case "${ARCH}" in
+x86_64)
+  PATCHELF_INTERPRETER='/usr/local/opt/glibc-libs/ld-linux-x86-64.so.2'
+  ;;
+aarch64|armv7l|armv8l)
+  PATCHELF_INTERPRETER='/usr/local/opt/glibc-libs/ld-linux-armhf.so.3'
+  ;;
+esac
+
 : "${CREW_PY_VER:=3.13}"
 CREW_NPROC="$(nproc)"
 export CREW_NPROC
@@ -263,7 +273,7 @@ else
   # Get linux32 as early as possible.
   [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux' 
   BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ca_certificates libyaml openssl gmp findutils psmisc'
-  [[ "${ARCH}" == 'i686' ]] || BOOTSTRAP_PACKAGES+=' uutils_coreutils'	
+  [[ "${ARCH}" == 'i686' ]] || BOOTSTRAP_PACKAGES+=' uutils_coreutils'
 fi
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
@@ -422,7 +432,7 @@ function extract_install () {
       if [[ -d /usr/local/opt/glibc-libs ]]; then
         if command -v patchelf &> /dev/null; then
           echo_intra "Running patchelf on ${1}..."
-          grep '/usr/local/bin' < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${CREW_PREFIX}/bin/ld.so" 2> /dev/null || true
+          grep '/usr/local/bin' < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${PATCHELF_INTERPRETER}" 2> /dev/null || true
         fi
       fi
     fi
