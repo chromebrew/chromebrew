@@ -875,6 +875,11 @@ url: https://sourceforge.net/projects/wodim/files/cdrkit/
 activity: none
 ---
 kind: url
+name: cert_cli
+url: https://github.com/mihneamanolache/cert-cli/releases
+activity: low
+---
+kind: url
 name: cf
 url: https://github.com/cloudfoundry/cli/releases
 activity: medium
