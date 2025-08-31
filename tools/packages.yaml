@@ -1625,6 +1625,11 @@ url: https://launchpad.net/duplicity/+download
 activity: medium
 ---
 kind: url
+name: dust
+url: https://github.com/bootandy/dust/releases
+activity: medium
+---
+kind: url
 name: dvtm
 url: https://github.com/martanne/dvtm/releases
 activity: none
