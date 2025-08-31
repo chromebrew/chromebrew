@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 2.3 (for Chromebrew)
+# version.rb version 2.4 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -146,7 +146,7 @@ def get_anitya_id(name, homepage)
         # We assume there is only one candidate with the same name and homepage as their crew counterpart.
         # Even if there are multiple candidates with the same name and homepage, its probably fine to treat them as identical.
         # If it isn't fine to treat them as identical, something has gone horribly wrong.
-        return json['items'][candidate]['id'] if homepage == json['items'][candidate]['homepage']
+        return json['items'][candidate]['id'] if homepage.chomp("/") == json['items'][candidate]['homepage']
       end
 
       # If we're still here, that means none of the candidates had the same homepage as their crew counterpart.
