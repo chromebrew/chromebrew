@@ -1,9 +1,9 @@
-# Total size: 24291
-/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.3/Changes.md
-/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.3/LICENSE
-/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.3/README.md
-/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.3/connection_pool.gemspec
-/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.3/lib/connection_pool.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.3/lib/connection_pool/timed_stack.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.3/lib/connection_pool/version.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.3/lib/connection_pool/wrapper.rb
+# Total size: 26588
+/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.4/Changes.md
+/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.4/LICENSE
+/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.4/README.md
+/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.4/connection_pool.gemspec
+/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.4/lib/connection_pool.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.4/lib/connection_pool/timed_stack.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.4/lib/connection_pool/version.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/connection_pool-2.5.4/lib/connection_pool/wrapper.rb
