@@ -69,7 +69,7 @@ class Gimp < Meson
   depends_on 'libxt' # R
   depends_on 'luajit' # L
   depends_on 'luajit_lgi' # L
-  depends_on 'mypaint_brushes_1' => :build
+  depends_on 'mypaint_brushes' => :build
   depends_on 'openexr' # R
   depends_on 'openjpeg' # R
   depends_on 'pango' # R
