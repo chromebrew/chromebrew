@@ -19,6 +19,7 @@ class Gimp < Meson
   depends_on 'aalib' # R
   depends_on 'adwaita_icon_theme' # L
   depends_on 'alsa_lib' # R
+  depends_on 'appstream' => :build
   depends_on 'appstream_glib' # R
   depends_on 'at_spi2_core' => :build
   depends_on 'babl' # R
