@@ -7350,6 +7350,11 @@ url: https://gnupg.org/ftp/gcrypt/pinentry
 activity: low
 ---
 kind: url
+name: pip_search
+url: https://github.com/chromebrew
+activity: none
+---
+kind: url
 name: pipes_sh
 url: https://github.com/pipeseroni/pipes.sh/releases
 activity: none
