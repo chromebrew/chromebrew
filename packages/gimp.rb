@@ -11,9 +11,9 @@ class Gimp < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '78a63bae70311bfc50ebe8e10f3abf15baabf9cef8f6f29d3bf669a36ba882a9',
-     armv7l: '78a63bae70311bfc50ebe8e10f3abf15baabf9cef8f6f29d3bf669a36ba882a9',
-     x86_64: '2ade39c6326e6805f9122e9c32f53c9f960dcd2c85a709dec167adf58c895807'
+    aarch64: 'f39f422428c9d94f5c8ce52f1eb88477cb5a44904a7b71eeb5fa48272d2961c2',
+     armv7l: 'f39f422428c9d94f5c8ce52f1eb88477cb5a44904a7b71eeb5fa48272d2961c2',
+     x86_64: '758437be57ac5ff39c8540d3a261fc7ebdd14e1a8c1c1c8db88959201dddbe5d'
   })
 
   depends_on 'aalib' # R
