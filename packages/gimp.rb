@@ -19,8 +19,8 @@ class Gimp < Meson
   depends_on 'aalib' # R
   depends_on 'adwaita_icon_theme' # L
   depends_on 'alsa_lib' # R
+  depends_on 'appstream' # R
   depends_on 'appstream' => :build
-  depends_on 'appstream_glib' # R
   depends_on 'at_spi2_core' => :build
   depends_on 'babl' # R
   depends_on 'bzip2' # R
@@ -34,14 +34,13 @@ class Gimp < Meson
   depends_on 'gexiv2' # R
   depends_on 'ghostscript' # R
   depends_on 'gjs' # L
-  depends_on 'glibc' # R
-  depends_on 'glib_networking'
   depends_on 'glib' # R
+  depends_on 'glib_networking'
+  depends_on 'glibc' # R
   depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'json_c' # R
   depends_on 'json_glib' # R
   depends_on 'lcms' # R
   depends_on 'libarchive' # R
@@ -67,15 +66,14 @@ class Gimp < Meson
   depends_on 'libxfixes' # R
   depends_on 'libxmu' # R
   depends_on 'libxpm' # R
-  depends_on 'libxt' # R
   depends_on 'luajit' # L
   depends_on 'luajit_lgi' # L
   depends_on 'mypaint_brushes' => :build
   depends_on 'openexr' # R
   depends_on 'openjpeg' # R
   depends_on 'pango' # R
-  depends_on 'poppler_data'
   depends_on 'poppler' # R
+  depends_on 'poppler_data'
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_pycairo' # L
   depends_on 'py3_pygobject' # L
