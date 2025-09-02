@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gimp < Meson
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
-  version '3.1.2'
+  version '3.1.4'
   license 'GPL-3 and LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gimp.git'
@@ -11,15 +11,15 @@ class Gimp < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '78a63bae70311bfc50ebe8e10f3abf15baabf9cef8f6f29d3bf669a36ba882a9',
-     armv7l: '78a63bae70311bfc50ebe8e10f3abf15baabf9cef8f6f29d3bf669a36ba882a9',
-     x86_64: '2ade39c6326e6805f9122e9c32f53c9f960dcd2c85a709dec167adf58c895807'
+    aarch64: 'f39f422428c9d94f5c8ce52f1eb88477cb5a44904a7b71eeb5fa48272d2961c2',
+     armv7l: 'f39f422428c9d94f5c8ce52f1eb88477cb5a44904a7b71eeb5fa48272d2961c2',
+     x86_64: '758437be57ac5ff39c8540d3a261fc7ebdd14e1a8c1c1c8db88959201dddbe5d'
   })
 
   depends_on 'aalib' # R
   depends_on 'adwaita_icon_theme' # L
   depends_on 'alsa_lib' # R
-  depends_on 'appstream_glib' # R
+  depends_on 'appstream' # R
   depends_on 'at_spi2_core' => :build
   depends_on 'babl' # R
   depends_on 'bzip2' # R
@@ -33,14 +33,13 @@ class Gimp < Meson
   depends_on 'gexiv2' # R
   depends_on 'ghostscript' # R
   depends_on 'gjs' # L
-  depends_on 'glibc' # R
-  depends_on 'glib_networking'
   depends_on 'glib' # R
+  depends_on 'glib_networking'
+  depends_on 'glibc' # R
   depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'json_c' # R
   depends_on 'json_glib' # R
   depends_on 'lcms' # R
   depends_on 'libarchive' # R
@@ -66,15 +65,14 @@ class Gimp < Meson
   depends_on 'libxfixes' # R
   depends_on 'libxmu' # R
   depends_on 'libxpm' # R
-  depends_on 'libxt' # R
   depends_on 'luajit' # L
   depends_on 'luajit_lgi' # L
-  depends_on 'mypaint_brushes_1' => :build
+  depends_on 'mypaint_brushes' => :build
   depends_on 'openexr' # R
   depends_on 'openjpeg' # R
   depends_on 'pango' # R
-  depends_on 'poppler_data'
   depends_on 'poppler' # R
+  depends_on 'poppler_data'
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_pycairo' # L
   depends_on 'py3_pygobject' # L
