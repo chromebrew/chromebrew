@@ -21,6 +21,7 @@ class Py3_cryptography < Pip
   depends_on 'py3_cffi'
   depends_on 'py3_pycparser' => :build
   depends_on 'py3_typing_extensions'
+  depends_on 'python3' # R
   depends_on 'rust' => :build
 
   no_source_build
