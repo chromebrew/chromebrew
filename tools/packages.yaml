@@ -875,6 +875,11 @@ url: https://sourceforge.net/projects/wodim/files/cdrkit/
 activity: none
 ---
 kind: url
+name: cert_cli
+url: https://github.com/mihneamanolache/cert-cli/releases
+activity: low
+---
+kind: url
 name: cf
 url: https://github.com/cloudfoundry/cli/releases
 activity: medium
@@ -1617,6 +1622,11 @@ activity: medium
 kind: url
 name: duplicity
 url: https://launchpad.net/duplicity/+download
+activity: medium
+---
+kind: url
+name: dust
+url: https://github.com/bootandy/dust/releases
 activity: medium
 ---
 kind: url
@@ -7338,6 +7348,11 @@ kind: url
 name: pinentry
 url: https://gnupg.org/ftp/gcrypt/pinentry
 activity: low
+---
+kind: url
+name: pip_search
+url: https://github.com/chromebrew
+activity: none
 ---
 kind: url
 name: pipes_sh

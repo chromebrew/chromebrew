@@ -15,23 +15,10 @@ require 'mkmf'
 require 'open3'
 require 'tmpdir'
 require 'uri'
-begin
-  require_relative '../commands/check'
-rescue LoadError
-  # Older crew installs won't have the commands dir in the sparse checkout,
-  # so disable sparse checkout if those files are missing.
-  system 'git sparse-checkout disable'
-  require_relative '../commands/check'
-end
-require_relative '../commands/const'
-require_relative '../commands/files'
-require_relative '../commands/help'
-require_relative '../commands/list'
-require_relative '../commands/prop'
-require_relative '../commands/remove'
-require_relative '../commands/search'
-require_relative '../commands/sysinfo'
-require_relative '../commands/whatprovides'
+
+# Load commands
+Dir.glob("#{__dir__}/../commands/*.rb") { |cmd| require_relative cmd }
+
 require_relative '../lib/const'
 require_relative '../lib/crew_lockfile'
 require_gem 'pry-byebug' if CREW_DEBUG
@@ -1878,6 +1865,8 @@ def deps_command(args)
     end
   end
 end
+
+def diskstat_command(args) = Command.diskstat(args['--all'], args['<count>'] ? args['<count>'].to_i : 25)
 
 def download_command(args)
   args = { '<name>' => args.split } if args.is_a? String

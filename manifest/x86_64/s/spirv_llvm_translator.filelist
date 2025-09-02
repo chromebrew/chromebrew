@@ -1,8 +1,8 @@
-# Total size: 4426090
+# Total size: 4551043
 /usr/local/bin/llvm-spirv
 /usr/local/include/LLVMSPIRVLib/LLVMSPIRVExtensions.inc
 /usr/local/include/LLVMSPIRVLib/LLVMSPIRVLib.h
 /usr/local/include/LLVMSPIRVLib/LLVMSPIRVOpts.h
 /usr/local/lib64/libLLVMSPIRVLib.so
-/usr/local/lib64/libLLVMSPIRVLib.so.20.1
+/usr/local/lib64/libLLVMSPIRVLib.so.21.1
 /usr/local/lib64/pkgconfig/LLVMSPIRVLib.pc
