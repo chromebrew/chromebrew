@@ -3,33 +3,25 @@ require 'package'
 class Go_tools < Package
   description 'Developer tools for the Go programming language'
   homepage 'https://github.com/golang/tools'
-  version '2025.1.1'
+  version '0.36.0'
   license 'BSD'
   compatibility 'all'
-  source_url 'SKIP'
+  source_url 'https://github.com/golang/tools.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '5c938388e815f2d03343301f391640a1cbc11fac3b31e20fc74b77c0963723df',
      armv7l: '5c938388e815f2d03343301f391640a1cbc11fac3b31e20fc74b77c0963723df',
        i686: '02e41321fa7030598a80a396887289027889ad08784bf04c68f38196f33f02ec',
-     x86_64: '61c25f3eae11e32d625f917f8d853e134a24581a555b5edd47e76fcef96f565d'
+     x86_64: '9436c12f13b3b60f1b3897434b923d944a4709b4855256060379a206656407b8'
   })
 
+  depends_on 'glibc' # R
   depends_on 'go' => :build
 
   def self.install
-    @git_dir = 'go_tools_git'
-    @git_hash = "gopls/v#{version}"
-    @git_url = 'https://github.com/golang/tools/'
-    FileUtils.rm_rf(@git_dir)
-    FileUtils.mkdir_p(@git_dir)
-    Dir.chdir @git_dir do
-      system 'git init'
-      system "git remote add origin #{@git_url}"
-      system "git fetch --depth 1 origin #{@git_hash}"
-      system 'git checkout FETCH_HEAD'
-      system "GOBIN=#{CREW_DEST_PREFIX}/bin go install ./cmd..."
-    end
+    system "GOBIN=#{CREW_DEST_PREFIX}/bin go install ./cmd..."
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/bundle", "#{CREW_DEST_PREFIX}/bin/go_bundle"
   end
 end

@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.65.7' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.65.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -189,6 +189,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: '' },
     { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to Github' },
     { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
+    { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
     { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: '' },
     { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
