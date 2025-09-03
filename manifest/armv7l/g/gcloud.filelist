@@ -1,4 +1,4 @@
-# Total size: 354117102
+# Total size: 354433000
 /usr/local/bin/bq
 /usr/local/bin/dev_appserver.py
 /usr/local/bin/docker-credential-gcloud
@@ -904,12 +904,14 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/model_armor/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/model_armor/api.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/monitoring/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/monitoring/alerts.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/monitoring/channels.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/monitoring/metric.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/monitoring/metrics_scopes.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/monitoring/policies.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/monitoring/snoozes.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/monitoring/uptime.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/monitoring/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/mps/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/mps/mps_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/netapp/__init__.py
@@ -2026,6 +2028,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/reservations/resource_args.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/reservations/sub_blocks/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/reservations/sub_blocks/flags.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/reservations/sub_blocks/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/reservations/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/resource_manager_tags_utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/resource_policies/__init__.py
@@ -2505,6 +2508,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/edge_cloud/container/print_warning.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/edge_cloud/container/resource_args.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/edge_cloud/container/resources.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/edge_cloud/container/robin.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/edge_cloud/container/vpn.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/edge_cloud/networking/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/edge_cloud/networking/resource_args.py
@@ -2946,6 +2950,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_connectivity/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_connectivity/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_connectivity/util.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_connectivity/v1_resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_connectivity/v1beta_resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_management/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/network_management/resources.yaml
@@ -3138,6 +3143,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/name_generator.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/op_pollers.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/platforms.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/presets.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/pretty_print.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/container_and_volume_printer_util.py
@@ -7393,6 +7399,7 @@
 /usr/local/share/gcloud/lib/surface/app/logs/read.py
 /usr/local/share/gcloud/lib/surface/app/logs/tail.py
 /usr/local/share/gcloud/lib/surface/app/migrate/__init__.py
+/usr/local/share/gcloud/lib/surface/app/migrate/appengine_to_cloudrun.py
 /usr/local/share/gcloud/lib/surface/app/migrate/gen1_to_gen2.py
 /usr/local/share/gcloud/lib/surface/app/migrate_config/__init__.py
 /usr/local/share/gcloud/lib/surface/app/migrate_config/cron_xml_to_yaml.py
@@ -8446,6 +8453,7 @@
 /usr/local/share/gcloud/lib/surface/compute/composite_health_checks/create.yaml
 /usr/local/share/gcloud/lib/surface/compute/composite_health_checks/delete.yaml
 /usr/local/share/gcloud/lib/surface/compute/composite_health_checks/describe.yaml
+/usr/local/share/gcloud/lib/surface/compute/composite_health_checks/list.py
 /usr/local/share/gcloud/lib/surface/compute/composite_health_checks/update.yaml
 /usr/local/share/gcloud/lib/surface/compute/config_ssh.py
 /usr/local/share/gcloud/lib/surface/compute/connect_to_serial_port.py
@@ -8556,6 +8564,7 @@
 /usr/local/share/gcloud/lib/surface/compute/health_aggregation_policies/create.yaml
 /usr/local/share/gcloud/lib/surface/compute/health_aggregation_policies/delete.yaml
 /usr/local/share/gcloud/lib/surface/compute/health_aggregation_policies/describe.yaml
+/usr/local/share/gcloud/lib/surface/compute/health_aggregation_policies/list.py
 /usr/local/share/gcloud/lib/surface/compute/health_aggregation_policies/update.yaml
 /usr/local/share/gcloud/lib/surface/compute/health_checks/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/health_checks/create/__init__.py
@@ -8583,6 +8592,7 @@
 /usr/local/share/gcloud/lib/surface/compute/health_sources/create.yaml
 /usr/local/share/gcloud/lib/surface/compute/health_sources/delete.yaml
 /usr/local/share/gcloud/lib/surface/compute/health_sources/describe.yaml
+/usr/local/share/gcloud/lib/surface/compute/health_sources/list.py
 /usr/local/share/gcloud/lib/surface/compute/health_sources/update.yaml
 /usr/local/share/gcloud/lib/surface/compute/http_health_checks/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/http_health_checks/create.py
@@ -9135,6 +9145,7 @@
 /usr/local/share/gcloud/lib/surface/compute/reservations/sub_blocks/describe.py
 /usr/local/share/gcloud/lib/surface/compute/reservations/sub_blocks/list.py
 /usr/local/share/gcloud/lib/surface/compute/reservations/sub_blocks/perform_maintenance.py
+/usr/local/share/gcloud/lib/surface/compute/reservations/sub_blocks/report_subblock_as_faulty.py
 /usr/local/share/gcloud/lib/surface/compute/reservations/update.py
 /usr/local/share/gcloud/lib/surface/compute/reset_windows_password.py
 /usr/local/share/gcloud/lib/surface/compute/resource_policies/__init__.py
@@ -10925,6 +10936,7 @@
 /usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/revisions/_partials/_list_alpha.yaml
 /usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/revisions/describe.yaml
 /usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/revisions/list.yaml
+/usr/local/share/gcloud/lib/surface/design_center/spaces/test_iam_permissions.py
 /usr/local/share/gcloud/lib/surface/design_center/spaces/update.yaml
 /usr/local/share/gcloud/lib/surface/developer_connect/__init__.py
 /usr/local/share/gcloud/lib/surface/developer_connect/_init_extensions.py
@@ -13185,20 +13197,30 @@
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/__init__.py
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/_partials/_create_beta.yaml
+/usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/_partials/_create_ga.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/_partials/_delete_beta.yaml
+/usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/_partials/_delete_ga.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/_partials/_describe_beta.yaml
+/usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/_partials/_describe_ga.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/_partials/_list_beta.yaml
+/usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/_partials/_list_ga.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/_partials/_update_beta.yaml
+/usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/_partials/_update_ga.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/create.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/delete.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/describe.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/__init__.py
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/_partials/_create_beta.yaml
+/usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/_partials/_create_ga.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/_partials/_delete_beta.yaml
+/usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/_partials/_delete_ga.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/_partials/_describe_beta.yaml
+/usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/_partials/_describe_ga.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/_partials/_list_beta.yaml
+/usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/_partials/_list_ga.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/_partials/_update_beta.yaml
+/usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/_partials/_update_ga.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/create.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/delete.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_configs/destinations/describe.yaml
@@ -13209,7 +13231,9 @@
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_supported_services/__init__.py
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_supported_services/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_supported_services/_partials/_describe_beta.yaml
+/usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_supported_services/_partials/_describe_ga.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_supported_services/_partials/_list_beta.yaml
+/usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_supported_services/_partials/_list_ga.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_supported_services/describe.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/multicloud_data_transfer_supported_services/list.yaml
 /usr/local/share/gcloud/lib/surface/network_connectivity/operations/__init__.py
@@ -14503,6 +14527,9 @@
 /usr/local/share/gcloud/lib/surface/run/multi_region_services/list.py
 /usr/local/share/gcloud/lib/surface/run/multi_region_services/replace.py
 /usr/local/share/gcloud/lib/surface/run/multi_region_services/update.py
+/usr/local/share/gcloud/lib/surface/run/presets/__init__.py
+/usr/local/share/gcloud/lib/surface/run/presets/describe.py
+/usr/local/share/gcloud/lib/surface/run/presets/list.py
 /usr/local/share/gcloud/lib/surface/run/regions/__init__.py
 /usr/local/share/gcloud/lib/surface/run/regions/list.py
 /usr/local/share/gcloud/lib/surface/run/revisions/__init__.py
