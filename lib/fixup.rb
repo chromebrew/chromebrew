@@ -32,6 +32,11 @@ ARCH ||= %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH
 LIBC_VERSION ||= Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last
 CREW_PACKAGES_PATH ||= File.join(CREW_LIB_PATH, 'packages')
 
+# Commands run immediately after updating from git.
+
+# Set the mtime on each file to the timestamp of the most recent commit that modified the file.
+system('git-restore-mtime -sq 2>/dev/null', chdir: CREW_LIB_PATH, exception: true) if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
+
 # Removing files/directories.
 
 # Remove deprecated directory.
