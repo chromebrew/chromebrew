@@ -1,12 +1,12 @@
-# Total size: 358922177
-/usr/local/lib/python3.13/site-packages/oci-2.159.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/oci-2.159.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/oci-2.159.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/oci-2.159.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/oci-2.159.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/oci-2.159.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.13/site-packages/oci-2.159.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/oci-2.159.0.dist-info/top_level.txt
+# Total size: 353679197
+/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/oci/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/alloy.cpython-313.pyc
@@ -3989,6 +3989,7 @@
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/activity_problem_aggregation.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/activity_problem_aggregation_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/add_compartment_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/additional_config_property_definition.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/adhoc_query.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/adhoc_query_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/adhoc_query_details.cpython-313.pyc
@@ -4150,6 +4151,7 @@
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/risk_score_aggregation.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/risk_score_aggregation_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/rule_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/rule_type.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/saved_query.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/saved_query_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/__pycache__/saved_query_summary.cpython-313.pyc
@@ -4252,6 +4254,7 @@
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/activity_problem_aggregation.py
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/activity_problem_aggregation_collection.py
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/add_compartment_details.py
+/usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/additional_config_property_definition.py
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/adhoc_query.py
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/adhoc_query_collection.py
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/adhoc_query_details.py
@@ -4413,6 +4416,7 @@
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/risk_score_aggregation.py
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/risk_score_aggregation_collection.py
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/rule_summary.py
+/usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/rule_type.py
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/saved_query.py
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/saved_query_collection.py
 /usr/local/lib/python3.13/site-packages/oci/cloud_guard/models/saved_query_summary.py
@@ -10382,6 +10386,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/generate_recommended_network_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/gi_minor_version_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/gi_version_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/google_cloud_provider_encryption_key_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/granular_maintenance_history_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/identity_connector_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/info_for_network_gen_details.cpython-313.pyc
@@ -10884,6 +10889,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/generate_recommended_network_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/gi_minor_version_summary.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/gi_version_summary.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/google_cloud_provider_encryption_key_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/granular_maintenance_history_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/identity_connector_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/info_for_network_gen_details.py
@@ -13105,6 +13111,8 @@
 /usr/local/lib/python3.13/site-packages/oci/dblm/models/work_request_summary_collection.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/__pycache__/db_multicloud_gcp_provider_client.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/__pycache__/db_multicloud_gcp_provider_client_composite_operations.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/__pycache__/multi_cloud_resource_discovery_client.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/__pycache__/multi_cloud_resource_discovery_client_composite_operations.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/__pycache__/oracle_db_azure_blob_container_client.cpython-313.pyc
@@ -13121,6 +13129,8 @@
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/__pycache__/oracle_db_azure_vault_client_composite_operations.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/__pycache__/work_request_client.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/__pycache__/work_request_client_composite_operations.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/db_multicloud_gcp_provider_client.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/db_multicloud_gcp_provider_client_composite_operations.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/arc_agent_nodes.cpython-313.pyc
@@ -13130,12 +13140,17 @@
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/change_oracle_db_azure_connector_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/change_oracle_db_azure_vault_association_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/change_oracle_db_azure_vault_compartment_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/change_oracle_db_gcp_identity_connector_compartment_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/change_oracle_db_gcp_key_ring_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/create_multi_cloud_resource_discovery_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/create_oracle_db_azure_blob_container_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/create_oracle_db_azure_blob_mount_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/create_oracle_db_azure_connector_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/create_oracle_db_azure_vault_association_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/create_oracle_db_azure_vault_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/create_oracle_db_gcp_identity_connector_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/create_oracle_db_gcp_key_ring_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/gcp_nodes.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/multi_cloud_resource_discovery.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/multi_cloud_resource_discovery_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/multi_cloud_resource_discovery_summary_collection.cpython-313.pyc
@@ -13157,7 +13172,18 @@
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/oracle_db_azure_vault_association_summary_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/oracle_db_azure_vault_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/oracle_db_azure_vault_summary_collection.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/oracle_db_gcp_identity_connector.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/oracle_db_gcp_identity_connector_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/oracle_db_gcp_identity_connector_summary_collection.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/oracle_db_gcp_key.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/oracle_db_gcp_key_ring.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/oracle_db_gcp_key_ring_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/oracle_db_gcp_key_ring_summary_collection.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/oracle_db_gcp_key_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/oracle_db_gcp_key_summary_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/patch_oracle_db_azure_connector_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/refresh_oracle_db_azure_vault_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/refresh_oracle_db_gcp_key_ring_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/resources.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/update_multi_cloud_resource_discovery_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/update_oracle_db_azure_blob_container_details.cpython-313.pyc
@@ -13165,6 +13191,8 @@
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/update_oracle_db_azure_connector_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/update_oracle_db_azure_vault_association_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/update_oracle_db_azure_vault_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/update_oracle_db_gcp_identity_connector_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/update_oracle_db_gcp_key_ring_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/work_request.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/work_request_error.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/__pycache__/work_request_error_collection.cpython-313.pyc
@@ -13180,12 +13208,17 @@
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/change_oracle_db_azure_connector_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/change_oracle_db_azure_vault_association_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/change_oracle_db_azure_vault_compartment_details.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/change_oracle_db_gcp_identity_connector_compartment_details.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/change_oracle_db_gcp_key_ring_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/create_multi_cloud_resource_discovery_details.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/create_oracle_db_azure_blob_container_details.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/create_oracle_db_azure_blob_mount_details.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/create_oracle_db_azure_connector_details.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/create_oracle_db_azure_vault_association_details.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/create_oracle_db_azure_vault_details.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/create_oracle_db_gcp_identity_connector_details.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/create_oracle_db_gcp_key_ring_details.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/gcp_nodes.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/multi_cloud_resource_discovery.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/multi_cloud_resource_discovery_summary.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/multi_cloud_resource_discovery_summary_collection.py
@@ -13207,7 +13240,18 @@
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/oracle_db_azure_vault_association_summary_collection.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/oracle_db_azure_vault_summary.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/oracle_db_azure_vault_summary_collection.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/oracle_db_gcp_identity_connector.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/oracle_db_gcp_identity_connector_summary.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/oracle_db_gcp_identity_connector_summary_collection.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/oracle_db_gcp_key.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/oracle_db_gcp_key_ring.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/oracle_db_gcp_key_ring_summary.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/oracle_db_gcp_key_ring_summary_collection.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/oracle_db_gcp_key_summary.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/oracle_db_gcp_key_summary_collection.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/patch_oracle_db_azure_connector_details.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/refresh_oracle_db_azure_vault_details.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/refresh_oracle_db_gcp_key_ring_details.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/resources.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/update_multi_cloud_resource_discovery_details.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/update_oracle_db_azure_blob_container_details.py
@@ -13215,6 +13259,8 @@
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/update_oracle_db_azure_connector_details.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/update_oracle_db_azure_vault_association_details.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/update_oracle_db_azure_vault_details.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/update_oracle_db_gcp_identity_connector_details.py
+/usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/update_oracle_db_gcp_key_ring_details.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/work_request.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/work_request_error.py
 /usr/local/lib/python3.13/site-packages/oci/dbmulticloud/models/work_request_error_collection.py
@@ -17218,8 +17264,10 @@
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/generative_ai_inference_client_composite_operations.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/annotation.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/apply_guardrails_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/apply_guardrails_result.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/approximate_location.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/assistant_message.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/base_chat_request.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/base_chat_response.cpython-313.pyc
@@ -17305,10 +17353,14 @@
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/tool_choice_required.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/tool_definition.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/tool_message.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/url_citation.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/usage.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/user_message.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/__pycache__/web_search_options.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/annotation.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/apply_guardrails_details.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/apply_guardrails_result.py
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/approximate_location.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/assistant_message.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/base_chat_request.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/base_chat_response.py
@@ -17394,8 +17446,10 @@
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/tool_choice_required.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/tool_definition.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/tool_message.py
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/url_citation.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/usage.py
 /usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/user_message.py
+/usr/local/lib/python3.13/site-packages/oci/generative_ai_inference/models/web_search_options.py
 /usr/local/lib/python3.13/site-packages/oci/generic_artifacts_content/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/generic_artifacts_content/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/generic_artifacts_content/__pycache__/generic_artifacts_content_client.cpython-313.pyc
@@ -22765,6 +22819,7 @@
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/backup.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/backup_policy.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/backup_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/backup_validation_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/ca_certificate.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/change_backup_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/channel.cpython-313.pyc
@@ -22826,6 +22881,7 @@
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/pem_ca_certificate.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/pitr_policy.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/point_in_time_recovery_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/prepared_backup_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/read_endpoint_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/replica.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/replica_overrides.cpython-313.pyc
@@ -22850,6 +22906,7 @@
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/update_read_endpoint_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/update_replica_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/update_rest_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/validate_backup_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/version.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/version_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/__pycache__/work_request.cpython-313.pyc
@@ -22864,6 +22921,7 @@
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/backup.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/backup_policy.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/backup_summary.py
+/usr/local/lib/python3.13/site-packages/oci/mysql/models/backup_validation_details.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/ca_certificate.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/change_backup_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/channel.py
@@ -22925,6 +22983,7 @@
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/pem_ca_certificate.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/pitr_policy.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/point_in_time_recovery_details.py
+/usr/local/lib/python3.13/site-packages/oci/mysql/models/prepared_backup_details.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/read_endpoint_details.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/replica.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/replica_overrides.py
@@ -22949,6 +23008,7 @@
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/update_read_endpoint_details.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/update_replica_details.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/update_rest_details.py
+/usr/local/lib/python3.13/site-packages/oci/mysql/models/validate_backup_details.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/version.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/version_summary.py
 /usr/local/lib/python3.13/site-packages/oci/mysql/models/work_request.py
