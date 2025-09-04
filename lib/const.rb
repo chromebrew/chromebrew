@@ -394,6 +394,7 @@ CREW_DOCOPT ||= <<~DOCOPT
   Chromebrew - Package manager for Chrome OS https://chromebrew.github.io
 
   Usage:
+    crew autoremove [options]
     crew build [options] [-f|--force] [-k|--keep] [-v|--verbose] <name> ...
     crew check [-f|--force] <name> ...
     crew const [options] [-v|--verbose] [<name> ...]

@@ -7,7 +7,7 @@ require_relative '../lib/package_utils'
 
 class Command
   def self.remove(pkg, verbose: false, force: false, only_remove_files: false)
-    device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+    device_json = ConvenienceFunctions.load_symbolized_json
 
     # Make sure the package is actually installed before we attempt to remove it.
     unless PackageUtils.installed?(pkg.name)
@@ -29,14 +29,7 @@ class Command
 
     # Check whether the removal breaks dependency of other installed packages
     unless force
-      pkgs_that_need_it = []
-
-      device_json['installed_packages'].each do |installed_pkg_info|
-        pkg_file      = File.join(CREW_PACKAGES_PATH, "#{installed_pkg_info['name']}.rb")
-        installed_pkg = Package.load_package(pkg_file)
-
-        pkgs_that_need_it << installed_pkg.name if installed_pkg.dependencies.key?(pkg.name)
-      end
+      pkgs_that_need_it = PackageUtils.reverse_dependency_lookup(pkg.name, installed: true)
 
       if pkgs_that_need_it.any?
         abort <<~EOT.chomp.lightred
@@ -120,7 +113,7 @@ class Command
 
     # Remove the package from the list of installed packages in device.json.
     puts "Removing package #{pkg.name} from device.json".yellow if verbose
-    device_json['installed_packages'].delete_if { |entry| entry['name'] == pkg.name }
+    device_json[:installed_packages].delete_if { |entry| entry[:name] == pkg.name }
 
     # Update device.json with our changes.
     ConvenienceFunctions.save_json(device_json)
