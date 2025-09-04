@@ -8810,6 +8810,11 @@ url: https://github.com/subhra74/snowflake/releases
 activity: none
 ---
 kind: url
+name: so
+url: https://github.com/samtay/so/releases
+activity: low
+---
+kind: url
 name: socat
 url: http://www.dest-unreach.org/socat/download
 activity: none
