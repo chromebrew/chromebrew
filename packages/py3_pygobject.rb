@@ -19,9 +19,8 @@ class Py3_pygobject < Meson
 
   depends_on 'cairo' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gobject_introspection' # R
+  depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libffi' # R
   depends_on 'py3_meson_python' => :build
