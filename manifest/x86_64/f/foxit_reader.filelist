@@ -1,19 +1,13 @@
-# Total size: 282634160
+# Total size: 256459281
 /usr/local/bin/FoxitReader
 /usr/local/bin/foxit
 /usr/local/bin/foxitreader
 /usr/local/share/applications/FoxitReader.desktop
-/usr/local/share/foxitreader/Activation
-/usr/local/share/foxitreader/Activation.sh
 /usr/local/share/foxitreader/CollectStrategy.txt
 /usr/local/share/foxitreader/FoxitReader
 /usr/local/share/foxitreader/FoxitReader.sh
-/usr/local/share/foxitreader/InstallationLog.txt
 /usr/local/share/foxitreader/Wrappers/en-US/RequestPermTmpl.pdf
 /usr/local/share/foxitreader/Wrappers/en-US/Wrapper.pdf
-/usr/local/share/foxitreader/components.xml
-/usr/local/share/foxitreader/countinstalltion
-/usr/local/share/foxitreader/countinstalltion.sh
 /usr/local/share/foxitreader/cpdf_settings
 /usr/local/share/foxitreader/fxplugins/libFRMS.so
 /usr/local/share/foxitreader/fxplugins/libcloudloginplugin.so
@@ -48,7 +42,6 @@
 /usr/local/share/foxitreader/images/FoxitUpdate-48.png
 /usr/local/share/foxitreader/images/FoxitUpdate.png
 /usr/local/share/foxitreader/images/foxitreaderactivate.ico
-/usr/local/share/foxitreader/installUpdate
 /usr/local/share/foxitreader/lang/ko_kr/qt_ko_KR.qm
 /usr/local/share/foxitreader/lang/ko_kr/readerlite_ko_kr.qm
 /usr/local/share/foxitreader/lang/readerlite_zh_cn.qm
@@ -128,6 +121,8 @@
 /usr/local/share/foxitreader/lib/libcrypto.so.10
 /usr/local/share/foxitreader/lib/libffi.so.5
 /usr/local/share/foxitreader/lib/libgcrypt.so.11
+/usr/local/share/foxitreader/lib/libglib-2.0.so.0
+/usr/local/share/foxitreader/lib/libgobject-2.0.so.0
 /usr/local/share/foxitreader/lib/libgstapp-0.10.so.0
 /usr/local/share/foxitreader/lib/libgstapp-0.10.so.0.25.0
 /usr/local/share/foxitreader/lib/libgstbase-0.10.so.0
@@ -140,6 +135,7 @@
 /usr/local/share/foxitreader/lib/libgstreamer-0.10.so.0
 /usr/local/share/foxitreader/lib/libgstreamer-0.10.so.0.30.0
 /usr/local/share/foxitreader/lib/libgstvideo-0.10.so.0
+/usr/local/share/foxitreader/lib/libgthread-2.0.so.0
 /usr/local/share/foxitreader/lib/libicudata.so.52
 /usr/local/share/foxitreader/lib/libicui18n.so.52
 /usr/local/share/foxitreader/lib/libicui18n.so.52.1
@@ -148,16 +144,12 @@
 /usr/local/share/foxitreader/lib/libsecret-1.so
 /usr/local/share/foxitreader/lib/libsecret-1.so.0
 /usr/local/share/foxitreader/lib/libssl.so.10
+/usr/local/share/foxitreader/lib/libstdc++.so.6
 /usr/local/share/foxitreader/lib/libxkbcommon.so.0
 /usr/local/share/foxitreader/lib/libxkbcommon.so.0.0.0
 /usr/local/share/foxitreader/lib/libxslt.so.1
 /usr/local/share/foxitreader/lib/libxslt.so.1.1
 /usr/local/share/foxitreader/lib/libxslt.so.1.1.26
-/usr/local/share/foxitreader/maintenancetool
-/usr/local/share/foxitreader/maintenancetool.dat
-/usr/local/share/foxitreader/maintenancetool.ini
-/usr/local/share/foxitreader/maintenancetool.sh
-/usr/local/share/foxitreader/network.xml
 /usr/local/share/foxitreader/platforminputcontexts/libcomposeplatforminputcontextplugin.so
 /usr/local/share/foxitreader/platforminputcontexts/libfcitxplatforminputcontextplugin.so
 /usr/local/share/foxitreader/platforminputcontexts/libibusplatforminputcontextplugin.so
@@ -168,6 +160,7 @@
 /usr/local/share/foxitreader/platforms/libqminimalegl.so
 /usr/local/share/foxitreader/platforms/libqoffscreen.so
 /usr/local/share/foxitreader/platforms/libqxcb.so
+/usr/local/share/foxitreader/platformthemes/libqgtk2.so
 /usr/local/share/foxitreader/postinst
 /usr/local/share/foxitreader/prerm
 /usr/local/share/foxitreader/printsupport/libcupsprintersupport.so
@@ -249,8 +242,6 @@
 /usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Revised.pdf
 /usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Verified.pdf
 /usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Void.pdf
-/usr/local/share/foxitreader/updater
-/usr/local/share/foxitreader/updater.sh
 /usr/local/share/foxitreader/welcome/images/graphic.jpg
 /usr/local/share/foxitreader/welcome/images/icon_i.png
 /usr/local/share/foxitreader/welcome/images/logo-l.png
