@@ -6,12 +6,11 @@ require 'buildsystems/rust'
 class Sudo_rs < RUST
   description 'A safety oriented and memory safe implementation of sudo and su written in Rust.'
   homepage 'https://github.com/trifectatechfoundation/sudo-rs'
-  version '0.2.6-775d01a'
+  version '0.2.8'
   license 'Apache-2.0 AND MIT'
   compatibility 'all'
   source_url 'https://github.com/trifectatechfoundation/sudo-rs.git'
-  git_hashtag '775d01ae1adc2734ea594b353335f5b566973e67'
-  # git_hashtag "v#{version.split('-').first}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
