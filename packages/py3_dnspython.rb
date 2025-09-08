@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_dnspython < Pip
   description 'DNSPython is a DNS toolkit.'
   homepage 'https://www.dnspython.org/'
-  version "2.7.0-#{CREW_PY_VER}"
+  version "2.8.0-#{CREW_PY_VER}"
   license 'ISC'
   compatibility 'all'
   source_url 'SKIP'
