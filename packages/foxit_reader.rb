@@ -10,8 +10,32 @@ class Foxit_reader < Package
 
   no_compile_needed
 
+  depends_on 'cups' # R
+  depends_on 'e2fsprogs' # R
+  depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'krb5' # R
+  depends_on 'libglvnd' # R
+  depends_on 'libgpg_error' # R
+  depends_on 'libice' # R
+  depends_on 'libsm' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxi' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxrender' # R
+  depends_on 'libxslt' # R
+  depends_on 'pango' # R
   depends_on 'pkg_7_zip' => :build
+  depends_on 'qt5_declarative' # R
+  depends_on 'qt5_location' # R
   depends_on 'sommelier' # L
+  depends_on 'zlib' # R
 
   def self.install
     # Adapted from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=foxitreader
