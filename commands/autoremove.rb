@@ -1,9 +1,9 @@
 require_relative '../lib/convenience_functions'
 require_relative '../lib/package_utils'
-require_relative 'remove'
+require_relative '../lib/package'
 
 class Command
-  def self.autoremove
+  def self.autoremove(verbose: false, force: false)
     device_json    = ConvenienceFunctions.load_symbolized_json
     redundant_deps = []
 
@@ -37,9 +37,9 @@ class Command
       abort 'No changes made.'
     end
 
-    redundant_deps.each do |pkg|
-      search pkg
-      Command.remove(@pkg, verbose: CREW_VERBOSE, force: @opt_force)
+    redundant_deps.each do |pkg_name|
+      pkg = Package.load_package("#{CREW_PACKAGES_PATH}/#{pkg_name}.rb")
+      Command.remove(pkg, verbose:, force:)
     end
   end
 end
