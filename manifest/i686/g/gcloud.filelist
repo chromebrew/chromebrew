@@ -1,4 +1,4 @@
-# Total size: 354265336
+# Total size: 355460716
 /usr/local/bin/bq
 /usr/local/bin/dev_appserver.py
 /usr/local/bin/docker-credential-gcloud
@@ -686,6 +686,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/deployment_manager/exceptions.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/design_center/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/design_center/locations.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/design_center/shared_templates.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/design_center/spaces.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/design_center/utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/developer_connect/__init__.py
@@ -827,6 +828,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/genomics/filter_rewrite.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/genomics/genomics_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/genomics/genomics_util.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/hypercomputecluster/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/hypercomputecluster/utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/iam/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/iam/__pycache__/__init__.cpython-313.pyc
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/iam/__pycache__/util.cpython-313.pyc
@@ -1215,6 +1218,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_grpc/upload.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_grpc_bidi_streaming/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_grpc_bidi_streaming/client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_grpc_bidi_streaming/upload.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_iam_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_json/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_json/client.py
@@ -1764,9 +1768,14 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cloudlocationfinder/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cloudlocationfinder/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cloudlocationfinder/v1alpha_resources.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cluster_director/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cluster_director/clusters/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cluster_director/clusters/flag_types.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cluster_director/clusters/flags.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cluster_director/clusters/resources.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cluster_director/clusters/utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cluster_director/custom_resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cluster_director/default_resources.yaml
-/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/cluster_director/v1alpha_resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/code/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/code/builders.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/code/cloud/__init__.py
@@ -3151,6 +3160,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/instance_split_printer.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/job_printer.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/k8s_object_printer_util.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/presets_printer.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/profiles_csv_printer.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/profiles_printer.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/printers/profiles_printer_ga.py
@@ -3375,6 +3385,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/regex_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/resources.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/resources/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/resources/contexts_only_formatter.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/resources/full_resource_formatter.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/resources/gcloud_full_resource_formatter.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/storage/resources/gcs_resource_reference.py
@@ -8251,7 +8262,7 @@
 /usr/local/share/gcloud/lib/surface/cluster_director/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/cluster_director/clusters/__init__.py
 /usr/local/share/gcloud/lib/surface/cluster_director/clusters/_init_extensions.py
-/usr/local/share/gcloud/lib/surface/cluster_director/clusters/create.yaml
+/usr/local/share/gcloud/lib/surface/cluster_director/clusters/create.py
 /usr/local/share/gcloud/lib/surface/cluster_director/clusters/delete.yaml
 /usr/local/share/gcloud/lib/surface/cluster_director/clusters/describe.yaml
 /usr/local/share/gcloud/lib/surface/cluster_director/clusters/list.yaml
@@ -10926,10 +10937,8 @@
 /usr/local/share/gcloud/lib/surface/design_center/spaces/set_iam_policy.py
 /usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/__init__.py
 /usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/_init_extensions.py
-/usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/_partials/_describe_alpha.yaml
-/usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/_partials/_list_alpha.yaml
-/usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/describe.yaml
-/usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/list.yaml
+/usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/describe.py
+/usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/list.py
 /usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/revisions/__init__.py
 /usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/revisions/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/revisions/_partials/_describe_alpha.yaml
@@ -12998,7 +13007,7 @@
 /usr/local/share/gcloud/lib/surface/monitoring/__init__.py
 /usr/local/share/gcloud/lib/surface/monitoring/alerts/__init__.py
 /usr/local/share/gcloud/lib/surface/monitoring/alerts/describe.yaml
-/usr/local/share/gcloud/lib/surface/monitoring/alerts/list.yaml
+/usr/local/share/gcloud/lib/surface/monitoring/alerts/list.py
 /usr/local/share/gcloud/lib/surface/monitoring/channel_descriptors/__init__.py
 /usr/local/share/gcloud/lib/surface/monitoring/channel_descriptors/describe.yaml
 /usr/local/share/gcloud/lib/surface/monitoring/channel_descriptors/list.yaml
