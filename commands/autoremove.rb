@@ -19,7 +19,7 @@ class Command
     end
 
     if redundant_deps.none?
-      puts 'There are no redundant packages to remove.'.lightgreen
+      puts 'There are no unused dependencies to remove.'.lightgreen
       return
     end
 
