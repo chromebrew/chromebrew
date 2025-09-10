@@ -19,9 +19,9 @@ class Py3_numpy < Pip
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'lapack' => :build
-  depends_on 'openblas' # R
   depends_on 'py3_cython' => :build
   depends_on 'py3_setuptools' => :build
+  depends_on 'python3' # R
   depends_on 'python3' => :build
   depends_on 'zlib' # R
 
