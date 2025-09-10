@@ -192,6 +192,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
     { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: '' },
     { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
+    { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
     { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
     { pkg_name: 'python3', anitya_pkg: 'python', comments: 'Prefer to GitHub' },
