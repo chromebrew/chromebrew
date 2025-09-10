@@ -1,12 +1,12 @@
-# Total size: 353679197
-/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/oci-2.159.1.dist-info/top_level.txt
+# Total size: 353973291
+/usr/local/lib/python3.13/site-packages/oci-2.160.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/oci-2.160.0.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/oci-2.160.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/oci-2.160.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/oci-2.160.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/oci-2.160.0.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.13/site-packages/oci-2.160.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/oci-2.160.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/oci/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/alloy.cpython-313.pyc
@@ -10070,6 +10070,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/application_vip.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/application_vip_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/associated_database_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/associated_long_term_backup.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/automated_mount_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/autonomous_container_database.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/autonomous_container_database_backup.cpython-313.pyc
@@ -10488,6 +10489,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/scheduling_window_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/self_mount_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/set_key_version_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/source_database_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/stack_monitoring_config.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/storage_performance_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/database/models/__pycache__/switch_over_data_guard_details.cpython-313.pyc
@@ -10573,6 +10575,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/application_vip.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/application_vip_summary.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/associated_database_details.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/associated_long_term_backup.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/automated_mount_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/autonomous_container_database.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/autonomous_container_database_backup.py
@@ -10991,6 +10994,7 @@
 /usr/local/lib/python3.13/site-packages/oci/database/models/scheduling_window_summary.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/self_mount_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/set_key_version_details.py
+/usr/local/lib/python3.13/site-packages/oci/database/models/source_database_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/stack_monitoring_config.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/storage_performance_details.py
 /usr/local/lib/python3.13/site-packages/oci/database/models/switch_over_data_guard_details.py
@@ -15390,6 +15394,7 @@
 /usr/local/lib/python3.13/site-packages/oci/email/email_client_composite_operations.py
 /usr/local/lib/python3.13/site-packages/oci/email/models/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/add_lock_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/change_email_domain_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/change_sender_compartment_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/configuration.cpython-313.pyc
@@ -15407,6 +15412,8 @@
 /usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/email_return_path.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/email_return_path_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/email_return_path_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/remove_lock_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/resource_lock.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/sender.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/sender_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/suppression.cpython-313.pyc
@@ -15423,6 +15430,7 @@
 /usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/work_request_resource.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/work_request_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/email/models/__pycache__/work_request_summary_collection.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/email/models/add_lock_details.py
 /usr/local/lib/python3.13/site-packages/oci/email/models/change_email_domain_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/email/models/change_sender_compartment_details.py
 /usr/local/lib/python3.13/site-packages/oci/email/models/configuration.py
@@ -15440,6 +15448,8 @@
 /usr/local/lib/python3.13/site-packages/oci/email/models/email_return_path.py
 /usr/local/lib/python3.13/site-packages/oci/email/models/email_return_path_collection.py
 /usr/local/lib/python3.13/site-packages/oci/email/models/email_return_path_summary.py
+/usr/local/lib/python3.13/site-packages/oci/email/models/remove_lock_details.py
+/usr/local/lib/python3.13/site-packages/oci/email/models/resource_lock.py
 /usr/local/lib/python3.13/site-packages/oci/email/models/sender.py
 /usr/local/lib/python3.13/site-packages/oci/email/models/sender_summary.py
 /usr/local/lib/python3.13/site-packages/oci/email/models/suppression.py
