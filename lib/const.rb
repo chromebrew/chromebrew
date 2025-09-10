@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.65.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.66.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -187,17 +187,18 @@ CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX = "(#{CREW_UPDATER_EXCLUDED_PKGS.k
 unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
   CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
     { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: '' },
-    { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to Github' },
+    { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to GitHub' },
     { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
     { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
     { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: '' },
     { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
+    { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
     { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
     { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'webkitgtk_6', anitya_pkg: 'webkitgtk~stable', comments: '' },
     { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' },
-    { pkg_name: 'zimg', anitya_pkg: 'zimg', comments: 'Prefer to Github' }
+    { pkg_name: 'zimg', anitya_pkg: 'zimg', comments: 'Prefer to GitHub' }
   ].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
 end
 

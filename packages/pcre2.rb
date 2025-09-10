@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Pcre2 < CMake
   description 'The PCRE2 package contains a new generation of the Perl Compatible Regular Expression libraries.'
   homepage 'http://pcre.org/'
-  version '10.45'
+  version '10.46'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/PCRE2Project/pcre2.git'
