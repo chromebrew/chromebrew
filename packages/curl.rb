@@ -11,10 +11,10 @@ class Curl < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6da2444366b8e4ff461d2ddd18983ee468f64a6b33a03aea4f6eb33e7f59ddbf',
-     armv7l: '6da2444366b8e4ff461d2ddd18983ee468f64a6b33a03aea4f6eb33e7f59ddbf',
-       i686: 'e3cabf83f352e25f2d3b723058c25efeaaa17c5d8959193ac1fda2a44ecdef01',
-     x86_64: '00ba18b4ce283f2e74a1c08f7515ee61deca873e323e70fdf380818a7b5f25a9'
+    aarch64: '5cb03956efe01d6db11e011f178257405c917be4fdfd8e881e55350ddc337ddc',
+     armv7l: '5cb03956efe01d6db11e011f178257405c917be4fdfd8e881e55350ddc337ddc',
+       i686: 'c7b7dda34f0415f2d7b4307a8f22b6f643d643b3cff6ba30d6c27bd61f0bbb11',
+     x86_64: '884d27a6562b78d0aabaf6f8356fe9cc4d47ddaa2883bac0a46e871b5e728113'
   })
 
   depends_on 'brotli' # R
