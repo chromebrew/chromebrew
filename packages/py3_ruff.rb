@@ -10,10 +10,10 @@ class Py3_ruff < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd715c8eb5960361c8f71a5d001857bf86c5372501bb2fac7e3463851e82d09bd',
-     armv7l: 'd715c8eb5960361c8f71a5d001857bf86c5372501bb2fac7e3463851e82d09bd',
-       i686: '25d93281c4efdaf92848fa50d5dbf8fe0b7ee9e7a1b8a90f04726af340fcc32d',
-     x86_64: '2d0359b6a556ffbdf547069c128f23d7ad05ad44609c83ba4d29242de42e0c9c'
+    aarch64: 'beafe3fd4bf7ebd4a5f3a45364143e8a15225efc1b3d2a41a913378afb901870',
+     armv7l: 'beafe3fd4bf7ebd4a5f3a45364143e8a15225efc1b3d2a41a913378afb901870',
+       i686: 'bf19bd09c5ebb5aacf1acf6bfc28dd2dc57634b6f356326d9759578b988dec97',
+     x86_64: '67cd4415abf78ecd104d84c2fe4447c337ebcf65d9f2a0b91f3f6f0f442830be'
   })
 
   depends_on 'gcc_lib' # R
