@@ -3,11 +3,11 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.13.5'
+  version '3.13.7'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 '27b15a797562a2971dce3ffe31bb216042ce0b995b39d768cf15f784cc757365'
+  source_sha256 '5462f9099dfd30e238def83c71d91897d8caa5ff6ebc7a50f14d4802cdaaa79a'
   binary_compression 'tar.zst'
 
   binary_sha256({
