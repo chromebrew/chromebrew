@@ -13,15 +13,15 @@ class Pkg_7_zip < Package
   binary_sha256({
     aarch64: '07d1e47a4f3dbbbbe10dc697d6bbc13cf107415ecee634b131a041514c28ae7e',
      armv7l: '07d1e47a4f3dbbbbe10dc697d6bbc13cf107415ecee634b131a041514c28ae7e',
-       i686: '4aad8fbed7a784b8326de7611de1931d1a23e9b6a0d0fbec7bc7464f63a9c1a3',
+       i686: '84b54312cf973281258d1ba41c31d5aae6387feae429277d77b335f9e37d8575',
      x86_64: '2f598746525cbadbb77d580d7606e92c0d8c31dc6386853dff66aaab20d5acbe'
   })
-
-  no_env_options
 
   depends_on 'asmc' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+
+  no_env_options
 
   @_makefile = case ARCH
                when 'x86_64'
