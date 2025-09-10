@@ -194,6 +194,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
     { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
+    { pkg_name: 'pkg_7_zip', anitya_pkg: '7zip~stable', comments: 'Prefer to GitHub' },
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
     { pkg_name: 'python3', anitya_pkg: 'python', comments: 'Prefer to GitHub' },
     { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },

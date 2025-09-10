@@ -4,10 +4,10 @@ class Pkg_7_zip < Package
   description 'Official implantation of 7za.exe in Linux. File archiver with a high compression ratio.'
   homepage 'https://www.7-zip.org'
   license 'LGPL-2.1+'
-  version '25.00'
+  version '25.01'
   compatibility 'all'
   source_url "https://www.7-zip.org/a/7z#{version.delete('.')}-src.tar.xz"
-  source_sha256 'bff9e69b6ca73a5b8715d7623870a39dc90ad6ce1f4d1070685843987af1af9b'
+  source_sha256 'ed087f83ee789c1ea5f39c464c55a5c9d4008deb0efe900814f2df262b82c36e'
   binary_compression 'tar.zst'
 
   binary_sha256({
