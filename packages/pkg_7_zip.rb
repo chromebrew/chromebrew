@@ -14,7 +14,7 @@ class Pkg_7_zip < Package
     aarch64: '07d1e47a4f3dbbbbe10dc697d6bbc13cf107415ecee634b131a041514c28ae7e',
      armv7l: '07d1e47a4f3dbbbbe10dc697d6bbc13cf107415ecee634b131a041514c28ae7e',
        i686: '84b54312cf973281258d1ba41c31d5aae6387feae429277d77b335f9e37d8575',
-     x86_64: '2f598746525cbadbb77d580d7606e92c0d8c31dc6386853dff66aaab20d5acbe'
+     x86_64: '68e0f4702cffd908bf24dcd84036e7093a2c0e882256f17992785f50178fa0cc'
   })
 
   depends_on 'asmc' => :build
