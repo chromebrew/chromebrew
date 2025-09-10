@@ -11,8 +11,8 @@ class Pkg_7_zip < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '07d1e47a4f3dbbbbe10dc697d6bbc13cf107415ecee634b131a041514c28ae7e',
-     armv7l: '07d1e47a4f3dbbbbe10dc697d6bbc13cf107415ecee634b131a041514c28ae7e',
+    aarch64: '265a5acf546bddd5562539d675bddcfddb224d268371fde4d55a012ea2ac8862',
+     armv7l: '265a5acf546bddd5562539d675bddcfddb224d268371fde4d55a012ea2ac8862',
        i686: '84b54312cf973281258d1ba41c31d5aae6387feae429277d77b335f9e37d8575',
      x86_64: '68e0f4702cffd908bf24dcd84036e7093a2c0e882256f17992785f50178fa0cc'
   })
