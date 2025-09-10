@@ -19,7 +19,6 @@ class Pcre2 < CMake
 
   depends_on 'bzip2' # R
   depends_on 'glibc' # R
-  depends_on 'readline' # R
   depends_on 'zlib' # R
 
   cmake_options '-DPCRE2_BUILD_TESTS=OFF \
