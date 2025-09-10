@@ -10,10 +10,10 @@ class Py3_xmltodict < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a7feb951e5b978a92e67220c7a1c3ffaaab578bc9dab0c68c7c0a721aae646f4',
-     armv7l: 'a7feb951e5b978a92e67220c7a1c3ffaaab578bc9dab0c68c7c0a721aae646f4',
-       i686: 'a707a431edba0a60f6d601df75789cfdfae3ab0d39ee40d32eb263b2c27ceaeb',
-     x86_64: '57697be5cc7b27b4a70cf91be79802ec88d79d15103b1b379ccedd23dae84c41'
+    aarch64: 'd9edc13f5786d5ac50984c100faa9d51932532b102b9e9b1ba2dff1783c29a42',
+     armv7l: 'd9edc13f5786d5ac50984c100faa9d51932532b102b9e9b1ba2dff1783c29a42',
+       i686: 'ae16fb5d4104560a36e1692e3472d1fe150a8fd898d35ca9244c295ae525df40',
+     x86_64: '42de1014c87d8fbadd9d18060a8ed23c33b1461223231a92418badb0e7d276b8'
   })
 
   depends_on 'python3' => :build
