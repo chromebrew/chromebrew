@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_secretstorage < Pip
   description 'Python bindings to Freedesktop.org Secret Service API'
   homepage 'https://secretstorage.readthedocs.io/'
-  version "3.3.3-#{CREW_PY_VER}"
+  version "3.4.0-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
