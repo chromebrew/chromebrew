@@ -18,15 +18,13 @@ class Curl < Autotools
   })
 
   depends_on 'brotli' # R
-  depends_on 'ca_certificates' => :build
   depends_on 'c_ares' # R
+  depends_on 'ca_certificates' => :build
   depends_on 'glibc' # R
-  depends_on 'libcyrussasl' # R
   depends_on 'libidn2' # R
   depends_on 'libnghttp2' # R
   depends_on 'libpsl' # R
   depends_on 'libssh' # R
-  depends_on 'libunistring' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R
   depends_on 'python3' => :build
