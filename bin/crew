@@ -247,7 +247,7 @@ def update
     to_update = `cd #{CREW_LIB_PATH} && git show --name-only HEAD..FETCH_HEAD`.include?('lib/const.rb')
     system('git reset --hard FETCH_HEAD', chdir: CREW_LIB_PATH, exception: true)
 
-    if Time.now.to_i - last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
+    if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
       puts 'Updating RubyGems.'.orange
       system 'gem update -N --system'
       system 'gem cleanup'
@@ -2054,9 +2054,9 @@ end
 
 @device = ConvenienceFunctions.load_symbolized_json
 
-last_update_check = Dir["#{CREW_LIB_PATH}/{.git/FETCH_HEAD,lib/const.rb}"].compact.map { |i| File.mtime(i).utc.to_i }.max
-crewlog("The last update was #{MiscFunctions.time_difference(last_update_check, Time.now.to_i)} ago.")
-if ARGV[0] != 'update' && Time.now.to_i - last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
+@last_update_check = Dir["#{CREW_LIB_PATH}/{.git/FETCH_HEAD,lib/const.rb}"].compact.map { |i| File.mtime(i).utc.to_i }.max
+crewlog("The last update was #{MiscFunctions.time_difference(@last_update_check, Time.now.to_i)} ago.")
+if ARGV[0] != 'update' && Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
   plural = CREW_UPDATE_CHECK_INTERVAL < 2 ? '' : 's'
   puts "It has been more than #{CREW_UPDATE_CHECK_INTERVAL} day#{plural} since crew was last updated. Please run 'crew update'.".lightpurple
 end
