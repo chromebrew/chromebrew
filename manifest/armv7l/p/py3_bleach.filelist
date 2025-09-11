@@ -1,11 +1,11 @@
-# Total size: 1381943
-/usr/local/lib/python3.13/site-packages/bleach-6.0.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/bleach-6.0.0.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/bleach-6.0.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/bleach-6.0.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/bleach-6.0.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/bleach-6.0.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/bleach-6.0.0.dist-info/top_level.txt
+# Total size: 1385472
+/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/bleach/__init__.py
 /usr/local/lib/python3.13/site-packages/bleach/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/bleach/__pycache__/callbacks.cpython-313.pyc
@@ -14,6 +14,7 @@
 /usr/local/lib/python3.13/site-packages/bleach/__pycache__/linkifier.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/bleach/__pycache__/parse_shim.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/bleach/__pycache__/sanitizer.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/bleach/__pycache__/six_shim.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/bleach/_vendor/README.rst
 /usr/local/lib/python3.13/site-packages/bleach/_vendor/__init__.py
 /usr/local/lib/python3.13/site-packages/bleach/_vendor/__pycache__/__init__.cpython-313.pyc
@@ -102,3 +103,4 @@
 /usr/local/lib/python3.13/site-packages/bleach/linkifier.py
 /usr/local/lib/python3.13/site-packages/bleach/parse_shim.py
 /usr/local/lib/python3.13/site-packages/bleach/sanitizer.py
+/usr/local/lib/python3.13/site-packages/bleach/six_shim.py
