@@ -7620,6 +7620,11 @@ url: https://gitlab.gnome.org/GNOME/pyatspi2/-/tags
 activity: low
 ---
 kind: url
+name: py3_bleach
+url: https://github.com/deepin-community/python-bleach/tags
+activity: low
+---
+kind: url
 name: py3_brotlicffi
 url: https://github.com/python-hyper/brotlicffi/tags
 activity: low
@@ -7715,6 +7720,11 @@ url: https://github.com/quodlibet/mutagen/releases
 activity: medium
 ---
 kind: url
+name: py3_nh3
+url: https://github.com/messense/nh3/releases
+activity: medium
+---
+kind: url
 name: py3_nodeenv
 url: https://github.com/ekalinin/nodeenv/releases
 activity: low
@@ -7748,6 +7758,11 @@ kind: url
 name: py3_pyright
 url: https://github.com/RobertCraigie/pyright-python/releases
 activity: high
+---
+kind: url
+name: py3_readme_renderer
+url: https://github.com/pypa/readme_renderer/releases
+activity: medium
 ---
 kind: url
 name: py3_ruff
