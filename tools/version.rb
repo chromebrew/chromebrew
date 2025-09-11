@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 2.4 (for Chromebrew)
+# version.rb version 2.5 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
