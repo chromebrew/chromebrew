@@ -1044,8 +1044,10 @@ def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/loc
         else
           system 'rsync', "-ah#{@verbose}HXW", '--remove-source-files', src, dst, exception: true
         end
-      else
-        system "cd #{src}; tar -cf - ./* | (cd #{dst}; tar -x#{@verbose}p --keep-directory-symlink -f -)", exception: true
+      elsif !system "tar -cf - ./* | (cd #{dst}; tar -x#{@verbose}p --keep-directory-symlink -f -)", chdir: src
+        puts 'src:'.lightred
+        system "ls -aFl #{src}"
+        abort 'Install failed!'.lightred
       end
     end
   else
