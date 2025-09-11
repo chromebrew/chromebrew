@@ -77,9 +77,7 @@ class Ruby < Package
   def self.postinstall
     puts 'Updating ruby gems. This may take a while...'
     # update_rubygems is provided by the ruby_rubygems_update package.
-    unless File.executable?("#{CREW_PREFIX}/bin/update_rubygems")
-      system 'gem install rubygems-update', exception: false
-    end
+    system 'gem install rubygems-update', exception: false unless File.executable?("#{CREW_PREFIX}/bin/update_rubygems")
     system 'update_rubygems'
     # install for Ruby 3.4
     system 'gem uninstall resolv-replace', exception: false
