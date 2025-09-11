@@ -1052,7 +1052,7 @@ end
 def install_package(pkgdir)
   Dir.chdir pkgdir do
     # install filelist, dlist and binary files
-    puts 'Performing install...'
+    puts "Performing install for #{@pkg.name}...".lightblue
 
     FileUtils.mv 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: CREW_VERBOSE
     FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
@@ -1140,7 +1140,8 @@ def resolve_dependencies_and_install(no_advisory: false)
       install(skip_postinstall: true)
     end
 
-    puts 'Performing post-install for packages...'.lightblue
+    plural_packages = to_install.count > 1 ? 's' : ''
+    puts "Performing post-install#{plural_packages} for package#{plural_packages}...".lightblue
 
     to_install.each do |pkg_to_postinstall|
       search pkg_to_postinstall
