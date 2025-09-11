@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.66.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.66.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -192,7 +192,9 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
     { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: '' },
     { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
+    { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
     { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
+    { pkg_name: 'pkg_7_zip', anitya_pkg: '7zip~stable', comments: 'Prefer to GitHub' },
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
     { pkg_name: 'python3', anitya_pkg: 'python', comments: 'Prefer to GitHub' },
     { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },

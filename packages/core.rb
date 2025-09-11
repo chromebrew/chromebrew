@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '3.16'
+  version '3.17'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -86,6 +86,8 @@ class Core < Package
   depends_on 'py3_wheel'
   depends_on 'python3'
   depends_on 'readline'
+  # Fallback for crew-mvdir failures:
+  depends_on 'rsync'
   depends_on 'rtmpdump'
   depends_on 'ruby'
   depends_on 'ruby_concurrent_ruby'

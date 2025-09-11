@@ -247,9 +247,11 @@ def update
     to_update = `cd #{CREW_LIB_PATH} && git show --name-only HEAD..FETCH_HEAD`.include?('lib/const.rb')
     system('git reset --hard FETCH_HEAD', chdir: CREW_LIB_PATH, exception: true)
 
-    puts 'Updating RubyGems.'.orange
-    system 'gem update -N --system'
-    system 'gem cleanup'
+    if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
+      puts 'Updating RubyGems.'.orange
+      system 'gem update -N --system'
+      system 'gem cleanup'
+    end
 
     puts 'Package lists, crew, and library updated.'
 
@@ -1021,23 +1023,31 @@ end
 
 def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/local')))
   if Dir.exist?(src)
-    if File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR
-      system "crew-mvdir #{@short_verbose} #{src} #{dst}", exception: true
-    else
-      warn 'crew-mvdir is not installed. Please install it with \'crew install crew_mvdir\' for improved installation performance'.yellow unless (@pkg.name == 'crew_mvdir') || CREW_DISABLE_MVDIR
-
+    crew_mvdir_error = false
+    if File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR && !system("crew-mvdir #{@short_verbose} #{src} #{dst}")
+      puts "src is #{src}".lightred
+      puts "dst is #{dst}".lightred
+      system "ls -aFl #{dst}"
+      crew_mvdir_error = true
+    end
+    # Handle case of crew-mvdir having failed.
+    if !File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") || CREW_DISABLE_MVDIR || crew_mvdir_error
+      warn 'crew-mvdir is not installed. Please install it with \'crew install crew_mvdir\' for improved installation performance'.yellow unless (@pkg.name == 'crew_mvdir') || CREW_DISABLE_MVDIR || crew_mvdir_error
+      warn 'crew-mvdir had an error. Using rsync.'.yellow if crew_mvdir_error
       if File.executable?("#{CREW_PREFIX}/bin/rsync") && system("#{CREW_PREFIX}/bin/rsync --version > /dev/null")
         # rsync src path needs a trailing slash
         src << '/' unless src.end_with?('/')
         # Check for ACLs support.
         rsync_version = `rsync --version`.chomp
         if rsync_version.include?('ACLs') && !rsync_version.include?('no ACLs')
-          system 'rsync', "-ah#{@verbose}HAXW", '--remove-source-files', src, dst, exception: true
-        else
-          system 'rsync', "-ah#{@verbose}HXW", '--remove-source-files', src, dst, exception: true
+          system 'rsync', '-ahvHAXW', '--force', '--remove-source-files', src, dst, exception: true unless system 'rsync', "-ah#{@verbose}HAXW", '--remove-source-files', src, dst
+        elsif !system 'rsync', "-ah#{@verbose}HXW", '--remove-source-files', src, dst
+          system 'rsync', '-ahvHXW', '--force', '--remove-source-files', src, dst, exception: true
         end
-      else
-        system "cd #{src}; tar -cf - ./* | (cd #{dst}; tar -x#{@verbose}p --keep-directory-symlink -f -)", exception: true
+      elsif !system "tar -cf - ./* | (cd #{dst}; tar -x#{@verbose}p --keep-directory-symlink -f -)", chdir: src
+        puts 'src:'.lightred
+        system "ls -aFl #{src}"
+        abort 'Install failed!'.lightred
       end
     end
   else
@@ -1048,7 +1058,7 @@ end
 def install_package(pkgdir)
   Dir.chdir pkgdir do
     # install filelist, dlist and binary files
-    puts 'Performing install...'
+    puts "Performing install for #{@pkg.name}...".lightblue
 
     FileUtils.mv 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: CREW_VERBOSE
     FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
@@ -1136,7 +1146,8 @@ def resolve_dependencies_and_install(no_advisory: false)
       install(skip_postinstall: true)
     end
 
-    puts 'Performing post-install for packages...'.lightblue
+    plural_packages = to_install.count > 1 ? 's' : ''
+    puts "Performing post-install#{plural_packages} for package#{plural_packages}...".lightblue
 
     to_install.each do |pkg_to_postinstall|
       search pkg_to_postinstall
@@ -2047,9 +2058,9 @@ end
 
 @device = ConvenienceFunctions.load_symbolized_json
 
-last_update_check = Dir["#{CREW_LIB_PATH}/{.git/FETCH_HEAD,lib/const.rb}"].compact.map { |i| File.mtime(i).utc.to_i }.max
-crewlog("The last update was #{MiscFunctions.time_difference(last_update_check, Time.now.to_i)} ago.")
-if ARGV[0] != 'update' && Time.now.to_i - last_update_check > ((CREW_UPDATE_CHECK_INTERVAL * 3600 * 24))
+@last_update_check = Dir["#{CREW_LIB_PATH}/{.git/FETCH_HEAD,lib/const.rb}"].compact.map { |i| File.mtime(i).utc.to_i }.max
+crewlog("The last update was #{MiscFunctions.time_difference(@last_update_check, Time.now.to_i)} ago.")
+if ARGV[0] != 'update' && Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
   plural = CREW_UPDATE_CHECK_INTERVAL < 2 ? '' : 's'
   puts "It has been more than #{CREW_UPDATE_CHECK_INTERVAL} day#{plural} since crew was last updated. Please run 'crew update'.".lightpurple
 end
