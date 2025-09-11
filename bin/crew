@@ -247,9 +247,11 @@ def update
     to_update = `cd #{CREW_LIB_PATH} && git show --name-only HEAD..FETCH_HEAD`.include?('lib/const.rb')
     system('git reset --hard FETCH_HEAD', chdir: CREW_LIB_PATH, exception: true)
 
-    puts 'Updating RubyGems.'.orange
-    system 'gem update -N --system'
-    system 'gem cleanup'
+    if Time.now.to_i - last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
+      puts 'Updating RubyGems.'.orange
+      system 'gem update -N --system'
+      system 'gem cleanup'
+    end
 
     puts 'Package lists, crew, and library updated.'
 
