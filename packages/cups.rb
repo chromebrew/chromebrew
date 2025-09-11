@@ -21,6 +21,7 @@ class Cups < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libusb' # R
+  depends_on 'libxcrypt' # R
   depends_on 'linux_pam' # R
   depends_on 'llvm_dev' => :build if %w[armv7l aarch64].include?(ARCH)
   depends_on 'openssl' # R
