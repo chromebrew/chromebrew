@@ -1033,7 +1033,7 @@ def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/loc
     # Handle case of crew-mvdir having failed.
     if !File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") || CREW_DISABLE_MVDIR || crew_mvdir_error
       warn 'crew-mvdir is not installed. Please install it with \'crew install crew_mvdir\' for improved installation performance'.yellow unless (@pkg.name == 'crew_mvdir') || CREW_DISABLE_MVDIR || crew_mvdir_error
-
+      warn 'crew-mvdir had an error. Using rsync.'.yellow if crew_mvdir_error
       if File.executable?("#{CREW_PREFIX}/bin/rsync") && system("#{CREW_PREFIX}/bin/rsync --version > /dev/null")
         # rsync src path needs a trailing slash
         src << '/' unless src.end_with?('/')
