@@ -188,6 +188,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
   CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
     { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: '' },
     { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to GitHub' },
+    { pkg_name: 'cups', anitya_pkg: 'cups', comments: 'Prefer to GitHub' },
     { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
     { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
     { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: '' },
