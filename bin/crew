@@ -1040,9 +1040,9 @@ def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/loc
         # Check for ACLs support.
         rsync_version = `rsync --version`.chomp
         if rsync_version.include?('ACLs') && !rsync_version.include?('no ACLs')
-          system 'rsync', '-ahvHAXW', '--remove-source-files', src, dst, exception: true unless system 'rsync', "-ah#{@verbose}HAXW", '--remove-source-files', src, dst
+          system 'rsync', '-ahvHAXW', '--force', '--remove-source-files', src, dst, exception: true unless system 'rsync', "-ah#{@verbose}HAXW", '--remove-source-files', src, dst
         elsif !system 'rsync', "-ah#{@verbose}HXW", '--remove-source-files', src, dst
-          system 'rsync', '-ahvHXW', '--remove-source-files', src, dst, exception: true
+          system 'rsync', '-ahvHXW', '--force', '--remove-source-files', src, dst, exception: true
         end
       elsif !system "tar -cf - ./* | (cd #{dst}; tar -x#{@verbose}p --keep-directory-symlink -f -)", chdir: src
         puts 'src:'.lightred
