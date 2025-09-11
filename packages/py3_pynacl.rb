@@ -16,9 +16,10 @@ class Py3_pynacl < Pip
      x86_64: 'e8bc20f388b43b4ebe64dbf1777aef7de012fcca16b823a97bae5b51a64f0814'
   })
 
+  depends_on 'glibc' # R
   depends_on 'libsodium'
   depends_on 'python3'
-  depends_on 'glibc' # R
+  depends_on 'python3' # R
 
   no_source_build
 end
