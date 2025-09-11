@@ -1020,6 +1020,8 @@ def shrink_dir(dir)
 end
 
 def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/local')))
+  # List dst contents if not empty, as this may cause an error.
+  system "ls -aFl #{dst}" if Dir.exist?(dst)
   if Dir.exist?(src)
     if File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR
       system "crew-mvdir #{@short_verbose} #{src} #{dst}", exception: true
