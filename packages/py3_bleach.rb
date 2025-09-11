@@ -6,7 +6,7 @@ require 'buildsystems/pip'
 class Py3_bleach < Pip
   description 'An easy whitelist-based HTML-sanitizing tool'
   homepage 'https://pypi.org/project/bleach/'
-  version '6.0.0'
+  version '6.2.0'
   license 'Apache'
   compatibility 'all'
   source_url 'SKIP'
