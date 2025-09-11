@@ -2,8 +2,8 @@ require 'package'
 
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
-  homepage 'https://github.com/OpenPrinting/cups'
-  version '2.4.12'
+  homepage 'https://openprinting.github.io/cups'
+  version '2.4.14'
   compatibility 'all'
   license 'Apache-2.0'
   source_url 'https://github.com/OpenPrinting/cups.git'
