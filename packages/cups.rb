@@ -11,10 +11,10 @@ class Cups < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '19a5fc31117dc16b9b1dc7a83867b14ab62f77abd8ad08c58a15d629d58bde6a',
-     armv7l: '19a5fc31117dc16b9b1dc7a83867b14ab62f77abd8ad08c58a15d629d58bde6a',
-       i686: '47933164cf36432d989746a29874858438f40f3142f7cbef85a453d27a25d14e',
-     x86_64: 'b127449e62200e7a8ce894fc3e20a543a394c3fd2d0e1d4fec95d0c1a4d115fc'
+    aarch64: '4aacbc9fe7e169a65337e84848fc2b3c28ef790a7280dac7b83a185f62f96cc1',
+     armv7l: '4aacbc9fe7e169a65337e84848fc2b3c28ef790a7280dac7b83a185f62f96cc1',
+       i686: '23932827ac7ad296e4eb0a1264d11323741f147875a0965bdae36af14d99a08e',
+     x86_64: '8327ac7e2f24efc25ad4cf545e61f3a941ea4aa4728374961326d6f6594afdb0'
   })
 
   depends_on 'acl' # R
