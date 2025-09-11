@@ -1020,11 +1020,13 @@ def shrink_dir(dir)
 end
 
 def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/local')))
-  # List dst contents if not empty, as this may cause an error.
-  system "ls -aFl #{dst}" if Dir.exist?(dst)
   if Dir.exist?(src)
     if File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR
-      system "crew-mvdir #{@short_verbose} #{src} #{dst}", exception: true
+      unless system "crew-mvdir #{@short_verbose} #{src} #{dst}"
+        puts "src is #{src}".lightred
+        puts "dst is #{dst}".lightred
+        system "ls -aFl #{dst}"
+      end
     else
       warn 'crew-mvdir is not installed. Please install it with \'crew install crew_mvdir\' for improved installation performance'.yellow unless (@pkg.name == 'crew_mvdir') || CREW_DISABLE_MVDIR
 
