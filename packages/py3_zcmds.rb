@@ -10,14 +10,7 @@ class Py3_zcmds < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: 'aaaaa',
-     armv7l: 'aaaaa',
-       i686: 'bbbbb',
-     x86_64: 'ccccc'
-  })
-
-  depends_on 'python3' # R
+  binary_sha256({})
 
   no_source_build
 end
