@@ -4775,6 +4775,16 @@ url: https://github.com/nghttp2/nghttp2/releases
 activity: high
 ---
 kind: url
+name: libnghttp3
+url: https://github.com/ngtcp2/nghttp3/releases
+activity: high
+---
+kind: url
+name: libngtcp2
+url: https://github.com/ngtcp2/ngtcp2/releases
+activity: high
+---
+kind: url
 name: libnl3
 url: http://www.infradead.org/~tgr/libnl/files
 activity: none
