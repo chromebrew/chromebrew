@@ -1,4 +1,4 @@
-# Total size: 3699874
+# Total size: 3700472
 /usr/local/include/gnome-desktop-3.0/libgnome-desktop/gnome-bg-crossfade.h
 /usr/local/include/gnome-desktop-3.0/libgnome-desktop/gnome-bg-slide-show.h
 /usr/local/include/gnome-desktop-3.0/libgnome-desktop/gnome-bg.h
@@ -33,16 +33,16 @@
 /usr/local/lib64/girepository-1.0/GnomeRR-4.0.typelib
 /usr/local/lib64/libgnome-bg-4.so
 /usr/local/lib64/libgnome-bg-4.so.2
-/usr/local/lib64/libgnome-bg-4.so.2.1.3
+/usr/local/lib64/libgnome-bg-4.so.2.1.4
 /usr/local/lib64/libgnome-desktop-3.so
 /usr/local/lib64/libgnome-desktop-3.so.20
 /usr/local/lib64/libgnome-desktop-3.so.20.0.0
 /usr/local/lib64/libgnome-desktop-4.so
 /usr/local/lib64/libgnome-desktop-4.so.2
-/usr/local/lib64/libgnome-desktop-4.so.2.1.3
+/usr/local/lib64/libgnome-desktop-4.so.2.1.4
 /usr/local/lib64/libgnome-rr-4.so
 /usr/local/lib64/libgnome-rr-4.so.2
-/usr/local/lib64/libgnome-rr-4.so.2.1.3
+/usr/local/lib64/libgnome-rr-4.so.2.1.4
 /usr/local/lib64/pkgconfig/gnome-bg-4.pc
 /usr/local/lib64/pkgconfig/gnome-desktop-3.0.pc
 /usr/local/lib64/pkgconfig/gnome-desktop-4.pc
