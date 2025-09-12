@@ -201,6 +201,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
     { pkg_name: 'python3', anitya_pkg: 'python', comments: 'Prefer to GitHub' },
     { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
+    { pkg_name: 'smbclient', anitya_pkg: 'samba', comments: '' },
     { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'webkitgtk_6', anitya_pkg: 'webkitgtk~stable', comments: '' },
     { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' },
