@@ -19,7 +19,6 @@ class Fish < CMake
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'ncurses' # R
   depends_on 'pcre2' # R
 
   cmake_options "-DCURSES_INCLUDE_PATH=#{CREW_PREFIX}/include/ncurses"
