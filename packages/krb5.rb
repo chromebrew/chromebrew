@@ -11,10 +11,10 @@ class Krb5 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3c9b9dd47e77adf9a413c6e5475017c0bb18b3498bd59985ce689c26c603098b',
-     armv7l: '3c9b9dd47e77adf9a413c6e5475017c0bb18b3498bd59985ce689c26c603098b',
-       i686: '6af0d60a68a5b63aaed64552e94e99cc9238ce4ebcf9e2bb25017c993b0e149d',
-     x86_64: 'e73598b85c21ad90e56fe48b7af09f287c3a5962a2c7c57e35dd3090ebdccd20'
+    aarch64: '62318d53977497f7bf6c6038f5d17603685af369b8ba35ae1fa705e9f084bc59',
+     armv7l: '62318d53977497f7bf6c6038f5d17603685af369b8ba35ae1fa705e9f084bc59',
+       i686: 'd08304b052307c1ad9d484f405ab7452e8bf9250fd9a62473e6e4fec1fe4db05',
+     x86_64: '6f0019b8f7c1d58dcdd4ddaf6dc74f3d59c52f43fa7ffabe0da05dccfdb36afd'
   })
 
   depends_on 'ccache' => :build
