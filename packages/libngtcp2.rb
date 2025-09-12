@@ -20,9 +20,9 @@ class Libngtcp2 < CMake
      x86_64: '8448ad32f77ba4d2ff1ef33e5d579ec2ae1d716eff778ce3701f8198486f5221'
   })
 
-  depends_on 'brotli' # R
+  depends_on 'glibc' # R
   depends_on 'gnutls' # R
-  depends_on 'libnghttp3' # R
+  depends_on 'openssl' # R
 
   cmake_options '-DENABLE_GNUTLS=ON \
                  -DENABLE_LIB_ONLY=ON'
