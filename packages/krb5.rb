@@ -1,12 +1,12 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Krb5 < Package
+class Krb5 < Autotools
   description 'Kerberos is a network authentication protocol.'
   homepage 'https://web.mit.edu/kerberos/'
-  version '1.21.2'
+  version '1.22.1'
   license 'openafs-krb5-a, BSD, MIT, OPENLDAP, BSD-2, HPND, BSD-4, ISC, RSA, CC-BY-SA-3.0 and BSD-2 or GPL-2+ )'
   compatibility 'all'
-  source_url 'https://web.mit.edu/kerberos//dist/krb5/1.21/krb5-1.21.2.tar.gz'
+  source_url "https://web.mit.edu/kerberos/dist/krb5/#{version.split('.')[0..1].join('.')}/krb5-#{version}.tar.gz"
   source_sha256 '9560941a9d843c0243a71b17a7ac6fe31c7cebb5bce3983db79e52ae7e850491'
   binary_compression 'tar.zst'
 
@@ -23,28 +23,11 @@ class Krb5 < Package
   depends_on 'glibc' # R
   depends_on 'openssl' # R
 
-  def self.build
-    Dir.chdir 'src' do
-      # krb5 built with gcc10 or newer needs -fcommon
-      # See https://github.com/ripple/rippled/pull/3813
-      @cppflags = "#{CREW_COMMON_FLAGS} -I#{CREW_PREFIX}/include/et -fcommon"
-      @path = "#{CREW_PREFIX}/bin:" + ENV.fetch('PATH', nil)
-      system "CPPFLAGS='#{@cppflags}' \
-      PATH=#{@path} \
-      ./configure #{CREW_CONFIGURE_OPTIONS} \
-      --localstatedir=#{CREW_PREFIX}/var/krb5kdc \
+  autotools_build_relative_dir 'src'
+
+  autotools_configure_options "--localstatedir=#{CREW_PREFIX}/var/krb5kdc \
       --enable-shared \
       --with-system-et \
       --with-system-ss \
       --without-system-verto"
-      system "env PATH=#{@path} \
-      make -j#{CREW_NPROC}"
-    end
-  end
-
-  def self.install
-    Dir.chdir 'src' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
 end
