@@ -22,6 +22,7 @@ class Gnutls < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
+  depends_on 'gperf' => :build
   depends_on 'libffi' => :build
   depends_on 'libidn2' # R
   depends_on 'libtasn1' # R
@@ -31,6 +32,7 @@ class Gnutls < Autotools
   depends_on 'openssl' # R
   depends_on 'p11kit' # R
   depends_on 'trousers' => :build
+  depends_on 'wget2' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
