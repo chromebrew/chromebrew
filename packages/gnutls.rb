@@ -6,8 +6,8 @@ class Gnutls < Autotools
   version '3.8.10'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-#{version}.tar.xz"
-  source_sha256 'db7fab7cce791e7727ebbef2334301c821d79a550ec55c9ef096b610b03eb6b7'
+  source_url 'https://gitlab.com/gnutls/gnutls.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
