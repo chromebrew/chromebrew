@@ -11,10 +11,10 @@ class Gnutls < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9e18ff0e8ab2abc61e898f3cea01952608405a97217a8b997a33b87145c5c409',
-     armv7l: '9e18ff0e8ab2abc61e898f3cea01952608405a97217a8b997a33b87145c5c409',
-       i686: '38745b4e51abac40bb37e4b8ce7c8adaf0d79617214eaa178d58c8f537399bc1',
-     x86_64: 'b1be5700a0f61150573c8220ccc385851fcb52d8da263b5ff22d0f1991a6fc54'
+    aarch64: '6bf6383720452dffe6d47406e6c45c7d3e4a4d0c2fbc66f104bf0244fa07b97c',
+     armv7l: '6bf6383720452dffe6d47406e6c45c7d3e4a4d0c2fbc66f104bf0244fa07b97c',
+       i686: 'c6173981e16c390d062c690722d5a15760160ed490190ffd3dac421cded67d6a',
+     x86_64: '87ba4e6a5f41eb4cbd90045b5dbb0714afcbc5f71dd7d98bdebaa3178dfe4592'
   })
 
   depends_on 'brotli' # R
@@ -46,7 +46,9 @@ class Gnutls < Autotools
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
   end
 
-  autotools_configure_options "--enable-shared \
+  autotools_configure_options "--disable-doc \
+      --enable-manpages \
+      --enable-shared \
       --with-pic \
       --with-system-priority-file=#{CREW_PREFIX}/etc/gnutls/default-priorities \
       --with-trousers-lib=#{CREW_LIB_PREFIX}/libtspi.so.1 \
