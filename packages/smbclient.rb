@@ -83,7 +83,7 @@ class Smbclient < Package
       --with-configdir=#{CREW_PREFIX}/etc/samba \
       --with-lockdir=#{CREW_PREFIX}/var/cache/samba \
       --builtin-libraries=NONE \
-      --bundled-libraries=!tdb,!talloc,!pytalloc-util,!tevent,!popt,!pyldb-util,NONE \
+      --bundled-libraries=!tdb,!talloc,!pytalloc-util,!tevent,!popt,!pyldb-util \
       --disable-python \
       --disable-rpath \
       --disable-rpath-install \
