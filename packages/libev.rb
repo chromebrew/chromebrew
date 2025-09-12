@@ -1,28 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libev < Package
+class Libev < Autotools
   description 'High-performance event loop loosely modelled after libevent'
   homepage 'http://software.schmorp.de/pkg/libev.html'
-  version '4.33'
+  version '4.33-1'
   license 'BSD or GPL-2'
   compatibility 'all'
-  source_url 'http://dist.schmorp.de/libev/libev-4.33.tar.gz'
+  source_url "http://dist.schmorp.de/libev/libev-#{version.split('-').first}.tar.gz"
   source_sha256 '507eb7b8d1015fbec5b935f34ebed15bf346bed04a11ab82b8eee848c4205aea'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5f7069c002c4af865bb190301478f9ab7b40e729e31addf77a35cb4472c8483d',
-     armv7l: '5f7069c002c4af865bb190301478f9ab7b40e729e31addf77a35cb4472c8483d',
-       i686: 'd079e81b116054cf936fe1d3396582911432b8acc203cbdf3babd1df6e4dac9f',
-     x86_64: 'dfb18c0c4dbee0bb6b0ca5cdacbb77ba1fb40f8b77e93f02f791b79871e467c2'
+    aarch64: '2a92780957f22e1bf258fef67d14853fbaab5a5dc8277c31427858713a5f8dca',
+     armv7l: '2a92780957f22e1bf258fef67d14853fbaab5a5dc8277c31427858713a5f8dca',
+       i686: '152853c45d79d0391ff45c9784994997b91ea733d1f014eb9d21bd7bd3e6b95e',
+     x86_64: 'c8176dfc182d24c1a0fa9146cd3e8db22210fbb50ab58885843e59f5421cdfe2'
   })
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system "make -j#{CREW_NPROC}"
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
 end
