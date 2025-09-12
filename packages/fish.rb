@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Fish < CMake
   description 'fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family.'
   homepage 'https://fishshell.com/'
-  version '3.7.1'
+  version '4.0.6'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/fish-shell/fish-shell.git'
