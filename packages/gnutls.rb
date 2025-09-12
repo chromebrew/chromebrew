@@ -23,6 +23,7 @@ class Gnutls < Autotools
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'gperf' => :build
+  depends_on 'libev' => :build
   depends_on 'libffi' => :build
   depends_on 'libidn2' # R
   depends_on 'libtasn1' # R
