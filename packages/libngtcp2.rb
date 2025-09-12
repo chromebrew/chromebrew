@@ -14,10 +14,10 @@ class Libngtcp2 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '90403f60545cd79ac583afa0cd242b4f0a336a9ed6457bf058a0cddcbfb151c1',
-     armv7l: '90403f60545cd79ac583afa0cd242b4f0a336a9ed6457bf058a0cddcbfb151c1',
-       i686: 'a005276c8bedf7f54ccbf3cd63b67524e97022d5a5eb23f1a911dabff52ce575',
-     x86_64: '8448ad32f77ba4d2ff1ef33e5d579ec2ae1d716eff778ce3701f8198486f5221'
+    aarch64: 'e614cbdbba9b8c2bd5a63122fe2662b961e4a05aaef1f8e78e191f6ff34d2169',
+     armv7l: 'e614cbdbba9b8c2bd5a63122fe2662b961e4a05aaef1f8e78e191f6ff34d2169',
+       i686: '6a353295c0aec7155d96c432d40408d146012f4c95c9357e67be5a2a4db79a65',
+     x86_64: '91ae00d0036b90e0a8ab460b3a4d8172177d3ee063d27b35ed511981b84af0c3'
   })
 
   depends_on 'glibc' # R
