@@ -29,6 +29,7 @@ class Smbclient < Package
   depends_on 'gpgme' => :build
   depends_on 'icu4c' # R
   depends_on 'jansson' # R
+  depends_on 'krb5' => :build
   depends_on 'ldb' # R
   depends_on 'libarchive' # R
   depends_on 'libbsd' # R
@@ -96,6 +97,7 @@ class Smbclient < Package
       --with-piddir=/run \
       --with-profiling-data \
       --with-shared-modules=#{@samba4_idmap_modules},#{@samba4_pdb_modules},#{@samba4_auth_modules},vfs_io_uring \
+      --with-system-mitkrb5 \
       --with-sockets-dir=/run/samba \
       --without-ad-dc \
       --with-winbind \
