@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/rust'
 
-class Hurl < Package
+class Hurl < RUST
   description 'Hurl is a command line tool that runs HTTP requests defined in a simple plain text format.'
   homepage 'https://hurl.dev/'
   version '7.0.0'
@@ -11,24 +11,21 @@ class Hurl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '59132b9e9ab44687e074a9417e8172a3e09653ac1256df9fa7dd38ecc5b341f0'
+     x86_64: 'bae3d7291c2046ee47a49ba34061188fbba9b397e9f6f731bcb973ed8c30d5c2'
   })
 
+  depends_on 'curl' # R
+  depends_on 'curl' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libxml2' # R
+  depends_on 'llvm_dev' => :build
+  depends_on 'openssl' => :build
   depends_on 'rust' => :build
-  depends_on 'curl'
-  depends_on 'libxml2'
-  depends_on 'openssl'
 
-  def self.build
-    system 'cargo build --release'
-  end
+  rust_install_path 'packages/hurl packages/hurlfmt'
 
-  def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
-    Dir.chdir 'target/release' do
-      FileUtils.install %w[hurl hurlfmt], "#{CREW_DEST_PREFIX}/bin", mode: 0o755
-    end
+  rust_install_extras do
     Dir.chdir 'docs/manual' do
       FileUtils.install %w[hurl.1 hurlfmt.1], "#{CREW_DEST_MAN_PREFIX}/man1", mode: 0o644
     end
