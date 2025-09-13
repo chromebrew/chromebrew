@@ -13,7 +13,7 @@ class Inetutils < Autotools
   binary_sha256({
     aarch64: 'c326018755ce8ecc004d4edc2a9fc7045b68b32934208e8ab6fbfa6298fe0672',
      armv7l: 'c326018755ce8ecc004d4edc2a9fc7045b68b32934208e8ab6fbfa6298fe0672',
-       i686: '93a20710d45f50846071946dfcb63073c872baeff233d00942aa40d61dc84ded',
+       i686: '383ee756feeebac0c6d0cbb58b2d1023c09708da76e6e7e9045f0aef8bbbd1d7',
      x86_64: '73cb5f01b5ff1cb5d7035f47a74acef04bec7a56c6ea899ae87ac016d7ce35a5'
   })
 
