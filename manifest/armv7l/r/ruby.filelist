@@ -1,4 +1,4 @@
-# Total size: 40875512
+# Total size: 40873819
 /home/chronos/user/.gemrc
 /usr/local/bin/bundle
 /usr/local/bin/bundler
@@ -2389,7 +2389,7 @@
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/pathname-0.4.0.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/pp-0.6.2.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/prettyprint-0.2.0.gemspec
-/usr/local/lib/ruby/gems/3.4.0/specifications/default/prism-1.3.1.gemspec
+/usr/local/lib/ruby/gems/3.4.0/specifications/default/prism-1.2.0.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/pstore-0.1.4.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/psych-5.2.2.gemspec
 /usr/local/lib/ruby/gems/3.4.0/specifications/default/rdoc-6.14.0.gemspec
