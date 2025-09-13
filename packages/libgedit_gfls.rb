@@ -8,7 +8,7 @@ class Libgedit_gfls < Meson
   homepage 'https://gitlab.gnome.org/World/gedit/libgedit-gfls'
   version '0.3.0'
   license 'LGPL-3.0-or-later'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/World/gedit/libgedit-gfls.git'
   git_hashtag version
   binary_compression 'tar.zst'
