@@ -11,10 +11,10 @@ class Inetutils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f01833856fc5199d6b116fe6c5a1ef446a0063cbaaf61b031910e29b785898c4',
-     armv7l: 'f01833856fc5199d6b116fe6c5a1ef446a0063cbaaf61b031910e29b785898c4',
-       i686: '135835e0aba58d421bf1a6fd6067c777429be7a862d0d3d0f341788bfe2fbb2d',
-     x86_64: 'e982be9a2ecc72bb21acc17f6edcd666789c36086a998f4da2691ced76251b95'
+    aarch64: 'c326018755ce8ecc004d4edc2a9fc7045b68b32934208e8ab6fbfa6298fe0672',
+     armv7l: 'c326018755ce8ecc004d4edc2a9fc7045b68b32934208e8ab6fbfa6298fe0672',
+       i686: '93a20710d45f50846071946dfcb63073c872baeff233d00942aa40d61dc84ded',
+     x86_64: '73cb5f01b5ff1cb5d7035f47a74acef04bec7a56c6ea899ae87ac016d7ce35a5'
   })
 
   depends_on 'e2fsprogs' # R
