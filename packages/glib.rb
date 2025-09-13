@@ -2,8 +2,8 @@ require 'buildsystems/meson'
 
 class Glib < Meson
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
-  homepage 'https://docs.gtk.org/glib/'
-  version '2.85.2'
+  homepage 'https://developer.gnome.org/glib'
+  version '2.86.0'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'
@@ -11,10 +11,10 @@ class Glib < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3db8cbdb2b4e7d3c03276a785d783b77fe36ebc216d425a66e9fa8eaf80cfc6c',
-     armv7l: '3db8cbdb2b4e7d3c03276a785d783b77fe36ebc216d425a66e9fa8eaf80cfc6c',
-       i686: 'ef996bd4c92fd368565c654fd86f014d590d7c52fc7d818de61d6984faaa4677',
-     x86_64: '937e03ddaaee89539505f843f5bc36b57c0ad7a8611700aa58ecb8238d0e3db8'
+    aarch64: '9dd914a165ec477952974197531ef5a3163a93a60f19478b1691050070eb6afc',
+     armv7l: '9dd914a165ec477952974197531ef5a3163a93a60f19478b1691050070eb6afc',
+       i686: '8d6728712ffc56e8d9496c9dba31175a0dab3cb4c9fa1b920b3c08046d305640',
+     x86_64: '1e0210b3446d17767b9b88e66fd0b3e8c449790529d3221727c4f7832e38c62a'
   })
 
   depends_on 'elfutils' # R
