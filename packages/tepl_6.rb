@@ -18,8 +18,8 @@ class Tepl_6 < Meson
 
   depends_on 'cairo' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gsettings_desktop_schemas' => :build
   depends_on 'gtk3' # R
@@ -28,10 +28,11 @@ class Tepl_6 < Meson
   depends_on 'libgedit_amtk' # R
   depends_on 'libgedit_gfls' # R
   depends_on 'libgedit_gtksourceview' # R
+  depends_on 'libhandy' # R
+  depends_on 'libhandy' # R
   depends_on 'libhandy' => :build
   depends_on 'pango' # R
   depends_on 'vala' => :build
-  depends_on 'libhandy' # R
 
   gnome
 
