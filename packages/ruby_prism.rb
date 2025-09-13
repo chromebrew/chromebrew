@@ -10,10 +10,10 @@ class Ruby_prism < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'd908e2c934963e6bcf6a1e5d5ca1acdfe4fd0b435b8cc6d748e0a92195d31bb6',
-     armv7l: 'd908e2c934963e6bcf6a1e5d5ca1acdfe4fd0b435b8cc6d748e0a92195d31bb6',
-       i686: '5056af7b2af7f10a743d1d3c884d39f9e1b860892096f2cb9c94277b888843f8',
-     x86_64: 'e93b758028a8f31a3d3ff02ee099cb4da57ba1ca03805e12cbde8b16b4ac21fb'
+    aarch64: 'c4d09aa98c508100a6812ccd498f4a16bc2d03719ce600516ec5b987c4497b57',
+     armv7l: 'c4d09aa98c508100a6812ccd498f4a16bc2d03719ce600516ec5b987c4497b57',
+       i686: '3e93a7123018b0a90346410092c9276e2c073ce128c8c1e26cc816ba0deec6b1',
+     x86_64: '983e0aae35c3340e764b86efd19650e5612fac86b4d5d0c76f45c64cafe33ba5'
   })
 
   conflicts_ok
