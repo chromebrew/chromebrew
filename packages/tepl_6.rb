@@ -11,9 +11,9 @@ class Tepl_6 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '90aee89081b04bc5cd5acd569f08f8daa283dfeee45252ddb0d3cd66cb8ab7fb',
-     armv7l: '90aee89081b04bc5cd5acd569f08f8daa283dfeee45252ddb0d3cd66cb8ab7fb',
-     x86_64: '8bb15f270de6bc2ed4ad6177e97c11d8f9dc38dce9dbe154e17868ce57646ec5'
+    aarch64: '7f3bbee8e7ba59106959ee11dad127f761ac66e8ba0d926f8a82f0eb6cdfbeae',
+     armv7l: '7f3bbee8e7ba59106959ee11dad127f761ac66e8ba0d926f8a82f0eb6cdfbeae',
+     x86_64: '640e74588abc0727dd353a3b1559378b56570aa57a35ab4c590b08c95ba2800c'
   })
 
   depends_on 'cairo' # R
