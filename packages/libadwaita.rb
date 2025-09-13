@@ -18,30 +18,25 @@ class Libadwaita < Meson
 
   depends_on 'appstream' # R
   depends_on 'cairo' => :build
-  depends_on 'curl' # R
   depends_on 'fribidi' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' => :build
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
   depends_on 'graphene' # R
-  # Keep the gtk4 dependency from being pulled in during a gtk3 build.
-  depends_on 'gtk4' unless ancestors[0].to_s.split('::')[1].downcase == 'gtk3' # R
   depends_on 'harfbuzz' => :build
   depends_on 'libjpeg_turbo' => :build
   depends_on 'libsass' => :build
-  depends_on 'libxml2' # R
-  depends_on 'libyaml' # R
   depends_on 'pango' # R
   depends_on 'py3_gi_docgen' => :build
   depends_on 'sassc' => :build
   depends_on 'vala' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
-  depends_on 'xzutils' # R
-  depends_on 'zstd' # R
+
+  # Keep the gtk4 dependency from being pulled in during a gtk3 build.
 
   gnome
 
