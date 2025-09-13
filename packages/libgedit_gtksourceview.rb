@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libgedit_gtksourceview < Meson
   description 'A library that extends GtkTextView, the standard GTK '
   homepage 'https://gedit-technology.github.io'
-  version '299.2.1'
+  version '299.5.0'
   license 'LGPL2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/gedit-technology/libgedit-gtksourceview.git'
