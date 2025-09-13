@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libgedit_gfls < Meson
   description 'A module dedicated to file loading and saving.'
   homepage 'https://gitlab.gnome.org/World/gedit/libgedit-gfls'
-  version '0.1.0'
+  version '0.3.0'
   license 'LGPL-3.0-or-later'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/World/gedit/libgedit-gfls.git'
@@ -14,10 +14,13 @@ class Libgedit_gfls < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5a38524bfffb0acba0ecb60c5c34fbee3d0fe2453537d6830801b317afcff632',
-     armv7l: '5a38524bfffb0acba0ecb60c5c34fbee3d0fe2453537d6830801b317afcff632',
-     x86_64: 'fc3dbebc7df1faef769ca9ec8206520c4a8d2ee2cd111b019ab6e5b8d7670778'
+    aarch64: 'f55c6cfe11d52ef37e4f2e58a64fc721c0d6176245e44356de5785b9cea5092f',
+     armv7l: 'f55c6cfe11d52ef37e4f2e58a64fc721c0d6176245e44356de5785b9cea5092f',
+     x86_64: '19e7d404fd0f75be23e179a2db1b7468dbe6b10ad86161eb0f6f1f6d5bc6576c'
   })
+
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
 
   meson_options '-Dgtk_doc=false'
 end
