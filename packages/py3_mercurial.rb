@@ -19,6 +19,7 @@ class Py3_mercurial < Pip
   depends_on 'glibc' # R
   depends_on 'py3_docutils' => :build
   depends_on 'python3' # L
+  depends_on 'python3' # R
   depends_on 'texinfo' => :build
 
   no_source_build
