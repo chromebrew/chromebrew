@@ -23,8 +23,8 @@ if ARGV.include?('--use-crew-dest-dir')
   @opt_use_crew_dest_dir = true
 end
 
-# Exit quickly if an invalid package name is given.
-if ARGV[0].nil? || ARGV[0].empty? || ARGV[0].include?('#')
+# If we're running as a script, exit quickly if an invalid package name is given.
+if __FILE__ == $PROGRAM_NAME && (ARGV[0].nil? || ARGV[0].empty? || ARGV[0].include?('#'))
   puts 'Getrealdeps checks for the runtime dependencies of a package.'
   puts 'The runtime dependencies are added if the package file is missing them.'
   puts 'Usage: getrealdeps.rb [--use_crew_dest_dir] <packagename>'
