@@ -203,7 +203,6 @@ class GetRealDepsTest < Minitest::Test
     test_wrapper(input_file, expected_pkg_file, deps)
   end
 
-  # TODO: The expected output in this case could be improved.
   def test_add_special_duplicate_dependency
     deps = ['python3']
     input_file = <<~EOF
@@ -219,7 +218,6 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'libnftnl'
-        depends_on 'python3' # R
         depends_on 'python3' # R
       end
     EOF
