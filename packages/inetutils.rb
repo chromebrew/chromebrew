@@ -20,8 +20,7 @@ class Inetutils < Autotools
   depends_on 'e2fsprogs' # R
   depends_on 'glibc' # R
   depends_on 'krb5' # R
-  depends_on 'libcap' # R
-  depends_on 'linux_pam' # R
+  depends_on 'libxcrypt' # R
   depends_on 'ncurses' # R
   depends_on 'readline' # R
 
