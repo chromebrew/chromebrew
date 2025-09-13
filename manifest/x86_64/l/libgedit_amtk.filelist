@@ -1,4 +1,4 @@
-# Total size: 314226
+# Total size: 314806
 /usr/local/include/libgedit-amtk-5/amtk/amtk-action-info-central-store.h
 /usr/local/include/libgedit-amtk-5/amtk/amtk-action-info-store.h
 /usr/local/include/libgedit-amtk-5/amtk/amtk-action-info.h
@@ -18,6 +18,7 @@
 /usr/local/lib64/libgedit-amtk-5.so.0
 /usr/local/lib64/pkgconfig/libgedit-amtk-5.pc
 /usr/local/share/gir-1.0/Amtk-5.gir
+/usr/local/share/locale/be/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/ca/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/cs/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/da/LC_MESSAGES/libgedit-amtk-5.mo
@@ -33,6 +34,7 @@
 /usr/local/share/locale/id/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/it/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/ja/LC_MESSAGES/libgedit-amtk-5.mo
+/usr/local/share/locale/ka/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/lt/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/ms/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/nl/LC_MESSAGES/libgedit-amtk-5.mo

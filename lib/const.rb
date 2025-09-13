@@ -195,6 +195,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'libnghttp3', anitya_pkg: 'nghttp3', comments: '' },
     { pkg_name: 'libngtcp2', anitya_pkg: 'ngtcp2', comments: '' },
+    { pkg_name: 'libgedit_amtk', anitya_pkg: 'libgedit-amtk', comments: 'Prefer to GitHub' },
     { pkg_name: 'libgedit_gtksourceview', anitya_pkg: 'libgedit-gtksourceview', comments: 'Prefer to GitHub' },
     { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
     { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
