@@ -6,7 +6,7 @@ class Haproxy < Package
   version '3.2.4'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url "https://www.haproxy.org/download/3.0/src/haproxy-#{version}.tar.gz"
+  source_url "https://www.haproxy.org/download/#{version.split('.')[0..1].join('.')}/src/haproxy-#{version}.tar.gz"
   source_sha256 '624f911f80a6aaf047d3bedc51bd2d282fd31bf664fa205b1f447a537a055c1d'
   binary_compression 'tar.zst'
 
