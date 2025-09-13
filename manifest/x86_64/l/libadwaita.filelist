@@ -1,4 +1,4 @@
-# Total size: 5280238
+# Total size: 5172592
 /usr/local/include/libadwaita-1/adw-about-dialog.h
 /usr/local/include/libadwaita-1/adw-about-window.h
 /usr/local/include/libadwaita-1/adw-accent-color.h
@@ -138,5 +138,3 @@
 /usr/local/share/locale/vi/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/libadwaita.mo
-/usr/local/share/vala/vapi/libadwaita-1.deps
-/usr/local/share/vala/vapi/libadwaita-1.vapi
