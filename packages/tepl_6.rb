@@ -29,8 +29,6 @@ class Tepl_6 < Meson
   depends_on 'libgedit_gfls' # R
   depends_on 'libgedit_gtksourceview' # R
   depends_on 'libhandy' # R
-  depends_on 'libhandy' # R
-  depends_on 'libhandy' => :build
   depends_on 'pango' # R
   depends_on 'vala' => :build
 
