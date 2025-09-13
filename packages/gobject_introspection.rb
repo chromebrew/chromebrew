@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gobject_introspection < Meson
   description 'GObject introspection is a middleware layer between C libraries (using GObject) and language bindings.'
   homepage 'https://wiki.gnome.org/action/show/Projects/GObjectIntrospection'
-  version "1.84.0-#{CREW_PY_VER}-1"
+  version "1.86.0-#{CREW_PY_VER}"
   license 'LGPL-2+ and GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gobject-introspection.git'
