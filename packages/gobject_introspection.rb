@@ -11,17 +11,17 @@ class Gobject_introspection < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bea97d98d6886729d5103b51fc977dc4c0895ef9ae6d57e1172f61acf9cef28f',
-     armv7l: 'bea97d98d6886729d5103b51fc977dc4c0895ef9ae6d57e1172f61acf9cef28f',
-     x86_64: 'cc92e25026d88db508795b6aa880a48496a508df00dea842f57d366cf19cfa48'
+    aarch64: 'a5cba3d959a91159377d03ae4e7d4c60d9751b2999fc9b2be7490f4d32249658',
+     armv7l: 'a5cba3d959a91159377d03ae4e7d4c60d9751b2999fc9b2be7490f4d32249658',
+     x86_64: 'd75b5ede1e0a437e514a770521037324a026c4799f9fbc78fa1f372236f62dd5'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'libffi' # R
-  depends_on 'python3' # R
   depends_on 'py3_setuptools' => :build
+  depends_on 'python3' # R
 
   gnome
 end
