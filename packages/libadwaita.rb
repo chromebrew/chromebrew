@@ -48,5 +48,6 @@ class Libadwaita < Meson
   meson_options '-Dintrospection=enabled \
             -Dexamples=false \
             -Ddocumentation=false \
-            -Dtests=false'
+            -Dtests=false \
+            -Dvapi=false'
 end
