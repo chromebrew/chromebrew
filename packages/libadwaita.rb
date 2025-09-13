@@ -11,9 +11,9 @@ class Libadwaita < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ec3ccbc0da68a25293f9df687cfb20964409f2438ea8f8ae17544dd145ccfab3',
-     armv7l: 'ec3ccbc0da68a25293f9df687cfb20964409f2438ea8f8ae17544dd145ccfab3',
-     x86_64: '5da3bd5e81264b886cd5086ef5345aed9201e0344a3058216c6e228002e29dba'
+    aarch64: 'b0e0b175e7143f603c853093bb0418f211b3fdfd87ee7b2a2fd96bad1d3f527c',
+     armv7l: 'b0e0b175e7143f603c853093bb0418f211b3fdfd87ee7b2a2fd96bad1d3f527c',
+     x86_64: '9e7c5b55f927620903c2ec41557b7f183e9ad7285ad9be6df46c588842dc020a'
   })
 
   depends_on 'appstream' # R
