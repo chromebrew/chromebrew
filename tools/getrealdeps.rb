@@ -44,18 +44,18 @@ end
 
 # Write the missing dependencies to the package file.
 def write_deps(pkg_file, pkgdeps, pkg)
-  # Look for missing runtime dependencies, ignoring build and optional deps.
-  missingpkgdeps = pkgdeps.reject { |i| File.read(pkg_file).include?("depends_on '#{i}'") unless File.read(pkg_file).include?("depends_on '#{i}' => :build") || File.read(pkg_file).include?("# depends_on '#{i}' # R (optional)") }
-
   # Add special deps for perl, pip, python, and ruby gem packages.
   case pkg.superclass.to_s
   when 'PERL'
-    missingpkgdeps << 'perl'
+    pkgdeps << 'perl'
   when 'Pip', 'Python'
-    missingpkgdeps << 'python3'
+    pkgdeps << 'python3'
   when 'RUBY'
-    missingpkgdeps << 'ruby'
+    pkgdeps << 'ruby'
   end
+
+  # Look for missing runtime dependencies, ignoring build and optional deps.
+  missingpkgdeps = pkgdeps.reject { |i| File.read(pkg_file).include?("depends_on '#{i}'") unless File.read(pkg_file).include?("depends_on '#{i}' => :build") || File.read(pkg_file).include?("# depends_on '#{i}' # R (optional)") }
 
   # These deps are sometimes architecture dependent or should not be
   # removed for other reasons.
