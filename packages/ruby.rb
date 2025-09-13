@@ -3,11 +3,11 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.5-09c0670'
+  version '3.4.5-9cd1ac4'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag '09c067014fa27ad91d310de6a64b7a4443d7da0c'
+  git_hashtag '9cd1ac404e72587952d019df167e7793924699d6'
   # git_hashtag "v#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
@@ -39,12 +39,6 @@ class Ruby < Package
     # compile needed gems during install can cause issues when updates
     # are attempted.
     downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems'
-
-    patches = [
-      # Update prism to 1.5.1.
-      ['https://github.com/ruby/ruby/commit/f4ce5e90b2b9a4ccc7b4a0a25416c577142d2877.patch', '7e59633bdc49acb310405ab61752bd9c52e0a4341073db650343f2c285184786']
-    ]
-    ConvenienceFunctions.patch(patches)
   end
 
   def self.build
