@@ -17,7 +17,8 @@ class Haproxy < Package
      x86_64: 'dc66ae60730d8eeaefbadad6a0a0c949d650e1f3b76e9a81f8526aabb020492b'
   })
 
-  depends_on 'pcre2'
+  depends_on 'glibc' # R
+  depends_on 'zlib' # R
 
   no_fhs
 
