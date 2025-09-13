@@ -44,6 +44,10 @@ class Inetutils < Autotools
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    # Handle conflict with the uutils_coreutils hostname.
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/hostname", "#{CREW_DEST_PREFIX}/bin/inetutils_hostname"
+    FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man1/hostname.1", "#{CREW_DEST_MAN_PREFIX}/man1/inetutils_hostname.1"
+
     FileUtils.install "#{CREW_DEST_PREFIX}/bin/ping", "#{CREW_DEST_PREFIX}/bin/ping.elf", mode: 0o755
     FileUtils.install "#{CREW_DEST_PREFIX}/bin/ping6", "#{CREW_DEST_PREFIX}/bin/ping6.elf", mode: 0o755
     FileUtils.install "#{CREW_DEST_PREFIX}/bin/traceroute", "#{CREW_DEST_PREFIX}/bin/traceroute.elf", mode: 0o755
