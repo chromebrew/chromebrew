@@ -11,8 +11,8 @@ class Vala < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b0780c098de6f9a613c2c963e390bcebb5bea73222c345874e62fb4f761bafad',
-     armv7l: 'b0780c098de6f9a613c2c963e390bcebb5bea73222c345874e62fb4f761bafad',
+    aarch64: '6d503dc7421e47424458112704ce8e7597720fd5e9ca4fe7e017f27081e3c094',
+     armv7l: '6d503dc7421e47424458112704ce8e7597720fd5e9ca4fe7e017f27081e3c094',
      x86_64: '98bf8c5cf34f6f564c90ed01b3a64218e48856aa6a853a3d9f161e1fd14ff3a9'
   })
 
