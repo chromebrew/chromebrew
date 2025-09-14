@@ -1,4 +1,4 @@
-# Total size: 97832
+# Total size: 115892
 /usr/local/bin/bunzip3
 /usr/local/bin/bz3cat
 /usr/local/bin/bz3grep
@@ -7,8 +7,9 @@
 /usr/local/bin/bz3most
 /usr/local/bin/bzip3
 /usr/local/include/libbz3.h
-/usr/local/lib64/cmake/bzip3/bzip3-config-release.cmake
 /usr/local/lib64/cmake/bzip3/bzip3-config.cmake
+/usr/local/lib64/cmake/bzip3/bzip3-targets-release.cmake
+/usr/local/lib64/cmake/bzip3/bzip3-targets.cmake
 /usr/local/lib64/libbzip3.so
 /usr/local/lib64/libbzip3.so.0
 /usr/local/lib64/libbzip3.so.0.0.0
