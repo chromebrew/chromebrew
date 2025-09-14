@@ -20,16 +20,12 @@ class Gedit < Meson
   depends_on 'desktop_file_utils' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gobject_introspection' # R
+  depends_on 'glibc' # R
   depends_on 'gsettings_desktop_schemas' # L
   depends_on 'gspell' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'hunspell' # R
-  depends_on 'libgedit_amtk' # R
-  depends_on 'libgedit_gtksourceview' # R
   depends_on 'libpeas' # R
   depends_on 'pango' # R
   depends_on 'py3_lxml' => :build
