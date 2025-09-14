@@ -3,11 +3,11 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.5-07f783-1'
+  version '3.4.5-9c65da0'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag '07f7832cffea879946a796e066ccb13ccb4b2abd'
+  git_hashtag '9c65da014548a141137e7e692699b129e3bc655f'
   # git_hashtag "v#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
@@ -38,13 +38,7 @@ class Ruby < Package
     # Download bundled gems version from Top of Tree. Otherwise outdated
     # compile needed gems during install can cause issues when updates
     # are attempted.
-    downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems'
-    
-    patches = [
-      # Update prism to 1.5.1.
-      ['https://github.com/ruby/ruby/commit/f4ce5e90b2b9a4ccc7b4a0a25416c577142d2877.patch', '7e59633bdc49acb310405ab61752bd9c52e0a4341073db650343f2c285184786']
-    ]
-    ConvenienceFunctions.patch(patches)
+    # downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems'
   end
 
   def self.build
@@ -78,6 +72,8 @@ class Ruby < Package
     GEMRCEOF
     FileUtils.mkdir_p CREW_DEST_HOME
     File.write("#{CREW_DEST_HOME}/.gemrc", @gemrc)
+    # As per discussion in https://github.com/ruby/ruby/pull/14532#issuecomment-3288983469
+    system "#{CREW_DEST_PREFIX}/bin/ruby -e \"require 'concurrent-ruby' ; puts 'success'\"", exception: true
   end
 
   def self.postinstall
