@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Bzip3 < CMake
   description 'bzip3 is a better and stronger spiritual successor to bzip2.'
   homepage 'https://github.com/kspalaiologos/bzip3'
-  version '1.3.2'
+  version '1.5.3'
   license 'LGPL-3'
   compatibility 'all'
   source_url 'https://github.com/kspalaiologos/bzip3.git'
