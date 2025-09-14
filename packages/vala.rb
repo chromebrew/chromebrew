@@ -3,7 +3,7 @@ require 'package'
 class Vala < Package
   description 'Vala is a programming language that aims to bring modern programming language features to GNOME developers.'
   homepage 'https://wiki.gnome.org/Projects/Vala'
-  version '0.56.16'
+  version '0.56.18'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/vala.git'
