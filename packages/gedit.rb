@@ -11,9 +11,9 @@ class Gedit < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '835806e05b5fb7054ca5bb06119aa013d556fe2d908bbb64ffb0230e223f45ed',
-     armv7l: '835806e05b5fb7054ca5bb06119aa013d556fe2d908bbb64ffb0230e223f45ed',
-     x86_64: '823f618c39d999744c11b10de1bf4499e4d130ba29a51f93f922c833b8849d8a'
+    aarch64: 'b2f680df1b9d04e1265deb33c369dcc0ae21fb53d00b24f8b390c0c76474efb7',
+     armv7l: 'b2f680df1b9d04e1265deb33c369dcc0ae21fb53d00b24f8b390c0c76474efb7',
+     x86_64: '7dfd711561470d782f37feb7d97510d9a2db059c7cd5b1dccbc7b023097a5cca'
   })
 
   depends_on 'cairo' # R
