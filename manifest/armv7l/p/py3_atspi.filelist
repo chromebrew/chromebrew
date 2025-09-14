@@ -1,4 +1,4 @@
-# Total size: 368447
+# Total size: 378299
 /usr/local/lib/python3.13/site-packages/pyatspi/Accessibility.py
 /usr/local/lib/python3.13/site-packages/pyatspi/__init__.py
 /usr/local/lib/python3.13/site-packages/pyatspi/__pycache__/Accessibility.cpython-313.pyc
@@ -14,6 +14,7 @@
 /usr/local/lib/python3.13/site-packages/pyatspi/__pycache__/document.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pyatspi/__pycache__/editabletext.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pyatspi/__pycache__/hypertext.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pyatspi/__pycache__/image.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pyatspi/__pycache__/interface.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pyatspi/__pycache__/registry.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pyatspi/__pycache__/role.cpython-313.pyc
@@ -35,6 +36,7 @@
 /usr/local/lib/python3.13/site-packages/pyatspi/document.py
 /usr/local/lib/python3.13/site-packages/pyatspi/editabletext.py
 /usr/local/lib/python3.13/site-packages/pyatspi/hypertext.py
+/usr/local/lib/python3.13/site-packages/pyatspi/image.py
 /usr/local/lib/python3.13/site-packages/pyatspi/interface.py
 /usr/local/lib/python3.13/site-packages/pyatspi/registry.py
 /usr/local/lib/python3.13/site-packages/pyatspi/role.py

@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Py3_atspi < Meson
   description 'Python bindings for D-Bus AT-SPI'
   homepage 'https://wiki.linuxfoundation.org/accessibility/atk/at-spi/at-spi_on_d-bus'
-  version "2.57.0-#{CREW_PY_VER}"
+  version "2.58.0-#{CREW_PY_VER}"
   license 'GPL2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/pyatspi2.git'
@@ -14,9 +14,9 @@ class Py3_atspi < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f703b5998188de9a3bbbc0a7d18980e25248ebf91d192704f1e3b1fabdccc196',
-     armv7l: 'f703b5998188de9a3bbbc0a7d18980e25248ebf91d192704f1e3b1fabdccc196',
-     x86_64: '1083d20bc9c59e3b4e103d237399fd4beae866f49f589b5f2eecbec03ed47c16'
+    aarch64: '90ae1d303780e1a70346f3d5a5f91c63f60b8a4b560564742d6d96952dfaad0a',
+     armv7l: '90ae1d303780e1a70346f3d5a5f91c63f60b8a4b560564742d6d96952dfaad0a',
+     x86_64: '651846c41d5842ede425fe43cd89a434c6f65607a01c675a2986f484eeaa64d0'
   })
 
   depends_on 'py3_pygobject'
