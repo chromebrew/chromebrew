@@ -7,7 +7,7 @@ class Vala_bootstrap < Package
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/Archive/vala-bootstrap.git'
-  git_hashtag 'b2beeaccdf2307ced172646c2ada9765e1747b28'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
