@@ -3875,6 +3875,11 @@ url: https://www.netlib.org/lapack/
 activity: none
 ---
 kind: url
+name: lazygit
+url: https://github.com/jesseduffield/lazygit/releases
+activity: high
+---
+kind: url
 name: lcms
 url: https://sourceforge.net/projects/lcms/files/lcms/
 activity: low
