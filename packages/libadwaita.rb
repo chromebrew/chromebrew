@@ -26,7 +26,6 @@ class Libadwaita < Meson
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
   depends_on 'graphene' # R
-  depends_on 'gtk4' unless ancestors[0].to_s.split('::')[1].downcase == 'gtk3' # R Keep the gtk4 dependency from being pulled in during a gtk3 build.
   depends_on 'harfbuzz' => :build
   depends_on 'libjpeg_turbo' => :build
   depends_on 'libsass' => :build
