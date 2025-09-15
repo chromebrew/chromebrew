@@ -1,4 +1,4 @@
-# Total size: 5172592
+# Total size: 5305839
 /usr/local/include/libadwaita-1/adw-about-dialog.h
 /usr/local/include/libadwaita-1/adw-about-window.h
 /usr/local/include/libadwaita-1/adw-accent-color.h
@@ -51,6 +51,10 @@
 /usr/local/include/libadwaita-1/adw-preferences-page.h
 /usr/local/include/libadwaita-1/adw-preferences-row.h
 /usr/local/include/libadwaita-1/adw-preferences-window.h
+/usr/local/include/libadwaita-1/adw-shortcut-label.h
+/usr/local/include/libadwaita-1/adw-shortcuts-dialog.h
+/usr/local/include/libadwaita-1/adw-shortcuts-item.h
+/usr/local/include/libadwaita-1/adw-shortcuts-section.h
 /usr/local/include/libadwaita-1/adw-spin-row.h
 /usr/local/include/libadwaita-1/adw-spinner-paintable.h
 /usr/local/include/libadwaita-1/adw-spinner.h
@@ -109,6 +113,7 @@
 /usr/local/share/locale/hi/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/hr/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/hu/LC_MESSAGES/libadwaita.mo
+/usr/local/share/locale/ia/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/id/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/it/LC_MESSAGES/libadwaita.mo
 /usr/local/share/locale/ja/LC_MESSAGES/libadwaita.mo
