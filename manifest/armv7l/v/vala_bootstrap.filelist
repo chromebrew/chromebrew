@@ -1,4 +1,3 @@
-# Total size: 13808403
 /usr/local/bin/vala
 /usr/local/bin/vala-0.56
 /usr/local/bin/vala-gen-introspect
@@ -9,16 +8,16 @@
 /usr/local/bin/vapigen-0.56
 /usr/local/include/vala-0.56/vala.h
 /usr/local/include/vala-0.56/valagee.h
-/usr/local/lib64/libvala-0.56.la
-/usr/local/lib64/libvala-0.56.so
-/usr/local/lib64/libvala-0.56.so.0
-/usr/local/lib64/libvala-0.56.so.0.0.0
-/usr/local/lib64/pkgconfig/libvala-0.56.pc
-/usr/local/lib64/pkgconfig/vapigen-0.56.pc
-/usr/local/lib64/pkgconfig/vapigen.pc
-/usr/local/lib64/vala-0.56/gen-introspect-0.56
-/usr/local/lib64/vala-0.56/libvalaccodegen.la
-/usr/local/lib64/vala-0.56/libvalaccodegen.so
+/usr/local/lib/libvala-0.56.la
+/usr/local/lib/libvala-0.56.so
+/usr/local/lib/libvala-0.56.so.0
+/usr/local/lib/libvala-0.56.so.0.0.0
+/usr/local/lib/pkgconfig/libvala-0.56.pc
+/usr/local/lib/pkgconfig/vapigen-0.56.pc
+/usr/local/lib/pkgconfig/vapigen.pc
+/usr/local/lib/vala-0.56/gen-introspect-0.56
+/usr/local/lib/vala-0.56/libvalaccodegen.la
+/usr/local/lib/vala-0.56/libvalaccodegen.so
 /usr/local/share/aclocal/vala.m4
 /usr/local/share/aclocal/vapigen.m4
 /usr/local/share/devhelp/books/vala-0.56/Attributes.html
