@@ -14,15 +14,16 @@ class Gnome_console < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0e18752cb72dff86cba422d967e1d12dcc5a09b5edaa65f26bc79ee657abe75b',
-     armv7l: '0e18752cb72dff86cba422d967e1d12dcc5a09b5edaa65f26bc79ee657abe75b',
-     x86_64: '837c952b979c300f72e1a1ea00c6e7c57f50e2d96dcc028a4f89b5f3e2a012cf'
+    aarch64: 'd98688fc6f040398610854a59bea601c590e159070b692a90d9afbbec2101baa',
+     armv7l: 'd98688fc6f040398610854a59bea601c590e159070b692a90d9afbbec2101baa',
+     x86_64: '3439833b9952b4af914ce8eb4f35d15623da5d7426bace7896d44357faaa5852'
   })
 
+  depends_on 'desktop_file_utils' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' => :build
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'graphene' => :build
   depends_on 'gtk4' # R
   depends_on 'harfbuzz' => :build
