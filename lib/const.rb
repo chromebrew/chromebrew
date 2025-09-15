@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.66.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.66.2' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -95,24 +95,24 @@ CREW_KERNEL_VERSION ||=
     ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
   end
 
+# Local constants for contributors.
+CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2>/dev/null`.chomp
+CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
+CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
+
 CREW_LIB_PREFIX       ||= File.join(CREW_PREFIX, ARCH_LIB)
 CREW_MAN_PREFIX       ||= File.join(CREW_PREFIX, 'share/man')
-CREW_LIB_PATH         ||= File.join(CREW_PREFIX, 'lib/crew')
+CREW_LIB_PATH         ||= Dir.exist?(File.join(CREW_PREFIX, 'lib/crew')) ? File.join(CREW_PREFIX, 'lib/crew') : CREW_LOCAL_REPO_ROOT
 CREW_PACKAGES_PATH    ||= File.join(CREW_LIB_PATH, 'packages')
-CREW_CONFIG_PATH      ||= File.join(CREW_PREFIX, 'etc/crew')
+CREW_CONFIG_PATH      ||= ENV.fetch('CREW_CONFIG_PATH', File.join(CREW_PREFIX, 'etc/crew')) unless defined?(CREW_CONFIG_PATH)
 CREW_META_PATH        ||= File.join(CREW_CONFIG_PATH, 'meta')
-CREW_BREW_DIR         ||= File.join(CREW_PREFIX, 'tmp/crew')
+CREW_BREW_DIR         ||= ENV.fetch('CREW_BREW_DIR', File.join(CREW_PREFIX, 'tmp/crew')) unless defined?(CREW_BREW_DIR)
 CREW_DEST_DIR         ||= File.join(CREW_BREW_DIR, 'dest')
 CREW_DEST_PREFIX      ||= File.join(CREW_DEST_DIR, CREW_PREFIX)
 CREW_DEST_LIB_PREFIX  ||= File.join(CREW_DEST_DIR, CREW_LIB_PREFIX)
 CREW_DEST_MAN_PREFIX  ||= File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 CREW_WINE_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'wine')
 CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
-
-# Local constants for contributors.
-CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2>/dev/null`.chomp
-CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
-CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX      ||= File.join(CREW_PREFIX, '/share/musl/')
