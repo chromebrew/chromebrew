@@ -32,6 +32,7 @@ class Gnome_calculator < Meson
   depends_on 'mpfr' # R
   depends_on 'py3_libxml2' => :build
   depends_on 'python3' => :build
+  depends_on 'vala' => :build
   depends_on 'wayland' => :build
 
   gnome
