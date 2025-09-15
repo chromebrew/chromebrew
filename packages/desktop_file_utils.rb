@@ -11,10 +11,10 @@ class Desktop_file_utils < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b13f9202b0b0f3d36a7fc0df45a7f321eebf1efc870aa553b2e8c435bfa1a063',
-     armv7l: 'b13f9202b0b0f3d36a7fc0df45a7f321eebf1efc870aa553b2e8c435bfa1a063',
-       i686: 'af80702f193a3ec436b122b9f20889b196d51eac01c7c2c5b6e432e466a2c303',
-     x86_64: '3f2a161ca73edca9d51619b39bd27acd23eb6259947f41a2d2bfda3a2720695c'
+    aarch64: '4636562db608cd98f38e7530aaab24ee25d981cdd3e422a7544ef43f144bce1c',
+     armv7l: '4636562db608cd98f38e7530aaab24ee25d981cdd3e422a7544ef43f144bce1c',
+       i686: 'ccb2e816dcfa5a0d3799803e3272930aca874ed7192fa7966b234fac5aed03ab',
+     x86_64: '698217eb99f78f60dc28b521e0a3c7d386fee477ce323e2eff1a758c6dfb9f49'
   })
 
   depends_on 'glib' # R
