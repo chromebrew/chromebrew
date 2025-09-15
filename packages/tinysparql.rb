@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Tinysparql < Meson
   description 'Low-footprint RDF triple store library with SPARQL 1.1 interface'
   homepage 'https://gitlab.gnome.org/GNOME/tinysparql'
-  version "3.8.0-#{CREW_ICU_VER}"
+  version "3.10.0-#{CREW_ICU_VER}"
   license 'GPLv2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/tinysparql.git'
