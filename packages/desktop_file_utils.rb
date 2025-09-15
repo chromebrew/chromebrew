@@ -1,6 +1,6 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Desktop_file_utils < Autotools
+class Desktop_file_utils < Meson
   description 'contains a few command line utilities for working with desktop entries'
   homepage 'https://www.freedesktop.org/wiki/Software/desktop-file-utils/'
   version '0.28'
