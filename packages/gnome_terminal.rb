@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_terminal < Meson
   description 'The GNOME Terminal Emulator'
   homepage 'https://wiki.gnome.org/Apps/Terminal'
-  version '3.51.91'
+  version '3.97.0'
   license 'GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-terminal.git'
