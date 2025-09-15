@@ -54,15 +54,9 @@ def write_deps(pkg_file, pkgdeps, pkg)
     pkgdeps << 'ruby'
   end
 
-  # Look for missing runtime dependencies, ignoring build and optional deps.
-  missingpkgdeps = pkgdeps.reject { |i| File.read(pkg_file).include?("depends_on '#{i}'") unless File.read(pkg_file).include?("depends_on '#{i}' => :build") || File.read(pkg_file).include?("# depends_on '#{i}' # R (optional)") }
-
-  # These deps are sometimes architecture dependent or should not be
-  # removed for other reasons.
-  privileged_deps = %w[glibc glibc_lib gcc_lib perl python3 ruby]
+  pkgdeps.uniq!
 
   # Special cases where dependencies should not be automatically added:
-
   dependency_exceptions = Set[
     { name_regex: 'llvm.*_build', exclusion_regex: 'llvm.*_*', comments: 'created from the llvm build package.' },
     { name_regex: '(llvm.*_dev|llvm.*_lib|libclc|openmp)', exclusion_regex: 'llvm.*_build', comments: 'should only be a build dep.' },
@@ -73,80 +67,78 @@ def write_deps(pkg_file, pkgdeps, pkg)
     { name_regex: 'python3', exclusion_regex: '(tcl|tk)', comments: 'optional for i686, which does not have gui libraries.' }
   ]
 
-  dependency_exceptions_pkgs = dependency_exceptions.map { |h| h[:name_regex] }
-
-  dependency_exceptions_pkgs.each do |exception|
-    working_exception_pkg = dependency_exceptions.find { |i| i[:name_regex] == exception }
-    name_regex = working_exception_pkg[:name_regex]
-    exclusion_regex = working_exception_pkg[:exclusion_regex]
-    exclusion_comments = working_exception_pkg[:comments]
-    next unless /#{name_regex}/.match(pkg.name)
-    puts "#{pkg}: #{exclusion_regex} - #{exclusion_comments}..".orange if pkgdeps.select { |d| /#{exclusion_regex}/.match(d) }.length.positive?
-    missingpkgdeps.delete_if { |d| /#{exclusion_regex}/.match(d) }
-    pkgdeps.delete_if { |d| /#{exclusion_regex}/.match(d) }
+  dependency_exceptions.each do |exception|
+    # We're only interested if this package matches the name regex.
+    next unless /#{exception[:name_regex]}/.match?(pkg.name)
+    # This lets us check if any dependencies were excluded.
+    pkgdeps_length = pkgdeps.length
+    # Delete any dependencies that should be excluded.
+    pkgdeps.delete_if { /#{exception[:exclusion_regex]}/.match?(it) }
+    # If any dependencies were excluded, explain why.
+    puts "#{pkg.name}: #{exception[:exclusion_regex]} - #{exception[:comments]}..".orange if pkgdeps_length != pkgdeps.length
   end
-
-  missingpkgdeps.delete_if { |d| File.read(pkg_file).include?("# depends_on '#{d}' # R (optional)") }
-  pkgdeps.delete_if { |d| File.read(pkg_file).include?("# depends_on '#{d}' # R (optional)") }
 
   puts "\nPackage #{pkg} has runtime library dependencies on these packages:".lightblue
   pkgdeps.each do |i|
     puts "  depends_on '#{i}' # R".lightgreen
   end
 
-  # Get existing package deps entries so we can add to and sort as
-  # necessary.
-  pkgdepsblock = []
-  pkgdepsblock += File.foreach(pkg_file).grep(/  depends_on '|  # depends_on '/)
+  # Look for runtime dependencies that aren't already provided by the package.
+  # We do not convert build dependencies into runtime dependencies, because they are probably build dependencies for a good reason.
+  missingpkgdeps = pkgdeps.reject { File.read(pkg_file).include?("depends_on '#{it}'") unless File.read(pkg_file).include?("depends_on '#{it}' => :build") }
 
   unless missingpkgdeps.empty?
     puts "\nPackage file #{pkg}.rb is missing these runtime library dependencies:".orange
     puts "  depends_on '#{missingpkgdeps.join("' # R\n  depends_on '")}' # R".orange
-
-    pkgdepsblock += missingpkgdeps.map { |add_dep| "  depends_on '#{add_dep}' # R" }
   end
-  pkgdepsblock.uniq!
-  pkgdepsblock = pkgdepsblock.sort_by { |dep| dep.split('depends_on ')[1] }
 
-  puts "\n Adding to or replacing deps block in package..."
-  # First remove all dependencies.
-  system "sed -i '/  depends_on /d' #{pkg_file}"
-  system "sed -i '/^  # depends_on /d' #{pkg_file}"
-  # Now add back our sorted dependencies.
-  gawk_cmd = "gawk -i inplace -v dep=\"#{pkgdepsblock.join('QQQQQ')}\" 'FNR==NR{ if (/})/) p=NR; next} 1; FNR==p{ print \"\\n\" dep }' #{pkg_file} #{pkg_file}"
-  system(gawk_cmd)
-  # The first added line has two dependencies without a newline
-  # separating them.
-  system "sed -i 's/RQQQQQ/R\\n/' #{pkg_file}"
-  system "sed -i 's/QQQQQ//g' #{pkg_file}"
+  # Read the package file into an array of lines.
+  pkg_file_lines = File.readlines(pkg_file)
+
+  # Get existing package deps entries so we can add to and sort as necessary.
+  pkgdepsblock = pkg_file_lines.filter { it.include?("depends_on '") }
+
+  # Add any missing runtime dependencies to the block of dependencies.
+  pkgdepsblock += missingpkgdeps.map { "  depends_on '#{it}' # R" }
+
+  # These deps are sometimes architecture dependent or should not be removed for other reasons.
+  privileged_deps = %w[glibc glibc_lib gcc_lib perl python3 ruby]
 
   # Check for and delete old runtime dependencies.
   # Its unsafe to do this with other dependencies, because the packager might know something we don't.
-  lines_to_delete = {}
-  File.readlines(pkg_file).each_with_index do |line, line_number|
-    # Find all the explicitly marked runtime dependencies.
-    dep = line.match(/  depends_on '(.*)' # R/)
-    # Basically just a nil check, but this way we avoid matching twice.
-    next unless dep
-    # Skip unless the runtime dependency in the package does not match the runtime dependencies we've found.
-    next unless pkgdeps.none?(dep[1])
-    # Skip if we're dealing with privileged deps.
-    next if privileged_deps.include?(dep[1])
-    # Record the line content as the key and the line number (incremented by one because the index starts at 0) as the value.
-    lines_to_delete[line] = line_number + 1
+  pkgdepsblock.delete_if { |line| line.match(/  depends_on '(.*)' # R/) { |matchdata| pkgdeps.none?(matchdata[1]) && !privileged_deps.include?(matchdata[1]) } }
+
+  # Remove any duplicate dependencies from the block.
+  pkgdepsblock.uniq!
+
+  # Sort the block, trimming the comment from commented out dependencies to enable them to be sorted with the others.
+  pkgdepsblock = pkgdepsblock.sort_by { it.delete_prefix('# ') }
+
+  puts "\n Adding to or replacing deps block in package..."
+
+  # Find where we want to insert the dependencies, which is preferrably at the first dependency entry.
+  dependency_insert = pkg_file_lines.index { it.include?("depends_on '") }
+  # If such an entry does not exist, we take our cues from the positioning of the binary_sha256 hash.
+  if dependency_insert.nil?
+    dependency_insert = pkg_file_lines.index { it.include?('binary_sha256({') }
+    # We then find the end of the binary_sha256 hash, and go from there.
+    dependency_insert = pkg_file_lines.index { it.include?('})') && pkg_file_lines.index(it) >= dependency_insert.to_i }
+
+    # We then need to move one past the end of the binary_sha256 hash, and add an empty line at the start of our new dependency block.
+    dependency_insert += 1
+    pkgdepsblock.prepend('')
   end
+
+  # First remove all dependencies.
+  pkg_file_lines.reject! { it.include?("depends_on '") }
+
+  # Now add back our sorted dependencies.
+  pkg_file_lines.insert(dependency_insert, pkgdepsblock)
+  File.write(pkg_file, pkg_file_lines.join("\n").gsub("\n\n", "\n"))
 
   # Find the location of the rubocop configuration.
   rubocop_config = CREW_LOCAL_REPO_ROOT.to_s.empty? ? "#{CREW_LIB_PATH}/.rubocop.yml" : File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')
 
-  # Clean with rubocop.
-  system "rubocop -c #{rubocop_config} -A #{pkg_file}"
-  (FileUtils.cp pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb" if lines_to_delete.empty?) unless CREW_LOCAL_REPO_ROOT.to_s.empty?
-  # Leave if there aren't any old runtime dependencies.
-  return if lines_to_delete.empty?
-  puts "\nPackage file #{pkg}.rb has these outdated runtime library dependencies:".lightpurple
-  puts lines_to_delete.keys
-  system("gawk -i inplace 'NR != #{lines_to_delete.values.join(' && NR != ')}' #{pkg_file}")
   # Clean with rubocop.
   system "rubocop -c #{rubocop_config} -A #{pkg_file}"
   FileUtils.cp pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb" unless CREW_LOCAL_REPO_ROOT.to_s.empty?
