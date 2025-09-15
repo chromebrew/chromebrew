@@ -10,10 +10,10 @@ class Py3_xlsxwriter < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd2b868e45ef1513a0dd2c8f7cd58ee74e53e3e7e0791b5fce042747bdbff7f3f',
-     armv7l: 'd2b868e45ef1513a0dd2c8f7cd58ee74e53e3e7e0791b5fce042747bdbff7f3f',
-       i686: 'e43ae1d3e4bf709316eca84aee1ef408d5390b9b0e9609eda813a2ab538df372',
-     x86_64: 'c6140d4fbf486080ae13e7877114b4060d03e8ffe6b5e7427d2d857c375cbb8d'
+    aarch64: '1702f6a5b09825b3a13dfbf4fa177c5797e39993fe4116cd8b953cb81e5cbd64',
+     armv7l: '1702f6a5b09825b3a13dfbf4fa177c5797e39993fe4116cd8b953cb81e5cbd64',
+       i686: '3bf1e520c8fff5c2257f57b5724c974bb50b3ff40815a22a7efc8c84a7fec5c7',
+     x86_64: '98a19a32b437489cbee09cab56f5a44a77a4a45862e9a3e8c8d1cb2e91424b4a'
   })
 
   depends_on 'python3' => :build
