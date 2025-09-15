@@ -76,7 +76,6 @@ class GetRealDepsTest < Minitest::Test
     test_wrapper(input_file, expected_pkg_file, deps)
   end
 
-  # TODO: The expected output in this case could be improved.
   def test_add_multiple_dependencies_in_order
     deps = %w[libcanberra banner]
     input_file = <<~EOF
@@ -94,7 +93,8 @@ class GetRealDepsTest < Minitest::Test
 
         depends_on 'a2png'
         depends_on 'banner' # R
-        depends_on 'libcanberra' # R  depends_on 'libmaxminddb'
+        depends_on 'libcanberra' # R
+        depends_on 'libmaxminddb'
         depends_on 'lzlib'
       end
     EOF
