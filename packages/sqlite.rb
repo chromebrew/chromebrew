@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Sqlite < Autotools
   description 'SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.'
   homepage 'https://www.sqlite.org/'
-  version '3.50.4'
+  version '3.50.4-1'
   license 'public-domain'
   compatibility 'all'
   source_url 'https://github.com/sqlite/sqlite.git'
-  git_hashtag "version-#{version}"
+  git_hashtag "version-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -28,5 +28,7 @@ class Sqlite < Autotools
     --enable-editline \
     --enable-readline \
     --enable-fts3 \
+    --enable-fts4 \
+    --enable-fts5 \
     --enable-session'
 end
