@@ -16,4 +16,7 @@ class Desktop_file_utils < Meson
        i686: 'af80702f193a3ec436b122b9f20889b196d51eac01c7c2c5b6e432e466a2c303',
      x86_64: '3f2a161ca73edca9d51619b39bd27acd23eb6259947f41a2d2bfda3a2720695c'
   })
+
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
 end
