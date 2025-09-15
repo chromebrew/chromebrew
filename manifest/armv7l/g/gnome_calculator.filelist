@@ -1,4 +1,4 @@
-# Total size: 6162279
+# Total size: 6741492
 /usr/local/bin/gcalccmd
 /usr/local/bin/gnome-calculator
 /usr/local/include/gcalc-2/gcalc/gcalc.h
@@ -50,36 +50,6 @@
 /usr/local/share/help/C/gnome-calculator/superscript.page
 /usr/local/share/help/C/gnome-calculator/trigonometry.page
 /usr/local/share/help/C/gnome-calculator/variables.page
-/usr/local/share/help/bg/gnome-calculator/absolute.page
-/usr/local/share/help/bg/gnome-calculator/base.page
-/usr/local/share/help/bg/gnome-calculator/boolean.page
-/usr/local/share/help/bg/gnome-calculator/complex.page
-/usr/local/share/help/bg/gnome-calculator/conv-base.page
-/usr/local/share/help/bg/gnome-calculator/conv-character.page
-/usr/local/share/help/bg/gnome-calculator/conv-currency.page
-/usr/local/share/help/bg/gnome-calculator/conv-length.page
-/usr/local/share/help/bg/gnome-calculator/conv-time.page
-/usr/local/share/help/bg/gnome-calculator/conv-weight.page
-/usr/local/share/help/bg/gnome-calculator/equation.page
-/usr/local/share/help/bg/gnome-calculator/factorial.page
-/usr/local/share/help/bg/gnome-calculator/factorize.page
-/usr/local/share/help/bg/gnome-calculator/figures/org.gnome.Calculator.svg
-/usr/local/share/help/bg/gnome-calculator/financial.page
-/usr/local/share/help/bg/gnome-calculator/functions.page
-/usr/local/share/help/bg/gnome-calculator/history.page
-/usr/local/share/help/bg/gnome-calculator/index.page
-/usr/local/share/help/bg/gnome-calculator/keyboard.page
-/usr/local/share/help/bg/gnome-calculator/legal.xml
-/usr/local/share/help/bg/gnome-calculator/logarithm.page
-/usr/local/share/help/bg/gnome-calculator/modulus.page
-/usr/local/share/help/bg/gnome-calculator/mouse.page
-/usr/local/share/help/bg/gnome-calculator/number-display.page
-/usr/local/share/help/bg/gnome-calculator/percentage.page
-/usr/local/share/help/bg/gnome-calculator/power.page
-/usr/local/share/help/bg/gnome-calculator/scientific.page
-/usr/local/share/help/bg/gnome-calculator/superscript.page
-/usr/local/share/help/bg/gnome-calculator/trigonometry.page
-/usr/local/share/help/bg/gnome-calculator/variables.page
 /usr/local/share/help/ca/gnome-calculator/absolute.page
 /usr/local/share/help/ca/gnome-calculator/base.page
 /usr/local/share/help/ca/gnome-calculator/boolean.page
@@ -1042,6 +1012,7 @@
 /usr/local/share/locale/eu/LC_MESSAGES/gnome-calculator.mo
 /usr/local/share/locale/fa/LC_MESSAGES/gnome-calculator.mo
 /usr/local/share/locale/fi/LC_MESSAGES/gnome-calculator.mo
+/usr/local/share/locale/fil/LC_MESSAGES/gnome-calculator.mo
 /usr/local/share/locale/fo/LC_MESSAGES/gnome-calculator.mo
 /usr/local/share/locale/fr/LC_MESSAGES/gnome-calculator.mo
 /usr/local/share/locale/fur/LC_MESSAGES/gnome-calculator.mo
@@ -1058,6 +1029,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/gnome-calculator.mo
 /usr/local/share/locale/ja/LC_MESSAGES/gnome-calculator.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gnome-calculator.mo
+/usr/local/share/locale/kab/LC_MESSAGES/gnome-calculator.mo
 /usr/local/share/locale/kk/LC_MESSAGES/gnome-calculator.mo
 /usr/local/share/locale/km/LC_MESSAGES/gnome-calculator.mo
 /usr/local/share/locale/kn/LC_MESSAGES/gnome-calculator.mo
@@ -1109,7 +1081,7 @@
 /usr/local/share/locale/zh_TW/LC_MESSAGES/gnome-calculator.mo
 /usr/local/share/man/man1/gcalccmd.1.zst
 /usr/local/share/man/man1/gnome-calculator.1.zst
-/usr/local/share/metainfo/org.gnome.Calculator.appdata.xml
+/usr/local/share/metainfo/org.gnome.Calculator.metainfo.xml
 /usr/local/share/vala/vapi/gcalc-2.deps
 /usr/local/share/vala/vapi/gcalc-2.vapi
 /usr/local/share/vala/vapi/gci-1.deps

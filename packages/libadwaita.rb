@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Libadwaita < Meson
   description 'Library of GNOME-specific UI patterns, replacing libhandy for GTK4'
   homepage 'https://gitlab.gnome.org/GNOME/libadwaita/'
-  version '1.8.0'
+  version '1.8.0-1'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libadwaita.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '179963b5724c6fbb1f78e6ee901de40340513d01b7b9f1f09eedcbe3c0f97b10',
-     armv7l: '179963b5724c6fbb1f78e6ee901de40340513d01b7b9f1f09eedcbe3c0f97b10',
-     x86_64: 'd7fff1f26efad67b47621d3fad890de83b86522fc58cf5c6e4f643635be14dae'
+    aarch64: 'd026971c805574bbef1462f21ae78df8ecc9dcd54e4bc5ef7911436c82e7db70',
+     armv7l: 'd026971c805574bbef1462f21ae78df8ecc9dcd54e4bc5ef7911436c82e7db70',
+     x86_64: 'f3948cdfd7305a708d713550cc062b6a7f6f9c9d685f66d231376ac6b57c6299'
   })
 
   depends_on 'appstream' # R
@@ -26,6 +26,7 @@ class Libadwaita < Meson
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
   depends_on 'graphene' # R
+  depends_on 'gtk4' # R
   depends_on 'harfbuzz' => :build
   depends_on 'libjpeg_turbo' => :build
   depends_on 'libsass' => :build
@@ -41,6 +42,5 @@ class Libadwaita < Meson
   meson_options '-Dintrospection=enabled \
             -Dexamples=false \
             -Ddocumentation=false \
-            -Dtests=false \
-            -Dvapi=false'
+            -Dtests=false'
 end
