@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_calculator < Meson
   description 'GNOME desktop calculator'
   homepage 'https://wiki.gnome.org/Apps/Calculator'
-  version '48.1'
+  version '49.0'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-calculator.git'
@@ -11,9 +11,9 @@ class Gnome_calculator < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c106e01f4e44a48de0ba0dddee29542c73da3bdf311475709113ac0d8880d382',
-     armv7l: 'c106e01f4e44a48de0ba0dddee29542c73da3bdf311475709113ac0d8880d382',
-     x86_64: 'd0a813255e175354dd578e443ab6467aa665b02a210736bc1b69bf35639abbc0'
+    aarch64: 'f21f6bd43d5dcdeb421798ded1ef6f74faa92ddc063104a08f7190290b74be8e',
+     armv7l: 'f21f6bd43d5dcdeb421798ded1ef6f74faa92ddc063104a08f7190290b74be8e',
+     x86_64: '1f98a5951e5288017282e800e8bae635b4c680dead6365d9d3564567972ce470'
   })
 
   depends_on 'gcc_lib' # R
@@ -30,6 +30,7 @@ class Gnome_calculator < Meson
   depends_on 'mpfr' # R
   depends_on 'py3_itstool' => :build
   depends_on 'py3_libxml2' => :build
+  depends_on 'py3_pygobject' => :build
   depends_on 'python3' => :build
   depends_on 'vala' => :build
   depends_on 'wayland' => :build
