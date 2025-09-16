@@ -18,4 +18,6 @@ class Bash_completion < Autotools
   })
 
   depends_on 'bash' # L
+
+  conflicts_ok # Conflicts with uutils_coreutils.
 end
