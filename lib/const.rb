@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.66.3' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.66.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -70,7 +70,7 @@ unless defined?(CREW_ESSENTIAL_PACKAGES)
          File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''
        end
     }
-  ].reject!(&:empty?)
+  ].reject(&:empty?)
 end
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
