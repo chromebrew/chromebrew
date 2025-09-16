@@ -63,39 +63,6 @@ Dir.chdir CREW_LIB_PATH do
   system 'git config --local http.lowSpeedTime 5' if `git config --local http.lowSpeedTime`.empty?
 end
 
-@fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-def keep_keys(arr, keeper_keys)
-  keepers = keeper_keys.to_set
-  arr.map { |h| h.slice(*keepers) }
-end
-# Use @installed_packages.include?(pkg_name) to determine if a package is
-# installed.
-@installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
-
-def save_json(json_object)
-  crewlog 'Saving device.json...'
-  begin
-    File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
-  # rubocop:disable Lint/UselessAssignment
-  rescue StandardError => e
-    # rubocop:enable Lint/UselessAssignment
-    puts "Error writing updated packages json file!\n{e.message}".lightred
-    abort
-  end
-  # Copy over original if the write to the tmp file succeeds.
-  FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
-end
-
-def refresh_crew_json
-  if defined?(@device)
-    @device = if @device['architecture'].nil?
-                JSON.parse(@fixup_json.to_json, symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
-              else
-                JSON.parse(@fixup_json.to_json)
-              end
-  end
-end
-
 # Rename the binary_sha256 variable to sha256 in the device.json file
 system("sed -i 's/binary_sha256/sha256/g' #{File.join(CREW_CONFIG_PATH, 'device.json')}")
 
@@ -219,12 +186,17 @@ unless CREW_PRE_GLIBC_STANDALONE
   deprecated_packages << { pkg_name: 'glibc_lib237', comments: 'We are moving away from system glibc.' }
 end
 
+# Load device.json and get an array of the currently installed packages.
+device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+installed_packages = device_json['installed_packages'].map { it['name'] }
+
 # Handle package renames.
-renamed_pkgs = renamed_packages.map { |h| h[:pkg_name] }
-installed_pkgs_to_rename = @installed_packages & renamed_pkgs
+# TODO: This currently does not handle fake packages very well.
+renamed_pkgs = renamed_packages.map { it[:pkg_name] }
+installed_pkgs_to_rename = installed_packages & renamed_pkgs
 
 installed_pkgs_to_rename.each do |fixup_pkg|
-  working_pkg = renamed_packages.find { |i| i[:pkg_name] == fixup_pkg }
+  working_pkg = renamed_packages.find { it[:pkg_name] == fixup_pkg }
   pkg_name = working_pkg[:pkg_name]
   pkg_rename = working_pkg[:pkg_rename]
 
@@ -234,65 +206,59 @@ installed_pkgs_to_rename.each do |fixup_pkg|
   new_filelist = File.join(CREW_META_PATH, "#{pkg_rename}.filelist")
   old_directorylist = File.join(CREW_META_PATH, "#{pkg_name}.directorylist")
   new_directorylist = File.join(CREW_META_PATH, "#{pkg_rename}.directorylist")
-  # Handle case of new package already installed.
-  if @installed_packages.include?(pkg_rename)
+
+  # Handle the case of the new package already being installed.
+  if installed_packages.include?(pkg_rename)
     puts "Renamed #{pkg_rename.capitalize} is already installed. Deleting old package (#{pkg_rename.capitalize}) information...".lightblue
+
     FileUtils.rm_f [old_filelist, old_directorylist]
-    @fixup_json['installed_packages'].delete_if { |elem| elem[:name] == pkg_name }
-    @installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
+
+    device_json['installed_packages'].delete_if { it['name'] == pkg_name }
+    installed_packages.delete(pkg_name)
     next
   end
-  # Handle case of package needing to be replaced.
+
+  # Handle the case of a package needing to be replaced.
   if File.file?(new_filelist)
     puts "New filelist for #{pkg_rename.capitalize} already exists!"
     next
   end
+
   if File.file?(new_directorylist)
     puts "New directorylist for #{pkg_rename.capitalize} already exists!"
     next
   end
-  # If new filelist or directorylist do not exist and new package is not
-  # marked as installed in device.json then rename and edit json.
+
+  # If we are here, rename the filelists and rename the package in device.json
   FileUtils.mv old_filelist, new_filelist
   FileUtils.mv old_directorylist, new_directorylist
-  @fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }
-  @fixup_json['installed_packages'].find { |h| h['name'] == pkg_name }['name'] = pkg_rename
+
+  device_json['installed_packages'][installed_packages.index(pkg_name)]['name'] = pkg_rename
+  installed_packages[installed_packages.index(pkg_name)] = pkg_rename
 end
 
-unless installed_pkgs_to_rename.empty?
-  @installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
-  save_json(@fixup_json)
-  refresh_crew_json
-end
+# Write our changes to device.json now, because Command.remove will load it personally.
+ConvenienceFunctions.save_json(device_json)
 
 # Handle deprecated packages.
-deprecated_pkgs = deprecated_packages.map { |h| h[:pkg_name] }
-installed_pkgs_to_deprecate = @installed_packages & deprecated_pkgs
+deprecated_pkgs = deprecated_packages.map { it[:pkg_name] }
+installed_pkgs_to_deprecate = installed_packages & deprecated_pkgs
 
 installed_pkgs_to_deprecate.each do |fixup_pkg|
-  working_pkg = deprecated_packages.find { |i| i[:pkg_name] == fixup_pkg }
+  working_pkg = deprecated_packages.find { it[:pkg_name] == fixup_pkg }
   pkg_name = working_pkg[:pkg_name]
 
   puts "#{pkg_name.capitalize} is deprecated and should be removed. #{working_pkg[:comments]}".lightpurple
+
   if Package.agree_default_yes("\nWould you like to remove deprecated package #{pkg_name.capitalize}")
     # Create a minimal Package object and pass it to Command.remove
     pkg_object = Package
-    pkg_object.instance_eval do
-      self.name = pkg_name
-      def self.preremove; end
-      def self.postremove; end
-    end
-    Command.remove(pkg_object, verbose: CREW_VERBOSE)
-  else
-    puts "#{pkg_name.capitalize} not removed.".lightblue
-  end
-end
+    pkg_object.name = pkg_name
 
-# Reload json after all external fixups are done, as there may have been external changes.
-unless installed_pkgs_to_deprecate.empty?
-  @fixup_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-  @installed_packages = keep_keys(@fixup_json['installed_packages'], ['name']).flat_map(&:values).to_set
-  refresh_crew_json
+    Command.remove(pkg_object, verbose: CREW_VERBOSE, force: !CREW_PRE_GLIBC_STANDALONE, only_remove_files: true)
+  else
+    puts "#{pkg_name.capitalize} was not removed.".lightblue
+  end
 end
 
 if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patchelf")
@@ -317,6 +283,3 @@ if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patc
 else
   abort 'Please install upx and patchelf first by running \'crew install upx patchelf\'.'.lightred
 end
-
-# Reload @device with the appropriate symbolized or nonsymbolized json load before we exit fixup.
-refresh_crew_json

@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.66.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.66.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -70,7 +70,7 @@ unless defined?(CREW_ESSENTIAL_PACKAGES)
          File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''
        end
     }
-  ].reject!(&:empty?)
+  ].reject(&:empty?)
 end
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
@@ -95,24 +95,27 @@ CREW_KERNEL_VERSION ||=
     ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
   end
 
+# Local constants for contributors.
+CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2>/dev/null`.chomp
+CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
+CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
+
 CREW_LIB_PREFIX       ||= File.join(CREW_PREFIX, ARCH_LIB)
 CREW_MAN_PREFIX       ||= File.join(CREW_PREFIX, 'share/man')
-CREW_LIB_PATH         ||= File.join(CREW_PREFIX, 'lib/crew')
+CREW_LIB_PATH         ||= Dir.exist?(File.join(CREW_PREFIX, 'lib/crew')) ? File.join(CREW_PREFIX, 'lib/crew') : CREW_LOCAL_REPO_ROOT
 CREW_PACKAGES_PATH    ||= File.join(CREW_LIB_PATH, 'packages')
-CREW_CONFIG_PATH      ||= File.join(CREW_PREFIX, 'etc/crew')
+
+crew_config_path = File.join(CREW_PREFIX, 'etc/crew')
+CREW_CONFIG_PATH      ||= (Dir.exist?(crew_config_path) && File.writable?(crew_config_path) ? crew_config_path : ENV.fetch('CREW_CONFIG_PATH', File.join('/tmp', 'etc/crew'))) unless defined?(CREW_CONFIG_PATH)
 CREW_META_PATH        ||= File.join(CREW_CONFIG_PATH, 'meta')
-CREW_BREW_DIR         ||= File.join(CREW_PREFIX, 'tmp/crew')
+crew_brew_dir = File.join(CREW_PREFIX, 'tmp/crew')
+CREW_BREW_DIR         ||= (Dir.exist?(crew_brew_dir) && File.writable?(crew_brew_dir) ? crew_brew_dir : ENV.fetch('CREW_BREW_DIR', File.join('/tmp', 'crew'))) unless defined?(CREW_BREW_DIR)
 CREW_DEST_DIR         ||= File.join(CREW_BREW_DIR, 'dest')
 CREW_DEST_PREFIX      ||= File.join(CREW_DEST_DIR, CREW_PREFIX)
 CREW_DEST_LIB_PREFIX  ||= File.join(CREW_DEST_DIR, CREW_LIB_PREFIX)
 CREW_DEST_MAN_PREFIX  ||= File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 CREW_WINE_PREFIX      ||= File.join(CREW_LIB_PREFIX, 'wine')
 CREW_DEST_WINE_PREFIX ||= File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
-
-# Local constants for contributors.
-CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2>/dev/null`.chomp
-CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
-CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX      ||= File.join(CREW_PREFIX, '/share/musl/')
