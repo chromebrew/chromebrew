@@ -11,10 +11,10 @@ class Elfutils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'abf24a50af269b1c68cdd5a744ae76c36a064668d28baa5bad3b3d5f69af5a48',
-     armv7l: 'abf24a50af269b1c68cdd5a744ae76c36a064668d28baa5bad3b3d5f69af5a48',
-       i686: '11df8c8616d54f2a78bd1eee6d468ffc9cf87269aaa853fa628b1bd7e5254be6',
-     x86_64: '7ae043365539b0b193166b1695cebc49de05d6841f6e8787430826034eb0fb19'
+    aarch64: '782a98a8e6d23b5e7f92c80a42be8c946b0c9ad58bd552f88e3e9f0863b223ed',
+     armv7l: '782a98a8e6d23b5e7f92c80a42be8c946b0c9ad58bd552f88e3e9f0863b223ed',
+       i686: 'e24f749b79bf1e812510e34414b489af0758b6bc4ac4c60234ffbde5efdcf9ab',
+     x86_64: 'd00107142ef6e7cf84cd2d2e5fbc6113464b2e86d4044606c3950a0692e7f86f'
   })
 
   depends_on 'bzip2' # R
