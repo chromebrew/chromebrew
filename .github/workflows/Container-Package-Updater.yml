@@ -35,4 +35,5 @@ jobs:
         run: |
           export CORE_PACKAGES=$(ruby bin/crew deps core)
           export BUILDESSENTIAL_PACKAGES=$(ruby bin/crew deps buildessential)
+          # shellcheck disable=SC2116
           gh workflow -R chromebrew/chromebrew run Updater-on-Demand.yml -f version_cmd_input="$(echo ${CORE_PACKAGES} ${BUILDESSENTIAL_PACKAGES})"
