@@ -3,18 +3,18 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.6'
+  version '3.4.6-1'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
   # git_hashtag '07f7832cffea879946a796e066ccb13ccb4b2abd'
-  git_hashtag "v#{version.gsub('.', '_')}"
+  git_hashtag "v#{version.split('-').first.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '657ad0990f631364d173e9be238e315f7cd2581a97f39b2dbf9ba2b80b85ea62',
      armv7l: '657ad0990f631364d173e9be238e315f7cd2581a97f39b2dbf9ba2b80b85ea62',
-       i686: '2fe3de34b189bc424ff997ed6bedadfa348a3da069825e038a6f809c47511c79',
+       i686: 'af078eaf4d3ba17720ca1c6cdae0a06513e596de23bc4d111a1d1acd22eb6d77',
      x86_64: '08a53568e5398650855aeb3c2ed02c1e761bedf1ee931416367855f0c9ab9be7'
   })
 
