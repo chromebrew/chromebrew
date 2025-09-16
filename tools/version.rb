@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 2.5 (for Chromebrew)
+# version.rb version 2.6 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -157,8 +157,10 @@ def get_anitya_id(name, homepage)
 end
 
 filelist = []
-if ARGV.length.positive? && !(ARGV.length == 1 && OPTIONS.include?(ARGV[0]))
-  ARGV.each do |arg|
+# Handle multiple packages being passed to version.rb.
+argv = ARGV.map(&:split).flatten
+if argv.length.positive? && !(argv.length == 1 && OPTIONS.include?(argv[0]))
+  argv.each do |arg|
     arg = arg.gsub('.rb', '')
     next unless arg =~ /^[0-9a-zA-Z_*]+$/
     if arg.include?('*')
