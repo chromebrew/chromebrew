@@ -70,7 +70,7 @@ unless defined?(CREW_ESSENTIAL_PACKAGES)
          File.file?(File.join(CREW_PREFIX, "etc/crew/meta/glibc_build#{LIBC_VERSION.delete('.')}.filelist")) ? "glibc_build#{LIBC_VERSION.delete('.')}" : ''
        end
     }
-  ].reject!(&:empty?)
+  ].reject(&:empty?)
 end
 
 CREW_IN_CONTAINER ||= File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', false) unless defined?(CREW_IN_CONTAINER)
