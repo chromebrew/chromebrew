@@ -181,6 +181,8 @@ end
 # Some packges need manual adjustments of URLS for different versions.
 unless defined?(CREW_UPDATER_EXCLUDED_PKGS)
   CREW_UPDATER_EXCLUDED_PKGS = Set[
+    { pkg_name: 'e2fsprogs', comments: 'Upstream issue: https://github.com/tytso/e2fsprogs/issues/240' },
+    { pkg_name: 'glibc', comments: 'Requires manual update' },
     { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' }
   ].to_h { |h| [h[:pkg_name], h[:comments]] }
 end
