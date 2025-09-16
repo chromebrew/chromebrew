@@ -1,13 +1,13 @@
-# Total size: 1686771
+# Total size: 1686689
 /usr/local/bin/__pycache__/vba_extract.cpython-313.pyc
 /usr/local/bin/vba_extract.py
-/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.8.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.8.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.8.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.8.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.8.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.8.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.8.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.9.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.9.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.9.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.9.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.9.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.9.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/xlsxwriter-3.2.9.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__init__.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/xlsxwriter/__pycache__/app.cpython-313.pyc
@@ -76,7 +76,6 @@
 /usr/local/lib/python3.13/site-packages/xlsxwriter/image.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/metadata.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/packager.py
-/usr/local/lib/python3.13/site-packages/xlsxwriter/py.typed
 /usr/local/lib/python3.13/site-packages/xlsxwriter/relationships.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/rich_value.py
 /usr/local/lib/python3.13/site-packages/xlsxwriter/rich_value_rel.py
