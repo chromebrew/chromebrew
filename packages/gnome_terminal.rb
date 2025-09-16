@@ -27,7 +27,6 @@ class Gnome_terminal < Meson
   depends_on 'gtk4' # R
   depends_on 'gtk_doc' => :build
   depends_on 'libadwaita' # R
-  depends_on 'libadwaita' => :build
   depends_on 'libx11' # R
   depends_on 'pango' # R
   depends_on 'util_linux' # R
