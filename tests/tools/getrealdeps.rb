@@ -102,6 +102,30 @@ class GetRealDepsTest < Minitest::Test
     test_wrapper(input_file, expected_pkg_file, deps)
   end
 
+  def test_replace_build_dependency
+    deps = ['json_c']
+    input_file = <<~EOF
+      class Example < Package
+        binary_sha256({})
+
+        depends_on 'a2png'
+        depends_on 'json_c' => :build
+        depends_on 'lzlib'
+      end
+    EOF
+    expected_pkg_file = <<~EOF
+      class Example < Package
+        binary_sha256({})
+
+        depends_on 'a2png'
+        depends_on 'json_c' # R
+        depends_on 'lzlib'
+      end
+    EOF
+
+    test_wrapper(input_file, expected_pkg_file, deps)
+  end
+
   def test_add_special_dependency_to_empty
     deps = []
     input_file = <<~EOF
@@ -266,6 +290,29 @@ class GetRealDepsTest < Minitest::Test
         depends_on 'libmms'
         depends_on 'libspng' # R
         depends_on 'ruby' # R
+      end
+    EOF
+
+    test_wrapper(input_file, expected_pkg_file, deps)
+  end
+
+  def test_does_not_remove_build_dependency
+    deps = ['libspng']
+    input_file = <<~EOF
+      class Example < Package
+        binary_sha256({})
+
+        depends_on 'libmatroska'
+        depends_on 'ninja' => :build
+      end
+    EOF
+    expected_pkg_file = <<~EOF
+      class Example < Package
+        binary_sha256({})
+
+        depends_on 'libmatroska'
+        depends_on 'libspng' # R
+        depends_on 'ninja' => :build
       end
     EOF
 

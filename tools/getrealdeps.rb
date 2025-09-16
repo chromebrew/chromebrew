@@ -84,7 +84,6 @@ def write_deps(pkg_file, pkgdeps, pkg)
   end
 
   # Look for runtime dependencies that aren't already provided by the package.
-  # We do not convert build dependencies into runtime dependencies, because they are probably build dependencies for a good reason.
   missingpkgdeps = pkgdeps.reject { File.read(pkg_file).include?("depends_on '#{it}'") unless File.read(pkg_file).include?("depends_on '#{it}' => :build") }
 
   unless missingpkgdeps.empty?
@@ -107,6 +106,9 @@ def write_deps(pkg_file, pkgdeps, pkg)
   # Check for and delete old runtime dependencies.
   # Its unsafe to do this with other dependencies, because the packager might know something we don't.
   pkgdepsblock.delete_if { |line| line.match(/  depends_on '(.*)' # R/) { |matchdata| pkgdeps.none?(matchdata[1]) && !privileged_deps.include?(matchdata[1]) } }
+
+  # If a dependency is both a build and a runtime dependency, we remove the build dependency.
+  pkgdepsblock.delete_if { |line| line.match(/  depends_on '(.*)' => :build/) { |matchdata| missingpkgdeps.include?(matchdata[1]) } }
 
   # Remove any duplicate dependencies from the block.
   pkgdepsblock.uniq!
