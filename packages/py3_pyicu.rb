@@ -20,7 +20,6 @@ class Py3_pyicu < Pip
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'python3' # R
-  depends_on 'python3' => :build
 
   no_source_build
 end
