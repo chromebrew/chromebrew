@@ -18,12 +18,9 @@ class Elfutils < Autotools
   })
 
   depends_on 'bzip2' # R
-  depends_on 'curl' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libarchive' # R
-  depends_on 'libmicrohttpd' # R
-  depends_on 'sqlite' # R
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
