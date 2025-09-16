@@ -264,6 +264,9 @@ def update
 
     # Do any fixups necessary after crew has updated from git.
     load "#{CREW_LIB_PATH}/lib/fixup.rb"
+
+    # Reload device.json in case it was modified by lib/fixup.rb
+    @device = ConvenienceFunctions.load_symbolized_json
   end
 
   # check for outdated installed packages
