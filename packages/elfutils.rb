@@ -33,11 +33,6 @@ class Elfutils < Autotools
   autotools_configure_options "#{'--disable-libdebuginfod --disable-debuginfod' if ARCH == 'i686'} --enable-maintainer-mode --program-prefix='eu-'"
 
   def self.patch
-    downloader 'https://raw.githubusercontent.com/openwrt/openwrt/refs/heads/main/package/libs/elfutils/patches/009-fix-null-dereference-with-lto.patch', 'bd81d483ed5474fd7e87a27e4c961bf8670f76c45f5fe9a273cb2f11d8f44ffc'
-    system 'patch -Np1 -i 009-fix-null-dereference-with-lto.patch'
-    downloader 'https://raw.githubusercontent.com/openwrt/openwrt/refs/heads/main/package/libs/elfutils/patches/102-fix-potential-deref-of-null-error.patch', '4be7368570bf64d38d34ae8147946e0d3741103e3b4dd0000d4e5c228d16e352'
-    system 'patch -Np1 -i 102-fix-potential-deref-of-null-error.patch'
-
     return unless ARCH == 'i686'
 
     # https://sourceware.org/git/?p=glibc.git;a=commit;h=0be74c5c7cb239e4884d1ee0fd48c746a0bd1a65
