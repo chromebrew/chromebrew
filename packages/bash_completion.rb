@@ -11,10 +11,10 @@ class Bash_completion < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'abe446ec4642cc6c715b76e8532384ce420b827665686484f7fa1068a89a9874',
-     armv7l: 'abe446ec4642cc6c715b76e8532384ce420b827665686484f7fa1068a89a9874',
-       i686: 'df4e80faf1ba0ecf75d6cf9206d546cd40b807970ff797d9bbdcb7edca024e0d',
-     x86_64: 'b27e14ecdaff9a705fbb077d11e77b4a8ade88862d1493b02cae780ba9451b3e'
+    aarch64: '56bf4308e78c4b5ef81289118452f2cbc7fabfc872bacd6cbed42f42ee4afd86',
+     armv7l: '56bf4308e78c4b5ef81289118452f2cbc7fabfc872bacd6cbed42f42ee4afd86',
+       i686: '557efd11b3b8ef2ec4ca9e8c9fc256a7c83ada457f36eccd3aa53877f8c105e6',
+     x86_64: 'ef58935c98389edfb7819eb31f3ffed503a4e02f317609fa7bfb9958e4936757'
   })
 
   depends_on 'bash' # L
