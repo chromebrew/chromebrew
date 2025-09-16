@@ -3,12 +3,12 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.5-07f783'
+  version '3.4.6'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag '07f7832cffea879946a796e066ccb13ccb4b2abd'
-  # git_hashtag "v#{version.gsub('.', '_')}"
+  # git_hashtag '07f7832cffea879946a796e066ccb13ccb4b2abd'
+  git_hashtag "v#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -38,7 +38,7 @@ class Ruby < Package
     # Download bundled gems version from Top of Tree. Otherwise outdated
     # compile needed gems during install can cause issues when updates
     # are attempted.
-    downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems'
+    # downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems'
   end
 
   def self.build
