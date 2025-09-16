@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 2.6 (for Chromebrew)
+# version.rb version 2.7 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -177,6 +177,9 @@ else
     filelist.push filename
   end
 end
+
+# Remove duplicates.
+filelist.uniq!
 
 if filelist.length.positive?
   max_pkg_name_length = File.basename(filelist.max_by(&:length)).length - 3

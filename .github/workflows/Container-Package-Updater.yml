@@ -1,0 +1,39 @@
+---
+name: Generate Updates for Core and Buildessential Packages.
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Daily
+  workflow_dispatch:
+env:
+  GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}  # setting GH_TOKEN for the entire workflow
+permissions:                    # Global permissions configuration starts here
+  actions: write
+  contents: write
+  packages: write
+  pull-requests: write          # 'write' access to pull requests
+jobs:
+  update-check:
+    if: ${{ github.repository_owner == 'chromebrew' }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.5'
+      - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package. https://github.com/repology/libversion/issues/35
+        working-directory: ${{ runner.temp }}
+        run: |
+          git clone --depth 1 -b 3.0.3 https://github.com/repology/libversion
+          cd libversion
+          mkdir build
+          cd build
+          cmake ..
+          make -j "$(nproc)"
+          sudo make install
+          sudo gem install --no-update-sources -N ruby-libversion --conservative
+      - name: Check for updates in core and buildessential packages.
+        id: pip-update-checks
+        run: |
+          export CORE_PACKAGES=$(ruby bin/crew deps core)
+          export BUILDESSENTIAL_PACKAGES=$(ruby bin/crew deps buildessential)
+          # shellcheck disable=SC2116
+          gh workflow -R chromebrew/chromebrew run Updater-on-Demand.yml -f version_cmd_input="$(echo ${CORE_PACKAGES} ${BUILDESSENTIAL_PACKAGES})"
