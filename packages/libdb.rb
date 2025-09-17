@@ -3,11 +3,11 @@ require 'package'
 class Libdb < Package
   description 'Berkeley DB is a family of embedded key-value database libraries providing scalable high-performance data management services to applications.'
   homepage 'https://github.com/berkeleydb/libdb'
-  version '5.3.28-dfsg2-1'
+  version '5.3.28-dfsg2-9'
   license 'ASM, BSD, CDDL, custom and SPL.'
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/db5.3.git'
-  git_hashtag 'debian/5.3.28+dfsg2-1'
+  git_hashtag 'debian/5.3.28+dfsg2-9'
   binary_compression 'tar.zst'
 
   binary_sha256({
