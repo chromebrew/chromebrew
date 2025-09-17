@@ -16,4 +16,6 @@ class Which < Autotools
        i686: '32deff126b05a282e441171b7a36dbe2de582eb4376ea5496dcbc82e579268f3',
      x86_64: '53d4d8200ed6215ef4eca4ee0ab0b72bd23743046023218b2835971dbf9de30e'
   })
+
+  depends_on 'glibc' # R
 end
