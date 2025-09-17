@@ -204,6 +204,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'libgedit_gtksourceview', anitya_pkg: 'libgedit-gtksourceview', comments: 'Prefer to GitHub' },
     { pkg_name: 'libnghttp3', anitya_pkg: 'nghttp3', comments: '' },
     { pkg_name: 'libngtcp2', anitya_pkg: 'ngtcp2', comments: '' },
+    { pkg_name: 'linux_pam', anitya_pkg: 'pam', comments: '' },
     { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
     { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
     { pkg_name: 'pkg_7_zip', anitya_pkg: '7zip~stable', comments: 'Prefer to GitHub' },

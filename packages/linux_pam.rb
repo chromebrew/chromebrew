@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Linux_pam < Package
+class Linux_pam < Autotools
   description 'Linux PAM (Pluggable Authentication Modules for Linux) project'
   homepage 'https://github.com/linux-pam/linux-pam'
-  version '1.5.3'
+  version '1.7.1'
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/linux-pam/linux-pam/releases/download/v1.5.3/Linux-PAM-1.5.3.tar.xz'
-  source_sha256 '7ac4b50feee004a9fa88f1dfd2d2fa738a82896763050cd773b3c54b0a818283'
+  source_url "https://github.com/linux-pam/linux-pam/releases/download/v#{version}/Linux-PAM-#{version}.tar.xz"
+  source_sha256 '21dbcec6e01dd578f14789eac9024a18941e6f2702a05cf91b28c232eeb26ab0'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -21,16 +21,11 @@ class Linux_pam < Package
   depends_on 'libdb' # libdb needs to be built with "--enable-dbm"
   depends_on 'libeconf' # R
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-      --disable-selinux \
+  autotools_configure_options '--disable-selinux \
       --enable-static \
-      --disable-nis"
-    system 'make'
-  end
+      --disable-nis'
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  autotools_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/security"
     Dir.chdir "#{CREW_DEST_PREFIX}/include" do
       system "find . -type f -exec ln -s #{CREW_PREFIX}/include/{} #{CREW_DEST_PREFIX}/include/security/{} \\;"
