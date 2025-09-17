@@ -6,10 +6,10 @@ class Libgpg_error < Autotools
   version '1.55'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url "https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-#{version}.tar.bz2"
-  source_sha256 '95b178148863f07d45df0cea67e880a79b9ef71f5d230baddc0071128516ef78'
-  # source_url 'https://dev.gnupg.org/source/libgpg-error.git'
-  # git_hashtag "libgpg-error-#{version}"
+  # source_url "https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-#{version}.tar.bz2"
+  # source_sha256 '95b178148863f07d45df0cea67e880a79b9ef71f5d230baddc0071128516ef78'
+  source_url 'https://dev.gnupg.org/source/libgpg-error.git'
+  git_hashtag "libgpg-error-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
