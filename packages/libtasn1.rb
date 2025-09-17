@@ -11,10 +11,10 @@ class Libtasn1 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a7e8dc9d134572b7d5478098fd485c8e799d8bb2d3512f8ef422ec1b92474ea0',
-     armv7l: 'a7e8dc9d134572b7d5478098fd485c8e799d8bb2d3512f8ef422ec1b92474ea0',
-       i686: 'd7f6ece301cdc6699847ca77075c82529f2607a3485ac4c9ef947a8e34a0ebab',
-     x86_64: '4d3f259d6e3e5488c31a1ba10e18c271c0734977edef5a5b2a1ec07fe0bf16fa'
+    aarch64: 'bbc90c7aeddcbf2ec97ebb5d633d1555d6d2bb42a9170be8398f96c437d1ee23',
+     armv7l: 'bbc90c7aeddcbf2ec97ebb5d633d1555d6d2bb42a9170be8398f96c437d1ee23',
+       i686: '3a420af07e96de2da8200f4c6a85384de0484a552ade20bb86086ce5ad1a2f08',
+     x86_64: 'fc012646fadabff15bacccd484132156022d47f2b068f310df491d28d18ba684'
   })
 
   # bison, diff, cmp are required at compile-time
