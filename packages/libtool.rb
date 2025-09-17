@@ -3,11 +3,11 @@ require 'package'
 class Libtool < Package
   description 'GNU libtool is a generic library support script. Libtool hides the complexity of using shared libraries behind a consistent, portable interface.'
   homepage 'https://www.gnu.org/software/libtool/'
-  version '2.5.3'
+  version '2.5.4'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/libtool/libtool-#{version}.tar.xz"
-  source_sha256 '898011232cc59b6b3bbbe321b60aba9db1ac11578ab61ed0df0299458146ae2e'
+  source_sha256 'f81f5860666b0bc7d84baddefa60d1cb9fa6fceb2398cc3baca6afaa60266675'
   binary_compression 'tar.zst'
 
   binary_sha256({
