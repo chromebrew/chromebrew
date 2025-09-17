@@ -17,6 +17,7 @@ class Libtool < Package
      x86_64: '72cecefe0089d7befb386b8df1b4608a5c6c987576e6f35d162a78a2743f76ca'
   })
 
+  depends_on 'glibc' # R
   depends_on 'm4'
 
   def self.build
