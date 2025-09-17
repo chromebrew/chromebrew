@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libgpg_error < Autotools
   description 'Libgpg-error is a small library that defines common error values for all GnuPG components.'
   homepage 'https://www.gnupg.org/related_software/libgpg-error/index.html'
-  version '1.51'
+  version '1.55'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-#{version}.tar.bz2"
-  source_sha256 'be0f1b2db6b93eed55369cdf79f19f72750c8c7c39fc20b577e724545427e6b2'
+  source_sha256 '95b178148863f07d45df0cea67e880a79b9ef71f5d230baddc0071128516ef78'
   # source_url 'https://dev.gnupg.org/source/libgpg-error.git'
   # git_hashtag "libgpg-error-#{version}"
   binary_compression 'tar.zst'
