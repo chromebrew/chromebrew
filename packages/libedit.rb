@@ -11,10 +11,10 @@ class Libedit < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2b68bcfe634ef21dec0ff29215e1de3f0cd506041ccae30d6eea93fb946870e9',
-     armv7l: '2b68bcfe634ef21dec0ff29215e1de3f0cd506041ccae30d6eea93fb946870e9',
-       i686: '5397384d810b157b11ab640c2144cf35f0999039daf1fa9dfc7bea8ad84af6f1',
-     x86_64: '41ec1b9f504bc593668bf88cde1eb85fcfd621397d7ec17c29ec686bc2238b5b'
+    aarch64: '77153714440405f628f595eee6768dbd48a15c48724d87e73329110763334f8c',
+     armv7l: '77153714440405f628f595eee6768dbd48a15c48724d87e73329110763334f8c',
+       i686: '5c11ea524b881e6f90f62fcfa354716acd13ab5b5d94f3a71071568be46442f5',
+     x86_64: '46ff742ce0cc8cea1ddc4c0c2c3a4db5ffb4d81d30d728b5c9162f51ecfc76be'
   })
 
   depends_on 'glibc' # R
