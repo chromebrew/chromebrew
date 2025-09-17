@@ -11,10 +11,10 @@ class Libssh < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2df6ae74bba1bb47cea2a8b3a3504a940dcc79448f0b63aff0181068c46a33b9',
-     armv7l: '2df6ae74bba1bb47cea2a8b3a3504a940dcc79448f0b63aff0181068c46a33b9',
-       i686: '709cac8b5e0a2419926b68614fc82aeae01ea7189f9ffd5619e440fe08b1a0f8',
-     x86_64: 'c05854fe1214aa1f962f7080493da80d081e02c54336de81100fd84efdd5216d'
+    aarch64: 'c1fe6e96a206d48b1e03d66fb4a67d0d2dbf404196193431f8df3b05a0ab7090',
+     armv7l: 'c1fe6e96a206d48b1e03d66fb4a67d0d2dbf404196193431f8df3b05a0ab7090',
+       i686: 'fbae318ec918b543457b79e3829378893aee681cc45c5941f3a1764e099d77ab',
+     x86_64: 'f2ecdefbe948d1a90940c2f90e0d24b9fc6c7cbcd101280cd0e212c2c5a85dd6'
   })
 
   depends_on 'e2fsprogs'
