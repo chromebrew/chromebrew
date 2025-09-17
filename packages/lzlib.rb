@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Lzlib < Package
+class Lzlib < Autotools
   description 'Lzlib is a data compression library providing in-memory LZMA compression and decompression functions, including integrity checking of the decompressed data.'
   homepage 'https://www.nongnu.org/lzip/lzlib.html'
-  version '1.13'
+  version '1.15'
   license 'BSD-2'
   compatibility 'all'
-  source_url 'https://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-1.13.tar.lz'
-  source_sha256 'dde6bd5b32535f17b28c9ac24b66607e0250506ac1432a4112ca3c73f5d662c3'
+  source_url "https://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-#{version}.tar.lz"
+  source_sha256 '9d45480e7c8171c64fa1d5beee2cbd82e69febe910f0ce628b876a8fe2141534'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -17,16 +17,5 @@ class Lzlib < Package
      x86_64: '87e3ac042df3ab14d50fe64d548a28ed9bd59cb36a4720345eaaa2a802970934'
   })
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} --enable-shared"
-    system 'make'
-  end
-
-  def self.check
-    system 'make check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+    autotools_configure_options '--enable-shared'
 end
