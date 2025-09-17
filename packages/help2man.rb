@@ -13,7 +13,7 @@ class Help2man < Autotools
   binary_sha256({
     aarch64: '5a452f26ce39181b52ca51fd3fcf0515b79fce7d70ddd51a980cd037a9e8337d',
      armv7l: '5a452f26ce39181b52ca51fd3fcf0515b79fce7d70ddd51a980cd037a9e8337d',
-       i686: '198a0bfc1445dad68c2daf9fd877abc9944eabb29b8de91dff2eff475ef6e9fe',
+       i686: '7709de610e92298602742df0d6abba78fe29663fe4b9c6beb9444133a45416be',
      x86_64: '80398327a3f399cd033bd1d0d093ee92f03ba28a81904d6c490d0f93ba72db54'
   })
 end
