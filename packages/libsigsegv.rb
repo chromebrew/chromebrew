@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libsigsegv < Autotools
   description 'GNU libsigsegv is a library for handling page faults in user mode.'
   homepage 'https://www.gnu.org/software/libsigsegv/'
-  version '2.14-a816da0'
+  version '2.15'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/libsigsegv.git'
-  git_hashtag 'a816da0ecf6eb59234cdea8e62d0ac5706b714f0'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
