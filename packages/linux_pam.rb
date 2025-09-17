@@ -6,8 +6,8 @@ class Linux_pam < Autotools
   version '1.7.1'
   license 'BSD-3'
   compatibility 'all'
-  source_url "https://github.com/linux-pam/linux-pam/releases/download/v#{version}/Linux-PAM-#{version}.tar.xz"
-  source_sha256 '21dbcec6e01dd578f14789eac9024a18941e6f2702a05cf91b28c232eeb26ab0'
+  source_url 'https://github.com/linux-pam/linux-pam.git'
+  git_hashtag "Linux-PAM-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
