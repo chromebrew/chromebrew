@@ -14,10 +14,10 @@ class Mpdecimal < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e995ff521db72f576566f4b7b9d9a5e4474be854a4e9d5177872b2185dc4ccbe',
-     armv7l: 'e995ff521db72f576566f4b7b9d9a5e4474be854a4e9d5177872b2185dc4ccbe',
-       i686: '683d89e09f6826a1ee6c70cdafa00e5fbd5fe6cc472b8141afb8f6dd989aba9d',
-     x86_64: '9eeeca2110c6be8a862f76d81910e070b60502d3542cc24842422b771b5292fd'
+    aarch64: '00b9db4d97e95a6d08a5e4647cdec3c54cdaee4960f1535c169870a8b8a19a16',
+     armv7l: '00b9db4d97e95a6d08a5e4647cdec3c54cdaee4960f1535c169870a8b8a19a16',
+       i686: '9643dda5c75535755f02b127372eeef28f045f17f2489758128b4fa7ab9761fe',
+     x86_64: 'e9b8b7699c8c1876f56033752b962165bc47d82b866ee9fbdfe31247a651b2d0'
   })
 
   depends_on 'gcc_lib' # R
