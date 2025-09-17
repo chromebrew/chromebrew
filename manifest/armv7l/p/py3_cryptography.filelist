@@ -1,12 +1,12 @@
-# Total size: 4207768
-/usr/local/lib/python3.13/site-packages/cryptography-45.0.7.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/cryptography-45.0.7.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/cryptography-45.0.7.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/cryptography-45.0.7.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/cryptography-45.0.7.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/cryptography-45.0.7.dist-info/licenses/LICENSE
-/usr/local/lib/python3.13/site-packages/cryptography-45.0.7.dist-info/licenses/LICENSE.APACHE
-/usr/local/lib/python3.13/site-packages/cryptography-45.0.7.dist-info/licenses/LICENSE.BSD
+# Total size: 4516403
+/usr/local/lib/python3.13/site-packages/cryptography-46.0.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/cryptography-46.0.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/cryptography-46.0.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/cryptography-46.0.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/cryptography-46.0.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/cryptography-46.0.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/cryptography-46.0.1.dist-info/licenses/LICENSE.APACHE
+/usr/local/lib/python3.13/site-packages/cryptography-46.0.1.dist-info/licenses/LICENSE.BSD
 /usr/local/lib/python3.13/site-packages/cryptography/__about__.py
 /usr/local/lib/python3.13/site-packages/cryptography/__init__.py
 /usr/local/lib/python3.13/site-packages/cryptography/__pycache__/__about__.cpython-313.pyc
@@ -20,6 +20,10 @@
 /usr/local/lib/python3.13/site-packages/cryptography/hazmat/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/cryptography/hazmat/__pycache__/_oid.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/cryptography/hazmat/_oid.py
+/usr/local/lib/python3.13/site-packages/cryptography/hazmat/asn1/__init__.py
+/usr/local/lib/python3.13/site-packages/cryptography/hazmat/asn1/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/cryptography/hazmat/asn1/__pycache__/asn1.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/cryptography/hazmat/asn1/asn1.py
 /usr/local/lib/python3.13/site-packages/cryptography/hazmat/backends/__init__.py
 /usr/local/lib/python3.13/site-packages/cryptography/hazmat/backends/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/cryptography/hazmat/backends/openssl/__init__.py
@@ -32,6 +36,7 @@
 /usr/local/lib/python3.13/site-packages/cryptography/hazmat/bindings/_rust/__init__.pyi
 /usr/local/lib/python3.13/site-packages/cryptography/hazmat/bindings/_rust/_openssl.pyi
 /usr/local/lib/python3.13/site-packages/cryptography/hazmat/bindings/_rust/asn1.pyi
+/usr/local/lib/python3.13/site-packages/cryptography/hazmat/bindings/_rust/declarative_asn1.pyi
 /usr/local/lib/python3.13/site-packages/cryptography/hazmat/bindings/_rust/exceptions.pyi
 /usr/local/lib/python3.13/site-packages/cryptography/hazmat/bindings/_rust/ocsp.pyi
 /usr/local/lib/python3.13/site-packages/cryptography/hazmat/bindings/_rust/openssl/__init__.pyi
