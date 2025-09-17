@@ -18,6 +18,7 @@ class Libedit < Package
   })
 
   depends_on 'glibc' # R
+  depends_on 'ncurses' # R
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS} \
