@@ -27,10 +27,12 @@ class Libdb < Package
   def self.build
     Dir.chdir 'build_unix' do
       system "../dist/configure #{CREW_CONFIGURE_OPTIONS} \
+      --disable-java \
+      --disable-sql \
+      --disable-stl \
       --enable-compat185 \
       --enable-cxx \
-      --enable-dbm \
-      --enable-stl"
+      --enable-dbm"
       system "make -j #{CREW_NPROC} || make"
     end
   end
