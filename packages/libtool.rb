@@ -35,7 +35,7 @@ class Libtool < Package
     # Link order of deplibs             FAILED (link-order2.at:126)
     # static linking flags for programs FAILED (static.at:177)
     # Run tests with low max_cmd_len    FAILED (cmdline_wrap.at:48)
-    # Falure on i686:                   FAILED (lt_dlopenext.at:242)
+    # Failure on i686:                   FAILED (lt_dlopenext.at:242)
     system 'make check', exception: false
   end
 end
