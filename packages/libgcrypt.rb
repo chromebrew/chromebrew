@@ -23,18 +23,5 @@ class Libgcrypt < Autotools
 
   autotools_configure_options '--enable-static \
       --enable-shared'
-
-  def self.patch
-    # Fix error: 'asm' operand has impossible constraints or there are not enough registers
-    # See https://dev.gnupg.org/T7226.
-    if %w[aarch64 armv7l].include?(ARCH)
-      puts 'Downloading patch...'.yellow
-      downloader 'https://files.gnupg.net/file/download/4axfkyiszlsm4qgf5lxy/PHID-FILE-k3tzb5qnxdtsfvvpd7q4/0001-mpi-ec-inline-reduce-register-pressure-on-32-bit-ARM.patch',
-                 'de543d9d5bfcfb91090c0ebbe46b321344686130cbe5f214ca86c9f8c040d5fa'
-      puts 'Applying patch...'.yellow
-      system 'git apply 0001-mpi-ec-inline-reduce-register-pressure-on-32-bit-ARM.patch'
-    end
-  end
-
   run_tests
 end
