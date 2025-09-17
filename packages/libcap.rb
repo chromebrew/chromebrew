@@ -14,10 +14,11 @@ class Libcap < Package
     aarch64: '066b33b52470c318c3e9f63fb3f493ab3dc3eb56bd500e4c431adbca76c585a7',
      armv7l: '066b33b52470c318c3e9f63fb3f493ab3dc3eb56bd500e4c431adbca76c585a7',
        i686: 'da159f192e4f081214a3972c1d47313733687a5a5b9eb5f97d6c6a1b72da84d2',
-     x86_64: '8f5459a6d5976be34b32e98802487e04571ef9e6d9a142b3efc1b4e350794883'
+     x86_64: '6dbc5549fd75d3b89e0036ad1b455f0613330662f5db871a47257b887990a5d1'
   })
 
   depends_on 'glibc' # R
+  depends_on 'go' => :build
   depends_on 'gperf' => :build
   depends_on 'linux_pam'
 
@@ -39,7 +40,7 @@ class Libcap < Package
   end
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} make"
+    system 'make'
   end
 
   def self.install
