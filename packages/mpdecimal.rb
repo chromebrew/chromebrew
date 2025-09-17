@@ -19,4 +19,7 @@ class Mpdecimal < Autotools
        i686: '683d89e09f6826a1ee6c70cdafa00e5fbd5fe6cc472b8141afb8f6dd989aba9d',
      x86_64: '9eeeca2110c6be8a862f76d81910e070b60502d3542cc24842422b771b5292fd'
   })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 end
