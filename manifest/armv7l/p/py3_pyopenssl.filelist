@@ -1,4 +1,4 @@
-# Total size: 479004
+# Total size: 479215
 /usr/local/lib/python3.13/site-packages/OpenSSL/SSL.py
 /usr/local/lib/python3.13/site-packages/OpenSSL/__init__.py
 /usr/local/lib/python3.13/site-packages/OpenSSL/__pycache__/SSL.cpython-313.pyc
@@ -14,10 +14,10 @@
 /usr/local/lib/python3.13/site-packages/OpenSSL/py.typed
 /usr/local/lib/python3.13/site-packages/OpenSSL/rand.py
 /usr/local/lib/python3.13/site-packages/OpenSSL/version.py
-/usr/local/lib/python3.13/site-packages/pyopenssl-25.2.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pyopenssl-25.2.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pyopenssl-25.2.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pyopenssl-25.2.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pyopenssl-25.2.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pyopenssl-25.2.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.13/site-packages/pyopenssl-25.2.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/pyopenssl-25.3.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pyopenssl-25.3.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pyopenssl-25.3.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pyopenssl-25.3.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pyopenssl-25.3.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pyopenssl-25.3.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/pyopenssl-25.3.0.dist-info/top_level.txt
