@@ -13,9 +13,9 @@ class Linuxheaders < Package
   case CREW_KERNEL_VERSION
   when '3.8'
 
-  binary_sha256({
-       i686: '362ab05c4f6903793560fffd33abf79e5194fb72d3d38ec1648a93c56ebf91e8'
-  })
+    binary_sha256({
+         i686: '362ab05c4f6903793560fffd33abf79e5194fb72d3d38ec1648a93c56ebf91e8'
+    })
   when '3.10'
     binary_sha256({
       aarch64: 'c72bd617ad3b828daffb6715461e8fd9d40770c381a3acab1a9028d5efefb141',
@@ -71,11 +71,11 @@ class Linuxheaders < Package
     })
   when '6.12'
 
-  binary_sha256({
-    aarch64: '5c98953b23222a11d9a1a70624a95251053f24830a66fc68e7bcbdf115c1ca2f',
-     armv7l: '5c98953b23222a11d9a1a70624a95251053f24830a66fc68e7bcbdf115c1ca2f',
-     x86_64: '619f3c0156cca2f38cf8b999158f2619f1ed659908f0b0005b902f93ba2b6e6a'
-  })
+    binary_sha256({
+      aarch64: '5c98953b23222a11d9a1a70624a95251053f24830a66fc68e7bcbdf115c1ca2f',
+       armv7l: '5c98953b23222a11d9a1a70624a95251053f24830a66fc68e7bcbdf115c1ca2f',
+       x86_64: '619f3c0156cca2f38cf8b999158f2619f1ed659908f0b0005b902f93ba2b6e6a'
+    })
   end
 
   depends_on 'rsync' => :build
