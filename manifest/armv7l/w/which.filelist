@@ -1,5 +1,4 @@
-# Total size: 78294
+# Total size: 24228
 /usr/local/bin/which
-/usr/local/share/info/dir.gz
-/usr/local/share/info/which.info.gz
-/usr/local/share/man/man1/which.1.gz
+/usr/local/share/info/which.info.zst
+/usr/local/share/man/man1/which.1.zst
