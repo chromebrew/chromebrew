@@ -30,9 +30,11 @@ class Libdb < Package
       --disable-java \
       --disable-sql \
       --disable-stl \
+      --disable-tcl \
       --enable-compat185 \
       --enable-cxx \
-      --enable-dbm"
+      --enable-dbm \
+      --with-mutex=POSIX/pthreads/library"
       system "make -j #{CREW_NPROC} || make"
     end
   end
