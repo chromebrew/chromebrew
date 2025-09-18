@@ -11,14 +11,14 @@ class Libdb < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '13c6a2e5b7482bf638b3a37d924a31a782dfc21dd9ac6834885e11d0d7730223',
-     armv7l: '13c6a2e5b7482bf638b3a37d924a31a782dfc21dd9ac6834885e11d0d7730223',
-       i686: 'f632cf996b72841a48ca0201aaf5dd9a98fc3a51d81ea3e526c2bca9e12b7d13',
-     x86_64: 'd849400eb1a1b0ea3797b96ae6e7361c3c392ec11ceeb025d4dca37d1a3c2ae6'
+    aarch64: 'efa2f54b5f94d526cbee90578d5abd195d509d7f709509cb4b7171fd2bc9f53d',
+     armv7l: 'efa2f54b5f94d526cbee90578d5abd195d509d7f709509cb4b7171fd2bc9f53d',
+       i686: '05794e6cc1db16bd0168ea96a8cda7734a67a4d5ec312430004eabb103ea679a',
+     x86_64: 'aa805c343c1b791f8a6ffa024e43f209342a4fb51df0d30463441a913e8479df'
   })
 
-  depends_on 'glibc' # R
   depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
   def self.patch
     system 'for i in $(cat debian/patches/series); do patch -Np1 -i debian/patches/${i}; done'
