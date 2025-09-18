@@ -15,7 +15,7 @@ class Py3_gpt_researcher < Pip
      x86_64: '0f8c41d5c09bdec7aaac346b74460f9697611227cdff2f4e84d8b1e96719a614'
   })
 
-  depends_on 'llvm_dev' => build
+  depends_on 'llvm_dev' => :build
   depends_on 'py3_maturin' => :build
   depends_on 'py3_pillow' => :build
   depends_on 'py3_pypdf' => :build
