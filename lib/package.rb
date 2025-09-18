@@ -338,7 +338,7 @@ class Package
     crew_env_options_hash = if no_env_options?
                               { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
                             elsif no_lto?
-                              CREW_ENV_FNO_LTO_OPTIONS_HASH.each_with_object({}) {|(k, v), h| h[k] = v.gsub('-flto=auto', '') }
+                              CREW_ENV_FNO_LTO_OPTIONS_HASH.transform_values { |v| v.gsub('-flto=auto', '') }
                             else
                               CREW_ENV_OPTIONS_HASH
                             end
@@ -350,10 +350,10 @@ class Package
 
     # Extract env hash.
     if args[0].is_a?(Hash)
-      env = @no_mold ? crew_env_options_hash.merge(args[0]).each_with_object({}) {|(k, v), h| h[k] = v.gsub('-fuse-ld=mold', '') } : crew_env_options_hash.merge(args[0])
+      env = @no_mold ? crew_env_options_hash.merge(args[0]).transform_values { |v| v.gsub('-fuse-ld=mold', '') } : crew_env_options_hash.merge(args[0])
       args.delete_at(0) # Remove env hash from args array.
     else
-      env = @no_mold ? crew_env_options_hash.each_with_object({}) {|(k, v), h| h[k] = v.gsub('-fuse-ld=mold', '') } : crew_env_options_hash
+      env = @no_mold ? crew_env_options_hash.transform_values { |v| v.gsub('-fuse-ld=mold', '') } : crew_env_options_hash
     end
 
     env['CREW_PRELOAD_ENABLE_COMPILE_HACKS'] = opt_args.delete(:no_preload_hacks) ? '0' : '1'
