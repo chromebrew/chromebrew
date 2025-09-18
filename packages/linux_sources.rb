@@ -3,19 +3,24 @@ require 'package'
 class Linux_sources < Package
   description 'Sources for the Linux kernel'
   homepage 'https://kernel.org/'
-  version ARCH == 'i686' ? '3.8' : '4.14-1'
+  version ARCH == 'i686' ? '3.8' : '6.12'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
   git_hashtag "chromeos-#{CREW_KERNEL_VERSION}"
-  binary_compression 'tpxz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'c9b3116f83033215bf7f925a433bcea906067006d8c4c3f9747a279d729d4db0',
      armv7l: 'c9b3116f83033215bf7f925a433bcea906067006d8c4c3f9747a279d729d4db0',
-       i686: '2e8cf6b96bfb2f1f65809123696799244ac20b3a7a6b516d00d9f09a0b682266',
-     x86_64: '5dc236576f40cbf6926b4b5f9241ed7e9e3e7db8f2b26643316a2ce1f08a4a02'
+       i686: '373f8d251a78c8e8ceba8a1a9d85b0fbfe106f75a5127cfb7e3274363dc211f7',
+     x86_64: '4915d7e6b21e7467fc4bb7211f89ab216d86b3403127ab3af684f8d561aeeea9'
   })
+
+  depends_on 'binutils' # R
+  depends_on 'glibc' # R
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
 
   no_env_options
   no_fhs
