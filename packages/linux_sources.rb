@@ -14,7 +14,14 @@ class Linux_sources < Package
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
-  git_hashtag "chromeos-#{CREW_KERNEL_VERSION}"
+  git_hashtag case ARCH
+              when 'i686'
+                'chromeos-3.8'
+              when 'armv7l'
+                'chromeos-4.14'
+              else
+                "chromeos-#{CREW_KERNEL_VERSION}"
+              end
   binary_compression 'tar.zst'
 
   binary_sha256({
