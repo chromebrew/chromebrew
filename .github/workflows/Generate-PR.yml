@@ -12,6 +12,11 @@ on:
       pr_title:
         description: "Title of PR"
         required: false
+      rebase:
+        description: "Rebase to master."
+        required: false
+        type: boolean
+        default: 'true'
       update_package_files:
         description: "Update Package Files."
         required: false
@@ -62,12 +67,14 @@ jobs:
           persist-credentials: true
           ref: ${{ inputs.branch || github.ref_name }}
       - name: Rebase to master
+        if: ${{ ( inputs.rebase ) }}
         run: |
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git pull --rebase origin master
             git push -f
       - name: Push rebase changes
+        if: ${{ ( inputs.rebase ) }}
         uses: ad-m/github-push-action@master
         with:
           branch: ${{ inputs.branch || github.ref_name }}
@@ -160,7 +167,7 @@ jobs:
       i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
       x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
       armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
-    if: ${{ !cancelled() }}
+    if: ${{ !cancelled() && ( inputs.update_package_files ) }}
     concurrency:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.ref_name }}
       cancel-in-progress: true
@@ -232,7 +239,7 @@ jobs:
             esac
       - name: Run Updater in container
         id: run-updater
-        if: ${{ contains(needs.*.result, 'failure') ||  !cancelled() }}
+        if: ${{ ( inputs.update_package_files ) && ( contains(needs.*.result, 'failure') ||  !cancelled() ) }}
         env:
           UPDATE_PACKAGE_FILES: ${{ github.event.inputs.update_package_files }}
         run: |
@@ -302,7 +309,7 @@ jobs:
     needs:
       - setup
       - update-package-files
-    if: ${{ !cancelled() }}
+    if: ${{ ( always() && !cancelled() ) && needs.setup.result == 'success' && ((( inputs.update_package_files ) && needs.update-package-files.result == 'success') || !( inputs.update_package_files )) }}
     steps:
       - name: Fail if update or build jobs failed, otherwise create a PR
         if: ${{ contains(needs.*.result, 'failure') }}
@@ -327,13 +334,17 @@ jobs:
           sudo gem install ruby-libversion
       - name: Rebase to master and save git log
         id: rebase-and-git-log
+        env:
+          REBASE: ${{ inputs.rebase }}
         run: |
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git fetch origin
             git checkout "${{ inputs.branch || github.ref_name }}"
-            git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
-            git pull --rebase origin master && git push -f
+            if [[ ${REBASE} == 'true' ]]; then
+              git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
+              git pull --rebase origin master && git push -f
+            fi
             git log --oneline -10
             git checkout master && git pull
             git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Build Run on\|Package File Update Run on" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
@@ -432,7 +443,7 @@ jobs:
           [[ -n "${PKG_DELTA[*]}" ]] && PKG_DELTAS="— $(join_by , "${PKG_DELTA[@]}")"
           echo "PKG_DELTAS: $PKG_DELTAS"
           cat /tmp/pr.txt
-          [[ $DRAFT_PR == 'true' ]] && export PR_DRAFT_FLAG='-d'
+          [[ ${DRAFT_PR} == 'true' ]] && export PR_DRAFT_FLAG='-d'
           PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
           PR_TITLE_INPUT="${{ inputs.pr_title }}"
           if [[ -z ${PR_TITLE_INPUT} ]]; then
@@ -447,7 +458,7 @@ jobs:
             gh pr edit --add-reviewer chromebrew/active --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt
           fi
           # Draft PRs can not be set to automerge.
-          if [[ $DRAFT_PR == 'true' ]]; then
+          if [[ ${DRAFT_PR} == 'true' ]]; then
             gh pr ready --undo || true
           else
             gh pr ready || true
