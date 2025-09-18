@@ -13,7 +13,7 @@ class Rust < Package
   binary_sha256({
     aarch64: '6bac6090d0782096ebdffddc62f57bc4f9f79711a52da33162a7a3ac149bcb9c',
      armv7l: '6bac6090d0782096ebdffddc62f57bc4f9f79711a52da33162a7a3ac149bcb9c',
-       i686: 'feb994e7c582fc2246e9a9dc36f362516f8ec21c0723bb9d02f74f9d0c6cb39e',
+       i686: '9847530c3a5cb4700c1445d6146490cb2abad28bd3905ab454f1784b22eb2ec1',
      x86_64: 'ecb36f4847660ca2c8f7c0bd3a3f0a7fd570b9dee011f29e6ccf64fb490923ca'
   })
 
