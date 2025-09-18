@@ -13,7 +13,7 @@ class Ruby_json < RUBY
     aarch64: '77a265fcd89bfd61da99ef2dfa47408c2dc100da667a048723b4e8901de1787a',
      armv7l: '77a265fcd89bfd61da99ef2dfa47408c2dc100da667a048723b4e8901de1787a',
        i686: 'e6f0ff648c14a50f690f5d7442112decf9e25aa4d9bfcbd89a1e8a3a68a75cbf',
-     x86_64: '86e9f286d297a3dce89847272d2c3ccd35e06727cf3bfc68992dc45a60cd140c'
+     x86_64: 'f9899c335d6060fe45c13819fcf7d7c77a22c9cf5ecc3d15ad9650788daf76ce'
   })
 
   conflicts_ok
