@@ -338,7 +338,7 @@ class Package
     crew_env_options_hash = if no_env_options?
                               { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
                             elsif no_lto?
-                              CREW_ENV_FNO_LTO_OPTIONS_HASH
+                              CREW_ENV_FNO_LTO_OPTIONS_HASH.transform_values { |v| v.gsub('-flto=auto', '') }
                             else
                               CREW_ENV_OPTIONS_HASH
                             end
@@ -350,13 +350,17 @@ class Package
 
     # Extract env hash.
     if args[0].is_a?(Hash)
-      env = crew_env_options_hash.merge(args[0])
+      env = @no_mold ? crew_env_options_hash.merge(args[0]).transform_values { |v| v.gsub('-fuse-ld=mold', '') } : crew_env_options_hash.merge(args[0])
       args.delete_at(0) # Remove env hash from args array.
     else
-      env = crew_env_options_hash
+      env = @no_mold ? crew_env_options_hash.transform_values { |v| v.gsub('-fuse-ld=mold', '') } : crew_env_options_hash
     end
 
     env['CREW_PRELOAD_ENABLE_COMPILE_HACKS'] = opt_args.delete(:no_preload_hacks) ? '0' : '1'
+    # CC_LD and CXX_LD are needed by meson to override mold being
+    # detected and used by default.
+    env['CC_LD']                             = @no_mold ? 'bfd' : 'mold'
+    env['CXX_LD']                            = @no_mold ? 'bfd' : 'mold'
     env['CREW_PRELOAD_NO_MOLD']              = @no_mold ? '1' : '0'
     env['LD_PRELOAD']                        = File.join(CREW_LIB_PREFIX, 'crew-preload.so') if File.exist?("#{CREW_LIB_PREFIX}/crew-preload.so")
 
