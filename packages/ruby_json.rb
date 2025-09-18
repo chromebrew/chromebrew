@@ -10,8 +10,8 @@ class Ruby_json < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '77a265fcd89bfd61da99ef2dfa47408c2dc100da667a048723b4e8901de1787a',
-     armv7l: '77a265fcd89bfd61da99ef2dfa47408c2dc100da667a048723b4e8901de1787a',
+    aarch64: '97e90c52c9ebfe63fb262d447c1d6aef7e2b81f41924f77b88d01631213490f4',
+     armv7l: '97e90c52c9ebfe63fb262d447c1d6aef7e2b81f41924f77b88d01631213490f4',
        i686: 'e6f0ff648c14a50f690f5d7442112decf9e25aa4d9bfcbd89a1e8a3a68a75cbf',
      x86_64: 'f9899c335d6060fe45c13819fcf7d7c77a22c9cf5ecc3d15ad9650788daf76ce'
   })
