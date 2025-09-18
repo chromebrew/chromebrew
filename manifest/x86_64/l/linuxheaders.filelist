@@ -1,3 +1,4 @@
+# Total size: 6797300
 /usr/local/include/asm-generic/auxvec.h
 /usr/local/include/asm-generic/bitsperlong.h
 /usr/local/include/asm-generic/bpf_perf_event.h
@@ -45,6 +46,7 @@
 /usr/local/include/asm/byteorder.h
 /usr/local/include/asm/debugreg.h
 /usr/local/include/asm/e820.h
+/usr/local/include/asm/elf.h
 /usr/local/include/asm/errno.h
 /usr/local/include/asm/fcntl.h
 /usr/local/include/asm/hw_breakpoint.h
@@ -76,6 +78,7 @@
 /usr/local/include/asm/resource.h
 /usr/local/include/asm/sembuf.h
 /usr/local/include/asm/setup.h
+/usr/local/include/asm/setup_data.h
 /usr/local/include/asm/sgx.h
 /usr/local/include/asm/shmbuf.h
 /usr/local/include/asm/sigcontext.h
@@ -106,7 +109,6 @@
 /usr/local/include/drm/drm_mode.h
 /usr/local/include/drm/drm_sarea.h
 /usr/local/include/drm/etnaviv_drm.h
-/usr/local/include/drm/evdi_drm.h
 /usr/local/include/drm/exynos_drm.h
 /usr/local/include/drm/habanalabs_accel.h
 /usr/local/include/drm/i915_drm.h
@@ -118,6 +120,8 @@
 /usr/local/include/drm/nouveau_drm.h
 /usr/local/include/drm/omap_drm.h
 /usr/local/include/drm/panfrost_drm.h
+/usr/local/include/drm/panthor_drm.h
+/usr/local/include/drm/pvr_drm.h
 /usr/local/include/drm/qaic_accel.h
 /usr/local/include/drm/qxl_drm.h
 /usr/local/include/drm/radeon_drm.h
@@ -127,6 +131,7 @@
 /usr/local/include/drm/vgem_drm.h
 /usr/local/include/drm/virtgpu_drm.h
 /usr/local/include/drm/vmwgfx_drm.h
+/usr/local/include/drm/xe_drm.h
 /usr/local/include/linux/a.out.h
 /usr/local/include/linux/acct.h
 /usr/local/include/linux/acrn.h
@@ -176,13 +181,14 @@
 /usr/local/include/linux/bcm933xx_hcs.h
 /usr/local/include/linux/bfs_fs.h
 /usr/local/include/linux/binfmts.h
+/usr/local/include/linux/bits.h
+/usr/local/include/linux/blkdev.h
 /usr/local/include/linux/blkpg.h
 /usr/local/include/linux/blktrace_api.h
 /usr/local/include/linux/blkzoned.h
 /usr/local/include/linux/bpf.h
 /usr/local/include/linux/bpf_common.h
 /usr/local/include/linux/bpf_perf_event.h
-/usr/local/include/linux/bpfilter.h
 /usr/local/include/linux/bpqether.h
 /usr/local/include/linux/bsg.h
 /usr/local/include/linux/bt-bmc.h
@@ -243,6 +249,7 @@
 /usr/local/include/linux/dma-buf.h
 /usr/local/include/linux/dma-heap.h
 /usr/local/include/linux/dns_resolver.h
+/usr/local/include/linux/dpll.h
 /usr/local/include/linux/dqblk_xfs.h
 /usr/local/include/linux/dvb/audio.h
 /usr/local/include/linux/dvb/ca.h
@@ -265,6 +272,7 @@
 /usr/local/include/linux/ethtool_netlink.h
 /usr/local/include/linux/eventfd.h
 /usr/local/include/linux/eventpoll.h
+/usr/local/include/linux/exfat.h
 /usr/local/include/linux/ext4.h
 /usr/local/include/linux/f2fs.h
 /usr/local/include/linux/fadvise.h
@@ -369,7 +377,6 @@
 /usr/local/include/linux/ioam6_genl.h
 /usr/local/include/linux/ioam6_iptunnel.h
 /usr/local/include/linux/ioctl.h
-/usr/local/include/linux/iommu.h
 /usr/local/include/linux/iommufd.h
 /usr/local/include/linux/ioprio.h
 /usr/local/include/linux/ip.h
@@ -381,7 +388,6 @@
 /usr/local/include/linux/ipmi_msgdefs.h
 /usr/local/include/linux/ipmi_ssif_bmc.h
 /usr/local/include/linux/ipsec.h
-/usr/local/include/linux/ipu-isys.h
 /usr/local/include/linux/ipu-psys.h
 /usr/local/include/linux/ipv6.h
 /usr/local/include/linux/ipv6_route.h
@@ -417,6 +423,7 @@
 /usr/local/include/linux/loadpin.h
 /usr/local/include/linux/loop.h
 /usr/local/include/linux/lp.h
+/usr/local/include/linux/lsm.h
 /usr/local/include/linux/lwtunnel.h
 /usr/local/include/linux/magic.h
 /usr/local/include/linux/major.h
@@ -428,6 +435,8 @@
 /usr/local/include/linux/mdio.h
 /usr/local/include/linux/media-bus-format.h
 /usr/local/include/linux/media.h
+/usr/local/include/linux/media/raspberrypi/pisp_be_config.h
+/usr/local/include/linux/media/raspberrypi/pisp_common.h
 /usr/local/include/linux/mei.h
 /usr/local/include/linux/mei_uuid.h
 /usr/local/include/linux/membarrier.h
@@ -444,6 +453,7 @@
 /usr/local/include/linux/mpls.h
 /usr/local/include/linux/mpls_iptunnel.h
 /usr/local/include/linux/mptcp.h
+/usr/local/include/linux/mptcp_pm.h
 /usr/local/include/linux/mqueue.h
 /usr/local/include/linux/mroute.h
 /usr/local/include/linux/mroute6.h
@@ -451,6 +461,7 @@
 /usr/local/include/linux/msdos_fs.h
 /usr/local/include/linux/msg.h
 /usr/local/include/linux/mtio.h
+/usr/local/include/linux/mtk-fd-v4l2-controls.h
 /usr/local/include/linux/nbd-netlink.h
 /usr/local/include/linux/nbd.h
 /usr/local/include/linux/ncsi.h
@@ -621,12 +632,16 @@
 /usr/local/include/linux/nfsd/debug.h
 /usr/local/include/linux/nfsd/export.h
 /usr/local/include/linux/nfsd/stats.h
+/usr/local/include/linux/nfsd_netlink.h
 /usr/local/include/linux/nilfs2_api.h
 /usr/local/include/linux/nilfs2_ondisk.h
 /usr/local/include/linux/nitro_enclaves.h
 /usr/local/include/linux/nl80211-vnd-intel.h
 /usr/local/include/linux/nl80211.h
+/usr/local/include/linux/npcm-video.h
 /usr/local/include/linux/nsfs.h
+/usr/local/include/linux/nsm.h
+/usr/local/include/linux/ntsync.h
 /usr/local/include/linux/nubus.h
 /usr/local/include/linux/nvme_ioctl.h
 /usr/local/include/linux/nvram.h
@@ -636,6 +651,7 @@
 /usr/local/include/linux/openat2.h
 /usr/local/include/linux/openvswitch.h
 /usr/local/include/linux/packet_diag.h
+/usr/local/include/linux/papr_pdsm.h
 /usr/local/include/linux/param.h
 /usr/local/include/linux/parport.h
 /usr/local/include/linux/patchkey.h
@@ -763,7 +779,6 @@
 /usr/local/include/linux/tc_act/tc_gact.h
 /usr/local/include/linux/tc_act/tc_gate.h
 /usr/local/include/linux/tc_act/tc_ife.h
-/usr/local/include/linux/tc_act/tc_ipt.h
 /usr/local/include/linux/tc_act/tc_mirred.h
 /usr/local/include/linux/tc_act/tc_mpls.h
 /usr/local/include/linux/tc_act/tc_nat.h
@@ -784,6 +799,7 @@
 /usr/local/include/linux/tee.h
 /usr/local/include/linux/termios.h
 /usr/local/include/linux/thermal.h
+/usr/local/include/linux/thp7312.h
 /usr/local/include/linux/time.h
 /usr/local/include/linux/time_types.h
 /usr/local/include/linux/timerfd.h
@@ -797,6 +813,7 @@
 /usr/local/include/linux/tls.h
 /usr/local/include/linux/toshiba.h
 /usr/local/include/linux/tps6594_pfsm.h
+/usr/local/include/linux/trace_mmap.h
 /usr/local/include/linux/tty.h
 /usr/local/include/linux/tty_flags.h
 /usr/local/include/linux/types.h
@@ -819,8 +836,8 @@
 /usr/local/include/linux/usb/ch11.h
 /usr/local/include/linux/usb/ch9.h
 /usr/local/include/linux/usb/charger.h
-/usr/local/include/linux/usb/f_accessory.h
 /usr/local/include/linux/usb/functionfs.h
+/usr/local/include/linux/usb/g_hid.h
 /usr/local/include/linux/usb/g_printer.h
 /usr/local/include/linux/usb/g_uvc.h
 /usr/local/include/linux/usb/gadgetfs.h
@@ -848,6 +865,7 @@
 /usr/local/include/linux/vdpa.h
 /usr/local/include/linux/vduse.h
 /usr/local/include/linux/version.h
+/usr/local/include/linux/vesa.h
 /usr/local/include/linux/veth.h
 /usr/local/include/linux/vfio.h
 /usr/local/include/linux/vfio_ccw.h
@@ -881,7 +899,6 @@
 /usr/local/include/linux/virtio_scsi.h
 /usr/local/include/linux/virtio_snd.h
 /usr/local/include/linux/virtio_types.h
-/usr/local/include/linux/virtio_video.h
 /usr/local/include/linux/virtio_vsock.h
 /usr/local/include/linux/virtio_wl.h
 /usr/local/include/linux/virtwl.h
@@ -907,6 +924,7 @@
 /usr/local/include/linux/zorro_ids.h
 /usr/local/include/misc/cxl.h
 /usr/local/include/misc/fastrpc.h
+/usr/local/include/misc/mrvl_cn10k_dpi.h
 /usr/local/include/misc/ocxl.h
 /usr/local/include/misc/pvpanic.h
 /usr/local/include/misc/uacce/hisi_qm.h
@@ -946,6 +964,7 @@
 /usr/local/include/rdma/rvt-abi.h
 /usr/local/include/rdma/siw-abi.h
 /usr/local/include/rdma/vmw_pvrdma-abi.h
+/usr/local/include/regulator/regulator.h
 /usr/local/include/scsi/cxlflash_ioctl.h
 /usr/local/include/scsi/fc/fc_els.h
 /usr/local/include/scsi/fc/fc_fs.h
@@ -968,6 +987,7 @@
 /usr/local/include/sound/hdspm.h
 /usr/local/include/sound/intel/avs/tokens.h
 /usr/local/include/sound/sb16_csp.h
+/usr/local/include/sound/scarlett2.h
 /usr/local/include/sound/sfnt_info.h
 /usr/local/include/sound/skl-tplg-interface.h
 /usr/local/include/sound/snd_ar_tokens.h
