@@ -181,11 +181,9 @@ end
 # Some packges need manual adjustments of URLS for different versions.
 unless defined?(CREW_UPDATER_EXCLUDED_PKGS)
   CREW_UPDATER_EXCLUDED_PKGS = Set[
-    { pkg_name: 'e2fsprogs', comments: 'Upstream issue: https://github.com/tytso/e2fsprogs/issues/240' },
     { pkg_name: 'glibc', comments: 'Requires manual update' },
     { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' },
-    { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
-    { pkg_name: 'tika', comments: 'Versioning issue: https://github.com/fedora-infra/anitya/issues/1944' }
+    { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' }
   ].to_h { |h| [h[:pkg_name], h[:comments]] }
 end
 CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX = "(#{CREW_UPDATER_EXCLUDED_PKGS.keys.map { |p| "^#{p}$" }.join('|')})" unless defined?(CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX)
