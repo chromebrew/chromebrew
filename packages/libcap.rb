@@ -3,7 +3,7 @@ require 'package'
 class Libcap < Package
   description 'Libcap implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels.'
   homepage 'https://directory.fsf.org/wiki/Libcap'
-  version '2.66'
+  version '2.76'
   license 'GPL-2 or BSD'
   compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/libs/libcap/libcap.git'
@@ -11,13 +11,14 @@ class Libcap < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '066b33b52470c318c3e9f63fb3f493ab3dc3eb56bd500e4c431adbca76c585a7',
-     armv7l: '066b33b52470c318c3e9f63fb3f493ab3dc3eb56bd500e4c431adbca76c585a7',
-       i686: 'da159f192e4f081214a3972c1d47313733687a5a5b9eb5f97d6c6a1b72da84d2',
-     x86_64: '8f5459a6d5976be34b32e98802487e04571ef9e6d9a142b3efc1b4e350794883'
+    aarch64: '9ff3701374ff576b67ceab24e9e3b853cc11743960c9bb097b339c8a09623ab5',
+     armv7l: '9ff3701374ff576b67ceab24e9e3b853cc11743960c9bb097b339c8a09623ab5',
+       i686: 'cbeac1a46c24e5b371df05390528a81c9292dff0febf210940b96552b9076541',
+     x86_64: '6dbc5549fd75d3b89e0036ad1b455f0613330662f5db871a47257b887990a5d1'
   })
 
   depends_on 'glibc' # R
+  depends_on 'go' => :build
   depends_on 'gperf' => :build
   depends_on 'linux_pam'
 
@@ -39,7 +40,7 @@ class Libcap < Package
   end
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} make"
+    system 'make'
   end
 
   def self.install
