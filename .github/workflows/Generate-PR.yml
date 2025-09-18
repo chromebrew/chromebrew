@@ -167,7 +167,7 @@ jobs:
       i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
       x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
       armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
-    if: ${{ !cancelled() }}
+    if: ${{ !cancelled() && ( inputs.update_package_files ) }}
     concurrency:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.ref_name }}
       cancel-in-progress: true
@@ -309,7 +309,7 @@ jobs:
     needs:
       - setup
       - update-package-files
-    if: ${{ !cancelled() }}
+    if: ${{ ( always() && !cancelled() ) && needs.setup.result == 'success' && ((( inputs.update_package_files ) && needs.update-package-files.result == 'success') || !( inputs.update_package_files )) }}
     steps:
       - name: Fail if update or build jobs failed, otherwise create a PR
         if: ${{ contains(needs.*.result, 'failure') }}
@@ -334,7 +334,7 @@ jobs:
           sudo gem install ruby-libversion
       - name: Rebase to master and save git log
         id: rebase-and-git-log
-        env: 
+        env:
           REBASE: ${{ inputs.rebase }}
         run: |
             git config user.name "${{ github.actor }}"
