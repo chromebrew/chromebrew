@@ -1,34 +1,41 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Linux_pam < Autotools
+class Linux_pam < Meson
   description 'Linux PAM (Pluggable Authentication Modules for Linux) project'
   homepage 'https://github.com/linux-pam/linux-pam'
   version '1.7.1'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/linux-pam/linux-pam.git'
-  git_hashtag "Linux-PAM-#{version}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a371c602ab5519c0d9322f70fe317b3033b5ba1175ba02ab645d87c09fd4a1f9',
-     armv7l: 'a371c602ab5519c0d9322f70fe317b3033b5ba1175ba02ab645d87c09fd4a1f9',
-       i686: '9410659381a17e918433e2fd6aeeac57ebc7143de46499ce206c2f71d691c59d',
-     x86_64: '42470ad49611a6ec7c9d18d61cef06c490ba5224c888394a19762be2afcf470a'
+    aarch64: '25974e63f145c719db4482024036ef10cad4ad92bb72504d728555cd346f3b86',
+     armv7l: '25974e63f145c719db4482024036ef10cad4ad92bb72504d728555cd346f3b86',
+       i686: '0f7adeca7bd53900c4ff9ed394b00acb20a8a9fdaad0216f492eca0478f3dd8e',
+     x86_64: '65471b0ba28790f677b701e6b44fe735e768ba2087d5b3a35fb194a8a97e45d7'
   })
 
+  depends_on 'gdbm' # R
   depends_on 'glibc' # R
-  depends_on 'libdb' # libdb needs to be built with "--enable-dbm"
   depends_on 'libeconf' # R
+  depends_on 'libxcrypt' # R
 
-  autotools_configure_options '--disable-selinux \
-      --enable-static \
-      --disable-nis'
+  no_mold
 
-  autotools_install_extras do
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/security"
-    Dir.chdir "#{CREW_DEST_PREFIX}/include" do
-      system "find . -type f -exec ln -s #{CREW_PREFIX}/include/{} #{CREW_DEST_PREFIX}/include/security/{} \\;"
-    end
+  meson_options '-Ddb=gdbm \
+      -Ddocs=disabled \
+      -Dselinux=disabled \
+      -Dnis=disabled'
+
+  meson_build_extras do
+    # We need to move libcrypto.so out of the way so libxcrypto is used.
+    FileUtils.mv "#{CREW_LIB_PREFIX}/libcrypto.so.bak", "#{CREW_LIB_PREFIX}/libcrypto.so" if File.file? "#{CREW_LIB_PREFIX}/libcrypto.so.bak"
+  end
+
+  def self.prebuild
+    # We need to move libcrypto.so out of the way so libxcrypto is used.
+    FileUtils.mv "#{CREW_LIB_PREFIX}/libcrypto.so", "#{CREW_LIB_PREFIX}/libcrypto.so.bak" if File.file? "#{CREW_LIB_PREFIX}/libcrypto.so"
   end
 end
