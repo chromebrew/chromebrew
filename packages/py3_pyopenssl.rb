@@ -10,10 +10,10 @@ class Py3_pyopenssl < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '646902fb7316240f37a8ddfd41ecc044ef11829ec8ad2e70b762d7f16b5312db',
-     armv7l: '646902fb7316240f37a8ddfd41ecc044ef11829ec8ad2e70b762d7f16b5312db',
-       i686: '4bcb6f11e0d94b800f4388b230b498144806699797d490218f7c01386f6888f5',
-     x86_64: 'e565437f2fc2cf0ea09aa49cad4d29c75f20b9228cc664b2bd78e8b0d247b1d8'
+    aarch64: 'e4ec7a133ba6b5f283076806c429ed9ac3608f454d0d35cdf2cbb907acf3d0b2',
+     armv7l: 'e4ec7a133ba6b5f283076806c429ed9ac3608f454d0d35cdf2cbb907acf3d0b2',
+       i686: 'e947088526f5de98a760d4957dbbada8ad41ad84738b4446e2f468ffd850c469',
+     x86_64: '5471ef1d314992a74b35a7ba2055ced7e2458a9869ae3a9aa4d1556123edb9af'
   })
 
   depends_on 'openssl'
