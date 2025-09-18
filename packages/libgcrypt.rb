@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Libgcrypt < Autotools
   description 'Libgcrypt is a general purpose cryptographic library originally based on code from GnuPG.'
   homepage 'https://www.gnupg.org/related_software/libgcrypt/index.html'
-  version '1.11.0'
+  version '1.11.2'
   license 'LGPL-2.1 and MIT'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-#{version}.tar.bz2"
-  source_sha256 '09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c'
+  source_sha256 '6ba59dd192270e8c1d22ddb41a07d95dcdbc1f0fb02d03c4b54b235814330aac'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3084b4d1869a8ff6d5daa76dcf9451378795fdac5af9182bda7a0a7b9d4f079c',
-     armv7l: '3084b4d1869a8ff6d5daa76dcf9451378795fdac5af9182bda7a0a7b9d4f079c',
-       i686: '85c818af47cfe64df3acab5e5e1e54a5ad98ce3495e6cf3d703568222b0d196d',
-     x86_64: 'cd0fb26e325aebc496d8b539f2f6b6744446b49caa1b34d9a1d5061b7dd502e9'
+    aarch64: '4159c1ad66fabb3db314f97c94f986b5195c357c313eaca916af5e6e3e06b95b',
+     armv7l: '4159c1ad66fabb3db314f97c94f986b5195c357c313eaca916af5e6e3e06b95b',
+       i686: 'ecc138567f57120938ff9e267f29ea3487684eeb01bcfc91d873ecaa6f50b7e1',
+     x86_64: '8c2c775817ea36f9863be6604755bea8c25600df65d1323b02924d409dcc83bf'
   })
 
   depends_on 'gcc_lib' # R
@@ -23,18 +23,5 @@ class Libgcrypt < Autotools
 
   autotools_configure_options '--enable-static \
       --enable-shared'
-
-  def self.patch
-    # Fix error: 'asm' operand has impossible constraints or there are not enough registers
-    # See https://dev.gnupg.org/T7226.
-    if %w[aarch64 armv7l].include?(ARCH)
-      puts 'Downloading patch...'.yellow
-      downloader 'https://files.gnupg.net/file/download/4axfkyiszlsm4qgf5lxy/PHID-FILE-k3tzb5qnxdtsfvvpd7q4/0001-mpi-ec-inline-reduce-register-pressure-on-32-bit-ARM.patch',
-                 'de543d9d5bfcfb91090c0ebbe46b321344686130cbe5f214ca86c9f8c040d5fa'
-      puts 'Applying patch...'.yellow
-      system 'git apply 0001-mpi-ec-inline-reduce-register-pressure-on-32-bit-ARM.patch'
-    end
-  end
-
   run_tests
 end
