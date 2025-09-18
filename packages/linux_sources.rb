@@ -3,7 +3,14 @@ require 'package'
 class Linux_sources < Package
   description 'Sources for the Linux kernel'
   homepage 'https://kernel.org/'
-  version ARCH == 'i686' ? '3.8' : '6.12'
+  version case ARCH
+          when 'i686'
+            '3.8'
+          when 'armv7l'
+            '4.14-1'
+          else
+            '6.12'
+          end
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
