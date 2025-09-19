@@ -1,12 +1,15 @@
-# Total size: 422633
+# Total size: 215498
 /usr/local/bin/cronnext
 /usr/local/bin/crontab
 /usr/local/bin/startcrond
 /usr/local/bin/stopcrond
+/usr/local/sbin/anacron
 /usr/local/sbin/crond
-/usr/local/share/man/man1/cronnext.1.gz
-/usr/local/share/man/man1/crontab.1.gz
-/usr/local/share/man/man5/crontab.5.gz
-/usr/local/share/man/man8/cron.8.gz
-/usr/local/share/man/man8/crond.8.gz
+/usr/local/share/man/man1/cronnext.1.zst
+/usr/local/share/man/man1/crontab.1.zst
+/usr/local/share/man/man5/anacrontab.5.zst
+/usr/local/share/man/man5/crontab.5.zst
+/usr/local/share/man/man8/anacron.8.zst
+/usr/local/share/man/man8/cron.8.zst
+/usr/local/share/man/man8/crond.8.zst
 /usr/local/var/spool/cron/root
