@@ -1,3 +1,4 @@
-# Total size: 44064
+# Total size: 27166
 /usr/local/bin/progress
-/usr/local/share/man/man1/progress.1
+/usr/local/share/man/man1/progress.1.zst
+/usr/local/share/zsh/site-functions/_progress
