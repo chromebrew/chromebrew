@@ -31,7 +31,7 @@ class Xdg_base < Package
   end
 
   def self.install
-    @xdgbaseenv = <<~XDGBASEEOF
+    File.write 'xdg_base', <<~XDGBASEEOF
       # Chromebrew's XDG configuration
       # See https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
       # XDG Base Directory Specification Environment Variables
@@ -43,7 +43,6 @@ class Xdg_base < Package
       export XDG_RUNTIME_DIR=/var/run/chrome
       export XDG_STATE_HOME=#{CREW_PREFIX}/.config/.local/state
     XDGBASEEOF
-    File.write('xdg_base', @xdgbaseenv)
     FileUtils.install 'xdg_base', "#{CREW_DEST_PREFIX}/etc/env.d/xdg_base", mode: 0o644
   end
 
