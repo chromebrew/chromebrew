@@ -10,10 +10,10 @@ class Xdg_base < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '732748fcdc3667c4325136a0fff23eff880996e5b3a2161b51782243c10547ea',
-     armv7l: '732748fcdc3667c4325136a0fff23eff880996e5b3a2161b51782243c10547ea',
-       i686: '50372f2b3b0a72b5297e4e9e2635297850c9924e6e3cfb89ae1bcf9a6828bf83',
-     x86_64: 'aa41edb071a49e784fff9aa4b1bea1de3fa370d422c7a686bc5a10c158646b0a'
+    aarch64: 'b896793f7cee2da932f848289825d2e2eebd36d6217e158059a8a9e855130ff2',
+     armv7l: 'b896793f7cee2da932f848289825d2e2eebd36d6217e158059a8a9e855130ff2',
+       i686: 'd01f1293290fffaa7743331cc89a9e7bb61fc82e4753eb63ab88a505590c0787',
+     x86_64: '41fe979913548d6cb8bd1bd9131ce063705f5c4be0aef451405426471ae80886'
   })
 
   no_source_build
@@ -40,8 +40,8 @@ class Xdg_base < Package
       export XDG_CONFIG_HOME=#{CREW_PREFIX}/.config
       export XDG_DATA_DIRS=#{CREW_PREFIX}/share
       export XDG_DATA_HOME=#{CREW_PREFIX}/.config/.local/share
-      export XDG_STATE_HOME=#{CREW_PREFIX}/.config/.local/state
       export XDG_RUNTIME_DIR=/var/run/chrome
+      export XDG_STATE_HOME=#{CREW_PREFIX}/.config/.local/state
     XDGBASEEOF
     File.write('xdg_base', @xdgbaseenv)
     FileUtils.install 'xdg_base', "#{CREW_DEST_PREFIX}/etc/env.d/xdg_base", mode: 0o644

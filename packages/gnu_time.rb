@@ -5,7 +5,7 @@ require 'package'
 
 class Gnu_time < Package
   description 'Utility for monitoring a programs use of system resources'
-  homepage 'http://www.gnu.org/software/time'
+  homepage 'https://www.gnu.org/software/time'
   version '1.9-59f462a'
   license 'GPL'
   compatibility 'all'
