@@ -30,9 +30,14 @@ class Emacs < Autotools
   depends_on 'ncurses' # R
   depends_on 'zlib' # R
   depends_on 'sqlite' # R
+  depends_on 'tree_sitter' # R
 
-  autotools_configure_options "--localstatedir=#{CREW_PREFIX}/share \
+  autotools_configure_options "--disable-build-details \
+            --localstatedir=#{CREW_PREFIX}/share \
+            --with-modules \
             --with-x=no \
+            --with-tree-sitter \
             --without-makeinfo \
-            --without-selinux"
+            --without-selinux \
+            --without-sound"
 end
