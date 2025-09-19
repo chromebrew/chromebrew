@@ -11,13 +11,13 @@ class Cronie < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0d44284894af0f7bf322aa649755a146cc4159b27480f5b635862cbe0fdd3d56',
-     armv7l: '0d44284894af0f7bf322aa649755a146cc4159b27480f5b635862cbe0fdd3d56',
-       i686: '1c61635b8bdeb5dc1ee5dd4ccbe6c9bce49e6ce25f48568fdac928875d93ef56',
-     x86_64: '28117939c3609d603068e21c5c16149d43677369c3660e3980705cd4ca98aede'
+    aarch64: 'd8f7ac38f695008bd34cfbfe975444fc84ac51712af27d80a34a0b0dcc226b8b',
+     armv7l: 'd8f7ac38f695008bd34cfbfe975444fc84ac51712af27d80a34a0b0dcc226b8b',
+       i686: '03af4fcc21ed26304a8661db7d3b1a1fd0143285f44537d6f5931d7b505966bc',
+     x86_64: '272c2685c57a1cc9a6d9c2d917998a4cb1c04ee69867cf8b8b7a054c5515e177'
   })
 
-  depends_on 'psmisc'
+  depends_on 'glibc' # R
 
   autotools_configure_options '--without-selinux \
            --without-pam'
