@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Doxygen < CMake
   description 'Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.'
   homepage 'https://www.doxygen.nl/'
-  version '1.13.2'
+  version '1.14.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/doxygen/doxygen.git'
@@ -11,13 +11,13 @@ class Doxygen < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f312c4c453177ff564ad789c20ab1f759a5ca4a73c2cd00fa02ccdbaa2534e46',
-     armv7l: 'f312c4c453177ff564ad789c20ab1f759a5ca4a73c2cd00fa02ccdbaa2534e46',
-       i686: 'a326ae94a2750aab1051ce0248c76aeb36a9a1358f8cf964c25ca23519d8dca9',
-     x86_64: '11fd469f24e49b78d8bbb2a84cc00875679c39bbec68072ca4506002dc723f7d'
+    aarch64: '4d665e13a9a0e5085d7e485f4c72f611b7909f5e2f34f68e44e761213955e806',
+     armv7l: '4d665e13a9a0e5085d7e485f4c72f611b7909f5e2f34f68e44e761213955e806',
+       i686: '3595f66e251ba2c183d0cd440faca980779a253e83fd9c214908ed36fe786a68',
+     x86_64: '316fc5f28694d6c04fcfa9c69621a0fc79ab7f4a9597535a8ab3b13f6b721cd7'
   })
 
-  depends_on 'python3' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'python3' => :build
 end

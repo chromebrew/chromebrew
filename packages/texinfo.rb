@@ -21,7 +21,7 @@ class Texinfo < Autotools
   depends_on 'libunistring' # R
   depends_on 'ncurses' # R
   depends_on 'perl' # L
-  depends_on 'perl_locale_messages' # L
+  depends_on 'perl_libintl_perl' # L
   depends_on 'perl_text_unidecode' # L
   depends_on 'perl_unicode_eastasianwidth' # L
 

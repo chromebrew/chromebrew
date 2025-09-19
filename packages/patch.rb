@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Patch < Autotools
   description 'Patch takes a patch file containing a difference listing produced by the diff program and applies those differences to one or more original files, producing patched versions.'
-  homepage 'https://www.gnu.org/software/patch/'
+  homepage 'https://savannah.gnu.org/projects/patch'
   version '2.8'
   license 'GPL-3+'
   compatibility 'all'

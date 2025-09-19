@@ -1,4 +1,6 @@
-# Total size: 186931
+# Total size: 232125
 /usr/local/bin/awk
 /usr/local/bin/mawk
-/usr/local/share/man/man1/mawk.1.gz
+/usr/local/share/man/man1/mawk.1.zst
+/usr/local/share/man/man7/mawk-arrays.7.zst
+/usr/local/share/man/man7/mawk-code.7.zst

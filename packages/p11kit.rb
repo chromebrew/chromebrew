@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class P11kit < Meson
   description "Provides a standard configuration setup for installing PKCS#11 modules in such a way that they're discoverable."
   homepage 'https://p11-glue.github.io/p11-glue/p11-kit.html'
-  version '0.25.8'
+  version '0.25.9'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/p11-glue/p11-kit.git'
@@ -11,10 +11,10 @@ class P11kit < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cb85440223113385eafa31267941b82267c9efeaa502a03ac16552391d87accc',
-     armv7l: 'cb85440223113385eafa31267941b82267c9efeaa502a03ac16552391d87accc',
-       i686: '642486cf33ad854336ac53a3ccf21ff826518538b14c4a15cdca07c46a586e45',
-     x86_64: '79a5a3d9c76d64b880106ead452c0b01daa9035f4f57ca5d4a510ffa05e13496'
+    aarch64: '397d330ed19cd3d64a76c36d16c422f1ad41127a05f27d1b2e5e24f9e04086d5',
+     armv7l: '397d330ed19cd3d64a76c36d16c422f1ad41127a05f27d1b2e5e24f9e04086d5',
+       i686: 'da7553b4949c4031e1a9eaa2be53f49a6e495baeb8c67ecf4ca40bcce0670b22',
+     x86_64: '42c351aebf416179699742feb1b2e9ff92a0cb708426831f61133bd381fe12da'
   })
 
   depends_on 'gcc_lib' # R

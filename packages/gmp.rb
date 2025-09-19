@@ -2,11 +2,11 @@ require 'buildsystems/autotools'
 
 class Gmp < Autotools
   description 'GMP is a free library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating-point numbers.'
-  homepage 'https://gmplib.org/'
+  homepage 'https://gnu.org/s/gmp'
   version '6.3.0' # Do not use @_ver here, it will break the installer.
   license 'LGPL-3+ and GPL-2+'
   compatibility 'all'
-  source_url 'https://gmplib.org/download/gmp/gmp-6.3.0.tar.zst'
+  source_url "https://gmplib.org/download/gmp/gmp-#{version}.tar.zst"
   source_sha256 '7f55d73f472c29cc14d7fa985f3654d48829415b649eaf61646b7b33f2a80e27'
   binary_compression 'tar.zst'
 

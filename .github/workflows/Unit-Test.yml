@@ -202,7 +202,6 @@ jobs:
                 --platform "${PLATFORM}" \
                 -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
                 -e NON_PKG_CHANGED_FILES="${NON_PKG_CHANGED_FILES}" \
-                -e LD_LIBRARY_PATH="/usr/local/lib${LIB_SUFFIX}" \
                 -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
                 -e CREW_REPO="${CREW_REPO}" \
                 -e CREW_BRANCH="${CREW_BRANCH}" \

@@ -6,7 +6,7 @@ class Findutils < Autotools
   version '4.10.0'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/findutils/findutils-4.10.0.tar.xz'
+  source_url "https://ftpmirror.gnu.org/findutils/findutils-#{version}.tar.xz"
   source_sha256 '1387e0b67ff247d2abde998f90dfbf70c1491391a59ddfecb8ae698789f0a4f5'
   binary_compression 'tar.zst'
 
