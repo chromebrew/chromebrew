@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.66.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.66.6' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -90,7 +90,7 @@ end
 # Use sane minimal defaults if in container and no override specified.
 CREW_KERNEL_VERSION ||=
   if CREW_IN_CONTAINER && ENV.fetch('CREW_KERNEL_VERSION', nil).nil?
-    ARCH.eql?('i686') ? '3.8' : '5.10'
+    ARCH.eql?('i686') ? '3.8' : '6.12'
   else
     ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
   end
@@ -181,11 +181,9 @@ end
 # Some packges need manual adjustments of URLS for different versions.
 unless defined?(CREW_UPDATER_EXCLUDED_PKGS)
   CREW_UPDATER_EXCLUDED_PKGS = Set[
-    { pkg_name: 'e2fsprogs', comments: 'Upstream issue: https://github.com/tytso/e2fsprogs/issues/240' },
     { pkg_name: 'glibc', comments: 'Requires manual update' },
     { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' },
-    { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
-    { pkg_name: 'tika', comments: 'Versioning issue: https://github.com/fedora-infra/anitya/issues/1944' }
+    { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' }
   ].to_h { |h| [h[:pkg_name], h[:comments]] }
 end
 CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX = "(#{CREW_UPDATER_EXCLUDED_PKGS.keys.map { |p| "^#{p}$" }.join('|')})" unless defined?(CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX)

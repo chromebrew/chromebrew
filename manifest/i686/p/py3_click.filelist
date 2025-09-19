@@ -1,15 +1,16 @@
-# Total size: 803893
-/usr/local/lib/python3.13/site-packages/click-8.2.1.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/click-8.2.1.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/click-8.2.1.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/click-8.2.1.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/click-8.2.1.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/click-8.2.1.dist-info/licenses/LICENSE.txt
+# Total size: 828272
+/usr/local/lib/python3.13/site-packages/click-8.3.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/click-8.3.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/click-8.3.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/click-8.3.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/click-8.3.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/click-8.3.0.dist-info/licenses/LICENSE.txt
 /usr/local/lib/python3.13/site-packages/click/__init__.py
 /usr/local/lib/python3.13/site-packages/click/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/click/__pycache__/_compat.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/click/__pycache__/_termui_impl.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/click/__pycache__/_textwrap.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/click/__pycache__/_utils.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/click/__pycache__/_winconsole.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/click/__pycache__/core.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/click/__pycache__/decorators.cpython-313.pyc
@@ -25,6 +26,7 @@
 /usr/local/lib/python3.13/site-packages/click/_compat.py
 /usr/local/lib/python3.13/site-packages/click/_termui_impl.py
 /usr/local/lib/python3.13/site-packages/click/_textwrap.py
+/usr/local/lib/python3.13/site-packages/click/_utils.py
 /usr/local/lib/python3.13/site-packages/click/_winconsole.py
 /usr/local/lib/python3.13/site-packages/click/core.py
 /usr/local/lib/python3.13/site-packages/click/decorators.py

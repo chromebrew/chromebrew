@@ -1,4 +1,4 @@
-# Total size: 418934584
+# Total size: 426492321
 /usr/local/bin/brave
 /usr/local/share/brave/LICENSE
 /usr/local/share/brave/MEIPreload/manifest.json
@@ -53,9 +53,11 @@
 /usr/local/share/brave/locales/it.pak
 /usr/local/share/brave/locales/ja.pak
 /usr/local/share/brave/locales/ka.pak
+/usr/local/share/brave/locales/kk.pak
 /usr/local/share/brave/locales/km.pak
 /usr/local/share/brave/locales/kn.pak
 /usr/local/share/brave/locales/ko.pak
+/usr/local/share/brave/locales/lo.pak
 /usr/local/share/brave/locales/lt.pak
 /usr/local/share/brave/locales/lv.pak
 /usr/local/share/brave/locales/mk.pak
@@ -127,9 +129,11 @@
 /usr/local/share/brave/resources/brave_extension/_locales/it/messages.json
 /usr/local/share/brave/resources/brave_extension/_locales/ja/messages.json
 /usr/local/share/brave/resources/brave_extension/_locales/ka/messages.json
+/usr/local/share/brave/resources/brave_extension/_locales/kk/messages.json
 /usr/local/share/brave/resources/brave_extension/_locales/km/messages.json
 /usr/local/share/brave/resources/brave_extension/_locales/kn/messages.json
 /usr/local/share/brave/resources/brave_extension/_locales/ko/messages.json
+/usr/local/share/brave/resources/brave_extension/_locales/lo/messages.json
 /usr/local/share/brave/resources/brave_extension/_locales/lt/messages.json
 /usr/local/share/brave/resources/brave_extension/_locales/lv/messages.json
 /usr/local/share/brave/resources/brave_extension/_locales/mk/messages.json
