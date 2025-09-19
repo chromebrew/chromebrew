@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Emacs < Package
+class Emacs < Autotools
   description 'An extensible, customizable, free/libre text editor - and more.'
   homepage 'http://www.gnu.org/software/emacs/'
-  version '29.1'
+  version '30.2'
   license 'GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://ftpmirror.gnu.org/emacs/emacs-29.1.tar.xz'
-  source_sha256 'd2f881a5cc231e2f5a03e86f4584b0438f83edd7598a09d24a21bd8d003e2e01'
+  source_url "https://ftpmirror.gnu.org/emacs/emacs-#{version}.tar.xz"
+  source_sha256 'b3f36f18a6dd2715713370166257de2fae01f9d38cfe878ced9b1e6ded5befd9'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -31,17 +31,8 @@ class Emacs < Package
   depends_on 'zlib' # R
   depends_on 'sqlite' # R
 
-  def self.build
-    system "./configure \
-            --prefix=#{CREW_PREFIX} \
-            --localstatedir=#{CREW_PREFIX}/share \
+  autotools_configure_options "--localstatedir=#{CREW_PREFIX}/share \
             --with-x=no \
             --without-makeinfo \
             --without-selinux"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
