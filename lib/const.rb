@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.66.6' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.66.7' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -60,7 +60,7 @@ end
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
 unless defined?(CREW_ESSENTIAL_PACKAGES)
   CREW_ESSENTIAL_PACKAGES ||= %W[
-    bash crew_profile_base gcc_lib gmp libxcrypt ncurses patchelf readline ruby ruby_matrix upx zlib zlib_ng zstd
+    bash crew_profile_base gcc_lib gmp gnu_time libxcrypt ncurses patchelf readline ruby ruby_matrix upx zlib zlib_ng zstd
     #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
     #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
     #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
@@ -181,9 +181,12 @@ end
 # Some packges need manual adjustments of URLS for different versions.
 unless defined?(CREW_UPDATER_EXCLUDED_PKGS)
   CREW_UPDATER_EXCLUDED_PKGS = Set[
-    { pkg_name: 'glibc', comments: 'Requires manual update' },
+    { pkg_name: 'glibc', comments: 'Requires manual update.' },
+    { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
+    { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
     { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' },
-    { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' }
+    { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
+    { pkg_name: 'xdg_base', comments: 'Internal Chromebrew Package.' }
   ].to_h { |h| [h[:pkg_name], h[:comments]] }
 end
 CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX = "(#{CREW_UPDATER_EXCLUDED_PKGS.keys.map { |p| "^#{p}$" }.join('|')})" unless defined?(CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX)
@@ -195,6 +198,8 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to GitHub' },
     { pkg_name: 'cups', anitya_pkg: 'cups', comments: 'Prefer to GitHub' },
     { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
+    { pkg_name: 'doxygen', anitya_pkg: 'doxygen', comments: '' },
+    { pkg_name: 'gnu_time', anitya_pkg: 'time', comments: '' },
     { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
     { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: '' },
     { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
@@ -202,19 +207,24 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'libgedit_gtksourceview', anitya_pkg: 'libgedit-gtksourceview', comments: 'Prefer to GitHub' },
     { pkg_name: 'libnghttp3', anitya_pkg: 'nghttp3', comments: '' },
     { pkg_name: 'libngtcp2', anitya_pkg: 'ngtcp2', comments: '' },
+    { pkg_name: 'libssp', anitya_pkg: 'gcc', comments: '' },
+    { pkg_name: 'libunbound', anitya_pkg: 'unbound', comments: '' },
     { pkg_name: 'linux_pam', anitya_pkg: 'pam', comments: '' },
     { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
     { pkg_name: 'openssl', anitya_pkg: 'openssl', comments: 'Prefer to GitHub' },
     { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
     { pkg_name: 'pkg_7_zip', anitya_pkg: '7zip~stable', comments: 'Prefer to GitHub' },
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
-    { pkg_name: 'python3', anitya_pkg: 'python', comments: 'Prefer to GitHub' },
+    { pkg_name: 'python3', anitya_pkg: 'python', comments: '' },
+    { pkg_name: 'rdfind', anitya_pkg: 'rdfind', comments: 'Prefer to GitHub' },
     { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
     { pkg_name: 'tepl_6', anitya_pkg: 'libgedit-tepl', comments: '' },
+    { pkg_name: 'upx', anitya_pkg: 'upx', comments: 'Prefer to GitHub' },
     { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'webkitgtk_6', anitya_pkg: 'webkitgtk~stable', comments: '' },
     { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' },
-    { pkg_name: 'zimg', anitya_pkg: 'zimg', comments: 'Prefer to GitHub' }
+    { pkg_name: 'zimg', anitya_pkg: 'zimg', comments: 'Prefer to GitHub' },
+    { pkg_name: 'zoneinfo', anitya_pkg: 'tzdata', comments: '' }
   ].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
 end
 

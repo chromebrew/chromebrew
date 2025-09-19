@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 2.8 (for Chromebrew)
+# version.rb version 2.9 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -214,7 +214,7 @@ if filelist.length.positive?
                                       # check to see if 'version' is on
                                       # that line.
                                       elsif !@pkg.git_hashtag.blank?
-                                        if `grep "^  git_hashtag" #{filename} | grep version`.empty?
+                                        if `grep "^  git_hashtag" #{filename} | grep version`.empty? && @pkg.name != 'rust'
                                           'static git_hashtag'
                                         else
                                           'Yes'
