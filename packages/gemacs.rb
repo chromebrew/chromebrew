@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gemacs < Package
+class Gemacs < Autotools
   description 'An extensible, customizable, free/libre text editor - and more.'
   homepage 'https://www.gnu.org/software/emacs/'
-  version '29.1'
+  version '30.2'
   license 'GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://ftpmirror.gnu.org/emacs/emacs-29.1.tar.xz'
-  source_sha256 'd2f881a5cc231e2f5a03e86f4584b0438f83edd7598a09d24a21bd8d003e2e01'
+  source_url "https://ftpmirror.gnu.org/emacs/emacs-#{version}.tar.xz"
+  source_sha256 'b3f36f18a6dd2715713370166257de2fae01f9d38cfe878ced9b1e6ded5befd9'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -64,12 +64,8 @@ class Gemacs < Package
   depends_on 'xcb_util' # R
   depends_on 'zlib' # R
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure \
-      --enable-link-time-optimization \
+  autotools_configure_options "--enable-link-time-optimization \
       --localstatedir=#{CREW_PREFIX}/share \
-      --prefix=#{CREW_PREFIX} \
       --with-cairo \
       --with-gif=ifavailable \
       --with-jpeg=yes \
@@ -84,11 +80,8 @@ class Gemacs < Package
       --with-tiff=ifavailable \
       --with-x-toolkit=gtk3 \
       --with-xwidgets"
-    system 'make'
-  end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  autotools_install_extras do
     FileUtils.install 'src/emacs', "#{CREW_DEST_PREFIX}/bin/gemacs", mode: 0o755
     FileUtils.install 'src/emacs', "#{CREW_DEST_PREFIX}/bin/gemacs-#{version}", mode: 0o755
   end
