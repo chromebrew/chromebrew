@@ -447,7 +447,7 @@ jobs:
           PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
           PR_TITLE_INPUT="${{ inputs.pr_title }}"
           if [[ -z ${PR_TITLE_INPUT} ]]; then
-            PR_TITLE="$(git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
+            PR_TITLE="$(git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
           else
             PR_TITLE="${{ inputs.pr_title }}"
           fi
