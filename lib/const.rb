@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.66.6' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.66.7' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -60,7 +60,7 @@ end
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
 unless defined?(CREW_ESSENTIAL_PACKAGES)
   CREW_ESSENTIAL_PACKAGES ||= %W[
-    bash crew_profile_base gcc_lib gmp libxcrypt ncurses patchelf readline ruby ruby_matrix upx zlib zlib_ng zstd
+    bash crew_profile_base gcc_lib gmp gnu_time libxcrypt ncurses patchelf readline ruby ruby_matrix upx zlib zlib_ng zstd
     #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
     #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
     #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
