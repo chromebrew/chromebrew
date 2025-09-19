@@ -1,14 +1,14 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Cronie < Package
+class Cronie < Autotools
   description 'Cronie contains the standard UNIX daemon crond that runs specified programs at scheduled times and related tools.'
   homepage 'https://github.com/cronie-crond/cronie'
-  version '1.5.2'
+  version '1.7.2'
   license 'ISC, BSD, BSD-2 and GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/cronie-crond/cronie/releases/download/cronie-1.5.2/cronie-1.5.2.tar.gz'
-  source_sha256 '370bf34641691489330e708bd4cdbd779267296a030668a12f77b7e36872fd75'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/cronie-crond/cronie.git'
+  git_hashtag "cronie-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '0d44284894af0f7bf322aa649755a146cc4159b27480f5b635862cbe0fdd3d56',
@@ -19,12 +19,9 @@ class Cronie < Package
 
   depends_on 'psmisc'
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           '--without-selinux',
-           '--without-pam'
-    system 'make'
+  autotools_configure_options '--without-selinux \
+           --without-pam'
+  autotools_build_extras do
     @startcrond = <<~STARTCRONDEOF
       #!/bin/bash
       XDG_RUNTIME_DIR=/var/run/chrome
@@ -63,8 +60,7 @@ class Cronie < Package
     File.write('stopcrond', @stopcrond)
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  autotools_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/var/spool/cron"
     FileUtils.touch "#{CREW_DEST_PREFIX}/var/spool/cron/root"
     FileUtils.install 'startcrond', "#{CREW_DEST_PREFIX}/bin/startcrond", mode: 0o755
