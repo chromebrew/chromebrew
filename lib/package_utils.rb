@@ -2,12 +2,35 @@
 # Utility functions that take either a package object or a component of a package object as primary input.
 require 'json'
 require_relative 'const'
+require_relative 'convenience_functions'
 require_relative 'downloader'
 
 class PackageUtils
+  def self.reverse_dependency_lookup(dep_name, installed: false)
+    device_json       = ConvenienceFunctions.load_symbolized_json
+    pkgs_that_need_it = []
+
+    if installed
+      device_json[:installed_packages].each do |installed_pkg_info|
+        pkg_file      = File.join(CREW_PACKAGES_PATH, "#{installed_pkg_info[:name]}.rb")
+        installed_pkg = Package.load_package(pkg_file)
+
+        pkgs_that_need_it << installed_pkg.name if installed_pkg.dependencies.key?(dep_name) && !installed_pkg.dependencies[dep_name][0].include?(:build)
+      end
+    else
+      Dir.glob("#{CREW_PACKAGES_PATH}/*.rb") do |pkg_file|
+        pkg = Package.load_package(pkg_file)
+
+        pkgs_that_need_it << pkg.name if pkg.dependencies.key?(dep_name) && !pkg.dependencies[dep_name][0].include?(:build)
+      end
+    end
+
+    return pkgs_that_need_it
+  end
+
   def self.installed?(pkg_name)
-    device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-    return device_json['installed_packages'].any? { |elem| elem['name'] == pkg_name }
+    device_json = ConvenienceFunctions.load_symbolized_json
+    return device_json[:installed_packages].any? { |elem| elem[:name] == pkg_name }
   end
 
   def self.compatible?(pkg)
@@ -90,7 +113,7 @@ class PackageUtils
     # Delete -glibc2.37, or whatever the system glibc is.
     pkg_version.delete_suffix!("-glibc#{LIBC_VERSION}")
     # Delete git version tags (1.2.4-qnd73k6), avoiding overmatching and hitting things that arent git hashtags.
-    pkg_version.gsub!(/-[\w]{7}$/, '')
+    pkg_version.gsub!(/-\w{7}$/, '')
     # Delete -icu75.1, futureproofed until icu 100
     pkg_version.gsub!(/-icu\d{2}\.\d/, '')
 
