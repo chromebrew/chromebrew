@@ -6525,6 +6525,11 @@ url: https://sourceforge.net/projects/nmon/files/
 activity: none
 ---
 kind: url
+name: nnn
+url: https://github.com/jarun/nnn/releases
+activity: low
+---
+kind: url
 name: nocodb
 url: https://github.com/nocodb/nocodb/releases
 activity: medium
