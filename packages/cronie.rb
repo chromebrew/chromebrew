@@ -1,30 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Cronie < Package
+class Cronie < Autotools
   description 'Cronie contains the standard UNIX daemon crond that runs specified programs at scheduled times and related tools.'
   homepage 'https://github.com/cronie-crond/cronie'
-  version '1.5.2'
+  version '1.7.2'
   license 'ISC, BSD, BSD-2 and GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/cronie-crond/cronie/releases/download/cronie-1.5.2/cronie-1.5.2.tar.gz'
-  source_sha256 '370bf34641691489330e708bd4cdbd779267296a030668a12f77b7e36872fd75'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/cronie-crond/cronie.git'
+  git_hashtag "cronie-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0d44284894af0f7bf322aa649755a146cc4159b27480f5b635862cbe0fdd3d56',
-     armv7l: '0d44284894af0f7bf322aa649755a146cc4159b27480f5b635862cbe0fdd3d56',
-       i686: '1c61635b8bdeb5dc1ee5dd4ccbe6c9bce49e6ce25f48568fdac928875d93ef56',
-     x86_64: '28117939c3609d603068e21c5c16149d43677369c3660e3980705cd4ca98aede'
+    aarch64: 'd8f7ac38f695008bd34cfbfe975444fc84ac51712af27d80a34a0b0dcc226b8b',
+     armv7l: 'd8f7ac38f695008bd34cfbfe975444fc84ac51712af27d80a34a0b0dcc226b8b',
+       i686: '03af4fcc21ed26304a8661db7d3b1a1fd0143285f44537d6f5931d7b505966bc',
+     x86_64: '272c2685c57a1cc9a6d9c2d917998a4cb1c04ee69867cf8b8b7a054c5515e177'
   })
 
-  depends_on 'psmisc'
+  depends_on 'glibc' # R
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           '--without-selinux',
-           '--without-pam'
-    system 'make'
+  autotools_configure_options '--without-selinux \
+           --without-pam'
+  autotools_build_extras do
     @startcrond = <<~STARTCRONDEOF
       #!/bin/bash
       XDG_RUNTIME_DIR=/var/run/chrome
@@ -63,8 +60,7 @@ class Cronie < Package
     File.write('stopcrond', @stopcrond)
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  autotools_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/var/spool/cron"
     FileUtils.touch "#{CREW_DEST_PREFIX}/var/spool/cron/root"
     FileUtils.install 'startcrond', "#{CREW_DEST_PREFIX}/bin/startcrond", mode: 0o755

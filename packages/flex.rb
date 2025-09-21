@@ -6,7 +6,7 @@ class Flex < Autotools
   version '2.6.4-2'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz'
+  source_url "https://github.com/westes/flex/releases/download/v#{version.split('-').first}/flex-#{version.split('-').first}.tar.gz"
   source_sha256 'e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995'
   binary_compression 'tar.zst'
 

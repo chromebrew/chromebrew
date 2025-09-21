@@ -7160,13 +7160,13 @@ url: https://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/
 activity: low
 ---
 kind: url
-name: perl_locale_gettext
-url: https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/
+name: perl_libintl_perl
+url: https://cpan.metacpan.org/authors/id/G/GU/GUIDO/
 activity: none
 ---
 kind: url
-name: perl_locale_messages
-url: https://cpan.metacpan.org/authors/id/G/GU/GUIDO/
+name: perl_locale_gettext
+url: https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/
 activity: none
 ---
 kind: url

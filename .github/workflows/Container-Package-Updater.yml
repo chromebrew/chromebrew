@@ -37,8 +37,10 @@ jobs:
         id: pip-update-checks
         run: |
           set -x
-          pwd
-          ls -aFl
+          # Make crew do automatic gem installs before looking for deps.
+          ruby bin/crew version
+          # Force creation of temporary device.json.
+          ruby bin/crew deps zstd_static
           export PACKAGES="$(ruby bin/crew deps core buildessential | sort -u)"
           # shellcheck disable=SC2116
           gh workflow -R chromebrew/chromebrew run Updater-on-Demand.yml -f version_cmd_input="$(echo ${PACKAGES})"

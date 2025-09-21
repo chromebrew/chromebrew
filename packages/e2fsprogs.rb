@@ -3,7 +3,7 @@ require 'package'
 class E2fsprogs < Package
   description 'e2fsprogs are ext2/3/4 file system utilities.'
   homepage 'https://e2fsprogs.sourceforge.net/'
-  version '1.47.2'
+  version '1.47.3'
   license 'GPL-2 and BSD'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v#{version}/e2fsprogs-#{version}.tar.xz"
@@ -11,10 +11,10 @@ class E2fsprogs < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5cd2fba8d2d91c0c764f7912bec91ded898fac1bd11c4e58cd6ff160ebe17c99',
-     armv7l: '5cd2fba8d2d91c0c764f7912bec91ded898fac1bd11c4e58cd6ff160ebe17c99',
-       i686: '0b68894aaeee8d839e36f93d345c1e91c6faacfc9b52c516b3f411a5624e874b',
-     x86_64: 'd5ef549b85a6064357bcb6d99038552f9d0ba5ac25815796e5eccf2b18698160'
+    aarch64: '6fc5f306eb85311da4c149c27698af90112dc65ffa15dce34d0227fc833a4e2e',
+     armv7l: '6fc5f306eb85311da4c149c27698af90112dc65ffa15dce34d0227fc833a4e2e',
+       i686: '3d0e8ac3f57682f35c69e52d3fd905b76e535422c1f87eb3faa5b531846739f6',
+     x86_64: 'c158544f1f6202ca7c8e4eaf29fd889527b7e50ef02b38ef54d6160397e2823d'
   })
 
   depends_on 'gcc_lib' # R

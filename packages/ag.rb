@@ -1,38 +1,35 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Ag < Package
+class Ag < Autotools
   description 'The Silver Searcher. Very fast search similar to ack or grep. (ag)'
   homepage 'https://github.com/ggreer/the_silver_searcher'
-  version '2.2.0'
+  version '2.2.0-a61f178'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/ggreer/the_silver_searcher/archive/2.2.0.tar.gz'
-  source_sha256 '6a0a19ca5e73b2bef9481c29a508d2413ca1a0a9a5a6b1bd9bbd695a7626cbf9'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/ggreer/the_silver_searcher.git'
+  git_hashtag 'a61f1780b64266587e7bc30f0f5f71c6cca97c0f'
+  # git_hashtag version.split('-').first
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0e6e5a193921c38638a3eeacff917a75cc8651335c783c392053bb825743edcd',
-     armv7l: '0e6e5a193921c38638a3eeacff917a75cc8651335c783c392053bb825743edcd',
-       i686: 'ea2bb1b33661b58d78ef874a7045f798cb61c54aa2b484987c02822a5f7a8bcf',
-     x86_64: 'fb1a37ce5867546e9082763bfa002a180405f2a21b3a51e99899d1c313fe13ad'
+    aarch64: '09933c508e32c656c1ded463c7267598a006f1ad94de33d950a3d0271e1f9c63',
+     armv7l: '09933c508e32c656c1ded463c7267598a006f1ad94de33d950a3d0271e1f9c63',
+       i686: 'b9634626e44e8d27599d450cf5ac6e78d812306758db892e3a8d50d0e5cec456',
+     x86_64: '9bef4203af04d11d228978a19d00c4f1e2e505f9ddd20433447224fb27aa1a8b'
   })
 
-  depends_on 'autoconf' => :build
-  depends_on 'automake' => :build
-  depends_on 'pkg_config' => :build
-  depends_on 'pcre'
-  depends_on 'xzutils'
-  depends_on 'zlib'
+  depends_on 'glibc' # R
+  depends_on 'pcre' # R
+  depends_on 'pkgconf' => :build
+  depends_on 'xzutils' # R
+  depends_on 'zlib' # R
 
-  def self.build
-    system 'autoreconf', '-fiv'
-    system "./configure \
-            --prefix=#{CREW_PREFIX} \
-            --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install' # the steps required to install the package
+  def self.patch
+    patches = [
+      # Fix ctype(3) abuse
+      ['https://github.com/ggreer/the_silver_searcher/pull/1553.diff',
+       '38ecf01778a20af3c7b849224a92828cef1c3df39ed83ddc12db70c276839e4c']
+    ]
+    ConvenienceFunctions.patch(patches)
   end
 end
