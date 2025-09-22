@@ -11,9 +11,9 @@ class Yaru < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '41ab422c7136ed3f8c6c959687a7808615624857d885a58cc366bf3aeafcacb8',
-     armv7l: '41ab422c7136ed3f8c6c959687a7808615624857d885a58cc366bf3aeafcacb8',
-     x86_64: 'dc2b68a4a1c4a0c5a2efe8ee180e5d773629e61edeaa543bc7ef45bc1b91348c'
+    aarch64: 'ff357cc93840fefb79be41c57a069a110d73e3258622a8b7bbc9c8ca390b5927',
+     armv7l: 'ff357cc93840fefb79be41c57a069a110d73e3258622a8b7bbc9c8ca390b5927',
+     x86_64: '01596e14bdc62bad815c2c1ab8afcaecf8612499a936d2260ea2e7d5c41dea24'
   })
 
   depends_on 'sassc'
