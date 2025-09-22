@@ -3,12 +3,12 @@ require 'package'
 class Google_chrome < Package
   description 'Google Chrome is a fast, easy to use, and secure web browser.'
   homepage 'https://www.google.com/chrome/'
-  version '139.0.7258.138-1'
+  version '140.0.7339.185-1'
   license 'google-chrome'
   compatibility 'x86_64'
 
   source_url "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_#{version}_amd64.deb"
-  source_sha256 '3edc53950860ac6abf7b593f53557ff7368df5ab69835af4ab0a7a960b7268ea'
+  source_sha256 '70f01b0d57afaffbed0702e7f9b70f9901cd7cbae1f8e830deb0ca579a700763'
 
   no_compile_needed
   no_shrink

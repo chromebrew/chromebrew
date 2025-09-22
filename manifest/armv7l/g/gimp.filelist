@@ -1,4 +1,4 @@
-# Total size: 150065676
+# Total size: 150245190
 /usr/local/bin/gimp
 /usr/local/bin/gimp-3.1
 /usr/local/bin/gimp-console
@@ -129,6 +129,8 @@
 /usr/local/include/gimp-3.0/libgimp/gimpui.h
 /usr/local/include/gimp-3.0/libgimp/gimpuitypes.h
 /usr/local/include/gimp-3.0/libgimp/gimpunit_pdb.h
+/usr/local/include/gimp-3.0/libgimp/gimpvectorlayer.h
+/usr/local/include/gimp-3.0/libgimp/gimpvectorlayer_pdb.h
 /usr/local/include/gimp-3.0/libgimp/gimpvectorloadprocedure.h
 /usr/local/include/gimp-3.0/libgimp/gimpvectorloadproceduredialog.h
 /usr/local/include/gimp-3.0/libgimp/gimpzoompreview.h
@@ -387,6 +389,7 @@
 /usr/local/lib/gimp/3.0/plug-ins/file-jpegxl/file-jpegxl
 /usr/local/lib/gimp/3.0/plug-ins/file-mng/file-mng
 /usr/local/lib/gimp/3.0/plug-ins/file-openraster/file-openraster.py
+/usr/local/lib/gimp/3.0/plug-ins/file-paa/file-paa
 /usr/local/lib/gimp/3.0/plug-ins/file-pat/file-pat
 /usr/local/lib/gimp/3.0/plug-ins/file-pcx/file-pcx
 /usr/local/lib/gimp/3.0/plug-ins/file-pdf-export/file-pdf-export
@@ -400,6 +403,7 @@
 /usr/local/lib/gimp/3.0/plug-ins/file-raw-data/file-raw-data
 /usr/local/lib/gimp/3.0/plug-ins/file-raw-placeholder/file-raw-placeholder
 /usr/local/lib/gimp/3.0/plug-ins/file-rawtherapee/file-rawtherapee
+/usr/local/lib/gimp/3.0/plug-ins/file-seattle-filmworks/file-seattle-filmworks
 /usr/local/lib/gimp/3.0/plug-ins/file-sgi/file-sgi
 /usr/local/lib/gimp/3.0/plug-ins/file-sunras/file-sunras
 /usr/local/lib/gimp/3.0/plug-ins/file-svg/file-svg
@@ -414,6 +418,7 @@
 /usr/local/lib/gimp/3.0/plug-ins/file-xpm/file-xpm
 /usr/local/lib/gimp/3.0/plug-ins/file-xwd/file-xwd
 /usr/local/lib/gimp/3.0/plug-ins/film/film
+/usr/local/lib/gimp/3.0/plug-ins/filter-browser/filter-browser
 /usr/local/lib/gimp/3.0/plug-ins/flame/flame
 /usr/local/lib/gimp/3.0/plug-ins/foggify/foggify.py
 /usr/local/lib/gimp/3.0/plug-ins/fractal-explorer/fractal-explorer
@@ -494,7 +499,9 @@
 /usr/local/lib/gimp/3.0/plug-ins/test-file-plug-ins/tests/sgi-tests.ini
 /usr/local/lib/gimp/3.0/plug-ins/test-file-plug-ins/tests/tga-tests.ini
 /usr/local/lib/gimp/3.0/plug-ins/test-file-plug-ins/tests/tif-tests.ini
+/usr/local/lib/gimp/3.0/plug-ins/test-file-plug-ins/tests/wbmp-tests.ini
 /usr/local/lib/gimp/3.0/plug-ins/test-file-plug-ins/tests/webp-tests.ini
+/usr/local/lib/gimp/3.0/plug-ins/test-file-plug-ins/tests/wmf-tests.ini
 /usr/local/lib/gimp/3.0/plug-ins/test-file-plug-ins/tests/xcf-tests.ini
 /usr/local/lib/gimp/3.0/plug-ins/test-sphere-v3/test-sphere-v3.scm
 /usr/local/lib/gimp/3.0/plug-ins/tile-small/tile-small
@@ -508,34 +515,34 @@
 /usr/local/lib/girepository-1.0/GimpUi-3.0.typelib
 /usr/local/lib/libgimp-3.0.so
 /usr/local/lib/libgimp-3.0.so.0
-/usr/local/lib/libgimp-3.0.so.0.100.2
+/usr/local/lib/libgimp-3.0.so.0.104.0
 /usr/local/lib/libgimp-scriptfu-3.0.so
 /usr/local/lib/libgimp-scriptfu-3.0.so.0
-/usr/local/lib/libgimp-scriptfu-3.0.so.0.100.2
+/usr/local/lib/libgimp-scriptfu-3.0.so.0.104.0
 /usr/local/lib/libgimpbase-3.0.so
 /usr/local/lib/libgimpbase-3.0.so.0
-/usr/local/lib/libgimpbase-3.0.so.0.100.2
+/usr/local/lib/libgimpbase-3.0.so.0.104.0
 /usr/local/lib/libgimpcolor-3.0.so
 /usr/local/lib/libgimpcolor-3.0.so.0
-/usr/local/lib/libgimpcolor-3.0.so.0.100.2
+/usr/local/lib/libgimpcolor-3.0.so.0.104.0
 /usr/local/lib/libgimpconfig-3.0.so
 /usr/local/lib/libgimpconfig-3.0.so.0
-/usr/local/lib/libgimpconfig-3.0.so.0.100.2
+/usr/local/lib/libgimpconfig-3.0.so.0.104.0
 /usr/local/lib/libgimpmath-3.0.so
 /usr/local/lib/libgimpmath-3.0.so.0
-/usr/local/lib/libgimpmath-3.0.so.0.100.2
+/usr/local/lib/libgimpmath-3.0.so.0.104.0
 /usr/local/lib/libgimpmodule-3.0.so
 /usr/local/lib/libgimpmodule-3.0.so.0
-/usr/local/lib/libgimpmodule-3.0.so.0.100.2
+/usr/local/lib/libgimpmodule-3.0.so.0.104.0
 /usr/local/lib/libgimpthumb-3.0.so
 /usr/local/lib/libgimpthumb-3.0.so.0
-/usr/local/lib/libgimpthumb-3.0.so.0.100.2
+/usr/local/lib/libgimpthumb-3.0.so.0.104.0
 /usr/local/lib/libgimpui-3.0.so
 /usr/local/lib/libgimpui-3.0.so.0
-/usr/local/lib/libgimpui-3.0.so.0.100.2
+/usr/local/lib/libgimpui-3.0.so.0.104.0
 /usr/local/lib/libgimpwidgets-3.0.so
 /usr/local/lib/libgimpwidgets-3.0.so.0
-/usr/local/lib/libgimpwidgets-3.0.so.0.100.2
+/usr/local/lib/libgimpwidgets-3.0.so.0.104.0
 /usr/local/lib/pkgconfig/gimp-3.0.pc
 /usr/local/lib/pkgconfig/gimpthumb-3.0.pc
 /usr/local/lib/pkgconfig/gimpui-3.0.pc
@@ -660,6 +667,7 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/class.ParamTextLayer.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/class.ParamUnit.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/class.ParamValueArray.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/class.ParamVectorLayer.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/class.Path.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/class.Pattern.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/class.PlugIn.html
@@ -670,6 +678,7 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/class.TextLayer.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/class.ThumbnailProcedure.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/class.Unit.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/class.VectorLayer.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/class.VectorLoadProcedure.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/classes_hierarchy.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/const.API_VERSION.html
@@ -768,6 +777,7 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/ctor.ValueArray.new_from_values.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/ctor.Vector2.new.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/ctor.Vector3.new.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/ctor.VectorLayer.new.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/ctor.VectorLoadProcedure.new.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/enum.AddMaskType.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/enum.ArgumentSync.html
@@ -834,6 +844,7 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/enum.SizeType.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/enum.StackTraceMode.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/enum.StrokeMethod.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/enum.TRCType.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/enum.TextDirection.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/enum.TextHintStyle.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/enum.TextJustification.html
@@ -916,6 +927,7 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.VALUES_SET_UCHAR.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.VALUES_SET_UINT.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.VALUES_SET_UNIT.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/func.VALUES_SET_VECTOR_LAYER.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.VALUES_TAKE_BYTES.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.VALUES_TAKE_CORE_OBJECT_ARRAY.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.VALUES_TAKE_DOUBLE_ARRAY.html
@@ -959,6 +971,7 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.VALUE_HOLDS_TEXT_LAYER.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.VALUE_HOLDS_UNIT.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.VALUE_HOLDS_VALUE_ARRAY.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/func.VALUE_HOLDS_VECTOR_LAYER.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.adaptive_supersample_area.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.airbrush.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.airbrush_default.html
@@ -1051,6 +1064,8 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_get_line_width_unit.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_get_mypaint_brush.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_get_opacity.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_get_paint_fade_length.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_get_paint_fade_repeat.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_get_paint_method.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_get_paint_mode.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_get_palette.html
@@ -1114,6 +1129,8 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_set_line_width_unit.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_set_mypaint_brush.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_set_opacity.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_set_paint_fade_length.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_set_paint_fade_repeat.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_set_paint_method.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_set_paint_mode.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.context_set_palette.html
@@ -1301,6 +1318,7 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.param_spec_unit_pixel_allowed.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.param_spec_value_array.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.param_spec_value_array_get_element_spec.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/func.param_spec_vector_layer.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.patterns_close_popup.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.patterns_get_list.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.patterns_popup.html
@@ -1351,6 +1369,7 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.type_set_translation_domain.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.units_to_pixels.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.units_to_points.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/func.update_metadata.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.user_time.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.utf8_strtrim.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/func.value_dup_double_array.html
@@ -2082,6 +2101,9 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/method.Procedure.add_unit_argument.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/method.Procedure.add_unit_aux_argument.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/method.Procedure.add_unit_return_value.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/method.Procedure.add_vector_layer_argument.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/method.Procedure.add_vector_layer_aux_argument.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/method.Procedure.add_vector_layer_return_value.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/method.Procedure.create_config.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/method.Procedure.find_argument.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/method.Procedure.find_aux_argument.html
@@ -2242,6 +2264,8 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/method.Vector3.rotate_val.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/method.Vector3.set.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/method.Vector3.sub_val.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/method.VectorLayer.discard.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/method.VectorLayer.refresh.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/method.VectorLoadProcedure.extract_dimensions.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/property.ColorConfig.cmyk-profile.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/property.ColorConfig.display-optimize.html
@@ -2345,6 +2369,9 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.Drawable.get_by_id.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.DrawableFilter.get_by_id.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.DrawableFilter.id_is_valid.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.DrawableFilter.operation_get_available.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.DrawableFilter.operation_get_details.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.DrawableFilter.operation_get_pspecs.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.Font.get_by_name.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.Gradient.get_by_name.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.GroupLayer.get_by_id.html
@@ -2362,6 +2389,7 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.Item.id_is_selection.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.Item.id_is_text_layer.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.Item.id_is_valid.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.Item.id_is_vector_layer.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.Layer.from_mask.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.Layer.get_by_id.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.LayerMask.get_by_id.html
@@ -2425,6 +2453,7 @@
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.Vector2.sub.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.Vector3.add.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.Vector3.sub.html
+/usr/local/share/doc/gimp-3.1/libgimp-3.0/type_func.VectorLayer.get_by_id.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/urlmap.js
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/vfunc.ColorManaged.get_color_profile.html
 /usr/local/share/doc/gimp-3.1/libgimp-3.0/vfunc.ColorManaged.get_icc_profile.html
@@ -5179,10 +5208,10 @@
 /usr/local/share/gimp/3.0/menus/text-editor-toolbar.ui
 /usr/local/share/gimp/3.0/menus/text-tool-menu.ui
 /usr/local/share/gimp/3.0/menus/tool-options-menu.ui
+/usr/local/share/gimp/3.0/menus/tool-path-menu.ui
 /usr/local/share/gimp/3.0/menus/tool-preset-editor-menu.ui
 /usr/local/share/gimp/3.0/menus/tool-presets-menu.ui
 /usr/local/share/gimp/3.0/menus/undo-menu.ui
-/usr/local/share/gimp/3.0/menus/vector-toolpath-menu.ui
 /usr/local/share/gimp/3.0/palettes/Bears.gpl
 /usr/local/share/gimp/3.0/palettes/Bgold.gpl
 /usr/local/share/gimp/3.0/palettes/Blues.gpl

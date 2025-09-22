@@ -7,7 +7,7 @@ class Openmp < Package
   llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '20.1.8'
+  version '21.1.1'
   # When upgrading llvm_build*, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
@@ -17,10 +17,10 @@ class Openmp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fb89756a03328908e1f66cc2bbc15c9fb7d9699091021c1b742b35da3eb310c6',
-     armv7l: 'fb89756a03328908e1f66cc2bbc15c9fb7d9699091021c1b742b35da3eb310c6',
-       i686: '1dcdfdd1cf2e7f4bf72d300e07b08d7672ef00f44aa858dc6055f46f6e498f32',
-     x86_64: '223ef5891c73752bfb1923fa3a44c7dc85d11f93d99d5505a57bc44d58296bcb'
+    aarch64: 'f23ad08a20053e3212e5fe162b7670bebcd7af93140242705aacc4c2c70ab007',
+     armv7l: 'f23ad08a20053e3212e5fe162b7670bebcd7af93140242705aacc4c2c70ab007',
+       i686: '7a6f20c8a165fbe45a98c081cf19f11015755f6ec741cd960461d046226d5c0c',
+     x86_64: 'c96ea59d3c049f8e1d48efa586ac06d44f2ccbc8854060b121b70ce4ad72551a'
   })
 
   depends_on 'gcc_lib' # R

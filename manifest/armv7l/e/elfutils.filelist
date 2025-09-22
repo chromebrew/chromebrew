@@ -1,4 +1,4 @@
-# Total size: 11349720
+# Total size: 13662570
 /usr/local/bin/eu-addr2line
 /usr/local/bin/eu-ar
 /usr/local/bin/eu-elfclassify
@@ -24,19 +24,20 @@
 /usr/local/include/elfutils/libdw.h
 /usr/local/include/elfutils/libdwelf.h
 /usr/local/include/elfutils/libdwfl.h
+/usr/local/include/elfutils/libdwfl_stacktrace.h
 /usr/local/include/elfutils/version.h
 /usr/local/include/gelf.h
 /usr/local/include/libelf.h
 /usr/local/include/nlist.h
-/usr/local/lib/libasm-0.192.so
+/usr/local/lib/libasm-0.193.so
 /usr/local/lib/libasm.a
 /usr/local/lib/libasm.so
 /usr/local/lib/libasm.so.1
-/usr/local/lib/libdw-0.192.so
+/usr/local/lib/libdw-0.193.so
 /usr/local/lib/libdw.a
 /usr/local/lib/libdw.so
 /usr/local/lib/libdw.so.1
-/usr/local/lib/libelf-0.192.so
+/usr/local/lib/libelf-0.193.so
 /usr/local/lib/libelf.a
 /usr/local/lib/libelf.so
 /usr/local/lib/libelf.so.1

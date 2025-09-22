@@ -3,7 +3,7 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.89.0'
+  version '1.90.0'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
@@ -11,10 +11,10 @@ class Rust < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6bac6090d0782096ebdffddc62f57bc4f9f79711a52da33162a7a3ac149bcb9c',
-     armv7l: '6bac6090d0782096ebdffddc62f57bc4f9f79711a52da33162a7a3ac149bcb9c',
-       i686: 'feb994e7c582fc2246e9a9dc36f362516f8ec21c0723bb9d02f74f9d0c6cb39e',
-     x86_64: 'ecb36f4847660ca2c8f7c0bd3a3f0a7fd570b9dee011f29e6ccf64fb490923ca'
+    aarch64: 'c0f1f5a06d0daf653fe892a3cdca7657e1990845d4067df800e29a986a1b7220',
+     armv7l: 'c0f1f5a06d0daf653fe892a3cdca7657e1990845d4067df800e29a986a1b7220',
+       i686: '9847530c3a5cb4700c1445d6146490cb2abad28bd3905ab454f1784b22eb2ec1',
+     x86_64: '3c5a35a2438ff6034662771e041555b03ebd518c393faf4c19990055df1a79a4'
   })
 
   depends_on 'gcc_lib' # R
@@ -29,7 +29,7 @@ class Rust < Package
     ENV['RUST_BACKTRACE'] = 'full'
     ENV['CARGO_HOME'] = "#{CREW_DEST_PREFIX}/share/cargo"
     ENV['RUSTUP_HOME'] = "#{CREW_DEST_PREFIX}/share/rustup"
-    ENV['RUSTFLAGS'] = '-Cdebuginfo=0 -Copt-level=3 -Clink-arg=-fuse-ld=mold'
+    ENV['RUSTFLAGS'] = '-Cdebuginfo=0 -Copt-level=3'
 
     ENV['RUSTUP_TOOLCHAIN'] = 'stable'
     default_host = %w[aarch64 armv7l].include?(ARCH) ? 'armv7-unknown-linux-gnueabihf' : "#{ARCH}-unknown-linux-gnu"

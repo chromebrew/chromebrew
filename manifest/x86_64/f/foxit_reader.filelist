@@ -1,0 +1,250 @@
+# Total size: 256459281
+/usr/local/bin/FoxitReader
+/usr/local/bin/foxit
+/usr/local/bin/foxitreader
+/usr/local/share/applications/FoxitReader.desktop
+/usr/local/share/foxitreader/CollectStrategy.txt
+/usr/local/share/foxitreader/FoxitReader
+/usr/local/share/foxitreader/FoxitReader.sh
+/usr/local/share/foxitreader/Wrappers/en-US/RequestPermTmpl.pdf
+/usr/local/share/foxitreader/Wrappers/en-US/Wrapper.pdf
+/usr/local/share/foxitreader/cpdf_settings
+/usr/local/share/foxitreader/fxplugins/libFRMS.so
+/usr/local/share/foxitreader/fxplugins/libcloudloginplugin.so
+/usr/local/share/foxitreader/fxplugins/libcloudreading.so
+/usr/local/share/foxitreader/fxplugins/libconnectedpdf.so
+/usr/local/share/foxitreader/fxplugins/libconnectedpdfdrm.so
+/usr/local/share/foxitreader/fxplugins/libconnectpdfservice.so
+/usr/local/share/foxitreader/fxplugins/libcpdfad.so
+/usr/local/share/foxitreader/fxplugins/libfpcsdk.so
+/usr/local/share/foxitreader/fxplugins/librms.so
+/usr/local/share/foxitreader/fxplugins/librmsauth.so
+/usr/local/share/foxitreader/fxplugins/librmsauthWebAuthDialog.so
+/usr/local/share/foxitreader/fxplugins/librmscrypto.so
+/usr/local/share/foxitreader/fxplugins/librpc.so
+/usr/local/share/foxitreader/fxplugins/libupdater.so
+/usr/local/share/foxitreader/imageformats/libqgif.so
+/usr/local/share/foxitreader/imageformats/libqjpeg.so
+/usr/local/share/foxitreader/images/FoxitActivate.ico
+/usr/local/share/foxitreader/images/FoxitActivate.png
+/usr/local/share/foxitreader/images/FoxitReader-128x128.png
+/usr/local/share/foxitreader/images/FoxitReader-16x16.png
+/usr/local/share/foxitreader/images/FoxitReader-24x24.png
+/usr/local/share/foxitreader/images/FoxitReader-32x32.png
+/usr/local/share/foxitreader/images/FoxitReader-48x48.png
+/usr/local/share/foxitreader/images/FoxitReader-64x64.png
+/usr/local/share/foxitreader/images/FoxitReader.png
+/usr/local/share/foxitreader/images/FoxitReaderInstall-48x48.png
+/usr/local/share/foxitreader/images/FoxitReaderInstall-64x64.png
+/usr/local/share/foxitreader/images/FoxitReaderInstall.png
+/usr/local/share/foxitreader/images/FoxitUninstall-48.png
+/usr/local/share/foxitreader/images/FoxitUninstall.png
+/usr/local/share/foxitreader/images/FoxitUpdate-48.png
+/usr/local/share/foxitreader/images/FoxitUpdate.png
+/usr/local/share/foxitreader/images/foxitreaderactivate.ico
+/usr/local/share/foxitreader/lang/ko_kr/qt_ko_KR.qm
+/usr/local/share/foxitreader/lang/ko_kr/readerlite_ko_kr.qm
+/usr/local/share/foxitreader/lang/readerlite_zh_cn.qm
+/usr/local/share/foxitreader/lang/zh_cn/qt_zh_CN.qm
+/usr/local/share/foxitreader/lang/zh_cn/readerlite_zh_cn.qm
+/usr/local/share/foxitreader/lang/zh_tw/qt_zh_TW.qm
+/usr/local/share/foxitreader/lang/zh_tw/readerlite_zh_tw.qm
+/usr/local/share/foxitreader/lib/.directory
+/usr/local/share/foxitreader/lib/libFcitxQt5DBusAddons.so.1
+/usr/local/share/foxitreader/lib/libFcitxQt5DBusAddons.so.1.0
+/usr/local/share/foxitreader/lib/libQt5Core.so
+/usr/local/share/foxitreader/lib/libQt5Core.so.5
+/usr/local/share/foxitreader/lib/libQt5Core.so.5.3
+/usr/local/share/foxitreader/lib/libQt5Core.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5DBus.so
+/usr/local/share/foxitreader/lib/libQt5DBus.so.5
+/usr/local/share/foxitreader/lib/libQt5DBus.so.5.3
+/usr/local/share/foxitreader/lib/libQt5DBus.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5Gui.so
+/usr/local/share/foxitreader/lib/libQt5Gui.so.5
+/usr/local/share/foxitreader/lib/libQt5Gui.so.5.3
+/usr/local/share/foxitreader/lib/libQt5Gui.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5Network.so
+/usr/local/share/foxitreader/lib/libQt5Network.so.5
+/usr/local/share/foxitreader/lib/libQt5Network.so.5.3
+/usr/local/share/foxitreader/lib/libQt5Network.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5OpenGL.so
+/usr/local/share/foxitreader/lib/libQt5OpenGL.so.5
+/usr/local/share/foxitreader/lib/libQt5OpenGL.so.5.3
+/usr/local/share/foxitreader/lib/libQt5OpenGL.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5Positioning.so
+/usr/local/share/foxitreader/lib/libQt5Positioning.so.5
+/usr/local/share/foxitreader/lib/libQt5Positioning.so.5.3
+/usr/local/share/foxitreader/lib/libQt5Positioning.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5PrintSupport.so
+/usr/local/share/foxitreader/lib/libQt5PrintSupport.so.5
+/usr/local/share/foxitreader/lib/libQt5PrintSupport.so.5.3
+/usr/local/share/foxitreader/lib/libQt5PrintSupport.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5Qml.so
+/usr/local/share/foxitreader/lib/libQt5Qml.so.5
+/usr/local/share/foxitreader/lib/libQt5Qml.so.5.3
+/usr/local/share/foxitreader/lib/libQt5Qml.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5Quick.so
+/usr/local/share/foxitreader/lib/libQt5Quick.so.5
+/usr/local/share/foxitreader/lib/libQt5Quick.so.5.3
+/usr/local/share/foxitreader/lib/libQt5Quick.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5QuickWidgets.so
+/usr/local/share/foxitreader/lib/libQt5QuickWidgets.so.5
+/usr/local/share/foxitreader/lib/libQt5QuickWidgets.so.5.3
+/usr/local/share/foxitreader/lib/libQt5QuickWidgets.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5Sensors.so
+/usr/local/share/foxitreader/lib/libQt5Sensors.so.5
+/usr/local/share/foxitreader/lib/libQt5Sensors.so.5.3
+/usr/local/share/foxitreader/lib/libQt5Sensors.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5Sql.so
+/usr/local/share/foxitreader/lib/libQt5Sql.so.5
+/usr/local/share/foxitreader/lib/libQt5Sql.so.5.3
+/usr/local/share/foxitreader/lib/libQt5Sql.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5WebKit.so
+/usr/local/share/foxitreader/lib/libQt5WebKit.so.5
+/usr/local/share/foxitreader/lib/libQt5WebKit.so.5.3
+/usr/local/share/foxitreader/lib/libQt5WebKit.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5WebKitWidgets.so
+/usr/local/share/foxitreader/lib/libQt5WebKitWidgets.so.5
+/usr/local/share/foxitreader/lib/libQt5WebKitWidgets.so.5.3
+/usr/local/share/foxitreader/lib/libQt5WebKitWidgets.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5Widgets.so.5
+/usr/local/share/foxitreader/lib/libQt5Widgets.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5Xml.so
+/usr/local/share/foxitreader/lib/libQt5Xml.so.5
+/usr/local/share/foxitreader/lib/libQt5Xml.so.5.3
+/usr/local/share/foxitreader/lib/libQt5Xml.so.5.3.2
+/usr/local/share/foxitreader/lib/libQt5XmlPatterns.so
+/usr/local/share/foxitreader/lib/libQt5XmlPatterns.so.5
+/usr/local/share/foxitreader/lib/libQt5XmlPatterns.so.5.3
+/usr/local/share/foxitreader/lib/libQt5XmlPatterns.so.5.3.2
+/usr/local/share/foxitreader/lib/libcrypto.so.10
+/usr/local/share/foxitreader/lib/libffi.so.5
+/usr/local/share/foxitreader/lib/libgcrypt.so.11
+/usr/local/share/foxitreader/lib/libglib-2.0.so.0
+/usr/local/share/foxitreader/lib/libgobject-2.0.so.0
+/usr/local/share/foxitreader/lib/libgstapp-0.10.so.0
+/usr/local/share/foxitreader/lib/libgstapp-0.10.so.0.25.0
+/usr/local/share/foxitreader/lib/libgstbase-0.10.so.0
+/usr/local/share/foxitreader/lib/libgstinterfaces-0.10.so.0
+/usr/local/share/foxitreader/lib/libgstinterfaces-0.10.so.0.25.0
+/usr/local/share/foxitreader/lib/libgstpbutils-0.10.so.0
+/usr/local/share/foxitreader/lib/libgstpbutils-0.10.so.0.25.0
+/usr/local/share/foxitreader/lib/libgstpbutils-1.0.so.0
+/usr/local/share/foxitreader/lib/libgstpbutils-1.0.so.0.403.0
+/usr/local/share/foxitreader/lib/libgstreamer-0.10.so.0
+/usr/local/share/foxitreader/lib/libgstreamer-0.10.so.0.30.0
+/usr/local/share/foxitreader/lib/libgstvideo-0.10.so.0
+/usr/local/share/foxitreader/lib/libgthread-2.0.so.0
+/usr/local/share/foxitreader/lib/libicudata.so.52
+/usr/local/share/foxitreader/lib/libicui18n.so.52
+/usr/local/share/foxitreader/lib/libicui18n.so.52.1
+/usr/local/share/foxitreader/lib/libicuuc.so.52
+/usr/local/share/foxitreader/lib/libicuuc.so.52.1
+/usr/local/share/foxitreader/lib/libsecret-1.so
+/usr/local/share/foxitreader/lib/libsecret-1.so.0
+/usr/local/share/foxitreader/lib/libssl.so.10
+/usr/local/share/foxitreader/lib/libstdc++.so.6
+/usr/local/share/foxitreader/lib/libxkbcommon.so.0
+/usr/local/share/foxitreader/lib/libxkbcommon.so.0.0.0
+/usr/local/share/foxitreader/lib/libxslt.so.1
+/usr/local/share/foxitreader/lib/libxslt.so.1.1
+/usr/local/share/foxitreader/lib/libxslt.so.1.1.26
+/usr/local/share/foxitreader/platforminputcontexts/libcomposeplatforminputcontextplugin.so
+/usr/local/share/foxitreader/platforminputcontexts/libfcitxplatforminputcontextplugin.so
+/usr/local/share/foxitreader/platforminputcontexts/libibusplatforminputcontextplugin.so
+/usr/local/share/foxitreader/platforms/libqeglfs.so
+/usr/local/share/foxitreader/platforms/libqico.so
+/usr/local/share/foxitreader/platforms/libqlinuxfb.so
+/usr/local/share/foxitreader/platforms/libqminimal.so
+/usr/local/share/foxitreader/platforms/libqminimalegl.so
+/usr/local/share/foxitreader/platforms/libqoffscreen.so
+/usr/local/share/foxitreader/platforms/libqxcb.so
+/usr/local/share/foxitreader/platformthemes/libqgtk2.so
+/usr/local/share/foxitreader/postinst
+/usr/local/share/foxitreader/prerm
+/usr/local/share/foxitreader/printsupport/libcupsprintersupport.so
+/usr/local/share/foxitreader/resource/icons/128x128/FoxitReader.png
+/usr/local/share/foxitreader/resource/icons/16x16/FoxitReader.png
+/usr/local/share/foxitreader/resource/icons/24x24/FoxitReader.png
+/usr/local/share/foxitreader/resource/icons/32x32/FoxitReader.png
+/usr/local/share/foxitreader/resource/icons/48x48/FoxitReader.png
+/usr/local/share/foxitreader/resource/icons/64x64/FoxitReader.png
+/usr/local/share/foxitreader/resource/mime/FoxitReader.xml
+/usr/local/share/foxitreader/rmssdk/librms.so
+/usr/local/share/foxitreader/rmssdk/librmsauth.so
+/usr/local/share/foxitreader/rmssdk/librmsauthWebAuthDialog.so
+/usr/local/share/foxitreader/rmssdk/librmscrypto.so
+/usr/local/share/foxitreader/sensors/libqtsensors_dummy.so
+/usr/local/share/foxitreader/sensors/libqtsensors_generic.so
+/usr/local/share/foxitreader/sensors/libqtsensors_linuxsys.so
+/usr/local/share/foxitreader/sqldrivers/libqsqlite.so
+/usr/local/share/foxitreader/stamps/Standard Templates/Arrow Stamp(Blue).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Arrow Stamp(Deep Blue).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Arrow Stamp(Deep Green).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Arrow Stamp(Green).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Arrow Stamp(Purple).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Circle Stamp(Blue).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Diamond Stamp(Blue).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Diamond Stamp(Green).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Ellipse Stamp(Green).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Ellipse Stamp(Purple).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Ellipse Stamp(Red).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Octagon Stamp(Blue).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Octagon Stamp(Purple).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Rectangle Stamp(Blue).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Rectangle Stamp(Deep Blue).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Square Stamp(Green).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Square Stamp(Purple).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Triangle Stamp(Blue).pdf
+/usr/local/share/foxitreader/stamps/Standard Templates/Triangle Stamp(Purple).pdf
+/usr/local/share/foxitreader/stamps/en-US/Dynamic Stamps/Approved.pdf
+/usr/local/share/foxitreader/stamps/en-US/Dynamic Stamps/Confidential.pdf
+/usr/local/share/foxitreader/stamps/en-US/Dynamic Stamps/Received.pdf
+/usr/local/share/foxitreader/stamps/en-US/Dynamic Stamps/Reviewed.pdf
+/usr/local/share/foxitreader/stamps/en-US/Dynamic Stamps/Revised.pdf
+/usr/local/share/foxitreader/stamps/en-US/Sign Here/Accepted.pdf
+/usr/local/share/foxitreader/stamps/en-US/Sign Here/Initial.pdf
+/usr/local/share/foxitreader/stamps/en-US/Sign Here/Rejected.pdf
+/usr/local/share/foxitreader/stamps/en-US/Sign Here/Sign Here.pdf
+/usr/local/share/foxitreader/stamps/en-US/Sign Here/Witness.pdf
+/usr/local/share/foxitreader/stamps/en-US/Standard Stamps/Approved.pdf
+/usr/local/share/foxitreader/stamps/en-US/Standard Stamps/Completed.pdf
+/usr/local/share/foxitreader/stamps/en-US/Standard Stamps/Confidential.pdf
+/usr/local/share/foxitreader/stamps/en-US/Standard Stamps/Draft.pdf
+/usr/local/share/foxitreader/stamps/en-US/Standard Stamps/Emergency.pdf
+/usr/local/share/foxitreader/stamps/en-US/Standard Stamps/Expired.pdf
+/usr/local/share/foxitreader/stamps/en-US/Standard Stamps/Final.pdf
+/usr/local/share/foxitreader/stamps/en-US/Standard Stamps/Received.pdf
+/usr/local/share/foxitreader/stamps/en-US/Standard Stamps/Reviewed.pdf
+/usr/local/share/foxitreader/stamps/en-US/Standard Stamps/Revised.pdf
+/usr/local/share/foxitreader/stamps/en-US/Standard Stamps/Verified.pdf
+/usr/local/share/foxitreader/stamps/en-US/Standard Stamps/Void.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Dynamic Stamps/Approved.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Dynamic Stamps/Confidential.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Dynamic Stamps/Received.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Dynamic Stamps/Reviewed.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Dynamic Stamps/Revised.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Sign Here/Accepted.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Sign Here/Initial.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Sign Here/Rejected.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Sign Here/Sign Here.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Sign Here/Witness.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Approved.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Completed.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Confidential.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Draft.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Emergency.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Expired.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Final.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Received.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Reviewed.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Revised.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Verified.pdf
+/usr/local/share/foxitreader/stamps/zh-CN/Standard Stamps/Void.pdf
+/usr/local/share/foxitreader/welcome/images/graphic.jpg
+/usr/local/share/foxitreader/welcome/images/icon_i.png
+/usr/local/share/foxitreader/welcome/images/logo-l.png
+/usr/local/share/foxitreader/welcome/proceed.html
+/usr/local/share/foxitreader/welcome/setting.html
+/usr/local/share/icons/hicolor/64x64/apps/FoxitReader.ico

@@ -1,12 +1,12 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Pcre < Package
+class Pcre < Autotools
   description 'The PCRE library is a set of functions that implement regular expression pattern matching using the same syntax and semantics as Perl 5.'
   homepage 'http://pcre.org/'
   version '8.45'
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2'
+  source_url "https://sourceforge.net/projects/pcre/files/pcre/#{version}/pcre-#{version}.tar.bz2"
   source_sha256 '4dae6fdcd2bb0bb6c37b5f97c33c2be954da743985369cddac3546e3218bffb8'
   binary_compression 'tar.zst'
 
@@ -21,25 +21,11 @@ class Pcre < Package
   depends_on 'glibc' # R
   depends_on 'readline' # R
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-      --enable-shared \
+  autotools_configure_options '--enable-shared \
       --with-pic \
       --enable-unicode-properties \
       --enable-pcre16 \
       --enable-pcre32 \
       --enable-jit \
-      --enable-pcretest-libreadline"
-    system 'make'
-  end
-
-  def self.check
-    # `make check` fails because of an issue with locale.
-    # All but one test passes.
-    # system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+      --enable-pcretest-libreadline'
 end

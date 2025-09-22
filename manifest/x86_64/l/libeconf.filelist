@@ -1,10 +1,10 @@
-# Total size: 149654
+# Total size: 134783
 /usr/local/bin/econftool
 /usr/local/include/libeconf.h
 /usr/local/include/libeconf_ext.h
 /usr/local/lib64/libeconf.so
 /usr/local/lib64/libeconf.so.0
-/usr/local/lib64/libeconf.so.0.7.9
+/usr/local/lib64/libeconf.so.0.7.10
 /usr/local/lib64/pkgconfig/libeconf.pc
 /usr/local/share/man/man3/econf_comment_tag.3.zst
 /usr/local/share/man/man3/econf_delimiter_tag.3.zst

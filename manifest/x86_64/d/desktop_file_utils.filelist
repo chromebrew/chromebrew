@@ -1,9 +1,10 @@
-# Total size: 495153
+# Total size: 201732
 /usr/local/bin/desktop-file-edit
 /usr/local/bin/desktop-file-install
 /usr/local/bin/desktop-file-validate
 /usr/local/bin/update-desktop-database
-/usr/local/share/man/man1/desktop-file-edit.1.gz
-/usr/local/share/man/man1/desktop-file-install.1.gz
-/usr/local/share/man/man1/desktop-file-validate.1.gz
-/usr/local/share/man/man1/update-desktop-database.1.gz
+/usr/local/share/emacs/site-lisp/desktop-entry-mode.el
+/usr/local/share/man/man1/desktop-file-edit.1.zst
+/usr/local/share/man/man1/desktop-file-install.1.zst
+/usr/local/share/man/man1/desktop-file-validate.1.zst
+/usr/local/share/man/man1/update-desktop-database.1.zst

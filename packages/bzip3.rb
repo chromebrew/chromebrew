@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Bzip3 < CMake
   description 'bzip3 is a better and stronger spiritual successor to bzip2.'
   homepage 'https://github.com/kspalaiologos/bzip3'
-  version '1.3.2'
+  version '1.5.3'
   license 'LGPL-3'
   compatibility 'all'
   source_url 'https://github.com/kspalaiologos/bzip3.git'
@@ -11,10 +11,10 @@ class Bzip3 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'be209e1db7a1796e8d9c579dcb9333ff3a6ebcdfac952a5988fca6861c2e24bb',
-     armv7l: 'be209e1db7a1796e8d9c579dcb9333ff3a6ebcdfac952a5988fca6861c2e24bb',
-       i686: '3b8b55a9f2922d151bc78a9632fd90e2aa68bc3a38caed04062ed2c651629f47',
-     x86_64: '44c65bda8559e0cb0682173058f22f87f3be44a8d9d3ac2e9fbc90e89b06dd0c'
+    aarch64: 'f862098e0b396f1473901ebf2cea3ec2c321052a4ff9c6ebc70cca7faf22b9fa',
+     armv7l: 'f862098e0b396f1473901ebf2cea3ec2c321052a4ff9c6ebc70cca7faf22b9fa',
+       i686: '7f870a0db7419f90ad33ff8c68550d8254b85c4ae74e05f25a92254bb97f1cd7',
+     x86_64: '7eb5b723fed0ddc10ba74b5032ff119722d6556db2183b66fdc275669803cd56'
   })
 
   depends_on 'glibc' # R

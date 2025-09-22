@@ -3,23 +3,22 @@ require 'buildsystems/autotools'
 class Imagemagick7 < Autotools
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version "7.1.1-36-perl5.40-#{CREW_ICU_VER}"
+  version "7.1.2-1-#{CREW_PERL_VER}"
   license 'imagemagick'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ImageMagick/ImageMagick.git'
   # The imagemagick7 version always has a dash in it.
-  git_hashtag version.reverse.split('-', 3).collect(&:reverse).reverse.first
+  git_hashtag version.reverse.split('-', 2).collect(&:reverse).reverse.first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5a3607ff766e0da06451f8a1d19c2b794a8984f7b5443bdba5d995937949c35b',
-     armv7l: '5a3607ff766e0da06451f8a1d19c2b794a8984f7b5443bdba5d995937949c35b',
-     x86_64: '8fe3bfce6062370e8bc73bc2f16532ffd07944f8f68864d5494d7fbd6b584cfc'
+    aarch64: '2b95a08e9614868776de108a6fdcc80bbb5323112b463392a1fa4d87e51c1960',
+     armv7l: '2b95a08e9614868776de108a6fdcc80bbb5323112b463392a1fa4d87e51c1960',
+     x86_64: 'b0644aa0cb3a9dd5ce38d9a530fdaa8e02bd2954e1794fc90ae1550a115bc6af'
   })
 
   depends_on 'bzip2' # R
   depends_on 'cairo' # R
-  depends_on 'expat' # R
   depends_on 'flif' => :build
   depends_on 'fontconfig' # R
   depends_on 'freeimage' => :build
@@ -27,11 +26,10 @@ class Imagemagick7 < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'ghostscript' => :build
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'graphviz' # R
   depends_on 'harfbuzz' # R
-  depends_on 'icu4c' # R
   depends_on 'jbigkit' # R
   depends_on 'jemalloc' # R
   depends_on 'lcms' # R
@@ -41,7 +39,6 @@ class Imagemagick7 < Autotools
   depends_on 'libice' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
-  depends_on 'libmd' # R
   depends_on 'libpng' # R
   depends_on 'librsvg' # R
   depends_on 'libsm' # R
@@ -68,6 +65,7 @@ class Imagemagick7 < Autotools
   no_upstream_update
 
   def self.prebuild
+    ConvenienceFunctions.libtoolize('jbig', 'jbigkit')
     ConvenienceFunctions.libtoolize('libuuid')
   end
 

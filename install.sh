@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025070501
+CREW_INSTALLER_VERSION=2025092901
 # Exit on fail.
 set -eE
 
@@ -160,6 +160,16 @@ else
   fi
   PREFIX_CMD=
 fi
+
+PATCHELF_INTERPRETER="${CREW_PREFIX}/bin/ld.so"
+case "${ARCH}" in
+x86_64)
+  PATCHELF_INTERPRETER="${CREW_PREFIX}/opt/glibc-libs/ld-linux-x86-64.so.2"
+  ;;
+aarch64|armv7l|armv8l)
+  PATCHELF_INTERPRETER="${CREW_PREFIX}/opt/glibc-libs/ld-linux-armhf.so.3"
+  ;;
+esac
 
 : "${CREW_PY_VER:=3.13}"
 CREW_NPROC="$(nproc)"

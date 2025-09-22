@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pypdf < Pip
   description 'A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.'
   homepage 'https://github.com/py-pdf/pypdf'
-  version "6.0.0-#{CREW_PY_VER}"
+  version "6.1.0-#{CREW_PY_VER}"
   license 'BSD-3-Clause'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7fb54cd6cc2798b880d9337ff9df88eaab15bc7081b9249ed188025180aad1e8',
-     armv7l: '7fb54cd6cc2798b880d9337ff9df88eaab15bc7081b9249ed188025180aad1e8',
-       i686: '29120967490e5c6e832275c06f5452003ba9da8251bdb17abc81dccea5ca3e1e',
-     x86_64: 'cc87a505f44e2104e522c4a0078521241f2f2f5d1e84306e8389b6d59d4574b3'
+    aarch64: '0d9965a2761d683df05c814c40cd607524e5801d4564607d09edd346f1595d93',
+     armv7l: '0d9965a2761d683df05c814c40cd607524e5801d4564607d09edd346f1595d93',
+       i686: '13c2da368b97d7c506ff4b8aa87c1ca2673b3cec4d3c8aec30f6364ced076eff',
+     x86_64: '8c05679776aaedf49120b94c02c9cc185bcfc33c54384767c01809b943f68979'
   })
 
   depends_on 'python3'

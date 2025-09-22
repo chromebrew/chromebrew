@@ -1,4 +1,4 @@
-# Total size: 2575892
+# Total size: 2641466
 /usr/local/bin/libtool
 /usr/local/bin/libtoolize
 /usr/local/include/libltdl/lt_dlloader.h
@@ -9,7 +9,7 @@
 /usr/local/lib/libltdl.la
 /usr/local/lib/libltdl.so
 /usr/local/lib/libltdl.so.7
-/usr/local/lib/libltdl.so.7.3.2
+/usr/local/lib/libltdl.so.7.3.3
 /usr/local/share/aclocal/libtool.m4
 /usr/local/share/aclocal/ltargz.m4
 /usr/local/share/aclocal/ltdl.m4

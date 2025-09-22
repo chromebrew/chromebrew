@@ -7,7 +7,8 @@ class Meson < Package
 
   def self.build
     @meson_build_relative_dir ||= '.'
-    @crew_meson_options = @no_lto ? CREW_MESON_OPTIONS.sub('-Db_lto=true', '-Db_lto=false') : CREW_MESON_OPTIONS
+    @crew_meson_options = @no_mold ? CREW_MESON_OPTIONS.gsub('-fuse-ld=mold', '') : CREW_MESON_OPTIONS
+    @crew_meson_options.gsub!('-Db_lto=true', '-Db_lto=false').gsub!('-flto=auto', '') if @no_lto
 
     extend ReportBuildsystemMethods
 

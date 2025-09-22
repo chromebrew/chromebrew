@@ -6,17 +6,17 @@ require 'package'
 class Iproute2 < Package
   description 'IP Routing Utilities'
   homepage 'https://git.kernel.org/pub/scm/network/iproute2/iproute2.git'
-  version '6.12.0'
+  version '6.16.0'
   license 'GPL2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-#{version}.tar.xz"
-  source_sha256 '5ce12a0fec6b212725ef218735941b2dab76244db7e72646a76021b0537b43ab'
+  source_sha256 '5900ccc15f9ac3bf7b7eae81deb5937123df35e99347a7f11a22818482f0a8d0'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f0bc31ac888585ca1385c9dc80041b6a723eef3e4590d9b5438b78159692d765',
-     armv7l: 'f0bc31ac888585ca1385c9dc80041b6a723eef3e4590d9b5438b78159692d765',
-     x86_64: '19339518de24d9a5b90159b5579a1c8a133756bba7c1d2a02741b77b68e48769'
+    aarch64: 'ec11b879ffb84aab7cbf8df0c35a153257544cb0528d5d5c53907264ef113572',
+     armv7l: 'ec11b879ffb84aab7cbf8df0c35a153257544cb0528d5d5c53907264ef113572',
+     x86_64: 'b3560f0dd6122b7d51a8f97c3044b23467f8813c024d9bbd6dfb1a5d3732e872'
   })
 
   depends_on 'elfutils' # R
@@ -25,6 +25,7 @@ class Iproute2 < Package
   depends_on 'iptables' # R
   depends_on 'libbpf' unless ARCH == 'i686'
   depends_on 'libcap' # R
+  depends_on 'libdb' # R
   depends_on 'libtirpc' # R
 
   def self.patch

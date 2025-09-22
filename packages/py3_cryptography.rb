@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_cryptography < Pip
   description 'Cryptography provides cryptographic recipes and primitives to Python developers.'
   homepage 'https://cryptography.io/'
-  version "45.0.6-#{CREW_PY_VER}"
+  version "46.0.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9085a3050a6f67b9d01686a5642b76ab57b0eb42cbb7b1ac4e6a864683578845',
-     armv7l: '9085a3050a6f67b9d01686a5642b76ab57b0eb42cbb7b1ac4e6a864683578845',
-       i686: 'ec51a8dc9b45135bf6bf442205750e6e7e4eeefdc8b5f1341163fd9265c1cf2e',
-     x86_64: '44bc9a72abf9c119cac7ac2b7299bd8b110f42ca53f5a5f7b8927755225e5895'
+    aarch64: '9529c90399ea70cef497f0decd811fe800b165ff690ccb2ad592cb65f0f695d3',
+     armv7l: '9529c90399ea70cef497f0decd811fe800b165ff690ccb2ad592cb65f0f695d3',
+       i686: '5d409e710c8d248a392b1520c1405d7a3d75f3e320e37789047cf6affb7b777a',
+     x86_64: '1176b6b390ea5f8bbfc4047109dcfb53849d7315032894ed13fcda4ce9b765b7'
   })
 
   depends_on 'gcc_lib' # R
@@ -21,6 +21,7 @@ class Py3_cryptography < Pip
   depends_on 'py3_cffi'
   depends_on 'py3_pycparser' => :build
   depends_on 'py3_typing_extensions'
+  depends_on 'python3' # R
   depends_on 'rust' => :build
 
   no_source_build

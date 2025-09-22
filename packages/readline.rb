@@ -2,7 +2,7 @@ require 'package'
 
 class Readline < Package
   description 'The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in.'
-  homepage 'https://tiswww.cwru.edu/php/chet/readline/rltop.html'
+  homepage 'https://www.gnu.org/software/readline'
   version '8.3'
   license 'GPL-2'
   compatibility 'all'

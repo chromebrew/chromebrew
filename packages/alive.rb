@@ -6,10 +6,16 @@ class Alive < Autotools
   version '2.0.5'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/alive/alive-2.0.5.tar.lz'
+  source_url "https://ftpmirror.gnu.org/alive/alive-#{version}.tar.lz"
   source_sha256 '94cf3dbffd9644405ed4944f94a7bb989674321607318c5a35d5fabc56a75089'
+  binary_compression 'tar.zst'
 
-  binary_sha256({})
+  binary_sha256({
+    aarch64: '8f87960381b9cc6d6697335fbdb8cf0fe9cdae6417c999c8dc81ab08e2b4e8ef',
+     armv7l: '8f87960381b9cc6d6697335fbdb8cf0fe9cdae6417c999c8dc81ab08e2b4e8ef',
+       i686: 'f5dc5db28371fedad458ee263c1cdc24b360ff9a7a42f3c1573da5f6c3516d68',
+     x86_64: '8ce43c4c5beaeef494a7fc48db0b6a4458f732243723ab0876f5e3b9b795a7d1'
+  })
 
   depends_on 'guile' # R
   depends_on 'inetutils' # L

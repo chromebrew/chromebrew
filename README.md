@@ -83,6 +83,7 @@ Where available commands are:
 | check               | check packages(s) |
 | const               | display constant(s) |
 | deps                | display dependencies of package(s) |
+| diskstat            | show statistics about disk space occupied by installed packages |
 | download            | download package(s) to CREW_BREW_DIR (/usr/local/tmp/crew by default), but don't install |
 | files               | display installed files of package(s) |
 | help                | get information about command usage |

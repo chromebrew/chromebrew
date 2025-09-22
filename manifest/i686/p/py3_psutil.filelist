@@ -1,11 +1,11 @@
-# Total size: 2007027
-/usr/local/lib/python3.13/site-packages/psutil-7.0.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/psutil-7.0.0.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/psutil-7.0.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/psutil-7.0.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/psutil-7.0.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/psutil-7.0.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/psutil-7.0.0.dist-info/top_level.txt
+# Total size: 2037781
+/usr/local/lib/python3.13/site-packages/psutil-7.1.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/psutil-7.1.0.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/psutil-7.1.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/psutil-7.1.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/psutil-7.1.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/psutil-7.1.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/psutil-7.1.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/psutil/__init__.py
 /usr/local/lib/python3.13/site-packages/psutil/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/psutil/__pycache__/_common.cpython-313.pyc
@@ -42,6 +42,7 @@
 /usr/local/lib/python3.13/site-packages/psutil/tests/__pycache__/test_process.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/psutil/tests/__pycache__/test_process_all.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/psutil/tests/__pycache__/test_scripts.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/psutil/tests/__pycache__/test_sudo.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/psutil/tests/__pycache__/test_sunos.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/psutil/tests/__pycache__/test_system.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/psutil/tests/__pycache__/test_testutils.cpython-313.pyc
@@ -59,6 +60,7 @@
 /usr/local/lib/python3.13/site-packages/psutil/tests/test_process.py
 /usr/local/lib/python3.13/site-packages/psutil/tests/test_process_all.py
 /usr/local/lib/python3.13/site-packages/psutil/tests/test_scripts.py
+/usr/local/lib/python3.13/site-packages/psutil/tests/test_sudo.py
 /usr/local/lib/python3.13/site-packages/psutil/tests/test_sunos.py
 /usr/local/lib/python3.13/site-packages/psutil/tests/test_system.py
 /usr/local/lib/python3.13/site-packages/psutil/tests/test_testutils.py

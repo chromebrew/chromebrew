@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 2.2 (for Chromebrew)
+# version.rb version 2.9 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -12,6 +12,7 @@ if ARGV.include?('-h') || ARGV.include?('--help')
     Passing --update-package-files or -u will try to update the version
     field in the package file.
     Passing --json or -j will only give json output.
+    Passing --verbose or -v will display verbose output.
   EOM
 end
 
@@ -75,7 +76,7 @@ def get_version(name, homepage, source)
           # GitHub if such releases exist.
           github_ver = `gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'`.chomp if system 'gh auth status >/dev/null', exception: false
         else
-          github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .name -r`.chomp
+          github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .tag -r`.chomp
         end
         return github_ver unless github_ver.blank? || github_ver == 'null'
       end
@@ -145,7 +146,7 @@ def get_anitya_id(name, homepage)
         # We assume there is only one candidate with the same name and homepage as their crew counterpart.
         # Even if there are multiple candidates with the same name and homepage, its probably fine to treat them as identical.
         # If it isn't fine to treat them as identical, something has gone horribly wrong.
-        return json['items'][candidate]['id'] if homepage == json['items'][candidate]['homepage']
+        return json['items'][candidate]['id'] if homepage.chomp('/') == json['items'][candidate]['homepage'].chomp('/')
       end
 
       # If we're still here, that means none of the candidates had the same homepage as their crew counterpart.
@@ -156,10 +157,12 @@ def get_anitya_id(name, homepage)
 end
 
 filelist = []
-if ARGV.length.positive? && !(ARGV.length == 1 && OPTIONS.include?(ARGV[0]))
-  ARGV.each do |arg|
+# Handle multiple packages being passed to version.rb.
+argv = ARGV.map(&:split).flatten
+if argv.length.positive? && !(argv.length == 1 && OPTIONS.include?(argv[0]))
+  argv.each do |arg|
     arg = arg.gsub('.rb', '')
-    next unless arg =~ /^[0-9a-zA-Z\_\*]+$/
+    next unless arg =~ /^[0-9a-zA-Z_*]+$/
     if arg.include?('*')
       Dir[File.join(crew_local_repo_root, "packages/#{arg}.rb")].each do |filename|
         filelist.push filename
@@ -174,6 +177,9 @@ else
     filelist.push filename
   end
 end
+
+# Remove duplicates.
+filelist.uniq!
 
 if filelist.length.positive?
   max_pkg_name_length = File.basename(filelist.max_by(&:length)).length - 3
@@ -208,7 +214,7 @@ if filelist.length.positive?
                                       # check to see if 'version' is on
                                       # that line.
                                       elsif !@pkg.git_hashtag.blank?
-                                        if `grep "^  git_hashtag" #{filename} | grep version`.empty?
+                                        if `grep "^  git_hashtag" #{filename} | grep version`.empty? && @pkg.name != 'rust'
                                           'static git_hashtag'
                                         else
                                           'Yes'
@@ -360,8 +366,8 @@ if filelist.length.positive?
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
     version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.chomp.ljust(version_field_length)}#{updatable_string}\n"
-    print version_line_string[@pkg.name.to_sym] unless OUTPUT_JSON || ((versions_updated[@pkg.name.to_sym] == 'Up to date.') && !VERBOSE)
-    print addendum_string unless addendum_string.blank? || OUTPUT_JSON
+    print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || VERBOSE)
+    print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !VERBOSE
 
     print "Failed to update version in #{@pkg.name} to #{upstream_version.chomp}".yellow if !OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')
     print "Failed to update binary_compression in #{@pkg.name}".yellow if !OUTPUT_JSON && (bc_updated[@pkg.name.to_sym].to_s == 'false')

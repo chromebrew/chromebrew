@@ -68,6 +68,12 @@ class Linuxheaders < Package
        armv7l: '57da5af2e1ce96222fcf0f574d5a3093c851754cccd2a7d06aa0d7cecd25a7f6',
        x86_64: '4c2271b3415bf20c3f3de7ca2687ec06749d8586bd792b7b931ce49bf1451ce4'
     })
+  when '6.12'
+    binary_sha256({
+      aarch64: '5c98953b23222a11d9a1a70624a95251053f24830a66fc68e7bcbdf115c1ca2f',
+       armv7l: '5c98953b23222a11d9a1a70624a95251053f24830a66fc68e7bcbdf115c1ca2f',
+       x86_64: '619f3c0156cca2f38cf8b999158f2619f1ed659908f0b0005b902f93ba2b6e6a'
+    })
   end
 
   depends_on 'rsync' => :build

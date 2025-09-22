@@ -875,6 +875,11 @@ url: https://sourceforge.net/projects/wodim/files/cdrkit/
 activity: none
 ---
 kind: url
+name: cert_cli
+url: https://github.com/mihneamanolache/cert-cli/releases
+activity: low
+---
+kind: url
 name: cf
 url: https://github.com/cloudfoundry/cli/releases
 activity: medium
@@ -1617,6 +1622,11 @@ activity: medium
 kind: url
 name: duplicity
 url: https://launchpad.net/duplicity/+download
+activity: medium
+---
+kind: url
+name: dust
+url: https://github.com/bootandy/dust/releases
 activity: medium
 ---
 kind: url
@@ -3865,6 +3875,11 @@ url: https://www.netlib.org/lapack/
 activity: none
 ---
 kind: url
+name: lazygit
+url: https://github.com/jesseduffield/lazygit/releases
+activity: high
+---
+kind: url
 name: lcms
 url: https://sourceforge.net/projects/lcms/files/lcms/
 activity: low
@@ -4762,6 +4777,16 @@ activity: medium
 kind: url
 name: libnghttp2
 url: https://github.com/nghttp2/nghttp2/releases
+activity: high
+---
+kind: url
+name: libnghttp3
+url: https://github.com/ngtcp2/nghttp3/releases
+activity: high
+---
+kind: url
+name: libngtcp2
+url: https://github.com/ngtcp2/ngtcp2/releases
 activity: high
 ---
 kind: url
@@ -6500,6 +6525,11 @@ url: https://sourceforge.net/projects/nmon/files/
 activity: none
 ---
 kind: url
+name: nnn
+url: https://github.com/jarun/nnn/releases
+activity: low
+---
+kind: url
 name: nocodb
 url: https://github.com/nocodb/nocodb/releases
 activity: medium
@@ -7130,13 +7160,13 @@ url: https://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/
 activity: low
 ---
 kind: url
-name: perl_locale_gettext
-url: https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/
+name: perl_libintl_perl
+url: https://cpan.metacpan.org/authors/id/G/GU/GUIDO/
 activity: none
 ---
 kind: url
-name: perl_locale_messages
-url: https://cpan.metacpan.org/authors/id/G/GU/GUIDO/
+name: perl_locale_gettext
+url: https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/
 activity: none
 ---
 kind: url
@@ -7338,6 +7368,11 @@ kind: url
 name: pinentry
 url: https://gnupg.org/ftp/gcrypt/pinentry
 activity: low
+---
+kind: url
+name: pip_search
+url: https://github.com/chromebrew
+activity: none
 ---
 kind: url
 name: pipes_sh
@@ -7605,6 +7640,11 @@ url: https://gitlab.gnome.org/GNOME/pyatspi2/-/tags
 activity: low
 ---
 kind: url
+name: py3_bleach
+url: https://github.com/deepin-community/python-bleach/tags
+activity: low
+---
+kind: url
 name: py3_brotlicffi
 url: https://github.com/python-hyper/brotlicffi/tags
 activity: low
@@ -7700,6 +7740,11 @@ url: https://github.com/quodlibet/mutagen/releases
 activity: medium
 ---
 kind: url
+name: py3_nh3
+url: https://github.com/messense/nh3/releases
+activity: medium
+---
+kind: url
 name: py3_nodeenv
 url: https://github.com/ekalinin/nodeenv/releases
 activity: low
@@ -7715,6 +7760,11 @@ url: https://github.com/pre-commit/pre-commit/releases
 activity: medium
 ---
 kind: url
+name: py3_pydf
+url: https://github.com/garabik/pydf
+activity: none
+---
+kind: url
 name: py3_pygobject
 url: https://gitlab.gnome.org/GNOME/pygobject/-/tags
 activity: high
@@ -7728,6 +7778,11 @@ kind: url
 name: py3_pyright
 url: https://github.com/RobertCraigie/pyright-python/releases
 activity: high
+---
+kind: url
+name: py3_readme_renderer
+url: https://github.com/pypa/readme_renderer/releases
+activity: medium
 ---
 kind: url
 name: py3_ruff
@@ -8788,6 +8843,11 @@ kind: url
 name: snowflake
 url: https://github.com/subhra74/snowflake/releases
 activity: none
+---
+kind: url
+name: so
+url: https://github.com/samtay/so/releases
+activity: low
 ---
 kind: url
 name: socat

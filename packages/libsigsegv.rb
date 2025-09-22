@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Libsigsegv < Autotools
   description 'GNU libsigsegv is a library for handling page faults in user mode.'
   homepage 'https://www.gnu.org/software/libsigsegv/'
-  version '2.14-a816da0'
+  version '2.15'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/libsigsegv.git'
-  git_hashtag 'a816da0ecf6eb59234cdea8e62d0ac5706b714f0'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a793b4b5435ef872527a2786e2ec2a60afa477d991971cbef3306294b4e4b158',
-     armv7l: 'a793b4b5435ef872527a2786e2ec2a60afa477d991971cbef3306294b4e4b158',
-       i686: '66c7fe9e6d8834353140c81a6ddb061a273f07e22bc104584eec90e42f86e9b3',
-     x86_64: '937a885c71dbee68b5cdfa5b9a80752d22c581771dcb7d6f8e22ae45e50957f3'
+    aarch64: 'e499238dcfc3cd52b1540ab9672b924c190ec374ba077cd70f0b0cc62485469b',
+     armv7l: 'e499238dcfc3cd52b1540ab9672b924c190ec374ba077cd70f0b0cc62485469b',
+       i686: 'c1d26aad638486c0d2f0a6dd470c31189f7c07c846a6b97bd7f87cf2d9492154',
+     x86_64: '1b56f3ef877e3e8962a5b4d42c80f2b5a456a252f6e435d81b0159c59c50bb71'
   })
 
   depends_on 'glibc' # R

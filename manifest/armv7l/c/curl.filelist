@@ -1,4 +1,4 @@
-# Total size: 10518500
+# Total size: 10732113
 /usr/local/bin/curl
 /usr/local/bin/curl-config
 /usr/local/bin/wcurl
@@ -101,6 +101,11 @@
 /usr/local/share/man/man3/CURLINFO_TOTAL_TIME_T.3.zst
 /usr/local/share/man/man3/CURLINFO_USED_PROXY.3.zst
 /usr/local/share/man/man3/CURLINFO_XFER_ID.3.zst
+/usr/local/share/man/man3/CURLMINFO_XFERS_ADDED.3.zst
+/usr/local/share/man/man3/CURLMINFO_XFERS_CURRENT.3.zst
+/usr/local/share/man/man3/CURLMINFO_XFERS_DONE.3.zst
+/usr/local/share/man/man3/CURLMINFO_XFERS_PENDING.3.zst
+/usr/local/share/man/man3/CURLMINFO_XFERS_RUNNING.3.zst
 /usr/local/share/man/man3/CURLMOPT_CHUNK_LENGTH_PENALTY_SIZE.3.zst
 /usr/local/share/man/man3/CURLMOPT_CONTENT_LENGTH_PENALTY_SIZE.3.zst
 /usr/local/share/man/man3/CURLMOPT_MAXCONNECTS.3.zst
@@ -108,6 +113,7 @@
 /usr/local/share/man/man3/CURLMOPT_MAX_HOST_CONNECTIONS.3.zst
 /usr/local/share/man/man3/CURLMOPT_MAX_PIPELINE_LENGTH.3.zst
 /usr/local/share/man/man3/CURLMOPT_MAX_TOTAL_CONNECTIONS.3.zst
+/usr/local/share/man/man3/CURLMOPT_NETWORK_CHANGED.3.zst
 /usr/local/share/man/man3/CURLMOPT_PIPELINING.3.zst
 /usr/local/share/man/man3/CURLMOPT_PIPELINING_SERVER_BL.3.zst
 /usr/local/share/man/man3/CURLMOPT_PIPELINING_SITE_BL.3.zst
@@ -482,6 +488,7 @@
 /usr/local/share/man/man3/curl_multi_cleanup.3.zst
 /usr/local/share/man/man3/curl_multi_fdset.3.zst
 /usr/local/share/man/man3/curl_multi_get_handles.3.zst
+/usr/local/share/man/man3/curl_multi_get_offt.3.zst
 /usr/local/share/man/man3/curl_multi_info_read.3.zst
 /usr/local/share/man/man3/curl_multi_init.3.zst
 /usr/local/share/man/man3/curl_multi_perform.3.zst
@@ -518,6 +525,7 @@
 /usr/local/share/man/man3/curl_ws_meta.3.zst
 /usr/local/share/man/man3/curl_ws_recv.3.zst
 /usr/local/share/man/man3/curl_ws_send.3.zst
+/usr/local/share/man/man3/curl_ws_start_frame.3.zst
 /usr/local/share/man/man3/libcurl-easy.3.zst
 /usr/local/share/man/man3/libcurl-env-dbg.3.zst
 /usr/local/share/man/man3/libcurl-env.3.zst

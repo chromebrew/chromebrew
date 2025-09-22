@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_prism < RUBY
   description 'Prism is a parser for the Ruby programming language.'
   homepage 'https://github.com/ruby/prism'
-  version "1.4.0-#{CREW_RUBY_VER}"
+  version "1.5.1-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'd908e2c934963e6bcf6a1e5d5ca1acdfe4fd0b435b8cc6d748e0a92195d31bb6',
-     armv7l: 'd908e2c934963e6bcf6a1e5d5ca1acdfe4fd0b435b8cc6d748e0a92195d31bb6',
-       i686: '5056af7b2af7f10a743d1d3c884d39f9e1b860892096f2cb9c94277b888843f8',
-     x86_64: 'e93b758028a8f31a3d3ff02ee099cb4da57ba1ca03805e12cbde8b16b4ac21fb'
+    aarch64: '8f398259134d34bc42ed82a689ce311f6aa80bcb5329a3fe57a57058832efadf',
+     armv7l: '8f398259134d34bc42ed82a689ce311f6aa80bcb5329a3fe57a57058832efadf',
+       i686: 'b68a93e2c3c47c249add17db2739203bb4fa60b725e0c2e81e2863468b5728b6',
+     x86_64: '8e77ab62186285781f213fe6a5e58b6f50fdd48a5251b212853c7864af28674e'
   })
 
   conflicts_ok

@@ -1,4 +1,4 @@
-# Total size: 25436571
+# Total size: 25437345
 /usr/local/bin/hg
 /usr/local/lib/python3.13/site-packages/hgdemandimport/__init__.py
 /usr/local/lib/python3.13/site-packages/hgdemandimport/__pycache__/__init__.cpython-313.pyc
@@ -291,13 +291,13 @@
 /usr/local/lib/python3.13/site-packages/hgext/zeroconf/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/hgext3rd/__init__.py
 /usr/local/lib/python3.13/site-packages/hgext3rd/__pycache__/__init__.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/licenses/COPYING
-/usr/local/lib/python3.13/site-packages/mercurial-7.1.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.1.dist-info/licenses/COPYING
+/usr/local/lib/python3.13/site-packages/mercurial-7.1.1.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/mercurial/__init__.py
 /usr/local/lib/python3.13/site-packages/mercurial/__main__.py
 /usr/local/lib/python3.13/site-packages/mercurial/__modulepolicy__.py

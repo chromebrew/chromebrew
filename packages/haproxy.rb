@@ -3,21 +3,22 @@ require 'package'
 class Haproxy < Package
   description 'The Reliable, High Performance TCP/HTTP Load Balancer.'
   homepage 'https://www.haproxy.org/'
-  version '3.0.3'
+  version '3.2.4'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url "https://www.haproxy.org/download/3.0/src/haproxy-#{version}.tar.gz"
-  source_sha256 '39a73c187a0b00d2602cb3ffca52d1b59d90f09032734fe8c03eb2e29a7d19df'
+  source_url "https://www.haproxy.org/download/#{version.split('.')[0..1].join('.')}/src/haproxy-#{version}.tar.gz"
+  source_sha256 '624f911f80a6aaf047d3bedc51bd2d282fd31bf664fa205b1f447a537a055c1d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8a03a8b27b150300a1e07ea04ea2816a229e65c79d31eb8fe98b3dbe8ca40c5f',
-     armv7l: '8a03a8b27b150300a1e07ea04ea2816a229e65c79d31eb8fe98b3dbe8ca40c5f',
-       i686: '452b2779e5f74ff7187ec16cfe148db855489df9db5ed65e81cd44435544d9a4',
-     x86_64: 'dc66ae60730d8eeaefbadad6a0a0c949d650e1f3b76e9a81f8526aabb020492b'
+    aarch64: '622d3a99622c5c10960ea2e670556f428a1e5290b1c984ce03329f4206143245',
+     armv7l: '622d3a99622c5c10960ea2e670556f428a1e5290b1c984ce03329f4206143245',
+       i686: '2e21699bc8884afc6991d02bd43caa094b821ce0d57c338dd63af8508831293c',
+     x86_64: 'f0057eab7bd92c0bd51277f42e92a32e4447ce0d1288e6d73c8d8f3b6fc05c52'
   })
 
-  depends_on 'pcre2'
+  depends_on 'glibc' # R
+  depends_on 'zlib' # R
 
   no_fhs
 

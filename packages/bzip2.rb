@@ -6,7 +6,7 @@ class Bzip2 < Package
   version '1.0.8-2'
   license 'BZIP2'
   compatibility 'all'
-  source_url 'https://fossies.org/linux/misc/bzip2-1.0.8.tar.gz'
+  source_url "https://fossies.org/linux/misc/bzip2-#{version.split('-').first}.tar.gz"
   source_sha256 'ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269'
   binary_compression 'tar.zst'
 
