@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Util_linux < Autotools
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version "2.41.1-#{CREW_PY_VER}"
+  version "2.41.2-#{CREW_PY_VER}"
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
   source_url 'https://github.com/util-linux/util-linux.git'
