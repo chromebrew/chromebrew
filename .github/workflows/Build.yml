@@ -70,13 +70,10 @@ jobs:
         run: |
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git pull --rebase origin master
-            git push -f
-      - name: Push rebase changes
-        uses: ad-m/github-push-action@master
-        with:
-          branch: ${{ inputs.branch || github.ref_name }}
-          force: true
+            # git pull --rebase origin master
+            git pull
+            git rebase -X master ${{ inputs.branch || github.ref_name }}
+            git push --force-with-lease
       - name: Set Timestamp
         id: set-timestamp
         run: |
@@ -85,12 +82,13 @@ jobs:
           echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v46
+        uses: tj-actions/changed-files@v47
         with:
           base_sha: master
           files_yaml: |
             packages:
               - packages/*.rb
+          since_last_remote_commit: true
       - name: Export variables to github context
         id: changed-packages
         run: |
