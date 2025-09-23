@@ -1,6 +1,6 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Util_linux < Autotools
+class Util_linux < Meson
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
   version "2.41.2-#{CREW_PY_VER}"
@@ -38,14 +38,28 @@ class Util_linux < Autotools
 
   conflicts_ok
 
-  year2038 = '--disable-year2038'
-  i686_disabled_builds = '--disable-blkzone --disable-lsfd'
-  autotools_configure_options "#{year2038 unless ARCH == 'x86_64'} \
-                              --disable-kill \
-                              #{i686_disabled_builds if ARCH == 'i686'} \
-                              --disable-makeinstall-chown \
-                              --disable-makeinstall-setuid \
-                              --disable-makeinstall-tty-setgid \
-                              --without-systemd \
-                              --without-udev"
+  year2038 = '-Dallow-32bit-time=true'
+  i686_disabled_builds = '-Dbuild-blkzone=disabled -Dbuild-lsfd=disabled'
+  meson_options "-Dbuild-kill=disabled \
+                 -Dsystemd=disabled \
+                 #{i686_disabled_builds if ARCH == 'i686'} \
+                 #{year2038 unless ARCH == 'x86_64'}"
+
+  def self.patch
+    File.write 'meson.patch', <<~PATCHEOF
+      diff -Npaur a/meson.build b/meson.build
+      --- a/meson.build	2025-09-23 16:35:42.425424047 -0400
+      +++ b/meson.build	2025-09-23 16:39:17.742052089 -0400
+      @@ -1473,7 +1473,7 @@ has_seminfo_type = cc.has_type('struct s
+
+       posixipc_libs = []
+       if not cc.has_function('shm_open') and conf.get('HAVE_SYS_MMAN_H').to_string() == '1'
+      -  posixipc_libs = cc.find_library('rt', required : true)
+      +  posixipc_libs += cc.find_library('rt', required : true)
+       endif
+
+       if not cc.has_function('sem_close') and conf.get('HAVE_SEMAPHORE_H').to_string() == '1'
+    PATCHEOF
+    system 'patch -Np1 -i meson.patch'
+  end
 end
