@@ -3,7 +3,7 @@ require 'package'
 class Btm < Package
   description 'Yet another cross-platform graphical process/system monitor.'
   homepage 'https://clementtsang.github.io/bottom'
-  version '0.10.2'
+  version '0.11.1'
   license 'MIT'
   compatibility 'all'
   min_glibc '2.28' if ARCH.eql?('x86_64')
@@ -14,10 +14,10 @@ class Btm < Package
      x86_64: "https://github.com/ClementTsang/bottom/releases/download/#{version}/bottom_x86_64-unknown-linux-gnu.tar.gz"
   })
   source_sha256({
-    aarch64: 'aa8d0b3719801a7822c6871e3f6faf207583f170db89eed9a17e79423a25ae7c',
-     armv7l: 'aa8d0b3719801a7822c6871e3f6faf207583f170db89eed9a17e79423a25ae7c',
-       i686: '7bc7c05a282a430e1a5d82488d7b34204cadd3ee7d4254d0266c63100897fc50',
-     x86_64: 'f20211d398b9744545b93ac4af73f3a9f3e67179c385fb0c73d0dd4d84d28a8f'
+    aarch64: '7746990396832690e97d465fd040dd4ed7a6ccf0d3db1bfe383a84feac982f4a',
+     armv7l: '7746990396832690e97d465fd040dd4ed7a6ccf0d3db1bfe383a84feac982f4a',
+       i686: 'b6fe94e41bde3f8b03cf06733a2005e38424ddfef934e6286369b97fe20f7537',
+     x86_64: 'b173d13b0206e941b1b646ac18756c63a18fbe8b07744ab8ee992807aa2bad8a'
   })
 
   no_compile_needed
