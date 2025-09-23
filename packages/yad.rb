@@ -20,6 +20,7 @@ class Yad < Autotools
   depends_on 'pkgconf' => :build
   depends_on 'rgb'
 
+  autotools_pre_configure_options "PKG_CONFIG=#{CREW_PREFIX}/bin/pkgconf"
   autotools_configure_options "--enable-gio \
            --enable-icon-browser \
            --with-gtk=gtk3 \
