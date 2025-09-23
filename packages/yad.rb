@@ -16,14 +16,21 @@ class Yad < Autotools
      x86_64: '1fdac4030f16b26ff16102a570c6d2ec58a5228fd8f89752e4e6da58555a6604'
   })
 
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gtk3'
+  depends_on 'harfbuzz' # R
+  depends_on 'pango' # R
   depends_on 'pkgconf' => :build
   depends_on 'rgb'
+  depends_on 'zlib' # R
 
   autotools_pre_configure_options "PKG_CONFIG=#{CREW_PREFIX}/bin/pkgconf"
   autotools_configure_options "--enable-gio \
            --enable-icon-browser \
            --with-gtk=gtk3 \
            --with-rgb=#{CREW_PREFIX}/share/X11/rgb.txt"
-
 end
