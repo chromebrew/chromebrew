@@ -71,8 +71,11 @@ jobs:
         run: |
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git pull --rebase origin master
-            git push -f
+            # git pull --rebase origin master
+            # git push -f
+            git pull
+            git rebase -X master ${{ inputs.branch || github.ref_name }}
+            git push --force-with-lease
       - name: Push rebase changes
         if: ${{ ( inputs.rebase ) }}
         uses: ad-m/github-push-action@master
@@ -343,7 +346,10 @@ jobs:
             git checkout "${{ inputs.branch || github.ref_name }}"
             if [[ ${REBASE} == 'true' ]]; then
               git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
-              git pull --rebase origin master && git push -f
+              git pull
+              git rebase -X master ${{ inputs.branch || github.ref_name }}
+              git push --force-with-lease
+              #  git pull --rebase origin master && git push -f
             fi
             git log --oneline -10
             git checkout master && git pull
