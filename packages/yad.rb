@@ -17,6 +17,7 @@ class Yad < Autotools
   })
 
   depends_on 'gtk3'
+  depends_on 'pkgconf' => :build
   depends_on 'rgb'
 
   autotools_configure_options "--enable-gio \
