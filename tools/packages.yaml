@@ -6740,18 +6740,8 @@ url: https://www.azul.com/downloads/?version=java-21-lts&package=jdk#zulu
 activity: medium
 ---
 kind: url
-name: openjdk22
-url: https://www.azul.com/downloads/?package=jdk#zulu
-activity: medium
----
-kind: url
-name: openjdk23
-url: https://www.azul.com/downloads/?package=jdk#zulu
-activity: medium
----
-kind: url
-name: openjdk24
-url: https://www.azul.com/downloads/?package=jdk#zulu
+name: openjdk25
+url: https://www.azul.com/downloads/?version=java-25-lts&package=jdk#zulu
 activity: medium
 ---
 kind: url
