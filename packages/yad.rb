@@ -11,9 +11,9 @@ class Yad < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9e95ee3627b04922ddd447649e69ea54c9dc43e7138319bd1588a4f8b58b51af',
-     armv7l: '9e95ee3627b04922ddd447649e69ea54c9dc43e7138319bd1588a4f8b58b51af',
-     x86_64: '1fdac4030f16b26ff16102a570c6d2ec58a5228fd8f89752e4e6da58555a6604'
+    aarch64: 'aed62ef4ab23878851f8cba414244b5ffbfb7afe1af0f85260a810bc8feafc0d',
+     armv7l: 'aed62ef4ab23878851f8cba414244b5ffbfb7afe1af0f85260a810bc8feafc0d',
+     x86_64: 'aac4bf54b984da9242c9570a2d8bc667b2a60aac93224022cee76aad2693de31'
   })
 
   depends_on 'at_spi2_core' # R
