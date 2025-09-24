@@ -55,7 +55,12 @@ def get_version(name, homepage, source)
   puts "anitya_name: #{anitya_name} anitya_id: #{anitya_id}" if VERBOSE
   # If we weren't able to get an Anitya ID, return early here to save time and headaches
   # return if anitya_id.nil?
-  if anitya_id.nil?
+  if anitya_id&.nonzero?
+    # Get the latest stable version of the package from anitya.
+    json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
+    return if json['stable_versions'].nil?
+    return json['stable_versions'][0]
+  else
     # If anitya has failed, check if the source is a GitHub repository
     # as a fallback.
     # Note that we only check releases on GitHub since semantic
@@ -90,11 +95,6 @@ def get_version(name, homepage, source)
         end
       end
     end
-  else
-    # Get the latest stable version of the package from anitya.
-    json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
-    return if json['stable_versions'].nil?
-    return json['stable_versions'][0]
   end
 end
 
