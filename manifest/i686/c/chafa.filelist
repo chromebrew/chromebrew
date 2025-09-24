@@ -1,4 +1,4 @@
-# Total size: 2685046
+# Total size: 3383131
 /usr/local/include/chafa/chafa-canvas-config.h
 /usr/local/include/chafa/chafa-canvas.h
 /usr/local/include/chafa/chafa-common.h
@@ -18,5 +18,5 @@
 /usr/local/lib/libchafa.la
 /usr/local/lib/libchafa.so
 /usr/local/lib/libchafa.so.0
-/usr/local/lib/libchafa.so.0.9.2
+/usr/local/lib/libchafa.so.0.10.2
 /usr/local/lib/pkgconfig/chafa.pc
