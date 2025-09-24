@@ -3,11 +3,11 @@ require 'package'
 class Crew_mvdir < Package
   description 'Faster alternative to "rsync --remove-source-files dir1/ dir2/"'
   homepage 'https://github.com/chromebrew/crew-mvdir'
-  version '0.2-2' # Do not use @_ver here, it will break the installer.
+  version '0.3'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/chromebrew/crew-mvdir.git'
-  git_hashtag '0.2'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -24,7 +24,6 @@ class Crew_mvdir < Package
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'crew-mvdir', "#{CREW_DEST_PREFIX}/bin/crew-mvdir", mode: 0o755
   end
 end
