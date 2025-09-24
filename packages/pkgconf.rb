@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Pkgconf < Meson
   description 'Package compiler and linker metadata toolkit'
   homepage 'https://github.com/pkgconf/pkgconf'
-  version '2.5.1'
+  version '2.5.1-1'
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/pkgconf/pkgconf.git'
-  git_hashtag "pkgconf-#{version}"
+  git_hashtag "pkgconf-#{version.split('-').first}"
   source_sha256 '6a181e0bf1195e95b7cd535a1854827aedb383b26b1fc24ca13586cb5e8e55af'
   binary_compression 'tar.zst'
 
@@ -29,4 +29,11 @@ class Pkgconf < Meson
   meson_options "-Dtests=disabled \
     -Dwith-system-libdir=#{CREW_LIB_PREFIX} \
     -Dwith-system-includedir=#{CREW_PREFIX}/include"
+
+  meson_install_extras do
+    File.write 'pkgconf_envd', <<~PKGCONFEOF
+      export PKG_CONFIG=#{CREW_PREFIX}/bin/pkgconf
+    PKGCONFEOF
+    FileUtils.install 'pkgconf_envd', "#{CREW_DEST_PREFIX}/etc/env.d/pkgconf", mode: 0o644
+  end
 end
