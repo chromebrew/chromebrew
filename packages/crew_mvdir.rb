@@ -11,10 +11,10 @@ class Crew_mvdir < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c6738e9eb4d6771c9349cbab24c5a0ff0802919e08931c979558bc0f2c33d719',
-     armv7l: 'c6738e9eb4d6771c9349cbab24c5a0ff0802919e08931c979558bc0f2c33d719',
-       i686: '94b576672248ce488bbc8c44f8ff83a5ef862264cd115ec5dea641d7ed2a740a',
-     x86_64: '7e8c79bded2e1c3d07c8d25c9773a9a8ecb23cd2e20169ff26ec6c09e9eeae41'
+    aarch64: '49f18debfacdb14a5c9bebc8537e2cb7415175dc5fca46f49393e79a30df166a',
+     armv7l: '49f18debfacdb14a5c9bebc8537e2cb7415175dc5fca46f49393e79a30df166a',
+       i686: '446dd4251251aea7ba3461e7f5453909f73dc815e8d422f284b57b4dd1cf7958',
+     x86_64: '052256b4db73db3fafdea1d6ab681ec3e513ff648bcf430614423e56ccd31707'
   })
 
   depends_on 'glibc' # R
