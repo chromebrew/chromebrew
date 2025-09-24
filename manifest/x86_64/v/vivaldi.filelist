@@ -1,4 +1,4 @@
-# Total size: 442134123
+# Total size: 441177061
 /usr/local/bin/vivaldi
 /usr/local/bin/vivaldi-stable
 /usr/local/etc/cron.daily/vivaldi
@@ -447,7 +447,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-0f39a78aaad5e83752201c6758cfe13f.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-bc9bc33e534baec2b3177308f294c870.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
@@ -705,6 +705,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/seznam.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/shein.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/shopee_pl.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/skyscanner.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/spiegel_de.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/spotify.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/start_me.png
@@ -1011,6 +1012,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_si_lankanews.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_simplygames.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_sk_auktality.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_skyscanner.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_sl_zurnal.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_spyr.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_sq_express.png
