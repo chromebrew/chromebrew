@@ -1,2 +1,4 @@
-# Total size: 7608
+# Total size: 16536
 /usr/local/bin/crew-mvdir
+/usr/local/lib/crew-mvdir.so.1
+/usr/local/lib/crew_mvdir.so
