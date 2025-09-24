@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 2.9 (for Chromebrew)
+# version.rb version 3.0 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -48,9 +48,30 @@ versions_updated = {}
 versions = []
 
 def get_version(name, homepage, source)
-  # Determine if the source is a GitHub repository, but skip if there
-  # is an anitya name mapping.
-  unless source.nil? || %w[Pip].include?(@pkg.superclass.to_s) || CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
+  anitya_name_mapping_idx = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
+  anitya_name = name.gsub(/\Apy\d_|\Aperl_|\Aruby_/, '').tr('_', '-')
+  anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.values[anitya_name_mapping_idx] unless anitya_name_mapping_idx.nil?
+  anitya_id = get_anitya_id(anitya_name, homepage)
+  puts "anitya_name: #{anitya_name} anitya_id: #{anitya_id}" if VERBOSE
+  if anitya_id&.nonzero?
+    # Get the latest stable version of the package from anitya.
+    json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
+    return if json['stable_versions'].nil?
+    return json['stable_versions'][0]
+  elsif source.nil? || %w[Pip].include?(@pkg.superclass.to_s)
+    return
+  else
+    # If anitya has failed, check if the source is a GitHub repository
+    # as a fallback.
+    # Note that we only check releases on GitHub since semantic
+    # version ordering isn't easy to get from tags.
+    # You can get the last numeric tag using:
+    # git -c 'versionsort.suffix=-' \
+    # ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/#{repo} '*.*.*' \
+    # | tail --lines=1 \
+    # | cut --delimiter='/' --fields=3
+    # However, since that does miss text tags, better to just use
+    # anitya first.
     if source.is_a?(Hash)
       source_arch = (@pkg.source_url.keys.map &:to_s).first
       source = @pkg.source_url[source_arch.to_sym]
@@ -62,15 +83,6 @@ def get_version(name, homepage, source)
       unless url_parts.count < 3
         repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
         puts "GitHub Repo is #{repo}" if VERBOSE
-        # Note that we only check releases on GitHub since semantic
-        # version ordering isn't easy to get from tags.
-        # You can get the last numeric tag using:
-        # git -c 'versionsort.suffix=-' \
-        # ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/#{repo} '*.*.*' \
-        # | tail --lines=1 \
-        # | cut --delimiter='/' --fields=3
-        # However, since that does miss text tags, better to just punt
-        # to ANITYA if releases do not exist.
         if File.which('gh')
           # This allows us to only get non-pre-release versions from
           # GitHub if such releases exist.
@@ -82,17 +94,6 @@ def get_version(name, homepage, source)
       end
     end
   end
-  anitya_name_mapping_idx = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
-  anitya_name = name.gsub(/\Apy\d_|\Aperl_|\Aruby_/, '').tr('_', '-')
-  anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.values[anitya_name_mapping_idx] unless anitya_name_mapping_idx.nil?
-  anitya_id = get_anitya_id(anitya_name, homepage)
-  puts "anitya_name: #{anitya_name} anitya_id: #{anitya_id}" if VERBOSE
-  # If we weren't able to get an Anitya ID, return early here to save time and headaches
-  return if anitya_id.nil?
-  # Get the latest stable version of the package
-  json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
-  return if json['stable_versions'].nil?
-  return json['stable_versions'][0]
 end
 
 def get_anitya_id(name, homepage)
