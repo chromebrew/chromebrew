@@ -1143,6 +1143,9 @@ def resolve_dependencies_and_install(no_advisory: false)
       end
     end
 
+    # Only install dependencies from source if recursive.
+    @opt_source = false unless @opt_recursive
+
     to_install.each do |pkg_to_install|
       search pkg_to_install
       print_current_package

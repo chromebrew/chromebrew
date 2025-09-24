@@ -75,7 +75,7 @@
     "name": "acquia_cli",
     "description": "Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.",
     "homepage": "https://github.com/acquia/cli",
-    "version": "2.46.0",
+    "version": "2.48.0",
     "license": "GPL-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -843,7 +843,7 @@
     "name": "bash_completion",
     "description": "Programmable completion functions for bash",
     "homepage": "https://github.com/scop/bash-completion",
-    "version": "2.14.0",
+    "version": "2.16.0",
     "license": "GPL-2+",
     "compatibility": "all"
   },
@@ -1091,7 +1091,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.81.136",
+    "version": "1.82.170",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1211,7 +1211,7 @@
     "name": "bzip3",
     "description": "bzip3 is a better and stronger spiritual successor to bzip2.",
     "homepage": "https://github.com/kspalaiologos/bzip3",
-    "version": "1.3.2",
+    "version": "1.5.3",
     "license": "LGPL-3",
     "compatibility": "all"
   },
@@ -1995,7 +1995,7 @@
     "name": "cronie",
     "description": "Cronie contains the standard UNIX daemon crond that runs specified programs at scheduled times and related tools.",
     "homepage": "https://github.com/cronie-crond/cronie",
-    "version": "1.5.2",
+    "version": "1.7.2",
     "license": "ISC, BSD, BSD-2 and GPL-2",
     "compatibility": "all"
   },
@@ -2299,7 +2299,7 @@
     "name": "desktop_file_utils",
     "description": "contains a few command line utilities for working with desktop entries",
     "homepage": "https://www.freedesktop.org/wiki/Software/desktop-file-utils/",
-    "version": "0.23",
+    "version": "0.28",
     "license": "GPL-2+",
     "compatibility": "all"
   },
@@ -2547,7 +2547,7 @@
     "name": "doxygen",
     "description": "Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.",
     "homepage": "https://www.doxygen.nl/",
-    "version": "1.13.2",
+    "version": "1.14.0",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -2627,7 +2627,7 @@
     "name": "e2fsprogs",
     "description": "e2fsprogs are ext2/3/4 file system utilities.",
     "homepage": "https://e2fsprogs.sourceforge.net/",
-    "version": "1.47.2",
+    "version": "1.47.3",
     "license": "GPL-2 and BSD",
     "compatibility": "all"
   },
@@ -2651,7 +2651,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "140.0.3485.54-1",
+    "version": "140.0.3485.81-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2699,7 +2699,7 @@
     "name": "elfutils",
     "description": "elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.",
     "homepage": "https://sourceware.org/elfutils/",
-    "version": "0.192",
+    "version": "0.193",
     "license": "GPL-2+ or LGPL-3+",
     "compatibility": "all"
   },
@@ -3163,7 +3163,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "142.0.1",
+    "version": "143.0.1",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3883,7 +3883,7 @@
     "name": "gedit",
     "description": "GNOME Text Editor",
     "homepage": "https://wiki.gnome.org/Apps/Gedit",
-    "version": "46.2",
+    "version": "48.2",
     "license": "GPL-2+ CC-BY-SA-3.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4410,7 +4410,7 @@
   {
     "name": "gmp",
     "description": "GMP is a free library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating-point numbers.",
-    "homepage": "https://gmplib.org/",
+    "homepage": "https://gnu.org/s/gmp",
     "version": "6.3.0",
     "license": "LGPL-3+ and GPL-2+",
     "compatibility": "all"
@@ -4435,7 +4435,7 @@
     "name": "gnome_calculator",
     "description": "GNOME desktop calculator",
     "homepage": "https://wiki.gnome.org/Apps/Calculator",
-    "version": "46.rc",
+    "version": "49.0",
     "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4451,7 +4451,7 @@
     "name": "gnome_console",
     "description": "A simple user-friendly terminal emulator for the GNOME desktop",
     "homepage": "https://gitlab.gnome.org/GNOME/console",
-    "version": "46.rc",
+    "version": "49.0",
     "license": "GPL3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4547,7 +4547,7 @@
     "name": "gnome_terminal",
     "description": "The GNOME Terminal Emulator",
     "homepage": "https://wiki.gnome.org/Apps/Terminal",
-    "version": "3.51.91",
+    "version": "3.97.0",
     "license": "GPL-3+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4578,7 +4578,7 @@
   {
     "name": "gnu_time",
     "description": "Utility for monitoring a programs use of system resources",
-    "homepage": "https://www.gnu.org/software/time/",
+    "homepage": "https://www.gnu.org/software/time",
     "version": "1.9",
     "license": "GPL",
     "compatibility": "all"
@@ -4643,7 +4643,7 @@
     "name": "go",
     "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "homepage": "https://go.dev",
-    "version": "1.25.0",
+    "version": "1.25.1",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -4707,7 +4707,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "140.0.7339.127-1",
+    "version": "140.0.7339.185-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -5315,7 +5315,7 @@
     "name": "help2man",
     "description": "help2man produces simple manual pages from the '--help' and '--version' output of other commands.",
     "homepage": "https://www.gnu.org/software/help2man/",
-    "version": "1.49.2",
+    "version": "1.49.3",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -6435,7 +6435,7 @@
     "name": "libadwaita",
     "description": "Library of GNOME-specific UI patterns, replacing libhandy for GTK4",
     "homepage": "https://gitlab.gnome.org/GNOME/libadwaita/",
-    "version": "1.7.6",
+    "version": "1.8.0-1",
     "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -6611,7 +6611,7 @@
     "name": "libcap",
     "description": "Libcap implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels.",
     "homepage": "https://directory.fsf.org/wiki/Libcap",
-    "version": "2.66",
+    "version": "2.76",
     "license": "GPL-2 or BSD",
     "compatibility": "all"
   },
@@ -6779,7 +6779,7 @@
     "name": "libdb",
     "description": "Berkeley DB is a family of embedded key-value database libraries providing scalable high-performance data management services to applications.",
     "homepage": "https://github.com/berkeleydb/libdb",
-    "version": "5.3.28-dfsg2-1",
+    "version": "5.3.28-dfsg2-9",
     "license": "ASM, BSD, CDDL, custom and SPL.",
     "compatibility": "all"
   },
@@ -6939,7 +6939,7 @@
     "name": "libeconf",
     "description": "Enhanced config file parser, which merges config files placed in several locations into one.",
     "homepage": "https://github.com/openSUSE/libeconf",
-    "version": "0.7.9",
+    "version": "0.7.10",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -6947,7 +6947,7 @@
     "name": "libedit",
     "description": "An autotooled and libtoolized port of the NetBSD Editline library (libedit).",
     "homepage": "https://thrysoee.dk/editline/",
-    "version": "20210910-3.1",
+    "version": "20250104-3.1",
     "license": "BSD-2",
     "compatibility": "all"
   },
@@ -7131,7 +7131,7 @@
     "name": "libgcrypt",
     "description": "Libgcrypt is a general purpose cryptographic library originally based on code from GnuPG.",
     "homepage": "https://www.gnupg.org/related_software/libgcrypt/index.html",
-    "version": "1.11.0",
+    "version": "1.11.2",
     "license": "LGPL-2.1 and MIT",
     "compatibility": "all"
   },
@@ -7275,7 +7275,7 @@
     "name": "libgpg_error",
     "description": "Libgpg-error is a small library that defines common error values for all GnuPG components.",
     "homepage": "https://www.gnupg.org/related_software/libgpg-error/index.html",
-    "version": "1.51",
+    "version": "1.55",
     "license": "GPL-2 and LGPL-2.1",
     "compatibility": "all"
   },
@@ -8195,7 +8195,7 @@
     "name": "libsigsegv",
     "description": "GNU libsigsegv is a library for handling page faults in user mode.",
     "homepage": "https://www.gnu.org/software/libsigsegv/",
-    "version": "2.14",
+    "version": "2.15",
     "license": "GPL-2+",
     "compatibility": "all"
   },
@@ -8331,7 +8331,7 @@
     "name": "libssh",
     "description": "libssh is a multiplatform C library implementing the SSHv2 and SSHv1 protocol on client and server side.",
     "homepage": "https://www.libssh.org/",
-    "version": "0.11.1",
+    "version": "0.11.3",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -8379,7 +8379,7 @@
     "name": "libtasn1",
     "description": "Libtasn1 is the ASN.1 library used by GnuTLS, GNU Shishi and some other packages.",
     "homepage": "https://www.gnu.org/software/libtasn1/",
-    "version": "4.19",
+    "version": "4.20.0",
     "license": "GPL-3 and LGPL-2.1",
     "compatibility": "all"
   },
@@ -8459,7 +8459,7 @@
     "name": "libtirpc",
     "description": "Libtirpc is a port of Suns Transport-Independent RPC library to Linux.",
     "homepage": "https://sourceforge.net/projects/libtirpc/",
-    "version": "1.3.6",
+    "version": "1.3.7",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -8467,7 +8467,7 @@
     "name": "libtool",
     "description": "GNU libtool is a generic library support script. Libtool hides the complexity of using shared libraries behind a consistent, portable interface.",
     "homepage": "https://www.gnu.org/software/libtool/",
-    "version": "2.5.3",
+    "version": "2.5.4",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -8499,7 +8499,7 @@
     "name": "libunbound",
     "description": "Unbound is a validating, recursive, and caching DNS resolver.",
     "homepage": "https://nlnetlabs.nl/projects/unbound/about/",
-    "version": "1.22.0",
+    "version": "1.24.0",
     "license": "BSD and GPL-2",
     "compatibility": "all"
   },
@@ -8827,7 +8827,7 @@
     "name": "libxcrypt",
     "description": "Modern library for one-way hashing of passwords",
     "homepage": "https://github.com/besser82/libxcrypt/",
-    "version": "4.4.38",
+    "version": "4.4.38-1",
     "license": "LGPL-2.1+, public-domain, BSD and BSD-2",
     "compatibility": "all"
   },
@@ -8955,7 +8955,7 @@
     "name": "libxml2",
     "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project.",
     "homepage": "http://xmlsoft.org/",
-    "version": "2.14.5",
+    "version": "2.15.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -9163,7 +9163,7 @@
     "name": "linux_pam",
     "description": "Linux PAM (Pluggable Authentication Modules for Linux) project",
     "homepage": "https://github.com/linux-pam/linux-pam",
-    "version": "1.5.3",
+    "version": "1.7.1",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -9171,7 +9171,7 @@
     "name": "linux_sources",
     "description": "Sources for the Linux kernel",
     "homepage": "https://kernel.org/",
-    "version": "4.14-1",
+    "version": "6.12",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -9611,7 +9611,7 @@
     "name": "lzlib",
     "description": "Lzlib is a data compression library providing in-memory LZMA compression and decompression functions, including integrity checking of the decompressed data.",
     "homepage": "https://www.nongnu.org/lzip/lzlib.html",
-    "version": "1.13",
+    "version": "1.15",
     "license": "BSD-2",
     "compatibility": "all"
   },
@@ -9771,7 +9771,7 @@
     "name": "mawk",
     "description": "mawk is a POSIX compatible interpreter of the awk language faster than gawk.",
     "homepage": "https://invisible-island.net/mawk/",
-    "version": "1.3.4-1",
+    "version": "1.3.4-20250131",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -9954,7 +9954,7 @@
   {
     "name": "minizip",
     "description": "Minizip is a simple package to zip/unzip files, from zlib.",
-    "homepage": "https://zlib.net",
+    "homepage": "https://www.zlib.net",
     "version": "1.3.1",
     "license": "zlib",
     "compatibility": "all"
@@ -10155,7 +10155,7 @@
     "name": "mpdecimal",
     "description": "Package for correctly-rounded arbitrary precision decimal floating point arithmetic",
     "homepage": "https://www.bytereef.org/mpdecimal/index.html",
-    "version": "2.5.1",
+    "version": "4.0.1",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -10235,7 +10235,7 @@
     "name": "mullvad",
     "description": "Privacy-focused browser",
     "homepage": "https://mullvad.net/browser",
-    "version": "14.5.6",
+    "version": "14.5.7",
     "license": "Mozilla Public License V2",
     "compatibility": "x86_64"
   },
@@ -10952,6 +10952,14 @@
     "compatibility": "all"
   },
   {
+    "name": "nnn",
+    "description": "Full-featured terminal file manager.",
+    "homepage": "https://github.com/jarun/nnn",
+    "version": "5.1",
+    "license": "BSD-2 Clause",
+    "compatibility": "all"
+  },
+  {
     "name": "nocodb",
     "description": "Open Source Airtable Alternative",
     "homepage": "https://nocodb.com/",
@@ -11394,8 +11402,8 @@
   {
     "name": "openssl",
     "description": "The Open Source toolkit for Secure Sockets Layer and Transport Layer Security",
-    "homepage": "https://www.openssl.org",
-    "version": "3.5.2",
+    "homepage": "https://openssl-library.org",
+    "version": "3.5.3",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -11427,7 +11435,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "121.0.5600.50",
+    "version": "122.0.5643.51",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -11483,7 +11491,7 @@
     "name": "p11kit",
     "description": "Provides a standard configuration setup for installing PKCS#11 modules in such a way that they're discoverable.",
     "homepage": "https://p11-glue.github.io/p11-glue/p11-kit.html",
-    "version": "0.25.5",
+    "version": "0.25.9",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -11610,7 +11618,7 @@
   {
     "name": "patch",
     "description": "Patch takes a patch file containing a difference listing produced by the diff program and applies those differences to one or more original files, producing patched versions.",
-    "homepage": "https://www.gnu.org/software/patch/",
+    "homepage": "https://savannah.gnu.org/projects/patch",
     "version": "2.8",
     "license": "GPL-3+",
     "compatibility": "all"
@@ -11976,18 +11984,18 @@
     "compatibility": "all"
   },
   {
-    "name": "perl_locale_gettext",
-    "description": "Locale::gettext - message handling functions",
-    "homepage": "https://search.cpan.org/dist/Locale-gettext/",
-    "version": "1.07",
+    "name": "perl_libintl_perl",
+    "description": "Internationalization library for Perl that aims to be compatible with the Uniforum message translations system as implemented for example in GNU gettext",
+    "homepage": "https://metacpan.org/dist/libintl-perl",
+    "version": "1.35",
     "license": "GPL-1+ or Artistic",
     "compatibility": "all"
   },
   {
-    "name": "perl_locale_messages",
-    "description": "Perl Locale::Messages - Gettext Like Message Retrieval",
-    "homepage": "https://metacpan.org/pod/Locale::Messages",
-    "version": "1.35",
+    "name": "perl_locale_gettext",
+    "description": "Locale::gettext - message handling functions",
+    "homepage": "https://search.cpan.org/dist/Locale-gettext/",
+    "version": "1.07",
     "license": "GPL-1+ or Artistic",
     "compatibility": "all"
   },
@@ -12571,7 +12579,7 @@
     "name": "popt",
     "description": "Library for parsing command line options",
     "homepage": "https://directory.fsf.org/wiki/Popt",
-    "version": "1.18-7182e46-1",
+    "version": "1.19",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -12651,7 +12659,7 @@
     "name": "progress",
     "description": "Linux tool to show progress for cp, mv, dd, ... (formerly known as cv)",
     "homepage": "https://github.com/Xfennec/progress",
-    "version": "0.13.1",
+    "version": "0.17",
     "license": "ISC",
     "compatibility": "all"
   },
@@ -13003,7 +13011,7 @@
     "name": "py3_click",
     "description": "Click is a simple wrapper around optparse for powerful command line utilities.",
     "homepage": "https://click.palletsprojects.com",
-    "version": "8.2.1",
+    "version": "8.3.0",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -13043,7 +13051,7 @@
     "name": "py3_cryptography",
     "description": "Cryptography provides cryptographic recipes and primitives to Python developers.",
     "homepage": "https://cryptography.io/",
-    "version": "45.0.7",
+    "version": "46.0.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13059,7 +13067,7 @@
     "name": "py3_cython",
     "description": "The Cython language makes writing C extensions for the Python language as easy as Python itself.",
     "homepage": "https://cython.org/",
-    "version": "3.1.3",
+    "version": "3.1.4",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13123,7 +13131,7 @@
     "name": "py3_docutils",
     "description": "Docutils is an open-source text processing system for processing plaintext documentation into useful formats, such as HTML, LaTeX, man-pages, open-document or XML.",
     "homepage": "http://docutils.sourceforge.net/",
-    "version": "0.22",
+    "version": "0.22.2",
     "license": "BSD-2, GPL-3 and public-domain",
     "compatibility": "all"
   },
@@ -13243,9 +13251,9 @@
     "name": "py3_gpt_researcher",
     "description": "LLM based autonomous agent that conducts deep local and web research on any topic and generates a long report with citations.",
     "homepage": "https://gptr.dev/",
-    "version": "0.14.3",
+    "version": "0.14.4",
     "license": "Apache-2.0",
-    "compatibility": "all"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "py3_greenlet",
@@ -13443,7 +13451,7 @@
     "name": "py3_libxml2",
     "description": "Libxml2-python provides access to libxml2 and libxslt in Python.",
     "homepage": "https://gitlab.gnome.org/GNOME/libxml2/",
-    "version": "2.14.5",
+    "version": "2.15.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13571,7 +13579,7 @@
     "name": "py3_nuitka",
     "description": "Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.",
     "homepage": "https://nuitka.net/",
-    "version": "2.7.14",
+    "version": "2.7.16",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13587,7 +13595,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.160.0",
+    "version": "2.160.1",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13595,7 +13603,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.66.0",
+    "version": "3.66.1",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13731,7 +13739,7 @@
     "name": "py3_psutil",
     "description": "psutil is a cross-platform library for process and system monitoring in Python.",
     "homepage": "https://github.com/giampaolo/psutil/",
-    "version": "7.0.0",
+    "version": "7.1.0",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -13827,7 +13835,7 @@
     "name": "py3_pyicu",
     "description": "PyICU is a Python extension wrapping the ICU C++ API.",
     "homepage": "https://pyicu.org/",
-    "version": "2.15.2",
+    "version": "2.15.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13851,7 +13859,7 @@
     "name": "py3_pyopenssl",
     "description": "PyOpenSSL is a Python wrapper module around the OpenSSL library.",
     "homepage": "https://www.pyopenssl.org/",
-    "version": "25.1.0",
+    "version": "25.3.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -14003,7 +14011,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.13.0",
+    "version": "0.13.1",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -14275,7 +14283,7 @@
     "name": "py3_urwid",
     "description": "Urwid is a full-featured console user interface library.",
     "homepage": "http://urwid.org/",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -14331,7 +14339,7 @@
     "name": "py3_xlsxwriter",
     "description": "XlsxWriter is a Python module for creating Excel XLSX files.",
     "homepage": "https://xlsxwriter.readthedocs.io/",
-    "version": "3.2.7",
+    "version": "3.2.9",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -14339,7 +14347,7 @@
     "name": "py3_xmltodict",
     "description": "XMLtoDict makes working with XML feel like you are working with JSON.",
     "homepage": "https://github.com/martinblech/xmltodict/",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14355,7 +14363,7 @@
     "name": "py3_zcmds",
     "description": "Cross platform(ish) productivity commands written in python",
     "homepage": "https://github.com/zackees/zcmds",
-    "version": "1.5.26",
+    "version": "1.5.34",
     "license": "MIT",
     "compatibility": "aarch64"
   },
@@ -14779,7 +14787,7 @@
     "name": "rdfind",
     "description": "Redundant data find - a program that finds duplicate files.",
     "homepage": "https://rdfind.pauldreik.se/",
-    "version": "1.6.0",
+    "version": "1.7.0",
     "license": "GPL2",
     "compatibility": "all"
   },
@@ -14802,7 +14810,7 @@
   {
     "name": "readline",
     "description": "The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in.",
-    "homepage": "https://tiswww.cwru.edu/php/chet/readline/rltop.html",
+    "homepage": "https://www.gnu.org/software/readline",
     "version": "8.3",
     "license": "GPL-2",
     "compatibility": "all"
@@ -15051,7 +15059,7 @@
     "name": "ruby",
     "description": "Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.",
     "homepage": "https://www.ruby-lang.org/en/",
-    "version": "3.4.5-07f783",
+    "version": "3.4.6-1",
     "license": "Ruby-BSD and BSD-2",
     "compatibility": "all"
   },
@@ -15427,7 +15435,7 @@
     "name": "ruby_json",
     "description": "This is a JSON implementation as a Ruby extension in C.",
     "homepage": "https://flori.github.io/json",
-    "version": "2.13.2",
+    "version": "2.14.1",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15595,7 +15603,7 @@
     "name": "ruby_nokogiri",
     "description": "Nokogiri (鋸) makes it easy and painless to work with XML and HTML from Ruby.",
     "homepage": "https://nokogiri.org",
-    "version": "1.18.9",
+    "version": "1.18.10",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15811,7 +15819,7 @@
     "name": "ruby_regexp_parser",
     "description": "A library for tokenizing, lexing, and parsing Ruby regular expressions.",
     "homepage": "https://github.com/ammar/regexp_parser",
-    "version": "2.11.2",
+    "version": "2.11.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15891,7 +15899,7 @@
     "name": "ruby_rubocop_ast",
     "description": "Contains the classes needed by RuboCop to deal with Ruby's AST.",
     "homepage": "https://github.com/rubocop/rubocop-ast",
-    "version": "1.46.0",
+    "version": "1.47.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15995,7 +16003,7 @@
     "name": "ruby_solargraph",
     "description": "IDE tools for code completion, inline documentation, and static analysis.",
     "homepage": "https://solargraph.org",
-    "version": "0.56.2",
+    "version": "0.57.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16243,7 +16251,7 @@
     "name": "rush",
     "description": "GNU Rush is a Restricted User Shell.",
     "homepage": "https://www.gnu.org/software/rush/",
-    "version": "2.1",
+    "version": "2.4",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -16251,7 +16259,7 @@
     "name": "rust",
     "description": "Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.",
     "homepage": "https://www.rust-lang.org/",
-    "version": "1.89.0",
+    "version": "1.90.0",
     "license": "Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -16691,7 +16699,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.70.0",
+    "version": "7.71.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -16987,7 +16995,7 @@
     "name": "sqlite",
     "description": "SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.",
     "homepage": "https://www.sqlite.org/",
-    "version": "3.50.4",
+    "version": "3.50.4-1",
     "license": "public-domain",
     "compatibility": "all"
   },
@@ -17195,7 +17203,7 @@
     "name": "sudo_rs",
     "description": "A safety oriented and memory safe implementation of sudo and su written in Rust.",
     "homepage": "https://github.com/trifectatechfoundation/sudo-rs",
-    "version": "0.2.8",
+    "version": "0.2.8-1",
     "license": "Apache-2.0 AND MIT",
     "compatibility": "all"
   },
@@ -17483,7 +17491,7 @@
     "name": "terminus",
     "description": "The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform",
     "homepage": "https://github.com/pantheon-systems/terminus",
-    "version": "4.0.1",
+    "version": "4.0.3",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -17491,7 +17499,7 @@
     "name": "termius",
     "description": "Modern SSH Client",
     "homepage": "https://termius.com/",
-    "version": "9.31.0",
+    "version": "9.31.4",
     "license": "Apache-2.0, LGPL-2.1, MIT",
     "compatibility": "x86_64"
   },
@@ -17611,7 +17619,7 @@
     "name": "tika",
     "description": "The Apache Tika™ toolkit detects and extracts metadata and text from over a thousand different file types (such as PPT, XLS, and PDF).",
     "homepage": "https://tika.apache.org/",
-    "version": "3.1.0",
+    "version": "3.2.3",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -17659,7 +17667,7 @@
     "name": "tinysparql",
     "description": "Low-footprint RDF triple store library with SPARQL 1.1 interface",
     "homepage": "https://gitlab.gnome.org/GNOME/tinysparql",
-    "version": "3.8.0",
+    "version": "3.10.0",
     "license": "GPLv2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18099,7 +18107,7 @@
     "name": "uutils_coreutils",
     "description": "Cross-platform Rust rewrite of the GNU coreutils",
     "homepage": "https://github.com/uutils/coreutils",
-    "version": "0.2.0",
+    "version": "0.2.2",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18137,6 +18145,14 @@
   },
   {
     "name": "vala",
+    "description": "Vala is a programming language that aims to bring modern programming language features to GNOME developers.",
+    "homepage": "https://wiki.gnome.org/Projects/Vala",
+    "version": "0.56.18",
+    "license": "LGPL-2.1+",
+    "compatibility": "aarch64 armv7l x86_64"
+  },
+  {
+    "name": "vala_bootstrap",
     "description": "Vala is a programming language that aims to bring modern programming language features to GNOME developers.",
     "homepage": "https://wiki.gnome.org/Projects/Vala",
     "version": "0.56.16",
@@ -18259,7 +18275,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.5.3735.66-1",
+    "version": "7.5.3735.74-1",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18555,7 +18571,7 @@
     "name": "which",
     "description": "which shows the full path of (shell) commands.",
     "homepage": "https://carlowood.github.io/which/",
-    "version": "2.21",
+    "version": "2.23",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -18851,7 +18867,7 @@
     "name": "xdg_base",
     "description": "XDG Base Directory Specification Configuration",
     "homepage": "https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html",
-    "version": "0.7-7-1",
+    "version": "0.8",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -19474,7 +19490,7 @@
   {
     "name": "zlib",
     "description": "zlib is a massively spiffy yet delicately unobtrusive compression library.",
-    "homepage": "https://zlib.net",
+    "homepage": "https://www.zlib.net",
     "version": "1.3.1-3",
     "license": "zlib",
     "compatibility": "all"

@@ -1,4 +1,4 @@
-# Total size: 129461475
+# Total size: 129461609
 /usr/local/share/glib-2.0/schemas/99_Yaru.gschema.override
 /usr/local/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com/yaru.css
 /usr/local/share/gnome-shell/modes/yaru.json
@@ -6004,6 +6004,7 @@
 /usr/local/share/icons/Yaru-yellow/scalable/devices/audio-subwoofer-testing.svg
 /usr/local/share/icons/Yaru/16x16/actions/address-book-new.png
 /usr/local/share/icons/Yaru/16x16/actions/application-exit.png
+/usr/local/share/icons/Yaru/16x16/actions/applications-other.png
 /usr/local/share/icons/Yaru/16x16/actions/appointment-new.png
 /usr/local/share/icons/Yaru/16x16/actions/blueman-plugin.png
 /usr/local/share/icons/Yaru/16x16/actions/blueman-send-file.png
@@ -6199,6 +6200,7 @@
 /usr/local/share/icons/Yaru/16x16/apps/bash.png
 /usr/local/share/icons/Yaru/16x16/apps/bijiben.png
 /usr/local/share/icons/Yaru/16x16/apps/bluetooth.png
+/usr/local/share/icons/Yaru/16x16/apps/builder-app.png
 /usr/local/share/icons/Yaru/16x16/apps/ca.desrt.dconf-editor.png
 /usr/local/share/icons/Yaru/16x16/apps/calculator-app.png
 /usr/local/share/icons/Yaru/16x16/apps/calendar-app.png
@@ -6300,6 +6302,7 @@
 /usr/local/share/icons/Yaru/16x16/apps/office-addressbook.png
 /usr/local/share/icons/Yaru/16x16/apps/office-calendar.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.ArchiveManager.png
+/usr/local/share/icons/Yaru/16x16/apps/org.gnome.Builder.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.Calculator.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.Calendar.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.Calls.png
@@ -6317,6 +6320,7 @@
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.FileRoller.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.Gedit.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.Logs.png
+/usr/local/share/icons/Yaru/16x16/apps/org.gnome.Loupe.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.Mahjongg.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.Maps.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.Mines.png
@@ -6325,6 +6329,7 @@
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.Papers.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.Photos.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.PowerStats.png
+/usr/local/share/icons/Yaru/16x16/apps/org.gnome.Ptyxis.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.Rhythmbox.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.Rhythmbox3.png
 /usr/local/share/icons/Yaru/16x16/apps/org.gnome.Screenshot.png
@@ -6392,6 +6397,7 @@
 /usr/local/share/icons/Yaru/16x16/apps/system-software-install.png
 /usr/local/share/icons/Yaru/16x16/apps/system-software-update.png
 /usr/local/share/icons/Yaru/16x16/apps/terminal-app.png
+/usr/local/share/icons/Yaru/16x16/apps/terminal-app2.png
 /usr/local/share/icons/Yaru/16x16/apps/terminal.png
 /usr/local/share/icons/Yaru/16x16/apps/text-editor.png
 /usr/local/share/icons/Yaru/16x16/apps/to-do-app.png
@@ -6444,6 +6450,7 @@
 /usr/local/share/icons/Yaru/16x16/categories/preferences-desktop-online-accounts.png
 /usr/local/share/icons/Yaru/16x16/categories/preferences-desktop-peripherals.png
 /usr/local/share/icons/Yaru/16x16/categories/preferences-desktop-personal.png
+/usr/local/share/icons/Yaru/16x16/categories/preferences-desktop-screensaver.png
 /usr/local/share/icons/Yaru/16x16/categories/preferences-desktop-theme.png
 /usr/local/share/icons/Yaru/16x16/categories/preferences-desktop-wallpaper.png
 /usr/local/share/icons/Yaru/16x16/categories/preferences-system-bluetooth.png
@@ -6804,6 +6811,7 @@
 /usr/local/share/icons/Yaru/16x16/mimetypes/application-rar.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/application-rtf.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/application-sql.png
+/usr/local/share/icons/Yaru/16x16/mimetypes/application-toml.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/application-typescript.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/application-vnd-dart.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/application-vnd.android.package-archive.png
@@ -6915,6 +6923,7 @@
 /usr/local/share/icons/Yaru/16x16/mimetypes/application-x-zerosize.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/application-x-zip.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/application-xml.png
+/usr/local/share/icons/Yaru/16x16/mimetypes/application-yaml.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/application-zip.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/audio-e-melody.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/audio-flac.png
@@ -7001,6 +7010,7 @@
 /usr/local/share/icons/Yaru/16x16/mimetypes/rom.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/spreadsheet.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/text-css.png
+/usr/local/share/icons/Yaru/16x16/mimetypes/text-csv.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/text-dockerfile.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/text-document.png
 /usr/local/share/icons/Yaru/16x16/mimetypes/text-enriched.png
@@ -7403,6 +7413,7 @@
 /usr/local/share/icons/Yaru/16x16/status/user-trash-full.png
 /usr/local/share/icons/Yaru/16x16@2x/actions/address-book-new.png
 /usr/local/share/icons/Yaru/16x16@2x/actions/application-exit.png
+/usr/local/share/icons/Yaru/16x16@2x/actions/applications-other.png
 /usr/local/share/icons/Yaru/16x16@2x/actions/appointment-new.png
 /usr/local/share/icons/Yaru/16x16@2x/actions/blueman-plugin.png
 /usr/local/share/icons/Yaru/16x16@2x/actions/blueman-send-file.png
@@ -7598,6 +7609,7 @@
 /usr/local/share/icons/Yaru/16x16@2x/apps/bash.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/bijiben.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/bluetooth.png
+/usr/local/share/icons/Yaru/16x16@2x/apps/builder-app.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/ca.desrt.dconf-editor.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/calculator-app.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/calendar-app.png
@@ -7699,6 +7711,7 @@
 /usr/local/share/icons/Yaru/16x16@2x/apps/office-addressbook.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/office-calendar.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.ArchiveManager.png
+/usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Builder.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Calculator.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Calendar.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Calls.png
@@ -7716,6 +7729,7 @@
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.FileRoller.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Gedit.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Logs.png
+/usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Loupe.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Mahjongg.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Maps.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Mines.png
@@ -7724,6 +7738,7 @@
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Papers.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Photos.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.PowerStats.png
+/usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Ptyxis.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Rhythmbox.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Rhythmbox3.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/org.gnome.Screenshot.png
@@ -7791,6 +7806,7 @@
 /usr/local/share/icons/Yaru/16x16@2x/apps/system-software-install.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/system-software-update.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/terminal-app.png
+/usr/local/share/icons/Yaru/16x16@2x/apps/terminal-app2.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/terminal.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/text-editor.png
 /usr/local/share/icons/Yaru/16x16@2x/apps/to-do-app.png
@@ -7843,6 +7859,7 @@
 /usr/local/share/icons/Yaru/16x16@2x/categories/preferences-desktop-online-accounts.png
 /usr/local/share/icons/Yaru/16x16@2x/categories/preferences-desktop-peripherals.png
 /usr/local/share/icons/Yaru/16x16@2x/categories/preferences-desktop-personal.png
+/usr/local/share/icons/Yaru/16x16@2x/categories/preferences-desktop-screensaver.png
 /usr/local/share/icons/Yaru/16x16@2x/categories/preferences-desktop-theme.png
 /usr/local/share/icons/Yaru/16x16@2x/categories/preferences-desktop-wallpaper.png
 /usr/local/share/icons/Yaru/16x16@2x/categories/preferences-system-bluetooth.png
@@ -7995,6 +8012,7 @@
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/application-rar.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/application-rtf.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/application-sql.png
+/usr/local/share/icons/Yaru/16x16@2x/mimetypes/application-toml.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/application-typescript.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/application-vnd-dart.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/application-vnd.android.package-archive.png
@@ -8106,6 +8124,7 @@
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/application-x-zerosize.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/application-x-zip.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/application-xml.png
+/usr/local/share/icons/Yaru/16x16@2x/mimetypes/application-yaml.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/application-zip.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/audio-e-melody.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/audio-flac.png
@@ -8192,6 +8211,7 @@
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/rom.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/spreadsheet.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/text-css.png
+/usr/local/share/icons/Yaru/16x16@2x/mimetypes/text-csv.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/text-dockerfile.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/text-document.png
 /usr/local/share/icons/Yaru/16x16@2x/mimetypes/text-enriched.png
@@ -8327,6 +8347,7 @@
 /usr/local/share/icons/Yaru/16x16@2x/status/user-trash-full.png
 /usr/local/share/icons/Yaru/22x22/actions/address-book-new.png
 /usr/local/share/icons/Yaru/22x22/actions/application-exit.png
+/usr/local/share/icons/Yaru/22x22/actions/applications-other.png
 /usr/local/share/icons/Yaru/22x22/actions/appointment-new.png
 /usr/local/share/icons/Yaru/22x22/actions/blueman-send-file.png
 /usr/local/share/icons/Yaru/22x22/actions/blueman-trust.png
@@ -9496,6 +9517,7 @@
 /usr/local/share/icons/Yaru/22x22@2x/places/start-here.png
 /usr/local/share/icons/Yaru/24x24/actions/address-book-new.png
 /usr/local/share/icons/Yaru/24x24/actions/application-exit.png
+/usr/local/share/icons/Yaru/24x24/actions/applications-other.png
 /usr/local/share/icons/Yaru/24x24/actions/appointment-new.png
 /usr/local/share/icons/Yaru/24x24/actions/blueman-plugin.png
 /usr/local/share/icons/Yaru/24x24/actions/blueman-send-file.png
@@ -9738,6 +9760,7 @@
 /usr/local/share/icons/Yaru/24x24/apps/bash.png
 /usr/local/share/icons/Yaru/24x24/apps/bijiben.png
 /usr/local/share/icons/Yaru/24x24/apps/bluetooth.png
+/usr/local/share/icons/Yaru/24x24/apps/builder-app.png
 /usr/local/share/icons/Yaru/24x24/apps/ca.desrt.dconf-editor.png
 /usr/local/share/icons/Yaru/24x24/apps/calculator-app.png
 /usr/local/share/icons/Yaru/24x24/apps/calendar-app.png
@@ -9839,6 +9862,7 @@
 /usr/local/share/icons/Yaru/24x24/apps/office-addressbook.png
 /usr/local/share/icons/Yaru/24x24/apps/office-calendar.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.ArchiveManager.png
+/usr/local/share/icons/Yaru/24x24/apps/org.gnome.Builder.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.Calculator.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.Calendar.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.Calls.png
@@ -9856,6 +9880,7 @@
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.FileRoller.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.Gedit.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.Logs.png
+/usr/local/share/icons/Yaru/24x24/apps/org.gnome.Loupe.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.Mahjongg.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.Maps.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.Mines.png
@@ -9864,6 +9889,7 @@
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.Papers.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.Photos.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.PowerStats.png
+/usr/local/share/icons/Yaru/24x24/apps/org.gnome.Ptyxis.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.Rhythmbox.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.Rhythmbox3.png
 /usr/local/share/icons/Yaru/24x24/apps/org.gnome.Screenshot.png
@@ -9931,6 +9957,7 @@
 /usr/local/share/icons/Yaru/24x24/apps/system-software-install.png
 /usr/local/share/icons/Yaru/24x24/apps/system-software-update.png
 /usr/local/share/icons/Yaru/24x24/apps/terminal-app.png
+/usr/local/share/icons/Yaru/24x24/apps/terminal-app2.png
 /usr/local/share/icons/Yaru/24x24/apps/terminal.png
 /usr/local/share/icons/Yaru/24x24/apps/text-editor.png
 /usr/local/share/icons/Yaru/24x24/apps/to-do-app.png
@@ -9983,6 +10010,7 @@
 /usr/local/share/icons/Yaru/24x24/categories/preferences-desktop-online-accounts.png
 /usr/local/share/icons/Yaru/24x24/categories/preferences-desktop-peripherals.png
 /usr/local/share/icons/Yaru/24x24/categories/preferences-desktop-personal.png
+/usr/local/share/icons/Yaru/24x24/categories/preferences-desktop-screensaver.png
 /usr/local/share/icons/Yaru/24x24/categories/preferences-desktop-theme.png
 /usr/local/share/icons/Yaru/24x24/categories/preferences-desktop-wallpaper.png
 /usr/local/share/icons/Yaru/24x24/categories/preferences-system-bluetooth.png
@@ -10186,6 +10214,7 @@
 /usr/local/share/icons/Yaru/24x24/mimetypes/application-rar.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/application-rtf.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/application-sql.png
+/usr/local/share/icons/Yaru/24x24/mimetypes/application-toml.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/application-typescript.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/application-vnd-dart.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/application-vnd.android.package-archive.png
@@ -10297,6 +10326,7 @@
 /usr/local/share/icons/Yaru/24x24/mimetypes/application-x-zerosize.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/application-x-zip.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/application-xml.png
+/usr/local/share/icons/Yaru/24x24/mimetypes/application-yaml.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/application-zip.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/audio-e-melody.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/audio-flac.png
@@ -10383,6 +10413,7 @@
 /usr/local/share/icons/Yaru/24x24/mimetypes/rom.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/spreadsheet.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/text-css.png
+/usr/local/share/icons/Yaru/24x24/mimetypes/text-csv.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/text-dockerfile.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/text-document.png
 /usr/local/share/icons/Yaru/24x24/mimetypes/text-enriched.png
@@ -10852,6 +10883,7 @@
 /usr/local/share/icons/Yaru/24x24/status/user-trash-full.png
 /usr/local/share/icons/Yaru/24x24@2x/actions/address-book-new.png
 /usr/local/share/icons/Yaru/24x24@2x/actions/application-exit.png
+/usr/local/share/icons/Yaru/24x24@2x/actions/applications-other.png
 /usr/local/share/icons/Yaru/24x24@2x/actions/appointment-new.png
 /usr/local/share/icons/Yaru/24x24@2x/actions/blueman-plugin.png
 /usr/local/share/icons/Yaru/24x24@2x/actions/blueman-send-file.png
@@ -11047,6 +11079,7 @@
 /usr/local/share/icons/Yaru/24x24@2x/apps/bash.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/bijiben.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/bluetooth.png
+/usr/local/share/icons/Yaru/24x24@2x/apps/builder-app.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/ca.desrt.dconf-editor.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/calculator-app.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/calendar-app.png
@@ -11148,6 +11181,7 @@
 /usr/local/share/icons/Yaru/24x24@2x/apps/office-addressbook.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/office-calendar.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.ArchiveManager.png
+/usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Builder.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Calculator.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Calendar.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Calls.png
@@ -11165,6 +11199,7 @@
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.FileRoller.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Gedit.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Logs.png
+/usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Loupe.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Mahjongg.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Maps.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Mines.png
@@ -11173,6 +11208,7 @@
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Papers.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Photos.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.PowerStats.png
+/usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Ptyxis.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Rhythmbox.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Rhythmbox3.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/org.gnome.Screenshot.png
@@ -11240,6 +11276,7 @@
 /usr/local/share/icons/Yaru/24x24@2x/apps/system-software-install.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/system-software-update.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/terminal-app.png
+/usr/local/share/icons/Yaru/24x24@2x/apps/terminal-app2.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/terminal.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/text-editor.png
 /usr/local/share/icons/Yaru/24x24@2x/apps/to-do-app.png
@@ -11292,6 +11329,7 @@
 /usr/local/share/icons/Yaru/24x24@2x/categories/preferences-desktop-online-accounts.png
 /usr/local/share/icons/Yaru/24x24@2x/categories/preferences-desktop-peripherals.png
 /usr/local/share/icons/Yaru/24x24@2x/categories/preferences-desktop-personal.png
+/usr/local/share/icons/Yaru/24x24@2x/categories/preferences-desktop-screensaver.png
 /usr/local/share/icons/Yaru/24x24@2x/categories/preferences-desktop-theme.png
 /usr/local/share/icons/Yaru/24x24@2x/categories/preferences-desktop-wallpaper.png
 /usr/local/share/icons/Yaru/24x24@2x/categories/preferences-system-bluetooth.png
@@ -11444,6 +11482,7 @@
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/application-rar.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/application-rtf.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/application-sql.png
+/usr/local/share/icons/Yaru/24x24@2x/mimetypes/application-toml.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/application-typescript.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/application-vnd-dart.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/application-vnd.android.package-archive.png
@@ -11555,6 +11594,7 @@
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/application-x-zerosize.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/application-x-zip.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/application-xml.png
+/usr/local/share/icons/Yaru/24x24@2x/mimetypes/application-yaml.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/application-zip.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/audio-e-melody.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/audio-flac.png
@@ -11641,6 +11681,7 @@
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/rom.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/spreadsheet.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/text-css.png
+/usr/local/share/icons/Yaru/24x24@2x/mimetypes/text-csv.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/text-dockerfile.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/text-document.png
 /usr/local/share/icons/Yaru/24x24@2x/mimetypes/text-enriched.png
@@ -11776,6 +11817,7 @@
 /usr/local/share/icons/Yaru/24x24@2x/status/user-trash-full.png
 /usr/local/share/icons/Yaru/256x256/actions/address-book-new.png
 /usr/local/share/icons/Yaru/256x256/actions/application-exit.png
+/usr/local/share/icons/Yaru/256x256/actions/applications-other.png
 /usr/local/share/icons/Yaru/256x256/actions/appointment-new.png
 /usr/local/share/icons/Yaru/256x256/actions/blueman-plugin.png
 /usr/local/share/icons/Yaru/256x256/actions/blueman-send-file.png
@@ -11971,6 +12013,7 @@
 /usr/local/share/icons/Yaru/256x256/apps/bash.png
 /usr/local/share/icons/Yaru/256x256/apps/bijiben.png
 /usr/local/share/icons/Yaru/256x256/apps/bluetooth.png
+/usr/local/share/icons/Yaru/256x256/apps/builder-app.png
 /usr/local/share/icons/Yaru/256x256/apps/ca.desrt.dconf-editor.png
 /usr/local/share/icons/Yaru/256x256/apps/calculator-app.png
 /usr/local/share/icons/Yaru/256x256/apps/calendar-app.png
@@ -12072,6 +12115,7 @@
 /usr/local/share/icons/Yaru/256x256/apps/office-addressbook.png
 /usr/local/share/icons/Yaru/256x256/apps/office-calendar.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.ArchiveManager.png
+/usr/local/share/icons/Yaru/256x256/apps/org.gnome.Builder.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.Calculator.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.Calendar.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.Calls.png
@@ -12089,6 +12133,7 @@
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.FileRoller.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.Gedit.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.Logs.png
+/usr/local/share/icons/Yaru/256x256/apps/org.gnome.Loupe.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.Mahjongg.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.Maps.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.Mines.png
@@ -12097,6 +12142,7 @@
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.Papers.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.Photos.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.PowerStats.png
+/usr/local/share/icons/Yaru/256x256/apps/org.gnome.Ptyxis.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.Rhythmbox.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.Rhythmbox3.png
 /usr/local/share/icons/Yaru/256x256/apps/org.gnome.Screenshot.png
@@ -12164,6 +12210,7 @@
 /usr/local/share/icons/Yaru/256x256/apps/system-software-install.png
 /usr/local/share/icons/Yaru/256x256/apps/system-software-update.png
 /usr/local/share/icons/Yaru/256x256/apps/terminal-app.png
+/usr/local/share/icons/Yaru/256x256/apps/terminal-app2.png
 /usr/local/share/icons/Yaru/256x256/apps/terminal.png
 /usr/local/share/icons/Yaru/256x256/apps/text-editor.png
 /usr/local/share/icons/Yaru/256x256/apps/to-do-app.png
@@ -12216,6 +12263,7 @@
 /usr/local/share/icons/Yaru/256x256/categories/preferences-desktop-online-accounts.png
 /usr/local/share/icons/Yaru/256x256/categories/preferences-desktop-peripherals.png
 /usr/local/share/icons/Yaru/256x256/categories/preferences-desktop-personal.png
+/usr/local/share/icons/Yaru/256x256/categories/preferences-desktop-screensaver.png
 /usr/local/share/icons/Yaru/256x256/categories/preferences-desktop-theme.png
 /usr/local/share/icons/Yaru/256x256/categories/preferences-desktop-wallpaper.png
 /usr/local/share/icons/Yaru/256x256/categories/preferences-system-bluetooth.png
@@ -12368,6 +12416,7 @@
 /usr/local/share/icons/Yaru/256x256/mimetypes/application-rar.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/application-rtf.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/application-sql.png
+/usr/local/share/icons/Yaru/256x256/mimetypes/application-toml.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/application-typescript.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/application-vnd-dart.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/application-vnd.android.package-archive.png
@@ -12479,6 +12528,7 @@
 /usr/local/share/icons/Yaru/256x256/mimetypes/application-x-zerosize.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/application-x-zip.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/application-xml.png
+/usr/local/share/icons/Yaru/256x256/mimetypes/application-yaml.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/application-zip.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/audio-e-melody.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/audio-flac.png
@@ -12565,6 +12615,7 @@
 /usr/local/share/icons/Yaru/256x256/mimetypes/rom.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/spreadsheet.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/text-css.png
+/usr/local/share/icons/Yaru/256x256/mimetypes/text-csv.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/text-dockerfile.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/text-document.png
 /usr/local/share/icons/Yaru/256x256/mimetypes/text-enriched.png
@@ -12700,6 +12751,7 @@
 /usr/local/share/icons/Yaru/256x256/status/user-trash-full.png
 /usr/local/share/icons/Yaru/256x256@2x/actions/address-book-new.png
 /usr/local/share/icons/Yaru/256x256@2x/actions/application-exit.png
+/usr/local/share/icons/Yaru/256x256@2x/actions/applications-other.png
 /usr/local/share/icons/Yaru/256x256@2x/actions/appointment-new.png
 /usr/local/share/icons/Yaru/256x256@2x/actions/blueman-plugin.png
 /usr/local/share/icons/Yaru/256x256@2x/actions/blueman-send-file.png
@@ -12895,6 +12947,7 @@
 /usr/local/share/icons/Yaru/256x256@2x/apps/bash.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/bijiben.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/bluetooth.png
+/usr/local/share/icons/Yaru/256x256@2x/apps/builder-app.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/ca.desrt.dconf-editor.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/calculator-app.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/calendar-app.png
@@ -12996,6 +13049,7 @@
 /usr/local/share/icons/Yaru/256x256@2x/apps/office-addressbook.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/office-calendar.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.ArchiveManager.png
+/usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Builder.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Calculator.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Calendar.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Calls.png
@@ -13013,6 +13067,7 @@
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.FileRoller.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Gedit.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Logs.png
+/usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Loupe.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Mahjongg.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Maps.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Mines.png
@@ -13021,6 +13076,7 @@
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Papers.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Photos.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.PowerStats.png
+/usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Ptyxis.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Rhythmbox.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Rhythmbox3.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/org.gnome.Screenshot.png
@@ -13088,6 +13144,7 @@
 /usr/local/share/icons/Yaru/256x256@2x/apps/system-software-install.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/system-software-update.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/terminal-app.png
+/usr/local/share/icons/Yaru/256x256@2x/apps/terminal-app2.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/terminal.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/text-editor.png
 /usr/local/share/icons/Yaru/256x256@2x/apps/to-do-app.png
@@ -13140,6 +13197,7 @@
 /usr/local/share/icons/Yaru/256x256@2x/categories/preferences-desktop-online-accounts.png
 /usr/local/share/icons/Yaru/256x256@2x/categories/preferences-desktop-peripherals.png
 /usr/local/share/icons/Yaru/256x256@2x/categories/preferences-desktop-personal.png
+/usr/local/share/icons/Yaru/256x256@2x/categories/preferences-desktop-screensaver.png
 /usr/local/share/icons/Yaru/256x256@2x/categories/preferences-desktop-theme.png
 /usr/local/share/icons/Yaru/256x256@2x/categories/preferences-desktop-wallpaper.png
 /usr/local/share/icons/Yaru/256x256@2x/categories/preferences-system-bluetooth.png
@@ -13292,6 +13350,7 @@
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/application-rar.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/application-rtf.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/application-sql.png
+/usr/local/share/icons/Yaru/256x256@2x/mimetypes/application-toml.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/application-typescript.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/application-vnd-dart.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/application-vnd.android.package-archive.png
@@ -13403,6 +13462,7 @@
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/application-x-zerosize.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/application-x-zip.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/application-xml.png
+/usr/local/share/icons/Yaru/256x256@2x/mimetypes/application-yaml.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/application-zip.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/audio-e-melody.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/audio-flac.png
@@ -13489,6 +13549,7 @@
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/rom.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/spreadsheet.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/text-css.png
+/usr/local/share/icons/Yaru/256x256@2x/mimetypes/text-csv.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/text-dockerfile.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/text-document.png
 /usr/local/share/icons/Yaru/256x256@2x/mimetypes/text-enriched.png
@@ -13624,6 +13685,7 @@
 /usr/local/share/icons/Yaru/256x256@2x/status/user-trash-full.png
 /usr/local/share/icons/Yaru/32x32/actions/address-book-new.png
 /usr/local/share/icons/Yaru/32x32/actions/application-exit.png
+/usr/local/share/icons/Yaru/32x32/actions/applications-other.png
 /usr/local/share/icons/Yaru/32x32/actions/appointment-new.png
 /usr/local/share/icons/Yaru/32x32/actions/blueman-plugin.png
 /usr/local/share/icons/Yaru/32x32/actions/blueman-send-file.png
@@ -13819,6 +13881,7 @@
 /usr/local/share/icons/Yaru/32x32/apps/bash.png
 /usr/local/share/icons/Yaru/32x32/apps/bijiben.png
 /usr/local/share/icons/Yaru/32x32/apps/bluetooth.png
+/usr/local/share/icons/Yaru/32x32/apps/builder-app.png
 /usr/local/share/icons/Yaru/32x32/apps/ca.desrt.dconf-editor.png
 /usr/local/share/icons/Yaru/32x32/apps/calculator-app.png
 /usr/local/share/icons/Yaru/32x32/apps/calendar-app.png
@@ -13920,6 +13983,7 @@
 /usr/local/share/icons/Yaru/32x32/apps/office-addressbook.png
 /usr/local/share/icons/Yaru/32x32/apps/office-calendar.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.ArchiveManager.png
+/usr/local/share/icons/Yaru/32x32/apps/org.gnome.Builder.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.Calculator.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.Calendar.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.Calls.png
@@ -13937,6 +14001,7 @@
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.FileRoller.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.Gedit.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.Logs.png
+/usr/local/share/icons/Yaru/32x32/apps/org.gnome.Loupe.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.Mahjongg.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.Maps.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.Mines.png
@@ -13945,6 +14010,7 @@
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.Papers.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.Photos.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.PowerStats.png
+/usr/local/share/icons/Yaru/32x32/apps/org.gnome.Ptyxis.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.Rhythmbox.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.Rhythmbox3.png
 /usr/local/share/icons/Yaru/32x32/apps/org.gnome.Screenshot.png
@@ -14012,6 +14078,7 @@
 /usr/local/share/icons/Yaru/32x32/apps/system-software-install.png
 /usr/local/share/icons/Yaru/32x32/apps/system-software-update.png
 /usr/local/share/icons/Yaru/32x32/apps/terminal-app.png
+/usr/local/share/icons/Yaru/32x32/apps/terminal-app2.png
 /usr/local/share/icons/Yaru/32x32/apps/terminal.png
 /usr/local/share/icons/Yaru/32x32/apps/text-editor.png
 /usr/local/share/icons/Yaru/32x32/apps/to-do-app.png
@@ -14064,6 +14131,7 @@
 /usr/local/share/icons/Yaru/32x32/categories/preferences-desktop-online-accounts.png
 /usr/local/share/icons/Yaru/32x32/categories/preferences-desktop-peripherals.png
 /usr/local/share/icons/Yaru/32x32/categories/preferences-desktop-personal.png
+/usr/local/share/icons/Yaru/32x32/categories/preferences-desktop-screensaver.png
 /usr/local/share/icons/Yaru/32x32/categories/preferences-desktop-theme.png
 /usr/local/share/icons/Yaru/32x32/categories/preferences-desktop-wallpaper.png
 /usr/local/share/icons/Yaru/32x32/categories/preferences-system-bluetooth.png
@@ -14216,6 +14284,7 @@
 /usr/local/share/icons/Yaru/32x32/mimetypes/application-rar.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/application-rtf.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/application-sql.png
+/usr/local/share/icons/Yaru/32x32/mimetypes/application-toml.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/application-typescript.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/application-vnd-dart.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/application-vnd.android.package-archive.png
@@ -14327,6 +14396,7 @@
 /usr/local/share/icons/Yaru/32x32/mimetypes/application-x-zerosize.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/application-x-zip.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/application-xml.png
+/usr/local/share/icons/Yaru/32x32/mimetypes/application-yaml.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/application-zip.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/audio-e-melody.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/audio-flac.png
@@ -14413,6 +14483,7 @@
 /usr/local/share/icons/Yaru/32x32/mimetypes/rom.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/spreadsheet.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/text-css.png
+/usr/local/share/icons/Yaru/32x32/mimetypes/text-csv.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/text-dockerfile.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/text-document.png
 /usr/local/share/icons/Yaru/32x32/mimetypes/text-enriched.png
@@ -14548,6 +14619,7 @@
 /usr/local/share/icons/Yaru/32x32/status/user-trash-full.png
 /usr/local/share/icons/Yaru/32x32@2x/actions/address-book-new.png
 /usr/local/share/icons/Yaru/32x32@2x/actions/application-exit.png
+/usr/local/share/icons/Yaru/32x32@2x/actions/applications-other.png
 /usr/local/share/icons/Yaru/32x32@2x/actions/appointment-new.png
 /usr/local/share/icons/Yaru/32x32@2x/actions/blueman-plugin.png
 /usr/local/share/icons/Yaru/32x32@2x/actions/blueman-send-file.png
@@ -14743,6 +14815,7 @@
 /usr/local/share/icons/Yaru/32x32@2x/apps/bash.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/bijiben.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/bluetooth.png
+/usr/local/share/icons/Yaru/32x32@2x/apps/builder-app.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/ca.desrt.dconf-editor.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/calculator-app.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/calendar-app.png
@@ -14844,6 +14917,7 @@
 /usr/local/share/icons/Yaru/32x32@2x/apps/office-addressbook.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/office-calendar.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.ArchiveManager.png
+/usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Builder.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Calculator.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Calendar.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Calls.png
@@ -14861,6 +14935,7 @@
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.FileRoller.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Gedit.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Logs.png
+/usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Loupe.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Mahjongg.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Maps.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Mines.png
@@ -14869,6 +14944,7 @@
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Papers.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Photos.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.PowerStats.png
+/usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Ptyxis.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Rhythmbox.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Rhythmbox3.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/org.gnome.Screenshot.png
@@ -14936,6 +15012,7 @@
 /usr/local/share/icons/Yaru/32x32@2x/apps/system-software-install.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/system-software-update.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/terminal-app.png
+/usr/local/share/icons/Yaru/32x32@2x/apps/terminal-app2.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/terminal.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/text-editor.png
 /usr/local/share/icons/Yaru/32x32@2x/apps/to-do-app.png
@@ -14988,6 +15065,7 @@
 /usr/local/share/icons/Yaru/32x32@2x/categories/preferences-desktop-online-accounts.png
 /usr/local/share/icons/Yaru/32x32@2x/categories/preferences-desktop-peripherals.png
 /usr/local/share/icons/Yaru/32x32@2x/categories/preferences-desktop-personal.png
+/usr/local/share/icons/Yaru/32x32@2x/categories/preferences-desktop-screensaver.png
 /usr/local/share/icons/Yaru/32x32@2x/categories/preferences-desktop-theme.png
 /usr/local/share/icons/Yaru/32x32@2x/categories/preferences-desktop-wallpaper.png
 /usr/local/share/icons/Yaru/32x32@2x/categories/preferences-system-bluetooth.png
@@ -15140,6 +15218,7 @@
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/application-rar.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/application-rtf.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/application-sql.png
+/usr/local/share/icons/Yaru/32x32@2x/mimetypes/application-toml.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/application-typescript.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/application-vnd-dart.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/application-vnd.android.package-archive.png
@@ -15251,6 +15330,7 @@
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/application-x-zerosize.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/application-x-zip.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/application-xml.png
+/usr/local/share/icons/Yaru/32x32@2x/mimetypes/application-yaml.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/application-zip.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/audio-e-melody.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/audio-flac.png
@@ -15337,6 +15417,7 @@
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/rom.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/spreadsheet.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/text-css.png
+/usr/local/share/icons/Yaru/32x32@2x/mimetypes/text-csv.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/text-dockerfile.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/text-document.png
 /usr/local/share/icons/Yaru/32x32@2x/mimetypes/text-enriched.png
@@ -15472,6 +15553,7 @@
 /usr/local/share/icons/Yaru/32x32@2x/status/user-trash-full.png
 /usr/local/share/icons/Yaru/48x48/actions/address-book-new.png
 /usr/local/share/icons/Yaru/48x48/actions/application-exit.png
+/usr/local/share/icons/Yaru/48x48/actions/applications-other.png
 /usr/local/share/icons/Yaru/48x48/actions/appointment-new.png
 /usr/local/share/icons/Yaru/48x48/actions/blueman-plugin.png
 /usr/local/share/icons/Yaru/48x48/actions/blueman-send-file.png
@@ -15667,6 +15749,7 @@
 /usr/local/share/icons/Yaru/48x48/apps/bash.png
 /usr/local/share/icons/Yaru/48x48/apps/bijiben.png
 /usr/local/share/icons/Yaru/48x48/apps/bluetooth.png
+/usr/local/share/icons/Yaru/48x48/apps/builder-app.png
 /usr/local/share/icons/Yaru/48x48/apps/ca.desrt.dconf-editor.png
 /usr/local/share/icons/Yaru/48x48/apps/calculator-app.png
 /usr/local/share/icons/Yaru/48x48/apps/calendar-app.png
@@ -15768,6 +15851,7 @@
 /usr/local/share/icons/Yaru/48x48/apps/office-addressbook.png
 /usr/local/share/icons/Yaru/48x48/apps/office-calendar.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.ArchiveManager.png
+/usr/local/share/icons/Yaru/48x48/apps/org.gnome.Builder.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.Calculator.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.Calendar.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.Calls.png
@@ -15785,6 +15869,7 @@
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.FileRoller.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.Gedit.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.Logs.png
+/usr/local/share/icons/Yaru/48x48/apps/org.gnome.Loupe.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.Mahjongg.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.Maps.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.Mines.png
@@ -15793,6 +15878,7 @@
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.Papers.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.Photos.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.PowerStats.png
+/usr/local/share/icons/Yaru/48x48/apps/org.gnome.Ptyxis.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.Rhythmbox.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.Rhythmbox3.png
 /usr/local/share/icons/Yaru/48x48/apps/org.gnome.Screenshot.png
@@ -15860,6 +15946,7 @@
 /usr/local/share/icons/Yaru/48x48/apps/system-software-install.png
 /usr/local/share/icons/Yaru/48x48/apps/system-software-update.png
 /usr/local/share/icons/Yaru/48x48/apps/terminal-app.png
+/usr/local/share/icons/Yaru/48x48/apps/terminal-app2.png
 /usr/local/share/icons/Yaru/48x48/apps/terminal.png
 /usr/local/share/icons/Yaru/48x48/apps/text-editor.png
 /usr/local/share/icons/Yaru/48x48/apps/to-do-app.png
@@ -15912,6 +15999,7 @@
 /usr/local/share/icons/Yaru/48x48/categories/preferences-desktop-online-accounts.png
 /usr/local/share/icons/Yaru/48x48/categories/preferences-desktop-peripherals.png
 /usr/local/share/icons/Yaru/48x48/categories/preferences-desktop-personal.png
+/usr/local/share/icons/Yaru/48x48/categories/preferences-desktop-screensaver.png
 /usr/local/share/icons/Yaru/48x48/categories/preferences-desktop-theme.png
 /usr/local/share/icons/Yaru/48x48/categories/preferences-desktop-wallpaper.png
 /usr/local/share/icons/Yaru/48x48/categories/preferences-system-bluetooth.png
@@ -16064,6 +16152,7 @@
 /usr/local/share/icons/Yaru/48x48/mimetypes/application-rar.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/application-rtf.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/application-sql.png
+/usr/local/share/icons/Yaru/48x48/mimetypes/application-toml.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/application-typescript.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/application-vnd-dart.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/application-vnd.android.package-archive.png
@@ -16175,6 +16264,7 @@
 /usr/local/share/icons/Yaru/48x48/mimetypes/application-x-zerosize.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/application-x-zip.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/application-xml.png
+/usr/local/share/icons/Yaru/48x48/mimetypes/application-yaml.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/application-zip.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/audio-e-melody.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/audio-flac.png
@@ -16261,6 +16351,7 @@
 /usr/local/share/icons/Yaru/48x48/mimetypes/rom.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/spreadsheet.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/text-css.png
+/usr/local/share/icons/Yaru/48x48/mimetypes/text-csv.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/text-dockerfile.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/text-document.png
 /usr/local/share/icons/Yaru/48x48/mimetypes/text-enriched.png
@@ -16396,6 +16487,7 @@
 /usr/local/share/icons/Yaru/48x48/status/user-trash-full.png
 /usr/local/share/icons/Yaru/48x48@2x/actions/address-book-new.png
 /usr/local/share/icons/Yaru/48x48@2x/actions/application-exit.png
+/usr/local/share/icons/Yaru/48x48@2x/actions/applications-other.png
 /usr/local/share/icons/Yaru/48x48@2x/actions/appointment-new.png
 /usr/local/share/icons/Yaru/48x48@2x/actions/blueman-plugin.png
 /usr/local/share/icons/Yaru/48x48@2x/actions/blueman-send-file.png
@@ -16591,6 +16683,7 @@
 /usr/local/share/icons/Yaru/48x48@2x/apps/bash.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/bijiben.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/bluetooth.png
+/usr/local/share/icons/Yaru/48x48@2x/apps/builder-app.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/ca.desrt.dconf-editor.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/calculator-app.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/calendar-app.png
@@ -16692,6 +16785,7 @@
 /usr/local/share/icons/Yaru/48x48@2x/apps/office-addressbook.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/office-calendar.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.ArchiveManager.png
+/usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Builder.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Calculator.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Calendar.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Calls.png
@@ -16709,6 +16803,7 @@
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.FileRoller.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Gedit.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Logs.png
+/usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Loupe.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Mahjongg.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Maps.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Mines.png
@@ -16717,6 +16812,7 @@
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Papers.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Photos.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.PowerStats.png
+/usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Ptyxis.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Rhythmbox.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Rhythmbox3.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/org.gnome.Screenshot.png
@@ -16784,6 +16880,7 @@
 /usr/local/share/icons/Yaru/48x48@2x/apps/system-software-install.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/system-software-update.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/terminal-app.png
+/usr/local/share/icons/Yaru/48x48@2x/apps/terminal-app2.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/terminal.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/text-editor.png
 /usr/local/share/icons/Yaru/48x48@2x/apps/to-do-app.png
@@ -16836,6 +16933,7 @@
 /usr/local/share/icons/Yaru/48x48@2x/categories/preferences-desktop-online-accounts.png
 /usr/local/share/icons/Yaru/48x48@2x/categories/preferences-desktop-peripherals.png
 /usr/local/share/icons/Yaru/48x48@2x/categories/preferences-desktop-personal.png
+/usr/local/share/icons/Yaru/48x48@2x/categories/preferences-desktop-screensaver.png
 /usr/local/share/icons/Yaru/48x48@2x/categories/preferences-desktop-theme.png
 /usr/local/share/icons/Yaru/48x48@2x/categories/preferences-desktop-wallpaper.png
 /usr/local/share/icons/Yaru/48x48@2x/categories/preferences-system-bluetooth.png
@@ -16988,6 +17086,7 @@
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/application-rar.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/application-rtf.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/application-sql.png
+/usr/local/share/icons/Yaru/48x48@2x/mimetypes/application-toml.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/application-typescript.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/application-vnd-dart.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/application-vnd.android.package-archive.png
@@ -17099,6 +17198,7 @@
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/application-x-zerosize.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/application-x-zip.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/application-xml.png
+/usr/local/share/icons/Yaru/48x48@2x/mimetypes/application-yaml.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/application-zip.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/audio-e-melody.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/audio-flac.png
@@ -17185,6 +17285,7 @@
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/rom.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/spreadsheet.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/text-css.png
+/usr/local/share/icons/Yaru/48x48@2x/mimetypes/text-csv.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/text-dockerfile.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/text-document.png
 /usr/local/share/icons/Yaru/48x48@2x/mimetypes/text-enriched.png
@@ -17734,6 +17835,7 @@
 /usr/local/share/icons/Yaru/scalable/actions/action-unavailable-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/add-reminder-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/address-book-new-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/actions/adw-adaptive-preview-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/adw-entry-apply-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/adw-mail-send-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/annotations-squiggly-symbolic.svg
@@ -17896,6 +17998,8 @@
 /usr/local/share/icons/Yaru/scalable/actions/list-high-priority-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/list-remove-all-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/list-remove-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/actions/logout-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/actions/loupe-large-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/mail-archive-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/mail-drafts-symbolic-rtl.svg
 /usr/local/share/icons/Yaru/scalable/actions/mail-drafts-symbolic.svg
@@ -17967,6 +18071,7 @@
 /usr/local/share/icons/Yaru/scalable/actions/page-orientation-portrait-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/plus-large-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/power-saving-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/actions/preferences-desktop-keyboard-shortcuts-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/process-stop-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/qr-code-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/review-rate-negative-symbolic.svg
@@ -17979,6 +18084,7 @@
 /usr/local/share/icons/Yaru/scalable/actions/selection-mode-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/selection-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/send-to-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/actions/share-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/sidebar-hide-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/sidebar-show-right-rtl-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/sidebar-show-right-symbolic.svg
@@ -18052,6 +18158,7 @@
 /usr/local/share/icons/Yaru/scalable/apps/accessories-character-map-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/accessories-text-editor-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/address-book-app-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/apps/alacarte-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/app.drey.EarTag-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/applets-screenshooter-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/application-x-executable-symbolic.svg
@@ -18062,6 +18169,7 @@
 /usr/local/share/icons/Yaru/scalable/apps/baobab-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/bash-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/bijiben-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/apps/builder-app-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/ca.desrt.dconf-editor-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/calculator-app-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/calendar-app-symbolic.svg
@@ -18160,6 +18268,7 @@
 /usr/local/share/icons/Yaru/scalable/apps/office-addressbook-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/office-calendar-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/org.gnome.ArchiveManager-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/apps/org.gnome.Builder-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/org.gnome.Calculator-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/org.gnome.Calendar-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/org.gnome.Calendar.Devel-symbolic.svg
@@ -18192,6 +18301,7 @@
 /usr/local/share/icons/Yaru/scalable/apps/org.gnome.Papers-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/org.gnome.Photos-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/org.gnome.PowerStats-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/apps/org.gnome.Ptyxis-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/org.gnome.Rhythmbox-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/org.gnome.Rhythmbox3-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/apps/org.gnome.Screenshot-symbolic.svg
@@ -18330,6 +18440,7 @@
 /usr/local/share/icons/Yaru/scalable/categories/caffeine-long-timer-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/categories/caffeine-medium-timer-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/categories/caffeine-short-timer-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/categories/calendar-agenda-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/categories/calendar-month-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/categories/calendar-today-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/categories/calendar-week-symbolic.svg
@@ -18471,6 +18582,7 @@
 /usr/local/share/icons/Yaru/scalable/devices/input-gaming-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/devices/input-keyboard-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/devices/input-mouse-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/devices/input-pointing-stick-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/devices/input-tablet-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/devices/input-touchpad-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/devices/laptop-symbolic.svg
@@ -18518,6 +18630,7 @@
 /usr/local/share/icons/Yaru/scalable/emblems/app-remove-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/emblems/audio-chat-none-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/emblems/audio-chat-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/emblems/checkmark-small-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/emblems/contacts-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/emblems/desktop-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/emblems/drug-use-none-symbolic.svg
@@ -18674,6 +18787,7 @@
 /usr/local/share/icons/Yaru/scalable/org.gnome.Nautilus/org.gnome.Nautilus-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/org.gnome.Nautilus/remove-custom-icon-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/org.gnome.Settings/camera-access-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/org.gnome.Settings/cog-wheel-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/org.gnome.Settings/device-diagnostics-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/org.gnome.Settings/device-security-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/org.gnome.Settings/hearing-symbolic.svg
@@ -18698,6 +18812,7 @@
 /usr/local/share/icons/Yaru/scalable/org.gnome.Settings/org.gnome.Settings-privacy-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/org.gnome.Settings/org.gnome.Settings-region-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/org.gnome.Settings/org.gnome.Settings-remote-desktop-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/org.gnome.Settings/org.gnome.Settings-screen-time-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/org.gnome.Settings/org.gnome.Settings-search-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/org.gnome.Settings/org.gnome.Settings-sharing-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/org.gnome.Settings/org.gnome.Settings-sound-symbolic.svg
@@ -18745,6 +18860,7 @@
 /usr/local/share/icons/Yaru/scalable/status/adw-tab-icon-missing-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/adw-tab-overflow-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/adw-tab-unpin-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/airplane-mode-disabled-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/airplane-mode-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/app-beta-software-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/app-info-loading-symbolic.svg
@@ -18773,30 +18889,42 @@
 /usr/local/share/icons/Yaru/scalable/status/battery-action-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-caution-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-0-charging-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/battery-level-0-plugged-in-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-0-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-10-charging-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/battery-level-10-plugged-in-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-10-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-100-charged-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-100-charging-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/battery-level-100-plugged-in-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-100-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-20-charging-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/battery-level-20-plugged-in-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-20-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-30-charging-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/battery-level-30-plugged-in-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-30-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-40-charging-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/battery-level-40-plugged-in-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-40-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-50-charging-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/battery-level-50-plugged-in-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-50-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-60-charging-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/battery-level-60-plugged-in-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-60-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-70-charging-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/battery-level-70-plugged-in-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-70-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-80-charging-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/battery-level-80-plugged-in-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-80-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-90-charging-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/battery-level-90-plugged-in-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-level-90-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-low-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/battery-missing-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/bluetooth-acquiring-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/bluetooth-active-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/bluetooth-disabled-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/bluetooth-disconnected-symbolic.svg
@@ -18810,6 +18938,7 @@
 /usr/local/share/icons/Yaru/scalable/status/changes-prevent-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/channel-insecure-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/channel-secure-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/clock-alt-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/community-approved-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/community-blocked-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/community-none-symbolic.svg
@@ -19070,6 +19199,7 @@
 /usr/local/share/icons/Yaru/scalable/time/week-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/time/year-alt-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/time/year-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/ui/check-outlined-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/ui/checkbox-checked-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/ui/checkbox-mixed-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/ui/checkbox-symbolic.svg

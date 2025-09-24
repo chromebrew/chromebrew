@@ -1,6 +1,7 @@
-# Total size: 235218
+# Total size: 219639
 /usr/local/bin/bomtool
 /usr/local/bin/pkgconf
+/usr/local/etc/env.d/pkgconf
 /usr/local/include/pkgconf/libpkgconf/bsdstubs.h
 /usr/local/include/pkgconf/libpkgconf/iter.h
 /usr/local/include/pkgconf/libpkgconf/libpkgconf-api.h

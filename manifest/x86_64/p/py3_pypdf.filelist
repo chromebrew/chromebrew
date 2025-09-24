@@ -1,15 +1,16 @@
-# Total size: 2848672
-/usr/local/lib/python3.13/site-packages/pypdf-6.0.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pypdf-6.0.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pypdf-6.0.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pypdf-6.0.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pypdf-6.0.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pypdf-6.0.0.dist-info/licenses/LICENSE
+# Total size: 3104803
+/usr/local/lib/python3.13/site-packages/pypdf-6.1.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pypdf-6.1.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pypdf-6.1.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pypdf-6.1.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pypdf-6.1.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pypdf-6.1.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.13/site-packages/pypdf/__init__.py
 /usr/local/lib/python3.13/site-packages/pypdf/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/__pycache__/_cmap.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/__pycache__/_doc_common.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/__pycache__/_encryption.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pypdf/__pycache__/_font.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/__pycache__/_page.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/__pycache__/_page_labels.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/__pycache__/_protocols.cpython-313.pyc
@@ -30,12 +31,14 @@
 /usr/local/lib/python3.13/site-packages/pypdf/_codecs/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/_codecs/__pycache__/_codecs.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/_codecs/__pycache__/adobe_glyphs.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pypdf/_codecs/__pycache__/core_fontmetrics.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/_codecs/__pycache__/pdfdoc.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/_codecs/__pycache__/std.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/_codecs/__pycache__/symbol.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/_codecs/__pycache__/zapfding.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pypdf/_codecs/_codecs.py
 /usr/local/lib/python3.13/site-packages/pypdf/_codecs/adobe_glyphs.py
+/usr/local/lib/python3.13/site-packages/pypdf/_codecs/core_fontmetrics.py
 /usr/local/lib/python3.13/site-packages/pypdf/_codecs/pdfdoc.py
 /usr/local/lib/python3.13/site-packages/pypdf/_codecs/std.py
 /usr/local/lib/python3.13/site-packages/pypdf/_codecs/symbol.py
@@ -52,6 +55,7 @@
 /usr/local/lib/python3.13/site-packages/pypdf/_crypt_providers/_pycryptodome.py
 /usr/local/lib/python3.13/site-packages/pypdf/_doc_common.py
 /usr/local/lib/python3.13/site-packages/pypdf/_encryption.py
+/usr/local/lib/python3.13/site-packages/pypdf/_font.py
 /usr/local/lib/python3.13/site-packages/pypdf/_page.py
 /usr/local/lib/python3.13/site-packages/pypdf/_page_labels.py
 /usr/local/lib/python3.13/site-packages/pypdf/_protocols.py

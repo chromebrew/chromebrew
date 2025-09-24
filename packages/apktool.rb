@@ -3,7 +3,7 @@ require 'package'
 class Apktool < Package
   description 'A tool for reverse engineering Android apk files'
   homepage 'https://apktool.org/'
-  version '2.12.0'
+  version '2.12.1'
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://raw.githubusercontent.com/iBotPeaches/Apktool/v#{version}/scripts/linux/apktool"
@@ -15,7 +15,7 @@ class Apktool < Package
 
   def self.install
     downloader "https://github.com/iBotPeaches/Apktool/releases/download/v#{version}/apktool_#{version}.jar",
-               'effb69dab2f93806cafc0d232f6be32c2551b8d51c67650f575e46c016908fdd', 'apktool.jar'
+               '66cf4524a4a45a7f56567d08b2c9b6ec237bcdd78cee69fd4a59c8a0243aeafa', 'apktool.jar'
     FileUtils.install 'apktool.jar', "#{CREW_DEST_PREFIX}/bin/apktool.jar", mode: 0o644
     FileUtils.install 'apktool', "#{CREW_DEST_PREFIX}/bin/apktool", mode: 0o755
   end

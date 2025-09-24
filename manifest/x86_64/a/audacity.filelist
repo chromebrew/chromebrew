@@ -1,3 +1,4 @@
+# Total size: 384845654
 /usr/local/bin/audacity
 /usr/local/share/applications/audacity-url-handler.desktop
 /usr/local/share/applications/audacity.desktop
@@ -8,6 +9,7 @@
 /usr/local/share/audacity/apprun-hooks/install-url-handler.sh
 /usr/local/share/audacity/apprun-hooks/linuxdeploy-plugin-gtk.sh
 /usr/local/share/audacity/apprun-hooks/setup-gtk2-theme.sh
+/usr/local/share/audacity/audacity-url-handler.desktop
 /usr/local/share/audacity/audacity.desktop
 /usr/local/share/audacity/audacity.png
 /usr/local/share/audacity/audacity.sh

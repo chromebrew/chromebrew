@@ -1,8 +1,12 @@
-# Total size: 1073074
+# Total size: 622403
 /usr/local/bin/yad
 /usr/local/bin/yad-icon-browser
+/usr/local/bin/yad-settings
+/usr/local/bin/yad-tools
 /usr/local/share/aclocal/yad.m4
 /usr/local/share/applications/yad-icon-browser.desktop
+/usr/local/share/applications/yad-settings.desktop
+/usr/local/share/glib-2.0/schemas/yad.gschema.xml
 /usr/local/share/icons/hicolor/128x128/apps/yad.png
 /usr/local/share/icons/hicolor/16x16/apps/yad.png
 /usr/local/share/icons/hicolor/24x24/apps/yad.png
@@ -10,11 +14,13 @@
 /usr/local/share/icons/hicolor/48x48/apps/yad.png
 /usr/local/share/icons/hicolor/96x96/apps/yad.png
 /usr/local/share/locale/de/LC_MESSAGES/yad.mo
+/usr/local/share/locale/es/LC_MESSAGES/yad.mo
 /usr/local/share/locale/fr/LC_MESSAGES/yad.mo
 /usr/local/share/locale/it/LC_MESSAGES/yad.mo
+/usr/local/share/locale/ka/LC_MESSAGES/yad.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/yad.mo
-/usr/local/share/locale/ru/LC_MESSAGES/yad.mo
 /usr/local/share/locale/sk/LC_MESSAGES/yad.mo
 /usr/local/share/locale/uk/LC_MESSAGES/yad.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/yad.mo
-/usr/local/share/man/man1/yad.1.gz
+/usr/local/share/man/man1/yad-tools.1.zst
+/usr/local/share/man/man1/yad.1.zst
