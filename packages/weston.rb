@@ -11,9 +11,9 @@ class Weston < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '778376b8fd6efc82a61c733c151bea1dc43ffa7414292eb92de29577e5a6a522',
-     armv7l: '778376b8fd6efc82a61c733c151bea1dc43ffa7414292eb92de29577e5a6a522',
-     x86_64: '2e860b008b30296e9e66a8ffd64f6fafbe10d6c1f3cea6119d132ee3a9633a7b'
+    aarch64: '645c1955ebbf4b2c0cf0aa027542010e30151f270b159bf56343ef9ac25f5b1a',
+     armv7l: '645c1955ebbf4b2c0cf0aa027542010e30151f270b159bf56343ef9ac25f5b1a',
+     x86_64: '5774bad67970b3b94b802f3b52fc1e4ce211aefdc4f335764c70f1556b4de6e1'
   })
 
   depends_on 'aml' # R
