@@ -46,6 +46,7 @@ class Util_linux < Meson
                  #{year2038 unless ARCH == 'x86_64'}"
 
   def self.patch
+    # See https://github.com/util-linux/util-linux/pull/3762
     File.write 'meson.patch', <<~PATCHEOF
       diff -Npaur a/meson.build b/meson.build
       --- a/meson.build	2025-09-23 16:35:42.425424047 -0400
