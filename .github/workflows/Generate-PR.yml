@@ -73,8 +73,9 @@ jobs:
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             # git pull --rebase origin master
             # git push -f
+            git fetch origin
             git pull
-            git rebase -X master ${{ inputs.branch || github.ref_name }}
+            git rebase -X theirs origin/master
             git push --force-with-lease
       - name: Get changed files
         id: changed-files
@@ -342,7 +343,7 @@ jobs:
             if [[ ${REBASE} == 'true' ]]; then
               git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
               git pull
-              git rebase -X master ${{ inputs.branch || github.ref_name }}
+              git rebase -X theirs origin/master
               git push --force-with-lease
               #  git pull --rebase origin master && git push -f
             fi
