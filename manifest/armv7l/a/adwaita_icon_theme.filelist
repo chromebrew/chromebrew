@@ -1,4 +1,4 @@
-# Total size: 13182758
+# Total size: 13197034
 /usr/local/share/icons/Adwaita/16x16/devices/audio-headphones.png
 /usr/local/share/icons/Adwaita/16x16/devices/audio-headset.png
 /usr/local/share/icons/Adwaita/16x16/emblems/emblem-readonly.png
@@ -68,6 +68,7 @@
 /usr/local/share/icons/Adwaita/cursors/crosshair
 /usr/local/share/icons/Adwaita/cursors/default
 /usr/local/share/icons/Adwaita/cursors/diamond_cross
+/usr/local/share/icons/Adwaita/cursors/dnd-ask
 /usr/local/share/icons/Adwaita/cursors/dnd-move
 /usr/local/share/icons/Adwaita/cursors/e-resize
 /usr/local/share/icons/Adwaita/cursors/ew-resize
@@ -365,7 +366,6 @@
 /usr/local/share/icons/Adwaita/symbolic/actions/zoom-in-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/actions/zoom-original-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/actions/zoom-out-symbolic.svg
-/usr/local/share/icons/Adwaita/symbolic/apps/help-contents-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/categories/applications-engineering-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/categories/applications-games-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/categories/applications-graphics-symbolic.svg
@@ -591,26 +591,37 @@
 /usr/local/share/icons/Adwaita/symbolic/status/battery-action-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-caution-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-0-charging-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/status/battery-level-0-plugged-in-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-0-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-10-charging-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/status/battery-level-10-plugged-in-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-10-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-100-charged-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/status/battery-level-100-plugged-in-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-100-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-20-charging-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/status/battery-level-20-plugged-in-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-20-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-30-charging-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/status/battery-level-30-plugged-in-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-30-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-40-charging-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/status/battery-level-40-plugged-in-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-40-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-50-charging-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/status/battery-level-50-plugged-in-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-50-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-60-charging-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/status/battery-level-60-plugged-in-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-60-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-70-charging-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/status/battery-level-70-plugged-in-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-70-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-80-charging-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/status/battery-level-80-plugged-in-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-80-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-90-charging-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/status/battery-level-90-plugged-in-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-level-90-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-low-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/status/battery-missing-symbolic.svg
