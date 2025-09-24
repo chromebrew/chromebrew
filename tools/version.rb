@@ -53,9 +53,14 @@ def get_version(name, homepage, source)
   anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.values[anitya_name_mapping_idx] unless anitya_name_mapping_idx.nil?
   anitya_id = get_anitya_id(anitya_name, homepage)
   puts "anitya_name: #{anitya_name} anitya_id: #{anitya_id}" if VERBOSE
-  # If we weren't able to get an Anitya ID, return early here to save time and headaches
-  # return if anitya_id.nil?
-  if anitya_id.nil?
+  if anitya_id&.nonzero?
+    # Get the latest stable version of the package from anitya.
+    json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
+    return if json['stable_versions'].nil?
+    return json['stable_versions'][0]
+  elsif source.nil? || %w[Pip].include?(@pkg.superclass.to_s)
+    return
+  else
     # If anitya has failed, check if the source is a GitHub repository
     # as a fallback.
     # Note that we only check releases on GitHub since semantic
@@ -67,34 +72,27 @@ def get_version(name, homepage, source)
     # | cut --delimiter='/' --fields=3
     # However, since that does miss text tags, better to just use
     # anitya first.
-    unless source.nil? || %w[Pip].include?(@pkg.superclass.to_s)
-      if source.is_a?(Hash)
-        source_arch = (@pkg.source_url.keys.map &:to_s).first
-        source = @pkg.source_url[source_arch.to_sym]
-      end
-      source.sub!('www.', '')
-      url = URI.parse(source)
-      if url.host == 'github.com'
-        url_parts = url.path.split('/')
-        unless url_parts.count < 3
-          repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
-          puts "GitHub Repo is #{repo}" if VERBOSE
-          if File.which('gh')
-            # This allows us to only get non-pre-release versions from
-            # GitHub if such releases exist.
-            github_ver = `gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'`.chomp if system 'gh auth status >/dev/null', exception: false
-          else
-            github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .tag -r`.chomp
-          end
-          return github_ver unless github_ver.blank? || github_ver == 'null'
+    if source.is_a?(Hash)
+      source_arch = (@pkg.source_url.keys.map &:to_s).first
+      source = @pkg.source_url[source_arch.to_sym]
+    end
+    source.sub!('www.', '')
+    url = URI.parse(source)
+    if url.host == 'github.com'
+      url_parts = url.path.split('/')
+      unless url_parts.count < 3
+        repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
+        puts "GitHub Repo is #{repo}" if VERBOSE
+        if File.which('gh')
+          # This allows us to only get non-pre-release versions from
+          # GitHub if such releases exist.
+          github_ver = `gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'`.chomp if system 'gh auth status >/dev/null', exception: false
+        else
+          github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .tag -r`.chomp
         end
+        return github_ver unless github_ver.blank? || github_ver == 'null'
       end
     end
-  else
-    # Get the latest stable version of the package from anitya.
-    json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
-    return if json['stable_versions'].nil?
-    return json['stable_versions'][0]
   end
 end
 
