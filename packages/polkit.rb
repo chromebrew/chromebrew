@@ -24,6 +24,8 @@ class Polkit < Meson
   depends_on 'gtk_doc' => :build
   depends_on 'linux_pam' # R
 
-  meson_options "-Dsession_tracking=elogind -Dsystemdsystemunitdir=#{CREW_PREFIX}/etc/elogind"
+  meson_options "-Dlibs-only=true \
+                 -Dsession_tracking=elogind \
+                 -Dsystemdsystemunitdir=#{CREW_PREFIX}/etc/elogind"
   run_tests
 end
