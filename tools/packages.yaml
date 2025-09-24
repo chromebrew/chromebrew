@@ -85,6 +85,11 @@ url: https://www.chiark.greenend.org.uk/~sgtatham/agedu/
 activity: none
 ---
 kind: url
+name: aml
+url: https://github.com/any1/aml/releases
+activity: low
+---
+kind: url
 name: angle_grinder
 url: https://github.com/rcoh/angle-grinder/releases
 activity: medium
@@ -6370,6 +6375,11 @@ url: https://www.remlab.net/files/ndisc6/
 activity: none
 ---
 kind: url
+name: neatvnc
+url: https://github.com/any1/neatvnc/releases
+activity: low
+---
+kind: url
 name: nedit
 url: https://sourceforge.net/projects/nedit/files/nedit-source/
 activity: none
@@ -6740,18 +6750,8 @@ url: https://www.azul.com/downloads/?version=java-21-lts&package=jdk#zulu
 activity: medium
 ---
 kind: url
-name: openjdk22
-url: https://www.azul.com/downloads/?package=jdk#zulu
-activity: medium
----
-kind: url
-name: openjdk23
-url: https://www.azul.com/downloads/?package=jdk#zulu
-activity: medium
----
-kind: url
-name: openjdk24
-url: https://www.azul.com/downloads/?package=jdk#zulu
+name: openjdk25
+url: https://www.azul.com/downloads/?version=java-25-lts&package=jdk#zulu
 activity: medium
 ---
 kind: url

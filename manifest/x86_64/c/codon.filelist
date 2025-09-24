@@ -1,3 +1,4 @@
+# Total size: 224524121
 /usr/local/bin/codon
 /usr/local/include/codon/cir/analyze/analysis.h
 /usr/local/include/codon/cir/analyze/dataflow/capture.h
@@ -20,6 +21,7 @@
 /usr/local/include/codon/cir/llvm/llvm.h
 /usr/local/include/codon/cir/llvm/native/native.h
 /usr/local/include/codon/cir/llvm/native/targets/aarch64.h
+/usr/local/include/codon/cir/llvm/native/targets/arm.h
 /usr/local/include/codon/cir/llvm/native/targets/target.h
 /usr/local/include/codon/cir/llvm/native/targets/x86.h
 /usr/local/include/codon/cir/llvm/optimize.h
@@ -36,6 +38,7 @@
 /usr/local/include/codon/cir/transform/lowering/imperative.h
 /usr/local/include/codon/cir/transform/lowering/pipeline.h
 /usr/local/include/codon/cir/transform/manager.h
+/usr/local/include/codon/cir/transform/numpy/indexing.h
 /usr/local/include/codon/cir/transform/numpy/numpy.h
 /usr/local/include/codon/cir/transform/parallel/openmp.h
 /usr/local/include/codon/cir/transform/parallel/schedule.h
@@ -72,8 +75,10 @@
 /usr/local/include/codon/dsl/dsl.h
 /usr/local/include/codon/dsl/plugins.h
 /usr/local/include/codon/parser/ast.h
+/usr/local/include/codon/parser/ast/attr.h
 /usr/local/include/codon/parser/ast/error.h
 /usr/local/include/codon/parser/ast/expr.h
+/usr/local/include/codon/parser/ast/node.h
 /usr/local/include/codon/parser/ast/stmt.h
 /usr/local/include/codon/parser/ast/types.h
 /usr/local/include/codon/parser/ast/types/class.h
@@ -86,12 +91,12 @@
 /usr/local/include/codon/parser/cache.h
 /usr/local/include/codon/parser/common.h
 /usr/local/include/codon/parser/ctx.h
+/usr/local/include/codon/parser/match.h
 /usr/local/include/codon/parser/peg/peg.h
 /usr/local/include/codon/parser/peg/rules.h
 /usr/local/include/codon/parser/visitors/doc/doc.h
 /usr/local/include/codon/parser/visitors/format/format.h
-/usr/local/include/codon/parser/visitors/simplify/ctx.h
-/usr/local/include/codon/parser/visitors/simplify/simplify.h
+/usr/local/include/codon/parser/visitors/scoping/scoping.h
 /usr/local/include/codon/parser/visitors/translate/translate.h
 /usr/local/include/codon/parser/visitors/translate/translate_ctx.h
 /usr/local/include/codon/parser/visitors/typecheck/ctx.h
@@ -108,7 +113,10 @@
 /usr/local/include/codon/runtime/lib.h
 /usr/local/include/codon/util/common.h
 /usr/local/include/codon/util/jupyter.h
+/usr/local/include/codon/util/serialize.h
+/usr/local/include/codon/util/tser.h
 /usr/local/include/fmt/args.h
+/usr/local/include/fmt/base.h
 /usr/local/include/fmt/chrono.h
 /usr/local/include/fmt/color.h
 /usr/local/include/fmt/compile.h
@@ -134,6 +142,7 @@
 /usr/local/lib/codon/stdlib/bisect.codon
 /usr/local/lib/codon/stdlib/bz2.codon
 /usr/local/lib/codon/stdlib/cmath.codon
+/usr/local/lib/codon/stdlib/codon/static.codon
 /usr/local/lib/codon/stdlib/collections.codon
 /usr/local/lib/codon/stdlib/copy.codon
 /usr/local/lib/codon/stdlib/datetime.codon
