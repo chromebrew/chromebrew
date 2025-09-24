@@ -1,3 +1,4 @@
+# Total size: 5543860
 /usr/local/bin/di-edid-decode
 /usr/local/bin/wcap-decode
 /usr/local/bin/weston
@@ -32,6 +33,7 @@
 /usr/local/bin/weston-terminal
 /usr/local/bin/weston-touch-calibrator
 /usr/local/bin/weston-transformed
+/usr/local/etc/pam.d/weston-remote-access
 /usr/local/include/libdisplay-info/cta.h
 /usr/local/include/libdisplay-info/cvt.h
 /usr/local/include/libdisplay-info/displayid.h
@@ -42,6 +44,7 @@
 /usr/local/include/libweston-14/libweston/backend-drm.h
 /usr/local/include/libweston-14/libweston/backend-headless.h
 /usr/local/include/libweston-14/libweston/backend-pipewire.h
+/usr/local/include/libweston-14/libweston/backend-vnc.h
 /usr/local/include/libweston-14/libweston/backend-wayland.h
 /usr/local/include/libweston-14/libweston/backend-x11.h
 /usr/local/include/libweston-14/libweston/config-parser.h
@@ -70,6 +73,7 @@
 /usr/local/lib64/libweston-14/pipewire-backend.so
 /usr/local/lib64/libweston-14/pipewire-plugin.so
 /usr/local/lib64/libweston-14/remoting-plugin.so
+/usr/local/lib64/libweston-14/vnc-backend.so
 /usr/local/lib64/libweston-14/wayland-backend.so
 /usr/local/lib64/libweston-14/x11-backend.so
 /usr/local/lib64/libweston-14/xwayland.so
@@ -95,6 +99,7 @@
 /usr/local/share/man/man5/weston.ini.5.zst
 /usr/local/share/man/man7/weston-bindings.7.zst
 /usr/local/share/man/man7/weston-drm.7.zst
+/usr/local/share/man/man7/weston-vnc.7.zst
 /usr/local/share/pkgconfig/libweston-14-protocols.pc
 /usr/local/share/wayland-sessions/weston.desktop
 /usr/local/share/weston/background.png

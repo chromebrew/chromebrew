@@ -11,11 +11,12 @@ class Weston < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '73807ff53bd0db798fedf82f27f282d342924f81cf3d1ec064a76722dd0ca93b',
-     armv7l: '73807ff53bd0db798fedf82f27f282d342924f81cf3d1ec064a76722dd0ca93b',
-     x86_64: 'c3c5a58432d971f1f65bfaed52f7562a75c52c9b6ac2e59e998b28f4b08db4e9'
+    aarch64: '6235bddec751ceac429a424eaeeae82fb2177f8b721ca73b763e81941eda87b0',
+     armv7l: '6235bddec751ceac429a424eaeeae82fb2177f8b721ca73b763e81941eda87b0',
+     x86_64: '0e86da80a8ead7b8e0730932d6828f1d87f266197dd1469186c01b060552927b'
   })
 
+  depends_on 'aml' # R
   depends_on 'cairo' # R
   depends_on 'dbus' => :build
   depends_on 'eudev' # R
@@ -44,7 +45,9 @@ class Weston < Meson
   depends_on 'libxkbcommon'
   depends_on 'libxkbcommon' # R
   depends_on 'libxxf86vm'
+  depends_on 'linux_pam' # R
   depends_on 'mesa' # R
+  depends_on 'neatvnc' # R
   depends_on 'pango' # R
   depends_on 'pipewire' # R
   depends_on 'pixman' # R
@@ -65,10 +68,35 @@ class Weston < Meson
 
   def self.patch
     # https://gitlab.freedesktop.org/wayland/weston/-/issues/1049
-    file = File.read 'subprojects/neatvnc.wrap'
-    file.gsub!('revision = v0.7.0', 'revision = v0.9.5')
-    File.write('subprojects/neatvnc.wrap', file)
+    # file = File.read 'subprojects/neatvnc.wrap'
+    # file.gsub!('revision = v0.7.0', 'revision = v0.9.5')
+    # File.write('subprojects/neatvnc.wrap', file)
+    #
+    # Install Top of Tree neatvnc and aml as deps instead, and make
+    # weston handle those versions.
     FileUtils.rm_rf 'subprojects/neatvnc'
+    FileUtils.rm_rf 'subprojects/aml.wrap'
+    FileUtils.rm_rf 'subprojects/neatvnc.wrap'
+    File.write 'weston_vnc.patch', <<~'VNCPATCHEOF'
+      --- a/libweston/backend-vnc/meson.build	2025-09-24 09:44:35.000000000 -0400
+      +++ b/libweston/backend-vnc/meson.build	2025-09-24 10:36:09.653992251 -0400
+      @@ -3,12 +3,12 @@ if not get_option('backend-vnc')
+       endif
+       
+       config_h.set('BUILD_VNC_COMPOSITOR', '1')
+      -dep_neatvnc = dependency('neatvnc', version: ['>= 0.7.0', '< 0.10.0'], required: false, fallback: ['neatvnc', 'neatvnc_dep'])
+      +dep_neatvnc = dependency('neatvnc', version: ['>= 0.7.0', '< 0.11.0'], required: false, fallback: ['neatvnc', 'neatvnc_dep'])
+       if not dep_neatvnc.found()
+       	error('VNC backend requires neatvnc which was not found. Or, you can use \'-Dbackend-vnc=false\'.')
+       endif
+       
+      -dep_aml = dependency('aml', version: ['>= 0.3.0', '< 0.4.0'], required: false, fallback: ['aml', 'aml_dep'])
+      +dep_aml = dependency('aml1', version: ['>= 0.3.0', '< 1.1.0'], required: false, fallback: ['aml', 'aml_dep'])
+       if not dep_aml.found()
+       	error('VNC backend requires libaml which was not found. Or, you can use \'-Dbackend-vnc=false\'.')
+       endif
+    VNCPATCHEOF
+    system 'patch -Np1 -i weston_vnc.patch'
   end
 
   meson_install_extras do
