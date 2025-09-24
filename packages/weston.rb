@@ -82,14 +82,14 @@ class Weston < Meson
       +++ b/libweston/backend-vnc/meson.build	2025-09-24 10:36:09.653992251 -0400
       @@ -3,12 +3,12 @@ if not get_option('backend-vnc')
        endif
-       
+
        config_h.set('BUILD_VNC_COMPOSITOR', '1')
       -dep_neatvnc = dependency('neatvnc', version: ['>= 0.7.0', '< 0.10.0'], required: false, fallback: ['neatvnc', 'neatvnc_dep'])
       +dep_neatvnc = dependency('neatvnc', version: ['>= 0.7.0', '< 0.11.0'], required: false, fallback: ['neatvnc', 'neatvnc_dep'])
        if not dep_neatvnc.found()
        	error('VNC backend requires neatvnc which was not found. Or, you can use \'-Dbackend-vnc=false\'.')
        endif
-       
+
       -dep_aml = dependency('aml', version: ['>= 0.3.0', '< 0.4.0'], required: false, fallback: ['aml', 'aml_dep'])
       +dep_aml = dependency('aml1', version: ['>= 0.3.0', '< 1.1.0'], required: false, fallback: ['aml', 'aml_dep'])
        if not dep_aml.found()
