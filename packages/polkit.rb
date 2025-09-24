@@ -17,12 +17,12 @@ class Polkit < Meson
   })
 
   depends_on 'duktape' => :build
-  depends_on 'elogind' => :build
+  depends_on 'elogind' # R
   depends_on 'expat' => :build
-  depends_on 'glib' => :build
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
-  depends_on 'linux_pam' # R
 
   meson_options "-Dlibs-only=true \
                  -Dsession_tracking=elogind \
