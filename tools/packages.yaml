@@ -85,6 +85,11 @@ url: https://www.chiark.greenend.org.uk/~sgtatham/agedu/
 activity: none
 ---
 kind: url
+name: aml
+url: https://github.com/any1/aml/releases
+activity: low
+---
+kind: url
 name: angle_grinder
 url: https://github.com/rcoh/angle-grinder/releases
 activity: medium
@@ -6368,6 +6373,11 @@ kind: url
 name: ndisc6
 url: https://www.remlab.net/files/ndisc6/
 activity: none
+---
+kind: url
+name: neatvnc
+url: https://github.com/any1/neatvnc/releases
+activity: low
 ---
 kind: url
 name: nedit
