@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.66.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.66.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -178,58 +178,6 @@ unless defined?(CHROMEOS_RELEASE)
     end
 end
 
-# Some packges need manual adjustments of URLS for different versions.
-unless defined?(CREW_UPDATER_EXCLUDED_PKGS)
-  CREW_UPDATER_EXCLUDED_PKGS = Set[
-    { pkg_name: 'glibc', comments: 'Requires manual update.' },
-    { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
-    { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
-    { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' },
-    { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
-    { pkg_name: 'xdg_base', comments: 'Internal Chromebrew Package.' }
-  ].to_h { |h| [h[:pkg_name], h[:comments]] }
-end
-CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX = "(#{CREW_UPDATER_EXCLUDED_PKGS.keys.map { |p| "^#{p}$" }.join('|')})" unless defined?(CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX)
-
-# Some packages have different names in anitya.
-unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
-  CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
-    { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: '' },
-    { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to GitHub' },
-    { pkg_name: 'cups', anitya_pkg: 'cups', comments: 'Prefer to GitHub' },
-    { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
-    { pkg_name: 'doxygen', anitya_pkg: 'doxygen', comments: '' },
-    { pkg_name: 'gnu_time', anitya_pkg: 'time', comments: '' },
-    { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
-    { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: '' },
-    { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
-    { pkg_name: 'libgedit_amtk', anitya_pkg: 'libgedit-amtk', comments: 'Prefer to GitHub' },
-    { pkg_name: 'libgedit_gtksourceview', anitya_pkg: 'libgedit-gtksourceview', comments: 'Prefer to GitHub' },
-    { pkg_name: 'libnghttp3', anitya_pkg: 'nghttp3', comments: '' },
-    { pkg_name: 'libngtcp2', anitya_pkg: 'ngtcp2', comments: '' },
-    { pkg_name: 'libssp', anitya_pkg: 'gcc', comments: '' },
-    { pkg_name: 'libunbound', anitya_pkg: 'unbound', comments: '' },
-    { pkg_name: 'linux_pam', anitya_pkg: 'pam', comments: '' },
-    { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
-    { pkg_name: 'nnn', anitya_pkg: 'nnn', comments: 'Prefer to GitHub' },
-    { pkg_name: 'openssl', anitya_pkg: 'openssl', comments: 'Prefer to GitHub' },
-    { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
-    { pkg_name: 'pkg_7_zip', anitya_pkg: '7zip~stable', comments: 'Prefer to GitHub' },
-    { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
-    { pkg_name: 'python3', anitya_pkg: 'python', comments: '' },
-    { pkg_name: 'rdfind', anitya_pkg: 'rdfind', comments: 'Prefer to GitHub' },
-    { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
-    { pkg_name: 'tepl_6', anitya_pkg: 'libgedit-tepl', comments: '' },
-    { pkg_name: 'upx', anitya_pkg: 'upx', comments: 'Prefer to GitHub' },
-    { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
-    { pkg_name: 'webkitgtk_6', anitya_pkg: 'webkitgtk~stable', comments: '' },
-    { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' },
-    { pkg_name: 'yad', anitya_pkg: 'yad', comments: 'Prefer to GitHub' },
-    { pkg_name: 'zimg', anitya_pkg: 'zimg', comments: 'Prefer to GitHub' },
-    { pkg_name: 'zoneinfo', anitya_pkg: 'tzdata', comments: '' }
-  ].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
-end
-
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
 CREW_DISABLE_MVDIR ||= ENV.fetch('CREW_DISABLE_MVDIR', false) unless defined?(CREW_DISABLE_MVDIR)
 
@@ -388,15 +336,76 @@ PY3_BUILD_OPTIONS                ||= '--wheel --no-isolation'
 PY3_INSTALLER_OPTIONS            ||= "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
 PY3_PIP_RETRIES                  ||= ENV.fetch('PY3_PIP_RETRIES', '5') unless defined?(PY3_PIP_RETRIES)
 
-CREW_GCC_VER ||= Kernel.system('which gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : 'gcc15' unless defined?(CREW_GCC_VER)
-CREW_ICU_VER ||= Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : 'icu77.1' unless defined?(CREW_ICU_VER)
-CREW_LLVM_VER ||= Kernel.system('which llvm-config', %i[out err] => File::NULL) ? "llvm#{`llvm-config --version`.chomp.split('.')[0]}" : 'llvm21' unless defined?(CREW_LLVM_VER)
-CREW_PERL_VER ||= Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl --version|xargs|cut -d\\( -f2|cut -d\\) -f1|cut -dv -f2`.chomp.sub(/\.\d+$/, '')}" : 'perl5.42' unless defined?(CREW_PERL_VER)
-CREW_PY_VER ||= Kernel.system("#{CREW_PREFIX}/bin/python3 --version", %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : 'py3.13' unless defined?(CREW_PY_VER)
+# Defaults for the current versions used in version checking, in case
+# we are checking versions from outside Chromebrew, such as in CI.
+crew_gcc_ver_default = '15'
+crew_icu_ver_default = '77.1'
+crew_llvm_ver_default = '21'
+crew_perl_ver_default = '5.42'
+crew_py_ver_default = '3.13'
+CREW_GCC_VER ||= Kernel.system('which gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : "gcc#{crew_gcc_ver_default}" unless defined?(CREW_GCC_VER)
+CREW_ICU_VER ||= Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : "icu#{crew_icu_ver_default}" unless defined?(CREW_ICU_VER)
+CREW_LLVM_VER ||= Kernel.system('which llvm-config', %i[out err] => File::NULL) ? "llvm#{`llvm-config --version`.chomp.split('.')[0]}" : "llvm#{crew_llvm_ver_default}" unless defined?(CREW_LLVM_VER)
+CREW_PERL_VER ||= Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl --version|xargs|cut -d\\( -f2|cut -d\\) -f1|cut -dv -f2`.chomp.sub(/\.\d+$/, '')}" : "perl#{crew_perl_ver_default}" unless defined?(CREW_PERL_VER)
+CREW_PY_VER ||= Kernel.system("#{CREW_PREFIX}/bin/python3 --version", %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : "py#{crew_py_ver_default}" unless defined?(CREW_PY_VER)
 CREW_RUBY_VER ||= "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}" unless defined?(CREW_RUBY_VER)
 @buildsystems = ['Package']
 Dir.glob("#{CREW_LIB_PATH}/lib/buildsystems/*.rb") { |file| @buildsystems << File.foreach(file, encoding: Encoding::UTF_8).grep(/^class/).to_s.split[1] }
 CREW_VALID_BUILDSYSTEMS ||= @buildsystems.sort!
+
+# Some packges need manual adjustments of URLS for different versions.
+unless defined?(CREW_UPDATER_EXCLUDED_PKGS)
+  CREW_UPDATER_EXCLUDED_PKGS = Set[
+    { pkg_name: 'glibc', comments: 'Requires manual update.' },
+    { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
+    { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
+    { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' },
+    { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
+    { pkg_name: 'xdg_base', comments: 'Internal Chromebrew Package.' }
+  ].to_h { |h| [h[:pkg_name], h[:comments]] }
+end
+CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX = "(#{CREW_UPDATER_EXCLUDED_PKGS.keys.map { |p| "^#{p}$" }.join('|')})" unless defined?(CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX)
+
+# Some packages have different names in anitya.
+unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
+  CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
+    { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: '' },
+    { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to GitHub' },
+    { pkg_name: 'cups', anitya_pkg: 'cups', comments: 'Prefer to GitHub' },
+    { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
+    { pkg_name: 'doxygen', anitya_pkg: 'doxygen', comments: '' },
+    { pkg_name: 'gcc_build', anitya_pkg: 'gcc', comments: '' },
+    { pkg_name: 'gnu_time', anitya_pkg: 'time', comments: '' },
+    { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
+    { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: '' },
+    { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
+    { pkg_name: 'libgedit_amtk', anitya_pkg: 'libgedit-amtk', comments: 'Prefer to GitHub' },
+    { pkg_name: 'libgedit_gtksourceview', anitya_pkg: 'libgedit-gtksourceview', comments: 'Prefer to GitHub' },
+    { pkg_name: 'libnghttp3', anitya_pkg: 'nghttp3', comments: '' },
+    { pkg_name: 'libngtcp2', anitya_pkg: 'ngtcp2', comments: '' },
+    { pkg_name: 'libssp', anitya_pkg: 'gcc', comments: '' },
+    { pkg_name: 'libunbound', anitya_pkg: 'unbound', comments: '' },
+    { pkg_name: 'linux_pam', anitya_pkg: 'pam', comments: '' },
+    { pkg_name: "llvm#{crew_llvm_ver_default}_build", anitya_pkg: 'llvm', comments: '' },
+    { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
+    { pkg_name: 'nnn', anitya_pkg: 'nnn', comments: 'Prefer to GitHub' },
+    { pkg_name: 'openssl', anitya_pkg: 'openssl', comments: 'Prefer to GitHub' },
+    { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
+    { pkg_name: 'pkg_7_zip', anitya_pkg: '7zip~stable', comments: 'Prefer to GitHub' },
+    { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
+    { pkg_name: 'python3', anitya_pkg: 'python', comments: '' },
+    { pkg_name: 'rdfind', anitya_pkg: 'rdfind', comments: 'Prefer to GitHub' },
+    { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
+    { pkg_name: 'tepl_6', anitya_pkg: 'libgedit-tepl', comments: '' },
+    { pkg_name: 'upx', anitya_pkg: 'upx', comments: 'Prefer to GitHub' },
+    { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
+    { pkg_name: 'webkitgtk_6', anitya_pkg: 'webkitgtk~stable', comments: '' },
+    { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' },
+    { pkg_name: 'yad', anitya_pkg: 'yad', comments: 'Prefer to GitHub' },
+    { pkg_name: 'zimg', anitya_pkg: 'zimg', comments: 'Prefer to GitHub' },
+    { pkg_name: 'zoneinfo', anitya_pkg: 'tzdata', comments: '' }
+  ].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
+end
 
 CREW_LICENSE ||= <<~LICENSESTRING
   Copyright (C) 2013-2025 Chromebrew Authors
