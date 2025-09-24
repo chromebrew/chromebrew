@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Polkit < Meson
   description 'Application development toolkit for controlling system-wide privileges'
   homepage 'https://github.com/polkit-org/polkit'
-  version '125'
+  version '126'
   license 'LGPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/polkit-org/polkit.git'
@@ -16,10 +16,10 @@ class Polkit < Meson
      x86_64: 'd718513f21699196b8524a8f04a089ab7eb887fc273a83cf490636b54aca98c8'
   })
 
-  depends_on 'duktape'
-  depends_on 'elogind'
-  depends_on 'expat'
-  depends_on 'glib'
+  depends_on 'duktape' => :build
+  depends_on 'elogind' => :build
+  depends_on 'expat' => :build
+  depends_on 'glib' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'linux_pam' # R
