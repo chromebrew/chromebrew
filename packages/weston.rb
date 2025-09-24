@@ -13,7 +13,7 @@ class Weston < Meson
   binary_sha256({
     aarch64: '6235bddec751ceac429a424eaeeae82fb2177f8b721ca73b763e81941eda87b0',
      armv7l: '6235bddec751ceac429a424eaeeae82fb2177f8b721ca73b763e81941eda87b0',
-     x86_64: '0e86da80a8ead7b8e0730932d6828f1d87f266197dd1469186c01b060552927b'
+     x86_64: '2e860b008b30296e9e66a8ffd64f6fafbe10d6c1f3cea6119d132ee3a9633a7b'
   })
 
   depends_on 'aml' # R
