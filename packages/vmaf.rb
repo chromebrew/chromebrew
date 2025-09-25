@@ -17,6 +17,8 @@ class Vmaf < Package
      x86_64: '1453af3bc71ee46c7aef48dc8d402440d08a76518a4761fb185347694a8095d1'
   })
 
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
   depends_on 'nasm' => :build
 
   def self.build
