@@ -116,9 +116,10 @@ def get_anitya_id(name, homepage)
     return if json2['total_items'].zero?
 
     (0..(json2['total_items'] - 1)).each do |i|
-      # Sometimes we use versions from other distributions, e.g., libdb
-      # versioning comes from Fedora.
-      # next unless json2['items'][i]['distribution'] == 'Chromebrew'
+      # If it has it under a different name, make sure that is the Chromebrew mapping, and not some other distribution,
+      # because that could lead to overmatching.
+      next unless json2['items'][i]['distribution'] == 'Chromebrew'
+
       return get_anitya_id(json2['items'][i]['project'], homepage) if json2['items'][i]['name'] == name.tr('-', '_')
     end
   else # Anitya has more than one package with this exact name.
