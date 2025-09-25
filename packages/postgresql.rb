@@ -17,6 +17,7 @@ class Postgresql < Meson
   })
 
   depends_on 'brotli' => :build
+  depends_on 'curl' # R
   depends_on 'docbook_xml45' => :build
   depends_on 'expat' => :build
   depends_on 'gcc_lib' # R
