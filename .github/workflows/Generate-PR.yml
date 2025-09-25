@@ -433,10 +433,10 @@ jobs:
           else
             gh pr edit --add-reviewer chromebrew/active --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt
           fi
-          # Set PR to draft by default
-          gh pr ready --undo || true
           # Draft PRs can not be set to automerge.
-          if [[ ${DRAFT_PR} != 'true' ]]; then
+          if [[ ${DRAFT_PR} == 'true' ]]; then
+            gh pr ready --undo || true
+          else
             gh pr ready || true
             gh pr merge --auto || true
           fi
