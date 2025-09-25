@@ -14,9 +14,9 @@ class Vapoursynth < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aa2f7446128d41bedab5a6262f7cb323a8cc2806bda29d810d3193ee3aadc693',
-     armv7l: 'aa2f7446128d41bedab5a6262f7cb323a8cc2806bda29d810d3193ee3aadc693',
-     x86_64: '480b057b066c2d79029c756e3294f1416a7af139f65e8abe87cd8986049c6d7d'
+    aarch64: 'cca812c39e7bc656e6b1ae47ee7a7288da4273f7765d516dd335795f34e33bcd',
+     armv7l: 'cca812c39e7bc656e6b1ae47ee7a7288da4273f7765d516dd335795f34e33bcd',
+     x86_64: '892facc7a61a0026524b22a8a19246eef9b8682c98d930e9d14b439f0554fff6'
   })
 
   depends_on 'ffmpeg' => :build
