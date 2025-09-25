@@ -1,32 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Rush < Package
+class Rush < Autotools
   description 'GNU Rush is a Restricted User Shell.'
   homepage 'https://www.gnu.org/software/rush/'
-  version '2.1'
+  version '2.4'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/rush/rush-2.1.tar.xz'
-  source_sha256 'c2ff487d44ce3d14854d0269eb0aa4c0f98bcca35390fad5ea52da75d9e4abdf'
-  binary_compression 'tar.xz'
+  source_url "https://ftpmirror.gnu.org/rush/rush-#{version}.tar.xz"
+  source_sha256 'fa95af9d2c7b635581841cc27a1d27af611f60dd962113a93d23a8874aa060f4'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3b5629f53b3efc539ba397302fddd223fce1cbe5e5dee50be3e3d36868424984',
-     armv7l: '3b5629f53b3efc539ba397302fddd223fce1cbe5e5dee50be3e3d36868424984',
-       i686: '005bf529cd4383852c40f426e8c3f2cb44107888a14590bbb570ef90266bf18c',
-     x86_64: '69e660ca63ddfa08b4d4da0884ede5826715aaec6c189e79214ac4c8b30f3cd5'
+    aarch64: '683a833494ae48caaf8b13203d3da6b059ebc93cb1884cc7cd14a7322629f956',
+     armv7l: '683a833494ae48caaf8b13203d3da6b059ebc93cb1884cc7cd14a7322629f956',
+       i686: 'b5fefc1bb15a05299c83f8e02d7c0388d5d3c14de575f34c252ed12e44ff9a34',
+     x86_64: 'd6c610c443b41d2a726edf74afbb628ecc9a4248cdf2405f68d00c0091bc44f9'
   })
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
+  depends_on 'glibc' # R
+
+  def self.patch
+    # The aclocal version is hardcoded.
+    aclocal_version = `aclocal --version|head -1|cut -d' ' -f4`.chomp.gsub(/\.\d+$/, '')
+    system "sed -i 's,1.16,#{aclocal_version},g' configure"
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
+  # Tests fail with transform and interactive.
+  # run_tests
 end

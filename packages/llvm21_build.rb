@@ -4,7 +4,7 @@ class Llvm21_build < Package
   @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl' : 'clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl'
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
-  version '21.1.0'
+  version '21.1.2'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -13,10 +13,10 @@ class Llvm21_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7897600f2783a63c02ce2eeb50b81f67278a4f1ef2f5ed81df4b801d365a77a5',
-     armv7l: '7897600f2783a63c02ce2eeb50b81f67278a4f1ef2f5ed81df4b801d365a77a5',
-       i686: '23094743cc99cc42823b3b8ebe5a174e1f3db5cdd3cc5251c84a53395bc3f148',
-     x86_64: '4e8891ef26db629676149294477da8f335897700ac8f210f7d80587703b1a2af'
+    aarch64: '0fdfa30814ba923cef52e12e3ca3935c8164b3975d8be456d853b88b1df6002d',
+     armv7l: '0fdfa30814ba923cef52e12e3ca3935c8164b3975d8be456d853b88b1df6002d',
+       i686: '165e281b6dfb236c8dd826ea09e4819d2797938b92f636205e3641857381a569',
+     x86_64: '12b2c98c607fb1bcc61fb6a0510e5bfd1b6cbe6662647516773815af5f0b0ded'
   })
 
   depends_on 'gcc_lib' # R

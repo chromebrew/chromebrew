@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libxml2 < CMake
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
-  version "2.14.5-#{CREW_ICU_VER}"
+  version "2.15.0-#{CREW_ICU_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libxml2.git'
@@ -11,18 +11,15 @@ class Libxml2 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a5a14b8fb55844dfe30ac1e28f43d71f5e50ba3eb68c2fad60e68453c05c9a49',
-     armv7l: 'a5a14b8fb55844dfe30ac1e28f43d71f5e50ba3eb68c2fad60e68453c05c9a49',
-       i686: '017d8fa5b3521b8f2ad9d527d79c2c1518262e121c67fb4c864e51331e1511f8',
-     x86_64: '055b71713943d17d87205735fdda82c33a76bf0f8397c0cbc7a34275c2f9ab6b'
+    aarch64: '854f46931fa1cf1d4ec02313e428b00e72530ad30a5a2351e5e16470d50b9c99',
+     armv7l: '854f46931fa1cf1d4ec02313e428b00e72530ad30a5a2351e5e16470d50b9c99',
+       i686: '5c957f1362fa017320ad9596117139c39585f0cfa114d9a6260e3e87eaada9f0',
+     x86_64: '073c6948eee2be9c6926e82672b38024cdf8fc9fde536447c73aa2e3bd6f343d'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
-  depends_on 'ncurses' # R
-  depends_on 'readline' # R
-  depends_on 'zlib' # R
 
   conflicts_ok
   gnome

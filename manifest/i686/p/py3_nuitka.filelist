@@ -1,14 +1,14 @@
-# Total size: 27561567
+# Total size: 27569528
 /usr/local/bin/nuitka
 /usr/local/bin/nuitka-run
-/usr/local/lib/python3.13/site-packages/nuitka-2.7.13.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/nuitka-2.7.13.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/nuitka-2.7.13.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/nuitka-2.7.13.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/nuitka-2.7.13.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/nuitka-2.7.13.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/nuitka-2.7.13.dist-info/licenses/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/nuitka-2.7.13.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/nuitka-2.7.16.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/nuitka-2.7.16.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/nuitka-2.7.16.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/nuitka-2.7.16.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/nuitka-2.7.16.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/nuitka-2.7.16.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/nuitka-2.7.16.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/nuitka-2.7.16.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/nuitka/Builtins.py
 /usr/local/lib/python3.13/site-packages/nuitka/BytecodeCaching.py
 /usr/local/lib/python3.13/site-packages/nuitka/Bytecodes.py

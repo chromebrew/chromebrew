@@ -7,7 +7,7 @@ class Libclc < Package
   llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
   description 'Library requirements of the OpenCL C programming language'
   homepage 'https://libclc.llvm.org/'
-  version '21.1.0'
+  version '21.1.2'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
@@ -17,9 +17,9 @@ class Libclc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7b07941e64ed0dc02c8769e440a5e731d2987b722fb7f23731dbae25a781df8d',
-     armv7l: '7b07941e64ed0dc02c8769e440a5e731d2987b722fb7f23731dbae25a781df8d',
-     x86_64: 'd238b212830126b5fa3a0efcfbf3c341c8cb7b49b18839298c5268c13de08d55'
+    aarch64: 'eb0b23bdf44e2c8427964b6c2e68a6b12333a833dc5c63bd48bb5c747a40065b',
+     armv7l: 'eb0b23bdf44e2c8427964b6c2e68a6b12333a833dc5c63bd48bb5c747a40065b',
+     x86_64: '93e7da6c9b8c637727bec91e004ff0ade771b7639c1da237e0cdbce488dca89b'
   })
 
   depends_on 'llvm_dev' => :build

@@ -85,6 +85,11 @@ url: https://www.chiark.greenend.org.uk/~sgtatham/agedu/
 activity: none
 ---
 kind: url
+name: aml
+url: https://github.com/any1/aml/releases
+activity: low
+---
+kind: url
 name: angle_grinder
 url: https://github.com/rcoh/angle-grinder/releases
 activity: medium
@@ -1393,6 +1398,11 @@ kind: url
 name: delve
 url: https://github.com/go-delve/delve/releases
 activity: medium
+---
+kind: url
+name: deno
+url: https://github.com/denoland/deno/releases
+activity: high
 ---
 kind: url
 name: deployer
@@ -3875,6 +3885,11 @@ url: https://www.netlib.org/lapack/
 activity: none
 ---
 kind: url
+name: lazygit
+url: https://github.com/jesseduffield/lazygit/releases
+activity: high
+---
+kind: url
 name: lcms
 url: https://sourceforge.net/projects/lcms/files/lcms/
 activity: low
@@ -4772,6 +4787,16 @@ activity: medium
 kind: url
 name: libnghttp2
 url: https://github.com/nghttp2/nghttp2/releases
+activity: high
+---
+kind: url
+name: libnghttp3
+url: https://github.com/ngtcp2/nghttp3/releases
+activity: high
+---
+kind: url
+name: libngtcp2
+url: https://github.com/ngtcp2/ngtcp2/releases
 activity: high
 ---
 kind: url
@@ -6355,6 +6380,11 @@ url: https://www.remlab.net/files/ndisc6/
 activity: none
 ---
 kind: url
+name: neatvnc
+url: https://github.com/any1/neatvnc/releases
+activity: low
+---
+kind: url
 name: nedit
 url: https://sourceforge.net/projects/nedit/files/nedit-source/
 activity: none
@@ -6508,6 +6538,11 @@ kind: url
 name: nmon
 url: https://sourceforge.net/projects/nmon/files/
 activity: none
+---
+kind: url
+name: nnn
+url: https://github.com/jarun/nnn/releases
+activity: low
 ---
 kind: url
 name: nocodb
@@ -6720,18 +6755,8 @@ url: https://www.azul.com/downloads/?version=java-21-lts&package=jdk#zulu
 activity: medium
 ---
 kind: url
-name: openjdk22
-url: https://www.azul.com/downloads/?package=jdk#zulu
-activity: medium
----
-kind: url
-name: openjdk23
-url: https://www.azul.com/downloads/?package=jdk#zulu
-activity: medium
----
-kind: url
-name: openjdk24
-url: https://www.azul.com/downloads/?package=jdk#zulu
+name: openjdk25
+url: https://www.azul.com/downloads/?version=java-25-lts&package=jdk#zulu
 activity: medium
 ---
 kind: url
@@ -7140,13 +7165,13 @@ url: https://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/
 activity: low
 ---
 kind: url
-name: perl_locale_gettext
-url: https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/
+name: perl_libintl_perl
+url: https://cpan.metacpan.org/authors/id/G/GU/GUIDO/
 activity: none
 ---
 kind: url
-name: perl_locale_messages
-url: https://cpan.metacpan.org/authors/id/G/GU/GUIDO/
+name: perl_locale_gettext
+url: https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/
 activity: none
 ---
 kind: url
@@ -7620,6 +7645,11 @@ url: https://gitlab.gnome.org/GNOME/pyatspi2/-/tags
 activity: low
 ---
 kind: url
+name: py3_bleach
+url: https://github.com/deepin-community/python-bleach/tags
+activity: low
+---
+kind: url
 name: py3_brotlicffi
 url: https://github.com/python-hyper/brotlicffi/tags
 activity: low
@@ -7715,6 +7745,11 @@ url: https://github.com/quodlibet/mutagen/releases
 activity: medium
 ---
 kind: url
+name: py3_nh3
+url: https://github.com/messense/nh3/releases
+activity: medium
+---
+kind: url
 name: py3_nodeenv
 url: https://github.com/ekalinin/nodeenv/releases
 activity: low
@@ -7748,6 +7783,11 @@ kind: url
 name: py3_pyright
 url: https://github.com/RobertCraigie/pyright-python/releases
 activity: high
+---
+kind: url
+name: py3_readme_renderer
+url: https://github.com/pypa/readme_renderer/releases
+activity: medium
 ---
 kind: url
 name: py3_ruff

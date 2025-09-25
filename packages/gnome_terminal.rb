@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_terminal < Meson
   description 'The GNOME Terminal Emulator'
   homepage 'https://wiki.gnome.org/Apps/Terminal'
-  version '3.51.91'
+  version '3.97.0'
   license 'GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-terminal.git'
@@ -11,23 +11,22 @@ class Gnome_terminal < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '508069bccbc1e289c1c875c4366833681ff28326554675dfe5a7402a898fc0c9',
-     armv7l: '508069bccbc1e289c1c875c4366833681ff28326554675dfe5a7402a898fc0c9',
-     x86_64: '7845852c6237e388142b2bfd8e5f62a12f1b6852c7bc98883bb5eaf384cd954e'
+    aarch64: 'b00ee6a520a0b3123120f91ce84f87b61cd50f878141fbd7ce39929f58974e82',
+     armv7l: 'b00ee6a520a0b3123120f91ce84f87b61cd50f878141fbd7ce39929f58974e82',
+     x86_64: '272474ab973994b18cf260e77c3eed53456d99374f0f33081f7e3a52f8d6b30d'
   })
 
   depends_on 'adobe_source_code_pro_fonts' # L (Needed for monospace fonts)
-  depends_on 'at_spi2_core' # R
   depends_on 'dbus' # L
   depends_on 'dconf' => :build
   depends_on 'desktop_file_utilities' => :build
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gsettings_desktop_schemas' => :build
-  depends_on 'gtk3' # R
+  depends_on 'gtk4' # R
   depends_on 'gtk_doc' => :build
-  depends_on 'libhandy' # R
+  depends_on 'libadwaita' # R
   depends_on 'libx11' # R
   depends_on 'pango' # R
   depends_on 'util_linux' # R

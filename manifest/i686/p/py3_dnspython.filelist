@@ -1,4 +1,4 @@
-# Total size: 2326008
+# Total size: 2492839
 /usr/local/lib/python3.13/site-packages/dns/__init__.py
 /usr/local/lib/python3.13/site-packages/dns/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/__pycache__/_asyncbackend.cpython-313.pyc
@@ -6,10 +6,14 @@
 /usr/local/lib/python3.13/site-packages/dns/__pycache__/_ddr.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/__pycache__/_features.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/__pycache__/_immutable_ctx.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/dns/__pycache__/_no_ssl.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/dns/__pycache__/_tls_util.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/__pycache__/_trio_backend.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/__pycache__/asyncbackend.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/__pycache__/asyncquery.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/__pycache__/asyncresolver.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/dns/__pycache__/btree.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/dns/__pycache__/btreezone.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/__pycache__/dnssec.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/__pycache__/dnssectypes.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/__pycache__/e164.cpython-313.pyc
@@ -60,10 +64,14 @@
 /usr/local/lib/python3.13/site-packages/dns/_ddr.py
 /usr/local/lib/python3.13/site-packages/dns/_features.py
 /usr/local/lib/python3.13/site-packages/dns/_immutable_ctx.py
+/usr/local/lib/python3.13/site-packages/dns/_no_ssl.py
+/usr/local/lib/python3.13/site-packages/dns/_tls_util.py
 /usr/local/lib/python3.13/site-packages/dns/_trio_backend.py
 /usr/local/lib/python3.13/site-packages/dns/asyncbackend.py
 /usr/local/lib/python3.13/site-packages/dns/asyncquery.py
 /usr/local/lib/python3.13/site-packages/dns/asyncresolver.py
+/usr/local/lib/python3.13/site-packages/dns/btree.py
+/usr/local/lib/python3.13/site-packages/dns/btreezone.py
 /usr/local/lib/python3.13/site-packages/dns/dnssec.py
 /usr/local/lib/python3.13/site-packages/dns/dnssecalgs/__init__.py
 /usr/local/lib/python3.13/site-packages/dns/dnssecalgs/__pycache__/__init__.cpython-313.pyc
@@ -127,6 +135,7 @@
 /usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/DNAME.py
 /usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/DNSKEY.py
 /usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/DS.py
+/usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/DSYNC.py
 /usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/EUI48.py
 /usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/EUI64.py
 /usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/GPOS.py
@@ -177,6 +186,7 @@
 /usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/__pycache__/DNAME.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/__pycache__/DNSKEY.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/__pycache__/DS.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/__pycache__/DSYNC.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/__pycache__/EUI48.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/__pycache__/EUI64.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/dns/rdtypes/ANY/__pycache__/GPOS.cpython-313.pyc
@@ -288,9 +298,9 @@
 /usr/local/lib/python3.13/site-packages/dns/zone.py
 /usr/local/lib/python3.13/site-packages/dns/zonefile.py
 /usr/local/lib/python3.13/site-packages/dns/zonetypes.py
-/usr/local/lib/python3.13/site-packages/dnspython-2.7.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/dnspython-2.7.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/dnspython-2.7.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/dnspython-2.7.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/dnspython-2.7.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/dnspython-2.7.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/dnspython-2.8.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/dnspython-2.8.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/dnspython-2.8.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/dnspython-2.8.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/dnspython-2.8.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/dnspython-2.8.0.dist-info/licenses/LICENSE

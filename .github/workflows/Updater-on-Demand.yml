@@ -51,7 +51,7 @@ jobs:
           git pull
           git stash drop || true
           echo "pwd is $(pwd)"
-          LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -u "${{ inputs.version_cmd_input }}"
+          LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -u -v "${{ inputs.version_cmd_input }}"
           for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
           do
             git stash pop || true
@@ -71,7 +71,8 @@ jobs:
               git config advice.detachedHead false
               git checkout remotes/origin/"${updater_branch}"
               git pull origin "${updater_branch}"
-              git pull --rebase origin master; git push origin "HEAD:${updater_branch}" -f ; git pull origin "${updater_branch}"
+              # Let build workflow handle rebasing.
+              # git pull --rebase origin master; git push origin "HEAD:${updater_branch}" -f ; git pull origin "${updater_branch}"
               git stash pop || true
             else
               git checkout -b "${updater_branch}"
@@ -81,7 +82,7 @@ jobs:
             # If there are no changes, the next step will fail, but that
             # is ok.
             git commit -m "Add unbuilt ${pkg} to ${updater_branch}" || true
-            git push || true
+            git push origin "HEAD:${updater_branch}" -f || true
             gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${updater_branch}"
             git stash || true
             git checkout master

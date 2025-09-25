@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 2.4 (for Chromebrew)
+# version.rb version 3.1 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -48,9 +48,33 @@ versions_updated = {}
 versions = []
 
 def get_version(name, homepage, source)
-  # Determine if the source is a GitHub repository, but skip if there
-  # is an anitya name mapping.
-  unless source.nil? || %w[Pip].include?(@pkg.superclass.to_s) || CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
+  anitya_name_mapping_idx = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
+  anitya_name = name.gsub(/\Apy\d_|\Aperl_|\Aruby_/, '').tr('_', '-')
+  anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.values[anitya_name_mapping_idx] unless anitya_name_mapping_idx.nil?
+  anitya_id = get_anitya_id(anitya_name, homepage)
+  # If anitya_id cannot be determined, a Range can be returned, and
+  # .nonzero? does not work with Ranges.
+  anitya_id = nil if anitya_id.is_a? Range
+  puts "anitya_name: #{anitya_name} anitya_id: #{anitya_id}" if VERBOSE
+  if anitya_id&.nonzero?
+    # Get the latest stable version of the package from anitya.
+    json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
+    return if json['stable_versions'].nil?
+    return json['stable_versions'][0]
+  elsif source.nil? || %w[Pip].include?(@pkg.superclass.to_s)
+    return
+  else
+    # If anitya has failed, check if the source is a GitHub repository
+    # as a fallback.
+    # Note that we only check releases on GitHub since semantic
+    # version ordering isn't easy to get from tags.
+    # You can get the last numeric tag using:
+    # git -c 'versionsort.suffix=-' \
+    # ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/#{repo} '*.*.*' \
+    # | tail --lines=1 \
+    # | cut --delimiter='/' --fields=3
+    # However, since that does miss text tags, better to just use
+    # anitya first.
     if source.is_a?(Hash)
       source_arch = (@pkg.source_url.keys.map &:to_s).first
       source = @pkg.source_url[source_arch.to_sym]
@@ -62,15 +86,6 @@ def get_version(name, homepage, source)
       unless url_parts.count < 3
         repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
         puts "GitHub Repo is #{repo}" if VERBOSE
-        # Note that we only check releases on GitHub since semantic
-        # version ordering isn't easy to get from tags.
-        # You can get the last numeric tag using:
-        # git -c 'versionsort.suffix=-' \
-        # ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/#{repo} '*.*.*' \
-        # | tail --lines=1 \
-        # | cut --delimiter='/' --fields=3
-        # However, since that does miss text tags, better to just punt
-        # to ANITYA if releases do not exist.
         if File.which('gh')
           # This allows us to only get non-pre-release versions from
           # GitHub if such releases exist.
@@ -82,17 +97,6 @@ def get_version(name, homepage, source)
       end
     end
   end
-  anitya_name_mapping_idx = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
-  anitya_name = name.gsub(/\Apy\d_|\Aperl_|\Aruby_/, '').tr('_', '-')
-  anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.values[anitya_name_mapping_idx] unless anitya_name_mapping_idx.nil?
-  anitya_id = get_anitya_id(anitya_name, homepage)
-  puts "anitya_name: #{anitya_name} anitya_id: #{anitya_id}" if VERBOSE
-  # If we weren't able to get an Anitya ID, return early here to save time and headaches
-  return if anitya_id.nil?
-  # Get the latest stable version of the package
-  json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
-  return if json['stable_versions'].nil?
-  return json['stable_versions'][0]
 end
 
 def get_anitya_id(name, homepage)
@@ -112,7 +116,9 @@ def get_anitya_id(name, homepage)
     return if json2['total_items'].zero?
 
     (0..(json2['total_items'] - 1)).each do |i|
-      next unless json2['items'][i]['distribution'] == 'Chromebrew'
+      # Sometimes we use versions from other distributions, e.g., libdb
+      # versioning comes from Fedora.
+      # next unless json2['items'][i]['distribution'] == 'Chromebrew'
       return get_anitya_id(json2['items'][i]['project'], homepage) if json2['items'][i]['name'] == name.tr('-', '_')
     end
   else # Anitya has more than one package with this exact name.
@@ -146,7 +152,7 @@ def get_anitya_id(name, homepage)
         # We assume there is only one candidate with the same name and homepage as their crew counterpart.
         # Even if there are multiple candidates with the same name and homepage, its probably fine to treat them as identical.
         # If it isn't fine to treat them as identical, something has gone horribly wrong.
-        return json['items'][candidate]['id'] if homepage.chomp('/') == json['items'][candidate]['homepage']
+        return json['items'][candidate]['id'] if homepage.chomp('/') == json['items'][candidate]['homepage'].chomp('/')
       end
 
       # If we're still here, that means none of the candidates had the same homepage as their crew counterpart.
@@ -157,8 +163,10 @@ def get_anitya_id(name, homepage)
 end
 
 filelist = []
-if ARGV.length.positive? && !(ARGV.length == 1 && OPTIONS.include?(ARGV[0]))
-  ARGV.each do |arg|
+# Handle multiple packages being passed to version.rb.
+argv = ARGV.map(&:split).flatten
+if argv.length.positive? && !(argv.length == 1 && OPTIONS.include?(argv[0]))
+  argv.each do |arg|
     arg = arg.gsub('.rb', '')
     next unless arg =~ /^[0-9a-zA-Z_*]+$/
     if arg.include?('*')
@@ -175,6 +183,9 @@ else
     filelist.push filename
   end
 end
+
+# Remove duplicates.
+filelist.uniq!
 
 if filelist.length.positive?
   max_pkg_name_length = File.basename(filelist.max_by(&:length)).length - 3
@@ -209,7 +220,7 @@ if filelist.length.positive?
                                       # check to see if 'version' is on
                                       # that line.
                                       elsif !@pkg.git_hashtag.blank?
-                                        if `grep "^  git_hashtag" #{filename} | grep version`.empty?
+                                        if `grep "^  git_hashtag" #{filename} | grep version`.empty? && @pkg.name != 'rust'
                                           'static git_hashtag'
                                         else
                                           'Yes'
@@ -361,7 +372,7 @@ if filelist.length.positive?
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
     version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.chomp.ljust(version_field_length)}#{updatable_string}\n"
-    print version_line_string[@pkg.name.to_sym] if (versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || VERBOSE
+    print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || VERBOSE)
     print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !VERBOSE
 
     print "Failed to update version in #{@pkg.name} to #{upstream_version.chomp}".yellow if !OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')

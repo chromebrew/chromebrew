@@ -1,11 +1,11 @@
-# Total size: 29628743
+# Total size: 30085621
 /usr/local/bin/ruff
-/usr/local/lib/python3.13/site-packages/ruff-0.12.11.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/ruff-0.12.11.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/ruff-0.12.11.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/ruff-0.12.11.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/ruff-0.12.11.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/ruff-0.12.11.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/ruff-0.13.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/ruff-0.13.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/ruff-0.13.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/ruff-0.13.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/ruff-0.13.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/ruff-0.13.1.dist-info/licenses/LICENSE
 /usr/local/lib/python3.13/site-packages/ruff/__init__.py
 /usr/local/lib/python3.13/site-packages/ruff/__main__.py
 /usr/local/lib/python3.13/site-packages/ruff/__pycache__/__init__.cpython-313.pyc

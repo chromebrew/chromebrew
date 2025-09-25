@@ -1,13 +1,14 @@
-# Total size: 937671
+# Total size: 1020112
 /usr/local/lib/python3.13/site-packages/_cffi_backend.cpython-313-arm-linux-gnueabihf.so
-/usr/local/lib/python3.13/site-packages/cffi-1.17.1.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/cffi-1.17.1.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/cffi-1.17.1.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/cffi-1.17.1.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/cffi-1.17.1.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/cffi-1.17.1.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/cffi-1.17.1.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/cffi-1.17.1.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/cffi-2.0.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/cffi-2.0.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/cffi-2.0.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/cffi-2.0.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/cffi-2.0.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/cffi-2.0.0.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/cffi-2.0.0.dist-info/licenses/AUTHORS
+/usr/local/lib/python3.13/site-packages/cffi-2.0.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/cffi-2.0.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/cffi/__init__.py
 /usr/local/lib/python3.13/site-packages/cffi/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/cffi/__pycache__/_imp_emulation.cpython-313.pyc

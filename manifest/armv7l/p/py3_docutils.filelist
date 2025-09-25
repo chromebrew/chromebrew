@@ -1,4 +1,4 @@
-# Total size: 4256421
+# Total size: 4272012
 /usr/local/bin/docutils
 /usr/local/bin/rst2html
 /usr/local/bin/rst2html4
@@ -10,16 +10,16 @@
 /usr/local/bin/rst2s5
 /usr/local/bin/rst2xetex
 /usr/local/bin/rst2xml
-/usr/local/lib/python3.13/site-packages/docutils-0.22.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/docutils-0.22.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/docutils-0.22.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/docutils-0.22.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/docutils-0.22.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/docutils-0.22.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/docutils-0.22.dist-info/licenses/COPYING.rst
-/usr/local/lib/python3.13/site-packages/docutils-0.22.dist-info/licenses/licenses/BSD-0-Clause.rst
-/usr/local/lib/python3.13/site-packages/docutils-0.22.dist-info/licenses/licenses/BSD-2-Clause.rst
-/usr/local/lib/python3.13/site-packages/docutils-0.22.dist-info/licenses/licenses/gpl-3-0.txt
+/usr/local/lib/python3.13/site-packages/docutils-0.22.2.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/docutils-0.22.2.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/docutils-0.22.2.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/docutils-0.22.2.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/docutils-0.22.2.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/docutils-0.22.2.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/docutils-0.22.2.dist-info/licenses/COPYING.rst
+/usr/local/lib/python3.13/site-packages/docutils-0.22.2.dist-info/licenses/licenses/BSD-0-Clause.rst
+/usr/local/lib/python3.13/site-packages/docutils-0.22.2.dist-info/licenses/licenses/BSD-2-Clause.rst
+/usr/local/lib/python3.13/site-packages/docutils-0.22.2.dist-info/licenses/licenses/gpl-3-0.txt
 /usr/local/lib/python3.13/site-packages/docutils/__init__.py
 /usr/local/lib/python3.13/site-packages/docutils/__main__.py
 /usr/local/lib/python3.13/site-packages/docutils/__pycache__/__init__.cpython-313.pyc

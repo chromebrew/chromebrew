@@ -1,8 +1,8 @@
-# Total size: 492054
+# Total size: 1232342
 /usr/local/bin/dnsdomainname
 /usr/local/bin/ftp
-/usr/local/bin/hostname
 /usr/local/bin/ifconfig
+/usr/local/bin/inetutils_hostname
 /usr/local/bin/ping
 /usr/local/bin/ping.elf
 /usr/local/bin/ping6
@@ -16,8 +16,8 @@
 /usr/local/share/info/inetutils.info.zst
 /usr/local/share/man/man1/dnsdomainname.1.zst
 /usr/local/share/man/man1/ftp.1.zst
-/usr/local/share/man/man1/hostname.1.zst
 /usr/local/share/man/man1/ifconfig.1.zst
+/usr/local/share/man/man1/inetutils_hostname.1.zst
 /usr/local/share/man/man1/ping.1.zst
 /usr/local/share/man/man1/ping6.1.zst
 /usr/local/share/man/man1/talk.1.zst

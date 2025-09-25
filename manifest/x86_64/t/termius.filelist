@@ -1,3 +1,4 @@
+# Total size: 382230475
 /usr/local/bin/termius
 /usr/local/share/Termius/LICENSE.electron.txt
 /usr/local/share/Termius/LICENSES.chromium.html
@@ -134,6 +135,7 @@
 /usr/local/share/Termius/resources/app.asar.unpacked/out/shell-integration/zdotdir/.zshenv
 /usr/local/share/Termius/resources/app.asar.unpacked/out/shell-integration/zdotdir/.zshrc
 /usr/local/share/Termius/resources/package-type
+/usr/local/share/Termius/resources/termius.apparmor
 /usr/local/share/Termius/snapshot_blob.bin
 /usr/local/share/Termius/termius-app
 /usr/local/share/Termius/v8_context_snapshot.bin

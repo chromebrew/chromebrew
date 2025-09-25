@@ -12,10 +12,10 @@ class Py3_libxml2 < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0c6ca440e6401673f4a952069de2a3d401d0463a0ee3d90d257dab923e50439e',
-     armv7l: '0c6ca440e6401673f4a952069de2a3d401d0463a0ee3d90d257dab923e50439e',
-       i686: 'a38b835b9d4479330231a4515b1846ea897ae82145548fa2ed720b44ad6a2d7c',
-     x86_64: '701ae77cbb8cf0806bad05ca1f935cefe3a5f7a532433b68460b97440610666f'
+    aarch64: '70eb4306e4d9423a526a65ded96b09fecd02516888bacc37dedda686f69c502b',
+     armv7l: '70eb4306e4d9423a526a65ded96b09fecd02516888bacc37dedda686f69c502b',
+       i686: 'fe7d08b6e0a806bad7a9da897855ed2ede8eaa6cab540d0a3c29abccd9baf8fb',
+     x86_64: '8bd40fc45196607b451f118a956375edddd5ada3c5e1e79a46fe924333bdf921'
   })
 
   depends_on 'glibc' # R
@@ -30,6 +30,7 @@ class Py3_libxml2 < Python
 
   def self.prebuild
     system 'autoreconf -fiv'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
+    system "./configure #{CREW_CONFIGURE_OPTIONS} --with-python"
+    system 'make'
   end
 end

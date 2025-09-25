@@ -6,7 +6,7 @@ class Perl_xml_parser < PERL
   version "2.47-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.47.tar.gz'
+  source_url "https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-#{version.split('-').first}.tar.gz"
   source_sha256 'ad4aae643ec784f489b956abe952432871a622d4e2b5c619e8855accbfc4d1d8'
   binary_compression 'tar.zst'
 

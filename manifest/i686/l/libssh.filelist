@@ -1,4 +1,4 @@
-# Total size: 805103
+# Total size: 830725
 /usr/local/include/libssh/callbacks.h
 /usr/local/include/libssh/legacy.h
 /usr/local/include/libssh/libssh.h
@@ -13,5 +13,5 @@
 /usr/local/lib/cmake/libssh/libssh-config.cmake
 /usr/local/lib/libssh.so
 /usr/local/lib/libssh.so.4
-/usr/local/lib/libssh.so.4.10.1
+/usr/local/lib/libssh.so.4.10.3
 /usr/local/lib/pkgconfig/libssh.pc

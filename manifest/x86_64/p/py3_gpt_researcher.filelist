@@ -1,3 +1,4 @@
+# Total size: 1303672
 /usr/local/lib/python3.13/site-packages/backend/__init__.py
 /usr/local/lib/python3.13/site-packages/backend/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/backend/__pycache__/utils.cpython-313.pyc
@@ -48,13 +49,13 @@
 /usr/local/lib/python3.13/site-packages/evals/simple_evals/__pycache__/simpleqa_eval.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/evals/simple_evals/run_eval.py
 /usr/local/lib/python3.13/site-packages/evals/simple_evals/simpleqa_eval.py
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.3.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.3.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.3.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.3.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.3.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.3.dist-info/licenses/LICENSE
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.3.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/gpt_researcher/__init__.py
 /usr/local/lib/python3.13/site-packages/gpt_researcher/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/gpt_researcher/__pycache__/agent.cpython-313.pyc
@@ -315,6 +316,7 @@
 /usr/local/lib/python3.13/site-packages/tests/__pycache__/test_logs.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/tests/__pycache__/test_mcp.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/tests/__pycache__/test_researcher_logging.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/tests/__pycache__/test_security_fix.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/tests/__pycache__/vector-store.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/tests/documents-report-source.py
 /usr/local/lib/python3.13/site-packages/tests/gptr-logs-handler.py
@@ -330,4 +332,5 @@
 /usr/local/lib/python3.13/site-packages/tests/test_logs.py
 /usr/local/lib/python3.13/site-packages/tests/test_mcp.py
 /usr/local/lib/python3.13/site-packages/tests/test_researcher_logging.py
+/usr/local/lib/python3.13/site-packages/tests/test_security_fix.py
 /usr/local/lib/python3.13/site-packages/tests/vector-store.py

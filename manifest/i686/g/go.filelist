@@ -1,4 +1,4 @@
-# Total size: 201509718
+# Total size: 201512160
 /usr/local/bin/go
 /usr/local/bin/gofmt
 /usr/local/share/go/CONTRIBUTING.md
@@ -1644,7 +1644,6 @@
 /usr/local/share/go/src/cmd/go/internal/imports/scan.go
 /usr/local/share/go/src/cmd/go/internal/imports/scan_test.go
 /usr/local/share/go/src/cmd/go/internal/imports/tags.go
-/usr/local/share/go/src/cmd/go/internal/imports/testdata/android/.h.go
 /usr/local/share/go/src/cmd/go/internal/imports/testdata/android/a_android.go
 /usr/local/share/go/src/cmd/go/internal/imports/testdata/android/b_android_arm64.go
 /usr/local/share/go/src/cmd/go/internal/imports/testdata/android/c_linux.go
@@ -1654,7 +1653,6 @@
 /usr/local/share/go/src/cmd/go/internal/imports/testdata/android/g.go
 /usr/local/share/go/src/cmd/go/internal/imports/testdata/android/tags.txt
 /usr/local/share/go/src/cmd/go/internal/imports/testdata/android/want.txt
-/usr/local/share/go/src/cmd/go/internal/imports/testdata/illumos/.h.go
 /usr/local/share/go/src/cmd/go/internal/imports/testdata/illumos/a_illumos.go
 /usr/local/share/go/src/cmd/go/internal/imports/testdata/illumos/b_illumos_amd64.go
 /usr/local/share/go/src/cmd/go/internal/imports/testdata/illumos/c_solaris.go
@@ -3700,7 +3698,6 @@
 /usr/local/share/go/src/cmd/vendor/github.com/google/pprof/third_party/svgpan/LICENSE
 /usr/local/share/go/src/cmd/vendor/github.com/google/pprof/third_party/svgpan/svgpan.go
 /usr/local/share/go/src/cmd/vendor/github.com/google/pprof/third_party/svgpan/svgpan.js
-/usr/local/share/go/src/cmd/vendor/github.com/ianlancetaylor/demangle/.gitignore
 /usr/local/share/go/src/cmd/vendor/github.com/ianlancetaylor/demangle/LICENSE
 /usr/local/share/go/src/cmd/vendor/github.com/ianlancetaylor/demangle/README.md
 /usr/local/share/go/src/cmd/vendor/github.com/ianlancetaylor/demangle/SECURITY.md
@@ -3811,7 +3808,6 @@
 /usr/local/share/go/src/cmd/vendor/golang.org/x/sys/plan9/zsyscall_plan9_amd64.go
 /usr/local/share/go/src/cmd/vendor/golang.org/x/sys/plan9/zsyscall_plan9_arm.go
 /usr/local/share/go/src/cmd/vendor/golang.org/x/sys/plan9/zsysnum_plan9.go
-/usr/local/share/go/src/cmd/vendor/golang.org/x/sys/unix/.gitignore
 /usr/local/share/go/src/cmd/vendor/golang.org/x/sys/unix/README.md
 /usr/local/share/go/src/cmd/vendor/golang.org/x/sys/unix/affinity_linux.go
 /usr/local/share/go/src/cmd/vendor/golang.org/x/sys/unix/aliases.go
@@ -4155,12 +4151,6 @@
 /usr/local/share/go/src/cmd/vendor/golang.org/x/sys/windows/zerrors_windows.go
 /usr/local/share/go/src/cmd/vendor/golang.org/x/sys/windows/zknownfolderids_windows.go
 /usr/local/share/go/src/cmd/vendor/golang.org/x/sys/windows/zsyscall_windows.go
-/usr/local/share/go/src/cmd/vendor/golang.org/x/telemetry/.dockerignore
-/usr/local/share/go/src/cmd/vendor/golang.org/x/telemetry/.eslintrc.json
-/usr/local/share/go/src/cmd/vendor/golang.org/x/telemetry/.gitattributes
-/usr/local/share/go/src/cmd/vendor/golang.org/x/telemetry/.gitignore
-/usr/local/share/go/src/cmd/vendor/golang.org/x/telemetry/.prettierrc.json
-/usr/local/share/go/src/cmd/vendor/golang.org/x/telemetry/.stylelintrc.json
 /usr/local/share/go/src/cmd/vendor/golang.org/x/telemetry/CONTRIBUTING.md
 /usr/local/share/go/src/cmd/vendor/golang.org/x/telemetry/LICENSE
 /usr/local/share/go/src/cmd/vendor/golang.org/x/telemetry/PATENTS
@@ -5864,6 +5854,7 @@
 /usr/local/share/go/src/embed/internal/embedtest/embed_test.go
 /usr/local/share/go/src/embed/internal/embedtest/embedx_test.go
 /usr/local/share/go/src/embed/internal/embedtest/testdata/-not-hidden/fortune.txt
+/usr/local/share/go/src/embed/internal/embedtest/testdata/.hidden/fortune.txt
 /usr/local/share/go/src/embed/internal/embedtest/testdata/_hidden/fortune.txt
 /usr/local/share/go/src/embed/internal/embedtest/testdata/ascii.txt
 /usr/local/share/go/src/embed/internal/embedtest/testdata/glass.txt

@@ -75,12 +75,13 @@ jobs:
           echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v46
+        uses: tj-actions/changed-files@v47
         with:
           base_sha: master
           files_yaml: |
             packages:
               - packages/*.rb
+          since_last_remote_commit: true
       - name: Export variables to github context
         id: changed-packages
         run: |
@@ -222,7 +223,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m138" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m139" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 fi
@@ -234,7 +235,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m138" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m139" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
                 fi
@@ -343,7 +344,7 @@ jobs:
             git checkout "${{ inputs.branch || github.ref_name }}"
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v46
+        uses: tj-actions/changed-files@v47
         with:
           base_sha: master
           files_yaml: |
@@ -358,6 +359,7 @@ jobs:
               - '!manifest/**'
               - '!packages/*.rb'
               - '!.github/**'
+          since_last_remote_commit: true
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4

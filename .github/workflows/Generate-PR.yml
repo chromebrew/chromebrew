@@ -61,25 +61,15 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.ref_name }}
-      - name: Rebase to master
-        run: |
-            git config user.name "${{ github.actor }}"
-            git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git pull --rebase origin master
-            git push -f
-      - name: Push rebase changes
-        uses: ad-m/github-push-action@master
-        with:
-          branch: ${{ inputs.branch || github.ref_name }}
-          force: true
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v46
+        uses: tj-actions/changed-files@v47
         with:
           base_sha: master
           files_yaml: |
             packages:
               - packages/*.rb
+          since_last_remote_commit: true
       - name: Export variables to github context
         id: changed-packages
         run: |
@@ -160,7 +150,7 @@ jobs:
       i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
       x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
       armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
-    if: ${{ !cancelled() }}
+    if: ${{ !cancelled() && ( inputs.update_package_files ) }}
     concurrency:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.ref_name }}
       cancel-in-progress: true
@@ -204,7 +194,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m138" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m139" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 fi
@@ -216,7 +206,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m138" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m139" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
                 fi
@@ -232,7 +222,7 @@ jobs:
             esac
       - name: Run Updater in container
         id: run-updater
-        if: ${{ contains(needs.*.result, 'failure') ||  !cancelled() }}
+        if: ${{ ( inputs.update_package_files ) && ( contains(needs.*.result, 'failure') ||  !cancelled() ) }}
         env:
           UPDATE_PACKAGE_FILES: ${{ github.event.inputs.update_package_files }}
         run: |
@@ -302,7 +292,7 @@ jobs:
     needs:
       - setup
       - update-package-files
-    if: ${{ !cancelled() }}
+    if: ${{ ( always() && !cancelled() ) && needs.setup.result == 'success' && ((( inputs.update_package_files ) && needs.update-package-files.result == 'success') || !( inputs.update_package_files )) }}
     steps:
       - name: Fail if update or build jobs failed, otherwise create a PR
         if: ${{ contains(needs.*.result, 'failure') }}
@@ -325,22 +315,18 @@ jobs:
           make -j "$(nproc)"
           sudo make install
           sudo gem install ruby-libversion
-      - name: Rebase to master and save git log
-        id: rebase-and-git-log
+      - name: Save git log
+        id: save-git-log
         run: |
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git fetch origin
-            git checkout "${{ inputs.branch || github.ref_name }}"
-            git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
-            git pull --rebase origin master && git push -f
-            git log --oneline -10
             git checkout master && git pull
-            git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Build Run on\|Package File Update Run on" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
             git checkout "${{ inputs.branch || github.ref_name }}"
+            git log --oneline -10
+            git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v46
+        uses: tj-actions/changed-files@v47
         with:
           base_sha: master
           files_yaml: |
@@ -355,6 +341,7 @@ jobs:
               - '!manifest/**'
               - '!packages/*.rb'
               - '!.github/**'
+          since_last_remote_commit: true
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
@@ -432,11 +419,11 @@ jobs:
           [[ -n "${PKG_DELTA[*]}" ]] && PKG_DELTAS="— $(join_by , "${PKG_DELTA[@]}")"
           echo "PKG_DELTAS: $PKG_DELTAS"
           cat /tmp/pr.txt
-          [[ $DRAFT_PR == 'true' ]] && export PR_DRAFT_FLAG='-d'
+          [[ ${DRAFT_PR} == 'true' ]] && export PR_DRAFT_FLAG='-d'
           PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
           PR_TITLE_INPUT="${{ inputs.pr_title }}"
           if [[ -z ${PR_TITLE_INPUT} ]]; then
-            PR_TITLE="$(git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
+            PR_TITLE="$(git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
           else
             PR_TITLE="${{ inputs.pr_title }}"
           fi
@@ -447,7 +434,7 @@ jobs:
             gh pr edit --add-reviewer chromebrew/active --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt
           fi
           # Draft PRs can not be set to automerge.
-          if [[ $DRAFT_PR == 'true' ]]; then
+          if [[ ${DRAFT_PR} == 'true' ]]; then
             gh pr ready --undo || true
           else
             gh pr ready || true

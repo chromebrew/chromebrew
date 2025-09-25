@@ -1,4 +1,4 @@
-# Total size: 10661725
+# Total size: 12672978
 /usr/local/bin/chattr
 /usr/local/bin/compile_et
 /usr/local/bin/lsattr
@@ -82,6 +82,7 @@
 /usr/local/share/locale/hu/LC_MESSAGES/e2fsprogs.mo
 /usr/local/share/locale/id/LC_MESSAGES/e2fsprogs.mo
 /usr/local/share/locale/it/LC_MESSAGES/e2fsprogs.mo
+/usr/local/share/locale/ka/LC_MESSAGES/e2fsprogs.mo
 /usr/local/share/locale/ms/LC_MESSAGES/e2fsprogs.mo
 /usr/local/share/locale/nl/LC_MESSAGES/e2fsprogs.mo
 /usr/local/share/locale/pl/LC_MESSAGES/e2fsprogs.mo

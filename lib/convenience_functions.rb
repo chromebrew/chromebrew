@@ -50,6 +50,15 @@ class ConvenienceFunctions
   end
 
   def self.load_symbolized_json
+    unless File.file?(File.join(CREW_CONFIG_PATH, 'device.json'))
+      puts 'Creating device.json.'
+      device = {
+        'architecture' => ARCH,
+        'installed_packages' => []
+      }
+      FileUtils.mkdir_p CREW_CONFIG_PATH
+      File.write(File.join(CREW_CONFIG_PATH, 'device.json'), JSON[device])
+    end
     return JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true).transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
   end
 
@@ -68,10 +77,8 @@ class ConvenienceFunctions
     crewlog 'Saving device.json...'
     begin
       File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
-    # rubocop:disable Lint/UselessAssignment
     rescue StandardError => e
-      # rubocop:enable Lint/UselessAssignment
-      puts "Error writing updated packages json file!\n{e.message}".lightred
+      puts "Error writing updated packages json file!\n#{e.message}".lightred
       abort
     end
 

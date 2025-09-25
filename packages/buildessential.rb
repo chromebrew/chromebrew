@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.46'
+  version '1.48'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -24,7 +24,10 @@ class Buildessential < Package
   depends_on 'libyaml'
   depends_on 'linuxheaders'
   depends_on 'make'
-  depends_on 'pkg_config'
+  depends_on 'pkgconf'
+  # pkg_config abandoned upstream.
+  # See https://gitlab.freedesktop.org/pkg-config/pkg-config/-/issues/85#note_2959008
+  # depends_on 'pkg_config'
   depends_on 'binutils'
   # coreutils provides /usr/local/bin/install for i686
   depends_on 'coreutils' if ARCH == 'i686'
@@ -185,6 +188,7 @@ class Buildessential < Package
   # Add rubocop for linting packages. (This also installs the
   # rubocop config file.)
   depends_on 'ruby_rubocop'
+  depends_on 'ruby_rubocop_chromebrew'
 
   # Code quality
   depends_on 'py3_pre_commit'

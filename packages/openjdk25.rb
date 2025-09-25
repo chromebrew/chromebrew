@@ -1,14 +1,14 @@
 require 'package'
 
-class Openjdk23 < Package
+class Openjdk25 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
-  version '23.0.2'
+  version '25.0.0'
   license 'GPL-2'
   compatibility 'x86_64'
-  # Visit https://www.azul.com/downloads/?package=jdk#zulu to download the binary.
-  source_url 'https://cdn.azul.com/zulu/bin/zulu23.32.11-ca-jdk23.0.2-linux_x64.tar.gz'
-  source_sha256 '4daad24b459fa09f652bdd80e10ce7f3a6ffcf01b3c5c432533cd31a72f93277'
+  # Visit https://www.azul.com/downloads/?version=java-25-lts&package=jdk#zulu to download the binary.
+  source_url 'https://cdn.azul.com/zulu/bin/zulu25.28.85-ca-jdk25.0.0-linux_x64.tar.gz'
+  source_sha256 '164d901e5a240b8c18516f5ab55bc11fc9689ab6e829045aea8467356dcdb340'
 
   no_compile_needed
   no_shrink
@@ -23,27 +23,27 @@ class Openjdk23 < Package
       majver = '8' if majver == '1'
       unless jdkname == 'openjdk' && majver == '17'
         puts "Package #{jdkname}#{majver} already installed.".lightgreen
-        abort "Enter `crew remove #{jdkname}#{majver} && crew install openjdk21` to install this version."
+        abort "Enter `crew remove #{jdkname}#{majver} && crew install openjdk25` to install this version."
       end
     end
   end
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/openjdk23"
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/openjdk23/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/openjdk25"
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/openjdk25/"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    Dir["#{CREW_DEST_PREFIX}/share/openjdk23/bin/*"].each do |binfile|
+    Dir["#{CREW_DEST_PREFIX}/share/openjdk25/bin/*"].each do |binfile|
       @basename = File.basename(binfile)
-      FileUtils.ln_s "#{CREW_PREFIX}/share/openjdk23/bin/#{@basename}", "#{CREW_DEST_PREFIX}/bin/#{@basename}"
+      FileUtils.ln_s "#{CREW_PREFIX}/share/openjdk25/bin/#{@basename}", "#{CREW_DEST_PREFIX}/bin/#{@basename}"
     end
-    FileUtils.mv Dir["#{CREW_DEST_PREFIX}/share/openjdk23/man/*"], CREW_DEST_MAN_PREFIX
+    FileUtils.mv Dir["#{CREW_DEST_PREFIX}/share/openjdk25/man/*"], CREW_DEST_MAN_PREFIX
     # Add environment variable.
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     javaenv = <<~EOF
       # Java configuration
       JAVA_HOME=#{CREW_PREFIX}
     EOF
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/10-openjdk23", javaenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/10-openjdk25", javaenv)
   end
 end

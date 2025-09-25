@@ -98,6 +98,8 @@ class PackageUtils
   end
 
   def self.get_clean_version(pkg_version)
+    # Delete debian versions for packages like libdb.
+    pkg_version.gsub!(/-dfsg.*/, '')
     # Delete -gcc14, futureproofed until gcc 100
     pkg_version.gsub!(/-gcc\d{2}/, '')
     # Trim kde- suffixes in qt5 packages so nothing else gets confused.
