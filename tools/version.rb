@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.1 (for Chromebrew)
+# version.rb version 3.2 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -286,6 +286,7 @@ if filelist.length.positive?
       if Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) == -1
         if UPDATE_PACKAGE_FILES && !@pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && updatable_pkg[@pkg.name.to_sym] == 'Yes'
           file = File.read(filename)
+          FileUtils.cp filename, "#{filename}.bak"
           if file.sub!(PackageUtils.get_clean_version(@pkg.version), upstream_version.chomp).nil?
             versions_updated[@pkg.name.to_sym] = false
           else
@@ -296,35 +297,54 @@ if filelist.length.positive?
             if !@pkg.source_sha256.nil? && @pkg.source_sha256.is_a?(Hash) && @pkg.source_sha256&.key?(ARCH.to_sym)
               # Get old hashes
               (@pkg.source_url.keys.map &:to_s).each do |arch|
-                puts "old source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE
+                puts "old source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE && !OUTPUT_JSON
                 old_hash[arch] = @pkg.source_sha256[arch.to_sym]
-                puts "old hash: #{old_hash[arch]}" if VERBOSE
+                puts "old hash: #{old_hash[arch]}" if VERBOSE && !OUTPUT_JSON
               end
               File.write(filename, file)
               # Now get new hashes
               @pkg = Package.load_package(filename, true)
               (@pkg.source_url.keys.map &:to_s).each do |arch|
-                puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE
+                puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE && !OUTPUT_JSON
+                unless `curl -fsI #{@pkg.source_url[arch.to_sym]}`.lines.first.split[1] == '200'
+                  versions_updated[@pkg.name.to_sym] = 'Bad Source'
+                  puts "#{@pkg.source_url[arch.to_sym]} is a bad source".lightred if VERBOSE && !OUTPUT_JSON
+                  if File.file?("#{filename}.bak")
+                    FileUtils.cp "#{filename}.bak", filename
+                    FileUtils.rm "#{filename}.bak"
+                  end
+                  next filename
+                end
                 new_hash[arch] = `curl -Ls #{@pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
-                puts "new hash: #{new_hash[arch]}" if VERBOSE
+                puts "new hash: #{new_hash[arch]}" if VERBOSE && !OUTPUT_JSON
                 file.sub!(old_hash[arch], new_hash[arch])
               end
             elsif !@pkg.source_sha256.nil? && !@pkg.source_sha256.is_a?(Hash)
               arch = :all
               # Get old hashes
               old_hash[arch] = @pkg.source_sha256
-              puts "old source_url: #{@pkg.source_url}" if VERBOSE
-              puts "old hash: #{old_hash[arch]}" if VERBOSE
+              puts "old source_url: #{@pkg.source_url}" if VERBOSE && !OUTPUT_JSON
+              puts "old hash: #{old_hash[arch]}" if VERBOSE && !OUTPUT_JSON
               File.write(filename, file)
               # Now get new hashes
               @pkg = Package.load_package(filename, true)
-              puts "new source_url: #{@pkg.source_url}" if VERBOSE
+              puts "new source_url: #{@pkg.source_url}" if VERBOSE && !OUTPUT_JSON
+              unless `curl -fsI #{@pkg.source_url}`.lines.first.split[1] == '200'
+                versions_updated[@pkg.name.to_sym] = 'Bad Source'
+                puts "#{@pkg.source_url} is a bad source.".lightred if VERBOSE && !OUTPUT_JSON
+                if File.file?("#{filename}.bak")
+                  FileUtils.cp "#{filename}.bak", filename
+                  FileUtils.rm "#{filename}.bak"
+                end
+                next filename
+              end
               new_hash[arch] = `curl -Ls #{@pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
-              puts "new hash: #{new_hash[arch]}" if VERBOSE
+              puts "new hash: #{new_hash[arch]}" if VERBOSE && !OUTPUT_JSON
               file.sub!(old_hash[arch], new_hash[arch])
             end
             File.write(filename, file)
             versions_updated[@pkg.name.to_sym] = true
+            FileUtils.rm "#{filename}.bak" if File.file?("#{filename}.bak")
           end
 
           if @pkg.binary_compression == 'tar.xz' && !@pkg.no_zstd?
