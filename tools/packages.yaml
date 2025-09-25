@@ -1400,6 +1400,11 @@ url: https://github.com/go-delve/delve/releases
 activity: medium
 ---
 kind: url
+name: deno
+url: https://github.com/denoland/deno/releases
+activity: high
+---
+kind: url
 name: deployer
 url: https://github.com/deployphp/deployer/releases
 activity: medium
