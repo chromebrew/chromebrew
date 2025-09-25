@@ -66,15 +66,6 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.ref_name }}
-      - name: Rebase to master
-        run: |
-            git config user.name "${{ github.actor }}"
-            git config user.email "${{ github.actor }}@users.noreply.github.com"
-            # git pull --rebase origin master
-            git fetch origin
-            git pull
-            git rebase -X theirs origin/master
-            git push --force-with-lease
       - name: Set Timestamp
         id: set-timestamp
         run: |
