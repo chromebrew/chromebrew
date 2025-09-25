@@ -21,9 +21,8 @@ class Libnghttp2 < CMake
   depends_on 'jansson' => :build
   depends_on 'jemalloc' => :build
   depends_on 'libev' => :build
-  depends_on 'openssl' # R
-  depends_on 'python3' => :build
   depends_on 'py3_cython' => :build
+  depends_on 'python3' => :build
 
   cmake_options '-DENABLE_SHARED_LIB=ON \
       -DENABLE_LIB_ONLY=ON'
