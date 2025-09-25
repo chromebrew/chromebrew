@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Vkd3d < Autotools
   description 'Vkd3d is a 3D graphics library built on top of Vulkan. It has an API very similar, but not identical, to Direct3D 12.'
   homepage 'https://wiki.winehq.org/Vkd3d/'
-  version '1.16'
+  version '1.17'
   license 'LGPL-2.1'
   compatibility 'x86_64'
   source_url 'https://gitlab.winehq.org/wine/vkd3d.git'
@@ -11,7 +11,7 @@ class Vkd3d < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '640dbf6451815908b51e438d3f48bacf032881cb17ee804c94ddf2da84e8e208'
+     x86_64: 'e165921a54201ad2c300ce92f939780969f86c240993fd0828ebb55cc8196c2b'
   })
 
   depends_on 'glibc' # R
