@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Jq < Autotools
   description 'jq is a lightweight and flexible command-line JSON processor.'
   homepage 'https://stedolan.github.io/jq/'
-  version '1.8.0'
+  version '1.8.1'
   license 'MIT and CC-BY-3.0'
   compatibility 'all'
   source_url 'https://github.com/stedolan/jq.git'
