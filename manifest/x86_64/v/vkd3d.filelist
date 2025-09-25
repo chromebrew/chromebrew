@@ -1,4 +1,4 @@
-# Total size: 7415299
+# Total size: 7602776
 /usr/local/bin/vkd3d-compiler
 /usr/local/bin/vkd3d-dxbc
 /usr/local/include/vkd3d/vkd3d.h
@@ -20,17 +20,17 @@
 /usr/local/lib64/libvkd3d-shader.la
 /usr/local/lib64/libvkd3d-shader.so
 /usr/local/lib64/libvkd3d-shader.so.1
-/usr/local/lib64/libvkd3d-shader.so.1.14.0
+/usr/local/lib64/libvkd3d-shader.so.1.15.0
 /usr/local/lib64/libvkd3d-utils.a
 /usr/local/lib64/libvkd3d-utils.la
 /usr/local/lib64/libvkd3d-utils.so
 /usr/local/lib64/libvkd3d-utils.so.1
-/usr/local/lib64/libvkd3d-utils.so.1.6.2
+/usr/local/lib64/libvkd3d-utils.so.1.6.3
 /usr/local/lib64/libvkd3d.a
 /usr/local/lib64/libvkd3d.la
 /usr/local/lib64/libvkd3d.so
 /usr/local/lib64/libvkd3d.so.1
-/usr/local/lib64/libvkd3d.so.1.16.0
+/usr/local/lib64/libvkd3d.so.1.17.0
 /usr/local/lib64/pkgconfig/libvkd3d-shader.pc
 /usr/local/lib64/pkgconfig/libvkd3d-utils.pc
 /usr/local/lib64/pkgconfig/libvkd3d.pc
