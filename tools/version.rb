@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.0 (for Chromebrew)
+# version.rb version 3.1 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -52,6 +52,9 @@ def get_version(name, homepage, source)
   anitya_name = name.gsub(/\Apy\d_|\Aperl_|\Aruby_/, '').tr('_', '-')
   anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.values[anitya_name_mapping_idx] unless anitya_name_mapping_idx.nil?
   anitya_id = get_anitya_id(anitya_name, homepage)
+  # If anitya_id cannot be determined, a Range can be returned, and
+  # .nonzero? does not work with Ranges.
+  anitya_id = nil if anitya_id.is_a? Range
   puts "anitya_name: #{anitya_name} anitya_id: #{anitya_id}" if VERBOSE
   if anitya_id&.nonzero?
     # Get the latest stable version of the package from anitya.
@@ -113,7 +116,9 @@ def get_anitya_id(name, homepage)
     return if json2['total_items'].zero?
 
     (0..(json2['total_items'] - 1)).each do |i|
-      next unless json2['items'][i]['distribution'] == 'Chromebrew'
+      # Sometimes we use versions from other distributions, e.g., libdb
+      # versioning comes from Fedora.
+      # next unless json2['items'][i]['distribution'] == 'Chromebrew'
       return get_anitya_id(json2['items'][i]['project'], homepage) if json2['items'][i]['name'] == name.tr('-', '_')
     end
   else # Anitya has more than one package with this exact name.
