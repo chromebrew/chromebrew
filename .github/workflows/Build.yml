@@ -66,6 +66,16 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.ref_name }}
+      - name: Set PR to Draft
+        id: set-to-draft
+        env:
+          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+        run: |
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
+          if [[ -n ${PR_NUMBER} ]]; then
+            echo "Setting ${PR_NUMBER} to Draft while workflow runs."
+            gh pr ready --undo || true
+          fi
       - name: Set Timestamp
         id: set-timestamp
         run: |
