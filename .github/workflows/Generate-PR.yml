@@ -61,6 +61,16 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.ref_name }}
+      - name: Set PR to Draft
+        id: set-to-draft
+        env:
+          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+        run: |
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
+          if [[ -n ${PR_NUMBER} ]]; then
+            echo "Setting ${PR_NUMBER} to Draft while workflow runs."
+            gh pr ready --undo || true
+          fi
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v47
@@ -194,7 +204,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m139" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m140" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 fi
@@ -206,7 +216,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m139" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m140" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
                 fi
@@ -227,6 +237,7 @@ jobs:
           UPDATE_PACKAGE_FILES: ${{ github.event.inputs.update_package_files }}
         run: |
             [[ "$UPDATE_PACKAGE_FILES" == 'false' ]] && exit 0
+            [[ -n ${CI} ]] && echo 'CI variable is set.'
             if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
               # Exit the arm container if there are not armv7l compatible packages.
               echo "Skipping armv7l container builds &/or package file updates."
