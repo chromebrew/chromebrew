@@ -237,6 +237,7 @@ jobs:
           UPDATE_PACKAGE_FILES: ${{ github.event.inputs.update_package_files }}
         run: |
             [[ "$UPDATE_PACKAGE_FILES" == 'false' ]] && exit 0
+            [[ -n ${CI} ]] && echo 'CI variable is set.'
             if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
               # Exit the arm container if there are not armv7l compatible packages.
               echo "Skipping armv7l container builds &/or package file updates."
