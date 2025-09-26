@@ -3,7 +3,7 @@ require 'package'
 class V2ray < Package
   description 'A platform for building proxies to bypass network restrictions.'
   homepage 'www.v2fly.org'
-  version 'v5.16.1'
+  version 'v5.39.0'
   license 'MIT'
   compatibility 'all'
 
