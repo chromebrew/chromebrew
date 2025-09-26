@@ -458,9 +458,9 @@ jobs:
             PR_TITLE="${{ inputs.pr_title }}"
           fi
           echo "PR title is: $(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
-          if [[ -z ${PR_LABEL} ]]; then
-              export PR_CREATE_LABEL_FLAG="--label '${{ inputs.pr_label }}'"
-              export PR_EDIT_LABEL_FLAG="--add-label '${{ inputs.pr_label }}'"
+          if [[ -z ${{ inputs.pr_label }} ]]; then
+              export PR_CREATE_LABEL_FLAG="--label ${{ inputs.pr_label }}"
+              export PR_EDIT_LABEL_FLAG="--add-label ${{ inputs.pr_label }}"
           fi
           if [[ -z ${PR_NUMBER} ]]; then
             PR_NUMBER=$(gh pr create -d --reviewer chromebrew/active $PR_CREATE_LABEL_FLAG --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
