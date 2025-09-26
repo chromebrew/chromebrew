@@ -12,10 +12,10 @@ on:
       - reopened
       - synchronize
   workflow_dispatch:
-  # workflow_run:
-  #  workflows: [Build]
-  #  types:
-  #    - completed
+  workflow_run:
+    workflows: [Generate PR]
+    types:
+      - completed
 jobs:
   container_tests:
     if: ${{ github.repository_owner == 'chromebrew' }}

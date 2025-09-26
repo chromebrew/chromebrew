@@ -1,8 +1,7 @@
-# Total size: 5108617
+# Total size: 726851
 /usr/local/bin/jq
 /usr/local/include/jq.h
 /usr/local/include/jv.h
-/usr/local/lib/libjq.a
 /usr/local/lib/libjq.la
 /usr/local/lib/libjq.so
 /usr/local/lib/libjq.so.1

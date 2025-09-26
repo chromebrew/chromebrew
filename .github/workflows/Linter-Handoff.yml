@@ -9,6 +9,10 @@ on:
       - synchronize
   merge_group:
   workflow_dispatch:
+  workflow_run:
+    workflows: [Generate PR]
+    types:
+      - completed
 env:
   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
 jobs:

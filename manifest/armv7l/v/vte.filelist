@@ -1,4 +1,4 @@
-# Total size: 1783349
+# Total size: 2313755
 /usr/local/bin/vte-2.91
 /usr/local/bin/vte-2.91-gtk4
 /usr/local/etc/profile.d/vte.csh
@@ -31,7 +31,7 @@
 /usr/local/lib/libvte-2.91-gtk4.so.0
 /usr/local/lib/libvte-2.91.so
 /usr/local/lib/libvte-2.91.so.0
-/usr/local/lib/libvte-2.91.so.0.8000.3
+/usr/local/lib/libvte-2.91.so.0.8200.0
 /usr/local/lib/pkgconfig/vte-2.91-gtk4.pc
 /usr/local/lib/pkgconfig/vte-2.91.pc
 /usr/local/libexec/vte-urlencode-cwd
@@ -82,6 +82,7 @@
 /usr/local/share/locale/hi/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/hr/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/hu/LC_MESSAGES/vte-2.91.mo
+/usr/local/share/locale/ia/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/id/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/is/LC_MESSAGES/vte-2.91.mo
 /usr/local/share/locale/it/LC_MESSAGES/vte-2.91.mo
