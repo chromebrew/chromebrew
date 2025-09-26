@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pyyaml < Pip
   description 'PyYAML is a YAML parser and emitter for Python.'
   homepage 'https://pyyaml.org/'
-  version "6.0.2-#{CREW_PY_VER}"
+  version "6.0.3-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
