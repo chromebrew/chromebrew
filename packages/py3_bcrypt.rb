@@ -16,9 +16,9 @@ class Py3_bcrypt < Pip
      x86_64: 'bde3b2e9450974dee000cca76b05b987590a75392e55dcfd3f0cf8bd4142c758'
   })
 
-  depends_on 'python3'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'python3'
   depends_on 'rust' => :build
 
   no_source_build
