@@ -25,6 +25,9 @@ on:
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
+      pr_label:
+        description: "PR Label"
+        required: false
 env:
   BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
@@ -386,6 +389,7 @@ jobs:
           CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
           DRAFT_PR: ${{ inputs.draft_pr }}
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+          PR_LABEL: ${{ inputs.pr_label }}
           PR_TITLE: ${{ inputs.pr_title }}
           i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
           x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
@@ -454,10 +458,14 @@ jobs:
             PR_TITLE="${{ inputs.pr_title }}"
           fi
           echo "PR title is: $(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
+          if [[ -z ${PR_LABEL} ]]; then
+              export PR_CREATE_LABEL_FLAG="--label '${{ inputs.pr_label }}'"
+              export PR_EDIT_LABEL_FLAG="--add-label '${{ inputs.pr_label }}'"
+          fi
           if [[ -z ${PR_NUMBER} ]]; then
-            PR_NUMBER=$(gh pr create -d --reviewer chromebrew/active --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+            PR_NUMBER=$(gh pr create -d --reviewer chromebrew/active $PR_CREATE_LABEL_FLAG --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
-            gh pr edit --add-reviewer chromebrew/active --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt
+            gh pr edit --add-reviewer chromebrew/active  $PR_EDIT_LABEL_FLAG --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt
           fi
           # Try to update branch before finishing.
           [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]] && gh pr update-branch || true
