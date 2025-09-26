@@ -272,7 +272,6 @@ jobs:
             git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
             git log --oneline -10
             docker pull --platform "${PLATFORM}" "${CONTAINER}"
-            sudo apt install -y acl
             sudo setfacl -R -m u:1000:rwx .
 
             # Use docker-in-docker shim to mount volume inside docker.
