@@ -12,6 +12,11 @@ on:
       pr_title:
         description: "Title of PR"
         required: false
+      update_merge_master:
+        description: "Update Branch."
+        required: false
+        type: boolean
+        default: 'true'
       update_package_files:
         description: "Update Package Files."
         required: false
@@ -70,6 +75,18 @@ jobs:
           if [[ -n ${PR_NUMBER} ]]; then
             echo "Setting ${PR_NUMBER} to Draft while workflow runs."
             gh pr ready --undo || true
+          fi
+          if [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]]; then
+            if [[ -n ${PR_NUMBER} ]]; then
+              # Try to update branch immediately.
+              gh pr update-branch || true
+            else
+              gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.ref_name }}"
+              # Create a draft PR and immediately try to update the branch
+              # before continuing.
+              gh pr update-branch || true
+            fi
+            git pull
           fi
       - name: Get changed files
         id: changed-files
@@ -430,7 +447,6 @@ jobs:
           [[ -n "${PKG_DELTA[*]}" ]] && PKG_DELTAS="— $(join_by , "${PKG_DELTA[@]}")"
           echo "PKG_DELTAS: $PKG_DELTAS"
           cat /tmp/pr.txt
-          [[ ${DRAFT_PR} == 'true' ]] && export PR_DRAFT_FLAG='-d'
           PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
           PR_TITLE_INPUT="${{ inputs.pr_title }}"
           if [[ -z ${PR_TITLE_INPUT} ]]; then
@@ -440,10 +456,12 @@ jobs:
           fi
           echo "PR title is: $(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
           if [[ -z ${PR_NUMBER} ]]; then
-            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+            PR_NUMBER=$(gh pr create -d --reviewer chromebrew/active --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
             gh pr edit --add-reviewer chromebrew/active --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt
           fi
+          # Try to update branch before finishing.
+          [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]] && gh pr update-branch || true
           # Draft PRs can not be set to automerge.
           if [[ ${DRAFT_PR} == 'true' ]]; then
             gh pr ready --undo || true

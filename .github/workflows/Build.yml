@@ -24,6 +24,11 @@ on:
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
+      update_merge_master:
+        description: "Update Branch."
+        required: false
+        type: boolean
+        default: 'true'
 env:
   BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
@@ -75,6 +80,9 @@ jobs:
           if [[ -n ${PR_NUMBER} ]]; then
             echo "Setting ${PR_NUMBER} to Draft while workflow runs."
             gh pr ready --undo || true
+            # Try to update branch before building if a PR already
+            # exists.
+            [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]] && gh pr update-branch || true
           fi
       - name: Set Timestamp
         id: set-timestamp
