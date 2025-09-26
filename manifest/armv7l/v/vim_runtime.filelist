@@ -1,4 +1,4 @@
-# Total size: 28507908
+# Total size: 28457970
 /usr/local/etc/vimrc
 /usr/local/share/vim/vim91/LICENSE
 /usr/local/share/vim/vim91/README.txt
@@ -446,6 +446,7 @@
 /usr/local/share/vim/vim91/ftplugin/cmake.vim
 /usr/local/share/vim/vim91/ftplugin/cmakecache.vim
 /usr/local/share/vim/vim91/ftplugin/cobol.vim
+/usr/local/share/vim/vim91/ftplugin/codeowners.vim
 /usr/local/share/vim/vim91/ftplugin/conf.vim
 /usr/local/share/vim/vim91/ftplugin/config.vim
 /usr/local/share/vim/vim91/ftplugin/confini.vim
@@ -917,6 +918,7 @@
 /usr/local/share/vim/vim91/indent/mp.vim
 /usr/local/share/vim/vim91/indent/nginx.vim
 /usr/local/share/vim/vim91/indent/nsis.vim
+/usr/local/share/vim/vim91/indent/nu.vim
 /usr/local/share/vim/vim91/indent/objc.vim
 /usr/local/share/vim/vim91/indent/obse.vim
 /usr/local/share/vim/vim91/indent/ocaml.vim
@@ -1033,7 +1035,6 @@
 /usr/local/share/vim/vim91/pack/dist/opt/dvorak/dvorak/enable.vim
 /usr/local/share/vim/vim91/pack/dist/opt/dvorak/plugin/dvorak.vim
 /usr/local/share/vim/vim91/pack/dist/opt/editexisting/plugin/editexisting.vim
-/usr/local/share/vim/vim91/pack/dist/opt/editorconfig/.editorconfig
 /usr/local/share/vim/vim91/pack/dist/opt/editorconfig/CONTRIBUTORS
 /usr/local/share/vim/vim91/pack/dist/opt/editorconfig/LICENSE
 /usr/local/share/vim/vim91/pack/dist/opt/editorconfig/LICENSE.PSF
@@ -1205,6 +1206,7 @@
 /usr/local/share/vim/vim91/syntax/cabalconfig.vim
 /usr/local/share/vim/vim91/syntax/cabalproject.vim
 /usr/local/share/vim/vim91/syntax/calendar.vim
+/usr/local/share/vim/vim91/syntax/cangjie.vim
 /usr/local/share/vim/vim91/syntax/catalog.vim
 /usr/local/share/vim/vim91/syntax/cdl.vim
 /usr/local/share/vim/vim91/syntax/cdrdaoconf.vim
@@ -1234,6 +1236,7 @@
 /usr/local/share/vim/vim91/syntax/cmusrc.vim
 /usr/local/share/vim/vim91/syntax/cobol.vim
 /usr/local/share/vim/vim91/syntax/coco.vim
+/usr/local/share/vim/vim91/syntax/codeowners.vim
 /usr/local/share/vim/vim91/syntax/colortest.vim
 /usr/local/share/vim/vim91/syntax/conaryrecipe.vim
 /usr/local/share/vim/vim91/syntax/conf.vim
@@ -1452,6 +1455,7 @@
 /usr/local/share/vim/vim91/syntax/karel.vim
 /usr/local/share/vim/vim91/syntax/kconfig.vim
 /usr/local/share/vim/vim91/syntax/kdl.vim
+/usr/local/share/vim/vim91/syntax/kitty.vim
 /usr/local/share/vim/vim91/syntax/kivy.vim
 /usr/local/share/vim/vim91/syntax/kix.vim
 /usr/local/share/vim/vim91/syntax/kotlin.vim
@@ -1481,6 +1485,7 @@
 /usr/local/share/vim/vim91/syntax/livebook.vim
 /usr/local/share/vim/vim91/syntax/lnk.vim
 /usr/local/share/vim/vim91/syntax/lnkmap.vim
+/usr/local/share/vim/vim91/syntax/log.vim
 /usr/local/share/vim/vim91/syntax/loginaccess.vim
 /usr/local/share/vim/vim91/syntax/logindefs.vim
 /usr/local/share/vim/vim91/syntax/logtalk.vim
@@ -1568,6 +1573,7 @@
 /usr/local/share/vim/vim91/syntax/nqc.vim
 /usr/local/share/vim/vim91/syntax/nroff.vim
 /usr/local/share/vim/vim91/syntax/nsis.vim
+/usr/local/share/vim/vim91/syntax/nu.vim
 /usr/local/share/vim/vim91/syntax/obj.vim
 /usr/local/share/vim/vim91/syntax/objc.vim
 /usr/local/share/vim/vim91/syntax/objcpp.vim
@@ -1978,7 +1984,6 @@
 /usr/local/share/vim/vim91/tutor/tutor1.tr
 /usr/local/share/vim/vim91/tutor/tutor1.uk
 /usr/local/share/vim/vim91/tutor/tutor1.vi
-/usr/local/share/vim/vim91/tutor/tutor1.zh
 /usr/local/share/vim/vim91/tutor/tutor1.zh_cn
 /usr/local/share/vim/vim91/tutor/tutor1.zh_tw
 /usr/local/share/vim/vim91/tutor/tutor2
