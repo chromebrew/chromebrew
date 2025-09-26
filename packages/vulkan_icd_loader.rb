@@ -13,7 +13,7 @@ class Vulkan_icd_loader < CMake
   binary_sha256({
     aarch64: '9c50de557fa419504de72ec34062c132d9458e3efae7d943d8911f5eb4b712ed',
      armv7l: '9c50de557fa419504de72ec34062c132d9458e3efae7d943d8911f5eb4b712ed',
-     x86_64: 'c18c24c88b02c0e27f67d66957358ee12e54cb9517b7e631ab44c84fa332502e'
+     x86_64: 'a4f1a7b2540c4be3d272c4a5d7f3046b9b0a8f81b6ab8b45be3ae3abbc935333'
   })
 
   depends_on 'glibc' # R
