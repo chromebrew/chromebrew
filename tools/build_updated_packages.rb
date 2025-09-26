@@ -84,7 +84,7 @@ def update_hashes(name = nil)
     # Add manifests if we are in the right architecture.
     # Using crew reinstall -f package here updates the hashes for
     # binaries.
-    FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist" if system("yes | crew reinstall -f #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
+    FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist" if system("yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
   end
 end
 
@@ -141,9 +141,9 @@ updated_packages.each do |pkg|
   elsif @pkg_obj.no_compile_needed?
     # Using crew reinstall -f package here updates the hashes for
     # binaries.
-    system "yes | crew reinstall -f #{name}"
+    system "yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}"
     # Add manifests if we are in the right architecture.
-    FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist" if system("yes | crew reinstall -f #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
+    FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist" if system("yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
   else
     if @pkg_obj.no_binaries_needed?
       updated_packages.delete(pkg)
