@@ -11,8 +11,8 @@ class Vulkan_icd_loader < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9c50de557fa419504de72ec34062c132d9458e3efae7d943d8911f5eb4b712ed',
-     armv7l: '9c50de557fa419504de72ec34062c132d9458e3efae7d943d8911f5eb4b712ed',
+    aarch64: '7b6c320239e8422305914bc206d09bbe12b39dc0b66126faed656efed5144b75',
+     armv7l: '7b6c320239e8422305914bc206d09bbe12b39dc0b66126faed656efed5144b75',
      x86_64: 'a4f1a7b2540c4be3d272c4a5d7f3046b9b0a8f81b6ab8b45be3ae3abbc935333'
   })
 
