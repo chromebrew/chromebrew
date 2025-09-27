@@ -3,7 +3,7 @@ require 'package'
 class Sccache < Package
   description 'Shared Compilation Cache'
   homepage 'https://github.com/mozilla/sccache/'
-  version '0.8.1'
+  version '0.10.0'
   license 'Apache-2.0, Apache-2.0-with-LLVM-exceptions, BSD, BSD-2, Boost-1.0, ISC, MIT, Unlicense and ZLIB'
   compatibility 'all'
   source_url 'https://github.com/mozilla/sccache.git'
