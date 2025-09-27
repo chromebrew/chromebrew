@@ -24,7 +24,7 @@ on:
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
-      update_merge_master:
+      update_rebase_to_master:
         description: "Update Branch."
         required: false
         type: boolean
@@ -85,7 +85,7 @@ jobs:
             gh pr ready --undo || true
             # Try to update branch before building if a PR already
             # exists.
-            [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]] && gh pr update-branch || true
+            [[ "${{ ( inputs.update_rebase_to_master ) }}" == 'true' ]] && gh pr update-branch --rebase || true
           fi
       - name: Set Timestamp
         id: set-timestamp
@@ -306,19 +306,6 @@ jobs:
               grep "Built and Uploaded:" /tmp/build.log || true
               echo "Deleting build output directories."
               sudo rm -rf release pkg_cache
-      - name: Add updated packages to branch.
-        id: push-check
-        run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "${{ github.actor }}"
-            git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git stash || true
-            git pull
-            git stash pop || true
-            git add -A
-            git commit -m "${{ inputs.branch || github.ref_name }}: Build Run on ${PLATFORM}." && git push
-            git log --oneline -10
-          fi
   build-check:
     runs-on: ubuntu-24.04
     needs:

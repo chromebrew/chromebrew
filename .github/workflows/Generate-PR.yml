@@ -12,7 +12,7 @@ on:
       pr_title:
         description: "Title of PR"
         required: false
-      update_merge_master:
+      update_rebase_to_master:
         description: "Update Branch."
         required: false
         type: boolean
@@ -79,7 +79,7 @@ jobs:
             echo "Setting ${PR_NUMBER} to Draft while workflow runs."
             gh pr ready --undo || true
           fi
-          if [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]]; then
+          if [[ "${{ ( inputs.update_rebase_to_master ) }}" == 'true' ]]; then
             if [[ -n ${PR_NUMBER} ]]; then
               # Try to update branch immediately.
               gh pr update-branch || true
@@ -89,7 +89,6 @@ jobs:
               # before continuing.
               gh pr update-branch || true
             fi
-            git pull
           fi
       - name: Get changed files
         id: changed-files
@@ -317,10 +316,10 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git stash || true
-            git pull
+            git fetch origin ${{ inputs.branch || github.ref_name }}
             git stash pop || true
             git add -A
-            git commit -m "${{ inputs.branch || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push
+            git commit -m "${{ inputs.branch || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push origin ${{ inputs.branch || github.ref_name }}
             git log --oneline -10
           fi
   build-check:
@@ -353,13 +352,26 @@ jobs:
           sudo gem install ruby-libversion
       - name: Save git log
         id: save-git-log
+        env:
+          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
         run: |
-            git config user.name "${{ github.actor }}"
-            git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git checkout master && git pull
-            git checkout "${{ inputs.branch || github.ref_name }}"
-            git log --oneline -10
-            git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
+          if [[ -n ${PR_NUMBER} ]]; then
+            # Try to update branch immediately.
+            gh pr update-branch --rebase || true
+          else
+            gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.ref_name }}"
+            # Create a draft PR and immediately try to update the branch
+            # before continuing.
+            gh pr update-branch --rebase || true
+          fi
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git checkout master && git fetch origin master
+          git checkout "${{ inputs.branch || github.ref_name }}"
+          # git rebase origin/master || git rebase --abort
+          git log --no-merges --oneline -10
+          git log --no-merges --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v47
@@ -377,7 +389,6 @@ jobs:
               - '!manifest/**'
               - '!packages/*.rb'
               - '!.github/**'
-          since_last_remote_commit: true
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
@@ -474,7 +485,7 @@ jobs:
             gh pr edit --add-reviewer chromebrew/active $PR_EDIT_LABEL_FLAG --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt
           fi
           # Try to update branch before finishing.
-          [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]] && gh pr update-branch || true
+          [[ "${{ ( inputs.update_rebase_to_master ) }}" == 'true' ]] && gh pr update-branch --rebase || true
           # Draft PRs can not be set to automerge.
           if [[ ${DRAFT_PR} == 'true' ]]; then
             gh pr ready --undo || true
