@@ -1,7 +1,4 @@
-<<<<<<< Updated upstream
 # Total size: 602992
-=======
->>>>>>> Stashed changes
 /usr/local/bin/mksquashfs
 /usr/local/bin/sqfscat
 /usr/local/bin/sqfstar
