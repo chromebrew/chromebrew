@@ -1,12 +1,7 @@
+# Total size: 22182839
 /usr/local/bin/scons
 /usr/local/bin/scons-configure-cache
 /usr/local/bin/sconsign
-/usr/local/lib/python3.13/site-packages/SCons-4.9.1-py3.13.egg-info/PKG-INFO
-/usr/local/lib/python3.13/site-packages/SCons-4.9.1-py3.13.egg-info/SOURCES.txt
-/usr/local/lib/python3.13/site-packages/SCons-4.9.1-py3.13.egg-info/dependency_links.txt
-/usr/local/lib/python3.13/site-packages/SCons-4.9.1-py3.13.egg-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/SCons-4.9.1-py3.13.egg-info/not-zip-safe
-/usr/local/lib/python3.13/site-packages/SCons-4.9.1-py3.13.egg-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/SCons/Action.py
 /usr/local/lib/python3.13/site-packages/SCons/Builder.py
 /usr/local/lib/python3.13/site-packages/SCons/CacheDir.py
@@ -278,8 +273,6 @@
 /usr/local/lib/python3.13/site-packages/SCons/Tool/dmd.py
 /usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/__init__.py
 /usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/__pycache__/__init__.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/docbook-xsl-1.76.1/.CatalogManager.properties.example
-/usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/docbook-xsl-1.76.1/.urilist
 /usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/docbook-xsl-1.76.1/AUTHORS
 /usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/docbook-xsl-1.76.1/BUGS
 /usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/docbook-xsl-1.76.1/COPYING
@@ -1778,3 +1771,11 @@
 /usr/local/lib/python3.13/site-packages/SCons/cpp.py
 /usr/local/lib/python3.13/site-packages/SCons/dblite.py
 /usr/local/lib/python3.13/site-packages/SCons/exitfuncs.py
+/usr/local/lib/python3.13/site-packages/scons-4.9.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/scons-4.9.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/scons-4.9.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/scons-4.9.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/scons-4.9.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/scons-4.9.1.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/scons-4.9.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/scons-4.9.1.dist-info/top_level.txt
