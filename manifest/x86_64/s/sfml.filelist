@@ -1,4 +1,7 @@
+<<<<<<< Updated upstream
 # Total size: 2617753
+=======
+>>>>>>> Stashed changes
 /usr/local/include/SFML/Audio.hpp
 /usr/local/include/SFML/Audio/AudioResource.hpp
 /usr/local/include/SFML/Audio/Export.hpp
