@@ -83,7 +83,7 @@ jobs:
             # is ok.
             git commit -m "Add unbuilt ${pkg} to ${updater_branch}" || true
             git push origin "HEAD:${updater_branch}" -f || true
-            gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${updater_branch}"
+            gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${updater_branch}" -f pr_label=updater
             git stash || true
             git checkout master
           done

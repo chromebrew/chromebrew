@@ -3,7 +3,7 @@ require 'package'
 class V2ray < Package
   description 'A platform for building proxies to bypass network restrictions.'
   homepage 'www.v2fly.org'
-  version 'v5.16.1'
+  version 'v5.39.0'
   license 'MIT'
   compatibility 'all'
 
@@ -14,10 +14,10 @@ class V2ray < Package
      x86_64: "https://github.com/v2fly/v2ray-core/releases/download/#{version}/v2ray-linux-64.zip"
   })
   source_sha256({
-    aarch64: '7d3380b9080abc42dae5efa37a15413f4df2b6b645a992c5046d7d53a16ab876',
-     armv7l: '7d3380b9080abc42dae5efa37a15413f4df2b6b645a992c5046d7d53a16ab876',
-       i686: 'efbe54462b11f27343da1a2585cc762944180b524f8f31d911b0e6bdc0cd33a8',
-     x86_64: '82a7bf0b37ce2fda36d9e0040d71a494170026841735e20d708717b99ca0fe9b'
+    aarch64: 'dcf53be54ba0f3f481e7e13eb6f9d51bd2bbbff6b76daf29f73f22d79d21ff04',
+     armv7l: 'dcf53be54ba0f3f481e7e13eb6f9d51bd2bbbff6b76daf29f73f22d79d21ff04',
+       i686: '9fb36d15e8cb9c02217909f39d21e4626baeae8c08609e81ffd50f07049c4b2f',
+     x86_64: '793f7e75a6fd2bfd03076253a7a4d58f05beb059e6fc0519ec5c0c2677fabe20'
   })
 
   no_compile_needed
