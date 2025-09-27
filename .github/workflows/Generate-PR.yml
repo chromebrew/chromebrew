@@ -358,19 +358,20 @@ jobs:
           PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
           if [[ -n ${PR_NUMBER} ]]; then
             # Try to update branch immediately.
-            gh pr update-branch || true
+            gh pr update-branch --rebase || true
           else
             gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.ref_name }}"
             # Create a draft PR and immediately try to update the branch
             # before continuing.
-            gh pr update-branch || true
+            gh pr update-branch --rebase || true
           fi
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git checkout master && git pull
+          git checkout master && git fetch origin master
           git checkout "${{ inputs.branch || github.ref_name }}"
-          git log --oneline -10
-          git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
+          # git rebase origin/master || git rebase --abort
+          git log --no-merges --oneline -10
+          git log --no-merges --oneline master...${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v47
@@ -485,7 +486,7 @@ jobs:
             gh pr edit --add-reviewer chromebrew/active $PR_EDIT_LABEL_FLAG --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt
           fi
           # Try to update branch before finishing.
-          [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]] && gh pr update-branch || true
+          [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]] && gh pr update-branch --rebase || true
           # Draft PRs can not be set to automerge.
           if [[ ${DRAFT_PR} == 'true' ]]; then
             gh pr ready --undo || true

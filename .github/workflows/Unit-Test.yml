@@ -34,7 +34,7 @@ jobs:
             runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
     concurrency:
-      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}
+      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ github.ref }}-${{ github.sha }}
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
