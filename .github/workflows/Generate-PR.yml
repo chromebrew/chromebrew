@@ -102,10 +102,16 @@ jobs:
           since_last_remote_commit: true
       - name: Export variables to github context
         id: changed-packages
+        env:
+          CHANGED_FILES: ${{ steps.changed-files.outputs.packages_all_changed_files }}
         run: |
-            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+            if [[ -n "${CHANGED_FILES}" ]]; then
+              # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+            else
+              echo "No Changed Files."
+            fi
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         run: |
@@ -458,14 +464,14 @@ jobs:
             PR_TITLE="${{ inputs.pr_title }}"
           fi
           echo "PR title is: $(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
-          if [[ -z ${{ inputs.pr_label }} ]]; then
+          if [[ -n "${PR_LABEL}" ]]; then
               export PR_CREATE_LABEL_FLAG="--label ${{ inputs.pr_label }}"
               export PR_EDIT_LABEL_FLAG="--add-label ${{ inputs.pr_label }}"
           fi
           if [[ -z ${PR_NUMBER} ]]; then
             PR_NUMBER=$(gh pr create -d --reviewer chromebrew/active $PR_CREATE_LABEL_FLAG --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
-            gh pr edit --add-reviewer chromebrew/active  $PR_EDIT_LABEL_FLAG --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt
+            gh pr edit --add-reviewer chromebrew/active $PR_EDIT_LABEL_FLAG --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt
           fi
           # Try to update branch before finishing.
           [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]] && gh pr update-branch || true
