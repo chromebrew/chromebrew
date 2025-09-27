@@ -1,4 +1,4 @@
-# Total size: 2614965
+# Total size: 2617753
 /usr/local/include/SFML/Audio.hpp
 /usr/local/include/SFML/Audio/AudioResource.hpp
 /usr/local/include/SFML/Audio/Export.hpp
@@ -135,19 +135,24 @@
 /usr/local/lib64/cmake/SFML/SFMLWindowSharedTargets.cmake
 /usr/local/lib64/libsfml-audio.so
 /usr/local/lib64/libsfml-audio.so.3.0
-/usr/local/lib64/libsfml-audio.so.3.0.1
+/usr/local/lib64/libsfml-audio.so.3.0.2
 /usr/local/lib64/libsfml-graphics.so
 /usr/local/lib64/libsfml-graphics.so.3.0
-/usr/local/lib64/libsfml-graphics.so.3.0.1
+/usr/local/lib64/libsfml-graphics.so.3.0.2
 /usr/local/lib64/libsfml-network.so
 /usr/local/lib64/libsfml-network.so.3.0
-/usr/local/lib64/libsfml-network.so.3.0.1
+/usr/local/lib64/libsfml-network.so.3.0.2
 /usr/local/lib64/libsfml-system.so
 /usr/local/lib64/libsfml-system.so.3.0
-/usr/local/lib64/libsfml-system.so.3.0.1
+/usr/local/lib64/libsfml-system.so.3.0.2
 /usr/local/lib64/libsfml-window.so
 /usr/local/lib64/libsfml-window.so.3.0
-/usr/local/lib64/libsfml-window.so.3.0.1
+/usr/local/lib64/libsfml-window.so.3.0.2
 /usr/local/lib64/pkgconfig/sfml-all.pc
+/usr/local/lib64/pkgconfig/sfml-audio.pc
+/usr/local/lib64/pkgconfig/sfml-graphics.pc
+/usr/local/lib64/pkgconfig/sfml-network.pc
+/usr/local/lib64/pkgconfig/sfml-system.pc
+/usr/local/lib64/pkgconfig/sfml-window.pc
 /usr/local/share/doc/SFML/license.md
 /usr/local/share/doc/SFML/readme.md
