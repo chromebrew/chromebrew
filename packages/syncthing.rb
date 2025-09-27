@@ -17,6 +17,7 @@ class Syncthing < Package
      x86_64: '80a0daafb672e7f98987e1c18c2d4f7886e08d00e994fd12196833179e829143'
   })
 
+  depends_on 'glibc' # R
   depends_on 'go' => :build
 
   def self.build
