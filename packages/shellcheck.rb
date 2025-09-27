@@ -3,7 +3,7 @@ require 'package'
 class Shellcheck < Package
   description 'Static analysis tool for shell scripts'
   homepage 'https://www.shellcheck.net/'
-  version '0.10.0'
+  version '0.11.0'
   license 'GPL-3.0'
   compatibility 'all'
   source_url({
