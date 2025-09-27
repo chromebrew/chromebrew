@@ -17,5 +17,6 @@ class Stunnel < Autotools
      x86_64: 'b0c5f60c70d1463a4d19bb5642b999283ac6e83936ddfbc63f1dc15a59702942'
   })
 
+  depends_on 'glibc' # R
   depends_on 'openssl'
 end
