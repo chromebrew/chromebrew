@@ -24,7 +24,7 @@ on:
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
-      update_merge_master:
+      update_rebase_to_master:
         description: "Update Branch."
         required: false
         type: boolean
@@ -85,7 +85,7 @@ jobs:
             gh pr ready --undo || true
             # Try to update branch before building if a PR already
             # exists.
-            [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]] && gh pr update-branch --rebase || true
+            [[ "${{ ( inputs.update_rebase_to_master ) }}" == 'true' ]] && gh pr update-branch --rebase || true
           fi
       - name: Set Timestamp
         id: set-timestamp
