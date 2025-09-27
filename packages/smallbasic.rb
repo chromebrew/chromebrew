@@ -3,12 +3,12 @@ require 'package'
 class Smallbasic < Package
   description 'SmallBASIC is a fast and easy to learn BASIC language interpreter'
   homepage 'https://smallbasic.github.io/'
-  version '12.23'
+  version '12_27'
   license 'GPLv3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/smallbasic/SmallBASIC.git'
   git_hashtag "v#{version}"
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'e86e6eda7034972b3d8cac560fab08c64eb9868105104b8846c8f0c5c4e5e8ec',
