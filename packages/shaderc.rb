@@ -27,6 +27,8 @@ class Shaderc < CMake
   depends_on 'spirv_headers' => :build
   depends_on 'spirv_tools' # R
 
+  conflicts_ok # conflicts with glslang
+
   def self.patch
     system './utils/git-sync-deps'
   end
