@@ -17,6 +17,7 @@ class Py3_pyyaml < Pip
   })
 
   depends_on 'glibc' # R
+  depends_on 'libyaml' => :build
   depends_on 'python3' # R
 
   no_source_build
