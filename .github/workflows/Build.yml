@@ -85,7 +85,7 @@ jobs:
             gh pr ready --undo || true
             # Try to update branch before building if a PR already
             # exists.
-            [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]] && gh pr update-branch || true
+            [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]] && gh pr update-branch --rebase || true
           fi
       - name: Set Timestamp
         id: set-timestamp
