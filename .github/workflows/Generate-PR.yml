@@ -89,7 +89,6 @@ jobs:
               # before continuing.
               gh pr update-branch || true
             fi
-            git pull
           fi
       - name: Get changed files
         id: changed-files
@@ -317,10 +316,10 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git stash || true
-            git pull
+            git fetch origin ${{ inputs.branch || github.ref_name }}
             git stash pop || true
             git add -A
-            git commit -m "${{ inputs.branch || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push
+            git commit -m "${{ inputs.branch || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push origin ${{ inputs.branch || github.ref_name }}
             git log --oneline -10
           fi
   build-check:
@@ -354,12 +353,22 @@ jobs:
       - name: Save git log
         id: save-git-log
         run: |
-            git config user.name "${{ github.actor }}"
-            git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git checkout master && git pull
-            git checkout "${{ inputs.branch || github.ref_name }}"
-            git log --oneline -10
-            git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
+          if [[ -n ${PR_NUMBER} ]]; then
+            # Try to update branch immediately.
+            gh pr update-branch || true
+          else
+            gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.ref_name }}"
+            # Create a draft PR and immediately try to update the branch
+            # before continuing.
+            gh pr update-branch || true
+          fi
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git checkout master && git pull
+          git checkout "${{ inputs.branch || github.ref_name }}"
+          git log --oneline -10
+          git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v47
