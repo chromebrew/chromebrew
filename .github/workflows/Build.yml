@@ -306,19 +306,6 @@ jobs:
               grep "Built and Uploaded:" /tmp/build.log || true
               echo "Deleting build output directories."
               sudo rm -rf release pkg_cache
-      - name: Add updated packages to branch.
-        id: push-check
-        run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "${{ github.actor }}"
-            git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git stash || true
-            git pull
-            git stash pop || true
-            git add -A
-            git commit -m "${{ inputs.branch || github.ref_name }}: Build Run on ${PLATFORM}." && git push
-            git log --oneline -10
-          fi
   build-check:
     runs-on: ubuntu-24.04
     needs:
