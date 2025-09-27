@@ -24,6 +24,14 @@ on:
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
+      update_merge_master:
+        description: "Update Branch."
+        required: false
+        type: boolean
+        default: 'true'
+      pr_label:
+        description: "PR Label"
+        required: false
 env:
   BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
@@ -75,6 +83,9 @@ jobs:
           if [[ -n ${PR_NUMBER} ]]; then
             echo "Setting ${PR_NUMBER} to Draft while workflow runs."
             gh pr ready --undo || true
+            # Try to update branch before building if a PR already
+            # exists.
+            [[ "${{ ( inputs.update_merge_master ) }}" == 'true' ]] && gh pr update-branch || true
           fi
       - name: Set Timestamp
         id: set-timestamp
@@ -268,7 +279,6 @@ jobs:
             git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
             git log --oneline -10
             docker pull --platform "${PLATFORM}" "${CONTAINER}"
-            sudo apt install -y acl
             # Detection of /output/pkg_cache dir triggers setting
             # CREW_CACHE_DIR=1 and CREW_CACHE_ENABLED=1 in the build
             # container. Without these, upload fails.
@@ -338,4 +348,4 @@ jobs:
           PR_TITLE: ${{ inputs.pr_title || inputs.branch || github.ref_name }}
         run: |
             echo "PR title being passed to the Generate PR workflow is: ${{ inputs.pr_title || inputs.branch || github.ref_name }}"
-            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }} -f branch="${{ inputs.branch || github.ref_name }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | ( read -rsd '' x; echo ${x@Q} ))"
+            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }} -f branch="${{ inputs.branch || github.ref_name }}" -f pr_label="${{ inputs.pr_label }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | ( read -rsd '' x; echo ${x@Q} ))"
