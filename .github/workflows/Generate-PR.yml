@@ -352,6 +352,8 @@ jobs:
           sudo gem install ruby-libversion
       - name: Save git log
         id: save-git-log
+        env:
+          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
         run: |
           PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
           if [[ -n ${PR_NUMBER} ]]; then
