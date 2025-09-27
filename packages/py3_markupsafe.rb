@@ -10,10 +10,10 @@ class Py3_markupsafe < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6ac52d175f30d1c71cbe716666db37b38bda1aab902b4711fc65b0b4787e6e85',
-     armv7l: '6ac52d175f30d1c71cbe716666db37b38bda1aab902b4711fc65b0b4787e6e85',
-       i686: '3c7918bacfe87950e96e6c61bd7c01cba0e9eb001a2c8c5fa00044cb84b3d036',
-     x86_64: '49f99e35b905332c91f943412514275618af337f5b70ea89cc35246d2c3b53fd'
+    aarch64: '3e7d18ebbfdfe857e91a4230c9bb7256b762e4be51f9afd5a85f8640398c52f2',
+     armv7l: '3e7d18ebbfdfe857e91a4230c9bb7256b762e4be51f9afd5a85f8640398c52f2',
+       i686: '2d3bdc24e56eabb480202c2d904b4513214b3e9d7e4e302a5b580cc405b30f43',
+     x86_64: '0a9024d25c8c712096ccfacf35550e6841d050a12a88db3d53751303bd80d7b7'
   })
 
   depends_on 'glibc' # R
