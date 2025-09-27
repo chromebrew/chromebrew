@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/python'
 
-class S3cmd < Package
+class S3cmd < Python
   description 'Command line tool for managing Amazon S3 and CloudFront services'
   homepage 'https://s3tools.org/s3cmd'
   version '2.4.0'
@@ -8,7 +8,7 @@ class S3cmd < Package
   compatibility 'all'
   source_url 'https://github.com/s3tools/s3cmd.git'
   git_hashtag "v#{version}"
-  binary_compression 'tpxz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'a56111bcb0829c95c9230715b44f382bf7cd9d5564962ff2c540a1d15502fa24',
@@ -20,12 +20,4 @@ class S3cmd < Package
   depends_on 'py3_python_dateutil'
   depends_on 'py3_python_magic'
   depends_on 'python3' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
 end
