@@ -1,4 +1,4 @@
-# Total size: 2667029
+# Total size: 2666940
 /usr/local/bin/SvtAv1EncApp
 /usr/local/include/svt-av1/EbConfigMacros.h
 /usr/local/include/svt-av1/EbDebugMacros.h
@@ -9,5 +9,5 @@
 /usr/local/include/svt-av1/EbSvtAv1Metadata.h
 /usr/local/lib/libSvtAv1Enc.so
 /usr/local/lib/libSvtAv1Enc.so.3
-/usr/local/lib/libSvtAv1Enc.so.3.1.0
+/usr/local/lib/libSvtAv1Enc.so.3.1.2
 /usr/local/lib/pkgconfig/SvtAv1Enc.pc
