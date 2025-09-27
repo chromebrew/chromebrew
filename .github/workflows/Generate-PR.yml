@@ -371,7 +371,7 @@ jobs:
           git checkout "${{ inputs.branch || github.ref_name }}"
           # git rebase origin/master || git rebase --abort
           git log --no-merges --oneline -10
-          git log --no-merges --oneline master...${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
+          git log --no-merges --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v47
@@ -389,7 +389,6 @@ jobs:
               - '!manifest/**'
               - '!packages/*.rb'
               - '!.github/**'
-          since_last_remote_commit: true
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
