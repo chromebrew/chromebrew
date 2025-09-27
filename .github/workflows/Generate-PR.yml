@@ -16,7 +16,7 @@ on:
         description: "Update Branch."
         required: false
         type: boolean
-        default: 'true'
+        default: 'false'
       update_package_files:
         description: "Update Package Files."
         required: false
