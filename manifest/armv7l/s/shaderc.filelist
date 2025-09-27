@@ -1,9 +1,10 @@
-# Total size: 165298404
+# Total size: 170066305
 /usr/local/bin/glslang
 /usr/local/bin/glslangValidator
 /usr/local/bin/glslc
 /usr/local/bin/spirv-as
 /usr/local/bin/spirv-cfg
+/usr/local/bin/spirv-diff
 /usr/local/bin/spirv-dis
 /usr/local/bin/spirv-lesspipe.sh
 /usr/local/bin/spirv-link
@@ -11,7 +12,6 @@
 /usr/local/bin/spirv-objdump
 /usr/local/bin/spirv-opt
 /usr/local/bin/spirv-reduce
-/usr/local/bin/spirv-remap
 /usr/local/bin/spirv-val
 /usr/local/include/glslang/Include/ResourceLimits.h
 /usr/local/include/glslang/Include/glslang_c_interface.h
@@ -26,7 +26,7 @@
 /usr/local/include/glslang/SPIRV/SPVRemapper.h
 /usr/local/include/glslang/SPIRV/SpvTools.h
 /usr/local/include/glslang/SPIRV/disassemble.h
-/usr/local/include/glslang/SPIRV/spirv.hpp
+/usr/local/include/glslang/SPIRV/spirv.hpp11
 /usr/local/include/glslang/build_info.h
 /usr/local/include/shaderc/env.h
 /usr/local/include/shaderc/shaderc.h
@@ -69,15 +69,18 @@
 /usr/local/lib/libSPIRV-Tools-reduce.a
 /usr/local/lib/libSPIRV-Tools-shared.so
 /usr/local/lib/libSPIRV-Tools.a
+/usr/local/lib/libSPIRV.so
+/usr/local/lib/libSPIRV.so.15
+/usr/local/lib/libSPIRV.so.15.4.0
 /usr/local/lib/libSPVRemapper.so
 /usr/local/lib/libSPVRemapper.so.15
-/usr/local/lib/libSPVRemapper.so.15.1.0
+/usr/local/lib/libSPVRemapper.so.15.4.0
 /usr/local/lib/libglslang-default-resource-limits.so
 /usr/local/lib/libglslang-default-resource-limits.so.15
-/usr/local/lib/libglslang-default-resource-limits.so.15.1.0
+/usr/local/lib/libglslang-default-resource-limits.so.15.4.0
 /usr/local/lib/libglslang.so
 /usr/local/lib/libglslang.so.15
-/usr/local/lib/libglslang.so.15.1.0
+/usr/local/lib/libglslang.so.15.4.0
 /usr/local/lib/libshaderc.a
 /usr/local/lib/libshaderc_combined.a
 /usr/local/lib/libshaderc_shared.so
