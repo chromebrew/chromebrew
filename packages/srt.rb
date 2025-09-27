@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Srt < CMake
   description 'Secure Reliable Transport library'
   homepage 'https://www.srtalliance.org/'
-  version '1.5.3'
+  version '1.5.4'
   license 'MPL-2.0'
   compatibility 'all'
   source_url 'https://github.com/Haivision/srt.git'
