@@ -11,10 +11,10 @@ class Squashfs < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b76bcefcd9bce133103b5d4c1a875b63b890f67f5b362479c9b3de13252b5643',
-     armv7l: 'b76bcefcd9bce133103b5d4c1a875b63b890f67f5b362479c9b3de13252b5643',
-       i686: 'b6a2b9d0c60f9b2f9d17bfdd29b8880cae36de3090755d5c09cec14b1f5ef156',
-     x86_64: 'ecf589181b60e80d5dbe0edb5b4ffbd01af604f64150378affbd88fbc50823c2'
+    aarch64: '2adc5f6223cd9d3363d0bafd47daa63792ff897cb6ac5750a5bd95233428d041',
+     armv7l: '2adc5f6223cd9d3363d0bafd47daa63792ff897cb6ac5750a5bd95233428d041',
+       i686: '3023aafdd16f8917c3e94b029d4f4445dc4d9450b1a1288242b16ef74c415d88',
+     x86_64: '111f4e5a379f6e28c694c3c6f00e3c92943cc2864eddbebb7457073f99d0e2ed'
   })
 
   depends_on 'compressdoc' => :build
