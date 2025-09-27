@@ -7795,6 +7795,11 @@ url: https://docs.astral.sh/ruff
 activity: medium
 ---
 kind: url
+name: py3_scons
+url: https://sourceforge.net/projects/scons/files/scons/
+activity: low
+---
+kind: url
 name: py3_setuptools
 url: https://github.com/pypa/setuptools/releases
 activity: medium
@@ -8573,11 +8578,6 @@ kind: url
 name: scite
 url: https://www.scintilla.org/SciTEDownload.html
 activity: medium
----
-kind: url
-name: scons
-url: https://sourceforge.net/projects/scons/files/scons/
-activity: low
 ---
 kind: url
 name: screen

@@ -127,6 +127,7 @@ renamed_packages = Set[
   { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', comments: 'Renamed to allow qt6 packages.' },
   { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', comments: 'Renamed to allow qt6 packages.' },
   { pkg_name: 'ranger', pkg_rename: 'ranger_fm', comments: 'Renamed to match pip package name.' },
+  { pkg_name: 'scons', pkg_rename: 'py3_scons', comments: 'Renamed to match pip package name.' },
   { pkg_name: 'tracker3', pkg_rename: 'tinysparql', comments: 'Renamed upstream.' },
   { pkg_name: 'tracker3_miners', pkg_rename: 'localsearch', comments: 'Renamed upstream.' },
   { pkg_name: 'util_macros', pkg_rename: 'xorg_macros', comments: 'Renamed to better match upstream.' },
