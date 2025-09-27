@@ -1,4 +1,4 @@
-# Total size: 1720807
+# Total size: 2564880
 /usr/local/etc/smartd.conf
 /usr/local/etc/smartd_warning.sh
 /usr/local/sbin/smartctl
@@ -22,8 +22,8 @@
 /usr/local/share/doc/smartmontools/examplescripts/Example8
 /usr/local/share/doc/smartmontools/examplescripts/README
 /usr/local/share/doc/smartmontools/smartd.conf
-/usr/local/share/man/man5/smartd.conf.5.gz
-/usr/local/share/man/man8/smartctl.8.gz
-/usr/local/share/man/man8/smartd.8.gz
-/usr/local/share/man/man8/update-smart-drivedb.8.gz
+/usr/local/share/man/man5/smartd.conf.5.zst
+/usr/local/share/man/man8/smartctl.8.zst
+/usr/local/share/man/man8/smartd.8.zst
+/usr/local/share/man/man8/update-smart-drivedb.8.zst
 /usr/local/share/smartmontools/drivedb.h
