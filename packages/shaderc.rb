@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Shaderc < CMake
   description 'Collection of tools, libraries and tests for shader compilation'
   homepage 'https://github.com/google/shaderc'
-  version '2025.1'
+  version '2025.4'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/google/shaderc.git'
