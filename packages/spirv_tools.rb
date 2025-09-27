@@ -17,9 +17,9 @@ class Spirv_tools < CMake
      x86_64: '553bc251d8ef417ba87a6c9b67940113e2bbcade47d808a0c29f198c8d5ffef9'
   })
 
+  # depends_on 'spirv_headers' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  # depends_on 'spirv_headers' => :build
 
   # https://github.com/KhronosGroup/SPIRV-Tools/issues/5728
   def self.patch
