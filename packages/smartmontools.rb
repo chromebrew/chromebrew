@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Smartmontools < Package
+class Smartmontools < Autotools
   description 'The smartmontools package contains two utility programs (smartctl and smartd) to control and monitor storage systems using the Self-Monitoring, Analysis and Reporting Technology System (SMART) built into most modern ATA/SATA, SCSI/SAS and NVMe disks.'
   homepage 'https://www.smartmontools.org/'
   version '7.5'
@@ -19,13 +19,5 @@ class Smartmontools < Package
 
   depends_on 'gpgme'
 
-  def self.build
-    system './autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS} --with-nvme-devicescan --disable-maintainer-mode"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_configure_options '--with-nvme-devicescan --disable-maintainer-mode'
 end
