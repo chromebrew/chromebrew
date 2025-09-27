@@ -3,7 +3,7 @@ require 'package'
 class Syncthing < Package
   description 'An application that lets you synchronize your files across multiple devices'
   homepage 'https://github.com/syncthing/syncthing'
-  version '1.27.8'
+  version '2.0.10'
   license 'Apache-2.0, BSD, BSD-2, ISC, MIT, MPL-2.0 and Unlicense'
   compatibility 'all'
   source_url 'https://github.com/syncthing/syncthing.git'
