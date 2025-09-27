@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Shaderc < CMake
   description 'Collection of tools, libraries and tests for shader compilation'
   homepage 'https://github.com/google/shaderc'
-  version '2025.1'
+  version '2025.4'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/google/shaderc.git'
@@ -14,10 +14,9 @@ class Shaderc < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4d58609c7931481b599123cf4f3ea7d7dd6c0604e05845e6a17f5ac73208fede',
-     armv7l: '4d58609c7931481b599123cf4f3ea7d7dd6c0604e05845e6a17f5ac73208fede',
-       i686: 'd0b7a92f5021b97f5c9e0ec229acae6f2820b8b38a037755c526328458442c7c',
-     x86_64: '652ec3178fd6cdbfa37d86c043bf6e2da1530c11a2892b9e6847ed2aa395b67a'
+    aarch64: '10afd6df640941542e19f92760a8f55895f080949072ac7df1f46ba4456fa627',
+     armv7l: '10afd6df640941542e19f92760a8f55895f080949072ac7df1f46ba4456fa627',
+     x86_64: '00db20c22ac98f17becaf9f8d628b8b50eac78f22011666cd7a63f99dfb24110'
   })
 
   depends_on 'ruby_asciidoctor' => :build
@@ -26,6 +25,8 @@ class Shaderc < CMake
   depends_on 'glslang' # R
   depends_on 'spirv_headers' => :build
   depends_on 'spirv_tools' # R
+
+  conflicts_ok # conflicts with glslang
 
   def self.patch
     system './utils/git-sync-deps'
