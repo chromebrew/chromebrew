@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Sfml < CMake
   description 'SFML is a simple, fast, cross-platform and object-oriented multimedia API.'
   homepage 'https://www.sfml-dev.org/'
-  version '3.0.1'
+  version '3.0.2'
   license 'zlib'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/SFML/SFML.git'
@@ -11,9 +11,9 @@ class Sfml < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '18d0db77e3d0ae5ad0e5e7a89497e5e1ddc3b3c8a024ae836db8f6537e433035',
-     armv7l: '18d0db77e3d0ae5ad0e5e7a89497e5e1ddc3b3c8a024ae836db8f6537e433035',
-     x86_64: 'dca53b12066dae1caa17bd0bdd79e6ef6f56ed3a95d1c56cc242d2459533dfa2'
+    aarch64: 'fcde545d4a23359171c994cf44032a1707d2fefb0d1e9056c3c841785f738fea',
+     armv7l: 'fcde545d4a23359171c994cf44032a1707d2fefb0d1e9056c3c841785f738fea',
+     x86_64: '7d5fb83ac3623056140881425424e06fa0dfd7c8ca8f17ad1360fd78345877d9'
   })
 
   depends_on 'eudev' # R
