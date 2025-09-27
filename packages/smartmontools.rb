@@ -20,4 +20,8 @@ class Smartmontools < Autotools
   depends_on 'gpgme'
 
   autotools_configure_options '--with-nvme-devicescan --disable-maintainer-mode'
+
+  def self.prebuild
+    system 'autoreconf -fiv'
+  end
 end
