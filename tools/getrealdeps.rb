@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.2 (for Chromebrew)
+# getrealdeps version 2.3 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -44,6 +44,8 @@ end
 
 # Write the missing dependencies to the package file.
 def write_deps(pkg_file, pkgdeps, pkg)
+  # pkg is not pkg.name in this function.
+  # e.g., pkg is Package::Py3_pyyaml
   # Add special deps for perl, pip, python, and ruby gem packages.
   case pkg.superclass.to_s
   when 'PERL'
@@ -78,7 +80,7 @@ def write_deps(pkg_file, pkgdeps, pkg)
     puts "#{pkg.name}: #{exception[:exclusion_regex]} - #{exception[:comments]}..".orange if pkgdeps_length != pkgdeps.length
   end
 
-  puts "\nPackage #{pkg} has runtime library dependencies on these packages:".lightblue
+  puts "\nPackage #{pkg.name} has runtime library dependencies on these packages:".lightblue
   pkgdeps.each do |i|
     puts "  depends_on '#{i}' # R".lightgreen
   end
@@ -87,7 +89,7 @@ def write_deps(pkg_file, pkgdeps, pkg)
   missingpkgdeps = pkgdeps.reject { File.read(pkg_file).include?("depends_on '#{it}'") unless File.read(pkg_file).include?("depends_on '#{it}' => :build") }
 
   unless missingpkgdeps.empty?
-    puts "\nPackage file #{pkg}.rb is missing these runtime library dependencies:".orange
+    puts "\nPackage file #{pkg_file} is missing these runtime library dependencies:".orange
     puts "  depends_on '#{missingpkgdeps.join("' # R\n  depends_on '")}' # R".orange
   end
 
@@ -143,10 +145,11 @@ def write_deps(pkg_file, pkgdeps, pkg)
 
   # Clean with rubocop.
   system "rubocop -c #{rubocop_config} -A #{pkg_file}"
-  FileUtils.cp pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb" unless CREW_LOCAL_REPO_ROOT.to_s.empty?
+  FileUtils.cp pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}" unless CREW_LOCAL_REPO_ROOT.to_s.empty?
 end
 
 def main(pkg)
+  # pkg is pkg.name in this function.
   puts "Checking for the runtime dependencies of #{pkg}...".lightblue
   pkg_file = File.join(CREW_PACKAGES_PATH, "#{pkg}.rb")
   FileUtils.cp File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"), pkg_file if !CREW_LOCAL_REPO_ROOT.to_s.empty? && File.file?(File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"))
