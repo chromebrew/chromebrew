@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Spirv_headers < CMake
   homepage 'https://github.com/KhronosGroup/SPIRV-Headers'
   description 'SPIR-V Headers'
-  version '1.4.304.1'
+  version '1.5.4.raytracing.fixed'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/SPIRV-Headers.git'
