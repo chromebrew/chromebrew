@@ -19,19 +19,19 @@ class Sdl3 < CMake
      x86_64: '2adbf33cdce6dfa55435b99d767a1f9421f9579f37ad5f250807ef3089cca8ba'
   })
 
-  depends_on 'libxext' => :build
-  depends_on 'libxrender' => :build
+  depends_on 'alsa_lib' => :build
+  depends_on 'glibc' # R
+  depends_on 'libusb' => :build
   depends_on 'libx11' => :build
   depends_on 'libxcursor' => :build
-  depends_on 'libusb' => :build
-  depends_on 'alsa_lib' => :build
+  depends_on 'libxext' => :build
+  depends_on 'libxinerama' => :build
+  depends_on 'libxkbcommon' => :build
+  depends_on 'libxrandr' => :build
+  depends_on 'libxrender' => :build
   depends_on 'mesa' => :build
   depends_on 'pulseaudio' => :build
-  depends_on 'libxrandr' => :build
-  depends_on 'libxinerama' => :build
   depends_on 'wayland' => :build
-  depends_on 'libxkbcommon' => :build
-  depends_on 'glibc' # R
 
   cmake_options '-DSDL_HIDAPI_LIBUSB=OFF \
     -DSDL_RPI=OFF \
