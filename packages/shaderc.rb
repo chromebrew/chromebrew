@@ -14,10 +14,10 @@ class Shaderc < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4d58609c7931481b599123cf4f3ea7d7dd6c0604e05845e6a17f5ac73208fede',
-     armv7l: '4d58609c7931481b599123cf4f3ea7d7dd6c0604e05845e6a17f5ac73208fede',
+    aarch64: '10afd6df640941542e19f92760a8f55895f080949072ac7df1f46ba4456fa627',
+     armv7l: '10afd6df640941542e19f92760a8f55895f080949072ac7df1f46ba4456fa627',
        i686: 'd0b7a92f5021b97f5c9e0ec229acae6f2820b8b38a037755c526328458442c7c',
-     x86_64: '652ec3178fd6cdbfa37d86c043bf6e2da1530c11a2892b9e6847ed2aa395b67a'
+     x86_64: '00db20c22ac98f17becaf9f8d628b8b50eac78f22011666cd7a63f99dfb24110'
   })
 
   depends_on 'ruby_asciidoctor' => :build
