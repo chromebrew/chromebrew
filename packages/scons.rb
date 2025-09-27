@@ -4,7 +4,7 @@ class Scons < Python
   description 'SCons is an Open Source software construction tool that is, a next-generation build tool.'
   homepage 'https://scons.org/'
   license 'MIT'
-  version '4.8.0'
+  version '4.9.1'
   compatibility 'all'
   source_url 'https://github.com/SCons/scons.git'
   git_hashtag version
