@@ -3,7 +3,7 @@ require 'package'
 class Opencl_headers < Package
   description 'OpenCL header files'
   homepage 'https://github.com/KhronosGroup/OpenCL-Headers'
-  version '2022.09.30'
+  version '2025.07.22'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/OpenCL-Headers.git'
