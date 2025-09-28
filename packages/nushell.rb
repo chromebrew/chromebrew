@@ -3,7 +3,7 @@ require 'package'
 class Nushell < Package
   description 'A new type of shell'
   homepage 'https://www.nushell.sh/'
-  version '0.104.0'
+  version '0.107.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'
