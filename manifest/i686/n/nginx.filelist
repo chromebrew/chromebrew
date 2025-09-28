@@ -1,4 +1,3 @@
-# Total size: 824733
 /usr/local/bin/startnginx
 /usr/local/bin/stopnginx
 /usr/local/etc/bash.d/10-nginx

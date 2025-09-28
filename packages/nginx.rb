@@ -11,10 +11,10 @@ class Nginx < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '74e6a0c6354a12ae178e0c0181ec8ec857f1786ac34abd3fedb65806c2ff0b1b',
-     armv7l: '74e6a0c6354a12ae178e0c0181ec8ec857f1786ac34abd3fedb65806c2ff0b1b',
-       i686: 'af95c778de001cf5a829981a81ef1fce51ed6280348823c2e37c53a75b1ccc30',
-     x86_64: '150e225e313477b2d8c82765c3aaffbce7ccc6fb30acf0d19123a33a41143fd3'
+    aarch64: 'bdb1008300115754a0cb60522c920a40f48a4f1aca1ec8daf022a6d22e031d53',
+     armv7l: 'bdb1008300115754a0cb60522c920a40f48a4f1aca1ec8daf022a6d22e031d53',
+       i686: 'cf6022a7ca7255833c0fff6af1aa1e72227220ae5052fc3bd57fb4997eb84f6a',
+     x86_64: 'fda8d87bf42bfc07fd610c608d290fb28a1f7535993e6618ffcf4bd713016dd0'
   })
 
   depends_on 'pcre'
