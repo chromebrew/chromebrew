@@ -3,7 +3,7 @@ require 'package'
 class Nuclei < Package
   description 'Fast, customizable vulnerability scanner'
   homepage 'https://docs.projectdiscovery.io/tools/nuclei'
-  version '3.4.6'
+  version '3.4.10'
   license 'MIT'
   compatibility 'all'
   source_url({
