@@ -16,4 +16,6 @@ class Openlibm < CMake
        i686: '05fc93989659b621a63cb7846f0cec40b21afd72e82d5a495b6835ef2439bdea',
      x86_64: '874fa3a677169dc506eb3b24c52e2dafef433d4f34bacfb3e30696da8611bf64'
   })
+
+  cmake_options '-DCMAKE_SYSTEM_PROCESSOR=armv7-a' if ARCH == 'armv7l'
 end
