@@ -106,7 +106,7 @@ Metrics:
 # Many package names include - or _ and we don't want to lose that information by mistakenly converting into CamelCase.
 Naming/ClassAndModuleCamelCase:
   Exclude:
-    - 'packages/*'
+   - /**/packages/*
 
 # If there is meaningful information to convey about the contents of a heredoc, a comment is the best way to do it.
 # Forcing unique names for all heredoc delimiters does not improve documentation in the vast majority of cases.
