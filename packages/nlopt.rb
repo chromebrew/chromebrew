@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Nlopt < CMake
   description 'nonlinear optimization library'
   homepage 'http://ab-initio.mit.edu/wiki/index.php/NLopt'
-  version '2.8.0'
+  version '2.10.0'
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/stevengj/nlopt.git'
