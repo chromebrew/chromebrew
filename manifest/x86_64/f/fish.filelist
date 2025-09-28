@@ -1,17 +1,17 @@
-# Total size: 16556421
+# Total size: 29972979
 /usr/local/bin/fish
 /usr/local/bin/fish_indent
 /usr/local/bin/fish_key_reader
 /usr/local/etc/fish/config.fish
-/usr/local/share/applications/fish.desktop
 /usr/local/share/doc/fish/CHANGELOG.rst
 /usr/local/share/fish/__fish_build_paths.fish
-/usr/local/share/fish/completions/..fish
+/usr/local/share/fish/completions/!.fish
 /usr/local/share/fish/completions/7z.fish
 /usr/local/share/fish/completions/7za.fish
 /usr/local/share/fish/completions/7zr.fish
 /usr/local/share/fish/completions/VBoxHeadless.fish
 /usr/local/share/fish/completions/VBoxSDL.fish
+/usr/local/share/fish/completions/[.fish
 /usr/local/share/fish/completions/a2disconf.fish
 /usr/local/share/fish/completions/a2dismod.fish
 /usr/local/share/fish/completions/a2dissite.fish
@@ -78,6 +78,7 @@
 /usr/local/share/fish/completions/arc.fish
 /usr/local/share/fish/completions/archlinux-java.fish
 /usr/local/share/fish/completions/arepack.fish
+/usr/local/share/fish/completions/argocd.fish
 /usr/local/share/fish/completions/argparse.fish
 /usr/local/share/fish/completions/ark.fish
 /usr/local/share/fish/completions/arp.fish
@@ -161,6 +162,8 @@
 /usr/local/share/fish/completions/chown.fish
 /usr/local/share/fish/completions/chronyc.fish
 /usr/local/share/fish/completions/chsh.fish
+/usr/local/share/fish/completions/cilium.fish
+/usr/local/share/fish/completions/cjpm.fish
 /usr/local/share/fish/completions/cjxl.fish
 /usr/local/share/fish/completions/clang++.fish
 /usr/local/share/fish/completions/clang.fish
@@ -193,6 +196,7 @@
 /usr/local/share/fish/completions/configure.fish
 /usr/local/share/fish/completions/conjure.fish
 /usr/local/share/fish/completions/connmanctl.fish
+/usr/local/share/fish/completions/container.fish
 /usr/local/share/fish/completions/contains.fish
 /usr/local/share/fish/completions/continue.fish
 /usr/local/share/fish/completions/convert.fish
@@ -200,6 +204,7 @@
 /usr/local/share/fish/completions/cowsay.fish
 /usr/local/share/fish/completions/cowthink.fish
 /usr/local/share/fish/completions/cp.fish
+/usr/local/share/fish/completions/cpan.fish
 /usr/local/share/fish/completions/cpupower.fish
 /usr/local/share/fish/completions/crc.fish
 /usr/local/share/fish/completions/create_ap.fish
@@ -210,6 +215,7 @@
 /usr/local/share/fish/completions/csharp.fish
 /usr/local/share/fish/completions/csi.fish
 /usr/local/share/fish/completions/csvlens.fish
+/usr/local/share/fish/completions/cue.fish
 /usr/local/share/fish/completions/cupsaccept.fish
 /usr/local/share/fish/completions/cupsdisable.fish
 /usr/local/share/fish/completions/cupsenable.fish
@@ -221,6 +227,7 @@
 /usr/local/share/fish/completions/cygpath.fish
 /usr/local/share/fish/completions/cygport.fish
 /usr/local/share/fish/completions/cygstart.fish
+/usr/local/share/fish/completions/dagger.fish
 /usr/local/share/fish/completions/darcs.fish
 /usr/local/share/fish/completions/dart.fish
 /usr/local/share/fish/completions/date.fish
@@ -239,6 +246,7 @@
 /usr/local/share/fish/completions/diskutil.fish
 /usr/local/share/fish/completions/disown.fish
 /usr/local/share/fish/completions/display.fish
+/usr/local/share/fish/completions/distrobox.fish
 /usr/local/share/fish/completions/dive.fish
 /usr/local/share/fish/completions/djview.fish
 /usr/local/share/fish/completions/djview4.fish
@@ -362,6 +370,7 @@
 /usr/local/share/fish/completions/git-subtree.fish
 /usr/local/share/fish/completions/git.fish
 /usr/local/share/fish/completions/gitk.fish
+/usr/local/share/fish/completions/glow.fish
 /usr/local/share/fish/completions/gnome-extensions.fish
 /usr/local/share/fish/completions/go.fish
 /usr/local/share/fish/completions/godoc.fish
@@ -411,12 +420,14 @@
 /usr/local/share/fish/completions/horcrux.fish
 /usr/local/share/fish/completions/hostnamectl.fish
 /usr/local/share/fish/completions/htop.fish
+/usr/local/share/fish/completions/hubble.fish
 /usr/local/share/fish/completions/hugo.fish
 /usr/local/share/fish/completions/hwinfo.fish
 /usr/local/share/fish/completions/i3-msg.fish
 /usr/local/share/fish/completions/ibmcloud.fish
 /usr/local/share/fish/completions/ibus.fish
 /usr/local/share/fish/completions/icdiff.fish
+/usr/local/share/fish/completions/iconutil.fish
 /usr/local/share/fish/completions/iconv.fish
 /usr/local/share/fish/completions/id.fish
 /usr/local/share/fish/completions/identify.fish
@@ -455,6 +466,7 @@
 /usr/local/share/fish/completions/just.fish
 /usr/local/share/fish/completions/jv.fish
 /usr/local/share/fish/completions/k3d.fish
+/usr/local/share/fish/completions/k9s.fish
 /usr/local/share/fish/completions/kak.fish
 /usr/local/share/fish/completions/kb.fish
 /usr/local/share/fish/completions/kcmshell5.fish
@@ -472,6 +484,7 @@
 /usr/local/share/fish/completions/kops.fish
 /usr/local/share/fish/completions/krita.fish
 /usr/local/share/fish/completions/ksh.fish
+/usr/local/share/fish/completions/kubebuilder.fish
 /usr/local/share/fish/completions/kubectl.fish
 /usr/local/share/fish/completions/kustomize.fish
 /usr/local/share/fish/completions/latex.fish
@@ -680,6 +693,7 @@
 /usr/local/share/fish/completions/pkgrm.fish
 /usr/local/share/fish/completions/pkill.fish
 /usr/local/share/fish/completions/plutil.fish
+/usr/local/share/fish/completions/pnpm.fish
 /usr/local/share/fish/completions/poff.fish
 /usr/local/share/fish/completions/pon.fish
 /usr/local/share/fish/completions/port.fish
@@ -691,6 +705,8 @@
 /usr/local/share/fish/completions/pre-commit.fish
 /usr/local/share/fish/completions/prevd.fish
 /usr/local/share/fish/completions/prime-run.fish
+/usr/local/share/fish/completions/protontricks-launch.fish
+/usr/local/share/fish/completions/protontricks.fish
 /usr/local/share/fish/completions/proxychains.fish
 /usr/local/share/fish/completions/prt-get.fish
 /usr/local/share/fish/completions/ps.fish
@@ -703,6 +719,7 @@
 /usr/local/share/fish/completions/pstack.fish
 /usr/local/share/fish/completions/pstree.fish
 /usr/local/share/fish/completions/psub.fish
+/usr/local/share/fish/completions/pulumi.fish
 /usr/local/share/fish/completions/pushd.fish
 /usr/local/share/fish/completions/pv.fish
 /usr/local/share/fish/completions/pwd.fish
@@ -822,6 +839,7 @@
 /usr/local/share/fish/completions/ssh.fish
 /usr/local/share/fish/completions/sshfs.fish
 /usr/local/share/fish/completions/stack.fish
+/usr/local/share/fish/completions/stackit.fish
 /usr/local/share/fish/completions/starship.fish
 /usr/local/share/fish/completions/stat.fish
 /usr/local/share/fish/completions/status.fish
@@ -831,6 +849,7 @@
 /usr/local/share/fish/completions/string.fish
 /usr/local/share/fish/completions/su.fish
 /usr/local/share/fish/completions/subl.fish
+/usr/local/share/fish/completions/sudo-rs.fish
 /usr/local/share/fish/completions/sudo.fish
 /usr/local/share/fish/completions/sv.fish
 /usr/local/share/fish/completions/svn.fish
@@ -842,6 +861,7 @@
 /usr/local/share/fish/completions/systemd-analyze.fish
 /usr/local/share/fish/completions/systemd-cryptenroll.fish
 /usr/local/share/fish/completions/systemd-nspawn.fish
+/usr/local/share/fish/completions/t-rec.fish
 /usr/local/share/fish/completions/tail.fish
 /usr/local/share/fish/completions/tailscale.fish
 /usr/local/share/fish/completions/tar.fish
@@ -862,6 +882,7 @@
 /usr/local/share/fish/completions/tmutil.fish
 /usr/local/share/fish/completions/tmux.fish
 /usr/local/share/fish/completions/tmuxinator.fish
+/usr/local/share/fish/completions/tmuxp.fish
 /usr/local/share/fish/completions/tofu.fish
 /usr/local/share/fish/completions/tokei.fish
 /usr/local/share/fish/completions/toot.fish
@@ -889,6 +910,7 @@
 /usr/local/share/fish/completions/type.fish
 /usr/local/share/fish/completions/typst.fish
 /usr/local/share/fish/completions/udevadm.fish
+/usr/local/share/fish/completions/udevil.fish
 /usr/local/share/fish/completions/udisksctl.fish
 /usr/local/share/fish/completions/ulimit.fish
 /usr/local/share/fish/completions/umask.fish
@@ -908,6 +930,8 @@
 /usr/local/share/fish/completions/userdbctl.fish
 /usr/local/share/fish/completions/userdel.fish
 /usr/local/share/fish/completions/usermod.fish
+/usr/local/share/fish/completions/uv.fish
+/usr/local/share/fish/completions/uvx.fish
 /usr/local/share/fish/completions/vagrant.fish
 /usr/local/share/fish/completions/valgrind.fish
 /usr/local/share/fish/completions/validate-spice.fish
@@ -920,6 +944,7 @@
 /usr/local/share/fish/completions/vips.fish
 /usr/local/share/fish/completions/virsh.fish
 /usr/local/share/fish/completions/vmctl.fish
+/usr/local/share/fish/completions/volta.fish
 /usr/local/share/fish/completions/w.fish
 /usr/local/share/fish/completions/wait.fish
 /usr/local/share/fish/completions/wajig.fish
@@ -1037,7 +1062,9 @@
 /usr/local/share/fish/functions/__fish_append.fish
 /usr/local/share/fish/functions/__fish_apropos.fish
 /usr/local/share/fish/functions/__fish_argcomplete_complete.fish
+/usr/local/share/fish/functions/__fish_cache_put.fish
 /usr/local/share/fish/functions/__fish_cache_sourced_completions.fish
+/usr/local/share/fish/functions/__fish_cached.fish
 /usr/local/share/fish/functions/__fish_cancel_commandline.fish
 /usr/local/share/fish/functions/__fish_change_key_bindings.fish
 /usr/local/share/fish/functions/__fish_cmd__complete_args.fish
@@ -1112,6 +1139,7 @@
 /usr/local/share/fish/functions/__fish_make_completion_signals.fish
 /usr/local/share/fish/functions/__fish_man_page.fish
 /usr/local/share/fish/functions/__fish_md5.fish
+/usr/local/share/fish/functions/__fish_mktemp_relative.fish
 /usr/local/share/fish/functions/__fish_move_last.fish
 /usr/local/share/fish/functions/__fish_no_arguments.fish
 /usr/local/share/fish/functions/__fish_not_contain_opt.fish
@@ -1168,6 +1196,7 @@
 /usr/local/share/fish/functions/__fish_print_xdg_mimetypes.fish
 /usr/local/share/fish/functions/__fish_print_xwindows.fish
 /usr/local/share/fish/functions/__fish_print_zfs_snapshots.fish
+/usr/local/share/fish/functions/__fish_protontricks_complete_appid.fish
 /usr/local/share/fish/functions/__fish_ps.fish
 /usr/local/share/fish/functions/__fish_pwd.fish
 /usr/local/share/fish/functions/__fish_reg__complete_keys.fish
@@ -1183,6 +1212,7 @@
 /usr/local/share/fish/functions/__fish_systemd_machines.fish
 /usr/local/share/fish/functions/__fish_toggle_comment_commandline.fish
 /usr/local/share/fish/functions/__fish_tokenizer_state.fish
+/usr/local/share/fish/functions/__fish_uname.fish
 /usr/local/share/fish/functions/__fish_use_subcommand.fish
 /usr/local/share/fish/functions/__fish_vcs_prompt.fish
 /usr/local/share/fish/functions/__fish_whatis.fish
@@ -1218,6 +1248,7 @@
 /usr/local/share/fish/functions/fish_hg_prompt.fish
 /usr/local/share/fish/functions/fish_hybrid_key_bindings.fish
 /usr/local/share/fish/functions/fish_is_root_user.fish
+/usr/local/share/fish/functions/fish_jj_prompt.fish
 /usr/local/share/fish/functions/fish_job_summary.fish
 /usr/local/share/fish/functions/fish_mode_prompt.fish
 /usr/local/share/fish/functions/fish_opt.fish
@@ -1309,12 +1340,4 @@
 /usr/local/share/fish/tools/web_config/themes/coolbeans.theme
 /usr/local/share/fish/tools/web_config/themes/fish default.theme
 /usr/local/share/fish/tools/web_config/webconfig.py
-/usr/local/share/locale/de/LC_MESSAGES/fish.mo
-/usr/local/share/locale/en/LC_MESSAGES/fish.mo
-/usr/local/share/locale/fr/LC_MESSAGES/fish.mo
-/usr/local/share/locale/pl/LC_MESSAGES/fish.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/fish.mo
-/usr/local/share/locale/sv/LC_MESSAGES/fish.mo
-/usr/local/share/locale/zh_CN/LC_MESSAGES/fish.mo
-/usr/local/share/pixmaps/fish.png
 /usr/local/share/pkgconfig/fish.pc
