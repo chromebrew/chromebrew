@@ -1,37 +1,21 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Openal < Package
+class Openal < CMake
   description 'OpenAL Soft is a software implementation of the cross-platform OpenAL 3D audio API appropriate for use with gaming applications and many other types of audio applications.'
   homepage 'https://openal-soft.org/'
-  version '1.20.1'
+  version '1.24.3'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/kcat/openal-soft/archive/openal-soft-1.20.1.tar.gz'
-  source_sha256 'c32d10473457a8b545aab50070fe84be2b5b041e1f2099012777ee6be0057c13'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/kcat/openal-soft.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f4fad76fa80a35e5ed2b551623610a764942c599caa606474bb9585da30dd648',
-     armv7l: 'f4fad76fa80a35e5ed2b551623610a764942c599caa606474bb9585da30dd648',
-       i686: '34754828e5fdf5632b1a72f5632568fd3484b1edca17d14692f7bfa5578a0752',
-     x86_64: 'ad3c151c3cd255fac16bd21bf207ebcc14928d740691fc74ee5d5537627bb2d7'
+    aarch64: '4d05900090331e849191b1f484d6afd6e9207bfa61537b48520d0e9ad0b7972a',
+     armv7l: '4d05900090331e849191b1f484d6afd6e9207bfa61537b48520d0e9ad0b7972a',
+       i686: 'f30e0f54b58554c56abd0d97e6a78ed86337e5d971fa6a0818bcb4b006307867',
+     x86_64: '5efa6a7f3b97436888e9530583abfa0e4362ee88bd436e7a73c0ee32c662d767'
   })
 
-  def self.build
-    Dir.chdir 'build' do
-      system 'cmake',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             "-DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB}",
-             '-DCMAKE_BUILD_TYPE=Release',
-             '-DALSOFT_EXAMPLES=OFF',
-             '..'
-      system 'make'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  cmake_options '-DALSOFT_EXAMPLES=OFF'
 end
