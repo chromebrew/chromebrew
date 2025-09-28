@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Nano < Autotools
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  version '8.4'
+  version '8.6'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://nano-editor.org/dist/v8/nano-#{version}.tar.xz"
-  source_sha256 '551b717b2e28f7e90f749323686a1b5bbbd84cfa1390604d854a3ca3778f111e'
+  source_sha256 'f7abfbf0eed5f573ab51bd77a458f32d82f9859c55e9689f819d96fe1437a619'
   binary_compression 'tar.zst'
 
   binary_sha256({
