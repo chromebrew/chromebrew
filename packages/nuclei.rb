@@ -13,8 +13,8 @@ class Nuclei < Package
      x86_64: "https://github.com/projectdiscovery/nuclei/releases/download/v#{version}/nuclei_#{version}_linux_amd64.zip"
   })
   source_sha256({
-    aarch64: 'faba038a3946d582ecf4f301f45400a13fee64afa48733808dbd440acd85b889',
-     armv7l: 'faba038a3946d582ecf4f301f45400a13fee64afa48733808dbd440acd85b889',
+    aarch64: 'e8d79f94076083f6b434092ae93cbc5e51f8e087c8aed21a7e086b8c1ca1a4ca',
+     armv7l: 'e8d79f94076083f6b434092ae93cbc5e51f8e087c8aed21a7e086b8c1ca1a4ca',
        i686: '35fdf9077c6c4f3e448d473e7946964b36e9b4f91317ab2dd37a14b86509f037',
      x86_64: '234c12cc5288af071abdcd6f854245b6067345556e1235cf96b76725c1004357'
   })
