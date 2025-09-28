@@ -6,7 +6,7 @@ require 'package'
 class Git_mestrelion_tools < Package
   description 'Assorted git tools, including git-restore-mtime'
   homepage 'https://github.com/MestreLion/git-tools'
-  version '2022.12'
+  version '2025.08'
   license 'GPL3'
   compatibility 'all'
   source_url 'https://github.com/MestreLion/git-tools.git'
