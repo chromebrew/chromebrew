@@ -3,7 +3,7 @@ require 'package'
 class Nethogs < Package
   description "Linux 'net top' tool"
   homepage 'https://github.com/raboof/nethogs'
-  version '0.8.7'
+  version '0.8.8'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/raboof/nethogs.git'
