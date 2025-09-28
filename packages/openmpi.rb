@@ -16,4 +16,8 @@ class Openmpi < Autotools
        i686: '7b95e3be4d88619c4abdbe3df69534b023955699ec7633f310cb77bf320514d0',
      x86_64: '3985ef364b793db8053ae6a3640549a635bdda668134100e3017b17634e82eed'
   })
+
+  def self.prebuild
+    system './autogen.pl'
+  end
 end
