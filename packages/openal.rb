@@ -1,14 +1,14 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Openal < Package
+class Openal < CMake
   description 'OpenAL Soft is a software implementation of the cross-platform OpenAL 3D audio API appropriate for use with gaming applications and many other types of audio applications.'
   homepage 'https://openal-soft.org/'
-  version '1.20.1'
+  version '1.24.3'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/kcat/openal-soft/archive/openal-soft-1.20.1.tar.gz'
-  source_sha256 'c32d10473457a8b545aab50070fe84be2b5b041e1f2099012777ee6be0057c13'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/kcat/openal-soft.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'f4fad76fa80a35e5ed2b551623610a764942c599caa606474bb9585da30dd648',
@@ -17,21 +17,5 @@ class Openal < Package
      x86_64: 'ad3c151c3cd255fac16bd21bf207ebcc14928d740691fc74ee5d5537627bb2d7'
   })
 
-  def self.build
-    Dir.chdir 'build' do
-      system 'cmake',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             "-DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB}",
-             '-DCMAKE_BUILD_TYPE=Release',
-             '-DALSOFT_EXAMPLES=OFF',
-             '..'
-      system 'make'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  cmake_options '-DALSOFT_EXAMPLES=OFF'
 end
