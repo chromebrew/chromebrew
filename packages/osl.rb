@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Osl < Autotools
   description 'OpenScop is a Specification and a Library for Data Exchange in Polyhedral Compilation Tools'
   homepage 'https://github.com/periscop/openscop'
-  version '0.9.7'
+  version '1.1.0'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/periscop/openscop.git'
