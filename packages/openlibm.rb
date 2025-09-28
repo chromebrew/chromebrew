@@ -17,5 +17,7 @@ class Openlibm < CMake
      x86_64: '874fa3a677169dc506eb3b24c52e2dafef433d4f34bacfb3e30696da8611bf64'
   })
 
-  cmake_options '-DCMAKE_SYSTEM_PROCESSOR=armv7-a' if ARCH == 'armv7l'
+  def self.patch
+    system "sed -i 's/elseif(${OPENLIBM_ARCH_FOLDER} STREQUAL \"armv7-a\")/elseif(${OPENLIBM_ARCH_FOLDER} STREQUAL \"armv7-a\" OR ${OPENLIBM_ARCH_FOLDER} STREQUAL \"armv7l\" OR ${OPENLIBM_ARCH_FOLDER} STREQUAL \"armv8l\")/' CMakeLists.txt"
+  end
 end
