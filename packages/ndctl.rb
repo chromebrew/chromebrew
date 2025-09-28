@@ -3,7 +3,7 @@ require 'package'
 class Ndctl < Package
   description 'Helper tools and libraries for managing the libnvdimm (non-volatile memory device) sub-system in the Linux kernel'
   homepage 'https://github.com/pmem/ndctl'
-  version '72.1'
+  version '82'
   license 'GPL-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/pmem/ndctl.git'
