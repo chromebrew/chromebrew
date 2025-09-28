@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Nuspell < CMake
   description 'Nuspell is a fast and safe spelling checker software program.'
   homepage 'https://nuspell.github.io/'
-  version '5.1.3'
+  version '5.1.6'
   license 'LGPL-3.0, GPL-3.0'
   compatibility 'all'
   source_url 'https://github.com/nuspell/nuspell.git'
