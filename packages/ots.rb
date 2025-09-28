@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Ots < Meson
   description 'Sanitizer for OpenType'
   homepage 'https://github.com/khaledhosny/ots'
-  version '9.1.0'
+  version '9.2.0'
   license 'BSD 3-Clause'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/khaledhosny/ots.git'
