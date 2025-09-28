@@ -1,9 +1,9 @@
 # Total size: 1834786
 /usr/local/bin/openal-info
-/usr/local/include/AL/al.h
-/usr/local/include/AL/alc.h
+/usr/local/include/AL/efx.h
 /usr/local/include/AL/alext.h
 /usr/local/include/AL/efx-creative.h
+/usr/local/include/AL/al.h
 /usr/local/include/AL/efx-presets.h
 /usr/local/include/AL/efx.h
 /usr/local/lib64/cmake/OpenAL/OpenALConfig.cmake

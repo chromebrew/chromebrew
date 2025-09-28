@@ -1,38 +1,23 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Openlibm < Package
+class Openlibm < CMake
   description 'A high quality system independent, portable, open source libm implementation'
   homepage 'https://openlibm.org/'
-  version '0.7.0'
+  version '0.8.7'
   license 'public-domain, MIT, ISC, BSD-2 and LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://github.com/JuliaMath/openlibm/archive/v0.7.0.tar.gz'
-  source_sha256 '1699f773198018b55b12631db9c1801fe3ed191e618a1ee1be743f4570ae06a3'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/JuliaMath/openlibm.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3c314f643ea1c940681fb6d504e397af0908235d9b2bce463351ffc47d064e80',
-     armv7l: '3c314f643ea1c940681fb6d504e397af0908235d9b2bce463351ffc47d064e80',
-       i686: '05fc93989659b621a63cb7846f0cec40b21afd72e82d5a495b6835ef2439bdea',
-     x86_64: '874fa3a677169dc506eb3b24c52e2dafef433d4f34bacfb3e30696da8611bf64'
+    aarch64: '6fe9711adced35e1553d459391336d3533191423cf7022254c944fb396a5f8eb',
+     armv7l: '6fe9711adced35e1553d459391336d3533191423cf7022254c944fb396a5f8eb',
+       i686: 'ed101fca3084ad91ed31731c5712ecd6db64d1e52032623eabadbcae02085b31',
+     x86_64: '6b7eb77d7dd988c3a41d738612a33068629bf6fd96fb28af62083f37395f7680'
   })
 
   def self.patch
-    system "sed -i 's,\$(DESTDIR)\$(libdir),#{CREW_DEST_LIB_PREFIX},g' Makefile"
-    system "sed -i 's,\$(DESTDIR)\$(shlibdir),#{CREW_DEST_LIB_PREFIX},g' Makefile"
-    system "sed -i 's,\$(DESTDIR)\$(includedir),#{CREW_DEST_PREFIX}/include,g' Makefile"
-    system "sed -i 's,\$(DESTDIR)\$(pkgconfigdir),#{CREW_DEST_LIB_PREFIX}/pkgconfig,g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "sed -i 's/elseif(${OPENLIBM_ARCH_FOLDER} STREQUAL \"armv7-a\")/elseif(${OPENLIBM_ARCH_FOLDER} STREQUAL \"armv7-a\" OR ${OPENLIBM_ARCH_FOLDER} STREQUAL \"armv7l\" OR ${OPENLIBM_ARCH_FOLDER} STREQUAL \"armv8l\")/' CMakeLists.txt"
   end
 end
