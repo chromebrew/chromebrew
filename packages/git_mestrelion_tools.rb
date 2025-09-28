@@ -14,10 +14,10 @@ class Git_mestrelion_tools < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e008b4240a6ff1580dcb0786cc687454608d2a3dd3351da9bb7aa0a17a44cfa7',
-     armv7l: 'e008b4240a6ff1580dcb0786cc687454608d2a3dd3351da9bb7aa0a17a44cfa7',
-       i686: 'ccb3144001c111b47c4851e6b670090e8cfccee02d1a19624865dfdbdeafc47a',
-     x86_64: '9cc57f97e060f2604f8a0e1710ac118869bc27f7487017d8dd58652398fe1346'
+    aarch64: 'ae4937d3bd9e95f0ec52a7fa0f405a1d6ac1ed33546910502e785fa6cc3f231d',
+     armv7l: 'ae4937d3bd9e95f0ec52a7fa0f405a1d6ac1ed33546910502e785fa6cc3f231d',
+       i686: 'ee2c1d18e6076e755493b81c85ad8818e4a599db9ccef4ec6d92c6bddcfa6f92',
+     x86_64: '28b264b6db79bb775854ab9614070bd2e5af02fb2e557b01f4dd6e6dfa1e7018'
   })
 
   depends_on 'git' # L
