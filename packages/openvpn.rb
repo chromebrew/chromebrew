@@ -11,9 +11,9 @@ class Openvpn < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cb5caf7c68a195699cb890e7918bb79f10e0e3003960a3cdf2351e6b8ae6b52d',
-     armv7l: 'cb5caf7c68a195699cb890e7918bb79f10e0e3003960a3cdf2351e6b8ae6b52d',
-     x86_64: '82b50c69a2a2cf439e52be724fe7eb95bfcfa75ed6e77046ab32dbbbd4daeb44'
+    aarch64: 'f73c038224c3e1798c2418e438e0604719aebce8d28a4e87777f84ffac7ca448',
+     armv7l: 'f73c038224c3e1798c2418e438e0604719aebce8d28a4e87777f84ffac7ca448',
+     x86_64: '5d83fab39584fdb277040c612670fbd5d7e0f4b1e1f14524cf483d16d84ae904'
   })
 
   depends_on 'glibc' # R
