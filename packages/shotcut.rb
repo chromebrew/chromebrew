@@ -49,7 +49,7 @@ class Shotcut < Package
   depends_on 'libpciaccess' # R
   depends_on 'libpng' # R
   depends_on 'libsamplerate' # R
-  depends_on 'sdl2' # R
+  depends_on 'libsdl2' # R
   depends_on 'libsm' # R
   depends_on 'libsndfile' # R
   depends_on 'libtheora' # R
