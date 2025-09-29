@@ -46,7 +46,7 @@ class Ffmpeg < Package
   depends_on 'libmp3lame' # R
   depends_on 'libopencoreamr' # R
   depends_on 'libraw1394' # R
-  depends_on 'libsdl2' # R
+  depends_on 'sdl2' # R
   depends_on 'libsoxr' # R
   depends_on 'libssh' # R
   depends_on 'libtheora' # R

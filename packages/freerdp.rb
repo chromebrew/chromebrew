@@ -42,7 +42,7 @@ class Freerdp < CMake
   depends_on 'libice' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libmp3lame' # R
-  depends_on 'libsdl2' # R
+  depends_on 'sdl2' # R
   depends_on 'libsm' # R
   depends_on 'libsoup' # R
   depends_on 'libsoxr' # R

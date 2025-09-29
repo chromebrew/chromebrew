@@ -17,7 +17,7 @@ class Extremetuxracer < Package
      x86_64: 'd081c1b4fcc8f4586f734c9c9f4c23a5f00909eda2596729d141328a637b99ea'
   })
 
-  depends_on 'libsdl2'
+  depends_on 'sdl2'
   depends_on 'mesa'
   depends_on 'mesa_utils'
   depends_on 'tcl'

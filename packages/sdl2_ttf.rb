@@ -22,6 +22,6 @@ class Sdl2_ttf < CMake
 
   depends_on 'freetype' # R
   depends_on 'glibc' # R
-  depends_on 'libsdl2' # R
+  depends_on 'sdl2' # R
   git_fetchtags
 end

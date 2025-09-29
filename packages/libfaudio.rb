@@ -17,7 +17,7 @@ class Libfaudio < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'libsdl2' # R
+  depends_on 'sdl2' # R
 
   def self.build
     FileUtils.mkdir 'builddir'

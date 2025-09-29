@@ -8605,6 +8605,16 @@ url: https://github.com/sdkman/sdkman-cli/releases
 activity: low
 ---
 kind: url
+name: sdl2
+url: https://www.libsdl.org/release
+activity: medium
+---
+kind: url
+name: sdl2_compat
+url: https://github.com/libsdl-org/sdl2-compat/releases
+activity: medium
+---
+kind: url
 name: sdl2_image
 url: https://www.libsdl.org/projects/SDL_image/release/
 activity: medium

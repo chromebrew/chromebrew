@@ -34,7 +34,7 @@ class Gegl < Meson
   depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'librsvg' # R
-  depends_on 'libsdl2' # R
+  depends_on 'sdl2' # R
   depends_on 'libtiff' # R
   depends_on 'libwebp' # R
   depends_on 'luajit' => :build

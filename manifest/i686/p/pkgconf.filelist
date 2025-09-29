@@ -1,5 +1,6 @@
 # Total size: 219639
 /usr/local/bin/bomtool
+/usr/local/bin/pkg-config
 /usr/local/bin/pkgconf
 /usr/local/etc/env.d/pkgconf
 /usr/local/include/pkgconf/libpkgconf/bsdstubs.h

@@ -1,4 +1,4 @@
-# Total size: 17936051
+# Total size: 3136381
 /usr/local/bin/sdl2-config
 /usr/local/include/SDL2/SDL.h
 /usr/local/include/SDL2/SDL_assert.h
@@ -8,6 +8,19 @@
 /usr/local/include/SDL2/SDL_blendmode.h
 /usr/local/include/SDL2/SDL_clipboard.h
 /usr/local/include/SDL2/SDL_config.h
+/usr/local/include/SDL2/SDL_config_android.h
+/usr/local/include/SDL2/SDL_config_emscripten.h
+/usr/local/include/SDL2/SDL_config_iphoneos.h
+/usr/local/include/SDL2/SDL_config_macosx.h
+/usr/local/include/SDL2/SDL_config_minimal.h
+/usr/local/include/SDL2/SDL_config_ngage.h
+/usr/local/include/SDL2/SDL_config_os2.h
+/usr/local/include/SDL2/SDL_config_pandora.h
+/usr/local/include/SDL2/SDL_config_unix.h
+/usr/local/include/SDL2/SDL_config_windows.h
+/usr/local/include/SDL2/SDL_config_wingdk.h
+/usr/local/include/SDL2/SDL_config_winrt.h
+/usr/local/include/SDL2/SDL_config_xbox.h
 /usr/local/include/SDL2/SDL_copying.h
 /usr/local/include/SDL2/SDL_cpuinfo.h
 /usr/local/include/SDL2/SDL_egl.h
@@ -83,20 +96,18 @@
 /usr/local/lib/cmake/SDL2/SDL2ConfigVersion.cmake
 /usr/local/lib/cmake/SDL2/SDL2Targets-release.cmake
 /usr/local/lib/cmake/SDL2/SDL2Targets.cmake
+/usr/local/lib/cmake/SDL2/SDL2_testTargets-release.cmake
+/usr/local/lib/cmake/SDL2/SDL2_testTargets.cmake
 /usr/local/lib/cmake/SDL2/SDL2mainTargets-release.cmake
 /usr/local/lib/cmake/SDL2/SDL2mainTargets.cmake
-/usr/local/lib/cmake/SDL2/SDL2staticTargets-release.cmake
-/usr/local/lib/cmake/SDL2/SDL2staticTargets.cmake
-/usr/local/lib/cmake/SDL2/SDL2testTargets-release.cmake
-/usr/local/lib/cmake/SDL2/SDL2testTargets.cmake
-/usr/local/lib/cmake/SDL2/sdlfind.cmake
+/usr/local/lib/cmake/SDL2/sdl2-config-version.cmake
+/usr/local/lib/cmake/SDL2/sdl2-config.cmake
 /usr/local/lib/libSDL2-2.0.so
 /usr/local/lib/libSDL2-2.0.so.0
-/usr/local/lib/libSDL2-2.0.so.0.3200.2
-/usr/local/lib/libSDL2.a
+/usr/local/lib/libSDL2-2.0.so.0.3200.56
 /usr/local/lib/libSDL2.so
 /usr/local/lib/libSDL2_test.a
 /usr/local/lib/libSDL2main.a
-/usr/local/lib/pkgconfig/sdl2.pc
+/usr/local/lib/pkgconfig/sdl2-compat.pc
 /usr/local/share/aclocal/sdl2.m4
-/usr/local/share/licenses/SDL2/LICENSE.txt
+/usr/local/share/licenses/sdl2-compat/LICENSE.txt

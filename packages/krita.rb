@@ -50,7 +50,7 @@ class Krita < CMake
   depends_on 'libjxl' # R
   depends_on 'libmypaint'
   depends_on 'libpng' # R
-  depends_on 'libsdl2' # R
+  depends_on 'sdl2' # R
   depends_on 'libsm' # R
   depends_on 'libtiff' # R
   depends_on 'libunibreak'

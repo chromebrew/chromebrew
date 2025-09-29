@@ -20,7 +20,7 @@ class Audaspace < CMake
   depends_on 'fftw'
   depends_on 'jack'
   depends_on 'libsdl'
-  depends_on 'libsdl2' # R
+  depends_on 'sdl2' # R
   depends_on 'libsndfile'
   depends_on 'openal'
   depends_on 'pipewire' # R

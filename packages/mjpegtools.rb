@@ -20,7 +20,7 @@ class Mjpegtools < Package
   depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libsdl'
-  depends_on 'libsdl2'
+  depends_on 'sdl2'
   depends_on 'libx11'
   depends_on 'v4l_utils' => :build
   depends_on 'at_spi2_core' # R

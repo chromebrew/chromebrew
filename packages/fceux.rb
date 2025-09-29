@@ -11,7 +11,7 @@ class Fceux < Package
 
   depends_on 'ffmpeg'
   depends_on 'libarchive'
-  depends_on 'libsdl2'
+  depends_on 'sdl2'
   depends_on 'mesa_utils'
   depends_on 'minizip'
   depends_on 'numactl'

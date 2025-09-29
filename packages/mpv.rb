@@ -37,7 +37,7 @@ class Mpv < Meson
   depends_on 'libjpeg_turbo' # R
   depends_on 'libplacebo' # R
   depends_on 'libsamplerate' # R
-  depends_on 'libsdl2' # R
+  depends_on 'sdl2' # R
   depends_on 'libva' # R
   depends_on 'libvdpau' # R
   depends_on 'libx11' # R
