@@ -401,6 +401,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
     { pkg_name: 'nnn', anitya_pkg: 'nnn', comments: 'Prefer to GitHub' },
     { pkg_name: 'openssl', anitya_pkg: 'openssl', comments: 'Prefer to GitHub' },
+    { pkg_name: 'owl', anitya_pkg: 'Owl Lisp', comments: '' },
     { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
     { pkg_name: 'pkg_7_zip', anitya_pkg: '7zip~stable', comments: 'Prefer to GitHub' },
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
