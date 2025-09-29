@@ -4225,6 +4225,11 @@ url: https://github.com/ebiggers/libdeflate/releases
 activity: low
 ---
 kind: url
+name: libdex
+url: https://gitlab.gnome.org/GNOME/libdex/-/tags
+activity: low
+---
+kind: url
 name: libdmraid
 url: https://people.redhat.com/~heinzm/sw/dmraid/src/
 activity: none
@@ -9143,6 +9148,11 @@ kind: url
 name: sysfsutils
 url: https://sourceforge.net/projects/linux-diag/files/sysfsutils/
 activity: none
+---
+kind: url
+name: sysprof
+url: https://gitlab.gnome.org/GNOME/sysprof/-/tags
+activity: low
 ---
 kind: url
 name: sysstat
