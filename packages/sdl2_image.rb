@@ -1,19 +1,19 @@
-require 'buildsystems/autotools'
+require 'buildsystems/cmake'
 
-class Sdl2_image < Autotools
+class Sdl2_image < CMake
   description 'SDL2_image is an image loading library that is used with the SDL2 library.'
   homepage 'https://github.com/libsdl-org/SDL_image'
-  version '2.8.2'
-  license 'ZLIB'
+  version '2.8.8'
+  license 'zlib'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/SDL_image.git'
   git_hashtag "release-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1d0d60b10c863b665f400c8e65b89dc038c38ccfd64ccd9dd19e0ea017094260',
-     armv7l: '1d0d60b10c863b665f400c8e65b89dc038c38ccfd64ccd9dd19e0ea017094260',
-     x86_64: '2cd54c0f5fd71e02e7c0d5ebe9643f87e18fc239b8233db062ab1e906ccd60cb'
+    aarch64: '66d34caf9064dabc64c11648c4e6810edc2347fb1b7d7f2ddfb6714d635d2708',
+     armv7l: '66d34caf9064dabc64c11648c4e6810edc2347fb1b7d7f2ddfb6714d635d2708',
+     x86_64: '3243a9ec382c8e15f8aa72713e7728975971a32ca78afb785362fe70617aa24f'
   })
 
   depends_on 'gcc_lib' # R
@@ -21,7 +21,7 @@ class Sdl2_image < Autotools
   depends_on 'libavif' => :build
   depends_on 'libjpeg_turbo' => :build
   depends_on 'libpng' => :build
-  depends_on 'sdl2' # R
   depends_on 'libtiff' => :build
   depends_on 'libwebp' => :build
+  depends_on 'sdl2' # R
 end
