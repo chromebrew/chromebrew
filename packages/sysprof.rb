@@ -14,9 +14,9 @@ class Sysprof < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a88e6edd2a5f915db48c885de3c5e0e79f1017afaf6b05b88e82b5c4dddbf38a',
-     armv7l: 'a88e6edd2a5f915db48c885de3c5e0e79f1017afaf6b05b88e82b5c4dddbf38a',
-     x86_64: 'f7b49506364fda0c83492156182a901b0cad722e94cff0c40bd18c9acc57d9fe'
+    aarch64: 'd53c1f4ef3ef030d15377ab048cf970b6e17849c923070e180853719becbdbf1',
+     armv7l: 'd53c1f4ef3ef030d15377ab048cf970b6e17849c923070e180853719becbdbf1',
+     x86_64: 'a71ca1a5c783c646261b24992824ab4a5972283d529bdbb8e72f015070815311'
   })
 
   depends_on 'cairo' # R
