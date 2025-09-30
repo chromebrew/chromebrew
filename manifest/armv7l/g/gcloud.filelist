@@ -1,4 +1,4 @@
-# Total size: 355698362
+# Total size: 356551846
 /usr/local/bin/bq
 /usr/local/bin/dev_appserver.py
 /usr/local/bin/docker-credential-gcloud
@@ -230,6 +230,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/beyondcorp/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/beyondcorp/app/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/beyondcorp/app/util.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/biglake/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/biglake/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/bigtable/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/bigtable/app_profiles.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/bigtable/authorized_views.py
@@ -510,6 +512,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/policycontroller/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/policycontroller/protos.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/policycontroller/status_api_utils.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/transforms.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/types.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/fleet/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/container/gkemulticloud/__init__.py
@@ -1196,6 +1199,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_grpc_bidi_streaming/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_grpc_bidi_streaming/client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_grpc_bidi_streaming/download.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_grpc_bidi_streaming/retry_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_grpc_bidi_streaming/upload.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_iam_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/storage/gcs_json/__init__.py
@@ -1268,6 +1272,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/util/resource_search.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/util/waiter.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/vmware/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/vmware/announcements.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/vmware/clusters.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/vmware/dnsbindpermission.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/vmware/externalaccessrules.py
@@ -1294,6 +1299,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/vmware/sddc/ipaddresses.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/vmware/sddc/privateclouds.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/vmware/sddc/util.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/vmware/upgrades.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/vmware/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/web_security_scanner/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/web_security_scanner/wss_base.py
@@ -3081,6 +3087,9 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/build_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/cancellation.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/commands.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/compose/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/compose/builder.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/compose/tracker.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/compose_resource.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/config_changes.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/connection_context.py
@@ -3158,7 +3167,6 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/deletion.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/flags_parser.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/instance_split.py
-/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/volumes.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/worker_pools_operations.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/volumes.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/runapps/__init__.py
@@ -4094,6 +4102,11 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/beyondcorp/v1alpha/beyondcorp_v1alpha_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/beyondcorp/v1alpha/beyondcorp_v1alpha_messages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/beyondcorp/v1alpha/resources.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/biglake/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/biglake/v1/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/biglake/v1/biglake_v1_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/biglake/v1/biglake_v1_messages.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/biglake/v1/resources.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigquery/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigquery/v2/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/bigquery/v2/bigquery_v2_client.py
@@ -6563,6 +6576,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/AuthzPolicyAuthzRuleFrom.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/AuthzPolicyAuthzRuleFromRequestSource.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/AuthzPolicyAuthzRuleHeaderMatch.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/AuthzPolicyAuthzRuleIpBlock.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/AuthzPolicyAuthzRulePrincipal.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/AuthzPolicyAuthzRuleRequestResource.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/AuthzPolicyAuthzRuleRequestResourceTagValueIdSet.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networksecurity/v1/AuthzPolicyAuthzRuleStringMatch.yaml
@@ -6928,6 +6943,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1alpha/SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1alpha/SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1alpha/SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1alpha/SettingsEmailNotificationSettingsDisableAllNotifications.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1alpha/SettingsServiceAccountApproverSettings.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1alpha/Step.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1alpha/Unstructured.yaml
@@ -6941,6 +6957,14 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1beta/PrivilegedAccess.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1beta/RequesterJustificationConfig.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1beta/RoleBinding.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1beta/Settings.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1beta/SettingsEmailNotificationSettings.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1beta/SettingsEmailNotificationSettingsCustomNotificationBehavior.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1beta/SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1beta/SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1beta/SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1beta/SettingsEmailNotificationSettingsDisableAllNotifications.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1beta/SettingsServiceAccountApproverSettings.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1beta/Step.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/privilegedaccessmanager/v1beta/Unstructured.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/third_party/__init__.py
@@ -7492,6 +7516,7 @@
 /usr/local/share/gcloud/lib/surface/artifacts/files/download.py
 /usr/local/share/gcloud/lib/surface/artifacts/files/list.py
 /usr/local/share/gcloud/lib/surface/artifacts/files/update.yaml
+/usr/local/share/gcloud/lib/surface/artifacts/files/upload.py
 /usr/local/share/gcloud/lib/surface/artifacts/generic/__init__.py
 /usr/local/share/gcloud/lib/surface/artifacts/generic/download.py
 /usr/local/share/gcloud/lib/surface/artifacts/generic/upload.py
@@ -7550,6 +7575,7 @@
 /usr/local/share/gcloud/lib/surface/artifacts/tags/__init__.py
 /usr/local/share/gcloud/lib/surface/artifacts/tags/create.yaml
 /usr/local/share/gcloud/lib/surface/artifacts/tags/delete.yaml
+/usr/local/share/gcloud/lib/surface/artifacts/tags/export.py
 /usr/local/share/gcloud/lib/surface/artifacts/tags/list.py
 /usr/local/share/gcloud/lib/surface/artifacts/tags/update.yaml
 /usr/local/share/gcloud/lib/surface/artifacts/versions/__init__.py
@@ -8477,6 +8503,7 @@
 /usr/local/share/gcloud/lib/surface/compute/disks/stop_async_replication.py
 /usr/local/share/gcloud/lib/surface/compute/disks/stop_group_async_replication.py
 /usr/local/share/gcloud/lib/surface/compute/disks/update.py
+/usr/local/share/gcloud/lib/surface/compute/disks/update_kms_key.py
 /usr/local/share/gcloud/lib/surface/compute/disks/wait_for_replication_catchup.py
 /usr/local/share/gcloud/lib/surface/compute/external_vpn_gateways/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/external_vpn_gateways/create.py
@@ -9269,6 +9296,7 @@
 /usr/local/share/gcloud/lib/surface/compute/snapshots/remove_labels.py
 /usr/local/share/gcloud/lib/surface/compute/snapshots/set_iam_policy.yaml
 /usr/local/share/gcloud/lib/surface/compute/snapshots/update.py
+/usr/local/share/gcloud/lib/surface/compute/snapshots/update_kms_key.py
 /usr/local/share/gcloud/lib/surface/compute/sole_tenancy/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/sole_tenancy/node_groups/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/sole_tenancy/node_groups/add_iam_policy_binding.yaml
@@ -13903,15 +13931,39 @@
 /usr/local/share/gcloud/lib/surface/oracle_database/entitlements/list.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_init_extensions.py
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_create_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_delete_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_describe_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_list_ga.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_remove_virtual_machine_alpha.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_remove_virtual_machine_ga.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_update_alpha.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_update_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/create.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/delete.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/describe.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/list.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/remove_virtual_machine.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/update.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/__init__.py
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_init_extensions.py
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_partials/_create_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_partials/_delete_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_partials/_describe_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_partials/_list_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/create.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/delete.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/describe.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/list.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/_partials/_list_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/_partials/_list_ga.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/list.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/minor_versions/__init__.py
+/usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/minor_versions/_init_extensions.py
+/usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/minor_versions/_partials/_list_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/minor_versions/list.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/odb_networks/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/odb_networks/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/oracle_database/odb_networks/_partials/_create_alpha.yaml
@@ -14860,6 +14912,7 @@
 /usr/local/share/gcloud/lib/surface/scheduler/__init__.py
 /usr/local/share/gcloud/lib/surface/scheduler/cmek_config/__init__.py
 /usr/local/share/gcloud/lib/surface/scheduler/cmek_config/describe.py
+/usr/local/share/gcloud/lib/surface/scheduler/cmek_config/update.py
 /usr/local/share/gcloud/lib/surface/scheduler/jobs/__init__.py
 /usr/local/share/gcloud/lib/surface/scheduler/jobs/create/__init__.py
 /usr/local/share/gcloud/lib/surface/scheduler/jobs/create/app_engine.yaml
@@ -15034,8 +15087,11 @@
 /usr/local/share/gcloud/lib/surface/services/identity/create.py
 /usr/local/share/gcloud/lib/surface/services/list.py
 /usr/local/share/gcloud/lib/surface/services/mcp/__init__.py
+/usr/local/share/gcloud/lib/surface/services/mcp/content_security/__init__.py
+/usr/local/share/gcloud/lib/surface/services/mcp/content_security/get.py
 /usr/local/share/gcloud/lib/surface/services/mcp/policies/__init__.py
 /usr/local/share/gcloud/lib/surface/services/mcp/policies/get.py
+/usr/local/share/gcloud/lib/surface/services/mcp/policies/get_effective.py
 /usr/local/share/gcloud/lib/surface/services/mcp/policies/test_enabled.py
 /usr/local/share/gcloud/lib/surface/services/operations/__init__.py
 /usr/local/share/gcloud/lib/surface/services/operations/describe.py
@@ -15050,6 +15106,7 @@
 /usr/local/share/gcloud/lib/surface/services/policies/get_effective.py
 /usr/local/share/gcloud/lib/surface/services/policies/remove_enable_rules.py
 /usr/local/share/gcloud/lib/surface/services/policies/test_enabled.py
+/usr/local/share/gcloud/lib/surface/services/policies/update.py
 /usr/local/share/gcloud/lib/surface/services/quota/__init__.py
 /usr/local/share/gcloud/lib/surface/services/quota/create.py
 /usr/local/share/gcloud/lib/surface/services/quota/delete.py
@@ -15554,6 +15611,8 @@
 /usr/local/share/gcloud/lib/surface/unlock.py
 /usr/local/share/gcloud/lib/surface/version.py
 /usr/local/share/gcloud/lib/surface/vmware/__init__.py
+/usr/local/share/gcloud/lib/surface/vmware/announcements/__init__.py
+/usr/local/share/gcloud/lib/surface/vmware/announcements/list.py
 /usr/local/share/gcloud/lib/surface/vmware/dns_bind_permission/__init__.py
 /usr/local/share/gcloud/lib/surface/vmware/dns_bind_permission/describe.py
 /usr/local/share/gcloud/lib/surface/vmware/dns_bind_permission/grant.py
@@ -15650,6 +15709,9 @@
 /usr/local/share/gcloud/lib/surface/vmware/private_clouds/subnets/update.py
 /usr/local/share/gcloud/lib/surface/vmware/private_clouds/undelete.py
 /usr/local/share/gcloud/lib/surface/vmware/private_clouds/update.py
+/usr/local/share/gcloud/lib/surface/vmware/private_clouds/upgrades/__init__.py
+/usr/local/share/gcloud/lib/surface/vmware/private_clouds/upgrades/describe.py
+/usr/local/share/gcloud/lib/surface/vmware/private_clouds/upgrades/list.py
 /usr/local/share/gcloud/lib/surface/vmware/private_clouds/vcenter/__init__.py
 /usr/local/share/gcloud/lib/surface/vmware/private_clouds/vcenter/credentials/__init__.py
 /usr/local/share/gcloud/lib/surface/vmware/private_clouds/vcenter/credentials/describe.py
