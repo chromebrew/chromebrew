@@ -1,10 +1,10 @@
-# Total size: 19575121
+# Total size: 19579346
 /usr/local/bin/yt-dlp
-/usr/local/lib/python3.13/site-packages/yt_dlp-2025.9.23.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/yt_dlp-2025.9.23.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/yt_dlp-2025.9.23.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/yt_dlp-2025.9.23.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/yt_dlp-2025.9.23.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/yt_dlp-2025.9.26.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/yt_dlp-2025.9.26.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/yt_dlp-2025.9.26.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/yt_dlp-2025.9.26.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/yt_dlp-2025.9.26.dist-info/licenses/LICENSE
 /usr/local/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py
 /usr/local/lib/python3.13/site-packages/yt_dlp/__init__.py
 /usr/local/lib/python3.13/site-packages/yt_dlp/__main__.py
