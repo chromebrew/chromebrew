@@ -88,6 +88,7 @@ class Webkit2gtk_4_1 < CMake
     system 'patch -Np2 -i armv7l.patch' if ARCH == 'armv7l'
   end
 
+  pre_cmake_options "CC=#{CREW_PREFIX}/bin/gcc CXX=#{CREW_PREFIX}/bin/g++"
   cmake_options "-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
           -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
           -DENABLE_DOCUMENTATION=OFF \
