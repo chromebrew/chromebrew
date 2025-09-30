@@ -3,18 +3,18 @@ require 'package'
 class Zip < Package
   description 'Zip is a compression and file packaging/archive utility for archives compressed in .zip format (also called \'zipfiles\').'
   homepage 'http://www.info-zip.org/Zip.html'
-  version '3.0-11'
+  version '3.0-15'
   license 'Info-ZIP'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/infozip/Zip%203.x%20%28latest%29/3.0/zip30.tar.gz'
   source_sha256 'f0e8bb1f9b7eb0b01285495a2699df3a4b766784c1765a8f1aeedf63c0806369'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1905c224b2b73e81c3622c3f440540953bff6516d514addd1f1e09a75573d34b',
-     armv7l: '1905c224b2b73e81c3622c3f440540953bff6516d514addd1f1e09a75573d34b',
-       i686: '58535613e27ac7494cdfbae25d61c4971ee1d670816169a52eec79df3645e21d',
-     x86_64: 'c78a63d3630f3dbf637127e1a5a08942fd1da213cde296d33e77823e8547a56c'
+    aarch64: '37f4831a8d4833374557f9501987305a8c1f021c11b96586bc2f0042ff637805',
+     armv7l: '37f4831a8d4833374557f9501987305a8c1f021c11b96586bc2f0042ff637805',
+       i686: '2769c0ca885a8ca686ade489f01f5d0004d1d13a0e1f7a284137c5067d54f7e1',
+     x86_64: '1f92ba515b9d847196d1f1434a5b418b2e86d2c9205f13b4b925764276e557a6'
   })
 
   depends_on 'bzip2' # R
@@ -24,12 +24,8 @@ class Zip < Package
   # Upstream is unmaintained so we use the Debian patchset:
   # https://packages.debian.org/sid/zip
   def self.patch
-    patch_url = 'https://mirrors.ocf.berkeley.edu/debian/pool/main/z/zip/zip_3.0-11.debian.tar.xz'
-    patch_sha256 = 'c5c0714a88592f9e02146bfe4a8d26cd9bd97e8d33b1efc8b37784997caa40ed'
-
-    system('curl -#L', patch_url, '-o', 'zippatches.tar.xz')
-    abort 'Checksum mismatch :/ try again' unless Digest::SHA256.hexdigest(File.read('./zippatches.tar.xz')) == patch_sha256
-    system('tar', '-xf', 'zippatches.tar.xz')
+    downloader "https://mirrors.ocf.berkeley.edu/debian/pool/main/z/zip/zip_#{version}.debian.tar.xz", '6dc1711c67640e8d1dee867ff53e84387ddb980c40885bd088ac98c330bffce9'
+    system('tar', '-xf', "zip_#{version}.debian.tar.xz")
 
     system('for i in `cat debian/patches/series`; do patch -p 1 < debian/patches/$i; done')
   end
