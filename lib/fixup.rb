@@ -144,6 +144,7 @@ end
 
 deprecated_packages = Set[
   { pkg_name: 'epydoc', comments: 'Abandoned upstream, only supports Python 2.' },
+  { pkg_name: 'extremetuxracer', comments: 'Chromebrew version had broken links to missing pre-compiled binaries.' },
   { pkg_name: 'gfbgraph', commwnts: 'Deprecated upstream.' },
   { pkg_name: 'git_prompt', comments: 'Integrated into git package.' },
   { pkg_name: 'gnome_session', comments: 'No longer compatible with any architecture, requires systemd.' },
