@@ -8645,6 +8645,11 @@ url: https://www.libsdl.org/release
 activity: medium
 ---
 kind: url
+name: sdl3_image
+url: https://www.libsdl.org/projects/SDL_image/release/
+activity: medium
+---
+kind: url
 name: sdl3_ttf
 url: https://www.libsdl.org/projects/SDL_ttf/release/
 activity: medium
