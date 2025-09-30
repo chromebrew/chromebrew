@@ -1,10 +1,10 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libfaudio < Package
+class Libfaudio < CMake
   description 'FAudio is an XAudio reimplementation that focuses solely on developing fully accurate DirectX Audio runtime libraries for the FNA project.'
   homepage 'https://fna-xna.github.io/'
-  version '23.01'
-  license 'ZLIB'
+  version '25.09'
+  license 'zlib'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/fna-xna/faudio.git'
   git_hashtag version
@@ -17,24 +17,5 @@ class Libfaudio < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'sdl2' # R
-
-  def self.build
-    FileUtils.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "cmake -G 'Ninja' #{CREW_CMAKE_OPTIONS} .. \
-              -DBUILD_TESTS=ON"
-    end
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
-
-  def self.check
-    Dir.chdir 'builddir' do
-      system './faudio_tests'
-    end
-  end
+  depends_on 'sdl3' # R
 end
