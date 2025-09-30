@@ -7680,6 +7680,11 @@ url: https://gitlab.gnome.org/GNOME/gi-docgen/-/tags
 activity: medium
 ---
 kind: url
+name: py3_gitlint
+url: https://github.com/jorisroovers/gitlint/releases
+activity: low
+---
+kind: url
 name: py3_gpt_researcher
 url: https://github.com/assafelovic/gpt-researcher/releases
 activity: high
