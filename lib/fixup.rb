@@ -91,6 +91,7 @@ renamed_packages = Set[
   { pkg_name: 'libcurl', pkg_rename: 'curl', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libgpgerror', pkg_rename: 'libgpg_error', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libjpeg', pkg_rename: 'libjpeg_turbo', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'libsdl2', pkg_rename: 'sdl2', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'mandb', pkg_rename: 'man_db', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'mercurial', pkg_rename: 'py3_mercurial', comments: 'Renamed to match other pip packages.' },
   { pkg_name: 'meson', pkg_rename: 'py3_meson', comments: 'Renamed to avoid conflict with buildsystems/meson.' },
@@ -143,6 +144,7 @@ end
 
 deprecated_packages = Set[
   { pkg_name: 'epydoc', comments: 'Abandoned upstream, only supports Python 2.' },
+  { pkg_name: 'extremetuxracer', comments: 'Chromebrew version had broken links to missing pre-compiled binaries.' },
   { pkg_name: 'gfbgraph', commwnts: 'Deprecated upstream.' },
   { pkg_name: 'git_prompt', comments: 'Integrated into git package.' },
   { pkg_name: 'gnome_session', comments: 'No longer compatible with any architecture, requires systemd.' },

@@ -38,7 +38,7 @@ class Wxwidgets < Autotools
   depends_on 'libjpeg_turbo' # R
   depends_on 'libnotify' # R
   depends_on 'libpng' # R
-  depends_on 'libsdl2' # R
+  depends_on 'sdl2' # R
   depends_on 'libsdl' => :build
   depends_on 'libsecret' # R
   depends_on 'libsm' # R

@@ -25,7 +25,7 @@ class Blender < CMake
   depends_on 'libepoxy'
   depends_on 'libjpeg_turbo'
   depends_on 'libpng'
-  depends_on 'libsdl2' # R
+  depends_on 'sdl2' # R
   depends_on 'libsndfile' # R
   depends_on 'libtiff'
   depends_on 'libwebp' # R

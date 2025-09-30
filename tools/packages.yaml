@@ -1825,11 +1825,6 @@ url: https://www.exodus.com/download/
 activity: high
 ---
 kind: url
-name: extremetuxracer
-url: https://github.com/FinnBaltazar1111/extremetuxracer/releases
-activity: low
----
-kind: url
 name: expat
 url: https://sourceforge.net/projects/expat/files/expat/
 activity: low
@@ -4227,6 +4222,11 @@ activity: medium
 kind: url
 name: libdeflate
 url: https://github.com/ebiggers/libdeflate/releases
+activity: low
+---
+kind: url
+name: libdex
+url: https://gitlab.gnome.org/GNOME/libdex/-/tags
 activity: low
 ---
 kind: url
@@ -7445,6 +7445,16 @@ url: https://sourceforge.net/projects/plplot/files/plplot/
 activity: low
 ---
 kind: url
+name: plutosvg
+url: https://github.com/sammycage/plutosvg/releases
+activity: medium
+---
+kind: url
+name: plutovg
+url: https://github.com/sammycage/plutovg/releases
+activity: medium
+---
+kind: url
 name: pmd
 url: https://github.com/pmd/pmd/releases
 activity: high
@@ -7678,6 +7688,11 @@ kind: url
 name: py3_gi_docgen
 url: https://gitlab.gnome.org/GNOME/gi-docgen/-/tags
 activity: medium
+---
+kind: url
+name: py3_gitlint
+url: https://github.com/jorisroovers/gitlint/releases
+activity: low
 ---
 kind: url
 name: py3_gpt_researcher
@@ -8605,6 +8620,16 @@ url: https://github.com/sdkman/sdkman-cli/releases
 activity: low
 ---
 kind: url
+name: sdl2
+url: https://www.libsdl.org/release
+activity: medium
+---
+kind: url
+name: sdl2_compat
+url: https://github.com/libsdl-org/sdl2-compat/releases
+activity: medium
+---
+kind: url
 name: sdl2_image
 url: https://www.libsdl.org/projects/SDL_image/release/
 activity: medium
@@ -8617,6 +8642,11 @@ activity: medium
 kind: url
 name: sdl3
 url: https://www.libsdl.org/release
+activity: medium
+---
+kind: url
+name: sdl3_image
+url: https://www.libsdl.org/projects/SDL_image/release/
 activity: medium
 ---
 kind: url
@@ -9138,6 +9168,11 @@ kind: url
 name: sysfsutils
 url: https://sourceforge.net/projects/linux-diag/files/sysfsutils/
 activity: none
+---
+kind: url
+name: sysprof
+url: https://gitlab.gnome.org/GNOME/sysprof/-/tags
+activity: low
 ---
 kind: url
 name: sysstat

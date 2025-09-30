@@ -1,8 +1,9 @@
-# Total size: 6553571
+# Total size: 6213872
 /usr/local/include/libpanel-1/libpanel.h
 /usr/local/include/libpanel-1/panel-action-group.h
 /usr/local/include/libpanel-1/panel-action-muxer.h
 /usr/local/include/libpanel-1/panel-application.h
+/usr/local/include/libpanel-1/panel-changes-dialog.h
 /usr/local/include/libpanel-1/panel-dock.h
 /usr/local/include/libpanel-1/panel-document-workspace.h
 /usr/local/include/libpanel-1/panel-enums.h
@@ -75,6 +76,7 @@
 /usr/local/share/doc/panel-1.0/callback.WorkspaceForeach.html
 /usr/local/share/doc/panel-1.0/class.ActionMuxer.html
 /usr/local/share/doc/panel-1.0/class.Application.html
+/usr/local/share/doc/panel-1.0/class.ChangesDialog.html
 /usr/local/share/doc/panel-1.0/class.Dock.html
 /usr/local/share/doc/panel-1.0/class.DocumentWorkspace.html
 /usr/local/share/doc/panel-1.0/class.Frame.html
@@ -118,6 +120,7 @@
 /usr/local/share/doc/panel-1.0/const.WIDGET_KIND_UTILITY.html
 /usr/local/share/doc/panel-1.0/ctor.ActionMuxer.new.html
 /usr/local/share/doc/panel-1.0/ctor.Application.new.html
+/usr/local/share/doc/panel-1.0/ctor.ChangesDialog.new.html
 /usr/local/share/doc/panel-1.0/ctor.Dock.new.html
 /usr/local/share/doc/panel-1.0/ctor.DocumentWorkspace.new.html
 /usr/local/share/doc/panel-1.0/ctor.Frame.new.html
@@ -173,6 +176,11 @@
 /usr/local/share/doc/panel-1.0/method.ActionMuxer.list_groups.html
 /usr/local/share/doc/panel-1.0/method.ActionMuxer.remove_action_group.html
 /usr/local/share/doc/panel-1.0/method.ActionMuxer.remove_all.html
+/usr/local/share/doc/panel-1.0/method.ChangesDialog.add_delegate.html
+/usr/local/share/doc/panel-1.0/method.ChangesDialog.get_close_after_save.html
+/usr/local/share/doc/panel-1.0/method.ChangesDialog.run_async.html
+/usr/local/share/doc/panel-1.0/method.ChangesDialog.run_finish.html
+/usr/local/share/doc/panel-1.0/method.ChangesDialog.set_close_after_save.html
 /usr/local/share/doc/panel-1.0/method.Dock.foreach_frame.html
 /usr/local/share/doc/panel-1.0/method.Dock.get_can_reveal_area.html
 /usr/local/share/doc/panel-1.0/method.Dock.get_can_reveal_bottom.html
@@ -435,7 +443,9 @@
 /usr/local/share/doc/panel-1.0/method.Workspace.set_id.html
 /usr/local/share/doc/panel-1.0/omni-bar-dark.png
 /usr/local/share/doc/panel-1.0/omni-bar.png
+/usr/local/share/doc/panel-1.0/opensearch.xml
 /usr/local/share/doc/panel-1.0/panel-1.0.devhelp2
+/usr/local/share/doc/panel-1.0/property.ChangesDialog.close-after-save.html
 /usr/local/share/doc/panel-1.0/property.Dock.bottom-height.html
 /usr/local/share/doc/panel-1.0/property.Dock.can-reveal-bottom.html
 /usr/local/share/doc/panel-1.0/property.Dock.can-reveal-end.html
@@ -590,6 +600,7 @@
 /usr/local/share/locale/fur/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/gl/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/he/LC_MESSAGES/libpanel.mo
+/usr/local/share/locale/hi/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/hr/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/hu/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/id/LC_MESSAGES/libpanel.mo
@@ -597,9 +608,11 @@
 /usr/local/share/locale/is/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/it/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/ka/LC_MESSAGES/libpanel.mo
+/usr/local/share/locale/kab/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/ko/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/lt/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/lv/LC_MESSAGES/libpanel.mo
+/usr/local/share/locale/nb/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/ne/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/nl/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/oc/LC_MESSAGES/libpanel.mo
@@ -609,11 +622,13 @@
 /usr/local/share/locale/pt_BR/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/ro/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/ru/LC_MESSAGES/libpanel.mo
+/usr/local/share/locale/sk/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/sl/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/sr/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/sv/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/tr/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/uk/LC_MESSAGES/libpanel.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/libpanel.mo
+/usr/local/share/locale/zh_TW/LC_MESSAGES/libpanel.mo
 /usr/local/share/vala/vapi/libpanel-1.deps
 /usr/local/share/vala/vapi/libpanel-1.vapi

@@ -25,7 +25,7 @@ class Jellyfin_media_player < Package
   depends_on 'libcec' # R
   depends_on 'libglvnd' # R
   depends_on 'libice' # R
-  depends_on 'libsdl2' # R
+  depends_on 'sdl2' # R
   depends_on 'libsm' # R
   depends_on 'libx11' # R
   depends_on 'libxext' # R

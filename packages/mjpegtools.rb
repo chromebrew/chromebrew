@@ -13,6 +13,7 @@ class Mjpegtools < Package
   binary_sha256({
     aarch64: '769cff6f2acf252ff998f56f0d5e9c8fc9ed2a3e33f7639c4919675e783ee3ad',
      armv7l: '769cff6f2acf252ff998f56f0d5e9c8fc9ed2a3e33f7639c4919675e783ee3ad',
+       i686: '47ec9e23a5e7cb1506ae58b52efb7d0cd3d3f11ebc3acaa2f098619bb3daaf21',
      x86_64: '967ddfd9c3024f040cdc9044e6f30d66812f5e6e5aa7c8d9982d99b88cc5f579'
   })
 
@@ -20,7 +21,7 @@ class Mjpegtools < Package
   depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libsdl'
-  depends_on 'libsdl2'
+  depends_on 'sdl2'
   depends_on 'libx11'
   depends_on 'v4l_utils' => :build
   depends_on 'at_spi2_core' # R
