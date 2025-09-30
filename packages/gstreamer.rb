@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gstreamer < Meson
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.27.1'
+  version '1.26.6'
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
@@ -11,9 +11,9 @@ class Gstreamer < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a363b918c6761ae8eff6215b94dc92367532fa45d4d93b76b6d8edad6c951f07',
-     armv7l: 'a363b918c6761ae8eff6215b94dc92367532fa45d4d93b76b6d8edad6c951f07',
-     x86_64: '0b71f08d892e3c9a39364284882cfaadea9637433802265fadaa8dd502835f0e'
+    aarch64: 'fff97e8e9ac814ab81c7af7992bf72673a9379e43d409f71b04428f5695dec9d',
+     armv7l: 'fff97e8e9ac814ab81c7af7992bf72673a9379e43d409f71b04428f5695dec9d',
+     x86_64: 'cd81c3f18915c91469fac8fb15248f3573aadd9deddd3748f6cb091facc20962'
   })
 
   depends_on 'alsa_lib' # R
@@ -29,8 +29,8 @@ class Gstreamer < Meson
   depends_on 'flac' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gnutls' # R
   depends_on 'graphene' # R
   depends_on 'gsl' => :build
@@ -89,13 +89,16 @@ class Gstreamer < Meson
   depends_on 'openh264' # R
   depends_on 'openjpeg' # R
   depends_on 'openssl' # R
-  depends_on 'opusfile' => :build
   depends_on 'opus' # R
+  depends_on 'opusfile' => :build
   depends_on 'pango' # R
   depends_on 'pulseaudio' # R
+  depends_on 'py3_gitlint' => :build
   depends_on 'py3_setuptools' => :build
-  depends_on 'qt5_base' => :build # otherwise this becomes circular
-  depends_on 'qt5_declarative' => :build # otherwise this becomes circular
+  depends_on 'qt5_base' # R
+  depends_on 'qt5_base' # R
+  depends_on 'qt5_declarative' # R
+  depends_on 'qt5_declarative' # R
   depends_on 'rtmpdump' # R
   depends_on 'sbc' # R
   depends_on 'speex' # R
@@ -104,13 +107,9 @@ class Gstreamer < Meson
   depends_on 'v4l_utils' # R
   depends_on 'wavpack' # R
   depends_on 'wayland' # R
+  depends_on 'webrtc_audio_processing' # R
   depends_on 'zlib' # R
   depends_on 'zvbi' # R
-  depends_on 'abseil_cpp' # R
-  depends_on 'qt5_base' # R
-  depends_on 'qt5_declarative' # R
-  depends_on 'qt5_base' # R
-  depends_on 'qt5_declarative' # R
 
   # no_lto
   conflicts_ok # conflicts with libglvnd
@@ -125,5 +124,6 @@ class Gstreamer < Meson
     -Dexamples=disabled \
     -Dgpl=enabled \
     -Dgtk_doc=disabled \
-    -Dintrospection=disabled"
+    -Dintrospection=disabled \
+    -Dtests=disabled"
 end
