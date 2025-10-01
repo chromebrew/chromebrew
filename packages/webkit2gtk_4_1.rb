@@ -13,7 +13,7 @@ class Webkit2gtk_4_1 < CMake
   binary_sha256({
     aarch64: '6c220476148a9b263f78e1a9dfc95562bcf8635fbcc403f2c461bbbf7b5f465f',
      armv7l: '6c220476148a9b263f78e1a9dfc95562bcf8635fbcc403f2c461bbbf7b5f465f',
-     x86_64: '80b969a2d1a82d55852f5026aefac336c8092d8d8c3628450e7fb1a47121e3de'
+     x86_64: 'fef9f543b22ea521cca9c2e411e279db11e5894d738eb1ee4c75d8673ad1a4ff'
   })
 
   depends_on 'at_spi2_core' # R
@@ -21,12 +21,13 @@ class Webkit2gtk_4_1 < CMake
   depends_on 'ccache' => :build
   depends_on 'dav1d' => :build
   depends_on 'enchant' # R
+  depends_on 'expat' # R
   depends_on 'fontconfig'
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gstreamer' # R
   depends_on 'gtk3' # R
@@ -40,7 +41,6 @@ class Webkit2gtk_4_1 < CMake
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
   depends_on 'libgcrypt' # R
-  depends_on 'libglvnd' # R
   depends_on 'libgpg_error' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
@@ -50,16 +50,10 @@ class Webkit2gtk_4_1 < CMake
   depends_on 'libsoup' # R
   depends_on 'libtasn1' # R
   depends_on 'libwebp' # R
-  depends_on 'libwpe' # R
   depends_on 'libx11' # R
-  depends_on 'libxcomposite' # R
-  depends_on 'libxdamage' # R
   depends_on 'libxml2' # R
-  depends_on 'libxrender' # R
   depends_on 'libxslt' # R
-  depends_on 'libxt' # R
   depends_on 'mesa' # R
-  depends_on 'openjpeg' # R
   depends_on 'pango' # R
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_smartypants' => :build
@@ -70,7 +64,6 @@ class Webkit2gtk_4_1 < CMake
   depends_on 'vulkan_icd_loader'
   depends_on 'wayland' # R
   depends_on 'woff2' # R
-  depends_on 'wpebackend_fdo' # R
   depends_on 'zlib' # R
 
   no_env_options
