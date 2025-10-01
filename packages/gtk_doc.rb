@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk_doc < Meson
   description 'Documentation tool for public library API'
   homepage 'https://www.gtk.org/gtk-doc/'
-  version '1.34.0'
+  version '1.35.0'
   license 'GPL-2 and FDL-1.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gtk-doc.git'
