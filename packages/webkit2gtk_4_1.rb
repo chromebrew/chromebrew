@@ -70,11 +70,10 @@ class Webkit2gtk_4_1 < CMake
   no_lto
 
   def self.patch
-    # Fix incompatibility with gtk3 from current gobjects_introspection causing build failure
-    # as per https://bugs.webkit.org/show_bug.cgi?id=276180 .
-    # downloader 'https://github.com/WebKit/WebKit/pull/30446.diff', '67ab9642e9766d9c9d9cbe52032edc6ddee05f690851d890eeda60d9cdd9cc30'
-    # system 'patch -Np1 -i 30446.diff'
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
+    # This only works in the container.
+    system "sudo ln -s #{CREW_PREFIX}/bin/gcc /usr/bin/gcc" if CREW_IN_CONTAINER
+    system "sudo ln -s #{CREW_PREFIX}/bin/g++ /usr/bin/g++" if CREW_IN_CONTAINER
     # https://www2.webkit.org/show_bug.cgi?id=299166
     # https://www2.webkit.org/attachment.cgi?id=476800
     downloader 'https://www2.webkit.org/attachment.cgi?id=476800', 'c5d82f64fe5d576585d8f57b30ee18702abebbd9bd3eb51e07605d26667a1957', 'armv7l.patch'
