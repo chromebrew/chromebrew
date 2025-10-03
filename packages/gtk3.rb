@@ -11,8 +11,8 @@ class Gtk3 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c7bc1f7fdcbb982f68a962120f4b6e25c6311c4029c1eafa42bc5312b0ce9253',
-     armv7l: 'c7bc1f7fdcbb982f68a962120f4b6e25c6311c4029c1eafa42bc5312b0ce9253',
+    aarch64: 'c16fc1ed90b02fce49d75e37def55a1543b15e50d518f2b835f1a9e6c0f81f7f',
+     armv7l: 'c16fc1ed90b02fce49d75e37def55a1543b15e50d518f2b835f1a9e6c0f81f7f',
      x86_64: '88dc2bc6f045d56ad578002f261682d09a6b34fd0cea09f77d9ed09e2120284b'
   })
 
