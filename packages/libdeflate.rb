@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libdeflate < CMake
   description 'Heavily optimized library for DEFLATE compression and decompression'
   homepage 'https://github.com/ebiggers/libdeflate/'
-  version '1.19'
+  version '1.24'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ebiggers/libdeflate.git'
