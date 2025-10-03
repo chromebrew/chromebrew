@@ -465,6 +465,7 @@ CREW_DOCOPT ||= <<~DOCOPT
     crew upgrade [options] [-f|--force] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-f|--force] [-v|--verbose] [<name> ...]
     crew upstream [options] [-j|--json|-u|--update-package-files|-v|--verbose] <name> ...
+    crew version [options] [<name>]
     crew whatprovides [options] <pattern> ...
 
     -b --include-build-deps    Include build dependencies in output.

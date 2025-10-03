@@ -46,7 +46,7 @@ begin
 rescue Docopt::Exit => e
   if ARGV[0]
     case ARGV[0]
-    when '-V', '--version', 'version'
+    when '-V', '--version'
       puts CREW_VERSION
       exit 0
     when '-L', '--license', 'license'
@@ -2041,6 +2041,18 @@ def upstream_command(args)
   args = { '<name>' => args.split } if args.is_a? String
   Dir.chdir CREW_PACKAGES_PATH do
     system "../tools/version.rb #{args['<name>'].join(' ').gsub('.rb', '')} #{@json} #{@update} #{@short_verbose}"
+  end
+end
+
+def version_command(args)
+  args = { '<name>' => args.split } if args.is_a? String
+  if args['<name>'].empty?
+    puts CREW_VERSION
+  else
+    args['<name>'].each do |name|
+      search name
+      puts @pkg.version
+    end
   end
 end
 
