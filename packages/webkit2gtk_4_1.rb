@@ -142,9 +142,9 @@ class Webkit2gtk_4_1 < CMake
       @counter_max = 20
       loop do
         break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
-  
+
         puts "Make iteration #{@counter} of #{@counter_max}...".orange
-  
+
         @counter += 1
         break if @counter > @counter_max
       end
