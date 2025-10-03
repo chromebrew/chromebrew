@@ -1,4 +1,4 @@
-# Total size: 53744292
+# Total size: 53237967
 /usr/local/.config/gtk-3.0/settings.ini
 /usr/local/bin/broadwayd
 /usr/local/bin/gtk-builder-tool
@@ -440,10 +440,10 @@
 /usr/local/lib/libgailutil-3.so.0.0.0
 /usr/local/lib/libgdk-3.so
 /usr/local/lib/libgdk-3.so.0
-/usr/local/lib/libgdk-3.so.0.2417.32
+/usr/local/lib/libgdk-3.so.0.2419.32
 /usr/local/lib/libgtk-3.so
 /usr/local/lib/libgtk-3.so.0
-/usr/local/lib/libgtk-3.so.0.2417.32
+/usr/local/lib/libgtk-3.so.0.2419.32
 /usr/local/lib/pkgconfig/gail-3.0.pc
 /usr/local/lib/pkgconfig/gdk-3.0.pc
 /usr/local/lib/pkgconfig/gdk-broadway-3.0.pc

@@ -856,7 +856,7 @@ def prepare_package(destdir)
     strip_dir destdir
 
     # Create file list and calculate file size
-    filelist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*/**}"].select do |e|
+    filelist = Dir[".{#{CREW_PREFIX}/**/{*,.?*/**},#{HOME}}/**/{*,.?*/**}"].select do |e|
       File.file?(e) || File.symlink?(e)
     end.to_h do |e|
       # Ignore symlinks to prevent duplicating calculation.
@@ -1885,7 +1885,9 @@ def download_command(args)
     search @pkg_name
     @pkg.build_from_source = true if @opt_source
     print_current_package extra: CREW_VERBOSE
+    # rubocop:disable Style/ArrayIntersectWithSingleElement
     if ARGV.intersect?(%w[download]) && @pkg.is_fake?
+      # rubocop:enable Style/ArrayIntersectWithSingleElement
       fake_pkg_deplist = @pkg.get_deps_list(return_attr: true).flat_map(&:keys).uniq
       until fake_pkg_deplist.blank?
         puts "Will download the following packages: #{fake_pkg_deplist.join(' ')}".orange
