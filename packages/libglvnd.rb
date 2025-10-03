@@ -11,9 +11,9 @@ class Libglvnd < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '52555ba2aab442a4d3b336e164ad35f64ec8ea09db9340751729363e6e5d51ba',
-     armv7l: '52555ba2aab442a4d3b336e164ad35f64ec8ea09db9340751729363e6e5d51ba',
-     x86_64: 'e076f11dae10b4fd8c21076b33a85be40bc585cc7612f3da29802e6b09e58ba5'
+    aarch64: '09e9b0c74fc26c5e7efc5829465ce53cb717a9d631236b0e53731be9df9b7617',
+     armv7l: '09e9b0c74fc26c5e7efc5829465ce53cb717a9d631236b0e53731be9df9b7617',
+     x86_64: '8d0fcb934f6a57903cfc3259e23c5ce0a0d5fcbb0040809fea210a5d812a55f9'
   })
 
   depends_on 'gcc_lib' # R
