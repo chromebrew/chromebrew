@@ -7,7 +7,7 @@ Package.load_package("#{__dir__}/freetype.rb")
 class Harfbuzz < Meson
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://harfbuzz.github.io/'
-  version "11.5.0-#{CREW_ICU_VER}"
+  version "12.1.0-#{CREW_ICU_VER}"
   license 'Old-MIT, ISC and icu'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/harfbuzz/harfbuzz.git'
@@ -15,9 +15,9 @@ class Harfbuzz < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2fbf0e9be0cca644efbfbe249618118afecf71c18f7c9b66d010c6f1fdb63fe0',
-     armv7l: '2fbf0e9be0cca644efbfbe249618118afecf71c18f7c9b66d010c6f1fdb63fe0',
-     x86_64: '1f26049ed111909c3f145e9d9b87869210977b50bce4d0723ee471c1ecc88959'
+    aarch64: 'a5b4d5db396ada87606386ddaed23d0e0be741c2a3df90c5247f98019fcff28d',
+     armv7l: 'a5b4d5db396ada87606386ddaed23d0e0be741c2a3df90c5247f98019fcff28d',
+     x86_64: '24a5e5b4dd97b629a4e128f4590f9cd8f29f64297ea097d7e9cd16d7fe5213f6'
   })
 
   depends_on 'brotli' # R
