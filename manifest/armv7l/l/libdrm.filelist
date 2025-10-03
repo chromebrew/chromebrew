@@ -1,4 +1,4 @@
-# Total size: 1018217
+# Total size: 1008418
 /usr/local/include/freedreno/freedreno_drmif.h
 /usr/local/include/freedreno/freedreno_ringbuffer.h
 /usr/local/include/libdrm/amdgpu.h
@@ -46,22 +46,22 @@
 /usr/local/include/xf86drmMode.h
 /usr/local/lib/libdrm.so
 /usr/local/lib/libdrm.so.2
-/usr/local/lib/libdrm.so.2.125.0
+/usr/local/lib/libdrm.so.2.126.0
 /usr/local/lib/libdrm_amdgpu.so
 /usr/local/lib/libdrm_amdgpu.so.1
-/usr/local/lib/libdrm_amdgpu.so.1.125.0
+/usr/local/lib/libdrm_amdgpu.so.1.126.0
 /usr/local/lib/libdrm_etnaviv.so
 /usr/local/lib/libdrm_etnaviv.so.1
-/usr/local/lib/libdrm_etnaviv.so.1.125.0
+/usr/local/lib/libdrm_etnaviv.so.1.126.0
 /usr/local/lib/libdrm_freedreno.so
 /usr/local/lib/libdrm_freedreno.so.1
-/usr/local/lib/libdrm_freedreno.so.1.125.0
+/usr/local/lib/libdrm_freedreno.so.1.126.0
 /usr/local/lib/libdrm_nouveau.so
 /usr/local/lib/libdrm_nouveau.so.2
-/usr/local/lib/libdrm_nouveau.so.2.125.0
+/usr/local/lib/libdrm_nouveau.so.2.126.0
 /usr/local/lib/libdrm_radeon.so
 /usr/local/lib/libdrm_radeon.so.1
-/usr/local/lib/libdrm_radeon.so.1.125.0
+/usr/local/lib/libdrm_radeon.so.1.126.0
 /usr/local/lib/pkgconfig/libdrm.pc
 /usr/local/lib/pkgconfig/libdrm_amdgpu.pc
 /usr/local/lib/pkgconfig/libdrm_etnaviv.pc
