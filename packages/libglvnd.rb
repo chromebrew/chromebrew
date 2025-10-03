@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libglvnd < Package
+class Libglvnd < Meson
   description 'The GL Vendor-Neutral Dispatch library'
   homepage 'https://gitlab.freedesktop.org/glvnd/libglvnd'
   version '1.7.0'
@@ -22,15 +22,4 @@ class Libglvnd < Package
   depends_on 'libx11' # R
   depends_on 'libxext' => :build
   depends_on 'python3' => :build
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
 end
