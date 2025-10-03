@@ -856,7 +856,7 @@ def prepare_package(destdir)
     strip_dir destdir
 
     # Create file list and calculate file size
-    filelist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*/**}"].select do |e|
+    filelist = Dir[".{#{CREW_PREFIX}/**/{*,.?*/**},#{HOME}}/**/{*,.?*/**}"].select do |e|
       File.file?(e) || File.symlink?(e)
     end.to_h do |e|
       # Ignore symlinks to prevent duplicating calculation.
