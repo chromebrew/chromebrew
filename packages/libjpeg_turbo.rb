@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libjpeg_turbo < CMake
   description 'Libjpeg-turbo implements both the traditional libjpeg API as well as the less powerful but more straightforward TurboJPEG API.'
   homepage 'https://libjpeg-turbo.org'
-  version '3.1.1'
+  version '3.1.2'
   license 'IJG License'
   compatibility 'all'
   source_url 'https://github.com/libjpeg-turbo/libjpeg-turbo.git'
