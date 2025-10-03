@@ -18,7 +18,7 @@ class Webkit2gtk_4_1 < CMake
 
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'dav1d' => :build
   depends_on 'enchant' # R
   depends_on 'expat' # R
@@ -72,12 +72,29 @@ class Webkit2gtk_4_1 < CMake
   def self.patch
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
     # This only works in the container.
-    system "sudo ln -s #{CREW_PREFIX}/bin/gcc /usr/bin/gcc" if CREW_IN_CONTAINER
-    system "sudo ln -s #{CREW_PREFIX}/bin/g++ /usr/bin/g++" if CREW_IN_CONTAINER
-    # https://www2.webkit.org/show_bug.cgi?id=299166
-    # https://www2.webkit.org/attachment.cgi?id=476800
-    downloader 'https://www2.webkit.org/attachment.cgi?id=476800', 'c5d82f64fe5d576585d8f57b30ee18702abebbd9bd3eb51e07605d26667a1957', 'armv7l.patch'
-    system 'patch -Np2 -i armv7l.patch' if ARCH == 'armv7l'
+    system "sudo ln -sf #{CREW_PREFIX}/bin/gcc /usr/bin/gcc" if CREW_IN_CONTAINER
+    system "sudo ln -sf #{CREW_PREFIX}/bin/g++ /usr/bin/g++" if CREW_IN_CONTAINER
+    if ARCH == 'armv7l'
+      # https://www2.webkit.org/show_bug.cgi?id=299166
+      # https://www2.webkit.org/attachment.cgi?id=476800
+      downloader 'https://www2.webkit.org/attachment.cgi?id=476800', 'c5d82f64fe5d576585d8f57b30ee18702abebbd9bd3eb51e07605d26667a1957', 'armv7l.patch'
+      system 'patch -Np2 -i armv7l.patch'
+      @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
+      @new_gcc = <<~NEW_GCCEOF
+        #!/bin/bash
+        gcc #{@arch_flags} $@
+      NEW_GCCEOF
+      @new_gpp = <<~NEW_GPPEOF
+        #!/bin/bash
+        # See https://wiki.debian.org/ReduceBuildMemoryOverhead
+        g++ #{@arch_flags} --param ggc-min-expand=10 $@
+      NEW_GPPEOF
+      FileUtils.mkdir_p 'bin'
+      File.write('bin/gcc', @new_gcc)
+      FileUtils.chmod 0o755, 'bin/gcc'
+      File.write('bin/g++', @new_gpp)
+      FileUtils.chmod 0o755, 'bin/g++'
+    end
   end
 
   pre_cmake_options "CC=#{CREW_PREFIX}/bin/gcc CXX=#{CREW_PREFIX}/bin/g++"
@@ -94,6 +111,45 @@ class Webkit2gtk_4_1 < CMake
           -DUSE_GTK4=OFF \
           -DUSE_JPEGXL=ON \
           -DUSE_SOUP2=OFF"
+
+  if ARCH == 'armv7l'
+    def self.build
+      # This builds webkit2gtk4_1 (which uses gtk3, but not libsoup2)
+      @workdir = Dir.pwd
+      # Bubblewrap sandbox breaks on epiphany with
+      # bwrap: Can't make symlink at /var/run: File exists
+      # LDFLAGS from debian: -Wl,--no-keep-memory
+      unless File.file?('build.ninja')
+        @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
+        system "CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' CREW_LINKER_FLAGS='#{@arch_linker_flags}' \
+          cmake -B builddir -G Ninja \
+          #{CREW_CMAKE_OPTIONS.sub('-pipe', '-pipe -Wno-error').gsub('-flto=auto', '').sub('-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE', '')} \
+          -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+          -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
+          -DENABLE_DOCUMENTATION=OFF \
+          -DENABLE_GAMEPAD=OFF \
+          -DENABLE_JOURNALD_LOG=OFF \
+          -DENABLE_MINIBROWSER=ON \
+          -DENABLE_SPEECH_SYNTHESIS=OFF \
+          -DPORT=GTK \
+          -DPYTHON_EXECUTABLE=`which python` \
+          -DUSER_AGENT_BRANDING='Chromebrew' \
+          -DUSE_GTK4=OFF \
+          -DUSE_JPEGXL=ON \
+          -DUSE_SOUP2=OFF"
+      end
+      @counter = 1
+      @counter_max = 20
+      loop do
+        break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+  
+        puts "Make iteration #{@counter} of #{@counter_max}...".orange
+  
+        @counter += 1
+        break if @counter > @counter_max
+      end
+    end
+  end
 
   cmake_install_extras do
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver", "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver_4.1"
