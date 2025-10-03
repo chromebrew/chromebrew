@@ -3,12 +3,12 @@ require 'package'
 class Libxi < Package
   description 'X.org libXi Client library for XInput'
   homepage 'https://x.org/wiki/'
-  version '1.7.10'
+  version '1.8.2'
   license 'MIT and custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.x.org/archive/individual/lib/libXi-#{version}.tar.gz"
-  source_sha256 'b51e106c445a49409f3da877aa2f9129839001b24697d75a54e5c60507e9a5e3'
-  binary_compression 'tar.xz'
+  source_sha256 '5542daec66febfeb6f51d57abfa915826efe2e3af57534f4105b82240ea3188d'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'faed3d1ad11fa264c71cce0d762e3941f29dd1d00620f5a45fdcc27419f54be5',
