@@ -1,5 +1,4 @@
-# Total size: 56347391
-/usr/local/.config/gtk-3.0/settings.ini
+# Total size: 55753508
 /usr/local/bin/broadwayd
 /usr/local/bin/gtk-builder-tool
 /usr/local/bin/gtk-encode-symbolic-svg
@@ -440,10 +439,10 @@
 /usr/local/lib64/libgailutil-3.so.0.0.0
 /usr/local/lib64/libgdk-3.so
 /usr/local/lib64/libgdk-3.so.0
-/usr/local/lib64/libgdk-3.so.0.2417.32
+/usr/local/lib64/libgdk-3.so.0.2419.32
 /usr/local/lib64/libgtk-3.so
 /usr/local/lib64/libgtk-3.so.0
-/usr/local/lib64/libgtk-3.so.0.2417.32
+/usr/local/lib64/libgtk-3.so.0.2419.32
 /usr/local/lib64/pkgconfig/gail-3.0.pc
 /usr/local/lib64/pkgconfig/gdk-3.0.pc
 /usr/local/lib64/pkgconfig/gdk-broadway-3.0.pc
