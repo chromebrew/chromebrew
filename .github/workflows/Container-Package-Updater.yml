@@ -2,7 +2,7 @@
 name: Generate Updates for Core and Buildessential Packages.
 on:
   schedule:
-    - cron: '0 12 * * *'  # Daily
+    - cron: '0 8 * * *'  # Daily
   workflow_dispatch:
 env:
   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}  # setting GH_TOKEN for the entire workflow
@@ -19,28 +19,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.4.5'
-      - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package. https://github.com/repology/libversion/issues/35
-        working-directory: ${{ runner.temp }}
-        run: |
-          git clone --depth 1 -b 3.0.3 https://github.com/repology/libversion
-          cd libversion
-          mkdir build
-          cd build
-          cmake ..
-          make -j "$(nproc)"
-          sudo make install
-          sudo gem install --no-update-sources -N ruby-libversion --conservative
       - name: Check for updates in core and buildessential packages.
-        id: pip-update-checks
+        id: trigger-update-checks
         run: |
-          set -x
-          # Make crew do automatic gem installs before looking for deps.
-          ruby bin/crew version
-          # Force creation of temporary device.json.
-          ruby bin/crew deps zstd_static
-          export PACKAGES="$(ruby bin/crew deps core buildessential | sort -u)"
           # shellcheck disable=SC2116
-          gh workflow -R chromebrew/chromebrew run Updater-on-Demand.yml -f version_cmd_input="$(echo ${PACKAGES})"
+          gh workflow -R chromebrew/chromebrew run Package-Dependencies-Updater.yml -f version_cmd_input="core buildessential"
