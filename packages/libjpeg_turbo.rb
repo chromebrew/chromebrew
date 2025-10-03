@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libjpeg_turbo < CMake
   description 'Libjpeg-turbo implements both the traditional libjpeg API as well as the less powerful but more straightforward TurboJPEG API.'
   homepage 'https://libjpeg-turbo.org'
-  version '3.1.1'
+  version '3.1.2'
   license 'IJG License'
   compatibility 'all'
   source_url 'https://github.com/libjpeg-turbo/libjpeg-turbo.git'
@@ -11,10 +11,10 @@ class Libjpeg_turbo < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8ea20f411bd98eb45cbee34128240e50e33ebd8a987da2f7602e58a352781e21',
-     armv7l: '8ea20f411bd98eb45cbee34128240e50e33ebd8a987da2f7602e58a352781e21',
-       i686: '3b49ddea7c24ddf790d4fa63f5e624734d4f19d0389dfe658d2999951904a20b',
-     x86_64: '886737c6bb0a1da295b306b64ce0cd3bbd1879e24a3604b5e8a030d15b28a7cf'
+    aarch64: 'e60fa4d21fe92db76e0b1f64738d9c775f5d0cf0af856df4d259ff573aef9700',
+     armv7l: 'e60fa4d21fe92db76e0b1f64738d9c775f5d0cf0af856df4d259ff573aef9700',
+       i686: '5016c802b9ff56065326eb05891a86ca88972c3d76f868f32a84770188990179',
+     x86_64: 'cd84fd0c27e65619a1f9bed5675b043c00ad7d9254a5c1dc66b2142c7b759cf0'
   })
 
   depends_on 'nasm' => :build

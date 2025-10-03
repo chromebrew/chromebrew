@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libdeflate < CMake
   description 'Heavily optimized library for DEFLATE compression and decompression'
   homepage 'https://github.com/ebiggers/libdeflate/'
-  version '1.19'
+  version '1.24'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ebiggers/libdeflate.git'
@@ -11,10 +11,10 @@ class Libdeflate < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9c2808b40e8257439943369bf44153758e706f09446b9b92de42391ebb52dd00',
-     armv7l: '9c2808b40e8257439943369bf44153758e706f09446b9b92de42391ebb52dd00',
-       i686: '0c5306cc7692ae9f5061a5a89e13da1bb1ece3240366238613301e69003c7236',
-     x86_64: 'b339d1e1e71fcf0aed63e4ed3cd52a5b595c4401829e471f48b83236d895e378'
+    aarch64: '40a0c187a36367bdf09c97de3fa4b90509e3112edac18854be41a135864fbbb9',
+     armv7l: '40a0c187a36367bdf09c97de3fa4b90509e3112edac18854be41a135864fbbb9',
+       i686: 'd27617a9a2063476dad592d162dac5f785b6335a60c930d152ecbd6cf3e7d10d',
+     x86_64: '99959a610d6b73901ad6285cf2d8ed2fa298a6d5caf71610bc56aa4ca5ffaff4'
   })
 
   depends_on 'glibc' # R
