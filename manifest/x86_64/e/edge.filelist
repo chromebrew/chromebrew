@@ -1,4 +1,4 @@
-# Total size: 632284848
+# Total size: 634207543
 /usr/local/bin/edge
 /usr/local/bin/microsoft-edge
 /usr/local/bin/microsoft-edge-stable
@@ -13,7 +13,6 @@
 /usr/local/share/man/man1/microsoft-edge-stable.1.zst
 /usr/local/share/man/man1/microsoft-edge.1.zst
 /usr/local/share/man/man1/msedge.1.zst
-/usr/local/share/menu/microsoft-edge.menu
 /usr/local/share/msedge/AdSelectionAttestationsPreloaded/ad-selection-attestations.dat
 /usr/local/share/msedge/AdSelectionAttestationsPreloaded/manifest.json
 /usr/local/share/msedge/MEIPreload/manifest.json
@@ -132,7 +131,6 @@
 /usr/local/share/msedge/product_logo_24.png
 /usr/local/share/msedge/product_logo_256.png
 /usr/local/share/msedge/product_logo_32.png
-/usr/local/share/msedge/product_logo_32.xpm
 /usr/local/share/msedge/product_logo_48.png
 /usr/local/share/msedge/product_logo_64.png
 /usr/local/share/msedge/resources.pak
