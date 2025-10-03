@@ -18,7 +18,6 @@ class Webkit2gtk_4_1 < CMake
 
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
-  # depends_on 'ccache' => :build
   depends_on 'dav1d' => :build
   depends_on 'enchant' # R
   depends_on 'expat' # R
@@ -138,16 +137,17 @@ class Webkit2gtk_4_1 < CMake
           -DUSE_JPEGXL=ON \
           -DUSE_SOUP2=OFF"
       end
-      @counter = 1
-      @counter_max = 20
-      loop do
-        break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+      Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+      #@counter = 1
+      #@counter_max = 20
+      #loop do
+        #break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
 
-        puts "Make iteration #{@counter} of #{@counter_max}...".orange
+        #puts "Make iteration #{@counter} of #{@counter_max}...".orange
 
-        @counter += 1
-        break if @counter > @counter_max
-      end
+        #@counter += 1
+        #break if @counter > @counter_max
+      #end
     end
   end
 
