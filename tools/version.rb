@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.2 (for Chromebrew)
+# version.rb version 3.3 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -31,6 +31,7 @@ require File.join(crew_local_repo_root, 'lib/convenience_functions')
 require File.join(crew_local_repo_root, 'lib/package')
 require File.join(crew_local_repo_root, 'lib/package_utils')
 require File.join(crew_local_repo_root, 'lib/require_gem')
+require_gem('cgi')
 require_gem 'ruby-libversion', 'ruby_libversion'
 require_gem('ptools')
 
@@ -40,6 +41,7 @@ $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 OUTPUT_JSON = ARGV.include?('-j') || ARGV.include?('--json')
 UPDATE_PACKAGE_FILES = ARGV.include?('-u') || ARGV.include?('--update-package-files')
 VERBOSE = ARGV.include?('-v') || ARGV.include?('--verbose')
+VERY_VERBOSE = ARGV.include?('-vv')
 bc_updated = {}
 @pkg_names = {}
 updatable_pkg = {}
@@ -105,9 +107,11 @@ def get_anitya_id(name, homepage)
   return if %w[Pip RUBY].include?(@pkg.superclass.to_s)
 
   # Find out how many packages Anitya has with the provided name.
-  json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{name}")))
+  puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}" if VERY_VERBOSE
+  json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}")))
   number_of_packages = json['total_items']
 
+  puts "number_of_packages = #{number_of_packages}" if VERY_VERBOSE
   if number_of_packages == 1 # We assume we have the right package, take the ID and move on.
     return json['items'][0]['id']
   elsif number_of_packages.zero? # Anitya either doesn't have this package, or has it under a different name.

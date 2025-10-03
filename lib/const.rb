@@ -388,6 +388,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'gcc_build', anitya_pkg: 'gcc', comments: '' },
     { pkg_name: 'gnu_time', anitya_pkg: 'time', comments: '' },
     { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
+    { pkg_name: 'gtk3', anitya_pkg: 'gtk+3.0~stable', comments: '' },
     { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: '' },
     { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'libgedit_amtk', anitya_pkg: 'libgedit-amtk', comments: 'Prefer to GitHub' },
