@@ -100,6 +100,7 @@ Where available commands are:
 | upgrade             | update all or specific package(s) |
 | upload              | upload binaries for all or specific package(s) |
 | upstream            | check if an upstream version is available for package(s) |
+| version             | check for the Chromebrew version, or if a package is specified, the package version |
 | whatprovides        | regex search for package(s) that contains file(s) |
 
 Available packages are listed in the [packages directory](https://github.com/chromebrew/chromebrew/tree/master/packages).
