@@ -13,7 +13,7 @@ class Gtk3 < Meson
   binary_sha256({
     aarch64: 'c7bc1f7fdcbb982f68a962120f4b6e25c6311c4029c1eafa42bc5312b0ce9253',
      armv7l: 'c7bc1f7fdcbb982f68a962120f4b6e25c6311c4029c1eafa42bc5312b0ce9253',
-     x86_64: '1b01740fe8ea983b303f8ec40512b674676b548e8e431ea917fcb1a7d908dbef'
+     x86_64: '88dc2bc6f045d56ad578002f261682d09a6b34fd0cea09f77d9ed09e2120284b'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -24,14 +24,12 @@ class Gtk3 < Meson
   depends_on 'cups' # R
   depends_on 'docbook' => :build
   depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
   depends_on 'fribidi' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'ghostscript' => :build
-  depends_on 'glibc' # R
   depends_on 'glib' # R
-  # depends_on 'gnome_icon_theme' # L
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' => :build # Do we need this?
   depends_on 'graphite' => :build # Do we need this?
@@ -51,11 +49,10 @@ class Gtk3 < Meson
   depends_on 'libxdamage' # R
   depends_on 'libxext' # R
   depends_on 'libxfixes' # R
-  depends_on 'libxinerama' # R
   depends_on 'libxi' # R
+  depends_on 'libxinerama' # R
   depends_on 'libxkbcommon' # R
   depends_on 'libxrandr' # R
-  depends_on 'libxrender' # R
   depends_on 'mesa' => :build
   depends_on 'pango' # R
   depends_on 'rest' => :build
