@@ -9,7 +9,7 @@ class Docbook_xml < Package
 
   is_fake
 
-  unless File.exist?("#{CREW_PREFIX}/etc/env.d/docbook_xml")
+  unless File.exist?("#{CREW_PREFIX}/etc/env.d/docbook_xml") || ENV['CI']
     FileUtils.mkdir_p "#{CREW_PREFIX}/etc/env.d/"
     @env = <<~DOCBOOK_XML_EOF
       # Docbook_xml configuration

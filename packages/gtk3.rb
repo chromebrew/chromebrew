@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk3 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://docs.gtk.org/gtk3/'
-  version '3.24.49'
+  version '3.24.51'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk3 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '454e676c39fba0aac7c02e11a38f5dea95fd35992c1415d6e560a2625c8ef870',
-     armv7l: '454e676c39fba0aac7c02e11a38f5dea95fd35992c1415d6e560a2625c8ef870',
-     x86_64: 'f36ca615dd896a952ba2c71866a2d0ffece9a33e911e894e8d84ae4fbb2cf93c'
+    aarch64: 'c16fc1ed90b02fce49d75e37def55a1543b15e50d518f2b835f1a9e6c0f81f7f',
+     armv7l: 'c16fc1ed90b02fce49d75e37def55a1543b15e50d518f2b835f1a9e6c0f81f7f',
+     x86_64: '88dc2bc6f045d56ad578002f261682d09a6b34fd0cea09f77d9ed09e2120284b'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -24,14 +24,12 @@ class Gtk3 < Meson
   depends_on 'cups' # R
   depends_on 'docbook' => :build
   depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
   depends_on 'fribidi' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'ghostscript' => :build
-  depends_on 'glibc' # R
   depends_on 'glib' # R
-  # depends_on 'gnome_icon_theme' # L
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' => :build # Do we need this?
   depends_on 'graphite' => :build # Do we need this?
@@ -51,11 +49,10 @@ class Gtk3 < Meson
   depends_on 'libxdamage' # R
   depends_on 'libxext' # R
   depends_on 'libxfixes' # R
-  depends_on 'libxinerama' # R
   depends_on 'libxi' # R
+  depends_on 'libxinerama' # R
   depends_on 'libxkbcommon' # R
   depends_on 'libxrandr' # R
-  depends_on 'libxrender' # R
   depends_on 'mesa' => :build
   depends_on 'pango' # R
   depends_on 'rest' => :build
