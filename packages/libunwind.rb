@@ -4,7 +4,7 @@ require 'buildsystems/autotools'
 class Libunwind < Autotools
   description 'libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program.'
   homepage 'https://www.nongnu.org/libunwind/'
-  version '1.8.2'
+  version '1.8.3'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/libunwind/libunwind.git'
@@ -12,10 +12,10 @@ class Libunwind < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '055e943710657c9ab452eac188e876f074228f1f212711c6e20570fd07c74dc9',
-     armv7l: '055e943710657c9ab452eac188e876f074228f1f212711c6e20570fd07c74dc9',
-       i686: '603a322abd5a8815f28f8f3e7774bab70119ed3396a81378e3bbc0dea6d52a1a',
-     x86_64: 'd075e57a6088eb14daf353bc716125a3b25dc7d14465ca5615a96b8bb17b5fbc'
+    aarch64: '4d1ffede13101af1422135afd10687757c0f13ec66255470a9531f7470136ca4',
+     armv7l: '4d1ffede13101af1422135afd10687757c0f13ec66255470a9531f7470136ca4',
+       i686: '1c1c3919cca46f61d71d46c6f3182e01461c6fe19024b69603dcfa02061c546c',
+     x86_64: 'f1dbd4e2888576534d8f1fa7d20dc6f7a4d7c408265bc5def3e98ace3187197e'
   })
 
   depends_on 'gcc_lib' # R
