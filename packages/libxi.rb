@@ -11,8 +11,8 @@ class Libxi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'faed3d1ad11fa264c71cce0d762e3941f29dd1d00620f5a45fdcc27419f54be5',
-     armv7l: 'faed3d1ad11fa264c71cce0d762e3941f29dd1d00620f5a45fdcc27419f54be5',
+    aarch64: 'b3e5642452b75fe976eae04dc4573b5924cba264033785ced61c934b7566cb88',
+     armv7l: 'b3e5642452b75fe976eae04dc4573b5924cba264033785ced61c934b7566cb88',
      x86_64: 'a5cf0fb54f10f08851c562e2f9f60b5a87c3febee35c82cd9b53b267ebddfa2b'
   })
 
