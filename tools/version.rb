@@ -32,7 +32,7 @@ require File.join(crew_local_repo_root, 'lib/package')
 require File.join(crew_local_repo_root, 'lib/package_utils')
 require File.join(crew_local_repo_root, 'lib/require_gem')
 require_gem('cgi')
-require_gem 'ruby-libversion', 'ruby_libversion'
+require_gem('deb_version')
 require_gem('ptools')
 
 # Add >LOCAL< lib to LOAD_PATH
@@ -287,8 +287,8 @@ if filelist.length.positive?
     versions_updated[@pkg.name.to_sym] = 'Not Found.' if upstream_version.nil? || upstream_version.to_s.chomp == 'null'
 
     unless upstream_version.nil?
-      versions_updated[@pkg.name.to_sym] = 'Up to date.' if (Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0) && versions_updated[@pkg.name.to_sym] != 'Not Found.'
-      if Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) == -1
+      versions_updated[@pkg.name.to_sym] = 'Up to date.' if (DebVersion.new(PackageUtils.get_clean_version(@pkg.version)) >= DebVersion.new(upstream_version)) && versions_updated[@pkg.name.to_sym] != 'Not Found.'
+      if DebVersion.new(PackageUtils.get_clean_version(@pkg.version)) < DebVersion.new(upstream_version)
         if UPDATE_PACKAGE_FILES && !@pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && updatable_pkg[@pkg.name.to_sym] == 'Yes'
           file = File.read(filename)
           FileUtils.cp filename, "#{filename}.bak"
