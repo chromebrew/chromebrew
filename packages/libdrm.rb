@@ -11,9 +11,9 @@ class Libdrm < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2de9e306a8fad2d5b8195ee0f5e565dc94e8077276789e847cfcfd43a898c092',
-     armv7l: '2de9e306a8fad2d5b8195ee0f5e565dc94e8077276789e847cfcfd43a898c092',
-     x86_64: '2f8bf25102126b735994f349cb61d80ba9fd847def680903dac18fabe5c47e1a'
+    aarch64: 'd81a7bbe21566b1884cc5144325599a15eb2787aa988f86161444c14c52b804f',
+     armv7l: 'd81a7bbe21566b1884cc5144325599a15eb2787aa988f86161444c14c52b804f',
+     x86_64: '87293bab08185d245f29736bd43d84a3e32c1bea2afa942004edb4328c71a6bb'
   })
 
   depends_on 'cairo' # R
