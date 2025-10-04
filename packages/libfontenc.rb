@@ -12,10 +12,10 @@ class Libfontenc < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8d2dee2568b7a2389cff4435c26653fe56c8b3bda1132ec74215ed87ca8eb287',
-     armv7l: '8d2dee2568b7a2389cff4435c26653fe56c8b3bda1132ec74215ed87ca8eb287',
-       i686: '20d2b4358c6b10ac9f215919ec0b57691565d7dd1e8883d32397ed5b1d773b32',
-     x86_64: '4331cdbb4108722b6fc8d05249cdba21b67e917270ccba8b03b17808176dc30f'
+    aarch64: 'd70cccae338c12cd80cb891b8f1694a70cdba76da9d077a39e3eea271405fd1a',
+     armv7l: 'd70cccae338c12cd80cb891b8f1694a70cdba76da9d077a39e3eea271405fd1a',
+       i686: '8ad3c20ea1adfe41284ae9f87dc3120bdae83538213da0fbb54e5334940dffc2',
+     x86_64: '419779b15ee846873388eee1ab46cbb8fc31dab220443043f15abaa59698be31'
   })
 
   depends_on 'xorg_proto' => :build
