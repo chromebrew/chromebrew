@@ -17,5 +17,7 @@ class Procps < Autotools
      x86_64: '4365db9d4e3397c9c1f48d6366c44a6351b19a9a1dafb142fb65e7d614b36a6e'
   })
 
+  conflicts_ok # Conflicts with uutils_coreutils.
+
   autotools_configure_options "#{'--disable-pidwait' if ARCH == 'i686'}"
 end
