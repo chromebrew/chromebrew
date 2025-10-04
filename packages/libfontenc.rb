@@ -3,11 +3,12 @@ require 'buildsystems/meson'
 class Libfontenc < Meson
   description 'Fontenc Library from X.org'
   homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.1.8'
+  version '1.1.8-dcdbcce'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libfontenc.git'
-  git_hashtag "libfontenc-#{version}"
+  git_hashtag 'dcdbcce903ee49200040c0da092b45253c20c6df'
+  # git_hashtag "libfontenc-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
