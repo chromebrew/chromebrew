@@ -69,7 +69,7 @@ jobs:
       x86_64_packages: ${{ steps.get-compatibility.outputs.x86_64_PACKAGES }}
       armv7l_packages: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -217,7 +217,7 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           persist-credentials: true

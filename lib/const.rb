@@ -367,6 +367,7 @@ CREW_VALID_BUILDSYSTEMS ||= @buildsystems.sort!
 unless defined?(CREW_UPDATER_EXCLUDED_PKGS)
   CREW_UPDATER_EXCLUDED_PKGS = Set[
     { pkg_name: 'glibc', comments: 'Requires manual update.' },
+    { pkg_name: 'gpm', comments: 'Upstream is defunct.' },
     { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
     { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
     { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' },
