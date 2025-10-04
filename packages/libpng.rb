@@ -22,12 +22,5 @@ class Libpng < CMake
 
   gnome
 
-  def self.build
-    system "cmake \
-      -B builddir -G Ninja \
-      #{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
-      -DPNG_STATIC=OFF \
-      -Wno-dev"
-    system "#{CREW_NINJA} -C builddir"
-  end
+  cmake_options '-DPNG_STATIC=OFF'
 end
