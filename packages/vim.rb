@@ -25,6 +25,7 @@ class Vim < Autotools
   depends_on 'ncurses' # R
   depends_on 'vim_runtime' # L
 
+
   ignore_updater
 
   def self.preflight
