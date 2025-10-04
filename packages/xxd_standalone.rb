@@ -31,3 +31,4 @@ class Xxd_standalone < Package
     FileUtils.install 'runtime/doc/xxd.1', "#{CREW_DEST_MAN_PREFIX}/man1/xxd.1", mode: 0o644
   end
 end
+ 

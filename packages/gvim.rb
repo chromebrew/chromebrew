@@ -123,3 +123,4 @@ class Gvim < Autotools
     FileUtils.rm "#{CREW_PREFIX}/bin/vi"
   end
 end
+ 
