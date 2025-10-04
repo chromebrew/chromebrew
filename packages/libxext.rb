@@ -11,8 +11,8 @@ class Libxext < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5ed26f102a7fefc71259c3849ba8549d6cc11b6af74a73bafe333c8ee880120b',
-     armv7l: '5ed26f102a7fefc71259c3849ba8549d6cc11b6af74a73bafe333c8ee880120b',
+    aarch64: '62e7c72360e9ef01f3653a803cb69d49d8c075ffcd0889751829135deb6b5009',
+     armv7l: '62e7c72360e9ef01f3653a803cb69d49d8c075ffcd0889751829135deb6b5009',
      x86_64: 'f1284ee9e7b256da531edad962a014302d6d627d8beb60a30af5cd6c751d1a34'
   })
 
