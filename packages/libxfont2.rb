@@ -11,9 +11,9 @@ class Libxfont2 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ab1e630f1c5a7a5917620dfb5bd34feeea7fdc002f73166d2ef8ed7674a1c537',
-     armv7l: 'ab1e630f1c5a7a5917620dfb5bd34feeea7fdc002f73166d2ef8ed7674a1c537',
-     x86_64: '4a72ab2f2da91acfff1ff03d0b7c47ac37ad9d0d3c5adc1d6ad1e98448f24200'
+    aarch64: 'be7287111f3bc930bb5c90e17e9f780370cbdce03116d101d6ca281000fbcf78',
+     armv7l: 'be7287111f3bc930bb5c90e17e9f780370cbdce03116d101d6ca281000fbcf78',
+     x86_64: 'e0c2c516e7ff9fdff3c10f4930497e3e187cbee0fe34ffd618e0a98f8a91abe2'
   })
 
   depends_on 'fop' => :build
