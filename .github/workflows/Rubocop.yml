@@ -11,13 +11,13 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v5
-      - uses: ruby/setup-ruby@v1
-        with:
+       - uses: actions/checkout@v5
+       - uses: ruby/setup-ruby@v1
+         with:
            ruby-version: '3.4'
-      - name: Rubocop
-        uses: reviewdog/action-rubocop@v2
-        with:
+       - name: Rubocop
+         uses: reviewdog/action-rubocop@v2
+         with:
            fail_level: any
            filter_mode: nofilter
            only_changed: true

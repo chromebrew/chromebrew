@@ -11,10 +11,10 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v5
-      - name: ShellCheck
-        uses: reviewdog/action-shellcheck@v1
-        with:
-          exclude: './tools/*'
-          fail_level: any
-          reporter: github-pr-review
+       - uses: actions/checkout@v5
+       - name: ShellCheck
+         uses: reviewdog/action-shellcheck@v1
+         with:
+           exclude: './tools/*'
+           fail_level: any
+           reporter: github-pr-review
