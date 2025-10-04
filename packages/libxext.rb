@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libxext < Autotools
   description 'library for the X window system'
   homepage 'https://x.org/wiki/'
-  version '1.3.6'
+  version '1.3.6-1'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxext.git'
-  git_hashtag "libXext-#{version}"
+  git_hashtag "libXext-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
