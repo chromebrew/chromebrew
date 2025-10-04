@@ -459,7 +459,7 @@ def download
   @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
   build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
-  return { source:, filename: } if CREW_CACHE_BUILD && File.file?(build_cachefile)
+  return { source:, filename: } if CREW_CACHE_BUILD && File.file?(build_cachefile) && !@pkg.built
 
   if !url
     abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
@@ -649,7 +649,7 @@ def unpack(meta)
     FileUtils.mkdir_p @extract_dir, verbose: CREW_VERBOSE
 
     build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
-    if CREW_CACHE_BUILD && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && (system "cd #{CREW_CACHE_DIR} && sha256sum -c #{build_cachefile}.sha256")
+    if !@pkg.built && CREW_CACHE_BUILD && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && (system "sha256sum -c #{build_cachefile}.sha256", chdir: CREW_CACHE_DIR)
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{build_cachefile}".lightgreen
       system "tar -Izstd -x#{@verbose}f #{build_cachefile} -C #{CREW_BREW_DIR}", exception: true
@@ -1494,6 +1494,7 @@ def archive_package(crew_archive_dest)
   if @opt_force
     FileUtils.cp "#{CREW_PACKAGES_PATH}/#{@pkg_name}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/"
     puts "The package file for #{@pkg_name} used has been copied to #{CREW_LOCAL_REPO_ROOT}/packages/".lightblue
+    @pkg.built = true
     if PackageUtils.installed?(@pkg.name)
       puts "#{@pkg_name} will now be upgraded...".lightgreen
       @pkg.in_upgrade = true
