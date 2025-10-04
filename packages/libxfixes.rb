@@ -1,31 +1,21 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libxfixes < Package
+class Libxfixes < Meson
   description 'library for the X window system'
   homepage 'https://x.org/wiki/'
-  version '6.0.0'
+  version '6.0.2'
   license 'custom'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.x.org/archive/individual/lib/libXfixes-6.0.0.tar.bz2'
-  source_sha256 'a7c1a24da53e0b46cac5aea79094b4b2257321c621b258729bc3139149245b4c'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxfixes.git'
+  git_hashtag "libXfixes-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '334ba4a7dc7f8578bcc687dead94717e95793cf672e2c081c43b4e2707ef0251',
-     armv7l: '334ba4a7dc7f8578bcc687dead94717e95793cf672e2c081c43b4e2707ef0251',
-     x86_64: 'f6d7949392afb2defb0231a28011ecac138d8f3dd744bd2f2c2fcc27e5bcb2a4'
+    aarch64: '382ea27297662360fef8172baaba5399230941b1c3f1657782055c95310519cb',
+     armv7l: '382ea27297662360fef8172baaba5399230941b1c3f1657782055c95310519cb',
+     x86_64: 'bc9b2c8f73ee928f68011672150a3e432692f294eeb4e9bf1dea5903bd428978'
   })
 
   depends_on 'libx11' # R
   depends_on 'glibc' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
 end
