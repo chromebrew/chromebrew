@@ -1,4 +1,4 @@
-# Total size: 28457970
+# Total size: 28474785
 /usr/local/etc/vimrc
 /usr/local/share/vim/vim91/LICENSE
 /usr/local/share/vim/vim91/README.txt
@@ -1612,6 +1612,7 @@
 /usr/local/share/vim/vim91/syntax/pilrc.vim
 /usr/local/share/vim/vim91/syntax/pine.vim
 /usr/local/share/vim/vim91/syntax/pinfo.vim
+/usr/local/share/vim/vim91/syntax/pkl.vim
 /usr/local/share/vim/vim91/syntax/plaintex.vim
 /usr/local/share/vim/vim91/syntax/pli.vim
 /usr/local/share/vim/vim91/syntax/plm.vim
