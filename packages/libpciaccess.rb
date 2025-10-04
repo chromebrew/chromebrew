@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libpciaccess < Package
+class Libpciaccess < Meson
   description 'Generic PCI access library'
   homepage 'https://x.org/wiki/'
-  version '0.17'
+  version '0.18.1'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libpciaccess-0.17.tar.xz'
-  source_sha256 '74283ba3c974913029e7a547496a29145b07ec51732bbb5b5c58d5025ad95b73'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libpciaccess.git'
+  git_hashtag "libpciaccess-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -18,14 +18,4 @@ class Libpciaccess < Package
   })
 
   depends_on 'glibc' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
