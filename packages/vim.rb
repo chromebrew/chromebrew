@@ -12,10 +12,10 @@ class Vim < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'decca2cf2ba43566706fd35366972a5e58d86a12f52757c8265a421e794f69bc',
-     armv7l: 'decca2cf2ba43566706fd35366972a5e58d86a12f52757c8265a421e794f69bc',
-       i686: '218495cf20973f5227f0ed71cd6932b440ac45d83e62754b0884d582ffc6c211',
-     x86_64: 'a7816f65975a9d4ac3aad25247b24641f4764699346d8b581c2d6098416b5846'
+    aarch64: 'a9c1c43506dfdf06964de1bb3c40e3de1acb45a68b5d106044e0ddc7e590920d',
+     armv7l: 'a9c1c43506dfdf06964de1bb3c40e3de1acb45a68b5d106044e0ddc7e590920d',
+       i686: '1f6f195603efcaac11f367144556d133c358bea1712b58171f637a801bf4154e',
+     x86_64: 'b629880d8f1f8f0f67c22baa94fdb98842002e27274ba6ca2e294dd2698a1f97'
   })
 
   depends_on 'acl' # R
@@ -24,7 +24,6 @@ class Vim < Autotools
   depends_on 'libsodium' # R
   depends_on 'ncurses' # R
   depends_on 'vim_runtime' # L
-
 
   ignore_updater
 
