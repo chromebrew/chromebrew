@@ -4,6 +4,11 @@ require_relative '../lib/package'
 class Command
   def self.help(command)
     case command
+    when 'autoremove'
+      puts <<~EOT
+        Remove unused dependencies installed by removed packages
+        Usage: crew autoremove
+      EOT
     when 'build'
       puts <<~EOT
         Build package(s).
