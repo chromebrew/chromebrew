@@ -86,7 +86,8 @@ class Webkit2gtk_4_1 < CMake
       @new_gpp = <<~NEW_GPPEOF
         #!/bin/bash
         # See https://wiki.debian.org/ReduceBuildMemoryOverhead
-        g++ #{@arch_flags} --param ggc-min-expand=10 $@
+        # g++ #{@arch_flags} --param ggc-min-expand=10 $@
+        g++ #{@arch_flags} $@
       NEW_GPPEOF
       FileUtils.mkdir_p 'bin'
       File.write('bin/gcc', @new_gcc)
