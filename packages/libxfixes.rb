@@ -11,9 +11,9 @@ class Libxfixes < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '334ba4a7dc7f8578bcc687dead94717e95793cf672e2c081c43b4e2707ef0251',
-     armv7l: '334ba4a7dc7f8578bcc687dead94717e95793cf672e2c081c43b4e2707ef0251',
-     x86_64: 'f6d7949392afb2defb0231a28011ecac138d8f3dd744bd2f2c2fcc27e5bcb2a4'
+    aarch64: '382ea27297662360fef8172baaba5399230941b1c3f1657782055c95310519cb',
+     armv7l: '382ea27297662360fef8172baaba5399230941b1c3f1657782055c95310519cb',
+     x86_64: 'bc9b2c8f73ee928f68011672150a3e432692f294eeb4e9bf1dea5903bd428978'
   })
 
   depends_on 'libx11' # R
