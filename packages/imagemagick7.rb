@@ -66,6 +66,7 @@ class Imagemagick7 < Autotools
 
   def self.prebuild
     ConvenienceFunctions.libtoolize('jbig', 'jbigkit')
+    ConvenienceFunctions.libtoolize('libpng')
     ConvenienceFunctions.libtoolize('libuuid')
   end
 
