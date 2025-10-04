@@ -349,7 +349,7 @@ jobs:
           cmake ..
           make -j "$(nproc)"
           sudo make install
-          sudo gem install ruby-libversion
+          sudo gem install --no-update-sources -N ruby-libversion --conservative
       - name: Save git log
         id: save-git-log
         env:
@@ -389,6 +389,18 @@ jobs:
               - '!manifest/**'
               - '!packages/*.rb'
               - '!.github/**'
+      - name: Get Changed Packages
+        id: changed-packages
+        env:
+          CHANGED_FILES: ${{ steps.changed-files.outputs.packages }}
+        run: |
+            if [[ -n "${CHANGED_FILES}" ]]; then
+              # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+            else
+              echo "No Changed Files."
+            fi
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
@@ -402,7 +414,7 @@ jobs:
           CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-files.outputs.github_all_changed_files }}
           CHANGED_MANIFEST_FILES: ${{ steps.changed-files.outputs.manifest_all_changed_files }}
           CHANGED_OTHER_FILES: ${{ steps.changed-files.outputs.other_all_changed_files }}
-          CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
+          # CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
           CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
           DRAFT_PR: ${{ inputs.draft_pr }}
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
