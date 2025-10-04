@@ -89,6 +89,7 @@ renamed_packages = Set[
   { pkg_name: 'itstool', pkg_rename: 'py3_itstool', comments: 'Renamed to indicate switch to pip buildsystem.' },
   { pkg_name: 'jsonc', pkg_rename: 'json_c', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libcurl', pkg_rename: 'curl', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'libxfont', pkg_rename: 'libxfont2', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libgpgerror', pkg_rename: 'libgpg_error', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libjpeg', pkg_rename: 'libjpeg_turbo', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libsdl2', pkg_rename: 'sdl2', comments: 'Renamed to better match upstream.' },

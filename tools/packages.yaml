@@ -5490,14 +5490,9 @@ url: https://www.x.org/archive/individual/lib
 activity: none
 ---
 kind: url
-name: libxfont
-url: https://www.x.org/archive/individual/lib
-activity: none
----
-kind: url
 name: libxfont2
 url: https://www.x.org/archive/individual/lib
-activity: none
+activity: low
 ---
 kind: url
 name: libxft
