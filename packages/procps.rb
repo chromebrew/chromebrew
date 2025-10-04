@@ -11,13 +11,13 @@ class Procps < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c126d133d112220e9b055f58ac5f71970344df4e88d5475d5005252914fe3ae0',
-     armv7l: 'c126d133d112220e9b055f58ac5f71970344df4e88d5475d5005252914fe3ae0',
-       i686: '907304652a1d986d6864498115d980d4b9ed73939a9b8f2f8ae2772ad373ee90',
-     x86_64: '4365db9d4e3397c9c1f48d6366c44a6351b19a9a1dafb142fb65e7d614b36a6e'
+    aarch64: 'a31ef07767fde20684c0c5c23c9d47d6e7b646906bb3fa5db2f61794f4297625',
+     armv7l: 'a31ef07767fde20684c0c5c23c9d47d6e7b646906bb3fa5db2f61794f4297625',
+       i686: '71bd241f9913074041d15480c6aba8f91f8af7bbc27b8815d8cdbf022c82b31f',
+     x86_64: 'f4919b4b88cf3d83a361304b74c5202754d7588b440c9bf8cb6579868c0c82ef'
   })
 
   conflicts_ok # Conflicts with uutils_coreutils.
 
-  autotools_configure_options "#{'--disable-pidwait' if ARCH == 'i686'}"
+  autotools_configure_options ('--disable-pidwait' if ARCH == 'i686').to_s
 end
