@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libfontenc < Package
+class Libfontenc < Meson
   description 'Fontenc Library from X.org'
   homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.1.7'
+  version '1.1.8'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/lib/libfontenc-1.1.7.tar.xz'
-  source_sha256 'c0d36991faee06551ddbaf5d99266e97becdc05edfae87a833c3ff7bf73cfec2'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libfontenc.git'
+  git_hashtag "libfontenc-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -17,18 +17,9 @@ class Libfontenc < Package
      x86_64: '4331cdbb4108722b6fc8d05249cdba21b67e917270ccba8b03b17808176dc30f'
   })
 
-  depends_on 'xorg_proto'
+  depends_on 'xorg_proto' => :build
   depends_on 'glibc' # R
   depends_on 'zlib' # R
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-      --with-fontrootdir=#{CREW_PREFIX}/share/fonts/X11"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  meson_options "-Dwith-fontrootdir=#{CREW_PREFIX}/share/fonts/X11"
 end
