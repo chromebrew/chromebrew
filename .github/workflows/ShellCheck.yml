@@ -15,6 +15,6 @@ jobs:
        - name: ShellCheck
          uses: reviewdog/action-shellcheck@v1
          with:
-           exclude: './tools/*'
-           fail_level: any
-           reporter: github-pr-review
+            exclude: './tools/*'
+            fail_level: any
+            reporter: github-pr-review
