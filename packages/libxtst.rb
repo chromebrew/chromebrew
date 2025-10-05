@@ -19,6 +19,7 @@ class Libxtst < Autotools
   depends_on 'glibc' # R
   depends_on 'libx11' # R
   depends_on 'libxext' # R
+  depends_on 'libxfixes' => :build
   depends_on 'libxi' # R
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
