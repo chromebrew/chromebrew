@@ -1,36 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxtst < Package
+class Libxtst < Autotools
   description 'X.org Xtst Library'
   homepage 'http://t2sde.org/packages/libxtst.html'
-  version '1.2.4'
-  license 'custom'
+  version '1.2.5'
+  license 'x11'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://xorg.freedesktop.org/releases/individual/lib/libXtst-1.2.4.tar.xz'
-  source_sha256 '84f5f30b9254b4ffee14b5b0940e2622153b0d3aed8286a3c5b7eeb340ca33c8'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxtst.git'
+  git_hashtag "libXtst-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a44455fc4e851f8b7e876e158f4602fb10ab7181aad7813e484005121f31eae4',
-     armv7l: 'a44455fc4e851f8b7e876e158f4602fb10ab7181aad7813e484005121f31eae4',
-     x86_64: '2169135a37e04d3bcb39449423acbf56253a46bfa1bc08d204bf2a781e783c75'
+    aarch64: '8e7bb1ac0b1374f726adb05e82daa4474182e996e591e1dd4297cccdb49299b1',
+     armv7l: '8e7bb1ac0b1374f726adb05e82daa4474182e996e591e1dd4297cccdb49299b1',
+     x86_64: 'baf7a556665c1fd42af7f51d539b62e067addddb62d8806fd527fb56455c2dc7'
   })
 
+  depends_on 'fop' => :build
   depends_on 'glibc' # R
   depends_on 'libx11' # R
   depends_on 'libxext' # R
+  depends_on 'libxfixes' => :build
   depends_on 'libxi' # R
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  depends_on 'xmlto' => :build
+  depends_on 'libxslt' => :build
 end
