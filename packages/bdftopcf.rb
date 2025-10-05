@@ -11,9 +11,9 @@ class Bdftopcf < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b88d5ea3528d5134b6eceb5181c7808a4556693d5ed0f54451d8fd06eff77aeb',
-     armv7l: 'b88d5ea3528d5134b6eceb5181c7808a4556693d5ed0f54451d8fd06eff77aeb',
-     x86_64: '33f241e6bc50687b20e605fabef914dc2b3f60678786f58a371331ec30048319'
+    aarch64: '26692c910819cfa4ec5afa8e002b576a02b3d0c1c66fe895c7b9b45d83369f77',
+     armv7l: '26692c910819cfa4ec5afa8e002b576a02b3d0c1c66fe895c7b9b45d83369f77',
+     x86_64: '8cdc1cc4ed48f54fab9a08f989c0e0bdf678a522a473cd62e25ad8c3d6ee54ff'
   })
 
   depends_on 'libxfont2' => :build
