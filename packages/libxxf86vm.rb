@@ -12,9 +12,9 @@ class Libxxf86vm < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1b557e148bb31223dd3a97bab29ce8ccf666632e6e5fce6ce96226d666284493',
-     armv7l: '1b557e148bb31223dd3a97bab29ce8ccf666632e6e5fce6ce96226d666284493',
-     x86_64: 'fcfdd4e20c228aae10d7b671d6088a335b883bc07efec143db5d389fc080c5c9'
+    aarch64: 'f12a65edbe178005d327bd8b1b1e588069c0ecf68d462bef131484303e126693',
+     armv7l: 'f12a65edbe178005d327bd8b1b1e588069c0ecf68d462bef131484303e126693',
+     x86_64: '03685ced49d6465267400e606a74ef9a7296c76eeae798b7804caa99948ab29c'
   })
 
   depends_on 'libxext' => :build
