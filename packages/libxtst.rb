@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxtst < Package
+class Libxtst < Autotools
   description 'X.org Xtst Library'
   homepage 'http://t2sde.org/packages/libxtst.html'
-  version '1.2.4'
-  license 'custom'
+  version '1.2.5'
+  license 'x11'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://xorg.freedesktop.org/releases/individual/lib/libXtst-1.2.4.tar.xz'
-  source_sha256 '84f5f30b9254b4ffee14b5b0940e2622153b0d3aed8286a3c5b7eeb340ca33c8'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxtst.git'
+  git_hashtag "libXtst-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -23,14 +23,4 @@ class Libxtst < Package
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
 end
