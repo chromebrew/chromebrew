@@ -1,4 +1,4 @@
-# Total size: 798485
+# Total size: 217126
 /usr/local/bin/fribidi
 /usr/local/include/fribidi/fribidi-arabic.h
 /usr/local/include/fribidi/fribidi-begindecls.h
@@ -22,8 +22,6 @@
 /usr/local/include/fribidi/fribidi-unicode-version.h
 /usr/local/include/fribidi/fribidi-unicode.h
 /usr/local/include/fribidi/fribidi.h
-/usr/local/lib/libfribidi.a
-/usr/local/lib/libfribidi.la
 /usr/local/lib/libfribidi.so
 /usr/local/lib/libfribidi.so.0
 /usr/local/lib/libfribidi.so.0.4.0
