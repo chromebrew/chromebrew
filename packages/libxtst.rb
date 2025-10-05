@@ -16,6 +16,7 @@ class Libxtst < Autotools
      x86_64: 'fe266954b81e1a3fc151a0cc63bf3538f31f72cd3f662946fe07045db4839c6b'
   })
 
+  depends_on 'fop' => :build
   depends_on 'glibc' # R
   depends_on 'libx11' # R
   depends_on 'libxext' # R
@@ -24,4 +25,6 @@ class Libxtst < Autotools
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
+  depends_on 'xmlto' => :build
+  depends_on 'libxslt' => :build
 end
