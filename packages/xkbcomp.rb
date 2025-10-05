@@ -1,32 +1,27 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Xkbcomp < Package
+class Xkbcomp < Meson
   description 'Compile XKB keyboard'
   homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.4.4'
+  version '1.4.7-d03a4ab'
   license 'ISC, MIT and custom'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.x.org/archive/individual/app/xkbcomp-1.4.4.tar.bz2'
-  source_sha256 '59cce603a607a17722a0a1cf99010f4894e7812beb5d695abbc08474d59af27e'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.freedesktop.org/xorg/app/xkbcomp.git'
+  git_hashtag 'd03a4ab1c0b24f6581411622ccf729ceb329aeb8'
+  # git_hashtag "xkbcomp-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c654874e78a8da297b0bc5addc3a461e840366bdc333a010db05315f79497329',
-     armv7l: 'c654874e78a8da297b0bc5addc3a461e840366bdc333a010db05315f79497329',
-     x86_64: '5dbe7bc9bae31c26a4d0cb5a87e1655de43d05ed97307778df49a0b3fbbabaaa'
+    aarch64: '303da70f1671c19e2570c1dcb5117d0bce49591b6133833201509a62b75b4f99',
+     armv7l: '303da70f1671c19e2570c1dcb5117d0bce49591b6133833201509a62b75b4f99',
+     x86_64: '3afa38d8c71bf0f1fbde7fc0e3a93be5e8c66b86d40c6528172163a1e579ea87'
   })
 
-  depends_on 'mesa'
-  depends_on 'xcb_util'
-
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
+  depends_on 'libxkbfile' # R
+  depends_on 'mesa' => :build
+  depends_on 'xcb_util' => :build
 
   def self.postinstall
     puts
