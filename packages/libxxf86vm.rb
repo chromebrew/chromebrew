@@ -1,13 +1,14 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libxxf86vm < Package
+class Libxxf86vm < Meson
   description 'X.org the client library for the XFree86-VidMode X extension.'
   homepage 'https://www.x.org/wiki/'
-  version '1.1.5'
+  version '1.1.6-63134ba'
   license 'custom'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.x.org/archive//individual/lib/libXxf86vm-1.1.5.tar.xz'
-  source_sha256 '247fef48b3e0e7e67129e41f1e789e8d006ba47dba1c0cdce684b9b703f888e7'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxxf86vm.git'
+  git_hashtag '63134ba6acf046099fc112e08942ff6549f2286a'
+  # git_hashtag "libXxf86vm-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -16,20 +17,10 @@ class Libxxf86vm < Package
      x86_64: 'fcfdd4e20c228aae10d7b671d6088a335b883bc07efec143db5d389fc080c5c9'
   })
 
-  depends_on 'libxext'
-  depends_on 'libx11'
+  depends_on 'libxext' => :build
+  depends_on 'libx11' => :build
   depends_on 'glibc' # R
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
