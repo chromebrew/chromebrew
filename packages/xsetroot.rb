@@ -11,9 +11,9 @@ class Xsetroot < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '370530cc44d12e66cf83faa17fbac1aec5e44abddcf09802d3ec83cd6863832c',
-     armv7l: '370530cc44d12e66cf83faa17fbac1aec5e44abddcf09802d3ec83cd6863832c',
-     x86_64: 'ebd15859bebe9ecfcf8bc954c1ae5072ff8d184b96398991478a70b3d38cd1e7'
+    aarch64: 'ccabb9f3c58eb88df8eb937d8be5171d73e6ac3051ac2ff7cfad156abeb8d9ea',
+     armv7l: 'ccabb9f3c58eb88df8eb937d8be5171d73e6ac3051ac2ff7cfad156abeb8d9ea',
+     x86_64: '20a40300aff5dd5eb990a7bfd3e28e1805dd4db15373104a93ce9eb1360c9afb'
   })
 
   depends_on 'xbitmaps' => :build
