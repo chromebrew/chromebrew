@@ -39,7 +39,7 @@ class Xorg_server < Package
   depends_on 'libxdmcp' # R
   depends_on 'libxext' # R
   depends_on 'libxfont2' # R
-  depends_on 'libxfont' # R
+  depends_on 'libxfont2' # R
   depends_on 'libxkbcommon' => :build
   depends_on 'libxkbfile' # R
   depends_on 'libxshmfence' # R

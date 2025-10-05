@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Bdftopcf < Autotools
   description 'BDF to PCF font converter for X11'
   homepage 'https://gitlab.freedesktop.org/xorg/util/bdftopcf'
-  version '1.1.1'
+  version '1.1.2'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/util/bdftopcf.git'
@@ -16,6 +16,6 @@ class Bdftopcf < Autotools
      x86_64: '33f241e6bc50687b20e605fabef914dc2b3f60678786f58a371331ec30048319'
   })
 
-  depends_on 'libxfont'
+  depends_on 'libxfont2' => :build
   depends_on 'xorg_macros' => :build
 end
