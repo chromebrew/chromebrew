@@ -12,8 +12,8 @@ class Libxinerama < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '81226a97841812aa627e05e987a06156d84ba790813c13edefe4bbcb9d615e2a',
-     armv7l: '81226a97841812aa627e05e987a06156d84ba790813c13edefe4bbcb9d615e2a',
+    aarch64: '480252174b8199236c1ccc71e051a546c1f567dbde2c80d722ec14e01025ea61',
+     armv7l: '480252174b8199236c1ccc71e051a546c1f567dbde2c80d722ec14e01025ea61',
      x86_64: 'f8b61f71f6b0c957135c4a337302b9cbfa5e3fccc01f66365cd53238c6484a3a'
   })
 
