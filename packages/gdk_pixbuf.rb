@@ -11,17 +11,17 @@ class Gdk_pixbuf < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8d79852a5069b1c1e5a6834648c32f346ad407e894be2ecc75a66f69cf42160c',
-     armv7l: '8d79852a5069b1c1e5a6834648c32f346ad407e894be2ecc75a66f69cf42160c',
-     x86_64: '65eb125c9b4a15ba85b5f3d95f7e5a66d1024154ed34cf807d8fa651800e259d'
+    aarch64: '5fb5b60c3d9f2b650e37a9898a6e4141b3daad57e1004e3eba296806f6577f8d',
+     armv7l: '5fb5b60c3d9f2b650e37a9898a6e4141b3daad57e1004e3eba296806f6577f8d',
+     x86_64: '1d462a5827b6d376ab730bdb468af9a28e1e08602c0d2ee950eaed4f1ca18327'
   })
 
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'harfbuzz' # R
   depends_on 'libjpeg_turbo' # R
+  depends_on 'libpng' # R
   depends_on 'libtiff' # R
-  depends_on 'libwebp' # R
   depends_on 'pango' => :build
   depends_on 'py3_docutils' => :build
   depends_on 'py3_gi_docgen' => :build
@@ -31,14 +31,12 @@ class Gdk_pixbuf < Meson
   depends_on 'py3_six' => :build
   depends_on 'py3_toml' => :build
   depends_on 'py3_typogrify' => :build
-  depends_on 'glibc' # R
-  depends_on 'libpng' # R
-  depends_on 'zlib' # R
 
   gnome
 
- meson_options '-Dinstalled_tests=false \
+  meson_options '-Dinstalled_tests=false \
       -Dbuiltin_loaders=all \
+      -Dglycin=disabled \
       -Drelocatable=true \
       -Ddebug=false \
       -Dgtk_doc=false \
