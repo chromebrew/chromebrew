@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Xorg_server < Package
+class Xorg_server < Meson
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org/wiki/'
   version '21.1.18-1'
@@ -39,7 +39,6 @@ class Xorg_server < Package
   depends_on 'libxdmcp' # R
   depends_on 'libxext' # R
   depends_on 'libxfont2' # R
-  depends_on 'libxfont2' # R
   depends_on 'libxkbcommon' => :build
   depends_on 'libxkbfile' # R
   depends_on 'libxshmfence' # R
@@ -58,7 +57,7 @@ class Xorg_server < Package
   depends_on 'xorg_proto' => :build
 
   def self.build
-    system 'meson setup build'
+    system 'meson setup builddir'
     system "meson configure #{CREW_MESON_OPTIONS.sub(/(-Dcpp_args='*)(.*)(')/, '')} \
               -Db_asneeded=false \
               -Dipv6=true \
@@ -73,12 +72,11 @@ class Xorg_server < Package
               -Dsystemd_logind=false \
               -Dint10=auto \
               -Dlog_dir=#{CREW_PREFIX}/var/log \
-              build"
-    system 'ninja -C build'
+              builddir"
+    system 'ninja -C builddir'
   end
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+  meson_install_extras do
     # Get these from xwayland package
     @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/Xwayland #{CREW_DEST_LIB_PREFIX}/xorg/protocol.txt]
     @deletefiles.each do |f|
