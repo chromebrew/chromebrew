@@ -26,6 +26,7 @@ class Xorg_server < Meson
   depends_on 'libbsd' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
+  depends_on 'libfontenc' => :build
   depends_on 'libglvnd' # R
   depends_on 'libinput' => :build
   depends_on 'libmd' # R

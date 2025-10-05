@@ -30,6 +30,7 @@ class Xwayland < Meson
   depends_on 'libdecor' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
+  depends_on 'libfontenc' => :build
   depends_on 'libglvnd' # R
   depends_on 'libmd' # R
   depends_on 'libtirpc' # R
@@ -37,7 +38,6 @@ class Xwayland < Meson
   depends_on 'libxau' # R
   depends_on 'libxcvt' # R
   depends_on 'libxdmcp' # R
-  depends_on 'libxfont2' # R
   depends_on 'libxfont2' # R
   depends_on 'libxkbcommon' => :build
   depends_on 'libxkbfile' # R
