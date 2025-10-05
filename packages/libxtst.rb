@@ -11,9 +11,9 @@ class Libxtst < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '181abca0afc296fa5dab304e80288216836baf0bffde761b613dda33ea71569a',
-     armv7l: '181abca0afc296fa5dab304e80288216836baf0bffde761b613dda33ea71569a',
-     x86_64: 'fe266954b81e1a3fc151a0cc63bf3538f31f72cd3f662946fe07045db4839c6b'
+    aarch64: '8e7bb1ac0b1374f726adb05e82daa4474182e996e591e1dd4297cccdb49299b1',
+     armv7l: '8e7bb1ac0b1374f726adb05e82daa4474182e996e591e1dd4297cccdb49299b1',
+     x86_64: 'baf7a556665c1fd42af7f51d539b62e067addddb62d8806fd527fb56455c2dc7'
   })
 
   depends_on 'fop' => :build

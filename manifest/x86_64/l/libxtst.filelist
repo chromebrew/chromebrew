@@ -1,4 +1,4 @@
-# Total size: 250175
+# Total size: 253592
 /usr/local/include/X11/extensions/XTest.h
 /usr/local/include/X11/extensions/record.h
 /usr/local/lib64/libXtst.a
@@ -9,3 +9,14 @@
 /usr/local/lib64/pkgconfig/xtst.pc
 /usr/local/share/doc/libXtst/recordlib.xml
 /usr/local/share/doc/libXtst/xtestlib.xml
+/usr/local/share/man/man3/XTestCompareCurrentCursorWithWindow.3.zst
+/usr/local/share/man/man3/XTestCompareCursorWithWindow.3.zst
+/usr/local/share/man/man3/XTestDiscard.3.zst
+/usr/local/share/man/man3/XTestFakeButtonEvent.3.zst
+/usr/local/share/man/man3/XTestFakeKeyEvent.3.zst
+/usr/local/share/man/man3/XTestFakeMotionEvent.3.zst
+/usr/local/share/man/man3/XTestFakeRelativeMotionEvent.3.zst
+/usr/local/share/man/man3/XTestGrabControl.3.zst
+/usr/local/share/man/man3/XTestQueryExtension.3.zst
+/usr/local/share/man/man3/XTestSetGContextOfGC.3.zst
+/usr/local/share/man/man3/XTestSetVisualIDOfVisual.3.zst
