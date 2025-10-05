@@ -13,7 +13,6 @@ class Xhost < Autotools
   binary_sha256({
     aarch64: 'b8d3a228a19525ccecf38bc5b213a220dba83d8e7717d43a4193b828f89e3556',
      armv7l: 'b8d3a228a19525ccecf38bc5b213a220dba83d8e7717d43a4193b828f89e3556',
-       i686: 'd2fb32097557b95a2c824a1c5cdd3b3fd515ef99c5294350e6c6443ee0190cb0',
      x86_64: '5bed726a341d3a6f9c6bdbc54cb68c008f08fbae8c4ffc200de30cee08deb529'
   })
 
