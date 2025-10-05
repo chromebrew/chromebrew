@@ -13,15 +13,12 @@ class Xhost < Autotools
   binary_sha256({
     aarch64: '314e4cf5b09e6e4517639c6904efd5e7cb1336536524f102c210e9e5c4388b5b',
      armv7l: '314e4cf5b09e6e4517639c6904efd5e7cb1336536524f102c210e9e5c4388b5b',
-     x86_64: '8e108d51711153c01c45343af91d6b1c7bd493e4da823ebe85209eb5278ee25a'
+       i686: 'd2fb32097557b95a2c824a1c5cdd3b3fd515ef99c5294350e6c6443ee0190cb0',
+     x86_64: '5bed726a341d3a6f9c6bdbc54cb68c008f08fbae8c4ffc200de30cee08deb529'
   })
 
   depends_on 'glibc' # R
   depends_on 'libx11' # R
   depends_on 'libxmu' # R
-
-  autotools_configure_options '--enable-ipv6 \
-           --enable-tcp-transport \
-           --enable-unix-transport \
-           --enable-local-transport'
+  depends_on 'libxtrans' => :build
 end
