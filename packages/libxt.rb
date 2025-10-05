@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxt < Package
+class Libxt < Autotools
   description 'X.org X Toolkit Library'
   homepage 'https://www.x.org/wiki/'
   version '1.3.1'
