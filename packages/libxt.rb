@@ -11,9 +11,9 @@ class Libxt < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '36cf66c85c25f7b86690b34119b54b5cafb8cb9e9ce0999f191992a9f97a3f0e',
-     armv7l: '36cf66c85c25f7b86690b34119b54b5cafb8cb9e9ce0999f191992a9f97a3f0e',
-     x86_64: 'ceddbf9b53e8d880667c52b57b2093a45bdc178b92e37264b8bf37637319965c'
+    aarch64: '770c9135580edda7155805de522b1b7d3ea50a2a738ff8dd9bb5cd9b4af79d64',
+     armv7l: '770c9135580edda7155805de522b1b7d3ea50a2a738ff8dd9bb5cd9b4af79d64',
+     x86_64: '0f7ea7ea8c176903751dc09c1f8bf40a41ee633c462e79c45a23f6b430b553c6'
   })
 
   depends_on 'libsm' => :build
