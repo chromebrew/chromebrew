@@ -3,11 +3,12 @@ require 'buildsystems/meson'
 class Libxrender < Meson
   description 'X Rendering Extension client library.'
   homepage 'https://www.x.org/wiki/'
-  version '0.9.11-01c4bb5'
+  version '0.9.12-01c4bb5'
   license 'HPND-sell-variant'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxrender.git'
   git_hashtag '01c4bb5b30bbb09921ca4042da369a60a73faefa'
+  # git_hashtag "libXrender-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
