@@ -18,4 +18,5 @@ class Bdftopcf < Autotools
 
   depends_on 'libxfont2' => :build
   depends_on 'xorg_macros' => :build
+  depends_on 'xorg_proto' => :build
 end
