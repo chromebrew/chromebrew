@@ -12,11 +12,14 @@ class Xkbcomp < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c654874e78a8da297b0bc5addc3a461e840366bdc333a010db05315f79497329',
-     armv7l: 'c654874e78a8da297b0bc5addc3a461e840366bdc333a010db05315f79497329',
-     x86_64: '5dbe7bc9bae31c26a4d0cb5a87e1655de43d05ed97307778df49a0b3fbbabaaa'
+    aarch64: '303da70f1671c19e2570c1dcb5117d0bce49591b6133833201509a62b75b4f99',
+     armv7l: '303da70f1671c19e2570c1dcb5117d0bce49591b6133833201509a62b75b4f99',
+     x86_64: '3afa38d8c71bf0f1fbde7fc0e3a93be5e8c66b86d40c6528172163a1e579ea87'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
+  depends_on 'libxkbfile' # R
   depends_on 'mesa' => :build
   depends_on 'xcb_util' => :build
 
