@@ -11,9 +11,9 @@ class Xwayland < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3d2efca2afa28c341d29f3f39f1dc1f6b969ec988d8e49f74b501723b4325f01',
-     armv7l: '3d2efca2afa28c341d29f3f39f1dc1f6b969ec988d8e49f74b501723b4325f01',
-     x86_64: '442edf9b648385e0ea95fa4fc9b8af8366166290bef98ad3645615d31666a3d5'
+    aarch64: '7cdad4692f031d20a199c160d1d1ab2912121566d8695dfee5380d7cc515a3b3',
+     armv7l: '7cdad4692f031d20a199c160d1d1ab2912121566d8695dfee5380d7cc515a3b3',
+     x86_64: '93f9cafe2df34f61843c0a573b049c3357a094c80b7c0d72fa3adaf1112977af'
   })
 
   no_env_options
