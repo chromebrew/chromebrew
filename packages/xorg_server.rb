@@ -1,19 +1,19 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Xorg_server < Package
+class Xorg_server < Meson
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org/wiki/'
-  version '21.1.18'
+  version '21.1.18-1'
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
-  git_hashtag "xorg-server-#{version}"
+  git_hashtag "xorg-server-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '53eb71e6c32c6e758e4df4c93a5ddb40156b3f8d95684cca4e22bdd0125441c4',
-     armv7l: '53eb71e6c32c6e758e4df4c93a5ddb40156b3f8d95684cca4e22bdd0125441c4',
-     x86_64: '09a4eead337d03fa6bda48a1aec8a20cf6ecdc451bf14e7766aeb246b5f5359e'
+    aarch64: '4238be7e9d714acfdd836c8ba8d4fe13596fe89ab2e6749e2b3254c62c502838',
+     armv7l: '4238be7e9d714acfdd836c8ba8d4fe13596fe89ab2e6749e2b3254c62c502838',
+     x86_64: 'b257d1a74f68da04d6249d018406b763f5da638dc07426022c7940af00e868db'
   })
 
   depends_on 'dbus' # R
@@ -26,6 +26,7 @@ class Xorg_server < Package
   depends_on 'libbsd' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
+  depends_on 'libfontenc' => :build
   depends_on 'libglvnd' # R
   depends_on 'libinput' => :build
   depends_on 'libmd' # R
@@ -39,7 +40,6 @@ class Xorg_server < Package
   depends_on 'libxdmcp' # R
   depends_on 'libxext' # R
   depends_on 'libxfont2' # R
-  depends_on 'libxfont' # R
   depends_on 'libxkbcommon' => :build
   depends_on 'libxkbfile' # R
   depends_on 'libxshmfence' # R
@@ -57,10 +57,7 @@ class Xorg_server < Package
   depends_on 'xkbcomp' => :build
   depends_on 'xorg_proto' => :build
 
-  def self.build
-    system 'meson setup build'
-    system "meson configure #{CREW_MESON_OPTIONS.sub(/(-Dcpp_args='*)(.*)(')/, '')} \
-              -Db_asneeded=false \
+  meson_options "-Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \
               -Dxnest=true \
@@ -72,13 +69,9 @@ class Xorg_server < Package
               -Dxwin=false \
               -Dsystemd_logind=false \
               -Dint10=auto \
-              -Dlog_dir=#{CREW_PREFIX}/var/log \
-              build"
-    system 'ninja -C build'
-  end
+              -Dlog_dir=#{CREW_PREFIX}/var/log"
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+  meson_install_extras do
     # Get these from xwayland package
     @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/Xwayland #{CREW_DEST_LIB_PREFIX}/xorg/protocol.txt]
     @deletefiles.each do |f|
