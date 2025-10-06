@@ -11,9 +11,9 @@ class Xorg_server < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '53eb71e6c32c6e758e4df4c93a5ddb40156b3f8d95684cca4e22bdd0125441c4',
-     armv7l: '53eb71e6c32c6e758e4df4c93a5ddb40156b3f8d95684cca4e22bdd0125441c4',
-     x86_64: '09a4eead337d03fa6bda48a1aec8a20cf6ecdc451bf14e7766aeb246b5f5359e'
+    aarch64: '4238be7e9d714acfdd836c8ba8d4fe13596fe89ab2e6749e2b3254c62c502838',
+     armv7l: '4238be7e9d714acfdd836c8ba8d4fe13596fe89ab2e6749e2b3254c62c502838',
+     x86_64: 'b257d1a74f68da04d6249d018406b763f5da638dc07426022c7940af00e868db'
   })
 
   depends_on 'dbus' # R
