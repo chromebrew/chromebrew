@@ -57,10 +57,7 @@ class Xorg_server < Meson
   depends_on 'xkbcomp' => :build
   depends_on 'xorg_proto' => :build
 
-  def self.build
-    system 'meson setup builddir'
-    system "meson configure #{CREW_MESON_OPTIONS.sub(/(-Dcpp_args='*)(.*)(')/, '')} \
-              -Db_asneeded=false \
+  meson_options "-Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \
               -Dxnest=true \
@@ -72,10 +69,7 @@ class Xorg_server < Meson
               -Dxwin=false \
               -Dsystemd_logind=false \
               -Dint10=auto \
-              -Dlog_dir=#{CREW_PREFIX}/var/log \
-              builddir"
-    system 'ninja -C builddir'
-  end
+              -Dlog_dir=#{CREW_PREFIX}/var/log"
 
   meson_install_extras do
     # Get these from xwayland package
