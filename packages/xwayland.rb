@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Xwayland < Meson
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org/wiki/'
-  version '24.1.8'
+  version '24.1.8-1'
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
-  git_hashtag "xwayland-#{version}"
+  git_hashtag "xwayland-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -57,8 +57,7 @@ class Xwayland < Meson
               -Dxcsecurity=true \
               -Dglamor=true'
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  meson_install_extras do
     # Get these from xorg_server package
     @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/X #{CREW_DEST_MAN_PREFIX}/man1/Xserver.1]
     @deletefiles.each do |f|
