@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libversion < CMake
   description 'Advanced version string comparison library.'
   homepage 'https://github.com/repology/libversion'
-  version '3.0.3'
+  version '3.0.4'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/repology/libversion.git'
