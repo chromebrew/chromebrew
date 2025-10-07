@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_attrs < Pip
   description 'Attrs removes the need to implement object protocols in classes.'
   homepage 'https://www.attrs.org/'
-  version "25.3.0-#{CREW_PY_VER}"
+  version "25.4.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd17163db6cb1b6679b058c777f38a2ba48dedae1093b303510f4a48455e77a7c',
-     armv7l: 'd17163db6cb1b6679b058c777f38a2ba48dedae1093b303510f4a48455e77a7c',
-       i686: '4e8e341b277816ba05150a1eb2029b66d23a6d0ce0ffe6e3a19ac8fd09528ed6',
-     x86_64: '7c9c1686f125127158da2ab787020d1eccba93978eb9c8ecbf0de5ce4e8a1c77'
+    aarch64: '6562f41da4903c3b458400149f3be057fa6ab457f65ffc1685c368eab2555f22',
+     armv7l: '6562f41da4903c3b458400149f3be057fa6ab457f65ffc1685c368eab2555f22',
+       i686: '9e7ce7d9842bb55b23897aa808072199ca6d45536c7cc152b12df20e675f934c',
+     x86_64: 'a44502301dcc0d21f362cbaa544b253f646d6a5e1c072a23ab07fe01ed13ac91'
   })
 
   depends_on 'python3' => :build
