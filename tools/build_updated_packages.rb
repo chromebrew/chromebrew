@@ -162,14 +162,14 @@ updated_packages.each do |pkg|
       if builds_needed.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{@pkg_obj.version}-chromeos-#{ARCH}.#{@pkg_obj.binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@pkg_obj.version}")
         # Need to force creation of build artifacts since GitHub actions
         # are killed after 6 hours.
-        if @pkg.cache_build? && ENV['CI']
+        if @pkg_obj.cache_build? && ENV['NESTED_CI']
           # This assumes cmake or meson, since only the webkit build
           # currently uses this.
           # Sleep for 5.5 hours, then kill all extant ninja processes,
           # which should trigger a build artifact upload.
           puts "Will kill the build of #{name.capitalize} after #{CREW_MAX_BUILD_TIME.to_f / 3600} hours."
           actions_timed_killer = fork do
-            exec 'sleep 19800; killall ninja'
+            exec "sleep #{CREW_MAX_BUILD_TIME}; killall ninja"
           end
           Process.detach(actions_timed_killer)
         end
@@ -183,7 +183,7 @@ updated_packages.each do |pkg|
             abort "#{pkg} build failed!".lightred
           end
         end
-        Process.kill('HUP', actions_timed_killer) if @pkg.cache_build? && ENV['CI']
+        Process.kill('HUP', actions_timed_killer) if @pkg_obj.cache_build? && ENV['NESTED_CI']
         # Reinvoke this script to take just built packages that have been built and
         # installed into account, attempting uploads of just built packages immediately.
         cmdline = "cd #{`pwd`.chomp} && crew upload #{name} ; #{$PROGRAM_NAME} #{ARGV.join(' ')}"

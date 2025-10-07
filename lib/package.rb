@@ -76,6 +76,7 @@ class Package
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
                      :prebuild,    # Function to perform pre-build operations prior to build from source.
+                     :prebuild_config_and_report, # Function to add some reporting for buildsystems.
                      :build,       # Function to perform build from source.
                      :postbuild,   # Function to perform post-build for both source build and binary distribution.
                      :check,       # Function to perform check from source build. (executes only during `crew build`)
