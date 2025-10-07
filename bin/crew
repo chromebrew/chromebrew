@@ -211,12 +211,16 @@ def cache_build
     if @pkg.cache_build?
       abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if GITLAB_TOKEN.nil?
       puts "Uploading #{build_cachefile} ...".orange
-      build_cache_url = "#{CREW_GITLAB_PKG_REPO}/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+      build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
       puts "curl -# --header \"#{CREW_GITLAB_TOKEN_LABEL}: GITLAB_TOKEN\" --upload-file \"#{build_cachefile}\" \"#{build_cache_url}\" | cat" if CREW_VERBOSE
-      puts "\e[1A\e[KUploading...\r".orange
       output = `curl -# --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" --upload-file "#{build_cachefile}" "#{build_cache_url}" | cat`.chomp
       puts "\e[1A\e[KChecking upload...\r".orange
-      puts "#{output}\n".lightgreen if output.include?('201 Created')
+      if output.include?('201 Created')
+        puts "#{output}\n".lightgreen if output.include?('201 Created')
+      else
+        puts "#{output}\n".lightred
+        puts "curl -# --header \"#{CREW_GITLAB_TOKEN_LABEL}: GITLAB_TOKEN\" --upload-file \"#{build_cachefile}\" \"#{build_cache_url}\""
+      end
     end
   else
     puts 'CREW_CACHE_ENABLED is not set.'.orange unless CREW_CACHE_ENABLED || @pkg.cache_build?
@@ -470,8 +474,11 @@ def download
 
   build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
   if @pkg.cache_build?
-    build_cache_url = "#{CREW_GITLAB_PKG_REPO}/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+    build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+    puts 'Checking for cached build...'.orange
     # Does a build artifact exist?
+    puts build_cache_url
+    puts "curl -fsI #{build_cache_url}"
     if `curl -fsI #{build_cache_url}`.lines.first.split[1] == '200'
       puts "curl -# --header \"#{CREW_GITLAB_TOKEN_LABEL}: GITLAB_TOKEN\" --upload-file \"#{build_cachefile}\" \"#{build_cache_url}\" | cat" if CREW_VERBOSE
       # What is the gitlab package artifact binary PACKAGE_ID?
@@ -482,6 +489,8 @@ def download
       gitlab_pkg_sha256 = `curl --location --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" \
   "#{CREW_GITLAB_PKG_REPO}/#{gitlab_pkg_id}/package_files" \
        | jq -r ".[].file_sha256"`.chomp
+      puts 'Cached build artifact exists!'.lightgreen
+      puts 'Downloading cached build artifact...'.orange
       # Download the package build artifact.
       downloader build_cache_url, gitlab_pkg_sha256, build_cachefile
     end
@@ -760,6 +769,7 @@ def build_and_preconfigure(target_dir)
     build_start_time = Time.now.to_i
 
     @pkg.in_build = true
+    @pkg.prebuild_config_and_report
     unless @pkg.cached_build
       @pkg.patch
       @pkg.prebuild
@@ -775,10 +785,10 @@ def build_and_preconfigure(target_dir)
       abort "There was a build error.\n#{e}".lightred
     end
     @pkg.in_build = false
+    cache_build if CREW_CACHE_BUILD || @pkg.cache_build?
     # wipe crew destdir
     FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: CREW_VERBOSE unless @pkg.superclass.to_s == 'RUBY'
     puts 'Preconfiguring package...'
-    cache_build if CREW_CACHE_BUILD || @pkg.cache_build?
     @pkg.install unless @pkg.superclass.to_s == 'RUBY'
 
     build_end_time = Time.now.to_i
