@@ -1,35 +1,33 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Webrtc_audio_processing < Package
+class Webrtc_audio_processing < Meson
   description 'AudioProcessing library based on Googles implementation of WebRTC'
   homepage 'https://freedesktop.org/software/pulseaudio/webrtc-audio-processing/'
-  version '0.3.1'
+  version '2.1'
   license 'BSD'
-  compatibility 'all'
-  source_url 'https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/-/archive/v0.3.1/webrtc-audio-processing-v0.3.1.tar.bz2'
-  source_sha256 '70d56051f73e8e4ac95fb392ce15de6c633b2c3ae492359aecc72fc663c9bdda'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dd57ac67021298092cd969fc347a277158662a2aeff1dd4f0f21dfa2f8d52f8f',
-     armv7l: 'dd57ac67021298092cd969fc347a277158662a2aeff1dd4f0f21dfa2f8d52f8f',
+    aarch64: '683a9719e7bcf34dbfdd57225fe1a9aa717509eeee62e7ec64dbde93e40e2197',
+     armv7l: '683a9719e7bcf34dbfdd57225fe1a9aa717509eeee62e7ec64dbde93e40e2197',
        i686: 'c03f83448134a4c6b9a647a1ac10d14455c3500b8b661d506265ba3ecf1364c0',
-     x86_64: 'c18e97b21ba7472d92e2746da7c377e21198da23a01f218ec268241742ee5820'
+     x86_64: '9b9328d5b0a74ac11ff1a08240918bc70e17e3a728423fc967475da7a4664859'
   })
 
-  depends_on 'abseil_cpp'
+  depends_on 'abseil_cpp' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
-  def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system 'filefix'
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto -std=c++17' \
-     LDFLAGS='-flto=auto' \
-     ./configure \
-     #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
+  def self.patch
+    patches = [
+      # Fix build with abseil-cpp 202508
+      ['https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/-/merge_requests/60.diff', '4562c231f1051bd327cf27b6940445e5c0d83e5d8427a6ca36c9f0853b3e4a6d'],
+      # Fix build with GCC 15
+      ['https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/-/merge_requests/58.diff', '5562c231f1051bd327cf27b6940445e5c0d83e5d8427a6ca36c9f0853b3e4a6d']
+    ]
+    ConvenienceFunctions.patch(patches)
   end
 end

@@ -1,31 +1,24 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libxinerama < Package
+class Libxinerama < Meson
   description 'Xorg library, Xinerama is an X11 extension which provides support for extending a desktop across multiple displays.'
   homepage 'https://www.x.org/wiki/'
   compatibility 'aarch64 armv7l x86_64'
   license 'MIT'
-  version '1.1.4'
-  source_url 'https://www.x.org/archive/individual/lib/libXinerama-1.1.4.tar.bz2'
-  source_sha256 '0008dbd7ecf717e1e507eed1856ab0d9cf946d03201b85d5dcf61489bb02d720'
-  binary_compression 'tar.xz'
+  version '1.1.5-cc22c2f'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxinerama.git'
+  git_hashtag 'cc22c2f60c3862482562955116d5455263b443dc'
+  # git_hashtag "libXinerama-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '81226a97841812aa627e05e987a06156d84ba790813c13edefe4bbcb9d615e2a',
-     armv7l: '81226a97841812aa627e05e987a06156d84ba790813c13edefe4bbcb9d615e2a',
-     x86_64: 'f8f11b3529ecba47aba8b2055b6bba3fa57f155d5fc4882322cf4595bb5e64cd'
+    aarch64: '480252174b8199236c1ccc71e051a546c1f567dbde2c80d722ec14e01025ea61',
+     armv7l: '480252174b8199236c1ccc71e051a546c1f567dbde2c80d722ec14e01025ea61',
+     x86_64: 'f8b61f71f6b0c957135c4a337302b9cbfa5e3fccc01f66365cd53238c6484a3a'
   })
 
-  depends_on 'libx11'
-  depends_on 'libxcb'
-  depends_on 'libxext'
-
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' => :build
+  depends_on 'libxext' # R
 end

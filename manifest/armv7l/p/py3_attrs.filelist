@@ -1,4 +1,4 @@
-# Total size: 411918
+# Total size: 437768
 /usr/local/lib/python3.13/site-packages/attr/__init__.py
 /usr/local/lib/python3.13/site-packages/attr/__init__.pyi
 /usr/local/lib/python3.13/site-packages/attr/__pycache__/__init__.cpython-313.pyc
@@ -35,12 +35,12 @@
 /usr/local/lib/python3.13/site-packages/attr/setters.pyi
 /usr/local/lib/python3.13/site-packages/attr/validators.py
 /usr/local/lib/python3.13/site-packages/attr/validators.pyi
-/usr/local/lib/python3.13/site-packages/attrs-25.3.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/attrs-25.3.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/attrs-25.3.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/attrs-25.3.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/attrs-25.3.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/attrs-25.3.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/attrs-25.4.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/attrs-25.4.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/attrs-25.4.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/attrs-25.4.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/attrs-25.4.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/attrs-25.4.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.13/site-packages/attrs/__init__.py
 /usr/local/lib/python3.13/site-packages/attrs/__init__.pyi
 /usr/local/lib/python3.13/site-packages/attrs/__pycache__/__init__.cpython-313.pyc

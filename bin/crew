@@ -46,7 +46,7 @@ begin
 rescue Docopt::Exit => e
   if ARGV[0]
     case ARGV[0]
-    when '-V', '--version', 'version'
+    when '-V', '--version'
       puts CREW_VERSION
       exit 0
     when '-L', '--license', 'license'
@@ -459,7 +459,7 @@ def download
   @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
   build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
-  return { source:, filename: } if CREW_CACHE_BUILD && File.file?(build_cachefile)
+  return { source:, filename: } if CREW_CACHE_BUILD && File.file?(build_cachefile) && !@pkg.built
 
   if !url
     abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
@@ -649,7 +649,7 @@ def unpack(meta)
     FileUtils.mkdir_p @extract_dir, verbose: CREW_VERBOSE
 
     build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
-    if CREW_CACHE_BUILD && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && (system "cd #{CREW_CACHE_DIR} && sha256sum -c #{build_cachefile}.sha256")
+    if !@pkg.built && CREW_CACHE_BUILD && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && (system "sha256sum -c #{build_cachefile}.sha256", chdir: CREW_CACHE_DIR)
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{build_cachefile}".lightgreen
       system "tar -Izstd -x#{@verbose}f #{build_cachefile} -C #{CREW_BREW_DIR}", exception: true
@@ -856,7 +856,7 @@ def prepare_package(destdir)
     strip_dir destdir
 
     # Create file list and calculate file size
-    filelist = Dir[".{#{CREW_PREFIX},#{HOME}}/**/{*,.?*/**}"].select do |e|
+    filelist = Dir[".{#{CREW_PREFIX}/**/{*,.?*/**},#{HOME}}/**/{*,.?*/**}"].select do |e|
       File.file?(e) || File.symlink?(e)
     end.to_h do |e|
       # Ignore symlinks to prevent duplicating calculation.
@@ -1494,6 +1494,7 @@ def archive_package(crew_archive_dest)
   if @opt_force
     FileUtils.cp "#{CREW_PACKAGES_PATH}/#{@pkg_name}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/"
     puts "The package file for #{@pkg_name} used has been copied to #{CREW_LOCAL_REPO_ROOT}/packages/".lightblue
+    @pkg.built = true
     if PackageUtils.installed?(@pkg.name)
       puts "#{@pkg_name} will now be upgraded...".lightgreen
       @pkg.in_upgrade = true
@@ -1885,7 +1886,9 @@ def download_command(args)
     search @pkg_name
     @pkg.build_from_source = true if @opt_source
     print_current_package extra: CREW_VERBOSE
+    # rubocop:disable Style/ArrayIntersectWithSingleElement
     if ARGV.intersect?(%w[download]) && @pkg.is_fake?
+      # rubocop:enable Style/ArrayIntersectWithSingleElement
       fake_pkg_deplist = @pkg.get_deps_list(return_attr: true).flat_map(&:keys).uniq
       until fake_pkg_deplist.blank?
         puts "Will download the following packages: #{fake_pkg_deplist.join(' ')}".orange
@@ -2041,6 +2044,18 @@ def upstream_command(args)
   args = { '<name>' => args.split } if args.is_a? String
   Dir.chdir CREW_PACKAGES_PATH do
     system "../tools/version.rb #{args['<name>'].join(' ').gsub('.rb', '')} #{@json} #{@update} #{@short_verbose}"
+  end
+end
+
+def version_command(args)
+  args = { '<name>' => args.split } if args.is_a? String
+  if args['<name>'].empty?
+    puts CREW_VERSION
+  else
+    args['<name>'].each do |name|
+      search name
+      puts @pkg.version
+    end
   end
 end
 

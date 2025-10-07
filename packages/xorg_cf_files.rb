@@ -1,31 +1,21 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Xorg_cf_files < Package
+class Xorg_cf_files < Meson
   description 'X.org cf files for use with imake builds.'
   homepage 'https://x.org/wiki/'
-  version '1.0.7'
+  version '1.0.9'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/util/xorg-cf-files-1.0.7.tar.gz'
-  source_sha256 'a49478ba0c2138bc53de38979cd2dee073b6fd6728597c552d266a707747f472'
-  binary_compression 'tpxz'
+  source_url "https://www.x.org/releases/individual/util/xorg-cf-files-#{version}.tar.xz"
+  source_sha256 '07716eb1fe1fd1f8a1d6588457db0101cae70cb896d49dc65978c97b148ce976'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9fa482169d3e253107419a1f05cb8e6d3e3c2f58846133c2b0f827cde7161565',
-     armv7l: '9fa482169d3e253107419a1f05cb8e6d3e3c2f58846133c2b0f827cde7161565',
-       i686: '265ed1b208b8a304e741a34c96160858df338269f3cbeb56fce312b5d3f101f2',
-     x86_64: 'a5547a9bff2657d49b928e1979b1abf2aa0c6de2740b1d710fb20f6f3013b7d8'
+    aarch64: '499caa33db07d282c6341ee7f1c2742e77e6f6dc96f34076113308465a0876d5',
+     armv7l: '499caa33db07d282c6341ee7f1c2742e77e6f6dc96f34076113308465a0876d5',
+       i686: '09dcc02c379e107d7f4aa327bf9821cc3ed7525982d6f1ed8faafd934864972e',
+     x86_64: '65c4d1f4e862b16ab6be04e53232ff37757a3c7cb8ee889e538d2181cf986c33'
   })
 
-  depends_on 'font_util'
-
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-            --sysconfdir=#{CREW_PREFIX}/etc"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'font_util' => :build
 end

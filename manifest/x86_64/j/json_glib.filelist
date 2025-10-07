@@ -1,4 +1,4 @@
-# Total size: 1072081
+# Total size: 1059446
 /usr/local/bin/json-glib-format
 /usr/local/bin/json-glib-validate
 /usr/local/include/json-glib-1.0/json-glib/json-builder.h
@@ -17,7 +17,7 @@
 /usr/local/lib64/girepository-1.0/Json-1.0.typelib
 /usr/local/lib64/libjson-glib-1.0.so
 /usr/local/lib64/libjson-glib-1.0.so.0
-/usr/local/lib64/libjson-glib-1.0.so.0.1000.6
+/usr/local/lib64/libjson-glib-1.0.so.0.1000.8
 /usr/local/lib64/pkgconfig/json-glib-1.0.pc
 /usr/local/share/gir-1.0/Json-1.0.gir
 /usr/local/share/locale/ab/LC_MESSAGES/json-glib-1.0.mo
@@ -78,6 +78,7 @@
 /usr/local/share/locale/tr/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/ug/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/uk/LC_MESSAGES/json-glib-1.0.mo
+/usr/local/share/locale/uz/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/vi/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/json-glib-1.0.mo

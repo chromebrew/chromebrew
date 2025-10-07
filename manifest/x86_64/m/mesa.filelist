@@ -1,4 +1,4 @@
-# Total size: 122764970
+# Total size: 122897426
 /usr/local/include/EGL/eglext_angle.h
 /usr/local/include/EGL/eglmesaext.h
 /usr/local/include/GL/internal/dri_interface.h
@@ -18,6 +18,24 @@
 /usr/local/lib64/dri/radeonsi_drv_video.so
 /usr/local/lib64/dri/swrast_dri.so
 /usr/local/lib64/dri/tls
+/usr/local/lib64/dri/tls/crocus_dri.so
+/usr/local/lib64/dri/tls/i915_dri.so
+/usr/local/lib64/dri/tls/iris_dri.so
+/usr/local/lib64/dri/tls/kms_swrast_dri.so
+/usr/local/lib64/dri/tls/libdril_dri.so
+/usr/local/lib64/dri/tls/nouveau_dri.so
+/usr/local/lib64/dri/tls/nouveau_drv_video.so
+/usr/local/lib64/dri/tls/r300_dri.so
+/usr/local/lib64/dri/tls/r600_dri.so
+/usr/local/lib64/dri/tls/r600_drv_video.so
+/usr/local/lib64/dri/tls/radeonsi_dri.so
+/usr/local/lib64/dri/tls/radeonsi_drv_video.so
+/usr/local/lib64/dri/tls/swrast_dri.so
+/usr/local/lib64/dri/tls/tls
+/usr/local/lib64/dri/tls/virtio_gpu_dri.so
+/usr/local/lib64/dri/tls/virtio_gpu_drv_video.so
+/usr/local/lib64/dri/tls/vmwgfx_dri.so
+/usr/local/lib64/dri/tls/zink_dri.so
 /usr/local/lib64/dri/virtio_gpu_dri.so
 /usr/local/lib64/dri/virtio_gpu_drv_video.so
 /usr/local/lib64/dri/vmwgfx_dri.so
@@ -31,7 +49,7 @@
 /usr/local/lib64/libGLX_mesa.so
 /usr/local/lib64/libGLX_mesa.so.0
 /usr/local/lib64/libGLX_mesa.so.0.0.0
-/usr/local/lib64/libgallium-25.2.2.so
+/usr/local/lib64/libgallium-25.2.4.so
 /usr/local/lib64/libgbm.so
 /usr/local/lib64/libgbm.so.1
 /usr/local/lib64/libgbm.so.1.0.0

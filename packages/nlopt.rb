@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Nlopt < CMake
   description 'nonlinear optimization library'
   homepage 'http://ab-initio.mit.edu/wiki/index.php/NLopt'
-  version '2.8.0'
+  version '2.10.0'
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/stevengj/nlopt.git'
@@ -14,9 +14,9 @@ class Nlopt < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a5bf199ecc5efc14f09291e63e5a76f203f5eeed5ccf439e33dddedd869ea9db',
-     armv7l: 'a5bf199ecc5efc14f09291e63e5a76f203f5eeed5ccf439e33dddedd869ea9db',
-     x86_64: '1496c02e877846e402cd8de0fabc917e1912ca9b73f977861fd58fc272be2e6f'
+    aarch64: 'a5d63cb98c4bdc8d602d12afa67ce13361bdcf139cb1dcc07df3e7078981aa48',
+     armv7l: 'a5d63cb98c4bdc8d602d12afa67ce13361bdcf139cb1dcc07df3e7078981aa48',
+     x86_64: 'c7d368c94742dc911fe359c2a960b89f81e12b77982bab19bb2b3486bd619a85'
   })
 
   depends_on 'gcc_lib' # R

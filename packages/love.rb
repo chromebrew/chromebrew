@@ -17,7 +17,7 @@ class Love < Autotools
 
   depends_on 'freetype'
   depends_on 'libmodplug'
-  depends_on 'libsdl2'
+  depends_on 'sdl2'
   depends_on 'libvorbis'
   depends_on 'libtheora'
   depends_on 'luajit'

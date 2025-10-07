@@ -1,36 +1,21 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libxkbfile < Package
+class Libxkbfile < Meson
   description 'library for the X window system'
   homepage 'https://x.org/wiki/'
-  version '1.1.1'
+  version '1.1.3'
   license 'MIT and custom'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.x.org/archive/individual/lib/libxkbfile-1.1.1.tar.xz'
-  source_sha256 '8623dc26e7aac3c5ad8a25e57b566f4324f5619e5db38457f0804ee4ed953443'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxkbfile.git'
+  git_hashtag "libxkbfile-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9eafce6985d4c43e7ddef7fb0eb0cfd2f85fb8c2eac0adc78da0099cc5f3093e',
-     armv7l: '9eafce6985d4c43e7ddef7fb0eb0cfd2f85fb8c2eac0adc78da0099cc5f3093e',
-     x86_64: 'fb124a25ad31cc261459b5e33b2e8aa0d6afc15dc3a1ee29452bd82acfefffed'
+    aarch64: '3e80b733419560e44aca358fd431d4e82d5af8cc5738e0883312272f4256090f',
+     armv7l: '3e80b733419560e44aca358fd431d4e82d5af8cc5738e0883312272f4256090f',
+     x86_64: '72a03aa9268078f5b40fcc0c8ca7f669f5f5ffce14a48eb653c2615c9f29c87e'
   })
 
   depends_on 'glibc' # R
-  depends_on 'libbsd' # R
-  depends_on 'libmd' # R
   depends_on 'libx11' # R
-  depends_on 'libxau' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxdmcp' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

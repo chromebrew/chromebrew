@@ -12,10 +12,10 @@ class Vim < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'eb79ae77396f3a51ad79c84d4d3a4f1ac7fbb0ab5c4962d03b9aed564e1229bf',
-     armv7l: 'eb79ae77396f3a51ad79c84d4d3a4f1ac7fbb0ab5c4962d03b9aed564e1229bf',
-       i686: '8dbe5b20cc39844e0c9b830df381d2f11841f84693ce298513adc91835f2755b',
-     x86_64: '3b8c26bb226574bb3ac35841c2a0be1e00f00e89967144236f7091119ae1cf10'
+    aarch64: 'a9c1c43506dfdf06964de1bb3c40e3de1acb45a68b5d106044e0ddc7e590920d',
+     armv7l: 'a9c1c43506dfdf06964de1bb3c40e3de1acb45a68b5d106044e0ddc7e590920d',
+       i686: '1f6f195603efcaac11f367144556d133c358bea1712b58171f637a801bf4154e',
+     x86_64: 'b629880d8f1f8f0f67c22baa94fdb98842002e27274ba6ca2e294dd2698a1f97'
   })
 
   depends_on 'acl' # R

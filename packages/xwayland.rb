@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Xwayland < Meson
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org/wiki/'
-  version '24.1.8'
+  version '24.1.8-1'
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
-  git_hashtag "xwayland-#{version}"
+  git_hashtag "xwayland-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3d2efca2afa28c341d29f3f39f1dc1f6b969ec988d8e49f74b501723b4325f01',
-     armv7l: '3d2efca2afa28c341d29f3f39f1dc1f6b969ec988d8e49f74b501723b4325f01',
-     x86_64: '442edf9b648385e0ea95fa4fc9b8af8366166290bef98ad3645615d31666a3d5'
+    aarch64: '7cdad4692f031d20a199c160d1d1ab2912121566d8695dfee5380d7cc515a3b3',
+     armv7l: '7cdad4692f031d20a199c160d1d1ab2912121566d8695dfee5380d7cc515a3b3',
+     x86_64: '93f9cafe2df34f61843c0a573b049c3357a094c80b7c0d72fa3adaf1112977af'
   })
 
   no_env_options
@@ -30,6 +30,7 @@ class Xwayland < Meson
   depends_on 'libdecor' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
+  depends_on 'libfontenc' => :build
   depends_on 'libglvnd' # R
   depends_on 'libmd' # R
   depends_on 'libtirpc' # R
@@ -38,7 +39,6 @@ class Xwayland < Meson
   depends_on 'libxcvt' # R
   depends_on 'libxdmcp' # R
   depends_on 'libxfont2' # R
-  depends_on 'libxfont' # R
   depends_on 'libxkbcommon' => :build
   depends_on 'libxkbfile' # R
   depends_on 'libxshmfence' # R
@@ -57,8 +57,7 @@ class Xwayland < Meson
               -Dxcsecurity=true \
               -Dglamor=true'
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  meson_install_extras do
     # Get these from xorg_server package
     @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/X #{CREW_DEST_MAN_PREFIX}/man1/Xserver.1]
     @deletefiles.each do |f|

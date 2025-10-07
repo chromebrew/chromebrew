@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Sdl3 < CMake
   description 'A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard Version 3'
   homepage 'https://www.libsdl.org'
-  version '3.2.0'
+  version '3.2.22'
   license 'zlib'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/SDL.git'
@@ -14,24 +14,24 @@ class Sdl3 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f0c9414e2579ad1e78680a1309d1ee49e8c89c630b95139524e854ca49335854',
-     armv7l: 'f0c9414e2579ad1e78680a1309d1ee49e8c89c630b95139524e854ca49335854',
-     x86_64: '2adbf33cdce6dfa55435b99d767a1f9421f9579f37ad5f250807ef3089cca8ba'
+    aarch64: '9ba3397585bce1710487317a22886b429263657ba9e1c461739d49e23c8d406c',
+     armv7l: '9ba3397585bce1710487317a22886b429263657ba9e1c461739d49e23c8d406c',
+     x86_64: 'fdfa184af02e96e717aa1341d5fb3799bc126e3917cce9a5734183a6c282f783'
   })
 
-  depends_on 'libxext' => :build
-  depends_on 'libxrender' => :build
+  depends_on 'alsa_lib' => :build
+  depends_on 'glibc' # R
+  depends_on 'libusb' => :build
   depends_on 'libx11' => :build
   depends_on 'libxcursor' => :build
-  depends_on 'libusb' => :build
-  depends_on 'alsa_lib' => :build
+  depends_on 'libxext' => :build
+  depends_on 'libxinerama' => :build
+  depends_on 'libxkbcommon' => :build
+  depends_on 'libxrandr' => :build
+  depends_on 'libxrender' => :build
   depends_on 'mesa' => :build
   depends_on 'pulseaudio' => :build
-  depends_on 'libxrandr' => :build
-  depends_on 'libxinerama' => :build
   depends_on 'wayland' => :build
-  depends_on 'libxkbcommon' => :build
-  depends_on 'glibc' # R
 
   cmake_options '-DSDL_HIDAPI_LIBUSB=OFF \
     -DSDL_RPI=OFF \

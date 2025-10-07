@@ -3,19 +3,42 @@ require 'package'
 class Owl < Package
   description 'Owl Lisp is a functional dialect of the Scheme programming language.'
   homepage 'https://haltp.org/posts/owl.html'
-  version '0.1.14'
+  version '0.2.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/aoh/owl-lisp/archive/v0.1.14.tar.gz'
-  source_sha256 '4d9982da3582456d1e769e25a7d0b2daefe859c45e262c8f56f794114f9a29a0'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.com/owl-lisp/owl.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '305978182d9826979fdd56b7085cdcf0cc24cc6c234a96d7c513756f55028bc0',
-     armv7l: '305978182d9826979fdd56b7085cdcf0cc24cc6c234a96d7c513756f55028bc0',
-       i686: '0af189fa0385b41f86f024863a97d89cae96bcf7b1b8b408a0bd2b0db476cbe1',
-     x86_64: 'f902a68ce2f16363477ab0f5aaf11b93fd8d1b236c08ea66dab4cb063ce209f0'
+    aarch64: '564e84bdad63271e3b1c34d369e1895921ee9908f506629a3f624dc6594466ae',
+     armv7l: '564e84bdad63271e3b1c34d369e1895921ee9908f506629a3f624dc6594466ae',
+       i686: '3a9b4a731d8c6ba589cf550afb0f53d60b00a633143e2279b76a5889d2cd2873',
+     x86_64: '7d9913c9d6aab7028eab4885e43832e35ad4a59954050dfc8906d7c8ab037c84'
   })
+
+  depends_on 'glibc' # R
+
+  def self.patch
+    File.write 'owl.patch', <<~OWLPATCHEOF
+      diff -Npaur a/Makefile b/Makefile
+      --- a/Makefile	2025-09-29 14:30:45.866445331 -0400
+      +++ b/Makefile	2025-09-29 14:31:46.552423404 -0400
+      @@ -49,8 +49,9 @@ c/ol.c: fasl/ol.fasl
+       bin/ol: c/ol.c
+       	# compile the real owl repl binary
+       	$(CC) $(CFLAGS) $(LDFLAGS) -o bin/olp $?
+      -	CC="$(CC)" LDFLAGS="$(LDFLAGS)" CFLAGS="$(CFLAGS)" sh tests/run all bin/olp
+      -	test '!' -f $@ || mv $@ bin/ol-old
+      + # This breaks container builds.
+      + #	CC="$(CC)" LDFLAGS="$(LDFLAGS)" CFLAGS="$(CFLAGS)" sh tests/run all bin/olp
+      + #	test '!' -f $@ || mv $@ bin/ol-old
+       	mv bin/olp $@
+
+       c/ol-small.c: fasl/ol.fasl
+    OWLPATCHEOF
+    system 'patch -Np1 -i owl.patch'
+  end
 
   def self.build
     system 'make', "PREFIX=#{CREW_PREFIX}"

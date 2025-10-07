@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.67.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.67.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -343,12 +343,22 @@ crew_icu_ver_default = '77.1'
 crew_llvm_ver_default = '21'
 crew_perl_ver_default = '5.42'
 crew_py_ver_default = '3.13'
-CREW_GCC_VER ||= Kernel.system('which gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : "gcc#{crew_gcc_ver_default}" unless defined?(CREW_GCC_VER)
-CREW_ICU_VER ||= Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : "icu#{crew_icu_ver_default}" unless defined?(CREW_ICU_VER)
-CREW_LLVM_VER ||= Kernel.system('which llvm-config', %i[out err] => File::NULL) ? "llvm#{`llvm-config --version`.chomp.split('.')[0]}" : "llvm#{crew_llvm_ver_default}" unless defined?(CREW_LLVM_VER)
-CREW_PERL_VER ||= Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl --version|xargs|cut -d\\( -f2|cut -d\\) -f1|cut -dv -f2`.chomp.sub(/\.\d+$/, '')}" : "perl#{crew_perl_ver_default}" unless defined?(CREW_PERL_VER)
-CREW_PY_VER ||= Kernel.system("#{CREW_PREFIX}/bin/python3 --version", %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : "py#{crew_py_ver_default}" unless defined?(CREW_PY_VER)
-CREW_RUBY_VER ||= "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}" unless defined?(CREW_RUBY_VER)
+crew_ruby_ver_default = '3.4'
+if ENV['CI']
+  CREW_GCC_VER  ||= "gcc#{crew_gcc_ver_default}" unless defined?(CREW_GCC_VER)
+  CREW_ICU_VER  ||= "icu#{crew_icu_ver_default}" unless defined?(CREW_ICU_VER)
+  CREW_LLVM_VER ||= "llvm#{crew_llvm_ver_default}" unless defined?(CREW_LLVM_VER)
+  CREW_PERL_VER ||= "perl#{crew_perl_ver_default}" unless defined?(CREW_PERL_VER)
+  CREW_PY_VER   ||= "py#{crew_py_ver_default}" unless defined?(CREW_PY_VER)
+  CREW_RUBY_VER ||= "ruby#{crew_ruby_ver_default}" unless defined?(CREW_RUBY_VER)
+else
+  CREW_GCC_VER  ||= Kernel.system('which gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : "gcc#{crew_gcc_ver_default}" unless defined?(CREW_GCC_VER)
+  CREW_ICU_VER  ||= Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : "icu#{crew_icu_ver_default}" unless defined?(CREW_ICU_VER)
+  CREW_LLVM_VER ||= Kernel.system('which llvm-config', %i[out err] => File::NULL) ? "llvm#{`llvm-config --version`.chomp.split('.')[0]}" : "llvm#{crew_llvm_ver_default}" unless defined?(CREW_LLVM_VER)
+  CREW_PERL_VER ||= Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl --version|xargs|cut -d\\( -f2|cut -d\\) -f1|cut -dv -f2`.chomp.sub(/\.\d+$/, '')}" : "perl#{crew_perl_ver_default}" unless defined?(CREW_PERL_VER)
+  CREW_PY_VER   ||= Kernel.system("#{CREW_PREFIX}/bin/python3 --version", %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : "py#{crew_py_ver_default}" unless defined?(CREW_PY_VER)
+  CREW_RUBY_VER ||= "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}" unless defined?(CREW_RUBY_VER)
+end
 @buildsystems = ['Package']
 Dir.glob("#{CREW_LIB_PATH}/lib/buildsystems/*.rb") { |file| @buildsystems << File.foreach(file, encoding: Encoding::UTF_8).grep(/^class/).to_s.split[1] }
 CREW_VALID_BUILDSYSTEMS ||= @buildsystems.sort!
@@ -357,10 +367,12 @@ CREW_VALID_BUILDSYSTEMS ||= @buildsystems.sort!
 unless defined?(CREW_UPDATER_EXCLUDED_PKGS)
   CREW_UPDATER_EXCLUDED_PKGS = Set[
     { pkg_name: 'glibc', comments: 'Requires manual update.' },
+    { pkg_name: 'gpm', comments: 'Upstream is defunct.' },
     { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
     { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
     { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' },
     { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
+    { pkg_name: 'util_linux', comments: '2.41.2 build broken. See https://github.com/util-linux/util-linux/issues/3763' },
     { pkg_name: 'xdg_base', comments: 'Internal Chromebrew Package.' }
   ].to_h { |h| [h[:pkg_name], h[:comments]] }
 end
@@ -377,6 +389,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'gcc_build', anitya_pkg: 'gcc', comments: '' },
     { pkg_name: 'gnu_time', anitya_pkg: 'time', comments: '' },
     { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
+    { pkg_name: 'gtk3', anitya_pkg: 'gtk+3.0~stable', comments: '' },
     { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: '' },
     { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'libgedit_amtk', anitya_pkg: 'libgedit-amtk', comments: 'Prefer to GitHub' },
@@ -386,10 +399,12 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'libssp', anitya_pkg: 'gcc', comments: '' },
     { pkg_name: 'libunbound', anitya_pkg: 'unbound', comments: '' },
     { pkg_name: 'linux_pam', anitya_pkg: 'pam', comments: '' },
-    { pkg_name: "llvm#{crew_llvm_ver_default}_build", anitya_pkg: 'llvm', comments: '' },
+    { pkg_name: "#{CREW_LLVM_VER}_build", anitya_pkg: 'llvm', comments: '' },
     { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
+    { pkg_name: 'ninja', anitya_pkg: 'ninja-build', comments: '' },
     { pkg_name: 'nnn', anitya_pkg: 'nnn', comments: 'Prefer to GitHub' },
-    { pkg_name: 'openssl', anitya_pkg: 'openssl', comments: 'Prefer to GitHub' },
+    { pkg_name: 'openssl', anitya_pkg: 'openssl-3.5-LTS', comments: 'Prefer to GitHub' },
+    { pkg_name: 'owl', anitya_pkg: 'Owl Lisp', comments: '' },
     { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
     { pkg_name: 'pkg_7_zip', anitya_pkg: '7zip~stable', comments: 'Prefer to GitHub' },
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
@@ -453,6 +468,7 @@ CREW_DOCOPT ||= <<~DOCOPT
     crew upgrade [options] [-f|--force] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-f|--force] [-v|--verbose] [<name> ...]
     crew upstream [options] [-j|--json|-u|--update-package-files|-v|--verbose] <name> ...
+    crew version [options] [<name>]
     crew whatprovides [options] <pattern> ...
 
     -b --include-build-deps    Include build dependencies in output.

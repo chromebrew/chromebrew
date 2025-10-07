@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.1 (for Chromebrew)
+# version.rb version 3.3 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -31,6 +31,7 @@ require File.join(crew_local_repo_root, 'lib/convenience_functions')
 require File.join(crew_local_repo_root, 'lib/package')
 require File.join(crew_local_repo_root, 'lib/package_utils')
 require File.join(crew_local_repo_root, 'lib/require_gem')
+require_gem('cgi')
 require_gem 'ruby-libversion', 'ruby_libversion'
 require_gem('ptools')
 
@@ -40,6 +41,7 @@ $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 OUTPUT_JSON = ARGV.include?('-j') || ARGV.include?('--json')
 UPDATE_PACKAGE_FILES = ARGV.include?('-u') || ARGV.include?('--update-package-files')
 VERBOSE = ARGV.include?('-v') || ARGV.include?('--verbose')
+VERY_VERBOSE = ARGV.include?('-vv')
 bc_updated = {}
 @pkg_names = {}
 updatable_pkg = {}
@@ -105,9 +107,11 @@ def get_anitya_id(name, homepage)
   return if %w[Pip RUBY].include?(@pkg.superclass.to_s)
 
   # Find out how many packages Anitya has with the provided name.
-  json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{name}")))
+  puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}" if VERY_VERBOSE
+  json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}")))
   number_of_packages = json['total_items']
 
+  puts "number_of_packages = #{number_of_packages}" if VERY_VERBOSE
   if number_of_packages == 1 # We assume we have the right package, take the ID and move on.
     return json['items'][0]['id']
   elsif number_of_packages.zero? # Anitya either doesn't have this package, or has it under a different name.
@@ -116,9 +120,10 @@ def get_anitya_id(name, homepage)
     return if json2['total_items'].zero?
 
     (0..(json2['total_items'] - 1)).each do |i|
-      # Sometimes we use versions from other distributions, e.g., libdb
-      # versioning comes from Fedora.
-      # next unless json2['items'][i]['distribution'] == 'Chromebrew'
+      # If it has it under a different name, make sure that is the Chromebrew mapping, and not some other distribution,
+      # because that could lead to overmatching.
+      next unless json2['items'][i]['distribution'] == 'Chromebrew'
+
       return get_anitya_id(json2['items'][i]['project'], homepage) if json2['items'][i]['name'] == name.tr('-', '_')
     end
   else # Anitya has more than one package with this exact name.
@@ -286,6 +291,7 @@ if filelist.length.positive?
       if Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) == -1
         if UPDATE_PACKAGE_FILES && !@pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && updatable_pkg[@pkg.name.to_sym] == 'Yes'
           file = File.read(filename)
+          FileUtils.cp filename, "#{filename}.bak"
           if file.sub!(PackageUtils.get_clean_version(@pkg.version), upstream_version.chomp).nil?
             versions_updated[@pkg.name.to_sym] = false
           else
@@ -296,35 +302,54 @@ if filelist.length.positive?
             if !@pkg.source_sha256.nil? && @pkg.source_sha256.is_a?(Hash) && @pkg.source_sha256&.key?(ARCH.to_sym)
               # Get old hashes
               (@pkg.source_url.keys.map &:to_s).each do |arch|
-                puts "old source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE
+                puts "old source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE && !OUTPUT_JSON
                 old_hash[arch] = @pkg.source_sha256[arch.to_sym]
-                puts "old hash: #{old_hash[arch]}" if VERBOSE
+                puts "old hash: #{old_hash[arch]}" if VERBOSE && !OUTPUT_JSON
               end
               File.write(filename, file)
               # Now get new hashes
               @pkg = Package.load_package(filename, true)
               (@pkg.source_url.keys.map &:to_s).each do |arch|
-                puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE
+                puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE && !OUTPUT_JSON
+                unless `curl -fsI #{@pkg.source_url[arch.to_sym]}`.lines.first.split[1] == '200'
+                  versions_updated[@pkg.name.to_sym] = 'Bad Source'
+                  puts "#{@pkg.source_url[arch.to_sym]} is a bad source".lightred if VERBOSE && !OUTPUT_JSON
+                  if File.file?("#{filename}.bak")
+                    FileUtils.cp "#{filename}.bak", filename
+                    FileUtils.rm "#{filename}.bak"
+                  end
+                  next filename
+                end
                 new_hash[arch] = `curl -Ls #{@pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
-                puts "new hash: #{new_hash[arch]}" if VERBOSE
+                puts "new hash: #{new_hash[arch]}" if VERBOSE && !OUTPUT_JSON
                 file.sub!(old_hash[arch], new_hash[arch])
               end
             elsif !@pkg.source_sha256.nil? && !@pkg.source_sha256.is_a?(Hash)
               arch = :all
               # Get old hashes
               old_hash[arch] = @pkg.source_sha256
-              puts "old source_url: #{@pkg.source_url}" if VERBOSE
-              puts "old hash: #{old_hash[arch]}" if VERBOSE
+              puts "old source_url: #{@pkg.source_url}" if VERBOSE && !OUTPUT_JSON
+              puts "old hash: #{old_hash[arch]}" if VERBOSE && !OUTPUT_JSON
               File.write(filename, file)
               # Now get new hashes
               @pkg = Package.load_package(filename, true)
-              puts "new source_url: #{@pkg.source_url}" if VERBOSE
+              puts "new source_url: #{@pkg.source_url}" if VERBOSE && !OUTPUT_JSON
+              unless `curl -fsI #{@pkg.source_url}`.lines.first.split[1] == '200'
+                versions_updated[@pkg.name.to_sym] = 'Bad Source'
+                puts "#{@pkg.source_url} is a bad source.".lightred if VERBOSE && !OUTPUT_JSON
+                if File.file?("#{filename}.bak")
+                  FileUtils.cp "#{filename}.bak", filename
+                  FileUtils.rm "#{filename}.bak"
+                end
+                next filename
+              end
               new_hash[arch] = `curl -Ls #{@pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
-              puts "new hash: #{new_hash[arch]}" if VERBOSE
+              puts "new hash: #{new_hash[arch]}" if VERBOSE && !OUTPUT_JSON
               file.sub!(old_hash[arch], new_hash[arch])
             end
             File.write(filename, file)
             versions_updated[@pkg.name.to_sym] = true
+            FileUtils.rm "#{filename}.bak" if File.file?("#{filename}.bak")
           end
 
           if @pkg.binary_compression == 'tar.xz' && !@pkg.no_zstd?

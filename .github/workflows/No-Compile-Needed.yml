@@ -51,7 +51,7 @@ jobs:
       x86_64_packages: ${{ steps.get-compatibility.outputs.x86_64_PACKAGES }}
       armv7l_packages: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -211,7 +211,7 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -223,7 +223,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m139" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m140" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 fi
@@ -235,7 +235,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m139" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m140" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
                 fi
@@ -272,7 +272,6 @@ jobs:
             git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
             git log --oneline -10
             docker pull --platform "${PLATFORM}" "${CONTAINER}"
-            sudo apt install -y acl
             sudo setfacl -R -m u:1000:rwx .
 
             # Use docker-in-docker shim to mount volume inside docker.
@@ -324,7 +323,7 @@ jobs:
         run: exit 1
       - name: Report update success
         run: echo "Update jobs succeeded. Creating a PR."
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           persist-credentials: true

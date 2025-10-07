@@ -1,12 +1,16 @@
-# Total size: 255629
+# Total size: 289425
 /usr/local/include/SDL3_ttf/SDL_textengine.h
 /usr/local/include/SDL3_ttf/SDL_ttf.h
+/usr/local/lib64/cmake/SDL3_ttf/Findharfbuzz.cmake
+/usr/local/lib64/cmake/SDL3_ttf/Findplutosvg.cmake
+/usr/local/lib64/cmake/SDL3_ttf/Findplutovg.cmake
+/usr/local/lib64/cmake/SDL3_ttf/PkgConfigHelper.cmake
 /usr/local/lib64/cmake/SDL3_ttf/SDL3_ttf-shared-targets-release.cmake
 /usr/local/lib64/cmake/SDL3_ttf/SDL3_ttf-shared-targets.cmake
 /usr/local/lib64/cmake/SDL3_ttf/SDL3_ttfConfig.cmake
 /usr/local/lib64/cmake/SDL3_ttf/SDL3_ttfConfigVersion.cmake
 /usr/local/lib64/libSDL3_ttf.so
 /usr/local/lib64/libSDL3_ttf.so.0
-/usr/local/lib64/libSDL3_ttf.so.0.0.0
+/usr/local/lib64/libSDL3_ttf.so.0.2.2
 /usr/local/lib64/pkgconfig/sdl3-ttf.pc
 /usr/local/share/licenses/SDL3_ttf/LICENSE.txt

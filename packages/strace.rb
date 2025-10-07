@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Strace < Autotools
   description 'strace is a diagnostic, debugging and instructional userspace utility for Linux.'
   homepage 'https://strace.io/'
-  version '6.12'
+  version '6.16'
   license 'BSD'
   compatibility 'all'
   source_url "https://strace.io/files/#{version}/strace-#{version}.tar.xz"
-  source_sha256 'c47da93be45b6055f4dc741d7f20efaf50ca10160a5b100c109b294fd9c0bdfe'
+  source_sha256 '3d7aee7e4f044b2f67f3d51a8a76eda18076e9fb2774de54ac351d777d4ebffa'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3267353f1f68179404b4f02f76e699b2dd4e374f8956cccf03f603cff669ad09',
-     armv7l: '3267353f1f68179404b4f02f76e699b2dd4e374f8956cccf03f603cff669ad09',
-       i686: '6594711e253b39619dad8b82303fb18b4e4ae2063afbc59b1b43a7dd71bee9c5',
-     x86_64: '4364b3979ab0a0dacf66137a1a42d0cb807a56bab29450846130b8d9eaf69aa1'
+    aarch64: '5788d69362290f7449236f8e8ac03cf8ac4dc2bdacbf112cae2d49b7a19f3037',
+     armv7l: '5788d69362290f7449236f8e8ac03cf8ac4dc2bdacbf112cae2d49b7a19f3037',
+       i686: '1337497023e3515313619a4863a4d4cd8a71259c3dc0404c954853c4ada71102',
+     x86_64: '4618965949fdbf8b6aaa3a275b862f3bd86c02efc6f50d0eaad3835e46182c2c'
   })
 
   depends_on 'elfutils' # Needed for stack trace support

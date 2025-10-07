@@ -89,8 +89,10 @@ renamed_packages = Set[
   { pkg_name: 'itstool', pkg_rename: 'py3_itstool', comments: 'Renamed to indicate switch to pip buildsystem.' },
   { pkg_name: 'jsonc', pkg_rename: 'json_c', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libcurl', pkg_rename: 'curl', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'libxfont', pkg_rename: 'libxfont2', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libgpgerror', pkg_rename: 'libgpg_error', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libjpeg', pkg_rename: 'libjpeg_turbo', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'libsdl2', pkg_rename: 'sdl2', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'mandb', pkg_rename: 'man_db', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'mercurial', pkg_rename: 'py3_mercurial', comments: 'Renamed to match other pip packages.' },
   { pkg_name: 'meson', pkg_rename: 'py3_meson', comments: 'Renamed to avoid conflict with buildsystems/meson.' },
@@ -127,6 +129,7 @@ renamed_packages = Set[
   { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', comments: 'Renamed to allow qt6 packages.' },
   { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', comments: 'Renamed to allow qt6 packages.' },
   { pkg_name: 'ranger', pkg_rename: 'ranger_fm', comments: 'Renamed to match pip package name.' },
+  { pkg_name: 'scons', pkg_rename: 'py3_scons', comments: 'Renamed to match pip package name.' },
   { pkg_name: 'tracker3', pkg_rename: 'tinysparql', comments: 'Renamed upstream.' },
   { pkg_name: 'tracker3_miners', pkg_rename: 'localsearch', comments: 'Renamed upstream.' },
   { pkg_name: 'util_macros', pkg_rename: 'xorg_macros', comments: 'Renamed to better match upstream.' },
@@ -142,6 +145,7 @@ end
 
 deprecated_packages = Set[
   { pkg_name: 'epydoc', comments: 'Abandoned upstream, only supports Python 2.' },
+  { pkg_name: 'extremetuxracer', comments: 'Chromebrew version had broken links to missing pre-compiled binaries.' },
   { pkg_name: 'gfbgraph', commwnts: 'Deprecated upstream.' },
   { pkg_name: 'git_prompt', comments: 'Integrated into git package.' },
   { pkg_name: 'gnome_session', comments: 'No longer compatible with any architecture, requires systemd.' },

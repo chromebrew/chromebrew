@@ -54,7 +54,7 @@ class Package
                      :postremove   # Function to perform after package removal.
 
   class << self
-    attr_accessor :build_from_source, :cached_build, :in_build, :in_install, :in_upgrade, :missing_binaries, :name
+    attr_accessor :build_from_source, :built, :cached_build, :in_build, :in_install, :in_upgrade, :missing_binaries, :name
   end
 
   def self.agree_default_no(message = nil)

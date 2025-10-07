@@ -3,18 +3,18 @@ require 'package'
 class Libtiff < Package
   description 'LibTIFF provides support for the Tag Image File Format (TIFF), a widely used format for storing image data.'
   homepage 'http://www.libtiff.org/'
-  version '4.6.0'
+  version '4.7.1'
   license 'libtiff'
   compatibility 'all'
-  source_url 'https://download.osgeo.org/libtiff/tiff-4.6.0.tar.xz'
-  source_sha256 'e178649607d1e22b51cf361dd20a3753f244f022eefab1f2f218fc62ebaf87d2'
+  source_url "https://download.osgeo.org/libtiff/tiff-#{version}.tar.xz"
+  source_sha256 'b92017489bdc1db3a4c97191aa4b75366673cb746de0dce5d7a749d5954681ba'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c07999f1adeab936eb8f5f95f3a538abee49a7807ae83059b4aa8118140285b0',
-     armv7l: 'c07999f1adeab936eb8f5f95f3a538abee49a7807ae83059b4aa8118140285b0',
-       i686: '7f9546738a572a655c77cf0276b10f50b20d1d074f998928e5103f6e8b07bf6a',
-     x86_64: '1e96c774a4e20cc55d62139080206c20476e6ac7ed0340191673de35eca7c125'
+    aarch64: '1ac9f8425b9dc95a4895abf6d593e14a15696f3bc0b2464c2467e74ddeaba9d5',
+     armv7l: '1ac9f8425b9dc95a4895abf6d593e14a15696f3bc0b2464c2467e74ddeaba9d5',
+       i686: '535c1315f1de95bf13a13d5222ba99f626bf4511e298699771e29c63867a5b0b',
+     x86_64: '273da7543a57e58339b456c4b9ea6194236a8a606e81faa97b04af8842a48ba6'
   })
 
   depends_on 'freeglut' unless ARCH == 'i686' # R

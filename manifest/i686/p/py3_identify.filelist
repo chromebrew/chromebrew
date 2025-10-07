@@ -1,13 +1,13 @@
-# Total size: 732805
+# Total size: 732904
 /usr/local/bin/identify-cli
-/usr/local/lib/python3.13/site-packages/identify-2.6.14.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/identify-2.6.14.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/identify-2.6.14.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/identify-2.6.14.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/identify-2.6.14.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/identify-2.6.14.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/identify-2.6.14.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/identify-2.6.14.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/identify-2.6.15.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/identify-2.6.15.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/identify-2.6.15.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/identify-2.6.15.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/identify-2.6.15.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/identify-2.6.15.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/identify-2.6.15.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/identify-2.6.15.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/identify/__init__.py
 /usr/local/lib/python3.13/site-packages/identify/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/identify/__pycache__/cli.cpython-313.pyc

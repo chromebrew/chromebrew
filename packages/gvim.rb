@@ -12,9 +12,9 @@ class Gvim < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '69db945f5f50194729e6596644f57bdfc49a72ada91f2ec1a8eab45df7a29cbd',
-     armv7l: '69db945f5f50194729e6596644f57bdfc49a72ada91f2ec1a8eab45df7a29cbd',
-     x86_64: '34466ada945bab4e3b07b74c9870624c08c65dff0349ba817538a5e48af05067'
+    aarch64: '914430bd1c440ee138eb8cbc878c9091405a92cd83b942d74ea56a15cfcb0cc1',
+     armv7l: '914430bd1c440ee138eb8cbc878c9091405a92cd83b942d74ea56a15cfcb0cc1',
+     x86_64: '02526f0eb1b9783ec46a3a4c737a7240e5d9b144bbb736e9080b6c5996ecbcc2'
   })
 
   depends_on 'acl' # R

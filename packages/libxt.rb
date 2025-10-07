@@ -1,31 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxt < Package
+class Libxt < Autotools
   description 'X.org X Toolkit Library'
   homepage 'https://www.x.org/wiki/'
-  version '1.2.1'
-  license 'custom'
+  version '1.3.1'
+  license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.x.org/archive/individual/lib/libXt-1.2.1.tar.gz'
-  source_sha256 '6da1bfa9dd0ed87430a5ce95b129485086394df308998ebe34d98e378e3dfb33'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxt.git'
+  git_hashtag "libXt-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a7ff82ccb3d878142449b1b61b4523a37c02a6341588165541159175d313dabf',
-     armv7l: 'a7ff82ccb3d878142449b1b61b4523a37c02a6341588165541159175d313dabf',
-     x86_64: 'c59be078d6b5120a57ee6a0ee21caea62e9f6a227855e014a3b661c3400e50f0'
+    aarch64: '770c9135580edda7155805de522b1b7d3ea50a2a738ff8dd9bb5cd9b4af79d64',
+     armv7l: '770c9135580edda7155805de522b1b7d3ea50a2a738ff8dd9bb5cd9b4af79d64',
+     x86_64: '0f7ea7ea8c176903751dc09c1f8bf40a41ee633c462e79c45a23f6b430b553c6'
   })
 
-  depends_on 'libsm'
-  depends_on 'libx11'
-  patchelf
-
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'libsm' => :build
+  depends_on 'libx11' => :build
 end

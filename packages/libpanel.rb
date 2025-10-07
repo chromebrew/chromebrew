@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libpanel < Meson
   description 'A dock/panel library for GTK 4'
   homepage 'https://gitlab.gnome.org/GNOME/libpanel'
-  version '1.6.0'
+  version '1.10.2'
   license 'GPL3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libpanel.git'
@@ -14,14 +14,14 @@ class Libpanel < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e1d7793ff74bfb7434dd2ab8be7cd4f47ec7fa5f2516f571b47abbaa084b0416',
-     armv7l: 'e1d7793ff74bfb7434dd2ab8be7cd4f47ec7fa5f2516f571b47abbaa084b0416',
-     x86_64: '22631b569c564403c645f5e4bf16e857d029a2a301d7b150cf5bf1161c12c2aa'
+    aarch64: 'af4dabe44ccc020bdb9b5e1c1edae19e3d800a04923b4e54aa8c6a0ec09c4e2f',
+     armv7l: 'af4dabe44ccc020bdb9b5e1c1edae19e3d800a04923b4e54aa8c6a0ec09c4e2f',
+     x86_64: 'a823b50842829555e96f24728902e53ff219a2acb28ab2308701e7a3e3df9d7b'
   })
 
   depends_on 'cairo' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
   depends_on 'gtk4' # R

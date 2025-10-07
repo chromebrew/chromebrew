@@ -11,10 +11,10 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
-      - name: Markdown-lint
-        uses: reviewdog/action-markdownlint@v0
-        with:
-          fail_level: any
-          markdownlint_flags: '-s .mdl_style.rb'
-          reporter: github-pr-review
+       - uses: actions/checkout@v5
+       - name: Markdown-lint
+         uses: reviewdog/action-markdownlint@v0
+         with:
+            fail_level: any
+            markdownlint_flags: '-s .mdl_style.rb'
+            reporter: github-pr-review

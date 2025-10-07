@@ -3,7 +3,7 @@ require 'package'
 class Shellcheck < Package
   description 'Static analysis tool for shell scripts'
   homepage 'https://www.shellcheck.net/'
-  version '0.10.0'
+  version '0.11.0'
   license 'GPL-3.0'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Shellcheck < Package
      x86_64: "https://github.com/koalaman/shellcheck/releases/download/v#{version}/shellcheck-v#{version}.linux.x86_64.tar.xz"
   })
   source_sha256({
-    aarch64: '1c89cb51e1412b580d7ba8aac240251ffb0b829788f83d2daa4a82da42d275e4',
-     armv7l: '1c89cb51e1412b580d7ba8aac240251ffb0b829788f83d2daa4a82da42d275e4',
-       i686: '6c881ab0698e4e6ea235245f22832860544f17ba386442fe7e9d629f8cbedf87',
-     x86_64: '6c881ab0698e4e6ea235245f22832860544f17ba386442fe7e9d629f8cbedf87'
+    aarch64: '8afc50b302d5feeac9381ea114d563f0150d061520042b254d6eb715797c8223',
+     armv7l: '8afc50b302d5feeac9381ea114d563f0150d061520042b254d6eb715797c8223',
+       i686: '8c3be12b05d5c177a04c29e3c78ce89ac86f1595681cab149b65b97c4e227198',
+     x86_64: '8c3be12b05d5c177a04c29e3c78ce89ac86f1595681cab149b65b97c4e227198'
   })
 
   no_compile_needed

@@ -3,7 +3,7 @@ require 'package'
 class Nuclei < Package
   description 'Fast, customizable vulnerability scanner'
   homepage 'https://docs.projectdiscovery.io/tools/nuclei'
-  version '3.4.6'
+  version '3.4.10'
   license 'MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Nuclei < Package
      x86_64: "https://github.com/projectdiscovery/nuclei/releases/download/v#{version}/nuclei_#{version}_linux_amd64.zip"
   })
   source_sha256({
-    aarch64: 'faba038a3946d582ecf4f301f45400a13fee64afa48733808dbd440acd85b889',
-     armv7l: 'faba038a3946d582ecf4f301f45400a13fee64afa48733808dbd440acd85b889',
-       i686: '5d05f8a3a75cf54bb0699719f045cf7c7f3275e4f7a8f55c34058f2b4f2c4ca2',
-     x86_64: 'd54bad8d9895d45681540eb517f7debc68c9688b8d7ca9808598f6cdeabcc0d4'
+    aarch64: 'e8d79f94076083f6b434092ae93cbc5e51f8e087c8aed21a7e086b8c1ca1a4ca',
+     armv7l: 'e8d79f94076083f6b434092ae93cbc5e51f8e087c8aed21a7e086b8c1ca1a4ca',
+       i686: '35fdf9077c6c4f3e448d473e7946964b36e9b4f91317ab2dd37a14b86509f037',
+     x86_64: '234c12cc5288af071abdcd6f854245b6067345556e1235cf96b76725c1004357'
   })
 
   no_compile_needed

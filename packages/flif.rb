@@ -19,7 +19,7 @@ class Flif < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libpng' # R
-  depends_on 'libsdl2'
+  depends_on 'sdl2'
 
   # Upstream has stopped development, so there's no real reason to try and upstream these.
   def self.patch

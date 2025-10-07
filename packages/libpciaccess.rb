@@ -1,31 +1,21 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libpciaccess < Package
+class Libpciaccess < Meson
   description 'Generic PCI access library'
   homepage 'https://x.org/wiki/'
-  version '0.17'
+  version '0.18.1'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libpciaccess-0.17.tar.xz'
-  source_sha256 '74283ba3c974913029e7a547496a29145b07ec51732bbb5b5c58d5025ad95b73'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libpciaccess.git'
+  git_hashtag "libpciaccess-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5c8d971346ea24e2f5bc14de9070e17151943953dbf7efa515b4fb6708a723a5',
-     armv7l: '5c8d971346ea24e2f5bc14de9070e17151943953dbf7efa515b4fb6708a723a5',
-       i686: '9362cd9b579036b25d29082dc007539145548a6e74db327c18bc805a25d8a875',
-     x86_64: 'e61aaa65adb6f1932bc538ed7bb946aec5b6502149931461dec1b9fbf7a58908'
+    aarch64: '58f4abbb6724bcfd0ed2011c5ece919cf4501e89b7a601620143d328fe726ae5',
+     armv7l: '58f4abbb6724bcfd0ed2011c5ece919cf4501e89b7a601620143d328fe726ae5',
+       i686: 'c5e0e8cfff9e01d3769eee45d93e7e49c37c54f6e4a044d06ea2e420fa27fd97',
+     x86_64: '5c22174c21c8776da8bd5514c4028931bbb0c775a5a857e0d339fbb2645b8026'
   })
 
   depends_on 'glibc' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

@@ -1,11 +1,10 @@
-# Total size: 3004682
+# Total size: 3011621
 /usr/local/bin/gdk-pixbuf-csource
 /usr/local/bin/gdk-pixbuf-pixdata
 /usr/local/bin/gdk-pixbuf-query-loaders
 /usr/local/bin/gdk-pixbuf-thumbnailer
 /usr/local/etc/env.d/gdk_pixbuf
 /usr/local/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-animation.h
-/usr/local/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-autocleanups.h
 /usr/local/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-core.h
 /usr/local/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-enum-types.h
 /usr/local/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-features.h
@@ -22,7 +21,7 @@
 /usr/local/lib/girepository-1.0/GdkPixdata-2.0.typelib
 /usr/local/lib/libgdk_pixbuf-2.0.so
 /usr/local/lib/libgdk_pixbuf-2.0.so.0
-/usr/local/lib/libgdk_pixbuf-2.0.so.0.4200.10
+/usr/local/lib/libgdk_pixbuf-2.0.so.0.4400.3
 /usr/local/lib/pkgconfig/gdk-pixbuf-2.0.pc
 /usr/local/share/gir-1.0/GdkPixbuf-2.0.gir
 /usr/local/share/gir-1.0/GdkPixdata-2.0.gir
@@ -76,6 +75,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/gdk-pixbuf.mo
 /usr/local/share/locale/ja/LC_MESSAGES/gdk-pixbuf.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gdk-pixbuf.mo
+/usr/local/share/locale/kab/LC_MESSAGES/gdk-pixbuf.mo
 /usr/local/share/locale/kk/LC_MESSAGES/gdk-pixbuf.mo
 /usr/local/share/locale/km/LC_MESSAGES/gdk-pixbuf.mo
 /usr/local/share/locale/kn/LC_MESSAGES/gdk-pixbuf.mo

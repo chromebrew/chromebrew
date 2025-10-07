@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk_doc < Meson
   description 'Documentation tool for public library API'
   homepage 'https://www.gtk.org/gtk-doc/'
-  version '1.34.0'
+  version '1.35.1'
   license 'GPL-2 and FDL-1.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gtk-doc.git'
@@ -11,10 +11,10 @@ class Gtk_doc < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4af9d804ce5cde36cd7a404aade21ff31db2840d7e951352ac4baec4c8b0154a',
-     armv7l: '4af9d804ce5cde36cd7a404aade21ff31db2840d7e951352ac4baec4c8b0154a',
-       i686: '6993961e70ba19d27ada2b88912664bc1a3b7df324871b7227bb20bbf78b9a57',
-     x86_64: 'd6c51f109c288c37bade4c353049e1e58cb2e6ff37edde5c212093e401419fd1'
+    aarch64: '0789f654479c3eaa8b60d10845fd8d9f9d96b4a4d32427ee7f492d77aedafae4',
+     armv7l: '0789f654479c3eaa8b60d10845fd8d9f9d96b4a4d32427ee7f492d77aedafae4',
+       i686: '593adbde82c3ea239ad23ad9a91a7ca61f5dc7188388b76d683d1fbf526323fa',
+     x86_64: '83154a542e3b45fb0a516bfe706f38e71d137a137281c0f8eb41c4f570a91b92'
   })
 
   depends_on 'docbook_xml' => :build

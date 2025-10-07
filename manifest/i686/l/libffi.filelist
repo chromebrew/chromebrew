@@ -1,11 +1,11 @@
-# Total size: 464267
+# Total size: 471565
 /usr/local/include/ffi.h
 /usr/local/include/ffitarget.h
 /usr/local/lib/libffi.a
 /usr/local/lib/libffi.la
 /usr/local/lib/libffi.so
 /usr/local/lib/libffi.so.8
-/usr/local/lib/libffi.so.8.1.4
+/usr/local/lib/libffi.so.8.2.0
 /usr/local/lib/libffi_pic.a
 /usr/local/lib/pkgconfig/libffi.pc
 /usr/local/share/man/man3/ffi.3.zst

@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Librsvg < Meson
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  version "2.61.0-#{CREW_ICU_VER}"
+  version "2.61.1-#{CREW_ICU_VER}"
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
@@ -11,9 +11,9 @@ class Librsvg < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c3efa30c8415bee1b21373a109253082db44a08a2afb4dafc6ad7e9ab7b2c096',
-     armv7l: 'c3efa30c8415bee1b21373a109253082db44a08a2afb4dafc6ad7e9ab7b2c096',
-     x86_64: '3c885d706a4ee22aa30156aa86e328f921abc0415a1de4a7bba57dc2d882131c'
+    aarch64: '29c37ea9e5d737b6770e141597180ded69a7d320535a3b96131215521a8e5321',
+     armv7l: '29c37ea9e5d737b6770e141597180ded69a7d320535a3b96131215521a8e5321',
+     x86_64: '51bea22d55325419632a3fc2aca03781be92919588ae3bd0d3c2acf1b4ce5bf5'
   })
 
   depends_on 'cairo' # R

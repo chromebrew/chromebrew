@@ -9,6 +9,10 @@ on:
       - synchronize
   merge_group:
   workflow_dispatch:
+  workflow_run:
+    workflows: [Generate PR]
+    types:
+      - completed
 env:
   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
 jobs:
@@ -33,7 +37,7 @@ jobs:
     outputs:
       category: ${{ steps.changed-file-extensions.outputs.category }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Update branch

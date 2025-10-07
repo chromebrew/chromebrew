@@ -19,7 +19,7 @@ jobs:
     if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           persist-credentials: true
       - uses: ruby/setup-ruby@v1
@@ -83,7 +83,7 @@ jobs:
             # is ok.
             git commit -m "Add unbuilt ${pkg} to ${updater_branch}" || true
             git push origin "HEAD:${updater_branch}" -f || true
-            gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${updater_branch}"
+            gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${updater_branch}" -f pr_label=updater
             git stash || true
             git checkout master
           done

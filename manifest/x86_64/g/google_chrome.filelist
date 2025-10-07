@@ -1,4 +1,4 @@
-# Total size: 395019340
+# Total size: 396749046
 /usr/local/bin/google-chrome
 /usr/local/share/appdata/google-chrome.appdata.xml
 /usr/local/share/applications/com.google.Chrome.desktop
@@ -254,7 +254,6 @@
 /usr/local/share/chrome/product_logo_24.png
 /usr/local/share/chrome/product_logo_256.png
 /usr/local/share/chrome/product_logo_32.png
-/usr/local/share/chrome/product_logo_32.xpm
 /usr/local/share/chrome/product_logo_48.png
 /usr/local/share/chrome/product_logo_64.png
 /usr/local/share/chrome/resources.pak
@@ -266,4 +265,3 @@
 /usr/local/share/gnome-control-center/default-apps/google-chrome.xml
 /usr/local/share/man/man1/google-chrome-stable.1.zst
 /usr/local/share/man/man1/google-chrome.1.zst
-/usr/local/share/menu/google-chrome.menu
