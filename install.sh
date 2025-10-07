@@ -214,7 +214,7 @@ function curl_wrapper () {
     CURL_STATUS="unknown"
   fi
   [[ -z ${CURL_STATUS} ]] || echo_info_stderr "CURL: ${CURL_STATUS}"
-  
+
   for (( i = 0; i < 4; i++ )); do
     if [[ "$CURL_STATUS" == "crew" ]]; then
       curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
@@ -261,8 +261,8 @@ if [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]]; then
   # subsequent package installs may rely on it.
   [[ "$ARCH" == "i686" ]] && BOOTSTRAP_PACKAGES='zstd_static glibc_build223'
   [[ "$LIBC_VERSION" == "2.27" ]] && BOOTSTRAP_PACKAGES='zstd_static glibc_build227'
-  
-  [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux' 
+
+  [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux'
   BOOTSTRAP_PACKAGES+=' upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ca_certificates libyaml openssl findutils ncurses readline bash psmisc'
 else
   # Ruby wants gcc_lib, so install our version build against our glibc
@@ -271,7 +271,7 @@ else
   # findutils provides find which is used by crew during installs.
   BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload'
   # Get linux32 as early as possible.
-  [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux' 
+  [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux'
   BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ca_certificates libyaml openssl gmp findutils psmisc'
   [[ "${ARCH}" == 'i686' ]] || BOOTSTRAP_PACKAGES+=' uutils_coreutils'
 fi
@@ -530,7 +530,7 @@ for i in "${!installed_gems[@]}"
 done
 
 echo_info "Installing essential ruby gems...\n"
-BOOTSTRAP_GEMS='base64 connection_pool concurrent-ruby drb i18n logger minitest securerandom tzinfo highline ptools'
+BOOTSTRAP_GEMS='base64 connection_pool concurrent-ruby drb i18n logger minitest securerandom tzinfo highline ptools openssl rbs'
 # shellcheck disable=SC2086
 install_ruby_gem ${BOOTSTRAP_GEMS}
 
