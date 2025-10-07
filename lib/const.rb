@@ -98,7 +98,15 @@ CREW_KERNEL_VERSION ||=
 # Local constants for contributors.
 CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2>/dev/null`.chomp
 CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
+CREW_MAX_BUILD_TIME  ||= '19800' # GitHub Action containers are killed after 6 hours, so set to 5.5 hours.
 CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
+GITLAB_TOKEN ||= ENV.fetch('GITLAB_TOKEN', nil) unless defined?(GITLAB_TOKEN)
+GITLAB_TOKEN_USERNAME ||= ENV.fetch('GITLAB_TOKEN_USERNAME', nil) unless defined?(GITLAB_TOKEN_USERNAME)
+CREW_GITLAB_TOKEN_LABEL ||= if GITLAB_TOKEN.nil?
+                              ''
+                            else
+                              (GITLAB_TOKEN.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN')
+                            end
 
 CREW_LIB_PREFIX       ||= File.join(CREW_PREFIX, ARCH_LIB)
 CREW_MAN_PREFIX       ||= File.join(CREW_PREFIX, 'share/man')

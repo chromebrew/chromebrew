@@ -65,6 +65,7 @@ class Webkit2gtk_4_1 < CMake
   depends_on 'woff2' # R
   depends_on 'zlib' # R
 
+  cache_build
   no_env_options
   no_lto
 
