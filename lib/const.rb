@@ -401,6 +401,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'linux_pam', anitya_pkg: 'pam', comments: '' },
     { pkg_name: "#{CREW_LLVM_VER}_build", anitya_pkg: 'llvm', comments: '' },
     { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
+    { pkg_name: 'ninja', anitya_pkg: 'ninja-build', comments: '' },
     { pkg_name: 'nnn', anitya_pkg: 'nnn', comments: 'Prefer to GitHub' },
     { pkg_name: 'openssl', anitya_pkg: 'openssl-3.5-LTS', comments: 'Prefer to GitHub' },
     { pkg_name: 'owl', anitya_pkg: 'Owl Lisp', comments: '' },
