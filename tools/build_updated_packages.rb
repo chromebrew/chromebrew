@@ -163,10 +163,8 @@ updated_packages.each do |pkg|
         # Need to force creation of build artifacts since GitHub actions
         # are killed after 6 hours.
         if @pkg_obj.cache_build? && ENV['NESTED_CI']
-          # This assumes cmake, since only the webkit build
-          # currently uses this.
-          # Sleep for 5.5 hours, then kill all extant ninja processes,
-          # which should trigger a build artifact upload.
+          # Sleep for CREW_MAX_BUILD_TIME seconds, then send SIGINT to
+          # @pkg.build, which should trigger a build artifact upload.
           puts "It is #{Time.now}."
           puts "Will kill the build of #{name.capitalize} after #{Float(format('%.2g', CREW_MAX_BUILD_TIME.to_f / 3600))} hours at #{Time.at(Time.now.to_i + CREW_MAX_BUILD_TIME.to_i)}."
           actions_timed_killer = fork do
