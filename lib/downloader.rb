@@ -25,7 +25,7 @@ rescue RuntimeError => e
   end
 end
 
-def downloader(url, sha256sum, filename = File.basename(url), verbose: false)
+def downloader(url, sha256sum, filename = File.basename(url), no_update_hash: false, verbose: false)
   # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
   # Usage: downloader <url>, <sha256sum>, <filename::optional>, <verbose::optional>
   #
@@ -65,7 +65,7 @@ def downloader(url, sha256sum, filename = File.basename(url), verbose: false)
   calc_sha256sum = Digest::SHA256.hexdigest(File.read(filename))
 
   unless (sha256sum =~ /^SKIP$/i) || (calc_sha256sum == sha256sum)
-    if CREW_FORCE
+    if CREW_FORCE && !no_update_hash
       pkg_name = @pkg_name.blank? ? name : @pkg_name
       puts "Updating checksum for #{filename}".lightblue
       puts "from #{sha256sum} to #{calc_sha256sum}".lightblue
