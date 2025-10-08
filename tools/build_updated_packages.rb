@@ -167,9 +167,10 @@ updated_packages.each do |pkg|
           # currently uses this.
           # Sleep for 5.5 hours, then kill all extant ninja processes,
           # which should trigger a build artifact upload.
-          puts "Will kill the build of #{name.capitalize} after #{CREW_MAX_BUILD_TIME.to_f / 3600} hours."
+          puts "It is #{Time.now}."
+          puts "Will kill the build of #{name.capitalize} after #{CREW_MAX_BUILD_TIME.to_f / 3600} hours at #{Time.at(Time.now.to_i + CREW_MAX_BUILD_TIME)}."
           actions_timed_killer = fork do
-            exec "sleep #{CREW_MAX_BUILD_TIME}; killall cmake"
+            exec "sleep #{CREW_MAX_BUILD_TIME}; killall -s INT crew"
           end
           Process.detach(actions_timed_killer)
         end
