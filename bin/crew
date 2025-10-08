@@ -493,6 +493,7 @@ def download
       puts 'Downloading cached build artifact...'.orange
       # Download the package build artifact.
       downloader build_cache_url, gitlab_pkg_sha256, build_cachefile
+      system "echo \"#{gitlab_pkg_sha256} #{build_cachefile}\" > #{build_cachefile}.sha256"
     end
   end
   return { source:, filename: } if (CREW_CACHE_BUILD || @pkg.cache_build?) && File.file?(build_cachefile) && !@pkg.built
