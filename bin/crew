@@ -779,7 +779,8 @@ def build_and_preconfigure(target_dir)
     if CREW_CACHE_FAILED_BUILD || @pkg.cache_build?
       Signal.trap('INT') do
         cache_build
-        abort 'Caching build directory and quitting.'.lightred
+        puts 'Cached build directory as requested and now quitting.'.lightred
+        exit 1
       end
     end
     begin
