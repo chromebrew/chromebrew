@@ -168,7 +168,7 @@ updated_packages.each do |pkg|
           # Sleep for 5.5 hours, then kill all extant ninja processes,
           # which should trigger a build artifact upload.
           puts "It is #{Time.now}."
-          puts "Will kill the build of #{name.capitalize} after #{CREW_MAX_BUILD_TIME.to_f / 3600} hours at #{Time.at(Time.now.to_i + CREW_MAX_BUILD_TIME)}."
+          puts "Will kill the build of #{name.capitalize} after #{Float(format('%.2g', CREW_MAX_BUILD_TIME.to_f / 3600))} hours at #{Time.at(Time.now.to_i + CREW_MAX_BUILD_TIME.to_i)}."
           actions_timed_killer = fork do
             exec "sleep #{CREW_MAX_BUILD_TIME}; killall -s INT crew"
           end
