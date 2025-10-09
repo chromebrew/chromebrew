@@ -37,6 +37,9 @@ def downloader(url, sha256sum, filename = File.basename(url), no_update_hash: fa
   puts "downloader(#{url}, #{sha256sum}, #{filename}, #{verbose})" if verbose
   uri = URI(url)
 
+  # Make sure the destination dir for the filename exists.
+  FileUtils.mkdir_p File.dirname(filename)
+
   if CREW_USE_CURL || !ENV['CREW_DOWNLOADER'].to_s.empty?
     # force using external downloader if either CREW_USE_CURL or ENV['CREW_DOWNLOADER'] is set
     puts "external_downloader(#{uri}, #{filename}, #{verbose})" if verbose
