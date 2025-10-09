@@ -486,15 +486,18 @@ def download
   "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{@pkg.name}&package_version=#{@pkg.version}_#{@device[:architecture]}_build" \
        | jq -r ".[] | select(.name==\\"#{@pkg.name}\\" and .version==\\"#{@pkg.version}_#{@device[:architecture]}_build\\") | .id"`.chomp
       # What is the hash of the gitlab package artifact binary?
-      gitlab_pkg_sha256 = `curl --location --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" \
+      gitlab_build_artifact_sha256 = `curl --location --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" \
   "#{CREW_GITLAB_PKG_REPO}/#{gitlab_pkg_id}/package_files" \
        | jq -r "last(.[].file_sha256)"`.chomp
-      puts 'Cached build artifact exists!'.lightgreen
-      puts 'Downloading cached build artifact...'.orange
+      gitlab_build_artifact_date = `curl --location --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" \
+  "#{CREW_GITLAB_PKG_REPO}/#{gitlab_pkg_id}/package_files" \
+       | jq -r "last(.[].created_at)"`.chomp
+      puts "Cached build artifact from #{gitlab_build_artifact_date} exists!".lightgreen
+      puts "Downloading most recent cached build artifact for #{@pkg.name}-#{@pkg.version}...".orange
       # Download the package build artifact.
-      downloader(build_cache_url, gitlab_pkg_sha256, build_cachefile, no_update_hash: true)
+      downloader(build_cache_url, gitlab_build_artifact_sha256, build_cachefile, no_update_hash: true)
       File.write "#{build_cachefile}.sha256", <<~BUILD_CACHEFILE_SHA256_EOF
-        #{gitlab_pkg_sha256} #{build_cachefile}
+        #{gitlab_build_artifact_sha256} #{build_cachefile}
       BUILD_CACHEFILE_SHA256_EOF
     end
   end
