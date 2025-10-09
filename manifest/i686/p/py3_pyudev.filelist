@@ -1,11 +1,11 @@
-# Total size: 356657
-/usr/local/lib/python3.13/site-packages/pyudev-0.24.3.dist-info/COPYING
-/usr/local/lib/python3.13/site-packages/pyudev-0.24.3.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pyudev-0.24.3.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pyudev-0.24.3.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pyudev-0.24.3.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pyudev-0.24.3.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pyudev-0.24.3.dist-info/top_level.txt
+# Total size: 358647
+/usr/local/lib/python3.13/site-packages/pyudev-0.24.4.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pyudev-0.24.4.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pyudev-0.24.4.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pyudev-0.24.4.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pyudev-0.24.4.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pyudev-0.24.4.dist-info/licenses/COPYING
+/usr/local/lib/python3.13/site-packages/pyudev-0.24.4.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/pyudev/__init__.py
 /usr/local/lib/python3.13/site-packages/pyudev/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pyudev/__pycache__/_errors.cpython-313.pyc
