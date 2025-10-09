@@ -168,7 +168,7 @@ updated_packages.each do |pkg|
           puts "It is #{Time.now}."
           puts "Will kill the build of #{name.capitalize} after #{Float(format('%.2g', CREW_MAX_BUILD_TIME.to_f / 3600))} hours at #{Time.at(Time.now.to_i + CREW_MAX_BUILD_TIME.to_i)}."
           actions_timed_killer = fork do
-            exec "sleep #{CREW_MAX_BUILD_TIME}; killall -s INT crew"
+            exec "sleep #{CREW_MAX_BUILD_TIME}; killall -s INT crew; sleep 300; killall ruby"
           end
           Process.detach(actions_timed_killer)
         end
