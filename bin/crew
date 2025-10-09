@@ -81,6 +81,7 @@ String.use_color = args['--color'] || !args['--no-color']
 @opt_json      = args['--json']
 @opt_keep      = args['--keep']
 @opt_recursive = args['--recursive-build']
+@opt_regen_filelist = args['--regenerate-filelist']
 @opt_source    = args['--source']
 @opt_update    = args['--update-package-files']
 @opt_version   = args['--version']
@@ -907,7 +908,7 @@ def prepare_package(destdir)
     strip_dir destdir
 
     # Create file list and calculate file size
-    filelist = Dir[".{#{CREW_PREFIX}/**/{*,.?*/**},#{HOME}}/**/{*,.?*/**}"].select do |e|
+    filelist = Dir[".{#{CREW_PREFIX}/**/{.*,*,.?*/**},#{HOME}}/**/{.*,*,.?*/**}"].select do |e|
       File.file?(e) || File.symlink?(e)
     end.to_h do |e|
       # Ignore symlinks to prevent duplicating calculation.
@@ -1077,18 +1078,20 @@ end
 
 def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/local')))
   if Dir.exist?(src)
+    # Use tar if @opt_regen_filelist is set as that preserves dot files
+    # after an install.
     crew_mvdir_error = false
-    if File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR && !system("crew-mvdir #{@short_verbose} #{src} #{dst}")
+    if !@opt_regen_filelist && File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR && !system("crew-mvdir #{@short_verbose} #{src} #{dst}")
       puts "src is #{src}".lightred
       puts "dst is #{dst}".lightred
       system "ls -aFl #{dst}"
       crew_mvdir_error = true
     end
     # Handle case of crew-mvdir having failed.
-    if !File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") || CREW_DISABLE_MVDIR || crew_mvdir_error
-      warn 'crew-mvdir is not installed. Please install it with \'crew install crew_mvdir\' for improved installation performance'.yellow unless (@pkg.name == 'crew_mvdir') || CREW_DISABLE_MVDIR || crew_mvdir_error
+    if !File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") || CREW_DISABLE_MVDIR || crew_mvdir_error || @opt_regen_filelist
+      warn 'crew-mvdir is not installed. Please install it with \'crew install crew_mvdir\' for improved installation performance'.yellow unless (@pkg.name == 'crew_mvdir') || CREW_DISABLE_MVDIR || crew_mvdir_error || @opt_regen_filelist
       warn 'crew-mvdir had an error. Using rsync.'.yellow if crew_mvdir_error
-      if File.executable?("#{CREW_PREFIX}/bin/rsync") && system("#{CREW_PREFIX}/bin/rsync --version > /dev/null")
+      if File.executable?("#{CREW_PREFIX}/bin/rsync") && system("#{CREW_PREFIX}/bin/rsync --version > /dev/null") && !@opt_regen_filelist
         # rsync src path needs a trailing slash
         src << '/' unless src.end_with?('/')
         # Check for ACLs support.
@@ -1114,8 +1117,32 @@ def install_package(pkgdir)
     # install filelist, dlist and binary files
     puts "Performing install for #{@pkg.name}...".lightblue
 
-    FileUtils.mv 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: CREW_VERBOSE
-    FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
+    # Sometimes we want to regenerate a file list for an existing
+    # package without forcing a rebuild.
+
+    if @opt_regen_filelist
+      puts "Regenerating filelist for #{@pkg.name}...".orange
+      # Create file list and calculate file size
+      filelist = Dir[".{#{CREW_PREFIX}/**/{.*,*,.?*/**},#{HOME}}/**/{.*,*,.?*/**}"].select do |e|
+        File.file?(e) || File.symlink?(e)
+      end.to_h do |e|
+        # Ignore symlinks to prevent duplicating calculation.
+        [e[1..], File.symlink?(e) ? 0 : File.size(e)]
+      end
+
+      File.write 'filelist', <<~EOF
+        # Total size: #{filelist.values.sum}
+        #{filelist.keys.sort.join("\n")}
+      EOF
+
+      if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
+        puts "Updating manifest filelist for #{@pkg.name}...".orange
+        FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}"
+        FileUtils.cp 'filelist', "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
+      end
+    end
+    FileUtils.cp 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: CREW_VERBOSE
+    FileUtils.cp 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
 
     unless CREW_NOT_LINKS || @pkg.no_links?
       Find.find(Dir.pwd) do |path|
