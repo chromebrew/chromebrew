@@ -96,8 +96,11 @@ CREW_KERNEL_VERSION ||=
   end
 
 # Local constants for contributors.
+CREW_CACHE_DIR          ||= ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache") unless defined?(CREW_CACHE_DIR)
+CREW_CACHE_BUILD        ||= ENV.fetch('CREW_CACHE_BUILD', false) unless defined?(CREW_CACHE_BUILD)
+CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless defined?(CREW_CACHE_FAILED_BUILD)
 CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2>/dev/null`.chomp
-CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
+CREW_LOCAL_BUILD_DIR ||= CREW_LOCAL_REPO_ROOT.empty? ? CREW_CACHE_DIR : "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_MAX_BUILD_TIME  ||= ENV.fetch('CREW_MAX_BUILD_TIME', '19800') unless defined?(CREW_MAX_BUILD_TIME) # GitHub Action containers are killed after 6 hours, so set to 5.5 hours.
 CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
 GITLAB_TOKEN ||= ENV.fetch('GITLAB_TOKEN', nil) unless defined?(GITLAB_TOKEN)
@@ -131,9 +134,6 @@ CREW_DEST_MUSL_PREFIX ||= File.join(CREW_DEST_DIR, CREW_MUSL_PREFIX)
 MUSL_LIBC_VERSION     ||= File.executable?("#{CREW_MUSL_PREFIX}/lib/libc.so") ? `#{CREW_MUSL_PREFIX}/lib/libc.so 2>&1`[/\bVersion\s+\K\S+/] : nil unless defined?(MUSL_LIBC_VERSION)
 
 CREW_DEST_HOME          ||= File.join(CREW_DEST_DIR, HOME)
-CREW_CACHE_DIR          ||= ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache") unless defined?(CREW_CACHE_DIR)
-CREW_CACHE_BUILD        ||= ENV.fetch('CREW_CACHE_BUILD', false) unless defined?(CREW_CACHE_BUILD)
-CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless defined?(CREW_CACHE_FAILED_BUILD)
 CREW_NO_GIT             ||= ENV.fetch('CREW_NO_GIT', false) unless defined?(CREW_NO_GIT)
 CREW_UNATTENDED         ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
 

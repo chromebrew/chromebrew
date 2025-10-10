@@ -185,8 +185,8 @@ def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), 
 end
 
 def cache_build
-  build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
-  if (@pkg.cache_build? || CREW_CACHE_ENABLED) && File.writable?(CREW_CACHE_DIR)
+  build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
+  if (@pkg.cache_build? || CREW_CACHE_ENABLED) && File.writable?(CREW_LOCAL_BUILD_DIR)
     puts 'Caching build dir...'
     pkg_build_dirname_absolute = File.join(CREW_BREW_DIR, @extract_dir)
     pkg_build_dirname = File.basename(pkg_build_dirname_absolute)
@@ -225,7 +225,7 @@ def cache_build
     end
   else
     puts 'CREW_CACHE_ENABLED is not set.'.orange unless CREW_CACHE_ENABLED || @pkg.cache_build?
-    puts 'CREW_CACHE_DIR is not writable.'.lightred unless File.writable?(CREW_CACHE_DIR)
+    puts "#{CREW_LOCAL_BUILD_DIR} is not writable.".lightred unless File.writable?(CREW_LOCAL_BUILD_DIR)
   end
 end
 
@@ -473,11 +473,11 @@ def download
   filename = "#{@pkg.name}-#{@pkg.version}-chromeos-#{ARCH}.#{@pkg.binary_compression}" if filename.eql?('download')
   @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
-  build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
+  build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
   if @pkg.cache_build? && !File.file?(build_cachefile)
     build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
     puts 'Checking for cached build...'.orange
-    # Does a build artifact exist?
+    # Does a remote build artifact exist?
     puts build_cache_url if CREW_VERBOSE
     puts "curl -fsI #{build_cache_url}" if CREW_VERBOSE
     if `curl -fsI #{build_cache_url}`.lines.first.split[1] == '200'
@@ -537,11 +537,18 @@ def download
         local_build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, filename)
         crew_cache_dir_cachefile = File.join(CREW_CACHE_DIR, filename)
         cachefile = File.file?(local_build_cachefile) ? local_build_cachefile : crew_cache_dir_cachefile
-        puts "Using #{@pkg.name} archive from the build cache at #{cachefile}; The checksum will not be checked against the package file.".orange if cachefile.include?(CREW_LOCAL_BUILD_DIR)
+        # puts "Using #{@pkg.name} archive from the build cache at #{cachefile}; The checksum will not be checked against the package file.".orange if cachefile.include?(CREW_LOCAL_BUILD_DIR)
+        puts "Using #{@pkg.name} archive from the build cache at #{cachefile}".orange
         if File.file?(cachefile)
           puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen if CREW_VERBOSE
-          # Don't check checksum if file is in the build cache.
-          if Digest::SHA256.hexdigest(File.read(cachefile)) == sha256sum || sha256sum =~ /^SKIP$/i || cachefile.include?(CREW_LOCAL_BUILD_DIR)
+          # # Don't validate checksum if file is in the local build cache.
+          # if cachefile.include?(CREW_LOCAL_BUILD_DIR)
+          #   sha256sum = 'SKIP'
+          # else
+          sha256sum_out, _stderr, _status = Open3.capture3("sha256sum #{cachefile}")
+          calc_sha256sum = sha256sum_out.split[0]
+          # end
+          if sha256sum =~ /^SKIP$/i || calc_sha256sum == sha256sum
             begin
               # Hard link cached file if possible.
               FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: CREW_VERBOSE unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
@@ -691,7 +698,7 @@ def unpack(meta)
   Dir.chdir CREW_BREW_DIR do
     FileUtils.mkdir_p @extract_dir, verbose: CREW_VERBOSE
 
-    build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
+    build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
     if !@pkg.built && (@pkg.cache_build? || CREW_CACHE_BUILD) && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && (system "sha256sum -c #{build_cachefile}.sha256", chdir: CREW_CACHE_DIR)
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{build_cachefile}".lightgreen
