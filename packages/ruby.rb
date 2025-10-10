@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.6-1'
+  version '3.4.7'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
@@ -12,10 +12,10 @@ class Ruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '657ad0990f631364d173e9be238e315f7cd2581a97f39b2dbf9ba2b80b85ea62',
-     armv7l: '657ad0990f631364d173e9be238e315f7cd2581a97f39b2dbf9ba2b80b85ea62',
-       i686: 'af078eaf4d3ba17720ca1c6cdae0a06513e596de23bc4d111a1d1acd22eb6d77',
-     x86_64: '08a53568e5398650855aeb3c2ed02c1e761bedf1ee931416367855f0c9ab9be7'
+    aarch64: 'dc38c93b003d4a9414f6ebd2507ea373e31fbcf0356522028212f8f62e9ae9a8',
+     armv7l: 'dc38c93b003d4a9414f6ebd2507ea373e31fbcf0356522028212f8f62e9ae9a8',
+       i686: 'eafde9188f8b62b2d96f532d13c851a5374861cd98bfef8a8053e72c71500870',
+     x86_64: 'f7b0ee54068cd153e977c1230b03e1c8d2bfd5be52f76fac4affb658815cc777'
   })
 
   depends_on 'ca_certificates' # L
@@ -38,7 +38,7 @@ class Ruby < Package
     # Download bundled gems version from Top of Tree. Otherwise outdated
     # compile needed gems during install can cause issues when updates
     # are attempted.
-    # downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems'
+    downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems'
   end
 
   def self.build
