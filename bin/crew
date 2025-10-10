@@ -474,12 +474,12 @@ def download
   @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
   build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
-  if @pkg.cache_build?
+  if @pkg.cache_build? && !File.file?(build_cachefile)
     build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
     puts 'Checking for cached build...'.orange
     # Does a build artifact exist?
-    puts build_cache_url
-    puts "curl -fsI #{build_cache_url}"
+    puts build_cache_url if CREW_VERBOSE
+    puts "curl -fsI #{build_cache_url}" if CREW_VERBOSE
     if `curl -fsI #{build_cache_url}`.lines.first.split[1] == '200'
       puts "curl -# --header \"#{CREW_GITLAB_TOKEN_LABEL}: GITLAB_TOKEN\" --upload-file \"#{build_cachefile}\" \"#{build_cache_url}\" | cat" if CREW_VERBOSE
       # What is the gitlab package artifact binary PACKAGE_ID?
