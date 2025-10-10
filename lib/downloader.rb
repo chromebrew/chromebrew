@@ -1,5 +1,5 @@
-require 'digest/sha2'
 require 'io/console'
+require 'open3'
 require 'uri'
 require_relative 'const'
 require_relative 'color'
@@ -64,8 +64,11 @@ def downloader(url, sha256sum, filename = File.basename(url), no_update_hash: fa
     end
   end
 
-  # verify with given checksum
-  calc_sha256sum = Digest::SHA256.hexdigest(File.read(filename))
+  # Verify with given checksum, using the external sha256sum binary so
+  # we do not load the entire file into ruby's process, which throws
+  # errors with large files on 32-bit architectures.
+  sha256sum_out, _stderr, _status = Open3.capture3("sha256sum #{filename}")
+  calc_sha256sum = sha256sum_out.split[0]
 
   unless (sha256sum =~ /^SKIP$/i) || (calc_sha256sum == sha256sum)
     if CREW_FORCE && !no_update_hash
