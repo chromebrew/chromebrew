@@ -3,11 +3,11 @@ require 'package'
 class Crew_mvdir < Package
   description 'Faster alternative to "rsync --remove-source-files dir1/ dir2/"'
   homepage 'https://github.com/chromebrew/crew-mvdir'
-  version '0.3'
+  version '0.4'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/chromebrew/crew-mvdir.git'
-  git_hashtag version
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -18,17 +18,12 @@ class Crew_mvdir < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'ruby' # R
 
   def self.build
-    system './build.sh'
+    system 'make'
   end
 
   def self.install
-    Dir.chdir('builddir') do
-      FileUtils.install 'crew-mvdir', "#{CREW_DEST_PREFIX}/bin/crew-mvdir", mode: 0o755
-      FileUtils.install 'crew-mvdir.so.1', "#{CREW_DEST_LIB_PREFIX}/crew-mvdir.so.1", mode: 0o755
-      FileUtils.install 'crew_mvdir.so', "#{CREW_DEST_LIB_PREFIX}/crew_mvdir.so", mode: 0o755
-    end
+    system 'make', "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
