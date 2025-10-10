@@ -80,8 +80,8 @@ class Webkit2gtk_4_1 < CMake
     if ARCH == 'armv7l'
       # https://www2.webkit.org/show_bug.cgi?id=299166
       # https://www2.webkit.org/attachment.cgi?id=476800
-      downloader 'https://www2.webkit.org/attachment.cgi?id=476800', 'c5d82f64fe5d576585d8f57b30ee18702abebbd9bd3eb51e07605d26667a1957', 'armv7l.patch'
-      system 'patch -Np2 -i armv7l.patch'
+      # downloader 'https://www2.webkit.org/attachment.cgi?id=476800', 'c5d82f64fe5d576585d8f57b30ee18702abebbd9bd3eb51e07605d26667a1957', 'armv7l.patch'
+      # system 'patch -Np2 -i armv7l.patch'
       @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
       @new_gcc = <<~NEW_GCCEOF
         #!/bin/bash
