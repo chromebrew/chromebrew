@@ -63,6 +63,7 @@ jobs:
       i686_packages: ${{ steps.get-compatibility.outputs.i686_PACKAGES }}
       x86_64_packages: ${{ steps.get-compatibility.outputs.x86_64_PACKAGES }}
       armv7l_packages: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
+      matrix: ${{ steps.set-generate-matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -158,11 +159,26 @@ jobs:
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_OUTPUT"
               echo "Branch ${{ inputs.branch || github.ref_name }} has these i686 compatible packages: ${i686_PACKAGES}"
             fi
+      - name: Create Generate Matrix
+        id: set-generate-matrix
+        env:
+          i686_PACKAGES: ${{ steps.get-compatibility.outputs.i686_PACKAGES }}
+          x86_64_PACKAGES: ${{ steps.get-compatibility.outputs.x86_64_PACKAGES }}
+          armv7l_PACKAGES: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
+        run: |
+          function join_by { local IFS="$1"; shift; echo "$*"; }
+          [[ -n "${i686_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"i686\"" )
+          # Always run workflow on the x86_64 container as a fallback.
+          export CONTAINER_ARCH+=( "\"x86_64\"" )
+          [[ -n "${armv7l_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"armv7l\"" )
+          export ARCHES="$(join_by , "${CONTAINER_ARCH[@]}")"
+          echo "matrix=[${ARCHES}]" >> $GITHUB_OUTPUT
+          echo "matrix=[${ARCHES}]"
   update-package-files:
     strategy:
       max-parallel: 1
       matrix:
-        arch: [i686, x86_64, armv7l]
+        arch: ${{ fromJSON(needs.setup.outputs.matrix) }}
         runner:
           - ubuntu-24.04
           - ubuntu-24.04-arm
@@ -288,6 +304,13 @@ jobs:
             mkdir pkg_cache
             sudo setfacl -R -m u:1000:rwx .
             # See https://github.com/containerd/containerd/pull/7566#issuecomment-1461134737 for why we set ulimit.
+            if [ -z ${CI+x} ]; then
+              echo "CI is not set."
+            else
+              CI_PASSTHROUGH=-e
+              CI_PASSTHROUGH+=" "
+              CI_PASSTHROUGH+=NESTED_CI=${CI}
+            fi
             docker run \
               --rm \
               --platform "${PLATFORM}" \
@@ -300,6 +323,7 @@ jobs:
               -e CREW_BRANCH="${{ inputs.branch || github.ref_name }}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
+              ${CI_PASSTHROUGH} \
               -v "$(pwd)"/pkg_cache:/usr/local/tmp/packages:rshared \
               -v "$(pwd)":/output:rshared \
               --tmpfs /tmp \
@@ -412,7 +436,7 @@ jobs:
           x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
           armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
         run: |
-          sudo gem install ptools
+          sudo gem install -N ptools --conservative
           function join_by { local IFS="$1"; shift; echo "$*"; }
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
