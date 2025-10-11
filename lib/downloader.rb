@@ -67,6 +67,7 @@ def downloader(url, sha256sum, filename = File.basename(url), no_update_hash: fa
   # Verify with given checksum, using the external sha256sum binary so
   # we do not load the entire file into ruby's process, which throws
   # errors with large files on 32-bit architectures.
+  puts "Calculating checksum for #{filename}...".lightblue
   sha256sum_out, _stderr, _status = Open3.capture3("sha256sum #{filename}")
   calc_sha256sum = sha256sum_out.split[0]
 
