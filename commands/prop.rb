@@ -5,6 +5,8 @@ class Command
     case property
     when 'arch_flags_override'
       puts "Use the 'arch_flags_override' property to override architecture specific flags."
+    when 'cache_build'
+      puts "The 'cache_build' property caches build tree artifacts to checkpoint builds."
     when 'conflicts_ok'
       puts "The 'conflicts_ok' property bypasses checks for other package file conflicts."
     when 'git_clone_deep'
