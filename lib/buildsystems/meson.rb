@@ -16,10 +16,8 @@ class Meson < Package
   end
 
   def self.pre_cached_build
-    if @cache_build?
-      Dir.chdir @meson_build_relative_dir do
-        @meson_pre_cache_build_extras&.call
-      end
+    Dir.chdir @meson_build_relative_dir do
+      @meson_pre_cache_build_extras&.call
     end
   end
 

@@ -15,10 +15,8 @@ class CMake < Package
   end
 
   def self.pre_cached_build
-    if @cache_build?
-      Dir.chdir @cmake_build_relative_dir do
-        @cmake_pre_cache_build_extras&.call
-      end
+    Dir.chdir(@cmake_build_relative_dir) do
+      @cmake_pre_cache_build_extras&.call
     end
   end
 
