@@ -74,31 +74,6 @@ class Webkit2gtk_4_1 < CMake
 
   def self.patch
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
-    # This only works in the container.
-    system "sudo ln -sf #{CREW_PREFIX}/bin/gcc /usr/bin/gcc" if CREW_IN_CONTAINER
-    system "sudo ln -sf #{CREW_PREFIX}/bin/g++ /usr/bin/g++" if CREW_IN_CONTAINER
-    if ARCH == 'armv7l'
-      # https://www2.webkit.org/show_bug.cgi?id=299166
-      # https://www2.webkit.org/attachment.cgi?id=476800
-      # downloader 'https://www2.webkit.org/attachment.cgi?id=476800', 'c5d82f64fe5d576585d8f57b30ee18702abebbd9bd3eb51e07605d26667a1957', 'armv7l.patch'
-      # system 'patch -Np2 -i armv7l.patch'
-      @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
-      @new_gcc = <<~NEW_GCCEOF
-        #!/bin/bash
-        gcc #{@arch_flags} $@
-      NEW_GCCEOF
-      @new_gpp = <<~NEW_GPPEOF
-        #!/bin/bash
-        # See https://wiki.debian.org/ReduceBuildMemoryOverhead
-        # g++ #{@arch_flags} --param ggc-min-expand=10 $@
-        g++ #{@arch_flags} $@
-      NEW_GPPEOF
-      FileUtils.mkdir_p 'bin'
-      File.write('bin/gcc', @new_gcc)
-      FileUtils.chmod 0o755, 'bin/gcc'
-      File.write('bin/g++', @new_gpp)
-      FileUtils.chmod 0o755, 'bin/g++'
-    end
   end
 
   pre_cmake_options "CC=#{CREW_PREFIX}/bin/gcc CXX=#{CREW_PREFIX}/bin/g++"
@@ -115,6 +90,29 @@ class Webkit2gtk_4_1 < CMake
           -DUSE_GTK4=OFF \
           -DUSE_JPEGXL=ON \
           -DUSE_SOUP2=OFF"
+  cmake_pre_cached_build_extras do
+    # This only works in the container.
+    system "sudo ln -sf #{CREW_PREFIX}/bin/gcc /usr/bin/gcc" if CREW_IN_CONTAINER
+    system "sudo ln -sf #{CREW_PREFIX}/bin/g++ /usr/bin/g++" if CREW_IN_CONTAINER
+    if ARCH == 'armv7l'
+      @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
+      @new_gcc = <<~NEW_GCCEOF
+        #!/bin/bash
+        gcc #{@arch_flags} $@
+      NEW_GCCEOF
+      @new_gpp = <<~NEW_GPPEOF
+        #!/bin/bash
+        # See https://wiki.debian.org/ReduceBuildMemoryOverhead
+        g++ #{@arch_flags} --param ggc-min-expand=10 $@
+        # g++ #{@arch_flags} $@
+      NEW_GPPEOF
+      FileUtils.mkdir_p 'bin'
+      File.write('bin/gcc', @new_gcc)
+      FileUtils.chmod 0o755, 'bin/gcc'
+      File.write('bin/g++', @new_gpp)
+      FileUtils.chmod 0o755, 'bin/g++'
+    end
+  end
 
   if ARCH == 'armv7l'
     def self.build
@@ -143,16 +141,6 @@ class Webkit2gtk_4_1 < CMake
           -DUSE_SOUP2=OFF"
       end
       Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
-      # @counter = 1
-      # @counter_max = 20
-      # loop do
-      # break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
-
-      # puts "Make iteration #{@counter} of #{@counter_max}...".orange
-
-      # @counter += 1
-      # break if @counter > @counter_max
-      # end
     end
   end
 

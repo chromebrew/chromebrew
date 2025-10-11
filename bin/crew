@@ -784,7 +784,9 @@ def build_and_preconfigure(target_dir)
 
     @pkg.in_build = true
     @pkg.prebuild_config_and_report
-    unless @pkg.cached_build
+    if @pkg.cached_build?
+      @pkg.pre_cached_build
+    else
       @pkg.patch
       @pkg.prebuild
     end

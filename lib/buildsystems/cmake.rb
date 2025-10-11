@@ -14,6 +14,14 @@ class CMake < Package
     print_buildsystem_methods
   end
 
+  def self.pre_cached_build
+    if @pkg.cached_build?
+      Dir.chdir @cmake_build_relative_dir do
+        @cmake_pre_cached_build_extras&.call
+      end
+    end
+  end
+
   def self.build
     system "#{@pre_cmake_options} cmake -S #{@cmake_build_relative_dir} -B #{@cmake_build_relative_dir}/builddir -G Ninja #{@crew_cmake_options} #{@cmake_options}" unless File.file?("#{@cmake_build_relative_dir}/build.ninja")
     system "#{CREW_PREFIX}/bin/jobserver_pool.py -j #{CREW_NPROC} #{CREW_NINJA} -C #{@cmake_build_relative_dir}/builddir"
