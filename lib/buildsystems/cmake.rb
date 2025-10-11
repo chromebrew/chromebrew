@@ -3,7 +3,7 @@ require_relative '../require_gem'
 require_relative '../report_buildsystem_methods'
 
 class CMake < Package
-  property :cmake_build_extras, :cmake_build_relative_dir, :cmake_install_extras, :cmake_options, :pre_cmake_options
+  property :cmake_build_extras, :cmake_build_relative_dir, :cmake_install_extras, :cmake_options, :cmake_pre_cache_build_extras, :pre_cmake_options
 
   def self.prebuild_config_and_report
     @cmake_build_relative_dir ||= '.'
@@ -15,9 +15,9 @@ class CMake < Package
   end
 
   def self.pre_cached_build
-    if @pkg.cached_build?
+    if @cache_build?
       Dir.chdir @cmake_build_relative_dir do
-        @cmake_pre_cached_build_extras&.call
+        @cmake_pre_cache_build_extras&.call
       end
     end
   end

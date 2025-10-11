@@ -3,7 +3,7 @@ require_relative '../require_gem'
 require_relative '../report_buildsystem_methods'
 
 class Meson < Package
-  property :meson_build_relative_dir, :meson_options, :meson_build_extras, :meson_install_extras, :pre_meson_options
+  property :meson_build_relative_dir, :meson_options, :meson_build_extras, :meson_install_extras, :meson_pre_cache_build_extras, :pre_meson_options
 
   def self.prebuild_config_and_report
     @meson_build_relative_dir ||= '.'
@@ -13,6 +13,14 @@ class Meson < Package
     extend ReportBuildsystemMethods
 
     print_buildsystem_methods
+  end
+
+  def self.pre_cached_build
+    if @cache_build?
+      Dir.chdir @meson_build_relative_dir do
+        @meson_pre_cache_build_extras&.call
+      end
+    end
   end
 
   def self.build

@@ -90,7 +90,7 @@ class Webkit2gtk_4_1 < CMake
           -DUSE_GTK4=OFF \
           -DUSE_JPEGXL=ON \
           -DUSE_SOUP2=OFF"
-  cmake_pre_cached_build_extras do
+  cmake_pre_cache_build_extras do
     # This only works in the container.
     system "sudo ln -sf #{CREW_PREFIX}/bin/gcc /usr/bin/gcc" if CREW_IN_CONTAINER
     system "sudo ln -sf #{CREW_PREFIX}/bin/g++ /usr/bin/g++" if CREW_IN_CONTAINER
