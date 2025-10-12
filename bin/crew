@@ -218,8 +218,8 @@ def cache_build
         @build_cachefile_lockfile = CrewLockfile.new "#{build_cachefile}.lock"
         begin
           @build_cachefile_lockfile.lock
-          system "tar c#{@verbose} #{pkg_build_dirname} \
-            | nice -n 20 zstd -c  --ultra --fast -f -o #{build_cachefile} -"
+          system "tar c #{pkg_build_dirname} \
+            | nice -n 20 zstd -T0 --ultra --fast -f -o #{build_cachefile} -"
         ensure
           @build_cachefile_lockfile.unlock
         end
@@ -696,10 +696,9 @@ def download
           @git_cachefile_lockfile = CrewLockfile.new "#{cachefile}.lock"
           begin
             @git_cachefile_lockfile.lock
-            system "tar c#{@verbose} \
+            system "tar c \
               $(#{CREW_PREFIX}/bin/find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
-              nice -n 20 zstd -c -T0 --ultra -20 - >  \
-              #{cachefile}"
+              nice -n 20 zstd -T0 --ultra -20 -o #{cachefile} -"
           ensure
             @git_cachefile_lockfile.unlock
           end
@@ -1594,7 +1593,7 @@ def archive_package(crew_archive_dest)
       @pkg_name_lockfile = CrewLockfile.new "#{crew_archive_dest}/#{pkg_name}.lock"
       begin
         @pkg_name_lockfile.lock
-        system "tar c#{@verbose} * | nice -n 20 zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
+        system "tar c * | nice -n 20 zstd -T0 --ultra -20 -o #{crew_archive_dest}/#{pkg_name} -"
       ensure
         @pkg_name_lockfile.unlock
       end
