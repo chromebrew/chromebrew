@@ -561,13 +561,13 @@ def download
         puts "Using #{@pkg.name} archive from the build cache at #{cachefile}".orange
         if File.file?(cachefile)
           puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen if CREW_VERBOSE
-          # # Don't validate checksum if file is in the local build cache.
-          # if cachefile.include?(CREW_LOCAL_BUILD_DIR)
-          #   sha256sum = 'SKIP'
-          # else
-          sha256sum_out, _stderr, _status = Open3.capture3("sha256sum #{cachefile}")
-          calc_sha256sum = sha256sum_out.split[0]
-          # end
+          # Don't validate checksum if file is in the local build cache.
+          if cachefile.include?(CREW_LOCAL_BUILD_DIR)
+            sha256sum = 'SKIP'
+          else
+            sha256sum_out, _stderr, _status = Open3.capture3("sha256sum #{cachefile}")
+            calc_sha256sum = sha256sum_out.split[0]
+          end
           if sha256sum =~ /^SKIP$/i || calc_sha256sum == sha256sum
             begin
               # Hard link cached file if possible.
