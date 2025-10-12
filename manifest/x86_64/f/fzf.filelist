@@ -1,1 +1,6 @@
+# Total size: 4619563
 /usr/local/bin/fzf
+/usr/local/bin/fzf-tmux
+/usr/local/etc/bash.d/10-fzf
+/usr/local/share/man/man1/fzf-tmux.1.zst
+/usr/local/share/man/man1/fzf.1.zst

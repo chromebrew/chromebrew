@@ -1,14 +1,14 @@
-# Total size: 27570834
+# Total size: 27687101
 /usr/local/bin/nuitka
 /usr/local/bin/nuitka-run
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.16.dist-info/INSTALLER
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.16.dist-info/METADATA
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.16.dist-info/RECORD
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.16.dist-info/REQUESTED
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.16.dist-info/WHEEL
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.16.dist-info/entry_points.txt
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.16.dist-info/licenses/LICENSE.txt
-/usr/local/lib64/python3.13/site-packages/nuitka-2.7.16.dist-info/top_level.txt
+/usr/local/lib64/python3.13/site-packages/nuitka-2.8.dist-info/INSTALLER
+/usr/local/lib64/python3.13/site-packages/nuitka-2.8.dist-info/METADATA
+/usr/local/lib64/python3.13/site-packages/nuitka-2.8.dist-info/RECORD
+/usr/local/lib64/python3.13/site-packages/nuitka-2.8.dist-info/REQUESTED
+/usr/local/lib64/python3.13/site-packages/nuitka-2.8.dist-info/WHEEL
+/usr/local/lib64/python3.13/site-packages/nuitka-2.8.dist-info/entry_points.txt
+/usr/local/lib64/python3.13/site-packages/nuitka-2.8.dist-info/licenses/LICENSE.txt
+/usr/local/lib64/python3.13/site-packages/nuitka-2.8.dist-info/top_level.txt
 /usr/local/lib64/python3.13/site-packages/nuitka/Builtins.py
 /usr/local/lib64/python3.13/site-packages/nuitka/BytecodeCaching.py
 /usr/local/lib64/python3.13/site-packages/nuitka/Bytecodes.py
@@ -71,6 +71,7 @@
 /usr/local/lib64/python3.13/site-packages/nuitka/build/SconsHacks.py
 /usr/local/lib64/python3.13/site-packages/nuitka/build/SconsInterface.py
 /usr/local/lib64/python3.13/site-packages/nuitka/build/SconsProgress.py
+/usr/local/lib64/python3.13/site-packages/nuitka/build/SconsPythonBuild.py
 /usr/local/lib64/python3.13/site-packages/nuitka/build/SconsSpawn.py
 /usr/local/lib64/python3.13/site-packages/nuitka/build/SconsUtils.py
 /usr/local/lib64/python3.13/site-packages/nuitka/build/__init__.py
@@ -80,6 +81,7 @@
 /usr/local/lib64/python3.13/site-packages/nuitka/build/__pycache__/SconsHacks.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/build/__pycache__/SconsInterface.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/build/__pycache__/SconsProgress.cpython-313.pyc
+/usr/local/lib64/python3.13/site-packages/nuitka/build/__pycache__/SconsPythonBuild.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/build/__pycache__/SconsSpawn.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/build/__pycache__/SconsUtils.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/build/__pycache__/__init__.cpython-313.pyc
@@ -630,7 +632,6 @@
 /usr/local/lib64/python3.13/site-packages/nuitka/build/inline_copy/zlib/crc32.c
 /usr/local/lib64/python3.13/site-packages/nuitka/build/inline_copy/zlib/crc32.h
 /usr/local/lib64/python3.13/site-packages/nuitka/build/inline_copy/zlib/zconf.h
-/usr/local/lib64/python3.13/site-packages/nuitka/build/inline_copy/zlib/zlib.h
 /usr/local/lib64/python3.13/site-packages/nuitka/build/inline_copy/zlib/zutil.h
 /usr/local/lib64/python3.13/site-packages/nuitka/build/inline_copy/zstd/LICENSE.txt
 /usr/local/lib64/python3.13/site-packages/nuitka/build/inline_copy/zstd/common/bitstream.h
@@ -693,6 +694,7 @@
 /usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersConsole.c
 /usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersConstantsBlob.c
 /usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersDeepcopy.c
+/usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersDialogs.c
 /usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersDictionaries.c
 /usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersDictionariesGenerated.c
 /usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersDumpBacktraces.c
@@ -719,7 +721,6 @@
 /usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryDivmodUtils.c
 /usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryDualAdd.c
 /usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryFloordiv.c
-/usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryInplaceAdd.c
 /usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryLshift.c
 /usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryMatmult.c
 /usr/local/lib64/python3.13/site-packages/nuitka/build/static_src/HelpersOperationBinaryMod.c
@@ -1062,6 +1063,7 @@
 /usr/local/lib64/python3.13/site-packages/nuitka/nodes/BuiltinRangeNodes.py
 /usr/local/lib64/python3.13/site-packages/nuitka/nodes/BuiltinRefNodes.py
 /usr/local/lib64/python3.13/site-packages/nuitka/nodes/BuiltinSumNodes.py
+/usr/local/lib64/python3.13/site-packages/nuitka/nodes/BuiltinTemplateNodes.py
 /usr/local/lib64/python3.13/site-packages/nuitka/nodes/BuiltinTypeNodes.py
 /usr/local/lib64/python3.13/site-packages/nuitka/nodes/BuiltinVarsNodes.py
 /usr/local/lib64/python3.13/site-packages/nuitka/nodes/BytesNodes.py
@@ -1155,6 +1157,7 @@
 /usr/local/lib64/python3.13/site-packages/nuitka/nodes/__pycache__/BuiltinRangeNodes.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/nodes/__pycache__/BuiltinRefNodes.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/nodes/__pycache__/BuiltinSumNodes.cpython-313.pyc
+/usr/local/lib64/python3.13/site-packages/nuitka/nodes/__pycache__/BuiltinTemplateNodes.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/nodes/__pycache__/BuiltinTypeNodes.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/nodes/__pycache__/BuiltinVarsNodes.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/nuitka/nodes/__pycache__/BytesNodes.cpython-313.pyc

@@ -6325,6 +6325,11 @@ url: https://gitlab.gnome.org/GNOME/nautilus/-/tags
 activity: high
 ---
 kind: url
+name: navi
+url: https://github.com/denisidoro/navi/releases
+activity: low
+---
+kind: url
 name: ncat
 url: https://nmap.org/dist/
 activity: low
@@ -9255,6 +9260,11 @@ url: https://www.samba.org/ftp/tdb/
 activity: medium
 ---
 kind: url
+name: tealdeer
+url: https://github.com/tealdeer-rs/tealdeer/releases
+activity: low
+---
+kind: url
 name: teams
 url: https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/
 activity: medium
@@ -9488,6 +9498,11 @@ kind: url
 name: tree_sitter
 url: https://github.com/tree-sitter/tree-sitter/releases
 activity: low
+---
+kind: url
+name: trinity
+url: https://github.com/kernelslacker/trinity/releases
+activity: none
 ---
 kind: url
 name: trousers

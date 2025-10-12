@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.67.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.67.6' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -408,7 +408,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
     { pkg_name: 'pkg_7_zip', anitya_pkg: '7zip~stable', comments: 'Prefer to GitHub' },
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
-    { pkg_name: 'python3', anitya_pkg: 'python', comments: '' },
+    { pkg_name: 'python3', anitya_pkg: 'python313', comments: '' },
     { pkg_name: 'rdfind', anitya_pkg: 'rdfind', comments: 'Prefer to GitHub' },
     { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
     { pkg_name: 'tepl_6', anitya_pkg: 'libgedit-tepl', comments: '' },

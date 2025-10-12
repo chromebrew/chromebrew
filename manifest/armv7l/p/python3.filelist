@@ -1,4 +1,4 @@
-# Total size: 264141204
+# Total size: 264524190
 /usr/local/bin/idle3
 /usr/local/bin/idle3.13
 /usr/local/bin/pip
@@ -3723,6 +3723,9 @@
 /usr/local/lib/python3.13/test/__pycache__/mp_preload_flush.cpython-313.opt-1.pyc
 /usr/local/lib/python3.13/test/__pycache__/mp_preload_flush.cpython-313.opt-2.pyc
 /usr/local/lib/python3.13/test/__pycache__/mp_preload_flush.cpython-313.pyc
+/usr/local/lib/python3.13/test/__pycache__/mp_preload_main.cpython-313.opt-1.pyc
+/usr/local/lib/python3.13/test/__pycache__/mp_preload_main.cpython-313.opt-2.pyc
+/usr/local/lib/python3.13/test/__pycache__/mp_preload_main.cpython-313.pyc
 /usr/local/lib/python3.13/test/__pycache__/multibytecodec_support.cpython-313.opt-1.pyc
 /usr/local/lib/python3.13/test/__pycache__/multibytecodec_support.cpython-313.opt-2.pyc
 /usr/local/lib/python3.13/test/__pycache__/multibytecodec_support.cpython-313.pyc
@@ -5381,6 +5384,7 @@
 /usr/local/lib/python3.13/test/mp_fork_bomb.py
 /usr/local/lib/python3.13/test/mp_preload.py
 /usr/local/lib/python3.13/test/mp_preload_flush.py
+/usr/local/lib/python3.13/test/mp_preload_main.py
 /usr/local/lib/python3.13/test/multibytecodec_support.py
 /usr/local/lib/python3.13/test/pickletester.py
 /usr/local/lib/python3.13/test/profilee.py
@@ -7504,6 +7508,9 @@
 /usr/local/lib/python3.13/test/test_pyrepl/__pycache__/__main__.cpython-313.opt-1.pyc
 /usr/local/lib/python3.13/test/test_pyrepl/__pycache__/__main__.cpython-313.opt-2.pyc
 /usr/local/lib/python3.13/test/test_pyrepl/__pycache__/__main__.cpython-313.pyc
+/usr/local/lib/python3.13/test/test_pyrepl/__pycache__/eio_test_script.cpython-313.opt-1.pyc
+/usr/local/lib/python3.13/test/test_pyrepl/__pycache__/eio_test_script.cpython-313.opt-2.pyc
+/usr/local/lib/python3.13/test/test_pyrepl/__pycache__/eio_test_script.cpython-313.pyc
 /usr/local/lib/python3.13/test/test_pyrepl/__pycache__/support.cpython-313.opt-1.pyc
 /usr/local/lib/python3.13/test/test_pyrepl/__pycache__/support.cpython-313.opt-2.pyc
 /usr/local/lib/python3.13/test/test_pyrepl/__pycache__/support.cpython-313.pyc
@@ -7534,6 +7541,7 @@
 /usr/local/lib/python3.13/test/test_pyrepl/__pycache__/test_windows_console.cpython-313.opt-1.pyc
 /usr/local/lib/python3.13/test/test_pyrepl/__pycache__/test_windows_console.cpython-313.opt-2.pyc
 /usr/local/lib/python3.13/test/test_pyrepl/__pycache__/test_windows_console.cpython-313.pyc
+/usr/local/lib/python3.13/test/test_pyrepl/eio_test_script.py
 /usr/local/lib/python3.13/test/test_pyrepl/support.py
 /usr/local/lib/python3.13/test/test_pyrepl/test_eventqueue.py
 /usr/local/lib/python3.13/test/test_pyrepl/test_input.py
