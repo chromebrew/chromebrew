@@ -94,6 +94,7 @@ String.use_color = args['--color'] || !args['--no-color']
 
 # Make sure crew work directories exist.
 FileUtils.mkdir_p CREW_BREW_DIR
+FileUtils.mkdir_p CREW_CACHE_DIR
 FileUtils.mkdir_p CREW_DEST_DIR
 
 class ExitMessage
