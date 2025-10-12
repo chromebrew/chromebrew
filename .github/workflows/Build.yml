@@ -325,7 +325,8 @@ jobs:
             # Detection of /output/pkg_cache dir triggers setting
             # CREW_CACHE_DIR=1 and CREW_CACHE_ENABLED=1 in the build
             # container. Without these, upload fails.
-            mkdir pkg_cache
+            mkdir /tmp/pkg_cache
+            ln -s /tmp/pkg_cache pkg_cache
             sudo setfacl -R -m u:1000:rwx .
             # See https://github.com/containerd/containerd/pull/7566#issuecomment-1461134737 for why we set ulimit.
             if [ -z ${CI+x} ]; then
@@ -356,7 +357,7 @@ jobs:
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               ${CI_PASSTHROUGH} \
               ${CREW_MAX_BUILD_TIME_PASSTHROUGH} \
-              -v "$(pwd)"/pkg_cache:/usr/local/tmp/packages:rshared \
+              -v /tmp/pkg_cache:/usr/local/tmp/packages:rshared \
               -v "$(pwd)":/output:rshared \
               --tmpfs /tmp \
               --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" \
