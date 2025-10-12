@@ -97,8 +97,9 @@ CREW_KERNEL_VERSION ||=
 
 # Local constants for contributors.
 CREW_CACHE_DIR          ||= ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache") unless defined?(CREW_CACHE_DIR)
-CREW_CACHE_BUILD        ||= ENV.fetch('CREW_CACHE_BUILD', false) unless defined?(CREW_CACHE_BUILD)
 CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless defined?(CREW_CACHE_FAILED_BUILD)
+# Setting CREW_CACHE_FAILED_BUILD should set CREW_CACHE_BUILD.
+CREW_CACHE_BUILD        ||= ENV.fetch('CREW_CACHE_BUILD', CREW_CACHE_FAILED_BUILD) unless defined?(CREW_CACHE_BUILD)
 CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2>/dev/null`.chomp
 CREW_LOCAL_BUILD_DIR ||= CREW_LOCAL_REPO_ROOT.empty? ? CREW_CACHE_DIR : "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_MAX_BUILD_TIME  ||= ENV.fetch('CREW_MAX_BUILD_TIME', '19800') unless defined?(CREW_MAX_BUILD_TIME) # GitHub Action containers are killed after 6 hours, so set to 5.5 hours.
@@ -154,7 +155,7 @@ CREW_NPROC ||=
 # Set following as boolean if environment variables exist.
 # Timeout for agree questions in package.rb:
 CREW_AGREE_TIMEOUT_SECONDS           ||= ENV.fetch('CREW_AGREE_TIMEOUT_SECONDS', 10).to_i unless defined?(CREW_AGREE_TIMEOUT_SECONDS)
-CREW_CACHE_ENABLED                   ||= ENV.fetch('CREW_CACHE_ENABLED', false) unless defined?(CREW_CACHE_ENABLED)
+CREW_CACHE_ENABLED                   ||= ENV.fetch('CREW_CACHE_ENABLED', CREW_CACHE_FAILED_BUILD) unless defined?(CREW_CACHE_ENABLED)
 CREW_CONFLICTS_ONLY_ADVISORY         ||= ENV.fetch('CREW_CONFLICTS_ONLY_ADVISORY', false) unless defined?(CREW_CONFLICTS_ONLY_ADVISORY)
 # or use conflicts_ok
 CREW_DISABLE_ENV_OPTIONS             ||= ENV.fetch('CREW_DISABLE_ENV_OPTIONS', false) unless defined?(CREW_DISABLE_ENV_OPTIONS)

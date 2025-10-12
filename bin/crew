@@ -187,7 +187,7 @@ end
 def cache_build
   build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
   puts "build_cachefile is #{build_cachefile}"
-  if (@pkg.cache_build? || CREW_CACHE_ENABLED) && File.writable?(CREW_LOCAL_BUILD_DIR)
+  if (@pkg.cache_build? || CREW_CACHE_BUILD) && File.writable?(CREW_LOCAL_BUILD_DIR)
     puts 'Caching build dir...'
     pkg_build_dirname_absolute = File.join(CREW_BREW_DIR, @extract_dir)
     pkg_build_dirname = File.basename(pkg_build_dirname_absolute)
@@ -227,7 +227,7 @@ def cache_build
         end
       end
     end
-    system "sha256sum #{build_cachefile} > #{build_cachefile}.sha256" unless ENV['NESTED_CI']
+    system "sha256sum #{build_cachefile} > #{build_cachefile}.sha256" if File.file?(build_cachefile)
     puts "Build directory cached at #{build_cachefile}".lightgreen
     if @pkg.cache_build? && !ENV['NESTED_CI']
       abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if GITLAB_TOKEN.nil?
@@ -244,7 +244,7 @@ def cache_build
       end
     end
   else
-    puts 'CREW_CACHE_ENABLED is not set.'.orange unless CREW_CACHE_ENABLED || @pkg.cache_build?
+    puts 'CREW_CACHE_BUILD is not set.'.orange unless CREW_CACHE_BUILD || @pkg.cache_build?
     puts "#{CREW_LOCAL_BUILD_DIR} is not writable.".lightred unless File.writable?(CREW_LOCAL_BUILD_DIR)
   end
 end
@@ -494,7 +494,7 @@ def download
   @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
   build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
-  if @pkg.cache_build? && !File.file?(build_cachefile)
+  if (@pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile)
     build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
     puts 'Checking for cached build...'.orange
     # Does a remote build artifact exist?
@@ -551,7 +551,7 @@ def download
     # This also covers all precompiled binaries.
     when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i, /\.gem$/i
       # Recall file from cache if requested
-      if CREW_CACHE_ENABLED || @pkg.cache_build?
+      if CREW_CACHE_ENABLED || CREW_CACHE_BUILD || @pkg.cache_build?
         puts "Looking for #{@pkg.name} archive in cache".orange if CREW_VERBOSE
         # Privilege CREW_LOCAL_BUILD_DIR over CREW_CACHE_DIR.
         local_build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, filename)
@@ -803,6 +803,16 @@ def build_and_preconfigure(target_dir)
     build_start_time = Time.now.to_i
 
     @pkg.in_build = true
+    Signal.trap('INT') do
+      if CREW_CACHE_BUILD || @pkg.cache_build?
+        cache_build
+        ExitMessage.add 'The build was interrupted. The build directory was cached.'.lightred
+        exit 1
+      end
+      ExitMessage.add 'Interrupted!'.lightred
+      exit 1
+    end
+
     @pkg.prebuild_config_and_report
     if @pkg.cache_build?
       @pkg.pre_cached_build
@@ -811,13 +821,6 @@ def build_and_preconfigure(target_dir)
       @pkg.prebuild
     end
 
-    if CREW_CACHE_FAILED_BUILD || @pkg.cache_build?
-      Signal.trap('INT') do
-        cache_build
-        puts 'Cached build directory as requested and now quitting.'.lightred
-        exit 1
-      end
-    end
     begin
       @pkg.build
     rescue StandardError => e
@@ -828,8 +831,10 @@ def build_and_preconfigure(target_dir)
       abort "There was a build error.\n#{e}".lightred
     end
     @pkg.in_build = false
-    cache_build if CREW_CACHE_BUILD || @pkg.cache_build?
     Signal.trap('INT', 'DEFAULT') if CREW_CACHE_BUILD || @pkg.cache_build?
+
+    cache_build if CREW_CACHE_BUILD || @pkg.cache_build?
+
     # wipe crew destdir
     FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: CREW_VERBOSE unless @pkg.superclass.to_s == 'RUBY'
     puts 'Preconfiguring package...'
@@ -2170,16 +2175,6 @@ def whatprovides_command(args)
 end
 
 def command?(name) = !!!name[/^[-<]/]
-
-Signal.trap('INT') do
-  if ((CREW_CACHE_FAILED_BUILD && CREW_CACHE_ENABLED) || @pkg.cache_build?) && @pkg.in_build
-    cache_build
-    ExitMessage.add 'The build was interrupted. The build directory was cached.'.lightred
-    exit 1
-  end
-  ExitMessage.add 'Interrupted!'.lightred
-  exit 1
-end
 
 @device = ConvenienceFunctions.load_symbolized_json
 

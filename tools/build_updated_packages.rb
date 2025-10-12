@@ -160,9 +160,9 @@ updated_packages.each do |pkg|
       puts "#{name.capitalize} #{@pkg_obj.version} needs builds uploaded for: #{builds_needed.join(' ')}".lightblue
 
       if builds_needed.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{@pkg_obj.version}-chromeos-#{ARCH}.#{@pkg_obj.binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@pkg_obj.version}")
-        # Need to force creation of build artifacts since GitHub actions
-        # are killed after 6 hours.
-        if @pkg_obj.cache_build? && ENV['NESTED_CI']
+        # GitHub actions are killed after 6 hours, so  eed to force
+        # creation of build artifacts for long-running builds.
+        if ENV['NESTED_CI']
           # Sleep for CREW_MAX_BUILD_TIME seconds, then send SIGINT to
           # @pkg.build, which should trigger a build artifact upload.
           puts "It is #{Time.now}."
@@ -172,7 +172,7 @@ updated_packages.each do |pkg|
           end
           Process.detach(actions_timed_killer)
         end
-        system "yes | nice -n 20 crew build -f #{pkg}"
+        system "yes | #{'CREW_CACHE_BUILD=1' if ENV['NESTED_CI']} nice -n 20 crew build -f #{pkg}"
         build[name.to_sym] = $CHILD_STATUS.success?
         unless build[name.to_sym]
           if CONTINUE_AFTER_FAILED_BUILDS
@@ -182,7 +182,7 @@ updated_packages.each do |pkg|
             abort "#{pkg} build failed!".lightred
           end
         end
-        Process.kill('HUP', actions_timed_killer) if @pkg_obj.cache_build? && ENV['NESTED_CI']
+        Process.kill('HUP', actions_timed_killer) if ENV['NESTED_CI']
         # Reinvoke this script to take just built packages that have been built and
         # installed into account, attempting uploads of just built packages immediately.
         cmdline = "cd #{`pwd`.chomp} && crew upload #{name} ; #{$PROGRAM_NAME} #{ARGV.join(' ')}"
