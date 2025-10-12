@@ -493,6 +493,22 @@ def download
   @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
   build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
+  return { source:, filename: } if (CREW_CACHE_BUILD || @pkg.cache_build?) && File.file?(build_cachefile) && !@pkg.built
+
+  if !url
+    abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
+  elsif url.casecmp?('SKIP') || (@pkg.no_source_build? || @pkg.gem_compile_needed?)
+    puts 'Skipping source download...'
+  elsif @pkg.build_from_source
+    puts 'Downloading source...'
+  elsif !source
+    puts 'Precompiled binary available, downloading...'
+  else
+    puts 'No precompiled binary available for your platform, downloading source...'
+  end
+
+  git = true unless @pkg.git_hashtag.to_s.empty?
+
   if (@pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile)
     build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
     puts 'Checking for cached build...'.orange
@@ -521,21 +537,6 @@ def download
       BUILD_CACHEFILE_SHA256_EOF
     end
   end
-  return { source:, filename: } if (CREW_CACHE_BUILD || @pkg.cache_build?) && File.file?(build_cachefile) && !@pkg.built
-
-  if !url
-    abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
-  elsif url.casecmp?('SKIP') || (@pkg.no_source_build? || @pkg.gem_compile_needed?)
-    puts 'Skipping source download...'
-  elsif @pkg.build_from_source
-    puts 'Downloading source...'
-  elsif !source
-    puts 'Precompiled binary available, downloading...'
-  else
-    puts 'No precompiled binary available for your platform, downloading source...'
-  end
-
-  git = true unless @pkg.git_hashtag.to_s.empty?
 
   Dir.chdir CREW_BREW_DIR do
     FileUtils.mkdir_p @extract_dir
