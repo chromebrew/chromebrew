@@ -9490,6 +9490,11 @@ url: https://github.com/tree-sitter/tree-sitter/releases
 activity: low
 ---
 kind: url
+name: trinity
+url: https://github.com/kernelslacker/trinity/releases
+activity: none
+---
+kind: url
 name: trousers
 url: https://sourceforge.net/projects/trousers/files/trousers/
 activity: none
