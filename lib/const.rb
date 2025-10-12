@@ -89,7 +89,7 @@ end
 
 # Use sane minimal defaults if in container and no override specified.
 CREW_KERNEL_VERSION ||=
-  if CREW_IN_CONTAINER && ENV.fetch('CREW_KERNEL_VERSION', nil).nil?
+  if (CREW_IN_CONTAINER && ENV.fetch('CREW_KERNEL_VERSION', nil).nil?) || ENV['CI']
     ARCH.eql?('i686') ? '3.8' : '6.12'
   else
     ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
