@@ -186,6 +186,7 @@ end
 
 def cache_build
   build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
+  puts "build_cachefile is #{build_cachefile}"
   if (@pkg.cache_build? || CREW_CACHE_ENABLED) && File.writable?(CREW_LOCAL_BUILD_DIR)
     puts 'Caching build dir...'
     pkg_build_dirname_absolute = File.join(CREW_BREW_DIR, @extract_dir)
@@ -197,19 +198,38 @@ def cache_build
       FileUtils.mv build_cachefile, "#{build_cachefile}.bak", force: true if File.file?(build_cachefile)
       FileUtils.mv "#{build_cachefile}.sha256", "#{build_cachefile}.sha256.bak", force: true if File.file?("#{build_cachefile}.sha256")
       Dir.chdir(CREW_BREW_DIR) do
-        @build_cachefile_lockfile = CrewLockfile.new "#{build_cachefile}.lock"
-        begin
-          @build_cachefile_lockfile.lock
-          system "tar c#{@verbose} #{pkg_build_dirname} \
-          | nice -n 20 zstd -c  --ultra --fast -f -o #{build_cachefile} -"
-        ensure
-          @build_cachefile_lockfile.unlock
+        if ENV['NESTED_CI']
+          # Directly upload if in a CI environment.
+          abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if GITLAB_TOKEN.nil?
+          build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+          output = `tar c #{pkg_build_dirname} \
+          | nice -n 20 zstd -c  --ultra --fast -f - -c | \
+          curl -# --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" -F file=@-;filename=#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst \
+           #{build_cache_url} | cat`.chomp
+          if output.include?('201 Created')
+            puts "#{output}\n".lightgreen if output.include?('201 Created')
+          else
+            puts "#{output}\n".lightred
+            puts "tar c #{pkg_build_dirname} \
+          | nice -n 20 zstd -c  --ultra --fast -f - -c | \
+          curl -# --header \"#{CREW_GITLAB_TOKEN_LABEL}: GITLAB_TOKEN\" -F file=@-;filename=#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst \
+           \"#{build_cache_url}\" | cat"
+          end
+        else
+          @build_cachefile_lockfile = CrewLockfile.new "#{build_cachefile}.lock"
+          begin
+            @build_cachefile_lockfile.lock
+            system "tar c#{@verbose} #{pkg_build_dirname} \
+            | nice -n 20 zstd -c  --ultra --fast -f -o #{build_cachefile} -"
+          ensure
+            @build_cachefile_lockfile.unlock
+          end
         end
       end
     end
-    system "sha256sum #{build_cachefile} > #{build_cachefile}.sha256"
+    system "sha256sum #{build_cachefile} > #{build_cachefile}.sha256" unless ENV['NESTED_CI']
     puts "Build directory cached at #{build_cachefile}".lightgreen
-    if @pkg.cache_build?
+    if @pkg.cache_build? && !ENV['NESTED_CI']
       abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if GITLAB_TOKEN.nil?
       puts "Uploading #{build_cachefile} ...".orange
       build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
