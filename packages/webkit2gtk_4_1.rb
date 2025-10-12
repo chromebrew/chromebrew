@@ -3,12 +3,13 @@ require 'buildsystems/cmake'
 class Webkit2gtk_4_1 < CMake
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.50.0-84fb745'
+  version '2.50.1'
   license 'LGPL-2+ and BSD-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/WebKit/WebKit.git'
+  git_hashtag "webkitgtk-#{version}"
   # From the webkitglib/2.50 branch.
-  git_hashtag '84fb745f2dec1b1f6417ee6059e76a60f6a4f96b'
+  # git_hashtag '84fb745f2dec1b1f6417ee6059e76a60f6a4f96b'
   # source_url "https://webkitgtk.org/releases/webkitgtk-#{version.split('-').first}.tar.xz"
   # source_sha256 'e564b8099f9a3ae32409539b290bbd2ad084e99b6d22d4aac5e51e4554df8bc2'
   binary_compression 'tar.zst'
