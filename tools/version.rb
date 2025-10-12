@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.3 (for Chromebrew)
+# version.rb version 3.4 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -311,7 +311,7 @@ if filelist.length.positive?
               @pkg = Package.load_package(filename, true)
               (@pkg.source_url.keys.map &:to_s).each do |arch|
                 puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE && !OUTPUT_JSON
-                unless `curl -fsI #{@pkg.source_url[arch.to_sym]}`.lines.first.split[1] == '200'
+                unless `curl -fsI #{@pkg.source_url[arch.to_sym]}`.lines.first.split[1] == '200' || '302'
                   versions_updated[@pkg.name.to_sym] = 'Bad Source'
                   puts "#{@pkg.source_url[arch.to_sym]} is a bad source".lightred if VERBOSE && !OUTPUT_JSON
                   if File.file?("#{filename}.bak")
