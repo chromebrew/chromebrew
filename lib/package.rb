@@ -92,6 +92,11 @@ class Package
     end
   end
 
+  def self.is_installed(pkg)
+    # Returns true if the package is installed, false otherwise.
+    return File.file? "#{CREW_META_PATH}/#{pkg}.filelist"
+  end
+
   def self.load_package(pkg_file, reload = nil)
     reload = !reload.nil?
     # self.load_package: load a package under 'Package' class scope
