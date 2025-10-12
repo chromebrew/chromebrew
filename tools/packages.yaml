@@ -6325,6 +6325,11 @@ url: https://gitlab.gnome.org/GNOME/nautilus/-/tags
 activity: high
 ---
 kind: url
+name: navi
+url: https://github.com/denisidoro/navi/releases
+activity: low
+---
+kind: url
 name: ncat
 url: https://nmap.org/dist/
 activity: low
@@ -9253,6 +9258,11 @@ kind: url
 name: tdb
 url: https://www.samba.org/ftp/tdb/
 activity: medium
+---
+kind: url
+name: tealdeer
+url: https://github.com/tealdeer-rs/tealdeer/releases
+activity: low
 ---
 kind: url
 name: teams
