@@ -509,7 +509,7 @@ def download
 
   git = true unless @pkg.git_hashtag.to_s.empty?
 
-  if (@pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile)
+  if (@pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !@pkg.no_source_build?
     build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
     puts 'Checking for cached build...'.orange
     # Does a remote build artifact exist?
