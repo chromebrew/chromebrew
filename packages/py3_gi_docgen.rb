@@ -13,10 +13,10 @@ class Py3_gi_docgen < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3b11dd08170f7425a6c0bb4a0296a98f2a50eac039a17894cad9755354ffc8fc',
-     armv7l: '3b11dd08170f7425a6c0bb4a0296a98f2a50eac039a17894cad9755354ffc8fc',
-       i686: '80b1ea4d9be56caab398fdf14cc32f58ed574ee808f8221b3b5074fa01a2c84b',
-     x86_64: '96591a9fb5e108fe2e76ee6699962cd606b38655c9b6c48f87d85f19a321565e'
+    aarch64: '6d3fe2c8dc2298f3be378c5c302fff52fe7b8428068dcd8c1aae20b547815c43',
+     armv7l: '6d3fe2c8dc2298f3be378c5c302fff52fe7b8428068dcd8c1aae20b547815c43',
+       i686: '69c638abe28818abce19214e95eda847f0529498db0a07e0333ce1a0c4e9306f',
+     x86_64: 'c174dd0b1ae8d7bea43c1e326ae93811270778904e30ac823759a77f7482a752'
   })
 
   depends_on 'py3_jinja2'
