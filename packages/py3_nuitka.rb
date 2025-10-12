@@ -10,10 +10,10 @@ class Py3_nuitka < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c575620f84588b911d012c4fe781cf62b7da06d3a6938903372fe9dba5a4da47',
-     armv7l: 'c575620f84588b911d012c4fe781cf62b7da06d3a6938903372fe9dba5a4da47',
-       i686: '053fe3b79ae0bbc91901f10ac5174891bc7b08ed293c6895e690cb30be9b5cf9',
-     x86_64: '9958bbf00c1e25e004499faee461677c8f42e666147ed309215545c4112a824c'
+    aarch64: '5ca5a4117af3421d96f00498f34081c54233bbd5b63ccb370b2ee3fdade9ea96',
+     armv7l: '5ca5a4117af3421d96f00498f34081c54233bbd5b63ccb370b2ee3fdade9ea96',
+       i686: '48f1d202bc9cdb2ec67f5707c3b3a71551a7a996d6b6daf84adf15ae5a5e9bdd',
+     x86_64: 'ae49cf0061545a27affebe8793db2e80a3239550d8b3d1572b4d9bade8fe001f'
   })
 
   depends_on 'python3' => :build
