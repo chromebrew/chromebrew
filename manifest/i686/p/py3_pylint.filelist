@@ -1,17 +1,17 @@
-# Total size: 3895739
+# Total size: 3970034
 /usr/local/bin/pylint
 /usr/local/bin/pylint-config
 /usr/local/bin/pyreverse
 /usr/local/bin/symilar
-/usr/local/lib/python3.13/site-packages/pylint-3.3.9.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pylint-3.3.9.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pylint-3.3.9.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pylint-3.3.9.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pylint-3.3.9.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pylint-3.3.9.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/pylint-3.3.9.dist-info/licenses/CONTRIBUTORS.txt
-/usr/local/lib/python3.13/site-packages/pylint-3.3.9.dist-info/licenses/LICENSE
-/usr/local/lib/python3.13/site-packages/pylint-3.3.9.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/pylint-4.0.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pylint-4.0.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pylint-4.0.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pylint-4.0.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pylint-4.0.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pylint-4.0.0.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/pylint-4.0.0.dist-info/licenses/CONTRIBUTORS.txt
+/usr/local/lib/python3.13/site-packages/pylint-4.0.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/pylint-4.0.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/pylint/__init__.py
 /usr/local/lib/python3.13/site-packages/pylint/__main__.py
 /usr/local/lib/python3.13/site-packages/pylint/__pkginfo__.py
@@ -25,9 +25,10 @@
 /usr/local/lib/python3.13/site-packages/pylint/__pycache__/typing.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__init__.py
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/__init__.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/async.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/async_checker.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/bad_chained_comparison.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/base_checker.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/clear_lru_cache.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/dataclass_checker.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/deprecated.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/design_analysis.cpython-313.pyc
@@ -38,6 +39,7 @@
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/imports.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/lambda_expressions.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/logging.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/match_statements_checker.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/method_args.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/misc.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/modified_iterating_checker.cpython-313.pyc
@@ -55,7 +57,7 @@
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/unsupported_version.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/utils.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/__pycache__/variables.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/pylint/checkers/async.py
+/usr/local/lib/python3.13/site-packages/pylint/checkers/async_checker.py
 /usr/local/lib/python3.13/site-packages/pylint/checkers/bad_chained_comparison.py
 /usr/local/lib/python3.13/site-packages/pylint/checkers/base/__init__.py
 /usr/local/lib/python3.13/site-packages/pylint/checkers/base/__pycache__/__init__.cpython-313.pyc
@@ -84,6 +86,7 @@
 /usr/local/lib/python3.13/site-packages/pylint/checkers/classes/__pycache__/special_methods_checker.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/checkers/classes/class_checker.py
 /usr/local/lib/python3.13/site-packages/pylint/checkers/classes/special_methods_checker.py
+/usr/local/lib/python3.13/site-packages/pylint/checkers/clear_lru_cache.py
 /usr/local/lib/python3.13/site-packages/pylint/checkers/dataclass_checker.py
 /usr/local/lib/python3.13/site-packages/pylint/checkers/deprecated.py
 /usr/local/lib/python3.13/site-packages/pylint/checkers/design_analysis.py
@@ -94,6 +97,7 @@
 /usr/local/lib/python3.13/site-packages/pylint/checkers/imports.py
 /usr/local/lib/python3.13/site-packages/pylint/checkers/lambda_expressions.py
 /usr/local/lib/python3.13/site-packages/pylint/checkers/logging.py
+/usr/local/lib/python3.13/site-packages/pylint/checkers/match_statements_checker.py
 /usr/local/lib/python3.13/site-packages/pylint/checkers/method_args.py
 /usr/local/lib/python3.13/site-packages/pylint/checkers/misc.py
 /usr/local/lib/python3.13/site-packages/pylint/checkers/modified_iterating_checker.py
@@ -123,7 +127,6 @@
 /usr/local/lib/python3.13/site-packages/pylint/checkers/variables.py
 /usr/local/lib/python3.13/site-packages/pylint/config/__init__.py
 /usr/local/lib/python3.13/site-packages/pylint/config/__pycache__/__init__.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/pylint/config/__pycache__/_breaking_changes.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/config/__pycache__/argument.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/config/__pycache__/arguments_manager.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/config/__pycache__/arguments_provider.cpython-313.pyc
@@ -135,7 +138,8 @@
 /usr/local/lib/python3.13/site-packages/pylint/config/__pycache__/find_default_config_files.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/config/__pycache__/help_formatter.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/config/__pycache__/utils.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/pylint/config/_breaking_changes.py
+/usr/local/lib/python3.13/site-packages/pylint/config/_breaking_changes/__init__.py
+/usr/local/lib/python3.13/site-packages/pylint/config/_breaking_changes/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/config/_pylint_config/__init__.py
 /usr/local/lib/python3.13/site-packages/pylint/config/_pylint_config/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/config/_pylint_config/__pycache__/generate_command.cpython-313.pyc
@@ -280,12 +284,14 @@
 /usr/local/lib/python3.13/site-packages/pylint/reporters/__pycache__/collecting_reporter.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/reporters/__pycache__/json_reporter.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/reporters/__pycache__/multi_reporter.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pylint/reporters/__pycache__/progress_reporters.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/reporters/__pycache__/reports_handler_mix_in.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/reporters/__pycache__/text.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pylint/reporters/base_reporter.py
 /usr/local/lib/python3.13/site-packages/pylint/reporters/collecting_reporter.py
 /usr/local/lib/python3.13/site-packages/pylint/reporters/json_reporter.py
 /usr/local/lib/python3.13/site-packages/pylint/reporters/multi_reporter.py
+/usr/local/lib/python3.13/site-packages/pylint/reporters/progress_reporters.py
 /usr/local/lib/python3.13/site-packages/pylint/reporters/reports_handler_mix_in.py
 /usr/local/lib/python3.13/site-packages/pylint/reporters/text.py
 /usr/local/lib/python3.13/site-packages/pylint/reporters/ureports/__init__.py
