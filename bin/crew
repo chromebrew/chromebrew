@@ -2024,8 +2024,8 @@ def download_command(args)
     else
       download
     end
-  # Clean up remnant @extract_dir folders.
-  FileUtils.rm_rf File.join(CREW_BREW_DIR, @extract_dir)
+    # Clean up remnant @extract_dir folders.
+    FileUtils.rm_rf File.join(CREW_BREW_DIR, @extract_dir)
   end
 end
 
