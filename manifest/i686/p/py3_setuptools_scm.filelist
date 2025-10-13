@@ -1,14 +1,13 @@
-# Total size: 368884
+# Total size: 372922
 /usr/local/bin/setuptools-scm
-/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.0.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.0.dist-info/top_level.txt
-/usr/local/lib/python3.13/site-packages/setuptools_scm/.git_archival.txt
+/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.1.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/setuptools_scm-9.2.1.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/setuptools_scm/__init__.py
 /usr/local/lib/python3.13/site-packages/setuptools_scm/__main__.py
 /usr/local/lib/python3.13/site-packages/setuptools_scm/__pycache__/__init__.cpython-313.pyc
@@ -49,12 +48,14 @@
 /usr/local/lib/python3.13/site-packages/setuptools_scm/_get_version_impl.py
 /usr/local/lib/python3.13/site-packages/setuptools_scm/_integration/__init__.py
 /usr/local/lib/python3.13/site-packages/setuptools_scm/_integration/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/setuptools_scm/_integration/__pycache__/deprecation.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools_scm/_integration/__pycache__/dump_version.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools_scm/_integration/__pycache__/pyproject_reading.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools_scm/_integration/__pycache__/setup_cfg.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools_scm/_integration/__pycache__/setuptools.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools_scm/_integration/__pycache__/toml.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/setuptools_scm/_integration/__pycache__/version_inference.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/setuptools_scm/_integration/deprecation.py
 /usr/local/lib/python3.13/site-packages/setuptools_scm/_integration/dump_version.py
 /usr/local/lib/python3.13/site-packages/setuptools_scm/_integration/pyproject_reading.py
 /usr/local/lib/python3.13/site-packages/setuptools_scm/_integration/setup_cfg.py
