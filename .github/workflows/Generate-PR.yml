@@ -28,6 +28,11 @@ on:
       pr_label:
         description: "PR Label"
         required: false
+      max_build_time:
+        description: "Maximum Build Time (hours)"
+        required: false
+        type: number
+        default: 5.5
 env:
   BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
@@ -275,9 +280,15 @@ jobs:
         id: run-updater
         if: ${{ ( inputs.update_package_files ) && ( contains(needs.*.result, 'failure') ||  !cancelled() ) }}
         env:
+          CREW_MAX_BUILD_TIME_INPUT: ${{ inputs.max_build_time }}
           UPDATE_PACKAGE_FILES: ${{ github.event.inputs.update_package_files }}
         run: |
             [[ "$UPDATE_PACKAGE_FILES" == 'false' ]] && exit 0
+            if [[ -n ${CREW_MAX_BUILD_TIME_INPUT} ]]; then
+              # Convert CREW_MAX_BUILD_TIME_INPUT to seconds.
+              CREW_MAX_BUILD_TIME="$(bc <<<"scale=0;$CREW_MAX_BUILD_TIME_INPUT*3600/1")"
+              echo "Maximum build time is $(bc <<<"scale=0;$CREW_MAX_BUILD_TIME_INPUT*60/1") minutes."
+            fi
             [[ -n ${CI} ]] && echo 'CI variable is set.'
             if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
               # Exit the arm container if there are not armv7l compatible packages.
@@ -285,11 +296,11 @@ jobs:
               exit 0
             elif [ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]; then
               # Exit the x86_64 container if there are not x86_64 compatible packages.
-              echo "Skipping x86_64 container builds &/or package file updates"
+              echo "Skipping x86_64 container builds &/or package file updates."
               exit 0
             elif [ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]; then
               # Exit the i686 container if there are not i686 compatible packages.
-              echo "Skipping i686 container builds &/or package file updates"
+              echo "Skipping i686 container builds &/or package file updates."
               exit 0
             fi
 
@@ -301,8 +312,9 @@ jobs:
             # Detection of /output/pkg_cache dir triggers setting
             # CREW_CACHE_DIR=1 and CREW_CACHE_ENABLED=1 in the build
             # container. Without these, upload fails.
-            mkdir pkg_cache
+            mkdir /tmp/pkg_cache
             sudo setfacl -R -m u:1000:rwx .
+            sudo setfacl -R -m u:1000:rwx /tmp/pkg_cache
             # See https://github.com/containerd/containerd/pull/7566#issuecomment-1461134737 for why we set ulimit.
             if [ -z ${CI+x} ]; then
               echo "CI is not set."
@@ -310,6 +322,13 @@ jobs:
               CI_PASSTHROUGH=-e
               CI_PASSTHROUGH+=" "
               CI_PASSTHROUGH+=NESTED_CI=${CI}
+            fi
+            if [ -z ${CREW_MAX_BUILD_TIME+x} ]; then
+              echo "CREW_MAX_BUILD_TIME is not set."
+            else
+              CREW_MAX_BUILD_TIME_PASSTHROUGH=-e
+              CREW_MAX_BUILD_TIME_PASSTHROUGH+=" "
+              CREW_MAX_BUILD_TIME_PASSTHROUGH+=CREW_MAX_BUILD_TIME=${CREW_MAX_BUILD_TIME}
             fi
             docker run \
               --rm \
@@ -324,7 +343,8 @@ jobs:
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               ${CI_PASSTHROUGH} \
-              -v "$(pwd)"/pkg_cache:/usr/local/tmp/packages:rshared \
+              ${CREW_MAX_BUILD_TIME_PASSTHROUGH} \
+              -v /tmp/pkg_cache:/usr/local/tmp/packages:rshared \
               -v "$(pwd)":/output:rshared \
               --tmpfs /tmp \
               --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" \

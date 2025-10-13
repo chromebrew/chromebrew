@@ -305,15 +305,15 @@ jobs:
             [[ -n ${CI} ]] && echo 'CI variable is set.'
             if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
               # Exit the arm container if there are not armv7l compatible packages.
-              echo "Skipping armv7l container builds &/or package file updates"
+              echo "Skipping armv7l container builds &/or package file updates."
               exit 0
             elif [ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]; then
               # Exit the x86_64 container if there are not x86_64 compatible packages.
-              echo "Skipping x86_64 container builds &/or package file updates"
+              echo "Skipping x86_64 container builds &/or package file updates."
               exit 0
             elif [ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]; then
               # Exit the i686 container if there are not i686 compatible packages.
-              echo "Skipping i686 container builds &/or package file updates"
+              echo "Skipping i686 container builds &/or package file updates."
               exit 0
             fi
 
