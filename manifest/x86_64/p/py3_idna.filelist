@@ -1,10 +1,10 @@
-# Total size: 635667
-/usr/local/lib/python3.13/site-packages/idna-3.10.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/idna-3.10.dist-info/LICENSE.md
-/usr/local/lib/python3.13/site-packages/idna-3.10.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/idna-3.10.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/idna-3.10.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/idna-3.10.dist-info/WHEEL
+# Total size: 644136
+/usr/local/lib/python3.13/site-packages/idna-3.11.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/idna-3.11.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/idna-3.11.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/idna-3.11.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/idna-3.11.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/idna-3.11.dist-info/licenses/LICENSE.md
 /usr/local/lib/python3.13/site-packages/idna/__init__.py
 /usr/local/lib/python3.13/site-packages/idna/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/idna/__pycache__/codec.cpython-313.pyc
