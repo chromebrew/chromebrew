@@ -326,8 +326,8 @@ jobs:
             # CREW_CACHE_DIR=1 and CREW_CACHE_ENABLED=1 in the build
             # container. Without these, upload fails.
             mkdir /tmp/pkg_cache
-            ln -s /tmp/pkg_cache pkg_cache
             sudo setfacl -R -m u:1000:rwx .
+            sudo setfacl -R -m u:1000:rwx /tmp/pkg_cache
             # See https://github.com/containerd/containerd/pull/7566#issuecomment-1461134737 for why we set ulimit.
             if [ -z ${CI+x} ]; then
               echo "CI is not set."
