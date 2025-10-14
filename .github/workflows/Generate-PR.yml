@@ -164,7 +164,7 @@ jobs:
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_OUTPUT"
               echo "Branch ${{ inputs.branch || github.ref_name }} has these i686 compatible packages: ${i686_PACKAGES}"
             fi
-      - name: Create Generate Matrix
+      - name: Generate Creation Matrix
         id: set-generate-matrix
         env:
           i686_PACKAGES: ${{ steps.get-compatibility.outputs.i686_PACKAGES }}
