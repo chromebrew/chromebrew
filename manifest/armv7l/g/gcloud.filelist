@@ -1,4 +1,4 @@
-# Total size: 357122031
+# Total size: 357494546
 /usr/local/bin/bq
 /usr/local/bin/dev_appserver.py
 /usr/local/bin/docker-credential-gcloud
@@ -32,6 +32,7 @@
 /usr/local/share/gcloud/README
 /usr/local/share/gcloud/RELEASE_NOTES
 /usr/local/share/gcloud/VERSION
+/usr/local/share/gcloud/bin/bootstrapping/.default_components
 /usr/local/share/gcloud/bin/bootstrapping/__init__.py
 /usr/local/share/gcloud/bin/bootstrapping/__pycache__/bootstrapping.cpython-313.pyc
 /usr/local/share/gcloud/bin/bootstrapping/__pycache__/setup.cpython-313.pyc
@@ -406,6 +407,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/wire_groups/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/interconnects/wire_groups/client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/kms_utils.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/layer4_config_utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/lister.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/managed_instance_groups_utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/compute/metadata_utils.py
@@ -1114,6 +1116,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/scheduler/cmek_config.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/scheduler/jobs.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/scheduler/locations.py
+/usr/local/share/gcloud/lib/googlecloudsdk/api_lib/scheduler/operations.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/secrets/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/secrets/api.py
 /usr/local/share/gcloud/lib/googlecloudsdk/api_lib/securesourcemanager/__init__.py
@@ -1943,6 +1946,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_firewall_policies/secure_tags_utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_policies/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_policies/flags.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_policies/rules_utils.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_profiles/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_profiles/flags.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/compute/network_troubleshooter.py
@@ -3093,8 +3097,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/commands.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/compose/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/compose/builder.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/compose/compose_resource.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/compose/tracker.py
-/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/compose_resource.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/config_changes.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/connection_context.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/container_parser.py
@@ -3171,7 +3175,6 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/deletion.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/flags_parser.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/instance_split.py
-/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/volumes.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/v2/worker_pools_operations.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/volumes.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/runapps/__init__.py
@@ -3295,6 +3298,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/sql.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/spanner/write_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/sql/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/sql/constants.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/sql/export_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/sql/filter_rewrite.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/sql/flags.py
@@ -7723,6 +7727,7 @@
 /usr/local/share/gcloud/lib/surface/backup_dr/data_source_references/__init__.py
 /usr/local/share/gcloud/lib/surface/backup_dr/data_source_references/describe.yaml
 /usr/local/share/gcloud/lib/surface/backup_dr/data_source_references/fetch_for_resource_type.py
+/usr/local/share/gcloud/lib/surface/backup_dr/data_source_references/list.yaml
 /usr/local/share/gcloud/lib/surface/backup_dr/data_sources/__init__.py
 /usr/local/share/gcloud/lib/surface/backup_dr/data_sources/describe.yaml
 /usr/local/share/gcloud/lib/surface/backup_dr/data_sources/list.yaml
@@ -7845,10 +7850,19 @@
 /usr/local/share/gcloud/lib/surface/biglake/__init__.py
 /usr/local/share/gcloud/lib/surface/biglake/iceberg/__init__.py
 /usr/local/share/gcloud/lib/surface/biglake/iceberg/catalogs/__init__.py
+/usr/local/share/gcloud/lib/surface/biglake/iceberg/catalogs/create.py
 /usr/local/share/gcloud/lib/surface/biglake/iceberg/catalogs/delete.py
 /usr/local/share/gcloud/lib/surface/biglake/iceberg/catalogs/describe.py
+/usr/local/share/gcloud/lib/surface/biglake/iceberg/catalogs/get_iam_policy.py
 /usr/local/share/gcloud/lib/surface/biglake/iceberg/catalogs/list.py
+/usr/local/share/gcloud/lib/surface/biglake/iceberg/catalogs/set_iam_policy.py
 /usr/local/share/gcloud/lib/surface/biglake/iceberg/catalogs/update.py
+/usr/local/share/gcloud/lib/surface/biglake/iceberg/namespaces/__init__.py
+/usr/local/share/gcloud/lib/surface/biglake/iceberg/namespaces/get_iam_policy.py
+/usr/local/share/gcloud/lib/surface/biglake/iceberg/namespaces/set_iam_policy.py
+/usr/local/share/gcloud/lib/surface/biglake/iceberg/tables/__init__.py
+/usr/local/share/gcloud/lib/surface/biglake/iceberg/tables/get_iam_policy.py
+/usr/local/share/gcloud/lib/surface/biglake/iceberg/tables/set_iam_policy.py
 /usr/local/share/gcloud/lib/surface/bigtable/__init__.py
 /usr/local/share/gcloud/lib/surface/bigtable/app_profiles/__init__.py
 /usr/local/share/gcloud/lib/surface/bigtable/app_profiles/config/__init__.py
@@ -8972,6 +8986,11 @@
 /usr/local/share/gcloud/lib/surface/compute/network_policies/delete.py
 /usr/local/share/gcloud/lib/surface/compute/network_policies/describe.py
 /usr/local/share/gcloud/lib/surface/compute/network_policies/list.py
+/usr/local/share/gcloud/lib/surface/compute/network_policies/traffic_classification_rules/__init__.py
+/usr/local/share/gcloud/lib/surface/compute/network_policies/traffic_classification_rules/create.py
+/usr/local/share/gcloud/lib/surface/compute/network_policies/traffic_classification_rules/delete.py
+/usr/local/share/gcloud/lib/surface/compute/network_policies/traffic_classification_rules/describe.py
+/usr/local/share/gcloud/lib/surface/compute/network_policies/traffic_classification_rules/update.py
 /usr/local/share/gcloud/lib/surface/compute/network_policies/update.py
 /usr/local/share/gcloud/lib/surface/compute/network_profiles/__init__.py
 /usr/local/share/gcloud/lib/surface/compute/network_profiles/describe.yaml
@@ -10957,6 +10976,7 @@
 /usr/local/share/gcloud/lib/surface/design_center/spaces/describe.yaml
 /usr/local/share/gcloud/lib/surface/design_center/spaces/get_iam_policy.py
 /usr/local/share/gcloud/lib/surface/design_center/spaces/list.yaml
+/usr/local/share/gcloud/lib/surface/design_center/spaces/register_with_apphub.py
 /usr/local/share/gcloud/lib/surface/design_center/spaces/set_iam_policy.py
 /usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/__init__.py
 /usr/local/share/gcloud/lib/surface/design_center/spaces/shared_templates/_init_extensions.py
@@ -11588,6 +11608,7 @@
 /usr/local/share/gcloud/lib/surface/firestore/databases/delete.py
 /usr/local/share/gcloud/lib/surface/firestore/databases/describe.py
 /usr/local/share/gcloud/lib/surface/firestore/databases/list.py
+/usr/local/share/gcloud/lib/surface/firestore/databases/ping.py
 /usr/local/share/gcloud/lib/surface/firestore/databases/restore.py
 /usr/local/share/gcloud/lib/surface/firestore/databases/update.yaml
 /usr/local/share/gcloud/lib/surface/firestore/export.py
@@ -13907,7 +13928,6 @@
 /usr/local/share/gcloud/lib/surface/oracle_database/cloud_vm_clusters/list.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/database_character_sets/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/database_character_sets/_init_extensions.py
-/usr/local/share/gcloud/lib/surface/oracle_database/database_character_sets/_partials/_describe_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/database_character_sets/_partials/_list_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/database_character_sets/_partials/_list_ga.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/database_character_sets/describe.yaml
@@ -13922,7 +13942,6 @@
 /usr/local/share/gcloud/lib/surface/oracle_database/databases/list.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_system_initial_storage_sizes/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/db_system_initial_storage_sizes/_init_extensions.py
-/usr/local/share/gcloud/lib/surface/oracle_database/db_system_initial_storage_sizes/_partials/_describe_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_system_initial_storage_sizes/_partials/_list_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_system_initial_storage_sizes/_partials/_list_ga.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_system_initial_storage_sizes/describe.yaml
@@ -13934,9 +13953,13 @@
 /usr/local/share/gcloud/lib/surface/oracle_database/db_system_shapes/list.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_systems/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/db_systems/_init_extensions.py
+/usr/local/share/gcloud/lib/surface/oracle_database/db_systems/_partials/_create_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_systems/_partials/_create_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/db_systems/_partials/_delete_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_systems/_partials/_delete_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/db_systems/_partials/_describe_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_systems/_partials/_describe_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/db_systems/_partials/_list_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_systems/_partials/_list_ga.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_systems/create.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_systems/delete.yaml
@@ -13944,6 +13967,7 @@
 /usr/local/share/gcloud/lib/surface/oracle_database/db_systems/list.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_versions/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/db_versions/_init_extensions.py
+/usr/local/share/gcloud/lib/surface/oracle_database/db_versions/_partials/_list_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_versions/_partials/_list_ga.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/db_versions/list.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/entitlements/__init__.py
@@ -13955,9 +13979,13 @@
 /usr/local/share/gcloud/lib/surface/oracle_database/entitlements/list.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_init_extensions.py
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_create_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_create_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_delete_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_delete_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_describe_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_describe_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_list_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_list_ga.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_remove_virtual_machine_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/_partials/_remove_virtual_machine_ga.yaml
@@ -13971,9 +13999,13 @@
 /usr/local/share/gcloud/lib/surface/oracle_database/exadb_vm_clusters/update.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_init_extensions.py
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_partials/_create_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_partials/_create_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_partials/_delete_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_partials/_delete_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_partials/_describe_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_partials/_describe_ga.yaml
+/usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_partials/_list_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/_partials/_list_ga.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/create.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/exascale_db_storage_vaults/delete.yaml
@@ -13986,6 +14018,7 @@
 /usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/list.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/minor_versions/__init__.py
 /usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/minor_versions/_init_extensions.py
+/usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/minor_versions/_partials/_list_alpha.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/minor_versions/_partials/_list_ga.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/gi_versions/minor_versions/list.yaml
 /usr/local/share/gcloud/lib/surface/oracle_database/odb_networks/__init__.py
@@ -14652,6 +14685,7 @@
 /usr/local/share/gcloud/lib/surface/run/multi_region_services/list.py
 /usr/local/share/gcloud/lib/surface/run/multi_region_services/replace.py
 /usr/local/share/gcloud/lib/surface/run/multi_region_services/update.py
+/usr/local/share/gcloud/lib/surface/run/multi_region_services/update_traffic.py
 /usr/local/share/gcloud/lib/surface/run/presets/__init__.py
 /usr/local/share/gcloud/lib/surface/run/presets/describe.py
 /usr/local/share/gcloud/lib/surface/run/presets/list.py
@@ -14955,6 +14989,8 @@
 /usr/local/share/gcloud/lib/surface/scheduler/locations/__init__.py
 /usr/local/share/gcloud/lib/surface/scheduler/locations/describe.py
 /usr/local/share/gcloud/lib/surface/scheduler/locations/list.py
+/usr/local/share/gcloud/lib/surface/scheduler/operations/__init__.py
+/usr/local/share/gcloud/lib/surface/scheduler/operations/describe.py
 /usr/local/share/gcloud/lib/surface/seclm/__init__.py
 /usr/local/share/gcloud/lib/surface/seclm/_init_extensions.py
 /usr/local/share/gcloud/lib/surface/seclm/operations/__init__.py
@@ -21653,6 +21689,7 @@
 /usr/local/share/gcloud/platform/ext-runtime/java/requirements.txt
 /usr/local/share/gcloud/platform/ext-runtime/java/runtime.yaml
 /usr/local/share/gcloud/platform/ext-runtime/java/test/runtime_test.py
+/usr/local/share/gcloud/platform/ext-runtime/nodejs/.gitignore
 /usr/local/share/gcloud/platform/ext-runtime/nodejs/CONTRIBUTING.md
 /usr/local/share/gcloud/platform/ext-runtime/nodejs/LICENSE
 /usr/local/share/gcloud/platform/ext-runtime/nodejs/README.md
@@ -21967,6 +22004,8 @@
 /usr/local/share/gcloud/platform/gsutil/gslib/utils/version_check.py
 /usr/local/share/gcloud/platform/gsutil/gslib/utils/wrapped_credentials.py
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/__init__.py
+/usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/.gitignore
+/usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/.travis.yml
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/CONTRIBUTING
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/LICENSE
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/MANIFEST.in
@@ -22525,6 +22564,7 @@
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/tests/integration/swf/test_cert_verification.py
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/tests/integration/swf/test_layer1.py
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/tests/integration/swf/test_layer1_workflow_execution.py
+/usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/tests/mturk/.gitignore
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/tests/mturk/__init__.py
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/tests/mturk/_init_environment.py
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/tests/mturk/all_tests.py
@@ -22712,8 +22752,11 @@
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/tests/unit/vpc/test_vpnconnection.py
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/tests/unit/vpc/test_vpngateway.py
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/boto/tox.ini
+/usr/local/share/gcloud/platform/gsutil/gslib/vendored/oauth2client/.coveragerc
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/oauth2client/.github/ISSUE_TEMPLATE.md
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/oauth2client/.github/PULL_REQUEST_TEMPLATE.md
+/usr/local/share/gcloud/platform/gsutil/gslib/vendored/oauth2client/.gitignore
+/usr/local/share/gcloud/platform/gsutil/gslib/vendored/oauth2client/.travis.yml
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/oauth2client/CHANGELOG.md
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/oauth2client/CODE_OF_CONDUCT.md
 /usr/local/share/gcloud/platform/gsutil/gslib/vendored/oauth2client/CONTRIBUTING.md
@@ -22805,6 +22848,9 @@
 /usr/local/share/gcloud/platform/gsutil/gsutil
 /usr/local/share/gcloud/platform/gsutil/gsutil.py
 /usr/local/share/gcloud/platform/gsutil/setup.py
+/usr/local/share/gcloud/platform/gsutil/third_party/apitools/.coveragerc
+/usr/local/share/gcloud/platform/gsutil/third_party/apitools/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/apitools/.travis.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/apitools/LICENSE
 /usr/local/share/gcloud/platform/gsutil/third_party/apitools/MANIFEST.in
 /usr/local/share/gcloud/platform/gsutil/third_party/apitools/README.rst
@@ -22918,6 +22964,7 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/argcomplete/.github/FUNDING.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/argcomplete/.github/workflows/ci.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/argcomplete/.github/workflows/release.yml
+/usr/local/share/gcloud/platform/gsutil/third_party/argcomplete/.gitignore
 /usr/local/share/gcloud/platform/gsutil/third_party/argcomplete/Authors.rst
 /usr/local/share/gcloud/platform/gsutil/third_party/argcomplete/Changes.rst
 /usr/local/share/gcloud/platform/gsutil/third_party/argcomplete/LICENSE.rst
@@ -22971,6 +23018,8 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/cachetools/.github/SECURITY.md
 /usr/local/share/gcloud/platform/gsutil/third_party/cachetools/.github/dependabot.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/cachetools/.github/workflows/ci.yml
+/usr/local/share/gcloud/platform/gsutil/third_party/cachetools/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/cachetools/.readthedocs.yaml
 /usr/local/share/gcloud/platform/gsutil/third_party/cachetools/CHANGELOG.rst
 /usr/local/share/gcloud/platform/gsutil/third_party/cachetools/LICENSE
 /usr/local/share/gcloud/platform/gsutil/third_party/cachetools/MANIFEST.in
@@ -23002,6 +23051,7 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/certifi/.github/workflows/ci.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/certifi/.github/workflows/lock.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/certifi/.github/workflows/release.yml
+/usr/local/share/gcloud/platform/gsutil/third_party/certifi/.gitignore
 /usr/local/share/gcloud/platform/gsutil/third_party/certifi/LICENSE
 /usr/local/share/gcloud/platform/gsutil/third_party/certifi/MANIFEST.in
 /usr/local/share/gcloud/platform/gsutil/third_party/certifi/Makefile
@@ -23017,7 +23067,12 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/certifi/pyproject.toml
 /usr/local/share/gcloud/platform/gsutil/third_party/certifi/setup.py
 /usr/local/share/gcloud/platform/gsutil/third_party/certifi/strip-non-ascii
+/usr/local/share/gcloud/platform/gsutil/third_party/chardet/.git-blame-ignore-revs
+/usr/local/share/gcloud/platform/gsutil/third_party/chardet/.gitattributes
 /usr/local/share/gcloud/platform/gsutil/third_party/chardet/.github/workflows/test.yml
+/usr/local/share/gcloud/platform/gsutil/third_party/chardet/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/chardet/.pre-commit-config.yaml
+/usr/local/share/gcloud/platform/gsutil/third_party/chardet/.prospector.yaml
 /usr/local/share/gcloud/platform/gsutil/third_party/chardet/LICENSE
 /usr/local/share/gcloud/platform/gsutil/third_party/chardet/MANIFEST.in
 /usr/local/share/gcloud/platform/gsutil/third_party/chardet/NOTES.rst
@@ -23074,6 +23129,7 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/chardet/chardet/utf8prober.py
 /usr/local/share/gcloud/platform/gsutil/third_party/chardet/chardet/version.py
 /usr/local/share/gcloud/platform/gsutil/third_party/chardet/convert_language_model.py
+/usr/local/share/gcloud/platform/gsutil/third_party/chardet/docs/.gitignore
 /usr/local/share/gcloud/platform/gsutil/third_party/chardet/docs/Makefile
 /usr/local/share/gcloud/platform/gsutil/third_party/chardet/docs/README.md
 /usr/local/share/gcloud/platform/gsutil/third_party/chardet/docs/api/chardet.rst
@@ -23514,6 +23570,8 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/chardet/tests/windows-1255-hebrew/sharks.co.il.xml
 /usr/local/share/gcloud/platform/gsutil/third_party/chardet/tests/windows-1255-hebrew/whatsup.org.il.xml
 /usr/local/share/gcloud/platform/gsutil/third_party/chardet/tests/windows-1256-arabic/_chromium_windows-1256_with_no_encoding_specified.html
+/usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/.codecov.yml
+/usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/.coveragerc
 /usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/.github/FUNDING.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/.github/ISSUE_TEMPLATE/bug_report.md
 /usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/.github/ISSUE_TEMPLATE/feature_request.md
@@ -23523,6 +23581,8 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/.github/workflows/ci.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/.github/workflows/codeql.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/.github/workflows/scorecards.yml
+/usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/.readthedocs.yaml
 /usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/CHANGELOG.md
 /usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/CODE_OF_CONDUCT.md
 /usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/CONTRIBUTING.md
@@ -23603,6 +23663,9 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/tests/test_mess_detection.py
 /usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/tests/test_preemptive_detection.py
 /usr/local/share/gcloud/platform/gsutil/third_party/charset_normalizer/tests/test_utils.py
+/usr/local/share/gcloud/platform/gsutil/third_party/crcmod/.hgeol
+/usr/local/share/gcloud/platform/gsutil/third_party/crcmod/.hgignore
+/usr/local/share/gcloud/platform/gsutil/third_party/crcmod/.hgtags
 /usr/local/share/gcloud/platform/gsutil/third_party/crcmod/LICENSE
 /usr/local/share/gcloud/platform/gsutil/third_party/crcmod/MANIFEST.in
 /usr/local/share/gcloud/platform/gsutil/third_party/crcmod/README
@@ -23638,6 +23701,7 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/crcmod_osx/crcmod/crcmod.py
 /usr/local/share/gcloud/platform/gsutil/third_party/crcmod_osx/crcmod/predefined.py
 /usr/local/share/gcloud/platform/gsutil/third_party/crcmod_osx/crcmod/test.py
+/usr/local/share/gcloud/platform/gsutil/third_party/fasteners/.travis.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/fasteners/ChangeLog
 /usr/local/share/gcloud/platform/gsutil/third_party/fasteners/LICENSE
 /usr/local/share/gcloud/platform/gsutil/third_party/fasteners/MANIFEST.in
@@ -23662,6 +23726,9 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/fasteners/setup.py
 /usr/local/share/gcloud/platform/gsutil/third_party/fasteners/test-requirements.txt
 /usr/local/share/gcloud/platform/gsutil/third_party/fasteners/tox.ini
+/usr/local/share/gcloud/platform/gsutil/third_party/funcsigs/.coveragerc
+/usr/local/share/gcloud/platform/gsutil/third_party/funcsigs/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/funcsigs/.travis.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/funcsigs/CHANGELOG
 /usr/local/share/gcloud/platform/gsutil/third_party/funcsigs/LICENSE
 /usr/local/share/gcloud/platform/gsutil/third_party/funcsigs/MANIFEST.in
@@ -23681,6 +23748,7 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/funcsigs/tests/test_funcsigs.py
 /usr/local/share/gcloud/platform/gsutil/third_party/funcsigs/tests/test_inspect.py
 /usr/local/share/gcloud/platform/gsutil/third_party/funcsigs/tox.ini
+/usr/local/share/gcloud/platform/gsutil/third_party/gcs-oauth2-boto-plugin/.gitignore
 /usr/local/share/gcloud/platform/gsutil/third_party/gcs-oauth2-boto-plugin/CONTRIBUTING.md
 /usr/local/share/gcloud/platform/gsutil/third_party/gcs-oauth2-boto-plugin/LICENSE
 /usr/local/share/gcloud/platform/gsutil/third_party/gcs-oauth2-boto-plugin/MANIFEST.in
@@ -23694,6 +23762,10 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/gcs-oauth2-boto-plugin/setup.cfg
 /usr/local/share/gcloud/platform/gsutil/third_party/gcs-oauth2-boto-plugin/setup.py
 /usr/local/share/gcloud/platform/gsutil/third_party/gcs-oauth2-boto-plugin/test-requirements.txt
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/.coveragerc
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/.flake8
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/.github/.OwlBot.lock.yaml
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/.github/.OwlBot.yaml
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/.github/CODEOWNERS
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/.github/CONTRIBUTING.md
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/.github/ISSUE_TEMPLATE/bug_report.md
@@ -23708,6 +23780,8 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/.github/release-trigger.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/.github/snippet-bot.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/.github/sync-repo-settings.yaml
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/.repo-metadata.json
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/CHANGELOG.md
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/CODE_OF_CONDUCT.md
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/LICENSE
@@ -23739,6 +23813,10 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/tests/compliance.py
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/tests/test_google_auth_httplib2.py
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python-httplib2/tox.ini
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.coveragerc
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.flake8
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.github/.OwlBot.lock.yaml
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.github/.OwlBot.yaml
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.github/CODEOWNERS
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.github/CONTRIBUTING.md
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.github/ISSUE_TEMPLATE/bug_report.md
@@ -23747,6 +23825,10 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.github/release-please.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.github/release-trigger.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.github/sync-repo-settings.yaml
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.readthedocs.yaml
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.repo-metadata.json
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/.trampolinerc
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/CHANGELOG.md
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/CODE_OF_CONDUCT.md
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/CONTRIBUTING.rst
@@ -23898,6 +23980,7 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/system_tests/system_tests_async/test_default.py
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/system_tests/system_tests_async/test_id_token.py
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/system_tests/system_tests_async/test_service_account.py
+/usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/system_tests/system_tests_sync/.gitignore
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/system_tests/system_tests_sync/__init__.py
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/system_tests/system_tests_sync/conftest.py
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/system_tests/system_tests_sync/secrets.tar.enc
@@ -24026,6 +24109,9 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/tests_async/transport/__init__.py
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/tests_async/transport/async_compliance.py
 /usr/local/share/gcloud/platform/gsutil/third_party/google-auth-library-python/tests_async/transport/test_aiohttp_requests.py
+/usr/local/share/gcloud/platform/gsutil/third_party/google-reauth-python/.coveragerc
+/usr/local/share/gcloud/platform/gsutil/third_party/google-reauth-python/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/google-reauth-python/.travis.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/google-reauth-python/CHANGELOG.rst
 /usr/local/share/gcloud/platform/gsutil/third_party/google-reauth-python/CONTRIBUTING.rst
 /usr/local/share/gcloud/platform/gsutil/third_party/google-reauth-python/LICENSE
@@ -24049,6 +24135,7 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/httplib2/.github/workflows/publish.yaml
 /usr/local/share/gcloud/platform/gsutil/third_party/httplib2/.github/workflows/style.yaml
 /usr/local/share/gcloud/platform/gsutil/third_party/httplib2/.github/workflows/test.yaml
+/usr/local/share/gcloud/platform/gsutil/third_party/httplib2/.gitignore
 /usr/local/share/gcloud/platform/gsutil/third_party/httplib2/CHANGELOG
 /usr/local/share/gcloud/platform/gsutil/third_party/httplib2/LICENSE
 /usr/local/share/gcloud/platform/gsutil/third_party/httplib2/MANIFEST.in
@@ -24109,6 +24196,7 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/idna/.github/workflows/deploy.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/idna/.github/workflows/python-package.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/idna/.github/workflows/scorecard.yml
+/usr/local/share/gcloud/platform/gsutil/third_party/idna/.gitignore
 /usr/local/share/gcloud/platform/gsutil/third_party/idna/HISTORY.rst
 /usr/local/share/gcloud/platform/gsutil/third_party/idna/LICENSE.md
 /usr/local/share/gcloud/platform/gsutil/third_party/idna/README.rst
@@ -24132,6 +24220,9 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/idna/tests/test_idna_uts46.py
 /usr/local/share/gcloud/platform/gsutil/third_party/idna/tests/test_intranges.py
 /usr/local/share/gcloud/platform/gsutil/third_party/idna/tools/idna-data
+/usr/local/share/gcloud/platform/gsutil/third_party/mock/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/mock/.testr.conf
+/usr/local/share/gcloud/platform/gsutil/third_party/mock/.travis.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/mock/ChangeLog
 /usr/local/share/gcloud/platform/gsutil/third_party/mock/LICENSE.txt
 /usr/local/share/gcloud/platform/gsutil/third_party/mock/NEWS
@@ -24160,6 +24251,7 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/mock/tools/pre-applypatch
 /usr/local/share/gcloud/platform/gsutil/third_party/mock/tox.ini
 /usr/local/share/gcloud/platform/gsutil/third_party/mock/unittest.cfg
+/usr/local/share/gcloud/platform/gsutil/third_party/monotonic/.gitignore
 /usr/local/share/gcloud/platform/gsutil/third_party/monotonic/LICENSE
 /usr/local/share/gcloud/platform/gsutil/third_party/monotonic/MANIFEST.in
 /usr/local/share/gcloud/platform/gsutil/third_party/monotonic/README.md
@@ -24227,9 +24319,12 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/pyasn1-modules/tools/snmpget.py
 /usr/local/share/gcloud/platform/gsutil/third_party/pyasn1-modules/tools/x509dump-rfc5280.py
 /usr/local/share/gcloud/platform/gsutil/third_party/pyasn1-modules/tools/x509dump.py
+/usr/local/share/gcloud/platform/gsutil/third_party/pyasn1/.bandit.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/pyasn1/.github/FUNDING.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/pyasn1/.github/workflows/main.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/pyasn1/.github/workflows/pypi.yml
+/usr/local/share/gcloud/platform/gsutil/third_party/pyasn1/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/pyasn1/.readthedocs.yaml
 /usr/local/share/gcloud/platform/gsutil/third_party/pyasn1/CHANGES.rst
 /usr/local/share/gcloud/platform/gsutil/third_party/pyasn1/LICENSE.rst
 /usr/local/share/gcloud/platform/gsutil/third_party/pyasn1/MANIFEST.in
@@ -24387,9 +24482,12 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/pyasn1/tests/type/test_univ.py
 /usr/local/share/gcloud/platform/gsutil/third_party/pyasn1/tests/type/test_useful.py
 /usr/local/share/gcloud/platform/gsutil/third_party/pyasn1/tox.ini
+/usr/local/share/gcloud/platform/gsutil/third_party/pyparsing/.coveragerc
 /usr/local/share/gcloud/platform/gsutil/third_party/pyparsing/.github/FUNDING.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/pyparsing/.github/SECURITY.md
 /usr/local/share/gcloud/platform/gsutil/third_party/pyparsing/.github/workflows/ci.yml
+/usr/local/share/gcloud/platform/gsutil/third_party/pyparsing/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/pyparsing/.pre-commit-config.yaml
 /usr/local/share/gcloud/platform/gsutil/third_party/pyparsing/BUILDING.md
 /usr/local/share/gcloud/platform/gsutil/third_party/pyparsing/CHANGES
 /usr/local/share/gcloud/platform/gsutil/third_party/pyparsing/CODE_OF_CONDUCT.rst
@@ -24589,6 +24687,8 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/pyparsing/tests/test_util.py
 /usr/local/share/gcloud/platform/gsutil/third_party/pyparsing/tox.ini
 /usr/local/share/gcloud/platform/gsutil/third_party/pyparsing/update_pyparsing_timestamp.py
+/usr/local/share/gcloud/platform/gsutil/third_party/pyu2f/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/pyu2f/.travis.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/pyu2f/CONTRIBUTING.md
 /usr/local/share/gcloud/platform/gsutil/third_party/pyu2f/LICENSE
 /usr/local/share/gcloud/platform/gsutil/third_party/pyu2f/MANIFEST.in
@@ -24627,6 +24727,8 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/pyu2f/setup.cfg
 /usr/local/share/gcloud/platform/gsutil/third_party/pyu2f/setup.py
 /usr/local/share/gcloud/platform/gsutil/third_party/pyu2f/tox.ini
+/usr/local/share/gcloud/platform/gsutil/third_party/requests/.coveragerc
+/usr/local/share/gcloud/platform/gsutil/third_party/requests/.git-blame-ignore-revs
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/.github/CODE_OF_CONDUCT.md
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/.github/CONTRIBUTING.md
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/.github/FUNDING.yml
@@ -24641,6 +24743,9 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/.github/workflows/lint.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/.github/workflows/lock-issues.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/.github/workflows/run-tests.yml
+/usr/local/share/gcloud/platform/gsutil/third_party/requests/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/requests/.pre-commit-config.yaml
+/usr/local/share/gcloud/platform/gsutil/third_party/requests/.readthedocs.yaml
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/AUTHORS.rst
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/HISTORY.md
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/LICENSE
@@ -24648,12 +24753,14 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/Makefile
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/NOTICE
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/README.md
+/usr/local/share/gcloud/platform/gsutil/third_party/requests/docs/.nojekyll
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/docs/Makefile
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/docs/_static/custom.css
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/docs/_static/requests-sidebar.png
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/docs/_templates/hacks.html
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/docs/_templates/sidebarintro.html
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/docs/_templates/sidebarlogo.html
+/usr/local/share/gcloud/platform/gsutil/third_party/requests/docs/_themes/.gitignore
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/docs/_themes/LICENSE
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/docs/_themes/flask_theme_support.py
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/docs/api.rst
@@ -24761,6 +24868,7 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/tests/testserver/server.py
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/tests/utils.py
 /usr/local/share/gcloud/platform/gsutil/third_party/requests/tox.ini
+/usr/local/share/gcloud/platform/gsutil/third_party/retry-decorator/.gitignore
 /usr/local/share/gcloud/platform/gsutil/third_party/retry-decorator/CHANGES.txt
 /usr/local/share/gcloud/platform/gsutil/third_party/retry-decorator/LICENSE.txt
 /usr/local/share/gcloud/platform/gsutil/third_party/retry-decorator/MANIFEST.in
@@ -24769,6 +24877,10 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/retry-decorator/retry_decorator/__init__.py
 /usr/local/share/gcloud/platform/gsutil/third_party/retry-decorator/retry_decorator/retry_decorator.py
 /usr/local/share/gcloud/platform/gsutil/third_party/retry-decorator/setup.py
+/usr/local/share/gcloud/platform/gsutil/third_party/rsa/.codeclimate.yml
+/usr/local/share/gcloud/platform/gsutil/third_party/rsa/.coveragerc
+/usr/local/share/gcloud/platform/gsutil/third_party/rsa/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/rsa/.travis.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/rsa/CHANGELOG.txt
 /usr/local/share/gcloud/platform/gsutil/third_party/rsa/LICENSE
 /usr/local/share/gcloud/platform/gsutil/third_party/rsa/MANIFEST.in
@@ -24777,6 +24889,9 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/rsa/README.md
 /usr/local/share/gcloud/platform/gsutil/third_party/rsa/create_timing_table.py
 /usr/local/share/gcloud/platform/gsutil/third_party/rsa/doc/Makefile
+/usr/local/share/gcloud/platform/gsutil/third_party/rsa/doc/_build/.keep
+/usr/local/share/gcloud/platform/gsutil/third_party/rsa/doc/_static/.keep
+/usr/local/share/gcloud/platform/gsutil/third_party/rsa/doc/_templates/.keep
 /usr/local/share/gcloud/platform/gsutil/third_party/rsa/doc/cli.rst
 /usr/local/share/gcloud/platform/gsutil/third_party/rsa/doc/compatibility.rst
 /usr/local/share/gcloud/platform/gsutil/third_party/rsa/doc/conf.py
@@ -24810,6 +24925,7 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/rsa/tox.ini
 /usr/local/share/gcloud/platform/gsutil/third_party/six/.github/workflows/ci.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/six/.github/workflows/publish.yml
+/usr/local/share/gcloud/platform/gsutil/third_party/six/.gitignore
 /usr/local/share/gcloud/platform/gsutil/third_party/six/CHANGES
 /usr/local/share/gcloud/platform/gsutil/third_party/six/CONTRIBUTORS
 /usr/local/share/gcloud/platform/gsutil/third_party/six/LICENSE
@@ -24823,6 +24939,8 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/six/six.py
 /usr/local/share/gcloud/platform/gsutil/third_party/six/test_six.py
 /usr/local/share/gcloud/platform/gsutil/third_party/six/tox.ini
+/usr/local/share/gcloud/platform/gsutil/third_party/urllib3/.coveragerc
+/usr/local/share/gcloud/platform/gsutil/third_party/urllib3/.eslintrc.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/urllib3/.github/CODEOWNERS
 /usr/local/share/gcloud/platform/gsutil/third_party/urllib3/.github/FUNDING.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/urllib3/.github/ISSUE_TEMPLATE/01_feature_request.md
@@ -24840,10 +24958,14 @@
 /usr/local/share/gcloud/platform/gsutil/third_party/urllib3/.github/workflows/lint.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/urllib3/.github/workflows/publish.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/urllib3/.github/workflows/scorecards.yml
+/usr/local/share/gcloud/platform/gsutil/third_party/urllib3/.gitignore
+/usr/local/share/gcloud/platform/gsutil/third_party/urllib3/.pre-commit-config.yaml
+/usr/local/share/gcloud/platform/gsutil/third_party/urllib3/.readthedocs.yml
 /usr/local/share/gcloud/platform/gsutil/third_party/urllib3/CHANGES.rst
 /usr/local/share/gcloud/platform/gsutil/third_party/urllib3/CODE_OF_CONDUCT.md
 /usr/local/share/gcloud/platform/gsutil/third_party/urllib3/LICENSE.txt
 /usr/local/share/gcloud/platform/gsutil/third_party/urllib3/README.md
+/usr/local/share/gcloud/platform/gsutil/third_party/urllib3/changelog/.gitignore
 /usr/local/share/gcloud/platform/gsutil/third_party/urllib3/changelog/README.rst
 /usr/local/share/gcloud/platform/gsutil/third_party/urllib3/ci/deploy.sh
 /usr/local/share/gcloud/platform/gsutil/third_party/urllib3/dev-requirements.txt
