@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 3.4 (for Chromebrew)
+# build_updated_packages version 3.5 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -160,7 +160,19 @@ updated_packages.each do |pkg|
       puts "#{name.capitalize} #{@pkg_obj.version} needs builds uploaded for: #{builds_needed.join(' ')}".lightblue
 
       if builds_needed.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{@pkg_obj.version}-chromeos-#{ARCH}.#{@pkg_obj.binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@pkg_obj.version}")
-        system "yes | nice -n 20 crew build -f #{pkg}"
+        # GitHub actions are killed after 6 hours, so  eed to force
+        # creation of build artifacts for long-running builds.
+        if ENV['NESTED_CI']
+          # Sleep for CREW_MAX_BUILD_TIME seconds, then send SIGINT to
+          # @pkg.build, which should trigger a build artifact upload.
+          puts "It is #{Time.now}."
+          puts "Will kill the build of #{name.capitalize} after #{Float(format('%.2g', CREW_MAX_BUILD_TIME.to_f / 3600))} hours at #{Time.at(Time.now.to_i + CREW_MAX_BUILD_TIME.to_i)}."
+          actions_timed_killer = fork do
+            exec "sleep #{CREW_MAX_BUILD_TIME}; killall -s INT crew; sleep 300; killall ruby"
+          end
+          Process.detach(actions_timed_killer)
+        end
+        system "yes | #{'CREW_CACHE_BUILD=1' if ENV['NESTED_CI']} nice -n 20 crew build -f #{pkg}"
         build[name.to_sym] = $CHILD_STATUS.success?
         unless build[name.to_sym]
           if CONTINUE_AFTER_FAILED_BUILDS
@@ -170,6 +182,7 @@ updated_packages.each do |pkg|
             abort "#{pkg} build failed!".lightred
           end
         end
+        Process.kill('HUP', actions_timed_killer) if ENV['NESTED_CI']
         # Reinvoke this script to take just built packages that have been built and
         # installed into account, attempting uploads of just built packages immediately.
         cmdline = "cd #{`pwd`.chomp} && crew upload #{name} ; #{$PROGRAM_NAME} #{ARGV.join(' ')}"

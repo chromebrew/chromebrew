@@ -26,35 +26,77 @@ def agree_with_default(yes_or_no_question_msg, character = nil, default:)
 end
 
 class Package
-  boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep,
-                   :git_fetchtags, :gem_compile_needed, :gnome,
-                   :ignore_updater, :is_fake, :is_musl, :is_static,
-                   :no_binaries_needed, :no_compile_needed,
-                   :no_compress, :no_env_options, :no_fhs, :no_filefix,
-                   :no_git_submodules, :no_links, :no_lto, :no_mold,
-                   :no_patchelf, :no_shrink, :no_source_build,
-                   :no_strip, :no_upstream_update, :no_zstd, :patchelf,
-                   :prerelease, :print_source_bashrc, :run_tests
+  boolean_property :arch_flags_override,
+                   :cache_build, # Cache build to gitlab.
+                   :conflicts_ok,
+                   :git_clone_deep,
+                   :git_fetchtags,
+                   :gem_compile_needed,
+                   :gnome,
+                   :ignore_updater,
+                   :is_fake,
+                   :is_musl,
+                   :is_static,
+                   :no_binaries_needed,
+                   :no_compile_needed,
+                   :no_compress,
+                   :no_env_options,
+                   :no_fhs,
+                   :no_filefix,
+                   :no_git_submodules,
+                   :no_links,
+                   :no_lto,
+                   :no_mold,
+                   :no_patchelf,
+                   :no_shrink,
+                   :no_source_build,
+                   :no_strip,
+                   :no_upstream_update,
+                   :no_zstd,
+                   :patchelf,
+                   :prerelease,
+                   :print_source_bashrc,
+                   :run_tests
 
-  property :description, :homepage, :version, :license, :compatibility,
-           :binary_compression, :binary_url, :binary_sha256, :source_url, :source_sha256,
-           :git_branch, :git_hashtag, :max_glibc, :min_glibc
+  property :description,
+           :homepage,
+           :version,
+           :license,
+           :compatibility,
+           :binary_compression,
+           :binary_url,
+           :binary_sha256,
+           :source_url,
+           :source_sha256,
+           :git_branch,
+           :git_hashtag,
+           :max_glibc,
+           :min_glibc
 
-  create_placeholder :preflight,   # Function for checks to see if install should occur.
-                     :patch,       # Function to perform patch operations prior to build from source.
-                     :prebuild,    # Function to perform pre-build operations prior to build from source.
-                     :build,       # Function to perform build from source.
-                     :postbuild,   # Function to perform post-build for both source build and binary distribution.
-                     :check,       # Function to perform check from source build. (executes only during `crew build`)
-                     :preinstall,  # Function to perform pre-install operations prior to install.
-                     :install,     # Function to perform install from source build.
-                     :postinstall, # Function to perform post-install for both source build and binary distribution.
-                     :preremove,   # Function to perform prior to package removal.
-                     :remove,      # Function to remove package.
-                     :postremove   # Function to perform after package removal.
+  create_placeholder :preflight,       # Function for checks to see if install should occur.
+                     :patch,           # Function to perform patch operations prior to build from source.
+                     :pre_cache_build, # Function to perform pre-build operations prior to starting & restarting a cached build.
+                     :prebuild,        # Function to perform pre-build operations prior to build from source.
+                     :prebuild_config_and_report, # Function to add some reporting for buildsystems.
+                     :build,           # Function to perform build from source.
+                     :postbuild,       # Function to perform post-build for both source build and binary distribution.
+                     :check,           # Function to perform check from source build. (executes only during `crew build`)
+                     :preinstall,      # Function to perform pre-install operations prior to install.
+                     :install,         # Function to perform install from source build.
+                     :postinstall,     # Function to perform post-install for both source build and binary distribution.
+                     :preremove,       # Function to perform prior to package removal.
+                     :remove,          # Function to remove package.
+                     :postremove       # Function to perform after package removal.
 
   class << self
-    attr_accessor :build_from_source, :built, :cached_build, :in_build, :in_install, :in_upgrade, :missing_binaries, :name
+    attr_accessor :build_from_source,
+                  :built,
+                  :cached_build,
+                  :in_build,
+                  :in_install,
+                  :in_upgrade,
+                  :missing_binaries,
+                  :name
   end
 
   def self.agree_default_no(message = nil)

@@ -89,16 +89,27 @@ end
 
 # Use sane minimal defaults if in container and no override specified.
 CREW_KERNEL_VERSION ||=
-  if CREW_IN_CONTAINER && ENV.fetch('CREW_KERNEL_VERSION', nil).nil?
+  if (CREW_IN_CONTAINER && ENV.fetch('CREW_KERNEL_VERSION', nil).nil?) || ENV['CI']
     ARCH.eql?('i686') ? '3.8' : '6.12'
   else
     ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
   end
 
 # Local constants for contributors.
+CREW_CACHE_DIR          ||= ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache") unless defined?(CREW_CACHE_DIR)
+CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless defined?(CREW_CACHE_FAILED_BUILD)
+CREW_CACHE_BUILD        ||= ENV.fetch('CREW_CACHE_BUILD', false) unless defined?(CREW_CACHE_BUILD)
 CREW_LOCAL_REPO_ROOT ||= `git rev-parse --show-toplevel 2>/dev/null`.chomp
 CREW_LOCAL_BUILD_DIR ||= "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
+CREW_MAX_BUILD_TIME  ||= ENV.fetch('CREW_MAX_BUILD_TIME', '19800') unless defined?(CREW_MAX_BUILD_TIME) # GitHub Action containers are killed after 6 hours, so set to 5.5 hours.
 CREW_GITLAB_PKG_REPO ||= 'https://gitlab.com/api/v4/projects/26210301/packages'
+GITLAB_TOKEN ||= ENV.fetch('GITLAB_TOKEN', nil) unless defined?(GITLAB_TOKEN)
+GITLAB_TOKEN_USERNAME ||= ENV.fetch('GITLAB_TOKEN_USERNAME', nil) unless defined?(GITLAB_TOKEN_USERNAME)
+CREW_GITLAB_TOKEN_LABEL ||= if GITLAB_TOKEN.nil?
+                              ''
+                            else
+                              (GITLAB_TOKEN.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN')
+                            end
 
 CREW_LIB_PREFIX       ||= File.join(CREW_PREFIX, ARCH_LIB)
 CREW_MAN_PREFIX       ||= File.join(CREW_PREFIX, 'share/man')
@@ -123,9 +134,6 @@ CREW_DEST_MUSL_PREFIX ||= File.join(CREW_DEST_DIR, CREW_MUSL_PREFIX)
 MUSL_LIBC_VERSION     ||= File.executable?("#{CREW_MUSL_PREFIX}/lib/libc.so") ? `#{CREW_MUSL_PREFIX}/lib/libc.so 2>&1`[/\bVersion\s+\K\S+/] : nil unless defined?(MUSL_LIBC_VERSION)
 
 CREW_DEST_HOME          ||= File.join(CREW_DEST_DIR, HOME)
-CREW_CACHE_DIR          ||= ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache") unless defined?(CREW_CACHE_DIR)
-CREW_CACHE_BUILD        ||= ENV.fetch('CREW_CACHE_BUILD', false) unless defined?(CREW_CACHE_BUILD)
-CREW_CACHE_FAILED_BUILD ||= ENV.fetch('CREW_CACHE_FAILED_BUILD', false) unless defined?(CREW_CACHE_FAILED_BUILD)
 CREW_NO_GIT             ||= ENV.fetch('CREW_NO_GIT', false) unless defined?(CREW_NO_GIT)
 CREW_UNATTENDED         ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
 
@@ -146,7 +154,7 @@ CREW_NPROC ||=
 # Set following as boolean if environment variables exist.
 # Timeout for agree questions in package.rb:
 CREW_AGREE_TIMEOUT_SECONDS           ||= ENV.fetch('CREW_AGREE_TIMEOUT_SECONDS', 10).to_i unless defined?(CREW_AGREE_TIMEOUT_SECONDS)
-CREW_CACHE_ENABLED                   ||= ENV.fetch('CREW_CACHE_ENABLED', false) unless defined?(CREW_CACHE_ENABLED)
+CREW_CACHE_ENABLED                   ||= ENV.fetch('CREW_CACHE_ENABLED', CREW_CACHE_FAILED_BUILD) unless defined?(CREW_CACHE_ENABLED)
 CREW_CONFLICTS_ONLY_ADVISORY         ||= ENV.fetch('CREW_CONFLICTS_ONLY_ADVISORY', false) unless defined?(CREW_CONFLICTS_ONLY_ADVISORY)
 # or use conflicts_ok
 CREW_DISABLE_ENV_OPTIONS             ||= ENV.fetch('CREW_DISABLE_ENV_OPTIONS', false) unless defined?(CREW_DISABLE_ENV_OPTIONS)
@@ -455,17 +463,17 @@ CREW_DOCOPT ||= <<~DOCOPT
     crew download [options] [-s|--source] [-v|--verbose] <name> ...
     crew files [options] <name> ...
     crew help [options] [<command>] [-v|--verbose] [<subcommand>]
-    crew install [options] [-f|--force] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
+    crew install [options] [-f|--force] [-k|--keep] [--regenerate-filelist] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
     crew list [options] [-v|--verbose] (available|compatible|incompatible|essential|installed)
     crew postinstall [options] [-v|--verbose] <name> ...
     crew prop [options] [<property>]
-    crew reinstall [options] [-f|--force] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
+    crew reinstall [options] [-f|--force] [-k|--keep] [-s|--source] [--regenerate-filelist] [-S|--recursive-build] [-v|--verbose] <name> ...
     crew remove [options] [-f|--force] [-v|--verbose] <name> ...
     crew search [options] [-v|--verbose] <name> ...
     crew sysinfo [options] [-v|--verbose]
     crew update [options] [-v|--verbose]
     crew update_package_file [options] [-v|--verbose] [<name> ...]
-    crew upgrade [options] [-f|--force] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
+    crew upgrade [options] [-f|--force] [-k|--keep] [--regenerate-filelist] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-f|--force] [-v|--verbose] [<name> ...]
     crew upstream [options] [-j|--json|-u|--update-package-files|-v|--verbose] <name> ...
     crew version [options] [<name>]
@@ -482,6 +490,7 @@ CREW_DOCOPT ||= <<~DOCOPT
     -L --license               Display the crew license.
     -s --source                Build or download from source even if pre-compiled binary exists.
     -S --recursive-build       Build from source, including all dependencies, even if pre-compiled binaries exist.
+    --regenerate-filelist      Force regeneration of package filelists on install.
     -t --tree                  Print dependencies in a tree-structure format.
     -u --update-package-files  Attempt to update the package version.
     -v --verbose               Show extra information.

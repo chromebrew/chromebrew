@@ -81,6 +81,7 @@ String.use_color = args['--color'] || !args['--no-color']
 @opt_json      = args['--json']
 @opt_keep      = args['--keep']
 @opt_recursive = args['--recursive-build']
+@opt_regen_filelist = args['--regenerate-filelist']
 @opt_source    = args['--source']
 @opt_update    = args['--update-package-files']
 @opt_version   = args['--version']
@@ -93,6 +94,7 @@ String.use_color = args['--color'] || !args['--no-color']
 
 # Make sure crew work directories exist.
 FileUtils.mkdir_p CREW_BREW_DIR
+FileUtils.mkdir_p CREW_CACHE_DIR
 FileUtils.mkdir_p CREW_DEST_DIR
 
 class ExitMessage
@@ -185,7 +187,8 @@ end
 
 def cache_build
   build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
-  if CREW_CACHE_ENABLED && File.writable?(CREW_CACHE_DIR)
+  puts "build_cachefile is #{build_cachefile}"
+  if (@pkg.cache_build? || CREW_CACHE_BUILD) && File.writable?(CREW_CACHE_DIR)
     puts 'Caching build dir...'
     pkg_build_dirname_absolute = File.join(CREW_BREW_DIR, @extract_dir)
     pkg_build_dirname = File.basename(pkg_build_dirname_absolute)
@@ -196,21 +199,53 @@ def cache_build
       FileUtils.mv build_cachefile, "#{build_cachefile}.bak", force: true if File.file?(build_cachefile)
       FileUtils.mv "#{build_cachefile}.sha256", "#{build_cachefile}.sha256.bak", force: true if File.file?("#{build_cachefile}.sha256")
       Dir.chdir(CREW_BREW_DIR) do
+        # if ENV['NESTED_CI']
+        ## Directly upload if in a CI environment.
+        # abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if GITLAB_TOKEN.nil?
+        # build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+        # output = `tar c #{pkg_build_dirname} \
+        # | nice -n 20 zstd -T0 --stdout --ultra --fast -f - | \
+        # curl -# --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" -F "file=@-;filename=#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst" #{build_cache_url} | cat`.chomp
+        # if output.include?('201 Created')
+        # puts "#{output}\n".lightgreen if output.include?('201 Created')
+        # else
+        # puts "#{output}\n".lightred
+        # puts "tar c #{pkg_build_dirname} \
+        # | nice -n 20 zstd -T0 --stdout --ultra --fast -f - | \
+        # curl -# --header \"#{CREW_GITLAB_TOKEN_LABEL}: GITLAB_TOKEN\" -F \"file=@-;filename=#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst\" \"#{build_cache_url}\" | cat"
+        # end
+        # else
+        puts `df -h`.chomp if ENV['NESTED_CI']
         @build_cachefile_lockfile = CrewLockfile.new "#{build_cachefile}.lock"
         begin
           @build_cachefile_lockfile.lock
-          system "tar c#{@verbose} #{pkg_build_dirname} \
-          | nice -n 20 zstd -c  --ultra --fast -f -o #{build_cachefile} -"
+          system "tar c #{pkg_build_dirname} \
+            | nice -n 20 zstd -T0 --ultra --fast -f -o #{build_cachefile} -"
         ensure
           @build_cachefile_lockfile.unlock
         end
+        # end
       end
     end
-    system "sha256sum #{build_cachefile} > #{build_cachefile}.sha256"
+    system "sha256sum #{build_cachefile} > #{build_cachefile}.sha256" if File.file?(build_cachefile)
     puts "Build directory cached at #{build_cachefile}".lightgreen
+    if @pkg.cache_build? # && !ENV['NESTED_CI']
+      abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if GITLAB_TOKEN.nil?
+      puts "Uploading #{build_cachefile} ...".orange
+      build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+      puts "curl -# --header \"#{CREW_GITLAB_TOKEN_LABEL}: GITLAB_TOKEN\" --upload-file \"#{build_cachefile}\" \"#{build_cache_url}\" | cat" if CREW_VERBOSE
+      output = `curl -# --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" --upload-file "#{build_cachefile}" "#{build_cache_url}" | cat`.chomp
+      puts "\e[1A\e[KChecking upload...\r".orange
+      if output.include?('201 Created')
+        puts "#{output}\n".lightgreen if output.include?('201 Created')
+      else
+        puts "#{output}\n".lightred
+        puts "curl -# --header \"#{CREW_GITLAB_TOKEN_LABEL}: GITLAB_TOKEN\" --upload-file \"#{build_cachefile}\" \"#{build_cache_url}\""
+      end
+    end
   else
-    puts 'CREW_CACHE_ENABLED is not set.'.orange unless CREW_CACHE_ENABLED
-    puts 'CREW_CACHE_DIR is not writable.'.lightred unless File.writable?(CREW_CACHE_DIR)
+    puts 'CREW_CACHE_BUILD is not set.'.orange unless CREW_CACHE_BUILD || @pkg.cache_build?
+    puts "#{CREW_CACHE_DIR} is not writable.".lightred unless File.writable?(CREW_CACHE_DIR)
   end
 end
 
@@ -455,11 +490,11 @@ def download
   uri = URI.parse url
   filename = File.basename(uri.path)
   # # If we're downloading a binary, reset the filename to what it would have been if we didn't download from the API.
-  filename = "#{@pkg.name}-#{@pkg.version}-chromeos-#{ARCH}.#{@pkg.binary_compression}" if filename.eql?('download')
+  filename = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}" if filename.eql?('download')
   @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
   build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
-  return { source:, filename: } if CREW_CACHE_BUILD && File.file?(build_cachefile) && !@pkg.built
+  return { source:, filename: } if (CREW_CACHE_BUILD || @pkg.cache_build?) && File.file?(build_cachefile) && !@pkg.built
 
   if !url
     abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
@@ -474,6 +509,37 @@ def download
   end
 
   git = true unless @pkg.git_hashtag.to_s.empty?
+  gitlab_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}/#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}"
+
+  if (@pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !@pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}")) && `curl -fsI #{gitlab_binary_url}`.lines.first.split[1] != '200'
+
+    build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+    puts 'Checking for cached build...'.orange
+    # Does a remote build artifact exist?
+    puts build_cache_url if CREW_VERBOSE
+    puts "curl -fsI #{build_cache_url}" if CREW_VERBOSE
+    if `curl -fsI #{build_cache_url}`.lines.first.split[1] == '200'
+      puts "curl -# --header \"#{CREW_GITLAB_TOKEN_LABEL}: GITLAB_TOKEN\" --upload-file \"#{build_cachefile}\" \"#{build_cache_url}\" | cat" if CREW_VERBOSE
+      # What is the gitlab package artifact binary PACKAGE_ID?
+      gitlab_pkg_id = `curl --location --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" \
+  "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{@pkg.name}&package_version=#{@pkg.version}_#{@device[:architecture]}_build" \
+       | jq -r ".[] | select(.name==\\"#{@pkg.name}\\" and .version==\\"#{@pkg.version}_#{@device[:architecture]}_build\\") | .id"`.chomp
+      # What is the hash of the gitlab package artifact binary?
+      gitlab_build_artifact_sha256 = `curl --location --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" \
+  "#{CREW_GITLAB_PKG_REPO}/#{gitlab_pkg_id}/package_files" \
+       | jq -r "last(.[].file_sha256)"`.chomp
+      gitlab_build_artifact_date = `curl --location --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" \
+  "#{CREW_GITLAB_PKG_REPO}/#{gitlab_pkg_id}/package_files" \
+       | jq -r "last(.[].created_at)"`.chomp
+      puts "Cached build artifact from #{gitlab_build_artifact_date} exists!".lightgreen
+      puts "Downloading most recent cached build artifact for #{@pkg.name}-#{@pkg.version}...".orange
+      # Download the package build artifact.
+      downloader(build_cache_url, gitlab_build_artifact_sha256, build_cachefile, no_update_hash: true)
+      File.write "#{build_cachefile}.sha256", <<~BUILD_CACHEFILE_SHA256_EOF
+        #{gitlab_build_artifact_sha256} #{build_cachefile}
+      BUILD_CACHEFILE_SHA256_EOF
+    end
+  end
 
   Dir.chdir CREW_BREW_DIR do
     FileUtils.mkdir_p @extract_dir
@@ -488,17 +554,24 @@ def download
     # This also covers all precompiled binaries.
     when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i, /\.gem$/i
       # Recall file from cache if requested
-      if CREW_CACHE_ENABLED
+      if CREW_CACHE_ENABLED || CREW_CACHE_BUILD || @pkg.cache_build?
         puts "Looking for #{@pkg.name} archive in cache".orange if CREW_VERBOSE
         # Privilege CREW_LOCAL_BUILD_DIR over CREW_CACHE_DIR.
         local_build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, filename)
         crew_cache_dir_cachefile = File.join(CREW_CACHE_DIR, filename)
         cachefile = File.file?(local_build_cachefile) ? local_build_cachefile : crew_cache_dir_cachefile
-        puts "Using #{@pkg.name} archive from the build cache at #{cachefile}; The checksum will not be checked against the package file.".orange if cachefile.include?(CREW_LOCAL_BUILD_DIR)
+        # puts "Using #{@pkg.name} archive from the build cache at #{cachefile}; The checksum will not be checked against the package file.".orange if cachefile.include?(CREW_LOCAL_BUILD_DIR)
+        puts "Using #{@pkg.name} archive from the build cache at #{cachefile}".orange
         if File.file?(cachefile)
           puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen if CREW_VERBOSE
-          # Don't check checksum if file is in the build cache.
-          if Digest::SHA256.hexdigest(File.read(cachefile)) == sha256sum || sha256sum =~ /^SKIP$/i || cachefile.include?(CREW_LOCAL_BUILD_DIR)
+          # Don't validate checksum if file is in the local build cache.
+          if cachefile.include?(CREW_LOCAL_BUILD_DIR) || cachefile.include?(CREW_CACHE_DIR)
+            sha256sum = 'SKIP'
+          else
+            sha256sum_out, _stderr, _status = Open3.capture3("sha256sum #{cachefile}")
+            calc_sha256sum = sha256sum_out.split[0]
+          end
+          if sha256sum =~ /^SKIP$/i || calc_sha256sum == sha256sum
             begin
               # Hard link cached file if possible.
               FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: CREW_VERBOSE unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
@@ -627,10 +700,9 @@ def download
           @git_cachefile_lockfile = CrewLockfile.new "#{cachefile}.lock"
           begin
             @git_cachefile_lockfile.lock
-            system "tar c#{@verbose} \
+            system "tar c \
               $(#{CREW_PREFIX}/bin/find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
-              nice -n 20 zstd -c -T0 --ultra -20 - >  \
-              #{cachefile}"
+              nice -n 20 zstd -T0 --ultra -20 -o #{cachefile} -"
           ensure
             @git_cachefile_lockfile.unlock
           end
@@ -649,7 +721,7 @@ def unpack(meta)
     FileUtils.mkdir_p @extract_dir, verbose: CREW_VERBOSE
 
     build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
-    if !@pkg.built && CREW_CACHE_BUILD && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && (system "sha256sum -c #{build_cachefile}.sha256", chdir: CREW_CACHE_DIR)
+    if !@pkg.built && (@pkg.cache_build? || CREW_CACHE_BUILD) && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && (system "sha256sum -c #{build_cachefile}.sha256", chdir: CREW_CACHE_DIR)
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{build_cachefile}".lightgreen
       system "tar -Izstd -x#{@verbose}f #{build_cachefile} -C #{CREW_BREW_DIR}", exception: true
@@ -733,7 +805,20 @@ def build_and_preconfigure(target_dir)
     build_start_time = Time.now.to_i
 
     @pkg.in_build = true
-    unless @pkg.cached_build
+    Signal.trap('INT') do
+      if CREW_CACHE_BUILD || @pkg.cache_build?
+        cache_build
+        ExitMessage.add 'The build was interrupted. The build directory was cached.'.lightred
+        exit 1
+      end
+      ExitMessage.add 'Interrupted!'.lightred
+      exit 1
+    end
+
+    @pkg.prebuild_config_and_report
+    if @pkg.cache_build?
+      @pkg.pre_cached_build
+    else
       @pkg.patch
       @pkg.prebuild
     end
@@ -741,17 +826,20 @@ def build_and_preconfigure(target_dir)
     begin
       @pkg.build
     rescue StandardError => e
-      if CREW_CACHE_FAILED_BUILD
+      if CREW_CACHE_FAILED_BUILD || @pkg.cache_build?
         cache_build
         abort "There was a build error, caching build directory.\n#{e}".lightred
       end
       abort "There was a build error.\n#{e}".lightred
     end
     @pkg.in_build = false
+    Signal.trap('INT', 'DEFAULT') if CREW_CACHE_BUILD || @pkg.cache_build?
+
+    cache_build if CREW_CACHE_BUILD || @pkg.cache_build?
+
     # wipe crew destdir
     FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: CREW_VERBOSE unless @pkg.superclass.to_s == 'RUBY'
     puts 'Preconfiguring package...'
-    cache_build if CREW_CACHE_BUILD
     @pkg.install unless @pkg.superclass.to_s == 'RUBY'
 
     build_end_time = Time.now.to_i
@@ -856,7 +944,7 @@ def prepare_package(destdir)
     strip_dir destdir
 
     # Create file list and calculate file size
-    filelist = Dir[".{#{CREW_PREFIX}/**/{*,.?*/**},#{HOME}}/**/{*,.?*/**}"].select do |e|
+    filelist = Dir[".{#{CREW_PREFIX}/**/{.*,*,.?*/**},#{HOME}}/**/{.*,*,.?*/**}"].select do |e|
       File.file?(e) || File.symlink?(e)
     end.to_h do |e|
       # Ignore symlinks to prevent duplicating calculation.
@@ -1026,18 +1114,20 @@ end
 
 def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/local')))
   if Dir.exist?(src)
+    # Use tar if @opt_regen_filelist is set as that preserves dot files
+    # after an install.
     crew_mvdir_error = false
-    if File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR && !system("crew-mvdir #{@short_verbose} #{src} #{dst}")
+    if !@opt_regen_filelist && File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR && !system("crew-mvdir #{@short_verbose} #{src} #{dst}")
       puts "src is #{src}".lightred
       puts "dst is #{dst}".lightred
       system "ls -aFl #{dst}"
       crew_mvdir_error = true
     end
     # Handle case of crew-mvdir having failed.
-    if !File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") || CREW_DISABLE_MVDIR || crew_mvdir_error
-      warn 'crew-mvdir is not installed. Please install it with \'crew install crew_mvdir\' for improved installation performance'.yellow unless (@pkg.name == 'crew_mvdir') || CREW_DISABLE_MVDIR || crew_mvdir_error
+    if !File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") || CREW_DISABLE_MVDIR || crew_mvdir_error || @opt_regen_filelist
+      warn 'crew-mvdir is not installed. Please install it with \'crew install crew_mvdir\' for improved installation performance'.yellow unless (@pkg.name == 'crew_mvdir') || CREW_DISABLE_MVDIR || crew_mvdir_error || @opt_regen_filelist
       warn 'crew-mvdir had an error. Using rsync.'.yellow if crew_mvdir_error
-      if File.executable?("#{CREW_PREFIX}/bin/rsync") && system("#{CREW_PREFIX}/bin/rsync --version > /dev/null")
+      if File.executable?("#{CREW_PREFIX}/bin/rsync") && system("#{CREW_PREFIX}/bin/rsync --version > /dev/null") && !@opt_regen_filelist
         # rsync src path needs a trailing slash
         src << '/' unless src.end_with?('/')
         # Check for ACLs support.
@@ -1063,8 +1153,32 @@ def install_package(pkgdir)
     # install filelist, dlist and binary files
     puts "Performing install for #{@pkg.name}...".lightblue
 
-    FileUtils.mv 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: CREW_VERBOSE
-    FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
+    # Sometimes we want to regenerate a file list for an existing
+    # package without forcing a rebuild.
+
+    if @opt_regen_filelist
+      puts "Regenerating filelist for #{@pkg.name}...".orange
+      # Create file list and calculate file size
+      filelist = Dir[".{#{CREW_PREFIX}/**/{.*,*,.?*/**},#{HOME}}/**/{.*,*,.?*/**}"].select do |e|
+        File.file?(e) || File.symlink?(e)
+      end.to_h do |e|
+        # Ignore symlinks to prevent duplicating calculation.
+        [e[1..], File.symlink?(e) ? 0 : File.size(e)]
+      end
+
+      File.write 'filelist', <<~EOF
+        # Total size: #{filelist.values.sum}
+        #{filelist.keys.sort.join("\n")}
+      EOF
+
+      if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
+        puts "Updating manifest filelist for #{@pkg.name}...".orange
+        FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}"
+        FileUtils.cp 'filelist', "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
+      end
+    end
+    FileUtils.cp 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: CREW_VERBOSE
+    FileUtils.cp 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
 
     unless CREW_NOT_LINKS || @pkg.no_links?
       Find.find(Dir.pwd) do |path|
@@ -1483,7 +1597,7 @@ def archive_package(crew_archive_dest)
       @pkg_name_lockfile = CrewLockfile.new "#{crew_archive_dest}/#{pkg_name}.lock"
       begin
         @pkg_name_lockfile.lock
-        system "tar c#{@verbose} * | nice -n 20 zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
+        system "tar c * | nice -n 20 zstd -T0 --ultra -20 -o #{crew_archive_dest}/#{pkg_name} -"
       ensure
         @pkg_name_lockfile.unlock
       end
@@ -1558,7 +1672,7 @@ def update_package_file(package = nil, pkg_version = nil, binary_compression = n
   end
 end
 
-def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_username = nil, binary_compression = nil)
+def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
   # Architecture independent:
   # 1. Abort early if package manifests exist but are empty, as this
   #    likely indicates a failed build.
@@ -1599,8 +1713,8 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
   #    by build workflows to make sure updated manifests get
   #    uploaded.)
   abort "\nPackage to be uploaded was not specified.\n".lightred if pkg_name.nil?
-  abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if gitlab_token.nil?
-  abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if gitlab_token_username.nil?
+  abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if GITLAB_TOKEN.nil?
+  abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if GITLAB_TOKEN_USERNAME.nil?
 
   packages = pkg_name
   packages.strip!
@@ -1741,10 +1855,9 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
       next unless upload_binary
       # 4.  Upload.
       puts "Uploading #{local_tarfile} ...".orange if CREW_VERBOSE
-      token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
-      puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{local_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
+      puts "curl -# --header \"#{CREW_GITLAB_TOKEN_LABEL}: GITLAB_TOKEN\" --upload-file \"#{local_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
       puts "\e[1A\e[KUploading...\r".orange
-      output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{local_tarfile}" "#{new_url}" | cat`.chomp
+      output = `curl -# --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" --upload-file "#{local_tarfile}" "#{new_url}" | cat`.chomp
       puts "\e[1A\e[KChecking upload...\r".orange
       if output.include?('201 Created')
         puts "curl -Ls #{new_url} | sha256sum" if CREW_VERBOSE
@@ -1784,7 +1897,7 @@ def upload(pkg_name = nil, pkg_version = nil, gitlab_token = nil, gitlab_token_u
           puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
           # Note that this uses the python twine from https://github.com/pypa/twine/pull/1123
           abort 'Twine is broken, cannot upload python wheels.'.lightred unless system('twine --help', %i[out err] => File::NULL)
-          system("twine upload -u #{gitlab_token_username} -p #{gitlab_token} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
+          system("twine upload -u #{GITLAB_TOKEN_USERNAME} -p #{GITLAB_TOKEN} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
           FileUtils.rm_f wheel
         end
       end
@@ -1913,6 +2026,8 @@ def download_command(args)
     else
       download
     end
+    # Clean up remnant @extract_dir folders.
+    FileUtils.rm_rf File.join(CREW_BREW_DIR, @extract_dir)
   end
 end
 
@@ -2029,13 +2144,11 @@ def update_package_file_command(args)
 end
 
 def upload_command(args)
-  gitlab_token = ENV.fetch('GITLAB_TOKEN', nil)
-  gitlab_token_username = ENV.fetch('GITLAB_TOKEN_USERNAME', nil)
   args = { '<name>' => args.split } if args.is_a? String
   upload if args['<name>'].empty?
   args['<name>'].each do |name|
     search name
-    upload(name, @pkg.version, gitlab_token, gitlab_token_username, @pkg.binary_compression)
+    upload(name, @pkg.version, @pkg.binary_compression)
   end
 end
 
@@ -2066,16 +2179,6 @@ def whatprovides_command(args)
 end
 
 def command?(name) = !!!name[/^[-<]/]
-
-Signal.trap('INT') do
-  if CREW_CACHE_FAILED_BUILD && CREW_CACHE_ENABLED && @pkg.in_build
-    cache_build
-    ExitMessage.add 'The build was interrupted. The build directory was cached.'.lightred
-    exit 1
-  end
-  ExitMessage.add 'Interrupted!'.lightred
-  exit 1
-end
 
 @device = ConvenienceFunctions.load_symbolized_json
 

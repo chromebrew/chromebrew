@@ -1,5 +1,5 @@
-require 'digest/sha2'
 require 'io/console'
+require 'open3'
 require 'uri'
 require_relative 'const'
 require_relative 'color'
@@ -25,7 +25,7 @@ rescue RuntimeError => e
   end
 end
 
-def downloader(url, sha256sum, filename = File.basename(url), verbose: false)
+def downloader(url, sha256sum, filename = File.basename(url), no_update_hash: false, verbose: false)
   # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
   # Usage: downloader <url>, <sha256sum>, <filename::optional>, <verbose::optional>
   #
@@ -36,6 +36,9 @@ def downloader(url, sha256sum, filename = File.basename(url), verbose: false)
   #
   puts "downloader(#{url}, #{sha256sum}, #{filename}, #{verbose})" if verbose
   uri = URI(url)
+
+  # Make sure the destination dir for the filename exists.
+  FileUtils.mkdir_p File.dirname(filename)
 
   if CREW_USE_CURL || !ENV['CREW_DOWNLOADER'].to_s.empty?
     # force using external downloader if either CREW_USE_CURL or ENV['CREW_DOWNLOADER'] is set
@@ -61,11 +64,15 @@ def downloader(url, sha256sum, filename = File.basename(url), verbose: false)
     end
   end
 
-  # verify with given checksum
-  calc_sha256sum = Digest::SHA256.hexdigest(File.read(filename))
+  # Verify with given checksum, using the external sha256sum binary so
+  # we do not load the entire file into ruby's process, which throws
+  # errors with large files on 32-bit architectures.
+  puts "Calculating checksum for #{filename}...".lightblue
+  sha256sum_out, _stderr, _status = Open3.capture3("sha256sum #{filename}")
+  calc_sha256sum = sha256sum_out.split[0]
 
   unless (sha256sum =~ /^SKIP$/i) || (calc_sha256sum == sha256sum)
-    if CREW_FORCE
+    if CREW_FORCE && !no_update_hash
       pkg_name = @pkg_name.blank? ? name : @pkg_name
       puts "Updating checksum for #{filename}".lightblue
       puts "from #{sha256sum} to #{calc_sha256sum}".lightblue
