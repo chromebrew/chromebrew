@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.4 (for Chromebrew)
+# version.rb version 3.5 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -311,7 +311,9 @@ if filelist.length.positive?
               @pkg = Package.load_package(filename, true)
               (@pkg.source_url.keys.map &:to_s).each do |arch|
                 puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE && !OUTPUT_JSON
-                unless `curl -fsI #{@pkg.source_url[arch.to_sym]}`.lines.first.split[1] == '200' || '302'
+                status = `curl -fsI #{@pkg.source_url[arch.to_sym]}`.lines.first.split[1]
+                puts "new source_url response status: #{status}" if VERBOSE && !OUTPUT_JSON
+                unless %w[200 302].include?(status)
                   versions_updated[@pkg.name.to_sym] = 'Bad Source'
                   puts "#{@pkg.source_url[arch.to_sym]} is a bad source".lightred if VERBOSE && !OUTPUT_JSON
                   if File.file?("#{filename}.bak")
@@ -348,6 +350,14 @@ if filelist.length.positive?
               file.sub!(old_hash[arch], new_hash[arch])
             end
             File.write(filename, file)
+            local_repo_root = ''
+            Dir.chdir(ENV.fetch('PWD', nil)) do
+              local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
+            end
+            if local_repo_root && File.file?("#{local_repo_root}/packages/#{@pkg.name}.rb") && (filename != "#{local_repo_root}/packages/#{@pkg.name}.rb")
+              FileUtils.cp filename, "#{local_repo_root}/packages/#{@pkg.name}.rb"
+              puts "Successfully updated #{local_repo_root}/packages/#{@pkg.name}.rb to version #{upstream_version}.".lightgreen
+            end
             versions_updated[@pkg.name.to_sym] = true
             FileUtils.rm "#{filename}.bak" if File.file?("#{filename}.bak")
           end
