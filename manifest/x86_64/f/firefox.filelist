@@ -1,4 +1,4 @@
-# Total size: 293222181
+# Total size: 296694852
 /usr/local/bin/firefox
 /usr/local/share/applications/firefox.desktop
 /usr/local/share/firefox/application.ini
@@ -30,6 +30,7 @@
 /usr/local/share/firefox/libmozavcodec.so
 /usr/local/share/firefox/libmozavutil.so
 /usr/local/share/firefox/libmozgtk.so
+/usr/local/share/firefox/libmozinference.so
 /usr/local/share/firefox/libmozsandbox.so
 /usr/local/share/firefox/libmozsqlite3.so
 /usr/local/share/firefox/libmozwayland.so
