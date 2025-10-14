@@ -1,4 +1,4 @@
-# Total size: 146131024
+# Total size: 146107520
 /usr/local/bin/WebKitWebDriver_4.1
 /usr/local/include/webkitgtk-4.1/JavaScriptCore/JSBase.h
 /usr/local/include/webkitgtk-4.1/JavaScriptCore/JSContextRef.h
@@ -225,10 +225,10 @@
 /usr/local/lib64/girepository-1.0/WebKit2WebExtension-4.1.typelib
 /usr/local/lib64/libjavascriptcoregtk-4.1.so
 /usr/local/lib64/libjavascriptcoregtk-4.1.so.0
-/usr/local/lib64/libjavascriptcoregtk-4.1.so.0.9.5
+/usr/local/lib64/libjavascriptcoregtk-4.1.so.0.9.6
 /usr/local/lib64/libwebkit2gtk-4.1.so
 /usr/local/lib64/libwebkit2gtk-4.1.so.0
-/usr/local/lib64/libwebkit2gtk-4.1.so.0.19.3
+/usr/local/lib64/libwebkit2gtk-4.1.so.0.19.4
 /usr/local/lib64/pkgconfig/javascriptcoregtk-4.1.pc
 /usr/local/lib64/pkgconfig/webkit2gtk-4.1.pc
 /usr/local/lib64/pkgconfig/webkit2gtk-web-extension-4.1.pc
