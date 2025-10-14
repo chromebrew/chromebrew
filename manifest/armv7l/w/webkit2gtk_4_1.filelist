@@ -1,3 +1,4 @@
+# Total size: 102267430
 /usr/local/bin/WebKitWebDriver_4.1
 /usr/local/include/webkitgtk-4.1/JavaScriptCore/JSBase.h
 /usr/local/include/webkitgtk-4.1/JavaScriptCore/JSContextRef.h
@@ -89,6 +90,7 @@
 /usr/local/include/webkitgtk-4.1/webkit/WebKitWebEditor.h
 /usr/local/include/webkitgtk-4.1/webkit/WebKitWebExtension.h
 /usr/local/include/webkitgtk-4.1/webkit/WebKitWebExtensionAutocleanups.h
+/usr/local/include/webkitgtk-4.1/webkit/WebKitWebExtensionMatchPattern.h
 /usr/local/include/webkitgtk-4.1/webkit/WebKitWebFormManager.h
 /usr/local/include/webkitgtk-4.1/webkit/WebKitWebHitTestResult.h
 /usr/local/include/webkitgtk-4.1/webkit/WebKitWebInspector.h
@@ -223,15 +225,16 @@
 /usr/local/lib/girepository-1.0/WebKit2WebExtension-4.1.typelib
 /usr/local/lib/libjavascriptcoregtk-4.1.so
 /usr/local/lib/libjavascriptcoregtk-4.1.so.0
-/usr/local/lib/libjavascriptcoregtk-4.1.so.0.5.7
+/usr/local/lib/libjavascriptcoregtk-4.1.so.0.9.6
 /usr/local/lib/libwebkit2gtk-4.1.so
 /usr/local/lib/libwebkit2gtk-4.1.so.0
-/usr/local/lib/libwebkit2gtk-4.1.so.0.13.7
+/usr/local/lib/libwebkit2gtk-4.1.so.0.19.4
 /usr/local/lib/pkgconfig/javascriptcoregtk-4.1.pc
 /usr/local/lib/pkgconfig/webkit2gtk-4.1.pc
 /usr/local/lib/pkgconfig/webkit2gtk-web-extension-4.1.pc
 /usr/local/lib/webkit2gtk-4.1/injected-bundle/libwebkit2gtkinjectedbundle.so
 /usr/local/libexec/webkit2gtk-4.1/MiniBrowser
+/usr/local/libexec/webkit2gtk-4.1/WebKitGPUProcess
 /usr/local/libexec/webkit2gtk-4.1/WebKitNetworkProcess
 /usr/local/libexec/webkit2gtk-4.1/WebKitWebProcess
 /usr/local/libexec/webkit2gtk-4.1/jsc
