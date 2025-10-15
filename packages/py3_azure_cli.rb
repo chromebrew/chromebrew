@@ -10,10 +10,10 @@ class Py3_azure_cli < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9eb9d29337d3d1fa56172cbef50cbc0798085561bbb91cdeb578e776adfe6dab',
-     armv7l: '9eb9d29337d3d1fa56172cbef50cbc0798085561bbb91cdeb578e776adfe6dab',
-       i686: '8908b1e56f37ed6bb6f4b55590056fcbde98c7f95de55a5b98c52c7cc6dee87b',
-     x86_64: 'a4caca3517f24a01d45b3b72ebff6e5aca9ac43f42bb11aec76381054035979f'
+    aarch64: '5fa522a41455eedef049a41e6d5a97574a7b516d1c2181008576983e90b6d3e6',
+     armv7l: '5fa522a41455eedef049a41e6d5a97574a7b516d1c2181008576983e90b6d3e6',
+       i686: 'd1531629a7d69ac0fd9bc2199a924a4f5b3a00c62ff2b62ab795eb0fbdcf776f',
+     x86_64: 'c83935ed4cb100d973a5b46e61d547034f716b5efa0051dd66f7b56a6f2a33e1'
   })
 
   depends_on 'python3'
