@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Exfatprogs < Package
+class Exfatprogs < Autotools
   description 'exFAT filesystem userspace utilities for the Linux Kernel exfat driver.'
   homepage 'https://github.com/exfatprogs/exfatprogs'
-  version '1.2.9'
+  version '1.3.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/exfatprogs/exfatprogs.git'
@@ -18,14 +18,4 @@ class Exfatprogs < Package
   })
 
   depends_on 'glibc' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
