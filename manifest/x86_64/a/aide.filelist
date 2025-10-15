@@ -1,4 +1,7 @@
-# Total size: 271598
+# Total size: 268503
 /usr/local/bin/aide
+/usr/local/etc/aide.conf
+/usr/local/etc/aide.db
+/usr/local/etc/aide.db.new
 /usr/local/share/man/man1/aide.1.zst
 /usr/local/share/man/man5/aide.conf.5.zst
