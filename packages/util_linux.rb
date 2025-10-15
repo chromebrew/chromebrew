@@ -3,11 +3,13 @@ require 'buildsystems/meson'
 class Util_linux < Meson
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version "2.41.2-#{CREW_PY_VER}"
+  version "2.41.2-9179172-#{CREW_PY_VER}"
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
   source_url 'https://github.com/util-linux/util-linux.git'
-  git_hashtag "v#{version.split('-').first}"
+  # Build from stable/v2.4.1 branch.
+  git_hashtag '917917253e60b0ba485cf6a27a2f993aa43e1eea'
+  # git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -36,6 +38,7 @@ class Util_linux < Meson
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
+  cache_build
   conflicts_ok
 
   year2038 = '-Dallow-32bit-time=true'
@@ -45,22 +48,4 @@ class Util_linux < Meson
                  #{i686_disabled_builds if ARCH == 'i686'} \
                  #{year2038 unless ARCH == 'x86_64'}"
 
-  def self.patch
-    # See https://github.com/util-linux/util-linux/pull/3762
-    File.write 'meson.patch', <<~PATCHEOF
-      diff -Npaur a/meson.build b/meson.build
-      --- a/meson.build	2025-09-23 16:35:42.425424047 -0400
-      +++ b/meson.build	2025-09-23 16:39:17.742052089 -0400
-      @@ -1473,7 +1473,7 @@ has_seminfo_type = cc.has_type('struct s
-
-       posixipc_libs = []
-       if not cc.has_function('shm_open') and conf.get('HAVE_SYS_MMAN_H').to_string() == '1'
-      -  posixipc_libs = cc.find_library('rt', required : true)
-      +  posixipc_libs += cc.find_library('rt', required : true)
-       endif
-
-       if not cc.has_function('sem_close') and conf.get('HAVE_SEMAPHORE_H').to_string() == '1'
-    PATCHEOF
-    system 'patch -Np1 -i meson.patch'
-  end
 end
