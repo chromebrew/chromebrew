@@ -11,10 +11,10 @@ class Python3 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f4e06c87d8c7e263ca81f8ab9bbd1887161f04382270da99e03768c9072de14a',
-     armv7l: 'f4e06c87d8c7e263ca81f8ab9bbd1887161f04382270da99e03768c9072de14a',
-       i686: 'f17bf7ec21f498585fee3a3c5b5da9da9b8d4cf581d69e00cef932f9bd8342c7',
-     x86_64: '210ad397fbc3f61b6ac712cd79305dc34768c8ae9adce9448d76c18d25755a54'
+    aarch64: '7af0359c8da2b5989cae41c41aa951e10034942939ef343db7ac71d529c7e179',
+     armv7l: '7af0359c8da2b5989cae41c41aa951e10034942939ef343db7ac71d529c7e179',
+       i686: 'f2902d97778b0505ffdace819a9f46533de9bf71f41e97519f87e2e04df9a106',
+     x86_64: '703c494ee1b53ace9ecf452870f08f1656b5e26a37045b994af8a622a981b955'
   })
 
   depends_on 'autoconf_archive' => :build
