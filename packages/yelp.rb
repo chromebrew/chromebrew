@@ -28,6 +28,7 @@ class Yelp < Meson
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
   depends_on 'py3_itstool' => :build
+  depends_on 'libadwaita' # R
   depends_on 'libgcrypt' # R
   depends_on 'libgpg_error' # R
   depends_on 'libhandy' # R
