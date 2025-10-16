@@ -1826,7 +1826,7 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
             #     should be uploaded. (Default to no.)
             puts "\e[1A\e[KOverwriting!\r".orange
             puts "\e[1A\e[K existing upload sha256: #{gitlab_remote_binary_sha256}\n".orange
-            puts "\e[1A\e[K new upload sha256:      #{local_sha256}"\n.orange
+            puts "\e[1A\e[K new upload sha256:      #{local_sha256}\n".orange
             crewlog "local binary hash for #{arch} = #{local_sha256}"
             binary_sha256_hash[arch.to_sym] = local_sha256
             upload_binary = true
