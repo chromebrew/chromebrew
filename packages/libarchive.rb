@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Libarchive < CMake
   description 'Multi-format archive and compression library.'
   homepage 'https://www.libarchive.org/'
-  version "3.8.1-#{CREW_ICU_VER}"
+  version "3.8.2-#{CREW_ICU_VER}"
   license 'BSD, BSD-2, BSD-4 and public-domain'
   compatibility 'all'
   source_url "https://www.libarchive.org/downloads/libarchive-#{version.split('-').first}.tar.xz"
-  source_sha256 '19f917d42d530f98815ac824d90c7eaf648e9d9a50e4f309c812457ffa5496b5'
+  source_sha256 'db0dee91561cbd957689036a3a71281efefd131d35d1d98ebbc32720e4da58e2'
   binary_compression 'tar.zst'
 
   binary_sha256({
