@@ -1853,7 +1853,6 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
       puts "\e[1A\e[KChecking upload...\r".orange
       if output.include?('201 Created')
         gitlab_new_upload_sha256 = PackageUtils.get_gitlab_pkginfo(package, new_version, arch, true)[:pkg_sha256]
-        puts "\e[1A\e[KURemote binary for #{new_version}_#{arch} at #{new_url} has sha256 #{gitlab_new_upload_sha256}.\n".green
         if gitlab_new_upload_sha256 == local_sha256
           puts "#{output}\n".lightgreen
         else
