@@ -1,13 +1,13 @@
-# Total size: 40184871
+# Total size: 40153591
 /usr/local/bin/f2py
 /usr/local/bin/numpy-config
-/usr/local/lib/python3.13/site-packages/numpy-2.3.3.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/numpy-2.3.3.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/numpy-2.3.3.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/numpy-2.3.3.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/numpy-2.3.3.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/numpy-2.3.3.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/numpy-2.3.3.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/numpy-2.3.4.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/numpy-2.3.4.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/numpy-2.3.4.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/numpy-2.3.4.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/numpy-2.3.4.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/numpy-2.3.4.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/numpy-2.3.4.dist-info/entry_points.txt
 /usr/local/lib/python3.13/site-packages/numpy/__config__.py
 /usr/local/lib/python3.13/site-packages/numpy/__config__.pyi
 /usr/local/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd
@@ -364,7 +364,6 @@
 /usr/local/lib/python3.13/site-packages/numpy/_typing/__pycache__/_ufunc.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/numpy/_typing/_add_docstring.py
 /usr/local/lib/python3.13/site-packages/numpy/_typing/_array_like.py
-/usr/local/lib/python3.13/site-packages/numpy/_typing/_callable.pyi
 /usr/local/lib/python3.13/site-packages/numpy/_typing/_char_codes.py
 /usr/local/lib/python3.13/site-packages/numpy/_typing/_dtype_like.py
 /usr/local/lib/python3.13/site-packages/numpy/_typing/_extended_precision.py

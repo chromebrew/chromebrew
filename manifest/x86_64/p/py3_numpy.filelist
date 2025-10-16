@@ -1,13 +1,13 @@
-# Total size: 67930197
+# Total size: 67958751
 /usr/local/bin/f2py
 /usr/local/bin/numpy-config
-/usr/local/lib64/python3.13/site-packages/numpy-2.3.3.dist-info/INSTALLER
-/usr/local/lib64/python3.13/site-packages/numpy-2.3.3.dist-info/LICENSE.txt
-/usr/local/lib64/python3.13/site-packages/numpy-2.3.3.dist-info/METADATA
-/usr/local/lib64/python3.13/site-packages/numpy-2.3.3.dist-info/RECORD
-/usr/local/lib64/python3.13/site-packages/numpy-2.3.3.dist-info/REQUESTED
-/usr/local/lib64/python3.13/site-packages/numpy-2.3.3.dist-info/WHEEL
-/usr/local/lib64/python3.13/site-packages/numpy-2.3.3.dist-info/entry_points.txt
+/usr/local/lib64/python3.13/site-packages/numpy-2.3.4.dist-info/INSTALLER
+/usr/local/lib64/python3.13/site-packages/numpy-2.3.4.dist-info/LICENSE.txt
+/usr/local/lib64/python3.13/site-packages/numpy-2.3.4.dist-info/METADATA
+/usr/local/lib64/python3.13/site-packages/numpy-2.3.4.dist-info/RECORD
+/usr/local/lib64/python3.13/site-packages/numpy-2.3.4.dist-info/REQUESTED
+/usr/local/lib64/python3.13/site-packages/numpy-2.3.4.dist-info/WHEEL
+/usr/local/lib64/python3.13/site-packages/numpy-2.3.4.dist-info/entry_points.txt
 /usr/local/lib64/python3.13/site-packages/numpy.libs/libgfortran-040039e1-0352e75f.so.5.0.0
 /usr/local/lib64/python3.13/site-packages/numpy.libs/libquadmath-96973f99-934c22de.so.0.0.0
 /usr/local/lib64/python3.13/site-packages/numpy.libs/libscipy_openblas64_-8fb3d286.so
@@ -367,7 +367,6 @@
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/__pycache__/_ufunc.cpython-313.pyc
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_add_docstring.py
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_array_like.py
-/usr/local/lib64/python3.13/site-packages/numpy/_typing/_callable.pyi
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_char_codes.py
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_dtype_like.py
 /usr/local/lib64/python3.13/site-packages/numpy/_typing/_extended_precision.py
@@ -553,6 +552,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/abstract_interface/foo.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/abstract_interface/gh18403_mod.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/array_from_pyobj/wrapmodule.c
+/usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/assumed_shape/.f2py_f2cmap
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/assumed_shape/foo_free.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/assumed_shape/foo_mod.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/assumed_shape/foo_use.f90
@@ -590,6 +590,7 @@
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/crackfortran/publicmod.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/crackfortran/pubprivmod.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/crackfortran/unicode_comment.f90
+/usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/f2cmap/.f2py_f2cmap
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/f2cmap/isoFortranEnvMap.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/isocintrin/isoCtests.f90
 /usr/local/lib64/python3.13/site-packages/numpy/f2py/tests/src/kind/foo.f90
