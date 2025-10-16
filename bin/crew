@@ -479,8 +479,12 @@ def download
 
   # Do an early check for a missing binary package and if so rebuild.
   if !@pkg.source?(@device[:architecture]) && @pkg.superclass.to_s == 'Pip'
-    url = `curl -sI #{test_url}`.lines.first.split[1] == '200' && `curl -Ls #{test_url} | sha256sum -`.chomp == sha256sum ? test_url : 'SKIP'
-    @pkg.missing_binaries = true
+    if `curl -sI #{test_url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, ARCH)[:pkg_sha256] == sha256sum
+      url = test_url
+    else
+      url = 'SKIP'
+      @pkg.missing_binaries = true
+    end
   else
     url = test_url
   end
@@ -520,18 +524,9 @@ def download
     puts "curl -fsI #{build_cache_url}" if CREW_VERBOSE
     if `curl -fsI #{build_cache_url}`.lines.first.split[1] == '200'
       puts "curl -# --header \"#{CREW_GITLAB_TOKEN_LABEL}: GITLAB_TOKEN\" --upload-file \"#{build_cachefile}\" \"#{build_cache_url}\" | cat" if CREW_VERBOSE
-      # What is the gitlab package build artifact binary PACKAGE_ID?
-      gitlab_pkg_id = `curl --location \
-  "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{@pkg.name}&package_version=#{@pkg.version}_#{@device[:architecture]}_build" \
-       | jq -r ".[] | select(.name==\\"#{@pkg.name}\\" and .version==\\"#{@pkg.version}_#{@device[:architecture]}_build\\") | .id"`.chomp
-      # What is the hash of the gitlab package build artifact binary?
-      gitlab_build_artifact_sha256 = `curl --location \
-  "#{CREW_GITLAB_PKG_REPO}/packages/#{gitlab_pkg_id}/package_files" \
-       | jq -r "last(.[].file_sha256)"`.chomp
-      # What is the upload date of this gitlab package build artifact binary?
-      gitlab_build_artifact_date = `curl --location \
-  "#{CREW_GITLAB_PKG_REPO}/packages/#{gitlab_pkg_id}/package_files" \
-       | jq -r "last(.[].created_at)"`.chomp
+      gitlab_pkginfo = PackageUtils.get_gitlab_pkginfo(package, pkg_version, arch, true)
+      gitlab_build_artifact_sha256 = gitlab_pkginfo[:pkg_sha256]
+      gitlab_build_artifact_date = gitlab_pkginfo[:pkg_upload_date]
       puts "Cached build artifact from #{gitlab_build_artifact_date} exists!".lightgreen
       puts "Downloading most recent cached build artifact for #{@pkg.name}-#{@pkg.version}...".orange
       # Download the package build artifact.
@@ -1635,15 +1630,7 @@ def update_package_file(package = nil, pkg_version = nil, binary_compression = n
     remote_binary = `curl -fsI #{remote_binary_url}`.lines.first.split[1] == '200'
     next unless remote_binary
     puts "\e[1A\e[KRemote #{package} package binary exists for #{arch}.\r".green
-    binary_sha256_hash[arch.to_sym] = `curl -Ls #{remote_binary_url} | sha256sum`.chomp.split.first
-    # What is the gitlab package binary PACKAGE_ID?
-    gitlab_binary_pkg_id = `curl --location \
-    "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{package}&package_version=#{pkg_version}_#{arch}" \
-         | jq -r ".[] | select(.name==\\"#{package}\\" and .version==\\"#{pkg_version}_#{arch}\\") | .id"`.chomp
-    # What is the hash of the gitlab package remote binary?
-    binary_sha256_hash[arch.to_sym] = `curl --location \
-    "#{CREW_GITLAB_PKG_REPO}/packages/#{gitlab_binary_pkg_id}/package_files" \
-         | jq -r "last(.[].file_sha256)"`.chomp
+    binary_sha256_hash[arch.to_sym] = PackageUtils.get_gitlab_pkginfo(package, pkg_version, arch, true)[:pkg_sha256]
   end
   # 5. Generate new or replacement binary_sha256 block and add to
   # package file.
@@ -1790,24 +1777,7 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
       # 3c. Check to see if an existing upload exists.
       puts "\e[1A\e[KChecking for existing upload ...\r".orange
       remote_binary = `curl -fsI #{new_url}`.lines.first.split[1] == '200'
-      if remote_binary
-        ## What is the gitlab package remote binary PACKAGE_ID?
-        # gitlab_remote_binary_pkg_id = `curl --location \
-        # "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{package}&package_version=#{new_version}_#{arch}" \
-        # | jq -r ".[] | select(.name==\\"#{package}\\" and .version==\\"#{new_version}_#{arch}\\") | .id"`.chomp
-        ## What is the hash of the gitlab package remote binary?
-        # gitlab_remote_binary_sha256 = `curl --location \
-        # "#{CREW_GITLAB_PKG_REPO}/packages/#{gitlab_remote_binary_pkg_id}/package_files" \
-        # | jq -r "last(.[].file_sha256)"`.chomp
-        ## What is the upload date of this gitlab package remote binary?
-        # gitlab_remote_binary_date = `curl --location \
-        # "#{CREW_GITLAB_PKG_REPO}/packages/#{gitlab_remote_binary_pkg_id}/package_files" \
-        # | jq -r "last(.[].created_at)"`.chomp
-
-        gitlab_pkginfo = get_gitlab_pkginfo(package, new_version, arch, true)
-        gitlab_remote_binary_sha256 = gitlab_pkginfo[:pkg_sha256]
-        puts "\e[1A\e[KURemote binary from #{gitlab_pkginfo[:pkg_upload_date]} for #{new_version}_#{arch} with sha256 #{gitlab_remote_binary_sha256} exists!\n".green
-      end
+      gitlab_remote_binary_sha256 = PackageUtils.get_gitlab_pkginfo(package, new_version, arch, true)[:pkg_sha256] if remote_binary
 
       # 3d. Check for local binary.
       if local_tarfile.nil? || !File.file?(local_tarfile)
@@ -1879,14 +1849,7 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
       output = `curl -# --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" --upload-file "#{local_tarfile}" "#{new_url}" | cat`.chomp
       puts "\e[1A\e[KChecking upload...\r".orange
       if output.include?('201 Created')
-        # What is the gitlab new upload PACKAGE_ID?
-        gitlab_new_upload_pkg_id = `curl --location \
-    "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{package}&package_version=#{new_version}_#{arch}" \
-         | jq -r ".[] | select(.name==\\"#{package}\\" and .version==\\"#{new_version}_#{arch}\\") | .id"`.chomp
-        # What is the hash of the new upload?
-        gitlab_new_upload_sha256 = `curl --location \
-    "#{CREW_GITLAB_PKG_REPO}/packages/#{gitlab_new_upload_pkg_id}/package_files" \
-         | jq -r "last(.[].file_sha256)"`.chomp
+        gitlab_new_upload_sha256 = PackageUtils.get_gitlab_pkginfo(package, new_version, arch, true)[:pkg_sha256]
         puts "\e[1A\e[KURemote binary for #{new_version}_#{arch} at #{new_url} has sha256 #{gitlab_new_upload_sha256}.\n".green
         if gitlab_new_upload_sha256 == local_sha256
           puts "#{output}\n".lightgreen
