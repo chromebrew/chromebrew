@@ -1824,12 +1824,15 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
           elsif @opt_force || Package.agree_default_no('Do you want to overwrite the existing upload')
             # 3j. If the hashes are different, then ask if the new binary
             #     should be uploaded. (Default to no.)
-            puts "\e[1A\e[KOverwriting existing upload...\r".orange
+            puts "\e[1A\e[KOverwriting!\r".orange
+            puts "\e[1A\e[K existing upload sha256: #{gitlab_remote_binary_sha256}\n".orange
+            puts "\e[1A\e[K new upload sha256:      #{local_sha256}\n.orange
             crewlog "#{arch} = #{local_sha256}"
             binary_sha256_hash[arch.to_sym] = local_sha256
             upload_binary = true
           else
             puts "\e[1A\e[K\nAnother build of #{File.basename(local_tarfile)} with sha256 #{gitlab_remote_binary_sha256} has already been uploaded.\n".lightred
+            puts "\e[1A\e[K(The local build of #{File.basename(local_tarfile)} has sha256 #{local_sha256}.)\n".lightred
             crewlog "#{arch} = #{gitlab_remote_binary_sha256}"
             binary_sha256_hash[arch.to_sym] = gitlab_remote_binary_sha256
           end
