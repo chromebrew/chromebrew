@@ -1,6 +1,6 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Yelp < Autotools
+class Yelp < Meson
   description 'Get help with GNOME'
   homepage 'https://wiki.gnome.org/Apps/Yelp'
   version "49.0-#{CREW_ICU_VER}"
@@ -43,7 +43,4 @@ class Yelp < Autotools
   depends_on 'zlib' # R
 
   gnome
-
-  autotools_configure_options '--enable-compile-warnings=minimum \
-    --enable-debug=no'
 end
