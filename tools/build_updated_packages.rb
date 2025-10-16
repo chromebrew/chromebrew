@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 3.5 (for Chromebrew)
+# build_updated_packages version 3.6 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -84,7 +84,7 @@ def update_hashes(name = nil)
     # Add manifests if we are in the right architecture.
     # Using crew reinstall -f package here updates the hashes for
     # binaries.
-    FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist" if system("yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
+    FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist" if system("yes | crew reinstall --regenerate-filelist #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
   end
 end
 
