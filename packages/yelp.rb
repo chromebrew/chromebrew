@@ -23,7 +23,7 @@ class Yelp < Meson
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gtk3' # R
+  depends_on 'gtk4' # R
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
