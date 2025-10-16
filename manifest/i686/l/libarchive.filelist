@@ -1,4 +1,4 @@
-# Total size: 8976521
+# Total size: 8991135
 /usr/local/bin/bsdcat
 /usr/local/bin/bsdcpio
 /usr/local/bin/bsdtar
@@ -8,7 +8,7 @@
 /usr/local/lib/libarchive.a
 /usr/local/lib/libarchive.so
 /usr/local/lib/libarchive.so.13
-/usr/local/lib/libarchive.so.13.8.1
+/usr/local/lib/libarchive.so.13.8.2
 /usr/local/lib/pkgconfig/libarchive.pc
 /usr/local/share/man/man1/bsdcat.1.zst
 /usr/local/share/man/man1/bsdcpio.1.zst
