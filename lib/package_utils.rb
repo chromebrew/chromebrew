@@ -98,4 +98,40 @@ class PackageUtils
 
     return pkg_version
   end
+
+  def self.get_gitlab_pkginfo(pkg_name, pkg_version, pkg_arch, verbose = nil)
+    # This is largely rehashing self.get_binary_url(pkg) using the
+    # curl and jq binaries for debugging purposes.
+    # outputs are :pkg_file_name, :pkg_sha256, :pkg_upload_date :pkg_url
+    # Usage:
+    # gitlab_pkginfo = PackageUtils.get_gitlab_pkginfo(package, pkg_version, arch, true)
+    # binary_sha256_hash[arch.to_sym] = gitlab_pkginfo[:pkg_sha256]
+
+    verbose = CREW_VERBOSE if verbose.nil?
+    # Let's avoid for now an early abort in case we are looking for a
+    # package with a non-standard binary_compression.
+    # fallback_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg_name}/#{pkg_version}_#{pkg_arch}/#{pkg_name}-#{pkg_version}-chromeos-#{pkg_arch}.#{pkg.binary_compression}"
+    # abort "Gitlab upload at #{fallback_url} not found."lightred unless `curl -fsI "#{fallback_url}"`.lines.first.split[1] == '200'
+
+    # What is the gitlab package binary PACKAGE_ID?
+    gitlab_binary_pkg_id = `curl -s --location \
+    "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}&package_version=#{pkg_version}_#{pkg_arch}" \
+         | jq -r ".[] | select(.name==\\"#{pkg_name}\\" and .version==\\"#{pkg_version}_#{pkg_arch}\\") | .id"`.chomp
+    # What is the hash of the gitlab package remote binary file name?
+    pkg_file_name = `curl -s --location \
+    "#{CREW_GITLAB_PKG_REPO}/#{gitlab_binary_pkg_id}/package_files" \
+         | jq -r "last(.[].file_name)"`.chomp
+    # What is the hash of the gitlab package remote binary?
+    pkg_sha256 = `curl -s --location \
+    "#{CREW_GITLAB_PKG_REPO}/#{gitlab_binary_pkg_id}/package_files" \
+         | jq -r "last(.[].file_sha256)"`.chomp
+    # What is the upload date of this gitlab package remote binary?
+    pkg_upload_date = `curl -s --location \
+    "#{CREW_GITLAB_PKG_REPO}/#{gitlab_binary_pkg_id}/package_files" \
+         | jq -r "last(.[].created_at)"`.chomp
+    pkg_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg_name}/#{pkg_version}_#{pkg_arch}/#{pkg_file_name}"
+    puts "\e[1A\e[K#{pkg_name.capitalize} #{pkg_version} has a#{'n' if pkg_arch.start_with?('a', 'e', 'i', 'o', 'u')} #{pkg_arch} upload on Gitlab.\n".green
+    puts "\e[1A\e[K sha256: #{pkg_sha256}\n uploaded: #{pkg_upload_date}\n url: #{pkg_url}\n".orange if verbose
+    return { pkg_file_name: pkg_file_name, pkg_sha256: pkg_sha256, pkg_upload_date: pkg_upload_date, pkg_url: pkg_url }
+  end
 end

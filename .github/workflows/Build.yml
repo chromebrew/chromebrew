@@ -30,7 +30,7 @@ on:
         type: boolean
         default: 'true'
       pr_label:
-        description: "PR Label"
+        description: "PR Label (Not Title)"
         required: false
       max_build_time:
         description: "Maximum Build Time (hours)"

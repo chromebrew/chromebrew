@@ -26,7 +26,7 @@ on:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
       pr_label:
-        description: "PR Label"
+        description: "PR Label (Not Title)"
         required: false
       max_build_time:
         description: "Maximum Build Time (hours)"
