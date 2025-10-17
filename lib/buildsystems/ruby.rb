@@ -121,14 +121,6 @@ class RUBY < Package
     puts "Examining #{@ruby_gem_name} gem...".orange
     @gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
     gem_info(@ruby_gem_name)
-    # installed_gem_search = [`gem list -l -e #{@ruby_gem_name}`.chomp.to_s].grep(/#{@ruby_gem_name}/)[0]
-    # if installed_gem_search
-    # installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
-    # @gem_installed_version = installed_gem_info[1]
-    # @gem_outdated = (Gem::Version.new(@ruby_gem_version) > Gem::Version.new(@gem_installed_version))
-    # @gem_latest_version_installed = Gem::Version.new(@ruby_gem_version) <= Gem::Version.new(@gem_installed_version)
-    # crewlog "@ruby_gem_version: #{@ruby_gem_version} @gem_installed_version: #{@gem_installed_version} @gem_outdated: #{@gem_outdated} @gem_latest_version_installed: #{@gem_latest_version_installed}"
-    # end
 
     # Create a filelist from the gem if the latest gem version is
     # installed.
@@ -174,20 +166,6 @@ class RUBY < Package
       return
     end
     gem_info(@ruby_gem_name)
-    # installed_gem_search = [`gem list --no-update-sources -l -e #{@ruby_gem_name}`.chomp.to_s].grep(/#{@ruby_gem_name}/)[0]
-    # if installed_gem_search
-    # installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
-    # @gem_installed_version = installed_gem_info[1]
-    # @gem_outdated = (Gem::Version.new(@ruby_gem_version) > Gem::Version.new(@gem_installed_version))
-    # @gem_latest_version_installed = Gem::Version.new(@ruby_gem_version) <= Gem::Version.new(@gem_installed_version)
-    # crewlog "@ruby_gem_version: #{@ruby_gem_version} @gem_installed_version: #{@gem_installed_version} @gem_outdated: #{@gem_outdated} @gem_latest_version_installed: #{@gem_latest_version_installed}"
-    # else
-    ## If the current gem being installed is not installed this should
-    ## be false. This will also handle cases of the current installed
-    ## gem as per 'gem list' being the same version as the version
-    ## being upgraded to.
-    # @gem_latest_version_installed = false
-    # end
 
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"
     puts "#{@ruby_gem_name.capitalize} needs a binary gem built!".orange unless @gem_binary_build_needed.blank?
