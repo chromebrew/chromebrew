@@ -459,6 +459,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'vidstab', anitya_pkg: 'vid.stab', comments: 'Prefer to GitHub' },
     { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'wayland_info', anitya_pkg: 'wayland-utils', comments: '' },
+    { pkg_name: 'webkit2gtk_4_1', anitya_pkg: 'webkitgtk~stable', comments: '' },
     { pkg_name: 'webkitgtk_6', anitya_pkg: 'webkitgtk~stable', comments: '' },
     { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' },
     { pkg_name: 'xercesc', anitya_pkg: 'xerces-c', comments: 'Prefer to GitHub' },
