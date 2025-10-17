@@ -10,17 +10,22 @@ class Py3_ruff < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '964e58d154021123d74a8326cb2f0c397255822b458a2e164c9ff00e2a8c8000',
-     armv7l: '964e58d154021123d74a8326cb2f0c397255822b458a2e164c9ff00e2a8c8000',
-       i686: '4c25344726b93572937cfa7f95c07f54b8b2230570de4b935e5e96727edb667b',
-     x86_64: '052b1e5b51c6fcb71f5cda3439eb500ec8cfbe0bbe3db40aaa0c41002ff170a2'
+    aarch64: '0f2f0a392b93b1687113997c4f108755246d4feedc2e3196d0bc166497b19063',
+     armv7l: '0f2f0a392b93b1687113997c4f108755246d4feedc2e3196d0bc166497b19063',
+       i686: 'a98f950050ee5c228fc664655c460a77e74dd5adfeed64f47a1892a0c3060765',
+     x86_64: '9ddb31b7f74457399be0bce1ff79604e5ad0d47f0bbb08be512cf5eab29eb450'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'llvm_dev' => :build
   depends_on 'py3_maturin' => :build
   depends_on 'python3' # R
   depends_on 'rust' => :build
 
+  no_env_options
+  no_lto
   no_source_build
+  # ENV['RUSTFLAGS'] = '-Clinker-plugin-lto -Clinker=clang -Clto=off -Clink-arg=-fuse-ld=lld'
+  pip_pre_configure_options "RUSTFLAGS='-Clinker-plugin-lto -Clinker=clang -Clto=off -Clink-arg=-fuse-ld=lld'"
 end
