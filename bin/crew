@@ -337,6 +337,8 @@ def update
     end
   end
 
+  # Don't be clever about checking to see if updatable packages can be
+  # updated here. Let tools/build_updated_packages.rb handle that.
   if CREW_UNATTENDED && updatable_packages.length.positive?
     puts updatable_packages.to_json
   elsif can_be_updated.positive?
