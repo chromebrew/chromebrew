@@ -1,4 +1,4 @@
-# Total size: 1473715
+# Total size: 1473235
 /usr/local/bin/xml2-config
 /usr/local/bin/xmlcatalog
 /usr/local/bin/xmllint
@@ -54,5 +54,5 @@
 /usr/local/lib/cmake/libxml2/libxml2-export.cmake
 /usr/local/lib/libxml2.so
 /usr/local/lib/libxml2.so.16
-/usr/local/lib/libxml2.so.16.1.0
+/usr/local/lib/libxml2.so.16.1.1
 /usr/local/lib/pkgconfig/libxml-2.0.pc
