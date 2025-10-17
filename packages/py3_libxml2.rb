@@ -12,9 +12,9 @@ class Py3_libxml2 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '70eb4306e4d9423a526a65ded96b09fecd02516888bacc37dedda686f69c502b',
-     armv7l: '70eb4306e4d9423a526a65ded96b09fecd02516888bacc37dedda686f69c502b',
-       i686: 'fe7d08b6e0a806bad7a9da897855ed2ede8eaa6cab540d0a3c29abccd9baf8fb',
+    aarch64: '895baa31f28448f33d4718a9344f6a6f76f776cbbc61dbfc1cada50c4ecc8f09',
+     armv7l: '895baa31f28448f33d4718a9344f6a6f76f776cbbc61dbfc1cada50c4ecc8f09',
+       i686: 'a4f2a5578ede036fb088af2c14b1afcc133e294d45aa3ec16793d232359cddac',
      x86_64: '306e60eeebba8b24bb040362608e1479fc25f1ec7c838313280d850915d95e16'
   })
 
