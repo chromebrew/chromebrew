@@ -10,8 +10,8 @@ class Py3_ruff < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0f2f0a392b93b1687113997c4f108755246d4feedc2e3196d0bc166497b19063',
-     armv7l: '0f2f0a392b93b1687113997c4f108755246d4feedc2e3196d0bc166497b19063',
+    aarch64: 'e2a78e8e31abf66e812e3b775cecdd48b3e1ca869512b5fd63bf284c4a38aaf5',
+     armv7l: 'e2a78e8e31abf66e812e3b775cecdd48b3e1ca869512b5fd63bf284c4a38aaf5',
        i686: 'a98f950050ee5c228fc664655c460a77e74dd5adfeed64f47a1892a0c3060765',
      x86_64: '9ddb31b7f74457399be0bce1ff79604e5ad0d47f0bbb08be512cf5eab29eb450'
   })
@@ -26,6 +26,5 @@ class Py3_ruff < Pip
   no_env_options
   no_lto
   no_source_build
-  # ENV['RUSTFLAGS'] = '-Clinker-plugin-lto -Clinker=clang -Clto=off -Clink-arg=-fuse-ld=lld'
-  pip_pre_configure_options "RUSTFLAGS='-Clinker-plugin-lto -Clinker=clang -Clto=off -Clink-arg=-fuse-ld=lld'"
+  ENV['RUSTFLAGS'] = '-Clinker-plugin-lto -Clinker=clang -Clto=off -Clink-arg=-fuse-ld=lld'
 end
