@@ -3,11 +3,11 @@ require 'package'
 class Libedit < Package
   description 'An autotooled and libtoolized port of the NetBSD Editline library (libedit).'
   homepage 'https://thrysoee.dk/editline/'
-  version '20250104-3.1'
+  version '20251016-3.1'
   compatibility 'all'
   license 'BSD-2'
   source_url "https://thrysoee.dk/editline/libedit-#{version}.tar.gz"
-  source_sha256 '23792701694550a53720630cd1cd6167101b5773adddcb4104f7345b73a568ac'
+  source_sha256 '21362b00653bbfc1c71f71a7578da66b5b5203559d43134d2dd7719e313ce041'
   binary_compression 'tar.zst'
 
   binary_sha256({
