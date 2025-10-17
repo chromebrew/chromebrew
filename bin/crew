@@ -1595,7 +1595,7 @@ def archive_package(crew_archive_dest)
       @pkg_name_lockfile = CrewLockfile.new "#{crew_archive_dest}/#{pkg_name}.lock"
       begin
         @pkg_name_lockfile.lock
-        system "tar c * | nice -n 20 zstd -T0 --ultra -20 -o #{crew_archive_dest}/#{pkg_name} -"
+        system "tar c * | nice -n 20 zstd -T0 --ultra -20 -f -o #{crew_archive_dest}/#{pkg_name} -"
       ensure
         @pkg_name_lockfile.unlock
       end
