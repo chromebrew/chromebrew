@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 3.6 (for Chromebrew)
+# build_updated_packages version 3.7 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -100,6 +100,12 @@ changed_files = `git diff HEAD --name-only`.chomp.split
 changed_files_previous_commit = `git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)`.chomp.split
 updated_packages = changed_files.select { |c| c.include?('packages/') }
 updated_packages.push(*changed_files_previous_commit.select { |c| c.include?('packages/') })
+
+# Use crew update to add updated packages, which will find version
+# changes that aren't reflected by git file updates.
+JSON.parse(`CREW_UNATTENDED=1 CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=libxml2 crew update`.chomp).each do |updated_pkg|
+  updated_packages.push("packages/#{updated_pkg}.rb")
+end
 
 if updated_packages.empty?
   puts 'No packages need to be updated.'.orange

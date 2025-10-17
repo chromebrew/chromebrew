@@ -21,6 +21,24 @@ def check_gem_binary_build_needed(ruby_gem_name = nil, ruby_gem_version = nil)
   return @build_needed
 end
 
+def gem_info(ruby_gem_name = nil)
+  # @ruby_gem_version comes from the set_vars function.
+  installed_gem_search = [`gem list --no-update-sources -l -e #{ruby_gem_name}`.chomp.to_s].grep(/#{ruby_gem_name}/)[0]
+  if installed_gem_search
+    installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
+    @gem_installed_version = installed_gem_info[1]
+    @gem_outdated = (Gem::Version.new(@ruby_gem_version) > Gem::Version.new(@gem_installed_version))
+    @gem_latest_version_installed = Gem::Version.new(@ruby_gem_version) <= Gem::Version.new(@gem_installed_version)
+  else
+    # If the current gem being installed is not installed this should
+    # be false. This will also handle cases of the current installed
+    # gem as per 'gem list' being the same version as the version
+    # being upgraded to.
+    @gem_latest_version_installed = false
+  end
+  crewlog "@ruby_gem_version: #{@ruby_gem_version} gem_installed_version: #{@gem_installed_version} @gem_outdated: #{@gem_outdated} @gem_latest_version_installed: #{@gem_latest_version_installed}"
+end
+
 def set_vars(passed_name = nil, passed_version = nil)
   # crewlog "Setting gem variables... name: #{passed_name}, version: #{passed_version}"
   # This assumes the package class name starts with 'Ruby_' and
@@ -67,7 +85,12 @@ def set_vars(passed_name = nil, passed_version = nil)
 end
 
 def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
-  files = `gem install #{gem_name} &>/dev/null ; gem contents #{gem_name}`.chomp.split
+  crewlog "@gem_latest_version_installed: #{@gem_latest_version_installed}"
+  files = if @gem_latest_version_installed
+            `gem contents #{gem_name}`.chomp.split
+          else
+            `gem install #{gem_name} &>/dev/null ; gem contents #{gem_name}`.chomp.split
+          end
   exes = files.grep(%r{/exe/|/bin/})
   # Gem.bindir should end up being #{CREW_PREFIX}/bin.
   exes&.map! { |x| x.gsub(%r{^.*(/exe/|/bin/)}, "#{Gem.bindir}/") }
@@ -97,14 +120,15 @@ class RUBY < Package
     set_vars(name, version)
     puts "Examining #{@ruby_gem_name} gem...".orange
     @gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
-    installed_gem_search = [`gem list -l -e #{@ruby_gem_name}`.chomp.to_s].grep(/#{@ruby_gem_name}/)[0]
-    if installed_gem_search
-      installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
-      @gem_installed_version = installed_gem_info[1]
-      @gem_outdated = (Gem::Version.new(@ruby_gem_version) > Gem::Version.new(@gem_installed_version))
-      @gem_latest_version_installed = Gem::Version.new(@ruby_gem_version) <= Gem::Version.new(@gem_installed_version)
-      crewlog "@ruby_gem_version: #{@ruby_gem_version} @gem_installed_version: #{@gem_installed_version} @gem_outdated: #{@gem_outdated} @gem_latest_version_installed: #{@gem_latest_version_installed}"
-    end
+    gem_info(@ruby_gem_name)
+    # installed_gem_search = [`gem list -l -e #{@ruby_gem_name}`.chomp.to_s].grep(/#{@ruby_gem_name}/)[0]
+    # if installed_gem_search
+    # installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
+    # @gem_installed_version = installed_gem_info[1]
+    # @gem_outdated = (Gem::Version.new(@ruby_gem_version) > Gem::Version.new(@gem_installed_version))
+    # @gem_latest_version_installed = Gem::Version.new(@ruby_gem_version) <= Gem::Version.new(@gem_installed_version)
+    # crewlog "@ruby_gem_version: #{@ruby_gem_version} @gem_installed_version: #{@gem_installed_version} @gem_outdated: #{@gem_outdated} @gem_latest_version_installed: #{@gem_latest_version_installed}"
+    # end
 
     # Create a filelist from the gem if the latest gem version is
     # installed.
@@ -149,20 +173,21 @@ class RUBY < Package
       puts "#{@ruby_gem_name} #{@gem_installed_version} is properly installed.".lightgreen
       return
     end
-    installed_gem_search = [`gem list --no-update-sources -l -e #{@ruby_gem_name}`.chomp.to_s].grep(/#{@ruby_gem_name}/)[0]
-    if installed_gem_search
-      installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
-      @gem_installed_version = installed_gem_info[1]
-      @gem_outdated = (Gem::Version.new(@ruby_gem_version) > Gem::Version.new(@gem_installed_version))
-      @gem_latest_version_installed = Gem::Version.new(@ruby_gem_version) <= Gem::Version.new(@gem_installed_version)
-      crewlog "@ruby_gem_version: #{@ruby_gem_version} @gem_installed_version: #{@gem_installed_version} @gem_outdated: #{@gem_outdated} @gem_latest_version_installed: #{@gem_latest_version_installed}"
-    else
-      # If the current gem being installed is not installed this should
-      # be false. This will also handle cases of the current installed
-      # gem as per 'gem list' being the same version as the version
-      # being upgraded to.
-      @gem_latest_version_installed = false
-    end
+    gem_info(@ruby_gem_name)
+    # installed_gem_search = [`gem list --no-update-sources -l -e #{@ruby_gem_name}`.chomp.to_s].grep(/#{@ruby_gem_name}/)[0]
+    # if installed_gem_search
+    # installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
+    # @gem_installed_version = installed_gem_info[1]
+    # @gem_outdated = (Gem::Version.new(@ruby_gem_version) > Gem::Version.new(@gem_installed_version))
+    # @gem_latest_version_installed = Gem::Version.new(@ruby_gem_version) <= Gem::Version.new(@gem_installed_version)
+    # crewlog "@ruby_gem_version: #{@ruby_gem_version} @gem_installed_version: #{@gem_installed_version} @gem_outdated: #{@gem_outdated} @gem_latest_version_installed: #{@gem_latest_version_installed}"
+    # else
+    ## If the current gem being installed is not installed this should
+    ## be false. This will also handle cases of the current installed
+    ## gem as per 'gem list' being the same version as the version
+    ## being upgraded to.
+    # @gem_latest_version_installed = false
+    # end
 
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"
     puts "#{@ruby_gem_name.capitalize} needs a binary gem built!".orange unless @gem_binary_build_needed.blank?
@@ -181,6 +206,8 @@ class RUBY < Package
       puts "Installing #{@ruby_gem_name} gem #{@ruby_gem_version}...".orange
       Kernel.system "gem install --no-update-sources -N #{@ruby_gem_name} --conservative"
     end
+    # Check gem versions again.
+    gem_info(@ruby_gem_name)
     @gems_needing_cleanup = Array(@gems_needing_cleanup) << @ruby_gem_name unless @gem_latest_version_installed
     save_gem_filelist(@ruby_gem_name, @gem_filelist_path)
     @ruby_install_extras&.call
