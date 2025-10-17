@@ -1,11 +1,11 @@
-# Total size: 1667410
+# Total size: 1665794
 /usr/local/include/editline/readline.h
 /usr/local/include/histedit.h
 /usr/local/lib/libedit.a
 /usr/local/lib/libedit.la
 /usr/local/lib/libedit.so
 /usr/local/lib/libedit.so.0
-/usr/local/lib/libedit.so.0.0.75
+/usr/local/lib/libedit.so.0.0.76
 /usr/local/lib/pkgconfig/libedit.pc
 /usr/local/share/man/man3/editline.3.zst
 /usr/local/share/man/man3/el_deletestr.3.zst
