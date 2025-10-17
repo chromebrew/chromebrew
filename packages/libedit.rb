@@ -3,18 +3,18 @@ require 'package'
 class Libedit < Package
   description 'An autotooled and libtoolized port of the NetBSD Editline library (libedit).'
   homepage 'https://thrysoee.dk/editline/'
-  version '20250104-3.1'
+  version '20251016-3.1'
   compatibility 'all'
   license 'BSD-2'
   source_url "https://thrysoee.dk/editline/libedit-#{version}.tar.gz"
-  source_sha256 '23792701694550a53720630cd1cd6167101b5773adddcb4104f7345b73a568ac'
+  source_sha256 '21362b00653bbfc1c71f71a7578da66b5b5203559d43134d2dd7719e313ce041'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '77153714440405f628f595eee6768dbd48a15c48724d87e73329110763334f8c',
-     armv7l: '77153714440405f628f595eee6768dbd48a15c48724d87e73329110763334f8c',
-       i686: '5c11ea524b881e6f90f62fcfa354716acd13ab5b5d94f3a71071568be46442f5',
-     x86_64: '46ff742ce0cc8cea1ddc4c0c2c3a4db5ffb4d81d30d728b5c9162f51ecfc76be'
+    aarch64: 'df991d3222c3861376796273e2cac18c23a5b3f909b3fe13d13ae794776a4335',
+     armv7l: 'df991d3222c3861376796273e2cac18c23a5b3f909b3fe13d13ae794776a4335',
+       i686: '9b2f5431f8edbf727d9f413e46f07c15d4e5ff2c4e9c3006dad3ca42f12bba0e',
+     x86_64: '5becd6c50a6a867a2e37cbdc601a0f02ccc57cc999efe445b84ad57514c030a2'
   })
 
   depends_on 'glibc' # R
