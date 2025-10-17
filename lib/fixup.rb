@@ -13,15 +13,16 @@ require_gem('highline')
 # All needed constants & variables should be defined here in case they
 # have not yet been loaded or fixup is being run standalone.
 
-CREW_VERBOSE ||= ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
+CREW_UNATTENDED  ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
+CREW_VERBOSE     ||= ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
 
-CREW_PREFIX ||= '/usr/local'
-CREW_LIB_PATH ||= File.join(CREW_PREFIX, 'lib/crew')
+CREW_PREFIX      ||= '/usr/local'
+CREW_LIB_PATH    ||= File.join(CREW_PREFIX, 'lib/crew')
 
 CREW_CONFIG_PATH ||= File.join(CREW_PREFIX, 'etc/crew')
-CREW_META_PATH ||= File.join(CREW_CONFIG_PATH, 'meta')
-CREW_REPO   ||= ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git') unless defined?(CREW_REPO)
-CREW_BRANCH ||= ENV.fetch('CREW_BRANCH', 'master') unless defined?(CREW_BRANCH)
+CREW_META_PATH   ||= File.join(CREW_CONFIG_PATH, 'meta')
+CREW_REPO        ||= ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git') unless defined?(CREW_REPO)
+CREW_BRANCH      ||= ENV.fetch('CREW_BRANCH', 'master') unless defined?(CREW_BRANCH)
 
 load "#{CREW_LIB_PATH}/lib/const.rb"
 load "#{CREW_LIB_PATH}/lib/package.rb"
@@ -277,7 +278,7 @@ if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patc
   # errors on arm.
   # Running find twice because it involves less ruby overhead than saving
   # the output in memory, and also doing that in ruby is VERY SLOW.
-  puts 'Please wait while upx is run to uncompress binaries...'.lightblue
+  puts 'Please wait while upx is run to uncompress binaries...'.lightblue unless CREW_UNATTENDED
   Kernel.system "#{CREW_PREFIX}/bin/find #{CREW_PREFIX}/bin -type f -print0 | xargs -0 -P#{CREW_NPROC} -n1 -r bash -c 'header=$(head -c4 ${0}); elfheader='$(printf '\\\177ELF')' ; arheader=\\!\\<ar ; case $header in $elfheader|$arheader) upx -qq -d ${0} ;; esac'", %i[err] => File::NULL, exception: false
 
   unless CREW_GLIBC_INTERPRETER.blank?

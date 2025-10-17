@@ -274,25 +274,26 @@ def update
 
     ## Update crew from git.
     # Set sparse-checkout folders.
-    system "git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools", chdir: CREW_LIB_PATH, exception: true
-    system 'git sparse-checkout reapply', chdir: CREW_LIB_PATH, exception: true
-    system "git fetch #{CREW_REPO} #{CREW_BRANCH}", chdir: CREW_LIB_PATH, exception: true
+    @silent = CREW_UNATTENDED ? '&>/dev/null' : ''
+    system "git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools #{@silent}", chdir: CREW_LIB_PATH, exception: true
+    system "git sparse-checkout reapply  #{@silent}", chdir: CREW_LIB_PATH, exception: true
+    system "git fetch #{CREW_REPO} #{CREW_BRANCH}  #{@silent}", chdir: CREW_LIB_PATH, exception: true
     # Now that we've fetched all the new changes, see if lib/const.rb was changed.
     # We do this before resetting to FETCH_HEAD because we lose the original HEAD when doing so.
     to_update = `cd #{CREW_LIB_PATH} && git show --name-only HEAD..FETCH_HEAD`.include?('lib/const.rb')
-    system('git reset --hard FETCH_HEAD', chdir: CREW_LIB_PATH, exception: true)
+    system("git reset --hard FETCH_HEAD  #{@silent}", chdir: CREW_LIB_PATH, exception: true)
 
     if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
       puts 'Updating RubyGems.'.orange
-      system 'gem update -N --system'
-      system 'gem cleanup'
+      system "gem update -N --system  #{@silent}"
+      system "gem cleanup  #{@silent}"
     end
 
-    puts 'Package lists, crew, and library updated.'
+    puts 'Package lists, crew, and library updated.' unless CREW_UNATTENDED
 
     # If lib/const.rb was changed, CREW_VERSION was bumped, so we re-run crew update.
     if to_update
-      puts 'Restarting crew update since there is an updated crew version.'.lightcyan
+      puts 'Restarting crew update since there is an updated crew version.'.lightcyan unless CREW_UNATTENDED
       puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if CREW_VERBOSE
       exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
     end
@@ -336,7 +337,9 @@ def update
     end
   end
 
-  if CREW_UNATTENDED && can_be_updated.positive?
+  # Don't be clever about checking to see if updatable packages can be
+  # updated here. Let tools/build_updated_packages.rb handle that.
+  if CREW_UNATTENDED && updatable_packages.length.positive?
     puts updatable_packages.to_json
   elsif can_be_updated.positive?
     puts "\n#{can_be_updated} packages can be updated."
@@ -1592,7 +1595,7 @@ def archive_package(crew_archive_dest)
       @pkg_name_lockfile = CrewLockfile.new "#{crew_archive_dest}/#{pkg_name}.lock"
       begin
         @pkg_name_lockfile.lock
-        system "tar c * | nice -n 20 zstd -T0 --ultra -20 -o #{crew_archive_dest}/#{pkg_name} -"
+        system "tar c * | nice -n 20 zstd -T0 --ultra -20 -f -o #{crew_archive_dest}/#{pkg_name} -"
       ensure
         @pkg_name_lockfile.unlock
       end
