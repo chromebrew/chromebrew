@@ -3,10 +3,10 @@ require 'buildsystems/autotools'
 class Less < Autotools
   description 'GNU less is a program similar to more, but which allows backward movement in the file as well as forward movement.'
   homepage 'https://www.gnu.org/software/less/'
-  version '685'
+  version '685-1'
   license 'GPL-3 or BSD-2'
   compatibility 'all'
-  source_url "https://www.greenwoodsoftware.com/less/less-#{version}.tar.gz"
+  source_url "https://www.greenwoodsoftware.com/less/less-#{version.split('-').first}.tar.gz"
   source_sha256 '2701041e767e697ee420ce0825641cedc8f20b51576abe99d92c1666d332e9dc'
   binary_compression 'tar.zst'
 
