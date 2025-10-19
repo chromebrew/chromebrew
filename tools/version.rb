@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.5 (for Chromebrew)
+# version.rb version 3.6 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
 
@@ -350,6 +350,7 @@ if filelist.length.positive?
               file.sub!(old_hash[arch], new_hash[arch])
             end
             File.write(filename, file)
+            puts "Successfully updated #{filename} to version #{upstream_version}.".lightgreen
             local_repo_root = ''
             Dir.chdir(ENV.fetch('PWD', nil)) do
               local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
