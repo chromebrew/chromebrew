@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_arrow < Pip
   description 'Arrow is a Python library that offers a sensible and human-friendly approach to creating, manipulating, formatting and converting dates, times and timestamps.'
   homepage 'https://arrow.readthedocs.io/'
-  version "1.3.0-#{CREW_PY_VER}"
+  version "1.4.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
