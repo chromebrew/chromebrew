@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_iniconfig < Pip
   description 'Iniconfig provides simple config-ini parsing.'
   homepage 'https://github.com/pytest-dev/iniconfig/'
-  version "2.1.0-#{CREW_PY_VER}"
+  version "2.3.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'da66a979b986c9a4af2d96f80ff91a5d5fd6901396d66da2e868d25d4a5e4847',
-     armv7l: 'da66a979b986c9a4af2d96f80ff91a5d5fd6901396d66da2e868d25d4a5e4847',
-       i686: 'ea7fe2dfa476581cbe47f35941546492dfdd8915b9f77a4a4e1da8f920ec735e',
-     x86_64: 'eccf8c9425c203e90d727db66d4c8e66da371a82b8ea3a484f3d4e4403b7c845'
+    aarch64: 'c025b5aa9e04b27b92229968dfb06fa4949fbb2ced56c468fe32113405243471',
+     armv7l: 'c025b5aa9e04b27b92229968dfb06fa4949fbb2ced56c468fe32113405243471',
+       i686: '274b5de6ea2c73932f9d506d495e80f9803c1374b41d454c77921828b945c850',
+     x86_64: 'e6319167d519d2b50718cdb3a6bee0d2443c06b70cef093e783cd04aa7b40185'
   })
 
   depends_on 'python3' => :build
