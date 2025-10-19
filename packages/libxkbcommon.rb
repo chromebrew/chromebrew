@@ -1,37 +1,25 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libxkbcommon < Package
+class Libxkbcommon < Meson
   description 'Keymap handling library for toolkits and window systems'
   homepage 'https://xkbcommon.org'
-  version '1.0.3'
+  version '1.2.1'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://xkbcommon.org/download/libxkbcommon-#{version}.tar.xz"
-  source_sha256 'a2202f851e072b84e64a395212cbd976ee18a8ee602008b0bad02a13247dbc52'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/xkbcommon/libxkbcommon.git'
+  git_hashtag "xkbcommon-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '65ba534f892176bd4a2b7255e0083e59c223165219bb976c8b96d8475f54640e',
-     armv7l: '65ba534f892176bd4a2b7255e0083e59c223165219bb976c8b96d8475f54640e',
-     x86_64: '8589594e19b3fd9ceca2a8449fe88a9e07d7f20d4525337e532672660cb988ea'
+    aarch64: 'f3645e90b344cdbf0c577b5c325922c1653222963f2b31cf69507c94f2333dc1',
+     armv7l: 'f3645e90b344cdbf0c577b5c325922c1653222963f2b31cf69507c94f2333dc1',
+     x86_64: '3f4690034770a2ded75329917a95f6f2eccfafe3eb4c80ba90f599c182331141'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxml2' # R
+  depends_on 'wayland' # R
   depends_on 'wayland_protocols'
   depends_on 'xkeyboard_config'
-
-  def self.build
-    system "meson \
-            #{CREW_MESON_OPTIONS} \
-            builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.check
-    system 'ninja -C builddir test'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
 end
