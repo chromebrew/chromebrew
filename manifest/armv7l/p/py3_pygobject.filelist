@@ -1,7 +1,7 @@
-# Total size: 1027484
+# Total size: 1041398
 /usr/local/include/pygobject-3.0/pygobject.h
 /usr/local/lib/pkgconfig/pygobject-3.0.pc
-/usr/local/lib/python3.13/site-packages/PyGObject-3.54.3.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/PyGObject-3.54.5.dist-info/METADATA
 /usr/local/lib/python3.13/site-packages/gi/__init__.py
 /usr/local/lib/python3.13/site-packages/gi/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/gi/__pycache__/_constants.cpython-313.pyc
@@ -40,6 +40,7 @@
 /usr/local/lib/python3.13/site-packages/gi/overrides/Gdk.py
 /usr/local/lib/python3.13/site-packages/gi/overrides/GdkPixbuf.py
 /usr/local/lib/python3.13/site-packages/gi/overrides/Gio.py
+/usr/local/lib/python3.13/site-packages/gi/overrides/GioUnix.py
 /usr/local/lib/python3.13/site-packages/gi/overrides/Gtk.py
 /usr/local/lib/python3.13/site-packages/gi/overrides/Pango.py
 /usr/local/lib/python3.13/site-packages/gi/overrides/__init__.py
@@ -49,6 +50,7 @@
 /usr/local/lib/python3.13/site-packages/gi/overrides/__pycache__/Gdk.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/gi/overrides/__pycache__/GdkPixbuf.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/gi/overrides/__pycache__/Gio.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/gi/overrides/__pycache__/GioUnix.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/gi/overrides/__pycache__/Gtk.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/gi/overrides/__pycache__/Pango.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/gi/overrides/__pycache__/__init__.cpython-313.pyc
