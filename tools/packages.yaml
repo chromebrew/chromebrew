@@ -1415,6 +1415,11 @@ url: https://chromium.googlesource.com/chromium/tools/depot_tools.git
 activity: high
 ---
 kind: url
+name: deskreen
+url: https://github.com/pavlobu/deskreen/releases
+activity: none
+---
+kind: url
 name: desktop_file_utils
 url: https://www.freedesktop.org/software/desktop-file-utils/releases/
 activity: none
