@@ -1,4 +1,4 @@
-# Total size: 382521190
+# Total size: 382535554
 /usr/local/bin/termius
 /usr/local/share/Termius/LICENSE.electron.txt
 /usr/local/share/Termius/LICENSES.chromium.html
@@ -126,9 +126,14 @@
 /usr/local/share/Termius/resources/app.asar.unpacked/node_modules/@termius/windows-iap-bridge/build/Release/binding.node/index.js
 /usr/local/share/Termius/resources/app.asar.unpacked/node_modules/@termius/windows-iap-bridge/lib/main.js
 /usr/local/share/Termius/resources/app.asar.unpacked/node_modules/@termius/windows-iap-bridge/package.json
+/usr/local/share/Termius/resources/app.asar.unpacked/out/shell-integration/.tcshrc
 /usr/local/share/Termius/resources/app.asar.unpacked/out/shell-integration/bashrc.sh
 /usr/local/share/Termius/resources/app.asar.unpacked/out/shell-integration/shrc.sh
 /usr/local/share/Termius/resources/app.asar.unpacked/out/shell-integration/xdg_data/fish/vendor_conf.d/termius.fish
+/usr/local/share/Termius/resources/app.asar.unpacked/out/shell-integration/zdotdir/.zlogin
+/usr/local/share/Termius/resources/app.asar.unpacked/out/shell-integration/zdotdir/.zprofile
+/usr/local/share/Termius/resources/app.asar.unpacked/out/shell-integration/zdotdir/.zshenv
+/usr/local/share/Termius/resources/app.asar.unpacked/out/shell-integration/zdotdir/.zshrc
 /usr/local/share/Termius/resources/package-type
 /usr/local/share/Termius/resources/termius.apparmor
 /usr/local/share/Termius/snapshot_blob.bin
