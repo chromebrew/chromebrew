@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Pcre2 < CMake
   description 'The PCRE2 package contains a new generation of the Perl Compatible Regular Expression libraries.'
   homepage 'http://pcre.org/'
-  version '10.46'
+  version '10.47'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/PCRE2Project/pcre2.git'
@@ -11,10 +11,10 @@ class Pcre2 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ca29704af73d52556b858ab61cb41d815185bee3726f441e04e9fee91628fc10',
-     armv7l: 'ca29704af73d52556b858ab61cb41d815185bee3726f441e04e9fee91628fc10',
-       i686: 'cb1afa9a9b11cf5f4b26443d16cddf0995b3b517da513592d8082b0666af9aa5',
-     x86_64: 'cf2fd6458fc780eb92c2511933f66ba29607e91cca76f70894d16c9e3aa27368'
+    aarch64: '7ea96601b02228bed691562eaeee0cceb16afc51f9e936dd70d40cbfd5de10f7',
+     armv7l: '7ea96601b02228bed691562eaeee0cceb16afc51f9e936dd70d40cbfd5de10f7',
+       i686: 'b9da911c67074d3e4d39dc804ff5f8543027af30edc8dc312807bef601704171',
+     x86_64: '864929a9e9e90827d72dc6223b1832c71a5a09c98cfd86731c5266c1fe05a3d8'
   })
 
   depends_on 'bzip2' # R

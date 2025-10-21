@@ -1,26 +1,28 @@
-# Total size: 11366233
+# Total size: 11632655
 /usr/local/bin/pcre2-config
 /usr/local/bin/pcre2grep
 /usr/local/include/pcre2.h
 /usr/local/include/pcre2posix.h
 /usr/local/lib/cmake/pcre2/pcre2-config-version.cmake
 /usr/local/lib/cmake/pcre2/pcre2-config.cmake
+/usr/local/lib/cmake/pcre2/pcre2-targets-release.cmake
+/usr/local/lib/cmake/pcre2/pcre2-targets.cmake
 /usr/local/lib/libpcre2-16.a
 /usr/local/lib/libpcre2-16.so
 /usr/local/lib/libpcre2-16.so.0
-/usr/local/lib/libpcre2-16.so.0.14.0
+/usr/local/lib/libpcre2-16.so.0.15.0
 /usr/local/lib/libpcre2-32.a
 /usr/local/lib/libpcre2-32.so
 /usr/local/lib/libpcre2-32.so.0
-/usr/local/lib/libpcre2-32.so.0.14.0
+/usr/local/lib/libpcre2-32.so.0.15.0
 /usr/local/lib/libpcre2-8.a
 /usr/local/lib/libpcre2-8.so
 /usr/local/lib/libpcre2-8.so.0
-/usr/local/lib/libpcre2-8.so.0.14.0
+/usr/local/lib/libpcre2-8.so.0.15.0
 /usr/local/lib/libpcre2-posix.a
 /usr/local/lib/libpcre2-posix.so
 /usr/local/lib/libpcre2-posix.so.3
-/usr/local/lib/libpcre2-posix.so.3.0.6
+/usr/local/lib/libpcre2-posix.so.3.0.7
 /usr/local/lib/pkgconfig/libpcre2-16.pc
 /usr/local/lib/pkgconfig/libpcre2-32.pc
 /usr/local/lib/pkgconfig/libpcre2-8.pc
@@ -76,6 +78,7 @@
 /usr/local/share/doc/pcre2/html/pcre2_match_data_create.html
 /usr/local/share/doc/pcre2/html/pcre2_match_data_create_from_pattern.html
 /usr/local/share/doc/pcre2/html/pcre2_match_data_free.html
+/usr/local/share/doc/pcre2/html/pcre2_next_match.html
 /usr/local/share/doc/pcre2/html/pcre2_pattern_convert.html
 /usr/local/share/doc/pcre2/html/pcre2_pattern_info.html
 /usr/local/share/doc/pcre2/html/pcre2_serialize_decode.html
@@ -181,6 +184,7 @@
 /usr/local/share/man/man3/pcre2_match_data_create.3.zst
 /usr/local/share/man/man3/pcre2_match_data_create_from_pattern.3.zst
 /usr/local/share/man/man3/pcre2_match_data_free.3.zst
+/usr/local/share/man/man3/pcre2_next_match.3.zst
 /usr/local/share/man/man3/pcre2_pattern_convert.3.zst
 /usr/local/share/man/man3/pcre2_pattern_info.3.zst
 /usr/local/share/man/man3/pcre2_serialize_decode.3.zst
