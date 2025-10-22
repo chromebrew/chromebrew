@@ -10,10 +10,10 @@ class Py3_oci < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ec689f3e0a45e292c67209ec75b6d5ee473526d3a844f55096150d66a57a50bc',
-     armv7l: 'ec689f3e0a45e292c67209ec75b6d5ee473526d3a844f55096150d66a57a50bc',
-       i686: '10bebd442133e9ef6881362a4f27ed6c2879456183e7af9aebb56eb721a4ea8e',
-     x86_64: '1e7c282fcc0aabce7abf64f14a62fb32ca6df60f81e5ca71793d0ea02557b806'
+    aarch64: 'b04ea166d5bb6530bf488f4550ad5e4b49558bde4f767450af43645dda752b3c',
+     armv7l: 'b04ea166d5bb6530bf488f4550ad5e4b49558bde4f767450af43645dda752b3c',
+       i686: '74c78a71dcc6cd0ad0b7fe65cd01466fa70786b6904ad34bec8d7956d32c8481',
+     x86_64: 'c827d89ac0bd85de11fa9014a4b54154e00c52a63ae2ab5a7019d09e8ceca54d'
   })
 
   depends_on 'py3_python_dateutil'
